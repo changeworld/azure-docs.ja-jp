@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.openlocfilehash: 640ec54e9634751d05c2cea90d7c03d02e7a3387
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75720057"
 ---
 # <a name="benchmarking-a-disk"></a>ディスクのベンチマーク

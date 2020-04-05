@@ -1,5 +1,5 @@
 ---
-title: マネージド インスタンス - ポイントインタイム リストア
+title: マネージド インスタンス - ポイントインタイム リストア (PITR)
 description: マネージド インスタンス内の SQL データベースを以前の特定の時点に復元します。
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 9ed694ec524c4e3e033c3139735e8e079141ec4a
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 27f465e6864d0ff639e825c8a816d86648bd8853
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515124"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232495"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>マネージド インスタンス内の SQL データベースを以前の特定の時点に復元する
 
@@ -24,22 +24,18 @@ ms.locfileid: "76515124"
 
 ポイントインタイム リストアは、エラーによって発生したインシデント、データの誤った読み込み、重要なデータの削除などの復旧のシナリオで役に立ちます。 単にテストや監査のために使用することもできます。 データベースの設定によって異なりますが、バックアップ ファイルは 7 日から 35 日間保持されます。
 
-ポイントインタイム リストアでは次のことができます。
+ポイントインタイム リストアでは、次のようにデータベースを復元できます。
 
-- 既存のデータベースからデータベースを復元する。
-- 削除されたデータベースからデータベースを復元する。
-
-マネージド インスタンスでは、ポイントインタイム リストアで次のことも行うことができます。
-
-- 同じマネージド インスタンスにデータベースを復元する。
-- 別のマネージド インスタンスにデータベースを復元する。
-
-> [!NOTE]
-> マネージド インスタンス全体のポイントインタイム リストアは実行できません。 この記事では、実行できること (マネージド インスタンス上でホストされているデータベースのポイントインタイム リストア) についてのみ説明します。
+- 既存のデータベースから。
+- 削除されたデータベースから。
+- 同じマネージド インスタンス、または別のマネージインスタンスに対して。 
 
 ## <a name="limitations"></a>制限事項
 
-マネージド インスタンス間で復元する場合は、両方のインスタンスが同じサブスクリプションとリージョン内に存在する必要があります。 リージョン間およびサブスクリプション間での復元は、現在、サポートされていません。
+マネージド インスタンスに対するポイントインタイム リストアには、次の制限があります。
+
+- マネージド インスタンス間で復元する場合は、両方のインスタンスが同じサブスクリプションとリージョン内に存在する必要があります。 リージョン間およびサブスクリプション間での復元は、現在、サポートされていません。
+- マネージド インスタンス全体のポイントインタイム リストアは実行できません。 この記事では、実行できること (マネージド インスタンス上でホストされているデータベースのポイントインタイム リストア) についてのみ説明します。
 
 > [!WARNING]
 > マネージド インスタンスのストレージ サイズに注意してください。 復元するデータのサイズによっては、インスタンス ストレージが不足する可能性があります。 復元されたデータ用の領域が不足している場合は、別の方法を使用してください。
@@ -48,7 +44,7 @@ ms.locfileid: "76515124"
 
 |           |同じマネージド インスタンスに既存の DB を復元する| 別のマネージド インスタンスに既存の DB を復元する|同じマネージド インスタンスに削除された DB を復元する|別のマネージド インスタンスに削除された DB を復元する|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| はい|いいえ |いいえ|いいえ|
+|**Azure Portal**| はい|いいえ |はい|いいえ|
 |**Azure CLI**|はい |はい |いいえ|いいえ|
 |**PowerShell**| はい|はい |はい|はい|
 
@@ -56,9 +52,9 @@ ms.locfileid: "76515124"
 
 Azure portal、PowerShell、または Azure CLI を使用することで、既存のデータベースを同じインスタンスに復元することができます。 データベースを別のインスタンスに復元するには、ターゲット マネージド インスタンスとリソース グループのプロパティを指定できるように、PowerShell または Azure CLI を使用します。 これらのパラメーターを指定しないと、既定では、データベースが既存のインスタンスに復元されます。 Azure portal では、現在のところ別のインスタンスへの復元はサポートされていません。
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインする 
 2. ご利用のマネージド インスタンスに移動し、復元するデータベースを選択します。
 3. データベース ページで **[復元]** を選択します。
 
@@ -67,7 +63,7 @@ Azure portal、PowerShell、または Azure CLI を使用することで、既�
 4. **[復元]** ページで、データベースの復元先とする日付と時刻のポイントを選択します。
 5. **[確認]** を選択して、ご利用のデータベースを復元します。 このアクションにより、復元プロセスが開始されます。このプロセスでは、新しいデータベースが作成され、指定した時点における元のデータベースのデータが入力されます。 復旧プロセスの詳細については、「[復旧時間](sql-database-recovery-using-backups.md#recovery-time)」を参照してください。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Azure PowerShell がまだインストールされていない場合は、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
 
@@ -110,7 +106,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 
 詳細については、[Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) を参照してください。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI をまだインストールしていない場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
 
@@ -136,9 +132,18 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
 
 ## <a name="restore-a-deleted-database"></a>削除されたデータベースの復元
 
-削除されたデータベースは、PowerShell または Azure Portal を使用して復元できます。[Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#managed-instance-database-1) で行うには、このドキュメントを使用してください。 データベースは、同じインスタンスまたは別のインスタンスに復元できます。
+削除されたデータベースの復元は、PowerShell または Azure portal を使用して実行できます。 削除されたデータベースを同じインスタンスに復元するには、Azure portal または PowerShell を使用します。 削除されたデータベースを別のインスタンスに復元するには、PowerShell を使用します。 
 
-PowerShell を使用して削除されたデータベースを復元するには、次のコマンドでパラメーターの値を指定します。 次に、次のコマンドを実行します。
+### <a name="portal"></a>ポータル 
+
+
+Azure portal を使用してマネージド データベースを復旧するには、マネージド インスタンスの概要ページを開き、 **[削除されたデータベース]** を選択します。 復元する削除されたデータベースを選択し、バックアップから復元されたデータを使用して作成される新しいデータベースの名前を入力します。
+
+  ![削除された Azure SQL インスタンス データベースの復元のスクリーンショット](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
+
+### <a name="powershell"></a>PowerShell
+
+同じインスタンスにデータベースを復元するには、パラメーターの値を更新し、次の PowerShell コマンドを実行します。 
 
 ```powershell-interactive
 $subscriptionId = "<Subscription ID>"
@@ -148,30 +153,33 @@ Select-AzSubscription -SubscriptionId $subscriptionId
 $resourceGroupName = "<Resource group name>"
 $managedInstanceName = "<Managed instance name>"
 $deletedDatabaseName = "<Source database name>"
+$targetDatabaseName = "<target database name>"
 
-$deleted_db = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $resourceGroupName `
-            -InstanceName $managedInstanceName -DatabaseName $deletedDatabaseName 
+$deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $resourceGroupName `
+-InstanceName $managedInstanceName -DatabaseName $deletedDatabaseName
 
-$pointInTime = "2018-06-27T08:51:39.3882806Z"
-$properties = New-Object System.Object
-$properties | Add-Member -type NoteProperty -name CreateMode -Value "PointInTimeRestore"
-$properties | Add-Member -type NoteProperty -name RestorePointInTime -Value $pointInTime
-$properties | Add-Member -type NoteProperty -name RestorableDroppedDatabaseId -Value $deleted_db.Id
+Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+   -InstanceName $deletedDatabase.ManagedInstanceName `
+   -ResourceGroupName $deletedDatabase.ResourceGroupName `
+   -DeletionDate $deletedDatabase.DeletionDate `
+   -PointInTime UTCDateTime `
+   -TargetInstanceDatabaseName $targetDatabaseName
 ```
 
-削除されたデータベースを別のインスタンスに復元するには、リソース グループとマネージド インスタンスの名前を変更します。 また、location パラメーターが、リソース グループおよびマネージド インスタンスの場所と一致することも確認してください。
+データベースを別のマネージド インスタンスに復元するには、ターゲット リソース グループとターゲット マネージド インスタンスの名前も指定します。
 
 ```powershell-interactive
-$resourceGroupName = "<Second resource group name>"
-$managedInstanceName = "<Second managed instance name>"
+$targetResourceGroupName = "<Resource group of target managed instance>"
+$targetInstanceName = "<Target managed instance name>"
 
-$location = "West Europe"
-
-$restoredDBName = "WorldWideImportersPITR"
-$resource_id = "subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/managedInstances/$managedInstanceName/databases/$restoredDBName"
-
-New-AzResource -Location $location -Properties $properties `
-        -ResourceId $resource_id -ApiVersion "2017-03-01-preview" -Force
+Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+   -InstanceName $deletedDatabase.ManagedInstanceName `
+   -ResourceGroupName $deletedDatabase.ResourceGroupName `
+   -DeletionDate $deletedDatabase.DeletionDate `
+   -PointInTime UTCDateTime `
+   -TargetInstanceDatabaseName $targetDatabaseName `
+   -TargetResourceGroupName $targetResourceGroupName `
+   -TargetInstanceName $targetInstanceName 
 ```
 
 ## <a name="overwrite-an-existing-database"></a>既存のデータベースを上書きする
@@ -197,13 +205,13 @@ DROP DATABASE WorldWideImporters;
 - [ポイント対サイト](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
 - [パブリック エンドポイント](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal で、マネージド インスタンスからデータベースを選択し、 **[削除]** を選択します。
 
    ![Azure portal を使ってデータベースを削除する](media/sql-database-managed-instance-point-in-time-restore/delete-database-from-mi.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 次の PowerShell コマンドを使用して、マネージド インスタンスから既存のデータベースを削除します。
 
@@ -215,7 +223,7 @@ $databaseName = "<Source database>"
 Remove-AzSqlInstanceDatabase -Name $databaseName -InstanceName $managedInstanceName -ResourceGroupName $resourceGroupName
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 次の Azure CLI コマンドを使用して、マネージド インスタンスから既存のデータベースを削除します。
 

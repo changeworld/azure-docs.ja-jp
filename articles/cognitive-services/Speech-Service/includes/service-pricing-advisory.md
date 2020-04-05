@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 12/02/2019
 ms.author: dapine
 ms.openlocfilehash: ceb062cc5272fae0030c331ad7c9c6c870763df7
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74829053"
 ---
 > [!NOTE]

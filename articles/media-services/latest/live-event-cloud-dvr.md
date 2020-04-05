@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/27/2019
 ms.author: juliako
 ms.openlocfilehash: 4c7618b60e5fd86a9b8b3f22fb3333c00cfdfa61
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74899795"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>タイムシフトとライブ出力を使用してオンデマンドのビデオ再生を作成する
@@ -53,7 +53,7 @@ Azure Media Services の[ライブ出力](https://docs.microsoft.com/rest/api/me
 > [!NOTE]
 > ライブ出力を削除しても、基になるアセットとアセット内のコンテンツは削除されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ビデオをサブクリップします](subclip-video-rest-howto.md)。
 * [アセットのフィルターを定義します](filters-dynamic-manifest-rest-howto.md)。

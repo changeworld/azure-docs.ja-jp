@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465589"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236567"
 ---
 # <a name="testability-actions"></a>Testability アクション
 Azure Service Fabric では、信頼性の低いインフラストラクチャをシミュレートするため、さまざまな現実世界の障害と状態遷移をシミュレートする方法を開発者に提供します。 これらは、Testability アクションとして公開されます。 これらのアクションは、特定のフォールト インジェクション、状態遷移、検証を発生させる低レベルの API です。 これらのアクションを組み合わせて、サービスに対する包括的なテスト シナリオを記述することができます。
@@ -22,8 +22,8 @@ C# でのアクションの実装は System.Fabric.dll アセンブリ内にあ�
 ## <a name="graceful-vs-ungraceful-fault-actions"></a>グレースフル障害アクションとアングレースフル障害アクション
 Testability アクションは、次の 2 つに大きく分類されます。
 
-* アングレースフル障害:コンピューターの再起動やプロセスのクラッシュなどをシミュレートする障害です。 このような障害では、プロセスの実行コンテキストは突然停止します。 つまり、アプリケーションを再起動する前に、状態のクリーンアップを実行できません。
-* グレースフル障害:負荷分散によってトリガーされるレプリカの移動や削除などの正常なアクションをシミュレートする障害です。 このような場合、サービスは、終了の通知を取得し、終了する前に状態をクリーンアップすることができます。
+* アングレースフル障害。これらの障害は、コンピューターの再起動やプロセスのクラッシュなどをシミュレートします。 このような障害では、プロセスの実行コンテキストは突然停止します。 つまり、アプリケーションを再起動する前に、状態のクリーンアップを実行できません。
+* グレースフル障害。これらの障害は、負荷分散によってトリガーされるレプリカの移動や削除などの正常なアクションをシミュレートします。 このような場合、サービスは、終了の通知を取得し、終了する前に状態をクリーンアップすることができます。
 
 品質をより深く検証するために、さまざまなグレースフル障害とアングレースフル障害エラーを発生させながら、サービスとビジネスのワークロードを実行します。 アングレースフル障害は、何らかのワークフローの途中でサービス プロセスが突然終了するシナリオで使用します。 Service Fabric によってサービスのレプリカが復元された後で復旧パスをテストします。 障害発生後のデータの整合性とサービス状態が正しく維持されているかどうかをテストするために役立ちます。 もう 1 つの障害セット (グレースフル障害) では、Service Fabric によって移動されるレプリカに対してサービスが正しく反応することをテストします。 これは、RunAsync メソッドでのキャンセル処理をテストします。 サービスは、設定されるキャンセル トークンをチェックし、その状態を正しく保存して、RunAsync メソッドを終了する必要があります。
 
@@ -81,7 +81,7 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 
 ![](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
-最初の **Get-ServiceFabricNode** (Service Fabric PowerShell モジュールのコマンドレット) の出力は、ローカル クラスターに 5 つのノードがあることを示しています(Node.1 から Node.5)。 Node.4 というノードで Testability アクション (コマンドレット) **Restart-ServiceFabricNode** を実行した後、このノードのアップタイムがリセットされていることが示されます。
+最初の **Get-ServiceFabricNode** (Service Fabric PowerShell モジュールのコマンドレット) の出力は、ローカル クラスターに 5 つのノードがあることを示しています (Node.1 ～ Node.5)。 Node.4 というノードで Testability アクション (コマンドレット) **Restart-ServiceFabricNode** を実行した後、このノードのアップタイムがリセットされていることが示されます。
 
 ### <a name="run-an-action-against-an-azure-cluster"></a>Azure クラスターに対してアクションを実行する
 Azure クラスターに対する (PowerShell を使用した) Testability アクションの実行は、ローカル クラスターに対する実行に似ています。 唯一の違いは、アクションを実行する前に、ローカル クラスターではなく Azure クラスターに接続する必要があることです。

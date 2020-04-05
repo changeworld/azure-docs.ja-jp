@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 08/12/2019
 ms.openlocfilehash: 3ece5a9d225e48654a0a3a96c3b7b78327565841
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74975178"
 ---
 # <a name="quickstart-ingest-sample-data-into-azure-data-explorer"></a>クイック スタート:Azure のデータ エクスプローラーにサンプル データを取り込む
@@ -57,8 +57,8 @@ ms.locfileid: "74975178"
 
     ![Query results](media/ingest-sample-data/query-results.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Explorer でのデータ インジェスト](ingest-data-overview.md)には、インジェスト メソッドに関する詳細があります。
-* [クイック スタート:Azure Data Explorer](web-query-data.md) の Web UI でデータにクエリを実行します。
+* [クイック スタート: Azure Data Explorer](web-query-data.md) の Web UI でデータにクエリを実行します。
 * Kusto クエリ言語で[クエリを記述します](write-queries.md)。

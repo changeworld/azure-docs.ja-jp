@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 5bd25604844ce0521b6bac2d637a2d48a6ef089b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72555738"
 ---
 # <a name="connect-your-apache-spark-application-with-kafka-enabled-azure-event-hubs"></a>Kafka 対応 Azure Event Hubs に Apache Spark アプリケーションを接続する
@@ -99,7 +99,7 @@ df.writeStream
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Spark-Kafka コネクタと Kafka 用 Event Hubs を使ったストリーム配信の方法について説明しました。 次の手順を実行しました。 
 

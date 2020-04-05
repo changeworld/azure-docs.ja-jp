@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 7d59f00d655bc7b2395c46713a56f52c61ffa42c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277102"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Windows PowerShell for StorSimple を使用してデバイスを管理する
@@ -50,7 +50,7 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
 1. PuTTY の **[Reconfiguration]** ダイアログ ボックスで、 **[Category]** パネルの **[Keyboard]** を選択します。
 2. 次のオプションが選択されていることを確認します (これらは新しいセッションを開始したときの既定の設定です)。
    
-   | キーボードの項目 | 選択 |
+   | キーボードの項目 | Select |
    | --- | --- |
    | Backspace key |Control-? (127) |
    | Home and End keys |Standard |

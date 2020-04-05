@@ -9,10 +9,10 @@ ms.date: 10/19/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: c3f485765e0bbbb91de0938261b587c27bf414bf
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74875524"
 ---
 ## <a name="use-the-azure-portal-to-move-a-vm-to-a-different-subscription"></a>Azure portal を使用して、VM を他のサブスクリプションに移動する

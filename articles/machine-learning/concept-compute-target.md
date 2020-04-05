@@ -10,11 +10,11 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169811"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232991"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング先とは 
 
@@ -27,7 +27,7 @@ ms.locfileid: "77169811"
 
 コンピューティング ターゲットに使用するコンピューティング リソースは[ワークスペース](concept-workspace.md)にアタッチされています。 ローカル コンピューター以外のコンピューティング リソースは、ワークスペースのユーザーによって共有されます。
 
-## <a name="train"></a> トレーニング コンピューティング ターゲット
+## <a name="training-compute-targets"></a><a name="train"></a> トレーニング コンピューティング ターゲット
 
 Azure Machine Learning では、異なるコンピューティング リソースに対してさまざまなサポートが提供されています。  また、独自のコンピューティング リソースを接続することもできますが、シナリオごとにサポートは異なることがあります。
 
@@ -35,7 +35,7 @@ Azure Machine Learning では、異なるコンピューティング リソー�
 
 [モデル トレーニングのためのコンピューティング ターゲットの設定と使用](how-to-set-up-training-targets.md)に関するページを参照してください。
 
-## <a name="deploy"></a>デプロイ ターゲット
+## <a name="deployment-targets"></a><a name="deploy"></a>デプロイ ターゲット
 
 次のコンピューティング リソースを使用してモデル デプロイをホストできます。
 

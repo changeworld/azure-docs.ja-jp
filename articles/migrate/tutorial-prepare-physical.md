@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 42eb603be0152b9e8cfb36d02e8f0602c40afe54
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 5f9048b08b3e77a0c8d5ae9a9d10c614a4e0af61
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031205"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80336684"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>物理サーバーの評価および Azure への移行を準備する
 
@@ -41,10 +41,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure Migrate のデプロイに対するアクセス許可を設定する必要があります。
 
-**タスク** | **アクセス許可**
---- | ---
-**Azure Migrate プロジェクトの作成** | Azure アカウントには、プロジェクトを作成するためのアクセス許可が必要です。
-**Azure Migrate アプライアンスを登録する** | Azure Migrate は、軽量な Azure Migrate アプライアンスを使用して、Azure Migrate Server Assessment によって物理サーバーを検出し、評価します。 このアプライアンスによってサーバーが検出され、サーバーのメタデータとパフォーマンス データが Azure Migrate に送信されます。<br/><br/>アプライアンスの登録時に、リソースプロバイダー (Microsoft.OffAzure、Microsoft.Migrate、および Microsoft.KeyVault) が、アプライアンスで選択したサブスクリプションに登録されます。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。 リソースプロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。<br/><br/> オンボードの一環として、Azure Migrate によって Azure Active Directory (Azure AD) アプリが作成されます。<br/> AAD アプリは、アプライアンスで実行されているエージェントと Azure で実行されているそれぞれのサービスとの間の通信 (認証と承認) に使用されます。 このアプリには、任意のリソースに対して ARM 呼び出しや RBAC アクセスを行うための特権はありません。
+**タスク** | **詳細** 
+--- | --- 
+**Azure Migrate プロジェクトの作成** | Azure アカウントには、プロジェクトを作成するために共同作成者または所有者のアクセス許可が必要です。 | 
+**リソースプロバイダーの登録** | Azure Migrate は、軽量な Azure Migrate アプライアンスを使用して、Azure Migrate Server Assessment によって Hyper-V VM を検出しおよび評価します。<br/><br/> アプライアンスの登録中、リソースプロバイダーはアプライアンスで選択されたサブスクリプションに登録されます。 [詳細については、こちらを参照してください](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> リソースプロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
+**Azure AD アプリの作成** | アプライアンスを登録するとき、Azure Migrate によって、アプライアンス上で実行されているエージェントと Azure 上で実行されているそれぞれのサービスとの間の通信に使用される Azure Active Directory (Azure AD) アプリが作成されます。 [詳細については、こちらを参照してください](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> Azure AD アプリを作成するためのアクセス許可が必要です (アプリケーション開発者ロールで利用可能)。
 
 
 

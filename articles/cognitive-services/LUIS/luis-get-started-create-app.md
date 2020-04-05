@@ -1,22 +1,14 @@
 ---
 title: 'クイックスタート: アプリの作成 - LUIS'
-titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、照明やアプライアンスの電源をオンにしたりオフにしたりする用途を想定し、事前構築済みのドメイン `HomeAutomation` を使用した LUIS アプリを作成する方法について説明します。 この事前構築済みのドメインによって、意図、エンティティ、発話例が得られます。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
-services: cognitive-services
-author: diberry
-ms.custom: seodec18
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 302321a36a6ce7526ad5e3144f87b88edbfaaec7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.openlocfilehash: de6cf5e95ee63fc9500cf1b5edab78597bdb18af
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448097"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80287800"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>クイック スタート:事前構築済みの Home Automation アプリを使用する
 
@@ -29,11 +21,11 @@ ms.locfileid: "75448097"
 ## <a name="create-a-new-app"></a>新しいアプリの作成
 アプリケーションは、 **[My Apps]** で作成および管理できます。
 
-1. LUIS ポータルの [My Apps] 一覧で、 **[+ Create] (+ 作成)** を選択します。
+1. [マイアプリ] の一覧で、 **[+ New app for conversation]** \(+ 会話用の新しいアプリ\) を選択します。
 
-    ![LUIS ポータルの [My Apps] 一覧で、[+ Create] (+ 作成) を選択します。](./media/create-app-in-portal.png)
+1. ダイアログ ボックスで、お使いのアプリケーションに `Home Automation` という名前を付けます。 カルチャとして **[英語]** を選択します。 説明は省略可能です。作成や予測には使用されません。 LUIS アプリを作成するときには、予測リソースも省略可能です。 **[Done]** を選択します。
 
-1. ダイアログ ボックスで、アプリケーションに `Home Automation` という名前を付け、 **[Done]** を選択します。 LUIS によってアプリが作成されます。 説明は省略可能です。作成や予測には使用されません。 LUIS アプリを作成するときには、予測リソースも省略可能です。 運用環境にアプリを公開するときは、アプリが多くの要求を処理できるよう予測のリソースを割り当てる必要があります。
+    LUIS によってアプリが作成されます。 運用環境にアプリを公開するときは、アプリが多くの要求を処理できるよう予測のリソースを割り当てる必要があります。
 
     ![ダイアログ ボックスで、アプリケーションに "Home Automation" という名前を付ける](./media/create-new-app-details.png)
 
@@ -66,23 +58,25 @@ HomeAutomation ドメインの意図を確認するには、 **[Intents]** を�
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>アプリをテストする
-アプリのトレーニング後、そのテストを行うことができます。 **[Test]** を選択します。 対話型のテスト ウィンドウに `Turn off the lights` などのテスト発話を入力し、Enter キーを押します。
+アプリのトレーニング後、そのテストを行うことができます。
 
-```
-Turn off the lights
-```
+1. 右上のナビゲーションから **[テスト]** を選択します。 1. 対話型のテスト ウィンドウに `Turn off the lights` などのテスト発話を入力し、Enter キーを押します。
 
-それぞれのテスト発話について、最もスコアの高い意図が、想定された意図と対応していることを確認します。
+    ```
+    Turn off the lights
+    ```
 
-この例では、**HomeAutomation.TurnOff** に対する最もスコアの高い意図として `Turn off the lights` が正しく識別されています。
+    それぞれのテスト発話について、最もスコアの高い意図が、想定された意図と対応していることを確認します。
 
-![発話が強調表示されたテスト パネルのスクリーンショット](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
+    この例では、**HomeAutomation.TurnOff** に対する最もスコアの高い意図として `Turn off the lights` が正しく識別されています。
 
-**[検査]** を選択して、その予測の詳細を確認します。
+    ![発話が強調表示されたテスト パネルのスクリーンショット](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
-![検査情報を含むテスト パネルのスクリーンショット](media/luis-quickstart-new-app/test.png)
+1. **[検査]** を選択して、その予測の詳細を確認します。
 
-もう一度 **[Test]** を選択して、テスト ウィンドウを折りたたみます。
+    ![検査情報を含むテスト パネルのスクリーンショット](media/luis-quickstart-new-app/test.png)
+
+1. テスト ウィンドウを閉じます。
 
 <a name="publish-your-app"></a>
 
@@ -96,14 +90,14 @@ Turn off the lights
 
 [!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)]
 
-1. ブラウザーのアドレス バーで、クエリ文字列について、URL に次の名前と値のバーが含まれていることを確認します。 それらがクエリ文字列に含まれていない場合は、追加してください。
+2. ブラウザーのアドレス バーで、クエリ文字列について、URL に次の名前と値のバーが含まれていることを確認します。 それらがクエリ文字列に含まれていない場合は、追加してください。
 
     |名前と値のペア|
     |--|
     |`verbose=true`|
     |`show-all-intents=true`|
 
-1. ブラウザーのアドレス バーで、URL の最後に移動し、_クエリ_ 値に「`turn off the living room light`」と入力して Enter キーを押します。
+3. ブラウザーのアドレス バーで、URL の最後に移動し、_クエリ_ 値に「`turn off the living room light`」と入力して Enter キーを押します。
 
     ```json
     {

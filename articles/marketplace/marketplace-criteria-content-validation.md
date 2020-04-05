@@ -1,20 +1,18 @@
 ---
 title: Marketplace 条件のコンテンツ検証 | Azure Marketplace
 description: この記事では、Marketplace で公開元になる方法について説明します。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
-manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/31/2019
-ms.author: evansma
-ms.openlocfilehash: 8c0af3f059d1beb0e1d07d3494b31c674f15438d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.author: dsindona
+ms.openlocfilehash: 83dfa4f713068475faaab36c77b0df8f27e718c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980870"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277207"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketplace の掲載に関するガイドライン
 

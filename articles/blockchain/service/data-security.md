@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75982222"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure Blockchain Service のセキュリティ

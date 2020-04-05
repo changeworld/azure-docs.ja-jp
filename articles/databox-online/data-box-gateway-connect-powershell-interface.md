@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/02/2019
 ms.author: alkohli
 ms.openlocfilehash: 6c9f3455a07001a8d1b9b8a1e84f2af3392b5690
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561869"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229851"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>Azure Data Box Gateway デバイスを Windows PowerShell 経由で管理する
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
 ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75867364"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントからデータをコピーする
@@ -58,7 +58,7 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | **type** プロパティには **RestService** を設定する必要があります。 | はい |
+| type | **type** プロパティには **RestService** を設定する必要があります。 | はい |
 | url | REST サービスのベース URL。 | はい |
 | enableServerCertificateValidation | エンドポイントに接続するときに、サーバー側の SSL 証明書を検証するかどうか。 | いいえ<br /> (既定値は **true** です)。 |
 | authenticationType | REST サービスへの接続に使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 それぞれのプロパティとサンプルについては、以下の対応するセクションを参照してください。 | はい |
@@ -71,7 +71,7 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | userName | REST エンドポイントにアクセスするために使用するユーザー名。 | はい |
-| パスワード | ユーザー (**userName** 値) のパスワード。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | はい |
+| password | ユーザー (**userName** 値) のパスワード。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | はい |
 
 **例**
 
@@ -134,7 +134,7 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 }
 ```
 
-### <a name="managed-identity"></a> Azure リソースの認証にマネージド ID を使用する
+### <a name="use-managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure リソースの認証にマネージド ID を使用する
 
 **authenticationType** プロパティを **ManagedServiceIdentity** に設定します。 前のセクションで説明した汎用的なプロパティに加えて、次のプロパティを指定します。
 
@@ -172,7 +172,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの **type** プロパティを **RestResource** に設定する必要があります。 | はい |
+| type | データセットの **type** プロパティを **RestResource** に設定する必要があります。 | はい |
 | relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていない場合は、リンクされたサービス定義に指定されている URL のみが使用されます。 HTTP コネクタは、次の結合された URL からデータをコピーします。`[URL specified in linked service]/[relative URL specified in dataset]` | いいえ |
 
 データセットに `requestMethod`、`additionalHeaders`、`requestBody`、および `paginationRules` を設定していた場合は現状のまま引き続きサポートされますが、今後のアクティビティ ソースでは新しいモデルを使用することをお勧めします。
@@ -208,7 +208,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの **type** プロパティを **RestSource** に設定する必要があります | はい |
+| type | コピー アクティビティのソースの **type** プロパティを **RestSource** に設定する必要があります | はい |
 | requestMethod | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | いいえ |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
 | requestBody | HTTP 要求の本文。 | いいえ |
@@ -409,7 +409,7 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
     | プロパティ | 説明 |
     |:--- |:--- |:--- |
     | URL |OAuth ベアラー トークンの取得元の URL を指定します。 たとえば、この例では https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token です |。 
-    | 方法 | HTTP メソッド。 使用できる値は **Post** と **Get** です。 | 
+    | Method | HTTP メソッド。 使用できる値は **Post** と **Get** です。 | 
     | ヘッダー | [ヘッダー] はユーザー定義であり、HTTP 要求内で 1 つのヘッダー名を参照します。 | 
     | Body | HTTP 要求の本文。 | 
 

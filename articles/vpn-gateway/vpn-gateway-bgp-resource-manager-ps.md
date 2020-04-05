@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: yushwang
 ms.openlocfilehash: 78147a96d6d9e92c2602b6a83cbed743cf2abf37
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152042"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>PowerShell を使用して Azure VPN Gateway で BGP を構成する方法
@@ -38,7 +38,7 @@ BGP の利点の詳しい説明と、BGP を使用する場合の技術面の要
 
 各部分を組み合わせると、ニーズに合わせて、より複雑でマルチホップの通過ネットワークを構築することができます。
 
-## <a name ="enablebgp"></a>パート 1 - Azure VPN ゲートウェイで BGP を構成する
+## <a name="part-1---configure-bgp-on-the-azure-vpn-gateway"></a><a name ="enablebgp"></a>パート 1 - Azure VPN ゲートウェイで BGP を構成する
 構成手順では、次の図に示すように、Azure VPN ゲートウェイの BGP パラメーターを設定します。
 
 ![BGP Gateway](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
@@ -135,7 +135,7 @@ $vnet1gw.BgpSettingsText
 
 ゲートウェイが作成されたら、このゲートウェイを使用して、BGP でクロスプレミス接続または VNet 間接続を確立することができます。 以降のセクションでは、手順を確認して演習を完了します。
 
-## <a name ="crossprembbgp"></a>パート 2 - BGP を使用してクロスプレミス接続を確立する
+## <a name="part-2---establish-a-cross-premises-connection-with-bgp"></a><a name ="crossprembbgp"></a>パート 2 - BGP を使用してクロスプレミス接続を確立する
 
 クロスプレミス接続を確立するには、オンプレミス VPN デバイスを表すローカル ネットワーク ゲートウェイと、VPN ゲートウェイをローカル ネットワーク ゲートウェイにつなげる接続を作成する必要があります。 これらの手順を説明する記事はいくつかありますが、この記事では、BGP 構成パラメーターを指定するために必要な追加のプロパティについても取り上げます。
 
@@ -209,7 +209,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
 
 接続は数分後に確立されます。IPsec 接続が確立されると、BGP ピアリング セッションが開始されます。
 
-## <a name ="v2vbgp"></a>パート 3 - BGP を使用して VNet 間接続を確立する
+## <a name="part-3---establish-a-vnet-to-vnet-connection-with-bgp"></a><a name ="v2vbgp"></a>パート 3 - BGP を使用して VNet 間接続を確立する
 
 このセクションでは、次の図に示すように、BGP を使用して VNet 間接続を追加します。
 

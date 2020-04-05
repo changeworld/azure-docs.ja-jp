@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: bed6736fda0c1815964f9017adb1e6fffa9335d9
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110674"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub との切断に関する監視、診断、およびトラブルシューティング
@@ -27,7 +27,7 @@ Azure Monitor を使用して、デバイスの接続が切断されたときに
 
 デバイス接続のイベントとエラーをログに記録するには、IoT Hub の診断を有効にします。 診断ログが有効になっていない場合、デバイスの接続が切断された場合に問題のトラブルシューティングを行うための情報がないため、できるだけ早い段階でこれらのログを有効にすることをお勧めします。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. IoT ハブに移動します。
 
@@ -47,7 +47,7 @@ Azure Monitor を使用して、デバイスの接続が切断されたときに
 
 デバイスが切断されたときにアラートを受け取るには、**接続されているデバイス (プレビュー)** のメトリックに関するアラートを構成します。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. IoT ハブに移動します。
 
@@ -69,7 +69,7 @@ Azure Monitor を使用して、デバイスの接続が切断されたときに
 
 接続されたデバイスの診断ログとアラートを有効にすると、エラーが発生したときにアラートを受け取ります。 このセクションでは、アラートを受け取った場合の一般的な問題を探す方法について説明します。 実際の診断ログに合わせて Azure Monitor ログを設定済みであることを前提として、以下の手順を説明します。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. IoT ハブに移動します。
 

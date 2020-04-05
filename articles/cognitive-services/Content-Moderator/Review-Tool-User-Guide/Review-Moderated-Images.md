@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: b02324923e3f004395105b8e04165390cb950fe7
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73044128"
 ---
 # <a name="create-human-reviews"></a>目視レビューを作成する
@@ -54,6 +54,6 @@ ms.locfileid: "73044128"
 
 ![Chrome ブラウザー ウィンドウにフラグが付けられたテキストが表示されたレビュー ツールのスクリーンショット](../images/reviewresults_text.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドでは、Content Moderator の[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)からレビューを設定して使用する方法について学習しました。 次は、[REST API ガイド](../try-review-api-review.md)または [.NET SDK のクイックスタート](../dotnet-sdk-quickstart.md)を参照して、プログラムによってレビューを作成する方法について学習してください。

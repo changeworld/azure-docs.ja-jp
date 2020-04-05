@@ -18,11 +18,11 @@ ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
 ms.openlocfilehash: c36c6b1b1b08de6d2db9a7f7f9ebd3b162c02383
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085629"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215890"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>iOS 用と macOS 用の Microsoft 認証ライブラリでのリダイレクト URI の使用
 
@@ -61,7 +61,7 @@ Azure AD Authentication ライブラリ (ADAL) を使用していたコードを
 
     ADAL から移行する場合、リダイレクト URI の形式は `<scheme>://[Your_Bundle_Id]` になる可能性があります。ここで `scheme` は一意の文字列です。 この形式は、MSAL を使用する場合、引き続き機能します。
 
-* アプリの Info.plist の `CFBundleURLTypes > CFBundleURLSchemes` の下に `<scheme>` を登録する必要があります。  この例では、Info.plist がソース コードとして開かれています。
+* アプリの Info.plist の `<scheme>` の下に `CFBundleURLTypes > CFBundleURLSchemes` を登録する必要があります。  この例では、Info.plist がソース コードとして開かれています。
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -78,7 +78,7 @@ Azure AD Authentication ライブラリ (ADAL) を使用していたコードを
 
 MSAL によって、リダイレクト URI が正しく登録されているかどうかが検証され、そうでない場合はエラーが返されます。
     
-* ユニバーサル リンクをリダイレクト URI として使用する場合、`<scheme>` を `https` にする必要があり、`CFBundleURLSchemes` 内に宣言する必要はありません。 代わりに、Apple の手順 ([開発者のためのユニバーサル リンク](https://developer.apple.com/ios/universal-links/)) に従ってアプリとドメインを構成し、ユニバーサル リンクを通してアプリケーションが開かれるときに、`MSALPublicClientApplication` の `handleMSALResponse:sourceApplication:` を呼び出します。
+* ユニバーサル リンクをリダイレクト URI として使用する場合、`<scheme>` を `https` にする必要があり、`CFBundleURLSchemes` 内に宣言する必要はありません。 代わりに、Apple の手順 ([開発者のためのユニバーサル リンク](https://developer.apple.com/ios/universal-links/)) に従ってアプリとドメインを構成し、ユニバーサル リンクを通してアプリケーションが開かれるときに、`handleMSALResponse:sourceApplication:` の `MSALPublicClientApplication` を呼び出します。
 
 ## <a name="use-a-custom-redirect-uri"></a>カスタム リダイレクト URI を使用する
 
@@ -114,7 +114,7 @@ do {
 
 ## <a name="handle-the-url-opened-event"></a>URL で開かれたイベントを処理する
 
-アプリケーションでは、URL スキームまたはユニバーサル リンクを通して応答を受信したときに、MSAL を呼び出す必要があります。 アプリケーションを開くときに、`MSALPublicClientApplication` の `handleMSALResponse:sourceApplication:` メソッドを呼び出します。 カスタム スキーマの例を次に示します。
+アプリケーションでは、URL スキームまたはユニバーサル リンクを通して応答を受信したときに、MSAL を呼び出す必要があります。 アプリケーションを開くときに、`handleMSALResponse:sourceApplication:` の `MSALPublicClientApplication` メソッドを呼び出します。 カスタム スキーマの例を次に示します。
 
 Objective-C:
 

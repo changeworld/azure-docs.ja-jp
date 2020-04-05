@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と OverDrive の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と OverDrive の統合 | Microsoft Docs'
 description: Azure Active Directory と OverDrive の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 391ae72a9e2bc78ed120cf4f5fdf844a6248566a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233464"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>チュートリアル:Azure Active Directory と OverDrive の統合
+# <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>チュートリアル: Azure Active Directory と OverDrive の統合
 
 このチュートリアルでは、OverDrive と Azure Active Directory (Azure AD) を統合する方法について説明します。
 OverDrive と Azure AD の統合には、次の利点があります。

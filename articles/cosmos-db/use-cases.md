@@ -7,10 +7,10 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.openlocfilehash: de2bc551547706fb820813e57996e77bf49148d1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73888929"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
@@ -68,7 +68,7 @@ Azure Cosmos DB は、多くの場合、その [Change Feed](change-feed.md) 機
 ## <a name="gaming"></a>Gaming
 データベース層は、ゲーム アプリケーションの重要なコンポーネントです。 最近のゲームはモバイル/コンソール クライアントでグラフィック処理を行いますが、ゲーム内統計、ソーシャル メディア統合、スコアボードなどの個人向けにカスタマイズされたコンテンツの配信は、クラウドに依存しています。 多くの場合、ゲームでは魅力的なゲーム内エクスペリエンスを提供するために、読み取り/書き込みの待機時間を 1 ミリ秒にする必要があります。 ゲーム データベースは高速であることが必要であり、新しいゲームのリリース時や機能の更新時に、要求レートの急増に対処できる必要があります。
 
-Azure Cosmos DB は、[The Walking Dead: No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) ([Next Games](https://www.nextgames.com/)) や [Halo 5: Guardians](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/) などのゲームで使用されています。 Azure Cosmos DB は、ゲーム開発者に次の利点を提供します。
+Azure Cosmos DB は、[Next Games](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) による [The Walking Dead: No Man's Land](https://www.nextgames.com/) や [Halo 5: Guardians](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/) などのゲームで使用されています。 Azure Cosmos DB は、ゲーム開発者に次の利点を提供します。
 
 * Azure Cosmos DB では、パフォーマンスを柔軟にスケールアップまたはスケールダウンできます。 これにより、同時にプレイしている数十から数百万ものプレイヤーのプロファイルや統計の更新を、1 回の API 呼び出しだけで処理することができます。
 * Azure Cosmos DB は、ゲーム プレイ中の遅延の回避に役立つように、ミリ秒の読み取り/書き込みをサポートしています。
@@ -97,7 +97,7 @@ Cosmos DB でサポートされる形式である JSON は、軽量なうえに 
 
 ![Azure Cosmos DB Web アプリ リファレンス アーキテクチャ](./media/use-cases/personalization.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Cosmos DB の使用を開始するには、[クイック スタート](create-sql-api-dotnet.md)をご覧ください。このクイック スタートでは、アカウントを作成して Cosmos DB を実際に使用する方法を説明しています。
 

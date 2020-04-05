@@ -4,17 +4,17 @@ description: Java を使用して関数を開発する方法について説明�
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769032"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234939"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
 Azure Functions ランタイムは、[Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/) をサポートします。 このガイドには、Java で Azure 関数を記述する複雑な作業についての情報が含まれます。
 
-他の言語と同様、関数アプリにも、1 つまたは複数の関数を使用することができます。 Java 関数は、注釈 `@FunctionName` で装飾された `public` メソッドです。 このメソッドは、Java 関数のエントリを定義し、特定のパッケージ内で一意である必要があります。 Java で作成された 1 つの関数アプリに、`@FunctionName` で注釈付けされたパブリック メソッドを複数持つクラスが複数存在することもあります。
+他の言語と同様、関数アプリにも、1 つまたは複数の関数を使用することができます。 Java 関数は、注釈 `public` で装飾された `@FunctionName` メソッドです。 このメソッドは、Java 関数のエントリを定義し、特定のパッケージ内で一意である必要があります。 Java で作成された 1 つの関数アプリに、`@FunctionName` で注釈付けされたパブリック メソッドを複数持つクラスが複数存在することもあります。
 
 この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 さらに、[Visual Studio Code](functions-create-first-function-vs-code.md) または [Maven](functions-create-first-java-maven.md) を使用して、最初の関数を作成する Functions のクイック スタートも終えている必要があります。
 
@@ -114,7 +114,7 @@ public class Function {
 }
 ```
 
-[azure-functions-maven-plugin](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin) によって生成された、対応する `function.json` を次に示します。
+`function.json`azure-functions-maven-plugin[ によって生成された、対応する ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin) を次に示します。
 
 ```json
 {
@@ -140,7 +140,7 @@ public class Function {
 
 ## <a name="jdk-runtime-availability-and-support"></a>JDK ランタイムの使用可能性とサポート 
 
-Java 関数アプリをローカルで開発するには、[Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) から [Azul Zulu Enterprise for Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 JDK をダウンロードして使用します。 Azure Functions は、関数アプリをクラウドにデプロイするときに Azul Java 8 JDK ランタイムを使用します。
+Java 関数アプリをローカルで開発するには、[Azul Systems](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) から [Azul Zulu Enterprise for Azure](https://www.azul.com/downloads/azure-only/zulu/) Java 8 JDK をダウンロードして使用します。 Azure Functions は、関数アプリをクラウドにデプロイするときに Azul Java 8 JDK ランタイムを使用します。
 
 JKD および関数アプリに関する問題に対する [Azure サポート](https://azure.microsoft.com/support/)は、[認定サポート プラン](https://azure.microsoft.com/support/plans/)を通じてご利用いただけます。
 
@@ -172,7 +172,7 @@ az functionapp config appsettings set --name <APP_NAME> \
 この例では、ヘッドレス モードが有効になります。 `<APP_NAME>` をお使いの関数アプリ名に置き換え、`<RESOURCE_GROUP>` をリソース グループに置き換えます。
 
 > [!WARNING]  
-> [従量課金プラン](functions-scale.md#consumption-plan)では、`0` の値と共に `WEBSITE_USE_PLACEHOLDER` 設定を追加する必要があります。  
+> [従量課金プラン](functions-scale.md#consumption-plan)では、`WEBSITE_USE_PLACEHOLDER` の値と共に `0` 設定を追加する必要があります。  
 この設定によって、Java 関数のコールド スタート時間が長くなることはありません。
 
 ## <a name="third-party-libraries"></a>サードパーティ製ライブラリ 
@@ -248,8 +248,8 @@ public class Function {
 ```
 
 この関数は HTTP 要求を使用して呼び出します。 
-- HTTP 要求のペイロードは、引数 `inputReq` に `String` として渡されます。
-- 1 つのエントリが Table storage から取得され、引数 `inputData` に `TestInputData` として渡されます。
+- HTTP 要求のペイロードは、引数 `String` に `inputReq` として渡されます。
+- 1 つのエントリが Table storage から取得され、引数 `TestInputData` に `inputData` として渡されます。
 
 入力のバッチを受信するには、`String[]`、`POJO[]`、`List<String>` または `List<POJO>` にバインドできます。
 
@@ -291,7 +291,7 @@ public class Function {
 
 複数の出力バインディングが存在する場合は、そのうちの 1 つにのみ戻り値を使用します。
 
-複数の出力値を送信するには、`azure-functions-java-library` パッケージに定義されている `OutputBinding<T>` を使用します。 
+複数の出力値を送信するには、`OutputBinding<T>` パッケージに定義されている `azure-functions-java-library` を使用します。 
 
 ```java
 @FunctionName("QueueOutputPOJOList")
@@ -358,7 +358,7 @@ public class Function {
     }
 }
 ```
-上記の例では、`queryValue` は HTTP 要求 URL `http://{example.host}/api/metadata?name=test` 内のクエリ文字列パラメーター `name` にバインドされています。 次のもう 1 つの例では、キュー トリガー メタデータから `Id` にバインドする方法を示します。
+上記の例では、`queryValue` は HTTP 要求 URL `name` 内のクエリ文字列パラメーター `http://{example.host}/api/metadata?name=test` にバインドされています。 次のもう 1 つの例では、キュー トリガー メタデータから `Id` にバインドする方法を示します。
 
 ```java
  @FunctionName("QueueTriggerMetadata")
@@ -379,11 +379,11 @@ public class Function {
 
 ## <a name="execution-context"></a>実行コンテキスト
 
-`azure-functions-java-library` 内で定義されている `ExecutionContext` には、関数ランタイムと通信するためのヘルパー メソッドが含まれています。
+`ExecutionContext` 内で定義されている `azure-functions-java-library` には、関数ランタイムと通信するためのヘルパー メソッドが含まれています。
 
 ### <a name="logger"></a>ロガー
 
-`ExecutionContext` 内で定義されている `getLogger` を使用して、関数コードからログを書き込みます。
+`getLogger` 内で定義されている `ExecutionContext` を使用して、関数コードからログを書き込みます。
 
 例:
 
@@ -431,7 +431,7 @@ az webapp log download --resource-group resourcegroupname --name functionappname
 
 Functions では、サービス接続文字列などの[アプリ設定](functions-app-settings.md)は、実行中に環境変数として公開されます。 `System.getenv("AzureWebJobsStorage")` を使用して、これらの設定にアクセスすることができます。
 
-次の設定では、`myAppSetting` という名前のキーの[アプリケーション設定](functions-how-to-use-azure-function-app-settings.md#settings)が取得されます。
+次の設定では、[ という名前のキーの](functions-how-to-use-azure-function-app-settings.md#settings)アプリケーション設定`myAppSetting`が取得されます。
 
 ```java
 

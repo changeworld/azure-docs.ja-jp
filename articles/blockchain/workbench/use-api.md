@@ -5,10 +5,10 @@ ms.date: 03/05/2020
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 3084fcf343bc42fe01bf352b6791916d62f63540
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672745"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Azure Blockchain Workbench プレビューの REST API を使用する
@@ -74,7 +74,7 @@ Content-Type: "application/json"
 
 次の値を置き換えます。
 
-| パラメーター | Value |
+| パラメーター | 値 |
 |-----------|-------|
 | {applicationId} | Applications POST API からの戻り値。 |
 | {ledgerId} | 台帳のインデックス。 この値は、通常は 1 です。 値は、[台帳テーブル](data-sql-management-studio.md)で確認することもできます。 |
@@ -104,7 +104,7 @@ Content-Type: "application/json"
 
 次の値を置き換えます。
 
-| パラメーター | Value |
+| パラメーター | 値 |
 |-----------|-------|
 | {applicationId} | Applications POST API からの戻り値。 |
 | {userId} | [User テーブル](data-sql-management-studio.md)のユーザー ID 値。 |
@@ -223,7 +223,7 @@ Content-type: application/json
 
 次の値を置き換えます。
 
-| パラメーター | Value |
+| パラメーター | 値 |
 |-----------|-------|
 | {workflowId} | ワークフロー ID 値は、[Workflow テーブル](data-sql-management-studio.md)のコントラクトの ConstructorID です。 |
 | {contractCodeId} | [ContractCode テーブル](data-sql-management-studio.md)のコントラクト コード ID 値です。 作成するコントラクト インスタンスのアプリケーション ID と Ledger ID を関連付けます。 |
@@ -231,7 +231,7 @@ Content-type: application/json
 
 要求本文には、次の情報を使用して値を設定します。
 
-| パラメーター | Value |
+| パラメーター | 値 |
 |-----------|-------|
 | workflowFunctionID | [WorkflowFunction テーブル](data-sql-management-studio.md)からの ID です。 |
 | workflowActionParameters | コンストラクターに渡されるパラメーターの名前と値のペア。 各パラメーターには、[WorkflowFunctionParameter](data-sql-management-studio.md) テーブルの workflowFunctionParameterID 値を使用します。 |

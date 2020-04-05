@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 812ca0d502572f43c968c75dee17f45d066bcf04
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2a1507b008903085886f9392f3f4e5461997b6e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701299"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128870"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>サポートされているアカウントの種類別の検証の相違点 (signInAudience)
 
@@ -33,7 +33,7 @@ ms.locfileid: "76701299"
 
 サポートされているさまざまな種類のアカウントで異なるプロパティの検証方法の違いについては、次の表を参照してください。
 
-| プロパティ | `AzureADMyOrg` | `AzureADMultipleOrgs`  | `AzureADandPersonalMicrosoftAccount` |
+| プロパティ | `AzureADMyOrg` | `AzureADMultipleOrgs` | `AzureADandPersonalMicrosoftAccount` および `PersonalMicrosoftAccount` |
 |--------------|---------------|----------------|----------------|
 | アプリケーション ID URI (`identifierURIs`)  | テナント内で一意であること <br><br> urn:// スキームはサポートされていません <br><br> ワイルドカードはサポートされていません <br><br> クエリ文字列とフラグメントはサポートされています <br><br> 最大長は 255 文字です <br><br> IdentifierURI の数に制限はありません*  | グローバルに一意であること <br><br> urn:// スキームはサポートされていません <br><br> ワイルドカードはサポートされていません <br><br> クエリ文字列とフラグメントはサポートされています <br><br> 最大長は 255 文字です <br><br> IdentifierURI の数に制限はありません* | グローバルに一意であること <br><br> urn:// スキームはサポートされていません <br><br> ワイルドカード、フラグメント、クエリ文字列はサポートされていません <br><br> 最大長は 120 文字です <br><br> IdentifierURI の最大数は 50 です |
 | 証明書 (`keyCredentials`) | 対称署名キー | 対称署名キー | 暗号化と非対称署名キー | 

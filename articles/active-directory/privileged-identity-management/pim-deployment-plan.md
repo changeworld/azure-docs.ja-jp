@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025998"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) をデプロイする
@@ -99,7 +99,7 @@ Privileged Identity Management を使用するには、お客様のディレク�
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>利害関係者:Azure AD ロール用の Privileged Identity Management
 
-| Name | Role | アクション |
+| 名前 | Role | アクション |
 | --- | --- | --- |
 | 名前とメール | **ID アーキテクトまたは Azure グローバル管理者**<br/>この変更をどのように組織内の主要な ID 管理インフラストラクチャに合わせるかを定義する責任がある、ID 管理チームの代表。 | SO/R/I |
 | 名前とメール | **サービス所有者 / ライン マネージャー**<br/>サービスまたはサービス グループの IT 所有者の代表。 主に決定を下し、チームの Privileged Identity Management のロールアウトを支援します。 | SO/R/I |
@@ -109,7 +109,7 @@ Privileged Identity Management を使用するには、お客様のディレク�
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>利害関係者:Azure リソース ロール用の Privileged Identity Management
 
-| Name | Role | アクション |
+| 名前 | Role | アクション |
 | --- | --- | --- |
 | 名前とメール | **サブスクリプション / リソース所有者**<br/>Privileged Identity Management をデプロイする必要がある各サブスクリプションまたはリソースの IT 所有者の代表 | SO/R/I |
 | 名前とメール | **セキュリティ所有者**<br/>計画が組織のセキュリティ要件を満たしていることをサインオフできるセキュリティ チームの代表。 | SO/R |
@@ -250,9 +250,9 @@ Privileged Identity Management ソリューションを実装する前に、組�
 
 | Role | Require MFA (MFA が必須) | Notification | 承認を要求する | 承認者 | アクティブ化期間 | アクティブな管理者 | アクティブな有効期限 | 有資格の有効期限 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 重要なサブスクリプションの所有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | サブスクリプションのその他の所有者 | 1 時間 | なし | 300 | 3 か月 |
-| それほど重要ではないサブスクリプションのユーザー アクセス管理者 | :heavy_check_mark: | :heavy_check_mark: | :x: | なし | 1 時間 | なし | 300 | 3 か月 |
-| Virtual Machine Contributor | :x: | :heavy_check_mark: | :x: | なし | 3 時間 | なし | 300 | 6 か月 |
+| 重要なサブスクリプションの所有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | サブスクリプションのその他の所有者 | 1 時間 | なし | 該当なし | 3 か月 |
+| それほど重要ではないサブスクリプションのユーザー アクセス管理者 | :heavy_check_mark: | :heavy_check_mark: | :x: | なし | 1 時間 | なし | 該当なし | 3 か月 |
+| Virtual Machine Contributor | :x: | :heavy_check_mark: | :x: | なし | 3 時間 | なし | 該当なし | 6 か月 |
 
 次の表で各設定について説明します。
 

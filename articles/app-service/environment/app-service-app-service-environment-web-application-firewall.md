@@ -6,13 +6,13 @@ ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
-ms.custom: seodec18
-ms.openlocfilehash: ba53438eb5ae1870cb180b169348ab0f92e5f305
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 51375c13d842bda2450a83e1bbc48b741adba39b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688769"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057441"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する
 ## <a name="overview"></a>概要
@@ -26,7 +26,7 @@ Azure Application Gateway に加えて、[Azure 用 Barracuda WAF](https://www.b
 ## <a name="setup"></a>セットアップ
 このドキュメントでは、複数の負荷分散されたBarracuda WAF インスタンスの背後に App Service 環境を構成して、WAF からのトラフィックのみが App Service 環境に到着でき、DMZ からアクセスできないようにします。 さらに、Azure Traffic Manager を Barracuda WAF インスタンスの前に配置して、Azure のデータセンターとリージョン全体で負荷が分散されるようにします。 設定の概要図は次のようになります。
 
-![アーキテクチャ][Architecture] 
+![Architecture][Architecture] 
 
 > [!NOTE]
 > [App Service 環境での ILB のサポート](app-service-environment-with-internal-load-balancer.md)の導入により、ASE を DMZ からアクセスできないように設定し、プライベート ネットワークでのみ使用できるように構成することができます。 
@@ -80,7 +80,7 @@ Barracuda WAF は、管理ポータルによる構成で TCP ポート 8000 を�
 
 ![Traffic Manager のエンドポイント][TrafficManagerEndpoint]
 
-アプリケーションが認証を必要とする場合は、Traffic Manager がアプリケーションの使用可能性をチェックする ping を実行するための、認証を必要としないリソースがあることを確認します。 次の図に示すように、[Azure Portal](https://portal.azure.com) の **[構成]** ページで URL を構成できます。
+アプリケーションが認証を必要とする場合は、Traffic Manager がアプリケーションの使用可能性をチェックする ping を実行するための、認証を必要としないリソースがあることを確認します。 次の図に示すように、**Azure Portal** の [[構成]](https://portal.azure.com) ページで URL を構成できます。
 
 ![Traffic Manager を構成する][ConfigureTrafficManager]
 

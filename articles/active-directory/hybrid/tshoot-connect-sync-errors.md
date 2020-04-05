@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:同期中のエラーのトラブルシューティング | Microsoft Docs
+title: 'Azure AD Connect: 同期中のエラーのトラブルシューティング | Microsoft Docs'
 description: Azure AD Connect の同期中に発生したエラーのトラブルシューティングを行う方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 745ddcc95bb91e61478307265aec1ac8a7ebba54
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609198"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
@@ -31,7 +31,7 @@ Azure AD Connect の最新バージョン \(2016 年 8 月以降\) では、同�
 
 2016 年 9 月 1 日以降、[Azure Active Directory Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) 機能がすべての "*新しい*" Azure Active Directory テナントに対して既定で有効になります。 この機能は既存のテナントについても数か月のうちに自動的に有効になります。
 
-Azure AD Connect は、同期を保つディレクトリに対して 3 種類の操作を実行します。インポート、同期、エクスポートです。 エラーは、どの操作でも発生する可能性があります。 この記事では、主に、Azure AD へのエクスポート中のエラーについて説明します。
+Azure AD Connect は、同期を保つディレクトリに対して 3 種類の操作 (インポート、同期、エクスポート) を実行します。 エラーは、どの操作でも発生する可能性があります。 この記事では、主に、Azure AD へのエクスポート中のエラーについて説明します。
 
 ## <a name="errors-during-export-to-azure-ad"></a>Azure AD へのエクスポート中のエラー
 この後のセクションで、Azure AD コネクタを使用した Azure AD へのエクスポート操作中に発生するさまざまな種類の同期エラーについて説明します。 このコネクタは、"contoso.*onmicrosoft.com*" という形式の名前で識別されます。

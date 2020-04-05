@@ -8,10 +8,10 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.openlocfilehash: 0a705ad81925491fe054d846143472c6e4432b69
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77561904"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
@@ -24,7 +24,7 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 
 ## <a name="install-the-emulator-build-task"></a>エミュレーター ビルド タスクのインストール
 
-ビルド タスクを使用するには、最初にそれを Azure DevOps 組織にインストールする必要があります。 [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) で拡張機能 **Azure Cosmos DB Emulator** を見つけて、 **[Get it free]\(無料で入手\)** をクリックします。
+ビルド タスクを使用するには、最初にそれを Azure DevOps 組織にインストールする必要があります。 **Marketplace** で拡張機能 [Azure Cosmos DB Emulator](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) を見つけて、 **[Get it free]\(無料で入手\)** をクリックします。
 
 ![Azure DevOps Marketplace で Azure Cosmos DB Emulator ビルド タスクを見つけてインストールする](./media/tutorial-setup-ci-cd/addExtension_1.png)
 
@@ -59,7 +59,7 @@ Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Az
 Start-CosmosDbEmulator
 ```
 
-## <a name="addEmulatorBuildTaskToBuildDefinition"></a>ビルド パイプラインへのタスクの追加
+## <a name="add-the-task-to-a-build-pipeline"></a><a name="addEmulatorBuildTaskToBuildDefinition"></a>ビルド パイプラインへのタスクの追加
 
 1. ビルド パイプラインにタスクを追加する前に、エージェント ジョブを追加する必要があります。 ビルド パイプラインに移動します。 **[...]** を選択し、 **[エージェント ジョブを追加する]** を選択します。
 

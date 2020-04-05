@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 5a07f0749b59efc96b67df3ad5ed2fbf353be614
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74538841"
 ---
 # <a name="learn-text-moderation-concepts"></a>テキスト モデレーションの概念を確認する
@@ -182,6 +182,6 @@ JSON の次の抽出箇所は、出力例を示しています。
 
 Content Moderator は、[用語一覧の API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) にカスタム用語一覧を管理する操作を提供します。 [用語一覧の API コンソール](try-terms-list-api.md) を起動して、REST API コード サンプルを使用してください。 また、Visual Studio および C# に精通している場合は、[用語一覧に関する .NET のクイックスタート](term-lists-quickstart-dotnet.md)を確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [用語一覧の API コンソール](try-text-api.md)を試験運用して、REST API コード サンプルを使用してください。 また、Visual Studio と C# に精通している場合は、[.NET SDK のクイックスタート](dotnet-sdk-quickstart.md)のテキスト モデレーションのセクションも確認してください。

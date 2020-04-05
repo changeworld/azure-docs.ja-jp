@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953180"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイス管理に Cloud Explorer for Visual Studio を使用する
@@ -107,7 +107,7 @@ IoT Hub からデバイスにメッセージを送信するには、次の手順
 
    **[出力]** に結果が表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Cloud Explorer for Visual Studio をさまざまな管理オプションで使用する方法を学習しました。
 

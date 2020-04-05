@@ -6,33 +6,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 6dd2ac9c17c8e82affb647846c7650a26d784e32
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: a0e6b5b7d5cedc821ee34bdd219ae07bb9d43199
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79203420"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79481910"
 ---
 <a name="HOLTop"></a>
 
-[リファレンス ドキュメント](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [パッケージ](https://search.maven.org/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3/jar) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[リファレンス ドキュメント](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [パッケージ](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) バージョン 8 以降
-* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 
-    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 この作業は、このクイックスタートの中で後から行います。
-    * Free 価格レベルを使ってサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。  デプロイされたら、 **[リソースに移動]** をクリックします。
+    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 ## <a name="setting-up"></a>設定
 
-### <a name="create-a-new-maven-project"></a>新しい Maven プロジェクトを作成する
+### <a name="add-the-client-library"></a>クライアント ライブラリを追加する
 
-プロジェクトに次のテキスト分析の依存関係を追加します。 このバージョンの依存関係では、Text Analytics API のバージョン `3.0-preview` が使用されます。 
+好みの IDE または開発環境で Maven プロジェクトを作成します。 次に、自分のプロジェクトの *pom.xml* ファイルに次の依存関係を追加します。 [その他のビルド ツール](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3)の実装構文はオンラインで確認できます。
 
 ```xml
 <dependencies>
@@ -44,12 +44,10 @@ ms.locfileid: "79203420"
 </dependencies>
 ```
 
-`\src\main\java` ディレクトリに新しい java ファイルを作成します。
-
 > [!TIP]
 > クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java) にあり、このクイックスタートのコード例が含まれています。 
 
-java ファイルを開き、次の `import` ステートメントを追加します。
+`TextAnalyticsSamples.java` という名前で Java ファイルを作成します。 そのファイルを開き、次の `import` ステートメントを追加します。
 
 ```java
 import com.azure.ai.textanalytics.models.*;
@@ -72,7 +70,7 @@ public class TextAnalyticsSamples {
 
 ```java
 public static void main(String[] args) {
-
+    //You will create these methods later in the quickstart.
     TextAnalyticsClient client = authenticateClient(KEY, ENDPOINT);
 
     sentimentAnalysisExample(client);
@@ -99,7 +97,7 @@ Text Analytics クライアントは、キーを使用して Azure に対して�
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-上で作成した `KEY` と `ENDPOINT` を使用して `TextAnalyticsClient` オブジェクトをインスタンス化するメソッドを作成します。
+ご利用の Text Analytics リソースのキーとエンドポイントを使用して `TextAnalyticsClient` オブジェクトをインスタンス化するメソッドを作成します。
 
 ```java
 static TextAnalyticsClient authenticateClient(String key, String endpoint) {

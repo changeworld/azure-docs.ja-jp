@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300011"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>方法:アプリのサービス利用規約とプライバシーに関する声明を構成する
@@ -55,7 +55,7 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 * [アプリ オブジェクト JSON を使用する](#app-object-json)
 * [Microsoft Graph API を使用する](#msgraph-rest-api)
 
-### <a name="azure-portal"></a>Azure portal を使用する
+### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Azure portal を使用する
 Azure portal で次の手順に従います。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
@@ -66,7 +66,7 @@ Azure portal で次の手順に従います。
 
     ![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロパティ](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
-### <a name="app-object-json"></a>アプリ オブジェクト JSON を使用する
+### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>アプリ オブジェクト JSON を使用する
 
 アプリ オブジェクト JSON を直接変更する場合、Azure portal またはアプリケーション登録ポータルでマニフェスト エディターを使用して、自分のアプリのサービス利用規約とプライバシーに関する声明へのリンクを含めることができます。
 
@@ -77,7 +77,7 @@ Azure portal で次の手順に従います。
     }
 ```
 
-### <a name="msgraph-rest-api"></a>Microsoft Graph API を使用する
+### <a name="using-the-microsoft-graph-api"></a><a name="msgraph-rest-api"></a>Microsoft Graph API を使用する
 
 プログラムを使用してすべてのアプリを更新するには、Microsoft Graph API を使用してすべてのアプリを更新し、サービス利用規約とプライバシーに関する声明のドキュメントへのリンクを含めることができます。
 

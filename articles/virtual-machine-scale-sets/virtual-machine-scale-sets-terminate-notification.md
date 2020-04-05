@@ -1,31 +1,41 @@
 ---
 title: Azure 仮想マシン スケール セット インスタンスの通知を終了する
 description: Azure 仮想マシン スケール セット インスタンスの終了通知を有効にする方法について説明します
-author: shandilvarun
+author: avirishuv
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.author: vashan
-ms.openlocfilehash: a1b1e07fa0622ae25d8086ec65827816ec52a5ce
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.date: 02/26/2020
+ms.author: avverma
+ms.openlocfilehash: 6023e9bf7539b79446d0135ba731b61be166dd6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271752"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226939"
 ---
-# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Azure 仮想マシン スケール セット インスタンスの通知を終了する (プレビュー)
-スケール セット インスタンスでは、インスタンスの終了通知を受信し、定義済みの遅延タイムアウトを終了操作に設定することをオプトインできます。 終了通知は、Azure Metadata Service の [Scheduled Events](../virtual-machines/windows/scheduled-events.md) を介して送信されます。これにより、再起動や再デプロイなどの影響がある操作の通知と遅延が行われます。 このプレビュー ソリューションでは、別のイベント (Terminate) が Scheduled Events の一覧に追加されます。terminate イベントの関連する遅延は、スケール セット モデルの構成のユーザーによって指定された遅延の制限によって変わります。
+# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure 仮想マシン スケール セット インスタンスの通知を終了する
+スケール セット インスタンスでは、インスタンスの終了通知を受信し、定義済みの遅延タイムアウトを終了操作に設定することをオプトインできます。 終了通知は、Azure Metadata Service の [Scheduled Events](../virtual-machines/windows/scheduled-events.md) を介して送信されます。これにより、再起動や再デプロイなどの影響がある操作の通知と遅延が行われます。 このソリューションでは、別のイベント (Terminate) が Scheduled Events の一覧に追加されます。terminate イベントの関連する遅延は、スケール セット モデルの構成のユーザーによって指定された遅延の制限によって変わります。
 
 この機能に登録されると、スケール セット インスタンスは、インスタンスの削除前に指定されたタイムアウトが期限切れになるまで待つ必要がなくなります。 終了通知を受け取った後、インスタンスでは、終了のタイムアウトが期限切れになる前にいつでも削除することを選択できます。
 
-> [!IMPORTANT]
-> スケール セット インスタンスの終了通知は、現在パブリック プレビュー段階です。 次に示すパブリック プレビュー機能を使用するために必要なオプトイン手順はありません。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 ## <a name="enable-terminate-notifications"></a>終了通知を有効にする
 スケール セットのインスタンスで終了通知を有効にするには、次の例で説明するように複数の方法があります。
+
+### <a name="azure-portal"></a>Azure portal
+
+次の手順では、新しいスケール セットを作成するときに終了通知を有効にします。 
+
+1. **[仮想マシン スケール セット]** に移動します。
+1. **[+ 追加]** を選択して、新しいスケール セットを作成します。
+1. **[管理]** タブに移動します。 
+1. **[インスタンスの終了]** セクションを見つけます。
+1. **[インスタンスの終了通知]** で、 **[オン]** を選択します。
+1. **[終了の遅延 (分)]** で、必要な既定のタイムアウトを設定します。
+1. 新しいスケール セットの作成が完了したら、 **[確認と作成]** ボタンを選択します。 
+
+> [!NOTE]
+> Azure portal で既存のスケール セットに終了通知を設定することはできません
 
 ### <a name="rest-api"></a>REST API
 
@@ -59,22 +69,19 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 >スケール セット インスタンスの終了通知は、API バージョン 2019-03-01 以降でのみ有効にすることができます
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-新しいスケール セットを作成するときに、[New-AzVmss](/powershell/module/az.compute/new-azvmss) コマンドレットを使用して、スケール セットの終了通知を有効にすることができます。
+新しいスケール セットを作成するときに、[New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) コマンドレットを使用して、スケール セットの終了通知を有効にすることができます。
+
+このサンプル スクリプトでは、構成ファイルを使用したスケール セットと関連リソースの作成について説明します。[完全な仮想マシン スケール セットを作成します](./scripts/powershell-sample-create-complete-scale-set.md)。 スケール セットを作成するための構成オブジェクトに *TerminateScheduledEvents* および *TerminateScheduledEventNotBeforeTimeoutInMinutes* パラメーターを追加することにより、終了通知の構成を行うことができます。 次の例では、10 分の遅延タイムアウトでこの機能を有効にします。
 
 ```azurepowershell-interactive
-New-AzVmss `
-  -ResourceGroupName "myResourceGroup" `
-  -Location "EastUS" `
-  -VMScaleSetName "myScaleSet" `
-  -VirtualNetworkName "myVnet" `
-  -SubnetName "mySubnet" `
-  -PublicIpAddressName "myPublicIPAddress" `
-  -LoadBalancerName "myLoadBalancer" `
+New-AzVmssConfig `
+  -Location "VMSSLocation" `
+  -SkuCapacity 2 `
+  -SkuName "Standard_DS2" `
   -UpgradePolicyMode "Automatic" `
-  -TerminateScheduledEvents
+  -TerminateScheduledEvents $true `
+  -TerminateScheduledEventNotBeforeTimeoutInMinutes 10
 ```
-
-上の例では、5 分の既定のタイムアウトで終了通知を有効にして新しいスケール セットを作成します。 新しいスケール セットを作成する場合、パラメーター *TerminateScheduledEvents* に値は必要ありません。 タイムアウト値を変更するには、*TerminateScheduledEventNotBeforeTimeoutInMinutes* パラメーターを使用して必要なタイムアウトを指定します。
 
 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) コマンドレットを使用して、既存のスケール セットに対する終了通知を有効にします。
 
@@ -89,6 +96,33 @@ Update-AzVmss `
 
 スケール セット モデルでスケジュール化されたイベントを有効にし、タイムアウトを設定した後、変更内容を反映するように個々のインスタンスを[最新のモデル](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)に更新します。
 
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+次の例は、新しいスケール セットの作成中に終了通知を有効にするためのものです。
+
+```azurecli-interactive
+az group create --name <myResourceGroup> --location <VMSSLocation>
+az vmss create \
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --image UbuntuLTS \
+  --admin-username <azureuser> \
+  --generate-ssh-keys \
+  --terminate-notification-time 10
+```
+
+上の例では、最初にリソース グループを作成し、次に 10 分の既定のタイムアウトで終了通知を有効にして新しいスケール セットを作成します。
+
+次の例は、既存のスケール セットで終了通知を有効にするためのものです。
+
+```azurecli-interactive
+az vmss update \  
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --enable-terminate-notification true \
+  --terminate-notification-time 10
+```
+
 ## <a name="get-terminate-notifications"></a>終了通知を取得する
 
 終了通知は、Azure Metadata Service である [Scheduled Events](../virtual-machines/windows/scheduled-events.md) を介して配信されます。 Azure Metadata Service では、VM 内部からアクセスできる REST エンドポイントを使用した Virtual Machine の実行に関する情報が公開されます。 情報は、VM の外部に公開されないように、ルーティング不可能な IP 経由で提供されます。
@@ -100,7 +134,7 @@ Scheduled Events は、ユーザーが初めてイベントを要求したとき
 ### <a name="endpoint-discovery"></a>エンドポイントの検出
 VNET が有効な VM の場合は、静的でルーティング不可能な IP アドレス 169.254.169.254 から Metadata Service を利用できます。
 
-このプレビューの Scheduled Events の最新バージョンの完全なエンドポイントは次のとおりです。
+スケジュールされたイベントの最新バージョンのフル エンドポイントは次のとおりです。
 > 'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
 
 ### <a name="query-response"></a>クエリ応答
@@ -122,7 +156,7 @@ VNET が有効な VM の場合は、静的でルーティング不可能な IP �
     ]
 }
 ```
-DocumentIncarnation は ETag であり、前回のクエリ以降にイベントのペイロードが変化したかどうかを簡単に検査する方法を提供します。
+*DocumentIncarnation* は ETag であり、前回のクエリ以降にイベントのペイロードが変化したかどうかを簡単に検査する方法を提供します。
 
 上の各フィールドの詳細については、[Windows](../virtual-machines/windows/scheduled-events.md#event-properties) および [Linux](../virtual-machines/linux/scheduled-events.md#event-properties) の Scheduled Events ドキュメントを参照してください。
 
@@ -147,14 +181,14 @@ POST 要求の本文には、次のような json が含まれます。 要求�
 ## <a name="tips-and-best-practices"></a>ヒントとベスト プラクティス
 -   "削除" 操作に対して通知を終了する - スケール セットで *scheduledEventsProfile* が有効な場合は、すべての削除操作 (手動の削除または自動スケーリングによって開始されたスケールイン) で Terminate イベントが生成されます。 再起動、再イメージ化、再デプロイ、終了/割り当て解除などの他の操作では、Terminate イベントは生成されません。 優先順位の低い VM に対して終了通知を有効にすることはできません。
 -   タイムアウトを待機する必要なし - イベントが受信された後、イベントの *NotBefore* 時間が期限切れになる前であればいつでも終了操作を開始できます。
--   タイムアウト時の削除は必須 - プレビューでは、イベントの生成後にタイムアウト値を延長する機能は提供されません。 タイムアウトが期限切れになると、保留中の terminate イベントが処理され、VM が削除されます。
+-   タイムアウト時の削除は必須 - イベントの生成後にタイムアウト値を延長する機能は提供されません。 タイムアウトが期限切れになると、保留中の terminate イベントが処理され、VM が削除されます。
 -   変更可能なタイムアウト値 - スケール セット モデルの *notBeforeTimeout* プロパティを変更し、VM インスタンスを最新のモデルに更新することで、インスタンスが削除される前にいつでもタイムアウト値を変更できます。
 -   保留中のすべての削除を承認する - 承認されていない VM_1 に保留中の削除があり、VM_2 で別の terminate イベントを承認した場合は、VM_1 の terminate イベントが承認されるか、タイムアウトが経過するまで、VM_2 は削除されません。 VM_1 の terminate イベントを承認すると、VM_1 と VM_2 の両方が削除されます。
 -   すべての同時削除を承認する - 上記の例を拡張します。VM_1 と VM_2 の *NotBefore* 時間が同じである場合、両方の terminate イベントを承認するか、タイムアウトの期限が切れる前にどちらの VM も削除する必要があります。
 
-## <a name="troubleshoot"></a>[トラブルシューティング]
+## <a name="troubleshoot"></a>トラブルシューティング
 ### <a name="failure-to-enable-scheduledeventsprofile"></a>ScheduledEventsProfile を有効にできない
-"タイプ 'VirtualMachineProfile' のオブジェクトにメンバー 'scheduledEventsProfile' が見つかりませんでした" というエラー メッセージの "BadRequest" エラーが発生する場合は、スケール セットの操作に使用されている API バージョンを確認してください。 このプレビューでは、コンピューティング API バージョン **2019-03-01** 以降が必要です。
+"タイプ 'VirtualMachineProfile' のオブジェクトにメンバー 'scheduledEventsProfile' が見つかりませんでした" というエラー メッセージの "BadRequest" エラーが発生する場合は、スケール セットの操作に使用されている API バージョンを確認してください。 コンピューティング API バージョン **2019-03-01** 以降が必要です。 
 
 ### <a name="failure-to-get-terminate-events"></a>Terminate イベントを取得できない
 Scheduled Events を介して **Terminate** イベントを取得していない場合は、イベントの取得に使用された API バージョンを確認します。 Terminate イベントには Metadata Service API バージョン **2019-01-01** 以降が必要です。

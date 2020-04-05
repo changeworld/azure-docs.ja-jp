@@ -14,11 +14,11 @@ ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 244ad7d079fd7baf25f8079557576c42d25ca785
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102066"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224619"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Azure portal を使用して Azure 内の SQL Server VM を管理する
 
@@ -72,9 +72,9 @@ ms.locfileid: "70102066"
 1. このポータルに、サブスクリプション内のすべての仮想マシンが一覧表示されます。 管理したいものを選択して、**Virtual Machines** リソースを開きます。 SQL Server VM が表示されていない場合は、検索ボックスを使用します。 
 1. **[設定]** ウィンドウで **[SQL Server の構成]** を選択して、対象の SQL Server VM を管理します。 
 
-   ![SQL Server 構成](media/virtual-machines-windows-sql-manage-portal/sql-vm-configuration.png)
+   ![SQL Server の構成](media/virtual-machines-windows-sql-manage-portal/sql-vm-configuration.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次の記事を参照してください。 
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Kantega SSO for Bamboo の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Kantega SSO for Bamboo の統合 | Microsoft Docs'
 description: Azure Active Directory と Kantega SSO for Bamboo の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 8c951d7f5f1629447b1b5c1fc6e8a1c202246d74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67099100"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>チュートリアル:Azure Active Directory と Kantega SSO for Bamboo の統合
+# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>チュートリアル: Azure Active Directory と Kantega SSO for Bamboo の統合
 
 このチュートリアルでは、Kantega SSO for Bamboo と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Kantega SSO for Bamboo と Azure AD を統合すると、次の利点が得られます。
@@ -216,7 +216,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成す�
 
     b. **[Known domains]\(既知のドメイン\)** ボックスにドメイン名を入力します。
 
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -295,7 +295,7 @@ Azure AD ユーザーが Bamboo にサインインできるようにするには
 
     e. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

@@ -9,13 +9,13 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.openlocfilehash: 5a5305ffd388d2573d250d93131c1fed236008b7
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76771629"
 ---
-# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API:ダウンロードおよびリリース ノート
+# <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: ダウンロードおよびリリース ノート
 
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
@@ -27,8 +27,8 @@ ms.locfileid: "76771629"
 |   |   |
 |---|---|
 |**SDK のダウンロード**|[NuGet](https://aka.ms/acdbtablenuget)|
-|**クイックスタート**|[Azure Cosmos DB:.NET と Table API を使用したアプリのビルド](create-table-dotnet.md)|
-|**チュートリアル**|[Azure Cosmos DB:.NET での Table API を使用した開発](tutorial-develop-table-dotnet.md)|
+|**クイックスタート**|[Azure Cosmos DB: .NET と Table API を使用したアプリのビルド](create-table-dotnet.md)|
+|**チュートリアル**|[Azure Cosmos DB: .NET での Table API を使用した開発](tutorial-develop-table-dotnet.md)|
 |**現在サポートされているフレームワーク**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]
@@ -39,40 +39,40 @@ ms.locfileid: "76771629"
 
 ## <a name="release-notes"></a>リリース ノート
 
-### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
+### <a name="212"></a><a name="2.1.2"/>2.1.2
 
 * バグの修正
 
-### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+### <a name="210"></a><a name="2.1.0"/>2.1.0
 
 * バグの修正
 
-### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+### <a name="200"></a><a name="2.0.0"/>2.0.0
 
 * マルチリージョンの書き込みがサポートされるようになりました。
 * Microsoft.Azure.DocumentDB、Microsoft.OData.Core、Microsoft.OData.Edm、Microsoft.Spatial に関する NuGet パッケージの依存関係が修正されました。
 
-### <a name="a-name113113"></a><a name="1.1.3"/>1.1.3
+### <a name="113"></a><a name="1.1.3"/>1.1.3
 
 * Microsoft.Azure.Storage.Common と Microsoft.Azure.DocumentDB の NuGet パッケージの依存関係が修正されました。
 * JsonConvert.DefaultSettings が構成されたときに、テーブルのシリアル化のバグ修正があります。
 
-### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+### <a name="111"></a><a name="1.1.1"/>1.1.1
 
 * 直接モードで無効な ETAG の検証が追加されました。
 * ゲートウェイ モードで LINQ クエリ バグが修正されました。
 * 同期 API が SynchronizationContext によってスレッド プールで実行されるようになりました。
 
-### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+### <a name="110"></a><a name="1.1.0"/>1.1.0
 
 * TableQueryMaxItemCount、TableQueryEnableScan、TableQueryMaxDegreeOfParallelism、および TableQueryContinuationTokenLimitInKb を TableRequestOptions に追加
 * バグの修正
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"/>1.0.0
 
 * 一般公開リリース
 
-### <a name="a-name010-preview090-preview"></a><a name="0.1.0-preview"/>0.9.0 - プレビュー
+### <a name="090-preview"></a><a name="0.1.0-preview"/>0.9.0 - プレビュー
 
 * 初期プレビュー リリース
 

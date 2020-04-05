@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082189"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228799"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>VMware VM および物理サーバーのセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -66,7 +66,7 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 
 ## <a name="network-configuration---hostguest-vm"></a>ネットワークの構成 - ホスト/ゲスト VM
 
-**構成** | **サポートされています**  
+**Configuration** | **サポートされています**  
 --- | --- 
 ホスト - NIC チーミング | はい 
 ホスト - VLAN | はい 
@@ -79,7 +79,7 @@ Guest VM - Windows/Linux - 静的 IP アドレス | はい
 ゲスト VM - マルチ NIC | はい
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 
 ### <a name="host-storage"></a>ホスト ストレージ
 
@@ -92,7 +92,7 @@ SAN (ISCSI) | はい
 
 ### <a name="guest-or-physical-server-storage"></a>ゲストまたは物理サーバーのストレージ
 
-**構成** | **サポートされています** 
+**Configuration** | **サポートされています** 
 --- | --- 
 VMDK | はい 
 VHD/VHDX | 該当なし 
@@ -105,14 +105,14 @@ SMB 3.0 | いいえ
 RDM | はい 
 1 TB より大きいディスク | はい 
 ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | はい 
-記憶域 | いいえ 
+記憶域スペース | いいえ 
 ディスクのホット アド/削除 | はい 
 ディスクの除外 | はい 
 マルチパス (MPIO) | 該当なし 
 
 ## <a name="vaults"></a>資格情報コンテナー
 
-**アクション** | **サポートされています** 
+**操作** | **サポートされています** 
 --- | --- 
 リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 | いいえ 
 リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | いいえ 
@@ -121,13 +121,13 @@ RDM | はい
 
 モビリティ サービスは、オンプレミスの VMware サーバー/物理サーバーとセカンダリ サイトの間のレプリケーションを調整します。 レプリケーションを設定するときは、モビリティ サービスとその他のコンポーネントが最新バージョンになっていることを確認する必要があります。
 
-| **Update** | **詳細** |
+| **アップデート** | **詳細** |
 | --- | --- |
 |Scout 更新プログラム | Scout 更新プログラムは累積的です。 <br/><br/> 最新の Scout 更新プログラムの[詳細とダウンロード](vmware-physical-secondary-disaster-recovery.md#updates) |
-|コンポーネント更新プログラム | Scout 更新プログラムには、RX サーバー、構成サーバー、プロセス サーバーとマスター ターゲット サーバー、vContinuum サーバー、および保護するソース サーバーを含む、すべてのコンポーネントの更新プログラムが含まれます。<br/><br/> [詳細情報](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)。|
+|コンポーネント更新プログラム | Scout 更新プログラムには、RX サーバー、構成サーバー、プロセス サーバーとマスター ターゲット サーバー、vContinuum サーバー、および保護するソース サーバーを含む、すべてのコンポーネントの更新プログラムが含まれます。<br/><br/> [詳細については、こちらを参照してください](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)。|
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [InMage Scout ユーザー ガイド](https://aka.ms/asr-scout-user-guide) をダウンロードする
 

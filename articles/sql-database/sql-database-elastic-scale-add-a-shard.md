@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 4043fd374a314735173a1f07f46c8394592b81e2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823713"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Elastic Database ツールを使用してシャードを追加する
@@ -78,6 +78,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**重要**:この手法は、更新されるマッピング用の範囲が空であることが確実である場合のみ使用します。  上記の方法では、移動される範囲のデータはチェックされないので、コードにチェックを含めることをお勧めします。  移動される範囲内に行が存在する場合、実際のデータ分布は更新されたシャード マップと一致しなくなります。 このような場合は、 [分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md) を代わりに使用して操作を行ってください。  
+**重要**: この手法は、更新されるマッピング用の範囲が空であることが確実である場合のみ使用します。  上記の方法では、移動される範囲のデータはチェックされないので、コードにチェックを含めることをお勧めします。  移動される範囲内に行が存在する場合、実際のデータ分布は更新されたシャード マップと一致しなくなります。 このような場合は、 [分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md) を代わりに使用して操作を行ってください。  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

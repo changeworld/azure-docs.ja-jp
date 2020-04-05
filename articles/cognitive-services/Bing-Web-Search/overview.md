@@ -12,10 +12,10 @@ ms.date: 12/05/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: a7b2627b5837a124ebbcd76783bb49679cbe6313
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77650284"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Bing Web Search API とは

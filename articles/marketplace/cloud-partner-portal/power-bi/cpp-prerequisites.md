@@ -1,23 +1,22 @@
 ---
 title: Power BI アプリ オファーの前提条件 | Azure Marketplace
 description: Power BI アプリを AppSource に公開するための前提条件を示します。
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 486a1b9ca213828b5a26571de7bc34d06f56d434
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 5c95c50f5597eee51c66cc68273478b1b9f0e2df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826019"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286338"
 ---
 # <a name="power-bi-app-offer-prerequisites"></a>Power BI アプリ オファーの前提条件
 
-この記事では、AppSource マーケットプレースに Power BI アプリのオファーを公開する前に満たす必要がある技術要件とビジネス要件を示します。  まだお読みになっていない場合は、「[Office 365、Dynamics 365、Power BI、Power Apps 用のオファー発行ガイド](../../appsource-offer-publishing-guide.md)」をご確認ください。
+この記事では、AppSource マーケットプレースに Power BI アプリのオファーを公開する前に満たす必要がある技術要件とビジネス要件を示します。  まだお読みになっていない場合は、「[Office 365、Dynamics 365、PowerApps、Power BI 用のオファー発行ガイド](../../appsource-offer-publishing-guide.md)」をご確認ください。
 
 
 ## <a name="technical-requirements"></a>技術的な要件
@@ -28,7 +27,7 @@ Power BI でサービス アプリケーションを作成し、テストした�
 
 ## <a name="business-requirements"></a>ビジネス要件
 
-ビジネス要件には、手続き、契約、法律に関する義務が含まれます。  前提条件は、以下のとおりです。
+ビジネス要件には、手続き、契約、法律に関する義務が含まれます。  次の手順が必要です。
 
 - 登録済みのクラウド マーケットプレース パブリッシャーである必要があります。 登録していない場合は、「[クラウド マーケットプレース パブリッシャーになる](https://docs.microsoft.com/azure/marketplace/become-publisher)」の手順に従ってください。
 
@@ -40,6 +39,6 @@ Power BI でサービス アプリケーションを作成し、テストした�
 - [Microsoft プライバシーに関する声明](https://privacy.microsoft.com/privacystatement)に従います。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 すべての要件を満たした後、Cloud パートナー ポータルで [Power BI アプリのオファーを作成](./cpp-create-offer.md)できます。

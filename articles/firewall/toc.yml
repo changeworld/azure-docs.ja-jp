@@ -43,6 +43,8 @@
       href: compliance-certifications.md
     - name: 中央管理
       href: central-management.md
+    - name: リモート作業のサポート
+      href: remote-work-support.md
 - name: 操作方法ガイド
   items:
     - name: Azure PowerShell を使用したデプロイ

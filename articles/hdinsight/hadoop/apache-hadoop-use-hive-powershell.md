@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: deaa934b257fab74830d75e308a283e7608dc590
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552595"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>PowerShell を使用して Apache Hive クエリを実行する
@@ -36,13 +36,13 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 
 リモート HDInsight クラスターで Hive クエリを実行するときに次のコマンドレットを使用します。
 
-* `Connect-AzAccount`:Azure サブスクリプションに対して Azure PowerShell を認証します。
-* `New-AzHDInsightHiveJobDefinition`:指定された HiveQL ステートメントを使用して、"*ジョブ定義*" を作成します。
-* `Start-AzHDInsightJob`:ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
-* `Wait-AzHDInsightJob`:ジョブ オブジェクトを使用して、ジョブの状態を確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
-* `Get-AzHDInsightJobOutput`:ジョブの出力を取得するために使用します。
-* `Invoke-AzHDInsightHiveJob`:HiveQL ステートメントを実行する場合に使用します。 このコマンドレットはクエリの完了をブロックし、その結果を返します。
-* `Use-AzHDInsightCluster`:`Invoke-AzHDInsightHiveJob` コマンドに現在のクラスターを使用するように設定します。
+* `Connect-AzAccount`: Azure サブスクリプションに対して Azure PowerShell を認証します。
+* `New-AzHDInsightHiveJobDefinition`: 指定された HiveQL ステートメントを使用して、"*ジョブ定義*" を作成します。
+* `Start-AzHDInsightJob`: ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
+* `Wait-AzHDInsightJob`: ジョブ オブジェクトを使用して、ジョブの状態を確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
+* `Get-AzHDInsightJobOutput`: ジョブの出力を取得する場合に使用します。
+* `Invoke-AzHDInsightHiveJob`: HiveQL ステートメントを実行する場合に使用します。 このコマンドレットはクエリの完了をブロックし、その結果を返します。
+* `Use-AzHDInsightCluster`: `Invoke-AzHDInsightHiveJob` コマンドに現在のクラスターを使用するように設定します。
 
 これらのコマンドレットを使用して、HDInsight クラスターでジョブを実行するための手順を以下に示します。
 

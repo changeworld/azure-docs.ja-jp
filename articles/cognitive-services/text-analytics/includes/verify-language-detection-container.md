@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: dapine
 ms.openlocfilehash: f4e0770bc052044a408f2c4088f2bd5ead225aa3
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70968588"
 ---
 ### <a name="verify-the-language-detection-container-instance"></a>言語検出コンテナー インスタンスを確認する

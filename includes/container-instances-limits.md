@@ -4,14 +4,14 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 02/13/2019
 ms.author: danlep
-ms.openlocfilehash: 055fbc652d0d72925cccfae40efff8b8eef2a8c2
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 33a82a55b03cde79d2d80826041ee6d43565476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904440"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334812"
 ---
-| リソース | 既定の制限 |
+| リソース | 制限 |
 | --- | :--- |
 | 1 リージョン、1 [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの Standard SKU コンテナー グループ | 100<sup>1</sup> |
 | 1 リージョン、1 [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの Dedicated SKU コンテナー グループ | 0<sup>1</sup> |

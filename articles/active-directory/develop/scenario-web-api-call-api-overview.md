@@ -15,10 +15,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 467ff2f789cc83bc5651d831838da0b5c922c839
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701741"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>シナリオ:Web API を呼び出す Web API

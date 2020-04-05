@@ -17,10 +17,10 @@ ms.date: 06/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b27615b0c76b5c23bbc79788431b0e909b8bf22a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67092762"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Replicon の統合
@@ -29,7 +29,7 @@ ms.locfileid: "67092762"
 
 * Replicon にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Replicon に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -107,7 +107,7 @@ Replicon で Azure AD SSO を構成してテストするには、次の構成要
 
 2. SAML 2.0 を構成するには、次の手順に従います。
 
-    ![Enable SAML authentication](./media/replicon-tutorial/ic777805.png "Enable SAML authentication")
+    ![SAML 認証の有効化](./media/replicon-tutorial/ic777805.png "SAML 認証の有効化")
 
     a. **[EnableSAML Authentication2]** ダイアログを表示するには、URL の企業キーの後に次のパスを追加します。`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
@@ -161,15 +161,15 @@ Replicon で Azure AD SSO を構成してテストするには、次の構成要
 
 2. **[Administration] \> [Users]** に移動します。
 
-    ![ユーザー](./media/replicon-tutorial/ic777806.png "Users")
+    ![ユーザー](./media/replicon-tutorial/ic777806.png "ユーザー")
 
 3. **[+Add User]** をクリックします。
 
-    ![ユーザーの追加](./media/replicon-tutorial/ic777807.png "Add User")
+    ![ユーザーの追加](./media/replicon-tutorial/ic777807.png "ユーザーの追加")
 
 4. **[User Profile]** セクションで、次の手順に従います。
 
-    ![User profile](./media/replicon-tutorial/ic777808.png "User profile")
+    ![ユーザー プロファイル](./media/replicon-tutorial/ic777808.png "User Profile")
 
     a. **[Login Name]\(ログイン名\)** ボックスに、プロビジョニングする Azure AD ユーザーの Azure AD メール アドレスを入力します (例: `B.Simon@contoso.com`)。
 

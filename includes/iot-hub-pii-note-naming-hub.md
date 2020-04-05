@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 3c5bb3548c4b8d8aef2935a272aac18c3d18ee25
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "66733265"
 ---
 > [!IMPORTANT]

@@ -7,10 +7,10 @@ ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.openlocfilehash: e0c1a93ef663762bec199abc5aa7eabbc821168d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77654955"
 ---
 # <a name="availability-alerts"></a>可用性のアラート

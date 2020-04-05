@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
 ms.openlocfilehash: 7184a6b85e93c41dfe914813301a4b1a0c88f2cd
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887684"
 ---
 # <a name="create-containers-with-large-partition-key"></a>大きいパーティション キーを持つコンテナーを作成する
@@ -71,8 +71,8 @@ database,
 |.NET     |    1.18     |
 |Java Sync     |   2.4.0      |
 |Java Async   |  2.5.0        |
-| REST API | `x-ms-version` 要求ヘッダーを使用する `2017-05-03` より後のバージョン。|
-| Resource Manager テンプレート | バージョン 2 (`partitionKey` オブジェクト内の `"version":2` プロパティを使用)。 |
+| REST API | `2017-05-03` 要求ヘッダーを使用する `x-ms-version` より後のバージョン。|
+| Resource Manager テンプレート | バージョン 2 (`"version":2` オブジェクト内の `partitionKey` プロパティを使用)。 |
 
 現在、Power BI と Azure Logic Apps 内に大きなパーティション キーがあるコンテナーは使用できません。 これらのアプリケーションから、大きなパーティション キーなしでコンテナーを使用できます。
 

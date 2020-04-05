@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
 ms.openlocfilehash: d6110065e28b8f179cd1d113107fb3508e1c3e44
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892544"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して Microsoft Access データ ストアをコピー元またはコピー先としてデータをコピーする
@@ -53,11 +53,11 @@ Microsoft Access のリンクされたサービスでは、次のプロパティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは、次のように設定する必要があります:**MicrosoftAccess** | はい |
+| type | type プロパティは、次のように設定する必要があります:**MicrosoftAccess** | はい |
 | connectionString | 資格情報部分を除外した ODBC 接続文字列。 接続文字列を指定するか、Integration Runtime マシンに設定したシステム DSN (データ ソース名) を使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。<br> パスワードを Azure Key Vault に格納して、接続文字列から  `password`  構成をプルすることもできます。 詳細については、「 [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md) 」を参照してください。| はい |
 | authenticationType | Microsoft Access データ ストアへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic** と **Anonymous**。 | はい |
 | userName | 基本認証を使用している場合は、ユーザー名を指定します。 | いいえ |
-| パスワード | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
+| password | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
 | 資格情報 (credential) | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 このフィールドを SecureString とマークします。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
@@ -93,7 +93,7 @@ Microsoft Access からデータをコピーする場合、次のプロパティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、次のように設定する必要があります:**MicrosoftAccessTable** | はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**MicrosoftAccessTable** | はい |
 | tableName | Microsoft Access 内のテーブルの名前。 | ソースの場合はいいえ (アクティビティ ソースの "query" が指定されている場合)、<br/>シンクの場合ははい |
 
 **例**
@@ -124,7 +124,7 @@ Microsoft Access 互換データ ストアからデータをコピーする場�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**MicrosoftAccessSource** | はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**MicrosoftAccessSource** | はい |
 | query | カスタム クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

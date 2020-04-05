@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
 ms.openlocfilehash: a9426c20ae23fd3dad4cdba25590ff2eac271896
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311421"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237255"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Azure DevTest Labs での所有者とユーザーの追加
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -31,28 +31,28 @@ Azure DevTest Labs へのアクセスは、 [Azure のロール ベースのア�
 ## <a name="actions-that-can-be-performed-in-each-role"></a>各ロールで実行できるアクション
 次の 3 つの主なロールをユーザーを割り当てることができます。
 
-* Owner
+* 所有者
 * DevTest Labs User
-* の共同作成者
+* Contributor
 
 次の表は、これらの各ロールのユーザーが実行できるアクションを示しています。
 
-| **このロールのユーザーが実行できるアクション** | **DevTest Labs ユーザー** | **所有者** | **共同作成者** |
+| **このロールのユーザーが実行できるアクション** | **DevTest Labs User** | **[所有者]** | **Contributor** |
 | --- | --- | --- | --- |
 | **ラボのタスク** | | | |
 | ラボへのユーザーの追加 |いいえ |はい |いいえ |
-| コストの設定の更新 |いいえ |可能 |はい |
+| コストの設定の更新 |いいえ |はい |はい |
 | **VM ベースのタスク** | | | |
-| カスタム イメージの追加と削除 |いいえ |可能 |はい |
+| カスタム イメージの追加と削除 |いいえ |はい |はい |
 | 数式の追加、更新、および削除 |はい |はい |はい |
-| Azure Marketplace のイメージのホワイトリスト |いいえ |可能 |はい |
+| Azure Marketplace のイメージのホワイトリスト |いいえ |はい |はい |
 | **VM タスク** | | | |
 | VM の作成 |はい |はい |はい |
 | VM の開始、停止、および削除 |ユーザーによって作成された VM のみ |はい |はい |
-| VM のポリシーの更新 |いいえ |可能 |はい |
+| VM のポリシーの更新 |いいえ |はい |はい |
 | データ ディスクの VM への追加と VM からの削除 |ユーザーによって作成された VM のみ |はい |はい |
 | **アーティファクトのタスク** | | | |
-| アーティファクトのリポジトリの追加と削除 |いいえ |可能 |はい |
+| アーティファクトのリポジトリの追加と削除 |いいえ |はい |はい |
 | アーティファクトの適用 |はい |はい |はい |
 
 > [!NOTE]
@@ -64,14 +64,14 @@ Azure DevTest Labs へのアクセスは、 [Azure のロール ベースのア�
 所有者とユーザーは Azure Portal 経由で、ラボレベルで追加できます。 ユーザーには、有効な [Microsoft アカウント (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account)を持つ外部ユーザーも可能です。
 次のステップでは、Azure DevTest Labs で所有者またはユーザーをラボに追加するプロセスについて説明します。
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
 2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。
 4. ラボのブレードで、 **[構成とポリシー]** を選択します。 
 5. **[構成とポリシー]** ページで、 **[アクセス制御 (IAM)]** を左側のメニューから選択します。 
 6. ツールバーで **[ロールの割り当ての追加]** を選択し、ロールにユーザーを追加します。
 1. **[アクセス許可の追加]** ウィンドウで、次のようにします。 
-    1. ロールを選択します (例:DevTest ラボ ユーザー)。 セクション「 [各ロールで実行できるアクション](#actions-that-can-be-performed-in-each-role) 」では、所有者、DevTest ユーザーおよび共同作成者ロールのユーザーが実行できるさまざまなアクションが一覧表示されます。
+    1. ロールを選択します (例: DevTest ラボ ユーザー)。 セクション「 [各ロールで実行できるアクション](#actions-that-can-be-performed-in-each-role) 」では、所有者、DevTest ユーザーおよび共同作成者ロールのユーザーが実行できるさまざまなアクションが一覧表示されます。
     2. ロールに追加するユーザーを選択します。 
     3. **[保存]** を選択します。 
 11. **[ユーザー]** ブレードに戻ると、このユーザーが追加されています。  
@@ -119,7 +119,7 @@ Azure のアクセス許可は、Azure で親スコープから子スコープ�
 
 Azure サブスクリプションに所有者を追加するには、次の手順を実行します。
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
 2. **[すべてのサービス]** を選択し、一覧から **[サブスクリプション]** を選択します。
 3. 目的のサブスクリプションを選択します。
 4. **[アクセス]** アイコンを選択します。 

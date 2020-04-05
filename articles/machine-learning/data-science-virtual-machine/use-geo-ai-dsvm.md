@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.openlocfilehash: 2d7532c51e2963c0dc9f8d02e7a0e32864e80f92
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70278415"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Geo 人工知能データ サイエンス仮想マシンの使用
@@ -44,7 +44,7 @@ ArcGIS への R ブリッジは、[arcgisbinding](https://github.com/R-ArcGIS/r-
 3. [ピクセル レベルの土地利用区分](https://github.com/Azure/pixel_level_land_classification): 航空写真の画像を入力として受け取り、土地被覆ラベルを返す、ディープ ニューラル ネットワーク モデルの作成方法を説明したチュートリアルです。 土地被覆ラベルの例としては、"*forested*" や "*water*" があります。 このモデルでは、画像内のすべてのピクセルに対してラベルが返されます。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 データ サイエンス VM を使用したその他のサンプルは、次のリンクから参照できます。
 

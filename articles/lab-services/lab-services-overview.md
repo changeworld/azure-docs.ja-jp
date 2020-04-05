@@ -14,10 +14,10 @@ ms.topic: overview
 ms.date: 02/03/2020
 ms.author: spelluru
 ms.openlocfilehash: ef296035ee8f0c80b4ee078303639d7aedf5a91d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76986633"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Azure Lab Services の概要
@@ -104,7 +104,7 @@ Azure Lab Services では、Azure によって管理されるインフラスト�
 ## <a name="managed-lab-types-vs-devtest-labs"></a>マネージド ラボの種類と DevTest Labs
 次の表では、Azure Lab Services によってサポートされている 2 種類のラボを比較します。 
 
-| [機能] | マネージド ラボの種類 | DevTest Labs |
+| 機能 | マネージド ラボの種類 | DevTest Labs |
 | -------- | ----------------- | ---------- |
 | ラボ内の Azure インフラストラクチャの管理 |  サービスによって自動的に管理されます | ユーザーが自分で管理します  |
 | インフラストラクチャの問題に対する組み込みの回復性 | サービスによって自動的に処理されます | ユーザーが自分で管理します  |

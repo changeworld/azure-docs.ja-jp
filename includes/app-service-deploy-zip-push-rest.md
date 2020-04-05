@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 08/12/2019
 ms.author: cephalin
 ms.openlocfilehash: 92e39f128e90ba83a919388e217f0edc86f81770
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75769670"
 ---
-## <a name="rest"></a>REST API を使って ZIP ファイルを展開する 
+## <a name="deploy-zip-file-with-rest-apis"></a><a name="rest"></a>REST API を使って ZIP ファイルを展開する 
 
 [展開サービス REST API](https://github.com/projectkudu/kudu/wiki/REST-API) を使って、.zip ファイルを Azure 内のアプリに展開できます。 展開するには、POST 要求を https://<アプリ名>.scm.azurewebsites.net/api/zipdeploy に送信します。 POST 要求のメッセージの本文に .zip ファイルを含める必要があります。 アプリの展開資格情報は、HTTP 基本認証を使って要求で提供します。 詳しくは、[.zip のプッシュ展開](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)に関するページをご覧ください。 
 

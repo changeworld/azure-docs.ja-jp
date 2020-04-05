@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と LearnUpon の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と LearnUpon の統合 | Microsoft Docs'
 description: Azure Active Directory と LearnUpon の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecdcd8c6024b3cacb422b556718bbbdbb5d601c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67098237"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>チュートリアル:Azure Active Directory と LearnUpon の統合
+# <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>チュートリアル: Azure Active Directory と LearnUpon の統合
 
 このチュートリアルでは、LearnUpon と Azure Active Directory (Azure AD) を統合する方法について説明します。
 LearnUpon と Azure AD の統合には、次の利点があります。

@@ -10,13 +10,13 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
 ms.openlocfilehash: 64bc3921a606ab3211173b46b268ded53952c8bb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75434653"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>クイック スタート:C# を使用して X.509 デバイスを Device Provisioning Service に登録する
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>クイック スタート: C# を使用して X.509 デバイスを Device Provisioning Service に登録する
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
@@ -65,7 +65,7 @@ ms.locfileid: "75434653"
 
 3. 「[Managing test CA certificates for samples and tutorials](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)」(サンプルおよびチュートリアルのためのテスト用 CA 証明書の管理) の手順に従います。
 
-C SDK のツールに加えて、*Microsoft Azure IoT SDK for .NET* に含まれている[グループ証明書の検証のサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample)では、既存の X.509 中間またはルート CA 証明書で C# の所有証明を実行する方法について説明されています。
+C SDK のツールに加えて、[Microsoft Azure IoT SDK for .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample) に含まれている*グループ証明書の検証のサンプル*では、既存の X.509 中間またはルート CA 証明書で C# の所有証明を実行する方法について説明されています。
 
 ## <a name="get-the-connection-string-for-your-provisioning-service"></a>プロビジョニング サービスの接続文字列を取得する
 
@@ -95,7 +95,7 @@ C SDK のツールに加えて、*Microsoft Azure IoT SDK for .NET* に含まれ
 
    この手順では、ダウンロードとインストールが行われ、[Azure IoT Provisioning Service クライアント SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet パッケージへの参照とその依存関係が追加されます。
 
-1. 次の `using` ステートメントを、`Program.cs` の先頭にある他の `using` ステートメントの後ろに追加します。
+1. 次の `using` ステートメントを、`using` の先頭にある他の `Program.cs` ステートメントの後ろに追加します。
 
    ```csharp
    using System.Security.Cryptography.X509Certificates;
@@ -123,7 +123,7 @@ C SDK のツールに加えて、*Microsoft Azure IoT SDK for .NET* に含まれ
    > * プロビジョニング サービス管理者の接続文字列のハードコーディングは、セキュリティのベスト プラクティスに反しています。 代わりに、接続文字列は安全な方法で保持する必要があります (例: セキュリティ保護された構成ファイル内またはレジストリ内)。
    > * 必ず署名証明書の公開部分のみをアップロードしてください。 プロビジョニング サービスへの秘密キーが含まれた .pfx (PKCS12) ファイルまたは .pem ファイルは、決してアップロードしないでください。
 
-1. `Program` クラスに次のメソッドを追加します。 このコードでは、登録グループのエントリを作成してから、`ProvisioningServiceClient` 上で `CreateOrUpdateEnrollmentGroupAsync` メソッドを呼び出して、登録グループをプロビジョニング サービスに追加します。
+1. `Program` クラスに次のメソッドを追加します。 このコードでは、登録グループのエントリを作成してから、`CreateOrUpdateEnrollmentGroupAsync` 上で `ProvisioningServiceClient` メソッドを呼び出して、登録グループをプロビジョニング サービスに追加します。
 
    ```csharp
    public static async Task RunSample()

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eba44252672248b983d7f6e0c843f638e5f73447
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74007653"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>チュートリアル:Azure Active Directory ログを Azure イベント ハブにストリーム配信する
@@ -39,7 +39,7 @@ ms.locfileid: "74007653"
 
 ## <a name="stream-logs-to-an-event-hub"></a>イベント ハブにログをストリーム配信する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 
 2. **[Azure Active Directory]**  >  **[監視]**  >  **[監査ログ]** の順に選択します。 
 
@@ -88,7 +88,7 @@ ms.locfileid: "74007653"
 * **カスタム ツールを設定する**。 現在お使いの SIEM がまだ Azure Monitor 診断でサポートされていない場合は、Event Hubs API を使用してカスタム ツールを設定できます。 詳しくは、[イベント ハブからメッセージ受信を開始する](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph)方法に関するページをご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する](howto-integrate-activity-logs-with-arcsight.md)
 * [Azure Monitor を使用して Azure AD のログを Splunk と統合する](tutorial-integrate-activity-logs-with-splunk.md)

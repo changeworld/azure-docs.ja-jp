@@ -9,10 +9,10 @@ ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 317a480c13c5c6e00653fd61878a379df3f65ac4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67180911"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>ExpressRoute Global Reach とは何ですか。

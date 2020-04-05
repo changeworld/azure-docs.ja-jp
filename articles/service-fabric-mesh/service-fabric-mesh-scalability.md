@@ -6,11 +6,11 @@ ms.author: dekapur
 ms.date: 10/26/2018
 ms.topic: conceptual
 ms.openlocfilehash: 474eda904df653d514fd2ee59fa046f1f87a66aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459003"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229531"
 ---
 # <a name="scaling-service-fabric-mesh-applications"></a>Service Fabric Mesh アプリケーションの拡大縮小
 

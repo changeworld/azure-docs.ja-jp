@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: ec853657d6dd1f3b019d8a414cfa28edc1083b29
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74769916"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
@@ -43,7 +43,7 @@ Azure Active Directory 認証を構成して使用するには、次の手順に
 > [!NOTE]
 > Azure AD を作成して設定し、Azure Database for PostgreSQL で Azure AD を構成する方法については、[Azure Database for PostgreSQL 向けの Azure AD での構成とサインイン](howto-configure-sign-in-aad-authentication.md)に関するページを参照してください。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
 次の概要図は、Azure Database for PostgreSQL で Azure AD 認証を使用した場合の認証のしくみをまとめたものです。 矢印は通信経路を示します。
 
@@ -77,7 +77,7 @@ Active Directory に対して認証された後、トークンを取得します
 > [!NOTE]
 > Active Directory トークンを使用して接続する方法の詳細については、[Azure Database for PostgreSQL 向けの Azure AD での構成とサインイン](howto-configure-sign-in-aad-authentication.md)に関するページを参照してください。
 
-## <a name="additional-considerations"></a>追加の考慮事項
+## <a name="additional-considerations"></a>その他の注意点
 
 - さらに管理しやすくするには、管理者として専用の Azure AD グループをプロビジョニングすることをお勧めします。
 - Azure Database for PostgreSQL サーバー用にいつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は 1 つだけです。
@@ -88,7 +88,7 @@ Active Directory に対して認証された後、トークンを取得します
 - サーバーから Azure AD 管理者が削除されると、サーバーと Azure AD テナントの関連付けが解消されます。そのため、サーバーへのすべての Azure AD ログインが無効になります。 同じテナントから新しい Azure AD 管理者を追加すると、Azure AD ログインが再び有効になります。
 - Azure Database for PostgreSQL では、ユーザー名ではなくユーザーの一意な Azure AD ユーザー ID を使用して、アクセス トークンを Azure Database for PostgreSQL ロールに一致させます。 つまり、Azure AD で Azure AD ユーザーが削除され、同じ名前で新しいユーザーが作成されると、それは Azure Database for PostgreSQL によって別のユーザーとして見なされます。 そのため、Azure AD からユーザーを削除して同じ名前で新しいユーザーを追加すると、その新しいユーザーは既存のロールに接続できなくなります。 これを可能にするには、Azure Database for PostgreSQL Azure AD 管理者が、"azure_ad_user" ロールを取り消してそのユーザーに付与し、Azure AD ユーザー ID を更新する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure AD を作成して設定し、Azure Database for PostgreSQL で Azure AD を構成する方法については、[Azure Database for PostgreSQL 向けの Azure AD での構成とサインイン](howto-configure-sign-in-aad-authentication.md)に関するページを参照してください。
 - Azure Database for PostgreSQL のログイン、ユーザー、データベース ロールの概要については、「[Azure Database for PostgreSQL - Single Server でユーザーを作成する](howto-create-users.md)」を参照してください。

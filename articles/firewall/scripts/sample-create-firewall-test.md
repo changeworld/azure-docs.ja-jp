@@ -9,10 +9,10 @@ ms.topic: sample
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: 6cb0eafce354ba54dd161fee52efe46677ad2765
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74195887"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Azure Firewall のテスト環境を作成する
@@ -77,7 +77,7 @@ Remove-AzResourceGroup -Name AzfwSampleScriptEastUS -Force
 |[New-AzFirewallApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallapplicationrule)|新しい Azure Firewall アプリケーション ルールを作成します。|
 |[Set-AzFirewall](https://docs.microsoft.com/powershell/module/az.network/set-azfirewall)|Azure Firewall オブジェクトへの変更をコミットします。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

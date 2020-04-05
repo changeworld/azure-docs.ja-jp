@@ -11,10 +11,10 @@ ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: b0103f7b827de77c522f78000c8d28683ac85f4b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75441898"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>チュートリアル:Java アプリケーションを使用して Azure Cosmos DB に Cassandra API アカウントを作成し、キーと値のデータを格納する
@@ -41,7 +41,7 @@ ms.locfileid: "75441898"
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成 
 
-1. [Azure portal](https://portal.azure.com/) にサインインする 
+1. [Azure portal](https://portal.azure.com/) にサインインします。 
 
 2. **[リソースの作成]**  >  **[データベース]**  >  **[Azure Cosmos DB]** を選択します。 
 
@@ -53,11 +53,11 @@ ms.locfileid: "75441898"
    |API    |  Cassandra   |  API によって、作成するアカウントの種類が決まります。 <br/> **Cassandra** を選択します。この記事では、CQL (Cassandra Query Language) 構文を使用してクエリ可能なワイドカラム データベースを作成するためです。  |
    |サブスクリプション    |  該当するサブスクリプション        |  お客様がこの Azure Cosmos アカウントに使用したい Azure サブスクリプションを選択します。        |
    |リソース グループ   | 名前を入力    |  **[新規作成]** を選択し、お客様のアカウントで使用する新しいリソース グループの名前を入力します。 簡略化のため、ID と同じ名前を使用することができます。    |
-   |Location    |  ユーザーに最も近いリージョンを選択    |  お客様の Azure Cosmos アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできるよう、お客様のユーザーに最も近い場所を使用します。    |
+   |場所    |  ユーザーに最も近いリージョンを選択    |  お客様の Azure Cosmos アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできるよう、お客様のユーザーに最も近い場所を使用します。    |
 
    ![ポータルでアカウントを作成する](./media/create-cassandra-api-account-java/create-account.png)
 
-4. **作成** を選択します。 <br/>アカウントの作成には数分かかります。 リソースが作成された後、ポータルの右側に "**デプロイに成功しました**" という通知が表示されます。
+4. **［作成］** を選択します <br/>アカウントの作成には数分かかります。 リソースが作成された後、ポータルの右側に "**デプロイに成功しました**" という通知が表示されます。
 
 ## <a name="get-the-connection-details-of-your-account"></a>アカウントの接続の詳細を取得する  
 

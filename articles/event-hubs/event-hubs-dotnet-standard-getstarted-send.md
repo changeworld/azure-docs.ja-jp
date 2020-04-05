@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 1d399ffec2cd702dcfa39310803bc780b85bfde1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a8124e9860ba5703e96f96c90bc0cf37e42baf9c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187458"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398359"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>.NET Core を使用して Azure Event Hubs との間でイベントを送受信する(Microsoft.Azure.EventHubs)
 このクイックスタートでは、**Microsoft.Azure.EventHubs** .NET Core ライブラリを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。
 
 > [!WARNING]
-> このクイックスタートでは、以前の**Microsoft.Azure.EventHubs**パッケージを使用します。 最新の **Azure.Messaging.EventHubs** ライブラリを使用するクイックスタートについては、[Azure.Messaging.EventHubs ライブラリを使用したイベントの送受信](get-started-dotnet-standard-send-v2.md)に関するページを参照してください。 古いライブラリから新しいライブラリを使用するようにアプリケーションを移行するには、[Microsoft.Azure.EventHubs から Azure.Messaging.EventHubs への移行のガイド](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)を参照してください。
+> このクイックスタートでは、以前の**Microsoft.Azure.EventHubs**パッケージを使用します。 最新の **Azure.Messaging.EventHubs** ライブラリを使用するクイックスタートについては、[Azure.Messaging.EventHubs ライブラリを使用したイベントの送受信](get-started-dotnet-standard-send-v2.md)に関するページを参照してください。 古いライブラリから新しいライブラリを使用するようにアプリケーションを移行するには、[Microsoft.Azure.EventHubs から Azure.Messaging.EventHubs への移行のガイド](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 Azure Event Hubs を初めて使用する場合は、このクイックスタートを行う前に[イベント ハブの概要](event-hubs-about.md)を参照してください。 
@@ -34,7 +34,7 @@ Azure Event Hubs を初めて使用する場合は、このクイックスター
 - **Microsoft Azure サブスクリプション**。 Azure Event Hubs を含む Azure サービスを使用するには、サブスクリプションが必要です。  既存の Microsoft Azure アカウントをお持ちでない場合は、[アカウントを作成する](https://azure.microsoft.com)際に、[無料試用版](https://azure.microsoft.com/free/)にサインアップするか、MSDN サブスクライバー特典を利用できます。
 - [Microsoft Visual Studio 2019](https://www.visualstudio.com)。
 - [.NET Core Visual Studio 2015 または 2017 ツール](https://www.microsoft.com/net/core)。 
-- **Event Hubs 名前空間とイベント ハブを作成する**。 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 その後、次の記事の手順に従って、**イベント ハブ名前空間用の接続文字列**を取得します。[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 その接続文字列は、このクイックスタートの後の手順で必要になります。
+- **Event Hubs 名前空間とイベント ハブを作成する**。 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 その後、次の記事の手順に従って、**イベント ハブ名前空間用の接続文字列**を取得します。[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 この接続文字列は、このクイックスタートの後の手順で必要になります。
 
 ## <a name="send-events"></a>送信イベント 
 このセクションでは、イベント ハブにイベントを送信する .NET Core コンソール アプリケーションの作成方法を説明します。 

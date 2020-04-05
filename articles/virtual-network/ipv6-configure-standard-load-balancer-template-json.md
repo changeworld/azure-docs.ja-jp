@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.openlocfilehash: 8f2c6bc7fb7ab0939da20932fd531c158549ce7a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70012845"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>Azure 仮想ネットワーク内に IPv6 デュアル スタック アプリケーションをデプロイする - テンプレート (プレビュー)
@@ -181,6 +181,6 @@ ms.locfileid: "70012845"
 ## <a name="sample-vm-template-json"></a>VM テンプレートのサンプル JSON
 Azure Resource Manager テンプレートを使用して Azure 仮想ネットワークで IPv6 デュアル スタック アプリケーションをデプロイするには、[こちら](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-stdlb/)のサンプル テンプレートを表示してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[パブリック IP アドレス](https://azure.microsoft.com/pricing/details/ip-addresses/)、[ネットワーク帯域幅](https://azure.microsoft.com/pricing/details/bandwidth/)、または[ロード バランサー](https://azure.microsoft.com/pricing/details/load-balancer/)の価格に関する詳細を確認できます。
+[パブリック IP アドレス](https://azure.microsoft.com/pricing/details/ip-addresses/)、[ネットワーク帯域幅](https://azure.microsoft.com/pricing/details/bandwidth/)、または [Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/) の価格に関する詳細を確認してください。

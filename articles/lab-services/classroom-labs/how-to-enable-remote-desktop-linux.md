@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
 ms.openlocfilehash: cb9a3e2b9ddcd0f74bfa4978f0bc3f4eb0688257
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583747"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233127"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Azure Lab Services のラボの Linux 仮想マシンでリモート デスクトップを有効にする
 この記事では、次のタスクの手順について説明します。
@@ -40,7 +40,7 @@ ms.locfileid: "73583747"
 > 
 > VM イメージに RDP がインストールおよび構成されていない場合、最初に SSH を使用して Linux マシンに接続し、RDP と GUI のパッケージをインストールします。これで、後で RDP を使用して Linux マシンに接続できるようになります。 詳しくは、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../../virtual-machines/linux/use-remote-desktop.md)」を参照してください。 次に、学生が学生の Linux VM にリモート デスクトップ接続できるように、イメージを発行します。 
 
-## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 現時点では、次のオペレーティング システムのリモート デスクトップ接続がサポートされています。
 
 - openSUSE Leap 42.3
@@ -63,5 +63,5 @@ ms.locfileid: "73583747"
 4. 自分と生徒が後で RDP を利用して Linux コンピューターに接続できるように RDP パッケージと GUI パッケージをインストールします。 詳しくは、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../../virtual-machines/linux/use-remote-desktop.md)」を参照してください。 次に、学生が学生の Linux VM にリモート デスクトップ接続できるように、イメージを発行します。
 5. これらのパッケージをインストールすると、ツール バーの **[Connect to template]\(テンプレートに接続\)** を使用し、それから **[Connect via RDP]\(RDP 経由で接続する\)** を選択し、RDP 経由でテンプレート VM に接続できます。 RDP ファイルを保存し、それを使用して RDP 経由でテンプレート VM に接続します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 リモート デスクトップ接続機能をインストラクターが有効にした後で、学生が RDP と SSH 経由でその VM に接続することはできません。 詳細については、[クラスルーム ラボの Linux VM でリモート デスクトップを使用する方法](how-to-use-remote-desktop-linux-student.md)に関するページを参照してください。 

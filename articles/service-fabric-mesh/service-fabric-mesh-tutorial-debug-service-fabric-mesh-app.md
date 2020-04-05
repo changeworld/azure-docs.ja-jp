@@ -7,13 +7,13 @@ ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75494947"
 ---
-# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>チュートリアル:ローカル開発クラスター内で実行されている Service Fabric Mesh アプリケーションをデバッグする
+# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>チュートリアル: ローカル開発クラスター内で実行している Service Fabric Mesh アプリケーションをデバッグする
 
 このチュートリアルはシリーズの第 2 部です。ローカル開発クラスター上の Azure Service Fabric Mesh アプリをビルドしてデバッグする方法について説明します。
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672648"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>プライマリ更新トークンとは

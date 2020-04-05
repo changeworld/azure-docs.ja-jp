@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
 ms.openlocfilehash: 426430c075cfcb084cfe3238ebd83a19e909369b
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110761"
 ---
 # <a name="get-started-with-device-twins-net"></a>デバイス ツインの使用 (.NET)
@@ -72,7 +72,7 @@ ms.locfileid: "77110761"
 
    この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet パッケージへの参照とその依存関係が追加されます。
 
-1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
 
     ```csharp  
     using Microsoft.Azure.Devices;
@@ -150,7 +150,7 @@ ms.locfileid: "77110761"
 
    この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet パッケージへの参照とその依存関係が追加されます。
 
-1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
 
     ```csharp  
     using Microsoft.Azure.Devices.Client;

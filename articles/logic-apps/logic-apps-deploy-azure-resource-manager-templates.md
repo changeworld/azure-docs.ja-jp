@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 662f8c2a4184e858d33dc40effed363ef3ec17e5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 95bfa7b1918da09e4f5913eeb2b57c290b093efe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904959"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232999"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps 用の Azure Resource Manager テンプレートをデプロイする
 
@@ -22,7 +22,7 @@ ms.locfileid: "76904959"
 * [Azure PowerShell](#powershell)
 * [Azure CLI](#cli)
 * [Azure リソース マネージャー REST API](../azure-resource-manager/templates/deploy-rest.md)
-* [Azure DevOps Azure Pipelines](#azure-pipelines)
+* [Azure DevOps](#azure-pipelines)
 
 <a name="portal"></a>
 
@@ -96,6 +96,7 @@ Azure Pipelines と Azure Resource Manager テンプレートの継続的イン�
 * [サンプル:Azure Logic Apps から Azure Storage アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [サンプル:Azure Logic Apps の関数アプリ アクションを設定し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [サンプル:Azure Logic Apps から統合アカウントに接続し、Azure DevOps に Azure Pipelines を使用してデプロイする](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [サンプル:Azure Logic Apps を使用した Azure Pipelines の調整](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
 
 Azure Pipelines を使用するための一般的な大まかな手順は次のとおりです。
 

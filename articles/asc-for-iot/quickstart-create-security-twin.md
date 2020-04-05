@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
 ms.openlocfilehash: b362130c2b717f813a6332f81a3c8179bea4166a
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73904161"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>クイック スタート:azureiotsecurity モジュール ツインを作成する
@@ -58,7 +58,7 @@ _azureiotsecurity_ モジュール ツインは、次の 2 つの方法で作成
 1. デバイスをクリックし、 **[モジュール ID の追加]** をクリックします。
 1. **[モジュール ID 名]** フィールドで、「**azureiotsecurity**」と入力します。
 
-1. **[Save]** をクリックします。 
+1. **[保存]** をクリックします。 
 
 ## <a name="verify-creation-of-a-module-twin"></a>モジュール ツインの作成の確認
 
@@ -74,7 +74,7 @@ _azureiotsecurity_ モジュール ツインは、次の 2 つの方法で作成
 
 Azure Security Center for IoT モジュール ツインのプロパティに対するカスタマイズの詳細については、[エージェントの構成](how-to-agent-configuration.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事に進んで、カスタム アラートの構成方法を学習してください。
 

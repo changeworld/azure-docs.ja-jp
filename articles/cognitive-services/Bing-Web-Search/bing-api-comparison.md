@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
 ms.openlocfilehash: 82b1f13562a49284059c25bcbd39a33daf949dcc
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74775542"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Bing Search API とは
@@ -53,7 +53,7 @@ Bing Search API を使用すると、広告を除外して Web ページ、画�
 | [Bing Autosuggest](../Bing-Autosuggest/get-suggested-search-terms.md) | Bing Autosuggest API を使用すると、検索候補がリアルタイムで返されるので、アプリケーションの検索エクスペリエンスが向上します。  |
 | [Bing Statistics](bing-web-stats.md) | Bing Statistics では、アプリケーションで使用されている Bing Search API に関する分析情報が提供されます。 使用できる分析には、呼び出しのボリューム、上位のクエリ文字列、地理的な分布などが含まれます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Bing Search API の[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 * [Bing の利用と表示の要件](./use-display-requirements.md)に関するトピックでは、Bing Search API を使用して得られるコンテンツと情報の許可される使用方法が指定されています。

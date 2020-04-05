@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 29addcd62afd193af83196b2d942e9778ff3f031
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67099406"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>チュートリアル:Azure Active Directory と Jitbit Helpdesk の統合
@@ -137,15 +137,15 @@ Jitbit Helpdesk で Azure AD シングル サインオンを構成するには�
 
 1. 上部のツールバーで **[管理]** をクリックします。
 
-    ![Administration](./media/jitbit-helpdesk-tutorial/ic777681.png "Administration")
+    ![管理](./media/jitbit-helpdesk-tutorial/ic777681.png "管理")
 
 1. **[全般設定]** をクリックします。
 
-    ![[Users, companies, and permissions]\(ユーザー、企業、アクセス許可\)](./media/jitbit-helpdesk-tutorial/ic777680.png "[Users, companies, and permissions]\(ユーザー、企業、アクセス許可\)")
+    ![[Users, companies, and permissions]\(ユーザー、会社、およびアクセス許可\)](./media/jitbit-helpdesk-tutorial/ic777680.png "ユーザー、会社、およびアクセス許可")
 
 1. **[認証設定]** 構成セクションで、次の手順を実行します。
 
-    ![Authentication settings](./media/jitbit-helpdesk-tutorial/ic777683.png "Authentication settings")
+    ![[Authentication settings]\(認証設定\)](./media/jitbit-helpdesk-tutorial/ic777683.png "[認証設定]")
 
     a. **[Enable SAML 2.0 single sign on]\(SAML 2.0 シングル サインオンを有効にする\)** を選択して、**OneLogin** でシングル サインオン (SSO) を使用してサインインします。
 
@@ -216,11 +216,11 @@ Azure AD ユーザーが Jitbit Helpdesk にサインインできるようにす
 
 1. 上部のメニューで **[管理]** をクリックします。
 
-    ![Administration](./media/jitbit-helpdesk-tutorial/ic777681.png "Administration")
+    ![管理](./media/jitbit-helpdesk-tutorial/ic777681.png "管理")
 
 1. **[ユーザー、会社、およびアクセス許可]** をクリックします。
 
-    ![[Users, companies, and permissions]\(ユーザー、企業、アクセス許可\)](./media/jitbit-helpdesk-tutorial/ic777682.png "[Users, companies, and permissions]\(ユーザー、企業、アクセス許可\)")
+    ![[Users, companies, and permissions]\(ユーザー、会社、およびアクセス許可\)](./media/jitbit-helpdesk-tutorial/ic777682.png "ユーザー、会社、およびアクセス許可")
 
 1. **[ユーザーの追加]** をクリックします。
 

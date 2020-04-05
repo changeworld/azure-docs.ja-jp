@@ -17,10 +17,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: f878c6f7a59328e2f68ffbaee066bba4a5b6c898
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978137"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Azure Virtual Machines (クラシック) 上の SQL Server 向け Azure Key Vault 統合の構成
@@ -34,7 +34,7 @@ ms.locfileid: "75978137"
 [透過的なデータ暗号化 (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)、[列レベルの暗号化 (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)、[バックアップ暗号化](https://msdn.microsoft.com/library/dn449489.aspx) など、SQL Server 暗号化機能が複数存在します。 これらの形態の暗号化では、暗号化に利用する暗号鍵を管理し、保存する必要があります。 Azure Key Vault (AKV) サービスは、セキュリティを強化し、安全かつ可用性の高い場所で鍵を管理できるように設計されています。 [SQL Server コネクタ](https://www.microsoft.com/download/details.aspx?id=45344) を利用すると、SQL Server は Azure Key Vault にある鍵を利用できます。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 SQL Server をオンプレミス コンピューターで実行している場合、 [いくつかの手順を踏んでオンプレミスの SQL Server コンピューターから Azure Key Vault にアクセスできます](https://msdn.microsoft.com/library/dn198405.aspx)。 ただし、Azure VM の SQL Server の場合、 *Azure Key Vault 統合* 機能を利用し、時間を節約できます。 いくつかの Azure PowerShell コマンドレットでこの機能を有効にし、SQL VM が Key Vault にアクセスするために必要な構成を自動化できます。
 
@@ -56,9 +56,9 @@ PowerShell を使用し、Azure Key Vault 統合を構成します。 次のセ�
 | **$akvURL** |**Key Vault の URL** |"https:\//contosokeyvault.vault.azure.net/" |
 | **$spName** |**サービス プリンシパル名** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |
 | **$spSecret** |**サービス プリンシパル シークレット** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=" |
-| **$credName** |**資格情報名**:AKV 統合により SQL Server 内に資格情報が作成されます。VM に Key Vault にアクセスする許可が与えられます。 この資格情報の名前を選択します。 |"mycred1" |
-| **$vmName** |**[仮想マシン名]** : 前に作成した SQL VM の名前。 |"myvmname" |
-| **$serviceName** |**サービス名**:SQL VM に関連付けられているクラウド サービスの名前。 |"mycloudservicename" |
+| **$credName** |**資格情報名**: AKV 統合により SQL Server 内に資格情報が作成されます。VM に Key Vault にアクセスする許可が与えられます。 この資格情報の名前を選択します。 |"mycred1" |
+| **$vmName** |**仮想マシン名**: 前に作成した SQL VM の名前。 |"myvmname" |
+| **$serviceName** |**サービス名**: SQL VM に関連付けられているクラウド サービスの名前。 |"mycloudservicename" |
 
 ### <a name="enable-akv-integration-with-powershell"></a>PowerShell で AKV 統合を有効にする
 **New-AzureVMSqlServerKeyVaultCredentialConfig** コマンドレットにより、Azure Key Vault 統合機能の構成オブジェクトが作成されます。 **Set-AzureVMSqlServerExtension** により、**KeyVaultCredentialSettings** パラメーターでこの統合が構成されます。 次の手順では、これらのコマンドを使用する方法を示します。

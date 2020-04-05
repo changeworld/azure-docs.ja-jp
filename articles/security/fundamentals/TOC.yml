@@ -50,8 +50,6 @@
       href: steps-secure-identity.md
     - name: パスワードなしの選択
       href: ad-passwordless.md
-    - name: Azure AD 認証の選択
-      href: choose-ad-authn.md
 - name: ネットワークのセキュリティ
   items:
     - name: セキュリティの概要

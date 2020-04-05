@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Award Points Top Sub/Top Team の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Award Points Top Sub/Top Team の統合 | Microsoft Docs'
 description: Azure Active Directory と Award Points Top Sub/Top Team 間でのシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: b1de9e394dd1e6b4c47b8de3175dd1e8fba1d87e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161346"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>チュートリアル:Azure Active Directory と Award Points Top Sub/Top Team の統合
+# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Azure Active Directory と Award Points Top Sub/Top Team の統合
 
 このチュートリアルでは、Award Points Top Sub/Top Team と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Award Points Top Sub/Top Team と Azure AD の統合には、次の利点があります。
@@ -125,7 +125,7 @@ My Award Points Top Sub/Top Team での Azure AD シングル サインオンを
     c. ログアウト URL
 
     >[!NOTE]
-    >Azure portal の **[基本的な SAML 構成]** セクションの `<Azure AD Identifier>` の代わりに、サインオン URL を含むコピーした Azure AD 識別子を追加します。
+    >Azure portal の `<Azure AD Identifier>`[基本的な SAML 構成]**セクションの** の代わりに、サインオン URL を含むコピーした Azure AD 識別子を追加します。
 
 ### <a name="configure-my-award-points-top-subtop-team-single-sign-on"></a>My Award Points Top Sub/Top Team のシングル サインオンを構成する
 

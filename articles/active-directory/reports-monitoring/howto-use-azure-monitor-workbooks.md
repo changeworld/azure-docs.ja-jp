@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 2e94d9f56a865999f9169650f621a6af892c27ae
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014374"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory レポートに Azure Monitor ブックを使用する方法
@@ -81,7 +81,7 @@ Monitor ブックを使用するためには、次のものが必要となりま
 
 ブックにアクセスするには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. **[Azure Active Directory]**  >  **[監視]**  >  **[Workbooks] (ブック)** に移動します。 
 
@@ -101,11 +101,11 @@ Monitor ブックを使用するためには、次のものが必要となりま
 
 - 保留中のユーザー アクション
 
-- 失敗
+- 障害
 
 それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
-- 時間範囲
+- 時間の範囲
 
 - アプリケーション
 
@@ -116,7 +116,7 @@ Monitor ブックを使用するためには、次のものが必要となりま
 
 次のカテゴリ別の内訳が傾向ごとに得られます。
 
-- Location
+- 場所
 
     ![場所ごとのサインイン](./media/howto-use-azure-monitor-workbooks/45.png)
 
@@ -139,7 +139,7 @@ Monitor ブックを使用するためには、次のものが必要となりま
 
 それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
-- 時間範囲
+- 時間の範囲
 
 - アプリケーション
 
@@ -163,7 +163,7 @@ Monitor ブックを使用するためには、次のものが必要となりま
 
 このブックには、無効化されたサインインの傾向が示されます。それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
-- 時間範囲
+- 時間の範囲
 
 - アプリケーション
 
@@ -206,7 +206,7 @@ Workbooks には、IT 管理者がそのテナント内の条件付きアクセ�
 - **[デバイスのプラットフォーム]**
 - **[クライアント アプリ]**
 - **[サインイン リスク]**
-- **Location**
+- **場所**
 - **アプリケーション**
 
 ![条件付きアクセスの状態](./media/howto-use-azure-monitor-workbooks/device-platform.png)
@@ -236,7 +236,7 @@ Workbooks には、IT 管理者がそのテナント内の条件付きアクセ�
 
 それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
-- 時間範囲
+- 時間の範囲
 
 - アプリケーション
 
@@ -271,12 +271,12 @@ Workbooks には、IT 管理者がそのテナント内の条件付きアクセ�
 
 - 保留中のアクション
 
-- 失敗
+- 障害
 
 
 それぞれの傾向を、次のカテゴリでフィルター処理することができます。
 
-- 時間範囲
+- 時間の範囲
 
 - アプリケーション
 
@@ -300,6 +300,6 @@ Workbooks には、IT 管理者がそのテナント内の条件付きアクセ�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Monitor ブックを使用した対話型レポートの作成](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)

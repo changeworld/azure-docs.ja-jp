@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
 ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616476"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Azure App Service Web アプリと API を保護する

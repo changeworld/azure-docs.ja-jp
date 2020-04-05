@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: addb044d82429a4471e7ecd302351dd7b7eada84
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78262070"
 ---
 ### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>言語検出コンテナーを AKS クラスターにデプロイする
@@ -95,7 +95,7 @@ ms.locfileid: "78262070"
     ```
 
 1. ファイルを保存して、テキスト エディターを閉じます。
-1. ターゲットとして *language.yaml* ファイルを指定して Kubernetes `apply` コマンドを実行します。
+1. ターゲットとして `apply`language.yaml*ファイルを指定して Kubernetes* コマンドを実行します。
 
     ```console
     kubectl apply -f language.yaml

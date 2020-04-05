@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 1295080d0eec7a4e88029cdadd85863f5f40d034
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74689243"
 ---
 # <a name="restore-an-app-in-azure"></a>Azure でのアプリの復元
@@ -50,7 +50,7 @@ ms.locfileid: "74689243"
    
     **[既存のアプリ]** を選択して、アプリのバックアップを同じリソース グループ内の別のアプリに復元することができます。 このオプションを使用する前に、リソース グループ内に別のアプリを作成済みであり、データベース構成を、アプリのバックアップ内に定義されている構成にミラーリングしている必要があります。 コンテンツの復元先として**新しい**アプリを作成することもできます。
 
-4. Click **OK**.
+4. **[OK]** をクリックします。
 
 <a name="StorageAccount"></a>
 

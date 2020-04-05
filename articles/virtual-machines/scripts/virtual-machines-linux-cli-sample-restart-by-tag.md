@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5545fc07bd7b30225bcaf01eee8f10a141cd8d57
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 47a6db8d554cd0e6b913e887a4dd3d7bdc438ed0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040245"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066453"
 ---
 # <a name="restart-vms"></a>VM の再起動
 
@@ -33,13 +33,13 @@ ms.locfileid: "74040245"
 
 1 つ目の方法では、リソース グループ内のすべての VM を再起動します。
 
-```bash
+```azurecli
 az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id" -o tsv)
 ```
 
 2 つ目の方法では、`az resource list` を使用してタグ付きの VM を取得し、フィルターで VM リソースのみを選択して、それらの VM を再起動します。
 
-```bash
+```azurecli
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
@@ -77,7 +77,7 @@ no-wait オプションを使用するため、コマンドは各 VM がプロ�
 
 サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete -n myResourceGroup --no-wait --yes
 ```
 
@@ -94,7 +94,7 @@ az group delete -n myResourceGroup --no-wait --yes
 | [az vm restart](https://docs.microsoft.com/cli/azure/vm) | VM を再起動します。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: tomfitz
 ms.openlocfilehash: 3dbb88d53a961e277e102d7eec580309951c73b6
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75649431"
 ---
 # <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>Azure マネージド アプリケーションのマネージド リソース グループを操作する

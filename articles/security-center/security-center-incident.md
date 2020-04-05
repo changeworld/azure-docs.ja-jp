@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 1a6dbaeac5355d50edb93a7f215d7f8e88231e98
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 98fc339e473ffb2bf54e7119634e93046cca1ef3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615966"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79415660"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Azure Security Center でのセキュリティ インシデントの管理
 
@@ -23,7 +23,7 @@ ms.locfileid: "77615966"
 
 ## <a name="what-is-a-security-incident"></a>セキュリティ インシデントとは
 
-Security Center でのセキュリティ インシデントとは、 [キル チェーン](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/) のパターンに一致するリソースに関するすべての警告を集約したものです。 インシデントは [[セキュリティ アラート]](security-center-managing-and-responding-alerts.md) の一覧に表示されます。 インシデントをクリックすると関連アラートが表示されるので、発生後との詳細を入手できます。
+Security Center でのセキュリティ インシデントとは、 [キル チェーン](alerts-reference.md#intentions) のパターンに一致するリソースに関するすべての警告を集約したものです。 インシデントは [[セキュリティ アラート]](security-center-managing-and-responding-alerts.md) の一覧に表示されます。 インシデントをクリックすると関連アラートが表示されるので、発生後との詳細を入手できます。
 
 ## <a name="managing-security-incidents"></a>セキュリティ インシデントの管理
 
@@ -44,28 +44,10 @@ Security Center でのセキュリティ インシデントとは、 [キル チ
 
 1. 各アラートに対して与えられている修復手順に従います。
 
-アラートの詳細については、[セキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md)に関するページを参照してください。
 
-次のトピックでは、リソースの種類に応じてさまざまなアラートを説明します。
+## <a name="see-also"></a>参照
+このドキュメントでは、Security Center でのセキュリティ インシデント機能の使用方法について説明しました。 関連情報については、次のトピックを参照してください。
 
-* [IaaS Windows マシンのアラート](threat-protection.md#windows-machines)
-* [IaaS Linux マシンのアラート](threat-protection.md#linux-machines)
-* [Azure App Service のアラート](threat-protection.md#app-services)
-* [Azure コンテナーのアラート](threat-protection.md#azure-containers)
-* [SQL Database および SQL Data Warehouse のアラート](threat-protection.md#data-sql)
-* [Azure Storage のアラート](threat-protection.md#azure-storage)
-* [Cosmos DB のアラート](threat-protection.md#cosmos-db)
-
-次のトピックでは、Security Center が、Azure にデプロイされたリソースに追加の保護レイヤーを適用するために、Azure インフラストラクチャとの統合から収集したさまざまなテレメトリを活用する方法について説明します。
-
-* [Azure 管理レイヤー (Azure Resource Manager) のアラート (プレビュー)](threat-protection.md#management-layer)
-* [Azure Key Vault のアラート (プレビュー)](threat-protection.md#azure-keyvault)
-* [Azure ネットワーク レイヤーのアラート](threat-protection.md#network-layer)
-* [その他のサービスからのアラート](threat-protection.md#alerts-other)
-
-## <a name="see-also"></a>関連項目
-このドキュメントでは、Security Center でのセキュリティ インシデント機能の使用方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
-
-* [Azure Security Center のセキュリティ アラート](security-center-alerts-overview.md)。
+* [Azure Security Center での脅威の防止](threat-protection.md)
+* [Security alerts in Azure Security Center](security-center-alerts-overview.md)
 * [セキュリティ アラートの管理](security-center-managing-and-responding-alerts.md)
-* [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)

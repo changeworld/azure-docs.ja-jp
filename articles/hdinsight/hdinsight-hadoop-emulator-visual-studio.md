@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.openlocfilehash: e128aaf6e1726b7a1341fefc6df3cdafd3beb880
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73500167"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Hortonworks サンドボックスで Azure Data Lake Tools for Visual Studio を使用する
@@ -155,7 +155,7 @@ Hive には構造化データを操作するための SQL に似た言語が用�
 
     ![完了した Pig ジョブのスクリーンショット](./media/hdinsight-hadoop-emulator-visual-studio/completed-apache-pig.png)
 
-## <a name="view-jobs"></a>ジョブを表示する
+## <a name="view-jobs"></a>ジョブの表示
 
 Data Lake Tools では、Hadoop で実行されたジョブに関する情報も簡単に表示できます。 ローカル クラスターで実行されたジョブを表示するには、次の手順に従います。
 
@@ -197,7 +197,7 @@ Data Lake Tools では、Hadoop で実行されたジョブに関する情報も
 
 ![テーブルの作成に使用されたフォームのスクリーンショット](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form-box.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Hortonworks Sandbox の使い方のヒント](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 * [Apache Hadoop チュートリアル: HDP の概要](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

@@ -1,19 +1,18 @@
 ---
 title: パートナー センターの共同販売オプション | Azure Marketplace
 description: オファーの [共同販売] タブで指定する情報は、お客様のニーズに合わせてソリューションを評価する際に、Microsoft のセールス チームが使用するものです。
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 5f5f98b908ce54624a5d73a2ed74b2e9ea8966ff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b0b38b767495b1a06405f0d41222b73baee8d53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431950"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277075"
 ---
 # <a name="co-sell-option-in-partner-center"></a>パートナー センターの [共同販売] オプション
 

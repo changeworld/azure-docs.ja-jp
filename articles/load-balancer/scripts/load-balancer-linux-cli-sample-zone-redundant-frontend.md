@@ -10,12 +10,12 @@ ms.topic: sample
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: 8ef4a0d1eca76ffaad7136c9b55756b96b80925f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 3e0c86fdf97ec2882858a0a92e22e020001816cd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274586"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79218335"
 ---
 # <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Azure CLI スクリプトの例: 可用性ゾーン間で VM の負荷分散を行う
 
@@ -50,7 +50,7 @@ ms.locfileid: "76274586"
 
   # Create an Azure Load Balancer.
    az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group myResourceGroup \
     --name myLoadBalancer \
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEndPool \

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
 ms.openlocfilehash: cf79a670db4e2729c6e0a5fb7112cdc6114f465a
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77460707"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Table Storage との間でのデータのコピー
@@ -51,7 +51,7 @@ Table Storage には、サポートされているソース データ ストア�
 
 Azure Storage のリンクされたサービスは、アカウント キーを使用して作成できます。 これによりデータ ファクトリは、Storage にグローバルにアクセスすることができます。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティを **AzureTableStorage** に設定する必要があります。 |はい |
 | connectionString | connectionString プロパティのために Storage に接続するために必要な情報を指定します。 <br/>アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
@@ -108,7 +108,7 @@ Azure Storage のリンクされたサービスは、アカウント キーを�
 
 Shared Access Signature を使用して、Storage のリンクされたサービスを作成することもできます。 これによって、Data Factory は、ストレージ内のすべてまたは特定のリソースへのアクセスが制限付きまたは期限付きになります。
 
-Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 アカウントのアクセス キーを共有する必要はありません。 Shared Access Signature とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。 クライアントは、Shared Access Signature 内で適切なコンストラクターまたはメソッドに渡すだけで、Shared Access Signature でストレージ リソースにアクセスできます。 Shared Access Signature について詳しくは、[Shared Access Signature のモデルの概要](../storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページをご覧ください。
+Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 アカウントのアクセス キーを共有する必要はありません。 Shared Access Signature とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。 クライアントは、Shared Access Signature 内で適切なコンストラクターまたはメソッドに渡すだけで、Shared Access Signature でストレージ リソースにアクセスできます。 Shared Access Signature の詳細については、[Shared Access Signature モデルの概要](../storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページを参照してください。
 
 > [!NOTE]
 > Data Factory で、**サービスの Shared Access Signature** と**アカウントの Shared Access Signature** がサポートされるようになりました。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)」を参照してください。 
@@ -120,7 +120,7 @@ Shared Access Signature を使用すると、ストレージ アカウント内�
 
 Shared Access Signature 認証を使用するために、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティを **AzureTableStorage** に設定する必要があります。 |はい |
 | sasUri | テーブルへの共有アクセス署名 URI の SAS URI を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 自動ローテーションを活用してトークン部分を削除するために、SAS トークンを Azure Key Vault に配置することもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
@@ -191,7 +191,7 @@ Shared Access Signature の URI を作成する際は、次の点に注意して
 
 Azure Table をコピー先またはコピー元としてデータをコピーするには、データセットの type プロパティを **AzureTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの type プロパティは、**AzureTable** に設定する必要があります。 |はい |
 | tableName |リンクされたサービスが参照する Table Storage データベース インスタンスのテーブルの名前です。 |はい |
@@ -231,7 +231,7 @@ Azure Table などのスキーマのないデータ ストアの場合、Data Fa
 
 Azure Table からデータをコピーする場合は、コピー アクティビティのソースの種類を **AzureTableSource** を設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティを **AzureTableSource** に設定する必要があります。 |はい |
 | azureTableSourceQuery |カスタム Table Storage クエリを使用してデータを読み取ります。 次のセクションの例を参照してください。 |いいえ |
@@ -260,7 +260,7 @@ Azure Data Factory では、datetime 型の列に対してデータをフィル�
 
 Azure Table にデータをコピーする場合は、コピー アクティビティのシンクの種類を **AzureTableSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティを **AzureTableSink** に設定する必要があります。 |はい |
 | azureTableDefaultPartitionKeyValue |シンクで使用できる既定のパーティション キー値です。 |いいえ |

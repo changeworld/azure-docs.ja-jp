@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.openlocfilehash: 73ca0d089ab758fb13e69d341337139d79194cc5
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71121933"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight の Spark コンピューティング コンテキストで R を使用する
@@ -355,13 +355,13 @@ rxDataStep(inData=airDataXdf, outFile=airDataCsvRowsDS)
     quit()
     ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage 内に格納されます。そのため、クラスターは、使用していなければ、削除しても問題ありません。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
 
 クラスターを削除するには、「[Delete an HDInsight cluster by using your browser, PowerShell, or the Azure CLI (ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する)](../hdinsight-delete-cluster.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、HDInsight Machine Learning service クラスター上で実行されている Apache Spark 内で R 関数を使用する方法を説明しました。 詳細については、次の記事を参照してください。
 

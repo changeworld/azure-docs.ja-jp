@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 6f5bd129b175210cd5b9415a65b8db06d904e24d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73718187"
 ---
-# <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>チュートリアル: ビッグ データをデータ ウェアハウスにストリーミングする
+# <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>チュートリアル:ビッグ データをデータ ウェアハウスにストリーミングする
 Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (イベント) への対応を可能にするインテリジェントなイベント ルーティング サービスです。 たとえば、Azure BLOB ストレージや Azure Data Lake Storage にキャプチャされた Event Hubs データを処理する Azure 関数をトリガーして、データを別のデータ リポジトリに移行できます。 この [Event Hubs と Event Grid の統合のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)では、Event Hubs と Event Grid を使用して、キャプチャされた Event Hubs データを BLOB ストレージから SQL データ ウェアハウスにシームレスに移行する方法を説明しています。
 
 ![アプリケーションの概要](media/event-grid-event-hubs-integration/overview.png)
@@ -60,10 +60,10 @@ Azure [Event Grid](overview.md) は、アプリとサービスからの通知 (�
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Azure portal で Azure Cloud Shell を起動する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 2. 上部にある **[Cloud Shell]** ボタンを選択します。
 
-    ![Azure ポータル](media/event-grid-event-hubs-integration/azure-portal.png)
+    ![Azure portal](media/event-grid-event-hubs-integration/azure-portal.png)
 3. ブラウザーの下部に Cloud Shell が開かれるのがわかります。
 
     ![Cloud Shell](media/event-grid-event-hubs-integration/launch-cloud-shell.png) 
@@ -292,7 +292,7 @@ Event Grid により、イベント データがサブスクライバーに配�
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure メッセージング サービスの違いについては、「[メッセージを配信する Azure サービスの選択](compare-messaging-services.md)」を参照してください。
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。

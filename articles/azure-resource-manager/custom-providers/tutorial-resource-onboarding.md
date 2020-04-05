@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75648609"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>チュートリアル:Azure カスタム プロバイダーを使用したリソースのオンボード
@@ -237,7 +237,7 @@ ms.locfileid: "75648609"
 
    | 設定名 | 必須 | 説明 |
    | ------------ | -------- | ----------- |
-   | Location | はい | テンプレート内のリソースの場所。 |
+   | 場所 | はい | テンプレート内のリソースの場所。 |
    | ロジック アプリ名 | いいえ | ロジック アプリの名前。 |
    | カスタム リソース プロバイダー名 | いいえ | カスタム リソース プロバイダーの名前。 |
    | カスタム リソース プロバイダー ID | いいえ | 関連付けリソースをサポートする既存のカスタム リソース プロバイダー。 ここに値を指定すると、ロジック アプリとカスタム プロバイダーのデプロイはスキップされます。 |

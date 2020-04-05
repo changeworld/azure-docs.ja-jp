@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: e2d63626ec548f0107d7af935af32e90d6972849
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2680304bd73bdbae35b29b89f38ae2665615f5e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435520"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239928"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API を使用して Apache Hadoop クラスターを作成する
 
@@ -223,7 +223,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 1. コマンド ラインで、次のコマンドを使用して Azure サブスクリプションを一覧表示します。
 
-   ```bash
+   ```azurecli
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
@@ -231,7 +231,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 2. 次のコマンドを使用して、Azure Active Directory 内にアプリケーションを作成します。
 
-   ```bash
+   ```azurecli
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
@@ -244,7 +244,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 3. 次のコマンドを使用して、**アプリ ID** を使用するサービス プリンシパルを作成します。
 
-   ```bash
+   ```azurecli
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
@@ -252,7 +252,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
 
 4. **所有者**の役割を、**オブジェクト ID** 値を使用するサービス プリンシパルに割り当てます。 前に取得した**サブスクリプション ID** を使用します。
 
-   ```bash
+   ```azurecli
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
    ```
 
@@ -341,7 +341,7 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 
 これにより返される JSON ドキュメントにデプロイ操作に関する情報が含まれています。 `"provisioningState"` 要素にはデプロイの状態が含まれています。 この要素に値 `"Succeeded"` が含まれている場合は、デプロイが正常に完了しています。
 
-## <a name="troubleshoot"></a>[トラブルシューティング]
+## <a name="troubleshoot"></a>トラブルシューティング
 
 HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](./hdinsight-hadoop-customize-cluster-linux.md#access-control)」を参照してください。
 

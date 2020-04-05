@@ -4,16 +4,16 @@ description: Service Fabric ステートフル サービスのパーティショ
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434059"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229359"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
 この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。 この記事で使用するソース コードは、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)にも掲載されています。
 
-## <a name="partitioning"></a>[パーティション分割]
+## <a name="partitioning"></a>パーティション分割
 パーティション分割は Service Fabric に固有のものではありません。 それは、スケーラブルなサービスの構築の中心的なパターンです。 パーティション分割とは、広義では状態 (データ) の分割に関する概念と考えることができます。計算してアクセスしやすい小さな単位に分割することで、スケーラビリティとパフォーマンスを改善できます。 よく知られているパーティション分割の形式として、シャーディングとも呼ばれる[データのパーティション分割][wikipartition]があります。
 
 ### <a name="partition-service-fabric-stateless-services"></a>Service Fabric ステートレス サービスのパーティション分割

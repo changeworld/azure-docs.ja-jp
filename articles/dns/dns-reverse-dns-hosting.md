@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 97390ab3dbaeff4d6c8cc6648692efd62fc121df
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 78fc3428274be5e1998abe9189bea996f15e278c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932504"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454263"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Azure DNS での逆引き DNS 参照ゾーンのホスト
 
@@ -28,7 +28,7 @@ Azure サービスに割り当てられている Azure が所有する IP アド
 
 ## <a name="create-a-reverse-lookup-dns-zone"></a>逆引き参照 DNS ゾーンを作成する
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. **[ハブ]** メニューで、 **[新規]**  >  **[ネットワーク]** の順に選択し、 **[DNS ゾーン]** を選択します。
 
    ![[DNS ゾーン] の選択](./media/dns-reverse-dns-hosting/figure1.png)
@@ -40,9 +40,9 @@ Azure サービスに割り当てられている Azure が所有する IP アド
 IPv4 の逆引き参照ゾーンの名前は、それが表す IP アドレスの範囲に基づきます。 `<IPv4 network prefix in reverse order>.in-addr.arpa` という形式にする必要があります。 例については、「[逆引き DNS と Azure でのサポートの概要](dns-reverse-dns-overview.md#ipv4)」をご覧ください。
 
 > [!NOTE]
-> クラスレスの逆引き DNS 参照ゾーンを Azure DNS で作成する場合は、ゾーン名のスラッシュ (`/`) の代わりにハイフン (`-`) を使う必要があります。
+> クラスレスの逆引き DNS 参照ゾーンを Azure DNS で作成する場合は、ゾーン名のスラッシュ (`-`) の代わりにハイフン (`/`) を使う必要があります。
 >
-> たとえば、IP アドレス範囲が 192.0.2.128/26 の場合は、ゾーン名として `128/26.2.0.192.in-addr.arpa` ではなく `128-26.2.0.192.in-addr.arpa` を使う必要があります。
+> たとえば、IP アドレス範囲が 192.0.2.128/26 の場合は、ゾーン名として `128-26.2.0.192.in-addr.arpa` ではなく `128/26.2.0.192.in-addr.arpa` を使う必要があります。
 >
 > DNS 標準では両方の方法がサポートされていますが、Azure DNS では、スラッシュ (`/`) 文字を含む DNS ゾーン名はサポートされていません。
 
@@ -144,7 +144,7 @@ azure network dns record-set add-record MyResourceGroup 2.0.192.in-addr.arpa 15 
 #### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-    az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.arpa -n 15 --ptrdname dc1.contoso.com
+az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.arpa -n 15 --ptrdname dc1.contoso.com
 ```
 
 ### <a name="ipv6"></a>IPv6
@@ -174,14 +174,14 @@ New-AzDnsRecordSet -Name "e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f" -RecordType PTR -Zone
 
 #### <a name="azure-classic-cli"></a>Azure クラシック CLI
 
-```
+```azurecli
 azure network dns record-set add-record MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f PTR --ptrdname dc2.contoso.com 
 ```
  
 #### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-    az network dns record-set ptr add-record -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -n e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f --ptrdname dc2.contoso.com
+az network dns record-set ptr add-record -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -n e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f --ptrdname dc2.contoso.com
 ```
 
 ## <a name="view-records"></a>レコードの表示
@@ -205,13 +205,13 @@ Get-AzDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceG
 #### <a name="azure-classic-cli"></a>Azure クラシック CLI
 
 ```azurecli
-    azure network dns record-set list MyResourceGroup 2.0.192.in-addr.arpa
+azure network dns record-set list MyResourceGroup 2.0.192.in-addr.arpa
 ```
 
 #### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-    azure network dns record-set list -g MyResourceGroup -z 2.0.192.in-addr.arpa
+az network dns record-set list -g MyResourceGroup -z 2.0.192.in-addr.arpa
 ```
 
 ### <a name="ipv6"></a>IPv6
@@ -231,13 +231,13 @@ Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceG
 #### <a name="azure-classic-cli"></a>Azure クラシック CLI
 
 ```azurecli
-    azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
+azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
 #### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-    azure network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
+az network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
 ## <a name="faq"></a>よく寄せられる質問

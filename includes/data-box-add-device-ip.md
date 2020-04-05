@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: e4b366075cb16f62a0e16b5b06da6fb19ffefdb9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67181840"
 ---
 1. Data Box デバイスにサインインします。 ロックが解除されていることを確認してください。
@@ -27,7 +27,7 @@ ms.locfileid: "67181840"
 
     ![Data Box ダッシュボード](media/data-box-add-device-ip/data-box-connect-via-rest-4.png)
 
-5. **メモ帳**を管理者として起動し、`C:\Windows\System32\Drivers\etc` にある **hosts** ファイルを開きます。
+5. **メモ帳**を管理者として起動し、**にある**hosts`C:\Windows\System32\Drivers\etc` ファイルを開きます。
 6. **hosts** ファイルに `<device IP address> <Blob service endpoint>` というエントリを追加します。
 7. 次の図を参考にしてください。 **hosts** ファイルを保存します。
 

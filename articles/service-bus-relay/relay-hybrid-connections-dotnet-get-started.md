@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 13612f8ffa343e483165a8dbdd54d1b2b1f5e2cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75355190"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>.NET での Relay ハイブリッド接続 WebSocket の概要

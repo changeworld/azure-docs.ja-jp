@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 541039c82d5ea21c43a847da2710bef4162a2bc7
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5d8fd578c5539c83e37a232d8425ad8bdf22129b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804044"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125059"
 ---
 # <a name="azure-encryption-overview"></a>Azure の暗号化の概要
 
@@ -79,7 +79,7 @@ Azure BLOB のクライアント側暗号化は、さまざまな方法で実行
 
 Key Vault でクライアント側暗号化を使用すると、Azure Storage クライアント SDK によって生成される 1 回限りの対称コンテンツ暗号化キー (CEK) を使用してデータが暗号化されます。 CEK は、対称キーまたは非対称キーのいずれかのペアであるキー暗号化キー (KEK) を使用して暗号化されます。 CEK はローカルで管理するか、Key Vault で格納できます。 その後、暗号化されたデータは Azure Storage にアップロードされます。
 
-Key Vault のクライアント側暗号化の詳細について確認し、手順に従って作業を開始するには、[チュートリアル: Key Vault を使用した Azure Storage 内の BLOB の暗号化と復号化](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md)に関する記事をご覧ください。
+Key Vault のクライアント側暗号化の詳細について確認し、手順に従って作業を開始するには、「[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md)」をご覧ください。
 
 最後に、Java 用の Azure Storage Client Library を使用して、Azure Storage にデータをアップロードする前にクライアント側暗号化を実行したり、データをクライアントにダウンロードするときに暗号化を解除したりすることもできます。 また、このライブラリは [Key Vault](https://azure.microsoft.com/services/key-vault/) との統合にも役立ち、ストレージ アカウント キーの管理に利用できます。
 
@@ -87,9 +87,9 @@ Key Vault のクライアント側暗号化の詳細について確認し、手�
 
 [Azure SQL Database](../../sql-database/sql-database-technical-overview.md) は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Azure における汎用リレーショナル データベース サービスです。 SQL Database では、Transparent Data Encryption (TDE) の機能を使用したサーバー側暗号化と、Always Encrypted 機能を使用したクライアント側暗号化の両方がサポートされています。
 
-#### <a name="transparent-data-encryption"></a>Transparent Data Encryption
+#### <a name="transparent-data-encryption"></a>透過的なデータ暗号化
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) は、[SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../sql-database/sql-database-technical-overview.md)、[Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) のデータ ファイルをリアルタイムで暗号化するために使用されます。その際、復旧時の可用性のためにデータベースのブート レコードに格納されるデータベース暗号化キー (DEK) が使用されます。
+[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) は、[SQL Server](https://www.microsoft.com/sql-server/sql-server-2016)、[Azure SQL Database](../../sql-database/sql-database-technical-overview.md)、[Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) のデータ ファイルをリアルタイムで暗号化するために使用されます。その際、復旧時の可用性のためにデータベースのブート レコードに格納されるデータベース暗号化キー (DEK) が使用されます。
 
 TDE は、AES と Triple Data Encryption Standard (3DES) の暗号化アルゴリズムを使用して、データとログ ファイルを保護します。 データベース ファイルの暗号化は、ページ レベルで実行されます。 暗号化されたデータベース内のページは、ディスクに書き込まれる前に暗号化され、メモリに読み込まれるときに暗号化が解除されます。 現在、新しく作成された Azure SQL データベースでは、TDE は既定で有効になっています。
 
@@ -171,7 +171,7 @@ Azure Portal を使用して、証明書認証または PowerShell を使用し�
 
 Azure 仮想ネットワークへのポイント対サイト VPN 接続に関して詳しくは、以下をご覧ください。
 
-[証明書認証を使用した仮想ネットワークへのポイント対サイト接続の構成: Azure portal](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
+[証明書認証を使用した仮想ネットワークへのポイント対サイト接続の構成: Azure Portal](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
 
 [証明書認証を使用した仮想ネットワークへのポイント対サイト接続の構成: PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
@@ -201,7 +201,7 @@ Data Lake での転送中データの暗号化の詳細については、「[Azu
 
 Key Vault を使用すれば、組織はハードウェア セキュリティ モジュール (HSM) とキー管理ソフトウェアの構成、パッチ、メンテナンスを行う必要がありません。 Key Vault を使うと、制御を維持できます。 Microsoft がお客様のキーを確認したり、アプリケーションがお客様のキーに直接アクセスしたりすることはありません。 キーを HSM にインポートしたり生成したりすることもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure セキュリティの概要](get-started-overview.md)
 - [Azure のネットワーク セキュリティの概要](network-overview.md)

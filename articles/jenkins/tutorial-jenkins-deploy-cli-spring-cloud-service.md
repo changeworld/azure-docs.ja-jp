@@ -4,10 +4,10 @@ description: 継続的インテグレーションおよびデプロイ パイプ
 ms.topic: tutorial
 ms.date: 01/07/2020
 ms.openlocfilehash: 67ad97bb762ed302ef52c404d47c5755ea4b245b
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75732855"
 ---
 # <a name="tutorial-deploy-apps-to-azure-spring-cloud-using-jenkins-and-the-azure-cli"></a>チュートリアル:Jenkins と Azure CLI を使用して Azure Spring Cloud にアプリをデプロイする

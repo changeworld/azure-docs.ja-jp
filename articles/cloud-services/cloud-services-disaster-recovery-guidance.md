@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
 ms.openlocfilehash: e3f0fd88eb302dac208f43d0622ae28b31dcddc2
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77157509"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Azure Cloud Services に影響を与える Azure サービスの中断が発生した場合の対処方法
@@ -39,7 +39,7 @@ Azure には、可用性の高いアプリケーションをサポートする�
 
 リージョンの損失に迅速に対応するには、Traffic Manager の[エンドポイント監視](../traffic-manager/traffic-manager-monitoring.md)を構成することが重要です。
 
-## <a name="option-2-deploy-your-application-to-a-new-region"></a>オプション 2:新しいリージョンにアプリケーションをデプロイする
+## <a name="option-2-deploy-your-application-to-a-new-region"></a>オプション 2: 新しいリージョンにアプリケーションをデプロイする
 前のオプションの説明に従って、複数のアクティブなデプロイを維持するには、追加の継続的なコストが必要です。 復旧時間目標 (RTO) に十分な柔軟性があり、元のコードまたはコンパイル済みの Cloud Services パッケージがある場合は、アプリケーションの新しいインスタンスを別のリージョンに作成して、新しいデプロイを指すように DNS レコードを更新することができます。
 
 クラウド サービス アプリケーションを作成してデプロイする方法の詳細については、「[クラウド サービスを作成してデプロイする方法](cloud-services-how-to-create-deploy-portal.md)」を参照してください。
@@ -47,10 +47,10 @@ Azure には、可用性の高いアプリケーションをサポートする�
 アプリケーションのデータ ソースによっては、アプリケーションのデータ ソースの復旧手順を確認することが必要になる場合があります。
 
 * Azure Storage データ ソースの場合は、[Azure Storage の冗長性](../storage/common/storage-redundancy.md)に関するセクションを参照して、アプリケーション用に選択した冗長モデルに応じて使用できるオプションについて確認してください。
-* SQL Database ソースの場合は、[概要:SQL Database を使用したクラウド ビジネス継続性とデータベース ディザスター リカバリー](../sql-database/sql-database-business-continuity.md)に関する記事をご覧になり、アプリケーション用に選択したレプリケーション モデルに応じて使用できるオプションについてご確認ください。
+* SQL Database ソースの場合は、「[概要: SQL Database を使用したクラウド ビジネス継続性とデータベース ディザスター リカバリー](../sql-database/sql-database-business-continuity.md)」を参照して、アプリケーション用に選択したレプリケーション モデルに応じて使用できるオプションについて確認してください。
 
 
-## <a name="option-3-wait-for-recovery"></a>オプション 3:復旧を待つ
+## <a name="option-3-wait-for-recovery"></a>オプション 3: 復旧を待つ
 この場合、ユーザーによる操作は不要ですが、リージョンが復元されるまでサービスは利用できません。 現在のサービスの状態は、[Azure サービスの正常性ダッシュボード](https://azure.microsoft.com/status/)で確認できます。
 
 ## <a name="next-steps"></a>次のステップ

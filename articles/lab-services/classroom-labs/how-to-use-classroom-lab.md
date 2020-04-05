@@ -10,16 +10,16 @@ ms.service: lab-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: how-to
 ms.custom: mvc
-ms.date: 09/19/2019
+ms.date: 03/17/2020
 ms.author: spelluru
-ms.openlocfilehash: 2ac9e8b8d0635eceb7d4f85ad867b102f7d064f5
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: db1e60ccd7e05cb8b6923d6b2ec008cdfb76eaa1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585119"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501918"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボにアクセスする方法
 この記事では、クラスルーム ラボを登録したり、自分がアクセスできるすべてのラボを確認したり、ラボの VM を開始または停止したり、VM に接続したりする方法について説明します。 
@@ -41,7 +41,7 @@ ms.locfileid: "73585119"
         ![VM が停止状態](../media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
 
 ## <a name="start-or-stop-the-vm"></a>VM を起動または停止する
-1. 次の画像に示したように、先頭のボタンを選択して、VM を**起動**します。 このプロセスには、ある程度時間がかかります。  
+1. 次の画像に示すように、先頭のボタンを選択して、VM を**起動**します。 このプロセスには、ある程度時間がかかります。  
 
     ![VM を起動する](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
 4. VM の状態が**実行中**に設定されていることを確認します。 
@@ -60,31 +60,8 @@ ms.locfileid: "73585119"
     3. **Linux** 仮想マシンの場合は、**SSH** または **RDP** を使用して接続できます (有効な場合)。 詳細については、[Linux マシンのリモート デスクトップ接続の有効化](how-to-enable-remote-desktop-linux.md)に関するページを参照してください。 
     1. **MAC** を使用してラボ VM に接続している場合は、次のセクションの手順に従ってください。 
 
-## <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>MAC から RDP を使用して VM に接続する
-このセクションでは、MAC から RDP を使用して VM に接続する方法を学生向けに説明します。
-
-### <a name="step-1-install-microsoft-remote-desktop-on-a-mac"></a>手順 1:Microsoft リモート デスクトップを MAC にインストールする
-1. MAC で App Store を開き、**Microsoft リモート デスクトップ**を検索します。
-
-    ![Microsoft リモート デスクトップ](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
-1. 最新バージョンの Microsoft リモート デスクトップをインストールします。 
-
-### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>手順 2:MAC から RDP を使用して VM にアクセスする
-1. **Microsoft リモート デスクトップ**がインストールされているコンピューターで、ダウンロードした **RDP** ファイルを開きます。 VM への接続が開始されます。 
-
-    ![VM への接続](../media/how-to-use-classroom-lab/connect-linux-vm.png)
-1. 次の警告が表示された場合は、 **[Continue]\(続行\)** を選択します。 
-
-    ![証明書の警告](../media/how-to-use-classroom-lab/certificate-error.png)
-1. VM が表示されます。 
-
-    > [!NOTE]
-    > 次に示したのは、CentOS Linux VM の例です。 
-
-    ![VM](../media/how-to-use-classroom-lab/vm-ui.png)
-
 ## <a name="progress-bar"></a>進行状況バー 
-タイルの進行状況バーは、ユーザーに割り当てられた[クォータ時間](how-to-configure-student-usage.md#set-quotas-for-users)数に対して費やされた時間数を示しています。 この時間は、ラボに対してスケジュールされている時間のほかに、追加で割り当てられる時間です。 進行状況バーの色とその下に表示されるテキストは、次のようにシナリオによって異なります。
+タイルの進行状況バーは、ユーザーに割り当てられた[ クォータ時間](how-to-configure-student-usage.md#set-quotas-for-users)数に対して費やされた時間数を示しています。 この時間は、ラボに対してスケジュールされている時間のほかに、追加で割り当てられた時間です。 進行状況バーの色とその下に表示されるテキストは、次のようにシナリオによって異なります。
 
 - クラスが進行中 (クラスのスケジュール内) である場合、進行状況バーは灰色表示され、クォータ時間は使用されていないことがわかります。 
 
@@ -110,8 +87,8 @@ ms.locfileid: "73585119"
     ![すべてのラボを表示する](../media/how-to-manage-classroom-labs/all-labs.png)
 
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 - [管理者としてラボ アカウントを作成および管理する](how-to-manage-lab-accounts.md)
 - [ラボ所有者としてラボを作成および管理する](how-to-manage-classroom-labs.md)

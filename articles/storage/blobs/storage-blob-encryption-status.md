@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 5cef0e94a43b3ef16d45f7f43658f962e07b5345
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74707592"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>BLOB の暗号化状態を確認する
@@ -26,7 +26,7 @@ ms.locfileid: "74707592"
 
 Azure portal、PowerShell、または Azure CLI を使用して、コードを使用せずに BLOB が暗号化されているかどうかを確認します。
 
-### <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+### <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Azure portal を使用して BLOB が暗号化されているかどうかを確認するには、次の手順を実行します。
 
@@ -37,7 +37,7 @@ Azure portal を使用して BLOB が暗号化されているかどうかを確�
 
     ![Azure portal で [暗号化されたサーバー] プロパティを確認する方法を示すスクリーンショット](media/storage-blob-encryption-status/blob-encryption-property-portal.png)
 
-### <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 PowerShell を使用して BLOB が暗号化されているかどうかを確認するには、BLOB の **IsServerEncrypted** プロパティを確認します。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 
@@ -56,7 +56,7 @@ BLOB が作成された日時を確認するには、**Created** プロパティ
 $blob.ICloudBlob.Properties.IsServerEncrypted
 ```
 
-### <a name="azure-clitabcli"></a>[Azure CLI](#tab/cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
 Azure CLI を使用して BLOB が暗号化されているかどうかを確認するには、BLOB の **IsServerEncrypted** プロパティを確認します。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 
@@ -96,6 +96,6 @@ azcopy copy 'C:\temp\blob1.txt' 'https://storagesamples.blob.core.windows.net/sa
 
 AzCopy を使用した BLOB データのコピーの詳細については、「[AzCopy と Blob Storage でデータを転送する](../common/storage-use-azcopy-blobs.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [保存データに対する Azure Storage 暗号化](../common/storage-service-encryption.md)

@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.openlocfilehash: e564660b502a950021ba4e4754ff5c210dfd477f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77082872"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216370"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用したデバイスのプロビジョニング
 Microsoft Azure には、すべての IoT ソリューションのニーズに合う豊富な統合されたパブリック クラウド サービス セットがあります。 IoT Hub Device Provisioning Service (DPS) は、IoT Hub のヘルパー サービスです。適切な IoT Hub へのゼロタッチの Just-In-Time プロビジョニングを人間の介入を必要とせずに行うことができます。 DPS を使用すると、膨大な数のデバイスを、安全かつスケーラブルな方法でプロビジョニングすることができます。

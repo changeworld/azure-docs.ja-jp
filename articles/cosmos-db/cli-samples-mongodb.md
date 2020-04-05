@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 9/25/2019
 ms.author: mjbrown
 ms.openlocfilehash: f7807a4c2024e16f563adbcb46a5c60e5c542dda
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77524565"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB MongoDB API 用の Azure CLI サンプル

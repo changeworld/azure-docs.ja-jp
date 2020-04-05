@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: b-juche
 ms.openlocfilehash: aea783b818550b8219e1a0498256280f61f678e1
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70995108"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Azure NetApp Files のコスト モデル 
@@ -87,7 +87,7 @@ Azure NetApp Files は、プロビジョニングされたストレージ容量�
 
 Azure NetApp Files のスナップショットの容量消費は、親ボリュームのクォータに対して課金されます。  その結果、ボリュームが属する容量プールと同じ課金レートを共有します。  ただし、アクティブ ボリュームとは違って、スナップショットの消費量は消費された増分容量に基づいて測定されます。  Azure NetApp Files のスナップショットは本質的には差分です。 データの変更率にもよりますが、スナップショットの消費容量は多くの場合、アクティブ ボリュームの論理容量を大きく下回ります。 たとえば、10 GiB の差分データのみが含まれる 500 GiB のボリュームのスナップショットがあるとします。 そのスナップショットのボリューム クォータに対して課金される容量は、500 GiB ではなく 10 GiB になります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure NetApp Files 価格ページ](https://azure.microsoft.com/pricing/details/storage/netapp/)
 * [Azure NetApp Files のサービス レベル](azure-netapp-files-service-levels.md)

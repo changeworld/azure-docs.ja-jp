@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: encorona
 ms.openlocfilehash: afa197c83b4f66f12863de4185ef7763447f3ed9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75453366"
 ---
 # <a name="how-to-add-a-confirmation-to-a-custom-command-preview"></a>方法:カスタム コマンドに確認を追加する (プレビュー)
@@ -25,8 +25,8 @@ ms.locfileid: "75453366"
 
 次の記事の手順を完了している必要があります。
 
-- [クイック スタート:カスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-new.md)
-- [クイック スタート:パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)
+- [クイック スタート: カスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-new.md)
+- [クイック スタート: パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)
 
 ## <a name="create-a-setalarm-command"></a>SetAlarm コマンドを作成する
 
@@ -38,10 +38,10 @@ ms.locfileid: "75453366"
 
    | 設定           | 推奨値                                          | 説明                                                                                      |
    | ----------------- | ---------------------------------------------------------| ------------------------------------------------------------------------------------------------ |
-   | Name              | DateTime                                                 | コマンド パラメーターのわかりやすい名前                                                    |
+   | 名前              | DateTime                                                 | コマンド パラメーターのわかりやすい名前                                                    |
    | 必須          | true                                                     | コマンドを完了する前にこのパラメーターの値を必須とするかどうかを示すチェックボックス |
    | 応答テンプレート | "- What time?" (いつに設定しますか?)                                           | 理解されていないとき、このパラメーターの値を問うプロンプト                              |
-   | 種類              | DateTime                                                 | Number、String、Date Time など、パラメーターの型                                      |
+   | Type              | DateTime                                                 | Number、String、Date Time など、パラメーターの型                                      |
    | 日付の既定値     | 日付が指定されていない場合、今日に設定します                             |                                                                                                  |
    | 時間の既定値     | 時間が指定されていない場合、一日の始まりに設定します                      |                                                                                                  | 
 
@@ -58,14 +58,14 @@ ms.locfileid: "75453366"
    | 設定    | 推奨値                                         | 説明                                        |
    | ---------- | ------------------------------------------------------- | -------------------------------------------------- |
    | 規則の名前  | アラームの設定                                               | ルールの目的を説明する名前          |
-   | アクション    | SpeechResponse - "- Ok, alarm set for {DateTime}" (OK、アラームを {DateTime} に設定しました)       | ルール条件が真のときに実行するアクション |
+   | Actions    | SpeechResponse - "- Ok, alarm set for {DateTime}" (OK、アラームを {DateTime} に設定しました)       | ルール条件が真のときに実行するアクション |
 
 ## <a name="try-it-out"></a>試してみる
 
 テスト パネルを選択し、いくつか対話を試します。
 
-- 次の内容を入力します。アラームを明日の正午に設定する
-- 出力:"Ok, alarm set for 12/06/2019 12:00:00" (OK、アラームを 12/06/2019 12:00:00 に設定しました)
+- 次の内容を入力します。Set alarm for tomorrow at noon
+- 出力:"Ok, alarm set for 12/06/2019 12:00:00"
 
 - 次の内容を入力します。アラームを設定する
 - 出力:"What time?" (いつに設定しますか?)
@@ -82,7 +82,7 @@ ms.locfileid: "75453366"
    | --------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------- |
    | 規則の名前             | 日付と時刻の確認                                                                | ルールの目的を説明する名前          |
    | 条件            | 必須パラメーター - DateTime                                                    | ルールを実行できるタイミングを決定する条件    |   
-   | アクション               | SpeechResponse - "- Are you sure you want to set an alarm for {DateTime}?" (アラームを {DateTime} に設定しますか?)       | ルール条件が真のときに実行するアクション |
+   | Actions               | SpeechResponse - "- Are you sure you want to set an alarm for {DateTime}?" (アラームを {DateTime} に設定しますか?)       | ルール条件が真のときに実行するアクション |
    | 実行後の状態 | 入力を待機する                                                                   | ターン後のユーザーの状態                  |
    | 期待される回答          | 確認                                                                     | 次のターンで期待される回答                      |
 
@@ -100,7 +100,7 @@ ms.locfileid: "75453366"
    | --------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------- |
    | 規則の名前             | 拒否の確認                                                                   | ルールの目的を説明する名前          |
    | 条件            | DeniedConfirmation および必須パラメーター - DateTime                               | ルールを実行できるタイミングを決定する条件    |   
-   | アクション               | ClearParameter - DateTime および SpeechResponse - "- No problem, what time then?" (問題ありません。ではいつに設定しますか?)     | ルール条件が真のときに実行するアクション |
+   | Actions               | ClearParameter - DateTime および SpeechResponse - "- No problem, what time then?" (問題ありません。ではいつに設定しますか?)     | ルール条件が真のときに実行するアクション |
    | 実行後の状態 | 入力を待機する                                                                   | ターン後のユーザーの状態                   |
    | 期待される回答          | ElicitParameters - DateTime                                                      | 次のターンで期待される回答                      |
 
@@ -108,8 +108,8 @@ ms.locfileid: "75453366"
 
 テスト パネルを選択し、いくつか対話を試します。
 
-- 次の内容を入力します。アラームを明日の正午に設定する
-- 出力:"Are you sure you want to set an alarm for 12/07/2019 12:00:00?" (アラームを 12/07/2019 12:00:00 に設定しますか?)
+- 次の内容を入力します。Set alarm for tomorrow at noon
+- 出力:"Are you sure you want to set an alarm for 12/07/2019 12:00:00?"
 - 次の内容を入力します。いいえ
 - 出力:"No problem, what time then?" (問題ありません。ではいつに設定しますか?)
 - 次の内容を入力します。5 時

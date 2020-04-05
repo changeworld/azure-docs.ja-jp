@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: pepogors
 ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463306"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229451"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 容量計画は、運用環境へのデプロイにおいて重要なステップとなります。 ここでは、そのプロセスの一環として考慮すべき事柄をいくつか取り上げます。

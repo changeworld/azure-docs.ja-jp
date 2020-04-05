@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: 701e314ad2a3762b1e8ca022ce18d9435ce2db37
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894104"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>シナリオ: "watchdog:BUG: soft lockup CPU" (ウォッチドッグ: バグ: ソフト ロックアップ CPU) エラーが Azure HDInsight クラスターから発生する
@@ -26,7 +26,7 @@ ms.locfileid: "75894104"
 
 Linux カーネルの[バグ](https://bugzilla.kernel.org/show_bug.cgi?id=199437)により、CPU ソフト ロックアップが発生しています。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 カーネルの修正プログラムを適用します。 次のスクリプトでは、linux カーネルをアップグレードし、24 時間にわたってさまざまな時間にコンピューターを再起動します。 2 つのバッチでスクリプト アクションを実行します。 最初のバッチは、ヘッド ノードを除くすべてのノード上にあります。 2 つ目のバッチはヘッド ノード上にあります。 ヘッド ノードとその他のノード上で同時に実行しないでください。
 
@@ -39,14 +39,14 @@ Linux カーネルの[バグ](https://bugzilla.kernel.org/show_bug.cgi?id=199437
     | プロパティ | 値 |
     | --- | --- |
     | スクリプトの種類 | -Custom |
-    | Name |カーネル ソフト ロックの問題の修正 |
+    | 名前 |カーネル ソフト ロックの問題の修正 |
     | Bash スクリプト URI |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
     | ノードの種類 |Worker、Zookeeper |
     | パラメーター |該当なし |
 
     新しいノードが追加されたときにスクリプトを実行するには、 **[このスクリプト操作は保持され、...]** を選択します。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 1. 実行が成功するまで待ちます。
 

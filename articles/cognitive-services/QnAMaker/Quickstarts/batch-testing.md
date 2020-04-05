@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
 ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77108997"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>クイック スタート:質問のバッチと期待される回答を使用したナレッジ ベースのテスト
@@ -44,7 +44,7 @@ QnA Maker ポータルに[サインイン](https://www.qnamaker.ai/)します。
 
 1. **[Step 4]\(手順 4\)** で、次の表を使用して設定を構成します。
 
-    |設定|Value|
+    |設定|値|
     |--|--|
     |**Enable multi-turn extraction from URLs, .pdf or .docx files (URL、.pdf、または .docx ファイルからの複数ターンの抽出を有効にする)**|オン|
     |**Default answer text (既定の回答テキスト)**| `Batch test - default answer not found.`|
@@ -73,7 +73,7 @@ QnA Maker ポータルに[サインイン](https://www.qnamaker.ai/)します。
 |TSV 入力ファイルのフィールド|Notes|例|
 |--|--|--|
 |ナレッジ ベース ID|[発行] ページに表示されていたナレッジ ベース ID。 1 つのファイルで異なるナレッジ ベース ID を使用することにより、1 つのファイルで同じサービス内の複数のナレッジ ベースを同時にテストします。|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (`POST` の一部として表示されている 36 文字の文字列) |
-|質問|ユーザーが入力すると思われる質問テキスト。 最大 1,000 文字。|`How do I sign out?`|
+|Question|ユーザーが入力すると思われる質問テキスト。 最大 1,000 文字。|`How do I sign out?`|
 |メタデータ タグ|省略可能|`topic:power` では、_key:value_ 形式を使用しています|
 |上位のパラメーター|省略可能|`25`|
 |期待される回答の ID|省略可能|`13`|
@@ -193,7 +193,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 * メタデータ
 * QnA ID
-* スコア
+* score
 
 テストでメタデータを使用してフィルター処理するのは良い方法でしょうか。 場合によります。 テスト システムでは、各メタデータ ペアのテスト ファイルおよびメタデータ ペアのないテストを作成する必要があります。
 

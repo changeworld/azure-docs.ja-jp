@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Android SDK を使用して画像内の顔を検出し、フレームに収める
+title: 'チュートリアル: Android SDK を使用して画像内の顔を検出し、フレームに収める'
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Face サービスを使用して画像内の顔を検出し、フレームに収めるシンプルな Android アプリを作成します。
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 8d5bef141f83eedaa996bb63c1fb814aeb6af197
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76165975"
 ---
-# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>チュートリアル:画像の中にある顔を検出してフレームに収める Android アプリの作成
+# <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>チュートリアル: 画像の中にある顔を検出してフレームに収める Android アプリの作成
 
 このチュートリアルでは、Java SDK から Azure Face サービスを使用して画像内の人の顔を検出する Android アプリケーションを作成します。 このアプリケーションでは、選択した画像が表示され、検出されたそれぞれの顔の周囲にフレームが描画されます。
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。 次に、キーとサービス エンドポイント文字列用に、それぞれ `FACE_SUBSCRIPTION_KEY` と `FACE_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+- Face サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face サービスをサブスクライブし、キーを取得します。 次に、キーとサービス エンドポイント文字列用に、それぞれ [ と ](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) という名前の`FACE_SUBSCRIPTION_KEY`環境変数を作成`FACE_ENDPOINT`します。
 - [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 - [Android Studio](https://developer.android.com/studio/) (API レベル 22 以降) (Face クライアント ライブラリで必要)。
 

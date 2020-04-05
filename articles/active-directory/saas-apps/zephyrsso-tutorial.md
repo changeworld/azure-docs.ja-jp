@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と ZephyrSSO の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と ZephyrSSO の統合 | Microsoft Docs'
 description: Azure Active Directory と ZephyrSSO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 2ffc9f105f4e2429ac8add679511e9aec5875e0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086217"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zephyrsso"></a>チュートリアル:Azure Active Directory と ZephyrSSO の統合
+# <a name="tutorial-azure-active-directory-integration-with-zephyrsso"></a>チュートリアル: Azure Active Directory と ZephyrSSO の統合
 
 このチュートリアルでは、ZephyrSSO と Azure Active Directory (Azure AD) を統合する方法について説明します。
 ZephyrSSO と Azure AD の統合には、次の利点があります。

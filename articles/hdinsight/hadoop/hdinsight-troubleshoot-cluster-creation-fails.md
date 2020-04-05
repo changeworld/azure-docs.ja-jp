@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
 ms.openlocfilehash: 1e13c7ef8eae81ef2a12a8761b0596f6329f94dc
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76937905"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Azure HDInsight のクラスター作成に失敗する問題のトラブルシューティング

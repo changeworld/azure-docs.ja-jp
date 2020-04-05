@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.openlocfilehash: b0de9103fd022dc74e7c75017a602eb6701686fe
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73494661"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Apache Spark 機械学習パイプラインを作成する
@@ -95,7 +95,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-`Tokenizer` および `HashingTF` トランスフォーマーによって追加された新しい `words` および `features` 列や、`LogisticRegression` エスティメーターのサンプルを表示するには、元のデータフレーム上で `PipelineModel.transform()` メソッドを実行します。 運用コードでは、トレーニングを検証するテスト データフレームに合格するために次の手順が必要になります。
+`words` および `features` トランスフォーマーによって追加された新しい `Tokenizer` および `HashingTF` 列や、`LogisticRegression` エスティメーターのサンプルを表示するには、元のデータフレーム上で `PipelineModel.transform()` メソッドを実行します。 運用コードでは、トレーニングを検証するテスト データフレームに合格するために次の手順が必要になります。
 
 ```python
 peek = model.transform(training)
@@ -132,6 +132,6 @@ only showing top 20 rows
 
 これで、`model` オブジェクトを使用して予測を行うことができます。 この Machine Learning アプリケーションの完全なサンプルと、それを実行するための詳細な手順については、「[Build Apache Spark machine learning applications on Azure HDInsight (Azure HDInsight で Apache Spark Machine Learning アプリケーションを構築する)](apache-spark-ipython-notebook-machine-learning.md)」を参照してください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Scala および Azure 上の Apache Spark を使用したデータ サイエンス](../../machine-learning/team-data-science-process/scala-walkthrough.md)

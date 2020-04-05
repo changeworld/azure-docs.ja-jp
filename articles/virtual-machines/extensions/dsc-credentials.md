@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
 ms.openlocfilehash: f7edbd0fd8791829a2d9ffaa4e7c0ee0e561cc5d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73748977"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>資格情報を Azure DSC 拡張機能ハンドラーに渡す
@@ -85,9 +85,9 @@ $vm | Update-AzVM
 
 このプロセスは、[拡張機能ハンドラーがない、セキュリティで保護された構成を使用する場合](/powershell/scripting/dsc/pull-server/securemof)とは異なります。 Azure 環境には、証明書を使用して構成データを安全に送信する機能が用意されています。 そのため、DSC 拡張機能ハンドラーを使用する場合、**ConfigurationData** に **$CertificatePath** または **$CertificateID**/  **$Thumbprint** エントリを指定する必要はありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure DSC 拡張機能ハンドラーの概要](dsc-overview.md)を確認します。
 - [DSC 拡張機能用の Azure Resource Manager テンプレート](dsc-template.md)に関するページをご覧ください。
 - PowerShell DSC の詳細については、[PowerShell ドキュメント センター](/powershell/scripting/dsc/overview/overview)を参照してください。
-- PowerShell DSC を使用して管理できるその他の機能や、その他の DSC リソースについては、[PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)をご覧ください。
+- PowerShell DSC を使用して管理できる機能とその他の DSC のリソースについては、[PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)を参照してください。

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 228e50160e5c13b2d24a504b02c4bb7e3a420a46
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76772913"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Java IoT Edge モジュールを開発する

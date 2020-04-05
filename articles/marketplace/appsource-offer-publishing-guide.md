@@ -2,18 +2,18 @@
 title: AppSource ストアフロント用の AppSource オファー発行ガイド | Azure Marketplace
 description: Office 365、Dynamics 365、Power BI、Power Apps の AppSource ストアフロントにアプリを発行するためのステップ バイ ステップ ガイドおよび発行チェックリスト
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: ellacroi
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: 831da237c06657981e402fc1f8fd09ccd67f85fb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: 82b1d096b1641915fc2dc58e000c40c18731c28c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427209"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286644"
 ---
 # <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Office 365、Dynamics 365、Power BI、Power Apps 用のオファー発行ガイド
 

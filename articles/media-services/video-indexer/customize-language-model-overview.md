@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: b096b9352be65033f2fb782b118e815dc16b43b6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73838313"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>Video Indexer で言語モデルをカスタマイズする
@@ -40,7 +40,7 @@ Video Indexer は、単語の組み合わせの確率に基づいて学習する
 * 一般的でない記号 (~、#、@、%、&) は、破棄されるため含まれないようにします。 それらが出現する文も破棄されます。
 * 数十万の文など、大きすぎる入力を供給するとブースティングの効果が薄まるため、そうしないようにします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [API を使用して言語モデルをカスタマイズする](customize-language-model-with-api.md)
 

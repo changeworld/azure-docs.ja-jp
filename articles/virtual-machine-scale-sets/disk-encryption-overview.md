@@ -8,10 +8,10 @@ ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
 ms.openlocfilehash: 36eb83d99af299260ebbbd74fe56d69921ba389b
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278972"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure Disk Encryption

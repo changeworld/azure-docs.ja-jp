@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
 ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610082"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229383"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric クラスターのスケーリング
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 クラスターには、場合によっては数千のノードを含めることができます。 Service Fabric クラスターの作成後は、クラスターを水平方向 (ノードの数を変更する) または垂直方向 (ノードのリソースを変更する) にスケーリングすることができます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。

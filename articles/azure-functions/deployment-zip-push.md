@@ -4,10 +4,10 @@ description: Kudu デプロイ サービスの .zip ファイル デプロイ機
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75769671"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions の zip デプロイ
@@ -62,7 +62,7 @@ Azure Functions には、Azure App Service によって提供されている、�
 
 .zip ファイルは GitHub リポジトリからダウンロードすることもできます。 GitHub リポジトリを .zip ファイルとしてダウンロードする場合は、分岐用のフォルダー レベルが追加されます。 この追加のフォルダー レベルは、.zip ファイルを GitHub からダウンロードする際、その .zip ファイルを直接デプロイすることはできないということを意味します。 GitHub リポジトリを使用して関数アプリを管理している場合は、[継続的インテグレーション](functions-continuous-deployment.md)を使用してアプリをデプロイする必要があります。  
 
-## <a name="cli"></a>Azure CLI を使用したデプロイ
+## <a name="deploy-by-using-azure-cli"></a><a name="cli"></a>Azure CLI を使用したデプロイ
 
 プッシュ デプロイは、Azure CLI を使用してトリガーすることもできます。 その場合は、[az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) コマンドを使用して、.zip ファイルを関数アプリにプッシュ デプロイします。 このコマンドを使用するには、Azure CLI バージョン 2.0.21 以降を使用する必要があります。 使用している Azure CLI のバージョンを確認するには、`az --version` コマンドを使用します。
 

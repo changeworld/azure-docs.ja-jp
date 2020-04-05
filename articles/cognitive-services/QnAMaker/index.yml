@@ -12,10 +12,10 @@ metadata:
   title: QnA Maker のドキュメント
   description: QnA Maker は、データに基づく対話型の Q&A レイヤーを作成できるクラウドベースの API サービスです。 QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。 QnA Maker サービスでは、ユーザーが自然言語を使って行った質問に対し、ナレッジにある Q&A から回答となる可能性が最も高いものが提示されます。
   ms.openlocfilehash: e566fdb18bdabe80447de9b2882cf7d57209d15e
-  ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/29/2020
+  ms.lasthandoff: 03/24/2020
   ms.locfileid: "76844111"
 landingContent:
 - title: QnA Maker について

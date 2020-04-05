@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 10679ab02826fb606af65c72621f2afb609bc81b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975535"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL の高可用性 - Hyperscale (Citus)
@@ -23,6 +23,6 @@ ms.locfileid: "74975535"
 復旧は、検出、フェールオーバー、完全復旧の 3 つのステージに分けることができます。  すべてのノードは、Hyperscale によって定期的に正常性チェックが実行されます。チェックで 4 回不合格になると、そのノードはダウンしていると判断されます。 その後 Hyperscale は、スタンバイ ノードの状態をプライマリに昇格させ (フェールオーバー)、新しいスタンバイ候補をプロビジョニングします。
 ストリーミング レプリケーションが開始されて、新しいノードが最新の状態になります。  すべてのデータのレプリケートが完了したとき、ノードは完全復旧の状態に達します。
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 - Hyperscale サーバー グループで[高可用性を有効にする](howto-hyperscale-high-availability.md)方法について学習します。

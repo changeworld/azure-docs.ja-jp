@@ -16,10 +16,10 @@ ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a23fb981e24f6152d99b76bd72115f8159f5d60f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645846"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS のデプロイ
@@ -29,7 +29,7 @@ ms.locfileid: "75645846"
 [826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
-[1114181]: https://launchpad.support.sap.com/#/notes/1114181
+[1114181]:https://launchpad.support.sap.com/#/notes/1114181
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
@@ -38,7 +38,7 @@ ms.locfileid: "75645846"
 [1585981]:https://launchpad.support.sap.com/#/notes/1585981
 [1588316]:https://launchpad.support.sap.com/#/notes/1588316
 [1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]: https://launchpad.support.sap.com/#/notes/1597355
+[1597355]:https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
 [1619726]:https://launchpad.support.sap.com/#/notes/1619726
@@ -54,23 +54,23 @@ ms.locfileid: "75645846"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2039619]: https://launchpad.support.sap.com/#/notes/2039619
-[2069760]: https://launchpad.support.sap.com/#/notes/2069760
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2039619]:https://launchpad.support.sap.com/#/notes/2039619
+[2069760]:https://launchpad.support.sap.com/#/notes/2069760
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2171857]: https://launchpad.support.sap.com/#/notes/2171857
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2171857]:https://launchpad.support.sap.com/#/notes/2171857
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com

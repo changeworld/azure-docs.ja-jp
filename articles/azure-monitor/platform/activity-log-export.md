@@ -8,10 +8,10 @@ ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096134"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure アクティビティ ログをストレージまたは Azure Event Hubs にエクスポートする
@@ -27,8 +27,8 @@ ms.locfileid: "79096134"
 
 ## <a name="stream-activity-log-to-event-hub"></a>アクティビティ ログをイベント ハブにストリーミングする
 [Azure Event Hubs](/azure/event-hubs/) はデータ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 アクティビティ ログのストリーミング機能は、次の 2 つの方法で使用できます。
-* **サード パーティのログおよびテレメトリ システムにストリーミングする**:将来的に、Azure Event Hubs のストリーミングは、アクティビティ ログをサード パーティの SIEM やログ分析ソリューションにパイプ処理するためのメカニズムになります。
-* **カスタムのテレメトリおよびログ プラットフォームを構築する**:カスタム構築されたテレメトリ プラットフォームが既にある場合や構築を検討している場合は、Event Hubs の非常にスケーラブルな発行/サブスクライブの特性により、アクティビティ ログを柔軟に取り込むことができます。
+* **サード パーティのログおよびテレメトリ システムにストリーミングする** - 将来的に、Azure Event Hubs のストリーミングは、アクティビティ ログをサード パーティの SIEM やログ分析ソリューションにパイプ処理するためのメカニズムになります。
+* **カスタムのテレメトリおよびログ プラットフォームを構築する** - カスタム構築されたテレメトリ プラットフォームが既にある場合や構築を検討している場合は、Event Hubs の非常にスケーラブルな発行/サブスクライブの特性により、アクティビティ ログを柔軟に取り込むことができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -117,12 +117,12 @@ Azure portal の **[イベント ハブにエクスポート]** オプション�
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | プロパティ | 必須 | Description |
+    | プロパティ | 必須 | 説明 |
     | --- | --- | --- |
-    | 名前 |はい |ログ プロファイルの名前。 |
+    | Name |はい |ログ プロファイルの名前。 |
     | StorageAccountId |いいえ |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
     | serviceBusRuleId |いいえ |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。 文字列の形式は `{service bus resource ID}/authorizationrules/{key name}` になります。 |
-    | 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
+    | Location |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
     | RetentionInDays |はい |ストレージ アカウントにイベントを保持する日数 (1 から 365 の範囲)。 値が 0 の場合、ログは無期限に保存されます。 |
     | カテゴリ |いいえ |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、_Write_、_Delete_、_Action_ です。 |
 

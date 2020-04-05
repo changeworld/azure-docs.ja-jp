@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 63075152ea4b3bf1a3aa208cf2a9642ef46642db
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5250a27e6c5fcf012207f1edb95ad46c0aabfe63
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371779"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536175"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>PowerShell を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する
 
@@ -32,7 +32,7 @@ PowerShell を使用してユーザー委任 SAS を作成するには、バー�
 1. Azure PowerShell の以前のインストールがある場合はアンインストールします。
 
     - **[設定]** の **[アプリと機能]** 設定を使用して、Windows から Azure PowerShell の以前のインストールを削除します。
-    - `%Program Files%\WindowsPowerShell\Modules` からすべての **Azure** モジュールを削除します。
+    - **からすべての**Azure`%Program Files%\WindowsPowerShell\Modules` モジュールを削除します。
 
 1. 最新バージョンの PowerShellGet がインストールされていることを確認します。 Windows PowerShell ウィンドウを開き、次のコマンドを実行して最新バージョンをインストールします。
 
@@ -76,7 +76,7 @@ PowerShell を使用したサインインの詳細については、「[Azure Po
 
 ## <a name="assign-permissions-with-rbac"></a>RBAC を使用してアクセス許可を割り当てる
 
-Azure PowerShell からユーザー委任 SAS を作成するには、PowerShell へのサインインに使用する Azure AD アカウントに、**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含むロールが割り当てられている必要があります。 このアクセス許可により、Azure AD アカウントが*ユーザー委任キー*を要求できるようにします。 ユーザー委任キーは、ユーザー委任 SAS に署名するために使用されます。 **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを提供するロールは、ストレージ アカウント、リソース グループ、またはサブスクリプションのレベルで割り当てられている必要があります。 ユーザー委任 SAS を作成するための RBAC アクセス許可の詳細については、「[Create a user delegation SAS](/rest/api/storageservices/create-user-delegation-sas)」 (ユーザー委任 SAS の作成) の「**Assign permissions with RBAC**」 (RBAC によるアクセス許可の割り当て) セクションを参照してください。
+Azure PowerShell からユーザー委任 SAS を作成するには、PowerShell へのサインインに使用する Azure AD アカウントに、**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含むロールが割り当てられている必要があります。 このアクセス許可により、Azure AD アカウントが*ユーザー委任キー*を要求できるようにします。 ユーザー委任キーは、ユーザー委任 SAS に署名するために使用されます。 **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを提供するロールは、ストレージ アカウント、リソース グループ、またはサブスクリプションのレベルで割り当てられている必要があります。 ユーザー委任 SAS を作成するための RBAC アクセス許可の詳細については、「**Create a user delegation SAS**」 (ユーザー委任 SAS の作成) の「[Assign permissions with RBAC](/rest/api/storageservices/create-user-delegation-sas)」 (RBAC によるアクセス許可の割り当て) セクションを参照してください。
 
 Azure AD セキュリティ プリンシパルに RBAC ロールを割り当てるための十分なアクセス許可がない場合は、アカウント所有者または管理者に依頼して、必要なアクセス許可を割り当ててもらう必要がある場合があります。
 
@@ -121,7 +121,7 @@ New-AzStorageContainerSASToken -Context $ctx `
 
 返されるユーザー委任 SAS トークンは、次のようになります。
 
-```
+```output
 ?sv=2018-11-09&sr=c&sig=<sig>&skoid=<skoid>&sktid=<sktid>&skt=2019-08-05T22%3A24%3A36Z&ske=2019-08-07T07%3A
 00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=rwdl
 ```
@@ -143,7 +143,7 @@ New-AzStorageBlobSASToken -Context $ctx `
 
 返されるユーザー委任 SAS URI は、次のようになります。
 
-```
+```output
 https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?sv=2018-11-09&sr=b&sig=<sig>&skoid=<skoid>&sktid=<sktid>&skt=2019-08-06T21%3A16%3A54Z&ske=2019-08-07T07%3A00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=racwd
 ```
 

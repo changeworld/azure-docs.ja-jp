@@ -7,10 +7,10 @@ ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
 ms.openlocfilehash: e5083ec55ee0a57cd7defd466f5baf1704336320
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77370657"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Azure Automation State Configuration (DSC) で複合リソースを使用して DSC 構成を作成する

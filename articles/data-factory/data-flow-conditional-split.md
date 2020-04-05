@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: d7e2af6c98951e685192656b37226716e4340bfe
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930443"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>マッピング データ フローの条件分割変換
@@ -43,7 +43,7 @@ ms.locfileid: "74930443"
 
 ### <a name="example"></a>例
 
-以下の例は、受信ストリーム `CleanData` を受け取る `SplitByYear` という名前の条件分割変換です。 この変換では、`year < 1960` と `year > 1980` という 2 つの分割条件が設定されています。 最初に一致した条件にデータを送るので、`disjoint` は false に設定しています。 最初の条件に一致した行はすべて、出力ストリーム `moviesBefore1960` に送られます。 残りの行のうち 2 番目の条件に一致したものはすべて、出力ストリーム `moviesAFter1980` に送られます。 その他のすべての行は、既定のストリーム `AllOtherMovies` に送られます。
+以下の例は、受信ストリーム `SplitByYear` を受け取る `CleanData` という名前の条件分割変換です。 この変換では、`year < 1960` と `year > 1980` という 2 つの分割条件が設定されています。 最初に一致した条件にデータを送るので、`disjoint` は false に設定しています。 最初の条件に一致した行はすべて、出力ストリーム `moviesBefore1960` に送られます。 残りの行のうち 2 番目の条件に一致したものはすべて、出力ストリーム `moviesAFter1980` に送られます。 その他のすべての行は、既定のストリーム `AllOtherMovies` に送られます。
 
 Data Factory UX では、この変換は次の図のようになります。
 
@@ -60,6 +60,6 @@ CleanData
     ) ~> SplitByYear@(moviesBefore1960, moviesAfter1980, AllOtherMovies)
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 条件分割と合わせて使用する一般的なデータ フロー変換には、[結合変換](data-flow-join.md)、[参照変換](data-flow-lookup.md)、[選択変換](data-flow-select.md)があります

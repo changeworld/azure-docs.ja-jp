@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:場所へのルートを検索する |Microsoft Azure Maps
 description: このチュートリアルでは、Microsoft Azure Maps ルート指定サービスを使用して、マップ上の場所 (目的地) へのルートをレンダリングする方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ba9ef8ad98dd33bdd61875e5c1cf02e15a739c03
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 98c36176ecd2996e5f735c52017162a076ef4bde
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208082"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80333756"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>チュートリアル:Azure Maps を使って目的地へのルートを検索する
 

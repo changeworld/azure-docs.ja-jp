@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/11/2019
 ms.author: cherylmc
 ms.openlocfilehash: 7a904857b8aa0ed2aa18fc2a1b81fe31541e6f9e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74151895"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>P2S VPN クライアント用のカスタム ルートをアドバタイズする
@@ -24,7 +24,7 @@ ms.locfileid: "74151895"
 
 カスタム ルートをアドバタイズするには、`Set-AzVirtualNetworkGateway cmdlet` を使用します。 次の例では、[Contoso ストレージ アカウント テーブル](https://contoso.table.core.windows.net)の IP をアドバタイズする方法を示します。
 
-1. *contoso.table.core.windows.net* を ping し、IP アドレスをメモします。 例:
+1. *contoso.table.core.windows.net* を ping し、IP アドレスをメモします。 次に例を示します。
 
     ```cmd
     C:\>ping contoso.table.core.windows.net
@@ -38,7 +38,7 @@ ms.locfileid: "74151895"
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute 13.88.144.250/32
     ```
 
-3. 複数のカスタム ルートを追加するには、コンマ区切りとスペースを使用してアドレスを区切ります。 例:
+3. 複数のカスタム ルートを追加するには、コンマ区切りとスペースを使用してアドレスを区切ります。 次に例を示します。
 
     ```azurepowershell-interactive
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute x.x.x.x/xx , y.y.y.y/yy
@@ -59,6 +59,6 @@ ms.locfileid: "74151895"
   $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
   Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute @0
   ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 その他の P2S ルーティング情報については、「[ポイント対サイト VPN ルーティングについて](vpn-gateway-about-point-to-site-routing.md)」を参照してください。

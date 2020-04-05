@@ -1,7 +1,7 @@
 ---
 title: テキスト マージ コグニティブ スキル
 titleSuffix: Azure Cognitive Search
-description: フィールドのコレクションからテキストを 1 つの統合されたフィールドにマージします。 Azure Cognitive Search の AI エンリッチメント パイプラインでこのコグニティブ スキルを使用します。
+description: フィールドのコレクションからテキストを 1 つの統合されたフィールドにマージします。 Azure コグニティブ検索の AI エンリッチメント パイプラインでこのコグニティブ スキルを使用します。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162346"
 ---
 #   <a name="text-merge-cognitive-skill"></a>テキスト マージ コグニティブ スキル
@@ -20,7 +20,7 @@ ms.locfileid: "77162346"
 **テキスト マージ** スキルは、フィールドのコレクションからのテキストを 1 つのフィールドに統合します。 
 
 > [!NOTE]
-> このスキルは Cognitive Services API にバインドされていないため、この使用に対しては課金されません。 ただし、1 日あたりの毎日のエンリッチメントの数を少数に制限する**無料**リソースのオプションをオーバーライドするには、引き続き [Cognitive Services リソースをアタッチ](cognitive-search-attach-cognitive-services.md)する必要があります。
+> このスキルは Cognitive Services API にバインドされていないため、この使用に対しては課金されません。 ただし、1 日あたりの毎日のエンリッチメントの数を少数に制限する[無料](cognitive-search-attach-cognitive-services.md)リソースのオプションをオーバーライドするには、引き続き **Cognitive Services リソースをアタッチ**する必要があります。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.MergeSkill

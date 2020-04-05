@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7a15db6bbbcd9dfd43b025b780fda5a8b1d79da2
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 3b1988656e2c15515e121df3ee71e31ce7edd750
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78946159"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79212961"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-edge"></a>チュートリアル:Azure Data Box Edge を使用してデータを転送する
 
@@ -59,26 +59,28 @@ ms.locfileid: "78946159"
     種類には **SMB** (既定値) または **NFS** を選択することができます。 SMB は Windows クライアントの場合に標準です。また、Linux クライアントの場合は NFS が使用されます。  
     お客様が SMB 共有と NFS 共有のどちらを選択するかに応じて、残りのオプションは若干異なります。 
 
-    c. 共有を配置するストレージ アカウントを指定します。 
+    c. 共有を配置するストレージ アカウントを指定します。
 
-    
+      > [!IMPORTANT]
+      > Azure Stack Edge または Data Box Gateway デバイスで Azure Storage アカウントをご使用の場合、その Azure Storage アカウントで不変ポリシーが有効になっていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)」を参照してください。
+
     d. **[ストレージ サービス]** ドロップダウン リストで、 **[ブロック BLOB]** 、 **[ページ BLOB]** 、 **[ファイル]** のいずれかを選択します。  
     お客様が選択するサービスの種類は、Azure で使用したいデータの形式によって変わります。 この例では、データをブロック BLOB として Azure に格納したいため、 **[ブロック BLOB]** を選択します。 **ページ BLOB** を選択する場合は、お客様のデータが 512 バイトでアラインされるようにします。 たとえば、VHDX は常に 512 バイトでアラインされています。
 
     e. 新しい BLOB コンテナーを作成するか、ドロップダウン リストから既存の BLOB コンテナーを選択します。 BLOB コンテナーを作成する場合は、コンテナー名を入力します。 コンテナーがまだ存在しない場合は、新しく作成された共有の名前が付いたものがストレージ アカウントに作成されます。
-   
-    f. お客様が SMB 共有と NFS 共有のどちらを作成したかに応じて、次の手順のいずれかを実行します。 
-     
-    - **SMB 共有**: **[All privilege local user]\(すべての権限を持つローカル ユーザー\)** で、 **[新規作成]** または **[既存のものを使用]** を選択します。 新しいローカル ユーザーを作成する場合は、ユーザー名とパスワードを入力し、パスワードを確認入力します。 この操作を行うと、ローカル ユーザーにアクセス許可が割り当てられます。 共有レベルのアクセス許可の変更は現在サポートされていません。
+
+    f. お客様が SMB 共有と NFS 共有のどちらを作成したかに応じて、次の手順のいずれかを実行します。
+
+    * **SMB 共有**: **[All privilege local user]\(すべての権限を持つローカル ユーザー\)** で、 **[新規作成]** または **[既存のものを使用]** を選択します。 新しいローカル ユーザーを作成する場合は、ユーザー名とパスワードを入力し、パスワードを確認入力します。 この操作を行うと、ローカル ユーザーにアクセス許可が割り当てられます。 共有レベルのアクセス許可の変更は現在サポートされていません。
 
         この共有データに対して **[読み取り操作のみを許可する]** チェック ボックスをオンにすると、読み取り専用ユーザーを指定することができます。
 
         ![SMB 共有を追加する](./media/data-box-edge-deploy-add-shares/add-share-smb-1.png)
-   
-    - **NFS 共有**: 共有へのアクセスが許可されたクライアントの IP アドレスを入力します。
+
+    * **NFS 共有**: 共有へのアクセスが許可されたクライアントの IP アドレスを入力します。
 
         ![NFS 共有を追加する](./media/data-box-edge-deploy-add-shares/add-share-nfs-1.png)
-   
+
 4. **[作成]** を選択して共有を作成します。
     
     共有の作成が進行中であることが通知されます。 指定した設定で共有を作成すると、 **[共有]** タイルは更新され、新しい共有が反映されます。

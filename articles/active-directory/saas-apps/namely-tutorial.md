@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Namely の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Namely の統合 | Microsoft Docs'
 description: Azure Active Directory と Namely の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: a9ec54ce27b4d058938e688ec671709e09391cce
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160367"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-namely"></a>チュートリアル:Azure Active Directory と Namely の統合
+# <a name="tutorial-azure-active-directory-integration-with-namely"></a>チュートリアル: Azure Active Directory と Namely の統合
 
 このチュートリアルでは、Namely と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Namely と Azure AD の統合には、次の利点があります。
@@ -152,7 +152,7 @@ Namely で Azure AD シングル サインオンを構成するには、次の�
     
     c. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、 **[Identity provider certificate (ID プロバイダー証明書)]** ボックスに貼り付けます。
      
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -233,7 +233,7 @@ Namely で Azure AD シングル サインオンを構成するには、次の�
 
     c. **[電子メール]** ボックスに、BrittaSimon の**電子メール アドレス**を入力します。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

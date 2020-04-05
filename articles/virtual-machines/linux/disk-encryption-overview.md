@@ -2,17 +2,18 @@
 title: Linux VM に対する Azure Disk Encryption を有効にする
 description: この記事では、Linux VM で Microsoft Azure Disk Encryption を有効にする手順を説明します。
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 96ac1becfed74141b3b1544646f5d82bd0985045
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ff1b37c3053ffa91dcb432cd97a7dd6fd71dad1c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988422"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226839"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption 
 
@@ -80,7 +81,7 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 > [!NOTE]
 > RHEL7 の従量課金制イメージについては、RHEL OS とデータ ディスクに新しい Azure Disk Encryption の実装がサポートされます。  
 >
-> ADE は、RHEL のサブスクリプション持ち込み Gold Image でもサポートされています。ただし、サブスクリプションが登録された**後**でのみサポートされます。 詳細については、「[Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image](../workloads/redhat/byos.md##encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)」を参照してください。
+> ADE は、RHEL のサブスクリプション持ち込み Gold Image でもサポートされています。ただし、サブスクリプションが登録された**後**でのみサポートされます。 詳細については、「[Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)」を参照してください。
 
 ## <a name="additional-vm-requirements"></a>追加の VM 要件
 

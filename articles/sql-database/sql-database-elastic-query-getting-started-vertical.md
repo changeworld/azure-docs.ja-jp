@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: af93035766eaf1afa12d124b8379ee55c5567260
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823795"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)
@@ -110,7 +110,7 @@ CustomerInformation テーブルの定義に一致する外部テーブルを Or
 
 料金情報については、「[Azure SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * エラスティック クエリの概要については、「[Azure SQL Database エラスティック データベース クエリの概要 (プレビュー)](sql-database-elastic-query-overview.md)」をご覧ください。
 * 列方向にパーティション分割されたデータの構文とサンプル クエリについては、「[例: 列方向にパーティション分割されたデータベースのクエリ](sql-database-elastic-query-vertical-partitioning.md)」をご覧ください。

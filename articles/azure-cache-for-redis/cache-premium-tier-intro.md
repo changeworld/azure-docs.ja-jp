@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: aadcc13d2397f10ea40f06d1259c86b9a179c38b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74121669"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Azure Cache for Redis Premium レベルの概要
@@ -42,10 +42,10 @@ Basic/Standard レベルで作成されたキャッシュは、パブリック �
 
 詳細については、[Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)に関するページを参照してください。
 
-## <a name="importexport"></a>Import/Export
+## <a name="importexport"></a>インポート/エクスポート
 Import/Export は Azure Cache for Redis のデータ管理操作です。Azure Cache for Redis データベース (RDB) のスナップショットを Premium キャッシュと Azure Storage アカウント内のページ BLOB の間でインポートとエクスポートを行うことで、データを Azure Cache for Redis にインポートしたり、Azure Cache for Redis からエクスポートしたりすることができます。 これにより、異なる Azure Cache for Redis インスタンス間での移行や、使用前のキャッシュへのデータ入力が可能になります。
 
-インポートは、任意のクラウドまたは環境で稼働している任意の Redis サーバー (Linux や Windows のほか、アマゾン ウェブ サービスをはじめとする各種クラウド プロバイダーで稼働している Redis など) から Redis と互換性のある RDB ファイルを取り込むときに使用できます。 データをインポートすると、あらかじめデータが入力されたキャッシュを簡単に作成できます。 インポート処理中に、Azure Cache for Redis は RDB ファイルを Azure Storage からメモリに読み込み、キーをキャッシュに挿入します。
+インポートは、任意のクラウドまたは環境で稼働している任意の Redis サーバー (Linux や Windows のほか、アマゾン ウェブ サービスをはじめとする各種クラウド プロバイダーで稼働している Redis など) から Redis と互換性のある RDB ファイルを取り込むときに使用できます。 データをインポートすると、あらかじめデータが入力されたキャッシュを簡単に作成できます。 インポート処理中に、Azure Cache for Redis では RDB ファイルが Azure Storage からメモリに読み込まれて、キーがキャッシュに挿入されます。
 
 Export では、Azure Cache for Redis に格納されたデータを、Redis と互換性のある RDB ファイルにエクスポートできます。 この機能を使えば、ある Azure Cache for Redis インスタンスから、別のインスタンスまたは別の Redis サーバーにデータを移動できます。 エクスポート処理中に、Azure Cache for Redis サーバー インスタンスをホストしている VM に一時ファイルが作成され、そのファイルが、指定されているストレージ アカウントにアップロードされます。 エクスポート処理が完了したら、処理の成否にかかわらず、この一時ファイルは削除されます。
 
@@ -86,7 +86,7 @@ Premium レベルでは、キャッシュの 1 つ以上のノードをオンデ
 ## <a name="to-scale-to-the-premium-tier"></a>Premium レベルにスケーリングするには
 Premium レベルにスケーリングするには、 **[価格レベルの変更]** ブレードで Premium レベルのいずれかを選択するだけです。 PowerShell および CLI を使用して、キャッシュを Premium レベルにスケーリングすることもできます。 詳細な手順については、「[How to Scale Azure Cache for Redis](cache-how-to-scale.md)」(Azure Redis Cache のスケーリング方法) と「[How to automate a scaling operation](cache-how-to-scale.md#how-to-automate-a-scaling-operation)」(スケーリング処理を自動化する方法) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 キャッシュを作成し、Premium レベルの新機能を確認します。
 
 * [Premium Azure Cache for Redis の永続化の構成方法](cache-how-to-premium-persistence.md)

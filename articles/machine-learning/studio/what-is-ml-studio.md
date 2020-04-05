@@ -10,13 +10,13 @@ ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
-ms.date: 10/17/2019
-ms.openlocfilehash: be3a07eb2d4232d27a5b41ddc4258c89b79729bf
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.date: 03/24/2020
+ms.openlocfilehash: c1772ceb514e46542129759711f2d45db39abf82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169029"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371960"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) とは
 
@@ -27,6 +27,9 @@ Microsoft Azure Machine Learning Studio (クラシック) は、データを活�
 Machine Learning Studio (クラシック) があれば、最新のデータ サイエンスとクラウド リソースを活用して、独自に所有するデータを使った予測分析を実現することができます。
 
 ## <a name="the-machine-learning-studio-classic--interactive-workspace"></a>Machine Learning Studio (クラシック) 対話型ワークスペース
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 一般的な予測分析モデルの作成では、1 種類以上のソースからデータを入手し、さまざまなデータ操作と統計関数を使用してデータを変換および分析することにより、一連の結果を生成します。 このようなモデルの作成プロセスは対話型プロセスになります。 十分にトレーニングされた有効なモデルが作成されるまで、さまざまな特徴とパラメーターを繰り返し調整します。
 
 Azure Machine Learning Studio (クラシック) では、予測分析モデルの作成、テスト、反復作業を支援する、視覚的操作に対応した対話型ワークスペースが提供されます。 "***データセット***" と分析 "***モジュール***" を対話型のキャンバスにドラッグ アンド ドロップし、それらを相互に接続して "***実験***" を完成させ、Machine Learning Studio (クラシック) で実行できます。 モデルのさまざまな設計を試す際は、実験を編集して必要に応じて保存し、再度実行できます。 準備が整ったら、"***トレーニング実験***" を "***予測実験***" に変換します。さらに、"***Web サービス***" として発行し、第三者が利用できるようにそのモデルを公開します。
@@ -34,30 +37,6 @@ Azure Machine Learning Studio (クラシック) では、予測分析モデル�
 データセットとモジュールを視覚的に接続すれば予測分析モデルが完成するため、プログラミングは必要ありません。
 
 ![Azure Machine Learning Studio (クラシック) の図: 実験の作成、各種ソースのデータの読み取り、スコア付けされたデータの書き込み、モデルの書き込み](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
-
-<a name="compare"></a>
-## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Machine Learning Studio (クラシック) と Azure Machine Learning の違い
-
-[Azure Machine Learning](../overview-what-is-azure-ml.md) には、SDK と Azure Machine Learning デザイナー (プレビュー) の**両方**が用意されており、すぐにデータを準備し、機械学習モデルのトレーニングとデプロイを行うことができます。 デザイナーでは、Studio (クラシック) と同様のドラッグ アンド ドロップ操作を利用できます。 ただし、Studio (クラシック) の専用コンピューティング プラットフォームとは異なり、デザイナーではユーザー独自のコンピューティング リソースが使用され、Azure Machine Learning に完全に統合されています。
-
-簡単な比較を次に示します。
-
-|| Machine Learning Studio (クラシック) | Azure Machine Learning |
-|---| --- | --- |
-| ドラッグ アンド ドロップ インターフェイス | はい | はい - [Azure Machine Learning デザイナー (プレビュー)](../concept-designer.md) |
-| 実験 | スケーラブル (10 GB トレーニング データの上限) | コンピューティング先に合わせてスケーリング |
-| ドラッグ アンド ドロップ インターフェイスのモジュール | 多数 | 人気のある[モジュール](../algorithm-module-reference/module-reference.md)の初期セット|
-|コンピューティング ターゲットのトレーニング| 独自のコンピューティング ターゲット、CPU のサポートのみ| Azure Machine Learning コンピューティング (GPU または CPU) と Notebook VM をサポートします。<br/>([他のコンピューティングは SDK でサポート](../concept-compute-target.md#train))|
-|推論コンピューティング先| 独自の Web サービス形式 (カスタマイズ不可) |  Azure Kubernetes Service と AML Compute <br/>([他のコンピューティングは SDK でサポート](../how-to-deploy-and-where.md)) |
-| ML パイプライン | サポートされていません | [パイプライン](../concept-ml-pipelines.md)がサポートされています |
-| MLOps | 基本的なモデル管理とデプロイ | 構成可能なデプロイ、モデル、およびパイプラインのバージョン管理と追跡 |
-| モデル形式 | 専用の形式、Studio (クラシック) のみ | トレーニング ジョブの種類に応じた標準形式 |
-|自動化されたモデル トレーニングとハイパーパラメーター調整 | いいえ | まだデザイナーにはありません <br/> ([SDK とワークスペースのランディング ページでサポート](../concept-automated-ml.md)) | 
-
-デザイナーについては、「[チュートリアル: デザイナーを使用して自動車の価格を予測する](../tutorial-designer-automobile-price-train-score.md)
-
-> [!NOTE]
-> Studio (クラシック) で作成したモデルを Azure Machine Learning でデプロイおよび管理することはできません。 ただし、デザイナーで作成およびデプロイされたモデルは、Azure Machine Learning ワークスペースを使用して管理できます。
 
 ## <a name="download-the-machine-learning-studio-classic-overview-diagram"></a>Machine Learning Studio (クラシック) の概要図をダウンロードする
 **Microsoft Azure Machine Learning Studio (クラシック) 機能の概要**図をダウンロードして、Machine Learning Studio (クラシック) の機能の概要を確認します。 図をタブロイド サイズ (11 x 17 インチ) で印刷し、手元に置いておくことができます。

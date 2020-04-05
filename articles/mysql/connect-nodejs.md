@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: 96590faae26892771ce27c539bb6e71c84b65b10
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 3/18/2020
+ms.openlocfilehash: a8c4f84fe958c1b2762509432596fea772e39d7e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938941"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067929"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Node.js を使用して Azure Database for MySQL に接続してデータを照会する
 

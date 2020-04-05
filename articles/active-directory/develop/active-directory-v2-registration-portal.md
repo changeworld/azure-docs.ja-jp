@@ -15,10 +15,10 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.openlocfilehash: 26ebee446523c138569b9d5379c9a5e1b9e93e7d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76698443"
 ---
 # <a name="app-registration-reference"></a>アプリ登録のリファレンス
@@ -31,7 +31,7 @@ ms.locfileid: "76698443"
 
 ## <a name="azure-ad-only-applications"></a>Azure AD 専用アプリケーション
 
-この一覧には、Azure AD v1.0 エンドポイントで使用するために登録されているすべてのアプリケーションが含まれています。 これらのアプリケーションには、Azure Active Directory の職場/学校アカウントを持つユーザーのみがサインインできます。 この一覧には、[Azure portal](https://portal.azure.com) の**アプリの登録**エクスペリエンスを使用して登録されたアプリケーションが含まれます。
+この一覧には、Azure AD v1.0 エンドポイントで使用するために登録されているすべてのアプリケーションが含まれています。 これらのアプリケーションには、Azure Active Directory の職場/学校アカウントを持つユーザーのみがサインインできます。 この一覧には、**Azure portal** の[アプリの登録](https://portal.azure.com)エクスペリエンスを使用して登録されたアプリケーションが含まれます。
 
 ## <a name="live-sdk-applications"></a>Live SDK アプリケーション
 

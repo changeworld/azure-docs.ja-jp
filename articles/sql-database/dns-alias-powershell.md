@@ -13,10 +13,10 @@ ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
 ms.openlocfilehash: 9232a99ddd29201e6743c09455d79e9ba22b3b9c
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74420408"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>Azure SQL Database を参照する DNS エイリアス用の PowerShell
@@ -47,7 +47,7 @@ SQL Server Management Studio (SSMS) などのクライアントでは、特定�
 
 コードを実行するには、すべてのプレースホルダーの値をシステム内の実際の値と一致するように編集します。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用されているコマンドレットを次に示します。
 
@@ -93,7 +93,7 @@ Remove-AzSqlServerDnsAlias –ResourceGroupName $resourceGroupName2 -ServerName 
     -Name $sqlServerDnsAliasName;
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用されているコマンドを次に示します。
 
@@ -139,6 +139,6 @@ az sql server dns-alias delete –-resource-group $resourceGroupName2 --server $
 
 * * *
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 SQL Database の DNS エイリアス機能の詳細については、「[Azure SQL Database の DNS エイリアス](dns-alias-overview.md)」を参照してください。

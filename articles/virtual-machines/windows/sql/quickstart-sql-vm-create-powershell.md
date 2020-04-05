@@ -14,13 +14,13 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 8994079cf18a9af5f5e1368761015bbd8b836bd9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74790915"
 ---
-# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>クイック スタート:Azure PowerShell で SQL Server Windows 仮想マシンを作成する
+# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>クイック スタート: Azure PowerShell で SQL Server Windows 仮想マシンを作成する
 
 このクイック スタートでは、Azure PowerShell で SQL Server 仮想マシンを作成する方法について説明します。
 
@@ -28,18 +28,18 @@ ms.locfileid: "74790915"
 > - このクイック スタートでは、SQL VM を迅速にプロビジョニングしてそこに接続する方法について説明します。 SQL VM を作成するためのその他の Azure PowerShell オプションについては、[Azure PowerShell を使用した SQL Server VM のプロビジョニング ガイド](virtual-machines-windows-ps-sql-create.md)を参照してください。
 > - SQL Server の仮想マシンに関するご質問については、[よくあるご質問](virtual-machines-windows-sql-server-iaas-faq.md)に関するページをご覧ください。
 
-## <a id="subscription"></a>Azure サブスクリプションを取得する
+## <a name="get-an-azure-subscription"></a><a id="subscription"></a>Azure サブスクリプションを取得する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 
-## <a id="powershell"></a>Azure PowerShell を入手する
+## <a name="get-azure-powershell"></a><a id="powershell"></a>Azure PowerShell を入手する
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 ## <a name="configure-powershell"></a>PowerShell の構成
 
-1. PowerShell を開き、**Connect-AzAccount** コマンドを実行し、Azure アカウントへのアクセスを確立します。
+1. PowerShell を開き、**Connect-AzAccount** コマンドを実行することで、Azure アカウントへのアクセスを確立します。
 
    ```powershell
    Connect-AzAccount
@@ -47,7 +47,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 資格情報を入力するための画面が表示されます。 Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 1. 一意のリソース グループ名を持つ変数を定義します。 クイック スタートの以降の手順を簡略化するために、残りのコマンドでは、この名前を他のリソース名のベースとして使用します。
 
@@ -178,7 +178,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 これで、SQL Server にローカル接続されました。 リモート接続する場合は、ポータルから、または手動で[接続を構成する](virtual-machines-windows-sql-connect.md)必要があります。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 VM を継続的に実行する必要がない場合は、使用中でないときに停止することで、不要な料金の発生を回避できます。 次のコマンドでは、VM を停止しますが、後から使用できるように残しておきます。
 
@@ -188,7 +188,7 @@ Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 
 **Remove-AzResourceGroup** コマンドを使用して、仮想マシンに関連付けられているすべてのリソースを完全に削除することもできます。 そのようにすると仮想マシンも完全に削除されるため、このコマンドは注意して使用してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Azure PowerShell を使用して SQL Server 2017 仮想マシンを作成しました。 新しい SQL Server にデータを移行する方法の詳細については、次の記事を参照してください。
 

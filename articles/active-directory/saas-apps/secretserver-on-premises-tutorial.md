@@ -17,10 +17,10 @@ ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4926fc1833cc14b2ad81a01e230a5c3c37ba6ab3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68880171"
 ---
 # <a name="tutorial-integrate-secret-server-on-premises-with-azure-active-directory"></a>チュートリアル:Secret Server (On-Premises) と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "68880171"
 
 * Secret Server (On-Premises) にアクセスするユーザーを Azure AD で管理できます。
 * ユーザーが自分の Azure AD アカウントを使用して Secret Server (On-Premises) に自動的にサインインできるようにします。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

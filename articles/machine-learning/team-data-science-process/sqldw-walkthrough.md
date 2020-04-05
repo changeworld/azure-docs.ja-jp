@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e64b951a8bb96b25a6ef917b4cebe077d6dd6657
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 96d0a5b2fb59e4612107d8ccbf7285fff7576585
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718448"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128381"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science Process の活用: Azure Synapse Analytics の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) データセット) で Azure Synapse Analytics を使用して、機械学習モデルを構築し、デプロイする方法を説明します。 構築される二項分類モデルでは、乗車でチップが支払われるかどうかを予測します。  モデルには、多クラス分類 (チップがあるかどうかを問わない) と回帰 (支払われたチップ金額の分布) が含まれます。
 
 この手順は、 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) ワークフローに従っています。 データ サイエンス環境のセットアップ方法、Azure Synapse Analytics にデータを読み込む方法、Azure Synapse Analytics または IPython Notebook を使用してデータを探索し、特徴をエンジニアリングする方法について説明します。 次に、Azure Machine Learning でのモデルのビルドとデプロイ方法について説明します。
 
-## <a name="dataset"></a>NYC タクシー乗車データセット
+## <a name="the-nyc-taxi-trips-dataset"></a><a name="dataset"></a>NYC タクシー乗車データセット
 NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) で構成されており、ファイルには 1 億 7300 万以上の個々の乗車と、各乗車に対して支払われた料金が記録されています。 各乗車レコードには、乗車と降車の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、メダリオン (タクシーの一意の ID) 番号が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
 
 1. **trip_data.csv** ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離など) が含まれています。 いくつかのサンプル レコードを次に示します。
@@ -49,7 +49,7 @@ trip\_data と trip\_fare の結合に使用される**一意のキー**は、
 * hack\_license、
 * pickup\_datetime です。
 
-## <a name="mltasks"></a>3 種類の予測タスクに対応する
+## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>3 種類の予測タスクに対応する
 3 種類のモデリング タスクを説明するために、*tip\_amount* に基づく 3 つの予測の問題を編成しました。
 
 1. **二項分類**:乗車においてチップが支払われたかどうかを予測します。つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
@@ -62,7 +62,7 @@ trip\_data と trip\_fare の結合に使用される**一意のキー**は、
         Class 4 : tip_amount > $20
 3. **回帰タスク**:乗車で支払われたチップの金額を予測します。
 
-## <a name="setup"></a>Azure データ サイエンス環境の高度な分析のためのセット アップ
+## <a name="set-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Azure データ サイエンス環境の高度な分析のためのセット アップ
 Azure データ サイエンス環境をセット アップするには、以下の手順に従います。
 
 **独自の Azure BLOB ストレージ アカウントを作成する**
@@ -75,16 +75,16 @@ Azure データ サイエンス環境をセット アップするには、以下
   * **コンテナー名** (Azure BLOB ストレージ内のデータの格納先)
 
 **Azure Synapse Analytics インスタンスをプロビジョニングします。**
-「[Azure portal で Azure SQL Data Warehouse を作成し、クエリを実行する](../../sql-data-warehouse/create-data-warehouse-portal.md)」の説明に従って、Azure Synapse Analytics インスタンスをプロビジョニングします。 後の手順で使用される次の Azure Synapse Analytics の資格情報は必ずメモしておいてください。
+「[Azure portal で Azure SQL Data Warehouse を作成し、クエリを実行する](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)」の説明に従って、Azure Synapse Analytics インスタンスをプロビジョニングします。 後の手順で使用される次の Azure Synapse Analytics の資格情報は必ずメモしておいてください。
 
 * **サーバー名**: \<サーバー名>.database.windows.net
 * **SQLDW (データベース) 名**
 * **ユーザー名**
 * **パスワード**
 
-**Visual Studio と SQL Server Data Tools をインストールします。** 手順については、「[SQL Data Warehouse 用の Visual Studio 2019 を始める](../../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)」を参照してください。
+**Visual Studio と SQL Server Data Tools をインストールします。** 手順については、「[SQL Data Warehouse 用の Visual Studio 2019 を始める](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)」を参照してください。
 
-**Visual Studio で Azure Synapse Analytics に接続します。** 手順については、「[Azure SQL Data Warehouse への接続](../../sql-data-warehouse/sql-data-warehouse-connect-overview.md)」の手順 1 と 2 を参照してください。
+**Visual Studio で Azure Synapse Analytics に接続します。** 手順については、「[Azure SQL Data Warehouse への接続](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-connect-overview.md)」の手順 1 と 2 を参照してください。
 
 > [!NOTE]
 > Azure Synapse Analytics で作成したデータベースに対して (接続に関するトピックの手順 3 で示されているクエリではなく) 次の SQL クエリを実行して、**マスター キーを作成します**。
@@ -101,7 +101,7 @@ Azure データ サイエンス環境をセット アップするには、以下
 
 **Azure サブスクリプションで Azure Machine Learning ワークスペースを作成します。** 手順については、 [Azure Machine Learning のワークスペースの作成](../studio/create-workspace.md)に関するページをご覧ください。
 
-## <a name="getdata"></a>Azure Synapse Analytics にデータを読み込む
+## <a name="load-the-data-into-azure-synapse-analytics"></a><a name="getdata"></a>Azure Synapse Analytics にデータを読み込む
 Windows PowerShell コマンド コンソールを開きます。 以下の PowerShell コマンドを実行して、サンプルの SQL スクリプト ファイルを *-DestDir* パラメーターで指定したローカル ディレクトリにダウンロードします。このファイルは GitHub で共有されています。 *-DestDir* パラメーターの値は任意のローカル ディレクトリに変更できます。 *-DestDir* が存在しない場合は、PowerShell スクリプトによって作成されます。
 
 > [!NOTE]
@@ -336,7 +336,7 @@ PowerShell スクリプトを初めて実行するときに、Azure Synapse Anal
 
 ![成功したスクリプト実行の出力][20]
 
-## <a name="dbexplore"></a>Azure Synapse Analytics でのデータの探索と特徴エンジニアリング
+## <a name="data-exploration-and-feature-engineering-in-azure-synapse-analytics"></a><a name="dbexplore"></a>Azure Synapse Analytics でのデータの探索と特徴エンジニアリング
 このセクションでは、 **Visual Studio Data Tools**を使用して直接 Azure Synapse Analytics に対して SQL クエリを実行し、データの探索と特徴の生成を行います。 このセクションで使用されるすべての SQL クエリは、*SQLDW_Explorations.sql* という名前のサンプル スクリプトにあります。 このファイルは、PowerShell スクリプトによってローカル ディレクトリに既にダウンロードされています。 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql)から取得することもできます。 ただし、GitHub のファイルには Azure Synapse Analytics の情報は含まれていません。
 
 Visual Studio で、Azure Synapse Analytics ログイン名とパスワードを使用して Azure Synapse Analytics に接続し、**SQL オブジェクト エクスプローラー**を開いて、データベースとテーブルがインポートされていることを確認します。 *SQLDW_Explorations.sql* ファイルを取得します。
@@ -562,7 +562,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 1. データを抽出してサンプリングする最終的な SQL クエリを保存し、このクエリをコピーして直接 Azure Machine Learning のデータのインポート[import-data] モジュールに貼り付けます。または、
 2. 構築するモデルに使用する予定のサンプリングおよびエンジニアリング済みのデータを新しい Azure Synapse Analytics テーブルに保持し、Azure Machine Learning の[データのインポート][import-data] モジュールでその新しいテーブルを使用します。 このタスクは、前の手順の PowerShell スクリプトで既に行われています。 データのインポート モジュールでは、このテーブルから直接読み取ることできます。
 
-## <a name="ipnb"></a>IPython Notebook でのデータの探索と特徴エンジニアリング
+## <a name="data-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>IPython Notebook でのデータの探索と特徴エンジニアリング
 このセクションでは、以前作成した Azure Synapse Analytics に対して Python と SQL の両方のクエリを使用して、データの探索と特徴の生成を行います。 **SQLDW_Explorations.ipynb** という名前のサンプルの IPython Notebook および **SQLDW_Explorations_Scripts.py** という Python スクリプト ファイルは、ローカル ディレクトリにダウンロードされています。 これらは [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW)からも入手できます。 これら 2 つのファイルは、Python スクリプトでは同一です。 IPython Notebook サーバーがない場合は、Python スクリプト ファイルが提供されます。 これら 2 つのサンプルの Python ファイルは、 **Python 2.7**で設計されています。
 
 ローカル マシンにダウンロードされたサンプルの IPython Notebook と Python スクリプト ファイルで必要な Azure Synapse Analytics の情報は、PowerShell スクリプトによって既に取り込まれています。 これらは変更しなくても実行できます。
@@ -802,7 +802,7 @@ and
     query = '''SELECT TOP 100 * FROM <schemaname>.<nyctaxi_sample>'''
     pd.read_sql(query,conn)
 
-## <a name="mlmodel"></a>Azure Machine Learning でモデルを作成する
+## <a name="build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Azure Machine Learning でモデルを作成する
 これで、[Azure Machine Learning](https://studio.azureml.net) でのモデルの作成とモデルのデプロイに進む準備が整いました。 データは、以前特定したどの予測の問題でも使用できる状態になりました。予測の問題とは、
 
 1. **二項分類**:乗車に対してチップが支払われたかどうかを予測します。
@@ -850,7 +850,7 @@ Azure Synapse Analytics データベースから直接データを読み取る�
 >
 >
 
-## <a name="mldeploy"></a>Azure Machine Learning にモデルをデプロイする
+## <a name="deploy-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Azure Machine Learning にモデルをデプロイする
 モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。 Azure ML Web サービスのデプロイの詳細については、「 [Azure Machine Learning Web サービスをデプロイする](../studio/deploy-a-machine-learning-web-service.md)」を参照してください。
 
 新しい Web サービスをデプロイするには以下のことを実行する必要があります。

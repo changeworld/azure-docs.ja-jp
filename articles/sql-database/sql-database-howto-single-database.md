@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/14/2020
 ms.openlocfilehash: 4283e1a2c92b7fe738fb57a8103cea1deb0015a0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76027721"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Azure SQL Database の単一データベースを使用する方法

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60244823"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
@@ -58,7 +58,7 @@ Azure AD は、フェデレーション メタデータを監視し、その結�
 >
 >
 
-## 証明書の更新が必要かどうかを確認する <a name="managecerts"></a>
+## <a name="check-if-the-certificates-need-to-be-updated"></a>証明書の更新が必要かどうかを確認する <a name="managecerts"></a>
 ### <a name="step-1-check-the-autocertificaterollover-state"></a>手順 1:AutoCertificateRollover の状態を確認する
 AD FS サーバーで PowerShell を開きます。 AutoCertificateRollover の値が True に設定されていることを確認します。
 
@@ -96,7 +96,7 @@ AD FS と Azure AD との間の信頼関係のプロパティで証明書が構�
 ### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>手順 3:証明書の有効期限が迫っているかどうかを確認する
 Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"有効期間の終了時刻" の日付を確認します。 今日の日付から 30 日未満である場合、期限切れに対処する必要があります。
 
-| AutoCertificateRollover | Azure AD 側と証明書が同期されている | フェデレーション メタデータにパブリックにアクセス可能 | 有効期限までの日数 | Action |
+| AutoCertificateRollover | Azure AD 側と証明書が同期されている | フェデレーション メタデータにパブリックにアクセス可能 | 有効期限までの日数 | アクション |
 |:---:|:---:|:---:|:---:|:---:|
 | はい |はい |はい |- |対処は必要ありません。 「 [トークン署名証明書を自動的に更新する](#autorenew)」を参照してください。 |
 | はい |いいえ |- |15 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
@@ -104,7 +104,7 @@ Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"�
 
 \[-] 該当せず
 
-## トークン署名証明書を自動的に更新する (推奨) <a name="autorenew"></a>
+## <a name="renew-the-token-signing-certificate-automatically-recommended"></a>トークン署名証明書を自動的に更新する (推奨) <a name="autorenew"></a>
 次の 2 点両方に該当する場合は、手動の手順を実行する必要はありません。
 
 * Web アプリケーション プロキシをデプロイ済みで、エクストラネットからフェデレーション メタデータへのアクセスを有効にできる。
@@ -121,7 +121,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 この `(your_FS_name)` は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。  どちらの設定も適切であることを確認できた場合、他の作業は不要です。  
 
 例: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
-## トークン署名証明書を手動で更新する <a name="manualrenew"></a>
+## <a name="renew-the-token-signing-certificate-manually"></a>トークン署名証明書を手動で更新する <a name="manualrenew"></a>
 トークン署名証明書を手動で更新することもできます。 たとえば、次のシナリオは手動更新の方が適している場合があります。
 
 * トークン署名証明書が自己署名証明書ではない。 よくある理由に、企業が、組織的な証明機関によって登録された AD FS 証明書を管理していることが挙げられます。
@@ -168,7 +168,7 @@ AD FS の既定の構成が変更されている (**AutoCertificateRollover** �
 >
 
 
-## Azure AD Connect を使用して Azure AD 信頼を修復する <a name="connectrenew"></a>
+## <a name="repair-azure-ad-trust-by-using-azure-ad-connect"></a>Azure AD Connect を使用して Azure AD 信頼を修復する <a name="connectrenew"></a>
 Azure AD Connect を使用して AD FS ファームと Azure AD 信頼を構成した場合は、トークン署名証明書に関して何らかの対処が必要かどうかを Azure AD Connect を使用して検出できます。 証明書を更新する必要がある場合は、Azure AD Connect を使用して更新できます。
 
 詳細については、「 [信頼の修復](how-to-connect-fed-management.md)」を参照してください。

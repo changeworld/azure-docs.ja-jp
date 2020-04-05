@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 8190265753bddb3038c5403411c4be193dd8075c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c56088a2c51c50c7f9cf1ff1e790d580fdb08d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433619"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245397"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して .NET Framework アプリを作成する
 
@@ -29,13 +29,15 @@ ms.locfileid: "75433619"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[構成エクスプローラー]**  >  **[作成]** の順に選択して、次のキーと値のペアを追加します。
+6. **[構成エクスプローラー]**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
 
-    | Key | 値 |
+    | Key | Value |
     |---|---|
     | TestApp:Settings:Message | Azure App Configuration からのデータ |
 
     **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
+
+7. **[適用]** を選択します。
 
 ## <a name="create-a-net-console-app"></a>.NET コンソール アプリを作成する
 
@@ -43,7 +45,7 @@ ms.locfileid: "75433619"
 
 1. **[新しいプロジェクトの作成]** で、 **[コンソール]** プロジェクトの種類をフィルターで選択し、 **[コンソール アプリ (.NET Framework)]** をクリックします。 **[次へ]** を選択します。
 
-1. **[新しいプロジェクトの構成]** で、プロジェクト名を入力します。 **[フレームワーク]** で、 **.NET Framework 4.7.1** 以上を選択します。 **作成** を選択します。
+1. **[新しいプロジェクトの構成]** で、プロジェクト名を入力します。 **[フレームワーク]** で、 **.NET Framework 4.7.1** 以上を選択します。 **［作成］** を選択します
 
 ## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
@@ -92,7 +94,7 @@ ms.locfileid: "75433619"
 
 1. **ConnectionString** という名前の環境変数を App Configuration ストアの接続文字列に設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行します。
 
-    ```CLI
+    ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 

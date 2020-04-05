@@ -8,11 +8,11 @@ ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658973"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234159"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure リソース ログをストレージ アカウントにアーカイブする
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。  この記事では、アーカイブ対象のデータを保持するための、Azure ストレージ アカウントへのプラットフォーム ログの収集について説明します。

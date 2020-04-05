@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.openlocfilehash: ce98d2db86c87ac6aa8fa4872bc076714467d32f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370295"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230723"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft ID プラットフォーム開発者向け用語集
 

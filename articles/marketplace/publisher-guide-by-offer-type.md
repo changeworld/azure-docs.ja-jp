@@ -1,20 +1,18 @@
 ---
 title: Azure Marketplace における公開オプションの選定 | Azure Marketplace
 description: この記事では､パートナーが Azure Marketplace にアプリを公開しようとするときに理解しておく必要がある適格性条件と公開要件を説明します｡
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 43ca74faadf7890f1274afc4905af79237918f4a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: a471e756cd4c3f174538f51eb657df2e3216bd54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827789"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285063"
 ---
 # <a name="publishing-guide-by-offer-type"></a>プランの種類別の公開ガイド
 
@@ -45,8 +43,8 @@ ms.locfileid: "73827789"
 
 最後に、シングル サインオンの要件の詳細については、リスト オプションとオファーの種類別の [**Azure AD の要件**](https://docs.microsoft.com/azure/marketplace/enable-appsource-marketplace-using-azure-ad)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-*   選択したオファーの種類について、公開オプションにおける適格性の要件を確認し、オファーの選択および構成を確定する。
-*   ネットショップごとの公開パターン (ソリューションをオファーの種類や構成にマップする方法など) を確認する。
+*    選択したオファーの種類について、公開オプションにおける適格性の要件を確認し、オファーの選択および構成を確定する。
+*    ネットショップごとの公開パターン (ソリューションをオファーの種類や構成にマップする方法など) を確認する。
 

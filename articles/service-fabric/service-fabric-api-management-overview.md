@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
 ms.openlocfilehash: 2a331715d4e4538cfdda8d958ff549a81b627b79
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76028550"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Azure Service Fabric と API Management の概要

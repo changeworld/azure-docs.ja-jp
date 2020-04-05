@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 663958ae367162eaeb336c819d1d219dc74a2cbe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233276"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Syncplicity の統合

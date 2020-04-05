@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561830"
 ---
 # <a name="azure-event-grid-event-schema-for-event-hubs"></a>Azure Event Grid の Event Hubs 用のイベント スキーマ
@@ -75,14 +75,14 @@ Event Hubs は、キャプチャ ファイルが作成されたときに、種�
 | fileUrl | string | キャプチャ ファイルのパス。 |
 | fileType | string | キャプチャ ファイルのファイルの種類。 |
 | partitionId | string | シャード ID。 |
-| sizeInBytes | integer | ファイル サイズ。 |
-| eventCount | integer | ファイル内のイベントの数。 |
-| firstSequenceNumber | integer | キューの最小のシーケンス番号。 |
-| lastSequenceNumber | integer | キューの最後のシーケンス番号。 |
+| sizeInBytes | 整数 (integer) | ファイル サイズ。 |
+| eventCount | 整数 (integer) | ファイル内のイベントの数。 |
+| firstSequenceNumber | 整数 (integer) | キューの最小のシーケンス番号。 |
+| lastSequenceNumber | 整数 (integer) | キューの最後のシーケンス番号。 |
 | firstEnqueueTime | string | キューの最初の時間。 |
 | lastEnqueueTime | string | キューの最後の時間。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/31/2019
-ms.openlocfilehash: b37430ed7f23088c9bcacd555d68e484310de700
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 75f84f87fc59a870a0c88fd24cb1b1b8894b3e2a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562155"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79209570"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>クイック スタート:Visual Studio で .NET と C# を使用して Azure SQL データベースに接続してクエリを実行する
 
-このクイック スタートでは、Visual Studio で [.NET Framework](https://www.microsoft.com/net/) と C# コードを使用し、Azure SQL データベースに対して Transact-SQL ステートメントを使用してクエリを実行する方法について説明します。
+このクイック スタートでは、Visual Studio で [.NET Framework](https://www.microsoft.com/net/) と C# コードを使用し、Transact-SQL ステートメントを使って Azure SQL データベースに対してクエリを実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +33,7 @@ ms.locfileid: "75562155"
   | 作成| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | [構成] | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
+  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
   |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
   |データの読み込み|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
   |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
@@ -48,7 +48,7 @@ ms.locfileid: "75562155"
 
 Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
 

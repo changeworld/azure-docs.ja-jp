@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/07/2019
 ms.author: orspodek
 ms.openlocfilehash: 81d26462d65f947c2b4b8cf49eb2998b0cc1d048
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72031000"
 ---
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 データ接続を削除するには、次のコマンドを使用します。
 

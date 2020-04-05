@@ -1,5 +1,5 @@
 ---
-title: Azure アカウントをパートナー ID にリンクする | Microsoft Docs
+title: Azure アカウントをパートナー ID にリンクする
 description: Azure の顧客のリソースを管理する際に使用するユーザー アカウントにパートナー ID をリンクすることで、顧客のエンゲージメントを追跡します。
 author: dhirajgandhi
 ms.reviewer: dhgandhi
@@ -7,18 +7,18 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: c3f5dd4d1b67f5b1079a56d5c3428d286fd9d77f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651385"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204802"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
-Microsoft パートナーは、お客様が Microsoft 製品を使用してビジネスや任務の目的を達成できるよう支援するサービスを提供しています。 パートナー ユーザーは、Azure サービスの管理、構成、サポートをお客様に代わって行うときに、お客様の環境にアクセスする必要があります。 パートナーは、パートナー管理者リンクを使用して、パートナー ネットワーク ID をサービス提供に使用される資格情報に関連付けることができます。
+Microsoft パートナーは、お客様が Microsoft 製品を使用してビジネスや任務の目的を達成できるよう支援するサービスを提供しています。 パートナー ユーザーは、Azure サービスの管理、構成、サポートをお客様に代わって行うときに、お客様の環境にアクセスする必要があります。 パートナーは、パートナー管理者リンク (PAL) を使用して、パートナー ネットワーク ID をサービス提供に使用される資格情報に関連付けることができます。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+Microsoft は、Azure の利用者を成功に導いているパートナーを PAL によって特定、評価することができます。収益 (Azure が実際に利用されたことによる収益) や効果に貢献している組織を、アカウントのアクセス許可 (RBAC の役割) とスコープ (サブスクリプション、リソース グループ、リソース) に基づいて把握することができます。
 
 ## <a name="get-access-from-your-customer"></a>顧客からアクセス権を取得する
 

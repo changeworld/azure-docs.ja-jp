@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:Azure AD が既にある場合 | Microsoft Docs
+title: 'Azure AD Connect: Azure AD が既にある場合 | Microsoft Docs'
 description: このトピックでは、既存の Azure AD テナントがある場合の Connect の使い方を説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3636b88b14cf7e76e4fb023434316e7ee31ded04
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71336819"
 ---
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect:既存のテナントがある場合
+# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: 既存のテナントがある場合
 Azure AD Connect の使い方に関するトピックではほとんどの場合、新しい Azure AD テナントで作業を開始すること、そしてユーザーまたはその他のオブジェクトがないことを想定しています。 しかし、ユーザーとその他のオブジェクトが存在する Azure AD テナントを既に使用していて Connect が必要になった場合は、このトピックを参照してください。
 
 ## <a name="the-basics"></a>基本
@@ -74,5 +74,5 @@ Connect を新しくインストールする場合、完全一致とあいまい
 
 オンプレミスの AD の追加を計画する理由が LOB (基幹業務アプリ) への対応のみである場合は、[Azure AD Domain Services](../../active-directory-domain-services/index.yml) の使用を検討した方がよいと思われます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

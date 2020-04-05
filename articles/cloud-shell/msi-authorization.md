@@ -11,10 +11,10 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/14/2018
 ms.openlocfilehash: a5d49a16324a5a97f4a0507f9abf47ea602ea072
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72328708"
 ---
 # <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>Azure Cloud Shell で Azure リソースのマネージド ID を使用する
@@ -45,6 +45,6 @@ echo The MSI access token is $access_token
 
 トークンのエラーを処理するには、[MSI アクセス トークンの使用に関する MSI ページ](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [MSI の詳細情報](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)  
 [MSI VM からアクセス トークンを取得する](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)

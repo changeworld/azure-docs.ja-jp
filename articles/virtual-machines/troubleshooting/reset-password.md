@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 08/20/2019
 ms.author: delhan
 ms.openlocfilehash: 83751538efe4f3d3af5928caa04b265b6c867442
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71153571"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Azure VM 上でローカルの Linux パスワードをリセットする方法
@@ -105,7 +105,7 @@ VM にログインすることができず、使用したパスワードが正�
 
 12. [影響を受けている VM の OS ディスクを変更します](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [OS ディスクを別の Azure VM にアタッチして Azure VM のトラブルシューティングを行う](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
 

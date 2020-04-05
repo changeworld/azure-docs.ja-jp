@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mialdrid
 ms.openlocfilehash: c68ffd019937f902567c3deda8d879448dc082da
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355961"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236355"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 回線とピアリング
 
@@ -24,7 +24,7 @@ ExpressRoute 回線は、オンプレミスのインフラストラクチャを�
 > Azure パブリック ピアリングは非推奨となり、新しい ExpressRoute 回線には使用できません。 新しい回線では、Microsoft ピアリングおよびプライベート ピアリングをサポートします。  
 >
 
-## <a name="circuits"></a>ExpressRoute 回線
+## <a name="expressroute-circuits"></a><a name="circuits"></a>ExpressRoute 回線
 
 ExpressRoute 回線は、接続プロバイダー経由のオンプレミス インフラストラクチャと Microsoft クラウド サービス間の論理接続を表します。 複数の ExpressRoute 回線を注文することができます。 回線をそれぞれ同じリージョンや異なるリージョンに配置したり、異なる接続プロバイダーを経由して社内に接続したりすることができます。
 
@@ -34,23 +34,23 @@ ExpressRoute 回線は物理エンティティにはマップされません。 
 
 各接続には固定帯域幅 (50 Mbps、100 Mbps、200 Mbps、500 Mbps、1 Gbps、10 Gbps) があり、接続プロバイダーとピアリング場所にマップされます。 選択する帯域幅は、すべての回線ピアリングにわたって共有されます。
 
-### <a name="quotas"></a>クォータ、制限、および制限事項
+### <a name="quotas-limits-and-limitations"></a><a name="quotas"></a>クォータ、制限、および制限事項
 
 既定のクォータと制限は、すべての ExpressRoute 回線に適用されます。 クォータに関する最新情報については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md) 」ページをご覧ください。
 
-## <a name="routingdomains"></a>ExpressRoute ピアリング
+## <a name="expressroute-peering"></a><a name="routingdomains"></a>ExpressRoute ピアリング
 
 ExpressRoute 回線には、複数のルーティング ドメイン/ピアリングが関連付けられます。Azure パブリック、Azure プライベート、および Microsoft です。 各ピアリングは、高可用性のために、ルーターのペアにまったく同様に (アクティブ/アクティブまたは負荷分散構成で) 構成されます。 Azure サービスは *Azure パブリック*および *Azure プライベート*として分類され、IP アドレス指定スキームを表します。
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
-### <a name="privatepeering"></a>Azure プライベート ピアリング
+### <a name="azure-private-peering"></a><a name="privatepeering"></a>Azure プライベート ピアリング
 
 Azure Compute Services、つまり、仮想ネットワーク内にデプロイされる仮想マシン (IaaS) とクラウド サービス (PaaS) には、プライベート ピアリング ドメイン経由で接続できます。 プライベート ピアリング ドメインは、お客様のコア ネットワークを Microsoft Azure に信頼できる方法で拡張したものと言えます。 コア ネットワークと Azure Virtual Network (VNET) の間に双方向接続を設定できます。 このピアリングにより、仮想マシンとクラウド サービスにプライベート IP アドレスで直接接続できます。  
 
 プライベート ピアリング ドメインには複数の仮想ネットワークを接続できます。 上限と制限事項については、 [FAQ のページ](expressroute-faqs.md) を参照してください。 制限に関する最新情報については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md) 」ページをご覧ください。  ルーティング構成の詳細については、 [ルーティング](expressroute-routing.md) に関するページを参照してください。
 
-### <a name="microsoftpeering"></a>Microsoft ピアリング
+### <a name="microsoft-peering"></a><a name="microsoftpeering"></a>Microsoft ピアリング
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
@@ -58,7 +58,7 @@ Microsoft オンライン サービス (Office 365 および Azure PaaS サー�
 
 サポートされるサービス、料金、および構成の詳細については、 [FAQ のページ](expressroute-faqs.md) を参照してください。 Microsoft ピアリングのサポートを提供している接続プロバイダーの一覧については、 [ExpressRoute の場所](expressroute-locations.md) に関するページを参照してください。
 
-## <a name="peeringcompare"></a>ピアリングの比較
+## <a name="peering-comparison"></a><a name="peeringcompare"></a>ピアリングの比較
 
 次の表では、3 つのピアリングを比較しています。
 
@@ -68,7 +68,7 @@ ExpressRoute 回線の一部として 1 つ以上のルーティング ドメイ
 
 各ピアリングには、個別の BGP セッションが必要です (ピアリングの種類ごとに 1 つのペア)。 BGP セッションのペアによって、高可用性リンクが実現されます。 レイヤー 2 接続プロバイダーを経由して接続している場合、ルーティングの構成と管理はお客様の責任となります。 詳細については、ExpressRoute を設定する [ワークフロー](expressroute-workflows.md) を参照してください。
 
-## <a name="health"></a>ExpressRoute の正常性
+## <a name="expressroute-health"></a><a name="health"></a>ExpressRoute の正常性
 
 [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) を使用して、ExpressRoute 回線の可用性、VNet の接続、および帯域幅の使用状況を監視できます。
 

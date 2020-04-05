@@ -5,10 +5,10 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: a3fe1b290917de20b7c3af31fe386ed93580d850
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74325115"
 ---
 # <a name="azure-blockchain-tokens-composability"></a>Azure Blockchain Tokens の構成可能性
@@ -79,6 +79,6 @@ ms.locfileid: "74325115"
 
 たとえば、不動産の権原は譲渡可能なトークンであり、不動産が売却されるときに、ある人から別の人に譲渡される可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Blockchain Tokens アカウントの管理](account-management.md)について学習します。

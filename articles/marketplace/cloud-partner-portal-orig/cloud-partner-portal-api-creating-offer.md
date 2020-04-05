@@ -1,19 +1,18 @@
 ---
 title: オファーを作成または変更する | Azure Marketplace
 description: オファーの新規作成または既存オファーの更新を行うための API です。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: bfb9cfbe2c63caafef8487015f42a05b98afa29c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 681e71fae161100c8804f95980b9e9567dcf1863
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819710"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288616"
 ---
 <a name="create-or-modify-an-offer"></a>オファーを作成または変更する
 =========================
@@ -28,18 +27,18 @@ ms.locfileid: "73819710"
 
 |  **Name**         |  **説明**                      |  **データの種類**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  パブリッシャー ID。たとえば、`contoso` |   string |
-| offerId           |  オファー ID                     |   string        |
+| publisherId       |  パブリッシャー ID。たとえば、`contoso` |   String |
+| offerId           |  オファー ID                     |   String        |
 | api-version       |  API の最新バージョン            |   Date           |
 |  |  |  |
 
 <a name="header"></a>ヘッダー
 ------
 
-|  **Name**        |  **値**               |
+|  **Name**        |  **Value**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
-| Authorization    | `Bearer YOUR_TOKEN`      |
+| 承認    | `Bearer YOUR_TOKEN`      |
 |  |  |
 
 
@@ -247,11 +246,11 @@ ms.locfileid: "73819710"
 
 | **コード**  |  **説明**                                                                            |
 | --------  |  ---------------                                                                            |
-|  200      | `OK` 要求が正常に処理されて、オファーが正常に変更されました。           |
-|  201      | `Created` 要求が正常に処理されて、オファーが正常に作成されました。   |
-|  400      | `Bad/Malformed request` エラーの応答本文にさらに情報が含まれている場合があります。            |
-|  403      | `Forbidden` クライアントは、要求された名前空間にアクセスできません。                     |
-|  404      | `Not found` クライアントによって参照されているエンティティは存在しません。                           |
+|  200      | [https://login.microsoftonline.com/consumers/](`OK`) 要求が正常に処理されて、オファーが正常に変更されました。           |
+|  201      | [https://login.microsoftonline.com/consumers/](`Created`) 要求が正常に処理されて、オファーが正常に作成されました。   |
+|  400      | [https://login.microsoftonline.com/consumers/](`Bad/Malformed request`) エラーの応答本文にさらに情報が含まれている場合があります。            |
+|  403      | [https://login.microsoftonline.com/consumers/](`Forbidden`) クライアントは、要求された名前空間にアクセスできません。                     |
+|  404      | [https://login.microsoftonline.com/consumers/](`Not found`) クライアントによって参照されているエンティティは存在しません。                           |
 |  412      | サーバーが、要求者が要求で指定した前提条件の 1 つを満たしていません。 クライアントは、要求で送信された ETAG をチェックする必要があります。 |
 |  |  |
 

@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e3297319c67ad2b7c94371356cde49113c7ef737
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718890"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227203"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>データ サイエンス プロジェクトのためのプラットフォームとツール
 
@@ -74,7 +74,7 @@ Azure SQL Data Warehouse の詳細については、[SQL Data Warehouse](https:/
 
 Azure Data Lake は、正式な要件やスキーマを適用する前に 1 か所に収集されたあらゆる種類のデータのエンタープライズ規模のリポジトリです。 この柔軟性により、データのサイズまたは構造や、データの取り込み速度に関係なく、あらゆる種類のデータを Data Lake に保持できます。 組織では、Hadoop や高度な分析を使用して、これらの Data Lake でパターンを検出できます。 また、Data Lake は、データをキュレートし、データ ウェアハウスに移動する前に低コストでデータを準備するためのリポジトリとしても機能します。
 
-Azure Data Lake の詳細については、「[Introducing Azure Data Lake (Azure Data Lake の概要)](https://azure.microsoft.com/blog/introducing-azure-data-lake/)」をご覧ください。 Azure Data Lake を使用してスケーラブルなエンド ツー エンドのデータ サイエンス ソリューションを構築する方法については、「[Azure Data Lake を使用したスケーラブルなデータ サイエンス:エンドツーエンド チュートリアル](data-lake-walkthrough.md)」をご覧ください。
+Azure Data Lake の詳細については、「[Introducing Azure Data Lake (Azure Data Lake の概要)](https://azure.microsoft.com/blog/introducing-azure-data-lake/)」をご覧ください。 Azure Data Lake を使用してスケーラブルなエンド ツー エンドのデータ サイエンス ソリューションを構築する方法については、「[Azure Data Lake のスケーラブルなデータ サイエンス: エンドツーエンド チュートリアル](data-lake-walkthrough.md)」をご覧ください。
 
 
 ## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Azure HDInsight Hive (Hadoop) クラスター
@@ -104,7 +104,7 @@ R Services (データベース内) では、SQL Server のツールとテクノ�
 Microsoft の TDSP チームは、SQL Server 2016 R Services でデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは R プログラマ向けで、もう 1 つは SQL 開発者向けです。 **R プログラマ**の場合は、[データ サイエンスのエンド ツー エンド チュートリアル](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)をご覧ください。 **SQL 開発者**の場合は、[SQL 開発者向けの高度なデータベース内分析のチュートリアル](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)をご覧ください。
 
 
-## <a name="appendix"></a>付録:データ サイエンス プロジェクトを設定するためのツール
+## <a name="appendix-tools-to-set-up-data-science-projects"></a><a name="appendix"></a>付録: データ サイエンス プロジェクトを設定するためのツール
 
 ### <a name="install-git-credential-manager-on-windows"></a>Windows への Git Credential Manager のインストール
 

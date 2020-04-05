@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
 ms.openlocfilehash: 09e4616bc7cbb4361ad067ed64984ed95e9a20c5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74849192"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
@@ -21,7 +21,7 @@ ms.locfileid: "74849192"
 > [!NOTE] 
 > プロキシの実行には標準の Functions の料金が適用されます。 詳細については、[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)に関するページを参照してください。
 
-## <a name="create"></a>プロキシを作成する
+## <a name="create-a-proxy"></a><a name="create"></a>プロキシを作成する
 
 このセクションでは、Functions ポータルでプロキシを作成する方法を示します。
 
@@ -34,27 +34,27 @@ ms.locfileid: "74849192"
 
 これで、プロキシが関数アプリの新しいエンドポイントになりました。 クライアントの観点からは、Azure Functions の HttpTrigger と同じです。 プロキシの URL をコピーし、任意の HTTP クライアントでテストすることで、新しいプロキシを試してみることができます。
 
-## <a name="modify-requests-responses"></a>要求と応答を変更する
+## <a name="modify-requests-and-responses"></a><a name="modify-requests-responses"></a>要求と応答を変更する
 
 バックエンドに対する要求やバックエンドからの応答には、Azure Functions プロキシを使って変更を加えることができます。 この変換時には、「[変数を使用する]」で定義している変数を使うことができます。
 
-### <a name="modify-backend-request"></a>バックエンドへの要求を変更する
+### <a name="modify-the-back-end-request"></a><a name="modify-backend-request"></a>バックエンドへの要求を変更する
 
 既定では、バックエンドへの要求は、元の要求のコピーとして初期化されます。 バックエンドの URL を設定することに加え、HTTP メソッドやヘッダー、クエリ文字列のパラメーターに変更を加えることができます。 変更後の値から、[アプリケーション設定]や[元のクライアント要求のパラメーター]を参照することが可能です。
 
 バックエンドへの要求は、ポータルで [proxy detail]\(プロキシの詳細\) ページの *[request override]\(要求のオーバーライド\)* セクションを展開して変更することができます。 
 
-### <a name="modify-response"></a>応答を変更する
+### <a name="modify-the-response"></a><a name="modify-response"></a>応答を変更する
 
 既定では、クライアントへの応答は、バックエンドからの応答のコピーとして初期化されます。 応答の状態コード、理由の文字列、ヘッダー、本文には、変更を加えることができます。 変更後の値から、[アプリケーション設定]や[元のクライアント要求のパラメーター]、[バックエンドからの応答のパラメーター]を参照することが可能です。
 
 バックエンドへの要求は、ポータルで [proxy detail]\(プロキシの詳細\) ページの *[response override]\(応答のオーバーライド\)* セクションを展開して変更することができます。 
 
-## <a name="using-variables"></a>変数を使用する
+## <a name="use-variables"></a><a name="using-variables"></a>変数を使用する
 
 プロキシの構成は必ずしも静的である必要はありません。 条件に応じて元のクライアント要求やバックエンドからの応答、アプリケーション設定から得られる変数を使うことができます。
 
-### <a name="reference-localhost"></a>ローカル関数を参照する
+### <a name="reference-local-functions"></a><a name="reference-localhost"></a>ローカル関数を参照する
 `localhost` を使用して、往復のプロキシ要求なしで、同じ関数アプリ内の関数を直接参照することができます。
 
 `"backendurl": "https://localhost/api/httptriggerC#1"` は、ローカルの HTTP トリガーされた関数をルート `/api/httptriggerC#1` で参照します。
@@ -63,7 +63,7 @@ ms.locfileid: "74849192"
 >[!Note]  
 >関数が "*function、admin、または sys*" の承認レベルを使用している場合は、元の関数 URL に従って code と clientId を指定する必要があります。 この場合、参照は次のようになります: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`。これらのキーを[アプリケーション設定]に格納し、プロキシでそれらを参照することをお勧めします。 これにより、ソース コードにシークレットを格納しなくて済みます。 
 
-### <a name="request-parameters"></a>要求のパラメーターを参照する
+### <a name="reference-request-parameters"></a><a name="request-parameters"></a>要求のパラメーターを参照する
 
 要求のパラメーターは、バックエンド URL プロパティの入力として、または要求や応答に加える変更の一部として使うことができます。 パラメーターには、ベース プロキシの構成に指定されているルート テンプレートに由来するものもあれば、受信要求のプロパティに由来するものもあります。
 
@@ -79,7 +79,7 @@ ms.locfileid: "74849192"
 * **{request.headers.\<HeaderName\>}** :元の要求から読み取り可能なヘッダー。 *\<HeaderName\>* は、読み取るヘッダーの名前に置き換えます。 該当するヘッダーが要求に含まれていない場合、この値は空の文字列になります。
 * **{request.querystring.\<ParameterName\>}** :元の要求から読み取り可能なクエリ文字列パラメーター。 *\<ParameterName\>* は、読み取るパラメーターの名前に置き換えます。 該当するパラメーターが要求に含まれていない場合、この値は空の文字列になります。
 
-### <a name="response-parameters"></a>バックエンドからの応答のパラメーターを参照する
+### <a name="reference-back-end-response-parameters"></a><a name="response-parameters"></a>バックエンドからの応答のパラメーターを参照する
 
 応答のパラメーターは、クライアントへの応答に加える変更の一部として使うことができます。 構成の値には、次の値を使うことができます。
 
@@ -87,7 +87,7 @@ ms.locfileid: "74849192"
 * **{backend.response.statusReason}** :バックエンドからの応答で返される HTTP 理由文字列。
 * **{backend.response.headers.\<HeaderName\>}** :バックエンドの応答から読み取り可能なヘッダー。 *\<HeaderName\>* は、読み取るヘッダーの名前に置き換えます。 該当するヘッダーが応答に含まれていない場合、この値は空の文字列になります。
 
-### <a name="use-appsettings"></a>アプリケーション設定を参照する
+### <a name="reference-application-settings"></a><a name="use-appsettings"></a>アプリケーション設定を参照する
 
 [関数アプリに対して定義されているアプリケーション設定](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)を参照することもできます。その場合は、設定名をパーセント記号 (%) で囲みます。
 
@@ -96,7 +96,7 @@ ms.locfileid: "74849192"
 > [!TIP] 
 > 複数のデプロイまたはテスト環境がある場合は、バックエンド ホストのアプリケーション設定を使用してください。 そうすることで、常にその環境の適切なバックエンドと通信することができます。
 
-## <a name="debugProxies"></a>プロキシのトラブルシューティング
+## <a name="troubleshoot-proxies"></a><a name="debugProxies"></a>プロキシのトラブルシューティング
 
 フラグ `"debug":true` を `proxies.json` 内の任意のプロキシに追加することで、デバッグ ログを有効にします。 ログは、`D:\home\LogFiles\Application\Proxies\DetailedTrace` に格納され、高度なツール (Kudu) を使用してアクセスできます。 すべての HTTP 応答には、`Proxy-Trace-Location` ヘッダーと、ログ ファイルにアクセスするための URL も含まれます。
 
@@ -144,7 +144,7 @@ ms.locfileid: "74849192"
 > [!NOTE] 
 > Azure Functions プロキシの *route* プロパティ では、Function App ホスト構成の *routePrefix* プロパティは考慮されません。 `/api` のようなプレフィックスを含める場合は、*route* プロパティに含める必要があります。
 
-### <a name="disableProxies"></a> 個々のプロキシを無効する
+### <a name="disable-individual-proxies"></a><a name="disableProxies"></a> 個々のプロキシを無効する
 
 個々のプロキシを無効にするには、`proxies.json` ファイル内のプロキシに `"disabled": true` を追加します。 これにより、matchCondition を満たす要求はすべて 404 を返します。
 ```json
@@ -162,24 +162,24 @@ ms.locfileid: "74849192"
 }
 ```
 
-### <a name="applicationSettings"></a> アプリケーションの設定
+### <a name="application-settings"></a><a name="applicationSettings"></a> アプリケーションの設定
 
 プロキシの動作は、いくつかのアプリ設定によって制御できます。 これらについては、[関数のアプリ設定のリファレンス](./functions-app-settings.md)で説明されています
 
 * [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azure_function_proxy_disable_local_call)
 * [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azure_function_proxy_backend_url_decode_slashes)
 
-### <a name="reservedChars"></a> 予約文字 (文字列形式)
+### <a name="reserved-characters-string-formatting"></a><a name="reservedChars"></a> 予約文字 (文字列形式)
 
 プロキシで JSON ファイルのすべての文字列が読み取られるときは、エスケープ記号として \ が使用されます。 プロキシでは、中括弧も解釈されます。 以下の例の完全なセットを参照してください。
 
-|Character|エスケープ文字|例|
+|文字|エスケープ文字|例|
 |-|-|-|
 |{ または }|{{ または }}|`{{ example }}` --> `{ example }`
 | \ | \\\\ | `example.com\\text.html` --> `example.com\text.html`
 |"|\\\"| `\"example\"` --> `"example"`
 
-### <a name="requestOverrides"></a>requestOverrides オブジェクトの定義
+### <a name="define-a-requestoverrides-object"></a><a name="requestOverrides"></a>requestOverrides オブジェクトの定義
 
 バックエンド リソースが呼び出されたときに要求に対して行う変更は、requestOverrides オブジェクトで定義します。 このオブジェクトは、次のプロパティによって定義されます。
 
@@ -210,7 +210,7 @@ ms.locfileid: "74849192"
 }
 ```
 
-### <a name="responseOverrides"></a>responseOverrides オブジェクトの定義
+### <a name="define-a-responseoverrides-object"></a><a name="responseOverrides"></a>responseOverrides オブジェクトの定義
 
 クライアントに返される応答に対して行う変更は、requestOverrides オブジェクトで定義します。 このオブジェクトは、次のプロパティによって定義されます。
 

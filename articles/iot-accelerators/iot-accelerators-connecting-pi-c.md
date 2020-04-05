@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 3331db51f4d141cf142d1bd0578043ca6681f3cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61454503"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Raspberry Pi デバイスをリモート監視ソリューション アクセラレータに接続する (C)
@@ -47,7 +47,7 @@ Raspberry Pi でコマンド ラインにリモートでアクセスするため
 
 次の手順では、ソリューション アクセラレータに接続する C アプリケーションを構築するために、Raspberry Pi を準備する方法を示しています。
 
-1. **ssh** を使用して Raspberry Pi に接続します。 詳細については、[Raspberry Pi の Web サイト](https://www.raspberrypi.org/)の [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) のセクションを参照してください。
+1. **ssh** を使用して Raspberry Pi に接続します。 詳細については、[Raspberry Pi の Web サイト](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md)の [SSH (Secure Shell)](https://www.raspberrypi.org/) のセクションを参照してください。
 
 1. 次のコマンドを使用して Raspberry Pi を更新します。
 

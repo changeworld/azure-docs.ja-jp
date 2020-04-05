@@ -8,15 +8,15 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
 ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76902705"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ:ロジック アプリの例外処理とエラーのログ記録
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ: ロジックアプリの例外処理とエラーのログ記録
 
-このシナリオでは、ロジック アプリを拡張して例外処理への対応を強化する方法について説明します。 次の質問に答える現実のユース ケースが使用されています。"Azure Logic Apps では例外とエラーの処理がサポートされていますか?"
+このシナリオでは、ロジック アプリを拡張して例外処理への対応を強化する方法について説明します。 Azure Logic Apps における例外処理とエラー処理への対応状況を実際的な見地から明らかにしていきます。
 
 > [!NOTE]
 > 現在の Azure Logic Apps スキーマには、アクションに対する応答の標準テンプレートが用意されています。 このテンプレートには、内部的な検証と、API アプリから返されるエラー応答の両方が含まれます。
@@ -39,7 +39,7 @@ ms.locfileid: "76902705"
 
 ここでは、ログおよびエラー レコードのリポジトリとして [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") を選択しました (Cosmos DB では、レコードはドキュメントと呼ばれます)。 Azure Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
 
-もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。 Cosmos DB には、レコードまたはコレクションごとに **Time to Live** 値を設定できる [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) と呼ばれるプロパティがあります。 この機能により、Cosmos DB から手動でレコードを削除する手間が省かれました。
+もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。 Cosmos DB には、レコードまたはコレクションごとに [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") 値を設定できる **Time to Live** (TTL) と呼ばれるプロパティがあります。 この機能により、Cosmos DB から手動でレコードを削除する手間が省かれました。
 
 > [!IMPORTANT]
 > このチュートリアルの作業を行うためには、Cosmos DB データベースと 2 つのコレクション (ログとエラー) を作成する必要があります。
@@ -399,7 +399,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 エラーを表示するには、Cosmos DB からエラー レコードを取得して表示する MVC Web アプリを作成します。 現在のバージョンでは、**一覧表示**、**詳細表示**、**編集**、**削除**の各操作が含まれます。
 
 > [!NOTE]
-> 編集操作:Cosmos DB では、ドキュメント全体が置き換えられます。 **一覧表示**と**詳細表示**に示したレコードは、あくまでサンプルです。 実際の患者予約レコードではありません。
+> 編集操作について: Cosmos DB では、ドキュメント全体が置き換えられます。 **一覧表示**と**詳細表示**に示したレコードは、あくまでサンプルです。 実際の患者予約レコードではありません。
 
 これまでに説明した方法で作成した MVC アプリのサンプルの詳細を以下に示します。
 

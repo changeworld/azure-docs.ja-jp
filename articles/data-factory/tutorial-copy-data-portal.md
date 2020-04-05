@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.date: 06/21/2018
 ms.author: jingwang
 ms.openlocfilehash: 135a18f275137e72b5ff4d79f6a32bd39bd9c00c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977404"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage から SQL データベースにデータをコピーする
@@ -96,7 +96,7 @@ ms.locfileid: "75977404"
     リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。 
 6. **[バージョン]** で、 **[V2]** を選択します。
 7. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他のリージョンに存在していてもかまいません。
-8. **作成** を選択します。
+8. **［作成］** を選択します
 9. 作成が完了すると、その旨が通知センターに表示されます。 **[リソースに移動]** を選択して、Data factory ページに移動します。
 10. **[Author & Monitor]\(作成と監視\)** を選択して、別のタブで Data Factory (UI) を起動します。
 

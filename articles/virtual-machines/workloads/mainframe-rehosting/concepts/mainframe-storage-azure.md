@@ -7,10 +7,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76288916"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>メインフレーム ストレージを Azure に移動する
@@ -51,7 +51,7 @@ Azure の [IaaS](https://azure.microsoft.com/overview/what-is-iaas/) (サービ�
 
 <table>
 <thead>
-    <tr><th>種類</th><th>説明</th><th>使用目的:</th></tr>
+    <tr><th>Type</th><th>説明</th><th>使用目的:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files
@@ -94,7 +94,7 @@ Azure の [IaaS](https://azure.microsoft.com/overview/what-is-iaas/) (サービ�
 
 SSD は Azure で最高のストレージ パフォーマンスを提供します。 (このドキュメントの執筆時点では) 次のオプションが利用できます。
 
-| 種類         | Size           | IOPS                  |
+| Type         | サイズ           | IOPS                  |
 |--------------|----------------|-----------------------|
 | Ultra SSD    | 4 GB ～ 64 TB  | 1,200 ～ 160,000 IOPS |
 | Premium SSD  | 32 GB ～ 32 TB | 12 ～ 15,000 IOPS     |

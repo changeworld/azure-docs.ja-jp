@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: d7d4d7b331198982f7c5513d23420bdde9455c66
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 5478163a6103bcc84b4f3608d7513c6e7cb11c01
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796663"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529341"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
 この記事では、Table service ソリューションで使用するのに適したパターンをいくつか紹介します。 また、他のテーブル ストレージ設計の記事で説明されている問題やトレードオフの一部に実際に対処する方法についても説明します。 次の図は、さまざまなパターンの関係をまとめたものです。  
@@ -21,7 +21,7 @@ ms.locfileid: "73796663"
 ![関連するデータを検索する](media/storage-table-design-guide/storage-table-design-IMAGE05.png)
 
 
-上記のパターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 検討する価値があるパターンは他にもたくさんあります。 たとえば、Table サービス向けの主なシナリオの 1 つに、[コマンド クエリ責務分離 (CQRS) パターン](https://msdn.microsoft.com/library/azure/jj554200.aspx)からの[具体化されたビュー パターン](https://msdn.microsoft.com/library/azure/dn589782.aspx)の使用があります。  
+上記のパターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 検討する価値があるパターンは他にもたくさんあります。 たとえば、Table サービス向けの主なシナリオの 1 つに、[コマンド クエリ責務分離 (CQRS) パターン](https://msdn.microsoft.com/library/azure/dn589782.aspx)からの[具体化されたビュー パターン](https://msdn.microsoft.com/library/azure/jj554200.aspx)の使用があります。  
 
 ## <a name="intra-partition-secondary-index-pattern"></a>パーティション内のセカンダリ インデックス パターン
 異なる **RowKey** 値 (同じパーティション内) を使用して各エンティティの複数のコピーを格納し、異なる **RowKey** 値を使用した高速で効率的な参照と代替の並べ替え順序を可能にします。 コピー間の更新の一貫性は、EGT を使用して保つことができます。  
@@ -197,11 +197,11 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * 従業員エンティティと同じパーティションにインデックス エンティティを作成する。  
 * 別のパーティションまたはテーブルにインデックス エンティティを作成する。  
 
-<u>オプション 1:Blob ストレージを使用する</u>  
+<u>オプション 1: BLOB ストレージの使用</u>  
 
 最初のオプションでは、すべての一意の姓について Blob を作成し、その姓の従業員用の各 Blob には **PartitionKey** (部署) と **RowKey** (従業員 ID) 値が格納されます。 従業員を追加または削除した場合は、関連する BLOB の内容と従業員エンティティの一貫性が最終的に確保されていることを確認する必要があります。  
 
-<u>オプション 2:</u> 同じパーティション内でインデックス エンティティを作成する  
+<u>オプション 2:</u> 同じパーティション内のインデックス エンティティの作成  
 
 2 番目の方法では、以下のデータを格納するインデックス エンティティを使用します。  
 
@@ -223,7 +223,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 2. EmployeeIDs フィールドで従業員 ID の一覧を解析します。  
 3. 各従業員に関する追加情報 (電子メール アドレスなど) が必要な場合は、手順 2 で取得した従業員リストから **PartitionKey** 値 "Sales" と **RowKey** 値を使用して各従業員のエンティティを取得します。  
 
-<u>オプション 3:</u>別のパーティションまたはテーブルにインデックス エンティティを作成する  
+<u>オプション 3:</u> 別のパーティションまたはテーブルにインデックス エンティティを作成する  
 
 3 番目の方法では、以下のデータを格納するインデックス エンティティを使用します。  
 
@@ -263,7 +263,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 ![部署エンティティと従業員エンティティ](media/storage-table-design-guide/storage-table-design-IMAGE16.png)
 
 ### <a name="solution"></a>解決策
-データを 2 つのエンティティに格納する代わりに、データを非正規化し、部署エンティティにマネージャーの詳細のコピーを保持します。 例:  
+データを 2 つのエンティティに格納する代わりに、データを非正規化し、部署エンティティにマネージャーの詳細のコピーを保持します。 次に例を示します。  
 
 ![部署エンティティ](media/storage-table-design-guide/storage-table-design-IMAGE17.png)
 
@@ -576,7 +576,7 @@ if (retrieveResult.Result != null)
 ### <a name="retrieving-multiple-entities-using-linq"></a>LINQ を使用して複数のエンティティを取得する。
 LINQ を使用すると、Microsoft Azure Cosmos Table Standard Library を使用するときに、Table service から複数のエンティティを取得できます。 
 
-```cli
+```azurecli
 dotnet add package Microsoft.Azure.Cosmos.Table
 ```
 
@@ -700,7 +700,7 @@ foreach (var e in entities)
 }  
 ```
 
-**RowKey** 値は取得するプロパティのリストに含まれていなくてもどのように有効であることか注意してください。  
+**RowKey** 値が取得するプロパティのリストに含まれていなくても、どのように利用できるか注意してください。  
 
 ## <a name="modifying-entities"></a>エンティティの変更
 ストレージ クライアント ライブラリを使えば、Table サービスに格納されたエンティティを、挿入、削除、更新の各操作によって変更できます。 また、EGT を使えば複数の挿入、更新、削除の操作をバッチ処理で行えるため、必要なラウンド トリップの回数が減り、ソリューションのパフォーマンスが高まります。  
@@ -914,7 +914,7 @@ Table service とは、*スキーマのない* テーブル ストアであり�
 
 最初のオプションでは、エンティティ型を **RowKey**の先頭に着けると、異なる種類の 2 つのエンティティが同じキー値にある可能性がある場合に便利です。 この方法なら、パーティションに同じ種類のエンティティのグループ化もできます。  
 
-このセクションで説明した手法は、特に、本ガイドに前述の[リレーションシップのモデル化](table-storage-design-modeling.md)に関する記事内の[継承リレーションシップ](table-storage-design-modeling.md#inheritance-relationships)で説明した内容と関連があります。  
+このセクションで説明した手法は、特に、本ガイドに前述の[リレーションシップのモデル化](table-storage-design-modeling.md#inheritance-relationships)に関する記事内の[継承リレーションシップ](table-storage-design-modeling.md)で説明した内容と関連があります。  
 
 > [!NOTE]
 > エンティティの種類の値にバージョン番号を追加して、クライアント アプリケーションで POCO オブジェクトを発展させ、さまざまなバージョンを操作できるようにすることを検討してください。  
@@ -1124,7 +1124,7 @@ private static async Task SimpleEmployeeUpsertAsync(
 
 クライアント アプリケーションは、これと同じように非同期メソッドを複数回呼び出すことができます。各メソッドの呼び出しは別々のスレッドで実行されます。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [リレーションシップのモデル化](table-storage-design-modeling.md)
 - [クエリに対応した設計](table-storage-design-for-query.md)

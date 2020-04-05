@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
 ms.openlocfilehash: a1fd99ee595c4ae91ccd06aa41fa421ca8fcc074
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851702"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237339"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
@@ -200,7 +200,7 @@ IoT Hub イベントを処理するアプリケーションは、以下の推奨
 
 * メッセージは、順不同で、または遅延の後に、到着する場合があります。 etag フィールドを使って、デバイス作成イベントやデバイス削除イベントについて、オブジェクトに関する情報が最新かどうかを確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [IoT Hub イベントのチュートリアルを試します](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 

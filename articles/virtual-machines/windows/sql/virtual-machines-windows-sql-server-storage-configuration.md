@@ -14,11 +14,11 @@ ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
 ms.openlocfilehash: 9d8fce0772f13c6e009b2441ecd85779a7622c5c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981735"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224615"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
 
@@ -46,13 +46,13 @@ SQL Server のギャラリー イメージを使用して Azure VM をプロビ�
 
 ![プロビジョニング中の SQL Server VM ストレージの構成](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
-**[ストレージの最適化]** では、SQL Server をデプロイする対象のワークロードの種類を選択します。 **[全般]** 最適化オプションの既定では、最大 5,000 IOPS のデータ ディスクが 1 つ使用され、この同じドライブをデータ、トランザクション ログ、TempDB ストレージに使用します。 **[トランザクション処理]** (OLTP) または **[データ ウェアハウス]** を選択すると、データ用とトランザクション ログ用にそれぞれ個別のディスクが作成され、TempDB 用にはローカル SSD が使用されます。 **[トランザクション処理]** と **[データ ウェアハウス]** でストレージに違いはありませんが、[ストライプの構成とトレース フラグ](#workload-optimization-settings)が変更されます。 Premium Storage を選択すると、[SQL Server VM のパフォーマンスのベスト プラクティス](virtual-machines-windows-sql-performance.md)に関する記事に従って、キャッシュがデータ ドライブについては "*読み取り専用*" に、ログ ドライブについては "*なし*" に設定されます。 
+**[ストレージの最適化]** では、SQL Server をデプロイする対象のワークロードの種類を選択します。 **[全般]** 最適化オプションの既定では、最大 5,000 IOPS のデータ ディスクが 1 つ使用され、この同じドライブをデータ、トランザクション ログ、TempDB ストレージに使用します。 **[トランザクション処理]** (OLTP) または **[データ ウェアハウス]** を選択すると、データ用とトランザクション ログ用にそれぞれ個別のディスクが作成され、TempDB 用にはローカル SSD が使用されます。 **[トランザクション処理]** と **[データ ウェアハウス]** でストレージに違いはありませんが、[ストライプの構成とトレース フラグ](#workload-optimization-settings)が変更されます。 Premium Storage を選択すると、*SQL Server VM のパフォーマンスのベスト プラクティス*に関する記事に従って、キャッシュがデータ ドライブについては "*読み取り専用*" に、ログ ドライブについては "[なし](virtual-machines-windows-sql-performance.md)" に設定されます。 
 
 ![プロビジョニング中の SQL Server VM ストレージの構成](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
 
-ディスク構成は完全にカスタマイズ可能であるため、SQL Server VM のワークロードに必要なストレージ トポロジ、ディスクの種類、IOPS を構成できます。 また、SQL Server VM がサポートされているリージョン (米国東部 2、東南アジア、北ヨーロッパ) にあり、[サブスクリプションで Ultra Disks](/azure/virtual-machines/windows/disks-enable-ultra-ssd) を有効にしている場合は、 **[ディスクの種類]** のオプションとして UltraSSD (プレビュー) を使用することもできます。  
+ディスク構成は完全にカスタマイズ可能であるため、SQL Server VM のワークロードに必要なストレージ トポロジ、ディスクの種類、IOPS を構成できます。 また、SQL Server VM がサポートされているリージョン (米国東部 2、東南アジア、北ヨーロッパ) にあり、**サブスクリプションで Ultra Disks** を有効にしている場合は、[[ディスクの種類]](/azure/virtual-machines/windows/disks-enable-ultra-ssd) のオプションとして UltraSSD (プレビュー) を使用することもできます。  
 
-さらに、ディスクのキャッシュを設定することもできます。 [Premium ディスク](/azure/virtual-machines/windows/disks-types#premium-ssd)で使用する場合、Azure VM には [BLOB キャッシュ](/azure/virtual-machines/windows/premium-storage-performance#disk-caching)と呼ばれる多層キャッシュ テクノロジがあります。 BLOB キャッシュでは、仮想マシンの RAM とローカル SSD の組み合わせがキャッシュに使用されます。 
+さらに、ディスクのキャッシュを設定することもできます。 [Premium ディスク](/azure/virtual-machines/windows/premium-storage-performance#disk-caching)で使用する場合、Azure VM には [BLOB キャッシュ](/azure/virtual-machines/windows/disks-types#premium-ssd)と呼ばれる多層キャッシュ テクノロジがあります。 BLOB キャッシュでは、仮想マシンの RAM とローカル SSD の組み合わせがキャッシュに使用されます。 
 
 Premium SSD のディスク キャッシュは、"*読み取り専用*"、"*読み取り書き込み*"、または "*なし*" にすることができます。 
 

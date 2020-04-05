@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: 2b17c2488e47148e8845433f9c7613e1127fbffa
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895760"
 ---
 # <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>シナリオ:Azure HDInsight における Apache Ambari UI の 502 エラー
@@ -26,7 +26,7 @@ HDInsight クラスターの Apache Ambari UI にアクセスしようとする�
 
 一般に、HTTP 502 状態コードは、アクティブなヘッドノードで Ambari サーバーが正常に実行されていないことを意味します。 いくつかの根本原因が考えられます。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 ほとんどの場合、問題を軽減するには、アクティブなヘッドノードを再起動します。 または、ヘッドノードにより大きな VM サイズを選択します。
 

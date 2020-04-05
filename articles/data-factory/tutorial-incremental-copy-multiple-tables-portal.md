@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
 ms.openlocfilehash: 2c89b53d66b93ff38a7cff07b2889faf8eda24ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75439306"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
@@ -396,7 +396,7 @@ END
 
 1. **[アクティビティ]** ツール ボックスで **[Iteration & Conditionals]\(繰り返しと条件\)** を展開し、パイプライン デザイナー画面に **[ForEach]** アクティビティをドラッグ アンド ドロップします。 **プロパティ** ウィンドウの **[全般]** タブで、「**IterateSQLTables**」と入力します。 
 
-1. **[設定]** タブに切り替えて、 **[項目]** に「`@pipeline().parameters.tableList`」と入力します。 ForEach アクティビティは、一連のテーブルを反復処理しながら、増分コピー操作を実行します。 
+1. **[設定]** タブに切り替えて、`@pipeline().parameters.tableList`[項目] **に「** 」と入力します。 ForEach アクティビティは、一連のテーブルを反復処理しながら、増分コピー操作を実行します。 
 
     ![ForEach アクティビティ - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
 

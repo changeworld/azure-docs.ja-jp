@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
 ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086981"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Application Gateway 用の Web アプリケーション ファイアウォール ポリシーの作成
@@ -34,7 +34,7 @@ WAF ポリシーをリスナーに関連付けると、1 つの WAF の背後に
 1. ポータルの左上で、 **[リソースの作成]** を選択します。 **WAF** を検索し、 **[Web アプリケーション ファイアウォール]** 、 **[作成]** の順に選択します。
 2. **[WAF ポリシーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-   |設定  |Value  |
+   |設定  |値  |
    |---------|---------|
    |次に対するポリシー     |リージョンの WAF (Application Gateway)|
    |サブスクリプション     |サブスクリプション名を選択します|
@@ -42,7 +42,7 @@ WAF ポリシーをリスナーに関連付けると、1 つの WAF の背後に
    |ポリシー名     |WAF ポリシーの一意の名前を入力します。|
 3. **[関連付け]** タブで、次の設定のいずれかを入力し、 **[追加]** を選択します。
 
-   |設定  |Value  |
+   |設定  |値  |
    |---------|---------|
    |Application Gateway の関連付け     |Application Gateway プロファイル名を選択します。|
    |リスナーの関連付け     |Application Gateway リスナーの名前を選択し、 **[追加]** を選択します。|
@@ -69,7 +69,7 @@ Azure マネージド OWASP ルールは、既定で有効になっています�
 
 [![カスタム ルールの編集](../media/create-waf-policy-ag/edit-custom-rule.png)](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 
-## <a name="migrate"></a>WAF 構成の WAF ポリシーへの移行
+## <a name="migrate-your-waf-config-to-a-waf-policy"></a><a name="migrate"></a>WAF 構成の WAF ポリシーへの移行
 
 既存の WAF をお持ちの場合、ポータルのいくつかの変更点にお気付きかもしれません。 まず、WAF で有効にしたポリシーの種類を識別する必要があります。 考えられる状態は 3 つあります。
 

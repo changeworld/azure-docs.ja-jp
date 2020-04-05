@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 7d37e36a4cdfed462904e2d02871345ad89d7ac9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74074560"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Azure CLI を使用して内部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
-[アプリケーション ゲートウェイ](overview.md)を作成するときに、Azure CLI を使用して [Web トラフィック リダイレクト](multiple-site-overview.md)を構成できます。 このチュートリアルでは、仮想マシン スケール セットを使用してバックエンド プールを定義します。 その後、Web トラフィックが適切なプールに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www\.contoso.com* と *www\.contoso.org* の例を使用します。
+[アプリケーション ゲートウェイ](multiple-site-overview.md)を作成するときに、Azure CLI を使用して [Web トラフィック リダイレクト](overview.md)を構成できます。 このチュートリアルでは、仮想マシン スケール セットを使用してバックエンド プールを定義します。 その後、Web トラフィックが適切なプールに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www\.contoso.com* と *www\.contoso.org* の例を使用します。
 
 この記事では、次のことについて説明します。
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group) を使用してリソース グループを作成します。
 
@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
 
-[az network vnet create](/cli/azure/network/vnet) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、サーバーのバックエンド プールに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
+*az network vnet create* を使用して、*myVNet* という名前の仮想ネットワークと [myAGSubnet](/cli/azure/network/vnet) という名前のサブネットを作成します。 次に、*az network vnet subnet create* を使用して、サーバーのバックエンド プールに必要な [myBackendSubnet](/cli/azure/network/vnet/subnet) という名前のサブネットを追加できます。 *az network public-ip create* を使用して [myAGPublicIPAddress](/cli/azure/network/public-ip#az-network-public-ip-create) という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -68,7 +68,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/network/application-gateway) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI でアプリケーション ゲートウェイを作成するときは、キャパシティ、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myAGPublicIPAddress* に割り当てます。 
+[az network application-gateway create](/cli/azure/network/application-gateway) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myAGPublicIPAddress* に割り当てます。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -120,7 +120,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>リダイレクト構成の追加
 
-[az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create) を使用して、アプリケーション ゲートウェイで *www\.consoto.org* から *www\.contoso.com* のリスナーにトラフィックを送信するリダイレクト構成を追加します。
+*az network application-gateway redirect-config create\. を使用して、アプリケーション ゲートウェイで* www*consoto.org\. から* www[contoso.com](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create) のリスナーにトラフィックを送信するリダイレクト構成を追加します。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -215,7 +215,7 @@ az network public-ip show \
 
 アドレスを他のドメインに変更します (例: http:\//www.contoso.org)。トラフィックが www\.contoso.com のリスナーにリダイレクトされたことがわかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

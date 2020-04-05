@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: aa0ffbd69e73ddbef72e0eabf79f2736079c3d23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60636520"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233083"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボのすべてのポリシーを管理
 
@@ -91,7 +91,7 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
 1. ラボの [ホーム] ページで、 **[構成とポリシー]** を選択します。
 2. 左側のメニューの **[スケジュール]** セクションにある **[自動シャットダウン ポリシー]** を選択します。
-3. いずれかのオプションを選択します。 以下のセクションでは、これらのオプションについてさらに詳しく説明します。設定されたポリシーは、ラボで新しく作成される VM に対してのみ適用され、既存の VM には適用されません。 
+3. いずれかのオプションを選択します。 以降のセクションでは、これらのオプションの詳細について説明します。既存の VM ではなく、ラボで作成された新しい VM のみに、設定ポリシーが適用されます。 
 
     ![自動シャットダウン ポリシーのオプション](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 
@@ -125,12 +125,12 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
 このポリシーを有効にしても、現在のラボの VM に自動的に適用されることはありません。 この設定を特定の VM に適用するには、その VM の管理ウィンドウを開いて **[自動開始]** 設定を変更します。
 
-## <a name="set-expiration-date"></a>有効期限の設定
+## <a name="set-expiration-date"></a>有効期限を設定する
 [VM を作成する](devtest-lab-add-vm.md)ときに有効期限を設定をできます。 **[詳細設定]** で、予定表アイコンを選択して、VM が自動的に削除される日付を指定します。 既定では、VM は無期限に設定されます。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ラボに対して各種の VM ポリシー設定を定義および適用した後は、次に示すいくつかの操作を試してみてください。
 
 * [共有 IP アドレスについて](devtest-lab-shared-ip.md) - DevTest Labs で共有 IP アドレスを使用して、ラボの VM への接続に必要なパブリック IP アドレスの数を最小限に抑える方法について説明します。

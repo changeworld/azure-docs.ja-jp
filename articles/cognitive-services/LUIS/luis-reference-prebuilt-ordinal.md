@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: bb3bb27db48255f534e873ed4e93ac62f07016af
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273442"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの ordinal 作成済みエンティティ

@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: manayar
-ms.openlocfilehash: 070e2108afb22539501c0e1808593c95a26b4576
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: d0b7288d5232e296a36708a08ea2ad9f8df5ee1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539316"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531058"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 
@@ -23,6 +23,7 @@ ms.locfileid: "77539316"
 
 ## <a name="accelerated-networking"></a>高速ネットワーク
 Azure 高速ネットワークでは、仮想マシンでシングルルート I/O 仮想化 (SR-IOV) が可能になることにより、ネットワークのパフォーマンスが向上します。 高速ネットワークの使用方法について詳しくは、[Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) または [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) 仮想マシンの高速ネットワークに関する記事をご覧ください。 スケール セットで高速ネットワークを使用するには、スケール セットの networkInterfaceConfigurations 設定で enableAcceleratedNetworking を **true** に設定します。 次に例を示します。
+
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -42,7 +43,8 @@ Azure 高速ネットワークでは、仮想マシンでシングルルート I
 
 ## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>既存の Azure ロード バランサーを参照するスケール セットの作成
 Azure Portal を使用してスケール セットを作成した場合、ほとんどの構成オプションで新しいロード バランサーが作成されます。 既存のロード バランサーを参照する必要があるスケール セットを作成する場合は、CLI を使用して作成することができます。 次のサンプル スクリプトは、ロード バランサーを作成してから、それを参照するスケール セットを作成します。
-```bash
+
+```azurecli
 az network lb create \
     -g lbtest \
     -n mylb \
@@ -64,11 +66,13 @@ az vmss create \
     --lb mylb \
     --backend-pool-name mybackendpool
 ```
+
 >[!NOTE]
 > スケール セットが作成された後、ロード バランサーの正常性プローブに使用される負荷分散ルールのバックエンド ポートを変更することはできません。 ポートを変更するには、Azure 仮想マシン スケール セットを更新し、ポートを更新してから正常性プローブを再度構成することで、正常性プローブを削除できます。 
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Application Gateway を参照するスケール セットを作成する
 アプリケーション ゲートウェイを使うスケール セットを作成するには、次の ARM テンプレート構成のように、スケール セットの ipConfigurations セクションにおいてアプリケーション ゲートウェイのバックエンド アドレス プールを参照します。
+
 ```json
 "ipConfigurations": [{
   "name": "{config-name}",
@@ -91,10 +95,13 @@ az vmss create \
 
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>構成可能な DNS サーバーによるスケール セットの作成
 Azure CLI を使用してカスタム DNS 構成を備えたスケール セットを作成するには、 **--dns-servers** 引数とその後に続けたスペース区切りのサーバー IP アドレスを **vmss create** コマンドに追加します。 次に例を示します。
+
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
+
 Azure テンプレート内でカスタム DNS サーバーを構成するには、スケール セットの networkInterfaceConfigurations セクションに dnsSettings プロパティを追加します。 次に例を示します。
+
 ```json
 "dnsSettings":{
     "dnsServers":["10.0.0.6", "10.0.0.5"]
@@ -136,8 +143,9 @@ Azure テンプレート内でドメイン名を設定するには、スケー�
 }
 ```
 
-個々の仮想マシンの DNS 名に対する出力は、次の形式になります。 
-```
+個々の仮想マシンの DNS 名に対する出力は、次の形式になります。
+
+```output
 <vm><vmindex>.<specifiedVmssDomainNameLabel>
 ```
 
@@ -159,17 +167,20 @@ Azure テンプレートを使用してスケール セットを作成するに�
     }
 }
 ```
-テンプレートの例:[201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
+
+サンプル テンプレート: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>スケール セットに含まれた仮想マシンのパブリック IP アドレスの照会
 CLI を使用して、スケール セット仮想マシンに割り当てられているパブリック IP アドレスを一覧表示するには、**az vmss list-instance-public-ips** コマンドを使用します。
 
 PowerShell を使用して、スケール セットのパブリック IP アドレスを一覧表示するには、_Get-AzPublicIpAddress_ コマンドを使用します。 次に例を示します。
+
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
 また、パブリック IP アドレス構成のリソース ID を直接参照して、パブリック IP アドレスを照会することもできます。 次に例を示します。
+
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
@@ -195,6 +206,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 ```
 
 [Azure Resource Explorer](https://resources.azure.com) と Azure REST API からの出力の例:
+
 ```json
 {
   "value": [
@@ -318,7 +330,8 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 
 アプリケーション セキュリティ グループもスケール セットに直接指定できます。そのためには、スケール セット仮想マシン プロパティのネットワーク インターフェイス IP 構成セクションに参照を追加します。
 
-次に例を示します。 
+次に例を示します。
+
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -362,7 +375,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 
 ネットワーク セキュリティ グループがスケール セットに関連付けられていることを確認するには、`az vmss show` コマンドを使用します。 次の例では、結果をフィルター処理して出力の関連セクションのみを表示するために、`--query` が使用されています。
 
-```bash
+```azurecli
 az vmss show \
     -g myResourceGroup \
     -n myScaleSet \
@@ -378,7 +391,7 @@ az vmss show \
 
 アプリケーション セキュリティ グループがスケール セットに関連付けられていることを確認するには、`az vmss show` コマンドを使用します。 次の例では、結果をフィルター処理して出力の関連セクションのみを表示するために、`--query` が使用されています。
 
-```bash
+```azurecli
 az vmss show \
     -g myResourceGroup \
     -n myScaleSet \

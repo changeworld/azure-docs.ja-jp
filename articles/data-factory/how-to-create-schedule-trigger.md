@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.openlocfilehash: 127db8a484b9624586dea70c44af3bc84b3fc84e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73673769"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールどおりにパイプラインを実行するトリガーの作成
@@ -68,7 +68,7 @@ ms.locfileid: "73673769"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-このセクションでは、Azure PowerShell を使用してスケジュール トリガーを作成、起動、監視する方法について説明します。 このサンプルの動作を確認するには、まず[Azure PowerShell を使用したデータ ファクトリの作成のクイック スタートに関するページ](quickstart-create-data-factory-powershell.md)に目を通します。 続いて、メインのメソッドに以下のコードを追加します。このコードは、15 分ごとに実行するスケジュールのトリガーを作成して起動します。 このトリガーは、クイック スタートの一環として作成する **Adfv2QuickStartPipeline** という名前のパイプラインに関連付けられます。
+このセクションでは、Azure PowerShell を使用してスケジュール トリガーを作成、起動、監視する方法について説明します。 このサンプルの動作を確認するには、まず[Azure PowerShell を使用してデータ ファクトリを作成する方法のクイック スタート](quickstart-create-data-factory-powershell.md)に関する記事を参照してください。 続いて、メインのメソッドに以下のコードを追加します。このコードは、15 分ごとに実行するスケジュールのトリガーを作成して起動します。 このトリガーは、クイック スタートの一環として作成する **Adfv2QuickStartPipeline** という名前のパイプラインに関連付けられます。
 
 1. 次の内容が含まれた **MyTrigger.json** という名前の JSON ファイルを C:\ADFv2QuickStartPSH\ フォルダーに作成します。
 
@@ -144,7 +144,7 @@ ms.locfileid: "73673769"
 
 
 ## <a name="net-sdk"></a>.NET SDK
-このセクションでは、.NET SDK を使用してトリガーを作成、起動、監視する方法について説明します。 このサンプルの動作を確認するには、まず[.NET SDK を使用してデータ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)」に目を通します。 続いて、メインのメソッドに以下のコードを追加します。このコードは、15 分ごとに実行するスケジュールのトリガーを作成して起動します。 このトリガーは、クイック スタートの一環として作成する **Adfv2QuickStartPipeline** という名前のパイプラインに関連付けられます。
+このセクションでは、.NET SDK を使用してトリガーを作成、起動、監視する方法について説明します。 このサンプルの動作を確認するには、まず[.NET SDK を使用してデータ ファクトリを作成する方法のクイック スタート](quickstart-create-data-factory-dot-net.md)に関する記事を参照してください。 続いて、メインのメソッドに以下のコードを追加します。このコードは、15 分ごとに実行するスケジュールのトリガーを作成して起動します。 このトリガーは、クイック スタートの一環として作成する **Adfv2QuickStartPipeline** という名前のパイプラインに関連付けられます。
 
 15 分ごとに実行されるスケジュール トリガーを作成して起動するには、メイン メソッドに次のコードを追加します。
 
@@ -324,10 +324,10 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 
 | JSON プロパティ | Type | 必須 | 既定値 | 有効な値 | 例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | string | はい | なし | ISO-8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **startTime** | String | はい | なし | ISO-8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | Object | はい | なし | recurrence オブジェクト | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | Number | いいえ | 1 | 1 ～ 1,000 | `"interval":10` |
-| **endTime** | string | はい | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | String | はい | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | Object | いいえ | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime プロパティ
@@ -358,8 +358,8 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 
 | JSON 要素 | 説明 | 有効な値 |
 |:--- |:--- |:--- |
-| **分** | トリガーを実行する時刻 (分)。 | <ul><li>整数</li><li>整数の配列</li></ul>
-| **hours** | トリガーを実行する時刻 (時)。 | <ul><li>整数</li><li>整数の配列</li></ul> |
+| **分** | トリガーを実行する時刻 (分)。 | <ul><li>Integer</li><li>整数の配列</li></ul>
+| **hours** | トリガーを実行する時刻 (時)。 | <ul><li>Integer</li><li>整数の配列</li></ul> |
 | **weekDays** | トリガーが実行される曜日。 この値を指定できるのは、頻度が週単位の場合のみです。 | <ul><li>Monday、Tuesday、Wednesday、Thursday、Friday、Saturday、Sunday</li><li>曜日の値の配列 (配列の最大サイズは 7)</li><li>曜日の値の大文字小文字は区別されません</li></ul> |
 | **monthlyOccurrences** | トリガーが実行される月の特定曜日。 この値を指定できるのは、頻度が月単位の場合のみです。 | <ul><li>**monthlyOccurrence** オブジェクトの配列: `{ "day": day,  "occurrence": occurrence }`。</li><li>**day** 属性は、トリガーが実行される曜日を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値が `{Sunday}` の場合は、月の毎週日曜日を意味します。 **day** 属性は必須です。</li><li>**occurrence** 属性は、月の指定した **day** の出現を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値と **occurrence** 値が `{Sunday, -1}` の場合、月の最後の日曜日を意味します。 **occurrence** 属性は省略可能です。</li></ul> |
 | **monthDays** | トリガーが実行される日にち。 この値を指定できるのは、頻度が月単位の場合のみです。 | <ul><li>-1 以下かつ -31 以上の任意の値</li><li>1 以上かつ 31 以下の任意の値</li><li>値の配列</li></ul> |
@@ -400,5 +400,5 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | 毎月第 3 水曜日の午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、午後 5 時 45 分に実行されます。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 トリガーについて詳しくは、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md#triggers)」をご覧ください。

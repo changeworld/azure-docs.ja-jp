@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: c5b7f4eaac91e79dde625ea00bfb6b1ea8782b31
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: cc0efc0a076ddc3fc9425999f1e38b4a32dec7a3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530614"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477342"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Data Science Virtual Machine の共有プールを作成する
 
@@ -35,11 +35,13 @@ Ubuntu DSVM インスタンスでスケール セットを作成する Azure Res
 
 Azure CLI でパラメーター ファイルの値を指定することで、Azure Resource Manager テンプレートからスケール セットを作成できます。
 
-```
+```azurecli-interactive
 az group create --name [[NAME OF RESOURCE GROUP]] --location [[ Data center. For eg: "West US 2"]
 az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  --template-uri https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json --parameters @[[PARAMETER JSON FILE]]
 ```
+
 上のコマンドでは次のものがあることが想定されています。
+
 * パラメーター ファイルのコピーと、スケール セットのインスタンスに指定されている値。
 * VM インスタンスの数。
 * Azure ファイル共有へのポインター。
@@ -57,18 +59,3 @@ az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  -
 
 * [共通 ID を設定する](dsvm-common-identity.md)
 * [クラウド リソースにアクセスするための資格情報を安全に保存する](dsvm-secure-access-keys.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

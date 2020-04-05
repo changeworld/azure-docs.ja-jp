@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: kumud
 ms.openlocfilehash: b3f9a453573de0737cfaddb3107df92335507366
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181599"
 ---
 Azure 内部ロード バランサー (ILB) は、クラウド サービス内、リージョン スコープを持つ仮想ネットワーク内にある仮想マシン間でネットワーク負荷を分散します。

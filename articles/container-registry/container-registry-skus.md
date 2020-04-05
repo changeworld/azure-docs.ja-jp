@@ -4,10 +4,10 @@ description: Azure Container Registry の Basic、Standard、および Premium �
 ms.topic: article
 ms.date: 11/05/2019
 ms.openlocfilehash: 1ebe5339b7523a4463dee45b126244d7ec5b2e4b
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456275"
 ---
 # <a name="azure-container-registry-skus"></a>Azure Container Registry SKU
@@ -40,7 +40,7 @@ Azure CLI で SKU を切り替えるには、[az acr update][az-acr-update] コ�
 az acr update --name myregistry --sku Premium
 ```
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 Azure Portal のコンテナー レジストリの **[Overview]\(概要\)** で、 **[Update]\(更新\)** を選択し、[SKU] ドロップダウン リストから新しい **SKU** を選択します。
 
@@ -52,7 +52,7 @@ Azure Portal のコンテナー レジストリの **[Overview]\(概要\)** で�
 
 データ転送の価格に関する詳細については、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 **Azure Container Registry ロードマップ**
 

@@ -9,10 +9,10 @@ ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 069baf627c0230b6a4727c375494352ab3e6a803
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67181109"
 ---
 リソース グループに 2 つのタグを追加するには、[Set-AzResourceGroup](/powershell/module/az.resources/set-azresourcegroup) コマンドを使用します。

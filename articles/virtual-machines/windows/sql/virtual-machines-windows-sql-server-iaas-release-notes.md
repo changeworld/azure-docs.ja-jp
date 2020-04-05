@@ -13,10 +13,10 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
 ms.openlocfilehash: 27682863a96e2f190a0dafe6e4d783029e987453
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77201647"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
@@ -35,10 +35,10 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 
 |[変更点] | 詳細 |
  --- | --- |
-| **Azure での無料 DR レプリカ** | [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)がある場合は、オンプレミスの SQL Server インスタンス用に Azure でディザスター リカバリー用の[無料のパッシブ インスタンス](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)をホストできます。 | 
+| **Azure での無料 DR レプリカ** | [ソフトウェア アシュアランス](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)がある場合は、オンプレミスの SQL Server インスタンス用に Azure でディザスター リカバリー用の[無料のパッシブ インスタンス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)をホストできます。 | 
 | **リソースプロバイダーの一括登録** | リソースプロバイダーに SQL 仮想マシンを[一括登録](virtual-machines-windows-sql-bulk-register-with-resource-provider.md)できるようになりました。 | 
 |**パフォーマンスが最適化されたストレージ構成** | 新しい SQL Server VM を作成するときに、[ストレージの構成を完全にカスタマイズする](virtual-machines-windows-sql-server-storage-configuration.md#new-vms)ことができるようになりました。 |
-|**FCI 用の Premium ファイル共有** | [記憶域スペース ダイレクト](virtual-machines-windows-portal-sql-create-failover-cluster.md)の元の方法ではなく、[Premium ファイル共有](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md)を使用してフェールオーバー クラスター インスタンスを作成できるようになりました。 
+|**FCI 用の Premium ファイル共有** | [記憶域スペース ダイレクト](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md)の元の方法ではなく、[Premium ファイル共有](virtual-machines-windows-portal-sql-create-failover-cluster.md)を使用してフェールオーバー クラスター インスタンスを作成できるようになりました。 
 | **Azure の専用ホスト** | SQL Server VM は、[Azure 専用ホスト](virtual-machines-windows-sql-dedicated-host.md)で実行できます。 | 
 | **SQL VM を別のリージョンに移動する** | Azure Site Recovery を使用して、[異なるリージョン間で SQL Server VM を移行](virtual-machines-windows-sql-move-different-region.md)します。 |
 |  **新しい SQL IaaS インストール モード** | SQL Server サービスの再開を回避するため、SQL Server IaaS 拡張機能を[軽量モード](virtual-machines-windows-sql-server-agent-extension.md)でインストールできるようになりました。  |
@@ -46,7 +46,7 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 | **SQL VM リソース プロバイダーの変更** | 新しい SQL IaaS モードを使用して、[SQL Server VM を SQL VM リソース プロバイダーに登録](virtual-machines-windows-sql-register-with-resource-provider.md)できます。 この機能には、[Windows Server 2008 のイメージ](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)が含まれます。|
 | **Azure ハイブリッド特典を使用するライセンス持ち込みイメージ** | Azure Marketplace からデプロイされたライセンス持ち込みイメージを使用して、[ライセンスの種類を従量課金制に](virtual-machines-windows-sql-ahb.md#remarks)切り替えることができるようになりました。| 
 | **Azure portal での新しい SQL Server VM の管理** | Azure portal で SQL Server VM を管理する新しい方法が導入されました。 詳細については、「[Azure portal で SQL Server VM を管理する](virtual-machines-windows-sql-manage-portal.md)」を参照してください。  | 
-| **SQL Server 2008/2008 R2 の延長サポート** | "*そのまま*" Azure VM に移行することで、SQL Server 2008 および SQL Server 2008 R2 の[サポートを延長](virtual-machines-windows-sql-server-2008-eos-extend-support.md)します。 | 
+| **SQL Server 2008/2008 R2 の延長サポート** | "[そのまま](virtual-machines-windows-sql-server-2008-eos-extend-support.md)" Azure VM に移行することで、SQL Server 2008 および SQL Server 2008 R2 の*サポートを延長*します。 | 
 | **カスタム イメージのサポートの可否** | OS と SQL イメージをカスタマイズするために、[SQL Server IaaS 拡張機能](virtual-machines-windows-sql-server-agent-extension.md#installation)をインストールできるようになりました。これにより、機能が制限された[柔軟なライセンス](virtual-machines-windows-sql-ahb.md)が提供されます。 カスタム イメージを SQL リソース プロバイダーに登録するときに、ライセンスの種類として "AHUB" を指定します。 そうしないと、登録は失敗します。 | 
 | **名前付きインスタンスのサポートの可否** | 既定のインスタンスが適切にアンインストールされている場合、名前付きインスタンスで [SQL Server IaaS 拡張機能](virtual-machines-windows-sql-server-agent-extension.md#installation)を使用できるようになりました。 | 
 | **ポータルの機能強化** | SQL Server VM をデプロイするための Azure portal エクスペリエンスは、より使いやすくなるように改良されています。 詳細については、SQL Server VM のデプロイに関する簡単な[クイックスタート](quickstart-sql-vm-create-portal.md)と、より包括的な[ハウツー](virtual-machines-windows-portal-sql-server-provision.md) ガイドを参照してください。|

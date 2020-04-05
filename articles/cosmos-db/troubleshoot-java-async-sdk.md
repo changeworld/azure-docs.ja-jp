@@ -10,10 +10,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65519977"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Azure Cosmos DB SQL API アカウントで Java Async SDK を使用する場合の問題のトラブルシューティング
@@ -27,7 +27,7 @@ Java Async SDK には、Azure Cosmos DB SQL API にアクセスするための�
 * [パフォーマンスに関するヒント](performance-tips-async-java.md)を確認し、推奨される方法に従います。
 * この記事の残りの部分を読みます。解決策が見つからない場合は、 [GitHub の問題](https://github.com/Azure/azure-cosmosdb-java/issues)を提出します。
 
-## <a name="common-issues-workarounds"></a>一般的な問題と対処法
+## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>一般的な問題と対処法
 
 ### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>ネットワークの問題、Netty の読み取りタイムアウト エラーの発生、低いスループット、長い待機時間
 
@@ -38,7 +38,7 @@ Java Async SDK には、Azure Cosmos DB SQL API にアクセスするための�
 #### <a name="connection-throttling"></a>接続の帯域幅調整
 接続の帯域幅調整は、[ホスト マシンの接続制限]、または [Azure SNAT (PAT) ポート不足]のいずれかが原因で発生します。
 
-##### <a name="connection-limit-on-host"></a>ホスト マシンの接続制限
+##### <a name="connection-limit-on-a-host-machine"></a><a name="connection-limit-on-host"></a>ホスト マシンの接続制限
 一部の Linux システム (Red Hat など) では、開くファイルの最大数に上限があります。 Linux のソケットはファイルとして実装されるため、この数は接続の合計数も制限します。
 次のコマンドを実行します。
 
@@ -47,7 +47,7 @@ ulimit -a
 ```
 開くことができる最大ファイル数 ("nofile" で指定) は、接続プール サイズの 2 倍以上にする必要があります。 詳細については、[パフォーマンスのヒント](performance-tips-async-java.md)に関するページを参照してください。
 
-##### <a name="snat"></a>Azure SNAT (PAT) ポート不足
+##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) ポート不足
 
 パブリック IP アドレスを使わずにアプリを Azure Virtual Machines にデプロイした場合、既定では [Azure SNAT ポート](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)によって VM 外の任意のエンドポイントへの接続が確立されます。 VM から Azure Cosmos DB エンドポイントへの許可される接続の数は、[Azure SNAT 構成](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)によって制限されます。
 
@@ -58,7 +58,7 @@ ulimit -a
     サービス エンドポイントが有効になると、要求はパブリック IP から Azure Cosmos DB に送信されなくなります。 代わりに、仮想ネットワークとサブネット ID が送信されます。 この変更により、パブリック IP のみが許可された場合はファイアウォール ドロップが発生することがあります。 ファイアウォールを使用している場合、サービス エンドポイントを有効にするときに、[Virtual Network ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) を使用してファイアウォールにサブネットを追加します。
 * Azure VM にパブリック IP を割り当てます。
 
-##### <a name="cant-connect"></a>サービスに到達できない - ファイアウォール
+##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>サービスに到達できない - ファイアウォール
 ``ConnectTimeoutException`` は、SDK がサービスに到達できないことを示します。
 直接モードを使用しているときに、次のようなエラーが発生することがあります。
 ```
@@ -137,7 +137,7 @@ public void badCodeWithReadTimeoutException() throws Exception {
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
    ```
-   たとえば、時間のかかる作業 (たとえば、IO をブロックする計算負荷の高い作業) を行う必要がある場合があります。 このような場合は、`.observeOn(customScheduler)` API を使用して、`customScheduler` によって提供される worker にスレッドを切り替えます。
+   たとえば、時間のかかる作業 (たとえば、IO をブロックする計算負荷の高い作業) を行う必要がある場合があります。 このような場合は、`customScheduler` API を使用して、`.observeOn(customScheduler)` によって提供される worker にスレッドを切り替えます。
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);
@@ -196,7 +196,7 @@ RxJava 1.2.2 のプロジェクトの他の依存関係の過渡的依存関係�
 詳細については、[推移的な依存関係の除外ガイド](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)を参照してください。
 
 
-## <a name="enable-client-sice-logging"></a>クライアント SDK のログ記録を有効にする
+## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>クライアント SDK のログ記録を有効にする
 
 Java Async SDK では、log4j や logback などの一般的なログ記録フレームワークへのログ記録をサポートするロギング ファサードとして SLF4j を使用 します。
 
@@ -235,7 +235,7 @@ log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 
 詳細については、[sfl4j ロギング マニュアル](https://www.slf4j.org/manual.html)を参照してください。
 
-## <a name="netstats"></a>OS ネットワーク統計
+## <a name="os-network-statistics"></a><a name="netstats"></a>OS ネットワーク統計
 netstat コマンドを実行して、`ESTABLISHED` や `CLOSE_WAIT` などの状態の接続がいくつあるか把握します。
 
 Linux では、次のコマンドを実行できます。

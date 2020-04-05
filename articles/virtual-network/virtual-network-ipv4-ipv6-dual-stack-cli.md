@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/17/2019
 ms.author: kumud
-ms.openlocfilehash: b2dfdbafe0e72e550e44ef12fd53903d947ab3c2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b9021784216f02fb117f6e63e150b37b07755912
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75368287"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239851"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli-preview"></a>Basic Load Balancer を使用して IPv6 デュアル スタック アプリケーションをデプロイする - CLI (プレビュー)
 
@@ -44,15 +44,17 @@ az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 機能の登録が完了するまで、最長で 30 分かかります。 次の Azure CLI コマンドを実行することで、登録状態を確認できます。
 
-```azurelci
+```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
+
 登録が完了した後、次のコマンドを実行します。
 
-```azurelci
+```azurecli
 az provider register --namespace Microsoft.Network
 ```
+
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 デュアル スタック仮想ネットワークを作成する前に、[az group create](/cli/azure/group) でリソース グループを作成する必要があります。 次の例では、*DsResourceGroup01* という名前のリソース グループを *eastus* という場所に作成します。
@@ -151,12 +153,14 @@ az network lb address-pool create \
 --name dsLbBackEndPool_v6  \
 --resource-group DsResourceGroup01
 ```
+
 ### <a name="create-a-health-probe"></a>正常性プローブの作成
 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) を使用して正常性プローブを作成し、仮想マシンの正常性を監視します。 
 
 ```azurecli
 az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --protocol tcp --port 3389
 ```
+
 ### <a name="create-a-load-balancer-rule"></a>ロード バランサー規則の作成
 
 ロード バランサー規則の目的は、一連の VM に対するトラフィックの分散方法を定義することです。 着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 
@@ -300,7 +304,7 @@ az network vnet subnet create \
 ### <a name="create-nics"></a>NIC の作成
 
 各 VM の仮想 NIC を作成するには、[az network nic create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) を使用します。 次の例では、各 VM の仮想 NIC を作成します。 各 NIC には、2 つの IP 構成があります (1 つは IPv4 構成、1 つは IPv6 構成)。 IPV6 構成を作成するには、[az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create) を使用します。
- 
+
 ```azurecli
 # Create NICs
 az network nic create \
@@ -363,6 +367,7 @@ VM を作成するには、[az vm create](https://docs.microsoft.com/cli/azure/v
 --availability-set dsAVset \
 --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest  
 ```
+
 仮想マシン *dsVM1* を以下のように作成します。
 
 ```azurecli
@@ -378,7 +383,7 @@ az vm create \
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Azure portal で IPv6 デュアル スタック仮想ネットワークを表示する
 次のようにして、Azure portal で IPv6 デュアル スタック仮想ネットワークを表示することができます。
 1. ポータルの検索バーで、「*dsVnet*」と入力します。
-2. 検索結果に **[myVirtualNetwork]** が表示されたら、それを選択します。 これにより、*dsVnet* という名前のデュアル スタック仮想ネットワークの **[概要]** ページが起動します。 デュアル スタック仮想ネットワークには、*dsSubnet* という名前のデュアル スタック サブネットにある、IPv4 と IPv6 の両方の構成を持つ 2 つの NIC が表示されます。
+2. 検索結果に **[myVirtualNetwork]** が表示されたら、それを選択します。 これにより、**dsVnet** という名前のデュアル スタック仮想ネットワークの *[概要]* ページが起動します。 デュアル スタック仮想ネットワークには、*dsSubnet* という名前のデュアル スタック サブネットにある、IPv4 と IPv6 の両方の構成を持つ 2 つの NIC が表示されます。
 
   ![Azure の IPv6 デュアル スタック仮想ネットワーク](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 

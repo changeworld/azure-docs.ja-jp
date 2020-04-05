@@ -4,10 +4,10 @@ description: Rest API を使用して、Azure Backup によってバックアッ
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 9d29b226aff568c91de8e1f19ddc0c64f8169e4d
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444916"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>REST API を使用して Azure ファイル共有のバックアップを管理する

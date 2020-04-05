@@ -10,10 +10,10 @@ ms.date: 02/24/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7955e9bc75b2a27ac42d381df1e686ec8a0ed04b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77587801"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Azure 外部サービスの料金について
@@ -59,7 +59,7 @@ Azure Marketplace の料金は、現地通貨で表示されます。
 
 Azure Marketplace の請求書は、次の手順に従って、Azure portal から表示およびダウンロードできます。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. "**コスト管理 + 請求**" を検索します。
 1. 左側のメニューで **[請求書]** を選択します。
 1. サブスクリプションのドロップダウンで、Marketplace サービスに関連付けられているサブスクリプションを選択します。
@@ -104,7 +104,7 @@ MCA または MPA をお持ちでない場合は、次の手順に従って Azur
 
 外部サービスを購入するときに、リソースの Azure サブスクリプションを選択します。 選択した Azure サブスクリプションの支払い方法が、外部サービスの支払い方法になります。 外部サービスの支払い方法を変更するには、外部サービスに関連付けられている [Azure サブスクリプションの支払い方法を変更する](../manage/change-credit-card.md)必要があります。 外部サービスの注文がどのサブスクリプションに関連付けられているかを確認するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. 左のナビゲーション メニューで、 **[すべてのリソース]** をクリックします。
      ![すべてのリソース メニュー項目のスクリーンショット](./media/understand-azure-marketplace-charges/all-resources.png)
 1. ご利用の外部サービスを検索します。
@@ -116,7 +116,7 @@ MCA または MPA をお持ちでない場合は、次の手順に従って Azur
 
 外部サービスの注文をキャンセルする場合は、[Azure Portal](https://portal.azure.com) でリソースを削除します。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. 左のナビゲーション メニューで、 **[すべてのリソース]** をクリックします。
     ![すべてのリソース メニュー項目のスクリーンショット](./media/understand-azure-marketplace-charges/all-resources.png)
 1. ご利用の外部サービスを検索します。

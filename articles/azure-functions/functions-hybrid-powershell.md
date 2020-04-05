@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 9/5/2019
 ms.author: eamono
 ms.openlocfilehash: 36fc4c873dccfe9fa814bddccd829ed04207f095
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74226933"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Azure Functions の PowerShell と App Service ハイブリッド接続を使用してハイブリッド環境を管理する
@@ -62,21 +62,21 @@ App Service ハイブリッド接続機能は、Basic、Standard、Isolated の�
 
     ![PowerShell Core 関数アプリ](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
 
-    | Setting      | 推奨値  | 説明                                        |
+    | 設定      | 推奨値  | 説明                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **アプリ名** | グローバルに一意の名前 | 新しい Function App を識別する名前。 有効な文字は、`a-z`、`0-9`、および `-` です。  | 
     | **サブスクリプション** | 該当するサブスクリプション | この新しい Function App が作成されるサブスクリプション。 |
     | **リソース グループ** |  myResourceGroup | Function App を作成するための新しいリソース グループの名前。 推奨値を使用することもできます。 |
     | **OS** | 推奨 OS | [Windows] を選択します。 |
     | **ランタイム スタック** | 優先言語 | [PowerShell Core] を選択します。 |
-    | **Storage** |  グローバルに一意の名前 |  関数アプリで使用されるストレージ アカウントを作成します。 ストレージ アカウント名の長さは 3 から 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできます。
+    | **Storage** |  グローバルに一意の名前 |  Function App で使用されるストレージ アカウントを作成します。 ストレージ アカウント名の長さは 3 から 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできます。
     | **Application Insights** | Default | 最も近いサポートされているリージョン内に同じ*アプリ名*の Application Insights リソースを作成します。 この設定を展開することによって、 **[新しいリソース名]** を変更するか、またはデータを格納する [Azure 地理的](https://azure.microsoft.com/global-infrastructure/geographies/)リージョン内の別の **[場所]** を選択することができます。 |
 
 1. 設定が検証されたら、 **[作成]** を選択します。
 
 1. ポータルの右上隅の**通知**アイコンを選択し、"デプロイメントに成功しました" というメッセージが表示されるまで待ちます。
 
-1. **[リソースに移動]** を選択して、新しい関数アプリを確認します。 また、 **[ダッシュボードにピン留めする]** を選択することもできます。 ピン留めすると、ダッシュボードからこの関数アプリ リソースに戻るのが容易になります。
+1. **[リソースに移動]** を選択して、新しい Function App を確認します。 また、 **[ダッシュボードにピン留めする]** を選択することもできます。 ピン留めすると、ダッシュボードからこの関数アプリ リソースに戻るのが容易になります。
 
 ## <a name="create-a-hybrid-connection-for-the-function-app"></a>関数アプリ用のハイブリッド接続を作成する
 
@@ -252,7 +252,7 @@ Invoke-Command -ComputerName $HybridEndpoint `
 
 Azure [仮想ネットワーク](./functions-create-vnet.md)と Azure Functions を使用してオンプレミス環境に接続することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [PowerShell 関数の使用についての詳細情報](functions-reference-powershell.md)

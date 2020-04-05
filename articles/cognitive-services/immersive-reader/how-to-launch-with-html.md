@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: bc7ab46113e1b819fc71a9f6e8a18400f8acfbef
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946078"
 ---
 # <a name="how-to-launch-the-immersive-reader-with-html-content"></a>イマーシブ リーダーを起動して HTML コンテンツを表示する方法

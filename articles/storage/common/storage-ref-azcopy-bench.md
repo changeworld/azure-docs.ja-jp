@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 8570bce87aeea5473b4aadf9bd30bc0a648a6f0f
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72518127"
 ---
 # <a name="azcopy-bench"></a>azcopy bench
@@ -53,7 +53,7 @@ azcopy bench [destination] [flags]
 
 - azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>" --file-count 50000 --size-per-file 8M --put-md5
 
-## <a name="options"></a>オプション
+## <a name="options"></a>Options
 
 **--blob-type** string  宛先の BLOB の種類を定義します。 さまざまな種類の BLOB のベンチマークを許可するために使用されます。 copy コマンドの同一の名前のパラメーターと同じです (既定値は "Detect")。
 
@@ -75,7 +75,7 @@ azcopy bench [destination] [flags]
 
 **--cap-mbps uint32**  転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。
 
-**--output-type** string  コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は 'text' です (既定値 "text")。
+**--output-type** string  コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。 (既定値 "text")。
 
 ## <a name="see-also"></a>関連項目
 

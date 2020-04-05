@@ -1,7 +1,7 @@
 ---
 title: イメージの分類チュートリアル:モデルをトレーニングする
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning を使用し、Python Jupyter ノートブックで scikit-learn を使用して画像の分類モデルをトレーニングする方法について説明します。 このチュートリアルは、2 部構成のシリーズのパート 1 です。
+description: Azure Machine Learning を使用し、Python Jupyter ノートブックで scikit-learn を使用して画像の分類モデルをトレーニングします。 このチュートリアルは、2 部構成の第 1 部です。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5a2ff4d78c1e0e67b390f607da69cc299e2dce4a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 8cf46db06a4a2f8fa86f97dab5a8477cf427c999
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116478"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80159080"
 ---
-# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>チュートリアル:Azure Machine Learning で MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする
+# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>チュートリアル:MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 このチュートリアルでは、機械学習モデルのトレーニングをリモートのコンピューティング リソース上で行います。 Python Jupyter Notebook 内の Azure Machine Learning に関するトレーニングとデプロイのワークフローを使用します。  それからノートブックをテンプレートとして使用し、独自のデータで独自の機械学習モデルをトレーニングできます。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。  
@@ -57,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > コードを実行しながら読み進めたい方は、ここで Jupyter Notebook に切り替えてください。 
 > ノートブックで単一のコード セルを実行するには、そのコード セルをクリックして **Shift + Enter** キーを押します。 または、上部のツール バーから **[すべて実行]** を選択して、ノートブック全体を実行します。
 
-## <a name="start"></a>開発環境を設定する
+## <a name="set-up-your-development-environment"></a><a name="start"></a>開発環境を設定する
 
 Python Notebook で、開発作業に関するすべての設定を行うことができます。 設定の一環として次のことを行います。
 

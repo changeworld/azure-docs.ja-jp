@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232341"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 用語集
@@ -32,7 +32,7 @@ ms.locfileid: "74232341"
 ### <a name="conditional-access"></a>条件付きアクセス
 リソースへのアクセスを保護するためのポリシー。 条件付きアクセス規則は、Azure Active Directory に格納され、リソースへのアクセス権を付与する前に Azure AD によって評価されます。  規則の例には、ユーザーの場所、デバイスの正常性またはユーザーの認証方法に基づいたアクセス権の制限が含まれます。
 
-### <a name="credentials"></a>資格情報
+### <a name="credentials"></a>[資格情報]
 ID およびローカル リソースとネットワーク リソースへのアクセス権を取得するために使用する ID の証明を含む情報です。 資格情報には、ユーザー名とパスワード、スマート カードおよび証明書などがあります。
 
 ### <a name="event"></a>Event
@@ -158,6 +158,6 @@ Azure Active Directory で ID を認証するプロセスとアクション、�
 ### <a name="vulnerability"></a>脆弱性
 ディレクトリが悪用または脅威の影響を受けやすくする Azure Active Directory の構成または条件です。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)

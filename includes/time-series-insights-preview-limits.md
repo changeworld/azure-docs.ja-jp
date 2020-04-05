@@ -10,10 +10,10 @@ ms.author: dpalled
 manager: cshankar
 ms.custom: include file
 ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77123154"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>一般提供とプレビューの比較

@@ -4,10 +4,10 @@ description: CIS Microsoft Azure Foundations Benchmark ブループリント サ
 ms.date: 11/04/2019
 ms.topic: sample
 ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74707423"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark ブループリント サンプルの推奨事項のマッピング
@@ -18,7 +18,7 @@ ms.locfileid: "74707423"
 マッピングされた推奨事項の多くは、[Azure Policy](../../../policy/overview.md) イニシアティブを使用して実装されます。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 その後、 **[\[Preview\] Audit CIS Microsoft Azure Foundations Benchmark v1.1.0 recommendations and deploy specific VM Extensions to support audit requirements]\([プレビュー] CIS Microsoft Azure Foundations Benchmark v1.1.0 の推奨事項を監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする\)** 組み込みポリシー イニシアティブを見つけて選択します。
 
 > [!IMPORTANT]
-> 以下の各コントロールは、1 つまたは複数の [Azure Policy](../../../policy/overview.md) 定義に関連付けられています。 これらのポリシーは、コントロールに対する[コンプライアンスを評価](../../../policy/how-to/get-compliance-data.md)するのに役立つ場合があります。ただし、多くの場合、コントロールと 1 つまたは複数のポリシーとの間に 1:1 または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md)を参照してください。
+> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスを評価](../../../policy/how-to/get-compliance-data.md)するのに役立つ場合があります。ただし、多くの場合、コントロールと 1 つまたは複数のポリシーとの間に 1:1 または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md)に関するページを参照してください。
 
 ## <a name="11-ensure-that-multi-factor-authentication-is-enabled-for-all-privileged-users"></a>1.1 特権のあるすべてのユーザーに対して多要素認証が有効になっていることを確認する
 
@@ -446,7 +446,7 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 - Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 CIS Microsoft Azure Foundations Benchmark ブループリントのコントロール マッピングを確認したので、次の記事にアクセスしてこのブループリントについて学習するか、Azure portal の Azure Policy にアクセスしてイニシアティブを割り当ててください。
 

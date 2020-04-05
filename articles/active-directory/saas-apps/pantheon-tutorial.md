@@ -17,10 +17,10 @@ ms.date: 12/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f24cfeac35e5ce669575c14a3de3e2bff46c7a91
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74893248"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pantheon"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Pantheon の統合

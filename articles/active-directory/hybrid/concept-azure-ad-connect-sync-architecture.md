@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138599"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230283"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect 同期: アーキテクチャの概要
 このトピックでは、Azure AD Connect 同期の基本的なアーキテクチャについて説明します。多くの点で、前身の MIIS 2003、ILM 2007、FIM 2010 と似ています。 Azure AD Connect sync は、これらのテクノロジが進化したものです。 これらの以前のテクノロジのいずれかに慣れていれば、このトピックの内容も既によくご存知のことと思われます。 同期テクノロジについて初めて学ぶ場合は、このトピックを読むことをお勧めします。 ただし、このトピックの内容を隅々まで理解しなくても、(このトピックでは同期エンジンと呼んでいる) Azure AD Connect 同期を問題なくカスタマイズできます。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 同期エンジンは、接続された複数のデータ ソースに格納されているオブジェクトの統合ビューを作成し、それらのデータ ソース内の ID 情報を管理します。 統合ビューは、接続されたデータ ソースから取得された ID 情報と、この情報の処理方法を指定する一連のルールによって決まります。
 
 ### <a name="connected-data-sources-and-connectors"></a>接続されたデータ ソースとコネクタ
@@ -146,7 +146,7 @@ ms.locfileid: "65138599"
 ID 管理プロセスは、異なる接続されたデータ ソース間で ID 情報を更新する方法を制御します。 ID 管理は 3 つのプロセスで行われます。
 
 * [インポート]
-* 同期
+* Synchronization
 * エクスポート
 
 インポート プロセスの間に、同期エンジンは接続されたデータ ソースから受信した ID 情報を評価します。 変更が検出されると、新しいステージング オブジェクトを作成するか、またはコネクタ スペース内の既存のステージング オブジェクトを同期用に更新します。
@@ -256,7 +256,7 @@ ID 管理プロセスは、異なる接続されたデータ ソース間で ID 
 
 たとえば、同期エンジンが接続されたデータ ソースに対して属性 C をエクスポートし、その値が 5 である場合、同期エンジンはエクスポート ステータス メモリに C = 5 を格納します。 同期エンジンはこの値が永続的にオブジェクトに適用されていないものとみなすので (つまり、接続されたデータ ソースから最近別の値がインポートされていない限り)、このオブジェクトに対する追加の各エクスポートでは、接続されたデータ ソースへの C = 5 のエクスポートが再度試みられます。 オブジェクトのインポート操作で C = 5 を受信すると、エクスポート メモリはクリアされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD Connect Sync](how-to-connect-sync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

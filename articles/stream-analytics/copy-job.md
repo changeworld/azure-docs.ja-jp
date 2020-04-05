@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 5c8f770855dd8d19a9d313f1b79f9bf8da4b2393
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75771497"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブをコピーまたはバックアップする
@@ -21,7 +21,7 @@ Visual Studio Code または Visual Studio を使用して、デプロイされ�
 ## <a name="before-you-begin"></a>開始する前に
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-* [Azure portal](https://portal.azure.com/) にサインインする
+* [Azure portal](https://portal.azure.com/) にサインインします。
 
 * [Visual Studio Code の Azure Stream Analytics 拡張機能](quick-create-vs-code.md#install-the-azure-stream-analytics-tools-extension)または [Visual Studio の Azure Stream Analytics ツール](quick-create-vs-code.md#install-the-azure-stream-analytics-tools-extension)をインストールします。  
 
@@ -51,6 +51,6 @@ Visual Studio Code または Visual Studio を使用して、デプロイされ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [クイック スタート:Visual Studio Code を使用して Stream Analytics ジョブを作成する](quick-create-vs-code.md)
-* [クイック スタート:Visual Studio を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
+* [クイック スタート: Visual Studio Code を使用して Stream Analytics ジョブを作成する](quick-create-vs-code.md)
+* [クイック スタート: Visual Studio を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
 * [Azure Pipelines を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする](stream-analytics-tools-visual-studio-cicd-vsts.md)

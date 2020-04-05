@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: de76467cc741a65a851e5f3a7ec424d0326aebb2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74851521"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
@@ -26,7 +26,7 @@ ms.locfileid: "74851521"
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>Azure DevOps インスタンスではなく、Visual Studio Team Foundation Server インスタンスに拡張機能をインストールすることはできますか?
 
-No. この拡張機能は、Visual Studio Team Foundation Server 用のダウンロードとインストールには使用できません。
+いいえ。 この拡張機能は、Visual Studio Team Foundation Server 用のダウンロードとインストールには使用できません。
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>Microsoft Security Code Analysis は、ビルドに対して実行しなければなりませんか? 
 
@@ -55,7 +55,7 @@ No. この拡張機能は、Visual Studio Team Foundation Server 用のダウン
 
 ### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>Azure DevOps ビルドの複数のリポジトリにわたってビルド タスク (Credential Scanner など) を実行することはできますか?
 
-No. 1 つのパイプラインで複数のリポジトリにわたってセキュリティで保護された開発ツールを実行することはできません。
+いいえ。 1 つのパイプラインで複数のリポジトリにわたってセキュリティで保護された開発ツールを実行することはできません。
 
 ### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>指定した出力ファイルが作成されない、または指定した出力ファイルが見つからない
 
@@ -72,7 +72,7 @@ No. 1 つのパイプラインで複数のリポジトリにわたってセキ�
 >[!NOTE]
 > Anti-Malware Scanner ビルド タスクには、Windows Defender が有効なビルド エージェントが必要です。 ホストされている Visual Studio 2017 以降には、このようなエージェントが用意されています。 ビルド タスクは、Visual Studio 2015 ホステッド エージェントでは実行されません。
 >
-> これらのエージェント上で署名を更新することはできませんが、署名の期間は常に 3 時間未満です。
+> これらのエージェントでは署名を更新することはできませんが、署名の期間を常に 3 時間未満にする必要があります。
 
 ### <a name="can-i-run-these-build-tasks-as-part-of-a-release-pipeline-as-opposed-to-a-build-pipeline"></a>これらのビルド タスクを、ビルド パイプラインではなくリリース パイプラインの一部として実行することはできますか?
 
@@ -90,7 +90,7 @@ No. 1 つのパイプラインで複数のリポジトリにわたってセキ�
 
 ### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>この拡張機能をインストールすると、既存の Azure Pipelines は変更されますか? 
 
-No. 拡張機能をインストールすると、セキュリティ ビルド タスクをパイプラインに追加できるようになります。 ただし、ツールによってビルド プロセスを操作できるように、ビルド定義を追加または更新する必要があります。
+いいえ。 拡張機能をインストールすると、セキュリティ ビルド タスクをパイプラインに追加できるようになります。 ただし、ツールによってビルド プロセスを操作できるように、ビルド定義を追加または更新する必要があります。
 
 ## <a name="task-specific-faq"></a>タスク固有の FAQ
 
@@ -218,7 +218,7 @@ Roslyn アナライザー タスクはコンパイルの一環として実行さ
 
 Roslyn アナライザー ビルド タスクでは、MSBuild ビルド タスクの MSBuild ログについて Azure DevOps にクエリを実行する必要があります。 MSBuild タスクの直後にアナライザー タスクを実行した場合、ログはまだ使用できません。 MSBuild タスクと Roslyn アナライザー タスクの間に他のタスクを配置します。 その他のタスクの例としては、BinSkim と Anti-Malware Scanner があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 さらにサポートが必要な場合は、Microsoft Security Code Analysis サポートまでお問い合わせください (平日の午前 9:00 から午後 5:00 (太平洋標準時) まで営業)。
 

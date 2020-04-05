@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/10/2019
 ms.author: rohink
 ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76937362"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>ゾーンの頂点で負荷分散された Azure Web アプリをホストする
@@ -30,7 +30,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 テスト対象の Azure DNS でホストできる利用可能なドメイン名が必要です。 このドメインに対するフル コントロールが必要となります。 フル コントロールには、このドメインのネーム サーバー (NS) レコードを設定する権限が含まれます。
 
-Azure DNS 内でドメインをホストする手順については、「[チュートリアル:Azure DNS でドメインをホストする](dns-delegate-domain-azure-dns.md)」を参照してください。
+Azure DNS にドメインをホストする手順については、「[チュートリアル: Azure DNS にドメインをホストする](dns-delegate-domain-azure-dns.md)」を参照してください。
 
 このチュートリアルで使用するドメインの例は contoso.com ですが、独自のドメイン名を使用してください。
 
@@ -76,7 +76,7 @@ Web アプリの IP アドレスとホスト名を書き留めておく必要が
 
 リソース グループで Traffic Manager プロファイルを作成します。 既定値を使用し、trafficmanager.net 名前空間内で一意の名前を入力します。
 
-Traffic Manager プロファイルの作成方法の詳細については、[Web アプリケーションに高可用性を実現する Traffic Manager プロファイルの作成に関するクイック スタート](../traffic-manager/quickstart-create-traffic-manager-profile.md)を参照してください。
+Traffic Manager プロファイルの作成については、「[クイック スタート: Web アプリケーションの高可用性を実現する Traffic Manager プロファイルの作成](../traffic-manager/quickstart-create-traffic-manager-profile.md)」をご覧ください。
 
 ### <a name="create-endpoints"></a>エンドポイントを作成する
 
@@ -87,14 +87,14 @@ Traffic Manager プロファイルの作成方法の詳細については、[Web
 3. **[追加]** を選択します。
 4. 次の表を使用して、エンドポイントを構成します。
 
-   |Type  |Name  |移行先  |Location  |カスタム ヘッダーの設定|
+   |種類  |Name  |移行先  |Location  |カスタム ヘッダーの設定|
    |---------|---------|---------|---------|---------|
    |外部エンドポイント     |End-01|App-01 について記録した IP アドレス|East US|host:\<App-01 について記録した URL\><br>例: **host:app-01.azurewebsites.net**|
    |外部エンドポイント     |End-02|App-02 について記録した IP アドレス|米国中部|host:\<App-02 について記録した URL\><br>例: **host:app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>DNS ゾーンの作成
 
-既存の DNS ゾーンをテスト用に使用することも、新しいゾーンを作成することもできます。 Azure で新しい DNS ゾーンを作成して委任する方法については、「[チュートリアル:Azure DNS でドメインをホストする](dns-delegate-domain-azure-dns.md)」を参照してください。
+既存の DNS ゾーンをテスト用に使用することも、新しいゾーンを作成することもできます。 Azure で新しい DNS ゾーンを作成して委任する方法については、「[チュートリアル: Azure DNS でドメインをホストする](dns-delegate-domain-azure-dns.md)」をご覧ください。
 
 ## <a name="add-a-txt-record-for-custom-domain-validation"></a>カスタム　ドメイン検証用の TXT レコードを追加する
 
@@ -104,7 +104,7 @@ Web アプリにカスタム ホスト名を追加すると、ドメインを検
 2. **[レコード セット]** を選択します。
 3. 次の表を使用して、レコード セットを追加します。 値には、前に記録した実際の Web アプリ URL を使用します。
 
-   |Name  |Type  |Value|
+   |Name  |種類  |値|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
@@ -132,7 +132,7 @@ Web アプリにカスタム ホスト名を追加すると、ドメインを検
 2. **[レコード セット]** を選択します。
 3. 次の表を使用して、レコード セットを追加します。
 
-   |Name  |Type  |エイリアス レコード セット  |エイリアスの種類  |Azure リソース|
+   |Name  |種類  |エイリアス レコード セット  |エイリアスの種類  |Azure リソース|
    |---------|---------|---------|---------|-----|
    |@     |A|はい|Azure リソース|Traffic Manager - お使いのプロファイル|
 
@@ -156,8 +156,8 @@ Web アプリにカスタム ホスト名を追加すると、ドメインを検
 
 エイリアス レコードの詳細については、次の記事を参照してください。
 
-- [チュートリアル:Azure パブリック IP アドレスを参照するエイリアス レコードを構成する](tutorial-alias-pip.md)
-- [チュートリアル:Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する](tutorial-alias-tm.md)
+- [チュートリアル: Azure パブリック IP アドレスを参照するエイリアス レコードを構成する](tutorial-alias-pip.md)
+- [チュートリアル: Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する](tutorial-alias-tm.md)
 - [DNS に関する FAQ](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
 
 アクティブな DNS 名を移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](../app-service/manage-custom-dns-migrate-domain.md)」を参照してください。

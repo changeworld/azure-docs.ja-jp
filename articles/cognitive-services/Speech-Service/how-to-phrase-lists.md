@@ -12,10 +12,10 @@ ms.date: 02/04/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: f84ea6b2b0f1e8246e1d765e54f663cd01f29b1d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77560849"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>音声テキスト変換用のフレーズ リスト

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/05/2019
 ms.author: sttramer
 ms.openlocfilehash: e769bfaab66cf1072bee192331c3bbc839a0488b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67133360"
 ---
 このサンプルには、Azure PowerShell が必要です。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。

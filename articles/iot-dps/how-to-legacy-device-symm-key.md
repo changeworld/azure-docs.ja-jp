@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 4d1a92f3ebf32d2270eb77ec9c79fe860ba090e1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75434710"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>対称キーを使用してレガシ デバイスをプロビジョニングする方法
@@ -286,7 +286,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ## <a name="next-steps"></a>次のステップ
 
 * 再プロビジョニングの詳細については、「[IoT Hub Device reprovisoning concepts](concepts-device-reprovision.md)」(IoT Hub デバイスの再プロビジョニングの概念) をご覧ください 
-* [クイック スタート:対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
+* [クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
 * プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」をご覧ください 
 
 

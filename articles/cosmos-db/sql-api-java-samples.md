@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB:SQL API の Java のサンプル
+title: 'Azure Cosmos DB: SQL API の Java のサンプル'
 description: CRUD 操作など、Azure Cosmos DB SQL API を使う一般的なタスクについては、GitHub の Java のサンプルを参照してください。
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.topic: sample
 ms.date: 02/08/2019
 ms.author: sngun
 ms.openlocfilehash: 8b133f0044bdf8f99fdee657177d561ef5bb406b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170160"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222089"
 ---
-# <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Azure Cosmos DB:SQL API の Java のサンプル
+# <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API の Java のサンプル
 
 > [!div class="op_single_selector"]
 > * [.NET V2 SDK のサンプル](sql-api-dotnet-samples.md)
@@ -37,7 +37,7 @@ Azure Cosmos DB リソースに対する CRUD 操作などの一般的な操作�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
   
-- [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)ことができます。Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
+- [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)こともできます: Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 

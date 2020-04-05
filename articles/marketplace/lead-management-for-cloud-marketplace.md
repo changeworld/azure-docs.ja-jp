@@ -1,19 +1,18 @@
 ---
 title: クラウド マーケットプレースのリード管理 | Azure Marketplace と AppSource
 description: Azure Marketplace と AppSource へのオファーや技術的成果物の公開に関連するさまざまなトピックについて概説します
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: yijenj
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/05/2018
-ms.author: pabutler
-ms.openlocfilehash: 047ffd983cecd9f9bd971ee3f97e15734d14ce66
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 94510d02a28e0364f1c715dbcf9ff641fe2b14fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813276"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286134"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>クラウド マーケットプレースのリード管理
 

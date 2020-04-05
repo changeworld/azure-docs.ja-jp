@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
 ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190361"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する
@@ -191,11 +191,11 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>要求を事前承認する JWT 検証ポリシーを構成する
 
-この時点でユーザーが Developer Console から API を呼び出そうとすると、ユーザーにはログインが求められます。 Developer Console は、ユーザーに代わってアクセス トークンを取得し、API に対して行う要求にトークンを含めます。
+この時点でユーザーが Developer Console から電話をかけようとすると、ユーザーにはログインが求められます。 Developer Console は、ユーザーに代わってアクセス トークンを取得し、API に対して行う要求にトークンを含めます。
 
 ただし、誰かがトークンを使用せず、または無効なトークンを使用して API を呼び出すとどうなるでしょうか。 たとえば、API を `Authorization` ヘッダーなしで呼び出してみても、呼び出しは処理されます。 理由は、API Management がこの時点でアクセス トークンを検証していないためです。 `Authorization` ヘッダーはバックエンド API に渡されます。
 
-[JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、各受信要求のアクセス トークンを検証することで API Management で要求を事前承認できます。 要求に有効なトークンがない場合、API Management はその要求をブロックします。 たとえば、以下のポリシーを `Echo API` の `<inbound>` ポリシー セクションに追加します。 これは、アクセス トークンの受信者要求をチェックし、トークンが有効でない場合にエラー メッセージを返します。 ポリシーの構成方法については、[ポリシーの設定と編集](set-edit-policies.md)に関する記事をご覧ください。
+[JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、各受信要求のアクセス トークンを検証することで API Management で要求を事前承認できます。 要求に有効なトークンがない場合、API Management はその要求をブロックします。 たとえば、以下のポリシーを `<inbound>` の `Echo API` ポリシー セクションに追加します。 これは、アクセス トークンの受信者要求をチェックし、トークンが有効でない場合にエラー メッセージを返します。 ポリシーの構成方法については、[ポリシーの設定と編集](set-edit-policies.md)に関する記事をご覧ください。
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

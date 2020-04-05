@@ -5,25 +5,25 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 1d6eafd38d418066ddf5933139bd4caf6e69ddea
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: de056f61337311642589ba937c6d9842d8354d36
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766975"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530140"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Azure Database for MariaDB の Advanced Threat Protection
 
-Azure Database for MariaDB 用の Advanced Threat Protection では、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。
+Azure Database for MariaDB 用の Advanced Threat Protection は、データベースにアクセスしたりそれを悪用したりしようとする、通常とは異なり、かつ有害なおそれのある試みを示す異常なアクティビティを検出します。
 
-Advanced Threat Protection は、高度なセキュリティ機能の統合パッケージである Advanced Data Security オファリングの一部です。 Advanced Threat Protection は [Azure portal](https://portal.azure.com) を使ってアクセスおよび管理できます。
+Advanced Threat Protection は、高度なセキュリティ機能の統合パッケージである Advanced Data Security オファリングの一部です。 Advanced Threat Protection は、[Azure portal](https://portal.azure.com) 経由でアクセスおよび管理できます。
 
 > [!IMPORTANT]
 > Advanced Threat Protection は、パブリック プレビュー段階です。 この機能は、Azure Database for MariaDB が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure のすべてのリージョンで利用できます。
 
 > [!NOTE]
-> Advanced Threat Protection 機能は、次の Azure Government およびソブリン クラウド リージョンでは使用**できません**。US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
+> Advanced Threat Protection の機能は、US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2 の Azure 政府およびソブリン クラウド領域では使用**できません**。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
 
 ## <a name="set-up-threat-detection"></a>脅威検出の設定
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) を開きます。
@@ -60,7 +60,7 @@ SQL Database の脅威の検出では、アラートが [Azure Security Center](
    ![脅威検出アラート](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
    
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について参照してください
-* 価格の詳細については、[Azure Database for MariaDB の価格ページ](https://azure.microsoft.com/pricing/details/mariadb/)をご覧ください  
+* 価格の詳細については、「[Azure Database for MariaDB の価格](https://azure.microsoft.com/pricing/details/mariadb/)」ページを参照してください  

@@ -5,11 +5,11 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f56717c086f005b1155988e2041ff2e717e047f2
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 8e170c27923d2bb091c4121e350809b85e4c48a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79081694"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Service Fabric クラスターの均衡をとる
@@ -76,7 +76,7 @@ ClusterManifest.xml:
 
 たとえば、ノードで障害が発生した場合、フォールト ドメイン全体を一度で処理することができます。 これらすべての障害は、*PLBRefreshGap* の次の状態更新時にキャプチャされます。 以降の配置、制約チェック、分散の実行中に、修正が決定されます。 既定では Cluster Resource Manager はクラスター内の数時間にわたり変更に目を通さず、すべての変更を一度で対応しようとします。 これにより、チャーンが突発的に発生することがあります。
 
-また、クラスターが不均衡であるかどうかを Cluster Resource Manager が判定するには、追加の情報が必要です。 そのために、他に 2 つの構成があります (*BalancingThresholds* と *ActivityThresholds*)。
+また、クラスターが不均衡であるかどうかを Cluster Resource Manager が判定するには、追加の情報が必要です。 そのために、他に、"*分散しきい値*" と "*アクティビティしきい値*" という 2 つの構成要素があります。
 
 ## <a name="balancing-thresholds"></a>分散しきい値
 分散しきい値は、再調整をトリガーする主要コントロールです。 メトリックの分散しきい値は _割合_ で規定されます。 最も負荷がかかっているノードのメトリックの負荷を、最も負荷がかかっていないノードの負荷量で割ったものが、そのメトリックの*分散しきい値*を超える場合、クラスターは不均衡であると見なされます。 結果として、次回 Cluster Resource Manager のチェックが行われるときに分散処理がトリガーされます。 *MinLoadBalancingInterval* タイマーは、再調整が必要かどうかをクラスター リソース マネージャーでチェックする頻度を定義します。 チェックは、何かがおこる処理ではありません。 
@@ -185,7 +185,7 @@ ClusterManifest.xml
 - Service3 は、メトリック Metric3 と Metric4 を報告します。
 - Service4 は、メトリック Metric99 を報告します。 
 
-これで、おわかりいただけたでしょうか。チェーンがあります。 実際には 4 つの独立したサービスがあるのではなく、関連している 3 つのサービスと、独立したサービスが 1 つあります。
+これで、お分かりいただけたでしょうか。チェーンがあります。 実際には 4 つの独立したサービスがあるのではなく、関連している 3 つのサービスと、独立したサービスが 1 つあります。
 
 <center>
 
@@ -205,7 +205,6 @@ ClusterManifest.xml
 * メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。 メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
 * 移動コストは、特定のサービスが他のサービスよりも高額になっていることをクラスター リソース マネージャーに警告する信号の 1 つです。 移動コストについて詳しくは、[この記事](service-fabric-cluster-resource-manager-movement-cost.md)をご覧ください。
 * クラスター リソース マネージャーにはスロットルがいくつかあります。クラスターのチャーン (激しい動き) を落ち着かせるようにスロットルを構成できます。 通常は必要ありませんが、必要であれば、[ここ](service-fabric-cluster-resource-manager-advanced-throttling.md)で詳細を確認できます。
-* Cluster Resource Manager は、サブクラスター化 (配置の制約と分散を使用する場合に発生する可能性のある状況) を認識して処理できます。 サブクラスター化が負荷分散とその処理方法に与える影響については、[こちら](service-fabric-cluster-resource-manager-subclustering.md)を参照してください
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

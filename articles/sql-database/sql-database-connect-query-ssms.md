@@ -11,89 +11,77 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: ed33d50da84347f55d355802e7767c8477c30e87
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 03/10/2020
+ms.openlocfilehash: 31bd47128a272e75d7021180b536fe6bf7420f55
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482158"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79299296"
 ---
-# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>クイック スタート: SQL Server Management Studio を使用して Azure SQL データベースに接続しクエリを実行する
+# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>クイック スタート:SQL Server Management Studio を使用して Azure SQL データベースに接続しクエリを実行する
 
-このクイックスタートでは、[SQL Server Management Studio][ssms-install-latest-84g] (SSMS) を使用して、Azure SQL データベースに接続します。 その後、Transact-SQL ステートメントを実行して、データの照会、挿入、更新、および削除を実行します。 SSMS を使用して、SQL Server から Microsoft Windows の SQL Database まで、任意の SQL インフラストラクチャを管理できます。  
+このクイックスタートでは、SQL Server Management Studio (SSMS) を使用して Azure SQL データベースに接続し、クエリをいくつか実行する方法を学習します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure SQL データベース。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
+このクイックスタートを完了するには、次のアイテムが必要です。
 
-  || 単一データベース | マネージド インスタンス |
-  |:--- |:--- |:---|
-  | 作成| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
-  |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
-  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
-  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
+- [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms/)。
+- AdventureWorksLT サンプル データベース。 AdventureWorksLT データベースの作業コピーが必要な場合は、[Azure SQL データベースの作成](sql-database-single-database-get-started.md)のクイックスタートを完了して作成します。
+    - この記事のスクリプトは、AdventureWorksLT データベースを使用するように記述されています。 マネージド インスタンスを使用している場合は、AdventureWorks データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
 
-  > [!IMPORTANT]
-  > この記事のスクリプトは、Adventure Works データベースを使用するように記述されています。 マネージド インスタンスの場合は、Adventure Works データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
-
-## <a name="install-the-latest-ssms"></a>最新の SSMS をインストールする
-
-開始する前に、最新の [SSMS][ssms-install-latest-84g] がインストールされていることを確認します。
+SSMS をインストールせずにいくつかのアドホック クエリを実行するだけの場合は、「[クイックスタート:Azure portal のクエリ エディターを使用して SQL データベースに照会する](sql-database-connect-query-portal.md)」を参照してください。
 
 ## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
-Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
+自分のデータベースに接続するために必要な接続情報を取得します。 このクイックスタートを完了するには、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
+2. クエリを実行する **[SQL データベース]** または **[SQL マネージド インスタンス]** に移動します。
 
-3. **[概要]** ページで、単一データベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、マネージド インスタンスの場合は **[ホスト]** の横の完全修飾サーバー名を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
+3. **[概要]** ページで、完全修飾サーバー名をコピーします。 これは、単一データベースの場合は **[サーバー名]** の横にあります。またはマネージド インスタンスの場合は **[ホスト]** の横の完全修飾サーバー名です。 完全修飾名は、実際のサーバー名が含まれている点を除き、*servername.database.windows.net* のようになります。
 
 ## <a name="connect-to-your-database"></a>データベースに接続する
 
-SMSS で、Azure SQL Database サーバーに接続します。
+SSMS で、Azure SQL Database サーバーに接続します。
 
 > [!IMPORTANT]
 > Azure SQL Database サーバーは、ポート 1433 でリッスンします。 企業のファイアウォールの外側から SQL Database サーバーに接続するには、そのファイアウォールでこのポートが開かれている必要があります。
->
 
-1. SSMS を開きます。 **[サーバーに接続]** ダイアログ ボックスが表示されます。
+1. SSMS を開きます。
 
-2. 次の情報を入力します。
+2. **[サーバーに接続]** ダイアログ ボックスが表示されます。 次の情報を入力します。
 
    | 設定      | 推奨値    | 説明 |
    | ------------ | ------------------ | ----------- |
    | **サーバーの種類** | データベース エンジン | 必須値。 |
-   | **サーバー名** | 完全修飾サーバー名 | 例: **mynewserver20170313.database.windows.net** |
+   | **サーバー名** | 完全修飾サーバー名 | **servername.database.windows.net** のようなものです。 |
    | **認証** | SQL Server 認証 | このチュートリアルでは、SQL 認証を使用します。 |
-   | **ログイン** | サーバー管理者アカウントのユーザー ID | サーバーを作成するために使用するサーバー管理者アカウントのユーザー ID。 |
+   | **Login** | サーバー管理者アカウントのユーザー ID | サーバーを作成するために使用するサーバー管理者アカウントのユーザー ID。 |
    | **パスワード** | サーバー管理者アカウントのパスワード | サーバーを作成するために使用するサーバー管理者アカウントのパスワード。 |
    ||||
 
    ![[サーバーに接続]](./media/sql-database-connect-query-ssms/connect.png)  
 
-3. **[サーバーに接続]** ダイアログ ボックスの **[オプション]** を選択します。 **[データベースへの接続]** ドロップダウン メニューで、 **[mySampleDatabase]** を選択します。ドロップダウンを既定値のままにした場合は、**master** データベースに接続されます。
+3. **[サーバーに接続]** ダイアログ ボックスの **[オプション]** を選択します。 **[データベースへの接続]** ドロップダウン メニューで、**mySampleDatabase** を選択します。 「[前提条件](#prerequisites)」セクションのクイックスタートを完了すると、mySampleDatabase という名前の AdventureWorksLT データベースが作成されます。 AdventureWorks データベースの作業コピーの名前が mySampleDatabase と異なっている場合は、代わりにそれを選択します。
 
    ![サーバー上のデータベースに接続](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
 4. **[接続]** を選択します。 オブジェクト エクスプローラー ウィンドウが開きます。
 
-5. データベースのオブジェクトを表示するには、 **[データベース]** を展開して、**mySampleDatabase** を展開します。
+5. データベースのオブジェクトを表示するには、 **[データベース]** を展開してから、自分のデータベース ノードを展開します。
 
    ![mySampleDatabase オブジェクト](./media/sql-database-connect-query-ssms/connected.png)  
 
-## <a name="query-data"></a>データのクエリを実行する
+## <a name="query-data"></a>クエリ データ
 
 次の [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL のコードを実行して、カテゴリごとに上位 20 個の製品を照会します。
 
 1. オブジェクト エクスプローラーで **mySampleDatabase** を右クリックし、 **[新しいクエリ]** を選択します。 データベースに接続された新しいクエリ ウィンドウが開きます。
 
-2. クエリ ウィンドウに、この SQL クエリを貼り付けます。
+2. クエリ ウィンドウに、次の SQL クエリを貼り付けます。
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -102,11 +90,11 @@ SMSS で、Azure SQL Database サーバーに接続します。
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-3. ツールバーで、 **[実行]** を選択して、`Product` および `ProductCategory` テーブルからデータを取得します。
+3. ツールバーで、 **[実行]** を選択してクエリを実行し、`Product` テーブルおよび `ProductCategory` テーブルからデータを取得します。
 
     ![Product と ProductCategory のテーブルからデータを取得するためのクエリ](./media/sql-database-connect-query-ssms/query2.png)
 
-## <a name="insert-data"></a>データを挿入する
+### <a name="insert-data"></a>データの挿入
 
 次の [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL のコードを実行して、`SalesLT.Product` テーブルに新しい製品を作成します。
 
@@ -133,7 +121,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
 
 2. **[実行]** を選択して、新しい行を `Product` テーブルに挿入します。 **メッセージ** ペインに、 **(1 行処理されました)** と表示されます。
 
-## <a name="view-the-result"></a>結果を表示する
+#### <a name="view-the-result"></a>結果を表示する
 
 1. 前のクエリを次のクエリに置き換えます。
 
@@ -146,11 +134,11 @@ SMSS で、Azure SQL Database サーバーに接続します。
 
    ![Product テーブルに対するクエリの結果](./media/sql-database-connect-query-ssms/result.png)
 
-## <a name="update-data"></a>データの更新
+### <a name="update-data"></a>データの更新
 
 次の [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL コードを実行して、新しい製品を変更します。
 
-1. 前のクエリを次のクエリに置き換えます。
+1. 上記のクエリを、前に作成した新しいレコードを返す次のクエリに置き換えます。
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -160,7 +148,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
 
 2. **[実行]** を選択して、`Product` テーブルの指定した行を更新します。 **メッセージ** ペインに、 **(1 行処理されました)** と表示されます。
 
-## <a name="delete-data"></a>データの削除
+### <a name="delete-data"></a>データの削除
 
 次の [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL コードを実行して、新しい製品を削除します。
 
@@ -173,7 +161,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
 
 2. **[実行]** を選択して、`Product` テーブルの指定した行を削除します。 **メッセージ** ペインに、 **(1 行処理されました)** と表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - SSMS については、[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) のページを参照してください。
 - Azure Portal を使用して接続とクエリを実行するには、[Azure Portal の SQL クエリ エディターを使用した接続とクエリ実行](sql-database-connect-query-portal.md)に関するページをご覧ください。
@@ -184,7 +172,3 @@ SMSS で、Azure SQL Database サーバーに接続します。
 - Java を使用して接続とクエリを実行するには、[Java を使用した接続とクエリ実行](sql-database-connect-query-java.md)に関するページを参照してください。
 - Python を使用して接続とクエリを実行するには、[Python を使用した接続とクエリ実行](sql-database-connect-query-python.md)に関するページを参照してください。
 - Ruby を使用して接続とクエリを実行するには、[Ruby を使用した接続とクエリ実行](sql-database-connect-query-ruby.md)に関するページを参照してください。
-
-<!-- Article link references. -->
-
-[ssms-install-latest-84g]: https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms

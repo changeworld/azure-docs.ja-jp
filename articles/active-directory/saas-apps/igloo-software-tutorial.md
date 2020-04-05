@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
 ms.openlocfilehash: df1d70f895e2e0a81344cf2a4e8e2d9963c951fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67100578"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>チュートリアル:Azure Active Directory と Igloo Software の統合
@@ -139,7 +139,7 @@ Igloo Software で Azure AD シングル サインオンを構成するには、
 
 3. **[Membership (メンバーシップ)]** タブで **[Sign In Settings (サインインの設定)]** をクリックします。
 
-    ![サインインの設定](./media/igloo-software-tutorial/ic783968.png "サインインの設定")
+    ![[Sign in Settings]\(サインインの設定\)](./media/igloo-software-tutorial/ic783968.png "[サインインの設定]")
 
 4. SAML の構成のセクションで、 **[SAML 認証の構成]** をクリックします。
 
@@ -147,7 +147,7 @@ Igloo Software で Azure AD シングル サインオンを構成するには、
 
 5. **[全般構成]** セクションで、次の手順を実行します。
 
-    ![全般構成](./media/igloo-software-tutorial/ic783970.png "全般構成")
+    ![[General Configuration]\(全般構成\)](./media/igloo-software-tutorial/ic783970.png "[全般構成]")
 
     a. **[接続名]** テキストボックスに、構成のカスタム名を入力します。
 
@@ -161,7 +161,7 @@ Igloo Software で Azure AD シングル サインオンを構成するには、
 
 6. **[応答および認証の構成]** で、次の手順を実行します。
 
-    ![応答および認証の構成](./media/igloo-software-tutorial/IC783971.png "応答および認証の構成")
+    ![[Response and Authentication Configuration]\(応答および認証の構成\)](./media/igloo-software-tutorial/IC783971.png "[応答および認証の構成]")
   
     a. **[Identity Provider (ID プロバイダー)]** として **[Microsoft ADFS]** を選択します。
 
@@ -175,13 +175,13 @@ Igloo Software で Azure AD シングル サインオンを構成するには、
 
 7. 次の手順を実行して、構成を完成させます。
 
-    ![サインインでユーザー作成](./media/igloo-software-tutorial/IC783972.png "サインインでユーザー作成") 
+    ![[User creation on Sign in]\(サインイン時のユーザー作成\)](./media/igloo-software-tutorial/IC783972.png "サインインでユーザー作成") 
 
     a. **[User creation on Sign in (サインイン時のユーザー作成)]** で **[Create a new user in your site when they sign in (サインイン時に新しいユーザーをサイトに作成する)]** を選択します。
 
     b. **[Sign in Settings (サインインの設定)]** で、 **[Use SAML button on "Sign in" screen ([サインイン] 画面で SAML ボタンを使用する)]** を選択します。
 
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

@@ -11,10 +11,10 @@ ms.date: 01/08/2020
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: 301f3abd26f702f3f29c8833c835ba7d0e41bcaf
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75834605"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Windows 仮想マシンからディスクを切断する方法

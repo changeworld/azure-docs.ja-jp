@@ -16,10 +16,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 953837e22cdd3ba8a54d702eac61461739db82d2
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74027630"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
@@ -75,7 +75,7 @@ Flow および PowerApps の試用版サインアップは、**AllowAdHocSubscri
 
 これらのパラメーターの使用方法についての詳細は、「 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD にカスタム ドメイン名を追加する](../fundamentals/add-custom-domain.md)
 * [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)

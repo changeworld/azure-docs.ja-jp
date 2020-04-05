@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: 938cbbde9f53c52350ef64715f6c61c4aa961057
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75526245"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>標準的な Service Fabric での定期的なバックアップと復元

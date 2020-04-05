@@ -1,18 +1,18 @@
 ---
 title: Azure Maps でマップ、空間分析、モビリティ ソリューションを追加するための地理空間 API
 description: 場所を認識するモバイル アプリケーションを作成するためのシンプルで安全な地理空間サービスについて説明します。
-author: elamalani
+author: codemillmatt
 ms.assetid: 34a8a070-0123-4678-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 6a3f249e73f204df61224f1d00f2aa0af33b3300
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: aa2931440b538346d9f1aa9d0ec967f1a812d56b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453222"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80241009"
 ---
 # <a name="geospatial-apis-to-add-maps-spatial-analytics-and-mobility-solutions-with-azure-maps"></a>Azure Maps でマップ、空間分析、モビリティ ソリューションを追加するための地理空間 API
 

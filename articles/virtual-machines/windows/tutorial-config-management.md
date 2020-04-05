@@ -16,11 +16,11 @@ ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d97323f1916ee46e6b1f8d4ca8723b950baca39c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064800"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222229"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Windows 仮想マシンを更新する
 
@@ -117,7 +117,7 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 
 | オプション | 説明 |
 | --- | --- |
-| **Name** |更新プログラムの展開を識別する一意の名前を入力します。 |
+| **名前** |更新プログラムの展開を識別する一意の名前を入力します。 |
 |**オペレーティング システム**| **Linux** か **Windows** を選択します。|
 | **更新するグループ** |Azure でホストされている VM の場合は、サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義します。 このクエリは、展開に含めるための、Azure でホストされている VM の動的なグループを構築します。 </br></br>Azure でホストされていない VM の場合は、既存の保存された検索条件を選択します。 この検索では、展開に含めるこれらの VM のグループを選択できます。 </br></br> 詳しくは、[動的グループ](../../automation/automation-update-management-groups.md)に関するページをご覧ください。|
 | **更新するマシン** |**[保存した検索条件]** 、 **[Imported group]\(インポートしたグループ\)** 、または **[マシン]** を選択します。<br/><br/>**[マシン]** を選択した場合は、ドロップダウン リストから個々のマシンを選択できます。 各マシンの準備状況は、表の **[エージェントの更新の準備]** 列に示されます。</br></br> Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../../azure-monitor/platform/computer-groups.md)に関するページを参照してください |
@@ -132,7 +132,7 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 
 更新プログラムの展開はプログラムで作成することもできます。 REST API を使用して更新プログラムの展開を作成する方法については、「[ソフトウェア更新プログラムの構成 - 作成](/rest/api/automation/softwareupdateconfigurations/create)」を参照してください。 週単位の更新プログラムの展開を作成するために使用できるサンプル Runbook もあります。 この Runbook について詳しくは、「[Create a weekly update deployment for one or more VMs in a resource group](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)」(リソース グループ内の VM に対して週単位の更新プログラムのデプロイを作成する) をご覧ください。
 
-### <a name="view-results-of-an-update-deployment"></a>更新プログラムのデプロイの結果を表示する
+### <a name="view-results-of-an-update-deployment"></a>更新プログラムのデプロイの結果を確認する
 
 スケジュールされた展開の開始後、 **[更新の管理]** ウィンドウの **[更新プログラムの展開]** タブに、展開の状態が表示されます。
 
@@ -145,8 +145,8 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 **[更新プログラムを実行した結果]** のタイルに表示されるのは、VM 上の更新プログラムの合計数と展開結果の概要です。 右側の表には、各更新プログラムとインストールの結果の詳細が示されます。 それぞれの結果には次のいずれかの値が示されます。
 
 * **試行されていません**:更新プログラムがインストールされていません。 定義されたメンテナンス期間に基づいて、十分な時間を確保できませんでした。
-* **成功**:更新できました。
-* **失敗**:更新できませんでした。
+* **[成功]** : 更新できました。
+* **[失敗]** : 更新できませんでした。
 
 展開によって作成されたログ エントリをすべて表示するには、 **[すべてのログ]** を選択します。
 
@@ -206,9 +206,9 @@ VM を停止して再起動すると、イベントがアクティビティ ロ�
 
 棒グラフの各行は、さまざまな追跡可能な変更の種類を表します。 具体的には、Linux デーモン、ファイル、Windows レジストリ キー、ソフトウェア、および Windows サービスです。 **[変更]** タブに変更の詳細が表示されます。 変更は発生した順に表示され、最新の変更が最初に表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、VM の Change Tracking と Update Management を構成して確認しました。 以下の方法について学習しました。
+このチュートリアルでは、VM の Change Tracking と Update Management を構成して確認しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * リソース グループと VM を作成する。

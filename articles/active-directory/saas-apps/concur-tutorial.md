@@ -16,10 +16,10 @@ ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6828db6bcb4c7e68d508acc249d9a82024083a00
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76983629"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Concur の統合

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 45977f52226fac0a3e23455ce9457a721947a8cc
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77425886"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする
@@ -63,7 +63,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
 1. 2 つの新しいリソース グループを作成します。
 
-    |リソース グループ | Location |
+    |リソース グループ | 場所 |
     |---|---|
     | kafka-primary-rg | 米国中部 |
     | kafka-secondary-rg | 米国中北部 |

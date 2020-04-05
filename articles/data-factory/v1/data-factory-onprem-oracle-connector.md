@@ -13,15 +13,15 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928163"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231587"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
 
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-onprem-oracle-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-oracle.md)
 
@@ -76,11 +76,11 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 コピー ウィザードを使用してコピー パイプラインを作成する場合は、ドライバーのタイプも自動的に決定されます。 ゲートウェイのバージョンが 2.7 より前か、シンクとして Oracle を選択していない限り、既定で Microsoft ドライバーが使用されます。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 コピー アクティビティがあるパイプラインを作成できます。 パイプラインは、異なるツールまたは API を使用して、オンプレミスの Oracle データベースとの間でデータを移動します。
 
-パイプラインを作成する最も簡単な方法は、コピー ウィザードを使用することです。 手順については、「[チュートリアル: データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルについては、コピー ウィザードを使用したパイプラインの作成](data-factory-copy-data-wizard-tutorial.md)に関するチュートリアルを参照してください。
+パイプラインを作成する最も簡単な方法は、コピー ウィザードを使用することです。 「[チュートリアル:データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルについては、コピー ウィザードを使用したパイプラインの作成](data-factory-copy-data-wizard-tutorial.md)に関するチュートリアルを参照してください。
 
 また、次のいずれかのツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを使用するパイプラインを作成する詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
@@ -598,27 +598,27 @@ Oracle からデータを移行すると、Oracle データ型から .NET 型へ
 | --- | --- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(Microsoft ドライバーを使用する場合は、Oracle 10g 以降のバージョンでのみサポートされています) |
-| CHAR |string |
-| CLOB |string |
+| CHAR |String |
+| CLOB |String |
 | DATE |DateTime |
 | FLOAT |Decimal、String (有効桁数が 28 を超える場合) |
 | INTEGER |Decimal、String (有効桁数が 28 を超える場合) |
 | INTERVAL YEAR TO MONTH |Int32 |
-| INTERVAL DAY TO SECOND |timespan |
-| LONG |string |
+| INTERVAL DAY TO SECOND |TimeSpan |
+| LONG |String |
 | LONG RAW |Byte[] |
-| NCHAR |string |
-| NCLOB |string |
+| NCHAR |String |
+| NCLOB |String |
 | NUMBER |Decimal、String (有効桁数が 28 を超える場合) |
-| NVARCHAR2 |string |
+| NVARCHAR2 |String |
 | RAW |Byte[] |
-| ROWID |string |
-| TIMESTAMP |DateTime |
+| ROWID |String |
+| timestamp |DateTime |
 | TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
 | TIMESTAMP WITH TIME ZONE |DateTime |
-| 符号なし INTEGER |NUMBER |
-| VARCHAR2 |string |
-| XML |string |
+| 符号なし INTEGER |Number |
+| VARCHAR2 |String |
+| XML |String |
 
 > [!NOTE]
 > Microsoft ドライバーを使用する場合、データ型 **INTERVAL YEAR TO MONTH** および **INTERVAL DAY TO SECOND** はサポートされません。

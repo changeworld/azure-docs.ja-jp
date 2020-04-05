@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mayg
 ms.openlocfilehash: ba1979c940d4a92b3d1a7a52a4f356b2896ece55
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082620"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Hyper-V の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する
@@ -308,5 +308,5 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Virtualization Hyper-V -Direc
 3. ローカル ストレージの特性を確認し、ハードウェアの強化 (例: HDD から SSD など) が可能であるかどうかを調べます。
 
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [生成されたレポートの分析](hyper-v-deployment-planner-analyze-report.md)

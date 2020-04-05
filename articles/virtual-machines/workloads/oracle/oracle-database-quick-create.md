@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 53ffc6dd36dbf8588b5e1eb26b461e22c7445092
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9f4b9d53aaa1cac17fbaae4b638e144654fad4e5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747683"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535631"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM での Oracle データベースの作成
 
@@ -35,9 +35,10 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
+
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
 仮想マシン (VM) を作成するには、[az vm create](/cli/azure/vm) コマンドを使用します。 
@@ -56,7 +57,7 @@ az vm create \
 
 VM を作成すると、Azure CLI によって次の例のような情報が表示されます。 `publicIpAddress` の値をメモします。 このアドレスは、VM へのアクセスに使用します。
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/{snip}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -73,7 +74,7 @@ VM を作成すると、Azure CLI によって次の例のような情報が表�
 
 VM との SSH セッションを作成するには、次のコマンドを使用します。 IP アドレスを、VM の `publicIpAddress` 値に置き換えます。
 
-```bash 
+```bash
 ssh azureuser@<publicIpAddress>
 ```
 
@@ -90,7 +91,7 @@ Oracle ソフトウェアは、既に Marketplace イメージにインストー
 
     次のように出力されます。
 
-    ```bash
+    ```output
     Copyright (c) 1991, 2014, Oracle.  All rights reserved.
 
     Starting /u01/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...
@@ -148,6 +149,7 @@ Oracle ソフトウェアは、既に Marketplace イメージにインストー
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
+
 また、.bashrc ファイルに ORACLE_HOME と ORACLE_SID 変数を追加することもできます。 これにより、これらの環境変数が将来のサインインのために保存されます。任意のエディターを使用して、次のステートメントが `~/.bashrc` ファイルに追加されたことを確認してください。
 
 ```bash
@@ -181,7 +183,7 @@ export ORACLE_SID=cdb1
 
     次のように出力されます。
 
-    ```bash
+    ```output
       CON_ID NAME                           OPEN_MODE 
       ----------- ------------------------- ---------- 
       2           PDB$SEED                  READ ONLY 
@@ -202,6 +204,7 @@ export ORACLE_SID=cdb1
 VM を再起動したとき、既定では、Oracle データベースは自動的には開始しません。 自動的に開始するように Oracle データベースを設定するには、まず root としてサインインします。 次に、いくつかのシステム ファイルを作成および更新します。
 
 1. root としてサインオンします。
+
     ```bash
     sudo su -
     ```
@@ -214,7 +217,7 @@ VM を再起動したとき、既定では、Oracle データベースは自動�
 
 3.  `/etc/init.d/dbora` というファイルを作成し、次の内容を貼り付けます。
 
-    ```
+    ```bash
     #!/bin/sh
     # chkconfig: 345 99 10
     # Description: Oracle auto start-stop script.
@@ -304,7 +307,7 @@ VM を再起動したとき、既定では、Oracle データベースは自動�
 
 4.  ブラウザーから EM Express に接続します。 ブラウザーが EM Express と互換性があることを確認してください (Flash のインストールが必要です)。 
 
-    ```
+    ```https
     https://<VM ip address or hostname>:5502/em
     ```
 
@@ -316,7 +319,7 @@ VM を再起動したとき、既定では、Oracle データベースは自動�
 
 これで、Azure での初めての Oracle データベース探索が終了しました。VM は必要なくなりましたので、[az group delete](/cli/azure/group) コマンドを使用して、リソース グループ、VM、関連するすべてのリソースを削除することができます。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 

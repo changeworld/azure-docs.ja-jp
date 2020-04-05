@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/20/2019
 ms.openlocfilehash: 73a2a612a4eeb4a59f12abf0660fffb092f0547f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327203"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>HDInsight 上の Apache Hive で Java UDF を使用する
@@ -23,7 +23,7 @@ Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を�
 
 * HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 * [Java Developer Kit (JDK) バージョン 8](https://aka.ms/azure-jdks)
-* Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
+* Apache に従って適切に[インストール](https://maven.apache.org/download.cgi)された [Apache Maven](https://maven.apache.org/install.html)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 * クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では wasb://、Azure Data Lake Storage Gen2 では abfs://、Azure Data Lake Storage Gen1 では adl:// です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。  [安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 
 * テキスト エディターまたは Java IDE
@@ -86,7 +86,7 @@ cd C:\HDI
 
     これらのエントリは、HDInsight 3.6 に含まれる Hadoop と Hive のバージョンを指定します。 HDInsight に含まれる Hadoop と Hive のバージョンの情報は、 [HDInsight コンポーネントのバージョン管理](../hdinsight-component-versioning.md) に関するドキュメントで確認できます。
 
-    ファイルの最後の `</project>` 行の前に `<build>` セクションを追加します。 このセクションには、次の XML が含まれる必要があります。
+    ファイルの最後の `<build>` 行の前に `</project>` セクションを追加します。 このセクションには、次の XML が含まれる必要があります。
 
     ```xml
     <build>
@@ -265,7 +265,7 @@ $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
 [IO.File]::WriteAllText($original_file, $text)
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Hive の他の使用方法については、[HDInsight での Apache Hive の使用](hdinsight-use-hive.md)に関するページを参照してください。
 

@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: b70b4810f32941938b6afe217f94e18a0f2f3523
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 43004f8c52bbec17f78ed4be024cf75224dbd179
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767128"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530242"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MariaDB サーバーの管理
 この記事では、Azure Database for MariaDB サーバーを管理する方法について説明します。 管理タスクには、コンピューティングとストレージのスケーリング、管理者パスワードのリセット、サーバーの詳細の表示が含まれます。
 
 ## <a name="sign-in"></a>サインイン
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインする
 
 ## <a name="create-a-server"></a>サーバーの作成
 Azure Database for MariaDB サーバーを作成して使用を開始する方法については、[クイックスタート](quickstart-create-mariadb-server-database-using-azure-portal.md)を参照してください。
@@ -102,6 +102,6 @@ Azure portal を使用して、管理者ロールのパスワードを変更で�
 3. **[削除]** を選択します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [バックアップとサーバー復元](howto-restore-server-portal.md)について学習する
 - [Azure Database for MariaDB でのチューニングと監視のオプション](concepts-monitoring.md)について学習する

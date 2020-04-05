@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774473"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229407"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>クラスター リソース マネージャーを使用して Service Fabric クラスターを記述する
 Azure Service Fabric のクラスター リソース マネージャー機能には、クラスターを記述するためのメカニズムが複数用意されています。

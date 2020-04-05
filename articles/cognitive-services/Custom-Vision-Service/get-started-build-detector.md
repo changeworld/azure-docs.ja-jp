@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
 ms.openlocfilehash: 8aef46f0b9c3dc526f1fbed3d9bc59f97771b509
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76170006"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>クイック スタート:Custom Vision を使用してオブジェクト検出器を構築する方法

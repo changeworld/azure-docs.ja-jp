@@ -17,10 +17,10 @@ ms.date: 10/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c0860411c95e48a16d75df4aeeedf3405a5b1835
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72595037"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CakeHR の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72595037"
 
 * CakeHR にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して CakeHR に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -161,7 +161,7 @@ CakeHR に対する Azure AD SSO を構成してテストするには、次の�
 
     d. **[Enable Single Sign on]\(シングル サインオンを有効にする\)** ボックスをオンにします。
 
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="create-cakehr-test-user"></a>CakeHR テスト ユーザーの作成
 

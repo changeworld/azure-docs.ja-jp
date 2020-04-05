@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 9f49ab3aed60bfbe04ad022070a931461e3f52f5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73490533"
 ---
 # <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share"></a>Azure Data Share で既存のデータ共有に受信者を追加する方法
@@ -31,5 +31,5 @@ Azure Data Share で、送信した共有に移動し、 **[招待]** タブを�
 
 **[Add and send invitation]\(招待を追加して送信\)** をクリックします。 このデータ共有への招待メールが新しい受信者に送信されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、[共有への招待を削除する](how-to-delete-invitation.md)方法に関する記述を参照してください。

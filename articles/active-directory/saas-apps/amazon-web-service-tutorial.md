@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986aa000102cfed01666c8a95c00847ecc0cd651
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 40fd8217285643aa7d706d194d7f78ba0634dd32
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047276"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048959"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) とアマゾン ウェブ サービス (AWS) の統合
 
@@ -337,7 +337,10 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
     ![[オン] が強調表示された [設定] セクションのスクリーンショット](./media/amazon-web-service-tutorial/provisioning2.png)
 
 > [!NOTE]
-> プロビジョニング サービスは、AWS から Azure AD にロールをインポートするだけです。 Azure AD のユーザーとグループが、このサービスによって再び AWS にプロビジョニングされることはありません。
+> プロビジョニング サービスは、AWS から Azure AD にロールをインポートするだけです。 Azure AD のユーザーとグループが、このサービスによって AWS にプロビジョニングされることはありません。
+
+> [!NOTE]
+> プロビジョニングの資格情報を保存したら、初回同期サイクルが実行されるまで待機する必要があります。 同期には通常、約 40 分かかります。 その状態は、 **[プロビジョニング]** ページ下部の **[現在の状態]** で確認できます。
 
 ### <a name="create-amazon-web-services-aws-test-user"></a>アマゾン ウェブ サービス (AWS) テスト ユーザーの作成
 
@@ -369,7 +372,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

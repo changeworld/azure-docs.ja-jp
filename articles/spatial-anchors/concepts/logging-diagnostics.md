@@ -9,10 +9,10 @@ ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: f4359db1deda2295a66bcb97cf374d0fe9bc3ef7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74270127"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Azure Spatial Anchors でのログ記録と診断
@@ -44,7 +44,7 @@ Spatial Anchors API では、ログ記録メカニズムをサブスクライブ
 
 - [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): ランタイムから受信するイベントの詳細のレベルを指定します。
 - [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): 標準的なデバッグ ログ イベントが提供されます。
-- [エラー](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): ランタイムでエラーであると見なされたログ イベントが提供されます。
+- [Error](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): ランタイムでエラーであると見なされたログ イベントが提供されます。
 
 ## <a name="diagnostics-logging"></a>診断ログ
 

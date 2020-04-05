@@ -12,10 +12,10 @@ author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 471b26ebc4bd4aecb814ec43c7eba56e3d764fa0
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78402495"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Azure Machine Learning 用の CLI 拡張機能を使用する
@@ -94,7 +94,7 @@ az extension remove -n azure-cli-ml
     ```
 
     > [!TIP]
-    > このコマンドでは、Basic エディションのワークスペースが作成されます。 Enterprise ワークスペースを作成するには、`az ml workspace create` コマンドで `--sku enterprise` スイッチを使用します。 Azure Machine Learning のエディションについて詳しくは、「[Azure Machine Learning とは](overview-what-is-azure-ml.md#sku)」を参照してください。
+    > このコマンドでは、Basic エディションのワークスペースが作成されます。 Enterprise ワークスペースを作成するには、`--sku enterprise` コマンドで `az ml workspace create` スイッチを使用します。 Azure Machine Learning のエディションについて詳しくは、「[Azure Machine Learning とは](overview-what-is-azure-ml.md#sku)」を参照してください。
 
     詳しくは、「[az ml workspace create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create)」をご覧ください。
 
@@ -140,7 +140,7 @@ az extension remove -n azure-cli-ml
 
     詳しくは、「[az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)」をご覧ください。
 
-## <a id="experiments"></a>実験の実行
+## <a name="run-experiments"></a><a id="experiments"></a>実験の実行
 
 * 実験の実行を開始する。 このコマンドを使用する場合は、-c パラメーターに対して runconfig ファイルの名前 (ファイル システムが表示されている場合、\*.runconfig の前のテキスト) を指定します。
 
@@ -309,9 +309,9 @@ az extension remove -n azure-cli-ml
 }
 ```
 
-次の表は、JSON ファイルの各最上位レベルのフィールド、その種類、説明の詳細を示しています。 オブジェクトの種類が Python SDK のクラスにリンクされている場合、各 JSON フィールドと、Python クラスのパブリック変数名の間には緩い 1 対 1 の一致が存在します。 場合によっては、フィールドがクラス変数ではなく、コンストラクター引数にマップされることがあります。 たとえば、`environmentVariables` フィールドは [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) クラスの `environment_variables` 変数にマップされます。
+次の表は、JSON ファイルの各最上位レベルのフィールド、その種類、説明の詳細を示しています。 オブジェクトの種類が Python SDK のクラスにリンクされている場合、各 JSON フィールドと、Python クラスのパブリック変数名の間には緩い 1 対 1 の一致が存在します。 場合によっては、フィールドがクラス変数ではなく、コンストラクター引数にマップされることがあります。 たとえば、`environmentVariables` フィールドは `environment_variables`[`Environment` クラスの ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) 変数にマップされます。
 
-| JSON フィールド | Type | 説明 |
+| JSON フィールド | 種類 | 説明 |
 |---|---|---|
 | `name` | `string` | 環境の名前。 名前を **Microsoft** や **AzureML** で開始しないでください。 |
 | `version` | `string` | 環境のバージョン。 |

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: c204f8482d46d6586d490cb2bd3dd1a4cddac682
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924734"
 ---
 Bing Web Search クライアント ライブラリを使用すると、Java アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、要求を送信し、JSON 応答を受け取って、結果をフィルター処理および解析する方法を学習します。
@@ -141,7 +141,7 @@ public class BingWebSearchSample {
 
 ## <a name="construct-a-request"></a>要求の構築
 
-`BingWebSearchSample` クラスに存在する `runSample` メソッドは、要求を構築します。 次のコードをアプリケーションにコピーします。
+`runSample` クラスに存在する `BingWebSearchSample` メソッドは、要求を構築します。 次のコードをアプリケーションにコピーします。
 
 ```java
 public static boolean runSample(BingWebSearchAPI client) {
@@ -292,6 +292,6 @@ mvn compile exec:java
 > [!div class="nextstepaction"]
 > [Cognitive Services の Java 向け SDK のサンプル](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Azure Java SDK リファレンス](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable)

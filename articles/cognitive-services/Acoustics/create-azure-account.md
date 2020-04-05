@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 8f0f726d9d23f20698d3510ad674331ad74fb703
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68855076"
 ---
 # <a name="project-acoustics-azure-batch-account-setup"></a>Project Acoustics の Azure Batch アカウントの設定
@@ -63,6 +63,6 @@ Azure Batch アカウントは、アカウント作成時に、20 コンピュ�
 
 ![Azure [クォータ] ページのスクリーンショット](media/azure-quotas.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Unity](unity-integration.md) または [Unreal](unreal-integration.md) プロジェクトに Project Acoustics プラグインを統合する
 

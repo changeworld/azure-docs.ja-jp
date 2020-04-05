@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 613c5e9f153f2e3f02ab35d3be16ef3b29d15634
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: dc1812d955590ec0c7372e1311c9d69f93b9957c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672720"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128879"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイスのローカル管理者グループの管理方法
 
@@ -47,7 +47,7 @@ Azure AD 参加を使用して Windows デバイスを Azure AD に接続する�
 
 デバイス管理者ロールは、Azure Portal の **[デバイス]** ページで管理できます。 **[デバイス]** ページを開くには、次に手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) に、グローバル管理者またはデバイス管理者としてサインインします。
+1. [Azure Portal](https://portal.azure.com) にグローバル管理者としてサインインします。
 1. *Azure Active Directory* を検索して選択します。
 1. **[管理]** セクションで、 **[デバイス]** をクリックします。
 1. **[デバイス]** ページで、 **[デバイスの設定]** をクリックします。

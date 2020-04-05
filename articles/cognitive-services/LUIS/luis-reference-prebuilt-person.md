@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 768c719211e8a8f2133d3798343d076e795a3da0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273435"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの PersonName 作成済みエンティティ

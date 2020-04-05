@@ -7,10 +7,10 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.openlocfilehash: 9713d963978e34ad874dc032676a6e1f14e4657c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77210696"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>CouchBase から Azure Cosmos DB SQL API に移行する

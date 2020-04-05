@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: af9d4aa15a4ff2784d2e1ca1334d9c24a8d12251
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77062678"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>チュートリアル:Zscaler ZSCloud を構成し、自動ユーザー プロビジョニングに対応させる

@@ -12,10 +12,10 @@ author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
 ms.openlocfilehash: c228f3d6591cd72845101c00188f3fc4a55be644
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087353"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する
@@ -428,7 +428,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 
 
-### <a name="sp_add_job"></a>sp_add_job
+### <a name="sp_add_job"></a><a name="sp_add_job"></a>sp_add_job
 
 新しいジョブを追加します。 
   
@@ -494,7 +494,7 @@ sp_add_job を実行してジョブを追加した後、sp_add_jobstep を使っ
 
 これらのロールのアクセス許可について詳しくは、このドキュメントの「アクセス許可」セクションをご覧ください。 このストアド プロシージャを使って、他のユーザーが所有するジョブの属性を編集できるのは、sysadmin のメンバーだけです。
 
-### <a name="sp_update_job"></a>sp_update_job
+### <a name="sp_update_job"></a><a name="sp_update_job"></a>sp_update_job
 
 既存のジョブを更新します。
 
@@ -557,7 +557,7 @@ sp_add_job を実行してジョブを追加した後、sp_add_jobstep を使っ
 
 
 
-### <a name="sp_delete_job"></a>sp_delete_job
+### <a name="sp_delete_job"></a><a name="sp_delete_job"></a>sp_delete_job
 
 既存のジョブを削除します。
 
@@ -589,7 +589,7 @@ sp_add_job を実行してジョブを追加した後、sp_add_jobstep を使っ
 
 
 
-### <a name="sp_add_jobstep"></a>sp_add_jobstep
+### <a name="sp_add_jobstep"></a><a name="sp_add_jobstep"></a>sp_add_jobstep
 
 ジョブにステップを追加します。
 
@@ -715,7 +715,7 @@ sp_add_jobstep が成功した場合、ジョブの現在のバージョン番�
 
 
 
-### <a name="sp_update_jobstep"></a>sp_update_jobstep
+### <a name="sp_update_jobstep"></a><a name="sp_update_jobstep"></a>sp_update_jobstep
 
 ジョブのステップを更新します。
 
@@ -840,7 +840,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 
 
-### <a name="sp_delete_jobstep"></a>sp_delete_jobstep
+### <a name="sp_delete_jobstep"></a><a name="sp_delete_jobstep"></a>sp_delete_jobstep
 
 ジョブからジョブ ステップを削除します。
 
@@ -886,7 +886,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 
 
-### <a name="sp_start_job"></a>sp_start_job
+### <a name="sp_start_job"></a><a name="sp_start_job"></a>sp_start_job
 
 ジョブの実行を開始します。
 
@@ -917,7 +917,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 これらのロールのアクセス許可について詳しくは、このドキュメントの「アクセス許可」セクションをご覧ください。 このストアド プロシージャを使って、他のユーザーが所有するジョブの属性を編集できるのは、sysadmin のメンバーだけです。
 
-### <a name="sp_stop_job"></a>sp_stop_job
+### <a name="sp_stop_job"></a><a name="sp_stop_job"></a>sp_stop_job
 
 ジョブの実行を停止します。
 
@@ -946,7 +946,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 これらのロールのアクセス許可について詳しくは、このドキュメントの「アクセス許可」セクションをご覧ください。 このストアド プロシージャを使って、他のユーザーが所有するジョブの属性を編集できるのは、sysadmin のメンバーだけです。
 
 
-### <a name="sp_add_target_group"></a>sp_add_target_group
+### <a name="sp_add_target_group"></a><a name="sp_add_target_group"></a>sp_add_target_group
 
 ターゲット グループを追加します。
 
@@ -977,7 +977,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 これらのロールのアクセス許可について詳しくは、このドキュメントの「アクセス許可」セクションをご覧ください。 このストアド プロシージャを使って、他のユーザーが所有するジョブの属性を編集できるのは、sysadmin のメンバーだけです。
 
-### <a name="sp_delete_target_group"></a>sp_delete_target_group
+### <a name="sp_delete_target_group"></a><a name="sp_delete_target_group"></a>sp_delete_target_group
 
 ターゲット グループを削除します。
 
@@ -1005,7 +1005,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 これらのロールのアクセス許可について詳しくは、このドキュメントの「アクセス許可」セクションをご覧ください。 このストアド プロシージャを使って、他のユーザーが所有するジョブの属性を編集できるのは、sysadmin のメンバーだけです。
 
-### <a name="sp_add_target_group_member"></a>sp_add_target_group_member
+### <a name="sp_add_target_group_member"></a><a name="sp_add_target_group_member"></a>sp_add_target_group_member
 
 データベースまたはデータベースのグループをターゲット グループに追加します。
 
@@ -1094,7 +1094,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name= N'Servers Mai
 GO
 ```
 
-### <a name="sp_delete_target_group_member"></a>sp_delete_target_group_member
+### <a name="sp_delete_target_group_member"></a><a name="sp_delete_target_group_member"></a>sp_delete_target_group_member
 
 ターゲット グループかターゲット グループのメンバーを削除します。
 
@@ -1145,7 +1145,7 @@ EXEC jobs.sp_delete_target_group_member
 GO
 ```
 
-### <a name="sp_purge_jobhistory"></a>sp_purge_jobhistory
+### <a name="sp_purge_jobhistory"></a><a name="sp_purge_jobhistory"></a>sp_purge_jobhistory
 
 ジョブの履歴レコードを削除します。
 
@@ -1206,7 +1206,7 @@ GO
 |[target_group_members](#target_group_members-view)     |   すべてのターゲット グループのすべてのメンバーを表示します。      |
 
 
-### <a name="job_executions-view"></a>job_executions view
+### <a name="job_executions-view"></a><a name="job_executions-view"></a>job_executions view
 
 [jobs].[job_executions]
 
@@ -1253,7 +1253,7 @@ GO
 |**schedule_end_time**| datetime2(7)|   ジョブが最後に実行を完了した日付と時刻。|
 
 
-### <a name="job_versions-view"></a>job_versions ビュー
+### <a name="job_versions-view"></a><a name="job_versions-view"></a>job_versions ビュー
 
 [jobs].[job_versions]
 
@@ -1301,13 +1301,13 @@ GO
 |**max_parallelism**|   INT|    ジョブ ステップが一度に実行される、エラスティック プールごとのデータベースの最大数。 既定値は NULL で、無制限を意味します。 |
 
 
-### <a name="jobstep_versions-view"></a>jobstep_versions ビュー
+### <a name="jobstep_versions-view"></a><a name="jobstep_versions-view"></a>jobstep_versions ビュー
 
 [jobs].[jobstep_versions]
 
 各ジョブのすべてのバージョンのすべてのステップを表示します。 スキーマは [jobsteps](#jobsteps-view) と同じです。
 
-### <a name="target_groups-view"></a>target_groups ビュー
+### <a name="target_groups-view"></a><a name="target_groups-view"></a>target_groups ビュー
 
 [jobs].[target_groups]
 
@@ -1318,7 +1318,7 @@ GO
 |**target_group_name**| nvarchar(128)   |ターゲット グループ (データベースのコレクション) の名前。 
 |**target_group_id**    |UNIQUEIDENTIFIER   |ターゲット グループの一意の ID。
 
-### <a name="target_group_members-view"></a>target_group_members ビュー
+### <a name="target_group_members-view"></a><a name="target_group_members-view"></a>target_group_members ビュー
 
 [jobs].[target_group_members]
 

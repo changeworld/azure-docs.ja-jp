@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76713137"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management でクライアント証明書認証を使用して API を保護する方法
@@ -51,8 +51,8 @@ API Management には、クライアント証明書を使用して API (つま�
 ```
 
 > [!NOTE]
-> 証明書失効リストの確認を無効にするには、`context.Request.Certificate.Verify()` の代わりに `context.Request.Certificate.VerifyNoRevocation()` を使用します。
-> クライアント証明書が自己署名済みである場合、`context.Request.Certificate.Verify()` と `context.Request.Certificate.VerifyNoRevocation()` が機能するには、ルート (または中間) の CA 証明書を API Management に[アップロード](api-management-howto-ca-certificates.md)する必要があります。
+> 証明書失効リストの確認を無効にするには、`context.Request.Certificate.VerifyNoRevocation()` の代わりに `context.Request.Certificate.Verify()` を使用します。
+> クライアント証明書が自己署名済みである場合、[ と ](api-management-howto-ca-certificates.md) が機能するには、ルート (または中間) の CA 証明書を API Management に`context.Request.Certificate.Verify()`アップロード`context.Request.Certificate.VerifyNoRevocation()`する必要があります。
 
 ## <a name="checking-the-thumbprint"></a>拇印の確認
 
@@ -69,8 +69,8 @@ API Management には、クライアント証明書を使用して API (つま�
 ```
 
 > [!NOTE]
-> 証明書失効リストの確認を無効にするには、`context.Request.Certificate.Verify()` の代わりに `context.Request.Certificate.VerifyNoRevocation()` を使用します。
-> クライアント証明書が自己署名済みである場合、`context.Request.Certificate.Verify()` と `context.Request.Certificate.VerifyNoRevocation()` が機能するには、ルート (または中間) の CA 証明書を API Management に[アップロード](api-management-howto-ca-certificates.md)する必要があります。
+> 証明書失効リストの確認を無効にするには、`context.Request.Certificate.VerifyNoRevocation()` の代わりに `context.Request.Certificate.Verify()` を使用します。
+> クライアント証明書が自己署名済みである場合、[ と ](api-management-howto-ca-certificates.md) が機能するには、ルート (または中間) の CA 証明書を API Management に`context.Request.Certificate.Verify()`アップロード`context.Request.Certificate.VerifyNoRevocation()`する必要があります。
 
 ## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>API Management にアップロードされた証明書に対する拇印の確認
 
@@ -88,8 +88,8 @@ API Management には、クライアント証明書を使用して API (つま�
 ```
 
 > [!NOTE]
-> 証明書失効リストの確認を無効にするには、`context.Request.Certificate.Verify()` の代わりに `context.Request.Certificate.VerifyNoRevocation()` を使用します。
-> クライアント証明書が自己署名済みである場合、`context.Request.Certificate.Verify()` と `context.Request.Certificate.VerifyNoRevocation()` が機能するには、ルート (または中間) の CA 証明書を API Management に[アップロード](api-management-howto-ca-certificates.md)する必要があります。
+> 証明書失効リストの確認を無効にするには、`context.Request.Certificate.VerifyNoRevocation()` の代わりに `context.Request.Certificate.Verify()` を使用します。
+> クライアント証明書が自己署名済みである場合、[ と ](api-management-howto-ca-certificates.md) が機能するには、ルート (または中間) の CA 証明書を API Management に`context.Request.Certificate.Verify()`アップロード`context.Request.Certificate.VerifyNoRevocation()`する必要があります。
 
 > [!TIP]
 > この[記事](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672)で説明されているクライアント証明書のデッドロックに関する問題が、要求が凍結する、要求がタイムアウト後に `403 Forbidden` 状態コードになる、`context.Request.Certificate` が `null` である、などのいくつかの形で現れる場合があります。 この問題は通常、コンテンツの長さが約 60KB 以上ある `POST` および `PUT` 要求に影響を与えます。

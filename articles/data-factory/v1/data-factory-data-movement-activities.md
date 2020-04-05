@@ -13,11 +13,11 @@ ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358531"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236519"
 ---
 # <a name="move-data-by-using-copy-activity"></a>コピー アクティビティを使用したデータの移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -77,7 +77,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 ### <a name="supported-file-formats"></a>サポートされるファイル形式
 コピー アクティビティを使用して、2 つのファイル ベースのデータ ストア間で**ファイルをそのままコピー**することができ、入力および出力の両方のデータセット定義の [format セクション](data-factory-create-datasets.md)をスキップすることもできます。 これにより、シリアル化/逆シリアル化を実行することなく、データが効率的にコピーされます。
 
-また、コピー アクティビティでは、指定された形式 (**テキスト、JSON、Avro、ORC、Parquet**) でのファイルの読み取りと書き込み、および圧縮コーデック **GZip、Deflate、BZip2、および ZipDeflate** がサポートされています。 詳細については、「[サポートされているファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」を参照してください。
+また、コピー アクティビティは、指定された形式 (**テキスト、JSON、Avro、ORC、Parquet**) でファイルの読み取りと書き込みを行い、圧縮コーデック **GZip、Deflate、BZip2、および ZipDeflate** がサポートされています。 詳細については、「[サポートされているファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」を参照してください。
 
 たとえば、次のようなコピー アクティビティを実行できます。
 
@@ -86,7 +86,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 * オンプレミスのファイルシステムから zip ファイルをコピーし、圧縮を解除したうえで Azure Data Lake Store 書き込む。
 * Azure BLOB から GZip 圧縮テキスト (CSV) 形式でデータをコピーし、Azure SQL Database に書き込む。
 
-## <a name="global"></a>グローバルに使用できるデータの移動
+## <a name="globally-available-data-movement"></a><a name="global"></a>グローバルに使用できるデータの移動
 Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リージョンでのみ使用できます。 ただし、コピー アクティビティを実行するサービスは、以下のリージョンと場所でグローバルに使用できます。 グローバルに使用できるトポロジでは効率的なデータ移動が保証されます。このデータ移動では、通常、リージョンをまたがるホップが回避されます。 特定のリージョンにおける Data Factory とデータ移動の提供状況については、[リージョン別のサービス](https://azure.microsoft.com/regions/#services)に関するページをご覧ください。
 
 ### <a name="copy-data-between-cloud-data-stores"></a>クラウド データ ストア間でのデータのコピー
@@ -94,7 +94,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 
 | コピー先データ ストアの地理的な場所 | コピー先データ ストアのリージョン | データ移動に使用するリージョン |
 |:--- |:--- |:--- |
-| United States | 米国東部 | 米国東部 |
+| United States | East US | East US |
 | &nbsp; | 米国東部 2 | 米国東部 2 |
 | &nbsp; | 米国中部 | 米国中部 |
 | &nbsp; | 米国中北部 | 米国中北部 |
@@ -121,7 +121,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 | 韓国 | 韓国中部 | 韓国中部 |
 | &nbsp; | 韓国南部 | 韓国中部 |
 
-また、コピー アクティビティ `typeProperties` で `executionLocation` プロパティを使用して、コピーで使用する Data Factory サービスのリージョンを明示的に指定することもできます。 上記の「**データ移動に使用するリージョン**」列には、このプロパティでサポートされる値が示されています。 コピー中のデータは、ネットワーク経由でこのリージョンを通過します。 たとえば、韓国の Azure Store 間でコピーするには、日本リージョン経由でルーティングされるように `"executionLocation": "Japan East"` を指定します ([JSON のサンプル](#by-using-json-scripts)を参照してください)。
+また、コピー アクティビティ `executionLocation` で `typeProperties` プロパティを使用して、コピーで使用する Data Factory サービスのリージョンを明示的に指定することもできます。 上記の「**データ移動に使用するリージョン**」列には、このプロパティでサポートされる値が示されています。 コピー中のデータは、ネットワーク経由でこのリージョンを通過します。 たとえば、韓国の Azure Store 間でコピーするには、日本リージョン経由でルーティングされるように `"executionLocation": "Japan East"` を指定します ([JSON のサンプル](#by-using-json-scripts)を参照してください)。
 
 > [!NOTE]
 > コピー先データ ストアのリージョンが前のリストにない場合、または検出できない場合は、`executionLocation` が指定されていないと、既定では代わりのリージョンには移動せず、コピー アクティビティは失敗します。 今後さらに多くのリージョンがサポートされる予定です。
@@ -137,7 +137,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 Data Factory コピー ウィザードは、コピー アクティビティのあるパイプラインを作成するのに役立ちます。 このパイプラインを使用すると、リンクされたサービス、データセット、およびパイプラインの " *JSON 定義を作成しなくても* "、サポートされているソースからデータをコピーできます。 このウィザードの詳細については、「 [Data Factory コピー ウィザード](data-factory-copy-wizard.md) 」をご覧ください。  
 
 ### <a name="by-using-json-scripts"></a>JSON スクリプトを使用
-Visual Studio または Azure PowerShell で Data Factory エディターを使用すると、パイプラインの JSON 定義を作成できます (コピー アクティビティを使用)。 その後、その定義をデプロイして、Data Factory にパイプラインを作成することができます。 「[チュートリアル:Azure Data Factory パイプラインでコピー アクティビティを使用する方法](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。    
+Visual Studio または Azure PowerShell で Data Factory エディターを使用すると、パイプラインの JSON 定義を作成できます (コピー アクティビティを使用)。 その後、その定義をデプロイして、Data Factory にパイプラインを作成することができます。 詳しい手順については、 [Azure Data Factory パイプラインでコピー アクティビティを使用する方法](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) に関するチュートリアルをご覧ください。    
 
 JSON プロパティ (名前、説明、入力テーブル、出力テーブル、ポリシーなど) は、あらゆる種類のアクティビティで使用できます。 アクティビティの `typeProperties` セクションで使用できるプロパティは、各アクティビティの種類によって異なります。
 

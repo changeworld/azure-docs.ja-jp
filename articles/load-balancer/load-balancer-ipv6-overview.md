@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
 ms.openlocfilehash: 6bc7f45d84d525156a3d25bdceef4d1012844afa
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75931984"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
@@ -27,7 +27,7 @@ ms.locfileid: "75931984"
 >このコンテンツは、[Azure VNet 用の IPv6 の概要](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)に関する記事に置き換えられました。 IPv6 の新しいデプロイでは、新しい Azure Virtual Network 用の IPv6 の機能を使用することをお勧めします。
 
 >[!NOTE]
->Azure Load Balancer では、2 種類がサポートされています。Basic と Standard です。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](load-balancer-standard-overview.md)に関するページをご覧ください。
+>Azure Load Balancer では、Basic と Standard の 2 種類がサポートされています。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](load-balancer-standard-overview.md)に関するページをご覧ください。
 
 Basic SKU のインターネットに接続するロード バランサーは、IPv6 アドレスでデプロイできます。 これにより、IPv4 接続に加えて次の機能を使用できます。
 

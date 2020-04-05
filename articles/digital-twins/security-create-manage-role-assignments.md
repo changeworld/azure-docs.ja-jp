@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110408"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Azure Digital Twins 内でのロールの割り当ての作成と管理
@@ -36,7 +36,7 @@ Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./secu
 
 次の表は、各属性を示しています。
 
-| Attribute | Name | Required | Type | 説明 |
+| 属性 | 名前 | 必須 | Type | 説明 |
 | --- | --- | --- | --- | --- |
 | roleId | ロール定義識別子 | はい | String | 必要なロールの割り当ての一意 ID。 ロールの定義とその識別子は、システム API のクエリを実行するか次の表を確認して見つけます。 |
 | objectId | オブジェクト識別子 | はい | String | Azure Active Directory ID、サービス プリンシパル オブジェクト ID、またはドメイン名。 ロールの割り当ての割り当て先。 ロールの割り当ては、関連付けられている型に従って書式設定する必要があります。 `DomainName` objectIdType の場合、objectId は `“@”` 文字で始まる必要があります。 |
@@ -178,7 +178,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| Value | 置換後の文字列 |
+| 値 | 置換後の文字列 |
 | --- | --- |
 | YOUR_PATH | スペースへの完全パス |
 

@@ -8,10 +8,10 @@ ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
 ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598087"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure Files のパフォーマンスに関する問題のトラブルシューティング

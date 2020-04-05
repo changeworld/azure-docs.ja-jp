@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77167023"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows コマンド - CMD と PowerShell
@@ -195,7 +195,7 @@ Windows で利用できる既定の方法に制限されている場合は、Pow
 ### <a name="restore-file-permissions-from-acl-file"></a>ACL ファイルからファイルのアクセス許可を復元する
 `icacls %programdata%\Microsoft\Crypto\RSA /save %temp%\MachineKeys_permissions_before.aclfile /t`
 
-`/restore` を使用する際のパスには、`/save` を使用する際に指定したフォルダーの親フォルダーを指定する必要があります。 この例では、上記の `/save` の例で指定した `\MachineKeys` フォルダーの親は、`\RSA` です。
+`/restore` を使用する際のパスには、`/save` を使用する際に指定したフォルダーの親フォルダーを指定する必要があります。 この例では、上記の `\RSA` の例で指定した `\MachineKeys` フォルダーの親は、`/save` です。
 ### <a name="take-ntfs-ownership-of-a-folder"></a>フォルダーの NTFS 所有権を取得する
 `takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`
 ### <a name="grant-ntfs-permissions-to-a-folder-recursively"></a>再帰的にフォルダーに NTFS アクセス許可を付与する

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/22/2017
 ms.author: robinsh
 ms.openlocfilehash: a6bd8a766f3205358a65ef2fd0816643e4261cab
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68414291"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
 
 セキュリティは、Azure IoT Hub をベースとするすべての IoT ソリューションの重要な側面です。 場合によっては、セキュリティ構成の一部として、デバイスが接続できる IP アドレスを明示的に指定する必要があります。 *IP フィルター*機能を使用すると、特定の IPv4 アドレスからのトラフィックを拒否または許可するための規則を構成できます。
 
-## <a name="when-to-use"></a>いつ使用するか
+## <a name="when-to-use"></a>使用する場合
 
 特定の IP アドレスの IoT Hub エンドポイントをブロックすると有用な特定のユース ケースには、次の 2 つがあります。
 
@@ -150,7 +150,7 @@ $iothubResource | Set-AzResource -Force
 
 ## <a name="update-ip-filter-rules-using-rest"></a>REST を使用した IP フィルター規則の更新
 
-Azure リソース プロバイダーの REST エンドポイントを使用することでも、IoT Hub の IP フィルターを取得および変更できます。 [createorupdate メソッド](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate)の `properties.ipFilterRules` を参照してください。
+Azure リソース プロバイダーの REST エンドポイントを使用することでも、IoT Hub の IP フィルターを取得および変更できます。 `properties.ipFilterRules`createorupdate メソッド[の ](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate) を参照してください。
 
 ## <a name="ip-filter-rule-evaluation"></a>IP フィルター規則の評価
 
@@ -164,7 +164,7 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 
 ![IoT Hub の IP フィルター規則の順序の変更](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 

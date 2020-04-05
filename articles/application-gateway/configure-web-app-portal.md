@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
 ms.openlocfilehash: 0ec417b3c7a025d2d05bdd74ec683a2891c3b0de
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075172"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Application Gateway を使用した App Service の構成
@@ -101,6 +101,6 @@ App Service では、その相対パスにリダイレクトするためのリ�
 
 Web アプリへのアクセスを制限できる 1 つの方法は、[Azure App Service 静的 IP 制限](../app-service/app-service-ip-restrictions.md)を使用することです。 たとえば、アプリケーション ゲートウェイからのトラフィックのみを受信するように Web アプリを制限できます。 アプリ サービスの IP 制限の機能を使用して、アクセス権を持つ唯一のアドレスとして、アプリケーション ゲートウェイの VIP を一覧表示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリケーション ゲートウェイを使用した App Service とその他のマルチテナント サポートの詳細については、[アプリケーション ゲートウェイを使用したマルチテナント サービスのサポート](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview)に関するページを参照してください。

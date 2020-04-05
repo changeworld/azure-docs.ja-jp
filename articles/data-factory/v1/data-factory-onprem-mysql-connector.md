@@ -13,11 +13,11 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928107"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236335"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -46,10 +46,10 @@ Data Management Gateway が MySQL Database に接続するには、Data Manageme
 > [!TIP]
 > "リモート パーティがトランスポート ストリームを終了したため、認証に失敗しました。" というエラーが発生した場合は、MySQL Connector/NET をより新しいバージョンにアップグレードすることを検討してください。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 
 
-- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。 
+- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。 
 - また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
@@ -303,41 +303,41 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 | 符号なしの bigint |Decimal |
 | bigint |Int64 |
 | bit |Decimal |
-| BLOB |Byte[] |
-| bool |Boolean |
-| char |string |
+| blob (blob) |Byte[] |
+| [bool] |Boolean |
+| char |String |
 | date |Datetime |
-| Datetime |Datetime |
+| DATETIME |Datetime |
 | decimal |Decimal |
 | double precision |Double |
-| Double |Double |
-| enum |string |
+| double |Double |
+| enum |String |
 | float |Single |
 | 符号なしの int |Int64 |
-| int |Int32 |
+| INT |Int32 |
 | 符号なしの integer |Int64 |
-| integer |Int32 |
+| 整数 (integer) |Int32 |
 | long varbinary |Byte[] |
-| long varchar |string |
+| long varchar |String |
 | longblob |Byte[] |
-| longtext |string |
+| longtext |String |
 | mediumblob |Byte[] |
 | 符号なしの mediumint |Int64 |
 | mediumint |Int32 |
-| mediumtext |string |
+| mediumtext |String |
 | numeric |Decimal |
 | real |Double |
-| set |string |
+| set |String |
 | 符号なしの smallint |Int32 |
 | smallint |Int16 |
-| text |string |
+| text |String |
 | time |TimeSpan |
 | timestamp |Datetime |
 | tinyblob |Byte[] |
 | 符号なしの tinyint |Int16 |
 | tinyint |Int16 |
-| tinytext |string |
-| varchar |string |
+| tinytext |String |
+| varchar |String |
 | year |int |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ

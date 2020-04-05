@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: overview
 ms.date: 03/11/2020
 ms.openlocfilehash: 38936000e426d560237295105b5456429d9ae16d
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79126373"
 ---
 # <a name="azure-cache-for-redis-description"></a>Azure Cache for Redis の説明

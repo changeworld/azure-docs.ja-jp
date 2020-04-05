@@ -4,16 +4,16 @@ description: 管理者としてアプリケーション名や URL を変更し�
 author: viv-liu
 ms.author: viviali
 ms.date: 11/27/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ae0b4c1675228bfa2083b37a0460ff85c2714f50
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7b77ea9e0e1f322cb5ef0bc63885c3ccce1b76f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025794"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158685"
 ---
 # <a name="change-iot-central-application-settings"></a>IoT Central アプリケーションの設定を変更する
 
@@ -49,9 +49,9 @@ Azure Resource Manager SDK を使用する方法例については､[https://gi
 
 詳細については、以下の GitHub リポジトリとパッケージを参照してください。
 
-| Language | リポジトリ | Package |
+| 言語 | リポジトリ | Package |
 | ---------| ---------- | ------- |
-| Node | [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node) | [https://www.npmjs.com/package/azure-arm-iotcentral](https://www.npmjs.com/package/azure-arm-iotcentral)
+| ノード | [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node) | [https://www.npmjs.com/package/azure-arm-iotcentral](https://www.npmjs.com/package/azure-arm-iotcentral)
 | Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)
 | C# | [https://github.com/Azure/azure-sdk-for-net](https://github.com/Azure/azure-sdk-for-net) | [https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral](https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral)
 | Ruby | [https://github.com/Azure/azure-sdk-for-ruby](https://github.com/Azure/azure-sdk-for-ruby) | [https://rubygems.org/gems/azure_mgmt_iot_central](https://rubygems.org/gems/azure_mgmt_iot_central)

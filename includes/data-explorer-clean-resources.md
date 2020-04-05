@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/28/2019
 ms.author: lugoldbe
 ms.openlocfilehash: 9598724db630db7fc48545b58f2b0c1cad464aa4
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667843"
 ---
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。 
 

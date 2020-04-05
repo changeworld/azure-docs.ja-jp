@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 64a934196bb964561f36b9d95a2467b149847225
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906700"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
@@ -212,7 +212,7 @@ Cognitive Services のマルチサービス サブスクリプションを使用
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-最後の手順は、`Main` 関数での `TranslateTextRequest()` の呼び出しです。 このサンプルでは、ドイツ語 (`de`)、イタリア語 (`it`)、日本語 (`ja`)、およびタイ語 (`th`) に翻訳しています。 `static void Main(string[] args)` を探してこのコードに置き換えます。
+最後の手順は、`TranslateTextRequest()` 関数での `Main` の呼び出しです。 このサンプルでは、ドイツ語 (`de`)、イタリア語 (`it`)、日本語 (`ja`)、およびタイ語 (`th`) に翻訳しています。 `static void Main(string[] args)` を探してこのコードに置き換えます。
 
 ```csharp
 static async Task Main(string[] args)
@@ -236,7 +236,7 @@ static async Task Main(string[] args)
 
 ## <a name="run-the-sample-app"></a>サンプル アプリを実行する
 
-以上で、サンプル アプリを実行する準備が整いました。 コマンド ライン (またはターミナル セッション) から、プロジェクト ディレクトリに移動して次のコマンドを実行します。
+以上で、サンプル アプリを実行する準備が整いました。 コマンド ライン (またはターミナル セッション) でプロジェクト ディレクトリに移動して、次のコマンドを実行します。
 
 ```console
 dotnet run
@@ -287,11 +287,11 @@ Translated to th: หวัดดีชาวโลก!
 ]
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 サブスクリプション キーなどの秘密情報は、サンプル アプリのソース コードからすべて確実に削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
 

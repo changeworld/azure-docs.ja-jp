@@ -9,17 +9,17 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73888831"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 また、ローカルの Docker コンテナーに、マイクロサービスをデプロイする方法も示します。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、ローカルのマイクロサービス デプロイで使用するクラウド サービスは、クラウド内の IoT Hub、Cosmos DB、Azure Stream Analytics、および Azure Time Series Insights サービスです。
+この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 また、ローカルの Docker コンテナーに、マイクロサービスをデプロイする方法も示します。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、クラウド内の IoT Hub、Cosmos DB、Azure Stream Analytics、および Azure Time Series Insights サービスです。
 
 リモート監視ソリューション アクセラレータをローカル コンピューター上の IDE で実行する場合は、「[Deploy the Remote Monitoring solution accelerator locally - Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md)」を参照してください。
 
@@ -27,7 +27,7 @@ ms.locfileid: "73888831"
 
 リモート監視ソリューション アクセラレータによって使用される Azure サービスをデプロイするには、アクティブな Azure サブスクリプションが必要です。
 
-アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
 ### <a name="machine-setup"></a>コンピューターのセットアップ
 
@@ -70,7 +70,7 @@ docker-compose up
 ```
 
 > [!NOTE] 
-> `docker-compose up` を実行する前に、Docker と[ローカル ドライブを共有している](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115)ことを確認します。
+> [ を実行する前に、Docker と](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115)ローカル ドライブを共有している`docker-compose up`ことを確認します。
 
 このコマンドを初めて実行すると、Docker は Docker ハブからマイクロサービス イメージをダウンロードして、コンテナーをローカルに構築します。 以降の実行では、Docker はコンテナーを直ちに実行します。
 
@@ -104,6 +104,6 @@ Stream Analytics ジョブを開始するには、次の手順に従います。
 
 Docker イメージを削除し、ローカル コンピューター上の領域を解放するには、`docker-compose down --rmi all` コマンドを使用します。 また、GitHub からソース コードを複製するときに作成されたリモート監視リポジトリのローカル コピーを削除することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、リモート監視ソリューションのデプロイが完了しました。次の手順は[ソリューション ダッシュボードの機能を確認](quickstart-remote-monitoring-deploy.md)することです。

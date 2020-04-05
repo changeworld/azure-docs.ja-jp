@@ -4,7 +4,7 @@ description: Azure Active Directory で ID タスク用に委任するロール
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1197eb074b9afeb74c6793835455611ab784a83b
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 1ac44661dd5a52ba19a3b2dd461aabec1ec250bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78253744"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284876"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 

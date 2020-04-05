@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
 ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73571232"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Media Services の Transform と Job
@@ -76,7 +76,7 @@ Transform は、REST、CLI、または公開されている任意の SDK を使�
 
 <a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a>
 
-## <a name="jobs"></a>[ジョブ]
+## <a name="jobs"></a>ジョブ
 
 **ジョブ**は、特定の入力ビデオまたはオーディオ コンテンツに **Transform** を適用する、Media Services への実際の要求です。 Transform を作成すると､Media Services API または公開されている任意の SDK を使用してジョブを送信できます｡ **Job** は、入力ビデオの場所や出力先などの情報を指定します。 入力ビデオの場所は、HTTPS URL、SAS URL、または[アセット](https://docs.microsoft.com/rest/api/media/assets)を使用して指定できます。  
 
@@ -110,7 +110,7 @@ Media Services v3 または Video Indexer によってトリガーされる音�
 
 詳細については、「[CLI を使用したメディア処理のスケーリング](media-reserved-units-cli-how-to.md)」を参照してください。
 
-## <a name="ask-questions-give-feedback-get-updates"></a>質問する。フィードバックする。最新情報を入手する
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
@@ -119,7 +119,7 @@ Media Services v3 または Video Indexer によってトリガーされる音�
 * [エラー コード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 * [Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 開発を開始する前に、「[Media Services v3 API を使用した開発](media-services-apis-overview.md)」を確認してください (API や命名規則などへのアクセスに関する情報が含まれています)。
 - 次のチュートリアルをご覧ください。

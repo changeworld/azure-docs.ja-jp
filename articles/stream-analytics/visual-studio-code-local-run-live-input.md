@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: 34ce91a1385f951847abeedd3a6b526d3a07af35
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75660853"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>Visual Studio Code を使用してライブ ストリーム入力に対して Stream Analytics クエリをローカルでテストする

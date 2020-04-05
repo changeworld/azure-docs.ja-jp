@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4fc92931979aa367bdead435c3d6fd758d66a397
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181250"
 ---
 #### <a name="to-create-a-manual-backup"></a>手動でバックアップを作成するには
@@ -21,7 +21,7 @@ ms.locfileid: "67181250"
 
 3. **[今すぐバックアップ]** ブレードで、次の操作を行います。
 
-    1. 適切な**スナップショットの種類**をドロップダウン リストから選択します:**ローカル** スナップショットまたは**クラウド** スナップショット。 高速なバックアップや復元が必要な場合はローカル スナップショットを選択し、データの回復性が求められる場合はクラウド スナップショットを選択します。
+    1. **[スナップショットの種類]** ボックスの一覧から、**ローカル** スナップショットと**クラウド** スナップショットのどちらか適切なほうを選択します。 高速なバックアップや復元が必要な場合はローカル スナップショットを選択し、データの回復性が求められる場合はクラウド スナップショットを選択します。
 
         ![手動バックアップの作成](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 

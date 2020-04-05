@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: f3705170be28f33e5994bd00e363dc7ec7f94642
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435613"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>HDInsight で Apache Hive と Apache Hadoop を使用して Twitter データを分析する
@@ -36,7 +36,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
    | フィールド | 値 |
    |--- |--- |
-   | Name |MyHDInsightApp |
+   | 名前 |MyHDInsightApp |
    | 説明 |MyHDInsightApp |
    | Web サイト |`https://www.myhdinsightapp.com` |
 

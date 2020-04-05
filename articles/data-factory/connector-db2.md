@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: jingwang
 ms.openlocfilehash: 22ecac12e049e58e533cdde0078f4a25f6bb2aa6
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77423829"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータをコピーする
@@ -65,14 +65,14 @@ DB2 データベースのデータを、サポートされているシンク デ
 
 DB2 のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**Db2** | はい |
 | server |DB2 サーバーの名前です。 サーバー名に続けて、コロンで区切ってポート番号を指定できます (例: `server:port`)。 |はい |
 | database |DB2 データベースの名前です。 |はい |
 | authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値:**Basic**。 |はい |
 | username |DB2 データベースに接続するユーザー名を指定します。 |はい |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | packageCollection | データベースに対してクエリを実行するときに、必要なパッケージが ADF によって自動的に作成される場所を指定します。 | いいえ |
 | certificateCommonName | Secure Sockets Layer (SSL) またはトランスポート層セキュリティ (TLS) 暗号化を使用する場合は、証明書共通名の値を入力する必要があります。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
@@ -111,7 +111,7 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 
 DB2 からのデータ コピーについては、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの type プロパティは、次のように設定する必要があります:**Db2Table** | はい |
 | schema | スキーマの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
@@ -146,7 +146,7 @@ DB2 からのデータ コピーについては、次のプロパティがサポ
 
 DB2 からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**Db2Source** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`)。 | いいえ (データセットの "tableName" が指定されている場合) |
@@ -204,7 +204,7 @@ DB2 からデータをコピーするとき、次の DB2 のデータ型から A
 | Double |Double |
 | Float |Double |
 | Graphic |String |
-| 整数 |Int32 |
+| Integer |Int32 |
 | LongVarBinary |Byte[] |
 | LongVarChar |String |
 | LongVarGraphic |String |

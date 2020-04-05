@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 5/29/2019
 ms.openlocfilehash: f0840b90e1036c23fa58d94515bfeb035299c07f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66358007"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-sisense"></a>Sisense で Azure Data Explorer のデータを視覚化する
@@ -73,8 +73,8 @@ Sisense は、高度な対話型のユーザー エクスペリエンスを提�
     |接続文字列     |   `jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;database=<database_name>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword`      |
     |JDBC JAR フォルダー  |    `..\Sisense\DataConnectors\jdbcdrivers\adx`     |
     |ドライバーのクラス名    |   `com.microsoft.sqlserver.jdbc.SQLServerDriver`      |
-    |ユーザー名   |    AAD ユーザー名     |
-    |パスワード     |   AAD ユーザー パスワード      |
+    |[ユーザー名]   |    AAD ユーザー名     |
+    |Password     |   AAD ユーザー パスワード      |
 
 1. **[Select Data]\(データの選択\)** タブで、 **[Select Database]\(データベースの選択\)** を選択して、アクセス許可がある関連データベースを選択します。 この例では、 *[test1]* を選択します。
 
@@ -83,7 +83,7 @@ Sisense は、高度な対話型のユーザー エクスペリエンスを提�
 1. *test* (データベース名) ウィンドウで:
     1. テーブル名を選択してテーブルをプレビューし、テーブル列名を確認します。 不要な列を削除できます。
     1. 関連テーブルのチェック ボックスを選択して、そのテーブルを選択します。 
-    1. **[完了]** を選択します。
+    1. **[Done]** を選択します。
 
     ![テーブルを選択する](media/sisense/select-table-see-columns.png)    
 
@@ -121,7 +121,7 @@ Sisense は、高度な対話型のユーザー エクスペリエンスを提�
 
 ビジュアル分析によって、データを調査し、追加のダッシュボードを作成して、データをアクションにつながる分析情報に変換して、ビジネスに効果をもたらすことができるようになりました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Explorer のクエリを記述する](write-queries.md)
 

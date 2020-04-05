@@ -12,17 +12,17 @@ ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
 ms.openlocfilehash: 64649c86dbd3c3469247308bfc4dd0ed12e06949
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70018235"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management インスタンスのアップグレードとスケーリングを行う  
 
 Azure API Management (APIM) インスタンスは、ユニットを追加するか削除することでスケーリングできます。 **ユニット**は専用の Azure リソースで構成され、1 か月あたりの API 呼び出しの数として表される特定の耐荷容量があります。 この数値は呼び出しの制限を表しているのではなく、大まかな容量計画を行うための最大スループット値です。 実際のスループットと待ち時間は、コンカレント接続の数とレート、構成されたポリシーの種類と数、要求のサイズと応答のサイズ、バックエンドの待ち時間などの多くの要因によって、大幅に異なります。
 
-各ユニットの容量と価格は、ユニットが存在する**レベル**によって決まります。 4 つのレベル、すなわち、**Developer**、**Basic**、**Standard**、**Premium** から選択できます。 レベル内でサービスの容量を増やす必要がある場合は、ユニットを追加する必要があります。 現在選択されている APIM インスタンスのレベルではそれ以上ユニットを追加できない場合は、上位のレベルにアップグレードする必要があります。
+各ユニットの容量と価格は、ユニットが存在する**レベル**によって決まります。 4 つのレベル (**Developer**、**Basic**、**Standard**、**Premium**) から選択できます。 レベル内でサービスの容量を増やす必要がある場合は、ユニットを追加する必要があります。 現在選択されている APIM インスタンスのレベルではそれ以上ユニットを追加できない場合は、上位のレベルにアップグレードする必要があります。
 
 各ユニットの価格と利用可能な機能 (複数リージョンへのデプロイなど) は、APIM インスタンス用に選択したレベルによって異なります。 [価格の詳細](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)に関する記事で、ユニットあたりの価格と各レベルで利用できる機能が説明されています。 
 
@@ -45,7 +45,7 @@ Azure API Management (APIM) インスタンスは、ユニットを追加する�
 
 ## <a name="upgrade-and-scale"></a>アップグレードとスケーリング  
 
-4 つのレベル、すなわち、**Developer**、**Basic**、**Standard**、**Premium** から選択できます。 **Developer** レベルは、サービスを評価するために使用する必要があります。運用環境では使用しないでください。 **Developer** レベルには SLA がなく、このレベルをスケーリング (ユニットの追加/削除) することはできません。 
+4 つのレベル (**Developer**、**Basic**、**Standard**、**Premium**) から選択できます。 **Developer** レベルは、サービスを評価するために使用する必要があります。運用環境では使用しないでください。 **Developer** レベルには SLA がなく、このレベルをスケーリング (ユニットの追加/削除) することはできません。 
 
 **Basic**、**Standard**、**Premium** は運用レベルであり、SLA があり、スケーリングできます。 **Basic**  レベルは SLA がある最も安価なレベルで、最大 2 ユニットにスケールアップできます。**Standard** レベルは最大 4 ユニットにスケールアップできます。 **Premium** レベルでは、任意の数のユニットを追加できます。
 
@@ -74,7 +74,7 @@ Azure API Management (APIM) インスタンスは、ユニットを追加する�
 Developer レベルへのスケールダウンまたは Developer レベルからのスケールアップを行うとき、ダウンタイムが発生します。 それ以外の場合、ダウンタイムはありません。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法](api-management-howto-deploy-multi-region.md)
 - [Azure API Management サービス インスタンスを自動的にスケーリングする方法](api-management-howto-autoscale.md)

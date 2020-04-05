@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.openlocfilehash: f1fdb9dffbe06430ea7e3eb9339e23f5239e4e36
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310834"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する

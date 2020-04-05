@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 3873b25394f91ce1c1601c348de2098198ba7fdd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74765485"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure データ エクスプローラーの時系列分析
@@ -67,7 +67,7 @@ demo_make_series1
     - `byOsVer`:  OS ごとのパーティション分割
 - 実際の時系列データの構造は、各時間ビンごとに集計された値の数値配列です。 視覚化には `render timechart` を使用します。
 
-上の表には、3 つのパーティションがあります。 個別の時系列を作成できます:次のグラフでは、OS のバージョンごとに Windows 10 (赤)、7 (青)、8.1 (緑):
+上の表には、3 つのパーティションがあります。 次のグラフに示すように、OS バージョンごとに Windows 10 (赤)、7 (青)、および 8.1 (緑) の個別の時系列を作成できます。
 
 ![時系列のパーティション](media/time-series-analysis/time-series-partition.png)
 
@@ -80,9 +80,9 @@ demo_make_series1
 
 フィルター処理は信号処理の一般的な方法であり、時系列処理タスク (ノイズの多い信号の円滑化や変化検出など) で有効です。
 - 次の 2 つの一般的なフィルター処理関数があります。
-    - [`series_fir()`](/azure/kusto/query/series-firfunction):FIR フィルターを適用します。 変化検出のための時系列の移動平均と微分の単純な計算に使用します。
-    - [`series_iir()`](/azure/kusto/query/series-iirfunction):IIR フィルターを適用します。 指数平滑法と累積合計に使用します。
-- サイズ 5 のビンの新しい移動平均系列 (名前は *ma_num*) をクエリに追加することで、時系列セットに `Extend` を実行します。
+    - [`series_fir()`](/azure/kusto/query/series-firfunction): FIR フィルターを適用します。 変化検出のための時系列の移動平均と微分の単純な計算に使用します。
+    - [`series_iir()`](/azure/kusto/query/series-iirfunction): IIR フィルターを適用します。 指数平滑法と累積合計に使用します。
+- サイズ 5 のビンの新しい移動平均系列 (名前は `Extend`ma_num *) をクエリに追加することで、時系列セットに*  を実行します。
 
 **\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=) **\]**
 
@@ -196,7 +196,7 @@ demo_many_series1
 
 |   |   |   |   |   |   |
 | --- | --- | --- | --- | --- | --- |
-|   | TIMESTAMP | Loc | anonOp | DB | DataRead |
+|   | timestamp | Loc | anonOp | DB | DataRead |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 262 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 241 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Loc 9 | -865998331941149874 | 262 | 279862 |
@@ -287,7 +287,7 @@ demo_many_series1
 
 これらの高度な機能と ADX の高速なパフォーマンスを組み合わせることで、時系列分析のためのユニークで強力なソリューションが提供されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Data Explorer での[時系列の異常検出と予測](/azure/data-explorer/anomaly-detection)について学習します。
 * Azure Data Explorer の[機械学習機能](/azure/data-explorer/machine-learning-clustering)について学習します。

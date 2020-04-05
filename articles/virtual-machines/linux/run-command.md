@@ -9,10 +9,10 @@ ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
 ms.openlocfilehash: 21787854590d3ca0be2cbd6e9d167de33482c787
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72597892"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>実行コマンドを使用して Linux VM でシェル スクリプトを実行する
@@ -65,7 +65,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 > [!NOTE]
 > 別のユーザーとしてコマンドを実行するには、`sudo -u` を入力してユーザー アカウントを指定します。
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 
 [Azure portal](https://portal.azure.com) 内の VM に移動し、 **[操作]** で **[実行コマンド]** を選択します。 VM 上で実行できるコマンドの一覧が表示されます。
 
@@ -96,6 +96,6 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 実行コマンドを使用するには、いずれかの[組み込みロール](../../role-based-access-control/built-in-roles.md)を使用するか、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VM においてリモートでスクリプトやコマンドを実行するその他の方法の詳細については、「[Linux VM でスクリプトを実行する](run-scripts-in-vm.md)」を参照してください。

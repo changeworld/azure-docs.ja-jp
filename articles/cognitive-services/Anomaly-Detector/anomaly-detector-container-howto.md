@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 45abd904ea95cf8e68583ba5630a485af59479ec
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327252"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218933"
 ---
 # <a name="install-and-run-anomaly-detector-containers-preview"></a>Anomaly Detector コンテナー (プレビュー) のインストールと実行
 
 Anomaly Detector には次のコンテナー機能があります。
 
-| Function | 機能 |
+| 機能 | 特徴 |
 |--|--|
 | Anomaly Detector | <li> リアルタイムで発生した異常を検出します。 <li> バッチとして設定されたデータ全体で異常を検出します。 <li> データの予想される通常の範囲を推論します。 <li> 実際のデータに合わせた異常検出の機密性調整をサポートします。 |
 
@@ -193,7 +193,7 @@ Anomaly Detector コンテナーは、Azure アカウントの _Anomaly Detector
 > [!IMPORTANT]
 > Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services コンテナーが、顧客データ (解析対象の時系列データなど) を Microsoft に送信することはありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 構成設定について、[コンテナーの構成](anomaly-detector-container-configuration.md)を確認する
 * [Anomaly Detector コンテナーを Azure Container Instances にデプロイする](how-to/deploy-anomaly-detection-on-container-instances.md)

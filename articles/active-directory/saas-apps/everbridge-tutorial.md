@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 60463a00c6864bed7b3a18e816ef0143d3573782
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67103250"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>チュートリアル:Azure Active Directory と Everbridge の統合
@@ -134,7 +134,7 @@ Everbridge で Azure AD シングル サインオンを構成するには、次�
      > [!NOTE]
      > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL の値で更新してください。 これらの値を取得するには、[Everbridge サポート チーム](mailto:support@everbridge.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択して**フェデレーション メタデータ XML** をダウンロードします。 これをコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** を選択して**フェデレーション メタデータ XML** をダウンロードします。 それを自分のコンピューターに保存します。
 
     ![証明書のダウンロード リンク](common/metadataxml.png)
 
@@ -192,11 +192,11 @@ Azure portal で Britta Simon というテスト ユーザーを作成するに�
 
     a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** ボックスに「`brittasimon@yourcompanydomain.extension`」と入力します。 例: BrittaSimon@contoso.com。
+    b. **[ユーザー名]** ボックスに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば BrittaSimon@contoso.com です。
 
     c. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **作成** を選択します。
+    d. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

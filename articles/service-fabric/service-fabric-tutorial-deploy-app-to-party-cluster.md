@@ -7,13 +7,13 @@ ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
 ms.openlocfilehash: 9951610732cbb1c5884a7b7e830033f427db0ab1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75646009"
 ---
-# <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric アプリケーションをクラスターにデプロイする
+# <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>チュートリアル: Azure のクラスターに Service Fabric アプリケーションをデプロイする
 
 このチュートリアルは、シリーズの第 2 部です。 Azure の新しいクラスターに Azure Service Fabric アプリケーションをデプロイする方法を示します。
 
@@ -55,7 +55,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 アプリケーションの準備ができたので、Service Fabric クラスターを作成して、アプリケーションをクラスターにデプロイします。 [Service Fabric クラスター](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。
 
-このチュートリアルでは、Visual Studio IDE で新しい 3 ノードのテスト クラスターを作成してから、そのクラスターにアプリケーションを発行します。 運用クラスターの作成については、[クラスターの作成と管理に関するチュートリアル](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を参照してください。 [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) スクリプトまたは [Azure CLI](./scripts/cli-create-cluster.md) スクリプトを使用するか、あるいは [Azure Resource Manager テンプレート](service-fabric-tutorial-create-vnet-and-windows-cluster.md)をベースにして、以前に [Azure portal](https://portal.azure.com) を使用して作成した既存のクラスターにアプリケーションをデプロイすることもできます。
+このチュートリアルでは、Visual Studio IDE で新しい 3 ノードのテスト クラスターを作成してから、そのクラスターにアプリケーションを発行します。 運用クラスターの作成については、[クラスターの作成と管理に関するチュートリアル](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を参照してください。 [PowerShell](https://portal.azure.com) スクリプトまたは [Azure CLI](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) スクリプトを使用するか、あるいは [Azure Resource Manager テンプレート](./scripts/cli-create-cluster.md)をベースにして、以前に [Azure portal](service-fabric-tutorial-create-vnet-and-windows-cluster.md) を使用して作成した既存のクラスターにアプリケーションをデプロイすることもできます。
 
 > [!NOTE]
 > 投票アプリケーション、およびその他の多くのアプリケーションでは、サービス間の通信に Service Fabric リバース プロキシが使用されます。 Visual Studio で作成されたクラスターでは、既定でリバース プロキシが有効になっています。 既存のクラスターにデプロイする場合、投票アプリケーションが動作するためには、[クラスターでリバース プロキシを有効にする](service-fabric-reverseproxy-setup.md)必要があります。

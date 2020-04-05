@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: fbfd82473b68f5032d19834ac809191d498a5a67
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894122"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>シナリオ:Azure HDInsight 内でのクラスター ノードのディスク領域の不足
@@ -28,7 +28,7 @@ ms.locfileid: "75894122"
 
 Apache Yarn アプリケーション キャッシュによって、使用可能なすべてのディスク領域が消費されている可能性があります。 Spark アプリケーションが効率よく実行されていない可能性があります。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 1. Ambari UI を使用して、ディスク領域が不足しているノードを特定します。
 

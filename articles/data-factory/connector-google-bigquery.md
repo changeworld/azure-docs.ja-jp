@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: c0eb043ce040f154050ef4c3675f165dad326e32
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929419"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Azure Data Factory を使用して Google BigQuery からデータをコピーする
@@ -37,7 +37,7 @@ Data Factory では、接続を可能にする組み込みのドライバーが�
 >[!NOTE]
 >この Google BigQuery コネクタは、BigQuery API 上に構築されます。 BigQuery では着信要求の最大数を制限し、プロジェクトごとに適切なクォータを強制することに注意してください。[割り当てと制限 - API リクエスト](https://cloud.google.com/bigquery/quotas#api_requests)を参照してください。 アカウントに対してあまり多くの同時要求をトリガーしないようにしてください。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -165,7 +165,7 @@ Google BigQuery からデータをコピーするには、コピー アクティ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは **GoogleBigQuerySource** に設定する必要があります。 | はい |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。 | いいえ (データセットの "tableName" が指定されている場合) |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば `"SELECT * FROM MyTable"` です。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 
@@ -199,9 +199,9 @@ Google BigQuery からデータをコピーするには、コピー アクティ
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

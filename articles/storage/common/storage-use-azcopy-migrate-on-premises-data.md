@@ -9,10 +9,10 @@ ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: f7155053072b3533503765dc6f4fbf185d21f0d4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74327516"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>チュートリアル:AzCopy を使用してオンプレミスのデータをクラウド ストレージに移行する
@@ -121,11 +121,11 @@ AzCopy コマンドをテキスト エディターにコピーします。 AzCop
 > [!NOTE]
 > Linux の例では SAS トークンが追加されます。 コマンドにそれを指定する必要があります。 AzCopy V10 の現在のバージョンでは、cron ジョブでの Azure AD 認証はサポートされていません。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
     azcopy sync "/mnt/myfiles" "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-05-30T06:57:40Z&st=2019-05-29T22:57:40Z&spr=https&sig=BXHippZxxx54hQn%2F4tBY%2BE2JHGCTRv52445rtoyqgFBUo%3D" --recursive=true
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
     azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycontainer" --recursive=true
 
@@ -135,7 +135,7 @@ AzCopy コマンドをテキスト エディターにコピーします。 AzCop
 
  **Schtasks** は、管理者がローカルまたはリモート コンピューター上でスケジュールされたタスクを作成、削除、クエリ、変更、実行、および終了することを可能にします。 **Cron** は、Linux および Unix ユーザーが [cron 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)を使用して、指定された日時にコマンドまたはスクリプトを実行することを可能にします。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Linux 上で cron ジョブを作成するには、端末で次のコマンドを入力します。
 
@@ -146,7 +146,7 @@ crontab -e
 
 コマンドの cron 式 `*/5 * * * *` は、シェル スクリプト `script.sh` を 5 分ごとに実行することを指定します。 スクリプトは、毎日、毎月、または毎年特定の時刻に実行するようにスケジュールすることができます。 ジョブの実行日時の設定の詳細については、[cron 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)に関するページを参照してください。
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Windows 上でスケジュールされたタスクを作成するには、コマンド プロンプトまたは PowerShell で次のコマンドを入力します。
 
@@ -168,7 +168,7 @@ Windows 上でスケジュールされたタスクを作成する方法の詳細
 
 スケジュールされたタスクまたは cron ジョブが正常に実行されることを確認するために、`myFolder` ディレクトリ内に新しいファイルを作成します。 新しいファイルがストレージ アカウントにアップロードされたことを確認するために、5 分間待ちます。 ログ ディレクトリに移動して、スケジュールされたタスクまたは cron ジョブの出力ログを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 オンプレミスと Azure Storage との間でデータを移動する方法については、このリンクに従ってください。
 
@@ -178,7 +178,7 @@ AzCopy の詳細については、以下の記事を参照してください。
 
 * [AzCopy を使ってみる](storage-use-azcopy-v10.md)
 
-* [AzCopy と BLOB ストレージでデータを転送する](storage-use-azcopy-blobs.md)
+* [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
 
 * [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 8c1f85217db12b60cdcd8ea0bdb65792b8d02648
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084582"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229111"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory と DNS のディザスター リカバリーを設定する
 
@@ -163,7 +163,7 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 1. ドメイン コントローラーの Authoritative Restore を実行します。 次の情報を考慮してください。
     * [FRS レプリケーション](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/)は推奨されませんが、FRS レプリケーションを使用している場合は、次の手順に従って Authoritative Restore を行います。 プロセスについては、「[BurFlags レジストリ キーを使用してファイル レプリケーション サービスのレプリカ セットを再初期化する](https://support.microsoft.com/kb/290762)」をご覧ください。
 
-        BurFlags の詳細については、ブログ記事「[D2 and D4:What is it for? (D2 と D4: 何のために使用するか?)](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/)」をご覧ください。
+        BurFlags の詳細については、ブログ記事「[D2 and D4: What is it for?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/)」(D2 と D4: 何のために使用するか?) をご覧ください。
     * DFSR レプリケーションを使用している場合は、次の手順で Authoritative Restore を行います。 プロセスについては、「[Force an authoritative and non-authoritative sync for DFSR-replicated sysvol folder (like "D4/D2" for FRS) (DFSR でレプリケートされた sysvol フォルダー (FRS の "D4/D2" など) の権限のある/権限のない同期を強制実行する)](https://support.microsoft.com/kb/2218556)」をご覧ください。
 
         PowerShell 関数を使用することもできます。 詳細については、「[DFSR-SYSVOL authoritative/non-authoritative restore PowerShell functions](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/)」(DFSR-SYSVOL の権限のある/権限のない復元の PowerShell 関数) をご覧ください。
@@ -172,7 +172,7 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
-    詳しくは、「[DNS イベント ID 4013 のトラブルシューティング:DNS サーバーは、AD と統合した DNS ゾーンをロードすることができませんでした。](https://support.microsoft.com/kb/2001093)」をご覧ください。
+    詳細については、「[Troubleshoot DNS Event ID 4013: The DNS server was unable to load AD integrated DNS zones](https://support.microsoft.com/kb/2001093)」(DNS イベント ID 4013: DNS サーバーは AD 統合された DNS ゾーンを読み込めませんでした) をご覧ください。
 
 3. ユーザーのログインを検証するためにグローバル カタログ サーバーを利用可能にする要件を無効にします。 これを行うには、オンプレミス ドメイン コントローラーで、次のレジストリ キーを **1** に設定します。 この DWORD 値が存在しない場合は、**Lsa** ノードの下に作成できます。
 
@@ -207,5 +207,5 @@ DNS がドメイン コントローラーと同じ VM 上にない場合は、�
 
     `dnscmd /config contoso.com /allowupdate 1`
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Site Recovery を使用したエンタープライズ ワークロードの保護](site-recovery-workload.md)に関する詳細を確認します。

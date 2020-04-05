@@ -22,6 +22,8 @@
       items:
         - name: Azure Cost Management のベスト プラクティス
           href: cost-mgt-best-practices.md
+        - name: Cost Management と Cloudyn のいずれかを選択する
+          href: choose-between-azure-cost-management-cloudyn.md
         - name: Cost Management のデータを理解する
           href: understand-cost-mgt-data.md
         - name: スコープを理解して使用する

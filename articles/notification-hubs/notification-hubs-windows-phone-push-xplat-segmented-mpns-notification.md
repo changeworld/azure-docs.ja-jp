@@ -17,14 +17,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 88326b07a96dcc8ce7a72f8709a88c2662f48707
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 72ecb5bdb6bb024c5e4422548dd11888c03e4799
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213395"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80126936"
 ---
-# <a name="tutorial-push-notifications-to-specific-windows-phone-devices-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の Windows Phone デバイスにプッシュ通知を送信する
+# <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の Windows Phone にプッシュ通知を送信する
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -308,7 +308,7 @@ ms.locfileid: "71213395"
 
     ![通知メッセージ][3]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、タグが登録に関連付けられている特定のデバイスにプッシュ通知を送信する方法を学習しました。 複数のデバイスを使用している可能性のある特定のユーザーにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。 
 

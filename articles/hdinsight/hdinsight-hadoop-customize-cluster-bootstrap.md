@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: e641340ac04415ee4a20cda2bc09bbdbef9802a6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931411"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233639"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>ブートストラップを使って HDInsight クラスターをカスタマイズする
 
@@ -55,7 +55,7 @@ HDInsight クラスターの作成時に構成ファイル設定を指定する�
 次の PowerShell コードでは、[Apache Hive](https://hive.apache.org/) 構成をカスタマイズします。
 
 > [!IMPORTANT]  
-> [Add-Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue) と共にパラメーター `Spark2Defaults` を使うことが必要な場合があります。 以下のコード例に示すように、パラメーターに空の値を渡すことができます。
+> `Spark2Defaults`Add-Add-AzHDInsightConfigValue[ と共にパラメーター ](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue) を使うことが必要な場合があります。 以下のコード例に示すように、パラメーターに空の値を渡すことができます。
 
 ```powershell
 # hive-site.xml configuration
@@ -133,7 +133,7 @@ Resource Manager テンプレートでは、ブートストラップを使用で
 * [HDInsight クラスターで Apache Spark をインストールして使用する](spark/apache-spark-jupyter-spark-sql-use-portal.md)
 * [HDInsight クラスターに Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)。
 
-## <a name="appendix-powershell-sample"></a>付録: PowerShell のサンプル
+## <a name="appendix-powershell-sample"></a>付録 - PowerShell サンプル
 
 この PowerShell スクリプトでは、HDInsight クラスターを作成し、Hive の設定をカスタマイズします。 必ず `$nameToken`、`$httpPassword`、および `$sshPassword` の値を入力してください。
 

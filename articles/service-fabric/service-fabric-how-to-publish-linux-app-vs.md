@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 ms.date: 5/20/2019
 ms.author: pepogors
 ms.openlocfilehash: c30eedb6782e4172d677f16e27441f28c78cdd89
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614351"
 ---
 # <a name="use-visual-studio-to-create-and-publish-net-core-applications-targeting-a-remote-linux-service-fabric-cluster"></a>Visual Studio を使用してリモート Linux Service Fabric クラスターをターゲットとする .Net Core アプリケーションを作成および発行する

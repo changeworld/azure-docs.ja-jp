@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 6101e00ab98b0d8d901f2e42bf4083d40d0a3227
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823858"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>RecoveryManager クラスを使用したシャード マップに関する問題の解決

@@ -7,11 +7,11 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672227"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234259"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 

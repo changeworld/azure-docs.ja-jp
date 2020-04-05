@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/08/2019
 ms.openlocfilehash: 64e1f172a947cb08795272fe2a022e9d7beac7a6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74215739"
 ---
 # <a name="azure-hdinsight-python-samples"></a>Azure HDInsight: Python のサンプル

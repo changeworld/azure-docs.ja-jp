@@ -4,10 +4,10 @@ description: Application Insights で、メトリックス エクスプローラ
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.openlocfilehash: e0e2a106b276110e13b3c68889e4d1d349ba73a4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77666515"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈

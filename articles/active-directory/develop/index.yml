@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: edc613b275d996ac8ef8ed4470529153fdcfbecb
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: f5b1594993a1d4361746847439374dd2b7122510
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943472"
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "80420095"
 landingContent:
 - title: Microsoft ID プラットフォームについて
   linkLists:
@@ -50,6 +50,8 @@ landingContent:
     links:
     - text: JavaScript
       url: quickstart-v2-javascript.md
+    - text: Angular
+      url: quickstart-v2-angular.md
   - linkListType: tutorial
     links:
     - text: JavaScript

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: cherylmc
 ms.openlocfilehash: 8aa4fe143c78d2053ce8c48e4866a5522057aa0c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063023"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Azure Virtual WAN に移行する
@@ -57,7 +57,7 @@ Contoso は、ヨーロッパとアジアの両方にオフィスを持つグロ
   - **VNet からハブ、ハブからハブ、ハブから VNet へ**:異なるリージョン内のスポーク仮想ネットワークが相互に通信できる必要があります。
 - Contoso のローミング ユーザー (ノート PC および電話のユーザー) が企業ネットワーク上にいないときに会社のリソースにアクセスできるようにします。
 
-## <a name="architecture"></a>Azure Virtual WAN アーキテクチャ
+## <a name="azure-virtual-wan-architecture"></a><a name="architecture"></a>Azure Virtual WAN アーキテクチャ
 
 次の図は、前のセクションで詳しく説明した要件を満たす、Azure Virtual WAN を使用した更新されたターゲット トポロジの概要を示しています。
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: diberry
 ms.openlocfilehash: 0b69c1fb070431ad61858322dce461f6496c35d7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73490820"
 ---
 # <a name="exploration-and-exploitation"></a>探索とエクスプロイト
@@ -43,6 +43,6 @@ Personalizer は、Rank 呼び出しごとに、この確率で探索するか�
 
 Personalizer が探索しているかエクスプロイトしているかに基づいてアプリケーションの動作を変更しないことが重要です。 これは、最終的には潜在的なパフォーマンスを低下させる学習バイアスを招きます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [強化学習](concepts-reinforcement-learning.md) 

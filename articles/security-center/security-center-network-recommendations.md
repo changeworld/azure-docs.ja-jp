@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
 ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77431487"
 ---
 # <a name="protect-your-network-resources"></a>ネットワーク リソースの保護
@@ -79,9 +79,9 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 
 1. 上部にあるフィルターを使用して、ネットワーク マップに表示される内容を変更できます。 次の項目に基づいてマップのフォーカスを設定できます。
 
-   -  **セキュリティ正常性**:Azure リソースの重大度 (高、中、低) に基づいてマップをフィルター処理できます。
-   - **推奨事項**:リソースに対してアクティブになっている推奨事項に基づいて、表示されるリソースを選択できます。 たとえば、Security Center によってネットワーク セキュリティ グループの有効化が推奨されているリソースのみを表示できます。
-   - **ネットワーク ゾーン**:既定では、マップにはインターネットに接続しているリソースのみが表示され、内部 VM も選択できます。
+   -  **セキュリティ正常性**: Azure リソースの重大度 (高、中、低) に基づいてマップをフィルター処理できます。
+   - **推奨事項**: リソースに対してアクティブになっている推奨事項に基づいて、表示されるリソースを選択できます。 たとえば、Security Center によってネットワーク セキュリティ グループの有効化が推奨されているリソースのみを表示できます。
+   - **ネットワーク ゾーン**: 既定では、マップにはインターネットに接続しているリソースのみが表示され、内部 VM も選択できます。
  
 2. いつでも左上隅の **[リセット]** をクリックして、マップを既定の状態に戻すことができます。
 
@@ -114,7 +114,7 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 [![ネットワーク トラフィック マップ](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
 
 
-## レガシ ネットワーク <a name ="legacy-networking"></a>
+## <a name="legacy-networking"></a>レガシ ネットワーク <a name ="legacy-networking"></a>
 
 Security Center Standard レベルがない場合、このセクションではネットワークに関する無料の推奨事項を表示する方法について説明します。
 

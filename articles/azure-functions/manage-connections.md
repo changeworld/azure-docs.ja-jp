@@ -4,11 +4,11 @@ description: 静的接続クライアントを使用して、Azure Functions の
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226499"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234847"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Functions での接続の管理
 
@@ -132,7 +132,7 @@ module.exports = async function (context) {
 > [!TIP]
 > Entity Framework などの一部のデータ フレームワークは、通常、構成ファイルの **ConnectionStrings** セクションから接続文字列を取得します。 その場合は、関数アプリの設定およびローカル プロジェクトの [local.settings.json ファイル](functions-run-local.md#local-settings-file)の**接続文字列**コレクションに、SQL データベースの接続文字列を明示的に追加する必要があります。 関数コードで [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) のインスタンスを作成する場合は、他の接続と共に、接続文字列の値を**アプリケーションの設定**に保存する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 静的クライアントが推奨される理由の詳細については、「[不適切なインスタンス化のアンチパターン](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)」をご覧ください。
 

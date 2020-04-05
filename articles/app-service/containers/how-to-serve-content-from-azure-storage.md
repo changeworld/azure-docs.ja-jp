@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: b2be84625035bb368784f3f423d63121c29255ad
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 79a4e423f7a2b6570234c958ac833cdf5c6a75e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121421"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79297919"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Linux 上の App Service 内の Azure Storage からコンテンツを提供する
 
@@ -25,7 +25,7 @@ ms.locfileid: "77121421"
 - [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 以降)。
 - 既存の [App Service on Linux アプリ](https://docs.microsoft.com/azure/app-service/containers/)。
 - [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-cli)
-- [Azure のファイル共有とディレクトリ](https://docs.microsoft.com/azure/storage/common/storage-azure-cli#create-and-manage-file-shares)。
+- [Azure のファイル共有とディレクトリ](../../storage/files/storage-how-to-use-files-cli.md)。
 
 
 ## <a name="limitations-of-azure-storage-with-app-service"></a>App Service を使用する Azure Storage の制限事項

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
 ms.openlocfilehash: 39ab222f64d964e95b16e043c9cdeccd8170ace3
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651017"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
@@ -556,10 +556,10 @@ SAP コネクタに関して現在知られている問題と制限は次のよ�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細は、[コネクタの参照ページ](https://docs.microsoft.com/connectors/sap/)を参照してください。
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](https://docs.microsoft.com/connectors/sap/)を参照してください。
 
 > [!NOTE]
-> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリでは、代わりにこのコネクタの ISE のラベルがついたバージョンが [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)を使用します。
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

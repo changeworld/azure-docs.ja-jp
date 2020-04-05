@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898572"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure Scheduler の概念、用語集、エンティティ
@@ -76,9 +76,9 @@ Azure Scheduler では、複数のジョブの種類がサポートされてい�
 高レベルでは、Scheduler ジョブには次の基本的な部分があります。
 
 * ジョブ タイマーが起動するときに実行するアクション
-* 省略可能:ジョブを実行する時間
-* 省略可能:ジョブを繰り返し実行するタイミングと頻度
-* 省略可能:プライマリ アクションが失敗した場合に実行するエラー アクション
+* 省略可能: ジョブを実行する時間
+* 省略可能: ジョブを繰り返し実行するタイミングと頻度
+* 省略可能: プライマリ アクションが失敗した場合に実行するエラー アクション
 
 ジョブには、ジョブのスケジュールされた次回の実行時刻など、システム指定のデータも含まれています。 ジョブのコードの定義は、JavaScript Object Notation (JSON) 形式のオブジェクトであり、次の要素が含まれます。
 
@@ -246,7 +246,7 @@ Shared Access Signature (SAS) トークンについて詳しくは、[Shared Acc
 },
 ```
 
-| プロパティ | 必須 | Value | 説明 | 
+| プロパティ | 必須 | 値 | 説明 | 
 |----------|----------|-------|-------------| 
 | **frequency** | はい。**recurrence** が使用されているとき | "Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 発生の間隔の時間単位 | 
 | **interval** | いいえ | 1 ～ 1000 | **frequency** に基づいて実行間の時間単位の数を決定する正の整数 | 
@@ -276,7 +276,7 @@ Scheduler ジョブが失敗したときのために、再試行ポリシーを�
 },
 ```
 
-| プロパティ | 必須 | Value | 説明 | 
+| プロパティ | 必須 | 値 | 説明 | 
 |----------|----------|-------|-------------| 
 | **retryType** | はい | **Fixed**、**None** | 再試行ポリシーを指定するか (**fixed**) しないか (**none**) を決定します。 | 
 | **retryInterval** | いいえ | PT30S | 再試行の間隔と頻度を [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)で指定します。 最小値は 15 秒、最大値は 18 か月です。 | 

@@ -7,10 +7,10 @@ ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
 ms.openlocfilehash: 29c1aaf18ea45d869d32a8817aeb03faa3b67c32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75456580"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
@@ -83,7 +83,7 @@ Azure Logic Apps では、データ ゲートウェイを介した読み取り�
    | **リソース名** | アルファベット、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、またはピリオド (`.`) のみを含む、ゲートウェイ リソースの名前を指定します。 |
    | **サブスクリプション** | ゲートウェイのインストールに使用された、Azure アカウントの Azure サブスクリプションを選択します。 既定のサブスクリプションは、サインインするために使用した Azure アカウントに基づきます。 |
    | **リソース グループ** | 使用する [Azure リソース グループ](../azure-resource-manager/management/overview.md) |
-   | **Location** | [ゲートウェイのインストール](../logic-apps/logic-apps-gateway-install.md)中にゲートウェイ クラウド サービス用に選択されたのと同じリージョンまたは場所。 それ以外の場合、ゲートウェイのインストールは、 **[インストール名]** の一覧に表示されません。 ロジック アプリの場所は、ゲートウェイ リソースの場所とは異なる場合があります。 |
+   | **場所** | [ゲートウェイのインストール](../logic-apps/logic-apps-gateway-install.md)中にゲートウェイ クラウド サービス用に選択されたのと同じリージョンまたは場所。 それ以外の場合、ゲートウェイのインストールは、 **[インストール名]** の一覧に表示されません。 ロジック アプリの場所は、ゲートウェイ リソースの場所とは異なる場合があります。 |
    | **インストール名** | これらの条件が満たされた場合にのみ一覧に表示される、ゲートウェイのインストールを選択します。 <p><p>- ゲートウェイのインストールが、作成するゲートウェイ リソースと同じリージョンを使用する。 <br>- ゲートウェイのインストールが、別の Azure ゲートウェイ リソースにリンクされていない。 <br>- ゲートウェイのインストールが、ゲートウェイ リソースの作成に使用しているものと同じ Azure アカウントにリンクされている。 <br>- Azure アカウントが、1 つの [Azure Active Directory (Azure AD) テナントまたはディレクトリ](../active-directory/fundamentals/active-directory-whatis.md#terminology)に属しており、ゲートウェイのインストールに使用されたものと同じアカウントである。 <p><p>詳細については、「[よく寄せられる質問](#faq)」セクションを参照してください。 |
    |||
 

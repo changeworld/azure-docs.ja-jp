@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 11/19/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 0493f9e4b45d8d4804d1933bb923d3483b87005e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 451d5b0eb4fea8ba9764268d963bb7b021414f4b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448993"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80239071"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>クイック スタート:Python 用 Anomaly Detector クライアント ライブラリ
 

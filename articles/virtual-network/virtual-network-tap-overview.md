@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
 ms.openlocfilehash: 47db03460ad3c5194a5445f0b25cb8e742e60c21
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75373232"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235819"
 ---
 # <a name="virtual-network-tap"></a>仮想ネットワーク TAP
 
@@ -64,7 +64,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 
 ネットワーク インターフェイスで TAP 構成を適用するために使用するアカウントには、[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に記載されている必要なアクションを実行できる[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)が割り当てられている必要があります。
 
-| アクション | Name |
+| アクション | 名前 |
 |---|---|
 | Microsoft.Network/virtualNetworkTaps/* | 仮想ネットワーク TAP リソースの作成、更新、読み取り、および削除に必要 |
 | Microsoft.Network/networkInterfaces/read | TAP が構成されるネットワーク インターフェイス リソースを読み取るために必要 |

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: d9778544fd9e20dc3244a37c644117d1cd505a96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90ed4bf8f0389619f130e998ed76c720442092b2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438664"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474477"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>チュートリアル:Edge のデプロイを準備する  
 
@@ -25,6 +25,7 @@ ms.locfileid: "75438664"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * 新しいリソースを作成
 > * アクティブ化キーの取得
 
@@ -52,13 +53,12 @@ Edge をデプロイするには、以下の順序どおりにチュートリア
 
 開始する前に次の点を確認します。
 
-- Microsoft Azure サブスクリプションで Edge リソースが有効になっていること。 従量課金制のサブスクリプションには対応していません。
-- Data Box Edge/Data Box Gateway、IoT Hub、および Azure Storage のリソースに対してリソース グループ レベルの所有者または共同作成者のアクセス許可を持っていること。
-
+* ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。
+* Data Box Edge/Data Box Gateway、IoT Hub、および Azure Storage のリソースに対してリソース グループ レベルの所有者または共同作成者のアクセス許可を持っていること。
     - Data Box Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 また、`Microsoft.DataBoxEdge` プロバイダーが登録されていることも確認する必要があります。 登録方法の詳細については、「[リソース プロバイダーの登録](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
     - IoT Hub リソースを作成するには、Microsoft.Devices プロバイダーが登録されていることを確認します。 登録方法の詳細については、「[リソース プロバイダーの登録](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
     - Storage アカウントのリソースを作成するには、ここでも、リソース グループ レベルにスコープ指定された共同作成者以上のアクセス許可が必要になります。 Azure Storage は、既定で、登録されたリソース プロバイターになっています。
-- Azure Active Directory Graph API に対して管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
+- Microsoft Graph API に対する管理者またはユーザーのアクセス権を持っていること。 詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://docs.microsoft.com/graph/permissions-reference)」を参照してください。
 - アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
 
 ### <a name="for-the-data-box-edge-device"></a>Edge デバイスに対して
@@ -94,10 +94,10 @@ Edge リソースを作成するには、Azure portal で次の手順を実行�
     - Azure portal (URL: [https://portal.azure.com](https://portal.azure.com))。
     - または、Azure Government ポータル (URL: [https://portal.azure.us](https://portal.azure.us))。 詳細については、[ポータルを使用して Azure Government に接続する](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)方法に関するページを参照してください。
 
-2. 左側のウィンドウで、 **[+ リソースの作成]** を選択します。 **[Data Box Edge / Data Box Gateway]** を検索します。 **[Data Box Edge / Data Box Gateway]** を選択します。 **作成** を選択します。
-3. Data Box Edge に使用するサブスクリプションを選択します。 Data Box Edge リソースをデプロイするリージョンを選択します。 このリリースでは、米国東部、東南アジア、西ヨーロッパを選択できます。 
+2. 左側のウィンドウで、 **[+ リソースの作成]** を選択します。 **[Data Box Edge / Data Box Gateway]** を検索します。 **[Data Box Edge / Data Box Gateway]** を選択します。 **［作成］** を選択します
+3. Data Box Edge に使用するサブスクリプションを選択します。 Data Box Edge リソースをデプロイするリージョンを選択します。 Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。
 
-    デバイスをデプロイする地理的リージョンに最も近い場所を選択します。 このリージョンには、デバイス管理用のメタデータのみが格納されます。 実際のデータは、任意のストレージ アカウントに格納できます。 
+    デバイスをデプロイする地理的リージョンに最も近い場所を選択します。 このリージョンには、デバイス管理用のメタデータのみが格納されます。 実際のデータは、任意のストレージ アカウントに格納できます。
     
     **Edge** オプションで、 **[作成]** を選択します。
 
@@ -105,34 +105,34 @@ Edge リソースを作成するには、Azure portal で次の手順を実行�
 
 3. **[基本]** タブで、次の**プロジェクト情報**を入力または選択します。
     
-    |設定  |値  |
+    |設定  |Value  |
     |---------|---------|
     |サブスクリプション    |事前に選択した内容に応じて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
     |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。     |
 
 4. 次の**インスタンス情報**を入力または選択します。
 
-    |設定  |値  |
+    |設定  |Value  |
     |---------|---------|
-    |Name   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |
-    |リージョン     |このリリースでは、リソースのデプロイ先として、米国東部、東南アジア、西ヨーロッパを選択できます。 Azure Government を使用している場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。<br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
+    |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |
+    |リージョン     |Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。 Azure Government を使用している場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。<br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
 
     ![プロジェクトとインスタンスの詳細](media/data-box-edge-deploy-prep/data-box-edge-resource.png)
 
-5. **[次へ:配送先住所]** を選択します。
+5. **配送先住所** を選択します。
 
     - 既にデバイスがある場合は、 **[I have a Data Box Edge device]\(Data Box Edge デバイスを持っています\)** のコンボ ボックスを選択します。
     - 新しいデバイスを注文する場合は、連絡先名、会社、デバイスの配送先住所、連絡先情報を入力します。
 
     ![新しいデバイスの配送先住所](media/data-box-edge-deploy-prep/data-box-edge-resource1.png)
 
-6. **[次へ:確認と作成]** をクリックします。
+6. **確認と作成** をクリックします。
 
 7. **[確認と作成]** タブで、**価格の詳細**、**使用条件**、リソースの詳細を確認します。 **[I have reviewed the privacy terms]\(プライバシー条件を確認しました\)** のコンボ ボックスを選択します。
 
     ![Data Box Edge リソースの詳細とプライバシー条件を確認する](media/data-box-edge-deploy-prep/data-box-edge-resource2.png)
 
-8. **作成** を選択します。
+8. **［作成］** を選択します
 
 リソースの作成には数分かかります。 リソースが正常に作成されてデプロイされると通知が表示されます。 **[リソースに移動]** を選択します。
 

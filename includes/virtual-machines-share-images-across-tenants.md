@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: f74d4cbc17e49345534a37e9e6612a36e19be295
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73903704"
 ---
 ただし、Azure テナントの外部で大規模にイメージを共有する場合は、共有を容易にするためにアプリ登録を作成することをお勧めします。  アプリ登録を使用すると、次のようにより複雑な共有シナリオが可能になります。 

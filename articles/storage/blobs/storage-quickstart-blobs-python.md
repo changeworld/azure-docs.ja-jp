@@ -7,12 +7,12 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 19a35a6586b04818c09190899714345d21e0088d
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 8daf7380e859cd2f9b5890c716f7b7d95e6c3fe4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330755"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061365"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>クイック スタート:Python v12 SDK で BLOB を管理する
 
@@ -171,7 +171,7 @@ container_client = blob_service_client.create_container(container_name)
 `try` ブロックの末尾に、次のコードを追加します。
 
 ```python
-# Create a file in local Documents directory to upload and download
+# Create a file in local data directory to upload and download
 local_path = "./data"
 local_file_name = "quickstart" + str(uuid.uuid4()) + ".txt"
 upload_file_path = os.path.join(local_path, local_file_name)
@@ -214,7 +214,7 @@ for blob in blob_list:
 
 ```python
 # Download the blob to a local file
-# Add 'DOWNLOAD' before the .txt extension so you can see both files in Documents
+# Add 'DOWNLOAD' before the .txt extension so you can see both files in the data directory
 download_file_path = os.path.join(local_path, str.replace(local_file_name ,'.txt', 'DOWNLOAD.txt'))
 print("\nDownloading blob to \n\t" + download_file_path)
 
@@ -276,7 +276,7 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-クリーンアップ プロセスを開始する前に、 *[ドキュメント]* フォルダー内の 2 つのファイルをチェックします。 それらを開いて、同じであるかどうかを確認します。
+クリーンアップ プロセスを開始する前に、*data* フォルダー内の 2 つのファイルをチェックします。 それらを開いて、同じであるかどうかを確認します。
 
 ファイルを確認した後、**Enter** キーを押してテスト ファイルを削除し、デモを終了します。
 

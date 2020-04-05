@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 08/22/2019
 ms.author: dapine
 ms.openlocfilehash: 3f390affe7badb401277aa86d1867c763aa0ae3b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "69971304"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>音声テキスト変換 (サブチャート: charts/speechToText)

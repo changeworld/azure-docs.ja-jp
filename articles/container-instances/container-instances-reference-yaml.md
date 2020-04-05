@@ -4,10 +4,10 @@ description: コンテナー グループを構成するために Azure Containe
 ms.topic: article
 ms.date: 08/12/2019
 ms.openlocfilehash: 8497330a327201c4c64e9f7ae57e6fc4225b52de
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74896564"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML リファレンス: Azure Container Instances
@@ -137,9 +137,9 @@ properties: # Properties of container group
 
 ### <a name="microsoftcontainerinstancecontainergroups-object"></a>Microsoft.ContainerInstance/containerGroups オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
-|  名前 | string | はい | コンテナー グループの名前。 |
+|  name | string | はい | コンテナー グループの名前。 |
 |  apiVersion | enum | はい | 2018-10-01 |
 |  location | string | いいえ | リソースの場所。 |
 |  tags | object | いいえ | リソース タグ。 |
@@ -151,7 +151,7 @@ properties: # Properties of container group
 
 ### <a name="containergroupidentity-object"></a>ContainerGroupIdentity オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  type | enum | いいえ | コンテナー グループに使用される ID の種類。 種類 "SystemAssigned、UserAssigned" には、暗黙的に作成された ID とユーザー割り当て ID のセットの両方が含まれます。 種類 "None" は、コンテナー グループから ID を削除します。 - SystemAssigned、UserAssigned、SystemAssigned、UserAssigned、None |
 |  userAssignedIdentities | object | いいえ | コンテナー グループに関連付けられているユーザー ID のリスト。 ユーザー ID ディクショナリ キーの参照は、次の形式の Azure Resource Manager リソース ID になります: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}"。 |
@@ -161,7 +161,7 @@ properties: # Properties of container group
 
 ### <a name="containergroupproperties-object"></a>ContainerGroupProperties オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  containers | array | はい | コンテナー グループ内のコンテナー。 - [Container オブジェクト](#Container) |
 |  imageRegistryCredentials | array | いいえ | コンテナー グループの作成に使用されたイメージ レジストリの資格情報。 - [ImageRegistryCredential オブジェクト](#ImageRegistryCredential) |
@@ -178,9 +178,9 @@ properties: # Properties of container group
 
 ### <a name="container-object"></a>Container オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
-|  名前 | string | はい | ユーザーが指定したコンテナー インスタンスの名前。 |
+|  name | string | はい | ユーザーが指定したコンテナー インスタンスの名前。 |
 |  properties | object | はい | コンテナー インスタンスのプロパティ。 - [ContainerProperties オブジェクト](#ContainerProperties) |
 
 
@@ -188,7 +188,7 @@ properties: # Properties of container group
 
 ### <a name="imageregistrycredential-object"></a>ImageRegistryCredential オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  server | string | はい | "http" や "https" などのプロトコルを除いた Docker イメージ レジストリ サーバー。 |
 |  username | string | はい | プライベート レジストリのユーザー名。 |
@@ -199,7 +199,7 @@ properties: # Properties of container group
 
 ### <a name="ipaddress-object"></a>IpAddress オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  ports | array | はい | コンテナー グループで公開されているポートのリスト。 - [Port オブジェクト](#Port) |
 |  type | enum | はい | IP がパブリック インターネットまたはプライベート VNET に公開されているかどうかを指定します。 - Public または Private |
@@ -211,9 +211,9 @@ properties: # Properties of container group
 
 ### <a name="volume-object"></a>Volume オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
-|  名前 | string | はい | ボリュームの名前。 |
+|  name | string | はい | ボリュームの名前。 |
 |  azureFile | object | いいえ | Azure File ボリューム。 - [AzureFileVolume オブジェクト](#AzureFileVolume) |
 |  emptyDir | object | いいえ | 空のディレクトリ ボリューム。 |
 |  secret | object | いいえ | シークレット ボリューム。 |
@@ -224,7 +224,7 @@ properties: # Properties of container group
 
 ### <a name="containergroupdiagnostics-object"></a>ContainerGroupDiagnostics オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  logAnalytics | object | いいえ | コンテナー グループの Log Analytics 情報。 - [LogAnalytics オブジェクト](#LogAnalytics) |
 
@@ -233,7 +233,7 @@ properties: # Properties of container group
 
 ### <a name="containergroupnetworkprofile-object"></a>ContainerGroupNetworkProfile オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  id | string | はい | ネットワーク プロファイルの識別子。 |
 
@@ -242,7 +242,7 @@ properties: # Properties of container group
 
 ### <a name="dnsconfiguration-object"></a>DnsConfiguration オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  nameServers | array | はい | コンテナー グループの DNS サーバー。 - string |
 |  searchDomains | string | いいえ | コンテナー グループ内のホスト名参照用の DNS 検索ドメイン。 |
@@ -253,7 +253,7 @@ properties: # Properties of container group
 
 ### <a name="containerproperties-object"></a>ContainerProperties オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  image | string | はい | コンテナー インスタンスの作成に使用されるイメージの名前。 |
 |  command | array | いいえ | コンテナー インスタンス内で実行する exec 形式のコマンド。 - string |
@@ -269,20 +269,20 @@ properties: # Properties of container group
 
 ### <a name="port-object"></a>Port オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  protocol | enum | いいえ | ポートに関連付けられているプロトコル。 - TCP または UDP |
-|  port | integer | はい | ポート番号。 |
+|  port | 整数 (integer) | はい | ポート番号。 |
 
 
 <a id="AzureFileVolume" />
 
 ### <a name="azurefilevolume-object"></a>AzureFileVolume オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  shareName | string | はい | ボリュームとしてマウントされる Azure ファイル共有の名前。 |
-|  readOnly | ブール値 | いいえ | ボリュームとしてマウントされている Azure ファイル共有が読み取り専用かどうかを示すフラグ。 |
+|  readOnly | boolean | いいえ | ボリュームとしてマウントされている Azure ファイル共有が読み取り専用かどうかを示すフラグ。 |
 |  storageAccountName | string | はい | Azure ファイル共有が含まれているストレージ アカウントの名前。 |
 |  storageAccountKey | string | いいえ | Azure ファイル共有にアクセスするために使用されるストレージ アカウント アクセス キー。 |
 
@@ -291,9 +291,9 @@ properties: # Properties of container group
 
 ### <a name="gitrepovolume-object"></a>GitRepoVolume オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
-|  ディレクトリ | string | いいえ | ターゲット ディレクトリの名前。 ".." が含まれていたり、".." で始まっていたりすることはできません。  "." を指定した場合、ボリューム ディレクトリは Git リポジトリになります。  それ以外の場合、指定すると、ボリュームの指定された名前のサブディレクトリに Git リポジトリが含まれます。 |
+|  directory | string | いいえ | ターゲット ディレクトリの名前。 ".." が含まれていたり、".." で始まっていたりすることはできません。  "." を指定した場合、ボリューム ディレクトリは Git リポジトリになります。  それ以外の場合、指定すると、ボリュームの指定された名前のサブディレクトリに Git リポジトリが含まれます。 |
 |  repository | string | はい | リポジトリの URL |
 |  revision | string | いいえ | 指定されたリビジョンのコミット ハッシュ。 |
 
@@ -302,7 +302,7 @@ properties: # Properties of container group
 
 ### <a name="loganalytics-object"></a>LogAnalytics オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  workspaceId | string | はい | Log Analytics のワークスペース ID |
 |  workspaceKey | string | はい | Log Analytics のワークスペース キー |
@@ -314,19 +314,19 @@ properties: # Properties of container group
 
 ### <a name="containerport-object"></a>ContainerPort オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  protocol | enum | いいえ | ポートに関連付けられているプロトコル。 - TCP または UDP |
-|  port | integer | はい | コンテナー グループ内で公開されているポート番号。 |
+|  port | 整数 (integer) | はい | コンテナー グループ内で公開されているポート番号。 |
 
 
 <a id="EnvironmentVariable" />
 
 ### <a name="environmentvariable-object"></a>EnvironmentVariable オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
-|  名前 | string | はい | 環境変数の名前。 |
+|  name | string | はい | 環境変数の名前。 |
 |  value | string | いいえ | 環境変数の値。 |
 |  secureValue | string | いいえ | セキュリティで保護された環境変数の値。 |
 
@@ -335,7 +335,7 @@ properties: # Properties of container group
 
 ### <a name="resourcerequirements-object"></a>ResourceRequirements オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  requests | object | はい | このコンテナー インスタンスのリソース要求。 - [ResourceRequests オブジェクト](#ResourceRequests) |
 |  制限 | object | いいえ | このコンテナー インスタンスのリソース制限。 - [ResourceLimits オブジェクト](#ResourceLimits) |
@@ -345,33 +345,33 @@ properties: # Properties of container group
 
 ### <a name="volumemount-object"></a>VolumeMount オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
-|  名前 | string | はい | ボリューム マウントの名前。 |
+|  name | string | はい | ボリューム マウントの名前。 |
 |  mountPath | string | はい | ボリュームをマウントする必要があるコンテナー内のパス。 コロン (:) を含めることはできません。 |
-|  readOnly | ブール値 | いいえ | ボリューム マウントが読み取り専用かどうかを示すフラグ。 |
+|  readOnly | boolean | いいえ | ボリューム マウントが読み取り専用かどうかを示すフラグ。 |
 
 
 <a id="ContainerProbe" />
 
 ### <a name="containerprobe-object"></a>ContainerProbe オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  exec | object | いいえ | プローブする実行コマンド - [ContainerExec オブジェクト](#ContainerExec) |
 |  httpGet | object | いいえ | プローブする Http Get の設定 - [ContainerHttpGet オブジェクト](#ContainerHttpGet) |
-|  initialDelaySeconds | integer | いいえ | 初期遅延秒数。 |
-|  periodSeconds | integer | いいえ | 期間の秒数。 |
-|  failureThreshold | integer | いいえ | 失敗のしきい値。 |
-|  successThreshold | integer | いいえ | 成功のしきい値。 |
-|  timeoutSeconds | integer | いいえ | タイムアウト秒数。 |
+|  initialDelaySeconds | 整数 (integer) | いいえ | 初期遅延秒数。 |
+|  periodSeconds | 整数 (integer) | いいえ | 期間の秒数。 |
+|  failureThreshold | 整数 (integer) | いいえ | 失敗のしきい値。 |
+|  successThreshold | 整数 (integer) | いいえ | 成功のしきい値。 |
+|  timeoutSeconds | 整数 (integer) | いいえ | タイムアウト秒数。 |
 
 
 <a id="ResourceRequests" />
 
 ### <a name="resourcerequests-object"></a>ResourceRequests オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  memoryInGB | number | はい | このコンテナー インスタンスのメモリ要求 (GB 単位)。 |
 |  cpu | number | はい | このコンテナー インスタンスの CPU 要求。 |
@@ -382,7 +382,7 @@ properties: # Properties of container group
 
 ### <a name="resourcelimits-object"></a>ResourceLimits オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  memoryInGB | number | いいえ | このコンテナー インスタンスのメモリ制限 (GB 単位)。 |
 |  cpu | number | いいえ | このコンテナー インスタンスの CPU 制限。 |
@@ -393,7 +393,7 @@ properties: # Properties of container group
 
 ### <a name="containerexec-object"></a>ContainerExec オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  command | array | いいえ | コンテナー内で実行するコマンド。 - string |
 
@@ -402,10 +402,10 @@ properties: # Properties of container group
 
 ### <a name="containerhttpget-object"></a>ContainerHttpGet オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  path | string | いいえ | プローブするパス。 |
-|  port | integer | はい | プローブするポート番号。 |
+|  port | 整数 (integer) | はい | プローブするポート番号。 |
 |  scheme | enum | いいえ | スキーム。 - http または https |
 
 
@@ -413,13 +413,13 @@ properties: # Properties of container group
 
 ### <a name="gpuresource-object"></a>GpuResource オブジェクト
 
-|  名前 | 種類 | 必須 | 値 |
+|  名前 | Type | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
-|  count | integer | はい | GPU リソースの数。 |
+|  count | 整数 (integer) | はい | GPU リソースの数。 |
 |  sku | enum | はい | GPU リソースの SKU。 - K80、P100、V100 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアル「[YAML ファイルを使用して複数コンテナー グループをデプロイする](container-instances-multi-container-yaml.md)」を参照してください。
 

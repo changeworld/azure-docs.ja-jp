@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3d681dd06f07f6174e31b59cccf42df5dc16a1e
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68779848"
 ---
 # <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Azure Active Directory でのハイブリッド ID とは

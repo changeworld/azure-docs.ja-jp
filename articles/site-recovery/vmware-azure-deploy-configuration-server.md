@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75376292"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228979"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 

@@ -1,19 +1,18 @@
 ---
 title: Azure Containers オファーの前提条件 | Azure Marketplace
 description: Azure コンテナーを発行するための前提条件。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 2c4e5520a2055fafee586fc369c21acfa36037c6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: db2300ae827677f8902e420b136acec3da694c8d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823132"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280016"
 ---
 # <a name="container-publishing-prerequisites"></a>コンテナー発行の前提条件
 
@@ -29,11 +28,11 @@ ms.locfileid: "73823132"
 - コンテナー メタデータの使用準備ができていること。 たとえば、完全に網羅されているわけではない次のような一覧です。
   - タイトル
   - (HTML 形式) での説明
-  - PNG 形式で次の固定画像サイズのロゴ画像:40 x 40 ピクセル、90 x 90 ピクセル、115 x 115 ピクセル、255 x 115 ピクセル。
+  - ロゴ イメージ (PNG 形式のもの) と、以下の固定イメージ サイズのロゴ: 40x40 ピクセル、90x90 ピクセル、115x115 ピクセル、255x115 ピクセル。
 - "*利用規約*" と "*プライバシー ポリシー*" に関する声明
 - コンテナー ソリューションのドキュメント
 - サポートの連絡先
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-まだ完了していない場合は、[コンテナー オファーを作成](./cpp-create-offer.md)する前に[コンテナーの技術資産を作成](./cpp-create-technical-assets.md)する必要があります。  
+まだ完了していない場合は、[コンテナー オファーを作成](./cpp-create-technical-assets.md)する前に[コンテナーの技術資産を作成](./cpp-create-offer.md)する必要があります。  

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 380b0be4e4e4b19d16cb611b0b472294339f2199
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386087"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>XPath で環境変数としてロール構成設定を公開する
@@ -116,7 +116,7 @@ ms.locfileid: "75386087"
 | コード |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Port; |
 
 ## <a name="example"></a>例
-[@emulated xpath 値](#app-running-in-emulator)に設定された `TestIsEmulated` という環境変数でスタートアップ タスクを作成する worker ロールの例を次に示します。 
+`TestIsEmulated`[ xpath 値@emulatedに設定された ](#app-running-in-emulator) という環境変数でスタートアップ タスクを作成する worker ロールの例を次に示します。 
 
 ```xml
 <WorkerRole name="Role1">

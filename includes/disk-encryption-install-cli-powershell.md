@@ -9,10 +9,10 @@ ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
 ms.openlocfilehash: 05794a046fdcb15a91145a75717a6a454d15a8da
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72511493"
 ---
 Azure Disk Encryption は、[Azure CLI](/cli/azure) と [Azure PowerShell](/powershell/azure/new-azureps-module-az) を使用して、有効にして管理することができます。 そのためには、ツールをローカルにインストールし、Azure サブスクリプションに接続する必要があります。

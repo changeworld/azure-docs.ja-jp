@@ -7,10 +7,10 @@ ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79082814"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>チュートリアル:Azure Monitor でのメトリック グラフの作成

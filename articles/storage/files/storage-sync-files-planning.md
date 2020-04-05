@@ -8,18 +8,18 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598257"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228283"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
 
 - **Azure ファイル共有を直接マウントする**:Azure Files では SMB アクセスが提供されるため、Windows、macOS、および Linux で使用可能な標準的な SMB クライアントを使用して、オンプレミスまたはクラウドで Azure ファイル共有をマウントすることができます。 Azure ファイル共有はサーバーレスであるため、運用環境でデプロイするシナリオでは、ファイル サーバーや NAS デバイスを管理する必要ありません。 つまり、ソフトウェアの修正プログラムを適用したり、物理ディスクを交換したりする必要はありません。 
 
-- **Azure File Sync を使用したオンプレミスでの Azure ファイル共有のキャッシュ**:Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、および互換性を維持しながら、Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、オンプレミス (またはクラウド) の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 
+- **Azure File Sync を使用したオンプレミスでの Azure ファイル共有のキャッシュ**:Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持しながら、Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、オンプレミス (またはクラウド) の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 
 
 この記事では、主に Azure File Sync のデプロイに関する考慮事項について説明します。オンプレミスまたはクラウド クライアントによって直接マウントされる Azure ファイル共有のデプロイを計画するには、「[Azure Files のデプロイの計画](storage-files-planning.md)」を参照してください。
 
@@ -47,7 +47,7 @@ Azure File Sync をデプロイする場合は、次のことをお勧めしま�
 
 - 使用するストレージ同期サービスは、出来る限り最小限に抑えます。 これにより、Windows Server は一度に 1 つのストレージ同期サービスにしか登録できないため、複数のサーバー エンドポイントを含む同期グループがある場合の管理が簡単になります。 
 
-- Azure ファイル共有をデプロイする際には、ストレージ アカウントの IOPS 制限に注意してください。 ファイル共有をストレージ アカウントに 1:1 でマップするのが理想的ですが、これは、組織と Azure の両方からのさまざまな制限や制約により、必ずしも可能であるとは限りません。 1 つのストレージ アカウントに 1 つのファイル共有のみをデプロイすることができない場合は、使用頻度が高い共有と低い共有を考慮し、最もホットなファイル共有が同じストレージ アカウントに一緒に配置されないようにしてください。
+- Azure ファイル共有をデプロイする際には、ストレージ アカウントの IOPS 制限に注意してください。 ファイル共有をストレージ アカウントに 1:1 でマップするのが理想的ですが、これは、組織と Azure の両方からのさまざまな制限や制約により、実現できない場合もあります。 1 つのストレージ アカウントに 1 つのファイル共有のみをデプロイすることができない場合は、使用頻度が高い共有と低い共有を考慮し、最もホットなファイル共有が同じストレージ アカウントに一緒に配置されないようにしてください。
 
 ## <a name="windows-file-server-considerations"></a>Windows ファイル サーバーに関する考慮事項
 Windows Server で同期機能を有効にするには、Azure File Sync のダウンロード可能なエージェントをインストールする必要があります。 Azure File Sync エージェントには、2 つの主な構成要素があります。`FileSyncSvc.exe` は、サーバー エンドポイントの変更の監視と同期セッションの開始を担当するバックグラウンド Windows サービスであり、`StorageSync.sys` はクラウドを使った階層化と迅速なディザスター リカバリーを可能にするファイル システム フィルターです。  
@@ -290,8 +290,8 @@ Azure File Sync は、次のリージョンで利用できます。
 
 | Azure cloud | 地理的リージョン | Azure リージョン | リージョン コード |
 |-------------|-------------------|--------------|-------------|
-| パブリック | Asia | 東アジア | `eastasia` |
-| パブリック | Asia | 東南アジア | `southeastasia` |
+| パブリック | アジア | 東アジア | `eastasia` |
+| パブリック | アジア | 東南アジア | `southeastasia` |
 | パブリック | オーストラリア | オーストラリア東部 | `australiaeast` |
 | パブリック | オーストラリア | オーストラリア南東部 | `australiasoutheast` |
 | パブリック | ブラジル | ブラジル南部 | `brazilsouth` |

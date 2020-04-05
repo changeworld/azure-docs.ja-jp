@@ -6,13 +6,13 @@ ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
-ms.custom: seodec18
-ms.openlocfilehash: 1ef07cb55af4b9fe9f54d58bbd496789928c1cec
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: d519ae31359890430c3e0f690e51d95acfacf1ef
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74686684"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058748"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-an-app-service-app-using-cli"></a>CLI を使用してカスタム SSL 証明書を App Service アプリにバインドする
 
@@ -37,7 +37,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service プランを作成します。 |
@@ -46,7 +46,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 | [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | SSL 証明書を App Service アプリにアップロードします。 |
 | [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | アップロードした SSL 証明書を App Service アプリにバインドします。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

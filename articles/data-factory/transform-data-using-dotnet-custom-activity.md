@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439543"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229963"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 
@@ -103,7 +103,7 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | パイプラインのアクティビティの名前。     | はい      |
 | description           | アクティビティの動作を説明するテキスト。  | いいえ       |
-| 型                  | カスタム アクティビティの場合、アクティビティの種類は **Custom** です。 | はい      |
+| type                  | カスタム アクティビティの場合、アクティビティの種類は **Custom** です。 | はい      |
 | linkedServiceName     | Azure Batch にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  | はい      |
 | command               | 実行されるカスタム アプリケーションのコマンド。 アプリケーションが Azure Batch プール ノードで既に使用可能な場合は、resourceLinkedService と folderPath を省略できます。 たとえば、Windows バッチ プール ノードでネイティブでサポートされている `cmd /c dir` をコマンドとして指定できます。 | はい      |
 | resourceLinkedService | カスタム アプリケーションが格納されているストレージ アカウントへの Azure Storage のリンクされたサービス。 | いいえ &#42;       |
@@ -324,7 +324,7 @@ Activity Error section:
 
 カスタム アクティビティから *SecureString* 型のプロパティにアクセスするには、.EXE と同じフォルダーに配置されている `activity.json` ファイルを読み取り、JSON を逆シリアル化した後、JSON プロパティにアクセスします (extendedProperties => [propertyName] => value)。
 
-## <a name="compare-v2-v1"></a> v2 カスタム アクティビティとバージョン 1 (カスタム) DotNet アクティビティを比較する
+## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a> v2 カスタム アクティビティとバージョン 1 (カスタム) DotNet アクティビティを比較する
 
 Azure Data Factory バージョン 1 では、`IDotNetActivity` インターフェイスの `Execute` メソッドを実装するクラスを含む .Net クラス ライブラリ プロジェクトを作成して (カスタム) DotNet アクティビティを実装します。 (カスタム) DotNet アクティビティの JSON ペイロードのリンクされたサービス、データセット、および拡張プロパティは、厳密に型指定されたオブジェクトとして Execution メソッドに渡されます。 バージョン 1 のビヘイビアーの詳細については、[バージョン 1 の (カスタム) DotNet](v1/data-factory-use-custom-activities.md) に関するページを参照してください。 この実装のため、バージョン 1 DotNet アクティビティ コードは、.NET Framework 4.5.2 をターゲットにする必要があります。 バージョン 1 の DotNet アクティビティは、Windows ベースの Azure Batch プールのノードで実行する必要があります。
 

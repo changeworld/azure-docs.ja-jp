@@ -4,10 +4,10 @@ description: 継続的インテグレーション パイプラインで Azure De
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: 281565cec5ee947781ab8ee9f62a00e01f9ababb
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79037034"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>チュートリアル:Azure Kubernetes Service での Jenkins 用の Azure Dev Spaces プラグインの使用 

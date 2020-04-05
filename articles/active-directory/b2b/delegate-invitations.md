@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7fb10863334392b207c7cfd2172dc9260cf15e2d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272897"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する
@@ -61,7 +61,7 @@ Azure AD B2B コラボレーションでは、テナント管理者が次の招�
 Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMemberEmailAddress <RoleMemberEmailAddress>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 

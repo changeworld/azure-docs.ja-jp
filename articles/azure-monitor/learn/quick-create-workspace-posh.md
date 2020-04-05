@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
 ms.openlocfilehash: a2765aaf36aa5f7e541e0ee7fb3178246d2cca5d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77659902"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Azure PowerShell を使用して Log Analytics ワークスペースを作成する

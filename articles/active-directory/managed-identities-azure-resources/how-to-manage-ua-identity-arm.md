@@ -16,11 +16,11 @@ ms.date: 12/10/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 244965da4e22c0808fd1ea9088aa182b27eaf484
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430014"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227747"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Azure Resource Manager を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する
 

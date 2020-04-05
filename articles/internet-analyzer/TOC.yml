@@ -10,7 +10,7 @@
       href: internet-analyzer-create-test-portal.md
     - name: CLI を使用した Internet Analyzer テストの作成
       href: internet-analyzer-cli.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: クライアントの埋め込み
       href: internet-analyzer-embed-client.md

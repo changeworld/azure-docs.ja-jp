@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277170"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228243"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 

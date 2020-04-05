@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 4d9f6e48722f01970a90a3a1d8d8b58b5d939774
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658270"
 ---
 # <a name="interactive-workbooks"></a>対話型ブック
@@ -121,7 +121,7 @@ ms.locfileid: "77658270"
     1. 名前: `ShowDetails`
     2. [パラメーターの種類]\: [`Drop down`ドロップ ダウン]
     3. [必須ですか?]\: `checked`オン
-    4. [データの取得元]\: [クエリ]
+    4. [データの取得元]\: [クエリ]`JSON`
     5. [JSON 入力]\: `["Yes", "No"]`
     6. 保存して変更をコミットします。
 3. パラメーター値を [`Yes`] に設定します

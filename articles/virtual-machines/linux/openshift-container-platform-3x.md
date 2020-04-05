@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 615d9a3c5c359174ef15028e82044a85da0dd733
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75561288"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>OpenShift Container Platform 3.11 を Azure へデプロイする
@@ -282,7 +282,7 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 | `enableAzure` | Azure Cloud Provider を有効にします | true <br> false | true |
 | `aadClientId` | Azure Active Directory のクライアント ID。サービス プリンシパル用のアプリケーション ID とも呼ばれます |  |  |
 | `domainName` | 使用するカスタム ドメインの名前 (該当する場合)。 完全なプライベート クラスターをデプロイしない場合は、"none" に設定します |  | なし |
-| `masterClusterDnsType` | OpenShift Web コンソールのドメインの種類。 'default' では、マスター インフラ パブリック IP の DNS ラベルが使用されます。 'custom' を使用して独自の名前を定義できます | 既定値 (default) <br> custom | 既定値 (default) |
+| `masterClusterDnsType` | OpenShift Web コンソールのドメインの種類。 'default' では、マスター インフラ パブリック IP の DNS ラベルが使用されます。 'custom' を使用して独自の名前を定義できます | default <br> custom | default |
 | `masterClusterDns` | `masterClusterDnsType` に 'custom' を選択した場合に、OpenShift Web コンソールへのアクセスに使用するカスタム DNS 名 |  | console.contoso.com |
 | `routingSubDomainType` | 'nipio' に設定した場合、`routingSubDomain` では nip.io が使用されます。  ルーティングに使用する独自のドメインがある場合は、'custom' を使用します | nipio <br> custom | nipio |
 | `routingSubDomain` | `routingSubDomainType` に 'custom' を選択した場合に、ルーティングに使用するワイルドカード DNS 名 |  | apps.contoso.com |

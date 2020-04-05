@@ -1,19 +1,18 @@
 ---
 title: パートナー センターで商業マーケットプレース アカウントを管理する方法
 description: パートナー センターで商業マーケットプレース アカウントを管理する方法について説明します。
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 7b7a3a0a87996358436df9f7ee4a266574c0b7db
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6d3952c38703d8102a45c4117e3c59e3fa464957
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927083"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275817"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する方法
 
@@ -115,7 +114,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 ### <a name="devices"></a>デバイス
 
-デバイス管理設定は、UWP の発行にのみ適用されます。 [詳細情報](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info)。
+デバイス管理設定は、UWP の発行にのみ適用されます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info)。
 
 ### <a name="tracking-guids"></a>[Tracking GUIDs]\(追跡 GUID\)
 
@@ -352,6 +351,6 @@ Azure Active Directory (AD) テナントは、Azure portal で設定される組
 
 注意を要する契約の更新が存在する場合、このページの最上部に "**Actions needed (処置が必要です)** " と表示されることがあります。 更新された契約に同意するには、まずリンクされている契約バージョンを読み、 **[Accept agreement]\(契約に同意する\)** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [新しい SaaS オファーを作成する](./create-new-saas-offer.md)

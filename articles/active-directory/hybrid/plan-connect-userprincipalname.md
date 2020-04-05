@@ -11,10 +11,10 @@ ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c198b329f07c5c7459f25165b2dc0a3bfa032276
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60382139"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD の UserPrincipalName の設定
@@ -105,7 +105,7 @@ Azure AD テナントのユーザー オブジェクト:
 - UserPrincipalName : us1@contoso.onmicrosoft.com
 
 
-### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>シナリオ 2:未検証の UPN サフィックス - オンプレミスの mailNickName 属性を設定
+### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>シナリオ 2: 未検証の UPN サフィックス - オンプレミスの mailNickName 属性を設定
 
 ![Scenario2](./media/plan-connect-userprincipalname/example2.png)
 
@@ -123,7 +123,7 @@ Azure AD テナントのユーザー オブジェクト:
 - MailNickName      : us4
 - UserPrincipalName : us1@contoso.onmicrosoft.com
 
-### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>シナリオ 3:未検証の UPN サフィックス - オンプレミスの userPrincipalName 属性を更新
+### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>シナリオ 3: 未検証の UPN サフィックス - オンプレミスの userPrincipalName 属性を更新
 
 ![Scenario3](./media/plan-connect-userprincipalname/example3.png)
 
@@ -142,7 +142,7 @@ Azure AD テナントのユーザー オブジェクト:
 - MailNickName      : us4
 - UserPrincipalName : us4@contoso.onmicrosoft.com
 
-### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>シナリオ 4:未検証の UPN サフィックス - プライマリ SMTP アドレスとオンプレミスの mail 属性を更新
+### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>シナリオ 4: 未検証の UPN サフィックス - プライマリ SMTP アドレスとオンプレミスの mail 属性を更新
 
 ![Scenario4](./media/plan-connect-userprincipalname/example4.png)
 
@@ -159,7 +159,7 @@ Azure AD テナントのユーザー オブジェクト:
 - MailNickName      : us4
 - UserPrincipalName : us4@contoso.onmicrosoft.com
 
-### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>シナリオ 5:検証済みの UPN サフィックス - オンプレミスの userPrincipalName 属性のサフィックスを更新
+### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>シナリオ 5: 検証済みの UPN サフィックス - オンプレミスの userPrincipalName 属性のサフィックスを更新
 
 ![Scenario5](./media/plan-connect-userprincipalname/example5.png)
 

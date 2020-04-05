@@ -6,15 +6,15 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: b8923000b0bbc75e6d96b1b27a1154ef8ff87f24
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 58683cb6eb74fcc3bc2f90245d6f76ef65bdf2e6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770715"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067922"
 ---
-# <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database for MySQL:PHP を使って接続とデータのクエリを実行する
+# <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database for MySQL: PHP を使用した接続とデータの照会
 このクイックスタートでは、[PHP](https://secure.php.net/manual/intro-whatis.php) アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、PHP を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
@@ -85,7 +85,7 @@ mysqli_close($conn);
 ?>
 ```
 
-## <a name="insert-data"></a>データを挿入する
+## <a name="insert-data"></a>データの挿入
 接続し、**INSERT** SQL ステートメントを使用してデータを挿入するには、次のコードを使用します。
 
 このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) メソッドを使用して、準備済みの INSERT ステートメントを作成した後、[mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) メソッドを使用して、挿入される列の値ごとにパラメーターをバインドします。 このコードでは、[mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) メソッドでステートメントを実行してから、[mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) メソッドでステートメントを閉じます。
@@ -226,6 +226,6 @@ mysqli_close($conn);
 ?>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [Azure Database for MySQL に SSL で接続する](howto-configure-ssl.md)

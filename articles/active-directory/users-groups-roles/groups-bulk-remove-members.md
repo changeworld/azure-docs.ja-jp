@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9d384ea4749e2d0bc7edf8df7ac0508566f2f76b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72517090"
 ---
 # <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーの一括削除 (プレビュー)
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CS
 
 ## <a name="check-removal-status"></a>削除の状態を確認する
 
-保留中のすべての一括要求の状態は、 **[一括操作の結果 (プレビュー)]** ページで確認できます。
+**[一括操作の結果 (プレビュー)]** ページでは、保留中のすべての一括要求の状態を確認できます。
 
    ![[一括操作の結果] ページに、一括要求の状態が表示されます](./media/groups-bulk-remove-members/bulk-center.png)
 
@@ -55,7 +55,7 @@ Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CS
 
 グループ メンバーの一覧を削除する各一括アクティビティは、最大 1 時間実行できます。 これにより、少なくとも 4 万人のメンバーの一覧を削除できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [グループ メンバーを一括インポートする](groups-bulk-import-members.md)
 - [グループ メンバーをダウンロードする](groups-bulk-download-members.md)

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: e7283f5e28edc6f7beaad3a2743aa155f6ea6e14
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198651"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する (クラシック)
@@ -25,7 +25,7 @@ ms.locfileid: "77198651"
 
 この記事は、クラシック デプロイ モデルで、PowerShell を使用して VPN ゲートウェイを削除するのに役立ちます。 仮想ネットワーク ゲートウェイを削除したら、ネットワーク構成ファイルを変更して、使用しなくなった要素を削除します。
 
-## <a name="connect"></a>手順 1:Azure に接続する
+## <a name="step-1-connect-to-azure"></a><a name="connect"></a>手順 1:Azure に接続する
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1.最新の PowerShell コマンドレットをインストールします。
 
@@ -46,7 +46,7 @@ ms.locfileid: "77198651"
    Add-AzureAccount
    ```
 
-## <a name="export"></a>手順 2:ネットワーク構成ファイルのエクスポートと表示
+## <a name="step-2-export-and-view-the-network-configuration-file"></a><a name="export"></a>手順 2:ネットワーク構成ファイルのエクスポートと表示
 
 コンピューターにディレクトリを作成し、ネットワーク構成ファイルをそのディレクトリにエクスポートします。 このファイルを使用して、現在の構成情報を表示するだけでなく、ネットワーク構成を変更することもできます。
 
@@ -58,7 +58,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 
 テキスト エディターでファイルを開き、クラシック VNet の名前を確認します。 Azure Portal で VNet を作成するときには、Azure で使用される完全名はポータルには表示されません。 たとえば、Azure Portal に "ClassicVNet1" という名前で表示されている VNet は、ネットワーク構成ファイルではかなり長い名前である可能性があります。 名前は次のように表示されます。"Group ClassicRG1 ClassicVNet1"。 仮想ネットワーク名は、 **'VirtualNetworkSite name ='** と示されています。 PowerShell コマンドレットを実行するときは、ネットワーク構成ファイルの名前を使用します。
 
-## <a name="delete"></a>手順 3:仮想ネットワーク ゲートウェイの削除
+## <a name="step-3-delete-the-virtual-network-gateway"></a><a name="delete"></a>手順 3:仮想ネットワーク ゲートウェイの削除
 
 仮想ネットワーク ゲートウェイを削除すると、そのゲートウェイ経由での VNet への接続がすべて切断されます。 VNet に接続されている P2S クライアントがある場合、警告なしに切断されます。
 
@@ -74,11 +74,11 @@ Remove-AzureVNetGateway -VNetName "Group ClassicRG1 ClassicVNet1"
 Status : Successful
 ```
 
-## <a name="modify"></a>手順 4:ネットワーク構成ファイルの変更
+## <a name="step-4-modify-the-network-configuration-file"></a><a name="modify"></a>手順 4:ネットワーク構成ファイルの変更
 
 仮想ネットワーク ゲートウェイを削除したときに、コマンドレットではネットワーク構成ファイルは変更されません。 構成ファイルを変更して、使用されなくなった要素を削除する必要があります。 以下のセクションは、ダウンロードしたネットワーク構成ファイルを変更する際に役立ちます。
 
-### <a name="lnsref"></a>ローカル ネットワーク サイトの参照
+### <a name="local-network-site-references"></a><a name="lnsref"></a>ローカル ネットワーク サイトの参照
 
 サイトの参照情報を削除するには、**ConnectionsToLocalNetwork/LocalNetworkSiteRef** の構成を変更します。 ローカル サイトの参照を削除すると、Azure によってトンネルが削除されます。 作成済みの構成によっては、**LocalNetworkSiteRef** が表示されない場合があります。
 
@@ -101,7 +101,7 @@ Status : Successful
  </Gateway>
 ```
 
-### <a name="lns"></a>ローカル ネットワーク サイト
+### <a name="local-network-sites"></a><a name="lns"></a>ローカル ネットワーク サイト
 
 使用しなくなったすべてのローカル サイトを削除します。 作成済みの構成により、**LocalNetworkSite** が表示されない可能性があります。
 
@@ -135,7 +135,7 @@ Status : Successful
  </LocalNetworkSites>
 ```
 
-### <a name="clientaddresss"></a>クライアントの AddressPool
+### <a name="client-addresspool"></a><a name="clientaddresss"></a>クライアントの AddressPool
 
 VNet に P2S 接続していた場合、**VPNClientAddressPool** があります。 削除した仮想ネットワーク ゲートウェイに対応するクライアント アドレス プールを削除します。
 
@@ -156,7 +156,7 @@ VNet に P2S 接続していた場合、**VPNClientAddressPool** があります
  </Gateway>
 ```
 
-### <a name="gwsub"></a>GatewaySubnet
+### <a name="gatewaysubnet"></a><a name="gwsub"></a>GatewaySubnet
 
 VNet に対応する **GatewaySubnet** を削除します。
 
@@ -181,7 +181,7 @@ VNet に対応する **GatewaySubnet** を削除します。
  </Subnets>
 ```
 
-## <a name="upload"></a>手順 5: ネットワーク構成ファイルのアップロード
+## <a name="step-5-upload-the-network-configuration-file"></a><a name="upload"></a>手順 5: ネットワーク構成ファイルのアップロード
 
 変更を保存し、ネットワーク構成ファイルを Azure にアップロードします。 必要に応じて、ファイル パスを環境に合わせて変更してください。
 

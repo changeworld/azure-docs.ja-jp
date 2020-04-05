@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.openlocfilehash: 4061997aa2efbae250b30fc58cef06b1249c2b8f
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74091294"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>2 つの仮想ネットワークのピアリングのスクリプト サンプル
@@ -52,7 +52,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 | [Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering) | 2 つの仮想ネットワーク間のピアリングを作成します。  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

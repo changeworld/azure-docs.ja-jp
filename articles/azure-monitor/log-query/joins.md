@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670204"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの結合
@@ -82,7 +82,7 @@ _kind_ 引数で結合の種類を指定します。 次の表で説明するよ
 | 結合の種類 | 説明 |
 |:---|:---|
 | innerunique | これは既定の結合モードです。 最初に左側のテーブルで一致する列の値が検索され、重複する値が削除されます。  次に一意の値のセットが、右側のテーブルと照合されます。 |
-| inner | 結果には、両方のテーブルの一致するレコードのみが含まれます。 |
+| 内部 (inner) | 結果には、両方のテーブルの一致するレコードのみが含まれます。 |
 | leftouter | 結果には、左側のテーブルのすべてのレコードと、右側のテーブルの一致するレコードが含まれます。 一致しない出力プロパティには、null 値が含まれます。  |
 | leftanti | 結果には、右側との一致が存在しない左側のレコードが含まれます。 結果テーブルには、左側のテーブルの列のみが含まれます。 |
 | leftsemi | 結果には、右側との一致が存在する左側のレコードが含まれます。 結果テーブルには、左側のテーブルの列のみが含まれます。 |

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 433c6b7d70cea9406b67d65e23cc357939cb5aa0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61437278"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight の Hive と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス
@@ -31,7 +31,7 @@ ms.locfileid: "61437278"
 * **HDInsight での Hive の実行**。  HDInsight の Hive ジョブを実行する方法については、[HDInsight での Hive の使用](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)に関する記事を参照してください。
 * **Data Lake Storage Gen1 のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、[Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)を参照してください。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 Data Lake Storage Gen1 のパフォーマンスを向上するためのチューニングに重要な設定を次に示します。
 
@@ -59,7 +59,7 @@ Data Lake Storage Gen1 のパフォーマンスを向上するためのチュー
 
 I/O 集中型のワークロードでは、Tez コンテナーのサイズの削減による並列処理の増加からメリットを得ることができます。 これにより、コンテナーの数が増え、コンカレンシーが高まります。  ただし、一部の Hive クエリでは、大量のメモリ が必要です (例: MapJoin)。  タスクに十分なメモリがない場合は、実行時にメモリ不足例外が発生します。  メモリ不足例外が発生した場合は、メモリを増やす必要があります。   
 
-実行される同時実行タスクの数または並列処理は、YARN メモリの総量によって制限されます。  YARN コンテナーの数は、実行できる同時実行タスクの数を決定します。  ノードごとの YARN メモリを確認するには、Ambari を参照することができます。  YARN に移動し、[Configs (構成)] タブを表示します。YARN メモリは、このウィンドウに表示されます。  
+実行される同時実行タスクの数または並列処理は、YARN メモリの総量によって制限されます。  YARN コンテナーの数は、実行できる同時実行タスクの数を決定します。  ノードごとの YARN メモリを確認するには、Ambari を参照することができます。  YARN に移動し、[Configs] \(構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  
 
         Total YARN memory = nodes * YARN memory per node
         # of YARN containers = Total YARN memory / Tez container size

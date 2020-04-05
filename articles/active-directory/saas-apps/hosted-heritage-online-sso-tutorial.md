@@ -17,10 +17,10 @@ ms.date: 09/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d1b133d28986f31ed396d1f499940d99e64f6fbc
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71174368"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hosted-heritage-online-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Hosted Heritage Online SSO の統合
@@ -29,7 +29,7 @@ ms.locfileid: "71174368"
 
 * Hosted Heritage Online SSO にアクセスするユーザーを Azure AD で管理する。
 * ユーザーが自分の Azure AD アカウントを使用して、Hosted Heritage Online SSO に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

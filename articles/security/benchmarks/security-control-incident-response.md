@@ -9,10 +9,10 @@ ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: fb3560aa2d3fbf48ab63c4da4d3a8d69cb677209
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934414"
 ---
 # <a name="security-control-incident-response"></a>セキュリティ コントロール:インシデント対応
@@ -21,7 +21,7 @@ ms.locfileid: "75934414"
 
 ## <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 10.1 | 19.1、19.2、19.3 | Customer |
 
@@ -45,7 +45,7 @@ https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
 ## <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2:インシデントのスコアリングと優先順位付けの手順を作成する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 10.2 | 19.8 | Customer |
 
@@ -55,7 +55,7 @@ Security Center によって各アラートに重大度が割り当てられる�
 
 ## <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 10.3 | 19 | Customer |
 
@@ -67,7 +67,7 @@ https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 ## <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 10.4 | 19.5 | Customer |
 
@@ -79,7 +79,7 @@ https://docs.microsoft.com/azure/security-center/security-center-provide-securit
 
 ## <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 10.5 | 19.6 | Customer |
 
@@ -95,7 +95,7 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 ## <a name="106-automate-the-response-to-security-alerts"></a>10.6:セキュリティ アラートへの対応を自動化する
 
-| Azure ID | CIS ID | 担当 |
+| Azure ID | CIS IDs | 担当 |
 |--|--|--|
 | 10.6 | 19 | Customer |
 

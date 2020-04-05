@@ -14,16 +14,16 @@ ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
 ms.openlocfilehash: 1ddd245b03d8886d686daba34a00c63ec64ffb07
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034781"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>仮想マシンのライフサイクルと状態
 
 [!INCLUDE [virtual-machines-common-states-lifecycle](../../../includes/virtual-machines-common-states-lifecycle.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VM の監視について詳しくは、「[Azure で仮想マシンを監視する方法](monitor.md)」をご覧ください。

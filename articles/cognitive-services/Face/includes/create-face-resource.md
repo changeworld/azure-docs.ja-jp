@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
 ms.openlocfilehash: 3886777b283af35e84683480a59097584b537fea
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73523304"
 ---
 ## <a name="create-an-face-resource"></a>顔リソースを作成する
@@ -21,10 +21,10 @@ ms.locfileid: "73523304"
 1. [**顔**リソースの作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)をクリックします。
 1. すべての必須設定を入力します。
 
-    |Setting|値|
+    |設定|値|
     |--|--|
-    |名前|任意の名前 (2 から 64 文字)|
-    |Subscription|適切なサブスクリプションを選択します|
+    |Name|任意の名前 (2 から 64 文字)|
+    |サブスクリプション|適切なサブスクリプションを選択します|
     |Location|近くにある任意の使用可能な場所を選択します|
     |価格レベル|`F0` -最小限の価格レベル|
     |リソース グループ|使用可能なリソース グループを選択します|
@@ -32,7 +32,7 @@ ms.locfileid: "73523304"
 1. **[作成]** をクリックして、リソースが作成されるまで待ちます。 作成後、リソース ページに移動します。
 1. 構成された `endpoint` と API キーを収集します。
 
-    |ポータルでの [リソース] タブ|Setting|値|
+    |ポータルでの [リソース] タブ|設定|値|
     |--|--|--|
     |**概要**|エンドポイント|エンドポイントをコピーします。 それは、`https://face.cognitiveservices.azure.com/face/v1.0` のようなものです|
-    |**キー**|API キー|2 つのキーのうちの 1 つをコピーします。 スペースやダッシュを含まない 32 文字の英数字文字列 (`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`) です。|
+    |**[キー]**|API キー|2 つのキーのうちの 1 つをコピーします。 スペースやダッシュを含まない 32 文字の英数字文字列 (`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`) です。|

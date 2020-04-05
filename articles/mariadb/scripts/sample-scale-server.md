@@ -9,10 +9,10 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 12/02/2019
 ms.openlocfilehash: 562f265cccf444740c177a41e516f9066188613e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74771637"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーの監視とスケーリングを行う
@@ -33,7 +33,7 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 ## <a name="script-explanation"></a>スクリプトの説明
 このスクリプトで使用されているコマンドを次の表にまとめました。
 
-| **コマンド** | **メモ** |
+| **コマンド** | **注** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) | データベースのホストとなる MariaDB サーバーを作成します。 |
@@ -41,7 +41,7 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 | [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) | リソースのメトリック値を一覧表示します。 |
 | [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Database for MariaDB のコンピューティングとストレージ](../concepts-pricing-tiers.md)の詳細について学習します
-- さらに他のスクリプトも試す: [Azure Database for MariaDB 用の Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- 「[Azure Database for MariaDB 用の Azure CLI サンプル](../sample-scripts-azure-cli.md)」にあるその他のスクリプトを試す
 - [Azure CLI](/cli/azure) の詳細について学習します

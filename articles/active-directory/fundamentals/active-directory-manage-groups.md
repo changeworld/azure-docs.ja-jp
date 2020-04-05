@@ -14,10 +14,10 @@ ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75768012"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Azure Active Directory グループを使用したアプリとリソース アクセスの管理
@@ -43,7 +43,7 @@ Azure AD では、1 人のユーザーまたは Azure AD のグループ全体�
 
 - **直接割り当て。** リソース所有者は、ユーザーをリソースに直接割り当てます。
 
-- **グループの割り当て。** リソース所有者は、Azure AD グループをリソースに割り当てます。これにより、グループ メンバー全員に、リソースへのアクセスが自動的に与えられます。 グループのメンバーシップは、グループ所有者とリソース所有者の両方によって管理され、どちらの所有者も、グループに対するメンバーの追加または削除を行えるようになります。 グループ メンバーの追加または削除に関する詳細については、[Azure Active Directory ポータルを使用して別のグループからグループを追加または削除する方法](active-directory-groups-membership-azure-portal.md)に関するページを参照してください。 
+- **グループの割り当て。** リソース所有者は、Azure AD グループをリソースに割り当てます。これにより、グループ メンバー全員に、リソースへのアクセスが自動的に与えられます。 グループのメンバーシップは、グループ所有者とリソース所有者の両方によって管理され、どちらの所有者も、グループに対するメンバーの追加または削除を行えるようになります。 グループ メンバーシップの追加または削除の詳細については、[Azure Active Directory ポータルを使用して別のグループからグループを追加または削除する方法](active-directory-groups-membership-azure-portal.md)に関するページを参照してください。 
 
 - **ルール ベースの割り当て。** リソース所有者は、グループを作成し、ルールを使用して、特定のリソースにどのユーザーが割り当てられるかを定義します。 ルールは、個々のユーザーに割り当てられている属性に基づきます。 リソース所有者は、リソースへのアクセスを許可するためにはどの属性と値が必要であるかを判断し、ルールを管理します。 詳細については、「[動的グループの作成と状態チェックを行う](../users-groups-roles/groups-create-rule.md)」を参照してください。
 

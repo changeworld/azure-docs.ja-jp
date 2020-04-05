@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
 ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969573"
 ---
 # <a name="troubleshoot-system-state-backup"></a>システム状態のバックアップをトラブルシューティングする

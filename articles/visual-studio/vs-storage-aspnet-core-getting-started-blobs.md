@@ -16,10 +16,10 @@ ms.date: 12/07/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ff221a32ff6c995d019b13f20ca2c3f9e2027f63
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75980726"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Azure Blob ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET Core)
@@ -131,7 +131,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 
 次の手順では、BLOB コンテナーを作成する方法を説明します。
 
-1. `ActionResult` を返す `CreateBlobContainer` と呼ばれるメソッドを追加します。
+1. `CreateBlobContainer` を返す `ActionResult` と呼ばれるメソッドを追加します。
 
     ```csharp
     public ActionResult CreateBlobContainer()
@@ -279,11 +279,11 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
   
 ## <a name="list-the-blobs-in-a-blob-container"></a>BLOB コンテナー内の BLOB を一覧表示する
 
-このセクションでは、BLOB コンテナー内の BLOB を一覧表示する方法について説明します。 サンプル コードでは、セクション「[BLOB コンテナーを作成する](#create-a-blob-container)」で作成された *test-blob-container* を参照します。
+このセクションでは、BLOB コンテナー内の BLOB を一覧表示する方法について説明します。 サンプル コードでは、セクション「*BLOB コンテナーを作成する*」で作成された [test-blob-container](#create-a-blob-container) を参照します。
 
 1. `BlobsController.cs` ファイルを開きます。
 
-1. `ActionResult` を返す `ListBlobs` と呼ばれるメソッドを追加します。
+1. `ListBlobs` を返す `ActionResult` と呼ばれるメソッドを追加します。
 
     ```csharp
     public ActionResult ListBlobs()
@@ -299,7 +299,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
    
-1. コンテナー内の BLOB を一覧表示するには、`CloudBlobContainer.ListBlobsSegmentedAsync` メソッドを使用します。 `CloudBlobContainer.ListBlobsSegmentedAsync` メソッドが `BlobResultSegment` を返します。 これには、`CloudBlockBlob`、`CloudPageBlob`、または `CloudBlobDirectory` オブジェクトにキャストできる `IListBlobItem` オブジェクトが含まれます。 次のコード スニペットでは、BLOB コンテナー内のすべての BLOB を列挙します。 各 BLOB は、その型に応じて適切なオブジェクトにキャストされます。 その名前 (`CloudBlobDirectory` の場合は URI) が一覧に追加されます。
+1. コンテナー内の BLOB を一覧表示するには、`CloudBlobContainer.ListBlobsSegmentedAsync` メソッドを使用します。 `CloudBlobContainer.ListBlobsSegmentedAsync` メソッドが `BlobResultSegment` を返します。 これには、`IListBlobItem`、`CloudBlockBlob`、または `CloudPageBlob` オブジェクトにキャストできる `CloudBlobDirectory` オブジェクトが含まれます。 次のコード スニペットでは、BLOB コンテナー内のすべての BLOB を列挙します。 各 BLOB は、その型に応じて適切なオブジェクトにキャストされます。 その名前 (`CloudBlobDirectory` の場合は URI) が一覧に追加されます。
 
     ```csharp
     List<string> blobs = new List<string>();
@@ -394,7 +394,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 
 ## <a name="download-blobs"></a>BLOB をダウンロードする
 
-このセクションでは、BLOB をダウンロードする方法について説明します。 BLOB はローカル ストレージに保存するか、その内容を文字列に読み取ることができます。 サンプル コードでは、セクション「[BLOB コンテナーを作成する](#create-a-blob-container)」で作成された *test-blob-container* を参照します。
+このセクションでは、BLOB をダウンロードする方法について説明します。 BLOB はローカル ストレージに保存するか、その内容を文字列に読み取ることができます。 サンプル コードでは、セクション「*BLOB コンテナーを作成する*」で作成された [test-blob-container](#create-a-blob-container) を参照します。
 
 1. `BlobsController.cs` ファイルを開きます。
 

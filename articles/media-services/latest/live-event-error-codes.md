@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: juliako
 ms.openlocfilehash: f9067562f67190b8bc04392f33078d4d3262f986
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77654581"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services ライブ イベント エラー コード

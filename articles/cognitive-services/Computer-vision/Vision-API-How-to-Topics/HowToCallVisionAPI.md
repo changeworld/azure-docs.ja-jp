@@ -12,10 +12,10 @@ ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72177065"
 ---
 # <a name="call-the-computer-vision-api"></a>Computer Vision API を呼び出す
@@ -80,7 +80,7 @@ Computer Vision API の呼び出しを実行する基本的な方法は、画像
 
 特定の画像について、次のいずれかのオプションを使用してタグと説明を取得します。
 
-### <a name="option-1-get-a-list-of-tags-and-a-description"></a>オプション 1:タグの一覧と説明を取得する
+### <a name="option-1-get-a-list-of-tags-and-a-description"></a>オプション 1: タグの一覧と説明を取得する
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
@@ -121,7 +121,7 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 
 ## <a name="get-domain-specific-analysis-celebrities"></a>ドメイン固有の分析 (有名人) を取得する
 
-### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>オプション 1:スコープされた分析 - 特定のモデルのみを分析する
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>オプション 1: スコープされた分析 - 特定のモデルのみを分析する
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.1/models/celebrities/analyze
 var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
@@ -177,7 +177,7 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?details=cele
 }
 ```
 
-フィールド | 種類 | コンテンツ
+フィールド | Type | コンテンツ
 ------|------|------|
 Tags  | `object` | タグの配列の最上位オブジェクト。
 tags[].Name | `string`  | タグ分類子からのキーワード。
@@ -189,7 +189,7 @@ description.captions[].confidence   | `number`  | 語句の信頼度スコア。
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>ドメイン固有モデルの JSON 出力を取得して解釈する
 
-### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>オプション 1:スコープされた分析 - 特定のモデルのみを分析する
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>オプション 1: スコープされた分析 - 特定のモデルのみを分析する
 
 次の例に示すように、出力はタグの配列になります。
 
@@ -239,7 +239,7 @@ description.captions[].confidence   | `number`  | 語句の信頼度スコア。
 
 categories フィールドは、元の分類内の[86 カテゴリ](../Category-Taxonomy.md)の 1 つまたは複数の一覧です。 アンダースコアで終わるカテゴリは、そのカテゴリとその子 (たとえば、有名人モデルでは "people_" と "people_group") に一致します。
 
-フィールド   | 種類  | コンテンツ
+フィールド   | Type  | コンテンツ
 ------|------|------|
 categories | `object`   | 最上位レベルのオブジェクト。
 categories[].name    | `string` | 86 カテゴリ分類リストからの名前。
@@ -252,6 +252,6 @@ categories[].detail  | `object?`      | (省略可能) 詳細オブジェクト�
 
 これらのエラーは vision.analyze のエラーと同一ですが、NotSupportedModel エラー (HTTP 400) が追加されています。これは、オプション 1 とオプション 2 のどちらのシナリオでも返される可能性があります。 オプション 2 (高度な分析) では、詳細に指定されたモデルのいずれかが認識されない場合は、有効なモデルが 1 つ以上ある場合でも、API は NotSupportedModel を返します。 サポートされているモデルは、listModels を呼び出すことで確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 REST API を使用するには、[Computer Vision API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)を参照してください。

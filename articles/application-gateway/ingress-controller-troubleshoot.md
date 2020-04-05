@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: a64a9ce5e080308674893273e90a0e83686e339e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73795511"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>イングレス コントローラーに関する一般的な質問または問題のトラブルシューティング
@@ -82,7 +82,7 @@ EOF
 
 AKS クラスターにアプリが正常にデプロイされると、新しいポッド、サービス、およびイングレスが作成されます。
 
-[Cloud Shell](https://shell.azure.com/) `kubectl get pods -o wide` を使用して、ポッドの一覧を取得します。
+[Cloud Shell](https://shell.azure.com/)`kubectl get pods -o wide` を使用して、ポッドの一覧を取得します。
 "test-agic-app-pod" という名前のポッドが作成されているはずです。 それには IP アドレスが割り当てられます。 このアドレスは、AKS で使用される Application Gateway の VNET 内にある必要があります。
 
 ![ポッド](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
@@ -228,7 +228,7 @@ AGIC が想定どおりに機能するには、次のものが必要です。
   - ブラウザーでは [Kubernetes Web UI (ダッシュボード)](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) を使用します
 
 
-## <a name="logging-levels"></a>ログ レベル
+## <a name="logging-levels"></a>ログ記録のレベル
 
 AGIC には、3 つのログ記録レベルがあります。 レベル 1 は既定で、ログ行数は最小限になります。
 一方、レベル 5 では、ARM に適用された構成のサニタイズ済みコンテンツを含むすべてのログが表示されます。

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670544"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234327"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor での Windows および Linux のパフォーマンス データ ソース
 Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Azure Monitor は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。

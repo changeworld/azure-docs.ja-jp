@@ -16,10 +16,10 @@ ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77185632"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ContractSafe Saml2 SSO の統合
@@ -93,7 +93,7 @@ ContractSafe Saml2 SSO で Azure AD SSO を構成してテストするには、�
 
 1. 既定の属性に加えて、ContractSafe Saml2 SSO アプリケーションでは、その他にいくつかの属性が SAML 応答で返されることが想定されています。 これらの属性は値が事前に設定されますが、要件に従ってそれらの値を確認することができます。 以下に示したのは、追加の属性の一覧です。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------| --------------- |
     | emailname | user.userprincipalname |
     | email | user.onpremisesuserprincipalname |
@@ -116,7 +116,7 @@ ContractSafe Saml2 SSO で Azure AD SSO を構成してテストするには、�
    1. **[名前]** フィールドに「`B.Simon`」と入力します。  
    1. **[ユーザー名]** フィールドに、`username@companydomain.extension` 形式でメール アドレスを入力します。 たとえば `B.Simon@contoso.com` です。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-   1. **作成** を選択します。
+   1. **［作成］** を選択します
 
 ## <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

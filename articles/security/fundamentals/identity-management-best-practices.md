@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
 ms.openlocfilehash: 52ef3a9b1df058d5d2e954b424094f9dbaeba15b
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73053336"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
@@ -99,7 +99,7 @@ Active Directory フェデレーション サービス (AD FS) または他の I
 オンプレミスの ID とクラウドの ID を統合していない組織では、アカウント管理の際により多くのオーバーヘッドが発生する可能性があります。 このオーバーヘッドによって、ミスやセキュリティ違反の可能性が高まります。
 
 > [!Note]
-> 重要なアカウントが存在するディレクトリ、および使用される管理者ワークステーションを新しいクラウド サービスまたは既存のプロセスのどちらで管理するかを、選択する必要があります。 既存の管理および ID プロビジョニング プロセスを使用すると、一部のリスクを軽減できますが、攻撃者がオンプレミスのアカウントを侵害してクラウドにピボットするリスクが発生する可能性もあります。 異なるロールには異なる戦略を使用する場合もあります (たとえば、IT 管理者と部署管理者など)。 2 つのオプションがあります。 1 番目のオプションは、オンプレミスの Active Directory インスタンスと同期されない Azure AD アカウントを作成することです。 管理ワークステーションを Azure AD に参加させると、Microsoft Intune を使用して管理や修正プログラムの適用を行うことができます。 2 番目のオプションは、オンプレミスの Active Directory インスタンスに同期することによって、既存の管理者アカウントを使用することです。 管理とセキュリティに Active Directory ドメインの既存のワークステーションを使用します。
+> 重要なアカウントが存在するディレクトリ、および使用される管理者ワークステーションを新しいクラウド サービスまたは既存のプロセスのどちらで管理するかを、選択する必要があります。 既存の管理および ID プロビジョニング プロセスを使用すると、一部のリスクを軽減できますが、攻撃者がオンプレミスのアカウントを侵害してクラウドにピボットするリスクが発生する可能性もあります。 異なるロールには異なる戦略を使用する場合もあります (たとえば、IT 管理者と部署管理者など)。 この場合、2 つの選択肢があります。 1 番目のオプションは、オンプレミスの Active Directory インスタンスと同期されない Azure AD アカウントを作成することです。 管理ワークステーションを Azure AD に参加させると、Microsoft Intune を使用して管理や修正プログラムの適用を行うことができます。 2 番目のオプションは、オンプレミスの Active Directory インスタンスに同期することによって、既存の管理者アカウントを使用することです。 管理とセキュリティに Active Directory ドメインの既存のワークステーションを使用します。
 
 ## <a name="manage-connected-tenants"></a>接続済みテナントを管理する
 セキュリティ組織では、リスクを評価し、組織のポリシーおよび規制の要件に従っているかどうかを判断するための、可視性が必要です。 セキュリティ組織が、運用環境とネットワークに ([Azure ExpressRoute](../../expressroute/expressroute-introduction.md) または[サイト間 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) 介して) 接続されているすべてのサブスクリプションに対する可視化を備えていることを、確認する必要があります。 Azure AD の[グローバル管理者/社内管理者](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions)は、自分のアクセス権を[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールに昇格させて、環境に接続されているすべてのサブスクリプションとマネージド グループを見ることができます。
@@ -144,8 +144,8 @@ ID セキュリティ スコアは、セキュリティ対策を客観的に測�
 
 複数のテナントがある場合、またはユーザーが[自分のパスワードをリセット](../../active-directory/user-help/active-directory-passwords-update-your-own-password.md)できるようにする場合は、適切なセキュリティ ポリシーを使用して不適切な使用を防止することが重要です。
 
-**ベスト プラクティス**: ユーザーに対してパスワード リセットのセルフサービス (SSPR) を設定します。  
-**詳細**: Azure AD の[パスワード リセットのセルフサービス](/azure/active-directory-b2c/active-directory-b2c-reference-sspr)機能を使用します。
+**ベスト プラクティス**: ユーザーに対してセルフサービス パスワード リセット (SSPR) を設定します。  
+**詳細**: Azure AD の[セルフサービス パスワード リセット ](/azure/active-directory-b2c/active-directory-b2c-reference-sspr)機能を使用します。
 
 **ベスト プラクティス**: SSPR が実際に使用されているかどうか、またはその使用方法を監視します。  
 **詳細**: Azure AD の[パスワード リセット登録アクティビティ レポート](/azure/active-directory/active-directory-passwords-get-insights)を使用して、登録しているユーザーを監視します。 Azure AD で提供されるレポート機能によって、質問に対する答えをあらかじめ用意されたレポートから得ることができます。 適切にライセンスを付与されている場合は、カスタム クエリを作成することもできます。

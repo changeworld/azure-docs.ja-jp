@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919313"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Azure Media Analytics での顔と感情の検出
@@ -55,7 +55,7 @@ ms.locfileid: "77919313"
 
 検出されて追跡される顔に対しては、画像内での顔の位置を示す座標 (左端、上端、幅、高さ、ピクセル単位) と、追跡対象の個人を識別する顔 ID 番号が返されます。 顔 ID 番号は、前向きの顔が失われたりフレーム内で重なったりするとリセットされる場合があり、同じ顔に複数の ID が割り当てられる可能性があります。
 
-## <a id="output_elements"></a>出力 JSON ファイルの要素
+## <a name="elements-of-the-output-json-file"></a><a id="output_elements"></a>出力 JSON ファイルの要素
 
 [!INCLUDE [media-services-analytics-output-json](../../../includes/media-services-analytics-output-json.md)]
 

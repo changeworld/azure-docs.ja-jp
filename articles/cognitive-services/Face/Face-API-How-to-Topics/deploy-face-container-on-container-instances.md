@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
 ms.openlocfilehash: 4f8a08697443ec6920b3fa73de19a950e54e7f40
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76716245"
 ---
 # <a name="deploy-the-face-container-to-azure-container-instances"></a>Azure Container Instances に Face コンテナーをデプロイする

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: labrenne
 ms.openlocfilehash: 098ccf999391412520989c4ec2433fd73bc0a72d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77017226"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールの計算ノードへのリモート アクセスを構成する/無効にする

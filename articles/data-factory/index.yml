@@ -13,10 +13,10 @@ metadata:
   ms.date: 10/02/2019
   monikerRange: ''
   ms.openlocfilehash: fc85ae8cc6dcb2d5d04a6cbd7f79eb03470a58fb
-  ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/22/2019
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "74321747"
 landingContent:
 - title: Azure Data Factory について
@@ -39,7 +39,7 @@ landingContent:
       url: https://techcommunity.microsoft.com/t5/Azure-Data-Factory/bg-p/AzureDataFactoryBlog
     - text: 機能をリクエストする
       url: https://feedback.azure.com/forums/270578-azure-data-factory
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
@@ -129,7 +129,7 @@ landingContent:
       url: /azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup
     - text: SSIS IR のライセンス付きコンポーネントのインストール
       url: /azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components
-- title: セキュリティ
+- title: Security
   linkLists:
   - linkListType: concept
     links:

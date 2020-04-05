@@ -9,10 +9,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68883850"
 ---
 ## <a name="create-a-module-identity"></a>モジュール ID を作成する
@@ -35,7 +35,7 @@ ms.locfileid: "68883850"
 
     ![Azure IoT Hub .NET service SDK の現在のバージョンをインストールする](./media/iot-hub-get-started-create-module-identity-csharp/install-service-sdk.png)
 
-1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
 
    ```csharp
    using Microsoft.Azure.Devices;

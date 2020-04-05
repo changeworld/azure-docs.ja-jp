@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931865"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231603"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -40,10 +40,10 @@ OData ストアから、サポートされている任意のシンク データ 
 * **クラウド** OData フィードにアクセスするには、匿名認証、基本認証 (ユーザー名とパスワード)、または Azure Active Directory ベースの OAuth 認証を使用できます。
 * **オンプレミス** OData フィードにアクセスするには、匿名認証、基本認証 (ユーザー名とパスワード)、または Windows 認証を使用できます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 さまざまなツール/API を使用して、OData ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
 また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
@@ -182,7 +182,7 @@ OData からデータを移動する場合、OData 型から .NET 型に対す�
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
-| Edm.String |string |
+| Edm.String |String |
 | Edm.Time |TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |
 

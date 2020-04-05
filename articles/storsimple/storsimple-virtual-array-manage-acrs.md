@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1dfc1b0e0576402624bfe62de0e206d9bd7cd1b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64724416"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>StorSimple デバイス マネージャーを使用して StorSimple Virtual Array のアクセス制御レコードを管理する
@@ -53,7 +53,7 @@ Windows Server 2012 を実行する Windows ホストの IQN を取得するに�
 
 StorSimple デバイス マネージャー サービスの **[構成]** セクション内で **[アクセス制御レコード]** ブレードを使用して、ACR を追加します。 通常は、1 つの ACR を 1 つのボリュームに関連付けます。
 
-ACR とボリュームの関連付けについては、[ボリュームの追加](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume)に関するセクションをご覧ください。
+ボリュームへの ACR の関連付けについては、 [ボリュームの追加](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume)に関するセクションをご覧ください。
 
 > [!IMPORTANT]
 > ボリュームに ACR を割り当てる際は、そのボリュームが複数の非クラスター化ホストによって同時にアクセスされることのないように注意してください。ボリュームの破損を招く可能性があります。
@@ -127,7 +127,7 @@ Azure Portal の **[構成]** ページを使用して、ACR を削除します�
    
    ![警告メッセージ](./media/storsimple-virtual-array-manage-acrs/ova-del-acrs-warning.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ボリュームの追加と ACR の構成](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume)に関する詳細を確認します。
 

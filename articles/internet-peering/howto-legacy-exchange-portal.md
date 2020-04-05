@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: a40c7bbc9f37135814b7bba3396d368faf97a166
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773942"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-azure-resource-using-the-portal"></a>ポータルを使用して従来の Exchange ピアリングを Azure リソースに変換する
@@ -29,7 +29,7 @@ ms.locfileid: "75773942"
 ### <a name="sign-in-to-portal-and-select-your-subscription"></a>ポータルにサインインしてサブスクリプションを選択する
 [!INCLUDE [Account](./includes/account-portal.md)]
 
-### <a name=create></a>従来の Exchange ピアリングを変換する
+### <a name="convert-legacy-exchange-peering"></a><a name=create></a>従来の Exchange ピアリングを変換する
 
 **ピアリング** リソースを使用して、従来のピアリング接続を変換できます。
 
@@ -39,7 +39,7 @@ ms.locfileid: "75773942"
 #### <a name="configure-connections-and-submit"></a>接続を構成して送信する
 [!INCLUDE [exchange-peering-configuration](./includes/exchange-portal-configuration-legacy.md)]
 
-### <a name=get></a>Exchange ピアリングを確認する
+### <a name="verify-exchange-peering"></a><a name=get></a>Exchange ピアリングを確認する
 [!INCLUDE [peering-exchange-get-portal](./includes/exchange-portal-get.md)]
 
 ## <a name="additional-resources"></a>その他のリソース

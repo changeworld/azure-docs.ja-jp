@@ -9,10 +9,10 @@ ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: e6d61e329ba91f53b11ace4d258b35950e188dcb
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76771214"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>C++ で Azure Table Storage と Azure Cosmos DB Table API を使用する方法

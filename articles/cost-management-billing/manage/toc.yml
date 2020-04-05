@@ -83,8 +83,6 @@
       items:
         - name: Azure EA ポータルの概要
           href: ea-portal-get-started.md
-        - name: EA 課金内容を確認する
-          href: ../understand/review-enterprise-agreement-bill.md
         - name: Azure における EA のロール
           href: understand-ea-roles.md
         - name: Azure EA Portal の管理
@@ -101,7 +99,7 @@
           href: ea-portal-vm-reservations.md
         - name: Azure EA Portal のアクセスのトラブルシューティング
           href: ea-portal-troubleshoot.md
-- name: トラブルシューティング
+- name: '[トラブルシューティング]'
   items:
     - name: サブスクリプションが見つからない
       href: no-subscriptions-found.md

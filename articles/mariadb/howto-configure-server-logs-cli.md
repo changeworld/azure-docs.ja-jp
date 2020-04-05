@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: 32e73835732538813f90de5cb737429373c3762a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: f33a02ff0e287c135a7d63277cf3d8d3c0cd13d4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767383"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527658"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Azure CLI を使用して低速クエリ ログを構成してアクセスする
 Azure CLI (Azure のコマンドライン ユーティリティ) を使用して Azure Database for MariaDB の低速クエリ ログをダウンロードできます。
@@ -52,5 +52,5 @@ az mariadb server-logs list --resource-group myresourcegroup --server mydemoserv
 az mariadb server-logs download --name mysql-slow-mydemoserver-2018110800.log --resource-group myresourcegroup --server mydemoserver
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Database for MariaDB の低速クエリ ログ](concepts-server-logs.md)について学習します。

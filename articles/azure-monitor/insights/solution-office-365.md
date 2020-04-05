@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
 ms.openlocfilehash: 0018ae55ab74e691577a34a397c15355587e0fac
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663261"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)

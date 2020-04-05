@@ -9,10 +9,10 @@ ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.openlocfilehash: 9f3a13a097d7cce87aead4ec2d76ce7cbbb1a206
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75778228"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング

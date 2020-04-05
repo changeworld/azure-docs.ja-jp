@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Azure Dev Spaces を使用してアプリケーションを開発する際に、実行時またはビルド時に Kubernetes シークレットを使用する方法について説明します
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
 ms.openlocfilehash: d9dd0de348612bbb3baf5fb351c1c9af1c228c1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75438462"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Azure Dev Space を操作する場合のシークレットを管理する方法

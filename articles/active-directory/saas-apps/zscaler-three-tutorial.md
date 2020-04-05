@@ -17,10 +17,10 @@ ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b23abcf9a39ce7f6d77bc40e7143505bc68e8b72
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72554988"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zscaler Three の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72554988"
 
 * Zscaler Three にアクセスするユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントで Zscaler Three に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -146,7 +146,7 @@ Zscaler Three に対する Azure AD SSO を構成してテストするには、�
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-2. ブラウザーに拡張機能を追加した後、 **[Set up Zscaler Three]\(Zscaler Three のセットアップ\)** をクリックすると、Zscaler Three アプリケーションに移動します。 そこから、管理者資格情報を提供して Zscaler Three にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 6 が自動化されます。
+2. ブラウザーに拡張機能を追加した後、 **[Set up Zscaler Three]\(Zscaler Three のセットアップ\)** をクリックすると、Zscaler Three アプリケーションに移動します。 そこから、管理者資格情報を提供して Zscaler Three にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
 
     ![セットアップ](common/setup-sso.png)
 
@@ -178,7 +178,7 @@ Zscaler Three に対する Azure AD SSO を構成してテストするには、�
 
     g. department 属性に SAML 自動プロビジョニングを有効にするには、 **[Department Name Attribute]\(部署名属性\)** テキスト ボックスに **department** の値を入力します。
 
-    h. **[Save]** をクリックします。
+    h. **[保存]** をクリックします。
 
 6. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
@@ -199,7 +199,7 @@ Zscaler Three に対する Azure AD SSO を構成してテストするには、�
 
 3. **[接続]** タブをクリックします。   
   
-     ![接続](./media/zscaler-three-tutorial/ic769493.png "Connections")
+     ![接続](./media/zscaler-three-tutorial/ic769493.png "接続")
 
 4. **[LAN の設定]** をクリックして **[LAN の設定]** ダイアログを開きます。
 

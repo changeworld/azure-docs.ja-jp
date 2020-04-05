@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 94fdddf11acb6763ed98a4b7e17304fbde0e25dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75369713"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Azure Stream Analytics での、設定可能なしきい値に基づいたルールの処理

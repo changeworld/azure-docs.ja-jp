@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75649179"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>カスタム アクションを Azure REST API に追加する
@@ -193,6 +193,6 @@ functionValues | *いいえ* | **エンドポイント**に送信される要求
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure カスタム リソースプロバイダーの概要](overview.md)
-- [クイック スタート:Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
+- [クイック スタート: Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
 - [チュートリアル:Azure でカスタム アクションとカスタム リソースを作成する](./tutorial-get-started-with-custom-providers.md)
 - [方法: カスタム リソースを Azure REST API に追加する](./custom-providers-resources-endpoint-how-to.md)

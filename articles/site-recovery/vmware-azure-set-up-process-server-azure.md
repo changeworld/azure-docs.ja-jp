@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
 ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083951"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>フェールバックのために Azure でプロセス サーバーを設定する

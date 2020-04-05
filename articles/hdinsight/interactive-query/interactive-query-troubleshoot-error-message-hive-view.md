@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 5aa03ac3537783daef87c9e7cb7d4ec58988ea9e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895214"
 ---
 # <a name="scenario-query-error-message-not-displayed-in-apache-hive-view-in-azure-hdinsight"></a>シナリオ:Azure HDInsight の Apache Hive ビューにクエリのエラー メッセージが表示されない
@@ -30,7 +30,7 @@ Apache Hive ビューのクエリのエラー メッセージが次のように�
 
 クエリ エラーのエラー メッセージが大きすぎて、Hive ビューのメイン ページに表示できないことがあります。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 Hive_view の右上にある [通知] タブで、完全なスタックトレースとエラー メッセージを確認します。
 

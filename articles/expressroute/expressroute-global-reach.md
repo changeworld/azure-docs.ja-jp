@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: cherylmc
 ms.openlocfilehash: f574576044b7e4ddd34289b5cc45fe5ca353f180
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77538506"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach

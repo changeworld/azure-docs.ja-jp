@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 06/25/2019
 ms.custom: mvc
 ms.openlocfilehash: ed78d3dd4e6fbde10c69403cc3dcff24072dc676
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75358055"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
@@ -58,7 +58,7 @@ sku-name | GP_Gen5_2 | SKU の名前。 省略表現の {価格レベル}\_{コ�
 backup-retention | 7 | バックアップを保持する必要のある時間。 単位は日数です。 範囲は 7 ～ 35 です。 
 geo-redundant-backup | 無効 | このサーバーに対して geo 冗長バックアップを有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。Enabled、Disabled
 location | westus | サーバーの Azure の場所。
-ssl-enforcement | 有効 | このサーバーに対して ssl を有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。Enabled、Disabled
+ssl-enforcement | Enabled | このサーバーに対して ssl を有効にする必要があるかどうかどうか。 使用できる値は以下の通りです。Enabled、Disabled
 storage-size | 51200 | サーバーのストレージ容量 (単位はメガバイト)。 有効な storage-size は最小 5,120 MB で、1,024 MB ずつ増加します。 ストレージ サイズの制限の詳細については、[価格レベル](./concepts-pricing-tiers.md)についてのドキュメントを参照してください。 
 version | 9.6 | PostgreSQL のメジャー バージョン。
 admin-user | myadmin | 管理者ログインのユーザー名。 これを **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** にすることはできません。
@@ -178,7 +178,7 @@ pgAdmin は PostgreSQL で使用されるオープンソース ツールです�
 
    ![[接続] タブ](./media/quickstart-create-server-database-azure-cli/10-pgadmin-create-server.png)
 
-    pgAdmin パラメーター |値|説明
+    pgAdmin パラメーター |Value|説明
     ---|---|---
     ホスト名/アドレス | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。 Use the fully qualified domain name ( **\*.postgres.database.azure.com**) as shown in the example. サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
     Port | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 

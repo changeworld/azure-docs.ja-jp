@@ -8,17 +8,17 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 84d1ca9f8a0a67a4e0459bc78e71d9118451e75b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71349301"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>文字列関数 (Azure Cosmos DB)
 
 文字列関数を使用すると、Azure Cosmos DB 内の文字列に対して操作を実行できます。
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>関数
 
 次のスカラー関数は、文字列入力値に対して演算を実行し、文字列、数値またはブール値を返します。
   
@@ -34,7 +34,7 @@ ms.locfileid: "71349301"
 |[TRIM](sql-query-trim.md)|[UPPER](sql-query-upper.md)||
   
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)

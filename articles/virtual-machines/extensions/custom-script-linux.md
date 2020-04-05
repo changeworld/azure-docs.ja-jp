@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 2190bfd1a260d7b866fedc1f7c699faef2431a93
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b75b232c048a1ea49256b12ce1b65c4bd87a1cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246161"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535444"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v2 を使用する
 カスタム スクリプト拡張機能バージョン 2 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 
@@ -129,7 +129,7 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 * `apiVersion`:最新の apiVersion は、[リソース エクスプローラー](https://resources.azure.com/)を使用するか、Azure CLI から次のコマンドを使用して見つけることができます`az provider list -o json`
 * `skipDos2Unix`: (省略可能、ブール値) スクリプトベースのファイル URL またはスクリプトの dos2unix 変換を省略します。
 * `timestamp` (省略可能、32 ビットの整数) このフィールドは、このフィールドの値を変更することによりスクリプトの再実行をトリガーする場合のみ使用します。  任意の整数値が使用できますが、前の値と異なる必要があります。
-  * `commandToExecute`: (スクリプトが設定されていない場合は**必須**、文字列)  スクリプトの実行のエントリ ポイント。 コマンドにパスワードなどの機密情報が含まれている場合は、代わりにこのフィールドを使用します。
+* `commandToExecute`: (スクリプトが設定されていない場合は**必須**、文字列)  スクリプトの実行のエントリ ポイント。 コマンドにパスワードなどの機密情報が含まれている場合は、代わりにこのフィールドを使用します。
 * `script`: (commandToExecute が設定されていない場合は**必須**、文字列) /bin/sh によって実行される、base64 でエンコードされた (または GZip 圧縮された) スクリプト。
 * `fileUris`: (省略可能、文字列の配列) ファイルをダウンロードする URL。
 * `storageAccountName`: (省略可能、文字列) ストレージ アカウントの名前。 ストレージの資格情報を指定する場合は、すべての `fileUris` が Azure BLOB の URL である必要があります。
@@ -212,7 +212,7 @@ CustomScript では、次のアルゴリズムを使用して、スクリプト�
 
 CustomScript (バージョン 2.1 以降) では、"fileUris" 設定で指定された URL からファイルをダウンロードするための[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) がサポートされています。 これにより、ユーザーが SAS トークンやストレージ アカウント キーなどのシークレットを渡さなくとも、CustomScript で Azure Storage プライベート BLOB またはコンテナーにアクセスできるようになります。
 
-この機能を使用するには、ユーザーが、[システムによって割り当てられたか](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity)または[ユーザーが割り当てた](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) ID を CustomScript が実行されると想定される VM または VMSS に追加し、[Azure Storage コンテナーまたは BLOB にマネージド ID のアクセス権を付与する必要があります](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
+この機能を使用するには、ユーザーが、[システムによって割り当てられたか](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)または[ユーザーが割り当てた](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) ID を CustomScript が実行されると想定される VM または VMSS に追加し、[Azure Storage コンテナーまたは BLOB にマネージド ID のアクセス権を付与する必要があります](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access)。
 
 ターゲット VM/VMSS でシステムによって割り当てられた ID を使用するには、"managedidentity" フィールドを空の JSON オブジェクトに設定します。 
 
@@ -390,7 +390,8 @@ az vm extension set \
 ```
 
 次のような、拡張機能の実行を特定します。
-```text
+
+```output
 2018/04/26 17:47:22.110231 INFO [Microsoft.Azure.Extensions.customScript-2.0.6] [Enable] current handler state is: notinstalled
 2018/04/26 17:47:22.306407 INFO Event: name=Microsoft.Azure.Extensions.customScript, op=Download, message=Download succeeded, duration=167
 2018/04/26 17:47:22.339958 INFO [Microsoft.Azure.Extensions.customScript-2.0.6] Initialize extension directory
@@ -400,6 +401,7 @@ az vm extension set \
 2018/04/26 17:47:23.476151 INFO [Microsoft.Azure.Extensions.customScript-2.0.6] Enable extension [bin/custom-script-shim enable]
 2018/04/26 17:47:24.516444 INFO Event: name=Microsoft.Azure.Extensions.customScript, op=Enable, message=Launch command succeeded: bin/custom-sc
 ```
+
 注意：
 1. Enable は、コマンドの実行が開始されたときです。
 2. Download は、FileUris に指定されたスクリプト ファイルではなく、Azure からの CustomScript 拡張機能パッケージのダウンロードに関連します。
@@ -412,7 +414,8 @@ Azure スクリプト拡張機能が生成するログも、ここにありま�
 ```
 
 次のような各実行を特定します。
-```text
+
+```output
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=start
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=pre-check
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event="comparing seqnum" path=mrseq
@@ -436,6 +439,7 @@ time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=enabled
 time=2018-04-26T17:47:23Z version=v2.0.6/git@1008306-clean operation=enable seq=0 event=end
 ```
+
 ここで、
 * このログでは、Enable コマンドが開始されています。
 * 拡張機能に設定が渡されています。
@@ -450,7 +454,7 @@ az vm extension list -g myResourceGroup --vm-name myVM
 
 出力は次のテキストのようになります。
 
-```azurecli
+```output
 info:    Executing command vm extension get
 + Looking up the VM "scripttst001"
 data:    Publisher                   Name                                      Version  State

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883701"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218921"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Bing Entity API でのエンティティの検索
 
@@ -42,7 +42,7 @@ API の応答には、[SearchResponse](https://docs.microsoft.com/rest/api/cogni
 > [!NOTE]
 > エンティティの応答では複数の市場がサポートされますが、場所の応答では米国ビジネスの場所しかサポートされません。 
 
-`entities` フィールドは、[Entity](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity) オブジェクトのリストを含む [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)オブジェクトです (`value` フィールドを参照)。 リストには、1 つの主要なエンティティ、複数のあいまいさ排除エンティティ、またはその両方が含まれている場合があります。 
+`entities` フィールドは、[Entity](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) オブジェクトのリストを含む [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity)オブジェクトです (`value` フィールドを参照)。 リストには、1 つの主要なエンティティ、複数のあいまいさ排除エンティティ、またはその両方が含まれている場合があります。 
 
 主要なエンティティは、要求を満たす唯一のエンティティだと Bing が認識したときに返されます (どのエンティティが要求を満たすかに関するあいまいさはありません)。 複数のエンティティが要求を満たす可能性がある場合は、リストには複数のあいまいさ排除エンティティが含まれます。 たとえば、要求で映画シリーズの一般的なタイトルを使用している場合、リストにはあいまいさ排除エンティティが含まれる可能性が高くなります。 しかし、要求でシリーズの特定のタイトルを指定した場合、リストには 1 つの主要なエンティティが含まれる可能性が高くなります。
 
@@ -174,7 +174,7 @@ API の応答には、[SearchResponse](https://docs.microsoft.com/rest/api/cogni
 
 ## <a name="find-places"></a>場所を探す
 
-`places` フィールドは、[Place](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) オブジェクトのリストを含む [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) オブジェクトです (詳しくは、[エンティティ型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)に関する記事を参照)。 このリストには、要求を満たす 1 つまたは複数のローカル エンティティが含まれます。
+`places` フィールドは、[Place](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) オブジェクトのリストを含む [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) オブジェクトです (詳しくは、[エンティティ型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)に関する記事を参照)。 このリストには、要求を満たす 1 つまたは複数のローカル エンティティが含まれます。
 
 場所には、レストラン、ホテル、または地元企業が含まれます。 [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) フィールドには、ローカル エンティティの型を識別するためのヒントが含まれています。 リストには、Place、LocalBusiness、Restaurant などのヒントのリストが含まれています。 配列内の連続する各ヒントにより、エンティティの型が絞り込まれます。 可能な型のリストについては、[エンティティ型](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)のセクションを参照してください。
 
@@ -189,7 +189,7 @@ API の応答には、[SearchResponse](https://docs.microsoft.com/rest/api/cogni
 > [!NOTE]
 > エンティティの応答では複数の市場がサポートされますが、場所の応答では米国ビジネスの場所しかサポートされません。 
 
-*近くのレストラン*などのローカル対応エンティティ クエリでは、正確な結果を提供するためにユーザーの場所を提供する必要があります。 要求では常に X-Search-Location と X-MSEdge-ClientIP のヘッダーを使用して、ユーザーの場所を指定する必要があります。 Bing では、ユーザーの場所をクエリに使用するメリットが認められると、[QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) の `askUserForLocation` フィールドが **true** に設定されます。 
+*近くのレストラン*などのローカル対応エンティティ クエリでは、正確な結果を提供するためにユーザーの場所を提供する必要があります。 要求では常に X-Search-Location と X-MSEdge-ClientIP のヘッダーを使用して、ユーザーの場所を指定する必要があります。 Bing では、ユーザーの場所をクエリに使用するメリットが認められると、`askUserForLocation`QueryContext[ の ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) フィールドが **true** に設定されます。 
 
 ```json
 {
@@ -232,9 +232,9 @@ API の応答には、[SearchResponse](https://docs.microsoft.com/rest/api/cogni
 > [!NOTE]
 > お客様およびお客様の代理を務める第三者のいずれも、Entities API から取得したデータを Microsoft 以外のサービスまたは機能のテスト、開発、トレーニング、頒布、または提供を目的として利用、保持、保存、キャッシュ、共有、または配布することは認められません。  
 
-## <a name="data-attribution"></a>データの属性
+## <a name="data-attribution"></a>データの帰属表示
 
-Bing Entity API の応答には、第三者が所有する情報が含まれます。 お客様は、ユーザー エクスペリエンスで利用するクリエイティブ コモンズ ライセンスがあればそれを順守するなど、情報を適切に利用する責任を負います。
+Bing Entity API の応答には、第三者が所有する情報が含まれます。 お客様は、ユーザー エクスペリエンスで利用するクリエイティブ コモンズ ライセンスがあればそれを遵守するなど、情報を適切に利用する責任を負います。
 
 回答または結果に `contractualRules`、`attributions`、`provider` のいずれかのフィールドが含まれている場合、データをそれらの帰属を示す必要があります。 回答にこれらのいずれのフィールドも含まれていない場合は、属性は必要ありません。 回答に `contractualRules` フィールドと、`attributions` フィールドまたは `provider` フィールド (またはその両方) が含まれている場合は、契約上の規則を使用してデータがそれらの帰属を示す必要があります。
 
@@ -269,7 +269,7 @@ Bing Entity API の応答には、第三者が所有する情報が含まれま�
 
 契約規則に `targetPropertyName` フィールドが含まれている場合、規則は対象のフィールドにのみ適用されます。 含まれていない場合は、規則は `contractualRules` フィールドを含む親オブジェクトに適用されます。
 
-次の例では、`LinkAttribution` 規則に `targetPropertyName` フィールドが含まれているため、`description` フィールドに規則が適用されます。 特定のフィールドに適用される規則の場合、プロバイダーの Web サイトへのハイパーリンクを含む対象となるデータの直後に 1 行含める必要があります。 たとえば、説明の帰属を示すには、プロバイダーの Web サイト上のデータへのハイパーリンクを含む説明テキストの直後に 1 行含めます。このケースでは、contoso.com へのリンクを作成します。
+次の例では、`LinkAttribution` 規則に `targetPropertyName` フィールドが含まれているため、`description` フィールドに規則が適用されます。 特定のフィールドに適用される規則の場合、対象となるデータの直後に提供元の Web サイトへのハイパーリンクを含めた 1 行を追加する必要があります。 たとえば、説明の帰属を示すには、プロバイダーの Web サイト上のデータへのハイパーリンクを含む説明テキストの直後に 1 行含めます。このケースでは、contoso.com へのリンクを作成します。
 
 ```json
 "entities": {
@@ -288,33 +288,33 @@ Bing Entity API の応答には、第三者が所有する情報が含まれま�
   
 ```
 
-### <a name="license-attribution"></a>ライセンスの属性
+### <a name="license-attribution"></a>ライセンスの帰属表示
 
-契約上の規則のリストに [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#licenseattribution) 規則が含まれている場合、ライセンスが適用されるコンテンツの直後の行に通知を表示する必要があります。 `LicenseAttribution` 規則では、ライセンスが適用されるプロパティを特定するために `targetPropertyName` フィールドを使用します。
+契約規則のリストに [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#licenseattribution) 規則が含まれている場合、ライセンスが適用されるコンテンツの直後の行に通知を表示する必要があります。 `LicenseAttribution` 規則では、ライセンスが適用されるプロパティを特定するために `targetPropertyName` フィールドを使用します。
 
 `LicenseAttribution` 規則を含む例を次に示します。
 
 ![ライセンスの帰属表示](../media/cognitive-services-bing-entities-api/licenseattribution.png)
 
-表示するライセンス通知には、ライセンスに関する情報を掲載している Web サイトへのハイパーリンクを含める必要があります。 通常は、ライセンスの名前をハイパーリンクにします。 たとえば、通知が **CC-BY-SA ライセンスの下のテキスト**で、CC-BY-SA がライセンスの名前の場合、CC-BY-SA がハイパーリンクになります。
+表示するライセンス通知には、ライセンスに関する情報を掲載している Web サイトへのハイパーリンクを含める必要があります。 通常は、ライセンスの名前をハイパーリンクにします。 たとえば、通知の文言が "**Text under CC-BY-SA license (CC-BY-SA ライセンスが適用されるテキスト)** " であって、ライセンスの名前が CC-BY-SA の場合、CC-BY-SA の部分をハイパーリンクにします。
 
 ### <a name="link-and-text-attribution"></a>リンクとテキスト属性
 
-[LinkAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#linkattribution) と [TextAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#textattribution) の規則は、通常、データのプロバイダーを識別するために使用されます。 `targetPropertyName` フィールドは、規則が適用されるフィールドを特定するためのものです。
+[LinkAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#linkattribution) と [TextAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#textattribution) の規則は通常、データの提供元を明らかにする場合に使用します。 `targetPropertyName` フィールドは、規則が適用されるフィールドを特定するためのものです。
 
-プロバイダーの帰属を示すには属性を適用するコンテンツ (対象となるフィールドなど) の直後に 1 行含めます。 この行は、プロバイダーがデータのソースであることを示すため、明確にラベル付けする必要があります。 たとえば、"データ元: contoso.com" のようにします。 `LinkAttribution` 規則の場合、プロバイダーの Web サイトへのハイパーリンクを作成する必要があります。
+プロバイダーの帰属を示すには属性を適用するコンテンツ (対象となるフィールドなど) の直後に 1 行含めます。 追加した行には、提供元がデータの出典であることを明確に示したラベルを付ける必要があります。 たとえば、"データ元: contoso.com" のようにします。 `LinkAttribution` 規則の場合、提供元の Web サイトへのハイパーリンクを作成する必要があります。
 
 `LinkAttribution` および `TextAttribution` の規則を含む例を次に示します。
 
-![テキスト属性のリンク](../media/cognitive-services-bing-entities-api/linktextattribution.png)
+![リンクとテキストの帰属表示](../media/cognitive-services-bing-entities-api/linktextattribution.png)
 
-### <a name="media-attribution"></a>メディアの属性
+### <a name="media-attribution"></a>メディアの帰属表示
 
-エンティティにイメージが含まれていて、それを表示する場合は、プロバイダーの Web サイトへのクリックスルー リンクを提供する必要があります。 エンティティに [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mediaattribution) 規則が含まれている場合、その規則の URL を使用してクリックスルー リンクを作成します。 含まれていない場合は、画像の `provider` フィールドに含まれる URL を使用してクリックスルー リンクを作成します。
+エンティティに画像が含まれており、その画像を表示する場合には、提供元の Web サイトへのクリックスルー リンクを提供する必要があります。 エンティティに [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mediaattribution) 規則が含まれている場合、その規則の URL を使用してクリックスルー リンクを作成します。 含まれていない場合は、画像の `provider` フィールドに含まれる URL を使用してクリックスルー リンクを作成します。
 
-イメージの `provider` フィールドと契約上の規則を含む例を次に示します。 例には契約上の規則が含まれているため、イメージの `provider` フィールドを無視して、`MediaAttribution` 規則を適用します。
+画像の `provider` フィールドと契約規則が含まれる例を次に示します。 例には契約上の規則が含まれているため、イメージの `provider` フィールドを無視して、`MediaAttribution` 規則を適用します。
 
-![メディアの属性](../media/cognitive-services-bing-entities-api/mediaattribution.png)
+![メディアの帰属表示](../media/cognitive-services-bing-entities-api/mediaattribution.png)
 
 ### <a name="search-or-search-like-experience"></a>検索または検索と同様のエクスペリエンス
 
@@ -331,6 +331,6 @@ Bing Web Search API と同じく、Entity Search API は、直接ユーザー �
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Bing Entity Search API でのエンティティの検索を始めるには、[クイック スタート](../quickstarts/csharp.md)を試してください。

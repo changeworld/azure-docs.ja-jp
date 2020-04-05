@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Kudos の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Kudos の統合 | Microsoft Docs'
 description: Azure Active Directory と Kudos の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 1fb1a1bc7bfd8b3cc9d7758bf8e80d8759f9357e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227481"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kudos"></a>チュートリアル:Azure Active Directory と Kudos の統合
+# <a name="tutorial-azure-active-directory-integration-with-kudos"></a>チュートリアル: Azure Active Directory と Kudos の統合
 
 このチュートリアルでは、Kudos と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Kudos と Azure AD の統合には、次の利点があります。
@@ -130,7 +130,7 @@ Kudos で Azure AD シングル サインオンを構成するには、次の手
 
 1. 上部のメニューで **[設定] アイコン**をクリックします。
 
-    ![設定](./media/kudos-tutorial/ic787806.png "設定")
+    ![[設定]](./media/kudos-tutorial/ic787806.png "設定")
 
 1. **[Integrations]\(統合\) > [SSO]** をクリックして、次の手順に従います。
 
@@ -144,7 +144,7 @@ Kudos で Azure AD シングル サインオンを構成するには、次の手
 
     d. **[Your Kudos URL (Kudos の URL)]** テキストボックスに、企業名を入力します。
 
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -207,7 +207,7 @@ Azure AD ユーザーが Kudos にサインインできるようにするには�
 
 1. 上部のメニューで **[設定] アイコン**をクリックします。
 
-   ![設定](./media/kudos-tutorial/ic787806.png "設定")
+   ![[設定]](./media/kudos-tutorial/ic787806.png "設定")
 
 1. **[ユーザー管理者]** をクリックします。
 
@@ -217,7 +217,7 @@ Azure AD ユーザーが Kudos にサインインできるようにするには�
 
 1. **[ユーザーの追加]** セクションで、次の手順に従います。
 
-    ![[ユーザーの追加]](./media/kudos-tutorial/ic787810.png "[ユーザーの追加]")
+    ![[ユーザーの追加]](./media/kudos-tutorial/ic787810.png "ユーザーを追加する")
 
     a. プロビジョニングする有効な Azure Active Directory アカウントの **[名]** 、 **[姓]** 、 **[メール]** 、その他の詳細を該当するボックスに入力します。
 

@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c73a14c2a8cd063672bd0998368ca660f52cd5a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272951"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B コラボレーション用の SaaS アプリの構成
@@ -72,7 +72,7 @@ Azure Active Directory (Azure AD) B2B コラボレーションは、Azure AD と
 
 Dropbox アプリでゲストまたはメンバー ユーザーがセットアップされると、ユーザーは Dropbox から個別の招待を受け取ります。 Dropbox のシングル サインオンを使用するには、招待されたユーザーが招待のリンクをクリックして、招待に応じる必要があります。
 
-## <a name="box"></a>Box
+## <a name="box"></a>ボックス
 SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Box ゲスト ユーザーを Azure AD アカウントで認証できるようにすることができます。 この手順では、Box.com にメタデータをアップロードします。
 
 1. エンタープライズ アプリから Box アプリを追加します。
@@ -98,7 +98,7 @@ SAML プロトコルに基づくフェデレーションを使用して、ユー
 
 Dropbox での招待されるユーザーのように、Box での招待されるユーザーも、Box アプリからの招待に応じる必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 

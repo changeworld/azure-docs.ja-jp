@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/08/2019
 ms.author: tamram
 ms.openlocfilehash: 2ed88d8abb7cbe96093b68d89030e6e464a35541
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75392437"
 ---
 | リソース | 移行先        |

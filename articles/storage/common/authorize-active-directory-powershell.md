@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 373b939ac63f31ccaf6a9f01fac92920e19074ed
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75553260"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Azure AD 資格情報を使用して PowerShell コマンドを実行して BLOB またはキューのデータにアクセスする

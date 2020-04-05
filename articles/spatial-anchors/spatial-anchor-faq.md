@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844889"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors についてよく寄せられる質問

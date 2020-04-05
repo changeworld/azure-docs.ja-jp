@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/21/2019
 ms.author: robinsh
 ms.openlocfilehash: 334b7b2c59b328e8eff3c7c2b9c3ed46bffc3442
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74706435"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>チュートリアル:Event Grid および Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する
@@ -42,7 +42,7 @@ Azure Event Grid を使うと、ダウンストリームのビジネス アプ�
 
    ![ロジック アプリを作成するためのフィールド](./media/publish-iot-hub-events-to-logic-apps/create-logic-app-fields.png)
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 1. リソースが作成されたら、ロジック アプリに移動します。 これを実行するには、 **[リソース グループ]** を選択し、このチュートリアル用に作成したリソース グループを選択します。 次に、リソースの一覧でロジック アプリを見つけて選択します。 
 
@@ -237,7 +237,7 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 
 Azure Portal を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity)に関する Azure CLI のページを参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルでは、Azure サブスクリプションで料金が発生するリソースを使いました。 チュートリアルを試してテストを完了したら、残しておきたくないリソースを無効にするか削除します。 
 
@@ -269,7 +269,7 @@ IoT Hub を残しておく場合でも、作成したイベント サブスク�
 
 3. **[削除]** を選択します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 「[Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](../iot-hub/iot-hub-event-grid.md)」で詳細を確認します。
 * [デバイス接続イベントおよびデバイス切断イベントの順序を設定する方法を確認します](../iot-hub/iot-hub-how-to-order-connection-state-events.md)

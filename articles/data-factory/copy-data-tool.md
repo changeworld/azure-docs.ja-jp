@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
 ms.openlocfilehash: a6de5c28115d3a451256cc43d26552c269ba245a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927495"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory のデータのコピー ツール
@@ -105,7 +105,7 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 ![スケジュール オプション](./media/copy-data-tool/scheduling-options.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 データのコピー ツールを使う以下のチュートリアルを試してください。
 
 - [クイック スタート: データのコピー ツールを使用してデータ ファクトリを作成する](quickstart-create-data-factory-copy-data-tool.md)

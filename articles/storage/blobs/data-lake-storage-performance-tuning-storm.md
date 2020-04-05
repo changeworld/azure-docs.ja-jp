@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 125c583512f6bae34c2dd3c3dd76a1b96a181ac1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327913"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスをチューニングする: Storm、HDInsight、および Azure Data Lake Storage Gen2
@@ -113,7 +113,7 @@ Data Lake Storage Gen2 によって提供される帯域幅の制限に達した
 1. **Ambari** > **Storm** > **構成** > **Advanced storm-worker-log4j\(storm-worker-log4j の詳細\)** の順に移動し、 **&lt;root level="info"&gt;** を **&lt;root level="debug"&gt;** に変更します。 すべてのノードとサービスを再起動して構成を有効にします。
 2. ワーカー ノード (/var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log の直下) の Storm トポロジ ログで、Data Lake Storage Gen2 調整の例外を監視します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Storm におけるその他のパフォーマンスのチューニングについては、[こちらのブログ](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)を参照してください。
 
 実行できる他のサンプルについては、[GitHub のこちらのサンプル](https://github.com/hdinsight/storm-performance-automation)を参照してください。

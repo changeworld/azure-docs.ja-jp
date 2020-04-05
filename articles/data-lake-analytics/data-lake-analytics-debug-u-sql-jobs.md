@@ -10,10 +10,10 @@ ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.openlocfilehash: 72239fc1679d2ebbfd9c9b5be6b79b58efb760cb
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71315808"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>失敗した U-SQL ジョブに対するユーザー定義の C# コードをデバッグする
@@ -28,7 +28,7 @@ U-SQL は C# を使用した機能拡張モデルを提供しています。 U-S
 >
 
 > [!IMPORTANT]
-> Visual Studio では、この機能を使用するための次の 2 つの更新プログラムが必要です。[Microsoft Visual C++ 2015 再頒布可能パッケージの更新プログラム 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) と [Windows 用ユニバーサル C ランタイム](https://www.microsoft.com/download/details.aspx?id=50410)。
+> Visual Studio でこの機能を使用するには、[Microsoft Visual C++ 2015 再頒布可能パッケージ Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) と [Windows ユニバーサル C ランタイム](https://www.microsoft.com/download/details.aspx?id=50410)の 2 つの更新プログラムが必要です。
 >
 
 ## <a name="download-failed-vertex-to-local-machine"></a>失敗した頂点をローカル コンピューターにダウンロードする
@@ -105,7 +105,7 @@ C# ソース コードがキャプチャされるケースは 2 つあります�
 
 3. U-SQL ジョブを再送信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [U-SQL プログラミング ガイド](data-lake-analytics-u-sql-programmability-guide.md)
 - [Azure Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)

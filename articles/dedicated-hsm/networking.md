@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70881288"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure の専用 HSM のネットワーク
@@ -39,7 +39,7 @@ Azure の専用 HSM は、きわめて安全なネットワーク環境を必要
 
 ### <a name="subnets"></a>サブネット
 
-サブネットは、仮想ネットワークを個別のアドレス空間に分割し、サブネット内に配置された Azure リソースから使用できるようにするものです。 専用 HSM は、仮想ネットワークのサブネットにデプロイされます。 お客様のサブネットにデプロイされた専用 HSM デバイスにはそれぞれ、このサブネットからプライベート IP アドレスが割り当てられます。 HSM デバイスのデプロイ先となるサブネットは、次のサービスに対して明示的に委任されている必要があります。Microsoft.HardwareSecurityModules/dedicatedHSMs。 これにより、サブネットへのデプロイに使用される特定のアクセス許可が HSM サービスに与えられます。 専用 HSM への委任に伴い、サブネットに対していくらかポリシーの制限が生じます。 現在、委任されたサブネットでは、ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR) がサポートされません。 したがって、サブネットを専用 HSM に委任すると、そのサブネットは HSM リソースのデプロイにしか使用できなくなります。 お客様の他のリソースをサブネットにデプロイしようとしても失敗します。
+サブネットは、仮想ネットワークを個別のアドレス空間に分割し、サブネット内に配置された Azure リソースから使用できるようにするものです。 専用 HSM は、仮想ネットワークのサブネットにデプロイされます。 お客様のサブネットにデプロイされた専用 HSM デバイスにはそれぞれ、このサブネットからプライベート IP アドレスが割り当てられます。 HSM デバイスのデプロイ先となるサブネットは、Microsoft.HardwareSecurityModules/dedicatedHSMs というサービスに対して明示的に委任されている必要があります。 これにより、サブネットへのデプロイに使用される特定のアクセス許可が HSM サービスに与えられます。 専用 HSM への委任に伴い、サブネットに対していくらかポリシーの制限が生じます。 現在、委任されたサブネットでは、ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR) がサポートされません。 したがって、サブネットを専用 HSM に委任すると、そのサブネットは HSM リソースのデプロイにしか使用できなくなります。 お客様の他のリソースをサブネットにデプロイしようとしても失敗します。
 
 
 ### <a name="expressroute-gateway"></a>ExpressRoute ゲートウェイ
@@ -85,11 +85,11 @@ HSM デバイスには、ソフトウェア ライブラリを通じて、トラ
 
 ![グローバル VNET](media/networking/global-vnet.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [よく寄せられる質問](faq.md)
 - [サポート可能性](supportability.md)
 - [高可用性](high-availability.md)
 - [物理的なセキュリティ](physical-security.md)
-- [監視](monitoring.md)
+- [Monitoring](monitoring.md)
 - [デプロイ アーキテクチャ](deployment-architecture.md)

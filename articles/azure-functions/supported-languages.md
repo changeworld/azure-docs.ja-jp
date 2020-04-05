@@ -4,10 +4,10 @@ description: どの言語がサポートされているか (GA) と、どの言�
 ms.topic: conceptual
 ms.date: 11/27/2019
 ms.openlocfilehash: 029ea753439dca3093bf214a5adfb6d58a1fe567
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74942258"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions でサポートされている言語
@@ -40,7 +40,7 @@ ms.locfileid: "74942258"
 
 2\.x 以降、ランタイムは、[言語拡張](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)を提供するように設計されています。 2\.x ランタイムの JavaScript および Java 言語は、この拡張機能で構築されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 サポートされている言語で関数を開発する方法の詳細については、次のリソースを参照してください。
 

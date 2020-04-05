@@ -6,13 +6,13 @@ ms.service: mysql
 ms.author: andrela
 ms.custom: mvc
 ms.topic: overview
-ms.date: 12/02/2019
-ms.openlocfilehash: b7b29a07e9d56a9b961192352d0bfa13a8986d7a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 8f49811ad0d40c70933d32227cfb17a5144b857a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775119"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067819"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Azure Database for MySQL とは -
 
@@ -39,7 +39,7 @@ Azure CLI の各種サンプルについては、次のページを参照して�
 - [Azure Database for MySQL 用 Azure CLI サンプル](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>数秒以内でのパフォーマンスの調整とスケール
-Azure Database for MySQL サービスには、次の複数のサービス レベルが用意されています。Basic、汎用、メモリ最適化。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、レベルごとに異なるパフォーマンスと機能 を提供しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳しくは、 [価格レベル](concepts-service-tiers.md)に関するページをご覧ください。
+Azure Database for MySQL サービスには、複数のサービス レベル (Basic、汎用、メモリ最適化) が用意されています。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、レベルごとに異なるパフォーマンスと機能 を提供しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳しくは、 [価格レベル](concepts-service-tiers.md)に関するページをご覧ください。
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
 スケールを調整するときに、適切なパフォーマンス レベルはどのようにして見極めればよいのでしょうか。 組み込みのパフォーマンス監視機能およびアラート機能と、仮想コアに基づくパフォーマンス評価とを組み合わせて使用します。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、仮想コアのスケールアップまたはスケールダウンの影響をすばやく評価することができます。 詳細については、[アラート](howto-alert-on-metric.md)に関するページを参照してください。
@@ -59,9 +59,9 @@ Azure Database for MySQL についての質問や提案は、Azure Database for 
 - アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
 - フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) でエントリを作成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ここでは、Azure Database for MySQL の概要を紹介し、"Azure Database for MySQL とは何か" という問いに対する答えを示したので、 次のステップに進むことができます。
 
 - コストの比較と計算については、価格のページを参照してください。 [料金](https://azure.microsoft.com/pricing/details/mysql/)
 - まず、最初のサーバーを作成します。 [Azure Portal を使用した Azure Database for MySQL サーバーの作成](quickstart-create-mysql-server-database-using-azure-portal.md)
-- 次の任意の言語を使って最初のアプリを作成します。[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md)
+- 任意の言語を使って最初のアプリを作成してください: [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md)

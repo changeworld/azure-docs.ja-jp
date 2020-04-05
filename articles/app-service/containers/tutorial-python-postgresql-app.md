@@ -10,15 +10,15 @@ ms.custom:
 - seo-python-october2019
 - cli-validate
 ms.openlocfilehash: 13431b62e64774a4c31cf95200def3ba77f973d7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77523936"
 ---
 # <a name="tutorial-run-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:Azure App Service で PostgreSQL を使用して Python (Django) Web アプリを実行する
 
-[Azure App Service](app-service-linux-intro.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、データドリブンの Python Django Web アプリを Azure Database for PostgreSQL データベースに接続し、Azure App Service でアプリをデプロイして実行する方法について説明します。
+[Azure App Service](app-service-linux-intro.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、データドリブンの Python Django Web アプリを Azure Database for PostgreSQL データベースに接続し、Azure App Service でアプリをデプロイして実行する方法について説明します。
 
 ![Azure App Service での Python Django Web アプリ](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 

@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: erhopf
 ms.openlocfilehash: b120acd25874585a744fb774aafe15d32d7baf08
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976504"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>クイック スタート:Node.js を使用してテキストを音声に変換する
@@ -175,11 +175,11 @@ node tts.js
 
 プロンプトが表示されたら、音声に変換したいテキストを何か入力してください。 成功した場合、プロジェクト フォルダーに音声ファイルが格納されます。 任意のメディア プレーヤーを使用して再生してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 サブスクリプション キーなどの秘密情報は、サンプル アプリのソース コードからすべて確実に削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [GitHub で Node.js のサンプルを詳しく見てみる](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)

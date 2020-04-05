@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 12/14/2017
 ms.author: cynthn
 ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969560"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した完全な Linux 仮想マシンの作成
@@ -469,7 +469,7 @@ az vm availability-set create \
 
 
 ## <a name="create-a-vm"></a>VM の作成
-これで、インターネットにアクセス可能な VM をサポートするためのネットワーク リソースが作成されました。 次に、VM を作成し SSH キーを使用して保護します。 この例では、最新の LTS に基づいて Ubuntu VM を作成します。 [Azure VM イメージの検索](cli-ps-findimage.md) に関する記事で説明されているように、[az vm image list](/cli/azure/vm/image) を使用すると他のイメージを検索できます。
+これで、インターネットにアクセス可能な VM をサポートするためのネットワーク リソースが作成されました。 次に、VM を作成し SSH キーを使用して保護します。 この例では、最新の LTS に基づいて Ubuntu VM を作成します。 [Azure VM イメージの検索](/cli/azure/vm/image) に関する記事で説明されているように、[az vm image list](cli-ps-findimage.md) を使用すると他のイメージを検索できます。
 
 認証に使用する SSH キーを指定します。 SSH 公開キーのペアが無い場合は、[自分で作成する](mac-create-ssh-keys.md)か、`--generate-ssh-keys` パラメーターを使用して自動で作成できます。 このパラメーターでは、キーのペアが既にある場合は `~/.ssh` にある既存のキーが使用されます。
 
@@ -556,7 +556,7 @@ sudo apt-get install -y nginx
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-このコマンドで、現在の作業ディレクトリ内に `myResourceGroup.json` ファイルが作成されます。 このテンプレートから環境を作成する場合、リソース名をすべて入力するように求められます。 `az group export` コマンドに `--include-parameter-default-value` パラメーターを追加することで、テンプレート ファイルにこれらの名前を入力できます。 リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) します。
+このコマンドで、現在の作業ディレクトリ内に `myResourceGroup.json` ファイルが作成されます。 このテンプレートから環境を作成する場合、リソース名をすべて入力するように求められます。 `--include-parameter-default-value` コマンドに `az group export` パラメーターを追加することで、テンプレート ファイルにこれらの名前を入力できます。 リソース名を指定する JSON テンプレートを編集するか、リソース名を指定する [parameters.json ファイルを作成](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) します。
 
 テンプレートから環境を作成するには、次のように [az group deployment create](/cli/azure/group/deployment) を使います。
 

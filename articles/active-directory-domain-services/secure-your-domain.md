@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
 ms.openlocfilehash: 8eee516beaaf26ed25bd20f9689d26fdb1eb9b40
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74546233"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインをセキュリティで保護するために、弱い暗号およびパスワード ハッシュ同期を無効にします
@@ -32,14 +32,14 @@ ms.locfileid: "74546233"
     * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
-* Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services マネージド ドメイン。
+* Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
     * 必要であれば、[Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance]してください。
 * Azure PowerShell のインストールおよび構成。
     * 必要であれば、手順に従って、[Azure PowerShell モジュールをインストールし、Azure サブスクリプションに接続](/powershell/azure/install-az-ps)します。
     * 必ず [Connect-AzAccount][Connect-AzAccount] コマンドレットを使用して Azure サブスクリプションにサインインしてください。
 * Azure AD PowerShell をインストールして構成します。
     * 必要であれば、手順に従って、[Azure AD PowerShell モジュールをインストールして Azure AD に接続](/powershell/azure/active-directory/install-adv2)します。
-    * 必ず、[Connect-AzureAD][Connect-AzureAD] コマンドレットを使用して、Azure AD テナントにサインインしてください。
+    * 必ず [Connect-AzureAD][Connect-AzureAD] コマンドレットを使用して Azure AD テナントにサインインしてください。
 
 ## <a name="disable-weak-ciphers-and-ntlm-password-hash-sync"></a>弱い暗号と NTLM パスワード ハッシュ同期を無効にする
 
@@ -75,7 +75,7 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySetti
 
 セキュリティ設定が Azure AD DS マネージド ドメインに適用されるまでに、しばらく時間がかかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 同期プロセスの詳細について学習するには、[Azure AD DS マネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ][synchronization]に関するページを参照してください。
 

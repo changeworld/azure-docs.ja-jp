@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290927"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230195"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect 同期: インストール ウィザードの 2 回目の実行
 初めて Azure AD Connect のインストール ウィザードを実行すると、インストールの構成方法が手順に沿って表示されます。 インストール ウィザードをもう一度実行すると、メンテナンスのオプションが表示されます。
@@ -89,10 +89,10 @@ Azure AD Connect を使用して ADFS をインストールした場合は、こ
 
 このオプションの詳細については、「 [ユーザーのサインイン](plan-connect-user-signin.md#changing-the-user-sign-in-method)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure AD Connect Sync の同期で使用される構成モデルについて詳しくは、「 [Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](concept-azure-ad-connect-sync-declarative-provisioning.md)」をご覧ください。
 
 **概要トピック**
 
-* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

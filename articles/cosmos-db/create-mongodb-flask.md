@@ -9,10 +9,10 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.openlocfilehash: 43f4cf7e4008aa01a26c48a8e99f7465eeeb234b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77061745"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API を使用して Python アプリをビルドする

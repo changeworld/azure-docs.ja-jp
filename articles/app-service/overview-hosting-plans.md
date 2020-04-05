@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
 ms.openlocfilehash: f1012f8c00de4b19bbf6206408ec1a806e09e54f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77482345"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service プランの概要

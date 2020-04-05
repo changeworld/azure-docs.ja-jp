@@ -8,12 +8,12 @@ ms.service: dns
 ms.date: 4/3/2019
 ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 9475870185e4aee1b6f2ffbe175435cd4f6d8bed
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: a5c2fdde564eba2d95e7f14f4d47e4d381739d5d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936970"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79365170"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Azure CLI を使用した DNS ゾーン ファイルのインポートとエクスポート
 
@@ -173,7 +173,7 @@ az network dns zone export -g <resource group> -n <zone name> -f <zone file name
 
 リソース グループ **myresourcegroup** 内の既存の Azure DNS ゾーン **contoso.com** をファイル **contoso.com.txt** (現在のフォルダーにある) にエクスポートするには、`azure network dns zone export` を実行します。 このコマンドは、Azure DNS サービスを呼び出すことで、ゾーン内のレコード セットを列挙し、その結果を BIND と互換性のあるゾーン ファイルにエクスポートします。
 
-```
+```azurecli
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 ```
 

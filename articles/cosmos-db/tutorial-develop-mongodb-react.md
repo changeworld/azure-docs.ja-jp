@@ -10,10 +10,10 @@ ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
 ms.openlocfilehash: 4efaa90281ddcebf1b800e1016578e38c24be651
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "69614103"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>React と Azure Cosmos DB を使って MongoDB アプリを作成する  
@@ -85,14 +85,14 @@ ms.locfileid: "69614103"
 
 > [!VIDEO https://www.youtube.com/embed/TcSm2ISfTu8]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリの使用を続けない場合は、以下の手順に従い、このチュートリアルで作成したすべてのリソースを Azure Portal で削除してください。 
 
 1. Azure Portal の左側のメニューで、 **[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルで学習した内容は次のとおりです。
 

@@ -7,13 +7,13 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.custom: seodec18
 ms.openlocfilehash: 71aec33d5afe1a909f460ddae2d5cb0552857fee
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74688942"
 ---
-# <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>チュートリアル: Azure App Service on Linux でユーザーをエンド ツー エンドで認証および承認する
+# <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>チュートリアル:Azure App Service on Linux でユーザーをエンド ツー エンドで認証および承認する
 
 [App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 さらに、App Service には、[ユーザーの認証と承認](../overview-authentication-authorization.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)のためのサポートが組み込まれています。 このチュートリアルでは、App Service の認証と承認を使用してアプリケーションをセキュリティで保護する方法を示します。 ここでは ASP.NET Core アプリと Angular.js フロントエンドが使用されていますが、これはほんの一例です。 App Service の認証と承認では、すべての言語のランタイムがサポートされています。このチュートリアルに沿って、お好みの言語に適用する方法を学習することができます。
 
@@ -404,7 +404,7 @@ git push frontend master
 
 アクセス トークンは、しばらくすると有効期限が切れます。 アプリに対する再認証をユーザーに強制することなくアクセス トークンを更新する方法については、「[Refresh identity provider tokens (ID プロバイダー トークンの更新)](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#refresh-identity-provider-tokens)」を参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 前の手順では、リソース グループ内に Azure リソースを作成しました。 これらのリソースが将来必要になると想定していない場合、Cloud Shell で次のコマンドを実行して、リソース グループを削除します。
 
@@ -415,7 +415,7 @@ az group delete --name myAuthResourceGroup
 このコマンドの実行には、少し時間がかかる場合があります。
 
 <a name="next"></a>
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここで学習した内容は次のとおりです。
 
@@ -428,7 +428,7 @@ az group delete --name myAuthResourceGroup
 > * サーバー コードのアクセス トークンを使用する
 > * クライアント (ブラウザー) コードのアクセス トークンを使用する
 
-次のチュートリアルに進み、カスタム DNS 名をアプリにマップする方法を学習してください。
+次のチュートリアルに進んで、カスタム DNS 名をアプリにマップする方法を確認してください。
 
 > [!div class="nextstepaction"]
 > [既存のカスタム DNS 名を Azure App Service にマップする](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)

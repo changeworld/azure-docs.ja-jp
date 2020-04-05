@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
 ms.openlocfilehash: dd4444bf42bcc8dda95f8fa37b42a365538efa85
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482881"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218617"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Azure portal を使用して Cognitive Services リソースを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "74482881"
     
     マルチサービス リソースには、ポータルで **Cognitive Services** という名前が付けられます。 [Cognitive Services リソースを作成します](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)。
     
-    現在、マルチサービス リソースでは次の Cognitive Services にアクセスできます。
+    現在、マルチサービス リソースでは次のコグニティブ サービスにアクセスできます。
     
     |                  |                                                      |                    |                               |                  |
     |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
@@ -45,9 +45,9 @@ ms.locfileid: "74482881"
     
     #### <a name="single-service-resource"></a>[単一サービス リソース](#tab/singleservice)
 
-    以下のリンクを使用して、利用可能な Cognitive Services のリソースを作成します。
+    以下のリンクを使用して、利用可能なコグニティブ サービスのリソースを作成します。
 
-    | 視覚                      | 音声                  | 言語                          | 決定             | Search                 |
+    | 視覚                      | 音声                  | 言語                          | 決定             | 検索                 |
     |-----------------------------|-------------------------|-----------------------------------|----------------------|------------------------|
     | [Computer Vision](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Speech Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [イマーシブ リーダー](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomaly Detector](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | [Bing Search API V7](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) |
     | [Custom Vision Service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Speaker Recognition](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | [Bing Custom Search](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) |
@@ -62,10 +62,10 @@ ms.locfileid: "74482881"
 
     |    |    |
     |--|--|
-    | **名前** | Cognitive Sservices リソースのわかりやすい名前。 例: *MyCognitiveServicesResource*。 |
+    | **Name** | Cognitive Sservices リソースのわかりやすい名前。 例: *MyCognitiveServicesResource*。 |
     | **サブスクリプション** | 使用できる Azure サブスクリプションのいずれかを選択します。 |
-    | **場所** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
-    | **価格レベル** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
+    | **Location** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
+    | **[価格レベル]** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
     | **リソース グループ** | Cognitive Services リソースを含むことになる Azure リソース グループ。 新しいグループを作成することも、既存のグループに追加することもできます。 |
 
     ![リソース作成画面](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
@@ -76,10 +76,10 @@ ms.locfileid: "74482881"
 
     |    |    |
     |--|--|
-    | **名前** | Cognitive Sservices リソースのわかりやすい名前。 例: *TextAnalyticsResource*。 |
+    | **Name** | Cognitive Sservices リソースのわかりやすい名前。 例: *TextAnalyticsResource*。 |
     | **サブスクリプション** | 使用できる Azure サブスクリプションのいずれかを選択します。 |
-    | **場所** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
-    | **価格レベル** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
+    | **Location** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
+    | **[価格レベル]** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
     | **リソース グループ** | Cognitive Services リソースを含むことになる Azure リソース グループ。 新しいグループを作成することも、既存のグループに追加することもできます。 |
 
     ![リソース作成画面](media/cognitive-services-apis-create-account/resource_create_screen.png)
@@ -101,7 +101,7 @@ ms.locfileid: "74482881"
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのグループに含まれている他のリソースも削除されます。
 
@@ -109,7 +109,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 2. 削除するリソースが含まれているリソース グループを見つけます
 3. リソース グループの一覧を右クリックします。 **[リソース グループの削除]** を選択し、確認します。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Azure Cognitive Services に対する要求の認証](authentication.md)
 * [Azure Cognitive Services とは](Welcome.md)

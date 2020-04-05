@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
 ms.openlocfilehash: ec8a00460b4a750339f929eb6879ac6eb63cac8e
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705736"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237303"
 ---
 # <a name="understand-iot-hub-metrics"></a>IoT Hub メトリックの理解
 

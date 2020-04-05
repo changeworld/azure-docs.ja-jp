@@ -1,19 +1,18 @@
 ---
 title: コンサルティング オファーを作成する | Azure Marketplace
 description: Azure Marketplace の Cloud パートナー ポータルで Azure または Dynamics 365 コンサルティング サービスのオファーを作成します。
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: pabutler
-ms.openlocfilehash: 0cea0810300db1448540f58aa25b5f3197080d0e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: c2700339a7ac8342da0250227cff898c20e60118
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818152"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278554"
 ---
 # <a name="create-a-consulting-offer"></a>コンサルティング オファーを作成する
 
@@ -31,7 +30,7 @@ ms.locfileid: "73818152"
 
     ![新しいコンサルティング サービス オファーを作成する](media/cppselectnewconsultingoffer.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コンサルティング サービス オファーの種類に対応する **[New Offer]\(新しいオファー\)** ページには、新しいオファーを作成するために使用する一連のタブとフォーム フィールドが用意されています。 以下の記事では、タブを使用して新しいオファーのオファー設定とネットショップの詳細を定義する方法が説明されています。
 

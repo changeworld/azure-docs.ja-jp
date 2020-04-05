@@ -4,10 +4,10 @@ description: この記事では、Azure Backup データに使用する Azure Mo
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: d14634c5e317682462e77e0549f064c75059f15c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586378"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup データの Log Analytics データ モデル

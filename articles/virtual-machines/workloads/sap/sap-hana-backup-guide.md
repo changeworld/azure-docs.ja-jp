@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: bb32350597059209e5baf01d53b0c59fdc2344f3
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255213"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP HANA のバックアップ ガイド

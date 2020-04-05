@@ -4,16 +4,16 @@ description: このチュートリアルでは、Azure Machine Learning を使�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 2/10/2020
+ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a5c754373ba9437c631e62acbb5d6d246db4c862
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 57630b789233dd23e61398f445b434e4ba08b48e
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650760"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80236010"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>チュートリアル:Azure Machine Learning モデルをトレーニングしてデプロイする
 
@@ -62,17 +62,21 @@ Azure Notebooks を使用するには、アカウントを作成する必要が�
 
 1. 新しいアカウントのユーザー ページで、最上部のメニュー バーから **[マイ プロジェクト]** を選択します。
 
-1. **[新しいプロジェクトの作成]** ダイアログ ボックスで、**プロジェクト名**を指定します。それによって、**プロジェクト ID** も自動的に形成されます。
+1. **+** ボタンを選択して新しいプロジェクトを追加します。
+
+1. **[新しいプロジェクトの作成]** ダイアログ ボックスで**プロジェクト名**を入力します。 
 
 1. プロジェクトを公開する必要も、Readme を用意する必要もないため、 **[Public]\(パブリック\)** と **[README]** はオフのままにしてください。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 1. **[アップロード]** (上矢印アイコン) を選択し、 **[From Computer]\(コンピューターから\)** を選択します。
 
 1. **[ファイルの選択]** を選択します。
 
 1. **C:\source\IoTEdgeAndMlSample\AzureNotebooks** に移動します。 一覧からすべてのファイルを選択し、 **[開く]** をクリックします。
+
+1. **[I trust the content of these files]\(これらのファイルのコンテンツを信頼します\)** チェック ボックスをオンにします。
 
 1. **[アップロード]** を選択してアップロードを開始します。プロセスが完了したら、 **[完了]** を選択します。
 
@@ -96,7 +100,7 @@ Azure Notebooks プロジェクトにアップロードしたファイルを見�
 
 * **Test\_FD003.txt:** このファイルには、トレーニング済み分類子を検証するときにテスト セットとして使用するデータが含まれています。 簡潔にするために、元のコンテストで提供されたテスト データをテスト セットとして使用することにしました。
 
-* **RUL\_FD003.txt:** このファイルには、Test\_FD003.txt ファイル内の各デバイスの最後のサイクルの RUL が含まれています。 データの詳細な説明については、C:\\source\\IoTEdgeAndMlSample\\data\\Turbofan 内の readme.txt および Damage Propagation Modeling.pdf ファイルを参照してください。
+* **RUL\_FD003.txt:** このファイルには、Test\_FD003.txt ファイル内の各デバイスの最後のサイクルの残存耐用年数 (RUL) が含まれています。 データの詳細な説明については、C:\\source\\IoTEdgeAndMlSample\\data\\Turbofan 内の readme.txt および Damage Propagation Modeling.pdf ファイルを参照してください。
 
 * **Utils.py:** データを操作するための Python ユーティリティ関数のセットが含まれています。 最初のノートブックに関数の詳細な説明が含まれています。
 
@@ -110,24 +114,22 @@ Azure Notebooks プロジェクトにアップロードしたファイルを見�
 
     ![実行する最初のノートブックを選択する](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
 
-1. メッセージが表示されたら、ダイアログから Python 3.6 カーネルを選択し、 **[Set Kernel]\(カーネルの設定\)** を選択します。
-
 1. ノートブックが "**信頼なし**" と表示される場合は、ノートブックの右上にある **[信頼なし]** ウィジェットをクリックします。 ダイアログが表示されたら、 **[信頼する]** を選択します。
 
-1. ノートブックを下へスクロールして、 **[Set global properties]\(グローバル プロパティを設定する\)** 手順の `AZURE_SUBSCRIPTION_ID =` というコードで始まるセルに移動し、ご利用の Azure サブスクリプション、設定、リソースの値を入力します。
-
-    ![ノートブックのグローバル プロパティを設定する](media/tutorial-machine-learning-edge-04-train-model/set-global-properties.png)
-
-1. ツール バーの **[実行]** を選択してセルを実行します。
+1. 最良の結果を得るためには、各セルのドキュメントを読み取って個別に実行します。 ツール バーの **[Run]\(実行\)** を選択します。 しばらくすると、複数のセルを実行するのが得策であることがわかります。 アップグレードと非推奨化の警告は無視してかまいません。
 
     セルが実行されているときは、角かっこで囲まれたアスタリスク ([\*]) が表示されます。 セルの処理が完了すると、アスタリスクが番号に置き換えられます。関連する出力が表示されることもあります。 ノートブックのセルは逐次的にビルドされ、実行できるセルは一度に 1 つだけです。
 
-    ノートブックの指示に従います。 **[Cell]\(セル\)** メニューから実行オプションを使用したり、`Ctrl` + `Enter` でセルを実行したり、`Shift` + `Enter` でセルを実行して次のセルに進んだりすることもできます。
+    **[Cell]\(セル\)** メニューから実行オプションを使用したり、`Ctrl` + `Enter` でセルを実行したり、`Shift` + `Enter` でセルを実行して次のセルに進んだりすることもできます。
 
     > [!TIP]
     > ブラウザーの複数のタブから同じノートブックを実行することは、セルの処理の一貫性を確保するため避けてください。
 
-1. 下へスクロールして、 **[Create a workspace]\(ワークスペースを作成する\)** の概要テキストの直後のセルに移動して、そのセルを実行します。 セルの出力で、認証のためのサインインを求めるリンクを探します。 
+1. **[Set global properties]\(グローバル プロパティを設定する\)** 手順の後のセルに移動し、ご利用の Azure サブスクリプション、設定、リソースの値を入力します。 そのうえで、セルを実行します。
+
+    ![ノートブックのグローバル プロパティを設定する](media/tutorial-machine-learning-edge-04-train-model/set-global-properties.png)
+
+1. **[ワークスペースの詳細]** の前のセルで、その実行後、認証のためのサインインを求めるリンクを探します。
 
     ![デバイス認証用のサインイン プロンプト](media/tutorial-machine-learning-edge-04-train-model/sign-in-prompt.png)
 
@@ -135,17 +137,17 @@ Azure Notebooks プロジェクトにアップロードしたファイルを見�
 
     ![デバイスでのアプリケーション認証の確認](media/tutorial-machine-learning-edge-04-train-model/cross-platform-cli.png)
 
-1. この時点で、残りのセルを実行することができます。 セル内のコードが連続的に実行されるよう、すべてのセルを実行することをお勧めします。 **[Cell]\(セル\)** メニューの **[Run All]\(すべて実行\)** を選択します。 ノートブックを上へスクロールして、セルの処理がどのように実行されたかを見てみましょう。
+1. **[Explore the results]\(結果を調査する\)** の前のセルから実行 ID の値をコピーし、 **[Reconstitute a run]\(実行を再構成する\)** の後のセルの実行 ID に貼り付けます。
 
-    **[Explore the data]\(データの調査\)** セクションに、センサーの測定値の散布図をレンダリングする **[Sensor readings and RUL]\(センサーの測定値と RUL\)** というサブセクションがあり、そこでセルを確認できます。
+   ![セル間で実行 ID をコピーする](media/tutorial-machine-learning-edge-04-train-model/automl-id.png)
 
-    ![センサーの測定値の散布図](media/tutorial-machine-learning-edge-04-train-model/sensor-readings.png)
+1. ノートブックで残りのセルを実行します。
 
-1. ノートブックを保存し、ノートブックの右上隅のプロジェクト名をクリックするか、お使いのブラウザーで戻ることで、プロジェクト ページに戻ります。
+1. ノートブックを保存して、プロジェクト ページに戻ります。
 
-1. **02-turbofan\_deploy\_model.ipynb** を開き、この作業の手順を繰り返して 2 番目のノートブックを実行します。
+1. **02-turbofan\_deploy\_model.ipynb** を開いて、各セルを実行します。 **[Configure workspace]\(ワークスペースを構成する\)** の後のセルで、サインインして認証を行う必要があります。
 
-1. ノートブックを保存し、ノートブックの右上隅のプロジェクト名をクリックするか、お使いのブラウザーで戻ることで、プロジェクト ページに戻ります。
+1. ノートブックを保存して、プロジェクト ページに戻ります。
 
 ### <a name="verify-success"></a>成功を確認する
 
@@ -161,11 +163,21 @@ Azure Notebooks プロジェクトにアップロードしたファイルを見�
     | ./aml_config/model_config.json | Azure の **turbofanDemo** Machine Learning ワークスペースでモデルをデプロイするために必要となる構成ファイル。 |
     | myenv.yml| デプロイされた機械学習モデルの依存関係に関する情報を提供します。|
 
-1. Azure portal で、ご利用のリソース グループに **turboFanDemo** Machine Learning ワークスペースが存在することを確認します。
+1. 次の Azure リソースが作成されていることを確認します。 一部のリソース名には、ランダムな文字が追加されます。
+
+    | Azure リソース | 名前 |
+    | --- | --- |
+    | Machine Learning ワークスペース | turborfanDemo |
+    | Container Registry | turbofandemoxxxxxxxx |
+    | Applications Insights | turbofaninsightxxxxxxxx |
+    | Key Vault | turbofankeyvaultbxxxxxxxx |
+    | ストレージ | turbofanstoragexxxxxxxxx |
 
 ### <a name="debugging"></a>デバッグ
 
-ノートブックには、`print()` コマンドをはじめとする、デバッグ用の Python ステートメントを挿入することができます。 定義されていない変数やオブジェクトが見つかった場合は、それらが最初に宣言またはインスタンス化されているセルを実行してください。
+ノートブックには、値を表示するための `print()` コマンドなど、デバッグ用の Python ステートメントを挿入することができます。 定義されていない変数やオブジェクトが見つかった場合は、それらが最初に宣言またはインスタンス化されているセルを実行してください。
+
+ノートブックを再実行する必要がある場合は、先ほど作成したファイルと Azure リソースは削除する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

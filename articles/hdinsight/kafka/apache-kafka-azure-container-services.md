@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: e035c1ff4c8e16fbf40883b54e3153eab9729040
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6abb4f632535f1bda7e9f337f111ba372a624f2b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894279"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239614"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Apache Kafka を使用する
 
@@ -37,7 +37,7 @@ Azure Kubernetes Service (AKS) で HDInsight クラスター上の [Apache Kafka
 
 またこのドキュメントでは、読者が「[Azure Kubernetes Service tutorial (Azure Container Service チュートリアル)](../../aks/tutorial-kubernetes-prepare-app.md)」を学習済みであることを前提としています。 この記事では、コンテナー サービス、Kubernetes クラスター、コンテナー レジストリを作成し、`kubectl` ユーティリティを構成しています。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
 ### <a name="network-topology"></a>ネットワーク トポロジ
 
@@ -118,13 +118,13 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
     ![Apache Ambari サービスの構成](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
-4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__ フィールドに「`kafka-env`」と入力します。
+4. __kafka-env__ 構成を検索するには、右上の `kafka-env`[Filter (フィルター)]__フィールドに「__ 」と入力します。
 
     ![kafka-env の Kafka 構成](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
 
 5. IP アドレスを提供するように Kafka を構成するには、次のテキストを __kafka-env-template__ フィールドの最後に追加します。
 
-    ```
+    ```bash
     # Configure Kafka to advertise IP addresses instead of FQDN
     IP_ADDRESS=$(hostname -i)
     echo advertised.listeners=$IP_ADDRESS
@@ -132,7 +132,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Kafka がリッスンするインターフェイスを構成するには、右上の __[Filter (フィルター)]__ フィールドに「`listeners`」と入力します。
+6. Kafka がリッスンするインターフェイスを構成するには、右上の `listeners`[Filter (フィルター)] __フィールドに「__ 」と入力します。
 
 7. すべてのネットワーク インターフェイスをリッスンするように Kafka を構成するには、 __[listeners (リスナー)]__ フィールドの値を `PLAINTEXT://0.0.0.0:9092`に変更します。
 
@@ -160,8 +160,8 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 3. `index.js` ファイルを編集し、次の行を変更します。
 
-    * `var topic = 'mytopic'`:`mytopic` を、このアプリケーションで使用される Kafka トピックの名前に置き換えます。
-    * `var brokerHost = '176.16.0.13:9092`:`176.16.0.13` を、クラスターのいずれかのブローカー ホストの内部 IP アドレスに置き換えます。
+    * `var topic = 'mytopic'`: `mytopic` を、このアプリケーションで使用される Kafka トピックの名前に置き換えます。
+    * `var brokerHost = '176.16.0.13:9092`: `176.16.0.13` を、クラスターのブローカー ホスト (いずれか 1 つ) の内部 IP アドレスに置き換えます。
 
         クラスター内のブローカー ホスト (workernodes) の内部 IP アドレスを取得する方法については、[Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) に関するドキュメントを参照してください。 ドメイン名が `wn` で始まるいずれかのエントリの IP アドレスを選択します。
 
@@ -176,7 +176,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 5. Azure Container Registry (ACR) にログインし、loginServer 名を探します。
 
-    ```bash
+    ```azurecli
     az acr login --name <acrName>
     az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
     ```
@@ -223,7 +223,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
     > [!WARNING]  
     > 同じメッセージが複数返されることがあります。 この問題は通常、接続後にブラウザーを更新した場合や、アプリケーションへのブラウザー接続を複数開いた場合に発生します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のリンクを使用することで、HDInsight で Apache Kafka を使用する方法を知ることができます。
 

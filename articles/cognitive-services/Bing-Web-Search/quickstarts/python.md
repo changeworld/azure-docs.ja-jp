@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Python で検索を実行する - Bing Web Search API
+title: 'クイック スタート: Python で検索を実行する - Bing Web Search API'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Python を使って Bing Web Search REST API に要求を送信し、JSON 応答を受信します
 services: cognitive-services
@@ -12,13 +12,13 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: c1af1142faca76cc58b6b3ca9a7106bc0433ea18
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74976368"
 ---
-# <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>クイック スタート:Python を使用して Bing Web Search API を呼び出す  
+# <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>クイック スタート: Python を使用して Bing Web Search API を呼び出す  
 
 このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この Python アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
@@ -86,7 +86,7 @@ HTML("<table>{0}</table>".format(rows))
 
 このコードをローカルで実行する場合は、完全な[サンプルを GitHub で入手](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingWebSearchv7.py)することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Web 検索単一ページ アプリのチュートリアル](../tutorial-bing-web-search-single-page-app.md)

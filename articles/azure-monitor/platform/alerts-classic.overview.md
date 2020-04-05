@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: 098efd3075c6b099bdfc925cb4f09163f83532a5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77668268"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure のクラシック アラートの概要

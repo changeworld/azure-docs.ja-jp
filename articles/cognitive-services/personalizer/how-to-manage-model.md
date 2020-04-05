@@ -4,10 +4,10 @@ description: 機械学習モデルと学習設定は、独自のソース管理�
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: c544d058019c8d507f65dc6bfd854376b364abd1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624209"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>モデルと学習設定を管理する方法
@@ -27,7 +27,7 @@ ms.locfileid: "77624209"
 
     ![Azure portal で、Personalizer リソースからデータを消去します。](./media/settings/clear-data-from-personalizer-resource.png)
 
-    |Value|目的|
+    |値|目的|
     |--|--|
     |ログに記録された個人用設定と報酬のデータ。|このログ データは、オフライン評価で使用されます。 リソースをリセットする場合は、データを消去します。|
     |Personalizer モデルのリセット。|このモデルは、再トレーニングのたびに変わります。 このトレーニング頻度は、 **[構成]** ページの **[upload model frequency]\(モデルのアップロードの頻度\)** で指定されています。 |

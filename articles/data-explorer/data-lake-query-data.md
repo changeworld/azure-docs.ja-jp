@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.openlocfilehash: 8240b1a01aa39e53b9ae41f73543ccf9774290b2
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161751"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Azure Data Explorer を使用して Azure Data Lake でデータのクエリを実行する
@@ -45,7 +45,7 @@ Azure Data Explorer は、Azure Blob Storage および Azure Data Lake Storage (
     > * 細かいパーティション分割を使用することでパフォーマンスの向上が期待されます。 たとえば、日単位のパーティションを使用する外部テーブルでのクエリは、月単位のパーティション テーブルを使用したクエリよりもパフォーマンスが良くなります。
     > * パーティションを使用する外部テーブルを定義するときは、ストレージ構造が同一であると想定します。
 たとえば、テーブルが yyyy/MM/dd 形式 (既定) の DateTime パーティションで定義されている場合、URI ストレージ ファイルのパスは *container1/yyyy/MM/dd/all_exported_blobs* である必要があります。 
-    > * 外部テーブルが datetime 列によってパーティション分割されている場合は、閉じた範囲の時間フィルターをクエリに含めるようにしてください (たとえば、範囲が閉じていないこちらの `ArchivedProducts | where Timestamp > ago(1h)` よりも、クエリ `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)` の方がパフォーマンスが良くなります)。 
+    > * 外部テーブルが datetime 列によってパーティション分割されている場合は、閉じた範囲の時間フィルターをクエリに含めるようにしてください (たとえば、範囲が閉じていないこちらの `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)` よりも、クエリ `ArchivedProducts | where Timestamp > ago(1h)` の方がパフォーマンスが良くなります)。 
     > * 外部テーブルを使用して、すべての[サポートされているインジェスト形式](ingest-data-overview.md#supported-data-formats)のクエリを実行できます。
 
 1. 外部テーブルは Web UI の左側のウィンドウに表示されます
@@ -199,7 +199,7 @@ T1 | join T on ProductId | take 10
 
 #### <a name="query-taxirides-external-table-without-partitioning"></a>パーティション分割を行わずに *TaxiRides* 外部テーブルのクエリを実行する
 
-外部テーブル *TaxiRides* で[このクエリを実行](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3LSwqAMAwFwL3gHYKreh1xL7F9YrCtElP84OEV9zM4DZo5DsZjhGt6PqWTgL1p6+qhvaTEKjeI/FqyuZbGiwJf63QAi9vEL2UbAhtMEv6jyAH6+VhS9jOr1dULfUgAm2cAAAA=)して、データ セット全体で曜日別の乗車状況を示します。 
+外部テーブル [TaxiRides](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3LSwqAMAwFwL3gHYKreh1xL7F9YrCtElP84OEV9zM4DZo5DsZjhGt6PqWTgL1p6+qhvaTEKjeI/FqyuZbGiwJf63QAi9vEL2UbAhtMEv6jyAH6+VhS9jOr1dULfUgAm2cAAAA=) で*このクエリを実行*して、データ セット全体で曜日別の乗車状況を示します。 
 
 ```kusto
 external_table("TaxiRides")
@@ -213,7 +213,7 @@ external_table("TaxiRides")
 
 #### <a name="query-taxirides-external-table-with-partitioning"></a>パーティション分割を行って TaxiRides 外部テーブルのクエリを実行する 
 
-外部テーブル *TaxiRides* に対して[このクエリを実行](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13NQQqDMBQE0L3gHT6ukkVF3fQepXv5SQYMNWmIP6ilh68WuinM6jHMYBPkyPMobGao5s6bv3mHpdF19aZ1QgYlbx8ljY4F4gPIQFYgkvqJGrr+eun6I5ralv58OP27t5QQOPsXiOyzRFGazE6WzSh7wtnIiA75uISdOEtdfQDLWmP+ogAAAA==)すると、2017 年 1 月に使用されたタクシーの種類 (イエローまたはグリーン) が示されます。 
+外部テーブル [TaxiRides](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13NQQqDMBQE0L3gHT6ukkVF3fQepXv5SQYMNWmIP6ilh68WuinM6jHMYBPkyPMobGao5s6bv3mHpdF19aZ1QgYlbx8ljY4F4gPIQFYgkvqJGrr+eun6I5ralv58OP27t5QQOPsXiOyzRFGazE6WzSh7wtnIiA75uISdOEtdfQDLWmP+ogAAAA==) に対して*このクエリを実行*すると、2017 年 1 月に使用されたタクシーの種類 (イエローまたはグリーン) が示されます。 
 
 ```kusto
 external_table("TaxiRides")

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 97fe33309f36cd7545f8c9d6c2d34671641caa1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60877108"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
@@ -71,7 +71,7 @@ Data Lake Storage Gen1 アカウントを削除するには、次の cURL コマ
     ...
     ...
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [REST API を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作](data-lake-store-data-operations-rest-api.md)。
 
 ## <a name="see-also"></a>関連項目

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181862"
 ---
 1. Android Studio でプロジェクトを開きます。
@@ -62,7 +62,7 @@ ms.locfileid: "67181862"
     このコードで、Google 認証プロセスを処理するメソッドが作成されます。 ダイアログに認証されたユーザーの ID が表示されます。 認証に成功した場合のみ続行できます。
 
     > [!NOTE]
-    > Google 以外の ID プロバイダーを使用している場合は、**login** メソッドに渡される値を次のいずれかの値に変更します。_MicrosoftAccount_、_Facebook_、_Twitter_、または _windowsazureactivedirectory_。
+    > Google 以外の ID プロバイダーを使用している場合は、**login** メソッドに渡す値を、_MicrosoftAccount_、_Facebook_、_Twitter_、_windowsazureactivedirectory_ のいずれかに変更します。
 
 4. **onCreate** メソッドで、`MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
 
@@ -72,7 +72,7 @@ ms.locfileid: "67181862"
 
     この呼び出しで、認証プロセスが開始されます。
 
-5. **onCreate** メソッド内の `authenticate();` の後の残りのコードを新しい **createTable** メソッドに移動します。
+5. `authenticate();`onCreate**メソッド内の** の後の残りのコードを新しい **createTable** メソッドに移動します。
 
     ```java
     private void createTable() {
@@ -135,6 +135,6 @@ ms.locfileid: "67181862"
 9. **[Run (実行)]** メニューの **[Run app (アプリの実行)]** をクリックしてアプリを開始し、選択した ID プロバイダーでサインインします。
 
 > [!WARNING]
-> 記載されている URL スキームは、大文字と小文字が区別されます。 `{url_scheme_of_you_app}` のすべての出現箇所で大文字と小文字を同じように使用してください。
+> 説明されている URL スキームでは、大文字と小文字が区別されます。 `{url_scheme_of_you_app}` のすべての出現箇所で大文字と小文字を同じように使用してください。
 
 サインインに成功すると、アプリはエラーなしで実行されます。また、バックエンド サービスにクエリを実行したり、データを更新したりできるようになります。

@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dcc8c0538bb3362818a4172dd42905fd72b19812
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272610"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションを使用してローカルで管理されたパートナーのアカウントにクラウド リソースへのアクセスを許可する
@@ -42,7 +42,7 @@ UserType 属性の同期を有効にする前に、まず、UserType 属性を�
 
 実装手順については、[UserType の同期の有効化](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ハイブリッド組織向けの Azure Active Directory B2B コラボレーション](hybrid-organizations.md)
 - [Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセス許可する](hybrid-cloud-to-on-premises.md)

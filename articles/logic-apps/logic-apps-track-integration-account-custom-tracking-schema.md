@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: c82f9cbfaf2e23ddaa5e4b05f4aac4795d3e16a9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76903057"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-a"></a>Azure Logic Apps でエンド ツー エンドのワークフローを監視するカスタム追跡スキーマを作成する
@@ -51,7 +51,7 @@ Azure Logic Apps には、ワークフローの一部に対して有効にでき
 }
 ```
 
-| プロパティ | Required | Type | 説明 |
+| プロパティ | 必須 | Type | 説明 |
 |----------|----------|------|-------------|
 | sourceType | はい | String | 次の許可された値を持つ実行ソースの種類: `Microsoft.Logic/workflows`、`custom` |
 | source | はい | 文字列または JToken | ソースのタイプが `Microsoft.Logic/workflows` である場合、このスキーマの後にソース情報を続ける必要があります。 ソースのタイプが `custom` である場合、スキーマは JToken です。 |
@@ -59,7 +59,7 @@ Azure Logic Apps には、ワークフローの一部に対して有効にでき
 | runId | はい | String | ロジック アプリの実行 ID |
 | operationName | はい | String | 操作の名前 (アクションやトリガーなど) |
 | repeatItemScopeName | はい | String | アクションが `foreach` または `until` ループ内にある場合の繰り返し項目名 |
-| repeatItemIndex | はい | 整数 | アクションが `foreach` または `until` ループ内にあり、繰り返される項目のインデックス番号を示します |
+| repeatItemIndex | はい | Integer | アクションが `foreach` または `until` ループ内にあり、繰り返される項目のインデックス番号を示します |
 | trackingId | いいえ | String | 追跡 ID (メッセージを関連付けるために使用します) |
 | correlationId | いいえ | String | 関連付け ID (メッセージを関連付けるために使用します) |
 | clientRequestId | いいえ | String | クライアントがメッセージを関連付けるためにこのプロパティを設定できます |

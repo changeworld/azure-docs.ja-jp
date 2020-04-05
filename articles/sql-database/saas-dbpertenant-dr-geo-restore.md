@@ -12,10 +12,10 @@ ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/14/2019
 ms.openlocfilehash: 270fc157fa14efa19ed30d35b614fb769804b72e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73826472"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>geo リストアを使用して、データベースのバックアップからマルチテナント SaaS アプリケーションを復旧する
@@ -362,7 +362,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
 
 復帰の過程で、しばらくの間、テナント データベースが復旧リージョンと元のリージョンに分散することがあります。 データベースごとに、アプリはテナント サーバーの名前で DNS 参照を行って、データベースが存在するリージョンを調べます。 SQL Database では、サーバー名は別名です。 別名のサーバー名には、リージョンの名前が含まれています。 アプリケーションとデータベースのリージョンが異なる場合、アプリケーションはデータベース サーバーと同じリージョン内のインスタンスにリダイレクトします。 データベースと同じリージョン内のインスタンスにリダイレクトすることで、アプリとデータベース間の待機時間を最小限に抑えられます。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 > [!div class="checklist"]

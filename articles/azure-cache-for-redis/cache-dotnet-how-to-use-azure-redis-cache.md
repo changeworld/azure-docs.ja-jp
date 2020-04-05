@@ -7,13 +7,13 @@ ms.service: cache
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/18/2018
-ms.openlocfilehash: b22d40e29d2150592f2753edd789458fbf25911f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/11/2020
+ms.openlocfilehash: 6384416c2feef3c9a9517bce08374a7667eb5d6b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433520"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79369065"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>クイック スタート:.NET Framework アプリケーションで Azure Cache for Redis を使用する
 
@@ -49,8 +49,7 @@ ms.locfileid: "75433520"
 
 Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** をクリックします。
 
-**Visual C#** で **Windows Classic Desktop** をクリックし、**コンソール アプリ**、 **[OK]** の順にクリックし、新しいコンソール アプリを作成します。
-
+**[コンソール アプリ (.NET Framework)]** を選択し、 **[次へ]** を選択してアプリを構成します。 **[プロジェクト名]** を入力し、 **[作成]** をクリックして新しいコンソール アプリケーションを作成します。
 
 <a name="configure-the-cache-clients"></a>
 
@@ -128,7 +127,7 @@ Azure Cache for Redis への接続には、`ConnectionMultiplexer` クラスを�
         {
             // Connection refers to a property that returns a ConnectionMultiplexer
             // as shown in the previous example.
-            IDatabase cache = lazyConnection.Value.GetDatabase();
+            IDatabase cache = Connection.GetDatabase();
 
             // Perform cache operations using the cache object...
 

@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: a0634cff6060e47ea059508f5f14abcaa679b53f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 74e5af6c295ffada0fbb8d1ded63177afadad285
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688466"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058124"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>CLI を使用して App Service アプリを SQL データベースに接続する
 
@@ -36,7 +36,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、App Service アプリ、SQL データベース、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service プランを作成します。 |
@@ -46,7 +46,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 | [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) | データベースへの接続文字列を生成します。 |
 | [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | App Service アプリのアプリ設定を作成または更新します。 アプリケーション設定は、アプリの環境変数として公開されます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

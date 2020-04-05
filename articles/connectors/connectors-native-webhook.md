@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 tags: connectors
 ms.openlocfilehash: 1578ca030bc8bab971a44e1afcce1d1ab9e1d5e9
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78674064"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Azure Logic Apps で HTTP Webhook を使用して、自動化されたイベントベースのワークフローを作成して実行する

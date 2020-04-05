@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954600"
 ---
 # <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Azure へのオンプレミスのディザスター リカバリーの VM のネットワーク インターフェイスを管理する
@@ -68,5 +68,5 @@ Virtual Machine Manager クラウドの場合、ネットワーク マッピン�
 
 6. **[保存]** を選択してすべての変更を保存します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
   Azure 仮想マシンのネットワーク インターフェイスの詳細については、[こちら](../virtual-network/virtual-network-network-interface-vm.md)を参照してください。

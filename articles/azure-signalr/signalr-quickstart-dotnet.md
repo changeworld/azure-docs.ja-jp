@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 04/20/2019
 ms.author: zhshang
 ms.openlocfilehash: ec5b7a75bced4b7cd81a120925558b8c1be57818
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74158178"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>クイック スタート:ASP.NET と SignalR Service を使ってチャット ルームを作成する
@@ -114,7 +114,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、新しい Azure SignalR Service リソースを作成して、ASP.NET Web アプリと共に使用しました。 次に、Azure SignalR Service を ASP.NET Core と共に使用して、リアルタイム アプリケーションを開発する方法について学びます。
 

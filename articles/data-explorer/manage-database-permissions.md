@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: b4d5e56e990c0353f44209c6b19ae2d1727de27a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76030097"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Azure データ エクスプローラーのデータベース アクセス許可を管理する

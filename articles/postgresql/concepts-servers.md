@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74768165"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server
@@ -62,7 +62,7 @@ PostgreSQL サーバー パラメーターは、サーバーの構成を決定�
 Postgres の管理対象サービスとして、Azure Database for PostgreSQL 内の構成可能なパラメーターはローカル Postgres インスタンス内のパラメーターのサブセットです (Postgres パラメーターについて詳しくは、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/9.6/static/runtime-config.html)をご覧ください)。 Azure Database for PostgreSQL サーバーは、作成時に各パラメーターに対して既定値で有効化されます。 変更を反映するためにサーバーの再起動やスーパー ユーザーのアクセス権が必要な一部のパラメーターは、ユーザーが構成することはできません。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - サービスの概要については、 [Azure Database for PostgreSQL の概要](overview.md)に関するページをご覧ください。
 - **サービス レベル**に基づく特定のリソース クォータと制限については、 [サービス レベル](concepts-pricing-tiers.md)に関するページをご覧ください。
 - サービスへの接続については、「 [Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)」を参照してください。

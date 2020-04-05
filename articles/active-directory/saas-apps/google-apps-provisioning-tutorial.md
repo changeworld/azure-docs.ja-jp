@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:G Suite を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+title: 'チュートリアル: G Suite を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Azure AD から G Suite に対してユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationCenter: na
@@ -15,13 +15,13 @@ ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 969a2fb5444ae8ece2aa302c04a5bbb85dcca917
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057721"
 ---
-# <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル: G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、ユーザーまたはグループ、あるいはその両方を G Suite に自動的にプロビジョニングしたり、プロビジョニング解除したりするように Azure AD を構成するために G Suite と Azure Active Directory (Azure AD) で実行される手順を示すことです。
 
@@ -133,7 +133,7 @@ Azure AD で自動ユーザー プロビジョニング用に G Suite を構成�
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Azure AD で G Suite の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

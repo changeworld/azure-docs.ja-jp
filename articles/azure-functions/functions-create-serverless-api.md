@@ -7,10 +7,10 @@ ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 61b930eec1385b8c4054f9c202547a82e61e55e7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75769270"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Functions で HTTP エンドポイントをカスタマイズする
@@ -99,7 +99,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 
     | フィールド | 値の例 | 説明 |
     |---|---|---|
-    | Name | HelloProxy | 管理にのみ使用するフレンドリ名です |
+    | 名前 | HelloProxy | 管理にのみ使用するフレンドリ名です |
     | [ルート テンプレート] | /api/remotehello | このプロキシの呼び出しに使用するルートを決定します |
     | [バックエンド URL] | https://%HELLO_HOST%/api/hello | 要求の送信先となるエンドポイントを指定します |
     

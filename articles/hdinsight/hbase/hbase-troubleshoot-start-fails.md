@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
 ms.openlocfilehash: 290b541d9b5e86616373d2e426241fca07e780ed
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887208"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Azure HDInsight で Apache HBase Master (HMaster) を開始できない
@@ -30,7 +30,7 @@ HMaster は、起動プロセス中、データをスクラッチ (.tmp) フォ�
 
 HMaster では、WAL フォルダーに対して基本的な list コマンドが実行されます。 いずれかのフォルダーに予期しないファイルが見つかると、例外がスローされ、HMaster は起動しません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 呼び出し履歴を確認し、問題の原因となっているフォルダーを特定します (たとえば、WAL フォルダーや .tmp フォルダーが原因の場合があります)。 次に、Cloud Explorer または HDFS コマンドを使用して問題のファイルを特定します。 通常、これは `*-renamePending.json` ファイルです (`*-renamePending.json` ファイルは、WASB ドライバーでアトミックな名前変更操作を実装するために使用されるジャーナル ファイルです。 この実装のバグが原因で、プロセスのクラッシュ後にこれらのファイルが残されることがあります)。Cloud Explorer または HDFS コマンドを使用して、このファイルを強制的に削除します。
 
@@ -50,7 +50,7 @@ HMaster では、WAL フォルダーに対して基本的な list コマンド�
 
 HBase を再起動した後、HMaster を初期化できませんでした。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 1. HBase シェルで次のコマンドを入力します (適宜、実際の値に置き換えてください)。
 
@@ -81,7 +81,7 @@ HMaster は、`java.io.IOException: Timedout 300000ms waiting for namespace tabl
 
 この問題は、HMaster サービスを再起動したときに、フラッシュされていない多数のテーブルとリージョンが存在する場合に発生します。 タイムアウトは、HMaster の既知の欠陥です。 一般的なクラスター スタートアップ タスクは時間がかかることがあります。 namespace テーブルがまだ割り当てられていない場合、HMaster はシャットダウンします。 時間のかかるスタートアップ タスクが発生するのは、フラッシュされていないデータが大量に存在し、5 分のタイムアウトでは間に合わない場合です。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 1. Apache Ambari UI 内で、 **[HBase]**  >  **[Configs]\(構成\)** に移動します。 カスタム `hbase-site.xml` ファイルに、次の設定を追加します。
 
@@ -109,7 +109,7 @@ HMaster は、`java.io.IOException: Timedout 300000ms waiting for namespace tabl
 
 `regionserver` JVM GC の長時間の一時停止が発生しています。 この一時停止により、`regionserver` が応答しなくなり、zk セッション タイムアウトの 40 秒以内に HMaster にハートビートを送信できなくなります。 HMaster では、`regionserver` が停止しているとみなされ、`regionserver` の中止と再起動が行われます。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Zookeeper のセッション タイムアウトを変更します。`hbase-site` サイトの設定 `zookeeper.session.timeout` だけでなく、Zookeeper の `zoo.cfg` 設定 `maxSessionTimeout` も変更する必要があります。
 
@@ -135,7 +135,7 @@ HMasters が HBase クラスターで起動できませんでした。
 
 セカンダリ ストレージ アカウントに対して HDFS と HBase の設定が正しく構成されていません。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 hbase.rootdir: wasb://@.blob.core.windows.net/hbase を設定し、Ambari でサービスを再起動します。
 

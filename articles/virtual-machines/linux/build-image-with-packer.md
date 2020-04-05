@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: 338541661b335e3d96a267f01590173f8ce8ee89
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 3aec50b8c8f2033b7340bde15ea7670c1a0b6bb9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969284"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534221"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Packer を使用して Azure に Linux 仮想マシンのイメージを作成する方法
 Azure の各仮想マシン (VM) は、Linux ディストリビューションと OS のバージョンを定義するイメージから作成されます。 イメージには、プリインストールされているアプリケーションと構成を含めることができます。 Azure Marketplace には、ほとんどのディストリビューションおよびアプリケーション環境用の自社製およびサード パーティ製のイメージが数多く用意されています。また、ニーズに合わせて独自のイメージを作成することもできます。 この記事では、オープン ソース ツール [Packer](https://www.packer.io/) を使用して Azure に独自のイメージを定義およびビルドする方法について、詳しく説明します。
@@ -42,7 +42,7 @@ az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, t
 
 上記のコマンドの出力例は、次のとおりです。
 
-```azurecli
+```output
 {
     "client_id": "f5b6a5cf-fbdf-4a9f-b3b8-3c2cd00225a4",
     "client_secret": "0e760437-bf34-4aad-9f8d-870be799c55d",
@@ -133,7 +133,7 @@ az account show --query "{ subscription_id: id }"
 
 上記のコマンドの出力例は、次のとおりです。
 
-```bash
+```output
 azure-arm output will be in this color.
 
 ==> azure-arm: Running builder ...

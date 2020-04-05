@@ -17,10 +17,10 @@ ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a387659e2375444fd32cf731ab4bccc210b669a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74081680"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SD Elements の統合
@@ -29,7 +29,7 @@ ms.locfileid: "74081680"
 
 * SD Elements にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して SD Elements に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -160,7 +160,7 @@ SD Elements で Azure AD SSO を構成してテストするには、次の構成
 
     c. **[Identity Provider Single Sign-On Service]\(ID プロバイダーのシングル サインオン サービス\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="create-sd-elements-test-user"></a>SD Elements のテスト ユーザーの作成
 

@@ -1,23 +1,22 @@
 ---
 title: Azure IoT Edge モジュール用のマーケットプレースの説明 | Azure Marketplace
 description: IoT Edge モジュール用のマーケットプレースの説明を作成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 8021b6fe40e006a95b3eeff1031606c38cc47b87
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.author: dsindona
+ms.openlocfilehash: 3ff65a637c1d3722e773ab27f051b3b5bc109a23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721627"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281733"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge モジュールの [Marketplace] タブ
 
-**[新しいプラン]** ページの **[Marketplace]** タブでは、マーケティング、販売、および法律に関する情報と契約を見込み客に提供できるほか、マーケットプレースによって生成されるリードを管理できます。 この長いフォームは、4 つのセクションに分かれています: **[概要]** 、 **[Marketing Artifacts]\(マーケティングの成果物\)** 、 **[Lead Management]\(潜在顧客の管理\)** 、 **[法的情報]** 。
+**[新しいプラン]** ページの **[Marketplace]** タブでは、マーケティング、販売、および法律に関する情報と契約を見込み客に提供できるほか、マーケットプレースによって生成されるリードを管理できます。 この長いフォームは、 **[概要]** 、 **[Marketing Artifacts]\(マーケティングの成果物\)** 、 **[リードの管理]** 、 **[法的情報]** の 4 つのセクションに分かれています。
 
 
 ## <a name="overview"></a>概要
@@ -33,7 +32,7 @@ ms.locfileid: "76721627"
 | **タイトル\***                 | プランのタイトル。 マーケットプレースで目立つように表示されます。  最大長は 50 文字です。 <!--ADD PICTURE IN ACTION-->|
 | **要約\***               | プランの短い要約。 最大長は 100 文字です。 <!--ADD PICTURE IN ACTION-->|
 | **[Long Summary]\(長い要約\)\***          | プランのより長い要約 ( **[要約]** と同じでもかまいません)。  最大長は 256 文字です。 <!--ADD PICTURE IN ACTION-->|
-| **Description\***           | プランの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。<br/> 末尾に*最小ハードウェア要件*の段落が含まれている必要があります。 次に例を示します。 <br/> <p><u>最小ハードウェア要件:</u>Linux x64 および arm32 OS、1 GB の RAM、500 MB のストレージ</p>
+| **説明\***           | プランの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。<br/> 末尾に*最小ハードウェア要件*の段落が含まれている必要があります。 次に例を示します。 <br/> <p><u>ハードウェアの最小要件:</u> Linux x64 および arm32 OS、1 GB の RAM、500 MB のストレージ</p>
 | **[Marketing Identifier]\(マーケティング識別子\)\***  | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。  次に例を示します。 <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Preview Subscription IDs (プレビュー サブスクリプション ID)** | 1 から 100 個のプレビューアーのサブスクリプション識別子を追加します。 ホワイトリストに登録されたこれらのサブスクリプションは、プランの発行後、運用が開始される前にプランにアクセスできます。 |
 | **役に立つリンク**          | プランが最もよく当てはまる、複数選択が可能なビジネスおよび技術のカテゴリ。  最大で 10 個設定できます。 少なくともドキュメントへのリンクを 1 つと、[Azure IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)に記載されている互換性のある IoT Edge デバイスへのリンクを 1 つ、追加するようにしてください。 |
@@ -76,7 +75,7 @@ ms.locfileid: "76721627"
 
 ## <a name="marketing-artifacts"></a>マーケティングの成果物
 
-このセクションには、次のサブセクションがあります: **[ロゴ]** 、 **[スクリーンショット]** 、 **[ビデオ]** 。 
+このセクションには、サブセクションとして、 **[ロゴ]** 、 **[スクリーンショット]** 、 **[ビデオ]** があります。 
 
 >[!Note]
 >必須のマーケティングの成果物はロゴだけですが、顧客へのアピールを最大にするために、すべて設定することをお勧めします。
@@ -161,7 +160,7 @@ As an example, the following hero icon is for the Azure Container Service.
 
 ## <a name="legal"></a>法的情報
 
-このセクションでは、各オファーに必須の 2 つの法的ドキュメントを指定できます。プライバシー ポリシーと利用規約。
+このセクションでは、各プランに必須の 2 つの法的ドキュメント (プライバシー ポリシーと利用規約) を指定できます。
 
 |  **フィールド**                    |     **説明**                                                          |
 |  ---------                    |     ---------------                                                          |

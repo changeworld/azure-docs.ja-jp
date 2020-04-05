@@ -5,10 +5,10 @@ keywords: ansible、azure、devops、bash、プレイブック、サービス �
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 8ba4c2296d903c4f35aa36eb92dfbc3b56ec4b18
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76713221"
 ---
 # <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>チュートリアル:Ansible を使用して Azure Service Bus のキューを構成する

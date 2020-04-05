@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfe4aeb17f482cc9d4126efc6d65d3f7d173536b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063545"
 ---
 # <a name="configure-linked-sign-on"></a>リンクされたサインオンの構成

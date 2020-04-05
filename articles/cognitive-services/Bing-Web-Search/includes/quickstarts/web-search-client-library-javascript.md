@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 0380dc8d2ff34cf9eecaad063a305491a357ca29
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78925564"
 ---
 Bing Web Search クライアント ライブラリを使用すると、Node.js アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、クライアントをインスタンス化し、要求を送信して、応答を出力する方法を学習します。
@@ -104,6 +104,6 @@ webSearchApiClient.web.search('seahawks').then((result) => {
 > [!div class="nextstepaction"]
 > [Cognitive Services Node.js SDK サンプル](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Azure Node SDK リファレンス](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-websearch/)

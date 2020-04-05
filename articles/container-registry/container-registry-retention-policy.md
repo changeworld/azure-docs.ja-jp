@@ -4,10 +4,10 @@ description: Azure コンテナー レジストリで保持ポリシーを有効
 ms.topic: article
 ms.date: 10/02/2019
 ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74454821"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>タグなしマニフェストの保持ポリシーの設定
@@ -59,7 +59,7 @@ az acr config retention update --registry myregistry --status enabled --days 0 -
 保有期間が 0 日の上記のポリシーを有効にすると、タグなしマニフェストが削除されることをすぐに確認できます。
 
 1. テスト イメージ `hello-world:latest` をレジストリにプッシュするか、別のテストイメージを選択して置き換えます。
-1. [az acr repository untag][az-acr-repository-untag] コマンドを使用して、例えば `hello-world:latest` イメージのタグを削除します。 タグなしマニフェストはレジストリに残ります。
+1. `hello-world:latest`az acr repository untag[ コマンドを使用して、例えば ][az-acr-repository-untag] イメージのタグを削除します。 タグなしマニフェストはレジストリに残ります。
     ```azurecli
     az acr repository untag --name myregistry --image hello-world:latest
     ```
@@ -96,7 +96,7 @@ az acr config retention update --registry myregistry --status disabled --type Un
 1. 自分の Azure コンテナー レジストリに移動します。 **[ポリシー]** の下にある **[Retention (Preview)]\(保持 (プレビュー)\)** を選択します。
 1. **[状態]** で **[無効]** を選択します。 **[保存]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Container Registry の[イメージとリポジトリを削除](container-registry-delete.md)する方法を確認します
 

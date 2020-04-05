@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 0cf0911193cd379da60edb3064d3c6f195cf0190
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199859"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Azure 用にクレジット カードを追加、更新、または削除する
@@ -122,7 +122,7 @@ Microsoft 顧客契約を結んでいる場合、クレジット カードは課
 
 クレジット カードを変更するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. **[コストの管理と請求]** で検索します。
 1. 左側のメニューで、 **[課金プロファイル]** をクリックします。
 1. 課金プロファイルを選択します。
@@ -142,7 +142,7 @@ Azure portal で、クレジット カードの詳細を編集したり (有効�
 
 クレジット カードを編集または削除するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. **[コストの管理と請求]** で検索します。
 1. 左側のメニューで、 **[課金プロファイル]** をクリックします。
 1. 課金プロファイルを選択します。

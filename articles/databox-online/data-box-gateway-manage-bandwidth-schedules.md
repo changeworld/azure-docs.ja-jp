@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 63f3572dcb5affb9fcf89d86a665bef9414cb011
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60755350"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Azure portal を使用して Azure Data Box Gateway の帯域幅のスケジュールを管理する  
@@ -61,11 +61,11 @@ Azure portal を使用して Data Box Gateway の帯域幅スケジュールを�
 
 3. 必要な変更を加えたら、変更を保存します。
 
-    ![ユーザーを変更する](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
+    ![ユーザーの変更](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
 
 4. スケジュールを変更した後、スケジュールの一覧は、変更されたスケジュールを反映するように更新されます。
 
-    ![ユーザーを変更する](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
+    ![ユーザーの変更](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
 
 
 ## <a name="delete-a-schedule"></a>スケジュールの削除
@@ -82,6 +82,6 @@ Data Box Gateway デバイスに関連付けられている帯域幅のスケジ
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [帯域幅を管理する](data-box-gateway-manage-bandwidth-schedules.md)方法について学習します。

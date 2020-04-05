@@ -3,7 +3,7 @@ title: XEvent リング バッファーのコード
 description: Azure SQL Database で、リング バッファー ターゲットの使用によって簡素化された TRANSACT-SQL のコード サンプルを提供します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 7adffac045ddb2ba369993b1b805e3ce2304fb38
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ad98b61d6339388551af93671b3d4d892942f4e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822310"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79213964"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL Database での拡張イベント向けリング バッファー ターゲット コード
 
@@ -52,9 +52,9 @@ ms.locfileid: "73822310"
   * 「 [SQL Server Management Studio のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
   * [ダウンロードへの直接リンク。](https://go.microsoft.com/fwlink/?linkid=616025)
 
-## <a name="code-sample"></a>サンプル コード
+## <a name="code-sample"></a>コード サンプル
 
-わずかな変更を加えると、以下のリング バッファーのコード サンプルを、Azure SQL Database または Microsoft SQL Server のいずれかで実行できます。 異なる点は、手順 5. の FROM 句で使用されるいくつかの動的管理ビュー (DMV) の名前の中に「_database」というノード名があることです。 例:
+わずかな変更を加えると、以下のリング バッファーのコード サンプルを、Azure SQL Database または Microsoft SQL Server のいずれかで実行できます。 異なる点は、手順 5. の FROM 句で使用されるいくつかの動的管理ビュー (DMV) の名前の中に「_database」というノード名があることです。 次に例を示します。
 
 * sys.dm_xe<strong>_database</strong>_session_targets
 * sys.dm_xe_session_targets
@@ -347,7 +347,7 @@ Azure SQL Database での拡張イベントに関する主なトピックは次�
 
 拡張イベントの他のコード サンプル トピックは次のリンクから入手可能です。 ただし、対象が Azure SQL Database または Microsoft SQL Server のどちらかを確認するために、サンプルを定期的にチェックする必要があります。 これにより、変更がサンプル実行に十分であるかを判断できます。
 
-* Azure SQL Database のコード サンプル:[SQL Database の拡張イベントのためのイベント ファイル ターゲット コード](sql-database-xevent-code-event-file.md)
+* Azure SQL Database のコード サンプル: [Event File target code for extended events in SQL Database (SQL Database での拡張イベントのイベント ファイル ターゲット コード)](sql-database-xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

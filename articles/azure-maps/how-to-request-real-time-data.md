@@ -1,20 +1,20 @@
 ---
 title: リアルタイムの輸送データを要求する | Microsoft Azure Maps
 description: Microsoft Azure Maps Mobility Service を使用してリアルタイム データを要求します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 09/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9710366bdb7d8e86c8abb54b29b8dde3cc315692
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: d3145181a863bf8188dd0b0bb52cd2efc662ce2f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209904"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335476"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Azure Maps Mobility Service を使用してリアルタイム データを要求する
 
@@ -37,7 +37,7 @@ Azure Maps で公共輸送 API を呼び出すには、最初に Azure Maps ア�
 
 ## <a name="request-real-time-arrivals-for-a-stop"></a>停留所のリアルタイムの到着を要求する
 
-特定の公共輸送機関の停留所にリアルタイムの到着データを要求するには、Azure Maps [Mobility Service](https://aka.ms/AzureMapsMobilityService) の [Real-time Arrivals API](https://aka.ms/AzureMapsMobilityRealTimeArrivals) に要求を送信する必要があります。 要求を完了するには **metroID** と **stopID** が必要です。 これらのパラメーターを要求する方法の詳細については、[公共輸送機関のルートの要求](https://aka.ms/AMapsHowToGuidePublicTransitRouting)方法に関するガイドを参照してください。 
+特定の公共輸送機関の停留所にリアルタイムの到着データを要求するには、Azure Maps [Mobility Service](https://aka.ms/AzureMapsMobilityRealTimeArrivals) の [Real-time Arrivals API](https://aka.ms/AzureMapsMobilityService) に要求を送信する必要があります。 要求を完了するには **metroID** と **stopID** が必要です。 これらのパラメーターを要求する方法の詳細については、[公共輸送機関のルートの要求](https://aka.ms/AMapsHowToGuidePublicTransitRouting)方法に関するガイドを参照してください。 
 
 地下鉄 ID として "522" を使用しましょう。これは、"Seattle–Tacoma–Bellevue, WA" 地域の地下鉄 ID です。 停留所 ID として "522---2060603" を使用してください。このバス停は "Ne 24th St & 162nd Ave Ne, Bellevue WA" にあります。 この停留所での次のすべてのライブ到着について、次の 5 つのリアルタイム到着データを要求するには、次の手順を行います。
 
@@ -123,7 +123,7 @@ Azure Maps で公共輸送 API を呼び出すには、最初に Azure Maps ア�
 
 [Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) を利用すると、静的なリアルタイム情報を要求できます。 たとえば、自転車やスクーター置き場の空き情報を要求できます。 [Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) は Azure Maps [Mobility Service](https://aka.ms/AzureMapsMobilityService) にも含まれています。
 
-[Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) への要求を行うためには、そのステーションの **dockId** が必要です。 "bikeDock" に割り当てられている **objectType** パラメーターで [Get Nearby Transit API](https://aka.ms/AzureMapsMobilityNearbyTransit) に検索要求を行うことでドック ID を取得できます。 自転車のドッキング ステーションのリアルタイム データを取得するには、次の手順に従います。
+[Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) への要求を行うためには、そのステーションの **dockId** が必要です。 "bikeDock" に割り当てられている [objectType](https://aka.ms/AzureMapsMobilityNearbyTransit) パラメーターで **Get Nearby Transit API** に検索要求を行うことでドック ID を取得できます。 自転車のドッキング ステーションのリアルタイム データを取得するには、次の手順に従います。
 
 
 ### <a name="get-dock-id"></a>ドック ID を取得する

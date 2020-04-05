@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 08b12bd9d35aaa61c79d35a55068983cdc0f1b83
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77566460"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Azure Cosmos DB に地理空間データを照会する

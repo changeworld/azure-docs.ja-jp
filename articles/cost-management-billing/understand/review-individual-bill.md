@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199128"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>チュートリアル:個々の Azure 請求書を確認する
@@ -120,7 +120,7 @@ Azure portal でのコスト分析も、料金の検証に役立ちます。 請
 
 ![請求書の使用料金](./media/review-individual-bill/invoice-usage-charges.png)
 
-## <a name="external"></a>個別に請求される外部サービス
+## <a name="external-services-billed-separately"></a><a name="external"></a>個別に請求される外部サービス
 
 外部サービス (マーケットプレース) 料金は、サードパーティ ソフトウェア ベンダーによって作成されたリソースに対する金額です。 このようなリソースは Azure Marketplace から入手して利用できます。 たとえば、Barracuda Firewall はサードパーティによって提供される Azure Marketplace リソースです。 このファイアウォールと対応する測定に関するすべての料金は、外部サービス料金として表示されます。
 
@@ -149,7 +149,7 @@ VM が作成されると、各メーターが使用状況レコードの出力�
 
 請求の計算に使用されたメーターは、使用状況 CSV ファイルで確認できます。
 
-## <a name="payment"></a>請求金額を支払う
+## <a name="pay-your-bill"></a><a name="payment"></a>請求金額を支払う
 
 支払い方法としてクレジット カードを設定している場合、支払いは、請求期間の終了後、10 日以内に自動的に行われます。 クレジット カードの明細には、**MSFT Azure** と表記されます。
 

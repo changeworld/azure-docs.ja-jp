@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Blackboard Learn - Shibboleth の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Blackboard Learn - Shibboleth の統合 | Microsoft Docs'
 description: Azure Active Directory と Blackboard Learn - Shibboleth の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4ce22f072bdb41932352024b0f71f03860ccb9b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158829"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>チュートリアル:Azure Active Directory と Blackboard Learn - Shibboleth との統合
+# <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>チュートリアル: Azure Active Directory と Blackboard Learn - Shibboleth との統合
 
 このチュートリアルでは、Blackboard Learn - Shibboleth を Azure Active Directory (Azure AD) と統合する方法について説明します。
 Blackboard Learn - Shibboleth と Azure AD の統合には、次の利点があります。

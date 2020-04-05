@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: pasta
 ms.openlocfilehash: 749e75fed409632c613713a49154e4cd8dc265b3
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75945969"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-nodejs"></a>クイック スタート:イマーシブ リーダーを起動する Web アプリを作成する (Node.js)

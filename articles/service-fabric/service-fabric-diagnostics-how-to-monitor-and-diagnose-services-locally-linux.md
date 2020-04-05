@@ -4,10 +4,10 @@ description: ローカルの Linux 開発用コンピューターで Service Fab
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75526296"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>ローカル Linux コンピューター開発のセットアップでサービスを監視して診断する
@@ -40,7 +40,7 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-`app.properties` ファイルが指しているフォルダーが存在する必要があります。 `app.properties` ファイルを作成した後は、エントリ ポイントのスクリプトである `<applicationfolder>/<servicePkg>/Code/` フォルダー内の `entrypoint.sh` を修正して、`java.util.logging.config.file` プロパティを `app.properties` ファイルに設定する必要があります。 エントリは、次のスニペットのようになります。
+`app.properties` ファイルが指しているフォルダーが存在する必要があります。 `app.properties` ファイルを作成した後は、エントリ ポイントのスクリプトである `entrypoint.sh` フォルダー内の `<applicationfolder>/<servicePkg>/Code/` を修正して、`java.util.logging.config.file` プロパティを `app.properties` ファイルに設定する必要があります。 エントリは、次のスニペットのようになります。
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar

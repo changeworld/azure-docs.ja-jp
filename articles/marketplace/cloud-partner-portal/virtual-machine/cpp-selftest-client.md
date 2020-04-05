@@ -1,19 +1,18 @@
 ---
 title: 仮想マシンを事前に検証するための自己テスト クライアント | Azure Marketplace
 description: Azure Marketplace の仮想マシン イメージを事前に検証するための自己テスト クライアントを作成する方法。
-services: Azure, Marketplace, Cloud Partner Portal, Virtual Machine
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: pabutler
-ms.openlocfilehash: fc62875873f38630e592c79aebd6a138665ed6e4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: fb568400cb60f108303909353bfa703e98ab6157
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809209"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286423"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Azure 仮想マシン イメージを事前に検証するための自己テスト クライアントを作成する
 
@@ -65,10 +64,10 @@ Request body:    The Request body parameters should use the following JSON forma
 
 |      フィールド         |    説明    |
 |  ---------------   |  ---------------  |
-|  Authorization     |  "Bearer xxxx-xxxx-xxxx-xxxxx" という文字列には、PowerShell を使用して作成できる Azure Active Directory (AD) クライアント トークンが含まれています。          |
+|  承認     |  "Bearer xxxx-xxxx-xxxx-xxxxx" という文字列には、PowerShell を使用して作成できる Azure Active Directory (AD) クライアント トークンが含まれています。          |
 |  DNSName           |  テストする VM の DNS 名    |
 |  User              |  VM にサインインするためのユーザー名         |
-|  パスワード          |  VM にサインインするためのパスワード          |
+|  Password          |  VM にサインインするためのパスワード          |
 |  OS                |  VM のオペレーティング システム: `Linux` または `Windows` のどちらか          |
 |  PortNo            |  VM に接続するための空きポート番号。 このポート番号は通常、Linux の場合は `22`、Windows の場合は `5986` です。          |
 |  |  |
@@ -220,7 +219,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 
 次の手順を使用して、アプリケーションを作成する Azure AD テナントを選択します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. 上部のメニュー バーにある自分のアカウントを選択し、[ディレクトリ] 一覧から、アプリケーションを登録する Active Directory テナントを選択します。 または、 **[ディレクトリ + サブスクリプション]** アイコンを選択してグローバル サブスクリプション フィルターを表示します。 次のスクリーン キャプチャは、このフィルターの例を示しています。
 
    ![サブスクリプション フィルターを選択する](./media/stclient-subscription-filter.png)
@@ -508,6 +507,6 @@ $result.Content
     },
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure 仮想マシンを正常にテストしたら、[オファーを発行](./cpp-publish-offer.md)できます。

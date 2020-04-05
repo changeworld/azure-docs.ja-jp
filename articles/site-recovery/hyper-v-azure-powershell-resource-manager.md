@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: 6499c986bef965848303ee9833fd59f5e3f0889c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773432"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229167"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell と Azure Resource Manager を使用して Azure に対する Hyper-V VM のディザスター リカバリーを設定する
 
@@ -42,10 +42,10 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 - 1 つ以上の VM を含む Windows Server 2012 R2 または Microsoft Hyper-V Server 2012 R2 を実行する Hyper-V ホスト。 Hyper-V サーバーは、直接、またはプロキシを経由して、インターネットに接続されている必要があります。
 - レプリケートする VM は、[こちらの前提条件](hyper-v-azure-support-matrix.md#replicated-vms)に従う必要があります。
 
-## <a name="step-1-sign-in-to-your-azure-account"></a>手順 1:Azure アカウントへのサインイン
+## <a name="step-1-sign-in-to-your-azure-account"></a>手順 1. Azure アカウントにログインする
 
 1. PowerShell コンソールを開いて次のコマンドを実行し、Azure アカウントにログインします。 `Connect-AzAccount` コマンドレットを実行すると、アカウントの資格情報の入力を求める Web ページが表示されます。
-   - または、**Credential** パラメーターを使用して、`Connect-AzAccount` コマンドレットにパラメーターとしてアカウント資格情報を組み込むこともできます。
+   - または、`Connect-AzAccount`Credential **パラメーターを使用して、** コマンドレットにパラメーターとしてアカウント資格情報を組み込むこともできます。
    - CSP パートナーがテナントの代理として活動している場合は、tenantID またはテナントのプライマリ ドメイン名を使用して顧客をテナントとして指定します。 例: `Connect-AzAccount -Tenant "fabrikam.com"`
 1. 1 つのアカウントが複数のサブスクリプションを持つことができるため、使用するサブスクリプションをアカウントに関連付けます。
 
@@ -71,7 +71,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
    Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices
    ```
 
-## <a name="step-2-set-up-the-vault"></a>手順 2:コンテナーを設定する
+## <a name="step-2-set-up-the-vault"></a>手順 2: コンテナーを設定する
 
 1. 資格情報コンテナーの作成先となる Azure Resource Manager リソース グループを作成するか、既存のリソース グループを使用します。 次のように、新しいリソース グループを作成します。 `$ResourceGroupName` 変数には、作成するリソース グループの名前が含まれ、$Geo 変数には、リソース グループを作成する Azure リージョン (たとえば、"Brazil South") が含まれます。
 
@@ -88,7 +88,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
 `Get-AzRecoveryServicesVault` コマンドレットを使用して、既存のコンテナーの一覧を取得できます。
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>手順 3:Recovery Services 資格情報コンテナーのコンテキストを設定する
+## <a name="step-3-set-the-recovery-services-vault-context"></a>手順 3. Recovery Services 資格情報コンテナーのコンテキストを設定する
 
 次のように、コンテナーのコンテキストを設定します。
 
@@ -96,7 +96,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 ```
 
-## <a name="step-4-create-a-hyper-v-site"></a>手順 4:Hyper-V サイトを作成する
+## <a name="step-4-create-a-hyper-v-site"></a>手順 4: Hyper-V サイトを作成する
 
 1. 次のコマンドを使用して、新しい Hyper-V サイトを作成します。
 
@@ -116,7 +116,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 1. ダウンロードしたキーを Hyper-V ホストにコピーします。 このキーは、Hyper-V ホストをサイトに登録するときに必要になります。
 
-## <a name="step-5-install-the-provider-and-agent"></a>手順 5:プロバイダーとエージェントのインストール
+## <a name="step-5-install-the-provider-and-agent"></a>手順 5: プロバイダーとエージェントをインストールする
 
 1. 最新版のプロバイダーのインストーラーを[マイクロソフト](https://aka.ms/downloaddra)からダウンロードします。
 1. Hyper-V ホストでインストーラーを実行します。
@@ -150,7 +150,7 @@ Hyper-V コア サーバーを実行している場合は、セットアップ �
    cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"
    ```
 
-## <a name="step-6-create-a-replication-policy"></a>手順 6:レプリケーション ポリシーを作成する
+## <a name="step-6-create-a-replication-policy"></a>手順 6: レプリケーション ポリシーを作成する
 
 開始する前に、指定したストレージ アカウントがコンテナーと同じ Azure リージョンに存在しており、geo レプリケーションが有効になっている必要があります。
 
@@ -188,7 +188,7 @@ Hyper-V コア サーバーを実行している場合は、セットアップ �
    $ProtectionContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $protectionContainer
    ```
 
-## <a name="step-7-enable-vm-protection"></a>手順 7:VM 保護を有効にする
+## <a name="step-7-enable-vm-protection"></a>手順 7: VM 保護を有効にする
 
 1. 次のように、保護する VM に対応する保護可能な項目を取得します。
 
@@ -242,9 +242,9 @@ Hyper-V コア サーバーを実行している場合は、セットアップ �
 > 1. VM のプロパティを更新して、マネージド ディスクへのフェールオーバーを有効にします
 > 1. `Get-AzRecoveryServicesAsrReplicationProtectedItem` コマンドレットを使用して、保護された項目の各ディスクのディスク ID を取得します
 > 1. `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` コマンドレットを使用して、ディスク暗号化セットに対するディスク ID のマッピングを含めるディクショナリ オブジェクトを作成します。 これらのディスク暗号化セットは、ターゲット リージョンで事前に作成されている必要があります。
-> 1. ディクショナリ オブジェクトを **DiskIdToDiskEncryptionSetMap** パラメーターで渡すことにより、`Set-AzRecoveryServicesAsrReplicationProtectedItem` コマンドレットを使用して VM のプロパティを更新します。
+> 1. ディクショナリ オブジェクトを `Set-AzRecoveryServicesAsrReplicationProtectedItem`DiskIdToDiskEncryptionSetMap **パラメーターで渡すことにより、** コマンドレットを使用して VM のプロパティを更新します。
 
-## <a name="step-8-run-a-test-failover"></a>手順 8:テスト フェールオーバーの実行
+## <a name="step-8-run-a-test-failover"></a>ステップ 8: テスト フェールオーバーを実行する
 
 1. 次のように、テスト フェールオーバーを実行します。
 

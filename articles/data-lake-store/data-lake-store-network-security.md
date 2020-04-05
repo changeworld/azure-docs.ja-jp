@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60612701"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の仮想ネットワーク統合
@@ -65,7 +65,7 @@ Data Lake Storage Gen1 仮想ネットワーク統合を使用すると、特定
 仮想ネットワークでファイアウォール ソリューションを使用し、宛先アカウントの URL に基づいてアウトバウンド トラフィックをフィルター処理します。 承認された Data Lake Storage Gen1 アカウントにのみアクセスできるようにします。
 
 考えられる選択肢としては、以下のようなものがあります。
-- [Azure Firewall](https://docs.microsoft.com/azure/firewall/overview):仮想ネットワークに [Azure ファイアウォールをデプロイして構成](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)します。 アウトバウンドの Data Lake Storage トラフィックを保護し、承認されている既知のアカウントの URL にロックダウンします。
+- [Azure Firewall](https://docs.microsoft.com/azure/firewall/overview): 仮想ネットワークに [Azure ファイアウォールをデプロイして構成](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)します。 アウトバウンドの Data Lake Storage トラフィックを保護し、承認されている既知のアカウントの URL にロックダウンします。
 - [ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/) ファイアウォール: 特定の商用ファイアウォール ベンダーのみ、管理者によって利用が許可されている場合があります。 Azure Marketplace で入手できるネットワーク仮想アプライアンス ファイアウォール ソリューションを使用して、同じ機能を実行します。
 
 > [!NOTE]
@@ -83,7 +83,7 @@ Data Lake Storage Gen1 仮想ネットワーク統合を使用すると、特定
 
 ## <a name="configuration"></a>構成
 
-### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>手順 1:Azure AD サービス エンドポイントを使用するための仮想ネットワークを構成する
+### <a name="step-1-configure-your-virtual-network-to-use-an-azure-ad-service-endpoint"></a>手順 1: Azure AD サービス エンドポイントを使用するための仮想ネットワークを構成する
 
 1.  Azure portal に移動し、ご利用の Azure アカウントにサインインします。
  
@@ -107,7 +107,7 @@ Data Lake Storage Gen1 仮想ネットワーク統合を使用すると、特定
  
     ![サービス エンドポイントの追加に成功](media/data-lake-store-network-security/config-vnet-4.png)
 
-### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>手順 2:Data Lake Storage Gen1 アカウントに対して許可する仮想ネットワークまたはサブネットを設定する
+### <a name="step-2-set-up-the-allowed-virtual-network-or-subnet-for-your-data-lake-storage-gen1-account"></a>手順 2: Data Lake Storage Gen1 アカウントに対して許可する仮想ネットワークまたはサブネットを設定する
 
 1.  仮想ネットワークを構成した後、ご利用のサブスクリプションに[新しい Azure Data Lake Storage Gen1 アカウントを作成](data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)します。 または、既存の Data Lake Storage Gen1 アカウントに移動できます。 Data Lake Storage Gen1 アカウントは、仮想ネットワークと同じリージョンに属している必要があります。
  

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: spelluru
 ms.openlocfilehash: 29816d158cf1428727b7ff17bcc2c347f402dedf
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77134530"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs でラボの仮想マシンのリソース グループを指定する
@@ -36,7 +36,7 @@ ms.locfileid: "77134530"
 ## <a name="use-azure-portal"></a>Azure Portal の使用
 次の手順に従って、ラボで作成されたすべての VM のリソース グループを指定します。 
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 左側のナビゲーション メニューで、 **[すべてのサービス]** を選択します。 
 3. 一覧で **[DevTest Labs]** を選択します。
 4. ラボの一覧で、目的の**ラボ**を選択します。  

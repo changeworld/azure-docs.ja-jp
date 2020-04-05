@@ -6,13 +6,13 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77593162"
 ---
-# <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) 用のアプリケーションの準備
+# <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) 用のアプリケーションの準備
 
 7 つのパートのうちの 1 番目であるこのチュートリアルでは、複数コンテナー アプリケーションを Kubernetes で使用する準備をします。 Docker Compose などの既存の開発ツールは、アプリケーションをローカルでビルドしてテストするために使用されます。 学習内容は次のとおりです。
 

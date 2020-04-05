@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Andromeda の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Andromeda の統合 | Microsoft Docs'
 description: Azure Active Directory と Andromeda の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68fa570ecfbafe2000bfa6eb9fa159dff48219a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67107082"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>チュートリアル:Azure Active Directory と Andromeda の統合
+# <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>チュートリアル: Azure Active Directory と Andromeda の統合
 
 このチュートリアルでは、Andromeda と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Andromeda と Azure AD の統合には、次の利点があります。
@@ -131,7 +131,7 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
 
     | Name | ソース属性|
     | ------ | -----------|
-    | role        | アプリ固有のロール |
+    | ロール (role)        | アプリ固有のロール |
     | type        | アプリの種類 |
     | company       | CompanyName |
 
@@ -154,7 +154,7 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -204,7 +204,7 @@ Andromeda で Azure AD シングル サインオンを構成するには、次�
 
     ![Andromeda 属性マップ](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
 
-    i. **[Save]** をクリックします。
+    i. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

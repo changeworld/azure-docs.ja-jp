@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465222"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229171"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute と Azure Site Recovery
 
@@ -46,7 +46,7 @@ Site Recovery は、パブリック エンドポイント経由で、ターゲ�
 
 仮想マシンまたはサーバーが Azure 仮想ネットワークにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使ってアクセスできます。 
 
-組み合わせたシナリオは次の図のように表されます。![ExpressRoute を使用してオンプレミスから Azure へ](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
+組み合わせたシナリオは次の図のように表されます: ![オンプレミスから Azure へ (Azure ExpressRoute 使用)](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>ExpressRoute を使用した Azure から Azure へのレプリケーション
 

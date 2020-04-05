@@ -16,10 +16,10 @@ ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ab8f18c065b283883cfca0a0d555a5fa3bb9d5a
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78897808"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-awardspring"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AwardSpring の統合

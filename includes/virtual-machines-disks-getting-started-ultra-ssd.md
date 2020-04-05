@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ff3409fad12e54be5ac00ead3ca44c1f24bb0af8
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 0d081a8cec088f4743bd0dc7d3cc37a9fade61d1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268314"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80117044"
 ---
 Azure Ultra ディスクは、Azure IaaS 仮想マシン (VM) に高スループット、高 IOPS、および一貫性のある低待機時間のディスク ストレージを提供します。 この新しいオファリングは、Microsoft の既存のディスク オファリングと同じレベルの可用性で最上のパフォーマンスを提供します。 Ultra ディスクの 1 つの主なメリットは、VM を再起動することなく、SSD のパフォーマンスをワークロードと共に動的に変更する機能です。 Ultra ディスクは、SAP HANA、最上位層のデータベース、トランザクションの多いワークロードなどのデータ集中型のワークロードに適しています。
 
@@ -27,7 +27,7 @@ Ultra ディスクを利用するには、ご使用の可用性ゾーンを確�
 
 CLI:
 
-```bash
+```azurecli
 $subscription = "<yourSubID>"
 # example value is southeastasia
 $region = "<yourLocation>"
@@ -49,7 +49,7 @@ $vmSize = "Standard_E64s_v3"
 
 **[ゾーン]** 値を保持します。これは可用性ゾーンを表し、後で Ultra ディスクをデプロイするために必要になります。
 
-|ResourceType  |Name  |Location  |ゾーン  |Restriction  |機能  |値  |
+|ResourceType  |名前  |場所  |ゾーン  |Restriction  |機能  |値  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -180,7 +180,7 @@ az disk create `
 
 あるいは、既存の VM が Ultra ディスクを使用できるリージョン/可用性ゾーンに存在する場合は、新しい VM を作成しなくても Ultra ディスクを使用できます。
 
-```bash
+```azurecli
 $rgName = "<yourResourceGroupName>"
 $vmName = "<yourVMName>"
 $diskName = "<yourDiskName>"

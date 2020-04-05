@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744736"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233523"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 仮想ネットワーク アーキテクチャ
 

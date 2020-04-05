@@ -2,19 +2,19 @@
 title: Node.js から Azure Queue storage を使用する - Azure Storage
 description: Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。 サンプルは Node.js で記述されています。
 author: mhopkins-msft
-ms.service: storage
 ms.author: mhopkins
 ms.date: 12/08/2016
+ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 9eee7f6b321a5ba660e1a0a5a48771c599746bcb
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 7abcad03678131668700f5d2c64b9c971081cb89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673078"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060933"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Azure Queue サービスを使用して Node.js でキューを作成および削除する
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

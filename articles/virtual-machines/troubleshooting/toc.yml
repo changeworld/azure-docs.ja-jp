@@ -69,18 +69,24 @@
           href: boot-diagnostics.md
         - name: BitLocker のエラー
           href: troubleshoot-bitlocker-boot-error.md
-        - name: ファイル システム エラーのチェック
-          href: troubleshoot-check-disk-boot-error.md
         - name: ブルー スクリーン エラー
           href: troubleshoot-common-blue-screen-error.md
-        - name: VM の起動が停止しています
-          href: troubleshoot-vm-boot-configure-update.md
+        - name: ファイル システム エラーのチェック
+          href: troubleshoot-check-disk-boot-error.md
+        - name: クリティカルなプロセスが無効になりました
+          href: troubleshoot-guide-critical-process-died.md
         - name: 重要なサービスが失敗しました
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: 起動可能なディスクではありません
+          href: troubleshoot-guide-not-bootable-disk.md
         - name: 再起動ループ
           href: troubleshoot-reboot-loop.md
         - name: Windows Update でのスタック
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: VM の起動が停止しています
+          href: troubleshoot-vm-boot-configure-update.md
+        - name: Windows ブート マネージャーが原因で VM を起動できない
+          href: troubleshoot-guide-windows-boot-manager-menu.md
 - name: VM に接続できない
   items:
     - name: RDP

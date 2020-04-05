@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: 22efb5e94049b975780c6f6ea69aa94a71cc9992
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366653"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235635"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
 

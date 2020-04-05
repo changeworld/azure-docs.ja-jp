@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: 10549abfbdacf1fc1ae6b99f4cab20a290c32a2d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67707822"
 ---
 # <a name="optimization-for-linux"></a>Linux 向けの最適化
@@ -73,7 +73,7 @@ service cpupower stop
 sudo systemctl disable cpupower
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [InfiniBand を有効にして](enable-infiniband.md) OS イメージを最適化する方法について説明します。
 

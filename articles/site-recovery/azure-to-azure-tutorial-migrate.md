@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 4882206692c334d6ab6af28feb5d2cba5277eea1
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78303938"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
@@ -105,7 +105,7 @@ Site Recovery は、サブスクリプションとリソース グループに�
 
     ![レプリケーションを有効にする](media/tutorial-migrate-azure-to-azure/settings.png)
 
-## <a name="move"></a>詳細ビュー
+## <a name="move"></a>[詳細ビュー]
 
 次の手順では、ターゲット リージョンに移動する方法を示します。
 

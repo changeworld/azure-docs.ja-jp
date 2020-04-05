@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: 0b0352632491dbfc46ed4819653c6cb902eee4ce
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74923718"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Cloud for Customer (C4C) からデータをコピーする
@@ -37,7 +37,7 @@ SAP Cloud for Customer のデータを、サポートされる任意のシンク
 
 具体的には、Azure Data Factory はこのコネクタを使用して、SAP Cloud for Sales、SAP Cloud for Service、SAP Cloud for Social Engagement ソリューションを含む SAP Cloud for Customer との間でデータをコピーできます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -49,10 +49,10 @@ SAP Cloud for Customer のリンクされたサービスでは、次のプロパ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**SapCloudForCustomer**。 | はい |
+| type | type プロパティは **SapCloudForCustomer** に設定する必要があります。 | はい |
 | url | SAP C4C OData サービスの URL。 | はい |
 | username | SAP C4C に接続するためのユーザー名を指定します。 | はい |
-| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| パスワード | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合はいいえ、シンクの場合ははい |
 
 >[!IMPORTANT]
@@ -89,7 +89,7 @@ SAP Cloud for Customer からデータをコピーするには、データセッ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**SapCloudForCustomerResource** |はい |
+| type | データセットの type プロパティは **SapCloudForCustomerResource** に設定する必要があります。 |はい |
 | path | SAP C4C OData エンティティのパスを指定します。 |はい |
 
 **例:**
@@ -121,7 +121,7 @@ SAP Cloud for Customer からデータをコピーするには、コピー ア�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**SapCloudForCustomerSource**  | はい |
+| type | type プロパティは **SapCloudForCustomerSource** に設定する必要があります。  | はい |
 | query | データを読み取るカスタム OData クエリを指定します。 | いいえ |
 
 特定の日のデータを取得するサンプル クエリ: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
@@ -164,9 +164,9 @@ SAP Cloud for Customer にデータをコピーするには、コピー アク�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**SapCloudForCustomerSink**  | はい |
-| writeBehavior | 操作の書き込み動作。 “Insert” または “Update” を指定できます。 | No. 既定値: "Insert"。 |
-| writeBatchSize | 書き込み操作のバッチ サイズ。 最適なパフォーマンスを得るバッチ サイズは、テーブルまたはサーバーによって異なることがあります。 | No. 既定値: 10。 |
+| type | type プロパティは **SapCloudForCustomerSink** に設定する必要があります。  | はい |
+| writeBehavior | 操作の書き込み動作。 “Insert” または “Update” を指定できます。 | いいえ。 既定値: "Insert"。 |
+| writeBatchSize | 書き込み操作のバッチ サイズ。 最適なパフォーマンスを得るバッチ サイズは、テーブルまたはサーバーによって異なることがあります。 | いいえ。 既定値: 10。 |
 
 **例:**
 
@@ -225,14 +225,14 @@ SAP Cloud for Customer からデータをコピーするとき、次のSAP Cloud
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | string |
+| Edm.String | String |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

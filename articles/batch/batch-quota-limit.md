@@ -15,11 +15,11 @@ ms.date: 08/13/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: c8a78acfa1f3e7332cee337ae1a82ee365fe356a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358375"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226163"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -117,7 +117,7 @@ Batch アカウントのクォータは、[Azure portal][portal] で確認しま
 
     優先順位の低いクォータは、すべての VM シリーズ全体で 1 つの値です。 制約付き SKU が必要な場合は、 **[優先順位の低いコア]** を選択して、要求する VM ファミリを含める必要があります。
 
-    b. [ビジネスへの影響][support_sev]に従って **[重要度]** を選択します。
+    b. **ビジネスへの影響**に従って [[重要度]][support_sev] を選択します。
 
     **[次へ]** を選択します。
 

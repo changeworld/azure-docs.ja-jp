@@ -11,11 +11,11 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: b8a42723a9b56665160e660c0ea1451253c3d185
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588979"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228359"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory を使用して BLOB とキューへのアクセスを承認する
 

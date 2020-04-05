@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 007bbffbd7c4fcad339f88eb78991eb39fb829e6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74420988"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Azure SQL Database で単一データベースおよびプールされたデータベースのファイル領域を管理する
@@ -231,7 +231,7 @@ ALTER DATABASE [db1] SET AUTO_SHRINK ON
 
 データベース データ ファイルの縮小後は、インデックスが断片化され、パフォーマンスの最適化の効果が失われる可能性があります。 パフォーマンスの低下が発生した場合、データベース インデックスの再構築を検討します。 インデックスの断片化と再構築の詳細については、「[インデックスの再構成と再構築](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - データベースの最大サイズについては、以下を参照してください。
   - [Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限](sql-database-vcore-resource-limits-single-databases.md)

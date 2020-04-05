@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 03/05/2020
 ms.openlocfilehash: ccf9d0c3eef50c7dfd838f1929e52506e8984879
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78395267"
 ---
 # <a name="apply-transformation-module"></a>変換の適用モジュール

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Zscaler Private Access Administrator の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Zscaler Private Access Administrator の統合 | Microsoft Docs'
 description: Azure Active Directory と Zscaler Private Access Administrator の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7f0bc04bb8e7358f5bdb2e4dfc3db198e24303f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67085638"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>チュートリアル:Azure Active Directory と Zscaler Private Access Administrator の統合
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>チュートリアル: Azure Active Directory と Zscaler Private Access Administrator の統合
 
 このチュートリアルでは、Zscaler Private Access Administrator と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Zscaler Private Access Administrator と Azure AD の統合には、次の利点があります。
@@ -163,7 +163,7 @@ Zscaler Private Access Administrator で Azure AD シングル サインオン�
 
     d. **[Domains]** フィールドから自分のドメインを選択します。
     
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -253,7 +253,7 @@ Azure AD ユーザーが Zscaler Private Access Administrator にサインイン
 
     g. **[Timezone]** ボックスで、タイム ゾーンを選択します。
 
-    h. **[Save]** をクリックします。
+    h. **[保存]** をクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

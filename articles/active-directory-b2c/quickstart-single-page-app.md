@@ -12,10 +12,10 @@ ms.date: 09/12/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a5d4319f47530a91bcceb9b2dba94c6aa8e4c388
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78183892"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定

@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aed01ea11c1f53cb090d9c2e65ee23f521575649
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456919"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>ハイブリッド ID ディレクトリ統合ツールの比較
@@ -55,7 +55,7 @@ PP = パブリック プレビュー
 | FIM 同期ルールとコネクタによるオンプレミス システムへのプロビジョニングのサポート | | | |● |● |
 
  
-&#42; 現在、このために 2 つのオプションがサポートされています。  次に例を示します。 
+&#42; 現在、このために 2 つのオプションがサポートされています。  これらは次のとおりです。 
 
    1. Generic LDAP コネクタを使用して、それを Azure AD Connect の外部で有効にすることができます。  これは複雑であり、オンボーディングのためのパートナーと維持のための Premier サポート契約が必要になります。  このオプションでは、単一および複数の LDAP ディレクトリを処理できます。 
 
@@ -67,7 +67,7 @@ PP = パブリック プレビュー
 | デバイスの書き戻し |● | |● | | |
 | 属性の書き戻し (Exchange ハイブリッド デプロイの場合) |● |● |● |● |● |
 | グループ オブジェクトの書き戻し |● | | | | |
-| (セルフ サービスによるパスワードのリセット (SSPR) とパスワードの変更による) パスワードの書き戻し |● |● | | | |
+| (セルフサービス パスワード リセット (SSPR) とパスワードの変更による) パスワードの書き戻し |● |● | | | |
 
 ## <a name="authentication-feature-support"></a>認証機能のサポート
 | 機能 | Azure Active Directory Connect | Azure Active Directory 同期サービス - サポートされなくなりました  | Azure Active Directory 同期ツール (DirSync) - サポートされなくなりました  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
@@ -100,6 +100,6 @@ PP = パブリック プレビュー
 | AD から Azure AD に流れる属性の削除の許可 |● |● | | | |
 | 属性フローの高度なカスタマイズの許可 |● |● | |● |● |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。
 

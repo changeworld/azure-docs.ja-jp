@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 86854fa22a49f09e5d3d2fc5fdb53c245850fbac
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77587942"
 ---
 # <a name="connect-your-zimperium-mobile-threat-defense-to-azure-sentinel"></a>Zimperium Mobile Threat Defense を Azure Sentinel に接続する
@@ -49,7 +49,7 @@ Zimperium Mobile Threat Defense では、ログを統合して、**Azure Sentine
 4. 詳細については、[Zimperium カスタマー サポート ポータル](https://support.zimperium.com)を参照してください。
 
 
-## <a name="find-your-data"></a>データを見つける
+## <a name="find-your-data"></a>データの検索
 
 接続が正常に確立されると、Log Analytics の CustomLogs ZimperiumThreatLog_CL と ZimperiumMitigationLog_CL の下にデータが表示されます。
 

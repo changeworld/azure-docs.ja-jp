@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
 ms.openlocfilehash: e9a1024ca3ab68841474ab051c029042df4915b5
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78254945"
 ---
 # <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>SQL Server から SQL Database マネージド インスタンスへオンライン移行するためのカスタム ロール

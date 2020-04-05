@@ -12,17 +12,17 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: fabdd221ef99414eae0156babbd76dedb1f0745d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72243017"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Project Acoustics Unity クイック スタート
 Unity のProject Acoustics サンプル コンテンツを使用して、シミュレーション機能付きの設計 コントロールを試します。
 
 ソフトウェア要件:
-* Windows 10 用の [Unity 2018.2 以上](https://unity3d.com)
+* Windows 用の [Unity 2018.2 以降](https://unity3d.com)
 * [Project Acoustics のサンプル コンテンツ パッケージ](https://www.microsoft.com/download/details.aspx?id=57346)
 
 サンプル パッケージの内容
@@ -32,7 +32,7 @@ Unity のProject Acoustics サンプル コンテンツを使用して、シミ�
 
 ## <a name="import-the-sample-package"></a>サンプル パッケージをインポートする
 新しい Unity プロジェクトにサンプル パッケージをインポートします。
-1. Unity で **[Assets]\(アセット\)**  >  **[Import Package]\(パッケージのインポート\)**  >  **[Custom Package]\(カスタム パッケージ\)** の順に移動します。
+1. Unity で **[Assets]\(アセット\)** 、 **[Import Package]\(パッケージのインポート\)** 、 **[Custom Package]\(カスタム パッケージ\)** の順に移動します。
 
     ![Unity の [Import Package]\(パッケージのインポート\) のオプション](media/import-package.png)  
 
@@ -94,7 +94,7 @@ Project Acoustics では、プレーヤーの位置を中心とした "シミュ
 
 * 空間全体にわたって減衰時間を長くするには、**減衰時間スケール**を調整します。 特定のソースとリスナーの位置ペアのシミュレーションの結果が 1.5 秒の減衰時間であり、 **[Decay Time Scale]\(減衰時間スケール\)** が 2 に設定されている場合、ソースに適用される減衰時間は 3 秒です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Unity ベースの Project Acoustics 設計コントロール](unity-workflow.md)に関する詳細を参照します。
 * [設計プロセス](design-process.md)の背後にある概念を確認します。
 * ベイク前プロセスとベイク プロセスを確認するために[Azure アカウントを作成します](create-azure-account.md)。

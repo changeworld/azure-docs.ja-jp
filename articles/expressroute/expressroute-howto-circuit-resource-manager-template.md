@@ -9,10 +9,10 @@ ms.date: 11/13/2019
 ms.author: cherylmc
 ms.reviewer: ganesr
 ms.openlocfilehash: 78da84a462566cca1a2800174849159ace8dd6dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981150"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ExpressRoute 回線を作成する
@@ -34,7 +34,7 @@ Azure PowerShell を使用して、Azure Resource Manager テンプレートを�
 * 新しいネットワーク リソースを作成するアクセス許可があることを確認します。 適切なアクセス許可がない場合は、アカウント管理者に連絡してください。
 * 手順をより理解するため、開始する前に[ビデオを確認](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)できます。
 
-## <a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
 
 [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)には、Resource Manager テンプレートの適切なコレクションが含まれます。 [既存のテンプレート](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/)のいずれかを使用して、ExpressRoute 回線を作成できます。
 
@@ -84,7 +84,7 @@ Azure PowerShell を使用して、Azure Resource Manager テンプレートを�
 * [Azure CLI を使用する方法](../azure-resource-manager/templates/deploy-cli.md)。
 * [REST API を使用する方法](../azure-resource-manager/templates/deploy-rest.md)。
 
-## <a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
 
 **[削除]** アイコンを選択し、ExpressRoute 回線を削除できます。 次の情報をメモしておきます。
 

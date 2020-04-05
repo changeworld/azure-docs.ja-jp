@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3e505e4823db8c9f42bbff216f30326081110dcf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67088981"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>チュートリアル:Azure Active Directory と TeamSeer の統合
@@ -130,19 +130,19 @@ TeamSeer で Azure AD シングル サインオンを構成するには、次の
 
 1. **[HR Admin]** に移動します。
 
-    ![HR Admin](./media/teamseer-tutorial/ic789634.png "HR Admin")
+    ![[HR Admin]\(HR 管理者\)](./media/teamseer-tutorial/ic789634.png "[HR Admin]")
 
 1. **[Setup]** をクリックします。
 
-    ![Setup](./media/teamseer-tutorial/ic789635.png "Setup")
+    ![セットアップ](./media/teamseer-tutorial/ic789635.png "セットアップ")
 
 1. **[Set up SAML provider details]** をクリックします。
 
-    ![SAML Settings](./media/teamseer-tutorial/ic789636.png "SAML Settings")
+    ![SAML 設定](./media/teamseer-tutorial/ic789636.png "SAML 設定")
 
 1. SAML プロバイダーの詳細セクションで、次の手順に従います。
 
-    ![SAML Settings](./media/teamseer-tutorial/ic789637.png "SAML Settings")
+    ![SAML 設定](./media/teamseer-tutorial/ic789637.png "SAML 設定")
 
     a. **[URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
@@ -150,13 +150,13 @@ TeamSeer で Azure AD シングル サインオンを構成するには、次の
 
 1. SAML プロバイダー構成を完了するには、次の手順に従います。
 
-    ![SAML Settings](./media/teamseer-tutorial/ic789638.png "SAML Settings")
+    ![SAML 設定](./media/teamseer-tutorial/ic789638.png "SAML 設定")
 
     a. **[Test Email Addresses]** に、テスト ユーザーの電子メール アドレスを入力します。
   
     b. **[Issuer]** テキスト ボックスに、サービス プロバイダーの発行元 URL を入力します。
   
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -219,11 +219,11 @@ Azure AD ユーザーが TeamSeer にログインできるようにするには�
 
 1. **[HR Admin]\(HR 管理者\) \> [Users]\(ユーザー\)** の順に移動し、 **[Run the New User wizard]\(新しいユーザー ウィザードの実行\)** をクリックします。
 
-    ![HR Admin](./media/teamseer-tutorial/ic789640.png "HR Admin")
+    ![[HR Admin]\(HR 管理者\)](./media/teamseer-tutorial/ic789640.png "[HR Admin]")
 
 1. **[User Details]** セクションで、次の手順に従います。
 
-    ![ユーザーの詳細](./media/teamseer-tutorial/ic789641.png "User Details")
+    ![ユーザーの詳細](./media/teamseer-tutorial/ic789641.png "[ユーザーの詳細]")
 
     a. プロビジョニングする有効な Azure AD アカウントの**名**、**姓**、**ユーザー名 (メール アドレス)** を、対応するボックスに入力します。
   

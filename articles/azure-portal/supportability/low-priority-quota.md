@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: 3e6dddfc458f390f5648e23a8a2af8d714de4bf2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842790"
 ---
 # <a name="spot-quota-increase-limits-for-all-vm-series"></a>スポット クォータ: すべての VM シリーズの制限を増やす

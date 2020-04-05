@@ -2,20 +2,20 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 0803a847e9e864b361917df9f1a9c6b059ca2fe9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 617ab4114fd200c0b4306e3c27825bafe06b1764
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79203421"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80240106"
 ---
 <a name="HOLTop"></a>
 
 #### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
-[v3 リファレンス ドキュメント](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-ai-textanalytics/1.0.0b2/azure.ai.textanalytics.html) | [v3 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 パッケージ (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3 リファレンス ドキュメント](https://aka.ms/azsdk-python-textanalytics-ref-docs) | [v3 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | [v3 パッケージ (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 #### <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
 
@@ -27,9 +27,9 @@ ms.locfileid: "79203421"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
-* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 
-    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 この作業は、このクイックスタートの中で後から行います。
-    * Free 価格レベルを使ってサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 展開されたら、 **[リソースに移動]** をクリックします。
+    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 ご自分のキーとエンドポイントは、後でクイックスタートでコードに貼り付けます。
+    * 運用環境では、Free 価格レベル (`F0`) を使ってサービスを試用してから、後で有料レベルにアップグレードすることができます。
 
 ## <a name="setting-up"></a>設定
 

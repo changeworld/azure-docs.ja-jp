@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: e51937dfe2afa0e92ce98b4c305555b53896e5f1
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78401758"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>クイック スタート:.NET 用 Face クライアント ライブラリ

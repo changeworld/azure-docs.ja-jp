@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, プレイブック, ネットワーク, 
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 1f08aebe7e9dcc1c5687f50ac91c7cb8cc8a62eb
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75659799"
 ---
 # <a name="tutorial-configure-azure-route-tables-using-ansible"></a>チュートリアル:Ansible を使用して Azure ルート テーブルを構成する

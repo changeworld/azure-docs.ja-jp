@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 03/25/2020
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be29f51771e24c67a8cd99a81e6a69be830dacb8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5718adf4fd76e2fbd0ff793dd2fa33ee08f7c0fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970637"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295045"
 ---
 # <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Azure Active Directory のエンドユーザーに対してアプリケーションを非表示にする
 
@@ -40,7 +40,7 @@ MyApps パネルと Office 365 アプリケーション ランチャーにアプ
 5.  非表示にするアプリケーションを検索し、アプリケーションをクリックします。  アプリケーションの概要が表示されます。
 6.  **[プロパティ]** をクリックします。 
 7.  **[ユーザーに表示しますか?]** という質問に対し、 **[いいえ]** をクリックします。
-8.  **[Save]** をクリックします。
+8.  **[保存]** をクリックします。
 
 ## <a name="use-azure-ad-powershell-to-hide-an-application"></a>Azure AD PowerShell を使用してアプリケーションを非表示にする
 
@@ -52,7 +52,7 @@ Connect-AzureAD
 $objectId = "<objectId>"
 $servicePrincipal = Get-AzureADServicePrincipal -ObjectId $objectId
 $tags = $servicePrincipal.tags
-$tags.Add("HideApp")
+$tags += "HideApp"
 Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
 ```
 
@@ -65,9 +65,9 @@ MyApps パネルに一切の Office 365 アプリケーションが表示され�
 3.  **[ユーザー設定]** を選択します。
 4.  **[エンタープライズ アプリケーション]** で、 **[エンド ユーザーがアプリケーションを起動して表示する方法を管理する]** をクリックします。
 5.  **[ユーザーは Office 365 ポータルでのみ Office 365 アプリを表示できる]** で、 **[はい]** をクリックします。
-6.  **[Save]** をクリックします。
+6.  **[保存]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [自分のグループをすべて表示する](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](assign-user-or-group-access-portal.md)
 * [エンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する](remove-user-or-group-access-portal.md)

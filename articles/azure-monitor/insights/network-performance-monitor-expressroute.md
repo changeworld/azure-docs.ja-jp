@@ -7,10 +7,10 @@ author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
 ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660752"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute モニター

@@ -1,19 +1,18 @@
 ---
 title: Marketplace のオファーを作成する | Azure Marketplace
 description: Cloud パートナー ポータルを使用して Azure Marketplace および AppSource Marketplace でオファーを作成する
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: pabutler
-ms.openlocfilehash: 4aa4e154c99f20963485a98d1a21af4ae2b7a1b1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: d14940eff569a80759e9db0bfa2d6d1541a01377
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828089"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286474"
 ---
 # <a name="create-azure-marketplace-and-appsource-offers"></a>Azure Marketplace および AppSource のオファーを作成する
 
@@ -33,10 +32,10 @@ Cloud パートナー ポータルの重要な目的の 1 つは、パブリッ�
 
 |   ボタン    |   目的                                                          |
 |   ------    |  --------                                                          |
-| **[[Save]]**    | 最近のデータ入力の変更を保存します。  ページから離れる前に変更を手動で保存する必要があります。そうしないと、変更は失われます。 | 
+| **および**    | 最近のデータ入力の変更を保存します。  ページから離れる前に変更を手動で保存する必要があります。そうしないと、変更は失われます。 | 
 | **破棄** | (最後の保存以降の) 最近のデータ入力の変更を破棄します             |
 | **比較** | 現在のオファーと発行済みのオファーの状態を比較します。  オファーが正常に発行された後にのみ有効になります。  |
-| **[発行]** | このオファーの発行プロセスを開始します                       |
+| **公開** | このオファーの発行プロセスを開始します                       |
 | **削除**  | 作成から発行までの間に、このオファーを削除します。 |
 |   |   |
 
@@ -57,6 +56,6 @@ Cloud パートナー ポータルの重要な目的の 1 つは、パブリッ�
 似た名前のタブでも、オファーの種類によって内容が異なる場合があります。  これらのタブのオファー固有の詳細は、各オファーの種類の [プランの作成] セクション内に表示されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 オファーを作成して保存した後は、発行する前後に[状態を表示](./cpp-view-status-offer.md)することができます。

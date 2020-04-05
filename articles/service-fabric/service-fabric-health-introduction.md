@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: 473aa2b9a74193a857390cd3e29b2b559b6084d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433895"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236683"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric の正常性モニタリングの概要
 Azure Service Fabric に導入している正常性モデルは、機能が豊富で、柔軟性と拡張可能性を備えた正常性評価とレポートを提供します。 このモデルを使用すると、クラスターの状態とその内部で実行されているサービスの状態をほぼリアルタイムで監視することができます。 正常性の情報を容易に取得でき、潜在的な問題を事前に解決できるため、問題が連鎖的に発生して大規模なサービス停止を引き起こす事態を防げます。 一般的なモデルでは、サービスがローカルのビューに基づくレポートを送信し、その情報が集計されて、クラスター レベル全体のビューが提供されます。

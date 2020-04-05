@@ -14,6 +14,10 @@
       items:
         - name: Azure Front Door 上の Web アプリケーション ファイアウォール
           href: ./afds/afds-overview.md
+    - name: Content Delivery Network
+      items:
+        - name: Azure CDN 上の Web アプリケーション ファイアウォール
+          href: ./cdn/cdn-overview.md
 - name: チュートリアル
   items:
     - name: Application Gateway
@@ -24,6 +28,10 @@
       items:
         - name: WAF ポリシーの構成 - ポータル
           href: ./afds/waf-front-door-create-portal.md
+    - name: Content Delivery Network
+      items:
+        - name: WAF ポリシーの構成 - ポータル
+          href: ./cdn/waf-cdn-create-portal.md
 - name: サンプル
   items:
     - name: Azure PowerShell
@@ -34,7 +42,7 @@
   items:
     - name: Application Gateway
       items:
-        - name: 管理されているルール
+        - name: マネージド ルール
           href: ./ag/application-gateway-crs-rulegroups-rules.md
         - name: カスタム ルールの概要
           href: ./ag/custom-waf-rules-overview.md
@@ -110,14 +118,14 @@
           href: ./afds/waf-front-door-tutorial-geo-filtering.md
         - name: 監視とログ記録
           href: ./afds/waf-front-door-monitor.md
-- name: トラブルシューティング
-  items:
-    - name: Application Gateway
+    - name: トラブルシューティング
       items:
-        - name: WAF のトラブルシューティング
-          href: ./ag/web-application-firewall-troubleshoot.md
-        - name: Log Analytics
-          href: ./ag/log-analytics.md
+        - name: Application Gateway
+          items:
+            - name: WAF のトラブルシューティング
+              href: ./ag/web-application-firewall-troubleshoot.md
+            - name: Log Analytics
+              href: ./ag/log-analytics.md
 - name: リファレンス
   items:
     - name: CRS ルール
@@ -128,12 +136,16 @@
           href: 'https://docs.microsoft.com/cli/azure/ext/front-door/network?view=azure-cli-latest'
         - name: Application Gateway
           href: 'https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest'
+        - name: CDN
+          href: 'https://docs.microsoft.com/cli/azure/cdn/waf?view=azure-cli-latest'
     - name: Azure PowerShell
       items:
         - name: フロントドア
           href: 'https://docs.microsoft.com/powershell/module/az.frontdoor/?view=azps-3.3.0'
         - name: Application Gateway
           href: 'https://docs.microsoft.com/powershell/module/az.network/?view=azps-3.3.0#application_gateway'
+        - name: CDN
+          href: 'https://www.powershellgallery.com/packages/Az.Cdn/1.5.0-preview'
     - name: REST API
       items:
         - name: フロントドア

@@ -14,10 +14,10 @@ ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60773810"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Azure DevTest Labs を使用する一般的なシナリオ
@@ -81,7 +81,7 @@ DevTest Labs の詳細を確認することにした場合、2 つの一般的�
 
 **概念実証デプロイ**は、組織の価値を確立する単一のチームによる集約的な作業に焦点を置きます。 規模拡大デプロイにしようと思いがちですが、このアプローチは、概念実証オプションよりも失敗しがちになる傾向があります。 そのため、小規模で開始し、最初のチームから学習し、別の 2、3 のチームで同じアプローチを繰り返してから、得られた知識に基づいて規模拡大デプロイを計画することをお勧めします。 概念実証が成功したら、1 つまたは 2 つのチームを選択し、そのシナリオ (開発環境とテスト環境) を特定し、その現在のユース ケースを文書化して、DevTest Labs を展開することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事を参照してください。
 
 - [DevTest ラボの概念](devtest-lab-concepts.md)

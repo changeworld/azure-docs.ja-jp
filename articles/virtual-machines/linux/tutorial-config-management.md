@@ -16,11 +16,11 @@ ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 5dd35ed2f4533d19cc3a59788d6422416dce13f5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034551"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223249"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Linux 仮想マシンを更新する
 
@@ -111,9 +111,9 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 新しい更新プログラムのデプロイを作成するには、 **[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ページが開きます。 次の表で説明されているプロパティの値を入力し、 **[作成]** をクリックします。
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 | --- | --- |
-| Name |更新プログラムの展開を識別する一意の名前。 |
+| 名前 |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| Linux または Windows|
 | 更新するグループ |Azure マシンの場合、サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 </br></br>Azure 以外のマシンの場合、既存の保存された検索を選択して、デプロイに含める Azure 以外のマシンのグループを選択します。 </br></br>詳しくは、[動的グループ](../../automation/automation-update-management-groups.md)に関するページをご覧ください。|
 | 更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../../azure-monitor/platform/computer-groups.md)に関するページを参照してください |
@@ -129,7 +129,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 スケジュールの構成が完了したら、 **[作成]** ボタンをクリックして、状態ダッシュボードに戻ります。
 **スケジュール済み**の表に、作成したデプロイ スケジュールが表示されていることを確認してください。
 
-### <a name="view-results-of-an-update-deployment"></a>更新プログラムのデプロイの結果を表示する
+### <a name="view-results-of-an-update-deployment"></a>更新プログラムのデプロイの結果を確認する
 
 スケジュールされた展開の開始後、 **[更新管理]** 画面の **[更新プログラムの展開]** タブに、展開の状態が表示されます。
 実行中の場合、状態は **[処理中]** と表示されます。 正常に完了すると、状態は **[成功]** に変わります。
@@ -193,9 +193,9 @@ VM の起動時と停止時には、イベントがアクティビティ ログ�
 
 グラフには、時間の経過とともに発生した変更が表示されます。 アクティビティ ログ接続を追加すると、上部の折れ線グラフに Azure アクティビティ ログ イベントが表示されます。 棒グラフの各行は、さまざまな追跡可能な変更の種類を表します。 具体的な種類としては、Linux のデーモン、ファイル、ソフトウェアがあります。 [変更] タブには、変更が発生した時刻の降順 (最新のものから順に) で、変更の詳細が図示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、VM の Change Tracking と Update Management を構成して確認しました。 以下の方法について学習しました。
+このチュートリアルでは、VM の Change Tracking と Update Management を構成して確認しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * リソース グループと VM を作成する

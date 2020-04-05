@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28d6e5362df9f41822525af0d256cfd99568d6de
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1a61c89199c89f09b5cc0e553dbbf48655ad1b6a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512132"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222969"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル:フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -40,7 +40,7 @@ Azure AD に自分のデバイスを取り込んで、クラウドとオンプ�
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **adfs/services/trust/2005/windowstransport** と **adfs/services/trust/13/windowstransport** はどちらも、イントラネットに接続するエンドポイントとしてのみ有効にする必要があります。Web アプリケーション プロキシを介してエクストラネットに接続するエンドポイントとしては公開しないでください。 WS-Trust WIndows エンドポイントを無効にする方法の詳細については、[プロキシの WS-Trust Windows エンドポイントを無効にする方法](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)に関するセクションを参照してください。 どのエンドポイントが有効になっているかは、AD FS 管理コンソールの **[サービス]**  >  **[エンドポイント]** で確認できます。
+> **adfs/services/trust/2005/windowstransport** と **adfs/services/trust/13/windowstransport** はどちらも、イントラネットに接続するエンドポイントとしてのみ有効にする必要があります。Web アプリケーション プロキシを介してエクストラネットに接続するエンドポイントとしては公開しないでください。 WS-Trust WIndows エンドポイントを無効にする方法の詳細については、[プロキシの WS-Trust Windows エンドポイントを無効にする方法](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)に関するセクションを参照してください。 どのエンドポイントが有効になっているかは、AD FS 管理コンソールの **[サービス]**  >  **[エンドポイント]** で確認できます。
 
 このチュートリアルでは、AD FS を使用してフェデレーション環境で Active Directory ドメイン参加済みコンピューター デバイスのハイブリッド Azure AD 参加を構成する方法について説明します。
 
@@ -50,7 +50,7 @@ Azure AD に自分のデバイスを取り込んで、クラウドとオンプ�
 > * ハイブリッド Azure AD 参加の構成
 > * ダウンレベルの Windows デバイスの有効化
 > * 登録の確認
-> * [トラブルシューティング]
+> * トラブルシューティング
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -83,7 +83,7 @@ Azure AD に自分のデバイスを取り込んで、クラウドとオンプ�
 
 Windows 10 1803 以降で、AD FS を使用したフェデレーション環境の即時的なハイブリッド Azure AD 参加が失敗した場合は、Azure AD Connect を利用して Azure AD のコンピューター オブジェクトを同期させます。これは後で、ハイブリッド Azure AD 参加のデバイス登録を完了するために使用されます。 Azure AD Connect で、ハイブリッド Azure AD 参加済みにするデバイスのコンピュータ オブジェクトを Azure AD に対して同期済みであることを確認します。 コンピューター オブジェクトが特定の組織単位 (OU) に属している場合、これらの OU も、Azure AD Connect で同期するよう構成する必要があります。 Azure AD Connect を使用してコンピューター オブジェクトを同期する方法の詳細については、[Azure AD Connect を使用したフィルタリングの構成](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)に関する記事を参照してください。
 
-組織が送信プロキシ経由でのインターネットへのアクセスを必要とする場合、Microsoft では、Windows 10 コンピューターを Azure AD にデバイス登録できるように [Web プロキシ自動発見 (WPAD) を実装](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))することを推奨しています。 WPAD の構成と管理で問題が発生した場合は、[自動検出のトラブルシューティング](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10))に関する記事を参照してください。 
+組織が送信プロキシ経由でのインターネットへのアクセスを必要とする場合、Microsoft では、Windows 10 コンピューターを Azure AD にデバイス登録できるように [Web プロキシ自動発見 (WPAD) を実装](/previous-versions/tn-archive/cc995261(v%3dtechnet.10))することを推奨しています。 WPAD の構成と管理で問題が発生した場合は、[自動検出のトラブルシューティング](/previous-versions/tn-archive/cc302643(v=technet.10))に関する記事を参照してください。 
 
 WPAD を使用せずに自分のコンピューター上でプロキシ設定を構成する場合は、Windows 10 1709 以降で実行できます。 詳細については、[グループ ポリシー オブジェクト (GPO) を使用した WinHTTP 設定の構成](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)に関する記事を参照してください。
 
@@ -172,7 +172,7 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
 ダウンレベルの Windows デバイスを登録するには、組織で [Windows 10 以外のコンピューター向けの Microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554) をインストールする必要があります。 Windows 10 以外のコンピューター向けの Microsoft Workplace Join は、Microsoft ダウンロード センターで入手できます。
 
- [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/) などのソフトウェア ディストリビューション システムを使用して、このパッケージをデプロイできます。 このパッケージは、`quiet` パラメーターを使用した標準のサイレント インストール オプションをサポートしています。 Configuration Manager の Current Branch には、完了した登録を追跡する機能など、以前のバージョンにはない利点が追加されています。
+ [Microsoft Endpoint Configuration Manager](/configmgr/) などのソフトウェア ディストリビューション システムを使用して、このパッケージをデプロイできます。 このパッケージは、`quiet` パラメーターを使用した標準のサイレント インストール オプションをサポートしています。 Configuration Manager の Current Branch には、完了した登録を追跡する機能など、以前のバージョンにはない利点が追加されています。
 
 インストーラーによって、ユーザー コンテキストで実行されるシステムにスケジュール済みタスクが作成されます。 このタスクは、ユーザーが Windows にサインインするとトリガーされます。 このタスクでは、デバイスは Azure AD で認証が行われた後、そのユーザー資格情報を使用してサイレントに Azure AD に参加します。
 

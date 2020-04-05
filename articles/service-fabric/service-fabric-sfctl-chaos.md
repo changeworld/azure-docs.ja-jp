@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric CLI - sfctl chaos
-description: Azure Service Fabric のコマンド ライン インターフェイス、sfctl について説明します。 chaos を管理するためのコマンドの一覧が含まれています。
+description: Azure Service Fabric のコマンド ライン インターフェイスである sfctl について説明します。 chaos を管理するためのコマンドの一覧が含まれています。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 6668446363361fbc6d24afc3d11a36a0b786667d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906166"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos

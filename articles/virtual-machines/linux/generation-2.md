@@ -1,24 +1,18 @@
 ---
 title: 第 2 世代 VM に対する Azure のサポート
 description: 第 2 世代 VM に対する Azure のサポートの概要
-services: virtual-machines-linux
-documentationcenter: ''
 author: ju-shim
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 70b13b16e6aca6b0bdb0858a32a219defef6cca3
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: b68179caed4df5efd3696d7d6a3739a1e07a3c80
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162040"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232031"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -33,18 +27,18 @@ ms.locfileid: "77162040"
 第 1 世代 VM は、Azure のすべての VM サイズでサポートされています (Mv2 シリーズ VM を除く)。 Azure では、次の選択された VM シリーズに対して第 2 世代のサポートが提供されるようになりました。
 
 * [B シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
-* [DC シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dc-series)
-* [Dsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series)および [Dsv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
-* [Esv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
-* [Fsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
+* [DC シリーズ](../dcv2-series.md)
+* [DSv2 シリーズ](../dv2-dsv2-series.md)および[Dsv3 シリーズ](../dv3-dsv3-series.md)
+* [Esv3 シリーズ](../ev3-esv3-series.md)
+* [Fsv2 シリーズ](../fsv2-series.md)
 * [GS シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
-* [HB シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hb-series)
-* [HC シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hc-series)
-* [Ls シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series)と [Lsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-storage#lsv2-series)
-* [Mv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series)
-* [NCv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv2-series)と [NCv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv3-series)
-* [ND シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nd-series)
-* [NVv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
+* [HB シリーズ](../hb-series.md)
+* [HC シリーズ](../hc-series.md)
+* [Ls シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series)と [Lsv2 シリーズ](../lsv2-series.md)
+* [Mv2 シリーズ](../mv2-series.md)
+* [NCv2 シリーズ](../ncv2-series.md)と [NCv3 シリーズ](../ncv3-series.md)
+* [ND シリーズ](../nd-series.md)
+* [NVv3 シリーズ](../nvv3-series.md)
 
 > [!NOTE]
 > Mv2 シリーズは第 2 世代の VM イメージのみで動作するため、Mv2 シリーズ VM に対する第 2 世代 VM イメージの使用は一般提供されています。 第 1 世代の VM イメージは、Mv2 シリーズの VM ではサポートされていません。 
@@ -58,8 +52,9 @@ ms.locfileid: "77162040"
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04、18.04、19.04、19.10 
-* RHEL 8.0、7.6、7.5、7.4、7.0
-* Cent OS 8.0
+* RHEL 8.1、8.0、7.7、7.6、7.5、7.4、7.0
+* Cent OS 8.0、7.7、7.6、7.5、7.4
+* Oracle Linux 7.7、7.7-CI
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>オンプレミスと Azure 第 2 世代 VM の比較
 

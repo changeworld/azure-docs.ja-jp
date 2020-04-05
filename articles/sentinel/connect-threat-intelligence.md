@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
 ms.openlocfilehash: 5c79642d287224cd15531701d7cc87ebfd72eb69
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588044"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>脅威インテリジェンス プロバイダーからデータを接続する

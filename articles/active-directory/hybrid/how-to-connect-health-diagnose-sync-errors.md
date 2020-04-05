@@ -16,10 +16,10 @@ ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48ed9abf3e088e2581a3dd81b7c89e6b99da3ceb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897197"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>重複属性同期エラーを診断して修正する

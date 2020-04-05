@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: cade33e77eb0d3ddd818a6ce3dbd7c6cf72811d4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74037403"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Microsoft ピアリングにルート フィルターを構成する:PowerShell
@@ -34,7 +34,7 @@ ExpressRoute 回線に Microsoft ピアリングを構成してルート フィ�
 
 - ルート フィルターを定義して ExpressRoute 回線に適用する。 ルート フィルターは、Microsoft ピアリング経由で利用する予定の一連のサービスを選択できる新しいリソースです。 ExpressRoute ルーターからは、ルート フィルターで識別されたサービスに属しているプレフィックスのリストだけが送信されます。
 
-### <a name="about"></a>ルート フィルターについて
+### <a name="about-route-filters"></a><a name="about"></a>ルート フィルターについて
 
 ExpressRoute 回線に Microsoft ピアリングが構成されると、Microsoft のネットワーク エッジ ルーターは、(貴社または接続プロバイダーの) エッジ ルーターとの間に一対の BGP セッションを確立します。 貴社のネットワークにはルートが一切アドバタイズされません。 ネットワークに対するルート アドバタイズを有効にするには、ルート フィルターを関連付ける必要があります。
 
@@ -43,11 +43,11 @@ ExpressRoute 回線の Microsoft ピアリング経由で利用するサービ�
 その回線上の Office 365 サービスにルート フィルターをアタッチするには、ExpressRoute を経由して Office 365 サービスを利用することへの承認が必要となります。 ExpressRoute 経由で Office 365 サービスを利用することを承認されていない場合、ルート フィルターをアタッチすることはできません。 承認プロセスの詳細については、「[Office 365 向け Azure ExpressRoute](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)」を参照してください。
 
 > [!IMPORTANT]
-> 2017 年 8 月 1 日より前に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが定義されていない場合でも、すべてのサービス プレフィックスが Microsoft ピアリングでアドバタイズされます。 2017 年 8 月 1 日以降に構成された ExpressRoute 回路の Microsoft ピアリングでは、ルート フィルターが回線にアタッチされるまで、プレフィックスはアドバタイズされません。
+> 2017 年 8 月 1 日より前に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが定義されていない場合でも、すべてのサービス プレフィックスが Microsoft ピアリングでアドバタイズされます。 2017 年 8 月 1 日以降に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。
 > 
 > 
 
-### <a name="workflow"></a>ワークフロー
+### <a name="workflow"></a><a name="workflow"></a>ワークフロー
 
 Microsoft ピアリング経由でサービスに正しく接続するためには、次の構成手順を完了する必要があります。
 
@@ -79,7 +79,7 @@ Microsoft ピアリング経由でサービスに正しく接続するために�
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-### <a name="log-in-to-your-azure-account"></a>Azure アカウントへのログイン
+### <a name="log-in-to-your-azure-account"></a>Azure アカウントにログインする
 
 この構成を開始する前に、Azure アカウントにログインする必要があります。 このコマンドレットは、Azure アカウントのログイン資格情報をユーザーに求めます。 ログイン後にアカウント設定がダウンロードされるため、Azure PowerShell で使用できるようになります。
 
@@ -101,7 +101,7 @@ Get-AzSubscription
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="prefixes"></a>手順 1:一連のプレフィックスと BGP コミュニティ値を取得する
+## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>手順 1:一連のプレフィックスと BGP コミュニティ値を取得する
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1.一連の BGP コミュニティ値を取得する
 
@@ -114,7 +114,7 @@ Get-AzBgpServiceCommunity
 
 ルート フィルターで使用する BGP コミュニティ値をリストアップします。
 
-## <a name="filter"></a>手順 2:ルート フィルターとフィルター ルールを作成する
+## <a name="step-2-create-a-route-filter-and-a-filter-rule"></a><a name="filter"></a>手順 2:ルート フィルターとフィルター ルールを作成する
 
 ルート フィルターに割り当てることができるルールは 1 つだけで、また "許可" タイプであることが必要です。 このルールに、一連の BGP コミュニティ値を関連付けることができます。
 
@@ -144,7 +144,7 @@ $routefilter.Rules.Add($rule)
 Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
-## <a name="attach"></a>手順 3:ルート フィルターを ExpressRoute 回線にアタッチする
+## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>手順 3:ルート フィルターを ExpressRoute 回線にアタッチする
 
 Microsoft ピアリングのみの場合は、次のコマンドを実行して、ルート フィルターを ExpressRoute 回線にアタッチします。
 
@@ -154,9 +154,9 @@ $ckt.Peerings[0].RouteFilter = $routefilter
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="tasks"></a>一般的なタスク
+## <a name="common-tasks"></a><a name="tasks"></a>一般的なタスク
 
-### <a name="getproperties"></a>ルート フィルターのプロパティを取得するには
+### <a name="to-get-the-properties-of-a-route-filter"></a><a name="getproperties"></a>ルート フィルターのプロパティを取得するには
 
 ルート フィルターのプロパティを取得するには、次の手順を使用します。
 
@@ -172,7 +172,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    $rule = $routefilter.Rules[0]
    ```
 
-### <a name="updateproperties"></a>ルート フィルターのプロパティを更新するには
+### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>ルート フィルターのプロパティを更新するには
 
 既にルート フィルターが回線にアタッチされている場合、一連の BGP コミュニティ値が更新されると、必要なプレフィックス アドバタイズの変更が、確立されている BGP セッションを通じて自動的に伝達されます。 ルート フィルターに対する一連の BGP コミュニティ値は、次のコマンドで更新できます。
 
@@ -182,7 +182,7 @@ $routefilter.rules[0].Communities = "12076:5030", "12076:5040"
 Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
-### <a name="detach"></a>ExpressRoute 回線からルート フィルターをデタッチするには
+### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>ExpressRoute 回線からルート フィルターをデタッチするには
 
 ExpressRoute 回線からルート フィルターをデタッチした後は、いずれのプレフィックスも BGP セッションを通じてアドバタイズされません。 ExpressRoute 回線からルート フィルターをデタッチするには、次のコマンドを使用します。
   
@@ -191,7 +191,7 @@ $ckt.Peerings[0].RouteFilter = $null
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="delete"></a>ルート フィルターを削除するには
+### <a name="to-delete-a-route-filter"></a><a name="delete"></a>ルート フィルターを削除するには
 
 削除できるのは、いずれの回線にもアタッチされていないルート フィルターだけです。 削除する前に、ルート フィルターが回線にアタッチされていないことを確認してください。 ルート フィルターを削除するには、次のコマンドを使用します。
 

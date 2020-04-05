@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ca192c28757df189e531aee0ba2d8da288ba7e6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68381241"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>パスワード シングル サインオン用に構成された、Azure AD ギャラリー アプリケーションにサインインできない問題
@@ -78,7 +78,7 @@ Internet Explorer 用のアクセス パネル拡張機能をユーザーのコ�
 
 -   [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx) を設定し、ユーザーのコンピューターをドメインに参加させている必要があります。
 
--   グループ ポリシー オブジェクト (GPO) を編集するには、"設定の編集" アクセス許可が必要です。 既定でこのアクセス許可を持っているセキュリティ グループのメンバーはDomain Administrators、Enterprise Administrators、Group Policy Creator Owners です。 [詳細情報](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)。
+-   グループ ポリシー オブジェクト (GPO) を編集するには、"設定の編集" アクセス許可が必要です。 既定では、Domain Administrators、Enterprise Administrators、Group Policy Creator Owners の各セキュリティ グループ メンバーにはこのアクセス許可があります。 詳細については、[こちら](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)をご覧ください。
 
 グループ ポリシーを構成し、ユーザーにデプロイする方法の詳しい手順については、「[グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy)」チュートリアルを参照してください。
 
@@ -92,7 +92,7 @@ Azure AD ギャラリーからアプリケーションを構成するには、�
 
 -   [ギャラリー以外のアプリケーションを追加する](#add-a-non-gallery-application)
 
--   [パスワード シングル サインオン (SSO) に対応するようにアプリケーションを構成する](#configure-the-application-for-password-single-sign-on)
+-   [パスワード シングル サインオンに対応するようにアプリケーションを構成する](#configure-the-application-for-password-single-sign-on)
 
 -   [アプリケーションにユーザーを割り当てる](#assign-users-to-the-application)
 
@@ -198,6 +198,6 @@ Azure AD ギャラリーからアプリケーションを追加するには、�
 
 -   Fiddler のトレース
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [アプリケーション プロキシを使用してアプリにシングル サインオンを提供](application-proxy-configure-single-sign-on-with-kcd.md)
 

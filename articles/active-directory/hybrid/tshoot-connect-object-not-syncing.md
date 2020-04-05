@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 931865803328189d89c0fbae15caa801c3f7f7c6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60455140"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227795"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Azure Active Directory と同期していないオブジェクトのトラブルシューティング
 
@@ -36,7 +36,7 @@ ms.locfileid: "60455140"
 
   ![Azure AD Connect 同期プロセスの図](./media/tshoot-connect-object-not-syncing/syncingprocess.png)
 
-### <a name="terminology"></a>**用語集**
+### <a name="terminology"></a>**用語**
 
 * **CS:** コネクタ スペース。データベース内のテーブル
 * **MV:** メタバース。データベース内のテーブル
@@ -64,7 +64,7 @@ ms.locfileid: "60455140"
 
 これらの手順を開始する前に、[Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) を起動します。
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>操作
 トラブルシューティングは、Synchronization Service Manager の **[Operations]\(操作\)** タブから開始する必要があります。 このタブには、最近の操作の結果が表示されます。 
 
 ![[Operations]\(操作\) タブが選択されている Synchronization Service Manager のスクリーンショット](./media/tshoot-connect-object-not-syncing/operations.png)  
@@ -73,13 +73,13 @@ ms.locfileid: "60455140"
 
 **[Status]\(状態\)** 列は最も重要な情報を含んでおり、実行の最も重大な問題を示しています。 最も一般的な状態を調査の優先度に基づいて簡単にまとめると次のようになります (* はエラー文字列が入ることを意味します)。
 
-| Status | Comment (コメント) |
+| Status | 解説 |
 | --- | --- |
 | stopped-* |実行を完了できませんでした。 これは、たとえば、リモート システムがダウンして接続できない場合などに発生する可能性があります。 |
 | stopped-error-limit |エラーの数が 5,000 を超えています。 大量のエラーに起因し、実行が自動的に停止しました。 |
 | completed-\*-errors |実行は完了しましたが、エラーが発生し (5,000 件未満)、調査が必要です。 |
 | completed-\*-warnings |実行は完了しましたが、一部のデータが予想と異なる状態になっています。 エラーがある場合、このメッセージは通常、症状の 1 つにすぎません。 エラーに対処するまでは、警告を調査しないでください。 |
-| 成功 |問題ありません。 |
+| success |問題ありません。 |
 
 行を選択すると、 **[Operations]\(操作\)** タブの下の領域が更新されて、実行の詳細が表示されます。 この領域の左端に、 **[Step #]\(ステップ番号\)** というタイトルの一覧がある場合があります。 これは、フォレストに複数のドメインがあり、手順が各ドメインを表す場合にのみ表示されます。 ドメイン名は **[Partition]** (パーティション) という見出しにあります。 **[Synchronization Statistics]\(同期統計\)** 見出しの下には、処理された変更の数に関する詳細が表示されています。 リンクを選択すると、変更されたオブジェクトの一覧を取得できます。 エラーのオブジェクトがある場合、 **[Synchronization Errors]\(同期エラー\)** 見出しの下にそれらのエラーが表示されます。
 
@@ -208,6 +208,6 @@ Azure AD へのコネクタがない場合は、「[MV 属性](#mv-attributes)�
 
 **[Connectors]\(コネクタ\)** タブから、[コネクタ スペース オブジェクト](#connector-space-object-properties)に移動することもできます。 行を選択し、 **[プロパティ]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure AD Connect Sync](how-to-connect-sync-whatis.md) の詳細情報についてはこちらをご覧ください。
 - [ハイブリッド ID](whatis-hybrid-identity.md) の詳細についてはこちらをご覧ください。

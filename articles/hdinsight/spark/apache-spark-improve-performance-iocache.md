@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/23/2019
 ms.openlocfilehash: 43875b87d26f144b85454077fd3c044c820132bf
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75494991"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Azure HDInsight IO キャッシュを使用して Apache Spark のワークロードのパフォーマンスを改善する
@@ -77,4 +77,4 @@ IO キャッシュを有効にした後に Spark のジョブを実行すると�
 
 ## <a name="next-steps"></a>次の手順
 
-このブログ投稿のパフォーマンス ベンチマークなど、IO キャッシュに関する詳細をお読みください。[Apache Spark ジョブが HDInsight IO キャッシュで最大 9 倍のスピードアップ](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)
+IO キャッシュとパフォーマンスのベンチマークについて詳しくは、ブログ投稿「[Apache Spark jobs gain up to 9x speed up with HDInsight IO キャッシュ](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)」(HDInsight IO キャッシュにより Apache Spark のジョブの速度が最大で 9 倍に) をご覧ください。

@@ -4,10 +4,10 @@ description: テンプレートから、証明書共通名を使用する Servic
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 4a4448c88fa9493979f075f6b9c669927dd1d39e
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614555"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>拇印ではなく証明書共通名を使用する Service Fabric クラスターをデプロイする

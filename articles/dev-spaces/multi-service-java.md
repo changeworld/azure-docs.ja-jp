@@ -6,10 +6,10 @@ ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio Code を使用して、Azure Kubernetes Service 上でマルチサービス Java アプリケーションをデバッグする方法を示します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 ms.openlocfilehash: beab91964cab9938a5d63584089326bb408f6efc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438327"
 ---
 # <a name="running-multiple-dependent-services-java-and-visual-studio-code-with-azure-dev-spaces"></a>複数の依存サービスの実行: Azure Dev Spaces での Java と Visual Studio Code

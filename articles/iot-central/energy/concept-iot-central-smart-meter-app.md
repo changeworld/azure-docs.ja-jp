@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 8f3772c1d65780337c421cfaaa7b70d7ac7186cf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77024315"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central - スマート メーター アプリのアーキテクチャ

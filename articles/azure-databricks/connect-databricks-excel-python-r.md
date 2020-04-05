@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
 ms.openlocfilehash: f7494d36cf9b16ac6c7a1287a6ff96dd2285c6e2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73601945"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Excel、Python、R から Azure Databricks に接続する
@@ -58,15 +58,15 @@ ms.locfileid: "73601945"
     |---------|---------|
     |**データ ソース名**     | データ ソースの名前を指定します。        |
     |**ホスト**     | Databricks ワークスペースの *[Server hostname]\(サーバー ホスト名\)* からコピーした値を指定します。        |
-    |**ポート**     | 「*443*」を入力します。        |
+    |**[ポート]**     | 「*443*」を入力します。        |
     |**認証** > **機構**     | *[ユーザー名とパスワード]* を選択します。        |
     |**ユーザー名**     | 「*token*」を入力します。        |
     |**パスワード**     | Databricks ワークスペースからコピーしたトークン値を入力します。 |
     
     DSN 設定ダイアログ ボックスでさらに次の手順を実行します。
     
-    * **[HTTP Options]\(HTTP オプション\)** をクリックします。 ダイアログ ボックスが開いたら、Databricks ワークスペースからコピーした *[HTTP Path]\(HTTP パス\)* の値を貼り付けます。 Click **OK**.
-    * **[SSL Options]\(SSL オプション\)** をクリックします。 ダイアログ ボックスが開いたら、 **[SSL を有効にする]** チェック ボックスをオンにします。 Click **OK**.
+    * **[HTTP Options]\(HTTP オプション\)** をクリックします。 ダイアログ ボックスが開いたら、Databricks ワークスペースからコピーした *[HTTP Path]\(HTTP パス\)* の値を貼り付けます。 **[OK]** をクリックします。
+    * **[SSL Options]\(SSL オプション\)** をクリックします。 ダイアログ ボックスが開いたら、 **[SSL を有効にする]** チェック ボックスをオンにします。 **[OK]** をクリックします。
     * **[テスト]** をクリックして Azure Databricks への接続をテストします。 **[OK]** をクリックして構成を保存します。
     * **[ODBC データ ソース アドミニストレーター]** ダイアログ ボックスで **[OK]** をクリックします。
 
@@ -163,7 +163,7 @@ for row in cursor.fetchall():
     print(row)
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Databricks にデータをインポートできるソースについては、[Azure Databricks のデータ ソース](/azure/databricks/data/data-sources/index)に関するページをご覧ください。
 

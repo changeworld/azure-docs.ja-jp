@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113105"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での OData $select 構文
@@ -57,11 +57,11 @@ field_path ::= identifier('/'identifier)*
 
 2 つ目の形式を使用するときは、一覧の取得できるフィールドのみを指定できます。
 
-サブフィールドを明示的に指定せずに複合フィールドを列挙すると、取得できるすべてのサブフィールドがクエリ結果セットに含まれます。 たとえば、インデックスに、`Street`、`City`、および `Country` というサブフィールドがある `Address` フィールドがあり、いずれも取得できるとします。 **$select** に `Address` を指定した場合、クエリ結果には 3 つのサブフィールドすべてが含まれます。
+サブフィールドを明示的に指定せずに複合フィールドを列挙すると、取得できるすべてのサブフィールドがクエリ結果セットに含まれます。 たとえば、インデックスに、`Address`、`Street`、および `City` というサブフィールドがある `Country` フィールドがあり、いずれも取得できるとします。 `Address`$select**に** を指定した場合、クエリ結果には 3 つのサブフィールドすべてが含まれます。
 
 ## <a name="examples"></a>例
 
-結果に `HotelId`、`HotelName`、および `Rating` の最上位フィールドを含め、`Address` の `City` サブフィールドを含めます。
+結果に `HotelId`、`HotelName`、および `Rating` の最上位フィールドを含め、`City` の `Address` サブフィールドを含めます。
 
     $select=HotelId, HotelName, Rating, Address/City
 
@@ -78,7 +78,7 @@ field_path ::= identifier('/'identifier)*
 }
 ```
 
-結果に `HotelName` 最上位フィールドを含め、`Rooms` コレクションに `Address` のすべてのサブフィールドと各オブジェクトの `Type` および `BaseRate` のサブフィールドを含めます。
+結果に `HotelName` 最上位フィールドを含め、`Address` コレクションに `Type` のすべてのサブフィールドと各オブジェクトの `BaseRate` および `Rooms` のサブフィールドを含めます。
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 
@@ -108,7 +108,7 @@ field_path ::= identifier('/'identifier)*
 }
 ```
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 - [Azure Cognitive Search での検索結果の操作方法](search-pagination-page-layout.md)
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)

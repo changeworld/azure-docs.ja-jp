@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: c1572eddf78ca2d5f8f4e3ee9f1fe47b0d43f5aa
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190244"
 ---
 # <a name="consumption-model"></a>消費モデル
 
 ルーティング サービスでは、車両固有の消費モデルの詳細な説明用のパラメーターのセットが提供されます。
-**vehicleEngineType** の値に応じて、2 つのプリンシパル消費モデルがサポートされます。_Combustion_ と _Electric_ です。 異なるモデルに属するパラメーターを同じ要求で指定するのは正しくありません。 また、消費モデルのパラメーターは、**travelMode** 値 _bicycle_ および _pedestrian_ と共に使用することはできません。
+**vehicleEngineType** の値に応じて、_Combustion_ と _Electric_ の 2 つのプリンシパル消費モデルがサポートされます。 異なるモデルに属するパラメーターを同じ要求で指定するのは正しくありません。 また、消費モデルのパラメーターは、**travelMode** 値 _bicycle_ および _pedestrian_ と共に使用することはできません。
 
 ## <a name="parameter-constraints-for-consumption-model"></a>消費モデルのパラメーターの制約
 

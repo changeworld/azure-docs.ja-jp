@@ -5,10 +5,10 @@ ms.date: 09/18/2019
 ms.service: azure-spatial-anchors
 ms.topic: include
 ms.openlocfilehash: 574003a150ef294aa6a2ebc035fe48cf877dec66
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76545214"
 ---
 ## <a name="configure-the-cloud-spatial-anchor-session"></a>クラウド空間アンカー セッションを構成する

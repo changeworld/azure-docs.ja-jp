@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
 ms.openlocfilehash: dc0482fbcbb1c9d1618ec18e1f48b03f686a6573
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74892583"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Azure Media Services での Azure CDN キャッシュ ポリシーの管理

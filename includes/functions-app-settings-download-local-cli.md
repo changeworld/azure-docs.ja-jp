@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: glenga
 ms.openlocfilehash: e10de8093bf152b75cc6f262a142ff07c3d5b0d3
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72329578"
 ---
 必要なストレージ アカウントと共に Azure で関数アプリを既に作成しました。 このアカウントの接続文字列は、Azure のアプリ設定に安全に格納されています。 この記事では、同じアカウントのストレージ キューにメッセージを書き込みます。 関数をローカルで実行しているときにストレージ アカウントに接続するには、アプリ設定を local.settings.json ファイルにダウンロードする必要があります。 

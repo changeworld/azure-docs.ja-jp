@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
 ms.openlocfilehash: c388f433327b5328483f10fbef637a6fdfd08832
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073017"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226875"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Windows 用の NVIDIA GPU ドライバー拡張機能
 
@@ -35,7 +35,7 @@ NVIDIA GPU ドライバーを [Linux の N シリーズ VM](hpccompute-gpu-linux
 
 この拡張機能は､次の OS に対応しています｡
 
-| ディストリビューション | Version |
+| Distribution | Version |
 |---|---|
 | Windows 10 | コア |
 | Windows Server 2016 | コア |
@@ -69,17 +69,17 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Properties
 
-| 名前 | 値/例 | データ型 |
+| Name | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | string |
 | type | NvidiaGpuDriverWindows | string |
-| typeHandlerVersion | 1.2 | int |
+| typeHandlerVersion | 1.2 | INT |
 
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート 
 
@@ -139,7 +139,7 @@ az vm extension set `
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
-### <a name="troubleshoot"></a>トラブルシューティング
+### <a name="troubleshoot"></a>[トラブルシューティング]
 
 拡張機能のデプロイ状態に関するデータは、Azure portal から取得することも、Azure PowerShell、Azure CLI を使用して取得することもできます。 特定の VM の拡張機能のデプロイ状態を確認するには、次のコマンドを実行します。
 
@@ -163,7 +163,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | :---: | --- | --- |
 | 0 | 操作に成功しました |
 | 1 | 操作に成功しました。 再起動が必要です。 |
-| 100 | 操作はサポートされていないか、完了できませんでした。 | 考えられる原因:PowerShell のバージョンがサポートされていない、VM のサイズが N シリーズの VM ではない、またはデータのダウンロードに失敗しています。 ログ ファイルをチェックして、エラーの原因を特定します。 |
+| 100 | 操作はサポートされていないか、完了できませんでした。 | 考えられる原因: PowerShell のバージョンがサポートされていない、VM のサイズが N シリーズの VM ではない、またはデータのダウンロードに失敗しています。 ログ ファイルをチェックして、エラーの原因を特定します。 |
 | 240、840 | 操作がタイムアウトしました。 | 操作を再試行します。 |
 | -1 | 例外が発生しました。 | ログ ファイルを確認して例外の原因を特定します。 |
 | -5x | 保留中の再起動により操作が中断されました。 | VM を再起動します。 インストールは再起動後に続行されます。 アンインストールは手動で行う必要があります。 |
@@ -173,7 +173,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/community/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 拡張機能の詳細については、「[Windows 用の仮想マシン拡張機能とその機能](features-windows.md)」を参照してください。
 
 N シリーズ VM の詳細については、「[GPU 最適化済み仮想マシンのサイズ](../windows/sizes-gpu.md)」を参照してください。

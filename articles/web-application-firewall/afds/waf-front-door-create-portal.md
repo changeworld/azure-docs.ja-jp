@@ -5,14 +5,14 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 09/07/2019
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 991111e01713afe48355aac44a151b98fa828c5f
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186720"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79475843"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Front Door で Web アプリケーション ファイアウォール ポリシーを作成する
 
@@ -36,9 +36,9 @@ Front Door プロファイルを作成するには、[Front Door プロファイ
 1. 画面の左上で **[リソースの作成]** を選択し、**WAF** を検索して、 **[Web application firewall (Preview)]\(Web アプリケーション ファイアウォール (プレビュー)\)** を選択して、 **[作成]** を選択します。
 2. **[Create a WAF policy]\(WAF ポリシーの作成\)** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
-    | Setting                 | 値                                              |
+    | 設定                 | Value                                              |
     | ---                     | ---                                                |
-    | Subscription            |Front Door のサブスクリプションの名前を選択します。|
+    | サブスクリプション            |Front Door のサブスクリプションの名前を選択します。|
     | Resource group          |Front Door のリソース グループの名前を選択します。|
     | ポリシー名             |WAF ポリシーの一意の名前を入力します。|
 
@@ -46,7 +46,7 @@ Front Door プロファイルを作成するには、[Front Door プロファイ
 
 3. **[Create a WAF policy]\(WAF ポリシーの作成\)** ページの **[関連付け]** タブで、 **[フロントエンド ホストの追加]** を選択し、次の設定を入力して、 **[追加]** を選択します。
 
-    | Setting                 | 値                                              |
+    | 設定                 | Value                                              |
     | ---                     | ---                                                |
     | フロント ドア              | Front Door プロファイルの名前を選択します。|
     | フロントエンド ホスト           | Front Door ホストの名前を選択し、 **[追加]** を選択します。|
@@ -76,7 +76,7 @@ Azure で管理される既定の規則セットは既定で有効になりま�
 
  ![WAF 規則セットを変更する](../media/waf-front-door-create-portal/managed2.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure Web アプリケーション ファイアウォールについて確認する](../overview.md)

@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 925d1178ad630699cfd3d9e48677c0f029fc75af
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74976725"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>チュートリアル:IoT Hub Device Provisioning Service を使用したデバイス プロビジョニングのためのクラウド リソースの構成
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-device-provisioning-service-instance-and-get-the-id-scope"></a>Device Provisioning Service インスタンスを作成し、ID スコープを取得する
 
@@ -43,12 +43,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. **IoT Hub Device Provisioning Service** フォームに次の情報を入力します。
     
-   | Setting       | 推奨値 | Description | 
+   | 設定       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | **Name** | 一意の名前 | -- | 
+   | **名前** | 一意の名前 | -- | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-   | **[リソース グループ]** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
-   | **Location** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |   
+   | **リソース グループ** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
+   | **場所** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |   
 
    ![Device Provisioning Service に関する基本的な情報をポータルで入力](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
@@ -92,7 +92,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 割り当てポリシーは、デバイスを IoT ハブに割り当てる方法を決定する IoT Hub Device Provisioning Service 設定です。 次の 3 つの割り当てポリシーがサポートされています。 
 
-1. **[最短待機時間]** : デバイスに対する待ち時間が最も短いハブに基づいて、デバイスを IoT ハブにプロビジョニングします。
+1. **[最低待ち時間]** :デバイスに対する待ち時間が最も短いハブに基づいて、デバイスを IoT ハブにプロビジョニングします。
 
 2. **[加重が均等に分布]** (既定): リンクされた各 IoT Hub にデバイスが同程度にプロビジョニングされます。 これは、既定の設定です。 デバイスを 1 つの IoT ハブにのみプロビジョニングする場合は、この設定のままでかまいません。 
 
@@ -102,7 +102,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 ![割り当てポリシーを管理する](./media/tutorial-set-up-cloud/iot-dps-manage-allocation.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このコレクションの他のチュートリアルは、このチュートリアルに基づいています。 引き続きクイック スタートまたはチュートリアルの作業を行う場合は、このチュートリアルで作成したリソースをクリーンアップしないでください。 作業を続行しない場合は、次の手順に従って、このチュートリアルで作成したすべてのリソースを Azure Portal で削除します。
 
@@ -110,7 +110,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、IoT ハブを選択します。 **[すべてのリソース]** ページの上部にある **[削除]** をクリックします。
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

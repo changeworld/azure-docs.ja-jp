@@ -16,10 +16,10 @@ ms.date: 12/06/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b241ac223fd1eb9df2b0a914726d8f37df5f4d88
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74547371"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Azure CLI を使用して、リソースにマネージド ID アクセスを割り当てる
@@ -66,7 +66,7 @@ ms.locfileid: "74547371"
    az role assignment create --assignee $spID --role 'Reader' --scope /subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/myStorageAcct
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure リソースのマネージド ID の概要](overview.md)
 - Azure 仮想マシン上でマネージド ID を有効にするには、「[Azure CLI を使用して Azure VM 上に Azure リソースのマネージド ID を構成する](qs-configure-cli-windows-vm.md)」を参照してください。

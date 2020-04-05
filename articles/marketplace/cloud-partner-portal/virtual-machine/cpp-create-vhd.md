@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace 向けの Azure と互換性のある VHD の作成
 description: Azure Marketplace での仮想マシン プランのための VHD を作成する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/27/2018
-ms.author: pabutler
-ms.openlocfilehash: 37fecb8100ec40ace02960a4f3390420a8bfc735
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2014a775edd4e24f5d302d863d0b69d83009b8a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816815"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277992"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Azure と互換性のある VHD の作成
 
@@ -62,7 +61,7 @@ VM イメージのオペレーティング システム VHD は、Azure 承認�
 
    ![新しい VM のサイズ ブレード](./media/publishvm_015.png)
 
-7. **[設定]** ブレードで、 **[マネージド ディスクの使用]** オプションを **[いいえ]** に設定します。  これにより、新しい VHD を手動で管理できるようになります。 ( **[設定]** ブレードでは、他にもストレージやネットワークのオプションを変更することができます。例: **[ディスクの種類]** で **[Premium (SSD)]** を選択します。) **[OK]** をクリックして続行します。
+7. **[設定]** ブレードで、 **[マネージド ディスクの使用]** オプションを **[いいえ]** に設定します。  これにより、新しい VHD を手動で管理できるようになります。 ( **[設定]** ブレードでは、他にもストレージやネットワークのオプションを変更することができます。例: **[ディスクの種類]** で **[Premium (SSD)]** を選択します。)続行するには、 **[OK]** をクリックします。
 
     ![新しい VM の設定ブレード](./media/publishvm_016.png)
 
@@ -73,6 +72,6 @@ VM イメージのオペレーティング システム VHD は、Azure 承認�
 Azure では、指定した仮想マシンのプロビジョニングを開始します。  左側の **[Virtual Machines]** タブをクリックして、進捗状況を追跡することができます。  作成後に、状態は **[実行中]** に変わります。  その時点で、[仮想マシンに接続](./cpp-connect-vm.md)できます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure ベースの新しい VHD の作成で問題が発生した場合は、「[VHD 作成における一般的な問題](./cpp-common-vhd-creation-issues.md)」を参照してください。  問題がなければ、次に Azure で作成した [VM に接続](./cpp-connect-vm.md)する必要があります。 

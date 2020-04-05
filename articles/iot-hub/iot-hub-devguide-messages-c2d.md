@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: d4a51a44b48e94669e92a9d525c1b0966df53c18
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 3a7254cc9de89a297811792b4dd64b4b669ba8e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68964123"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233243"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT ハブから cloud-to-device メッセージを送信する
 
@@ -137,11 +137,35 @@ cloud-to-device メッセージのフィードバックを元のメッセージ�
 | defaultTtlAsIso8601       | cloud-to-device メッセージの既定の TTL | 最大 2 日の ISO_8601 書式による間隔 (最小 1 分); 既定値:1 時間 |
 | maxDeliveryCount          | デバイスごとの cloud-to-device キューの最大配信数 | 1 から 100; 既定値:10 |
 | feedback.ttlAsIso8601     | サービス宛てのフィードバック メッセージの保有期間 | 最大 2 日の ISO_8601 書式による間隔 (最小 1 分); 既定値:1 時間 |
-| feedback.maxDeliveryCount | フィードバック キューの最大配信数 | 1 から 100; 既定値:100 |
+| feedback.maxDeliveryCount | フィードバック キューの最大配信数 | 1 から 100; 既定値:10 |
+| feedback.lockDurationAsIso8601 | フィードバック キューの最大配信数 | 5 から 300 秒の ISO_8601 書式による間隔 (最短 5 秒)。既定値:60 秒。 |
 
-これらの構成オプションを設定する方法の詳細については、[IoT ハブの作成](iot-hub-create-through-portal.md)に関する記事をご覧ください。
+構成オプションは、次のいずれかの方法で設定できます。
 
-## <a name="next-steps"></a>次の手順
+* **Azure ポータル**:IoT ハブの **[設定]** で、 **[組み込みのエンドポイント]** を選択し、 **[cloud-to-device メッセージング]** を展開します。 (**feedback.maxDeliveryCount** および **feedback.lockDurationAsIso8601** プロパティの設定は、Azure portal では現在サポートされていません。)
+
+    ![ポータルでの cloud-to-device メッセージングの構成オプションの設定](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
+
+* **Azure CLI**:[az iot hub update](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) コマンドを使用します。
+
+    ```azurecli
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.defaultTtlAsIso8601=PT1H0M0S
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.maxDeliveryCount=10
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.ttlAsIso8601=PT1H0M0S
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.maxDeliveryCount=10
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.lockDurationAsIso8601=PT0H1M0S
+    ```
+
+## <a name="next-steps"></a>次のステップ
 
 cloud-to-device メッセージの受信に使用できる SDK については、[Azure IoT SDK](iot-hub-devguide-sdks.md) に関する記事をご覧ください。
 

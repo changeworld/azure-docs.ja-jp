@@ -12,11 +12,11 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: ba7976d602412037578d0a324916718b2d515aac
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771787"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232851"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Azure Machine Learning を使用して Keras 分類モデルをトレーニングして登録する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

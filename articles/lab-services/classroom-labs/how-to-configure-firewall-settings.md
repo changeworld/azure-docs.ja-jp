@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.topic: article
 ms.service: lab-services
 ms.openlocfilehash: fbd45af0c9b94f04fdaad9d9b5c8214a91a8db91
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77443459"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Azure Lab Services のファイアウォール設定
@@ -44,4 +44,4 @@ ms.locfileid: "77443459"
 - [ラボに共有イメージ ギャラリーをアタッチする](how-to-attach-detach-shared-image-gallery.md)
 - [ユーザーをラボ所有者として追加する](how-to-add-user-lab-owner.md)
 - [ラボのファイアウォール設定の表示](how-to-configure-firewall-settings.md)
-- [ラボのその他設定を構成する](how-to-configure-lab-accounts.md)
+- [ラボのその他の設定を構成する](how-to-configure-lab-accounts.md)

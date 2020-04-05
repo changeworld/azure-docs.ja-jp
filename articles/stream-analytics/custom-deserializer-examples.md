@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.openlocfilehash: 270e9a31c28e7209cfe43ea8307b928ed3257a35
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845263"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る
@@ -33,7 +33,7 @@ ms.locfileid: "76845263"
 
 次のコード スニペットは、ストリーミング データに対する逆シリアル化です。 
 
-スキップ可能なエラーは、`UserDefinedOperator` の Initialize メソッドを通して渡される `IStreamingDiagnostics` を使用して出力する必要があります。 すべての例外はエラーとして扱われ、逆シリアライザーが再作成されます。 特定の数のエラーが発生すると、ジョブは失敗状態になります。
+スキップ可能なエラーは、`IStreamingDiagnostics` の Initialize メソッドを通して渡される `UserDefinedOperator` を使用して出力する必要があります。 すべての例外はエラーとして扱われ、逆シリアライザーが再作成されます。 特定の数のエラーが発生すると、ジョブは失敗状態になります。
 
 `StreamDeserializer<T>` により、ストリームは `T` 型のオブジェクトに逆シリアル化されます。 次の条件を満たす必要があります。
 
@@ -112,7 +112,7 @@ message MessageBodyProto {
 }
 ```
 
-**Google.Protobuf.Tools** NuGet から `protoc.exe` を実行すると、定義を含む .cs ファイルが生成されます。 生成されたファイルは、ここには記載されていません。
+`protoc.exe`Google.Protobuf.Tools**NuGet から** を実行すると、定義を含む .cs ファイルが生成されます。 生成されたファイルは、ここには記載されていません。
 
 次のコード スニペットは、生成されたファイルがプロジェクトに含まれていることを想定した逆シリアライザーの実装です。 この実装は、生成されたファイルに対するシン ラッパーにすぎません。
 

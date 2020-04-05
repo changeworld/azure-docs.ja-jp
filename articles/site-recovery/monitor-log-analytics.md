@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
 ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74133422"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Site Recovery の監視
@@ -36,7 +36,7 @@ Site Recovery での Azure Monitor ログの使用は、**Azure から Azure へ
 
 - Recovery Services コンテナー内で保護された少なくとも 1 つのマシン。
 - Site Recovery のログを格納するための Log Analytics ワークスペース。 ワークスペースの設定に関する[説明](../azure-monitor/learn/quick-create-workspace.md)を参照してください。
-- Log Analytics におけるログ クエリの記述、実行、分析の方法に関する基本的な理解。 [詳細情報](../azure-monitor/log-query/get-started-portal.md)。
+- Log Analytics におけるログ クエリの記述、実行、分析の方法に関する基本的な理解。 [詳細については、こちらを参照してください](../azure-monitor/log-query/get-started-portal.md)。
 
 最初に、[監視についての一般的な質問](monitoring-common-questions.md)を確認しておくことをお勧めします。
 
@@ -359,6 +359,6 @@ AzureDiagnostics  
 
 このアラートでは、**しきい値**を 1 に、**期間**を 1,440 分に設定して、直近 24 時間の失敗をチェックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Site Recovery のビルトインの監視機能に関する[説明](site-recovery-monitor-and-troubleshoot.md)を参照してください。

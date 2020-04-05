@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/09/2019
 ms.openlocfilehash: 56c25b7c77809a5cb7f4e539cff8e1815cd9976f
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77031709"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する
@@ -25,7 +25,7 @@ HDInsight 上の Kafka は、HDInsight クラスターの仮想マシンのロ�
 
 ![Kafka とマネージド ディスクのアーキテクチャ](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
 
-## <a name="configure-managed-disks-azure-portal"></a>マネージド ディスクを構成する:Azure portal
+## <a name="configure-managed-disks-azure-portal"></a>マネージド ディスクを構成する: Azure Portal
 
 1. 「[HDInsight クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)」の手順に従って、Portal を使ってクラスターを作成する一般的な手順を理解します。 ポータルの作成プロセスを完了しないでください。
 
@@ -36,7 +36,7 @@ HDInsight 上の Kafka は、HDInsight クラスターの仮想マシンのロ�
 
     ![ワーカー ノードごとのディスク数が強調表示されている [クラスター サイズ] セクション](./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka-disks.png)
 
-## <a name="configure-managed-disks-resource-manager-template"></a>マネージド ディスクを構成する:Resource Manager テンプレート
+## <a name="configure-managed-disks-resource-manager-template"></a>マネージド ディスクを構成する: Resource Manager テンプレート
 
 Kafka クラスターのワーカー ノードによって使われるディスクの数を制御するには、テンプレートの次のセクションを使います。
 

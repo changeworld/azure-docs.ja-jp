@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 9e3c5c12157a007bcad59a78b4623ff4d5a0041f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360455"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222589"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>チュートリアル:単一データベースまたはプールされたデータベースをセキュリティで保護する
 
@@ -149,7 +149,7 @@ Azure AD の構成の詳細については、次のページを参照してく�
 
 ## <a name="manage-database-access"></a>データベース アクセスを管理する
 
-データベースにユーザーを追加するか、セキュリティで保護された接続文字列でのユーザー アクセスを許可することにより、データベース アクセスを管理します。 接続文字列は、外部アプリケーションの場合に便利です。 詳細については、[Azure SQL のアクセスの制御](sql-database-control-access.md)と [AD 認証](sql-database-aad-authentication.md)に関するページを参照してください。
+データベースにユーザーを追加するか、セキュリティで保護された接続文字列でのユーザー アクセスを許可することにより、データベース アクセスを管理します。 接続文字列は、外部アプリケーションの場合に便利です。 詳細については、[ログインとユーザー アカウントの管理](sql-database-manage-logins.md)に関するページと [AD 認証](sql-database-aad-authentication.md)に関するページを参照してください。
 
 ユーザーを追加するには、データベース認証の種類を選択します。
 

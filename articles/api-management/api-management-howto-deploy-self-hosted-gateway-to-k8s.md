@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
 ms.openlocfilehash: 109316acb73d3c5f00186298c1f8840c516e5790
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73510592"
 ---
 # <a name="deploy-a-self-hosted-azure-api-management-gateway-to-kubernetes"></a>セルフホステッド Azure API Management ゲートウェイを Kubernetes にデプロイする
@@ -29,7 +29,7 @@ ms.locfileid: "73510592"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
+- [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します
 - Kubernetes クラスターを作成します。 [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) は、開発および評価に適したオプションです。 運用ワークロードの場合、[Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) または外部クラウドの Kubernetes クラスターを使用できます。
 - [API Management インスタンスにゲートウェイ リソースをプロビジョニングします](api-management-howto-provision-self-hosted-gateway.md)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "73510592"
 1. **[設定]** の下から **[ゲートウェイ]** を選択します。
 2. デプロイするゲートウェイ リソースを選択します。
 3. **[Deployment]/(デプロイ/)** を選択します。
-4. 既定の **[有効期限]** および **[秘密鍵]** の値を使用して、 **[トークン]** テキストボックスの新しいトークンが自動生成されたことに注意してください。 必要に応じていずれかまたは両方を調整し、 **[生成]** を選択して新しいトークンを作成します。
+4. 既定の **[有効期限]** および **[秘密鍵]** の値を使用して、 **[トークン]** テキスト ボックスの新しいトークンが自動生成されたことに注意してください。 必要に応じていずれかまたは両方を調整し、 **[生成]** を選択して新しいトークンを作成します。
 5. **[デプロイ スクリプト]** で **[Kubernetes]** が選択されていることを確認します。
 6. **[Deployment]/(デプロイ/)** の横にある **<gateway-name>.yml** ファイルのリンクを選択してファイルをダウンロードします。
 7. 必要に応じて、yml ファイルのポート マッピングとコンテナー名を調整します。
@@ -67,7 +67,7 @@ localgateway     NodePort    10.110.230.87   <none>        80:32504/TCP,443:3004
 > [!TIP]
 > <code>kubectl logs <gateway-pod-name></code> コマンドを使用して、セルフホステッド ゲートウェイ ログのスナップショットを表示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * セルフホステッド ゲートウェイの詳細については、[Azure API Management のセルフホステッド ゲートウェイの概要](self-hosted-gateway-overview.md)に関する記事を参照してください
 * [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes) の詳細を見る

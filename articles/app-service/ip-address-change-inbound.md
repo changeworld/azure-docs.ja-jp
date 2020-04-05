@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: 999511c4759ee761f028a61fbfaa0310ac93d9b4
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74672416"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>受信 IP アドレスの変更に備える方法
@@ -19,11 +19,11 @@ ms.locfileid: "74672416"
 
 * オプション 1: App Service アプリにカスタム ドメインがない場合は、何のアクションも必要ありません。
 
-* オプション 2: ドメイン登録ポータル (サードパーティの DNS プロバイダーまたは Azure DNS) で CNAME レコード (URI をポイントしている DNS レコード) のみが構成されている場合は、何のアクションも必要ありません。
+* オプション 2:ドメイン登録ポータル (サードパーティの DNS プロバイダーまたは Azure DNS) で CNAME レコード (URI をポイントしている DNS レコード) のみが構成されている場合は、何のアクションも必要ありません。
 
-* オプション 3: ドメイン登録ポータル (サードパーティの DNS プロバイダーまたは Azure DNS) で A レコード (IP アドレスを直接ポイントしている DNS レコード) が構成されている場合は、既存の IP アドレスを新しい IP アドレスに置き換えます。 新しい IP アドレスは、次のセクションの手順に従って確認できます。
+* オプション 3:ドメイン登録ポータル (サードパーティの DNS プロバイダーまたは Azure DNS) で A レコード (IP アドレスを直接ポイントしている DNS レコード) が構成されている場合は、既存の IP アドレスを新しい IP アドレスに置き換えます。 新しい IP アドレスは、次のセクションの手順に従って確認できます。
 
-* オプション 4: アプリケーションが、アプリの IP アドレスを必要とするロード バランサー、IP フィルター、その他の IP メカニズムの背後にある場合は、既存の IP アドレスを新しい IP アドレスで置き換えます。 新しい IP アドレスは、次のセクションの手順に従って確認できます。
+* オプション 4:アプリケーションが、アプリの IP アドレスを必要とするロード バランサー、IP フィルター、その他の IP メカニズムの背後にある場合は、既存の IP アドレスを新しい IP アドレスで置き換えます。 新しい IP アドレスは、次のセクションの手順に従って確認できます。
 
 ## <a name="find-the-new-inbound-ip-address-in-the-azure-portal"></a>Azure portal で新しい受信 IP アドレスを見つける
 
@@ -41,6 +41,6 @@ ms.locfileid: "74672416"
 
 5. この IP アドレスをコピーし、ドメインのレコードや IP メカニズムを再構成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Azure によって開始された IP アドレスの変更に備える方法について説明しました。 Azure App Service での IP アドレスの詳細については、「[Azure App Service における受信 IP アドレスと送信 IP アドレス](overview-inbound-outbound-ips.md)」を参照してください。

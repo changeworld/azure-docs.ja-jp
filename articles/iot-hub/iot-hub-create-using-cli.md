@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
 ms.openlocfilehash: e7253747d95917e34725cc7c6c034b1306f65e50
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889508"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237391"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Azure CLI を使用して IoT ハブを作成する
 
@@ -85,7 +85,7 @@ az iot hub delete --name {your iot hub name} -\
 az group delete --name {your resource group name}
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT ハブの使用について詳しくは、以下の記事をご覧ください。
 

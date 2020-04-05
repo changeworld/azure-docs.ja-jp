@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75429147"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT ハブを別のリージョンに複製する方法
@@ -353,7 +353,7 @@ IoT ハブを複製する前に、いくつかの点を考慮する必要があ�
 
 1. 検索ボックスに「template deployment」と入力し、Enter キーを押します。
 
-1. **[Template deployment (deploy using custom templates)]\(テンプレートのデプロイ (カスタム テンプレートを使用してデプロイ)\)** を選択します。 これにより、[Template deployment] \(テンプレートのデプロイ\)の画面が表示されます。 **作成** を選択します。 次の画面が表示されます。
+1. **[Template deployment (deploy using custom templates)]\(テンプレートのデプロイ (カスタム テンプレートを使用してデプロイ)\)** を選択します。 これにより、[Template deployment] \(テンプレートのデプロイ\)の画面が表示されます。 **［作成］** を選択します 次の画面が表示されます。
 
    ![独自のテンプレートを作成するためのコマンドを示すスクリーンショット](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 
@@ -421,7 +421,7 @@ DPS を使用してデバイスを新しい場所に移動する方法につい�
 
    これは、接続文字列は長くて扱いづらく、変更される可能性はほとんどありませんが、オプションを変更してアプリケーションを複数回実行する必要があるためです。 環境変数の値を変更するには、コマンド ウィンドウと使用している Visual Studio または VS Code を閉じる必要があります。 
 
-### <a name="options"></a>オプション
+### <a name="options"></a>Options
 
 アプリケーションの実行時に指定する 5 つのオプションを次に示します。 これらは、1 分間にコマンド ラインに配置されます。
 

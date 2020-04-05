@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 01/15/2020
 ms.author: dobett
 ms.openlocfilehash: 0b04b5170c13f6f6c3fd74976461f03e4367060a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77046057"
 ---
 # <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>IoT ソリューションを作成するための Azure のテクノロジとサービス

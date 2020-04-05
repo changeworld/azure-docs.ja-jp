@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: 1c12cf4a7bd097c6d33d032065734b477920644b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75457003"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
@@ -205,7 +205,7 @@ web.config ファイルの `appSettings` 要素のダミーの値が実行時に
 
 プロジェクト ファイルの .NET リファレンスと NuGet パッケージのリファレンスに影響します。
 
-| 種類 | リファレンス |
+| Type | リファレンス |
 | --- | --- |
 | NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
 
@@ -241,7 +241,7 @@ web.config ファイルの `appSettings` 要素のダミーの値が実行時に
 
 プロジェクト ファイル (.NET 参照) と `packages.config` (NuGet 参照) に影響します。
 
-| 種類 | リファレンス |
+| Type | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.Azure.KeyVault |
 | .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |

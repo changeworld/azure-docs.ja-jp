@@ -15,11 +15,11 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: b32df50715d5e7276861e0696df1bd6ceb3f684e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471994"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225375"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-cli"></a>Azure RBAC と Azure CLI を使用してロールの割り当てを追加または削除する
 
@@ -44,7 +44,7 @@ Azure AD ユーザーのオブジェクト ID を取得するには、[az ad use
 az ad user show --id "{email}" --query objectId --output tsv
 ```
 
-### <a name="group"></a>グループ
+### <a name="group"></a>Group
 
 Azure AD グループのオブジェクト ID を取得するには、[az ad group show](/cli/azure/ad/group#az-ad-group-show) または [az ad group list](/cli/azure/ad/group#az-ad-group-list) を使用できます。
 
@@ -97,7 +97,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee patlon
 az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-次の例では、*pharma-sales* リソース グループ スコープで、*patlong\@contoso.com* ユーザーに[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールが付与されます。 一意のロール ID を取得するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用するか、「[Azure リソースの組み込みロール](built-in-roles.md)」を参照してください。
+次の例では、[pharma-sales](built-in-roles.md#virtual-machine-contributor) リソース グループ スコープで、*patlong\@contoso.com* ユーザーに*仮想マシン共同作成者*ロールが付与されます。 一意のロール ID を取得するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用するか、「[Azure リソースの組み込みロール](built-in-roles.md)」を参照してください。
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
@@ -149,7 +149,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 az role assignment create --role <role_name_or_id> --assignee <assignee> --subscription <subscription_name_or_id>
 ```
 
-次の例では、サブスクリプション スコープで *annm\@example.com* ユーザーに*閲覧者*ロールを割り当てます。
+次の例では、サブスクリプション スコープで *annm*example.com *ユーザーに\@閲覧者*ロールを割り当てます。
 
 ```azurecli
 az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
@@ -163,7 +163,7 @@ az role assignment create --role "Reader" --assignee annm@example.com --subscrip
 az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-次の例では、管理グループ スコープで *alain\@example.com* ユーザーに*課金データ閲覧者*ロールを割り当てます。
+次の例では、管理グループ スコープで *alain*example.com *ユーザーに\@課金データ閲覧者*ロールを割り当てます。
 
 ```azurecli
 az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
@@ -205,7 +205,7 @@ az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-次の例では、管理グループ スコープで *alain\@example.com* ユーザーから "*課金データ閲覧者*" ロールが削除されます。 管理グループの ID を取得するには、[az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) を使用できます。
+次の例では、管理グループ スコープで *alain*example.com *ユーザーから "\@課金データ閲覧者*" ロールが削除されます。 管理グループの ID を取得するには、[az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) を使用できます。
 
 ```azurecli
 az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group

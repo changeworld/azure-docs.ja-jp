@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, プレイブック, 仮想マシン, 仮
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: b7d3053c09d2dcb667a4fc407035f4814f786932
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155852"
 ---
 # <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>チュートリアル:Ansible を使用して Azure Virtual Machine Scale Sets のカスタム イメージを更新する
@@ -46,7 +46,7 @@ VM がデプロイされたら、アプリに必要なソフトウェアを使�
 
 サンプル プレイブックを取得するには、次の 2 つの方法があります。
 
-* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/01-create-vms.yml)して `create_vms.yml` に保存する。
+* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/01-create-vms.yml)して、`create_vms.yml` に保存する。
 * `create_vms.yml` という名前の新規ファイルを作成して、次のコンテンツをコピーする。
 
 ```yml
@@ -194,7 +194,7 @@ ansible-playbook create-vms.yml --extra-vars "resource_group=myrg"
 
 サンプル プレイブックを取得するには、次の 2 つの方法があります。
 
-* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/02-capture-images.yml)して `capture-images.yml` に保存する。
+* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/02-capture-images.yml)して、`capture-images.yml` に保存する。
 * `capture-images.yml` という名前の新規ファイルを作成して、次のコンテンツをコピーする。
 
 ```yml
@@ -339,7 +339,7 @@ ansible-playbook create-vmss.yml --extra-vars "resource_group=myrg"
 
 サンプル プレイブックを取得するには、次の 2 つの方法があります。
 
-* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/04-update-vmss-image.yml)して `update-vmss-image.yml` に保存する。
+* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/04-update-vmss-image.yml)して、`update-vmss-image.yml` に保存する。
 * `update-vmss-image.yml` という名前の新規ファイルを作成して、次のコンテンツをコピーする。
 
 ```yml
@@ -403,7 +403,7 @@ ansible-playbook update-vmss-image.yml --extra-vars "resource_group=myrg"
 
 ![スケール セットは、2 番目の VM に関連付けられています](media/ansible-vmss-update-image/vmss-update-browser-updated-vmss.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースが不要になったら、削除してください。 
 
@@ -427,7 +427,7 @@ ansible-playbook update-vmss-image.yml --extra-vars "resource_group=myrg"
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Azure 上の Ansible](/azure/ansible)

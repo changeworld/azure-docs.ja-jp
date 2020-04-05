@@ -16,10 +16,10 @@ ms.date: 01/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b2df764fe20f513812b80857c345ce9f1ae25bfb
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76157323"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-enterprise"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Terraform Enterprise の統合

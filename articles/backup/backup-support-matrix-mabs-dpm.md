@@ -4,10 +4,10 @@ description: この記事では、Microsoft Azure Backup Server (MABS) または
 ms.date: 02/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6664f7b226b75b364fd1c83f2abc56b5a275eff9
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77582655"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server または System Center DPM を使用したバックアップのサポート マトリックス

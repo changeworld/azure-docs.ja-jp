@@ -16,11 +16,11 @@ ms.date: 10/15/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1e8587562ff452373fe2ee3b98fa20309e77cc7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547504"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231811"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Azure CLI を使用してユーザー割り当てマネージド ID を作成、一覧表示、または削除する
 
@@ -60,7 +60,7 @@ az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
 ```azurecli-interactive
 az identity list -g <RESOURCE GROUP>
 ```
-json 応答内のユーザー割り当てマネージド ID には、キー `type` に対して返された `"Microsoft.ManagedIdentity/userAssignedIdentities"` の値が含まれます。
+json 応答内のユーザー割り当てマネージド ID には、キー `"Microsoft.ManagedIdentity/userAssignedIdentities"` に対して返された `type` の値が含まれます。
 
 `"type": "Microsoft.ManagedIdentity/userAssignedIdentities"`
 
@@ -76,7 +76,7 @@ az identity delete -n <USER ASSIGNED IDENTITY NAME> -g <RESOURCE GROUP>
 > [!NOTE]
 > ユーザー割り当てマネージド ID を削除しても、それが割り当てられていたリソースから参照が削除されることはありません。 それらを VM/VMSS から削除するには、`az vm/vmss identity remove` コマンドを使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の ID コマンドの一覧は、[az identity](/cli/azure/identity) をご覧ください。
 

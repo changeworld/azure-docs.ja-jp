@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
 ms.openlocfilehash: 417d8379d019a9ef0da41638cba4a1f9cb7b8bc2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73686502"
 ---
-# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>クイック スタート:Windows コンピューターでの Azure Security Center の利用開始
+# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>クイックスタート: Windows コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Microsoft Monitoring Agent をプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されているリソースに対して Security Center を有効にできます。
 
 このクイック スタートでは、Windows コンピューターに Microsoft Monitoring Agent をインストールする方法を示します。
@@ -39,9 +39,9 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
    ![Security Center の概要][2]
 
 3. Security Center メイン メニューの **[使用の開始]** を選択します。
-4. **[Get started] (使用の開始)** タブを選択します。
+4. **[作業の開始]** タブを選択します。
 
-   ![作業開始][3]
+   ![はじめに][3]
 
 5. **[Azure 以外のコンピューターの新規追加]** で **[構成]** をクリックします。 Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
 
@@ -86,7 +86,7 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 
 ![アイコン 2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Azure VM
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 不要になった場合、Windows コンピューターからエージェントを削除できます。
 
 エージェントを削除するには:
@@ -95,11 +95,11 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 2. **[プログラムと機能]** を開きます。
 3. **[プログラムと機能]** で、 **[Microsoft Monitoring Agent]** をクリックし、 **[アンインストール]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このクイック スタートでは、Windows コンピューターで Microsoft Monitoring Agent をプロビジョニングしました。 Security Center の使用方法について学習するには、セキュリティ ポリシーの構成とリソースのセキュリティの評価に関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:セキュリティ ポリシーの定義と評価](tutorial-security-policy.md)
+> [チュートリアル: セキュリティ ポリシーの定義と評価](tutorial-security-policy.md)
 
 <!--Image references-->
 [2]: ./media/quick-onboard-windows-computer/overview.png

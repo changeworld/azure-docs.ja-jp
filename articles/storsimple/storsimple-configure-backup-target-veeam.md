@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
 ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67875314"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Veeam を使用したバックアップ ターゲットとしての StoreSimple
@@ -75,13 +75,13 @@ StorSimple には次の利点があります。
 -   クラウドを使用してこれまでにない重複除去レベルを実現するための一意の重複除去と圧縮アルゴリズム
 -   高可用性
 -   Azure を使用した geo レプリケーション
--   Azure の統合
+-   Azure との統合
 -   クラウドのデータ暗号化
 -   ディザスター リカバリーとコンプライアンスの強化
 
 StorSimple には 2 つの主要なデプロイメント シナリオ (プライマリ バックアップ ターゲットとセカンダリ バックアップ ターゲット) が用意されていますが、基本的にはシンプルなブロック ストレージ デバイスです。 StorSimple では、すべての圧縮と重複除去が行われます。 クラウドとアプリケーションおよびファイル システムの間で、データはシームレスに送受信されます。
 
-StorSimple について詳しくは、「[StorSimple 8000 シリーズ:ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](storsimple-technical-specifications-and-compliance.md)に関するページも参照してください。
+StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](storsimple-technical-specifications-and-compliance.md)に関するページも参照してください。
 
 > [!IMPORTANT]
 > バックアップ ターゲットとして StorSimple デバイスを使用できるのは、StorSimple 8000 の Update 3 以降のバージョンのみです。
@@ -130,7 +130,7 @@ StorSimple について詳しくは、「[StorSimple 8000 シリーズ:ハイブ
 
 このシナリオでの StorSimple ボリュームの主な用途は、長期間の保持またはアーカイブです。
 
-次の図は、初回のバックアップと復元のターゲットで高性能ボリュームにしているアーキテクチャを表しています。 これらのバックアップは、設定したスケジュールで StorSimple 階層化ボリュームにコピー、アーカイブされます。
+次の図は、初回のバックアップと復元のターゲットで高性能ボリュームにしているアーキテクチャを表しています。 これらのバックアップは、設定したスケジュールで StorSimple 階層化ボリュームにコピーおよびアーカイブされます。
 
 高性能ボリュームのサイズは、保持ポリシーの容量とパフォーマンスの要件に対応できるものにする必要があります。
 
@@ -155,15 +155,15 @@ StorSimple について詳しくは、「[StorSimple 8000 シリーズ:ハイブ
 
 ソリューションのデプロイでは、3 つの手順を行う必要があります。
 
-1. ネットワーク インフラストラクチャを計画する。
+1. ネットワーク インフラストラクチャを準備する。
 2. StorSimple デバイスをバックアップ ターゲットとしてデプロイする。
 3. Veeam をデプロイする。
 
-各手順について、以下のセクションで詳しく説明します。
+各手順について、以降のセクションで詳しく説明します。
 
 ### <a name="set-up-the-network"></a>ネットワークのセットアップ
 
-StorSimple は Azure クラウドと統合されたソリューションであるため、Azure クラウドに有効かつ正常に接続できる必要があります。 この接続は、クラウド スナップショット、データ管理、メタデータ転送のような操作のほか、Azure クラウド ストレージで古くアクセスの少ないデータを階層化するのに使用されます。
+StorSimple は Azure クラウドと統合されたソリューションであるため、Azure クラウドに有効かつ正常に接続できる必要があります。 この接続は、クラウド スナップショット、データ管理、メタデータの転送のような操作のほか、Azure クラウド ストレージに古くアクセスの少ないデータを格納するのに使用されます。
 
 ソリューションを最適に実行するには、次のネットワークのベスト プラクティスに従うことをお勧めします。
 
@@ -172,7 +172,7 @@ StorSimple は Azure クラウドと統合されたソリューションであ�
 
 ### <a name="deploy-storsimple"></a>StorSimple のデプロイ方法
 
-StorSimple のデプロイメントの詳細なガイダンスについては、[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-u2.md)に関するページをご覧ください。
+StorSimple のデプロイの詳細なガイダンスについては、[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-u2.md)に関するページを参照してください。
 
 ### <a name="deploy-veeam"></a>Veeam の展開方法
 
@@ -186,7 +186,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
 | StorSimple のデプロイメント タスク  | その他のコメント |
 |---|---|
-| オンプレミスの StorSimple デバイスのデプロイ。 | サポートされているバージョン:Update 3 以降。 |
+| オンプレミスの StorSimple デバイスのデプロイ。 | サポートされているバージョンは Update 3 以降です。 |
 | バックアップ ターゲットを有効にする。 | バックアップ ターゲット モードの有効化または無効化、および状態の取得には次のコマンドを使用します。 詳細については、[StorSimple デバイスへのリモート接続](storsimple-remote-connect.md)に関するページをご覧ください。</br> バックアップ モードを有効にする: `Set-HCSBackupApplianceMode -enable` </br> バックアップ モードを無効にする: `Set-HCSBackupApplianceMode -disable` </br> バックアップ モード設定の現在の状態を取得する: `Get-HCSBackupApplianceMode` |
 | バックアップ データを格納するボリュームの共通ボリューム コンテナーを作成する。 ボリューム コンテナー内のすべてのデータが重複除去されます。 | StorSimple のボリューム コンテナーでは、重複除去のドメインを定義します。  |
 | StorSimple ボリュームを作成する。 | ボリューム サイズはクラウド スナップショットの実行時間に影響するため、予想される使用量に可能な限り近いサイズのボリュームを作成します。 ボリューム サイズの決定方法については、「[保持ポリシー](#retention-policies)」を参照してください。</br> </br> StorSimple 階層化ボリュームを使用し、 **[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにします。 </br> ローカル固定ボリュームのみの使用はサポートされていません。 |
@@ -195,7 +195,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
 ### <a name="set-up-the-host-backup-server-storage"></a>ホスト バックアップ サーバー ストレージのセットアップ
 
-次のガイドラインに従って、ホスト バックアップ サーバーのストレージを用意します。  
+次のガイドラインに従って、ホスト バックアップ サーバー ストレージをセットアップします。  
 
 - (Windows Disk マネージャーで作成された) スパン ボリュームは使用しないでください。 スパン ボリュームはサポートされていません。
 - アロケーション ユニット サイズ 64 KB の NTFS を使用してボリュームをフォーマットします。
@@ -205,7 +205,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
 ## <a name="best-practices-for-storsimple-and-veeam"></a>StorSimple と Veeam のベスト プラクティス
 
-次の各セクションのガイドラインに従って、ソリューションを用意します。
+以下の各セクションのガイドラインに従って、ソリューションを設定します。
 
 ### <a name="operating-system-best-practices"></a>オペレーティング システムのベスト プラクティス
 
@@ -224,7 +224,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
 -   StorSimple デバイスが [Update 3 以降](storsimple-install-update-3.md)に更新されていることを確認します。
 -   iSCSI とクラウド トラフィックを分離します。 StorSimple とバックアップ サーバーの間のトラフィックには専用の iSCSI 接続を使用します。
--   StorSimple デバイスが専用のバックアップ ターゲットであることを確認します。 混合ワークロードは、RTO と RPO に影響を与えるためサポートされていません。
+-   StorSimple デバイスが専用のバックアップ ターゲットであることを確認します。 混合ワークロードは、RTO と RPO に影響を与えるため、サポートされていません。
 
 ### <a name="veeam-best-practices"></a>Veeam のベスト プラクティス
 
@@ -284,7 +284,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
     ![Veeam 管理コンソール、バックアップ リポジトリのタイプを選択する](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
-4.  **[Location] \(場所)** の指定では、目的のボリュームを参照して選択します。 **[Limit maximum concurrent tasks to:] \(最大同時実行タスク数を次に制限する:)** チェック ボックスをオンにして、値を **4** に設定します。 これにより、各仮想マシン (VM) の処理時に同時処理される仮想ディスクの数が 4 つに制限されます。 **[Advanced] \(詳細設定)** ボタンを選択します。
+4.  **[Location] \(場所)** の指定では、目的のボリュームを参照して選択します。 **[Limit maximum concurrent tasks to:] \(最大同時実行タスク数を次に制限する:)** チェック ボックスをオンにして、値を **4** に設定します。 これにより、各仮想マシン (VM) の処理時に同時処理される仮想ディスクの数が 4 つに制限されます。 **[Advanced] \(詳細設定)**  ボタンを選択します。
 
     ![Veeam 管理コンソール、ボリュームを選択する](./media/storsimple-configure-backup-target-using-veeam/veeamimage4.png)
 
@@ -303,7 +303,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
     リポジトリが Veeam サーバーに追加されます。
 
-## <a name="set-up-storsimple-as-a-primary-backup-target"></a>StorSimple をプライマリ バックアップ ターゲットとしてセットアップする
+## <a name="set-up-storsimple-as-a-primary-backup-target"></a>プライマリ バックアップ ターゲットとして StorSimple をセットアップする
 
 > [!IMPORTANT]
 > クラウドに階層化済みのバックアップからのデータ復元は、クラウドのスピードで実行されます。
@@ -316,7 +316,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
 4 週間、月単位、および年単位の GFS ローテーション スケジュールの例を以下に示します。
 
-| 頻度/バックアップ タイプ | 完全 | 増分 (1 - 5 日目)  |   
+| 頻度/バックアップ タイプ | [完全] | 増分 (1 - 5 日目)  |   
 |---|---|---|
 | 週単位 (第 1 - 4 週) | 土曜日 | 月曜日 - 金曜日 |
 | 月単位  | 土曜日  |   |
@@ -363,7 +363,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
     ![Veeam 管理コンソール、新しいバックアップ ジョブのスケジュール ページ](./media/storsimple-configure-backup-target-using-veeam/veeamimage15.png)
 
-## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>StorSimple をセカンダリ バックアップ ターゲットとしてセットアップする
+## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>セカンダリ バックアップ ターゲットとして StorSimple をセットアップする
 
 > [!NOTE]
 > クラウドに階層化済みのバックアップからのデータ復元は、クラウドのスピードで実行されます。
@@ -393,7 +393,7 @@ Veeam のインストールにおけるベスト プラクティスについて�
 
 週、月、年単位の GFS ローテーション スケジュール
 
-| 週 | 完全 | 増分 (1 日目) | 増分 (2 日目) | 増分 (3 日目) | 増分 (4 日目) | 増分 (5 日目) |
+| Week | [完全] | 増分 (1 日目) | 増分 (2 日目) | 増分 (3 日目) | 増分 (4 日目) | 増分 (5 日目) |
 |---|---|---|---|---|---|---|
 | 第 1 週 | ローカル RAID ボリューム  | ローカル RAID ボリューム | ローカル RAID ボリューム | ローカル RAID ボリューム | ローカル RAID ボリューム | ローカル RAID ボリューム |
 | 第 2 週 | StorSimple 第 2 - 4 週 |   |   |   |   |   |
@@ -507,16 +507,16 @@ Veeam では、Veeam コンソールに組み込まれた各種エクスプロ�
 | バックアップ サーバーと StorSimple 両方の損失を招くサイトの不具合 | バックアップと復元のオペレーションが中断されます。 | まず StorSimple を復旧し、次に Veeam を復旧します。 | まず StorSimple を復旧し、次に Veeam を復旧します。 デバイスの復旧後に復元を実行する必要がある場合、完全なデータのワーキング セットがクラウドから新しいデバイスに送られます。 すべてのオペレーションはクラウドのスピードで実行されます。 |
 
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 この記事では次のドキュメントを参考にしています。
 
 - [StorSimple のマルチパス I/O のセットアップ](storsimple-configure-mpio-windows-server.md)
-- [ストレージ シナリオ:シン プロビジョニング](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [GPT ドライブを使用する (Using GPT drives)](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [共有フォルダーのシャドウ コピーのセットアップ](https://technet.microsoft.com/library/cc771893.aspx)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [バックアップ セットからの復元方法](storsimple-restore-from-backup-set-u2.md)について確認します。
 - [デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)の実行方法について確認します。

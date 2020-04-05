@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 96f5eb84f356089124708738f8a9e56b031c76bf
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 980ed1e54de30ec8a2dc0c1fdac6546d31f48a00
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168831"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218196"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>デプロイされた Azure Machine Learning Studio (クラシック) Web サービス用のエンドポイントを作成する
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 > [!NOTE]
 > このトピックでは、**従来**の Machine Learning Web サービスに適用できる手法について説明します。
@@ -37,7 +39,7 @@ Azure Machine Learning Web サービス ポータルを使用して、Web サー
 3. **[新規作成]** をクリックします。
 4. 新しいエンドポイントの名前と説明を入力します。 エンドポイントの名前は、長さが 24 文字以内で、小文字のアルファベットまたは数字で構成されている必要があります。 ログ レベルとサンプル データが有効になっているかどうかを選択します。 詳細については、「 [Machine Learning Web サービスのログ記録の有効化](web-services-logging.md)」を参照してください。
 
-## <a id="scaling"></a> 新しいエンドポイントを追加して Web サービスをスケーリングする
+## <a name="scale-a-web-service-by-adding-additional-endpoints"></a><a id="scaling"></a> 新しいエンドポイントを追加して Web サービスをスケーリングする
 
 既定では、発行される Web サービスはそれぞれ、20 件の同時実行要求をサポートするように構成されますが、200 件までの同時実行要求をサポートするように構成できます。 Azure Machine Learning Studio (クラシック) では、Web サービスで最大限のパフォーマンスを実現するために、設定が自動的に最適化され、ポータルの値は無視されます。
 

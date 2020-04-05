@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76029926"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>ローカルでの Azure Storage の開発とテストに Azurite エミュレーターを使用する (プレビュー)

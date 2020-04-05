@@ -4,10 +4,10 @@ description: ブループリント オペレーターの組み込みのロール
 ms.date: 08/26/2019
 ms.topic: how-to
 ms.openlocfilehash: fba0dd3f2eeb69f768800d1d04640510462d3c86
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873218"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>ブループリント オペレーター用の環境を構成する
@@ -22,7 +22,7 @@ ms.locfileid: "74873218"
 
 1. (推奨) [セキュリティ グループを作成してメンバーを追加します](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. アカウントまたはセキュリティ グループに**ブループリント オペレーター**の[ロールの割り当てを追加します](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)
+1. アカウントまたはセキュリティ グループに[ブループリント オペレーター](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)の**ロールの割り当てを追加します**
 
 ## <a name="user-assign-managed-identity"></a>ユーザー割り当てマネージド ID
 
@@ -30,11 +30,11 @@ ms.locfileid: "74873218"
 
 1. 割り当てられたブループリントで使用する[ユーザー割り当てのマネージド ID を作成します](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)
 
-1. アカウントまたはセキュリティ グループに**マネージド ID オペレーター**の[ロールの割り当てを追加します](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)。 ロールの割り当ての範囲を、新しいユーザー割り当てのマネージド ID に設定します。
+1. アカウントまたはセキュリティ グループに[マネージド ID オペレーター](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)の**ロールの割り当てを追加します**。 ロールの割り当ての範囲を、新しいユーザー割り当てのマネージド ID に設定します。
 
 1. **ブループリント オペレーター**として、新しいユーザー割り当て管理対象 ID を使用する[ブループリントを割り当てます](../create-blueprint-portal.md#assign-a-blueprint)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ブループリントのライフサイクル](../concepts/lifecycle.md)を参照する。
 - [静的および動的パラメーター](../concepts/parameters.md)の使用方法を理解する。

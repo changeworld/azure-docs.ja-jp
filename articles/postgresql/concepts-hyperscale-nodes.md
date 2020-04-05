@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 04ebb4298f8a5398b0aa9921d740e3eaacfd8e11
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74974004"
 ---
 # <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) のノード
@@ -24,5 +24,5 @@ Hyperscale (Citus) のホスティング タイプは、Azure Database for Postg
 
 クエリごとに、コーディネーターは、必要なデータが単一のノードと複数のノードのどちらに存在するかによって、単一のワーカー ノードにルーティングするか、複数のノードにわたって並列処理します。 コーディネーターは、メタデータ テーブルを参照して、どのように処理するかを決定します。 これらのテーブルは、ワーカー ノードの DNS 名およびヘルスと、ノード間でのデータの分布を追跡します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - ノードで[分散データ](concepts-hyperscale-distributed-data.md)を格納する方法について学習する

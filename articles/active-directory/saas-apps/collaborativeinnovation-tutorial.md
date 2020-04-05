@@ -16,10 +16,10 @@ ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38ca9365be46c8fd7653f91a76b64c5a6ebfd077
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75611834"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-collaborative-innovation"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Collaborative Innovation の統合
@@ -98,10 +98,10 @@ Collaborative Innovation で Azure AD SSO を構成してテストするには�
 
 1. その他に、Collaborative Innovation アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------| --------------- |
     | givenname | User.givenname |
-    | 姓 | User.surname |
+    | surname | User.surname |
     | emailaddress | user.userprincipalname |
     | name | user.userprincipalname |
 

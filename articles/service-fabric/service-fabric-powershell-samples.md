@@ -5,10 +5,10 @@ ms.topic: sample
 ms.date: 11/29/2018
 ms.custom: mvc
 ms.openlocfilehash: f9ba1b4833b3aff13284a68c23f398ea47ef2ae2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75645652"
 ---
 # <a name="azure-service-fabric-powershell-samples"></a>Azure Service Fabric PowerShell のサンプル

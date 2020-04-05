@@ -12,18 +12,18 @@ ms.date: 04/05/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: d8eb3b2cbaf7b4e842d8338eefde756f6d381111
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68854350"
 ---
 # <a name="project-acoustics-bake-resolution"></a>Project Acoustics のベイク精度
 この概念的概要では、音響のベイク操作をする際の粗分解能と細分解能の違いについて説明します。 この設定は、ベイク ワークフローのプローブ手順で選択します。
 
-## <a name="Coarse-vs-Fine-Resolution"></a> 粗分解能と細分解能の比較
+## <a name="coarse-vs-fine-resolution"></a><a name="Coarse-vs-Fine-Resolution"></a> 粗分解能と細分解能の比較
 
-分解能設定の粗と細の唯一の違いは、シミュレーションが実行される周波数です。 細では、粗の 2 倍の周波数が使用されます。 これは、音響シミュレーションにさまざまな影響を及ぼします。
+粗分解能と細分解能の設定の唯一の違いは、シミュレーションが実行される周波数です。 細では、粗の 2 倍の周波数が使用されます。 これは、音響シミュレーションにさまざまな影響を及ぼします。
 
 * 粗の波長は細の 2 倍であるため、ボクセルが 2 倍の大きさになります。
 * シミュレーション時間はボクセル サイズに直接関係します。粗でのベイクは細でのベイクよりも約 16 倍高速化されます。
@@ -36,6 +36,6 @@ ms.locfileid: "68854350"
 
 ![Unreal で出入り口に配置された細かなボクセルのスクリーンショット](media/unreal-fine-bake.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Unreal](unreal-baking.md) または [Unity](unity-baking.md) プラグインを使用して、粗分解能と細分解能の設定を試します。

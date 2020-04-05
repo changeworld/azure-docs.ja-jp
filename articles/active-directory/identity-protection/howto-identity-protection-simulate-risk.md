@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e50e406e74c0b78f41830c4ea7c5b10830002ed3
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72886694"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>Identity Protection でのリスク検出のシミュレーション
@@ -86,7 +86,7 @@ ms.locfileid: "72886694"
 
 ## <a name="testing-risk-policies"></a>リスク ポリシーのテスト
 
-このセクションでは、ユーザー リスク ポリシーとサインイン リスク ポリシーをテストする手順を示します。これらのポリシーは、記事「[方法: リスク ポリシーを構成して有効にする](howto-identity-protection-configure-risk-policies.md)」に従って作成されています。
+このセクションでは、ユーザー リスク ポリシーとサインイン リスク ポリシーをテストする手順を示します。これらのポリシーは、記事「[方法: リスク ポリシーを構成して有効にする](howto-identity-protection-configure-risk-policies.md)」を参照してください。
 
 ### <a name="user-risk-policy"></a>ユーザー リスクのポリシー
 
@@ -125,10 +125,10 @@ ms.locfileid: "72886694"
    1. **[保存]** - この操作を行うと、 **[概要]** ページに戻ります。
 1. これで、リスクの高いセッションを使用してサインインすることで (たとえば、Tor Browser を使用して)、サインインのリスクに基づく条件付きアクセスをテストできます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [リスクとは](concept-identity-protection-risks.md)
 
-- [方法:リスク ポリシーを構成して有効にする](howto-identity-protection-configure-risk-policies.md)
+- [方法: リスク ポリシーを構成して有効にする](howto-identity-protection-configure-risk-policies.md)
 
 - [Azure Active Directory Identity Protection](overview-identity-protection.md)

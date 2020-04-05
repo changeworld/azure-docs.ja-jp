@@ -17,10 +17,10 @@ ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0269c87572e2a9242a54491103ae0fcc3637518
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67723909"
 ---
 # <a name="troubleshoot-the-access-panel-extension-for-internet-explorer"></a>Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング

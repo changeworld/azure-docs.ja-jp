@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: swmachan
 ms.openlocfilehash: ecb42d200eb8808f6bfa4cfb91e98909e350038b
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77118607"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>チュートリアル:WPF を使って翻訳アプリを作成する
@@ -114,7 +114,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 
 このユーザー インターフェイスには、次のコンポーネントが含まれています。
 
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 |------|------|-------------|
 | `FromLanguageComboBox` | コンボ ボックス | Microsoft Translator でサポートされているテキスト翻訳の言語の一覧を表示します。 ユーザーは、翻訳前の言語を選択します。 |
 | `ToLanguageComboBox` | コンボ ボックス | `FromComboBox` と同じ言語の一覧を表示しますが、ユーザーの翻訳先の言語を選択するために使用されます。 |

@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 7e4a242c1f81a504872dae6399683483c836daf2
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: bd3890757377525cf9c178866a2a2fbc0791b9de
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086903"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79461012"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3 の概要
 
@@ -31,13 +31,13 @@ ms.locfileid: "79086903"
 Media Services v3 SDK は [Media Services v3 OpenAPI の仕様 (Swagger)](https://aka.ms/ams-v3-rest-sdk) に基づいています。
 
 > [!NOTE]
-> 現在、[Azure portal](https://portal.azure.com/) を使用して、Media Services v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示 (管理ではない)、[API へのアクセスに関する情報の取得](access-api-portal.md)を行うことができます。 他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+> 現時点では、[Azure portal](https://portal.azure.com/) を使用して、Media Services v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示 (管理ではない)、[API へのアクセスに関する情報の取得](access-api-portal.md)を行うことができます。 他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="compliance-privacy-and-security"></a>コンプライアンス、プライバシー、セキュリティ
 
-重要な注意事項として、Azure Media Services の使用に適用されるすべての法律に従う必要があります。また、他の人の権利を侵したり、他の人に害を及ぼしたりする可能性のある方法で Media Services または任意の Azure サービスを使用することはできません。
+重要な注意事項として、Azure Media Services を使用する際は、適用されるすべての法律に従う必要があります。また、他者の権利を侵害したり、他者に害を及ぼしたりする可能性のある方法で Media Services またはその他の Azure サービスを使用することはできません。
 
 Media Services にビデオまたは画像をアップロードする前に、ビデオまたは画像を使用するための適切な権限をすべて取得している必要があります。これには、法律で義務づけられている場合において、ビデオまたは画像に含まれる人物から、Media Services および Azure でのデータの使用、処理、および保存について、必要なすべての同意を得ることが含まれます (このような人物が存在する場合)。 一部の法的管轄区域では、生体認証データなどの特定のカテゴリのデータの収集、オンライン処理、および保管に関して特別な法的要件が課せられる場合があります。 特別な法的要件の対象となるデータの処理と保管のために Media Services と Azure を使用する前に、適用される可能性のあるこのような法的要件に準拠していることを確認する必要があります。
 
@@ -47,7 +47,7 @@ Media Services のコンプライアンス、プライバシー、セキュリ�
 
 Media Services を使用すると、クラウドでさまざまなメディア ワークフローを構築できます。 Media Services でできることの例を次に示します。
 
-* 広範なブラウザーやデバイスで再生できるように、さまざまな形式のビデオを提供します。 さまざまなクライアント (モバイル デバイス、TV、PC など) にオンデマンドとライブ ストリーミングの両方を提供するには、ビデオ コンテンツとオーディオ コンテンツを適切にエンコードしてパッケージ化する必要があります。 このようなコンテンツを配信およびストリーミングする方法については、[ファイルのエンコードとストリームに関するクイック スタート](stream-files-dotnet-quickstart.md)を参照してください。
+* 広範なブラウザーやデバイスで再生できるように、さまざまな形式のビデオを提供します。 さまざまなクライアント (モバイル デバイス、TV、PC など) にオンデマンドとライブ ストリーミングの両方を提供するには、ビデオ コンテンツとオーディオ コンテンツを適切にエンコードしてパッケージ化する必要があります。 このようなコンテンツを配信およびストリーミングする方法については、[ファイルのエンコードとストリーミングに関するクイック スタート](stream-files-dotnet-quickstart.md)をご覧ください。
 * サッカー、野球、大学や高校のスポーツなど、多数のオンライン視聴者にライブ スポーツ イベントをストリーム配信します。
 * 町役場、市議会の会議、立法機関などの公開の会議やイベントをブロードキャストします。
 * 録画されたビデオやオーディオ コンテンツを分析します。 たとえば、より高い顧客満足度を実現するため、音声からテキストを抽出して、検索インデックスやダッシュボードを作成できます。 これにより、一般的な苦情、苦情の原因、その他の関連データに関する知見を引き出すことができます。

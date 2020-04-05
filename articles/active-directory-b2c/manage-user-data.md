@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e245b58449ab773914fc60be056082b82f05035a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78184487"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー データの管理
@@ -47,8 +47,8 @@ Azure AD B2C から顧客データをエクスポートするプロセスは、�
 
 Azure AD B2C のユーザー データは以下に限定されます。
 
-- **Azure Active Directory に格納されたデータ**:オブジェクト ID または任意のサインイン名 (メール アドレスやユーザー名など) を使用して、Azure AD B2C の認証ユーザー体験でデータを取得できます。
-- **ユーザー固有の監査イベント レポート**:オブジェクト ID を使用して、データにインデックスを付けることができます。
+- **Azure Active Directory に格納されたデータ**: オブジェクト ID または任意のサインイン名 (メール アドレスやユーザー名など) を使用して、Azure AD B2C の認証ユーザー体験でデータを取得できます。
+- **ユーザー固有の監査イベント レポート**: オブジェクト ID を使用して、データにインデックスを付けることができます。
 
 エクスポート データ フローの次の例において、アプリケーションによって実行されると説明されている手順は、ディレクトリの管理者ロールを持つユーザーまたはバックエンド プロセスが実行することもできます。
 

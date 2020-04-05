@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: fa9dba62b3b58687ec6a2bfc29e8722f7016b679
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443425"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237263"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Azure Lab Services でラボ アカウントを構成する 
 Azure Lab Services では、ラボ アカウントは、クラスルーム ラボなどのマネージド ラボ型のコンテナーです。 管理者は、Azure Lab Services を使用してラボ アカウントを設定し、アカウントにラボを作成できるラボ所有者にアクセスを提供します。 

@@ -6,10 +6,10 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.openlocfilehash: b770b9bd34c8267889db536ec81332de32cb8776
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77668317"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してクラシック メトリック アラートを作成、表示、および管理する

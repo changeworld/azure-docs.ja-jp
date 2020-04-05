@@ -1,7 +1,7 @@
 ---
 title: イメージの分類チュートリアル:モデルをデプロイする
 titleSuffix: Azure Machine Learning
-description: このチュートリアルでは、Azure Machine Learning を使用して、Python Jupyter ノートブックの scikit-learn で画像分類モデルをデプロイする方法について説明します。 このチュートリアルは、2 部構成のシリーズの 2 番目です。
+description: このチュートリアルは、2 部構成のシリーズのパート 2 です。Azure Machine Learning を使用して、Python Jupyter ノートブックの scikit-learn で画像分類モデルをデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,17 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 071a8dd40d87e5df6fc5c65b789bb63b515dc60a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 81e02492f7e79b87e1513a910afe4719908adbbb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116508"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80159081"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>チュートリアル:Azure Container Instances に画像分類モデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 2 です**。 [前のチュートリアル](tutorial-train-models-with-aml.md)では、機械学習モデルをトレーニングしてから、クラウド上のワークスペースにモデルを登録しました。  
-
-これで、[Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) に Web サービスとしてモデルをデプロイする準備が整いました。 Web サービスは、1 つのイメージ (この場合は Docker イメージ) です。 ここにスコアリング ロジックとモデル自体がカプセル化されています。 
+このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 2 です**。 [前のチュートリアル](tutorial-train-models-with-aml.md)では、機械学習モデルをトレーニングしてから、クラウド上のワークスペースにモデルを登録しました。  これで、モデルを Web サービスとしてデプロイする準備が整いました。 Web サービスは、1 つのイメージ (この場合は Docker イメージ) です。 ここにスコアリング ロジックとモデル自体がカプセル化されています。 
 
 チュートリアルのこのパートでは、Azure Machine Learning を使って次の作業を行います。
 
@@ -50,7 +48,7 @@ Container Instances は、ワークフローをテストして理解するうえ
 > コードを実行しながら読み進めたい方は、ここで Jupyter Notebook に切り替えてください。
 > ノートブックで単一のコード セルを実行するには、そのコード セルをクリックして **Shift + Enter** キーを押します。 または、上部のツール バーから **[すべて実行]** を選択して、ノートブック全体を実行します。
 
-## <a name="start"></a>環境をセットアップする
+## <a name="set-up-the-environment"></a><a name="start"></a>環境をセットアップする
 
 まずテスト環境を設定します。
 
@@ -299,7 +297,6 @@ service.wait_for_deployment(show_output=True)
 ```python
 print(service.scoring_uri)
 ```
-
 
 ## <a name="test-the-deployed-service"></a>デプロイされたサービスをテストする
 

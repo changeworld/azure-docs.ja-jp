@@ -17,11 +17,11 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0f0c678f2426d9de58d2ab337c56243394b4d0f
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183883"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231795"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -74,13 +74,13 @@ Azure Instance Metadata Service の詳細については、[IMDS のドキュメ
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>サブスクリプションを別のディレクトリに移動する場合、マネージド ID は自動的に再作成されますか?
 
-No. サブスクリプションを別のディレクトリに移動する場合、お客様が手動でそれらを再作成し、再度 Azure RBAC ロールの割り当てを許可する必要があります。
+いいえ。 サブスクリプションを別のディレクトリに移動する場合、お客様が手動でそれらを再作成し、再度 Azure RBAC ロールの割り当てを許可する必要があります。
 - システム割り当てマネージドID の場合、無効にしてから最有効化します。 
 - ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度添付します。
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>マネージド ID を使って違うディレクトリやテナント内のリソースへアクセスできますか?
 
-No. マネージド ID は現在、クロスディレクトリ シナリオをサポートしていません。 
+いいえ。 マネージド ID は現在、クロスディレクトリ シナリオをサポートしていません。 
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>リソースのマネージド ID に必要な Azure RBAC アクセス許可は何ですか? 
 
@@ -114,7 +114,7 @@ Azure リソース VM 拡張機能のマネージド ID (2019 年 1 月に非推
 
 実行中の状態で VM を移動する場合、VM は移動中も実行し続けます。 ただし、移動後に、VM を停止および再起動すると、VM を開始できなくなります。 この問題は、VM が Azure リソースのマネージド ID への参照を更新できず、以前のリソース グループでポイントし続けるために発生します。
 
-**対処法** 
+**回避策** 
  
 Azure リソースのマネージド ID の正しい値を取得できるように、VM 上で更新をトリガーします。 VM プロパティの変更を行って、Azure リソース ID のマネージド ID への参照を更新できます。 たとえば、次のコマンドを使用して、VM で新しいタグの値を設定できます。
 

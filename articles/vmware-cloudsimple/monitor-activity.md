@@ -1,7 +1,7 @@
 ---
-title: Azure VMware Solutions (AVS) - AVS プライベート クラウド アクティビティの監視
-description: Azure VMware Solution by AVS 環境で利用できる、アラート、イベント、タスク、監査などのアクティビティに関する情報について説明します。
-titleSuffix: Azure VMware Solutions (AVS)
+title: プライベート クラウド アクティビティを監視する
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Azure VMware Solution by CloudSimple 環境で利用できる、アラート、イベント、タスク、監査などのアクティビティに関する情報について説明します。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/13/2019
@@ -9,24 +9,24 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5d6fd1b92db62ab7cc9edd47c601910b8148bb95
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77019674"
 ---
-# <a name="monitor-vmware-solutions-avs-activity"></a>VMware Solutions (AVS) アクティビティの監視
+# <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>VMware Solution by CloudSimple のアクティビティを監視する
 
-AVS アクティビティ ログでは、AVS ポータルで行われた操作の分析情報が提供されます。 一覧には、アラート、イベント、タスク、および監査が含まれています。 このアクティビティ ログを使用して、誰が、いつ、どのような操作を実行したかを確認します。 アクティビティ ログには、ユーザーによって実行された読み取り操作は含まれません。
+CloudSimple アクティビティ ログでは、CloudSimple ポータルで行われた操作の分析情報が提供されます。  一覧には、アラート、イベント、タスク、および監査が含まれています。  このアクティビティ ログを使用して、誰が、いつ、どのような操作を実行したかを確認します。  アクティビティ ログには、ユーザーによって実行された読み取り操作は含まれません。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
-## <a name="access-the-avs-portal"></a>AVS ポータルへのアクセス
+## <a name="access-the-cloudsimple-portal"></a>CloudSimple ポータルにアクセスする
 
-[AVS ポータル](access-cloudsimple-portal.md)にアクセスします。
+[CloudSimple ポータル](access-cloudsimple-portal.md)にアクセスします。
 
 ## <a name="activity-information"></a>アクティビティ情報
 
@@ -36,11 +36,11 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 [アクティビティ] ページのいずれかのアクティビティの詳細を表示するには、アクティビティを選択します。 右側に [詳細] パネルが表示されます。 パネルに表示されるアクションは、アクティビティの種類によって異なります。 パネルを閉じるには、 **[X]** をクリックします。
 
-表示を並べ替えるには、列見出しをクリックします。 特定の値の列をフィルター処理して表示できます。 **[CSV としてダウンロード]** アイコンをクリックして、アクティビティ レポートをダウンロードします。
+表示を並べ替えるには、列見出しをクリックします。  特定の値の列をフィルター処理して表示できます。  **[CSV としてダウンロード]** アイコンをクリックして、アクティビティ レポートをダウンロードします。
 
 ## <a name="alerts"></a>警告
 
-アラートは、AVS 環境での重要なアクティビティの通知です。 アラートには、課金またはユーザー アクセスに影響するイベントが含まれています。
+アラートは、CloudSimple 環境での重要なアクティビティの通知です。  アラートには、課金またはユーザー アクセスに影響するイベントが含まれています。
 
 アラートを確認して一覧から削除するには、一覧から 1 つ以上選択し、 **[確認]** をクリックします。
 
@@ -51,15 +51,15 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 | アラートの種類 | アラートのカテゴリ。|
 | Time | アラートが発生した時刻。 |
 | 重大度 | アラートの重要度。|
-| リソース名 | リソースに割り当てられた名前 (AVS プライベート クラウド名など)。 |
-| リソースの種類 | リソースのカテゴリ:AVS プライベート クラウド、クラウド ラック。 |
+| リソース名 | リソースに割り当てられた名前 (プライベート クラウド名など)。 |
+| リソースの種類 | リソースのカテゴリ:プライベート クラウド、クラウド ラック。 |
 | Resource ID | リソースの識別子。 |
 | 説明 | アラートがトリガーされた原因の説明。 |
 | [Acknowledged] (確認済み) | アラートが確認されているかどうかの指示。 |
 
 ## <a name="events"></a>events
 
-イベントは、AVS ポータルでのユーザーとシステムのアクティビティを示します。 [イベント] ページには、特定のリソースに関連するアクティビティと影響の重大度が表示されます。
+イベントは、CloudSimple ポータルでのユーザーとシステムのアクティビティを示します。 [イベント] ページには、特定のリソースに関連するアクティビティと影響の重大度が表示されます。
 
 次の列の情報をアラートで利用できます。 **[列の編集]** をクリックし、表示する列を選択します。
 
@@ -68,13 +68,13 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 | Time | イベントが発生した日時。 |
 | イベントの種類 | イベントを識別する数値コード。 |
 | 重大度 | イベントの重大度。|
-| リソース名 | リソースに割り当てられた名前 (AVS プライベート クラウド名など)。 |
-| リソースの種類 | リソースのカテゴリ:AVS プライベート クラウド、クラウド ラック。 |
+| リソース名 | リソースに割り当てられた名前 (プライベート クラウド名など)。 |
+| リソースの種類 | リソースのカテゴリ:プライベート クラウド、クラウド ラック。 |
 | 説明 | アラートがトリガーされた原因の説明。 |
 
-## <a name="tasks"></a>処理手順
+## <a name="tasks"></a>タスク
 
-タスクは、完了までに 30 秒以上かかることが予想される AVS プライベート クラウドのアクティビティです (30 秒未満で完了することが予想されるアクティビティは、イベントとしてのみ報告されます)。AVS プライベート クラウドのタスクの進行状況を追跡するには、[タスク] ページを開きます。
+タスクは、完了までに 30 秒以上かかることが予想されるプライベート クラウドのアクティビティです (30 秒未満で完了することが予想されるアクティビティは、イベントとしてのみ報告されます)。プライベート クラウドのタスクの進行状況を追跡するには、[タスク] ページを開きます。
 
 次の列の情報をアラートで利用できます。 **[列の編集]** をクリックし、表示する列を選択します。
 
@@ -84,7 +84,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 | Operation | タスクによって実行されるアクション。 |
 | User | タスクを完了するために割り当てられたユーザー。 |
 | リソース名 | リソースに割り当てられた名前。 |
-| リソースの種類 | リソースのカテゴリ:AVS プライベート クラウド、クラウド ラック。 |
+| リソースの種類 | リソースのカテゴリ:プライベート クラウド、クラウド ラック。 |
 | Resource ID | リソースの識別子。 |
 | [開始] | タスクの開始時間。 |
 | End | タスクの終了時間。 |
@@ -104,7 +104,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 | Operation | タスクによって実行されるアクション。 |
 | User | タスクに割り当てられたユーザー。 |
 | リソース名 | リソースに割り当てられた名前。 |
-| リソースの種類 | リソースのカテゴリ:AVS プライベート クラウド、クラウド ラック。 |
+| リソースの種類 | リソースのカテゴリ:プライベート クラウド、クラウド ラック。 |
 | Resource ID | リソースの識別子。 |
 | 結果 | アクティビティの結果 ( **[成功]** など)。 |
 | 所要時間 | タスクの完了までにかかった時間。 |
@@ -113,4 +113,4 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure での VMware VM の使用](quickstart-create-vmware-virtual-machine.md)
-* [AVS プライベート クラウド](cloudsimple-private-cloud.md)の詳細を確認する
+* [プライベート クラウド](cloudsimple-private-cloud.md)の詳細を確認する

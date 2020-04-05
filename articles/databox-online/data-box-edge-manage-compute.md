@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: alkohli
 ms.openlocfilehash: a9daf1d59b03d283be999aaab559c6d60f6405dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65953127"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Azure Data Box Edge のコンピューティングの管理
@@ -129,6 +129,6 @@ IoT デバイスと IoT Edge デバイスのキーをローテーションした
 
 3. 同期が完了したら、ダイアログを閉じます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal を使用して Edge コンピューティング ネットワークを管理する](data-box-edge-extend-compute-access-modules.md)方法を学びます。

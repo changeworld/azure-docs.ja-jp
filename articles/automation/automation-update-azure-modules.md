@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: 3d7eaae452f307b350c111452b819576cf7f17e5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75420481"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Azure Automation の Azure PowerShell モジュールを更新する方法
@@ -34,7 +34,7 @@ Runbook やそれにより自動化されるプロセスに影響を与えない
 
 このプロセスを使用して Azure モジュールを更新するときの考慮事項を次に示します。
 
-* この Runbook は、既定では **Azure** モジュールと **AzureRm** モジュールの更新のみをサポートしています。 この Runbook は **Az** モジュールの更新もサポートしています。 この Runbook による `Az` モジュールの更新について詳しくは、[Azure モジュールの更新 Runbook の README](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) に関するページを参照してください。 Automation アカウントで `Az` モジュールを使用するときに考慮しなければならないその他の重要な要素があります。詳しくは、[Automation アカウントでの Az モジュールの使用](az-modules.md)に関するページをご覧ください。
+* この Runbook は、既定では **Azure** モジュールと **AzureRm** モジュールの更新のみをサポートしています。 この Runbook は **Az** モジュールの更新もサポートしています。 この Runbook による [ モジュールの更新について詳しくは、](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md)Azure モジュールの更新 Runbook の README`Az` に関するページを参照してください。 Automation アカウントで `Az` モジュールを使用するときに考慮しなければならないその他の重要な要素があります。詳しくは、[Automation アカウントでの Az モジュールの使用](az-modules.md)に関するページをご覧ください。
 
 * この Runbook を開始する前に、お使いの Automation アカウントに [Azure 実行アカウント資格情報](manage-runas-account.md)が作成されていることを確認すします。
 
@@ -42,7 +42,7 @@ Runbook やそれにより自動化されるプロセスに影響を与えない
 
 * ソブリン クラウドでこの Runbook を使用するには、`AzureRmEnvironment` パラメーターを使用して、適切な環境を Runbook に渡します。  指定できる値は、**AzureCloud**、**AzureChinaCloud**、**AzureGermanCloud**、および **AzureUSGovernment** です。 これらの値は `Get-AzureRmEnvironment | select Name` を使用して取得できます。 このパラメーターに値を渡さない場合、Runbook は既定で、Azure パブリック クラウドの **AzureCloud** を使用します
 
-* PowerShell ギャラリーで提供されている最新のものではなく、Azure PowerShell モジュールの特定のバージョンを使用する場合は、それらのバージョンを、**Update-AutomationAzureModulesForAccount** Runbook の省略可能な `ModuleVersionOverrides` パラメーターに渡します。 例については、[Update-AutomationAzureModulesForAccount.ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1
+* PowerShell ギャラリーで提供されている最新のものではなく、Azure PowerShell モジュールの特定のバージョンを使用する場合は、それらのバージョンを、`ModuleVersionOverrides`Update-AutomationAzureModulesForAccount**Runbook の省略可能な** パラメーターに渡します。 例については、[Update-AutomationAzureModulesForAccount.ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1
 ) Runbook をご覧ください。 `ModuleVersionOverrides` パラメーターで指定されていない Azure PowerShell モジュールは、PowerShell ギャラリーにあるモジュールの最新バージョンで更新されます。 `ModuleVersionOverrides` パラメーターに何も渡さなかった場合は、すべてのモジュールが、PowerShell ギャラリーにある最新のモジュール バージョンで更新されます。 この動作は、 **[Azure モジュールの更新]** ボタンをクリックするのと同じことです。
 
 ## <a name="next-steps"></a>次のステップ

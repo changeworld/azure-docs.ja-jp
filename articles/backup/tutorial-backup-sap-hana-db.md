@@ -2,13 +2,13 @@
 title: チュートリアル - Azure VM での SAP HANA データベースのバックアップ
 description: このチュートリアルでは、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について学習します。
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: bb84f6b362adf7c190f3300e6e3f1bc572153151
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/24/2020
+ms.openlocfilehash: f64dd74ad0e038c5cad152e20ae2255de03114e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753979"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79501457"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>チュートリアル:Azure VM での SAP HANA データベースのバックアップ
 
@@ -22,36 +22,16 @@ ms.locfileid: "75753979"
 
 現在サポートされているすべてのシナリオについては、[こちら](sap-hana-backup-support-matrix.md#scenario-support)を参照してください。
 
-## <a name="onboard-to-the-public-preview"></a>パブリック プレビューにオンボードする
-
-以下のように、パブリック プレビューにオンボードします。
-
-* ポータルで、[この記事に従って](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal)、Recovery Services サービス プロバイダーにご利用のサブスクリプション ID を登録します。
-
-* PowerShell では、このコマンドレットを実行します。 "登録済み" として完了するはずです。
-
-    ```powershell
-    Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-
 ## <a name="prerequisites"></a>前提条件
 
 バックアップを構成する前に、必ず、次の操作を行ってください。
 
-1. SAP HANA データベースを実行している VM に、次のように zypper を使用して、公式の SLES パッケージ/メディアから ODBC ドライバー パッケージをインストールして有効にします。
-
-```bash
-sudo zypper update
-sudo zypper install unixODBC
-```
-
->[!NOTE]
-> リポジトリを更新していない場合は、unixODBC のバージョンが 2.3.4 以降であることを確認してください。 unixODBC のバージョンを確認するには、root として `odbcinst -j` を実行します。
->
-
-2. [以下の手順](#set-up-network-connectivity)で説明されているように、Azure に到達できるように、VM からインターネットへの接続を許可します。
-
-3. HANA がルート ユーザーとしてインストールされている仮想マシンで事前登録スクリプトを実行します。 [このスクリプト](https://aka.ms/scriptforpermsonhana)を使用すると、[適切な権限](#setting-up-permissions)が設定されます。
+* VM からインターネットへの接続を許可して、Azure に到達できるようにします。以下の「[ネットワーク接続を設定する](#set-up-network-connectivity)」の手順を参照してください。
+* 次の条件を満たすキーが **hdbuserstore** に存在する必要があります。
+  * 既定の **hdbuserstore** に存在する。
+  * MDC の場合、キーが **NAMESERVER** の SQL ポートを指すこと。 SDC の場合は、**INDEXSERVER** の SQL ポートを指す必要があります。
+  * ユーザーを追加したり削除したりするための資格情報があること。
+* HANA がインストールされている仮想マシンで、SAP HANA バックアップ構成スクリプト (事前登録スクリプト) をルート ユーザーとして実行します。 [このスクリプト](https://aka.ms/scriptforpermsonhana)で、バックアップに備えた HANA システムの準備を行うことができます。 事前登録スクリプトの詳細については、「[事前登録スクリプトで実行される処理](#what-the-pre-registration-script-does)」セクションを参照してください。
 
 ## <a name="set-up-network-connectivity"></a>ネットワーク接続を設定する
 
@@ -110,15 +90,22 @@ NSG サービス タグを使用する | 範囲の変更が自動的にマージ
 Azure Firewall の FQDN タグを使用する | 必要な FQDN が自動的に管理されるため管理しやすい | Azure Firewall でのみ使用可能
 HTTP プロキシを使用する | 許可するストレージ URL をプロキシで詳細に制御可能 <br/><br/> VM に対するインターネット アクセスを単一の場所で実現 <br/><br/> Azure の IP アドレスの変更の影響を受けない | プロキシ ソフトウェアで VM を実行するための追加のコストが発生する
 
-## <a name="setting-up-permissions"></a>アクセス許可の設定
+## <a name="what-the-pre-registration-script-does"></a>事前登録スクリプトで実行される処理
 
-事前登録スクリプトは、次のアクションを実行します。
+事前登録スクリプトでは、次の機能が実行されます。
 
-1. HANA システム内に AZUREWLBACKUPHANAUSER を作成し、次の必要なロールとアクセス許可を追加します。
-   * DATABASE ADMIN: 復元中に新しい DB を作成します。
-   * CATALOG READ: バックアップ カタログを読み取ります。
-   * SAP_INTERNAL_HANA_SUPPORT いくつかのプライベート テーブルにアクセスします。
-2. すべての操作 (データベース クエリ、復元操作、バックアップの構成および実行) を処理するためのキーを HANA プラグインの Hdbuserstore に追加します。
+* 使用ディストリビューション上の Azure Backup エージェントに必要なパッケージをインストールまたは更新します。
+* Azure Backup サーバーと依存サービス (Azure Active Directory、Azure Storage など) に対するアウトバウンド ネットワーク接続チェックを実行します。
+* [前提条件](#prerequisites)の 1 つでもあるユーザー キーを使用して HANA システムにログインします。 このユーザー キーは、バックアップ ユーザー (AZUREWLBACKUPHANAUSER) を HANA システムに作成するために使用されます。また、このユーザー キーは、事前登録スクリプトが正常に実行された後に削除できます。
+* AZUREWLBACKUPHANAUSER には、次の必要なロールとアクセス許可が割り当てられます。
+  * DATABASE ADMIN (MDC の場合) および BACKUP ADMIN (SDC の場合): 復元中に新しいデータベースを作成します。
+  * CATALOG READ: バックアップ カタログを読み取ります。
+  * SAP_INTERNAL_HANA_SUPPORT いくつかのプライベート テーブルにアクセスします。
+* このスクリプトにより、HANA バックアップ プラグインですべての操作 (データベース クエリ、復元操作、バックアップの構成と実行) を処理するために AZUREWLBACKUPHANAUSER の **hdbuserstore** にキーが追加されます。
+
+>[!NOTE]
+> [前提条件](#prerequisites)の一環として記載されているユーザー キーは、事前登録スクリプトのパラメーターとして明示的に渡すことができます: `-sk SYSTEM_KEY_NAME, --system-key SYSTEM_KEY_NAME` <br><br>
+>このスクリプトで受け取るその他のパラメーターを確認するには、`bash msawb-plugin-config-com-sap-hana.sh --help` コマンドを使用してください。
 
 キーの作成を確認するには、SIDADM 資格情報を使用して HANA コンピューター上で HDBSQL コマンドを実行します。
 
@@ -129,8 +116,7 @@ hdbuserstore list
 このコマンド出力には、AZUREWLBACKUPHANAUSER として示されるユーザーと共に {SID}{DBNAME} キーが表示されます。
 
 >[!NOTE]
-> /usr/sap/{SID}/home/.hdb/ の下に固有の一連の SSFS ファイルがあることを確認してください。 このパスにはフォルダーが 1 つしか存在しません。
->
+> `/usr/sap/{SID}/home/.hdb/` の下に固有の一連の SSFS ファイルがあることを確認してください。 このパスにはフォルダーが 1 つしか存在しません。
 
 ## <a name="create-a-recovery-service-vault"></a>Recovery Services コンテナーを作成する
 
@@ -142,25 +128,25 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 2. 左側のメニューから、 **[すべてのサービス]** を選択します。
 
-![[すべてのサービス] を選択する](./media/tutorial-backup-sap-hana-db/all-services.png)
+   ![[すべてのサービス] を選択する](./media/tutorial-backup-sap-hana-db/all-services.png)
 
 3. **[すべてのサービス]** ダイアログ ボックスに、「**Recovery Services**」と入力します。 入力に従って、リソースの一覧がフィルター処理されます。 リソースの一覧から **[Recovery Services コンテナー]** を選択します。
 
-![Recovery Services コンテナーを選択する](./media/tutorial-backup-sap-hana-db/recovery-services-vaults.png)
+   ![Recovery Services コンテナーを選択する](./media/tutorial-backup-sap-hana-db/recovery-services-vaults.png)
 
 4. **[Recovery Services コンテナー]** ダッシュボードで **[追加]** を選択します。
 
-![Recovery Services コンテナーを追加する](./media/tutorial-backup-sap-hana-db/add-vault.png)
+   ![Recovery Services コンテナーを追加する](./media/tutorial-backup-sap-hana-db/add-vault.png)
 
-**[Recovery Services コンテナー]** ダイアログ ボックスが開きます。 **[名前]、[サブスクリプション]、[リソース グループ]** 、および **[場所]** に値を入力します。
+   **[Recovery Services コンテナー]** ダイアログ ボックスが開きます。 **[名前]、[サブスクリプション]、[リソース グループ]** 、および **[場所]** に値を入力します。
 
-![Recovery Services コンテナーの作成](./media/tutorial-backup-sap-hana-db/create-vault.png)
+   ![Recovery Services コンテナーの作成](./media/tutorial-backup-sap-hana-db/create-vault.png)
 
-* **Name**:この名前は、Recovery Services コンテナーを識別するために使用されるため、Azure サブスクリプションに対して一意である必要があります。 2 文字以上で、50 文字以下の名前を指定します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。 このチュートリアルでは、**SAPHanaVault** という名前を使用しています。
-* **サブスクリプション**:使用するサブスクリプションを選択します。 1 つのサブスクリプションのみのメンバーの場合は、その名前が表示されます。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (推奨) のサブスクリプションを使用してください。 職場または学校アカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。 ここでは、**SAP HANA solution lab subscription** サブスクリプションを使用しています。
-* **[リソース グループ]** :既存のリソース グループを使用するか、新しいリソース グループを作成します。 ここでは、**SAPHANADemo** を使用しています。<br>
-サブスクリプションの使用可能なリソース グループの一覧を表示するには、 **[既存のものを使用]** を選択し、ドロップダウン リスト ボックスからリソースを選択します。 新しいリソース グループを作成するには、 **[新規作成]** を選択し、名前を入力します。 リソース グループの詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)」を参照してください。
-* **[場所]** :コンテナーの地理的リージョンを選択します。 このコンテナーは、SAP HANA を実行している仮想マシンと同じリージョンにある必要があります。 ここでは、 **[米国東部 2]** を使用しています。
+   * **Name**:この名前は、Recovery Services コンテナーを識別するために使用されるため、Azure サブスクリプションに対して一意である必要があります。 2 文字以上で、50 文字以下の名前を指定します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。 このチュートリアルでは、**SAPHanaVault** という名前を使用しています。
+   * **サブスクリプション**:使用するサブスクリプションを選択します。 1 つのサブスクリプションのみのメンバーの場合は、その名前が表示されます。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (推奨) のサブスクリプションを使用してください。 職場または学校アカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。 ここでは、**SAP HANA solution lab subscription** サブスクリプションを使用しています。
+   * **[リソース グループ]** :既存のリソース グループを使用するか、新しいリソース グループを作成します。 ここでは、**SAPHANADemo** を使用しています。<br>
+   サブスクリプションの使用可能なリソース グループの一覧を表示するには、 **[既存のものを使用]** を選択し、ドロップダウン リスト ボックスからリソースを選択します。 新しいリソース グループを作成するには、 **[新規作成]** を選択し、名前を入力します。 リソース グループの詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)」を参照してください。
+   * **[場所]** :コンテナーの地理的リージョンを選択します。 このコンテナーは、SAP HANA を実行している仮想マシンと同じリージョンにある必要があります。 ここでは、 **[米国東部 2]** を使用しています。
 
 5. **[確認および作成]** を選択します。
 
@@ -185,15 +171,15 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 1. **[バックアップの構成]** をクリックします。
 
-![バックアップの構成](./media/tutorial-backup-sap-hana-db/configure-backup.png)
+   ![バックアップの構成](./media/tutorial-backup-sap-hana-db/configure-backup.png)
 
 2. **[バックアップする項目の選択]** で、保護するデータベースを 1 つ以上選択し、 **[OK]** をクリックします。
 
-![バックアップする項目を選択する](./media/tutorial-backup-sap-hana-db/select-items-to-backup.png)
+   ![バックアップする項目を選択する](./media/tutorial-backup-sap-hana-db/select-items-to-backup.png)
 
 3. **[バックアップ ポリシー] > [バックアップ ポリシーの選択]** で、次のセクションの手順に従って、データベースの新しいバックアップ ポリシーを作成します。
 
-![バックアップ ポリシーを選択する](./media/tutorial-backup-sap-hana-db/backup-policy.png)
+   ![バックアップ ポリシーを選択する](./media/tutorial-backup-sap-hana-db/backup-policy.png)
 
 4. ポリシーを作成した後、 **[バックアップ] メニュー**の **[バックアップの有効化]** をクリックします。
 
@@ -212,11 +198,11 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 1. **[ポリシー名]** に新しいポリシーの名前を入力します。 この場合は、「**SAPHANA**」と入力します。
 
-![新しいポリシーの名前を入力する](./media/tutorial-backup-sap-hana-db/new-policy.png)
+   ![新しいポリシーの名前を入力する](./media/tutorial-backup-sap-hana-db/new-policy.png)
 
 2. **[Full Backup policy]\(完全バックアップのポリシー\)** で、 **[バックアップ頻度]** を選択します。 **[Daily]\(毎日\)** または **[毎週]** を選択できます。 このチュートリアルでは、 **[Daily]\(毎日\)** バックアップを選択しています。
 
-![バックアップ頻度を選択する](./media/tutorial-backup-sap-hana-db/backup-frequency.png)
+   ![バックアップ頻度を選択する](./media/tutorial-backup-sap-hana-db/backup-frequency.png)
 
 3. **[リテンション期間]** で、完全バックアップのリテンション期間の設定を構成します。
    * 既定では、すべてのオプションが選択されています。 使用しない保持期間の制限をすべてクリアして、使用するものを設定します。
@@ -230,9 +216,9 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
    ![差分バックアップ ポリシー](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
->[!NOTE]
->増分バックアップは現在、サポートされていません。
->
+   >[!NOTE]
+   >増分バックアップは現在、サポートされていません。
+   >
 
 7. **[OK]** をクリックしてポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
 8. **[ログ バックアップ]** を選択し、トランザクション ログ バックアップ ポリシーを追加します。
@@ -241,9 +227,9 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
     ![ログ バックアップのポリシー](./media/tutorial-backup-sap-hana-db/log-backup-policy.png)
 
->[!NOTE]
-> ログ バックアップでは、1 回の完全バックアップが正常に完了した後にのみ、フローが開始されます。
->
+   >[!NOTE]
+   > ログ バックアップでは、1 回の完全バックアップが正常に完了した後にのみ、フローが開始されます。
+   >
 
 9. **[OK]** をクリックしてポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
 10. バックアップ ポリシーの定義が完了した後、 **[OK]** をクリックします。

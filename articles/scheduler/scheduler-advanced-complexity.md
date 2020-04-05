@@ -10,10 +10,10 @@ ms.suite: infrastructure-services
 ms.topic: article
 ms.date: 11/14/2018
 ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898601"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Azure Scheduler でジョブの高度なスケジュールと繰り返しを構築する
@@ -68,7 +68,7 @@ ms.locfileid: "78898601"
 |---------|----------|-------------|
 | **startTime** | いいえ | ジョブがいつ基本スケジュールで開始されるかを指定する、[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)の DateTime 文字列値。 <p>複雑なスケジュールでは、**startTime** になるとすぐにジョブが開始されます。 | 
 | **recurrence** | いいえ | ジョブが実行されるときの繰り返しの規則。 **recurrence** オブジェクトでは、**frequency**、**interval**、**schedule**、**count**、**endTime** の各要素がサポートされます。 <p>**recurrence** 要素を使用する場合は、**frequency** 要素も使用する必要があります。**recurrence** の他の要素は省略可能です。 |
-| **frequency** | はい (**recurrence** を使用する場合) | 実行間の時間単位。次の値がサポートされます。"Minute"、"Hour"、"Day"、"Week"、"Month"、および "Year" | 
+| **frequency** | はい (**recurrence** を使用する場合) | 実行間の時間単位。サポートされる値は、"Minute"、"Hour"、"Day"、"Week"、"Month"、および "Year" です | 
 | **interval** | いいえ | **frequency** に基づいて実行間の時間単位の数を決定する正の整数。 <p>たとえば、**interval** が 10 で **frequency** が "Week" の場合、ジョブは 10 週間おきに繰り返されます。 <p>各 frequency の最大 interval 数は次のとおりです。 <p>- 18 か月 <br>- 78 週 <br>- 548 日 <br>- 時間と分については、範囲は 1 <= <*interval*> <= 1,000 です。 | 
 | **schedule** | いいえ | 指定した分、時間、曜日、および月の日にちに基づいて、recurrence に対する変更を定義します | 
 | **count** | いいえ | ジョブが終了するまでの実行回数を指定する正の整数。 <p>たとえば、日単位のジョブの **count** を 7 に設定し、開始日を月曜日に設定した場合、ジョブの実行は日曜日に終了します。 開始日が既に過去の日付である場合、最初の実行は作成時刻から計算されます。 <p>**endTime** または **count** が指定されていない場合、ジョブは無期限で実行されます。 同じジョブで **count** と **endTime** の両方を使用することはできません。この場合、最初に完了する規則が適用されます。 | 
@@ -168,7 +168,7 @@ schedule の要素を次の表に詳しく示します。
 | **monthlyOccurrences** |ジョブを実行する月の日にちを指定します。 月単位の頻度だけを指定できます。 |**monthlyOccurrences** オブジェクトの配列:<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **day** は、ジョブを実行する曜日です。 たとえば、 *{Sunday}* は、月の毎週日曜日という意味です。 必須。<br /><br />**occurrence** は、月の第何週目に実行するかを表します。 たとえば、 *{Sunday, -1}* は月の最終日曜日という意味です。 省略可能。 |
 | **monthDays** |ジョブが実行される月の日にち。 月単位の頻度だけを指定できます。 |次の値の配列。<br />- -1 以下かつ -31 以上の任意の値<br />- 1 以上かつ 31 以下の任意の値|
 
-## <a name="examples-recurrence-schedules"></a>例 :繰り返しのスケジュール
+## <a name="examples-recurrence-schedules"></a>例: 繰り返しのスケジュール
 
 次の例に、さまざまな繰り返しのスケジュールを示します。 この例では、schedule オブジェクトとそのサブ要素に注目します。
 

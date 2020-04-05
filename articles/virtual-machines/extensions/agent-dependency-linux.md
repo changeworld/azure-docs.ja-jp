@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: 82f9c5a67cb056752cf8310be3b7c9f0bd2501e9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979646"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227951"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Linux 用 Azure Monitor Dependency 仮想マシン拡張機能
 
@@ -73,11 +73,11 @@ Linux 用 Azure VM Dependency Agent 拡張機能は、Azure Monitor for VMs の�
 
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 |
+| 名前 | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
-| 型 | DependencyAgentLinux |
+| type | DependencyAgentLinux |
 | typeHandlerVersion | 9.5 |
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
@@ -143,7 +143,7 @@ az vm extension set \
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
-### <a name="troubleshoot"></a>[トラブルシューティング]
+### <a name="troubleshoot"></a>トラブルシューティング
 
 拡張機能のデプロイ状態に関するデータを取得するには、Azure portal か Azure CLI を使用します。 特定の VM の拡張機能のデプロイ状態を確認するには、Azure CLI を使用して次のコマンドを実行します。
 

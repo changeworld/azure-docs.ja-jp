@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 4a3b699c90e1fefb834f8ddfe3a23fc2a97354ec
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: eacdfe8211c97e75b6609f5e11b681f84ae55846
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186124"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472086"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API を使用して開発する
 
-開発者は、Media Services の [REST API](https://aka.ms/ams-v3-rest-ref) または REST API と対話できるクライアント ライブラリを使って、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。 [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API は、OpenAPI 仕様 (旧称 Swagger) に基づいています。
+開発者は、Media Services の [REST API](https://docs.microsoft.com/rest/api/media/) または REST API と対話できるクライアント ライブラリを使って、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。 [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API は、OpenAPI 仕様 (旧称 Swagger) に基づいています。
 
 この記事では、Media Services v3 を使用して開発を行うときにエンティティと API に適用される規則について説明します。
 
@@ -80,7 +80,7 @@ Azure Resource Manager の名前付けの詳細については、[名前付け�
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>資産内のファイルまたは BLOB の名前
 
-資産内のファイルまたは BLOB の名前は、[BLOB 名の要件](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)と[NTFS 名の要件](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)の両方に従っている必要があります。 これらの要件の理由は、ファイルが BLOB ストレージからローカルの NTFS ディスクにコピーされて処理できるようになることです。
+アセット内のファイルまたは BLOB の名前は、[BLOB 名の要件](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)と[NTFS 名の要件](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)の両方に従っている必要があります。 これらの要件は、ファイルが BLOB ストレージからローカルの NTFS ディスクにコピーされて処理できるようにするためのものです。
 
 ## <a name="long-running-operations"></a>長時間にわたって実行される操作
 
@@ -136,7 +136,7 @@ Media Services には、次のような長期操作があります。
 
 [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) は、Media Services について学習したい Windows ユーザーが使用できるツールです。 AMSE は、Media Services で VOD およびライブ コンテンツをアップロード、ダウンロード、エンコード、ストリーミングする Winforms/C# アプリケーションです。 AMSE ツールは、コードを記述しないで Media Services をテストしたいクライアント用です。 AMSE コードは、Media Services による開発を希望するお客様用のリソースとして提供されています。
 
-AMSE はオープン ソース プロジェクトであり、サポートはコミュニティによって提供されます (問題は https://github.com/Azure/Azure-Media-Services-Explorer/issues) に報告できます)。 このプロジェクトでは、[Microsoft オープン ソースの倫理規定](https://opensource.microsoft.com/codeofconduct/)を採用しています。 詳しくは、[倫理規定についてよくある質問](https://opensource.microsoft.com/codeofconduct/faq/)に関する記事を参照するか、opencode@microsoft.com 宛てに質問またはコメントをお送りください。
+AMSE はオープン ソース プロジェクトであり、サポートはコミュニティによって提供されます (問題は https://github.com/Azure/Azure-Media-Services-Explorer/issues) に報告できます)。 このプロジェクトは、「[Microsoft のオープン ソースの倫理規定](https://opensource.microsoft.com/codeofconduct/)」を採用しています。 詳しくは、[倫理規定についてよくある質問](https://opensource.microsoft.com/codeofconduct/faq/)に関する記事を参照するか、opencode@microsoft.com 宛てに質問またはコメントをお送りください。
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services エンティティのフィルター処理、順序付け、ページング
 
@@ -150,7 +150,7 @@ AMSE はオープン ソース プロジェクトであり、サポートはコ�
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Java を使用して Media Services に接続する](configure-connect-java-howto.md)
 * [.NET を使用して Media Services に接続する](configure-connect-dotnet-howto.md)

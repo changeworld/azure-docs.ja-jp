@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: vturecek
 ms.openlocfilehash: 92c717fa2c82dd147acd3c28333e37ccf8dd2e89
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349244"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236647"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>高信頼アクターの Service Fabric プラットフォームの使用方法
 この記事では、Reliable Actors による Azure Service Fabric プラットフォームの使用方法について説明します。 Reliable Actors は、*アクター サービス*と呼ばれるステートフル リライアブル サービスの実装にホストされるフレームワークで実行されます。 アクター サービスには、アクターのライフサイクルとメッセージ ディスパッチを管理するうえで必要なコンポーネントがすべて含まれています。
@@ -28,7 +28,7 @@ ms.locfileid: "75349244"
 
 上記の図は、Service Fabric アプリケーション フレームワークとユーザー コードの関係を示しています。 青色の要素は Reliable Services アプリケーション フレームワークを表しています。また、オレンジ色の要素は Reliable Actors フレームワークを表し、緑色の要素はユーザー コードを表しています。
 
-Reliable Services では、サービスは `StatefulService` クラスを継承します。 このクラス自体は、`StatefulServiceBase` (ステートレス サービスの場合は `StatelessService`) から派生します。 Reliable Actors では、アクター サービスを使用します。 アクター サービスは、アクターが実行されるアクター パターンを実装する `StatefulServiceBase` クラスの別の実装です。 アクター サービス自体は `StatefulServiceBase` の実装にすぎないため、`StatefulService` を継承したときと同様に、`ActorService` から派生した独自のサービスを記述し、サービスレベルの機能を実装できます。次にその例を示します。
+Reliable Services では、サービスは `StatefulService` クラスを継承します。 このクラス自体は、`StatefulServiceBase` (ステートレス サービスの場合は `StatelessService`) から派生します。 Reliable Actors では、アクター サービスを使用します。 アクター サービスは、アクターが実行されるアクター パターンを実装する `StatefulServiceBase` クラスの別の実装です。 アクター サービス自体は `StatefulServiceBase` の実装にすぎないため、`ActorService` を継承したときと同様に、`StatefulService` から派生した独自のサービスを記述し、サービスレベルの機能を実装できます。次にその例を示します。
 
 * サービスのバックアップと復元。
 * すべてのアクターで共有される機能 (サーキット ブレーカーなど)。

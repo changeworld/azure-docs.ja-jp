@@ -8,10 +8,10 @@ ms.date: 2/19/2019
 ms.author: rohink
 ms.topic: conceptual
 ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76939050"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Azure DNS による DNS ゾーンの委任

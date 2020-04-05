@@ -11,13 +11,13 @@ ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 547b625996a65999c32c1b73699e3b408be01de3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188598"
 ---
-# <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C:Extensions アプリ
+# <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Extensions アプリ
 
 Azure AD B2C ディレクトリが作成されるとき、`b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` というアプリがその新しいディレクトリ内に自動で作成されます。 このアプリは **b2c-extensions-app** と呼ばれ、 *[アプリの登録]* に表示されます。 Azure AD B2C はこのアプリを使用して、ユーザーとカスタム属性の情報を保存します。 このアプリを削除してしまうと、Azure AD B2C が正しく機能しなくなり、運用環境に影響が出ます。
 

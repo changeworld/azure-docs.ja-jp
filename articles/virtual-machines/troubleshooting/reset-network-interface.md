@@ -13,11 +13,11 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: a8bd12d98b76d5848753987c4f7bcb76d4e2266d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921574"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226731"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows VM のネットワーク インターフェイスをリセットする方法 
 

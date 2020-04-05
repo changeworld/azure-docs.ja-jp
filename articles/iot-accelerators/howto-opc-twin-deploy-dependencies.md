@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 231d1efa02ec80e8ad56a8895d4262d774480111
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73824094"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>ローカル開発の依存関係をデプロイする
@@ -50,7 +50,7 @@ ms.locfileid: "73824094"
 2. または、プライベート AAD テナントをデプロイし、スクリプトを再起動して、それを使用することを選択します。
 3. 認証なしで続行します。  これはローカル環境でマイクロサービスを実行しているために許されることであり、運用環境では行わないでください。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 既存プロジェクトへの OPC Twin サービスのデプロイが正常に済んだので、次の手順が推奨されます。
 

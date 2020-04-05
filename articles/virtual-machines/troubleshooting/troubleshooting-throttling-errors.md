@@ -14,10 +14,10 @@ ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045364"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API の調整エラーのトラブルシューティング 

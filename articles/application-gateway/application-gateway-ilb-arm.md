@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 9fbde84c499ba5b086ce812de63602c626b416b0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74179325"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>内部ロード バランサー (ILB) を使用した Application Gateway の作成
@@ -31,8 +31,8 @@ Azure Application Gateway は、インターネットに接続する VIP のほ�
 ## <a name="what-is-required-to-create-an-application-gateway"></a>Application Gateway の作成に必要な構成
 
 * **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。 一覧の IP アドレスは、仮想ネットワークのアプリケーション ゲートウェイ用の別のサブネットに属しているか、パブリック IP/VIP である必要があります。
-* **バックエンド サーバー プール設定:** すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。 これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-* **フロントエンド ポート:** このポートは、アプリケーション ゲートウェイで開かれたパブリック ポートです。 このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
+* **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。 これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
+* **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。 このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
 * **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
 * **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。 現在、 *basic* ルールのみサポートされます。 *basic* ルールは、ラウンド ロビンの負荷分散です。
 
@@ -256,7 +256,7 @@ VERBOSE: 10:52:46 PM - Begin Operation: Get-AzureApplicationGateway
 Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 SSL オフロードを構成する場合は、「 [クラシック デプロイ モデルを使用して SSL オフロード用にアプリケーション ゲートウェイを構成する](application-gateway-ssl.md)」を参照してください。
 

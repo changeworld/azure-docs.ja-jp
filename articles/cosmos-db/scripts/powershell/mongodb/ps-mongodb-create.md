@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 347bd6d4d9788516d51d22f43ea60a223e91c49f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 59e30de7a0f069cfc69db715115f776034e94909
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444998"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365875"
 ---
 # <a name="create-a-database-and-collection-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB - MongoDB API のデータベースとコレクションを作成する
 
@@ -36,10 +36,13 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
-|**Azure リソース**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | リソースを作成します。 |
+|**Azure Cosmos DB**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | 新しい Cosmos DB アカウントを作成します。 |
+| [Set-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbdatabase) | 新しい Cosmos DB MongoDB API データベースを作成するか、または既存の Cosmos DB MongoDB API データベースを更新します。 |
+| [New-AzCosmosDBMongoDBIndex](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbindex) | 新しい MongoDB API インデックスを作成します。 |
+| [Set-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbcollection) | 新しい Cosmos DB SQL コレクションを作成するか、または既存の Cosmos DB SQL コレクションを更新します。 |
 |**Azure リソース グループ**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||

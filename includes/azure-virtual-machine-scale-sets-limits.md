@@ -4,16 +4,16 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
-ms.openlocfilehash: 16add1531db769d0e06f0a7034a36b568b69e602
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 86a964b1b5b052be174db69eecd7566210a0666d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67181537"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335003"
 ---
-| リソース | 既定の制限 | 上限 |
-| --- | --- | --- |
-| 1 スケール セットあたりの最大仮想マシン数 |1,000 |1,000 |
-| スケール セット内のカスタム VM イメージに基づく VM の最大数|600 |600 |
-| 1 リージョンあたりの最大スケール セット数 |2,000 |2,000 |
+| リソース | 制限 |
+| --- | --- |
+| 1 スケール セットあたりの最大仮想マシン数 |1,000 |
+| スケール セット内のカスタム VM イメージに基づく VM の最大数|600 |
+| 1 リージョンあたりの最大スケール セット数 |2,000 |
 

@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988347"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232827"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Azure Media Services を使用してビデオ ファイルとオーディオ ファイルを分析する
 
@@ -67,7 +67,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="transcript"></a>transcript
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|行 ID。|
 |text|トランスクリプトそのもの。|
@@ -105,7 +105,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="ocr"></a>ocr
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR テキスト。|
@@ -148,7 +148,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="faces"></a>faces
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|顔 ID。|
 |name|顔の名前。 "Unknown #0"、識別された著名人、または顧客のトレーニング担当者になることができます。|
@@ -193,7 +193,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="shots"></a>shots
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|スナップショット ID。|
 |keyFrames|ショット内のキー フレームの一覧 (各キー フレームに ID とインスタンスの時間範囲の一覧があります)。 キー フレームのインスタンスには、keyFrame のサムネイル ID 付きサムネイル フィードがあります。|
@@ -248,9 +248,9 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
   ]
 ```
 
-### <a name="statistics"></a>統計
+### <a name="statistics"></a>statistics
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |CorrespondenceCount|ビデオ内の通知の数|
 |WordCount|話者あたり単語の数|
@@ -263,7 +263,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 センチメントは、sentimentType フィールド (肯定/中立/否定) によって集計されます。 例: 0-0.1、0.1-0.2。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|センチメント ID。|
 |averageScore |センチメントの種類 (肯定/中立/否定) が同じすべてのインスタンスのすべてのスコアの平均値。|
@@ -298,7 +298,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="labels"></a>labels
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|ラベル ID。|
 |name|ラベル名 (例: "Computer"、"TV")。|
@@ -356,7 +356,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="keywords"></a>keywords
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|キーワード ID。|
 |text|キーワードのテキスト。|
@@ -407,7 +407,7 @@ visualContentModeration ブロックには、Video Indexer で成人向けコン
 
 成人向けまたはわいせつなコンテンツを含むことが検出されたビデオでは、秘密ビューしか利用できない場合があります。 ユーザーは、コンテンツの人間によるレビューの要求を送信できます。この場合、`IsAdult` 属性に、人間によるレビューの結果が含まれます。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|ビジュアル コンテンツ モデレーションの ID|
 |adultScore|(コンテンツ モデレーターからの) 成人スコア|

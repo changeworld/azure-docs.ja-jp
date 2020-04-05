@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Azure Dev Spaces についての一般的ないくつかの質問にお答えします
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 7439af9c5f936d309df655ca6fa301c39fa3f9ec
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: e7b4620faa01aa9f6d46c34bafb1c623c338beb7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117806"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240494"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces についてよく寄せられる質問
 
@@ -26,7 +26,7 @@ Azure Dev Spaces についてよく寄せられる質問に回答します。
 
 ## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>既存の Dockerfiles または Helm Ｃhart で Azure Dev Spaces を使用できますか。
 
-はい。プロジェクトに既に Dockerfile または Helm Ｃhart が存在する場合は、これらのファイルを Azure Dev Spaces で使用できます。 `azds prep` を実行する場合は、`--chart` パラメーターを使用してチャートの場所を指定します。 Azure Dev Spaces でも *azds.yaml* ファイルと *Dockerfile.develop* ファイルが生成されますが、既存の Dockerfile や Helm Ｃｈａｒｔ が置換または変更されることはありません。 `azds up` の実行時に既存のアプリケーションですべてを正常に機能させるために、*azds.yaml* ファイルと *Dockerfile.develop* ファイルの変更が必要になる場合があります。
+はい。プロジェクトに既に Dockerfile または Helm Ｃhart が存在する場合は、これらのファイルを Azure Dev Spaces で使用できます。 `azds prep` を実行する場合は、`--chart` パラメーターを使用してチャートの場所を指定します。 Azure Dev Spaces でも *azds.yaml* ファイルと *Dockerfile.develop* ファイルが生成されますが、既存の Dockerfile や Helm Ｃｈａｒｔ が置換または変更されることはありません。 *の実行時に既存のアプリケーションですべてを正常に機能させるために、* azds.yaml*ファイルと*Dockerfile.develop`azds up` ファイルの変更が必要になる場合があります。
 
 独自の Dockerfile または Helm Ｃhart を使用する場合、次の制限があります。
 * Dockerfile を 1 つだけ使用する場合は、ランタイムだけでなく言語 SDK など、開発シナリオを有効にするために必要なすべてを含める必要があります。 Azure Dev Spaces 用の独立した Dockerfile (Dockerfile.develop など) を使用する場合は、開発シナリオを有効にするために必要なすべてのものを Dockerfile に含める必要があります。
@@ -39,7 +39,7 @@ Azure Dev Spaces についてよく寄せられる質問に回答します。
 
 ## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Azure Dev Spaces によって生成されたファイルを変更できますか。
 
-はい。[プロジェクトを準備するときに Azure Dev Spaces によって生成される][dev-spaces-prep] *azds.yaml* ファイル、Dockerfile、および Helm Ｃhart を変更できます。 これらのファイルを変更すると、プロジェクトのビルド方法と実行方法が変更されます。
+はい。*プロジェクトを準備するときに Azure Dev Spaces によって生成される* [azds.yaml][dev-spaces-prep] ファイル、Dockerfile、および Helm Ｃhart を変更できます。 これらのファイルを変更すると、プロジェクトのビルド方法と実行方法が変更されます。
 
 ## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>パブリック IP アドレスなしで Azure Dev Spaces を使用できますか。
 
@@ -89,8 +89,8 @@ Visual Studio を使用してプロジェクトを準備する場合は、サー
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
-[dev-spaces-prep]: how-dev-spaces-works.md#prepare-your-code
-[dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works
+[dev-spaces-prep]: how-dev-spaces-works-prep.md
+[dev-spaces-routing]: how-dev-spaces-works-routing.md#how-routing-works
 [ingress-nginx]: how-to/ingress-https-nginx.md#configure-a-custom-nginx-ingress-controller
 [ingress-traefik]: how-to/ingress-https-traefik.md#configure-a-custom-traefik-ingress-controller
 [ingress-https-nginx]: how-to/ingress-https-nginx.md#configure-the-nginx-ingress-controller-to-use-https

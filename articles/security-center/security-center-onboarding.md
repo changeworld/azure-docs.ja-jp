@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
 ms.openlocfilehash: be26a9d4c66412518079de303ac0764d979c3e7c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77912054"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>セキュリティ強化のための Azure Security Center Standard へのオンボード

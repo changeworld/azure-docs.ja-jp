@@ -13,18 +13,20 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 2c85a378dc219e8af1b6458344ee4dba0fa73e68
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 52f4347fa545df88f11878709b4061662d5faffe
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596802"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345748"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:Azure SQL Database Machine Learning Services (プレビュー) を使用して R で予測モデルを作成する
 
 この 3 部構成のチュートリアル シリーズのパート 2 では、R で 2 つの予測モデルを作成し、最も正確なモデルを選択します。 このシリーズの次のパートでは、Azure SQL Database Machine Learning Services (プレビュー) を使用して、このモデルを SQL データベースにデプロイします。
 
-この記事では、以下の方法について説明します。
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
+
+この記事では、次の方法について学習します。
 
 > [!div class="checklist"]
 > * 2 つの機械学習モデルをトレーニングする
@@ -108,7 +110,7 @@ plot(predict_dtree$RentalCount_Pred  - predict_dtree$RentalCount,  main = "Diffe
 
 2 つのモデルのうち、デシジョン ツリー モデルの方がより正確であるように見えます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルを続行しない場合は、自分の Azure SQL Database サーバーから TutorialDB データベースを削除します。
 
@@ -119,9 +121,9 @@ Azure portal から次の手順を実行します。
 1. 自分の TutorialDB データベースを選択します。
 1. **[概要]** ページで **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアル シリーズのパート 2 では、これらの手順を完了しました。
+このチュートリアル シリーズの第 2 部では、次の手順を完了しました。
 
 * 2 つの機械学習モデルをトレーニングする
 * 両方のモデルで予測を行う

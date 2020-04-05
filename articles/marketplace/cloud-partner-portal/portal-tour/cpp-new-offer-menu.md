@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace の [新しいオファー] メニュー
 description: Azure Marketplace の Cloud パートナー ポータルの [新しいオファー] メニューに関する概要です。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: pabutler
-ms.openlocfilehash: c96341d462d541b1c08ce2851acf3a6a4c0bd804
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 3e56fbbab144dd99d18f63a3dfc2318db0306acd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821493"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288922"
 ---
 # <a name="new-offer-menu"></a>[新しいプラン] メニュー
 
@@ -37,6 +36,6 @@ ms.locfileid: "73821493"
 > このメニューは、新しいオファーの種類やオファー名の変更を反映するように定期的に更新されるため、表示される項目は上記の表にある項目と厳密に一致しない可能性があります。
 
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 新しいオファーを作成している場合は、上記の表を使用してそのオファーのセクションに移動し、ご自身のオファーを作成および公開するためのガイダンスを参照できます。  それ以外の場合は、ポータルのツアーは [[すべてのプラン] ページ](./cpp-all-offers-page.md)の確認に進みます。

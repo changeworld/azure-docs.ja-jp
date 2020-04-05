@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
 ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69997671"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics での顔編集チュートリアル
@@ -121,7 +121,7 @@ JSON 注釈データを解析しようとしている開発者は、Models.MetaD
 6.  このファイルを、手順 1 で生成された出力資産にアップロードします。 元のビデオをこの資産にアップロードし、プライマリ資産として設定します。 
 7.  この資産に対して "修正" モードで修正ジョブを実行して、修正後の最終ビデオを取得します。 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: af883da67f4e1bc819514e88ff480526e16124db
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74974923"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning サービスからデバイスの登録を抹消する方法
@@ -108,7 +108,7 @@ X.509 構成証明メカニズムを実装するデバイスでは、デバイ�
 
 登録の作成に成功すると、 **[個々の登録]** タブに無効になっているデバイス登録が表示されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 登録解除も広範なプロビジョニング解除プロセスの一部です。 デバイスのプロビジョニング解除には、プロビジョニング サービスの登録抹消と IoT hub からの登録解除の両方が含まれます。 このプロセスの詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」を参照してください。 
 

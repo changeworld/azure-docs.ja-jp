@@ -16,10 +16,10 @@ ms.date: 10/17/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b69502995eff88df53af3671a8e611809f83e59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65826096"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>アプリケーションへのユーザー アクセスの削除方法
@@ -71,6 +71,6 @@ ms.locfileid: "65826096"
 6.  **[Users can allow apps to access company data on their behalf]** (ユーザーはアプリが代わりに企業データにアクセスすることを許可できる) トグルを **[いいえ]** に設定して、[保存] ボタンをクリックします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [アプリへのアクセスの管理](what-is-access-management.md)

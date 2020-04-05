@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: thvankra
 ms.openlocfilehash: 467e9627a2623779bd808ca5aebdf76d8a5eda42
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75898659"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>1 対多のリレーショナル データを Azure Cosmos DB SQL API アカウントに移行する

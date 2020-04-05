@@ -10,22 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/24/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 21725e64bb359b2f11086baceb186605f010b796
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 94b351ddb18ca596f47e8ef40cff8229c838d7bd
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561461"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239203"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>チュートリアル:デプロイ スクリプトを使用して自己署名証明書を作成する (プレビュー)
 
-Azure Resource Manager テンプレートでデプロイ スクリプトを使用する方法を説明します。 デプロイ スクリプトを使用すると、Resource Manager テンプレートでは実行できないカスタム ステップを実行できます。 たとえば、自己署名証明書を作成できます。  このチュートリアルでは、Azure キー コンテナーをデプロイするためのテンプレートを作成した後、同じテンプレート内で `Microsoft.Resources/deploymentScripts` リソースを使用して証明書を作成してからその証明書をそのキー コンテナーに追加します。 デプロイ スクリプトの詳細については、[Azure Resource Manager テンプレートでのデプロイ スクリプトの使用](./deployment-script-template.md)に関する記事を参照してください。
-
-> [!NOTE]
-> デプロイ スクリプトは現在プレビュー段階です。 使用するには、[プレビューにサインアップする](https://aka.ms/armtemplatepreviews)必要があります。
+Azure Resource Manager (ARM) テンプレートでデプロイ スクリプトを使用する方法を説明します。 デプロイ スクリプトを使用すると、ARM テンプレートでは実行できないカスタム ステップを実行できます。 たとえば、自己署名証明書を作成できます。  このチュートリアルでは、Azure キー コンテナーをデプロイするためのテンプレートを作成した後、同じテンプレート内で `Microsoft.Resources/deploymentScripts` リソースを使用して証明書を作成してからその証明書をそのキー コンテナーに追加します。 デプロイ スクリプトの詳細については、[ARM テンプレートでのデプロイ スクリプトの使用](./deployment-script-template.md)に関する記事を参照してください。
 
 > [!IMPORTANT]
 > スクリプトの実行とトラブルシューティングのため、同じリソース グループ内に 2 つのデプロイ スクリプト リソース (ストレージ アカウントとコンテナー インスタンス) が作成されます。 これらのリソースは、通常、スクリプトの実行が最終状態になるとスクリプト サービスによって削除されます。 リソースが削除されるまでは、リソースに対して請求が行われます。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](./deployment-script-template.md#clean-up-deployment-script-resources)」を参照してください。
@@ -43,7 +40,7 @@ Azure Resource Manager テンプレートでデプロイ スクリプトを使�
 
 この記事を完了するには、以下が必要です。
 
-* **Resource Manager ツール拡張機能を持つ [Visual Studio Code](https://code.visualstudio.com/)** 。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./use-vs-code-to-create-template.md)」を参照してください。
+* **Resource Manager ツール拡張機能を持つ [Visual Studio Code](https://code.visualstudio.com/)** 。 [Visual Studio Code を使って ARM テンプレートを作成する方法](./use-vs-code-to-create-template.md)に関するページを参照してください。
 
 * **サブスクリプション レベルで共同作成者のロールが付与された、ユーザー割り当て済みマネージド ID**。 この ID は、デプロイ スクリプトを実行するために使用されます。 作成するには、「[ユーザー割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)」を参照してください。 この識別 ID は、テンプレートをデプロイするときに必要です。 ID の形式は次のとおりです。
 
@@ -62,7 +59,7 @@ Azure Resource Manager テンプレートでデプロイ スクリプトを使�
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
-ゼロからテンプレートを作成するのではなく、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)からテンプレートを開きます。 Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。
+ゼロからテンプレートを作成するのではなく、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)からテンプレートを開きます。 Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。
 
 このクイックスタートで使用するテンプレートは、[Create an Azure Key Vault and a secret](https://azure.microsoft.com/resources/templates/101-key-vault-create/) と呼ばれます。 このテンプレートにより、キー コンテナーが作成され、そのキー コンテナーにシークレットが追加されます。
 
@@ -348,7 +345,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Resource Manager テンプレートでデプロイ スクリプトを使用する方法について学習しました。 条件に基づいて Azure リソースをデプロイする方法については、以下を参照してください。
+このチュートリアルでは、ARM テンプレートでデプロイ スクリプトを使用する方法について学習しました。 条件に基づいて Azure リソースをデプロイする方法については、以下を参照してください。
 
 > [!div class="nextstepaction"]
 > [使用条件](./template-tutorial-use-conditions.md)

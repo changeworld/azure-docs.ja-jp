@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658406"
 ---
 # <a name="programmatically-manage-workbooks"></a>プログラムでブックを管理する
@@ -29,7 +29,7 @@ ms.locfileid: "77658406"
 ## <a name="azure-resource-manager-template-for-deploying-workbooks"></a>ブックをデプロイするための Azure Resource Manager テンプレート
 1. プログラムでデプロイするブックを開きます。
 2. _[編集]_ ツール バー項目をクリックして、ブックを編集モードに切り替えます。
-3. ツール バーの _[</>]_ ボタンを使用して "_詳細エディター_" を開きます。
+3. ツール バーの _[_ ] _ボタンを使用して "</>詳細エディター_" を開きます。
 4. エディターで、 _[テンプレートの種類]_ を _[Resource Manager テンプレート]_ に切り替えます。
 5. 作成用の Resource Manager テンプレートがエディターに表示されます。 内容をコピーしてそのまま使用するか、ターゲット リソースもデプロイする、より大きなテンプレートとマージします。
 
@@ -112,7 +112,7 @@ ms.locfileid: "77658406"
 ### <a name="workbook-types"></a>ブックの種類
 ブックの種類では、新しいブック インスタンスが表示されるブック ギャラリーの種類を指定します。 次のオプションがあります。
 
-| Type | ギャラリーの場所 |
+| 種類 | ギャラリーの場所 |
 | :------------- |:-------------|
 | `workbook` | Application Insights、Azure Monitor などのブック ギャラリーを含む、ほとんどのレポートで使用される既定値です。  |
 | `tsg` | Application Insights の [トラブルシューティング ガイド] ギャラリー |

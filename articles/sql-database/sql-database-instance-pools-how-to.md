@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4a27165d929cc9bc5f18e372f7f108887e466e43
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754046"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79299364"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Azure SQL Database インスタンス プール (プレビュー) の攻略ガイド
 
@@ -50,7 +50,7 @@ ms.locfileid: "75754046"
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Azure SQL インスタンス プールの使用状況に関する情報を返します。 |
 
 
-Powershell を使用するには、[最新バージョンの PowerShell Core をインストール](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell-core)し、指示に従って [Azure PowerShell モジュールをインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)します。
+Powershell を使用するには、[最新バージョンの PowerShell Core をインストール](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)し、指示に従って [Azure PowerShell モジュールをインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)します。
 
 プール内のインスタンスと単一インスタンスの両方に関連する操作では、標準の[マネージド インスタンス コマンド](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances)を使用しますが、プール内のインスタンスでこれらのコマンドを使用する場合は、"*インスタンス プール名*" プロパティを設定する必要があります。
 

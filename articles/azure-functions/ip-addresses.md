@@ -4,11 +4,11 @@ description: 関数アプリの着信 IP アドレスと送信 IP アドレス�
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356895"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234859"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -30,7 +30,7 @@ IP アドレスは、個々の関数ではなく、関数アプリに関連付�
 3. **[プラットフォーム機能]** を選択します。
 4. **[プロパティ]** を選択すると、 **[仮想 IP アドレス]** の下に着信 IP アドレスが表示されます。
 
-## <a name="find-outbound-ip-addresses"></a>関数アプリの送信 IP アドレス
+## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>関数アプリの送信 IP アドレス
 
 各関数アプリには、使用可能な一連の送信 IP アドレスがあります。 関数からバックエンド データベースなどへの送信接続では、使用可能な送信 IP アドレスの 1 つが送信元 IP アドレスとして使用されます。 指定された接続でどの IP アドレスが使用されるかを事前に知ることはできません。 このため、バックエンド サービスでは、関数アプリのすべての送信 IP アドレスに対してファイアウォールを開く必要があります。
 
@@ -80,7 +80,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
  このファイルがいつ更新されるかや IP アドレスがいつ変更されるかの詳細については、[[ダウンロード センター] ページ](https://www.microsoft.com/en-us/download/details.aspx?id=56519)の **[詳細]** セクションを展開してください。
 
-## <a name="inbound-ip-address-changes"></a>着信 IP アドレスの変更
+## <a name="inbound-ip-address-changes"></a><a name="inbound-ip-address-changes"></a>着信 IP アドレスの変更
 
 次の操作を行うと、着信 IP アドレスが変更される**ことがあります**。
 

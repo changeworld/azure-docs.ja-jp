@@ -17,13 +17,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: df45ab0a7b1729ae6c1602c9769cd5b6da26f6ac
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74014350"
 ---
-# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>クイック スタート:Azure Active Directory でネームド ロケーションを構成する
+# <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>クイック スタート: Azure Active Directory でネームド ロケーションを構成する
 
 ネームド ロケーションを使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure AD では、次のためにネームド ロケーションを使用します。
 - [リスク検出](concept-risk-events.md)で誤判定を検出する。 信頼できる場所からサインインすることで、ユーザーのサインイン リスクが低下します。   
@@ -41,7 +41,7 @@ ms.locfileid: "74014350"
 
 ## <a name="configure-named-locations"></a>ネームド ロケーションの構成
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. 左側のウィンドウで、 **[Azure Active Directory]** を選択し、 **[セキュリティ]** セクションから **[条件付きアクセス]** を選択します。
 
@@ -59,7 +59,7 @@ ms.locfileid: "74014350"
     
      ![[新規] ブレード](./media/quickstart-configure-named-locations/61.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次を参照してください。
 

@@ -11,11 +11,11 @@ ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 09/03/2019
 ms.openlocfilehash: 0dbed3db8e106b9bfe1b48ff2b9bc52840fc4c3a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818862"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228583"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance のタイム ゾーン
 
@@ -240,7 +240,7 @@ UTC 以外のタイム ゾーンの日付と時刻情報を解釈する必要が
 | サモア標準時 | (UTC+13:00) サモア |
 | ライン諸島標準時 | (UTC+14:00) クリスマス島 |
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>参照 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [AT TIME ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)

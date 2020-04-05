@@ -9,10 +9,10 @@ ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
 ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74022002"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>ExpressRoute プライベート ピアリング用の IPsec トランスポート モードを構成する
@@ -99,7 +99,7 @@ IPsec ポリシーを構成する場合、次の IPsec ポリシーの用語を�
 
 * **Azure Windows VM:** vm1、vm2
 
-## <a name="creategpo"></a>1.GPO を作成する
+## <a name="1-create-a-gpo"></a><a name="creategpo"></a>1.GPO を作成する
 
 1. OU にリンクされる新しい GPO を作成するには、[グループ ポリシーの管理] スナップインを開き、GPO のリンク先となる OU を見つけます。 例では、OU に **IPSecOU** という名前が付けられています。 
 
@@ -111,7 +111,7 @@ IPsec ポリシーを構成する場合、次の IPsec ポリシーの用語を�
 
    [![11]][11]
 
-## <a name="enablelink"></a>2.GPO リンクを有効にする
+## <a name="2-enable-the-gpo-link"></a><a name="enablelink"></a>2.GPO リンクを有効にする
 
 OU に GPO を適用するには、GPO を OU にリンクするだけでなく、リンクを有効にする必要もあります。
 
@@ -120,7 +120,7 @@ OU に GPO を適用するには、GPO を OU にリンクするだけでなく�
 
    [![12]][12]
 
-## <a name="filteraction"></a>3.IP フィルター操作を定義する
+## <a name="3-define-the-ip-filter-action"></a><a name="filteraction"></a>3.IP フィルター操作を定義する
 
 1. ドロップダウンで **[IP Security Policy on Active Directory]\(IP セキュリティ ポリシー (Active Directory)\)** を右クリックしてから、 **[IP フィルター一覧とフィルター操作の管理]** をクリックします。
 
@@ -151,7 +151,7 @@ OU に GPO を適用するには、GPO を OU にリンクするだけでなく�
 
    [![23]][23]
 
-## <a name="filterlist1"></a>4.IP フィルター一覧を定義する
+## <a name="4-define-an-ip-filter-list"></a><a name="filterlist1"></a>4.IP フィルター一覧を定義する
 
 宛先ポート 8080 で暗号化された HTTP トラフィックを指定するフィルター一覧を作成します。
 
@@ -161,7 +161,7 @@ OU に GPO を適用するには、GPO を OU にリンクするだけでなく�
 2. **[名前]** フィールドで、IP フィルター一覧の名前を入力します。 たとえば、「**azure-onpremises-HTTP8080**」と入力します。 **[追加]** をクリックします。
 
    [![25]][25]
-3. **[IP フィルターの説明とミラー化のプロパティ]** ページで、 **[ミラー化]** を選択します。 ミラー化の設定では両方向のパケットを一致させます。これにより、双方向通信が可能になります。 その後、 **[次へ]** をクリックします。
+3. **[IP フィルターの説明とミラー化のプロパティ]** ページで、 **[ミラー化]** を選択します。 ミラー化の設定では両方向のパケットを一致させます。これにより、双方向通信が可能になります。 続けて、 **[次へ]** をクリックします。
 
    [![26]][26]
 4. **[IP トラフィックの発信元]** ページの **[発信元アドレス]** ドロップダウンから、 **[A specific IP Address or Subnet]\(特定の IP アドレスまたはサブネット\)** を選択します。 
@@ -188,7 +188,7 @@ OU に GPO を適用するには、GPO を OU にリンクするだけでなく�
 
    [![32]][32]
 
-## <a name="filterlist2"></a>5.IP フィルター一覧を編集する
+## <a name="5-edit-the-ip-filter-list"></a><a name="filterlist2"></a>5.IP フィルター一覧を編集する
 
 同じ種類の反対方向の (オンプレミス ホストから Azure VM への) トラフィックを暗号化するには、2 番目の IP フィルターが必要です。 新しいフィルターの設定プロセスは、最初の IP フィルターを設定するために使用したプロセスと同じです。 唯一の違いは、発信元サブネットと宛先サブネットです。
 
@@ -207,7 +207,7 @@ OU に GPO を適用するには、GPO を OU にリンクするだけでなく�
 
 アプリケーションを保護するためにオンプレミスの場所と Azure サブネットの間で暗号化が必要な場合、既存の IP フィルター一覧を変更するのではなく、代わりに新しい IP フィルター一覧を追加することができます。 2 個の IP フィルター一覧を同じ IPsec ポリシーに関連付けることで柔軟性が向上します。これは、他の IP フィルター一覧に影響を与えることなく、特定の IP フィルター一覧をいつでも変更または削除できるためです。
 
-## <a name="ipsecpolicy"></a>6.IPsec セキュリティ ポリシーを作成する 
+## <a name="6-create-an-ipsec-security-policy"></a><a name="ipsecpolicy"></a>6.IPsec セキュリティ ポリシーを作成する 
 
 セキュリティ規則を使用して、IPsec ポリシーを作成します。
 
@@ -224,7 +224,7 @@ OU に GPO を適用するには、GPO を OU にリンクするだけでなく�
 
    [![40]][40]
 
-## <a name="editipsec"></a>7.IPsec セキュリティ ポリシーを編集する
+## <a name="7-edit-the-ipsec-security-policy"></a><a name="editipsec"></a>7.IPsec セキュリティ ポリシーを編集する
 
 IPsec ポリシーに、先ほど構成した **IP フィルター一覧**と**フィルター操作**を追加します。
 
@@ -255,13 +255,13 @@ IPsec ポリシーに、先ほど構成した **IP フィルター一覧**と**�
 7. Windows では 4 種類の認証がサポートされています。Kerberos、証明書、NTLMv2、および事前共有キーです。 ここではドメインに参加しているホストを使用しているため、 **[Active Directory 既定値 (Kerberos V5 プロトコル)]** を選択して、 **[次へ]** をクリックします。
 
    [![47]][47]
-8. 新しいポリシーでは **azure-onpremises-HTTP8080** というセキュリティ規則が作成されます。 Click **OK**.
+8. 新しいポリシーでは **azure-onpremises-HTTP8080** というセキュリティ規則が作成されます。 **[OK]** をクリックします。
 
    [![48]][48]
 
 IPsec ポリシーでは、宛先ポート 8080 のすべての HTTP 接続で IPsec トランスポート モードを使用することが求められます。 HTTP はクリア テキストのプロトコルであるため、セキュリティ ポリシーを有効にすることで、データは ExpressRoute プライベート ピアリング経由で転送されるときに確実に暗号化されます。 Active Directory の IP セキュリティ ポリシーは、セキュリティが強化された Windows ファイアウォールより構成が複雑ですが、IPsec 接続のより多くのカスタマイズが可能です。
 
-## <a name="assigngpo"></a>8.IPsec GPO を OU に割り当てる
+## <a name="8-assign-the-ipsec-gpo-to-the-ou"></a><a name="assigngpo"></a>8.IPsec GPO を OU に割り当てる
 
 1. ポリシーを表示します。 セキュリティ グループ ポリシーは定義されていますが、まだ割り当てられていません。
 
@@ -271,7 +271,7 @@ IPsec ポリシーでは、宛先ポート 8080 のすべての HTTP 接続で I
 
    [![50]][50]
 
-## <a name="checktraffic"></a>トラフィックの暗号化を確認する
+## <a name="check-traffic-encryption"></a><a name="checktraffic"></a>トラフィックの暗号化を確認する
 
 OU で適用された暗号化 GPO を確認するには、すべての Azure VM および host1 に IIS をインストールします。 すべての IIS は、ポート 8080 で HTTP 要求に応答するためにカスタマイズされます。
 暗号化を確認するために、OU 内のすべてのコンピューターで (Wireshark などの) ネットワーク スニファーをインストールできます。
@@ -312,7 +312,7 @@ $req = $null
 
 オンプレミスで Powershell スクリプト (HTTP クライアント) を実行すると、Azure VM のネットワーク キャプチャで同様のトレースが示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 

@@ -2,14 +2,14 @@
 title: Azure Migrate のサポート マトリックス
 description: Azure Migrate サービスに対するサポートの設定および制限の概要について説明します。
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 03/22/2020
 ms.author: raynew
-ms.openlocfilehash: 5c3adecf62f9bd15c820baf116dbc01e5d3542fa
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: bf719f9179384ec3dca99d2429f569ef209b5daa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77014013"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127712"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate のサポート マトリックス
 
@@ -55,7 +55,7 @@ Azure Migrate Server Migration | NA | [VMware VM](tutorial-migrate-vmware.md)、
 サブスクリプション | 1 つのサブスクリプションに複数の Azure Migrate プロジェクトを含めることができます。
 Azure のアクセス許可 | Azure Migrate プロジェクトを作成するには、サブスクリプションに共同作成者または所有者アクセス許可が必要です。
 VMware VM  | 1 つのプロジェクトで最大 35,000 台の VMware VM を評価できます。
-Hyper-V VM | 1 つのプロジェクトで最大 35,000 の Hyper-V VM を評価します。
+Hyper-V VM    | 1 つのプロジェクトで最大 35,000 の Hyper-V VM を評価します。
 
 評価の上限に達するまでは、1 つのプロジェクトに VMware VM と Hyper-V VM の両方を含めることができます。
 
@@ -108,7 +108,7 @@ Hyper-V VM に対する Azure Migrate Server Assessment と Server Migration の
 
 Azure Migrate サービスのバージョンには、次の 2 つがあります。
 
-- **現在のバージョン**: このバージョンを使用すると、新しい Azure Migrate プロジェクトを作成したり、オンプレミスの評価を検出したり、評価と移行を調整したりできます。 [詳細については、こちらを参照してください](whats-new.md#release-version-july-2019)。
+- **現在のバージョン**: このバージョンを使用すると、新しい Azure Migrate プロジェクトを作成したり、オンプレミスの評価を検出したり、評価と移行を調整したりできます。 [詳細については、こちらを参照してください](whats-new.md)。
 - **以前のバージョン**: 以前のバージョンの Azure Migrate (オンプレミスの VMware VM の評価のみがサポートされていました) を使用している顧客の場合は、現在のバージョンを使用するようにしてください。 以前のバージョンでは、新しい Azure Migrate プロジェクトを作成したり、新しい検出を実行したりできません。
 
 ## <a name="next-steps"></a>次のステップ

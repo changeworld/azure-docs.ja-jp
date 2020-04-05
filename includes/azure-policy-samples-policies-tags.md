@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2020
+ms.date: 03/12/2020
 ms.author: dacoulte
-ms.openlocfilehash: 8af4074cbdcdbb6a71a5b14d308457164efaf340
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 700bc8f8f65124a1c39a9259e9418d3da799c730
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78398275"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "79381824"
 ---
-|名前 |説明 |効果 |Version |GitHub |
+|Name |説明 |効果 |Version |GitHub |
 |---|---|---|---|---|
 |[リソース グループにタグを追加する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F726aca4c-86e9-4b04-b0c5-073027359532) |このタグがない任意のリソース グループが作成または更新されたときに、指定されたタグと値を追加します。 修復タスクをトリガーすることで、既存のリソース グループを修復できます。 タグに異なる値が含まれている場合、タグは変更されません。 |変更 |1.0.0 |[リンク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_ResourceGroup_Modify.json)
 |[リソースにタグを追加する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f9dc7db-30c1-420c-b61a-e1d640128d26) |このタグがない任意のリソースが作成または更新されたときに、指定されたタグと値を追加します。 修復タスクをトリガーすることで、既存のリソースを修復できます。 タグに異なる値が含まれている場合、タグは変更されません。 リソース グループのタグは変更されません。 |変更 |1.0.0 |[リンク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_Modify.json)

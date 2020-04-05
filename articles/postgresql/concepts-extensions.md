@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77201273"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
@@ -215,7 +215,7 @@ Postgres バージョン 9.5 を搭載した Azure Database for PostgreSQL サ�
 現時点では、Azure Database for PostgreSQL からの送信接続は、他の Azure Database for PostgreSQL サーバーへの接続を除き、サポートされていません。
 
 ## <a name="uuid"></a>uuid
-[uuid-ossp 拡張機能](https://www.postgresql.org/docs/current/uuid-ossp.html)の `uuid_generate_v4()` を使用する予定の場合、パフォーマンス上の利点について、[pgcrypto 拡張機能](https://www.postgresql.org/docs/current/pgcrypto.html)の `gen_random_uuid()` と比較することを検討してください。
+`uuid_generate_v4()`uuid-ossp 拡張機能[の ](https://www.postgresql.org/docs/current/uuid-ossp.html) を使用する予定の場合、パフォーマンス上の利点について、`gen_random_uuid()`pgcrypto 拡張機能[の ](https://www.postgresql.org/docs/current/pgcrypto.html) と比較することを検討してください。
 
 ## <a name="pgaudit"></a>pgAudit
 [pgAudit 拡張機能](https://github.com/pgaudit/pgaudit/blob/master/README.md)では、セッションとオブジェクトの監査ログが提供されます。 Azure Database for PostgreSQL でこの拡張機能を使用する方法については、[監査の概念に関する記事](concepts-audit.md)を参照してください。 
@@ -228,7 +228,7 @@ Postgres 11 以降では、プレウォームが[自動的に](https://www.postg
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB は、PostgreSQL の拡張機能としてパッケージされた時系列データベースです。 TimescaleDB は、時間指向の分析関数、最適化を提供し、時系列ワークロードに合わせて PostgreSQL を拡大縮小します。
 
-[Timescale, Inc.](https://www.timescale.com/)の登録商標である[TimescaleDBの詳細をご覧ください](https://docs.timescale.com/latest)。 Azure Database for PostgreSQL には、タイムスケールのオープンソースバージョンが用意されています。 このバージョンで使用できるタイムスケール機能については、「[時系列製品の比較](https://www.timescale.com/products/)」を参照してください。
+[Timescale, Inc.](https://docs.timescale.com/latest)の登録商標である[TimescaleDBの詳細をご覧ください](https://www.timescale.com/)。 Azure Database for PostgreSQL には、タイムスケールのオープンソースバージョンが用意されています。 このバージョンで使用できるタイムスケール機能については、「[時系列製品の比較](https://www.timescale.com/products/)」を参照してください。
 
 ### <a name="installing-timescaledb"></a>TimescaleDB をインストールする
 TimescaleDB をインストールするには、それをサーバーの共有プリロード ライブラリに含める必要があります。 Postgres の `shared_preload_libraries` パラメーターへの変更を有効にするには、**サーバーの再起動**が必要です。 [Azure portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用してパラメーターを変更できます。

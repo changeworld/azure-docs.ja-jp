@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 07/20/2019
 ms.author: victorh
 ms.openlocfilehash: 3064def2eac0aaee5c04f7ab736cf539ae372cb4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68359885"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Azure CLI を使用してアプリケーション ゲートウェイで Web トラフィックを管理する
 
-アプリケーション ゲートウェイは、管理対象サーバーへの Web トラフィックの管理とセキュリティ保護のために使用します。 バックエンド サーバーに[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用する[アプリケーション ゲートウェイ](overview.md)を Azure CLI で作成することができます。 この例では、スケール セットに 2 つの仮想マシン インスタンスが含まれています。 スケール セットは、アプリケーション ゲートウェイの既定のバックエンド プールに追加されます。
+アプリケーション ゲートウェイは、管理対象サーバーへの Web トラフィックの管理とセキュリティ保護のために使用します。 バックエンド サーバーに[仮想マシン スケール セット](overview.md)を使用する[アプリケーション ゲートウェイ](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を Azure CLI で作成することができます。 この例では、スケール セットに 2 つの仮想マシン インスタンスが含まれています。 スケール セットは、アプリケーション ゲートウェイの既定のバックエンド プールに追加されます。
 
 この記事では、次のことについて説明します。
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 CLI をローカルにインストールして使用する場合、このクイックスタートでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group#az-group-create) を使用してリソース グループを作成します。
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
 
-[az network vnet create](/cli/azure/network/vnet) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/network/public-ip) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
+*az network vnet create* を使用して、*myVNet* という名前の仮想ネットワークと [myAGSubnet](/cli/azure/network/vnet) という名前のサブネットを作成します。 次に、*az network vnet subnet create* を使用して、バックエンド サーバーに必要な [myBackendSubnet](/cli/azure/network/vnet/subnet) という名前のサブネットを追加できます。 *az network public-ip create* を使用して [myAGPublicIPAddress](/cli/azure/network/public-ip) という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -145,7 +145,7 @@ az network public-ip show \
 
 ![アプリケーション ゲートウェイでのベース URL のテスト](./media/tutorial-manage-web-traffic-cli/tutorial-nginxtest.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、リソース グループ、アプリケーション ゲートウェイ、およびすべての関連リソースを削除します。
 
@@ -153,6 +153,6 @@ az network public-ip show \
 az group delete --name myResourceGroupAG --location eastus
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Web アプリケーション ファイアウォールによる Web トラフィックの制限](./tutorial-restrict-web-traffic-cli.md)

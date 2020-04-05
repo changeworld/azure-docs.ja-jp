@@ -11,73 +11,61 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: bd9e916d1e50d9d5bc0717a1d283b3dcf5d383c9
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 22b673ef481593247b6ee1007c13390a498c66be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037005"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048628"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>チュートリアル:Azure Active Directory と SharePoint オンプレミスの統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharepoint-on-premises"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SharePoint オンプレミスの統合
 
-このチュートリアルでは、SharePoint オンプレミスと Azure Active Directory (Azure AD) を統合する方法について説明します。
-SharePoint オンプレミスと Azure AD を統合すると、次の利点があります。
+このチュートリアルでは、SharePoint オンプレミスと Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と SharePoint オンプレミスを統合すると、次のことができます。
 
-* SharePoint オンプレミスにアクセスできるユーザーを Azure AD で管理できます。
-* ユーザーが自分の Azure AD アカウントを使用して自動的に SharePoint オンプレミスにサインイン (シングル サインオン) できるようにすることが可能です。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* SharePoint オンプレミスにアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して SharePoint オンプレミスに自動的にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD と SharePoint オンプレミスの統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
-* SharePoint オンプレミスでのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* SharePoint オンプレミスでのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * SharePoint オンプレミスでは、**SP** によって開始される SSO がサポートされます
+* SharePoint オンプレミスを構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* SharePoint オンプレミスのユーザー プロファイルを Azure AD と同期させる方法については、こちらの[リンク](https://docs.microsoft.com/archive/blogs/kaevans/sharepoint-2013-user-profile-sync-for-claims-users)を参照してください。
 
 ## <a name="adding-sharepoint-on-premises-from-the-gallery"></a>ギャラリーからの SharePoint オンプレミスの追加
 
 Azure AD への SharePoint オンプレミスの統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に SharePoint オンプレミスを追加する必要があります。
 
-**ギャラリーから SharePoint オンプレミスを追加するには、次の手順を実行します。**
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
-
-    ![Azure Active Directory のボタン](common/select-azuread.png)
-
-    > [!NOTE]   
+    > [!NOTE]
     > この要素を使用できない場合は、左側のナビゲーション ウィンドウの上部にある固定された **[すべてのサービス]** リンクを通して開くこともできます。 以下の概要では、 **[Azure Active Directory]** リンクは **[ID]** セクションに配置されています。または、フィルター テキスト ボックスを使用して検索できます。
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**SharePoint オンプレミス**」と入力します。
+1. 結果のパネルから **[SharePoint オンプレミス]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sharepoint-on-premises"></a>SharePoint オンプレミスの Azure AD シングル サインオンの構成とテスト
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+**B.Simon** というテスト ユーザーを使用して、SharePoint オンプレミスに対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと SharePoint オンプレミスの関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
-
-4. 検索ボックスに「**SharePoint オンプレミス**」と入力し、結果パネルで **SharePoint オンプレミス**を選び、 **[追加]** をクリックして、アプリケーションを追加します。
-
-    ![結果リストの SharePoint オンプレミス](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SharePoint オンプレミスで Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと SharePoint オンプレミス内の関連ユーザー間にリンク関係が確立されている必要があります。
-
-SharePoint オンプレミスで Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
+SharePoint オンプレミスで Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[SharePoint オンプレミスでのシングル サインオンの構成](#configure-sharepoint-on-premises-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
@@ -107,7 +95,6 @@ SharePoint オンプレミスで Azure AD シングル サインオンを構成�
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![[SharePoint オンプレミスのドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
     a. **[サインオン URL]** ボックスに、`https://<YourSharePointServerURL>/_trust/default.aspx` という形式で URL を入力します。
 
@@ -318,6 +305,7 @@ SharePoint オンプレミスで Azure AD シングル サインオンを構成�
     $t.UseWReplyParameter=$true
     $t.Update()
     ```
+
 6. 全体管理では、Web アプリケーションに移動し、既存の信頼できる ID プロバイダーを有効にします。 カスタム サインイン ページ `/_trust/` としてサインイン ページ の URL を構成する必要もあります。
 
 7. 全体管理で、Web アプリケーションをクリックして、 **[ユーザー ポリシー]** を選択します。 この記事で説明済みの適切なアクセス許可を使用してユーザーを追加します。
@@ -359,7 +347,7 @@ Azure AD からの ID を使用して SharePoint 2016 にユーザーがサイ�
 
 ### <a name="create-sharepoint-on-premises-test-user"></a>SharePoint オンプレミスのテスト ユーザーを作成する
 
-このセクションでは、SharePoint オンプレミスで Britta Simon というユーザーを作成します。  [SharePoint オンプレミス サポート チーム](https://support.office.com/)と連携しながら、SharePoint オンプレミス プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、SharePoint オンプレミスで Britta Simon というユーザーを作成します。 [SharePoint オンプレミス サポート チーム](https://support.office.com/)と連携しながら、SharePoint オンプレミス プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
@@ -371,6 +359,8 @@ Azure AD からの ID を使用して SharePoint 2016 にユーザーがサイ�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc8a62bd75a01cb6b7184cb52585c4f8b08cadb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378248"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79136536"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory でパスワードレス認証のデプロイを計画する
 
@@ -130,7 +130,7 @@ Microsoft では、伝達方法の原案として役立つ Azure Multi-Factor Au
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用したパスワードレス認証を計画する
 
-Microsoft Authenticator アプリは Google Play または Apple App Store から無償でダウンロードできます。 Microsoft Authenticator アプリのダウンロードの詳細については、[こちら](https://www.microsoft.com/account/authenticator?cmp=h66ftb_42hbak)を参照してください。 ユーザーに Microsoft Authenticator アプリをダウンロードしてもらい、 指示に従って電話によるサインインを有効にしてもらいます。 
+Microsoft Authenticator アプリは Google Play または Apple App Store から無償でダウンロードできます。 Microsoft Authenticator アプリのダウンロードの詳細については、[こちら](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)を参照してください。 ユーザーに Microsoft Authenticator アプリをダウンロードしてもらい、 指示に従って電話によるサインインを有効にしてもらいます。 
 
 これにより任意の iOS や Android フォンが、強力なパスワードレスの資格情報に変わります。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証または PIN を使用することで、任意のプラットフォームまたはブラウザーにサインインします。 Microsoft Authenticator アプリのしくみについて詳しくは、[こちら](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in)を参照してください。 
 

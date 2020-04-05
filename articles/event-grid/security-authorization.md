@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
 ms.openlocfilehash: 03bc2f9de6f50f08c9f62f86a3d1791a067cecd0
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78899005"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Event Grid リソースへのアクセスの承認
@@ -111,7 +111,7 @@ Event Grid には、イベント サブスクリプションを管理するた�
 
 さまざまなアクションの実行をユーザーに許可する Event Grid ロール定義の例を以下に示します。 これらのカスタム ロールは、イベント サブスクリプションより広範囲のアクセス権を付与するため、組み込みロールとは異なります。
 
-**EventGridReadOnlyRole.json**:読み取り専用操作のみを許可します。
+**EventGridReadOnlyRole.json**: 読み取り専用操作のみを許可します。
 
 ```json
 {
@@ -130,7 +130,7 @@ Event Grid には、イベント サブスクリプションを管理するた�
 }
 ```
 
-**EventGridNoDeleteListKeysRole.json**:制限付きの投稿アクションを許可しますが、削除アクションは禁止します。
+**EventGridNoDeleteListKeysRole.json**: 制限付きの投稿アクションを許可しますが、削除アクションは禁止します。
 
 ```json
 {
@@ -153,7 +153,7 @@ Event Grid には、イベント サブスクリプションを管理するた�
 }
 ```
 
-**EventGridContributorRole.json**:すべての Event Grid アクションを許可します。
+**EventGridContributorRole.json**: すべての Event Grid アクションを許可します。
 
 ```json
 {

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9f7819974e3548baf5e10f0bf9a2d656d9412beb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987973"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>C# を使用して Azure Time Series Insights GA 環境からデータを照会する
@@ -66,7 +66,7 @@ ms.locfileid: "76987973"
 * [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) - 3.13.9 パッケージ。
 * [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) - 9.0.1 パッケージ。
 
-**[ビルド]**  >  **[ソリューションのビルド]** オプションを選択して、Visual Studio 2019 にパッケージをダウンロードします。
+**[ビルド]**  >  **[ソリューションのビルド]** オプションを順に選択して、Visual Studio 2019 にパッケージをダウンロードします。
 
 または、[NuGet 2.12+](https://www.nuget.org/) を使用してパッケージを追加します。
 

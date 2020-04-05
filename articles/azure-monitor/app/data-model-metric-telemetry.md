@@ -5,13 +5,13 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671972"
 ---
-# <a name="metric-telemetry-application-insights-data-model"></a>メトリック テレメトリ:Application Insights データ モデル
+# <a name="metric-telemetry-application-insights-data-model"></a>メトリック テレメトリ: Application Insights データ モデル
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) でサポートされるメトリック テレメトリには、単一測定と事前集計メトリックの 2 種類があります。 単一測定は名前と値だけのテレメトリです。 事前集計メトリックは、集計間隔中のメトリックの最小値と最大値と、その標準偏差を指定します。
 
@@ -33,11 +33,11 @@ Application Insights でサポートされているよく知られているい�
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | 作業中... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | 平均要求実行時間
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | 作業中... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | キューで処理を待っている要求の数
 
-## <a name="name"></a>名前
+## <a name="name"></a>Name
 
 Application Insights ポータルと UI に表示するメトリックの名前。 
 
-## <a name="value"></a>Value
+## <a name="value"></a>値
 
 測定の単一の値。 集計での個別の測定値の合計。
 

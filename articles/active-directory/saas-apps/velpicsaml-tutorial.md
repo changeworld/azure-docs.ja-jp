@@ -17,10 +17,10 @@ ms.date: 10/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f699e2244cde53200a9885602bd20c899c0ce4cd
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72241554"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-velpic-saml"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Velpic SAML の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72241554"
 
 * Velpic SAML にアクセスする Azure AD ユーザーを制御します。
 * ユーザーが自分の Azure AD アカウントを使用して Velpic SAML に自動的にサインインできるようになります。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -169,7 +169,7 @@ Velpic SAML で Azure AD SSO を構成してテストするには、次の構成
 
     e. テキストボックスから**シングル サインオン URL** をコピーして、Azure Portal に貼り付けます。
     
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
 ### <a name="create-velpic-saml-test-user"></a>Velpic SAML テスト ユーザーの作成
 
@@ -183,7 +183,7 @@ Velpic SAML 企業サイトに管理者としてサインインし、次の手�
 
 2. **[Create New User] \(新しいユーザーの作成)** ダイアログ ページで、次の手順を実行します。
 
-    ![ユーザー](./media/velpicsaml-tutorial/velpic_8.png)
+    ![user](./media/velpicsaml-tutorial/velpic_8.png)
     
     a. **[First Name]\(名\)** ボックスに、ユーザーの名 B を入力します。
 

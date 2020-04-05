@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
 ms.openlocfilehash: 26122278ad74fb1d383ca7a900810b6060ee78f5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73172666"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>チュートリアル:Azure Active Directory Domain Services インスタンス用の仮想ネットワークを構成する
@@ -139,7 +139,7 @@ Azure 仮想ネットワーク ピアリングを使用すると、仮想プラ�
 
 Azure AD DS マネージド ドメインを使用する必要がある VM を作成する場合は、必ずこのピアリングされた仮想ネットワークを選択してください。 別の仮想ネットワークを選択した場合、Azure AD DS マネージド ドメインに到達するためのネットワーク接続と DNS 解決はありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

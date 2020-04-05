@@ -1,28 +1,28 @@
 ---
-title: 画像分析の認知スキル
+title: Image Analysis の認知スキル
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search の AI エンリッチメント パイプラインの Image Analysis コグニティブ スキルを使用した画像解析を通じてセマンティック テキストを抽出します。
+description: Azure コグニティブ検索の AI エンリッチメント パイプラインの Image Analysis コグニティブ スキルを使用した画像解析を通じてセマンティック テキストを抽出します。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f2703994d3fe8765662e6a0205d63cef9327e17a
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 4ff6972e2f7ea219a1c8c8dbabbf9fe12a8fa59e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080190"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369466"
 ---
-# <a name="image-analysis-cognitive-skill"></a>画像分析の認知スキル
+# <a name="image-analysis-cognitive-skill"></a>Image Analysis の認知スキル
 
-**画像分析**スキルは､イメージの内容に基づいて豊富な一群のビジュアル フィーチャーを抽出します｡ たとえば､イメージからキャプションを生成したり､タグを生成したり､セレブリティやランドマークを特定したりできます｡ このスキルでは、[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) Cognitive Services によって提供される機械学習モデルが使用されます。 
+**Image Analysis** スキルは､イメージの内容に基づいて豊富な一群のビジュアル フィーチャーを抽出します｡ たとえば､イメージからキャプションを生成したり､タグを生成したり､セレブリティやランドマークを特定したりできます｡ このスキルでは、[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) Cognitive Services によって提供される機械学習モデルが使用されます。 
 
 > [!NOTE]
-> 少量 (20 件未満のトランザクション) であれば Azure Cognitive Search で無料で実行できますが、ワークロードが大きい場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
+> 少量 (20 件未満のトランザクション) であれば Azure コグニティブ検索で無料で実行できますが、ワークロードが大きい場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure コグニティブ検索のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure コグニティブ検索の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -36,7 +36,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 |--------------------|-------------|
 | defaultLanguageCode   |  結果を返す言語を示す文字列｡ サービスは､指定された言語で認識結果を返します｡ このプロパティが指定されていない場合の既定値は "en" です。 <br/><br/>サポートされている言語は以下の通りです｡ <br/>*en* - 英語 (既定) <br/> *es* - スペイン語 <br/> *ja* - 日本語 <br/> *pt* - ポルトガル語 <br/> *zh* - 簡体中国語|
 | visualFeatures |  結果として返すビジュアル フィーチャー型を示す文字列の並び｡ 有効なビジュアル フィーチャー型には以下があります｡  <ul><li>*adult* - 画像が事実上のポルノ (裸や性行為を表している)、または不快 (極端な暴力や流血を表している) かどうかを検出します｡ 性的な暗示を含むコンテンツ (わいせつコンテンツ) も検出されます。</li><li>*brands* - おおよその場所など、画像内のさまざまなブランドを検出します。 *brands* ビジュアル フィーチャーは、英語でのみ使用可能です。</li><li> *categories* - Cognitive Services の[Computer Vision のドキュメント](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)に定義されている分類に従ったイメージ コンテンツの分類です。 </li><li>*description* - サポートされる言語の完全な文章を使用して画像のコンテンツを説明します。</li><li>*faces* - 顔の有無を検出します｡ 存在する場合は､座標、性別､および年齢を生成します｡</li><li> *objects* - おおよその場所など、画像内のさまざまなオブジェクトを検出します。 *objects* ビジュアル フィーチャーは、英語でのみ使用可能です。</li><li> *tags* - イメージのコンテンツに関係する単語の詳細な一覧のタグです｡</li></ul> ビジュアル フィーチャー名は大文字と小文字が区別されます｡ *color* と *imageType* のビジュアル機能は非推奨になりましたが、この機能には[カスタム スキル](https://go.microsoft.com/fwlink/?linkid=2121117)を使用してアクセスできます。|
-| details   | 結果として返すドメイン固有の詳細を示す文字列の並び. 有効なビジュアル フィーチャー型には以下があります｡ <ul><li>*celebrities* - イメージ内でセレブリティが検出された場合に、そのセレブリティを特定します｡</li><li>*landmarks* - イメージ内でランドマークが検出された場合に、そのランドマークを特定します｡ </li></ul> |
+| 詳細   | 結果として返すドメイン固有の詳細を示す文字列の並び. 有効なビジュアル フィーチャー型には以下があります｡ <ul><li>*celebrities* - イメージ内でセレブリティが検出された場合に、そのセレブリティを特定します｡</li><li>*landmarks* - イメージ内でランドマークが検出された場合に、そのランドマークを特定します｡ </li></ul> |
 
 ## <a name="skill-inputs"></a>スキルの入力
 
@@ -55,10 +55,11 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             "context": "/document/normalized_images/*",
             "defaultLanguageCode": "en",
             "visualFeatures": [
-                "Tags",
-                "Categories",
-                "Description",
-                "Faces"
+                "tags",
+                "categories",
+                "description",
+                "faces",
+                "brands"
             ],
             "inputs": [
                 {
@@ -78,6 +79,9 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
                 },
                 {
                     "name": "faces"
+                },
+                {
+                    "name": "brands"
                 }
             ]
         }
@@ -312,6 +316,10 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
         {
             "sourceFieldName": "/document/normalized_images/*/faces/*",
             "targetFieldName": "faces"
+        },
+        {
+            "sourceFieldName": "/document/normalized_images/*/brands/*/name",
+            "targetFieldName": "brands"
         }
 ```
 ### <a name="variation-on-output-field-mappings-nested-properties"></a>出力フィールドのマッピングのバリエーション (入れ子になったプロパティ)
@@ -485,6 +493,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
         "brands":[  
            {  
               "name":"Microsoft",
+              "confidence": 0.903,
               "rectangle":{  
                  "x":20,
                  "y":97,
@@ -529,7 +538,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             ]
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185874"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hyper-V のレプリケーションのしくみ
@@ -30,11 +30,11 @@ Azure Migrate Server Migration は、オンプレミスのワークロードと�
 
 ## <a name="architectural-components"></a>アーキテクチャ コンポーネント
 
-![アーキテクチャ](./media/hyper-v-replication-architecture/architecture.png)
+![Architecture](./media/hyper-v-replication-architecture/architecture.png)
 
 
 
-**コンポーネント** | **Deployment** | 
+**コンポーネント** | **デプロイ** | 
 --- | --- 
 **レプリケーション プロバイダー** | Microsoft Azure Site Recovery プロバイダーが Hyper-V ホストにインストールされ、Azure Migration Server Migration に登録されます。<br/> プロバイダーによって、Hyper-V VM のレプリケーションが調整されます。
 **Recovery Services エージェント** | Microsoft Azure Recovery Service エージェントによってデータ レプリケーションが処理されます。 これがプロバイダーと連携して、Hyper-V VM から Azure にデータがレプリケートされます。<br/> レプリケートされたデータは、Azure サブスクリプション内のストレージ アカウントにアップロードされます。 Server Migration ツールでは、レプリケートされたデータが処理され、そのデータがサブスクリプション内のレプリカ ディスクに適用されます。 レプリカ ディスクは、移行時に Azure VM を作成するために使用されます。
@@ -81,11 +81,11 @@ I
 
 1. Regedit でレジストリを開きます。
 2. キー HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM に移動します
-3. VM のレプリケートごとにデータがアップロードされますが、このデータ アップロードに使用されるスレッドの数を示す値を増やします。 既定値は 4 で、最大値は 32 です。 
+3. レプリケートする VM ごとに、データ アップロードに使用されるスレッド数の値を増やします。 既定値は 4 で、最大値は 32 です。 
 
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Migrate Server Migration を使用して [Hyper-V の移行](tutorial-migrate-hyper-v.md)を試します。

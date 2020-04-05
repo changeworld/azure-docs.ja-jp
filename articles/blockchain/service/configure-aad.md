@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 682ab282036fcd592e66942d08a84cdce46d8915
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74455848"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Azure Blockchain Service 用の Azure Active Directory アクセスを構成する方法
@@ -19,7 +19,7 @@ Azure AD ではクラウドベースの ID 管理が提供され、企業全体�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure portal を使用してブロックチェーン メンバーを作成する](create-member.md)
+* [Azure portal を使用してブロックチェーン メンバーを作成します](create-member.md)
 
 ## <a name="grant-access"></a>アクセス権の付与
 
@@ -29,7 +29,7 @@ Azure AD ではクラウドベースの ID 管理が提供され、企業全体�
 
 メンバー レベルでアクセス許可を付与するには。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[アクセス制御 (IAM)] > [追加] > [ロールの割り当ての追加]** に移動します。
 1. **[ブロックチェーン メンバー ノード アクセス (プレビュー)]** ロールを選択し、アクセスを許可する Azure AD ID オブジェクトを追加します。 Azure AD ID オブジェクトは次のいずれかです。
 
@@ -105,6 +105,6 @@ Azure AD 認証のポップアップ表示が不可能なモバイル デバイ�
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Blockchain Service サービスでのデータのセキュリティの詳細については、「[Azure Blockchain Service のセキュリティ](data-security.md)」を参照してください。

@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: brendm
 ms.openlocfilehash: 94f7b5a2363b7c53e0f70500e5a0a8cb6f64e611
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76277518"
 ---
 # <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Azure Cache for Redis を Azure Spring Cloud アプリケーションにバインドする 
@@ -35,7 +35,7 @@ Azure Spring Cloud インスタンスをデプロイしていない場合は、[
         <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
     </dependency>
     ```
-1. `application.properties` ファイルからすべての `spring.redis.*` プロパティを削除します
+1. `spring.redis.*` ファイルからすべての `application.properties` プロパティを削除します
 
 1. `az spring-cloud app update` を使用して現在のデプロイを更新するか、`az spring-cloud app deployment create` を使用して新しいデプロイを作成します。
 

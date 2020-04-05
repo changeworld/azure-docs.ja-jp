@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
 ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603813"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225287"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -29,9 +29,9 @@ ms.locfileid: "77603813"
 ## <a name="integrated-azure-security-solutions"></a>統合された Azure セキュリティ ソリューション
 Security Center を使用すると、Azure で統合されたセキュリティ ソリューションを簡単に有効にすることができます。 利点は次のとおりです。
 
-- **簡略化されたデプロイ**:Security Center により、統合されたパートナー ソリューションのプロビジョニングが簡略化されます。 マルウェア対策や脆弱性評価などのソリューションについては、Security Center によって仮想マシンにエージェントをプロビジョニングできます。 ファイアウォール アプライアンスについては、Security Center で、必要なネットワーク構成の多くに対処できます。
-- **統合された検出機能**:パートナー ソリューションのセキュリティ イベントは、Security Center の警告とインシデントの一環として自動的に収集、集計、表示されます。 また、これらのイベントは、他のソースからの検出とも組み合わされ、高度な脅威検出機能を提供します。
-- **統合された正常性の監視と管理**:ユーザーは、統合された正常性イベントを使用して、すべてのパートナー ソリューションをひとめで監視できます。 基本的な管理は、パートナー ソリューションを使用して高度な設定に簡単にアクセスできれば、使用できます。
+- **簡略化されたデプロイ**: Security Center により、統合されたパートナー ソリューションのプロビジョニングが簡略化されます。 マルウェア対策や脆弱性評価などのソリューションについては、Security Center によって仮想マシンにエージェントをプロビジョニングできます。 ファイアウォール アプライアンスについては、Security Center で、必要なネットワーク構成の多くに対処できます。
+- **統合された検出機能**: パートナー ソリューションのセキュリティ イベントは、Security Center の警告とインシデントの一環として自動的に収集、集計、表示されます。 また、これらのイベントは、他のソースからの検出とも組み合わされ、高度な脅威検出機能を提供します。
+- **統合された正常性の監視と管理**: ユーザーは、統合された正常性イベントを使用して、すべてのパートナー ソリューションをひとめで監視できます。 基本的な管理は、パートナー ソリューションを使用して高度な設定に簡単にアクセスできれば、使用できます。
 
 現時点では、統合セキュリティ ソリューションに、[Qualys](https://www.qualys.com/public-cloud/#azure) と [Rapid7](https://www.rapid7.com/products/insightvm/) による脆弱性評価と Microsoft Application Gateway Web アプリケーション ファイアウォールが含まれます。
 
@@ -47,7 +47,7 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>統合された Azure セキュリティ ソリューションとその他のデータ ソースの管理
 
-1. [Azure portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
+1. [Azure portal](https://azure.microsoft.com/features/azure-portal/) にサインインする
 
 2. **[Microsoft Azure] メニュー**の **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
 
@@ -145,7 +145,7 @@ Azure Monitor で監視データを Event Hub にルーティングすると、�
 |----|----|
 | すべての警告| index=main Microsoft.Security/locations/alerts|
 | 名前を指定した操作の数の集計| index=main sourcetype="amal:security" \| table operationName \| stats count by operationName|
-| 警告情報:日時、名前、状態、ID、サブスクリプション | index=main Microsoft.Security/locations/alerts \| table \_time, properties.eventName, State, properties.operationId, am_subscriptionId |
+| 警告情報の取得: 日時、名前、状態、ID、サブスクリプション | index=main Microsoft.Security/locations/alerts \| table \_time, properties.eventName, State, properties.operationId, am_subscriptionId |
 
 
 ## <a name="next-steps"></a>次のステップ

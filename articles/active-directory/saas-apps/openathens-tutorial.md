@@ -17,10 +17,10 @@ ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43fc2272a81672ea613bdcbe17c5381e99cafbff
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73053210"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と OpenAthens の統合
@@ -29,7 +29,7 @@ ms.locfileid: "73053210"
 
 * OpenAthens にアクセスするユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して OpenAthens に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

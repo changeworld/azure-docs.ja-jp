@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 1857c1154af5e3de72803f297e8a3151b0dd7aeb
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d7d2bcf487c37fbb523b648d5aa4c572add5dfa9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330976"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79297086"
 ---
 # <a name="streaming-ingestion-preview"></a>ストリーミング インジェスト (プレビュー)
 
@@ -72,7 +72,7 @@ ms.locfileid: "78330976"
 
 ## <a name="limitations"></a>制限事項
 
-* ストリーミング インジェストでは、[データベース カーソル](/azure/kusto/management/databasecursor)および[データ マッピング](/azure/kusto/management/mappings)はサポートされません。 [事前に作成された](/azure/kusto/management/tables#create-ingestion-mapping)データ マッピングのみがサポートされています。 
+* ストリーミング インジェストでは、[データベース カーソル](/azure/kusto/management/databasecursor)および[データ マッピング](/azure/kusto/management/mappings)はサポートされません。 [事前に作成された](/azure/kusto/management/create-ingestion-mapping-command)データ マッピングのみがサポートされています。 
 * ストリーミング インジェストのパフォーマンスと容量は、VM とクラスターのサイズを増やして拡張されます。 同時インジェストは、コアあたり 6 つのインジェストに制限されます。 たとえば、D14 や L16 などの 16 コアの SKU の場合、サポートされる最大負荷は 96 の同時インジェストです。 D11 などの 2 コアの SKU の場合、サポートされる最大負荷は 12 の同時インジェストです。
 * インジェスト要求ごとのデータ サイズの制限は 4 MB です。
 * テーブルとインジェスト マッピングの作成や変更など、スキーマの更新には、ストリーミング インジェスト サービスに最大 5 分かかることがあります。

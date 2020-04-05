@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
 ms.openlocfilehash: 13852acb39a420e2f0da84e18bef4df823c1fa78
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78206267"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender Advanced Threat Protection と Azure Security Center

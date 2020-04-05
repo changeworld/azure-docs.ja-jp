@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 8580bafd4d68ef6567b09fefcaa01c682ae2cafe
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74968792"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>コンテンツ キー承認ポリシーを構成する
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>概要
- Azure Media Services を使用すると、128 ビット暗号化キーまたは [PlayReady デジタル著作権管理 (DRM)](https://www.microsoft.com/playready/overview/) を使用して Advanced Encryption Standard (AES) で保護された MPEG-DASH、スムーズ ストリーミング、HTTP ライブ ストリーミング (HLS) ストリームを配信できます。 Media Services では、Widevine DRM で暗号化された DASH ストリームを配信することもできます。 PlayReady と Widevine は、いずれも共通暗号化 (ISO/IEC 23001-7 CENC) 仕様に従って暗号化されます。
+ Azure Media Services を使用すると、128 ビット暗号化キーまたは [PlayReady デジタル著作権管理 (DRM)](https://www.microsoft.com/playready/overview/) を使用して Advanced Encryption Standard (AES) で保護された MPEG-DASH、スムーズ ストリーミング、HTTP ライブ ストリーミング (HLS) ストリームを配信できます。 Media Services では、Widevine DRM で暗号化された DASH ストリームを配信することもできます。 PlayReady と Widevine は、いずれも Common Encryption (ISO/IEC 23001-7 CENC) 仕様に従って暗号化されます。
 
 Media Services では、クライアントが暗号化されたコンテンツを再生するために AES キーまたは PlayReady/Widevine ライセンスを取得できるキー/ライセンス配信サービスも提供します。
 
@@ -38,7 +38,7 @@ Media Services では、クライアントが暗号化されたコンテンツ�
 * [Media Services .NET SDK を使用したコンテンツ キー承認ポリシーの構成](media-services-dotnet-configure-content-key-auth-policy.md)
 * [Media Services REST API を使用したコンテンツ キー承認ポリシーの構成](media-services-rest-configure-content-key-auth-policy.md)
 
-### <a name="some-considerations-apply"></a>いくつかの考慮事項が適用されます
+### <a name="some-considerations-apply"></a>適用される考慮事項
 * Media Services アカウントの作成時に、既定のストリーミング エンドポイントが "停止" 状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、ストリーミング エンドポイントが "実行中" 状態である必要があります。 
 * 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。 詳細については、「 [資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
 * キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。 ContentKeyAuthorizationPolicy を作成し、トークン制限を使用するように指定してテストし、ポリシーをオープン制限に更新することができます。 このプロセスは、ポリシーがオープン バージョンに切り替わるまでに約 15 分かかります。
@@ -57,7 +57,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 ### <a name="token-restriction"></a>トークン制限
 トークン制限ポリシーを選択するには、 **[トークン]** ボタンを選択します。
 
-トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、単純 Web トークン ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と JSON Web トークン (JWT) 形式のトークンがサポートされます。 詳細については、「[JWT authentication](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)」(JWT 認証) を参照してください。
+トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、[単純 Web トークン](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) 形式と JSON Web トークン (JWT) 形式のトークンがサポートされます。 詳細については、「[JWT authentication](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)」(JWT 認証) を参照してください。
 
 Media Services は STS を提供しません。 トークンを発行するカスタム STS を作成できます。 STS は、トークン、トークンの制限の構成で指定した、指定されたキーと問題要求で署名を作成するように構成する必要があります。 Media Services のキー配信サービスは、トークンが有効で、トークン内の要求がコンテンツ キー向けに構成された要求と一致する場合、暗号化キーをクライアントに返します。
 
@@ -84,7 +84,7 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 
 * Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供

@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 50e489fdf57398d486b07944782ecbb3fd1d6a43
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71350989"
 ---
 # <a name="index_of-azure-cosmos-db"></a>INDEX_OF (Azure Cosmos DB)
@@ -51,8 +51,8 @@ SELECT INDEX_OF("abc", "ab") AS i1, INDEX_OF("abc", "b") AS i2, INDEX_OF("abc", 
 [{"i1": 0, "i2": 1, "i3": -1}]  
 ```  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の文字列関数](sql-query-string-functions.md)
-- [システム関数 (Azure Cosmos DB)](sql-query-system-functions.md)
+- [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)

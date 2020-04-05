@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: 1ff7d430edd3f638ad5efcc5a89604e4ed732211
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60400152"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT Hub 開発者ガイド

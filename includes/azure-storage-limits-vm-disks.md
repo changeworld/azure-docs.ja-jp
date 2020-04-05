@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: 8b25d2395811a2197aff6d653c5038a4380021e9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c3028ed7629c41eece354dd2554ede9249bac4f8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "68669728"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334967"
 ---
 Azure 仮想マシンには複数のデータ ディスクを接続できます。 VM のデータ ディスクのスケーラビリティとパフォーマンスの目標に基づいて、パフォーマンスとキャパシティの要件を満たすために必要なディスクの数と種類を決定します。
 
@@ -20,14 +20,14 @@ Azure 仮想マシンには複数のデータ ディスクを接続できます�
 
 次の表は、サブスクリプションあたりのリージョンごとのリソース数の既定の制限と上限を示しています。 リソース グループあたりの Managed Disks、スナップショット、イメージの数に制限はありません。  
 
-> | リソース | 既定の制限  | 上限 |
-> | --- | --- | --- |
-> | Standard マネージド ディスク | 50,000 | 50,000 |
-> | Standard SSD マネージド ディスク | 50,000 | 50,000 |
-> | Premium マネージド ディスク | 50,000 | 50,000 |
-> | Standard_LRS スナップショット | 50,000 | 50,000 |
-> | Standard_ZRS スナップショット | 50,000 | 50,000 |
-> | マネージド イメージ | 50,000 | 50,000 |
+> | リソース | 制限 |
+> | --- | --- |
+> | Standard マネージド ディスク | 50,000 |
+> | Standard SSD マネージド ディスク | 50,000 |
+> | Premium マネージド ディスク | 50,000 |
+> | Standard_LRS スナップショット | 50,000 |
+> | Standard_ZRS スナップショット | 50,000 |
+> | マネージド イメージ | 50,000 |
 
 * **Standard ストレージ アカウントの場合:** Standard ストレージ アカウントには、20,000 IOPS という最大合計要求レートがあります。 Standard ストレージ アカウントの仮想マシン ディスク全体の合計 IOPS は、この制限を超えることはできません。
   

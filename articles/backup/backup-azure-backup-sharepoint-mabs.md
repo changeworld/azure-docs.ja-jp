@@ -4,10 +4,10 @@ description: Azure Backup Server を使用して SharePoint データをバッ�
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 441a896f2faa67a1380007ebb9474d7c311a4842
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673134"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS を使用して SharePoint ファームを Azure にバックアップする
@@ -20,7 +20,7 @@ DPM 用 Azure Backup は、次のシナリオをサポートします。
 
 | ワークロード | Version | SharePoint のデプロイ | 保護と回復 |
 | --- | --- | --- | --- |
-| SharePoint |SharePoint 2016、SharePoint 2013、SharePoint 2010、SharePoint 2007、SharePoint 3.0 |物理サーバーまたは Hyper-V/VMware 仮想マシンとしてデプロイされた SharePoint <br> -------------- <br> SQL AlwaysOn | SharePoint ファームの保護の回復オプション: ディスク復旧ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
+| SharePoint |SharePoint 2016、SharePoint 2013、SharePoint 2010、SharePoint 2007、SharePoint 3.0 |物理サーバーまたは Hyper-V/VMware 仮想マシンとしてデプロイされた SharePoint <br> -------------- <br> SQL AlwaysOn | SharePoint ファームの保護の回復オプション: ディスク回復ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
 
 ## <a name="before-you-start"></a>開始する前に
 

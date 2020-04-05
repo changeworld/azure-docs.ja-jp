@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: brendm
 ms.openlocfilehash: f329fb5472c5a2eab6f22a2e81b19d90e7045330
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278509"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>Azure Spring Cloud の CI/CD

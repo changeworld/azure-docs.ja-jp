@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870923"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225647"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Azure Cosmos DB での配列とオブジェクトの操作
 
@@ -52,7 +52,7 @@ SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as Ch
 FROM f
 ```
 
-## <a id="Iteration"></a>反復
+## <a name="iteration"></a><a id="Iteration"></a>反復
 
 SQL API では、FROM ソースの [IN キーワード](sql-query-keywords.md#in)で追加される新しいコンストラクトによって、JSON 配列に対する反復がサポートされています。 次の例では
 
@@ -90,7 +90,7 @@ SQL API では、FROM ソースの [IN キーワード](sql-query-keywords.md#in
     ]
 ```
 
-次のクエリは、`Families`コンテナー内の `children` への反復を実行しています。 出力配列は、前のクエリと異なります。 この例では、 `children` を分割し、結果を 1 つの配列にフラット化しています。  
+次のクエリは、`children`コンテナー内の `Families` への反復を実行しています。 出力配列は、前のクエリと異なります。 この例では、 `children` を分割し、結果を 1 つの配列にフラット化しています。  
 
 ```sql
     SELECT *
@@ -155,8 +155,8 @@ SQL API では、FROM ソースの [IN キーワード](sql-query-keywords.md#in
     ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [使用の開始](sql-query-getting-started.md)
+- [作業の開始](sql-query-getting-started.md)
 - [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [結合](sql-query-join.md)

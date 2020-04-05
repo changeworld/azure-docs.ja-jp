@@ -14,18 +14,18 @@ ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 697b4bc8e3a25085ac6f7d600ea2227dd30a6624
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377279"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230651"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>MSAL.NET を使用してソーシャル ID でユーザーをサインインさせる
 
 MSAL.NET を使用して、[Azure Active Directory B2C (Azure AD B2C)](https://aka.ms/aadb2c) でソーシャル ID を持つユーザーをサインインさせることができます。 Azure AD B2C はポリシーの概念を基に構築されています。 MSAL.NET では、ポリシーを指定するということは、機関を提供することです。
 
 - パブリック クライアント アプリケーションをインスタンス化するときは、機関でポリシーを指定する必要があります。
-- ポリシーを適用するときは、`authority` パラメーターを含む `AcquireTokenInteractive` のオーバーライドを呼び出す必要があります。
+- ポリシーを適用するときは、`AcquireTokenInteractive` パラメーターを含む `authority` のオーバーライドを呼び出す必要があります。
 
 このページは、MSAL 3.x に対するものです。 MSAL 2.x に関心がある場合は、「[Azure AD B2C specifics in MSAL 2.x (MSAL 2.x での Azure AD B2C の詳細)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-Specifics-MSAL-2.x)」をご覧ください。
 
@@ -173,7 +173,7 @@ MSAL.Net では[トークン キャッシュ](/dotnet/api/microsoft.identity.cli
 
 推奨される回避策は、[ポリシーによるキャッシュ](#acquire-a-token-to-apply-a-policy)を使用することです
 
-または、[B2C カスタム ポリシー](https://aka.ms/ief)を使用している場合は、`tid` 要求を使用できます。これにより、アプリケーションに追加の要求を返す機能が提供されます。 詳しくは、[要求の変換](/azure/active-directory-b2c/claims-transformation-technical-profile)に関する記事をご覧ください
+または、`tid`B2C カスタム ポリシー[を使用している場合は、](https://aka.ms/ief) 要求を使用できます。これにより、アプリケーションに追加の要求を返す機能が提供されます。 詳しくは、[要求の変換](/azure/active-directory-b2c/claims-transformation-technical-profile)に関する記事をご覧ください
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>"トークンの応答にありません" の軽減策
 1 つのオプションは、優先されるユーザー名として "name" 要求を使用することです。 プロセスは、この [B2C ドキュメント](../../active-directory-b2c/user-flow-overview.md)で説明されています。"[要求を返す] 列で、プロファイル編集エクスペリエンスの成功後にアプリケーションに戻される承認トークンで返される要求を選択します。 たとえば、[表示名] および [郵便番号] を選択します。"

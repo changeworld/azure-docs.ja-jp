@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113818"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>例:Bing Entity Search API を使用してカスタム スキルを作成する
@@ -475,7 +475,7 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 },
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 お疲れさまでした。 最初のカスタム スキルが作成されました。 これで同じパターンに従って、独自のカスタム機能を追加できます。 詳細については、以下のリンクをクリックしてください。
 
 + [Power Skills: カスタム スキルのリポジトリ](https://github.com/Azure-Samples/azure-search-power-skills)

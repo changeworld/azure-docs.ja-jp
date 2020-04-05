@@ -9,10 +9,10 @@ ms.date: 09/25/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 5104c3b4446a8d3747ce7cc1648ef05dd117eb3d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74013794"
 ---
 Storage Explorer 1.10.0 を使用すると、ユーザーは、マネージド ディスクのアップロード、ダウンロード、コピー、およびスナップショットの作成を行うことができます。 これらの追加機能により、Storage Explorer を使用して、オンプレミスから Azure にデータを移行したり、Azure リージョン間でデータを移行したりすることができます。
@@ -128,4 +128,4 @@ Storage Explorer を使うと、リージョン内またはリージョン間で
 
     ![ポータルでスナップショットを開く](media/disks-upload-vhd-to-managed-disk-storage-explorer/open-in-portal.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ

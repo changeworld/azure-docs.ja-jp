@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842871"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236947"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure Network Watcher の接続のトラブルシューティングの概要
 

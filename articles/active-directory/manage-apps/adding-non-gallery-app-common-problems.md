@@ -16,10 +16,10 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38a9ef04389318d3588649117c930ff6efa3fe4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784488"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>ギャラリー以外のアプリケーションの追加時に関する問題
@@ -28,7 +28,7 @@ ms.locfileid: "65784488"
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>[追加] ボタンをクリックしたがアプリケーションが表示されるまでに長い時間がかかる
 
-状況によって、アプリケーションがディレクトリに追加されてから表示されるまで、1 ～ 2 分 (またはそれ以上) かかる場合があります。 これは、通常期待されるパフォーマンスではありませんが、[Azure portal](https://portal.azure.com/) の右上隅にある **[通知]** アイコン (ビープ音) をクリックし、 **[進行中]** または **[アプリケーションを作成]** というラベルが付いた **[完了]** 通知を検索して、アプリケーションの追加が進行中であることを確認できます。
+状況によって、アプリケーションがディレクトリに追加されてから表示されるまで、1 ～ 2 分 (またはそれ以上) かかる場合があります。 これは、通常期待されるパフォーマンスではありませんが、**Azure portal** の右上隅にある [[通知]](https://portal.azure.com/) アイコン (ビープ音) をクリックし、 **[進行中]** または **[アプリケーションを作成]** というラベルが付いた **[完了]** 通知を検索して、アプリケーションの追加が進行中であることを確認できます。
 
 アプリケーションが追加されていない場合、または **[追加]** ボタンをクリックしたときにエラーが発生した場合は、 **[エラー]** 状態に **[通知]** と表示されます。 エラーに関する詳細を確認したり、サポート エンジニアと共有したりする場合は、「[ポータルの通知の詳細を確認する方法](#how-to-see-the-details-of-a-portal-notification)」セクションの手順に従って、エラーに関する詳細を確認できます。
 
@@ -42,7 +42,7 @@ ms.locfileid: "65784488"
 
 カスタム アプリケーションについて学習する必要がある場合、 [Azure AD アプリケーションのドキュメント ライブラリ](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index)で Azure AD を使用したシングル サインオンおよびそのしくみの詳細について確認できます。
 
-## <a name="how-to-see-the-details-of-a-portal-notification"></a>ポータル通知の詳細を確認する方法
+## <a name="how-to-see-the-details-of-a-portal-notification"></a>ポータルの通知の詳細を確認する方法
 
 ポータルの通知の詳細を確認するには、次の手順に従います。
 
@@ -110,7 +110,7 @@ ms.locfileid: "65784488"
 
 - **表示名** – **(空白でも可)** エラーの詳細な表示名
 
-  *  例 - **アプリケーションのプロキシ設定**
+  *  例 – **アプリケーション プロキシの設定**
 
 - **状態** – 通知の特定の状態
 

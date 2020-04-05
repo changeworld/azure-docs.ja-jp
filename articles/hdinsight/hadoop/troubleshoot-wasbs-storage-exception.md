@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.openlocfilehash: 14c43e4557275d6a425127acfee7495f68d1d354
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77163832"
 ---
 # <a name="the-account-being-accessed-does-not-support-http-error-in-azure-hdinsight"></a>アクセスされているアカウントでは Azure HDInsight の http エラーをサポートしていない

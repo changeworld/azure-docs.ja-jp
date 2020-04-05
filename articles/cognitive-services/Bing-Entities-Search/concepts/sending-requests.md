@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: f68429a75ddb141c9e42babde3faa9f93fe949cc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74072683"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Bing Entity Search API への検索要求の送信
@@ -35,7 +35,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/entities
 
 ## <a name="specifying-query-parameters-and-headers"></a>クエリ パラメーターとヘッダーの指定
 
-要求では、ユーザーの検索用語が含まれている [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) クエリ パラメーターを指定する必要があります。 要求では [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) クエリ パラメーターも指定する必要があります。このパラメーターは、結果取得元の市場を示します。 省略可能なクエリ パラメーターの一覧については、「[Query Parameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters)」(クエリ パラメーター) をご覧ください。 すべてのクエリ パラメーターを URL エンコードします。  
+要求では、ユーザーの検索語句が含まれている [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) クエリ パラメーターを指定する必要があります。 要求では [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt) クエリ パラメーターも指定する必要があります。このパラメーターは、結果取得元の市場を示します。 省略可能なクエリ パラメーターの一覧については、「[Query Parameters (クエリ パラメーター)](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters)」を参照してください。 すべてのクエリ パラメーターを URL エンコードします。  
   
 要求では、[Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#subscriptionkey) ヘッダーを指定する必要があります。 省略可能ですが、次のヘッダーも指定することをお勧めします。  
   
@@ -46,7 +46,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/entities
 
 クライアント IP と場所のヘッダーは、場所に対応したコンテンツを返すために重要です。  
 
-すべての要求ヘッダーと応答ヘッダーの一覧については、「[Headers (ヘッダー)](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers)」を参照してください。
+すべての要求ヘッダーと応答ヘッダーのリストについては、「[Headers](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers)」(ヘッダー) を参照してください。
 
 ## <a name="the-request"></a>要求
 
@@ -132,7 +132,7 @@ BingAPIs-Market: en-US
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Bing Entity API でのエンティティの検索](search-for-entities.md)
 * [Bing API の使用と表示の要件](../use-display-requirements.md)

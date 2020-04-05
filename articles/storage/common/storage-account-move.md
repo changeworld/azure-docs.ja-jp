@@ -10,17 +10,17 @@ ms.date: 09/27/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: 8ce949ac997ba7ee38cb057752d89f4b4d22388f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73838702"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure ストレージ アカウントを別のリージョンに移動する
 
 ストレージ アカウントを移動するには、別のリージョンにストレージ アカウントのコピーを作成します。 その後、AzCopy または選択した他のツールを使用して、そのアカウントにデータを移動します。
 
-この記事では、以下の方法について説明します。
+この記事では、次の方法について学習します。
 
 > [!div class="checklist"]
 > 
@@ -47,11 +47,11 @@ ms.locfileid: "73838702"
 
 このテンプレートには、ストレージ アカウントを表す設定が含まれます。 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用してテンプレートをエクスポートするには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. **[すべてのリソース]** を選択してから、ストレージ アカウントを選択します。
 
@@ -63,7 +63,7 @@ Azure portal を使用してテンプレートをエクスポートするには:
 
    この zip ファイルには、テンプレートとテンプレートをデプロイするためのスクリプトから構成される .json ファイルが含まれています。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用してテンプレートをエクスポートするには:
 
@@ -97,7 +97,7 @@ PowerShell を使用してテンプレートをエクスポートするには:
 
 ストレージ アカウント名とリージョンを変更して、テンプレートを変更します。
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用してテンプレートをデプロイするには:
 
@@ -109,7 +109,7 @@ Azure portal を使用してテンプレートをデプロイするには:
 
     ![Azure Resource Manager のテンプレート ライブラリ](./media/storage-account-move/azure-resource-manager-template-library.png)
 
-4. **作成** を選択します。
+4. **［作成］** を選択します
 
 5. **[Build your own template in the editor] \(エディターで独自のテンプレートをビルド\)** を選択します。
 
@@ -139,7 +139,7 @@ Azure portal を使用してテンプレートをデプロイするには:
     ```
     リージョンの場所コードを取得するには、「[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)」を参照してください。  リージョンのコードは、スペースを含まないリージョン名です (**Central US** = **centralus**)。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用してテンプレートをデプロイするには:
 
@@ -176,11 +176,11 @@ PowerShell を使用してテンプレートをデプロイするには:
 
 <a id="move" />
 
-## <a name="move"></a>Move
+## <a name="move"></a>詳細ビュー
 
 テンプレートをデプロイして、ターゲット リージョンに新しいストレージ アカウントを作成します。 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. **template.json** ファイルを保存します。
 
@@ -194,7 +194,7 @@ PowerShell を使用してテンプレートをデプロイするには:
 
 3. **[上記の使用条件に同意する]** チェック ボックスをオンにして、 **[Select Purchase]\(購入の選択\)** ボタンをクリックします。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0) を使って、ターゲット パブリック IP をデプロイするサブスクリプション ID を取得します。
 
@@ -224,7 +224,7 @@ PowerShell を使用してテンプレートをデプロイするには:
 | **ライフサイクル管理ポリシー** | [Azure Blob Storage のライフサイクルの管理](../blobs/storage-lifecycle-management-concepts.md) |
 | **静的な Web サイト** | [Azure Storage で静的 Web サイトをホストする](../blobs/storage-blob-static-website-how-to.md) |
 | **イベントのサブスクリプション** | [Blob Storage のイベント処理](../blobs/storage-blob-event-overview.md) |
-| **アラート** | [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-activity-log.md) |
+| **警告** | [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-activity-log.md) |
 | **Content Delivery Network (CDN)** | [Azure CDN を使用して HTTPS 経由でカスタム ドメインを使用した BLOB にアクセスする](../blobs/storage-https-custom-domain-cdn.md) |
 
 > [!NOTE] 
@@ -234,7 +234,7 @@ PowerShell を使用してテンプレートをデプロイするには:
 
 データを移動するいくつかの方法を次に示します。
 
-:heavy_check_mark:**Azure Storage Explorer**
+:heavy_check_mark:**Azure 記憶域エクスプローラー**
 
   使いやすく、小規模なデータセットに適しています。 コンテナーとファイル共有をコピーして、ターゲット アカウントに貼り付けることができます。
 
@@ -264,7 +264,7 @@ PowerShell を使用してテンプレートをデプロイするには:
 
 変更をコミットしてストレージ アカウントの移動を完了するには、元のストレージ アカウントを削除します。
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用してストレージ アカウントを削除するには:
 
@@ -274,7 +274,7 @@ Azure portal を使用してストレージ アカウントを削除するには
 
 3. **[削除]** を選択して、確定します。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 新しいストレージ アカウントを含め、リソース グループとそれに関連付けられているリソースを削除するには、[Remove-AzStorageAccount](/powershell/module/az.resources/remove-azstorageaccount) コマンドを使用します。
 
@@ -283,7 +283,7 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 ```
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure ストレージ アカウントをあるリージョンから別のリージョンに移動し、元のリソースをクリーンアップしました。  リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 

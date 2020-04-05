@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: sngun
 ms.openlocfilehash: 2306dbe234e171ac613c33458df1990b767637df
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128377"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Azure Cosmos DB と Azure App Service Web Apps のデプロイ
@@ -33,7 +33,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 このチュートリアルの手順を実行する前に、Azure サブスクリプションを取得する必要があります。 Azure はサブスクリプション方式のプラットフォームです。  サブスクリプションの入手方法の詳細については、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)、[メンバー オファー](https://azure.microsoft.com/pricing/member-offers/)、または[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 
-## <a id="CreateDB"></a>手順 1:テンプレート ファイルをダウンロードする
+## <a name="step-1-download-the-template-files"></a><a id="CreateDB"></a>手順 1:テンプレート ファイルをダウンロードする
 このチュートリアルに必要なサンプル ファイルをダウンロードすることから始めましょう。
 
 1. [Azure Cosmos DB アカウント と Web Apps の作成およびデモ アプリケーションのデプロイのサンプル](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) テンプレートを、ローカル フォルダー (C:\Azure Cosmos DBTemplates など) にダウンロードします。 このテンプレートでは、Azure Cosmos DB アカウント、App Service Web アプリ、Web アプリケーションをデプロイします。  また、Azure Cosmos DB アカウントに接続するように Web アプリケーションを自動的に構成します。

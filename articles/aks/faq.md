@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 1531308a8d0bd5a09952d8ad8ccd03c92f2f99eb
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c4bb4328af5df7f729967c7b249847b2ab098770
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77914604"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79497753"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -132,7 +132,7 @@ AKS エージェント ノードは、標準の Azure 仮想マシンとして�
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Azure テナント間でクラスターを移動/移行することはできますか?
 
-`az aks update-credentials` コマンドを使用して、Azure テナント間で AKS クラスターを移動できます。 「[サービス プリンシパルの更新または作成の選択](https://docs.microsoft.com/azure/aks/update-credentials)」の指示に従って、[AKS クラスターを新しい資格情報で更新します](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials)。
+`az aks update-credentials` コマンドを使用して、Azure テナント間で AKS クラスターを移動できます。 「[サービス プリンシパルの更新または作成の選択](https://docs.microsoft.com/azure/aks/update-credentials)」の指示に従って、[AKS クラスターを新しい資格情報で更新します](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials)。
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>サブスクリプション間でクラスターを移動/移行することはできますか?
 

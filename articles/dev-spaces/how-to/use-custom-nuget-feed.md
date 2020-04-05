@@ -9,10 +9,10 @@ description: カスタム NuGet フィードを使用して、Azure Dev Space �
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
 manager: gwallace
 ms.openlocfilehash: 39984a3b3a1be64a497fb8088559ccfcdee4f1c6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74325728"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Azure Dev Spaces にカスタム NuGet フィードを使用する
@@ -21,7 +21,7 @@ NuGet フィードは、パッケージ ソースをプロジェクトに取り�
 
 ## <a name="set-up-a-nuget-feed"></a>NuGet フィードのセットアップ
 
-`PackageReference` ノード下の `*.csproj` ファイルで、依存関係の[パッケージ参照](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files)を追加します。 例:
+`PackageReference` ノード下の `*.csproj` ファイルで、依存関係の[パッケージ参照](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files)を追加します。 次に例を示します。
 
 ```xml
 <ItemGroup>
@@ -31,7 +31,7 @@ NuGet フィードは、パッケージ ソースをプロジェクトに取り�
 </ItemGroup>
 ```
 
-プロジェクト フォルダー内に [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) ファイルを作成し、NuGet フィードに対する `packageSources` および `packageSourceCredentials` セクションを設定します。 `packageSources` セクションにはフィード URL が含まれ、これは AKS クラスターからアクセスが可能である必要があります。 `packageSourceCredentials` は、フィードにアクセスするための資格情報です。 例:
+プロジェクト フォルダー内に [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) ファイルを作成し、NuGet フィードに対する `packageSources` および `packageSourceCredentials` セクションを設定します。 `packageSources` セクションにはフィード URL が含まれ、これは AKS クラスターからアクセスが可能である必要があります。 `packageSourceCredentials` は、フィードにアクセスするための資格情報です。 次に例を示します。
 
 ```xml
 <packageSources>
@@ -46,7 +46,7 @@ NuGet フィードは、パッケージ ソースをプロジェクトに取り�
 </packageSourceCredentials>
 ```
 
-Dockerfile を更新して、`NuGet.Config` ファイルをイメージにコピーします。 例:
+Dockerfile を更新して、`NuGet.Config` ファイルをイメージにコピーします。 次に例を示します。
 
 ```console
 COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]
@@ -69,6 +69,6 @@ Git を使用していない場合は、この手順を省略できます。
 
 Visual Studio Code または Visual Studio で次に `azds up` を実行または `F5` にヒットしたとき、Azure Dev Spaces は `NuGet.Config` ファイルを同期し、それを使用してパッケージの依存関係をインストールします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [NuGet とそのしくみ](https://docs.microsoft.com/nuget/what-is-nuget)について学びます。

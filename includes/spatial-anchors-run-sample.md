@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: shreshar
 ms.openlocfilehash: fbc91b2610d97fe071e6585a58d7789dca873a9a
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72882331"
 ---
 アプリをデバイスにデプロイします。 アプリが起動したら、 **[Choose A Demo]\(デモの選択\)** ダイアログで、左右の矢印を使用して **[LocalShare]** オプションを選択し、 **[Go!]\(実行\)** をクリックします。 アプリ内の手順に従います。 **[Create & Share Anchor]\(アンカーの作成と共有\)** または **[Locate Shared Anchor]\(共有されたアンカーの配置\)** を選択できます。

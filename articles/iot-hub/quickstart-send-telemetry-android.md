@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 03/15/2019
 ms.author: wesmc
 ms.openlocfilehash: e239f8c6a7738500176b84589f2032636eeb71e5
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78675436"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>クイック スタート:IoT の利用統計情報を Android デバイスから送信する

@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: takamath
 ms.openlocfilehash: e2dd642139ae082cc0d0838e61399c549d2d812a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74970783"
 ---
 # <a name="enable-browser-connection-on-lab-virtual-machines"></a>ラボ仮想マシンでブラウザー接続を有効にする 
-DevTest Labs が [Azure Bastion](https://docs.microsoft.com/azure/bastion/) と統合されたことにより、ブラウザーを使用して仮想マシンに接続できます。 最初に、ラボ仮想マシンでブラウザー接続を有効にする必要があります。
+DevTest Labs は [Azure Bastion](https://docs.microsoft.com/azure/bastion/) と統合されたことにより、ブラウザーを使用して仮想マシンに接続できます。 最初に、ラボ仮想マシンでブラウザー接続を有効にする必要があります。
 
 ラボの所有者は、ブラウザーを使用したすべてのラボ仮想マシンへのアクセスを有効にできます。 追加のクライアント、エージェント、ソフトウェアは必要ありません。 Azure Bastion は、Azure portal で直接 SSL を経由して、仮想マシンへの安全かつシームレスな RDP 接続または SSH 接続を提供します。 Azure Bastion 経由で接続する場合、仮想マシンにパブリック IP アドレスは必要ありません。 詳細については、「[Azure Bastion とは](../bastion/bastion-overview.md)」を参照してください。
 
@@ -43,7 +43,7 @@ Azure Bastion サブネットにラボ VM を作成することはできませ�
 ## <a name="enable-vm-creation-in-the-subnet"></a>サブネットで VM の作成を有効にする
 ここで、次の手順に従って、このサブネットで VM の作成を有効にします。 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のナビゲーション メニューで、 **[すべてのサービス]** を選択します。 
 1. 一覧で **[DevTest Labs]** を選択します。 
 1. ラボの一覧で、"*目的のラボ*" を選択します。 

@@ -7,11 +7,11 @@ ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
 ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191446"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233027"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps から呼び出しできるカスタム API の作成
 

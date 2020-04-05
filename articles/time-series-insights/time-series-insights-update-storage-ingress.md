@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78246183"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス

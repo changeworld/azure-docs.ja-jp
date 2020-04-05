@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: twooley
 ms.openlocfilehash: b8fe87a2df633af310bc661308813a60987e77d6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75933274"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理

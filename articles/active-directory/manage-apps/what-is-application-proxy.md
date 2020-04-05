@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f23b20d460952ae582c292c8015851b9dc2ea98
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7047dfd0f02ffe95dcacfdf4ddc014047a338513
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108175"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79481196"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Azure AD アプリケーション プロキシを使用してリモート ユーザー向けにオンプレミス アプリを発行する
 
@@ -81,7 +81,7 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 
 ![Azure AD アプリケーション プロキシのアーキテクチャ](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>認証
 
 シングル サインオン用にアプリケーションを構成する方法は複数あります。アプリケーションで使用する認証に適した方法を選んでください。 アプリケーション プロキシでは、次の種類のアプリケーションがサポートされています。
 
@@ -122,7 +122,7 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 
 Azure AD へのアプリの移行について詳しくは、ホワイト ペーパー「[Migrating Your Applications to Azure Active Directory (Azure Active Directory へのアプリケーションの移行)](https://aka.ms/migrateapps/whitepaper)」をご覧ください。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
 次の図は、Azure AD 認証サービスとアプリケーション プロキシがどのように連携して、オンプレミス アプリケーションへのシングル サインオンをエンド ユーザーに提供するかを示します。
 
@@ -145,7 +145,7 @@ Azure AD へのアプリの移行について詳しくは、ホワイト ペー�
 |Active Directory (AD)|Active Directory はオンプレミスで実行され、ドメイン アカウントの認証を行います。 シングル サインオンが構成されている場合、コネクタは必要な追加認証を実行するために AD と通信します。|
 |オンプレミスのアプリケーション|最終的にユーザーは、オンプレミス アプリケーションにアクセスできます。|
 
-Azure AD アプリケーション プロキシは、クラウドベースのアプリケーション プロキシ サービスとオンプレミス コネクタで構成されます。 コネクタは、アプリケーション プロキシ サービスからの要求をリッスンし、内部アプリケーションへの接続を処理します。 すべての通信は SSL 経由で発生し、常にコネクタで生成されて、アプリケーション プロキシ サービスに送られる点に注意することが重要です。 つまり、外向きの通信のみです。 コネクタはクライアント証明書を使用して、すべての呼び出しに対してアプリケーション プロキシ サービスを認証します。 接続のセキュリティの唯一の例外は、クライアント証明書が確立される最初のセットアップ手順です。 詳しくは、アプリケーション プロキシの「[コネクタの性能](application-proxy-security.md#under-the-hood)」をご覧ください。
+Azure AD アプリケーション プロキシは、クラウドベースのアプリケーション プロキシ サービスとオンプレミス コネクタで構成されます。 コネクタは、アプリケーション プロキシ サービスからの要求をリッスンし、内部アプリケーションへの接続を処理します。 すべての通信は TLS 経由で発生し、常にコネクタで生成されて、アプリケーション プロキシ サービスに送られる点に注意することが重要です。 つまり、外向きの通信のみです。 コネクタはクライアント証明書を使用して、すべての呼び出しに対してアプリケーション プロキシ サービスを認証します。 接続のセキュリティの唯一の例外は、クライアント証明書が確立される最初のセットアップ手順です。 詳しくは、アプリケーション プロキシの「[コネクタの性能](application-proxy-security.md#under-the-hood)」をご覧ください。
 
 ### <a name="application-proxy-connectors"></a>アプリケーション プロキシ コネクタ
 
@@ -166,7 +166,7 @@ Azure AD アプリケーション プロキシは、クラウドベースのア�
 
 また、コネクタはサーバーをポーリングして、新しいバージョンのコネクタがあるかどうかを調べます。 コネクタは手動更新できますが、Application Proxy Connector Updater サービスを実行している限りは自動更新されます。 複数のコネクタを持つテナントの場合、環境でのダウンタイムを避けるために、自動更新では各グループで一度に 1 つのコネクタが対象となります。
 
-**メモ**:アプリケーション プロキシの[バージョン履歴ページ](application-proxy-release-version-history.md)を監視して RSS フィードに登録することで、更新がリリースされたときに通知を受け取ることができます。
+**注**:アプリケーション プロキシの[バージョン履歴ページ](application-proxy-release-version-history.md)を監視して RSS フィードに登録することで、更新がリリースされたときに通知を受け取ることができます。
 
 各アプリケーション プロキシ コネクタは、[コネクタ グループ](application-proxy-connector-groups.md)に割り当てられます。 同じコネクタ グループに属するコネクタは、高可用性と負荷分散のために単一のユニットとして動作します。 Azure portal で新しいグループを作成し、コネクタをそれらに割り当てたら、特定のアプリケーションに対応する特定のコネクタを割り当てることができます。 高可用性のためには、各コネクタ グループに少なくとも 2 つのコネクタを割り当てることをお勧めします。
 
@@ -180,10 +180,10 @@ Azure AD アプリケーション プロキシは、クラウドベースのア�
 
 ## <a name="other-use-cases"></a>その他のユース ケース
 
-ここまでは、主にクラウドとオンプレミスのすべてのアプリケーションへのシングル サインオンを有効にしながら、アプリケーション プロキシを使用してオンプレミス アプリケーションを外部に発行する方法について説明してきました。 ただし、アプリケーション プロキシには他にも重要なユース ケースがあります。 以下が含まれます。
+ここまでは、主にクラウドとオンプレミスのすべてのアプリケーションへのシングル サインオンを有効にしながら、アプリケーション プロキシを使用してオンプレミス アプリケーションを外部に発行する方法について説明してきました。 ただし、アプリケーション プロキシには他にも重要なユース ケースがあります。 具体的な内容を次に示します。
 
 * **REST API の安全な発行**。 ビジネス ロジックや API をオンプレミスで実行しているか、クラウド上の仮想マシンでホストしている場合、アプリケーション プロキシによって API アクセス用のパブリック エンドポイントが提供されます。 API エンドポイント アクセスでは、着信ポートを必要とせず、認証と認可を制御できます。 Azure AD Premium の機能を通じて追加のセキュリティが提供されます (多要素認証や、Intune を使用したデスクトップ、iOS、MAC、および Android デバイス向けのデバイス ベースの条件付きアクセスなど)。 詳しくは、「[ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法](application-proxy-configure-native-client-application.md)」および「[Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)」をご覧ください。
-* **リモート デスクトップ サービス** **(RDS)** 。 RDS の標準的なデプロイでは、インバウンド接続を開く必要があります。 ただし、[アプリケーション プロキシを使用した RDS デプロイ](application-proxy-integrate-with-remote-desktop-services.md)には、コネクタ サービスを実行しているサーバーからの永続的なアウトバウンド接続があります。 これにより、リモート デスクトップ サービスを通じてオンプレミスのアプリケーションを発行し、エンド ユーザーにより多くのアプリケーションを提供することができます。 RDS に対する 2 段階認証と条件付きアクセス制御の限定的なセットを使用して、デプロイの攻撃対象領域を減らすこともできます。
+* **リモート デスクトップ サービス** **(RDS)** . RDS の標準的なデプロイでは、インバウンド接続を開く必要があります。 ただし、[アプリケーション プロキシを使用した RDS デプロイ](application-proxy-integrate-with-remote-desktop-services.md)には、コネクタ サービスを実行しているサーバーからの永続的なアウトバウンド接続があります。 これにより、リモート デスクトップ サービスを通じてオンプレミスのアプリケーションを発行し、エンド ユーザーにより多くのアプリケーションを提供することができます。 RDS に対する 2 段階認証と条件付きアクセス制御の限定的なセットを使用して、デプロイの攻撃対象領域を減らすこともできます。
 * **Websocket を使用して接続するアプリケーションの発行**。 [Qlik Sense](application-proxy-qlik.md) のサポートはパブリック プレビュー段階にあり、今後他のアプリに展開されます。
 * **ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする**。 Azure AD アプリケーション プロキシは、Web アプリを発行するために使用できますが、Azure AD Authentication Library (ADAL) で構成された[ネイティブ クライアント アプリケーション](application-proxy-configure-native-client-application.md)の発行にも使うことができます。 ネイティブ クライアント アプリケーションはデバイスにインストールされる点が Web アプリとは異なり、Web アプリはブラウザーからアクセスされます。
 
@@ -203,7 +203,7 @@ Azure AD アプリケーション プロキシは、クラウドベースのア�
 * 最新のセキュリティ パッチを確実に適用する自動更新
 * リリースされる新機能 (直近では SAML シングル サインオンのサポートとアプリケーション Cookie の詳細な管理)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure AD アプリケーション プロキシの計画、運用、および管理の詳細については、「[Azure AD アプリケーション プロキシのデプロイ計画](application-proxy-deployment-plan.md)」をご覧ください。
 * ライブ デモのスケジュールまたは評価用に 90 日間の無料試用版を取得するには、「[Getting started with Enterprise Mobility + Security (Enterprise Mobility + Security を使ってみる)](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial)」をご覧ください。

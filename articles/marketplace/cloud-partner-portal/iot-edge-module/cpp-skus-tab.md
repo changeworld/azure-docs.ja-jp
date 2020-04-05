@@ -1,19 +1,18 @@
 ---
 title: Azure IoT Edge モジュール SKU | Azure Marketplace
 description: IoT Edge モジュールの SKU を作成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: pabutler
-ms.openlocfilehash: 230f3d6438d44c4e1e1721c0cb1453c85958e282
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 49ae69263735d6ec35cd911a20100472b32c0b59
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813857"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286559"
 ---
 # <a name="iot-edge-module-skus-tab"></a>[IoT Edge モジュール SKU] タブ
 
@@ -51,9 +50,9 @@ Azure Marketplace および Azure portal の Web サイトでの SKU の表示�
 |  **フィールド**       |     **説明**                                                          |
 |  ---------       |     ---------------                                                          |
 | **タイトル\***        | 当該 SKU のタイトル。 最大長は 50 文字です。 <br/> これは Azure portal に表示され、デプロイ時に既定のモジュール名 (スペースや特殊文字は含まない) として使用されます。 当該フィールドが表示される場所は、次の図を参照してください。|
-| **Summary (概要)\***      | 当該 SKU の概要。 最大長は 100 文字です。 プランは**要約せず**、SKU だけを要約してください。  この概要は、Azure Marketplace で表示されます。 当該フィールドが表示される場所は、次の図を参照してください。|
+| **要約\***      | 当該 SKU の概要。 最大長は 100 文字です。 プランは**要約せず**、SKU だけを要約してください。  この概要は、Azure Marketplace で表示されます。 当該フィールドが表示される場所は、次の図を参照してください。|
 | **説明\***  | 当該 SKU の簡単な説明。最大長は 3000 文字です。 プランは説明せず、SKU だけを説明してください。 この項目は Azure Marketplace および Azure portal で表示されます。 Azure portal では、[Marketplace] タブで定義されているプランを記述する Marketplace の説明に追加されます。SKU の概要と同じにすることができます。 当該フィールドが表示される場所は、次の図を参照してください。|
-| **Hide this SKU (この SKU を非表示にする)\*** | 既定の設定の、**No** のままにします。 |
+| **この SKU を非表示にする\*** | 既定の設定の、**No** のままにします。 |
 |  |  |
 
 
@@ -83,7 +82,7 @@ Azure Marketplace および Azure portal の Web サイトでの SKU の表示�
 
 - SKU の詳細を表示する場合:
 
-    ![ポータルで製品の詳細を表示するときの、IoT Edge モジュールの表示](./media/iot-edge-module-portal-pdp.png)
+    ![ポータルで製品の詳細を確認するときに、IoT Edge モジュールがどのように表示されるか](./media/iot-edge-module-portal-pdp.png)
 
 - モジュールをデプロイする場合:
     
@@ -136,6 +135,6 @@ IoT Edge モジュールをデプロイするための最も一般的な設定�
 **[保存]** を選択して SKU 設定を保存します。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [[Marketplace] タブ](./cpp-marketplace-tab.md)を使用して、プランのためのマーケットプレースの説明を作成します。

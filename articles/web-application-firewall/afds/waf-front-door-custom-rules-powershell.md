@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
 ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74186647"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォール ポリシーを構成する
@@ -110,7 +110,7 @@ $myWAFPolicy=New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $reso
 > [!NOTE]
 > Front Door フロントエンドにセキュリティ ポリシーをリンクさせるために必要な *WebApplicationFirewallPolicyLink* プロパティの設定は 1 回だけです。 それ以降のポリシーの更新は、自動的にフロントエンドに適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Front Door](../../frontdoor/front-door-overview.md) の詳細を確認する 
 - [Front Door を使った WAF](afds-overview.md) の詳細を確認する

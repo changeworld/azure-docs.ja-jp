@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67181253"
 ---
 ## <a name="c-program-example"></a>C# プログラムの例

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77370076"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>方法:Windows のログイン画面からパスワードをリセットできるようにする

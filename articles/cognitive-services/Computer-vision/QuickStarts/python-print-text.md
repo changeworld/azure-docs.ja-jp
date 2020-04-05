@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d89c50867b8c66c0dfb40021982b201078fa67d1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: af755af9404cc98c650164e5f891661f2530f77b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774310"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244775"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>クイック スタート:Computer Vision の REST API と Python を使用して印刷されたテキスト (OCR) を抽出する
 
@@ -47,6 +47,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python get-printed-text.py` 」のように入力します。
 
 ```python
+import os
+import sys
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
 # %matplotlib inline

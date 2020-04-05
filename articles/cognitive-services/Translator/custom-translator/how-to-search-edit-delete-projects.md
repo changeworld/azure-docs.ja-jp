@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 9432ac390b7677b3dea5aebc84cf23ef6e45db92
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68595714"
 ---
 # <a name="search-edit-and-delete-projects"></a>プロジェクトの検索、編集、削除
@@ -63,6 +63,6 @@ Custom Translator には、プロジェクトの名前と説明を編集する�
 
    ![削除の確認ダイアログ](media/how-to/how-to-delete-project-confirm.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ドキュメントをアップロード](how-to-upload-document.md)してカスタム翻訳モデルの構築を開始します。

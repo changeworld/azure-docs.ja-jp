@@ -6,17 +6,17 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: d4dbf43fb5684d829e581be29832e94ad46b2936
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589614"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235147"
 ---
 # <a name="azure-iot-hub-output-binding-for-azure-functions"></a>Azure Functions の Azure IoT Hub 出力バインド
 
 この記事では、IoT Hub 用に Azure Functions 出力バインドを使用する方法について説明します。 IoT Hub のサポートは、[Azure Event Hubs のバインド](functions-bindings-event-hubs.md)に基づいています。
 
-セットアップと構成の詳細については、[概要](functions-bindings-event-iot.md)に関するページをご覧ください。
+セットアップと構成の詳細については、[概要](functions-bindings-event-iot.md)を参照してください。
 
 > [!IMPORTANT]
 > 次のコード サンプルでは、Event Hub API が使用されています (使用されている構文は IoT Hub の関数に適用されるものです)。

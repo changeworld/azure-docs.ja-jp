@@ -9,10 +9,10 @@ ms.date: 11/28/2018
 ms.author: anzaman
 ms.custom: seodec18
 ms.openlocfilehash: deeb1c65cae7e3a5b42230dbda1ad8efa717ba0b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73748109"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>障害が発生した ExpressRoute 回線のリセット
@@ -50,6 +50,6 @@ ExpressRoute 回線での操作が正常に完了しないと、回線が "障�
 
 回線はすぐに正常になります。 回線が障害状態のままである場合は、[Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)に対してサポート チケットを申請します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 問題が解消しない場合は [Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) にサポート チケットを申請する

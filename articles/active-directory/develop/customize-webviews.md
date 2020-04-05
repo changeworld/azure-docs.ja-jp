@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 759f61860c62bcb668db6844df28c52fa28eac80
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085911"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>方法:iOS/macOS のブラウザーと WebView のカスタマイズ
@@ -131,7 +131,7 @@ extern NSString *MSALWebAuthDidCompleteNotification;
 extern NSString *MSALWebAuthWillSwitchToBrokerApp;
 ```
 
-### <a name="options"></a>オプション
+### <a name="options"></a>Options
 
 すべての MSAL でサポートされる Web ブラウザーの種類は、[MSALWebviewType 列挙型](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALDefinitions.h#L47)で宣言されます。
 

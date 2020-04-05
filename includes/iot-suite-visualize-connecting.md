@@ -9,10 +9,10 @@ ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 9b9e28f18208674609d0842b0e3a54e3fc661c9f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181609"
 ---
 ## <a name="view-device-telemetry"></a>デバイス テレメトリを表示する
@@ -52,6 +52,6 @@ ms.locfileid: "67181609"
 > [!NOTE]
 > ソリューションでジョブの状態を追跡するには、 **[View Job Status]\(ジョブ状態の表示\)** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [「リモート監視の構成済みソリューションのカスタマイズ](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md)」の記事では、ソリューション アクセラレータをカスタマイズする方法をいくつか説明します。

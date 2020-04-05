@@ -18,10 +18,10 @@ ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 986371e479f7718fff2e1699401987cb0ca8f623
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73163995"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>PowerShell を使用してルート テーブルでネットワーク トラフィックをルーティングする
@@ -321,7 +321,7 @@ Trace complete.
 
 *myVmPrivate* VM へのリモート デスクトップ セッションを閉じます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要なくなったら、[Remove-AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除します。
 
@@ -329,7 +329,7 @@ Trace complete.
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、ルート テーブルを作成し、それをサブネットに関連付けました。 トラフィックをパブリック サブネットからプライベート サブネットにルーティングする単純なネットワーク仮想アプライアンスを作成しました。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) からファイアウォールや WAN 最適化などのネットワーク機能を実行する、さまざまな事前構成されたネットワーク仮想アプライアンスを展開します。 ルーティングの詳細については、[ルーティングの概要](virtual-networks-udr-overview.md)と[ルート テーブルの管理](manage-route-table.md)に関する記事をご覧ください。
 

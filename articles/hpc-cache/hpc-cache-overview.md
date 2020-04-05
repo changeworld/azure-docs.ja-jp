@@ -7,11 +7,11 @@ ms.topic: overview
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582139"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79216390"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Azure HPC Cache とは
 
@@ -66,7 +66,7 @@ Azure HPC Cache で使用する各サブスクリプションへのアクセス�
 
 アクセスを依頼するには、[こちらのフォーム](https://aka.ms/onboard-hpc-cache)に入力してください。 サブスクリプションがアクセス一覧に追加された後に、キャッシュを作成できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure HPC Cache の製品ページ](https://azure.microsoft.com/services/hpc-cache)を参照して、その機能を詳しく確認する
 * 製品の[前提条件](hpc-cache-prereqs.md)を確認する

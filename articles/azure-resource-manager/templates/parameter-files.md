@@ -4,10 +4,10 @@ description: Azure Resource Manager テンプレートのデプロイ中に値�
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: bb52d9c5ebcb0820362e5de3d6b24b0b18d742e9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76155623"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager パラメーター ファイルを作成する

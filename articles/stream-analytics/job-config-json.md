@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 27ed553035ce9d7abf57ffe93078df9c17b8408c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617739"
 ---
 # <a name="azure-stream-analytics-jobconfigjson-fields"></a>Azure Stream Analytics JobConfig.json フィールド
@@ -37,7 +37,7 @@ ms.locfileid: "77617739"
 }
 ```
 
-|名前|Type|Required|Value|
+|名前|Type|必須|値|
 |----|----|--------|-----|
 |DataLocale|string|いいえ|Stream Analytics ジョブのデータ ロケール。 値はサポート対象の名前になります。 何も指定されていない場合は "en-US" になります。|
 |OutputErrorPolicy|string|いいえ|出力に到達したが、形式が正しくないため (列値が欠けている、列値の種類やサイズが間違っている)、外部ストレージに書き込めないイベントに適用するポリシーを示します。 - 停止または削除|

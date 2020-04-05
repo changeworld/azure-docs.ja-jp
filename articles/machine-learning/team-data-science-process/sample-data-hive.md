@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df85edc3de00e2b0342bc3102fe9e85564a9835b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76719995"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Azure HDInsight Hive テーブル内のデータのサンプリング
@@ -33,7 +33,7 @@ ms.locfileid: "76719995"
 ## <a name="how-to-submit-hive-queries"></a>Hive クエリを送信する方法
 Hive クエリは、Hadoop クラスターのヘッド ノード上の Hadoop コマンド ライン コンソールから送信できます。  Hadoop クラスターのヘッド ノードにログインし、Hadoop コマンド ライン コンソールを開き、そこから Hive クエリを送信します。 Hadoop コマンド ライン コンソールで Hive クエリを送信する手順については、「[Hive クエリを送信する方法](move-hive-tables.md#submit)」をご覧ください。
 
-## <a name="uniform"></a> 一様ランダム サンプリング
+## <a name="uniform-random-sampling"></a><a name="uniform"></a> 一様ランダム サンプリング
 一様ランダム サンプリングとは、データ セットの各行にサンプリングされる機会が均等にあるという意味です。 これは、追加のフィールド rand() を、内部の "select" クエリのデータセットに追加し、そのランダム フィールドについての条件を外部の "select" クエリに追加することで実装できます。
 
 クエリの使用例を次に示します。
@@ -51,7 +51,7 @@ Hive クエリは、Hadoop クラスターのヘッド ノード上の Hadoop �
 
 ここで、 `<sample rate, 0-1>` は、ユーザーがサンプリングするレコードの割合を指定しています。
 
-## <a name="group"></a> グループごとのランダム サンプリング
+## <a name="random-sampling-by-groups"></a><a name="group"></a> グループごとのランダム サンプリング
 カテゴリ別のデータをサンプリングする場合、カテゴリ変数の一部が何らかの値であるすべてのインスタンスを含めるか除外することができます。 この種のサンプリングは、"グループごとのサンプリング" と呼ばれます。 たとえば、NY、MA、CA、NJ、PA などの値を持つカテゴリ変数 "*State*" がある場合に、サンプリングされているかどうかにかかわらず、各州のレコードをまとめることができます。
 
 グループごとのサンプリングを実行するサンプルのクエリは次のとおりです。
@@ -80,8 +80,8 @@ Hive クエリは、Hadoop クラスターのヘッド ノード上の Hadoop �
         )c
     on b.catfield=c.catfield
 
-## <a name="stratified"></a>階層サンプリング
-取得したサンプルに、母集団と同じ比率のカテゴリ別のサンプル値がある場合、ランダム サンプリングは、カテゴリ変数に関して階層化されます。 上記と同じ例で、州ごとに次の件数のデータがあるものとします。NJ には 100 件のデータ、NY には 60 件のデータ、WA には 300 件のデータ。 階層のサンプリングの割合を 0.5 に指定すると、取得されるサンプルは NJ、NY、WA それぞれで 50 件、30 件、150 件となります。
+## <a name="stratified-sampling"></a><a name="stratified"></a>階層サンプリング
+取得したサンプルに、母集団と同じ比率のカテゴリ別のサンプル値がある場合、ランダム サンプリングは、カテゴリ変数に関して階層化されます。 上記と同じ例で、州ごとに次の件数のデータがあるとします。NJ には 100 件のデータ、NY には 60 件のデータ、WA には 300 件のデータ。 階層のサンプリングの割合を 0.5 に指定すると、取得されるサンプルは NJ、NY、WA それぞれで 50 件、30 件、150 件となります。
 
 クエリの使用例を次に示します。
 

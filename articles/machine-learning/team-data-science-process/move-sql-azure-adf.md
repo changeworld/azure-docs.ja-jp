@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722494"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する
@@ -24,7 +24,7 @@ ms.locfileid: "76722494"
 
 Azure SQL Database にデータを移動するためのさまざまなオプションをまとめた表については、「[Azure Machine Learning 用にデータを Azure SQL Database に移動する](move-sql-azure.md)」を参照してください。
 
-## <a name="intro"></a>概要:ADF の説明とデータの移行に ADF を使用するべきタイミング
+## <a name="introduction-what-is-adf-and-when-should-it-be-used-to-migrate-data"></a><a name="intro"></a>概要:ADF の説明とデータの移行に ADF を使用するべきタイミング
 Azure Data Factory は、データの移動や変換を調整し自動化する、フル マネージドのクラウドベースのデータ統合サービスです。 ADF モデルにおける主要な概念は、パイプラインです。 パイプラインとはアクティビティの論理グループであり、各アクティビティによって、データセットに含まれているデータに対して実行するアクションを定義します。 リンクされたサービスは、Data Factory がデータ リソースに接続するために必要な情報を定義するために使用されます。
 
 ADF を使用すると、既存のデータ処理サービスを、可用性が高く、クラウドで管理されるデータ パイプラインに組み込むことができます。 データの取り込み、準備、変換、分析、発行を行うために、これらのデータ パイプラインをスケジュールできます。ADF がデータと処理の複雑な依存関係を管理して調整します。 増加するオンプレミスのデータ ソースとクラウドのデータ ソースを接続するソリューションをクラウド内で迅速に構築してデプロイすることができます。
@@ -36,7 +36,7 @@ ADF を使用すると、既存のデータ処理サービスを、可用性が�
 
 ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。 ADF には他にも、複雑な操作のサポートなどの機能があります。 詳細については、 [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/)にあるドキュメントを参照してください。
 
-## <a name="scenario"></a>シナリオ
+## <a name="the-scenario"></a><a name="scenario"></a>シナリオ
 2 つのデータ移行アクティビティを構成する ADF パイプラインを設定します。 これらのアクティビティは、オンプレミスの SQL データベースとクラウドの Azure SQL データベース間で毎日データを移動します。 2 つのアクティビティは次のとおりです。
 
 * オンプレミスの SQL Server データベースから Azure BLOB ストレージ アカウントにデータをコピーする
@@ -47,7 +47,7 @@ ADF では、定期的にデータの移動を管理するシンプルな JSON �
 >
 >
 
-## <a name="prereqs"></a>前提条件
+## <a name="prerequisites"></a><a name="prereqs"></a>前提条件
 このチュートリアルでは、以下があることを前提としています。
 
 * **Azure サブスクリプション**。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
@@ -60,12 +60,12 @@ ADF では、定期的にデータの移動を管理するシンプルな JSON �
 >
 >
 
-## <a name="upload-data"></a> オンプレミスの SQL Server にデータをアップロードする
+## <a name="upload-the-data-to-your-on-premises-sql-server"></a><a name="upload-data"></a> オンプレミスの SQL Server にデータをアップロードする
 [NYC タクシー データセット](https://chriswhong.com/open-data/foil_nyc_taxi/) を使用して、移行プロセスを説明します。 NYC タクシー データセットは、記事に記載されているように、Azure BLOB ストレージの [NYC タクシー データ](https://www.andresmh.com/nyctaxitrips/)から入手できます。 データには、乗車の詳細を含む trip_data.csv ファイルと、乗車ごとの料金の詳細を含む trip_far.csv ファイルの 2 つのファイルがあります。 これらのファイルのサンプルと説明は、「 [NYC タクシー乗車データセットの説明](sql-walkthrough.md#dataset)」にあります。
 
 ここに示されている手順は、自身のデータに適用することも、NYC タクシー データセットを使用してこの手順に従って行うこともできます。 NYC タクシー データセットを自身のオンプレミスの SQL Server データベースにアップロードするには、「[SQL Server データベースにデータを一括インポートする](sql-walkthrough.md#dbload)」に記載されている手順に従います。 これらは Azure Virtual Machine 上の SQL Server にアップロードする手順ですが、オンプレミスの SQL Server へのアップロード手順も同じです。
 
-## <a name="create-adf"></a> Azure Data Factory を作成する
+## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a> Azure Data Factory を作成する
 [Azure Portal](https://portal.azure.com/) で新しい Azure Data Factory とリソース グループを作成する手順については、「[Azure Data Factory を作成する](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory)」をご覧ください。 新しい ADF インスタンスに *adfdsp* という名前を付け、作成されたリソース グループに *adfdsprg* という名前を付けます。
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Azure Data Factory Integration Runtime をインストールして構成する
@@ -73,7 +73,7 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
 
 セットアップするには、[パイプラインの作成手順に従ってください](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
-## <a name="adflinkedservices"></a>データ リソースに接続するためにリンクされたサービスを作成する
+## <a name="create-linked-services-to-connect-to-the-data-resources"></a><a name="adflinkedservices"></a>データ リソースに接続するためにリンクされたサービスを作成する
 リンクされたサービスは、Azure Data Factory がデータ リソースに接続するために必要な情報を定義します。 このシナリオには、リンクされたサービスを必要とする 3 つのリソースがあります。
 
 1. オンプレミスの SQL Server
@@ -83,7 +83,7 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
 リンクされたサービスを作成するための手順は、「[リンクされたサービスを作成する](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)」を参照してください。
 
 
-## <a name="adf-tables"></a>データセットへのアクセス方法を指定するためのテーブルを定義して作成する
+## <a name="define-and-create-tables-to-specify-how-to-access-the-datasets"></a><a name="adf-tables"></a>データセットへのアクセス方法を指定するためのテーブルを定義して作成する
 以下のスクリプトベースの手順に従って、データセットの構造、場所、可用性を指定するテーブルを作成します。 テーブルを定義するには、JSON ファイルを使用します。 これらのファイルの構造の詳細については、「 [データセット](../../data-factory/concepts-datasets-linked-services.md)」を参照してください。
 
 > [!NOTE]
@@ -107,7 +107,7 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
 >
 >
 
-### <a name="adf-table-onprem-sql"></a>オンプレミスの SQL テーブル
+### <a name="sql-on-premises-table"></a><a name="adf-table-onprem-sql"></a>オンプレミスの SQL テーブル
 オンプレミス SQL Server のテーブル定義は、次の JSON ファイルで指定されています。
 
 ```json
@@ -143,7 +143,7 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
 
-### <a name="adf-table-blob-store"></a>BLOB テーブル
+### <a name="blob-table"></a><a name="adf-table-blob-store"></a>BLOB テーブル
 以下は、出力 BLOB の場所用のテーブル定義です (これはオンプレミスから取り込まれたデータを Azure BLOB にマップします)。
 
 ```json
@@ -175,7 +175,7 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
 
-### <a name="adf-table-azure-sql"></a>SQL Azure テーブル
+### <a name="sql-azure-table"></a><a name="adf-table-azure-sql"></a>SQL Azure テーブル
 以下は、SQL Azure 出力の場所用のテーブル定義です (このスキーマは BLOB からのデータをマップします)。
 
 ```json
@@ -208,7 +208,7 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
 
 
-## <a name="adf-pipeline"></a>パイプラインを作成して定義する
+## <a name="define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>パイプラインを作成して定義する
 次のスクリプトベースの手順に従って、パイプラインに属するアクティビティを指定し、パイプラインを作成します。 パイプラインのプロパティを定義するため、JSON ファイルを使用します。
 
 * このスクリプトでは、 **パイプライン名** を *AMLDSProcessPipeline*としています。
@@ -293,7 +293,7 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 
 
-## <a name="adf-pipeline-start"></a>パイプラインを開始する
+## <a name="start-the-pipeline"></a><a name="adf-pipeline-start"></a>パイプラインを開始する
 これで、次のコマンドを使用してパイプラインを実行できます。
 
     Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline

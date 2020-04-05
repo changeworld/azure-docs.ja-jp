@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 5c5e1a8cee8cdad0659ae00829d170bf3fa7bf87
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.date: 03/10/2020
+ms.openlocfilehash: 303da4dcb68a79e69254f6610afc0003bf0aa22c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941422"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477002"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) で SSL 接続を構成する
 
@@ -28,9 +28,6 @@ Azure Portal や CLI を使用してプロビジョニングされたすべて�
 ## <a name="configure-enforcement-of-ssl"></a>SSL 適用の構成
 
 必要に応じて、SSL 接続の適用を無効にできます。 Microsoft Azure では、セキュリティ強化のため **[Enforce SSL connection (SSL 接続の適用)]** 設定は常に有効にしておくことをお勧めします。
-
-> [!NOTE]
-> 現在、Azure Database for PostgreSQL でサポートされている TLS のバージョンは、TLS 1.0、TLS 1.1、TLS 1.2 です。
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 

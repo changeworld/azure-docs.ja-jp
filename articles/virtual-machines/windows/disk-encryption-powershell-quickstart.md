@@ -7,10 +7,10 @@ ms.service: security
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.openlocfilehash: b5e5b44742c85591b913b94e622c76a2aba111ce
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72245712"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-in-azure-with-powershell"></a>クイック スタート:PowerShell を使用して Azure で Windows 仮想マシンを作成、暗号化する
@@ -20,7 +20,7 @@ Azure PowerShell モジュールは、PowerShell コマンド ラインやスク
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースの展開と管理に使用する論理コンテナーです。
 
@@ -86,7 +86,7 @@ OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncry
 ProgressMessage            : Provisioning succeeded
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドレットを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
@@ -94,7 +94,7 @@ ProgressMessage            : Provisioning succeeded
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、仮想マシンを作成し、暗号化キー用に有効にされたキー コンテナーを作成し、VM を暗号化しました。  次の記事に進み、IaaS VM に対する Azure Disk Encryption の前提条件について詳しく学習してください。
 

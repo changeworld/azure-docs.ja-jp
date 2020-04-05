@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: raynew
 ms.openlocfilehash: 6bcb65912627356215769ccc8380ee1a7404f6f7
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185957"
 ---
 # <a name="add-migration-tools"></a>移行ツールの追加
@@ -46,7 +46,7 @@ Azure Migrate には、評価と Azure への移行のためのツールのハ�
 2. **[Azure Migrate - Servers]\(Azure Migrate - サーバー\)** で、移行ツールをまだ追加していない場合は、 **[移行ツール]** の下の **[Click here to add a migration tool]\(移行ツールを追加するにはここをクリックしてください\)** を選択します。 移行ツールを既に追加している場合は、 **[移行ツールをさらに追加しますか]** で **[変更]** を選択します。
 
     > [!NOTE]
-    > 別のプロジェクトに移動する必要がある場合は、 **[Azure Migrate - Servers]\(Azure Migrate - サーバー\)** の **[別の移行プロジェクトの詳細を確認しますか]** の横にある **[ここをクリック]** をクリックします。
+    > 別のプロジェクトに移動する必要がある場合は、 **[Azure Migrate - Servers] (Azure Migrate - サーバー)** で、 **[See details for a different 移行プロジェクト] (別の移行プロジェクトの詳細を確認する)** の横にある **[ここをクリックしてください]** をクリックします。
 
 3. **[Azure Migrate]** で、使用する移行ツールを選択します。
     - Azure Migrate Server Migration を使用する場合は、Azure Migrate プロジェクト内で直接、移行を設定して実行できます。
@@ -60,11 +60,11 @@ Azure Migrate には、評価と Azure への移行のためのツールのハ�
 
 ## <a name="select-a-web-app-migration-tool"></a>Web アプリ移行ツールの選択
 
-1. **[Web アプリの評価と移行]** をクリックします。
+1. **[Assess and migrate web apps] (Web アプリの評価と移行)** をクリックします。
 2. Azure App Service の Migration ツールへのリンクに従います。 この移行ツールを使用して、次のことを行います。
 
-    - **オンラインでアプリを評価する**:Azure App Service Migration Assistant を使用して、オンラインでパブリック URL を使用してアプリを評価し、移行することができます。
-    - **.NET/PHP**:内部 .NET および PHP アプリの場合は、Migration Assistant をダウンロードして実行できます。
+    - **オンラインでアプリを評価する**: Azure App Service Migration Assistant を使用して、オンラインでパブリック URL を使用してアプリを評価し、移行することができます。
+    - **.NET/PHP**: 内部の .NET および PHP アプリの場合は、Migration Assistant をダウンロードして実行できます。
 
 ## <a name="order-an-azure-data-box"></a>Azure Data Box の注文
 
@@ -74,6 +74,6 @@ Azure Migrate には、評価と Azure への移行のためのツールのハ�
 2. **[Azure Data Box の選択]** で、ご自身のサブスクリプションを指定します。 
 3. 転送は、Azure へのインポートになります。 データ ソースと、データの Azure リージョンの宛先を指定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Migrate Server Migration を使用して、[Hyper-V](tutorial-migrate-hyper-v.md) または [VMware](tutorial-migrate-vmware.md) VM の移行を試します。

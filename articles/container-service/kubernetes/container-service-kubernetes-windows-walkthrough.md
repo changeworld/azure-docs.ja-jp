@@ -8,10 +8,10 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277643"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(非推奨) Windows コンテナー用の Kubernetes クラスターをデプロイする

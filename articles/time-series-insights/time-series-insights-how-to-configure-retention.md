@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 3fdc007caaa4cb79f6083599a5bc176bc022fb03
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278613"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Time Series Insights のリテンション期間の構成
@@ -34,7 +34,7 @@ Time Series Insights 環境ごとに、 **[ストレージ制限を超過した�
 
 ## <a name="configure-data-retention"></a>データ リテンション期間の構成
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 既存の Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** を選択します。 Time Series Insights 環境を選択します。
 

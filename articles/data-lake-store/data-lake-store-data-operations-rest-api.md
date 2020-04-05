@@ -1,5 +1,5 @@
 ---
-title: REST API:Azure Data Lake Storage Gen1 に対するファイルシステム操作 | Microsoft Docs
+title: 'REST API: Azure Data Lake Storage Gen1 に対するファイルシステム操作 | Microsoft Docs'
 description: WebHDFS REST API を使用して、Azure Data Lake Storage Gen1 に対するファイルシステム操作を実行します
 services: data-lake-store
 documentationcenter: ''
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 351c92f1e1a698893f61004d523ba79ebca253e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60878785"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作
@@ -158,10 +158,10 @@ Data Lake Storage Gen1 アカウントからのデータの読み取りは、2 �
 
     {"boolean":true}
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [REST API を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-rest-api.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Azure Data Lake Storage Gen1 REST API リファレンス](https://docs.microsoft.com/rest/api/datalakestore/)
 * [Azure Data Lake Storage Gen1 と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)
 

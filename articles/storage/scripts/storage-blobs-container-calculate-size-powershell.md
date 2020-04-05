@@ -4,17 +4,18 @@ titleSuffix: Azure Storage
 description: コンテナー内の BLOB のサイズを合計して、Azure Blob ストレージ内のコンテナーのサイズを計算します。
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
+ms.devlang: powershell
 ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 890da96ac1d97a2eb84f5296c74a02824d657273
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: de51ed7d91ba1102f5a9cd376ab95f49dd54d9f3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895055"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067072"
 ---
 # <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>PowerShell を使用して BLOB コンテナーのサイズを計算する
 
@@ -25,13 +26,13 @@ ms.locfileid: "74895055"
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
-> この PowerShell スクリプトは、コンテナーの推定サイズを算出しますが、課金の計算には使用できません。 課金目的のコンテナー サイズを計算するスクリプトについては、「[Calculate the size of a Blob storage container for billing purposes](../scripts/storage-blobs-container-calculate-billing-size-powershell.md)」 (課金を目的に Blob ストレージ コンテナーのサイズを計算する) を参照してください。 
+> この PowerShell スクリプトは、コンテナーの推定サイズを算出しますが、課金の計算には使用できません。 課金目的のコンテナー サイズを計算するスクリプトについては、「[Calculate the size of a Blob storage container for billing purposes](../scripts/storage-blobs-container-calculate-billing-size-powershell.md)」 (課金を目的に Blob ストレージ コンテナーのサイズを計算する) を参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
 [!code-powershell[main](../../../powershell_scripts/storage/calculate-container-size/calculate-container-size.ps1 "Calculate container size")]
 
-## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
+## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
 次のコマンドを実行して、リソース グループ、コンテナー、すべての関連リソースを削除します。
 
@@ -48,7 +49,7 @@ Remove-AzResourceGroup -Name bloblisttestrg
 | [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | リソース グループまたはサブスクリプション内の指定された Storage アカウントまたはすべての Storage アカウントを取得します。 |
 | [Get-AzStorageBlob](/powershell/module/az.storage/Get-AzStorageBlob) | コンテナー内の BLOB を一覧表示します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 課金目的のコンテナー サイズを計算するスクリプトについては、「[Calculate the size of a Blob storage container for billing purposes](../scripts/storage-blobs-container-calculate-billing-size-powershell.md)」 (課金を目的に Blob ストレージ コンテナーのサイズを計算する) を参照してください。
 

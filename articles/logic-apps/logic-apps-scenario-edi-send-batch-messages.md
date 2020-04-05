@@ -8,10 +8,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666671"
 ---
 # <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Azure Logic Apps の取引先間でバッチまたはグループとして EDI メッセージを交換する
@@ -54,11 +54,11 @@ ms.locfileid: "75666671"
 
 このバッチ受信アプリに対し、バッチのモード、名前、リリース条件、X12 契約などの設定を指定します。 
 
-1. [Azure portal](https://portal.azure.com) または Visual Studio で、"BatchX12Messages" という名前のロジック アプリを作成します
+1. [Azure portal](https://portal.azure.com) または Visual Studio で、"BatchX12Messages" という名前のロジック アプリを作成します。
 
 2. [ロジック アプリを統合アカウントにリンクします](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。
 
-3. Logic Apps デザイナーで、ロジック アプリのワークフローを開始する**バッチ** トリガーを追加します。 検索ボックスに、フィルターとして「batch」と入力します。 トリガーとして、**メッセージのバッチ処理**
+3. Logic Apps デザイナーで、ロジック アプリのワークフローを開始する**バッチ** トリガーを追加します。 検索ボックスに、フィルターとして「batch」と入力します。 **[メッセージのバッチ処理]** というトリガーを選択します。
 
    ![バッチ トリガーを追加する](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-receiver-trigger.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "75666671"
 
    1. バッチ トリガーで、 **[新しいステップ]** を選択します。
 
-   2. 検索ボックスにフィルターとして「X12 batch」と入力します。また、(いずれのバージョンでも) 次のアクションを選択します。**バッチ エンコード <*バージョン*> - X12** 
+   2. 検索ボックスにフィルターとして「X12 batch」と入力し、(いずれのバージョンでも) **バッチ エンコード <*バージョン*> - X12** アクションを選択します。 
 
       ![X12 バッチ エンコード アクションを選択する](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "75666671"
 
 1. X12 エンコード アクションで、 **[新しいステップ]** を選択します。 
 
-2. 検索ボックスに、フィルターとして「http」と入力します。 このアクションを選択: **[HTTP - HTTP]** アクションを選択します。
+2. 検索ボックスに、フィルターとして「http」と入力します。 **[HTTP - HTTP]** アクションを選択します
     
    ![HTTP アクションを選択する](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action.png)
 
@@ -148,9 +148,9 @@ ms.locfileid: "75666671"
 
 * バッチ受信アプリとバッチ送信アプリは、同じ Azure リージョンを共有し、"*なおかつ*" 同じ Azure サブスクリプションを共有している必要があります。 異なる場合は互いを認識できず、バッチ送信アプリを作成するときにバッチ受信アプリを選択できません。
 
-1. 次の名前の別のロジック アプリを作成します:"SendX12MessagesToBatch" 
+1. "SendX12MessagesToBatch" という名前の別のロジック アプリを作成します 
 
-2. 検索ボックスに、フィルターとして「HTTP 要求の」と入力します。 トリガーとして、**HTTP 要求の受信時** 
+2. 検索ボックスに、フィルターとして「HTTP 要求の」と入力します。 **[HTTP 要求の受信時]** トリガーを選択します 
    
    ![要求トリガーを追加する](./media/logic-apps-scenario-EDI-send-batch-messages/add-request-trigger-sender.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "75666671"
    1. HTTP 要求アクションで **[新しいステップ]** を選択します。
 
    2. 検索ボックスに、フィルターとして「batch」と入力します。 
-   **[アクション]** リストを選択し、 **[バッチ トリガーを含む Logic Apps ワークフローを選択します - バッチ処理するメッセージの送信]** アクションを選択します。
+   **[アクション]** リストを選択し、 **[バッチ トリガーを含む Logic Apps ワークフローを選択します - バッチ処理するメッセージの送信]** アクションを選択します
 
       ![[バッチ トリガーを含む Logic Apps ワークフローを選択します] を選択します](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-trigger.png)
 
@@ -167,7 +167,7 @@ ms.locfileid: "75666671"
 
       !["バッチ受信" ロジック アプリを選択する](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. このアクションを選択: **[メッセージのバッチ処理 - <*your-batch-receiver*>]**
+   4. アクション **Batch_messages - <*バッチ受信アプリ*>** を選択します
 
       !["Batch_messages" アクションを選択する](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 
@@ -175,7 +175,7 @@ ms.locfileid: "75666671"
 
    | プロパティ | 説明 | 
    |----------|-------------| 
-   | **バッチ名** | 受信ロジック アプリによって定義されたバッチ名 (この例では "TestBatch") <p>**重要**:バッチ名は実行時に検証されます。また、受信ロジック アプリによって指定された名前と一致している必要があります。 バッチ名を変更すると、バッチ送信アプリが失敗します。 | 
+   | **バッチ名** | 受信ロジック アプリによって定義されたバッチ名 (この例では "TestBatch") <p>**重要**: バッチ名は実行時に検証されます。また、受信ロジック アプリによって指定された名前と一致している必要があります。 バッチ名を変更すると、バッチ送信アプリが失敗します。 | 
    | **メッセージのコンテンツ** | 送信するメッセージのコンテンツ (この例では **[本文]** トークンです) | 
    ||| 
    

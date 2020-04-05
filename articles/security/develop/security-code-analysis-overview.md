@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 963bc909b69962cded0a50d717e3a653d3d69769
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74851470"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Microsoft Security Code Analysis について
@@ -45,7 +45,7 @@ Azure DevOps パイプラインに Microsoft Security Code Analysis ツールを
 
 既定では、ビルド タスクとツールは最新の状態が維持されます。 更新されたバージョンのツールがあっても、ダウンロードしてインストールする必要はありません。 拡張機能によって、自動的に更新が行われます。
 
-### <a name="under-the-hood"></a>コネクタの性能
+### <a name="under-the-hood"></a>しくみ
 
 拡張機能のビルド タスクによって、次のような複雑さが隠されます。
   - セキュリティ スタティック分析ツールを実行する。
@@ -108,7 +108,7 @@ Microsoft Security Code Analysis 拡張機能には、3 つの後処理タスク
 >[!NOTE]
 >タスクが正常に完了する場合、設計上、各ビルド タスクは成功です。 これは、ツールによって問題が検出されてもされなくても真実であり、すべてのツールの実行を許可すればビルドは最後まで実行できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Microsoft Security Code Analysis をオンボードしてインストールする方法については、[オンボードとインストールのガイド](security-code-analysis-onboard.md)を参照してください。
 

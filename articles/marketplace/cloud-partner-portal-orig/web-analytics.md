@@ -1,20 +1,18 @@
 ---
 title: Web Analytics
-description: 。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+description: この記事では、Web Analytics について学習し、これを使用してビジネスを最大限に成長させる方法を説明します。
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: d47a67be157f71a30a6ae155790ed78a78fd6743
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 446e579a7205f0e785d7e940c1dbdd36cff8f370
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814655"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285335"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
@@ -55,7 +53,7 @@ ms.locfileid: "73814655"
 
 これらのキャンペーン ID を複数組み合わせれば、顧客の流入元 (例: メール、ブログ、ソーシャル メディア) など、キャンペーンのトラフィックの源泉となっている複数のソースを特定することができます。
 
-例:
+次に例を示します。
 
 1. ニュースレターが参照元の場合:  <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
 2. LinkedIn が参照元の場合:  <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
@@ -95,7 +93,7 @@ ms.locfileid: "73814655"
 
 顧客のドメインに注目する方法と同様、このグラフでは、マーケットプレースにユーザーを誘導しているキャンペーンごとにデータの分布を確認できます。 \_NoCampaign は、顧客がマーケットプレースに移動したときの URL にキャンペーン ID が含まれていなかったことを意味します。
 
-<a name="next-steps"></a>**次のステップ**
+<a name="next-steps"></a>**次の手順**
 --------------
 
 これでプランの成果を追跡できるようになりました。今度は、ご自分のキャンペーンを作成してみてください。

@@ -1,19 +1,18 @@
 ---
 title: Azure テーブル | Azure Marketplace
 description: Azure テーブル用にリード管理を構成します。
-services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.author: evansma
-ms.openlocfilehash: 9b24e6eb714c531b49ba08591bf4ed33d0f10101
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f511a60b533d6d1e0b1ae8847d0ee0fb6be3500c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812334"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288837"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Azure テーブルを使用してリード管理を構成する
 
@@ -67,7 +66,7 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 
    ![[マイ フロー] **[+ スケジュール済み - 空白から作成]**](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-5.  *[スケジュールされたフローをビルド]* ウィンドウの *[繰り返し間隔]* で、間隔に "1" を、頻度に "時間" を選択します。 また、必要に応じて、フローに名前を付けます。 **作成** を選択します。
+5.  *[スケジュールされたフローをビルド]* ウィンドウの *[繰り返し間隔]* で、間隔に "1" を、頻度に "時間" を選択します。 また、必要に応じて、フローに名前を付けます。 **［作成］** を選択します
 
     >[!Note]
     >この例では 1 時間の間隔を使用していますが、ビジネス ニーズに最適な間隔と頻度を選択できます。
@@ -146,7 +145,7 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 19. **[Office 365 Outlook]** ウィンドウで、以下のフィールドの情報を指定します。
 
     1. **[宛先]** - この通知を受信するすべてのユーザーの電子メール アドレスを入力します。
-    1. **[件名]** - 電子メールの件名を指定します。 例: 新しい潜在顧客
+    1. **[件名]** - 電子メールの件名を指定します。 次に例を示します。新しい潜在顧客
     1. **[本文]** - 各電子メールに含めるテキストを追加し (省略可能)、body `body('Get_entities')?['value']` を貼り付けます。
 
     >[!Note]
@@ -154,7 +153,7 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 
     ![Azure テーブル - [条件]、**[はいの場合]**、[Office 365 Outlook] ウィンドウ。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-condition-if-yes-outlook.png)
 
-20. **[保存]** を選択してフローを保存します。 Microsoft Flow は、フローにエラーがないかどうか自動的にテストします。 エラーがない場合、保存された後にフローが実行を開始します。
+20. **[保存]** を選択してフローを保存します。 Microsoft Flow は、フローにエラーがないかどうか自動的にテストします。 エラーがない場合は、保存された後、フローが実行を開始します。
 
 次の画面キャプチャは、最終的なフローがどのようになるかの例を示しています。
 

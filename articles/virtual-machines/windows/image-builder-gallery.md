@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
 ms.openlocfilehash: d5856780d0d9f1a1943bca1c2f076bb3ec914e1d
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263355"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>プレビュー:Windows イメージを作成して共有イメージ ギャラリーに配布する 

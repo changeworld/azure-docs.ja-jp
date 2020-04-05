@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.openlocfilehash: ab88f65d535be2aef5f0b26fa1171c03276466e8
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057075"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Azure HDInsight での Apache Ambari のハートビートの問題
@@ -28,7 +28,7 @@ Ambari エージェントの CPU 使用率が高くなっています。これ�
 
 さまざまな Ambari エージェントのバグが原因で、まれに、Ambari エージェントの CPU 使用率が高く (100 近くに) なる場合があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 1. Ambari エージェントのプロセス ID (pid) を識別します。
 
@@ -67,7 +67,7 @@ Ambari エージェントが開始されていません。これにより、一�
 
 アラートは、Ambari エージェントが実行されていないことが原因で発生します。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 1. Ambari エージェントの状態を確認します。
 
@@ -93,7 +93,7 @@ Ambari のハートビート エージェントが失われました。
 
 OMS ログで CPU 使用率が高くなっています。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 * [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) PowerShell コマンドレットを使用して Azure Monitor ログ記録を無効にします。
 * `mdsd.warn` ログ ファイルを削除します

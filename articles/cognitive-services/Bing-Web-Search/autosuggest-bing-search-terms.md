@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/03/2019
 ms.author: aahi
 ms.openlocfilehash: 0fb62966c78eb19c1daf9294efba786a267ae200
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66384856"
 ---
 # <a name="autosuggest-bing-search-terms-in-your-application"></a>アプリケーションで Bing 検索語句を自動提案する
@@ -37,10 +37,10 @@ ms.locfileid: "66384856"
 
 ![クエリ コンテキスト UX の例](./media/cognitive-services-bing-web-api/bing-query-context.PNG)  
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 * サンプルの [Bing Web Search API 応答](search-responses.md)を確認します。  
 
-## <a name="see-also"></a>関連項目  
+## <a name="see-also"></a>参照  
 
 * [Bing Web Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

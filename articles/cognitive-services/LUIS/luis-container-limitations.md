@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
 ms.openlocfilehash: bd8a7a63113bcf4e972ab08655aa58b35ddff03d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73506814"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Language Understanding (LUIS) コンテナーの制限
@@ -52,14 +52,14 @@ LUIS コンテナーは、LUIS によって適切に[サポートされる言語
 | *[中国語](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
 | フランス語 (フランス) |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
 | フランス語 (カナダ) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
-| ドイツ語 |`de-DE` | ✔️ | ✔️ | ✔️ | ✔️ |
+| German |`de-DE` | ✔️ | ✔️ | ✔️ | ✔️ |
 | ヒンディー語 | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
-| イタリア語 |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
-| 韓国語 |`ko-KR` | ✔️ | ❌ | ❌ | *キー フレーズ*のみ |
+| Italian |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
+| Korean |`ko-KR` | ✔️ | ❌ | ❌ | *キー フレーズ*のみ |
 | ポルトガル語 (ブラジル) |`pt-BR` | ✔️ | ✔️ | ✔️ | 一部のサブカルチャのみ |
 | スペイン語 (スペイン) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | スペイン語 (メキシコ)|`es-MX` | ❌ | ❌ |✔️|✔️|
-| トルコ語 | `tr-TR` |✔️| ❌ | ❌ | *センチメント*のみ |
+| Turkish | `tr-TR` |✔️| ❌ | ❌ | *センチメント*のみ |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 

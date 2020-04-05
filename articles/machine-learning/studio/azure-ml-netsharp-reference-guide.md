@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: b297a3f975450b7459895ce7c0abc79e9b2fcdea
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c1912e670a9cf1c178b58cefbd33171f15be2483
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168930"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218244"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) での Net# ニューラル ネットワーク仕様言語について
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Net# は、ディープ ニューラル ネットワークや任意次元の畳み込みなどの複雑なニューラル ネットワーク アーキテクチャを定義するために使用される、Microsoft が開発した言語です。 複雑な構造体を使用して、イメージ、ビデオ、オーディオなどのデータに関する学習を強化できます。
 

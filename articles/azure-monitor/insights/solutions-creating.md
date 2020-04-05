@@ -8,10 +8,10 @@ ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f1605597c7716ba6a896c7ecdae968f07d66027b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663217"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Azure での管理ソリューションの設計とビルド (プレビュー)

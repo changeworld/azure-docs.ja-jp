@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
 ms.openlocfilehash: 4ce7b8590e4718585fe841921466e049dc204928
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75769134"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>HTTP によってトリガーされない関数を手動で実行する

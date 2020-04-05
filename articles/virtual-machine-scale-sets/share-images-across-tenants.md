@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: cynthn
 ms.openlocfilehash: a29999102ad8a10d8965145b31a7d804675e0e57
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76276336"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Azure テナント間でギャラリー VM イメージを共有する

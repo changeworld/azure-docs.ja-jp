@@ -9,10 +9,10 @@ ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 71ba24784dee7771acbe19bf0261c7dc02478b24
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127519"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション
@@ -25,7 +25,7 @@ Windows Virtual Desktop では、推奨されるユーザー プロファイル 
 
 ## <a name="azure-platform-details"></a>Azure プラットフォームの詳細
 
-|機能|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
+|[機能]|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
 |--------|-----------|------------------|---------------------|
 |使用事例|汎用|オンプレミスの NetApp からの Ultra パフォーマンスまたは移行|クロス プラットフォーム|
 |プラットフォーム サービス|はい。Azure ネイティブ ソリューションです。|はい。Azure ネイティブ ソリューションです。|いいえ。自己管理型です。|
@@ -38,7 +38,7 @@ Windows Virtual Desktop では、推奨されるユーザー プロファイル 
 
 ## <a name="azure-management-details"></a>Azure 管理の詳細
 
-|機能|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
+|[機能]|Azure Files|Azure NetApp Files|記憶域スペース ダイレクト|
 |--------|-----------|------------------|---------------------|
 |アクセス|クラウド、オンプレミス、ハイブリッド (Azure ファイル同期)|クラウド、オンプレミス (ExpressRoute 経由)|クラウド、オンプレミス|
 |バックアップ|Azure Backup スナップショット統合|Azure NetApp Files スナップショット|Azure Backup スナップショット統合|

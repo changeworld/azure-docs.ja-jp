@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 102523316aaa59803fb9a6957457fc7bd4f6ce4f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5a7d4d1917f65cd3d836db83600937a3e3d89de6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186811"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223599"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>チュートリアル:Apache Kafka Producer および Consumer API の使用
 
@@ -133,7 +133,7 @@ consumer = new KafkaConsumer<>(properties);
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
 
-## <a id="run"></a>例を実行する
+## <a name="run-the-example"></a><a id="run"></a>例を実行する
 
 1. `sshuser` は、クラスターの SSH ユーザーに置き換えます。また、`CLUSTERNAME` はクラスターの名前に置き換えます。 次のコマンドを入力して、クラスターとの SSH 接続を開きます。 メッセージが表示されたら、SSH ユーザー アカウントのパスワードを入力します。
 
@@ -218,5 +218,5 @@ Azure Portal を使用してリソース グループを削除するには:
 
 このドキュメントでは、HDInsight 上の Kafka で Apache Kafka Producer および Consumer API を使用する方法について説明しました。 次の各ドキュメントを参考に、Kafka の使用の詳細を確認してください。
 
-> [!div class="nextstepaction"]
-> [Apache Kafka ログを分析する](apache-kafka-log-analytics-operations-management.md)
+* [Kafka REST プロキシを使用する](rest-proxy.md)
+* [Apache Kafka ログを分析する](apache-kafka-log-analytics-operations-management.md)

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: 51b0d02443df872a7fae13116ea77b13d05055fa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74225464"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Bing Spell Check を使用した単語のスペルミスの修正
@@ -76,7 +76,7 @@ There are two places in LUIS to use the key. The first is in the [test panel](lu
 ## <a name="send-misspelled-utterance-to-luis"></a>LUIS への発話のスペルミスの送信
 1. Web ブラウザーで、上記の文字列をコピーして、`region`、`appId`、`luisKey`、および `bingKey` をご自身の値に置き換えます。 エンドポイント リージョンが公開[リージョン](luis-reference-regions.md)と異なる場合は、必ずエンドポイント リージョンを使用します。
 
-2. 発話のスペルミスを追加します ("How far is the mountainn?" など)。 英語では、`n` が 1 つの `mountain` が正しいスペルです。 
+2. 発話のスペルミスを追加します ("How far is the mountainn?" など)。 英語では、`mountain` が 1 つの `n` が正しいスペルです。 
 
 3. Enter キーを押して、クエリを LUIS に送信します。
 

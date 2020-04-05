@@ -4,10 +4,10 @@ description: メディア ブループリント サンプルのコントロー�
 ms.date: 02/24/2020
 ms.topic: sample
 ms.openlocfilehash: bdc4ef65c6d61a9d4217d7873bb29bd787842e71
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78201739"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>メディア ブループリント サンプルのコントロール マッピング

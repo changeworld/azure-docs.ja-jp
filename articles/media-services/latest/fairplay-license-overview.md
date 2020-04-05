@@ -15,10 +15,10 @@ ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 6d4b7ba842d08723b90a4f2491d9e79e68dd932e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60733574"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay ライセンスの要件と構成 
@@ -39,7 +39,7 @@ Media Services を使用した **Apple FairPlay** での HLS コンテンツの�
 
         次の手順では、FairPlay 用の .pfx 証明書ファイルを生成する方法について説明します。
 
-        1. https://slproweb.com/products/Win32OpenSSL.html から OpenSSL をインストールします。
+        1. [https://slproweb.com/products/Win32OpenSSL.html](https://slproweb.com/products/Win32OpenSSL.html ) から OpenSSL をインストールします。
 
             Apple によって提供される FairPlay 証明書とその他のファイルが含まれるフォルダーに移動します。
         2. コマンド ラインから次のコマンドを実行します。 このコマンドにより、.cer ファイルが .pem ファイルに変換されます。
@@ -115,6 +115,6 @@ private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOpti
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [DRM での保護](protect-with-drm.md)に関するページを参照してください。

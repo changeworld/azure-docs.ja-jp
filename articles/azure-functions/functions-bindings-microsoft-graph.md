@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
 ms.openlocfilehash: 770187693e5bac6e059dfd20455099fcc695b74b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76715034"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド

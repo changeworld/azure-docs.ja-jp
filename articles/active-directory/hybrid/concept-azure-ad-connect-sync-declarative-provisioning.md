@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:宣言型プロビジョニングについて | Microsoft Docs
+title: 'Azure AD Connect: 宣言型プロビジョニングについて | Microsoft Docs'
 description: Azure AD Connect における宣言型のプロビジョニングの構成モデルについて説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60246263"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同期: 宣言型のプロビジョニングについて
@@ -42,18 +42,18 @@ ms.locfileid: "60246263"
 * [Precedence (優先順位)](#precedence): 属性のコントリビューションの競合を解決
 * Target (ターゲット): ターゲット オブジェクト
 
-## <a name="scope"></a>Scope (スコープ)
+## <a name="scope"></a>スコープ
 スコープ モジュールはオブジェクトを評価し、スコープ内にあり、処理に含める必要のある規則を決定します。 オブジェクトの属性値に応じて、各種同期規則がスコープ内にあるかどうか評価されます。 たとえば、Exchange のメールボックスを持たない無効なユーザーには、メールボックスを持つ有効なユーザーとは異なる規則が適用されます。  
-![Scope (スコープ)](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+![スコープ](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 スコープはグループおよび句として定義されます。 句はグループ内にあります。 グループ内のすべての句の間で論理 AND が使用されます。 たとえば、(department = IT AND country = Denmark) などです。 グループ間では 論理 OR が使用されます。
 
-![Scope (スコープ)](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
+![スコープ](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope2.png)  
 この図のスコープは、(department = IT AND country = Denmark) OR (country=Sweden) となっています。 グループ 1 とグループ 2 のいずれかが true に評価される場合、規則はスコープに含まれています。
 
 スコープ モジュールでは、次の演算がサポートされています。
 
-| Operation | 説明 |
+| 操作 | 説明 |
 | --- | --- |
 | EQUAL、NOTEQUAL |値が属性内の値と等しいかどうかを評価する文字列の比較。 複数値の属性については、ISIN と ISNOTIN を参照してください。 |
 | LESSTHAN、LESSTHAN_OR_EQUAL |値が属性内の値未満であるかどうかを評価する文字列の比較。 |
@@ -128,7 +128,7 @@ ms.locfileid: "60246263"
 
 ### <a name="importedvalue"></a>ImportedValue
 ImportedValue 関数は、属性名を角かっこではなく引用符で囲む必要がある点で、他のすべての関数とは異なっています。次に例を示します。  
-`ImportedValue("proxyAddresses")`
+[https://login.microsoftonline.com/consumers/](`ImportedValue("proxyAddresses")`)
 
 通常、同期する際は、まだエクスポートされていない場合であっても、エクスポート中にエラーが発生した場合であっても、属性では予想される値を使用します ("top of the tower")。 受信同期では、接続されたディレクトリにまだ届いていない属性も最終的には届くと見なされます。 また、接続されたディレクトリで確認された値のみを同期することが重要です ("hologram and delta import tower")。
 
@@ -151,7 +151,7 @@ ImportedValue 関数は、属性名を角かっこではなく引用符で囲む
 このシナリオでは、同期規則のスコープを変更して、ソース オブジェクトがスコープ内に異なる同期規則を持つようにする必要があります。 そうすれば、異なる優先順位を定義できます。  
 ![Multiple objects joined to the same mv object](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple2.png)  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 式言語について詳しくは、「 [宣言型のプロビジョニングの式について](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)」をご覧ください。
 * 宣言型のプロビジョニングをすぐに使用する方法については、「 [既定の構成について](concept-azure-ad-connect-sync-default-configuration.md)」をご覧ください。
 * 宣言型のプロビジョニングを使用して現実に即した変更を実施する方法については、「 [既定の構成を変更する方法](how-to-connect-sync-change-the-configuration.md)」をご覧ください。
@@ -159,9 +159,9 @@ ImportedValue 関数は、属性名を角かっこではなく引用符で囲む
 
 **概要トピック**
 
-* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)
 
 **参照トピック**
 
-* [Azure AD Connect 同期:関数参照](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect Sync: 関数リファレンス](reference-connect-sync-functions-reference.md)

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/15/2019
 ms.author: cynthn
 ms.openlocfilehash: 9b7e7066f186017b7cc4408cd4f7edcc7e5f0dcd
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74065514"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Azure テナント間でギャラリー VM イメージを共有する
@@ -84,6 +84,6 @@ Add-AzVMNetworkInterface -Id $nic.Id
 New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Portal](shared-images-portal.md) を使用して、共有イメージ ギャラリー リソースも作成できます。

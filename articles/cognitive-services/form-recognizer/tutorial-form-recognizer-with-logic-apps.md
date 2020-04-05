@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: nitinme
 ms.openlocfilehash: d71d9c7e6570e562fe4c692ede1d07b70c923cb6
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77118274"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>チュートリアル:Azure Logic Apps で Form Recognizer を使用して請求書を分析する
@@ -77,7 +77,7 @@ Azure Logic Apps を使用すると、タスクとワークフローを自動化
 
 1. **[ロジック アプリの作成]** で、次に示すようにロジック アプリの詳細を入力します。 完了したら、 **[作成]** を選択します。
 
-   | プロパティ | Value | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **名前** | <*ロジック アプリ名*> | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"My-First-Logic-App" を使用します。 |
    | **サブスクリプション** | <*Azure サブスクリプション名*> | お使いの Azure サブスクリプション名 |

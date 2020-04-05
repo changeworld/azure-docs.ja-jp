@@ -17,10 +17,10 @@ ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 91b1be75b06b4281ee5d03675d9d33db00a5aaf7
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70013797"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Darwinbox の統合
@@ -29,7 +29,7 @@ ms.locfileid: "70013797"
 
 * Darwinbox にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Darwinbox に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

@@ -4,16 +4,16 @@ description: 新しいバージョンを作成することで、ライブ接続�
 author: sarahhubbard
 ms.author: sahubbar
 ms.date: 12/09/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 530208ed82c95187fac2173aa763ef5507f56b0b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: bb77d1a09cb2692765c4c834ce617d13465d4d67
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018212"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157570"
 ---
 # <a name="create-a-new-device-template-version"></a>デバイス テンプレートの新しいバージョンを作成する
 

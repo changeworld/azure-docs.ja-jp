@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604333"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225295"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Security Center の機能の廃止 (2019 年 7 月)
 
@@ -41,7 +41,7 @@ ms.locfileid: "77604333"
 
 この記事では、廃止される各機能の詳細情報と、置き換えられる機能を実装するために実行できる手順を示します。
 
-## イベント ダッシュボード<a name="menu_events"></a>
+## <a name="events-dashboard"></a>イベント ダッシュボード<a name="menu_events"></a>
 
 Security Center は、Microsoft Monitoring Agent を使用して、さまざまなセキュリティ関連の構成とイベントをマシンから収集します。 ワークスペースにこれらのイベントを格納します。 [イベント ダッシュボード](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard)はこのデータを表示し、Log Analytics へのエントリ ポイントを提供します。
 
@@ -57,7 +57,7 @@ Security Center でカスタムの注目すべきイベントを作成済みの�
 
 ![保存された検索のワークスペース][3]
 
-## メニュー項目の検索<a name="menu_search"></a>
+## <a name="search-menu-entry"></a>メニュー項目の検索<a name="menu_search"></a>
 
 Azure Security Center では現在、Azure Monitor ログ検索を使用してセキュリティ データが取得され、分析されます。 この画面は、Log Analytics の検索ページへの窓口の役割を担い、これによってユーザーは選択したワークスペース上で検索クエリを実行できます。 詳細については、[Azure Security Center の検索](https://docs.microsoft.com/azure/security-center/security-center-search)に関するページを参照してください。 この検索ウィンドウは廃止されました。
 
@@ -69,7 +69,7 @@ Azure Log Analytics のネイティブ機能を使用して、ワークスペー
 
 ![Log Analytics の [ログ] のページ][5]
 
-## クラシック ID とアクセス (プレビュー)<a name="menu_classicidentity"></a>
+## <a name="classic-identity--access-preview"></a>クラシック ID とアクセス (プレビュー)<a name="menu_classicidentity"></a>
 
 Security Center の [クラシック ID とアクセス] エクスペリエンスでは現在、ID とアクセスに関する情報のダッシュボードを Log Analytics に表示しています。 このダッシュボードを表示するには:
 
@@ -95,7 +95,7 @@ Log Analytics の **[ID およびアクセス]** ダッシュボードのすべ�
 
 ![ID ページ - 従来のエクスペリエンスの廃止][9]
 
-## セキュリティ イベント マップ<a name="menu_securityeventsmap"></a>
+## <a name="security-events-map"></a>セキュリティ イベント マップ<a name="menu_securityeventsmap"></a>
 
 Security Center は、セキュリティの脅威を識別するために役立つ[セキュリティ アラート マップ](https://docs.microsoft.com/azure/security-center/security-center-threat-intel)を提供します。 該当のマップの **[セキュリティ イベント マップに移動]** ボタンから、選択したワークスペース上に未加工のセキュリティ イベントを表示できるダッシュボードが開きます。
 
@@ -117,7 +117,7 @@ Security Center は、セキュリティの脅威を識別するために役立�
 
 Security Center に組み込まれた次のアラート マップ機能を使用することをお勧めします: **セキュリティ アラート マップ (プレビュー)** 。 この機能は最適化されたエクスペリエンスを提供し、すべてのサブスクリプションと関連するワークスペースにわたって機能します。 提供されるのは環境全体の概略ビューであり、1 つのワークスペースに焦点を当てるものではありません。
 
-## カスタムのアラート ルール (プレビュー)<a name="menu_customalerts"></a>
+## <a name="custom-alert-rules-preview"></a>カスタムのアラート ルール (プレビュー)<a name="menu_customalerts"></a>
 
 基盤となるインフラストラクチャが廃止されることから、2019 年 6 月 30 日をもって[カスタム アラートは廃止されました](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)。 廃止日以降は、カスタム セキュリティ アラートは生成されません。
 [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) を有効にして、そこでカスタム アラートを再作成することをお勧めします。 Azure Monitor のログ アラートを使用してアラートを作成することもできます。
@@ -134,7 +134,7 @@ Azure Sentinel の使用に関心がない場合は、Azure Monitor のログ �
 
 カスタム アラートの廃止について詳しくは、「[Azure Security Center のカスタム アラート ルール (プレビュー)](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)」を参照してください。
 
-## セキュリティ アラートの調査<a name="menu_investigate"></a>
+## <a name="security-alerts-investigation"></a>セキュリティ アラートの調査<a name="menu_investigate"></a>
 
 Security Center の[調査機能](https://docs.microsoft.com/azure/security-center/security-center-investigation)は、潜在的なセキュリティ インシデントのトリアージに役立ちます。 この機能を使用すると、インシデントのスコープを理解し、その根本原因を突き止めることができます。 この機能は、[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) において強化されたエクスペリエンスに置き換えられているため、Security Center からは削除されました。
 
@@ -150,7 +150,7 @@ Security Center の[調査機能](https://docs.microsoft.com/azure/security-cent
 
 豊富な調査エクスペリエンスを提供する [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) に移行することをお勧めします。 Azure Sentinel では、組織のデータ ソースにわたってセキュリティ上の脅威を検出するために、強力な検索とクエリのツールを提供しています。
 
-## セキュリティ ソリューションのサブセット<a name="menu_solutions"></a>
+## <a name="subset-of-security-solutions"></a>セキュリティ ソリューションのサブセット<a name="menu_solutions"></a>
 
 Security Center を使用すると、[Azure で統合されたセキュリティ ソリューション](https://docs.microsoft.com/azure/security-center/security-center-partner-integration)を有効にすることができます。 Security Center の次のパートナー ソリューションは廃止されました。 これらのソリューションは、[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) で多数の追加データ ソースと共に有効になっています。
 
@@ -165,7 +165,7 @@ Security Center を使用すると、[Azure で統合されたセキュリティ
 
 ![Security Center ソリューション][16]
 
-## セキュリティ ポリシーに対するセキュリティ構成の編集<a name="menu_securityconfigurations"></a>
+## <a name="edit-security-configurations-for-security-policies"></a>セキュリティ ポリシーに対するセキュリティ構成の編集<a name="menu_securityconfigurations"></a>
 
 Azure Security Center は、OS を強化するための [150 を超える推奨の規則](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)のセットを適用して、セキュリティ構成を監視します。 これらの規則は、ファイアウォール、監査、パスワード ポリシーなどに関するものです。 脆弱な構成を持つマシンが見つかった場合、Security Center はセキュリティ推奨事項を生成します。 お客様は、[[セキュリティ構成の編集] 画面](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config)を利用して、Security Center にある既定の OS セキュリティ構成をカスタマイズできます。
 
@@ -177,7 +177,7 @@ Azure Security Center は、OS を強化するための [150 を超える推奨�
 
 Security Center で [Guest 構成エージェント](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)のサポートを有効にする予定です。 このようなアップデートにより、より多くのオペレーティング システムのサポート、ゲスト構成用の Azure ゲスト内ポリシーの統合など、はるかに豊富な機能セットが実現します。 これらの変更が有効になった後は、大きな規模で構成を制御し、それらを新しいリソースに自動的に適用することも可能になります。
 
-## Log Analytics ワークスペースの [セキュリティおよび監査] ダッシュボード<a name="menu_securityomsdashboard"></a>
+## <a name="security-and-audit-dashboard-for-log-analytics-workspaces"></a>Log Analytics ワークスペースの [セキュリティおよび監査] ダッシュボード<a name="menu_securityomsdashboard"></a>
 
 セキュリティおよび監査ダッシュボードは、最初は OMS ポータルで使用されていました。 Log Analytics では、ダッシュボードが、注目すべきセキュリティ イベントと脅威、脅威インテリジェンス マップ、およびワークスペースに保存されたセキュリティ イベントの ID とアクセスの評価の概要を、ワークスペースごとに提供します。 ダッシュボードを削除しました。 ダッシュボードの UI で既にお勧めしているように、Azure Security Center に移行することをお勧めします。
 

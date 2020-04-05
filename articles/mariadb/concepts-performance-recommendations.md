@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 57d801177233c18db6d41d52add0e5ad862b3d87
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 838a4123bd5007f987f27674862409445967a2d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772545"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528100"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB のパフォーマンスの推奨事項
 
@@ -47,6 +47,6 @@ Azure portal の MariaDB サーバーに関するページで、メニュー バ
 
 "*インデックスの作成*" 推奨事項は、ワークロード内で特に頻繁に実行されるクエリまたは時間のかかるクエリを高速化するために、新しいインデックスを提案します。 この推奨事項の種類では、[クエリ ストア](concepts-query-store.md)を有効にする必要があります。 クエリ ストアは、クエリ情報を収集し、クエリの実行時間や頻度に関する詳細な統計情報を提供します。この情報は、分析で推奨事項を作成するために使用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Database for MariaDB での[監視およびチューニング](concepts-monitoring.md)についてさらに学習する。

@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 1bff46c8584934ab8bcffce74763edc8363533d6
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988245"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
@@ -129,7 +129,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 > [!NOTE]
 > include/exclude フラグが一緒に使用されている場合は、include パターンに一致するファイルだけが検索されますが、exclude パターンに一致するファイルは常に無視されます。
 
-## <a name="options"></a>オプション
+## <a name="options"></a>Options
 
 **--block-size-mb** float         Azure Storage にアップロードする場合、または Azure Storage からダウンロードする場合に、このブロック サイズ (MiB で指定) を使用します。 既定値は、ファイル サイズに基づいて自動的に計算されます。 小数を使用できます (例:0.25)。
 
@@ -162,6 +162,6 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 |--cap-mbps uint32|転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
 |--output-type string|コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。|
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [azcopy](storage-ref-azcopy.md)

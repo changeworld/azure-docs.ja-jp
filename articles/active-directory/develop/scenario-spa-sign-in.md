@@ -17,10 +17,10 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: eb75aa53051e7e3c424ffe131cda61324fe86b1a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159966"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>シングルページ アプリケーション：サインインとサインアウト
@@ -47,7 +47,7 @@ ms.locfileid: "77159966"
 
 ## <a name="sign-in-with-a-pop-up-window"></a>ポップアップ ウィンドウを使用してサインインする
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const loginRequest = {
@@ -63,7 +63,7 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 });
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 MSAL Angular ラッパーを使用すると、ルート定義に `MsalGuard` を追加するだけで、ご利用のアプリケーション内の特定のルートを保護することができます。 このガードにより、そのルートにアクセスすると、サインインのためのメソッドが呼び出されます。
 
@@ -93,7 +93,7 @@ MSAL Angular ラッパーを使用すると、ルート定義に `MsalGuard` を
 
 ## <a name="sign-in-with-redirect"></a>リダイレクトを使用してサインインする
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 リダイレクトメソッドは、メインアプリから離れるため、Promise　を返しません。 返されたトークンを処理し、これにアクセスするには、リダイレクト メソッドを呼び出す前に成功とエラーのコールバックを登録する必要があります。
 
@@ -111,7 +111,7 @@ const loginRequest = {
 userAgentApplication.loginRedirect(loginRequest);
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 このコードは、ポップアップウィンドウを使用したサインインに関するセクションで説明したものと同じです。 既定のフローはリダイレクトです。
 
@@ -126,7 +126,7 @@ MSAL ライブラリには、`logout` メソッドが用意されています。
 
 `postLogoutRedirectUri` を設定することで、サインアウト後に、リダイレクトされる URI を構成することができます。 この URI は、アプリケーションの登録のログアウト URI として登録する必要もあります。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const config = {
@@ -143,7 +143,7 @@ userAgentApplication.logout();
 
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 ```javascript
 //In app.module.ts

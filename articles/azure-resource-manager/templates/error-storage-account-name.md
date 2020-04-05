@@ -4,10 +4,10 @@ description: ストレージ アカウント名を指定する際に発生する
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.openlocfilehash: 5b2706d8540ea38ef08bf7ca0f804e6811a93085
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153974"
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>ストレージ アカウント名のエラーの解決

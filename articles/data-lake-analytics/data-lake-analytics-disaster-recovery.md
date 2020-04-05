@@ -9,10 +9,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: f9b22e6b806f76189134ec63c83d48f48bf95587
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889761"
 ---
 # <a name="disaster-recovery-guidance-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics のディザスター リカバリーのガイダンス
@@ -43,6 +43,6 @@ Azure Data Lake Analytics を使用する場合、独自のディザスター �
 
 障害発生時には、入力パスがセカンダリ エンドポイントを指すように、自分のスクリプトを更新する必要があります。 次に、ユーザーはセカンダリ リージョンの ADLA アカウントにジョブを送信します。 ジョブの出力がセカンダリ リージョンの ADLA および ADLS アカウントに書き込まれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Data Lake Storage Gen1 内のデータに対するディザスター リカバリーのガイダンス](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)

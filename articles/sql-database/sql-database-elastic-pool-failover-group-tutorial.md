@@ -12,11 +12,11 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
 ms.openlocfilehash: c57f9eed2147504dd7b3313d58468fb76ab40caa
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552561"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232547"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>チュートリアル:フェールオーバー グループに Azure SQL Database エラスティック プールを追加する
 
@@ -43,7 +43,7 @@ Azure SQL Database エラスティック プールのフェールオーバー �
 この手順では、エラスティック プールを作成し、そのプールに 1 つのデータベースを追加します。 
 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用してエラスティック プールを作成します。 
 
@@ -71,7 +71,7 @@ Azure portal を使用してエラスティック プールを作成します。
 1. **[確認と作成]** を選択して、エラスティック プールの設定を確認し、 **[作成]** を選択してエラスティック プールを作成します。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell を使用して、エラスティック プールとセカンダリ サーバーを作成します。 
 
    ```powershell-interactive
@@ -118,7 +118,7 @@ PowerShell を使用して、エラスティック プールとセカンダリ �
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Azure SQL Database 用のエラスティック データベース プールを作成します。| 
 | [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | データベースのプロパティを設定するか、既存のデータベースをエラスティック プールに移動します。 | 
@@ -129,7 +129,7 @@ PowerShell を使用して、エラスティック プールとセカンダリ �
 この手順では、既存の Azure SQL サーバーと別のリージョンの新しい Azure SQL サーバーの間に[フェールオーバー グループ](sql-database-auto-failover-group.md)を作成します。 その後、そのフェールオーバー グループにエラスティック プールを追加します。 
 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、フェールオーバー グループを作成します。 
 
@@ -163,7 +163,7 @@ Azure portal を使用して、フェールオーバー グループを作成し
 1. **[選択]** を選択してエラスティック プール設定をフェールオーバー グループに適用した後、 **[作成]** を選択してフェールオーバー グループを作成します。 フェールオーバー グループにエラスティック プールを追加すると、geo レプリケーション プロセスが自動的に開始されます。
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用して、フェールオーバー グループを作成します。 
 
@@ -236,7 +236,7 @@ PowerShell を使用して、フェールオーバー グループを作成し�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 単一データベースとエラスティック プールをホストする SQL Database サーバーを作成します。 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 論理サーバー用のファイアウォール規則を作成します。 | 
@@ -252,7 +252,7 @@ PowerShell を使用して、フェールオーバー グループを作成し�
 この手順では、フェールオーバー グループをセカンダリ サーバーにフェールオーバーしてから、Azure portal を使用してフェールバックします。 
 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、フェールオーバー グループのフェールオーバーをテストします。 
 
@@ -276,7 +276,7 @@ Azure portal を使用して、フェールオーバー グループのフェー
 1. フェールオーバー グループを元の設定に戻すには、 **[フェールオーバー]** をもう一度選択します。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用してフェールオーバー グループのフェールオーバーをテストします。 
 
@@ -344,7 +344,7 @@ PowerShell を使用してフェールオーバー グループのフェール�
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Azure SQL Database のフェールオーバー グループを取得または一覧表示します。 |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Databese のフェールオーバー グループのフェールオーバーを実行します。 |
@@ -357,7 +357,7 @@ PowerShell を使用してフェールオーバー グループのフェール�
 リソース グループを削除して、リソースをクリーンアップします。 
 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 
 1. [Azure Portal](https://portal.azure.com) で、リソース グループに移動します。
@@ -365,7 +365,7 @@ PowerShell を使用してフェールオーバー グループのフェール�
 1. リソース グループの名前 (`myResourceGroup`) をテキストボックスに入力し、 **[削除]** を選択してリソース グループを削除します。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用してリソースをクリーンアップします。 
 
@@ -381,7 +381,7 @@ PowerShell を使用してリソースをクリーンアップします。
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループを削除します | 
 
@@ -392,13 +392,13 @@ PowerShell を使用してリソースをクリーンアップします。
 
 ## <a name="full-script"></a>完全なスクリプト
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-elastic-pool-to-failover-group-az-ps.ps1 "Add elastic pool to a failover group")]
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 単一データベースとエラスティック プールをホストする SQL Database サーバーを作成します。 |
@@ -414,7 +414,7 @@ PowerShell を使用してリソースをクリーンアップします。
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループを削除します | 
 
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 Azure portal に使用できるスクリプトはありません。
 
 ---

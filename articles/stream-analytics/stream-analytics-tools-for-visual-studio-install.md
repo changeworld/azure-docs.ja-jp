@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.openlocfilehash: fa3990d2239da71fb27f4c9a06699f758fcfe7a0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75354366"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Azure Stream Analytics ツールのインストール
@@ -26,7 +26,7 @@ Visual Studio Enterprise (Ultimate/Premium)、Professional、Community の各エ
 
 Visual Studio 2019 をお勧めします。
 
-### Visual Studio 2017 および 2019 のインストール<a name="recommended-visual-studio-2019-and-2017"></a>
+### <a name="install-for-visual-studio-2019-and-2017"></a>Visual Studio 2017 および 2019 のインストール<a name="recommended-visual-studio-2019-and-2017"></a>
 
 Azure Data Lake and Stream Analytics Tools ツールは、 **[Azure の開発]** および **[データの保存と処理]** ワークロードの一部です。 インストール時に、これら 2 つのワークロードのいずれかを有効にします。 Visual Studio が既にインストールされている場合は、 **[ツール]**  >  **[ツールと機能の取得]** を選択して、ワークロードを追加します。
 
@@ -50,7 +50,7 @@ Azure Data Lake and Stream Analytics Tools ツールは、 **[Azure の開発]**
 
 ![Visual Studio の拡張機能と更新プログラム](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-vs2019-extensions-updates.png)
 
-### Visual Studio 2015 および 2013 のインストール<a name="visual-studio-2015-2013"></a>
+### <a name="install-for-visual-studio-2015-and-2013"></a>Visual Studio 2015 および 2013 のインストール<a name="visual-studio-2015-2013"></a>
 
 Visual Studio Enterprise (Ultimate/Premium)、Professional、Community の各エディションでツールがサポートされています。 Express エディションではサポートされていません。
 
@@ -58,7 +58,7 @@ Visual Studio Enterprise (Ultimate/Premium)、Professional、Community の各エ
 * [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) を使用して、Microsoft Azure SDK for .NET バージョン 2.7.1 以上をインストールします。
 * [Microsoft Azure Data Lake and Stream Analytics Tools for Visual Studio](https://www.microsoft.com/en-us/download/details.aspx?id=49504) をインストールします。
 
-## 更新<a name="visual-studio-2019-and-2017"></a><a name="visual-studio-2015-and-2013"></a>
+## <a name="update"></a>更新<a name="visual-studio-2019-and-2017"></a><a name="visual-studio-2015-and-2013"></a>
 
 Visual Studio 2019 および Visual Studio 2017 では、新しいバージョンの通知が Visual Studio の通知に表示されます。
 

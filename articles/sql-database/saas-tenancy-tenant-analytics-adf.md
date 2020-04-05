@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 4791cd3a6b6f72c5d9ee4ca828d66b0d361f356c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73816779"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Azure SQL Database、SQL Data Warehouse、Data Factory、Power BI による SaaS 分析を調べる
@@ -194,7 +194,7 @@ SQL Data Warehouse は、テナント データに対して集計を実行する
 
     ![sign-in-to-power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として「*developer*」、パスワードとして「*P\@ssword1*」を入力します。 **[接続]** をクリックします。  
+5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として「*developer*」、パスワードとして「*P\@ssword1*」を入力します。 **[Connect]** をクリックします。  
 
     ![database-sign-in](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
@@ -246,7 +246,7 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 Wingtip Tickets の例では、チケット販売の傾向が予測可能なパターンに従うことを発見しました。 この分析情報は、成績の悪い会場のチケット販売を増やすのに役立つ可能性があります。 おそらく、機械学習技法を導入してイベントのチケット販売を予測する機会があります。 価格変更の影響をモデル化して、割引を行った場合の影響を予測できます。 Power BI Embedded をイベント管理アプリケーションに統合して、チケットの総収益や販売数の少ないイベントの収益への割引の影響など、予測される販売を視覚化できる可能性があります。 Power BI Embedded を使うと、チケット価格に対する割引の実際の適用を、視覚化エクスペリエンスに統合することさえできます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

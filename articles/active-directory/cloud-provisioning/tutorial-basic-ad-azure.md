@@ -11,10 +11,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 356a05d4d92f17ceb66ff0208153ec3eac736757
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74795366"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>チュートリアル:Active Directory の基本的な環境
@@ -42,7 +42,7 @@ ms.locfileid: "74795366"
 > このチュートリアルで使用される PowerShell スクリプトのコピーは、[こちら](https://github.com/billmath/tutorial-phs)の GitHub で入手できます。
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
-ハイブリッド ID 環境を稼働させるには、まず、オンプレミスの Active Directory サーバーとして使用される仮想マシンを作成する必要があります。  以下の手順を実行します。
+ハイブリッド ID 環境を稼働させるには、まず、オンプレミスの Active Directory サーバーとして使用される仮想マシンを作成する必要があります。  次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -83,11 +83,11 @@ ms.locfileid: "74795366"
 6. ライセンス キーを入力し、 **[次へ]** をクリックします。
 7. [ライセンス条項に同意します] をオンにし、 **[次へ]** をクリックします。
 8. **[カスタム: Windows のみをインストールする (詳細設定)]** を選択します。
-9. **[次へ]** をクリックします
+9. **[次へ]** をクリックします。
 10. インストールが完了したら、仮想マシンを再起動してサインインし、Windows の更新プログラムを実行して VM を最新の状態にします。  最新の更新プログラムをインストールします。
 
 ## <a name="install-active-directory-prerequisites"></a>Active Directory の前提条件をインストールする
-仮想マシンを稼働させたところで、Active Directory のインストール前にいくつかの作業を行う必要があります。  言い換えると、仮想マシンの名前を変更し、静的 IP アドレスと DNS 情報を設定して、リモート サーバー管理ツールをインストールする必要があります。   以下の手順を実行します。
+仮想マシンを稼働させたところで、Active Directory のインストール前にいくつかの作業を行う必要があります。  言い換えると、仮想マシンの名前を変更し、静的 IP アドレスと DNS 情報を設定して、リモート サーバー管理ツールをインストールする必要があります。   次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -123,7 +123,7 @@ ms.locfileid: "74795366"
     ```
 
 ## <a name="create-a-windows-server-ad-environment"></a>Windows Server AD 環境を作成する
-VM を作成して、名前の変更と静的 IP アドレスの設定を行いました。これで、Active Directory Domain Services のインストールと構成に進むことができます。  以下の手順を実行します。
+VM を作成して、名前の変更と静的 IP アドレスの設定を行いました。これで、Active Directory Domain Services のインストールと構成に進むことができます。  次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -154,7 +154,7 @@ VM を作成して、名前の変更と静的 IP アドレスの設定を行い�
     ```
 
 ## <a name="create-a-windows-server-ad-user"></a>Windows Server AD ユーザーを作成する
-Active Directory 環境を作成したところで、テスト アカウントが必要になります。  このアカウントは、オンプレミスの AD 環境で作成されて Azure AD に同期されます。  以下の手順を実行します。
+Active Directory 環境を作成したところで、テスト アカウントが必要になります。  このアカウントは、オンプレミスの AD 環境で作成されて Azure AD に同期されます。  次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -199,7 +199,7 @@ Active Directory 環境を作成したところで、テスト アカウント�
 1. [Azure portal](https://portal.azure.com) に移動し、Azure サブスクリプションがあるアカウントを使ってサインインします。
 2. **プラス (+) アイコン**を選択し、**Azure Active Directory** を検索します。
 3. 検索結果で **[Azure Active Directory]** を選択します。
-4. **作成** を選択します。</br>
+4. **［作成］** を選択します</br>
 ![作成](media/tutorial-single-forest/create1.png)</br>
 5. **組織の名前**と**初期ドメイン名**を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
 6. これが完了したら、**こちら**のリンクをクリックし、ディレクトリを管理します。
@@ -270,11 +270,11 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 6. ライセンス キーを入力し、 **[次へ]** をクリックします。
 7. [ライセンス条項に同意します] をオンにし、 **[次へ]** をクリックします。
 8. **[カスタム: Windows のみをインストールする (詳細設定)]** を選択します。
-9. **[次へ]** をクリックします
+9. **[次へ]** をクリックします。
 10. インストールが完了したら、仮想マシンを再起動してサインインし、Windows の更新プログラムを実行して VM を最新の状態にします。  最新の更新プログラムをインストールします。
 
 ### <a name="install-active-directory-prerequisites"></a>Active Directory の前提条件をインストールする
-仮想マシンを稼働させたところで、Active Directory のインストール前にいくつかの作業を行う必要があります。  言い換えると、仮想マシンの名前を変更し、静的 IP アドレスと DNS 情報を設定して、リモート サーバー管理ツールをインストールする必要があります。   以下の手順を実行します。
+仮想マシンを稼働させたところで、Active Directory のインストール前にいくつかの作業を行う必要があります。  言い換えると、仮想マシンの名前を変更し、静的 IP アドレスと DNS 情報を設定して、リモート サーバー管理ツールをインストールする必要があります。   次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -324,7 +324,7 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
     Restart-Computer
     ```
 ### <a name="create-a-windows-server-ad-environment"></a>Windows Server AD 環境を作成する
-VM を作成して、名前の変更と静的 IP アドレスの設定を行いました。これで、Active Directory Domain Services のインストールと構成に進むことができます。  以下の手順を実行します。
+VM を作成して、名前の変更と静的 IP アドレスの設定を行いました。これで、Active Directory Domain Services のインストールと構成に進むことができます。  次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -370,7 +370,7 @@ VM を作成して、名前の変更と静的 IP アドレスの設定を行い�
     ```
 
 ### <a name="create-a-windows-server-ad-user"></a>Windows Server AD ユーザーを作成する
-Active Directory 環境を作成したところで、テスト アカウントが必要になります。  このアカウントは、オンプレミスの AD 環境で作成されて Azure AD に同期されます。  以下の手順を実行します。
+Active Directory 環境を作成したところで、テスト アカウントが必要になります。  このアカウントは、オンプレミスの AD 環境で作成されて Azure AD に同期されます。  次の操作を行います。
 
 1. PowerShell ISE を管理者として起動します。
 2. 次のスクリプトを実行します。
@@ -411,7 +411,7 @@ Active Directory 環境を作成したところで、テスト アカウント�
 ## <a name="conclusion"></a>まとめ
 これで、既存のチュートリアルに使用できる環境が用意され、クラウド プロビジョニングによって提供される追加機能をテストできるようになりました。
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 - [プロビジョニングとは](what-is-provisioning.md)
 - [Azure AD Connect クラウド プロビジョニングとは](what-is-cloud-provisioning.md)

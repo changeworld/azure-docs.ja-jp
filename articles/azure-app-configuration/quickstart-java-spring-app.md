@@ -10,12 +10,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 2521adfda731c06c879f5cfeb6283567228bf664
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c156d5f1242674adc53a2a813e9b2c140221ecfb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919364"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245312"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して Java Spring アプリを作成する
 
@@ -31,13 +31,15 @@ ms.locfileid: "77919364"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-1. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
+6. **[構成エクスプローラー]**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
 
     | Key | Value |
     |---|---|
     | /application/config.message | こんにちは |
 
     **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
+
+7. **[適用]** を選択します。
 
 ## <a name="create-a-spring-boot-app"></a>Spring Boot アプリを作成する
 
@@ -146,7 +148,7 @@ ms.locfileid: "77919364"
 
 1. **APP_CONFIGURATION_CONNECTION_STRING** という名前の環境変数に、App Configuration ストアへのアクセス キーを設定します。 コマンド ラインで次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
 
-    ```CLI
+    ```cmd
         setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
     ```
 
@@ -158,7 +160,7 @@ ms.locfileid: "77919364"
 
     macOS または Linux を使用する場合は、次のコマンドを実行します。
 
-    ```console
+    ```cmd
         export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
@@ -166,14 +168,14 @@ ms.locfileid: "77919364"
 
 1. Spring Boot アプリケーションを Maven でビルドし、実行します。次に例を示します。
 
-    ```CLI
+    ```cmd
     mvn clean package
     mvn spring-boot:run
     ```
 
 2. アプリケーションが実行されたら、*curl* を使用してアプリケーションをテストできます。次に例を示します。
 
-      ```CLI
+      ```cmd
       curl -X GET http://localhost:8080/
       ```
 
@@ -185,7 +187,7 @@ ms.locfileid: "77919364"
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、新しい App Configuration ストアを作成して、Java Spring アプリで使用しました。 詳細については、「[Azure の Spring](https://docs.microsoft.com/java/azure/spring-framework/)」を参照してください。 App Configuration へのアクセスを効率化する Azure マネージド ID を使用する方法については、次のチュートリアルに進んでください。
+このクイックスタートでは、新しい App Configuration ストアを作成して、Java Spring アプリで使用しました。 詳細については、「[Azure の Spring](https://docs.microsoft.com/java/azure/spring-framework/)」を参照してください。 Java Spring アプリで構成設定を動的に更新できるようにする方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [マネージド ID の統合](./howto-integrate-azure-managed-service-identity.md)
+> [動的な構成を有効にする](./enable-dynamic-configuration-java-spring-app.md)

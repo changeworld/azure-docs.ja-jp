@@ -10,11 +10,11 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595775"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218629"
 ---
 # <a name="how-to-manage-settings"></a>設定を管理する方法
 
@@ -101,6 +101,6 @@ Custom Translator の設定ページでは、新しいワークスペースを�
 
     ![共有アクセス許可の設定](media/how-to/sharing-permission-settings.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Microsoft Translator Hub](https://hub.microsofttranslator.com) から[ワークスペースとプロジェクトを移行する方法](how-to-migrate.md)について説明します。
+- [Microsoft Translator Hub](how-to-migrate.md) から[ワークスペースとプロジェクトを移行する方法](https://hub.microsofttranslator.com)について説明します。

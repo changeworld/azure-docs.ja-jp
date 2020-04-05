@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
 ms.openlocfilehash: c6d33158b581bf4394a0d1bac2b277830328e110
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75495932"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight で Apache HBase と Apache Phoenix に対するバックアップとレプリケーションを設定する
@@ -126,7 +126,7 @@ CopyTable ユーティリティでは、コピーする行の時間範囲を指�
 CopyTable は、コピー先テーブルにコピーされる、コピー元テーブルの内容全体をスキャンします。 これにより、CopyTable の実行中は HBase クラスターのパフォーマンスが低下する可能性があります。
 
 > [!NOTE]  
-> テーブル間でのデータのコピーを自動化するには、GitHub の [Azure HBase Utils](https://github.com/Azure/hbase-utils/tree/master/replication) リポジトリにある `hdi_copy_table.sh` スクリプトを参照してください。
+> テーブル間でのデータのコピーを自動化するには、GitHub の `hdi_copy_table.sh`Azure HBase Utils[ リポジトリにある ](https://github.com/Azure/hbase-utils/tree/master/replication) スクリプトを参照してください。
 
 ### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Apache ZooKeeper クォーラム リストを手動で収集する
 

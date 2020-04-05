@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 86e1a9cce1864ce259fe07b6949be2e32be242a8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773702"
 ---
 Exchange ピアリングでは、次の変更操作がサポートされています
 1. Exchange ピアリング接続を追加する
 1. Exchange ピアリング接続を削除する
-1. アクティブな接続の IPv4/IPv6 セッションを追加します。
-1. アクティブな接続の IPv4/IPv6 セッションを削除します。
+1. アクティブな接続で IPv4/IPv6 セッションを追加します。
+1. アクティブな接続で IPv4/IPv6 セッションを削除します。
 
 
 ### <a name="add-exchange-peering-connections"></a>Exchange ピアリング接続を追加する

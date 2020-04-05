@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 3264ec5a83277e6bb4befad46cd1337175e911c5
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74383472"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Text Analytics コンテナーを Azure Kubernetes Service にデプロイする
@@ -37,19 +37,19 @@ Azure Cognitive Services の [Text Analytics](https://docs.microsoft.com/azure/c
 
 [!INCLUDE [Create a Text Analytics container on Azure Kubernetes Service (AKS)](../../containers/includes/create-aks-resource.md)]
 
-#### <a name="key-phrase-extractiontabkeyphrase"></a>[キー フレーズ抽出](#tab/keyphrase)
+#### <a name="key-phrase-extraction"></a>[キー フレーズ抽出](#tab/keyphrase)
 
 [!INCLUDE [Key Phrase Extraction Kubernetes config and deploy steps](../includes/key-phrase-extraction-kubernetes-config-deploy.md)]
 
 [!INCLUDE [Verify the Key Phrase Extraction container instance](../includes/verify-key-phrase-extraction-container.md)]
 
-#### <a name="language-detectiontablanguage"></a>[言語検出](#tab/language)
+#### <a name="language-detection"></a>[言語検出](#tab/language)
 
 [!INCLUDE [Language Detection Kubernetes config and deploy steps](../includes/language-detection-kubernetes-config-deploy.md)]
 
 [!INCLUDE [Verify the Language Detection container instance](../includes/verify-language-detection-container.md)]
 
-#### <a name="sentiment-analysistabsentiment"></a>[感情分析](#tab/sentiment)
+#### <a name="sentiment-analysis"></a>[感情分析](#tab/sentiment)
 
 [!INCLUDE [Sentiment Analysis Kubernetes config and deploy steps](../includes/sentiment-analysis-kubernetes-config-deploy.md)]
 
@@ -57,7 +57,7 @@ Azure Cognitive Services の [Text Analytics](https://docs.microsoft.com/azure/c
 
 ***
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * さらに [Cognitive Services コンテナー](../../cognitive-services-container-support.md)を使用する
 * [Text Analytics 接続済みサービス](../vs-text-connected-service.md)を使用する

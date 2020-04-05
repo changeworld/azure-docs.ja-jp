@@ -6,17 +6,17 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 3c6059e131eadf1144fd189c47691b2352176745
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75446436"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>キーと値のペアおよびテーブルについてフォームを分析する
 
 次に、新しくトレーニングしたモデルを使用してドキュメントを分析し、そこからキーと値のペアおよびテーブルを抽出します。 新しい Python スクリプトから、次のコードを実行して **[Analyze Form](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API を呼び出します。 スクリプトを実行する前に、次の変更を行います。
 
-1. `<file path>` をお使いのフォームのファイル パス (例: C:\temp\file.pdf) に置き換えます。 リモート ファイルの URL を指定することもできます。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Test** フォルダーにあるファイルを使用できます。
+1. `<file path>` をお使いのフォームのファイル パス (例: C:\temp\file.pdf) に置き換えます。 リモート ファイルの URL を指定することもできます。 このクイックスタートでは、**サンプル データ セット**の [Test](https://go.microsoft.com/fwlink/?linkid=2090451) フォルダーにあるファイルを使用できます。
 1. `<model_id>` を、前のセクションで受信したモデル ID で置き換えます。
 1. `<endpoint>` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
 1. `<file type>` を、ファイルの種類で置き換えます。 サポートされている種類: `application/pdf`、`image/jpeg`、`image/png`、`image/tiff`。
@@ -62,7 +62,7 @@ ms.locfileid: "75446436"
 1. コマンド プロンプト ウィンドウを開きます。
 1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python form-recognizer-analyze.py` 」のように入力します。
 
-**Analyze Form** API を呼び出すと、**Operation-Location** ヘッダーを含んだ `201 (Success)` 応答が返されます。 このヘッダーの値は、分析操作の結果を追跡するために使用する ID です。 前出のスクリプトからは、このヘッダーの値がコンソールに出力されます。
+**Analyze Form** API を呼び出すと、`201 (Success)`Operation-Location**ヘッダーを含んだ** 応答が返されます。 このヘッダーの値は、分析操作の結果を追跡するために使用する ID です。 前出のスクリプトからは、このヘッダーの値がコンソールに出力されます。
 
 ## <a name="get-the-analyze-results"></a>分析結果を取得する
 

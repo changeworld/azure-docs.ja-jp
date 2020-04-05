@@ -4,19 +4,17 @@ description: SQL Database に接続するアプリケーションで使用でき
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 26aa9948a44727ff4c8092eb5131b1c054bf5442
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 741906bbe9de68459b2e4a704a243fde4771b3a2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356553"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067326"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database アプリケーションの開発の概要
 
@@ -54,8 +52,8 @@ Azure SQL データベースの計画メンテナンス イベントに備える
 
 ## <a name="network-considerations"></a>ネットワークに関する考慮事項
 
-- クライアント プログラムをホストするコンピューターのファイアウォールで、ポート 1433 での発信 TCP が許可されていることを確認します。  詳細情報: [Azure SQL Database ファイアウォールの構成](sql-database-configure-firewall-settings.md)。
-- クライアントが Azure 仮想マシン (VM) で実行されているときに、クライアント プログラムが SQL Database に接続する場合、VM で特定のポートの範囲を開く必要があります。 詳細情報: 「[ADO.NET 4.5 用の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
+- クライアント プログラムをホストするコンピューターのファイアウォールで、ポート 1433 での発信 TCP が許可されていることを確認します。  詳細: [Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings.md)。
+- クライアントが Azure 仮想マシン (VM) で実行されているときに、クライアント プログラムが SQL Database に接続する場合、VM で特定のポートの範囲を開く必要があります。 詳細: [ADO.NET 4.5 および SQL Database における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)。
 - Azure SQL Database へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。 1433 以外のポートが重要になります。 詳細については、「[Azure SQL Database connectivity architecture](sql-database-connectivity-architecture.md)」 (Azure SQL データベース接続アーキテクチャ) および「[ADO.NET 4.5 用の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
 - マネージド インスタンス向けのネットワーク構成については、[マネージド インスタンス向けのネットワーク構成](sql-database-howto-managed-instance.md#network-configuration)に関する記事を参照してください。
 

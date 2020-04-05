@@ -9,10 +9,10 @@ ms.author: magoedte
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3a19dc019d2566ddddb2c0ba7988b342d30a45d4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77192092"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>ハイブリッド マシンを大規模に Azure に接続する

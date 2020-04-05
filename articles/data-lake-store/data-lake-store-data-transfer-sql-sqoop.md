@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
 ms.openlocfilehash: cf3893706afcb4c4cc5b90dd3d2431ecedc71d0a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73839071"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop を使用して Data Lake Storage Gen1 と Azure SQL Database の間でデータをコピーする
@@ -134,7 +134,7 @@ HDInsight クラスターには、使用可能な Sqoop パッケージが既に
 
 Data Lake Storage Gen1 にデータをコピーする Sqoop ジョブのパフォーマンス調整の詳細については、[Sqoop のパフォーマンスに関するブログ記事](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Storage Blob から Data Lake Storage Gen1 へのデータのコピー](data-lake-store-copy-data-azure-storage-blob.md)
 * [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)

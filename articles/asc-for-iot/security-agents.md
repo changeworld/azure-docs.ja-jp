@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 1ed890d9d3602de24e6f85f6f0ae7f59849f3df2
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74664190"
 ---
 # <a name="get-started-with-azure-security-center-for-iot-device-security-agents"></a>Azure Security Center for IoT デバイス セキュリティ エージェントの使用を開始する
@@ -42,7 +42,7 @@ Azure Security Center for IoT セキュリティ エージェントは、デバ�
 1. IoT Hub を使用して、[アラート](concept-security-alerts.md)、[推奨事項](concept-recommendations.md)、および [Log Analytics を使用した詳細情報](how-to-security-data-access.md)を確認します。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ソリューションを構成する](quickstart-configure-your-solution.md)
 - [セキュリティ モジュールを作成する](quickstart-create-security-twin.md)

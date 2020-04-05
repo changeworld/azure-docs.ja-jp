@@ -9,10 +9,10 @@ ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75863844"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Power BI の Time Series Insights からのデータを視覚化する
@@ -35,7 +35,7 @@ Azure Time Series Insights は、クラウド内の時系列データを格納�
 * [Azure Time Series Insights プレビュー インスタンス](time-series-insights-update-how-to-manage.md)を備えるまたは作成する
 
 > [!IMPORTANT]
-> Power BI コネクタは、現在、**Warm ストア**用に構成された Time Series Insights プレビュー*従量課金制* 環境でサポートされています。
+> Power BI コネクタは、現在、*Warm ストア*用に構成された Time Series Insights プレビュー**従量課金制** 環境でサポートされています。
 
 ## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Time Series Insights から Power BI へのデータの接続
 

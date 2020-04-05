@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 67e1aeab4211249075b51bd0138d7875756a3483
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70883328"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault の顧客データ機能
@@ -50,7 +50,7 @@ Azure Key Vault のログ記録機能はオプション機能で、オンにす�
 
 個人データが含まれている Azure Key Vault 診断ログは、ユーザー プライバシー ポータルでエクスポート要求を行うことで取得できます。 この要求は、テナント管理者が実行する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Key Vault のログ記録](key-vault-logging.md)
 

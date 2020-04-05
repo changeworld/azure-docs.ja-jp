@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 4a947c01d63e3842ead91481e480024a54380144
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69015054"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Azure Portal を使用したオン デマンド コンテンツ配信の概要
@@ -51,7 +51,7 @@ ms.locfileid: "69015054"
 
 ストリーミング エンドポイントを開始するには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[設定]**  >  **[ストリーミング エンドポイント]** の順に選択します。 
 3. 既定のストリーミング エンドポイントを選択します。 **[DEFAULT STREAMING ENDPOINT DETAILS (既定のストリーミング エンドポイントの詳細)]** ウィンドウが表示されます。
 4. **[開始]** アイコンを選択します。
@@ -91,12 +91,12 @@ Azure Portal で Media Encoder Standard を使用してコンテンツをエン�
    リソースを管理しやすくするために、出力アセットの名前とジョブの名前を編集することができます。
    
    ![Encode assets](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. **作成** を選択します。
+5. **［作成］** を選択します
 
 ### <a name="monitor-encoding-job-progress"></a>エンコード ジョブの進行状況の監視
 エンコード ジョブの進行状況を監視するには、ページの上部にある **[設定]** を選択し、 **[ジョブ]** を選択します。
 
-![[ジョブ]](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+![ジョブ](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
 ## <a name="publish-content"></a>コンテンツを発行する
 コンテンツのストリーミングまたはダウンロードに使用できる URL をユーザーに提供するには、まず、ロケーターを作成してアセットを発行する必要があります。 アセット内のファイルには、ロケーターを通じてアクセスできます。 Azure Media Services では、次の 2 種類のロケーターがサポートされています。 
@@ -157,5 +157,5 @@ Azure Portal のコンテンツ プレーヤーでビデオをテストできま
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

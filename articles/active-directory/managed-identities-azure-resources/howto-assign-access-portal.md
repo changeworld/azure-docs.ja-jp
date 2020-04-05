@@ -16,10 +16,10 @@ ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e24c97909870c4d76b07ec837e5f624a509bd1f2
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74547287"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Azure portal を使用してリソースにマネージド ID アクセスを割り当てる
@@ -45,7 +45,7 @@ ms.locfileid: "74547287"
 
    ![アクセス制御 (IAM) のスクリーンショット](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure リソースのマネージド ID の概要](overview.md)
 - Azure 仮想マシン上でマネージド ID を有効にするには、「[Azure portal を使用して Azure VM で Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。

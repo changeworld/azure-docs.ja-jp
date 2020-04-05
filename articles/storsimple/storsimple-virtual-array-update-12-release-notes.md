@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: alkohli
 ms.openlocfilehash: ea7e4801dfaad533403c0f927a03735ae409cc52
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66420423"
 ---
 # <a name="storsimple-virtual-array-update-12-release-notes"></a>StorSimple Virtual Array Update 1.2 のリリース ノート
@@ -46,7 +46,7 @@ KB4502035 をダウンロードして、[ローカル Web UI を使用して更�
 
 次の表に、このリリースで修正された問題の概要を示します。
 
-| 番号 | 機能 | 問題 |
+| いいえ。 | 機能 | 問題 |
 | --- | --- | --- |
 | 1 |削除| 以前のバージョンのソフトウェアでは、ファイルが削除されてもデバイスの使用率に変化がない場合に問題が発生していました。 この問題は、今回のバージョンで修正されました。 削除されたファイルを処理するときの、コード パスの階層化での回復性が向上しました。|
 | 2 |例外処理| 以前のバージョンのソフトウェアでは、バックアップ、復元、クラウドからの読み込み、自動化された領域回復において潜在的にエラーを引き起こす可能性がある、システム リブートに伴う問題が発生していました。 今回のリリースには、スタートアップ パス内での例外の処理方法に関する変更が含まれています。|
@@ -55,11 +55,11 @@ KB4502035 をダウンロードして、[ローカル Web UI を使用して更�
 
 Update 1.2 では、新しくリリース ノートに記載された問題はありませんでした。 リリース ノートに記載されている問題はすべて、以前のリリースからの持ち越しです。 以前のリリースから含まれている既知の問題の概要を確認するには、[Update 1.1 での既知の問題](storsimple-virtual-array-update-11-release-notes.md#known-issues-in-update-11)に関する記事に進んでください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 KB4502035 をダウンロードして、[ローカル Web UI を使用して更新プログラムを適用](storsimple-virtual-array-install-update-11.md#use-the-local-web-ui)します。
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 以前のリリース ノートをお探しですか。 参照先:
 * [StorSimple Virtual Array Update 1.1 のリリース ノート](storsimple-virtual-array-update-11-release-notes.md)

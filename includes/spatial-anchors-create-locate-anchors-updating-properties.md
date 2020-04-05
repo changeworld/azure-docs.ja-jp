@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 8ebb10f955be8f3004fdbdc595ea0fefc0d2b7ea
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67180888"
 ---
 ## <a name="update-properties"></a>プロパティを更新する

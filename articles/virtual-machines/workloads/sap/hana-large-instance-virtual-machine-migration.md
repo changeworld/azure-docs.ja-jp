@@ -14,10 +14,10 @@ ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fd1267711871b3e55f1a6229e46ae27b360322f6
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617033"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>SAP HANA on Azure Large Instance の Azure Virtual Machines への移行

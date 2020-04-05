@@ -1,6 +1,6 @@
 ---
 title: データ統合サービスである Data Factory の概要
-description: Azure Data Factory の概要を理解する:データの移動と変換を調整および自動化するクラウド データ統合サービス。
+description: データの移動と変換を調整、自動化するクラウド データ統合サービスである Azure Data Factory について説明します。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
 ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73666799"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
@@ -118,7 +118,7 @@ Data Factory ではリンクされたサービスは 2 つの理由で使用さ�
 
 ### <a name="relationship-between-data-factory-entities"></a>Data Factory エンティティ間の関係
 
-![図:クラウド データ統合サービスである Data Factory - 主要な概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![図: クラウド データ統合サービスである Data Factory - 主要な概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 現時点では、データ ファクトリは、米国西部、米国東部、北ヨーロッパ リージョンで作成できます。 ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。
@@ -132,7 +132,7 @@ Data Factory は、米国西部、米国東部、北ヨーロッパ リージョ
 ## <a name="get-started-with-creating-a-pipeline"></a>パイプライン作成の概要
 Azure Data Factory には、次のいずれかのツールまたは API でデータ パイプラインを作成できます。 
 
-- Visual Studio
+- Visual Studio
 - PowerShell
 - .NET API
 - REST API

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Ceridian Dayforce HCM の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Ceridian Dayforce HCM の統合 | Microsoft Docs'
 description: Azure Active Directory と Ceridian Dayforce HCM の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f488f22535c290b5fecbd0ffa9f8867f0b715bac
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158693"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>チュートリアル:Azure Active Directory と Ceridian Dayforce HCM の統合
+# <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>チュートリアル: Azure Active Directory と Ceridian Dayforce HCM の統合
 
 このチュートリアルでは、Ceridian Dayforce HCM と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Ceridian Dayforce HCM と Azure AD の統合には、次の利点があります。
@@ -138,7 +138,7 @@ Ceridian Dayforce HCM で Azure AD シングル サインオンを構成する�
     
     | Name | ソース属性|
     | ---------| --------- |
-    | 名前  | user.extensionattribute2 |
+    | name  | user.extensionattribute2 |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -156,7 +156,7 @@ Ceridian Dayforce HCM で Azure AD シングル サインオンを構成する�
 
     f. **[OK]** をクリックします。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 7. **[Set up Single Sign-On with SAML]\(SAML でシングル サインオンをセットアップします\)**  ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションから**メタデータ XML**をダウンロードして、お使いのコンピューターに保存します。
 

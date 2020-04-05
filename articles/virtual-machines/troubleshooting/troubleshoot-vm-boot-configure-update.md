@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
 ms.openlocfilehash: da45e24898bc3b5aead250077af69a61bdb33bab
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73749631"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM の起動が停止し、"Windows の準備をしています。 コンピューターの電源を切らないでください。" が表示される (Azure 内)

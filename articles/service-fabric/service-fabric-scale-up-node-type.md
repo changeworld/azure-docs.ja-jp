@@ -4,10 +4,10 @@ description: 仮想マシン スケール セットを追加することで Serv
 ms.topic: article
 ms.date: 02/13/2019
 ms.openlocfilehash: 33d535cb093eeb95e0ce95bdd5722bfd21150a40
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464234"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric クラスターのプライマリ ノード タイプをスケールアップする

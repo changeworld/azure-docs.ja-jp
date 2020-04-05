@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 85e3589d7467691e2b9a11879510ab980bbd875a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273461"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの number 作成済みエンティティ
@@ -26,7 +26,7 @@ number は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob
 
 ## <a name="examples-of-number-resolution"></a>number の解決の例
 
-| 発話        | Entity   | 解像度 |
+| 発話        | Entity   | 解決策 |
 | ------------- |:----------------:| --------------:|
 | ```one thousand times```  | ```"one thousand"``` |   ```"1000"```      |
 | ```1,000 people```        | ```"1,000"```    |   ```"1000"```      |
@@ -38,7 +38,7 @@ number は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-LUIS が返す JSON 応答の `resolution` フィールドには、 **`builtin.number`** エンティティの認識された値が含まれます。
+LUIS が返す JSON 応答の  **フィールドには、`builtin.number`** `resolution` エンティティの認識された値が含まれます。
 
 ## <a name="resolution-for-prebuilt-number"></a>作成済みの number の解決
 

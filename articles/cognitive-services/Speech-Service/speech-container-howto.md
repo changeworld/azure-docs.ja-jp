@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 2beee81bc365d00e59a62cacabacc5f5d6b62a42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367762"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474783"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech サービス コンテナーをインストールして実行する (プレビュー)
 
@@ -26,10 +26,10 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 > [!IMPORTANT]
 > 現在のところ、音声コンテナーはすべて、[パブリック "ゲート付き" プレビュー](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)の一部として提供されています。 音声コンテナーが一般公開 (GA) になるときは告知があります。
 
-| Function | [機能] | 最新 |
+| 機能 | 特徴 | 最新 |
 |--|--|--|
-| 音声テキスト変換 | 連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.0.0 |
-| カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.0.0 |
+| 音声テキスト変換 | 連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.1.1 |
+| カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.1.1 |
 | テキスト読み上げ | テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.3.0 |
 | カスタム テキスト読み上げ | [Custom Voice ポータル](https://aka.ms/custom-voice-portal)のカスタム モデルを利用し、テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.3.0 |
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Speech コンテナーを使用する前の前提条件は次のとおりです。
 
-| Required | 目的 |
+| 必須 | 目的 |
 |--|--|
 | Docker エンジン | [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br> |
 | Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。 |
@@ -164,7 +164,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 次のタグは、この形式の例です。
 
 ```
-2.0.0-amd64-en-us-preview
+2.1.1-amd64-en-us-preview
 ```
 
 **音声テキスト変換**コンテナーのサポートされている全ロケールについては、「[音声テキスト変換イメージ タグ](../containers/container-image-tags.md#speech-to-text)」を参照してください。

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: bharathb
 ms.openlocfilehash: 9111193bb441487b9e3c49bc9ee1a296d49f8a31
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72882387"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>オンプレミスまたはクラウドのデータを Azure Cosmos DB に移行するためのオプション
@@ -68,7 +68,7 @@ SQL API、Mongo API、Cassandra API 以外の API については、API の既�
 * [Graph Bulk Executor ライブラリ](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-graph-dotnet)
 * [Gremlin Spark](https://github.com/Azure/azure-cosmosdb-spark/blob/2.4/samples/graphframes/main.scala) 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [.NET](bulk-executor-dot-net.md) と [Java](bulk-executor-java.md) で Bulk Executor ライブラリを使用するサンプル アプリケーションを試して、さらに詳しく学習します。 
 * Bulk Executor ライブラリは Cosmos DB Spark コネクタに統合されています。詳細については、[Azure Cosmos DB Spark コネクタ](spark-connector.md)に関する記事をご覧ください。  

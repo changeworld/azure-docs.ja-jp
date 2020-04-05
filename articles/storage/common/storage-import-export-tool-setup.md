@@ -9,10 +9,10 @@ ms.date: 06/29/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: 01432ab68fc399f3e97eac2de5a7c356bef7078a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74979038"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Azure Import/Export ツールの設定
@@ -201,7 +201,7 @@ Examples:
         f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\temp\9WM35C2V_error.log
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import.md)
 * [エクスポート ジョブのドライブ使用率のプレビュー](../storage-import-export-tool-previewing-drive-usage-export-v1.md)

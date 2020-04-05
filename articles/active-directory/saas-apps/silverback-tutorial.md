@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3c4eab02ed0c7c09fe9b5893bbaaf7cbe1c8028f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090907"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>チュートリアル:Azure Active Directory と Silverback の統合
@@ -144,7 +144,7 @@ Silverback で Azure AD シングル サインオンを構成するには、次�
 
     h.  ボタンの背景**色**を選択します。
 
-    i.  **[Save]** をクリックします。
+    i.  **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -223,7 +223,7 @@ Azure AD ユーザーが Silverback にログインできるようにするに�
 
     f. **[Confirm Password]\(パスワードの確認入力\)** ボックスにパスワードをもう一度入力して確認します。
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
 > [!NOTE]
 > 手動で各ユーザーを作成しない場合は、 **[Admin]\(管理者\)**  >  **[Authentication Provider]\(認証プロバイダー\)** の **[Dynamic User Creation]\(動的ユーザーの作成\)** チェックボックスをオンにします。

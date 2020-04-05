@@ -4,10 +4,10 @@ description: Azure Active Directory サービス プリンシパルを使用し�
 ms.topic: article
 ms.date: 04/23/2018
 ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456505"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Azure Container Instances から Azure Container Registry の認証を受ける
@@ -47,7 +47,7 @@ Azure CLI の以前のサンプル スクリプトを GitHub 上で検索でき�
 * [Azure CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事には、サービス プリンシパルと ACR の使用方法の詳細が含まれています。
 

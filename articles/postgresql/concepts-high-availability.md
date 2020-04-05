@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 80229ff78c4570db583f1218d5d2f72da2dec388
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74768573"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server での高可用性の概念
@@ -31,6 +31,6 @@ HA モデルと同様に、Azure Database for PostgreSQL がスケールアッ�
 
 スケール操作中、データベース接続の中断が発生します。 クライアント アプリケーションは切断され、未処理のコミットされていないトランザクションは取り消されます。 クライアント アプリケーションが接続を再試行するか、または新しい接続を作成すると、ゲートウェイはその接続を新しくサイズ設定されたインスタンスに転送します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [一時的な接続エラーへの対処](concepts-connectivity.md)について学習する
 - [読み取りレプリカを使用してデータをレプリケートする](howto-read-replicas-portal.md)方法を学習する

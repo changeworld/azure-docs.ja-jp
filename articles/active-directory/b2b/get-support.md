@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00817acf93295becefab2d1a61de84a3f5519338
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272765"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>B2B コラボレーションのサポートの利用
@@ -24,7 +24,7 @@ ms.locfileid: "74272765"
 ドキュメントをよく読んで、適切な手順を実行しても、上手くいかない場合があります。 そのようなときはサポート チケットを開いてください(サポート プランが必要です)。
 
 1. [Azure Portal](https://portal.azure.com) で、[ヘルプとサポート] ブレードに移動して [新しいサポート要求] を選択します。
-   - [問題の種類]: 技術
+   - 問題の種類:技術
    - サブスクリプション:影響されるサブスクリプションを選択します
      - サービス:Active Directory
      - [サポート プラン]: 関連するサポート プランを選択します

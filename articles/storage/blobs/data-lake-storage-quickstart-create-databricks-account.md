@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 02/17/2020
 ms.reviewer: jeking
 ms.openlocfilehash: 346795b79a78589d949b035a803a67a9e5a2e8e5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77470736"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>クイック スタート:Databricks を使用したデータの分析
@@ -92,7 +92,7 @@ ms.locfileid: "77470736"
 
     ![Databricks でノートブックを作成する](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Databricks でノートブックを作成する")
 
-    **作成** を選択します。
+    **［作成］** を選択します
 
 4. 次のコード ブロックをコピーして最初のセルに貼り付けます。ただし、このコードはまだ実行しないでください。
 

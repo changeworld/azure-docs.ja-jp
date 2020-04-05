@@ -17,10 +17,10 @@ author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: a0496999a9a5dc3e9bfd57df0ec035e6db77d620
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73615126"
 ---
 # <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>チュートリアル:Azure DevOps Projects を使用して既存のコードの CI/CD パイプラインを作成する
@@ -35,7 +35,7 @@ Azure DevOps Projects は、Azure に対する継続的インテグレーショ�
 > * Azure DevOps と Azure サブスクリプションを構成する 
 > * 変更を GitHub にコミットし、Azure に自動的にデプロイする
 > * Azure Pipelines CI/CD パイプラインを調べる
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +46,7 @@ Azure DevOps Projects は、Azure に対する継続的インテグレーショ�
 
 Azure DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 Azure DevOps Projects では、選択した Azure サブスクリプションに Azure リソースも作成されます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. Azure portal メニューから **[リソースの作成]** を選択します。
 
@@ -114,11 +114,11 @@ Azure DevOps Projects によって、Azure Pipelines に CI/CD パイプライ�
 
 1. **[トリガー]** タブを選択します。Azure DevOps Projects によって、いくつかの既定の設定を使用して CI トリガーが自動的に作成されます。 **[継続的インテグレーションを有効にする]** などのトリガーを設定することで、コードの変更をコミットするたびにビルドを実行できます。 トリガーを設定して、ビルドを特定の時刻に実行するようにスケジュールすることもできます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで作成した Azure App Service とその関連リソースは、不要になったら削除してかまいません。 DevOps Projects ダッシュボードで**削除**機能を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、CI/CD プロセスを構成したときに、ビルドとリリース パイプラインが Azure DevOps Projects に自動的に作成されました。 チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。
 

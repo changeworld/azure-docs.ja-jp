@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c1793a22c59cda279a9d8c4522bcec2606d25582
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67673402"
 ---
 Azure Portal で目的の接続に移動することで、Resource Manager VPN ゲートウェイの接続の状態を確認できます。 以下に示した手順は、目的の接続に移動して接続を確認する方法の一例です。

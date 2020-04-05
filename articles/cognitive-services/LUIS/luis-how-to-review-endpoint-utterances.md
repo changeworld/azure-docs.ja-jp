@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775101"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218753"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>エンドポイントの発話を見直し、LUIS アプリを改善する方法
 
@@ -26,7 +26,7 @@ ms.locfileid: "76775101"
 
 ## <a name="enable-active-learning"></a>アクティブ ラーニングを有効にする
 
-アクティブ ラーニングを有効にするには、ユーザー クエリをログに記録する必要があります。 そのためには、`log=true` という querystring パラメーターと値を指定し、[エンドポイント クエリ](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)を呼び出します。
+アクティブ ラーニングを有効にするには、ユーザー クエリをログに記録する必要があります。 そのためには、[ という querystring パラメーターと値を指定し、](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)エンドポイント クエリ`log=true`を呼び出します。
 
 LUIS ポータルを使用して、正しいエンドポイント クエリを作成します。
 
@@ -64,7 +64,7 @@ LUIS ポータルを使用して、正しいエンドポイント クエリを�
 
 ## <a name="disable-active-learning"></a>アクティブ ラーニングを無効にする
 
-アクティブ ラーニングを無効にするには、ユーザーのクエリがログされないようにします。 これを行うには、`log=false` querystring パラメーターと値を指定して[エンドポイント クエリ](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)を設定します。既定値が false のため、querystring 値は使用しません。
+アクティブ ラーニングを無効にするには、ユーザーのクエリがログされないようにします。 これを行うには、[ querystring パラメーターと値を指定して](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)エンドポイント クエリ`log=false`を設定します。既定値が false のため、querystring 値は使用しません。
 
 ## <a name="next-steps"></a>次のステップ
 

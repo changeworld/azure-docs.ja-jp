@@ -2,13 +2,13 @@
   items:
     - name: クラウド パートナー ポータルについて
       href: ./cloud-partner-portal-what-is-the-cloud-partner-portal.md
-- name: 作業開始
+- name: はじめに
   items:
     - name: クラウド パートナー ポータルの概要
       href: ./cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
     - name: サポートされる製品
       href: ./Cloud-partner-portal-products-that-can-get-published-via-portal.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 仮想マシンの管理
       items:

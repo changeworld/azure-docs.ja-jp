@@ -9,10 +9,10 @@ ms.custom: hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 7eb1f7e1ce02a30f84cb520438f60fcbcfa3a965
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73100145"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブのデータをアップロードする
@@ -46,7 +46,7 @@ Microsoft では、Azure Storage を操作する次のユーティリティを�
 > [!NOTE]  
 > Hadoop コマンドは、HDInsight クラスター上でのみ使用できます。 このコマンドでは、ローカル ファイル システムのデータを Azure Storage 内に読み込むことのみが可能です。  
 
-## <a id="commandline"></a>Hadoop コマンド ライン
+## <a name="hadoop-command-line"></a><a id="commandline"></a>Hadoop コマンド ライン
 
 Hadoop コマンド ラインは、クラスターのヘッド ノードに既にデータが存在している場合に、Azure Storage BLOB にデータを格納する際にのみ役立ちます。
 
@@ -80,7 +80,7 @@ Azure Storage を操作するためのグラフィカル インターフェイ�
 | Client | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Microsoft Visual Studio Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
-| [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
+| [Azure 記憶域エクスプローラー](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
 | [Cerulea](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
 | [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |✔ |
 | [Microsoft Azure 用の CloudBerry Explorer](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
@@ -99,10 +99,10 @@ Azure Data Factory はフル マネージドのサービスで、データの保
 |ストレージの種類|ドキュメント|
 |----|----|
 |Azure BLOB ストレージ|[Copy data to or from Azure Blob storage by using Azure Data Factory (Azure Data Factory を使用して、Azure Blob ストレージをコピー先、またはコピー元にして、データをコピーする)](../data-factory/connector-azure-blob-storage.md)|
-|Azure Data Lake Storage Gen1|[Copy data to or from Azure Data Lake Storage Gen1 by using Azure Data Factory (Azure Data Factory を使用して、Azure Data Lake Storage Gen1 をコピー先、またはコピー元にして、データをコピーする)](../data-factory/connector-azure-data-lake-store.md)|
+|Azure Data Lake Storage Gen1|[Azure Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする](../data-factory/connector-azure-data-lake-store.md)|
 |Azure Data Lake Storage Gen2 |[Load data into Azure Data Lake Storage Gen2 with Azure Data Factory (Azure Data Factory を使用して Azure Data Lake Storage Gen2 内にデータを読み込む)](../data-factory/load-azure-data-lake-storage-gen2.md)|
 
-### <a id="sqoop"></a>Apache Sqoop
+### <a name="apache-sqoop"></a><a id="sqoop"></a>Apache Sqoop
 
 Sqoop は、Hadoop とリレーショナル データベース間でデータを転送するためのツールです。 このツールを使用して、SQL、MySQL、Oracle などのリレーショナル データベース管理システム (RDBMS) から Hadoop 分散ファイル システム (HDFS) へデータをインポートしたり、MapReduce または Hive を使用して Hadoop のデータを変換し、そのデータを RDBMS へ取り込んだりできます。
 
@@ -123,7 +123,7 @@ Azure SDK のインストールの詳細については、 [Azure のダウン�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-### <a id="storageexception"></a>BLOB への書き込みに関するストレージ例外
+### <a name="storage-exception-for-write-on-blob"></a><a id="storageexception"></a>BLOB への書き込みに関するストレージ例外
 
 **現象**:`hadoop` または `hdfs dfs` コマンドを使って HBase クラスターで 12 GB 以上のファイルを書き込むと、次のエラーが発生する可能性があります。
 
@@ -168,7 +168,7 @@ Apache Ambari を使うことで、`fs.azure.write.request.size` の値をグロ
 
 Ambari の使用について詳しくは、「[Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、HDInsight にデータを取り込む方法を説明しました。次の記事でデータの分析方法を学習してください。
 

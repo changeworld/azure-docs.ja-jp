@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 12d457d8d5e57dc4db16d9a191c7795a5f013574
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b2871ec87e4d7f337c26b3ff3de83c1c3c88aea2
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360437"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365386"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database マネージド インスタンスのリソース制限の概要
 
@@ -71,8 +71,8 @@ ms.locfileid: "78360437"
 | 最大データベース サイズ | 現在利用可能なインスタンスのサイズまで (仮想コア数に応じて最大 2 TB から 8 TB)。 | 現在利用可能なインスタンスのサイズまで (仮想コア数に応じて最大 1 TB から 4 TB)。 |
 | 最大 tempDB サイズ | 24 GB/仮想コア (96 から 1,920 GB) と現在利用可能なインスタンスのストレージ サイズに制限されています。<br/>tempdb 領域を増やすには、仮想コアを追加します。<br/> ログ ファイルは 120 GB に制限されています。| 現在利用可能なインスタンスのストレージ サイズまで。 |
 | インスタンスごとの最大データベース数 | インスタンスのストレージ サイズの制限に達していない限り、100 個。 | インスタンスのストレージ サイズの制限に達していない限り、100 個。 |
-| インスタンスごとの最大データベース ファイル数 | インスタンスのストレージ サイズまたは [Azure Premium ディスクの記憶域割り当ての領域](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)の上限に達していない限り、最大で 280 個。 | インスタンスのストレージ サイズの上限に達していない限り、データベースごとに 32,767 ファイル。 |
-| データ ファイルの最大サイズ | 現在利用可能なインスタンスのストレージ サイズ (最大 2 TB から 8 TB) と [Azure Premium ディスクの記憶域割り当ての領域](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)に制限されています。 | 現在利用可能なインスタンスのストレージ サイズ (最大 1 TB から 4 TB) に制限されています。 |
+| インスタンスごとの最大データベース ファイル数 | インスタンスのストレージ サイズまたは [Azure Premium ディスクの記憶域割り当ての領域](sql-database-release-notes.md#exceeding-storage-space-with-small-database-files)の上限に達していない限り、最大で 280 個。 | インスタンスのストレージ サイズの上限に達していない限り、データベースごとに 32,767 ファイル。 |
+| データ ファイルの最大サイズ | 現在利用可能なインスタンスのストレージ サイズ (最大 2 TB から 8 TB) と [Azure Premium ディスクの記憶域割り当ての領域](sql-database-release-notes.md#exceeding-storage-space-with-small-database-files)に制限されています。 | 現在利用可能なインスタンスのストレージ サイズ (最大 1 TB から 4 TB) に制限されています。 |
 | 最大ログ ファイル サイズ | 2 TB と現在利用可能なインスタンスのストレージ サイズに制限されています。 | 2 TB と現在利用可能なインスタンスのストレージ サイズに制限されています。 |
 | データ/ログの IOPS (概算) | インスタンス* あたり最大で 30 から 40 K IOPS、ファイルあたり 500 から 7500<br/>\*[IOPS を増やすには、ファイル サイズを大きくします](#file-io-characteristics-in-general-purpose-tier)| 10 K から 200 K (2500 IOPS/仮想コア)<br/>IO パフォーマンスを向上させるには、仮想コアを追加します。 |
 | ログ書き込みのスループット制限 (インスタンスあたり) | 仮想コアあたり 3 MB/秒<br/>最大 22 MB/秒 | 仮想コアあたり 4 MB/秒<br/>最大 48 MB/秒 |

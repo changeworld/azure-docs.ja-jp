@@ -4,10 +4,10 @@ description: この記事では、アプリケーション シークレットで
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76545485"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric アプリケーションでの KeyVaultReference サポート (プレビュー)

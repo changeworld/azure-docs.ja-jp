@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1f0708f0674633ddfee8b84388a2d96f2a04636
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74899980"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
@@ -78,7 +78,7 @@ Privileged Identity Management では、次のシナリオがサポートされ�
 - アクティブ化要求の状態を表示する
 - アクティブ化が承認された場合に Azure AD でタスクを完了する
 
-## <a name="terminology"></a>用語集
+## <a name="terminology"></a>用語
 
 Privileged Identity Management とそのドキュメントについてより深く理解するために、次の用語を確認してください。
 
@@ -102,7 +102,7 @@ Privileged Identity Management とそのドキュメントについてより深�
 
 ユーザーのライセンスについては、「[Privileged Identity Management を使用するためのライセンスの要件](subscription-requirements.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management を使用するためのライセンスの要件](subscription-requirements.md)
 - [Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

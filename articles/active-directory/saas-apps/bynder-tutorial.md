@@ -17,10 +17,10 @@ ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 456fc2a736b3213a14e5704f89a808c120c45b33
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158661"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>チュートリアル:Bynder と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "73158661"
 
 * Bynder にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Bynder に自動的にサインインできるようにすることができます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -107,7 +107,7 @@ Bynder に対する Azure AD SSO を構成してテストするには、次の�
 
     1. **[グループ ID]** の **[ソース属性]** を選択します。
 
-    1. **[Save]** をクリックします。
+    1. **[保存]** をクリックします。
 
         ![image](./media/bynder-tutorial/config08.png)
 

@@ -6,11 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 8a5507d11c9545e4053dde832b7305f9bf35e39e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586276"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>変更フィード プロセッサの開始時刻の構成方法
@@ -23,9 +23,9 @@ ms.locfileid: "77586276"
 
 ## <a name="reading-from-a-previous-date-and-time"></a>以前の日時からの読み取り
 
-`DateTime` のインスタンスを `WithStartTime` ビルダー拡張機能に渡すことで、**特定の日時**以降の変更を読み取るよう変更フィード プロセッサを初期化することができます。
+**のインスタンスを** ビルダー拡張機能に渡すことで、`DateTime`特定の日時`WithStartTime`以降の変更を読み取るよう変更フィード プロセッサを初期化することができます。
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="TimeInitialization":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 
 変更フィード プロセッサは、その特定の日時に対して初期化され、それ以降に発生した変更の読み取りを開始します。
 
@@ -33,7 +33,7 @@ ms.locfileid: "77586276"
 
 データの移行やコンテナーの履歴全体の分析など、他のシナリオでは、**そのコンテナーの有効期間の最初**から変更フィードを読み取る必要があります。 これを行うために、ビルダー拡張機能で `WithStartTime` を使用できますが、`DateTime.MinValue.ToUniversalTime()` を渡すと、次のように `DateTime` の最小値の UTC 表現が生成されます。
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartFromBeginningInitialization":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
 
 この変更フィード プロセッサは初期化され、コンテナーの有効期間の最初から変更の読み取りを開始します。
 

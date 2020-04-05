@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: 49f145ce3e9022826abad5d274dd611bb2cc6530
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270344"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの url 作成済みエンティティ
@@ -69,7 +69,7 @@ url は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/ma
 ```
 #### <a name="v2-response"></a>[V2 の応答](#tab/V2)
 
-次の例では、人工知能の優れた Cognitive Services の例である https://www.luis.ai の解決策を示します。
+次の例では、人工知能の優れたコグニティブ サービスの例である https://www.luis.ai の解決策を示します。
 
 ```json
 "entities": [

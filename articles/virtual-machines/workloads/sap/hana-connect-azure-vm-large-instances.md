@@ -16,10 +16,10 @@ ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fb6f88fbfcbd539603e435b11661c428d54f3c34
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74224727"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>HANA L インスタンスへの Azure VM の接続
@@ -146,6 +146,6 @@ IP アドレス範囲の定義後、次の作業を行う必要があります�
 
 HANA L インスタンスを接続する手順については、[SAP HANA on Azure (L インスタンス) のセットアップ](https://azure.microsoft.com/resources/sap-hana-on-azure-large-instances-setup/)に関するドキュメントで確認することもできます。 以下の手順の多くは、そのドキュメントのデプロイの例に示されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [HANA L インスタンスの ExpressRoute への仮想ネットワークの接続](hana-connect-vnet-express-route.md)に関するページを参照してください。

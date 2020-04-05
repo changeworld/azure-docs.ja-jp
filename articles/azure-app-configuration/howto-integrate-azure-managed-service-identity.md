@@ -2,17 +2,17 @@
 title: Azure マネージド ID を使用して認証する
 titleSuffix: Azure App Configuration
 description: Azure マネージド ID を使用して Azure App Configuration に対して認証する
-ms.service: azure-app-configuration
 author: lisaguthrie
+ms.author: lcozzens
+ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.author: lcozzens
-ms.openlocfilehash: ff69262a89d8112419ffe62cd391d003cb21adc1
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967576"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80056837"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Azure マネージド ID との統合
 

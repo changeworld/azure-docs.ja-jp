@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace で仮想マシンのオファーを発行する
 description: 仮想マシンの既存のオファーを Azure Marketplace に発行するために必要な手順を示します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
-ms.author: pabutler
-ms.openlocfilehash: 1b07f3f3edab47f8f75835dffd4cc3f89f17ab63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: c35f721131b997dcfdb0f23a91a39329168b757c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824402"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277346"
 ---
 # <a name="publish-a-virtual-machine-offer"></a>仮想マシンのオファーを発行する
 

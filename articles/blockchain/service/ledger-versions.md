@@ -5,10 +5,10 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 8d4a77699dd80743acfadd4d72d6d75bc1939b3b
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74325186"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>サポートされている Azure Blockchain Service の台帳のバージョン
@@ -31,6 +31,6 @@ Azure Blockchain Service は、既存の実行中メンバーに対して、Quor
 
 Azure Blockchain Service では、Quorum 台帳の最新のメジャーおよびマイナー バージョンは、Quorum の製造元で使用可能になってから 60 日以内に提供されます。 新しいメンバーとコンソーシアムをプロビジョニングするとき、コンソーシアムでは最大 4 つのマイナー リリースから選択することができます。 メジャーまたはマイナー リリースからの、またはそれらへのアップグレードは現在サポートされていません。 たとえば、バージョン 2.x を実行している場合、バージョン 3.x へのアップグレードは現在サポートされていません。 同様に、バージョン 2.2 を実行している場合、バージョン 2.3 へのアップグレードは現在サポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Blockchain Service での制限事項](limits.md)

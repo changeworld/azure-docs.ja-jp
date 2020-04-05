@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: understand-apache-spark-for-usql-developers
 ms.date: 10/15/2019
 ms.openlocfilehash: 594e1055c4c063e4e151fefa3e183e6e799c90b5
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73648164"
 ---
 # <a name="understand-apache-spark-for-u-sql-developers"></a>U-SQL 開発者向けの Apache Spark について
@@ -39,7 +39,7 @@ Microsoft では、[Azure Databricks](../azure-databricks/what-is-azure-databric
 > [!CAUTION]
 > [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) と [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md) はどちらもクラスター サービスであり、Azure Data Lake Analytics のようなサーバーレス ジョブではありません。 適切なコスト/パフォーマンス比を得るためのクラスターのプロビジョニング方法と、コストを最小限に抑えるための有効期間の管理方法を、検討する必要があります。 これらのサービスには、.NET で記述されたユーザー コードとは異なるパフォーマンス特性があるため、ラッパーを作成するか、サポートされている言語でコードを書き直す必要があります。 詳細については、[Spark のデータ形式](understand-spark-data-formats.md)、[U-SQL 開発者向けの Apache Spark コードの概念](understand-spark-code-concepts.md)、[.Net Apache Spark](https://dotnet.microsoft.com/apps/data/spark) に関する記事をご覧ください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [U-SQL 開発者向けの Spark データ形式について](understand-spark-data-formats.md)
 - [U-SQL 開発者向けの Spark コードの概念について](understand-spark-code-concepts.md)

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.openlocfilehash: e75e3f3eecf6c34050aeaa7fe387fffb0de58a74
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513203"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Windows Azure Media Encoder から Media Encoder Standard に移行する

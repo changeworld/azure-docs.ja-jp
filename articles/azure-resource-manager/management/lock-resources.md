@@ -4,11 +4,11 @@ description: 重要な Azure リソースの更新または削除をユーザー
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77109543"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234095"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止
 

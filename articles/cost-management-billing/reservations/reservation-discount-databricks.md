@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: 69f83fc1d390fcbea77468045b89ee6024e7fe9a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77200318"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Azure Databricks の事前購入割引が適用される方法

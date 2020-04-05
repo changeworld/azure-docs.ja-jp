@@ -14,10 +14,10 @@ ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.openlocfilehash: 2b138678b186cc41b76254658ad604c2da2d76c1
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696199"
 ---
 # <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>MSAL for Java を使用したトークン キャッシュのアカウントの取得と削除

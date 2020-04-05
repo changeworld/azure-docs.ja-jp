@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61443447"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>自動デバイス管理パッケージをリモート監視ソリューション アクセラレータにインポートする
@@ -59,6 +59,6 @@ ms.locfileid: "61443447"
 
 自動デバイス管理構成がパッケージとしてアップロードされました。 **[デプロイ]** ページで、このパッケージを接続されたデバイスに展開できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 構成パッケージを作成してリモート監視ソリューションからにインポートする方法を習得したので、次に、[リモート監視に接続されているデバイスを一括管理する](iot-accelerators-remote-monitoring-bulk-configuration-update.md)方法を学習します。

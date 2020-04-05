@@ -16,10 +16,10 @@ ms.custom: seodec18
 ms.date: 11/05/2019
 ms.author: shvija
 ms.openlocfilehash: 90293da07d3a7ef1c32e5f82d35198d4ffa536b1
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73717613"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>クイック スタート:Apache Storm を使用して Azure Event Hubs からイベントを受信する
@@ -242,7 +242,7 @@ Event Hub の受信パターンの詳細については、「 [Event Hub の概�
 
     このクラスは、新しい Event Hub スパウトを作成して、これをインスタンス化するために構成ファイルのプロパティを使用します。 この例では、Event Hub で許可されている最大の数の並列処理を使用するために、その Event Hub のパーティションの数と同数のスパウト タスクを作成することが重要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要][Event Hubs overview]

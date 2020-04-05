@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.openlocfilehash: 10f8ffd90215a21ca03e112aea463d444c623d06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445392"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>現実の例を使用して Azure Cosmos DB のデータをモデル化およびパーティション分割する方法

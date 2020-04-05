@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/02/2020
 ms.openlocfilehash: 06428d4a9c4a4178212d16d42b8b3adffb5c9718
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250282"
 ---
 # <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: b73389a9b1dadfff287718abec1755007cbe859c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f4885bea686267ce0397e9ca6f3e2c0ac8640971
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595118"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215570"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -74,13 +74,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 クラスターへの接続を確認するには、クラスター ノードの一覧を返す [kubectl get][kubectl-get] コマンドを使用します。
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 次の出力例は、前の手順で作成した単一ノードを示しています。 ノードの状態が "*準備完了*" であることを確認します。
 
-```
+```output
 NAME                       STATUS    ROLES     AGE       VERSION
 aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 ```
@@ -181,13 +181,13 @@ spec:
 
 [kubectl apply][kubectl-apply] コマンドを使用してアプリケーションをデプロイし、ご利用の YAML マニフェストの名前を指定します。
 
-```azurecli-interactive
+```console
 kubectl apply -f azure-vote.yaml
 ```
 
 次の出力例は、正常に作成されたデプロイおよびサービスを示しています。
 
-```
+```output
 deployment "azure-vote-back" created
 service "azure-vote-back" created
 deployment "azure-vote-front" created
@@ -200,20 +200,20 @@ service "azure-vote-front" created
 
 進行状況を監視するには、[kubectl get service][kubectl-get] コマンドを `--watch` 引数と一緒に使用します。
 
-```azurecli-interactive
+```console
 kubectl get service azure-vote-front --watch
 ```
 
 最初に、*azure-vote-front* サービスの *EXTERNAL-IP* が "*保留中*" として表示されます。
 
-```
+```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 *EXTERNAL-IP* アドレスが "*保留中*" から実際のパブリック IP アドレスに変わったら、`CTRL-C` を使用して `kubectl` ウォッチ プロセスを停止します。 次の出力例は、サービスに割り当てられている有効なパブリック IP アドレスを示しています。
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 

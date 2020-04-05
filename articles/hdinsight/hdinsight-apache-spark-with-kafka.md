@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: d868cdd346c79cf77d4f8c1ea6e4b20adcd99b6c
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327393"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka を用いた Apache Spark ストリーミング (DStream) の例
@@ -55,7 +55,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
     |---|---|
     |Resource group|グループを作成するか、または既存のグループを選択します。|
     |Location|地理的に近い場所を選択します。|
-    |[Base Cluster Name] (ベース クラスター名)|この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**hdistreaming**」と入力すると、__spark-hdistreaming__ という名前の Spark クラスターと、**kafka-hdistreaming** という名前の Kafka クラスターが作成されます。|
+    |Base Cluster Name (ベース クラスター名)|この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**hdistreaming**」と入力すると、__spark-hdistreaming__ という名前の Spark クラスターと、**kafka-hdistreaming** という名前の Kafka クラスターが作成されます。|
     |[Cluster Login User Name]\(クラスター ログイン ユーザー名\)|Spark クラスターと Kafka クラスターの管理者のユーザー名。|
     |[クラスター ログイン パスワード]|Spark クラスターと Kafka クラスターの管理者のユーザー パスワード。|
     |[SSH ユーザー名]|Spark クラスターと Kafka クラスターの作成に使用する SSH ユーザー。|
@@ -84,7 +84,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 このドキュメントの手順では両方のクラスターを同じ Azure リソース グループに作成したため、Azure Portal でこのリソース グループを削除するだけで済みます。 グループを削除することにより、このドキュメントに従って作成したすべてのリソース、Azure Virtual Network、クラスターで使用したストレージ アカウントが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この例では、Spark を使用して Kafka に対するデータの読み取りと書き込みを行う方法について説明しました。 次のリンクを使用することで、Kafka のその他の活用方法を知ることができます。
 

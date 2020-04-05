@@ -17,11 +17,11 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 2d9e5d051f101288b8528b47fa88b4783a040950
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775163"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230555"
 ---
 # <a name="protected-web-api-app-registration"></a>保護された Web API: アプリの登録
 

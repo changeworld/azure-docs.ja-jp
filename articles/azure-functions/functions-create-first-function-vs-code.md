@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: cf71f051b014c6ce56290acda5c4b931c23934e2
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 6f1c211a8110d95adb5e6802313c5b7deafe3864
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208950"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276463"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用して Azure Functions プロジェクトを作成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "77208950"
 + [Node.js](https://nodejs.org/)。アクティブ LTS およびメンテナンス LTS バージョン (10.14.1 を推奨)。 `npm --version` コマンドを使用して、現在のバージョンを確認してください。
 ::: zone-end 
 ::: zone pivot="programming-language-python"
-+ [Python 3.7](https://www.python.org/downloads/release/python-375/) または [Python 3.6](https://www.python.org/downloads/release/python-368/)。どちらも Azure Functions でサポートされます。 Python 3.8 はまだサポートされていません。 
++ [Python 3.8](https://www.python.org/downloads/release/python-381/)、[Python 3.7](https://www.python.org/downloads/release/python-375/)、[Python 3.6](https://www.python.org/downloads/release/python-368/) が Azure Functions (x64) でサポートされます。
 ::: zone-end   
 ::: zone pivot="programming-language-powershell"
 + [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
@@ -41,7 +41,7 @@ ms.locfileid: "77208950"
 ::: zone-end  
 + [サポートされているプラットフォーム](https://code.visualstudio.com/docs/supporting/requirements#_platforms)のいずれかにインストールされた [Visual Studio Code](https://code.visualstudio.com/)。  
 ::: zone pivot="programming-language-csharp"  
-+ Visual Studio Code 用の [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。  
++ Visual Studio Code 用の [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。  
 ::: zone-end  
 ::: zone pivot="programming-language-python"
 + Visual Studio Code 用の [Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)。  
@@ -52,7 +52,7 @@ ms.locfileid: "77208950"
 
 + Visual Studio Code 用 [Azure Functions 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)。 
 
-## <a name="create-an-azure-functions-project"></a>ローカル プロジェクトを作成する 
+## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>ローカル プロジェクトを作成する 
 
 このセクションでは、Visual Studio Code を使用し、選択した言語でローカル Azure Functions プロジェクトを作成します。 後からこの記事の中で、関数コードを Azure に発行します。 
 

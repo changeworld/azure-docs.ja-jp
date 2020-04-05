@@ -15,10 +15,10 @@ ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75374306"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
@@ -54,7 +54,7 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 > [!TIP]
 > SQL イメージの料金について詳しくは、「[SQL Server Azure VM の料金ガイダンス](virtual-machines-windows-sql-server-pricing-guidance.md)」をご覧ください。 
 
-### <a id="payasyougo"></a> 従量課金制
+### <a name="pay-as-you-go"></a><a id="payasyougo"></a> 従量課金制
 次の表に示したのは、従量課金制で提供されている SQL Server イメージの一覧です。
 
 | Version | オペレーティング システム | Edition |
@@ -71,7 +71,7 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 > [!NOTE]
 > SQL Server VM のライセンス モデルを従量課金制のライセンスから自分の所有ライセンスに変更できるようになりました。 詳細については、[SQL VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。 
 
-### <a id="BYOL"></a> ライセンス持ち込み
+### <a name="bring-your-own-license"></a><a id="BYOL"></a> ライセンス持ち込み
 ライセンス持ち込み (BYOL) を利用することもできます。 このシナリオでは、SQL Server ライセンスに対する追加料金はなく、VM のみに対して料金を支払います。  自分のライセンスを持ち込むと、継続的な運用環境のワークロードの費用を時間と共に削減できます。 この方法を利用するための要件については、「[SQL Server Azure VM の料金ガイダンス](virtual-machines-windows-sql-server-pricing-guidance.md#byol)」を参照してください。
 
 ライセンス持ち込みには、既存の従量課金制の SQL VM を変換する方法と、 **{BYOL}** というプレフィックスでイメージをデプロイする方法とがあります。 従量制課金と BYOL との間でライセンス モデルを切り替える方法の詳細については、[SQL VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。 
@@ -125,8 +125,8 @@ Azure portal には、SQL 仮想マシンを含む[すべての Azure SQL リソ
 - [マネージド インスタンスを作成する](../../../sql-database/sql-database-managed-instance-get-started.md)
 - [SQL 仮想マシンを作成する](quickstart-sql-vm-create-portal.md)
 
-## <a id="lifecycle"></a>SQL VM イメージの更新ポリシー
-Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、[SQL Server VM の FAQ](virtual-machines-windows-sql-server-iaas-faq.md#images) に関するページの「**イメージ**」セクションを参照してください。
+## <a name="sql-vm-image-refresh-policy"></a><a id="lifecycle"></a>SQL VM イメージの更新ポリシー
+Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、**SQL Server VM の FAQ** に関するページの「[イメージ](virtual-machines-windows-sql-server-iaas-faq.md#images)」セクションを参照してください。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>カスタマー エクスペリエンス向上プログラム (CEIP)
 既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 データの収集の詳細については、「[SQL Server のプライバシーに関する声明](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement)」を参照してください。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b1d0c070a9196eaa9a2706a607baa9a2926e2db4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67051750"
 ---
 # <a name="publish-media-services-content-using-net"></a>.NET を使用して Media Services コンテンツを発行する  
@@ -178,7 +178,7 @@ ms.locfileid: "67051750"
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [資産をダウンロードする](media-services-deliver-asset-download.md)
 * [資産配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)
 

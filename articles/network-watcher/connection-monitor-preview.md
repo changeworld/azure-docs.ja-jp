@@ -16,10 +16,10 @@ ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
 ms.openlocfilehash: 8f3a6f002fbebe215699c9b97a6dce63177c446f
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77599644"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>接続モニター (プレビュー) によるネットワーク接続の監視
@@ -616,9 +616,9 @@ Network Watcher から接続モニター (プレビュー) にアクセスし、
 
 | メトリック | Display name | ユニット | 集計の種類 | 説明 | Dimensions |
 | --- | --- | --- | --- | --- | --- |
-| ProbesFailedPercent | 失敗したプローブの割合 | [パーセント] | Average | 失敗した接続監視プローブの割合。 | ディメンションなし |
+| ProbesFailedPercent | 失敗したプローブの割合 | パーセント | Average | 失敗した接続監視プローブの割合。 | ディメンションなし |
 | AverageRoundtripMs | Avg.ラウンド トリップ時間 (ミリ秒) | ミリ秒 | Average | ソースと接続先の間で送信された接続監視プローブのネットワーク RTT。 |             ディメンションなし |
-| ChecksFailedPercent (プレビュー) | チェックの失敗率 (%) (プレビュー) | [パーセント] | Average | テストで失敗したチェックの割合。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>リージョン |
+| ChecksFailedPercent (プレビュー) | チェックの失敗率 (%) (プレビュー) | パーセント | Average | テストで失敗したチェックの割合。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>リージョン |
 | RoundTripTimeMs (プレビュー) | ラウンド トリップ時間 (ミリ秒) (プレビュー) | ミリ秒 | Average | ソースとターゲットの間で送信されたチェックの RTT。 これは平均値ではありません。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>[DestinationName] <br>DestinationResourceId <br>[DestinationType] <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>リージョン |
 
 #### <a name="metric-alerts-in-azure-monitor"></a>Azure Monitor でのメトリック アラート

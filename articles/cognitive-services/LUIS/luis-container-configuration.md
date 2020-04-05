@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
 ms.openlocfilehash: a30fcd0ec7e53c78876596baf787639e81c638db
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73795022"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding の Docker コンテナーの構成 
@@ -26,7 +26,7 @@ ms.locfileid: "73795022"
 
 このコンテナーには、次の構成設定があります。
 
-|必須|Setting|目的|
+|必須|設定|目的|
 |--|--|--|
 |はい|[ApiKey](#apikey-setting)|課金情報の追跡に使用されます。|
 |いいえ|[ApplicationInsights](#applicationinsights-setting)|[Azure Application Insights](https://docs.microsoft.com/azure/application-insights) テレメトリ サポートをお客様のコンテナーに追加できます。|
@@ -96,8 +96,8 @@ LUIS コンテナーでは、トレーニングやサービスのデータを格
 
 |必須| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
-|はい| `Input` | string | 入力マウントのターゲット。 既定値は `/input` です。 これは LUIS パッケージ ファイルの保存先です。 <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
-|いいえ| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 LUIS のクエリ ログやコンテナー ログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+|はい| `Input` | String | 入力マウントのターゲット。 既定値は `/input` です。 これは LUIS パッケージ ファイルの保存先です。 <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
+|いいえ| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 LUIS のクエリ ログやコンテナー ログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例
 
@@ -164,7 +164,7 @@ ApiKey={API_KEY} ^
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [コンテナーのインストール方法と実行方法](luis-container-howto.md)を確認する。
 * [トラブルシューティング](troubleshooting.md)に関するページを参照して、LUIS 機能に関連する問題を解決する。

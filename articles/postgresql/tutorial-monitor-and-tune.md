@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Database for PostgreSQL - Single Server を監視およびチューニングする
+title: チュートリアル:監視とチューニング - Azure Database for PostgreSQL - 単一サーバー
 description: このチュートリアルでは、Azure Database for PostgreSQL - Single Server での監視およびチューニングについて説明します。
 author: rachel-msft
 ms.author: raagyema
@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
 ms.openlocfilehash: d1958c6ef0f7ed52e939967b5e82886fe1373ed8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74774739"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>チュートリアル:Azure Database for PostgreSQL (単一サーバー) を監視およびチューニングする
@@ -32,7 +32,7 @@ PostgreSQL バージョン 9.6 または 10 の Azure Database for PostgreSQL �
 ## <a name="enabling-data-collection"></a>データ収集の有効化
 [クエリ ストア](concepts-query-store.md)は、サーバー上のクエリと待機統計の履歴をキャプチャし、サーバー上の **azure_sys** データベース内に格納します。 これはオプトイン機能です。 これを有効にするには:
 
-1. Azure Portal を開きます。
+1. Azure portal を開きます。
 
 2. Azure Database for PostgreSQL サーバーを選択します。
 
@@ -92,5 +92,5 @@ Query Performance Insight で、クエリのテキストを表示するために
 ### <a name="permissions"></a>アクセス許可
 パフォーマンスに関する推奨事項機能を使用して分析を実行するには、**所有者**または**共同作成者**の許可が必要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure Database for PostgreSQL での[監視およびチューニング](concepts-monitoring.md)の詳細を確認する。

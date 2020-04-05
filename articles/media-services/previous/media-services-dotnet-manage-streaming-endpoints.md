@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b6c6fccd473ae57139c0b46bf32dc9468a4ba1a8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74901276"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>.NET SDK を使用してストリーミング エンドポイントを管理する  
@@ -143,7 +143,7 @@ namespace AMSStreamingEndpoint
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

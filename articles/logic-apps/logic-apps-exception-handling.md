@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906700"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237179"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps におけるエラーと例外の処理
 
@@ -69,16 +69,16 @@ ms.locfileid: "76906700"
 
 *必須*
 
-| Value | Type | 説明 |
+| 値 | Type | 説明 |
 |-------|------|-------------|
 | <*retry-policy-type*> | String | 使用する再試行ポリシーの種類: `default`、`none`、`fixed`、または `exponential` |
 | <*retry-interval*> | String | 再試行間隔。この値には [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)を使用する必要があります。 既定の最小間隔は `PT5S` で、最大間隔は `PT1D` です。 指数の間隔ポリシーを使用するとき、最小と最大にさまざまな値を指定できます。 |
-| <*retry-attempts*> | 整数 | 再試行の回数。1 - 90 で指定する必要があります。 |
+| <*retry-attempts*> | Integer | 再試行の回数。1 - 90 で指定する必要があります。 |
 ||||
 
 *省略可能*
 
-| Value | Type | 説明 |
+| 値 | Type | 説明 |
 |-------|------|-------------|
 | <*minimum-interval*> | String | 指数間隔ポリシーに関して、ランダムに選択される間隔の最小値です ([ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations))。 |
 | <*maximum-interval*> | String | 指数間隔ポリシーに関して、ランダムに選択される間隔の最大値です ([ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations))。 |

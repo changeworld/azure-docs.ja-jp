@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 02/18/2019
 ms.openlocfilehash: 7355233bb7241571e3f3820aafac6952af245654
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75973675"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>PowerShell を使用して Azure VM のレプリケーション時にディスクを除外する

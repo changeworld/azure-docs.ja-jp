@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
 ms.openlocfilehash: 1e597a81967a8fb6be2959d53e65ad01135e5e25
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842905"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Network Watcher と Graylog を使用した Azure のネットワーク セキュリティ グループ フロー ログの管理と分析
@@ -182,7 +182,7 @@ Logstash を使用してフロー ログへの接続を確立し、Graylog サ�
 
    ![作業の開始](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
-3. 新しい入力を開始するには、 **[Select input]\(入力の選択\)** ドロップダウンで *[GELF UDP]* を選択し、フォームに入力します。 GELF は Graylog Extended Log Format の略です。 GELF 形式は Graylog によって開発されました。 この形式の利点の詳細については、Graylog の[ドキュメント](https://docs.graylog.org/en/2.2/pages/gelf.html)を参照してください。
+3. 新しい入力を開始するには、 *[Select input]\(入力の選択\)* ドロップダウンで **[GELF UDP]** を選択し、フォームに入力します。 GELF は Graylog Extended Log Format の略です。 GELF 形式は Graylog によって開発されました。 この形式の利点の詳細については、Graylog の[ドキュメント](https://docs.graylog.org/en/2.2/pages/gelf.html)を参照してください。
 
    Graylog サーバーが構成されている IP に入力をバインドする必要があります。 IP アドレスは、Logstash 構成ファイルの UDP 出力の **host** フィールドと一致する必要があります。 既定のポートは *12201* です。 ポートが、Logstash 構成ファイルで指定されている UDP 出力の **port** フィールドと一致することを確認します。
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: manayar
 ms.openlocfilehash: b427319fdba634ea3c61681baa30547450709dc1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278096"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226947"
 ---
 # <a name="design-considerations-for-scale-sets"></a>スケール セットの設計上の考慮事項
 この記事では、仮想マシン スケール セットの設計に関する考慮事項について説明します。 仮想マシン スケール セットに関する情報については、「 [仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」を参照してください。

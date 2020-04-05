@@ -8,10 +8,10 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.openlocfilehash: 93a77d73b5cc249c39609f98f055a7b1927dd6ed
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77025488"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>チュートリアル:デジタル配布センター アプリケーション テンプレートを展開して調べる

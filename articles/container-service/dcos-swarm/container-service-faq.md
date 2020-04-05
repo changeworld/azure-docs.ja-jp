@@ -10,10 +10,10 @@ ms.date: 03/28/2017
 ms.author: mlearned
 ms.custom: H1Hack27Feb201
 ms.openlocfilehash: 317862b694b93de44422ac3c28575c732ffc5be5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887922"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(非推奨) Container Service についてよく寄せられる質問

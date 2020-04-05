@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 44a05ecb273bdf7582300c3b6a9110e2ada0994c
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471824"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 シリーズのデータを移行するためのオプション 
@@ -95,8 +95,8 @@ A. サービスは動作し続ける可能性がありますが、Microsoft で�
 
 A. StorSimple 5000-7000 シリーズのユーザーは、それぞれのシナリオに応じて、次の移行オプションを使用できます。 
 
- - **8000 シリーズへのアップグレード**:このオプションは、StorSimple プラットフォームを使用し続ける場合に使用します。 
- - **Azure File Sync に移行**:このオプションは、Azure ネイティブ形式に切り替える場合に使用します。 Azure File Sync を使用すると、ファイル共有を一元管理できます。 
+ - **8000 シリーズへのアップグレード**: このオプションは、StorSimple プラットフォームを使用し続ける場合に使用します。 
+ - **Azure File Sync に移行**: このオプションは、Azure ネイティブ形式に切り替える場合に使用します。 Azure File Sync を使用すると、ファイル共有を一元管理できます。 
 
 ここで紹介していない移行オプションについては、Microsoft サポートにお問い合わせください。
 

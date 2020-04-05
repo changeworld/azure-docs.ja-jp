@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 25a24c5bb44c77038a508e4c2f4e099132101f6a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0efccd2851885dad209d5548a76737c25777b891
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844736"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372447"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Event Grid に CloudEvents v1.0 スキーマを使用する
 
@@ -20,7 +20,7 @@ Azure Event Grid は、[既定のイベント スキーマ](event-schema.md)に�
 
 CloudEvents を使用すると、クラウド ベースのイベントを発行したり使用したりするための共通のイベント スキーマを提供し、相互運用性を簡略化することができます。 このスキーマを使用すれば、ツールを統一化したり、イベントのルーティングや処理方法を標準化したり、外部のイベント スキーマを共通の方法で逆シリアル化することができます。 共通のスキーマを使用することで、プラットフォーム間での作業をより簡単に統合できます。
 
-CloudEvents は、[Cloud Native Computing Foundation](https://www.cncf.io/) を通じ、複数の[コラボレーター](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (マイクロソフトを含む) によって構築されています。 現在、バージョン 1.0 が提供されています。
+CloudEvents は、[Cloud Native Computing Foundation](https://github.com/cloudevents/spec/blob/master/community/contributors.md) を通じ、複数の[コラボレーター](https://www.cncf.io/) (マイクロソフトを含む) によって構築されています。 現在、バージョン 1.0 が提供されています。
 
 この記事では、Event Grid で CloudEvents スキーマを使用する方法について説明します。
 
@@ -157,35 +157,27 @@ Event Grid を既に使い慣れている場合、不正使用を防ぐための
 
 ```csharp
 [FunctionName("HttpTrigger")]
-public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, ILogger log)
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", "options", Route = null)]HttpRequestMessage req, ILogger log)
 {
     log.LogInformation("C# HTTP trigger function processed a request.");
+    if (req.Method == "OPTIONS")
+    {
+        // If the request is for subscription validation, send back the validation code
+        
+        var response = req.CreateResponse(HttpStatusCode.OK);
+        response.Add("Webhook-Allowed-Origin", "eventgrid.azure.net");
+
+        return response;
+    }
 
     var requestmessage = await req.Content.ReadAsStringAsync();
     var message = JToken.Parse(requestmessage);
 
-    if (message.Type == JTokenType.Array)
-    {
-        // If the request is for subscription validation, send back the validation code.
-        if (string.Equals((string)message[0]["eventType"],
-        "Microsoft.EventGrid.SubscriptionValidationEvent",
-        System.StringComparison.OrdinalIgnoreCase))
-        {
-            log.LogInformation("Validate request received");
-            return req.CreateResponse<object>(new
-            {
-                validationResponse = message[0]["data"]["validationCode"]
-            });
-        }
-    }
-    else
-    {
-        // The request is not for subscription validation, so it's for an event.
-        // CloudEvents schema delivers one event at a time.
-        log.LogInformation($"Source: {message["source"]}");
-        log.LogInformation($"Time: {message["eventTime"]}");
-        log.LogInformation($"Event data: {message["data"].ToString()}");
-    }
+    // The request is not for subscription validation, so it's for an event.
+    // CloudEvents schema delivers one event at a time.
+    log.LogInformation($"Source: {message["source"]}");
+    log.LogInformation($"Time: {message["eventTime"]}");
+    log.LogInformation($"Event data: {message["data"].ToString()}");
 
     return req.CreateResponse(HttpStatusCode.OK);
 }
@@ -196,15 +188,18 @@ public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLeve
 ```javascript
 module.exports = function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
-
-    var message = req.body;
-    // If the request is for subscription validation, send back the validation code.
-    if (message.length > 0 && message[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
+    
+    if (req.method == "OPTIONS) {
+        // If the request is for subscription validation, send back the validation code
+        
         context.log('Validate request received');
-        var code = message[0].data.validationCode;
         context.res = { status: 200, body: { "ValidationResponse": code } };
+        context.res.headers.append('Webhook-Allowed-Origin', 'eventgrid.azure.net');
     }
-    else {
+    else
+    {
+        var message = req.body;
+        
         // The request is not for subscription validation, so it's for an event.
         // CloudEvents schema delivers one event at a time.
         var event = JSON.parse(message);
@@ -212,6 +207,7 @@ module.exports = function (context, req) {
         context.log('Time: ' + event.eventTime);
         context.log('Data: ' + JSON.stringify(event.data));
     }
+ 
     context.done();
 };
 ```

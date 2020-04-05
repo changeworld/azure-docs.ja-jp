@@ -13,10 +13,10 @@ metadata:
   ms.author: danlep
   ms.date: 11/08/2019
   ms.openlocfilehash: f73794898f00d78c5253c19f985f8ff531ae3c11
-  ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/06/2019
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "74895522"
 landingContent:
 - title: Azure Container Registry について
@@ -27,7 +27,7 @@ landingContent:
       url: container-registry-intro.md
     - text: レジストリ、リポジトリ、イメージ
       url: container-registry-concepts.md
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
@@ -69,7 +69,7 @@ landingContent:
       url: container-registry-authentication.md
     - text: ベスト プラクティス
       url: container-registry-best-practices.md
-    - text: FAQ
+    - text: よく寄せられる質問
       url: container-registry-faq.md
 - title: ACR タスク
   linkLists:

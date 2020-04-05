@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78897846"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Gremlin SDK で Azure Cosmos DB リソース トークンを使用する

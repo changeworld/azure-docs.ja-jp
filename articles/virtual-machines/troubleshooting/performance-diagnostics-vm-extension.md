@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71057537"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
@@ -84,11 +84,11 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 |storageAccountName|mystorageaccount|診断ログと結果を格納するストレージ アカウントの名前。
 |storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|ストレージ アカウントのキー。
 
-## <a name="install-the-extension"></a>拡張機能のインストール
+## <a name="install-the-extension"></a>拡張機能をインストールする
 
 Windows 仮想マシンにこの拡張機能をインストールするには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. この拡張機能をインストールする仮想マシンを選びます。
 
     ![仮想マシンが強調表示されている Azure Portal のスクリーンショット](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -233,7 +233,7 @@ PerfInsights ツールは、選んだシナリオに応じて、さまざまな�
 
 ## <a name="view-and-share-the-results"></a>結果を表示および共有する
 
-拡張機能の出力は、インストール時に指定したストレージ アカウントにアップロードした zip ファイルに含まれます。このファイルは [Shared Access Signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) を使用して 30 日間共有されます。 この zip ファイルには、診断ログと、結果と推奨事項に関するレポートが含まれています。 出力 zip ファイルへの SAS リンクは、**C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\\\<version>** フォルダー以下の *zipfilename*_saslink.txt というテキスト ファイル内で確認できます。 このリンクがあれば、誰でも zip ファイルをダウンロードできます。
+拡張機能の出力は、インストール時に指定したストレージ アカウントにアップロードした zip ファイルに含まれます。このファイルは [Shared Access Signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) を使用して 30 日間共有されます。 この zip ファイルには、診断ログと、結果と推奨事項に関するレポートが含まれています。 出力 zip ファイルへの SAS リンクは、*C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics***version>\\ フォルダー以下の \<zipfilename**_saslink.txt というテキスト ファイル内で確認できます。 このリンクがあれば、誰でも zip ファイルをダウンロードできます。
 
 サポート チケットの作業を行うサポート エンジニアを支援するために、Microsoft がこの SAS リンクを使って診断データをダウンロードする場合があります。
 

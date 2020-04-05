@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 2877284c419da4999e23490fc986e5da44e5d92e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514512"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Relay ハイブリッド接続 Node API の概要
@@ -195,7 +195,7 @@ var server = createRelayedServer([options], [connectCallback] )
  
 ##### <a name="relayedconnect"></a>relayedConnect
 
-`relayedConnect` を使用して、単純に `createRelayedServer` ヘルパーを関数でミラーリングすることにより、クライアント接続を作成し、結果のソケットでの "open" イベントをサブスクライブできます。
+`createRelayedServer` を使用して、単純に `relayedConnect` ヘルパーを関数でミラーリングすることにより、クライアント接続を作成し、結果のソケットでの "open" イベントをサブスクライブできます。
 
 ```JavaScript
 var uri = WebSocket.createRelaySendUri(ns, path);

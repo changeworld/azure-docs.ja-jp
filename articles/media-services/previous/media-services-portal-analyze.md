@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0e49e90209c7337081458b7c214d27b37d3b4da1
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74462619"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Azure Portal を使用してメディアを分析する 
@@ -60,7 +60,7 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 
 これらの形式のクローズド キャプション (CC) ファイルを使用して、聴覚障がいを持つユーザーがオーディオ ファイルとビデオ ファイルにアクセスできるようにします。
 
-### <a name="keywords"></a>キーワード
+### <a name="keywords"></a>Keywords
 キーワード XML ファイルを生成する場合にこのオプションを選択します。 キーワード XML ファイルには音声コンテンツから抽出されるキーワードと、頻度とオフセットの情報が含まれます。
 
 ### <a name="job-name"></a>ジョブ名
@@ -134,10 +134,10 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 ### <a name="version"></a>Version 
 "2.0" を使用しています。
 
-### <a name="mode"></a>Mode
+### <a name="mode"></a>モード
 バージョン 2.0 では `Mode` 設定が無視されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

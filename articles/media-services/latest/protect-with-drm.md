@@ -16,10 +16,10 @@ ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 14ba5f270138db22a76fd697b264046e22577427
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79086736"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>チュートリアル:DRM 動的暗号化とライセンス配信サービスの使用

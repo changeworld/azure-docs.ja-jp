@@ -1,20 +1,19 @@
 ---
 title: Cloud パートナー ポータルでの管理 | Azure Marketplace
 description: PC 記事をポイントしている、非推奨の CPP 記事は、「Azure Marketplace 用の Cloud パートナー ポータルのアカウント管理に使用できる操作の種類について説明します」でした。
-services: Azure, Marketplace, Cloud Partner Portal, Partner Center
-author: ChJenk
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.author: v-chjen
-ms.openlocfilehash: 4d586e45b0d86bedce61eef69a87d3fc187cf279
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.author: dsindona
+ms.openlocfilehash: ce7e56352533072c625d0ea54a77fa6c4860f2e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666394"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288446"
 ---
 # <a name="cloud-partner-portal-management"></a>Cloud パートナー ポータルでの管理
 
-この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/)に移行されました。 詳細については、「[パートナー センターで商業マーケットプレース アカウントを管理する方法](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)」を参照してください。
+この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/) に移行されました。 詳細については、「[パートナー センターで Commercial Marketplace アカウントを管理する方法](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)」を参照してください。

@@ -3,14 +3,16 @@ title: Language Understanding (LUIS) とは
 description: Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話に適用して、全体の意味を予測し、関連性のある詳細な情報を引き出すクラウド ベースの API サービスです。
 ms.topic: overview
 ms.date: 02/23/2020
-ms.openlocfilehash: c74b842d27146683ef3168a534b9a012ae48fcad
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 98fb936422f8e23e728efea19fa2cd75d90fac57
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587041"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053344"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話に適用して、全体の意味を予測し、関連性のある詳細な情報を引き出すクラウド ベースの API サービスです。
 
@@ -54,7 +56,7 @@ LUIS モデルの出発点は、ユーザーの目的のカテゴリです。こ
 |ユーザーの発話例|Intent|抽出された日付|
 |-----------|-----------|-----------|
 |`Book a flight to __Seattle__?`|BookFlight|Seattle|
-|`When does your store __open__?`|StoreHoursAndLocation|open|
+|`When does your store __open__?`|StoreHoursAndLocation|オープン|
 |`Schedule a meeting at __1pm__ with __Bob__ in Distribution`|ScheduleMeeting|1pm、Bob (午後 1 時、Bob)|
 
 ## <a name="query-prediction-endpoint"></a>予測エンドポイントに対するクエリの実行

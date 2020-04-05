@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70881030"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure Dedicated HSM の物理的なセキュリティ
@@ -51,12 +51,12 @@ HSM は、ハードウェア アプライアンス (実際の HSM はアプラ�
 
 HSM は、お客様が作成した仮想ネットワークにプロビジョニングされます。 これは、お客様のプライベート IUP アドレス空間です。  この構成では、貴重な論理ネットワーク レベルの分離が提供され、確実にお客様だけがアクセスするようにします。 これは、すべての論理レベルのセキュリティ コントロールがお客様の責任で行われることを意味します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 デバイスのプロビジョニング、アプリケーションの設計、またはアプリケーションのデプロイ前に、高可用性、セキュリティ、サポート可能性など、サービスのすべての主要概念を十分に理解しておくことをお勧めします。
 
 * [高可用性](high-availability.md)
 * [ネットワーク](networking.md)
 * [サポート可能性](supportability.md)
-* [監視](monitoring.md)
+* [Monitoring](monitoring.md)
 * [デプロイ アーキテクチャ](deployment-architecture.md)

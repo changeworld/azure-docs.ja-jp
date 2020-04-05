@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
 ms.openlocfilehash: 189a0bc80ab2894b2888b496b3beb45249d859f6
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75921128"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Azure for Students Starter を使用して関数を作成する
@@ -72,9 +72,9 @@ Azure アカウントで Azure Portal (<https://portal.azure.com>) にサイン�
 
 次に、新しい Function App で関数を作成します。
 
-## <a name="create-function"></a>HTTP によってトリガーされる関数の作成
+## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>HTTP によってトリガーされる関数の作成
 
-1. 新しい関数アプリを展開し、 **[関数]** の横にある **[+]** ボタン、 **[ポータル内]** 、 **[続行]** の順に選択します。
+1. 新しい関数アプリを展開し、 **[関数]+ の横にある** [ **]** ボタン、 **[ポータル内]** 、 **[続行]** の順に選択します。
 
     ![Functions のクイック スタート: プラットフォームを選択する。](./media/functions-create-student-starter/function-app-quickstart-choose-portal.png)
 

@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 04/05/2018
 ms.author: labrenne
 ms.openlocfilehash: b1f4fb0207d4f659861dbd3fdfd1b2d502409935
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022462"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights による Azure Batch .NET アプリケーションの監視とデバッグ
@@ -37,7 +37,7 @@ ms.locfileid: "77022462"
 
 * [Application Insights リソース](../azure-monitor/app/create-new-resource.md )
   
-   * Azure Portal を使用して、Application Insights の "*リソース*" を作成します。 **[アプリケーションの種類]** として *[全般]* を選択します。
+   * Azure Portal を使用して、Application Insights の "*リソース*" を作成します。 *[アプリケーションの種類]* として **[全般]** を選択します。
 
    * ポータルから[インストルメンテーション キー](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)をコピーします。 これはこの記事の中で後で必要になります。
   

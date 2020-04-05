@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c80ab4acd745717e2e68ae7d9dc818594ad1ce9e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087085"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501466"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でプロビジョニング済みのスループット コストを最適化する
 
@@ -155,7 +155,7 @@ Azure Cosmos DB では既定で、すべてのレコードのすべてのプロ�
 
 1. コンテナーやデータベースに大幅にオーバー プロビジョニングされたスループットがある場合は、プロビジョニングされた RU と消費された RU を確認して、ワークロードを微調整する必要があります。  
 
-2. アプリケーションに必要な予約済みスループットの量を推定するには、典型的な操作の実行に関連する要求ユニット (RU) の料金を記録し、アプリケーションが使用する代表的な Azure Cosmos コンテナーまたはデータベースに基づいて、1 秒ごとに実行される操作数を推定します。 さらに、通常のクエリとそれらの使用量も忘れずに測定し、考慮に入れます。 プログラムまたはポータルでクエリの RU コストを見積もる方法については、[クエリのコストの最適化](online-backup-and-restore.md)に関する記事をご覧ください。 
+2. アプリケーションに必要な予約済みスループットの量を推定するには、典型的な操作の実行に関連する要求ユニット (RU) の料金を記録し、アプリケーションが使用する代表的な Azure Cosmos コンテナーまたはデータベースに基づいて、1 秒ごとに実行される操作数を推定します。 さらに、通常のクエリとそれらの使用量も忘れずに測定し、考慮に入れます。 プログラムまたはポータルでクエリの RU コストを見積もる方法については、[クエリのコストの最適化](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)に関する記事をご覧ください。 
 
 3. 操作とその RU コストを取得するもう 1 つの方法は、Azure Monitor ログを有効にすることで、操作/継続時間と要求の料金の明細が提供されます。 Azure Cosmos DB では、すべての操作に対して要求の料金が提供されるので、すべての操作の料金を応答から保存して、分析に使用できます。 
 

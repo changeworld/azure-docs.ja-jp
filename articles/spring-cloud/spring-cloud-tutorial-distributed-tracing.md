@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: brendm
 ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273208"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud で分散トレースを使用する

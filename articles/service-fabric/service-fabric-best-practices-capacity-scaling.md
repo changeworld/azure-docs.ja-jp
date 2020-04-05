@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.openlocfilehash: bf228e17ca24df9833f96f0c6fd3ef232cdf7ae6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75377465"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229475"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric の容量計画とスケーリング
 

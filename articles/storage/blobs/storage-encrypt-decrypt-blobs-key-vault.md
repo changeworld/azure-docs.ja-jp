@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
 ms.openlocfilehash: c83e56a47f4b212a5612cb9e6965ce8e73228dcb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74892891"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>チュートリアル - Azure Key Vault を使用して BLOB を暗号化および復号化する
@@ -29,7 +29,7 @@ Azure Storage のクライアント側暗号化の概要については、「[Mi
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下が必要です。
+このチュートリアルを完了するには次の準備が必要です。
 
 * Azure ストレージ アカウント
 * Visual Studio 2013 以降
@@ -52,7 +52,7 @@ Azure Storage のクライアント側暗号化の概要については、「[Mi
 
 * Key Vault を作成します。
 * キーやシークレットを Key Vault に追加します。
-* Azure Active Directory にアプリケーションを登録します。
+* アプリケーションを Azure Active Directory に登録します。
 * キーまたはシークレットを使用してアプリケーションを承認します。
 
 アプリケーションを Azure Active Directory に登録するときに生成された ClientID と ClientSecret を記録しておきます。
@@ -232,7 +232,7 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 
 これで終了です。 機能を有効にご活用ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 C# での Microsoft Azure Storage の使用について詳しくは、「[.NET 用の Microsoft Azure Storage クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx)」をご覧ください。
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.openlocfilehash: fa62495a7b51c9a06a91102299378c15e811eae0
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74872113"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos コンテナーの一意のキーを定義する
@@ -19,7 +19,7 @@ ms.locfileid: "74872113"
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. [新しい Azure Cosmos アカウントを作成する](create-sql-api-dotnet.md#create-account)か、既存のアカウントを選択します。
 
@@ -145,7 +145,7 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 })
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [パーティション分割](partition-data.md)の詳細を学習する
 - [インデックス作成の動作方法](index-overview.md)の詳細を確認する

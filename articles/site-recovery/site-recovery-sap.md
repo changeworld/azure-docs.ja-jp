@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190791"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>多層 SAP NetWeaver アプリ デプロイのディザスター リカバリーを設定する

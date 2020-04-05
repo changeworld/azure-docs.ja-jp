@@ -8,16 +8,16 @@ ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 28d7b2955c84833841760e441cd2919181e22bc7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572790"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services を管理する
 Azure に Analysis Services サーバーを作成した後は、すぐに、または後で、管理タスクを行うことが必要になる場合があります。 たとえば、データ更新処理の実行、サーバー上のモデルにアクセスできるユーザーの制御、サーバーの正常性の監視などです。 Azure Portal または SQL Server Management Studio (SSMS) のどちらかでしか実行できないもの、またはどちらでも実行できるものがあります。
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 [Azure Portal](https://portal.azure.com/) では、サーバーの作成と削除、サーバー リソースの監視、サイズの変更、サーバーにアクセスできるユーザーの管理を行うことができます。  問題がある場合は、サポート要求を送信することもできます。
 
 ![Azure でサーバー名を取得する](./media/analysis-services-manage/aas-manage-portal.png)
@@ -56,13 +56,13 @@ Azure のサーバーへの接続は、組織内のサーバー インスタン�
     ![SSMS で接続する](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
 ## <a name="server-administrators-and-database-users"></a>サーバー管理者とデータベース ユーザー
-Azure Analysis Services のユーザーには、サーバー管理者とデータベース ユーザーの 2 種類があります。 両方のユーザーが Azure Active Directory に必要で、組織の電子メール アドレスまたは UPN で指定されている必要があります。 詳しくは、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」をご覧ください。
+Azure Analysis Services のユーザーには、サーバー管理者とデータベース ユーザーの 2 種類があります。 両方のユーザーが Azure Active Directory に必要で、組織の電子メール アドレスまたは UPN で指定されている必要があります。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。
 
 
 ## <a name="troubleshooting-connection-problems"></a>接続の問題のトラブルシューティング
 SSMS を使用して接続する際に問題が発生した場合、ログイン キャッシュをクリアすることが必要になることがあります。 ディスクには何もキャッシュされません。キャッシュをクリアするには、接続プロセスを閉じてからもう一度開始してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 新しいサーバーに表形式モデルをまだデプロイしていない場合は、ここでやるのが絶好のタイミングです。 詳しくは、「[Azure Analysis Services にデプロイする](analysis-services-deploy.md)」をご覧ください。
 
 モデルをサーバーにデプロイしてある場合は、クライアントまたはブラウザーを使って接続できる状態になっています。 詳しくは、「[Get data from Azure Analysis Services server](analysis-services-connect.md)」(Azure Analysis Services サーバーからデータを取得する) をご覧ください。

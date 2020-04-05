@@ -6,12 +6,12 @@ author: iainfoulds
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 2071ba93e826fabc4778426e2b4404b7475d1bd2
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 55d7a00a0a8c0b655f06810f8bcea7126bb9167f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594399"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79368419"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターでノードの数をスケーリングする
 
@@ -19,7 +19,7 @@ ms.locfileid: "77594399"
 
 ## <a name="scale-the-cluster-nodes"></a>クラスター ノードのスケーリング
 
-最初に、[az aks show][az-aks-show] コマンドを使用してノード プールの*名前*を取得します。 次の例では、*myResourceGroup* リソース グループ内の *myAKSCluster* という名前のクラスターのノード プール名を取得します。
+最初に、*az aks show* コマンドを使用してノード プールの[名前][az-aks-show]を取得します。 次の例では、*myResourceGroup* リソース グループ内の *myAKSCluster* という名前のクラスターのノード プール名を取得します。
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
@@ -27,9 +27,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPo
 
 次の出力例は、*name* が *nodepool1* であることを示しています。
 
-```console
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
-
+```output
 [
   {
     "count": 1,

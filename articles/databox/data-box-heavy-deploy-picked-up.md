@@ -10,11 +10,11 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: cfb9f54f5ba219a4db87144ab1e7ebff2b72b69e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514444"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214192"
 ---
 ::: zone target = "docs"
 

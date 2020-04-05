@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768170"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230123"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同期: フィルター処理の構成
 フィルター処理を使用することによって、オンプレミスのディレクトリからどのオブジェクトを Azure Active Directory (Azure AD) に反映するかを制御できます。 既定の構成では、構成されているフォレスト内の全ドメインの全オブジェクトが対象となります。 通常は、この構成を推奨します。 Office 365 のワークロード (Exchange Online、Skype for Business など) を使っているユーザーには、完全なグローバル アドレス一覧を表示した方が、電子メールの送信先や電話の相手を探すうえで便利です。 既定では、オンプレミス環境の Exchange または Lync と同じ利便性が得られるように構成されています。
@@ -140,7 +140,7 @@ November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) より�
     * 完全同期
     * 差分インポート
     * 差分同期
-    * [エクスポート]
+    * エクスポート
 3. 各プロファイルについて、**追加対象**のドメインと**削除対象**のドメインを調整します。
     1. 5 つのプロファイルのそれぞれについて、**追加対象**のドメインごとに次の手順を実行します。
         1. 実行プロファイルを選択し、 **[新しいステップ]** をクリックします。

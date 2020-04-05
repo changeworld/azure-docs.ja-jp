@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/26/2019
+ms.date: 03/25/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a721d1e486010e22927512985611cccdd99f4505
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 707b03d46615f3acfa0797d1dc0865d53ef75dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78248318"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282122"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID とは
 
@@ -56,7 +56,7 @@ Azure AD Authentication をサポートするサービスのアクセス トー�
 
 次の図は、マネージド サービス ID と Azure 仮想マシン (VM) が連携するようすを示したものです。
 
-![マネージド サービス ID と Azure VM](media/overview/msi-vm-vmextension-imds-example.png)
+![マネージド サービス ID と Azure VM](media/overview/data-flow.png)
 
 |  プロパティ    | システム割り当てマネージド ID | ユーザー割り当てマネージド ID |
 |------|----------------------------------|--------------------------------|
@@ -143,7 +143,7 @@ Linux VM でマネージド ID を使用する方法については、以下の�
 * [Azure Data Factory](../../data-factory/data-factory-service-identity.md)
 
 
-## この機能をサポートする Azure サービスは?<a name="which-azure-services-support-managed-identity"></a>
+## <a name="what-azure-services-support-the-feature"></a>この機能をサポートする Azure サービスは?<a name="which-azure-services-support-managed-identity"></a>
 
 Azure リソースのマネージド ID は、Azure AD 認証をサポートするサービスの認証に使用することができます。 Azure リソースのマネージド ID 機能をサポートする Azure サービスの一覧については、「[Services that support managed identities for Azure resources (Azure リソースのマネージド ID をサポートするサービス)](services-support-msi.md)」を参照してください。
 

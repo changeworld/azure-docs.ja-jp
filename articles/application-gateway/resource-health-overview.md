@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67659425"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Azure Application Gateway の Resource Health の概要
@@ -25,7 +25,7 @@ Application Gateway では、Resource Health は、ゲートウェイが送信�
 
 Application Gateway の正常性状態は、次のいずれかの状態として表示されます。
 
-## <a name="available"></a>使用可能
+## <a name="available"></a>利用可能
 
 **[使用可能]** 状態は、サービスにおいて、リソースの正常性に影響するイベントが一切検出されていないことを意味します。 ゲートウェイが過去 24 時間以内に予定外のダウンタイムから回復した場合は、**最近解決された**ことを示す通知が表示されます。
 
@@ -59,6 +59,6 @@ Resource Health は、イベントと復旧プロセスについてさらに詳�
 
 ![[低下] 状態](media/resource-health-overview/degraded.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Application Gateway の Web アプリケーション ファイアウォール (WAF) のトラブルシューティングについては、「[Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) のトラブルシューティング](web-application-firewall-troubleshoot.md)」を参照してください。

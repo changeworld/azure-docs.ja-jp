@@ -4,14 +4,14 @@ description: Azure Cosmos DB がデータベースの保護とデータのセキ
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0c97d70ea3e5c7fdd14b0f97c5e393359f2b948e
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 30991f17970eefe1a140cdd70e1f6b305160349c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79087229"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537331"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のセキュリティ - 概要
 
@@ -66,8 +66,8 @@ ms.locfileid: "79087229"
 |グローバル レプリケーション|Azure Cosmos DB は設定不要のグローバル分散を実行し、ボタンをクリックするだけで Azure の世界中のデータセンターにデータをレプリケートすることができます。 グローバル レプリケーションでは、グローバルなスケールを行い、全世界のデータに低待機時間でアクセスすることができます。<br><br>セキュリティの点では、グローバル レプリケーションは、局地的な障害からデータが保護されることを保証します。<br><br>詳細については、[データのグローバル分散](distribute-data-globally.md)に関するページを参照してください。|
 |リージョン間フェールオーバー|複数のデータセンターにデータをレプリケートしているときに、リージョンのデータセンターがオフラインになった場合、Azure Cosmos DB は、操作を自動的にロールオーバーします。 データをレプリケートするリージョンを使用して、フェールオーバーするリージョンの優先度リストを作成することができます。 <br><br>詳細については、[Azure Cosmos DB のリージョン内フェールオーバー](high-availability.md)に関するページを参照してください。|
 |ローカル レプリケーション|Azure Cosmos DB は、1 つのデータセンター内でも、高可用性を維持するためにデータを自動的にレプリケートします。[一貫性レベル](consistency-levels.md)は顧客自身が選択できます。 このレプリケーションによって、すべての単一リージョン アカウントと緩やかな整合性を持つすべての複数リージョン アカウントに対する 99.99% の[可用性 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)、およびすべての複数リージョン データベース アカウントに対する 99.999% の読み取り可用性が保証されます。|
-|オンライン バックアップの自動化|Azure Cosmos データベースは定期的にバックアップされ、geo 冗長ストアに格納されます。 <br><br>詳細については、「[Azure Cosmos DB での自動オンライン バックアップと復元](online-backup-and-restore.md)」を参照してください。|
-|削除されたデータの復元|自動化されたオンライン バックアップを使用して、誤って削除したデータを最大 30 日以内に回復することができます。 <br><br>詳細については、「[Azure Cosmos DB での自動オンライン バックアップと復元](online-backup-and-restore.md)」を参照してください。|
+|オンライン バックアップの自動化|Azure Cosmos データベースは定期的にバックアップされ、geo 冗長ストアに格納されます。 <br><br>詳細については、「[Azure Cosmos DB での自動オンライン バックアップと復元](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)」を参照してください。|
+|削除されたデータの復元|自動化されたオンライン バックアップを使用して、誤って削除したデータを最大 30 日以内に回復することができます。 <br><br>詳細については、「[Azure Cosmos DB での自動オンライン バックアップと復元](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)」を参照してください。|
 |機密データの保護と分離|「新機能」に示されているリージョンのすべてのデータが保存時に暗号化されます。<br><br>個人データと他の機密データを特定のコンテナーと読み取り/書き込みに分離するか、読み取り専用アクセスを特定のユーザーに限定することができます。|
 |攻撃の監視|[監査ログとアクティビティ ログ](logging.md)を使用すると、アカウントの正常なアクティビティと異常なアクティビティを監視できます。 この表の後のスクリーンショットに示すように、リソースに対して実行された操作、操作を開始した人物、操作の発生日時、操作の状態などを確認できます。|
 |攻撃への対応|Azure のサポートに連絡して攻撃の可能性を報告すると、5 段階のインシデント対応プロセスが開始されます。 この 5 段階のプロセスの目標は、問題が検出され、調査が開始された後、通常のサービスのセキュリティと操作を可能な限り早急に復元することです。<br><br>詳細については、「[Microsoft Azure Security Response in the Cloud (クラウドでの Microsoft Azure のセキュリティへの対応)](https://aka.ms/securityresponsepaper)」を参照してください。|

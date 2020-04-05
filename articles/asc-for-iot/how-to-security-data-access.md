@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 3ddd9b2c8373746a65cd78f0a81b60d097cd9f38
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68597181"
 ---
 # <a name="access-your-security-data"></a>セキュリティ データにアクセスする 
@@ -174,7 +174,7 @@ SecurityRecommendation
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Medium        | 4   |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Microsoft Azure Security Center for IoT の[概要](overview.md)を読みます
 - Azure Security Center for IoT の[アーキテクチャ](architecture.md)を確認します

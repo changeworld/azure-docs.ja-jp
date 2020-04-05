@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: iainfou
 ms.openlocfilehash: 175bfe63176b78c5aeafc7147c46dd5ab1110325
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71257961"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services のサービス プリンシパル アラート
@@ -40,7 +40,7 @@ ms.locfileid: "71257961"
 1. **[エンタープライズ アプリケーション]** を選択します。 **[アプリケーションの種類]** ドロップダウン メニューの *[すべてのアプリケーション]* を選択し、 **[適用]** を選択します。
 1. 各アプリケーション ID を検索します。 既存のアプリケーションが見つからない場合は、*解決策*の手順に従ってサービス プリンシパルを作成するか、名前空間を再登録します。
 
-    | アプリケーション ID | 解決策 |
+    | アプリケーション ID | 解像度 |
     | :--- | :--- |
     | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [不足しているサービス プリンシパルを再作成する](#recreate-a-missing-service-principal) |
     | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Microsoft.AAD 名前空間を再登録する](#re-register-the-microsoft-aad-namespace) |
@@ -85,7 +85,7 @@ Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動�
 
 Azure AD DS は、Azure AD からユーザー アカウントと資格情報を自動的に同期します。 このプロセスで使用されている Azure AD アプリケーションに問題がある場合、Azure AD DS と Azure AD 間の資格情報の同期は失敗します。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 資格情報の同期に使用する Azure AD アプリケーションを再作成するには、Azure AD PowerShell を使用して次の手順を実行します。 詳細については、[Azure AD PowerShell のインストール](/powershell/azure/active-directory/install-adv2)に関するページを参照してください。
 
@@ -107,7 +107,7 @@ Azure AD DS は、Azure AD からユーザー アカウントと資格情報を�
 
 両方のアプリケーションを削除した後、Azure プラットフォームによってそれらが自動的に再作成され、パスワード同期の再開が試行されます。 Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動的に更新され、アラートが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ問題が解決しない場合は、さらなるトラブルシューティングの支援を求めて、[Azure サポート リクエストを開いて][azure-support]ください。
 

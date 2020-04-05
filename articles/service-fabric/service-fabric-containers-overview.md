@@ -4,10 +4,10 @@ description: Service Fabric に関する説明と、コンテナーを使用し�
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458212"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric とコンテナー
@@ -24,8 +24,8 @@ Service Fabric は、マシン クラスター全体にマイクロサービス�
 
 Service Fabric をすぐに開始し、コンテナーを試してみるには、クイック スタート、チュートリアル、またはサンプルを使用してください。  
 
-[クイック スタート:Linux コンテナー アプリケーションを Service Fabric にデプロイする](service-fabric-quickstart-containers-linux.md)  
-[クイック スタート:Windows コンテナー アプリケーションを Service Fabric にデプロイする](service-fabric-quickstart-containers.md)  
+[クイック スタート: Linux コンテナー アプリケーションを Service Fabric にデプロイする](service-fabric-quickstart-containers-linux.md)  
+[クイック スタート: Windows コンテナー アプリケーションを Service Fabric にデプロイする](service-fabric-quickstart-containers.md)  
 [既存の .NET アプリをコンテナー化する](service-fabric-host-app-in-a-container.md)  
 [Service Fabric コンテナーのサンプル](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
 
@@ -37,10 +37,10 @@ Service Fabric をすぐに開始し、コンテナーを試してみるには�
 
 仮想マシンと比較して、コンテナーには次の利点があります。
 
-* **Small**:コンテナーは 1 つのストレージ領域を使用し、複数のバージョンと更新プログラムを階層化することで効率を高めています。
-* **高速**:コンテナーはオペレーティング システム全体を再起動する必要がないため、はるかに高速に (通常は秒単位で) 起動できます。
-* **移植性**:コンテナー化されたアプリケーションのイメージを、クラウドまたはオンプレミスで実行されるように移植することができます。仮想マシンへの移植または物理マシン上への直接の移植が可能です。
-* **リソース ガバナンス**:コンテナーがホスト上で利用する物理リソースを制限できるようにします。
+* **小さい**: コンテナーは 1 つのストレージ領域を使用し、複数のバージョンと更新プログラムを階層化することで効率を高めています。
+* **高速**: コンテナーはオペレーティング システム全体を再起動する必要がないため、はるかに高速に (通常は秒単位で) 起動できます。
+* **移植性**: コンテナー化されたアプリケーションのイメージを、クラウドまたはオンプレミスで実行されるように移植することができます。仮想マシンへの移植または物理マシン上への直接の移植が可能です。
+* **リソース ガバナンスを実現し** 、コンテナーがホスト上で利用する物理リソースを制限できるようにします。
 
 ### <a name="container-types-and-supported-environments"></a>コンテナーの種類とサポートされる環境
 
@@ -65,11 +65,11 @@ Windows ベースのチュートリアルについては、「[Windows で初め
 
 コンテナーの選択が望まれる一般的な例を以下に示します。
 
-* **IIS のリフトとシフト**:既存の [ASP.NET MVC](https://www.asp.net/mvc) アプリを ASP.NET Core に移行する代わりにコンテナー内に配置できます。 これらの ASP.NET MVC アプリケーションは、インターネット インフォメーション サービス (IIS) に依存します。 このようなアプリケーションは、事前に作成された IIS イメージからコンテナー イメージにパッケージ化し、Service Fabric でデプロイすることができます。 Windows コンテナーの作成方法については、「[Windows Server のコンテナー イメージ](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)」を参照してください。
+* **IIS のリフトとシフト**: 既存の [ASP.NET MVC](https://www.asp.net/mvc) アプリを ASP.NET Core に移行する代わりにコンテナー内に配置できます。 これらの ASP.NET MVC アプリケーションは、インターネット インフォメーション サービス (IIS) に依存します。 このようなアプリケーションは、事前に作成された IIS イメージからコンテナー イメージにパッケージ化し、Service Fabric でデプロイすることができます。 Windows コンテナーの作成方法については、「[Windows Server のコンテナー イメージ](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)」を参照してください。
 
-* **コンテナーと Service Fabric マイクロサービスの混在使用**:アプリケーションの一部として、既存のコンテナー イメージを使用できます。 たとえば、より多くのバックエンド計算に対応するために、アプリケーションやステートフル サービスの Web フロントエンドに [NGINX コンテナー](https://hub.docker.com/_/nginx/)を使用できます。
+* **コンテナーと Service Fabric マイクロサービスの混在使用**: アプリケーションの一部として、既存のコンテナー イメージを使用できます。 たとえば、より多くのバックエンド計算に対応するために、アプリケーションやステートフル サービスの Web フロントエンドに [NGINX コンテナー](https://hub.docker.com/_/nginx/)を使用できます。
 
-* **"うるさい隣人" サービスの影響の軽減**:コンテナーのリソース ガバナンス機能を使用して、サービスがホスト上で使用するリソースを制限することができます。 サービスが多くのリソースを使用し、他の操作のパフォーマンスに影響を及ぼす可能性がある場合 (実行時間の長いクエリのような操作など)、リソース ガバナンス機能を備えたコンテナーにそれらのサービスを配置することを検討してください。
+* **"うるさい隣人" サービスの影響の軽減**: コンテナーのリソース ガバナンス機能を使用し、ホストでサービスが使用するリソースを制約できます。 サービスが多くのリソースを使用し、他の操作のパフォーマンスに影響を及ぼす可能性がある場合 (実行時間の長いクエリのような操作など)、リソース ガバナンス機能を備えたコンテナーにそれらのサービスを配置することを検討してください。
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric によるコンテナーのサポート
 

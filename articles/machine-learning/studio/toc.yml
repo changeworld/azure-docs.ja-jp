@@ -143,8 +143,6 @@
           href: consuming-from-excel.md
         - name: Excel アドインを使用する
           href: excel-add-in-for-web-services.md
-        - name: Batch プールを使用する
-          href: dedicated-capacity-for-bes-jobs.md
     - name: ユース ケース
       items:
         - name: 顧客離反

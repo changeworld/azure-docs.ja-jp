@@ -12,16 +12,16 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: 473c58fa5097c4f4e318543c59ad1cf3a3899594
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 17ca8cbb7a55e9c0d44af099f4884f71b1cd457a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194089"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124773"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL Database の Advanced Threat Protection
 
-[Azure SQL Database](sql-database-technical-overview.md) および [Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) の Advanced Threat Protection では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティが検出されます。
+[Azure SQL Database](sql-database-technical-overview.md) および [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) の Advanced Threat Protection では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティが検出されます。
 
 Advanced Threat Protection は、高度な SQL セキュリティ機能の統合パッケージである [Advanced Data Security](sql-database-advanced-data-security.md) (ADS) オファリングの一部です。 Advanced Threat Protection は、SQL ADS ポータルを使用して一元的にアクセスおよび管理できます。
 

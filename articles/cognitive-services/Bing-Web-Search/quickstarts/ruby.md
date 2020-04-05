@@ -12,10 +12,10 @@ ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 5f3e05752967be8872c0e6fd9008bfae05d950fa
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169534"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>クイック スタート:Ruby を使用して Bing Web Search API を呼び出す  

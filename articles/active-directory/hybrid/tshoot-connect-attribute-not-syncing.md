@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a639b14c9313179816f6376aa0c5642a645ea344
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60455967"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Azure AD Connect で同期していない属性のトラブルシューティング
@@ -30,7 +30,7 @@ ms.locfileid: "60455967"
 
   ![Azure AD Connect の同期プロセス](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/syncingprocess.png)
 
-### <a name="terminology"></a>**用語集**
+### <a name="terminology"></a>**用語**
 
 * **CS:** コネクタ スペース。データベース内のテーブルです。
 * **MV:** メタバース。データベース内のテーブルです。
@@ -43,7 +43,7 @@ ms.locfileid: "60455967"
 
 * AAD からインポートする:Azure Active Directory オブジェクトが AAD CS に取り込まれます。
 
-* 同期:**受信同期規則**と送信同期規則は、優先順位の番号の低い方から順に実行されます。 同期規則は、デスクトップ アプリケーションから**同期規則エディター**にアクセスして表示することができます。 **受信同期規則**は、CS から MV にデータを取り込みます。 **送信同期規則**は、MV から CS にデータを移動します。
+* 同期:**受信同期規則**と**送信同期規則**は、優先順位の番号の低い方から順に実行されます。 同期規則は、デスクトップ アプリケーションから**同期規則エディター**にアクセスして表示することができます。 **受信同期規則**は、CS から MV にデータを取り込みます。 **送信同期規則**は、MV から CS にデータを移動します。
 
 * AD にエクスポートする:同期の実行後、AD CS から **Active Directory** にオブジェクトがエクスポートされます。
 

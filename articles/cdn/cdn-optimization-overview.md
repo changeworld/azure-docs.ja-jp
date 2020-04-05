@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: magattus
 ms.openlocfilehash: da8f17da9225da1d2b92bd8515d645bce9a1bbaa
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593648"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227359"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>コンテンツ配信の種類に応じて Azure CDN を最適化する
 

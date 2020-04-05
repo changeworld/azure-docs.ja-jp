@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173494"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229011"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>復旧計画に Azure Automation Runbook を追加する
 
@@ -43,7 +43,7 @@ Azure Automation アカウントと Runbook を復旧計画に追加します。
 
 スクリプトの実行時に、復旧計画のコンテキストが Runbook に挿入されます。 コンテキストには、この表にまとめられた変数が含まれています。
 
-| **変数名** | **説明** |
+| **[変数名]** | **説明** |
 | --- | --- |
 | RecoveryPlanName |復旧計画の名前。 名前に基づくアクションで使用されます。 |
 | FailoverType |テストまたは運用環境のどちらのフェールオーバーであるかを指定します。 
@@ -112,7 +112,7 @@ $vmMap = $RecoveryPlanContext.VmMap
 ## <a name="customize-the-recovery-plan"></a>復旧計画のカスタマイズ
 
 1. コンテナーで、 **[復旧計画 (Site Recovery)]** を選択します。
-2. 復旧計画を作成するには、 **[+Recovery Plan]\(+復旧計画\)** をクリックします。 [詳細情報](site-recovery-create-recovery-plans.md)。 復旧計画が既にある場合は、それを選択して開きます。
+2. 復旧計画を作成するには、 **[+Recovery Plan]\(+復旧計画\)** をクリックします。 [詳細については、こちらを参照してください](site-recovery-create-recovery-plans.md)。 復旧計画が既にある場合は、それを選択して開きます。
 3. 復旧計画のページで、 **[カスタマイズ]** をクリックします。
 
     ![[カスタマイズ] ボタンをクリックします。](media/site-recovery-runbook-automation-new/custom-rp.png)
@@ -259,7 +259,7 @@ $vmMap = $RecoveryPlanContext.VmMap
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Automation の実行アカウント](../automation/automation-create-runas-account.md)について学習します。
 - [Azure Automation サンプル スクリプト](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team)を確認します。

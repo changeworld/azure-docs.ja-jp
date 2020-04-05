@@ -1,20 +1,18 @@
 ---
-title: Azure Cost Management のデータを理解する | Microsoft Docs
+title: Azure Cost Management のデータを理解する
 description: この記事では、Azure Cost Management に含まれるデータと、それが処理、収集、表示、およびクローズされる頻度について詳しく説明します。
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.custom: ''
-ms.openlocfilehash: ff3ed7ee65fd34ef9cd3541832f9cffc306e1aa8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2af84ccf679d28251e34f4c76ced38b0cb653a58
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245369"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79203017"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -165,9 +163,9 @@ Enterprise Agreement (EA) サブスクリプション – 請求月が 3 月 31 
 Cost Management に表示されるコストは丸められます。 クエリ API によって返されるコストは丸められません。 次に例を示します。
 
 - Azure portal でのコスト分析 - 料金は、標準の丸めルールを使用して丸められます。0.5 以上の値は切り上げられます。それ以外の場合、コストは切り捨てられます。 丸め処理は、値が表示されるときにのみ行われます。 データの処理中および集約中は丸め処理は行われません。 たとえば、コスト分析でコストが次のように集計されるとします。
-  - 料金 1: $0.004
+  -    料金 1: $0.004
   - 料金 2: $0.004
-  - 表示される集計料金: 0.004 + 0.004 = 0.008。 表示される料金は $0.01 です。
+  -    表示される集計料金: 0.004 + 0.004 = 0.008。 表示される料金は $0.01 です。
 - クエリ API - 料金は小数点以下 8 桁で表示され、丸めは行われません。
 
 

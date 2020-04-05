@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
 ms.openlocfilehash: 4ae8f13b4887bbc41b17defa3f9a20c07ed0cb45
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76155589"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>クイック スタート:カスタム コマンドを作成する (プレビュー)
@@ -139,7 +139,7 @@ turn on the tv
 | ---------- | ---------------------------------------- | -------------------------------------------------- |
 | 規則の名前  | "ConfirmationResponse"                   | ルールの目的を説明する名前          |
 | 条件 | なし                                     | ルールを実行できるタイミングを決定する条件    |
-| アクション    | SpeechResponse "- Ok, turning on the TV" (了解です。テレビをつけます) | ルール条件が真のときに実行するアクション |
+| Actions    | SpeechResponse "- Ok, turning on the TV" (了解です。テレビをつけます) | ルール条件が真のときに実行するアクション |
 
 ## <a name="try-it-out"></a>試してみる
 

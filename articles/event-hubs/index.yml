@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 01/29/2020
-  ms.openlocfilehash: 28cfe37f6058dbedb11fb6fe01d932cbb10cbd18
-  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.openlocfilehash: 957a942efd618003dd3ff3f9f76be72799770859
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/12/2020
-  ms.locfileid: "77162958"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80288293"
 landingContent:
 - title: Event Hubs について
   linkLists:
@@ -70,7 +70,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Apache Kafka 対応イベント ハブを作成する
-      url: event-hubs-create-kafka-enabled.md
+      url: event-hubs-create.md
     - text: イベント ハブ内の Kafka ブローカーをミラーリングする
       url: event-hubs-kafka-mirror-maker-tutorial.md
     - text: Apache Spark をイベント ハブに接続する
@@ -143,7 +143,7 @@ landingContent:
       url: event-hubs-ip-filtering.md
     - text: 仮想ネットワーク サービス エンドポイントの使用
       url: event-hubs-service-endpoints.md
+    - text: プライベート エンドポイントを使用する
+      url: private-link-service.md
     - text: 保存データの暗号化のために顧客管理キーを構成する
       url: configure-customer-managed-key.md
-    - text: 仮想ネットワークの統合とファイアウォールを有効にする
-      url: event-hubs-tutorial-virtual-networks-firewalls.md

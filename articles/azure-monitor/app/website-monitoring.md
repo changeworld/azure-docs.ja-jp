@@ -4,12 +4,12 @@ description: このクイックスタートでは、Azure Monitor Application In
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 1c581867f1e7ebc29f2aaff97124a08bec4e3b40
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 495c40ca8e383dd5a3cf3ba9e5bd42e2936ea015
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670850"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132361"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>クイック スタート:Azure Monitor Application Insights を使って Web サイトの監視を開始する
 
@@ -126,7 +126,7 @@ Web サイトを監視するためのより高度な構成については、[Jav
 > [!NOTE]
 > 既存のリソース グループを使用した場合、以下の手順ではうまくいきません。個々の Application Insights リソースを削除する必要があります。 リソース グループを削除すると、そのグループに属している内在するリソースがすべて削除されるので注意してください。
 
-1. Azure Portal の左側のメニューから、 **[リソース グループ]** 、 **[myResourceGroup]** の順にクリックします。
+1. Azure portal の左側のメニューで **[リソース グループ]** をクリックし、**myResourceGroup** またはお使いの一時リソース グループの名前をクリックします。
 2. リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ

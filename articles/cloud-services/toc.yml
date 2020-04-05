@@ -125,7 +125,7 @@
           href: diagnostics-extension-to-storage.md
         - name: 診断を使用したクラウド サービスのトレース
           href: cloud-services-dotnet-diagnostics-trace-flow.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: デバッグ
           items:
@@ -139,6 +139,8 @@
           href: cloud-services-allocation-failures.md
         - name: クラウド サービス ロールがリサイクルされる一般的な原因
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
+        - name: アプリケーションで TLS 1.2 がサポートされていない
+          href: applications-dont-support-tls-1-2.md
         - name: ロールに対する既定の一時フォルダーのサイズが小さすぎる
           href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
         - name: 一般的なデプロイの問題

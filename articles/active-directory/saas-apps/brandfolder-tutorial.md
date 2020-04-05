@@ -17,10 +17,10 @@ ms.date: 01/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fec9ac9e2a8dbe27516f3050f41a82d15c268c37
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>チュートリアル:Azure Active Directory と Brandfolder の統合

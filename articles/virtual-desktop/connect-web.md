@@ -9,10 +9,10 @@ ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f508cac23d997b7595fcc7a4606608aa2dc15fc6
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128221"
 ---
 # <a name="connect-with-the-web-client"></a>Web クライアントに接続する
@@ -26,7 +26,7 @@ Web クライアントを利用すると、時間のかかるインストール 
 
 任意の HTML5 対応ブラウザーが動作しますが、正式にサポートしているオペレーティング システムとブラウザーは次のとおりです。
 
-| Browser           | サポート対象 OS                     | Notes               |
+| Browser           | サポート対象 OS                     | メモ               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |

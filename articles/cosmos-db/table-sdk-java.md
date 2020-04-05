@@ -9,13 +9,13 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: b9b5d51d0d35284d9854bd048396df84881266d2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76771418"
 ---
-# <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB Table API for Java:リリース ノートとリソース
+# <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB Table API for Java: リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -36,7 +36,7 @@ ms.locfileid: "76771418"
 
 ## <a name="release-notes"></a>リリース ノート
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"/>1.0.0
 * 一般公開リリース
 
 ## <a name="release-and-retirement-dates"></a>リリース日と提供終了日

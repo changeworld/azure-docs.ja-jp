@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760523"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233103"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。

@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: dapine
 ms.openlocfilehash: 59313528e4beb343f9ac1103d3f9f2faae5dfc16
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70966727"
 ---
 #### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>キー フレーズ抽出コンテナー用の docker pull

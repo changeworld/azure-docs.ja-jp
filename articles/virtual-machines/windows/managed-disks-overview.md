@@ -8,10 +8,10 @@ ms.date: 12/02/2019
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 7b2c2c1289a40d63b2f396ee59000c3aedb14c3d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75460032"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure マネージド ディスクの概要

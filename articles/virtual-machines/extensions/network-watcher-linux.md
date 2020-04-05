@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 69d2bfe4576a9350e905fc10f3d7617619e6284a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 712ec177996cd54d7bd6d184fea306009b58b083
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77915488"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531024"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Linux 用 Network Watcher Agent 仮想マシン拡張機能
 
@@ -75,7 +75,7 @@ Network Watcher Agent 拡張機能は、次の Linux ディストリビューシ
 
 ### <a name="property-values"></a>プロパティ値
 
-| 名前 | 値/例 |
+| Name | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |
@@ -92,7 +92,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートを使って
 
 次の例では、従来のデプロイ モデルを使用してデプロイされた既存の VM に Network Watcher Agent VM 拡張機能をデプロイします。
 
-```azurecli
+```console
 azure config mode asm
 azure vm extension set myVM1 NetworkWatcherAgentLinux Microsoft.Azure.NetworkWatcher 1.4
 ```

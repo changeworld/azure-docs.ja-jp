@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
 ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77612522"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>チュートリアル:Azure Active Directory Domain Services (プレビュー) で、オンプレミスのドメインへの送信フォレストの信頼を作成する

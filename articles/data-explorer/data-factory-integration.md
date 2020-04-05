@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: bb08cf4db45a378b35a8245eadd56a2ab3e48bab
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76293625"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Azure Data Explorer と Azure Data Factory の統合
@@ -98,7 +98,7 @@ Azure Data Explorer にデータをコピーするためのコピー アクテ�
 
 次の表に、Azure Data Factory との統合におけるさまざまな手順に必要なアクセス許可を示します。
 
-| 手順 | 操作 | 最小レベルのアクセス許可 | メモ |
+| 手順 | Operation | 最小レベルのアクセス許可 | Notes |
 |---|---|---|---|
 | **リンクされたサービスの作成** | データベース ナビゲーション | "*データベース表示者*" <br>ADF を使用してログインしているユーザーには、データベース メタデータを読み取る権限が必要です。 | ユーザーは、データベース名を手動で指定できます。 |
 | | 接続をテスト | "*データベース監視者*" または "*テーブル取り込み者*" <br>サービス プリンシパルには、データベース レベルの `.show` コマンドまたはテーブル レベルの取り込みを実行する権限が必要です。 | <ul><li>TestConnection では、データベースではなく、クラスターへの接続が検証されます。 データベースが存在しない場合でも成功する可能性があります。</li><li>テーブル管理者のアクセス許可では不十分です。</li></ul>|
@@ -117,7 +117,7 @@ Azure Data Explorer がソースであり、クエリを含むルックアップ
   
 このセクションでは、Azure Data Explorer がシンクであるコピー アクティビティの使用について説明します。 Azure Data Explorer シンクの推定スループットは 11-13 MBps です。 次の表は、Azure Data Explorer シンクのパフォーマンスに影響するパラメーターの詳細を示しています。
 
-| パラメーター | メモ |
+| パラメーター | Notes |
 |---|---|
 | **コンポーネントの地理的距離** | すべてのコンポーネントを同じリージョンに配置します。<ul><li>ソースおよびシンク データ ストア。</li><li>ADF 統合ランタイム。</li><li>お使いの ADX クラスター。</li></ul>少なくとも、お使いの統合ランタイムが ADX クラスターと同じリージョンにあることを確認してください。 |
 | **DIU の数** | ADF によって使用される 4 つの DIU ごとに 1 つの VM。 <br>DIU を増やすことは、ソースが複数のファイルを含むファイルベースのストアである場合にのみ役立ちます。 各 VM では、異なるファイルが並列に処理されます。 したがって、1 つの大きなファイルをコピーする場合は、複数の小さなファイルをコピーする場合よりも待ち時間が長くなります。|

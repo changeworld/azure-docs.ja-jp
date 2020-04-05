@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7c47887c12c8bf9be7a0c5b11dfb3f099965cb7
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72174367"
 ---
 # <a name="bulk-delete-users-preview-in-azure-active-directory"></a>Azure Active Directory でユーザーを一括削除する (プレビュー)
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CS
 1. ファイルの検証に合格したら、 **[送信]** を選択して、ユーザーを削除する Azure 一括操作を開始します。
 1. 削除操作が完了すると、一括操作が成功したという通知が表示されます。
 
-エラーが発生した場合は、 **[一括操作の結果]** ページで結果ファイルをダウンロードして表示できます。 このファイルには、各エラーの理由が含まれています。
+エラーがある場合は、 **[一括操作の結果]** ページで結果ファイルをダウンロードして表示できます。 このファイルには、各エラーの理由が含まれています。
 
 ## <a name="check-status"></a>状態の確認
 
@@ -68,7 +68,7 @@ Get-AzureADUser -Filter "UserType eq 'Member'"
 
 削除したユーザーがリストされなくなったことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ユーザーの一括追加](users-bulk-add.md)
 - [ユーザーの一覧のダウンロード](users-bulk-download.md)

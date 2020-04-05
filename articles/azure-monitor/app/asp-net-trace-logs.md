@@ -4,11 +4,11 @@ description: Trace、NLog、または Log4Net で生成されたログを検索�
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.openlocfilehash: 273d5a2f4e1155541e159332312bdaa68aa175d7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665988"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234791"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Application Insights で .NET/.NET Core および Python のトレース ログを調べる
 
@@ -193,19 +193,19 @@ logger.warning('Hello, World!')
 * System.Diagnostics.Trace を使用している場合は、[*web.config* で構成済み](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx)であることを確認します。
 * 最新バージョンの Application Insights があることを確認します。 Visual Studio で、 **[ツール]**  >  **[拡張機能と更新プログラム]** の順に移動し、 **[更新]** タブを開きます。そこに **Developer Analytics Tools** がある場合は、それを選択して更新します。
 
-### <a name="emptykey"></a>"インストルメンテーション キーは空にできません" というエラーメッセージが表示されました
+### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>"インストルメンテーション キーは空にできません" というエラーメッセージが表示されました
 Application Insights をインストールしないでログ アダプターの Nuget パッケージをインストールした可能性があります。 ソリューション エクスプローラーで、*ApplicationInsights.config* を右クリックし、 **[Application Insights の更新]** を選択します。 Azure にサインインし、Application Insights リソースを作成するか、既存のものを再利用することを求めるメッセージが表示されます。 これで問題は修正されます。
 
 ### <a name="i-can-see-traces-but-not-other-events-in-diagnostic-search"></a>診断検索にトレースが表示されますが、他のイベントがありません
 すべてのイベントと要求がパイプラインを通過するまでしばらく時間がかかることがあります。
 
-### <a name="limits"></a>保持されるデータの量はどのくらいですか
+### <a name="how-much-data-is-retained"></a><a name="limits"></a>保持されるデータの量はどのくらいですか
 いくつかの要因が、保持されるデータの量に影響します。 詳細については、顧客イベント メトリック ページの「[制限](../../azure-monitor/app/api-custom-events-metrics.md#limits)」セクションを参照してください。
 
 ### <a name="i-dont-see-some-log-entries-that-i-expected"></a>予期していたいくつかのログ エントリが表示されません
 アプリケーションで膨大な量のデータが送信され、Application Insights SDK for ASP.NET バージョン 2.0.0-beta3 以降を使用している場合は、アダプティブ サンプリング機能が動作して、テレメトリの一部のみが送信される可能性があります。 [サンプリングの詳細については、こちらを参照してください。](../../azure-monitor/app/sampling.md)
 
-## <a name="add"></a>次のステップ
+## <a name="next-steps"></a><a name="add"></a>次のステップ
 
 * [ASP.NET のエラーと例外を診断する][exceptions]
 * [検索についてさらに学習する][diagnostic]

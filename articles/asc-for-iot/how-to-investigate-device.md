@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 8d2fe8d63c7ece6f3b3426d8fc5a3454a61826f8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68596239"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>疑わしい IoT デバイスを調査する
@@ -42,7 +42,7 @@ Azure Security Center for IoT サービスのアラートでは、IoT デバイ�
 1. IoT ハブを開きます。 
 1. **[セキュリティ]** で **[概要]** をクリックし、 **[設定]** を選択します。
 1. Log Analytics ワークスペースの構成の詳細を変更します。 
-1. **[Save]** をクリックします。 
+1. **[保存]** をクリックします。 
 
 Log Analytics ワークスペースに保存されているデータにアクセスするには、以下の構成に対して次の操作を行います。
 
@@ -184,6 +184,6 @@ IoT デバイスについての分析情報と生データを表示するには�
 - プロセスが適切なユーザーによって実行されていたか。
 - すべてのコマンド ラインの実行で、予期された正しい引数が指定されていたか。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 デバイスを調査し、リスクをより深く理解した後で、IoT ソリューションのセキュリティ体制を向上させるために、[カスタム アラートの構成](quickstart-create-custom-alerts.md)の検討が必要になることがあります。 まだデバイス エージェントがない場合は、結果を改善するために、[セキュリティ エージェントのデプロイ](how-to-deploy-agent.md)または[既存のデバイス エージェントの構成の変更](how-to-agent-configuration.md)を検討してください。 

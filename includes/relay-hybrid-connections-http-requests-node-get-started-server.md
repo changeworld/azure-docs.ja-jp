@@ -9,10 +9,10 @@ ms.date: 05/02/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: fdd4e26839661ab9765b7d496e7f60c3686ba637
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181412"
 ---
 ### <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
@@ -39,7 +39,7 @@ ms.locfileid: "67181412"
 
 3. 次のコードを `listener.js` ファイルに追加します。 :
 
-    ご覧のとおり、コードは通常の `createServer` 関数に代わって `createRelayedServer` を使用しているという点を除き、Node.js の初心者向けチュートリアルで示したシンプルな HTTP サーバーの例と大きく変わりません。
+    ご覧のとおり、コードは通常の `createRelayedServer` 関数に代わって `createServer` を使用しているという点を除き、Node.js の初心者向けチュートリアルで示したシンプルな HTTP サーバーの例と大きく変わりません。
 
     ```js
     var uri = https.createRelayListenUri(ns, path);

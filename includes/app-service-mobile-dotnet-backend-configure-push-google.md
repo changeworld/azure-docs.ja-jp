@@ -5,15 +5,15 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 3c6147cc24f285fc32dce145e594f743c9633c20
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857433"
 ---
 バックエンド プロジェクトの種類 ([.NET バックエンド](#dotnet)または [Node.js バックエンド](#nodejs)のいずれか) に応じた手順を使用します。
 
-### <a name="dotnet"></a>.NET バックエンド プロジェクト
+### <a name="net-back-end-project"></a><a name="dotnet"></a>.NET バックエンド プロジェクト
 
 1. Visual Studio でサーバー プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 `Microsoft.Azure.NotificationHubs` を検索し、 **[インストール]** をクリックします。 これにより、Notification Hubs のクライアント ライブラリがインストールされます。
 2. Controllers フォルダーで、TodoItemController.cs を開き、次の `using` ステートメントを追加します。
@@ -67,7 +67,7 @@ ms.locfileid: "68857433"
 
 4. サーバー プロジェクトを発行します。
 
-### <a name="nodejs"></a>Node.js バックエンド プロジェクト
+### <a name="nodejs-back-end-project"></a><a name="nodejs"></a>Node.js バックエンド プロジェクト
 
 1. バックエンド プロジェクトを設定します。
 2. todoitem.js ファイル内の既存のコードを次のコードに置き換えます。

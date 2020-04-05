@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: b4be79338db71ad83204fae971da0b77885a8070
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74280924"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Language Understanding (LUIS) アプリをビルドするためのベスト プラクティス
@@ -36,7 +36,7 @@ ms.locfileid: "74280924"
 ## <a name="do-and-dont"></a>すべきことと、やってはいけないこと
 LUIS アプリのベスト プラクティスを次に示します。
 
-|すべきこと|やってはいけないこと|
+|次のことを行います|次のことは行わないでください|
 |--|--|
 |[意図を個別に定義する](#do-define-distinct-intents)<br>[意図に記述子を追加する](#do-add-descriptors-to-intents) |[多数の発話の例を意図に追加する](#dont-add-many-example-utterances-to-intents)<br>[少数または単純なエンティティを使用する](#dont-use-few-or-simple-entities) |
 |[意図の汎用性と専用性のスイート スポットを見つける](#do-find-sweet-spot-for-intents)|[LUIS をトレーニング プラットフォームとして使用する](#dont-use-luis-as-a-training-platform)|
@@ -189,6 +189,6 @@ LUIS では、意図の発話にバリエーションが必要です。 発話�
 
 10 ～ 15 個の発話を追加したら、トレーニングして公開します。 これにより、予測精度への影響を確認することができます。 1 つの発話を追加しても、スコアに目に見える影響は出ない可能性があります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * お使いの LUIS アプリで[ご自身のアプリを計画](luis-how-plan-your-app.md)する方法を確認します。

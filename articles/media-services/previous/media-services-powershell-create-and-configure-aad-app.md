@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: ff7f8bc27d358c667b10c0bd3383e78b20494303
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64680135"
 ---
 # <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>Azure Media Services API と共に使用する Azure AD アプリを PowerShell で作成する
@@ -64,6 +64,6 @@ $Retries = 0;While ($NewRole -eq $null -and $Retries -le 6)
 - [Azure PowerShell を使用したロールベースのアクセス制御の管理](../../role-based-access-control/role-assignments-powershell.md)
 - [証明書を使用してデーモン アプリを手動で構成する方法](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md#add-the-certificate-as-a-key-for-the-todolistdaemonwithcert-application-in-azure-ad)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [アカウントへのファイルのアップロード](media-services-portal-upload-files.md)を開始します。

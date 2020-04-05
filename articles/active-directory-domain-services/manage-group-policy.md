@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: iainfou
 ms.openlocfilehash: bce71355eef19ec3cc85525033274f57b1a3e0b9
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78946422"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインでグループ ポリシーを管理する
@@ -54,8 +54,8 @@ Azure Active Directory Domain Services (Azure AD DS) のユーザー オブジ�
 
 1. 管理 VM にサインインします。 Azure portal を使用した接続方法については、「[Windows Server VM に接続する][connect-windows-server-vm]」を参照してください。
 1. VM にサインインすると、既定で**サーバー マネージャー**が表示されるはずです。 そうならない場合は、 **[スタート]** メニューの **[サーバー マネージャー]** を選択します。
-1. **[サーバー マネージャー]** ウィンドウの *[ダッシュボード]* ウィンドウで **[役割と機能の追加]** を選択します。
-1. *[役割と機能の追加]* ウィザードの **[開始する前に]** ページで **[次へ]** を選択します。
+1. *[サーバー マネージャー]* ウィンドウの **[ダッシュボード]** ウィンドウで **[役割と機能の追加]** を選択します。
+1. **[役割と機能の追加]** ウィザードの *[開始する前に]* ページで **[次へ]** を選択します。
 1. *[インストールの種類]* で、 **[役割ベースまたは機能ベースのインストール]** オプションが選択された状態にして **[次へ]** を選択します。
 1. **[サーバーの選択]** ページで、サーバー プールから現在の VM (例: *myvm.aaddscontoso.com*) を選択し、 **[次へ]** を選択します。
 1. **[サーバーの役割]** ページで、 **[次へ]** をクリックします。

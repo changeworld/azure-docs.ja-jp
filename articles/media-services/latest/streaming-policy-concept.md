@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
 ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66392923"
 ---
 # <a name="streaming-policies"></a>ストリーミング ポリシー
@@ -48,7 +48,7 @@ Azure Media Services v3 では、[ストリーミング ポリシー](https://do
 
 ## <a name="get-a-streaming-policy-definition"></a>ストリーミング ポリシー定義を取得する  
 
-ストリーミング ポリシーの定義を表示する場合は、[Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) を使用し、ポリシー名を指定します。 例:
+ストリーミング ポリシーの定義を表示する場合は、[Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) を使用し、ポリシー名を指定します。 次に例を示します。
 
 ### <a name="rest"></a>REST
 
@@ -83,7 +83,7 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 
 「[Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ファイルのストリーミング](stream-files-dotnet-quickstart.md)
 * [AES-128 動的暗号化とキー配信サービスの使用](protect-with-aes128.md)

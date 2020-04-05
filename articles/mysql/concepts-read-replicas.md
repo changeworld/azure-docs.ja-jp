@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: 98461928e465a103f73761afce5270234224fbae
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76167343"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ

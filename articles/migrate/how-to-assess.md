@@ -8,10 +8,10 @@ ms.manager: carmonm
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 64af78abd8f82b41d4a03fbb56c96e3038cef5a5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185909"
 ---
 # <a name="add-assessment-tools"></a>評価ツールの追加
@@ -54,7 +54,7 @@ Azure Migrate には、評価と Azure への移行のためのツールのハ�
 
 ## <a name="select-a-database-assessment-tool"></a>データベース評価ツールを選択する
 
-1. **[Assess and migrate databases] (データベースの評価と移行)** をクリックします。
+1. **[データベースの評価と移行]** をクリックします
 2. **[データベース]** で、 **[ツールの追加]** をクリックします。
 3. [ツールの追加] > **[評価ツールの選択]** で、データベースを評価するために使用するツールを選択します。
 
@@ -68,6 +68,6 @@ Azure Migrate には、評価と Azure への移行のためのツールのハ�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [VMware](tutorial-prepare-vmware.md) VM、[Hyper-V](tutorial-prepare-hyper-v.md)、または[物理サーバー](tutorial-prepare-physical.md)の Azure Migrate Server Assessment を使用した評価を試みます

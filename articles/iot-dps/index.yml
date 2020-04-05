@@ -1,51 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure IoT Hub Device Provisioning Service のドキュメント
+### YamlMime:Landing
+title: Azure IoT Hub Device Provisioning Service (DPS) のドキュメント
+summary: IoT Hub Device Provisioning Service (DPS) は、適切な IoT ハブへのゼロタッチの Just-In-Time プロビジョニングを人間の介入を必要とせずに実現する、IoT Hub のヘルパー サービスです。これにより、安全かつスケーラブルな方法で多数のデバイスをプロビジョニングできます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、デバイスを IoT ハブにプロビジョニングする方法を確認してください。
 metadata:
-  title: Azure IoT Hub Device Provisioning Service のドキュメント
-  description: Azure IoT Hub Device Provisioning Service - チュートリアル、クイックスタート、ハウツー、API リファレンス
-  author: nberdy
+  title: Azure IoT Hub Device Provisioning Service (DPS) のドキュメント
+  description: Azure IoT Hub Device Provisioning Service (DPS) - チュートリアル、クイックスタート、ハウツー、API リファレンス
+  author: wesmc7777
   ms.service: iot-dps
   services: iot-dps
   ms.topic: landing-page
-  ms.date: 01/23/2017
-  ms.author: nberdy
-abstract:
-  description: IoT Hub Device Provisioning Service (DPS) は、適切な IoT ハブへのゼロタッチの Just-In-Time プロビジョニングを人間の介入を必要とせずに実現する、IoT Hub のヘルパー サービスです。これにより、安全かつスケーラブルな方法で多数のデバイスをプロビジョニングできます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、デバイスを IoT ハブにプロビジョニングする方法を確認してください。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: 初めての Device Provisioning Service インスタンスを設定する方法のほか、シミュレートされたデバイスを IoT ハブにプロビジョニングする方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/sql-database/media/index/portal.svg
-            text: 自動プロビジョニングの設定
-            href: /azure/iot-dps/quick-setup-auto-provision
-          - image:
-              src: /azure/sql-database/media/index/portal.svg
-            text: シミュレートされたデバイスの作成
-            href: /azure/iot-dps/quick-create-simulated-device
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: IoT Hub Device Provisioning Service を使用して、セキュリティが有効なデバイスを単一または複数の IoT ハブに自動でプロビジョニングする方法について説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/iot-dps/tutorial-set-up-cloud">クラウド リソースを構成する</a>
-          - html: <a href="/azure/iot-dps/tutorial-set-up-device">Azure に接続するデバイスを設定する</a>
-          - html: <a href="/azure/iot-dps/tutorial-provision-device-to-hub">単一の IoT ハブにデバイスをプロビジョニングする</a>
-          - html: <a href="/azure/iot-dps/tutorial-provision-multiple-hubs">負荷分散された複数の IoT ハブにデバイスをプロビジョニングする</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API
-            html: <p><a href="/rest/api/iot-dps">REST</a></p>
-          - title: Azure IoT SDK
-            html: '<p><a href="https://github.com/Azure/azure-iot-sdk-c">C</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-python">Python</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-node">Node</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-java">Java</a></p><p><a href="https://github.com/Azure/azure-iot-sdk-csharp">C#</a></p>'
+  ms.date: 03/03/2020
+  ms.author: wesmc
+  ms.openlocfilehash: 2d89b99005a4e430aca85c109f3d000c3b21674c
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80133273"
+landingContent:
+- title: Azure IoT Hub Device Provisioning Service (DPS) について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: DPS とは
+      url: about-iot-dps.md
+  - linkListType: concept
+    links:
+    - text: Azure IoT の自動プロビジョニングの概念
+      url: concepts-auto-provisioning.md
+  - linkListType: video
+    links:
+    - text: IoT Hub DPS のデモ
+      url: https://azure.microsoft.com/resources/videos/iot-hub-dps-demo/
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portal を使用して DPS を設定する
+      url: quick-setup-auto-provision.md
+  - linkListType: sample
+    links:
+    - text: シミュレートされた対称キーのデバイスを C を使用してプロビジョニングする
+      url: quick-create-simulated-device-symm-key.md
+    - text: シミュレートされた対称キーのデバイスを Java を使用してプロビジョニングする
+      url: quick-create-simulated-device-symmetric-key-java.md
+  - linkListType: how-to-guide
+    links:
+    - text: マルチテナント用にプロビジョニングする方法
+      url: how-to-provision-multitenant.md
+    - text: カスタム割り当てポリシーの使用方法
+      url: how-to-use-custom-allocation-policies.md
+- title: アクセスを管理する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: デバイス登録の管理方法
+      url: how-to-manage-enrollments.md
+    - text: Azure IoT Hub Device Provisioning Service のアクセスを制御する
+      url: how-to-control-access.md
+- title: DPS を使用した IoT ソリューションの開発
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure IoT SDK for C
+      url: https://github.com/Azure/azure-iot-sdk-c
+    - text: Azure IoT SDK for Python
+      url: https://github.com/Azure/azure-iot-sdk-python
+    - text: Azure IoT SDK for Node.js
+      url: https://github.com/Azure/azure-iot-sdk-node
+    - text: Azure IoT SDK for Java
+      url: https://github.com/Azure/azure-iot-sdk-java
+    - text: Azure IoT SDK for .NET
+      url: https://github.com/Azure/azure-iot-sdk-csharp
+    - text: REST API
+      url: /rest/api/iot-dps

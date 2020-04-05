@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: twooley
 ms.openlocfilehash: 4e57fffd2f74ae1b14f51537c92299607f193ad5
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934051"
 ---
 # <a name="storsimple-8000-series-update-2-release-notes"></a>StorSimple 8000 シリーズ Update 2 リリース ノート
@@ -53,12 +53,12 @@ Update 2 では、次の新機能が導入されています。
   * クラウド対応のブロック用に固定メトリックを使用してルーティングが強化されました。
   * フェールオーバーの実行前に、障害の発生したリソースのオンラインでの再試行が行われます。
   * サービスの障害に対して新しいアラートが追加されました。
-* **更新プログラムの機能強化** - 更新プログラム 1.2 以前では、StorSimple 8000 シリーズは次の 2 つのチャネルで更新されていました。クラスタリング、iSCSI など向けの Windows Update と、バイナリとファームウェア向けの Microsoft Update。
+* **更新の機能強化** - Update 1.2 以前では、StorSimple 8000 シリーズの更新には、2 つのチャネル (クラスタリングや iSCSI などには Windows Update、バイナリとファームウェアには Microsoft Update) が使用されていました。
     Update 2 では、すべての更新パッケージで Microsoft Update が使用されます。 これにより、パッチ適用やフェールオーバー実行にかかる時間が短縮されます。 
 * **ファームウェアの更新プログラム** - 次のファームウェア更新プログラムが含まれています。
   
   * LSI: lsi_sas2.sys 製品バージョン 2.00.72.10
-  * SSD のみ (HDD 更新プログラムなし):XMGG、XGEG、KZ50、F6C2、および VR08
+  * SSD のみ (HDD の更新なし): XMGG、XGEG、KZ50、F6C2、および VR08
 * **プロアクティブ サポート** - Update 2 では、Microsoft はデバイスから追加の診断情報を取得します。 Microsoft の運用チームが問題のあるデバイスを識別するときに、デバイスから情報を収集して問題を診断する能力が向上しました。 **Update 2 を受け入れると、このプロアクティブ サポートの提供に同意することになります**。    
 
 ## <a name="issues-fixed-in-update-2"></a>Update 2 で修正された問題
@@ -83,7 +83,7 @@ Update 2 では、次の新機能が導入されています。
 | 6 |Web プロキシ |Web プロキシ構成で指定プロトコルとして HTTPS を使用している場合、デバイスとサービス間の通信が影響を受け、デバイスがオフラインになります。 プロセスでサポート パッケージも生成され、デバイスで大量のリソースが使用されます。 |Web プロキシ URL で指定プロトコルとして HTTP を使用していることを確認してください。 詳細については、「 [デバイスの Web プロキシの構成](storsimple-configure-web-proxy.md)」を参照してください。 |はい |いいえ |
 | 7 |Web プロキシ |登録されたデバイスで Web プロキシを構成して有効にする場合は、デバイス上でアクティブなコントローラーを再起動する必要があります。 | |はい |いいえ |
 | 8 |クラウドの長い待機時間と高い I/O ワークロード |StorSimple デバイスで、非常に長いクラウドの待機時間 (秒単位) や高い I/O ワークロードの組み合わせが発生した場合、デバイス ボリュームはパフォーマンスが低下した状態になり、I/O は "デバイスの準備未完了" エラーで失敗します。 |デバイス コントローラーを手動で再起動するか、デバイスのフェールオーバーを実行して、この状況から復旧する必要があります。 |はい |いいえ |
-| 9 |Azure PowerShell |新しい **VolumeContainer** オブジェクトを作成できるように、StorSimple のコマンドレット **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** を使用して最初のオブジェクトを選択すると、コマンドレットからすべてのオブジェクトが返されます。 |次のように、コマンドレットをかっこで囲みます。 **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |はい |はい |
+| 9 |Azure PowerShell |新しい **VolumeContainer** オブジェクトを作成できるように、StorSimple のコマンドレット **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** を使用して最初のオブジェクトを選択すると、コマンドレットからすべてのオブジェクトが返されます。 |次のように、コマンドレットをかっこで囲みます: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |はい |はい |
 | 10 |移行 |複数のボリューム コンテナーを渡して移行する場合、最新のバックアップの ETA は、最初のボリューム コンテナーに対してのみ正確です。 さらに、最初のボリューム コンテナー内の最初の 4 つのバックアップが移行された後に、移行が並列で開始されます。 |一度に 1 つのボリューム コンテナーを移行することをお勧めします。 |はい |いいえ |
 | 11 |移行 |復元後、ボリュームはバックアップ ポリシーや仮想ディスク グループに追加されません。 |バックアップを作成するために、バックアップ ポリシーにこれらのボリュームを追加する必要があります。 |はい |はい |
 | 12 |移行 |移行の完了後は、5000/7000 シリーズのデバイスから移行後のデータ コンテナーにアクセスできなくなります。 |移行が完了しコミットした後、移行後のデータ コンテナーを削除することをお勧めします。 |はい |いいえ |

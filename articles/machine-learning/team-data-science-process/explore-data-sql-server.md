@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ae8c7c43ecbf9bc625e1e46be3e2c71c8d57b6f7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720097"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Azure の SQL Server Virtual Machine に格納されているデータを探索する
@@ -29,7 +29,7 @@ ms.locfileid: "76720097"
 > 
 > 
 
-## <a name="sql-dataexploration"></a>SQL スクリプトを使用して SQL データを探索する
+## <a name="explore-sql-data-with-sql-scripts"></a><a name="sql-dataexploration"></a>SQL スクリプトを使用して SQL データを探索する
 SQL Server のデータ ストアの探索に使用できるいくつかのサンプル SQL スクリプトを次に示します。
 
 1. 1 日ごとの所見の数を取得する
@@ -50,7 +50,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 > 
 > 
 
-## <a name="python"></a>Python を使用して SQL データを探索する
+## <a name="explore-sql-data-with-python"></a><a name="python"></a>Python を使用して SQL データを探索する
 データが SQL Server に格納されている場合に、Python を使用してデータを探索し、特徴を生成する手順は、「[Azure BLOB データを高度な分析を使用して処理する](data-blob.md)」で説明されているように、Python を使用して Azure BLOB のデータを処理する手順と似ています。 データは、データベースから pandas データフレームに読み込むと、さらに処理できるようになります。 このセクションでは、データベースに接続して、データ フレームにデータを読み込むプロセスについて記載します。
 
 次の接続文字列形式を使用して pyodbc を使用し Python から SQL Server データベースに接続することができます (サーバー名、データベース名、ユーザー名およびパスワードは使用する特定の値に置き換えてください)。

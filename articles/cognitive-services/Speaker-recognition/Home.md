@@ -12,10 +12,10 @@ ms.date: 10/01/2018
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.openlocfilehash: f354793e3779f4d9f7be9bae8a21545a15ed1c4c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73464922"
 ---
 # <a name="speaker-recognition-api---preview"></a>Speaker Recognition API - プレビュー
@@ -36,7 +36,7 @@ Speaker Verification API は、声と音声のパスフレーズの両方を使�
 
 お客様は、話者認証用の適切なアクセス許可が、ユーザーから付与されていることを確認する必要があります。
 
-### <a name="verification"></a>確認
+### <a name="verification"></a>検証
 
 確認フェーズでは、お客様は、確認対象の個人に関連付けられている ID を使って、話者認証 API を呼び出す必要があります。  声の特徴とパスフレーズが、入力された音声記録から抽出され、 その後、その特徴が、お客様が確認したい話者の登録データの対応する要素と照合され、一致するものが判断されます。  応答によって "受け入れ" または "拒否" がさまざまな信頼レベルで返されます。  その後、お客様は、その結果をどのように使って、対象者が登録済みの話者かどうかを判断するかを決めます。
 

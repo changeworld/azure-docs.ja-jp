@@ -9,13 +9,13 @@ ms.date: 01/15/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6a90b23c10e08e8b14a18f9619cff5aaeb003cab
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045681"
 ---
-### <a name="gwipnoconnection"></a>ローカル ネットワーク ゲートウェイの "GatewayIpAddress" を変更するには (ゲートウェイに接続していない場合)
+### <a name="to-modify-the-local-network-gateway-gatewayipaddress---no-gateway-connection"></a><a name="gwipnoconnection"></a>ローカル ネットワーク ゲートウェイの "GatewayIpAddress" を変更するには (ゲートウェイに接続していない場合)
 
 接続先の VPN デバイスのパブリック IP アドレスが変更された場合には、ローカル ネットワーク ゲートウェイを変更してアドレスの変更を反映する必要があります。 ゲートウェイに接続していないローカル ネットワーク ゲートウェイに変更を加える場合には、以下の例を使用してください。
 
@@ -27,7 +27,7 @@ New-AzLocalNetworkGateway -Name Site1 `
 -GatewayIpAddress "5.4.3.2" -ResourceGroupName TestRG1
 ```
 
-### <a name="gwipwithconnection"></a>ローカル ネットワーク ゲートウェイの "GatewayIpAddress" を変更するには (ゲートウェイに接続している場合)
+### <a name="to-modify-the-local-network-gateway-gatewayipaddress---existing-gateway-connection"></a><a name="gwipwithconnection"></a>ローカル ネットワーク ゲートウェイの "GatewayIpAddress" を変更するには (ゲートウェイに接続している場合)
 
 接続先の VPN デバイスのパブリック IP アドレスが変更された場合には、ローカル ネットワーク ゲートウェイを変更してアドレスの変更を反映する必要があります。 既にゲートウェイ接続が存在する場合はまず、その接続を削除する必要があります。 接続を削除したら、ゲートウェイ IP アドレスを変更し、新しい接続を作成し直します。 同時にアドレス プレフィックスを変更することもできます。 これに伴い、VPN 接続のためにある程度のダウンタイムが発生します。 ゲートウェイの IP アドレスを変更するときに、VPN ゲートウェイを削除する必要はありません。 削除が必要になるのは、接続のみです。
  

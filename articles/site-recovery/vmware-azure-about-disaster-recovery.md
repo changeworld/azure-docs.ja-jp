@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954386"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>VMware VM から Azure へのディザスター リカバリーの概要
@@ -88,7 +88,7 @@ Azure とオンプレミスのインフラストラクチャの準備が完了�
 
 1. デプロイする必要があるコンポーネントについては、「[VMware から Azure へのレプリケーション アーキテクチャ](vmware-azure-architecture.md)」と「[物理サーバーから Azure へのレプリケーション アーキテクチャ](physical-azure-architecture.md)」を参照してください。 多数のコンポーネントがあるので、どのように組み合わせられるかを理解することが重要です。
 2. **ソース環境**:デプロイの第一歩として、レプリケーションのソース環境を設定します。 レプリケート対象とレプリケート先を指定します。
-3. **構成サーバー**:オンプレミスのソース環境に構成サーバーを設定する必要があります。
+3. **構成サーバー**: オンプレミスのソース環境に構成サーバーを設定する必要があります。
     - 構成サーバーは、単一のオンプレミス マシンです。 VMware のディザスター リカバリーの場合は、ダウンロード可能な OVF テンプレートからデプロイできる VMware VM としてデプロイすることをお勧めします。
     - 構成サーバーは、オンプレミスと Azure の間の通信を調整します。
     - その他のいくつかのコンポーネントは、構成サーバー マシン上で実行されます。
@@ -119,6 +119,6 @@ Azure とオンプレミスのインフラストラクチャの準備が完了�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 レプリケーションの準備が完了したら、[ディザスター リカバリー訓練を実行](tutorial-dr-drill-azure.md)して、フェールオーバーが想定どおりに機能することを確認します。 

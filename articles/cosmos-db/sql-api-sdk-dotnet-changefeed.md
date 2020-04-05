@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
 ms.openlocfilehash: 9252e3e41d0c639231a2abe20202499c6b3ee32a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444853"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK:ダウンロードおよびリリース ノート
@@ -46,7 +46,7 @@ ms.locfileid: "75444853"
 
 ### <a name="v2-builds"></a>v2 のビルド
 
-### <a name="a-name228228"></a><a name="2.2.8"/>2.2.8
+### <a name="228"></a><a name="2.2.8"/>2.2.8
 * 安定性と診断能力の向上:
   * 長時間かかっている変更フィード読み取りを検出する機能のサポートを追加しました。 `ChangeFeedProcessorOptions.ChangeFeedTimeout` プロパティによって指定されている値よりも長い時間がかかる場合、以下の手順が行われます。
     * 問題のあるパーティションの変更フィードを読み取る操作は中止されます。
@@ -55,56 +55,56 @@ ms.locfileid: "75444853"
   * 新しいパブリック プロパティ `ChangeFeedProcessorOptions.ChangeFeedTimeout` を追加しました。 このプロパティの既定値は 10 分です。
   * 新しいパブリック列挙値 `Monitoring.MonitoredOperation.ReadChangeFeed` を追加しました。 `HealthMonitoringRecord.Operation` の値が `Monitoring.MonitoredOperation.ReadChangeFeed` に設定される場合は、正常性の問題が変更フィードの読み取りに関連していることを示しています。
 
-### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
+### <a name="227"></a><a name="2.2.7"/>2.2.7
 * ネットワークの問題などにより、すべてのリースの取得にリースの有効期限の間隔よりも長くかかるシナリオの負荷分散戦略を向上しました。
   * このシナリオでは、負荷分散アルゴリズムによって、リースが誤って期限切れと見なされ、アクティブな所有者からリースが奪われていました。 その結果、不必要に多くのリースの再調整がトリガーされる可能性があります。
   * 競合の再試行を回避すると同時に、所有者が変わっていない期限切れのリースを取得し、期限切れのリースの取得を次回の負荷分散のイテレーションを延期することで、この問題は修正されました。
 
-### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
+### <a name="226"></a><a name="2.2.6"/>2.2.6
 * オブザーバーの例外の処理が改善されました。
 * オブザーバーのエラーに関する情報がより方法になりました。
   * オブザーバーの ProcessChangesAsync によってスローされた例外によりオブザーバーが閉じられると、CloseAsync が ChangeFeedObserverCloseReason.ObserverError に設定された reason パラメーターを受け取るようになりました。
   * オブザーバーでユーザー コード内のエラーを識別するためにトレースが追加されました。
 
-### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
+### <a name="225"></a><a name="2.2.5"/>2.2.5
 * 共有データベースのスループットを使用するコレクション内の分割を処理するためのサポートが追加されました。
   * このリリースでは、共有データベースのスループットを使用するコレクション内の分割中に発生する可能性がある、分割によってパーティションのリバランスが発生して子のパーティションキー範囲が 2 つではなく 1 つだけになるという問題が修正されました。 これが発生した場合、Change Feed Processor による古いパーティション キー範囲のリースを削除することができなくなり、新しいリースが作成されない可能性があります。 この問題は今回のリリースで修正されました。
 
-### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
+### <a name="224"></a><a name="2.2.4"/>2.2.4
 * 要求の継続トークンからの変更フィードの開始をサポートするための新しいプロパティ ChangeFeedProcessorOptions.StartContinuation が追加されました。 これは、リース コレクションが空であるか、リースに ContinuationToken セットがない場合にのみ使用されます。 ContinuationToken セットがあるリース コレクション内のリースの場合は、ContinuationToken が使用され、ChangeFeedProcessorOptions.StartContinuation は無視されます。
 
-### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+### <a name="223"></a><a name="2.2.3"/>2.2.3
 * カスタム ストアを使用した、パーティションごとの継続トークンの保持のサポートが追加されました。
   * たとえば、カスタム リース ストアには、独自の方法でパーティション分割された Azure Cosmos DB リース コレクションを使用できます。
   * カスタム リース ストアでは、新しい機能拡張ポイント ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) と ILeaseStoreManager パブリック インターフェイスを使用できます。
   * ILeaseManager インターフェイスは複数のロール インターフェイスにリファクタリングされました。
 * 小さな破壊的変更: 機能拡張ポイント ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager) は削除されました。代わりに ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) を使用してください。
 
-### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+### <a name="222"></a><a name="2.2.2"/>2.2.2
 * このリリースでは、監視対象コレクション内の分割の処理中とパーティション リース コレクションの使用中に発生する問題が解決されます。 分割パーティションのリースの処理時に、そのパーティションに対応するリースを削除できません。 この問題は今回のリリースで修正されました。
 
-### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+### <a name="221"></a><a name="2.2.1"/>2.2.1
 * マルチ マスター アカウントと新しいセッション トークン形式の固定見積もり計算。
 
-### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+### <a name="220"></a><a name="2.2.0"/>2.2.0
 * パーティション分割されたリース コレクションのサポートが追加されました。 パーティション キーは /id として定義する必要があります。
 * マイナーな破壊的変更: IChangeFeedDocumentClient インターフェイスと ChangeFeedDocumentClient クラスのメソッドが RequestOptions パラメーターと CancellationToken パラメーターを含むように変更されました。 IChangeFeedDocumentClient は、ドキュメント クライアントのカスタム実装を提供して Change Feed Processor で使用できるようにする高度な拡張ポイントです。DocumentClient を修飾し、それに対するすべての呼び出しをインターセプトして、追加のトレースやエラー処理などを行います。この更新プログラムでは、IChangeFeedDocumentClient を実装するコードを変更して、新しいパラメーターを実装に含める必要があります。
 * マイナーな診断機能の向上。
 
-### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+### <a name="210"></a><a name="2.1.0"/>2.1.0
 * 新しい API、Task&lt;IReadOnlyList&lt;RemainingPartitionWork&gt;&gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync() が追加されました。 これを使用して、パーティションごとの見積作業を取得できます。
 * Microsoft.Azure.DocumentDB SDK 2.0 をサポートします。 Microsoft.Azure.DocumentDB 2.0 以降が必要です。
 
-### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
+### <a name="206"></a><a name="2.0.6"/>2.0.6
 * v1 との互換性を保つために、ChangeFeedEventHost.HostName パブリック プロパティが追加されました。
 
-### <a name="a-name205205"></a><a name="2.0.5"/>2.0.5
+### <a name="205"></a><a name="2.0.5"/>2.0.5
 * パーティション分割中に発生する競合状態を修正しました。 競合状態は、リースを取得し、パーティション分割中にすぐにそれを失うことで、競合の発生につながる可能性があります。 この競合状態に関する問題がこのリリースで修正されました。
 
-### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
+### <a name="204"></a><a name="2.0.4"/>2.0.4
 * GA SDK
 
-### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-prerelease
+### <a name="203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-prerelease
 * 次の問題が修正されました。
   * パーティション分割が発生すると、分割前に修正されたドキュメントの処理が重複する可能性があります。
   * リース コレクションにリースが存在しない場合、GetEstimatedRemainingWork API は 0 を返しました。
@@ -115,11 +115,11 @@ ms.locfileid: "75444853"
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException。
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException。 
 
-### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-prerelease
+### <a name="202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-prerelease
 * マイナーな API の変更:
   * 古いとマークされた ChangeFeedProcessorOptions.IsAutoCheckpointEnabled を削除しました。
 
-### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-prerelease
+### <a name="201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-prerelease
 * 安定性の向上:
   * リース ストアの初期化の処理が改善しました。 リース ストアが空の場合、プロセッサの 1 つのインスタンスだけがそれを初期化でき、他は待機します。
   * リースの更新または解放の安定性と効率が向上しました。 1 つのパーティションのリースの更新と解放は、他のパーティションの更新から独立しています。 v1 では、すべてのパーティションに対して順番に行われていました。
@@ -140,33 +140,33 @@ ms.locfileid: "75444853"
 
 ### <a name="v1-builds"></a>v1 のビルド
 
-### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
+### <a name="133"></a><a name="1.3.3"/>1.3.3
 * ログが追加されました。
 * 保留中の作業見積もりを複数回呼び出すときの DocumentClient のリークを修正しました。
 
-### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+### <a name="132"></a><a name="1.3.2"/>1.3.2
 * 保留中の作業見積もりを修正しました。
 
-### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
+### <a name="131"></a><a name="1.3.1"/>1.3.1
 * 安定性が向上しました。
   * 一部のパーティションでオブザーバーの停止につながる可能性がある取り消されたタスクの問題を処理するために修正しました。
 * 手動チェックポイント処理をサポートします。
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.21 以降と互換性があります。
 
-### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
+### <a name="120"></a><a name="1.2.0"/>1.2.0
 * .NET Standard 2.0 のサポートを追加します。 このパッケージで `netstandard2.0`と`net451` フレームワーク モニカーがサポートされるようになりました。
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.17.0 以降と互換性があります。
 * [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) バージョン 1.5.1 以降と互換性があります。
 
-### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+### <a name="111"></a><a name="1.1.1"/>1.1.1
 * 変更フィードが空であるか保留中の作業がない場合の、残っている作業の推定量の計算に関する問題を修正しました。
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.13.2 以降と互換性があります。
 
-### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+### <a name="110"></a><a name="1.1.0"/>1.1.0
 * Change Feed に処理が残っている作業の推定量を取得するメソッドが追加されました。
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.13.2 以降と互換性があります。
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"/>1.0.0
 * GA SDK
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.14.1 以降と互換性があります。
 
@@ -202,6 +202,6 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。

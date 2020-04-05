@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1234263fa800a17d0a5c235df54ca2751e3094bb
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69015859"
 ---
 # <a name="filters-and-dynamic-manifests"></a>フィルターと動的マニフェスト
@@ -35,7 +35,7 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 コンテンツ (ストリーミング ライブ イベントまたはビデオ オン デマンド) を顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあります。 この目標を達成するために、次の操作を行います。
 
 * ストリームをマルチビットレート ([アダプティブ ビットレート](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) ビデオ ストリームにエンコードします (これにより品質とネットワーク条件に対応)。 
-* Media Services の [動的パッケージ](media-services-dynamic-packaging-overview.md) を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します (これにより異なるデバイスでのストリーミングに対応)。 Media Services は、次のアダプティブ ビットレート ストリーミング配信テクノロジをサポートしています。HTTP ライブ ストリーミング (HLS)、Smooth Streaming、および MPEG DASH 
+* Media Services の [動的パッケージ](media-services-dynamic-packaging-overview.md) を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します (これにより異なるデバイスでのストリーミングに対応)。 Media Services は、次のアダプティブ ビットレート ストリーミング配信テクノロジをサポートしています。HTTP ライブ ストリーミング (HLS)、Smooth Streaming、および MPEG DASH。 
 
 ### <a name="manifest-files"></a>マニフェスト ファイル
 アダプティブ ビットレート ストリーミングのアセットをエンコードすると、 **マニフェスト** (再生リスト) ファイルが作成されます (ファイルはテキスト ベースか XML ベース)。 **マニフェスト** ファイルには、トラックの種類 (オーディオ、ビデオ、テキスト)、トラック名、開始時刻と終了時刻、ビットレート (品質)、トラック言語、プレゼンテーション ウィンドウ (固定時間のスライディング ウィンドウ)、ビデオ コーデック (FourCC) などの、ストリーミング メタデータが含まれます。 また、次に再生可能なビデオ フラグメントとその場所の情報を通知して、次のフラグメントを取得するようにプレイヤーに指示します。 フラグメント (またはセグメント) とは、ビデオ コンテンツの実際の「チャンク」です。
@@ -73,14 +73,14 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
     </SmoothStreamingMedia>
 
 ### <a name="dynamic-manifests"></a>動的マニフェスト
-アセットの既定のマニフェスト ファイルに記述されている情報よりも、さらに高い柔軟性をクライアントが必要とする [シナリオ](media-services-dynamic-manifest-overview.md#scenarios) があります。 例:
+アセットの既定のマニフェスト ファイルに記述されている情報よりも、さらに高い柔軟性をクライアントが必要とする [シナリオ](media-services-dynamic-manifest-overview.md#scenarios) があります。 次に例を示します。
 
 * デバイスに固有: コンテンツの再生に使用するデバイスでサポートしている演奏や言語のトラックのみを指定して配信する場合 (「演奏フィルタ―処理」)。 
 * マニフェストを減らして、ライブ イベントのサブクリップのみを表示する場合 (「サブクリップ フィルター処理」)
 * ビデオの開始をトリミングする場合 (「ビデオのトリミング」)
 * プレゼンテーション ウィンドウ (DVR) を調整し、プレーヤーの DVR ウィンドウの長さを限定する ("プレゼンテーション ウィンドウの調整")。
 
-このような柔軟性を実現するために、Media Services では定義済みの **フィルター** に基づいた [動的マニフェスト](media-services-dynamic-manifest-overview.md#filters)を用意しています。  フィルターを定義しておくと、クライアントはそのフィルターを使用して、ビデオの特定の演奏やサブクリップをストリーミングできるようになります。 ストリーミング URL にフィルターを指定することもできます。 フィルターは、[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md) によってサポートされるアダプティブ ビットレート ストリーミング プロトコル (HLS、MPEG-DASH、および Smooth Streaming) に適用できます。 例:
+このような柔軟性を実現するために、Media Services では定義済みの **フィルター** に基づいた [動的マニフェスト](media-services-dynamic-manifest-overview.md#filters)を用意しています。  フィルターを定義しておくと、クライアントはそのフィルターを使用して、ビデオの特定の演奏やサブクリップをストリーミングできるようになります。 ストリーミング URL にフィルターを指定することもできます。 フィルターは、[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md) によってサポートされるアダプティブ ビットレート ストリーミング プロトコル (HLS、MPEG-DASH、および Smooth Streaming) に適用できます。 次に例を示します。
 
 フィルターを使用した MPEG DASH URL
 
@@ -98,7 +98,7 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 > 
 > 
 
-### <a id="filters"></a>フィルター
+### <a name="filters"></a><a id="filters"></a>フィルター
 次の 2 種類のアセット フィルターがあります。 
 
 * グローバル フィルター (Azure Media Services アカウントのすべてのアセットに適用可能。有効期間付きアカウント) 
@@ -106,7 +106,7 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 
 グローバル フィルターとローカル フィルターのプロパティはまったく同じです。 この 2 つのフィルターの主な違いは、適しているシナリオが異なることです。 グローバル フィルターは通常、デバイス プロファイル (演奏フィルター処理) に適していますが、ローカル フィルターは特定のアセットのトリミングに使用できます。
 
-## <a id="scenarios"></a>一般的なシナリオ
+## <a name="common-scenarios"></a><a id="scenarios"></a>一般的なシナリオ
 コンテンツ (ストリーミング ライブ イベントまたはビデオ オンデマンド) を顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあると既に説明しました。 それに加えて、アセットのフィルタ―処理や、 **動的マニフェスト**の使用に関するその他の要件も考慮する必要があります。 次のセクションでは、さまざまなフィルター処理のシナリオについて、簡単に説明します。
 
 * 特定のデバイスで処理できるオーディオやビデオ演奏のサブセットのみを指定する (アセットに関連付けられているすべての演奏ではなく)。 
@@ -195,7 +195,7 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [顧客へのコンテンツの配信に関する概要](media-services-deliver-content-overview.md)
 
 [renditions1]: ./media/media-services-dynamic-manifest-overview/media-services-rendition-filter.png

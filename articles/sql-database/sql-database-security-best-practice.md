@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506215"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387650"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Azure SQL Database で一般的なセキュリティ要件を解決するためのプレイブック
 
@@ -46,7 +46,7 @@ ms.locfileid: "77506215"
 - プライバシー責任者
 - セキュリティ エンジニア
 
-### <a id="using"></a> このガイドの使用法
+### <a name="using-this-guide"></a><a id="using"></a> このガイドの使用法
 
 このドキュメントは、既存の [Azure SQL Database セキュリティ](sql-database-security-overview.md)に関するドキュメントとの併用を意図しています。
 
@@ -657,7 +657,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 **ベスト プラクティス**:
 
 - イベントを監査するためにデータベース サーバーに [SQL Database 監査](sql-database-auditing.md)を構成することにより、そのサーバー上のすべての既存および新しく作成されたデータベースが監査されます。
-- 既定で、監査ポリシーには、データベースに対するすべてのアクション (クエリ、ストアド プロシージャ、成功および失敗したログイン) が含まれます。その結果、大量の監査ログが生成される可能性があります。 [PowerShell を使用してさまざまな種類のアクションとアクション グループの監査を構成する](sql-database-auditing.md#subheading-7)ことをお勧めします。 これを構成すると、監査されるアクションの数を制御し、イベント損失のリスクを最小限に抑えることができます。 カスタムの監査構成を使うと、必要な監査データのみをキャプチャできます。
+- 既定で、監査ポリシーには、データベースに対するすべてのアクション (クエリ、ストアド プロシージャ、成功および失敗したログイン) が含まれます。その結果、大量の監査ログが生成される可能性があります。 [PowerShell を使用してさまざまな種類のアクションとアクション グループの監査を構成する](sql-database-auditing.md#manage-auditing)ことをお勧めします。 これを構成すると、監査されるアクションの数を制御し、イベント損失のリスクを最小限に抑えることができます。 カスタムの監査構成を使うと、必要な監査データのみをキャプチャできます。
 - 監査ログは、[Azure portal](https://portal.azure.com/) で、または構成されたストレージの場所から直接使用できます。 
 
 

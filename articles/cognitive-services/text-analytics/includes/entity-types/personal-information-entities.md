@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77086910"
 ---
 ## <a name="personal-information-entity-types"></a>個人情報のエンティティ型:
@@ -49,7 +49,7 @@ ms.locfileid: "77086910"
 
 | サブタイプ名 | 説明                                    | 次のモデル バージョン以降で使用できます |
 |--------------|------------------------------------------------|----------------------------------------|
-| 該当なし          | 米国の電話番号 (例、`(312) 555-0176`) | `2020-02-01`                           |
+| 該当なし          | 米国の電話番号 (例: `(312) 555-0176`) | `2020-02-01`                           |
 
 ### <a name="email"></a>Email
 
@@ -73,7 +73,7 @@ ms.locfileid: "77086910"
 
 | サブタイプ名 | 説明                                          | 次のモデル バージョン以降で使用できます |
 |--------------|------------------------------------------------------|----------------------------------------|
-| 該当なし          | Web サイトへの URL (例、`https://www.bing.com`) | `2020-02-01`                           |
+| 該当なし          | Web サイトへの URL (例: `https://www.bing.com`) | `2020-02-01`                           |
 
 ### <a name="ip-address"></a>IP アドレス
 

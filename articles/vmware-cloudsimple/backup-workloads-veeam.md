@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (AVS) - Veeam を使用して AVS プライベート クラウド上のワークロード仮想マシンをバックアップする
-description: Azure ベースの AVS プライベート クラウドで実行されている仮想マシンを Veeam B&R 9.5 を使用してバックアップする方法について説明します
+title: Azure VMware Solution by CloudSimple - Veeam を使用してプライベート クラウド上のワークロード仮想マシンをバックアップする
+description: Azure ベースの CloudSimple プライベート クラウドで実行されている仮想マシンを Veeam B&R 9.5 を使用してバックアップする方法について説明します
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d8dc822ec07bdf061121b97384d0e2f9f239d6e2
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025131"
 ---
-# <a name="back-up-workload-vms-on-avs-private-cloud-using-veeam-br"></a>Veeam B&R を使用して AVS プライベート クラウド上のワークロード VM をバックアップする
+# <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Veeam B&R を使用して CloudSimple プライベート クラウド上のワークロード VM をバックアップする
 
-このガイドでは、Azure ベースの AVS プライベート クラウドで実行されている仮想マシンを、Veeam B&R 9.5 を使用してバックアップする方法について説明します。
+このガイドでは、Azure ベースの CloudSimple プライベート クラウドで実行されている仮想マシンを、Veeam B&R 9.5 を使用してバックアップする方法について説明します。
 
 ## <a name="about-the-veeam-back-up-and-recovery-solution"></a>Veeam バックアップおよび復旧ソリューションについて
 
@@ -43,16 +43,16 @@ Veeam ソリューションには、次のコンポーネントが含まれて�
 
 **バックアップ リポジトリ**
 
-バックアップ リポジトリは、バックアップ ファイル、VM のコピー、レプリケートされた VM のメタデータを Veeam が保持するストレージの場所です。 リポジトリにできるのは、ローカル ディスク (またはマウントされた NFS/SMB) を備えた Windows または Linux サーバー、あるいはハードウェア ストレージ重複除去アプライアンスです。
+バックアップ リポジトリは、バックアップ ファイル、VM のコピー、レプリケートされた VM のメタデータを Veeam が保持するストレージの場所です。  リポジトリにできるのは、ローカル ディスク (またはマウントされた NFS/SMB) を備えた Windows または Linux サーバー、あるいはハードウェア ストレージ重複除去アプライアンスです。
 
 ### <a name="veeam-deployment-scenarios"></a>Veeam のデプロイのシナリオ
-Azure を利用して、バックアップ リポジトリと、長期のバックアップおよびアーカイブのためのストレージ ターゲットを提供できます。 AVS プライベート クラウド内の VM と、Azure 内のバックアップ リポジトリ間とのバックアップ ネットワーク トラフィックはすべて、高帯域幅、低待機時間のリンクを経由して送信されます。 リージョン間のレプリケーション トラフィックは内部の Azure バックプレーン ネットワークを経由して送信されるため、ユーザーの帯域幅コストが削減されます。
+Azure を利用して、バックアップ リポジトリと、長期のバックアップおよびアーカイブのためのストレージ ターゲットを提供できます。 プライベート クラウド内の VM と、Azure 内のバックアップ リポジトリ間とのバックアップ ネットワーク トラフィックはすべて、高帯域幅、低待機時間のリンクを経由して送信されます。 リージョン間のレプリケーション トラフィックは内部の Azure バックプレーン ネットワークを経由して送信されるため、ユーザーの帯域幅コストが削減されます。
 
 **基本的なデプロイ**
 
-バックアップが 30 TB 未満の環境に対して、AVS は次の構成を推奨しています。
+バックアップが 30 TB 未満の環境に対して、CloudSimple は次の構成を推奨しています。
 
-* AVS プライベート クラウド内の同じ VM に Veeam バックアップ サーバーとプロキシ サーバーをインストールします。
+* プライベート クラウド内の同じ VM に Veeam バックアップ サーバーとプロキシ サーバーをインストールします。
 * Azure 内の Linux ベースのプライマリ バックアップ リポジトリをバックアップ ジョブのターゲットとして構成します。
 * `azcopy` を使用して、プライマリ バックアップ リポジトリのデータを Azure BLOB コンテナーにコピーし、このコンテナーを別のリージョンにレプリケートします。
 
@@ -60,10 +60,10 @@ Azure を利用して、バックアップ リポジトリと、長期のバッ�
 
 **高度なデプロイ**
 
-バックアップが 30 TB を超える環境に対して、AVS では次の構成が推奨されています。
+バックアップが 30 TB を超える環境に対して、CloudSimple は次の構成を推奨しています。
 
 * Veeam が推奨するように、vSAN クラスター内のノードごとに 1 つのプロキシ サーバーを配置します。
-* AVS プライベート クラウド内の Windows ベースのプライマリ バックアップ リポジトリに 5 日分のデータをキャッシュすることで復元を高速化します。
+* プライベート クラウド内の Windows ベースのプライマリ バックアップ リポジトリに 5 日分のデータをキャッシュすることで復元を高速化します。
 * Azure 内の Linux バックアップ リポジトリをバックアップ コピー ジョブのターゲットにすることでリテンション期間を延長します。 このリポジトリは、スケールアウト バックアップ リポジトリとして構成する必要があります。
 * `azcopy` を使用して、プライマリ バックアップ リポジトリのデータを Azure BLOB コンテナーにコピーし、このコンテナーを別のリージョンにレプリケートします。
 
@@ -71,32 +71,32 @@ Azure を利用して、バックアップ リポジトリと、長期のバッ�
 
 前の図で、バックアップ プロキシは、vSAN データストア上のワークロード VM ディスクに対してホットアド アクセス権のある VM であることに注意してください。 Veeam では、仮想アプライアンスのバックアップ プロキシ転送モードを vSAN に使用します。
 
-## <a name="requirements-for-veeam-solution-on-avs"></a>AVS 上の Veeam ソリューションの要件
+## <a name="requirements-for-veeam-solution-on-cloudsimple"></a>CloudSimple 上の Veeam ソリューションの要件
 
 Veeam ソリューションでは、次の操作を行う必要があります。
 
 * 独自の Veeam ライセンスを提供します。
-* AVS プライベート クラウドで実行されているワークロードをバックアップするために、Veeam をデプロイして管理します。
+* CloudSimple プライベート クラウドで実行されているワークロードをバックアップするために、Veeam をデプロイして管理します。
 
 このソリューションでは、Veeam バックアップ ツールを完全に制御でき、VM バックアップ ジョブの管理にネイティブの Veeam インターフェイスと Veeam vCenter プラグインのどちらを使用するか選択できます。
 
 既存の Veeam ユーザーである場合、Veeam ソリューション コンポーネントに関するセクションを飛ばして「[Veeam のデプロイのシナリオ](#veeam-deployment-scenarios)」に直接進むことができます。
 
-## <a name="install-and-configure-veeam-backups-in-your-avs-private-cloud"></a>AVS プライベート クラウドに Veeam バックアップをインストールして構成する
+## <a name="install-and-configure-veeam-backups-in-your-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドに Veeam バックアップをインストールして構成する
 
-以下のセクションでは、AVS プライベート クラウド用の Veeam バックアップ ソリューションをインストールして構成する方法について説明します。
+以下のセクションでは、CloudSimple プライベート クラウド用の Veeam バックアップ ソリューションをインストールして構成する方法について説明します。
 
 デプロイのプロセスは、以下の手順で構成されます。
 
-1. [vCenter UI:AVS プライベート クラウド内にインフラストラクチャ サービスを設定する](#vcenter-ui-set-up-infrastructure-services-in-your-avs-private-cloud)
-2. [AVS ポータル: Veeam 用に AVS プライベート クラウドのネットワークを設定する](#avs-private-cloud-set-up-avs-private-cloud-networking-for-veeam)
-3. [AVS ポータル: 特権をエスカレートする](#avs-private-cloud-escalate-privileges-for-cloudowner)
-4. [Azure portal: 仮想ネットワークを AVS プライベート クラウドに接続する](#azure-portal-connect-your-virtual-network-to-the-avs-private-cloud)
-5. [Azure portal: Azure 内にバックアップ リポジトリを作成する](#azure-portal-connect-your-virtual-network-to-the-avs-private-cloud)
+1. [vCenter UI:プライベート クラウド内にインフラストラクチャ サービスを設定する](#vcenter-ui-set-up-infrastructure-services-in-your-private-cloud)
+2. [CloudSimple ポータル:Veeam 用にプライベート クラウドのネットワークを設定する](#cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam)
+3. [CloudSimple ポータル:特権をエスカレートする](#cloudsimple-private-cloud-escalate-privileges-for-cloudowner)
+4. [Azure portal: 仮想ネットワークをプライベート クラウドに接続する](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
+5. [Azure portal: Azure 内にバックアップ リポジトリを作成する](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
 6. [Azure portal: 長期的なデータ保持のために Azure BLOB ストレージを構成する](#configure-azure-blob-storage-for-long-term-data-retention)
-7. [AVS プライベート クラウドの vCenter UI:Veeam B&R をインストールする](#vcenter-console-of-avs-private-cloud-install-veeam-br)
+7. [プライベート クラウドの vCenter UI:Veeam B&R をインストールする](#vcenter-console-of-private-cloud-install-veeam-br)
 8. [Veeam コンソール:Veeam Backup & Recovery ソフトウェアを構成する](#veeam-console-install-veeam-backup-and-recovery-software)
-9. [AVS ポータル: Veeam のアクセス特権とエスカレート解除特権を設定する](#avs-portal-set-up-veeam-access-and-de-escalate-privileges)
+9. [CloudSimple ポータル:Veeam のアクセス特権とエスカレート解除特権を設定する](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
 
 ### <a name="before-you-begin"></a>開始する前に
 
@@ -106,28 +106,29 @@ Veeam のデプロイを開始する前に、以下のものが必要です。
 * 事前に作成された Azure リソース グループ
 * 利用中のサブスクリプション内の Azure 仮想ネットワーク
 * Azure ストレージ アカウント
-* AVS ポータルを使用して作成された [AVS プライベート クラウド](create-private-cloud.md)  
+* CloudSimple ポータルを使用して作成された[プライベート クラウド](create-private-cloud.md)。  
 
 実装フェーズ中は、以下の項目が必要です。
 
 * Veeam をインストールするための Windows 用 VMware テンプレート (64 ビット版 Windows Server 2012 R2 のイメージなど)
 * 1 つの使用可能な VLANがバックアップ ネットワーク用に識別されていること
 * バックアップ ネットワークに割り当てるためのサブネットの CIDR
-* Veeam 9.5 u3 のインストール可能メディア (ISO) が AVS プライベート クラウドの vSAN データストアにアップロードされていること
+* Veeam 9.5 u3 のインストール可能メディア (ISO) がプライベート クラウドの vSAN データストアにアップロードされていること
 
-### <a name="vcenter-ui-set-up-infrastructure-services-in-your-avs-private-cloud"></a>vCenter UI:AVS プライベート クラウド内にインフラストラクチャ サービスを設定する
+### <a name="vcenter-ui-set-up-infrastructure-services-in-your-private-cloud"></a>vCenter UI:プライベート クラウド内にインフラストラクチャ サービスを設定する
 
-ワークロードとツールを簡単に管理できるように、AVS プライベート クラウド内でインフラストラクチャ サービスを構成します。
+ワークロードとツールを簡単に管理できるように、プライベート クラウド内でインフラストラクチャ サービスを構成します。
 
 * 次のいずれかに該当する場合、[Active Directory を使用するための vCenter ID ソースの設定](set-vcenter-identity.md)に関する記事で説明されているように外部 ID プロバイダーを追加できます。
-  * AVS プライベート クラウド内のオンプレミスの Active Directory (AD) からユーザーを識別したい。
-  * すべてのユーザーに対して AVS プライベート クラウドに AD を設定したい。
+
+  * プライベート クラウド内のオンプレミスの Active Directory (AD) からユーザーを識別したい。
+  * すべてのユーザーに対してプライベート クラウドに AD を設定したい。
   * Azure AD を使用したい。
-* AVS プライベート クラウド内のワークロードに対して IP アドレス参照、IP アドレス管理、名前解決サービスを提供するには、「[AVS プライベート クラウドで DNS および DHCP アプリケーションとワークロードを設定する](dns-dhcp-setup.md)」の説明に従って、DHCP および DNS サーバーを設定します。
+* プライベート クラウド内のワークロードに対して IP アドレス参照、IP アドレス管理、名前解決サービスを提供するには、「[CloudSimple プライベート クラウドでの DNS および DHCP アプリケーションとワークロードの設定](dns-dhcp-setup.md)」の説明に従って DHCP および DNS サーバーを設定します。
 
-### <a name="avs-private-cloud-set-up-avs-private-cloud-networking-for-veeam"></a>AVS プライベート クラウド:Veeam 用に AVS プライベート クラウドのネットワークを設定する
+### <a name="cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam"></a>CloudSimple プライベート クラウド:Veeam 用にプライベート クラウドのネットワークを設定する
 
-AVS ポータルにアクセスして、Veeam ソリューション用の AVS プライベート クラウド ネットワークを設定します。
+CloudSimple ポータルにアクセスして、Veeam ソリューションのプライベート クラウド ネットワークを設定します。
 
 バックアップ ネットワーク用の VLAN を作成し、それをサブネット CIDR に割り当てます。 手順については、[VLAN/サブネットの作成と管理](create-vlan-subnet.md)に関する記事をご覧ください。
 
@@ -148,19 +149,19 @@ Veeam によって使用されるポートのネットワーク トラフィッ�
     | バックアップ リポジトリ  | バックアップ プロキシ  | TCP  | 2500 ～ 5000  | 
     | ソース バックアップ リポジトリ<br> *バックアップ コピー ジョブに使用*  | ターゲット バックアップ リポジトリ  | TCP  | 2500 ～ 5000  | 
 
-[ファイアウォールのテーブルと規則の設定](firewall.md)に関する記事で説明されているうに、ワークロード サブネットとバックアップ ネットワーク間のファイアウォール規則を作成します。 アプリケーション対応のバックアップと復元を行うには、特定のアプリケーションをホストするワークロード VM で[追加のポート](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95)を開く必要があります。
+[ファイアウォールのテーブルと規則の設定](firewall.md)に関する記事で説明されているうに、ワークロード サブネットとバックアップ ネットワーク間のファイアウォール規則を作成します。  アプリケーション対応のバックアップと復元を行うには、特定のアプリケーションをホストするワークロード VM で[追加のポート](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95)を開く必要があります。
 
-既定では、AVS によって 1 Gbps の ExpressRoute リンクが提供されます。 環境の規模がさらに大きい場合、より高帯域幅のリンクが必要になることがあります。 高帯域幅リンクの詳細については、Azure サポートにお問い合わせください。
+既定では、CloudSimple は 1 Gbps の ExpressRoute リンクを提供します。 環境の規模がさらに大きい場合、より高帯域幅のリンクが必要になることがあります。 高帯域幅リンクの詳細については、Azure サポートにお問い合わせください。
 
-セットアップを続行するには、承認キーとピア回線 URI、および Azure サブスクリプションへのアクセスが必要です。 この情報は、AVS ポータルの仮想ネットワーク接続に関するページで確認できます。 手順については、[Azure 仮想ネットワークから AVS 接続へのピアリング情報を取得する](virtual-network-connection.md)方法に関する記事を参照してください。 情報の取得に問題がある場合は、[サポートに連絡](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
+セットアップを続行するには、承認キーとピア回線 URI、および Azure サブスクリプションへのアクセスが必要です。  この情報は、CloudSimple ポータルの仮想ネットワーク接続に関するページで確認できます。 手順については、「[Azure 仮想ネットワークから CloudSimple 接続へのピアリング情報を取得する](virtual-network-connection.md)」を参照してください。 情報の取得に問題がある場合は、[サポートに連絡](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
 
-### <a name="avs-private-cloud-escalate-privileges-for-cloudowner"></a>AVS プライベート クラウド:**cloudowner** の特権をエスカレートする
+### <a name="cloudsimple-private-cloud-escalate-privileges-for-cloudowner"></a>CloudSimple プライベート クラウド:cloudowner の特権をエスカレートする
 
-既定の 'cloudowner' ユーザーには、VEEAM をインストールするための十分な特権が AVS プライベート クラウド vCenter にないため、ユーザーの vCenter 特権をエスカレートする必要があります。 詳しくは、[特権のエスカレート](escalate-private-cloud-privileges.md)に関する記事をご覧ください。
+既定の 'cloudowner' ユーザーには、VEEAM をインストールするための十分な特権がプライベート クラウド vCenter にないため、ユーザーの vCenter 特権をエスカレートする必要があります。 詳しくは、[特権のエスカレート](escalate-private-cloud-privileges.md)に関する記事をご覧ください。
 
-### <a name="azure-portal-connect-your-virtual-network-to-the-avs-private-cloud"></a>Azure portal:仮想ネットワークを AVS プライベート クラウドに接続する
+### <a name="azure-portal-connect-your-virtual-network-to-the-private-cloud"></a>Azure portal:仮想ネットワークをプライベート クラウドに接続する
 
-[ExpressRoute を使用した Azure 仮想ネットワーク接続](azure-expressroute-connection.md)に関する記事の説明に従って、仮想ネットワークを AVS プライベート クラウドに接続します。
+[ExpressRoute を使用した Azure 仮想ネットワーク接続](azure-expressroute-connection.md)に関する記事の説明に従って、仮想ネットワークをプライベート クラウドに接続します。
 
 ### <a name="azure-portal-create-a-backup-repository-vm"></a>Azure portal:バックアップ リポジトリ VM を作成する
 
@@ -168,7 +169,7 @@ Veeam によって使用されるポートのネットワーク トラフィッ�
 2. CentOS 7.4 ベースのイメージを選択します。
 3. VM のネットワーク セキュリティ グループ (NSG) を構成します。 VM にパブリック IP アドレスがなく、パブリック インターネットから VM に到達できないことを確認します。
 4. ユーザー名とパスワードを使用するユーザー アカウントを新しい VM 用に作成します。 手順については、「[Azure portal で Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-portal.md)」を参照してください。
-5. 512 GiB Standard HDD を 1 個作成し、リポジトリ VM に接続します。 手順については、「[Azure portal を使用して Windows VM にマネージド データ ディスクを接続する](../virtual-machines/windows/attach-managed-disk-portal.md)」を参照してください。
+5. 512 GiB Standard HDD を 1 個作成し、リポジトリ VM に接続します。  手順については、「[Azure portal を使用して Windows VM にマネージド データ ディスクを接続する](../virtual-machines/windows/attach-managed-disk-portal.md)」を参照してください。
 6. [マネージド ディスク上に XFS ボリュームを作成します](https://www.digitalocean.com/docs/volumes/how-to/)。 前述の資格情報を使用して VM にログインします。 次のスクリプトを実行して、論理ボリュームを作成し、それにディスクを追加し、XFS ファイル システムの[パーティション](https://www.digitalocean.com/docs/volumes/how-to/partition/)を作成して、そのパーティションを /backup1 パス下に[マウント](https://www.digitalocean.com/docs/volumes/how-to/mount/)します。
 
     スクリプトの例:
@@ -184,7 +185,7 @@ Veeam によって使用されるポートのネットワーク トラフィッ�
     sudo mount -t xfs /dev/mapper/backup1-backup1 /backup1
     ```
 
-7. /backup1 を、AVS プライベート クラウドで実行されている Veeam バックアップ サーバーへの NFS マウント ポイントとして公開します。 手順については、[CentOS 6 で NFS マウントを設定する方法](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-centos-6)に関する Digital Ocean の記事を参照してください。 Veeam バックアップ サーバーでバックアップ リポジトリを構成するときは、この NFS 共有名を使用します。
+7. /backup1 を、プライベート クラウドで実行されている Veeam バックアップ サーバーへの NFS マウント ポイントとして公開します。 手順については、[CentOS 6 で NFS マウントを設定する方法](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-centos-6)に関する Digital Ocean の記事を参照してください。 Veeam バックアップ サーバーでバックアップ リポジトリを構成するときは、この NFS 共有名を使用します。
 
 8. VM との間のすべてのネットワーク トラフィックを明示的に許可するように、バックアップ リポジトリ VM の NSG でフィルタリング規則を構成します。
 
@@ -205,11 +206,11 @@ Veeam によって使用されるポートのネットワーク トラフィッ�
     sudo yum -y install icu
     ```
 
-3. BLOB コンテナーとの間でバックアップ ファイルをコピーするには、`azcopy` コマンドを使用します。 詳細なコマンドについては、「[AzCopy on Linux を使ったデータの転送](../storage/common/storage-use-azcopy-linux.md)」を参照してください。
+3. BLOB コンテナーとの間でバックアップ ファイルをコピーするには、`azcopy` コマンドを使用します。  詳細なコマンドについては、「[AzCopy on Linux を使ったデータの転送](../storage/common/storage-use-azcopy-linux.md)」を参照してください。
 
-### <a name="vcenter-console-of-avs-private-cloud-install-veeam-br"></a>AVS プライベート クラウドの vCenter コンソール:Veeam B&R をインストールする
+### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>プライベート クラウドの vCenter コンソール:Veeam B&R をインストールする
 
-AVS プライベート クラウドから vCenter にアクセスして、Veeam サービス アカウントを作成し、Veeam B&R 9.5 をインストールし、サービス アカウントを使用して Veeam を構成します。
+プライベート クラウドから vCenter にアクセスして、Veeam サービス アカウントを作成し、Veeam B&R 9.5 をインストールし、サービス アカウントを使用して Veeam を構成します。
 
 1. "Veeam Backup Role" という名前の新しいロールを作成し、Veeam によって推奨されている必要なアクセス許可をそのロールに割り当てます。 詳細については、[必要なアクセス許可](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95)に関する Veeam のトピックを参照してください。
 2. 新しい "Veeam User Group" グループを vCenter で作成して、それに "Veeam Backup Role" を割り当てます。
@@ -227,7 +228,7 @@ AVS プライベート クラウドから vCenter にアクセスして、Veeam 
 
 Veeam コンソールを使用して、Veeam バックアップおよび復旧ソフトウェアを構成します。 詳細については、[Veeam Backup & Replication v9 のインストールとデプロイ](https://www.youtube.com/watch?v=b4BqC_WXARk)に関するビデオを参照してください。
 
-1. マネージド サーバー環境として VMware vSphere を追加します。 プロンプトが表示されたら、次の手順の冒頭で作成した Veeam サービス アカウントの資格情報を指定します: [AVS プライベート クラウドの vCenter コンソール:Veeam B&R をインストールする](#vcenter-console-of-avs-private-cloud-install-veeam-br)。
+1. マネージド サーバー環境として VMware vSphere を追加します。 プロンプトが表示されたら、次の手順の冒頭で作成した Veeam サービス アカウントの資格情報を指定します: [プライベート クラウドの vCenter コンソール:Veeam B&R をインストールする](#vcenter-console-of-private-cloud-install-veeam-br)。
 
     * 負荷制御設定および詳細設定は既定のままにします。
     * マウント サーバーの場所がバックアップ サーバーとなるように設定します。
@@ -252,7 +253,7 @@ Veeam コンソールを使用して、Veeam バックアップおよび復旧�
     * バックアップ コピー ジョブを構成するには、[バックアップ コピー ジョブの作成](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s)に関するビデオの指示に従います。
     * **[Advanced Settings]\(詳細設定\) > [Storage]\(ストレージ\)** でバックアップ ファイルの暗号化を有効にします。
 
-### <a name="avs-portal-set-up-veeam-access-and-de-escalate-privileges"></a>AVS ポータル: Veeam のアクセス特権とエスカレート解除特権を設定する
+### <a name="cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges"></a>CloudSimple ポータル:Veeam のアクセス特権とエスカレート解除特権を設定する
 Veeam バックアップおよび復旧サーバーのパブリック IP アドレスを作成します。 手順については、[パブリック IP アドレスの割り当て](public-ips.md)に関する記事をご覧ください。
 
 を使用してファイアウォール規則を作成し、Veeam Web サイトへのアウトバウンド接続を作成することを Veeam バックアップ サーバーに許可して、TCP ポート 80 で更新プログラム/パッチをダウンロードできるようにします。 手順については、[ファイアウォールのテーブルと規則の設定](firewall.md)に関する記事をご覧ください。
@@ -261,15 +262,15 @@ Veeam バックアップおよび復旧サーバーのパブリック IP アド�
 
 ## <a name="references"></a>References
 
-### <a name="avs-references"></a>AVS の参考資料
+### <a name="cloudsimple-references"></a>CloudSimple リファレンス
 
-* [AVS プライベート クラウドの作成](create-private-cloud.md)
+* [プライベート クラウドを作成する](create-private-cloud.md)
 * [VLAN/サブネットを作成して管理する](create-vlan-subnet.md)
 * [vCenter の ID ソース](set-vcenter-identity.md)
 * [ワークロードの DNS と DHCP の設定](dns-dhcp-setup.md)
 * [特権のエスカレート](escalate-privileges.md)
 * [ファイアウォールのテーブルとルールのセットアップ](firewall.md)
-* [AVS プライベート クラウドのアクセス許可](learn-private-cloud-permissions.md)
+* [プライベート クラウドのアクセス許可](learn-private-cloud-permissions.md)
 * [パブリック IP アドレスを割り当てる](public-ips.md)
 
 ### <a name="veeam-references"></a>Veeam リファレンス

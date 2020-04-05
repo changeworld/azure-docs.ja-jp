@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Gigya の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Gigya の統合 | Microsoft Docs'
 description: Azure Active Directory と Gigya の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 824e9c459df75ea0307fe314fbf4118cca6e69d3
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76841780"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gigya"></a>チュートリアル:Azure Active Directory と Gigya の統合
+# <a name="tutorial-azure-active-directory-integration-with-gigya"></a>チュートリアル: Azure Active Directory と Gigya の統合
 
 このチュートリアルでは、Gigya と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Gigya と Azure AD の統合には、次の利点があります。

@@ -14,11 +14,11 @@ ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073437"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215210"
 ---
 # <a name="about-api-management"></a>API Management について
 
@@ -71,17 +71,17 @@ API Management を使用するには、管理者が API を作成します。 AP
  * クラウド ソリューションとオンプレミス ソリューションの利用の違い
  * Azure API Management
  
-## <a name="apis"> </a>API と操作
+## <a name="apis-and-operations"></a><a name="apis"> </a>API と操作
 API Management サービス インスタンスの基礎となるのは API です。 それぞれの API は、開発者が利用できる一連の操作を表します。 各 API は、それを実装するバックエンド サービスへの参照を含んでおり、その操作は、バックエンド サービスに実装されている操作と対応します。 操作は、API Management で細かく設定することができます。URL のマッピング、クエリとパスのパラメーター、要求と応答の内容、操作から返される応答のキャッシュを制御することが可能です。 また、レート制限、クォータ、IP 制限のポリシーを API レベルや個々の操作レベルで導入することもできます。
 
 詳細については、[API の作成方法][How to create APIs]に関するページと [API に操作を追加する方法][How to add operations to an API]に関するページを参照してください。
 
-## <a name="products"> </a> 成果物
+## <a name="products"></a><a name="products"> </a> 製品
 開発者から見える API の全体像が成果物です。 API Management の成果物には、少なくとも 1 つの API が含まれており、タイトルや説明、使用条件などが設定されます。 成果物の種類には、**オープンな**成果物と**保護された**成果物があります。 保護された成果物を使用するには、事前にサブスクライブする必要があります。一方、オープンな成果物は、サブスクライブせずに使用できます。 開発者に使用してもらう準備が整ったら、成果物を発行することができます。 発行された成果物は、開発者が見ることができます (保護された成果物の場合は、開発者がサブスクライブできるようになります)。 サブスクリプションの承認は成果物レベルで構成します。管理者による承認を必須とするか自動的に承認するかを選択できます。
 
 開発者に成果物の表示を許可するかどうかは、グループを使用して管理します。 成果物の表示の可否はグループに対して付与されます。開発者は、自分が所属するグループから見える成果物を表示してサブスクライブすることができます。 
 
-## <a name="groups"> </a> グループ
+## <a name="groups"></a><a name="groups"> </a> グループ
 開発者に成果物の表示を許可するかどうかは、グループを使用して管理します。 API Management には、次に示すシステム グループが用意されています。これらのシステム グループを変更することはできません。
 
 * **管理者** - Azure サブスクリプション管理者は、このグループのメンバーです。 管理者は、API Management サービス インスタンスを管理します。開発者が使用する API とその操作、成果物は、管理者が作成します。
@@ -92,14 +92,14 @@ API Management サービス インスタンスの基礎となるのは API で�
 
 詳細については、[グループを作成して使用する方法][How to create and use groups]に関するページをご覧ください。
 
-## <a name="developers"> </a> 開発者
+## <a name="developers"></a><a name="developers"> </a> 開発者
 開発者は、API Management サービス インスタンス内のユーザー アカウントです。 開発者は、管理者が作成したり参加を呼びかけたりすることができるほか、 [開発者ポータル][Developer portal]からサインアップすることもできます。 それぞれの開発者はグループ (複数可) に所属し、そのグループに閲覧が認められている成果物をサブスクライブすることができます。
 
 成果物のサブスクリプションを持つ開発者には、その成果物へのプライマリ キーとセカンダリ キーが付与されます。 成果物の API を呼び出す際は、このキーを使用することになります。
 
 詳細については、[開発者を作成または招待する方法][How to create or invite developers]に関するページと[グループを開発者に関連付ける方法][How to associate groups with developers]に関する記事を参照してください。
 
-## <a name="policies"> </a> ポリシー
+## <a name="policies"></a><a name="policies"> </a> ポリシー
 ポリシーは、Azure Portal がその構成を通じて API の動作を変更できる、API Management の強力な機能の 1 つです。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられ、他にも数多くのポリシーが利用できます。
 
 ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー](/azure/api-management/api-management-advanced-policies#choose) ポリシーや[変数の設定](/azure/api-management/api-management-advanced-policies#set-variable)ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー](/azure/api-management/api-management-advanced-policies#AdvancedPolicies)」と「[ポリシーの式](/azure/api-management/api-management-policy-expressions)」をご覧ください。
@@ -108,7 +108,7 @@ API Management サービス インスタンスの基礎となるのは API で�
 API Management の全ポリシー一覧については、「 [Policy reference (ポリシー リファレンス)][Policy reference]」をご覧ください。 ポリシーの使用と構成の詳細については、「 [API Management policies (API Management のポリシー)][API Management policies]」を参照してください。 レート制限ポリシーとクォータ ポリシーを持った成果物の作成に関するチュートリアルについては、「 [Azure API Management で成果物を作成して詳細設定を行う方法][How create and configure advanced product settings]」をご覧ください。
 
 
-## <a name="developer-portal"> </a> 開発者ポータル
+## <a name="developer-portal"></a><a name="developer-portal"> </a> 開発者ポータル
 開発者ポータルは、開発者が API の使用法を習得したり、操作を確認して呼び出したり、成果物をサブスクライブしたりすることができる場です。 利用予定者は、開発者ポータルにアクセスして、API と操作を閲覧したうえで、サインアップすることができます。 開発者ポータルの URL は、API Management サービス インスタンスの Azure Portal のダッシュボードに示されます。
 
 カスタム コンテンツを追加したり、スタイルをカスタマイズしたり、貴社のブランドを追加したりすることによって、開発者ポータルのルック アンド フィールをカスタマイズすることができます。
@@ -121,7 +121,7 @@ API Management の詳細については、Microsoft Ignite 2017 カンファレ�
 > 
 > 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のクイックスタートを完了して、Azure API Management の使用を開始します。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 2c4152ec5e67761ce9be9a81bfbf39e1591787da
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 18e96f9463176b0fce04252492eea6dbede416c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913516"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531109"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>新しい Azure ノードへの Linux 仮想マシンの再デプロイ
 Azure の Linux 仮想マシン (VM) への SSH またはアプリケーション アクセスに関するトラブルシューティングで問題があるときは、VM の再デプロイが有効な場合があります。 VM を再デプロイするときは、Azure インフラストラクチャ内の新しいノードに VM を移動してから、電源をオンにします。 すべての構成オプションと関連するリソースが保持されます。 この記事では、Azure CLI または Azure ポータルを使用して VM を再デプロイする方法について説明します。
@@ -45,7 +45,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 
 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM を再デプロイします。
 
-```azurecli
+```console
 azure vm redeploy --resource-group myResourceGroup --vm-name myVM 
 ```
 

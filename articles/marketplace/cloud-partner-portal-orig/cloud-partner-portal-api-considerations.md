@@ -1,19 +1,18 @@
 ---
 title: API の考慮事項 | Azure Marketplace
 description: マーケットプレース API を使用する際のバージョン管理、エラー処理、認可の問題。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 07cdb5e44dde0ca655191111d0a23dbab85b4cb2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4e04f521ed2023dfb9cd562549cb2e1bcd319b8c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819740"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288633"
 ---
 # <a name="api-considerations"></a>API の考慮事項
 
@@ -36,7 +35,7 @@ API の複数のバージョンが同時に利用可能である可能性があ�
     }
 ```            
 
-<a name="errors"></a>Errors
+<a name="errors"></a>エラー
 ------
 
 API はエラーに応答する際、対応する HTTP 状態コードと、必要に応じて追加情報を、JSON 形式でシリアル化された応答に含めます。

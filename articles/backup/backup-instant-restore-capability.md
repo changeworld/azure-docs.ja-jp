@@ -5,10 +5,10 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: 7cf437c6b20ea6b688e8e93e401cf71ef0260888
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705430"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する

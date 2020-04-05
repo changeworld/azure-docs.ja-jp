@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: victorh
 ms.openlocfilehash: d93c3b47c518962bf45762b846eaf53e490ae8f8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73512008"
 ---
 # <a name="what-is-a-secured-virtual-hub"></a>セキュリティ保護付き仮想ハブとは
@@ -30,6 +30,6 @@ ms.locfileid: "73512008"
 
 Azure portal で Firewall Manager を使用して、新しいセキュリティ保護付き仮想ハブを作成するか、以前に Azure Virtual WAN を使用して以前作成した既存の仮想ハブを変換することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 セキュリティ保護付き仮想ハブを作成し、それを使用してハブアンドスポーク ネットワークを保護および管理する方法については、[チュートリアル:Azure portal を使用して Azure Firewall Manager でクラウド ネットワークをセキュリティで保護する](secure-cloud-network.md)を参照してください。

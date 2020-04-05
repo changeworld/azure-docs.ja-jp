@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, プレイブック, ネットワーキ�
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 78699a005d721b46a88a26452f5db68438793d34
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155737"
 ---
 # <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>チュートリアル:Ansible を使用して Azure Virtual Network ピアリングを構成する
@@ -286,7 +286,7 @@ PLAY RECAP
 localhost                  : ok=12   changed=9    unreachable=0    failed=0    skipped=0   rescued=0    ignored=0
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースが不要になったら、削除してください。 
 
@@ -327,7 +327,7 @@ ansible-playbook コマンドを使用してプレイブックを実行します
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Azure 上の Ansible](/azure/ansible/)

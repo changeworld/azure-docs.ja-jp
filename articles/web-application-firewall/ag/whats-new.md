@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 10/24/2019
 ms.author: victorh
 ms.openlocfilehash: 0e0e67bfb893e1bf141182e45ce4a49f5f6880ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73495492"
 ---
 # <a name="whats-new-in-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールの新着情報
@@ -33,6 +33,6 @@ Azure Web アプリケーション ファイアウォールは、継続的に更
 |WAF カスタム規則 |Application Gateway WAF_v2 では、カスタム ルールの作成がサポートされるようになりました。 [Application Gateway のカスタム ルール](custom-waf-rules-overview.md)に関する記事を参照してください。 |2019 年 6 月 |
 |WAF 構成と除外リスト     |WAF の構成と誤検知の削減に役立つオプションが追加されました。 詳細については、「[Web アプリケーション ファイアウォール要求サイズ制限と除外リスト](application-gateway-waf-configuration.md)」を参照してください。|2018 年 12 月|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Application Gateway 上の Web アプリケーション ファイアウォールの詳細については、「[Azure Application Gateway 上の Azure Web アプリケーション ファイアウォール](ag-overview.md)」を参照してください。

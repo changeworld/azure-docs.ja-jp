@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: c815256e60e5ca6582220d247d587a4488c4a55a
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74534771"
 ---
 # <a name="azure-active-directory-operations-reference-guide"></a>Azure Active Directory 運用リファレンス ガイド
@@ -44,6 +44,6 @@ ms.locfileid: "74534771"
 | InfoSec アーキテクチャ チーム | このチームは、組織の情報セキュリティ プラクティスを計画および設計します。 |
 | InfoSec 運用チーム | このチームは、InfoSec アーキテクチャ チームの実装された情報セキュリティ プラクティスを実行および監視します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ID とアクセス管理のチェックとアクション](active-directory-ops-guide-iam.md)を開始します。

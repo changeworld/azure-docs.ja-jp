@@ -1,6 +1,6 @@
 ---
 title: バックエンド v1 への接続
-description: App Service 環境からバックエンド リソースに安全に接続する方法について説明します。 このドキュメントはレガシ v1 ASE を使用するお客様にのみ提供されます。
+description: App Service 環境からバックエンド リソースに安全に接続する方法について説明します。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
 author: stefsch
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 03f773e286697a12188f238cf2f422a18a20054f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687310"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>App Service 環境からバックエンド リソースに安全に接続する
@@ -76,7 +76,7 @@ VNet 間の内部トラフィックのみにアクセスを制限すると、ネ
 
 ![既定のネットワーク セキュリティ グループ][DefaultNetworkSecurityRules]
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 App Service 環境の使用を開始するには、「 [App Service 環境の概要][IntroToAppServiceEnvironment]
 
 App Service 環境への着信トラフィックを制御する方法の詳細については、[App Service 環境への着信トラフィックの制御][ControlInboundASE]に関するページを参照してください。

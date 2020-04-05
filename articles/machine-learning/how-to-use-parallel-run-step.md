@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 01/15/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: 313ba2c02fd65a967ab1969b6f99893de9a3bdb4
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 3d283d1094336b928869aa281b4a640d7a62dd94
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037356"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79477189"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning を使用して大規模なデータでバッチ推論を実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -329,7 +329,7 @@ parallelrun_step = ParallelRunStep(
 >[!Note]
 > 上記の手順は、「[前提条件](#prerequisites)」で説明されている `azureml-contrib-pipeline-steps` によって変わります。 
 
-### <a name="run-the-pipeline"></a>パイプラインを実行する
+### <a name="submit-the-pipeline"></a>パイプラインを送信する
 
 次に、パイプラインを実行します。 まず、ご自身のワークスペース参照、および作成したパイプラインのステップを使用して、[`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) オブジェクトを作成します。 `steps` パラメーターは、ステップの配列です。 この場合、バッチ スコアリング用のステップは 1 つだけです。 複数のステップが含まれたパイプラインを作成する場合は、この配列内にステップを順に配置します。
 

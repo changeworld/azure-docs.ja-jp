@@ -10,10 +10,10 @@ ms.date: 05/20/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 965d6b206bb64e90fe59798ce0c37ccf029117f5
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74849515"
 ---
 # <a name="workspace-mappings"></a>ワークスペースのマッピング
@@ -40,7 +40,7 @@ Update Management、Change Tracking と Inventory、Start/Stop VMs during off-ho
 |**ヨーロッパ**||
 |UKSouth|UKSouth|
 |西ヨーロッパ|西ヨーロッパ|
-|**米国政府**||
+|**US Gov**||
 |USGovVirginia|USGovVirginia|
 
 <sup>1</sup> EastUS の Log Analytics ワークスペースと Automation アカウントのマッピングは、正確なリージョン間のマッピングではありませんが、適切なマッピングです。
@@ -72,11 +72,11 @@ Update Management、Change Tracking と Inventory、Start/Stop VMs during off-ho
 
 * VM の開始/停止の Runbook スケジュール
 * VM の開始/停止の Runbook
-* 変数
+* 変数:
 
 Automation アカウントの自分のワークスペースを Log Analytics ワークスペースからリンク解除することもできます。 自分のワークスペースで、 **[関連リソース]** の **[Automation アカウント]** を選択します。 [Automation アカウント] ページで **[アカウントのリンク解除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以下のソリューションをオンボードする方法について学習します。
 

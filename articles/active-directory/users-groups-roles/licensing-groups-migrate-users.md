@@ -17,10 +17,10 @@ ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c06d81f2f3f6cee781889d05ae08a1fd125df52
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025680"
 ---
 # <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>個別にライセンスを付与されたユーザーをライセンスのためにグループに移行する方法
@@ -77,7 +77,7 @@ ms.locfileid: "74025680"
 
    ![直接付与されたライセンスが削除されていることを確認する](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 グループによるライセンス管理の他のシナリオについては、以下をご覧ください。
 

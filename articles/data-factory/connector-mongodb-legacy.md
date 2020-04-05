@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: 0bdd8d454b979250b57cf657d347309b99a86ede
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892568"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする
@@ -57,11 +57,11 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 |type プロパティは、次のように設定する必要があります:**MongoDb** |はい |
+| type |type プロパティを **MongoDb** に設定する必要があります。 |はい |
 | server |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
 | port |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ (既定値は 27017) |
 | databaseName |アクセスする MongoDB データベースの名前。 |はい |
-| authenticationType | MongoDB データベースへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic**、**Anonymous**。 |はい |
+| authenticationType | MongoDB データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Anonymous** です。 |はい |
 | username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
 | パスワード |ユーザーのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい (基本認証が使用される場合)。 |
 | authSource |認証のために資格情報を確認する際に使用する MongoDB データベースの名前。 |いいえ。 基本認証の場合、既定では管理者アカウントと、databaseName プロパティで指定されたデータベースが使用されます。 |
@@ -100,7 +100,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、次のように設定する必要があります:**MongoDbCollection** | はい |
+| type | データセットの type プロパティは、**MongoDbCollection** に設定する必要があります。 | はい |
 | collectionName |MongoDB データベースのコレクション名前。 |はい |
 
 **例:**
@@ -131,7 +131,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**MongoDbSource** | はい |
+| type | コピー アクティビティのソースの type プロパティを **MongoDbSource** に設定する必要があります。 | はい |
 | query |カスタム SQL-92 クエリを使用してデータを読み取ります。 例: Select * from MyTable。 |いいえ (データセットに "collectionName" が指定されている場合) |
 
 **例:**
@@ -210,8 +210,8 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 
 | _id | Customer Name | Invoices | サービス レベル | Ratings |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id:"123", item:"toaster", price:"456", discount:"0.2"}, {invoice_id:"124", item:"oven", price:"1235", discount:"0.2"}] |シルバー |[5,6] |
-| 2222 |XYZ |[{invoice_id:"135", item:"fridge", price:"12543", discount:"0.0"}] |ゴールド |[1,2] |
+| 1111 |ABC |[{invoice_id:"123", item:"toaster", price:"456", discount:"0.2"}, {invoice_id:"124", item:"oven", price: "1235", discount: "0.2"}] |シルバー |[5,6] |
+| 2222 |XYZ |[{invoice_id:"135", item:"fridge", price: "12543", discount: "0.0"}] |ゴールド |[1,2] |
 
 ドライバーによって、この単一のテーブルを表す複数の仮想テーブルが生成されます。 最初の仮想テーブルは、次の例に示す "ExampleTable" という名前のベース テーブルです。 ベース テーブルには元のテーブルのすべてのデータが含まれますが、配列のデータは省略され、仮想テーブルで展開されます。
 

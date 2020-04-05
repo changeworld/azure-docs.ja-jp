@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 86b18c2a6fc3fbf342f5b7a4b6b563432c605f73
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68781468"
 ---
 次のベスト プラクティスに注意してください。

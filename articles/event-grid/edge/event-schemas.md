@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba261aeedf6574f69d3c05f8fd005c912dcc59d1
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73242465"
 ---
 # <a name="event-schemas"></a>イベント スキーマ

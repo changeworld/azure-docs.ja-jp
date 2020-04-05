@@ -1,20 +1,18 @@
 ---
 title: ホストされた体験版 | Azure Marketplace
 description: Marketplace のホストされた体験版をセットアップして管理する方法です
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 2ce43402fb283cce09687bc7226770731f1bae0d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 6d054064e236e121e02bf58a0eb73b5a62f24a09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827511"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278265"
 ---
 # <a name="hosted-test-drive"></a>ホストされた体験版
 
@@ -44,13 +42,13 @@ ms.locfileid: "73827511"
 - **[Max Concurrent Test Drives]\(同時実行する体験版の最大数\)** :このフィールドでは、任意の時点で体験版を同時にアクティブにできるユーザーの数を設定します。 体験版がアクティブになっている間、各ユーザーは Dynamics のライセンスを消費するので、少なくともここで指定する数の Dynamics ライセンスを体験版ユーザーに使用できることを確認する必要があります。 推奨値は 3 ～ 5 です。
 - **[Test Drive Duration (hours)]\(体験版の期間 (時間)\)** :このフィールドには、ユーザーの体験版がアクティブになる時間数を設定します。 この時間が経過すると、ユーザーはテナントからプロビジョニング解除されます。 アプリの複雑さに応じて、推奨値は 2 ～ 24 時間です。 この時間が経過した後でユーザーが再び体験版にアクセスしたい場合、ユーザーはいつでも別の体験版を要求できます。
 - **[Instance URL]\(インスタンス URL\)** :体験版のユーザーが体験版を開始したときに最初に誘導される URL を指定します。 通常これは、アプリとサンプル データがインストールされている Dynamics 365 インスタンスの URL です。 値の例: https:\//testdrive.crm.dynamics.com
-- **[Azure AD Tenant ID]\(Azure AD テナント ID\)** :Dynamics 365 インスタンスの Azure テナント ID を指定します。 この値は、Azure portal にログインを取得しに移動します\'Azure Active Directory\'  - \>からメニュー ブレードの [プロパティ]\>ディレクトリ ID をコピー 値の例:72f988bf-86f1-41af-91ab-2d7cd0111234
+- **[Azure AD Tenant ID]\(Azure AD テナント ID\)** :Dynamics 365 インスタンスの Azure テナント ID を指定します。 この値は、Azure portal にログインを取得しに移動します\'Azure Active Directory\' -\>からメニュー ブレードの [プロパティ]\>ディレクトリ ID をコピー 値の例:72f988bf-86f1-41af-91ab-2d7cd0111234
 - **[Azure AD App ID]\(Azure AD アプリ ID\)** :手順 7 で作成した Azure AD アプリの ID。\ 値の例:53852862-a2ae-4e43-9461-faa49650a096
 - **[Azure AD App Key]\(Azure AD アプリ キー\)** :手順 7 で作成した Azure AD アプリのシークレット。\ 値の例:IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=
 - **[Azure AD Tenant Name]\(Azure AD テナント名\)** :Dynamics 365 インスタンスの Azure テナントの名前を指定します。 \<テナント名\>.onmicrosoft.com という形式を使用します。 値の例: testdrive.onmicrosoft.com
-- **[Instance Web API URL]\(インスタンスの Web API URL\)** :Dynamics 365 インスタンスの Web API URL を指定します。 この値を取得するには、Microsoft Dynamics 365 インスタンスにログインし、[設定] \> [カスタマイズ] \> [開発者リソース] \> [インスタンスの Web API] に移動して、この URL をコピーします。 値の例: https:\//testdrive.crm.dynamics.com/api/data/v9.0 
+- **[Instance Web API URL]\(インスタンスの Web API URL\)** :Dynamics 365 インスタンスの Web API URL を指定します。 この値を取得するには、Microsoft Dynamics 365 インスタンスにログインし、[設定] \> [カスタマイズ] \> [開発者リソース] \> [インスタンスの Web API] に移動して、この URL をコピーします。 値の例: https:\//testdrive.crm.dynamics.com/api/data/v9.0
 - **[ロール名]** :体験版用に作成したカスタムの Dynamics 365 セキュリティ ロールの名前を指定します。 これは、体験版の使用中にユーザーに割り当てられるロールです。 値の例: testdriverole
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 準備ができたらオファーを**発行**し、アプリが認定に合格すると、オファーの**プレビュー**が提供されます。 UI で体験版を開始し、体験版が正しく実行されていることを確認します。 プレビューのオファリングに問題がなければ、**稼働**を開始します。

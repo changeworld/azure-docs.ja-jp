@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/06/2019
 ms.author: aahi
 ms.openlocfilehash: 69c5fc9805bed8fdfde3dd208e7fb66254e82c3c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75383877"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>チュートリアル:Bing Image Search API と C# を使用して画像の詳細情報を抽出する
@@ -111,6 +111,6 @@ https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリで画像と検索オプションを表示する](tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Bing Image Search API リファレンス](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

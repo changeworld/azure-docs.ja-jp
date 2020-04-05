@@ -9,10 +9,10 @@ ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 128a2e8b200f1323b88aad635f27c1b686ecbed2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72789711"
 ---
 モノのインターネット (IoT) は、世界各地の企業に固有のセキュリティ、プライバシー、およびコンプライアンスの課題をもたらします。 ソフトウェアとその実装方法に関する問題が発生した場合、従来のサイバー テクノロジとは異なり、IoT ではサイバーおよび物理世界が融合すると何が起こるかが懸念されます。 IoT ソリューションを保護するには、デバイスの安全なプロビジョニング、デバイスとクラウド間の安全な接続、処理中および保管中のクラウドでの安全なデータ保護を確実に行う必要があります。 ただし、そのような機能には、リソースが限られたデバイス、デプロイの地理的分散、およびソリューション内の多数のデバイスという問題が伴います。
@@ -43,7 +43,7 @@ Microsoft のシステムでは、脅威の特定と軽減に役立つ、侵入�
 
 ソリューションアクセラレータは、SDLや OSA プロセスと共に Azure プラットフォームに組み込まれているセキュリティとプライバシーを活用して、すべての Microsoft ソフトウェアを安全に開発し、操作できるようにします。 これらの手順では、ソリューションのセキュリティに重要なインフラストラクチャの保護、ネットワークの保護、および ID と管理機能が提供されます。
 
-[IoT ソリューションアクセラレータ](../articles/iot-fundamentals/iot-introduction.md) 内の [Azure IoT Hub](../articles/iot-hub/about-iot-hub.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) や [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) などの間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。
+[IoT ソリューションアクセラレータ](../articles/iot-hub/about-iot-hub.md) 内の [Azure IoT Hub](../articles/iot-fundamentals/iot-introduction.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) や [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) などの間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。
 
 Azure IoT ソリューションアクセラレータに組み込まれているセキュリティとプライバシーの機能をわかりやすくするために、この記事では Suite を 3 つの主なセキュリティ領域に分割しています。
 
@@ -97,18 +97,18 @@ IoT インフラストラクチャで使用されるすべてのキーはクラ�
 
 ソリューションアクセラレータには仕様でセキュリティ対策が組み込まれているため、資産を安全に監視して効率性を高め、運用パフォーマンスを向上させて革新を実現し、高度なデータ分析を採用して事業を転換することができます。 セキュリティ、複数のセキュリティ機能、および設計パターンに対するレイヤー アプローチで、ソリューションアクセラレータは事業を転換するための信頼できるインフラストラクチャをデプロイできます。
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 各ソリューション アクセラレータでは、Azure のサービスのインスタンスを作成します：
 
-* [**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/):クラウドをデバイスに接続するゲートウェイ。 ハブごとに数百万の接続にスケーリングでき、ソリューションのセキュリティ保護に役立つデバイスごとの認証サポートにより膨大な量のデータを処理できます。
+* [**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/): クラウドをデバイスに接続するゲートウェイ。 ハブごとに数百万の接続にスケーリングでき、ソリューションのセキュリティ保護に役立つデバイスごとの認証サポートにより膨大な量のデータを処理できます。
 
-* [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/):属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。 Azure Cosmos DB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付けと豊富な SQL クエリ インターフェイスが提供されます。
+* [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): 属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。 Azure Cosmos DB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付けと豊富な SQL クエリ インターフェイスが提供されます。
 
-* [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/):クラウドにおけるリアルタイム ストリーム処理。これにより、デバイス、センサー、インフラストラクチャ、アプリケーションからリアルタイムの分析情報を得られるようにする低コストの分析ソリューションを迅速に開発してデプロイすることができます。 この完全に管理されたサービスからのデータは、高スループット、低待機時間、および回復性を維持した状態で任意のボリュームにスケーリングできます。
+* [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): クラウドにおけるリアルタイム ストリーム処理。これにより、デバイス、センサー、インフラストラクチャ、アプリケーションからのリアルタイムの洞察を得られるようにする低コストの分析ソリューションを迅速に開発してデプロイすることができます。 この完全に管理されたサービスからのデータは、高スループット、低待機時間、および回復性を維持した状態で任意のボリュームにスケーリングできます。
 
-* [**Azure App Services**](https://azure.microsoft.com/services/app-service/):データがクラウドとオンプレミスのどちらにあっても接続できる強力な Web アプリとモバイル アプリをビルドするためのクラウド プラットフォームです。 iOS、Android、Windows 用の魅力的なモバイル アプリをビルドします。 多数のクラウド ベース サービスとエンタープライズ アプリケーションへのすぐに利用可能な接続により、使用しているサービスとしてのソフトウェア (SaaS) およびエンタープライズ アプリケーションと統合します。 お気に入りの言語や IDE (.NET、Node.js、PHP、Python、または Java) でコードを作成し、Web アプリと API をこれまで以上に迅速にビルドできます。
+* [**Azure App Services**](https://azure.microsoft.com/services/app-service/): データがクラウドとオンプレミスのどちらにあっても接続できる強力な Web アプリとモバイル アプリをビルドするためのクラウド プラットフォーム。 iOS、Android、Windows 用の魅力的なモバイル アプリをビルドします。 多数のクラウド ベース サービスとエンタープライズ アプリケーションへのすぐに利用可能な接続により、使用しているサービスとしてのソフトウェア (SaaS) およびエンタープライズ アプリケーションと統合します。 お気に入りの言語や IDE (.NET、Node.js、PHP、Python、または Java) でコードを作成し、Web アプリと API をこれまで以上に迅速にビルドできます。
 
-* [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/):Azure App Service の Logic Apps 機能は、既存の基幹業務システムに IoT ソリューションを統合し、ワークフロー プロセスを自動化するのに役立ちます。 開発者は Logic Apps を使用することで、トリガーで開始され、一連の手順 (つまり、ビジネス プロセスに統合するために強力なコネクタを使用するルールとアクション) を実行するワークフローを設計できます。 Logic Apps では、SaaS、クラウド ベース、およびオンプレミス アプリケーションの広範なエコシステムにすぐに接続できます。
+* [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/): Azure App Service の Logic Apps 機能は、既存の基幹業務システムに IoT ソリューションを統合し、ワークフロー プロセスを自動化するのに役立ちます。 開発者は Logic Apps を使用することで、トリガーで開始され、一連の手順 (つまり、ビジネス プロセスに統合するために強力なコネクタを使用するルールとアクション) を実行するワークフローを設計できます。 Logic Apps では、SaaS、クラウド ベース、およびオンプレミス アプリケーションの広範なエコシステムにすぐに接続できます。
 
-* [**Azure Blob Storage**](https://azure.microsoft.com/services/storage/):デバイスからクラウドに送信されるデータに対応する信頼性と経済性に優れたクラウド ストレージ。
+* [**Azure Blob Storage**](https://azure.microsoft.com/services/storage/): デバイスからクラウドに送信されるデータに対応する信頼性と経済性に優れたクラウド ストレージ。

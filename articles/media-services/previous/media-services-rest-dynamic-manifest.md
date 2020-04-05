@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
 ms.openlocfilehash: b778ad8c59cf51f92584cd3590f7d99244f37b2c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774954"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Azure Media Services REST API を使用したフィルターの作成 

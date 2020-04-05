@@ -10,11 +10,11 @@ ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442189"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225747"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
@@ -28,7 +28,7 @@ ms.locfileid: "75442189"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 
-* Azure サブスクリプションを必要とせず、課金や契約もなしに [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、`https://localhost:8081` エンドポイントで [Azure Cosmos DB エミュレーター](https://docs.microsoft.com/azure/cosmos-db/local-emulator)を使用できます。 主キーは、[要求の認証](local-emulator.md#authenticating-requests)で与えられます。
+* Azure サブスクリプションを必要とせず、課金や契約もなしに [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、[ エンドポイントで ](https://docs.microsoft.com/azure/cosmos-db/local-emulator)Azure Cosmos DB エミュレーター`https://localhost:8081`を使用できます。 主キーは、[要求の認証](local-emulator.md#authenticating-requests)で与えられます。
 
 * .NET クイック スタート記事の「[データベース アカウントの作成](create-sql-api-dotnet.md#create-account)」セクションで説明されている手順に従って、Azure Cosmos DB SQL API アカウントを作成します。
 

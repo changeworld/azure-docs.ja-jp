@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 648842e86410985e3a6fb21f474b9df9d14e109d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906708"
 ---
 [!INCLUDE [Prerequisites](prerequisites-python.md)]
@@ -52,7 +52,7 @@ Translator Text のグローバル エンドポイントは、`endpoint` とし�
 `params` は、出力言語を設定するために使用されます。 このサンプルでは、英語からイタリア語とドイツ語 (`it` と `de`) に翻訳しています。
 
 >[!NOTE]
-> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate)」をご覧ください。
+> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate)」を参照してください。
 
 ```python
 path = '/translate?api-version=3.0'
@@ -135,11 +135,11 @@ python translate-text.py
 ]
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 サブスクリプション キーをプログラムにハードコーディングしている場合は、このクイック スタートを終了するときにサブスクリプション キーを必ず削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
 

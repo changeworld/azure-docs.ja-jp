@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9d259c6e2a6ac9ced5f9a1c29d4aec08010f4dc
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78190553"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理での一般的なシナリオ

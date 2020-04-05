@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71212056"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定のユーザーに通知を送信する
@@ -48,7 +48,7 @@ ms.locfileid: "71212056"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルは、「[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」のチュートリアルで作成した通知ハブおよび Visual Studio プロジェクトに基づいて作成されています。 そのため、このチュートリアルを開始する前に、それを完了してください。
+このチュートリアルは、「[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」のチュートリアルで完成したプロジェクト内のコードを更新します。 そのため、このチュートリアルを開始する前に、それを完了してください。
 
 > [!NOTE]
 > バックエンド サービスとして Azure App Service で Mobile Apps を使用している場合は、このチュートリアルの [Mobile Apps バージョン](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)に関するページをご覧ください。
@@ -337,7 +337,7 @@ ms.locfileid: "71212056"
 
     ![][15]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、タグが登録に関連付けられている特定のユーザーにプッシュ通知を送信する方法を学習しました。 場所に基づいたプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

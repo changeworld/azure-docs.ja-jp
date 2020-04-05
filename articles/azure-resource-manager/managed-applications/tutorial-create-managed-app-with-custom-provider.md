@@ -6,15 +6,15 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.openlocfilehash: c3750da6bd76c8cb3908fbdc71ba676f09d77def
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75648809"
 ---
-# <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>チュートリアル:カスタム アクションおよびリソースを使用したマネージド アプリケーションを作成する
+# <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>チュートリアル:カスタム アクションおよびリソースを備えたマネージド アプリケーションを作成する
 
-このチュートリアルでは、カスタム アクションおよびリソースを使用した独自のマネージド アプリケーションを作成します。 このマネージド アプリケーションには、`Overview` ページ上にカスタム アクション、`Table of Content` に独立したメニュー項目として表示されるカスタム リソースの種類、カスタム リソース ページ上にカスタム コンテキスト アクションが含まれます。
+このチュートリアルでは、カスタム アクションおよびリソースを備えた独自のマネージド アプリケーションを作成します。 このマネージド アプリケーションは、`Overview` ページ上でのカスタム アクション、`Table of Content` 内で独立したメニュー項目として表示されるカスタムのリソースの種類、カスタム リソース ページ上のカスタム コンテキスト アクションを備えたものになります。
 
 このチュートリアルに含まれる手順は次のとおりです。
 
@@ -85,7 +85,7 @@ ms.locfileid: "75648809"
 
 ## <a name="template-with-custom-provider"></a>カスタム プロバイダーを指定したテンプレート
 
-カスタム プロバイダーを使用したマネージド アプリケーション インスタンスを作成するには、**mainTemplate.json** の中で名前が **public**、種類が **Microsoft.CustomProviders/resourceProviders** のカスタム プロバイダー リソースを定義する必要があります。 そのリソースで、サービスのリソースの種類とアクションを定義します。 Azure 関数と Azure ストレージ アカウントのインスタンスをデプロイするには、種類が `Microsoft.Web/sites` と `Microsoft.Storage/storageAccounts` のリソースをそれぞれ定義します。
+カスタム プロバイダーを備えたマネージド アプリケーション インスタンスを作成するには、**mainTemplate.json** の中で名前が **public**、種類が **Microsoft.CustomProviders/resourceProviders** のカスタム プロバイダー リソースを定義する必要があります。 そのリソースで、サービスのリソースの種類とアクションを定義します。 Azure 関数と Azure ストレージ アカウントのインスタンスをデプロイするには、種類が `Microsoft.Web/sites` と `Microsoft.Storage/storageAccounts` のリソースをそれぞれ定義します。
 
 このチュートリアルでは、リソースの種類 `users`、カスタム アクション `ping`、カスタム リソース `users` のコンテキストで実行するカスタム アクション `users/contextAction` を、それぞれ作成します。 リソースの種類とアクションのそれぞれに、[createUIDefinition.json](#user-interface-definition) の中で指定された名前の関数を指すエンドポイントを指定します。 **routingType** は、リソースの種類なら `Proxy,Cache`、アクションなら `Proxy` に、それぞれ指定します。
 
@@ -219,7 +219,7 @@ $blobUri=(Get-AzureStorageBlob -Container appcontainer -Blob app.zip -Context $c
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-# <a name="azure-clitabazurecli-interactive"></a>[Azure CLI](#tab/azurecli-interactive)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli-interactive)
 
 ```azurecli-interactive
 resourceGroup="appResourcesGroup"
@@ -244,7 +244,7 @@ az managedapp definition create \
   --package-file-uri "path to your app.zip package"
 ```
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**マネージド アプリケーション センター**」と入力し、選択します。
 2. **[Managed Applications Center]\(マネージド アプリケーション センター\)** 上で **[サービス カタログ アプリケーション定義]** を選択し、 **[追加]** をクリックします。 
@@ -275,9 +275,9 @@ az managedapp definition create \
 
 ## <a name="managed-application-instance"></a>マネージド アプリケーション インスタンス
 
-マネージド アプリケーションの定義をデプロイしたら、以下のスクリプトを実行するか、Azure portal で手順に従って、カスタム プロバイダーを使用したマネージド アプリケーション インスタンスをデプロイします。
+マネージド アプリケーションの定義をデプロイしたら、以下のスクリプトを実行するか、Azure portal で手順に従って、カスタム プロバイダーを備えたマネージド アプリケーション インスタンスをデプロイします。
 
-# <a name="azure-clitabazurecli-interactive"></a>[Azure CLI](#tab/azurecli-interactive)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli-interactive)
 
 ```azurecli-interactive
 appResourcesGroup="appResourcesGroup"
@@ -300,7 +300,7 @@ az managedapp create \
   --parameters "{\"funcname\": {\"value\": \"managedusersappfunction\"}, \"storageName\": {\"value\": \"managedusersappstorage\"}}"
 ```
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**マネージド アプリケーション センター**」と入力し、選択します。
 2. **[Managed Applications Center]\(マネージド アプリケーション センター\)** 上で **[サービス カタログ アプリケーション]** を選択し、 **[追加]** をクリックします。 

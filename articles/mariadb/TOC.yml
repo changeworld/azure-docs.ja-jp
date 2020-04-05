@@ -63,6 +63,8 @@
           href: concepts-data-access-security-private-link.md
         - name: 高度な脅威保護
           href: concepts-data-access-and-security-threat-protection.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: ビジネス継続性
       items:
         - name: ビジネス継続性の概要
@@ -138,6 +140,10 @@
           href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
+    - name: パブリック ネットワーク アクセスの拒否
+      items:
+        - name: Azure portal
+          href: howto-deny-public-network-access.md
     - name: サーバー ログへのアクセス
       items:
         - name: 低速クエリ ログ

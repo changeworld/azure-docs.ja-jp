@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: spelluru
 ms.openlocfilehash: 68a27a325a0ef02c6eeea9867a21ba0e24ab5321
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77117132"
 ---
 # <a name="enable-automatic-shutdown-of-vms-on-disconnect"></a>切断時の VM の自動シャットダウンを有効にする
-この記事では、リモート デスクトップ接続が切断された後の **Windows 10** ラボ VM (テンプレートまたは学生) の自動シャットダウンを有効または無効にする方法について説明します。 VM が自動的にシャットダウンされる前にユーザーの再接続を待つ時間の長さを指定することもできます。
+この記事では、リモート デスクトップ接続が切断された後の **Windows 10** ラボ VM (テンプレートまたは学生) の自動シャットダウンを有効または無効にする方法について説明します。 VM が自動的にシャットダウンされる前にユーザーの再接続を待つ時間を指定することもできます。
 
 ラボ アカウント管理者は、ラボを作成するラボ アカウントにこの設定を構成できます。 詳細については、[ラボ アカウントに切断時の VM の自動シャットダウンを構成する](how-to-configure-lab-accounts.md#automatic-shutdown-of-vms-on-disconnect)方法に関するページを参照してください。 ラボ所有者は、ラボの作成時またはラボの作成後に、設定をオーバーライドできます。 
 

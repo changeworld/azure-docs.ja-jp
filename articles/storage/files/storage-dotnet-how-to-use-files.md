@@ -9,10 +9,10 @@ ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4d8be13a75e276d5be6ec71141a13f95601869f0
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78301439"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する
@@ -34,9 +34,9 @@ Azure Files の詳細については、「[Azure Files とは](storage-files-int
 
 ## <a name="understanding-the-net-apis"></a>.NET API について
 
-Azure Files は、クライアント アプリケーションに対して、2 つの幅広いアプローチを提供します。それは、サーバー メッセージ ブロック (SMB) と REST です。 .NET 内では、これらのアプローチは `System.IO` および `WindowsAzure.Storage` API によって抽象化されています。
+Azure Files は、クライアント アプリケーションに対して、サーバー メッセージ ブロック (SMB) と REST という 2 つの幅広いアプローチを提供します。 .NET 内では、これらのアプローチは `System.IO` および `WindowsAzure.Storage` API によって抽象化されています。
 
-API | 使用する場合 | Notes
+API | 使用する場合 | メモ
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | アプリケーションが次のような場合。 <ul><li>SMB を使用してファイルの読み取り/書き込みをする必要がある</li><li>ポート 445 経由で Azure Files アカウントにアクセスするデバイスで実行している</li><li>ファイル共有のどの管理設定も管理する必要がない</li></ul> | SMB 経由の Azure Files によるファイル I/O の実装は、通常、ネットワーク ファイル共有またはローカル ストレージ デバイスでの I/O と同じです。 ファイル I/O など、.NET のさまざまな機能の概要については、「[コンソール アプリケーション](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)」のチュートリアルを参照してください。
 [Microsoft.Azure.Storage.File](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | アプリケーションが次のような場合。 <ul><li>ファイアウォールや ISP の制約のため、ポート 445 で SMB を使用して Azure Files にアクセスできない</li><li>ファイル共有のクォータを設定したり共有アクセス署名を作成したりする管理機能を必要としている</li></ul> | この記事では、SMB の代わりに REST を使用するファイル I/O のため、およびファイル共有の管理のために、`Microsoft.Azure.Storage.File` を使用する方法について説明します。
@@ -49,7 +49,7 @@ Visual Studio で、新しい Windows コンソール アプリケーション�
 1. **[新しいプロジェクトの作成]** で、C# の **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
 1. **[新しいプロジェクトの構成]** で、アプリの名前を入力し、 **[作成]** を選択します。
 
-このチュートリアルのすべてのコード例は、コンソール アプリケーションの `Program.cs` ファイルの `Main()` メソッドに追加できます。
+このチュートリアルのすべてのコード例は、コンソール アプリケーションの `Main()` ファイルの `Program.cs` メソッドに追加できます。
 
 Azure Storage クライアント ライブラリは、すべての種類の .NET アプリケーションで使用できます。 Azure クラウド サービスまたは Web アプリ、デスクトップ アプリケーション、モバイル アプリケーションなどの種類があります。 このガイドでは、わかりやすくするためにコンソール アプリケーションを使用します。
 
@@ -420,7 +420,7 @@ fileInliveShare.StartCopyAsync(new Uri(sourceUri));
 CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); mySnapshot.Delete(null, null, null);
 ```
 
-## メトリックを使用した Azure Files のトラブルシューティング<a name="troubleshooting-azure-files-using-metrics"></a>
+## <a name="troubleshoot-azure-files-by-using-metrics"></a>メトリックを使用した Azure Files のトラブルシューティング<a name="troubleshooting-azure-files-using-metrics"></a>
 
 Azure ストレージ分析で Azure Files のメトリックがサポートされるようになりました。 メトリック データを使用すると、要求のトレースや問題の診断ができます。
 
@@ -428,14 +428,14 @@ Azure ストレージ分析で Azure Files のメトリックがサポートさ�
 
 次のコード例では、.NET 用ストレージ クライアント ライブラリを使用して、Azure Files のメトリックを有効にする方法を示します。
 
-まず、`Program.cs` ファイルで、先ほど追加したディレクティブと共に、次の `using` ディレクティブを追加します。
+まず、`using` ファイルで、先ほど追加したディレクティブと共に、次の `Program.cs` ディレクティブを追加します。
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-Azure BLOB、Azure テーブル、Azure キューでは `Microsoft.Azure.Storage.Shared.Protocol` 名前空間の共有 `ServiceProperties` 型が使用されますが、Azure Files ではその独自の型である、`Microsoft.Azure.Storage.File.Protocol` 名前空間の `FileServiceProperties` 型が使用されます。 ただし、次のコードをコンパイルするためには、ご自身のコードから両方の名前空間を参照する必要があります。
+Azure BLOB、Azure テーブル、Azure キューでは `ServiceProperties` 名前空間の共有 `Microsoft.Azure.Storage.Shared.Protocol` 型が使用されますが、Azure Files ではその独自の型である、`FileServiceProperties` 名前空間の `Microsoft.Azure.Storage.File.Protocol` 型が使用されます。 ただし、次のコードをコンパイルするためには、ご自身のコードから両方の名前空間を参照する必要があります。
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.

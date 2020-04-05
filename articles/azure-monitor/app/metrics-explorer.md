@@ -4,11 +4,11 @@ description: メトリック エクスプローラーでグラフを解釈する
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670170"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234675"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Application Insights を使用したメトリックの探索
 [Application Insights][start] のメトリックとは、アプリケーションからのテレメトリとして送信される測定値とイベントの数を表します。 メトリックは、パフォーマンスの問題を検出し、アプリケーションの利用に関する傾向を把握するのに役立ちます。 さまざまな標準メトリックが用意されているほか、独自にカスタムのメトリックとイベントを作成することもできます。

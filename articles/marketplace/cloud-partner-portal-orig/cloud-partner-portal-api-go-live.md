@@ -1,19 +1,18 @@
 ---
 title: Go Live | Azure Marketplace
 description: Go Live API は、オファーのライブ一覧表示プロセスを開始します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 30500e9dfae9411563fc727290d0569998ba3550
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: bf7bebf6e72e373811879a311d70255c29988ed6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819682"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288582"
 ---
 <a name="go-live"></a>Go Live
 =======
@@ -27,8 +26,8 @@ ms.locfileid: "73819682"
 
 |  **Name**      |   **説明**                                                           | **データの種類** |
 |  --------      |   ---------------                                                           | ------------- |
-| publisherId    | 取得するオファーの発行元 ID (例: `contoso`)       |  string       |
-| offerId        | 取得するオファーのオファー ID                                   |  string       |
+| publisherId    | 取得するオファーの発行元 ID (例: `contoso`)       |  String       |
+| offerId        | 取得するオファーのオファー ID                                   |  String       |
 | api-version    | API の最新バージョン                                                   |  Date         |
 |  |  |  |
 
@@ -36,10 +35,10 @@ ms.locfileid: "73819682"
 <a name="header"></a>ヘッダー
 ------
 
-|  **Name**       |     **値**       |
+|  **Name**       |     **Value**       |
 |  ---------      |     ----------      |
 | Content-Type    | `application/json`  |
-| Authorization   | `Bearer YOUR_TOKEN` |
+| 承認   | `Bearer YOUR_TOKEN` |
 |  |  |
 
 
@@ -53,7 +52,7 @@ ms.locfileid: "73819682"
 
 ### <a name="response-header"></a>応答ヘッダー
 
-|  **Name**             |      **値**                                                            |
+|  **Name**             |      **Value**                                                            |
 |  --------             |      ----------                                                           |
 | Operation-Location    |  操作の現在の状態を確認するためのクエリに使用する URL            |
 |  |  |

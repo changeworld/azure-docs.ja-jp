@@ -1,19 +1,18 @@
 ---
 title: Power BI アプリ オファーを更新する | Azure Marketplace
 description: Power BI アプリ プランが Microsoft AppSource Marketplace で発行されたら、そのプランを更新します。
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: pabutler
-ms.openlocfilehash: 8e535b89ad370e42857a466aa772c1e13eeff11b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 04e10b9c5410d15d3509829af7502c9a93c7267d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818708"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281631"
 ---
 # <a name="update-a-power-bi-app-offer"></a>Power BI アプリ オファーの更新
 
@@ -63,6 +62,6 @@ Power BI アプリ オファーの一部の属性は、そのオファーが App
 
 オファーの発行履歴を表示するには、Cloud パートナー ポータルの左側にある **[履歴]** タブを開きます。ここには、AppSource のオファーに対するタイムスタンプ付きの操作の履歴が表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Cloud パートナー ポータルで、[Seller Insights](../../cloud-partner-portal-orig/si-getting-started.md) を定期的に使用して、Marketplace の顧客と使用状況に関する有用な情報を見つけます。  

@@ -1,19 +1,18 @@
 ---
 title: Azure アプリケーション オファーの SKU を構成する | Azure Marketplace
 description: Azure マネージド アプリケーションと Azure ソリューション テンプレートの SKU を構成する方法。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: 2430d7e6fa74438c148d3cb849510be06243faa0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.author: dsindona
+ms.openlocfilehash: 043394a1303456ce5b209bb84b5afaf09f6beba4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289075"
 ---
 # <a name="azure-application-skus-tab"></a>Azure アプリケーション SKU タブ
 
@@ -48,7 +47,7 @@ ms.locfileid: "76543156"
 |  ---------       |     ---------------                                                          |
 |  **タイトル\***     | SKU のタイトル。 このタイトルは、ギャラリーでこの項目に対して表示されます。   |
 | **要約\***    | SKU の概要の簡単な説明 (最大文字数は 100 文字です)。  |
-| **Description\*** | SKU の詳細な説明。 基本的な HTML がサポートされています。                 | 
+| **説明\*** | SKU の詳細な説明。 基本的な HTML がサポートされています。                 | 
 | **[SKU の種類]\***   | Azure アプリケーション ソリューションの種類。このシナリオでは、* **[Solution Template]\(ソリューション テンプレート\)** を選択します。 |
 | **クラウドの可用性\*** | SKU の場所。 既定値は **[パブリック Azure]** です。  <b/>   **[パブリック Azure]** - アプリは、Marketplace に統合しているすべてのパブリック Azure リージョン内の顧客へデプロイ可能になります。  <b/>   **[Azure Government Cloud]** - アプリは Azure Government Cloud にデプロイされます。 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) に発行する前に、パブリッシャーがソリューションをテストし、この環境で想定どおりに動作することを検証することをお勧めします。 ステージングおよびテストするには、[試用版アカウント](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)をリクエストします。  |
 | **[Is this a private SKU?]\(プライベート SKU か\)\*** | – この SKU が一部の顧客グループのみ利用できる場合、 **[はい]** を選択します。 |
@@ -70,7 +69,7 @@ ms.locfileid: "76543156"
 |  ---------       |     ---------------                                                          |
 |  **タイトル\***     | SKU のタイトル。 このタイトルは、ギャラリーでこの項目に対して表示されます。   |
 | **要約\***    | SKU の概要の簡単な説明 (最大文字数は 100 文字です)。  |
-| **Description\*** | SKU の詳細な説明。 基本的な HTML がサポートされています。                 | 
+| **説明\*** | SKU の詳細な説明。 基本的な HTML がサポートされています。                 | 
 | **[SKU の種類]\***   | Azure アプリケーション ソリューションの種類。このシナリオでは、* **[Managed Application]\(マネージド アプリケーション\)** を選択します。 
 | **クラウドの可用性\*** | SKU の場所。 既定値は **[パブリック Azure]** です。  <b/>   **[パブリック Azure]** - アプリは、Marketplace に統合しているすべてのパブリック Azure リージョン内の顧客へデプロイ可能になります。  <b/>   **[Azure Government Cloud]** - アプリは Azure Government Cloud にデプロイされます。 [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) に発行する前に、パブリッシャーがソリューションをテストし、この環境で想定どおりに動作することを検証することをお勧めします。 ステージングおよびテストするには、[試用版アカウント](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/)をリクエストします。   Microsoft Azure Government は政府用クラウドであり、米国連邦政府、州、地域または部族の顧客、およびこれらの団体にサービスを提供する資格を持つパートナー向けにアクセスが規制されています。 |
 | **[Is this a private SKU?]\(プライベート SKU か\)\*** | – この SKU が一部の顧客グループのみ利用できる場合、 **[はい]** を選択します。 |

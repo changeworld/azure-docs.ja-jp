@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
 ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74771102"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用して Azure Database for MySQL サーバーをプロビジョニングする
@@ -26,8 +26,8 @@ Azure Resource Manager では、基になる REST API を利用し、コード�
 > [!div class="checklist"]
 > * Azure Resource Manager テンプレートを使用して、VNet サービス エンドポイントによって Azure Database for MySQL サーバーを作成する
 > * [mysql コマンドライン ツール](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)を使用したデータベースの作成
-> * サンプル データの読み込み
-> * データのクエリを実行する
+> * サンプル データを読み込む
+> * クエリ データ
 > * データの更新
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
@@ -199,13 +199,13 @@ UPDATE inventory SET quantity = 200 WHERE name = 'banana';
 SELECT * FROM inventory;
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルで学習した内容は次のとおりです。
 > [!div class="checklist"]
 > * Azure Resource Manager テンプレートを使用して、VNet サービス エンドポイントによって Azure Database for MySQL サーバーを作成する
 > * [mysql コマンドライン ツール](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)を使用したデータベースの作成
-> * サンプル データの読み込み
-> * データのクエリを実行する
+> * サンプル データを読み込む
+> * クエリ データ
 > * データの更新
 > 
 > [Azure Database for MySQL にアプリケーションを接続する方法](./howto-connection-string.md)

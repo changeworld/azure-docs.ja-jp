@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
 ms.openlocfilehash: 34c6495e094a1160f6ac75b9f098934d5cbce967
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610150"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric の定期バックアップ構成を理解する

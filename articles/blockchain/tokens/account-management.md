@@ -5,10 +5,10 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: 9931ef59e613501ba6feaedf3ac5d4721f0df752
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74326097"
 ---
 # <a name="azure-blockchain-tokens-account-management"></a>Azure Blockchain Tokens のアカウント管理
@@ -31,6 +31,6 @@ Azure Blockchain Tokens に接続されたブロックチェーン ネットワ�
 
 また、グループを Azure Active Directory ユーザーまたはサービス プリンシパルに関連付けることもできます。このプリンシパルには、グループとその関連アカウントへのアクセス許可があります。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 利用できる [Azure Blockchain Tokens テンプレート](templates.md)について詳しく確認します。

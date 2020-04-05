@@ -9,14 +9,14 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
 ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386172"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>クラウド サービスを作成してデプロイする方法
-Azure portal には、クラウド サービスを作成してデプロイする方法が 2 つ用意されています。"*簡易作成*" と "*カスタム作成*" です。
+Azure Portal には、クラウド サービスを作成してデプロイする方法として、"*簡易作成*" と "*カスタム作成*" の 2 つの方法が用意されています。
 
 このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、 **[アップロード]** を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。 この方法を使うと、Azure ポータルに、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。 クラウド サービスの作成時にデプロイする準備が整っている場合は、[カスタム作成] を使用して作成とデプロイを同時に実行できます。
 

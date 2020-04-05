@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61244231"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>.NET で Media Encoder Standard を使用してサムネイルを生成する方法 
@@ -281,7 +281,7 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
 
 上記の例ではすべて、画像のみを生成するエンコード タスクを送信する方法を説明していますが、ビデオ/オーディオ エンコードをサムネイルの生成と組み合わせることもできます。 次の JSON および XML プリセットは、**Media Encoder Standard** にエンコード中にサムネイルを生成するよう指示します。
 
-### <a id="json"></a>JSON プリセット
+### <a name="json-preset"></a><a id="json"></a>JSON プリセット
 スキーマの詳細については、[こちら](https://msdn.microsoft.com/library/mt269962.aspx)の記事をご覧ください。
 
 ```json
@@ -346,7 +346,7 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
     }
 ```
 
-### <a id="xml"></a>XML プリセット
+### <a name="xml-preset"></a><a id="xml"></a>XML プリセット
 スキーマの詳細については、[こちら](https://msdn.microsoft.com/library/mt269962.aspx)の記事をご覧ください。
 
 ```csharp
@@ -401,7 +401,7 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
     </Preset>   
 ```
 
-## <a id="code_sample"></a>.NET を使用したビデオのエンコードとサムネイルの生成
+## <a name="encode-video-and-generate-thumbnail-with-net"></a><a id="code_sample"></a>.NET を使用したビデオのエンコードとサムネイルの生成
 
 次のコード サンプルでは、Media Services SDK を使用して次のタスクを実行します。
 
@@ -561,7 +561,7 @@ namespace EncodeAndGenerateThumbnails
   * 既定値: Start:{Best}
 * 画像の形式ごとに出力形式を明示的に指定する必要があります (Jpg/Png/BmpFormat)。 指定されている場合、MES は JpgVideo を JpgFormat などに対応付けます。 OutputFormat には新しい画像コーデック固有のマクロである {Index} が導入されました。このマクロは、画像出力形式を指定する場合に (1 度だけ) 指定する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 エンコード ジョブが保留になっているときに、[ジョブの進行状況](media-services-check-job-progress.md)を確認できます。
 
@@ -571,6 +571,6 @@ namespace EncodeAndGenerateThumbnails
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [Media Services Encoding の概要](media-services-encode-asset.md)
 

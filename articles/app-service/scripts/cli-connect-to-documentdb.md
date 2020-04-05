@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 4c19ac6db22c04f958bf332d0b5cdf327294108d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 911282e71491c86fefa86d342e916cdff4fa8c9b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74686566"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058665"
 ---
 # <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>CLI を使った App Service アプリと Cosmos DB の接続
 
@@ -36,7 +36,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、App Service アプリ、Cosmos DB、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service プランを作成します。 |
@@ -45,7 +45,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 | [`az cosmosdb list-connection-strings`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-list-connection-strings) | 指定された Cosmos DB アカウントの接続文字列を一覧表示します。 |
 | [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | App Service アプリのアプリ設定を作成または更新します。 アプリケーション設定は、アプリの環境変数として公開されます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

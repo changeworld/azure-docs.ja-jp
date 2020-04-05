@@ -4,11 +4,11 @@ description: Visual Studio Code 用 Azure Functions 拡張機能を使用して�
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: 2d33b7dddf29d37d174bdb7734e9048bc1658840
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78941050"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235067"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -184,7 +184,7 @@ Visual Studio Code では、便利な一連のプロンプトに従って、func
 
 以下は、新しいストレージ出力バインドを定義するためのプロンプト例です。
 
-| Prompt | Value | 説明 |
+| Prompt | 値 | 説明 |
 | -------- | ----- | ----------- |
 | **Select binding direction (バインド方向を選択する)** | `out` | バインドは出力バインドです。 |
 | **Select binding with direction (方向を使用してバインドを選択する)** | `Azure Queue Storage` | バインドは Azure Storage キュー バインドです。 |
@@ -234,7 +234,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
 作成したリソースに明示的な名前を指定する場合は、高度な作成パスを選択する必要があります。
 
-### <a name="enable-publishing-with-advanced-create-options"></a>高度なオプションを使用して Azure の新しい関数アプリにプロジェクトを発行する
+### <a name="publish-a-project-to-a-new-function-app-in-azure-by-using-advanced-options"></a><a name="enable-publishing-with-advanced-create-options"></a>高度なオプションを使用して Azure の新しい関数アプリにプロジェクトを発行する
 
 次の手順では、高度な作成オプションを使用して作成された新しい関数アプリにプロジェクトを発行します。
 
@@ -248,7 +248,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
 1. プロンプトに従って、次の情報を入力します。
 
-    | Prompt | Value | 説明 |
+    | Prompt | 値 | 説明 |
     | ------ | ----- | ----------- |
     | Select function app in Azure (Azure で関数アプリを選択する) | \+ Create New Function App in Azure (+ Azure で新しい関数アプリを作成する) | 次のプロンプトで、新しい関数アプリを識別するグローバルに一意の名前を入力し、Enter キーを選択します。 関数アプリ名の有効な文字は、`a-z`、`0-9`、`-` です。 |
     | Select an OS (OS を選択する) | Windows | 関数アプリは Windows で実行されます。 |

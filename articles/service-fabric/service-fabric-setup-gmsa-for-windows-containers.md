@@ -4,10 +4,10 @@ description: Azure Service Fabric で実行されているコンテナーに対�
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.openlocfilehash: 9873e2d7672412b0e1e22c6c2a774cf629fd728a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639209"
 ---
 # <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>Service Fabric で実行されている Windows コンテナーに対して gMSA を設定する

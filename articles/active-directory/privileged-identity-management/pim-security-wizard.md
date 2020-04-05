@@ -15,11 +15,11 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04bd0993873568ba7cce368ddd9277ed356b636c
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847050"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231807"
 ---
 # <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Privileged Identity Management での Azure AD ロール セキュリティ ウィザード
 
@@ -35,9 +35,9 @@ Azure Active Directory (Azure AD) 組織内で Privileged Identity Management (P
 > ここで重要なのは、グローバル管理者が少なくとも 1 人存在し、組織アカウント (Microsoft アカウントではない) を持つ特権ロール管理者が複数存在していることです。 特権ロール管理者が 1 人しかいない場合、そのアカウントが削除されると、組織は Privileged Identity Management を管理できなくなります。
 > また、ユーザーに Microsoft アカウント (つまり、Skype、Outlook.com などの Microsoft サービスへのサインインに使用するアカウント) がある場合は、ロールの割り当てを永続的に維持してください。 そのロールのアクティブ化に多要素認証を要求すると、ユーザーはロックアウトされます。
 
-## <a name="run-the-wizard"></a>ウィザードを実行する
+## <a name="run-the-wizard"></a>ウィザードの実行
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) 組織内で Privileged Identity Management (P
 
 その他の特権ロールの割り当てを対象的に変換する必要がある場合は、もう一度ウィザードを実行できます。 ウィザードの代わりに Privileged Identity Management インターフェイスを使用する場合は、「[Privileged Identity Management で Azure AD ロールを割り当てる](pim-how-to-add-role-to-user.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure AD ロールを割り当てる](pim-how-to-add-role-to-user.md)
 - [Privileged Identity Management を管理するために、他の管理者にアクセス権を付与する](pim-how-to-give-access-to-pim.md)

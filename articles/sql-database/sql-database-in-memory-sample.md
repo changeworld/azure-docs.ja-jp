@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: e7e7fc44d5f8b46a66c698d3a33ceeab5b8625c4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73810339"
 ---
 # <a name="in-memory-sample"></a>In-Memory のサンプル
@@ -51,7 +51,7 @@ Azure SQL Database のインメモリ テクノロジにより、アプリケー
 
 3. [インメモリ OLTP Transact-SQL スクリプト](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) をクリップボードにコピーします。 この T-SQL スクリプトによって、手順 1. で作成した AdventureWorksLT サンプル データベース内に、必要なインメモリ オブジェクトが作成されます。
 
-4. T-SQL スクリプトを SSMS に貼り付け、スクリプトを実行します。 `MEMORY_OPTIMIZED = ON` 句の CREATE TABLE ステートメントが重要です。 例:
+4. T-SQL スクリプトを SSMS に貼り付け、スクリプトを実行します。 `MEMORY_OPTIMIZED = ON` 句の CREATE TABLE ステートメントが重要です。 次に例を示します。
 
 
 ```sql
@@ -78,7 +78,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 
 #### <a name="about-the-created-memory-optimized-items"></a>作成されるメモリ最適化項目の概要
 
-**テーブル**:このサンプルには、次のメモリ最適化テーブルが含まれています。
+**[テーブル]** : このサンプルには、次のメモリ最適化テーブルが含まれています。
 
 - SalesLT.Product_inmem
 - SalesLT.SalesOrderHeader_inmem
@@ -380,7 +380,7 @@ P2 価格レベルのデータベースでは、クラスター化列ストア �
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [クイック スタート 1:T-SQL のパフォーマンスの高速化のためのインメモリ OLTP テクノロジ](https://msdn.microsoft.com/library/mt694156.aspx)
 

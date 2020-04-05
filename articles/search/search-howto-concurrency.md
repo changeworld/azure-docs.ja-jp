@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792211"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Azure Cognitive Search でコンカレンシーを管理する方法
@@ -22,7 +22,7 @@ ms.locfileid: "72792211"
 > [!Tip]
 > [サンプル C# ソリューション](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)の概念コードは、Azure Cognitive Search でコンカレンシー制御がどのように機能するかを説明します。 コードでは、コンカレンシー制御を呼び出す条件を作成します。 [次のコード フラグメント](#samplecode)に目を通すだけでもほとんどの開発者にとっては十分と思われますが、コードを実行したい場合は、appsettings.json を編集してサービス名と管理者 API キーを追加します。 サービス URL を `http://myservice.search.windows.net` とした場合、サービス名は `myservice` です。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 オプティミスティック コンカレンシーは、インデックス、インデクサー、データ ソース、および synonymMap リソースに書き込む API 呼び出しでのアクセス条件チェックによって実装されます。
 
@@ -31,7 +31,7 @@ ms.locfileid: "72792211"
 + REST API では、要求ヘッダーで [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) を使用します。
 + .NET SDK では、accessCondition オブジェクトを通じて ETag を設定し、リソースの [If-Match | If-Match-None ヘッダー](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)を設定します。 [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) を継承するすべてのオブジェクトは、accessCondition オブジェクトを持ちます。
 
-リソースを更新するたびに、その ETag が自動的に変化します。 コンカレンシー管理を実装するときに行うのは、リモート リソースの ETag が、クライアントで変更したリソースのコピーの ETag と同じであることを要求する前提条件を更新要求に課すことだけです。 同時実行プロセスがリモート リソースを既に変更している場合、ETag は前提条件に一致せず、要求は HTTP 412 で失敗します。 .NET SDK を使用している場合、これは (`IsAccessConditionFailed()` 拡張メソッドが true を返す) `CloudException` として明示されます。
+リソースを更新するたびに、その ETag が自動的に変化します。 コンカレンシー管理を実装するときに行うのは、リモート リソースの ETag が、クライアントで変更したリソースのコピーの ETag と同じであることを要求する前提条件を更新要求に課すことだけです。 同時実行プロセスがリモート リソースを既に変更している場合、ETag は前提条件に一致せず、要求は HTTP 412 で失敗します。 .NET SDK を使用している場合、これは (`CloudException` 拡張メソッドが true を返す) `IsAccessConditionFailed()` として明示されます。
 
 > [!Note]
 > コンカレンシーのメカニズムは 1 つしかありません。 どの API がリソース更新に使用されるかによらず、常にそのメカニズムが使用されます。
@@ -44,7 +44,7 @@ ms.locfileid: "72792211"
 + リソースがもう存在しない場合、更新は失敗します
 + リソースのバージョンが変わると、更新は失敗します
 
-### <a name="sample-code-from-dotnetetagsexplainer-programhttpsgithubcomazure-samplessearch-dotnet-getting-startedtreemasterdotnetetagsexplainer"></a>[DotNetETagsExplainer プログラム](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)からのサンプル コード
+### <a name="sample-code-from-dotnetetagsexplainer-program"></a>[DotNetETagsExplainer プログラム](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)からのサンプル コード
 
 ```
     class Program
@@ -205,7 +205,7 @@ ms.locfileid: "72792211"
         }
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [シノニム C# サンプル](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms)を確認し、既存のインデックスを安全に更新する方法について理解を深めます。
 
@@ -214,7 +214,7 @@ ms.locfileid: "72792211"
 + [GitHub の REST API サンプル](https://github.com/Azure-Samples/search-rest-api-getting-started)
 + [GitHub の .NET SDK サンプル](https://github.com/Azure-Samples/search-dotnet-getting-started)。 このソリューションには、この記事で紹介したコードを含む "DotNetEtagsExplainer" プロジェクトが含まれています。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 [一般的な HTTP 要求ヘッダーと応答ヘッダー](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
 [HTTP 状態コード](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)

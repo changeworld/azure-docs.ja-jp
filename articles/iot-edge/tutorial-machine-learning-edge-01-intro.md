@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74106510"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>チュートリアル:Azure Machine Learning と IoT Edge を使用したエンド ツー エンド ソリューション
@@ -92,7 +92,7 @@ GitHub ユーザー hankroark による[ターボファン エンジンの劣化
 
 当然、他のオプションも使用できます。 たとえば、特定のシナリオでは、IoT デバイスから初期のトレーニング データをキャプチャするためのコード不要の代替手段として IoT Central を使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルは、次のセクションに分かれています。
 

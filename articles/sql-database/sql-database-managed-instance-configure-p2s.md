@@ -12,13 +12,13 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
 ms.openlocfilehash: 30b2ba92174996ea2bae34e7553a3258d8ebee27
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818909"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232519"
 ---
-# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する
+# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>クイック スタート: オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する
 
 このクイック スタートでは、オンプレミスのクライアント コンピューターからポイント対サイト接続を行い、[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) を使用して Azure SQL Database Managed Instance に接続する方法を示します。 ポイント対サイト接続の詳細については、「[ポイント対サイト VPN について](../vpn-gateway/point-to-site-about.md)」を参照してください。
 
@@ -63,7 +63,7 @@ ms.locfileid: "73818909"
 
 ## <a name="create-a-vpn-connection-to-your-managed-instance"></a>マネージド インスタンスへの VPN 接続を作成する
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. 仮想ネットワーク ゲートウェイを作成したリソース グループを開き、仮想ネットワーク ゲートウェイ リソースを開きます。
 3. **[ポイント対サイトの構成]** を選択し、 **[VPN クライアントのダウンロード]** を選択します。
 
@@ -102,7 +102,7 @@ ms.locfileid: "73818909"
 
 接続後は、データベース ノード内のシステム データベースとユーザー データベースを確認できます。 また、セキュリティ、サーバー オブジェクト、レプリケーション、管理、SQL Server エージェント、XEvent プロファイラー ノードのさまざまなオブジェクトを確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure 仮想マシンから接続する方法のクイック スタートが必要であれば、[ポイント対サイト接続の構成](sql-database-managed-instance-configure-p2s.md)に関するページを参照してください。
 - アプリケーションの接続オプションの概要については、[マネージド インスタンスにアプリケーションを接続する](sql-database-managed-instance-connect-app.md)方法に関するページを参照してください。

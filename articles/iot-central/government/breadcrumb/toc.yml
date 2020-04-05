@@ -10,6 +10,6 @@
           tocHref: /azure/iot-central/
           topicHref: /azure/iot-central/
           items:
-            - name: 政府機関向けの IoT Central (プレビュー機能)
+            - name: 政府機関向けの IoT Central
               tocHref: /azure/iot-central/
               topicHref: /azure/iot-central/government/index/

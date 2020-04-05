@@ -8,11 +8,11 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688747"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224823"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成の詳細
 
@@ -138,7 +138,7 @@ DNS 要件を満たすには、仮想ネットワークに対して有効な DNS
 
 これで、App Service Environment をデプロイする準備が整いました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 PowerApps 用の App Service Environment の使用を開始するには、[App Service Environment の概要][IntroToAppServiceEnvironment]に関する記事を参照してください。
 

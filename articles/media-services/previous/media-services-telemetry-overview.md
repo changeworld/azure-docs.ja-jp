@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: e2cbb36158722a47518f575b391340b5e25bd908
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74895774"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services テレメトリ  
@@ -80,7 +80,7 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 行キー|{午前 0 時までの秒数}_{ランダム値}|01688_00199<br/><br/>行キーは、パーティション内の上位 n 件を取得するスタイルのクエリを可能にするために、午前 0 時までの秒数から始まります。 詳細については、[こちらの記事](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern)を参照してください。 
 Timestamp|日付/時刻|Azure Table の自動タイムスタンプ 2016-09-09T22:43:42.241Z
 種類|テレメトリ データを提供するエンティティの種類|Channel/StreamingEndpoint/Archive<br/><br/>イベントの種類は単なる文字列値です。
-名前|テレメトリ イベントの名前|ChannelHeartbeat/StreamingEndpointRequestLog
+Name|テレメトリ イベントの名前|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|テレメトリ イベントが発生した時刻 (UTC)|2016-09-09T22:42:36.924Z<br/><br/>監視時刻は、テレメトリを送信するエンティティ (たとえばチャネル) によって提供されます。 コンポーネント間で時間同期問題が存在する可能性があるため、この値は概算値です。
 ServiceID|{サービス ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 エンティティ固有のプロパティ|イベントによって定義されたとおり|StreamName: stream1, Bitrate 10123, …<br/><br/>残りのプロパティは、指定されたイベントの種類に対して定義されます。 Azure Table の内容は、キーと値のペアです  (つまり、テーブル内の異なる行には、異なるプロパティのセットが格納されます)。
@@ -101,8 +101,8 @@ ServiceID|{サービス ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 行キー|行キー|01688_00199
 Timestamp|Timestamp|Azure Table の自動タイムスタンプ 2016-09-09T22:43:42.241Z
 種類|種類|StreamingEndpoint
-名前|名前|StreamingEndpointRequestLog
-監視時刻|監視時刻|2016-09-09T22:42:36.924Z
+Name|Name|StreamingEndpointRequestLog
+ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|サービス ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 HostName|エンドポイントのホスト名|builddemoserver.origin.mediaservices.windows.net
 StatusCode|HTTP 状態の記録|200
@@ -119,9 +119,9 @@ E2ELatency|エンド ツー エンドの平均待機時間|250
 パーティション キー|パーティション キー|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 行キー|行キー|01688_00199
 Timestamp|Timestamp|Azure Table の自動タイムスタンプ 2016-09-09T22:43:42.241Z
-種類|種類|Channel
-名前|名前|ChannelHeartbeat
-監視時刻|監視時刻|2016-09-09T22:42:36.924Z
+種類|種類|チャネル
+Name|Name|ChannelHeartbeat
+ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|サービス ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|トラックの種類 (video/audio/text)|video/audio
 TrackName|トラックの名前|video/audio_1
@@ -144,9 +144,9 @@ Healthy|次の場合は True: <br/>overlapCount、 <br/>DiscontinuityCount、 <b
 パーティション キー|パーティション キー|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 行キー|行キー|01688_00199
 Timestamp|Timestamp|Azure Table の自動タイムスタンプ 2016-09-09T22:43:42.241Z
-種類|種類|Archive
-名前|名前|ArchiveHeartbeat
-監視時刻|監視時刻|2016-09-09T22:42:36.924Z
+種類|種類|アーカイブ
+Name|Name|ArchiveHeartbeat
+ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|サービス ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|プログラムの URL|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
 TrackName|トラックの名前|audio_1
@@ -216,7 +216,7 @@ Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場�
 
 テレメトリ システムは、データ保有期間の管理も古いレコードの自動削除も実行しません。 このため、ストレージ テーブルの管理と古いレコードの削除は、手動で行う必要があります。 方法については、Storage SDK を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

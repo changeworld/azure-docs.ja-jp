@@ -12,10 +12,10 @@ ms.topic: quickstart
 ms.date: 02/27/2020
 ms.author: aahi
 ms.openlocfilehash: 91beae69489c8ac7741b173b25fdbc87c861a9e8
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78270943"
 ---
 # <a name="quickstart-use-the-bing-custom-search-client-library"></a>クイック スタート:Bing Custom Search クライアント ライブラリを使用する

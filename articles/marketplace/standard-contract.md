@@ -1,19 +1,18 @@
 ---
 title: 標準契約 | Azure
 description: Azure Marketplace と AppSource の標準契約
-services: Azure, Marketplace, Compute, Storage, Networking
-author: ChJenk
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: v-chjen
-ms.openlocfilehash: dc8edf2b6e4a1204e7edd515da9323896049eb13
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: dsindona
+ms.openlocfilehash: 00a83a1b3005043f317ed49cafa735540cd21793
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228200"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284961"
 ---
 # <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業マーケットプレースの標準契約
 

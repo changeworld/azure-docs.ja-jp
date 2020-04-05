@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
 ms.openlocfilehash: 693b2fd8ac7440b67f53de0aedb9a8268a90de76
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968883"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290530"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>クイック スタート:Azure Logic Apps を使用して自動化されたタスク、プロセス、およびワークフローを作成する - Visual Studio
 
@@ -82,7 +82,7 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
 
    1. **[新しいプロジェクトの作成]** ボックスで、Visual C# または Visual Basic の **[Azure リソース グループ]** プロジェクトを選択します。 **[次へ]** を選択します。
 
-   1. 使用する Azure リソース グループの名前やその他のプロジェクト情報を指定します。 **作成** を選択します。
+   1. 使用する Azure リソース グループの名前やその他のプロジェクト情報を指定します。 **［作成］** を選択します
 
 1. テンプレートの一覧で、 **[ロジック アプリ]** テンプレートを選択します。 **[OK]** を選択します。
 
@@ -114,7 +114,7 @@ Azure リソース グループ プロジェクトが作成されたら、 **[�
    | ユーザー アカウント | Fabrikam <br> sophia-owen@fabrikam.com | Visual Studio にサインインしたときに使用したアカウント |
    | **サブスクリプション** | 従量課金制 <br> (sophia-owen@fabrikam.com) | Azure サブスクリプションの名前および関連付けられたアカウント |
    | **リソース グループ** | MyLogicApp-RG <br> (米国西部) | ロジック アプリのリソースを格納およびデプロイするための Azure リソース グループと場所 |
-   | **Location** | **[Same as Resource Group]\(リソース グループと同じ\)** | ロジック アプリをデプロイする場所の種類と特定の場所。 場所の種類は、Azure リージョンまたは既存の[統合サービス環境 (ISE)](connect-virtual-network-vnet-isolated-environment.md) です。 <p>このクイックスタートでは、場所の種類を **[リージョン]** に設定し、場所を **[Same as Resource Group]\(リソース グループと同じ\)** に設定します。 <p>**注**:リソース グループ プロジェクトを作成した後で、[場所の種類と場所を変更する](manage-logic-apps-with-visual-studio.md#change-location)ことができますが、異なる場所の種類はロジック アプリにさまざまな影響を与えます。 |
+   | **場所** | **[Same as Resource Group]\(リソース グループと同じ\)** | ロジック アプリをデプロイする場所の種類と特定の場所。 場所の種類は、Azure リージョンまたは既存の[統合サービス環境 (ISE)](connect-virtual-network-vnet-isolated-environment.md) です。 <p>このクイックスタートでは、場所の種類を **[リージョン]** に設定し、場所を **[Same as Resource Group]\(リソース グループと同じ\)** に設定します。 <p>**注**:リソース グループ プロジェクトを作成した後で、[場所の種類と場所を変更する](manage-logic-apps-with-visual-studio.md#change-location)ことができますが、異なる場所の種類はロジック アプリにさまざまな影響を与えます。 |
    ||||
 
 1. Logic Apps デザイナーが開き、紹介ビデオやよく使用されるトリガーが含まれたページが表示されます。 ビデオやトリガーの後の **[テンプレート]** まで下へスクロールし、 **[空のロジック アプリ]** を選択します。

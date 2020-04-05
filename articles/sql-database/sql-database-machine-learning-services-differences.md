@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
 ms.openlocfilehash: 533e2b9e50a92cce1419da521d8cebc4955e4df6
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74462116"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>SQL Server の Machine Learning Services と Azure SQL Database の Machine Learning Services (プレビュー) の主な違い
@@ -45,7 +45,7 @@ R パッケージの管理とインストールの動作は、SQL Database と S
 
 Azure SQL Database で RODBC を使用している場合、一時テーブルは `sp_execute_external_script` セッションの内部でも外部でも作成できません。 対処法として、[RxOdbcData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxodbcdata) と [ rxDataStep ](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) (overwrite=FALSE、append="rows" に設定) を使用して、`sp_execute_external_script` クエリの前に作成されたグローバル一時テーブルに書き込みます。
 
-## <a name="resource-governance"></a>リソース ガバナンス
+## <a name="resource-governance"></a>リソース管理
 
 [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) と外部リソース プールを使用して、R リソースを制限することはできません。
 
@@ -60,8 +60,8 @@ R に使用できるメモリが不足している場合は、エラー メッ�
 
 メモリ使用量は、R スクリプトでの使用量と、実行されている並列クエリの数によって決まります。 上記のエラーが発生した場合は、問題を解決するために、データベースを上位のサービス レベルにスケーリングすることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「[Azure SQL Database Machine Learning Services with R (preview)](sql-database-machine-learning-services-overview.md) 」(R 付き Azure SQL Database 機械学習サービスと R (プレビュー)) の概要を参照してください。
-- Azure SQL データベース機械学習サービス (プレビュー) を R で照会する方法について、「[クイック スタート ガイド](sql-database-connect-query-r.md)」を参照してください。
+- Azure SQL Database Machine Learning Services (プレビュー) を R で照会する方法について、「[クイック スタート ガイド](sql-database-connect-query-r.md)」を参照してください。
 - シンプルな R スクリプトから始めるには、「[Azure SQL Database Machine Learning Services (プレビュー) で簡単な R スクリプトを作成して実行する](sql-database-quickstart-r-create-script.md)」を参照してください。

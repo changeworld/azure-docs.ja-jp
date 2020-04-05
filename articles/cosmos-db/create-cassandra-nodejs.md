@@ -9,10 +9,10 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.openlocfilehash: ffc2681e487a51ce630d9433d6ded86961b5276c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77210363"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>クイック スタート:Node.js SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する

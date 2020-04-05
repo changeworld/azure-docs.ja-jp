@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:デバイス ライトバックの有効化 | Microsoft Docs
+title: 'Azure AD Connect: デバイスの書き戻しの有効化 | Microsoft Docs'
 description: Azure AD Connect を使用するデバイスの書き戻しを有効にする方法について詳しく説明します
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 632f6f80184c6ba3409bd30ae070cbaefc77f036
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109500"
 ---
-# <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect:デバイス ライトバックの有効化
+# <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: デバイスの書き戻しの有効化
 > [!NOTE]
 > デバイスの書き戻しには、Azure AD Premium に対するサブスクリプションが必要です。
 > 
@@ -40,10 +40,10 @@ ms.locfileid: "67109500"
 > <li>デバイスは、ユーザーと同じフォレスト内にある必要があります。 デバイスは単一のフォレストに書き戻される必要があるため、この機能では現在、複数のユーザー フォレストでのデプロイはサポートされていません。</li>
 > <li>オンプレミスの Active Directory フォレストに追加できるのは、1 つのデバイス登録構成オブジェクトのみです。 この機能は、オンプレミスの Active Directory が複数の Azure AD ディレクトリに同期されるトポロジと互換性がありません。</li>
 
-## <a name="part-1-install-azure-ad-connect"></a>パート 1:Azure AD Connect のインストール
+## <a name="part-1-install-azure-ad-connect"></a>パート 1: Azure AD Connect のインストール
 カスタム設定または簡単設定を使用して Azure AD Connect をインストールします。 すべてのユーザーとグループの同期に成功してから、デバイスの書き戻しを有効にすることをお勧めします。
 
-## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>パート 2:Azure AD Connect でのデバイス ライトバックの有効化
+## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>パート 2: Azure AD Connect でのデバイス ライトバックを有効にする
 1. インストール ウィザードをもう一度実行します。 [追加のタスク] ページで **[デバイス オプションの構成]** を選び、 **[次へ]** をクリックします。 
 
     ![デバイス オプションの構成](./media/how-to-connect-device-writeback/deviceoptions.png)
@@ -129,6 +129,6 @@ Active Directory の構成を確認します。
 * [条件付きアクセス ポリシーを使用したリスクの管理](../active-directory-conditional-access-azure-portal.md)
 * [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../../active-directory/active-directory-device-registration-on-premises-setup.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。
 

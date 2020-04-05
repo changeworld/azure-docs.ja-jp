@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: dbf08e23b2bc1f657363f69df55763437e6c8a90
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76695053"
 ---
 # <a name="providing-your-own-httpclient-and-proxy-using-msalnet"></a>MSAL.NET を使用した独自の HttpClient およびプロキシの提供
@@ -35,4 +35,4 @@ var pca = PublicClientApplicationBuilder.Create(MsalTestConstants.ClientId)
 ```
 
 ## <a name="httpclient-and-xamarin-ios"></a>HttpClient および Xamarin iOS
-Xamarin iOS を使用する場合は、明示的に iOS 7 以降用の `NSURLSession` ベースのハンドラー を使用する `HttpClient` を作成することをお勧めします。 MSAL.NET は、iOS 7 以降用の `NSURLSessionHandler` を使用する `HttpClient` を自動的に作成します。 詳細については、[HttpClient 用の Xamarin iOS ドキュメント](/xamarin/cross-platform/macios/http-stack)に関するページを参照してください。
+Xamarin iOS を使用する場合は、明示的に iOS 7 以降用の `HttpClient` ベースのハンドラー を使用する `NSURLSession` を作成することをお勧めします。 MSAL.NET は、iOS 7 以降用の `HttpClient` を使用する `NSURLSessionHandler` を自動的に作成します。 詳細については、[HttpClient 用の Xamarin iOS ドキュメント](/xamarin/cross-platform/macios/http-stack)に関するページを参照してください。

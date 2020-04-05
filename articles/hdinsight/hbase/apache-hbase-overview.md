@@ -9,15 +9,15 @@ ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/03/2020
 ms.openlocfilehash: 97814f4d22629fd74f395887a7361a3aabe55012
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78271847"
 ---
 # <a name="what-is-apache-hbase-in-azure-hdinsight"></a>Azure HDInsight での Apache HBase の概要
 
-[Apache HBase](https://hbase.apache.org/) は、[Google BigTable](https://cloud.google.com/bigtable/) をモデルにしている [Apache Hadoop](https://hadoop.apache.org/) 上に構築されるオープン ソースの NoSQL データベースです。 HBase は、大量の非構造化データと半構造化データに対するランダム アクセスと強力な一貫性を、列ファミリで整理されたスキーマなしのデータベースで実現します。
+[Apache HBase](https://hbase.apache.org/) は、[Google BigTable](https://hadoop.apache.org/) をモデルにしている [Apache Hadoop](https://cloud.google.com/bigtable/) 上に構築されるオープン ソースの NoSQL データベースです。 HBase は、大量の非構造化データと半構造化データに対するランダム アクセスと強力な一貫性を、列ファミリで整理されたスキーマなしのデータベースで実現します。
 
 ユーザーの視点から見ると、HBase はデータベースに似ています。 データはテーブルの行および列内に格納され、行内のデータは列ファミリによってグループ化されます。 HBase は、列や列内に格納されるデータの型を使用前に定義する必要がないという意味で、スキーマレス データベースです。 オープン ソース コードは、直線的な拡張により何千ものノード上でペタバイト級のデータを扱うことができます。 また、Hadoop エコシステムの分散アプリケーションの利点であるデータの冗長性、バッチ処理などの機能を利用できます。
 

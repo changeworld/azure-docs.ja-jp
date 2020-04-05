@@ -15,10 +15,10 @@ ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
 ms.openlocfilehash: b5401eae844ed2113a9fbc07c8b3ad8601709d43
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73718933"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>クイック スタート:Ruby で Service Bus のトピックとサブスクリプションを使用する方法
@@ -36,7 +36,7 @@ ms.locfileid: "73718933"
 
 ## <a name="prerequisites"></a>前提条件
 1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
-2. 「[Quickstart:Use the Azure portal to create a Service Bus topic and subscriptions to the topic](service-bus-quickstart-topics-subscriptions-portal.md)」(クイック スタート: Azure portal を使用して Service Bus トピックとその中に含まれるサブスクリプションを作成する) の手順に従って、Service Bus の**名前空間**を作成し、**接続文字列**を取得します。 
+2. 「[Quickstart:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認して、Service Bus の**名前空間**を作成し、**接続文字列**を取得します。 
 
     > [!NOTE]
     > このクイック スタートでは、**Ruby** を使用して **トピック**とその中に含まれる**サブスクリプション**を作成します。 
@@ -173,7 +173,7 @@ azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 > [!NOTE]
 > Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、サービス バス トピックの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
 
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)。

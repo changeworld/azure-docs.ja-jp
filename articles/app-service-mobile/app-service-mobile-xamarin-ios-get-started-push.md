@@ -7,11 +7,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: f9c70491d06f61931ebabda859ff3a86ed035b44
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461353"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226487"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>Xamarin iOS アプリへのプッシュ通知の追加
 
@@ -132,7 +132,7 @@ ms.locfileid: "77461353"
 
 これで、アプリケーションがプッシュ通知をサポートするように更新されました。
 
-## <a name="test"></a>アプリケーションでプッシュ通知をテストする
+## <a name="test-push-notifications-in-your-app"></a><a name="test"></a>アプリケーションでプッシュ通知をテストする
 
 1. **[実行]** を押してプロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。 **[OK]** をクリックして、プッシュ通知を受け入れます。
 

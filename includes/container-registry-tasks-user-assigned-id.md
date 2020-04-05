@@ -9,15 +9,15 @@ ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: ceda7bd6bd165df1eece555c6ce8a9a6c863b2c1
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77112341"
 ---
 ### <a name="create-a-user-assigned-identity"></a>ユーザー割り当て ID を作成する
 
-[az identity create][az-identity-create] コマンドを使って、サブスクリプションに *myACRTasksId* という名前の ID を作成します。 前にコンテナー レジストリを作成するために使ったものと同じリソース グループ、または別のリソース グループを使用できます。
+*az identity create* コマンドを使って、サブスクリプションに [myACRTasksId][az-identity-create] という名前の ID を作成します。 前にコンテナー レジストリを作成するために使ったものと同じリソース グループ、または別のリソース グループを使用できます。
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRTasksId

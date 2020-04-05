@@ -1,17 +1,17 @@
 ---
 title: CentOS ベースの Linux VHD の作成とアップロード
 description: CentOS ベースの Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。
-author: mimckitt
+author: gbowerman
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/25/2019
-ms.author: mimckitt
-ms.openlocfilehash: 84dfb3a24d3b3440cb929fa6c7e7f70983051a72
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.author: guybo
+ms.openlocfilehash: 8899249fd284f69fa26bab8cd70aaf6a67fbb83c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969502"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066783"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure 用の CentOS ベースの仮想マシンの準備
 
@@ -342,7 +342,7 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
-10. **VMware、VirtualBox、または KVM** からイメージをビルドする場合:Hyper-V ドライバーを確実に initramfs に含めます。
+10. **VMware、VirtualBox、または KVM** からイメージをビルドする場合: Hyper-V ドライバーが initramfs に含まれていることを確認します。
 
     `/etc/dracut.conf`を編集して、コンテンツを追加します。
 

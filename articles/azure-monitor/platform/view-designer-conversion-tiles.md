@@ -7,10 +7,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: f07d15521c787dfd588c285bff57616059caa2f3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658628"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Monitor ビュー デザイナーでのタイル変換

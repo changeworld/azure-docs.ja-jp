@@ -9,10 +9,10 @@ ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
 ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494153"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で対話型クエリを使用してデータの抽出、変換、読み込みを行う
@@ -42,7 +42,7 @@ ms.locfileid: "73494153"
 
 2. ページで、すべてのフィールドをクリアしてから、次の値を選択します。
 
-   | 名前 | 値 |
+   | 名前 | Value |
    | --- | --- |
    | Filter Year |2019 |
    | Filter Period |January |
@@ -287,13 +287,13 @@ SQL Database に接続してテーブルを作成するには、多くの方法�
 
     「 `exit` 」と入力して、tsql ユーティリティを終了します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
 
 クラスターを削除するには、「[ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する](../hdinsight-delete-cluster.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、生の CSV データ ファイルを取得し、それを HDInsight クラスター ストレージにインポートしてから、Azure HDInsight で対話型クエリを使用してデータを変換しました。  次のチュートリアルに進んで、Apache Hive Warehouse Connector について確認してください。
 

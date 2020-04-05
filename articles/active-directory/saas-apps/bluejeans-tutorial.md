@@ -17,10 +17,10 @@ ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfc38f63c5b6361122c236543320b91d22faa70a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72595047"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BlueJeans for Azure AD の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72595047"
 
 * BlueJeans for Azure AD にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して BlueJeans for Azure AD に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -161,11 +161,11 @@ BlueJeans for Azure AD に対する Azure AD SSO を構成してテストする�
 
 5. 次の手順を実行します。
 
-    ![Save Changes](./media/bluejeans-tutorial/ic785874.png "[変更を保存]")
+    ![[変更の保存]](./media/bluejeans-tutorial/ic785874.png "[変更の保存]")
 
     a. **[User id]\(ユーザー ID\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
 
-    b. **[Email]** (電子メール) ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
+    b. **[電子メール]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
 
     c. **[SAVE CHANGES]\(変更の保存\)** をクリックします。
 

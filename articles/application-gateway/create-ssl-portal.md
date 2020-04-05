@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74012319"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して SSL ターミネーションでアプリケーション ゲートウェイを構成する
@@ -112,7 +112,7 @@ Export-PfxCertificate `
 
    ![新しいアプリケーション ゲートウェイの作成: フロントエンド](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
-3. **[次へ:バックエンド]** を選択します。
+3. **バックエンド** を選択します。
 
 ### <a name="backends-tab"></a>[バックエンド] タブ
 
@@ -166,7 +166,7 @@ Export-PfxCertificate `
 
    ![新しいアプリケーションゲートウェイの作成: ルーティング規則](./media/application-gateway-create-gateway-portal/application-gateway-create-rule-backends.png)
 
-7. **[次へ:タグ]** 、 **[次へ:確認と作成]** をクリックします。
+7. **タグ**、**次へ:確認と作成** をクリックします。
 
 ### <a name="review--create-tab"></a>[確認と作成] タブ
 
@@ -194,7 +194,7 @@ Export-PfxCertificate `
     - **[リソース グループ]** :リソース グループ名には、**myResourceGroupAG** を選択します。
     - **[仮想マシン名]** : 仮想マシンの名前として「*myVM*」と入力します。
     - **[ユーザー名]** : 管理者のユーザー名として「*azureuser*」と入力します。
-    - **Password**:管理者パスワードとして「*Azure123456*」と入力します。
+    - **パスワード**:管理者パスワードとして「*Azure123456*」と入力します。
 4. 他の既定値をそのまま使用し、 **[Next: ディスク]** を選択します。  
 5. **[ディスク]** タブの既定値をそのまま使用し、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 6. **[ネットワーク]** タブで、 **[仮想ネットワーク]** に **myVNet** が選択されていること、および **[サブネット]** が **myBackendSubnet** に設定されていることを確認します。 他の既定値をそのまま使用し、 **[Next: 管理]** を選択します。
@@ -262,7 +262,7 @@ Export-PfxCertificate `
 
     ![アプリケーション ゲートウェイでのベース URL のテスト](./media/create-ssl-portal/application-gateway-iistest.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Application Gateway SSL サポートの詳細を学習します](ssl-overview.md)

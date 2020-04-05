@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a218e956c72f8005e533db7b8800e98ee72ce223
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74233112"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット
@@ -312,7 +312,7 @@ Azure AD PowerShell コマンドレットを使用してグループの管理を
   
 * abuse
 * admin
-* 管理者
+* administrator
 * hostmaster
 * majordomo
 * postmaster
@@ -332,7 +332,7 @@ Office 365 グループはクラウドで作成および管理されます。 �
 
 Office 365 のグループの書き戻しは Azure Active Directory (Azure AD) のパブリック プレビュー機能であり、すべての有料 Azure AD ライセンス プランに付属します。 プレビューに関する法的情報については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Active Directory PowerShell のその他のドキュメントについては、 [Azure Active Directory コマンドレット](/powershell/azure/install-adv2?view=azureadps-2.0)を参照してください。
 

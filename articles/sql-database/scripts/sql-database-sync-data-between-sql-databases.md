@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: c6f726db36f721b6549c0eb47220e50622d8fc37
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74421657"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>PowerShell を使用した複数の SQL Database 間の同期
@@ -286,7 +286,7 @@ Remove-AzResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 | [Get-AzSqlSyncGroupLog](/powershell/module/az.sql/Get-azSqlSyncGroupLog) |  同期ログを確認する |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 
@@ -296,7 +296,7 @@ SQL データ同期の詳細については、以下を参照してください�
 
 - 概要 - [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](../sql-database-sync-data.md)
 - データ同期の設定
-    - ポータル - [チュートリアル:Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](../sql-database-get-started-sql-data-sync.md)
+    - ポータル内 - [チュートリアル: Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](../sql-database-get-started-sql-data-sync.md)
     - PowerShell の場合
         - [PowerShell を使用して Azure SQL Database と SQL Server オンプレミス データベースの間で同期を行う](sql-database-sync-data-between-azure-onprem.md)
 - データ同期エージェント - [Azure SQL データ同期のデータ同期エージェント](../sql-database-data-sync-agent.md)

@@ -6,11 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 8bd024fae7496db6c9cb6410df26975fde1984f7
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77585290"
 ---
 # <a name="use-the-change-feed-estimator"></a>変更フィード推定機能を使用する
@@ -33,11 +33,11 @@ ms.locfileid: "77585290"
 
 たとえば、お使いの変更フィード プロセッサが次のように定義されているとします。
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartProcessorEstimator":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
 
 プロセッサで `GetChangeFeedEstimatorBuilder` が使用されるよう、推定機能を初期化する正しい方法は次のようになります。
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartEstimator":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
 
 ここでは、プロセッサと推定機能の両方の `leaseContainer` と名前が同じです。
 
@@ -45,7 +45,7 @@ ms.locfileid: "77585290"
 
 推定を受け取るデリゲートの例は次のとおりです。
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="EstimationDelegate":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=EstimationDelegate)]
 
 この推定はお使いの監視ソリューションに送信して、時間と共に進行状況がどのようなものかを把握するのに使用できます。
 

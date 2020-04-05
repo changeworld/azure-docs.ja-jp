@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: allensu
 ms.openlocfilehash: 760ec8a945ab88b63dde2de75f5354818facf4f2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74225252"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>REST API を使用して Load Balancer の使用状況メトリックを取得する
 
-[Azure REST API](/rest/api/azure/) を使用して、ある期間に [Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview) によって処理されたバイト数を収集します。
+[Azure REST API](/azure/load-balancer/load-balancer-standard-overview) を使用して、ある期間に [Standard Load Balancer](/rest/api/azure/) によって処理されたバイト数を収集します。
 
 完全なリファレンス ドキュメントと REST API の他の例は、[Azure Monitor REST リファレンス](/rest/api/monitor)で確認できます。 
 
@@ -38,11 +38,11 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 |要求ヘッダー|説明|  
 |--------------------|-----------------|  
 |*Content-Type:*|必須。 `application/json` を設定します。|  
-|*Authorization:*|必須。 有効な `Bearer` [ アクセス トークン](/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します｡ |  
+|*Authorization:*|必須。 有効な `Bearer` [アクセス トークン](/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します。 |  
 
 ### <a name="uri-parameters"></a>URI パラメーター
 
-| 名前 | 説明 |
+| Name | 説明 |
 | :--- | :---------- |
 | subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ |
 | resourceGroupName | リソースが含まれているリソース グループの名前。 この値は、Azure Resource Manager API、CLI、またはポータルから取得できます。 |

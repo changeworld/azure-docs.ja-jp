@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: b15ac80295a0113eb0c384e1cc3185f3304c39c6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894279"
 ---
 # <a name="scenario-rpctimeoutexception-for-apache-spark-thrift-server-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での Apache Spark Thrift サーバーの RpcTimeoutException
@@ -38,7 +38,7 @@ java.lang.OutOfMemoryError: GC overhead limit exceeded
 
 これらのエラーは、データ処理中のメモリ リソースの不足により発生します。 Java ガベージ コレクション プロセスが開始すると、Spark アプリケーションがハングする可能性があります。 クエリはタイムアウトし始め、処理を停止します。 `Futures timed out` エラーは、クラスターの負荷が重大であることを示しています。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 ワーカー ノードを追加するか、既存のクラスター ノードのメモリ容量を増やすことで、クラスターのサイズを大きくします。 データ パイプラインを調整して、一度に処理されるデータの量を減らすこともできます。
 

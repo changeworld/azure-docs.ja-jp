@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: faab28a714b1a62e1e34de5b07119aa3018db24e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847971"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230911"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 認証と Azure Multi-Factor Authentication Server
 
@@ -38,16 +38,16 @@ Azure Multi-Factor Authentication Server の [Windows 認証] セクションを
    ![MFA サーバーでの Windows 認証](./media/howto-mfaserver-windows/windowsauth.png)
 2. **[Windows 認証を有効にする]** チェック ボックスをオンにします。 既定では、このボックスはオフになっています。
 3. [アプリケーション] タブでは、管理者が Windows 認証を使用する 1 つ以上のアプリケーションを構成できます。
-4. サーバーまたはアプリケーションを選択し、サーバーまたはアプリケーションが有効になっているかどうかを指定します。 Click **OK**.
+4. サーバーまたはアプリケーションを選択し、サーバーまたはアプリケーションが有効になっているかどうかを指定します。 **[OK]** をクリックします。
 5. **[追加]** をクリックします。
 6. [信頼される IP] タブでは、特定の IP から送信された Windows セッションの Azure Multi-Factor Authentication をスキップすることができます。 たとえば、従業員がオフィスと自宅の両方でアプリケーションを使用する場合、オフィスにいる間は Azure Multi-Factor Authentication の電話を鳴らさないように設定できます。 それには、社内のサブネットを信頼される IP エントリとして指定します。
 7. **[追加]** をクリックします。
 8. 単一の IP アドレスをスキップする場合は、 **[単一 IP を追加する]** を選択します。
 9. IP 範囲全体をスキップする場合は、 **[IP 範囲を指定して追加する]** を選択します (例: 10.63.193.1-10.63.193.100)。
 10. サブネット表記を使用して IP の範囲を指定する場合は、 **[サブネット]** を選択します。 サブネットの開始 IP を入力し、ドロップダウン リストから適切なネットマスクを選択します。
-11. Click **OK**.
+11. **[OK]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure MFA Server のサード パーティ VPN アプライアンスを構成する](howto-mfaserver-nps-vpn.md)
 

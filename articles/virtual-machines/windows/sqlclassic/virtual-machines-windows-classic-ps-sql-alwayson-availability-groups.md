@@ -15,22 +15,22 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978157"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成
 > [!div class="op_single_selector"]
-> * [クラシック:UI](../classic/portal-sql-alwayson-availability-groups.md)
-> * [クラシック:PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
+> * [クラシック: UI](../classic/portal-sql-alwayson-availability-groups.md)
+> * [クラシック: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
 開始する前に、Azure Resource Manager モデルでこのタスクを完了できるかを検討してください。 新たにデプロイする場合、Azure Resource Manager モデルを使用することをお勧めします。 [Azure Virtual Machines での SQL Server AlwaysOn 可用性グループ](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)に関するページをご覧ください。
 
 > [!IMPORTANT]
-> ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。 Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。
+> ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。 Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../../azure-resource-manager/management/deployment-models.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。
 
 Azure 仮想マシン (VM) を使用すると、データベース管理者は高可用性の SQL Server システムに要するコストを下げることができます。 このチュートリアルでは、Azure 環境内で SQL Server AlwaysOn をエンド ツー エンドで使用して、可用性グループを実装する方法について説明します。 チュートリアルの最後には、次の要素で構成された SQL Server AlwaysOn ソリューションが Azure で完成します。
 
@@ -379,15 +379,15 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 ## <a name="initialize-the-failover-cluster-vms"></a>フェールオーバー クラスター VM の初期化
 このセクションでは、フェールオーバー クラスターと SQL Server のインストールで使用する 3 台のサーバーを変更する必要があります。 具体的な内容は次のとおりです。
 
-* すべてのサーバー:**フェールオーバー クラスタリング** 機能をインストールする必要があります。
-* すべてのサーバー:コンピューターの **管理者** として **CORP\Install** を追加する必要があります。
-* ContosoSQL1 と ContosoSQL2 のみ:既定のデータベースの **sysadmin** ロールとして **CORP\Install** を追加する必要があります。
-* ContosoSQL1 と ContosoSQL2 のみ:次の権限を持つサインインとして **NT AUTHORITY\System** を追加する必要があります。
+* すべてのサーバー: **フェールオーバー クラスタリング**機能をインストールする必要があります。
+* すべてのサーバー: コンピューターの**管理者**として **CORP\Install** を追加する必要があります。
+* ContosoSQL1 と ContosoSQL2 のみ: 既定のデータベースの **sysadmin** ロールとして **CORP\Install** を追加する必要があります。
+* ContosoSQL1 と ContosoSQL2 のみ: 次の権限を持つサインインとして **NT AUTHORITY\System** を追加する必要があります。
 
   * 可用性グループの変更
   * SQL の接続
   * サーバー状態の表示
-* ContosoSQL1 と ContosoSQL2 のみ:SQL Server VM では、 **TCP** プロトコルが既に有効になっています。 ただし、SQL Server にリモート アクセスするためには、ファイアウォールを解放する必要があります。
+* ContosoSQL1 と ContosoSQL2 のみ: SQL Server VM では、 **TCP** プロトコルが既に有効になっています。 ただし、SQL Server にリモート アクセスするためには、ファイアウォールを解放する必要があります。
 
 これで開始する準備ができました。 まず **ContosoQuorum**で、次の手順に従ってください。
 
@@ -481,7 +481,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. [Azure VM での AlwaysOn 可用性グループのフェールオーバー クラスターの作成](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)に関するページから、**CreateAzureFailoverCluster.ps1** をローカルの作業ディレクトリにダウンロードします。 このスクリプトを使用すると、機能的なフェールオーバー クラスターを作成できます。 Windows フェールオーバー クラスタリングと Azure ネットワークのやり取りに関する重要な情報については、「[Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)」をご覧ください。
+7. **Azure VM での AlwaysOn 可用性グループのフェールオーバー クラスターの作成**に関するページから、[CreateAzureFailoverCluster.ps1](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) をローカルの作業ディレクトリにダウンロードします。 このスクリプトを使用すると、機能的なフェールオーバー クラスターを作成できます。 Windows フェールオーバー クラスタリングと Azure ネットワークのやり取りに関する重要な情報については、「[Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)」をご覧ください。
 8. 作業ディレクトリに移動し、ダウンロードしたスクリプトを使用してフェールオーバー クラスターを作成します。
 
         Set-ExecutionPolicy Unrestricted -Force

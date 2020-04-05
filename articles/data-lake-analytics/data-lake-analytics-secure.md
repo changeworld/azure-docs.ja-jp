@@ -9,10 +9,10 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.openlocfilehash: 9fbc94259d6fdfb6758204efd6e6f0a346dc58da
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60813372"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics のジョブ情報へのユーザー アクセスを構成します。 
@@ -44,5 +44,5 @@ Azure Data Lake Analytics では、複数のユーザー アカウントまた�
    - /system/jobservice/jobs/Usql/2018/05/25/11/01
    - /system/jobservice/jobs/Usql/2018/05/25/11/01/b074bd7a-1448-d879-9d75-f562b101bd3d
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [新しいユーザーの追加](data-lake-analytics-manage-use-portal.md#add-a-new-user)

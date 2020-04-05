@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: c27b7bf29e5f124fdcfb886b658fd8e9d4cc48fe
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74091341"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Azure リージョン間で Azure VM をフェールバックする
@@ -48,7 +48,7 @@ VM が再保護された後で、必要に応じてプライマリ リージョ�
 3. **[フェールオーバー]** で、フェールオーバーする復旧ポイントを選択します。
     - **最新 (既定値)** : Site Recovery サービスのすべてのデータを処理し、最短の復旧ポイントの目標 (RPO) を提供します。
     - **最後に処理があった時点**:Site Recovery によって処理された最新の復旧ポイントに VM を戻します。
-    - **カスタム**:特定の復旧ポイントにフェールオーバーします。 このオプションは、テスト フェールオーバーを実行するときに役立ちます。
+    - **Custom**:特定の復旧ポイントにフェールオーバーします。 このオプションは、テスト フェールオーバーを実行するときに役立ちます。
 4. Site Recovery でフェールオーバーをトリガーする前に DR リージョンの VM のシャットダウンを試行する場合は、 **[フェールオーバーを開始する前にマシンをシャットダウンします]** を選択します。 シャットダウンが失敗した場合でも、フェールオーバーは続行されます。 
 5. **[ジョブ]** ページで、フェールオーバーの進行状況を確認します。
 6. フェールオーバーが完了した後、VM にログインして検証します。 必要に応じて復旧ポイントを変更することができます。
@@ -60,6 +60,6 @@ VM が再保護された後で、必要に応じてプライマリ リージョ�
 > [!NOTE]
 > Site Recovery 拡張機能バージョン 9.28.x.x 以降を実行しているコンピューターの場合、[更新プログラム ロールアップ 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) の Site Recovery は、フェールバックが完了して VM が再保護された後にセカンダリ ディザスター リカバリー リージョン内のコンピューターをクリーンアップします。 セカンダリ リージョン内の VM や NIC を手動で削除する必要はありません。 フェールバックの後のレプリケーションを完全に無効にした場合、Site Recovery は VM や NIC に加えて、ディザスター リカバリー リージョン内のディスクをクリーンアップします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 再保護フローの[詳細](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection)について学習します。

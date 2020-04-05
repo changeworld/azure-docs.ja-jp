@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: pasta
 ms.openlocfilehash: e01cc9e8cedb6c38da0b56e04419c706d5d0566e
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946034"
 ---
 # <a name="how-to-display-math-in-the-immersive-reader"></a>イマーシブ リーダーで数式を表示する方法

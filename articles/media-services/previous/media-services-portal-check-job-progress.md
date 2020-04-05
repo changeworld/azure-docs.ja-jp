@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 86c91582256261d701dc3c73b1bdfdcb6002f6e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64867215"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Azure ポータルを使用したエンコード ジョブの進行状況の監視
@@ -32,13 +32,13 @@ ms.locfileid: "64867215"
 
 エンコード ジョブの進行状況を監視するには、ページの上部にある **[設定]** をクリックし、 **[ジョブ]** を選択します。
 
-![[ジョブ]](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+![ジョブ](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
 ジョブをクリックして詳細を確認します。
 
-![[ジョブ]](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
+![ジョブ](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 エンコード ジョブが完了したら、 [こちら](media-services-portal-publish.md)の説明に従って資産を発行し、再生できます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス

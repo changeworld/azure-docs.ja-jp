@@ -14,10 +14,10 @@ ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: juliako
 ms.openlocfilehash: df4092ecc3f7d075f1a2821854cdb668ee2cebe5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77191216"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - .NET
@@ -68,7 +68,7 @@ ms.locfileid: "77191216"
 1. Ctrl + F5 キーを押して、*EncodeAndStreamFiles* アプリケーションを実行します。
 2. Apple の **HLS** プロトコル (末尾が *manifest(format=m3u8-aapl)* ) を選び、コンソールからストリーム配信 URL をコピーします。
 
-![Output](./media/stream-files-tutorial-with-api/output.png)
+![出力](./media/stream-files-tutorial-with-api/output.png)
 
 サンプルの[ソース コード](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)では、URL の作成方法を確認できます。 URL を作成するには、ストリーミング エンドポイントのホスト名とストリーミング ロケーター パスを連結する必要があります。  
 

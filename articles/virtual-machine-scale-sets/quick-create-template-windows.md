@@ -9,13 +9,13 @@ ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.openlocfilehash: 4430a73f7b46a31847322e65c0aa3c95ebd385ca
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76270168"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>クイック スタート:Azure テンプレートを使用して Windows 仮想マシン スケール セットを作成する
+# <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>クイック スタート: Azure テンプレートを使用して Windows 仮想マシン スケール セットを作成する
 
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイック スタートでは、Azure Resource Manager テンプレートを使用して、仮想マシン スケール セットを作成し、サンプル アプリケーションをデプロイします。
 
@@ -33,7 +33,7 @@ Azure Resource Manager テンプレートを使用して、関連するリソー
 
 | プロパティ                     | プロパティの説明                                  | テンプレート値の例                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
-| 型                         | 作成する Azure リソースの種類                            | Microsoft.Compute/virtualMachineScaleSets |
+| type                         | 作成する Azure リソースの種類                            | Microsoft.Compute/virtualMachineScaleSets |
 | name                         | スケール セットの名前                                       | myScaleSet                                |
 | location                     | スケール セットを作成する場所                     | East US                                   |
 | sku.name                     | 各スケール セット インスタンスの VM サイズ                  | Standard_A1                               |

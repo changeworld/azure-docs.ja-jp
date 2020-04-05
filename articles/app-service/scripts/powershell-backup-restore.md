@@ -7,13 +7,13 @@ ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
 ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 026c275ce4bc85ff3f964bfbb175cc01ff611df0
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: a10a451bff73c081d9b0c95c494acb8b2051bd84
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685766"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057740"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリをバックアップから復元する
 
@@ -39,12 +39,12 @@ Remove-AzResourceGroup -Name $resourceGroupName -Force
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Web アプリのバックアップの一覧を取得します。 |
 | [Restore-AzWebAppBackup](/powershell/module/az.websites/restore-azwebappbackup) | 以前に完了したバックアップから Web アプリを復元します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

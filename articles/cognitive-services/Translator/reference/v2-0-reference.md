@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
 ms.openlocfilehash: f111169558118a80602bcb2136bc63ce54c9e0d9
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72242496"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
@@ -24,7 +24,7 @@ ms.locfileid: "72242496"
 
 Translator Text API バージョン 2 は、アプリ、Web サイト、ツール、またはその他のソリューションにシームレスに統合して、多言語ユーザー エクスペリエンスを提供することができます。 任意のハードウェア プラットフォーム上で使用でき、また任意のオペレーティング システムによって言語の翻訳のほか、テキストの言語検出やテキスト読み上げなど、その他の言語に関連したタスクを業界標準に従って実行できます。 詳細については、[Translator Text API](../translator-info-overview.md) に関するページを参照してください。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 Translator Text API にアクセスするには、[Microsoft Azure にサインアップする](../translator-text-how-to-signup.md)必要があります。
 
 ## <a name="authentication"></a>認証 
@@ -49,9 +49,9 @@ Translator Text API への呼び出しでは、いずれも認証にサブスク
 ソース テキスト内に不適切な表現があっても、翻訳に含まれないようにする場合は、不適切な表現のフィルター処理オプションをサポートしているメソッドで、そのオプションを使用できます。 このオプションを使用すると、不適切な表現が削除されているか、適切なタグでマークされていることを確認するかどうか、ターゲットでの不適切な表現を許可するかどうかを選択できます。 `ProfanityAction` に指定できる値は、`NoAction` (既定値)、`Marked`、`Deleted` です。
 
 
-|ProfanityAction    |Action |ソースの例 (日本語)  |翻訳の例 (英語)  |
+|ProfanityAction    |アクション |ソースの例 (日本語)  |翻訳の例 (英語)  |
 |:--|:--|:--|:--|
-|NoAction   |[既定]。 オプションを設定しない場合と同じです。 不適切な表現はソースからターゲットに渡されます。        |彼はジャッカスです。     |He is a jackass.   |
+|NoAction   |既定値。 オプションを設定しない場合と同じです。 不適切な表現はソースからターゲットに渡されます。        |彼はジャッカスです。     |He is a jackass.   |
 |Marked     |不適切な単語は XML タグ \<profanity> および \</profanity> によって囲まれます。       |彼はジャッカスです。 |He is a \<profanity>jackass\</profanity>.  |
 |Deleted    |不適切な単語は、置換されずに出力から削除されます。     |彼はジャッカスです。 |He is a.   |
 
@@ -81,18 +81,18 @@ string
 
 応答コンテンツ タイプ: application/xml
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
-|パラメーター|値|説明    |パラメーターのタイプ|データ型|
+|パラメーター|値|説明    |パラメーターのタイプ|データ型 (data type)|
 |:--|:--|:--|:--|:--|
 |appid  |(空)    |必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーが使用されている場合、`appid` フィールドは空のままにします。 それ以外の場合は、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|string|
-|text|(空)   |必須。 翻訳するテキストを表す文字列。 テキストは 10,000 文字以内にする必要があります。|query|文字列|
-|from|(空)   |省略可能。 翻訳されるテキストの言語コードを表す文字列。 たとえば、en は英語を表します。|query|文字列|
+|text|(空)   |必須。 翻訳するテキストを表す文字列。 テキストは 10,000 文字以内にする必要があります。|query|string|
+|from|(空)   |省略可能。 翻訳されるテキストの言語コードを表す文字列。 たとえば、en は英語を表します。|query|string|
 |to|(空) |必須。 テキストの翻訳先の言語コードを表す文字列。|query|string|
 |contentType|(空)    |省略可能。 翻訳されるテキストの形式。 サポートされている形式は、`text/plain` (既定値) と `text/html` です。 HTML 要素は、いずれも整形式の完全な要素にする必要があります。|query|string|
-|category|(空)   |省略可能。 翻訳のカテゴリ (ドメイン) を含む文字列。 既定では、 `general`です。|クエリ|文字列|
-|Authorization|(空)  |`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|header|文字列|
-|Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|文字列|
+|category|(空)   |省略可能。 翻訳のカテゴリ (ドメイン) を含む文字列。 既定では、 `general`です。|query|string|
+|承認|(空)  |`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|header|string|
+|Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|string|
 
 
 ### <a name="response-messages"></a>応答メッセージ
@@ -186,12 +186,12 @@ string
 
 応答コンテンツ タイプ: application/xml
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|Authorization|(空)  |`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|header|文字列|
-|Ocp-Apim-Subscription-Key|(空)|`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|文字列|
+|承認|(空)  |`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|header|string|
+|Ocp-Apim-Subscription-Key|(空)|`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|string|
 
 ### <a name="response-messages"></a>応答メッセージ
 
@@ -227,14 +227,14 @@ string
 
 応答コンテンツ タイプ: application/xml
  
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
 |appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーが使用されている場合、`appid` フィールドは空のままにします。 それ以外の場合は、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|string|
-|locale|(空) |必須。 以下のいずれかを表し、言語名のローカライズに使用される文字列。 <ul><li>言語に関連付けられた 2 文字の ISO 639 小文字カルチャ コードと、2 文字の ISO 3166 大文字サブカルチャ コードの組み合わせ。 <li>単独の ISO 639 小文字カルチャ コード。|query|文字列|
-|Authorization|(空)  |`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|header|文字列|
-|Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|文字列|
+|locale|(空) |必須。 以下のいずれかを表し、言語名のローカライズに使用される文字列。 <ul><li>言語に関連付けられた 2 文字の ISO 639 小文字カルチャ コードと、2 文字の ISO 3166 大文字サブカルチャ コードの組み合わせ。 <li>単独の ISO 639 小文字カルチャ コード。|query|string|
+|承認|(空)  |`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|header|string|
+|Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|string|
 
 ### <a name="response-messages"></a>応答メッセージ
 
@@ -261,13 +261,13 @@ string
 
 応答コンテンツ タイプ: application/xml
  
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーが使用されている場合、`appid` フィールドは空のままにします。 それ以外の場合は、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|文字列|
-|Authorization|(空)  |`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|header|文字列|
-|Ocp-Apim-Subscription-Key|(空)|`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|文字列|
+|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーが使用されている場合、`appid` フィールドは空のままにします。 それ以外の場合は、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|string|
+|承認|(空)  |`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|header|string|
+|Ocp-Apim-Subscription-Key|(空)|`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|string|
 
 ### <a name="response-messages"></a>応答メッセージ
 
@@ -294,13 +294,13 @@ string
 
 応答コンテンツ タイプ: application/xml
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーが使用されている場合、`appid` フィールドは空のままにします。 それ以外の場合は、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|文字列|
-|Authorization|(空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|header|文字列|
-|Ocp-Apim-Subscription-Key|(空)|`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|文字列|
+|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーが使用されている場合、`appid` フィールドは空のままにします。 それ以外の場合は、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|string|
+|承認|(空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|header|string|
+|Ocp-Apim-Subscription-Key|(空)|`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|string|
  
 ### <a name="response-messages"></a>応答メッセージ
 
@@ -326,17 +326,17 @@ binary
 
 応答コンテンツ タイプ: application/xml
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
 |appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーが使用されている場合、`appid` フィールドは空のままにします。 それ以外の場合は、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|string|
 |text|(空)   |必須。 指定した言語でストリーム用に読み上げられる文を 1 つ以上含む文字列。 テキストは 2,000 文字を超えないようにしてください。|query|string|
-|language|(空)   |必須。 テキストの読み上げに使用する言語のサポートされている言語コードを表す文字列。 このコードは、`GetLanguagesForSpeak` メソッドから返されるいずれかのコードにする必要があります。|query|文字列|
+|language|(空)   |必須。 テキストの読み上げに使用する言語のサポートされている言語コードを表す文字列。 このコードは、`GetLanguagesForSpeak` メソッドから返されるいずれかのコードにする必要があります。|query|string|
 |format|(空)|省略可能。 content-type ID を指定する文字列。 現在、`audio/wav` と `audio/mp3` が使用できます。 既定値は `audio/wav` です。|query|string|
-|options|(空)    |省略可能。 以下の合成音声のプロパティを指定する文字列。<ul><li>`MaxQuality` と `MinSize` は、音声信号の品質を指定します。 `MaxQuality` を指定すると、最高品質になります。 `MinSize` を指定すると、最小ファイル サイズになります。 既定値は `MinSize` です。</li><li>`female` と `male` は、音声の性別を指定します。 既定では、 `female`です。 垂直バー (<code>\|</code>) を使用して複数のオプションを含めることができます。 たとえば、`MaxQuality|Male` を使用します。</li></li></ul>  |query|文字列|
-|Authorization|(空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|header|文字列|
-|Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|文字列|
+|options|(空)    |省略可能。 以下の合成音声のプロパティを指定する文字列。<ul><li>`MaxQuality` と `MinSize` は、音声信号の品質を指定します。 `MaxQuality` を指定すると、最高品質になります。 `MinSize` を指定すると、最小ファイル サイズになります。 既定値は `MinSize` です。</li><li>`female` と `male` は、音声の性別を指定します。 既定では、 `female`です。 垂直バー (<code>\|</code>) を使用して複数のオプションを含めることができます。 (例: `MaxQuality|Male`)。</li></li></ul>  |query|string|
+|承認|(空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|header|string|
+|Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|string|
 
 ### <a name="response-messages"></a>応答メッセージ
 
@@ -362,14 +362,14 @@ string
 
 応答コンテンツ タイプ: application/xml
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
 |appid|(空)  |必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーが使用されている場合、`appid` フィールドは空のままにします。 それ以外の場合は、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|string|
-|text|(空)|必須。 言語が識別されるテキストを含む文字列。 テキストは 10,000 文字を超えないようにしてください。|query|  文字列|
-|Authorization|(空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|header|文字列|
-|Ocp-Apim-Subscription-Key  |(空)    |`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|文字列|
+|text|(空)|必須。 言語が識別されるテキストを含む文字列。 テキストは 10,000 文字を超えないようにしてください。|query|  string|
+|承認|(空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|header|string|
+|Ocp-Apim-Subscription-Key  |(空)    |`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|string|
 
 ### <a name="response-messages"></a>応答メッセージ
 
@@ -418,13 +418,13 @@ string
 
 応答コンテンツ タイプ: application/xml
  
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーが使用されている場合、`appid` フィールドは空のままにします。 それ以外の場合は、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|文字列|
-|Authorization|(空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。  認証トークン: `"Bearer" + " " + "access_token"`。|header|文字列|
-|Ocp-Apim-Subscription-Key|(空)|`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|文字列|
+|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーが使用されている場合、`appid` フィールドは空のままにします。 それ以外の場合は、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|string|
+|承認|(空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。  認証トークン: `"Bearer" + " " + "access_token"`。|header|string|
+|Ocp-Apim-Subscription-Key|(空)|`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|string|
 
 ### <a name="response-messages"></a>応答メッセージ
 
@@ -452,22 +452,22 @@ string
 
 応答コンテンツ タイプ: application: xml
  
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型   |
 |:--|:--|:--|:--|:--|
 |appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーが使用されている場合、`appid` フィールドは空のままにします。 それ以外の場合は、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|string|
 |originalText|(空)|必須。 翻訳するテキストを含む文字列。 文字列の長さは最大で 1,000 文字です。|query|string|
-|translatedText|(空) |必須。 ターゲット言語に翻訳されたテキストを含む文字列。 文字列の長さは最大で 2,000 文字です。|query|文字列|
-|from|(空)   |必須。 テキストの元の言語の言語コードを表す文字列。 たとえば、英語の場合は en、ドイツ語の場合は de です。|query|文字列|
+|translatedText|(空) |必須。 ターゲット言語に翻訳されたテキストを含む文字列。 文字列の長さは最大で 2,000 文字です。|query|string|
+|from|(空)   |必須。 テキストの元の言語の言語コードを表す文字列。 たとえば、英語の場合は en、ドイツ語の場合は de です。|query|string|
 |to|(空)|必須。 テキストの翻訳先言語の言語コードを表す文字列。|query|string|
-|評価|(空) |省略可能。 文字列の品質評価を表す整数。 値は -10 から 10 です。 既定値は 1 です。|query|integer|
+|評価|(空) |省略可能。 文字列の品質評価を表す整数。 値は -10 から 10 です。 既定値は 1 です。|query|整数 (integer)|
 |contentType|(空)    |省略可能。 翻訳されるテキストの形式。 サポートされている形式は、`text/plain` と `text/html` です。 HTML 要素は、いずれも整形式の完全な要素にする必要があります。    |query|string|
-|category|(空)|省略可能。 翻訳のカテゴリ (ドメイン) を含む文字列。 既定では、 `general`です。|クエリ|string|
+|category|(空)|省略可能。 翻訳のカテゴリ (ドメイン) を含む文字列。 既定では、 `general`です。|query|string|
 |user|(空)|必須。 送信者を追跡するのに使用される文字列。|query|string|
-|uri|(空)|省略可能。 翻訳のコンテンツの場所を含む文字列。|query|文字列|
-|Authorization|(空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。  認証トークン: `"Bearer" + " " + "access_token"`。  |header|文字列|
-|Ocp-Apim-Subscription-Key|(空)|`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|文字列|
+|uri|(空)|省略可能。 翻訳のコンテンツの場所を含む文字列。|query|string|
+|承認|(空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。  認証トークン: `"Bearer" + " " + "access_token"`。  |header|string|
+|Ocp-Apim-Subscription-Key|(空)|`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|string|
 
 ### <a name="response-messages"></a>応答メッセージ
 
@@ -531,12 +531,12 @@ string
 
 応答コンテンツ タイプ: application/xml
  
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|Authorization|(空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。  認証トークン: `"Bearer" + " " + "access_token"`。|header|文字列|
-|Ocp-Apim-Subscription-Key|(空)|`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|文字列|
+|承認|(空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。  認証トークン: `"Bearer" + " " + "access_token"`。|header|string|
+|Ocp-Apim-Subscription-Key|(空)|`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|string|
 
 ### <a name="response-messages"></a>応答メッセージ
 
@@ -560,19 +560,19 @@ string
 ### <a name="response-class-status-200"></a>応答クラス (ステータス 200)
 文の長さを表す整数の配列。 配列の長さは、文の数を表します。 その値は各文の長さを表します。
 
-integer
+整数 (integer)
 
 応答コンテンツ タイプ: application/xml
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
 |appid|(空)  |必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーが使用されている場合、`appid` フィールドは空のままにします。 それ以外の場合は、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query| string|
 |text|(空)   |必須。 複数の文に分割するテキストを表す文字列。 テキストの最大サイズは 10,000 文字です。|query|string|
-|language   |(空)    |必須。 入力テキストの言語コードを表す文字列。|query|文字列|
-|Authorization|(空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。   |header|文字列|
-|Ocp-Apim-Subscription-Key|(空)|`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|文字列|
+|language   |(空)    |必須。 入力テキストの言語コードを表す文字列。|query|string|
+|承認|(空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。   |header|string|
+|Ocp-Apim-Subscription-Key|(空)|`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|string|
 
 ### <a name="response-messages"></a>応答メッセージ
 
@@ -661,17 +661,17 @@ string
 
 応答コンテンツ タイプ: application/xml
  
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
 |appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーが使用されている場合、`appid` フィールドは空のままにします。 それ以外の場合は、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|string|
-|text|(空)|必須。 翻訳するテキストを表す文字列。 テキストの最大サイズは 10,000 文字です。|query|文字列|
-|from|(空)|必須。 翻訳されるテキストの言語コードを表す文字列。|query|文字列|
+|text|(空)|必須。 翻訳するテキストを表す文字列。 テキストの最大サイズは 10,000 文字です。|query|string|
+|from|(空)|必須。 翻訳されるテキストの言語コードを表す文字列。|query|string|
 |to |(空)    |必須。 テキストの翻訳先言語の言語コードを表す文字列。|query|string|
-|maxTranslations|(空)|必須。 返す翻訳結果の最大数を表す整数。|query|integer|
-|Authorization| (空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|string|  header|
-|Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|文字列|
+|maxTranslations|(空)|必須。 返す翻訳結果の最大数を表す整数。|query|整数 (integer)|
+|承認| (空)|`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。 認証トークン: `"Bearer" + " " + "access_token"`。|string|  header|
+|Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|string|
 
 ### <a name="response-messages"></a>応答メッセージ
 
@@ -784,12 +784,12 @@ string
 
 応答コンテンツ タイプ: application/xml
  
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|Authorization  |(空)    |`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。  認証トークン: `"Bearer" + " " + "access_token"`。|header|文字列|
-|Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|文字列|
+|承認  |(空)    |`appid` フィールドと `Ocp-Apim-Subscription-Key` ヘッダーの両方を空のままにする場合は必須となります。  認証トークン: `"Bearer" + " " + "access_token"`。|header|string|
+|Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドと `Authorization` ヘッダーの両方を空のままにする場合は必須となります。|header|string|
 
 ### <a name="response-messages"></a>応答メッセージ
 
@@ -800,7 +800,7 @@ string
 |500    |サーバー エラー。 エラーが解決しない場合は、お知らせください。 要求のおよその日時と、応答ヘッダー `X-MS-Trans-Info` に含まれている要求 ID を提供してください。|
 |503    |サービスが一時的に利用できません。 再試行して、エラーが解決しない場合は、お知らせください。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Translator Text API v3 への移行](../migrate-to-v3.md)

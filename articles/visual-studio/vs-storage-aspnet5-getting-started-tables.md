@@ -14,10 +14,10 @@ ms.date: 11/14/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d209f8117b1e061877daf2f8d316bd01ed4f84cd
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72298818"
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Azure Table Storage と Visual Studio 接続済みサービスの概要
@@ -210,5 +210,5 @@ else
    Console.WriteLine("Couldn't delete the entity.");
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]

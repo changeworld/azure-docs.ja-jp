@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
 ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78672941"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Azure から Windows Server にファイルを回復する

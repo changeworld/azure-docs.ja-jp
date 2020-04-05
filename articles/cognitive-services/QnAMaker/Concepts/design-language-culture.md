@@ -4,10 +4,10 @@ description: QnA Maker リソースとそのリソース内のすべてのナレ
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: 5cb1dcd35649debbafd2e234606ad4c9d6906ea6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76843423"
 ---
 # <a name="design-knowledge-base-for-content-language"></a>コンテンツ言語のナレッジ ベースを設計する

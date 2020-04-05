@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: ravokkar
 ms.openlocfilehash: ea6ece7e34ddb9c25f9f8349239ab3a1c3405abf
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973375"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した DPS との通信
@@ -77,7 +77,7 @@ DPS 経由でデバイスを登録するには、デバイスで `$dps/registrat
 ## <a name="connecting-over-websocket"></a>Websocket 経由の接続
 Websocket 経由で接続する場合は、`mqtt` としてサブプロトコルを指定します。 [RFC 6455](https://tools.ietf.org/html/rfc6455) に従います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 MQTT プロトコルについて詳しくは、[MQTT のドキュメント](https://mqtt.org/documentation)をご覧ください。
 

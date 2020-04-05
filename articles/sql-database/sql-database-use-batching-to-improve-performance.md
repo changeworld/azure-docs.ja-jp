@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: cacc01151edaf31db938cf8abf3d46e75397758f
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76545026"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法
@@ -325,7 +325,7 @@ SQL Database アプリケーションでバッチ処理を使用する場合の�
 
 私たちが行ったテストでは、大きなバッチを小さなまとまりに分割するメリットはほとんどありませんでした。 実際、このように細かく分割した場合、1 つの大きなバッチで送信するときに比べ、パフォーマンスが低下するケースも往々にしてありました。 たとえば、挿入する行が 1,000 件ある状況を考えてみましょう。 次の表は、テーブル値パラメーターを使って 1,000 行のデータを挿入するとき、バッチ サイズを小さく分割していったときにかかる時間を示しています。
 
-| バッチ サイズ | 反復回数 | テーブル値パラメーター (ミリ秒) |
+| バッチ サイズ | イテレーション | テーブル値パラメーター (ミリ秒) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |

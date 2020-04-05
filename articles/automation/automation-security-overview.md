@@ -8,11 +8,11 @@ ms.date: 03/19/2018
 ms.topic: conceptual
 ROBOTS: NOINDEX
 ms.openlocfilehash: b2003469fa35de837c3a9214e40cfb333156b40c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420678"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235499"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Azure Automation での認証の概要  
 Azure Automation を使用すると、Azure 内のリソース、オンプレミスのリソース、Amazon Web Services (AWS) などの他のクラウド プロバイダーのリソースに対するタスクを自動化できます。  Runbook が必要な操作を実行するためには、操作対象のリソースに安全に、サブスクリプション内で必要な最低限の権限だけでアクセスするための、アクセス許可が必要です。

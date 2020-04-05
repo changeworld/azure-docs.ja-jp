@@ -11,10 +11,10 @@ ms.tgt_pltfrm: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 0cef3f5ae7c647236d52e4c571e5fc382e1560f4
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76514614"
 ---
 # <a name="azure-cli-samples-for-event-grid"></a>Event Grid 用の Azure CLI サンプル

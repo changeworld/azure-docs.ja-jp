@@ -11,10 +11,10 @@ author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2bbd81f3858aa78b9e0e2d610c0fdb0a67816c8e
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78228316"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow ディープ ラーニング モデルを構築する

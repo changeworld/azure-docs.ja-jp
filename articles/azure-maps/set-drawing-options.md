@@ -1,19 +1,19 @@
 ---
 title: 描画ツール モジュール | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Web SDK を使用して描画オプション データを設定する方法について学習します
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f3634149b744b9a03f0ed89aafbc20932701bdbc
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 711609f9382e2153cbc738d544933796dbbe2e99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208184"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334309"
 ---
 # <a name="use-the-drawing-tools-module"></a>描画ツール モジュールを使用する
 
@@ -26,8 +26,8 @@ Azure Maps の Web SDK は、*描画ツール モジュール*を提供してい
     - グローバルにホストされている Azure Maps サービス モジュールの Azure Content Delivery Network のバージョンを使用します。 ファイルの `<head>` 要素に JavaScript および CSS スタイルシートへの参照を追加します。
 
         ```html
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/0.1/atlas-drawing.min.css" type="text/css" />
-        <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0.1/atlas-drawing.min.js"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.css" type="text/css" />
+        <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.js"></script>
         ```
 
     - または、[azure-maps-drawing-tools](https://www.npmjs.com/package/azure-maps-drawing-tools) npm パッケージを使用して、Azure Maps Web SDK ソース コード用の描画ツール モジュールをローカルに読み込み、アプリを使用してそれをホストできます。 このパッケージには TypeScript 定義も含まれています。 次のコマンドを実行します。
@@ -61,7 +61,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="多角形を描画する" src="//codepen.io/azuremaps/embed/YzKVKRa/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>Draw a polygon</a>」Pen を参照してください。
+<a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Draw a polygon</a>」Pen を参照してください。
 </iframe>
 
 
@@ -88,7 +88,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="フリーハンドの描画" src="//codepen.io/azuremaps/embed/ZEzKoaj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>Free-hand drawing</a>」Pen を参照してください。
+<a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Free-hand drawing</a>」Pen を参照してください。
 </iframe>
 
 
@@ -98,7 +98,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 
 <br/>
 
-<iframe height="685" title="描画マネージャーをカスタマイズする" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>Get shape data</a>」Pen を参照してください。
+<iframe height="685" title="描画マネージャーをカスタマイズする" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'><a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io'>Get shape data</a>」Pen を参照してください。
 </iframe>
 
 

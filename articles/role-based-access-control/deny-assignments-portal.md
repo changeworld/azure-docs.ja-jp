@@ -15,10 +15,10 @@ ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 4db76e5c6191457346ca1f95678cf73843334d3b
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77137422"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Azure portal を使用して Azure リソースの拒否割り当てを一覧表示する
@@ -32,7 +32,7 @@ ms.locfileid: "77137422"
 
 拒否割り当てに関する情報を取得するのに必要なものは次のとおりです:
 
-- ほとんどの [Azure リソースの組み込みロール](built-in-roles.md)に含まれている `Microsoft.Authorization/denyAssignments/read` アクセス許可。
+- ほとんどの `Microsoft.Authorization/denyAssignments/read`Azure リソースの組み込みロール[に含まれている ](built-in-roles.md) アクセス許可。
 
 ## <a name="list-deny-assignments"></a>拒否割り当てを一覧表示する
 

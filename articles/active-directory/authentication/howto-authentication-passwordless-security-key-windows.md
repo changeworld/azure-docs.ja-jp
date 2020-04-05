@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327f53fb39e58f7b70040eb41b6cd80aca18e510
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: ca6ef244a887e75a0d8b9bb663d5325a33cd1e89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522035"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230987"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Azure Active Directory を使用して Windows 10 デバイスへのパスワードレス セキュリティ キー サインインを有効にする (プレビュー)
 
@@ -35,7 +35,7 @@ ms.locfileid: "77522035"
 | [統合されたセキュリティ情報の登録 (プレビュー)](concept-registration-mfa-sspr-combined.md) | X | X |
 | 互換性のある [FIDO2 セキュリティ キー](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | WebAuthN には、Windows 10 バージョン 1809 以降が必要です | X | X |
-| [Azure AD 参加済みデバイス](../devices/concept-azure-ad-join.md)には、Windows 10 バージョン 1809 以降が必要です | X |   |
+| [Azure AD 参加済みデバイス](../devices/concept-azure-ad-join.md)には、Windows 10 バージョン 1903 以降が必要です | X |   |
 | [Hybrid Azure AD 参加済みデバイス](../devices/concept-azure-ad-join-hybrid.md)には、Windows 10 Insider Build 18945 以降が必要です |   | X |
 | 完全にパッチが適用された Windows Server 2016/2019 ドメイン コントローラー。 |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) バージョン 1.4.32.0 以降 |   | X |
@@ -54,6 +54,7 @@ ms.locfileid: "77522035"
 - セキュリティ キーを使用したサーバーへのログイン。
 - オンラインのときにセキュリティ キーを使用してデバイスにサインインしていない場合、そのデバイスをオフラインでのサインインまたはロック解除に使用することはできません。
 - 複数の Azure AD アカウントが含まれるセキュリティ キーで Windows 10 デバイスにサインインするか、ロックを解除します。 このシナリオでは、セキュリティ キーに最後に追加されたアカウントが利用されます。 WebAuthN の場合、ユーザーは自分が使用するアカウントを選択できます。
+- Windows 10 バージョン 1809 を実行しているデバイスのロックを解除します。 最適なエクスペリエンスを得るには、Windows 10 バージョン 1903 以降を使用してください。
 
 ## <a name="prepare-devices-for-preview"></a>プレビュー用にデバイスを準備する
 
@@ -99,7 +100,7 @@ Intune を使用してセキュリティ キーを使用できるようにする
    - カスタム OMA-URI の設定:
       - 名前:Turn on FIDO Security Keys for Windows Sign-In
       - OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
-      - データ型:整数
+      - データ型:Integer
       - 値:1
 1. このポリシーを、特定のユーザー、デバイス、またはグループに割り当てることができます。 詳細については、[Microsoft Intune でユーザーとデバイスのプロファイルを割り当てる](https://docs.microsoft.com/intune/device-profile-assign)方法に関するページを参照してください。
 

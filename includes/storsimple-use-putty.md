@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5c62c67cd401c043352b06e6e6070a7fc0f1296
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181213"
 ---
 #### <a name="to-connect-through-the-serial-console"></a>シリアル コンソールを使用して接続するには
@@ -21,11 +21,11 @@ ms.locfileid: "67181213"
 5. 右側のウィンドウで、 **[接続の種類]** を **[シリアル]** に変更します。
 6. 右側のウィンドウで、適切な COM ポートを入力します。 シリアル構成パラメーターが次のように設定されていることを確認します。
    
-   * 速度:115,200
-   * データ ビット:8
-   * ストップ ビット:1
-   * パリティ:なし
-   * フロー制御:なし
+   * 速度: 115,200
+   * データ ビット: 8
+   * ストップ ビット: 1
+   * パリティ: なし
+   * フロー制御: なし
      
      これらの設定を次の図に示します。
      

@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 10/09/2019
 ms.author: cherylmc
 ms.openlocfilehash: 7b438f2b966dc43d41b91a138b39193d230d5546
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75779690"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する
@@ -35,7 +35,7 @@ ms.locfileid: "75779690"
 
 [!INCLUDE [vpn-gateway-table-multi-site](../../includes/vpn-gateway-table-multisite-include.md)]
 
-## <a name="before"></a>開始する前に
+## <a name="before-you-begin"></a><a name="before"></a>開始する前に
 次の項目についてご確認ください。
 
 * ExpressRoute と VPN Gateway の共存構成を新しく構成しているのではない。
@@ -45,7 +45,7 @@ ms.locfileid: "75779690"
 * 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいる。 「 [VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。 VPN デバイスの構成に詳しくない場合や、オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。
 * VPN デバイスの外部接続用パブリック IP アドレスがある。 この IP アドレスを NAT の内側に割り当てることはできません。
 
-## <a name="part1"></a>パート 1 - 接続の構成
+## <a name="part-1---configure-a-connection"></a><a name="part1"></a>パート 1 - 接続の構成
 1. ブラウザーから [Azure Portal](https://portal.azure.com) に移動します。必要であれば Azure アカウントでサインインします。
 2. **[すべてのリソース]** をクリックして、リソースの一覧から **[仮想ネットワーク ゲートウェイ]** を見つけます。
 3. **[仮想ネットワーク ゲートウェイ]** ページで、 **[接続]** をクリックします。
@@ -61,7 +61,7 @@ ms.locfileid: "75779690"
      
      ![[接続追加] ページ](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "[接続の追加] ページ")<br>
 
-## <a name="part2"></a>パート 2 - ローカル ネットワーク ゲートウェイの追加
+## <a name="part-2---add-a-local-network-gateway"></a><a name="part2"></a>パート 2 - ローカル ネットワーク ゲートウェイの追加
 1. **[ローカル ネットワーク ゲートウェイ]** の ***[ローカル ネットワーク ゲートウェイを選択する]*** をクリックします。 **[ローカル ネットワーク ゲートウェイの選択]** ページが開きます。
    
     ![ローカル ネットワーク ゲートウェイの選択](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "ローカル ネットワーク ゲートウェイの選択")<br>
@@ -75,13 +75,13 @@ ms.locfileid: "75779690"
    * **[アドレス空間]:** 新しいローカル ネットワーク サイトにルーティングするアドレス空間です。
 4. **[ローカル ネットワーク ゲートウェイの作成]** ページで **[OK]** をクリックして変更を保存します。
 
-## <a name="part3"></a>パート 3 - 共有キーを追加して接続を作成する
+## <a name="part-3---add-the-shared-key-and-create-the-connection"></a><a name="part3"></a>パート 3 - 共有キーを追加して接続を作成する
 1. **[接続の追加]** ページで、接続の作成に使用する共有キーを追加します。 VPN デバイスから共有キーを取得するか、新しく作成して同じ共有キーを使用するよう VPN デバイスを構成します。 キーが完全に同一であることが重要です。
    
     ![共有キー](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/sharedkey.png "共有キー")<br>
 2. ページ下部の **[OK]** をクリックすると、接続が作成されます。
 
-## <a name="part4"></a>パート 4: VPN 接続の確認
+## <a name="part-4---verify-the-vpn-connection"></a><a name="part4"></a>パート 4: VPN 接続の確認
 
 
 [!INCLUDE [vpn-gateway-verify-connection-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]

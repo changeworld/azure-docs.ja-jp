@@ -4,7 +4,7 @@
   items:
     - name: Azure Service Health サービス
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: Service Health イベントのアラートの構成
       href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
@@ -16,7 +16,7 @@
       href: service-health-overview.md
     - name: リソース正常性
       href: resource-health-overview.md
-- name: 方法
+- name: 操作方法
   items:
     - name: Service Health イベントのアラートの構成
       href: alerts-activity-log-service-notifications.md

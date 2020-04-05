@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
 ms.openlocfilehash: f700b06e6ade0d72178777b67cb734f3120b36dc
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565606"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214960"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>クイック スタート:Azure Cosmos DB Gremlin API アカウントを使用して .NET Framework アプリケーションまたは Core アプリケーションを構築する
 

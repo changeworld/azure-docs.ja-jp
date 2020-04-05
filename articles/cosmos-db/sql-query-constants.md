@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
 ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873422"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB の SQL クエリ定数  
 
- 定数、リテラルまたはスカラー値とも呼ばれますが、特定のデータ値を表すシンボルです。 定数の形式は、それが表す値のデータ型によって異なります。  
+ リテラル値またはスカラー値としても知られる定数は、特定のデータ値を表す記号です。 定数の形式は、その定数が表す値のデータ型に依存します。  
   
  **サポートされるスカラー データ型:**  
   
@@ -29,7 +29,7 @@ ms.locfileid: "74873422"
 |**Array**|0 個以上の要素のシーケンス。 各要素には、**Undefined** を除く、任意のスカラー データ型の値を指定できます。|  
 |**Object**|0 個以上の名前/値ペアの順序なしのセット。 名前は Unicode 文字列で、値は **Undefined** 以外の任意のスカラー データ型を指定できます。|  
   
-## <a name="bk_syntax"></a>構文
+## <a name="syntax"></a><a name="bk_syntax"></a>構文
   
 ```sql  
 <constant> ::=  
@@ -59,7 +59,7 @@ ms.locfileid: "74873422"
   
 ```  
   
-##  <a name="bk_arguments"></a> 引数
+##  <a name="arguments"></a><a name="bk_arguments"></a> 引数
   
 * `<undefined_constant>; Undefined`  
   
@@ -116,7 +116,7 @@ ms.locfileid: "74873422"
 |\t|タブ|U+0009|  
 |\uXXXX|4 つの 16 進数字によって定義された Unicode 文字。|U+XXXX|  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [モデル ドキュメント データ](modeling-data.md)

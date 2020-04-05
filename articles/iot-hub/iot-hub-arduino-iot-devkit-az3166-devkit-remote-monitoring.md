@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
 ms.openlocfilehash: 9eab035d494892671a2451866311ca06599ec030
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953733"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>MXChip IoT DevKit を Azure IoT リモート監視ソリューション アクセラレータに接続する
@@ -77,16 +77,16 @@ ms.locfileid: "73953733"
 3. DevKit をコンピューターに接続します。 VS Code により DevKit が自動的に検出され、次のページが開きます。
 
    * DevKit 概要ページ
-   * [Arduino Examples]\(Arduino の例\): DevKit の使用を開始するためのハンズオン サンプル。
+   * Arduino の例: DevKit の使用を開始するためのハンズオン サンプル
 
 4. 左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、 **[Examples for MXCHIP AZ3166] > [AzureIoT]** を参照して、 **[RemoteMonitoring]** を選択します。 プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
 
    > [!NOTE]
-   > ウィンドウを偶然閉じた場合は、再度開くことができます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、 **[Arduino:Examples]\(Arduino: 例\)** を見つけて選択します。
+   > ウィンドウを偶然閉じた場合は、再度開くことができます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、 **[Arduino: Examples]\(Arduino: 例\)** を見つけて選択します。
 
 ## <a name="provision-required-azure-services"></a>必要な Azure サービスのプロビジョニング
 
-ソリューション ウィンドウで表示されたテキスト ボックスに「`task cloud-provision`」と入力し、`Ctrl+P` キー (macOS: `Cmd+P` キー) を使用してタスクを実行します。
+ソリューション ウィンドウで表示されたテキスト ボックスに「`Ctrl+P`」と入力し、`Cmd+P` キー (macOS: `task cloud-provision` キー) を使用してタスクを実行します。
 
 VS Code ターミナルでは、対話型コマンド ラインを使用して、必要な Azure サービスをプロビジョニングできます。
 
@@ -129,7 +129,7 @@ DevKit が再起動され、コードの実行が開始されます。
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、DevKit デバイスを Azure IoT リモート監視ソリューション アクセラレータに接続して、センサー データを視覚化する方法を説明しました。推奨する次の手順は、以下のとおりです。
 

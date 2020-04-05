@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 623ec5e082a8ed889329936d020bf28434a56fbf
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 32466cc0a1ab9b86fc2fb8eb791c232ae13f1c01
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942534"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79213575"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway を使用してデータを転送する
 
@@ -27,9 +27,9 @@ ms.locfileid: "78942534"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * 共有の追加
 > * 共有への接続
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,6 +56,8 @@ ms.locfileid: "78942534"
     2. 共有の **[種類]** を選択します。 種類には SMB (既定値) または NFS を選択できます。 SMB は Windows クライアントの場合に標準です。また、Linux クライアントの場合は NFS が使用されます。 SMB 共有と NFS 共有のどちらを選択するかに応じて、表示されるオプションの一部が変わります。
 
     3. 共有を配置するストレージ アカウントを指定します。 コンテナーがまだ存在しない場合は、新しく作成された共有の名前が付いたものがストレージ アカウントに作成されます。 コンテナーが既に存在する場合は、そのコンテナーが使用されます。
+       > [!IMPORTANT]
+       > Azure Stack Edge または Data Box Gateway デバイスで Azure Storage アカウントをご使用の場合、その Azure Storage アカウントで不変ポリシーが有効になっていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)」を参照してください。
     
     4. ブロック BLOB、ページ BLOB、またはファイルから **[ストレージ サービス]** を選択します。 選択されるサービスの種類は、Azure に存在するデータの形式によって変わります。 たとえば、このインスタンスでは、BLOB ブロックとして Azure にデータを配置するため、ブロック BLOB を選択します。 ページ BLOB を選択する場合は、データに 512 バイトが割り当てられていることを確認する必要があります。 たとえば、VHDX は常に 512 バイトでアラインされています。
    

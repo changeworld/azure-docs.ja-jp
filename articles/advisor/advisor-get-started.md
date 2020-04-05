@@ -4,11 +4,11 @@ description: Azure Advisor の使用を開始します。
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443139"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229671"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure Advisor の使用を開始する
 
@@ -27,7 +27,7 @@ Azure Portal を使用して Advisor にアクセスし、推奨事項を取得�
 
 1. Advisor ダッシュボードには、選択したすべてのサブスクリプションの推奨事項の概要が表示されます。  サブスクリプション フィルター ドロップダウンを使用して、推奨事項を表示するサブスクリプションを選択できます。
 
-1. 特定のカテゴリの推奨事項を取得するには、次の各タブのいずれかをクリックします。 **[高可用性]** 、 **[セキュリティ]** 、 **[パフォーマンス]** 、 **[コスト]** 。 
+1. 特定のカテゴリの推奨事項を取得するには、 **[高可用性]** 、 **[セキュリティ]** 、 **[パフォーマンス]** 、 **[コスト]** の各タブのいずれかをクリックします。 
 
    ![Azure Advisor ダッシュボード](./media/advisor-overview/advisor-dashboard.png)
 

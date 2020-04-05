@@ -17,10 +17,10 @@ ms.date: 06/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69c7a7a8fe0ef346cb26e3b0b4f14d3dae7211b9
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67372635"
 ---
 # <a name="tutorial-integrate-ungerboeck-software-with-azure-active-directory"></a>チュートリアル:Ungerboeck Software と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "67372635"
 
 * Ungerboeck Software にアクセスする Azure AD ユーザーを制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Ungerboeck Software に自動的にサインインできるようになります。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -63,7 +63,7 @@ Ungerboeck Software を使用して Azure AD の SSO を構成してテストす
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
 2. **[Ungerboeck Software SSO の構成](#configure-ungerboeck-software-sso)** - アプリケーション側で SSO 設定を構成します。
-3. **[Azure AD テスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 5. **[Ungerboeck Software のテスト ユーザーの作成](#create-ungerboeck-software-test-user)** - Ungerboeck Software で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。

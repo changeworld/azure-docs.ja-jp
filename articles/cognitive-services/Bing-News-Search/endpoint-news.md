@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: dc7d16fe809e3e324f384b0d9e088dd7e6ab261c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74111484"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Bing News Search API エンドポイント
@@ -49,7 +49,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
 
 ソーシャル ネットワークで現在注目されているニュース トピックを返します。 `/trendingtopics` オプションが含まれている場合、Bing 検索は `freshness` や `?q=""` などの他のいくつかのパラメーターを無視します。 可用性については、[サポートされている国/地域と市場](language-support.md#supported-markets-for-news-trending-endpoint)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどについて詳しくは、[Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) のリファレンスをご覧ください。
 

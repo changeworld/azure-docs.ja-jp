@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 7c971dcac702318d15a27736828092e987468ca3
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77162975"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Python を使用して Event Hubs との間でイベントを送受信する (azure-eventhub バージョン 5)
@@ -22,7 +22,7 @@ ms.locfileid: "77162975"
 > このクイックスタートでは、最新の azure-eventhub バージョン 5 パッケージを使用します。 以前の azure-eventhub バージョン 1パッケージを使用するクイック スタートについては、[azure-eventhub バージョン 1 を使用したイベントの送受信](event-hubs-python-get-started-send.md)に関するページを参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
-Azure Event Hubs を初めて使用する場合は、このクイックスタートを行う前に[イベント ハブの概要](event-hubs-about.md)に関するページを参照してください。 
+Azure Event Hubs を初めて使用する場合は、このクイックスタートを行う前に[イベント ハブの概要](event-hubs-about.md)を参照してください。 
 
 このクイック スタートを完了するには、次の前提条件を用意しておく必要があります。
 
@@ -41,7 +41,7 @@ Azure Event Hubs を初めて使用する場合は、このクイックスター
     ```cmd
     pip install azure-eventhub-checkpointstoreblob-aio
     ```
-- **Event Hubs 名前空間とイベント ハブを作成する**。 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 その後、次の記事の手順に従って、**Event Hubs 名前空間用の接続文字列**を取得します: [接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 この接続文字列は、このクイックスタートの後の手順で使用します。
+- **Event Hubs 名前空間とイベント ハブを作成する**。 最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。 その後、次の記事の手順に従って、**Event Hubs 名前空間用の接続文字列**を取得します: [接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 この接続文字列は、このクイックスタートの後の手順で必要になります。
 
 ## <a name="send-events"></a>送信イベント
 このセクションでは、前に作成したイベント ハブにイベントを送信する Python スクリプトを作成します。

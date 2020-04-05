@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: d8c6b68a38d4b60cf7a3194e6a5ded8804cc416f
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77150172"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Azure Availability Zones にゾーン冗長仮想ネットワーク ゲートウェイを作成する
@@ -23,7 +23,7 @@ Azure Availability Zones に、VPN ゲートウェイと ExpressRoute ゲート�
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="variables"></a>1.変数を宣言する
+## <a name="1-declare-your-variables"></a><a name="variables"></a>1.変数を宣言する
 
 使用する変数を宣言します。 次のサンプルを使用し、必要に応じて独自の値で置き換えます。 演習中の任意の時点で PowerShell/Cloud Shell セッションを閉じた場合は、値をもう一度コピーして貼り付けるだけで、変数を再宣言します。 場所を指定するときは、指定するリージョンがサポートされていることを確認してください。 詳細については、[FAQ](#faq) をご覧ください。
 
@@ -43,7 +43,7 @@ $GwIP1       = "VNet1GWIP"
 $GwIPConf1   = "gwipconf1"
 ```
 
-## <a name="configure"></a>2.仮想ネットワークの作成
+## <a name="2-create-the-virtual-network"></a><a name="configure"></a>2.仮想ネットワークの作成
 
 リソース グループを作成します。
 
@@ -59,7 +59,7 @@ $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPr
 $vnet = New-AzVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNet1Prefix -Subnet $fesub1,$besub1
 ```
 
-## <a name="gwsub"></a>3.ゲートウェイ サブネットを追加します
+## <a name="3-add-the-gateway-subnet"></a><a name="gwsub"></a>3.ゲートウェイ サブネットを追加します
 
 ゲートウェイ サブネットには、仮想ネットワーク ゲートウェイ サービスが使用する予約済み IP アドレスが含まれます。 次の例を使用して、ゲートウェイ サブネットを追加し設定します。
 
@@ -75,11 +75,11 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0
 ```azurepowershell-interactive
 $getvnet | Set-AzVirtualNetwork
 ```
-## <a name="publicip"></a>4.パブリック IP アドレスの要求
+## <a name="4-request-a-public-ip-address"></a><a name="publicip"></a>4.パブリック IP アドレスの要求
  
 この手順では、作成するゲートウェイに当てはまる説明を選択してください。 ゲートウェイをデプロイするゾーンの選択は、パブリック IP アドレスに対して指定されたゾーンに依存します。
 
-### <a name="ipzoneredundant"></a>ゾーン冗長ゲートウェイの場合
+### <a name="for-zone-redundant-gateways"></a><a name="ipzoneredundant"></a>ゾーン冗長ゲートウェイの場合
 
 **Standard** PublicIpaddress SKU を使用してパブリック IP アドレスを要求し、ゾーンは指定しません。 この場合、作成される Standard パブリック IP アドレスはゾーン冗長パブリック IP となります。   
 
@@ -87,7 +87,7 @@ $getvnet | Set-AzVirtualNetwork
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="ipzonalgw"></a>ゾーン ゲートウェイの場合
+### <a name="for-zonal-gateways"></a><a name="ipzonalgw"></a>ゾーン ゲートウェイの場合
 
 **Standard** PublicIpaddress SKU を使用してパブリック IP アドレスを要求し、 ゾーン (1、2、または 3) を指定します。 すべてのゲートウェイ インスタンスがこのゾーンにデプロイされます。
 
@@ -95,14 +95,14 @@ $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $Gw
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
 ```
 
-### <a name="ipregionalgw"></a>リージョン ゲートウェイの場合
+### <a name="for-regional-gateways"></a><a name="ipregionalgw"></a>リージョン ゲートウェイの場合
 
 **Basic** PublicIpaddress SKU を使用してパブリック IP アドレスを要求します。 この場合、ゲートウェイはリージョン ゲートウェイとしてデプロイされ、ゲートウェイにはゾーン冗長性が組み込まれません。 ゲートウェイ インスタンスはすべてのゾーンにそれぞれ作成されます。
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
 ```
-## <a name="gwipconfig"></a>5.IP 構成を作成する
+## <a name="5-create-the-ip-configuration"></a><a name="gwipconfig"></a>5.IP 構成を作成する
 
 ```azurepowershell-interactive
 $getvnet = Get-AzVirtualNetwork -ResourceGroupName $RG1 -Name $VNet1
@@ -110,7 +110,7 @@ $subnet = Get-AzVirtualNetworkSubnetConfig -Name $GwSubnet1 -VirtualNetwork $get
 $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subnet -PublicIpAddress $pip1
 ```
 
-## <a name="gwconfig"></a>6.ゲートウェイを作成する
+## <a name="6-create-the-gateway"></a><a name="gwconfig"></a>6.ゲートウェイを作成する
 
 仮想ネットワーク ゲートウェイを作成します。
 
@@ -126,7 +126,7 @@ New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 
 New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1AZ
 ```
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a><a name="faq"></a>FAQ
 
 ### <a name="what-will-change-when-i-deploy-these-new-skus"></a>これらの新しい SKU をデプロイすると何が変わりますか。
 

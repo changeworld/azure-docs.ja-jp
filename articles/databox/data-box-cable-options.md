@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
 ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920639"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box の配線方法
@@ -39,7 +39,7 @@ ms.locfileid: "77920639"
     - **IP アドレス**: 192.168.100.5
     - **サブネット**: 255.255.255.0
 
-3. デバイスのローカル Web UI(192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
+3. デバイスのローカル Web UI (192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
 
 
 ## <a name="transfer-via-data-port-with-static-ips"></a>静的 IP を使用して DATA ポート経由で転送する
@@ -67,7 +67,7 @@ Data Box に 2 つのポート (管理トラフィック用に MGMT ポート、
 
      ![2 ポートの設定](media/data-box-cable-options/cabling-2-port-setup.png)
 
-3. デバイスのローカル Web UI(192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
+3. デバイスのローカル Web UI (192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
 4. 構成したデータ ポートに静的 IP を割り当てます。
 
 ### <a name="option-2---initial-setup-via-separate-computer"></a>オプション 2 - 別のコンピューターを介した初期設定
@@ -83,7 +83,7 @@ Data Box に 2 つのポート (管理トラフィック用に MGMT ポート、
 
      ![スイッチを使用した 2 ポートの設定](media/data-box-cable-options/cabling-with-static-ip.png)
 
-3. デバイスのローカル Web UI(192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
+3. デバイスのローカル Web UI (192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
 4. DHCP サーバーにより割り当てられた IP アドレスを特定します。
 
 ## <a name="transfer-via-data-port-with-static-ips-using-a-switch"></a>静的 IP とスイッチを使用して DATA ポート経由で転送する 
@@ -107,7 +107,7 @@ Data Box に 2 つのポート (管理トラフィック用に MGMT ポート、
 
      ![スイッチを使用した 2 ポートの設定](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
-3. デバイスのローカル Web UI(192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
+3. デバイスのローカル Web UI (192.168.100.10) にアクセスします。 サインインし、Azure portal からロック解除のパスワードを使用して Data Box のロックを解除します。
 4. 構成したデータ ポートに静的 IP を割り当てます。
 
 

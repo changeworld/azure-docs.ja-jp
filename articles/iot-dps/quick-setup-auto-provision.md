@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 765b7e5bb7341974a6a16d3f1ed0bcabf415f9f3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76029183"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>クイック スタート:Azure Portal で IoT Hub Device Provisioning Service を設定する

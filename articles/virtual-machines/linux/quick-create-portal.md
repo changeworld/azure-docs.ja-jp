@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 894fa2f3cda798a409db3ee8e9761c1702baf955
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bc1dd56cd024ee65e29f227f4ec11cde436e388d
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035214"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80294773"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure portal で Linux 仮想マシンを作成する
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Bash シェルを開き、[ssh-keygen](https://www.ssh.com/ssh/keygen/) を使用して SSH キー ペアを作成します。 Bash シェルがローカル コンピューターにない場合は、[Azure Cloud Shell](https://shell.azure.com/bash) を使用してください。
 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ページの上部にあるメニューで、`>_` アイコンを選択して Cloud Shell を開きます。
 1. CloudShell の左上に "**Bash**" と表示されていることを確認します。 PowerShell と表示されている場合は、ドロップダウンを使用して **[Bash]** を選択し、 **[確認]** を選択して Bash シェルに変更します。
 1. 「`ssh-keygen -t rsa -b 2048`」と入力して ssh キーを作成します。 
@@ -89,7 +89,7 @@ VM との SSH 接続を作成します。
     ssh azureuser@10.111.12.123
     ```
 
-3. SSH キー ペアの作成に使用したものと同じ bash シェルを使用します (Cloud Shell をもう一度開くには、`>_` をもう一度選択するか、 https://shell.azure.com/bash) に移動して、SSH 接続コマンドをシェルに貼り付け、SSH セッションを作成します。
+3. SSH キーの組の作成に使用したのと同じ bash シェルを使用して (Cloud Shell をもう一度開くには、`>_` を再度選択するか `https://shell.azure.com/bash` に移動する)、SSH 接続コマンドをシェルに貼り付け、SSH セッションを作成します。
 
 ## <a name="install-web-server"></a>Web サーバーのインストール
 
@@ -109,11 +109,11 @@ sudo apt-get -y install nginx
 
 ![NGINX の既定のサイト](./media/quick-create-portal/nginx.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、リソース グループ、仮想マシン、およびすべての関連リソースを削除できます。 これを行うには、仮想マシンのリソース グループを選択し、 **[削除]** を選択して、削除するリソース グループの名前を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、単純な仮想マシンをデプロイし、ネットワーク セキュリティ グループと規則を作成し、基本的な Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Linux VM のチュートリアルを参照してください。
 

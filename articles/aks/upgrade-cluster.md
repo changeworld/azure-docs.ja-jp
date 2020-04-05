@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.openlocfilehash: 4520297e83f96f95b10ecafd5af52a913dc5f450
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77621977"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのアップグレード

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/14/2019
 ms.author: alkohli
 ms.openlocfilehash: f8116ec0836623adf803991017950ddc7f960923
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67805708"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>ログを使用して Azure Data Box Disk の検証の問題をトラブルシューティングする
@@ -75,7 +75,7 @@ ms.locfileid: "67805708"
 
 | エラー コード| 説明                       | 推奨アクション               |
 |------------|--------------------------|-----------------------------------|
-| `None` | データが正常に検証されました。 | 操作は必要ありません。 |
+| `None` | データが正常に検証されました。 | 必要な操作はありません。 |
 | `InvalidXmlCharsInPath` |ファイル パスに無効な文字が含まれているため、マニフェスト ファイルを作成できませんでした。 | 続行するには、これらの文字を削除します。  |
 | `OpenFileForReadFailed`| ファイルを処理できませんでした。 アクセスの問題またはファイル システムの破損が考えられます。|エラーのためのファイルを読み取れませんでした。 エラーの詳細は例外にあります。 |
 | `Not512Aligned` | このファイルは PageBlob フォルダーに対して有効な形式ではありません。| `PageBlob` フォルダーには、512 バイトでアラインメントされたデータのみをアップロードしてください。 PageBlob フォルダーからファイルを削除するか、BlockBlob フォルダーに移動します。 検証を再試行します。|
@@ -94,6 +94,6 @@ ms.locfileid: "67805708"
 | `NonVhdFileNotSupportedForManagedDisk` | VHD 以外のファイルはマネージド ディスクとしてアップロードできません。 |VHD 以外のファイルはサポートされていないため、これらのファイルを `ManagedDisk` フォルダーから削除するか、`PageBlob` フォルダーに移動します。 検証を再試行します。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [データ アップロード エラー](data-box-disk-troubleshoot-upload.md)のトラブルシューティングを行います。

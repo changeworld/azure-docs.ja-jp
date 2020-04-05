@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 129f407dd66b32ea097daf4ed9110ffbba23660c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 2b8cf66afa1d8aa592d5755ebab70cd6ad2e75fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017601"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79298056"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>内部 VNET 内の API Management と Application Gateway の統合
 
-## <a name="overview"> </a> 概要
+## <a name="overview"></a><a name="overview"> </a> 概要
 
 API Management サービスは、内部モードで仮想ネットワーク内に構成できます。これにより、API Management サービスを仮想ネットワーク内からのみアクセスできるようにします。 Azure Application Gateway は、レイヤー 7 のロード バランサーを提供する PAAS サービスです。 リバースプロキシ サービスとしての役目を果たすものであり、その機能の 1 つとして Web アプリケーション ファイアウォール (WAF) を備えています。
 
@@ -47,7 +47,7 @@ API Management サービスは、内部モードで仮想ネットワーク内�
 
 * 証明書 - API ホスト名の場合は pfx および cer、開発者ポータルのホスト名の場合は pfx です。
 
-## <a name="scenario"> </a> シナリオ
+## <a name="scenario"></a><a name="scenario"> </a> シナリオ
 
 この記事では、内部コンシューマーと外部コンシューマーの両方で単一の API Management サービスを使用し、オンプレミスとクラウド双方の API シリーズの単一フロントエンドとして機能させる方法について説明します。 さらに、Application Gateway のルーティング機能を使用して、これらの API のうち外部消費用に公開するものを一部のみ (例の中で緑色で記載しています) に制限する方法について説明します。
 
@@ -55,21 +55,21 @@ API Management サービスは、内部モードで仮想ネットワーク内�
 
 ![url ルート](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"> </a> 開始する前に
+## <a name="before-you-begin"></a><a name="before-you-begin"> </a> 開始する前に
 
 * Azure PowerShell の最新バージョンを使用していることを確認します。 [Azure PowerShell のインストール](/powershell/azure/install-az-ps)に関するページのインストール手順を参照してください。 
 
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>API Management と Application Gateway の統合作成に必要なもの
 
 * **バックエンド サーバー プール:** これは、API Management サービスの内部仮想 IP アドレスです。
-* **バックエンド サーバー プール設定:** すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。 これらの設定は、プール内のすべてのサーバーに適用されます。
-* **フロントエンド ポート:** これは、Application Gateway でオープンしているパブリック ポートです。 このポートにヒットしたトラフィックは、バックエンド サーバーのいずれかにリダイレクトされます。
+* **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。 これらの設定は、プール内のすべてのサーバーに適用されます。
+* **フロントエンド ポート:** これは、Application Gateway で開かれたパブリック ポートです。 このポートにヒットしたトラフィックは、バックエンド サーバーのいずれかにリダイレクトされます。
 * **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https で、値には大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
-* **ルール:** このルールは、リスナーをバックエンド サーバー プールにバインドします。
+* **ルール:** このルールによって、リスナーがバックエンド サーバー プールにバインドされます。
 * **カスタムの正常性プローブ:** 既定では、Application Gateway は、IP アドレス ベースのプローブを使用して、BackendAddressPool 内でアクティブなサーバーを見つけます。 API Management サービスは適切なホスト ヘッダーを持つ要求だけに応答するため、既定のプローブでは失敗します。 サービスが有効であり要求を転送する必要があることを Application Gateway が判定できるようにするには、カスタムの正常性プローブを定義する必要があります。
-* **カスタム ドメイン証明書:** インターネットから API Management にアクセスするには、ホスト名と Application Gateway のフロントエンド DNS 名との間の CNAME マッピングを作成する必要があります。 これにより、API Management に転送される、Application Gateway に送信されたホスト名のヘッダーと証明書を、APIM が有効であると識別できるようになります。 この例では、2 つの証明書 (バックエンド用と開発者ポータル用) を使用します。  
+* **カスタムのドメイン証明書:** インターネットから API Management にアクセスするには、ホスト名と Application Gateway のフロントエンド DNS 名との間の CNAME マッピングを作成する必要があります。 これにより、API Management に転送される、Application Gateway に送信されたホスト名のヘッダーと証明書を、APIM が有効であると識別できるようになります。 この例では、2 つの証明書 (バックエンド用と開発者ポータル用) を使用します。  
 
-## <a name="overview-steps"> </a> API Management と Application Gateway を統合するために必要な手順
+## <a name="steps-required-for-integrating-api-management-and-application-gateway"></a><a name="overview-steps"> </a> API Management と Application Gateway を統合するために必要な手順
 
 1. リソース マネージャーのリソース グループを作成します。
 2. Application Gateway の仮想ネットワーク、サブネット、およびパブリック IP を作成します。 API Management 用のサブネットを別途作成します。
@@ -84,7 +84,7 @@ API Management サービスは、内部モードで仮想ネットワーク内�
 このガイドでは、Application Gateway を使用して**開発者ポータル**を外部の対象ユーザーにも公開します。 開発者ポータルのリスナー、プローブ、設定、およびルールを作成するには、追加の手順が必要です。 詳細はすべて、それぞれの手順で示されます。
 
 > [!WARNING]
-> Azure AD またはサード パーティの認証を使用している場合は、Application Gateway で [cookie ベースのセッション アフィニティ](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity)機能を有効にしてください。
+> Azure AD またはサード パーティの認証を使用している場合は、Application Gateway で [cookie ベースのセッション アフィニティ](../application-gateway/features.md#session-affinity)機能を有効にしてください。
 
 > [!WARNING]
 > Application Gateway WAF が開発者ポータルで OpenAPI 仕様のダウンロードを中断しないようにするには、ファイアウォール規則 `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"` を無効にする必要があります。
@@ -363,10 +363,10 @@ Application Gateway の DNS 名を使用して、この DNS 名に対して構�
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-## <a name="summary"> </a> まとめ
+## <a name="summary"></a><a name="summary"> </a> まとめ
 VNET で構成された Azure API Management は、ホスト先がオンプレミスかクラウドかにかかわらず、すべての構成済みの API に単一のゲートウェイ インターフェイスを提供します。 Application Gateway を API Management と統合すると、インターネット上で特定の API に選択的にアクセスできる柔軟性が提供されるほか、API Management インスタンスのフロントエンドとして Web アプリケーション ファイアウォールを利用できるようになります。
 
-## <a name="next-steps"> </a> 次のステップ
+## <a name="next-steps"></a><a name="next-steps"> </a> 次のステップ
 * Azure Application Gateway の詳細を確認する
   * [Application Gateway の概要](../application-gateway/application-gateway-introduction.md)
   * [Application Gateway の Web アプリケーション ファイアウォール](../application-gateway/application-gateway-webapplicationfirewall-overview.md)

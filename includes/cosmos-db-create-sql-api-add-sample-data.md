@@ -9,10 +9,10 @@ ms.date: 08/07/2019
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: f80efbac256871af073354f23317c447d6a85f1e
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70020168"
 ---
 これで、データ エクスプローラーを使用して、新しいコンテナーにデータを追加できます。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 6ce78ca19458b497980cf2cfc374f787d3a5d9f5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 01abcc961d1c2ad9d3e2cf35f82e62929bc2fb89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276992"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371139"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(非推奨) Azure Container Service で Kubernetes Web UI を使用する
 
@@ -29,8 +29,8 @@ ms.locfileid: "76276992"
 
 `az` ツールがインストールされていることを確認するには、次を実行します。
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 `az` ツールをインストールしていないない場合、[ここ](https://github.com/azure/azure-cli#installation)に手順が記載されています。
@@ -38,13 +38,13 @@ $ az --version
 `kubectl` ツールがインストールされていることを確認するには、次を実行します。
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 `kubectl` をインストールしていない場合、次を実行できます。
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="overview"></a>概要
@@ -52,8 +52,8 @@ $ az acs kubernetes install-cli
 ### <a name="connect-to-the-web-ui"></a>Web UI に接続する
 Kubernetes Web UI を起動するには、次を実行できます。
 
-```console
-$ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
+```azurecli
+az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
 これにより、お使いのローカル コンピューターと Kubernetes Web UI を接続する Secure プロキシと対話するように構成された Web ブラウザーが開きます。

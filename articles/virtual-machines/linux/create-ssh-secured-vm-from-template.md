@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.openlocfilehash: 581eadc60835b758f67ae616d4413800f1d6d718
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969523"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Linux 仮想マシンを作成する方法

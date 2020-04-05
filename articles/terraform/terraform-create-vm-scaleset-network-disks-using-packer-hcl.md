@@ -4,10 +4,10 @@ description: Terraform を使用して、Packer で生成されたカスタム �
 ms.topic: tutorial
 ms.date: 11/07/2019
 ms.openlocfilehash: 92a8221d625f8b6b73343f74b85fdfcf5e578b23
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77472208"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>チュートリアル:Terraform を使用して Packer カスタム イメージから Azure 仮想マシン スケール セットを作成する

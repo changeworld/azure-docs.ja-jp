@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: dapine
 ms.openlocfilehash: bfbaa03469ee04ff900a215aadd8c814efcba761
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79037532"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose を使用して複数のコンテナーをデプロイする
@@ -172,7 +172,7 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-containers"></a>テスト コンテナー
 
-ホスト コンピューター上でブラウザーを開き、 http://localhost:5021/swagger/index.html のように、*docker-compose.yaml* ファイルで指定されたポートを使用して **localhost** にアクセスします。 たとえば、API の **[使ってみる]** 機能を使用して、Form Recognizer エンドポイントをテストできます。 両方のコンテナーの swagger ページを使用およびテストできます。
+ホスト コンピューター上でブラウザーを開き、 **のように、** docker-compose.yaml*ファイルで指定されたポートを使用して*localhost http://localhost:5021/swagger/index.html にアクセスします。 たとえば、API の **[使ってみる]** 機能を使用して、Form Recognizer エンドポイントをテストできます。 両方のコンテナーの swagger ページを使用およびテストできます。
 
 ![Form Recognizer コンテナー](media/form-recognizer-swagger-page.png)
 

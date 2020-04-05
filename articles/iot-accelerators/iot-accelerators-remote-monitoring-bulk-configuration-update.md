@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
 ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77565580"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>チュートリアル:接続されたデバイスを一括管理する

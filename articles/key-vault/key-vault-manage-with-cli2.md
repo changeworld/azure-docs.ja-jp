@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 642cc42a9853fe0a93a40ca65652b6dc5fcd8d40
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: f69b65ece09a63c7a1d9e23d5cd488d9659724ad
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195279"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79457425"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLI を使用して Key Vault を管理します。 
 
@@ -219,7 +219,7 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --secret-permissions get
 ```
 
-## <a name="bkmk_KVperCLI"></a> キー コンテナーの高度なアクセス ポリシーを設定する
+## <a name="setting-key-vault-advanced-access-policies"></a><a name="bkmk_KVperCLI"></a> キー コンテナーの高度なアクセス ポリシーを設定する
 
 [az keyvault update](/cli/azure/keyvault#az-keyvault-update) を使用し、キー コンテナーの高度なポリシーを有効にします。
 
@@ -237,9 +237,9 @@ Key Vault のディスク暗号化を有効にする: Azure Disk Encryption に�
 
 Key Vault のテンプレートのデプロイを有効にする: Resource Manager がコンテナーからシークレットを取得することを許可します。
 
-```azurecli 
- az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-template-deployment "true"
- ```
+```azurecli
+az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-template-deployment "true"
+```
 
 ## <a name="working-with-hardware-security-modules-hsms"></a>ハードウェア セキュリティ モジュール (HSM) を使用する
 
@@ -265,7 +265,7 @@ az keyvault key create --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSM
 az keyvault key import --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --pem-file "/.softkey.pem" --protection "hsm" --pem-password "PaSSWORD"
 ```
 
-次のコマンドは、“bring your own key" (BYOK) パッケージをインポートします。 これを使用すると、ローカルの HSM でキーを生成し、これを Key Vault サービスで HSM に転送でき、キーは HSM の境界内から出ることはありません。
+次のコマンドは、"bring your own key" (BYOK) パッケージをインポートします。 これを使用すると、ローカルの HSM でキーを生成し、これを Key Vault サービスで HSM に転送でき、キーは HSM の境界内から出ることはありません。
 
 ```azurecli
 az keyvault key import --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --byok-file "./ITByok.byok" --protection "hsm"

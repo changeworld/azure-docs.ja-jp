@@ -8,10 +8,10 @@ ms.date: 06/17/2019
 ms.author: barclayn
 ms.custom: security-recommendations
 ms.openlocfilehash: e3f901fd78436b42729607d38f0ddb533f31cd30
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74684124"
 ---
 # <a name="security-recommendations-for-app-service"></a>App Service のセキュリティに関する推奨事項
@@ -58,6 +58,6 @@ ms.locfileid: "74684124"
 |-|-|
 |Azure Security Center Standard レベルを使用する | [Azure Security Center](../security-center/security-center-app-services.md) は、Azure App Service とネイティブに統合されています。 これにより、評価が実行され、セキュリティに関する推奨事項が提供されます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリケーション プロバイダーに追加のセキュリティ要件があるかどうかを確認する。 セキュリティで保護されたアプリケーションの開発の詳細については、[セキュリティで保護された開発に関するドキュメント](../security/fundamentals/abstract-develop-secure-apps.md)を参照してください。

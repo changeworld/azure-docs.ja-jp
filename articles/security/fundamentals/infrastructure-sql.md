@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78942963"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database のセキュリティ機能    

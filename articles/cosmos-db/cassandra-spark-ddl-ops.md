@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: c0df05eff5dc84ef24e1ed5afcaf705d99f447ef
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77622572"
 ---
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Spark からの Azure Cosmos DB Cassandra API での DDL 操作

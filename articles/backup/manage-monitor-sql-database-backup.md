@@ -4,10 +4,10 @@ description: この記事では、Azure VM 上で実行されている SQL Serve
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 4daf068e97a08d1a611ef64cb64569cacd5d7420
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74172155"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
@@ -38,7 +38,7 @@ Azure Backup では、 **[バックアップ ジョブ]** ポータルに、手�
 
 データベース バックアップ アラートを監視するには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. コンテナー ダッシュボードで、 **[アラートとイベント]** を選択します。
 
@@ -166,6 +166,6 @@ VM のワークロード拡張が何らかの理由で影響を受けること�
 
 このオプションは慎重に使用する必要があります。正常な拡張の VM 上でこの操作がトリガーされると、拡張が再起動します。 その結果、進行中のジョブがすべて失敗することがあります。 再登録操作をトリガーする前に、[こちらの兆候](backup-sql-server-azure-troubleshoot.md#re-registration-failures)がないか確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[SQL Server データベースのバックアップのトラブルシューティング](backup-sql-server-azure-troubleshoot.md)に関するページを参照してください。

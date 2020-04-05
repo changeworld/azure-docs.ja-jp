@@ -12,11 +12,11 @@ author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2f62be94c901b383e34608508baa87ea37c893af
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77580718"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237047"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK で機械学習パイプラインを作成して管理する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -174,7 +174,7 @@ else:
     print(compute_target.status.serialize())
 ```
 
-### <a id="databricks"></a>Azure Databricks
+### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
 Azure Databricks は、Azure クラウド内の Apache Spark ベースの環境です。 これは、Azure Machine Learning パイプラインでコンピューティング先として使用できます。
 
@@ -227,7 +227,7 @@ except ComputeTargetException:
 
 詳細な例については、GitHub の[サンプル ノートブック](https://aka.ms/pl-databricks)を参照してください。
 
-### <a id="adla"></a>Azure Data Lake Analytics
+### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
 
 Azure Data Lake Analytics は、Azure クラウド内のビッグ データ分析プラットフォームです。 これは、Azure Machine Learning パイプラインでコンピューティング先として使用できます。
 
@@ -280,7 +280,7 @@ except ComputeTargetException:
 > [!TIP]
 > Azure Machine Learning パイプラインは、Data Lake Analytics アカウントの既定のデータ ストアに格納されたデータのみ使用できます。 使用する必要があるデータが既定以外のストアにある場合は、[`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) を使用して、トレーニングの前にデータをコピーできます。
 
-## <a id="steps"></a>パイプラインのステップを構築する
+## <a name="construct-your-pipeline-steps"></a><a id="steps"></a>パイプラインのステップを構築する
 
 コンピューティング先を作成してワークスペースにアタッチした後は、パイプラインのステップを定義できます。 Azure Machine Learning SDK では、多くの組み込みステップを使用できます。 最も基本的なステップは、指定したコンピューティング先で Python スクリプトを実行する [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) です。
 

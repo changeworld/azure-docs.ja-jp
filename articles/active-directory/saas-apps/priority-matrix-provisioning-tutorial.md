@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/08/2019
 ms.author: Zhchia
 ms.openlocfilehash: 80ffaba6713027d216958e0be2cd4ae35a8d2d70
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063443"
 ---
 # <a name="tutorial-configure-priority-matrix-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Priority Matrix を構成する

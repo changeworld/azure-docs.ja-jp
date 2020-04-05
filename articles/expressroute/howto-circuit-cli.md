@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 75729811b63e8de3047e45e9b90f5fa3ec657901
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b967e1d8751a9c6a5214fef5241d57e954ad9f17
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083232"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476153"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線の作成と変更
 
@@ -33,13 +33,13 @@ ms.locfileid: "74083232"
 * 開始する前に、最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」および「[Azure CLI を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
 
-## <a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
 
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.Azure アカウントにサインインしてサブスクリプションを選択する
 
 構成を始めるには、Azure アカウントにサインインします。 CloudShell の "試用版" を使用している場合は、自動的にサインインします。 接続については、次の例を参照してください。
 
-```azurecli
+```azurecli-interactive
 az login
 ```
 
@@ -65,7 +65,7 @@ az network express-route list-service-providers
 
 応答は次の例のようになります。
 
-```azurecli
+```output
 [
   {
     "bandwidthsOffered": [
@@ -163,7 +163,7 @@ az network express-route list
 
 サービス キーは、応答の *ServiceKey* フィールドに一覧表示されます。
 
-```azurecli
+```output
 "allowClassicOperations": false,
 "authorizations": [],
 "circuitProvisioningState": "Enabled",
@@ -204,21 +204,21 @@ az network express-route list -h
 
 新しい ExpressRoute 回線を作成する場合、この回線は次の状態になります。
 
-```azurecli-interactive
+```output
 "serviceProviderProvisioningState": "NotProvisioned"
 "circuitProvisioningState": "Enabled"
 ```
 
 回線は、接続プロバイダーが有効にしている間、次の状態に変化します。
 
-```azurecli-interactive
+```output
 "serviceProviderProvisioningState": "Provisioning"
 "circuitProvisioningState": "Enabled"
 ```
 
 ExpressRoute 回線をユーザーが使用できるように、次の状態にする必要があります。
 
-```azurecli-interactive
+```output
 "serviceProviderProvisioningState": "Provisioned"
 "circuitProvisioningState": "Enabled
 ```
@@ -233,7 +233,7 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 
 応答は次の例のようになります。
 
-```azurecli
+```output
 "allowClassicOperations": false,
 "authorizations": [],
 "circuitProvisioningState": "Enabled",
@@ -275,7 +275,7 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 
 次に、ExpressRoute 回線に仮想ネットワークをリンクします。 [ExpressRoute 回線への仮想ネットワークのリンク](howto-linkvnet-cli.md)に関する記事を参照してください。
 
-## <a name="modify"></a>ExpressRoute 回線の変更
+## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>ExpressRoute 回線の変更
 
 ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。 次の変更は、ダウンタイムなしで行うことができます。
 
@@ -345,7 +345,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](expressroute-howto-move-arm.md)」の説明を参照してください。
 
-## <a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
 
 ExpressRoute 回線のプロビジョニングを解除して削除する場合は必ず、次の条件を把握しておいてください。
 
@@ -359,7 +359,7 @@ ExpressRoute 回線は、次のコマンドを実行して削除できます。
 az network express-route delete  -n MyCircuit -g ExpressRouteResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 回線を作成したら、次の作業を必ず実行します。
 

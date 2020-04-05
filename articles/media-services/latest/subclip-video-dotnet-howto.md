@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
 ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67304781"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Media Services を使用してエンコードを実行する際にビデオをサブクリップする - .NET
@@ -89,6 +89,6 @@ private static async Task<Job> JobWithBuiltInStandardEncoderWithSingleClipAsync(
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [カスタム変換を使用してエンコードする方法](customize-encoder-presets-how-to.md) 

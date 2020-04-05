@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6df593909c3ae5962e413eb84e64196fade0326b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74022150"
 ---
 # <a name="multi-factor-authentication-and-privileged-identity-management"></a>多要素認証と Privileged Identity Management
@@ -38,7 +38,7 @@ ms.locfileid: "74022150"
 
 また、ユーザーをオンプレミスで認証する場合は、ID プロバイダーで多要素認証を行うようにすることができます。 たとえば、Azure AD にアクセスする前にスマートカード ベースの認証を要求するように AD フェデレーション サービスを構成した場合は、「 [Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護](../authentication/howto-mfa-adfs.md) 」の手順に従って、Azure AD に要求を送信するように AD FS を構成します。 ユーザーがロールをアクティブ化しようとしたとき、Privileged Identity Management は、適切な要求を受信した後で、ユーザーに対して多要素認証が検証済みであることを受け入れます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure AD ロールの設定を構成する](pim-how-to-change-default-settings.md)
 - [Privileged Identity Management で Azure リソース ロールの設定を構成する](pim-resource-roles-configure-role-settings.md)

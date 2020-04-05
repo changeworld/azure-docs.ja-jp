@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: b23c210d7c8a9f1d42e6e1b46e0f7f81bda857b2
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77916084"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>PowerShell を使用した計画メンテナンスの処理
@@ -29,7 +29,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 
 MaintenanceRedeployStatus では、次のプロパティが返されます。 
 
-| Value | 説明   |
+| 値 | 説明   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 |
 | PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 |

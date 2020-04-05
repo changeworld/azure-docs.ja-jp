@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: 12c255f0e4ed11ce8acbd762530604218f8bc12b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448739"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Bing Custom Search API とは

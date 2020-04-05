@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
 ms.openlocfilehash: 1b38b8508dbe17d42bf191149410f5db638cf834
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76261621"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する

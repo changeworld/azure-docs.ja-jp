@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: b237f710866ad3960dd65902c0789228d8c391bc
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062321"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>アプリにアカウントを手動で追加する

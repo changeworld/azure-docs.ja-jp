@@ -244,7 +244,7 @@
       href: ./how-to/configure-for-blueprint-operator.md
     - name: ブループリントをコードとして管理する (コミュニティ)
       href: 'https://github.com/Azure/azure-blueprints/blob/master/README.md'
-- name: トラブルシューティング
+- name: '[トラブルシューティング]'
   displayName: 'errors, violation'
   href: ./troubleshoot/general.md
 - name: リファレンス

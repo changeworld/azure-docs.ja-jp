@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 4ba37ea99ddc0903e1febd53f8d8fbd84b417b87
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: aa2d75173b14e768a207336b54b3dc10a8c3ea5c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201409"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235160"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
@@ -86,7 +86,7 @@ vNet2Id=$(az network vnet show \
   --out tsv)
 ```
 
-[az network vnet peering create](/cli/azure/network/vnet/peering) を使用して、*myVirtualNetwork1* から *myVirtualNetwork2* へのピアリングを作成します。 `--allow-vnet-access` パラメーターが指定されていない場合、ピアリングは確立されますが、通信を行うことはできません。
+*az network vnet peering create* を使用して、*myVirtualNetwork1* から [myVirtualNetwork2](/cli/azure/network/vnet/peering) へのピアリングを作成します。 `--allow-vnet-access` パラメーターが指定されていない場合、ピアリングは確立されますが、通信を行うことはできません。
 
 ```azurecli-interactive
 az network vnet peering create \
@@ -108,7 +108,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-前のコマンドの実行後に返された出力では、**peeringState** が *Connected* です。 Azure によって、*myVirtualNetwork1-myVirtualNetwork2* ピアリングのピアリング状態も *Connected* に変更されました。 [az network vnet peering show](/cli/azure/network/vnet/peering) を使用して、*myVirtualNetwork1-myVirtualNetwork2* ピアリングのピアリング状態が *Connected* に変更されたことを確認します。
+前のコマンドの実行後に返された出力では、**peeringState** が *Connected* です。 Azure によって、*myVirtualNetwork1-myVirtualNetwork2* ピアリングのピアリング状態も *Connected* に変更されました。 *az network vnet peering show* を使用して、*myVirtualNetwork1-myVirtualNetwork2* ピアリングのピアリング状態が [Connected](/cli/azure/network/vnet/peering) に変更されたことを確認します。
 
 ```azurecli-interactive
 az network vnet peering show \
@@ -143,7 +143,7 @@ az vm create \
 
 *myVirtualNetwork2* 仮想ネットワーク内に VM を作成します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVm2 \
@@ -155,7 +155,7 @@ az vm create \
 
 VM の作成には数分かかります。 VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm2",
@@ -174,13 +174,13 @@ VM の作成には数分かかります。 VM が作成されると、Azure CLI 
 
 次のコマンドを使用して、*myVm2* VM との SSH セッションを作成します。 `<publicIpAddress>` を VM のパブリック IP アドレスに置き換えます。 前の例では、パブリック IP アドレスは *13.90.242.231* です。
 
-```bash 
+```bash
 ssh <publicIpAddress>
 ```
 
 *myVirtualNetwork1* 内の VM に対して ping を実行します。
 
-```bash 
+```bash
 ping 10.0.0.4 -c 4
 ```
 
@@ -192,7 +192,7 @@ ping 10.0.0.4 -c 4
 
 不要になったら、[az group delete](/cli/azure/group) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 

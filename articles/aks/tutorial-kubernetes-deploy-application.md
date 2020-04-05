@@ -6,13 +6,13 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: 3b614fcb6692f35884af2fc4e19210267ab8ab04
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77593276"
 ---
-# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの実行
+# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの実行
 
 Kubernetes には、コンテナー化されたアプリケーション用の分散プラットフォームが用意されています。 独自のアプリケーションとサービスをビルドして Kubernetes クラスターにデプロイし、クラスターで可用性と接続性を管理できるようにします。 このチュートリアル (4/7) では、サンプル アプリケーションを Kubernetes クラスターにデプロイします。 学習内容は次のとおりです。
 

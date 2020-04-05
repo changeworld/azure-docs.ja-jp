@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: ea8254f108aed9d40e6970a27409035b1e10ab41
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74807002"
 ---
 # <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>.NET での BLOB ストレージの要求時にカスタマー指定のキーを指定する
@@ -72,7 +72,7 @@ async static Task UploadBlobWithClientKey(string accountName, string containerNa
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [保存データに対する Azure Storage 暗号化](../common/storage-service-encryption.md)
 - [Azure Active Directory と Azure リソースのマネージド ID を使用して BLOB およびキューへのアクセスを承認する](../common/storage-auth-aad-msi.md)

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
 ms.openlocfilehash: 6e066d28afc4b0959b15284378cde682fbc05615
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190477"
 ---
 # <a name="plan-virtual-networks"></a>仮想ネットワークを計画する

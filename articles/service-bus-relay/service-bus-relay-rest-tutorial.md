@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 229ed2b00582f2c73ce68c47406d68325abda736
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73718838"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>チュートリアル:Azure WCF Relay REST のチュートリアル
@@ -634,7 +634,7 @@ namespace Microsoft.ServiceBus.Samples
 1. コマンド プロンプトのアドレスをコピーし、ブラウザーに貼り付けて画像を確認します。
 1. 操作が完了したら、コマンド プロンプト ウィンドウで Enter キーを押してアプリを終了します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、Azure Relay サービスを使用するアプリケーションを構築しました。詳細については、次の記事を参照してください。
 

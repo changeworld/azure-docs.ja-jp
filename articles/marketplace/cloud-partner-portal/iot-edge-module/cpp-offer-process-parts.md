@@ -1,19 +1,18 @@
 ---
 title: Azure IoT Edge モジュール オファー発行の概要 | Azure Marketplace
 description: Azure Marketplace に IoT Edge モジュール オファーを発行するプロセスの概要です。
-services: Azure, Marketplace, Cloud Partner Portal
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: pabutler
-ms.openlocfilehash: 97df9a61d15e0d90e81f42cef327aea23873ffa0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 6b44d9fd0bdd6e4b41013373472b5882a7ca1434
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814319"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286593"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>IoT Edge モジュール オファー発行の概要
 
@@ -40,6 +39,6 @@ IoT Edge モジュール オファーを発行する手順の概要は次のと�
 - [IoT Edge モジュール プランの作成](./cpp-create-offer.md) <br>この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com)を使用して新しい IoT Edge モジュール オファー エントリを作成するために必要な手順を示します。
 - [IoT Edge モジュール プランの公開](./cpp-publish-offer.md)<br> この記事では、Azure Marketplace に発行するためにオファーを送信する方法について説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Microsoft Azure Marketplace に IoT Edge モジュールを発行するための[技術的およびビジネス的な要件](./cpp-prerequisites.md)を確認してください。

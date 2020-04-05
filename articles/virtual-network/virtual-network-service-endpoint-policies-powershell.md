@@ -18,17 +18,17 @@ ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
 ms.openlocfilehash: 673431e2ddfc9a641bb1c640891daac79350cb3a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78253164"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>Azure PowerShell を使って仮想ネットワーク サービス エンドポイント ポリシーで Azure Storage アカウントへのデータの流出を管理する
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-仮想ネットワーク サービス エンドポイント ポリシーを使用すると、サービス エンドポイント経由で仮想ネットワーク内から Azure Storage アカウントにアクセス制御を適用できます。 これは、ワークロードのセキュリティ保護のために必要であり、許可されるストレージ アカウントと、どのようなデータ流出が許可されるかが管理されます。
+仮想ネットワーク サービス エンドポイント ポリシーを使用すると、サービス エンドポイント経由で仮想ネットワーク内から Azure Storage アカウントにアクセス制御を適用できます。 これは、ワークロードのセキュリティ保護のために必要であり、どのストレージ アカウントが許可され、どのようなデータ流出が許可されるかが管理されます。
 この記事では、次のことについて説明します。
 
 * 仮想ネットワークを作成します。

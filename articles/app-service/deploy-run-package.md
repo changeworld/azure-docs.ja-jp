@@ -3,11 +3,11 @@ title: ZIP パッケージからアプリを実行する
 description: アトミック性を備えたアプリの ZIP パッケージをデプロイします。 ZIP デプロイ プロセス中のアプリの動作の予測可能性と信頼性を向上させます。
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 316ada7700a5cf45ee90f515336039702bab48c0
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920724"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>ZIP パッケージから Azure App Service のアプリを直接実行する
@@ -62,33 +62,6 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 ```
 
 更新されたパッケージを同じ名前で Blob Storage に発行する場合は、更新されたパッケージが App Service に読み込まれるように、アプリを再起動する必要があります。
-
-### <a name="use-key-vault-references"></a>Key Vault 参照を使用する
-
-セキュリティを強化するために、外部 URL と共に Key Vault 参照を使用できます。 これにより、URL は保存時に暗号化され、Key Vault を利用してシークレットの管理とローテーションを行うことができます。 関連する SAS キーを簡単にローテーションできるように、Azure Blob Storage を使用することをお勧めします。 Azure Blob Storage は保存時に暗号化されます。これにより、App Service にデプロイされていない場合でもアプリケーションのデータを安全に保つことができます。
-
-1. Azure Key Vault を作成します。
-
-    ```azurecli
-    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
-    ```
-
-1. Key Vault に、外部 URL をシークレットとして追加します。
-
-    ```azurecli
-    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
-    ```
-
-1. `WEBSITE_RUN_FROM_PACKAGE` アプリ設定を作成し、その値を外部 URL への Key Vault 参照として設定します。
-
-    ```azurecli
-    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
-    ```
-
-詳細については、次に関する記事を参照してください。
-
-- [App Service の Key Vault 参照](app-service-key-vault-references.md)
-- [保存データに対する Azure Storage 暗号化](../storage/common/storage-service-encryption.md)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

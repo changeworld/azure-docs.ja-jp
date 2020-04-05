@@ -6,13 +6,13 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75372688"
 ---
-# <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>クイック スタート:Service Fabric への Linux コンテナーのデプロイ
+# <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>クイック スタート: Service Fabric に Linux コンテナーをデプロイする
 
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。
 
@@ -179,9 +179,9 @@ az group delete --name $ResourceGroupName
 ```
 
 クラスターの操作が完了したら、証明書ストアから証明書を削除できます。 次に例を示します。
-- Windows の場合:[証明書 MMC スナップイン](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)を使用します。 スナップインの追加時に **[ユーザー アカウント]** を選択してください。 `Certificates - Current User\Personal\Certificates` に移動して、証明書を削除します。
-- Mac の場合:キーチェーン アプリを使用します。
-- Ubuntu の場合:証明書の表示に使用される手順に従ってから、証明書を削除します。
+- Windows の場合: [証明書 MMC スナップイン](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)を使用します。 スナップインの追加時に **[ユーザー アカウント]** を選択してください。 `Certificates - Current User\Personal\Certificates` に移動して、証明書を削除します。
+- Mac の場合: キーチェーン アプリを使用します。
+- Ubuntu の場合: 証明書の表示に使用される手順に従ってから、証明書を削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

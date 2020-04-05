@@ -16,10 +16,10 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: f67be1d31125b21048deca4d9cafcc76f4ffc3b1
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72516744"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Dedicated の概要
@@ -57,7 +57,7 @@ Event Hubs Dedicated オファリングは固定の月額料金で課金され�
 | Event Hubs |  名前空間あたり 10 | 名前空間あたり 1,000 |
 | イングレス イベント | 100 万イベントごとの課金 | Included |
 | メッセージ サイズ | 100 万バイト | 100 万バイト |
-| パーティション | イベント ハブあたり 32 | イベント ハブあたり 1024 |
+| [メジャー グループ] | イベント ハブあたり 32 | イベント ハブあたり 1024 |
 | コンシューマー グループ | イベント ハブあたり 20 | CU あたりの制限なし、イベント ハブあたり 1,000 |
 | 仲介型接続 | 1,000 (付属)、最大 5,000 | 100,000 (付属、最大) |
 | メッセージのリテンション期間 | 7 日、TU あたり 84 GB を含む | 90 日、CU あたり 10 TB を含む |
@@ -65,7 +65,7 @@ Event Hubs Dedicated オファリングは固定の月額料金で課金され�
 
 ## <a name="how-to-onboard"></a>利用を開始する方法
 
-[Azure portal](https://aka.ms/eventhubsclusterquickstart) を使用して [Event Hubs クラスター](event-hubs-dedicated-cluster-create-portal.md)を作成するセルフサービス エクスペリエンスは、プレビュー段階になりました。 不明な点がある場合や、Event Hubs Dedicated へのオンボードについてサポートが必要な場合は、[Event Hubs チーム](mailto:askeventhubs@microsoft.com)にお問い合わせください。
+[Azure portal](event-hubs-dedicated-cluster-create-portal.md) を使用して [Event Hubs クラスター](https://aka.ms/eventhubsclusterquickstart)を作成するセルフサービス エクスペリエンスは、プレビュー段階になりました。 不明な点がある場合や、Event Hubs Dedicated へのオンボードについてサポートが必要な場合は、[Event Hubs チーム](mailto:askeventhubs@microsoft.com)にお問い合わせください。
 
 ## <a name="faqs"></a>FAQ
 
@@ -89,7 +89,7 @@ Event Hubs クラスターの場合、どれだけの容量を取り込んでス
 
 #### <a name="can-i-scale-updown-my-cluster"></a>クラスターをスケールアップ/ダウンできますか?
 
-作成後、クラスターは 4 時間以上の使用に対して課金されます。 セルフサービス エクスペリエンスのプレビュー リリースでは、 *[技術] > [クォータ] > [Request to Scale Up or Scale Down Dedicated Cluster]\(Dedicated Cluster のスケールアップまたはスケールダウンを要求する\)* でクラスターをスケールアップまたはスケールダウンする[サポート リクエスト](https://ms.portal.azure.com/#create/Microsoft.Support)を Event Hubs チームに送ることができます。 クラスターのスケールダウンが要求するまで、最大で 7 日かかる場合があります。 
+作成後、クラスターは 4 時間以上の使用に対して課金されます。 セルフサービス エクスペリエンスのプレビュー リリースでは、[[技術] > [クォータ] > [Request to Scale Up or Scale Down Dedicated Cluster]\(Dedicated Cluster のスケールアップまたはスケールダウンを要求する\)](https://ms.portal.azure.com/#create/Microsoft.Support) でクラスターをスケールアップまたはスケールダウンする*サポート リクエスト*を Event Hubs チームに送ることができます。 クラスターのスケールダウンが要求するまで、最大で 7 日かかる場合があります。 
 
 #### <a name="how-will-geo-dr-work-with-my-cluster"></a>クラスターでは geo DR はどのようにどうしますか?
 
@@ -98,7 +98,7 @@ Dedicated レベルのクラスターの名前空間を、Dedicated レベルの
 #### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Standard の名前空間を Dedicated レベルのクラスターに属するように移行できますか?
 Standard 名前空間から Dedicated 名前空間にイベント ハブ データを移行する自動移行プロセスを、現在はサポートされていません。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Event Hubs Dedicated の詳細については、Microsoft の営業担当者または Microsoft サポートにお問い合わせください。 次のリンク先で、クラスターを作成することや、Event Hubs の価格レベルの詳細を確認することもできます。
 

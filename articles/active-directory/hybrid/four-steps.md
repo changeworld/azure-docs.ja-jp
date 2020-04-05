@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3eb98f543e17981be0d5b9ab08fa4e146659b47
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74206791"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) のハイブリッド ID ソリューション
 
 ### <a name="make-apps-available-to-your-users-seamlessly"></a>ユーザーがアプリをシームレスに使用できるようにする
 
-Azure AD を使用すると、管理者は [Azure portal](https://portal.azure.com/) のエンタープライズ アプリケーション ギャラリーに[アプリケーションを追加](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal)できます。 エンタープライズ アプリケーション ギャラリーにアプリケーションを追加すると、Azure AD を ID プロバイダーとして使用するようにアプリケーションを構成することが容易になります。 また、条件付きアクセス ポリシーを使ってアプリケーションへのユーザー アクセスを管理したり、ユーザーがパスワードを繰り返し入力することなく、自動的にオンプレミスとクラウドベースのアプリケーションにサインインするようにアプリケーションへのシングル サインオン (SSO) を構成したりすることもできます。
+Azure AD を使用すると、管理者は [Azure portal](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal) のエンタープライズ アプリケーション ギャラリーに[アプリケーションを追加](https://portal.azure.com/)できます。 エンタープライズ アプリケーション ギャラリーにアプリケーションを追加すると、Azure AD を ID プロバイダーとして使用するようにアプリケーションを構成することが容易になります。 また、条件付きアクセス ポリシーを使ってアプリケーションへのユーザー アクセスを管理したり、ユーザーがパスワードを繰り返し入力することなく、自動的にオンプレミスとクラウドベースのアプリケーションにサインインするようにアプリケーションへのシングル サインオン (SSO) を構成したりすることもできます。
 
 アプリケーションが Azure AD ギャラリーに追加されると、ユーザーは自分に割り当てられたアプリを表示し、必要に応じて他のアプリを検索して要求することができます。 Azure AD には、ユーザーが自分のアプリにアクセスするための[いくつかの方法](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)が用意されています。
 
@@ -121,7 +121,7 @@ PHS または PTA のどちらを選択する場合も、[シームレス シン
 
 ### <a name="enable-automatic-deprovisioning-of-accounts"></a>アカウントの自動プロビジョニング解除を有効にする
 
-アプリケーションへの自動プロビジョニングとプロビジョニング解除を有効にすることは、複数のシステムにわたって ID のライフサイクルを管理するための最良の戦略です。 Azure AD では、[SCIM 2.0 プロトコル](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)を実装する ServiceNow や Salesforce などの人気のあるさまざまな SaaS アプリケーションやその他のアプリケーションに対するユーザー アカウントの[自動化されたポリシー ベースのプロビジョニングとプロビジョニング解除](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)をサポートしています。 カスタム コードや CSV ファイルの手動アップロードを必要とする従来のプロビジョニング ソリューションとは異なり、プロビジョニング サービスはクラウドでホストされ、Azure portal を使ってセットアップおよび管理できる事前統合されたコネクターを使用します。 自動プロビジョニング解除の主な利点は、ユーザーが組織を離れるときに、主要な SaaS アプリからその ID を即座に削除することにより、組織の安全を確保できることです。
+アプリケーションへの自動プロビジョニングとプロビジョニング解除を有効にすることは、複数のシステムにわたって ID のライフサイクルを管理するための最良の戦略です。 Azure AD では、[SCIM 2.0 プロトコル](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)を実装する ServiceNow や Salesforce などの人気のあるさまざまな SaaS アプリケーションやその他のアプリケーションに対するユーザー アカウントの[自動化されたポリシー ベースのプロビジョニングとプロビジョニング解除](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)をサポートしています。 カスタム コードや CSV ファイルの手動アップロードを必要とする従来のプロビジョニング ソリューションとは異なり、プロビジョニング サービスはクラウドでホストされ、Azure portal を使ってセットアップおよび管理できる事前統合されたコネクターを使用します。 自動プロビジョニング解除の主な利点は、ユーザーが組織を離れるときに、主要な SaaS アプリからその ID を即座に削除することにより、組織の安全を確保できることです。
 
 自動ユーザー アカウント プロビジョニングの詳細とそのしくみについては、「 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)」を参照してください。
 
@@ -131,9 +131,9 @@ PHS または PTA のどちらを選択する場合も、[シームレス シン
 
 このセクションでは、警戒を怠らない状態を保ちつつ、ユーザーに権限を与えることで組織の負担を取り除くための推奨事項を示します。
 
-### <a name="enable-self-service-password-reset-for-all-users"></a>すべてのユーザーに対してセルフ サービスによるパスワードのリセットを有効にする
+### <a name="enable-self-service-password-reset-for-all-users"></a>すべてのユーザーに対してセルフサービス パスワード リセットを有効にする
 
-Azure の[セルフサービスによるパスワードのリセット](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR) では、IT 管理者は簡単に、ユーザーが管理者の手を借りずにパスワードやアカウントのリセットまたはロック解除を行えるようにできます。 このシステムには、ユーザーがいつシステムにアクセスしたかを追跡する詳細なレポートと、誤用または悪用について警告する通知が用意されています。
+Azure の[セルフサービス パスワード リセット ](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) (SSPR) では、IT 管理者は簡単に、ユーザーが管理者の手を借りずにパスワードやアカウントのリセットまたはロック解除を行えるようにできます。 このシステムには、ユーザーがいつシステムにアクセスしたかを追跡する詳細なレポートと、誤用または悪用について警告する通知が用意されています。
 
 既定では、Azure AD はパスワード リセットを実行するときにアカウントをロック解除します。 ただし、Azure AD Connect の[オンプレミスの統合](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#on-premises-integration)を有効にすると、それらの 2 つの操作を分離することもでき、ユーザーはパスワードをリセットせずにアカウントをロック解除できるようになります。
 
@@ -196,7 +196,7 @@ SIEM ソリューションを持たない組織は、Azure AD 用の [Power BI �
 
 ### <a name="understand-your-support-call-drivers"></a>サポート コールの原因を理解する
 
-この記事で説明されているようにハイブリッド ID ソリューションを実装すると、最終的にサポート コールが減少することに気付くはずです。 パスワードを忘れた場合やアカウントのロックアウトなどの一般的な問題は、Azure のセルフサービスによるパスワードのリセットを実装することで軽減されます。また、アプリケーションのセルフサービス アクセスを有効にすることで、ユーザーは、IT スタッフに頼らずにアプリケーションへのアクセスを自分で検出して要求できます。
+この記事で説明されているようにハイブリッド ID ソリューションを実装すると、最終的にサポート コールが減少することに気付くはずです。 パスワードを忘れた場合やアカウントのロックアウトなどの一般的な問題は、Azure のセルフサービス パスワード リセット を実装することで軽減されます。また、アプリケーションのセルフサービス アクセスを有効にすることで、ユーザーは、IT スタッフに頼らずにアプリケーションへのアクセスを自分で検出して要求できます。
 
 サポート コール数の減少が見られない場合は、SSPR またはアプリケーションのセルフサービス アクセスが正しく構成されているかどうか、または体系的に対応できる他の新しい問題があるかどうかを確認して、サポート コールの原因を分析することをお勧めします。
 
@@ -229,7 +229,7 @@ SIEM ソリューションを持たない組織は、Azure AD 用の [Power BI �
 
 ### <a name="today"></a>本日
 
-|サインアップできましたか?|Item|
+|サインアップできましたか?|アイテム|
 |:-|:-|
 ||セルフサービスによるパスワードのリセット (SSPR) をグループでパイロット運用する|
 ||Azure AD Connect Health を使用してハイブリッド コンポーネントを監視する|
@@ -239,7 +239,7 @@ SIEM ソリューションを持たない組織は、Azure AD 用の [Power BI �
 
 ### <a name="next-two-weeks"></a>今後 2 週間
 
-|サインアップできましたか?|Item|
+|サインアップできましたか?|アイテム|
 |:-|:-|
 ||ユーザーがアプリを使用できるようにする|
 ||選択した SaaS アプリで Azure AD プロビジョニングをパイロット運用する|
@@ -249,7 +249,7 @@ SIEM ソリューションを持たない組織は、Azure AD 用の [Power BI �
 
 ### <a name="next-month"></a>翌月
 
-|サインアップできましたか?|Item|
+|サインアップできましたか?|アイテム|
 |:-|:-|
 ||分析情報を活用するためにアプリの使用状況を監視する|
 ||アプリへの安全なリモート アクセスをパイロット運用する|
@@ -258,14 +258,14 @@ SIEM ソリューションを持たない組織は、Azure AD 用の [Power BI �
 
 ### <a name="next-three-months"></a>今後 3 か月間
 
-|サインアップできましたか?|Item|
+|サインアップできましたか?|アイテム|
 |:-|:-|
 ||セルフサービスのアプリ管理を有効にする|
 ||セルフサービスのグループ管理を有効にする|
 ||分析情報を活用するためにアプリの使用状況を監視する|
 ||サポート コールの原因を理解する|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Active Directory の機能とこの 5 ステップのチェックリストを使ってセキュリティ体制を向上させる方法について学習します - 「[ID インフラストラクチャをセキュリティ保護する 5 つのステップ](https://aka.ms/securitysteps)」。
 

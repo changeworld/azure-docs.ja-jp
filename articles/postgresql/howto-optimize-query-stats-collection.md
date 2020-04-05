@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: f467f01118470eb51f7decf3bd6457917c566723
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74770171"
 ---
 # <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server のクエリ統計コレクションを最適化する
@@ -34,8 +34,8 @@ ms.locfileid: "74770171"
 ## <a name="use-the-query-store"></a>クエリ ストアの使用 
 Azure Database for PostgreSQL の[クエリ ストア](concepts-query-store.md)機能では、クエリ統計を追跡するより効果的な方法が提供されます。 *pg_stats_statements* を使用する代わりに、この機能を使用することをお勧めします。 
 
-## <a name="next-steps"></a>次の手順
-[Azure Portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用して、`pg_stat_statements.track = NONE` を設定することを検討します。
+## <a name="next-steps"></a>次のステップ
+`pg_stat_statements.track = NONE`Azure Portal[ または ](howto-configure-server-parameters-using-portal.md)Azure CLI[ を使用して、](howto-configure-server-parameters-using-cli.md) を設定することを検討します。
 
 詳細については、次を参照してください。 
 - [クエリ ストアの使用シナリオ](concepts-query-store-scenarios.md) 

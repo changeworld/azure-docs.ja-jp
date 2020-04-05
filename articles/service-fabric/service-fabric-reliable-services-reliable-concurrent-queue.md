@@ -4,10 +4,10 @@ description: ReliableConcurrentQueue は、並列エンキューと並列デキ�
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75462724"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric の ReliableConcurrentQueue の概要
@@ -21,7 +21,7 @@ Reliable Concurrent Queue は、エンキュー操作とデキュー操作に関
 | bool TryDequeue(out T result)  | Task< ConditionalValue < T > > TryDequeueAsync(ITransaction tx)  |
 | int Count()                    | long Count()                                                     |
 
-## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>[Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) との比較
+## <a name="comparison-with-reliable-queue"></a>[Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) との比較
 
 Reliable Concurrent Queue は、[Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) の代替手段として提供されています。 このキューは FIFO の厳密な順序付けが必要ないケースで使用してください。FIFO の順序を確実に守るためには、そのトレードオフとして、コンカレンシーは放棄しなければなりません。  [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) では、エンキューとデキューを許可するトランザクションを一度に 1 つまでとし、FIFO の順序付けを強制的に適用するためにロックが使用されます。 これに対し、Reliable Concurrent Queue では、順序付けの制約が緩和され、任意の数の同時トランザクションが交互に、そのエンキュー操作とデキュー操作を実行できます。 Reliable Concurrent Queue では、ベストエフォートでの順序付けは備わっていますが、2 つの値の相対的順序は保証されません。
 
@@ -51,7 +51,7 @@ IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IRel
 ### <a name="enqueueasync"></a>EnqueueAsync
 以下に示したのは、EnqueueAsync を使ったいくつかのコード スニペットと予想される出力結果です。
 
-- *ケース 1:単一のエンキュー タスク*
+- "*ケース 1: 単一のエンキュー タスク*"
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -70,7 +70,7 @@ using (var txn = this.StateManager.CreateTransaction())
 > 20、10
 
 
-- *ケース 2:並列エンキュー タスク*
+- "*ケース 2: 並列エンキュー タスク*"
 
 ```
 // Parallel Task 1
@@ -99,7 +99,7 @@ using (var txn = this.StateManager.CreateTransaction())
 以下に示したのは、TryDequeueAsync を使ったいくつかのコード スニペットと予想される出力結果です。 キューには既に、次の要素が格納されているとします。
 > 10、20、30、40、50、60
 
-- *ケース 1:単一のデキュー タスク*
+- "*ケース 1: 単一のデキュー タスク*"
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -114,7 +114,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 このタスクが正常に完了し、このキューに変更を加える同時トランザクションが存在しなかったと仮定しましょう。 キュー内の要素の順序を推測することはできません。任意の 3 つの要素が任意の順序でデキューされる可能性があります。 キューは、元の (エンキュー時の) 順序で要素を保とうとしますが、同時に実行される操作やエラーが原因でやむをえず順序を変更する可能性があります。  
 
-- *ケース 2:並列デキュー タスク*
+- "*ケース 2: 並列デキュー タスク*"
 
 ```
 // Parallel Task 1
@@ -142,7 +142,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 同じ要素が両方のリストに出現することは "*ありません*"。 したがって dequeue1 に *10*、*30* が格納されている場合、dequeue2 には *20*、*40* が格納されます。
 
-- *ケース 3:トランザクションの中止を伴うデキューの順序*
+- "*ケース 3: トランザクションの中止を伴うデキューの順序*"
 
 デキューの途中でトランザクションを中止すると、取り出された要素がキューの先頭に戻されます。 キューの先頭に要素が戻される順序は保証されません。 以下のコードを見てください。
 

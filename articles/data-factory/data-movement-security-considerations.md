@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/15/2018
-ms.openlocfilehash: e809c88d8a0a0efeb12e9f2a472a497349fdfa1b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/11/2020
+ms.openlocfilehash: bee627ade4f66206cd5254fc32bc7aa9973c7bee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927508"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131312"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -49,8 +49,8 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 
 この記事では、次の 2 つのデータ移動シナリオでセキュリティに関する考慮事項を確認します。 
 
-- **クラウド シナリオ**:このシナリオでは、ソースと移動先の両方にインターネットを通じてパブリックにアクセスできます。 これには、Azure Storage、Azure SQL Data Warehouse、Azure SQL Database、Azure Data Lake Store、Amazon S3、Amazon Redshift などの管理クラウド ストレージ サービス、Salesforce などの SaaS サービス、FTP や OData などの Web プロトコルが該当します。 サポートされているデータ ソースの完全な一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
-- **ハイブリッド シナリオ**:このシナリオでは、ソースまたは移動先のどちらかが、ファイアウォールの内側またはオンプレミスの企業ネットワーク内にあります。 あるいは、データ ストアがプライベート ネットワークまたは仮想ネットワーク内 (ほとんどの場合はソース) にあり、パブリックにアクセスできません。 仮想マシンでホストされているデータベース サーバーもこのシナリオに該当します。
+- **クラウド シナリオ**: このシナリオでは、ソースと移動先の両方にインターネットを通じてパブリックにアクセスできます。 これには、Azure Storage、Azure SQL Data Warehouse、Azure SQL Database、Azure Data Lake Store、Amazon S3、Amazon Redshift などの管理クラウド ストレージ サービス、Salesforce などの SaaS サービス、FTP や OData などの Web プロトコルが該当します。 サポートされているデータ ソースの完全な一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
+- **ハイブリッド シナリオ**: このシナリオでは、ソースまたは移動先のどちらかが、ファイアウォールの内側またはオンプレミスの企業ネットワーク内にあります。 あるいは、データ ストアがプライベート ネットワークまたは仮想ネットワーク内 (ほとんどの場合はソース) にあり、パブリックにアクセスできません。 仮想マシンでホストされているデータベース サーバーもこのシナリオに該当します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -79,9 +79,9 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 一部のデータ ストアは、保存データの暗号化をサポートしています。 そうしたデータ ストアに対してはデータ暗号化メカニズムを有効にすることをお勧めします。 
 
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威から保護できます。 この動作はクライアントに対して透過的です。 詳細については、「[SQL Data Warehouse でのデータベース保護](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)」をご覧ください。
+Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威から保護できます。 この動作はクライアントに対して透過的です。 詳細については、「[SQL Data Warehouse でのデータベース保護](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)」をご覧ください。
 
-#### <a name="azure-sql-database"></a>Azure SQL Database
+#### <a name="azure-sql-database"></a>Azure SQL データベース
 Azure SQL Database では、Transparent Data Encryption (TDE) もサポートしています。TDE を使用すると、データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。アプリケーションを変更する必要はありません。 この動作はクライアントに対して透過的です。 詳細については、「[Azure SQL Database と Data Warehouse の透過的なデータ暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)」をご覧ください。
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
@@ -151,9 +151,9 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 ![IPSec VPN とゲートウェイの使用](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> IP アドレスに対するファイアウォールの構成と許可リストの設定
+### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> IP アドレスに対するファイアウォールの構成と許可リストの設定
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>オンプレミス/プライベート ネットワークのファイアウォール要件  
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>オンプレミス/プライベート ネットワークのファイアウォール要件    
 企業では、組織の中央ルーターで企業ファイアウォールが実行されています。 セルフホステッド統合ランタイムがインストールされているローカル コンピューターで Windows ファイアウォールがデーモンとして実行されています。 
 
 次の表には、企業ファイアウォールの送信ポートとドメインの要件を示しています。
@@ -193,7 +193,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 セルフホステッド統合ランタイムは、インターネットにアクセスするために HTTP ベースの接続を行います。 セルフホステッド統合ランタイムがこの接続を確立するには、送信ポート 443 を開く必要があります。 資格情報マネージャー アプリケーションのコンピューター レベル (企業のファイアウォール レベルではない) でのみ受信ポート 8060 を開きます。 Azure SQL Database または Azure SQL Data Warehouse をソースまたは移動先として使用する場合は、ポート 1433 も開く必要があります。 詳細については、「[IP アドレスに対するファイアウォールの構成と許可リストの設定](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)」セクションを参照してください。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティのパフォーマンスについては、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](copy-activity-performance.md)」を参照してください。
 
  

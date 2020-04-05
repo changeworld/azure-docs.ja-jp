@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
 ms.openlocfilehash: cec94b2ecb18bc9e8cceb24a21967a3c829d78a5
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74561728"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>HDInsight の Apache Spark クラスターの Jupyter Notebook で外部のパッケージを使用する
@@ -50,7 +50,7 @@ HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://j
 1. 外部のパッケージを使用するようにノートブックを構成するには、`%%configure` マジックを使用します。 外部のパッケージを使用するノートブックでは必ず、最初のコード セルで `%%configure` マジックを呼び出すようにしてください。 そうすることでセッションが開始される前に、指定のパッケージを使用するようにカーネルが構成されます。
 
     >[!IMPORTANT]  
-    >最初のセルでカーネルを構成しなかった場合、`-f` パラメーターを指定して `%%configure` を使用できますが、その場合セッションが最初からやり直しとなり、すべての進捗が失われます。
+    >最初のセルでカーネルを構成しなかった場合、`%%configure` パラメーターを指定して `-f` を使用できますが、その場合セッションが最初からやり直しとなり、すべての進捗が失われます。
 
     | HDInsight のバージョン | command |
     |-------------------|---------|
@@ -89,15 +89,15 @@ HDInsight 上の Apache Spark クラスター内の [Jupyter Notebook](https://j
    
         df.select("Time").count()
 
-## <a name="seealso"></a>関連項目
+## <a name="see-also"></a><a name="seealso"></a>関連項目
 
 * [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
 
-* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark と BI: HDInsight の Spark と BI ツールを使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
+* [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と Machine Learning: HDInsight 上で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行

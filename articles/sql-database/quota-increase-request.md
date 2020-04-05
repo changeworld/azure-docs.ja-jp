@@ -9,17 +9,17 @@ ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 02/04/2020
 ms.openlocfilehash: ff2be6972bb4e8af266d0aa8a56d1879bc1b8b78
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586157"
 ---
 # <a name="request-quota-increases-for-azure-sql-database"></a>Azure SQL Database のクォータの増加を要求する
 
 この記事では、Azure SQL Database の単一データベース、サーバー、およびマネージド インスタンスのクォータの増加を要求する方法について説明します。 また、リージョンへのサブスクリプション アクセスを有効にする方法についても説明します。
 
-## <a id="newquota"></a>新しいサポート リクエストを作成する
+## <a name="create-a-new-support-request"></a><a id="newquota"></a>新しいサポート リクエストを作成する
 
 SQL Database 用の Azure portal から新しいサポート リクエストを作成するには、次の手順に従います。
 
@@ -54,7 +54,7 @@ SQL Database 用の Azure portal から新しいサポート リクエストを�
 
 **[詳細の指定]** をクリックすると、 **[クォータの詳細]** ウィンドウが表示され、追加情報を追加できるようになります。 次のセクションでは、**SQL Database** および **SQL Database Managed Instance** のクォータの種類に対するさまざまなオプションについて説明します。
 
-## <a id="sqldbquota"></a> SQL Database のクォータの種類
+## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a> SQL Database のクォータの種類
 
 次のセクションでは、**SQL Database** のクォータの種類に対する 3 つのクォータ拡張オプションについて説明します。
 
@@ -90,7 +90,7 @@ SQL Database 用の Azure portal から新しいサポート リクエストを�
 
 詳細については、「[SQL Database のリソース制限およびリソース管理](sql-database-resource-limits-database-server.md)」を参照してください。
 
-### <a id="other"></a> リージョンへのサブスクリプション アクセスを有効にする
+### <a name="enable-subscription-access-to-a-region"></a><a id="other"></a> リージョンへのサブスクリプション アクセスを有効にする
 
 一部のオファーの種類は、すべてのリージョンで使用できるわけではありません。 次のようなエラーが表示される場合があります。
 
@@ -100,7 +100,7 @@ SQL Database 用の Azure portal から新しいサポート リクエストを�
 
 ![その他のクォータの詳細](./media/quota-increase-request/quota-details-whitelisting.png)
 
-## <a id="sqlmiquota"></a> マネージド インスタンスのクォータの種類
+## <a name="managed-instance-quota-type"></a><a id="sqlmiquota"></a> マネージド インスタンスのクォータの種類
 
 クォータの種類 **SQL Server Managed Instance** については、次の手順に従います。
 

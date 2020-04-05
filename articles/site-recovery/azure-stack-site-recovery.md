@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 08/05/2019
 ms.author: raynew
 ms.openlocfilehash: 15cd729063545914f791de39a075af9084f72bef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426565"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM を Azure にレプリケートする
@@ -43,7 +43,7 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 
 ![Architecture](./media/azure-stack-site-recovery/architecture.png)
 
-**Location** | **コンポーネント** |**詳細**
+**場所** | **コンポーネント** |**詳細**
 --- | --- | ---
 **構成サーバー** | 単一 Azure Stack VM 上で実行されます。 | サブスクリプションごとに、構成サーバー VM を設定します。 この VM は、次の Site Recovery コンポーネントを実行します。<br/><br/> - 構成サーバー:オンプレミスと Azure の間の通信を調整し、データのレプリケーションを管理します。 - プロセス サーバー:レプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure ストレージに送信します。<br/><br/> レプリケートする VM が後述する制限を超えている場合は、別のスタンドアロン プロセス サーバーを設定できます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-process-server-scale)。
 **モビリティ サービス** | レプリケートする各 VM 上にインストールされます。 | この記事の手順では、レプリケーションが有効な場合はモビリティ サービスが自動的にインストールされるように VM アカウントを準備します。 サービスを自動的にインストールしない場合、使用できる他の方法は多数あります。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/site-recovery/vmware-azure-install-mobility-service)。

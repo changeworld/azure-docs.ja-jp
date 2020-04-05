@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と XaitPorter の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と XaitPorter の統合 | Microsoft Docs'
 description: Azure Active Directory と XaitPorter の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 8652073eb3d7d154958566b68fb6e27c35d8da30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086531"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>チュートリアル:Azure Active Directory と XaitPorter の統合
+# <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>チュートリアル: Azure Active Directory と XaitPorter の統合
 
 このチュートリアルでは、XaitPorter と Azure Active Directory (Azure AD) を統合する方法について説明します。
 XaitPorter と Azure AD の統合には、次の利点があります。
@@ -148,7 +148,7 @@ XaitPorter で Azure AD シングル サインオンを構成するには、次�
 
     c. **[Enable Autocreation of Users]\(ユーザーの自動作成を有効にする\)** を選択します。
 
-    d. Click **OK**.
+    d. **[OK]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 

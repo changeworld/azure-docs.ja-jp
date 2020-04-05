@@ -5,14 +5,14 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 239ea2eb4d5bc8d326d5ca503a18b149252dc1be
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69558802"
 ---
 > [!div class="op_single_selector"]
-> * [Node.JS](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
+> * [Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
 > * [.NET](../articles/iot-hub/iot-hub-csharp-csharp-device-management-get-started.md)
 > * [Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
 > * [Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: ccf258594aa68fc9b5d0189c9ada640078e0ba6f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514869"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware から Azure へのディザスター リカバリー アーキテクチャ

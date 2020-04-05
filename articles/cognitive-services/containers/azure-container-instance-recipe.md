@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
 ms.openlocfilehash: 78f35042678aa7c30cebf73796df3e5d564b4502
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76717004"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance"></a>Azure コンテナー インスタンスにコンテナーをデプロイして実行する

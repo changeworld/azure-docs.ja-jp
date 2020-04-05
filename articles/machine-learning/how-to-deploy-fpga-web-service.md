@@ -11,17 +11,17 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: b036dd9c440e01bf32b35ee01c1d39d4ce6e129b
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 8cb6cf49e302122849dc2402bcff008e72e15608
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402700"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472360"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>フィールド プログラマブル ゲート アレイ (FPGA) の説明とデプロイ方法
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、フィールド プログラマブル ゲート アレイ (FPGA) についてその概要を説明し、Azure Machine Learning を使用してモデルを Azure FPGA にデプロイする方法を示します。 
+この記事では、フィールド プログラマブル ゲート アレイ (FPGA) についてその概要を説明し、Azure Machine Learning を使用してモデルを Azure FPGA にデプロイする方法を示します。
 
 FPGA には、プログラミング可能なロジック ブロックの配列と、再構成可能な相互接続の階層が含まれています。 相互接続を使用して、製造後にさまざまな方法でこれらのブロックを構成できます。 他のチップと比較して、FPGA はプログラミング可能であることとパフォーマンスを兼ね備えています。
 
@@ -52,7 +52,7 @@ Azure の FPGA のサポート:
 
 + 画像の分類と認識のシナリオ
 + TensorFlow のデプロイ
-+ Intel FPGA ハードウェア 
++ Intel FPGA ハードウェア
 
 現在使用できるのは、以下の DNN モデルです。
   - ResNet 50
@@ -81,12 +81,9 @@ Azure FPGA は Azure Machine Learning と統合されています。 Microsoft �
 
 + [土地被覆マッピング](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
 
-
-
-## <a name="example-deploy-models-on-fpgas"></a>例:モデルの FPGA でのデプロイ 
+## <a name="example-deploy-models-on-fpgas"></a>例:モデルの FPGA でのデプロイ
 
 Azure Machine Learning Hardware Accelerated Models を使用して、モデルを FPGA 上の Web サービスとしてデプロイできます。 FPGA を使用すると、単一のバッチ サイズでも、待機時間が極端に短い推論を実行できます。 推論、つまりモデル スコアリングとは、通常は運用環境のデータに基づいて、デプロイしたモデルを使用して予測を行うフェーズです。
-
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -94,7 +91,7 @@ Azure Machine Learning Hardware Accelerated Models を使用して、モデル�
 
 - FPGA クォータ。 クォータがあるかどうかを確認するには、Azure CLI を使用します。
 
-    ```shell
+    ```azurecli-interactive
     az vm list-usage --location "eastus" -o table --query "[?localName=='Standard PBS Family vCPUs']"
     ```
 
@@ -117,7 +114,7 @@ Azure Machine Learning Hardware Accelerated Models を使用して、モデル�
  
 - Hardware Accelerated Models 用の Python SDK:
 
-    ```shell
+    ```bash
     pip install --upgrade azureml-accel-models
     ```
 

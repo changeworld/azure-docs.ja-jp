@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 46b38686b39836f3d4bfb80686d514f932a79bf3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75649199"
 ---
 # <a name="custom-resource-proxy-reference"></a>カスタム リソースのプロキシのリファレンス
@@ -68,7 +68,7 @@ ms.locfileid: "75649199"
 プロパティ | サンプル | 説明
 ---|---|---
 name | '{myCustomResourceName}' | カスタム リソースの名前。
-型 | 'Microsoft.CustomProviders/resourceProviders/{resourceTypeName}' | リソースの種類の名前空間。
+type | 'Microsoft.CustomProviders/resourceProviders/{resourceTypeName}' | リソースの種類の名前空間。
 id | '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{myCustomResourceName}' | リソース ID。
 
 ### <a name="create-a-custom-resource"></a>カスタム リソースの作成
@@ -321,7 +321,7 @@ Content-Type: application/json; charset=utf-8
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure カスタム リソースプロバイダーの概要](overview.md)
-- [クイック スタート:Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
+- [クイック スタート: Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
 - [チュートリアル:Azure でカスタム アクションとカスタム リソースを作成する](./tutorial-get-started-with-custom-providers.md)
 - [方法: カスタム アクションを Azure REST API に追加する](./custom-providers-action-endpoint-how-to.md)
 - [リファレンス: カスタム リソースのキャッシュのリファレンス](proxy-cache-resource-endpoint-reference.md)

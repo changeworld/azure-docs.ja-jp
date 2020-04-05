@@ -9,10 +9,10 @@ ms.date: 11/09/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 9d07ba42e83d9eec071ab047e9e1e92bac1f1411
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127491"
 ---
 # <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>Windows Virtual Desktop 管理ツールのトラブルシューティング

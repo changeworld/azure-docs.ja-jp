@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 4abf5078a005f9d928397d9666e7f2bc55d65f19
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75431548"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Stream Analytics ジョブを作成する
+# <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する
 
 このクイック スタートでは、Stream Analytics ジョブの作成によって作業を開始する方法を示します。 このクイック スタートでは、リアルタイム ストリーミング データを読み取り、温度が 27 を超えるメッセージをフィルター処理する Stream Analytics ジョブを定義します。 お客様の Stream Analytics ジョブによって IoT Hub からデータが読み取られ、変換されて BLOB ストレージ内のコンテナーに書き戻されます。 このクイック スタートで使用される入力データは、Raspberry Pi オンライン シミュレーターによって生成されます。 
 
@@ -43,7 +43,7 @@ Stream Analytics ジョブを定義する前に、入力データを準備する
 
    ![IoT Hub の作成](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
 
-4. **[次へ:Set size and scale]\(次へ: サイズとスケールの設定\)** を選択します。
+4. **[Next: Set size and scale]\(次へ: サイズとスケールの設定\)** を選択します。
 
 5. **[価格とスケールティア]** を選択します。 このクイック スタートでは、 **[F1 - Free tier]\(F1 - Free レベル\)** を選択します (お客様のサブスクリプションでまだ使用可能な場合)。 詳細については、「[IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 

@@ -1,19 +1,18 @@
 ---
 title: SaaS Fulfillment API | Azure Marketplace
 description: ご自身の SaaS オファーを Azure Marketplace に統合できるようにする Fulfillment API のバージョンについて説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: evansma
-ms.openlocfilehash: ebfc278d09c244970df5807df1505295fe7016c4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 92b1c52457fa92709381124480c05a5f636167f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819121"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275732"
 ---
 # <a name="saas-fulfillment-apis"></a>SaaS Fulfillment API
 
@@ -33,6 +32,6 @@ ms.locfileid: "73819121"
 * 交渉による取引上の合意に基づいて、顧客に対してプライベートな価格設定を提供する。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 SaaS アプリケーションをまだ登録していない場合は、「[Azure AD アプリケーションの登録](./pc-saas-registration.md)」で説明されているように、[Azure portal](https://ms.portal.azure.com) で登録を行います。  その後、このインターフェイスの最新バージョンを使用して開発を行います。[SaaS Fulfillment API バージョン 2](./pc-saas-fulfillment-api-v2.md)

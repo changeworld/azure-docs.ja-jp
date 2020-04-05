@@ -5,10 +5,10 @@ services: automation
 ms.date: 11/01/2018
 ms.topic: article
 ms.openlocfilehash: 9bd028157b33817898ef69f9e47cb8b5d9b8f381
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75367095"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>メトリック アラートによる Runbook の監視

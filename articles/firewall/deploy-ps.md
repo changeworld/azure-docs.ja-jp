@@ -8,10 +8,10 @@ ms.date: 4/10/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 7f48012ca1f97c2e28380d95da37863c4bc17f63
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73831836"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Azure Firewall のデプロイと構成を行う
@@ -39,7 +39,7 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 > * テスト ネットワーク環境を設定する
 > * ファイアウォールをデプロイする
 > * 既定のルートを作成する
-> * [www.google.com](www.google.com) へのアクセスを許可するようにアプリケーションを構成する
+> * www.google.com へのアクセスを許可するようにアプリケーションを構成する
 > * 外部 DNS サーバーへのアクセスを許可するようにネットワーク ルールを構成する
 > * ファイアウォールをテストする
 
@@ -55,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 最初に、ファイアウォールをデプロイするために必要なリソースを含めるリソース グループを作成します。 次に、VNet、サブネット、およびテスト サーバーを作成します。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 このリソース グループには、デプロイのためのすべてのリソースが含まれます。
 
@@ -248,7 +248,7 @@ $NIC | Set-AzNetworkInterface
 * 構成された外部 DNS サーバーを使用して DNS 名を解決できます。
 * 1 つの許可された FQDN は参照できますが、それ以外は参照できません。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ファイアウォール リソースは、次のチュートリアルのために残しておいてもかまいませんが、不要であれば、**Test-FW-RG** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除してください。
 
@@ -256,6 +256,6 @@ $NIC | Set-AzNetworkInterface
 Remove-AzResourceGroup -Name Test-FW-RG
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)

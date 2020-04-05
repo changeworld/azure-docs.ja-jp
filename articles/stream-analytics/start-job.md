@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: c393eb782c2ff16eb5b3e5967b39938dfe2f1534
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426460"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブを開始する方法
@@ -58,6 +58,6 @@ Start-AzStreamAnalyticsJob `
 
 ## <a name="next-steps"></a>次のステップ
 
-* [クイック スタート:Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
-* [クイック スタート:Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)
-* [クイック スタート:Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)
+* [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
+* [クイック スタート: Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)
+* [クイック スタート: Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: magattus
 ms.openlocfilehash: 92d93fbf9fa2f8df15acb62802d7ac53db836dc1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593858"
 ---
 # <a name="how-caching-works"></a>キャッシュのしくみ
@@ -126,14 +126,14 @@ Azure CDN では、次の HTTP キャッシュ ディレクティブ ヘッダ�
 
 |    | Microsoft:一般的な Web 配信 | Verizon:一般的な Web 配信 | Verizon:DSA | Akamai:一般的な Web 配信 | Akamai:DSA | Akamai:大容量ファイルのダウンロード | Akamai: 一般的なメディア ストリーミングまたは VOD メディア ストリーミング |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **配信元を優先**       | はい    | はい   | いいえ   | はい    | いいえ   | 可能   | はい    |
+| **配信元を優先**       | はい    | はい   | いいえ   | はい    | いいえ   | はい   | はい    |
 | **CDN キャッシュ期間** | 2 日 |7 日 | なし | 7 日 | なし | 1 日 | 1 年 |
 
 **配信元を優先**:サポートされているキャッシュ ディレクティブ ヘッダーを優先するかどうかを指定します (配信元サーバーからの HTTP 応答にそれらのヘッダーが存在する場合)。
 
 **CDN キャッシュ期間**:Azure CDN でリソースをキャッシュする期間を指定します。 ただし、**配信元を優先**が "はい" で、配信元サーバーからの HTTP 応答にキャッシュ ディレクティブ ヘッダー `Expires` または `Cache-Control: max-age` が含まれている場合、Azure CDN は、ヘッダーによって指定された期間の値を代わりに使用します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - キャッシュ規則を使用して CDN の既定のキャッシュ動作をカスタマイズおよびオーバーライドする方法については、[キャッシュ規則による Azure CDN キャッシュ動作の制御](cdn-caching-rules.md)に関するページをご覧ください。 
 - クエリ文字列を使用してキャッシュ動作を制御する方法については、[クエリ文字列による Azure CDN キャッシュ動作の制御](cdn-query-string.md)に関するページをご覧ください。

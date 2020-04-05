@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: dapine
 ms.openlocfilehash: f0e587fc39fa2cc6f5275ae16834372a206b37d2
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70966697"
 ---
 *感情分析*コンテナーを実行するには、次の `docker run` コマンドを実行します。

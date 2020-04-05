@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
 ms.openlocfilehash: 670050efe01fb658fab52a43914f193e9798b828
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75751127"
 ---
 # <a name="security-controls-for-api-management"></a>API Management のセキュリティ コントロール
@@ -22,7 +22,7 @@ ms.locfileid: "75751127"
 
 ## <a name="network"></a>ネットワーク
 
-| セキュリティ コントロール | はい/いいえ | メモ | ドキュメント |
+| セキュリティ コントロール | はい/いいえ | Notes | ドキュメント |
 |---|---|--|--|
 | サービス エンドポイントのサポート| いいえ | |  |
 | VNet インジェクションのサポート| はい | |  |
@@ -31,7 +31,7 @@ ms.locfileid: "75751127"
 
 ## <a name="monitoring--logging"></a>監視およびログ記録
 
-| セキュリティ コントロール | はい/いいえ | メモ| ドキュメント |
+| セキュリティ コントロール | はい/いいえ | Notes| ドキュメント |
 |---|---|--|--|
 | Azure 監視サポート (Log analytics や App Insights など)| はい | | |
 | コントロールと管理プレーンのログ記録と監査| はい | [Azure Monitor のアクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md) | |
@@ -40,14 +40,14 @@ ms.locfileid: "75751127"
 
 ## <a name="identity"></a>ID
 
-| セキュリティ コントロール | はい/いいえ | メモ| ドキュメント |
+| セキュリティ コントロール | はい/いいえ | Notes| ドキュメント |
 |---|---|--|--|
 | 認証| はい | |  |
 | 承認| はい | |  |
 
 ## <a name="data-protection"></a>データ保護
 
-| セキュリティ コントロール | はい/いいえ | メモ | ドキュメント |
+| セキュリティ コントロール | はい/いいえ | Notes | ドキュメント |
 |---|---|--|--|
 | 保存時のサーバー側の暗号化: Microsoft のマネージド キー | はい | 証明書、キー、およびシークレットという名前付きの値などの機密データは、サービスで管理される、サービス インスタンスごとのキーで暗号化されます。 |  |
 | 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | いいえ | すべての暗号化キーはサービス インスタンスごとに存在し、サービスで管理されます。 |  |
@@ -58,7 +58,7 @@ ms.locfileid: "75751127"
 
 ## <a name="configuration-management"></a>構成管理
 
-| セキュリティ コントロール | はい/いいえ | メモ| ドキュメント |
+| セキュリティ コントロール | はい/いいえ | Notes| ドキュメント |
 |---|---|--|--|
 | 構成管理のサポート (構成のバージョン管理など)| はい | [Azure API Management DevOps リソース キット](https://aka.ms/apimdevops)を使用 |  |
 

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/04/2019
 ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67797188"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>クイック スタート:Azure Data Explorer の Web UI でデータのクエリを実行する
@@ -185,10 +185,10 @@ Data Explorer は現在プレビュー段階であり、ユーザーの経験に
 
 1. フィードバックを入力し、 **[Submit]\(送信\)** を選択してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイック スタートではリソースは何も作成しませんでしたが、アプリケーションから一方または両方のクラスターを削除したい場合は、クラスターを右クリックして、 **[Remove connection]\(接続を削除\)** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Data Explorer のクエリを記述する](write-queries.md)

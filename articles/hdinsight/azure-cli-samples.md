@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.openlocfilehash: cbbb38c645e56b2e7b8c70b437b1e5158b09a50b
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78207100"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI のサンプル

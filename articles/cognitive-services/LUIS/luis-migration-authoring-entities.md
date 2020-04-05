@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: diberry
 ms.openlocfilehash: b5dbcd9033d9a41e43ea907d043e0c0486b236db
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75563823"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>V3 作成エンティティに移行する

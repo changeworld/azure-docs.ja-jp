@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 4e029428a3709bacdbcd50a6ac3714e730377242
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74763625"
 ---
 # <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - Single Server のサーバー構成パラメーターをカスタマイズする
@@ -32,14 +32,14 @@ az postgres server configuration list --resource-group myresourcegroup --server 
 ## <a name="show-server-configuration-parameter-details"></a>サーバー構成パラメーター詳細を表示する
 サーバーの特定の構成パラメーターに関する詳細を表示するには、[az postgres server configuration show](/cli/azure/postgres/server/configuration) コマンドを実行します。
 
-この例では、サーバー **mydemoserver.postgres.database.azure.com** のリソース グループ **myresourcegroup** の **log\_min\_messages** サーバー構成パラメーターの詳細を表示します。
+この例では、サーバー **mydemoserver.postgres.database.azure.com\_ のリソース グループ \_myresourcegroup** の **log**min**messages** サーバー構成パラメーターの詳細を表示します。
 ```azurecli-interactive
 az postgres server configuration show --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="modify-server-configuration-parameter-value"></a>サーバー構成パラメーターの値を変更する
 特定のサーバー構成パラメーターの値を変更することもできます。これによって PostgreSQL サーバー エンジンの基盤となる構成値が更新されます。 構成を更新するには、[az postgres server configuration set](/cli/azure/postgres/server/configuration) コマンドを使用します。 
 
-この例では、サーバー **mydemoserver.postgres.database.azure.com** のリソース グループ **myresourcegroup** の **log\_min\_messages** サーバー構成パラメーターを更新します。
+この例では、サーバー **mydemoserver.postgres.database.azure.com\_ のリソース グループ \_myresourcegroup** の **log**min**messages** サーバー構成パラメーターを更新します。
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver --value INFO
 ```
@@ -49,6 +49,6 @@ az postgres server configuration set --name log_min_messages --resource-group my
 ```
 このコマンドによって、**log\_min\_messages** 構成が既定値の **WARNING** にリセットされます。 サーバーの構成と許容値の詳細については、[サーバー構成](https://www.postgresql.org/docs/9.6/static/runtime-config.html)に関する PostgreSQL のドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [サーバーを再起動する方法を学習します](howto-restart-server-cli.md)。
 - サーバー ログの構成およびアクセスについては、「[Server Logs in Azure Database for PostgreSQL (Azure Database for PostgreSQL のサーバー ログ)](concepts-server-logs.md)」を参照してください。

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75387022"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure でホストされているカスタム AD ドメイン コントローラーへの Azure Cloud Services ロールの接続
@@ -27,7 +27,7 @@ ms.locfileid: "75387022"
 クラウド サービスによって参照されるネットワークは、**従来の仮想ネットワーク**にする必要があります。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークを作成します
-Azure に Virtual Network を作成するには、Azure Portal か PowerShell を使います。 このチュートリアルでは、PowerShell を使用します。 Azure Portal を使用して仮想ネットワークを作成するには、[仮想ネットワークの作成](../virtual-network/quick-create-portal.md)に関する記事をご覧ください。 この記事では、仮想ネットワークの作成 (Resource Manager) について説明しますが、クラウド サービス用の仮想ネットワーク (クラシック) はお客様が作成する必要があります。 これには、ポータルで **[リソースの作成]** を選択し、 **[検索]** ボックスに「*仮想ネットワーク*」と入力して、**Enter** キーを押します。 検索結果の **[すべて]** の下で **[仮想ネットワーク]** を選択します。 **[デプロイ モデルの選択]** で **[クラシック]** を選択し、 **[作成]** をクリックします。 その後は、この記事の手順を実行できます。
+Azure に Virtual Network を作成するには、Azure Portal か PowerShell を使います。 このチュートリアルでは、PowerShell を使用します。 Azure Portal を使用して仮想ネットワークを作成するには、[仮想ネットワークの作成](../virtual-network/quick-create-portal.md)に関する記事をご覧ください。 この記事では、仮想ネットワークの作成 (Resource Manager) について説明しますが、クラウド サービス用の仮想ネットワーク (クラシック) はお客様が作成する必要があります。 これには、ポータルで **[リソースの作成]** を選択し、 *[検索]* ボックスに「**仮想ネットワーク**」と入力して、**Enter** キーを押します。 検索結果の **[すべて]** の下で **[仮想ネットワーク]** を選択します。 **[デプロイ モデルの選択]** で **[クラシック]** を選択し、 **[作成]** をクリックします。 その後は、この記事の手順を実行できます。
 
 ```powershell
 #Create Virtual Network

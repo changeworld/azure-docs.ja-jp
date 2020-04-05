@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3126339a1eb8ff9c0ef34a330333635d3d0f6433
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274361"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371122"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(非推奨) Container Service の Kubernetes クラスター用の Azure AD サービス プリンシパルをセットアップする
 
@@ -103,7 +103,7 @@ Kubernetes クラスターを作成するときに、既存のサービス プ�
 
 次のコマンドは、Kubernetes クラスターを作成し、SSH キーとサービス プリンシパル資格情報の両方を生成します。
 
-```console
+```azurecli
 az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-keys --orchestrator-type kubernetes
 ```
 

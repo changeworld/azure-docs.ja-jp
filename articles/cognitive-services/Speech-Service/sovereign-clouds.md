@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 1/14/2020
 ms.author: cbasoglu
 ms.openlocfilehash: b41967033b00144ca5bd52ce23cf8aabcea6749e
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78228081"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>ソブリン クラウドを使用した音声サービス

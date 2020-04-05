@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
 ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435746"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>HDInsight に含まれる MapReduce サンプルを実行する
@@ -172,13 +172,13 @@ GraySort はベンチマーク ソートです。 その評価尺度は、大量
 
 このサンプルでは 3 組の MapReduce プログラムを使用します。
 
-* **TeraGen**:データ行を生成してソートする MapReduce プログラム
+* **TeraGen**: データ行を生成してソートする MapReduce プログラム
 
-* **TeraSort**:入力データをサンプリングし、MapReduce を使用してデータを合計順にソートする
+* **TeraSort**: 入力データをサンプリングし、MapReduce を使用してデータを合計順にソートする
 
     TeraSort は、カスタム パーティショナーを除けば、標準的な MapReduce ソートです。 このパーティショナーは、各 reduce のキー範囲を定義する N-1 サンプル キーの並べ替えられた一覧を使用します。 特に、sample[i-1] <= key < sample[i] となるキーはすべて reduce i に送られます。 このパーティショナーでは、reduce i の出力がすべて reduce i+1 の出力より小さくなることが保証されます。
 
-* **TeraValidate**:出力がグローバルにソートされていることを検証する MapReduce プログラム
+* **TeraValidate**: 出力がグローバルにソートされていることを検証する MapReduce プログラム
 
     出力ディレクトリ内のファイルごとにマップを 1 つ作成します。各マップは各キーが前のキー以下であることを保証します。 Map 関数は、各ファイルの最初と最後のキーのレコードを生成します。 Reduce 関数は、ファイル i の最初のキーがファイル i-1 の最後のキーよりも大きいことを保証します。 問題が見つかった場合は、Reduce フェーズの出力として報告され、順序が間違っているキーが報告されます。
 

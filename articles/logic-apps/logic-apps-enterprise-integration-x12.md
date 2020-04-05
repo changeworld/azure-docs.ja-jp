@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/31/2017
 ms.openlocfilehash: cbf0a1f033ddafc68debab8de26dff29d73cc98e
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651476"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の X12 メッセージを交換する
@@ -301,7 +301,7 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 コネクタの Swagger ファイルに記述される、アクションや制限などのこのコネクタの技術的詳細は、[コネクタの参照ページ](https://docs.microsoft.com/connectors/x12/)を参照してください。 
 
 > [!NOTE]
-> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリでは、代わりにこのコネクタの ISE のラベルがついたバージョンが [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)を使用します。
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

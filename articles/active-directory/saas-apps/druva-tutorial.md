@@ -16,10 +16,10 @@ ms.date: 03/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f019d818fb5a017d184bda8d773eb0aaf0f3645a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78944416"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Druva の統合
@@ -146,7 +146,7 @@ Druva に対する Azure AD SSO を構成してテストするには、次の構
 
 1. 左上にある Druva ロゴをクリックし、 **[Druva Cloud Settings]\(Druva Cloud の設定\)** をクリックします。
 
-    ![[設定]](./media/druva-tutorial/ic795091.png "設定")
+    ![設定](./media/druva-tutorial/ic795091.png "設定")
 
 1. **[Single Sign-On]\(シングル サインオン\)** タブの **[Edit]\(編集\)** をクリックします。
 

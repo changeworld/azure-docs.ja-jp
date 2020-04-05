@@ -9,14 +9,14 @@ ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 398e63ec9a8b9e1b16d8ffcee538351fc6572de9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9edeecdfb0c0e7ef0ef6e9d1704d81b844ac8c53
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720783"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80293753"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>クイック スタート: Azure portal と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>クイック スタート:Azure portal と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure portal を使用し、カスタム トピックを作成してそのトピックをサブスクライブし、イベントをトリガーして結果を表示します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
 
@@ -49,7 +49,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
     5. **[イベント スキーマ]** フィールドでは、既定値の **[イベント グリッド スキーマ]** をそのまま使用します。 
 
        ![[トピックの作成] ページ](./media/custom-event-quickstart-portal/create-custom-topic.png)
-    6. **作成** を選択します。 
+    6. **［作成］** を選択します 
 5. カスタム トピックが作成されると、成功の通知が表示されます。 **[リソース グループに移動]** を選択します。 
 
    ![成功の通知を確認](./media/custom-event-quickstart-portal/success-notification.png)
@@ -128,7 +128,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 ### <a name="azure-powershell"></a>Azure PowerShell
 2 番目の例では、PowerShell を使用して、同様の手順を実行します。
 
-1. Azure portal で **Cloud Shell** を選択します (または https://shell.azure.com/) にアクセスします)。 Cloud Shell ウィンドウの左上隅の **[PowerShell]** を選択します。 「Azure CLI」セクションにあるサンプルの **Cloud Shell** ウィンドウの画像を参照してください。
+1. Azure portal で **[Cloud Shell]** を選択します (または `https://shell.azure.com/` にアクセスします)。 Cloud Shell ウィンドウの左上隅の **[PowerShell]** を選択します。 「Azure CLI」セクションにあるサンプルの **Cloud Shell** ウィンドウの画像を参照してください。
 2. 次の変数を設定します。 コマンドをコピーして貼り付けた後、**トピック名**と**リソース グループ名**を更新してから、次のコマンドを実行します。
 
     ```powershell
@@ -191,7 +191,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 }
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 引き続きこのイベントを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 それ以外の場合は、この記事で作成したリソースを削除してください。
 
 1. 左側のメニューの **[リソース グループ]** を選択します。 左側のメニューにこれが表示されていない場合は、左側のメニューの **[すべてのサービス]** を選択し、 **[リソース グループ]** を選択します。 
@@ -203,7 +203,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 
     画像に表示されている他のリソース グループは、Cloud Shell ウィンドウによって作成および使用されたものです。 後で Cloud Shell ウィンドウを使用しない場合はこれを削除してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 カスタム トピックを作成し、イベントをサブスクライブする方法がわかったら、Event Grid でできることについて、さらに情報を収集しましょう。
 

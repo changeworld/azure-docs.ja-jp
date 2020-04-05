@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 11/16/2019
 ms.author: victorh
 ms.openlocfilehash: d45fd7bf88e6988b83a621eda2689c10356441a4
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74129751"
 ---
 # <a name="azure-powershell-examples-for-azure-application-gateway"></a>Azure Application Gateway のための Azure PowerShell の例

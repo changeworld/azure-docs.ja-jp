@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 1fef24f4065ca6fc749f35a07143487e049ee6ea
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075276"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Azure リソース マネージャーで PowerShell を使用して Azure Application Gateway のカスタム プローブを作成する
@@ -95,7 +95,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 | **HTTP 設定** | ポート、プロトコル、cookie ベースのアフィニティ、プローブ、タイムアウトなど設定のコレクション。  これらの設定によって、バックエンド プール メンバーへのトラフィックのルーティング方法が決まります。|
 | **フロントエンド ポート** | Application Gateway がトラフィックをリッスンするポート|
 | **リスナー** | プロトコル、フロントエンド IP 構成、およびフロントエンド ポートの組み合わせ。 これが受信要求をリッスンします。
-|**ルール**| HTTP 設定に基づいてトラフィックを適切なバックエンドにルーティングします。|
+|**Rule**| HTTP 設定に基づいてトラフィックを適切なバックエンドにルーティングします。|
 
 ```powershell
 # Creates an application gateway Frontend IP configuration named gatewayIP01
@@ -195,7 +195,7 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-SSL オフロードの構成について確認するために、次を参照してください: [SSL オフロードの構成](application-gateway-ssl-arm.md)
+[SSL オフロードの構成](application-gateway-ssl-arm.md)
 

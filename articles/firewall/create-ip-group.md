@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: 7e8b2350b9e85d07ce1c399ce4536703ec998cbc
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444856"
 ---
 # <a name="create-ip-groups-preview"></a>IP グループを作成する (プレビュー)
@@ -25,7 +25,7 @@ IP グループを使用すると、Azure Firewall 規則の IP アドレスを�
 
 1. Azure portal のホーム ページから **[リソースの作成]** を選択します。
 2. 検索テキスト ボックスに「**IP グループ**」と入力し、 **[IP Groups]\(IP グループ\)** を選択します。
-3. **作成** を選択します。
+3. **［作成］** を選択します
 4. サブスクリプションを選択します。
 5. リソース グループを選択するか、新しく作成します。
 6. IP グループの一意の名前を入力し、リージョンを選択します。
@@ -42,7 +42,7 @@ IP グループを使用すると、Azure Firewall 規則の IP アドレスを�
    IP アドレスを入力すると、ポータルによって検証が行われ、オーバーラップ、重複、書式の問題が確認されます。
 
 5. 終わったら、 **[確認と作成]** を選択します。
-6. **作成** を選択します。
+6. **［作成］** を選択します
 
 
 ## <a name="next-steps"></a>次のステップ

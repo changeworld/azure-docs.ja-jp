@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954078"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>ExpressRoute を Azure VM のディザスター リカバリーと統合する
@@ -108,7 +108,7 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
 --- | --- | ---
 スポークからハブへ | 仮想ネットワーク アドレスを許可する | Enabled
 スポークからハブへ | 転送されたトラフィックを許可する | Enabled
-スポークからハブへ | ゲートウェイ転送を許可する | Disabled
+スポークからハブへ | ゲートウェイ転送を許可する | 無効
 スポークからハブへ | リモート ゲートウェイを使用する | Enabled
 
  ![スポークからハブへのピアリング構成](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
@@ -120,7 +120,7 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
 ハブからスポークへ | 仮想ネットワーク アドレスを許可する | Enabled
 ハブからスポークへ | 転送されたトラフィックを許可する | Enabled
 ハブからスポークへ | ゲートウェイ転送を許可する | Enabled
-ハブからスポークへ | リモート ゲートウェイを使用する | Disabled
+ハブからスポークへ | リモート ゲートウェイを使用する | 無効
 
  ![ハブからスポークへのピアリング構成](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
 
@@ -215,6 +215,6 @@ VM の復旧と接続の完了後の復旧環境は次のようになります�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリのフェールオーバーを自動化するための[復旧計画](site-recovery-create-recovery-plans.md)の使用について詳しく確認します。

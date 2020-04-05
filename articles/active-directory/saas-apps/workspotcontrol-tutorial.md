@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Workspot Control の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Workspot Control の統合 | Microsoft Docs'
 description: Azure Active Directory と Workspot Control に対してシングル サインオンを構成する方法について学習します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
 ms.openlocfilehash: 086ec95531b01477be56d4b1a19d189f167a020f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086675"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>チュートリアル:Azure Active Directory と Workspot Control の統合
+# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>チュートリアル: Azure Active Directory と Workspot Control の統合
 
 このチュートリアルでは、Workspot Control と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Workspot Control を統合すると、次のことができます。
 
@@ -90,7 +90,7 @@ Workspot Control で Azure AD のシングル サインオンを構成してテ�
 
 Workspot Control で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Workspot Control** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. **Azure portal** の [Workspot Control](https://portal.azure.com/) アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 

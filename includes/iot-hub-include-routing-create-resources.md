@@ -9,10 +9,10 @@ ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 5680bd1c3fadab8edcde1634c708ca8683c0e99c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76021324"
 ---
 ## <a name="create-base-resources"></a>基本のリソースの作成

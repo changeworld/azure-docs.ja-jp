@@ -5,11 +5,11 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: 9600a6a251552acd319cc68d2bd281584d65546d
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74324981"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227387"
 ---
 # <a name="azure-blockchain-tokens-templates"></a>Azure Blockchain Tokens テンプレート
 
@@ -86,6 +86,6 @@ Azure Blockchain Tokens には、変更なしで使用できる 4 つの事前�
 
 一般的にチケット トークンには有効期限があり、そのことが、通常のコモディティ トークンとの違いとなります。 たとえば、航空機のチケット、コンサートのチケット、スポーツのチケットにはすべて、使用日や座席指定のオプションがあります。 日付や座席区分の異なるチケットを簡単に交換することはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 シナリオに応じてさらなる柔軟性が必要な場合は、[トークンの構成可能性](composability.md)を使用して独自のトークン テンプレートを作成する方法について学習してください。

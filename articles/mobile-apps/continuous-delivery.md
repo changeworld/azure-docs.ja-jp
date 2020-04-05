@@ -1,18 +1,18 @@
 ---
 title: Visual Studio App Center と Azure サービスを使用してモバイル アプリケーションのデプロイとリリースを自動化する
 description: モバイル アプリケーションの継続的デリバリー パイプラインの設定に役立つ、App Center などのサービスについて学習します。
-author: elamalani
+author: codemillmatt
 ms.assetid: 34a8a070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 6a8c8d9fc535d973c70eb2e477051dbd1dd1f6fb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: ccfd0fc0450a6fbd34192dce7e375fe2de7f47c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454467"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235355"
 ---
 # <a name="automate-the-deployment-and-release-of-your-mobile-applications-with-continuous-delivery-services"></a>継続的デリバリー サービスを使用してモバイル アプリケーションのデプロイとリリースを自動化する
 

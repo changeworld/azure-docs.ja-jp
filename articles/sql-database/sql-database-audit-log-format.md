@@ -10,10 +10,10 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/03/2019
 ms.openlocfilehash: 13746b86eed75055ceb5203afafb2d27a78ce1d8
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722086"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database 監査ログの形式
@@ -26,7 +26,7 @@ ms.locfileid: "76722086"
 
 BLOB ストレージに格納されている監査ログは、Azure Storage アカウント内の `sqldbauditlogs` と呼ばれるコンテナーに格納されています。 コンテナー内のディレクトリ階層は、`<ServerName>/<DatabaseName>/<AuditName>/<Date>/` という形式になります。 BLOB ファイル名の形式は `<CreationTime>_<FileNumberInSession>.xel` です。ここで `CreationTime` は UTC `hh_mm_ss_ms` 形式で、`FileNumberInSession` はセッション ログが複数の BLOB ファイルにまたがる場合、実行中のインデックスになります。
 
-たとえば、`Server1` にあるデータベース `Database1` の場合、選択可能な有効なパスは以下のようになります：
+たとえば、`Database1` にあるデータベース `Server1` の場合、選択可能な有効なパスは以下のようになります：
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
@@ -41,7 +41,7 @@ BLOB ストレージに格納されている監査ログは、Azure Storage ア�
 
 監査イベントは、監査の構成中に定義された Log Analytics ワークスペースである `AzureDiagnostics` カテゴリを持つテーブル `SQLSecurityAuditEvents`に書き込まれます。 Log Analytics 検索言語およびコマンドに関する有用な追加情報については、[Log Analytics 検索リファレンス](../log-analytics/log-analytics-log-search.md)に関するページをご覧ください。
 
-## <a id="subheading-1"></a>監査ログのフィールド
+## <a name="audit-log-fields"></a><a id="subheading-1"></a>監査ログのフィールド
 
 | 名前 (BLOB) | 名前 (Event Hubs または Log Analytics) | 説明 | BLOB の種類 | Event Hubs または Log Analytics の種類 |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|

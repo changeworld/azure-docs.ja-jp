@@ -75,7 +75,7 @@
       items:
         - name: 概要
           href: encoding-concept.md
-          displayName: 'encoding, presets, jobs, adaptive, bitrate, billing'
+          displayName: 'encode, encoding, presets, jobs, adaptive, bitrate, billing'
         - name: Standard Encoder の形式
           displayName: 'containers, codecs'
           href: media-encoder-standard-formats.md
@@ -87,7 +87,7 @@
       items:
         - name: 概要
           href: analyzing-video-audio-files-concept.md
-          displayName: 'analyzing, presets, jobs'
+          displayName: 'analyze, analyzing, presets, jobs'
         - name: Transform と Job
           href: transforms-jobs-concept.md
     - name: ライブ ストリーミング
@@ -113,7 +113,7 @@
     - name: パッケージと配信
       items:
         - name: 動的パッケージ
-          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest, deliver, format, URL, streaming'
+          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest, deliver, format, URL, streaming, audio, video'
           href: dynamic-packaging-overview.md
         - name: 動的マニフェスト
           href: filters-dynamic-manifest-overview.md
@@ -202,20 +202,13 @@
     - name: はじめに
       items:
         - name: アカウントを作成する
-          items:
-            - name: ポータルを使用する
-              href: create-account-portal.md
-            - name: CLI の場合
-              href: create-account-cli-how-to.md
-              displayName: storage
+          href: create-account-howto.md
+          displayName: 'portal, cli, storage'
         - name: アカウント資格情報のリセット
           href: cli-reset-account-credentials.md
-        - name: API にアクセスする
-          items:
-            - name: ポータルを使用する
-              href: access-api-portal.md
-            - name: CLI の場合
-              href: access-api-cli-how-to.md
+        - name: API へのアクセス
+          displayName: 'portal, cli'
+          href: access-api-howto.md
         - name: メディア占有ユニットをスケーリングする
           href: media-reserved-units-cli-how-to.md
         - name: アセットを作成する
@@ -344,6 +337,7 @@
     - name: トラブルシューティング
       items:
         - name: よく寄せられる質問
+          displayName: faqs
           href: frequently-asked-questions.md
         - name: エラー コード
           items:
@@ -359,7 +353,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
       displayName: schema
     - name: REST
-      href: 'https://aka.ms/ams-v3-rest-ref'
+      href: 'https://docs.microsoft.com/rest/api/media/'
     - name: Azure CLI
       href: 'https://aka.ms/ams-v3-cli-ref'
     - name: SDK

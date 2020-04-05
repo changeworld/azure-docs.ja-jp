@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: 40cd3467c7a4377427bb8db437e1047382933b1c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 84a5b4784a36fb22ae50a7a1ec4fcb7e5ef5b7c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714880"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80245278"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis のデータ永続化の構成方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Azure Cache for Redis インスタンスで永続化を構成する方法について説明します。
@@ -30,7 +30,7 @@ Azure Cache for Redis では、以下のモデルを使用した Redis 永続化
 
 > [!NOTE]
 > 
-> Azure Storage では、データは永続化されるときに自動的に暗号化されます。 暗号化には独自のキーを使用できます。 詳細については、「[Azure Key Vault でのカスタマー マネージド キー](/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault)」を参照してください。
+> Azure Storage では、データは永続化されるときに自動的に暗号化されます。 暗号化には独自のキーを使用できます。 詳細については、「[Azure Key Vault でのカスタマー マネージド キー](/azure/storage/common/storage-service-encryption)」を参照してください。
 > 
 > 
 

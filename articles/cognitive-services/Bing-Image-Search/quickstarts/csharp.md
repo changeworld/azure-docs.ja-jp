@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/06/2019
 ms.author: aahi
 ms.openlocfilehash: e52101b873e03cd6fcd847e9aa2a2d801f8f583d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74918859"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>クイック スタート:Bing Image Search REST API と C# を使用してイメージを検索する
@@ -201,7 +201,7 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Image Search の単一ページ アプリのチュートリアル](../tutorial-bing-image-search-single-page-app.md)
@@ -210,7 +210,7 @@ Bing Image Search API からの応答は、JSON として返されます。 こ�
 
 * [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* Bing Search API シリーズの[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
+* Bing Search API の[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
 * [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
 * [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

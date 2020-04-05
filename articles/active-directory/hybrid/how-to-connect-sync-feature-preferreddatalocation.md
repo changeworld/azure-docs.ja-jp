@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faecb0bc8cbb5ca84e9fc8bfc3cb99e2ccef1f11
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 2a71c5328c6fa85f85db4bd7e6103f6470b86d99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894562"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258330"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect (同期): Office 365 リソースの優先されるデータの場所の構成
 このトピックの目的は、Azure Active Directory (Azure AD) Connect 同期で、優先されるデータの場所の属性を構成する方法について説明することです。Office 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Office 365 データの地理的な場所を指定します。 ("*リージョン*" と *geo* という用語は、同じ意味で使用されています。)
@@ -69,7 +69,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 既定では、**preferredDataLocation** 属性は、同期に対して有効になっていません。 この機能は大規模組織に向けられたものです。 Windows Server 2019 の Active Directory スキーマには、この目的で使用する必要がある属性 **msDS-preferredDataLocation** があります。 Active Directory スキーマを更新しておらず、それを実行できない場合は、ユーザーの Office 365 geo を保持する属性を指定する必要があります。 これは、組織ごとに異なります。
 
 > [!IMPORTANT]
-> Azure AD では、**クラウドのユーザー オブジェクト**の **preferredDataLocation** 属性を、Azure AD PowerShell を使用して直接構成できます。 **同期されたユーザー オブジェクト**の **preferredDataLocation** 属性を、Azure AD PowerShell を使用して直接構成することはできなくなりました。 **同期されたユーザー オブジェクト**の preferredDataLocation 属性を構成するには、Azure AD Connect を使用する必要があります。
+> Azure AD では、**クラウドのユーザー オブジェクト**の **preferredDataLocation** 属性を、Azure AD PowerShell を使用して直接構成できます。 **同期されたユーザー オブジェクト**の preferredDataLocation 属性を構成するには、Azure AD Connect を使用する必要があります。
 
 同期を有効にする前に、以下の操作を実行します。
 
@@ -139,7 +139,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 3. 受信方向の規則を新規作成するには、 **[新しいルールの追加]** を選択します。
 4. **[説明]** タブで次の構成を指定します。
 
-    | 属性 | Value | 詳細 |
+    | 属性 | 値 | 詳細 |
     | --- | --- | --- |
     | 名前 | *名前を入力します* | 例: "In from AD – User preferredDataLocation" |
     | 説明 | "*ユーザー設定の説明を入力します*" |  |
@@ -168,7 +168,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 3. **[新しいルールの追加]** を選択します。
 4. **[説明]** タブで次の構成を指定します。
 
-    | 属性 | Value | 詳細 |
+    | 属性 | 値 | 詳細 |
     | ----- | ------ | --- |
     | 名前 | *名前を入力します* | 例: "Out to Azure AD – User preferredDataLocation" |
     | 説明 | *説明を入力します* ||
@@ -180,7 +180,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 
 5. **[スコープ フィルター]** タブに移動し、次の 2 つの句を使用して単一のスコープ フィルター グループを追加します。
 
-    | 属性 | 演算子 | Value |
+    | 属性 | 演算子 | 値 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |

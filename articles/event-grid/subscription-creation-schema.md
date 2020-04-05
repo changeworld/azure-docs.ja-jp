@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 01/23/2020
 ms.author: babanisa
 ms.openlocfilehash: 4bb04d22b762f31a02515549b698030a5267e4cd
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720760"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid サブスクリプション スキーマ
@@ -22,7 +22,7 @@ Event Grid サブスクリプションを作成するには、 Create Event サ�
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-たとえば、`examplegroup` という名前のリソース グループに、`examplestorage` という名前のストレージ アカウントのイベント サブスクリプションを作成するには、次の形式を使用します。
+たとえば、`examplestorage` という名前のリソース グループに、`examplegroup` という名前のストレージ アカウントのイベント サブスクリプションを作成するには、次の形式を使用します。
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01

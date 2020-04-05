@@ -8,10 +8,10 @@ ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
 ms.openlocfilehash: b9bac14ff47107a4b39f12989685e2e510569ba2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72757073"
 ---
 # <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>Azure Cosmos DB を使用した組み込みの分析のユース ケース
@@ -67,7 +67,7 @@ Power BI では、エンド ユーザーが自分でレポートやダッシュ�
 
 新しいデータセットがある場合は、モデルとテストの実行を開始する前に、データを検査する必要があります。 つまり、探索的データ分析を実行する必要があります。 データ探索では、いくつかの決定について通知できます。 たとえば、データでの使用に適した方法、データが特定のモデリングの前提条件を満たしているかどうか、データをクリーニングして再構築する必要があるかどうかといった詳細を見つけることができます。Azure Cosmos DB のネイティブに組み込まれた Jupyter Notebook と Apache Spark を使用することにより、トランザクション データと分析データに対して迅速かつ効果的な探索的データ分析を行うことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これらのユース ケースの使用を開始するには、次の記事に進んでください。
 

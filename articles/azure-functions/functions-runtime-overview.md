@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: ab04aa4ca7f54e8de120d078a313c3096a350aa5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74226625"
 ---
 # <a name="azure-functions-runtime-overview-preview"></a>Azure Functions Runtime の概要 (プレビュー)

@@ -1,35 +1,70 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure NetApp Files のドキュメント
+summary: Azure NetApp Files を使用して、NetApp のアカウント、容量プール、ボリュームの作成および管理、エクスポート ポリシーの構成、仮想マシンのボリュームのマウント、スナップショットの管理を行う方法について説明します。
 metadata:
   title: Azure NetApp Files のドキュメント
   description: Azure NetApp Files サービスを使用してボリュームの設定、アクセス、管理を行う方法について説明します。
-  author: b-juche
-  ms.author: b-juche
   ms.service: azure-netapp-files
   ms.topic: landing-page
-  ms.date: 04/10/2019
-abstract:
-  description: 'Azure NetApp Files を使用して、NetApp のアカウント、容量プール、ボリュームの作成および管理、エクスポート ポリシーの構成、仮想マシンのボリュームのマウント、スナップショットの管理を行う方法について説明します。 <p>Azure NetApp Files を使用するには、Azure NetApp Files サービスへのアクセス権が必要です。 アクセス権を要求するには、<a href="azure-netapp-files-register#waitlist">順番待ちリスト リクエストの送信</a>に関するページを参照してください。</p>'
-sections:
-  - title: 5 分間のクイックスタート
-    items:
-      - type: paragraph
-        text: 以下を使用し、Azure NetApp Files を設定してボリュームを作成する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/azure-netapp-files/media/index/get-started.svg'
-            text: Azure ポータル
-            href: /azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/netapp/">REST API</a></p>'
-          - title: Azure Resource Manager
-            html: '<p><a href="https://docs.microsoft.com/azure/templates/microsoft.netapp/allversions">Resource Manager テンプレート</a></p>'
+  author: b-juche
+  ms.author: b-juche
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bcca681fcae02df3e3521b48f710acd36127c882
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79369054"
+landingContent:
+- title: Azure NetApp Files について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure NetApp Files とは
+      url: azure-netapp-files-introduction.md
+    - text: ストレージ階層の理解
+      url: azure-netapp-files-understand-storage-hierarchy.md
+  - linkListType: concept
+    links:
+    - text: サービス レベル
+      url: azure-netapp-files-service-levels.md
+    - text: パフォーマンスに関する考慮事項
+      url: azure-netapp-files-performance-considerations.md
+    - text: ネットワーク計画のガイドライン
+      url: azure-netapp-files-network-topologies.md
+  - linkListType: video
+    links:
+    - text: Azure NetApp Files のビデオ
+      url: azure-netapp-files-videos.md
+- title: はじめに
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 順番待ちリクエストを送信する
+      url: azure-netapp-files-register.md#waitlist
+  - linkListType: quickstart
+    links:
+    - text: Azure NetApp Files を設定し、NFS ボリュームを作成する
+      url: azure-netapp-files-quickstart-set-up-account-create-volumes.md
+- title: 作成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: NetApp アカウントを作成する
+      url: azure-netapp-files-create-netapp-account.md
+    - text: 容量プールを設定する
+      url: azure-netapp-files-set-up-capacity-pool.md
+    - text: サブネットを Azure NetApp Files に委任する
+      url: azure-netapp-files-delegate-subnet.md
+    - text: Azure NetApp Files の SMB ボリュームを作成する
+      url: azure-netapp-files-create-volumes-smb.md
+    - text: Azure NetApp Files の NFS ボリュームを作成する
+      url: azure-netapp-files-create-volumes.md
+- title: 開発
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: REST API
+      url: azure-netapp-files-develop-with-rest-api.md
+    - text: Azure NetApp Files SDK および CLI ツール
+      url: azure-netapp-files-sdk-cli.md

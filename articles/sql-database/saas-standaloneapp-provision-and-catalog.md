@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/24/2018
 ms.openlocfilehash: 02682a18f14e7ecbf5b42783ab84a1b55a4bb77b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74133132"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>テナントごとのアプリケーション SaaS パターンを使用して、新しいテナントのプロビジョニングとカタログ化を行います
@@ -146,7 +146,7 @@ Azure Portal で作成された新しいリソースを検査できます。
 
 - マルチテナント SaaS アプリケーションの詳細については、[マルチテナント SaaS アプリケーションの設計パターン](saas-tenancy-app-design-patterns.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルで学習した内容は次のとおりです。
 

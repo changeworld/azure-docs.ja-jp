@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77123189"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>証明書の署名要求ファイルを生成する

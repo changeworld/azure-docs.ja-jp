@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 48135ea614bbab4ca6649a83895ae5f632918c61
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72387475"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する
@@ -59,7 +59,7 @@ ms.locfileid: "72387475"
     ![Xcode Interface Builder でストーリーボードを編集する][1]
 
    * **[ユーザー名]** : "*Enter Username*" というプレースホルダー テキストが入っている UI テキスト フィールドです。結果の送信ラベルのすぐ下にあり、左右の余白と、結果の送信ラベルの下の余白による制約が適用されます。
-   * **Password**:"*Enter Password*" というプレースホルダー テキストが入っている UI テキスト フィールドです。ユーザー名のテキスト フィールドのすぐ下にあり、左右の余白と、ユーザー名のテキスト フィールドの下の余白による制約が適用されます。 Attributes Inspector で *[Return Key]* の下にある **[Secure Text Entry]** オプションをオンにします。
+   * **パスワード**:"*Enter Password*" というプレースホルダー テキストが入っている UI テキスト フィールドです。ユーザー名のテキスト フィールドのすぐ下にあり、左右の余白と、ユーザー名のテキスト フィールドの下の余白による制約が適用されます。 Attributes Inspector で *[Return Key]* の下にある **[Secure Text Entry]** オプションをオンにします。
    * **Log in**: パスワードのテキスト フィールドのすぐ下にあるラベル付きの UI ボタンです。Attributes Inspector の *[Control-Content]* の下にある **[Enabled]** オプションをオフにします
    * **WNS**: Windows Notification Service に通知を送信するためのスイッチとそのラベルです。ハブ上でセットアップを済ませておく必要があります。 詳しくは、[Windows で通知ハブを使用する方法に関するチュートリアル](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)をご覧ください。
    * **GCM**: Google Cloud Messaging に通知を送信するためのスイッチとそのラベルです。ハブ上でセットアップを済ませておく必要があります。 詳しくは、[Android で通知ハブを使用する方法に関するチュートリアル](notification-hubs-android-push-notification-google-gcm-get-started.md)をご覧ください。
@@ -485,16 +485,16 @@ ms.locfileid: "72387475"
 
     ![iOS テスト アプリケーション][2]
 
-3. 登録の成功を通知するポップアップが表示されます。 Click **OK**.
+3. 登録の成功を通知するポップアップが表示されます。 **[OK]** をクリックします。
 
     ![iOS テスト通知の表示][3]
 
 4. **Recipient username tag* というテキストが表示されているフィールドに、別のデバイスから登録するときに使用したユーザー名のタグを入力します。
-5. 通知メッセージを入力して **[Send Notification]** をクリックします。 入力したタグが登録されているデバイスのみ、通知メッセージを受信します。 通知は、該当するユーザーにのみ送信されます。
+5. 通知メッセージを入力して **Send Notification**をクリックします。 入力したタグが登録されているデバイスのみ、通知メッセージを受信します。 通知は、該当するユーザーにのみ送信されます。
 
     ![iOS テストのタグ付けされた通知][4]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、タグが登録に関連付けられている特定のユーザーにプッシュ通知を送信する方法を学習しました。 場所に基づいたプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。 
 

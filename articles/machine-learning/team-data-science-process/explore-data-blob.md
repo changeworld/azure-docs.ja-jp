@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 29011760a94a05020150ceddeba4303b87c2f610
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722188"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandas を使用して Azure BLOB ストレージのデータを探索する
@@ -62,7 +62,7 @@ dataframe_blobdata = pd.read_csv(LOCALFILE)
 
 これで、データを探索し、このデータセットでの特徴を生成する準備が整いました。
 
-## <a name="blob-dataexploration"></a>Pandas を使用したデータ探索の例
+## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>Pandas を使用したデータ探索の例
 次に、Pandas を使用してデータを探索する方法の例をいくつかを示します。
 
 1. **行と列の数**

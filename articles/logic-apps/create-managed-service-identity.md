@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
 ms.openlocfilehash: 82710a66cdf7874c745070e49b2c7aff7bc8816d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77117437"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する
@@ -74,7 +74,7 @@ Azure Logic Apps では、"[*システム割り当て*](../active-directory/mana
 
    ![システム割り当て ID のオブジェクト ID](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
 
-   | プロパティ | Value | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **オブジェクト ID** | <*identity-resource-ID*> | Azure AD テナント内のロジック アプリのシステム割り当て ID を表すグローバル一意識別子 (GUID) |
    ||||
@@ -120,7 +120,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 }
 ```
 
-| プロパティ (JSON) | Value | 説明 |
+| プロパティ (JSON) | 値 | 説明 |
 |-----------------|-------|-------------|
 | `principalId` | <*principal-ID*> | Azure AD テナント内のロジック アプリを表すマネージド ID のサービス プリンシパル オブジェクトのグローバル一意識別子 (GUID)。 この GUID は、"オブジェクト ID" (`objectID`) として表されることがあります。 |
 | `tenantId` | <*Azure-AD-tenant-ID*> | ロジック アプリが現在メンバーとなっている Azure AD テナントを表すグローバル一意識別子 (GUID)。 Azure AD テナント内では、サービス プリンシパルは、ロジック アプリ インスタンスと同じ名前を持ちます。 |
@@ -160,7 +160,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 
    ![ユーザー割り当てマネージド ID を作成する](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
-   | プロパティ | Required | Value | 説明 |
+   | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **リソース名** | はい | <*user-assigned-identity-name*> | ユーザー割り当て ID に付与する名前。 この例では、"Fabrikam-user-assigned-identity" を使用します。 |
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションの名前。 |
@@ -232,7 +232,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 }
 ```
 
-| プロパティ (JSON) | Value | 説明 |
+| プロパティ (JSON) | 値 | 説明 |
 |-----------------|-------|-------------|
 | `principalId` | <*principal-ID*> | Azure AD テナント内のユーザー割り当てマネージド ID のグローバル一意識別子 (GUID) |
 | `clientId` | <*client-ID*> | 実行時の呼び出しに使用されるロジック アプリの新しい ID のグローバル一意識別子 (GUID) |
@@ -291,7 +291,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 }
 ```
 
-| プロパティ (JSON) | Value | 説明 |
+| プロパティ (JSON) | 値 | 説明 |
 |-----------------|-------|-------------|
 | `tenantId` | <*Azure-AD-tenant-ID*> | ユーザー割り当て ID が新しくメンバーとなった Azure AD テナントを表すグローバル一意識別子 (GUID)。 Azure AD テナント内では、サービス プリンシパルは、ユーザー割り当て ID 名と同じ名前を持ちます。 |
 | `principalId` | <*principal-ID*> | Azure AD テナント内のユーザー割り当てマネージド ID のグローバル一意識別子 (GUID) |
@@ -378,7 +378,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 
    たとえば、HTTP トリガーまたはアクションでは、ロジック アプリに対して有効にしたシステム割り当て ID を使用できます。 一般に、HTTP トリガーまたはアクションでは、次のプロパティを使用して、アクセスするリソースまたはエンティティを指定します。
 
-   | プロパティ | Required | 説明 |
+   | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
    | **方法** | はい | 実行する操作によって使用される HTTP メソッド |
    | **URI** | はい | ターゲットの Azure リソースまたはエンティティにアクセスするためのエンドポイント URL。 URI 構文には、通常、Azure リソースまたはサービスの[リソース ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) が含まれています。 |
@@ -394,7 +394,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 
    [Snapshot Blob 操作](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)を実行するには、HTTP アクションで次のプロパティを指定します。
 
-   | プロパティ | Required | 値の例 | 説明 |
+   | プロパティ | 必須 | 値の例 | 説明 |
    |----------|----------|---------------|-------------|
    | **方法** | はい | `PUT`| Snapshot Blob 操作で使用する HTTP メソッド |
    | **URI** | はい | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | この構文を使用する Azure Global (パブリック) 環境内の Azure Blob Storage ファイルのリソース ID |

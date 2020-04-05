@@ -12,10 +12,10 @@ ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: 5d1b0b19523eb37aa83aa59b24114be9f76ffa55
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68882766"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Bing Search API に分析を追加する
@@ -51,7 +51,7 @@ Bing では、分析データが 24 時間ごとに更新され、[分析ダッ�
 - **エンドポイント**: Bing Search API のエンドポイントです。 一覧には、有料サブスクリプションを持っているすべてのエンドポイントが含まれます。 既定では、すべてのエンドポイントが選択されています。  
 
 - **時間枠**: レポートの期間です。 以下を指定できます。
-  - **すべて**:最大 13 か月分のデータが含まれます  
+  - **[すべて]** : 最大 13 か月分のデータが含まれます  
   - **過去 24 時間**:過去 24 時間の分析情報が含まれます  
   - **過去 1 週間**:7 日前からの分析情報が含まれます  
   - **過去 1 か月**:30 日前からの分析情報が含まれます  
@@ -100,7 +100,7 @@ For example, if you don't include the User-Agent header in your calls, the dashb
 
 - **[Response Server Distribution]\(応答サーバーの分布\)** : API 要求を処理したアプリケーション サーバーです。 可能性のある値は、Bing.com (デスクトップまたはラップトップ デバイスから送信されたトラフィックの場合) および Bing.com-mobile (モバイル デバイスから送信されたトラフィックの場合) です。 サーバーは、要求の User-Agent ヘッダーの値を使用して判断されます。 要求に User-Agent ヘッダーが含まれていない場合、Bing は他の信号からサーバーの特定を試みます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Bing Search API とは](bing-api-comparison.md)
 * [Bing Search API の利用と表示の要件](use-display-requirements.md)

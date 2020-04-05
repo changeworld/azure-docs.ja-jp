@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b17026e4cfbe69e36c8e459aa259fe16b1c9d80d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014421"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Azure Active Directory 用のログ分析ビューのインストールと使用
@@ -71,7 +71,7 @@ Azure Active Directory のログ分析ビューを使用して、お使いの Az
 
 7. **[アラート ルールの作成]** を選択して、アラートを作成します。 これで、サインイン エラーが発生するたびに、アラート通知が行われるようになりました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor ログでアクティビティ ログを分析する方法](howto-analyze-activity-logs-log-analytics.md)
 * [Azure portal での Azure Monitor ログの概要](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)

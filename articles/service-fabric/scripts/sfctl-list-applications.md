@@ -15,10 +15,10 @@ ms.date: 04/13/2018
 ms.author: atsenthi
 ms.custom: ''
 ms.openlocfilehash: 41685e53eb0915f54bdc2d678191e5b767990dde
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75610269"
 ---
 # <a name="list-applications-running-in-a-service-fabric-cluster"></a>Service Fabric クラスターで実行されているアプリケーションを列挙する

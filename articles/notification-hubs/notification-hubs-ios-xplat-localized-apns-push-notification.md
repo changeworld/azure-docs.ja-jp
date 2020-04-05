@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72385653"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して iOS にローカライズされたプッシュ通知を送信する
@@ -261,7 +261,7 @@ Visual Studio にアクセスできない場合でも、ローカライズされ
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、iOS デバイスにローカライズした通知を送信しました。 iOS アプリの特定のユーザーにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

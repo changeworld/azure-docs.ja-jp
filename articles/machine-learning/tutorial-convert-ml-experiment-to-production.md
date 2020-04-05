@@ -6,13 +6,13 @@ author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 5a7c4ce6d5868efef4cfb4fbe2183ec8337ff5b6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/13/2020
+ms.openlocfilehash: f40c2b5f7134458b3f8cb492652bebf14388634c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301847"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79477138"
 ---
 # <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>チュートリアル:ML の実験コードを運用コードに変換する
 
@@ -29,7 +29,7 @@ ms.locfileid: "78301847"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [MLOpsPython テンプレート](https://github.com/microsoft/MLOpsPython/generate)を生成し、`experimentation/Diabetes Ridge Regression Training.ipynb` と `experimentation/Diabetes Ridge Regression Scoring.ipynb` ノートブックを使用します。 これらのノートブックは、実験環境から運用に変換する例として使用されます。
+- [MLOpsPython テンプレート](https://github.com/microsoft/MLOpsPython/generate)を生成し、`experimentation/Diabetes Ridge Regression Training.ipynb` と `experimentation/Diabetes Ridge Regression Scoring.ipynb` ノートブックを使用します。 これらのノートブックは、実験環境から運用に変換する例として使用されます。 これらのノートブックは、[https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation) にあります。
 - nbconvert をインストールします。 [インストール](https://nbconvert.readthedocs.io/en/latest/install.html) ページの「__nbconvert のインストール__」セクションにあるインストール手順のみに従ってください。
 
 ## <a name="remove-all-nonessential-code"></a>不要なコードをすべて削除する
@@ -74,7 +74,7 @@ joblib.dump(value=reg, filename=model_name)
 `experimentation/Diabetes Ridge Regression Training.ipynb` で、次の手順を実行します。
 
 1. パラメーター `data` および `alpha` を取って、モデルを返す、`train_model` という関数を作成します。
-1. “Train Model on Training Set” および “Validate Model on Validation Set” の見出しの下にあるコードを `train_model` 関数にコピーします。
+1. "Train Model on Training Set" および "Validate Model on Validation Set" という見出しの下にあるコードを `train_model` 関数にコピーします。
 
 `train_model` 関数は次のコードのようになります。
 
@@ -88,7 +88,7 @@ def train_model(data, alpha):
     return reg
 ```
 
-`train_model` 関数が作成されたら、“Train Model on Training Set” および “Validate Model on Validation Set” の見出しの下にあるコードを以下のステートメントに置き換えます。
+`train_model` 関数が作成されたら、"Train Model on Training Set" および "Validate Model on Validation Set" という見出しの下にあるコードを次のステートメントに置き換えます。
 
 ```python
 reg = train_model(data, alpha)
@@ -99,7 +99,7 @@ reg = train_model(data, alpha)
 `experimentation/Diabetes Ridge Regression Training.ipynb` で、次の手順を実行します。
 
 1. パラメーターを取らず、何も返さない、`main` という新しい関数を作成します。
-1. “Load Data”、“Split Data into Training and Validation Sets”、“Save Model” の見出しの下のコードを `main` 関数にコピーします。
+1. "Load Data"、"Split Data into Training and Validation Sets"、"Save Model" という見出しの下のコードを `main` 関数にコピーします。
 1. 新しく作成された `train_model` の呼び出しを `main` 関数にコピーします。
 
 `main` 関数は次のコードのようになります。
@@ -122,7 +122,7 @@ def main():
     joblib.dump(value=reg, filename=model_name)
 ```
 
-`main` 関数が作成されたら、“Load Data”、“Split Data into Training and Validation Sets”、“Save Model” の見出しの下のすべてのコードを、新しく作成された `train_model` の呼び出しとともに、次のステートメントに置き換えます。
+`main` 関数が作成されたら、"Load Data"、"Split Data into Training and Validation Sets"、"Save Model" という見出しの下のすべてのコードを、新しく作成された `train_model` の呼び出しと共に、次のステートメントに置き換えます。
 
 ```python
 main()
@@ -170,7 +170,7 @@ main()
 `experimentation/Diabetes Ridge Regression Scoring.ipynb` で、次の手順を実行します。
 
 1. パラメーターを取らず、何も返さない、`init` という新しい関数を作成します。
-1. “Load Model”の見出しの下にあるコードを `init` 関数にコピーします。
+1. "Load Model" という見出しの下にあるコードを `init` 関数にコピーします。
 
 `init` 関数は次のコードのようになります。
 
@@ -195,7 +195,7 @@ init()
     {"result": result.tolist()}
     ```
 
-1. “Prepare Data” および “Score Data” という見出しの下にあるコードを `run` 関数にコピーします。
+1. "Prepare Data" および "Score Data" という見出しの下にあるコードを `run` 関数にコピーします。
 
     `run` 関数は次のコードのようになります (変数 `raw_data` と `request_headers` を設定するステートメントを忘れずに削除してください。これらは、後で `run` 関数が呼び出されたときに使用されます)。
 
@@ -208,7 +208,7 @@ init()
         return {"result": result.tolist()}
     ```
 
-`run` 関数が作成されたら、“Prepare Data” および “Score Data” という見出しの下にあるすべてのコードを次のコードに置き換えます。
+`run` 関数が作成されたら、"Prepare Data" および "Score Data" という見出しの下にあるすべてのコードを次のコードに置き換えます。
 
 ```python
 raw_data = '{"data":[[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}'

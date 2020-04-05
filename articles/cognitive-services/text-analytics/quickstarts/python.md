@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 7f2a4ff98345aa43dd6a99eafd60ff2d05ee1bee
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75378553"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Python REST API を使用して Text Analytics Cognitive Service を呼び出す 
@@ -89,7 +89,7 @@ languages = response.json()
 pprint(languages)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```json
 {
@@ -163,7 +163,7 @@ sentiments = response.json()
 pprint(sentiments)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ドキュメントのセンチメント スコアは 0.0 と 1.0 の間であり、高いスコアは肯定的なセンチメントを示します。
 
@@ -225,7 +225,7 @@ key_phrases = response.json()
 pprint(key_phrases)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```json
 {
@@ -294,7 +294,7 @@ entities = response.json()
 pprint(entities)
 ```
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 ```json
 {
@@ -454,7 +454,7 @@ pprint(entities)
 > [!div class="nextstepaction"]
 > [Text Analytics と Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>参照 
+## <a name="see-also"></a>関連項目 
 
  [Text Analytics の概要](../overview.md)  
  [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)

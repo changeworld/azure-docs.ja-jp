@@ -1,20 +1,18 @@
 ---
 title: 銀行口座および税の情報を追加する | Azure Marketplace
 description: お使いのデベロッパー センター アカウントに、銀行口座および税の情報を追加します。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
-manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/05/2018
-ms.author: blevens
-ms.openlocfilehash: e9ad4841d805b604d0f44a9e0dc08eed15aa9c1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: 40a73e386ce618d7254ec7cb1f95dcde6f82d65a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431991"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286661"
 ---
 # <a name="add-bank-and-tax-information"></a>銀行口座および税の情報を追加する  
 

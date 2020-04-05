@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
 ms.openlocfilehash: af18a6cb45808c0af5ec2782a3fd2100e3b7bf99
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750622"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>マイクロサービスの手法を使用してアプリケーションを構築する理由は何ですか

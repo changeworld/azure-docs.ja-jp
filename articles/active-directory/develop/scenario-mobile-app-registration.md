@@ -18,10 +18,10 @@ ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75cfd304869bfb63131dfd2afed9f925c86d32fb
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132438"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Web API を呼び出すモバイル アプリを登録する

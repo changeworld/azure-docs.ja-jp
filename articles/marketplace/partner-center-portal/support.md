@@ -2,18 +2,17 @@
 title: パートナー センターで商業マーケットプレース ポータルのサポートを受ける
 description: パートナー センターでのサポート リクエストの提出方法など、サポート オプションについて学習します。
 author: qianw211
-manager: evansma
-ms.author: jamwall
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
-ms.openlocfilehash: a85d9ebb03ea0c9ebe078ad49ce6bbf40a5b004d
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: fbfc8cc29a1584dbc9f7e4ff0b73513d85950f99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927547"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281393"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>パートナー センターでの商業マーケットプレース プログラムのサポート
 

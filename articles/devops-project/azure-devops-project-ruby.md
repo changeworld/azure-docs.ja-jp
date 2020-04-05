@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure DevOps Projects を使用して Ruby on Rails 用の CI/CD パイプラインを作成する
+title: 'クイック スタート: Azure DevOps Projects を使用して Ruby on Rails 用の CI/CD パイプラインを作成する'
 description: Azure DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 いくつかの簡単な手順により、Azure サービス上で Ruby の Web アプリを起動することができます。
 ms.prod: devops
 ms.technology: devops-cicd
@@ -17,10 +17,10 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: 5cb47cdd76d1de284c4dc6dbdfbfedd0095653ab
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70899565"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-projects"></a>Azure DevOps Projects を使用して Ruby on Rails 用の CI/CD パイプラインを作成する
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、[Visual Studio
 
 Azure DevOps Projects によって、Azure Repos に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに Azure リソースも作成されます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 左側のウィンドウで、 **[リソースの作成]** を選びます。
 
@@ -140,11 +140,11 @@ Azure DevOps Projects によって、Azure DevOps 組織内に完全な CI/CD �
 1. **[ログ]** を選択します。  
     ログには、デプロイ プロセスに関する有用な情報が含まれます。 それらは、デプロイ中もデプロイ後も表示されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイック スタートで作成した Azure App Service インスタンスと関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Projects ダッシュボードで**削除**機能を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チームのニーズを満たすためのビルドおよびリリース パイプラインの変更については、以下を参照してください。
 

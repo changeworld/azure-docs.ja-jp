@@ -13,10 +13,10 @@ ms.date: 03/16/2018
 ms.author: rohink
 ms.custom: ''
 ms.openlocfilehash: e38e1255b1a84ab5d3fd37e16eb65c76001dbfa1
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938442"
 ---
 # <a name="traffic-manager-real-user-measurements-overview"></a>Traffic Manager の Real User Measurements の概要

@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 17371e3bd426ea81b5e7e07610aac0073ea972c9
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74157686"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>クイック スタート:コンソール アプリからのリアルタイム メッセージのブロードキャスト
@@ -111,7 +111,7 @@ broadcast
 
 別のクライアント名を持つ複数のクライアントを開始できます。
 
-## <a name="usage"> </a> サード パーティ サービスとの統合
+## <a name="integration-with-third-party-services"></a><a name="usage"> </a> サード パーティ サービスとの統合
 
 Azure SignalR サービスを使用すると、サードパーティのサービスをシステムに統合することができます。
 
@@ -121,8 +121,8 @@ Azure SignalR サービスを使用すると、サードパーティのサービ
 
 Version | API 状態 | Door | 固有
 --- | --- | --- | ---
-`1.0-preview` | 使用可能 | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
-`1.0` | 使用可能 | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
+`1.0-preview` | 利用可能 | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
+`1.0` | 利用可能 | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
 
 以下に示したのは、特定のバージョンごとに利用可能な API の一覧です。
 
@@ -176,7 +176,7 @@ Version | API HTTP メソッド | 要求 URL
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、REST API を使用して SignalR Service からクライアントにリアルタイム メッセージをブロードキャストする方法を学習しました。 次は、REST API を基盤に構築されている SignalR Service バインディングを使用して Functions を開発およびデプロイする方法の詳細を学習してください。
 

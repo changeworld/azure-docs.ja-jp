@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70067940"
 ---
 # <a name="mock-api-responses"></a>API の応答の模擬テストを実行する
@@ -41,7 +41,7 @@ ms.locfileid: "70067940"
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
 + [Azure API Management のポリシーの概念](api-management-howto-policies.md)を理解します。
-+ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
++ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
 
 ## <a name="create-a-test-api"></a>テスト API を作成する 
 
@@ -51,9 +51,9 @@ ms.locfileid: "70067940"
 
 1. **API Management** サービスから **[API]** を選択します。
 2. 左側のメニューで、 **[+ API の追加]** を選びます。
-3. 一覧から **[空の API]** を選択します。
-4. **[表示名]** に「*テスト API*」と入力します。
-5. **[製品]** に「*無制限*」と入力します。
+3. 一覧から **[空の API]** を選びます。
+4. *[表示名]* に「**テスト API**」と入力します。
+5. *[製品]* に「**無制限**」と入力します。
 6. **作成** を選択します。
 
 ## <a name="add-an-operation-to-the-test-api"></a>操作をテスト API に追加する
@@ -63,11 +63,11 @@ ms.locfileid: "70067940"
 1. 前の手順で作成した API を選びます。
 2. **[+ 操作の追加]** を選択します。
 
-    | Setting             | 値                             | 説明                                                                                                                                                                                   |
+    | 設定             | 値                             | 説明                                                                                                                                                                                   |
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **[表示名]**    | "*テスト呼び出し*"                       | **開発者ポータル**に表示される名前。                                                                                                                                       |
     | **URL** (HTTP 動詞) | GET                               | 定義済み HTTP 動詞のいずれかを選択できます。                                                                                                                                         |
-    | **URL**             | */test*                           | API の URL パス。                                                                                                                                                                       |
+    | **[URL]**             | */test*                           | API の URL パス。                                                                                                                                                                       |
     | **説明**     |                                   | **開発者ポータル**でこの API を使用する開発者にドキュメントを提供するために使用される操作の説明を指定します。                                                    |
     | **[クエリ]** タブ       |                                   | クエリ パラメーターを追加できます。 名前と説明を提供するだけでなく、このパラメーターに割り当て可能な値を指定することもできます。 値の 1 つを既定値としてマークすることができます (オプション)。 |
     | **[要求]** タブ     |                                   | 要求のコンテンツの種類、例、およびスキーマを定義できます。                                                                                                                                  |
@@ -97,7 +97,7 @@ ms.locfileid: "70067940"
 
     ![応答のモック作成を有効にする](./media/mock-api-responses/mock-api-responses-set-mocking.png)
 
-7. **[Save]** をクリックします。
+7. **[保存]** をクリックします。
 
 ## <a name="test-the-mocked-api"></a>モック API をテストする
 
@@ -119,7 +119,7 @@ ms.locfileid: "70067940"
 
 > [!VIDEO https://www.youtube.com/embed/i9PjUAvw7DQ]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: a95d45481bed17e46429e3a22dff4b8cc62354a9
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560492"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する

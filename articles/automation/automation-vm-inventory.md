@@ -7,10 +7,10 @@ keywords: インベントリ, オートメーション, 変更, 追跡
 ms.date: 01/28/2020
 ms.topic: conceptual
 ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844821"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>インベントリ収集による Azure 仮想マシンの管理
@@ -65,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
-|Group     | ファイルを論理的にグループ化するためのグループ名。        |
+|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |Windows レジストリ キー   | ファイル確認のためのパス。その例を次に示します。"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ### <a name="windows-files"></a>Windows ファイル
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
-|Group     | ファイルを論理的にグループ化するためのグループ名。        |
+|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス。例: "c:\temp\myfile.txt"
 
 ### <a name="linux-files"></a>Linux ファイル
@@ -83,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
-|Group     | ファイルを論理的にグループ化するためのグループ名。        |
+|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス (例: "/etc/*.conf")。       |
 |パスの種類     | 追跡する項目の種類。"ファイル" または "ディレクトリ" を指定できます。        |
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |

@@ -13,10 +13,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 9d8ea02c91dc6aec41a1b548eff148e85111fc32
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063902"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリのダウンロードとインストール

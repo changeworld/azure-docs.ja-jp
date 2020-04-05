@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: 94187cc7c0c3500a86d47a5f244457ee020581a3
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062440"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>組織でのプライバシー関連データの使用方法を表示します。

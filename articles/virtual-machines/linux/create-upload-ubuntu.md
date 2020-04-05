@@ -1,17 +1,17 @@
 ---
 title: Azure 上での Ubuntu Linux VHD の作成とアップロード
 description: Ubuntu Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。
-author: mimckitt
+author: gbowerman
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: mimckitt
-ms.openlocfilehash: cbb10d544cb299e15022ae47f00d3887d03619c0
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.author: guybo
+ms.openlocfilehash: 5fa3415d8663f358bf0ae48be46ac52b8f8b4b06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970281"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066729"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Azure 用の Ubuntu 仮想マシンの準備
 
@@ -122,7 +122,7 @@ Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud
         # sudo apt-get install walinuxagent
 
    > [!Note]
-   >  `NetworkManager` パッケージおよび `NetworkManager-gnome` パッケージがインストールされている場合、`walinuxagent` パッケージによってこれらのパッケージが削除されます。
+   >  `walinuxagent` パッケージおよび `NetworkManager` パッケージがインストールされている場合、`NetworkManager-gnome` パッケージによってこれらのパッケージが削除されます。
 
 
 1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。

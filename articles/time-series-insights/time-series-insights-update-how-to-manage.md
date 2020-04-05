@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1ec0d9c7ecf16c60c32abdf08b358268f460edb0
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087219"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのプロビジョニングと管理

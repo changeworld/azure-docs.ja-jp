@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
 ms.openlocfilehash: 1e49a0935a70a2470267e5458fa1f55e3059e965
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77469767"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Cloud Services での Azure Diagnostics の有効化

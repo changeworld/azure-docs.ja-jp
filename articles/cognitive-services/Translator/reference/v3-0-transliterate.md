@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: e6bb1541b2b668796b352bebc68d59b4ade143e3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837272"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterate
@@ -42,22 +42,22 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>language</td>
-    <td>*必須のパラメーター*。<br/>スクリプト間の変換を行うテキストの言語を指定します。 指定可能な言語は、[サポートされている言語](./v3-0-languages.md)をサービスに照会することによって得られる `transliteration` スコープにリストされます。</td>
+    <td>"*必須のパラメーター*"。<br/>スクリプト間の変換を行うテキストの言語を指定します。 指定可能な言語は、`transliteration`サポートされている言語[をサービスに照会することによって得られる ](./v3-0-languages.md) スコープにリストされます。</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*必須のパラメーター*。<br/>入力テキストによって使用されるスクリプトを指定します。 選択した言語で使用可能な入力スクリプトを確認するには、`transliteration`スコープを使用して[サポートされている言語](./v3-0-languages.md)を検索します。</td>
+    <td>"*必須のパラメーター*"。<br/>入力テキストによって使用されるスクリプトを指定します。 選択した言語で使用可能な入力スクリプトを確認するには、[スコープを使用して](./v3-0-languages.md)サポートされている言語`transliteration`を検索します。</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*必須のパラメーター*。<br/>出力スクリプトを指定します。 選択した、入力言語と入力スクリプトの組み合わせに対して使用可能な出力スクリプトを確認するには、`transliteration` スコープを使用して [サポートされている言語](./v3-0-languages.md)を検索します。</td>
+    <td>"*必須のパラメーター*"。<br/>出力スクリプトを指定します。 選択した、入力言語と入力スクリプトの組み合わせに対して使用可能な出力スクリプトを確認するには、[ スコープを使用して ](./v3-0-languages.md)サポートされている言語`transliteration`を検索します。</td>
   </tr>
 </table> 
 
 要求ヘッダーには次のものがあります。
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">ヘッダー</th>
   <th>説明</th>
   <tr>
     <td>認証ヘッダー</td>
@@ -73,7 +73,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*省略可能*。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。</td>
+    <td>*オプション*。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。</td>
   </tr>
 </table> 
 
@@ -98,9 +98,9 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 正常な応答は、入力配列内の要素ごとに 1 つの結果が含まれる JSON 配列となります。 結果オブジェクトには次のプロパティが含まれています。
 
-  * `text`:入力文字列を出力スクリプトに変換した結果である文字列。
+  * `text`: 入力文字列を出力スクリプトに変換した結果である文字列。
   
-  * `script`:出力で使用されるスクリプトを指定する文字列。
+  * `script`: 出力で使用されるスクリプトを指定する文字列。
 
 JSON 応答の例を次に示します。
 
@@ -114,7 +114,7 @@ JSON 応答の例を次に示します。
 ## <a name="response-headers"></a>応答ヘッダー
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">ヘッダー</th>
   <th>説明</th>
   <tr>
     <td>X-RequestId</td>
@@ -131,7 +131,7 @@ JSON 応答の例を次に示します。
   <th>説明</th>
   <tr>
     <td>200</td>
-    <td>成功。</td>
+    <td>正常終了しました。</td>
   </tr>
   <tr>
     <td>400</td>

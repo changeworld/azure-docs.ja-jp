@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74776387"
 ---
 # <a name="disclosure-design-guidelines"></a>開示設計のガイドライン
@@ -80,6 +80,6 @@ ms.locfileid: "74776387"
 * [合成音声テクノロジの責任あるデプロイのためのガイドライン](concepts-guidelines-responsible-deployment-synthetic.md)
 * [規制の概要](concepts-gating-overview.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [開示の設計パターン](concepts-disclosure-patterns.md)

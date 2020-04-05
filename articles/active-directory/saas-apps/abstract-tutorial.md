@@ -17,10 +17,10 @@ ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 81886fa9165269d89bde8306c5829be41952c190
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68302583"
 ---
 # <a name="tutorial-integrate-abstract-with-azure-active-directory"></a>チュートリアル:Abstract を Azure Active Directory と統合する
@@ -29,7 +29,7 @@ ms.locfileid: "68302583"
 
 * Abstract にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Abstract に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

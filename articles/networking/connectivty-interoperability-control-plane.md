@@ -1,5 +1,5 @@
 ---
-title: 'Azure バックエンド接続機能の相互運用性: コントロール プレーンの分析 | Microsoft Docs'
+title: 'Azure バックエンド接続機能の相互運用性: コントロール プレーン分析 | Microsoft Docs'
 description: この記事では、Azure における ExpressRoute、サイト間 VPN、仮想ネットワーク ピアリングの間の相互運用性を分析する際に使用できるテスト セットアップのコントロール プレーン分析について説明します。
 documentationcenter: na
 services: networking
@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 4921e4c4fc0da95250a0171c66d6a69093b10687
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873847"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Azure バックエンド接続機能の相互運用性: コントロール プレーンの分析
+# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Azure バックエンド接続機能の相互運用性: コントロール プレーン分析
 
 この記事では、[テストセットアップ][Setup] のコントロールプレーン分析について説明します。 [テスト セットアップの構成][Configuration] とテスト セットアップの[データ プレーン分析][Data-Analysis] についてもご覧ください。
 
@@ -83,7 +83,7 @@ ExpressRoute とサイト間 VPN が共存する接続を構成する方法の�
 
 詳細については、「[VPN ゲートウェイとは][VPN]」および[高可用性 NVA のデプロイ][Deploy-NVA]に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 テスト セットアップの[データ プレーン分析][Data-Analysis]と Azure ネットワーク監視機能のビューを確認します。
 

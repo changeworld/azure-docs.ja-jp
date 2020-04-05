@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace の [監査履歴] ページ
 description: Azure Marketplace の Cloud パートナー ポータルの [監査履歴] ページに関する概要です。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: pabutler
-ms.openlocfilehash: a09eca891c434a6bd836269908c3e2cf37fbd3f5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: cd9577a4bcdb1914ac0a7a23e4a98c31f6e43030
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821559"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288905"
 ---
 # <a name="audit-history-page"></a>[監査履歴] ページ
 
@@ -22,11 +21,11 @@ ms.locfileid: "73821559"
 
 ## <a name="example-page"></a>ページの例
 
-次の画像は、文字列 `contoso` でフィルター処理した **[監査履歴]** ページを示しています。
+次の画像は、文字列 **でフィルター処理した**[監査履歴]`contoso` ページを示しています。
 
 ![[監査履歴] ページ](./media/audit-history-page1.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のナビゲーション メニュー バー項目では、Cloud パートナー ポータルの [Seller Insights](./cpp-insights-page.md) 機能にアクセスします。この機能では、マーケットプレースのオファーに関するカスタマイズ可能なダッシュボードのセットが提供されます。

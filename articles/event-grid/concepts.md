@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
 ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66305269"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231343"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid の概念
 
@@ -22,12 +22,12 @@ ms.locfileid: "66305269"
 
 イベントは、システム内で発生した何かを完全に記述する最小限の情報です。 すべてのイベントは、イベントの発生元、イベントの発生時間、一意識別子などの一般的な情報を持っています。 各イベントには、特定の種類のイベントにのみ関連する情報も含まれます。 たとえば、Azure Storage に作成される新しいファイルに関するイベントには、`lastTimeModified` 値などのファイルの詳細が含まれます。 または、Event Hubs イベントには、キャプチャ ファイルの URL が含まれます。 
 
-最大 64 KB のサイズのイベントは、一般提供 (GA) サービス レベル アグリーメント (SLA) の対象になっています。 最大 1 MB のサイズのイベントのサポートは現在、プレビュー段階です。 64 KB を超えるイベントは、64 KB の増分単位で課金されます。 
+一般提供 (GA) のサービス レベル アグリーメント (SLA) では、最大 64 KB のサイズのイベントが有効範囲に含まれます。 最大 1 MB のサイズのイベントのサポートは現在、プレビュー段階です。 64 KB を超えるイベントは、64 KB の増分単位で課金されます。 
 
 
 イベントで送信されるプロパティについては、[Azure Event Grid イベント スキーマ](event-schema.md)を参照してください。
 
-## <a name="publishers"></a>発行元
+## <a name="publishers"></a>[ディストリビューターのプロパティ]
 
 発行元は、Event Grid にイベントを送信することを決定するユーザーまたは組織です。 Microsoft では、いくつかの Azure サービスのためのイベントを発行しています。 お客様独自のアプリケーションからイベントを発行することができます。 Azure を使用しないでサービスをホストしている組織は、Event Grid からイベントを発行できます。
 
@@ -70,7 +70,7 @@ Event Grid から考えると、イベント ハンドラーはイベントの�
 
 サポートされている任意の Event Grid ハンドラーの実装方法については、「[Event handlers in Azure Event Grid (Azure Event Grid 内のイベント ハンドラー)](event-handlers.md)」を参照してください。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 Event Grid は、トピックのサブスクライブと発行をセキュリティで保護します。 サブスクライブするときは、リソースまたは Event Grid トピックに対する十分なアクセス許可が必要です。 発行するときは、トピック用の SAS トークンまたはキー認証が必要です。 詳細については、「[Event Grid security and authentication](security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。
 
@@ -83,9 +83,9 @@ Event Grid は、トピックのサブスクライブと発行をセキュリテ
 カスタム トピックを使用する場合は、イベントを常に配列内で発行する必要があります。 低スループットのシナリオでは 1 つのバッチで対応できますが、高ボリュームのユース ケースでは、効率性を向上するために、発行ごとに複数のイベントを 1 つのバッチにまとめることをお勧めします。 バッチのサイズは最大 1 MB に指定できます。 各イベントが引き続き、64 KB (一般提供) または 1 MB (プレビュー) を超えないようにしてください。
 
 > [!NOTE]
-> 最大 64 KB のサイズのイベントは、一般提供 (GA) サービス レベル アグリーメント (SLA) の対象になっています。 最大 1 MB のサイズのイベントのサポートは現在、プレビュー段階です。 64 KB を超えるイベントは、64 KB の増分単位で課金されます。 
+> 一般提供 (GA) のサービス レベル アグリーメント (SLA) では、最大 64 KB のサイズのイベントが有効範囲に含まれます。 最大 1 MB のサイズのイベントのサポートは現在、プレビュー段階です。 64 KB を超えるイベントは、64 KB の増分単位で課金されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Event Grid の使用をすぐに開始するには、[Azure Event Grid でのカスタム イベントの作成とルーティング](custom-event-quickstart.md)に関する記事を参照してください。

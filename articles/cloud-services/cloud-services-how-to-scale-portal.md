@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
 ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75360839"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>ポータルでクラウド サービスの自動スケールを構成する方法
@@ -41,7 +41,7 @@ ms.locfileid: "75360839"
 クラウド サービスを選択したら、該当するクラウド サービス ブレードを表示状態にします。
 
 1. クラウド サービス ブレードの **[ロールとインスタンス]** タイルで、クラウド サービスの名前を選択します。   
-   **重要**:ロールの下にあるロール インスタンスではなく、クラウド サービス ロールを必ずクリックしてください。
+   **重要**: ロールの下にあるロール インスタンスではなく、クラウド サービス ロールを必ずクリックしてください。
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. **[スケール]** タイルを選択します。

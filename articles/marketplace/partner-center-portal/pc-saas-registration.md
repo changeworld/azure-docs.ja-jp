@@ -1,19 +1,18 @@
 ---
 title: SaaS アプリケーションを登録する | Azure Marketplace
 description: Azure portal を使用して SaaS アプリケーションを登録する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal, Azure portal
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: evansma
-ms.openlocfilehash: b2e02e42ab63f893574ca5217fd2f36c7481aabd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9c20fe34e108de95a34aabea56390e8a6f0d858f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827939"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275715"
 ---
 # <a name="register-a-saas-application"></a>SaaS アプリケーションを登録する
 
@@ -33,7 +32,7 @@ Azure では、SaaS サービスがそのエンド ユーザーに公開する�
 
 アプリケーションで Azure AD の機能を使用するには、まず Azure AD テナントにそのアプリケーションを登録する必要があります。 この登録プロセスでは、アプリケーションが配置されている URL、ユーザーが認証された後の応答の送信先となる URL、アプリを識別する URI など、アプリケーションの詳細を Azure AD に提供します。  Azure portal を使用して新しいアプリケーションを登録するには、次の手順を実行します。
 
-1.  [Azure Portal](https://portal.azure.com/) にサインインします。
+1.  [Azure portal](https://portal.azure.com/) にサインインします。
 2.  ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータルのセッションを目的のテナントに設定します。
 3.  左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** サービスをクリックし、 **[アプリの登録]** 、 **[新しいアプリケーションの登録]** の順にクリックします。
 
@@ -102,9 +101,9 @@ HTTP メソッド
 |  |  |  |
 
 
-*応答*
+*Response*
 
-|  **名前**  | **種類**       |  **説明**    |
+|  **名前**  | **Type**       |  **説明**    |
 | ---------- | -------------  | ------------------- |
 | 200 OK    | TokenResponse  | 要求成功   |
 |  |  |  |
@@ -126,6 +125,6 @@ HTTP メソッド
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD で保護されたアプリで、[SaaS Fulfillment API バージョン 2](./pc-saas-fulfillment-api-v2.md) を使用できるようになりました。

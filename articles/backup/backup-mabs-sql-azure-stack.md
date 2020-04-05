@@ -4,10 +4,10 @@ description: この記事では、Azure Stack 上の SQL Server データベー�
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 03211e1147f96429a8406c4c95654161ed2bf308
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74172304"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Azure Stack での SQL Server のバックアップ
@@ -151,7 +151,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
     回復が完了すると、復元されたデータベースはアプリケーション コンシステントになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ファイルとアプリケーションのバックアップ](backup-mabs-files-applications-azure-stack.md)に関する記事をご覧ください。
 [Azure Stack での SharePoint のバックアップ](backup-mabs-sharepoint-azure-stack.md)に関する記事を参照してください。

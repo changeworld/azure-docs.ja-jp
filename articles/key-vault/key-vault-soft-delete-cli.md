@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 940de5e100da934e0bc4efdfc6686f8040e10954
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197319"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79457323"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>CLI で Key Vault の論理的な削除を使用する方法
 
@@ -33,7 +33,7 @@ Key Vault のCLI に関する具体的なリファレンス情報については
 
 Key Vault の操作は、次のようにロールベースのアクセス制御 (RBAC) のアクセス許可で別個に管理されます。
 
-| Operation | 説明 | ユーザーのアクセス許可 |
+| 操作 | 説明 | ユーザーのアクセス許可 |
 |:--|:--|:--|
 |List|削除されたキー コンテナーの一覧を示します。|Microsoft.KeyVault/deletedVaults/read|
 |復旧|削除されたキー コンテナーを復元します。|Microsoft.KeyVault/vaults/write|
@@ -53,7 +53,7 @@ Key Vault の操作は、次のようにロールベースのアクセス制御 
 ContosoVault という名前の既存のキー コンテナーの場合、次のようにして論理的な削除を有効にします。 
 
 ```azurecli
-az resource update --id $(az keyvault show --name ContosoVault -o tsv | awk '{print $1}') --set properties.enableSoftDelete=true
+az keyvault update -n ContosoVault --enable-soft-delete true
 ```
 
 ### <a name="new-key-vault"></a>新しいキー コンテナー
@@ -155,7 +155,7 @@ az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 
 #### <a name="set-a-key-vault-access-policy"></a>キー コンテナーのアクセス ポリシーを設定する
 
-次のコマンドでは、*ContosoVault* のキーに対する複数の操作 (**purge** を含む) を使用するために、user@contoso.com のアクセス許可を付与しています。
+次のコマンドでは、user@contoso.comContosoVault *のキーに対する複数の操作 (* purge **を含む) を使用するために、** のアクセス許可を付与しています。
 
 ```azurecli
 az keyvault set-policy --name ContosoVault --key-permissions get create delete list update import backup restore recover purge
@@ -233,13 +233,13 @@ az keyvault purge --location westus --name ContosoVault
 
 コンテナーの作成時、論理的な削除と消去保護の両方をオンにするには、[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) コマンドを使用します。
 
-```
+```azurecli
 az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
 ```
 
 既存のコンテナー (論理的な削除が既に有効になっている) に消去保護を追加するには、[az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) コマンドを使用します。
 
-```
+```azurecli
 az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
 ```
 

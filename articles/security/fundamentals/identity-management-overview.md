@@ -17,10 +17,10 @@ ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
 ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77565895"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要

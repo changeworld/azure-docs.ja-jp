@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 7acff7f0249cdedcebd367fc315be92cafb9ab78
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77615435"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Unity Android アプリを作成する

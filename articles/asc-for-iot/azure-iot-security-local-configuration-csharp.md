@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74664197"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>ローカル構成ファイル (C# エージェント) について
@@ -123,9 +123,9 @@ Windows の場合:
 </ExternalInterface>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure Security Center for IoT サービスの[概要](overview.md)を読みます
-- Azure Security Center for IoT の[アーキテクチャ](architecture.md)について詳しく学習します
+- Azure Security Center for IoT の[アーキテクチャ](architecture.md)の詳細を確認します
 - Azure Security Center for IoT の[サービス](quickstart-onboard-iot-hub.md)を有効にします
 - Azure Security Center for IoT サービスの [FAQ](resources-frequently-asked-questions.md) を読みます
 - [未加工のセキュリティ データ](how-to-security-data-access.md)にアクセスする方法を学習します

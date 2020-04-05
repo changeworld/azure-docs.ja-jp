@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
 ms.openlocfilehash: 9c627c3e597fdcd3859ce02ea208fc7a8b5d612b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822856"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>SQL Database アクティブ geo レプリケーションを使用してクラウド アプリケーションのローリング アップグレードを管理する
@@ -148,7 +148,7 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 この記事で説明している 2 種類のアップグレード方法の違いは、複雑さとコストです。ただし、両方とも、ユーザーの操作が読み取り専用に制限される時間を最小限に抑えることに焦点を合わせています。 この時間は、直接的にはアップグレード スクリプトの時間で決まります。 データベースのサイズ、選択したサービス レベル、Web サイトの構成、または制御が容易でないその他の要因には左右されません。 すべての準備の手順は、アップグレードの手順から切り離されていて、運用アプリケーションに影響を与えません。 アップグレード スクリプトの効率性は、アップグレード中のユーザー エクスペリエンスを決定する重要な要素です。 そのエクスペリエンスを改善する最適な方法は、アップグレード スクリプトをできる限り効率的にすることに集中して取り組むことです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
 * Azure SQL Database アクティブ geo レプリケーションの詳細については、「[アクティブ geo レプリケーションを使用して、読み取り可能なセカンダリ データベースを作成する](sql-database-active-geo-replication.md)」を参照してください。

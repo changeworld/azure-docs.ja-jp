@@ -20,10 +20,10 @@
       href: fxt-add-storage.md
     - name: 7 - クラスターのネットワーク設定を構成する
       href: fxt-configure-network.md
-- name: ハウツー ガイド
-  items:
-    - name: クライアントをマウントする
+    - name: 8 - クライアントをマウントする
       href: fxt-mount-clients.md
+- name: 操作方法ガイド
+  items:
     - name: Azure FXT Edge Filer ハードウェアを監視する
       href: fxt-monitor.md
     - name: ハードウェア ノードの電源を安全にオフにする

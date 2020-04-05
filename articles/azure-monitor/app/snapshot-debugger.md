@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
 ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671326"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234635"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
 例外が発生したとき、実行中の Web アプリケーションからデバッグ スナップショットを自動的に収集できます。 スナップショットには、例外がスローされたときのソース コードと変数の状態が表示されます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) のスナップショット デバッガーにより、Web アプリの例外テレメトリが監視されます。 運用環境の問題の診断に必要な情報を入手できるように、スローされる上位の例外に関するスナップショットが収集されます。 [スナップショット コレクター NuGet パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)をアプリケーションに含め、必要に応じて、[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) にコレクション パラメーターを構成します。スナップショットが、Application Insights ポータルの[例外](../../azure-monitor/app/asp-net-exceptions.md)に表示されます。

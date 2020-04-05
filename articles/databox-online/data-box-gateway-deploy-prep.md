@@ -8,23 +8,23 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 0446ee4fb238d2fa8447f998536c3c14d968f630
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 74fec059bdffb91f5a7774d430e2f1897f0e863c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303207"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474460"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway のデプロイを準備する
 
-
-これは、Azure Data Box Gateway を完全にデプロイするために必要な一連のチュートリアルのうち最初のものです。 このチュートリアルでは、Data Box Gateway リソースをデプロイするために Azure portal を準備する方法を説明します。 
+これは、Azure Data Box Gateway を完全にデプロイするために必要な一連のチュートリアルのうち最初のものです。 このチュートリアルでは、Data Box Gateway リソースをデプロイするために Azure portal を準備する方法を説明します。
 
 セットアップと構成のプロセスを完了するには、管理者特権が必要です。 ポータルの準備は 10 分ほどで完了します。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * 新しいリソースを作成
 > * 仮想デバイスのイメージのダウンロード
 > * アクティブ化キーの取得
@@ -50,12 +50,11 @@ Data Box Gateway をデプロイするには、以下の順序どおりにチュ
 
 開始する前に次の点を確認します。
 
-- Microsoft Azure サブスクリプションで Data Box Gateway リソースがサポートされていること。 従量課金制のサブスクリプションもサポートされます。
-- Data Box Edge/Data Box Gateway、IoT Hub、および Azure Storage のリソースに対してリソース グループ レベルの所有者または共同作成者のアクセス許可を持っていること。
-
+* ご利用の Microsoft Azure サブスクリプションで Azure Stack Edge リソースが有効になっていること。 [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/)、[クラウド ソリューション プロバイダー (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)、[Microsoft Azure スポンサープラン](https://azure.microsoft.com/offers/ms-azr-0036p/)など、サポートされているサブスクリプションを使用していることを確認してください。
+* Data Box Edge/Data Box Gateway、IoT Hub、および Azure Storage のリソースに対してリソース グループ レベルの所有者または共同作成者のアクセス許可を持っていること。
     - Data Box Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 また、`Microsoft.DataBoxEdge` プロバイダーが登録されていることも確認する必要があります。 登録方法の詳細については、「[リソース プロバイダーの登録](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
     - Storage アカウントのリソースを作成するには、ここでも、リソース グループ レベルにスコープ指定された共同作成者以上のアクセス許可が必要になります。 Azure Storage は、既定で、登録されたリソース プロバイターになっています。
-- Azure Active Directory Graph API に対して管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
+- Microsoft Graph API に対する管理者またはユーザーのアクセス権を持っていること。 詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://docs.microsoft.com/graph/permissions-reference)」を参照してください。
 - アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
 
 ### <a name="for-the-data-box-gateway-device"></a>Data Box Gateway デバイスの場合

@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 07/01/2019
 ms.author: rohogue
 ms.openlocfilehash: acf35015ff7851f7ea2a2527852be2573512e35d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72254846"
 ---
 # <a name="what-is-azure-fxt-edge-filer-hybrid-storage-cache"></a>Azure FXT Edge Filer ハイブリッド ストレージ キャッシュとは何か
@@ -43,7 +43,7 @@ Azure FXT Edge Filer を使用して、パワー ユーザーが他の場所に�
 
 Azure FXT Edge Filer をアクセス ポイントとして使用して、データ センターをクラウド ストレージに拡張します。 
 
-## <a name="features"></a>機能 
+## <a name="features"></a>[機能] 
 
 2 種類のハードウェア モデルを利用できます。 
 
@@ -53,7 +53,7 @@ Azure FXT Edge Filer をアクセス ポイントとして使用して、デー�
 | FXT 6400 | 768 GB | 12.8 TB | 6 x 25Gb/10Gb + 2 x 1Gb |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure FXT Edge Filer の詳細については、[仕様](fxt-specs.md)または[インストールのチュートリアル](fxt-install.md)をご覧ください。
 * Azure FXT Edge Filer の購入方法については、[Azure FXT Edge Filer 製品ページ](https://azure.microsoft.com/services/fxt-edge-filer/)をご覧ください。

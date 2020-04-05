@@ -9,10 +9,10 @@ ms.date: 04/22/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: d30804d132eec3c9f324413acd68014d1adaa710
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158047"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>SignalR Service と GitHub 認証を使用した Web アプリを作成する
@@ -116,7 +116,7 @@ az webapp deployment source config-local-git --name $myWebAppName --resource-gro
 | [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) | デプロイ資格情報を更新します。 |
 | [az webapp deployment source config-local-git](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) | Web アプリのデプロイ用に複製してプッシュするための、git リポジトリ エンドポイントの URL を取得します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 

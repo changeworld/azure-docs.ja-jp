@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 7130ed43183d64b00f8f5ef1697b9a3b456ad396
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72931670"
 ---
 # <a name="create-video-reviews-using-net"></a>.NET を使用してビデオ レビューを作成する
@@ -51,7 +51,7 @@ SDK サンプルで、Azure から提供される API キーを使用する予�
 
 ![ビデオ デモのサムネイル](images/ams-video-demo-view.PNG)
 
-- マニフェスト URL にはこの [Azure Media Services デモ](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) ページの **URL** をコピーします。
+- マニフェスト URL にはこの **Azure Media Services デモ** ページの [URL](https://aka.ms/azuremediaplayer?url=https%3A%2F%2Famssamples.streaming.mediaservices.windows.net%2F91492735-c523-432b-ba01-faba6c2206a2%2FAzureMediaServicesPromo.ism%2Fmanifest) をコピーします。
 
 ビデオ フレーム (イメージ) については、次のイメージを使用します。
 
@@ -61,7 +61,7 @@ SDK サンプルで、Azure から提供される API キーを使用する予�
 
 ## <a name="create-your-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-1. お使いのソリューションに新しい**コンソール アプリ (.NET Framework)** プロジェクトを追加します。
+1. ソリューションに新しい**コンソール アプリ (.NET Framework)** プロジェクトを追加します。
 
 1. プロジェクトの名前を **VideoReviews** にします。
 
@@ -152,7 +152,7 @@ public static ContentModeratorClient NewClient()
 
 ## <a name="create-a-video-review"></a>ビデオ レビューを作成する
 
-**ContentModeratorClient.Reviews.CreateVideoReviews** でビデオ レビューを作成します。 詳細については、[API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)に関するページをご覧ください。
+**ContentModeratorClient.Reviews.CreateVideoReviews** でビデオ レビューを作成します。 詳細については、[API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)に関するページを参照してください。
 
 **CreateVideoReviews** では、次のパラメーターが必要です。
 1. MIME の種類が含まれる文字列。"application/json" にしてください。 
@@ -209,7 +209,7 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 
 ## <a name="add-video-frames-to-the-video-review"></a>ビデオ レビューにビデオ フレームを追加する
 
-**ContentModeratorClient.Reviews.AddVideoFrameUrl** (ビデオ フレームがオンラインにホストされている場合) または **ContentModeratorClient.Reviews.AddVideoFrameStream** (ビデオ フレームがローカルにホストされている場合) を使用して、ビデオ レビューにビデオ フレームを追加します。 このクイック スタートでは、ビデオ フレームがオンラインにホストされていると想定し、**AddVideoFrameUrl** を使用します。 詳しくは、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd)をご覧ください。
+**ContentModeratorClient.Reviews.AddVideoFrameUrl** (ビデオ フレームがオンラインにホストされている場合) または **ContentModeratorClient.Reviews.AddVideoFrameStream** (ビデオ フレームがローカルにホストされている場合) を使用して、ビデオ レビューにビデオ フレームを追加します。 このクイック スタートでは、ビデオ フレームがオンラインにホストされていると想定し、**AddVideoFrameUrl** を使用します。 詳細については、[API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/59e7b76ae7151f0b10d451fd)に関するページを参照してください。
 
 **AddVideoFrameUrl** では、次のパラメーターが必要です。
 1. MIME の種類が含まれる文字列。"application/json" にしてください。
@@ -404,7 +404,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力を確認する
+## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力をレビューする
 アプリケーションを実行すると、次の行に出力が表示されます。
 
 ```json
@@ -545,7 +545,7 @@ Press any key to close the application.
 
 ![人間のモデレーター用のビデオ レビュー](images/ams-video-review.PNG)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と、.NET 用のこのクイック スタートや他の Content Moderator のクイックスタートのための [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)をダウンロードする。
 

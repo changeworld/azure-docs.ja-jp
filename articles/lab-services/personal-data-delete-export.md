@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: c87e2fb534480bbf9bbe625d67782e5a11eda18c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169695"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Azure DevTest Labs から個人データをエクスポートまたは削除する
@@ -169,7 +169,7 @@ else
 | ResourceGroupName | VM が含まれているリソース グループの名前 | 
 | ResourceId | VM の完全修飾リソース ID。 |
 | ResourceUId | VM の GUID |
-| Name | 仮想マシン名。 |
+| 名前 | 仮想マシン名。 |
 | CreatedTime | VM が作成された日時。 |
 | DeletedDate | VM が削除された日時。 空の場合は、まだ削除されていません。 |
 | ResourceOwner | VM の所有者。 値が空の場合、これはクレーム可能 VM です。または、サービス プリンシパルによって作成されます。 |
@@ -197,7 +197,7 @@ else
 | ResourceGroupName | ラボが含まれているリソース グループの名前 | 
 | ResourceId | VM の完全修飾リソース ID。 |
 | ResourceUId | VM の GUID |
- |Name | 接続されたディスクの名前 |
+ |名前 | 接続されたディスクの名前 |
 | CreatedTime |データ ディスクが作成された日時。 |
 | DeletedDate | データ ディスクが削除された日時。 |
 | ResourceStatus | リソースの状態。 リソースが存在する場合は Active です。 削除された場合は Inactive です。 |

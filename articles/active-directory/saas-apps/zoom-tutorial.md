@@ -17,10 +17,10 @@ ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5f9d727154adf0a2099d7a9144c109cef9c91238
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70743967"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zoom の統合
@@ -29,7 +29,7 @@ ms.locfileid: "70743967"
 
 * Zoom にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Zoom に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -140,13 +140,13 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
 
 2. **[シングル サインオン]** タブをクリックします。
 
-    ![[Single sign-on] \(シングル サインオン\) タブ](./media/zoom-tutorial/ic784700.png "シングル サインオン")
+    ![[Single sign-on]\(シングル サインオン\) タブ](./media/zoom-tutorial/ic784700.png "シングル サインオン")
 
 3. **[セキュリティ制御]** タブをクリックし、 **[シングル サインオン]** に移動します。
 
 4. [Single Sign-On] セクションで、次の手順に従います。
 
-    ![[Single sign-on] \(シングル サインオン\) セクション](./media/zoom-tutorial/ic784701.png "シングル サインオン")
+    ![[Single sign-on]\(シングル サインオン\) セクション](./media/zoom-tutorial/ic784701.png "シングル サインオン")
 
     a. **[Sign-in page URL]\(サインイン ページの URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
@@ -166,7 +166,7 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
 
     f. **[Issuer]\(発行者\)** テキストボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。 
 
-    g. **[Save]** をクリックします。
+    g. **[保存]** をクリックします。
 
     > [!NOTE]
     > 詳しくは、Zoom のドキュメント [https://zoomus.zendesk.com/hc/articles/115005887566](https://zoomus.zendesk.com/hc/articles/115005887566) をご覧ください。

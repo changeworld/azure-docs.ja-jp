@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/12/2019
 ms.author: akjosh
 ms.openlocfilehash: bf17f499c1e8339a1e9abb13cffd5e35c390f564
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74072976"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 仮想マシンの拡張機能とその機能
@@ -74,7 +74,7 @@ CLI または Resource Manager テンプレートで Portal に追加したも�
 | microsoft.recoveryservices.vmsnapshot | [Windows 用のスナップショット](vmsnapshot-windows.md#troubleshoot-and-support) |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Linux エージェントと拡張機能のしくみの詳細については、「[Linux 用の Azure VM 拡張機能とその機能](features-linux.md)」をご覧ください。
 * Windows ゲスト エージェントと拡張機能のしくみの詳細については、「[Windows 用の Azure VM 拡張機能とその機能](features-windows.md)」を参照してください。  
 * Windows ゲスト エージェントをインストールする場合は、[Azure Windows 仮想マシン エージェントの概要](agent-windows.md)に関するページをご覧ください。  

@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: ef6ef96bf248c449b318cebaba9c53f63e448855
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c6883dfd0f4c3bc11afdd68ead8c8c84729b1880
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199162"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80065700"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約のAzure の利用状況と料金ファイルに関する用語
 
@@ -88,6 +88,8 @@ meterCategory | メーターの分類カテゴリの名前。 たとえば、*Cl
 meterSubCategory | メーターのサブ分類カテゴリの名前
 meterRegion | サービスのメーターが使用可能なリージョンの名前。 データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。
 offer | 購入したオファーの名前
+PayGPrice | リソースの小売価格。
+PricingModel | メーターに対する価格設定の方法を示す識別子 (値: オン デマンド、予約、スポット)
 productId | 料金が発生する製品の一意の識別子
 product | 料金が発生する製品の名前
 サブスクリプション ID | 料金が発生するサブスクリプションの一意の識別子

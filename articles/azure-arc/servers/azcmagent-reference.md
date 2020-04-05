@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 11/04/2019
 ms.author: robreed
 ms.openlocfilehash: d35c5e283f2e1e2f8afd431d83775167dc2a531a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73510396"
 ---
 # <a name="azure-connected-machine-agent-cli-interface"></a>Azure Connected Machine Agent CLI インターフェイス
@@ -92,11 +92,11 @@ azcmagent connect [flags]
 
 このコマンドには、"Azure に接続されたマシンのオンボード" ロールより高い特権が必要です。
 
-コンピューターが切断されたら、Azure で新しいリソースを作成する場合は、`azcmagent reconnect` ではなく `azcmagent connect` を使用します。
+コンピューターが切断されたら、Azure で新しいリソースを作成する場合は、`azcmagent connect` ではなく `azcmagent reconnect` を使用します。
 
 認証オプション:
 
-* アクセストークン `azcmagent disconnect --access-token <>`
+* アクセス トークン `azcmagent disconnect --access-token <>`
 * サービス プリンシパルの ID とシークレット `azcmagent disconnect --service-principal-id <> --service-principal-secret <> --tenant-id <tenantid>`
 * インタラクティブなデバイスのサインイン `azcmagent disconnect --tenant-id <>`
 

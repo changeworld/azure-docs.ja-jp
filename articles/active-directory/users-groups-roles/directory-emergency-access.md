@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74028127"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する
@@ -109,7 +109,7 @@ AD Domain Services および ADFS または同様の ID プロバイダーを使
 
         ![アラート ロジック](./media/directory-emergency-access/alert-image2.png)
 
-    1. **[完了]** を選択します。 これで、このアラートの月額推定コストが表示されるようになります。
+    1. **[Done]** を選択します。 これで、このアラートの月額推定コストが表示されるようになります。
 1. アラートによって通知されるユーザーのアクション グループを選択します。 作成する場合は、「[アクション グループを作成する](#create-an-action-group)」を参照してください。
 1. アクション グループのメンバーに送信されるメール通知をカスタマイズするには、 **[アクションをカスタマイズする]** でアクションを選択します。
 1. **[アラートの詳細]** で、アラート ルールの名前を指定し、必要に応じて説明を追加します。
@@ -150,7 +150,7 @@ AD Domain Services および ADFS または同様の ID プロバイダーを使
 - 異動、退職、新規採用など、最近 IT スタッフの変更があったとき
 - 組織の Azure AD サブスクリプションが変更されたとき
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](directory-admin-roles-secure.md)
 - [Azure AD を使用してユーザーを追加する](../fundamentals/add-users-azure-active-directory.md)、および[新しいユーザーをグローバル管理者ロールに割り当てる](../fundamentals/active-directory-users-assign-role-azure-portal.md)

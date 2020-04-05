@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176609"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224867"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API Management のページ コントロール
 Azure API Management には、開発者ポータル テンプレート用に次のページ コントロールが用意されています。  
@@ -47,7 +47,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 -   [subscribe-button](#subscribe-button)  
 -   [subscription-cancel](#subscription-cancel)  
   
-##  <a name="app-actions"></a> app-actions  
+##  <a name="app-actions"></a><a name="app-actions"></a> app-actions  
  `app-actions` コントロールは、開発者ポータルのユーザー プロファイル ページでアプリケーションを操作するためのユーザー インターフェイスを提供します。  
   
  ![app&#45;actions コントロール](./media/api-management-page-controls/APIM-app-actions-control.png "APIM app-actions コントロール")  
@@ -58,7 +58,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 <app-actions params="{ appId: '{{app.id}}' }"></app-actions>  
 ```  
   
-### <a name="parameters"></a>parameters  
+### <a name="parameters"></a>パラメーター  
   
 |パラメーター|説明|  
 |---------------|-----------------|  
@@ -69,7 +69,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 -   [アプリケーション](api-management-user-profile-templates.md#Applications)  
   
-##  <a name="basic-signin"></a> basic-signin  
+##  <a name="basic-signin"></a><a name="basic-signin"></a> basic-signin  
  `basic-signin` コントロールは、開発者ポータルのサインイン ページでユーザーのサインイン情報を収集するコントロールを提供します。  
   
  ![basic&#45;signin コントロール](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM basic-signin コントロール")  
@@ -80,15 +80,15 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 <basic-SignIn></basic-SignIn>  
 ```  
   
-### <a name="parameters"></a>parameters  
- なし。  
+### <a name="parameters"></a>パラメーター  
+ [なし] :  
   
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
  `basic-signin` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
 -   [サインイン](api-management-page-templates.md#SignIn)  
   
-##  <a name="paging-control"></a> paging-control  
+##  <a name="paging-control"></a><a name="paging-control"></a> paging-control  
  `paging-control` は、項目の一覧を表示する開発者ポータル ページでページング機能を提供します。  
   
  ![paging コントロール](./media/api-management-page-controls/APIM-paging-control.png "APIM paging コントロール")  
@@ -99,8 +99,8 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 <paging-control></paging-control>  
 ```  
   
-### <a name="parameters"></a>parameters  
- なし。  
+### <a name="parameters"></a>パラメーター  
+ [なし] :  
   
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
  `paging-control` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
@@ -111,7 +111,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 -   [製品リスト](api-management-product-templates.md#ProductList)  
   
-##  <a name="providers"></a> providers  
+##  <a name="providers"></a><a name="providers"></a> providers  
  `providers` コントロールは、開発者ポータルのサインイン ページで認証プロバイダーを選択するコントロールを提供します。  
   
  ![providers コントロール](./media/api-management-page-controls/APIM-providers-control.png "APIM providers コントロール")  
@@ -122,15 +122,15 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 <providers></providers>  
 ```  
   
-### <a name="parameters"></a>parameters  
- なし。  
+### <a name="parameters"></a>パラメーター  
+ [なし] :  
   
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
  `providers` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
 -   [サインイン](api-management-page-templates.md#SignIn)  
   
-##  <a name="search-control"></a> search-control  
+##  <a name="search-control"></a><a name="search-control"></a> search-control  
  `search-control` は、項目の一覧を表示する開発者ポータル ページで検索機能を提供します。  
   
  ![search コントロール](./media/api-management-page-controls/APIM-search-control.png "APIM search コントロール")  
@@ -141,8 +141,8 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 <search-control></search-control>  
 ```  
   
-### <a name="parameters"></a>parameters  
- なし。  
+### <a name="parameters"></a>パラメーター  
+ [なし] :  
   
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
  `search-control` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
@@ -151,7 +151,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 -   [製品リスト](api-management-product-templates.md#ProductList)  
   
-##  <a name="sign-up"></a> sign-up  
+##  <a name="sign-up"></a><a name="sign-up"></a> sign-up  
  `sign-up` コントロールは、開発者ポータルのサインアップ ページでユーザーのプロファイル情報を収集するコントロールを提供します。  
   
  ![sign&#45;up コントロール](./media/api-management-page-controls/APIM-sign-up-control.png "APIM sign-up コントロール")  
@@ -162,15 +162,15 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 <sign-up></sign-up>  
 ```  
   
-### <a name="parameters"></a>parameters  
- なし。  
+### <a name="parameters"></a>パラメーター  
+ [なし] :  
   
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
  `sign-up` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
 -   [サインアップ](api-management-page-templates.md#SignUp)  
   
-##  <a name="subscribe-button"></a> subscribe-button  
+##  <a name="subscribe-button"></a><a name="subscribe-button"></a> subscribe-button  
  `subscribe-button` は、ユーザーが成果物へのサブスクリプションを行うためのコントロールを提供します。  
   
  ![subscribe&#45;button コントロール](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM subscribe-button コントロール")  
@@ -181,15 +181,15 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 <subscribe-button></subscribe-button>  
 ```  
   
-### <a name="parameters"></a>parameters  
- なし。  
+### <a name="parameters"></a>パラメーター  
+ [なし] :  
   
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
  `subscribe-button` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
--   [成果物](api-management-product-templates.md#Product)  
+-   [Product](api-management-product-templates.md#Product)  
   
-##  <a name="subscription-cancel"></a> subscription-cancel  
+##  <a name="subscription-cancel"></a><a name="subscription-cancel"></a> subscription-cancel  
  `subscription-cancel` コントロールは、開発者ポータルのユーザー プロファイル ページで成果物へのサブスクリプションを取り消すコントロールを提供します。  
   
  ![subscription&#45;cancel コントロール](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM subscription-cancel コントロール")  
@@ -202,7 +202,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ```  
   
-### <a name="parameters"></a>parameters  
+### <a name="parameters"></a>パラメーター  
   
 |パラメーター|説明|  
 |---------------|-----------------|  
@@ -212,7 +212,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
  `subscription-cancel` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
--   [成果物](api-management-product-templates.md#Product)
+-   [Product](api-management-product-templates.md#Product)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

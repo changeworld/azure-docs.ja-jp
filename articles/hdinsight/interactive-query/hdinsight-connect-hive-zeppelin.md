@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 915aca0e95fce05f74477b526de047c829c7f512
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890401"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79367926"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>クイック スタート:Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する
 
@@ -23,7 +23,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-HDInsight 対話型クエリ クラスター。 HDInsight クラスターの作成については、[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)に関するセクションを参照してください。  クラスターの種類では、 **[インタラクティブ クエリ]** を必ず選択してください。
+HDInsight 対話型クエリ クラスター。 HDInsight クラスターの作成については、[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するセクションを参照してください。  クラスターの種類では、 **[インタラクティブ クエリ]** を必ず選択してください。
 
 ## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin Note を作成する
 
@@ -108,13 +108,13 @@ HDInsight 対話型クエリ クラスター。 HDInsight クラスターの作�
 
 その他の構文については、[Hive 言語マニュアル](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)を参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイックスタートを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。
 
 クラスターを削除するには、「[ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する](../hdinsight-delete-cluster.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する方法について学習しました。 Hive クエリの詳細について、次の記事で Visual Studio を使用してクエリを実行する方法を紹介します。
 

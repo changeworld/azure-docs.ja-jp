@@ -8,10 +8,10 @@ ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.openlocfilehash: 4ac8c01e986cf1f3158c615a0791ba476e5bf1bb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74706160"
 ---
 # <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>チュートリアル:Cosmos DB エンドポイントを使用して Azure Databricks を構築する
@@ -51,17 +51,17 @@ ms.locfileid: "74706160"
 
 ## <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する
 
-1. Azure Portal を開きます。 画面の左上で、 **[リソースの作成] > [データベース] > [Azure Cosmos DB]** の順に選択します。
+1. Azure portal を開きます。 画面の左上で、 **[リソースの作成] > [データベース] > [Azure Cosmos DB]** の順に選択します。
 
 2. **[基本]** タブの **[インスタンスの詳細]** に次の設定を入力します。
 
-   |Setting|値|
+   |設定|Value|
    |-------|-----|
-   |Subscription|*該当するサブスクリプション*|
+   |サブスクリプション|*該当するサブスクリプション*|
    |リソース グループ|<*該当するリソース グループ*>|
    |アカウント名|db-vnet-service-endpoint|
    |API|コア (SQL)|
-   |Location|米国西部|
+   |場所|米国西部|
    |geo 冗長性|Disable|
    |マルチリージョン書き込み|有効化|
 
@@ -159,7 +159,7 @@ ms.locfileid: "74706160"
 
     VNet に導入された Databricks ワークスペースを、サービス エンドポイントに対応した Cosmos DB リソースに正常に接続することができました。 Cosmos DB への接続方法の詳細については、[Azure Cosmos DB Connector for Apache Spark](https://github.com/Azure/azure-cosmosdb-spark) に関するページを参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、Azure Databricks ワークスペース、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、不必要な課金を回避できます。 Azure Databricks ワークスペースを後で使用する予定がある場合は、クラスターを停止し、後で再起動することができます。 この Azure Databricks ワークスペースの使用を続けない場合は、以下の手順に従って、このチュートリアルで作成したすべてのリソースを削除してください。
 
@@ -167,7 +167,7 @@ ms.locfileid: "74706160"
 
 2. リソース グループのページで **[削除]** を選択し、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** を再度選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、仮想ネットワークに Azure Databricks ワークスペースをデプロイし、Cosmos DB Spark コネクタを使用して Databricks から Cosmos DB データにクエリを実行しました。 仮想ネットワークでの Azure Databricks の操作の詳細については、Azure Databricks での SQL Server の使用に関するチュートリアルに進んでください。
 

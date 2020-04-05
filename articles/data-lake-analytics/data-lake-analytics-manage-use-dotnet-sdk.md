@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.openlocfilehash: 0a10af73d754596e9b5bb34b2974d7f1647d06f8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60617709"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Azure Data Lake Analytics .NET アプリを管理する
@@ -30,7 +30,7 @@ ms.locfileid: "60617709"
 
 ### <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
-|Package|バージョン|
+|Package|Version|
 |-------|-------|
 |[Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)| 2.3.1|
 |[Microsoft.Azure.Management.DataLake.Analytics](https://www.nuget.org/packages/Microsoft.Azure.Management.DataLake.Analytics)|3.0.0|
@@ -57,7 +57,7 @@ string rg == "<value>"; // Resource  group name
 string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (this will work, but you should pick your own)
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 Azure Data Lake Analytics にログオンするいくつかのオプションがあります。 次のスニペットは、ポップアップの対話ユーザー認証での認証の例です。
 
@@ -441,8 +441,8 @@ var newPolicyParams = new ComputePolicyCreateOrUpdateParameters(userAadObjectId,
 adlaAccountClient.ComputePolicies.CreateOrUpdate(rg, adla, "GaryMcDaniel", newPolicyParams);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure  Portal を使用して Azure Data Lake Analytics を管理する](data-lake-analytics-manage-use-portal.md)
-* [Azure  Portal を使用して Azure Data Lake Analytics ジョブの監視とトラブルシューティングを行う](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+* [Azure Portal を使用して Azure Data Lake Analytics ジョブの監視とトラブルシューティングを行う](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

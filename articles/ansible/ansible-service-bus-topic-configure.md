@@ -5,10 +5,10 @@ keywords: ansible, azure, devops, bash, プレイブック, service bus, トピ�
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: d07c7622043353a79d5a82994c2fab4f0835b453
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155796"
 ---
 # <a name="tutorial-configure-topics-in-azure-service-bus-using-ansible"></a>チュートリアル:Ansible を使用して Azure Service Bus のトピックを構成する
@@ -254,7 +254,7 @@ ansible-playbook servicebus_list.yml
 ansible-playbook servicebus_topic_policy_delete.yml
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースが不要になったら、削除してください。 
 
@@ -300,6 +300,6 @@ ansible-playbook servicebus_topic_policy_delete.yml
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"] 
 > [Azure 上の Ansible](/azure/ansible/)

@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 8d725834cb2dd86163909b2ae598e61026ae4bb9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6ce0066765de3d99f8309bf568b467518f38923e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024111"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215310"
 ---
-# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>クイック スタート:Azure portal で最初の Batch ジョブを実行する
+# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>クイック スタート: Azure Portal で最初の Batch ジョブを実行する
 
 このクイック スタートでは、Azure Portal を使用して Batch アカウント、コンピューティング ノード (仮想マシン) の "*プール*"、そのプールで基本的な "*タスク*" を実行する "*ジョブ*" を作成する方法を示します。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
 
@@ -24,7 +24,7 @@ ms.locfileid: "77024111"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン 
 
-Azure Portal ( https://portal.azure.com ) にサインインします。
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 ## <a name="create-a-batch-account"></a>Batch アカウントを作成する
 
@@ -52,11 +52,11 @@ Batch アカウントが用意できたら、テスト目的で Windows コン�
 
 1. Batch アカウントで、 **[プール]**  >  **[追加]** の順に選択します。
 
-2. *mypool* という**プール ID** を入力します。 
+2. **mypool** という*プール ID* を入力します。 
 
 3. **[オペレーティング システム]** で、次の設定を選択します (他のオプションを見つけることができます)。
   
-   |設定  |Value  |
+   |設定  |値  |
    |---------|---------|
    |**イメージの種類**|Marketplace (Linux/Windows)|
    |**発行元**     |MicrosoftWindowsServer|
@@ -67,7 +67,7 @@ Batch アカウントが用意できたら、テスト目的で Windows コン�
 
 4. 下にスクロールして、 **[ノード サイズ]** と **[スケール]** の設定を入力します。 推奨されるノード サイズは、この簡単な例についてパフォーマンスとコストのバランスが取れています。
   
-   |設定  |Value  |
+   |設定  |値  |
    |---------|---------|
    |**ノード価格レベル**     |Standard_A1|
    |**ターゲットの専用ノード数**     |2|
@@ -88,7 +88,7 @@ Batch によってすぐにプールが作成されますが、コンピュー�
 
 1. Batch アカウント ビューで、 **[ジョブ]**  >  **[追加]** の順に選択します。 
 
-2. *myjob* という**ジョブ ID** を入力します。 **[プール]** で *mypool* を選択します。 残りの設定は既定値のままにして、 **[OK]** を選択します。
+2. **myjob** という*ジョブ ID* を入力します。 **[プール]** で *mypool* を選択します。 残りの設定は既定値のままにして、 **[OK]** を選択します。
 
    ![ジョブの作成][job_create]
 
@@ -104,7 +104,7 @@ Batch を使用する場合、コマンド ラインは、アプリまたはス�
 
 1. **[追加]** を選択します。
 
-2. *mytask* という**タスク ID** を入力します。 
+2. **mytask** という*タスク ID* を入力します。 
 
 3. **[コマンド ライン]** に、「`cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`」と入力します。 残りの設定は既定値のままにして、 **[OK]** を選択します。
 

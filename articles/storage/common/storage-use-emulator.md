@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 1f13efeb5c2ebcb8b23dea6f9ae997039972f089
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 997aa9d96f2f52331865fd15d97443d74bb8bc1f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428318"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398010"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
 
@@ -175,7 +175,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 `AzureStorageEmulator.exe [start] [stop] [status] [clear] [init] [help]`
 
-### <a name="options"></a>オプション
+### <a name="options"></a>Options
 
 オプションの一覧を表示するには、コマンド プロンプトで「 `/help` 」と入力します。
 
@@ -323,8 +323,8 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 * ストレージ エミュレーターのグラフィカル ユーザー インターフェイスは非推奨になっています。 スクリプト可能なコマンド ライン インターフェイスに置き換えられました。 コマンド ライン インターフェイスの詳細については、ストレージ エミュレーター コマンド ライン ツールのリファレンスを参照してください。 グラフィカル インターフェイスはバージョン 3.0 までは引き続き存在しますが、計算エミュレーターがインストールされている場合にシステム トレイ アイコンを右クリックして [ストレージ エミュレーター UI の表示] を選択することによってのみアクセスできます。
 * Azure ストレージ サービスのバージョン 2013-08-15 が、完全にサポートされるようになりました。 (以前は、このバージョンはストレージ エミュレーター バージョン 2.2.1 プレビューだけでサポートされていました。)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* コミュニティで管理されているオープンソースのクロスプラットフォーム ストレージ エミュレーター [Azurite](https://github.com/arafato/azurite) を評価します。 
+* コミュニティで管理されているオープンソースのクロスプラットフォーム ストレージ エミュレーター [Azurite](https://github.com/azure/azurite) を評価します。 
 * 「[.NET を使用した Azure Storage サンプル](../storage-samples-dotnet.md)」には、アプリケーションを開発する際に使用できるいくつかのコード サンプルへのリンクが含まれています。
 * [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com)を使用して、ストレージ アカウント内やストレージ エミュレーター内のリソースを操作できます。

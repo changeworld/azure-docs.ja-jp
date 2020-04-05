@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 897513abcc9f829f1cbdc315208e4451ae4dbc41
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60637592"
 ---
 # <a name="import-a-postman-collection-with-live-streaming-operations"></a>ライブ ストリーミング操作による Postman コレクションのインポート 

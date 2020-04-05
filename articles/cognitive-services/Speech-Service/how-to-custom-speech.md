@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: dapine
 ms.openlocfilehash: e30587ed4d09ba792516ebc7b16529a6ee5ac57c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918956"
 ---
 # <a name="what-is-custom-speech"></a>Custom Speech とは

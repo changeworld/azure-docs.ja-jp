@@ -10,10 +10,10 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.openlocfilehash: 11fecd875385d8ba044cbe44e2270eed11d61ce1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77581551"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>クイック スタート:Azure Sentinel をオンボードする
@@ -39,7 +39,7 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
 - 特定のデータ ソースに接続するには、追加のアクセス許可が必要になる場合があります。
 - Azure Sentinel は有料サービスです。 価格情報については、[Azure Sentinel の概要](https://go.microsoft.com/fwlink/?linkid=2104058)に関するページをご覧ください。
  
-## Azure Sentinel を有効にする <a name="enable"></a>
+## <a name="enable-azure-sentinel"></a>Azure Sentinel を有効にする <a name="enable"></a>
 
 1. Azure portal にサインインします。 Azure Sentinel が作成されたときのサブスクリプションが選択されていることをご確認ください。
 

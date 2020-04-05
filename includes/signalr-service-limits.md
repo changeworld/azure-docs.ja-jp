@@ -14,10 +14,10 @@ ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: zhshang
 ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181576"
 ---
 | リソース | 既定の制限 | 上限 | 

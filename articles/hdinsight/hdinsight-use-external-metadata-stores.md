@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 14b36a391778649e96694f1cb1d3a1b4e7ee89ba
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 03/02/2020
+ms.openlocfilehash: edb2d256d3e5d98c52dbdff1162e0e030ebe2be3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327362"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233527"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight での外部メタデータ ストアの使用
 
@@ -54,6 +54,8 @@ HDInsight では、カスタム metastore もサポートします。運用ク�
 * metastore (Azure SQL DB) のコストは、選択したパフォーマンス レベルに応じて支払います。
 
 * metastore は、必要に応じて拡張できます。
+
+* クラスターと外部メタストアは、同じリージョン内でホストされる必要があります。
 
 ![HDInsight Hive メタデータ ストアのユース ケース](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 
@@ -107,6 +109,6 @@ Azure SQL Database を使用する Oozie metastore の作成手順について�
 
 HDInsight の Apache Ambari で独自の外部データベースを使用する方法については、[カスタムの Apache Ambari データベース](hdinsight-custom-ambari-db.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Apache Hadoop、Apache Spark、Apache Kafka などを使用して HDInsight でクラスターを設定する](./hdinsight-hadoop-provision-linux-clusters.md)

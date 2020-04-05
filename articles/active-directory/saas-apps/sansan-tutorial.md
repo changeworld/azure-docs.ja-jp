@@ -17,10 +17,10 @@ ms.date: 05/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea824cfd5e80ce3aff06774a2e1525cf97d15f65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67091870"
 ---
 # <a name="tutorial-integrate-sansan-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Sansan の統合
@@ -29,7 +29,7 @@ ms.locfileid: "67091870"
 
 * Sansan にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Sansan に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure portal) でアカウントを管理する。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -53,7 +53,7 @@ Azure AD への Sansan の統合を構成するには、ギャラリーから管
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Sansan**」と入力します。
-1. 結果ウィンドウで **[Sansan]** を選択し、アプリケーションを追加します。 アプリがテナントに追加される間、数秒待ちます。
+1. 結果ウィンドウで **[Sansan]** を選択し、アプリケーションを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -70,7 +70,7 @@ Sansan で Azure AD SSO を構成してテストするには、次の構成要�
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-Azure portal で Azure AD SSO を有効にするには、次の手順に従います。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. [Azure portal](https://portal.azure.com/) の **Sansan** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。

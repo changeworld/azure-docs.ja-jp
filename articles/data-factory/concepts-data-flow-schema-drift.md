@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2019
 ms.openlocfilehash: 9daf7973a2e48f866a8d0b93a682851d31dc3af7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928554"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>マッピング データ フローのスキーマの誤差
@@ -69,5 +69,5 @@ Azure Data Factory は、実行ごとに変わる柔軟なスキーマをネイ�
 
 ![誤差のマップ](media/data-flow/mapdrifted2.png "誤差のマップ")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [データ フロー式言語](data-flow-expression-functions.md)には、"byName" や "byPosition" など、列パターンとスキーマ誤差用の追加機能があります。

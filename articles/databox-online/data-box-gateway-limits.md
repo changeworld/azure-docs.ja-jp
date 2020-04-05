@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: e80b03f696a78887676e9f16750055a4dcfac230
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60755232"
 ---
 # <a name="azure-data-box-gateway-limits"></a>Azure Data Box Gateway の制限
@@ -30,9 +30,9 @@ Microsoft Azure Data Box Gateway ソリューションをデプロイおよび�
 
 | 説明 | 値 |
 |---|---|
-|デバイス あたりのファイル数 |1 億 <br> 制限は、2 TB のディスク領域ごとに最大 2500 万ファイルであり、上限は 1 億です |
-|デバイス あたりの共有数 |24 |
-|Azure ストレージ コンテナーあたりの共有数 |1 |
+|いいえ。 デバイスあたりのファイル数 |1 億 <br> 制限は、2 TB のディスク領域ごとに最大 2500 万ファイルであり、上限は 1 億です |
+|いいえ。 デバイスあたりの共有数 |24 |
+|いいえ。 数 (Azure Storage コンテナーあたり) |1 |
 |1 つの共有に書き込まれる最大サイズ ファイル|2 TB の仮想デバイスの場合、最大ファイル サイズは 500 GB です。 <br> 最大ファイル サイズは、最大 5 TB に達するまで、前の比率でデータ ディスク のサイズと増加します。 |
 
 ## <a name="azure-storage-limits"></a>Azure Storage の制限
@@ -51,6 +51,6 @@ Microsoft Azure Data Box Gateway ソリューションをデプロイおよび�
 
 [!INCLUDE [data-box-edge-gateway-storage-object-limits](../../includes/data-box-edge-gateway-storage-object-limits.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Box Gateway のデプロイを準備する](data-box-gateway-deploy-prep.md)

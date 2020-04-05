@@ -13,13 +13,13 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
 ms.openlocfilehash: 28b35f273783b2e4d0b8f59c5bc5be384b933ba2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73826891"
 ---
-# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>クイック スタート: Visual Studio Code を使って Azure SQL Database に接続して照会する
+# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>クイック スタート:Visual Studio Code を使って Azure SQL Database に接続して照会する
 
 [Visual Studio Code](https://code.visualstudio.com/docs) は、Linux、macOS、Windows に対応するグラフィカル コード エディターです。 Microsoft SQL Server、Azure SQL Database、および SQL Data Warehouse のデータを照会するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)を含む拡張機能をサポートします。 このクイック スタートでは、Visual Studio Code を使って Azure SQL データベースに接続し、Transact-SQL ステートメントを実行してデータのクエリ、挿入、更新、および削除を実行する方法について説明します。
 
@@ -34,7 +34,7 @@ ms.locfileid: "73826891"
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
   |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
-  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
+  |データの読み込み|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
   |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
   |||
 
@@ -72,7 +72,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
 
@@ -84,7 +84,7 @@ Visual Studio Code で、言語モードを **[SQL]** に設定し、mssql コ�
 
 1. 新しい Visual Studio Code ウィンドウを開きます。
 
-2. **Ctrl** + **N** キーを押します。 新しいプレーンテキスト ファイルが開きます。
+2. **Ctrl**+**N** キーを押します。 新しいプレーンテキスト ファイルが開きます。
 
 3. ステータス バーの右下隅の **[プレーン テキスト]** を選択します。
 
@@ -111,13 +111,13 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
    | **データベース名** | mySampleDatabase | 接続先のデータベース。 |
    | **認証** | SQL ログイン| このチュートリアルでは、SQL 認証を使用します。 |
    | **ユーザー名** | ユーザー名 | サーバーを作成するために使用するサーバー管理者アカウントのユーザー名。 |
-   | **[パスワード (SQL ログイン)]** | パスワード | サーバーを作成するために使用するサーバー管理者アカウントのパスワード。 |
-   | **[パスワードを保存しますか?]** | はい/いいえ | パスワードを毎回入力する手間を省くには、 **[はい]** を選択します。 |
-   | **[このプロファイルの名前を入力してください]** | プロファイル名 (**mySampleProfile** など) | 保存されたプロファイルによって、以降のログインでは、より速く接続できるようになります。 |
+   | **パスワード (SQL ログイン)** | Password | サーバーを作成するために使用するサーバー管理者アカウントのパスワード。 |
+   | **パスワードを保存しますか?** | はい、いいえ | パスワードを毎回入力する手間を省くには、 **[はい]** を選択します。 |
+   | **このプロファイルの名前を入力してください** | プロファイル名 (**mySampleProfile** など) | 保存されたプロファイルによって、以降のログインでは、より速く接続できるようになります。 |
 
    成功した場合、プロファイルが作成され接続されたことを示す通知が表示されます。
 
-## <a name="query-data"></a>データのクエリを実行する
+## <a name="query-data"></a>クエリ データ
 
 次の [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントによるクエリを実行して、カテゴリごとに上位 20 個の製品を照会します。
 
@@ -130,11 +130,11 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. **Ctrl** + **Shift** + **E** キーを押してクエリを実行し、`Product` および `ProductCategory` テーブルからの結果を表示します。
+2. **Ctrl**+**Shift**+**E** キーを押してクエリを実行し、`Product` および `ProductCategory` テーブルからの結果を表示します。
 
     ![2 つのテーブルからデータを取得するクエリ](./media/sql-database-connect-query-vscode/query.png)
 
-## <a name="insert-data"></a>データを挿入する
+## <a name="insert-data"></a>データの挿入
 
 次の [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを実行して、`SalesLT.Product` テーブルに新しい製品を追加します。
 
@@ -160,7 +160,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
          ,GETDATE() );
    ```
 
-2. **Ctrl** + **Shift** + **E** キーを押して、`Product` テーブルに新しい行を挿入します。
+2. **Ctrl**+**Shift**+**E** キーを押して、`Product` テーブルに新しい行を挿入します。
 
 ## <a name="update-data"></a>データの更新
 
@@ -174,7 +174,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
    WHERE Name = 'myNewProduct';
    ```
 
-2. **Ctrl** + **Shift** + **E** キーを押して、`Product` テーブルの指定した行を更新します。
+2. **Ctrl**+**Shift**+**E** キーを押して、`Product` テーブルの指定した行を更新します。
 
 ## <a name="delete-data"></a>データの削除
 
@@ -187,9 +187,9 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
    WHERE Name = 'myNewProduct';
    ```
 
-2. **Ctrl** + **Shift** + **E** キーを押して、`Product` テーブルの指定した行を削除します。
+2. **Ctrl**+**Shift**+**E** キーを押して、`Product` テーブルの指定した行を削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - SQL Server Management Studio を使用して接続と照会を行うには、「[クイック スタート: SQL Server Management Studio を使用して Azure SQL Database に接続しクエリを実行する](sql-database-connect-query-ssms.md)」を参照してください。
 - Azure portal を使用して接続と照会を行うには、「[クイック スタート: Azure portal の SQL クエリ エディターを使って接続とデータの照会を行う](sql-database-connect-query-portal.md)」を参照してください。

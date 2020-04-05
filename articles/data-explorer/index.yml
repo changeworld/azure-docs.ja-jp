@@ -1,77 +1,154 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Data Explorerのドキュメント
+### YamlMime:Landing
+title: Azure Data Explorer のドキュメント
+summary: Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使うと、多種多様なデータを収集、格納、分析することによって、製品の改良、カスタマー エクスペリエンスの強化、デバイスの監視、操作の向上を実現できます。
 metadata:
-  title: Azure Data Explorer のクイックスタート、チュートリアル、クエリ言語と API のドキュメント
+  title: Azure Data Explorer のドキュメント
   description: Azure Data Explorerは、アドホック ビッグ データ クエリに最適化されたログ分析クラウド プラットフォームです。
-  author: orspod
-  ms.author: orspodek
   ms.service: data-explorer
   ms.topic: landing-page
-  ms.date: 03/24/2019
-abstract:
-  description: <p>Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使うと、多種多様なデータを収集、格納、分析することによって、製品の改良、カスタマー エクスペリエンスの強化、デバイスの監視、操作の向上を実現できます。</p><p>Microsoft が提供するクイック スタート、チュートリアル、リファレンス コンテンツを利用して、Azure Data Explorerの使用方法を学習してください。</p>
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: 'Azure Data Explorerとは (19:47)'
-    href: 'https://youtu.be/D_AJk2lAepw'
-    width: 250
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Azure Data Explorerをプロビジョニングして使用する方法を学習します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/data-explorer/media/index/portal.svg
-            text: クラスターとデータベースを作成する
-            href: /azure/data-explorer/create-cluster-database-portal
-          - image:
-              src: /azure/data-explorer/media/index/portal.svg
-            text: Event Hubs からストリーミング データを取り込む
-            href: /azure/data-explorer/ingest-data-event-hub
-          - image:
-              src: /azure/data-explorer/media/index/portal.svg
-            text: Web UI を使用してデータを照会する
-            href: /azure/data-explorer/web-query-data
-          - image:
-              src: /azure/data-explorer/media/index/logo-python.svg
-            text: Python を使用してキューに登録されたデータを取り込む
-            href: /azure/data-explorer/python-ingest-data
-          - image:
-              src: /azure/data-explorer/media/index/logo-python.svg
-            text: Python を使用してデータを照会する
-            href: /azure/data-explorer/python-query-data
-  - title: ステップバイステップ チュートリアル
-    items:
-      - type: paragraph
-        text: エンド ツー エンド ソリューションを構築する方法を学習します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/data-explorer/visualize-power-bi">Power BI で Azure Data Explorerからデータを視覚化する</a>
-  - title: 無料の Pluralsight ビデオ トレーニング
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure Data Exlorerのクエリ言語
-            href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
-            image:
-              src: /azure/data-explorer/media/index/logo-pluralsight.svg
-              href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 言語および API
-            html: '<p><a href="https://aka.ms/kustolangref">クエリ言語、管理コマンド、API</a>'
+  author: orspod
+  ms.author: orspodek
+  ms.date: 03/19/2020
+  ms.openlocfilehash: f00722d273ed95d82d433b66750e0a2211f04ee3
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80065626"
+landingContent:
+- title: Azure Data Explorer について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Data Explorerとは
+      url: data-explorer-overview.md
+  - linkListType: video
+    links:
+    - text: Azure Data Explorerとは (19:47)
+      url: https://youtu.be/D_AJk2lAepw
+    - text: Pluralsight:ゼロから始める Kusto クエリ言語 (KQL)
+      url: https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch
+- title: クラスターとデータベースの作成
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: クラスターとデータベースを作成する
+      url: create-cluster-database-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: Python
+      url: create-cluster-database-python.md
+    - text: Azure Resource Manager テンプレート
+      url: create-cluster-database-resource-manager.md
+    - text: C#
+      url: create-cluster-database-csharp.md
+    - text: PowerShell
+      url: create-cluster-database-powershell.md
+    - text: Azure CLI
+      url: create-cluster-database-cli.md
+- title: Azure Data Explorer へのデータの取り込み
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: データ取り込みの概要
+      url: ingest-data-overview.md
+  - linkListType: quickstart
+    links:
+    - text: サンプル データを取り込む
+      url: ingest-sample-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: ワンクリックでのインジェスト
+      url: ingest-data-one-click.md
+    - text: ストリーミング インジェスト
+      url: ingest-data-streaming.md
+    - text: Python
+      url: python-ingest-data.md
+    - text: Azure portal を使用したイベント ハブ
+      url: ingest-data-event-hub.md
+    - text: Azure portal を使用した Event Grid
+      url: ingest-data-event-grid.md
+    - text: LightIngest のインストールと使用
+      url: lightingest.md
+- title: クエリ データ
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Web UI を使用してデータにクエリを実行する
+      url: web-query-data.md
+  - linkListType: tutorial
+    links:
+    - text: KQL クエリの記述
+      url: write-queries.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Data Lake でデータのクエリを実行する
+      url: data-lake-query-data.md
+    - text: Python を使用したデータのクエリ
+      url: python-query-data.md
+    - text: 時系列分析
+      url: time-series-analysis.md
+  - linkListType: reference
+    links:
+    - text: KQL クイック リファレンス
+      url: kql-quick-reference.md
+    - text: Kusto クエリ言語
+      url: https://docs.microsoft.com/azure/kusto/query/
+- title: データの視覚化
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: データ視覚化の概要
+      url: viz-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Power BI コネクタ
+      url: power-bi-connector.md
+    - text: Grafana
+      url: grafana.md
+    - text: ODBC コネクタ
+      url: connect-odbc.md
+    - text: Tableau
+      url: tableau.md
+    - text: Kibana (K2Bridge コネクタ)
+      url: k2bridge.md
+    - text: Redash
+      url: redash.md
+    - text: SiSense
+      url: sisense.md
+- title: 他のツールとの統合
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Data Factory との統合
+      url: data-factory-integration.md
+    - text: Apache Spark コネクタ
+      url: spark-connector.md
+    - text: Microsoft Flow コネクタ
+      url: flow.md
+    - text: Azure DevOps
+      url: devops.md
+- title: リソースやデータの管理と監視
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: クラスターの水平スケーリングを管理する
+      url: manage-cluster-horizontal-scaling.md
+    - text: クラスターの垂直スケーリングを管理する
+      url: manage-cluster-vertical-scaling.md
+    - text: フォロワー データベース
+      url: follower.md
+    - text: データベースのアクセス許可を管理する
+      url: manage-database-permissions.md
+    - text: メトリックを使用してクラスターの正常性を監視する
+      url: using-metrics.md
+    - text: 診断ログを使用してインジェストを監視する
+      url: using-diagnostic-logs.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 管理コマンド
+      url: https://docs.microsoft.com/azure/kusto/management/
+    - text: Azure Data Explorer API
+      url: https://docs.microsoft.com/azure/kusto/api/

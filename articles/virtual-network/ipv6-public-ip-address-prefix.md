@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 10/15/2019
 ms.author: kumud
 ms.openlocfilehash: 8254a7d86d5cadc2ddc03940f4ab2d08de74bd86
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72965174"
 ---
 # <a name="reserved-public-ipv6-address-prefix-preview"></a>予約されたパブリック IPv6 アドレスのプレフィックス (プレビュー)
@@ -50,7 +50,7 @@ IPv6 は、基本的なパブリック IP で "動的" 割り当てでのみサ�
 
 ベスト プラクティスとして、IPv6 アプリケーションには標準パブリック IP と Standard Load Balancer を使用することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - パブリック [IPv6 アドレスのプレフィックス](ipv6-reserve-public-ip-address-prefix.md)を予約します。
 - [IPv6 アドレス](ipv6-overview.md)の詳細について学習します。
 - Azure で[パブリック IP (IPv4 と IPv6 の両方) を作成し、使用する方法](virtual-network-public-ip-address.md)について学習します。

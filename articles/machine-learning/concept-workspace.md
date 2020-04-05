@@ -10,10 +10,10 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77505582"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
@@ -81,7 +81,7 @@ ms.locfileid: "77505582"
 > [!WARNING]
 > Azure Machine Learning ワークスペースを別のサブスクリプションに移動したり、所有するサブスクリプションを新しいテナントに移動したりすることは、サポートされていません。 エラーの原因になります。
 
-## <a name='create-workspace'></a> ワークスペースを作成する
+## <a name="create-a-workspace"></a><a name='create-workspace'></a> ワークスペースを作成する
 
 ワークスペースを作成するときに、[Basic Edition または Enterprise Edition](overview-what-is-azure-ml.md#sku) のどちらを使用して作成するかを決定します。 エディションによって、ワークスペースで使用できる機能が決まります。 Enterprise Edition では、機能の中でも、[Azure Machine Learning デザイナー](concept-designer.md)および studio バージョンの[自動化された機械学習実験](tutorial-first-experiment-automated-ml.md)の構築を利用できます。  詳細と価格情報については、「[Azure Machine Learning の価格](https://azure.microsoft.com/pricing/details/machine-learning/)」を参照してください。
 
@@ -95,11 +95,11 @@ ms.locfileid: "77505582"
 > [!NOTE]
 > ワークスペース名では、大文字と小文字は区別されません。
 
-## <a name="upgrade"></a> Enterprise Edition へのアップグレード
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a> Enterprise Edition へのアップグレード
 
 Azure portal を使用して、[ワークスペースを Basic から Enterprise Edition にアップグレード](how-to-manage-workspace.md#upgrade)できます。 Enterprise Edition ワークスペースを Basic Edition ワークスペースにダウングレードすることはできません。 
 
-## <a name="resources"></a> 関連するリソース
+## <a name="associated-resources"></a><a name="resources"></a> 関連するリソース
 
 新しいワークスペースを作成すると、ワークスペースによって使用される複数の Azure リソースが自動的に作成されます。
 

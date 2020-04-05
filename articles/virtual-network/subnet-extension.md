@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2019
 ms.author: anupand
 ms.openlocfilehash: f718471c3f79e9a33b0e03b088f8c8d2ae0231d3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73586848"
 ---
 # <a name="subnet-extension"></a>サブネットの拡張
@@ -52,5 +52,5 @@ ms.locfileid: "73586848"
 
 次のセクションでは、Azure でテストしたサブネットの拡張ソリューションの詳細について説明します。
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 [ベンダー ソリューションを使用して、サブネットを Azure に拡張します。](https://github.com/microsoft/Azure-LISP)

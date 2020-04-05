@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と JIRA SAML SSO by Microsoft (V5.2) の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と JIRA SAML SSO by Microsoft (V5.2) の統合 | Microsoft Docs'
 description: Azure Active Directory と JIRA SAML SSO by Microsoft (V5.2) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3b304bb35ea69906fc9576f45733134387be1b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67099511"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>チュートリアル:Azure Active Directory と JIRA SAML SSO by Microsoft (V5.2) の統合
+# <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Azure Active Directory と JIRA SAML SSO by Microsoft (V5.2) の統合
 
 このチュートリアルでは、JIRA SAML SSO by Microsoft (V5.2) と Azure Active Directory (Azure AD) を統合する方法について説明します。
 JIRA SAML SSO by Microsoft (V5.2) と Azure AD の統合には、次の利点があります。
@@ -58,11 +58,11 @@ JIRA SAML SSO by Microsoft (V5.2) と Azure AD の統合を構成するには、
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、1 か月の試用版を[無料試用版の提供](https://azure.microsoft.com/pricing/free-trial/)のページで入手できます。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 ## <a name="supported-versions-of-jira"></a>サポートされている JIRA のバージョン
 
-* JIRA Core と Software:5.2
+* JIRA Core と Software: 5.2
 * JIRA では、6.0 から 7.12 もサポートされています。 詳細については、[JIRA SAML SSO by Microsoft](jiramicrosoft-tutorial.md) をクリックしてください。
 
 > [!NOTE]

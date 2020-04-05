@@ -5,15 +5,15 @@ services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/06/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: 7c60728ab501d03e9c40928e730225575e76efbc
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b447f44d0c95693e560fd5bbfbff8c8daeec964e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023822"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157689"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>1 つまたは複数のルールから実行する複数のアクションをグループ化する
 

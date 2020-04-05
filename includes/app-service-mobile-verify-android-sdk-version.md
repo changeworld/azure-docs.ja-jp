@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 46cfb27b8bde95990d13ec4bca4e96f25cfe9dc5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181690"
 ---
 Android SDK の開発が継続中であるため、Android Studio にインストールされている Android SDK のバージョンが、コードのバージョンと一致しない可能性があります。 このチュートリアルで参照している Android SDK は、記事の執筆時点で最新のバージョンである、バージョン 26 です。 SDK の新しいリリースが登場するにつれてバージョン番号が大きくなる可能性があるので、入手可能な最新バージョンを使用することをお勧めします。

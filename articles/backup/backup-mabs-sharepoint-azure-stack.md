@@ -4,10 +4,10 @@ description: Azure Backup Server を使用して、Azure Stack 上の SharePoint
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: d080605022cadf121fa6be99c9758fe9c0d878ef
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673030"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Azure Stack 上の SharePoint ファームのバックアップ
@@ -20,7 +20,7 @@ MABS 用 Azure Backup は、次のシナリオをサポートします。
 
 | ワークロード | Version | SharePoint のデプロイ | 保護と回復 |
 | --- | --- | --- | --- |
-| SharePoint |SharePoint 2016、SharePoint 2013、SharePoint 2010 |Azure Stack 仮想マシンとしてデプロイされた SharePoint <br> -------------- <br> SQL AlwaysOn | SharePoint ファームの保護の回復オプション: ディスク復旧ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
+| SharePoint |SharePoint 2016、SharePoint 2013、SharePoint 2010 |Azure Stack 仮想マシンとしてデプロイされた SharePoint <br> -------------- <br> SQL AlwaysOn | SharePoint ファームの保護の回復オプション: ディスク回復ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -232,11 +232,11 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
 
 ## <a name="faqs"></a>FAQ
 
-Q:SharePoint が SQL AlwaysOn を使用して構成されている場合 (ディスクでの保護)、SharePoint アイテムを元の場所に回復できますか?<br>
-A:はい、元の SharePoint サイトにアイテムを回復できます。
+Q: SharePoint が SQL AlwaysOn を使用して構成されている場合 (ディスクでの保護)、SharePoint アイテムを元の場所に回復できますか?<br>
+A: はい、元の SharePoint サイトにアイテムを回復できます。
 
-Q:SharePoint が SQL AlwaysOn を使用して構成されている場合、SharePoint データベースを元の場所に回復できますか?<br>
-A:SharePoint データベースは SQL AlwaysOn で構成されているので、可用性グループを削除しない限り、変更することはできません。 結果として、MABS は元の場所にデータベースを復元できません。 SQL Server データベースを別の SQL Server インスタンスに回復することはできます。
+Q: SharePoint が SQL AlwaysOn を使用して構成されている場合、SharePoint データベースを元の場所に回復できますか?<br>
+A: SharePoint データベースは SQL AlwaysOn で構成されているので、可用性グループを削除しない限り、変更することはできません。 結果として、MABS は元の場所にデータベースを復元できません。 SQL Server データベースを別の SQL Server インスタンスに回復することはできます。
 
 ## <a name="next-steps"></a>次のステップ
 

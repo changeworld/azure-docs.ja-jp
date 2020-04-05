@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73176794"
 ---
 # <a name="developer-portal-templates"></a>開発者ポータル テンプレート
@@ -30,7 +30,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-##  <a name="DeveloperPortalTemplates"></a> 開発者ポータル テンプレート  
+##  <a name="developer-portal-templates"></a><a name="DeveloperPortalTemplates"></a> 開発者ポータル テンプレート  
   
 -   [API](api-management-api-templates.md)  
     -   [API リスト](api-management-api-templates.md#APIList)  
@@ -46,7 +46,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [成果物](api-management-product-templates.md)  
     -   [製品リスト](api-management-product-templates.md#ProductList)  
-    -   [成果物](api-management-product-templates.md#Product)  
+    -   [Product](api-management-product-templates.md#Product)  
 -   [アプリケーション](api-management-application-templates.md)  
     -   [アプリケーション リスト](api-management-application-templates.md#ProductList)  
     -   [Application](api-management-application-templates.md#Application)  
@@ -62,7 +62,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
     -   [サインアップ](api-management-page-templates.md#SignUp)  
     -   [ページが見つかりません](api-management-page-templates.md#PageNotFound)
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 + [テンプレート リファレンス](api-management-developer-portal-templates-reference.md)  
 + [データ モデル リファレンス](api-management-template-data-model-reference.md)  

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fae9b8a2101329383cc90c8f7f0ff225e3a9059c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d2f25f2b786686b8af9bad4ea8ce3c8aea9b589f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913820"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371455"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Google マップから Web サービスを移行する
 
@@ -75,11 +75,11 @@ Azure Maps により、住所をジオコーディングするための複数の
 検索サービスの使用方法の例については、[こちら](how-to-search-for-address.md)を参照してください。 [検索のベスト プラクティス](how-to-use-best-practices-for-search.md)をぜひご覧ください。
 
 > [!TIP]
-> 自由形式のアドレスのジオコーディング API とあいまい検索 API は、`&amp;typeahead=true` を要求 URL に追加することにより、オートコンプリート モードで使用できます。 これにより、入力テキストが完全ではない可能性がサーバーに通知され、検索は予測モードになります。
+> 自由形式のアドレスのジオコーディング API とあいまい検索 API は、`&typeahead=true` を要求 URL に追加することにより、オートコンプリート モードで使用できます。 これにより、入力テキストが完全ではない可能性がサーバーに通知され、検索は予測モードになります。
 
 ## <a name="reverse-geocode-a-coordinate"></a>座標の逆ジオコーディング
 
-逆ジオコーディングは、地理座標をおおよその住所に変換するプロセスです。 "経度: -122.1298、緯度:47.64005" という座標は、"1 Microsoft way, Redmond, WA" に変換されます。
+逆ジオコーディングは、地理座標をおおよその住所に変換するプロセスです。 "経度: -122.1298、緯度: 47.64005" という座標は、"1 Microsoft way, Redmond, WA" に変換されます。
 
 Azure Maps では、複数の逆ジオコーディング メソッドが提供されています。
 
@@ -126,7 +126,7 @@ Azure Maps には、目的地を検索するための複数の検索 API が用�
 現在、Azure Maps には、Google マップのテキスト検索 API に相当する API はありません。
 
 > [!TIP]
-> POI 検索、POI カテゴリ検索、あいまい検索の各 API は、`&amp;typeahead=true` を要求 URL に追加することにより、オートコンプリート モードで使用できます。 これにより、入力テキストが完全ではない可能性がサーバーに通知されます。API によって検索が予測モードで実行されます。
+> POI 検索、POI カテゴリ検索、あいまい検索の各 API は、`&typeahead=true` を要求 URL に追加することにより、オートコンプリート モードで使用できます。 これにより、入力テキストが完全ではない可能性がサーバーに通知されます。API によって検索が予測モードで実行されます。
 
 [検索のベスト プラクティス](how-to-use-best-practices-for-search.md)に関するドキュメントをご覧ください。
 
@@ -222,6 +222,8 @@ Azure Maps のルート指定 API には、Google マップでは利用できな
 
 これに加えて、Azure Maps のルート サービスでは、[ルーティング可能な範囲の計算](https://docs.microsoft.com/rest/api/maps/route/getrouterange)もサポートされます。 ルーティング可能な範囲の計算は、等時間マップとも呼ばれます。 その際、出発地点から任意の方向に移動できる領域をカバーする多角形が生成されます。 そのすべては、指定された時間内または燃料や充電の残量内で行われます。
 
+[ルート指定のベスト プラクティス](how-to-use-best-practices-for-routing.md)に関するドキュメントをご覧ください。
+
 ## <a name="retrieve-a-map-image"></a>マップ イメージを取得する
 
 Azure Maps には、静的マップ イメージにデータを重ねてレンダリングするための API が用意されています。 Azure Maps の[マップ画像のレンダリング](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile) API は、Google マップの静的マップ API に相当します。
@@ -285,7 +287,7 @@ Google マップのカスタム アイコンには、次のスタイル オプ�
 - `anchor` - アイコン イメージを座標に合わせて配置する方法を指定します。 ピクセル (x,y) 値、または値 `top`、`bottom`、`left`、`right`、`center`、`topleft`、`topright`、`bottomleft`、`bottomright` のいずれかを指定できます。
 - `icon` - アイコン イメージを指す URL。
 
-たとえば、マップの経度: -110、緯度: 45 位置に、赤色で中サイズのマーカーを追加してみましょう。
+たとえば、マップの経度: -110、緯度: 45 の位置に、赤色で中サイズのマーカーを追加してみましょう。
 
 ```
 &markers=color:red|size:mid|45,-110
@@ -327,7 +329,7 @@ Azure Maps では、ピンの位置を "経度 緯度" 形式で指定する必�
 
 それぞれのピン位置に使用するラベルの値を指定します。 このアプローチの方が、場所の一覧内にあるすべてのマーカーに単一のラベル値を適用するよりも効率的です。 ラベル値には、複数の文字で構成される文字列を指定することができます。 また、スタイルや場所の値として誤って解釈されないようにするため、その文字列を一重引用符で囲むこともできます。
 
-赤色 (`FF0000`) の既定のアイコンを追加し、その下 (15 50) に "Space Needle" というラベルを配置しましょう。 アイコンの位置は、経度: -122.349300、緯度:47.620180 です。
+赤色 (`FF0000`) の既定のアイコンを追加し、その下 (15 50) に "Space Needle" というラベルを配置しましょう。 アイコンの位置は、経度: -122.349300、緯度: 47.620180 です。
 
 ```
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
@@ -437,6 +439,8 @@ Azure Maps には、距離行列 API が用意されています。 場所のセ
 > [!TIP]
 > Azure Maps のルート指定 API で使用できる高度なルート指定オプションはすべて、Azure Maps 距離行列 API でサポートされます。 高度なルート指定オプションには、トラック ルート指定、エンジン仕様などがあります。
 
+[ルート指定のベスト プラクティス](how-to-use-best-practices-for-routing.md)に関するドキュメントをご覧ください。
+
 ## <a name="get-a-time-zone"></a>タイム ゾーンを取得する
 
 Azure Maps には、座標のタイム ゾーンを取得するための API が用意されています。 Azure Maps のタイム ゾーン API は、Google マップのタイム ゾーン API に相当します。
@@ -476,6 +480,7 @@ Azure Maps REST サービスに関するその他のドキュメントとリソ�
 
 - [検索のベスト プラクティス](how-to-use-best-practices-for-search.md)
 - [住所の検索](how-to-search-for-address.md)
+- [ルート指定のベスト プラクティス](how-to-use-best-practices-for-routing.md)
 - [Azure Maps REST サービス API のリファレンス ドキュメント](https://docs.microsoft.com/rest/api/maps/)
 
 ## <a name="next-steps"></a>次のステップ
@@ -486,7 +491,10 @@ Azure Maps REST サービスの詳細について学習します。
 > [検索サービスを使用するためのベスト プラクティス](how-to-use-best-practices-for-search.md)
 
 > [!div class="nextstepaction"]
-> [サービス モジュール (Web SDK) の使用方法](how-to-use-services-module.md)
+> [ルート指定サービスを使用するためのベスト プラクティス](how-to-use-best-practices-for-search.md)
+
+> [!div class="nextstepaction"]
+> [サービス モジュール (Web SDK) の使用方法](how-to-use-best-practices-for-routing.md)
 
 > [!div class="nextstepaction"]
 > [コード サンプル](https://docs.microsoft.com/samples/browse/?products=azure-maps)

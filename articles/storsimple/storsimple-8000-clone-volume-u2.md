@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 12/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 84734aefb72a3330d99c5707b461de2cd5e30484
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60637908"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228247"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Azure ポータルで StorSimple デバイス マネージャー サービスを使用してボリュームを複製する
 
@@ -117,7 +117,7 @@ StorSimple デバイス マネージャー サービスの **[バックアップ
 ### <a name="testing-in-the-production-environment-with-a-permanent-clone"></a>永続的な複製による運用環境でのテスト
 運用環境でテストのバグを確認する場合を考えます。 運用環境でボリュームの複製を作成し、この複製のクラウド スナップショットを作成して、複製された独立したボリュームを作成します。 このシナリオでは、永続的な複製を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [バックアップ セットからの StorSimple ボリュームの復元方法](storsimple-8000-restore-from-backup-set-u2.md)
 * [StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを管理する](storsimple-8000-manager-service-administration.md)方法について説明します。
 

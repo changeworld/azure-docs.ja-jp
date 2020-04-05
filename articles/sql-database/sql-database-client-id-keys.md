@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: d357740d340b248859d6dfadf73f83b6e6bb8014
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 5b2c64660f37745f5b13d53559037e84ca20c47b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421329"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476968"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>コードから SQL Database にアクセスするアプリケーションを認証するための必要な値を取得する
 
@@ -26,10 +26,10 @@ ms.locfileid: "74421329"
 
 次の例を実行すると、Active Directory (AD) アプリケーションのほか、C# アプリの認証に必要なサービス プリンシパルが作成されます。 このスクリプトによって、上記の C# のサンプルに必要な値が出力されます。 詳細については、「 [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)」を参照してください。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager (RM) モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 AzureRM モジュールは、少なくとも 2020 年 12 月までは引き続きバグ修正を受け取ることができます。  Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 その互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
+> PowerShell Azure Resource Manager (RM) モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 AzureRM モジュールのバグ修正は、少なくとも 2020 年 12 月までは引き続き受け取ることができます。  Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 その互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
 
 ```powershell
 # sign in to Azure
@@ -63,9 +63,9 @@ Write-Output "_applicationId:" $azureAdApplication.ApplicationId.Guid
 Write-Output "_applicationSecret:" $secret
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azure-cli
+```azurecli
 # sign in to Azure
 az login
 
@@ -99,7 +99,7 @@ Write-Output "_applicationSecret:" $secret
 
 * * *
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 [C# を使用した SQL Database の作成](sql-database-get-started-csharp.md)  
-[Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)
+[Azure Active Directory の認証を使用して、SQL データベースに接続します。](sql-database-aad-authentication.md)

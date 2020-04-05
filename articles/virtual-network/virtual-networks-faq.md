@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
 ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121805"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225111"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -309,7 +309,7 @@ VNet ピアリング接続を作成するのに料金はかかりません。 �
 
 仮想ネットワーク TAP はプレビュー段階です。 プレビュー期間中は、サービス レベル アグリーメントはありません。 運用環境のワークロードでは機能を使用しないでください。 TAP 構成で仮想マシンのネットワーク インターフェイスを有効にすると、運用トラフィックを送信するために仮想マシンに割り当てられている Azure ホスト上の同じリソースを使用して、ミラーリング機能が実行され、ミラー化されたパケットが送信されます。 運用トラフィックとミラー化されたトラフィックを送信するのに十分なリソースを仮想マシンが利用できるように、[Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の適切な仮想マシン サイズを選択してください。
 
-### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>仮想ネットワーク TAP では、[Linux](create-vm-accelerated-networking-cli.md) または [Windows](create-vm-accelerated-networking-powershell.md) に対する高速ネットワークはサポートされていますか。
+### <a name="is-accelerated-networking-for-linux-or-windows-supported-with-virtual-network-tap"></a>仮想ネットワーク TAP では、[Linux](create-vm-accelerated-networking-cli.md) または [Windows](create-vm-accelerated-networking-powershell.md) に対する高速ネットワークはサポートされていますか。
 
 高速ネットワークが有効になっている仮想マシンにアタッチされたネットワーク インターフェイスで、TAP 構成を追加することができます。 ただし、現在 Azure の高速ネットワークではミラーリング トラフィックのオフロードがサポートされていないため、TAP 構成を追加することにより、仮想マシンでのパフォーマンスと待機時間が影響を受けます。
 

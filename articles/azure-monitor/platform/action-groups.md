@@ -7,11 +7,11 @@ ms.date: 2/18/2020
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 6ba48f3c40e45afa02e03a7589e968cca723118e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357124"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226559"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 1 つのサブスクリプションで最大 2,000 のアクション グループを構成できます。
@@ -93,7 +93,7 @@ Runbook ペイロードの制限については、[Azure サブスクリプシ�
 
 アクション グループには、電子メールに関する限られた数のアクションを持つことができます。 [レート制限情報](./../../azure-monitor/platform/alerts-rate-limiting.md)の記事を参照してください。
 
-### <a name="function"></a>Function
+### <a name="function"></a>機能
 [Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app) で既存の HTTP トリガー エンドポイントを呼び出します。
 
 アクション グループには、限られた数の Function アクションを保持できます。

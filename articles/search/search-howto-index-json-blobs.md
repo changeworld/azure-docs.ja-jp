@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 37fc78971124240077a59d4ad99aa06cc408dbae
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533966"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
@@ -284,7 +284,7 @@ JSON BLOB では、複数の形式を想定できます。 JSON インデクサ�
 
 | parsingMode | 説明 |
 |-------------|-------------|
-| `json`  | 各 BLOB を単一のドキュメントとしてインデックス化します。 既定のプランです。 |
+| `json`  | 各 BLOB を単一のドキュメントとしてインデックス化します。 これは既定値です。 |
 | `jsonArray` | BLOB が JSON 配列で構成され、配列の各要素を Azure Cognitive Search で独立したドキュメントにする必要がある場合は、このモードを選択します。 |
 |`jsonLines` | BLOB が、改行で分離されている複数の JSON エンティティで構成され、各エンティティを Azure Cognitive Search で独立したドキュメントにする必要がある場合は、このモードを選択します。 |
 

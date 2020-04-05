@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e9fd17d9e066be6a1abff5165436a09b8921184e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68381295"
 ---
 # <a name="sign-in-problems-with-an-azure-ad-gallery-app-configured-for-sso"></a>SSO 用に構成された Azure AD ギャラリー アプリのサインインの問題
@@ -77,7 +77,7 @@ Internet Explorer 用のアクセス パネル拡張機能をユーザーのコ�
 
 -   [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx) が設定され、ユーザーのコンピューターがドメインに参加している必要があります。
 
--   グループ ポリシー オブジェクト (GPO) を編集するための "設定の編集" アクセス許可が必要です。 既定でこのアクセス許可を持っているセキュリティ グループのメンバーはDomain Administrators、Enterprise Administrators、Group Policy Creator Owners です。 [詳細情報](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)。
+-   グループ ポリシー オブジェクト (GPO) を編集するための "設定の編集" アクセス許可が必要です。 既定でこのアクセス許可を持っているセキュリティ グループのメンバーはDomain Administrators、Enterprise Administrators、Group Policy Creator Owners です。 [詳細については、こちらを参照してください](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)。
 
 グループ ポリシーを構成してユーザーにデプロイするには、「[方法: グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy)」を参照してください。
 
@@ -193,5 +193,5 @@ SSO を設定してユーザーを割り当てるときにエラー メッセー
 -   タイム ゾーンと、エラーが発生したときの時刻/時間帯
 -   Fiddler のトレース
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [アプリケーション プロキシを使用してアプリにシングル サインオンを提供](application-proxy-configure-single-sign-on-with-kcd.md)

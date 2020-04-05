@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: anavin
 ms.openlocfilehash: 26d8ee34c735cab8f1033a9aad897ec0b1bed524
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65952687"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>パブリック IP アドレス プレフィックスの作成、変更、削除
@@ -34,7 +34,7 @@ ms.locfileid: "65952687"
 - PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 1.0.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 - Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.41 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
-Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧に記載されている適切なアクションが割り当てられている[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てられている必要があります。
+Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」の一覧に記載されている適切なアクションが割り当てられている[カスタム ロール](#permissions)に割り当てられている必要があります。
 
 パブリック IP アドレス プレフィックスは有料です。 詳細については、[価格](https://azure.microsoft.com/pricing/details/ip-addresses)のページを参照してください。
 
@@ -45,10 +45,10 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 3. **[パブリック IP アドレス プレフィックス]** の **[作成]** を選択します。
 4. **[Create public IP address prefix]\(パブリック IP アドレス プレフィックス\)** にある以下の設定に対して値を入力または選択して、 **[作成]** を選択します。
 
-   |Setting|必須|詳細|
+   |設定|必須|詳細|
    |---|---|---|
    |サブスクリプション|はい|パブリック IP アドレスを関連付けるリソースと同じ[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)内に存在する必要があります。|
-   |リソース グループ|はい|所属する[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)は、パブリック IP アドレスを関連付けるリソースと同じであっても異なっていてもかまいません。|
+   |Resource group|はい|所属する[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)は、パブリック IP アドレスを関連付けるリソースと同じであっても異なっていてもかまいません。|
    |Name|はい|選択したリソース グループ内で一意となる名前を使用してください。|
    |リージョン|はい|範囲からアドレスを割り当てるパブリック IP アドレスと同じ[リージョン](https://azure.microsoft.com/regions)に存在する必要があります。|
    |プレフィックス サイズ|はい| 必要なプレフィックスのサイズ。 /28 または 16 の IP アドレスが既定値です。
@@ -68,7 +68,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 3. 検索結果に表示されたら選択し、[概要] セクションの **[+ IP アドレスの追加]** をクリックします。
 4. **[パブリック IP アドレスの作成]** で次の設定の値を入力または選択します。 プレフィックスは Standard SKU、IPv4、かつ静的なので、次の情報を入力する必要があります。
 
-   |Setting|必須|詳細|
+   |設定|必須|詳細|
    |---|---|---|
    |Name|はい|パブリック IP アドレスには、選択したリソース グループ内で一意の名前を付ける必要があります。|
    |アイドル タイムアウト (分)|いいえ|クライアントからキープアライブ メッセージを送信しなくても TCP 接続または HTTP 接続が開いたまま維持される時間 (分)。 |
@@ -87,7 +87,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 2. 表示か設定の変更、または一覧から削除するパブリック IP アドレス プレフィックスの名前を選択します。
 3. パブリック IP アドレス プレフィックスの表示か設定の変更、または一覧からの削除のどの操作を行うかに従って以下のいずれかの設定を行います。
    - **表示**: **[概要]** セクションには、プレフィックスなど、パブリック IP アドレス プレフィックスの主要な設定が表示されます。
-   - **[削除]** :パブリック IP アドレス プレフィックスを削除するには、 **[概要]** セクションの **[削除]** を選択します。 プレフィックス内のアドレスがパブリック IP アドレス リソースに関連付けられている場合は、まずパブリック IP アドレス リソースを削除する必要があります。 [パブリック IP アドレスの削除](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address)に関するページを参照してください。
+   - **削除**: パブリック IP アドレス プレフィックスを削除するには、 **[概要]** セクションの **[削除]** を選択します。 プレフィックス内のアドレスがパブリック IP アドレス リソースに関連付けられている場合は、まずパブリック IP アドレス リソースを削除する必要があります。 [パブリック IP アドレスの削除](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address)に関するページを参照してください。
 
 **コマンド**
 
@@ -100,13 +100,13 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 パブリック IP アドレス プレフィックスでタスクを実行するには、[ネットワークの共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に記載されている適切なアクションが割り当てられている[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールにアカウントが割り当てられている必要があります。
 
-| Action                                                            | Name                                                           |
+| アクション                                                            | Name                                                           |
 | ---------                                                         | -------------                                                  |
 | Microsoft.Network/publicIPPrefixes/read                           | パブリック IP アドレス プレフィックスの読み取り                                |
 | Microsoft.Network/publicIPPrefixes/write                          | パブリック IP アドレス プレフィックスの作成または更新                    |
 | Microsoft.Network/publicIPPrefixes/delete                         | パブリック IP アドレス プレフィックスの削除                              |
 |Microsoft.Network/publicIPPrefixes/join/action                     | プレフィックスからのパブリック IP アドレスの作成 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [パブリック IP プレフィックス](public-ip-address-prefix.md)を使用するシナリオと利点について説明します

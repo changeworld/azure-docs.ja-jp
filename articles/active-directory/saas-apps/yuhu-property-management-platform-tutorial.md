@@ -16,10 +16,10 @@ ms.date: 12/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c0f15dfa36c24c7a84e254b110e9cceae54c8786
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75532165"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-yuhu-property-management-platform"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Yuhu Property Management Platform の統合
@@ -94,7 +94,7 @@ Yuhu Property Management Platform で Azure AD SSO を構成してテストす�
 
 1. 上記に加えて、Yuhu Property Management Platform アプリケーションでは、以下に示す SAML 応答で返される属性がほとんどないことが想定されます。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | ---------------| --------------- |
     | firstName | User.givenname |
     | lastName | User.surname ||

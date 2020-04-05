@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: iainfou
 ms.openlocfilehash: c634b1288727ae045d1fb8b6f6cdff4a80e757ce
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78298907"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>CentOS Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる

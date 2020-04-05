@@ -9,14 +9,16 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
-ms.openlocfilehash: 16e4a7e2f06d2630c970f8daa4428e7a184a79df
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 878b64fe6dd491adbb61c4c74cf4a5fc039858cd
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163043"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79371411"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>チュートリアル:Azure Digital Twins プレビューをデプロイし、空間グラフを構成する
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Azure Digital Twins プレビューサービスを使用すると、人、場所、デバイスを一貫した空間システムにまとめることができます。 この一連のチュートリアルでは、Azure Digital Twins を使用して、温度と空気の質が最適な状態の部屋の使用を検出する方法を示します。 
 

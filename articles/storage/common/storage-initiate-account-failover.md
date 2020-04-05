@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 76e34736238273f2af3fccae0ac2b5ed0ff491f0
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 0c619224201d6225d5e5c127b342f71f2f7fced9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128331"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535354"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>ストレージ アカウントのフェールオーバー (プレビュー) を開始する
 
@@ -100,7 +100,7 @@ Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <
 
 Azure CLI を使用してアカウントのフェールオーバーを開始するには、次のコマンドを実行します。
 
-```cli
+```azurecli
 az storage account show \ --name accountName \ --expand geoReplicationStats
 az storage account failover \ --name accountName
 ```

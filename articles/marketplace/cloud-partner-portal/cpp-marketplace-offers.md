@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace と AppSource Marketplace のオファー
 description: Azure Marketplace と AppSource Marketplace のオファーの作成と管理
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: pabutler
-ms.openlocfilehash: f1e561e84daed6c24ca0d9b7832af3d975082e25
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 7f6fd723355426a49cff032d51da0e09f13e295d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818771"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278486"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure Marketplace と AppSource Marketplace のオファー
 
@@ -61,6 +60,6 @@ ms.locfileid: "73818771"
 詳細については、「[Publishing guide by offer type](../publisher-guide-by-offer-type.md)」(プランの種類別の公開ガイド) をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [オファーの管理](./manage-offers/cpp-manage-offers.md)に関する記事で、マーケットプレースのオファーに対して実行できる一般的な操作と、一般的な技術属性および資産について学習します。

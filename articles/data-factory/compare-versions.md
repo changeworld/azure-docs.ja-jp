@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
 ms.openlocfilehash: e964be548a2f82ecc268a147dd20817b232f51a6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74924801"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory と Data Factory バージョン 1 の比較
@@ -30,7 +30,7 @@ ms.locfileid: "74924801"
 | パイプライン | データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 パイプラインをスケジュールして実行するには、startTime、endTime、isPaused を使用します。 | パイプラインは、データに対して実行されるアクティビティのグループです。 ただし、パイプライン内のアクティビティのスケジュールは、新しいトリガー リソースに分割されています。 現在のバージョンの Data Factory のパイプラインは、むしろ、トリガーを介して個別にスケジュールされる "ワークフロー単位" として考えることができます。 <br/><br/>現在のバージョンの Data Factory では、パイプラインに実行時間の "枠" がありません。 Data Factory V1 の概念である startTime、endTime、isPaused は、現在のバージョンの Data Factory にはなくなりました。 詳細については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関するページと、[パイプラインとアクティビティ](concepts-pipelines-activities.md)に関するページを参照してください。 |
 | Activities | アクティビティは、パイプライン内のデータに対して実行するアクションを定義します。 データ移動 (コピー アクティビティ) およびデータ変換アクティビティ (Hive、Pig、MapReduce など) がサポートされています。 | Data Factory の現在のバージョンでも、アクティビティはパイプライン内の定義されたアクションです。 Data Factory の現在のバージョンには、新しい[制御フロー アクティビティ](concepts-pipelines-activities.md#control-flow-activities)が導入されています。 これらのアクティビティは、制御フロー (ループおよび分岐) で使用します。 V1 でサポートされていたデータ移動およびデータ変換アクティビティは、現在のバージョンでもサポートされています。 現在のバージョンでは、データセットを使用せずに変換アクティビティを定義できます。 |
 | ハイブリッド データ移動とアクティビティのディスパッチ | [Data Management Gateway](v1/data-factory-data-management-gateway.md) (現在は Integration Runtime と呼ばれます) は、オンプレミスとクラウドの間のデータ移動をサポートしていました。| Data Management Gateway は、セルフホステッド Integration Runtime と呼ばれるようになりました。 機能は V1 と同じです。 <br/><br/> 現在のバージョンの Data Factory の Azure-SSIS Integration Runtime では、クラウドでの SQL Server Integration Services (SSIS) パッケージのデプロイと実行もサポートされています。 詳細については、「[Azure Data Factory の統合ランタイム](concepts-integration-runtime.md)」を参照してください。|
-| parameters | NA | パラメーターは、パイプラインで定義されている、読み取り専用構成設定のキーと値のペアです。 パイプラインを手動で実行するときは、パラメーターの引数を渡すことができます。 スケジューラ トリガーを使用している場合は、トリガーでパラメーターの値を渡すこともできます。 パイプライン内のアクティビティは、パラメーターの値を使用します。  |
+| パラメーター | NA | パラメーターは、パイプラインで定義されている、読み取り専用構成設定のキーと値のペアです。 パイプラインを手動で実行するときは、パラメーターの引数を渡すことができます。 スケジューラ トリガーを使用している場合は、トリガーでパラメーターの値を渡すこともできます。 パイプライン内のアクティビティは、パラメーターの値を使用します。  |
 | 式 | Data Factory V1 では、データ選択クエリやアクティビティ/データセットのプロパティに関数やシステム変数を使用できます。 | 現在のバージョンの Data Factory では、JSON 文字列値の任意の場所で式を使用できます。 詳細については、[現在のバージョンの Data Factory の式と関数](control-flow-expression-language-functions.md)に関するページを参照してください。|
 | パイプライン実行 | NA | パイプライン実行の単一のインスタンスです。 たとえば、午前 8 時、午前 9 時、午前 10 時に実行するパイプラインがあるとします。 ここでは、パイプラインの 3 つの独立した実行 (パイプライン実行) があることになります。 各パイプライン実行には、一意のパイプライン実行 ID があります。 それぞれが特定のパイプライン実行を一意に定義する GUID です。 パイプライン実行は、通常、パイプラインで定義されたパラメーターに引数を渡してインスタンス化されます。 |
 | アクティビティの実行 | NA | パイプライン内のアクティビティ実行のインスタンス。 | 
@@ -48,7 +48,7 @@ V1 では、アクティビティの出力を別のアクティビティの入�
 ### <a name="branching-activities"></a>アクティビティの分岐
 現在のバージョンでは、パイプライン内でアクティビティを分岐できるようになりました。 [If-condition アクティビティ](control-flow-if-condition-activity.md)は、プログラミング言語における `if` ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが評価されます。 アクティビティの分岐の例については、[アクティビティの分岐と連鎖](tutorial-control-flow.md)に関するチュートリアルを参照してください。
 
-### <a name="parameters"></a>parameters 
+### <a name="parameters"></a>パラメーター 
 パイプライン レベルでパラメーターを定義し、パイプラインをオンデマンドで起動するかトリガーから起動するときに引数を渡すことができます。 アクティビティは、パイプラインに渡される引数を使用できます。 詳細については、[パイプラインとトリガー](concepts-pipeline-execution-triggers.md)に関するページを参照してください。 
 
 ### <a name="custom-state-passing"></a>カスタム状態の受け渡し
@@ -129,7 +129,7 @@ V1 では、IDotNetActivity インターフェイスの Execute メソッドを�
 
 | &nbsp; | V2 | V1 |
 | ------ | -- | -- | 
-| Azure ポータル | [はい](quickstart-create-data-factory-portal.md) | いいえ |
+| Azure portal | [はい](quickstart-create-data-factory-portal.md) | いいえ |
 | Azure PowerShell | [はい](quickstart-create-data-factory-powershell.md) | [はい](data-factory-build-your-first-pipeline-using-powershell.md) |
 | .NET SDK | [はい](quickstart-create-data-factory-dot-net.md) | [はい](data-factory-build-your-first-pipeline-using-vs.md) |
 | REST API | [はい](quickstart-create-data-factory-rest-api.md) | [はい](data-factory-build-your-first-pipeline-using-rest-api.md) |
@@ -144,5 +144,5 @@ Data Factory バージョン 1 の共同作成者ロールを使って、現在�
 現在のバージョンでは、[Azure Monitor](monitor-using-azure-monitor.md) を使用してデータ ファクトリを監視することもできます。 新しい PowerShell コマンドレットでは、[統合ランタイム](monitor-integration-runtime.md)の監視がサポートされています。 V1 と V2 のどちらでも、Azure Portal から起動できる監視アプリケーションによる視覚的な監視がサポートされています。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 データ ファクトリの作成手順について、[PowerShell](quickstart-create-data-factory-powershell.md)、[.NET](quickstart-create-data-factory-dot-net.md)、[Python](quickstart-create-data-factory-python.md)、[REST API](quickstart-create-data-factory-rest-api.md) の各クイック スタートを参照してください。 

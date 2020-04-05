@@ -36,7 +36,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 
 地理的リージョン内の少なくとも 1 つの ExpressRoute の場所に接続している場合は、その地理的リージョン内のすべてのリージョンの Azure サービスにアクセスできます。 
 
-## <a name="locations"></a>地理的リージョン内の Azure リージョンと ExpressRoute の場所の対応
+## <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a><a name="locations"></a>地理的リージョン内の Azure リージョンと ExpressRoute の場所の対応
 次の表は、地理的リージョン、ExpressRoute の場所、Azure リージョンをまとめたものです。
 
 | **地理的リージョン** | **Azure リージョン** | **ExpressRoute の場所** |
@@ -65,7 +65,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 
 標準の ExpressRoute SKU では、地理的リージョン間の接続はサポートされていません。 グローバル接続に対応するには、ExpressRoute Premium アドオンを有効にする必要があります。 国内のクラウド環境には接続できません。 国内のクラウド環境に接続する必要がある場合、接続プロバイダーにご相談ください。
 
-## <a name="partners"></a>ExpressRoute 接続プロバイダー
+## <a name="expressroute-connectivity-providers"></a><a name="partners"></a>ExpressRoute 接続プロバイダー
 
 次の表に、接続する場所と、各場所のサービス プロバイダーを示します。 サービス プロバイダーと、そのサービス プロバイダーがサービスを提供できる場所を確認する場合は、[サービス プロバイダー別の場所](expressroute-locations.md)に関するページを参照してください。
 
@@ -177,7 +177,7 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 | **ベルリン** |e-shelter、Megaport+、T-Systems |
 | **フランクフルト** |Colt、Equinix、Interxion |
 
-## <a name="c1partners"></a>Exchange プロバイダー経由の接続
+## <a name="connectivity-through-exchange-providers"></a><a name="c1partners"></a>Exchange プロバイダー経由の接続
 接続プロバイダーが上記のセクションの一覧にない場合でも、接続を作成できます。
 
 * 接続プロバイダーが上の表に記載されているいずれかの Exchange に接続されているかどうかをその接続プロバイダーに確認します。 次のリンクから、Exchange プロバイダーが提供するサービスの詳細情報を収集できます。 一部の接続プロバイダーは既にイーサネット Exchange に接続されています。
@@ -202,7 +202,7 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 * [SES](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)
 * [Viasat](http://www.directcloud.viasatbusiness.com/)
 
-## <a name="c1partners"></a>その他のサービス プロバイダー経由の接続
+## <a name="connectivity-through-additional-service-providers"></a><a name="c1partners"></a>その他のサービス プロバイダー経由の接続
 | **場所** | **Exchange** | **接続プロバイダー** |
 | --- | --- | --- |
 | **アムステルダム** | Equinix、Interxion、Level 3 Communications | BICS、CloudXpress、Eurofiber、Fastweb S.p.A、Gulf Bridge International、Kalaam Telecom Bahrain B.S.C、MainOne、Nianet、POST Telecom Luxembourg、Proximus、RETN、TDC Erhverv、Telecom Italia Sparkle、Telekom Deutschland GmbH、Telia |

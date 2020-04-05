@@ -4,16 +4,16 @@ description: Azure IoT エクスプローラー ツールをインストール�
 author: miagdp
 ms.author: miag
 ms.date: 12/27/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: fd180404ca18b5ea84c745a543ae7e87bf16c27d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 963421fa1ef06599448c9a4197f0d7a6ad2e142d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529628"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159185"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT エクスプローラーをインストールして使用する
 
@@ -28,7 +28,7 @@ Azure IoT エクスプローラーは、お使いの IoT プラグ アンド プ
 
 Azure IoT エクスプローラー ツールを使用するには、次のものが必要です。
 
-- Azure IoT Hub。 お使いの Azure サブスクリプションに IoT ハブを追加する方法にはさまざまなものがあります。一例を挙げると、[Azure CLI を使用して IoT ハブを作成する](../iot-hub/iot-hub-create-using-cli.md)という方法があります。 Azure IoT エクスプローラー ツールを実行するには、IoT ハブの接続文字列が必要です。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+- Azure IoT Hub。 お使いの Azure サブスクリプションに IoT ハブを追加する方法にはさまざまなものがあります。一例を挙げると、[Azure CLI を使用して IoT ハブを作成する](../iot-hub/iot-hub-create-using-cli.md)という方法があります。 Azure IoT エクスプローラー ツールを実行するには、IoT ハブの接続文字列が必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 - お使いの IoT ハブに登録されているデバイス。 デバイスの登録には、次の Azure CLI コマンドを使用できます。 `{YourIoTHubName}` と `{YourDeviceID}` のプレースホルダーは必ず、実際の値に置き換えてください。
 
     ```azurecli-interactive

@@ -15,13 +15,13 @@ ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
 ms.openlocfilehash: 27d79e28a986e929fb71dd77fc50b3c2cd32618f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77134034"
 ---
-# <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>チュートリアル:Azure Lab Services でクラスルーム ラボにアクセスする
+# <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>チュートリアル: Azure Lab Services でクラスルーム ラボにアクセスする
 このチュートリアルでは、学生がクラスルーム ラボ内の仮想マシン (VM) にアクセスします。 
 
 このチュートリアルでは、次のアクションを実行します。

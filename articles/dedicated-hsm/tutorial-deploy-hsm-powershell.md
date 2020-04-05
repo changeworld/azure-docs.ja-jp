@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 63c531cc0e600d82df74154adb212be76ba9b4de
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368546"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79474426"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>チュートリアル - PowerShell を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -250,15 +250,7 @@ HSM デバイスだけでの作業を完了したら、それをリソースと�
 > [!NOTE]
 > Gemalto デバイスの構成に問題がある場合は、[Gemalto カスタマー サポート](https://safenet.gemalto.com/technical-support/)に問い合わせる必要があります。
 
-Azure 内で HSM リソースのみを削除する場合は、次のコマンドを使用できます。"$" 変数を一意のパラメーターで置き換えてください。
-
-```powershel
-
-Remove-AzureRmResource -Resourceid ` /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
-
-```
-
-このリソース グループ内のリソースでの作業が完了したら、次のコマンドでそれらをすべて削除できます。
+Azure 内で HSM リソースを削除する場合は、次のコマンドを使用できます。"$" 変数を一意のパラメーターで置き換えてください。
 
 ```powershell
 

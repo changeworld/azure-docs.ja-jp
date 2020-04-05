@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
-ms.openlocfilehash: 3bb09f1958685a3474b49d2d194e89fe81a80076
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 10a2f413142124db7547e68280a0d5e9abac9b98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690490"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79298752"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して Apache Hive クエリを実行する
 
@@ -185,7 +185,7 @@ $clusterName
 
 1. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには、出力ファイルの場所が含まれます。この場合は、`/example/rest` です。 このアドレスは、クラスターの既定ストレージに `example/curl` ディレクトリの出力を格納します。
 
-    これらのファイルを一覧表示およびダウンロードするには [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)を使用します。 Azure Storage での Azure CLI の使用の詳細については、[Azure Storage での Azure CLI の使用](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs)に関するページを参照してください。
+    これらのファイルを一覧表示およびダウンロードするには [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)を使用します。 Azure Storage での Azure CLI の使用の詳細については、[Azure Storage での Azure CLI の使用](https://docs.microsoft.com/azure/storage/storage-azure-cli)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

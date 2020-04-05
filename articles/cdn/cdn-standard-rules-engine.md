@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
 ms.openlocfilehash: 724861305d7a25db409072200ac2bc3bd83f0682
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74171585"
 ---
 # <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN に対する Standard ルール エンジンを設定する
@@ -71,7 +71,7 @@ Azure CDN に対する Standard ルール エンジンを使用して、HTTP 要
    >
    
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure CDN の概要](cdn-overview.md)
 - [Standard のルール エンジンのリファレンス](cdn-standard-rules-engine-reference.md)

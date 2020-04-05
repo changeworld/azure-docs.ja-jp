@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61d7227c57422cfe2228002750ec29bffa385d44
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76756770"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>ユーザーに 2 段階認証を要求する方法
@@ -47,7 +47,7 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 | Status | 説明 | 非ブラウザー アプリに影響があるか | ブラウザー アプリに影響があるか | 影響を受ける先進認証 |
 |:---:| --- |:---:|:--:|:--:|
 | 無効 | 新しいユーザーの既定の状態は、Azure MFA に登録されていません。 | いいえ | いいえ | いいえ |
-| Enabled | ユーザーは Azure MFA にサインインできますが、登録されていません。 次回のサインイン時に登録することを求められます。 | いいえ。  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、Azure MFA の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、Azure MFA の登録が必要になります。 |
+| 有効 | ユーザーは Azure MFA にサインインできますが、登録されていません。 次回のサインイン時に登録することを求められます。 | いいえ。  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、Azure MFA の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、Azure MFA の登録が必要になります。 |
 | 強制 | ユーザーは、Azure MFA にサインインして Azure MFA に対する登録プロセスを完了しています。 | はい。 アプリはアプリ パスワードを必要とします。 | はい。 ログイン時に Azure MFA が必要です。 | はい。 ログイン時に Azure MFA が必要です。 |
 
 ユーザーの状態は、管理者がユーザーをAzure MFA に登録し、ユーザーが登録プロセスを完了したかどうかを反映します。
@@ -87,7 +87,7 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 
 [Azure AD PowerShell](/powershell/azure/overview) を使用してユーザーの状態を変更するには、`$st.State` を変更します。 状態は 3 つあります。
 
-* Enabled
+* 有効
 * 強制
 * 無効  
 

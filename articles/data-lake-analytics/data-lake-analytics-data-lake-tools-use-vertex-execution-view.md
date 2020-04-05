@@ -9,10 +9,10 @@ ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: conceptual
 ms.date: 10/13/2016
 ms.openlocfilehash: f5adbb75e6852551976aa040a1a1c723d2e3f59b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71309730"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio での頂点実行ビューの使用
@@ -49,7 +49,7 @@ Data Lake Tools for Visual Studio で U-SQL ジョブを開きます。 左下�
 * [Version Created Time (バージョンの作成時刻)]。
 * [Process Create Start Time (プロセスの作成開始時刻)]/[Process Queued Time (プロセスがキューに挿入された時刻)]/[Process Start Time (プロセス開始時刻)]/[Process Complete Time (プロセス完了時刻)]: 頂点プロセスの作成が開始された時刻、頂点プロセスのキューへの挿入が開始された時刻、特定の頂点プロセスが開始された時刻、および特定の頂点が完了した時刻。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 診断情報のログについては、「 [Accessing diagnostics logs for Azure Data Lake Analytics (Azure Data Lake Analytics の診断ログへのアクセス)](data-lake-analytics-diagnostic-logs.md)
 * より複雑なクエリを表示する場合は、「 [チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
 * ジョブの詳細を表示する方法については、「[Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用](data-lake-analytics-data-lake-tools-view-jobs.md)」を参照してください。

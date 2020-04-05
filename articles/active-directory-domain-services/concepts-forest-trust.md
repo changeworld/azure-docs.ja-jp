@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
 ms.openlocfilehash: 8b79e0fb24c15d2e9f16640e90d62f7df5c21f32
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74234424"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services のリソース フォレストに対する信頼関係のしくみ
@@ -272,7 +272,7 @@ LSA セキュリティ サブシステムでは、オブジェクトへのアク
 * *Active Directory ドメインと信頼関係* は、ドメインの信頼、ドメインとフォレストの機能レベル、およびユーザー プリンシパル名のサフィックスを管理するために使用される Microsoft 管理コンソール (MMC) です。
 * *Netdom* および *Nltest* コマンドライン ツールを使用して、信頼の検索、表示、作成、および管理を行うことができます。 これらのツールでは、ドメイン コントローラー上の LSA 機関と直接通信を行います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 リソース フォレストの詳細については、[Azure AD DS でのフォレストの信頼のしくみ][concepts-trust]に関するページを参照してください
 

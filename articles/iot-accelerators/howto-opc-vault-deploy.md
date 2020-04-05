@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: f577059e1ebf70e3a9dfe9e538a9d3d49d7c8e96
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71199998"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>OPC Vault 証明書管理サービスをビルドしてデプロイする
@@ -90,7 +90,7 @@ Web アプリ バイナリのみを再デプロイすることもできます。
 
 その方法は次のとおりです。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. サービスがデプロイされたリソース グループに移動します。
 3. **[リソース グループの削除]** を選択し、確認します。
 4. しばらくすると、デプロイされたすべてのサービス コンポーネントが削除されます。
@@ -174,7 +174,7 @@ Web サイトの名前が既に使用されている可能性があります。 
 [docker-url]: https://www.docker.com/
 [dotnet-install]: https://www.microsoft.com/net/learn/get-started
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、OPC Vault をゼロからデプロイする方法を学習しました。次のことができます。
 

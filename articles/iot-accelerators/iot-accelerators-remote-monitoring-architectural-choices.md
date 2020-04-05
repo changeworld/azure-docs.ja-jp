@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447177"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>リモート監視のアーキテクチャの選択
@@ -59,7 +59,7 @@ IoT デバイスの接続性のために、以下を使用できます。
 
 ストリーム処理については、リモート監視ソリューションでは複雑なルールの処理に Azure Stream Analytics を使用します。 シンプルなルールを希望する場合は、シンプルなルールの処理をサポートするカスタム マイクロサービスがありますが、そのセットアップは既定のデプロイには含まれていません。 リファレンス アーキテクチャでは、シンプルなルールの処理には Azure Functions、複雑なルールの処理には Azure Stream Analytics をお勧めします。
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
 
 ストレージに対しては、リモート監視ソリューション アクセラレータは Azure Time Series Insights と Azure Cosmos DB の両方を使用します。 Azure Time Series Insights は、接続されたデバイスから IoT Hub を介して送信されるメッセージを格納します。 このソリューション アクセラレータでは、コールド ストレージ、ルール定義、アラート、構成設定など、その他のすべてのストレージに Azure Cosmos DB を使用します。
 
@@ -82,7 +82,7 @@ Web UI は JavaScript React で構築されています。 React は、業界で
 
 Docker の代替としては、Azure App Service などの PaaS サービスでマイクロサービスをホストする方法があります。 Kubernetes の代替としては、Service Fabric、DC/OS、Swarm などのオーケストレーターがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ここに](https://www.azureiotsolutions.com/)リモート監視ソリューション アクセラレータをデプロイする
 * GitHub のコードについては、こちら ([C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) および [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/)) をご覧ください。  

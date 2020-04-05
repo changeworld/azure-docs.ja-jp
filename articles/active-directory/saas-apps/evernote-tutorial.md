@@ -17,10 +17,10 @@ ms.date: 09/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55216e9eb4bd5cda2635564480751459f05e8309
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71121621"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Evernote の統合
@@ -29,7 +29,7 @@ ms.locfileid: "71121621"
 
 * Evernote にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントで自動的に Evernote にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -145,7 +145,7 @@ Evernote で Azure AD SSO を構成してテストするには、次の構成要
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-2. ブラウザーに拡張機能を追加した後、 **[Evernote のセットアップ]** をクリックすると、Evernote アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して Evernote にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 6 が自動化されます。
+2. ブラウザーに拡張機能を追加した後、 **[Evernote のセットアップ]** をクリックすると、Evernote アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して Evernote にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
 
     ![セットアップの構成](common/setup-sso.png)
 

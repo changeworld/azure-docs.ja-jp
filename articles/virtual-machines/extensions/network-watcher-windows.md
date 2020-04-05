@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
 ms.openlocfilehash: 998e160edce25b9d466a1db090abcefeb7870172
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073683"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Windows 用 Network Watcher Agent 仮想マシン拡張機能
@@ -64,7 +64,7 @@ Windows 用の Network Watcher Agent 拡張機能は、Windows Server 2008 R2、
 
 ### <a name="property-values"></a>プロパティ値
 
-| 名前 | 値/例 |
+| Name | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |

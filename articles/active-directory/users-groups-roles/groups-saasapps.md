@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51375f057543c86fe021822eb9722ffd1be16804
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74026851"
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>SaaS アプリケーションへのアクセスをグループで管理する
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) の Azure AD Premium ライセンス プラン
 6. 必要な数のグループまたはユーザーを選択して **[選択]** をクリックまたはタップし、 **[割り当ての追加]** リストに追加します。 ユーザーに対するロールの割り当ても、この段階で行います。
 7. **[割り当て]** を選択し、選択したエンタープライズ アプリケーションにユーザーまたはグループを割り当てます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事は、Azure Active Directory に関する追加情報を示します。
 
 * [Azure Active Directory グループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md)

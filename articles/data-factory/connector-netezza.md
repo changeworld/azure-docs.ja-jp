@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
 ms.openlocfilehash: c51469997af23be7a5e1b88677ecadb37e10ac64
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357202"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225027"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Data Factory を使用して Netezza からデータをコピーする
 

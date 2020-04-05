@@ -15,10 +15,10 @@ ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
 ms.openlocfilehash: 5d4ac5435281f521c71556123f77d737ee6916e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161781"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Azure で Pivotal Cloud Foundry クラスターを作成する

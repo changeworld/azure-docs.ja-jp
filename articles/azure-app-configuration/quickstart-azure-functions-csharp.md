@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 71a330523f1d3393a365fec29fb66f5c9773b6cc
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 2f6efdad7ab0685e58d2edd73bc36b758e8dbae2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207066"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245499"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して Azure Functions アプリを作成する
 
@@ -28,13 +28,15 @@ ms.locfileid: "78207066"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
+6. **[構成エクスプローラー]**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
 
     | Key | Value |
     |---|---|
     | TestApp:Settings:Message | Azure App Configuration からのデータ |
 
     **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
+
+7. **[適用]** を選択します。
 
 ## <a name="create-a-functions-app"></a>関数アプリを作成する
 
@@ -85,7 +87,7 @@ ms.locfileid: "78207066"
 
 1. **ConnectionString** という名前の環境変数に、App Configuration ストアへのアクセス キーを設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
 
-    ```CLI
+    ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 

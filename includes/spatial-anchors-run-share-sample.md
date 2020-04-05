@@ -5,34 +5,34 @@ ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
 ms.openlocfilehash: ec8fb6efab126dcf5556a9abfdf58d1fd69d4212
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72882301"
 ---
-## <a name="androidtabandroid"></a>[Android](#tab/Android)
+## <a name="android"></a>[Android](#tab/Android)
 
 Java Android サンプルでは、デバイス間での共有がサポートされています。
 Android Studio の samples フォルダーから `SharedActivity.java` ファイルを開きます。 `SharedActivity.java` ファイルの `SharingAnchorsServiceUrl` の値として、前の手順で (ASP.NET Web アプリの Azure デプロイから) 取得した URL を入力します。 URL の `index.html` を `api/anchors` に置き換えます。 `https://<app_name>.azurewebsites.net/api/anchors` のようになります。
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-## <a name="iostabios"></a>[iOS](#tab/iOS)
+## <a name="ios"></a>[iOS](#tab/iOS)
 
 Objective-C iOS サンプルでは、デバイス間での共有がサポートされています。
 samples フォルダー内の `SharedDemoViewController.m` ファイルを開きます。 `SharedActivity.java` ファイルの `SharingAnchorsServiceUrl` の値として、前の手順で (ASP.NET Web アプリの Azure デプロイから) 取得した URL を入力します。 URL の `index.html` を `api/anchors` に置き換えます。 `https://<app_name>.azurewebsites.net/api/anchors` のようになります。
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-## <a name="xamarintabxamarin"></a>[Xamarin](#tab/Xamarin)
+## <a name="xamarin"></a>[Xamarin](#tab/Xamarin)
 
 Xamarin Android および iOS の両方のサンプルで、デバイス間での共有がサポートされています。
 samples フォルダー内の `AccountDetails.cs` ファイルを開きます。 `SharedActivity.java` ファイルの `AnchorSharingServiceUrl` の値として、前の手順で (ASP.NET Web アプリの Azure デプロイから) 取得した URL を入力します。 URL の `index.html` を `api/anchors` に置き換えます。 `https://<app_name>.azurewebsites.net/api/anchors` のようになります。
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-## <a name="unitytabunity"></a>[Unity](#tab/Unity)
+## <a name="unity"></a>[Unity](#tab/Unity)
 
 [!INCLUDE [Open Unity Project](spatial-anchors-open-unity-project.md)]
 

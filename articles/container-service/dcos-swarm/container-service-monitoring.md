@@ -8,10 +8,10 @@ ms.date: 07/28/2016
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 530092dfabacb0b07f4002a82078dd3535cd7e8f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275249"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>(非推奨) Datadog を使用した Azure Container Service DC/OS クラスターの監視

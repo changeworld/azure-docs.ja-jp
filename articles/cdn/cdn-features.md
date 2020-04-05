@@ -16,15 +16,15 @@ ms.date: 11/15/2019
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 64b906c8a6b52d9c9655f3fe2b13d504d8eed4cb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74278090"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Azure CDN 製品の機能を比較する
 
-Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、**Azure CDN Premium from Verizon** の 4 つの製品が含まれています。 **Azure CDN Standard from Verizon** プロファイルの **Azure CDN Premium from Verizon** への移行については、「[Standard Verizon から Premium Verizon に Azure CDN プロファイルを移行する](cdn-migrate.md)」を参照してください。 Standard Verizon から Premium Verizon へのアップグレード パスはありますが、現時点では他の製品間の変換メカニズムがないことに注意してください。
+Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、および **Azure CDN Premium from Verizon** という 4 つの製品が含まれています。 **Azure CDN Standard from Verizon** プロファイルの **Azure CDN Premium from Verizon** への移行については、「[Standard Verizon から Premium Verizon に Azure CDN プロファイルを移行する](cdn-migrate.md)」を参照してください。 Standard Verizon から Premium Verizon へのアップグレード パスはありますが、現時点では他の製品間の変換メカニズムがないことに注意してください。
 
 次の表では、各製品で使用できる機能を比較しています。
 
@@ -40,7 +40,7 @@ Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsof
 | 配信元のポート |すべての TCP ポート |[使用できる配信元ポート](https://docs.microsoft.com/previous-versions/azure/mt757337(v%3Dazure.100)#allowed-origin-ports) |すべての TCP ポート |すべての TCP ポート |
 | [グローバル サーバー負荷分散 (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [高速消去](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** (すべての消去およびワイルドカードによる消去は、現在 Azure CDN from Akamai ではサポートされていません) |**&#x2713;** |**&#x2713;** |
-| [資産の事前読み込み](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
+| [アセットの事前読み込み](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
 | キャッシュ/ヘッダーの設定 ( [キャッシュ規則](cdn-caching-rules.md)を使用)  |**&#x2713;** ([Standard ルール エンジン](cdn-standard-rules-engine.md)を使用)  |**&#x2713;** |**&#x2713;** | |
 | カスタマイズ可能なルール ベースのコンテンツ配信エンジン |**&#x2713;** ([Standard ルール エンジン](cdn-standard-rules-engine.md)を使用)  | | |**&#x2713;** ([ルール エンジン](cdn-rules-engine.md)を使用) |
 | キャッシュ/ヘッダーの設定  |**&#x2713;** ([Standard ルール エンジン](cdn-standard-rules-engine.md)を使用) | | |**&#x2713;** ([Premium ルール エンジン](cdn-rules-engine.md)を使用) |

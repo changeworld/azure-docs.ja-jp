@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 01/27/2020
+ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a32ee682490c5930b8c48d069087020c4763dcb
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: e62b3c551f41bca0055f35cf6bf62c59d921c73b
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127759"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80294822"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは 
 
@@ -123,11 +123,32 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 
 次のリモート デスクトップ クライアントは、Windows Virtual Desktop をサポートします。
 
-* [Windows](connect-windows-7-and-10.md)
+* [Windows デスクトップ](connect-windows-7-and-10.md)
 * [Web](connect-web.md)
-* [Mac](connect-macos.md)
+* [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android (プレビュー)](connect-android.md)
+
+> [!IMPORTANT]
+> Windows Virtual Desktop では、RemoteApp とデスクトップ接続 (RADC) クライアントおよびリモート デスクトップ接続 (MSTSC) クライアントはサポートされていません。
+
+> [!IMPORTANT]
+> Windows Virtual Desktop では、現在、Microsoft Store のリモート デスクトップ クライアントはサポートされていません。 このクライアントのサポートは、将来のリリースで追加されます。
+
+リモート デスクトップ クライアントから次の URL にアクセスできる必要があります。
+
+|Address|送信ポート|目的|クライアント|
+|---|---|---|---|
+|*.wvd.microsoft.com|TCP ポート 443|サービス トラフィック|All|
+|*.servicebus.windows.net|TCP ポート 443|データのトラブルシューティング|All|
+|go.microsoft.com|TCP ポート 443|Microsoft の FWLink|All|
+|aka.ms|TCP ポート 443|Microsoft URL 短縮ツール|All|
+|docs.microsoft.com|TCP ポート 443|ドキュメント|All|
+|privacy.microsoft.com|TCP ポート 443|プライバシー ステートメント|All|
+|query.prod.cms.rt.microsoft.com|TCP ポート 443|クライアント更新|Windows デスクトップ|
+
+>[!IMPORTANT]
+>信頼できるクライアント エクスペリエンスを実現するには、これらの URL を開くことが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。 これらの URL は、クライアントのサイトとリソースにのみ対応しており、他のサービス (Azure Active Directory など) の URL は含まれません。
 
 ## <a name="supported-virtual-machine-os-images"></a>サポートされている仮想マシン OS イメージ
 

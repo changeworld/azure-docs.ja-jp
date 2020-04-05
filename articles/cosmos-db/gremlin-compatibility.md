@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
 ms.openlocfilehash: 581bc813ca27067b1f27ab9866a45df3084dbbcc
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75644734"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin の互換性

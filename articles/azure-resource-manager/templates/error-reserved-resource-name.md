@@ -4,10 +4,10 @@ description: 予約された単語を含むリソース名を指定するとき�
 ms.topic: troubleshooting
 ms.date: 11/08/2017
 ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75474261"
 ---
 # <a name="resolve-reserved-resource-name-errors"></a>予約されたリソース名のエラーを解決する

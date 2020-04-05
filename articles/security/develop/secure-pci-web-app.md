@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/22/2019
 ms.author: terrylan
 ms.openlocfilehash: 4fe612db65d985be2f1f1c81d03c3ee735c03889
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69992391"
 ---
 # <a name="develop-a-secure-infrastructure-for-a-pci-app"></a>PCI アプリのセキュリティで保護されたインフラストラクチャを開発する
@@ -39,7 +39,7 @@ Payment Card Industry (PCI) アプリ用のこのセキュリティで保護さ�
 > [!NOTE]
 > このアーキテクチャは、特定の要件に合わせて調整するための基礎として使用されることを目的としており、そのまま運用環境に適用しないでください。
 
-変更を加えずにこの環境にアプリケーションをデプロイすることは、PCI DSS 3.2 の要件を完全に満たすには不十分です。 以下の点に注意してください。
+変更を加えずにこの環境にアプリケーションをデプロイすることは、PCI DSS 3.2 の要件を完全に満たすには不十分です。 次のことを考慮してください。
 
 - このアーキテクチャは、お客様が PCI DSS 3.2 に準拠した方法で Azure を使用するためのベースラインを提供します。
 - お客様は、このアーキテクチャを使用してビルドしたソリューションの適切なセキュリティとコンプライアンスの評価を実施する責任を負います。要件は、お客様の実装によって変化する可能性があるからです。
@@ -93,7 +93,7 @@ Threat Modeling Tool によって生成される脅威と潜在的脆弱性の�
 
 開発者は、脅威モデルの出力に示されている各脅威を軽減することによって、システムの全体的なセキュリティを向上させることができます。
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 ### <a name="prerequisites"></a>前提条件
 アプリケーションを起動して稼働させるには、次のツールをインストールする必要があります。
 
@@ -119,7 +119,7 @@ Azure にアプリをデプロイする方法は、次のように多数あり�
 - Azure Resource Manager のテンプレート
 - PowerShell
 - Azure CLI
-- Azure ポータル
+- Azure portal
 - Azure DevOps
 
 ## <a name="guidance-and-recommendations"></a>ガイダンスと推奨事項
@@ -167,7 +167,7 @@ App Service Environment の NSG 構成を次の図に示すように構成する
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 Azure Disk Encryption では、Windows の BitLocker 機能を利用して、データ ディスクのボリュームを暗号化します。 このソリューションは、ディスクの暗号化キーを制御および管理できるように、Azure Key Vault と統合されています。
 
-### <a name="azure-sql-database"></a>Azure SQL Database
+### <a name="azure-sql-database"></a>Azure SQL データベース
 Azure SQL データベース インスタンスは、次のデータベース セキュリティ対策を使用します。
 
 - [Active Directory 認証と承認](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)を使用して、データベース ユーザーの ID 管理と他の Microsoft サービスを一元管理できます。
@@ -262,7 +262,7 @@ Azure サービスは、システムの正常性だけではなく、システ�
 - キーの許可される暗号化操作は必要なものに制限されます。
 
 ### <a name="vpn-and-expressroute"></a>VPN と ExpressRoute
-この PaaS Web アプリケーションの参照アーキテクチャの一部としてデプロイされるリソースへの接続を安全に確立するために、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) またはセキュリティ保護された VPN トンネルを構成する必要があります。 ExpressRoute または VPN を適切に設定することで、転送中のデータに対して保護のレイヤーを追加できます。
+この PaaS Web アプリケーションの参照アーキテクチャの一部としてデプロイされるリソースへの接続を安全に確立するために、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) またはセキュリティ保護された VPN トンネルを構成する必要があります。 ExpressRoute または VPN を適切に設定することで、お客様は転送中のデータに対して保護のレイヤーを追加できます。
 
 Azure を使用してセキュリティ保護された VPN トンネルを実装することにより、オンプレミス ネットワークと Azure 仮想ネットワークの間で仮想プライベート接続を作成できます。 この接続はインターネットを介して行われ、お客様はご自分のネットワークと Azure の間の暗号化されたリンク内で情報を安全に "トンネリング" することができます。 サイト間 VPN は、数十年にわたってあらゆる規模の企業に導入されている安全で成熟したテクノロジです。 このオプションでは、暗号化メカニズムとして IPsec トンネル モードが使用されます。
 
@@ -275,7 +275,7 @@ VPN トンネル内のトラフィックはサイト間 VPN を使用してイ�
 
 セキュリティ機能を備えたサンプル アプリのリソースをデプロイするには、いくつかの Premium 機能に対して料金を支払う必要があります。 アプリケーションの規模が拡大し、Azure によって提供される無料レベルと試用版をアップグレードしてアプリケーションの要件を満たす必要が生じるにつれ、コストが増加する可能性があります。 コストの見積もりには、Azure [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)をご利用ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事は、セキュリティで保護されたアプリケーションを設計、開発、およびデプロイする際に役立ちます。
 
 - [Design (デザイン)](secure-design.md)

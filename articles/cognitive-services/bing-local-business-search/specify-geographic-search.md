@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: 213457bc583494bbe039269b96b25990f7d0a961
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "69906238"
 ---
 # <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>地理的境界を使用して Bing Local Business Search API からの結果をフィルター処理する
@@ -49,7 +49,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restauran
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localMapView=47.619987,-122.181671,47.6421,-122.13715&appid=0123456789ABCDEF&mkt=en-us&form=monitr
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Local Business Search (Java) のクイック スタート](quickstarts/local-search-java-quickstart.md)
 - [Local Business Search (C#) のクイック スタート](quickstarts/local-quickstart.md)
 - [Local Business Search (Node.js) のクイック スタート](quickstarts/local-search-node-quickstart.md)

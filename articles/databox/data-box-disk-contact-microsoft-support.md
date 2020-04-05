@@ -4,22 +4,22 @@ description: Data Box または Data Box Disk の注文に関連する問題の�
 services: databox
 author: alkohli
 ms.service: databox
-ms.subservice: ''
+ms.subservice: disk
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: acba9d2c87d2fb23e48ac24cec22388044702bac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 000659793707c860de881f150e6ce07e4506c602
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240143"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064970"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Azure Data Box のサポート チケットを開く 
 
 この記事は、Azure Data Box、Azure Data Box Heavy、および Azure Data Box Disk に適用されます。これらはすべて Azure Data Box サービスによって管理されます。 Azure Data Box サービスで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 この記事で説明する内容は次のとおりです。
 
-* サポート要求を作成する方法
+* サポート リクエストを作成する方法
 * ポータル内からサポート要求ライフ サイクルを管理する方法
 
 ## <a name="create-a-support-request"></a>サポート要求の作成
@@ -51,7 +51,7 @@ ms.locfileid: "66240143"
     7. **[診断情報の共有]** チェック ボックスをオンにします。
     8. **[次へ]** をクリックします。
 
-       ![問題点](./media/data-box-disk-contact-microsoft-support/data-box-disk-support2.png)
+       ![問題](./media/data-box-disk-contact-microsoft-support/data-box-disk-support2.png)
 
 4. **[新しいサポート要求]** で、 **[手順 3 連絡先情報]** をクリックします。 **[連絡先情報]** で、次の手順を実行します。
 
@@ -81,7 +81,7 @@ ms.locfileid: "66240143"
 3. サポート要求を選択してクリックします。 この要求のステータスと詳細を表示することができます。 この要求をフォローアップする場合は、 **[+ 新しいメッセージ]** をクリックします。
 
    
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Data Box Disk に関する問題のトラブルシューティング](data-box-disk-troubleshoot.md)方法を確認します。
 [Data Box に関する問題のトラブルシューティング](data-box-troubleshoot.md)方法を確認します。

@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 1a96b5e4d03ce72bac29126028ca61e11e8c7324
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78262028"
 ---
 ### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>キーフレーズ抽出コンテナーを AKS クラスターにデプロイする
@@ -95,7 +95,7 @@ ms.locfileid: "78262028"
     ```
 
 1. ファイルを保存して、テキスト エディターを閉じます。
-1. ターゲットとして *keyphrase.yaml* ファイルを指定して Kubernetes `apply` コマンドを実行します。
+1. ターゲットとして `apply`keyphrase.yaml*ファイルを指定して Kubernetes* コマンドを実行します。
 
     ```console
     kubectl apply -f keyphrase.yaml

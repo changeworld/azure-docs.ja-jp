@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74703205"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory での Pig アクティビティを使用したデータ変換
@@ -39,7 +39,7 @@ ms.locfileid: "74703205"
 Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight Pig アクティビティでは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の Windows/Linux ベースの HDInsight クラスターで Pig クエリを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
 
 > [!NOTE] 
-> Azure Data Factory を初めて利用する場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してから、[初めてのデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)に関するチュートリアルを完了してください。 
+> Azure Data Factory の使用経験がない場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照し、[最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)チュートリアルを実行してください。 
 
 ## <a name="syntax"></a>構文
 
@@ -84,7 +84,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 名前 |アクティビティの名前 |はい |
+| name |アクティビティの名前 |はい |
 | description |アクティビティの用途を説明するテキストです。 |いいえ |
 | type |HDInsightPig |はい |
 | inputs |Pig のアクティビティによって使用される 1 つ以上の入力 |いいえ |
@@ -219,7 +219,7 @@ Data Factory パイプラインでこの Pig スクリプトを実行するに�
     Store PigSampleOut into '$Output' USING PigStorage (','); 
     ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Hive アクティビティ](data-factory-hive-activity.md)
 * [MapReduce アクティビティ](data-factory-map-reduce.md)
 * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)

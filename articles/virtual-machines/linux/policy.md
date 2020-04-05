@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
 ms.openlocfilehash: 7ab48430ae4d6585c908b53017122096175abac3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035318"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Azure Resource Manager を使用して Linux VM にポリシーを適用する
@@ -208,7 +208,7 @@ ms.locfileid: "74035318"
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * (上記の例で示すように) ポリシー規則を定義した後、ポリシー定義を作成してスコープに割り当てる必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 ポリシーを割り当てるには、[Azure Portal を使用したリソース ポリシーの割り当てと管理](../../governance/policy/assign-policy-portal.md)、[PowerShell を使用したポリシーの割り当て](../../governance/policy/assign-policy-powershell.md)、または [Azure CLI を使用したポリシーの割り当て](../../governance/policy/assign-policy-azurecli.md)に関する各ページをご覧ください。
 * リソース ポリシーの概要については、「[Azure Policy とは](../../governance/policy/overview.md)」をご覧ください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](/azure/architecture/cloud-adoption-guide/subscription-governance)」を参照してください。

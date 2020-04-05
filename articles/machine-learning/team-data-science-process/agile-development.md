@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722103"
 ---
 # <a name="agile-development-of-data-science-projects"></a>データ サイエンス プロジェクトのアジャイル開発
@@ -33,7 +33,7 @@ ms.locfileid: "76722103"
 
 ![Team Data Science Process](./media/agile-development/1-project-execute.png)
 
-##  <a name='Terminology-1'></a>作業項目の種類
+##  <a name="work-item-types"></a><a name='Terminology-1'></a>作業項目の種類
 
 TDSP スプリント計画フレームワークには、よく使用される 4 つの "*作業項目*" の種類があります: "*機能*"、"*ユーザー ストーリー*"、"*タスク*"、"*バグ*"。 すべての作業項目のバックログは、Git リポジトリ レベルではなくプロジェクト レベルです。 
 
@@ -60,7 +60,7 @@ TDSP スプリント計画フレームワークには、よく使用される 4 
 > [!NOTE]
 > TDSP では、ソフトウェア コード管理 (SCM) から、機能、ユーザー ストーリー、タスク、バグの概念を借用しています。 TDSP の概念は、従来の SCM 定義とは若干異なる場合があります。
 
-## <a name='SprintPlanning-2'></a>スプリントを計画する
+## <a name="plan-sprints"></a><a name='SprintPlanning-2'></a>スプリントを計画する
 
 多くのデータ サイエンティストは複数のプロジェクトに従事しています。これらは完了に数か月かかったり、進行速度がさまざまであったりする可能性があります。 スプリント計画は、プロジェクトの優先順位付けと、リソースの計画と割り当てに役立ちます。 Azure Boards では、自分のプロジェクトの作業項目を簡単に作成、管理、追跡でき、プロジェクトが期待どおりに進むようにスプリント計画を実施できます。
 
@@ -68,7 +68,7 @@ TDSP スプリント計画フレームワークには、よく使用される 4 
 
 Azure Boards のスプリント計画の詳細については、「[バックログ項目をスプリントに割り当てる](/azure/devops/boards/sprints/assign-work-sprint)」を参照してください。 
 
-## <a name='AddFeature-3'></a>機能をバックログに追加する 
+## <a name="add-a-feature-to-the-backlog"></a><a name='AddFeature-3'></a>機能をバックログに追加する 
 
 自分のプロジェクトとプロジェクト コード リポジトリを作成した後、プロジェクトの作業を表すバックログに機能を追加できます。
 
@@ -90,7 +90,7 @@ Azure Boards のスプリント計画の詳細については、「[バックロ
    
    ![機能を編集して [保存して閉じる] を選択する](./media/agile-development/3a-add-link-repo.png)
 
-## <a name='AddStoryunderfeature-4'></a>ユーザー ストーリーを機能に追加する 
+## <a name="add-a-user-story-to-the-feature"></a><a name='AddStoryunderfeature-4'></a>ユーザー ストーリーを機能に追加する 
 
 機能の下に、プロジェクトの完了に必要な主なステップを記述するユーザー ストーリーを追加できます。 
 
@@ -108,7 +108,7 @@ Azure Boards のスプリント計画の詳細については、「[バックロ
    
 1. ユーザー ストーリーの編集が完了したら、 **[保存して閉じる]** を選択します。 
 
-## <a name='AddTaskunderstory-5'></a>タスクをユーザー ストーリーに追加する 
+## <a name="add-a-task-to-a-user-story"></a><a name='AddTaskunderstory-5'></a>タスクをユーザー ストーリーに追加する 
 
 タスクは、各ユーザー ストーリーを完了するために必要な特定の詳細な手順です。 ユーザー ストーリーのすべてのタスクが完了したら、ユーザー ストーリーも完了します。 
 
@@ -122,7 +122,7 @@ Azure Boards のスプリント計画の詳細については、「[バックロ
 
 ![[ボード] ビュー](./media/agile-development/8a-sprint-board-view.png)
 
-## <a name='set-up-agile-dsp-6'></a>アジャイル TDSP 作業テンプレートを使用する
+## <a name="use-an-agile-tdsp-work-template"></a><a name='set-up-agile-dsp-6'></a>アジャイル TDSP 作業テンプレートを使用する
 
 データ サイエンティストにとっては、機能、ユーザー ストーリー、タスクを TDSP ライフサイクル ステージおよびサブステージに置き換えたアジャイル テンプレートを使用する方が便利な可能性があります。 Azure Boards では、TDSP ライフサイクル ステージを使用したアジャイル由来のテンプレートを作成して、作業項目の作成と追跡を行えます。 次の手順では、データ サイエンス固有のアジャイル プロセス テンプレートの設定と、テンプレートに基づいたデータ サイエンス作業項目の作成について説明します。
 

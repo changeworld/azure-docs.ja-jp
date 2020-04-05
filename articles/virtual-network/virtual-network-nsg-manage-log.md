@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
 ms.openlocfilehash: 9829e713f19ab9755e9dc79d676446c8048e09b3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75751183"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>ネットワーク セキュリティ グループの診断ログ
@@ -48,7 +48,7 @@ ms.locfileid: "75751183"
 
     | 設定                                                                                     | 値                                                          |
     | ---------                                                                                   |---------                                                       |
-    | Name                                                                                        | 任意の名前です。  例: *myNsgDiagnostics*      |
+    | 名前                                                                                        | 任意の名前です。  例: *myNsgDiagnostics*      |
     | **ストレージ アカウントへのアーカイブ**、**イベント ハブへのストリーム**、**Log Analytics への送信** | 必要なだけいくつでも保存先を選択できます。 それぞれについて詳しくは、「[ログの保存先](#log-destinations)」をご覧ください。                                                                                                                                           |
     | LOG                                                                                         | いずれか一方または両方のログ カテゴリを選びます。 各カテゴリでログに記録されるデータについて詳しくは、「[ログのカテゴリ](#log-categories)」をご覧ください。                                                                                                                                             |
 6. ログを表示して分析します。 詳しくは、「[ログの表示と分析](#view-and-analyze-logs)」をご覧ください。

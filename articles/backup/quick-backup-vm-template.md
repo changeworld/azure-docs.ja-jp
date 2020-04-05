@@ -4,17 +4,19 @@ description: Azure Resource Manager テンプレートを使用して仮想マ�
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.custom: mvc
-ms.openlocfilehash: 721213dcdd4751de936968b7e67a4b5d31b8d9ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.custom: mvc,subject-armqs
+ms.openlocfilehash: c40dc7ef8fc55acade709b1ffbbd86ff306f7f0e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980650"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79459244"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure に仮想マシンをバックアップする
 
 [Azure Backup](backup-overview.md) では、オンプレミスのマシンとアプリ、および Azure VM をバックアップします。 この記事では、Resource Manager テンプレートと Azure PowerShell を使用して Azure VM をバックアップする方法を紹介します。 このクイックスタートでは、Resource Manager テンプレートをデプロイして Recover Services コンテナーを作成するプロセスを中心に説明します。 Resource Manager テンプレートの開発に関する詳細については、[Resource Manager ドキュメント](/azure/azure-resource-manager/)と[テンプレート リファレンス](/azure/templates/microsoft.recoveryservices/allversions)をご覧ください。
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 また、[Azure PowerShell](./quick-backup-vm-powershell.md)、[Azure CLI](quick-backup-vm-cli.md)、または [Azure portal](quick-backup-vm-portal.md) を使用して VM をバックアップすることもできます。
 
@@ -22,7 +24,24 @@ ms.locfileid: "75980650"
 
 [Recovery Services コンテナー](backup-azure-recovery-services-vault-overview.md)は、Azure VM などの保護されたリソースのバックアップ データを格納する論理コンテナーです。 バックアップ ジョブを実行すると、Recovery Services コンテナー内に復旧ポイントが作成されます。 この復元ポイントのいずれかを使用して、データを特定の時点に復元できます。
 
+### <a name="review-the-template"></a>テンプレートを確認する
+
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)からのものです。 このテンプレートを使用すると、保護のために DefaultPolicy を使用して構成された単純な Windows VM と Recovery Services コンテナーをデプロイできます。
+
+:::code language="json" source="~/quickstart-templates/101-recovery-services-create-vm-and-configure-backup/azuredeploy.json" range="1-247" highlight="221-245":::
+
+テンプレート内に定義されているリソース:
+
+- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
+- [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft.RecoveryServices/vaults**](/azure/templates/microsoft.recoveryservices/vaults)
+- [**Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems**](/azure/templates/microsoft.recoveryservices/vaults/backupfabrics/protectioncontainers/protecteditems)
+
+### <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 テンプレートをデプロイするには、 **[試してみる]** を選択し、Azure Cloud Shell を開いて、シェル ウィンドウに次の PowerShell スクリプトを貼り付けます。 コードを貼り付けるには、シェル ウィンドウを右クリックして、 **[貼り付け]** を選択します。
 
@@ -42,11 +61,13 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 このクイックスタートでは、Resource Manager テンプレートのデプロイに Azure PowerShell が使用されています。 また、[Azure portal](../azure-resource-manager/templates/deploy-portal.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、[Rest API](../azure-resource-manager/templates/deploy-rest.md) を使用してテンプレートをデプロイすることもできます。
 
-## <a name="start-a-backup-job"></a>バックアップ ジョブを開始する
+## <a name="validate-the-deployment"></a>デプロイの検証
+
+### <a name="start-a-backup-job"></a>バックアップ ジョブを開始する
 
 このテンプレートにより、VM が作成され、その VM へのバックアップが可能になります。 テンプレートをデプロイしたら、バックアップ ジョブを開始する必要があります。 詳細については、「[バックアップ ジョブを開始する](./quick-backup-vm-powershell.md#start-a-backup-job)」を参照してください。
 
-## <a name="monitor-the-backup-job"></a>バックアップ ジョブを監視する
+### <a name="monitor-the-backup-job"></a>バックアップ ジョブを監視する
 
 バックアップ ジョブを監視するには、「[バックアップ ジョブの監視](./quick-backup-vm-powershell.md#monitor-the-backup-job)」を参照してください。
 
@@ -72,3 +93,4 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 - Azure portal 内で VM をバックアップする[方法の詳細](tutorial-backup-vm-at-scale.md)
 - VM をすばやく復元する[方法の詳細](tutorial-restore-disk.md)
+- Resource Manager テンプレートを作成する[方法について説明します](../azure-resource-manager/templates/template-tutorial-create-first-template.md)。

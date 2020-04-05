@@ -9,10 +9,10 @@ ms.date: 03/04/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c3c9dbca6a76bf0b10a83087fc31d9fa41c6bd03
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78331279"
 ---
 1. [Azure portal](https://portal.azure.com) メニューから **[リソースの作成]** を選択します。 

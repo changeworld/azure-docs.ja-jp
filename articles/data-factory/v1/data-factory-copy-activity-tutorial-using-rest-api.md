@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c6e6d4a38c5ed2afc118b267f253ffc7533f9d82
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438870"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>チュートリアル:REST API を使用して、データをコピーする Azure Data Factory パイプラインを作成する 
@@ -179,7 +179,7 @@ JSON プロパティの詳細については、[Azure SQL のリンクされた�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| 型 | データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。 |
+| type | データは Azure Blob Storage に存在するため、type プロパティを **AzureBlob** に設定しています。 |
 | linkedServiceName | 前に作成した **AzureStorageLinkedService** を参照します。 |
 | folderPath | BLOB **コンテナー**と、入力 BLOB を格納する**フォルダー**を指定します。 このチュートリアルでは、adftutorial は BLOB コンテナーで、フォルダーはルート フォルダーです。 | 
 | fileName | このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは fileName に **emp.txt** が指定されているため、このファイルのみが処理のために取得されます。 |
@@ -222,7 +222,7 @@ JSON プロパティの詳細については、[Azure SQL のリンクされた�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| 型 | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL データベースのテーブルにコピーするためです。 |
+| type | type プロパティを **AzureSqlTable** に設定します。これは、データを Azure SQL データベースのテーブルにコピーするためです。 |
 | linkedServiceName | 前に作成した **AzureSqlLinkedService** を参照します。 |
 | tableName | データのコピー先となる**テーブル**を指定します。 | 
 | frequency/interval | frequency は **Hour**、interval は **1** に、それぞれ設定されています。これは、出力スライスがパイプラインの開始時刻から終了時刻までの間 **1 時間ごと**に生成されることを表します (出力スライスは、開始時刻の前および終了時刻の後には生成されません)。  |

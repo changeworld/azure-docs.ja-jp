@@ -9,13 +9,13 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: ba2d216b9827eeb499df40ceffca16780bdf5a02
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278252"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した仮想マシン スケール セットのディスクの作成および使用
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットのディスクの作成および使用
 
 仮想マシン スケール セットでは、VM インスタンスのオペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 スケール セットを作成および管理するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクの作成方法と管理方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 

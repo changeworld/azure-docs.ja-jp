@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
 ms.openlocfilehash: bc013469610d5535c89870947fe094da93660012
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73488419"
 ---
 # <a name="app-service-documentation"></a>App Service のドキュメント
@@ -26,13 +26,13 @@ Azure App Service を使用すると、インフラストラクチャ、言語�
 Web Apps 用 App Service を使用してクラウドに最初のアプリケーションをデプロイする方法について説明します。
 
 - [.NET](/azure/app-service/app-service-web-get-started-dotnet)
-- [Node.JS](/azure/app-service/app-service-web-get-started-nodejs)
+- [Node.js](/azure/app-service/app-service-web-get-started-nodejs)
 - [PHP](/azure/app-service/app-service-web-get-started-php)
 - [Java](/azure/app-service/app-service-web-get-started-java)
 - [Python](/azure/app-service/containers/quickstart-python)
 - [HTML](/azure/app-service/app-service-web-get-started-html)
 
-## <a name="step-by-step-tutorials"></a>ステップバイステップのチュートリアル
+## <a name="step-by-step-tutorials"></a>ステップバイステップ チュートリアル
 
 Azure でセキュリティ保護された Web アプリケーションをデプロイ、管理、監視する方法について説明します。
 

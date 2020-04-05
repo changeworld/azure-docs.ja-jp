@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:インストールの種類の選択 | Microsoft Docs
+title: 'Azure AD Connect: インストールの種類の選択 | Microsoft Docs'
 description: このトピックでは、Azure AD Connect で使用するインストールの種類を選択する方法について説明します
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90a624a6b3b4696899af0d8606f653df260cc201
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60348282"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Azure AD Connect で使用するインストールの種類の選択
-Azure AD Connect には、新規インストール用に簡易とカスタマイズの 2 種類のインストールが用意されています。 このトピックは、どちらのオプションでインストールするかを決める際に役立ちます。
+Azure AD Connect には、簡易とカスタマイズの 2 種類のインストールが用意されています。 このトピックは、どちらのオプションでインストールするかを決める際に役立ちます。
 
 ## <a name="express"></a>Express
 簡易は一般的なオプションで、新規インストールの約 90% で使用されます。 これは、最も一般的な顧客シナリオで使用できる構成を提供できるように設計されました。
@@ -47,7 +47,7 @@ Azure AD Connect には、新規インストール用に簡易とカスタマイ
 - 同期する必要があるのが一部の OU の場合は、最後のページで引き続き簡易を使用して、**[... 同期処理を開始してください]*** の選択を解除します。 次に、インストール ウィザードを実行し、[構成オプション](how-to-connect-installation-wizard.md#customize-synchronization-options)の OU を変更して、スケジュールされた同期を有効にします。
 - パスワード ライトバックなど、Azure AD Premium のいずれかの機能を有効にする必要がある場合は、 最初に、簡易で初期インストールを完了します。 次に、インストール ウィザードを再度実行し、[構成オプション](how-to-connect-installation-wizard.md#customize-synchronization-options)を変更します。
 
-## <a name="custom"></a>カスタム
+## <a name="custom"></a>Custom
 カスタマイズされたインストールを使用すると、簡易より多くのオプションを使用できます。 このインストールは、組織で主に使用されている構成が、前の簡易のセクションで説明した構成と異なるすべてのケースで使用します。
 
 たとえば、次のような場合です。
@@ -74,5 +74,5 @@ Azure AD Sync を使用している場合は、Connect を新しいバージョ�
 ## <a name="migrate-from-fim2010-or-mim2016"></a>FIM2010 または MIM2016 からの移行
 Azure AD コネクタで Forefront Identity Manager 2010 または Microsoft Identity Manager 2016 を使用している場合、唯一のオプションは移行です。 [スウィング移行](how-to-upgrade-previous-version.md#swing-migration)に関するトピックで説明されている手順に従ってください。 この手順の Azure AD Sync の部分すべてを、FIM2010/MIM2016 に置き換えます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 使用するオプションに応じて、左側の目次を使用して、詳細な手順が示されている記事を見つけてください。

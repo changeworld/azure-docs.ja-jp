@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 5ba1709ae195631371e4ea72667ba9b2a4bf279e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76270626"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>BLOB パスを既定のパスから変更する

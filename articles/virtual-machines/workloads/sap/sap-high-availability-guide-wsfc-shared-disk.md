@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8156f8706828afae30889b3250cf0b26252bf394
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598478"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -211,7 +211,7 @@ Azure Load Balancer サービスは、Azure に "*内部ロード バランサ�
 
 ![図 1: 共有ディスクを使わない Azure の Windows フェールオーバー クラスタリング構成][sap-ha-guide-figure-1001]
 
-_**図 1:** 共有ディスクを使用しない Azure の Windows Server フェールオーバー クラスタリング構成_
+_**図 1:** 共有ディスクを使わない Azure の Windows Server フェールオーバー クラスタリング構成_
 
 ### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>クラスター共有ディスクを使う SAP ASCS/SCS HA
 Windows では、SAP ASCS/SCS インスタンスには、SAP セントラル サービス、SAP メッセージ サーバー、エンキュー サーバー プロセス、および SAP グローバル ホスト ファイルが含まれます。 SAP グローバル ホスト ファイルは、SAP システム全体のセントラル ファイルを格納します。
@@ -230,13 +230,13 @@ SAP ASCS/SCS インスタンスには、次のコンポーネントがありま�
     \\\\&lt;ASCS/SCS 仮想ホスト名\>\sapmnt\\&lt;SID&gt;\SYS\..
 
 
-![図 2:プロセス、ファイル構造、および SAP ASCS/SCS インスタンスのグローバル ホスト sapmnt ファイル共有][sap-ha-guide-figure-8001]
+![図 2: プロセス、ファイル構造、および SAP ASCS/SCS インスタンスのグローバル ホスト sapmnt ファイル共有][sap-ha-guide-figure-8001]
 
 _**図 2:** プロセス、ファイル構造、および SAP ASCS/SCS インスタンスのグローバル ホスト sapmnt ファイル共有_
 
 高可用性の設定では、SAP ASCS/SCS インスタンスをクラスター化します。 "*クラスター化された共有ディスク*" (この例ではドライブ S) を使って、SAP ASCS/SCS ファイルと SAP グローバル ホスト ファイルを配置します。
 
-![図 3:共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8002]
+![図 3: 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8002]
 
 _**図 3:** 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ_
 
@@ -247,7 +247,7 @@ _**図 3:** 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ
 >
 
 
-![図 4:共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8003]
+![図 4: 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8003]
 
 _**図 4:** 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ_
 
@@ -265,9 +265,9 @@ _**図 4:** 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ
 
 詳細については、[SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/) を参照してください。
 
-![図 5:SIOS DataKeeper を使用する Azure での Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-1002]
+![図 5: SIOS DataKeeper を使う Azure の Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-1002]
 
-_**図 5:** SIOS DataKeeper を使用する Azure での Windows フェールオーバー クラスタリング構成_
+_**図 5:** SIOS DataKeeper を使う Azure の Windows フェールオーバー クラスタリング構成_
 
 > [!NOTE]
 > SQL Server のような一部の DBMS 製品では、高可用性のために共有ディスクは必要ありません。 SQL Server Always On は、DBMS のデータとログ ファイルを、クラスター ノードのローカル ディスクから別のクラスター ノードのローカル ディスクにレプリケートします。 その場合、Windows クラスター構成に共有ディスクは不要です。

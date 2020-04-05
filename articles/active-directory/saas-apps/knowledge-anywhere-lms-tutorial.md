@@ -17,10 +17,10 @@ ms.date: 05/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f44324bbdd5af6675dfb4f5664cbbde2627edfec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67098558"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Knowledge Anywhere LMS の統合
@@ -29,7 +29,7 @@ ms.locfileid: "67098558"
 
 * Knowledge Anywhere LMS にアクセスできるユーザーを Azure AD で管理できます。
 * ユーザーが自分の Azure AD アカウントを使用して Knowledge Anywhere LMS に自動的にサインインできます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -146,7 +146,7 @@ Knowledge Anywhere LMS に対する Azure AD SSO を構成してテストする�
 
     h. **[SP Response(ACS) URL]\(SP 応答 (ACS) URL\)** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションにある **[応答 URL]** ボックスに貼り付けます。
 
-    i. **[Save]** をクリックします。
+    i. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

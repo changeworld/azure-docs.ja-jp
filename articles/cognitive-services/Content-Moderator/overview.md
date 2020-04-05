@@ -10,16 +10,18 @@ ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: c1ff74bc358f167612b2bfe05ca47e21203d8702
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 570d55c8523e1c1deca3242a8841b0cc34322786
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973494"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053869"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator とは
 
-Azure Content Moderator は、テキスト、画像、ビデオのコンテンツに不快感を与える可能性がある内容、リスクのある内容、その他望ましくない可能性のある内容が含まれているかどうかを確認できる Cognitive Services です。 このサービスでは、そのような素材が検出されると、それに応じたラベル (フラグ) がコンテンツに適用されます。 その後は、法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、フラグの設定されたコンテンツをアプリで処理することができます。 コンテンツに適用されるフラグがそれぞれどのような意味であるかについての詳細は、「[モデレート API](#moderation-apis)」のセクションを参照してください。
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+
+Azure Content Moderator は、テキスト、画像、ビデオのコンテンツに不快感を与える可能性がある内容、リスクのある内容、その他望ましくない可能性のある内容が含まれているかどうかを確認できるコグニティブ サービスです。 このサービスでは、そのような素材が検出されると、それに応じたラベル (フラグ) がコンテンツに適用されます。 その後は、法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、フラグの設定されたコンテンツをアプリで処理することができます。 コンテンツに適用されるフラグがそれぞれどのような意味であるかについての詳細は、「[モデレート API](#moderation-apis)」のセクションを参照してください。
 
 ## <a name="where-its-used"></a>使用場所
 
@@ -73,6 +75,6 @@ Content Moderator サービスには、ほかにも Web ベースの[レビュ�
 
 Cognitive Services 全般に言えることですが、Content Moderator サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Content Moderator の概要](quick-start.md)」の手順に従って Content Moderator サービスを使ってみましょう。

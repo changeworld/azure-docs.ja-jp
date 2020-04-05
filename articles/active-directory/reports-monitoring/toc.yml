@@ -6,7 +6,7 @@
       href: overview-reports.md
     - name: Azure AD の監視とは
       href: overview-monitoring.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: サインイン レポートのダウンロード
@@ -45,7 +45,7 @@
       href: concept-reporting-api.md
     - name: Azure Monitor での Azure AD ログ
       href: concept-activity-logs-azure-monitor.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   expanded: true
   items:
     - name: Reports
@@ -74,7 +74,7 @@
           href: howto-integrate-activity-logs-with-splunk.md
         - name: アクティビティ ログと SumoLogic の統合
           href: howto-integrate-activity-logs-with-sumologic.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: 見つからない監査データ
           href: troubleshoot-missing-audit-data.md

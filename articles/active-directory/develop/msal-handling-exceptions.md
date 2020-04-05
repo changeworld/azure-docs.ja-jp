@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 018d0c3bc009f6063de75b9a479be650b2c06e7c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: f78c64fc0ba25dc3310b24e873dbae266ea2f281
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160846"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050316"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL の例外とエラーを処理する
 
@@ -36,7 +36,7 @@ Microsoft Authentication Library (MSAL) での例外は、エンド ユーザー
 
 アプリのエラー処理の詳細については、以下で、お使いの言語のセクションを参照してください。
 
-## <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+## <a name="net"></a>[.NET](#tab/dotnet)
 
 .NET 例外を処理するときは、例外の種類自体と `ErrorCode` メンバーを使用して例外を区別できます。 `ErrorCode` の値は、[MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet) 型の定数です。
 
@@ -50,7 +50,7 @@ Microsoft Authentication Library (MSAL) での例外は、エンド ユーザー
 
 | 例外 | エラー コード | 対応策|
 | --- | --- | --- |
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: ユーザーまたは管理者は、ID が '{appId}' で名前が '{appName}' であるアプリケーションを使用することに同意していません。 このユーザーとリソースに、対話形式の承認要求を送信してください。| 先にユーザーの同意を得る必要があります。 .NET Core (Web UI はありません) を使用していない場合は、`AcquireTokeninteractive` を (1 回だけ) 呼び出します。 .NET Core を使用している場合、または `AcquireTokenInteractive` を行わない場合は、ユーザーは次の URL に移動して同意できます: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read 。 `AcquireTokenInteractive` を呼び出すには: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: ユーザーまたは管理者は、ID が '{appId}' で名前が '{appName}' であるアプリケーションを使用することに同意していません。 このユーザーとリソースに、対話形式の承認要求を送信してください。| 先にユーザーの同意を得る必要があります。 .NET Core (Web UI はありません) を使用していない場合は、`AcquireTokeninteractive` を (1 回だけ) 呼び出します。 .NET Core を使用している場合、または `AcquireTokenInteractive` を行わない場合は、ユーザーは次の URL に移動して同意できます: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read`。 `AcquireTokenInteractive` を呼び出すには: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: ユーザーは、多要素認証 (MFA) を使用する必要があります。| 軽減策はありません。 テナントに MFA が構成されていて、Azure Active Directory (AAD) でそれを適用することを決定した場合、`AcquireTokenInteractive` や `AcquireTokenByDeviceCode` などの対話型フローにフォールバックする必要があります。|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: 付与タイプが */common* または */consumers* エンドポイントでサポートされていません。 */organizations* またはテナント固有のエンドポイントを使用してください。 */common* を使用しました。| Azure AD からのメッセージで説明されているように、機関はテナントを持っている必要があり、それ以外の場合は */organizations* です。|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: 要求本文には、次のパラメーターが含まれる必要があります: `client_secret or client_assertion`。| この例外は、アプリケーションが Azure AD でパブリック クライアント アプリケーションとして登録されていなかった場合にスローされる可能性があります。 Azure portal でアプリケーションのマニフェストを編集し、`allowPublicClient` を `true` に設定します。 |
@@ -138,7 +138,7 @@ catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantE
 }
 ```
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 MSAL.js には、さまざまな種類の一般的エラーを抽象化して分類するエラー オブジェクトが用意されています。 エラーを適切に処理するため、エラー メッセージなど、エラーの特定の詳細にアクセスするためのインターフェイスも提供されています。
 
@@ -231,7 +231,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 });
 ```
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 MSAL for Python では、ほとんどのエラーは API 呼び出しからの戻り値として伝達されます。 このエラーは、Microsoft ID プラットフォームからの JSON 応答を含むディクショナリとして表されます。
 
@@ -242,7 +242,7 @@ MSAL for Python では、ほとんどのエラーは API 呼び出しからの�
 
 MSAL for Python では、ほとんどのエラーはエラー値を返すことで処理されるため、例外はまれです。 `ValueError` 例外は、API パラメーターの形式が正しくない場合など、ライブラリの使用方法に問題がある場合にのみスローされます。
 
-## <a name="javatabjava"></a>[Java](#tab/java)
+## <a name="java"></a>[Java](#tab/java)
 
 MSAL for Java には、`MsalClientException`、`MsalServiceException`、`MsalInteractionRequiredException` という 3 種類の例外があります。すべて `MsalException` から継承されます。
 
@@ -298,7 +298,7 @@ MSAL からは `reason` フィールドが公開されます。このフィー�
         }
 ```
 
-## <a name="iosmacostabiosmacos"></a>[iOS/macOS](#tab/iosmacos)
+## <a name="iosmacos"></a>[iOS/macOS](#tab/iosmacos)
 
 iOS 向けと macOS 向けの MSAL のエラーの完全リストについては、「[MSALError 列挙型](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)」に一覧されています。
 

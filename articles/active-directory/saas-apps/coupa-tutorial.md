@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Coupa の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Coupa の統合 | Microsoft Docs'
 description: Azure Active Directory と Coupa の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 709f3a5b66db660ade482660cd9b3930ff0b7141
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74227647"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-coupa"></a>チュートリアル:Azure Active Directory と Coupa の統合
+# <a name="tutorial-azure-active-directory-integration-with-coupa"></a>チュートリアル: Azure Active Directory と Coupa の統合
 
 このチュートリアルでは、Coupa と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Coupa と Azure AD の統合には、次の利点があります。
@@ -157,7 +157,7 @@ Coupa で Azure AD シングル サインオンを構成するには、次の手
 
     b. **[参照]** をクリックして、Azure Portal からダウンロードしたメタデータをアップロードします。
 
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 

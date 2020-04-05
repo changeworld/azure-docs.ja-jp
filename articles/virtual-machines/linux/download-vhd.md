@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
 ms.openlocfilehash: 02c3ee483e6a31960fd5123070a49f568ac4c690
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78968793"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
@@ -48,7 +48,7 @@ VHD をイメージとして使用して他の VM を作成するには、次の
 
 VHD を既存の VM の新しいインスタンス用のディスクまたはデータ ディスクとして使用するには、次の手順を実行します。
 
-1.  [Azure portal](https://portal.azure.com/) にサインインします。
+1.  [Azure portal](https://portal.azure.com/) にサインインする
 2.  左側のメニューで **[Virtual Machines]** を選択します。
 3.  一覧から VM を選択します。
 4.  VM のページで、 **[停止]** を選択します。

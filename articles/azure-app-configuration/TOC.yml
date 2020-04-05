@@ -92,6 +92,8 @@
   items:
     - name: ユーザーのサブセットに対して機能を有効にする
       href: howto-feature-filters-aspnet-core.md
+    - name: 環境ごとの構成にラベルを使用する
+      href: howto-labels-aspnet-core.md
     - name: 構成データのインポートまたはエクスポート
       href: howto-import-export-data.md
     - name: カスタム エンドポイントへのイベントのルーティング

@@ -1,20 +1,19 @@
 ---
-title: Azure アカウントで Office 365 にサインアップする | Microsoft Docs
+title: Azure アカウントで Office 365 にサインアップする
 description: Azure アカウントを使用して、Office 365 サブスクリプションを作成する方法を説明します
 author: JiangChen79
 ms.reviewer: adwise
 tags: billing,top-support-issue
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: banders
-ms.openlocfilehash: b38800a990056d7de0b6978573ddc19c80503a1d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 736009a88f309e0a38402222668a9609f844552f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199927"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79204819"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Azure アカウントで Office 365 サブスクリプションにサインアップする
 Azure サブスクライバ―は、Azure アカウントを使用して、Office 365 サブスクリプションにサインアップできます。 Azure サブスクリプションがある組織に属している場合は、既存の Azure Active Directory (Azure AD) にユーザーの Office 365 サブスクリプションを作成できます。 Azure Active Directory テナントでグローバル管理者または課金管理者権限を持っているアカウントを使用して、Office 365 サブスクリプションにサインアップします。 詳細については、「[Azure AD でアカウントのアクセス許可を確認する](#RoleInAzureAD)」と「[Azure Active Directory の管理者ロールの割り当て](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
@@ -47,8 +46,8 @@ Azure サブスクライバ―は、Azure アカウントを使用して、Offic
 
 サインアップが完了すると、Azure サブスクリプションが属しているのと同じ Azure Active Directory に Office 365 サブスクリプションが追加されます。 詳細については、「[Azure サブスクリプションと Office 365 サブスクリプションの背景情報](office-365-account-for-azure-subscription.md#more-about-subs)」と「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
-## <a id="RoleInAzureAD"></a>Azure AD でアカウントのアクセス許可を確認する
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+## <a name="check-my-account-permissions-in-azure-ad"></a><a id="RoleInAzureAD"></a>Azure AD でアカウントのアクセス許可を確認する
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. **[すべてのサービス]** をクリックし、 **[Active Directory]** を検索します。
 
     ![Azure ポータルでの Active Directory のスクリーンショット](./media/azure-account-for-office-365-subscription/billing-more-services-active-directory.png)

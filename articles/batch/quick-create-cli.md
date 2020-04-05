@@ -11,13 +11,13 @@ ms.date: 07/03/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 9106741e18354d39909fa84ce6e9f3a66ccf2014
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77024502"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>クイック スタート:Azure CLI で最初の Batch ジョブを実行する
+# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>クイック スタート: Azure CLI で最初の Batch ジョブを実行する
 
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI を使用して Batch アカウント、コンピューティング ノード (仮想マシン) の "*プール*"、そのプールで "*タスク*" を実行する "*ジョブ*" を作成する方法を示します。 各サンプル タスクでは、プール ノードの 1 つに対して基本的なコマンドが実行されます。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
 

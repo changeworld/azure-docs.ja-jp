@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
 ms.openlocfilehash: 5ee8ee4d2c9e225d82e58daffeef9e5f09e43e6b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595367"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>Kubernetes Service にデプロイするための GitHub アクション
@@ -21,7 +21,7 @@ ms.locfileid: "77595367"
 
 AKS をターゲットとするワークフローでは、ファイルに次の 3 つのセクションがあります。
 
-|Section  |処理手順  |
+|Section  |タスク  |
 |---------|---------|
 |**認証** | プライベート コンテナー レジストリ (ACR) へのログイン |
 |**ビルド** | コンテナー イメージのビルドとプッシュ  |

@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2017
 ms.openlocfilehash: 3cb3472572abbd891f8d36ea036b371c1224f38c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792154"
 ---
 # <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack での XML メッセージとフラット ファイル
@@ -35,6 +35,6 @@ ms.locfileid: "74792154"
 
 Azure Logic Apps の XML 機能を使用して、[本格的な機能を備えたロジック アプリをデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline)します (GitHub サンプル)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md) について詳細を確認する

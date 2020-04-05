@@ -5,15 +5,15 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 84cd8ed79281b005407b5a857398b5669635c072
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68320531"
 ---
 送信要求を行うために HTTP プロキシを構成する必要がある場合は、次の 2 つの引数を使用します。
 
-| 名前 | データ型 | 説明 |
+| Name | データ型 | 説明 |
 |--|--|--|
 |HTTP_PROXY|string|使用するプロキシ。例: `http://proxy:8888`<br>`<proxy-url>`|
 |HTTP_PROXY_CREDS|string|プロキシで認証されるために必要な資格情報。例: ユーザー名:パスワード。|

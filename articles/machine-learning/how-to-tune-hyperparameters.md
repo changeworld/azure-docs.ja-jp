@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4ca9cac00b9d00dcdbbd27f2fe769de2983c13ae
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 74fa6949716119d85eac5b142ac9e3c651a0a5d0
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534127"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398258"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Azure Machine Learning でモデルのハイパーパラメーターを調整する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

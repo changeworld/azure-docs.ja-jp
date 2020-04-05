@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
 ms.openlocfilehash: 425266e2a7ca42bb17ca598ddfc2f2b86591f32e
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900189"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN の Standard ルール エンジンの一致条件
@@ -36,7 +36,7 @@ Azure Content Delivery Network (Azure CDN) の [Standard ルール エンジン]
 
 #### <a name="required-fields"></a>必須フィールド
 
-Operator | サポートされている値
+演算子 | サポートされている値
 ---------|----------------
 等しい、等しくない | Mobile、Desktop
 
@@ -46,7 +46,7 @@ Operator | サポートされている値
 
 #### <a name="required-fields"></a>必須フィールド
 
-Operator | サポートされている値
+演算子 | サポートされている値
 ---------|----------------
 等しい、等しくない | 2.0、1.1、1.0、0.9、All
 
@@ -56,9 +56,9 @@ Operator | サポートされている値
 
 #### <a name="required-fields"></a>必須フィールド
 
-Cookie 名 | Operator | Cookie 値 | 大文字と小文字の変換
+Cookie 名 | 演算子 | Cookie 値 | 大文字と小文字の変換
 ------------|----------|--------------|---------------
-string | [標準の演算子一覧](#standard-operator-list) | String、Int | 変換なし、大文字に変換、小文字に変換
+String | [標準の演算子一覧](#standard-operator-list) | String、Int | 変換なし、大文字に変換、小文字に変換
 
 #### <a name="key-information"></a>重要な情報
 
@@ -75,9 +75,9 @@ string | [標準の演算子一覧](#standard-operator-list) | String、Int | �
 
 #### <a name="required-fields"></a>必須フィールド
 
-引数名 | Operator | 引数値 | 大文字と小文字の変換
+引数名 | 演算子 | 引数値 | 大文字と小文字の変換
 --------------|----------|----------------|---------------
-string | [標準の演算子一覧](#standard-operator-list) | String、Int | 変換なし、大文字に変換、小文字に変換
+String | [標準の演算子一覧](#standard-operator-list) | String、Int | 変換なし、大文字に変換、小文字に変換
 
 ### <a name="query-string"></a>クエリ文字列
 
@@ -85,7 +85,7 @@ string | [標準の演算子一覧](#standard-operator-list) | String、Int | �
 
 #### <a name="required-fields"></a>必須フィールド
 
-Operator | クエリ文字列 | 大文字と小文字の変換
+演算子 | クエリ文字列 | 大文字と小文字の変換
 ---------|--------------|---------------
 [標準の演算子一覧](#standard-operator-list) | String、Int | 変換なし、大文字に変換、小文字に変換
 
@@ -95,7 +95,7 @@ Operator | クエリ文字列 | 大文字と小文字の変換
 
 #### <a name="required-fields"></a>必須フィールド
 
-Operator | サポートされている値
+演算子 | サポートされている値
 ---------|-----------------
 Any | 該当なし
 geo の一致 | 国番号
@@ -110,7 +110,7 @@ IP の一致ではない | IP アドレス (スペース区切り)
 - 複数の IP アドレスと IP アドレスブロックを指定するには、次のように値の間にスペースを入れます。
   - **IPv4 の例**:*1.2.3.4 10.20.30.40* と指定した場合、アドレス 1:2:3:4 または 10.20.30.40 から配信される要求と一致します。
   - **IPv6 の例**:*1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* と指定した場合、アドレス 1:2:3:4:5:6:7:8 または 10:20:30:40:50:60:70:80 から配信される要求と一致します。
-- IP アドレス ブロックの構文では、ベース IP アドレスの末尾にスラッシュおよびプレフィックス サイズを付与します。 例:
+- IP アドレス ブロックの構文では、ベース IP アドレスの末尾にスラッシュおよびプレフィックス サイズを付与します。 次に例を示します。
   - **IPv4 の例**:*5.5.5.64/26* と指定した場合、アドレス 5.5.5.64 ～ 5.5.5.127 から配信される要求と一致します。
   - **IPv6 の例**:*1:2:3:/48* と指定した場合、アドレス 1:2:3:0:0:0:0:0 ～ 1:2:3:ffff:ffff:ffff:ffff:ffff から配信される要求と一致します。
 
@@ -120,7 +120,7 @@ IP の一致ではない | IP アドレス (スペース区切り)
 
 #### <a name="required-fields"></a>必須フィールド
 
-Operator | 要求本文 | 大文字と小文字の変換
+演算子 | 要求本文 | 大文字と小文字の変換
 ---------|--------------|---------------
 [標準の演算子一覧](#standard-operator-list) | String、Int | 変換なし、大文字に変換、小文字に変換
 
@@ -130,9 +130,9 @@ Operator | 要求本文 | 大文字と小文字の変換
 
 #### <a name="required-fields"></a>必須フィールド
 
-ヘッダー名 | Operator | ヘッダー値 | 大文字と小文字の変換
+ヘッダー名 | 演算子 | ヘッダー値 | 大文字と小文字の変換
 ------------|----------|--------------|---------------
-string | [標準の演算子一覧](#standard-operator-list) | String、Int | 変換なし、大文字に変換、小文字に変換
+String | [標準の演算子一覧](#standard-operator-list) | String、Int | 変換なし、大文字に変換、小文字に変換
 
 ### <a name="request-method"></a>要求メソッド
 
@@ -140,7 +140,7 @@ string | [標準の演算子一覧](#standard-operator-list) | String、Int | �
 
 #### <a name="required-fields"></a>必須フィールド
 
-Operator | サポートされている値
+演算子 | サポートされている値
 ---------|----------------
 等しい、等しくない | GET、POST、PUT、DELETE、HEAD、OPTIONS、TRACE
 
@@ -154,7 +154,7 @@ Operator | サポートされている値
 
 #### <a name="required-fields"></a>必須フィールド
 
-Operator | サポートされている値
+演算子 | サポートされている値
 ---------|----------------
 等しい、等しくない | HTTP、HTTPS
 
@@ -164,7 +164,7 @@ Operator | サポートされている値
 
 #### <a name="required-fields"></a>必須フィールド
 
-Operator | 要求 URL | 大文字と小文字の変換
+演算子 | 要求 URL | 大文字と小文字の変換
 ---------|-------------|---------------
 [標準の演算子一覧](#standard-operator-list) | String、Int | 変換なし、大文字に変換、小文字に変換
 
@@ -178,7 +178,7 @@ Operator | 要求 URL | 大文字と小文字の変換
 
 #### <a name="required-fields"></a>必須フィールド
 
-Operator | 拡張機能 | 大文字と小文字の変換
+演算子 | 拡張機能 | 大文字と小文字の変換
 ---------|-----------|---------------
 [標準の演算子一覧](#standard-operator-list) | String、Int | 変換なし、大文字に変換、小文字に変換
 
@@ -192,7 +192,7 @@ Operator | 拡張機能 | 大文字と小文字の変換
 
 #### <a name="required-fields"></a>必須フィールド
 
-Operator | ファイル名 | 大文字と小文字の変換
+演算子 | ファイル名 | 大文字と小文字の変換
 ---------|-----------|---------------
 [標準の演算子一覧](#standard-operator-list) | String、Int | 変換なし、大文字に変換、小文字に変換
 
@@ -206,7 +206,7 @@ Operator | ファイル名 | 大文字と小文字の変換
 
 #### <a name="required-fields"></a>必須フィールド
 
-Operator | 値 | 大文字と小文字の変換
+演算子 | 値 | 大文字と小文字の変換
 ---------|-------|---------------
 [標準の演算子一覧](#standard-operator-list) | String、Int | 変換なし、大文字に変換、小文字に変換
 
@@ -224,7 +224,7 @@ Operator | 値 | 大文字と小文字の変換
 - 等しい 
 - Contains 
 - 次の値で始まる 
-- 次の値で終わる 
+- [次で終わる] 
 - より小さい
 - 以下
 - より大きい
@@ -240,9 +240,9 @@ Operator | 値 | 大文字と小文字の変換
 
 *より小さい*または*以上*のような数値演算子の場合、比較は長さに基づいて行われます。 この場合、一致条件の値は、比較する長さと同じ整数である必要があります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure CDN の概要](cdn-overview.md)
-- [Standard ルール エンジンのリファレンス](cdn-standard-rules-engine-reference.md)
+- [Standard のルール エンジンのリファレンス](cdn-standard-rules-engine-reference.md)
 - [Standard ルール エンジンのアクション](cdn-standard-rules-engine-actions.md)
 - [Standard ルール エンジンを使用して HTTPS を適用する](cdn-standard-rules-engine.md)

@@ -4,10 +4,10 @@ description: Azure で Azure Resource Manager を使用してセキュリティ�
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 8cf14230f3abd37d91f1ec369f597ee594876100
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624127"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Azure Resource Manager を使用して Service Fabric クラスターを作成する 

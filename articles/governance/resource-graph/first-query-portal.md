@@ -4,10 +4,10 @@ description: このクイックスタートでは、手順に従って、Azure R
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: 5cf355e78ad51e06d7ba27d48dd352f35b4c0740
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74406793"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する
@@ -107,7 +107,7 @@ Resource Graph クエリの例および Resource Graph エクスプローラー�
 
 インポートしたダッシュボードが自動的に表示されます。 この時点でダッシュボードは Azure portal に存在するため、必要に応じて調査したり変更を加えたりすることができます。また、サンプルから新しいダッシュボードを作成してチームと共有することもできます。 ダッシュボードの操作の詳細については、「[Azure portal でのダッシュボードの作成と共有](../../azure-portal/azure-portal-dashboards.md)」を参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ご利用の Azure portal 環境からサンプルの Resource Graph ダッシュボードを削除する場合は、次の手順で実行できます。
 
@@ -117,7 +117,7 @@ Resource Graph クエリの例および Resource Graph エクスプローラー�
 
 1. ダッシュボードの上部にあるダッシュボード メニューから **[削除]** を選択し、 **[OK]** を選択して確定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Azure Resource Graph Explorer を使用して初めてのクエリを実行し、Resource Graph を使用したダッシュボードの例を見てきました。 Resource Graph 言語の詳細については、クエリ言語の詳細のページに進んでください。
 

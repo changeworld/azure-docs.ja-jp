@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 12/12/2019
 ms.author: labrenne
 ms.openlocfilehash: 8062f42d5b7d2c718502ee2e4a8c035919b9182d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77023108"
 ---
-# <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI の例:Azure Batch でのジョブとタスクの実行
+# <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI の例: Azure Batch でのジョブとタスクの実行
 
 このスクリプトでは、Batch のジョブを作成してそのジョブに一連のタスクを追加します。 ジョブとそのタスクを監視する方法を説明します。 
 
@@ -45,7 +45,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| command | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Batch アカウントを作成します。 |

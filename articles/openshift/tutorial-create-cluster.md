@@ -6,12 +6,12 @@ ms.author: jzim
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
-ms.openlocfilehash: 0e6aecccc19572ee980feb4d816fae1f2b0101b7
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 58fc695707995aafe4d804ffab8beee7c52b4320
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274898"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79455300"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターを作成する
 
@@ -46,7 +46,7 @@ ms.locfileid: "76274898"
 
 Azure CLI をローカルで実行している場合は、Bash コマンド シェルを開き、`az login` を実行して Azure にサインインします。
 
-```bash
+```azurecli
 az login
 ```
 
@@ -95,7 +95,7 @@ TENANT=<tenant ID>
 
 クラスターのリソース グループを作成します。 上記の変数を定義するのに使用したのと同じ Bash シェルで、次のコマンドを実行します。
 
-```bash
+```azurecli
 az group create --name $CLUSTER_NAME --location $LOCATION
 ```
 
@@ -113,7 +113,7 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 
 BASH シェルで次の CLI コマンドを使用して、VNET_ID 変数を定義します。
 
-```bash
+```azurecli
 VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query id -o tsv)
 ```
 
@@ -131,7 +131,7 @@ _ログ分析ワークスペースを作成するには、[ログ分析ワーク
 
 BASH シェルで次の CLI コマンドを使用して、WORKSPACE_ID 変数を定義します。
 
-```bash
+```azurecli
 WORKSPACE_ID=$(az monitor log-analytics workspace show -g {RESOURCE_GROUP} -n {NAME} --query id -o tsv)
 ```
 
@@ -144,19 +144,19 @@ WORKSPACE_ID=$(az monitor log-analytics workspace show -g {RESOURCE_GROUP} -n {N
 
 クラスターと仮想ネットワークの間でピアリングを実行**しない**、または Azure Monitoring を使用**しない**場合は、次のコマンドを使用します。
 
-```bash
+```azurecli
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
 ```
 
 クラスターと仮想ネットワークの間でピアリングを実行**する**場合は、`--vnet-peer` フラグを追加する次のコマンドを使用します。
 
-```bash
+```azurecli
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
 ```
 
 クラスターで Azure Monitoring を使用**する**場合は、次のコマンドを使用して `--workspace-id` フラグを追加します。
 
-```bash
+```azurecli
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
 ```
 
@@ -172,7 +172,7 @@ az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCA
 
 次のコマンドを実行して、クラスターにサインインするための URL を取得します。
 
-```bash
+```azurecli
 az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
 ```
 
@@ -220,7 +220,7 @@ OpenShift コンソールで、右上隅のサインイン名の横にある疑�
 >
 > または、直接 [oc CLI をダウンロード](https://www.okd.io/download.html)できます。
 
-**[コマンド ライン ツール]** ページ フォームでは、`oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>` の形式のコマンドが提供されます。  *[クリップボードにコピー]* ボタンをクリックして、このコマンドをコピーします。  ターミナル ウィンドウで、oc ツールのローカル インストールを含めるように[パスを設定します](https://docs.okd.io/latest/cli_reference/get_started_cli.html#installing-the-cli)。 その後、コピーした oc CLI コマンドを使用してクラスターにサインインします。
+**[コマンド ライン ツール]** ページ フォームでは、`oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>` の形式のコマンドが提供されます。  *[クリップボードにコピー]* ボタンをクリックして、このコマンドをコピーします。  ターミナル ウィンドウで、oc ツールのローカル インストールを含めるように[パスを設定します](https://docs.okd.io/latest/cli_reference/openshift_cli/getting-started-cli.html#installing-the-cli)。 その後、コピーした oc CLI コマンドを使用してクラスターにサインインします。
 
 上記の手順を使用してトークン値を取得できなかった場合は、`https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request` からトークン値を取得します。
 

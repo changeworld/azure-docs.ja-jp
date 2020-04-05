@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1ec668fac087773001ca401eefb5ca8bc10ea2b8
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: ba5ecc29edbcd69324500e87add846e4395ce0a3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620591"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067565"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>オンプレミスから Azure へのディザスター リカバリーを準備する
 
@@ -30,7 +30,7 @@ ms.locfileid: "73620591"
 > * Azure 仮想ネットワーク (VNet) を設定します。 フェールオーバー後に作成された Azure VM は、このネットワークに参加します。
 
 > [!NOTE]
-> チュートリアルでは、シナリオの最も簡単なデプロイ パスを示します。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 詳細な手順については、Site Recovery の目次の操作方法のセクションにある記事を参照してください。
+> チュートリアルでは、シナリオの最も簡単なデプロイ パスを示します。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 詳細な手順については、Site Recovery の目次のハウツー セクションにある記事を参照してください。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -70,7 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 オンプレミスのマシンは Azure マネージド ディスクにレプリケートされます。 フェールオーバーが発生すると、Azure VM がこれらのマネージド ディスクから作成され、この手順で指定した Azure ネットワークに参加します。
 
-1. [Azure Portal](https://portal.azure.com) で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順に選択します。
 2. デプロイ モデルとして **[リソース マネージャー]** をそのまま選択します。
 3. **[名前]** で、ネットワーク名を入力します。 Azure リソース グループ内で一意となる名前を使用してください。 このチュートリアルでは **ContosoASRnet** を使います。
 4. **[アドレス空間]** で、仮想ネットワークのアドレス範囲を CIDR 表記で入力します。 ここでは **10.1.0.0/24** を使用します。
@@ -88,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - VMware のディザスター リカバリーの場合は、[オンプレミスの VMware インフラストラクチャを準備します](tutorial-prepare-on-premises-vmware.md)。
 - Hyper-V のディザスター リカバリーの場合は、[オンプレミスの Hyper-V サーバーを準備します](hyper-v-prepare-on-premises-tutorial.md)。

@@ -17,10 +17,10 @@ ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d8fdc8ba2337a3be49a4645e48a45120fb0ccec
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72026099"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Watch by Colors の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72026099"
 
 * Watch by Colors にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Watch by Colors に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -146,7 +146,7 @@ Watch by Colors に対する Azure AD SSO を構成してテストするには�
 
     c. **[Import]\(インポート\)** をクリックすると、ページの後続のフィールドに自動的に値が入力されます。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="create-watch-by-colors-test-user"></a>Watch by Colors のテスト ユーザーの作成
 
@@ -174,7 +174,7 @@ Azure AD ユーザーが Watch by Colors にサインインできるようにす
 
     e. 組織に従って**アカウントのアクセス許可**を選択します。
 
-    f. **[Save]** をクリックします。
+    f. **[保存]** をクリックします。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

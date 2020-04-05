@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 70a6359923734c83590d4677bb2c93966c925d14
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76718141"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボへのラボ ユーザーの追加を自動化する

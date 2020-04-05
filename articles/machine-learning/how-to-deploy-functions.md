@@ -11,10 +11,10 @@ author: vaidyas
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.openlocfilehash: d03a3d482d147d3bc69354ee09dfe0b187610a09
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78927441"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure Functions に機械学習モデルをデプロイする (プレビュー)
@@ -58,7 +58,7 @@ Azure Machine Learning を使用すると、トレーニング済みの機械学
 
 * **依存関係**。エントリ スクリプトまたはモデルを実行するために必要なヘルパー スクリプトや Python/Conda パッケージなど。
 
-これらのエンティティは、__推論構成__ にカプセル化されます。 推論構成では、エントリ スクリプトとその他の依存関係が参照されます。
+これらのエンティティは、__推論構成__にカプセル化されます。 推論構成では、エントリ スクリプトとその他の依存関係が参照されます。
 
 > [!IMPORTANT]
 > Azure Functions で使用するための推論構成を作成する際は、[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py)オブジェクトを使用する必要があります。 カスタム環境を定義する場合は、バージョン 1.0.45 以降の azureml-defaults を pip 依存関係として追加する必要があることに注意してください。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。 次の例で、環境オブジェクトを作成し、推論構成でそれを使用する方法を示します。
@@ -82,7 +82,7 @@ Azure Machine Learning を使用すると、トレーニング済みの機械学
 推論構成の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 > [!IMPORTANT]
-> Functions にデプロイするときに __デプロイ構成__ を作成する必要はありません。
+> Functions にデプロイするときに__デプロイ構成__を作成する必要はありません。
 
 ## <a name="install-the-sdk-preview-package-for-functions-support"></a>関数のサポート用に SDK プレビュー パッケージをインストールする
 

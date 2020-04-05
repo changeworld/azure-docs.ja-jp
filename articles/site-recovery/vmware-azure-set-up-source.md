@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622208"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228879"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Azure への VMware レプリケーションのソース環境を設定する
 
@@ -69,7 +69,7 @@ Open Virtualization Application (OVA) テンプレートを使用し、構成サ
   - C:\ProgramData\ASRSetupLogs
   - C:\ProgramData\LogUploadServiceLogs
   - C:\inetpub
-  - Site Recovery サーバーのインストール ディレクトリ。 例: E:\Program Files (x86)\Microsoft Azure Site Recovery
+  - Site Recovery サーバーのインストール ディレクトリ。 次に例を示します。E:\Program Files (x86)\Microsoft Azure Site Recovery
 
 ### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>ウイルス対策ソフトウェアがスケールアウト プロセス サーバー/マスター ターゲットでアクティブな場合
 
@@ -84,5 +84,5 @@ Open Virtualization Application (OVA) テンプレートを使用し、構成サ
 7. Azure Site Recovery 負荷分散プロセス サーバーのインストール ディレクトリ。例: C:\Program Files (x86)\Microsoft Azure Site Recovery
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ターゲット環境をセットアップする](./vmware-azure-set-up-target.md) 

@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 41b15cc998a7bacd033ef2fe083fc99f1bff0286
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68595855"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>ドキュメントの形式と名前付け規則のガイダンス
@@ -22,7 +22,7 @@ ms.locfileid: "68595855"
 
 この表には、翻訳システムの構築に使用できる、サポートされているすべてのファイル形式がまとめられています。
 
-| 形式            | Extensions   | 説明                                                                                                                                                                                                                                                                    |
+| Format            | 拡張機能   | 説明                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | .XLF、.XLIFF | 並列ドキュメント形式、翻訳メモリ システムのエクスポート。 使用される言語はファイル内で定義されています。                                                                                                                                                              |
 | TMX               | .TMX         | 並列ドキュメント形式、翻訳メモリ システムのエクスポート。 使用される言語はファイル内で定義されています。                                                                                                                                                              |
@@ -51,6 +51,6 @@ TXT、HTML、HTM、PDF、DOCX、ALIGN の拡張子を持つ、ZIP ファイル�
 
 翻訳メモリ ファイル (TMX、XLF、XLIFF、LCL、XLSX) は、必ずしも特定の言語の名前付け規則に準拠している必要はありません。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [プロジェクト](workspace-and-project.md#what-is-a-custom-translator-project)の作成と管理について説明します。

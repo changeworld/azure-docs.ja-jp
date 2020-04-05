@@ -15,10 +15,10 @@ ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 458012982531e228f7c4968f29e79e8b2e29aa48
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651435"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines の自動バックアップ v2 (Resource Manager)
@@ -41,8 +41,8 @@ ms.locfileid: "77651435"
 
 **SQL Server バージョン/エディション**:
 
-- SQL Server 2016:Developer、Standard、または Enterprise
-- SQL Server 2017:Developer、Standard、または Enterprise
+- SQL Server 2016: Developer、Standard、または Enterprise
+- SQL Server 2017: Developer、Standard、または Enterprise
 
 > [!IMPORTANT]
 > 自動バックアップ v2 は、SQL Server 2016 以降と連携して動作します。 SQL Server 2014 を使用している場合は、データベースのバックアップに自動バックアップ v1 をお使いください。 詳細については、[SQL Server 2014 Azure Virtual Machines の自動バックアップ](virtual-machines-windows-sql-automated-backup.md)に関する記事をご覧ください。
@@ -83,7 +83,7 @@ ms.locfileid: "77651435"
 ## <a name="understanding-full-backup-frequency"></a>完全バックアップの頻度を理解する
 毎日および毎週の完全バックアップの違いについて理解することは重要です。 ここでは、次の 2 つのシナリオを例に説明します。
 
-### <a name="scenario-1-weekly-backups"></a>シナリオ 1:毎週のバックアップ
+### <a name="scenario-1-weekly-backups"></a>シナリオ 1: 毎週のバックアップ
 いくつかの大規模なデータベースを含む SQL Server VM が存在します。
 
 月曜日に、次の設定で自動バックアップ v2 を有効にします。
@@ -106,7 +106,7 @@ ms.locfileid: "77651435"
 
 月曜日に、次の設定で自動バックアップ v2 を有効にします。
 
-- バックアップ スケジュール: マニュアル
+- バックアップ スケジュール: 手動
 - 完全バックアップの頻度: 毎日
 - 完全バックアップの開始時刻: 22:00
 - 完全バックアップの時間枠: 6 時間
@@ -172,7 +172,7 @@ Set-AzVMSqlServerExtension -VMName $vmname `
     -Version "2.0" -Location $region 
 ```
 
-### <a id="verifysettings"></a> 現在の設定の確認
+### <a name="verify-current-settings"></a><a id="verifysettings"></a> 現在の設定の確認
 プロビジョニング中に自動バックアップを有効にすると、PowerShell を使って現在の構成を確認することができます。 **Get-AzVMSqlServerExtension** コマンドを実行して **AutoBackupSettings** プロパティを調べます。
 
 ```powershell
@@ -328,7 +328,7 @@ SQL Server 2016/2017 上で自動バックアップを監視するには、主�
 ## <a name="next-steps"></a>次のステップ
 自動バックアップ v2 では、Azure VM でマネージド バックアップが構成されます。 そのため、 [マネージド バックアップに関するドキュメント](https://msdn.microsoft.com/library/dn449496.aspx) を見直して、動作と影響を理解することが重要です。
 
-Azure VM の SQL Server のバックアップと復元に関するその他のガイダンスについては、「[Azure Virtual Machines おける SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」の記事をご覧ください。
+Azure VM 上の SQL Server のバックアップと復元の追加のガイダンスについては、「[Azure Virtual Machines おける SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」の記事を参照してください。
 
 その他の利用可能なオートメーション タスクについては、 [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に関するページをご覧ください。
 

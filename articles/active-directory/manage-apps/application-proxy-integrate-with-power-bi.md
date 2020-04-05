@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77111575"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用して Power BI Mobile へのリモート アクセスを有効にする

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
 ms.openlocfilehash: 6054c595bca26dc2a0432c53369a60a61e3efde0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841865"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>内部仮想ネットワークでの Azure API Management サービスの使用
@@ -50,7 +50,7 @@ API Management を内部モードで使用することにより、次のシナ�
 + **Azure API Management インスタンス**。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
 + API Management サービスが仮想ネットワークにデプロイされている場合は、[ポートの一覧](./api-management-using-with-vnet.md#required-ports)が使用され、開く必要があります。 
 
-## <a name="enable-vpn"> </a>内部仮想ネットワークでの API Management の作成
+## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>内部仮想ネットワークでの API Management の作成
 内部仮想ネットワークでの API Management サービスは、[内部ロード バランサー (クラシック)](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud) の背後でホストされます。 これは使用可能な唯一のオプションで、変更することはできません。
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Azure ポータルで仮想ネットワーク接続を有効にする
@@ -80,7 +80,7 @@ API Management を内部モードで使用することにより、次のシナ�
 
 * 仮想ネットワーク内の API Management サービスの既存のデプロイを更新する。[Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) コマンドレットを使用して、仮想ネットワーク内の既存の API Management サービスを移動し、このサービスが内部仮想ネットワークの種類を使用するように構成します。
 
-## <a name="apim-dns-configuration"></a>DNS の構成
+## <a name="dns-configuration"></a><a name="apim-dns-configuration"></a>DNS の構成
 API Management が外部仮想ネットワーク モードの場合、DNS は Azure によって管理されます。 内部仮想ネットワーク モードの場合は、自身でルーティングを管理する必要があります。
 
 > [!NOTE]
@@ -122,7 +122,7 @@ API Management が外部仮想ネットワーク モードの場合、DNS は Az
 
 2. その後、DNS サーバーでレコードを作成して、仮想ネットワーク内からのみアクセスできるこれらのエンドポイントにアクセスできます。
 
-## <a name="routing"> </a>ルーティング
+## <a name="routing"></a><a name="routing"> </a>ルーティング
 
 * サブネット範囲から負荷分散された*プライベート*仮想 IP アドレスは予約され、仮想ネットワークから API Management サービス エンドポイントにアクセスするために使用されます。 この*プライベート* IP アドレスは、Azure portal のサービス用の [概要] ブレードで確認できます。 このアドレスを、仮想ネットワークによって使用される DNS サーバーに登録する必要があります。
 * 負荷分散された*パブリック* IP アドレス (VIP) は、管理サービス エンドポイントへのアクセスをポート 3443 経由で提供するための予約も行われます。 この*パブリック* IP アドレスは、Azure portal のサービス用の [概要] ブレードで確認できます。 "*パブリック*" IP アドレスは、ポート 3443 での `management` エンドポイントへのコントロール プレーン トラフィックにのみに使用され、[ApiManagement][ServiceTags] サービス タグにロックダウンすることができます。
@@ -130,7 +130,7 @@ API Management が外部仮想ネットワーク モードの場合、DNS は Az
 * 負荷分散されたパブリック IP アドレスとプライベート IP アドレスは、Azure portal の [概要] ブレードで確認できます。
 * サービスが仮想ネットワークから削除された後、再び追加された場合、パブリックとプライベートに対して割り当てられる IP アドレスが変更される可能性があります。 これが発生した場合は、仮想ネットワーク内の DNS 登録、ルーティング規則、および IP 制限リストの更新が必要な場合があります。
 
-## <a name="related-content"> </a>関連コンテンツ
+## <a name="related-content"></a><a name="related-content"> </a>関連コンテンツ
 詳細については、以下の記事をお読みください。
 * [仮想ネットワーク内での Azure API Management の設定時に発生するネットワーク構成に関する一般的な問題][Common network configuration problems]
 * [Virtual Network に関する FAQ](../virtual-network/virtual-networks-faq.md)

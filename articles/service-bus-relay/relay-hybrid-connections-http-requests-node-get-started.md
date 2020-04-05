@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: clemensv
 ms.openlocfilehash: d71386b86bf7133bb73ddce2e65c3b88743009ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75462030"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>Node での Relay ハイブリッド接続 HTTP 要求の概要

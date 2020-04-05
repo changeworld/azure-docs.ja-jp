@@ -5,10 +5,10 @@ keywords: Ansible, ロール, マトリックス, バージョン, Azure, DevOps
 ms.topic: reference
 ms.date: 10/14/2019
 ms.openlocfilehash: 54e27c7570ba1cdbce7355740181d68a2f3efbac
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74155993"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible モジュールとバージョンのマトリックス
@@ -167,7 +167,7 @@ Ansible には、Azure リソースのプロビジョニングと構成に使用
 | azure_rm_servicebussaspolicy                | -            | -                           | -            | -            | はい          | はい          | はい          |
 | azure_rm_servicebustopic                    | -            | -                           | -            | -            | はい          | はい          | はい          |
 | azure_rm_servicebustopicsubscription        | -            | -                           | -            | -            | はい          | はい          | はい          |
-| **セキュリティ**                    |           |                          |                          |                             |           |           |           |
+| **Security**                    |           |                          |                          |                             |           |           |           |
 | azure_rm_keyvault                           | -            | はい                         | はい          | はい          | はい          | はい          | はい          |
 | azure_rm_keyvault_info                     | -            | -                           | -              | -          | はい          | はい          | はい          |
 | azure_rm_keyvaultkey                        | -            | はい                         | はい          | はい          | はい          | はい          | はい          |
@@ -221,6 +221,6 @@ Ansible には、Azure リソースのプロビジョニングと構成に使用
 
 `azure_preview_module` プレイブック ロールは 3 週間ごとにリリースされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 プレイブック ロールの詳細については、「[Creating Reusable Playbooks (再利用可能なプレイブックの作成)](https://docs.ansible.com/ansible/latest/playbooks_reuse.html)」を参照してください。 

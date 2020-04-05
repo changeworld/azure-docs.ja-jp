@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772496"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79218500"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータル内でアプリをデプロイする
 
@@ -37,9 +37,9 @@ LUIS アプリがクライアント アプリケーション (チャット ボ�
 
 1. 次の設定を使用して、サブスクリプションを構成します。
 
-   |設定|Value|目的|
+   |設定|値|目的|
    |--|--|--|
-   |Name|`my-luis-resource`|Azure リソースの名前。 LUIS ポータル内でアプリにリソースを割り当てるときに、この名前が必要です。|
+   |名前|`my-luis-resource`|Azure リソースの名前。 LUIS ポータル内でアプリにリソースを割り当てるときに、この名前が必要です。|
    |サブスクリプション|該当するサブスクリプション|ご自分のアカウントに関連付けられているサブスクリプションの 1 つを選択します。|
    |Resource group|`my-resource-group`|お使いのすべての Cognitive Services リソース向けに新しいリソース グループを作成します。 リソースの作業が完了したら、リソース グループを削除して、サブスクリプションをクリーンアップできます。 |
    |オーサリングの場所|**米国西部**|作成の対象となる Azure リージョン。|

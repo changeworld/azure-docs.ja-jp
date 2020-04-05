@@ -1,59 +1,86 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Notification Hubs のドキュメント
+summary: バックエンドからモバイル デバイスにプッシュ通知を送信します。 チュートリアルや API リファレンスなどのドキュメントを提供します。
 metadata:
-  title: Azure Notification Hubs のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  description: Notification Hubs を使ってバックエンドからモバイル デバイスにプッシュ通知を送信する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。
-  services: notification-hubs
-  author: sethmanheim
-  manager: femila
+  title: Azure Notification Hubs のドキュメント
+  description: バックエンドからモバイル デバイスにプッシュ通知を送信します。 チュートリアルや API リファレンスなどのドキュメントを提供します。
   ms.service: notification-hubs
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/01/2017
+  author: sethmanheim
   ms.author: sethm
-abstract:
-  description: Notification Hubs、マルチプラットフォーム、スケーラブルなプッシュ通知エンジンを使用して、数百万のメッセージをさまざまな種類のデバイス (Android、iOS、Windows、Windows Phone) で実行されるアプリケーションに迅速に送信する方法を説明します。 <p>チュートリアルや API リファレンスなどのドキュメントでは、プッシュ通知を設定してバックエンドからモバイル デバイスに送信する方法を紹介します。</p>
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: Android アプリケーションにプッシュ通知を送信する
-    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Notification-Hubs-in-an-Android-Application'
-    width: 250
-sections:
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Notification Hubs を使用してプッシュ通知を送信する方法について説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: すべての登録済みのデバイスにプッシュ通知を送信する - <a href="/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started">Android</a> | <a href="/azure/notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns">Windows Phone</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm">Xamarin.Android</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started">Xamarin.iOS</a>
-          - html: 特定のデバイスにプッシュ通知を送信する - <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-ios-xplat-segmented-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-phone-push-xplat-segmented-mpns-notification">Windows Phone</a>
-          - html: 特定のユーザーにプッシュ通知を送信する - <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-ios-apple-apns-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification">Windows</a>
-          - html: 場所に基づいたプッシュ通知を送信する - <a href="/azure/notification-hubs/notification-hubs-push-bing-spatial-data-geofencing-notification">Windows</a>
-          - html: カスタマイズされたプッシュ通知とローカライズされたプッシュ通知を送信する - <a href="/azure/notification-hubs/notification-hubs-ios-xplat-localized-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification">Windows</a>
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: Azure Notification Hubs のサンプル アプリは、複数のソースから入手できます。 Microsoft では、プラットフォーム固有のサンプルを個々の SDK (以下のリンク) にバンドルしており、スタンドアロンのサンプル リポジトリにはその他のプラットフォーム向けのサンプルが用意されています。
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-android">Android SDK</a>'
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-ios">iOS SDK</a>'
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-dotnet">.NET SDK</a>'
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-samples">サンプル リポジトリ (その他のプラットフォーム)</a>'
-          - html: <a href="/azure/notification-hubs/samples-powershell">PowerShell</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/powershell/module/az.notificationhubs">Azure PowerShell</a>'
-          - html: <a href="/dotnet/api/microsoft.azure.notificationhubs">.NET SDK</a>
-          - html: <a href="/rest/api/notificationhubs">REST API リファレンス</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bed452fcababb3a712da95e3041bdeec71116773
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80289109"
+landingContent:
+- title: Azure Notification Hubs について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Notification Hubs とは
+      url: notification-hubs-push-notification-overview.md
+    - text: App Service Mobile Apps との統合
+      url: notification-hubs-app-service.md
+  - linkListType: concept
+    links:
+    - text: エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
+      url: notification-hubs-enterprise-push-notification-architecture.md
+    - text: 登録管理
+      url: notification-hubs-push-notification-registration-management.md
+  - linkListType: video
+    links:
+    - text: Android アプリケーションにプッシュ通知を送信する
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Notification-Hubs-in-an-Android-Application
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portal 内で Azure 通知ハブを作成する
+      url: create-notification-hub-portal.md
+    - text: Azure portal で通知ハブのプッシュ通知を設定する
+      url: configure-notification-hub-portal-pns-settings.md
+- title: すべての登録済みデバイスに通知を送信する
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: すべての登録済み Android デバイスにプッシュ通知を送信する
+      url: notification-hubs-android-push-notification-google-fcm-get-started.md
+    - text: Swift iOS アプリにプッシュ通知を送信する
+      url: notification-hubs-ios-push-notifications-swift-apps-get-started.md
+  - linkListType: how-to-guide
+    links:
+    - text: クロスプラットフォーム通知を送信する
+      url: notification-hubs-aspnet-cross-platform-notification.md
+    - text: スケジュール設定された通知を送信する
+      url: notification-hubs-send-push-notifications-scheduled.md
+- title: サンプル
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Azure Notification Hubs のサンプル
+      url: samples.md
+    - text: PowerShell のサンプル
+      url: samples-powershell.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET API
+      url: /dotnet/api/microsoft.azure.notificationhubs?view=azure-dotnet
+    - text: PowerShell
+      url: /powershell/module/az.notificationhubs/?view=azps-3.6.1
+    - text: CLI
+      url: /cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest
+- title: リソース
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: よく寄せられる質問
+      url: notification-hubs-push-notification-faq.md
+    - text: サポート オプション
+      url: https://azure.microsoft.com/support/options/
+    - text: MSDN フォーラム
+      url: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs

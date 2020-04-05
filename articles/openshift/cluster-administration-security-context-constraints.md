@@ -3,16 +3,16 @@ title: Azure Red Hat OpenShift でセキュリティ コンテンツ制約を管
 description: Azure Red Hat OpenShift クラスター管理者に対するセキュリティ コンテンツ制約
 services: container-service
 author: troy0820
-ms.author: jzim
+ms.author: b-trconn
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: f98f55dca8b3dbbfbe03cb8c79691cedb63335a0
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168990"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063174"
 ---
 # <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Azure Red Hat OpenShift でセキュリティ コンテンツ制約を管理する 
 
@@ -40,37 +40,37 @@ restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs 
 特定の SCC を調べるには、`oc get`、`oc describe`、または `oc edit` を使用します。  たとえば、**制約付き** SCC を調べるには、次のコマンドを使用します。
 ```bash
 $ oc describe scc restricted
-Name:                   restricted
-Priority:               <none>
+Name:                    restricted
+Priority:                <none>
 Access:
   Users:                <none>
-  Groups:               system:authenticated
+  Groups:                system:authenticated
 Settings:
-  Allow Privileged:         false
-  Default Add Capabilities:     <none>
-  Required Drop Capabilities:       KILL,MKNOD,SYS_CHROOT,SETUID,SETGID
-  Allowed Capabilities:         <none>
-  Allowed Seccomp Profiles:     <none>
-  Allowed Volume Types:         configMap,downwardAPI,emptyDir,persistentVolumeClaim,projected,secret
-  Allow Host Network:           false
-  Allow Host Ports:         false
-  Allow Host PID:           false
-  Allow Host IPC:           false
+  Allow Privileged:            false
+  Default Add Capabilities:        <none>
+  Required Drop Capabilities:        KILL,MKNOD,SYS_CHROOT,SETUID,SETGID
+  Allowed Capabilities:            <none>
+  Allowed Seccomp Profiles:        <none>
+  Allowed Volume Types:            configMap,downwardAPI,emptyDir,persistentVolumeClaim,projected,secret
+  Allow Host Network:            false
+  Allow Host Ports:            false
+  Allow Host PID:            false
+  Allow Host IPC:            false
   Read Only Root Filesystem:        false
   Run As User Strategy: MustRunAsRange
     UID:                <none>
-    UID Range Min:          <none>
-    UID Range Max:          <none>
+    UID Range Min:            <none>
+    UID Range Max:            <none>
   SELinux Context Strategy: MustRunAs
-    User:               <none>
-    Role:               <none>
-    Type:               <none>
-    Level:              <none>
+    User:                <none>
+    Role:                <none>
+    Type:                <none>
+    Level:                <none>
   FSGroup Strategy: MustRunAs
-    Ranges:             <none>
+    Ranges:                <none>
   Supplemental Groups Strategy: RunAsAny
-    Ranges:             <none>
+    Ranges:                <none>
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [Azure Red Hat OpenShift クラスターを作成する](tutorial-create-cluster.md) 

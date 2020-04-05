@@ -1,26 +1,20 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: commercial marketplace
 documentationcenter: partner-center-commercial-marketplace
 author: qianw211
-manager: evansma
-editor: ''
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 10/09/2019
-ms.author: v-qiwe
+ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: b8fae52224d601fabce1470d9886512aa5acfd4c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f79b25c98ae2e764f607fc5a12bc311ed0edacae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825561"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286185"
 ---
 マーケットプレースでオファーをリスト登録して顧客関係管理 (CRM) システムに接続することで、顧客と直接つながります。これにより、顧客がお客様の製品に興味を示した直後、またはそれをデプロイした直後に、顧客の連絡先情報を受け取ることができます。
 

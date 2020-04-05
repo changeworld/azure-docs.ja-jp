@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:シームレス シングル サインオン | Microsoft Docs
+title: 'Azure AD Connect: シームレス シングル サインオン | Microsoft Docs'
 description: このトピックでは、Azure Active Directory (Azure AD) シームレス シングル サインオンについて説明します。この機能により、企業ネットワーク内の企業のデスクトップ ユーザーに真のシングル サインオンを提供できます。
 services: active-directory
 keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77483756"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
@@ -54,7 +54,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 - サインインのユーザー名には、オンプレミスの既定のユーザー名 (`userPrincipalName`) または Azure AD Connect で構成された別の属性 (`Alternate ID`) を指定できます。 シームレス SSO は Kerberos チケットの `securityIdentifier` 要求を使用して Azure AD で対応するユーザー オブジェクトを検索するので、どちらを使用しても問題ありません。
 - シームレス SSO は便宜的な機能です。 これが何らかの理由で失敗した場合、ユーザーのサインイン エクスペリエンスは通常の動作に戻ります。つまり、ユーザーはサインイン ページでパスワードを入力する必要があります。
 - アプリケーション (たとえば、`https://myapps.microsoft.com/contoso.com`) が Azure AD サインイン要求で `domain_hint` (OpenID Connect) パラメーターや `whr` (SAML) パラメーター (テナントを識別する)、または `login_hint` パラメーター (ユーザーを識別する) を転送する場合、ユーザーはユーザー名やパスワードを入力することなく自動的にサインインします。
-- アプリケーション (たとえば、`https://contoso.sharepoint.com`) がサインイン要求を、Azure AD の共通エンドポイント (つまり、`https://login.microsoftonline.com/common/<...>`) ではなく、Azure AD のテナントとして設定されているエンドポイント (つまり、`https://login.microsoftonline.com/contoso.com/<..>` または `https://login.microsoftonline.com/<tenant_ID>/<..>`) に送信する場合、ユーザーにはサイレント サインオン エクスペリエンスも提供されます。
+- アプリケーション (たとえば、`https://contoso.sharepoint.com`) がサインイン要求を、Azure AD の共通エンドポイント (つまり、`https://login.microsoftonline.com/contoso.com/<..>`) ではなく、Azure AD のテナントとして設定されているエンドポイント (つまり、`https://login.microsoftonline.com/<tenant_ID>/<..>` または `https://login.microsoftonline.com/common/<...>`) に送信する場合、ユーザーにはサイレント サインオン エクスペリエンスも提供されます。
 - サインアウトがサポートされています。 そのため、ユーザーは、シームレス SSO を使用して自動的にサインインするのではなく、サインインに別の Azure AD アカウントを使用することを選択できます。
 - バージョン 16.0.8730.xxxx 以降の Office 365 Win32 クライアント (Outlook、Word、Excel など) は、非対話型フローを使用してサポートされています。 OneDrive の場合、サイレント サインオン エクスペリエンス用の [OneDrive サイレント構成機能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)をアクティブにする必要があります。
 - この機能は、Azure AD Connect を使用して有効にできます。

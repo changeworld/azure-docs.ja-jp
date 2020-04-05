@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Soonr Workplace の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Soonr Workplace の統合 | Microsoft Docs'
 description: Azure Active Directory と Soonr Workplace の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d0457f60335f6478d7d6e2144ae838e070dabde4
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67588135"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-soonr-workplace"></a>チュートリアル:Azure Active Directory と Soonr Workplace の統合
+# <a name="tutorial-azure-active-directory-integration-with-soonr-workplace"></a>チュートリアル: Azure Active Directory と Soonr Workplace の統合
 
 このチュートリアルでは、Soonr Workplace と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Soonr Workplace と Azure AD の統合には、次の利点があります。

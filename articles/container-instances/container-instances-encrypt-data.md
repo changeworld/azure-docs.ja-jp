@@ -6,10 +6,10 @@ ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79080362"
 ---
 # <a name="encrypt-deployment-data"></a>デプロイ データの暗号化

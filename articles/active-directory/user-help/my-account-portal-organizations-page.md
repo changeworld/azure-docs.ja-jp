@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: fbaca387dd8062f50bb7555c7be6e7f65ce346bf
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062474"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>[組織] ページから接続済み組織を管理する

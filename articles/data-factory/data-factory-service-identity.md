@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jingwang
 ms.openlocfilehash: 45699680ad2003c034bce588857f8b102a0b6d26
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357932"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230131"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory のマネージド ID
 
@@ -77,7 +77,7 @@ ProvisioningState : Succeeded
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**要求本文**: add "identity": { "type":"SystemAssigned" } を追加します。
+**要求本文**: "identity": { "type": "SystemAssigned" } を追加します。
 
 ```json
 {
@@ -115,7 +115,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用したマネージド ID の生成
 
-**テンプレート**: add "identity": { "type":"SystemAssigned" } を追加します。
+**テンプレート**: "identity": { "type": "SystemAssigned" } を追加します。
 
 ```json
 {

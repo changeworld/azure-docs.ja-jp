@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: e49ed9c7c6b0733f2ef95d1baa0b0f001206780e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f3c1e7337c0ce07b7fbebb9f954deeb75f0b9584
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77058605"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246655"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Brivo Onair Identity Connector を構成する
 
@@ -36,7 +36,7 @@ ms.locfileid: "77058605"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * Azure AD テナント
-* [Brivo Onair Identity Connector テナント](https://www.brivo.com/quote)
+* [Brivo Onair Identity Connector テナント](https://www.brivo.com/lp/quote)
 * 上級管理者アクセス許可を持つ Brivo Onair Identity Connector のユーザー アカウント。
 
 ## <a name="assigning-users-to-brivo-onair-identity-connector"></a>Brivo Onair Identity Connector へのユーザーの割り当て
@@ -54,7 +54,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ## <a name="setup-brivo-onair-identity-connector-for-provisioning"></a>プロビジョニング用に Brivo Onair Identity Connector を設定する
 
-1.  [Brivo Onair Identity Connector 管理コンソール](https://acs.brivo.com/login/)にサインインします。 **[Account]\(アカウント\) > [Account Settings]\(アカウントの設定\)** に移動します。
+1.    [Brivo Onair Identity Connector 管理コンソール](https://acs.brivo.com/login/)にサインインします。 **[Account]\(アカウント\) > [Account Settings]\(アカウントの設定\)** に移動します。
 
     ![Brivo Onair Identity Connector 管理コンソール](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
 
@@ -62,7 +62,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Brivo Onair Identity Connector での Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
-3.  **[Copy Token]\(トークンのコピー\)** ボタンをクリックし、 **[Secret Token]\(シークレット トークン\)** を保存します。 この値を、Azure portal で Brivo Onair Identity Connector アプリケーションの [プロビジョニング] タブにある [シークレット トークン] フィールドに入力します。
+3.    **[Copy Token]\(トークンのコピー\)** ボタンをクリックし、 **[Secret Token]\(シークレット トークン\)** を保存します。 この値を、Azure portal で Brivo Onair Identity Connector アプリケーションの [プロビジョニング] タブにある [シークレット トークン] フィールドに入力します。
 
     ![Brivo Onair Identity Connector でのトークン](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
 

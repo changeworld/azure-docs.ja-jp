@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
 ms.openlocfilehash: f2b2c3f52610cd9fae0845b15aebf032a088000b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75447943"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>チュートリアル:関連するデータのグループ化と抽出
@@ -94,7 +94,7 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
     ![複合名を入力するドロップダウン ダイアログのスクリーンショット](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-1. **[What type of entity do you want to create?]\(どのような種類のエンティティを作成しますか?\)** では、必要なすべてのフィールドが一覧にあります: `personName` と `Department`。 **[完了]** を選択します。 事前構築済みのエンティティ personName が複合エンティティに追加されました。 複合エンティティの開始トークンと終了トークンの間に事前構築済みエンティティを出現させることができた場合、複合エンティティにはそれらの事前構築済みエンティティが含まれている必要があります。 事前構築済みエンティティが含まれていない場合、複合エンティティは正しく予測されませんが、個別の要素は正しく予測されます。
+1. **[What type of entity do you want to create?]\(どのような種類のエンティティを作成しますか?\)** では、必要なすべてのフィールドが一覧にあります: `personName` と `Department`。 **[Done]** を選択します。 事前構築済みのエンティティ personName が複合エンティティに追加されました。 複合エンティティの開始トークンと終了トークンの間に事前構築済みエンティティを出現させることができた場合、複合エンティティにはそれらの事前構築済みエンティティが含まれている必要があります。 事前構築済みエンティティが含まれていない場合、複合エンティティは正しく予測されませんが、個別の要素は正しく予測されます。
 
     ![複合名を入力するドロップダウン ダイアログのスクリーンショット](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 

@@ -8,18 +8,20 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: b26e54c7130469eee87a9237f4847f46cb3b7698
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ac111b06d578a0e9af8581ef2e8caeccfc4a291e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75691039"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536889"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob Storage の変更フィードのサポート (プレビュー)
 
 変更フィードの目的は、ストレージ アカウント内の BLOB と BLOB メタデータに対して行われるすべての変更のトランザクション ログを提供することです。 変更フィードでは、これらの変更の**順序指定済み**、**保証済み**、**永続**、**不変**、**読み取り専用**ログが提供されます。 クライアント アプリケーションでは、ストリーミングまたはバッチ モードで、いつでもこれらのログを読み取ることができます。 変更フィードを使用すると、低コストで、BLOB ストレージ アカウントで発生する変更イベントを処理する効率的でスケーラブルなソリューションを構築できます。
 
-変更フィードは、Standard [BLOB の料金](https://azure.microsoft.com/pricing/details/storage/blobs/)コストで、ストレージ アカウントの特別なコンテナーに [BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) として格納されます。 これらのファイルの保有期間は、要件に基づいて制御できます (現在のリリースの[条件](#conditions)を参照)。 変更イベントは、[Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) 形式仕様のレコードとして変更フィードに追加されます。これは、インライン スキーマを使用して豊富なデータ構造を提供するコンパクトで高速なバイナリ形式です。 この形式は Hadoop エコシステム、Stream Analytics、Azure Data Factory で幅広く使用されています。
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+
+変更フィードは、Standard [BLOB の料金](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)コストで、ストレージ アカウントの特別なコンテナーに [BLOB](https://azure.microsoft.com/pricing/details/storage/blobs/) として格納されます。 これらのファイルの保有期間は、要件に基づいて制御できます (現在のリリースの[条件](#conditions)を参照)。 変更イベントは、[Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) 形式仕様のレコードとして変更フィードに追加されます。これは、インライン スキーマを使用して豊富なデータ構造を提供するコンパクトで高速なバイナリ形式です。 この形式は Hadoop エコシステム、Stream Analytics、Azure Data Factory で幅広く使用されています。
 
 これらのログは、非同期的、段階的、または完全に処理できます。 任意の数のクライアント アプリケーションで、個別に変更フィードを並列で、および独自のペースで読み取ることができます。 [Apache Drill](https://drill.apache.org/docs/querying-avro-files/) や [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) などの分析アプリケーションでは、Avro ファイルとして直接ログを使用できます。これにより、低コストで、また高帯域幅で処理することができ、カスタム アプリケーションを作成する必要はありません。
 
@@ -55,7 +57,7 @@ ms.locfileid: "75691039"
 > [!IMPORTANT]
 > 変更フィードはパブリック プレビュー段階にあり、**westcentralus** と **westus2** リージョンで利用できます。 この記事の[条件](#conditions)に関するセクションを参照してください。 プレビューに登録する場合は、この記事の[サブスクリプションの登録](#register)に関するセクションを参照してください。 ストレージ アカウントで変更フィードを有効にする前に、サブスクリプションを登録する必要があります。
 
-### <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を使用して、ストレージ アカウントで変更フィードを有効にします。
 
@@ -69,7 +71,7 @@ Azure portal を使用して、ストレージ アカウントで変更フィー
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell を使用して変更フィードを有効にします。
 
@@ -99,7 +101,7 @@ PowerShell を使用して変更フィードを有効にします。
    Update-AzStorageBlobServiceProperty -EnableChangeFeed $true
    ```
 
-### <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
+### <a name="template"></a>[テンプレート](#tab/template)
 Azure portal を使用して既存のストレージ アカウントで変更フィードを有効にするには、Azure Resource Manager テンプレートを使用します。
 
 1. Azure portal で、 **[リソースの作成]** を選択します。
@@ -205,7 +207,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 変更フィード ファイルには、一連の変更イベント レコードが含まれています。 各変更イベント レコードは、個々の BLOB に対する 1 つの変更に対応しています。 レコードは、[Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) 形式の仕様を使用して、シリアル化され、ファイルに書き込まれます。 これらのレコードは、Avro ファイル形式の仕様を使用して読み取ることができます。 その形式のファイルを処理するために使用できるライブラリがいくつかあります。
 
-変更フィード ファイルは、[追加 BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) として `$blobchangefeed/log/` 仮想ディレクトリに格納されます。 各パスの下にある最初の変更フィード ファイルでは、ファイル名に `00000` が含まれます (`00000.avro` など)。 そのパスに追加された後続の各ログ ファイルの名前は、1 ずつ増加します (例: `00001.avro`)。
+変更フィード ファイルは、`$blobchangefeed/log/`追加 BLOB[ として ](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs) 仮想ディレクトリに格納されます。 各パスの下にある最初の変更フィード ファイルでは、ファイル名に `00000` が含まれます (`00000.avro` など)。 そのパスに追加された後続の各ログ ファイルの名前は、1 ずつ増加します (例: `00001.avro`)。
 
 以下は、変更フィード ファイルから Json に変換された変更イベント レコードの例です。
 
@@ -261,7 +263,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 - 公開スループットを管理するためにログ ストリームは内部でパーティション分割されているため、各セグメントに含まれる `chunkFilePaths` の数は異なる場合があります。 各 `chunkFilePath` のログ ファイルは相互に排他的な BLOB が含まれることが保証され、反復処理中の BLOB ごとの変更の順序付けに違反することなく、並列で使用して処理することができます。
 
-- セグメントは `Publishing` の状態で始まります。 セグメントへのレコードの追加が完了すると、`Finalized` になります。 日付が `$blobchangefeed/meta/Segments.json` ファイル内の `LastConsumable` プロパティの日付の後であるすべてのセグメントのログ ファイルは、アプリケーションでは使用しないでください。 `$blobchangefeed/meta/Segments.json` ファイルの `LastConsumable` プロパティの例を以下に示します。
+- セグメントは `Publishing` の状態で始まります。 セグメントへのレコードの追加が完了すると、`Finalized` になります。 日付が `LastConsumable` ファイル内の `$blobchangefeed/meta/Segments.json` プロパティの日付の後であるすべてのセグメントのログ ファイルは、アプリケーションでは使用しないでください。 `LastConsumable` ファイルの `$blobchangefeed/meta/Segments.json` プロパティの例を以下に示します。
 
 ```json
 {
@@ -298,7 +300,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 
 Azure Cloud Shell で、これらのコマンドを実行します。
 
-```cli
+```azurecli
 az feature register --namespace Microsoft.Storage --name Changefeed
 az provider register --namespace 'Microsoft.Storage'
 ```

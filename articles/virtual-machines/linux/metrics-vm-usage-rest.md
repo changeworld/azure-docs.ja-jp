@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944746"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>REST API を使用して仮想マシンの使用状況のメトリックを取得する
 
-この例では、[Azure REST API](/rest/api/azure/) を使用して、[Linux 仮想マシン](https://docs.microsoft.com/azure/virtual-machines/linux/monitor)の CPU 使用率を取得する方法を示します。
+この例では、[Azure REST API](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) を使用して、[Linux 仮想マシン](/rest/api/azure/)の CPU 使用率を取得する方法を示します。
 
 完全なリファレンス ドキュメントと REST API の他の例は、[Azure Monitor REST リファレンス](/rest/api/monitor)で確認できます。 
 
@@ -40,7 +40,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="uri-parameters"></a>URI パラメーター
 
-| 名前 | 説明 |
+| Name | 説明 |
 | :--- | :---------- |
 | subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ |
 | resourceGroupName | リソースに関連付けられている Azure リソース グループの名前。 この値は、Azure Resource Manager API、CLI、またはポータルから取得できます。 |

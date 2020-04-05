@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: bae44f67a485546ba29148a114d88df198f7c3e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8c1afac834fb9abb2cbf82f16f046a1624b251f1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475941"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481135"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>ExpressRoute パブリック ピアリングを作成して管理する
 
@@ -38,7 +38,7 @@ ms.locfileid: "75475941"
 * パブリック ピアリング ルーティング ドメインを経由して、クラウド サービスの VIP などのパブリック IP アドレスでホストされているサービスにプライベート接続できます。
 * パブリック ピアリング ドメインをご使用の DMZ に接続すれば、インターネット経由で接続しなくても WAN からパブリック IP アドレス上のすべての Azure サービスに接続できます。
 
-## <a name="services"></a>サービス
+## <a name="services"></a><a name="services"></a>サービス
 
 このセクションでは、パブリック ピアリング経由で使用できるサービスについて説明します。 パブリック ピアリングは非推奨であるため、パブリック ピアリングに新規または追加サービスが追加される予定はありません。 パブリック ピアリングを使用している場合、使用するサービスが Microsoft ピアリング経由でしかサポートされていない場合は、Microsoft ピアリングに切り替える必要があります。 サポートされているサービスの一覧については、「[Microsoft ピアリング](expressroute-faqs.md#microsoft-peering)」を参照してください。
 
@@ -55,7 +55,7 @@ ms.locfileid: "75475941"
 
 特定のサービスの可用性を検証するには、そのサービスに関するドキュメントを調べて、そのサービスに対して発行された予約済みの範囲があるかどうかを確認します。 その後、ターゲット サービスの IP 範囲を参照し、[Azure IP 範囲とサービス タグ – パブリック クラウド XML ファイル](https://www.microsoft.com/download/details.aspx?id=56519)に関するページに一覧表示されている範囲と比較できます。 また、問題のサービス用のサポート チケットを開いて、詳細を確認することもできます。
 
-## <a name="compare"></a>ピアリングの比較
+## <a name="peering-comparison"></a><a name="compare"></a>ピアリングの比較
 
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
@@ -67,7 +67,7 @@ ms.locfileid: "75475941"
 
 ネットワーク内でカスタム ルート フィルターを定義して、必要なルートのみを使用することができます。 ルーティング構成の詳細については、 [ルーティング](expressroute-routing.md) に関するページを参照してください。
 
-## <a name="powershell"></a>Azure PowerShell の手順
+## <a name="azure-powershell-steps"></a><a name="powershell"></a>Azure PowerShell の手順
 
 
 [!INCLUDE [CloudShell](../../includes/expressroute-cloudshell-powershell-about.md)]
@@ -135,7 +135,7 @@ ms.locfileid: "75475941"
    > 
    >
 
-### <a name="getpublic"></a>Azure パブリック ピアリングの詳細を取得するには
+### <a name="to-get-azure-public-peering-details"></a><a name="getpublic"></a>Azure パブリック ピアリングの詳細を取得するには
 
 次のコマンドレットを使用して、構成の詳細を取得できます。
 
@@ -145,7 +145,7 @@ ms.locfileid: "75475941"
   Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
   ```
 
-### <a name="updatepublic"></a>Azure パブリック ピアリング構成を更新するには
+### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>Azure パブリック ピアリング構成を更新するには
 
 構成の任意の部分を更新するには、次の例を使用します。 この例では、回線の VLAN ID が 200 から 600 に更新されています。
 
@@ -155,7 +155,7 @@ Set-AzExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="deletepublic"></a>Azure パブリック ピアリングを削除するには
+### <a name="to-delete-azure-public-peering"></a><a name="deletepublic"></a>Azure パブリック ピアリングを削除するには
 
 ピアリング構成を削除するには、次の例を実行します。
 
@@ -164,7 +164,7 @@ Remove-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRou
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="cli"></a>Azure CLI の手順
+## <a name="azure-cli-steps"></a><a name="cli"></a>Azure CLI の手順
 
 
 [!INCLUDE [CloudShell](../../includes/expressroute-cloudshell-powershell-about.md)]
@@ -177,7 +177,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
    応答は次の例のようになります。
 
-   ```azurecli
+   ```output
    "allowClassicOperations": false,
    "authorizations": [],
    "circuitProvisioningState": "Enabled",
@@ -229,7 +229,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    > [!IMPORTANT]
    > 顧客 ASN ではなく、ピアリング ASN として AS 番号を指定するようにしてください。
 
-### <a name="getpublic"></a>Azure パブリック ピアリングの詳細を表示するには
+### <a name="to-view-azure-public-peering-details"></a><a name="getpublic"></a>Azure パブリック ピアリングの詳細を表示するには
 
 構成の詳細を取得するには、次の例を使用します。
 
@@ -239,7 +239,7 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 
 出力は次の例のようになります。
 
-```azurecli
+```output
 {
   "azureAsn": 12076,
   "etag": "W/\"2e97be83-a684-4f29-bf3c-96191e270666\"",
@@ -264,7 +264,7 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 }
 ```
 
-### <a name="updatepublic"></a>Azure パブリック ピアリング構成を更新するには
+### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>Azure パブリック ピアリング構成を更新するには
 
 構成の任意の部分を更新するには、次の例を使用します。 この例では、回線の VLAN ID が 200 から 600 に更新されています。
 
@@ -272,7 +272,7 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
 ```
 
-### <a name="deletepublic"></a>Azure パブリック ピアリングを削除するには
+### <a name="to-delete-azure-public-peering"></a><a name="deletepublic"></a>Azure パブリック ピアリングを削除するには
 
 ピアリング構成を削除するには、次の例を実行します。
 
@@ -280,19 +280,19 @@ az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGro
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
 ```
 
-## <a name="portal"></a>Azure portal の手順
+## <a name="azure-portal-steps"></a><a name="portal"></a>Azure portal の手順
 
 ピアリングを構成するには、この記事に記載されている PowerShell または CLI の手順を使用します。 ピアリングを管理するには、以下のセクションを使用できます。 なお、これらの手順は、[ポータルの Microsoft ピアリング](expressroute-howto-routing-portal-resource-manager.md#msft)を管理する手順と似ています。
 
-### <a name="get"></a>Azure パブリック ピアリングの詳細を表示するには
+### <a name="to-view-azure-public-peering-details"></a><a name="get"></a>Azure パブリック ピアリングの詳細を表示するには
 
 ポータルでピアリングを選択して、Azure パブリック ピアリングのプロパティを表示します。
 
-### <a name="update"></a>Azure パブリック ピアリング構成を更新するには
+### <a name="to-update-azure-public-peering-configuration"></a><a name="update"></a>Azure パブリック ピアリング構成を更新するには
 
 ピアリングの行を選択し、ピアリングのプロパティを変更します。
 
-### <a name="delete"></a>Azure パブリック ピアリングを削除するには
+### <a name="to-delete-azure-public-peering"></a><a name="delete"></a>Azure パブリック ピアリングを削除するには
 
 削除アイコンを選択してピアリングの構成を削除します。
 

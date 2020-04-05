@@ -2,17 +2,16 @@
 Description: 価格の選択、支払いの内訳、納税責任に関連した税金についての考慮事項を理解するには、配布を行う国/地域を以下の表でご覧ください。
 title: 税の詳細 | Azure Marketplace
 ms.date: 2/13/2020
-ms.topic: article
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+ms.topic: conceptual
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: cd580c43aa25dd4cc33ceb7138785a94a021b771
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 2546de2b63c70d7456712ba39086cd7fb540cf82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210450"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285165"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>コマーシャル マーケットプレース発行元向けの税の詳細
 

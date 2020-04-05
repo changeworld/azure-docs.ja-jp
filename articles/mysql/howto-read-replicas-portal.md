@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 56dc2df243c7ebc8e6aedf655795173c478ef99b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: b7226e5ae8c468339e02dbe87e279266e4609da8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762608"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063490"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL の読み取りレプリカを作成し、管理する方法
 
@@ -61,7 +61,7 @@ ms.locfileid: "74762608"
 ## <a name="stop-replication-to-a-replica-server"></a>レプリカ サーバーへのレプリケーションを停止します。
 
 > [!IMPORTANT]
-> サーバーへのレプリケーションの停止は、元に戻すことができません。 マスターとレプリカの間のレプリケーションを停止すると、取り消すことができません。 レプリカ サーバーはスタンドアロン サーバーになり、読み取りと書き込みをサポートするようになります。 このサーバーは、レプリカにもう一度確立することはできません。
+> サーバーへのレプリケーションの停止は、元に戻すことができません。 マスターとレプリカの間のレプリケーションを停止すると、取り消すことができません。 レプリカ サーバーはスタンドアロン サーバーになり、読み取りと書き込みをサポートするようになります。 このサーバーをもう一度レプリカにすることはできません。
 
 Azure Portal からマスターとレプリカ サーバー間のレプリケーションを停止するには、次の手順を使用します。
 
@@ -136,6 +136,6 @@ Azure Portal からマスターとレプリカ サーバー間のレプリケー
 
    ![時間範囲を選択します](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [レプリカの読み取り](concepts-read-replicas.md) の詳細を確認する

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.openlocfilehash: 2681b2199f321f695bc621ed5580319a5e907b34
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274021"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>チュートリアル:.NET コンソール アプリをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する
@@ -58,7 +58,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 [!INCLUDE [create-dbaccount-preview](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="SetupVS"></a>手順 2:Visual Studio プロジェクトをセットアップする
+## <a name="step-2-set-up-your-visual-studio-project"></a><a id="SetupVS"></a>手順 2:Visual Studio プロジェクトをセットアップする
 
 1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。
 1. **[新しいプロジェクトの作成]** で、C# の **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
@@ -75,7 +75,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 これでセットアップは終了です。 いくつかのコードの記述を開始しましょう。 このチュートリアルの完全なプロジェクトについては、「[Azure Cosmos DB を使用した .NET コンソール アプリの開発](https://github.com/Azure-Samples/cosmos-dotnet-getting-started)」を参照してください。
 
-## <a id="Connect"></a>手順 3:Azure Cosmos DB アカウントに接続する
+## <a name="step-3-connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>手順 3:Azure Cosmos DB アカウントに接続する
 
 1. *Program.cs* ファイルで、C# アプリケーションの先頭にある参照を、以下の参照で置き換えます。
 
@@ -270,7 +270,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 お疲れさまでした。 これで、Azure Cosmos データベースが正常に作成されました。  
 
-## <a id="CreateColl"></a>手順 5: コンテナーを作成する
+## <a name="step-5-create-a-container"></a><a id="CreateColl"></a>手順 5: コンテナーを作成する
 
 > [!WARNING]
 > メソッド `CreateContainerIfNotExistsAsync` によって、価格に影響する新しいコンテナーが作成されます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
@@ -301,7 +301,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 お疲れさまでした。 これで、Azure Cosmos コンテナーが作成されました。  
 
-## <a id="CreateDoc"></a>手順 6: コンテナーに項目を追加する
+## <a name="step-6-add-items-to-the-container"></a><a id="CreateDoc"></a>手順 6: コンテナーに項目を追加する
 
 `CosmosContainer` クラスの [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) メソッドで項目を作成できます。 SQL API を使用すると、項目はドキュメントとして投影されます。これは、ユーザー定義の任意の JSON コンテンツです。 これで、Azure Cosmos コンテナーに項目を挿入できます。
 
@@ -342,7 +342,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 
 お疲れさまでした。 これで、Azure Cosmos の項目が 2 つ作成されました。  
 
-## <a id="Query"></a>手順 7: Azure Cosmos DB リソースを照会する
+## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>手順 7: Azure Cosmos DB リソースを照会する
 
 Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメントに対する豊富なクエリがサポートされています。 詳細については、「[SQL クエリの使用を開始する](sql-api-sql-query.md)」をご覧ください。 次のサンプル コードを使用して、前の手順で挿入した項目に対してどのようにクエリを実行するかを説明します。
 
@@ -370,7 +370,7 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
 
 お疲れさまでした。 これで、Azure Cosmos コンテナーに対するクエリが実行されました。
 
-## <a id="ReplaceItem"></a>手順 8: JSON 項目を置換する
+## <a name="step-8-replace-a-json-item"></a><a id="ReplaceItem"></a>手順 8: JSON 項目を置換する
 
 ここでは、Azure Cosmos DB 内の項目を更新します。 `Family` の `IsRegistered` プロパティと子どもの 1 人の `Grade` を変更します。
 
@@ -399,7 +399,7 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
 
 お疲れさまでした。 これで、Azure Cosmos 項目が置換されました。
 
-## <a id="DeleteDocument"></a>手順 9: アイテムを削除する
+## <a name="step-9-delete-item"></a><a id="DeleteDocument"></a>手順 9: アイテムを削除する
 
 ここでは、Azure Cosmos DB 内の項目を削除します。
 
@@ -429,7 +429,7 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
 
 お疲れさまでした。 これで、Azure Cosmos 項目が削除されました。
 
-## <a id="DeleteDatabase"></a>手順 10: データベースを削除する
+## <a name="step-10-delete-the-database"></a><a id="DeleteDatabase"></a>手順 10: データベースを削除する
 
 ここでは、データベースを削除します。 作成したデータベースを削除すると、データベースとすべての子リソースが削除されます。 リソースには、コンテナー、項目、ストアド プロシージャ、ユーザー定義関数、およびトリガーがあります。 また、`CosmosClient` インスタンスも破棄します。
 
@@ -445,7 +445,7 @@ Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメ�
 
 お疲れさまでした。 これで、Azure Cosmos データベースが削除されました。
 
-## <a id="Run"></a>手順 11: C# コンソール アプリケーションの全体的な実行の流れ
+## <a name="step-11-run-your-c-console-application-all-together"></a><a id="Run"></a>手順 11: C# コンソール アプリケーションの全体的な実行の流れ
 
 Visual Studio で F5 キーを押すと、アプリケーションがビルドされデバッグ モードで実行します。
 
@@ -478,7 +478,7 @@ End of demo, press any key to exit.
 
 お疲れさまでした。 チュートリアルが完了し、実際に動作する C# コンソール アプリケーションが完成しました。
 
-## <a id="GetSolution"></a>チュートリアルのソリューションの完全版を入手する
+## <a name="get-the-complete-tutorial-solution"></a><a id="GetSolution"></a>チュートリアルのソリューションの完全版を入手する
 
 このチュートリアルの手順を実行する時間がない場合や、コード サンプルをダウンロードするだけの場合は、それをダウンロードできます。
 

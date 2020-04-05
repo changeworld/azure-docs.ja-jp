@@ -10,10 +10,10 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 04/05/2017
 ms.author: zachal
 ms.openlocfilehash: a93a8a9c27be5a1736a50e6c4c4b830980b7d974
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278072"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>仮想マシン スケール セットと Azure DSC 拡張機能の使用

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/06/2019
 ms.author: victorh
 ms.openlocfilehash: e1bc3b58f425b374e4cae1da6e9800579e503f0d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73511440"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォールのログを調べる
@@ -81,6 +81,6 @@ AzureDiagnostics
 
 ![ダッシュボード](../media/log-analytics/dashboard.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](../../application-gateway/application-gateway-diagnostics.md)

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: e4f995e888d261e1a1a7cb1e63d0d222c165060f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 96129b9141b4759fd61b539fa08354f02af3af7b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368389"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80151358"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -21,7 +21,7 @@ ms.locfileid: "77368389"
 * cognitive-services-language-understanding GitHub リポジトリから [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) アプリをインポートします。
 * インポートした TravelAgent アプリ用の LUIS アプリケーション ID。 アプリケーション ID は、アプリケーション ダッシュボードに表示されます。
 * 発話を受け取るアプリケーション内のバージョン ID。 既定の ID は "0.1" です。
-* [.NET Core V2.2 以上](https://dotnet.microsoft.com/download)
+* [.NET Core 3.1](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
 
 ## <a name="example-utterances-json-file"></a>発話の例の JSON ファイル

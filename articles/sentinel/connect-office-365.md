@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/12/2020
 ms.author: yelevin
 ms.openlocfilehash: 43eba727b1dc724aae6eea3ec77de1363c5db73f
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252513"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Office 365 ログからデータを接続する

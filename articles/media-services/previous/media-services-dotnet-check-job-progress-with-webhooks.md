@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: a29381bded4bb2562227bd5f23ccb59bb5add028
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67059210"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure webhook を使用して .NET で Media Services ジョブ通知を監視する 
@@ -46,7 +46,7 @@ ms.locfileid: "67059210"
 
 チュートリアルを完了するには次のものが必要です。
 
-* Azure アカウント。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* Azure アカウント。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 * Media Services アカウント。 Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
 * [Azure Functions の使用方法](../../azure-functions/functions-overview.md)に関する知識。 「[Azure Functions における HTTP と Webhook のバインド](../../azure-functions/functions-bindings-http-webhook.md)」も確認してください。
 
@@ -61,7 +61,7 @@ Media Services の関数を開発するときは、自分が開発するさま�
 
 [アプリケーション設定](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings)のセクションでは、この記事で定義されている webhook で使用されるパラメーターを定義します。 また、次のパラメーターをアプリ設定に追加します。 
 
-|Name|定義|例| 
+|名前|定義|例| 
 |---|---|---|
 |SigningKey |署名キー。| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | webhook エンドポイント アドレス。 webhook 関数が作成されたら、 **[関数の URL の取得]** リンクから URL をコピーできます。 | https:\//juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==|
@@ -79,7 +79,7 @@ Media Services の関数を開発するときは、自分が開発するさま�
 
 Azure 関数は、コード ファイルなど、このセクションで取り上げる各種ファイルに関連付けることになります。 既定では、**function.json** ファイルと **run.csx** (C#) ファイルに関数が関連付けられます。 **project.json** ファイルを追加する必要があります。 以降このセクションでは、これらのファイルの定義を紹介していきます。
 
-![ファイルのアップロード](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 #### <a name="functionjson"></a>function.json
 
@@ -516,7 +516,7 @@ webhook がトリガーされると、上記の例により次の出力が生成
             }
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

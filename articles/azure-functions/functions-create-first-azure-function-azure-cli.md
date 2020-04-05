@@ -3,12 +3,13 @@ title: HTTP 要求に応答する関数を Azure で作成する
 description: コマンド ラインから関数を作成し、ローカル プロジェクトを Azure Functions のサーバーレス ホスティングに発行する方法を学習します。
 ms.date: 01/28/2020
 ms.topic: quickstart
-ms.openlocfilehash: f2ec642a477348923e8f587879d4804c07fff5a0
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 89b6a9f31414cbaa9cc92c1a0d881a1354180990
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096259"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282734"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>クイック スタート:HTTP 要求に応答する関数を Azure で作成する
 
@@ -35,7 +36,7 @@ ms.locfileid: "79096259"
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-+ [Python 3.8](https://www.python.org/downloads/release/python-382/)、[Python 3.7](https://www.python.org/downloads/release/python-375/)、[Python 3.6](https://www.python.org/downloads/release/python-368/) が Azure Functions でサポートされます。 
++ [Python 3.8](https://www.python.org/downloads/release/python-382/)、[Python 3.7](https://www.python.org/downloads/release/python-375/)、[Python 3.6](https://www.python.org/downloads/release/python-368/)。Azure Functions (x64) でサポートされています。
 ::: zone-end
 ::: zone pivot="programming-language-powershell"
 + [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
@@ -57,7 +58,7 @@ ms.locfileid: "79096259"
 ::: zone pivot="programming-language-python"
 + `python --version` (Linux と macOS の場合) または `py --version` (Windows の場合) を実行して、使用している Python のバージョンが 3.8.x、3.7.x、または 3.6.x であることを確認します。
 
-## <a name="create-venv"></a>仮想環境を作成してアクティブにする
+## <a name="create-and-activate-a-virtual-environment"></a><a name="create-venv"></a>仮想環境を作成してアクティブにする
 
 適切なフォルダーで次のコマンドを実行し、`.venv` という名前の仮想環境を作成してアクティブにします。 必ず、Azure Functions でサポートされている Python 3.8、3.7、または 3.6 を使用してください。
 

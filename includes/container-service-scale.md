@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66814806"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
@@ -32,16 +32,16 @@ DC/OS、Docker Swarm、または Kubernetes クラスター内のエージェン
 [Azure CLI をインストール](/cli/azure/install-azure-cli)し、`az login` で Azure アカウントにサインインします。
 
 ### <a name="see-the-current-agent-count"></a>現在のエージェント数の表示
-クラスターの現在のエージェント数を表示するには、`az acs show` コマンドを実行します。 クラスター構成が表示されます。 たとえば、次のコマンドは、リソース グループ `myResourceGroup` 内の `containerservice-myACSName` という名前のコンテナー サービスの構成を表示します。
+クラスターの現在のエージェント数を表示するには、`az acs show` コマンドを実行します。 クラスター構成が表示されます。 たとえば、次のコマンドは、リソース グループ `containerservice-myACSName` 内の `myResourceGroup` という名前のコンテナー サービスの構成を表示します。
 
 ```azurecli
 az acs show -g myResourceGroup -n containerservice-myACSName
 ```
 
-このコマンドは、`AgentPoolProfiles` の `Count` 値に、エージェント数を返します。
+このコマンドは、`Count` の `AgentPoolProfiles` 値に、エージェント数を返します。
 
 ### <a name="use-the-az-acs-scale-command"></a>az acs scale コマンドの使用
-エージェントノードの数を変更するには、**リソース グループ**、**コンテナー サービス名**、および必要な**新しいエージェント数**を指定して、`az acs scale` コマンドを実行します。 数を増やしてスケールアップを、数を減らしてスケールダウンを実行できます。
+エージェントノードの数を変更するには、`az acs scale`リソース グループ **、** コンテナー サービス名 **、および必要な**新しいエージェント数**を指定して、** コマンドを実行します。 数を増やしてスケールアップを、数を減らしてスケールダウンを実行できます。
 
 たとえば、前のクラスターのエージェント数を 10 に変更するには、次のコマンドを入力します。
 
@@ -64,7 +64,7 @@ Azure CLI は、新しいエージェント数を含む、コンテナー サー
 * クラスターにデプロイしている Orchestrator によっては、クラスターで実行されるコンテナーのインスタンス数を個別にスケーリングできます。 たとえば、DC/OS クラスターでは、[Marathon UI](../articles/container-service/dcos-swarm/container-service-mesos-marathon-ui.md) を使用して、コンテナー アプリケーションのインスタンス数を変更します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure Container Service での Azure CLI のコマンドの[他の使用例](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)を参照します。
 * Azure Container Service の [DC/OS エージェント プール](../articles/container-service/dcos-swarm/container-service-dcos-agents.md)の詳細を確認します。
 

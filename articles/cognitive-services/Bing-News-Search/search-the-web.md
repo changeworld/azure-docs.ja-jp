@@ -12,10 +12,10 @@ ms.date: 12/18/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: e0e99c7f677173c64afad3109b2f4accd7cb3cb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75448446"
 ---
 # <a name="what-is-the-bing-news-search-api"></a>Bing News Search API とは

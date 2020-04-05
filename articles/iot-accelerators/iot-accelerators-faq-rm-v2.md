@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: c410ac7f41adb623a7198320a1edced097778569
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73826248"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータについてよく寄せられる質問
@@ -42,7 +42,7 @@ ms.locfileid: "73826248"
 
 以前のバージョンのリモート監視ソリューション アクセラレータは、IoT Suite リモート監視構成済みソリューションと呼ばれていました。 アーカイブされたドキュメントは [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) で参照できます。
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 IoT ソリューション アクセラレータの他の機能についても学習できます。
 

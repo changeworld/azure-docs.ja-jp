@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: apimpm
 ms.openlocfilehash: 886063dcf886d79ac960814f20b3789e8e3b6839
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78163500"
 ---
 # <a name="import-and-publish-your-first-api"></a>最初の API のインポートと発行 
@@ -41,7 +41,7 @@ ms.locfileid: "78163500"
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>バックエンド API のインポートと発行
+## <a name="import-and-publish-a-backend-api"></a><a name="create-api"> </a>バックエンド API のインポートと発行
 
 このセクションでは、OpenAPI 仕様のバックエンド API をインポートおよび発行する方法を示します。
  
@@ -56,10 +56,10 @@ ms.locfileid: "78163500"
    |設定|Value|説明|
    |-------|-----|-----------|
    |**OpenAPI の仕様**|*https:\//conferenceapi.azurewebsites.net?format=json*|API を実装するサービス。 要求は、API Management によってこのアドレスに転送されます。|
-   |**[表示名]**|前述のサービス URL を入力すると、JSON に基づく値が API Management によってこのフィールドに入力されます。|開発者ポータルに表示される名前。|
+   |**表示名**|前述のサービス URL を入力すると、JSON に基づく値が API Management によってこのフィールドに入力されます。|開発者ポータルに表示される名前。|
    |**名前**|前述のサービス URL を入力すると、JSON に基づく値が API Management によってこのフィールドに入力されます。|API の一意の名前。|
    |**説明**|前述のサービス URL を入力すると、JSON に基づく値が API Management によってこのフィールドに入力されます。|API の説明 (省略可)。|
-   |**[URL スキーム]**|**HTTPS**|API へのアクセスに使用できるプロトコル。|
+   |**URL スキーム**|**HTTPS**|API へのアクセスに使用できるプロトコル。|
    |**API URL サフィックス**|*conference*|API Management サービスのベース URL に付加されるサフィックス。 API Management では API がサフィックスによって識別されるため、サフィックスは、特定の発行者のすべての API で一意である必要があります。|
    |**成果物**|**無制限**|1 つまたは複数の API の関連付け。 すべての API Management インスタンスは、次の 2 つのサンプル成果物を備えています: **スターター**と**無制限**。 API の発行は、API に成果物 (この例では "**無制限**") を関連付けることで行います。<br/>1 つの成果物に複数の API を追加し、開発者ポータルを通じて開発者に提供できます。 この API を別の成果物に追加するには、成果物名を入力または選択します。 複数の成果物に API を追加するには、この手順を繰り返します。 後で **[設定]** ページから成果物に API を追加することもできます。<br/>API へのアクセス権を取得するためには、まず開発者が成果物をサブスクライブする必要があります。 サブスクライブすると、その成果物の API に適したサブスクリプション キーを受け取ります。 <br/>API Management インスタンスを作成した場合は、既に管理者になっているため、そのインスタンスのすべての成果物をサブスクライブしていることになります。|
    |**タグ**| |検索、グループ化、フィルター処理を目的に API を整理するためのタグ。|
@@ -84,7 +84,7 @@ Azure portal には、API の操作を表示およびテストするための便
    
    バックエンドは **200 OK** といくつかのデータで応答します。
 
-## <a name="next-steps"> </a>次の手順
+## <a name="next-steps"></a><a name="next-steps"> </a>次の手順
 
 このチュートリアルでは、以下の内容を学習しました。
 

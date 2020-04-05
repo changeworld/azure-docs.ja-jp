@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c858a17d4574e6e45283df7c1276cd303f25297
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120488"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230403"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理で新しいアクセス パッケージを作成する
 

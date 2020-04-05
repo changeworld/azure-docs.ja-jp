@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 07/01/2019
 ms.author: cynthn
 ms.openlocfilehash: 4fa2949e2a7e1b99ac26caa35f967e9dc9cf359a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76273616"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>プレビュー:PowerShell を使用した近接配置グループの作成と使用

@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74324504"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench のメッセージング統合
@@ -27,7 +27,7 @@ Azure Blockchain Workbench は、REST API を提供するだけでなく、メ�
 
 要求には次のフィールドが必要です。
 
-| **Name**             | **説明**                                      |
+| **名前**             | **説明**                                      |
 |----------------------|------------------------------------------------------|
 | requestId            | クライアントによって指定された GUID                                |
 | firstName            | ユーザーの名                              |
@@ -55,7 +55,7 @@ Azure Blockchain Workbench は、REST API を提供するだけでなく、メ�
 
 Blockchain Workbench は、次のフィールドを含む応答を返します。
 
-| **Name**              | **説明**                                                                                                             |
+| **名前**              | **説明**                                                                                                             |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | requestId             | クライアントによって指定された GUID |
 | userId                | 作成されたユーザーの ID |
@@ -105,7 +105,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 
 要求には次のフィールドが必要です。
 
-| **Name**             | **説明**                                                                                                           |
+| **名前**             | **説明**                                                                                                           |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId            | クライアントによって指定された GUID |
 | userChainIdentifier  | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの**オン チェーン** アドレスです。 |
@@ -144,7 +144,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 
 Blockchain Workbench は、次のフィールドを含む応答を返します。
 
-| **Name**                 | **説明**                                                                   |
+| **名前**                 | **説明**                                                                   |
 |--------------------------|-----------------------------------------------------------------------------------|
 | requestId                | クライアントによって指定された GUID                                                             |
 | contractId               | Azure Blockchain Workbench 内のコントラクトの一意の識別子 |
@@ -209,7 +209,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 
 要求には次のフィールドが必要です。
 
-| **Name**                 | **説明**                                                                                                           |
+| **名前**                 | **説明**                                                                                                           |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------|
 | requestId                | クライアントによって指定された GUID |
 | userChainIdentifier      | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの**オン チェーン** アドレスです。 |
@@ -248,7 +248,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 
 Blockchain Workbench は、次のフィールドを含む応答を返します。
 
-| **Name**              | **説明**                                                                   |
+| **名前**              | **説明**                                                                   |
 |-----------------------|-----------------------------------------------------------------------------------|
 | requestId             | クライアントによって指定された GUID|
 | contractId            | Azure Blockchain Workbench 内のコントラクトの一意の識別子 |
@@ -378,7 +378,7 @@ Service Bus トピックは、Blockchain Workbench で発生するイベント�
 | 名前 | 説明 |
 |------|-------------|
 | block | [ブロック情報](#block-information)を含みます |
-| transactions | ブロックのコレクション [トランザクション情報](#transaction-information)を含みます |
+| トランザクション | ブロックのコレクション [トランザクション情報](#transaction-information)を含みます |
 | connectionId | 接続の一意の識別子 |
 | messageSchemaVersion | メッセージング スキーマ バージョン |
 | messageName | **BlockMessage** |
@@ -896,6 +896,6 @@ Blockchain Workbench からの *EventMessage RoleAssignment* の例:
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [スマート コントラクトの統合パターン](integration-patterns.md)

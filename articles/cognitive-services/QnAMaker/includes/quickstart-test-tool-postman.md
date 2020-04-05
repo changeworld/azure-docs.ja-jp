@@ -11,10 +11,10 @@ ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
 ms.openlocfilehash: 46947579ea72e2199af116442472eec330b38009
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77112300"
 ---
 この Postman ベースのクイック スタートでは、ナレッジ ベースから回答を取得する手順を紹介しています。
@@ -51,7 +51,7 @@ ms.locfileid: "77112300"
 
 前のクイックスタートでは、2 つの異なる質問を区別するために、メタデータが 2 つの QnA セットに追加されました。 このメタデータをクエリに追加して、関連する QnA セットのみにフィルターを制限します。
 
-1. Postman で、`service:qna_maker` の名前と値のペアを使用して `strictFilters` プロパティを追加することによって、クエリの JSON のみを変更します。 本文の JSON は次のようになります。
+1. Postman で、`strictFilters` の名前と値のペアを使用して `service:qna_maker` プロパティを追加することによって、クエリの JSON のみを変更します。 本文の JSON は次のようになります。
 
     ```json
     {

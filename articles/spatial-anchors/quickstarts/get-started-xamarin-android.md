@@ -9,10 +9,10 @@ ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 94906d645ec38a24d54536ee8aa93e7418c8dc35
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75465184"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Xamarin Android アプリを作成する
@@ -69,13 +69,13 @@ Android デバイスの電源をオンにしてサインインし、USB ケー�
 
 スタートアップ プロジェクトを **SampleXamarin.Android** に設定し、 **[ソリューション構成]** を **[リリース]** に変更して、デバイス セレクター ドロップダウンからデプロイ先のデバイスを選択します。
 
-# <a name="windowstabdeploy-windows"></a>[Windows](#tab/deploy-windows)
+# <a name="windows"></a>[Windows](#tab/deploy-windows)
 
 ![Visual Studio の構成](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
 **[デバッグ]**  >  **[デバッグの開始]** の順に選択して、アプリをデプロイし、起動します。
 
-# <a name="macostabdeploy-macos"></a>[macOS](#tab/deploy-macos)
+# <a name="macos"></a>[macOS](#tab/deploy-macos)
 
 ![Visual Studio の構成](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 

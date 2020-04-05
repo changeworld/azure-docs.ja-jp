@@ -4,10 +4,10 @@ description: Advisor を使用して、Azure サブスクリプションのオ�
 ms.topic: article
 ms.date: 10/24/2019
 ms.openlocfilehash: f34284ba62bd5dea98345ebe73365b332d38ee78
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443073"
 ---
 # <a name="achieve-operational-excellence-with-azure-advisor"></a>Azure Advisor でオペレーショナル エクセレンスを実現する

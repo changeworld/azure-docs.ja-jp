@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.openlocfilehash: 210c2e74305ba99b4ac3a12625d0b7f5fc47ba43
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954251"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
@@ -30,7 +30,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
 * Azure の IoT Hub。 まだ作成していない場合は、「[IoT Hub の概要](iot-hub-csharp-csharp-getstarted.md)」のチュートリアルをご覧ください。
 
-## <a name="create-a-stored-procedure"></a>ストアド プロシージャを作成する
+## <a name="create-a-stored-procedure"></a>ストアド プロシージャの作成
 
 最初に、ストアド プロシージャを作成します。このストアド プロシージャで、受信イベントのシーケンス番号を比較し、デバイスごとに最新のイベントをデータベースに記録するロジックを実行するように設定します。
 
@@ -38,7 +38,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
    ![ストアド プロシージャを作成する](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
-2. ストアド プロシージャ ID の **LatestDeviceConnectionState** を入力し、**ストアド プロシージャの本文**に次のコードを貼り付けます。 このコードでストアド プロシージャ本文のすべての既存のコードを置き換える必要があることに注意してください。 このコードでは、デバイス ID ごとに 1 行を維持し、最も大きなシーケンス番号を識別することによってそのデバイス ID の最新の接続状態を記録します。
+2. ストアド プロシージャ ID に **LatestDeviceConnectionState** を入力し、**ストアド プロシージャの本文**に次のコードを貼り付けます。 このコードでストアド プロシージャ本文のすべての既存のコードを置き換える必要があることに注意してください。 このコードでは、デバイス ID ごとに 1 行を維持し、最も大きなシーケンス番号を識別することによってそのデバイス ID の最新の接続状態を記録します。
 
     ```javascript
     // SAMPLE STORED PROCEDURE
@@ -224,7 +224,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
    **Sproc ID**:LatestDeviceConnectionState
 
-5. **[新しいパラメーターの追加]** を選択します。 表示されたドロップダウンで、 **[パーティション キー]** と **[ストアド プロシージャのパラメーター]** の横のボックスをチェックし、画面の任意の場所をクリックっします。これにより、パーティション キー値のフィールドとストアド プロシージャーのパラメーターのフィールドが追加されます。
+5. **[新しいパラメーターの追加]** を選択します。 表示されたドロップダウンで、 **[パーティション キー]** と **[ストアド プロシージャのパラメーター]** の横のボックスをチェックし、画面の任意の場所をクリックします。これにより、パーティション キー値のフィールドとストアド プロシージャのパラメーターのフィールドが追加されます。
 
    ![ロジック アプリのアクションを設定する](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
@@ -236,7 +236,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
    ![ロジック アプリ for-each の入力](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
 
-8. ロジック アプリを保存し、
+8. ロジック アプリを保存します。
 
 ### <a name="copy-the-http-url"></a>HTTP の URL をコピーする
 
@@ -336,7 +336,7 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 [Azure portal](https://portal.azure.com) を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create)に関する Azure CLI のページを参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルでは、Azure サブスクリプションで料金が発生するリソースを使いました。 チュートリアルを試してテストを完了したら、残しておきたくないリソースを無効にするか削除します。
 
@@ -362,7 +362,7 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 Azure Cosmos DB アカウントを Azure portal から削除するには、アカウント名を右クリックし、 **[アカウントの削除]** をクリックします。 [Azure Cosmos DB アカウントを削除](https://docs.microsoft.com/azure/cosmos-db/manage-account)するための詳細な手順を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](../iot-hub/iot-hub-event-grid.md)方法を確認します
 

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.openlocfilehash: 4a53f7e68501ce7f9b19dea0822d3896ec241fb8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444549"
 ---
 # <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>ワンクリックでのインジェストを使用して Azure Data Explorer にデータを取り込む
@@ -42,7 +42,7 @@ ms.locfileid: "75444549"
     ![ワンクリックでのインジェストのソースの詳細](media/ingest-data-one-click/one-click-ingestion-source.png) 
 
     > [!TIP]
-    > *テーブル*の行で **[Ingest new data (Preview)] (新しいデータの取り込み (プレビュー))** を選択した場合は、選択したテーブル名が **[プロジェクトの詳細]** に表示されます。
+    > **テーブル**の行で *[Ingest new data (Preview)] (新しいデータの取り込み (プレビュー))* を選択した場合は、選択したテーブル名が **[プロジェクトの詳細]** に表示されます。
 
 1. 既存のテーブルを選択した場合は、ソース データの列をターゲット テーブルの列にマップする **[Map columns] (マップ列)** ウィンドウが開きます。 
     * テーブルからターゲット列を削除するには、 **[Omit column] (列の省略)** を使用します。

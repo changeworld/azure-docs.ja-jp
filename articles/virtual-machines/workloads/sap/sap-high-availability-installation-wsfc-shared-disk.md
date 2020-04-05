@@ -17,11 +17,11 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e50733c843dfd21e35572f00fc6690e1e84aba97
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617369"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235887"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>Azure で SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターと共有ディスクに SAP NetWeaver HA をインストールする
 
@@ -165,7 +165,7 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 >
 >
 
-## <a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>高可用性 ASCS/SCS インスタンスでの SAP のインストール
+## <a name="install-sap-with-a-high-availability-ascsscs-instance"></a><a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>高可用性 ASCS/SCS インスタンスでの SAP のインストール
 
 > [!IMPORTANT]
 > SIOS DataKeeper でミラー化されたボリュームには、ページ ファイルを配置しないでください。 DataKeeper はミラー化されたボリュームをサポートしていません。 ページ ファイルは、既定の場所である Azure Virtual Machines の一時ドライブ D のままにしておいてかまいません。 既にそこにない場合は、Azure Virtual Machines のドライブ D に Windows ページ ファイルを移動します。
@@ -180,7 +180,7 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 * プローブ ポートを追加します。
 * Windows ファイアウォールでプローブ ポートを開きます。
 
-### <a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a>クラスター化された SAP ASCS/SCS インスタンスの仮想ホスト名の作成
+### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a><a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a>クラスター化された SAP ASCS/SCS インスタンスの仮想ホスト名の作成
 
 1. Windows DNS マネージャーで、ASCS/SCS インスタンスの仮想ホスト名の DNS エントリを作成します。
 
@@ -201,7 +201,7 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 
    _**図 2:** SAP ASCS/SCS クラスター構成の新しい仮想名と TCP/IP アドレス_
 
-### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a> 最初の SAP クラスター ノードのインストール
+### <a name="install-the-sap-first-cluster-node"></a><a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a> 最初の SAP クラスター ノードのインストール
 
 1. クラスター ノード A で、最初のクラスター ノード オプションを実行します。たとえば、pr1-ascs-0* ホストで実行します。
 2. Azure 内部ロード バランサーの既定のポートを維持するには、以下を選択します。
@@ -219,7 +219,7 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 >
 >
 
-### <a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a> ASCS/SCS インスタンスの SAP プロファイルの変更
+### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a> ASCS/SCS インスタンスの SAP プロファイルの変更
 
 最初に、新しいプロファイル パラメーターを追加します。 このプロファイル パラメーターにより、SAP ワーク プロセスとエンキュー サーバー間の接続が長時間にわたってアイドル状態のときに、接続が閉じられるのを防ぐことができます。 「[SAP ASCS/SCS インスタンスの両方のクラスター ノードでのレジストリ エントリの追加][sap-ha-guide-8.11]」では、問題のシナリオについて説明されています。 また、一部の基本的な TCP/IP 接続パラメーターに対する 2 つの変更も行っています。 第 2 の手順では、接続が Azure 内部ロード バランサーのアイドルしきい値に達しないようにするために、`keep_alive` 信号を送信するようにエンキュー サーバーを構成する必要があります。
 
@@ -240,7 +240,7 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
 2. 変更を適用するには、SAP ASCS/SCS インスタンスを再起動します。
 
-### <a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a> プローブ ポートの追加
+### <a name="add-a-probe-port"></a><a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a> プローブ ポートの追加
 
 内部ロード バランサーのプローブ機能を使用して、クラスター全体の構成が Azure Load Balancer で動作するようにします。 通常、Azure 内部ロード バランサーは、参加している仮想マシン間に受信ワークロードを均等に分散させます。
 
@@ -340,7 +340,7 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
    _**図 4:** 新しい値を設定した後でクラスター ポートをプローブする_
 
-### <a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a> Windows ファイアウォール プローブ ポートを開く
+### <a name="open-the-windows-firewall-probe-port"></a><a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a> Windows ファイアウォール プローブ ポートを開く
 
 両方のクラスター ノードで Windows ファイアウォール プローブ ポートを開きます。 Windows ファイアウォール プローブ ポートを開くには、次のスクリプトを使用します。 環境に合わせて PowerShell 変数を更新してください。
 
@@ -352,15 +352,15 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
 **ProbePort** は **62000** に設定されています。 これで、ascsha-dbas などの他のホストから、ファイル共有 \\\ascsha-clsap\sapmnt にアクセスできるようになりました。
 
-## <a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a> データベース インスタンスのインストール
+## <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a> データベース インスタンスのインストール
 
 データベース インスタンスをインストールするには、SAP インストール ドキュメントに記載されている手順に従います。
 
-## <a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a> 第 2 のクラスター ノードのインストール
+## <a name="install-the-second-cluster-node"></a><a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a> 第 2 のクラスター ノードのインストール
 
 第 2 のクラスター ノードをインストールするには、SAP インストール ガイドの手順に従います。
 
-## <a name="094bc895-31d4-4471-91cc-1513b64e406a"></a> SAP ERS Windows サービスのインスタンスのスタートアップの種類の変更
+## <a name="change-the-start-type-of-the-sap-ers-windows-service-instance"></a><a name="094bc895-31d4-4471-91cc-1513b64e406a"></a> SAP ERS Windows サービスのインスタンスのスタートアップの種類の変更
 
 両方のクラスター ノードで、SAP ERS Windows サービスの開始の種類を **[自動 (遅延開始)]** に変更します。
 
@@ -368,11 +368,11 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
 _**図 5:** SAP ERS インスタンスのサービスの種類を遅延自動に変更する_
 
-## <a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a> SAP プライマリ アプリケーション サーバーのインストール
+## <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a> SAP プライマリ アプリケーション サーバーのインストール
 
 プライマリ アプリケーション サーバー (PAS) のインスタンス \<SID\>-di-0 を、PAS のホストとして指定した仮想マシンにインストールします。 Azure に対する依存関係はありません。 DataKeeper に固有の設定はありません。
 
-## <a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a> SAP 追加アプリケーション サーバーのインストール
+## <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a> SAP 追加アプリケーション サーバーのインストール
 
 SAP アプリケーション サーバー インスタンスのホストとして指定したすべての仮想マシンに、SAP 追加アプリケーション サーバー (AAS) をインストールします。 たとえば、\<SID\>-di-1 to \<SID\>-di-&lt;n&gt; にします。
 
@@ -381,10 +381,10 @@ SAP アプリケーション サーバー インスタンスのホストとし�
 >
 
 
-## <a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a> SAP ASCS/SCS インスタンスのフェールオーバーと SIOS レプリケーションのテスト
+## <a name="test-the-sap-ascsscs-instance-failover-and-sios-replication"></a><a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a> SAP ASCS/SCS インスタンスのフェールオーバーと SIOS レプリケーションのテスト
 フェールオーバー クラスター マネージャーと SIOS DataKeeper の管理および構成ツールを使用して、SAP ASCS/SCS インスタンスのフェールオーバーと SIOS ディスク レプリケーションを簡単にテストおよび監視できます。
 
-### <a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a> SAP ASCS/SCS インスタンスがクラスター ノード A で動作している状態
+### <a name="sap-ascsscs-instance-is-running-on-cluster-node-a"></a><a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a> SAP ASCS/SCS インスタンスがクラスター ノード A で動作している状態
 
 SAP PR1 クラスター グループが、クラスター ノード A (たとえば pr1-ascs-0) で動作しています。 SAP PR1 クラスター グループに含まれる共有ディスク ドライブ S を、クラスター ノード A に割り当てます。ASCS/SCS インスタンスもディスク ドライブ S を使います。 
 
@@ -398,7 +398,7 @@ SIOS DataKeeper の管理および構成ツールで、共有ディスクのデ�
 
 _**図 7:** SIOS DataKeeper で、クラスター ノード A からクラスター ノード B にローカル ボリュームをレプリケートする_
 
-### <a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a> ノード A からノード B へのフェールオーバー
+### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a> ノード A からノード B へのフェールオーバー
 
 1. 次のいずれかの方法を選んで、クラスター ノード A からクラスター ノード B への SAP \<SID\> クラスター グループのフェールオーバーを開始します。
    - フェールオーバー クラスター マネージャー  

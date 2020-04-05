@@ -17,10 +17,10 @@ ms.date: 07/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 310a6a14cf8d1dbe66c28e6529e4ae6993896177
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73153690"
 ---
 # <a name="tutorial-integrate-airstack-with-azure-active-directory"></a>チュートリアル:Airstack と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "73153690"
 
 * Airstack にアクセスする Azure AD ユーザーを制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Airstack に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -91,7 +91,7 @@ Airstack で Azure AD SSO を構成してテストするには、次の構成要
     > [!NOTE]
     > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Airstack クライアント サポート チーム](mailto:jsinger@lenovo.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 1. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 

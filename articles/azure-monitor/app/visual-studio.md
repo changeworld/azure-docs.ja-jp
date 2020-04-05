@@ -8,10 +8,10 @@ ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: 8905222214d58eeba24ecf50da768ffa1d65c39d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670884"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio の Azure Application Insights でアプリケーションをデバッグする
@@ -21,7 +21,7 @@ Visual Studio 2017 以降を使用して ASP.NET Web アプリを作成した場
 
 実際の運用環境でアプリを監視するには、通常、[Azure Portal](https://portal.azure.com) で Application Insights のテレメトリを確認します。Azure Portal では、アラートを設定し、強力な監視ツールを適用できます。 ただし、デバッグを行う場合は、Visual Studio でテレメトリを検索して分析することもできます。 Visual Studio を使用したテレメトリの分析は、運用サイトからも、開発用コンピューターでのデバッグの実行からも行うことができます。 後者の場合、Azure Portal にテレメトリを送信するよう SDK をまだ構成していない場合でも、デバッグの実行を分析できます。 
 
-## <a name="run"></a> プロジェクトのデバッグ
+## <a name="debug-your-project"></a><a name="run"></a> プロジェクトのデバッグ
 F5 キーを使用して、ローカル デバッグ モードで Web アプリを実行します。 ある程度のテレメトリを生成するために、複数のページを開きます。
 
 Visual Studio では、プロジェクトの Application Insights モジュールによってログに記録されたイベント数を確認できます。

@@ -8,10 +8,10 @@ ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: cde731f9d9e673446bc4d08117004b028db2a7f9
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77462464"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API: サポートされる機能と構文
@@ -401,7 +401,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 |$jsonSchema    |   いいえ|
 |$mod   |   はい|
 |$regex |   はい|
-|$text  | いいえ (サポートされていません。 $regex を使用してください)| 
+|$text  | いいえ (サポートされていません。 代わりに $regex を使用してください)。| 
 |$where |いいえ| 
 
 $regex クエリでは、左固定の式でインデックス検索が可能です。 ただし、'i' 修飾子 (大文字と小文字の区別なし) や 'm' 修飾子 (複数行) を使用すると、すべての式でコレクション スキャンが発生します。

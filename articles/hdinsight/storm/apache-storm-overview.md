@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/02/2020
 ms.openlocfilehash: 24981c10985cd353fcd476f416e89c94ad6b6cc6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78271898"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm とは

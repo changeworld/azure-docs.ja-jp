@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/24/2020
-ms.openlocfilehash: 9e220c7a7813f89eacab5137362e39153d2b334a
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 90f7010970f70379c8adecc4214c44d896a1beaf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207185"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80130229"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
@@ -57,7 +57,7 @@ HDInsight で Apache Kafka クラスターを作成するには、次の手順�
     |Secure Shell (SSH) ユーザー名 | 既定のユーザー名は **sshuser** です。  SSH ユーザー名に別の名前を指定できます。 |
     |SSH にクラスター ログイン パスワードを使用する| クラスター ログイン ユーザーに指定したのと同じパスワードを SSH ユーザーに使用する場合は、このチェック ボックスをオンにします。|
 
-   ![Azure portal でのクラスター作成の基本](./media/apache-kafka-get-started/azure-portal-cluster-basics-blank.png)
+   ![Azure portal でのクラスター作成の基本](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
 
     各 Azure リージョン (場所) は "_障害ドメイン_" を提供します。 障害ドメインとは、Azure データ センター内にある基になるハードウェアの論理的なグループです。 各障害ドメインは、一般的な電源とネットワーク スイッチを共有します。 HDInsight クラスター内のノードを実装する仮想マシンと管理ディスクは、これらの障害ドメインに分散されます。 このアーキテクチャにより、物理的なハードウェア障害の潜在的な影響が制限されます。
 
@@ -132,7 +132,7 @@ HDInsight で Apache Kafka クラスターを作成するには、次の手順�
     Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
     ```
 
-## <a id="getkafkainfo"></a>Apache Zookeeper およびブローカーのホスト情報を取得する
+## <a name="get-the-apache-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>Apache Zookeeper およびブローカーのホスト情報を取得する
 
 Kafka を使うときは、*Apache Zookeeper* ホストと "*ブローカー*" ホストについて理解しておく必要があります。 これらのホストは、Apache Kafka の API や、Kafka に付属するユーティリティの多くで使用されます。
 

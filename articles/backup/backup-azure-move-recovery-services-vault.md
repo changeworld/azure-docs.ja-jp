@@ -5,10 +5,10 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.openlocfilehash: fed42c578da2e4f27f42e11d5ac67d698bbcd939
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77120714"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
@@ -48,7 +48,7 @@ Recovery Services コンテナーのリソースの移動がサポートされ�
 
 Recovery Services コンテナーとその関連リソースを別のリソース グループに移動するには
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. **Recovery Services コンテナー**の一覧を開き、移動するコンテナーの名前を選択します。 コンテナーのダッシュボードが開き、次の図のように表示されます。
 
    ![Recover Service コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -77,7 +77,7 @@ Recovery Services コンテナーとその関連リソースを別のリソー�
 
 Recovery Services コンテナーとその関連リソースを別のサブスクリプションに移動できます
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. Recovery Services コンテナーの一覧を開き、移動するコンテナーを選択します。 コンテナーのダッシュボードが開き、次の図のように表示されます。
 
     ![Recover Service コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)

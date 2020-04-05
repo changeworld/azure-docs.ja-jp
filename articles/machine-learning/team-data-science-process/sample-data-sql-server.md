@@ -12,13 +12,13 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 71a2ec9dc4d644fb8739db3817e2cd1d09913da7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76717648"
 ---
-# <a name="heading"></a>Azure の SQL Server 内のデータのサンプリング
+# <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>Azure の SQL Server 内のデータのサンプリング
 
 この記事では、SQL または Python プログラミング言語を使って、Azure の SQL Server に格納されているデータをサンプリングする方法について説明します。 また、サンプリングしたデータをファイルを保存し、Azure BLOB にアップロードして、Azure Machine Learning Studio に読み込むことで、データを Azure Machine Learning に移動する方法についても説明します。
 
@@ -34,7 +34,7 @@ Python のサンプリングでは、[pyodbc](https://code.google.com/p/pyodbc/)
 
 このサンプリング タスクは、 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)の 1 ステップです。
 
-## <a name="SQL"></a>SQL の使用
+## <a name="using-sql"></a><a name="SQL"></a>SQL の使用
 このセクションでは、SQL を使用して、データベース内のデータに対して簡単なランダム サンプリングを実行するいくつかの方法について説明します。 データのサイズとその分布に基づいて方法を選択してください。
 
 次の 2 つの項目は、SQL Server の `newid` を使ってサンプリングを実行する方法を示しています。 選ぶ方法は、サンプルをどの程度ランダムにするかによって変わります (次のサンプル コードでは、pk_id は自動生成された主キーであるものと想定しています)。
@@ -59,12 +59,12 @@ Tablesample はデータのサンプリングに使うこともできます。 �
 > 
 > 
 
-### <a name="sql-aml"></a>Azure Machine Learning への接続
+### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Azure Machine Learning への接続
 Azure Machine Learning の[データのインポート][import-data] モジュールで上記のサンプル クエリを直接使用して、データをその場でダウンサンプリングし、Azure Machine Learning の実験で使用できます。 リーダー モジュールを使ってサンプリングされたデータを読み取るスクリーンショットを次に示します。
 
 ![リーダー SQL][1]
 
-## <a name="python"></a>Python プログラミング言語の使用
+## <a name="using-the-python-programming-language"></a><a name="python"></a>Python プログラミング言語の使用
 このセクションでは、Python で [pyodbc ライブラリ](https://code.google.com/p/pyodbc/) を使用して SQL Server データベースに対する ODBC 接続を確立する方法について説明します。 データベース接続文字列は次のようになります (サーバー名、データベース名、ユーザー名、およびパスワードは、使用する構成に置き換えます)。
 
     #Set up the SQL Azure connection
@@ -80,7 +80,7 @@ Python の [Pandas ライブラリ](https://pandas.pydata.org/) には、Python 
 
 これで、Pandas データ フレームでサンプリングされたデータを操作できるようになりました。 
 
-### <a name="python-aml"></a>Azure Machine Learning への接続
+### <a name="connecting-to-azure-machine-learning"></a><a name="python-aml"></a>Azure Machine Learning への接続
 次のサンプル コードを使用すると、ダウンサンプリングされたデータをファイルに保存し、Azure BLOB にアップロードすることができます。 BLOB 内のデータは、[データのインポート][import-data] モジュールを使用して Azure Machine Learning の実験に直接読み込むことができます。 手順は次のとおりです。 
 
 1. Pandas データ フレームをローカル ファイルに書き込む

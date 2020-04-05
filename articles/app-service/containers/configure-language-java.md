@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 455ebcb28ea6cc8b43431f96a4bc3929a759c2d0
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 970701606811cbd61a9bfebe39ff82cdc91d5693
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255890"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80245839"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service 向けの Linux Java アプリを構成する
 
@@ -328,7 +328,7 @@ App Service Linux では着信要求がポート 80 にルーティングされ�
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [ダウンロード](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [ダウンロード](https://dev.mysql.com/downloads/connector/j/) ("プラットフォームに依存しない" を選択) |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [ダウンロード](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [ダウンロード](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
 Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用するように Tomcat を構成するには、まず、起動時に Tomcat によって読み込まれる `CATALINA_OPTS` 環境変数をカスタマイズします。 [App Service Maven プラグイン](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)のアプリ設定を使用して、次の値を設定します。
 
@@ -497,7 +497,7 @@ Redis で Tomcat を使用するには、[PersistentManager](https://tomcat.apac
 
 1. Bash ターミナルを開き、`<variable>=<value>` を使用して次の各環境変数を設定します。
 
-    | 変数                 | Value                                                                      |
+    | 変数                 | 値                                                                      |
     |--------------------------|----------------------------------------------------------------------------|
     | RESOURCEGROUP_NAME       | App Service インスタンスを含むリソース グループの名前。       |
     | WEBAPP_NAME              | App Service インスタンスの名前。                                     |

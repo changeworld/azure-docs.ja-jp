@@ -12,10 +12,10 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 70cd4f2ca3a4ac37bdf1d1e465d1f1a7d06ef9e1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189703"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C でリソース所有者のパスワード資格情報フロー を構成する
@@ -56,11 +56,11 @@ ms.locfileid: "78189703"
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Key | Value |
+| Key | 値 |
 | --- | ----- |
 | username | leadiocl@outlook.com |
-| password | Passxword1 |
-| grant_type | password |
+| パスワード | Passxword1 |
+| grant_type | パスワード |
 | scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
@@ -96,7 +96,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Key | Value |
+| Key | 値 |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

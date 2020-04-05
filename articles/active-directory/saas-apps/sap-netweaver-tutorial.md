@@ -17,10 +17,10 @@ ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 700f2ca4d46b3483531fa0784cb78699befb20ca
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78897750"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>チュートリアル:SAP NetWeaver と Azure Active Directory のシングル サインオン (SSO) 統合
@@ -328,7 +328,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
 ## <a name="configure-sap-netweaver-for-oauth"></a>SAP NetWeaver の OAuth 向け構成
 
-1. SAP によって文書化されたプロセスが「[NetWeaver Gateway サービスの有効化と OAuth 2.0 スコープの作成](https://wiki.scn.sap.com/wiki/display/Security/NetWeaver+Gateway+Service+Enabling+and+OAuth+2.0+Scope+Creation)」に記載されています。
+1. SAP によって文書化されたプロセスが「[NetWeaver Gateway サービスの有効化と OAuth 2.0 スコープの作成](https://wiki.scn.sap.com/wiki/display/Security/NetWeaver+Gateway+Service+Enabling+and+OAuth+2.0+Scope+Creation)」に記載されています
 
 2. SPRO に移動し、 **[Activate and Maintain services]\(サービスのアクティブ化と管理\)** を探します。
 
@@ -362,7 +362,7 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
 1. 新しい **OAuth 2.0 クライアント**を登録するために、トランザクション **SOAUTH2** を開始します。 このトランザクションは、既に登録されている OAuth 2.0 クライアントについての概要を表示します。 この例では CLIENT1 という名前の新しい OAuth クライアントのために、 **[Create]\(作成\)** を選択してウィザードを開始します。
 
-2. T-Code:**SOAUTH2** に移動して説明を入力し、 **[next]\(次へ\)** をクリックします。
+2. T-Code: **SOAUTH2** に移動して説明を入力し、 **[next]\(次へ\)** をクリックします。
 
     ![Configure single sign-on](./media/sapnetweaver-tutorial/oauth04.png)
 

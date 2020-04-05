@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: aa8bd6e89dd47c4e972a860691d1bc3779ba5bc7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75982313"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure Stream Analytics での一般的なクエリ パターン
@@ -880,7 +880,7 @@ MATCH_RECOGNIZE (
 
 このクエリは、少なくとも 2 つの連続するエラー イベントに一致し、条件が満たされたときにアラームを生成します。
 **PATTERN** では、照合に使用される正規表現を定義します。このケースでは、任意の数の成功した操作の後、少なくとも 2 つの連続した失敗が続きます。
-成功と失敗は、Return_Code 値を使用して定義します。条件が満たされると、*ATM_id*、最初の警告操作、最初の警告時刻を使用して **MEASURES** が射影されます。
+成功と失敗は、Return_Code 値を使用して定義します。条件が満たされると、**ATM_id**、最初の警告操作、最初の警告時刻を使用して *MEASURES* が射影されます。
 
 詳細については、[MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics) に関するページを参照してください。
 

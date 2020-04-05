@@ -12,13 +12,13 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4c47dfb8b221b6cb4b6237669ecd17c1637107a2
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721100"
 ---
-# <a name="heading"></a>Azure  BLOB データを高度な分析を使用して処理する
+# <a name="process-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>Azure  BLOB データを高度な分析を使用して処理する
 このドキュメントでは、データの探索および Azure BLOB ストレージに保存されたデータからの特徴の生成について説明します。 
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Pandas データ フレームにデータを読み込む
@@ -48,7 +48,7 @@ ms.locfileid: "76721100"
 
 これで、データを探索し、このデータセットでの特徴を生成する準備が整いました。
 
-## <a name="blob-dataexploration"></a>データの探索
+## <a name="data-exploration"></a><a name="blob-dataexploration"></a>データの探索
 次に、Pandas を使用してデータを探索する方法の例をいくつかを示します。
 
 1. 行と列の数を調べる 
@@ -94,10 +94,10 @@ ms.locfileid: "76721100"
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-## <a name="blob-featuregen"></a>特徴の生成
+## <a name="feature-generation"></a><a name="blob-featuregen"></a>特徴の生成
 次のように、Python を使用して特徴を生成できます。
 
-### <a name="blob-countfeature"></a>インジケーター値ベースの特徴の生成
+### <a name="indicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>インジケーター値ベースの特徴の生成
 カテゴリの特徴は、次のように作成できます。
 
 1. カテゴリの列の分布を検査します。
@@ -116,7 +116,7 @@ ms.locfileid: "76721100"
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="blob-binningfeature"></a>ビン分割特徴の生成
+### <a name="binning-feature-generation"></a><a name="blob-binningfeature"></a>ビン分割特徴の生成
 ビン分割特徴を生成するには、次のように進めます。
 
 1. 数値列をビン分割する列のシーケンスを追加します。
@@ -130,7 +130,7 @@ ms.locfileid: "76721100"
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <a name="sql-featuregen"></a>Azure BLOB にデータを書き戻して Azure Machine Learning で使用する
+## <a name="writing-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>Azure BLOB にデータを書き戻して Azure Machine Learning で使用する
 データを探索して必要な特徴を作成したら、次の手順を使用して、Azure BLOB に (サンプリングまたは特徴を生成した) データをアップロードして Azure Machine Learning で使用します。Azure Machine Learning Studio (クラシック) でも、追加の特徴を作成できます。 
 
 1. ローカル ファイルへのデータ フレームの書き込み

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 88b903d68e4398b4e30b0b7435279c29bee6cd6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61408770"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228087"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array に Update 1.1 をインストールする
 
@@ -103,7 +103,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update-11/update1m.png)
 
-2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[適用]** をクリックします。
+2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[Apply]** をクリックします。
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update-11/update2m.png)
 
@@ -125,6 +125,6 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 6. ファイル `Windows8.1-KB4284815-x64` を使用して、Windows セキュリティ修正プログラムをインストールする手順 2 から 4 を繰り返します。 インストール後に仮想アレイが再起動するため、ユーザーはローカル Web UI にサインインする必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。

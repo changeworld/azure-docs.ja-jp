@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 1fbb4ef2341148de4026f47fc06a54bbfa60fff6
-ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
+ms.openlocfilehash: 5e6a0586bc750f8972586920c15dbb297295aa20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75500128"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371275"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>非対話型認証 .NET HDInsight アプリケーションを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "75500128"
 
 ## <a name="prerequisites"></a>前提条件
 
-HDInsight クラスター。 [使用に関するチュートリアル](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)をご覧ください。
+HDInsight クラスター。 [使用に関するチュートリアル](hadoop/apache-hadoop-linux-tutorial-get-started.md)をご覧ください。
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Azure AD アプリケーションにロールを割り当てる
 

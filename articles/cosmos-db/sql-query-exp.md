@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 76d614264124e1ce4138663b702ff6d899b3aa4e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873320"
 ---
 # <a name="exp-azure-cosmos-db"></a>EXP (Azure Cosmos DB)
@@ -34,11 +34,11 @@ EXP (<numeric_expr>)
   
 ## <a name="remarks"></a>解説
   
-  定数 **e** (2.718281...) は、自然対数の底です。  
+  定数 **e** (2.718281…) は、自然対数の底です。  
   
-  数値の指数は、定数 **e** のべき乗された数値です。 たとえば、EXP(1.0) = e^1.0 = 2.71828182845905 および EXP(10) = e^10 = 22026.4657948067 になります。  
+  数値の指数は、定数 **e** をその数値で累乗したものです。 たとえば、EXP(1.0) = e^1.0 = 2.71828182845905 および EXP(10) = e^10 = 22026.4657948067 になります。  
   
-  数値の自然対数の指数は数自体です:EXP (LOG (n)) = n。 数値の指数の自然対数は数自体です:LOG (EXP (n)) = n。  
+  数値の自然対数の指数は数自体です: EXP (LOG (n)) = n。 数値の指数の自然対数は数自体です: LOG (EXP (n)) = n。  
   
 ## <a name="examples"></a>例
   
@@ -66,7 +66,7 @@ SELECT EXP(LOG(20)) AS exp1, LOG(EXP(20)) AS exp2
 [{exp1: 19.999999999999996, exp2: 20}]  
 ```  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の数学関数](sql-query-mathematical-functions.md)
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)

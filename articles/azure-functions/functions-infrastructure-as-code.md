@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 48d98d6fef896f9288be88824a62fa1c8179217f
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621064"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234983"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -28,8 +28,8 @@ Azure Functions のデプロイは通常、次のリソースで構成されて�
 
 | リソース                                                                           | 要件 | 構文とプロパティの参照                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| 関数アプリ                                                                     | Required    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| [Azure Storage](../storage/index.yml) アカウント                                   | Required    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| 関数アプリ                                                                     | 必須    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
+| [Azure Storage](../storage/index.yml) アカウント                                   | 必須    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
 | [Application Insights](../azure-monitor/app/app-insights-overview.md) コンポーネント | 省略可能    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
 | [ホスティング プラン](./functions-scale.md)                                             | 省略可能<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
@@ -60,7 +60,7 @@ Azure Functions のデプロイは通常、次のリソースで構成されて�
 
 `AzureWebJobsStorage` 接続文字列は、Azure Functions ランタイムが内部キューを作成するときに使用します。  Application Insights が有効でない場合、ランタイムでは `AzureWebJobsDashboard` 接続文字列を使用して、Azure Table Storage にログを記録し、ポータルの **[監視]** タブをオンにします。
 
-こうしたプロパティは、`siteConfig` オブジェクトの `appSettings` コレクションで指定します。
+こうしたプロパティは、`appSettings` オブジェクトの `siteConfig` コレクションで指定します。
 
 ```json
 "appSettings": [
@@ -96,7 +96,7 @@ Application Insights は、関数アプリを監視するために推奨され�
         },
 ```
 
-さらに、`APPINSIGHTS_INSTRUMENTATIONKEY` のアプリケーション設定を使用して、関数アプリにインストルメンテーション キーを提供する必要があります。 このプロパティは、`siteConfig` オブジェクト内の `appSettings` コレクションで指定されます。
+さらに、`APPINSIGHTS_INSTRUMENTATIONKEY` のアプリケーション設定を使用して、関数アプリにインストルメンテーション キーを提供する必要があります。 このプロパティは、`appSettings` オブジェクト内の `siteConfig` コレクションで指定されます。
 
 ```json
 "appSettings": [
@@ -144,7 +144,7 @@ Application Insights は、関数アプリを監視するために推奨され�
 | FUNCTIONS_WORKER_RUNTIME     | このアプリ内の関数で使用される言語スタック                                   | `dotnet`、`node`、`java`、`python`、または `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | `node` 言語スタックを使用している場合にのみ必要、使用するバージョンを指定します              | `10.14.1`                             |
 
-これらのプロパティは、`siteConfig` プロパティ内の `appSettings` コレクションで指定されます。
+これらのプロパティは、`appSettings` プロパティ内の `siteConfig` コレクションで指定されます。
 
 ```json
 "properties": {
@@ -183,7 +183,7 @@ Azure Resource Manager テンプレートのサンプルについては、[従�
 
 従量課金プランを定義する必要はありません。 関数アプリのリソース自体を作成したときに、このプランがリージョンごとに自動的に作成または選択されます。
 
-従量課金プランは、特殊なタイプの "serverfarm" リソースです。 Windows では、`computeMode` および `sku` プロパティに `Dynamic` 値を使用して指定できます。
+従量課金プランは、特殊なタイプの "serverfarm" リソースです。 Windows では、`Dynamic` および `computeMode` プロパティに `sku` 値を使用して指定できます。
 
 ```json
 {  
@@ -309,7 +309,7 @@ Premium プランでは、従量課金プランと同じスケーリングが提
 
 ### <a name="create-a-premium-plan"></a>Premium プランを作成する
 
-Premium プランは、特殊なタイプの "serverfarm" リソースです。 これは、`sku` [説明オブジェクト](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)の `Name` プロパティ値に `EP1`、`EP2`、または `EP3` のいずれかを使用することで指定できます。
+Premium プランは、特殊なタイプの "serverfarm" リソースです。 これは、`EP1` `EP2`説明オブジェクト`EP3`の `Name` プロパティ値に `sku`、[、または ](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object) のいずれかを使用することで指定できます。
 
 ```json
 {
@@ -470,7 +470,7 @@ App Service プランでの関数アプリは、`serverFarmId` プロパティ�
 }
 ```
 
-Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティも含める必要があります。 コードをデプロイしているだけである場合、この値は、目的のランタイム スタックによって決定されます。
+Linux アプリでは、`linuxFxVersion` の下に `siteConfig` プロパティも含める必要があります。 コードをデプロイしているだけである場合、この値は、目的のランタイム スタックによって決定されます。
 
 | スタック            | 値の例                                         |
 |------------------|-------------------------------------------------------|
@@ -577,7 +577,7 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
 関数アプリには、アプリ設定オプション、ソース管理オプションなど、デプロイで使用できる子リソースが多数含まれます。 **sourcecontrols** 子リソースを削除して、別の[デプロイ オプション](functions-continuous-deployment.md)を代わりに使用することもできます。
 
 > [!IMPORTANT]
-> Azure Resource Manager を使用して、アプリケーションを適切にデプロイするには、リソースが Azure でどのようにデプロイされているかを理解することが重要です。 次の例では、**siteConfig** を使用して最上位レベル構成が適用されます。 この構成は、情報を Functions ランタイムとデプロイ エンジンに提供するため、最上位レベルで設定することが重要です。 **sourcecontrols/web** 子リソースが適用される前に、最上位の情報が必要です。 これらの設定は、子レベルの **config/appSettings** リソースで構成できますが、場合によっては、関数アプリを、**config/appSettings** が適用される "*前*" にデプロイする必要があります。 たとえば、[Logic Apps](../logic-apps/index.yml) で関数を使用している場合、関数は他のリソースと依存関係にあります。
+> Azure Resource Manager を使用して、アプリケーションを適切にデプロイするには、リソースが Azure でどのようにデプロイされているかを理解することが重要です。 次の例では、**siteConfig** を使用して最上位レベル構成が適用されます。 この構成は、情報を Functions ランタイムとデプロイ エンジンに提供するため、最上位レベルで設定することが重要です。 **sourcecontrols/web** 子リソースが適用される前に、最上位の情報が必要です。 これらの設定は、子レベルの **config/appSettings** リソースで構成できますが、場合によっては、関数アプリを、*config/appSettings* が適用される "**前**" にデプロイする必要があります。 たとえば、[Logic Apps](../logic-apps/index.yml) で関数を使用している場合、関数は他のリソースと依存関係にあります。
 
 ```json
 {
@@ -654,7 +654,7 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
 
 ### <a name="deploy-to-azure-button"></a>[Azure にデプロイ] ボタン
 
-```<url-encoded-path-to-azuredeploy-json>``` を、GitHub の `azuredeploy.json` ファイルの生のパスの[エンコードされた URL](https://www.bing.com/search?q=url+encode) で置き換えます。
+```<url-encoded-path-to-azuredeploy-json>``` を、GitHub の [ ファイルの生のパスの](https://www.bing.com/search?q=url+encode)エンコードされた URL`azuredeploy.json` で置き換えます。
 
 マークダウンを使用する例を次に示します。
 

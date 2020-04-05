@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7acd76ff45f783f614b2a1d3f0d5c10d800a1ea9
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77559047"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>クイック スタート:無制限のアプリの登録を作成するアクセス許可を付与する

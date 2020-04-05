@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/14/2018
 ms.openlocfilehash: 92f7d25a9c19409b220b6a71fba87da91e51a415
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928494"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Azure SQL Database geo レプリケーションを使用して Azure-SSIS Integration Runtime とフェールオーバーを構成する
 
 この記事では、Azure SQL Database geo レプリケーションを使用して、SSISDB データベース用に Azure-SSIS Integration Runtime を構成する方法について説明します。 フェールオーバーが発生したときに、セカンダリ データベースにより Azure-SSIS IR の動作を維持できます。
 
-SQL Database の geo レプリケーションとフェールオーバーの詳細については、[アクティブ geo レプリケーションと自動フェールオーバー グループの概要](../sql-database/sql-database-geo-replication-overview.md)に関するページを参照してください。
+SQL Database の geo レプリケーションとフェールオーバーについて詳しくは、「[概要: アクティブ geo レプリケーションと自動フェールオーバー グループ](../sql-database/sql-database-geo-replication-overview.md)」をご覧ください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -51,11 +51,11 @@ SQL Database の geo レプリケーションとフェールオーバーの詳�
 
 - Azure-SSIS IR がフェールオーバー グループのプライマリ サーバー エンドポイントを指している。 このエンドポイントはフェールオーバーが発生すると変わります。
 
-  または
+  OR
 
 - Azure SQL Database サーバーが仮想ネットワーク サービス エンドポイント規則で構成されている。
 
-  または
+  OR
 
 - データベース サーバーが仮想ネットワークで構成された SQL Database Managed Instance である。
 
@@ -120,7 +120,7 @@ Azure-SSIS IR を停止し、IR を新しいリージョンに切り替え、再
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
    ```
 
-2. 新しいリージョンに **\<new_data_factory_name\>**  という名前の新しいデータ ファクトリを作成します。 詳細については、データ ファクトリの作成を参照してください。
+2. 新しいリージョンに **\<new_data_factory_name\>** という名前の新しいデータ ファクトリを作成します。 詳細については、データ ファクトリの作成を参照してください。
 
      ```powershell
      Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
@@ -153,7 +153,7 @@ Azure-SSIS IR を停止し、IR を新しいリージョンに切り替え、再
 
 4. IR を再び開始します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure SSIS IR の以下のその他の構成オプションを検討してください。
 

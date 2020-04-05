@@ -12,10 +12,10 @@ ms.date: 07/31/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5daf88e746ea803f345c79bd31d656f2615b6754
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78184096"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWIN ベースの Web API を b2clogin.com に移行する
@@ -123,9 +123,9 @@ app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
 
 Web API で両方の URI がサポートされるようになったので、今度は b2clogin.com エンドポイントからトークンを取得するように、Web アプリケーションを更新する必要があります。
 
-たとえば、**TaskWebApp** プロジェクトの *TaskWebApp\\**Web.config**.* ファイルで `ida:AadInstance` の値を変更することにより、新しいエンドポイントを使うようにサンプル Web アプリケーションを構成できます。
+たとえば、`ida:AadInstance`TaskWebApp *プロジェクトの \\TaskWebApp***Web.config**.**ファイルで** の値を変更することにより、新しいエンドポイントを使うようにサンプル Web アプリケーションを構成できます。
 
-TaskWebApp の *Web.config* の `ida:AadInstance` の値を、`login.microsoftonline.com` ではなく `{your-b2c-tenant-name}.b2clogin.com` を参照するように変更します。
+TaskWebApp の `ida:AadInstance`Web.config*の* の値を、`{your-b2c-tenant-name}.b2clogin.com` ではなく `login.microsoftonline.com` を参照するように変更します。
 
 次の処理の前
 

@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
 ms.openlocfilehash: 49fdfde402938ce8d0ee1b141a47e68c99c502e7
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73796201"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure 仮想マシンの修復コマンドを使用して Linux VM を修復する
@@ -66,7 +66,7 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
    az extension update -n vm-repair
    ```
 
-3. `az vm repair create` を実行します。 このコマンドは、機能していない VM の OS ディスクのコピーを作成し、修復 VM を作成して、ディスクを接続します。
+3. `az vm repair create` を実行します。 このコマンドでは、機能していない VM の OS ディスクのコピーが作成され、修復 VM が作成されて、ディスクに接続されます。
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
@@ -82,7 +82,7 @@ Azure 仮想マシンの修復コマンドを使用して VM の OS ディスク
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>ブート診断を確認して有効にする
 
-次の例では、``myResourceGroup`` という名前のリソース グループの ``myVMDeployed`` という名前の VM で診断拡張機能を有効にします。
+次の例では、``myVMDeployed`` という名前のリソース グループの ``myResourceGroup`` という名前の VM で診断拡張機能を有効にします。
 
 Azure CLI
 
@@ -90,8 +90,8 @@ Azure CLI
 az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGroup --storage https://mystor.blob.core.windows.net/
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * VM への接続の問題が発生した場合は、[Azure 仮想マシンへの RDP 接続のトラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)に関する記事をご覧ください。
-* VM で実行されているアプリケーションへのアクセスに関する問題については、[Azure の仮想マシンでのアプリケーションの接続の問題のトラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection)に関する記事をご覧ください。
+* VM で実行されているアプリケーションへのアクセスに関する問題については、「[Azure 上の仮想マシンにおけるアプリケーション接続に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection)」をご覧ください。
 * Resource Manager の使用方法の詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)」をご覧ください。

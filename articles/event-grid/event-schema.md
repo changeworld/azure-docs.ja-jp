@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 1fceda6fcbb6e8db1fa8afbc5181315bd0c98940
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 35cea2e6df311d2f4071686c21c8e4c36477abc1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512982"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225119"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid イベント スキーマ
 
@@ -83,16 +83,16 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 
 すべてのイベントには、次の同じ最上位レベルのデータが含まれています。
 
-| プロパティ | 種類 | 説明 |
-| -------- | ---- | ----------- |
-| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| subject | string | 発行元が定義したイベントの対象のパス。 |
-| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | string | イベントの一意識別子。 |
-| data | object | リソース プロバイダーに固有のイベント データ。 |
-| dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| プロパティ | Type | 必須 | 説明 |
+| -------- | ---- | -------- | ----------- |
+| topic | string | いいえ。ただし、追加する場合は、Event Grid トピックの Azure Resource Manager ID と完全に一致させる必要があります。 追加しなかった場合は、Event Grid によってイベントに記録されます。 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| subject | string | はい | 発行元が定義したイベントの対象のパス。 |
+| eventType | string | はい | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | string | はい | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | string | はい | イベントの一意識別子。 |
+| data | object | いいえ | リソース プロバイダーに固有のイベント データ。 |
+| dataVersion | string | いいえ。ただし、空の値が記録されます。 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | string | 必須ではありませんが、追加する場合は、Event Grid スキーマの `metadataVersion` と完全に一致させる必要があります (現在は `1` のみ)。 追加しなかった場合は、Event Grid によってイベントに記録されます。 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトのプロパティの詳細については、イベント ソースを参照してください。
 

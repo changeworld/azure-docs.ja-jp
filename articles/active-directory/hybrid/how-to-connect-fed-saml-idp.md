@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ff4f1b81f476159c13d3725cd3cb1766aec7dc87
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70305113"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
@@ -77,7 +77,7 @@ SAML 応答メッセージでは、署名ノードにメッセージ自体のデ
 ## <a name="required-attributes"></a>必須属性
 次の表は、SAML 2.0 メッセージの特定の属性の要件を示します。
  
-|Attribute|説明|
+|属性|説明|
 | ----- | ----- |
 |NameID|このアサーションの値は、Azure AD ユーザーの ImmutableID と同じである必要があります。 最大 64 文字の英数字にすることができます。 HTML で安全に使用できない文字はエンコードする必要があります。たとえば、"+" 文字は ".2B" と表示されます。|
 |IDPEmail|ユーザー プリンシパル名 (UPN) は、SAML 応答内で IDPEmail という名前の要素として示されます。これは、Azure AD/Office 365 でのユーザーの UserPrincipalName (UPN) です。 UPN は電子メール アドレス形式です。 Windows Office 365 (Azure Active Directory) での UPN 値です。|

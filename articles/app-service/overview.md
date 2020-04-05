@@ -4,13 +4,13 @@ description: Azure App Service が Web アプリケーションの開発およ�
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 01/04/2017
-ms.custom: seodec18
-ms.openlocfilehash: 849886eb03f46949301d76113109aae8188ff8fc
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: b385136183fba5d1e64db3763453d2f4b23d4d96
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687048"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80045168"
 ---
 # <a name="app-service-overview"></a>App Service の概要
 
@@ -36,7 +36,7 @@ App Service の主な機能として、次のようなものがあります。
 
 App Service の他に、Azure では Web サイトと Web アプリケーションをホストするために利用できるサービスも提供しています。 ほとんどの場合は、App Service が最適な方法になります。  マイクロサービス アーキテクチャについては、[Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric) を検討してください。 また、コードの実行に使用する VM をより細かく制御する必要がある場合は、[Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) の利用をご検討ください。 これらの Azure サービスから適切なサービスを選択する方法の詳細については、「[Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較](overview-compare.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 最初の Web アプリを作成する。
 
@@ -53,7 +53,7 @@ App Service の他に、Azure では Web サイトと Web アプリケーショ�
 > [Ruby (Linux の場合)](containers/quickstart-ruby.md)
 
 > [!div class="nextstepaction"]
-> [Node.JS](app-service-web-get-started-nodejs.md)
+> [Node.js](app-service-web-get-started-nodejs.md)
 
 > [!div class="nextstepaction"]
 > [Java](app-service-web-get-started-java.md)

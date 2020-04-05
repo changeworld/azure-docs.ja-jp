@@ -1,23 +1,22 @@
 ---
 title: Azure Marketplace 向け Cloud パートナー ポータルの仮想マシンの [Marketplace] タブ
 description: Azure Marketplace の VM プランの作成で使用される [Marketplace] タブについて説明します。
-services: Azure, Marketplace, Cloud Partner Portal, virtual machine
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: pabutler
-ms.openlocfilehash: 283274986c753fc8ad05b9b7b0dd87aea956bcce
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: dsindona
+ms.openlocfilehash: 567dc83e36020ef9af328f52dae89ef37b6e4908
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762894"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277723"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>仮想マシンの [Marketplace] タブ
 
-**[新しいプラン]** ページの **[Marketplace]** タブでは、マーケティング、販売、および法律に関する情報と契約を見込み客に提供できるほか、マーケットプレースによって生成されるリードを管理できます。 この長いフォームは、4 つのセクションに分かれています: **[概要]** 、 **[Marketing Artifacts]\(マーケティングの成果物\)** 、 **[Lead Management]\(潜在顧客の管理\)** 、 **[法的情報]** 。
+**[新しいプラン]** ページの **[Marketplace]** タブでは、マーケティング、販売、および法律に関する情報と契約を見込み客に提供できるほか、マーケットプレースによって生成されるリードを管理できます。 この長いフォームは、 **[概要]** 、 **[Marketing Artifacts]\(マーケティングの成果物\)** 、 **[リードの管理]** 、 **[法的情報]** の 4 つのセクションに分かれています。
 
 
 ## <a name="overview-section"></a>[概要] セクション
@@ -32,7 +31,7 @@ ms.locfileid: "75762894"
 | **タイトル\***                 | プランのタイトル。通常は長い正式な名前。 このタイトルは、マーケットプレースで目立つように表示されます。  最大長は 50 文字です。 |
 | **要約\***               | ソリューションの簡潔な目的または機能。  最大長は 100 文字です。 |
 | **[Long Summary]\(長い要約\)\***          | ソリューションの目的または機能。  最大長は 256 文字です。 |
-| **Description\***           | ソリューションの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。 |
+| **説明\***           | ソリューションの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。 |
 | **Microsoft CSP Reseller channel (Microsoft CSP リセラー チャネル)\*** | クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](../../cloud-solution-providers.md)」を参照してください。 |
 | **[Marketing Identifier]\(マーケティング識別子\)\***  | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。  次に例を示します。 <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **[Preview Subscription IDs]\(プレビュー サブスクリプション ID\)\*** | 1 から 100 個のプレビューアーのサブスクリプション識別子を追加します。 ホワイトリストに登録されたこれらのサブスクリプションは、プランの発行後、運用が開始される前にプランにアクセスできます。 |
@@ -43,7 +42,7 @@ ms.locfileid: "75762894"
 
 ## <a name="marketing-artifacts-section"></a>[マーケティングの成果物] セクション
 
-この 2 番目のセクションは、次の 3 つのサブセクションに分かれています: **[ロゴ]** 、 **[スクリーンショット]** 、 **[ビデオ]** 。 必須のマーケティングの成果物はロゴだけですが、顧客へのアピールを最大にするために、すべて設定することをお勧めします。 
+この 2 つ目のセクションは、 **[ロゴ]** 、 **[スクリーンショット]** 、 **[ビデオ]** の 3 つのサブセクションに分かれています。 必須のマーケティングの成果物はロゴだけですが、顧客へのアピールを最大にするために、すべて設定することをお勧めします。 
 
 ![仮想マシン用の [新しいプラン] フォームにある [Marketplace] タブの [Marketing Artifacts]\(マーケティングの成果物\) セクション](./media/publishvm_009.png)
 

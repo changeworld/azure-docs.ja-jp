@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.openlocfilehash: fc157c2253a718860e028fa493574cb9aa2ccdf2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460190"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224667"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
 
@@ -37,7 +37,7 @@ Azure Portal を使用して、[特殊化された VHD から新しい VM を作
 
 1 つの VHD またはスナップショットからの同時デプロイ数は 20 VM を上限とするようお勧めします。 
 
-## <a name="option-1-use-an-existing-disk"></a>オプション 1: 既存のディスクの使用
+## <a name="option-1-use-an-existing-disk"></a>オプション 1: 既存のディスクを使用する
 
 削除した VM があり、OS ディスクを再利用して新しい VM を作成したい場合、[Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)を使用します。
 
@@ -50,7 +50,7 @@ $osDisk = Get-AzDisk `
 ```
 このディスクは OS ディスクとして[新しい VM](#create-the-new-vm) に接続できるようになりました。
 
-## <a name="option-2-upload-a-specialized-vhd"></a>オプション 2:特殊化された VHD をアップロードする
+## <a name="option-2-upload-a-specialized-vhd"></a>オプション 2: 特殊化された VHD をアップロードする
 
 Hyper-V などのオンプレミスの仮想化ツールを使用して作成された特殊化された VM、または別のクラウドからエクスポートされた VM から VHD をアップロードできます。
 
@@ -66,7 +66,7 @@ VHD をそのまま使用して新しい VM を作成します。
 
 VHD をマネージド ディスクに直接アップロードできるようになりました。 手順については、「[Azure PowerShell を使用して Azure に VHD をアップロードする](disks-upload-vhd-to-managed-disk-powershell.md)」を参照してください。
 
-## <a name="option-3-copy-an-existing-azure-vm"></a>オプション 3:既存の Azure VM をコピーする
+## <a name="option-3-copy-an-existing-azure-vm"></a>オプション 3: 既存の Azure VM をコピーする
 
 VM のスナップショットを取得してマネージド ディスクを使用する VM のコピーを作成し、そのスナップショットを使用して新しいマネージド ディスクおよび新しい VM を作成できます。
 

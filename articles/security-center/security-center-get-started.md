@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
 ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73664281"
 ---
-# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイック スタート:Azure サブスクリプションでの Security Center Standard の利用開始
+# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始
 Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 Free レベルでは Azure リソースのみの制限付きセキュリティが提供されますが、Standard レベルではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 この記事では、セキュリティを強化するために Standard レベルにアップグレードし、仮想マシンに Microsoft Monitoring Agent をインストールしてセキュリティの脆弱性と脅威を監視します。
@@ -54,7 +54,7 @@ Security Center のクイックスタートおよびチュートリアルの目�
 
 1. Security Center メイン メニューの **[使用の開始]** を選択します。
  
-   ![作業開始][4]
+   ![はじめに][4]
 
 2. Security Center の **[アップグレード]** に、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。 
    - 展開可能な **[Apply your trial] \(試用版を適用)** をクリックすると、すべてのサブスクリプションとワークスペースの一覧を各試用版の資格の状態と共に表示できます。
@@ -83,7 +83,7 @@ Azure VM のこの新たな洞察により、Security Center は、システム�
 
   ![Recommendations][8]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 引き続き次のクイックスタートとチュートリアルを行う予定の場合、Standard レベルの実行を継続して、自動プロビジョニングを有効のままにしてください。 続行しないまたは Free レベルに戻したい場合:
 
 1. Security Center のメイン メニューに戻り、 **[Pricing & settings]\(価格と設定\)** を選択します。
@@ -102,11 +102,11 @@ Azure VM のこの新たな洞察により、Security Center は、システム�
 > 自動プロビジョニングを無効しても、Microsoft Monitoring Agent がプロビジョニングされている Azure VM からエージェントは削除されません。 自動プロビジョニングを無効にすると、リソースのセキュリティの監視が制限されます。
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このクイック スタートでは、Standard レベルにアップグレードし、ハイブリッド クラウド ワークロード全体での統合セキュリティの管理と脅威保護のために Microsoft Monitoring Agent をプロビジョニングしました。 Security Center の詳しい使用方法を学習するには、オンプレミスおよび他のクラウドの Windows コンピューターのオンボードに関するクイックスタートに進みます。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:Windows コンピューターでの Azure Security Center の利用開始](quick-onboard-windows-computer.md)
+> [クイックスタート: Windows コンピューターでの Azure Security Center の利用開始](quick-onboard-windows-computer.md)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

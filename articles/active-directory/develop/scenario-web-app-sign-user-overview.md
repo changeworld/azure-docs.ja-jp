@@ -15,10 +15,10 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 403f589702fd7142f0515a3b6f19ee1b9bbb6420
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701554"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>シナリオ:ユーザーをサインインさせる Web アプリ
@@ -31,28 +31,28 @@ Microsoft ID プラットフォームを使用してユーザーをサインイ�
 
 ## <a name="getting-started"></a>作業の開始
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ユーザーをサインインさせる最初のポータブル (ASP.NET Core) Web アプリを作成する場合は、このクイックスタートに従います。
 
 > [!div class="nextstepaction"]
 > [クイック スタート: ユーザーをサインインさせる ASP.NET Core Web アプリ](quickstart-v2-aspnet-core-webapp.md)
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 既存の ASP.NET Web アプリケーションにサインインを追加する方法を理解したい場合は、次のクイックスタートをお試しください。
 
 > [!div class="nextstepaction"]
 > [クイック スタート: ユーザーをサインインさせる ASP.NET Web アプリ](quickstart-v2-aspnet-webapp.md)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Java 開発者の方は、次のクイックスタートをお試しください。
 
 > [!div class="nextstepaction"]
 > [クイック スタート: Java Web アプリに "Microsoft でサインイン" を追加する](quickstart-v2-java-webapp.md)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python を使用して開発する場合は、次のクイックスタートをお試しください。
 
@@ -82,22 +82,22 @@ Web アプリでは、Web ブラウザーでユーザーを認証します。 �
 
 ## <a name="next-steps"></a>次のステップ
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
 > [アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore)
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 > [!div class="nextstepaction"]
 > [アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnet)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
 > [アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=java)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
 > [アプリの登録](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=python)

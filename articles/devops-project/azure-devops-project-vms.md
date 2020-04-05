@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure DevOps Projects を使用して ASP.NET アプリを Azure 仮想マシンにデプロイする
+title: 'チュートリアル: Azure DevOps Projects を使用して ASP.NET アプリを Azure 仮想マシンにデプロイする'
 description: DevOps Projects を使用すると、簡単に Azure での作業を開始し、わずかな手順で ASP.NET アプリを Azure 仮想マシンにデプロイできます。
 ms.author: mlearned
 manager: gwallace
@@ -10,13 +10,13 @@ ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: b03fb27c46d4fd925b91b8927fdd50ff4912aaec
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71969554"
 ---
-# <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-projects"></a>チュートリアル:Azure DevOps Projects を使用して ASP.NET アプリを Azure 仮想マシンにデプロイする
+# <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-projects"></a>チュートリアル: Azure DevOps Projects を使用して ASP.NET アプリを Azure 仮想マシンにデプロイする
 
 Azure DevOps Projects によって提供される簡略化されたエクスペリエンスを使用すると、既存のコードと Git リポジトリを使用するか、サンプル アプリケーションを選択して、Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。 
 
@@ -35,7 +35,7 @@ DevOps Projects には、以下の機能もあります。
 > * CD パイプライン を確認する
 > * 変更を Azure Repos にコミットし、Azure に自動的にデプロイする
 > * Azure Application Insights の監視を構成する
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ DevOps Projects には、以下の機能もあります。
 
 DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに仮想マシンなどの Azure リソースも作成されます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 左側のウィンドウで、 **[新規作成]** を選択します。
 
@@ -193,7 +193,7 @@ Azure Application Insights を使うと、アプリケーションのパフォ�
 1. テスト名を入力し、 **[作成]** を選択します。  
     アプリケーションの可用性を確認する簡単な ping テストが作成されます。 数分後にテスト結果が使用可能になり、Application Insights ダッシュボードに可用性の状態が表示されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 テストを行っている場合は、リソースをクリーンアップすることによって、課金を回避することができます。 このチュートリアルで作成した Azure 仮想マシンと関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Projects ダッシュボードで**削除**機能を使用します。 
 
@@ -206,7 +206,7 @@ Azure Application Insights を使うと、アプリケーションのパフォ�
 
 必要に応じて、チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 この CI/CD パターンをご自身の他のパイプラインのテンプレートとして使用することもできます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 
@@ -217,7 +217,7 @@ Azure Application Insights を使うと、アプリケーションのパフォ�
 > * CD パイプライン を確認する
 > * 変更を Azure Repos にコミットし、Azure に自動的にデプロイする
 > * Azure Application Insights の監視を構成する
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 
 CI/CD パイプラインの詳細については、以下を参照してください。
 

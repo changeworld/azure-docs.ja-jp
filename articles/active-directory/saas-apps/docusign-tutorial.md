@@ -16,10 +16,10 @@ ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 01f969c3bc6f546025b3bbe5826181efdfa69be0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76983640"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と DocuSign の統合
@@ -112,7 +112,7 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
    1. **[名前]** フィールドに「**B.Simon**」と入力します。  
    1. **[ユーザー名]** フィールドに「`<username>@<companydomain>.<extension>`」と入力します。 (例: `B.Simon@contoso.com`)。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-   1. **作成** を選択します。
+   1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

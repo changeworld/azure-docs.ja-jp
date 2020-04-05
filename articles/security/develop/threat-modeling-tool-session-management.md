@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 5d9dc1595e3cc812ba060d958b6e981867500ae2
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73161512"
 ---
 # <a name="security-frame-session-management"></a>セキュリティ フレーム:セッションの管理
-| 製品/サービス | 記事 |
+| 製品/サービス | [アーティクル] |
 | --------------- | ------- |
 | **Azure AD**    | <ul><li>[Azure AD を使うときは、ADAL のメソッドを使って適切なログアウトを実装する](#logout-adal)</li></ul> |
 | IoT デバイス | <ul><li>[生成される SaS トークンに対して有限の有効期間を使う](#finite-tokens)</li></ul> |
@@ -33,12 +33,12 @@ ms.locfileid: "73161512"
 | **Web アプリケーション** | <ul><li>[HTTPS 経由で使用可能なアプリケーションは、セキュリティで保護された cookie を使う必要がある](#https-secure-cookies)</li><li>[すべての http ベースのアプリケーションは、クッキーの定義に対してのみ http を指定する必要がある](#cookie-definition)</li><li>[ASP.NET Web ページでクロスサイト リクエスト フォージェリ (CSRF) 攻撃を軽減する](#csrf-asp)</li><li>[非アクティブ状態の有効期間対応にセッションを設定する](#inactivity-lifetime)</li><li>[アプリケーションから適切なログアウトを実装する](#proper-app-logout)</li></ul> |
 | **Web API** | <ul><li>[ASP.NET Web API でクロスサイト リクエスト フォージェリ (CSRF) 攻撃を軽減する](#csrf-api)</li></ul> |
 
-## <a id="logout-adal"></a>Azure AD を使うときは、ADAL のメソッドを使って適切なログアウトを実装する
+## <a name="implement-proper-logout-using-adal-methods-when-using-azure-ad"></a><a id="logout-adal"></a>Azure AD を使うときは、ADAL のメソッドを使って適切なログアウトを実装する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure AD | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -68,34 +68,34 @@ Session.Abandon() メソッドを呼び出して、ユーザーのセッショ�
         } 
 ```
 
-## <a id="finite-tokens"></a>生成される SaS トークンに対して有限の有効期間を使う
+## <a name="use-finite-lifetimes-for-generated-sas-tokens"></a><a id="finite-tokens"></a>生成される SaS トークンに対して有限の有効期間を使う
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | IoT デバイス | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
 | **手順** | Azure IoT Hub に対する認証用に生成される SaS トークンには、有限の有効期間が必要です。 SaS トークンの有効期間を最小限に抑え、トークンが侵害された場合に再生できる時間を制限します。|
 
-## <a id="resource-tokens"></a>生成されるリソース トークンに対して最小限のトークン有効期間を使う
+## <a name="use-minimum-token-lifetimes-for-generated-resource-tokens"></a><a id="resource-tokens"></a>生成されるリソース トークンに対して最小限のトークン有効期間を使う
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Document DB | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
 | **手順** | リソース トークンの期間を、必要な最小値に減らします。 リソース トークンの既定の有効期間は 1 時間です。|
 
-## <a id="wsfederation-logout"></a>ADFS を使うときは、WsFederation のメソッドを使って適切なログアウトを実装する
+## <a name="implement-proper-logout-using-wsfederation-methods-when-using-adfs"></a><a id="wsfederation-logout"></a>ADFS を使うときは、WsFederation のメソッドを使って適切なログアウトを実装する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | ADFS | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -139,23 +139,23 @@ Session.Abandon() メソッドを呼び出して、ユーザーのセッショ�
         }
 ```
 
-## <a id="proper-logout"></a>Identity Server を使うときは、適切なログアウトを実装する
+## <a name="implement-proper-logout-when-using-identity-server"></a><a id="proper-logout"></a>Identity Server を使うときは、適切なログアウトを実装する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Identity Server | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [IdentityServer3 - フェデレーション サインアウト](https://identityserver.github.io/Documentation/docsv2/advanced/federated-signout.html) |
 | **手順** | IdentityServer は、外部 ID プロバイダーとフェデレーションする機能をサポートします。 ユーザーがアップストリームの ID プロバイダーからサインアウトするとき、使われているプロトコルによっては、ユーザーのサインアウト時に通知を受け取ることができる場合があります。これにより、IdentityServer は、クライアントもユーザーをサインアウトできるように、クライアントに通知することができます。実装について詳しくは、「参照」セクションのドキュメントをご覧ください。|
 
-## <a id="https-secure-cookies"></a>HTTPS 経由で使用可能なアプリケーションは、セキュリティで保護された cookie を使う必要がある
+## <a name="applications-available-over-https-must-use-secure-cookies"></a><a id="https-secure-cookies"></a>HTTPS 経由で使用可能なアプリケーションは、セキュリティで保護された cookie を使う必要がある
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - OnPrem |
 | **参照**              | [httpCookies 要素 (ASP.NET 設定スキーマ)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx)、 [HttpCookie.Secure プロパティ](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
@@ -173,8 +173,8 @@ Session.Abandon() メソッドを呼び出して、ユーザーのセッショ�
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | Web フォーム、MVC5 |
 | **属性**              | EnvironmentType - OnPrem |
 | **参照**              | 該当なし  |
@@ -191,12 +191,12 @@ Session.Abandon() メソッドを呼び出して、ユーザーのセッショ�
   </system.identityModel.services>
 ```
 
-## <a id="cookie-definition"></a>すべての http ベースのアプリケーションは、クッキーの定義に対してのみ http を指定する必要がある
+## <a name="all-http-based-application-should-specify-http-only-for-cookie-definition"></a><a id="cookie-definition"></a>すべての http ベースのアプリケーションは、クッキーの定義に対してのみ http を指定する必要がある
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [cookie の secure 属性](https://en.wikipedia.org/wiki/HTTP_cookie#Secure_cookie) |
@@ -216,8 +216,8 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | Web フォーム |
 | **属性**              | 該当なし  |
 | **参照**              | [FormsAuthentication.RequireSSL プロパティ](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
@@ -233,8 +233,8 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | MVC5 |
 | **属性**              | EnvironmentType - OnPrem |
 | **参照**              | [Windows Identity Foundation (WIF) の構成 – 第 II 部](https://blogs.msdn.microsoft.com/alikl/2011/02/01/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler/) |
@@ -254,12 +254,12 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 </federatedAuthentication>
 ```
 
-## <a id="csrf-asp"></a>ASP.NET Web ページでクロスサイト リクエスト フォージェリ (CSRF) 攻撃を軽減する
+## <a name="mitigate-against-cross-site-request-forgery-csrf-attacks-on-aspnet-web-pages"></a><a id="csrf-asp"></a>ASP.NET Web ページでクロスサイト リクエスト フォージェリ (CSRF) 攻撃を軽減する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -267,8 +267,8 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | MVC5、MVC6 |
 | **属性**              | 該当なし  |
 | **参照**              | [ASP.NET MVC と Web ページでの XSRF/CSRF の防止](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
@@ -291,7 +291,7 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 ```
 
 ### <a name="example"></a>例
-同時に、Html.AntiForgeryToken() は、上で示したランダムな非表示値と同じ値を含む __RequestVerificationToken という名前の cookie を訪問者に渡します。 次に、受信したフォーム投稿を検証するため、[ValidateAntiForgeryToken] フィルターを対象のアクション メソッドに追加します。 例:
+同時に、Html.AntiForgeryToken() は、上で示したランダムな非表示値と同じ値を含む __RequestVerificationToken という名前の cookie を訪問者に渡します。 次に、受信したフォーム投稿を検証するため、[ValidateAntiForgeryToken] フィルターを対象のアクション メソッドに追加します。 次に例を示します。
 ```
 [ValidateAntiForgeryToken]
 public ViewResult SubmitUpdate()
@@ -353,8 +353,8 @@ void ValidateRequestHeader(HttpRequestMessage request)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | Web フォーム |
 | **属性**              | 該当なし  |
 | **参照**              | [ASP.NET の組み込み機能を活用し、Web 攻撃を回避する](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
@@ -369,12 +369,12 @@ void Page_Init (object sender, EventArgs e) {
 }
 ```
 
-## <a id="inactivity-lifetime"></a>非アクティブ状態の有効期間対応にセッションを設定する
+## <a name="set-up-session-for-inactivity-lifetime"></a><a id="inactivity-lifetime"></a>非アクティブ状態の有効期間対応にセッションを設定する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [HttpSessionState.Timeout プロパティ](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
@@ -389,12 +389,12 @@ void Page_Init (object sender, EventArgs e) {
 </configuration>
 ```
 
-## <a id="threat-detection"></a>Azure SQL での脅威の検出を有効にする
+## <a name="enable-threat-detection-on-azure-sql"></a><a id="threat-detection"></a>Azure SQL での脅威の検出を有効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | Web フォーム |
 | **属性**              | 該当なし  |
 | **参照**              | [認証の forms 要素 (ASP.NET 設定スキーマ)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
@@ -408,8 +408,8 @@ void Page_Init (object sender, EventArgs e) {
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | Web フォーム、MVC5 |
 | **属性**              | EnvironmentType - OnPrem |
 | **参照**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
@@ -439,23 +439,23 @@ void Page_Init (object sender, EventArgs e) {
 Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName @("Active Directory") -TokenLifetime 15 -AlwaysRequireAuthentication $true
 ```
 
-## <a id="proper-app-logout"></a>アプリケーションから適切なログアウトを実装する
+## <a name="implement-proper-logout-from-the-application"></a><a id="proper-app-logout"></a>アプリケーションから適切なログアウトを実装する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
 | **手順** | ユーザーがログアウト ボタンをクリックしたときに、アプリケーションからの適切なサインアウトを実行します。 ログアウト時に、アプリケーションは、ユーザーのセッションを破棄し、セッション cookie の値をリセットして無効にし、さらに認証 cookie の値もリセットして無効にする必要があります。 また、複数のセッションが 1 つのユーザー ID に結び付けられている場合は、タイムアウトまたはログアウト時にサーバー側でまとめて終了する必要があります。 最後に、すべてのページにログアウト機能があることを確認します。 |
 
-## <a id="csrf-api"></a>ASP.NET Web API でクロスサイト リクエスト フォージェリ (CSRF) 攻撃を軽減する
+## <a name="mitigate-against-cross-site-request-forgery-csrf-attacks-on-aspnet-web-apis"></a><a id="csrf-api"></a>ASP.NET Web API でクロスサイト リクエスト フォージェリ (CSRF) 攻撃を軽減する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Web API | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -464,7 +464,7 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Web API | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | MVC5、MVC6 |
 | **属性**              | 該当なし  |
 | **参照**              | [ASP.NET Web API でクロスサイト リクエスト フォージェリ (CSRF) 攻撃を防止する](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
@@ -535,7 +535,7 @@ CSRF 対策フォームと ASP.NET MVC フォーム - ビューの AntiForgeryTo
 ```
 
 ### <a name="example"></a>例
-同時に、Html.AntiForgeryToken() は、上で示したランダムな非表示値と同じ値を含む __RequestVerificationToken という名前の cookie を訪問者に渡します。 次に、受信したフォーム投稿を検証するため、[ValidateAntiForgeryToken] フィルターを対象のアクション メソッドに追加します。 例:
+同時に、Html.AntiForgeryToken() は、上で示したランダムな非表示値と同じ値を含む __RequestVerificationToken という名前の cookie を訪問者に渡します。 次に、受信したフォーム投稿を検証するため、[ValidateAntiForgeryToken] フィルターを対象のアクション メソッドに追加します。 次に例を示します。
 ```
 [ValidateAntiForgeryToken]
 public ViewResult SubmitUpdate()
@@ -551,7 +551,7 @@ public ViewResult SubmitUpdate()
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Web API | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | MVC5、MVC6 |
 | **属性**              | ID プロバイダー - ADFS、ID プロバイダー - Azure AD |
 | **参照**              | [ASP.NET Web API 2.2 において個別のアカウントおよびローカル ログインで Web API を保護する](https://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) |

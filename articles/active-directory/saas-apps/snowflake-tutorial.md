@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Snowflake の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Snowflake の統合 | Microsoft Docs'
 description: Azure Active Directory と Snowflake の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fda662d7de66bfb56feba8f405bd0e52c4cf3e76
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76121422"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>チュートリアル:Azure Active Directory と Snowflake の統合
+# <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>チュートリアル: Azure Active Directory と Snowflake の統合
 
 このチュートリアルでは、Snowflake と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Snowflake と Azure AD の統合には、次の利点があります。

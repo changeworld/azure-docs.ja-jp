@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: 199b4fc762919c2e3988f477c14d09fc23b0136b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840691"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
@@ -105,7 +105,7 @@ ms.locfileid: "76840691"
 > [!NOTE]
 > 場合によっては、一部のログ ファイルのみがストレージに書き込まれることがあります。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、次のリンクを参照してください。[Storage Explorer](https://storageexplorer.com/)
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure BLOB ストレージを使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、[ストレージ エクスプローラー](https://storageexplorer.com/)に関するページを参照してください。
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

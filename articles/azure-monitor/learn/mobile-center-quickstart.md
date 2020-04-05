@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
 ms.openlocfilehash: a59a6841a1db3cecfe52c54135b42f5b6a095ce3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77660293"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始
@@ -67,7 +67,7 @@ Analytics.trackEvent("Video clicked")
 
 アプリからカスタム イベントが送信され、App Center で受信されるようになったら、Azure Portal で App Center 型の Application Insights リソースを作成する必要があります。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
     > [!NOTE]
@@ -75,11 +75,11 @@ Analytics.trackEvent("Video clicked")
 
     構成ボックスが表示されます。 下の表を使用して、入力フィールドに入力します。
 
-    | 設定        |  Value           | 説明  |
+    | 設定        |  値           | 説明  |
    | ------------- |:-------------|:-----|
    | **名前**      | グローバルに一意の値 (例: "myApp-iOS") | 監視しているアプリを識別する名前 |
      | **リソース グループ**     | 新しいリソース グループ、またはメニューから選択した既存のリソース グループ | 新しい Application Insights リソースの作成先のリソース グループ |
-   | **場所** | メニューから選択した場所 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
+   | **Location** | メニューから選択した場所 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
 
 3. **Create** をクリックしてください。
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
-ms.openlocfilehash: 065165ddb629f0629e9b895dbad5ee33605f8bc1
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658884"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479588"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for Go (プレビュー)
 
@@ -39,7 +39,7 @@ GOPATH の場所から `go get github.com/Azure/azure-sdk-for-go/tree/master/ser
 SDK は最初に Azure サブスクリプションで認証する必要があります。  以下の例に従って、サービス プリンシパルを作成し、これを使用して認証します。 その後、`ClustersClient` のインスタンスを生成します。これには、管理操作の実行に使用できる関数が多数含まれています (以下のセクションで説明します)。
 
 > [!NOTE]  
-> 認証方法は以下の例の他にもあり、そちらの方がご自身のニーズに適している可能性もあります。 すべての関数の概要については、[Azure SDK for Go における認証関数](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)に関する記事を参照してください
+> 認証方法は以下の例の他にもあり、そちらの方がご自身のニーズに適している可能性もあります。 すべての関数の概要は「[Azure SDK for Go における認証方法](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)」にあります。
 
 ### <a name="authentication-example-using-a-service-principal"></a>サービス プリンシパルを使用した認証の例
 
@@ -94,7 +94,6 @@ az ad sp create-for-rbac --name <Service Principal Name> --sdk-auth
   "tenantId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
   "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
   "resourceManagerEndpointUrl": "https://management.azure.com/",
-  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
   "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
   "galleryEndpointUrl": "https://gallery.azure.com/",
   "managementEndpointUrl": "https://management.core.windows.net/"
@@ -351,7 +350,7 @@ client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 
 ## <a name="cluster-monitoring"></a>クラスターの監視
 
-HDInsight Management SDK を使用して、Operations Management Suite (OMS) でご自身のクラスターの監視を管理することもできます。
+HDInsight 管理 SDK を使用して、Operations Management Suite (OMS) でご自身のクラスターの監視を管理することもできます。
 
 管理に使用するために `ClusterClient` を作成したときと同様に、監視に使用するために `ExtensionClient` を作成する必要があります。 上記の [認証] セクションを完了すると、次のように `ExtensionClient` を作成できます。
 
@@ -361,12 +360,12 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> 下の監視の例では、`extClient` という名前の `ExtensionClient` を既に初期化し、上記のようにその `Authorizer` を設定していることが前提となっています。
+> 下の監視の例では、`ExtensionClient` という名前の `extClient` を既に初期化し、上記のようにその `Authorizer` を設定していることが前提となっています。
 
 ### <a name="enable-oms-monitoring"></a>OMS 監視の有効化
 
 > [!NOTE]  
-> OMS の監視を有効にするには、既存の Log Analytics ワークスペースが必要です。 まだ作成していない場合、その方法については、「[Azure portal で Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)」を参照してください。
+> OMS の監視を有効にするには、既存の Log Analytics ワークスペースが必要です。 まだ作成していない場合、その方法については、「[Azure ポータルで Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)」を参照してください。
 
 ご自身のクラスターで OMS 監視を有効にするには:
 
@@ -395,7 +394,7 @@ extClient.DisableMonitoring(context.Background(), "<Resource Group Name", "Clust
 HDInsight には、クラスターをカスタマイズするためにカスタム スクリプトを呼び出すスクリプト アクションという構成関数があります。
 
 > [!NOTE]  
-> スクリプト アクションの使用方法の詳細については、「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)」を参照してください
+> スクリプト アクションを使用する方法の詳細については、「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)」を参照してください
 
 ### <a name="execute-script-actions"></a>スクリプト アクションの実行
 
@@ -414,7 +413,7 @@ scriptActionsClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> 下のスクリプト アクションの例では、`scriptActionsClient` という名前の `ScriptActionsClient` を既に初期化し、上記のようにその `Authorizer` を設定していることが前提となっています。
+> 下のスクリプト アクションの例では、`ScriptActionsClient` という名前の `scriptActionsClient` を既に初期化し、上記のようにその `Authorizer` を設定していることが前提となっています。
 
 ### <a name="delete-script-action"></a>スクリプト アクションの削除
 
@@ -454,7 +453,7 @@ for (page.NotDone()) {
 
 ### <a name="list-all-scripts-execution-history"></a>スクリプトの全実行履歴の一覧表示
 
-この操作のためには、管理に使用するために `ClusterClient` を作成したときと同様に `ScriptExecutionHistoryClient` を作成する必要があります。 上記の [認証] セクションを完了すると、次のように `ScriptActionsClient` を作成できます。
+この操作のためには、管理に使用するために `ScriptExecutionHistoryClient` を作成したときと同様に `ClusterClient` を作成する必要があります。 上記の [認証] セクションを完了すると、次のように `ScriptActionsClient` を作成できます。
 
 ```golang
 scriptExecutionHistoryClient := hdi.NewScriptExecutionHistoryClient(SUBSCRIPTION_ID)
@@ -462,7 +461,7 @@ scriptExecutionHistoryClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> 以下では、`scriptExecutionHistoryClient` という名前の `ScriptExecutionHistoryClient` を既に初期化し、上記のようにその `Authorizer` を設定していることが前提となっています。
+> 以下では、`ScriptExecutionHistoryClient` という名前の `scriptExecutionHistoryClient` を既に初期化し、上記のようにその `Authorizer` を設定していることが前提となっています。
 
 指定したクラスターに対するスクリプトの実行履歴をすべて一覧表示するには:
 

@@ -12,10 +12,10 @@ ms.topic: overview
 ms.date: 01/15/2020
 ms.author: curtand
 ms.openlocfilehash: 4c9d421fd9ac8305c27dfa798f2869e59a04f9fb
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77062457"
 ---
 # <a name="what-is-the-my-account-portal"></a>マイ アカウント ポータルとは

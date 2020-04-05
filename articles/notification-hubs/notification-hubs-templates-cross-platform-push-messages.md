@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263746"
 ---
 # <a name="templates"></a>テンプレート
@@ -139,7 +139,7 @@ Windows ストア クライアント アプリ用の同様のテンプレート�
 | $(prop, n)       | 上記と同じですが、テキストは明示的に n 文字に省略されます。たとえば $(title, 20) は title プロパティの内容を 20 文字に省略します。 |
 | .(prop, n)       | 上記と同じですが、テキストが省略されているので、テキストに 3 つのドットのサフィックスが付いています。 省略された文字列とサフィックスの合計サイズは n 文字以下です。 .(title, 20) で入力プロパティが "This is the title line" である場合、結果は **This is the title...** |
 | %(prop)          | 出力が URI エンコードされる点を除き、$(name) と同様です。 |
-| #(prop)          | JSON テンプレートで使用されます (たとえば iOS や Android テンプレート)。<br><br>この関数は前に示した $(prop) と同じように機能しますが、JSON テンプレート (Apple テンプレートなど) で使用する場合は例外です。 この場合、この関数が “{‘,’}” で囲まれておらず (たとえば、‘myJsonProperty’ : ‘#(name)’ など)、Javascript 形式の数字として評価される場合、たとえば正規表現の (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)? は、出力 JSON が数字です。<br><br>たとえば、'badge: '#(name)' は ('40' ではなく) 'badge' : 40 になります。 |
+| #(prop)          | JSON テンプレートで使用されます (たとえば iOS や Android テンプレート)。<br><br>この関数は前に示した $(prop) と同じように機能しますが、JSON テンプレート (Apple テンプレートなど) で使用する場合は例外です。 この場合、この関数が “{‘,’}” で囲まれておらず (たとえば、‘myJsonProperty’ : ‘#(name)’ など)、Javascript 形式の数字として評価される場合 (たとえば、regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*))(\.&#91;0-9&#93;+)?((e&#124;E)(+&#124;-)?&#91;0-9&#93;+)? など)、出力 JSON は数字です。<br><br>たとえば、'badge: '#(name)' は ('40'ではなく) 'badge' : 40 になります。 |
 | ‘text’ または “text” | リテラルです。 リテラルは、一重引用符または二重引用符で囲んだ任意のテキストを保持します。 |
 | expr1 + expr2    | 2 つの式を結合して 1 つの文字列にする連結演算子です。 |
 

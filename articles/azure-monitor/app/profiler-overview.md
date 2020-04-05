@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671649"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights を使用した Azure のプロファイル運用アプリケーション
@@ -53,39 +53,39 @@ Microsoft サービス プロファイラーでは、アプリのパフォーマ
 
 タイムライン ビューに表示される呼び出し履歴は、サンプリングとインストルメンテーションの結果です。 各サンプルはスレッドの完全な呼び出し履歴をキャプチャするため、これには Microsoft .NET Framework や、参照しているその他のフレームワークのコードが含まれています。
 
-### <a id="jitnewobj"></a>オブジェクトの割り当て (clr!JIT\_New または clr!JIT\_Newarr1)
+### <a name="object-allocation-clrjit_new-or-clrjit_newarr1"></a><a id="jitnewobj"></a>オブジェクトの割り当て (clr!JIT\_New または clr!JIT\_Newarr1)
 
 **clr!JIT\_New** と **clr!JIT\_Newarr1** は、マネージド ヒープからメモリを割り当てる .NET Framework のヘルパー関数です。 **clr!JIT\_New** は、オブジェクトが割り当てられるときに呼び出されます。 **clr!JIT\_Newarr1** は、オブジェクト配列が割り当てられるときに呼び出されます。 通常、これらの 2 つの関数は高速であり、比較的短時間で完了します。 タイムラインで **clr!JIT\_New** または **clr!JIT\_Newarr1** がかなり長時間かかっている場合は、そのコードが多数のオブジェクトを割り当て、大量のメモリを消費する可能性があることを示しています。
 
-### <a id="theprestub"></a>コードの読み込み (clr!ThePreStub)
+### <a name="loading-code-clrtheprestub"></a><a id="theprestub"></a>コードの読み込み (clr!ThePreStub)
 
 **clr!ThePreStub** は、初めて実行するコードを準備する .NET Framework のヘルパー関数です。 この実行には通常、Just-In-Time (JIT) コンパイルが含まれます (ただし、これに限定されません)。 C# の各メソッドでは、1 回の処理中に **clr!ThePreStub** が最大 1 回呼び出されます。
 
 要求に対して **clr!ThePreStub** が長時間を要している場合は、その要求はそのメソッドを実行する最初の要求です。 .NET Framework ランタイムが最初のメソッドを読み込むには、かなりの時間がかかります。 コードのその部分を、ユーザーがアクセスする前に実行するウォーミングアップ プロセスを使用するか、アセンブリで Native Image Generator (ngen.exe) を実行することを検討してください。
 
-### <a id="lockcontention"></a>ロックの競合 (clr!JITutil\_MonContention or clr!JITutil\_MonEnterWorker)
+### <a name="lock-contention-clrjitutil_moncontention-or-clrjitutil_monenterworker"></a><a id="lockcontention"></a>ロックの競合 (clr!JITutil\_MonContention or clr!JITutil\_MonEnterWorker)
 
 **clr!JITutil\_MonContention** または **clr!JITutil\_MonEnterWorker** は、現在のスレッドが、ロックが解放されるのを待っていることを示します。 このテキストは多くの場合、C# の **LOCK** ステートメントを実行するとき、**Monitor.Enter** メソッドを呼び出すとき、または **MethodImplOptions.Synchronized** 属性を持つメソッドを呼び出すときに表示されます。 ロックの競合は通常、スレッド _A_ がロックを取得し、スレッド _A_ がそれを解放する前にスレッド _B_ が同じロックを取得しようとしたときに発生します。
 
-### <a id="ngencold"></a>コードの読み込み ([COLD])
+### <a name="loading-code-cold"></a><a id="ngencold"></a>コードの読み込み ([COLD])
 
 **mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined** のように、メソッド名に **[COLD]** が含まれる場合、.NET Framework ランタイムによって、[Profile がガイドする最適化](/cpp/build/profile-guided-optimizations)によって最適化されていないコードが初めて実行されます。 これは、メソッドごとに、その処理中に最大 1 回表示されます。
 
 要求に対してコードの読み込みにかなり時間がかかっている場合、その要求は、そのメソッドの最適化されていない部分を実行する最初の要求です。 コードのその部分を、ユーザーがアクセスする前に実行するウォーミングアップ プロセスを使用することを検討してください。
 
-### <a id="httpclientsend"></a>HTTP 要求の送信
+### <a name="send-http-request"></a><a id="httpclientsend"></a>HTTP 要求の送信
 
 **HttpClient.Send** などのメソッドは、コードが HTTP 要求の完了を待機していることを示します。
 
-### <a id="sqlcommand"></a>データベース操作
+### <a name="database-operation"></a><a id="sqlcommand"></a>データベース操作
 
 **SqlCommand.Execute** などのメソッドは、データベース操作が終了するのをコードが待機していることを示します。
 
-### <a id="await"></a>待機 (AWAIT\_TIME)
+### <a name="waiting-await_time"></a><a id="await"></a>待機 (AWAIT\_TIME)
 
 **AWAIT\_TIME** は、別のタスクが終了するのをコードが待機していることを示します。 通常、この遅延は、C# の **AWAIT** ステートメントで発生します。 コードで C# の **AWAIT** が実行されると、スレッドはアンワインドして、スレッド プールの制御を戻します。**AWAIT** が終了するのを待機している間にスレッドがブロックされることはありません。 ただし、論理的に見れば、**AWAIT** を実行したスレッドは、操作の終了を待機している間 "ブロック" されます。 **AWAIT\_TIME** ステートメントは、タスクが終了するのを待機しているブロック時間を示します。
 
-### <a id="block"></a>ブロック時間
+### <a name="blocked-time"></a><a id="block"></a>ブロック時間
 
 **BLOCKED_TIME** は、別のリソースが使用可能になるのをコードが待機していることを示します。 たとえば、同期オブジェクトやスレッドが使用可能になるのを待っているか、要求が終了するのを待機している可能性があります。
 
@@ -93,19 +93,19 @@ Microsoft サービス プロファイラーでは、アプリのパフォーマ
 
 .NET フレームワークでは、ETW イベントを出力し、スレッド間で非同期呼び出しを追跡できるように、スレッド間でアクティビティ ID を渡します。 アンマネージド コード (ネイティブ コード) と非同期コードの一部の古いスタイルがこれらのイベントとアクティビティの ID にはないので、プロファイラーは、どのスレッドと、どの関数がそのスレッドで実行しているかを判別できません。 これは、コール スタックで「Unmanaged Async」とラベルが付けられます。 ETW ファイルをダウンロードする場合は、[PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md) を使用して、何が起きているかさらに洞察を得ることができます。
 
-### <a id="cpu"></a>CPU 時間
+### <a name="cpu-time"></a><a id="cpu"></a>CPU 時間
 
 命令の実行中のため、CPU がビジー状態です。
 
-### <a id="disk"></a>ディスク時間
+### <a name="disk-time"></a><a id="disk"></a>ディスク時間
 
 アプリケーションがディスク操作を実行しています。
 
-### <a id="network"></a>ネットワーク時間
+### <a name="network-time"></a><a id="network"></a>ネットワーク時間
 
 アプリケーションがネットワーク操作を実行しています。
 
-### <a id="when"></a>[When (実行期間)] 列
+### <a name="when-column"></a><a id="when"></a>[When (実行期間)] 列
 
 **[When]\(実行期間\)** 列は、ノードについて収集された包括的なサンプルが時間の経過と共にどのように変化するかを視覚化したものです。 要求の範囲全体は 32 個のタイム バケットに分割されます。 そのノードの包括的なサンプルは、その 32 個のバケットに蓄積されます。 各バケットはバーとして表されます。 バーの長さは、調整された値を表します。 **CPU_TIME** または **BLOCKED_TIME** とマークされているか、リソース (CPU、ディスク、スレッドなど) の消費との明らかな関係が存在するノードの場合、このバーは、そのバケット中のいずれかのリソースの消費を表します。 これらのメトリックでは、複数のリソースを消費することによって 100 % を超える値になることがあります。 たとえば、ある間隔の間に平均して 2 つの CPU を使用した場合は、200 % になります。
 

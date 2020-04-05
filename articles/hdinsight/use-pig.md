@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: ea960a92aee1c9447bb12d27cffdc42de9fd907a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672125"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Pig で Apache Pig を使用する
@@ -22,7 +22,7 @@ HDInsight で [Apache Pig](https://pig.apache.org/) を使用する方法につ�
 
 Apache Pig は、*Pig Latin* として知られている手続き型言語を使用して Apache Hadoop 用のプログラムを作成するためのプラットフォームです。 Pig は、 *MapReduce* ソリューションを作成するために Java の代わりに使用され、Azure HDInsight に含まれています。 HDInsight で Pig を使用するさまざまな方法を次の表に示します。
 
-## <a id="why"></a>Apache Pig を使用する理由
+## <a name="why-use-apache-pig"></a><a id="why"></a>Apache Pig を使用する理由
 
 Hadoop での MapReduce を使用したデータ処理における課題の 1 つは、map と reduce 関数のみを使用する処理ロジックの実装です。 複雑な処理では、多くの場合、望ましい結果を得るために、一緒にチェーンされている複数の MapReduce 操作に処理を分割する必要があります。
 
@@ -42,7 +42,7 @@ Pig Latin ではユーザー定義関数 (UDF) もサポートされています
 
 Pig Latin の詳細については、「[Pig Latin Reference Manual 1](https://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html)」および「[Pig Latin Reference Manual 2](https://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html)」を参照してください。
 
-## <a id="data"></a>サンプル データ
+## <a name="example-data"></a><a id="data"></a>サンプル データ
 
 HDInsight にはさまざまなサンプル データ セットが用意されていて、`/example/data` および `/HdiSamples` ディレクトリに格納されています。 これらのディレクトリは、クラスターの既定のストレージ内にあります。 このドキュメントでの Pig の例では、`/example/data/sample.log` の *log4j* ファイルを使用します。
 
@@ -55,7 +55,7 @@ HDInsight にはさまざまなサンプル データ セットが用意され�
 > [!NOTE]  
 > また、 [Apache Log4j](https://en.wikipedia.org/wiki/Log4j) ログ ツールを使用して log4j ファイルを生成し、そのファイルを BLOB にアップロードすることもできます。 手順については、「[データを HDInsight にアップロードする方法](hdinsight-upload-data.md)」を参照してください。 HDInsight と共に Azure ストレージの BLOB を使用する方法の詳細については、「[HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。
 
-## <a id="job"></a>サンプル ジョブ
+## <a name="example-job"></a><a id="job"></a>サンプル ジョブ
 
 次の Pig Latin ジョブでは、HDInsight クラスターの既定のストレージから `sample.log` ファイルを読み込みます。 次に、一連の変換を実行します。その結果、入力データの各ログ レベルの出現回数がカウントされます。 結果は STDOUT に書き込まれます。
 
@@ -73,7 +73,7 @@ HDInsight にはさまざまなサンプル データ セットが用意され�
 
 ![変換のグラフィカル表示][image-hdi-pig-data-transformation]
 
-## <a id="run"></a>Pig Latin ジョブを実行する
+## <a name="run-the-pig-latin-job"></a><a id="run"></a>Pig Latin ジョブを実行する
 
 HDInsight では、さまざまな方法を使用して Pig Latin ジョブを実行できます。 次の表を使用して、適切な方法を判別してから、該当するチュートリアルのリンクをクリックしてください。
 
@@ -87,7 +87,7 @@ SQL Server Integration Services (SSIS) を使用して Pig ジョブを実行す
 
 Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を参照してください。
 
-## <a id="nextsteps"></a>次のステップ
+## <a name="next-steps"></a><a id="nextsteps"></a>次のステップ
 
 これで、HDInsight で Pig を使用する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 

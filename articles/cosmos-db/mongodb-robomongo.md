@@ -4,15 +4,15 @@ description: Robo 3T と Azure Cosmos DB の MongoDB 用 API を使用して Azu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 12/26/2018
-author: sivethe
-ms.author: sivethe
-ms.openlocfilehash: ab066fef4bffe35408fdc5f3ad6d66796b4d0818
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/23/2020
+author: timsander1
+ms.author: tisande
+ms.openlocfilehash: 120c8c45999e6d4071fc397d6e585d7d2f83aebc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61372530"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131422"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API と共に Robo 3T を使用する
 
@@ -22,6 +22,7 @@ Robo 3T を使用して Cosmos アカウントに接続するには、次のこ�
 * Cosmos DB [接続文字列](connect-mongodb-account.md)情報を取得する
 
 ## <a name="connect-using-robo-3t"></a>Robo 3T を使用して接続する
+
 Robo 3T 接続マネージャーに Cosmos DB アカウントを追加するには、次の手順を行います。
 
 1. [こちら](connect-mongodb-account.md)の手順を使用して、Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウントの接続情報を取得します。
@@ -43,7 +44,7 @@ Robo 3T 接続マネージャーに Cosmos DB アカウントを追加するに�
     ![Robomongo の [SSL] タブのスクリーンショット](./media/mongodb-robomongo/SSL.png)
 7. 最後に、 **[テスト]** をクリックして接続できることを確認し、 **[保存]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Cosmos DB の MongoDB 用 API と共に [Studio 3T を使用する](mongodb-mongochef.md)方法を学習します。
-- Azure Cosmos DB の MongoDB 用 API を使用した MongoDB の[サンプル](mongodb-samples.md)を調べます。
+- Azure Cosmos DB の MongoDB 用 API を使用した MongoDB の[サンプル](mongodb-samples.md)を調査します。

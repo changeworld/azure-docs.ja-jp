@@ -11,17 +11,17 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721899"
 ---
 # <a name="collaborative-coding-with-git"></a>Git を使用した共同コーディング
 
 この記事では、データ サイエンス プロジェクトの共同コード開発フレームワークとして Git を使用する方法について説明します。 Azure Repos のコードを Azure Boards の[アジャイル開発](agile-development.md)作業項目にリンクする方法、コード レビューを実行する方法、および変更のプル要求を作成およびマージする方法について取り上げます。
 
-## <a name='Linkaworkitemwithagitbranch-1'></a>Azure Repos ブランチに作業項目をリンクする 
+## <a name="link-a-work-item-to-an-azure-repos-branch"></a><a name='Linkaworkitemwithagitbranch-1'></a>Azure Repos ブランチに作業項目をリンクする 
 
 Azure DevOps では、Azure Boards のユーザー ストーリーまたはタスク作業項目を Azure Repos Git リポジトリ ブランチに接続する便利な方法を提供します。 関連付けられているコードにユーザー ストーリーまたはタスクを直接リンクできます。 
 
@@ -59,7 +59,7 @@ git checkout <working branch name>
 
 ![4](./media/collaborative-coding-with-git/4-link-to-an-existing-branch.png)
 
-## <a name='WorkonaBranchandCommittheChanges-2'></a>ブランチで作業し、変更をコミットする 
+## <a name="work-on-the-branch-and-commit-changes"></a><a name='WorkonaBranchandCommittheChanges-2'></a>ブランチで作業し、変更をコミットする 
 
 作業項目に変更を加えたら (ローカル マシンの `script` ブランチへの R スクリプト ファイルの追加など)、次の Git bash コマンドを使用して、ローカル ブランチから上流の作業ブランチへ変更をコミットできます。
 
@@ -72,7 +72,7 @@ git push origin script
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## <a name='CreateapullrequestonVSTS-3'></a>プル要求を作成する
+## <a name="create-a-pull-request"></a><a name='CreateapullrequestonVSTS-3'></a>プル要求を作成する
 
 1 回以上のコミットおよびプッシュの実行後に、現在の作業ブランチをそのベース ブランチにマージする準備ができたら、Azure Repos で*プル要求*を作成して送信できます。 
 
@@ -84,7 +84,7 @@ Azure DevOps プロジェクトのメイン ページから、左のナビゲー
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
-## <a name='ReviewandMerge-4'></a>レビューとマージ
+## <a name="review-and-merge"></a><a name='ReviewandMerge-4'></a>レビューとマージ
 
 プル要求が作成されると、レビュー担当者は、プル要求のレビューを求める電子メール通知を受け取ります。 レビュー担当者は、変更が機能するかどうかをテストし、可能であれば要求者と一緒に変更を確認します。 レビュー担当者は、評価に基づいて、コメントの作成、変更の要求、プル要求の承認または拒否を行います。 
 

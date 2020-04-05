@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
 ms.openlocfilehash: d085279167b498b13cfb79b97703cfdff7d6dd8a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201766"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225207"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション
 
@@ -41,7 +41,7 @@ ms.locfileid: "77201766"
 1. 各 Active Directory テナントのユーザーを、反対側の Azure Active Directory テナントに[ゲスト ユーザー](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory)として追加します。
 1. 各ユーザーは、反対側の Azure Active Directory テナントからのゲスト ユーザーの招待を受け入れる必要があります。
 
-## <a name="portal"></a>ピアリングの作成 - Azure Portal
+## <a name="create-peering---azure-portal"></a><a name="portal"></a>ピアリングの作成 - Azure Portal
 
 以下の手順では、サブスクリプションごとに異なるアカウントを使用します。 両方のサブスクリプションへのアクセス許可を持つアカウントを使用している場合は、すべての手順で同じアカウントを使用し、ポータルからログアウトする手順と、他のユーザーのアクセス許可を仮想ネットワークに割り当てる手順はスキップできます。
 
@@ -97,7 +97,7 @@ ms.locfileid: "77201766"
 28. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
 29. **省略可能**:このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-portal)」セクションの手順を実行してください。
 
-## <a name="cli"></a>ピアリングの作成 - Azure CLI
+## <a name="create-peering---azure-cli"></a><a name="cli"></a>ピアリングの作成 - Azure CLI
 
 このチュートリアルでは、サブスクリプションごとに異なるアカウントを使用します。 両方のサブスクリプションへのアクセス許可を持つアカウントを使用している場合は、すべての手順で同じアカウントを使用し、Azure からログアウトする手順をスキップして、ユーザー ロールの割り当てを作成するスクリプト行を削除できます。 次のすべてのスクリプトの UserA@azure.com と UserB@azure.com を、UserA と UserB で使用しているユーザー名に置き換えます。 
 
@@ -175,7 +175,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 
 2 つの仮想ネットワークに作成した Azure リソースが、その IP アドレスを使用して相互に通信できるようになりました。 仮想ネットワークに Azure の既定の名前解決を使用する場合、そのネットワーク内のリソースは、通信相手の仮想ネットワークに対して名前を解決することができません。 ピアリングされた仮想ネットワークの間で名前を解決する必要がある場合は、独自の DNS サーバーを作成する必要があります。 その方法については、「[独自 DNS サーバー使用の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。
 
-## <a name="powershell"></a>ピアリングの作成 - PowerShell
+## <a name="create-peering---powershell"></a><a name="powershell"></a>ピアリングの作成 - PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -243,7 +243,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 13. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
 14. **省略可能**:このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-powershell)」の手順を実行してください。
 
-## <a name="template"></a>ピアリングの作成 - Resource Manager テンプレート
+## <a name="create-peering---resource-manager-template"></a><a name="template"></a>ピアリングの作成 - Resource Manager テンプレート
 
 1. 仮想ネットワークを作成し、適切な[アクセス許可](virtual-network-manage-peering.md#permissions)を割り当てるには、この記事の[ポータル](#portal)、[Azure CLI](#cli)、または [PowerShell](#powershell) のセクションの手順を完了します。
 2. 次のテキストをローカル コンピューター上のファイルに保存します。 `<subscription ID>` は、UserA のサブスクリプション ID で置き換えてください。 たとえば、このファイルを vnetpeeringA.json として保存します。
@@ -284,10 +284,10 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 6. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
 7. **省略可能**:このチュートリアルで作成したリソースを削除するには、Azure portal、PowerShell、Azure CLI のいずれかを使って、この記事の「[リソースの削除](#delete)」セクションの手順を実行してください。
 
-## <a name="delete"></a>リソースの削除
+## <a name="delete-resources"></a><a name="delete"></a>リソースの削除
 このチュートリアルが完了したら、使用料がかからないように、チュートリアルで作成したリソースを削除することをお勧めします。 リソース グループを削除すると、リソース グループ内にあるリソースもすべて削除されます。
 
-### <a name="delete-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a name="delete-portal"></a>Azure Portal
 
 1. Azure Portal に UserA としてログインします。
 2. ポータルの検索ボックスに、「**myResourceGroupA**」と入力します。 検索結果で、 **[myResourceGroupA]** を選択します。
@@ -296,7 +296,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 5. UserA としてポータルからログアウトし、UserB としてログインします。
 6. myResourceGroupB に対して手順 2 ～ 4 を実行します。
 
-### <a name="delete-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a name="delete-cli"></a>Azure CLI
 
 1. UserA として Azure にログインし、次のコマンドを実行します。
 
@@ -311,7 +311,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
    az group delete --name myResourceGroupB --yes
    ```
 
-### <a name="delete-powershell"></a>PowerShell
+### <a name="powershell"></a><a name="delete-powershell"></a>PowerShell
 
 1. UserA として Azure にログインし、次のコマンドを実行します。
 

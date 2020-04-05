@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: eb099a786a84f9b7d0a6f0dc6e6df9c3459af295
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588231"
 ---
 # <a name="connect-your-forcepoint-products-to-azure-sentinel"></a>Azure Sentinel に Forcepoint 製品を接続する

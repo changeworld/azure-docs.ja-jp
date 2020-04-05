@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.topic: sample
 ms.date: 08/07/2019
 ms.openlocfilehash: 24aaf461576e6e043979660f9de968358763e003
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68882983"
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Azure CLI での単一の PostgreSQL サーバーの監視とスケーリング
@@ -33,7 +33,7 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 ## <a name="script-explanation"></a>スクリプトの説明
 このスクリプトで使用されているコマンドを次の表にまとめました。
 
-| **コマンド** | **メモ** |
+| **コマンド** | **注** |
 |---|---|
 | [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az postgres server create](/cli/azure/postgres/server#az-postgres-server-create) | データベースをホストする PostgreSQL サーバーを作成します。 |
@@ -41,7 +41,7 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 | [az monitor metrics list](/cli/azure/monitor/metrics) | リソースのメトリック値を一覧表示します。 |
 | [az group delete](/cli/azure/group) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Database for PostgreSQL のコンピューティングとストレージ](../concepts-pricing-tiers.md)の詳細について学習します
-- さらに他のスクリプトも試す: [Azure Database for PostgreSQL 用 Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- 他のスクリプトを試す: [Azure Database for PostgreSQL の Azure CLI サンプル](../sample-scripts-azure-cli.md)
 - [Azure CLI](/cli/azure) の詳細について学習します

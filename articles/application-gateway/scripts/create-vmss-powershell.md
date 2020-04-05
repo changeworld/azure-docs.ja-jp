@@ -14,10 +14,10 @@ ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 89915cdd4ae88f1092c45e1d428679a99f1ac906
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76273395"
 ---
 # <a name="manage-web-traffic-with-azure-powershell"></a>Azure PowerShell で Web トラフィックを管理する

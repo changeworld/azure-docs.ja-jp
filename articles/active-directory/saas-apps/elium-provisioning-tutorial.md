@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: a3e1c936d46e0d9b0ad3b98dafeda7df0b4a23db
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77058471"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>チュートリアル:Elium を構成し、自動ユーザー プロビジョニングに対応させる

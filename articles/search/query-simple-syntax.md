@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152671"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での単純なクエリ構文
@@ -90,7 +90,7 @@ NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を�
 > [!NOTE]  
 >  エスケープでトークンは一緒に保持されますが、分析モードによっては、テキスト分析で分割される可能性があります。 詳細については、[言語サポート &#40;Azure Cognitive Search REST API&#41;](index-add-language-analyzers.md) に関する記事を参照してください。  
 
-## <a name="see-also"></a>参照  
+## <a name="see-also"></a>関連項目  
 
 + [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
 + [Lucene クエリ構文](query-lucene-syntax.md)

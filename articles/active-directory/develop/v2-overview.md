@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f6953fb5d016c802db260c55bc4970c3f029ab1a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194502"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215870"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft ID プラットフォーム (v2.0) の概要
 
@@ -33,7 +33,7 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) 開
   - ソーシャル アカウントまたはローカル アカウント (Azure AD B2C 使用)
 - **オープンソース ライブラリ**:Microsoft Authentication Libraries (MSAL) およびその他の標準準拠ライブラリのサポート
 - **アプリケーション管理ポータル**:Microsoft Azure portal で構築された登録および構成エクスペリエンスのほか、その他のすべての Azure の管理機能。
-- **アプリケーション構成 API および PowerShell**: REST API (Microsoft Graph および Azure Active Directory Graph 1.6) および PowerShell を通じて、アプリケーションのプログラム構成を可能にします。したがって、DevOps タスクを自動化できます。
+- **アプリケーション構成 API および PowerShell**: Microsoft Graph API および PowerShell を使用して対象のアプリケーションをプログラムで構成できます。これにより、DevOps タスクを自動化できます。
 - **開発者向けコンテンツ**: 概念およびリファレンス ドキュメント、クイック スタート サンプル、コード サンプル、チュートリアル、およびハウツー ガイド。
 
 開発者にとって、Microsoft ID プラットフォームは、パスワードなしの認証、ステップアップ認証、条件付きアクセスなど、ID およびセキュリティ領域における革新的技術をシームレスに統合します。  このような機能を自分で実装する必要はありません。Microsoft ID プラットフォームと統合されたアプリケーションは、このような革新的技術をネイティブに利用します。

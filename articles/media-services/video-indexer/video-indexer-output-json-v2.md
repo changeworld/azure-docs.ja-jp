@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
 ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514393"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225455"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>API によって生成される Video Indexer の出力の詳細
 
@@ -38,7 +38,7 @@ ms.locfileid: "76514393"
 
 ## <a name="root-elements"></a>ルート要素
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |accountId|プレイリストの VI アカウント ID|
 |id|プレイリストの ID|
@@ -78,7 +78,7 @@ ms.locfileid: "76514393"
 
 このセクションには、分析情報の概要が表示されます。
 
-|Attribute | 説明|
+|属性 | 説明|
 |---|---|
 |name|ビデオの名前 Azure Monitor など|
 |id|ビデオの ID 63c6d532ff など|
@@ -92,13 +92,13 @@ ms.locfileid: "76514393"
 |audioEffects| 0 個以上の audioEffects を含めることができます。 詳しくは、「[audioEffects](#audioEffects)」をご覧ください。|
 |labels| 0 以上のラベルを含めることができます。 詳細については、「[ラベル](#labels)」をご覧ください。|
 |brands| 0 以上のブランドを含めることができます。 詳しくは、「[ブランド](#brands)」をご覧ください。|
-|statistics| 詳しくは、「[統計](#statistics)」をご覧ください。|
+|statistics | 詳しくは、「[統計](#statistics)」をご覧ください。|
 |emotions| 0 個以上の emotions が含まれている場合があります。 詳しくは、「[emotions](#emotions)」をご覧ください。|
 |topics|0 個以上の topics が含まれている場合があります。 [topics](#topics) 分析情報。|
 
 ## <a name="videos"></a>videos
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |accountId|ビデオの VI アカウント ID|
 |id|ビデオの ID|
@@ -121,7 +121,7 @@ ms.locfileid: "76514393"
 |indexingPreset|ビデオのインデックス付けに使用するプリセット|
 |streamingPreset|ビデオの発行に使用するプリセット|
 |linguisticModelId|ビデオの書き起こしに使用する CRIS モデル|
-|statistics| 詳細については、「[統計](#statistics)」を参照してください。|
+|statistics | 詳細については、「[統計](#statistics)」を参照してください。|
 
 ```json
 {
@@ -196,14 +196,14 @@ ms.locfileid: "76514393"
 
 #### <a name="blocks"></a>blocks
 
-Attribute | 説明
+属性 | 説明
 ---|---
 id|ブロックの ID|
 instances|このブロックの時間範囲の一覧|
 
 #### <a name="transcript"></a>transcript
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|行 ID。|
 |text|トランスクリプトそのもの。|
@@ -241,7 +241,7 @@ instances|このブロックの時間範囲の一覧|
 
 #### <a name="ocr"></a>ocr
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR テキスト。|
@@ -276,7 +276,7 @@ instances|このブロックの時間範囲の一覧|
 
 #### <a name="keywords"></a>keywords
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|キーワード ID。|
 |text|キーワードのテキスト。|
@@ -307,7 +307,7 @@ instances|このブロックの時間範囲の一覧|
 
 #### <a name="faces"></a>faces
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|顔 ID。|
 |name|顔の名前。 「Unknown #0」、識別された著名人、または顧客のトレーニング担当者になることができます。|
@@ -352,7 +352,7 @@ instances|このブロックの時間範囲の一覧|
 
 #### <a name="labels"></a>labels
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|ラベル ID。|
 |name|ラベル名 (例: "Computer"、"TV")。|
@@ -411,7 +411,7 @@ instances|このブロックの時間範囲の一覧|
 
 #### <a name="scenes"></a>scenes
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|シーン ID。|
 |instances|このシーンの時間範囲の一覧 (1 つのシーンに 1 つだけのインスタンスがあります)。|
@@ -444,7 +444,7 @@ instances|このブロックの時間範囲の一覧|
 
 #### <a name="shots"></a>shots
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|スナップショット ID。|
 |keyFrames|ショット内の keyFrame の一覧 (それぞれに ID とインスタンスの時間範囲の一覧があります)。 各 keyFrame インスタンスには、keyFrame のサムネイル ID を保持する thumbnailId フィールドがあります。|
@@ -494,7 +494,7 @@ instances|このブロックの時間範囲の一覧|
 
 音声からテキスト トランスクリプトまたはビデオ OCR への変換で検出されたビジネスおよび製品ブランド名 これには、ブランドまたはロゴ検出の画像認識は含まれません。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|ブランド ID|
 |name|ブランド名|
@@ -551,9 +551,9 @@ instances|このブロックの時間範囲の一覧|
 ]
 ```
 
-#### <a name="statistics"></a>統計
+#### <a name="statistics"></a>statistics
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |CorrespondenceCount|ビデオ内の通知の数|
 |SpeakerWordCount|話者あたり単語の数|
@@ -561,9 +561,9 @@ instances|このブロックの時間範囲の一覧|
 |SpeakerLongestMonolog|話者の最も長いモノローグ。 モノローグでの話者の沈黙がある場合、それも含まれます。 モノローグの先頭と末尾の無音は削除されます。| 
 |SpeakerTalkToListenRatio|計算は、ビデオの合計時間で割られた話者のモノローグに費やされた時間に基づきます (間の無音は含みません)。 時間は、小数点第 3 位に丸められます。|
 
-#### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
+#### <a name="audioeffects"></a><a id="audioEffects"/>audioEffects
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|オーディオ エフェクト ID。|
 |type|オーディオ エフェクトの種類 (例: 拍手、発話、無音)。|
@@ -592,7 +592,7 @@ instances|このブロックの時間範囲の一覧|
 
 センチメントは、sentimentType フィールド (肯定/中立/否定) によって集計されます。 例: 0-0.1、0.1-0.2。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|センチメント ID。|
 |averageScore |センチメントの種類 (肯定/中立/否定) が同じすべてのインスタンスのすべてのスコアの平均値。|
@@ -631,7 +631,7 @@ visualContentModeration ブロックには、Video Indexer で成人向けコン
 
 成人向けまたはわいせつなコンテンツを含むことが検出されたビデオでは、秘密ビューしか利用できない場合があります。 ユーザーは、コンテンツの人間によるレビューの要求を送信できます。この場合、IsAdult 属性に、人間によるレビューの結果が含まれます。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|ビジュアル コンテンツ モデレーションの ID|
 |adultScore|(コンテンツ モデレーターからの) 成人スコア|
@@ -667,7 +667,7 @@ visualContentModeration ブロックには、Video Indexer で成人向けコン
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|テキスト コンテンツ モデレーションの ID|
 |bannedWordsCount |禁止された単語の数|
@@ -677,7 +677,7 @@ visualContentModeration ブロックには、Video Indexer で成人向けコン
 
 Video Indexer では、音声とオーディオの手掛かりに基づいて感情を識別します。識別される感情は、喜び、悲しみ、怒り、または恐怖の可能性があります。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|感情の ID。|
 |type|音声とオーディオの手掛かりに基づいて識別された感情の瞬間。この感情は、喜び、悲しみ、怒り、または恐怖の可能性があります。|
@@ -767,7 +767,7 @@ Video Indexer では、音声とオーディオの手掛かりに基づいて感
 
 Video Indexer では、トランスクリプトから主なトピックを推論します。 可能な場合は、第 2 レベルの [IPTC](https://iptc.org/standards/media-topics/) 分類が含まれています。 
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|トピックの ID。|
 |name|トピック名 (例:"Pharmaceuticals")。|

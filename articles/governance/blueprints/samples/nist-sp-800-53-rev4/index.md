@@ -4,10 +4,10 @@ description: NIST SP 800-53 R4 のブループリント サンプルの概要。
 ms.date: 11/18/2019
 ms.topic: sample
 ms.openlocfilehash: e7a0acf2b43136aedd8c2281f0e87bb1499a81ae
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "74546596"
 ---
 # <a name="overview-of-the-nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 のブループリント サンプルの概要
@@ -18,7 +18,7 @@ NIST SP 800-53 R4 のブループリント サンプルでは、特定の NIST S
 
 コントロール マッピングのセクションでは、このブループリント内に含まれるポリシーについてと、それらのポリシーが NIST SP 800-53 R4 のさまざまなコントロールにどのように対応するかについて詳しく説明します。 リソースはアーキテクチャに割り当てられると、割り当て済みのポリシーに違反していないかどうかを Azure Policy によって評価されます。 詳細については、[Azure Policy](../../../policy/overview.md) に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 NIST SP 800-53 R4 のブループリント サンプルの概要を確認しました。 次に、コントロール マッピングと、このサンプルをデプロイする方法を確認するには、次の記事を参照してください。
 

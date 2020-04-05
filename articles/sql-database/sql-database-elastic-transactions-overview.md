@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 3ca3e9074f28d66068d49b80915e98600759d9be
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68568277"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>クラウド データベースにまたがる分散トランザクション
@@ -155,7 +155,7 @@ SQL DB のエラスティック データベース トランザクションに�
 * サポートされるのは、.NET アプリケーションからクライアント側で調整されるトランザクションだけです。 将来的には、サーバー側の T-SQL サポート (BEGIN DISTRIBUTED TRANSACTION など) が予定されていますが、現時点では利用できません。 
 * WCF サービスをまたがるトランザクションはサポートされません。 たとえば、トランザクションを実行する WCF サービス メソッドがあるとします。 トランザクション スコープ内にこの呼び出しを囲い込むと、 [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)として失敗します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 質問がある場合は、[SQL Database のフォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
 

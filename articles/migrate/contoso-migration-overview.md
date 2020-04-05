@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: raynew
 ms.openlocfilehash: d37bee589eb7ee2e6e30c8dcea2531dd1f063481
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78939187"
 ---
 # <a name="contoso-migration-series"></a>Contoso 移行シリーズ

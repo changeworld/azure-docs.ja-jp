@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 683c53c369f136ad4b917b93e9a92a71072d05e0
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71349641"
 ---
 # <a name="power-azure-cosmos-db"></a>POWER (Azure Cosmos DB)
@@ -37,7 +37,7 @@ POWER (<numeric_expr1>, <numeric_expr2>)
   
 ## <a name="examples"></a>例
   
-  次の例では、数値の 3 (数のキューブ) のべき乗数を示します。  
+  次の例は、数値を 3 乗する方法を示しています。  
   
 ```sql
 SELECT POWER(2, 3) AS pow1, POWER(2.5, 3) AS pow2  
@@ -49,8 +49,8 @@ SELECT POWER(2, 3) AS pow1, POWER(2.5, 3) AS pow2
 [{pow1: 8, pow2: 15.625}]  
 ```  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [数学関数 (Azure Cosmos DB)](sql-query-mathematical-functions.md)
-- [システム関数 (Azure Cosmos DB)](sql-query-system-functions.md)
+- [Azure Cosmos DB の数学関数](sql-query-mathematical-functions.md)
+- [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)

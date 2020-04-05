@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:簡単設定を使用した開始 | Microsoft Docs
+title: 'Azure AD Connect: 簡単設定を使用した開始 | Microsoft Docs'
 description: Azure AD Connect のセットアップ ウィザードをダウンロード、インストール、および実行する方法について説明します。
 services: active-directory
 author: billmath
@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24143f8c94a294da90be84bacfe633db0cd24f85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60244502"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>簡単設定を使用した Azure AD Connect の開始
@@ -38,11 +38,11 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 4. [簡単設定] 画面で、 **[簡単設定を使う]** をクリックします。  
    ![Azure AD Connect へようこそ](./media/how-to-connect-install-express/express.png)
 5. [Azure AD に接続] 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。 **[次へ]** をクリックします。  
-   ![Connect to Azure AD](./media/how-to-connect-install-express/connectaad.png)  
+   ![Azure への接続](./media/how-to-connect-install-express/connectaad.png)  
    接続に問題があり、エラーが発生する場合は、[接続の問題に対するトラブルシューティング](tshoot-connect-connectivity.md)についてのページを参照してください。
 6. [AD DS に接続] 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。 ドメインの部分は NetBios または FQDN の形式で入力できます (FABRIKAM\administrator または fabrikam.com\administrator)。 **[次へ]** をクリックします。  
    ![AD DS に接続](./media/how-to-connect-install-express/connectad.png)
-7. [ **[Azure AD サインインの構成]** ](plan-connect-user-signin.md#azure-ad-sign-in-configuration) ページは、[前提条件](how-to-connect-install-prerequisites.md)の[ドメインの検証](../active-directory-domains-add-azure-portal.md)が済んでいない場合にのみ表示されます。
+7. [ **[Azure AD サインインの構成]** ](plan-connect-user-signin.md#azure-ad-sign-in-configuration) ページは、[前提条件](../active-directory-domains-add-azure-portal.md)の[ドメインの検証](how-to-connect-install-prerequisites.md)が済んでいない場合にのみ表示されます。
    ![Unverified domains](./media/how-to-connect-install-express/unverifieddomain.png)  
    このページが表示されたら、 **[Not Added (追加されていません)]** と **[Not Verified (検証されていません)]** のマークが付いたドメインをすべて確認します。 使用するドメインを Azure AD で検証済みにしてください。 対象のドメインを検証済みにしたら、更新シンボルをクリックします。
 8. [構成の準備完了] 画面で、 **[インストール]** をクリックします。
@@ -60,10 +60,10 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 >
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure AD Connect がインストールされたので、[インストールを確認し、ライセンスを割り当てる](how-to-connect-post-installation.md)ことができます。
 
-インストールの結果有効になった機能について詳しくは、[自動アップグレード](how-to-connect-install-automatic-upgrade.md)、[誤った削除操作を防止する機能](how-to-connect-sync-feature-prevent-accidental-deletes.md)、[Azure AD Connect Health](how-to-connect-health-sync.md) に関する各ページを参照してください。
+インストールの結果有効になった機能については、[自動アップグレード](how-to-connect-install-automatic-upgrade.md)、[誤った削除操作を防止する機能](how-to-connect-sync-feature-prevent-accidental-deletes.md)、[Azure AD Connect Health](how-to-connect-health-sync.md) に関する各ページを参照してください。
 
 一般的なトピックについては、[スケジューラの使用と同期のトリガー方法](how-to-connect-sync-feature-scheduler.md)に関するページを参照してください。
 

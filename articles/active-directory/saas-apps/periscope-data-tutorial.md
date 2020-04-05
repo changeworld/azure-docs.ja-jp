@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: ffa0176c4dde6334e70b9a56b066a677d1610b48
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160200"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>チュートリアル:Azure Active Directory と Periscope Data の統合

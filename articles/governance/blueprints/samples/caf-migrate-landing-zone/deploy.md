@@ -4,10 +4,10 @@ description: ブループリント アーティファクト パラメーター�
 ms.date: 08/20/2019
 ms.topic: sample
 ms.openlocfilehash: da17083e8e1b27739288a9d9ac087d071ff4861c
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74545459"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 移行ランディング ゾーン ブループリント サンプルのデプロイ
@@ -109,7 +109,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |Log Analytics のデプロイ|Resource Manager テンプレート|LogAnalytics_Location|**ロック済み** - ワークスペースの確立時に使用されるリージョン|
 |Azure Migrate のデプロイ|Resource Manager テンプレート|Azure_Migrate_Location|**ロック済み** - Azure Migrate をデプロイするリージョンを選択します|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 CAF 移行ランディング ゾーン ブループリント サンプルをデプロイする手順を確認したので、以下の記事に進み、アーキテクチャの詳細を確認します。
 

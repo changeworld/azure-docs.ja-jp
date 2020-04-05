@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: robinsh
 ms.openlocfilehash: 7f7e957502419b766f7da63048e8168192ea20da
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286642"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237411"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>AMQP プロトコルを使用した IoT Hub との通信
 
@@ -67,8 +67,8 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 
 | 作成者 | リンクの種類 | リンク パス | 説明 |
 |------------|-----------|-----------|-------------|
-| Service | 送信者リンク | `/messages/devicebound` | デバイスが宛先の cloud-to-device メッセージは、サービスによってこのリンクに送信されます。 このリンク経由で送信されたメッセージには、ターゲット デバイスの受信者リンク パスである `/devices/<deviceID>/messages/devicebound` に設定された `To` プロパティがあります。 |
-| Service | 受信者リンク | `/messages/serviceBound/feedback` | デバイスから取得する完了、拒否、破棄のフィードバック メッセージは、サービスによってこのリンクで受信されます。 フィードバック メッセージの詳細については、「[cloud-to-device メッセージを IoT Hub から送信する](./iot-hub-devguide-messages-c2d.md#message-feedback)」を参照してください。 |
+| サービス | 送信者リンク | `/messages/devicebound` | デバイスが宛先の cloud-to-device メッセージは、サービスによってこのリンクに送信されます。 このリンク経由で送信されたメッセージには、ターゲット デバイスの受信者リンク パスである `/devices/<deviceID>/messages/devicebound` に設定された `To` プロパティがあります。 |
+| サービス | 受信者リンク | `/messages/serviceBound/feedback` | デバイスから取得する完了、拒否、破棄のフィードバック メッセージは、サービスによってこのリンクで受信されます。 フィードバック メッセージの詳細については、「[cloud-to-device メッセージを IoT Hub から送信する](./iot-hub-devguide-messages-c2d.md#message-feedback)」を参照してください。 |
 
 次のコード スニペットは、[Python の uAMQP ライブラリ](https://github.com/Azure/azure-uamqp-python)を使用して、cloud-to-device メッセージを作成し、デバイスに送信する方法を示しています。
 
@@ -366,7 +366,7 @@ for result in results:
 
 * クライアントは時として、リンクのリダイレクトを正しく処理できる必要があります。 そのような操作を理解するには、AMQP クライアントのドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 AMQP プロトコルの詳細については、[AMQP v1.0 の仕様](https://www.amqp.org/sites/amqp.org/files/amqp.pdf)を参照してください。
 

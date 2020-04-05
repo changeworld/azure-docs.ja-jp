@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 7e8cbadf2c68b97451b40afb876ceb7d88d3758e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 1d5f8d6e0b2499bbecd32e7cb3fda2cd2cad4d19
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661058"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79202235"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用した NAT ゲートウェイの作成
 
 このクイックスタートでは、Azure Virtual Network NAT サービスを使用する方法について説明します。 Azure 内の仮想マシンに送信接続を提供する NAT ゲートウェイを作成しましょう。 
-
->[!NOTE] 
->Azure Virtual Network NAT は、現時点ではパブリック プレビューとして提供され、ご利用いただける[リージョン](https://azure.microsoft.com/global-infrastructure/regions/)が限られています。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms)」をご覧ください。
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -293,7 +290,6 @@ Azure Monitor でメトリックを見て、NAT サービスの稼動状態を�
 - [Azure CLI を使用して NAT ゲートウェイ リソース](./quickstart-create-nat-gateway-cli.md)をデプロイするためのクイックスタート。
 - [Azure PowerShell を使用して NAT ゲートウェイ リソース](./quickstart-create-nat-gateway-powershell.md)をデプロイするためのクイックスタート。
 - [Azure portal を使用して NAT ゲートウェイ リソース](./quickstart-create-nat-gateway-portal.md)をデプロイするためのクイックスタート。
-- [パブリック プレビューに関するフィードバックを送る](https://aka.ms/natfeedback)。
 > [!div class="nextstepaction"]
 
 

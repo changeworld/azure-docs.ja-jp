@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ef63a159c132f5b565123eeb4824fb1ae5812ce1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfa308e2cc67bd14a248f3edc7b182f9a772ed98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444149"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238700"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory の If Condition アクティビティ
 If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが評価されます。 
@@ -66,7 +66,7 @@ If Condition アクティビティは、プログラミング言語における 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
 name | if-condition アクティビティの名前。 | String | はい
-型 | **IfCondition** に設定する必要があります。 | String | はい
+type | **IfCondition** に設定する必要があります。 | String | はい
 expression | true または false に評価される式であることが必要です | 結果の型がブール値の式 | はい
 ifTrueActivities | 式が `true` に評価されたときに実行される一連のアクティビティです。 | Array | はい
 ifFalseActivities | 式が `false` に評価されたときに実行される一連のアクティビティです。 | Array | はい
@@ -182,7 +182,7 @@ ifFalseActivities | 式が `false` に評価されたときに実行される一
 
 ```json
 "expression":  {
-    "value":  "@pipeline().parameters.routeSelection == 1", 
+    "value":  "@equals(pipeline().parameters.routeSelection,1)", 
     "type": "Expression"
 }
 ```

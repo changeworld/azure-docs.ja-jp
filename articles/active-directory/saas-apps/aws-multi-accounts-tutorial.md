@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Amazon Web Services (AWS) を統合して複数のアカウントを接続する | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Amazon Web Services (AWS) を統合して複数のアカウントを接続する | Microsoft Docs'
 description: Azure AD と Amazon Web Services (AWS) の複数のアカウントの間でシングルサインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: edd54352b1328c95ae2c3e466003b64eaa0fcfde
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77368003"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>チュートリアル:Azure Active Directory と複数の Amazon Web Services (AWS) アカウントの統合
+# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>チュートリアル: Azure Active Directory と複数の Amazon Web Services (AWS) アカウントの統合
 
 このチュートリアルでは、Azure Active Directory (Azure AD) と Amazon Web Services (AWS) の複数のアカウントを統合する方法を説明します。
 
@@ -139,7 +139,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
 6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
-    | 名前  | ソース属性  | 名前空間 |
+    | Name  | ソース属性  | 名前空間 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | Role            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
@@ -189,7 +189,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     a. **[Provider Type]** として **[SAML]** を選択します。
 
-    b. **[Provider Name]\(プロバイダー名\)** ボックスにプロバイダー名を入力します (例: *WAAD*)。
+    b. **[Provider Name]** ボックスにプロバイダー名を入力します (例: *WAAD*)。
 
     c. Azure Portal からダウンロードした**メタデータ ファイル**をアップロードするには、 **[ファイルの選択]** をクリックします。
 
@@ -209,13 +209,13 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     a. **[Select type of trusted entity]** の **[SAML 2.0 federation]** を選択します。
 
-    b. **[Choose a SAML 2.0 Provider]\(SAML 2.0 プロバイダーの選択\)** セクションで、先ほど作成した **SAML プロバイダー**を選択します (例: *WAAD*)
+    b. **[Choose a SAML 2.0 Provider section]** で、先ほど作成した **SAML プロバイダー**を選択します (例: *WAAD*)
 
     c. **[Allow programmatic and AWS Management Console access]** を選択します。
   
-    d. **[次へ: Permissions]\(次へ: アクセス許可\)** をクリックします。
+    d. **[Next: Permissions]** をクリックします。
 
-9. **[Attach Permissions Policies]\(アクセス許可ポリシーのアタッチ\)** ダイアログで、組織の規定に準拠した適切なポリシーを添付します。 **次へ: 確認\)** をクリックします。  
+9. **[Attach Permissions Policies]\(アクセス許可ポリシーのアタッチ\)** ダイアログで、組織の規定に準拠した適切なポリシーを添付します。 **[次へ: レビュー]** をクリックします。  
 
     ![シングル サインオン ポリシーの構成][33]
 
@@ -271,7 +271,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     f. 取得したサービス プリンシパルの一覧から、変更する必要があるものを取得します。 Ctrl キーを押しながら F キーを押して、一覧に示されたすべての ServicePrincipals からアプリケーションを検索することもできます。 Azure AD プロパティ ページからコピーした **オブジェクト ID** を使用して、次のクエリを使用し、対応するサービス プリンシパルを取得することができます。
 
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
+    [https://login.microsoftonline.com/consumers/](`https://graph.microsoft.com/beta/servicePrincipals/<objectID>`)
 
     ![Graph Explorer のダイアログ ボックス](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 

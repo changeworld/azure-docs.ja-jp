@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 6ac9e362314cc45e6adbdcf1390f70cbe6b05de8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075964"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>PowerShell を使用した複数の IP 構成での負荷分散
@@ -141,6 +141,6 @@ ms.locfileid: "74075964"
 
 13. 最後に、Load Balancer の各フロントエンド IP アドレスを指すように DNS リソース レコードを構成する必要があります。 ドメインを Azure DNS でホストする場合もあります。 Azure DNS を Load Balancer で使用する方法の詳細については、「[Azure DNS を他の Azure サービスで使用する](../dns/dns-for-azure-services.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure で負荷分散サービスを組み合わせて使う方法について詳しくは、「[Azure で負荷分散サービスを使用する](../traffic-manager/traffic-manager-load-balancing-azure.md)」をご覧ください。
 - Azure の各種ログを使って、ロード バランサーの管理やトラブルシューティングを行う方法については、[Azure Load Balancer の Azure Monitor ログ](../load-balancer/load-balancer-monitor-log.md)に関するページを参照してください。

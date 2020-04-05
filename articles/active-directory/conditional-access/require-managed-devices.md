@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66e94393bef942d7bfad41a7dccc8b651696d4af
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 8a3c71534febc3cdb6429d3092225ebc73f6cbe7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484521"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481485"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する
 
@@ -30,6 +30,7 @@ ms.locfileid: "77484521"
 
 - **[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)** - この記事は、条件付きアクセスと関連する用語の概念的な概要を説明しています。
 - **[Azure Active Directory のデバイス管理の概要](../devices/overview.md)** - この記事は、組織の管理下にあるデバイスを取得する際に使用できるさまざまなオプションの概要を説明しています。 
+- **Windows 10 Creators Update (バージョン 1703)** 以降で Chrome をサポートするには、[Windows 10 Accounts 拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をインストールしてください。 条件付きアクセス ポリシーでデバイス固有の詳細が必要な場合は、この拡張機能が必要です。
 
 >[!NOTE] 
 > Azure AD デバイスベースの条件付きアクセス ポリシーを使用して、最初のデバイス認証後に最適な実施を行うことをお勧めします。 これには、デバイスが準拠していない場合のセッションの終了とデバイス コード フローが含まれます。

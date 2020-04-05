@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central アプリケーションでデバイス データを分析する | Microsoft Docs
 description: Azure IoT Central アプリケーションでデバイス データを分析します。
-author: ankitgup
+author: ankitscribbles
 ms.author: ankitgup
 ms.date: 11/27/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 7627421317458eb0ff9637b3497df11dacfddbff
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40460b58ede0ca0da8fe25475906bdbe41bfffe0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023856"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158284"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>分析を使用してデバイス データを分析する方法
 

@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
 ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792475"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用して統合アカウントからアーティファクト メタデータを管理する
@@ -27,7 +27,7 @@ ms.locfileid: "74792475"
 
   * [パートナー](logic-apps-enterprise-integration-partners.md)
   * [契約](logic-apps-enterprise-integration-agreements.md)
-  * [スキーマ](logic-apps-enterprise-integration-schemas.md)
+  * [[スキーマ]](logic-apps-enterprise-integration-schemas.md)
   * [Map](logic-apps-enterprise-integration-maps.md)
 
 * 統合アカウントと使用するアーティファクト メタデータにリンクされているロジック アプリ。 ロジック アプリがまだリンクされていない場合、[統合アカウントにロジック アプリをリンクする方法](logic-apps-enterprise-integration-create-integration-account.md#link-account)を確認してください。 
@@ -85,13 +85,13 @@ ms.locfileid: "74792475"
 
       | プロパティ | 必須 | 値 | 説明 | 
       |----------|----------|-------|-------------| 
-      | **メソッド** | はい | <*operation-to-run*> | アーティファクトで実行する HTTP 操作。 たとえば、この HTTP アクションでは **GET** メソッドが使用されます。 | 
+      | **方法** | はい | <*operation-to-run*> | アーティファクトで実行する HTTP 操作。 たとえば、この HTTP アクションでは **GET** メソッドが使用されます。 | 
       | **URI** | はい | <*metadata-location*> | 取得したアーティファクトから `routingUrl` メタデータ値にアクセスするには、下のような式を使用できます。 <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
       | **ヘッダー** | いいえ | <*header-values*> | HTTP アクションに渡すトリガーからのヘッダー出力。 たとえば、トリガーの `headers` プロパティ値を渡すには、次のような式を使用できます。 <p>`@triggeroutputs()['headers']` | 
       | **本文** | いいえ | <*body-content*> | HTTP アクションの `body` プロパティで渡すその他のコンテンツ。 この例では、アーティファクトの `properties` 値が HTTP アクションに渡されます。 <p>1. **[本文]** プロパティ内をクリックし、動的コンテンツ リストを表示します。 プロパティが表示されていない場合、 **[さらに表示する]** を選択します。 <br>2.動的コンテンツ リストの **[統合アカウントのアーティファクトの検索]** で **[プロパティ]** を選択します。 | 
       |||| 
 
-      例:
+      次に例を示します。
 
       ![HTTP アクションの値と式を指定する](media/logic-apps-enterprise-integration-metadata/add-http-action-values.png)
 
@@ -103,6 +103,6 @@ ms.locfileid: "74792475"
 
       ![ロジック アプリ デザイナーの解決された式](media/logic-apps-enterprise-integration-metadata/resolved-expressions.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [契約の詳細について学習する](logic-apps-enterprise-integration-agreements.md)

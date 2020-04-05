@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: d626d98613bd5d988b599d0980c885d7f73bb958
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720250"
 ---
 # <a name="peering-service-partner-walkthrough"></a>Peering Service パートナーのチュートリアル
@@ -34,5 +34,5 @@ ms.locfileid: "76720250"
 ## <a name="next-steps"></a>次のステップ
 
 * [ピアリングポリシー](https://peering.azurewebsites.net/peering)の詳細を知る
-* Microsoft との Direct ピアリングを設定する手順の詳細については [ Direct ピアリングのチュートリアル](walkthrough-direct-all.md)を参照してください。
+* Microsoft との Direct ピアリングを設定する手順の詳細については、[Direct ピアリングのチュートリアル](walkthrough-direct-all.md)を参照してください。
 * Microsoft との Exchange ピアリングを設定する手順の詳細については、[Exchange ピアリングのチュートリアル](walkthrough-exchange-all.md)を参照してください。

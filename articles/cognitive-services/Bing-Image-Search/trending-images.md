@@ -13,10 +13,10 @@ ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: 2936b94d7ba791b1a4e5a9b95aca3ca3ecdb5904
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66383427"
 ---
 # <a name="get-trending-images-from-the-web"></a>Web から注目の画像を取得する

@@ -4,35 +4,35 @@
   items:
     - name: Stretch Database とは
       href: /sql/sql-server/stretch-database/stretch-database
-    - name: 制限とブロックの問題
+    - name: 制限事項とブロックの問題
       href: /sql/sql-server/stretch-database/limitations-for-stretch-database
-- name: 作業の開始
+- name: 開始するには
   items:
-    - name: データベースとテーブルを特定する
+    - name: データベースとテーブルの識別
       href: /sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor
-    - name: ウィザードを実行する
+    - name: ウィザードの実行
       href: /sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard
-- name: 方法
+- name: 操作方法
   items:
-    - name: 有効化
+    - name: '[有効化]'
       items:
-        - name: データベース有効にする
+        - name: データベースを有効にする
           href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-database
         - name: テーブルを有効にする
           href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-table
         - name: 移行する行を選択する
           href: /sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database
-    - name: 管理
+    - name: 管理する
       items:
         - name: データ移行を監視する
           href: /sql/sql-server/stretch-database/monitor-and-troubleshoot-data-migration-stretch-database
-        - name: 移行を一時停止および再開する
+        - name: 移行の一時停止と再開
           href: /sql/sql-server/stretch-database/pause-and-resume-data-migration-stretch-database
         - name: 管理とトラブルシューティング
           href: /sql/sql-server/stretch-database/manage-and-troubleshoot-stretch-database
         - name: バックアップ
           href: /sql/sql-server/stretch-database/backup-stretch-enabled-databases-stretch-database
-        - name: 復元
+        - name: '[復元]'
           href: /sql/sql-server/stretch-database/restore-stretch-enabled-databases-stretch-database
         - name: Strech Database を無効にする
           href: /sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data

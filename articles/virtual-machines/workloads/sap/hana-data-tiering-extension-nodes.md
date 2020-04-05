@@ -14,16 +14,16 @@ ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c3553ac9704ac26d0bdaae0f93b89f41a87ac716
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617159"
 ---
 # <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>SAP HANA のデータ階層化と拡張ノードの使用
 
 SAP では、さまざまな SAP NetWeaver リリースの SAP BW および SAP BW/4HANA のデータ階層化モデルをサポートしています。 データ階層化モデルの詳細については、SAP ドキュメントの「[SAP BW/4HANA and SAP BW on HANA with SAP HANA extension nodes (SAP HANA 拡張ノードを持つ SAP BW/4HANA および SAP BW-on-HANA)](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#)」をご覧ください。
-HANA L インスタンスを使用すると、FAQ および SAP ブログ ドキュメントで説明する SAP HANA 拡張ノードのオプション 1 の構成をご利用いただけます。 オプション 2 の構成は、S72m、S192、S192m、S384、S384m の HANA L インスタンス SKU で設定できます。 
+HANA L インスタンスを使用すると、FAQ および SAP ブログ ドキュメントで説明する SAP HANA 拡張ノードのオプション 1 の構成をご利用いただけます。 オプション 2 の構成は次の HANA L インスタンス SKU を使用して設定できます: S72m、S192、S192m、S384、S384m。 
 
 ドキュメントを参照しても、すぐには利点を確認できないかもしれません。 しかし、SAP のサイズ変更ガイドラインを見ると、オプション 1 およびオプション 2 の SAP HANA 拡張ノードを使用することによる利点を確認できます。 次に例を示します。
 

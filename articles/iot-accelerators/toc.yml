@@ -195,34 +195,34 @@
           href: iot-accelerators-device-simulation-protobuf.md
         - name: カスタム Docker イメージのデプロイ
           href: iot-accelerators-device-simulation-deploy-image.md
-- name: 関連項目
-  items:
-    - name: IoT Central
-      href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: プラットフォーム サービス
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT プラグ アンド プレイ
-          href: /azure/iot-pnp
-        - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
-        - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: マップ
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: IoT Edge
-      items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
-        - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT のサービス
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT ソリューション アクセラレータ
+          href: /azure/iot-accelerators
+        - name: IoT プラグ アンド プレイ
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK
+      items:
+        - name: IoT サービスの SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT デバイス SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
     - name: リモート監視
       items:
         - name: 開発者向けリファレンス ガイド (.NET)

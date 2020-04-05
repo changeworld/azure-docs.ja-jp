@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: f6f678f91e74ea9b0b68127c1786fee745508b99
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70101456"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー
@@ -51,7 +51,7 @@ Azure セットアップの概要は次のとおりです。
 
 ![DR トポロジ ページのスクリーンショット](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
-## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>シナリオ 2:オンプレミスのプライマリ サイトと Azure 上の DR サイト
+## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>シナリオ 2: オンプレミスのプライマリ サイトと Azure 上の DR サイト
 
 Oracle データベースがオンプレミスにセットアップされています (プライマリ サイト)。 DR サイトは Azure にあります。 Oracle Data Guard はこれらのサイト間の迅速な回復に使用されます。 また、プライマリ サイトにはレポートの作成や他の用途のためにセカンダリ データベースが用意されています。 
 
@@ -103,7 +103,7 @@ Azure セットアップの概要は次のとおりです。
 - [Oracle のバックアップと回復](oracle-backup-recovery.md)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [チュートリアル:高可用性 VM の作成](../../linux/create-cli-complete.md)
 - [VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)

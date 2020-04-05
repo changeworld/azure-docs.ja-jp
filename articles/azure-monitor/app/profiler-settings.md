@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: f66a23c0562ec9f1987bd119a45b7b767f2dfe46
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671632"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler を構成する
@@ -68,7 +68,7 @@ Tracee (トレース) | 個々の要求にアタッチされたトレースの�
 CPU % | プロファイラーの実行中に使用されていた CPU の割合。
 Memory % (メモリ %) | プロファイラーの実行中に使用されていた メモリ の割合。
 
-## <a id="profileondemand"></a> Web パフォーマンス テストを使用してアプリケーションへのトラフィックを生成する
+## <a name="use-web-performance-tests-to-generate-traffic-to-your-application"></a><a id="profileondemand"></a> Web パフォーマンス テストを使用してアプリケーションへのトラフィックを生成する
 
 シングル クリックで Profiler を手動でトリガーできます。 Web パフォーマンス テストを実行しているものとします。 Web アプリに負荷がかかった状態のパフォーマンスを把握するには、トレースが必要です。 ロード テストがいつ実行されるかがわかるので、トレースがキャプチャされるタイミングを制御できることは重要です。 しかし、ランダムなサンプリング間隔では失敗する可能性があります。
 

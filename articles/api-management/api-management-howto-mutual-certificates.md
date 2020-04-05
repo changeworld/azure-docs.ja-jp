@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 39a1e224173dc021cf49b535957eb4b49f4c91ee
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: b0ddf6dda99ee666e3052b5a70e51c7e4208a374
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834335"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80347102"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法
 
@@ -26,13 +26,13 @@ API Management には、クライアント証明書を使用して API のバッ
 
 API Management REST API を使用して証明書を管理する方法の詳細については、「 <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API 証明書エンティティ</a>」をご覧ください。
 
-## <a name="prerequisites"> </a>前提条件
+## <a name="prerequisites"></a><a name="prerequisites"> </a>前提条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 このガイドは、クライアント証明書認証を使用して API のバックエンド サービスにアクセスするように、API Management サービス インスタンスを構成する方法を示しています。 この記事の手順を行う前に、クライアント証明書の認証用にバックエンド サービスを構成する必要があります ([Azure App Service で証明書の認証を構成するには、こちらの記事を参照してください][to configure certificate authentication in Azure WebSites refer to this article])。 証明書へのアクセスと、API Management サービスに証明書をアップロードするためのパスワードが必要です。
 
-## <a name="step1"> </a>証明書のアップロード
+## <a name="upload-a-certificate"></a><a name="step1"> </a>証明書のアップロード
 
 > [!NOTE]
 > アップロードした証明書の代わりに、この[例](https://github.com/galiniliev/api-management-policy-snippets/blob/galin/AkvCert/examples/Look%20up%20Key%20Vault%20certificate%20using%20Managed%20Service%20Identity%20and%20call%20backend.policy.xml)に示すように、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) サービスに格納されている証明書を使用できます。
@@ -54,9 +54,9 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 証明書がアップロードされると、 **[証明書]** に表示されます。  証明書が多数ある場合は、[ゲートウェイ認証にクライアント証明書を使用するように API を構成する][Configure an API to use a client certificate for gateway authentication]ために、必要な証明書の拇印をメモします。
 
 > [!NOTE]
-> 自己署名証明書などを使用するときに証明書チェーンの検証をオフにするには、この FAQ の[項目](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)に記載されている手順に従ってください。
+> 自己署名証明書などを使用するときに証明書チェーンの検証をオフにするには、この FAQ の[項目](api-management-faq.md#can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end)に記載されている手順に従ってください。
 
-## <a name="step1a">クライアント証明書の削除</a>
+## <a name="delete-a-client-certificate"></a><a name="step1a"> </a>クライアント証明書の削除
 
 証明書を削除するには、コンテキスト メニューの **[...]** をクリックし、証明書の横にある **[削除]** を選択します。
 
@@ -66,7 +66,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 ![クライアント証明書の削除のエラー](media/api-management-howto-mutual-certificates/apim-client-cert-delete-failure.png)
 
-## <a name="step2">API を構成して、ゲートウェイ認証にクライアント証明書を使用する</a>
+## <a name="configure-an-api-to-use-a-client-certificate-for-gateway-authentication"></a><a name="step2"> </a>API を構成して、ゲートウェイ認証にクライアント証明書を使用する
 
 1. 左側の **[API Management]** メニューの **[API]** をクリックし、API に移動します。
     ![クライアント証明書を有効にする](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)

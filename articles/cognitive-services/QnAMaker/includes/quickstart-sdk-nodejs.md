@@ -4,10 +4,10 @@ description: このクイックスタートでは、Node.js 用 QnA Maker クラ
 ms.topic: quickstart
 ms.date: 01/13/2020
 ms.openlocfilehash: 05e6d2c77a351c22c73f0bdb54daeaf0e03f4a9d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76020934"
 ---
 Node.js 用 QnA Maker クライアント ライブラリは、次の目的で使用することができます。

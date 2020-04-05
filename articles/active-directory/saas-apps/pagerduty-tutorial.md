@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: b7a522aaf35303bbd87e7aafe65b1302f1b98bc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>チュートリアル:Azure Active Directory と PagerDuty の統合
@@ -132,7 +132,7 @@ PagerDuty で Azure AD シングル サインオンを構成するには、次�
 
 2. 上部のメニューで **[アカウント設定]** をクリックします。
 
-    ![Account Settings](./media/pagerduty-tutorial/ic778535.png "Account Settings")
+    ![アカウント設定](./media/pagerduty-tutorial/ic778535.png "[Account Settings]")
 
 3. **[Single Sign-on]** をクリックします。
 
@@ -225,7 +225,7 @@ PagerDuty の場合、プロビジョニングは手動で行います。
 
 4.  **[Invite your team]** ダイアログ ボックスで、次の手順を実行します。
    
-    ![チームの招待](./media/pagerduty-tutorial/ic778540.png "チームの招待")
+    ![[Invite your team]\(チームの招待\)](./media/pagerduty-tutorial/ic778540.png "チームの招待")
 
     a. ユーザーの**氏名** (**Britta Simon** など) を入力します。 
    

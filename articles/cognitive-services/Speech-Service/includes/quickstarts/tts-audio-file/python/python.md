@@ -1,21 +1,15 @@
 ---
-title: クイック スタート:音声をオーディオ ファイルに合成する、Python - Speech サービス
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: chlandsi
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 07/05/2019
-ms.author: chlandsi
-ms.openlocfilehash: df2c3fc2ab6f6c742f56273119923a7e02cf8e43
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.date: 03/20/2020
+ms.author: dapine
+ms.openlocfilehash: 983a3c38c19d60a2ad890255ab2120ea58776436
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383994"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80116985"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,29 +21,31 @@ ms.locfileid: "78383994"
     * Linux: x64 上の Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8。
 * Linux では、以下のコマンドを実行して、必要なパッケージをインストールします。
 
-  * Ubuntu の場合:
+# <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.0 libasound2
-    ```
+```Bash
+sudo apt-get update
+sudo apt-get install build-essential libssl1.0.0 libasound2
+```
 
-  * Debian 9 の場合:
+# <a name="debian-9"></a>[Debian 9](#tab/debian)
 
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+```Bash
+sudo apt-get update
+sudo apt-get install build-essential libssl1.0.2 libasound2
+```
 
-  * RHEL または CentOS 8 の場合:
+# <a name="rhel--centos-8"></a>[RHEL / CentOS 8](#tab/rhel-centos)
 
-    ```sh
-    sudo yum update
-    sudo yum install alsa-lib openssl python3
-    ```
+```Bash
+sudo yum update
+sudo yum install alsa-lib openssl python3
+```
 
 > [!NOTE]
-> RHEL または CentOS 8 の場合、[Linux 用 OpenSSL の構成方法](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)に関するページの手順に従います。
+> RHEL または CentOS 8 の場合、「[Linux 用 OpenSSL の構成](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)」の手順に従います。
+
+---
 
 * Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2019 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。
 
@@ -59,7 +55,7 @@ ms.locfileid: "78383994"
 
 次のコマンドは、[PyPI](https://pypi.org/) から Speech SDK 用の Python パッケージをインストールします。
 
-```sh
+```Bash
 pip install azure-cognitiveservices-speech
 ```
 
@@ -77,7 +73,7 @@ Speech SDK Python パッケージの更新プログラムは、PyPI を通じて
 
 このクイック スタートからソース ファイル `quickstart.py` に[サンプル コード](#sample-code)をコピーして、お使いの IDE またはコンソールで実行することができます。
 
-```sh
+```Bash
 python quickstart.py
 ```
 
@@ -85,8 +81,7 @@ python quickstart.py
 
 ### <a name="sample-code"></a>サンプル コード
 
-````Python
-
+````python
 import azure.cognitiveservices.speech as speechsdk
 
 # Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
@@ -96,7 +91,7 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_r
 # Creates an audio configuration that points to an audio file.
 # Replace with your own audio filename.
 audio_filename = "helloworld.wav"
-audio_output = speechsdk.AudioOutputConfig(filename=audio_filename)
+audio_output = speechsdk.audio.AudioOutputConfig(filename=audio_filename)
 
 # Creates a synthesizer with the given settings
 speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_output)
@@ -138,14 +133,14 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. 新しく作成されたファイルに [Python コード](#sample-code)をコピーして貼り付け、保存します。
 1. お使いの Speech サービスのサブスクリプション情報を挿入します。
 1. Python インタープリターが選択されている場合は、ウィンドウの下部にあるステータス バーの左側にそれが表示されます。
-   そうでない場合は、使用可能な Python インタープリターの一覧が表示されます。 コマンド パレットを開いて (Ctrl + Shift + P)、「**Python: Select Interpreter**」と入力します。 適切なものを選択します。
+   そうでない場合は、使用可能な Python インタープリターの一覧が表示されます。 コマンド パレットを開いて (<kbd>Ctrl + Shift + P</kbd>)、「**Python: Select Interpreter**」と入力します。 適切なものを選択します。
 1. Visual Studio Code 内から Speech SDK Python パッケージをインストールできます。 選択した Python インタープリター用にまだインストールされていない場合は、インストールします。
-   Speech SDK パッケージをインストールするには、ターミナルを開きます。 コマンド パレットをもう一度開いて (Ctrl + Shift + P)、「**Terminal: Create New Integrated Terminal**」と入力してターミナルを開きます。
+   Speech SDK パッケージをインストールするには、ターミナルを開きます。 コマンド パレットをもう一度開いて (<kbd>Ctrl + Shift + P</kbd>)、「**Terminal: Create New Integrated Terminal**」と入力してターミナルを開きます。
    開いたターミナルに、コマンド `python -m pip install azure-cognitiveservices-speech` か、システムに応じた適切なコマンドを入力します。
 1. サンプル コードを実行するには、エディター内のどこかを右クリックします。 **[Run Python File in Terminal]\(ターミナル内の Python ファイルを実行する\)** を選択します。
    テキストは音声に変換され、指定されたオーディオ データで保存されます。
 
-   ```text
+   ```console
    Speech synthesized to [helloworld.wav] for text [Hello world!]
    ```
 

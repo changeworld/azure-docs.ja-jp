@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: db431d7815cfcc006563bd6da438154ef77ae6e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ebbac39c8850737ea6f9ef333e45d305a520655
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66814791"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79461216"
 ---
-## <a name="cli-shell"></a>CLI シェル
+## <a name="use-cli-shell"></a>CLI シェルを使用する
 
 CLI コマンドを実行するには、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) を使用することをお勧めします。 **Cloud Shell** は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 Cloud Shell には一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 Azure Cloud Shell には、業務に最適のシェル操作を選択できる柔軟性があります。 Linux ユーザーは Bash を、Windows ユーザーは PowerShell を選ぶことができます。
 
@@ -43,7 +43,7 @@ CLI で既定のブラウザーを開くことができる場合、開いたブ�
 Linux/Mac および Windows の OS の絶対ファイル パス
 
 * `@ "/usr/home/mytestfile.json"`
-*   `@"c:\tmp\user\mytestfile.json"`
+*    `@"c:\tmp\user\mytestfile.json"`
 
 コマンドでファイルへのパスが求められた場合は、`{file}` を使用します。 たとえば、「 `az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json` 」のように入力します。 <br/> 指定したファイルをコマンドで読み込む場合は、`@{file}` を使用します。 たとえば、「 `az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json` 」のように入力します。
 

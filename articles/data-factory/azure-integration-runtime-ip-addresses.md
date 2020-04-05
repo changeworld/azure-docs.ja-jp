@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 598876e12fe04129692d0c9a842f4edb2ec00768
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79086796"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime の IP アドレス
@@ -33,7 +33,7 @@ Azure Integration Runtime によって使用される IP アドレスは、Azure
 
 |                | リージョン              | IP アドレス                                                 |
 | -------------- | ------------------- | ------------------------------------------------------------ |
-| Asia           | 東アジア           | 20.189.104.128/25、 </br>20.189.106.0/26、 </br>13.75.39.112/28 |
+| アジア           | 東アジア           | 20.189.104.128/25、 </br>20.189.106.0/26、 </br>13.75.39.112/28 |
 | &nbsp;         | 東南アジア      | 20.43.128.128/25、 </br>20.43.130.0/26、 </br>40.78.236.176/28 |
 | オーストラリア      | オーストラリア東部      | 20.37.193.0/25、</br>20.37.193.128/26、</br>13.70.74.144/28    |
 | &nbsp;         | オーストラリア南東部 | 20.42.225.0/25、</br>20.42.225.128/26、</br>13.77.53.160/28    |

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 59d0bf20b16beda47d76e6a9940ac9fa4436da3f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73904525"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Azure Data Lake Storage Gen1 に対する REST API を使用したサービス間認証
@@ -46,7 +46,7 @@ ms.locfileid: "73904525"
 
 この記事では、 **非対話型** のアプローチを使用します。 非対話型 (サービス間呼び出し) の詳細については、 [資格情報を使用したサービス間呼び出し](https://msdn.microsoft.com/library/azure/dn645543.aspx)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、サービス間認証を使って、REST API を使用して Data Lake Storage Gen1 で認証する方法を説明しました。 これで、REST API を使用して Data Lake Storage Gen1 を使用する方法について説明した次の記事に進むことができます。
 

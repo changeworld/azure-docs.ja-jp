@@ -17,10 +17,10 @@ ms.date: 11/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7de54b507630174107994f1434f17120f3abffbb
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74806129"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jisc-student-voter-registration"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Jisc Student Voter Registration の統合

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75707188"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Outlook.com のメール、カレンダー、および連絡先を管理する

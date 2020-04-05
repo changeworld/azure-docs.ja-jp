@@ -5,13 +5,13 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454438"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222149"
 ---
-# <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>チュートリアル:geo レプリケーション Azure Container Registry の準備
+# <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>チュートリアル: geo レプリケーション Azure Container Registry の準備
 
 Azure Container Registry は、デプロイの近くにネットワークを確保できる Azure にデプロイされたプライベート Docker レジストリです。 この一連の 3 つのチュートリアルの記事では、geo レプリケーションを使用して、Linux コンテナーで実行する ASP.NET Core Web アプリケーションを、2 つの [Web Apps for Containers](../app-service/containers/index.yml) インスタンスにデプロイする方法について説明します。 Azure が最も近い geo レプリケーション レポジトリからの各 Web アプリ インスタンスにイメージをデプロイする方法を確認します。
 
@@ -37,7 +37,7 @@ Azure Cloud Shell には、このチュートリアルの各ステップを完�
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインする
 
 **[リソースの作成]**  >  **[コンテナー]**  >  **[Azure Container Registry]** の順に選択します。
 
@@ -45,8 +45,8 @@ Azure Cloud Shell には、このチュートリアルの各ステップを完�
 
 次の設定で、新しいレジストリを構成します。
 
-* **レジストリ名**:Azure 内でグローバルに一意で、5 - 50 文字の英数字を含むレジストリ名を作成します
-* **リソース グループ**:**新規作成** > `myResourceGroup`
+* **レジストリ名**: Azure 内でグローバルに一意で、5 ～ 50 文字の英数字を含むレジストリ名を作成します。
+* **リソース グループ**: **[新規作成]**  > `myResourceGroup`
 * **場所**: `West US`
 * **管理者ユーザー**: `Enable` (イメージをプルするために、Web App for Containers に必要)
 * **SKU**: `Premium` (geo レプリケーションに必要)
@@ -55,7 +55,7 @@ Azure Cloud Shell には、このチュートリアルの各ステップを完�
 
 ![Azure Portal でコンテナー レジストリを作成する][tut-portal-02]
 
-このチュートリアルの残りの部分では、選択したコンテナー **レジストリ名**のプレースホルダーとして `<acrName>` を使用します。
+このチュートリアルの残りの部分では、選択したコンテナー `<acrName>`レジストリ名**のプレースホルダーとして**  を使用します。
 
 > [!TIP]
 > Azure Container Registry は通常、複数のコンテナー ホスト間で使用される有効期間が長いリソースであるため、独自のリソース グループにレジストリを作成することをお勧めします。 geo レプリケーション レジストリと webhook を構成すると、これらの追加リソースが同じリソース グループに配置されます。
@@ -205,7 +205,7 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-geo レプリケーション用にレジストリを構成したため、この単一の `docker push` コマンドで、イメージが*米国西部*と*米国東部*リージョンの両方に自動的にレプリケートされます。
+geo レプリケーション用にレジストリを構成したため、この単一の  *コマンドで、イメージが*米国西部*と*米国東部`docker push`リージョンの両方に自動的にレプリケートされます。
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
@@ -220,7 +220,7 @@ a75caa09eb1f: Pushed
 v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543970 size: 1792
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、プライベートの geo レプリケーション コンテナー レジストリを作成し、コンテナー イメージを構築して、そのイメージをレジストリにプッシュしました。
 

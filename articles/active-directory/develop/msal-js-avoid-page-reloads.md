@@ -14,14 +14,14 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 63944a5a9af34c2d4cf98eeb870a730df49654e5
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77084954"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>MSAL.js を使用してトークンを自動的に取得、更新するときにページのリロードを回避する
-JavaScript (MSAL.js) 用 Microsoft Authentication Library では非表示の `iframe` 要素を使用して、バックグラウンドでトークンが自動的に取得、更新されます。 Azure AD によって、トークン要求で指定された登録済み redirect_uri にトークンが戻されます (既定では、これはアプリのルート ページです)。 応答は 302 なので、結果は `iframe` にロードされる `redirect_uri` に対応する HTML になります。 通常、アプリの `redirect_uri` はルート ページで、これにより、リロードされます。
+JavaScript (MSAL.js) 用 Microsoft Authentication Library では非表示の `iframe` 要素を使用して、バックグラウンドでトークンが自動的に取得、更新されます。 Azure AD によって、トークン要求で指定された登録済み redirect_uri にトークンが戻されます (既定では、これはアプリのルート ページです)。 応答は 302 なので、結果は `redirect_uri` にロードされる `iframe` に対応する HTML になります。 通常、アプリの `redirect_uri` はルート ページで、これにより、リロードされます。
 
 それ以外の場合として、アプリのルート ページへの移動で認証が要求されると、`iframe` 要素が入れ子になるか `X-Frame-Options: deny` エラーになる場合があります。
 

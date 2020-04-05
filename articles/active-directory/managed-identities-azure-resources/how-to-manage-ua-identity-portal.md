@@ -16,11 +16,11 @@ ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10caa9e5e61dc1dd0c1062583f55a7357c643ce5
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547456"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224903"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Azure Portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする
 
@@ -42,10 +42,10 @@ Azure リソースのマネージド ID は、Azure Active Directory で管理�
 1. Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure portal](https://portal.azure.com) にサインインして、ユーザー割り当てマネージド ID を作成します。
 2. 検索ボックスに "*マネージド ID*" と入力して、 **[サービス]** の下で **[マネージド ID]** をクリックします。
 3. **[追加]** をクリックして、 **[ユーザー割り当てマネージド ID の作成]** ウィンドウの次のフィールドに値を入力します。
-   - **[リソース名]** :これは、ユーザー割り当てマネージド ID の名前です。たとえば、UAI1 とします。
-   - **サブスクリプション**:ユーザー割り当てマネージド ID を作成するサブスクリプションを選択します。
-   - **[リソース グループ]** :ユーザー割り当てマネージド ID を含める新しいリソース グループを作成するか、 **[既存のものを使用]** を選択して既存のリソース グループにユーザー割り当てマネージド ID を作成します。
-   - **[場所]** :ユーザー割り当てマネージド ID をデプロイする場所を選択します。たとえば、 **[米国西部]** などです。
+   - **[リソース名]** : これは、ユーザー割り当てマネージド ID の名前です。たとえば、UAI1 とします。
+   - **[サブスクリプション]** : ユーザー割り当てマネージド ID を作成するサブスクリプションを選択します。
+   - **[リソース グループ]** : ユーザー割り当てマネージド ID を含める新しいリソース グループを作成するか、 **[既存のものを使用]** を選択して既存のリソース グループにユーザー割り当てマネージド ID を作成します。
+   - **[場所]** : ユーザー割り当てマネージド ID をデプロイする場所を選択します。たとえば、**West US** です。
 4. **Create** をクリックしてください。
 
 ![ユーザー割り当てマネージド ID を作成する](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)

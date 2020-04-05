@@ -5,10 +5,10 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/20/2019
 ms.openlocfilehash: 942bcc6b150f990f9a9acab0d4ef68bfb6125c1b
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71996900"
 ---
 >[!NOTE]

@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: dc7771f29fb5d00aedfe5162a98f5f0c14544a7b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161173"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Azure AD で SAML プロトコルを使用する方法

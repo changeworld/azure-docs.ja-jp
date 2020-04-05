@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 33005bc286f7dc2c0ebed74bd9df0309e71346f5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73824832"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>リモート監視ソリューション アクセラレータの概要
@@ -41,7 +41,7 @@ ms.locfileid: "73824832"
 クラウドのアーキテクチャは、Microsoft がはじめてソリューション アクセラレータをリリースした当時から進化し続けてきました。 [マイクロサービス](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)は、開発速度を犠牲にすることなく、拡張性と柔軟性を達成できることが実証された方法として登場してきました。 Microsoft のサービスは、このアーキテクチャ パターンを内部的に使用し、優れた信頼性とスケーラビリティの成果を出しています。 最新のソリューション アクセラレータには、これらの成果が取り込まれているため、その成果を活用できます。
 
 > [!TIP]
-> マイクロサービス アーキテクチャの詳細については、「[.NET Application Architecture (.NET アプリケーション アーキテクチャ)](https://www.microsoft.com/net/learn/architecture)」および「[Microservices:An application revolution powered by the cloud. (マイクロサービス: クラウドによって実現されるアプリケーションの革命)](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)」を参照してください。
+> マイクロサービス アーキテクチャの詳細については、「[.NET Application Architecture (.NET アプリケーション アーキテクチャ)](https://www.microsoft.com/net/learn/architecture)」および「[Microservices: An application revolution powered by the cloud. (マイクロサービス: クラウドによって実現されるアプリケーションの革命)](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)」を参照してください。
 
 ## <a name="device-connectivity"></a>デバイスの接続性
 
@@ -160,7 +160,7 @@ ASA ジョブは、Time Series Insights に接続されたデバイスからの�
 
 構成マイクロサービスは、ユーザー インターフェイスで構成設定を保存および取得できるようにします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ソース コードと開発者のマニュアルを参照する場合は、次の 2 つの GitHub リポジトリのいずれかを参照してください。
 

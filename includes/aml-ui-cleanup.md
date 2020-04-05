@@ -9,10 +9,10 @@ author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
 ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75659876"
 ---
 >[!IMPORTANT]

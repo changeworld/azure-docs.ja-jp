@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426497"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>SQL Database からの参照データを Azure Stream Analytics ジョブに使用する
@@ -201,5 +201,5 @@ Azure Stream Analytics は、任意の種類の Azure SQL Database で動作し�
 ## <a name="next-steps"></a>次のステップ
 
 * [Stream Analytics での参照に参照データを使用する](stream-analytics-use-reference-data.md)
-* [クイック スタート:Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)
+* [クイック スタート: Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)
 * [Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする (プレビュー)](stream-analytics-live-data-local-testing.md)

@@ -17,10 +17,10 @@ ms.date: 09/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96a49df85f02083571e84ec884b37fb43b0d4001
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72245880"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-identity-management"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Adobe Identity Management の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72245880"
 
 * Adobe Identity Management にアクセス権を持つユーザーを Azure AD で管理できます。
 * ユーザーが自分の Azure AD アカウントで Adobe Identity Management に自動的にサインインできるようにすることができます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

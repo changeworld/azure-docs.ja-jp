@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: f4001ee520f3f3136d1bac5ca047c80526fc92e6
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74455648"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure Blockchain Service での制限事項
@@ -56,6 +56,6 @@ Azure Blockchain Service のサービスと機能には、メンバーが持つ�
 
     Azure Blockchain Service で使用できる修正プログラムの適用、更新、および台帳バージョンについて詳しくは、「[Patching, updates, and versions (修正プログラムの適用、更新、およびバージョン)](ledger-versions.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 システムのパッチ適用とアップグレードに関するポリシーについて学習する - [修正プログラムの適用、更新、およびバージョン](ledger-versions.md)。

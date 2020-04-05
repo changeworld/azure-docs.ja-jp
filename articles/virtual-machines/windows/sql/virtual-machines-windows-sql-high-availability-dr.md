@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
 ms.openlocfilehash: f58bb534728660b85f7d16910dde7a37914fd571
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933956"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226635"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー
 

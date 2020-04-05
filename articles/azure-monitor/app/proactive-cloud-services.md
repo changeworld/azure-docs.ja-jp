@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.openlocfilehash: 997c5e063c4181a597520e60e2a7669401b9677d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669745"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Azure Diagnostics と Azure Application Insights の統合を使用して Azure Cloud Services での問題に関するアラートを設定する

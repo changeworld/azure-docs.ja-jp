@@ -7,10 +7,10 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: cafeea8afe571fc81548833952eee72a695fed41
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459363"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け Apache Cordova クライアント ライブラリの使用方法
@@ -27,7 +27,7 @@ ms.locfileid: "77459363"
 * Windows Phone 8.1
 * ユニバーサル Windows プラットフォーム
 
-## <a name="Setup"></a>セットアップと前提条件
+## <a name="setup-and-prerequisites"></a><a name="Setup"></a>セットアップと前提条件
 このガイドでは、バックエンドとテーブルを作成済みであることを前提としています。 このガイドでは、テーブルのスキーマが、これらのチュートリアルのテーブルの場合と同じであることを前提とします。 さらに、Apache Cordova プラグインがコードに追加済みであることを前提とします。  まだこれらの操作を行っていない場合は、次のコマンド ラインで Apache Cordova プラグインをプロジェクトに追加します。
 
 ```
@@ -36,7 +36,7 @@ cordova plugin add cordova-plugin-ms-azure-mobile-apps
 
 Apache Cordova アプリを初めて作成する場合は、 [こちら]のドキュメントを参照してください。
 
-## <a name="ionic"></a>Ionic v2 アプリのセットアップ
+## <a name="setting-up-an-ionic-v2-app"></a><a name="ionic"></a>Ionic v2 アプリのセットアップ
 
 Ionic v2 プロジェクトを適切に構成するには、最初に基本的なアプリを作成してから、Cordova プラグインを追加します。
 
@@ -64,7 +64,7 @@ Azure Mobile Apps の Cordova プラグインは、Ionic v1 アプリと Ionic v
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>ユーザーを認証する
+## <a name="how-to-authenticate-users"></a><a name="auth"></a>ユーザーを認証する
 Azure App Service は、Facebook、Google、Microsoft アカウント、Twitter などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートしています。 テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。 さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。 詳細については、チュートリアル「 [モバイル サービスでの認証の使用] 」を参照してください。
 
 Apache Cordova アプリで認証を使用する場合は、次の Cordova プラグインが使用できる状態になければなりません。
@@ -76,7 +76,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>外部リダイレクト URL 用に Mobile App Service を構成する方法
+### <a name="how-to-configure-your-mobile-app-service-for-external-redirect-urls"></a><a name="configure-external-redirect-urls"></a>外部リダイレクト URL 用に Mobile App Service を構成する方法
 いくつかの種類の Apache Cordova アプリケーションでは、ループバック機能を使用して OAuth UI フローを処理します。  既定では認証サービスで認識されるのはサービスの利用方法だけであるため、localhost 上の OAuth UI フローによって問題が発生します。  問題のある OAuth UI フローの例は次のとおりです。
 
 * Ripple エミュレーター
@@ -116,7 +116,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 
 新しい設定が有効になるまで約 10 ～ 15 秒かかります。
 
-## <a name="register-for-push"></a>プッシュ通知に登録する
+## <a name="how-to-register-for-push-notifications"></a><a name="register-for-push"></a>プッシュ通知に登録する
 プッシュ通知を処理するには、 [phonegap-plugin-push] をインストールします。  このプラグインは、コマンド ラインで `cordova plugin add` コマンドを使用するか、Visual Studio 内で Git プラグイン インストーラーを使用することで簡単に追加できます。  Apache Cordova アプリの次のコードによって、デバイスがプッシュ通知に登録されます。
 
 ```javascript

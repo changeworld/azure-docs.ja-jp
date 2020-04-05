@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: danlep
 ms.openlocfilehash: edf7b7c7c7c94fd269f69bd8c5e13e53a6de1c03
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77117823"
 ---
 ### <a name="regions-and-resource-availability"></a>リージョンとリソースの可用性

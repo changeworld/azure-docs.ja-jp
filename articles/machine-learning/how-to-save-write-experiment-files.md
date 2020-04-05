@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79078413"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning の実験でファイルを保存する場所と書き込む場所
@@ -54,7 +54,7 @@ Your total snapshot size exceeds the limit of 300.0 MB
 実験の説明&nbsp;|ストレージ制限の解決策
 ---|---
 ファイル数は 2000 未満で、データストアを使用できない場合| 次を使用してスナップショットのサイズ制限を上書きします。 <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> ファイルの数とサイズによっては、これには数分間かかる場合があります。
-特定のスクリプト ディレクトリを使用する必要がある場合| `.amlignore` ファイルを作成して、ソース コードの一部でないファイルを実験スナップショットから除外します。 `.amlignore` ファイルにファイル名を追加し、それをトレーニング スクリプトと同じディレクトリに入れます。 `.amlignore` ファイルは、`.gitignore` ファイルと同じ[構文とパターン](https://git-scm.com/docs/gitignore)を使用します。
+特定のスクリプト ディレクトリを使用する必要がある場合| `.amlignore` ファイルを作成して、ソース コードの一部でないファイルを実験スナップショットから除外します。 `.amlignore` ファイルにファイル名を追加し、それをトレーニング スクリプトと同じディレクトリに入れます。 `.amlignore` ファイルは、[ ファイルと同じ](https://git-scm.com/docs/gitignore)構文とパターン`.gitignore`を使用します。
 パイプライン|ステップごとに異なるサブディレクトリを使用します。
 Jupyter Notebook| `.amlignore` ファイルを作成するか、ノートブックを新しい空のサブディレクトリに移動して、コードをもう一度実行します。
 

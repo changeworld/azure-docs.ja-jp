@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 01/06/2020
 ms.author: dapine
 ms.openlocfilehash: 700a04b58c13a9c7fd5301875226ca234cabeb96
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75689449"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Azure CLI から Azure コンテナー インスタンス リソースを作成する

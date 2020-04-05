@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 146c531805ff22544797c44c8df32b0e5d1e83b0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: c1fd688fbfd892e3d0dfc3ebb1712dd931e0ed39
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74774210"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063498"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL サーバーを再起動する
 このトピックでは、Azure Database for MySQL サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。
@@ -38,6 +38,6 @@ ms.locfileid: "74774210"
 az mysql server restart --name mydemoserver --resource-group myresourcegroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Database for MySQL でパラメーターを設定する方法](howto-configure-server-parameters-using-cli.md)について確認する

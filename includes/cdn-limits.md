@@ -4,14 +4,14 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 04/29/2019
 ms.author: magattus
-ms.openlocfilehash: f5cef027dfa38bfb68f24c990047719e540ff0a1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7dd97fa49931168b9a42b5c9ac7887b84298a5f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224437"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335055"
 ---
-| リソース | 既定の制限 |
+| リソース | 制限 |
 | --- | --- |
 | Azure Content Delivery Network のプロファイル数 |25 |
 | プロファイルあたりの Content Delivery Network のエンドポイント数 |25 |

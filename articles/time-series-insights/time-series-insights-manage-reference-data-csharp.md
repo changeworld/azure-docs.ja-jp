@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.custom: seodec18
 ms.openlocfilehash: cf5f89197798f95dced5bfd8817f1df050297048
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76962001"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>C# を使用して Azure Time Series Insights 環境の GA 参照データを管理する
@@ -44,11 +44,11 @@ ms.locfileid: "76962001"
 
 1. 自分の環境内で[参照データ セットを作成します](time-series-insights-add-reference-data-set.md)。 次の参照データ スキームを使用します。
 
-   | キー名 | Type |
+   | キー名 | 種類 |
    | --- | --- |
    | uuid | String | 
 
-1. [認証と承認](time-series-insights-authentication-and-authorization.md)に関するページにある説明に基づき、Azure Active Directory で Azure Time Series Insights 環境を設定します。 **リダイレクト URI** として `http://localhost:8080/` を使用します。
+1. [認証と承認](time-series-insights-authentication-and-authorization.md)に関するページにある説明に基づき、Azure Active Directory で Azure Time Series Insights 環境を設定します。 `http://localhost:8080/`リダイレクト URI**として** を使用します。
 
 1. 必要なプロジェクト依存関係をインストールします。
 

@@ -5,10 +5,10 @@ keywords: azure、chef、devops、仮想マシン、概要、自動化、inspec
 ms.date: 03/19/2019
 ms.topic: article
 ms.openlocfilehash: 2531277eb1aa6048c93240031652e09582409e56
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158234"
 ---
 # <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>Azure インフラストラクチャのコンプライアンス オートメーションのために InSpec を使用する
@@ -35,7 +35,7 @@ Azure は、[Azure Policy ゲスト構成](/azure/governance/policy/concepts/gue
 
 InSpec を使用すれば、四半期、年 1 回などのあらかじめ決められた間隔だけでなく、いつでも監査質問に答えることができます。 InSpec のテストを継続的に実施することで、コンプライアンスの体制と履歴を正確に知る監査周期に入ることになるため、監査者の発見に驚かされることがなくなります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Azure Cloud Shell で InSpec を試行する](https://shell.azure.com)

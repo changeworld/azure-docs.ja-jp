@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と TigerText Secure Messenger の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と TigerText Secure Messenger の統合 | Microsoft Docs'
 description: Azure Active Directory と TigerText Secure Messenger の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: ea3bda1dd51a7c3a2e5e3f8b669d7138898f1595
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67088671"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>チュートリアル:Azure Active Directory と TigerText Secure Messenger の統合
+# <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>チュートリアル: Azure Active Directory と TigerText Secure Messenger の統合
 
 このチュートリアルでは、TigerText Secure Messenger と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -51,7 +51,7 @@ TigerText Secure Messenger では、SP によって開始されるシングル �
 
 Azure AD への TigerText Secure Messenger の統合を構成するには、Azure Marketplace からマネージド SaaS アプリの一覧に TigerText Secure Messenger を追加する必要があります。
 
-1. [Azure Portal](https://portal.azure.com?azure-portal=true) にサインインします。
+1. [Azure portal](https://portal.azure.com?azure-portal=true) にサインインする
 1. 左ウィンドウで、 **[Azure Active Directory]** を選択します。
 
     ![[Azure Active Directory] オプション](common/select-azuread.png)

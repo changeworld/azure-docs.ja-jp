@@ -10,13 +10,13 @@ ms.date: 12/09/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 38c739ecdbfd54627d4fc45f807705e32dc94f30
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79086210"
 ---
-|Language                                 |1.x         |2.x| 3.x |
+|言語                                 |1.x         |2.x| 3.x |
 |-----------------------------------------|------------|---| --- |
 |[C#](../articles/azure-functions/functions-reference-csharp.md)|GA (.NET Framework 4.7)|GA (.NET Core 2.2)| GA (.NET Core 3.1) |
 |[JavaScript](../articles/azure-functions/functions-reference-node.md#node-version)|GA (Node 6)|GA (Node 8、10)| GA (Node 10、12) |

@@ -9,10 +9,10 @@ ms.date: 04/06/2018
 ms.author: mimig
 ms.custom: include file
 ms.openlocfilehash: cb6fcdc8077db3a46623df0c33bad757c47d2ba2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67180919"
 ---
 > [!TIP]

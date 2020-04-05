@@ -14,10 +14,10 @@ ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a1f4addf9bb1fff34d99867fb3730a9197c9c05
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73721226"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Azure Active Directory Premium エディションにサインアップする
@@ -97,5 +97,5 @@ EMS の詳細については、[Enterprise Mobility + Security の Web サイト
 
 通常、アクティブ化のプロセスにかかる時間は数分のみで、その後は、お使いの Azure AD テナントを使用できるようになります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure AD Premium を利用できるようになったので、[ドメインのカスタマイズ](add-custom-domain.md)、[企業ブランド](customize-branding.md)の追加、[テナントの作成](active-directory-access-create-new-tenant.md)、および[グループ](active-directory-groups-create-azure-portal.md)と[ユーザー](add-users-azure-active-directory.md)の追加が可能です。

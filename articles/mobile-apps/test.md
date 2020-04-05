@@ -1,18 +1,18 @@
 ---
 title: Visual Studio App Center を使用して、多数の実際のデバイスでモバイル アプリケーションをテストする
 description: 多数の実際のデバイスでモバイル アプリケーションを継続的にテストするサービスとしての Visual Studio App Center について学習します。
-author: elamalani
+author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-0000-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 18331de5d362aa7dfedcf5bb6cff893a2893f604
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 05fa29e4b79cdbec7d925b2a35bd3fdf0bb03213
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453078"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240089"
 ---
 # <a name="perform-automated-testing-on-thousands-of-mobile-devices-simultaneously"></a>多数のモバイル デバイスで同時に自動テストを実行する
 デバイスの断片化、アプリケーションの複雑さ、迅速なリリース サイクル、セッションの短縮、ユーザーの期待の高まりにより、テストが難しく、ますます複雑になる可能性があります。 優れたカスタマー エクスペリエンスを実現する、徹底的にテストされたアプリケーションを配布することを、定期的に確認する必要があります。 テストは簡単な作業ではなく、開発者が各リリースを手動でテストするのは適切ではありません。
@@ -38,5 +38,5 @@ ms.locfileid: "75453078"
    - iOS、Android、Xamarin、React Native のプラットフォームのサポート。
 
 **参照**
-   - [Visual Studio App Center でのサインアップ](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 
+   - [Visual Studio App Center にサインアップする](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 
    - [App Center テストを使ってみる](/appcenter/test-cloud/)

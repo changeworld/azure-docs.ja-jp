@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/20/2018
 ms.author: cherylmc
 ms.openlocfilehash: 686ac8013879eff8adc4476d56119bbb4a169900
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74813161"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>チュートリアル:ExpressRoute 回線の作成と変更
@@ -34,9 +34,9 @@ ms.locfileid: "74813161"
 * 新しいネットワーク リソースを作成するアクセス許可があることを確認します。 適切なアクセス許可がない場合は、アカウント管理者に連絡してください。
 * 手順をより理解するため、開始する前に[ビデオを確認](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)できます。
 
-## <a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
 
-### <a name="1-sign-in-to-the-azure-portal"></a>1.Azure ポータルにサインインします。
+### <a name="1-sign-in-to-the-azure-portal"></a>1.Azure portal にサインインする
 
 ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
@@ -87,19 +87,19 @@ ms.locfileid: "74813161"
 新しい ExpressRoute 回線を作成する場合、この回線は次の状態になります。
 
 プロバイダーの状態: 未プロビジョニング<BR>
-回線の状態: 有効
+回線の状態: Enabled
 
 ![プロビジョニング プロセスの開始](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 回線は、接続プロバイダーが有効にしている間、次の状態に変化します。
 
 プロバイダーの状態: プロビジョニング<BR>
-回線の状態: 有効
+回線の状態: Enabled
 
 ExpressRoute 回線をユーザーが使用できるように、次の状態にする必要があります。
 
 プロバイダーの状態: プロビジョニング済み<BR>
-回線の状態: 有効
+回線の状態: Enabled
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5.回線キーのステータスと状態を定期的に確認する
 
@@ -118,11 +118,11 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
 
 次に、ExpressRoute 回線に仮想ネットワークをリンクします。 Resource Manager デプロイ モデルを使用するときは、「[ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-arm.md)」を参照してください。
 
-## <a name="status"></a>ExpressRoute 回線の状態の取得
+## <a name="getting-the-status-of-an-expressroute-circuit"></a><a name="status"></a>ExpressRoute 回線の状態の取得
 
 回線を選択し、[概要] ページを表示することで回線の状態を表示できます。
 
-## <a name="modify"></a>ExpressRoute 回線の変更
+## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>ExpressRoute 回線の変更
 
 ExpressRoute 回線の特定のプロパティは、接続に影響を与えることなく変更できます。 帯域幅、SKU、課金モデルを変更し、 **[構成]** ページの従来の操作を許可することができます。 制限と制約事項の詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
@@ -151,7 +151,7 @@ ExpressRoute 回線を変更するには、 **[構成]** をクリックしま�
 
 ![回線の変更](./media/expressroute-howto-circuit-portal-resource-manager/modify-circuit-configuration.png)
 
-## <a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
 
 **[削除]** アイコンを選択し、ExpressRoute 回線を削除できます。 次の情報をメモしておきます。
 
@@ -159,7 +159,7 @@ ExpressRoute 回線を変更するには、 **[構成]** をクリックしま�
 * ExpressRoute 回線サービス プロバイダーのプロビジョニング状態が**プロビジョニング中**または**プロビジョニング済み**の場合、サービス プロバイダー側の回線のプロビジョニングを解除するには、サービス プロバイダーに連絡する必要があります。 Microsoft は、サービス プロバイダーが回線のプロビジョニング解除を完了し、通知するまで、リソースの予約と課金を続行します。
 * サービス プロバイダーが回線のプロビジョニングを解除済み (サービス プロバイダーのプロビジョニング状態が**未プロビジョニング**に設定されている) の場合、回線を削除することができます。 これによって回線の課金が停止されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 回線を作成したら、次の手順に移ります。
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と GaggleAMP の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と GaggleAMP の統合 | Microsoft Docs'
 description: Azure Active Directory と GaggleAMP の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 4a6dc3dc2b0580f72ffae5cb5d034b0acdb64612
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73155392"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>チュートリアル:Azure Active Directory と GaggleAMP の統合
+# <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>チュートリアル: Azure Active Directory と GaggleAMP の統合
 
 このチュートリアルでは、GaggleAMP と Azure Active Directory (Azure AD) を統合する方法について説明します。
 GaggleAMP と Azure AD の統合には、次の利点があります。
@@ -148,7 +148,7 @@ GaggleAMP で Azure AD シングル サインオンを構成するには、次�
     
     d. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーして、 **[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
     
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 

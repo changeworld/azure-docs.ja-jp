@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 6c4923e86f8678458d6301503043413fb8a5629b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78197370"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault のスロットル ガイダンス

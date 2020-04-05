@@ -8,11 +8,11 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.openlocfilehash: cd6cb68014eea00077328f39c2c9bf0a1f7fb679
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436291"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "61330679"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API でデータを期限切れにする
 
@@ -76,6 +76,6 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 ![ポータルでのドキュメントごとの TTL 機能のアクティブ化を示すスクリーンショット](./media/mongodb-ttl/mongodb_portal_ttl.png) 
 
-## <a name="next-steps"></a>次の手順
-* [TTL を使用して Azure Cosmos DB 内のデータを自動的に期限切れにします。](../cosmos-db/time-to-live.md)
+## <a name="next-steps"></a>次のステップ
+* [Time to Live を使用して Azure Cosmos DB のデータの有効期限が自動的に切れるようにする](../cosmos-db/time-to-live.md)
 * [Azure Cosmos DB の MongoDB 用 API を使用して構成された Cosmos データベースのインデックスを作成します。](../cosmos-db/mongodb-indexing.md)

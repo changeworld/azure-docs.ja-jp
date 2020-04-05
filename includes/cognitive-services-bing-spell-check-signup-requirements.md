@@ -5,10 +5,10 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/16/2019
 ms.openlocfilehash: 7c7e6fb7cc99a155c4e89ae930943f79a725beb3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75382857"
 ---
 ## <a name="create-an-azure-resource"></a>Azure リソースを作成する

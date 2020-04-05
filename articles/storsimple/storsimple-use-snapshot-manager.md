@@ -16,10 +16,10 @@ ms.date: 06/05/2017
 ms.author: twooley
 ms.custom: ''
 ms.openlocfilehash: 56771d2e62289485017f34c6a9ab26e1d53610ec
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75933970"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>StorSimple Snapshot Manager ユーザー インターフェイスを使用してバックアップ ジョブとバックアップ カタログを管理する

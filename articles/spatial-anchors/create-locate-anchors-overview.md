@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: f406edb42204e7ffc94bcbfa1e22b269aea67b32
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74270454"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Azure Spatial Anchors を使用してアンカーを作成および探知する方法
@@ -21,7 +21,7 @@ Azure Spatial Anchors を使用して、世界中の異なるデバイス間で�
 
 これは複数の異なる開発環境をサポートしています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、自分の開発環境を選択して続行してください。
 
 > [!div class="nextstepaction"]

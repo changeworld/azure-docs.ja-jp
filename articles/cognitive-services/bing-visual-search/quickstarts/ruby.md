@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: e19f582084bec6915f95cf16fd8571b8d99da6fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75379642"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>クイック スタート:Bing Visual Search REST API と Ruby を使用して画像に関する分析情報を取得する
@@ -134,7 +134,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ```
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 次の JSON は出力のセグメントです。
 

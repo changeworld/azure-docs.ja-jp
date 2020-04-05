@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113069"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Azure Cognitive Search での OData コレクション フィルターの概要
@@ -186,7 +186,7 @@ Azure Cognitive Search でコレクションのフィールドの[フィルタ�
 
 許可されるフィルターと許可されないフィルターの種類の具体的な例については、「[有効なコレクション フィルターを記述する方法](search-query-troubleshoot-collection-filters.md#bkmk_examples)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 - [Azure Cognitive Search での OData コレクション フィルターのトラブルシューティング](search-query-troubleshoot-collection-filters.md)
 - [Azure Cognitive Search のフィルター](search-filters.md)

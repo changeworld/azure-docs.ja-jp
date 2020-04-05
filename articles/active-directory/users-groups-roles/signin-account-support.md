@@ -14,10 +14,10 @@ ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 221ab7c50a84650f1b2adf3fdb2b284365795f42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74024282"
 ---
 # <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Azure Active Directory での Microsoft アカウントのサインイン オプション
@@ -34,6 +34,6 @@ Azure Active Directory (Azure AD) の Microsoft 365 サインイン ページで
 
 [追加のサインイン オプションは個人用の Microsoft アカウントに対してのみ機能します](https://azure.microsoft.com/updates/microsoft-account-signin-options/ )が、職場または学校アカウント リソースへのサインインには使用できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [サインイン ブランドのカスタマイズ](../fundamentals/add-custom-domain.md)

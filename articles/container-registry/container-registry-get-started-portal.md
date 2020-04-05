@@ -2,18 +2,18 @@
 title: クイックスタート - ポータルでのレジストリの作成
 description: Azure Container Registry で Azure portal を使用してプライベート Docker レジストリを作成する方法を簡単に説明します。
 ms.topic: quickstart
-ms.date: 01/22/2019
+ms.date: 03/03/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 319fd670c8e82120ef63e94395f4d6809eeb2601
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 6fe6358655f50ab783b4017efa8ee1db351cd018
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611238"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79409270"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>クイック スタート:Azure portal を使用したプライベート コンテナー レジストリの作成
 
-Azure Container Registry は、プライベート Docker コンテナー イメージを保存および管理する Azure のプライベート Docker レジストリです。 このクイックスタートでは、Azure Portal を使用してコンテナー レジストリを作成します。 次に、Docker コマンドを使用してコンテナー イメージをレジストリにプッシュし、最後にレジストリからイメージをプルして実行します。
+Azure Container Registry は、プライベート Docker コンテナー イメージと関連成果物を保存および管理する Azure のプライベート Docker レジストリです。 このクイックスタートでは、Azure Portal を使用してコンテナー レジストリを作成します。 次に、Docker コマンドを使用してコンテナー イメージをレジストリにプッシュし、最後にレジストリからイメージをプルして実行します。
 
 レジストリにログインし、コンテナー イメージを操作するために、このクイック スタートでは、Azure CLI を実行している必要があります (バージョン 2.0.55 以降を推奨)。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
@@ -29,9 +29,11 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ![Azure Portal でコンテナー レジストリを作成する][qs-portal-01]
 
-**[レジストリ名]** と **[リソース グループ]** に値を入力します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 このクイック スタートでは、`myResourceGroup` という名前の新しいリソース グループを `West US` に作成し、 **[SKU]** には [Basic] を選択します。 **[作成]** を選択して ACR インスタンスをデプロイします。
+**[基本]** タブで **[リソース グループ]** と **[レジストリ名]** の値を入力します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 このクイック スタートでは、`myResourceGroup` という名前の新しいリソース グループを `West US` に作成し、 **[SKU]** には [Basic] を選択します。 
 
 ![Azure portal でコンテナー レジストリを作成する][qs-portal-03]
+
+残りの設定は既定値のままにします。 次に、 **[Review + create]\(確認と作成\)** を選択します。 設定を確認したら **[作成]** を選択します。
 
 このクイック スタートでは、*Basic* レジストリを作成します。これは、Azure Container Registry について学習している開発者にとって、コストが最適なオプションです。 利用可能なサービス レベルの詳細については、[コンテナー レジストリの SKU][container-registry-skus] に関するページを参照してください。
 
@@ -39,11 +41,11 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ![Azure portal でのコンテナー レジストリの概要][qs-portal-05]
 
-**ログイン サーバー**の値を書き留めておきます。 後の手順で、Azure CLI および Docker を使用してレジストリを操作するときに、この値を使用します。
+**ログイン サーバー**の値を書き留めておきます。 後続の手順で Docker でイメージをプッシュし、プルするとき、この値を使用します。
 
 ## <a name="log-in-to-registry"></a>レジストリへのログイン
 
-コンテナー イメージをプッシュしたりプルしたりするには、あらかじめ ACR インスタンスにログインしておく必要があります。 オペレーティング システムでコマンド シェルを開き、Azure CLI で [az acr login][az-acr-login] コマンドを使用します (コンテナー名のみを指定します。 "azurecr.io" は含めないでください)。
+コンテナー イメージをプッシュしたりプルしたりするには、あらかじめ ACR インスタンスにログインしておく必要があります。 オペレーティング システムでコマンド シェルを開き、Azure CLI で [az acr login][az-acr-login] コマンドを使用します。 (ログイン時、レジストリ名のみを指定します。 "azurecr.io" サフィックスは含めないでください)
 
 ```azurecli
 az acr login --name <acrName>

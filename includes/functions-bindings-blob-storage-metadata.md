@@ -10,15 +10,15 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 3788fdb954917f28f64a0dfe035bed4ded0932d5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "69641875"
 ---
 BLOB トリガーは、いくつかのメタデータ プロパティを提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらの値は、[CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) 型と同じセマンティクスを持ちます。
 
-|プロパティ  |Type  |説明  |
+|プロパティ  |種類  |説明  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|トリガーする BLOB のパス。|
 |`Uri`|`System.Uri`|プライマリ ロケーションの BLOB URI。|

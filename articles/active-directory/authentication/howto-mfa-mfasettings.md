@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 077032e4fe3886d5bf9a678dffdffca1a5802091
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848410"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230955"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -35,7 +35,7 @@ Azure portal で Azure Multi-Factor Authentication に関連する設定にア�
 | アカウントのロックアウト | 連続して拒否された認証試行が多すぎる場合に、Multi-Factor Authentication サービス内でアカウントを一時的にロックします。 この機能は、認証のために PIN を入力するユーザーにのみ適用されます。 (MFA サーバー) |
 | [ユーザーのブロック/ブロック解除](#block-and-unblock-users) | 特定のユーザーが Multi-Factor Authentication 要求を受信できないようにするために使用されます。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。 |
 | [不正アクセスのアラート](#fraud-alert) | ユーザーが不正な確認要求をレポートできるかどうかに関する設定を構成します |
-| [Notifications](#notifications) | MFA サーバーからのイベントの通知を有効にします。 |
+| [通知](#notifications) | MFA サーバーからのイベントの通知を有効にします。 |
 | [OATH トークン](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | クラウドベースの Azure MFA 環境で、ユーザーの OATH トークンを管理するために使用されます。 |
 | [電話の設定](#phone-call-settings) | クラウド環境とオンプレミス環境の電話と案内メッセージに関連する設定を構成します。 |
 | プロバイダー | アカウントに関連付けた可能性がある既存の認証プロバイダーを表示します。 2018 年 9 月 1 日時点では、新しい認証プロバイダーは作成できません |
@@ -97,7 +97,7 @@ Azure portal で Azure Multi-Factor Authentication に関連する設定にア�
 
 ### <a name="view-fraud-reports"></a>不正アクセスの通報を表示する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]**  >  **[サインイン]** の順に選択します。これで、不正アクセスの通報が標準の Azure AD サインイン レポートの一部になります。
 
 ## <a name="notifications"></a>通知
@@ -192,7 +192,7 @@ _ワンタイム バイパス_ 機能は、2 段階認証の実行なしでユ�
 
 ### <a name="view-the-one-time-bypass-report"></a>ワンタイム バイパス レポートを表示する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[ワンタイム バイパス]** の順に移動します。
 
 ## <a name="caching-rules"></a>キャッシュ規則
@@ -277,7 +277,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 
 既定では、ユーザーはアプリ パスワードを作成できません。 アプリ パスワード機能を有効にする必要があります。 ユーザーがアプリ パスワードを作成できるようにするには、次の手順を使用します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側の **[Azure Active Directory]**  >  **[ユーザー]** を選択します。
 3. **[Multi-Factor Authentication]** を選択します。
 4. [Multi-Factor Authentication] の下で **[サービス設定]** を選択します。
@@ -301,7 +301,7 @@ Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネー
 | Azure AD テナントの種類 | 信頼できる IP 機能のオプション |
 |:--- |:--- |
 | マネージド |**Specific range of IP addresses\(特定範囲の IP アドレス\)** : 管理者は、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスできる IP アドレスの範囲を指定します。 最大 50 の信頼できる IP 範囲を構成できます。|
-| フェデレーション |**すべてのフェデレーション ユーザー**: 組織の内部からサインインするすべてのフェデレーション ユーザーは、2 段階認証をバイパスできます。 ユーザーは、Active Directory フェデレーション サービス (AD FS) によって発行される要求を使用して認証をバイパスします。<br/>**[Specific range of IP addresses]\(特定範囲の IP アドレス\)** : 管理者は、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスできる IP アドレスの範囲を指定します。 |
+| フェデレーション |**すべてのフェデレーション ユーザー**: 組織の内部からサインインするすべてのフェデレーション ユーザーは、2 段階認証をバイパスできます。 ユーザーは、Active Directory フェデレーション サービス (AD FS) によって発行される要求を使用して認証をバイパスします。<br/>**Specific range of IP addresses\(特定範囲の IP アドレス\)** : 管理者は、会社のイントラネットからサインインするユーザーの 2 段階認証をバイパスできる IP アドレスの範囲を指定します。 |
 
 信頼できる IP バイパスは会社のイントラネット内からのみ機能します。 **[すべてのフェデレーション ユーザー]** オプションを選択したときに、ユーザーが会社のイントラネットの外部からサインインした場合は、2 段階認証を使用してそのユーザーを認証する必要があります。 ユーザーが AD FS 要求を提示している場合でもプロセスは同じです。 
 
@@ -317,17 +317,17 @@ Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネー
 
 ### <a name="enable-named-locations-by-using-conditional-access"></a>条件付きアクセスを使用したネームド ロケーションの有効化
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側で、 **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]**  >  **[ネームド ロケーション]** を選択します。
 3. **[新しい場所]** を選択します。
 4. 場所の名前を入力します。
 5. **[信頼できる場所としてマークする]** を選択します。
 6. IP 範囲を CIDR 表記 (**192.168.1.1/24** など) で入力します。
-7. **作成** を選択します。
+7. **［作成］** を選択します
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>条件付きアクセスを使用した信頼できる IP 機能の有効化
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側で、 **[Azure Active Directory]**  >  **[セキュリティ]**  >   **[条件付きアクセス]**  >  **[ネームド ロケーション]** を選択します。
 3. **[MFA の信頼できる IP の構成]** を選択します。
 4. **[サービス設定]** ページの **[信頼できる IP]** で、次の 2 つのオプションのいずれかを選択します。
@@ -345,7 +345,7 @@ Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネー
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>サービス設定を使用した信頼できる IP 機能の有効化
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側の **[Azure Active Directory]**  >  **[ユーザー]** を選択します。
 3. **[Multi-Factor Authentication]** を選択します。
 4. [Multi-Factor Authentication] の下で **[サービス設定]** を選択します。
@@ -368,7 +368,7 @@ Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネー
 
 ユーザーは、自分のアカウントを Azure Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、「[アカウントへの 2 段階認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください。
 
-| 方法 | 説明 |
+| Method | 説明 |
 |:--- |:--- |
 | 電話の呼び出し |自動音声通話を行います。 ユーザーは、呼び出しに応答し、電話のキーパッドの # を押して認証を行います。 電話番号は、オンプレミスの Active Directory には同期されません。 |
 | 電話へのテキスト メッセージ |確認コードを含むテキスト メッセージを送信します。 ユーザーは、この確認コードをサインイン インターフェイスに入力するように求められます。 このプロセスを一方向の SMS といいます。 双方向の SMS は、ユーザーが特定のコードを返信する必要があることを意味します。 双方向の SMS は非推奨となり、2018 年 11 月 14 日以降はサポートされなくなります。 管理者は、以前に双方向の SMS を使用していたユーザーに対して別の方法を有効にする必要があります。|
@@ -377,12 +377,12 @@ Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネー
 
 ### <a name="enable-and-disable-verification-methods"></a>検証方法を有効または無効にする
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側の **[Azure Active Directory]**  >  **[ユーザー]** を選択します。
 3. **[Multi-Factor Authentication]** を選択します。
 4. [Multi-Factor Authentication] の下で **[サービス設定]** を選択します。
 5. **[サービスの設定]** ページの **[検証オプション]** で、ユーザーに提供する方法を選択/選択解除します。
-6. **[Save]** をクリックします。
+6. **[保存]** をクリックします。
 
 認証方法の使用の詳細については、「[認証方法とは](concept-authentication-methods.md)」を参照してください。
 
@@ -413,7 +413,7 @@ Multi-Factor Authentication の記憶機能では、ブラウザーでユーザ�
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Multi-Factor Authentication の記憶を有効にする
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側の **[Azure Active Directory]**  >  **[ユーザー]** を選択します。
 3. **[Multi-Factor Authentication]** を選択します。
 4. [Multi-Factor Authentication] の下で **[サービス設定]** を選択します。
@@ -425,6 +425,6 @@ Multi-Factor Authentication の記憶機能では、ブラウザーでユーザ�
 
 Multi-Factor Authentication を記憶する機能を有効にすると、ユーザーは、サインイン時に **[今後このメッセージを表示しない]** を選択することで、デバイスを信頼済みとしてマークできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure AD サインイン ページのブランドを変更する](../fundamentals/customize-branding.md)

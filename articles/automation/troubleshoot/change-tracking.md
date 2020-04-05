@@ -10,17 +10,17 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 6cadaea1a20743071acbe8860df02ca7bbdde954
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198532"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>Change Tracking とインベントリのトラブルシューティング
 
 ## <a name="windows"></a>Windows
 
-### <a name="records-not-showing-windows"></a>シナリオ:Windows マシンの Change Tracking レコードが表示されない
+### <a name="scenario-change-tracking-records-arent-showing-for-windows-machines"></a><a name="records-not-showing-windows"></a>シナリオ:Windows マシンの Change Tracking レコードが表示されない
 
 #### <a name="issue"></a>問題
 
@@ -35,7 +35,7 @@ Change Tracking 用にオンボーディングされている Windows マシン�
 * Change Tracking 用の管理パックがダウンロードされていません。
 * オンボードしている VM の複製元が、Microsoft Monitoring Agent がインストールされた状態で sysprep されなかった複製マシンであった可能性があります。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 ここで説明する解決策で問題を解決できる場合があります。 それでもサポートが必要な場合は、診断情報を収集して、サポートにお問い合わせください。 エージェント マシン上で C:\Program Files\Microsoft Monitoring Agent\Agent\Tools に移動し、次のコマンドを実行します。
 
@@ -85,7 +85,7 @@ Change Tracking のためにオンボーディングされている Linux マシ
 * Linux 用 Log Analytics エージェントが正しく構成されていません。
 * ファイルの整合性の監視 (FIM) の競合があります。
 
-#### <a name="resolution"></a>解決策 
+#### <a name="resolution"></a>解像度 
 
 ##### <a name="log-analytics-agent-for-linux-not-running"></a>Linux 用 Log Analytics エージェントが実行されていない
 

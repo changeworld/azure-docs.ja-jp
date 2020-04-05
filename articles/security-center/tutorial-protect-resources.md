@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
 ms.openlocfilehash: 4b40b7c6f755eb2107a09b1b881ea33fa2187f29
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73686338"
 ---
-# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>チュートリアル:Azure Security Center でリソースを保護する
+# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>チュートリアル: Azure Security Center でリソースを保護する
 Security Center は、アクセスおよびアプリケーション制御を使用して悪意のあるアクティビティをブロックすることで、脅威にさらされる状態を軽減します。 Just-In-Time (JIT) 仮想マシン (VM) アクセスは、VM への永続的なアクセスを拒否できるようにして攻撃に対する露出を減らします。 代わりに、必要な場合にのみ VM への制御および監査されたアクセスを提供します。 適応型アプリケーション制御を使用すると、VM 上で実行できるアプリケーションを制御することでマルウェアに対する VM の保護を強化できます。 Security Center は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様がホワイトリスト登録に関する規則を適用するのを支援します。
 
 このチュートリアルで学習する内容は次のとおりです。
@@ -77,7 +77,7 @@ JIT VM アクセスを使用すると、Azure VM へのインバウンド トラ
    **[リソース グループ]** セクションには、3 つのタブがあります。
 
    - **[構成済み]** : アプリケーション制御で構成された VM が含まれているリソース グループの一覧。
-   - **推奨**:アプリケーション制御が推奨されるリソース グループの一覧。
+   - **[推奨]** : アプリケーション制御が推奨されるリソース グループの一覧。
    - **[推奨なし]** : アプリケーション制御の推奨がない VM が含まれているリソース グループの一覧。 たとえば、実行されるアプリケーションが常に変化していて、一定の状態にならない VM などです。
 
 2. アプリケーション制御の推奨があるリソース グループの一覧を表示するには、 **[推奨]** タブを選択します。
@@ -93,7 +93,7 @@ JIT VM アクセスを使用すると、Azure VM へのインバウンド トラ
 
 4. 選択を終了したら、 **[作成]** を選択します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 引き続き次のクイックスタートとチュートリアルを行う予定の場合、Standard レベルの実行を継続して、自動プロビジョニングを有効のままにしてください。 続行しないまたは Free レベルに戻したい場合:
 
 1. Security Center のメイン メニューに戻り、 **[セキュリティ ポリシー]** を選択します。
@@ -113,7 +113,7 @@ JIT VM アクセスを使用すると、Azure VM へのインバウンド トラ
 > 自動プロビジョニングを無効しても、Microsoft Monitoring Agent がプロビジョニングされている Azure VM からエージェントは削除されません。 自動プロビジョニングを無効にすると、リソースのセキュリティの監視が制限されます。
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、脅威にさらされる状態を以下の方法で軽減する方法について説明しました。
 
 > [!div class="checklist"]
@@ -123,7 +123,7 @@ JIT VM アクセスを使用すると、Azure VM へのインバウンド トラ
 次のチュートリアルに進み、セキュリティ インシデントへの対応について学習してください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:セキュリティ インシデントへの対応](tutorial-security-incident.md)
+> [チュートリアル: セキュリティ インシデントへの対応](tutorial-security-incident.md)
 
 <!--Image references-->
 [1]: ./media/tutorial-protect-resources/just-in-time-vm-access.png

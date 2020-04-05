@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: aahi
-ms.openlocfilehash: 60f6443e041c2f3a76a9027bebd33dc29a07f445
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b3c112876bfd2578e6ebaa95c6902aa9b8f832d9
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197472"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79203459"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>方法:Text Analytics API を使用してセンチメントを検出する
 
@@ -160,7 +160,7 @@ Text Analytics API はステートレスです。 データはアカウントに
 
 センチメント アナライザーでは、テキストが主に正または負に分類されます。 0 ～ 1 の範囲のスコアが割り当てられます。 0\.5 に近い値は、中立または不確定です。 0\.5 のスコアは、中立性を示します。 文字列の感情分析をすることができない場合、またはセンチメントがない場合、スコアは必ず正確に 0.5 になります。 たとえば、英語の言語コードでスペイン語の文字列を渡した場合、スコアは 0.5 になります。
 
-出力はすぐに返されます。 JSON を受け入れるアプリケーションに結果をストリーミングすることも、出力をローカル システム上のファイルに保存することもできます。 次に、データの並べ替え、検索、および操作に使用できるアプリケーション内に出力をインポートします。
+出力はすぐに返されます。 JSON を受け入れるアプリケーションに結果をストリーミングすることも、出力をローカル システム上のファイルに保存することもできます。 次に、データの並べ替え、検索、および操作に使用できるアプリケーション内に出力をインポートします。 多言語と絵文字のサポートにより、応答にはテキスト オフセットが含まれる場合があります。 詳細については[オフセットの処理方法](../concepts/text-offsets.md)に関するページを参照してください。
 
 #### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 

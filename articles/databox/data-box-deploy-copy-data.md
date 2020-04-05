@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 804b46cd5238c189063608d067c0b40fcd3e306d
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 8d72ee529966fe0db8bf496533453c81064a81a5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505677"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79501794"
 ---
 ::: zone target="docs" 
 
@@ -107,22 +107,21 @@ Windows Server ホスト コンピューターを使用している場合は、�
 Linux クライアントを使用している場合は、次のコマンドを使用して、SMB 共有をマウントします。 以下の "vers" パラメーターは、Linux ホストがサポートしている SMB のバージョンです。 次のコマンドで、適切なバージョンを指定します。 Data Box でサポートされている SMB のバージョンについては、「[Linux クライアントでサポートされるファイル システム](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients)」を参照してください 
 
     `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
-    
-
 
 ## <a name="copy-data-to-data-box"></a>Data Box にデータをコピーする
 
 Data Box 共有に接続したら、次にデータをコピーします。 データのコピーを開始する前に、次の考慮事項を確認してください。
 
-- 適切なデータ形式に対応する共有にデータをコピーする必要があります。 たとえば、ブロック BLOB データは、ブロック BLOB 用の共有にコピーしてください。 VHD をページ BLOB にコピーします。 データ形式が適切な共有の種類と一致しない場合は、後続の手順で、Azure へのデータのアップロードに失敗します。
--  データをコピーするときは、データのサイズが、「[Azure Storage および Data Box の制限に関する記事](data-box-limits.md)」に記載されているサイズ制限に従っていること確認してください。
-- Data Box によってアップロードされているデータが、Data Box の外部で別のアプリケーションによって同時にアップロードされた場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
-- 推奨事項は次のとおりです。
-    - SMB と NFS の両方を同時に使用しません。
-    - 同じデータを Azure 上の同じ宛先にコピーします。 
-     
+* 適切なデータ形式に対応する共有にデータをコピーする必要があります。 たとえば、ブロック BLOB データは、ブロック BLOB 用の共有にコピーしてください。 VHD をページ BLOB にコピーします。 データ形式が適切な共有の種類と一致しない場合は、後続の手順で、Azure へのデータのアップロードに失敗します。
+*  データをコピーするときは、データのサイズが、「[Azure Storage および Data Box の制限に関する記事](data-box-limits.md)」に記載されているサイズ制限に従っていること確認してください。
+* Data Box によってアップロードされているデータが、Data Box の外部で別のアプリケーションによって同時にアップロードされた場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
+* 推奨事項は次のとおりです。
+  * SMB と NFS の両方を同時に使用しません。
+  * 同じデータを Azure 上の同じ宛先にコピーします。
+
   このようにした場合は、最終的な結果が不確定になります。
-- 必ず、コピーするファイル用のフォルダーを共有の下に作成してから、ファイルをそのフォルダーにコピーしてください。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。
+* 必ず、コピーするファイル用のフォルダーを共有の下に作成してから、ファイルをそのフォルダーにコピーしてください。 ブロック BLOB およびページ BLOB の共有の下に作成したフォルダーは、データが BLOB としてアップロードされるコンテナーになります。 ストレージ アカウント内の *root* フォルダーに直接ファイルをコピーすることはできません。
+* Data Box によって Azure Storage にデータが転送されたことを確認できるまでは、ソース データのコピーを保持してください。
 
 SMB 共有に接続した後、データのコピーを開始します。 Robocopy などの SMB 互換ファイル コピー ツールを使用して、データをコピーできます。 Robocopy を使用して、複数のコピー ジョブを開始できます。 次のコマンドを使用します。
     

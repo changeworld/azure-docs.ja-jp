@@ -10,10 +10,10 @@ ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
 ms.openlocfilehash: 3c21e2fcdde9bffac91af56d49dfa0bf336e8c0c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78246248"
 ---
 # <a name="secure-assets-in-azure-automation"></a>Azure Automation でのセキュリティで保護された資産

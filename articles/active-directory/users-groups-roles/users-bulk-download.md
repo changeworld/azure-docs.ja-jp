@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4716ff9547f64dc6551b4d4adb0a8578da9fa83e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063834"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Azure Active Directory ポータルでユーザーの一覧をダウンロードする (プレビュー)
@@ -43,7 +43,7 @@ Azure AD 管理センターからユーザー一覧をダウンロードする�
 
    - userPrincipalName
    - displayName
-   - 姓
+   - surname
    - mail
    - givenName
    - objectId
@@ -53,7 +53,7 @@ Azure AD 管理センターからユーザー一覧をダウンロードする�
    - accountEnabled
    - usageLocation
    - streetAddress
-   - 状態
+   - state
    - country
    - physicalDeliveryOfficeName
    - city

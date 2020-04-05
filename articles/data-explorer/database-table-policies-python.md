@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: a0fe86e2dcb802b822cb08ed0922b5da9c5cfd1c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667275"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>Python を使用して Azure Data Explorer のデータベースとテーブルのポリシーを作成する
@@ -166,6 +166,6 @@ kustoManagementClient.databases.add_principals(resource_group_name=resource_grou
                          value=[DatabasePrincipal(role=role, name=principle_name, type=type_name, app_id=client_id_to_add, tenant_name=tenant_id)])
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [データベースおよびテーブルのポリシーの詳細を確認する](https://docs.microsoft.com/azure/kusto/management/policies)

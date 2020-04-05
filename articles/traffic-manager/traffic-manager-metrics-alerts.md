@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: rohink
 ms.openlocfilehash: 521e6ac605d187c0f95545611a17a86cfda6e1dd
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938596"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager のメトリックとアラート
@@ -33,13 +33,13 @@ Traffic Manager は、プロファイルごとに次のメトリックを提供�
   
 ![すべてのクエリの集計ビュー](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
 
-"*図 1:すべてのクエリを含む集計ビュー*"
+*図 1: すべてのクエリを含む集計ビュー*
   
 図 2 は同じ情報を表示しますが、エンドポイント別に分割されます。 その結果、特定のエンドポイントが返されるクエリの応答数を確認できます。
 
 ![Traffic Manager メトリック - クエリ数のエンドポイント別の分割ビュー](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-query-volume-per-endpoint.png)
 
-"*図 2:返されたエンドポイント別に表示したクエリ数の分割ビュー*"
+*図 2: 返されたエンドポイント別に表示したクエリ数の分割ビュー*
 
 ## <a name="endpoint-status-by-endpoint"></a>エンドポイント別のエンドポイント状態
 [このメトリック](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles)を使用して、プロファイルのエンドポイントの正常性状態を理解します。 これには次の 2 つの値があります。
@@ -51,12 +51,12 @@ Traffic Manager は、プロファイルごとに次のメトリックを提供�
 
 ![Traffic Manager メトリック - エンドポイントの状態の複合ビュー](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-composite-view.png)
 
-"*図 3:エンドポイントの状態メトリックの複合ビュー – "Avg" 集計を選択*"
+*図 3: エンドポイントの状態メトリックの複合ビュー – 選択した “Avg” 集計*
 
 
 ![Traffic Manager メトリック - エンドポイントの状態の分割ビュー](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-split-view.png)
 
-"*図 4:エンドポイントの状態メトリックの分割ビュー*"
+*図 4: エンドポイントの状態メトリックの分割ビュー*
 
 [Azure Monitor サービス](../azure-monitor/platform/metrics-supported.md)のポータル、[REST API](https://docs.microsoft.com/rest/api/monitor/)、[Azure CLI](https://docs.microsoft.com/cli/azure/monitor)、および [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights) から、または Traffic Manager のポータル操作のメトリック選択によってこれらのメトリックを使用できます。
 

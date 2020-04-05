@@ -9,12 +9,12 @@ ms.date: 10/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3adefbdf248deaec6170037521ab65890356d184
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: d9944308d00c9cfecbd38a6443efb49913148806
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510891"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535920"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>対称キーの構成証明を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -175,14 +175,14 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 provisioning:
    source: "dps"
    global_endpoint: "https://global.azure-devices-provisioning.net"
-   scope_id: "{scope_id}"
+   scope_id: "<SCOPE_ID>"
    attestation:
       method: "symmetric_key"
-      registration_id: "{registration_id}"
-      symmetric_key: "{symmetric_key}"
+      registration_id: "<REGISTRATION_ID>"
+      symmetric_key: "<SYMMETRIC_KEY>"
 ```
 
-`{scope_id}`、`{registration_id}`、および `{symmetric_key}` のプレースホルダー値を、前に収集したデータに置き換えます。 **provisioning:** の行に先行する空白文字がなく、入れ子になった項目が 2 つの空白でインデントされていることを確認します。
+`<SCOPE_ID>`、`<REGISTRATION_ID>`、および `<SYMMETRIC_KEY>` のプレースホルダー値を、前に収集したデータに置き換えます。 **provisioning:** の行に先行する空白文字がなく、入れ子になった項目が 2 つの空白でインデントされていることを確認します。
 
 ### <a name="windows-device"></a>Windows デバイス
 

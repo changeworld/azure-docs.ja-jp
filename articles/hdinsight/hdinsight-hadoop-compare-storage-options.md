@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 98d71434ac9e3f712be0cbd8c505b7d5a537e7cc
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79095552"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
@@ -159,7 +159,7 @@ Apache Hive、MapReduce、Apache Hadoop ストリーミング、Apache Pig な�
 
 BLOB は、構造化データと非構造化データに使用できます。 BLOB コンテナーには、"キーと値のペア" としてデータが格納されます。ディレクトリ階層はありません。 ただし、キー名にスラッシュ (/) を含めると、ファイルがディレクトリ階層に保存されているように見せかけることができます。 たとえば、BLOB のキーが `input/log1.txt` であるとします。 実際には `input` というディレクトリは存在しませんが、キー名のスラッシュにより、キーがファイル パスのように見えます。
 
-### <a id="benefits"></a>Azure Storage の利点
+### <a name="benefits-of-azure-storage"></a><a id="benefits"></a>Azure Storage の利点
 コンピューティング クラスターとストレージ リソースを同じ場所に併置しないと、パフォーマンスの低下が懸念されます。 こうした懸念は、Azure リージョン内のストレージ アカウント リソースの近くにコンピューティング クラスターを作成することで軽減されます。 このリージョンでは、コンピューティング ノードは Azure Storage 内の高速ネットワークを介してデータに効率的にアクセスできます。
 
 HDFS ではなく、Azure Storage にデータを格納すると、いくつかの利点があります。
@@ -215,7 +215,7 @@ Data Lake Storage Gen1 では、任意のデータをネイティブ形式でそ
 
 Data Lake Storage Gen1 のデータ コンテナーは、本質的にはフォルダーとファイルです。 格納されたデータを SDK、Azure Portal、および Azure PowerShell を使用して操作します。 これらのインターフェイスと適切なコンテナーを使用してストアにデータを配置する限り、あらゆる種類のデータを格納できます。 Data Lake Storage Gen1 では、格納されているデータの種類に基づくデータの特別な処理は行われません。
 
-## <a name="DataLakeStoreSecurity"></a>Data Lake Storage Gen1 のデータのセキュリティ
+## <a name="data-security-in-data-lake-storage-gen1"></a><a name="DataLakeStoreSecurity"></a>Data Lake Storage Gen1 のデータのセキュリティ
 Data Lake Storage Gen1 では、Azure Active Directory を使用して認証を行い、アクセス制御リスト (ACL) を使用してデータへのアクセスを管理します。
 
 | **機能** | **説明** |

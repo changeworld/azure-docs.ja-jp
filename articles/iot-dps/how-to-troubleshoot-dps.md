@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
 ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646474"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のトラブルシューティング
@@ -23,7 +23,7 @@ IoT デバイスの接続の問題は、構成証明のエラーや登録のエ�
 
 次の手順では、IoT Hub Device Provisioning Service のメトリックを確認したり、メトリックに対してアラートを設定したりする方法について説明します。 
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. IoT Hub Device Provisioning Service に移動します。
 
@@ -48,7 +48,7 @@ IoT デバイスの接続の問題は、構成証明のエラーや登録のエ�
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Log Analytics を使用してエラーを確認、解決する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. IoT ハブに移動します。
 

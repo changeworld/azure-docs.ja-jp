@@ -6,13 +6,13 @@ ms.topic: include
 ms.date: 08/23/2019
 ms.author: sstein
 ms.openlocfilehash: 2a8b9322f7c03d76cd8a31c832c343cde9e2e355
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74935856"
 ---
-## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Azure portal を使用した Azure SQL リソースの作成および管理
+## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Azure portal で Azure SQL リソースを作成して管理する
 
 Azure portal には、SQL 仮想マシンを含む[すべての Azure SQL リソース](https://go.microsoft.com/fwlink/?linkid=2100641)を管理できる単一ページが用意されています。
 
@@ -29,7 +29,7 @@ Azure portal には、SQL 仮想マシンを含む[すべての Azure SQL リソ
 
 ![データベース タイルの詳細](../media/sql-database-technical-overview/single-sql-database-deployment-options.png)
 
-詳細については、次のリンクを参照してください。
+詳細については、次の情報を参照してください。
 
 - [単一データベースを作成する](../sql-database-single-database-get-started.md)
 - [エラスティック プールの作成](../sql-database-elastic-pool.md#creating-a-new-sql-database-elastic-pool-using-the-azure-portal)

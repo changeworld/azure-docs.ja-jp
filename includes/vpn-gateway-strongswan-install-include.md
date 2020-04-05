@@ -9,10 +9,10 @@ ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: ddab6927044ce638e50ff3ad79aa3c35d046c820
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "69520856"
 ---
 以下の手順では、次の構成を使用しました。

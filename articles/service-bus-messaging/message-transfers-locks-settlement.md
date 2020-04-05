@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: aschhab
 ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759280"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230091"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>メッセージの転送、ロック、および解決
 
@@ -96,7 +96,7 @@ for (int i = 0; i < 100; i++)
 
 ## <a name="settling-receive-operations"></a>受信操作の解決
 
-受信操作を行う Service Bus API クライアントでは、明示的なモードが 2 つ有効になっています。*受信して削除*と*ピーク ロック*です。
+受信操作を行う Service Bus API クライアントには、*受信して削除*と*ピーク ロック*の 2 つの明示的なモードがあります。
 
 ### <a name="receiveanddelete"></a>ReceiveAndDelete
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 27691d8fab3e7c8ccd60351dc0be83898ff984ed
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73622426"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>高速ネットワークと Azure 仮想マシンのディザスター リカバリー
@@ -35,7 +35,7 @@ Azure Site Recovery では、別の Azure リージョンにフェールオー�
 
 Azure Site Recovery では、ソース仮想マシンで高速ネットワークが有効になっている場合にのみ、レプリケートされた仮想マシンに対する高速ネットワークをサポートします。 ソース仮想マシンで高速ネットワークが有効になっていない場合は、[ここ](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms)をクリックして、Windows 仮想マシンに対して高速ネットワークを有効にする方法を確認できます。
 
-### <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 Azure ギャラリーでは次のディストリビューションが既定でサポートされています。
 * **Windows Server 2016 Datacenter**
 * **Windows Server 2012 R2 Datacenter**
@@ -51,7 +51,7 @@ VM インスタンスの詳細については、[Windows VM のサイズ](../vir
 
 Azure Site Recovery では、ソース仮想マシンで高速ネットワークが有効になっている場合にのみ、レプリケートされた仮想マシンに対する高速ネットワークをサポートします。 ソース仮想マシンで高速ネットワークが有効になっていない場合は、[ここ](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms)をクリックして、Linux 仮想マシンに対して高速ネットワークを有効にする方法を確認できます。
 
-### <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 Azure ギャラリーでは次のディストリビューションが既定でサポートされています。
 * **Ubuntu 16.04**
 * **SLES 12 SP3**
@@ -85,7 +85,7 @@ Azure 仮想マシンに対して[レプリケーションを有効にする](az
 
 Site Recovery によって高速ネットワークが自動的に有効になっていない既存のレプリケートされた仮想マシンでも、上記のプロセスを実行する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [高速ネットワークのメリット](../virtual-network/create-vm-accelerated-networking-powershell.md#benefits)の詳細を確認する。
 - [Windows 仮想マシン](../virtual-network/create-vm-accelerated-networking-powershell.md#limitations-and-constraints)と[Linux 仮想マシン](../virtual-network/create-vm-accelerated-networking-cli.md#limitations-and-constraints)に対する高速ネットワークの制限と制約の詳細を確認する。
 - アプリケーションのフェールオーバーを自動化するための[復旧計画](site-recovery-create-recovery-plans.md)の詳細を確認する。

@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073762"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226867"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -105,7 +105,7 @@ info:    Executing command vm extension set
 info:    vm extension set command OK
 ```
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 VM 拡張機能は、Azure Portal から既存の VM に適用できます。 ポータルで VM を選択し、 **[拡張機能]** を選択してから、 **[追加]** を選択します。 利用可能な拡張機能の一覧から目的の拡張機能を選択し、ウィザードの手順に従います。
 
@@ -221,7 +221,7 @@ VM 拡張機能の実行時には、資格情報、ストレージ アカウン�
 更新プログラムが利用できる場合で、拡張機能への変更があり、次のような他の VM モデルが変更されるときは、更新プログラムは VM にのみインストールされます。
 
 - データ ディスク
-- Extensions
+- 拡張機能
 - ブート診断コンテナー
 - ゲスト OS のシークレット
 - VM サイズ
@@ -410,6 +410,6 @@ az vm extension delete \
 | Azure Diagnostics 拡張機能 |Azure Diagnostics を管理します |[Azure Diagnostics 拡張機能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM アクセス拡張機能 |ユーザーと資格情報を管理します。 |[Linux 用 VM アクセス拡張機能](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VM 拡張機能の詳細については、「[Azure 仮想マシンの拡張機能と機能の概要](overview.md)」をご覧ください。

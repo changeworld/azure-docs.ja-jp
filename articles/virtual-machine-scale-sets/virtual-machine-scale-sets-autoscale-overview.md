@@ -11,10 +11,10 @@ ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: eb96be187502afcccfd3fb2c88f709facfbc3b59
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278138"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットでの自動スケールの概要

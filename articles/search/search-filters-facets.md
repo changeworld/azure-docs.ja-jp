@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792890"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Azure Cognitive Search でファセット フィルターを作成する方法 
@@ -23,7 +23,7 @@ ms.locfileid: "72792890"
 > * フィルターとファセットに適したフィールドを選択する
 > * フィールドに属性を設定する
 > * インデックスを作成し、データを読み込む
-> * クエリにファセット フィルターを追加する
+> * クエリへのファセット フィルターの追加
 > * 結果を処理する
 
 ファセットは動的であり、クエリで返されます。 検索の応答で、結果のナビゲートに使用されるファセット カテゴリが提供されます。 ファセットの知識がない場合、次の例はファセット ナビゲーション構造を示しています。
@@ -77,7 +77,7 @@ REST API を使用してインデックスを作成すると、ファセット �
 ```
 
 > [!Note]
-> このインデックス定義は、[REST API を使用した Azure Cognitive Search インデックスの作成](https://docs.microsoft.com/azure/search/search-create-index-rest-api)に関する記事からコピーしたものです。 フィールド定義の表面的な違い以外は全く同じです。 `category`、`tags`、`parkingIncluded`、`smokingAllowed`、および `rating` フィールドに `filterable` および `facetable` 属性がで明示的に追加されています。 REST API を使用する場合、実際には、`filterable` および `facetable` はこれらのフィールドでは既定で有効になります。 .NET SDK を使用する場合、これらの属性は明示的に有効にする必要があります。
+> このインデックス定義は、[REST API を使用した Azure Cognitive Search インデックスの作成](https://docs.microsoft.com/azure/search/search-create-index-rest-api)に関する記事からコピーしたものです。 フィールド定義の表面的な違い以外は全く同じです。 `filterable`、`facetable`、`category`、`tags`、および `parkingIncluded` フィールドに `smokingAllowed` および `rating` 属性がで明示的に追加されています。 REST API を使用する場合、実際には、`filterable` および `facetable` はこれらのフィールドでは既定で有効になります。 .NET SDK を使用する場合、これらの属性は明示的に有効にする必要があります。
 
 ## <a name="build-and-load-an-index"></a>インデックスの作成と読み込み
 
@@ -98,7 +98,7 @@ var sp = new SearchParameters()
 
 ### <a name="return-filtered-results-on-click-events"></a>クリック イベントでフィルター処理された結果を返す
 
-エンド ユーザーがファセット値をクリックすると、クリック イベントのハンドラーはフィルター式を使用してユーザーの意図を実現します。 `$filter` ファセットの場合、"motel" というカテゴリのクリックは、この種類の宿泊施設を選択する `category` 式によって実装されます。 ユーザーが "motel" をクリックしてモーテルだけを表示するように指示すると、アプリケーションが送信する次のクエリに `$filter=category eq 'motel'` が含まれます。
+エンド ユーザーがファセット値をクリックすると、クリック イベントのハンドラーはフィルター式を使用してユーザーの意図を実現します。 `category` ファセットの場合、"motel" というカテゴリのクリックは、この種類の宿泊施設を選択する `$filter` 式によって実装されます。 ユーザーが "motel" をクリックしてモーテルだけを表示するように指示すると、アプリケーションが送信する次のクエリに `$filter=category eq 'motel'` が含まれます。
 
 次のコード スニペットでは、ユーザーがカテゴリ ファセットから値を選択した場合に、カテゴリをフィルターに追加します。
 
@@ -121,7 +121,7 @@ Azure Cognitive Search のファセット ナビゲーションの課題の 1 �
 
 これは一般的なユース ケースですが、現時点ではファセット ナビゲーション構造ですぐに利用できるものではありません。 静的なファセットを必要とする開発者は、通常、結果に適用されるクエリと、ナビゲーションのためにファセットの静的リストの作成に使用されるクエリの 2 つのフィルター処理されたクエリを発行してこの制限に対処しています。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 + [Azure Cognitive Search のフィルター](search-filters.md)
 + [Index REST API の作成](https://docs.microsoft.com/rest/api/searchservice/create-index)

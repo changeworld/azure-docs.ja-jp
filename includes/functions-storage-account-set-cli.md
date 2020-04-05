@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: glenga
 ms.openlocfilehash: 4ace70abe0112e0fe27d177c02bcb697746c92cc
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78262066"
 ---
 ### <a name="set-the-storage-account-connection"></a>ストレージ アカウントの接続を設定する

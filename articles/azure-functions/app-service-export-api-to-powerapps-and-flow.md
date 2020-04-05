@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.reviewer: sunayv
 ms.openlocfilehash: 632818bf82e41e6be0a96d30cc1c4fa631718a3b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74233073"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする
@@ -62,7 +62,7 @@ API 定義をエクスポートするには、次の手順を実行します。
 
 2. 次の表で指定されている設定を使用してください。
 
-    |Setting|説明|
+    |設定|説明|
     |--------|------------|
     |**Environment**|カスタム コネクタの保存先の環境を選択します。 詳細については、「[環境の概要](https://powerapps.microsoft.com/tutorials/environments-overview/)」を参照してください。|
     |**カスタム API 名**|名前を入力すると、PowerApps および Microsoft Flow ビルダーがコネクタ一覧に表示されます。|
@@ -70,7 +70,7 @@ API 定義をエクスポートするには、次の手順を実行します。
  
     ![PowerApps および Microsoft Flow への簡易エクスポート](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. Click **OK**. カスタム コネクタがビルドされ、指定した環境に追加されました。
+3. **[OK]** をクリックします。 カスタム コネクタがビルドされ、指定した環境に追加されました。
 
 <a name="manual"></a>
 ## <a name="use-manual-export"></a>手動エクスポートを使用する

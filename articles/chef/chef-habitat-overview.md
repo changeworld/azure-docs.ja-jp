@@ -5,10 +5,10 @@ keywords: azure、chef、devops、仮想マシン、概要、自動化、habitat
 ms.date: 05/15/2018
 ms.topic: article
 ms.openlocfilehash: de444836c04d1d37a19a006ce4eafdcae867ca5a
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158061"
 ---
 # <a name="use-habitat-to-deploy-your-application-to-azure"></a>Habitat を使用してアプリケーションを Azure にデプロイする
@@ -28,6 +28,6 @@ Habitat では、アプリケーションは任意のランタイム環境で変
 ## <a name="integrate-into-the-chef-devops-workflow"></a>Chef DevOps ワークフローとの統合
 Habitat プロジェクトは Chef Software によるオープン ソース プロジェクトの 1 つであり、強力なサポート コミュニティがあります。 Habitat は、インフラストラクチャの自動化に関する Chef の豊富な経験を活用して、これまでにない自動化機能をアプリケーションに提供します。 Chef は Habitat の商用サポートを提供し、Habitat と Chef Automate 間のシームレスな統合を構築して、開発からデプロイまでのアプリケーション リリース サイクルを完全に自動化します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Habitat を試す](https://www.habitat.sh/learn/)

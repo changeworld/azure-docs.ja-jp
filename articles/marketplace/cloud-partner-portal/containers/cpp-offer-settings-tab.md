@@ -1,19 +1,18 @@
 ---
 title: Azure Containers イメージ用のオファーの設定 | Azure Marketplace
 description: Azure コンテナーのオファーの設定を構成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 8742f4eb6ce8f3e1b7c4b0449c2f19d8a254e5dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: e7e56f3562965a0a49082024c905d90ed989ccdd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823178"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280033"
 ---
 # <a name="container-offer-settings-tab"></a>コンテナーの [プランの設定] タブ
 
@@ -35,6 +34,6 @@ ms.locfileid: "73823178"
 **[保存]** を選択してオファーの設定を保存します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [[SKU]](./cpp-skus-tab.md) タブを使用して、オファーの SKU を構成します。

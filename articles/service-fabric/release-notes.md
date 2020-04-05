@@ -6,10 +6,10 @@ ms.topic: conceptual
 hide_comments: true
 hideEdit: true
 ms.openlocfilehash: cb4fdd56e9cf67c71ac690d423499929167f8977
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064243"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース

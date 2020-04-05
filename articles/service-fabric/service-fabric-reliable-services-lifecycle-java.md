@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
 ms.openlocfilehash: 1d3be958a0649ed3e80df2d63adbdf0b91831dbd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639600"
 ---
 # <a name="reliable-services-lifecycle"></a>Reliable Services のライフサイクル

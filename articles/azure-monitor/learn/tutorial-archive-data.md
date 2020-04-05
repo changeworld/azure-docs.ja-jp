@@ -9,10 +9,10 @@ ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
 ms.openlocfilehash: 3ed00b1c68c41bc392b09c97dd47c9cdb8fa890d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77661727"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure Storage を使用して Azure のメトリック データとログ データをアーカイブする
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインする
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 

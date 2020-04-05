@@ -13,13 +13,13 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bddf1642b2013567fbc23278b3d8d32692601d55
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74420597"
 ---
-# <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>チュートリアル:多要素認証を B2B ゲスト ユーザーに適用する
+# <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>チュートリアル: B2B ゲスト ユーザーに多要素認証を適用する
 
 外部の B2B ゲスト ユーザーとコラボレーションするときは、多要素認証 (MFA) ポリシーを使用して貴社のアプリを保護することをお勧めします。 そうすると、外部ユーザーがリソースにアクセスするために必要なものがユーザー名とパスワードだけではなくなります。 Azure Active Directory (Azure AD) では、アクセスで MFA を要求する条件付きアクセス ポリシーを使用してこの目標を達成できます。 MFA ポリシーは、組織のメンバーに対して有効にするのと同じ方法で、テナント レベル、アプリ レベル、または個々のゲスト ユーザー レベルで適用できます。
 
@@ -131,7 +131,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
  
 3.  サインアウトします。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 不要になったら、テスト ユーザーとテスト用の条件付きアクセス ポリシーを削除します。
 1.  [Azure Portal](https://portal.azure.com/) に Azure AD 管理者としてサインインします。
 2.  左ウィンドウで、 **[Azure Active Directory]** を選択します。
@@ -141,5 +141,5 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 6.  **[セキュリティ]** で、 **[条件付きアクセス]** を選択します。
 7.  **[ポリシー名]** の一覧で、テスト用のポリシーのコンテキスト メニュー (...) を選択し、 **[削除]** を選択します。 **[はい]** を選択して確定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、ゲスト ユーザーがいずれかのクラウド アプリのサインインするときに MFA を使用することを要求する条件付きアクセス ポリシーを作成しました。 コラボレーションするためのゲスト ユーザーを追加する方法の詳細については、「[Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](add-users-administrator.md)」を参照してください。

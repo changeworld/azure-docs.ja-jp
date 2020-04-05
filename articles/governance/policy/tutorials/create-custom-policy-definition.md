@@ -4,11 +4,11 @@ description: このチュートリアルでは、Azure リソースに対して�
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966018"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222749"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>チュートリアル:カスタム ポリシー定義の作成
 
@@ -348,7 +348,7 @@ Azure Resource Graph は [Cloud Shell](https://shell.azure.com) を介して使�
 }
 ```
 
-### <a name="metadata"></a>メタデータ
+### <a name="metadata"></a>Metadata
 
 最初の 3 つのコンポーネントは、ポリシー メタデータです。 ルールを作成する目的がわかっているため、これらのコンポーネントに値を指定するのは簡単です。 [Mode](../concepts/definition-structure.md#mode) は、主にタグとリソースの場所に関するコンポーネントです。 タグをサポートするリソースに評価を制限する必要はないため、**mode** には _all_ という値を使用します。
 

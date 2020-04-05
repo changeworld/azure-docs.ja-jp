@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
 ms.openlocfilehash: b285daa465c8d069b359e94c9203c1ffbea24c06
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970681"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM のための Azure Disk Encryption に関してよくあるご質問

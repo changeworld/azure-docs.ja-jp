@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155628"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231931"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>RDP を使用して Azure VM に接続するときの認証エラーのトラブルシューティングについて説明します。
 
@@ -77,7 +77,7 @@ VM は Federal Information Processing Standards (FIPS) 準拠アルゴリズム�
 
 バックアップ スナップショットを作成するには、「[ディスクのスナップショットの作成](../windows/snapshot-copy-managed-disk.md)」の手順に従います。
 
-### <a name="connect-to-the-vm-remotely"></a>VM へのリモート接続
+### <a name="connect-to-the-vm-remotely"></a>VM にリモート接続する
 
 VM にリモート接続するには、[リモート ツールを使用して Azure VM に関する問題のトラブルシューティングを行う方法](remote-tools-troubleshoot-azure-vm-issues.md)に関する記事を参照してください。
 
@@ -101,7 +101,7 @@ gpupdate /force
 
 変更が元に戻された場合、それは Active Directory ポリシーが問題の原因であることを意味します。 
 
-### <a name="workaround"></a>対処法
+### <a name="workaround"></a>回避策
 
 この問題を回避するには、コマンド ウィンドウで、NLA を無効にする次のコマンドを実行します。
 
@@ -246,7 +246,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 > [!Note]
 > SSH/TLS バージョン x.x は、SCHANNEL エラーに関するゲスト OS ログから取得します。
 
-#### <a name="fips-compliant"></a> FIPS 準拠アルゴリズムによる接続の確認
+#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a> FIPS 準拠アルゴリズムによる接続の確認
 
 リモート デスクトップで FIPS 準拠アルゴリズムの接続のみを使用するように指定できます。 これはレジストリ キーを使用して設定できます。 これを行うには、管理者特権でコマンド プロンプト ウィンドウを開きし、次のキーのクエリを実行します。
 
@@ -274,7 +274,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 レジストリに対する変更が反映されるように、VM を再起動します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Win32_TSGeneralSetting クラスの SetEncryptionLevel メソッド](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting-setencryptionlevel)
 

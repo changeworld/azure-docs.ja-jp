@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.openlocfilehash: 39a993324a476f0e1f1d17858ae126742e4f69f9
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74083857"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>多層アプリケーション用のネットワークの作成のスクリプト サンプル
@@ -57,7 +57,7 @@ az group delete --name MyResourceGroup --yes
 | [az vm create](/cli/azure/vm) | 仮想マシンを作成し、NIC を各 VM にアタッチします。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。 |
 | [az group delete](/cli/azure/group) | リソース グループとそれに含まれるすべてのリソースを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 

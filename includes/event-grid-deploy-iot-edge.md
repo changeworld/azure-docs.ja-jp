@@ -9,10 +9,10 @@ ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: b453a04a170764a037eed7415eaf71e5a4d37526
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844592"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge モジュールをデプロイする

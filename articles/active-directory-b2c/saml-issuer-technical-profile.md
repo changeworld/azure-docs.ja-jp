@@ -12,10 +12,10 @@ ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c35f85b9ec5d86d1cd61f165b891c576c06a03db
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78967264"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML トークン発行者用の技術プロファイルを定義する
@@ -52,9 +52,9 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 
 **InputClaims**、**OutputClaims**、**PersistClaims** の要素は空であるか、存在しません。 **InutputClaimsTransformations** と **OutputClaimsTransformations** の要素も存在しません。
 
-## <a name="metadata"></a>Metadata
+## <a name="metadata"></a>メタデータ
 
-| 属性 | Required | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | IssuerUri | いいえ | SAML 応答に表示される発行者名。 この値は、証明書利用者アプリケーションに構成されているものと同じ名前にする必要があります。 |
 
@@ -62,7 +62,7 @@ Azure Active Directory B2C (Azure AD B2C) は、各認証フローを処理す�
 
 CryptographicKeys 要素には次の属性が存在します。
 
-| 属性 | Required | 説明 |
+| Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | MetadataSigning | はい | SAML データを署名するために使用する X509 証明書 (RSA キー セット)。 Azure AD B2C では、このキーを使用して、メタデータに署名します。 |
 | SamlMessageSigning| はい| SAML メッセージに署名するために使用する X509 証明書 (RSA キー セット) を指定します。 Azure AD B2C は、このキーを使用して、証明書利用者に送信する `<samlp:Response>` 応答に署名します。|

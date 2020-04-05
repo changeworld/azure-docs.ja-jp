@@ -9,10 +9,10 @@ ms.date: 01/07/2020
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: feed8b21833d4244d027d64d5e6547b94e4fa66f
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75945140"
 ---
 ## <a name="what-happens-to-my-app-during-deployment"></a>使用しているアプリはデプロイ中にどうなりますか?
@@ -21,4 +21,4 @@ ms.locfileid: "75945140"
 
 - [ZIP パッケージから展開せずに直接アプリを実行](../articles/app-service/deploy-run-package.md)します。
 - デプロイ中に、アプリを停止するか、またはアプリのオフライン モードを有効にします。 詳細については、「[Dealing with locked files during deployment](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment)」 (デプロイ中にロックされているファイルに対処する) を参照してください。
-- [自動スワップ](../articles/app-service/deploy-staging-slots.md#configure-auto-swap)を有効にした状態で[ステージング スロット](../articles/app-service/deploy-staging-slots.md)にデプロイします。 
+- [自動スワップ](../articles/app-service/deploy-staging-slots.md)を有効にした状態で[ステージング スロット](../articles/app-service/deploy-staging-slots.md#configure-auto-swap)にデプロイします。 

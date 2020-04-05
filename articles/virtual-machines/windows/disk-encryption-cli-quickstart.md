@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: 9bbe74bd2f3137443b4e239201c604d9de52582e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 786a906241b355cdae403c6ed08b60eb27045d6f
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245692"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385250"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Windows VM を作成、暗号化する
 
@@ -21,11 +21,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用することを選択する場合、このクイック スタートでは、Azure CLI バージョン 2.0.30 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+Azure CLI をローカルにインストールして使用することを選択した場合、このクイックスタートでは Azure CLI バージョン 2.0.30 以降を実行していることが必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+[az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -33,7 +33,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-[az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。 この例では、管理ユーザーの名前に *azureuser*、パスワードに *myPassword12* を使用します。 
+[az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。 この例では、管理ユーザーの名前に *azureuser*、パスワードに *myPassword12* を使用します。
 
 ```azurecli-interactive
 az vm create \
@@ -46,7 +46,7 @@ az vm create \
 
 VM とサポートするリソースを作成するには数分かかります。 次の出力例では、成功した VM 作成操作を示します。
 
-```azurecli-interactive
+```
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -65,7 +65,7 @@ Azure Disk Encryption では、その暗号化キーは Azure キー コンテ�
 > [!Important]
 > 各キー コンテナーには一意の名前が必要です。 次の例では、*myKV* という名前のキー コンテナーを作成しますが、ご自身では別の名前を付けるようにしてください。
 
-```azurecli
+```azurecli-interactive
 az keyvault create --name "myKV" --resource-group "myResourceGroup" --location eastus --enabled-for-disk-encryption
 ```
 
@@ -85,22 +85,21 @@ az vm show --name MyVM -g MyResourceGroup
 
 返される出力に、次の内容が含まれます。
 
-```azurecli-interactive
+```
 "EncryptionOperation": "EnableEncryption"
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要がなくなったら、[az group delete](/cli/azure/group) コマンドを使用して、リソース グループ、VM、およびキー コンテナーを削除できます。 
+必要がなくなったら、[az group delete](/cli/azure/group) コマンドを使用して、リソース グループ、VM、およびキー コンテナーを削除できます。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、仮想マシンを作成し、暗号化キー用に有効にされたキー コンテナーを作成し、VM を暗号化しました。  次の記事に進み、IaaS VM に対する Azure Disk Encryption の前提条件について詳しく学習してください。
 
 > [!div class="nextstepaction"]
 > [Azure Disk Encryption の概要](disk-encryption-overview.md)
-

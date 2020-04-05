@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572348"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Automation を使用した更新
@@ -44,7 +44,7 @@ Azure Automation および PowerShell Runbook を使用して、Azure Analysis �
  
     ![モジュールをインポートする](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. Click **OK**.
+4. **[OK]** をクリックします。
  
 ### <a name="create-a-service-principal-spn"></a>サービス プリンシパル (SPN) を作成する
 
@@ -58,11 +58,11 @@ Azure Automation および PowerShell Runbook を使用して、Azure Analysis �
 
 1. Automation アカウントで、サービス プリンシパルを安全に保管するために使用される**資格情報**リソースを作成します。
 
-    ![資格情報を作成する](./media/analysis-services-refresh-azure-automation/6.png)
+    ![資格情報の作成](./media/analysis-services-refresh-azure-automation/6.png)
 
 2. 資格情報の詳細を入力します。  **[ユーザー名]** には **[SPN ClientId]** を入力し、 **[パスワード]** には **[SPN シークレット]\(SPN シークレット\)** を入力します。
 
-    ![資格情報を作成する](./media/analysis-services-refresh-azure-automation/7.png)
+    ![資格情報の作成](./media/analysis-services-refresh-azure-automation/7.png)
 
 3. Automation Runbook をインポートします
 
@@ -111,7 +111,7 @@ Runbook は、Azure Analysis Services モデルの更新をスケジュールに
 
     ![パラメーターを構成する](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. Click **OK**.
+5. **[OK]** をクリックします。
 
 ## <a name="consume-with-data-factory"></a>Data Factory で使用する
 
@@ -148,7 +148,7 @@ Azure Data Factory を使用して Runbook を使用するには、最初に Run
 |---------|---------|
 |**AnalysisServicesDatabase**     |Azure Analysis Services データベースの名前 <br/> 例:AdventureWorksDB         |
 |**AnalysisServicesServer**     |Azure Analysis Services のサーバー名。 <br/> 例: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
-|**DatabaseRefreshType**     |実行する更新の種類。 <br/> 例:完全         |
+|**DatabaseRefreshType**     |実行する更新の種類。 <br/> 例:[完全]         |
 
 JSON 本文の例:
 
@@ -224,7 +224,7 @@ else
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [サンプル](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

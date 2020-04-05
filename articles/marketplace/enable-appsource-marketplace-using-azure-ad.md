@@ -1,20 +1,18 @@
 ---
 title: Azure Active Directory を使用して Microsoft AppSource と Azure Marketplace のリストを有効にする | Azure
 description: アプリとサービスの公開元のために、Azure Marketplace と AppSource で Azure Active Directory を使用して登録リストの種類を有効にします。
-services: Azure, AppSource, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/12/2018
-ms.author: pabutler
-ms.openlocfilehash: 9423263270313659017b16a5e34511e7ef385af5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 45855038e60dcdc3be4f98cfdceed69df5e8c946
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825884"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286321"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Azure Active Directory を使用して AppSource と Marketplace のリストを有効にする
 
@@ -35,11 +33,11 @@ AppSource と Azure Marketplace 用のさまざまな[オプションとオフ�
 
 | **オファリング タイプ**    | **Azure AD の SSO が必要か?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
-|  | 連絡する | 試用版 | 体験版 | トランザクション |
+|  | お問い合わせ | 試用版 | 体験版 | トランザクション |
 | 仮想マシン | 該当なし | いいえ | いいえ | いいえ |
 | Azure アプリ (ソリューション テンプレート)  | 該当なし | 該当なし | 該当なし | 該当なし |
 | マネージド アプリ  | 該当なし | 該当なし | 該当なし | いいえ |
-| SaaS  | いいえ | 可能 | はい | はい |
+| SaaS  | いいえ | はい | はい | はい |
 | Containers  | 該当なし | 該当なし | 該当なし | いいえ |
 | コンサルティング サービス  | いいえ | 該当なし | 該当なし | 該当なし |
 
@@ -87,7 +85,7 @@ Azure AD を使用して、次のアクションの 1 つをサポートしま�
 - 顧客ごとの "体験版" を開発する。
 - SSO を使用するマルチテナント サンプル デモ アプリを構築する。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Marketplace に登録](https://azuremarketplace.microsoft.com/sell)したことを確認します。
 - オファーを作成または完了する方法の詳細については、[パートナー センター アカウントの作成方法](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を参照してください。

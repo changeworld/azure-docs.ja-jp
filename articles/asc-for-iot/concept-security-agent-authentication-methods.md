@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 16f7f91e02d118d9f9a295ebb79a6cd0187dd9fd
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68596473"
 ---
 # <a name="security-agent-authentication-methods"></a>セキュリティ エージェントの認証方法 
@@ -58,7 +58,7 @@ AzureIoTSecurity エージェントで認証を実行するための 2 つの方
 これらの引数を次の表に示します。
 
 
-|Linux のパラメーター名 | Windows のパラメーター名 | 短縮形のパラメーター |説明|オプション|
+|Linux のパラメーター名 | Windows のパラメーター名 | 短縮形のパラメーター |説明|Options|
 |---------------------|---------------|---------|---------------|---------------|
 |authentication-identity|AuthenticationIdentity|aui|認証 ID| **SecurityModule** または **Device**|
 |authentication-method|AuthenticationMethod|aum|認証方法|**SymmetricKey** または **SelfSignedCertificate**|

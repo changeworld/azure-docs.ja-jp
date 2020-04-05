@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: 05d4ecd58f6febff75212f1ad88b60be4f23c2a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/18/2020
+ms.openlocfilehash: 197b3100190711a51cfe125fe1214a59c18e1491
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454332"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536974"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>サポートされている Azure Database for MySQL サーバー バージョン
 

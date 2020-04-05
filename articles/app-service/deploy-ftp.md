@@ -7,11 +7,11 @@ ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680924"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231635"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S を使用した Azure App Service へのアプリのデプロイ
 

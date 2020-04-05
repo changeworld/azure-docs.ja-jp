@@ -16,10 +16,10 @@ ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74547389"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure VM 上の Azure リソースのマネージド ID を使用してサインインする方法 
@@ -96,7 +96,7 @@ Azure AD をサポートするリソースで、Azure リソースのマネー�
 
 いずれかが正しくない場合は、Azure リソースのマネージド ID をリソース上にもう一度展開するか、展開エラーのトラブルシューティングを行う必要があります。 VM の構成についてサポートが必要な場合は、「[Azure Portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure VM 上で Azure リソースのマネージド ID を有効にするには、「[Configure managed identities for Azure resources on an Azure VM using PowerShell](qs-configure-powershell-windows-vm.md)」(PowerShell を使用して VM 上に Azure リソースのマネージド ID を構成する)、または「[Azure CLI を使用して Azure VM 上に Azure リソースのマネージド ID を構成する](qs-configure-cli-windows-vm.md)」を参照してください。
 

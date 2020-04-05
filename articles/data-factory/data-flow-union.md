@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/12/2019
 ms.openlocfilehash: adba1eb61676dbebcb356490b14b279ebe69c644
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930161"
 ---
 # <a name="azure-data-factory-mapping-data-flow-union-transformation"></a>Azure Data Factory マッピング データ フローの和集合変換
@@ -21,7 +21,7 @@ ms.locfileid: "74930161"
 
 構成された各行の横の「+」アイコンを選択することにより、データ フロー内の既存の変換からのストリームとソース データの両方を含む、設定テーブルの n 個のストリームを結合できます。
 
-![和集合変換](media/data-flow/union.png "和集合")
+![和集合変換](media/data-flow/union.png "Union")
 
 ここでは、複数のソース (この例では、3 つの異なるソース ファイル) の異種のメタデータを結合して、1 つのストリームにまとめることができます。
 
@@ -43,6 +43,6 @@ ms.locfileid: "74930161"
 
 ![和集合の出力](media/data-flow/unionoutput.png "和集合の出力")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [結合](data-flow-join.md)変換や[存在](data-flow-exists.md)変換など、同様の変換について調べます。

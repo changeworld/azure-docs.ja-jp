@@ -5,10 +5,10 @@ services: cognitive-services
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.openlocfilehash: 7c78f9ea261fa636cce50b69524802d0900e9d7b
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650199"
 ---
 # <a name="content-types-of-documents-you-can-add-to-a-knowledge-base"></a>ナレッジ ベースに追加できるドキュメントのコンテンツの種類

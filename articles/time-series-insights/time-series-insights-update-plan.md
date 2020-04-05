@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: b16d78c9670d05fcec8126c5544d1dd97f6a03bd
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045710"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Azure Time Series Insights プレビューの環境を計画する

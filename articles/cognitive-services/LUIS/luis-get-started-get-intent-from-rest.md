@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 02/03/2020
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 4e2c32b2eaf8cd6935e8e6b45bf79a1f3c756316
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77524667"
 ---
 # <a name="quickstart-get-intent-with-rest-apis"></a>クイック スタート:REST API で意図を取得する

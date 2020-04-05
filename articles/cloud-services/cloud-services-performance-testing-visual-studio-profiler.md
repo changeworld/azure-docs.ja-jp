@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
 ms.openlocfilehash: 21270d3c7143ce063ffe30d939368b9813e9072e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70094105"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Visual Studio プロファイラーを使用した、Azure コンピューティング エミュレーターでのクラウド サービスのパフォーマンスのローカルなテスト
@@ -76,7 +76,7 @@ private async Task RunAsync(CancellationToken cancellationToken)
 
 ソリューション構成を **[リリース]** に設定して、デバッグ (Ctrl + F5 キー) を行わずに、クラウド サービスをローカルでビルドして実行します。 これによって、アプリケーションをローカルに実行するためにすべてのファイルとフォルダーが作成され、すべてのエミュレーターが起動されます。 コンピューティング エミュレーター UI をタスク バーから起動して、worker ロールが実行していることを確認します。
 
-## <a name="2-attach-to-a-process"></a>2\.プロセスにアタッチする
+## <a name="2-attach-to-a-process"></a>2:プロセスにアタッチする
 アプリケーションを Visual Studio 2010 IDE から起動してプロファイルするのではなく、実行中のプロセスにプロファイラーをアタッチする必要があります。 
 
 プロファイラーをプロセスにアタッチするには、 **[分析]** メニューで **[プロファイラー]** 、 **[アタッチ/デタッチ]** の順に選択します。

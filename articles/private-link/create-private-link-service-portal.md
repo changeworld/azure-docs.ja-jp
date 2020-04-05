@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
 ms.openlocfilehash: f21b440ee0e2c53d9824300e85b683629c1575da
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78252544"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Private Link サービスを作成する
@@ -167,7 +167,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[Create a private link service - Access security]\(Private Link サービスの作成 - アクセス セキュリティ\)** で **[表示]** を選択し、 **[ロールベースのアクセス制御のみ]** を選択します。
   
-1. **[次へ: タグ]**  >  **[確認と作成]** を選択するか、ページの上部にある **[確認と作成]** タブを選択します。
+1. **[Next: Tags]\(次へ: タグ\)**  >  **[確認と作成]** の順に選択するか、ページ上部にある **[確認と作成]** タブを選択します。
 
 1. 情報を確認し、 **[作成]** を選択します。
 

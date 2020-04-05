@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d08454a0ad87adb97037517579f11ab976280425
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381343"
 ---
 # <a name="sync-service-manager-metaverse-designer"></a>Sync Service Manager のメタバース デザイナー
@@ -30,7 +30,7 @@ ms.locfileid: "60381343"
 
 ほとんどのお客様には、ここで行う必要のある構成はありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD Connect Sync](how-to-connect-sync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: c6bf26d8f3a73db6ee69b2aa0de73872911893bf
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552714"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>HDInsight 上の Apache Spark クラスターでカスタム Python ライブラリを使用して Web サイト ログを分析する
@@ -202,6 +202,6 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
 
 次の記事をご覧ください。
 
-* [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
+* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
 * [Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](apache-spark-jupyter-notebook-install-locally.md)

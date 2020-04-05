@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8f48f73248e2108e79b8e244ed0d7b51855092a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: c12f15cc79d5329d028239ade4e18a853000bf01
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048152"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79298599"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>Azure portal でマネージド ID のサービス プリンシパルを表示する
 
@@ -35,7 +35,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 - Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。
 - まだ Azure アカウントを持っていない場合は、[無料アカウントを新規登録](https://azure.microsoft.com/free/)してください。
-- [仮想マシン](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)または[アプリケーション](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity)でシステム割り当ての ID を有効にします。
+- [仮想マシン](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)または[アプリケーション](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity)でシステム割り当ての ID を有効にします。
 
 ## <a name="view-the-service-principal"></a>サービス プリンシパルを表示する
 

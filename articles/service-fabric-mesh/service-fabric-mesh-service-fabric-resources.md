@@ -7,11 +7,11 @@ ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75352453"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229519"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Service Fabric リソース モデルの概要
 

@@ -4,10 +4,10 @@ description: QnA Maker の回答テキストで使用できるマークダウン
 ms.topic: reference
 ms.date: 01/09/2020
 ms.openlocfilehash: 3fb7d73afdfd5ab7f1fb56a685b21538b97c8ea4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77045403"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>QnA Maker の回答テキストでサポートされるマークダウン形式
@@ -23,7 +23,7 @@ QnA Maker の回答テキストで使用できるマークダウン形式の一�
 |目的|Format|マークダウンの例|表示<br>チャット ボットの表示|
 |--|--|--|--|
 2 つの文の間の改行。|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![2 つの文の間の改行を書式設定する](./media/qnamaker-concepts-datasources/format-newline.png)|
-|h1 から h6 までのヘッダー。`#` の数はどのヘッダーかを表します。 1 `#` は h1 です。|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![マークダウン ヘッダーを使用した書式設定](./media/qnamaker-concepts-datasources/format-headers.png)<br>![マークダウン ヘッダー H1 から H5 を使用した書式設定](./media/qnamaker-concepts-datasources/format-h1-h5.png)|
+|h1 から h6 までのヘッダー。`#` の番号はヘッダーを表します。 1 `#` は h1 です。|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![マークダウン ヘッダーを使用した書式設定](./media/qnamaker-concepts-datasources/format-headers.png)<br>![マークダウン ヘッダー H1 から H5 を使用した書式設定](./media/qnamaker-concepts-datasources/format-h1-h5.png)|
 |斜体 |`*text*`|`How do I create a bot with *QnA Maker*?`|![斜体を使用した書式設定](./media/qnamaker-concepts-datasources/format-italics.png)|
 |強調 (太字)|`**text**`|`How do I create a bot with **QnA Maker**?`|![太字の強力なマーキングを使用した書式設定](./media/qnamaker-concepts-datasources/format-strong.png)|
 |リンクの URL|`[text](https://www.my.com)`|`How do I create a bot with [QnA Maker](https://www.qnamaker.ai)?`|![URL (ハイパーリンク) の書式設定](./media/qnamaker-concepts-datasources/format-url.png)|

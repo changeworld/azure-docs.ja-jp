@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 4f513aaf113ef4bd6e75e5c4b31e0f0252d45f10
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988092"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Azure Bastion を使用して仮想マシン スケール セットに接続する
@@ -22,7 +22,7 @@ ms.locfileid: "76988092"
 
 仮想マシン スケール セットが存在する仮想ネットワークに対して Azure Bastion ホストが設定されていることを確認します。 詳細については、[Azure Bastion ホストの作成](bastion-create-host-portal.md)に関する記事をご覧ください。 Bastion サービスをプロビジョニングし、仮想ネットワークにデプロイしたら、それを使用してこの仮想ネットワーク内の任意の仮想マシン スケール セット インスタンスに接続できます。 Bastion では、Windows 仮想マシン スケール セットへの接続には RDP を使用し、Linux 仮想マシン スケール セットへの接続には SSH を使用していることを前提としています。 Linux VM への接続については、[VM への接続 (Linux)](bastion-connect-vm-ssh.md) に関する記事をご覧ください。
 
-## <a name="rdp"></a>RDP を使用して接続する
+## <a name="connect-using-rdp"></a><a name="rdp"></a>RDP を使用して接続する
 
 1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシン スケール セットに移動します。
 

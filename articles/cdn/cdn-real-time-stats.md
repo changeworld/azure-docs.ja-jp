@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d56007e5a196a0857f3b69ac51f5e3b5a88c4f6e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593491"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN でのリアルタイム統計情報
@@ -84,7 +84,7 @@ HTTP 状態コードの一覧は、グラフの上に直接表示されます。
 
 特定の状態コードについて記録されたデータを一時的に非表示にすることもできます。  グラフのすぐ下にある凡例から、非表示にする状態コードをクリックします。 状態コードはすぐにグラフから消えます。 その状態コードをもう一度クリックすると、再び表示されます。
 
-## <a name="connections"></a>Connections
+## <a name="connections"></a>接続
 ![Connections graph](./media/cdn-real-time-stats/cdn-connections.png)
 
 このグラフは、エッジ サーバーとの間で確立された接続の数を示しています。 資産に対する要求が CDN を通過するたびに接続が確立されます。

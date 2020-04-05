@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 3a06db1afd130d936af868d0d20632c3ec4fbfd2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75358528"
 ---
 # <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>接続された VHD による VM の予期しない再起動のトラブルシューティング

@@ -19,8 +19,6 @@
           href: connect-metamask.md
         - name: Geth を使用する
           href: connect-geth.md
-        - name: Truffle を使用する
-          href: connect-truffle.md
 - name: チュートリアル
   items:
     - name: スマート コントラクトの作成

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c50c4faf47caf0a7519d61fdc8989ec9fd809d78
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727230"
 ---
 # <a name="azure-infrastructure-availability"></a>Azure インフラストラクチャの可用性
@@ -43,7 +43,7 @@ Azure では、データベースがインターネット ゲートウェイ経�
 ## <a name="storage-availability"></a>ストレージの可用性
 Azure は、高度にスケーラブルな、持続性のあるストレージ サービスを通してストレージを提供します。これにより、接続エンドポイントが提供されます。 これは、アプリケーションがストレージ サービスに直接アクセスできることを意味します。 ストレージ サービスは、受信したストレージ要求を、トランザクションの整合性を使用して効率的に処理します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Microsoft が Azure インフラストラクチャのセキュリティ保護を支援するために行っていることの詳細については、以下を参照してください。
 
 - [Azure の施設、建物、および物理上のセキュリティ](physical-security.md)

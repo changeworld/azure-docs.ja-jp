@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: 46fcc825ac49f0181ac74e9c3e2deaea577f3329
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77115744"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>ポータルを使用した計画済みメンテナンスの通知の処理
@@ -32,7 +32,7 @@ Azure Portal を使用して、VM のメンテナンス スケジュールを検
 
    **メンテナンスの状態**:VM のメンテナンス状態を表示します。 以下のような値が表示されます。
       
-      | Value | 説明 |
+      | 値 | 説明 |
       |-------|-------------|
       | 今すぐ開始 | VM はセルフサービス メンテナンス期間内であり、メンテナンスを手動で開始できます。 VM でメンテナンスを開始する方法については、以下を参照してください。 | 
       | スケジュール | VM は、メンテナンスを開始するオプションが指定されない状態でメンテナンスがスケジュールされています。 このビューで [Maintenance - Scheduled (メンテナンス - スケジュール済み)] 期間を選択するか、VM でクリックすることで、メンテナンス期間を知ることができます。 | 

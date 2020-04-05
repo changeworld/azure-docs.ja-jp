@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890248"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218709"
 ---
 # <a name="pattern-syntax"></a>パターンの構文
 
@@ -125,7 +125,7 @@ LUIS は Pattern.any エンティティに基づいて書籍のタイトルの�
 
 前の表では、subject は `the man from La Mancha` (書籍のタイトル) である必要がありますが、subject にオプションのワード `from` が含まれているため、タイトルが間違って予測されています。
 
-このパターンの例外を修正するには、[明示的なリストのオーサリング API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) を使用して、`the man from la mancha` を {subject} エンティティに対する明示的なリストの一致として追加します。
+このパターンの例外を修正するには、`the man from la mancha`明示的なリストのオーサリング API[ を使用して、](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) を {subject} エンティティに対する明示的なリストの一致として追加します。
 
 ## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>テンプレートの発話でオプションのテキストをマークする構文
 正規表現の角かっこの構文 `[]` を使用して、発話内のオプションのテキストをマークします。 オプションのテキストは、最大で 2 つの角かっこのみを入れ子にできます。

@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.openlocfilehash: 9e2f04f59a56be6c516eb90de45fdf7327673086
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75416586"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>目的の状態にサーバーを構成して誤差を管理する

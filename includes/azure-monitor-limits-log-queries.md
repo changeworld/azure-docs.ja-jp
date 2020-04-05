@@ -9,10 +9,10 @@ ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
 ms.openlocfilehash: f2092753ab054a639e208aab4a6b7317c1bd5edb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74796056"
 ---
 | 制限 | 説明 |

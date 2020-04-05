@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76899838"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Cognitive Search の価格レベルの選択
@@ -83,7 +83,7 @@ Azure Cognitive Search 上に構築されたソリューションでは、次の
 
 | Operation | 課金への影響 |
 |-----------|----------------|
-| ドキュメント解析、テキスト抽出 | 無料 |
+| ドキュメント解析、テキスト抽出 | Free |
 | ドキュメント解析、画像抽出 | ドキュメントから抽出された画像の数に基づいて課金されます。 **インデクサー構成**で、[imageAction](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) は、画像抽出をトリガーするパラメーターです。 **imageAction** が "none" (既定値) に設定されている場合、画像の抽出に対して課金されません。 画像抽出のレートは、Azure Cognitive Search の[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページに記載されています。|
 | [組み込みのコグニティブ スキル](cognitive-search-predefined-skills.md) | Cognitive Services を直接使用してそのタスクを実行した場合と同じレートで課金されます。 |
 | カスタム スキル | カスタム スキルは、自分が提供する機能です。 カスタム スキルを使用した場合のコストは、カスタム コードで他の従量制サービスを呼び出しているかどうかによって決まります。 |

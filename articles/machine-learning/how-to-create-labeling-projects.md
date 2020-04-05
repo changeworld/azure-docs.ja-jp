@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 03/01/2020
-ms.openlocfilehash: 9974b42f582a3b5f26df0b6e77b42a03f23c47dd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: d39cf8745c6f53cb11bb12561fd452325fe52ac6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898715"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79296950"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
@@ -44,7 +44,7 @@ Machine Learning では、進行状況を追跡し、未完了のラベル付け
 * ローカル ファイルまたは Azure Blob Storage 内にある、ラベル付け対象のデータ。
 * 適用するラベルのセット。
 * ラベル付けに関する指示。
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://aka.ms/AMLFree)を作成してください。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://aka.ms/AMLFree) を作成してください。
 * Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。
 
 ## <a name="create-a-labeling-project"></a>ラベル付けプロジェクトを作成する

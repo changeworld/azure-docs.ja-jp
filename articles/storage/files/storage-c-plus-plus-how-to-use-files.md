@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 97af40bd1f57acb5b26d3b6216984dfb8e3a5181
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68699800"
 ---
 # <a name="develop-for-azure-files-with-c"></a>C++ での Azure Files 用の開発
@@ -40,8 +40,8 @@ ms.locfileid: "68699800"
 
 C++ 用 Azure Storage クライアント 2.4.0 をインストールする場合、次の方法のいずれかを使用できます。
 
-* **Linux:** [C++ 用 Azure Storage クライアント ライブラリの README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) ページに記載されている手順に従います。
-* **Windows:** Visual Studio で、 **[ツール] &gt; [NuGet パッケージ マネージャー] &gt; [パッケージ マネージャー コンソール]** の順にクリックします。 [NuGet パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) に次のコマンドを入力し、 **Enter**キーを押します。
+* **Linux:** [C++ 用 Azure ストレージ クライアント ライブラリの README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) ページに記載されている手順に従います。
+* **Windows:** Visual Studio で、 **[ツール] &gt; [NuGet パッケージ マネージャー] &gt; [パッケージ マネージャー コンソール]** をクリックします。 [NuGet パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) に次のコマンドを入力し、 **Enter**キーを押します。
   
 
 ```powershell
@@ -363,11 +363,11 @@ if (share.exists())
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Storage についてさらに学習するには、次のリソースを参照してください。
 
 * [C++ 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp)
 * [C++ での Azure Storage ファイル サービスのサンプル](https://github.com/Azure-Samples/storage-file-cpp-getting-started)
-* [Azure Storage Explorer](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+* [Azure 記憶域エクスプローラー](https://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)

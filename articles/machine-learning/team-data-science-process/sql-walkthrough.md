@@ -12,16 +12,16 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a47f30cf00624faf098c8b605534cf355eacadee
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718533"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227195"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process の活用: SQL Sever の使用
 このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイするプロセスを説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
 
-## <a name="dataset"></a>NYC タクシー乗車データセットの説明
+## <a name="nyc-taxi-trips-dataset-description"></a><a name="dataset"></a>NYC タクシー乗車データセットの説明
 NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) です。1 億 7300 万以上の個々の乗車と、各乗車に支払われた料金で構成されています。 各乗車レコードには、乗車と降車の場所と時間、匿名化されたタクシー (運転手の) 免許番号、および営業許可番号 (タクシーの一意の ID) が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
 
 1. 「trip_data」の CSV ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離など) が含まれています。 いくつかのサンプル レコードを次に示します。
@@ -43,7 +43,7 @@ NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイ�
 
 trip\_data と trip\_fare を結合するための一意のキーは medallion、hack\_licence、pickup\_datetime の各フィールドで構成されています。
 
-## <a name="mltasks"></a>予測タスクの例
+## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>予測タスクの例
 *tip\_amount* に基づく 3 つの予測問題について説明します。つまり、
 
 * 二項分類:乗車においてチップが支払われたかどうかを予測します。つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
@@ -56,7 +56,7 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
         Class 4 : tip_amount > $20
 * 回帰タスク:乗車で支払われたチップの金額を予測します。  
 
-## <a name="setup"></a>Azure のデータ サイエンス環境の高度な分析のためのセット アップ
+## <a name="setting-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Azure のデータ サイエンス環境の高度な分析のためのセット アップ
 「 [環境の計画](plan-your-environment.md) 」ガイドからわかるように、Azure で NYC タクシー乗車データセットを操作するいくつかの方法があります。
 
 * Azure BLOB でデータを操作し、Azure Machine Learning でモデリングする
@@ -81,7 +81,7 @@ Azure のデータ サイエンス環境をセット アップするには、
 
 データセットのサイズ、データ ソースの場所、選択された Azure の対象環境に基づくと、このシナリオは「[シナリオ \#5: ローカル ファイルの大規模データセット (Azure VM の SQL Server を対象)](plan-sample-scenarios.md#largelocaltodb)」と類似しています。
 
-## <a name="getdata"></a>公開されているソースからデータを取得する
+## <a name="get-the-data-from-public-source"></a><a name="getdata"></a>公開されているソースからデータを取得する
 公開されている場所から [NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセットを取得するには、「[Azure Blob Storage との間でデータを移動する](move-azure-blob.md)」で説明するいずれかの方法を使用して、データを新しい仮想マシンにコピーします。
 
 AzCopy を使用してデータをコピーするには
@@ -95,7 +95,7 @@ AzCopy を使用してデータをコピーするには
     AzCopy が完了すると、合計 24 のZIP CSV ファイル (trip\_data に 12 個、trip\_fare に 12 個) がデータ フォルダーにあるはずです。
 4. ダウンロードしたファイルを解凍します。 圧縮されていないファイルが存在するフォルダーに注意してください。 このフォルダーは <path\_to\_data\_files\> です。
 
-## <a name="dbload"></a>SQL Server データベースにデータを一括インポートする
+## <a name="bulk-import-data-into-sql-server-database"></a><a name="dbload"></a>SQL Server データベースにデータを一括インポートする
 *Partitioned テーブルと Views* を使用すると、大量のデータを SQL データベースおよび後続のクエリに読み込んだり転送したりする際のパフォーマンスを向上させることができます。 このセクションでは、「 [SQL パーティション テーブルを使用したデータの並行一括インポート](parallel-load-sql-partitioned-tables.md) 」で説明する手順に従ってデータベースを新規作成し、並行してデータをパーティション分割されたテーブルに読み込みます。
 
 1. VM にログオンした状態で、 **SQL Server Management Studio**を起動します。
@@ -136,7 +136,7 @@ AzCopy を使用してデータをコピーするには
 11. **SQL Server Management Studio** で、提供されたサンプルのスクリプト **sample\_queries.sql** を探索します。 サンプル クエリのいずれかを実行するには、クエリ行を強調表示してから、ツールバーの **[実行]** をクリックします。
 12. NYC タクシー乗車データは、2 つの個別のテーブルに読み込まれます。 結合操作を向上させるため、テーブルのインデックスを作成することを強くお勧めします。 サンプルのスクリプト **create\_partitioned\_index.sql** は、パーティション分割されたインデックスを複合結合キー (**medallion、hack\_license、pickup\_datetime**) に作成します。
 
-## <a name="dbexplore"></a>SQL Server でのデータの探索と特徴エンジニアリング
+## <a name="data-exploration-and-feature-engineering-in-sql-server"></a><a name="dbexplore"></a>SQL Server でのデータの探索と特徴エンジニアリング
 このセクションでは、以前作成した SQL Server データベースを使用して、 **SQL Server Management Studio** で直接 SQL クエリを実行することで、データの探索および特徴の生成を行います。 **sample\_queries.sql** という名前のサンプルのスクリプトが、**Sample Scripts** フォルダーに用意されています。 データベース名が既定の名前 (**TaxiNYC**) と異なる場合は、スクリプトのデータベース名を変更します。
 
 この演習では、以下のことを実行します。
@@ -251,7 +251,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
     AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 
 
-## <a name="ipnb"></a>IPython Notebook でのデータの探索と特徴エンジニアリング
+## <a name="data-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>IPython Notebook でのデータの探索と特徴エンジニアリング
 このセクションでは、以前作成した SQL Server データベースに対して Python クエリと SQL クエリの両方を実行し、データの探索と特徴の生成を行います。 **machine-Learning-data-science-process-sql-story.ipynb** という名前のサンプルの IPython Notebooks が、**Sample IPython Notebooks** フォルダーに用意されています。 このノートブックは [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)からも入手できます。
 
 ビッグ データを使用する場合は、次の推奨される手順に従ってください。
@@ -550,7 +550,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 2. 多クラス分類:あらかじめ定義したクラスに従って、支払われたチップの範囲を予測します。
 3. 回帰タスク:乗車で支払われたチップの金額を予測します。  
 
-## <a name="mlmodel"></a>Azure Machine Learning でのモデルの作成
+## <a name="building-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Azure Machine Learning でのモデルの作成
 モデリングの演習を開始するには、Azure Machine Learning ワークスペースにログインします。 Machine Learning ワークスペースをまだ作成していない場合は、 [Azure Machine Learning ワークスペースの作成](../studio/create-workspace.md)に関する記事をご覧ください。
 
 1. Azure Machine Learning の使用を開始するには、「 [Azure Machine Learning Studio とは](../studio/what-is-ml-studio.md)
@@ -592,7 +592,7 @@ SQL Server データベースから直接データを読み取る、二項分類
 > 
 > 
 
-## <a name="mldeploy"></a>Azure Machine Learning にモデルを配置する
+## <a name="deploying-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Azure Machine Learning にモデルを配置する
 モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。 Azure Machine Learning Web サービスのデプロイの詳細については、「 [Azure Machine Learning Web サービスをデプロイする](../studio/deploy-a-machine-learning-web-service.md)」をご覧ください。
 
 新しい Web サービスをデプロイするには以下のことを実行する必要があります。

@@ -4,10 +4,10 @@ description: オンプレミスまたは Azure でホストされている ASP.N
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.openlocfilehash: 0843d6c04bf6fc9bab07207072990fb3fb8f1844
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665920"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を設定する
@@ -25,7 +25,7 @@ ASP.NET Web サイトに Application Insights を追加するうえで必要な�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="ide"></a> ステップ 1:Application Insights SDK を追加する
+## <a name="step-1-add-the-application-insights-sdk"></a><a name="ide"></a> ステップ 1:Application Insights SDK を追加する
 
 > [!IMPORTANT]
 > このサンプルのスクリーンショットは、Visual Studio 2017 バージョン 15.9.9 以降に基づきます。 Application Insights に追加する経験は、Visual Studio のバージョンや ASP.NET テンプレート タイプによって異なります。 旧バージョンでは、「Application Insights の構成」といった代替テキストがない場合があります。
@@ -56,7 +56,7 @@ Application Insights の構成画面:
 > [!NOTE]
 > デバッグ中はポータルにテレメトリを送信しない場合は、Application Insights SDK をアプリに追加するだけにして、ポータルのリソースの構成は行いません。 デバッグ中は、Visual Studio でテレメトリを表示することができます。 この構成ページには後で戻ってくることができます。また、アプリがデプロイされ、[実行時のテレメトリが有効にされる](../../azure-monitor/app/monitor-performance-live-website-now.md)まで待つこともできます。
 
-## <a name="run"></a> ステップ 2:アプリケーションを実行する
+## <a name="step-2-run-your-app"></a><a name="run"></a> ステップ 2:アプリケーションを実行する
 F5 キーを押して、アプリを実行します。 ある程度のテレメトリを生成するために、複数のページを開きます。
 
 Visual Studio で、ログに記録されたイベント数が表示されます。
@@ -104,7 +104,7 @@ Application Insights ポータルにはテレメトリが蓄積されており�
 >
 >
 
-## <a name="land"></a>設定の完了
+## <a name="youre-all-set"></a><a name="land"></a>設定の完了
 
 お疲れさまでした。 Application Insights パッケージをアプリにインストールし、Azure の Application Insights サービスにテレメトリを送信するように構成しました。
 

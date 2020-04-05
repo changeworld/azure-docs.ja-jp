@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
 ms.openlocfilehash: 3c6a5e011a536cc9c34565d4f72a9bee6c6a5254
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78945159"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux 仮想マシンについてのよく寄せられる質問
@@ -23,7 +23,7 @@ ms.locfileid: "78945159"
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>仮想マシンではどれくらいのストレージ容量を使用できますか。
 各データ ディスクで最大 32,767 GiB を使用できます。 使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。 詳細については、「 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-Azure Managed Disks は、Azure Virtual Machines でデータの永続的な記憶域として使用できる、お勧めのディスク ストレージ サービスです。 各仮想マシンで複数の管理ディスクを使用することができます。 Managed Disks には、次の 2 種類の耐久性ストレージ オプションがあります:Premium Managed Disks と Standard Managed Disks。 価格情報については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)」を参照してください。
+Azure Managed Disks は、Azure Virtual Machines でデータの永続的な記憶域として使用できる、お勧めのディスク ストレージ サービスです。 各仮想マシンで複数の管理ディスクを使用することができます。 管理ディスクには、耐用性別に Premium 管理ディスクと Standard 管理ディスクの 2 種類のストレージ オプションがあります。 価格情報については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)」を参照してください。
 
 Azure のストレージ アカウントでは、オペレーティング システム ディスクと任意のデータ ディスクのストレージも利用できます。 各ディスクは、実際には .vhd ファイルであり、ページ BLOB として保存されます。 価格の詳細については、「 [Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 

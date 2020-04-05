@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0680309b13bf4499f0d153f44e575c1762b54d79
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 95d54a0661f0a0cebdbfc225074be0ce0d83a5cc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773170"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79368895"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>チュートリアル:Azure portal からエクスポートしたテンプレートを使用する
 
@@ -35,7 +35,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[リソースの作成]** を選択します。
 1. **[Marketplace を検索]** に「**App Service プラン**」と入力し、 **[App Service プラン]** を選択します。  **[App Service プラン (クラシック)]** は選択しないでください。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 1. 次のように入力します。
 
     - **サブスクリプション**: Azure サブスクリプションを選択します。
@@ -47,7 +47,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
     ![Resource Manager テンプレート、テンプレート エクスポート ポータル](./media/template-tutorial-export-template/resource-manager-template-export.png)
 1. **[確認と作成]** を選択します。
-1. **作成** を選択します。 リソースが作成されるまでしばらくかかります。
+1. **［作成］** を選択します リソースが作成されるまでしばらくかかります。
 
 ## <a name="export-template"></a>テンプレートをエクスポートする
 
@@ -84,7 +84,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -95,10 +95,10 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addappserviceplan \
   --resource-group myResourceGroup \
   --template-file $templateFile \

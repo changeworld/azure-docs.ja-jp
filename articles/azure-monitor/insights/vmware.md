@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
 ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77664781"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor の VMware Monitoring (非推奨) ソリューション

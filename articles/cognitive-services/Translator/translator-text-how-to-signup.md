@@ -12,10 +12,10 @@ ms.date: 06/04/2019
 ms.author: swmachan
 ms.custom: seodec18
 ms.openlocfilehash: cfae5318213e8af164c8d0cc9ed378705a5644b0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73835702"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>Translator Text API にサインアップする方法

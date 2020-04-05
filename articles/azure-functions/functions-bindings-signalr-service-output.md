@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: d3ba9183cdea752c3e69a41770b6a5319a4a601d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77530192"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Azure Functions における SignalR Service の出力バインド

@@ -11,10 +11,10 @@ ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
 ms.openlocfilehash: 15aac35a7ebc505e76ddfd0c538c4fddb7b2d9ff
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930538"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する
@@ -160,5 +160,5 @@ SSIS エンジニアリング チームによる非公式な社内テストで�
 ## <a name="design-for-high-performance"></a>高パフォーマンス用の設計
 Azure で実行するための SSIS パッケージの設計は、オンプレミスで実行するためのパッケージの設計とは異なります。 複数の独立したタスクを同じパッケージにまとめるのではなく、Azure SSIS IR での実行効率を上げるために複数のパッケージに分割します。 相互の完了を待機する必要がないように、パッケージごとにパッケージ実行を作成します。 このアプローチでは、Azure-SSIS 統合ランタイムのスケーラビリティのメリットがあり、全体的なスループットが向上します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure-SSIS 統合ランタイムについてさらに学習します。 「[Azure-SSIS 統合ランタイム](concepts-integration-runtime.md#azure-ssis-integration-runtime)」をご覧ください。

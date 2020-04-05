@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 06b35fdcd9da333c3c9d94d41c84a2f25ede59ad
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: dd499a82ba1011d96772d6722e25a434d43a6bf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666567"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480200"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor のログ
 
@@ -84,7 +84,7 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 
 | Data | 説明 |
 |:---|:---|
-| リソース診断 | Log Analytics ワークスペースへのメトリックなど、診断データを書き込むための診断設定を構成します。 [Azure リソース ログの Log Analytics へのストリーミング](resource-logs-collect-storage.md)に関するページを参照してください。 |
+| リソース診断 | Log Analytics ワークスペースへのメトリックなど、診断データを書き込むための診断設定を構成します。 [Azure リソース ログの Log Analytics へのストリーミング](resource-logs-collect-workspace.md)に関するページを参照してください。 |
 | 監視ソリューション | 監視ソリューションにより収集されたデータが Log Analytics ワークスペースに書き込まれます。 ソリューションの一覧については、「[Azure での管理ソリューションのデータ収集の詳細](../insights/solutions-inventory.md)」をご覧ください。 ソリューションのインストールと使用について詳しくは、「[Azure Monitor での監視ソリューション](../insights/solutions.md)」をご覧ください。 |
 | メトリック | ログ データを長期間保持し、[Kusto クエリ言語](/azure/kusto/query/)を使用して他のデータの種類と共に複雑な分析を実行するために、Azure Monitor リソース用のプラットフォーム メトリックを Log Analytics ワークスペースに送信します。 [Azure リソース ログの Log Analytics へのストリーミング](resource-logs-collect-storage.md)に関するページを参照してください。 |
 | Azure Table Storage | 一部の Azure リソースによて監視データが書き込まれる Azure Storage からデータを収集します。 「[Log Analytics で IIS 用 Azure Blob Storage とイベント用 Azure Table Storage を使用する](diagnostics-extension-logs.md)」をご覧ください。 |
@@ -98,7 +98,7 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 | System Center Operations Manager | Operations Manager の管理グループを Azure Monitor に接続し、オンプレミスのエージェントからログにイベントおよびパフォーマンス データを収集します。 この構成について詳しくは、「[Operations Manager を Log Analytics に接続する](om-agents.md)」をご覧ください。 |
 
 
-### <a name="applications"></a>[アプリケーション]
+### <a name="applications"></a>アプリケーション
 
 | Data | 説明 |
 |:---|:---|

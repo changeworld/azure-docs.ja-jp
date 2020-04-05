@@ -4,10 +4,10 @@ description: Jupyter ノートブックをローカル コンピューターま�
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.openlocfilehash: baf05d7adb1340d712ff0fc87436d5bbac51bc8f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77064327"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>クイック スタート:ローカルの Jupyter ノートブックを Azure Notebooks プレビューに移行する
@@ -46,7 +46,7 @@ ms.locfileid: "77064327"
 
     ![URL またはローカル コンピューターからノートブックをアップロードするコマンド](media/quickstarts/upload-from-computer-url-command.png)
 
-   やはり、ノートブックが GitHub リポジトリにある場合は、[ノートブックのクローンに関するクイックスタート](quickstart-clone-jupyter-notebook.md)を参照してください。
+   ノートブックが GitHub リポジトリにある場合も、「[クイック スタート: ノートブックの複製](quickstart-clone-jupyter-notebook.md)」の手順を代わりにご覧ください。
 
    - **[From Computer]\(コンピューターから\)** を使用している場合は、 *.ipynb* ファイルをドラッグしてポップアップにドロップするか、 **[ファイルの選択]** を選択し、インポートするデータ ファイルを参照して選択します。 **[アップロード]** を選択します。 アップロードされたファイルには、ローカル ファイルと同じ名前が与えられます *.ipynb_checkpoints* フォルダーの内容をアップロードする必要はありません。
 

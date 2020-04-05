@@ -1,17 +1,17 @@
 ---
 title: OpenBSD イメージの作成とアップロード
 description: OpenBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成およびアップロードして、Azure CLI で Azure 仮想マシンを作成する方法について説明します
-author: thomas1206
+author: gbowerman
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 05/24/2017
-ms.author: huishao
-ms.openlocfilehash: d4ecc539d71933c4aecc9124b903c57cb72838de
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.author: guybo
+ms.openlocfilehash: 1ad1a66d67be7aefe4d9a7acae993e8788cbb193
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969497"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066751"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD ディスクイメージの作成と Azure へのアップロード
 この記事では、OpenBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。 アップロードした VHD を独自のイメージとして使用し、Azure CLI で Azure の仮想マシン (VM) を作成することができます。

@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: damendo
 ms.openlocfilehash: e405a91b1ea541b4ed3328fdb3bf80ca82731c93
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842854"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236935"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Azure Portal を使用した Azure Network Watcher との接続のトラブルシューティング
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: e3f09d4e2500b98a7ce68139cd97a04c0d60d73e
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f6817c1ec308e75a4af88825d46848b504775e19
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612554"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223039"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>チュートリアル:詳細構成オプションを使用して Azure Active Directory Domain Services インスタンスを作成、構成する
 
@@ -139,7 +139,7 @@ Azure portal の *[基本]* ウィンドウのフィールドに必要事項を�
 
 Azure AD DS ドメインの管理には、*AAD DC Administrators* という名前の特殊な管理グループを使用します。 このグループのメンバーには、マネージド ドメインに参加している VM の管理権限が付与されます。 ドメインに参加している VM では、このグループがローカル管理者グループに追加されます。 このグループのメンバーは、リモート デスクトップを使用して、ドメインに参加している VM にリモートで接続することもできます。
 
-Azure AD DS を使用するマネージド ドメインに対する "*ドメイン管理者*" または "*エンタープライズ管理者*" アクセス許可はありません。 これらのアクセス許可はサービスによって予約されており、テナント内でユーザーが使用することはできません。 特権を要する一部の操作については、代わりに *AAD DC Administrators* グループを使用して実行できます。 これらの操作には、ドメインへのコンピューターの参加、ドメインに参加している VM での管理グループへの所属、グループ ポリシーの構成などが含まれます。
+Azure AD DS を使用するマネージド ドメインに対する "*ドメイン管理者*" または "*エンタープライズ管理者*" アクセス許可はありません。 これらのアクセス許可はサービスによって予約されており、テナント内でユーザーが使用することはできません。 特権を要する一部の操作については、代わりに *AAD DC Administrators* グループを使用して実行できます。 これらの操作には、ドメインに参加している VM での管理グループへの所属、グループ ポリシーの構成などが含まれます。
 
 *AAD DC Administrators* グループは、ウィザードで Azure AD ディレクトリに自動的に作成されます。 Azure AD ディレクトリにこの名前のグループが既に存在している場合、ウィザードはこのグループを選択します。 この *AAD DC Administrators* グループには、デプロイ プロセス中、必要に応じてさらにユーザーを追加することもできます。 これらの手順は後から行うこともできます。
 

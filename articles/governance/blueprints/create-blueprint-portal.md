@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:ポータルでブループリントを作成する
 description: このクイックスタートでは、Azure Blueprints を使用して、Azure portal から成果物を作成、定義、デプロイします。
-ms.date: 11/21/2019
+ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: fa9eb8285086e35f8b23798c41a09529d0f49582
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 457f4f9c53f45077129b291c904bc1580b6d965e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436612"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282054"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>クイック スタート:ポータル内でブループリントを定義して割り当てる
 
@@ -29,6 +29,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    または、 **[開始]** ページから **[作成]** を選択して、ブループリントの作成に直接移動します。
 
    ![[ブループリントの定義] ページからブループリントを作成する](./media/create-blueprint-portal/create-blueprint-button.png)
+
+1. 組み込みのブループリント リストの上部にあるカードから **[空白のブループリントで始める]** を選択します。
 
 1. **MyBlueprint** など、**ブルー プリント名**を指定します (最長 48 文字でアルファベットと数字を使用でき、スペースと特殊文字は使用できません)。 ここでは、 **[ブループリントの説明]** を空白のままにしておきます。
 

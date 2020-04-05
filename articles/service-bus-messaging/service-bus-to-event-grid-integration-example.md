@@ -14,28 +14,35 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 3fb2f4a4969e8df94a60ac20c761f073b6a9d030
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fef325b67c38eda09a05dac9d74bd5b97df164cc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462087"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80067767"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>チュートリアル:Azure Functions と Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する
-このチュートリアルでは、Azure Functions と Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する方法について説明します。 次の手順を実行します。
- 
-- Event Grid からのイベントの初期フローをデバッグして確認するための、テスト Azure 関数を作成します。
-- Event Grid イベントに基づいて Azure Service Bus メッセージを受信して処理する Azure 関数を作成します。
-- Event Grid イベントに応答するロジック アプリを作成します
+このチュートリアルでは、Azure Functions と Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する方法について説明します。 
 
-Service Bus、Event Grid、Azure Functions、および Logic Apps の成果物を作成した後後は、次のアクションを行います。 
+このチュートリアルでは、以下の内容を学習します。
+> [!div class="checklist"]
+> * Service Bus 名前空間を作成する
+> * サンプル アプリケーションを準備してメッセージを送信する
+> * Azure でテスト関数を設定する
+> * Event Grid による関数と名前空間の接続
+> * Service Bus トピックにメッセージを送信する
+> * Azure Functions を使用してメッセージを受信する
+> * Logic Apps を使用してメッセージを受信する
 
-1. Service Bus トピックにメッセージを送信します。 
-2. トピックに対するサブスクリプションがそれらのメッセージを受信したことを確認します
-3. イベントをサブスクライブした関数またはロジック アプリがイベントを受信したことを確認します。 
+## <a name="prerequisites"></a>前提条件
+
+このチュートリアルを完了するには、以下がインストールされていることを確認してください。
+
+- [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](https://www.visualstudio.com/vs) 以降。
+- [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
 
 ## <a name="create-a-service-bus-namespace"></a>Service Bus 名前空間を作成する
-このチュートリアルの手順に従ってください。[クイック スタート:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認し、次のタスクを実行します:
+このチュートリアルの手順に従ってください。[クイック スタート: Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認し、次のタスクを実行します:
 
 - **Premium** Service Bus 名前空間を作成します。 
 - 接続文字列を取得します。 
@@ -65,7 +72,7 @@ Service Bus、Event Grid、Azure Functions、および Logic Apps の成果物�
 その後、次の手順を実行します。 
 
 
-# <a name="azure-functions-v2tabv2"></a>[Azure Functions V2](#tab/v2)
+# <a name="azure-functions-v2"></a>[Azure Functions V2](#tab/v2)
 
 1. ツリー ビューで **[関数]** を展開し、関数を選択します。 関数のコードを次のコードに置き換えます。 
 
@@ -122,7 +129,7 @@ Service Bus、Event Grid、Azure Functions、および Logic Apps の成果物�
 
     ![関数の URL の取得](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
 
-# <a name="azure-functions-v1tabv1"></a>[Azure Functions V1](#tab/v1)
+# <a name="azure-functions-v1"></a>[Azure Functions V1](#tab/v1)
 
 1. **V1** バージョンを使用するように関数を構成します。 
     1. ツリー ビューで関数アプリを選択し、 **[Function App の設定]** を選択します。 
@@ -294,7 +301,7 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
     6. **[RootManageSharedAccessKey]** を選択します。
 
         ![Logic Apps デザイナー - 共有アクセス キーの選択](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
-    7. **作成** を選択します。 
+    7. **［作成］** を選択します 
     8. トピックとサブスクリプションを選択します。 
     
         ![Logic Apps デザイナー - Service Bus のトピックとサブスクリプションの選択](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)

@@ -50,7 +50,7 @@
           href: how-to-transformation.md
         - name: Azure AD の同期 API
           href: 'https://docs.microsoft.com/graph/api/resources/synchronization-overview'
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: クラウド プロビジョニングに関するトラブルシューティング
           href: how-to-troubleshoot.md

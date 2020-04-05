@@ -18,18 +18,18 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84b786a1701892823554a83fa2015ac88d6eff4d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60295145"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのアクセス制御要件の決定
 組織がハイブリッド ID ソリューションを設計する場合、その機会に、ユーザーに使用できるようにする予定のリソースについて、アクセス要件を見直すこともできます。 データは、次に示す ID の 4 本の柱全体にかかっています。
 
 * 管理
-* Authentication
-* Authorization
+* 認証
+* 承認
 * 監査
 
 ここでは、認証と承認の詳細と、管理と監査がハイブリッド ID のライフサイクルに含まれていることを説明します。 これらの機能の詳細については、「 [ハイブリッド ID 管理タスクの決定](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) 」を参照してください。
@@ -60,7 +60,7 @@ ms.locfileid: "60295145"
 * 組織は、オンプレミスまたはクラウドにあるアプリケーションにシングル サインオンを使用していますか。
   * 「はい」の場合、ハイブリッド ID モデルを採用すると、このプロセスに影響がありますか。
 
-## <a name="access-control"></a>Access Control
+## <a name="access-control"></a>アクセス制御
 認証と承認は、ユーザーの検証によって企業データへのアクセスを可能にするための重要な要素ですが、ユーザーが持つアクセス権のレベルと、管理者が管理対象のリソースに対して持つアクセス権のレベルを制御するためにも重要です。 ハイブリッド ID ソリューションの場合、リソース、委任、ロール ベースのアクセス制御に対するアクセス権をより詳細に指定できるようにします。 アクセス制御について、次のチェック項目に回答してください。
 
 * 社内には、ID システムを管理するための昇格された特権を持つ複数のユーザーがいますか。
@@ -78,9 +78,9 @@ ms.locfileid: "60295145"
 > 
 > 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [インシデント対応要件の決定](plan-hybrid-identity-design-considerations-incident-response-requirements.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [設計上の考慮事項の概要](plan-hybrid-identity-design-considerations-overview.md)
 

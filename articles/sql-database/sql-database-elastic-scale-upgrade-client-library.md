@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: a1ab684f13c56698d4359f2bf74826f3dd696c6d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823507"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>最新のエラスティック データベース クライアント ライブラリを使用するためのアプリのアップグレード
@@ -44,7 +44,7 @@ ms.locfileid: "73823507"
 
 **4.シャード マップ マネージャーのデータベースをアップグレードします**。 Azure SQL Database でシャード マップをサポートするメタデータをアップグレードします。  これは、PowerShell か C# を使用して実行できます。 次に両方の方法について説明します。
 
-***オプション 1:PowerShell を使用してメタデータをアップグレードする***
+***オプション 1: PowerShell を使用してメタデータをアップグレードする***
 
 1. [こちら](https://nuget.org/nuget.exe) から NuGet の最新のコマンド ライン ユーティリティをダウンロードして、フォルダーに保存します。
 2. コマンド プロンプトを開き、同じフォルダーに移動して、次のコマンドを発行します。`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
@@ -52,7 +52,7 @@ ms.locfileid: "73823507"
 4. [スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)からエラスティック データベース クライアントのアップグレード スクリプトをダウンロードして、DLL が含まれる同じフォルダーに保存します。
 5. そのフォルダーのコマンド プロンプトから"PowerShell.\upgrade.ps1"を実行し、画面の指示に従います。
 
-***オプション 2:C# を使用してメタデータをアップグレードする***
+***オプション 2: C# を使用してメタデータをアップグレードする***
 
 または、次の例のように、メソッド [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) と [UpgradeGlobalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) を呼び出して、ShardMapManager を開き、すべてのシャードを反復し、メタデータのアップグレードを実行する Visual Studio アプリケーションを作成します。
 

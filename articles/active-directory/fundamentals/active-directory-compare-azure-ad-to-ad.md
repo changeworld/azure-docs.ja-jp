@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
 ms.openlocfilehash: 5075ae57df6a7306f0c860690931c846e52c2a89
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78926901"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>Active Directory と Azure Active Directory の比較

@@ -1,19 +1,18 @@
 ---
 title: Azure 仮想マシンを作成した後で WinRM を構成する | Azure Marketplace
 description: Azure でホストされる仮想マシンを作成した後で Windows リモート管理 (WinRM) を構成する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: pabutler
-ms.openlocfilehash: 7d050b32b212f66623a24bcf87d40111fc5973a5
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.author: dsindona
+ms.openlocfilehash: 673fe1f31f6a8602225e7cde3bf1eb4c3b28b8a3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77481376"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278146"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>仮想マシンの作成後に WinRM を構成する
 

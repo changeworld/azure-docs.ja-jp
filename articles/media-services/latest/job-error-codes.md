@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/28/2019
 ms.author: juliako
 ms.openlocfilehash: 9443a50d130e6542672eb143bcb56d04d63959a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65235711"
 ---
 # <a name="media-services-job-error-codes"></a>Media Services ジョブのエラー コード
@@ -38,6 +38,6 @@ ms.locfileid: "65235711"
 - [Azure Media Services の概念](concepts-overview.md)
 - [クォータと制限](limits-quotas-constraints.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [例: .NET で ApiException から ErrorCode と Message にアクセスする](configure-connect-dotnet-howto.md#connect-to-the-net-client)

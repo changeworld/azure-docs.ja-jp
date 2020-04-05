@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfd49a4429dc0d7f5db07a577016c21de8fc58d8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75762877"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
@@ -48,7 +48,7 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 たとえば、Azure AD のカウンターが AD よりも高くなるようにしたい場合は、オンプレミス AD が 1 分 (60 秒) に設定されていても、Azure AD は 120 秒 (2 分) になります。
 
 > [!IMPORTANT]
-> 現時点では、ユーザーのクラウド アカウントがスマート ロックアウト機能によってロックされている場合、管理者はロックを解除できません。 管理者はロックアウト期間が期限切れになるまで待つ必要があります。 ただし、ユーザーは信頼されたデバイスまたは場所から、パスワード リセットのセルフサービス (SSPR) を使用してロックを解除できます。
+> 現時点では、ユーザーのクラウド アカウントがスマート ロックアウト機能によってロックされている場合、管理者はロックを解除できません。 管理者はロックアウト期間が期限切れになるまで待つ必要があります。 ただし、ユーザーは信頼されたデバイスまたは場所から、セルフサービス パスワード リセット (SSPR) を使用してロックを解除できます。
 
 ## <a name="verify-on-premises-account-lockout-policy"></a>オンプレミス アカウントのロックアウト ポリシーを検証する
 
@@ -67,7 +67,7 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 
 組織のスマート ロックアウト値を確認または編集するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. *Azure Active Directory* を検索して選択します。 **[セキュリティ]**  >  **[認証方法]**  >  **[パスワード保護]** を選択します。
 1. 何回サインインに失敗したらアカウントがロックアウトされるかを基に **[ロックアウトのしきい値]** を設定します。 既定値は 10 です。
 1. **[Lockout duration in seconds]\(秒単位のロックアウト期間\)** で、各ロックアウトの長さを秒単位で設定します。 既定値は 60 秒 (1 分) です。
@@ -86,4 +86,4 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure AD を使用して、組織内の不適切なパスワードの使用を禁止する方法について説明します。](howto-password-ban-bad.md)
-* [ユーザーが自分でアカウントのロックを解除できるよう、セルフ サービスのパスワード リセット機能を構成します。](quickstart-sspr.md)
+* [ユーザーが自分でアカウントのロックを解除できるよう、セルフサービス パスワード リセット機能を構成します。](quickstart-sspr.md)

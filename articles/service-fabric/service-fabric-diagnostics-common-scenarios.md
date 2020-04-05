@@ -4,10 +4,10 @@ description: Azure Service Fabric アプリケーション内の一般的な監�
 ms.topic: article
 ms.date: 02/25/2019
 ms.openlocfilehash: 3c7f027bad71d48db5fba002f778f23db8225fa5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906947"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Service Fabric で一般的なシナリオを診断する

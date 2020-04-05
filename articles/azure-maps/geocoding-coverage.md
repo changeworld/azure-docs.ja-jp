@@ -1,19 +1,19 @@
 ---
 title: ジオコーディングの対象範囲 | Microsoft Azure Maps
 description: ロケーションアドレスを緯度と経度の座標に変換するプロセスを、ジオコーディングと呼びます。 この記事では、Microsoft Azure Maps のジオコーディングが対象範囲とするリージョンについて説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 12/31/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 149dd0a3e709bbf4660aaae176f76f560de873e2
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210057"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335649"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps でのジオコーディングの対象範囲
 

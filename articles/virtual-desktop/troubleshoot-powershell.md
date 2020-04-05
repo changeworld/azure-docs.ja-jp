@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 3fb5436c2b5c30c5336385792d0597bdcea2b538
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127471"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop PowerShell

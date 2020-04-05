@@ -14,16 +14,16 @@ ms.date: 10/16/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4384d29811d29f06422802abba5d3eb1ea5737e9
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72430081"
 ---
 # <a name="backup-and-restore"></a>バックアップと復元
 
 >[!IMPORTANT]
->この記事は、SAP HANA の管理ドキュメントまたは SAP Note の代わりになるものではありません。 SAP HANA の管理と操作 (特にバックアップ、復元、高可用性、ディザスター リカバリー) について、読者が十分な理解と専門知識を有していることを前提としています。 この記事では、SAP HANA Studio のスクリーンショットを示します。 SAP 管理ツールの画面およびツール自体の内容、構造、特徴は、SAP HANA のリリースごとに変わる可能性があります。
+>この記事は、SAP HANA の管理ドキュメントや SAP Note の代わりになるものではありません。 SAP HANA の管理と操作 (特にバックアップ、復元、高可用性、ディザスター リカバリー) について、読者が十分な理解と専門知識を有していることを前提としています。 この記事では、SAP HANA Studio のスクリーンショットを示します。 SAP 管理ツールの画面およびツール自体の内容、構造、特徴は、SAP HANA のリリースごとに変わる可能性があります。
 
 お使いの環境、および使用する HANA のバージョンとリリースに応じた手順とプロセスを理解することが重要です。 この記事で説明されている一部のプロセスは、一般的な理解を深めるために簡略化されています。 最終的な操作ハンドブックの詳細な手順として使用するためのものではありません。 使用する構成に対応した操作ハンドブックを作成する場合は、実際のプロセスをテストおよび練習し、特定の構成に関連するプロセスを文書化してください。 
 
@@ -401,5 +401,5 @@ SAP HANA では完全なログ セグメントが自動的にバックアップ�
 特定の時点への復元については、「[Manual recovery guide for SAP HANA on Azure from a storage snapshot (ストレージ スナップショットからの SAP HANA on Azure の手動復旧ガイド)](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)の「Recover the database to the following point in time (次の時点にデータベースを復旧する)」をご覧ください。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [ディザスター リカバリーの原則と準備](hana-concept-preparation.md)に関するページを参照してください。

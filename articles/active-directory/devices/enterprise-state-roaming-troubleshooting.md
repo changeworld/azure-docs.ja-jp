@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae8ce24aeb665a7f99326e83dbe18d020e1b6196
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672342"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming の設定のトラブルシューティング

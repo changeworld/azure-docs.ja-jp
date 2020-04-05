@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: a9b271b5f7d4e53dbf871d03dd43b62b9299aa53
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71309922"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>U-SQL データベース プロジェクトを使った Azure Data Lake 用 U-SQL データベースの開発
@@ -99,8 +99,8 @@ Visual Studio で、U-SQL データベース プロジェクトまたは .usqldb
 
 U-SQL プロジェクトから、U-SQL データベース プロジェクトを参照できます。 この参照は、2 つのワークロードに影響します。
 
-- *プロジェクトのビルド*:U-SQL スクリプトをビルドする前に、参照先のデータベース環境が設定されます。 
-- *(local-project) アカウントに対するローカル実行*:U-SQL スクリプトを実行する前に、参照先のデータベース環境が (local-project) アカウントにデプロイされます。 [ローカル実行と、(local-machine) アカウントと (local-project) アカウントの違いについては、こちらを参照してください](data-lake-analytics-data-lake-tools-local-run.md)。
+- *プロジェクトのビルド*: U-SQL スクリプトをビルドする前に、参照先のデータベース環境が設定されます。 
+- *(local-project) アカウントに対するローカル実行*: U-SQL スクリプトを実行する前に、参照先のデータベース環境が (local-project) アカウントに配置されます。 [ローカル実行と、(local-machine) アカウントと (local-project) アカウントの違いについては、こちらを参照してください](data-lake-analytics-data-lake-tools-local-run.md)。
 
 ### <a name="how-to-add-a-u-sql-database-reference"></a>U-SQL データベース参照の追加方法
 
@@ -113,7 +113,7 @@ U-SQL プロジェクトから、U-SQL データベース プロジェクトを�
 
     ![Data Lake Tools for Visual Studio におけるデータベース プロジェクト参照の追加ウィザード](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-add-database-project-reference-wizard.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Lake Analytics の CI/CD パイプラインをセットアップする方法](data-lake-analytics-cicd-overview.md)
 - [Azure Data Lake Analytics コードをテストする方法](data-lake-analytics-cicd-test.md)

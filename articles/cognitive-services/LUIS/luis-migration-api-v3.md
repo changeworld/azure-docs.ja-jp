@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: diberry
 ms.openlocfilehash: 9a8e8cb331dd11eebaddbcbf8f603c1148415aef
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79117370"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 の予測エンドポイントの変更
@@ -77,7 +77,7 @@ V2 予測 API は、V3 プレビューの後、少なくとも 9 か月間は非
 
 V3 エンドポイントの HTTP 呼び出しの形式が変更されました。
 
-バージョンによってクエリを実行する場合は、まず `"directVersionPublish":true` を使用して [API 経由で発行](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)する必要があります。 スロット名の代わりにバージョン ID を参照して、エンドポイントのクエリを実行します。
+バージョンによってクエリを実行する場合は、まず [ を使用して ](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)API 経由で発行`"directVersionPublish":true`する必要があります。 スロット名の代わりにバージョン ID を参照して、エンドポイントのクエリを実行します。
 
 |予測 API のバージョン|メソッド|URL|
 |--|--|--|
@@ -97,7 +97,7 @@ V3 エンドポイントの HTTP 呼び出しの形式が変更されました�
 
 V3 API には異なるクエリ文字列パラメーターがあります。
 
-|パラメーター名|Type|Version|Default|目的|
+|パラメーター名|種類|Version|Default|目的|
 |--|--|--|--|--|
 |`log`|boolean|V2 および V3|false|ログ ファイルにクエリを格納します。 既定値は false です。|
 |`query`|string|V3 のみ|既定値なし - GET 要求では必須|**V2 では**、予測される発話は `q` パラメーター内にあります。 <br><br>**V3 では**、この機能は `query` パラメーターで渡されます。|
@@ -121,7 +121,7 @@ V3 API には異なるクエリ文字列パラメーターがあります。
 }
 ```
 
-|プロパティ|Type|Version|Default|目的|
+|プロパティ|種類|Version|Default|目的|
 |--|--|--|--|--|
 |`dynamicLists`|array|V3 のみ|不要。|[動的リスト](#dynamic-lists-passed-in-at-prediction-time)を使用すると、既に LUIS アプリに存在し、トレーニングおよび発行済みの既存のリスト エンティティを拡張することができます。|
 |`externalEntities`|array|V3 のみ|不要。|[外部エンティティ](#external-entities-passed-in-at-prediction-time)を使用すると、LUIS アプリが実行時にエンティティを特定してラベル付けを行い、それを既存のエンティティの特徴として使用できるようになります。 |
@@ -325,7 +325,7 @@ V3 では、エンティティ メタデータを返す `verbose` フラグで�
 
 `Send him a calendar reminder for the party.`
 
-前の発話では、`him` を `Hazem` への参照として使用しています。 会話のチャット ボットは、POST 本文で、`Hazem` を最初の発話から抽出されたエンティティの値 `him` にマップすることができます。
+前の発話では、`him` を `Hazem` への参照として使用しています。 会話のチャット ボットは、POST 本文で、`him` を最初の発話から抽出されたエンティティの値 `Hazem` にマップすることができます。
 
 ```json
     "externalEntities": [
@@ -404,7 +404,7 @@ V3 では、エンティティ メタデータを返す `verbose` フラグで�
 
 
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決策
 
 "_省略可能な_" `resolution` プロパティが予測応答で返されることで、この外部エンティティに関連付けられているメタデータを渡し、それを応答で再び受け取ることができます。
 
@@ -432,7 +432,7 @@ V3 では、エンティティ メタデータを返す `verbose` フラグで�
 
 ### <a name="dynamic-list-json-request-body"></a>動的リストの JSON 要求本文
 
-次の JSON 本文を送信して類義語を含む新しいサブリストをリストに追加し、`POST` クエリ予測要求を使用してテキスト `LUIS` のリスト エンティティを予測します。
+次の JSON 本文を送信して類義語を含む新しいサブリストをリストに追加し、`LUIS` クエリ予測要求を使用してテキスト `POST` のリスト エンティティを予測します。
 
 ```JSON
 {

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: ccaca451ac4fb7b4301aca429a42baea91e5ed10
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773459"
 ---
 # <a name="service-bus-messaging-samples"></a>Service Bus メッセージングのサンプル

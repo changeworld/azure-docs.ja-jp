@@ -15,13 +15,13 @@ ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
 ms.openlocfilehash: a1a3e62646fedd468a02eac7b1a48d0b2d00fd74
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77591984"
 ---
-# <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>チュートリアル:Azure Lab Services でラボの使用状況を追跡する
+# <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>チュートリアル: Azure Lab Services でラボの使用状況を追跡する
 このチュートリアルでは、ラボの作成者/所有者がラボの使用状況を追跡する方法について説明します。
 
 このチュートリアルでは、次のアクションを実行します。
@@ -58,7 +58,7 @@ ms.locfileid: "77591984"
 ラボの仮想マシン プールの管理の詳細については、「[仮想マシン プールを設定および管理する](how-to-set-virtual-machine-passwords.md)」を参照してください。
 
 > [!NOTE]
-> 教師が学生の VM をオンにしても、学生のクォータは影響を受けません。 ユーザーのクォータによって指定されるのは、スケジュールされた授業時間外にユーザーが使用できるラボ時間数です。 クォータの詳細については、「[ユーザーのクォータを設定する](how-to-configure-student-usage.md?#set-quotas-for-users)」を参照してください。
+> 教師が学生用 VM をオンにしても、学生のクォータは影響を受けません。 ユーザーのクォータによって指定されるのは、スケジュールされたクラス時間外にユーザーが使用できるラボ時間数です。 クォータの詳細については、「[ユーザーのクォータを設定する](how-to-configure-student-usage.md?#set-quotas-for-users)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 クラスルーム ラボの詳細については、[攻略ガイド](how-to-manage-lab-accounts.md)の各記事を参照してください。

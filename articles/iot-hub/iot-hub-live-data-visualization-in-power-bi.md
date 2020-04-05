@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 6/06/2019
 ms.author: robinsh
 ms.openlocfilehash: f0b909d10790511408e090546fd3359889ea5aca
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954622"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
@@ -64,7 +64,7 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 
    ![Azure での Stream Analytics ジョブの作成](./media/iot-hub-live-data-visualization-in-power-bi/create-stream-analytics-job-azure.png)
 
-3. **作成** を選択します。
+3. **［作成］** を選択します
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics ジョブへの入力の追加
 
@@ -112,7 +112,7 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 
    **[データセット名]** :データセットの名前を入力します。
 
-   **[テーブル名]** :テーブルの名前を入力します。
+   **[テーブル名]** : テーブルの名前を入力します。
 
    ![Azure で Stream Analytics ジョブに出力を追加する](./media/iot-hub-live-data-visualization-in-power-bi/add-output-to-stream-analytics-job-azure.png)
 
@@ -184,7 +184,7 @@ Stream Analytics ジョブで、 **[概要]** を選択してから、 **[開始
 
 Microsoft は [Power BI のモバイル アプリ](https://powerbi.microsoft.com/en-us/documentation/powerbi-power-bi-apps-for-mobile-devices/)も提供しています。これを使用すると、モバイル デバイスで Power BI のダッシュボードとレポートを表示して操作できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Power BI を使用して、Azure IoT ハブからのリアルタイム センサー データを視覚化することができました。
 

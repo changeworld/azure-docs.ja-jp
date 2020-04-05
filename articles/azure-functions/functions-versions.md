@@ -3,12 +3,12 @@ title: Azure Functions ランタイム バージョンの概要
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 バージョン間の違いと、適切なバージョンを選択する方法について説明します。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 21a7b25087efd5d4adf2154c935636c263df9afd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539503"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234879"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
@@ -36,7 +36,7 @@ Azure Functions 1.x の試験段階の言語は新しいモデルを使用でき
 
 詳細については、[サポートされている言語](supported-languages.md)に関するページを参照してください。
 
-## <a name="creating-1x-apps"></a>特定のバージョンで実行する
+## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>特定のバージョンで実行する
 
 既定では、Azure portal と Azure CLI で作成された関数アプリはバージョン 3.x に設定されます。 このバージョンは必要に応じて変更できます。 ランタイムのバージョンを 1.x に変更できるのは、関数アプリを作成してから関数を追加するまでの間のみです。  2\.x と 3.x の間の移行は関数が含まれるアプリでも許可されますが、まず、新しいアプリでテストすることをお勧めします。
 
@@ -58,7 +58,7 @@ Azure Functions 1.x の試験段階の言語は新しいモデルを使用でき
 
 バージョン 2.x では次の点が変更されました。
 
-* HTTP エンドポイントを呼び出すキーは、Azure Blob Storage 内で常に暗号化されて格納されます。 バージョン 1.x では、既定で Azure Files ストレージにキーが格納されていました。 アプリをバージョン 1.x からバージョン 2.x にアップグレードすると、ファイル ストレージ内の既存のシークレットはリセットされます。
+* HTTP エンドポイントを呼び出すキーは、Azure Blob Storage 内で常に暗号化されて格納されます。 バージョン 1.x では、既定で Azure File ストレージにキーが格納されていました。 アプリをバージョン 1.x からバージョン 2.x にアップグレードすると、ファイル ストレージ内の既存のシークレットはリセットされます。
 
 * バージョン 2.x ランタイムには、Webhook プロバイダーの組み込みサポートは含まれていません。 この変更はパフォーマンスを向上するために行われました。 Webhook のエンドポイントとして HTTP トリガーを使用することもできます。
 
@@ -104,7 +104,7 @@ Azure Functions バージョン 3.x は、バージョン 2.x との下位互換
 
 Azure の公開アプリから使用される Functions ランタイムのバージョンは、[`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) アプリケーションの設定によって決まります。 次のランタイムのメジャー バージョン値がサポートされています。
 
-| Value | ランタイム ターゲット |
+| 値 | ランタイム ターゲット |
 | ------ | -------- |
 | `~3` | 3.x |
 | `~2` | 2.x |

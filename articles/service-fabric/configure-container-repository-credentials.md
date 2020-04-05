@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934989"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>アプリケーションでコンテナー イメージをダウンロードするためのリポジトリ資格情報を構成する

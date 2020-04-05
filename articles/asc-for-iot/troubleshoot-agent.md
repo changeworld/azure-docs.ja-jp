@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
 ms.openlocfilehash: 7f3bd4be3ef927f73643146a457bc551ef86a450
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68600318"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>セキュリティ エージェントのトラブルシューティング ガイド (Linux)
@@ -85,13 +85,13 @@ Azure Security Center for IoT agent encountered an error! Error in: {Error Code}
 | Local Configuration (ローカル構成) | Cant Parse Configuration (構成を解析できない) | 構成値を解析できません。 エラー メッセージにより、どのキーを解析できないかが示されます。 値が、予期された型ではないか、または範囲外であるため、構成値を解析できません。 | LocalConfiguration スキーマに一致するように /var/LocalConfiguration.json ファイルでキーの値を修正します。詳細については、[c#-localconfig-reference](azure-iot-security-local-configuration-csharp.md) に関する記事を参照してください。 |  スキーマに一致するように General.config ファイルでキーの値を修正します。詳細については、[cs-localconfig-reference](azure-iot-security-local-configuration-c.md) に関する記事を参照してください。|
 | Local Configuration (ローカル構成) | ファイル形式 | 構成ファイルを解析できませんでした。 | 構成ファイルが破損しています。エージェントをダウンロードして再インストールします。 | |
 | Remote Configuration (リモート構成) | タイムアウト | エージェントが、タイムアウト期間内に azureiotsecurity モジュール ツインをフェッチできませんでした。 | 認証の構成が正しいことを確認し、再試行してください。 | エージェントが、タイムアウト期間内に azureiotsecurity モジュール ツインをフェッチできませんでした。 | 認証の構成が正しいことを確認し、再試行してください。 |
-| Authentication | File Not Exist (ファイルが存在しない) | 指定されたパスにファイルが存在しません。 | 指定されたパスにファイルが存在することを確認します。または **LocalConfiguration.json** ファイルに移動して、**FilePath** 構成を変更します。 | 指定されたパスにファイルが存在することを確認します。または **Authentication.config** ファイルに移動して、**FilePath** 構成を変更します。|
-| Authentication | File Permission (ファイルのアクセス許可) | エージェントに、ファイルを開くための十分なアクセス許可がありません。 | 指定されたパスのファイルへの読み取りアクセス許可を **asciotagent** ユーザーに付与します。 | ファイルにアクセスできることを確認します。 |
-| Authentication | ファイル形式 | 指定されたファイルの形式が正しくありません。 | ファイルの形式が正しいことを確認します。 サポートされているファイル形式は .pfx と .pem です。 | ファイルが有効な証明書ファイルであることを確認します。 |
-| Authentication | 権限がありません | エージェントが、指定された資格情報を使用して IoT Hub に対して認証できませんでした。 | LocalConfiguration ファイルで認証構成を検証し、認証構成全体を調べてすべての詳細が正しいことを確認し、ファイル内のシークレットが認証済み ID と一致することを確認します。 | Authentication.config で認証構成を検証し、認証構成全体を調べてすべての詳細が正しいことを確認し、ファイル内のシークレットが認証済み ID と一致することを確認します。
-| Authentication | 見つかりません | デバイス/モジュールが検出されました。 | 認証構成を検証します - ホスト名が正しく、デバイスが IoT Hub に存在し、デバイスに azureiotsecurity ツイン モジュールがあることを確認します。 |  認証構成を検証します - ホスト名が正しく、デバイスが IoT Hub に存在し、デバイスに azureiotsecurity ツイン モジュールがあることを確認します。 |
-| Authentication | Missing Configuration (構成の欠落) | *Authentication.config* ファイルに構成がありません。 エラー メッセージにより、どのキーが欠落しているか示されます。 | 欠落しているキーを *LocalConfiguration.json* ファイルに追加します。| 欠落しているキーを *Authentication.config* ファイルに追加します。詳細については、[c#-localconfig-reference](azure-iot-security-local-configuration-csharp.md) に関する記事を参照してください。 |
-| Authentication | Cant Parse Configuration (構成を解析できない) | 構成値を解析できません。 エラー メッセージにより、どのキーを解析できないかが示されます。 値が、予期された型ではないか、または範囲外であるため、構成値を解析できません。 |**LocalConfiguration.json** ファイル内のキーの値を修正します。 |スキーマに一致するように **Authentication.config** ファイルでキーの値を修正します。詳細については、[cs-localconfig-reference](azure-iot-security-local-configuration-c.md) に関する記事を参照してください。|
+| 認証 | File Not Exist (ファイルが存在しない) | 指定されたパスにファイルが存在しません。 | 指定されたパスにファイルが存在することを確認します。または **LocalConfiguration.json** ファイルに移動して、**FilePath** 構成を変更します。 | 指定されたパスにファイルが存在することを確認します。または **Authentication.config** ファイルに移動して、**FilePath** 構成を変更します。|
+| 認証 | File Permission (ファイルのアクセス許可) | エージェントに、ファイルを開くための十分なアクセス許可がありません。 | 指定されたパスのファイルへの読み取りアクセス許可を **asciotagent** ユーザーに付与します。 | ファイルにアクセスできることを確認します。 |
+| 認証 | ファイル形式 | 指定されたファイルの形式が正しくありません。 | ファイルの形式が正しいことを確認します。 サポートされているファイル形式は .pfx と .pem です。 | ファイルが有効な証明書ファイルであることを確認します。 |
+| 認証 | 権限がありません | エージェントが、指定された資格情報を使用して IoT Hub に対して認証できませんでした。 | LocalConfiguration ファイルで認証構成を検証し、認証構成全体を調べてすべての詳細が正しいことを確認し、ファイル内のシークレットが認証済み ID と一致することを確認します。 | Authentication.config で認証構成を検証し、認証構成全体を調べてすべての詳細が正しいことを確認し、ファイル内のシークレットが認証済み ID と一致することを確認します。
+| 認証 | 見つかりません | デバイス/モジュールが検出されました。 | 認証構成を検証します - ホスト名が正しく、デバイスが IoT Hub に存在し、デバイスに azureiotsecurity ツイン モジュールがあることを確認します。 |  認証構成を検証します - ホスト名が正しく、デバイスが IoT Hub に存在し、デバイスに azureiotsecurity ツイン モジュールがあることを確認します。 |
+| 認証 | Missing Configuration (構成の欠落) | *Authentication.config* ファイルに構成がありません。 エラー メッセージにより、どのキーが欠落しているか示されます。 | 欠落しているキーを *LocalConfiguration.json* ファイルに追加します。| 欠落しているキーを *Authentication.config* ファイルに追加します。詳細については、[c#-localconfig-reference](azure-iot-security-local-configuration-csharp.md) に関する記事を参照してください。 |
+| 認証 | Cant Parse Configuration (構成を解析できない) | 構成値を解析できません。 エラー メッセージにより、どのキーを解析できないかが示されます。 値が、予期された型ではないか、または範囲外であるため、構成値を解析できません。 |**LocalConfiguration.json** ファイル内のキーの値を修正します。 |スキーマに一致するように **Authentication.config** ファイルでキーの値を修正します。詳細については、[cs-localconfig-reference](azure-iot-security-local-configuration-c.md) に関する記事を参照してください。|
 |
 
 ## <a name="restart-the-agent"></a>エージェントを再起動する
@@ -102,9 +102,9 @@ Azure Security Center for IoT agent encountered an error! Error in: {Error Code}
     ```
 2. エージェントの起動プロセスが引き続き失敗する場合、必要に応じて、前の手順を繰り返してエージェントを強制的に停止し、エラーを取得します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure Security Center for IoT サービスの[概要](overview.md)を読みます
-- Azure Security Center for IoT の[アーキテクチャ](architecture.md)について詳しく学習します
+- Azure Security Center for IoT の[アーキテクチャ](architecture.md)の詳細を確認します
 - Azure Security Center for IoT の[サービス](quickstart-onboard-iot-hub.md)を有効にします
 - Azure Security Center for IoT サービスの [FAQ](resources-frequently-asked-questions.md) を読みます
 - [未加工のセキュリティ データ](how-to-security-data-access.md)にアクセスする方法を学習します

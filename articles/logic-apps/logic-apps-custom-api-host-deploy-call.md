@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
 ms.openlocfilehash: d1305be54a22b1460000a357074cbb1f67123bd6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790757"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>カスタム API をデプロイして Azure Logic Apps のワークフローから呼び出す
@@ -49,6 +49,6 @@ API 定義プロパティと CORS を設定すると、カスタム API のト�
 
 *  [HTTP アクション](../connectors/connectors-native-http.md)を使用した要求をいつでも作成し、OpenAPI ドキュメントがない API や OpenAPI ドキュメントを公開しない API を含む、あらゆる API を呼び出すことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [カスタム コネクタの概要](../logic-apps/custom-connector-overview.md)

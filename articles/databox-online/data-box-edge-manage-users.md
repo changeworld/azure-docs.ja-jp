@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: alkohli
 ms.openlocfilehash: 443ed983a0eec5dfd8f7a917fbc1440cd66c3db3
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78946141"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>Azure portal を使用して Azure Data Box Edge のユーザーを管理する

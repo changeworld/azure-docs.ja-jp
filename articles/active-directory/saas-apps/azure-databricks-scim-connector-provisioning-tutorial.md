@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/15/2020
 ms.author: Zhchia
 ms.openlocfilehash: fe1260982edc877c049716bd74f1bb3e90d33b0f
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77370519"
 ---
 # <a name="tutorial-configure-azure-databricks-scim-connector-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Azure Databricks SCIM Connector を構成する

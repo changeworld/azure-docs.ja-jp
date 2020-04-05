@@ -10,10 +10,10 @@ ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: a66f73e028594cf90f1fa1765910a3df3adbad1a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74849481"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Azure Automation の証明書資産
@@ -66,7 +66,7 @@ Runbook および DSC 構成で証明書にアクセスするために、次の�
 1. Automation アカウントから、 **[資産]** タイルをクリックして **[資産]** ページを開きます。
 2. **[証明書]** タイルをクリックして **[証明書]** ページを開きます。
 3. ページ上部の **[証明書の追加]** をクリックします。
-4. **[名前]** ボックスに証明書の名前を入力します。
+4. Type a name for the certificate in the **Name** box.
 5. .cer または .pfx ファイルを参照するには、 **[Upload a certificate file]\(証明書ファイルのアップロード\)** の **[ファイルの選択]** をクリックします。 .pfx ファイルを選択する場合は、パスワードおよびエクスポートを許可するかどうかを指定します。
 6. **[作成]** をクリックして、新しい証明書資産を保存します。
 
@@ -164,6 +164,6 @@ cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
 print cert
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - リンクを使用して、Runbook で実行するように設計されているアクティビティの論理フローを制御する方法については、「[グラフィカル作成でのリンク](../automation-graphical-authoring-intro.md#links-and-workflow)」をご覧ください。 

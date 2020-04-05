@@ -2,27 +2,23 @@
 title: OAuth2.0 を使用した Azure AD のサービス間の認証 | Microsoft Docs
 description: この記事では、HTTP メッセージを使用して、OAuth2.0 クライアント資格情報付与フローを使用するサービス間の認証を実装する方法について説明します。
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: ryanwi
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 24c9c4385f23b68e9a3efb65d2582457219fa10d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: f2d1eaec80c8925eb7b38af848e29e944f1ebf69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163392"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154544"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>クライアント資格情報を使用したサービス間の呼び出し (共有シークレットまたは証明書)
 
@@ -53,7 +49,7 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 ## <a name="service-to-service-access-token-request"></a>サービス間のアクセス トークン要求
 クライアント アプリケーションのセキュリティ保護に共有シークレットまたは証明書のどちらを使うかに応じて、2 つのケースがあります。
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース:共有シークレットを使ったアクセス トークン要求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース: 共有シークレットを使ったアクセス トークン要求
 共有シークレットを使用する場合、サービス間のアクセス トークン要求には、次のパラメーターが含まれてます。
 
 | パラメーター |  | 説明 |
@@ -64,7 +60,7 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 | resource |required |受信側の Web サービスのアプリケーション ID URI を入力します。 アプリケーション ID URI を調べるには、Azure Portal で **[Azure Active Directory]** 、 **[アプリの登録]** の順にクリックして、サービス アプリケーションをクリックします。次に、 **[設定]** 、 **[プロパティ]** の順にクリックします |
 
 #### <a name="example"></a>例
-次の HTTP POST では、 https://service.contoso.com/ Web サービス用の[アクセス トークン](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)を要求します。 `client_id` は、アクセス トークンを要求する Web サービスを識別します。
+次の HTTP POST では、[ Web サービス用の](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)アクセス トークン`https://service.contoso.com/`を要求します。 `client_id` は、アクセス トークンを要求する Web サービスを識別します。
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1
@@ -74,7 +70,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&client_secret=qkDwDJlDfig2IpeuUZYKH1Wb8q1V0ju6sILxQQqhJ+s=&resource=https%3A%2F%2Fservice.contoso.com%2F
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース:証明書を使ったアクセス トークン要求
+### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース: 証明書を使ったアクセス トークン要求
 証明書を含むサービス間のアクセス トークン要求には、次のパラメーターが含まれています。
 
 | パラメーター |  | 説明 |
@@ -88,7 +84,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 パラメーターは、共有シークレットによる要求のパラメーターとほぼ同じであることに注意してください。唯一異なるのは、client_secret パラメーターが、client_assertion_type と client_assertion の 2 つのパラメーターに置き換えられている点です。
 
 #### <a name="example"></a>例
-次の HTTP POST は、証明書を使用して https://service.contoso.com/ Web サービスのアクセス トークンを要求します。 `client_id` は、アクセス トークンを要求する Web サービスを識別します。
+次の HTTP POST は、証明書を使用して `https://service.contoso.com/` Web サービスのアクセス トークンを要求します。 `client_id` は、アクセス トークンを要求する Web サービスを識別します。
 
 ```
 POST /<tenant_id>/oauth2/token HTTP/1.1
@@ -105,7 +101,7 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 | パラメーター | 説明 |
 | --- | --- |
 | access_token |要求されたアクセス トークン。 呼び出し元の Web サービスは、このトークンを使用して受信側の Web サービスに対する認証処理を行うことができます。 |
-| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
+| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「 [OAuth2.0 Authorization Framework: Bearer Token Usage (OAuth2.0 承認フレームワーク: ベアラー トークンの使用について)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(RFC 6750) を参照してください。 |
 | expires_in |アクセス トークンの有効期間 (秒)。 |
 | expires_on |アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
 | not_before |アクセス トークンが使用可能になる日時。 日時は 1970-01-01T0:0:0Z UTC から、トークンの有効期間が切れるまでの秒数として表されます。|

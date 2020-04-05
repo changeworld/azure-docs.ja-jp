@@ -7,10 +7,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 32d4313b345964a2db13d68e83f81756a4acf0d9
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77458938"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Windows アプリに認証を追加する
@@ -21,10 +21,10 @@ ms.locfileid: "77458938"
 
 このチュートリアルは、Mobile Apps のクイック スタートに基づいています。 事前に [Mobile Apps の使用](app-service-mobile-windows-store-dotnet-get-started.md)に関するチュートリアルを完了している必要があります。
 
-## <a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
+## <a name="register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>許可されている外部リダイレクト URL にアプリを追加する
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>許可されている外部リダイレクト URL にアプリを追加する
 
 認証をセキュリティで保護するには、アプリ用の新しい URL スキームの定義が必要になります。 これによって、認証プロセスが完了すると認証システムからアプリにリダイレクトできます。 このチュートリアル全体を通して、URL スキーム _appname_ を使用します。 ただし、選択したあらゆる URL スキームを使用できます。 URL スキームは、モバイル アプリに対して一意である必要があります。 サーバー側でリダイレクトを有効にするには、以下の手順に従います。
 
@@ -36,14 +36,14 @@ ms.locfileid: "77458938"
 
 4. **[保存]** をクリックします。
 
-## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 これで、バックエンドへの匿名アクセスが無効になっていることを確認できます。 スタートアップ プロジェクトとして設定された UWP アプリ プロジェクトを使用し、アプリをデプロイして実行します。アプリケーションの開始後、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。 この問題は、認証されていないユーザーとしてアプリケーションがモバイル アプリ コードにアクセスしようとしても、現在の *TodoItem* テーブルでは認証が要求されるために発生します。
 
 次に、App Service のリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
-## <a name="add-authentication"></a>アプリケーションに認証を追加する
+## <a name="add-authentication-to-the-app"></a><a name="add-authentication"></a>アプリケーションに認証を追加する
 1. UWP アプリ プロジェクトの MainPage.xaml.cs ファイルを開き、次のコード スニペットを追加します。
    
         // Define a member variable for storing the signed-in user. 
@@ -137,7 +137,7 @@ ms.locfileid: "77458938"
 6. Package.appxmanifest ファイルを開き、 **[宣言]** に移動して、 **[使用可能な宣言]** ドロップダウン リストで **[プロトコル]** を選択し、 **[追加]** ボタンをクリックします。 次に、 **[プロトコル]** 宣言の **[プロパティ]** を構成します。 **[表示名]** で、アプリケーションのユーザーに表示する名前を追加します。 **[名前]** に、自分の {url_scheme_of_your_app} を追加します。
 7. F5 キーを押してアプリを実行します。 **[サインイン]** ボタンをクリックして、選択した ID プロバイダーでアプリにサインインします。 サインインに成功すると、アプリはエラーなしで実行し、バックエンドに対してクエリを行ってデータを更新できるようになります。
 
-## <a name="tokens"></a>クライアント側で認証トークンを保存する
+## <a name="store-the-authentication-token-on-the-client"></a><a name="tokens"></a>クライアント側で認証トークンを保存する
 前の例では、標準のサインインを示しました。標準のサインインでは、アプリケーションが開始するたびに、クライアントは ID プロバイダーと App Service の両方にアクセスする必要があります。 この方法は非効率であるだけでなく、多くの顧客が同時にアプリケーションを開始すると、使用率に関連した問題が発生する場合があります。 よって、App Service から返される承認トークンをキャッシュし、最初にその承認トークンの使用を試してから、プロバイダー ベースのサインインを使用するほうが効果的です。
 
 > [!NOTE]

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
 ms.openlocfilehash: 0075783c049e7f48645f768026dd9d5ec0ead821
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77058518"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>チュートリアル:自動的にユーザーをプロビジョニングするための Cisco Webex の構成

@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: f0537af684632a08a39e3e681900d62238365073
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74280980"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI によって強化されたフィールドを検索可能なインデックスにマップする方法
 
-この記事では、強化された入力フィールドを検索可能なインデックスの出力フィールドにマップする方法を学習します。 [定義済みのスキルセット](cognitive-search-defining-skillset.md)が用意できたら、値に直接影響するすべてのスキルの出力フィールドを検索インデックス内の特定のフィールドにマップする必要があります。 
+この記事では、強化された入力フィールドを検索可能なインデックスの出力フィールドにマップする方法を学習します。 [定義済みのスキルセット](cognitive-search-defining-skillset.md)を持ったら、値に直接影響するすべてのスキルの出力フィールドを検索インデックス内の特定のフィールドにマップする必要があります。 
 
 出力フィールド マッピングは、強化されたドキュメントからインデックスにコンテンツを移動するために必要です。  強化されたドキュメントは情報のツリーであり、インデックスで複合型がサポートされている場合でも、強化されたツリーの情報をより単純な型 (文字列配列など) に変換することが必要になる場合があります。 出力フィールド マッピングを使用すると、情報をフラット化することによってデータ シェイプを変換できます。
 
@@ -128,7 +128,7 @@ sourceFieldName のパスは、1 つ以上の要素を表すことができま�
   "diseases" : ["heart failure","morquio"]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 強化されたフィールドを検索可能なフィールドにマップすると、[インデックス定義の一部として](search-what-is-an-index.md)検索可能な各フィールドにフィールド属性を設定できます。
 
 フィールド マッピングの詳細については、[Azure Cognitive Search インデクサーでのフィールド マッピング](search-indexer-field-mappings.md)に関する記事を参照してください。

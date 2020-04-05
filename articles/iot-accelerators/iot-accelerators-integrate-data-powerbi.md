@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74184240"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Power BI を使用してリモート監視データを視覚化する
@@ -51,7 +51,7 @@ ms.locfileid: "74184240"
   
 1. Power BI Desktop アプリを開き、左上隅の [データの取得] をクリックします。 
 
-    ![データの取得](./media/iot-accelerators-integrate-data-powerbi/get_data.png)
+    ![Get Data](./media/iot-accelerators-integrate-data-powerbi/get_data.png)
 
 2. データの入力を要求されたら、"Azure Cosmos DB" を検索して、このコネクタを選びます。 このコネクタは、基本的に、Azure IoT ソリューションの Cosmos Database から直接データを取り出します
   
@@ -98,7 +98,7 @@ ms.locfileid: "74184240"
 
 また、公開されたダッシュボードで[データを更新](https://docs.microsoft.com/power-bi/refresh-data)し、最新のデータ セットを保証することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Power BI を使ってリモート監視データを視覚化する方法について学習しました
 

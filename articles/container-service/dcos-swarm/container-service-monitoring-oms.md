@@ -8,10 +8,10 @@ ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
 ms.openlocfilehash: 1ab8d1cf3eb38a17f0b3d6c8137e37237498a527
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277332"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(非推奨) Log Analytics で Azure Container Service DC/OS クラスターを監視する

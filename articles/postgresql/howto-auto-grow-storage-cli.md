@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 8/7/2019
 ms.openlocfilehash: b0dc2fbb168d9325439ee18a227f71a3b88ef9c8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74767945"
 ---
 # <a name="auto-grow-azure-database-for-postgresql-storage---single-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL ストレージ - 単一サーバーを自動拡張する
@@ -41,6 +41,6 @@ az postgres server update --name mydemoserver --resource-group myresourcegroup -
 az postgres server create --resource-group myresourcegroup --name mydemoserver  --auto-grow Enabled --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 9.6
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [メトリックに関するアラートを作成する方法](howto-alert-on-metric.md)について学習します。

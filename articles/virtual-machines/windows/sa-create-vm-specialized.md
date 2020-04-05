@@ -16,10 +16,10 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.openlocfilehash: d887ef2ef74bb433d6e8ae7f53cd0b77f5948303
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073340"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>ストレージ アカウントでの特殊化された VHD からの VM の作成
@@ -33,7 +33,7 @@ Powershell を使用して、OS ディスクとして特殊化された非管理
  
 
 
-## <a name="option-1-upload-a-specialized-vhd"></a>オプション 1:特殊化された VHD をアップロードする
+## <a name="option-1-upload-a-specialized-vhd"></a>オプション 1: 特殊化された VHD をアップロードする
 
 Hyper-V などのオンプレミスの仮想化ツールを使用して作成された特殊化された VM、または別のクラウドからエクスポートされた VM から VHD をアップロードできます。
 
@@ -313,6 +313,6 @@ $vmList = Get-AzVM -ResourceGroupName $rgName
 $vmList.Name
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 新しい仮想マシンにサインインします。 詳しくは、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md)」をご覧ください。
 

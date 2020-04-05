@@ -16,10 +16,10 @@ ms.date: 02/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a159fe29bd0fa7039413e9a9e876870aae9c845
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78207289"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grok-learning"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Grok Learning の統合

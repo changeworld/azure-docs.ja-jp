@@ -1,20 +1,18 @@
 ---
 title: Microsoft を利用したビジネスのプロモーション | Azure Marketplace
 description: アプリおよびサービス パブリッシャー向けの Azure Marketplace および AppSource を利用したビジネスのプロモーション
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/04/2018
-ms.author: ellacroi
-ms.openlocfilehash: c0f33402c5ff9f970e2ffebf405178dbc0974690
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 63708f426ced01fc7b837cc7c82ef178e4e78f95
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827806"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387752"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Microsoft を利用したビジネスのプロモーション 
 

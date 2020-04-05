@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: dapine
 ms.openlocfilehash: 02e0e1494a897b31cb6ef28083677fa48f854c91
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924904"
 ---
 ## <a name="prerequisites"></a>前提条件

@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2ad7b769dc890917e5364fe57582acdfe16acac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75475645"
 ---
 # <a name="get-all-application-proxy-apps-with-a-token-lifetime-policy"></a>トークンの有効期間ポリシーを使用しているすべてのアプリケーション プロキシ アプリを取得する
@@ -47,6 +47,6 @@ ms.locfileid: "75475645"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure AD PowerShell モジュールの詳細については、「[Azure AD PowerShell モジュールの概要](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)」を参照してください。
+Azure AD PowerShell モジュールの詳細については、[Azure AD PowerShell モジュールの概要](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)に関する記事を参照してください。
 
-アプリケーション プロキシのためのその他の PowerShell の例については、「[Azure AD アプリケーション プロキシのための Azure AD PowerShell の例](../application-proxy-powershell-samples.md)」を参照してください。
+アプリケーション プロキシのその他の PowerShell の例については、[Azure AD アプリケーション プロキシの Azure AD PowerShell の例](../application-proxy-powershell-samples.md)に関する記事を参照してください。

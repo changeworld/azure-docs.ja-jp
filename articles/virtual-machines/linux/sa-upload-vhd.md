@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 378b802602576c4cf50862149f5d31d16d721be0
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: bc90a409dd2695ce16f8c7d5909f8e2d7867673c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77115843"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060250"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Azure CLI を使用してカスタム ディスクをアップロードし、Linux VM を作成する
 
@@ -54,7 +54,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 az storage account keys list --resource-group myResourceGroup --account-name mystorageaccount
 ```
 
-[az storage container create](/cli/azure/storage/container) を使用して、取得したストレージ キーを使用してストレージ アカウント内にコンテナーを作成します。 次の例では、`key1` からのストレージ キーの値を使用して `mydisks` という名前のコンテナーを作成します。
+[az storage container create](/cli/azure/storage/container) を使用して、取得したストレージ キーを使用してストレージ アカウント内にコンテナーを作成します。 次の例では、`mydisks` からのストレージ キーの値を使用して `key1` という名前のコンテナーを作成します。
 
 ```azurecli
 az storage container create --account-name mystorageaccount \
@@ -69,7 +69,7 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-[az vm create](/cli/azure/vm) を使用してディスクに URI を指定します (`--image`)。 次の例では、以前にアップロードした仮想ディスクを使用して、`myVM` という名前の VM を作成します。
+`--image`az vm create[ を使用してディスクに URI を指定します (](/cli/azure/vm))。 次の例では、以前にアップロードした仮想ディスクを使用して、`myVM` という名前の VM を作成します。
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -85,7 +85,7 @@ az vm create --resource-group myResourceGroup --location westus \
 次の手順を完了するには、以下が必要です。
 
 * **.vhd ファイルにインストールされている Linux オペレーティング システム** - [動作保証済み Linux ディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (または[動作保証外のディストリビューションに関する情報](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください) を VHD 形式で仮想ディスクにインストールします。 VM と VHD を作成するツールはいくつかあります。
-  * [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) または [KVM](https://www.linux-kvm.org/page/RunningKVM) をインストールして構成します。その際、イメージ形式として VHD を使用します。 必要であれば `qemu-img convert` を使用して[イメージを変換](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)できます。
+  * [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) または [KVM](https://www.linux-kvm.org/page/RunningKVM) をインストールして構成します。その際、イメージ形式として VHD を使用します。 必要であれば [ を使用して](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)イメージを変換`qemu-img convert`できます。
   * [Windows 10 上](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install)または [Windows Server 2012/2012 R2 上](https://technet.microsoft.com/library/hh846766.aspx)の Hyper-V を使用することもできます。
 
 > [!NOTE]
@@ -152,7 +152,7 @@ az storage account keys list --resource-group myResourceGroup --account-name mys
 
 次のように出力されます。
 
-```azurecli
+```output
 info:    Executing command storage account keys list
 + Getting storage account keys
 data:    Name  Key                                                                                       Permissions
@@ -161,6 +161,7 @@ data:    key1  d4XAvZzlGAgWdvhlWfkZ9q4k9bYZkXkuPCJ15NTsQOeDeowCDAdB80r9zA/tUINAp
 data:    key2  Ww0T7g4UyYLaBnLYcxIOTVziGAAHvU+wpwuPvK4ZG0CDFwu/mAxS/YYvAQGHocq1w7/3HcalbnfxtFdqoXOw8g==  Full
 info:    storage account keys list command OK
 ```
+
 以降の手順でストレージ アカウントとのやり取りに使用するため、 `key1` を書き留めます。
 
 ## <a name="create-a-storage-container"></a>ストレージ コンテナーを作成する
@@ -186,9 +187,9 @@ az storage blob upload --account-name mystorageaccount \
 ```
 
 ## <a name="create-the-vm"></a>VM の作成
-非管理対象ディスクで VM を作成するには、[az vm create](/cli/azure/vm) を使用してディスクに URI を指定します (`--image`)。 次の例では、以前にアップロードした仮想ディスクを使用して、`myVM` という名前の VM を作成します。
+非管理対象ディスクで VM を作成するには、`--image`az vm create[ を使用してディスクに URI を指定します (](/cli/azure/vm))。 次の例では、以前にアップロードした仮想ディスクを使用して、`myVM` という名前の VM を作成します。
 
-カスタム ディスクをポイントするには、[az vm create](/cli/azure/vm) を使用して `--image` パラメーターを指定します。 `--storage-account` は、カスタム ディスクが保存されているストレージ アカウントと必ず一致させます。 カスタム ディスクと同じコンテナーを VM の格納先として使用する必要はありません。 カスタム ディスクをアップロードする前に、前の手順と同じ方法で追加のコンテナーを必要なだけ作成しておいてください。
+カスタム ディスクをポイントするには、`--image`az vm create[ を使用して ](/cli/azure/vm) パラメーターを指定します。 `--storage-account` は、カスタム ディスクが保存されているストレージ アカウントと必ず一致させます。 カスタム ディスクと同じコンテナーを VM の格納先として使用する必要はありません。 カスタム ディスクをアップロードする前に、前の手順と同じ方法で追加のコンテナーを必要なだけ作成しておいてください。
 
 次の例では、`myVM` という名前の VM をカスタム ディスクから作成します。
 

@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
 ms.openlocfilehash: 72d7a2dd112e5e7a5105ff977e3917ccdfd7b53e
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77500305"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス

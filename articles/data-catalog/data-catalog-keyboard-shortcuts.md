@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 72d1ce0ded61b1143f99769319892981f3cd1c10
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69014448"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Azure Data Catalog 用のキーボード ショートカット
@@ -18,61 +18,61 @@ ms.locfileid: "69014448"
 ## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Data Catalog データ ソース登録ツール用のキーボード ショートカット
 
 ### <a name="general-keyboard-shortcuts"></a>一般的なキーボード ショートカット
-| Operation | 押すキー |
+| 操作 | ショートカット キー |
 | --- | --- |
-| ページ上の各コントロールにタブ移動する。 |Tab |
+| ページ上の各コントロールにタブ移動する。 |タブ |
 | オプションを選択する。 |Enter または Space |
 | ページを最大化する。 |Windows キー + ↑ |
 | ページを復元または最小化する。 |Windows キー + ↓ |
 | ページのメニューを開く。 |Alt ＋ Space |
 
 ### <a name="authentication-page"></a>[認証] ページ
-| Operation | 押すキー |
+| 操作 | ショートカット キー |
 | --- | --- |
 | サービスにサインインする。 |Alt + S |
 
 ### <a name="data-source-selection-page"></a>[データ ソースの選択] ページ
-| Operation | 押すキー |
+| 操作 | ショートカット キー |
 | --- | --- |
 | 次のページに移動する (有効な場合)。 |Alt + N |
 | タイルにフォーカスがある場合、選択した種類を変更する。 |左方向、上方向、右方向、下方向キー |
 
 ### <a name="data-source-connection-page"></a>[データ ソースの接続] ページ
-| Operation | 押すキー |
+| 操作 | ショートカット キー |
 | --- | --- |
 | 前のページに移動する (有効な場合)。 |Alt + P |
 | [接続] ボタンを選択する。 |Alt + C |
 
 ### <a name="connection-context-page"></a>[接続コンテキスト] ページ
-| Operation | 押すキー |
+| 操作 | ショートカット キー |
 | --- | --- |
 | [登録] ボタン (有効な場合)。 |Alt + R |
 | [プレビューを含める] チェック ボックス (使用可能な場合)。 |Alt + P |
 | [データ プロファイルを含める] チェック ボックス (使用可能な場合)。 |Alt + D |
 | 各リスト項目に移動する。 |上方向または下方向キー |
-| サーバーの階層で、ツリー ビューのノードを展開する。 |右方向キー |
-| **[使用可能なオブジェクト]** または **[登録するオブジェクト]** に選択された項目を移動する |Space |
+| サーバーの階層で、ツリー ビューのノードを展開する。 |→ |
+| **[使用可能なオブジェクト]** または **[登録するオブジェクト]** に選択された項目を移動する |Space キー |
 
 ### <a name="publish-progress-page"></a>[発行の進行状況] ページ
-| Operation | 押すキー |
+| 操作 | ショートカット キー |
 | --- | --- |
 | [キャンセル] ボタン |Alt + C |
 | [オブジェクトをさらに登録] ボタン |Alt + R |
-| [ポータルの表示] ボタン |Alt + V |
+| [ポータルの表示] ボタン |Alt&lt;/localizedText&gt; + &lt;localizedText&gt;V |
 
 ### <a name="publish-progress-page"></a>[発行の進行状況] ページ
-| Operation | 押すキー |
+| 操作 | ショートカット キー |
 | --- | --- |
 | [保存] ボタン (有効な場合) |Alt + S |
 | [キャンセル] ボタン |Alt + C |
 
 ## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>Data Catalog ポータル用のキーボード ショートカット
-| Operation | 押すキー |
+| 操作 | ショートカット キー |
 | --- | --- |
-| 移動する。 |TAB と SHIFT + TAB |
+| Navigate |TAB と SHIFT + TAB |
 | 項目をクリックする。 |スペースまたは ENTER |
 | セクションにドリルダウンする。 |スペースまたは ENTER |
-| セクションから抜ける。 |ESC |
+| セクションから抜ける。 |Esc |
 | 資産を固定する/固定解除する。 |Alt + P |
 | [探索] ページで、資産にフォーカスがある場合、資産を選択する。 |スペースまたは ENTER |
 | 複数選択に資産を追加する/複数選択から資産を削除する。 |CTRL + スペースまたは ENTER |

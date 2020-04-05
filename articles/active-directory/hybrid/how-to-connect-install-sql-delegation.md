@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6269d00c9a6a8f827a4e31044d9d20efb0f8471b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60243532"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>SQL によって委任された管理者のアクセス許可を使用した Azure AD Connect のインストール
@@ -46,7 +46,7 @@ Azure AD Connect 管理者|Azure AD Connect をインストールし、カスタ
 
 1. SQL 管理者に、大文字と小文字を区別しない照合順序 **(Latin1_General_CI_AS)** で ADSync データベースを作成してもらいます。  データベースの名前は **ADSync** にします。  Azure AD Connect のインストール時に、復旧モデル、互換性レベル、およびコンテインメントの種類が正しい値に更新されます。  ただし、照合順序は、SQL 管理者が正しく設定する必要があります。これを行わないと、Azure AD Connect によってインストールがブロックされます。  復旧するには、SA はデータベースを削除して、再作成する必要があります。
  
-   ![Collation](./media/how-to-connect-install-sql-delegation/sql4.png)
+   ![照合順序](./media/how-to-connect-install-sql-delegation/sql4.png)
 2. Azure AD Connect 管理者とドメイン サービス アカウントに次のアクセス許可を付与します。
    - SQL ログイン 
    - **データベース所有者 (dbo)** 権限。
@@ -58,12 +58,12 @@ Azure AD Connect 管理者|Azure AD Connect をインストールし、カスタ
 
 3. Azure AD Connect のインストール時に使用する必要がある SQL サーバーとインスタンス名を示す電子メールを、Azure AD Connect 管理者に送信します。
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 データベースがプロビジョニングされたら、Azure AD Connect 管理者は、必要に応じてオンプレミスの同期をインストールおよび構成できます。
 
 SQL 管理者が以前の Azure AD Connect のバックアップから ADSync データベースを復元している場合、既存のデータベースを使用して新しい Azure AD Connect サーバーをインストールする必要があります。 既存のデータベースを使用した Azure AD Connect のインストールの詳細については、「[既存の ADSync データベースを使用して Azure AD Connect をインストールする](how-to-connect-install-existing-database.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [簡単設定を使用した Azure AD Connect の開始](how-to-connect-install-express.md)
 - [Azure AD Connect のカスタム インストール](how-to-connect-install-custom.md)
 - [既存の ADSync データベースを使用して Azure AD Connect をインストールする](how-to-connect-install-existing-database.md)  

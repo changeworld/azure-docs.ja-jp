@@ -10,10 +10,10 @@ ms.date: 03/12/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 38a40d628b883c0e7ada824d47d3fdf3d29caf93
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74084380"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure CLI と Azure portal を使用して IoT Hub のメッセージ ルーティングを構成する
@@ -162,7 +162,7 @@ az servicebus queue create --name $sbQueueName \
 
 9. ルーティング クエリ情報の残りの部分を完成します。 このクエリでは、エンドポイントとして追加したストレージ コンテナーにメッセージを送信するための条件を指定します。 画面のフィールドを入力します。
 
-   **[名前]** :ルーティング クエリの名前を入力します。 このチュートリアルでは、**ContosoStorageRoute** を使います。
+   **Name**:ルーティング クエリの名前を入力します。 このチュートリアルでは、**ContosoStorageRoute** を使います。
 
    **エンドポイント**: ここには、先ほど設定したエンドポイントが表示されます。
 
@@ -200,7 +200,7 @@ az servicebus queue create --name $sbQueueName \
 
 6. ルーティング クエリ情報の残りの部分を完成します。 このクエリでは、エンドポイントとして追加した Service Bus キューにメッセージを送信するための条件を指定します。 画面のフィールドを入力します。 
 
-   **[名前]** :ルーティング クエリの名前を入力します。 このチュートリアルでは、**ContosoSBQueueRoute** を使います。 
+   **Name**:ルーティング クエリの名前を入力します。 このチュートリアルでは、**ContosoSBQueueRoute** を使います。 
 
    **エンドポイント**: ここには、先ほど設定したエンドポイントが表示されます。
 
@@ -224,7 +224,7 @@ az servicebus queue create --name $sbQueueName \
 
 [!INCLUDE [iot-hub-include-create-simulated-device-portal](../../includes/iot-hub-include-create-simulated-device-portal.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 リソースを設定してメッセージ ルートを構成したら、次のチュートリアルに進んで、IoT ハブにメッセージを送信する方法と、それらがさまざまな宛先にルーティングされるようすを確認しましょう。 
 

@@ -7,13 +7,13 @@ ms.assetid: fc755f82-ca3e-4532-b251-690b699324d6
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 5b9906abaa253c667c883a2e0e8ecd6e4cc9d496
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: c17cfcd2e55b98be9d86a73f6388d921336f993b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685757"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057662"
 ---
 # <a name="back-up-a-web-app-using-powershell"></a>PowerShell を使用して Web アプリをバックアップする
 
@@ -39,7 +39,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | ストレージ アカウントを作成します。 |
@@ -50,7 +50,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 | [New-AzWebAppBackup](/powershell/module/az.websites/new-azwebappbackup) | Web アプリのバックアップを作成します。 |
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Web アプリのバックアップの一覧を取得します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 541fcdd966ec1e0443fa6211d894bab3ed965f93
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 177973cf766a6215453f3062c0fb206961649272
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870328"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80295524"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>チュートリアル:SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする
 
@@ -171,11 +171,11 @@ AsyncDocumentClient client =
 
 読み取り専用のリージョンへの書き込み要求は失敗し、HTTP エラー コード 403 ("許可されていません") が表示されます。
 
-クライアントの最初の検出フェーズの後に書き込みリージョンが変更された場合、以前の書き込みリージョンへの以降の書き込みは失敗し、HTTP エラー コード 403 ("許可されていません") が表示されます。 クライアントはその後、更新された書き込みリージョンを把握するためにリージョンのリストをもう一度取得する必要があります。
+クライアントの最初の検出フェーズの後に書き込みリージョンが変更された場合、以前の書き込みリージョンへの以降の書き込みは失敗し、HTTP エラー コード 403 ("許可されていません") が返されます。 クライアントはその後、更新された書き込みリージョンを把握するためにリージョンのリストをもう一度取得する必要があります。
 
 このチュートリアルはこれで終わりです。 [Azure Cosmos DB の一貫性レベル](consistency-levels.md)に関する記事を読んで、グローバルにレプリケートされたアカウントの整合性を管理する方法について確認できます。 また、Azure Cosmos DB におけるグローバル データベース レプリケーションの動作の詳細については、[Azure Cosmos DB を使用したデータのグローバル分散](distribute-data-globally.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次の手順を行いました。
 

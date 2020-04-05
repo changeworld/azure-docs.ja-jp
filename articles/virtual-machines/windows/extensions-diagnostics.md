@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
 ms.openlocfilehash: d4ba3e8bbdad72f10c630a056f988ec83e9b1a68
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471620"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Windows VM 用の Azure Diagnostics 拡張機能

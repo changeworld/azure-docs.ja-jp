@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: 4c6a9a2b5991c9f99bf728ecfed144cc77e4c49a
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314336"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290470"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -66,7 +66,7 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 
 コード不要またはわずかなコードしか使用しないトレーニングとデプロイを行うには、以下をお試しください。
 
-+ **Azure Machine Learning デザイナー**
++ **Azure Machine Learning デザイナー (プレビュー)**
 
   デザイナーを使用すると、コードを書かなくても、データの準備、機械学習モデルのトレーニング、テスト、デプロイ、管理、追跡を行うことができます。 プログラミングは必要ありません。データセットとモジュールを視覚的に接続してモデルを構築します。 [デザイナーのチュートリアル](tutorial-designer-automobile-price-train-score.md)をお試しください。
 
@@ -116,7 +116,7 @@ Azure Machine Learning は、Azure プラットフォーム上の他のサービ
 
 Azure Storage アカウントやコンピューティング先などのリソースは、仮想ネットワーク内で安全に使用してモデルをトレーニングし、推論を実行することができます。 詳細については、[仮想ネットワークでの実験と推論の安全な実行](how-to-enable-virtual-network.md)に関するページを参照してください。
 
-## <a name="sku"></a>Basic Edition と Enterprise Edition
+## <a name="basic--enterprise-editions"></a><a name="sku"></a>Basic Edition と Enterprise Edition
 
 Azure Machine Learning には、機械学習のニーズに合わせて調整された 2 つのエディションがあります。
 + Basic (一般公開)

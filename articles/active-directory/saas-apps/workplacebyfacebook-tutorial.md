@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98706d0c9a86d53ae31d05bec48d7071f251b651
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: de84f2aee5f59d14ab70cb1687968643c4cdb31e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944385"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79136382"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workplace by Facebook の統合
 
@@ -30,7 +30,7 @@ ms.locfileid: "78944385"
 * ユーザーが自分の Azure AD アカウントを使用して自動的に Workplace by Facebook にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -240,7 +240,7 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

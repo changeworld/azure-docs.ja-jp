@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: rohink
-ms.openlocfilehash: 709e89b94ba10db954aa5cf3f70aeffb0d239edb
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938618"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294869"
 ---
 # <a name="how-traffic-manager-works"></a>Traffic Manager のしくみ
 
@@ -34,7 +34,7 @@ Traffic Manager の 2 つのメリットを次に示します。
 
 ## <a name="traffic-manager-example"></a>Traffic Manager の例
 
-Contoso Corp が、新しいパートナー ポータルを開発しました。 このポータルの URL は https://partners.contoso.com/login.aspx です。 アプリケーションは、Azure の 3 つのリージョンにホストされます。 可用性を向上させ、グローバル パフォーマンスを最大化するには、Traffic Manager を使用して、利用可能な最も近いエンドポイントにクライアント トラフィックを分散します。
+Contoso Corp が、新しいパートナー ポータルを開発しました。 このポータルの URL は `https://partners.contoso.com/login.aspx` です。 アプリケーションは、Azure の 3 つのリージョンにホストされます。 可用性を向上させ、グローバル パフォーマンスを最大化するには、Traffic Manager を使用して、利用可能な最も近いエンドポイントにクライアント トラフィックを分散します。
 
 この構成を実現するために、次の手順を実行します。
 
@@ -49,7 +49,7 @@ Contoso Corp が、新しいパートナー ポータルを開発しました。
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>Traffic Manager でのクライアントの接続方法
 
-前の例に続いて、クライアントがページ https://partners.contoso.com/login.aspx を要求すると、クライアントが次の手順を実行して DNS 名を解決して接続を確立します。
+前の例に続いて、クライアントがページ `https://partners.contoso.com/login.aspx` を要求すると、クライアントが次の手順を実行して DNS 名を解決して接続を確立します。
 
 ![Traffic Manager を使用した接続の確立][2]
 

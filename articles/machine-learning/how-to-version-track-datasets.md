@@ -7,16 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: sihhu
-author: sihhu
+author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.custom: ''
-ms.openlocfilehash: 7b124c0f35b5cfda4380555385971e4968d4c45c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: acbd2e3ba756255cbc69ae8a7b7ad62d7a1c1c5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78939255"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528474"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>実験でデータセットをバージョン管理して追跡する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,7 +52,7 @@ ms.locfileid: "78939255"
 
 ### <a name="register-a-dataset-version"></a>データセットのバージョンを登録する
 
-次のコードでは、`create_new_version` パラメーターを `True` に設定することによって、新しいバージョンの `titanic_ds` データセットを登録します。 ワークスペースに登録されている既存の `titanic_ds` データセットがない場合、コードは `titanic_ds` という名前で新しいデータセットを作成し、そのバージョンを 1 に設定します。
+次のコードでは、`titanic_ds` パラメーターを `create_new_version` に設定することによって、新しいバージョンの `True` データセットを登録します。 ワークスペースに登録されている既存の `titanic_ds` データセットがない場合、コードは `titanic_ds` という名前で新しいデータセットを作成し、そのバージョンを 1 に設定します。
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -64,7 +64,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>名前でデータセットを取得する
 
-既定では、`Dataset` クラスの [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) メソッドでは、ワークスペースに登録されているデータセットの最新バージョンが返されます。 
+既定では、[ クラスの ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--)get_by_name()`Dataset` メソッドでは、ワークスペースに登録されているデータセットの最新バージョンが返されます。 
 
 次のコードでは、`titanic_ds` データセットのバージョン 1 を取得します。
 
@@ -170,9 +170,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-また、 https://ml.azure.com/ を使用して、実験から `input_datasets` を見つけることもできます。 
+また、`input_datasets` を使用して、実験から https://ml.azure.com/ を見つけることもできます。 
 
-次の図は、Azure Machine Learning Studio で実験の入力データセットを探す場所を示しています。 この例では、 **[実験]** ペインに移動し、実験 `keras-mnist` の特定の実行について **[プロパティ]** タブを開きます。
+次の図は、Azure Machine Learning Studio で実験の入力データセットを探す場所を示しています。 この例では、 **[実験]** ペインに移動し、実験 **の特定の実行について**[プロパティ]`keras-mnist` タブを開きます。
 
 ![入力データセット](./media/how-to-version-track-datasets/input-datasets.png)
 

@@ -1,19 +1,18 @@
 ---
 title: Azure Cloud パートナー ポータル ツアー | Azure Marketplace
 description: Azure Marketplace の Cloud パートナー ポータルのユーザー エクスペリエンスに関する概要です。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: pabutler
-ms.openlocfilehash: 85ddf2e2141ad77321710ad03e4d7f67572f3688
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 53378be9b72792b320699341e4b6b16b20217687
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821467"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278316"
 ---
 # <a name="cloud-partner-portal-tour"></a>Cloud パートナー ポータル ツアー
 
@@ -35,6 +34,6 @@ ms.locfileid: "73821467"
 - [[分析情報]](./cpp-insights-page.md) ページには、このポータルの *Seller Insights* 機能を構成する各種のダッシュボードが用意されています。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事「[Cloud パートナー ポータルでのナビゲーション](./cpp-portal-navigation.md)」では、サイト上で利用可能な各種のナビゲーション メカニズムについて確認します。

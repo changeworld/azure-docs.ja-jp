@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 71dd83db02537ed12dc2e711127e32d90603af6f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416952"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227523"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Azure Automation で Runbook を開始する
 

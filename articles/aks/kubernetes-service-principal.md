@@ -5,11 +5,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.openlocfilehash: 523f08ddbf22e175af5b0604b04d4a2460ffd634
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595078"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229607"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -57,7 +57,7 @@ az ad sp create-for-rbac --skip-assignment --name myAKSClusterServicePrincipal
 
 ## <a name="specify-a-service-principal-for-an-aks-cluster"></a>AKS クラスター用のサービス プリンシパルを指定する
 
-[az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときに既存のサービス プリンシパルを使用するには、`--service-principal` パラメーターと `--client-secret` パラメーターを使用して、[az ad sp create-for-rbac][az-ad-sp-create] コマンドの出力の `appId` と `password` を指定します。
+[az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときに既存のサービス プリンシパルを使用するには、`--service-principal` パラメーターと `--client-secret` パラメーターを使用して、`appId`az ad sp create-for-rbac`password` コマンドの出力の [ と ][az-ad-sp-create] を指定します。
 
 ```azurecli-interactive
 az aks create \
@@ -70,7 +70,7 @@ az aks create \
 > [!NOTE]
 > カスタマイズされたシークレットがある既存のサービス プリンシパルを使用する場合は、そのシークレットの長さが 190 バイトを超えていないことを確認します。
 
-Azure portal を使用して AKS クラスターをデプロイする場合は、 **[Create Kubernetes cluster]\(Kubernetes クラスターの作成)** ダイアログ ボックスの *[Authentication]\(認証)* ページで、 **[Configure service principal]\(サービス プリンシパルの構成)** を選択します。 **[既存のものを使用]** を選択し、以下の値を指定します。
+Azure portal を使用して AKS クラスターをデプロイする場合は、 *[Create Kubernetes cluster]\(Kubernetes クラスターの作成)* ダイアログ ボックスの **[Authentication]\(認証)** ページで、 **[Configure service principal]\(サービス プリンシパルの構成)** を選択します。 **[既存のものを使用]** を選択し、以下の値を指定します。
 
 - **[Service principal client ID]\(サービス プリンシパルのクライアント ID)** は、実際の *appId* です
 - **[Service principal client secret]\(サービス プリンシパルのクライアント シークレット)** は、*password* の値です

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: 3f82a061f276aaf786bc0a9bae15b60e8bdda009
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 3/18/2020
+ms.openlocfilehash: 2c07e5eeedd2e4f42ec7b165bf161e142421df58
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846325"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527896"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での低速クエリ ログ
 Azure Database for MariaDB では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。
@@ -40,7 +40,7 @@ Azure CLI の詳細については、「[Configure and access server logs using 
 - **long_query_time**: long_query_time (秒単位) より長いクエリがある場合は、そのクエリが記録されます。 既定値は 10 秒です。
 - **log_slow_admin_statements**: オンの場合は、slow_query_log に書き込まれるステートメントに、ALTER_TABLE や ANALYZE_TABLE などの管理ステートメントが含まれます。
 - **log_queries_not_using_indexes**: インデックスを使用していないクエリを slow_query_log に記録するかどうかを決定します。
-- **log_throttle_queries_not_using_indexes**:このパラメーターは、低速クエリ ログに書き込むことができる、インデックスを使用していないクエリの数を制限します。 このパラメーターは、Log_queries_not_using_indexes がオンに設定されている場合に有効です。
+- **log_throttle_queries_not_using_indexes**: このパラメーターは、低速クエリ ログに書き込むことができる、インデックスを使用していないクエリの数を制限します。 このパラメーターは、Log_queries_not_using_indexes がオンに設定されている場合に有効です。
 - **log_output**: "File" の場合、ローカル サーバー ストレージと Azure Monitor 診断ログの両方に低速クエリ ログの書き込みが許可されます。 "None" の場合、低速クエリ ログは Azure Monitor 診断ログのみに書き込まれます。 
 
 > [!IMPORTANT]

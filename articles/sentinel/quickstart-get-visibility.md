@@ -7,15 +7,15 @@ manager: rkarlin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.custom: fasttrack-edit
+ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 2b83fc6231f590b3c0765ec647101b22920058da
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 95dcc135593c566eb1319ed52df3df6c1ada6609
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581669"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067677"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>クイック スタート:Azure Sentinel の概要
 
@@ -51,7 +51,7 @@ ms.locfileid: "77581669"
 
    ![Azure Sentinel マップ](./media/qs-get-visibility/anomolies.png)
 
-## 組み込みのブックを使用する<a name="dashboards"></a>
+## <a name="use-built-in-workbooks"></a>組み込みのブックを使用する<a name="dashboards"></a>
 
 組み込みのブックには、接続されたデータ ソースから統合されたデータが表示されるので、そのようなサービスで生成されたイベントを詳しく調べることができます。 組み込みのブックには、Azure AD、Azure アクティビティ イベント、およびオンプレミスのデータが表示されます。たとえば、サーバーからの Windows イベントのデータ、ファースト パーティ アラートのデータ、ファイアウォール トラフィック ログ、Office 365、Windows イベントに基づく安全ではないプロトコルを含むサード パーティからのデータです。 ブックは Azure Monitor Workbooks に基づいており、独自のブックを設計する際のカスタマイズ性と柔軟性が強化されています。 詳細については、[ブック](../azure-monitor/app/usage-workbooks.md)に関する記事を参照してください。
 

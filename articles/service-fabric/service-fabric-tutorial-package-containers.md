@@ -7,13 +7,13 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252747"
 ---
-# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>チュートリアル:Yeoman を使用して Service Fabric アプリケーションとしてコンテナーをパッケージ化およびデプロイする
+# <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>チュートリアル: Yeoman を使用して Service Fabric アプリケーションとしてコンテナーをパッケージ化およびデプロイする
 
 このチュートリアルは、シリーズの第 2 部です。 このチュートリアルでは、テンプレート ジェネレーター ツール (Yeoman) を使用して、Service Fabric アプリケーションの定義を作成します。 このアプリケーションを使用して、コンテナーを Service Fabric にデプロイすることもできます。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -82,7 +82,7 @@ yo コマンドを実行するときの入力と出力を次に示します。
 
 Yeoman を使用して作成したアプリケーションに別のコンテナー サービスを追加するには、次の手順を実行します。
 
-1. *./TestContainer* のように、ディレクトリのレベルを **TestContainer** ディレクトリに変更します。
+1. **./TestContainer** のように、ディレクトリのレベルを *TestContainer* ディレクトリに変更します。
 2. `yo azuresfcontainer:AddService` を実行します。
 3. サービスに 'aazurevoteback'a という名前を付けます。
 4. Redis のコンテナー イメージ パス ('alpine:redis') を指定します。

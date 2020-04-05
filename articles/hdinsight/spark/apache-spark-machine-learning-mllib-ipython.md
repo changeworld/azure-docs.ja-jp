@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
 ms.openlocfilehash: c8ead7abc454df387db31b2ce65d2ba714b0067d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73494080"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Apache Spark MLlib を使用して Machine Learning アプリケーションを構築し、データセットを分析する
@@ -37,7 +37,7 @@ MLlib は、Machine Learning タスクに役立つ多数のユーティリティ
 要約すると、ロジスティック回帰のプロセスにより、入力ベクトルがどちらか 1 つのグループに属している確率を予測するために使用できる *ロジスティック関数* が生成されます。  
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>食品調査データの予測分析の例
-この例では、Spark を使用して、[シカゴ市のデータ ポータル](https://data.cityofchicago.org/)から取得した食品検査データ (**Food_Inspections1.csv**) に対していくつかの予測分析を実行します。 このデータセットには、シカゴで実施された食品施設検査に関する情報が含まれており、各食品施設に関する情報、見つかった違反 (存在する場合)、検査結果についての情報が含まれています。 CSV データ ファイルは、クラスターに関連付けられたストレージ アカウントの **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv** に既に用意されています。
+この例では、Spark を使用して、**シカゴ市のデータ ポータル**から取得した食品検査データ ([Food_Inspections1.csv](https://data.cityofchicago.org/)) に対していくつかの予測分析を実行します。 このデータセットには、シカゴで実施された食品施設検査に関する情報が含まれており、各食品施設に関する情報、見つかった違反 (存在する場合)、検査結果についての情報が含まれています。 CSV データ ファイルは、クラスターに関連付けられたストレージ アカウントの **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv** に既に用意されています。
 
 次の手順で、食品検査に合格または不合格になる理由を示すモデルを作成します。
 
@@ -197,13 +197,13 @@ MLlib は、Machine Learning タスクに役立つ多数のユーティリティ
 
     ![Spark 機械学習アプリケーションの出力 - 5 つの個別の検査結果を含む円グラフ](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark 機械学習の結果の出力")
 
-    食品検査の結果を予測するには、違反に基づくモデルを開発する必要があります。 ロジスティック回帰は二項分類メソッドであるため、結果データを**Fail** と **Pass** の 2 つのカテゴリにグループ化することは意味があります。
+    食品検査の結果を予測するには、違反に基づくモデルを開発する必要があります。 ロジスティック回帰は二項分類メソッドであるため、結果データを **Fail** と **Pass** の 2 つのカテゴリにグループ化することは意味があります。
 
    - 合格
        - 合格
        - 条件付きで合格
-   - 不合格
-       - 不合格
+   - 失敗
+       - 失敗
    - 破棄
        - 事業体が存在しない
        - 廃業
@@ -314,7 +314,7 @@ model = pipeline.fit(labeledData)
 ## <a name="create-a-visual-representation-of-the-prediction"></a>予測を視覚化する
 このテスト結果の理解に役立つ最終的なグラフを作成します。
 
-1. まず、先ほど作成した一時テーブル **Predictions** からさまざまな予測や結果を抽出します。 次のクエリでは、出力を *true_positive*、*false_positive*、*true_negative*、*false_negative* に分けています。 このクエリでは、`-q` を使用して視覚化を無効にし、`%%local` マジックで使用できるデータフレームとして出力を保存 (`-o` を使用) します。
+1. まず、先ほど作成した一時テーブル **Predictions** からさまざまな予測や結果を抽出します。 次のクエリでは、出力を *true_positive*、*false_positive*、*true_negative*、*false_negative* に分けています。 このクエリでは、`-q` を使用して視覚化を無効にし、`-o` マジックで使用できるデータフレームとして出力を保存 (`%%local` を使用) します。
 
     ```PySpark
     %%sql -q -o true_positive
@@ -359,12 +359,12 @@ model = pipeline.fit(labeledData)
 ## <a name="shut-down-the-notebook"></a>Notebook をシャットダウンする
 アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより Notebook がシャットダウンされ、Notebook が閉じます。
 
-## <a name="seealso"></a>関連項目
+## <a name="see-also"></a><a name="seealso"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
-* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と BI: HDInsight の Spark と BI ツールを使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
+* [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行

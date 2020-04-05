@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 272d676d0a5a55262b1c68d0bae9a9ab229df72c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68990607"
 ---
 # <a name="define-a-stored-access-policy-with-net"></a>.NET を使用して保存されているアクセス ポリシーを定義する
@@ -58,7 +58,7 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 }
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [共有アクセス署名 (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](storage-sas-overview.md)
 - [保存されているアクセス ポリシーを定義する](/rest/api/storageservices/define-stored-access-policy)

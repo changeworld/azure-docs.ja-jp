@@ -4,10 +4,10 @@ description: Resource Graph テーブルと、Azure Resource Graph で使用可�
 ms.date: 03/07/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2f4be4d86a340867e1ad3015ff288f98fc54cecf
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78927497"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要

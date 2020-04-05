@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75768531"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>要求トレースを使用して API をデバッグする
@@ -34,8 +34,8 @@ ms.locfileid: "75768531"
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
-+ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
-+ また、次のチュートリアルを完了すること: [最初の API のインポートと発行](import-and-publish.md)。
++ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
++ また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
 
 ## <a name="trace-a-call"></a>呼び出しのトレース
 

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
 ms.openlocfilehash: ebf2cbd430339378a09d10d91ad61327d24842e4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430630"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Azure API Management で開発者ポータルのページのコンテンツとレイアウトを変更する
@@ -30,7 +30,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="page-structure"> </a>開発者ポータルのページの構造
+## <a name="structure-of-developer-portal-pages"></a><a name="page-structure"> </a>開発者ポータルのページの構造
 
 開発者ポータルは、コンテンツ管理システムがベースとなっています。 すべてのページのレイアウトは、ウィジェットと呼ばれる小さなページ要素のセットを基にして構築されています。
 
@@ -42,7 +42,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 日常的なページの編集では、通常、ページごとに異なる内容が含まれるコンテンツ ウィジェットのみが変更されます。
 
-## <a name="modify-layout-widget"> </a>レイアウト ウィジェットの内容の変更
+## <a name="modifying-the-contents-of-a-layout-widget"></a><a name="modify-layout-widget"> </a>レイアウト ウィジェットの内容の変更
 
 開発者ポータルには、Azure Portal からアクセスすることができます。
 
@@ -55,7 +55,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 以後、この新しいヘッダーが開発者ポータル内のすべてのページに表示されます。
 
-## <a name="next-steps"> </a>次の手順
+## <a name="next-steps"></a><a name="next-steps"> </a>次のステップ
 * [開発者ポータル全体のページ要素で使用されるスタイルを更新する][customize-styles]
 * [ポータルで生成されたページで使用されるテンプレートを変更する][portal-templates] (例: API ドキュメント、製品、ユーザー認証など)
 

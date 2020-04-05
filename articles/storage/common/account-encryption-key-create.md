@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 09558a8d1e4e2dc68cefd2c870f54e008d10b97b
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083548"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>テーブルとキューのカスタマーマネージド キーがサポートされるアカウントを作成する
@@ -226,7 +226,7 @@ az storage account create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-ストレージ アカウント内のサービスでアカウント暗号化キーが使用されていることを確認するには、[Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 `Encryption` プロパティ内で各サービスの `KeyType` フィールドを探し、`Account` に設定されていることを確認します。
+ストレージ アカウント内のサービスでアカウント暗号化キーが使用されていることを確認するには、[Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 `KeyType` プロパティ内で各サービスの `Encryption` フィールドを探し、`Account` に設定されていることを確認します。
 
 ```powershell
 $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `

@@ -136,6 +136,8 @@
       href: feature-hashing.md
     - name: Preprocess Text (テキストの前処理)
       href: preprocess-text.md
+    - name: Latent Dirichlet Allocation
+      href: latent-dirichlet-allocation.md
 - name: 推奨
   items:
     - name: レコメンダーの評価
@@ -144,5 +146,11 @@
       href: score-svd-recommender.md
     - name: SVD レコメンダーのトレーニング
       href: train-svd-recommender.md
+- name: 異常検出
+  items:
+    - name: PCA ベースの異常検出
+      href: pca-based-anomaly-detection.md
+    - name: 異常検出モデルのトレーニング
+      href: train-anomaly-detection-model.md
 - name: モジュールのエラーとトラブルシューティング
   href: designer-error-codes.md

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/02/2019
 ms.author: crdun
 ms.openlocfilehash: bd7a2edd41523a3a0d764059d96ae37e0b0e469f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70232043"
 ---
 * [App Service の認証/承認の概要](../articles/app-service/overview-authentication-authorization.md)。

@@ -9,14 +9,16 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: a3c696a5bfa9286e664f69bd379bac408b7459d6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 91386eaf7753f2aefada2d1423a11b366c3ee924
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863242"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79370901"
 ---
-# <a name="overview-of-azure-digital-twins"></a>Azure Digital Twins の概要
+# <a name="overview-of-azure-digital-twins-preview"></a>Azure Digital Twins プレビューの概要
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Azure Digital Twins プレビューは、物理環境の包括的なモデルを作成する Azure IoT サービスです。 人、空間、デバイスの間の関係と相互作用をモデル化する空間インテリジェンス グラフを作成することができます。
 
@@ -102,7 +104,7 @@ IoT の詳細については、[Azure IoT のテクノロジとソリューシ�
 Azure Digital Twins についての短いデモをご覧ください。
 
 >[!div class="nextstepaction"]
->[クイック スタート:Azure Digital Twins を使用して空き部屋を探す](./quickstart-view-occupancy-dotnet.md)
+>[クイック スタート: Azure Digital Twins を使用して空き部屋を探す](./quickstart-view-occupancy-dotnet.md)
 
 Azure Digital Twins を使用して設備管理アプリケーションについて詳しく見ていきます。
 

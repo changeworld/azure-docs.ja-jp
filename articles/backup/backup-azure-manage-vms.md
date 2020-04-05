@@ -5,11 +5,11 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989690"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226139"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup サービスで Azure VM のバックアップを管理する
 
@@ -30,7 +30,7 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 
 コンテナー ダッシュボードに VM を表示するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. [ハブ] メニューで、 **[参照]** を選択します。 リソース ボックスに「 **Recovery Services**」と入力します。 入力すると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** を選択します。
 
     ![Recovery Services コンテナーを作成する](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
@@ -56,7 +56,7 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 
 バックアップ ポリシーを管理するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。 コンテナー ダッシュボードを開きます。
+1. [Azure portal](https://portal.azure.com/) にサインインする コンテナー ダッシュボードを開きます。
 2. **[バックアップ項目]** タイルで、 **[Azure Virtual Machines]** を選択します。
 
     ![[バックアップ項目] タイルを開く](./media/backup-azure-manage-vms/contoso-vault-1606.png)

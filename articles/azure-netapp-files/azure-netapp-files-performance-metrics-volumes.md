@@ -8,10 +8,10 @@ ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.openlocfilehash: 8f354152c23dd7ad0413f27585d724f8070ca003
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75551524"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp Files のパフォーマンス ベンチマークのテスト レコメンデーション

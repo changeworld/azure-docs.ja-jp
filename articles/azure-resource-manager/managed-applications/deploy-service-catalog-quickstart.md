@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3fa9709e096e908907772c940fc5e2f2895b7eb3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 9a69296ddfc93fd7e8a6650df91876829631f5d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75649299"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473066"
 ---
-# <a name="deploy-service-catalog-app-through-azure-portal"></a>Azure portal を使用してサービス カタログ アプリをデプロイする
+# <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>クイック スタート:Azure portal を使用してサービス カタログ アプリをデプロイする
 
 [前のクイック スタート](publish-managed-app-definition-quickstart.md)ではマネージド アプリケーションの定義を発行しました。 このクイック スタートでは、その定義からサービス カタログ アプリを作成します。
 
@@ -28,11 +28,11 @@ Azure portal で次の手順のようにします。
 
    ![サービス カタログ アプリケーションを検索する](./media/deploy-service-catalog-quickstart/select-service-catalog.png)
 
-1. マネージ アプリケーション サービスの説明が表示されます。 **作成** を選択します。
+1. マネージ アプリケーション サービスの説明が表示されます。 **［作成］** を選択します
 
    ![作成の選択](./media/deploy-service-catalog-quickstart/create-service-catalog.png)
 
-1. アクセスできるマネージ アプリケーションの定義が表示されます。 使用可能な定義から、デプロイするものを選択します。 このクイック スタートでは、前のクイック スタートで作成した **Managed Storage Account** の定義を使用します。 **作成** を選択します。
+1. アクセスできるマネージ アプリケーションの定義が表示されます。 使用可能な定義から、デプロイするものを選択します。 このクイック スタートでは、前のクイック スタートで作成した **Managed Storage Account** の定義を使用します。 **［作成］** を選択します
 
    ![デプロイする定義を選択する](./media/deploy-service-catalog-quickstart/select-definition.png)
 

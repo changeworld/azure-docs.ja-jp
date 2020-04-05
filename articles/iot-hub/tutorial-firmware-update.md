@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.date: 06/28/2019
 ms.custom: mvc
 ms.openlocfilehash: fdd2eb2ca1a0e6b93cd3f7a75beeb8057a4ea19c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78674384"
 ---
-# <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル:デバイス ファームウェアの更新プロセスを実装する
+# <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル: デバイス ファームウェアの更新プロセスを実装する
 
 場合によっては、IoT ハブに接続されているデバイスのファームウェアを更新する必要があります。 たとえば、ファームウェアに新しい機能を追加したり、セキュリティ パッチを適用したりできます。 多くの IoT シナリオでは、対象のデバイスに物理的にアクセスして、手動でファームウェア更新を適用することは現実的ではありません。 このチュートリアルでは、ハブに接続されたバックエンド アプリケーションを介してファームウェアの更新プロセスをリモートで開始および監視する方法を示します。
 
@@ -98,7 +98,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ## <a name="start-the-firmware-update"></a>ファームウェアの更新を開始する
 
-**devicetype** として "chiller" のタグが付けられたすべてのデバイスでファームウェア更新プロセスを開始するには、バックエンド アプリケーションで[自動デバイス管理構成](iot-hub-automatic-device-management.md#create-a-configuration)を作成します。 このセクションでは、次の方法について説明します。
+[devicetype](iot-hub-automatic-device-management.md#create-a-configuration) として "chiller" のタグが付けられたすべてのデバイスでファームウェア更新プロセスを開始するには、バックエンド アプリケーションで**自動デバイス管理構成**を作成します。 このセクションでは、次の方法について説明します。
 
 * バックエンド アプリケーションから構成を作成する。
 * 完了するまでジョブを監視する。

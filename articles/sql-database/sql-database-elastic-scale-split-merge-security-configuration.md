@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: a916645f153f73a98e7fc5d4046bdf557e8acf2b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823525"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
@@ -47,7 +47,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
     インストールされている場合は、次のように参照します。
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* 「[Windows 8.1:キットとツールのダウンロード](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)」から WDK を取得します
+* 「 [Windows 8.1: キットとツールのダウンロード](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>SSL 証明書を構成するには
 
@@ -120,7 +120,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 既定の構成では、HTTPS エンドポイントへのすべてのアクセスを許可します。 この設定は、さらに制限できます。
 
 ### <a name="changing-the-configuration"></a>構成の変更
-エンドポイントに適用されるアクセス制御ルールのグループは、**サービス構成ファイル**の **\<EndpointAcls>** セクションに構成されます。
+エンドポイントに適用されるアクセス制御ルールのグループは、**サービス構成ファイル\<の** **EndpointAcls>** セクションに構成されます。
 
 ```xml
 <EndpointAcls>
@@ -189,7 +189,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 * SSL 証明書の構成
 * クライアント証明書の構成
 
-## <a name="create-a-self-signed-certificate"></a>自己署名証明書を作成する
+## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 次のように実行します。
 
     makecert ^
@@ -324,7 +324,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 * 証明書の有効期限の日付に -e を指定します。
 * MyID.pvk および MyID.cer には、このクライアント証明書用の一意のファイル名を指定します。
 
-このコマンドでは、パスワードの作成と 1 回の使用が求められます。 強力なパスワードを使用します。
+このコマンドでは、パスワードの作成と 1 回の使用が求められます。 強力なパスワードを使用してください。
 
 ## <a name="create-pfx-files-for-client-certificates"></a>クライアント証明書の PFX ファイルを作成する
 生成された各クライアント証明書で、次のように実行します。
@@ -423,7 +423,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 4. **[追加]** をクリックします。
 5. 証明書ストアの場所を選択します。
 6. **[完了]** をクリックします。
-7. Click **OK**.
+7. **[OK]** をクリックします。
 8. **[証明書]** を展開します。
 9. 証明書ストアを展開します。
 10. 証明書の子ノードを展開します。
@@ -443,7 +443,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 9. 証明書が格納されているファイル名を入力するか参照します (拡張子 .PFX を使用)。
 10. **[次へ]** をクリックします。
 11. **[完了]** をクリックします。
-12. Click **OK**.
+12. **[OK]** をクリックします。
 
 ## <a name="import-certificate"></a>証明書のインポート
 証明書のインポート ウィザードで次のように実行します。

@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
 ms.openlocfilehash: 1445d74e3050ffd6da7c45037df552f4bee9acf5
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77116672"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問

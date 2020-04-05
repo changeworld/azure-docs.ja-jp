@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
 ms.openlocfilehash: aaf1593cc049e8b23f8ebe36fea022b3029ccd04
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930800"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Azure Data Factory を使用してデータ レイクまたはデータ ウェアハウスから Azure にデータを移行する
@@ -56,7 +56,7 @@ Azure Data Factory は、ネットワーク (インターネット、ER、また
 > オンライン移行を使用すると、1 つのツールで履歴データの読み込みと増分フィードの両方をエンドツーエンドで実現できます。  この方法では、移行期間中に、既存のストアと新しいストアの間でデータの同期を維持することができます。 つまり、新しいストア上に更新されたデータを使用して ETL ロジックを再構築できます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [データを AWS S3 から Azure に移行する](data-migration-guidance-s3-azure-storage.md)
 - [オンプレミスの Hadoop クラスターから Azure へのデータの移行](data-migration-guidance-hdfs-azure-storage.md)

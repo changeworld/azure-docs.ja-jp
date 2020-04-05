@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75647715"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT ソリューション アクセラレータに関してよく寄せられる質問

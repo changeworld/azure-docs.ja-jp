@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: dec43a4d7eb5a9546fcd77cce972b93542ea3b10
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 048ab7249b27839890bab3e677154ca3c7a0cc98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795957"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239428"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>既存の Application Gateway を使用して Application Gateway イングレス コントローラー (AGIC) をインストールする
 
@@ -22,7 +22,7 @@ AGIC では、Kubernetes [イングレス](https://kubernetes.io/docs/concepts/s
 ## <a name="outline"></a>アウトライン:
 - [前提条件](#prerequisites)
 - [Azure Resource Manager (ARM) 認証](#azure-resource-manager-authentication)
-    - オプション 1:[AAD ポッド ID を設定](#set-up-aad-pod-identity)して、ARM で Azure ID を作成する
+    - オプション 1: [AAD ポッド ID を設定](#set-up-aad-pod-identity)して、ARM で Azure ID を作成する
     - オプション 2:[サービス プリンシパルを使用する](#using-a-service-principal)
 - [Helm を使用してイングレス コントローラーをインストールする](#install-ingress-controller-as-a-helm-chart)
 - [マルチクラスター/共有 Application Gateway](#multi-cluster--shared-application-gateway):1 つ以上の AKS クラスターやその他の Azure コンポーネント間で Application Gateway が共有される環境に AGIC をインストールします。
@@ -81,13 +81,13 @@ AGIC では、Kubernetes API サーバーと Azure Resource Manager と通信し
 
 1. **AKS ノードと同じリソース グループ内に** Azure ID を作成します。 正しいリソース グループを選択することが重要です。 次のコマンドで必要なリソース グループは、AKS ポータル ウィンドウで参照できるリソース グループでは "*ありません*"。 これは `aks-agentpool` 仮想マシンのリソース グループです。 通常、リソース グループは `MC_` で始まり、使用する AKS の名前が含まれています。 例: `MC_resourceGroup_aksABCD_westus`
 
-    ```bash
+    ```azurecli
     az identity create -g <agent-pool-resource-group> -n <identity-name>
     ```
 
 1. 次のロールの割り当てコマンドでは、新しく作成された ID の `principalId` を取得する必要があります。
 
-    ```bash
+    ```azurecli
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
@@ -95,7 +95,7 @@ AGIC では、Kubernetes API サーバーと Azure Resource Manager と通信し
 
     次を使用して、ご利用のサブスクリプション内の Application Gateway ID の一覧を取得します: `az network application-gateway list --query '[].id'`
 
-    ```bash
+    ```azurecli
     az role assignment create \
         --role Contributor \
         --assignee <principalId> \
@@ -104,7 +104,7 @@ AGIC では、Kubernetes API サーバーと Azure Resource Manager と通信し
 
 1. Application Gateway リソース グループへの `Reader` アクセスを ID に付与します。 リソース グループ ID は次のようになります: `/subscriptions/A/resourceGroups/B`。 すべてのリソース グループを取得するには、次を使用します: `az group list --query '[].id'`
 
-    ```bash
+    ```azurecli
     az role assignment create \
         --role Reader \
         --assignee <principalId> \
@@ -116,7 +116,7 @@ Kubernetes シークレットを使用して ARM への AGIC アクセスを提�
 
 1. Active Directory のサービス プリンシパルを作成し、base64 でエンコードします。 JSON BLOB を Kubernetes に保存するには、base64 エンコードが必要です。
 
-```bash
+```azurecli
 az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0
 ```
 
@@ -137,7 +137,7 @@ armAuth:
     helm repo update
     ```
 
-1. AGIC を構成する、helm-config.yaml をダウンロードします。
+1. AGIC の構成を行う helm-config.yaml をダウンロードします。
     ```bash
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/sample-helm-config.yaml -O helm-config.yaml
     ```

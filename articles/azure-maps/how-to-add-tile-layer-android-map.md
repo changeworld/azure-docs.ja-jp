@@ -1,19 +1,19 @@
 ---
 title: Android マップへのタイル レイヤーの追加 | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Android SDK を使用して、マップにタイル レイヤーをレンダリングする方法を示します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8e1a77ae83783b2841a2600654a9775e9ceb6ada
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: f98598bd1307bb1b46ff23814780c5f809b9ac90
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209938"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335561"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用してマップにタイル レイヤーを追加する
 
@@ -23,7 +23,7 @@ ms.locfileid: "77209938"
 
 * X、Y、ズーム表記 - ズーム レベルに基づいた、タイル グリッド内のタイルの列 (x)、行 (x) の位置です。
 * quadkey 表記 - x、y、ズーム情報を組み合わせて、タイルの一意の識別子である 1 つの文字列値にします。
-* 境界ボックス - 境界ボックス座標を使用して、[Web マッピング サービス (WMS)](https://www.opengeospatial.org/standards/wms) で一般的に使用されている `{west},{south},{east},{north}` の形式で画像を指定することができます。
+* 境界ボックス - 境界ボックス座標を使用して、`{west},{south},{east},{north}`Web マッピング サービス (WMS)[ で一般的に使用されている ](https://www.opengeospatial.org/standards/wms) の形式で画像を指定することができます。
 
 > [!TIP]
 > TileLayer は、マップ上で大規模なデータ セットを視覚化する場合に適しています。 画像からタイル レイヤーを生成できるだけでなく、ベクター データもタイル レイヤーとしてレンダリングできます。 ベクター データをタイル レイヤーとしてレンダリングすることで、マップ コントロールでは、タイルが表すベクター データよりもはるかにファイル サイズの小さいタイルを読み込むだけで済みます。 この手法は、何百万行ものデータをマップにレンダリングする必要がある場合によく使われています。
@@ -71,7 +71,7 @@ ms.locfileid: "77209938"
     </FrameLayout>
     ```
 
-2. 次のコード スニペットを `MainActivity.java` クラスの **onCreate()** メソッドにコピーします。
+2. 次のコード スニペットを **クラスの**onCreate()`MainActivity.java` メソッドにコピーします。
 
     ```Java
     mapControl.onReady(map -> {

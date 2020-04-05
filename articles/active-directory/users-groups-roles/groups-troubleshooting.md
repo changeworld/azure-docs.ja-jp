@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f685ac63e3b4a8cf466be4eb4561472fb084d49
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74026538"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>グループに関する問題のトラブルシューティングと解決
@@ -70,7 +70,7 @@ Powershell で _動的グループ ポリシーの最大許容グループ数に
 | エラー:属性で演算子がサポートされていません。 |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/><br/>プロパティの型に対してサポートされていない演算子が使用されています (この例では、-contains をブール型で使用することはできません)。 プロパティの型に合った適切な演算子を使用してください。 |
 | エラー:クエリ コンパイル エラー。 | 1. (user.department -eq "Sales") (user.department -eq "Marketing")<br>2.  (user.userPrincipalName -match "*@domain.ext") | 1.演算子が不足しています。 結合述語を 2 つ使用してください (-and または -or)。<br>(user.department -eq "Sales") -or (user.department -eq "Marketing")<br>2.-match に使用されている正規表現に誤りがあります。<br>(user.userPrincipalName -match ".*@domain.ext")<br>あるいは: (user.userPrincipalName -match "@domain.ext$") |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事は、Azure Active Directory に関する追加情報を示します。
 

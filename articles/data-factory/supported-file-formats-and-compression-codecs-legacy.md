@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 423706c391e8d8c2c609798d9f50e5a22f5c39bb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358467"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229995"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック (レガシ)
 
@@ -23,7 +23,7 @@ ms.locfileid: "78358467"
 >[!IMPORTANT]
 >Data Factory では新しいフォーマットベースのデータセット モデルが導入されました。詳細については、対応する書式の記事を参照してください。 <br>- [Avro 形式](format-avro.md)<br>- [バイナリ形式](format-binary.md)<br>- [区切りテキスト形式](format-delimited-text.md)<br>- [JSON 形式](format-json.md)<br>- [ORC 形式](format-orc.md)<br>- [Parquet 形式](format-parquet.md)<br>この記事で以下に説明する構成は、下位互換性のために今後も現状のままサポートされます。 今後は新しいモデルを使用することをお勧めします。 
 
-## <a name="text-format"></a> テキスト形式 (レガシ)
+## <a name="text-format-legacy"></a><a name="text-format"></a> テキスト形式 (レガシ)
 
 >[!NOTE]
 >[区切りテキスト形式](format-delimited-text.md)の新しいモデルの記事を参照してください。 ファイル ベースのデータ ストア データセットの次の構成は、後方互換性のためにまだサポートされています。 今後は新しいモデルを使用することをお勧めします。
@@ -39,7 +39,7 @@ ms.locfileid: "78358467"
 | nullValue |null 値を表すための 1 つまたは複数の文字。 |1 つ以上の文字。 **既定**値は、読み取り時は **"\N" および "NULL"** 、書き込み時は **"\N"** です。 |いいえ |
 | encodingName |エンコーディング名を指定します。 |有効なエンコード名。 詳細については、[Encoding.EncodingName プロパティ](https://msdn.microsoft.com/library/system.text.encoding.aspx)に関するページを参照してください。 例: windows-1250 または shift_jis。 **既定**値は **UTF-8** です。 |いいえ |
 | firstRowAsHeader |先頭行をヘッダーと見なすかどうかを指定します。 入力データセットでは、Data Factory は先頭行をヘッダーとして読み取ります。 出力データセットでは、Data Factory は先頭行をヘッダーとして書き込みます。 <br/><br/>サンプル シナリオについては、「[`firstRowAsHeader` と `skipLineCount` を使用するシナリオ](#scenarios-for-using-firstrowasheader-and-skiplinecount)」を参照してください。 |True<br/><b>False (既定値)</b> |いいえ |
-| skipLineCount |入力ファイルからのデータ読み取り時にスキップする**空でない**行数を示します。 skipLineCount と firstRowAsHeader の両方が指定されている場合、行が最初にスキップされ、次に、入力ファイルからヘッダー情報が読まれます。 <br/><br/>サンプル シナリオについては、「[`firstRowAsHeader` と `skipLineCount` を使用するシナリオ](#scenarios-for-using-firstrowasheader-and-skiplinecount)」を参照してください。 |整数 |いいえ |
+| skipLineCount |入力ファイルからのデータ読み取り時にスキップする**空でない**行数を示します。 skipLineCount と firstRowAsHeader の両方が指定されている場合、行が最初にスキップされ、次に、入力ファイルからヘッダー情報が読まれます。 <br/><br/>サンプル シナリオについては、「[`firstRowAsHeader` と `skipLineCount` を使用するシナリオ](#scenarios-for-using-firstrowasheader-and-skiplinecount)」を参照してください。 |Integer |いいえ |
 | treatEmptyAsNull |入力ファイルからデータを読むとき、null 値として null または空の文字列を扱うことを指定します。 |**True (既定値)**<br/>False |いいえ |
 
 ### <a name="textformat-example"></a>TextFormat の例
@@ -77,7 +77,7 @@ ms.locfileid: "78358467"
 * ヘッダー行を含むテキスト ファイルから、ファイル以外のシンクにコピーし、その行を削除する: 入力データセットの `firstRowAsHeader` を True として指定します。
 * テキスト ファイルからコピーして、データやヘッダー情報を含まない先頭の数行をスキップする: `skipLineCount` を指定して、スキップする行数を示します。 ファイルの残りの部分にヘッダー行が含まれている場合は、`firstRowAsHeader` も指定できます。 `skipLineCount` と `firstRowAsHeader` の両方を指定した場合は、まず行がスキップされ、次に入力ファイルからヘッダー情報が読み取られます。
 
-## <a name="json-format"></a> JSON 形式 (レガシ)
+## <a name="json-format-legacy"></a><a name="json-format"></a> JSON 形式 (レガシ)
 
 >[!NOTE]
 >[JSON 形式](format-json.md)の新しいモデルの記事を参照してください。 ファイル ベースのデータ ストア データセットの次の構成は、後方互換性のためにまだサポートされています。 今後は新しいモデルを使用することをお勧めします。
@@ -404,7 +404,7 @@ SQL Database 内に次のテーブルが含まれているとします。
 }
 ```
 
-## <a name="parquet-format"></a> Parquet 形式 (レガシ)
+## <a name="parquet-format-legacy"></a><a name="parquet-format"></a> Parquet 形式 (レガシ)
 
 >[!NOTE]
 >[Parquet 形式](format-parquet.md)の新しいモデルの記事を参照してください。 ファイル ベースのデータ ストア データセットの次の構成は、後方互換性のためにまだサポートされています。 今後は新しいモデルを使用することをお勧めします。
@@ -464,7 +464,7 @@ Parquet ファイルのシリアル化/逆シリアル化を使用してセル�
 | Char | Binary | Utf8 | Utf8 |
 | CharArray | サポートされていません | 該当なし | 該当なし |
 
-## <a name="orc-format"></a> ORC 形式 (レガシ)
+## <a name="orc-format-legacy"></a><a name="orc-format"></a> ORC 形式 (レガシ)
 
 >[!NOTE]
 >[ORC 形式](format-orc.md)の新しいモデルの記事を参照してください。 ファイル ベースのデータ ストア データセットの次の構成は、後方互換性のためにまだサポートされています。 今後は新しいモデルを使用することをお勧めします。
@@ -516,7 +516,7 @@ ORC ファイルのシリアル化/逆シリアル化を使用してセルフホ
 | Guid | String |
 | Char | Char(1) |
 
-## <a name="avro-format"></a> AVRO 形式 (レガシ)
+## <a name="avro-format-legacy"></a><a name="avro-format"></a> AVRO 形式 (レガシ)
 
 >[!NOTE]
 >[Avro 形式](format-avro.md)の新しいモデルの記事を参照してください。 ファイル ベースのデータ ストア データセットの次の構成は、後方互換性のためにまだサポートされています。 今後は新しいモデルを使用することをお勧めします。
@@ -536,7 +536,7 @@ Hive テーブルで Avro 形式を使用するには、 [Apache Hive のチュ�
 
 * [複合データ型](https://avro.apache.org/docs/current/spec.html#schema_complex)はサポートされていません (レコード、列挙型、配列、マップ、共用体、および固定)。
 
-## <a name="compression-support"></a> 圧縮のサポート (レガシ)
+## <a name="compression-support-legacy"></a><a name="compression-support"></a> 圧縮のサポート (レガシ)
 
 Azure Data Factory は、コピー中のデータの圧縮/圧縮解除をサポートします。 `compression` プロパティを入力データセットで指定すると、コピー アクティビティでソースから圧縮データを読み取り、圧縮を解除することができます。このプロパティを出力データセットで指定すると、コピー アクティビティによりシンクへの書き込みデータを圧縮することができます。 いくつかのサンプル シナリオを次に示します。
 

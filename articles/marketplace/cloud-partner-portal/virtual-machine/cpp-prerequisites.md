@@ -1,19 +1,18 @@
 ---
 title: Microsoft Azure での仮想マシンの前提条件 | Azure Marketplace
 description: Azure Marketplace に VM オファーを発行するために必要な前提条件の一覧です。
-services: Azure, Marketplace, Cloud Partner Portal
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: a657ceaacf3680de54dc0d639a3f1a0aff6a6a03
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 24c560aff9e8ba7ca0858fdb7fa11a59301c2360
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824430"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277618"
 ---
 # <a name="virtual-machine-prerequisites"></a>仮想マシンの前提条件
 
@@ -52,6 +51,6 @@ ms.locfileid: "73824430"
 - [Microsoft Azure Web サイト利用規約](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft のプライバシーに関する声明](https://privacy.microsoft.com/privacystatement)、[Microsoft Azure 認定プログラム契約](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)に従う必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これらの前提条件を満たした後、[VM オファーを作成](./cpp-create-offer.md)できます。

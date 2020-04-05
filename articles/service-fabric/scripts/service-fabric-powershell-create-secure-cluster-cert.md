@@ -15,10 +15,10 @@ ms.date: 01/19/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: f8e1a0ca86f9346cf07c87a738d48cb56f6d7d57
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614776"
 ---
 # <a name="create-a-service-fabric-cluster"></a>Service Fabric クラスターの作成

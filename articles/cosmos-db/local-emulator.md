@@ -7,11 +7,11 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
 ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591372"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222129"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -227,7 +227,7 @@ X.509 証明書を Java 証明書ストアにインポートするには、「[�
 
 Python SDK および Node.js SDK からエミュレーターに接続すると、SSL 検証が無効になります。
 
-## <a id="command-line"></a> コマンドライン ツールのリファレンス
+## <a name="command-line-tool-reference"></a><a id="command-line"></a> コマンドライン ツールのリファレンス
 インストール先では、コマンドラインを使用することで、エミュレーターの開始と停止やオプションの構成などの操作を実行できます。
 
 ### <a name="command-line-syntax"></a>コマンドライン構文
@@ -276,7 +276,7 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 | 一貫性 | アカウントの既定の一貫性レベルを設定します。 | Microsoft.Azure.Cosmos.Emulator.exe /Consistency=\<consistency\> | \<consistency\>:値は次のいずれかの[一貫性レベル](consistency-levels.md)である必要があります。Session、Strong、Eventual、または BoundedStaleness。 既定値は Session です。 |
 | ? | ヘルプ メッセージを表示します。| | |
 
-## <a id="set-partitioncount"></a>コンテナーの数を変更する
+## <a name="change-the-number-of-containers"></a><a id="set-partitioncount"></a>コンテナーの数を変更する
 
 Azure Cosmos Emulator で作成できるコンテナーの数の既定値は、固定サイズのコンテナーであれば 25 個 (Azure Cosmos DB SDK を使用した場合にのみサポート)、容量無制限のコンテナーであれば 5 個までです。 **PartitionCount** の値を変更すると、固定サイズのコンテナーであれば 250 個、容量無制限のコンテナーであれば 50 個まで作成できるようになります。この 2 つの組み合わせは、固定サイズのコンテナー 250 個分を超えない範囲であれば、自由に決めることができます (容量無制限のコンテナーは、1 個につき固定サイズのコンテナー 5 個分として計算されます)。 ただし、固定サイズのコンテナーが 200 個以上の状態でエミュレーターを実行する設定にはしないことをお勧めします。 これは、ディスクの IO 操作にオーバーヘッドが加わり、エンドポイント API の使用中に予測し得ないタイムアウトが発生する原因となるためです。
 
@@ -421,7 +421,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
 Linux Docker コンテナーで実行されている .NET クライアント アプリケーションがあり、ホスト マシン上で Azure Cosmos エミュレーターを実行している場合は、以下のセクションの Linux に関する説明に従って、Linux Docker コンテナーに証明書をインポートしてください。
 
-## Mac または Linux 上での実行<a id="mac"></a>
+## <a name="running-on-mac-or-linux"></a>Mac または Linux 上での実行<a id="mac"></a>
 
 現在、Cosmos エミュレーターは Windows でのみ実行できます。 Mac または Linux を実行するユーザーは、Windows 仮想マシンによってホストされる、Parallels や VirtualBox などのハイパーバイザー内でエミュレーターを実行できます。 これを有効にする手順は、次のとおりです。
 
@@ -505,7 +505,7 @@ Mac 環境では、次の手順に従います。
 
 - エミュレーターの実行中に、ご利用のコンピューターがスリープ モードになった場合や、そのコンピューターで OS を更新した場合、"**サービスは現在使用できません**" というメッセージが表示される可能性があります。 Windows 通知トレイに表示されているアイコンを右クリックし、 **[Reset Data]\(データのリセット\)** を選択して、エミュレーターのデータをリセットします。
 
-### <a id="trace-files"></a>トレース ファイルの収集
+### <a name="collect-trace-files"></a><a id="trace-files"></a>トレース ファイルの収集
 
 デバッグ トレースを収集するには、管理コマンド プロンプトから次のコマンドを実行します。
 
@@ -518,7 +518,7 @@ Mac 環境では、次の手順に従います。
 7. `%ProgramFiles%\Azure Cosmos DB Emulator` に移動し、docdbemulator_000001.etl ファイルを見つけます。
 8. [Azure portal](https://portal.azure.com) でサポート チケットを開き、再現手順と共に .etl ファイルを追加します。
 
-### <a id="uninstall"></a>ローカル エミュレーターのアンインストール
+### <a name="uninstall-the-local-emulator"></a><a id="uninstall"></a>ローカル エミュレーターのアンインストール
 
 1. システム トレイの Azure Cosmos Emulator アイコンを右クリックし、[終了] をクリックして、開いているローカル エミュレーターのインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
 2. Windows 検索ボックスに「**アプリと機能**」と入力し、**アプリと機能 (システム設定)** の検索結果をクリックします。

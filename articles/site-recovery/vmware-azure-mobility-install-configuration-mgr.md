@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77252229"
 ---
 # <a name="automate-mobility-service-installation"></a>モビリティ サービスのインストールを自動化する
@@ -354,7 +354,7 @@ cd /tmp
 
     **パラメーター** | **Windows の値** | **Linux の値**
     --- | --- | ---
-    **Name** | Microsoft Azure Mobility Service のインストール (Windows) | Microsoft Azure Mobility Service のインストール (Linux)。
+    **名前** | Microsoft Azure Mobility Service のインストール (Windows) | Microsoft Azure Mobility Service のインストール (Linux)。
     **コマンド ライン** | install.bat | ./install_linux.sh
     **プログラムの実行条件** | ユーザーがログオンしているかどうか | ユーザーがログオンしているかどうか
     **その他のパラメーター** | 既定の設定を使用する | 既定の設定を使用する

@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.custom: mvc
 ms.openlocfilehash: 73f8d23dcd53b4cbbb3fbd902c789e868c2b021b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769185"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Functions を使用して Azure Storage キューにメッセージを追加する
@@ -26,7 +26,7 @@ Azure Functions では、入力および出力バインディングによって�
 
 * [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com/)をインストールします。 これは、出力バインディングで作成するキュー メッセージの調査に使用するツールです。
 
-## <a name="add-binding"></a>出力バインディングを追加する
+## <a name="add-an-output-binding"></a><a name="add-binding"></a>出力バインディングを追加する
 
 このセクションでは、Portal UI を使用して、前に作成した関数にキュー ストレージの出力バインディングを追加します。 このバインディングにより、最小限のコードの記述でキューにメッセージを作成できるようになります。 ストレージ接続のオープン、キューの作成、キューへの参照の取得などのタスクのためにコードを記述する必要はありません。 Azure Functions ランタイムおよびキューの出力バインディングが、ユーザーに代わってこれらのタスクを処理します。
 
@@ -60,13 +60,13 @@ Azure Functions では、入力および出力バインディングによって�
 
 ## <a name="add-code-that-uses-the-output-binding"></a>出力バインディングを使用するコードを追加する
 
-このセクションでは、出力キューにメッセージを書き込むコードを追加します。 メッセージには、クエリ文字列の HTTP トリガーに渡される値が含まれています。 たとえば、クエリ文字列に `name=Azure` が含まれる場合、キュー メッセージは「*Name passed to the function: Azure*」(関数に渡された名前: Azure) になります。
+このセクションでは、出力キューにメッセージを書き込むコードを追加します。 メッセージには、クエリ文字列の HTTP トリガーに渡される値が含まれています。 たとえば、クエリ文字列に `name=Azure` が含まれる場合、キュー メッセージは *Name passed to the function: Azure* になります。
 
 1. 関数を選択し、エディターに関数コードを表示します。
 
 1. 関数の言語に応じて関数コードを更新します。
 
-    # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+    # <a name="c"></a>[C\#](#tab/csharp)
 
     次の例で示すように、**outputQueueItem** パラメーターをメソッド シグネチャに追加します。
 
@@ -84,7 +84,7 @@ Azure Functions では、入力および出力バインディングによって�
     outputQueueItem.Add("Name passed to the function: " + name);
     ```
 
-    # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+    # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
     `context.bindings` オブジェクトの出力バインディングを使用してキュー メッセージを作成するコードを追加します。 このコードを `context.done` ステートメントの前に追加します。
 
@@ -143,7 +143,7 @@ Azure Functions では、入力および出力バインディングによって�
 
 1. **[キュー]** ノードを展開して、**outqueue** という名前のキューを選択します。 
 
-   このキューには、HTTP によってトリガーされる関数を実行したときにキューの出力バインディングが作成されたというメッセージが含まれます。 *Azure* の既定の `name` 値で関数を呼び出した場合、キュー メッセージは「*Name passed to the function: Azure*」(関数に渡された名前: Azure) になります。
+   このキューには、HTTP によってトリガーされる関数を実行したときにキューの出力バインディングが作成されたというメッセージが含まれます。 `name`Azure*の既定の* 値で関数を呼び出した場合、キュー メッセージは *Name passed to the function: Azure* です。
 
     ![ストレージ エクスプローラーに表示されたキュー メッセージ](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 

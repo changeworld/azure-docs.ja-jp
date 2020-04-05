@@ -9,10 +9,10 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 78c0d20c0f32a6d63d134e958b30d38fe11fcc5c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790669"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の EDIFACT メッセージをデコードする
@@ -57,7 +57,7 @@ Decode EDIFACT メッセージ コネクタを使用すると、EDI と取引先
 
     ![integration account connection created](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
 
-    例:
+    次に例を示します。
 
     ![デコードする EDIFACT フラット ファイル メッセージの選択](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
@@ -94,6 +94,6 @@ Decode EDIFACT コネクタは次のタスクを実行します。
 ## <a name="view-swagger-file"></a>Swagger ファイルを表示する
 EDIFACT コネクタの Swagger の詳細を表示するには、「[EDIFACT](/connectors/edifact/)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する") 
 

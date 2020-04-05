@@ -3,12 +3,12 @@ title: 一度だけ実行されるタスクの再起動ポリシー
 description: Azure Container Instances を使用して、ビルド、テスト、イメージ レンダリングのジョブなど、完了まで実行するタスクを実行する方法を説明します。
 ms.topic: article
 ms.date: 04/15/2019
-ms.openlocfilehash: f814b1c99827c07f8dadfb0cfd80c87a93377cdc
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8ef4ef228038242f53abc8041470f7f596ab1157
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533455"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131505"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>再起動ポリシーによるコンテナー化タスクの実行
 
@@ -30,7 +30,7 @@ Azure Container Instances で[コンテナー グループ](container-instances-
 
 ## <a name="specify-a-restart-policy"></a>再起動ポリシーの指定
 
-再起動ポリシーを指定する方法は、Azure CLI や Azure PowerShell コマンドレット、または Azure Portal を使うなどのコンテナー インスタンスを作成する方法によって異なります。 Azure CLI では、[az container create][az-container-create] を呼び出すときに、`--restart-policy` パラメーターを指定します。
+再起動ポリシーを指定する方法は、Azure CLI や Azure PowerShell コマンドレット、または Azure Portal を使うなどのコンテナー インスタンスを作成する方法によって異なります。 Azure CLI では、`--restart-policy`az container create[ を呼び出すときに、][az-container-create] パラメーターを指定します。
 
 ```azurecli-interactive
 az container create \
@@ -57,7 +57,10 @@ az container create \
 Azure Container Instances はコンテナーを開始し、そのアプリケーション (ここではスクリプト) が終了すると停止します。 Azure Container Instances が再起動ポリシー `Never` または `OnFailure` のコンテナーを停止すると、そのコンテナーの状態は**終了**に設定されます。 [az container show][az-container-show] コマンドで、コンテナーの状態を確認できます。
 
 ```azurecli-interactive
-az container show --resource-group myResourceGroup --name mycontainer --query containers[0].instanceView.currentState.state
+az container show \
+    --resource-group myResourceGroup \
+    --name mycontainer \
+    --query containers[0].instanceView.currentState.state
 ```
 
 出力例:
@@ -89,7 +92,7 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 この例は、スクリプトが STDOUT に送信した出力を示しています。 ただし、コンテナー化されたタスクでは、後で取得できるように、その出力を永続的ストレージに書き込む場合があります。 たとえば、[Azure ファイル共有](container-instances-mounting-azure-files-volume.md)に書き込むなどです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 いくつかのコンテナーがある大きなデータセットのバッチ処理など、タスク ベースのシナリオでは、ランタイムではカスタムの[環境変数](container-instances-environment-variables.md)または[コマンド ライン](container-instances-start-command.md)のメリットが得られます。
 

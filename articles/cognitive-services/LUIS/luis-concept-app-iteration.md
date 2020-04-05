@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: diberry
 ms.openlocfilehash: c1c1b2df301634a435b610c395a1a58aa5573da3
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74422593"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUIS の反復的アプリ設計
@@ -26,7 +26,7 @@ Language Understanding (LUIS) アプリは、反復を使用して最も効率�
 * LUIS アプリ スキーマを編集する。 これには次のものが含まれます
     * 発話の例が含まれる意図
     * エンティティ
-    * 機能
+    * 特徴
 * トレーニング、テスト、公開
     * アクティブ ラーニングの予測エンドポイントでテストする
 * エンドポイント クエリからデータを収集する
@@ -73,7 +73,7 @@ LUIS では各**意図**での発話の例が必要です。 発話の例には�
 |主な要素|目的|
 |--|--|
 |Intent|ユーザーの発話を単一の意図、つまりアクションに**分類**します。 例は、`BookFlight` や `GetWeather` のようになります。|
-|エンティティ|意図を完了するために必要なデータを、発話から**抽出**します。 例としては、旅行の日付と時刻、場所などがあります。|
+|Entity|意図を完了するために必要なデータを、発話から**抽出**します。 例としては、旅行の日付と時刻、場所などがあります。|
 
 発話を **None** の意図に割り当てることによって、アプリのドメインに無関係な発話を無視するように LUIS アプリを設計することができます。
 
@@ -148,6 +148,6 @@ LUIS は、Azure リソースレベルのアクセス許可を提供すること
 
 反復サイクルが終了したら、プロセスを繰り返すことができます。 LUIS によって信頼度が低いとマークされた[予測エンドポイントの発話の確認](luis-how-to-review-endpoint-utterances.md)から開始します。 これらの発話で、予測される正しい意図と、正確で完全なエンティティが抽出されたことを確認します。 変更を確認して同意すると、確認リストが空になります。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [コラボレーション](luis-concept-keys.md)の概念を学習します。

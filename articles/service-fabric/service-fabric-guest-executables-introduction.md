@@ -4,10 +4,10 @@ description: 既存のアプリケーションを Service Fabric クラスター
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 3d7aab28a32effa2caf7b04b830d72e5e3dfda56
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75457820"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>既存の実行可能ファイルを Service Fabric にデプロイする

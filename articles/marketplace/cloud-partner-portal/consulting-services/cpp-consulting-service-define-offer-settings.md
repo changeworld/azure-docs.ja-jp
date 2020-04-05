@@ -1,19 +1,18 @@
 ---
 title: コンサルティング サービス オファーのオファーの設定を定義する | Azure Marketplace
 description: Azure Marketplace の Cloud パートナー ポータルで Azure または Dynamics 365 コンサルティング サービス オファーのオファーの設定を定義します。
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: e505f9aa1ec08708b85176d5b05fc5b40ceb295e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ac7ac2cc049c87b3f619f68a9a93a2268d961114
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818142"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278571"
 ---
 # <a name="offer-settings-tab"></a>[プランの設定] タブ
 
@@ -71,6 +70,6 @@ ms.locfileid: "73818142"
 
 **[プランの設定]** タブの入力が完了したら、送信内容を保存します。 オファー名はエディターの上に表示されるようになり、 **[すべてのプラン]** にも表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、[ネットショップの詳細を入力し、Azure Marketplace と AppSource のどちらで発行するかを決定](./cpp-consulting-service-storefront-details.md)できるようになりました。

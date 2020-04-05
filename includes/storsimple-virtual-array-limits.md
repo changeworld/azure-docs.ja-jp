@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 658fd9178495f14274c85eab2129c9dcd3be7693
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181206"
 ---
-| **制限の種類** | **制限** | **説明** |
+| **制限の種類** | **制限** | **コメント** |
 | --- | --- | --- |
 | 総容量 (クラウドを含む) |仮想デバイスあたり最大 64 TB |StorSimple Virtual Array 全体を別の空のアレイにフェールオーバーできます。 同じデバイスに復元する場合は、デバイスにこの操作を実行できるだけの十分な領域があることを確認してください。 32 TB を超えると、同じデバイスには復元できません。 |
 | デバイスあたりのストレージ アカウントの資格情報の最大数 |1 | |

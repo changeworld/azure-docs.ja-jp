@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: aahi
 ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67721626"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Anomaly Detector API の使用に関するベスト プラクティス
@@ -101,7 +101,7 @@ JSON 要求を作成するときに `period` を指定すると、異常検出�
 
 ストリーミング データを短期間 (秒単位や分単位など) でサンプリングした場合、推奨される数のデータ ポイントを送信すると、Anomaly Detector API で許容される最大数 (8640 データ ポイント) を超える可能性があります。 データの季節性パターンが安定している場合、より長期間 (時間単位など) で時系列データのサンプルを送信することを検討してください。 このようにデータをサンプリングすると、API の応答時間も大幅に短縮できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Anomaly Detector API とは](../overview.md)
-* [クイック スタート:Anomaly Detector REST API を使用し、時系列データ内の異常を検出する](../quickstarts/detect-data-anomalies-csharp.md)
+* [クイック スタート: Anomaly Detector REST API を使用し、時系列データ内の異常を検出する](../quickstarts/detect-data-anomalies-csharp.md)

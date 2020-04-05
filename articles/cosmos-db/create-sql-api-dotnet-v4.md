@@ -8,11 +8,11 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/10/2020
-ms.openlocfilehash: 6587b6d5ceb18bcc2374594aef91da91f792bb84
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b69d67a5c4fc1d907f676cf4e400f9fa7df2653b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77585936"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>クイック スタート:Azure Cosmos DB SQL API アカウント リソースを管理するための .Net V4 SDK を使用したコンソール アプリを構築する。
@@ -45,7 +45,7 @@ Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデ�
 
 このセクションでは、Azure Cosmos アカウントを作成し、.NET 用 Azure Cosmos DB SQL API クライアント ライブラリを使用してリソースを管理するプロジェクトを設定する手順について説明します。 この記事で説明するコード例では `FamilyDatabase` データベースと、そのデータベース内にファミリ メンバー (各ファミリ メンバーが項目) を作成します。 各ファミリ メンバーには `Id, FamilyName, FirstName, LastName, Parents, Children, Address,` などのプロパティがあります。 `LastName` プロパティは、コンテナーのパーティション キーとして使用されます。 
 
-### <a id="create-account"></a>Azure Cosmos アカウントを作成する
+### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>Azure Cosmos アカウントを作成する
 
 [[Azure Cosmos DB を無料で試す]](https://azure.microsoft.com/try/cosmosdb/) オプションを使用して Azure Cosmos アカウントを作成する場合は、種類が **SQL API** の Azure Cosmos DB アカウントを作成する必要があります。 Azure Cosmos DB テスト アカウントは既に作成されています。 アカウントを明示的に作成する必要はないため、このセクションをスキップして次のセクションに進むことができます。
 
@@ -82,7 +82,7 @@ az cosmosdb create \
 
 Azure Cosmos アカウントの作成にはしばらく時間がかかります。操作が正常に終了したら、確認出力が表示されます。 コマンドが正常に終了したら、[Azure portal](https://portal.azure.com/) にサインインし、指定した名前の Azure Cosmos アカウントが存在することを確認します。 リソースの作成後に、[Azure Cloud Shell] ウィンドウを閉じることができます。 
 
-### <a id="create-dotnet-core-app"></a>新しい .NET アプリを作成する
+### <a name="create-a-new-net-app"></a><a id="create-dotnet-core-app"></a>新しい .NET アプリを作成する
 
 好みのエディターまたは IDE で、新しい .NET アプリケーションを作成します。 ローカル コンピューターから Windows コマンド プロンプトまたはターミナル ウィンドウを開きます。 次のセクションではコマンド プロンプトまたはターミナルからすべてのコマンドを実行します。  次の dotnet new コマンドを実行して、`todo` という名前の新しいアプリを作成します。 作成したプロジェクト ファイル内には、--langVersion パラメーターによって、LangVersion プロパティが設定されます。
 
@@ -110,7 +110,7 @@ Build succeeded.
 Time Elapsed 00:00:34.17
 ```
 
-### <a id="install-package"></a>Azure Cosmos DB パッケージをインストールする
+### <a name="install-the-azure-cosmos-db-package"></a><a id="install-package"></a>Azure Cosmos DB パッケージをインストールする
 
 アプリケーション ディレクトリ内で、dotnet add package コマンドを使用して .NET Core 用の Azure Cosmos DB クライアント ライブラリをインストールします。
 
@@ -128,7 +128,7 @@ Time Elapsed 00:00:34.17
 
 1. **[キー]** ウィンドウを開き、アカウントの **[URI]** と **[プライマリ キー]** をコピーします。 次の手順では、URI とキーの値を環境変数に追加します。
 
-## <a id="object-model"></a>オブジェクト モデル
+## <a name="object-model"></a><a id="object-model"></a>オブジェクト モデル
 
 アプリケーションのビルドを開始する前に、Azure Cosmos DB のリソースの階層と、これらのリソースの作成とアクセスに使用されるオブジェクト モデルについて説明します。 Azure Cosmos DB によって、次の順序でリソースが作成されます。
 
@@ -147,68 +147,68 @@ Time Elapsed 00:00:34.17
 * GetItemQueryIterator - このメソッドにより、SQL ステートメントとパラメーター化された値を利用して Azure Cosmos データベースのコンテナーの下でアイテムに対するクエリが作成されます。 
 * DeleteAsync - 指定されたデータベースを Azure Cosmos アカウントから削除します。 `DeleteAsync` メソッドでは、データベースのみが削除されます。
 
- ## <a id="code-examples"></a>コード例
+ ## <a name="code-examples"></a><a id="code-examples"></a>コード例
 
 この記事で説明されているサンプル コードでは、Azure Cosmos DB でファミリ データベースを作成します。 ファミリ データベースには、名前、住所、場所、関連付けられている親、子供、ペットなどのファミリの詳細が含まれています。 データを Azure Cosmos アカウントに設定する前に、ファミリ項目のプロパティを定義します。 サンプル アプリケーションのルート レベルに `Family.cs` という名前の新しいクラスを作成し、次のコードを追加します。
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Family.cs":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Family.cs)]
 
 ### <a name="add-the-using-directives--define-the-client-object"></a>using ディレクティブの追加とクライアント オブジェクトの定義と
 
 プロジェクト ディレクトリからエディターで `Program.cs` ファイルを開き、アプリケーションの先頭に次の using ディレクティブを追加します。
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="Usings":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=Usings)]
 
 
 `Program` クラスに、次のグローバル変数を追加します。 これには、エンドポイント キーと承認キー、データベースの名前、および作成するコンテナーが含まれます。 環境に応じて、エンドポイント キーと承認キーの値を必ず置き換えてください。 
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="Constants":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=Constants)]
 
 最後に、`Main` メソッドを置き換えます。
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="Main":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=Main)]
 
 ### <a name="create-a-database"></a>データベースを作成する 
 
 `program.cs` クラス内に `CreateDatabaseAsync` メソッドを定義します。 このメソッドによって、`FamilyDatabase` が作成されます (まだ存在しない場合)。
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="CreateDatabaseAsync":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=CreateDatabaseAsync)]
 
 ### <a name="create-a-container"></a>コンテナーを作成する
 
 `Program` クラス内に `CreateContainerAsync` メソッドを定義します。 このメソッドによって、`FamilyContainer` が作成されます (まだ存在しない場合)。 
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="CreateContainerAsync":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=CreateContainerAsync)]
 
 ### <a name="create-an-item"></a>項目を作成する
 
 次のコードを使用して、`AddItemsToContainerAsync` メソッドを追加してファミリ項目を作成します。 `CreateItemAsync` または `UpsertItemAsync` のメソッドを使用し、アイテムを作成できます。
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="AddItemsToContainerAsync":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=AddItemsToContainerAsync)]
 
 ### <a name="query-the-items"></a>項目に対してクエリを実行する
 
 項目を挿入した後、クエリを実行して "Andersen" ファミリの詳細を取得できます。 次のコードは、SQL クエリを直接使用してクエリを実行する方法を示しています。 "Anderson" ファミリの詳細を取得する SQL クエリは `SELECT * FROM c WHERE c.LastName = 'Andersen'` です。 `Program` クラス内で `QueryItemsAsync` メソッドを定義し、次のコードを追加します。
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="QueryItemsAsync":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=QueryItemsAsync)]
 
 ### <a name="replace-an-item"></a>項目を置換する 
 
 次のコードで `ReplaceFamilyItemAsync` メソッドを追加して、ファミリ項目を読み取り、それを更新します。
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="ReplaceFamilyItemAsync":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=ReplaceFamilyItemAsync)]
 
 ### <a name="delete-an-item"></a>項目を削除する 
 
 次のコードで `DeleteFamilyItemAsync` メソッドを追加して、ファミリ項目を削除します。
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="DeleteFamilyItemAsync":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=DeleteFamilyItemAsync)]
 
 ### <a name="delete-the-database"></a>データベースを削除する 
 
 最後に、次のコードを使用して `DeleteDatabaseAndCleanupAsync` メソッドを追加し、データベースを削除できます。
 
-:::code language="csharp" source="~/cosmos-dotnet-v4-getting-started/src/Program.cs" id="DeleteDatabaseAndCleanupAsync":::
+[!code-csharp[Main](~/cosmos-dotnet-v4-getting-started/src/Program.cs?name=DeleteDatabaseAndCleanupAsync)]
 
 すべての必要なメソッドを追加したら、`Program` ファイルを保存します。 
 

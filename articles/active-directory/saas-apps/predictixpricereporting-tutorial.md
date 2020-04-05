@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 808b2d964bb39af6b410a84563717102ebece454
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67094103"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>チュートリアル:Azure Active Directory と Predictix Price Reporting の統合
+# <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>チュートリアル: Azure Active Directory と Predictix Price Reporting の統合
 
 このチュートリアルでは、Predictix Price Reporting と Azure Active Directory (Azure AD) を統合する方法について説明します。
 

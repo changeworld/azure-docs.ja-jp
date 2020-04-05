@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 2773d06fdfc606faaab88340fc2ef9685bba21f9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73720707"
 ---
-# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>チュートリアル: Azure CLI および Azure Event Grid を利用した Azure Relay Hybrid Connections へのカスタム イベントの転送
+# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>チュートリアル:Azure CLI および Azure Event Grid を利用した Azure Relay Hybrid Connections へのカスタム イベントの転送
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 Azure Relay Hybrid Connections はサポートされているイベント ハンドラーの 1 つです｡ パブリックなエンドポイントがないアプリケーションからのイベントを処理する必要がある場合は､イベント ハンドラーとしてハイブリッド接続を利用します｡ そうしたアプリケーションは､コーポレート エンタープライズ ネットワークに存在することがあります｡ この記事では、Azure CLI からカスタム トピックを作成してカスタム トピックにサブスクライブし、イベントをトリガーして結果を表示します。 イベントはハイブリッド接続に送信します｡
 
@@ -29,11 +29,11 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 Az
 > [!NOTE]
 > ローカル マシンで Azure CLI を使用する場合は、Azure CLI バージョン 2.0.56 以降を使用してください。 Azure CLI の最新バージョンをインストールする手順については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
-[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 
+[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 
 
 次の例では、*gridResourceGroup* という名前のリソース グループを *westus2* の場所に作成します。
 
@@ -110,14 +110,14 @@ curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 
 リスナー アプリケーションはイベント メッセージを受信することになります｡
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 引き続きこのイベントを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 それ以外の場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
 
 ```azurecli-interactive
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 トピックを作成し、イベントをサブスクライブする方法がわかったら、Event Grid でできることについて、さらに情報を収集しましょう。
 

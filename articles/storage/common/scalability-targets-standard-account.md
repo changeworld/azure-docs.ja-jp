@@ -10,10 +10,10 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 817e11fdf70c8043d2eb860fe15cc0a7907c6656
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750631"
 ---
 # <a name="scalability-and-performance-targets-for-standard-storage-accounts"></a>Standard Storage アカウントのスケーラビリティとパフォーマンスのターゲット

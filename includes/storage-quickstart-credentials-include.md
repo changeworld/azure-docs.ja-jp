@@ -9,10 +9,10 @@ ms.date: 11/23/2019
 ms.author: mhopkins
 ms.custom: include file
 ms.openlocfilehash: 7dd22886d11c3a35a7a866ff7c9a4f56ea74cab7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75351215"
 ---
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>Azure Portal で資格情報をコピーする

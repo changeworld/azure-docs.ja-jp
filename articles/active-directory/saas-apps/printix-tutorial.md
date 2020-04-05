@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Printix の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Printix の統合 | Microsoft Docs'
 description: Azure Active Directory と Printix の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e883833f7998c073b574c892ed5c7777e01faab4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62111461"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-printix"></a>チュートリアル:Azure Active Directory と Printix の統合
+# <a name="tutorial-azure-active-directory-integration-with-printix"></a>チュートリアル: Azure Active Directory と Printix の統合
 
 このチュートリアルでは、Printix と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -89,10 +89,10 @@ Printix で、Azure AD の **[ユーザー名]** の値を **[Username]** の値
 
 Printix で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD シングル サインオンをテストします。
 1. **[Printix のテスト ユーザーの作成](#creating-a-printix-test-user)** - Printix で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
@@ -152,7 +152,7 @@ Printix で Azure AD のシングル サインオンを構成してテストす�
 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、 **[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、 **[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

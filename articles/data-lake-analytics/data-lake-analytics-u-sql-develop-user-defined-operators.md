@@ -10,10 +10,10 @@ ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: b2d1293b06b4d8791138ed666bc3cb4abe3adf40
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71316539"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>U-SQL ユーザー定義演算子 (UDO) の開発
@@ -23,7 +23,7 @@ ms.locfileid: "71316539"
 **U-SQL ジョブを作成して送信するには**
 
 1. Visual Studio で、 **[ファイル]、[新規作成]、[プロジェクト]、[ U-SQL プロジェクト]** の順に選択します。
-2. Click **OK**. Visual Studio によって、Script.usql ファイルを使用するソリューションが作成されます。
+2. **[OK]** をクリックします。 Visual Studio によって、Script.usql ファイルを使用するソリューションが作成されます。
 3. **ソリューション エクスプローラー**で、Script.usql を展開してから **Script.usql.cs** をダブルクリックします。
 4. 以下のコードをファイルに貼り付けます。
 
@@ -123,6 +123,6 @@ ms.locfileid: "71316539"
 1. **サーバー エクスプローラー**で、 **[Azure]** 、 **[Data Lake Analytics]** 、Data Lake Analytics アカウント、 **[ストレージ アカウント]** の順に展開し、既定のストレージを右クリックしてから **[エクスプローラー]** をクリックします。
 2. [サンプル]、[出力] の順にクリックしてから、 **Drivers.csv**をダブルクリックします。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [ユーザー コードによる U-SQL 式の拡張](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
 * [U-SQL アプリケーションを開発するための Data Lake Tools for Visual Studio の使用](data-lake-analytics-data-lake-tools-get-started.md)

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 1c519533625835677ddae0a274c9ce9f10edc6dd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73097996"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive による JSON ドキュメントの処理および分析
@@ -152,7 +152,7 @@ SerDe は、入れ子になった JSON ドキュメントの解析に最適な�
 
 結論として、Hive で選択する JSON 演算子の種類は、シナリオによって異なります。 JSON ドキュメントが単純で、検索するのが 1 つのフィールドのみの場合には、Hive UDF **get_json_object** を選択できます。 検索対象のキーが複数ある場合には、**json_tuple** を使用できます。 入れ子になったドキュメントの場合は、**JSON SerDe** を使用する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 関連記事については、次を参照してください。
 

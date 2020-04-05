@@ -1,19 +1,18 @@
 ---
 title: パートナー センターのコマーシャル マーケットプレース分析に関するよく寄せられる質問と用語
 description: コマーシャル マーケットプレース分析に関してよく寄せられる質問に対処する方法について説明します。 分析用語のデータ辞書も含まれています。
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 081109c2208e2006eb1628fbf0cfb99b1e6bd8f9
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: d53ae01fb302382ca5bc2d31e729e153aea6c838
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462141"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286083"
 ---
 # <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析に関するよく寄せられる質問と用語
 
@@ -68,7 +67,7 @@ ms.locfileid: "77462141"
 | Marketplace ライセンスの種類| Order| Marketplace プランの課金方法。||
 | Marketplace ライセンスの種類:Azure から請求| Order| この Marketplace プランについてマイクロソフトが代理人となり、顧客に請求します。 (PAYG クレジット カードまたはエンタープライズ請求書のいずれか)||
 | Marketplace ライセンスの種類:ライセンス持ち込み | Order| VM でデプロイするには、顧客が指定したライセンス キーが必要です。 このようにマーケットプレース経由でオファーを掲載する顧客に対して、マイクロソフトから請求することはありません。||
-| Marketplace ライセンスの種類:無料| Order| このオファーをすべてのユーザーに対して無料となるよう構成します。 このオファーの使用に対してマイクロソフトが顧客に請求することはありません。||
+| Marketplace ライセンスの種類:Free| Order| このオファーをすべてのユーザーに対して無料となるよう構成します。 このオファーの使用に対してマイクロソフトが顧客に請求することはありません。||
 | Marketplace ライセンスの種類:Microsoft がリセラー  | Order| この Marketplace プランのリセラーはマイクロソフトです。|  |
 | Marketplace サブスクリプション ID | 顧客、注文 | 顧客が Marketplace プランを購入するときに使用した Azure サブスクリプションに関連付けられている一意識別子。 ID は以前は Azure サブスクリプション GUID でした。||
 | プラン名  | Order| Marketplace サービスの名前。|| |

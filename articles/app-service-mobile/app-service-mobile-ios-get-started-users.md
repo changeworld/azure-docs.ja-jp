@@ -7,10 +7,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: fd7860053e8c04ca9d5e355a721afd834835a441
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459025"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>iOS アプリに認証を追加する
@@ -18,10 +18,10 @@ ms.locfileid: "77459025"
 
 このチュートリアルでは、サポートされている ID プロバイダーを使用して、 [iOS クイック スタート] プロジェクトに認証を追加します。 最初に、このチュートリアルの基になっている [iOS クイック スタート] チュートリアルを完了しておく必要があります。
 
-## <a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
+## <a name="register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>許可されている外部リダイレクト URL にアプリを追加する
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>許可されている外部リダイレクト URL にアプリを追加する
 
 認証をセキュリティで保護するには、アプリ用の新しい URL スキームの定義が必要になります。  これによって、認証プロセスが完了すると認証システムからアプリにリダイレクトできます。  このチュートリアル全体を通して、URL スキーム _appname_ を使用します。  ただし、選択したあらゆる URL スキームを使用できます。  URL スキームは、モバイル アプリに対して一意である必要があります。  サーバー側でリダイレクトを有効にするには、以下の手順に従います。
 
@@ -39,12 +39,12 @@ ms.locfileid: "77459025"
 
 7. **[保存]** をクリックします。
 
-## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 Xcode で、 **[Run]** をクリックしてアプリケーションを開始します。 認証されないユーザーとしてアプリがバックエンドにアクセスしようとしても、*TodoItem* テーブルで認証が要求されるために例外が発生します。
 
-## <a name="add-authentication"></a>アプリケーションに認証を追加する
+## <a name="add-authentication-to-app"></a><a name="add-authentication"></a>アプリケーションに認証を追加する
 **Objective-C**:
 
 1. Mac の Xcode で *QSTodoListViewController.m* を開き、次のメソッドを追加します。

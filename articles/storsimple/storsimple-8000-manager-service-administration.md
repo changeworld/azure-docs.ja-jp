@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
 ms.openlocfilehash: b5490c4e79ee1458b498f539c0db2cc189fce7f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60723308"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理
@@ -52,10 +52,10 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 
 | 目的の操作 | 実行する手順 |
 | --- | --- |
-| サービスの作成</br>サービスを削除する</br>サービス登録キーを取得する</br>サービス登録キーを再生成する |[StorSimple デバイス マネージャー サービスのデプロイ](storsimple-8000-manage-service.md) |
+| サービスの作成</br>サービスの削除</br>サービス登録キーを取得する</br>サービス登録キーを再生成する |[StorSimple デバイス マネージャー サービスのデプロイ](storsimple-8000-manage-service.md) |
 | アクティビティ ログを表示する |[StorSimple デバイス マネージャー サービスの概要ブレードの使用](storsimple-8000-service-dashboard.md) |
 | サービス データ暗号化キーの変更</br>操作ログを表示する |[StorSimple デバイス マネージャー サービスのダッシュボードの使用](storsimple-8000-service-dashboard.md) |
-| デバイスの非アクティブ化</br>デバイスを削除する |[デバイスを非アクティブ化または削除する](storsimple-8000-deactivate-and-delete-device.md) |
+| デバイスの非アクティブ化</br>デバイスの削除 |[デバイスを非アクティブ化または削除する](storsimple-8000-deactivate-and-delete-device.md) |
 | ディザスター リカバリーとデバイスのフェールオーバーについて学習する</br>物理デバイスへのフェイルオーバー</br>仮想デバイスへのフェールオーバー</br>ビジネス継続性ディザスター リカバリー (BCDR) |[StorSimple デバイスのフェールオーバーとディザスター リカバリー](storsimple-8000-device-failover-disaster-recovery.md) |
 | ボリュームのバックアップを一覧表示する</br>バックアップ セットの選択</br>バックアップ セットの削除 |[バックアップを管理する](storsimple-8000-manage-backup-catalog.md) |
 | ボリュームを複製する |[ボリュームを複製する](storsimple-8000-clone-volume-u2.md) |
@@ -80,7 +80,7 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 | サポート パッケージを作成する |[サポート パッケージを作成および管理する](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple) |
 | ソフトウェアの更新プログラムをインストールする |[デバイスを更新する](storsimple-update-device.md) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 StorSimple デバイスの日常的な操作または StorSimple デバイスのハードウェア コンポーネントのいずれかで問題が発生した場合は、次のトピックを参照してください。
 

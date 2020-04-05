@@ -9,10 +9,10 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: e3997fc215637175165402a926bffc6ac8d02771
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77914860"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage のマルチプロトコル アクセス
@@ -40,11 +40,11 @@ Data Lake Storage のマルチプロトコル アクセスでは、ツール、�
 
 BLOB API を使用している既存のツールとアプリケーションでは、これらのメリットが自動的に活用されます。 開発者は、それらを変更する必要はありません。 Data Lake Storage Gen2 では、データにアクセスするためにツールとアプリケーションで使用されるプロトコルに関係なく、ディレクトリとファイルレベルの ACL が一貫して適用されます。 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Azure Data Lake Storage Gen2 で使用できる Blob Storage 機能](data-lake-storage-supported-blob-storage-features.md)
 - [Azure Data Lake Storage Gen2 がサポートされている Azure のサービス](data-lake-storage-supported-azure-services.md)
-- [Data Lake Storage Gen2 がサポートされているオープン ソース プラットフォーム](data-lake-storage-supported-open-source-platforms.md)
+- [Azure Data Lake Storage Gen2 がサポートされているオープン ソース プラットフォーム](data-lake-storage-supported-open-source-platforms.md)
 - [Azure Data Lake Storage Gen2 に関する既知の問題](data-lake-storage-known-issues.md)
 
 

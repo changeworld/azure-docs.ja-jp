@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650863"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225895"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Azure Blob Storage に BLOB を作成して管理する
 
@@ -121,7 +121,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. 接続を作成するよう求められたら、この情報を入力します。
 
-   | プロパティ | Required | Value | 説明 |
+   | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **Connection Name** | はい | <*connection-name*> | 作成する接続の名前 |
    | **ストレージ アカウント** | はい | <*storage-account*> | リストからストレージ アカウントを選択します。 |

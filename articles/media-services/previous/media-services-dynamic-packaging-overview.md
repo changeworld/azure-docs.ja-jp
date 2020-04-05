@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
 ms.openlocfilehash: 079094965775c140c0343da98e40fd008995d45a
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74901183"
 ---
 # <a name="dynamic-packaging"></a>動的パッケージ
 
-> [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
 > * [Version 3](../latest/dynamic-packaging-overview.md)
 > * [Version 2](media-services-dynamic-packaging-overview.md)
 

@@ -5,8 +5,12 @@
   items:
     - name: Azure Active Directory とは
       href: active-directory-whatis.md
+    - name: Azure AD と ADDS の比較
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Azure Active Directory の新着情報
       href: whats-new.md
+    - name: Microsoft 365 Government の最新情報
+      href: whats-new-microsoft-365-government.md
 - name: クイックスタート
   expanded: true
   items:
@@ -17,8 +21,6 @@
 - name: 概念
   expanded: true
   items:
-    - name: ID セキュリティ スコア
-      href: identity-secure-score.md
     - name: Security
       items:
         - name: MFA の有効化
@@ -27,24 +29,30 @@
           href: concept-fundamentals-security-defaults.md
         - name: レガシ認証をブロックする
           href: concept-fundamentals-block-legacy-authentication.md
-    - name: グループとアクセス管理
-      href: active-directory-manage-groups.md
-    - name: グループベースのライセンス
-      href: active-directory-licensing-whatis-azure-portal.md
-    - name: Azure AD のアーキテクチャ
-      href: active-directory-architecture.md
-    - name: 既定のユーザー アクセス許可
-      href: users-default-permissions.md
-    - name: デプロイ 30、90、およびそれ以降
+        - name: ID セキュリティ スコア
+          href: identity-secure-score.md
+    - name: グループとユーザー
+      items:
+        - name: グループとアクセス管理
+          href: active-directory-manage-groups.md
+        - name: グループベースのライセンス
+          href: active-directory-licensing-whatis-azure-portal.md
+        - name: 既定のユーザー アクセス許可
+          href: users-default-permissions.md
+    - name: Architecture
+      items:
+        - name: Azure AD のアーキテクチャ
+          href: active-directory-architecture.md
+    - name: デプロイ ガイド
+      items:
+        - name: デプロイ 30、90、およびそれ以降
       href: active-directory-deployment-checklist-p2.md
-    - name: EU の ID データ ストレージ
-      href: active-directory-data-storage-eu.md
-    - name: オーストラリアおよびニュージーランド向けの ID データ ストレージ
-      href: active-directory-data-storage-australia-newzealand.md
-    - name: Microsoft 365 Government の最新情報
-      href: whats-new-microsoft-365-government.md
-    - name: Azure AD と ADDS の比較
-      href: active-directory-compare-azure-ad-to-ad.md
+    - name: データ ストレージ
+      items:
+        - name: ヨーロッパ向けの ID データ ストレージ
+          href: active-directory-data-storage-eu.md
+        - name: オーストラリアおよびニュージーランド向けの ID データ ストレージ
+          href: active-directory-data-storage-australia-newzealand.md
     - name: Azure AD 操作のリファレンス
       items:
         - name: はじめに

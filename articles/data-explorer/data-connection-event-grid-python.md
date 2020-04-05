@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: 1439383598517f57bc77e718d4ded7f53941d3bb
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444198"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-python"></a>Python を使用して Azure Data Explorer 用に Event Grid データ接続を作成する

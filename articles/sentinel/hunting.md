@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
 ms.openlocfilehash: 54ddf6818b95a4037188ab222501ddfa69b28149
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77587900"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Azure Sentinel で脅威を検出する

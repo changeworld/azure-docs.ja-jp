@@ -17,11 +17,11 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48370e2806b70d550bce95ceff3857a79561f247
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522698"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231059"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>ユーザー プロビジョニングの状態を確認する
 

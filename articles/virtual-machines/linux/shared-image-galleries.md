@@ -16,17 +16,17 @@ ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: b79abeffffd7dc1bb54e828823aa909216508496
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035025"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231979"
 ---
 # <a name="shared-image-galleries-overview"></a>共有イメージ ギャラリーの概要
 
 [!INCLUDE [virtual-machines-common-shared-image-galleries](../../../includes/virtual-machines-common-shared-image-galleries.md)]
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [共有イメージをデプロイする](shared-images.md)方法を学習します。

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/24/2019
 ms.author: ramamill
 ms.openlocfilehash: 01aef3aca4f6967b1681bff9598c7dd7a24739cd
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611751"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228943"
 ---
 # <a name="manage-vmware-vcenter-server"></a>VMware vCenter Server を管理する
 

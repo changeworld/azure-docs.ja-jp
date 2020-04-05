@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113227"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure Cognitive Search の OData 比較演算子 - `eq`、`ne`、`gt`、`lt`、`ge`、`le`
@@ -79,7 +79,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 | 変数または関数の型 | 定数値の型 | 制限事項 |
 | --- | --- | --- |
-| `Edm.Double` | `Edm.Double` | 比較は、[ `NaN` の特殊なルール](#special-case-nan)に従います |
+| `Edm.Double` | `Edm.Double` | 比較は、[`NaN` の特殊なルール](#special-case-nan)に従います |
 | `Edm.Double` | `Edm.Int64` | 定数は `Edm.Double` に変換され、大きな値の場合は精度が失われる結果となります |
 | `Edm.Double` | `Edm.Int32` | 該当なし |
 | `Edm.Int64` | `Edm.Double` | `NaN`、`-INF`、または `INF` との比較はできません |
@@ -100,7 +100,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 比較演算子を使用する場合、Azure Cognitive Search のすべての非コレクション フィールドは `null` になる可能性があることを覚えておくことが重要です。 次の表に、いずれかの側が `null` になる可能性がある比較式の考えられるすべての結果を示します。
 
-| Operator | フィールドまたは変数のみが `null` の場合の結果 | 定数のみが `null` の場合の結果 | フィールドまたは変数と定数の両方が `null` の場合の結果 |
+| 演算子 | フィールドまたは変数のみが `null` の場合の結果 | 定数のみが `null` の場合の結果 | フィールドまたは変数と定数の両方が `null` の場合の結果 |
 | --- | --- | --- | --- |
 | `gt` | `false` | HTTP 400:無効な要求のエラー | HTTP 400:無効な要求のエラー |
 | `lt` | `false` | HTTP 400:無効な要求のエラー | HTTP 400:無効な要求のエラー |
@@ -113,7 +113,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 インデックスに型 `Edm.Double` のフィールドがあり、`NaN` の値をそれらのフィールドにアップロードする場合は、フィルターを作成するときにそのことを考慮する必要があります。 Azure Cognitive Search では、`NaN` 値を処理するために IEEE 754 標準を実装しています。このような値との比較により、次の表に示すように、明らかではない結果が生じます。
 
-| Operator | 少なくとも 1 つのオペランドが `NaN` の場合の結果 |
+| 演算子 | 少なくとも 1 つのオペランドが `NaN` の場合の結果 |
 | --- | --- |
 | `gt` | `false` |
 | `lt` | `false` |
@@ -134,7 +134,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
 ## <a name="examples"></a>例
 
-`Rating` フィールドが 3 から 5 までの範囲のドキュメントを一致させる場合:
+`Rating` フィールドが 3 から 5 (両端を含む) の範囲のドキュメントを照合します。
 
     Rating ge 3 and Rating le 5
 
@@ -154,7 +154,7 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 
     Rooms/any(room: room/Type eq 'Deluxe Room')
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 - [Azure Cognitive Search のフィルター](search-filters.md)
 - [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)

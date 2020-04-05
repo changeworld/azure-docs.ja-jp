@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181845"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>四角形のデータセットの構造定義を指定する
@@ -54,7 +54,7 @@ Data Factory は、Azure BLOB などの読み取りデータ ソースでスキ�
 * Decimal
 * Byte[]
 * Bool
-* string 
+* String 
 * Guid
 * Datetime
 * Datetimeoffset

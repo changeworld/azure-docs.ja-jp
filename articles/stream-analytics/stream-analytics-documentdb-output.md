@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
 ms.openlocfilehash: e58e36b3caa5a5ecd137cb9cb61dad7ddb95ff3a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986990"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228075"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
 Azure Stream Analytics では、JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。

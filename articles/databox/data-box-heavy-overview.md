@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70142911"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Azure Data Box Heavy とは
@@ -65,13 +65,13 @@ Data Box Heavy は、ネットワークにほとんどまたはまったく影�
 | Dimensions                                              | 幅:26 インチ 高さ:28 インチ 長さ:48 インチ |
 | ラック スペース                                              | ラックマウント不可|
 | 必要なケーブル                                         | 接地 120 V、10 A 電源コード (NEMA 5-15) 付属 x 4 <br> デバイスは最大 240 V 電源をサポートし、C-13 電源レセプタクルを備える <br> [Mellanox MCX314 A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) と互換性のあるネットワーク ケーブルを使用  |
-| 累乗                                                    | 両方のデバイス ノードで共有される 4 基の内蔵電源装置 (PSU) <br> 1,200 ワット定格消費電力|
+| Power                                                    | 両方のデバイス ノードで共有される 4 基の内蔵電源装置 (PSU) <br> 1,200 ワット定格消費電力|
 | ストレージの容量                                        | 最大 1 PB (ロー)、各 14 TB のディスク 70 台 <br> 使用可能な容量は 770 TB|
 | ノードの数                                          | デバイスごとに 2 つの独立したノード (各 500 TB) |
 | ノードあたりのネットワーク インターフェイス数                             | ノードあたり 4 つのネットワーク インターフェイス <br><br> MGMT、DATA3 <ul><li> 2 X 1 GbE インターフェイス </li><li> MGMT は管理および初期セットアップ用、ユーザー構成不可 </li><li> DATA3 はユーザー構成可能であり、既定では動的ホスト構成プロトコル (DHCP)</li></ul>DATA1、DATA2 データ インターフェイス <ul><li>2 X 40 GbE インターフェイス </li><li> ユーザー構成可能 (既定値の DHCP の場合)、または静的</li></ul>|
 
 
-## <a name="components"></a>コンポーネント
+## <a name="components"></a>Components
 
 Data Box Heavy に含まれるコンポーネントを次に示します。
 

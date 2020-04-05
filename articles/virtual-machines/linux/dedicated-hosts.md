@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
 ms.openlocfilehash: c19b3410e106aaf5fed53aba45d06eac6dd9d601
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970727"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 専用ホスト
@@ -30,4 +30,4 @@ Azure 専用ホストは、1 つの Azure サブスクリプションに対し�
 
 - [こちら](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)には、リージョン内の回復性を最大にするためにゾーンと障害ドメインの両方を使用するサンプル テンプレートがあります。
 
-- また、Azure Dedicated Host の [予約インスタンスを使用してコストを節約することもできます](../prepay-dedicated-hosts-reserved-instances.md)。
+- また、Azure Dedicated Host[の](../prepay-dedicated-hosts-reserved-instances.md)予約インスタンスを使用してコストを節約することもできます。

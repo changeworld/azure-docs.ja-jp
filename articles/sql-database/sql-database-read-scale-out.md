@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
 ms.openlocfilehash: 1a1b9907cd931716949d92d948a7d541fd2d5057
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78206947"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する

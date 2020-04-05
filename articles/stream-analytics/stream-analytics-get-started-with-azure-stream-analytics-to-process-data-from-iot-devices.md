@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.openlocfilehash: 0755131f7d8071e37eadc1339ebc5e122725fa71
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426243"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Azure Stream Analytics を使用したリアルタイム IoT データ ストリームの処理
@@ -68,7 +68,7 @@ GitHub から [HelloWorldASA-InputStream.json](https://github.com/Azure/azure-st
 
 ![サンプルの入力データのプレビュー](./media/stream-analytics-get-started-with-iot-devices/input-preview.png)
 
-### <a name="query-archive-your-raw-data"></a>クエリ:生データのアーカイブ
+### <a name="query-archive-your-raw-data"></a>クエリ: 生データのアーカイブ
 
 クエリの最も単純な形式は、すべての入力データを指定された出力にアーカイブするパススルー クエリです。 このクエリは、新しい Azure Stream Analytics ジョブで設定された既定のクエリです。
 
@@ -85,7 +85,7 @@ FROM
 
 ![Stream Analytics クエリのテスト結果](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
-### <a name="query-filter-the-data-based-on-a-condition"></a>クエリ:条件に基づいたデータのフィルター処理
+### <a name="query-filter-the-data-based-on-a-condition"></a>クエリ: 条件に基づいたデータのフィルター処理
 
 条件に基づいて結果をフィルター処理しましょう。 "sensorA" から取得したイベントの結果のみを表示したいとします。
 
@@ -106,7 +106,7 @@ WHERE dspl='sensorA'
 
 ![データ ストリームのフィルタリング](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 
-### <a name="query-alert-to-trigger-a-business-workflow"></a>クエリ:ビジネス ワークフローをトリガーするアラート
+### <a name="query-alert-to-trigger-a-business-workflow"></a>クエリ: ビジネス ワークフローをトリガーするアラート
 
 クエリについて、もう少し詳しく説明します。 あらゆる種類のセンサーを対象に、30 秒間隔で平均温度を監視し、平均温度が 100 度を超える場合にのみ結果を表示するのであれば、
 
@@ -127,7 +127,7 @@ HAVING Avg(temp)>100
 
 ご覧のように、結果に含まれるのは 245 行のみで、平均温度が 100 度を超えるセンサーの名前が一覧表示されます。 このクエリでは、センサー名である **dspl** 別に、30 秒の**タンブリング ウィンドウ**でイベントのストリームをグループ化しています。 一時的なクエリでは、時間の進み方を指定する必要があります。 ここでは、一時的な計算すべてに時間を関連付けるため、**TIMESTAMP BY** 句を使用して **OUTPUTTIME** 列を指定しました。 詳細については、[時間管理](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics)と[ウィンドウ関数](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)に関するページを参照してください。
 
-### <a name="query-detect-absence-of-events"></a>クエリ:Detect absence of events
+### <a name="query-detect-absence-of-events"></a>クエリ: イベントがないことを検出する
 
 入力イベントがないことを検出するためのクエリは、どのように記述すればよいのでしょうか。 センサーが最後にデータを送信してから 5 秒間イベントを送信しなかったタイミングを見つけましょう。
 

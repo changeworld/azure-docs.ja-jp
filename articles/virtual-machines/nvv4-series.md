@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 0295ed7d44d64fcc1aeb68e1beaa37987b177edb
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273859"
 ---
 # <a name="nvv4-series"></a>NVv4 シリーズ 
@@ -24,9 +24,9 @@ Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
-ライブ マイグレーション：サポートされていません
+ライブ マイグレーション: サポートされていません
 
-メモリ保持更新:サポートされていません
+メモリ保持更新: サポートされていません
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | 最大 NIC 数 |
 | --- | --- | --- | --- | --- | --- | --- | --- |

@@ -9,13 +9,13 @@ ms.date: 05/05/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 6a053b94813145f9ccd69158d18edb728d5dad61
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74795807"
 ---
-| リソース | ターゲット | ハード制限 |
+| リソース | 移行先 | ハード制限 |
 |----------|--------------|------------|
 | リージョンあたりのストレージ同期サービス数 | 20 のストレージ同期サービス | はい |
 | ストレージ同期サービスごとの同期グループ数 | 100 の同期グループ | はい |

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: glenga
 ms.openlocfilehash: 753a3d16792e0dbaffe318cd188ea3f0d40bd5cb
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78191052"
 ---
 `Push-OutputBinding` コマンドレットと `msg` 出力バインディングを使用してキューにテキストを書き込むコードを追加します。 `if` ステートメントで OK ステータスを設定する前に、このコードを追加してください。

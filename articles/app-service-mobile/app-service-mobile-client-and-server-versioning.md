@@ -6,12 +6,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: f24ae0a48b835785a2e000210f3609b82d42d0f6
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: a9ba442c00ec2498139ee34a1ff7497c98f17ede
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461557"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80293482"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Mobile Apps と Mobile Services のクライアントとサーバーのバージョン管理
 
@@ -27,11 +27,11 @@ Mobile Apps のクライアント/サーバー SDK は Mobile Services のクラ
 
 次に例を示します。
 
-GET https://service.azurewebsites.net/tables/TodoItem
+`GET https://service.azurewebsites.net/tables/TodoItem`
 
-HEADERS:ZUMO-API-VERSION:2.0.0
+HEADERS: ZUMO-API-VERSION: 2.0.0
 
-POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
+`POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0`
 
 ## <a name="opting-out-of-version-checking"></a>バージョン チェックの除外
 バージョン チェックを除外できます。その場合、アプリ設定 **MS_SkipVersionCheck** に **true** 値を設定します。 これは web.config か Azure ポータルの [アプリケーション設定] セクションで指定します。
@@ -39,8 +39,8 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 > [!NOTE]
 > Mobile Services と Mobile Apps の間には、特にオフライン同期、認証、プッシュ通知の領域で、さまざまな動作変更があります。 テストを完了し、動作変更によるアプリの機能停止がないことを確認してからバージョン チェックを除外してください。
 
-## <a name="2.0.0"></a>Azure Mobile Apps クライアントとサーバー
-### <a name="MobileAppsClients"></a> Mobile *Apps* クライアント SDK
+## <a name="azure-mobile-apps-client-and-server"></a><a name="2.0.0"></a>Azure Mobile Apps クライアントとサーバー
+### <a name="mobile-apps-client-sdks"></a><a name="MobileAppsClients"></a> Mobile *Apps* クライアント SDK
 バージョン チェックは **Azure Mobile Apps**の次のバージョンのクライアント SDK から導入されました。
 
 | クライアント プラットフォーム | Version | バージョンのヘッダー値 |

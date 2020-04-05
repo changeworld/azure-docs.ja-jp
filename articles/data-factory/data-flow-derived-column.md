@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
 ms.openlocfilehash: 66396de52b3709c1d9357f32a375a29a8dcdbd1d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77048744"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>マッピング データ フローの派生列変換
@@ -57,7 +57,7 @@ ms.locfileid: "77048744"
 
 ### <a name="example"></a>例
 
-次の例は、受信ストリーム `MoviesYear` を受け取り 2 つの派生列を作成する、`CleanData` という名前の派生列です。 最初の派生列は、列 `Rating` を整数型の Rating の値で置き換えます。 2 番目の派生列は、名前が 'movies' で始まる各列に一致するパターンです。 一致した列ごとに、一致する列の値と等しい列 `movie` を、'movie_' というプレフィックスを付けて作成します。 
+次の例は、受信ストリーム `CleanData` を受け取り 2 つの派生列を作成する、`MoviesYear` という名前の派生列です。 最初の派生列は、列 `Rating` を整数型の Rating の値で置き換えます。 2 番目の派生列は、名前が 'movies' で始まる各列に一致するパターンです。 一致した列ごとに、一致する列の値と等しい列 `movie` を、'movie_' というプレフィックスを付けて作成します。 
 
 Data Factory UX では、この変換は次の図のようになります。
 

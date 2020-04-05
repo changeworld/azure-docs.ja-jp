@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b819264895e35c6ef4fe9dc5263444dcac17eaa2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74935767"
 ---
 現時点では、Ultra Disk には次のような追加の制限があります。

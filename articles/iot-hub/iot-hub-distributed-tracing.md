@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
 ms.openlocfilehash: efee34ddfb2b2f6090d5dc8c43647c7ee1c53ce2
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77562430"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
@@ -244,10 +244,10 @@ C SDK を使用せずに分散トレース機能をプレビューするのは**
 }
 ```
 
-| 要素名 | Required | Type | 説明 |
+| 要素名 | 必須 | Type | 説明 |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | はい | 整数 | サンプリングのオンとオフを切り替えるために、現在 2 つのモード値がサポートされています。 `1` がオンで、`2` がオフです。 |
-| `sampling_rate` | はい | 整数 | この値は、パーセンテージです。 `0` から `100` までの値 (両端を含む) のみ許可されます。  |
+| `sampling_mode` | はい | Integer | サンプリングのオンとオフを切り替えるために、現在 2 つのモード値がサポートされています。 `1` がオンで、`2` がオフです。 |
+| `sampling_rate` | はい | Integer | この値は、パーセンテージです。 `0` から `100` までの値 (両端を含む) のみ許可されます。  |
 
 ## <a name="query-and-visualize"></a>クエリと視覚化を実行する
 

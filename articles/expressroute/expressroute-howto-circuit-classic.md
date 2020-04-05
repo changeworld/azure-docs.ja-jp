@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cherylmc
 ms.openlocfilehash: e421a534b04f74d2a2eb0bc06aeffa52684ae17a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931979"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell を使用した ExpressRoute 回線の変更 (クラシック)

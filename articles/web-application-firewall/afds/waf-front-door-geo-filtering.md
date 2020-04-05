@@ -5,15 +5,15 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: eb91dfd5d774e591d3c3c3964668dcc626086181
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e287da94a71fccabddb90f3f5a3699f4c4cf22a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510204"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472607"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door のドメインに対する geo フィルタリングとは
 
@@ -57,7 +57,7 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](wa
 | BW | ボツワナ|
 | BY | ベラルーシ|
 | BZ | ベリーズ|
-| CA | カナダ|
+| CA | Canada|
 | CD | コンゴ民主共和国|
 | CF | 中央アフリカ共和国|
 | CH | スイス|
@@ -193,7 +193,7 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](wa
 | TZ | タンザニア|
 | UA | ウクライナ|
 | UG | ウガンダ|
-| US | 米国|
+| US | United States|
 | UY | ウルグアイ|
 | UZ | ウズベキスタン|
 | VC | セントビンセント及びグレナディーン諸島|
@@ -205,7 +205,7 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](wa
 | ZM | ザンビア|
 | ZW | ジンバブエ|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Front Door によるアプリケーション層セキュリティ](../../frontdoor/front-door-application-security.md)について学習します。
 - [フロント ドアの作成](../../frontdoor/quickstart-create-front-door.md)方法について学習します。

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
 ms.openlocfilehash: 7805b9b3f000b2bc2e45272ab9ff469d5711e581
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110205"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>デバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
@@ -115,7 +115,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
 
    この手順により [Azure IoT サービス SDK NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Devices/)がダウンロードされ、インストールされ、パッケージへの参照が追加されます。
 
-1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+1. `using`Program.cs**ファイルの先頭に次の** ステートメントを追加します。
 
    ``` csharp
    using Microsoft.Azure.Devices;

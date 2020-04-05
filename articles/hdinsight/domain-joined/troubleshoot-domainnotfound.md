@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: adcdafbc07fa0a8cc6970ab227b52aee798b084f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76776052"
 ---
 # <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>シナリオ:Azure HDInsight でクラスターの作成が DomainNotFound エラーで失敗する
@@ -26,7 +26,7 @@ HDI Secure (Enterprise セキュリティ パッケージ) クラスターの作
 
 不正確な DNS 設定。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 ドメインに参加しているクラスターがデプロイされると、HDI は AAD DS で (クラスターごとに) 内部ユーザー名とパスワードを作成し、すべてのクラスター ノードをこのドメインに参加させます。 ドメイン参加は、Samba ツールを使用して行われます。 次の前提条件が満たされていることを確認してください。
 

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: dapine
 ms.openlocfilehash: a765ac27936da9da5a2f41464c17491e3561f44b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73465937"
 ---
 ## <a name="create-a-luis-resource"></a>LUIS リソースの作成
@@ -21,10 +21,10 @@ ms.locfileid: "73465937"
 1. [**Language Understanding** の作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)をクリックします
 1. すべての必須設定を入力します。
 
-    |Setting|値|
+    |設定|値|
     |--|--|
-    |名前|任意の名前 (2 から 64 文字)|
-    |Subscription|適切なサブスクリプションを選択します|
+    |Name|任意の名前 (2 から 64 文字)|
+    |サブスクリプション|適切なサブスクリプションを選択します|
     |Location|近くにある任意の使用可能な場所を選択します|
     |価格レベル|`F0` -最小限の価格レベル|
     |リソース グループ|使用可能なリソース グループを選択します|

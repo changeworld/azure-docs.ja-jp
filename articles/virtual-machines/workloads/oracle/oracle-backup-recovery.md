@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: c493f79a066f872be6b38d127622cc757ab3c1cc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bae7e53a316fa6ca3158639cc551a0a3de5cb952
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100238"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536923"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンでの Oracle Database 12c データベースのバックアップと回復
 
@@ -29,22 +29,22 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 
 ## <a name="prepare-the-environment"></a>環境の準備
 
-### <a name="step-1-prerequisites"></a>手順 1:前提条件
+### <a name="step-1-prerequisites"></a>手順 1: 前提条件
 
 *   バックアップと回復プロセスを実行するには、インストール済みの Oracle Database 12c のインスタンスを使用して、Linux VM を作成する必要があります。 VM の作成に使用する Marketplace イメージは、*Oracle:Oracle-Database-Ee:12.1.0.2:latest* と呼ばれます。
 
     Oracle データベースの作成手順については、[Oracle データベースのクイック作成ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)のページを参照してください。
 
 
-### <a name="step-2-connect-to-the-vm"></a>手順 2:VM に接続します
+### <a name="step-2-connect-to-the-vm"></a>手順 2: 仮想マシンに接続する
 
 *   VM で Secure Shell (SSH) セッションを作成するには、次のコマンドを使用します。 IP アドレスとのホスト名の組み合わせを VM の `publicIpAddress` の値で置き換えます。
 
-    ```bash 
+    ```bash
     ssh <publicIpAddress>
     ```
 
-### <a name="step-3-prepare-the-database"></a>手順 3:データベースを準備する
+### <a name="step-3-prepare-the-database"></a>手順 3: データベースを準備する
 
 1.  *myVM* という仮想マシンで実行されている Oracle インスタンス (cdb1) があることを前提としています。
 
@@ -94,6 +94,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
     SQL> ALTER DATABASE OPEN;
     SQL> ALTER SYSTEM SWITCH LOGFILE;
     ```
+
 3.  コミットをテストするテーブルを作成します (省略可能) 。
 
     ```bash
@@ -115,6 +116,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
     SQL> commit;
     Commit complete.
     ```
+
 4.  バックアップ ファイルの場所とサイズを確認または変更します。
 
     ```bash
@@ -125,6 +127,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
     db_recovery_file_dest                string      /u01/app/oracle/fast_recovery_area
     db_recovery_file_dest_size           big integer 4560M
     ```
+
 5. Oracle Recovery Manager (RMAN) を使用して、データベースをバックアップします。
 
     ```bash
@@ -132,15 +135,15 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
     RMAN> backup database plus archivelog;
     ```
 
-### <a name="step-4-application-consistent-backup-for-linux-vms"></a>手順 4:Linux VM のアプリケーション整合性バックアップ
+### <a name="step-4-application-consistent-backup-for-linux-vms"></a>手順 4: Linux VM のアプリケーション整合性バックアップ
 
 これは Azure Backup の新機能で、 ユーザーが VM スナップショットの前および後に実行するスクリプト (事前および事後) を作成し、選択できます。
 
 1. JSON ファイルをダウンロードします。
 
-    https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig から VMSnapshotScriptPluginConfig.json をダウンロードします。 ファイルの内容は、次のようになります。
+    [https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig ) から VMSnapshotScriptPluginConfig.json をダウンロードします。 ファイルの内容は、次のようになります。
 
-    ```azurecli
+    ```output
     {
         "pluginName" : "ScriptRunner",
         "preScriptLocation" : "",
@@ -169,9 +172,9 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 
 4. JSON ファイルを編集します。
 
-    VMSnapshotScriptPluginConfig.json ファイルを編集して、`PreScriptLocation` と `PostScriptlocation` パラメーターを含めます。 例:
+    VMSnapshotScriptPluginConfig.json ファイルを編集して、`PreScriptLocation` と `PostScriptlocation` パラメーターを含めます。 次に例を示します。
 
-    ```azurecli
+    ```output
     {
         "pluginName" : "ScriptRunner",
         "preScriptLocation" : "/etc/azure/pre_script.sh",
@@ -265,7 +268,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 詳細については、「[Application consistent backup for Linux VMs](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/)」(Linux VM のアプリケーション整合性バックアップ) を参照してください。
 
 
-### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>手順 5:Azure Recovery Services コンテナーを使用して VM をバックアップする
+### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>手順 5: Azure Recovery Services コンテナーを使用してVM をバックアップする
 
 1.  Azure Portal で **Recovery Services コンテナー**を検索します。
 
@@ -283,11 +286,11 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 
     ![Recovery Services コンテナーのバックアップ ページ](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  **[バックアップの目標]** ブレードには、既定の **[Azure]** と **[仮想マシン]** の値を使用します。 Click **OK**.
+5.  **[バックアップの目標]** ブレードには、既定の **[Azure]** と **[仮想マシン]** の値を使用します。 **[OK]** をクリックします。
 
     ![Recovery Services コンテナーの詳細ページ](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  **[バックアップ ポリシー]** には、 **[DefaultPolicy]** または **[新しいポリシーの作成]** を使用します。 Click **OK**.
+6.  **[バックアップ ポリシー]** には、 **[DefaultPolicy]** または **[新しいポリシーの作成]** を使用します。 **[OK]** をクリックします。
 
     ![Recovery Services コンテナーのバックアップ ポリシーの詳細ページ](./media/oracle-backup-recovery/recovery_service_06.png)
 
@@ -306,7 +309,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 
     ![Recovery Services コンテナーの [今すぐバックアップ] コマンド](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. **[バックアップ]** ボタンをクリックします。 バックアップ プロセスが完了するまで待ってから、 「[手順 6: データベース ファイルを削除する](#step-6-remove-the-database-files)」に移動します。
+10. **[バックアップ]** ボタンをクリックします。 バックアップ プロセスが完了するまで待ってから、 [手順 6: データベース ファイルを削除する](#step-6-remove-the-database-files)に進みます。
 
     バックアップ ジョブの状態を表示するには、 **[ジョブ]** をクリックします。
 
@@ -318,7 +321,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 
 11. アプリケーション整合バックアップのため、ログ ファイル内のすべてのエラーに対処します。 ログ ファイルは /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0 にあります。
 
-### <a name="step-6-remove-the-database-files"></a>手順 6:データベース ファイルを削除する 
+### <a name="step-6-remove-the-database-files"></a>手順 6: データベース ファイルを削除する 
 回復プロセスのテスト方法については、この記事の後半で学習します。 回復プロセスをテストするには、先にデータベース ファイルを削除する必要があります。
 
 1.  テーブルスペースとバックアップ ファイルを削除します。
@@ -368,6 +371,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
     ```bash
     $ scp Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh <publicIpAddress>:/<folder>
     ```
+
 6. ファイルがルートによって所有されるように、ファイルを変更します。
 
     次の例では、ルートによって所有されるように、ファイルを変更します。 次に、アクセス許可を変更します。
@@ -379,9 +383,10 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
     # chmod 755 /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     # /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     ```
+
     次の例では、前のスクリプトを実行した後に表示されるものを示しています。 続行するかどうかをたずねるメッセージが表示されたら、**Y** を入力します。
 
-    ```bash
+    ```output
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
     The script requires 'open-iscsi' and 'lshw' to run.
@@ -429,6 +434,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
     # cd /u01/app/oracle/oradata/cdb1
     # chown oracle:oinstall *.dbf
     ```
+
 9. 次のスクリプトでは、RMAN を使用してデータベースを復旧します。
 
     ```bash
@@ -440,7 +446,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
     RMAN> alter database open resetlogs;
     RMAN> SELECT * FROM scott.scott_table;
     ```
-    
+
 10. ディスクをマウントを解除します。
 
     ドライブをマウント解除するには、Azure Portal の **[ファイルの回復 (プレビュー)]** ブレードで **[ディスクのマウント解除]** をクリックします。
@@ -451,13 +457,13 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 
 削除されたファイルを Recovery Services コンテナーから復元する代わりに、VM 全体を復元することができます。
 
-### <a name="step-1-delete-myvm"></a>手順 1:myVM を削除する
+### <a name="step-1-delete-myvm"></a>手順 1: myVM の削除
 
 *   Azure Portal にサインインし、**myVM1** コンテナーに移動して、 **[削除]** を選択します。
 
     ![コンテナー [削除] コマンド](./media/oracle-backup-recovery/recover_vm_01.png)
 
-### <a name="step-2-recover-the-vm"></a>手順 2:VM を復旧する
+### <a name="step-2-recover-the-vm"></a>手順 2: VM を復元する
 
 1.  **[Recovery Services コンテナー]** に移動して、 **[myVault]** を選択します。
 
@@ -495,7 +501,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 
     ![復元プロセスの状態](./media/oracle-backup-recovery/recover_vm_09.png)
 
-### <a name="step-3-set-the-public-ip-address"></a>手順 3:パブリック IP アドレスを設定する
+### <a name="step-3-set-the-public-ip-address"></a>手順 3: パブリック IP アドレスを設定する
 VM を復元したら、パブリック IP アドレスを設定します。
 
 1.  検索ボックスで**パブリック IP アドレス**を検索します。
@@ -518,27 +524,27 @@ VM を復元したら、パブリック IP アドレスを設定します。
 
     ![IP アドレスの値](./media/oracle-backup-recovery/create_ip_04.png)
 
-### <a name="step-4-connect-to-the-vm"></a>手順 4:VM に接続します
+### <a name="step-4-connect-to-the-vm"></a>手順 4: VM に接続する
 
 *   VM に接続するには、次のスクリプトを使用します。
 
-    ```bash 
+    ```bash
     ssh <publicIpAddress>
     ```
 
-### <a name="step-5-test-whether-the-database-is-accessible"></a>手順 5:データベースがアクセス可能かどうかをテストする
+### <a name="step-5-test-whether-the-database-is-accessible"></a>手順 5: データベースがアクセス可能かどうかをテストする
 *   アクセシビリティをテストするには、次のスクリプトを使用します。
 
-    ```bash 
+    ```bash
     $ sudo su - oracle
     $ sqlplus / as sysdba
     SQL> startup
     ```
 
     > [!IMPORTANT]
-    > データベースの **startup** コマンドでエラーが発生する場合、データベースを復旧するには、「[手順 6: RMAN を使用してデータベースを復旧する](#step-6-optional-use-rman-to-recover-the-database)」を参照してください。
+    > データベースの **startup** コマンドでエラーが発生する場合に、データベースを復旧するには、「[手順 6: RMAN を使用してデータベースを復旧する](#step-6-optional-use-rman-to-recover-the-database)」を参照してください。
 
-### <a name="step-6-optional-use-rman-to-recover-the-database"></a>手順 6:(省略可能) RMAN を使用してデータベースを復旧する
+### <a name="step-6-optional-use-rman-to-recover-the-database"></a>手順 6: RMAN を使用してデータベースを復旧する
 *   データベースを復旧するには、次のスクリプトを使用します。
 
     ```bash
@@ -561,9 +567,9 @@ VM が必要なくなったら、次のコマンドを使用して、リソー�
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[チュートリアル:高可用性 VM の作成](../../linux/create-cli-complete.md)
+[チュートリアル: 高可用性 VM の作成](../../linux/create-cli-complete.md)
 
 [VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)
 

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
 ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616705"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Azure に SAP ERP 6.0 向け SAP IDES EHP7 SP3 をデプロイする
@@ -103,7 +103,7 @@ SAP CAL にサインインすると、通常は **[Solutions]\(ソリューシ�
 
     c.  ソリューションのマスター **パスワード**を、次のように入力します。
 
-    ![SAP CAL の [Basic Mode: Create Instance]\(基本モード: インスタンスの作成\)](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
+    ![SAP CAL の基本モード: インスタンスの作成](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
 1. **Create** をクリックしてください。 ソリューションのサイズと複雑さに応じた一定の時間が経過すると (推定時間が SAP CAL によって示されます)、状態がアクティブであることが示され、使用する準備が整います。 
 

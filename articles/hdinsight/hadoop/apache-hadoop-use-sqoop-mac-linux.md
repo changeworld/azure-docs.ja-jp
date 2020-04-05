@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
 ms.openlocfilehash: 21bc903349876a76576fb742840e9899f9d94bcd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74769389"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
@@ -29,9 +29,9 @@ Azure HDInsight 上の Apache Hadoop クラスターと Azure SQL Database ま�
 
 * Sqoop に関する知識。 詳細については、「[OpenFOAM ユーザーガイド](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html)」を参照してください。
 
-## <a name="set-up"></a>セットアップ
+## <a name="set-up"></a>設定
 
-1. [ssh コマンド](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用して、クラスターに接続します。 次のコマンドを編集して CLUSTERNAME をクラスターの名前に置き換えてから、そのコマンドを入力します。
+1. [ssh コマンド](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用してクラスターに接続します。 次のコマンドを編集して CLUSTERNAME をクラスターの名前に置き換えてから、そのコマンドを入力します。
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -119,7 +119,7 @@ SQL Server から Azure Storage へ
 
 1. [beeline](./apache-hadoop-use-hive-beeline.md) を使用して、テーブルがHiveで作成されたことを確認します。
 
-    1. 接続
+    1. 接続する
 
         ```bash
         beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
@@ -154,7 +154,7 @@ SQL Server から Azure Storage へ
 
 * リモート接続を許可するよう、SQL Server を構成する必要がある場合があります。 詳細については、[SQL Server データベース エンジンへの接続に関するトラブルシューティングの方法](https://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx)のドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは Sqoop の使用方法を学習しました。 詳細については、次を参照してください。
 

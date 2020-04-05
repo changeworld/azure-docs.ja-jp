@@ -16,11 +16,11 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 1fdf776570b6f10a363fb98dfe343387d86219d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350901"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226643"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal で Windows SQL Server 仮想マシンをプロビジョニングする方法
 
@@ -33,7 +33,7 @@ ms.locfileid: "75350901"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a id="select"></a> SQL Server 仮想マシン ギャラリー イメージ
+## <a name="sql-server-virtual-machine-gallery-images"></a><a id="select"></a> SQL Server 仮想マシン ギャラリー イメージ
 
 SQL Server 仮想マシンを作成する際には、仮想マシン ギャラリーにあるいくつかの事前構成済みイメージの中から、使用するイメージを選択できます。 次の手順は、SQL Server 2017 イメージの中から、イメージを 1 つを選択する方法を示したものです。
 
@@ -53,7 +53,7 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
    > これらのオプションの詳細については、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」を参照してください。
 
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 
 ## <a name="1-configure-basic-settings"></a>1.基本設定を構成する
@@ -256,7 +256,7 @@ Azure Portal でデプロイを監視できます。 画面の上部にある **
 > [!NOTE]
 > デプロイの時間について参考になるように、既定の設定で SQL VM を米国東部リージョンにデプロイしました。 このテスト デプロイは完了までに約 12 分間かかりました。 ただし、リージョンや選択した設定によっては、デプロイに必要な時間が変わる可能性があります。
 
-## <a id="remotedesktop"></a> リモート デスクトップを使用して VM を開く
+## <a name="open-the-vm-with-remote-desktop"></a><a id="remotedesktop"></a> リモート デスクトップを使用して VM を開く
 
 リモート デスクトップを使用して SQL Server 仮想マシンに接続するには、次の手順に従います。
 
@@ -266,7 +266,7 @@ SQL Server 仮想マシンに接続した後は、SQL Server Management Studio �
 
 マシンにアクセスすると、要件に基づいてマシンと SQL Server の設定を直接変更することができます。 たとえば、ファイアウォールの設定を構成したり、SQL Server の構成設定を変更したりできます。
 
-## <a id="connect"></a> SQL Server にリモート接続する
+## <a name="connect-to-sql-server-remotely"></a><a id="connect"></a> SQL Server にリモート接続する
 
 このチュートリアルでは、仮想マシンと **SQL Server 認証**に**SQL Server 認証** アクセスを選択しています。 これらの設定により、インターネット経由による任意のクライアントから SQL Server への接続を許可するように仮想マシンが自動的に構成されています (適切な SQL ログインを持っている場合)。
 

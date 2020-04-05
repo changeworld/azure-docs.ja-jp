@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: robinsh
 ms.openlocfilehash: 6d6a50db42924d868b57cacc415246ee6990859c
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110477"
 ---
 # <a name="get-started-with-device-management-python"></a>デバイス管理の開始 (Python)
@@ -39,7 +39,7 @@ ms.locfileid: "77110477"
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-* ポート 8883 がファイアウォールで開放されていることを確認してください。 この記事のデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) に関するセクションを参照してください。
+* ポート 8883 がファイアウォールで開放されていることを確認してください。 この記事のデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -67,7 +67,7 @@ ms.locfileid: "77110477"
 
 2. テキスト エディターを使用して、**dmpatterns_getstarted_device.py** というファイルを作業ディレクトリに作成します。
 
-3. **dmpatterns_getstarted_device.py** ファイルの先頭に、次の `import` ステートメントを追加します。
+3. `import`dmpatterns_getstarted_device.py**ファイルの先頭に、次の** ステートメントを追加します。
 
     ```python
     import threading
@@ -160,7 +160,7 @@ ms.locfileid: "77110477"
 
 2. テキスト エディターを使用して、**dmpatterns_getstarted_service.py** というファイルを作業ディレクトリに作成します。
 
-3. **dmpatterns_getstarted_service.py** ファイルの先頭に、次の `import` ステートメントを追加します。
+3. `import`dmpatterns_getstarted_service.py**ファイルの先頭に、次の** ステートメントを追加します。
 
     ```python
     import sys, time

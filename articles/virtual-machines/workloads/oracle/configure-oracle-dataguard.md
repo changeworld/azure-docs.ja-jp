@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 52723ca53b9156dd8e8183d92d8d4a350750c936
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7a165935e2c232167a0752272d244ce98bf6aff2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100105"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534407"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle Data Guard を実装する 
 
@@ -45,7 +45,7 @@ VM の作成に使用する Marketplace イメージは Oracle:Oracle-Database-E
 az login
 ```
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [az group create](/cli/azure/group) コマンドを使ってリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
@@ -87,7 +87,7 @@ az vm create \
 
 VM を作成すると、Azure CLI によって次の例のような情報が表示されます。 `publicIpAddress` の値をメモします。 このアドレスは、VM へのアクセスに使用します。
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -101,6 +101,7 @@ VM を作成すると、Azure CLI によって次の例のような情報が表�
 ```
 
 myVM2 (スタンバイ) を作成します。
+
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -130,7 +131,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 結果は、次のような応答になります。
 
-```bash
+```output
 {
   "access": "Allow",
   "description": null,
@@ -198,9 +199,10 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
+
 出力は次のようになります。
 
-```bash
+```output
 Copying database files
 1% complete
 2% complete
@@ -263,6 +265,7 @@ SQL> STARTUP MOUNT;
 SQL> ALTER DATABASE ARCHIVELOG;
 SQL> ALTER DATABASE OPEN;
 ```
+
 強制ログを有効にし、少なくとも 1 つのログ ファイルが存在するようにします。
 
 ```bash
@@ -341,11 +344,13 @@ ADR_BASE_LISTENER = /u01/app/oracle
 ```
 
 Data Guard ブローカーを有効にします。
+
 ```bash
 $ sqlplus / as sysdba
 SQL> ALTER SYSTEM SET dg_broker_start=true;
 SQL> EXIT;
 ```
+
 リスナーを開始します。
 
 ```bash
@@ -429,6 +434,7 @@ $ lsnrctl start
 ### <a name="restore-the-database-to-myvm2-standby"></a>データベースの myVM2 (スタンバイ) への復元
 
 次の内容を含むパラメーター ファイル /tmp/initcdb1_stby.ora を作成します。
+
 ```bash
 *.db_name='cdb1'
 ```
@@ -447,6 +453,7 @@ mkdir -p /u01/app/oracle/admin/cdb1/adump
 ```bash
 $ orapwd file=/u01/app/oracle/product/12.1.0/dbhome_1/dbs/orapwcdb1 password=OraPasswd1 entries=10
 ```
+
 myVM2 上のデータベースを起動します。
 
 ```bash
@@ -464,6 +471,7 @@ $ rman TARGET sys/OraPasswd1@cdb1 AUXILIARY sys/OraPasswd1@cdb1_stby
 ```
 
 次のコマンドを RMAN で実行します。
+
 ```bash
 DUPLICATE TARGET DATABASE
   FOR STANDBY
@@ -475,11 +483,14 @@ DUPLICATE TARGET DATABASE
 ```
 
 コマンドが完了したときに、次のようなメッセージが表示されます。 RMAN を終了します。
-```bash
+
+```output
 media recovery complete, elapsed time: 00:00:00
 Finished recover at 29-JUN-17
 Finished Duplicate Db at 29-JUN-17
+```
 
+```bash
 RMAN> EXIT;
 ```
 
@@ -520,6 +531,7 @@ Enabled.
 ```
 
 構成を確認します。
+
 ```bash
 DGMGRL> SHOW CONFIGURATION;
 
@@ -586,6 +598,7 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 
 SQL>
 ```
+
 ## <a name="test-the-data-guard-configuration"></a>Data Guard 構成のテスト
 
 ### <a name="switch-over-the-database-on-myvm1-primary"></a>myVM1 (プライマリ) でのデータベースの切り替え
@@ -635,6 +648,7 @@ SQL>
 ### <a name="switch-over-the-database-on-myvm2-standby"></a>myVM2 (スタンバイ) でのデータベースの切り替え
 
 切り替えるには、myVM2 で次を実行します。
+
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1_stby
 DGMGRL for Linux: Version 12.1.0.2.0 - 64bit Production
@@ -685,7 +699,7 @@ VM が必要なくなったら、次のコマンドを使用して、リソー�
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [チュートリアル:可用性が高い仮想マシンの作成](../../linux/create-cli-complete.md)
 

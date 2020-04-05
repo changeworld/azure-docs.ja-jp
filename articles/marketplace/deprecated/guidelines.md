@@ -2,19 +2,18 @@
 title: Azure Marketplace と AppSource のパブリッシャー ガイド | Azure
 description: アプリ パブリッシャーとサービス パブリッシャー向け Azure Marketplace および AppSource のガイドライン
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2018
-ms.author: ellacroi
-ms.openlocfilehash: 371f36e13c244439a583cbeb7ff06c6a1283d272
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9156126ff2a3dbe936dc426c6f5097c6bba7b7b7
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825933"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387609"
 ---
 # <a name="guidelines"></a>ガイドライン  
 
@@ -29,7 +28,7 @@ ms.locfileid: "73825933"
 Marketplace アカウントを作成するために使用される同じ Microsoft ID に複数のユーザーがアクセスする必要がある場合は、会社のアカウントの作成に役立つ、以下のガイドラインに従う必要があります。 
 
 >[!IMPORTANT]
->複数のユーザーに Microsoft Developer Center (デベロッパー センター) アカウントへのアクセスを承認するには、Microsoft では Azure Active Directory (Azure AD) を使用して、個々のユーザーにロールを割り当てることをお勧めしています。 各ユーザーは、個人の Azure AD 資格情報を使ってサインインすることで、アカウントにアクセスできます。 会社に登録されているドメインのメール アドレスを使用して Microsoft ID を作成します。Microsoft では、メールを個人に割り当てないことを提案しています。 例: `windowsapps@fabrikam.com`。  
+>複数のユーザーに Microsoft Developer Center (デベロッパー センター) アカウントへのアクセスを承認するには、Microsoft では Azure Active Directory (Azure AD) を使用して、個々のユーザーにロールを割り当てることをお勧めしています。 各ユーザーは、個人の Azure AD 資格情報を使ってサインインすることで、アカウントにアクセスできます。 会社に登録されているドメインのメール アドレスを使用して Microsoft ID を作成します。Microsoft では、メールを個人に割り当てないことを提案しています。 たとえば `windowsapps@fabrikam.com` です。  
 >*   詳細については、「[問題: Azure AD フェデレーション ドメインでの Microsoft ID](#issue-microsoft-id-in-an-azure-ad-federated-domain)」を参照してください。  
 
 *   Microsoft ID へのアクセスは、最小限の数の開発者に制限してください。 
@@ -46,7 +45,7 @@ Marketplace アカウントを作成するために使用される同じ Microso
 
 ---
 
-#### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>問題: Azure AD フェデレーション ドメインでの Microsoft ID  
+#### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>問題点:Azure AD フェデレーション ドメインでの Microsoft ID  
 会社のアカウントは、Azure Active Directory (Azure AD) 経由でフェデレーションできます。 Azure AD とフェデレーションされている会社のメール アドレスを使用して Microsoft ID を作成しようとすると、エラーが発生します。 エラーが発生した場合は、IT チームに問い合わせて、Azure AD を介してアカウントがフェデレーションされていることを確認する必要があります。 Azure AD のフェデレーション メールは、既知の問題であり、Microsoft はこの問題の解決に取り組んでいます。  
 *   Azure AD の詳細については、「Azure Active Directory のドキュメント」ページ ([docs.microsoft.com/azure/active-directory](https://docs.microsoft.com/azure/active-directory)) を参照してください。
 
@@ -67,7 +66,7 @@ Microsoft では回避策を推奨しています。 次の手順に従って、
 
 1.  転送ルールでは、Outlook のメール アカウントで受信したすべてのメールと通信を、会社に登録されているドメインのメール アドレスに送信します。 `outlook.com` メール アドレスは、デベロッパー センターと Cloud パートナー ポータルの両方での認証に使用される必要があります。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 *   「[Azure Marketplace と AppSource のパブリッシャー ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)」ページを参照してください。 
  

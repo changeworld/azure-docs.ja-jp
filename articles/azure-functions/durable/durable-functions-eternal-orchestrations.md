@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 572fec4d6e47efd734bc84a40dc974c79bd619fb
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76262981"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions での永続的オーケストレーション (Azure Functions)
@@ -33,7 +33,7 @@ ms.locfileid: "76262981"
 
 永続的オーケストレーションのユース ケースの 1 つが、定期的な作業を無期限に実行する必要があるコードです。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
@@ -53,7 +53,7 @@ public static async Task Run(
 > [!NOTE]
 > 前記の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -81,7 +81,7 @@ module.exports = df.orchestrator(function*(context) {
 > [!NOTE]
 > 単一の永続的オーケストレーションを確実に実行するには、オーケストレーションの開始時に同じインスタンス `id` を維持することが重要です。 詳しくは、[インスタンス管理](durable-functions-instance-management.md)に関する記事をご覧ください。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -99,7 +99,7 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 > [!NOTE]
 > 前のコードは Durable Functions 2.x 用です。 Durable Functions 1.x では、`DurableClient` 属性の代わりに `OrchestrationClient` 属性を使用する必要があります。また、`IDurableOrchestrationClient` ではなく `DurableOrchestrationClient` パラメーター型を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

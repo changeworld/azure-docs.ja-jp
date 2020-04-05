@@ -9,10 +9,10 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75692541"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>イベント プロセッサ ホストのストレージ アカウントの作成

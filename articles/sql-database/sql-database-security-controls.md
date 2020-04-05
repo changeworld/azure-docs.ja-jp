@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: ce7f3eafa57cbd993be98f4a2da3d89cb312f9b7
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190690"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>Azure SQL Database のセキュリティ コントロール

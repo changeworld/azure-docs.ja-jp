@@ -80,32 +80,34 @@
           href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
         - name: ライブ チャットの切り替え
           href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-- name: 関連項目
-  items:
-    - name: プラットフォーム サービス
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT プラグ アンド プレイ
-          href: /azure/iot-pnp
-        - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
-        - name: Location Based Services
-          href: /azure/location-based-services
-        - name: サービス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge ソリューション
-      items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
-        - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
       href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT のサービス
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT ソリューション アクセラレータ
+          href: /azure/iot-accelerators
+        - name: IoT プラグ アンド プレイ
+          href: /azure/iot-pnp
+        - name: Azure Maps
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK
+      items:
+        - name: IoT サービスの SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT デバイス SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
     - name: 顧客データ要求
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: サポートされているブラウザー

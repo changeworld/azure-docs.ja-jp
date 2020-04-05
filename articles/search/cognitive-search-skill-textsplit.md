@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73479664"
 ---
 # <a name="text-split-cognitive-skill"></a>テキスト分割コグニティブ スキル
@@ -20,7 +20,7 @@ ms.locfileid: "73479664"
 **テキスト分割**スキルは、テキストをテキストのチャンクに分割します。 テキストを特定の長さの文章またはページに分割するかどうかを指定できます。 このスキルは、他のスキル ダウンストリームでテキストの最大長の要件がある場合に、特に便利です。 
 
 > [!NOTE]
-> このスキルは Cognitive Services API にバインドされていないため、この使用に対しては課金されません。 ただし、1 日あたりの毎日のエンリッチメントの数を少数に制限する**無料**リソースのオプションをオーバーライドするには、引き続き [Cognitive Services リソースをアタッチ](cognitive-search-attach-cognitive-services.md)する必要があります。
+> このスキルは Cognitive Services API にバインドされていないため、この使用に対しては課金されません。 ただし、1 日あたりの毎日のエンリッチメントの数を少数に制限する[無料](cognitive-search-attach-cognitive-services.md)リソースのオプションをオーバーライドするには、引き続き **Cognitive Services リソースをアタッチ**する必要があります。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
@@ -130,7 +130,7 @@ Microsoft.Skills.Text.SplitSkill
 ## <a name="error-cases"></a>エラーになる場合
 言語がサポートされていない場合、警告が生成され、テキストは文字境界で分割されます。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

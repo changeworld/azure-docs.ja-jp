@@ -8,11 +8,11 @@ ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598573"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228287"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 

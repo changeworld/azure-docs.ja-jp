@@ -8,10 +8,10 @@ ms.topic: tutorial
 description: このチュートリアルでは、Azure Dev Spaces と Visual Studio を使用して、Azure Kubernetes Service 上で .NET Core アプリケーションのデバッグと迅速な反復型開発を行う方法を示します
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 ms.openlocfilehash: f3be10929a9a0df23529348f2c62e35f2ebaa850
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75770715"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio と .NET Core
@@ -41,7 +41,7 @@ ms.locfileid: "75770715"
    ![Kubernetes の構成設定](media/common/Kubernetes-Create-Cluster-2.PNG)
 
 
-   **[次へ:認証]** を選択します。
+   **認証** を選択します。
 
 1. ロールベースのアクセス制御 (RBAC) に必要な設定を選択します。 Azure Dev Spaces では、RBAC が有効なクラスターと無効なクラスターのどちらでもサポートされます。
 

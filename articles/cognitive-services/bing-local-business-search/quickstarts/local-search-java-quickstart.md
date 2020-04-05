@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
 ms.openlocfilehash: 8ff70bea8d0e4810b6d5a0d35853077ed0a630cd
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74665187"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>クイック スタート:Java を使用して Bing Local Business Search API にクエリを送信する
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>クイック スタート: Java を使用して Bing Local Business Search API にクエリを送信する
 
 このクイック スタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求の送信を開始します。 このシンプルなアプリケーションは Java で記述されていますが、この API は、HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。
 
@@ -53,7 +53,7 @@ ms.locfileid: "74665187"
 
 Bing Local Business Search API では、Bing 検索エンジンからの結果が返されます。
 1. gson ライブラリをダウンロードまたはインストールします。
-2. 適当な IDE またはエディターで新しい Java プロジェクトを作成します。
+2. 普段使用している IDE またはエディターで新しい Java プロジェクトを作成します。
 3. 次に示すコードを追加します。
 4. subscriptionKey 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 5. プログラムを実行します。
@@ -164,7 +164,7 @@ public class LocalSearchCls {
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Local Business Search のクイック スタート](local-quickstart.md)
-- [Local Business Search Node のクイック スタート](local-search-node-quickstart.md)
+- [Local Business Search (Node.js) のクイック スタート](local-search-node-quickstart.md)
 - [Local Business Search (Python) のクイック スタート](local-search-python-quickstart.md)

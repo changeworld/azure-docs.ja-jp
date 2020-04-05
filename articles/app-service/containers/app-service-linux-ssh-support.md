@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ddf011724f72a8a5eaf4e6398c28b28fffa5bfac
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: dab13f222b441c7415a8d09d0d91ab3af5aaf836
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247005"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235995"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Azure App Service on Linux での SSH のサポート
 
@@ -113,7 +113,7 @@ Load average: 0.07 0.04 0.08 4/765 45738
 
 ## <a name="next-steps"></a>次のステップ
 
-質問や問題は、[Azure フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
+質問や問題は、[Azure フォーラム](https://docs.microsoft.com/answers/topics/azure-webapps.html)に投稿できます。
 
 Web App for Containers について詳しくは、以下をご覧ください。
 

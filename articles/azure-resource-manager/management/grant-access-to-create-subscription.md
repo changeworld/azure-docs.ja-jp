@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
 ms.openlocfilehash: b77efd7e5cf7ff016605e0ba2e74cff9ea8dab89
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75474645"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションを作成する権限を付与する (プレビュー)
@@ -27,7 +27,7 @@ ms.locfileid: "75474645"
 
     登録アカウントに対する RBAC 所有者ロールを他のユーザーに付与するには、アカウント オーナーまたはそのアカウントの RBAC 所有者である必要があります。
 
-    # <a name="resttabrest"></a>[REST](#tab/rest)
+    # <a name="rest"></a>[REST](#tab/rest)
 
     自分がアクセスできるすべての登録アカウントを一覧表示するための要求:
 
@@ -62,7 +62,7 @@ ms.locfileid: "75474645"
 
     `principalName` プロパティを使用して、RBAC 所有者のアクセス権を付与するアカウントを指定します。 そのアカウントの `name` をコピーします。 たとえば、SignUpEngineering@contoso.com 登録アカウントに RBAC 所有者のアクセス権を付与する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 これは登録アカウントのオブジェクト ID です。 次のステップでこの値を `enrollmentAccountObjectId` として使用できるよう、どこかに貼り付けておきます。
 
-    # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
     [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) コマンドレットを使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。 **[試してみる]** を選択して、[Azure Cloud Shell](https://shell.azure.com/) を開きます。 コードを貼り付けるには、シェル ウィンドウを右クリックして、 **[貼り付け]** を選択します。
 
@@ -80,7 +80,7 @@ ms.locfileid: "75474645"
 
     `principalName` プロパティを使用して、RBAC 所有者のアクセス権を付与するアカウントを指定します。 そのアカウントの `ObjectId` をコピーします。 たとえば、SignUpEngineering@contoso.com 登録アカウントに RBAC 所有者のアクセス権を付与する場合、```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` をコピーします。 次の手順で `enrollmentAccountObjectId` として使用できるように、このオブジェクト ID をどこかに貼り付けておきます。
 
-    # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
     [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) コマンドを使用して、自分がアクセスできるすべての登録アカウントを一覧表示します。 **[試してみる]** を選択して、[Azure Cloud Shell](https://shell.azure.com/) を開きます。 コードを貼り付けるには、シェル ウィンドウを右クリックして、 **[貼り付け]** を選択します。
 
@@ -122,7 +122,7 @@ ms.locfileid: "75474645"
 
     最初の 2 つの手順で収集した値を使用して、ユーザーまたはグループに、登録アカウントに対する RBAC 所有者ロールを付与します。
 
-    # <a name="resttabrest-2"></a>[REST](#tab/rest-2)
+    # <a name="rest"></a>[REST](#tab/rest-2)
 
     ```<enrollmentAccountObjectId>``` を最初の手順でコピーした `name` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) で置き換えて、次のコマンドを実行します。 ```<userObjectId>``` は、2 番目の手順でコピーしたオブジェクト ID で置き換えます。
 
@@ -156,7 +156,7 @@ ms.locfileid: "75474645"
     }
     ```
 
-    # <a name="powershelltabazure-powershell-2"></a>[PowerShell](#tab/azure-powershell-2)
+    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell-2)
 
     ```<enrollmentAccountObjectId>``` を最初の手順で収集した `ObjectId` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) で置き換えて、次の [New-AzRoleAssignment](../../active-directory/role-based-access-control-manage-access-powershell.md) コマンドを実行します。 ```<userObjectId>``` は、2 番目の手順で収集したオブジェクト ID で置き換えます。
 
@@ -164,7 +164,7 @@ ms.locfileid: "75474645"
     New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    # <a name="azure-clitabazure-cli-2"></a>[Azure CLI](#tab/azure-cli-2)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-2)
 
     ```<enrollmentAccountObjectId>``` を最初の手順でコピーした `name` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) で置き換えて、次の [az role assignment create](../../active-directory/role-based-access-control-manage-access-azure-cli.md) コマンドを実行します。 ```<userObjectId>``` は、2 番目の手順で収集したオブジェクト ID で置き換えます。
 

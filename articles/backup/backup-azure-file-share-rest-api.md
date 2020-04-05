@@ -4,11 +4,11 @@ description: Recovery Services コンテナー内のバックアップされた 
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444920"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226123"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>REST API で Azure Backup を使用して Azure ファイル共有をバックアップする
 

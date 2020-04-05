@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 tags: connectors
 ms.openlocfilehash: 93b63d332f00c31a352c11e483fc3ce5cb45a922
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74789199"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SQL Server または Azure SQL Database のワークフローを自動化する
@@ -134,6 +134,6 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 このコネクタのトリガー、アクション、および制限に関する技術情報については、[コネクタのリファレンス ページ](https://docs.microsoft.com/connectors/sql/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps の他のコネクタ](../connectors/apis-list.md)の詳細情報

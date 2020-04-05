@@ -13,10 +13,10 @@ ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: a66957a9032062c8f99bdbbb85c61d93425bd31c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70071948"
 ---
 # <a name="create-an-api-management-service"></a>API Management サービスの作成
@@ -33,7 +33,7 @@ PowerShell をローカルにインストールして使う場合、このチュ
 
 [!code-powershell[main](../../../powershell_scripts/api-management/create-apim-service/create_apim_service.ps1 "Create a service")]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループとすべての関連リソースを削除できます。
 
@@ -41,7 +41,7 @@ PowerShell をローカルにインストールして使う場合、このチュ
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
 

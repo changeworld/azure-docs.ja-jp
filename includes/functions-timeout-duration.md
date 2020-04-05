@@ -9,15 +9,15 @@ ms.date: 02/21/2018
 ms.author: nzthiago
 ms.custom: include file
 ms.openlocfilehash: eca2d3359614875e5bff0c9bb67f006f0a8cdba1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77198328"
 ---
-## <a name="timeout"></a>Function App タイムアウト期間 
+## <a name="function-app-timeout-duration"></a><a name="timeout"></a>Function App タイムアウト期間 
 
-関数アプリのタイムアウト期間は、[host.json](../articles/azure-functions/functions-host-json.md#functiontimeout) プロジェクト ファイルの `functionTimeout` プロパティによって定義されます。 次の表は、両方のプランと各種ランタイム バージョンでの既定と最大値 (分単位) を示します。
+関数アプリのタイムアウト期間は、`functionTimeout`host.json[ プロジェクト ファイルの ](../articles/azure-functions/functions-host-json.md#functiontimeout) プロパティによって定義されます。 次の表は、両方のプランと各種ランタイム バージョンでの既定と最大値 (分単位) を示します。
 
 | プラン | ランタイム バージョン | Default | 最大値 |
 |------|---------|---------|---------|

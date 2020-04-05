@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be447b001b0b2e14999aac98ba2125f8cbfe9853
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77186605"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>クイック スタート:Azure Active Directory の条件付きアクセスを使用して、セッションのリスクが検出されたときにアクセスをブロックする  
@@ -74,11 +74,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[条件付きアクセス]** ページで、ツール バーの上部の **[追加]** をクリックします。
 
-   ![Name](./media/app-sign-in-risk/108.png)
+   ![名前](./media/app-sign-in-risk/108.png)
 
 1. **[新規]** ページの **[名前]** ボックスに、「**中程度のリスク レベルのアクセスをブロックします**」と入力します。
 
-   ![Name](./media/app-sign-in-risk/104.png)
+   ![名前](./media/app-sign-in-risk/104.png)
 
 1. **[割り当て]** セクションで **[ユーザーとグループ]** をクリックします。
 

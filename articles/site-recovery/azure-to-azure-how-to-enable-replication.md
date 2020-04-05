@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
 ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75973688"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure VM を別の Azure リージョンにレプリケートする

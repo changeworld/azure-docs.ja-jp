@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f9a1424f2afe6c5153e208601b21dff9651880a8
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722460"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Azure Machine Learning 用にデータを Azure SQL Database に移動する
@@ -31,7 +31,7 @@ Machine Learning 用にオンプレミスの SQL Server にデータを移動す
 | <b>フラット ファイル (CSV または TSV 形式)</b> |[一括挿入 SQL クエリ](#bulk-insert-sql-query) |
 | <b>オンプレミスの SQL Server</b> |1.[フラット ファイルへのエクスポート](#export-flat-file)<br> 2.[SQL Database 移行ウィザード](#insert-tables-bcp)<br> 3.[データベースのバックアップと復元](#db-migration)<br> 4.[Azure Data Factory](#adf) |
 
-## <a name="prereqs"></a>前提条件
+## <a name="prerequisites"></a><a name="prereqs"></a>前提条件
 ここに記載されている手順には次のものが必要です。
 
 * **Azure サブスクリプション**。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
@@ -43,13 +43,13 @@ Machine Learning 用にオンプレミスの SQL Server にデータを移動す
 
 ここで説明されている手順は、自身のデータに適用することも、NYC タクシー データセットを使用してこの手順に従って行うこともできます。 NYC タクシー データセットを自身のオンプレミスの SQL Server データベースにアップロードするには、「[SQL Server データベースにデータを一括インポートする](sql-walkthrough.md#dbload)」に記載されている手順に従います。 これらは Azure Virtual Machine 上の SQL Server にアップロードする手順ですが、オンプレミスの SQL Server へのアップロード手順も同じです。
 
-## <a name="file-to-azure-sql-database"></a> フラット ファイル ソースから Azure SQL Database へのデータの移動
+## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a> フラット ファイル ソースから Azure SQL Database へのデータの移動
 フラット ファイル (CSV 形式または TSV 形式) のデータは、一括挿入 SQL クエリを使用して Azure SQL Database に移動できます。
 
-### <a name="bulk-insert-sql-query"></a> 一括挿入 SQL クエリ
+### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a> 一括挿入 SQL クエリ
 一括挿入 SQL クエリを使用する手順は、フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する指示と似ています。 詳細については、「 [一括挿入 SQL クエリ](move-sql-server-virtual-machine.md#insert-tables-bulkquery)」をご覧ください。
 
-## <a name="sql-on-prem-to-sazure-sql-database"></a> オンプレミスの SQL Server から Azure SQL Database へのデータの移動
+## <a name="moving-data-from-on-premises-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a> オンプレミスの SQL Server から Azure SQL Database へのデータの移動
 ソース データがオンプレミスの SQL Server に保存されている場合は、さまざまな方法で Azure SQL Database にデータを移動できます。
 
 1. [フラット ファイルへのエクスポート](#export-flat-file)
@@ -59,16 +59,16 @@ Machine Learning 用にオンプレミスの SQL Server にデータを移動す
 
 最初の 3 つの手順は、「[Azure Virtual Machine 上の SQL Server にデータを移動する](move-sql-server-virtual-machine.md)」の対応する手順と似ています。 以降の説明には、そのトピックの該当するセクションへのリンクが含まれています。
 
-### <a name="export-flat-file"></a>フラット ファイルへのエクスポート
+### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>フラット ファイルへのエクスポート
 フラット ファイルにエクスポートする手順は、「[フラット ファイルへのエクスポート](move-sql-server-virtual-machine.md#export-flat-file)」の指示と似ています。
 
-### <a name="insert-tables-bcp"></a>SQL Database 移行ウィザード
+### <a name="sql-database-migration-wizard"></a><a name="insert-tables-bcp"></a>SQL Database 移行ウィザード
 SQL Database 移行ウィザードを使用する手順は、「[SQL Database 移行ウィザード](move-sql-server-virtual-machine.md#sql-migration)」の指示と似ています。
 
-### <a name="db-migration"></a>データベースのバックアップと復元
+### <a name="database-back-up-and-restore"></a><a name="db-migration"></a>データベースのバックアップと復元
 データベースのバックアップと復元を使用する手順は、「[データベースのバックアップと復元](move-sql-server-virtual-machine.md#sql-backup)」の一連の指示と似ています。
 
-### <a name="adf"></a>Azure Data Factory
+### <a name="azure-data-factory"></a><a name="adf"></a>Azure Data Factory
 このトピックの Azure Data Factory (ADF) を使用して Azure SQL Database にデータを移動する方法については、「[Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する](move-sql-azure-adf.md)」で説明しています。 このトピックでは、ADF を使用してオンプレミスの SQL Server データベースから Azure Blob Storage 経由で Azure SQL Database にデータを移動する方法が示されています。
 
 ハイブリッドのオンプレミスとクラウドのソースを使用してデータを継続的に移行する必要がある場合は、ADF の使用を検討してください。  ADF は、データの変換が必要な場合や、移行中に新しいビジネス ロジックが必要な場合にも役立ちます。 ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。 ADF には他にも、複雑な操作のサポートなどの機能があります。

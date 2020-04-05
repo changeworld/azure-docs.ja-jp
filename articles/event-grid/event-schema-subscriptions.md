@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 01/12/2019
 ms.author: spelluru
 ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561678"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure Event Grid のサブスクリプション用のイベント スキーマ
@@ -260,7 +260,7 @@ Azure サブスクリプションは、VM が作成されたりストレージ �
 | subscriptionId | string | リソースのサブスクリプション ID。 |
 | tenantId | string | リソースのテナント ID。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: c8eba538a7015648611e6054ce85b381dcfc9105
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76761000"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Service Bus の診断ログを有効にする
@@ -37,7 +37,7 @@ Azure Service Bus は現在、Azure Service Bus 名前空間上で実行され�
 
 操作ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-| Name | 説明 |
+| 名前 | 説明 |
 | ------- | ------- |
 | ActivityId | 指定されたアクティビティを識別するために使用される内部 ID |
 | EventName | 操作の名前 |

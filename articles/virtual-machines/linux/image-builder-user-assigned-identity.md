@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 manager: gwallace
-ms.openlocfilehash: f3990037d75f9f77eaedc7ec4049f14814216d9c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 27f4073efc8647d331faa14afbda0e15f92b8d50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944975"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060744"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>イメージを作成し、ユーザー割り当てマネージド ID を使用して Azure Storage 内のファイルにアクセスする 
 
@@ -63,7 +63,7 @@ az provider register -n Microsoft.Storage
 いくつかの情報を繰り返し使用するので、その情報を格納するいくつかの変数を作成します。
 
 
-```azurecli-interactive
+```console
 # Image resource group name 
 imageResourceGroup=aibmdimsi
 # storage resource group
@@ -78,13 +78,13 @@ runOutputName=u1804ManImgMsiro
 
 サブスクリプション ID の変数を作成します。 `az account show | grep id` を使用してこれを取得できます。
 
-```azurecli-interactive
+```console
 subscriptionID=<Your subscription ID>
 ```
 
 イメージとスクリプト ストレージの両方に対してリソース グループを作成します。
 
-```azurecli-interactive
+```console
 # create resource group for image template
 az group create -n $imageResourceGroup -l $location
 # create resource group for the script storage
@@ -152,7 +152,7 @@ imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/p
 
 .json ファイルの例をダウンロードし、作成した変数を使用して構成します。
 
-```azurecli-interactive
+```console
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateMsi.json
 sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateMsi.json
@@ -192,7 +192,7 @@ az resource invoke-action \
 
 イメージから VM を作成します。 
 
-```bash
+```azurecli
 az vm create \
   --resource-group $imageResourceGroup \
   --name aibImgVm00 \
@@ -204,13 +204,13 @@ az vm create \
 
 VM が作成された後、VM で SSH セッションを開始します。
 
-```azurecli-interactive
+```console
 ssh aibuser@<publicIp>
 ```
 
 SSH 接続が確立されるとすぐに、イメージが当日のメッセージでカスタマイズされたことがわかります。
 
-```console
+```output
 
 *******************************************************
 **            This VM was built from the:            **

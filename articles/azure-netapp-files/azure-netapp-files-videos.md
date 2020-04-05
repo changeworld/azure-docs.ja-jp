@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: b-juche
 ms.openlocfilehash: aca6899da3c92cca0fd8564da5ec3d1679eb2579
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75890977"
 ---
 # <a name="azure-netapp-files-videos"></a>Azure NetApp Files のビデオ

@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
 ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77371359"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>"再起動中"、"シャットダウン中"、または "サービスの停止中" に Azure Windows VM のシャットダウンが停止する

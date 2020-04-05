@@ -15,10 +15,10 @@ ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: c7dea85d8de17a0f65e6e73b5b5fbe619d464d3d
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650338"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 Virtual Machines の自動バックアップ (Resource Manager)
@@ -126,7 +126,7 @@ New-AzSqlVM  -Name $vmname `
 > [!IMPORTANT]
 > 拡張機能がまだインストールされていない場合、拡張機能をインストールすると、SQL Server サービスが再起動されます。
 
-### <a id="verifysettings"></a> 現在の設定の確認
+### <a name="verify-current-settings"></a><a id="verifysettings"></a> 現在の設定の確認
 
 プロビジョニング中に自動バックアップを有効にすると、PowerShell を使って現在の構成を確認することができます。 **Get-AzVMSqlServerExtension** コマンドを実行して **AutoBackupSettings** プロパティを調べます。
 
@@ -278,7 +278,7 @@ SQL Server 2014 での Automated Backup の監視には､大きく 2 つの選�
 
 自動バックアップでは、Azure VM でマネージド バックアップが構成されます。 ですから､[SQL Server 2014 でのマネージド バックアップに関するドキュメントを確認](https://msdn.microsoft.com/library/dn449497(v=sql.120).aspx)することが大切です｡
 
-Azure VM の SQL Server のバックアップと復元に関するその他のガイダンスについては、「[Azure Virtual Machines おける SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」の記事をご覧ください。
+Azure VM 上の SQL Server のバックアップと復元の追加のガイダンスについては、「[Azure Virtual Machines おける SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」の記事を参照してください。
 
 その他の利用可能なオートメーション タスクについては、 [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に関するページをご覧ください。
 

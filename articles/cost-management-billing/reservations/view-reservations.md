@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
 ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199247"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Azure portal に Azure の予約を表示する
@@ -26,14 +26,14 @@ Azure に対する予約を表示する方法は、ご利用のサブスクリ�
 
 所有者または閲覧者として予約を表示するには
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. **予約**を検索します。
     ![Azure portal の検索を表示しているスクリーンショット](./media/view-reservations/portal-reservation-search.png)  
 3. 一覧には、ご自分が所有者または閲覧者ロールになっている予約がすべて表示されます。 各予約には、最新の既知の使用率のパーセンテージが示されます。  
     ![予約の一覧を表示した例](./media/view-reservations/view-reservations.png)
 4. 1 つの予約を選択して、過去 5 日間の使用率の傾向を確認します。  
     ![予約の使用率の傾向を表示した例](./media/view-reservations/reservation-utilization.png)
-5. Reserved Instance 使用量 API と [Microsoft Azure Consumption Insights Power BI コンテンツ パック](/power-bi/service-connect-to-azure-consumption-insights)を使用して、[予約の使用率](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)を取得することもできます。
+5. Reserved Instance 使用量 API と [Microsoft Azure Consumption Insights Power BI コンテンツ パック](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)を使用して、[予約の使用率](/power-bi/service-connect-to-azure-consumption-insights)を取得することもできます。
 
 予約の範囲を変更する必要がある場合は、予約を分割するか、予約を管理できるユーザーを変更します。[Azure の予約の管理](manage-reserved-vm-instance.md)に関するページを参照してください。
 
@@ -43,7 +43,7 @@ Azure に対する予約を表示する方法は、ご利用のサブスクリ�
 
 Azure portal で予約トランザクションを表示するには
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. "**コスト管理 + 請求**" を検索します。
 
     ![Azure portal の検索を表示するスクリーンショット](./media/view-reservations/portal-cm-billing-search.png)

@@ -17,10 +17,10 @@ ms.date: 05/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3bc061cca3a2c57d2ebccb0fc09f8168c2fad253
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67163956"
 ---
 # <a name="tutorial-integrate-whatfix-with-azure-active-directory"></a>チュートリアル:Whatfix を Azure Active Directory と統合する
@@ -29,7 +29,7 @@ ms.locfileid: "67163956"
 
 * Whatfix にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Whatfix に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure portal) でアカウントを管理する。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -53,7 +53,7 @@ Azure AD への Whatfix の統合を構成するには、ギャラリーから�
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Whatfix**」と入力します。
-1. 結果ウィンドウで **[Whatfix]** を選択し、アプリを追加します。 アプリがテナントに追加される間、数秒待ちます。
+1. 結果ウィンドウで **[Whatfix]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -66,12 +66,12 @@ Whatfix で Azure AD SSO を構成してテストするには、次の構成要�
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 5. **[Whatfix のテスト ユーザーの作成](#create-whatfix-test-user)** - Whatfix で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうか確認します。
+6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-Azure portal で Azure AD SSO を有効にするには、次の手順に従います。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. [Azure portal](https://portal.azure.com/) の **Whatfix** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。

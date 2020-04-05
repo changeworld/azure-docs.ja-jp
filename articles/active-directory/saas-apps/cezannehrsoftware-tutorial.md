@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Cezanne HR Software の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Cezanne HR Software の統合 | Microsoft Docs'
 description: Azure Active Directory と Cezanne HR Software の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa689e6138f8d965e59f7cfa7a85e0835301086c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158704"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>チュートリアル:Azure Active Directory と Cezanne HR Software の統合
+# <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>チュートリアル: Azure Active Directory と Cezanne HR Software の統合
 
 このチュートリアルでは、Cezanne HR Software と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Cezanne HR Software と Azure AD の統合には、次の利点があります。
@@ -252,7 +252,7 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
 
     c. **[Security Role (セキュリティ ロール)]** で **[HR Professional (人事担当者)]** を選択します。
 
-    d. Click **OK**.
+    d. **[OK]** をクリックします。
 
 5. **[Single Sign-On (シングル サインオン)]** タブに移動し、 **[SAML 2.0 Identifiers (SAML 2.0 識別子)]** 領域で **[Add New (新規追加)]** を選択します。
 

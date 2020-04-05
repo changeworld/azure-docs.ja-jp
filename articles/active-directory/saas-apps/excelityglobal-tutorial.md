@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: a8ea503343f05f8b7ae5f121f3365f82794be2f3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73156778"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>チュートリアル:Azure Active Directory と ExcelityGlobal の統合

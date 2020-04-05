@@ -14,10 +14,10 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
 ms.openlocfilehash: ce85f45d823df42e70af53824e175968439621d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73819861"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Azure SQL Database Machine Learning Services (プレビュー) に R パッケージを追加する
@@ -35,7 +35,7 @@ ms.locfileid: "73819861"
 > [!NOTE]
 > Azure Data Studio または SSMS で **sp_execute_external_script** を使用して R スクリプトを実行することによりパッケージをインストールすることはできません。 この記事で述べているように、パッケージのインストールと削除は、R コマンドラインと RStudio を使用してのみ実行できます。 パッケージがインストールされたら、**sp_execute_external_script** を使用して R スクリプトでパッケージの機能にアクセスすることができます。
 
-## <a name="list-r-packages"></a>R パッケージを一覧表示する
+## <a name="list-r-packages"></a>R パッケージの一覧表示
 
 Microsoft では、Azure SQL Database に Machine Learning Services と共にプレインストールされる R パッケージを多数提供しています。
 Azure Data Studio または SSMS で次のコマンドを実行すると、インストール済みの R パッケージの一覧を表示できます。
@@ -60,7 +60,7 @@ WITH RESULT SETS((
 
 **結果**
 
-![インストールされている R のパッケージ](./media/sql-database-machine-learning-services-add-r-packages/r-installed-packages.png)
+![R のインストール済みパッケージ](./media/sql-database-machine-learning-services-add-r-packages/r-installed-packages.png)
 
 ## <a name="add-a-package-with-sqlmlutils"></a>sqlmlutils を使用してパッケージを追加する
 
@@ -70,7 +70,7 @@ WITH RESULT SETS((
 
 ### <a name="install-sqlmlutils"></a>**sqlmlutils** をインストールする
 
-1. [https://github.com/Microsoft/sqlmlutils/tree/master/R/dist](https://github.com/Microsoft/sqlmlutils/tree/master/R/dist ) からローカル コンピューターに、最新の **sqlmlutils** zip ファイルをダウンロードします。 ファイルを解凍する必要はありません。
+1. [https://github.com/Microsoft/sqlmlutils/tree/master/R/dist]( **) からローカル コンピューターに、最新の** sqlmlutils https://github.com/Microsoft/sqlmlutils/tree/master/R/dist zip ファイルをダウンロードします。 ファイルを解凍する必要はありません。
 
 1. **コマンド プロンプト**を開き、次のコマンドを実行して **RODBCext** と **sqlmlutils** をローカル コンピューターにインストールします。 完全パスを、ダウンロードした **sqlmlutils** zip ファイルに置き換えます (この例は、ファイルがドキュメント フォルダーにあることを前提としています)。
     
@@ -108,7 +108,7 @@ WITH RESULT SETS((
     ```
 
     > [!TIP]
-    > **scope** には、**PUBLIC** または **PRIVATE** を指定できます。 パブリック スコープは、全ユーザーが使用できるパッケージをデータベース管理者がインストールする場合に適しています。 プライベート スコープを指定した場合、パッケージを利用できるのは、それをインストールしたユーザーに限られます。 スコープを指定しなかった場合の既定のスコープは **PRIVATE** です。
+    > **scope** には、**PUBLIC** または **PRIVATE** を指定できます。 パブリック スコープは、全ユーザーが使用できるパッケージをデータベース管理者がインストールする場合に適しています。 プライベート スコープを指定すると、パッケージを使用できるのは、そのパッケージをインストールしたユーザーだけになります。 スコープを指定しなかった場合の既定のスコープは **PRIVATE** です。
 
 ### <a name="verify-the-package"></a>パッケージを確認する
 
@@ -164,9 +164,9 @@ sql_remove.packages(connectionString = connection, pkgs = "glue", scope = "PUBLI
 ```
 
 > [!TIP]
-> Azure SQL Database に R パッケージをインストールするもう 1 つの方法は、**CREATE EXTERNAL LIBRARY** T-SQL ステートメントを使用してバイト ストリームから R パッケージをアップロードするというものです。 [CREATE EXTERNAL LIBRARY](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) 参照ドキュメント内の「[バイト ストリームからライブラリーを作成する](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream)」をご覧ください。
+> Azure SQL Database に R パッケージをインストールするもう 1 つの方法は、**CREATE EXTERNAL LIBRARY** T-SQL ステートメントを使用してバイト ストリームから R パッケージをアップロードするというものです。 [CREATE EXTERNAL LIBRARY](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream) 参照ドキュメント内の「[バイト ストリームからライブラリーを作成する](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure SQL Database Machine Learning Services と R (プレビュー) の詳細については、次の記事を参照してください。
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 0c37d77ca73ddbe8b79351f90275a1d639757633
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74923736"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
@@ -56,7 +56,7 @@ SAP Business Warehouse のデータを、サポートされる任意のシンク
 >- NetWeaver RFC SDK から抽出された依存関係のライブラリはすべて、%windir%\system32 フォルダーにあります。 通常、ここには icudt34.dll、icuin34.dll、icuuc34.dll、libicudecnumber.dll、librfc32.dll、libsapucum.dll、sapcrypto.dll、sapcryto_old.dll、sapnwrfc.dll が含まれています。
 >- 必要なポートは、セルフホステッド IR マシン上で有効にされた SAP サーバーに接続するために使用されます。通常、これらはポート 3300 と 3201 です。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -180,33 +180,33 @@ SAP BW からデータをコピーするとき、SAP BW のデータ型から Az
 | SAP BW データ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | ACCP | int |
-| CHAR | string |
-| CLNT | string |
+| CHAR | String |
+| CLNT | String |
 | CURR | Decimal |
-| CUKY | string |
+| CUKY | String |
 | DEC | Decimal |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | int |
-| LANG | string |
-| LCHR | string |
+| LANG | String |
+| LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
 | QUAN | Decimal |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
-| STRING | string |
-| UNIT | string |
-| DATS | string |
-| NUMC | string |
-| TIMS | string |
+| STRING | String |
+| UNIT | String |
+| DATS | String |
+| NUMC | String |
+| TIMS | String |
 
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

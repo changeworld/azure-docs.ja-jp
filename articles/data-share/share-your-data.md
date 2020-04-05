@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.openlocfilehash: a8265680f74b2d5679d1ebfbb2873dd096f498a3
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77083051"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの共有  
@@ -83,10 +83,10 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
      **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
-    | Name | *datashareacount* | Data Share アカウントの名前を指定します。 |
+    | 名前 | *datashareacount* | Data Share アカウントの名前を指定します。 |
     | サブスクリプション | 該当するサブスクリプション | Data Share アカウントに使う Azure サブスクリプションを選択します。|
     | Resource group | *test-resource-group* | 既存のリソース グループを使用するか、新しいリソース グループを作成します。 |
-    | Location | *米国東部 2* | Data Share アカウントのリージョンを選択します。
+    | 場所 | *米国東部 2* | Data Share アカウントのリージョンを選択します。
     | | |
 
 1. **[作成]** を選択して、Data Share アカウントをプロビジョニングします。 通常、新しい Data Share アカウントのプロビジョニングにかかる時間は約 2 分以下です。 
@@ -101,7 +101,7 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
 1. **[Start sharing your data]\(データの共有の開始する\)** を選択します。
 
-1. **作成** を選択します。   
+1. **［作成］** を選択します   
 
 1. ご自分のデータ共有の詳細を入力します。 名前、共有の種類、共有の内容の説明、利用規約 (省略可能) を指定します。 
 

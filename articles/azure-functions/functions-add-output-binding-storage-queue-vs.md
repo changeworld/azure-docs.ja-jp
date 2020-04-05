@@ -5,10 +5,10 @@ ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74849209"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Visual Studio を使用して関数を Azure Storage に接続する
@@ -75,11 +75,11 @@ Queue storage の出力バインドを使用しているため、このプロジ
 
 1. Visual Studio の **[表示]** メニューで、 **[Cloud Explorer]** を選択します。
 
-1. **Cloud Explorer** で、Azure サブスクリプションと**ストレージ アカウント**を展開してから、関数で使用されているストレージ アカウントを展開します。 ストレージ アカウント名を思い出せない場合は、*local.settings.json* ファイルの `AzureWebJobsStorage` 接続文字列設定を確認してください。  
+1. **Cloud Explorer** で、Azure サブスクリプションと**ストレージ アカウント**を展開してから、関数で使用されているストレージ アカウントを展開します。 ストレージ アカウント名を思い出せない場合は、`AzureWebJobsStorage`local.settings.json*ファイルの* 接続文字列設定を確認してください。  
 
 1. **[キュー]** ノードを展開し、**outqueue** という名前のキューをダブルクリックして、Visual Studio でキューの内容を表示します。 
 
-   このキューには、HTTP によってトリガーされる関数を実行したときにキューの出力バインディングが作成されたというメッセージが含まれます。 *Azure* の既定の `name` 値で関数を呼び出した場合、キュー メッセージは「*Name passed to the function: Azure*」(関数に渡された名前: Azure) になります。
+   このキューには、HTTP によってトリガーされる関数を実行したときにキューの出力バインディングが作成されたというメッセージが含まれます。 `name`Azure*の既定の* 値で関数を呼び出した場合、キュー メッセージは *Name passed to the function: Azure* です。
 
     ![Azure Storage Explorer に表示されたキュー メッセージ](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 
@@ -95,11 +95,11 @@ Queue storage の出力バインドを使用しているため、このプロジ
 
 1. もう一度[ストレージ キューのメッセージを表示](#examine-the-output-queue)して、出力バインドによってキューに新しいメッセージが再生成されていることを確認します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HTTP によってトリガーされる関数を、ストレージ キューにデータを書き込むように更新しました。 Functions の開発の詳細については、「[Visual Studio を使用して Azure Functions を開発する](functions-develop-vs.md)」を参照してください。
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593898"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Microsoft Azure CDN でのエッジ ノード パフォーマンスの分析
@@ -183,7 +183,7 @@ ms.locfileid: "67593898"
 | 502 エラー |502 Bad Gateway 応答コードが返された上位 10 件の要求を表示できる棒グラフが含まれています。 502 Bad Gateway 応答コードは、サーバーと HTTP プロキシの間で HTTP プロトコル エラーが起きたときに発生します。 CDN の場合、502 Bad Gateway 応答コードは、通常、顧客の配信元サーバーがエッジ サーバーに無効な応答を返す場合に発生します。 応答は、解析できない場合、または不完全な場合に無効になります。 |
 | 5xx エラー |500 の範囲の応答コードが返された上位 10 件の要求を表示できる棒グラフが含まれています。  502 Bad Gateway および 504 Gateway Timeout 応答コードは、このレポートから除外されます。 |
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Azure CDN の概要](cdn-overview.md)
 * [Microsoft Azure CDN でのリアルタイム統計情報](cdn-real-time-stats.md)
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)

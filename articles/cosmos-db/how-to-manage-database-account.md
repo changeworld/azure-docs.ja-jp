@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356547"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225903"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos アカウントを管理する
 
@@ -19,25 +19,25 @@ ms.locfileid: "78356547"
 
 ## <a name="create-an-account"></a>アカウントを作成する
 
-### <a id="create-database-account-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="create-database-account-via-portal"></a>Azure Portal
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-### <a id="create-database-account-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="create-database-account-via-cli"></a>Azure CLI
 
 [Azure CLI を使用した Azure Cosmos DB アカウントの作成](manage-with-cli.md#create-an-azure-cosmos-db-account)に関する記事を参照してください。
 
-### <a id="create-database-account-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="create-database-account-via-ps"></a>Azure PowerShell
 
 [PowerShell を使用した Azure Cosmos DB アカウントの作成](manage-with-powershell.md#create-account)に関する記事を参照してください。
 
-### <a id="create-database-account-via-arm-template"></a>Azure Resource Manager テンプレート
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager テンプレート
 
 この Azure Resource Manager テンプレートでは、2 つのリージョンと、整合性レベル、自動フェールオーバー、およびマルチマスターを選択するオプションで構成された、SQL API に対する Azure Cosmos アカウントが作成されます。 このテンプレートをデプロイするには、[Azure Cosmos アカウントの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)に関する readme ページで [Deploy to Azure]\(Azure に配置する\) をクリックします。
 
 ## <a name="addremove-regions-from-your-database-account"></a>データベース アカウントのリージョンの追加/削除
 
-### <a id="add-remove-regions-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>Azure Portal
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
@@ -55,31 +55,31 @@ ms.locfileid: "78356547"
 
 複数リージョン書き込みモードでは、少なくとも 1 つのリージョンがあれば、どのリージョンも追加または削除できます。
 
-### <a id="add-remove-regions-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="add-remove-regions-via-cli"></a>Azure CLI
 
 [Azure CLI を使用したリージョンの追加または削除](manage-with-cli.md#add-or-remove-regions)に関する記事を参照してください。
 
-### <a id="add-remove-regions-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="add-remove-regions-via-ps"></a>Azure PowerShell
 
 [PowerShell を使用したリージョンの追加または削除](manage-with-powershell.md#update-account)に関する記事を参照してください。
 
-## <a id="configure-multiple-write-regions"></a>複数の書き込みリージョンの構成
+## <a name="configure-multiple-write-regions"></a><a id="configure-multiple-write-regions"></a>複数の書き込みリージョンの構成
 
-### <a id="configure-multiple-write-regions-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="configure-multiple-write-regions-portal"></a>Azure Portal
 
 **[データをグローバルにレプリケートする]** タブを開き、 **[有効]** を選択して複数リージョンの書き込みを有効にします。 複数リージョンの書き込みを有効にすると、アカウントで現在用意されているすべての読み取りリージョンが読み書きリージョンになります。
 
 ![Azure Cosmos アカウントのマルチマスター構成のスクリーンショット](./media/how-to-manage-database-account/single-to-multi-master.png)
 
-### <a id="configure-multiple-write-regions-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
 [Azure CLI を使用した複数書き込みリージョンの有効化](manage-with-cli.md#enable-multiple-write-regions)に関する記事を参照してください。
 
-### <a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
 [PowerShell を使用した複数書き込みリージョンの有効化](manage-with-powershell.md#multi-master)に関する記事を参照してください。
 
-### <a id="configure-multiple-write-regions-arm"></a>Resource Manager テンプレート
+### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Resource Manager テンプレート
 
 アカウントと設定 `enableMultipleWriteLocations: true` の作成に使用された Resource Manager テンプレートをデプロイすることで、アカウントをシングルマスターからマルチマスターに移行できます。 次の Azure Resource Manager テンプレートは、2 つのリージョンと複数の書き込み場所を有効にして、SQL API 用の Azure Cosmos アカウントをデプロイする最小限のテンプレートです。
 
@@ -139,11 +139,11 @@ ms.locfileid: "78356547"
 }
 ```
 
-## <a id="automatic-failover"></a>Azure Cosmos アカウントでの自動フェールオーバーの有効化
+## <a name="enable-automatic-failover-for-your-azure-cosmos-account"></a><a id="automatic-failover"></a>Azure Cosmos アカウントでの自動フェールオーバーの有効化
 
 自動フェールオーバーを選択すると、あるリージョンが利用できなくなったとき、フェールオーバーの優先順位が最も高いリージョンに Azure Cosmos DB がフェールオーバーされます。ユーザー側の操作は必要ありません。 自動フェールオーバーが有効になっているとき、リージョン優先順位を変更できます。 自動フェールオーバーを有効にするには、アカウントに 2 つ以上のリージョンを用意する必要があります。
 
-### <a id="enable-automatic-failover-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="enable-automatic-failover-via-portal"></a>Azure Portal
 
 1. お使いの Azure Cosmos アカウントで、 **[データをグローバルにレプリケートする]** ウィンドウを開きます。
 
@@ -157,11 +157,11 @@ ms.locfileid: "78356547"
 
    ![自動フェールオーバーのポータル メニュー](./media/how-to-manage-database-account/automatic-failover.png)
 
-### <a id="enable-automatic-failover-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
 [Azure CLI を使用した自動フェールオーバーの有効化](manage-with-cli.md#enable-automatic-failover)に関する記事を参照してください。
 
-### <a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
 
 [PowerShell を使用した自動フェールオーバーの有効化](manage-with-powershell.md#enable-automatic-failover)に関する記事を参照してください。
 
@@ -172,7 +172,7 @@ Cosmos アカウントに自動フェールオーバーを構成した後、リ�
 > [!IMPORTANT]
 > アカウントに自動フェールオーバーを構成しているとき、書き込みリージョン (フェールオーバーの優先順位がゼロ) は変更できません。 書き込みリージョンを変更するには、自動フェールオーバーを無効にし、手動フェールオーバーを実行する必要があります。
 
-### <a id="set-failover-priorities-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="set-failover-priorities-via-portal"></a>Azure Portal
 
 1. お使いの Azure Cosmos アカウントで、 **[データをグローバルにレプリケートする]** ウィンドウを開きます。
 
@@ -188,15 +188,15 @@ Cosmos アカウントに自動フェールオーバーを構成した後、リ�
 
    ![自動フェールオーバーのポータル メニュー](./media/how-to-manage-database-account/automatic-failover.png)
 
-### <a id="set-failover-priorities-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
 [Azure CLI を使用したフェールオーバー優先度の設定](manage-with-cli.md#set-failover-priority)に関する記事を参照してください。
 
-### <a id="set-failover-priorities-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="set-failover-priorities-via-ps"></a>Azure PowerShell
 
 [PowerShell を使用したフェールオーバー優先度の設定](manage-with-powershell.md#modify-failover-priority)に関する記事を参照してください。
 
-## <a id="manual-failover"></a>Azure Cosmos アカウントで手動フェールオーバーを実行する
+## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>Azure Cosmos アカウントで手動フェールオーバーを実行する
 
 > [!IMPORTANT]
 > この操作を成功させるには、Azure Cosmos アカウントに手動フェールオーバーを構成する必要があります。
@@ -206,7 +206,7 @@ Cosmos アカウントに自動フェールオーバーを構成した後、リ�
 > [!NOTE]
 > マルチマスター アカウントは手動でフェールオーバーできません。 Azure Cosmos SDK を使用するアプリケーションの場合、SDK はリージョンが利用できなくなったときにそれを検出し、SDK でマルチホーミング API を使用している場合、最も近くにあるリージョンに自動的にリダイレクトします。
 
-### <a id="enable-manual-failover-via-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure Portal
 
 1. お使いの Azure Cosmos アカウントに移動して、 **[データをグローバルにレプリケートする]** メニューを開きます。
 
@@ -220,11 +220,11 @@ Cosmos アカウントに自動フェールオーバーを構成した後、リ�
 
    ![手動フェールオーバーのポータル メニュー](./media/how-to-manage-database-account/manual-failover.png)
 
-### <a id="enable-manual-failover-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI
 
 [Azure CLI を使用した手動フェールオーバーのトリガー](manage-with-cli.md#trigger-manual-failover)に関する記事を参照してください。
 
-### <a id="enable-manual-failover-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="enable-manual-failover-via-ps"></a>Azure PowerShell
 
 [PowerShell を使用した手動フェールオーバーのトリガー](manage-with-powershell.md#trigger-manual-failover)に関する記事を参照してください。
 

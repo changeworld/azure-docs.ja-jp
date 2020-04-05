@@ -7,10 +7,10 @@ ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 50c209483a12adc3545b63fb66685e386d9ad10a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252131"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ

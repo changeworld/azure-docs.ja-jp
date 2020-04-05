@@ -9,10 +9,10 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: 65b760eaf28d907fab3654ed92f960be7556b0d6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75862358"
 ---
 # <a name="routing-iot-events-and-messages"></a>IoT イベントとメッセージのルーティング
@@ -23,9 +23,9 @@ ms.locfileid: "75862358"
 
 Azure Digital Twins には、IoT イベントを他の Azure サービスやビジネス アプリケーションと接続するための 2 つの方法が用意されています。
 
-* **Azure Digital Twins イベントのルーティング**:Azure Digital Twins イベントは、空間グラフ内のオブジェクトが変化したとき、テレメトリ データが受信されたとき、または事前定義された条件に基づいてユーザー定義関数が通知を作成したときにトリガーされます。 ユーザーは、さらに処理するために、これらのイベントを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[Azure Service Bus トピック](https://azure.microsoft.com/services/service-bus/)、または [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) に送信できます。
+* **Digital Twins イベントのルーティング**: Azure Digital Twins イベントは、空間グラフ内のオブジェクトが変化したとき、テレメトリ データが受信されたとき、または事前定義された条件に基づいてユーザー定義関数が通知を作成したときにトリガーされます。 ユーザーは、さらに処理するために、これらのイベントを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[Azure Service Bus トピック](https://azure.microsoft.com/services/service-bus/)、または [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) に送信できます。
 
-* **デバイス テレメトリのルーティング**:イベントのルーティングだけでなく、Azure Digital Twins では生デバイス テレメトリ メッセージを Event Hubs にルーティングして、さらに解析や分析を行うことができます。 この種のメッセージは、Azure Digital Twins によって処理されません。 これらはイベント ハブにのみ転送されます。
+* **デバイス テレメトリのルーティング**: イベントのルーティングだけでなく、Azure Digital Twins では生デバイス テレメトリ メッセージを Event Hubs にルーティングして、さらに洞察と分析を行うことができます。 この種のメッセージは、Azure Digital Twins によって処理されません。 これらはイベント ハブにのみ転送されます。
 
 ユーザーは、イベントの送信またはメッセージの転送のためのエグレス エンドポイントを 1 つ以上指定できます。 イベントとメッセージは、これらの定義済みのルーティング設定に従って、エンドポイントに送信されます。 つまり、ユーザーは、グラフ操作イベントの受信用に特定のエンドポイントを指定し、デバイスのテレメトリ イベントの受信用に別のエンドポイントを指定できます。
 

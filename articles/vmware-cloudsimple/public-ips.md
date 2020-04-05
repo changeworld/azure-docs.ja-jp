@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (AVS) - パブリック IP アドレスの割り当て
-description: AVS プライベート クラウド環境で仮想マシンにパブリック IP アドレスを割り当てる方法について説明します
+title: Azure VMware Solution by CloudSimple - パブリック IP アドレスの割り当て
+description: プライベート クラウド環境で仮想マシンのパブリック IP アドレスを割り当てる方法について説明します。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 87133f5efb9f096d3fdb0956aab1caac58b4bd94
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024298"
 ---
-# <a name="allocate-public-ip-addresses-for-avs-private-cloud-environment"></a>AVS プライベート クラウド環境にパブリック IP アドレスを割り当てる
+# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>プライベート クラウド環境のためにパブリック IP アドレスを割り当てる
 
-[ネットワーク] ページで [パブリック IP] タブを開き、AVS プライベート クラウド環境内の仮想マシンにパブリック IP アドレスを割り当てます。
+[ネットワーク] ページで [パブリック IP] タブを開き、プライベート クラウド環境の仮想マシンにパブリック IP アドレスを割り当てます。
 
-1. [AVS ポータルにアクセスし](access-cloudsimple-portal.md)、サイド メニューの **[ネットワーク]** を選択します。
+1. [CloudSimple ポータルにアクセスし](access-cloudsimple-portal.md)、サイド メニューの **[ネットワーク]** を選択します。
 2. **[パブリック IP]** を選択します。
 3. **[新しいパブリック IP]** をクリックします。
 

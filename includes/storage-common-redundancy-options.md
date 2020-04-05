@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 73c2b742ede21a4e86d717d994f8ebc4f16389c9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77157222"
 ---
 ストレージ アカウントの冗長オプションには、次のようなものがあります。

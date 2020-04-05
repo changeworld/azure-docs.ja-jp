@@ -39,8 +39,11 @@
       href: storage-files-scale-targets.md
     - name: ID ベースの認証と承認
       href: storage-files-active-directory-overview.md
-    - name: 保存時の暗号化
+    - name: Azure Storage の保存時の暗号化
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      items:
+        - name: Azure Key Vault でのカスタマー マネージド キー
+          href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: コンプライアンス認証
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 開発
@@ -93,6 +96,10 @@
           href: storage-how-to-use-files-mac.md
     - name: ネットワーク
       items:
+        - name: Azure Files ネットワーク エンドポイントの構成
+          href: storage-files-networking-endpoints.md
+        - name: Azure Files の DNS 転送の構成
+          href: storage-files-networking-dns.md
         - name: サイト間 VPN を構成する
           href: storage-files-configure-s2s-vpn.md
         - name: Windows でポイント対サイト VPN を構成する
@@ -117,12 +124,22 @@
           href: storage-sync-files-monitoring.md
     - name: 移行
       items:
-        - name: Azure File Sync への移行
-          href: storage-sync-offline-data-transfer.md
-        - name: StorSimple 8100 および 8600 の移行ガイド
-          href: storage-files-migration-storsimple-8000.md
-        - name: StorSimple 1200 の移行ガイド
-          href: storage-files-migration-storsimple-1200.md
+        - name: Azure ファイル共有への移行
+          href: storage-files-migration-overview.md
+        - name: ハイブリッド デプロイをターゲットにする
+          items:
+            - name: Azure Data Box を使用して Azure File Sync に大量のデータを移行する
+              href: storage-sync-offline-data-transfer.md
+            - name: Azure File Sync を使用して Linux からハイブリッド ファイル サーバーに移行する
+              href: storage-files-migration-linux-hybrid.md
+            - name: Azure File Sync を使用してオンプレミスの NAS からハイブリッド ファイル サーバーに移行する
+              href: storage-files-migration-nas-hybrid.md
+        - name: StorSimple から
+          items:
+            - name: StorSimple 8100 および 8600 の移行ガイド
+              href: storage-files-migration-storsimple-8000.md
+            - name: StorSimple 1200 の移行ガイド
+              href: storage-files-migration-storsimple-1200.md
     - name: 開発
       items:
         - name: 接続文字列の構成

@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 930a3f0cf629c99fc03a84c701bcf7b2807c77c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972859"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>テンプレートを使用して Azure Data Factory のエンティティを作成する
@@ -37,8 +37,8 @@ ms.locfileid: "75972859"
 ## <a name="tutorials"></a>チュートリアル
 Resource Manager テンプレートを使用して Data Factory エンティティを作成する詳細な手順については、次のチュートリアルをご覧ください。
 
-* [チュートリアル:Azure Resource Manager テンプレートを使用してデータをコピーするパイプラインを作成する](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-* [チュートリアル:Azure Resource Manager テンプレートを使用してデータを処理するパイプラインを作成する](data-factory-build-your-first-pipeline.md)
+* [チュートリアル: Azure Resource Manager テンプレートを使用してデータをコピーするパイプラインを作成する](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [チュートリアル: Azure Resource Manager テンプレートを使用してデータを処理するパイプラインを作成する](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>GitHub の Data Factory テンプレート
 GitHub の次の Azure クイック スタート テンプレートもご覧ください。

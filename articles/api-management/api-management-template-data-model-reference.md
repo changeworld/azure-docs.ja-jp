@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176542"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224843"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API Management テンプレート データ モデル リファレンス
 このトピックでは、Azure API Management の開発者ポータル テンプレートのデータ モデルで使用される一般的な項目のエンティティと型表現について説明します。  
@@ -36,18 +36,18 @@ ms.locfileid: "73176542"
 -   [Application](#Application)  
 -   [Attachment](#Attachment)  
 -   [Code sample](#Sample)  
--   [Comment](#Comment)  
+-   [解説](#Comment)  
 -   [Filtering](#Filtering)  
 -   [ヘッダー](#Header)  
 -   [HTTP 要求](#HTTPRequest)  
 -   [HTTP 応答](#HTTPResponse)  
--   [問題](#Issue)  
+-   [問題点](#Issue)  
 -   [操作](#Operation)  
 -   [Operation menu](#Menu)  
 -   [Operation menu item](#MenuItem)  
 -   [Paging](#Paging)  
 -   [パラメーター](#Parameter)  
--   [成果物](#Product)  
+-   [Product](#Product)  
 -   [プロバイダー](#Provider)  
 -   [Representation](#Representation)  
 -   [サブスクリプション](#Subscription)  
@@ -56,7 +56,7 @@ ms.locfileid: "73176542"
 -   [User sign-in](#UseSignIn)  
 -   [User sign-up](#UserSignUp)  
   
-##  <a name="API"></a> API  
+##  <a name="api"></a><a name="API"></a> API  
  `API` エンティティには、次のプロパティがあります。  
   
 |プロパティ|種類|説明|  
@@ -70,7 +70,7 @@ ms.locfileid: "73176542"
 |`authenticationSettings`|[承認サーバーの認証設定](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|この API に含まれる認証設定のコレクション。|  
 |`subscriptionKeyParameterNames`|object|サブスクリプション キーを含むクエリまたはヘッダー パラメーターのカスタム名を指定するために使用できる、省略可能なプロパティ。 このプロパティが存在する場合は、次の 2 つのプロパティのうち少なくとも 1 つが含まれている必要があります。<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
-##  <a name="APISummary"></a> API summary  
+##  <a name="api-summary"></a><a name="APISummary"></a> API summary  
  `API summary` エンティティには、次のプロパティがあります。  
   
 |プロパティ|種類|説明|  
@@ -79,7 +79,7 @@ ms.locfileid: "73176542"
 |`name`|string|API の名前。 空にしないでください。 最大長は 100 文字です。|  
 |`description`|string|API の説明。 空にしないでください。 HTML 書式設定タグを含めることができます。 最大長は 1,000 文字です。|  
   
-##  <a name="Application"></a> Application  
+##  <a name="application"></a><a name="Application"></a> Application  
  `application` エンティティには、次のプロパティがあります。  
   
 |プロパティ|種類|説明|  
@@ -97,7 +97,7 @@ ms.locfileid: "73176542"
 |`Attachments`|[Attachment](#Attachment) エンティティのコレクション。|アプリケーションの添付ファイル (スクリーンショット、アイコンなど)。|  
 |`Icon`|[Attachment](#Attachment)|アプリケーションのアイコン。|  
   
-##  <a name="Attachment"></a> Attachment  
+##  <a name="attachment"></a><a name="Attachment"></a> Attachment  
  `attachment` エンティティには、次のプロパティがあります。  
   
 |プロパティ|種類|説明|  
@@ -107,7 +107,7 @@ ms.locfileid: "73176542"
 |`Type`|string|添付ファイルの種類。|  
 |`ContentType`|string|添付ファイルのメディアの種類。|  
   
-##  <a name="Sample"></a> Code sample  
+##  <a name="code-sample"></a><a name="Sample"></a> Code sample  
   
 |プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
@@ -124,17 +124,17 @@ ms.locfileid: "73176542"
 |`headers`|[Header](#Header) エンティティのコレクション。|この操作のヘッダー。|  
 |`parameters`|[Parameter](#Parameter) エンティティのコレクション。|この操作に対して定義されているパラメーター。|  
   
-##  <a name="Comment"></a> Comment  
+##  <a name="comment"></a><a name="Comment"></a> Comment  
  `API` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|Description|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |`Id`|number|コメントの ID。|  
 |`CommentText`|string|コメントの本文。 HTML を含めることができます。|  
 |`DeveloperCompany`|string|開発者の会社名。|  
 |`PostedOn`|DateTime|コメントが投稿された日時。|  
   
-##  <a name="Issue"></a> Issue  
+##  <a name="issue"></a><a name="Issue"></a> Issue  
  `issue` エンティティには、次のプロパティがあります。  
   
 |プロパティ|種類|説明|  
@@ -150,7 +150,7 @@ ms.locfileid: "73176542"
 |`Attachments`|[Attachment](api-management-template-data-model-reference.md#Attachment) エンティティのコレクション。|問題に対する添付ファイル。|  
 |`Services`|[API](#API) エンティティのコレクション。|問題を提出したユーザーがサブスクライブしている API。|  
   
-##  <a name="Filtering"></a> Filtering  
+##  <a name="filtering"></a><a name="Filtering"></a> Filtering  
  `filtering` エンティティには、次のプロパティがあります。  
   
 |プロパティ|種類|説明|  
@@ -158,7 +158,7 @@ ms.locfileid: "73176542"
 |`Pattern`|string|現在の検索語句。検索語句がない場合は `null`。|  
 |`Placeholder`|string|検索語句が指定されていないときに検索ボックスに表示するテキスト。|  
   
-##  <a name="Header"></a> Header  
+##  <a name="header"></a><a name="Header"></a> Header  
  このセクションでは、`parameter` 表現を記述します。  
   
 |プロパティ|種類|説明|  
@@ -168,10 +168,10 @@ ms.locfileid: "73176542"
 |`value`|string|ヘッダー値。|  
 |`typeName`|string|ヘッダー値のデータ型。|  
 |`options`|string|オプション。|  
-|`required`|ブール値|ヘッダーが必要かどうか。|  
-|`readOnly`|ブール値|ヘッダーが読み取り専用かどうか。|  
+|`required`|boolean|ヘッダーが必要かどうか。|  
+|`readOnly`|boolean|ヘッダーが読み取り専用かどうか。|  
   
-##  <a name="HTTPRequest"></a> HTTP Request  
+##  <a name="http-request"></a><a name="HTTPRequest"></a> HTTP Request  
  このセクションでは、`request` 表現を記述します。  
   
 |プロパティ|種類|説明|  
@@ -181,16 +181,16 @@ ms.locfileid: "73176542"
 |`parameters`|[Parameter](#Parameter) の配列|操作要求パラメーターのコレクション。|  
 |`representations`|[Representation](#Representation) の配列|操作要求表現のコレクション。|  
   
-##  <a name="HTTPResponse"></a> HTTP Response  
+##  <a name="http-response"></a><a name="HTTPResponse"></a> HTTP Response  
  このセクションでは、`response` 表現を記述します。  
   
-|プロパティ|種類|Description|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |`statusCode`|正の整数|操作応答の状態コード。|  
 |`description`|string|操作応答の説明。|  
 |`representations`|[Representation](#Representation) の配列|操作応答表現のコレクション。|  
   
-##  <a name="Operation"></a> Operation  
+##  <a name="operation"></a><a name="Operation"></a> Operation  
  `operation` エンティティには、次のプロパティがあります。  
   
 |プロパティ|種類|説明|  
@@ -205,7 +205,7 @@ ms.locfileid: "73176542"
 |`request`|[HTTP 要求](#HTTPRequest)|要求の詳細を含むエンティティ。|  
 |`responses`|[HTTP Response](#HTTPResponse) の配列|操作の [HTTP Response](#HTTPResponse) エンティティの配列。|  
   
-##  <a name="Menu"></a> Operation menu  
+##  <a name="operation-menu"></a><a name="Menu"></a> Operation menu  
  `operation menu` エンティティには、次のプロパティがあります。  
   
 |プロパティ|種類|説明|  
@@ -215,7 +215,7 @@ ms.locfileid: "73176542"
 |`Action`|string|メニューの種類。|  
 |`MenuItems`|[Operation menu item](#MenuItem) エンティティのコレクション。|現在の API の操作。|  
   
-##  <a name="MenuItem"></a> Operation menu item  
+##  <a name="operation-menu-item"></a><a name="MenuItem"></a> Operation menu item  
  `operation menu item` エンティティには、次のプロパティがあります。  
   
 |プロパティ|種類|説明|  
@@ -224,18 +224,18 @@ ms.locfileid: "73176542"
 |`Title`|string|操作の説明。|  
 |`HttpMethod`|string|操作の HTTP メソッド。|  
   
-##  <a name="Paging"></a> Paging  
+##  <a name="paging"></a><a name="Paging"></a> Paging  
  `paging` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|Description|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |`Page`|number|現在のページ番号。|  
 |`PageSize`|number|1 ページに表示される結果の最大数。|  
 |`TotalItemCount`|number|表示する項目の数。|  
-|`ShowAll`|ブール値|すべての結果を 1 ページに表示するかどうか。|  
+|`ShowAll`|boolean|すべての結果を 1 ページに表示するかどうか。|  
 |`PageCount`|number|結果のページ数。|  
   
-##  <a name="Parameter"></a> Parameter  
+##  <a name="parameter"></a><a name="Parameter"></a> パラメーター  
  このセクションでは、`parameter` 表現を記述します。  
   
 |プロパティ|種類|説明|  
@@ -244,11 +244,11 @@ ms.locfileid: "73176542"
 |`description`|string|パラメーターの説明。|  
 |`value`|string|パラメーター値。|  
 |`options`|文字列の配列|クエリ パラメーター値に対して定義されている値。|  
-|`required`|ブール値|パラメーターが必要かどうかを指定します。|  
+|`required`|boolean|パラメーターが必要かどうかを指定します。|  
 |`kind`|number|このパラメーターがパス パラメーター (1) とクエリ文字列パラメーター (2) のいずれであるか。|  
 |`typeName`|string|パラメーターの型。|  
   
-##  <a name="Product"></a> Product  
+##  <a name="product"></a><a name="Product"></a> Product  
  `product` エンティティには、次のプロパティがあります。  
   
 |プロパティ|種類|説明|  
@@ -258,19 +258,19 @@ ms.locfileid: "73176542"
 |`Description`|string|製品の説明。 空にしないでください。 HTML 書式設定タグを含めることができます。 最大長は 1,000 文字です。|  
 |`Terms`|string|製品の使用条件。 製品をサブスクライブしようとする開発者に提示される条件です。開発者は、サブスクリプション プロセスを完了する前にこれらの条件に同意する必要があります。|  
 |`ProductState`|number|製品が発行されているかどうかを指定します。 発行されている製品は、開発者ポータルで開発者に表示されます。 発行されていない製品は、管理者のみに表示されます。<br /><br /> 製品状態に使用できる値は次のとおりです。<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
-|`AllowMultipleSubscriptions`|ブール値|1 人のユーザーがこの製品に対して複数のサブスクリプションを同時に持つことができるかどうかを指定します。|  
+|`AllowMultipleSubscriptions`|boolean|1 人のユーザーがこの製品に対して複数のサブスクリプションを同時に持つことができるかどうかを指定します。|  
 |`MultipleSubscriptionsCount`|number|1 人のユーザーが同時に持つことができる、この製品に対するサブスクリプションの最大数。|  
   
-##  <a name="Provider"></a> Provider  
+##  <a name="provider"></a><a name="Provider"></a> Provider  
  `provider` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|Description|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |`Properties`|文字列辞書|この認証プロバイダーのプロパティ。|  
 |`AuthenticationType`|string|プロバイダーの種類 (Azure Active Directory、Facebook ログイン、Google アカウント、Microsoft アカウント、Twitter)。|  
 |`Caption`|string|プロバイダーの表示名。|  
   
-##  <a name="Representation"></a> Representation  
+##  <a name="representation"></a><a name="Representation"></a> Representation  
  このセクションでは、`representation` を記述します。  
   
 |プロパティ|種類|説明|  
@@ -278,7 +278,7 @@ ms.locfileid: "73176542"
 |`contentType`|string|この表現の登録済みコンテンツ タイプまたはカスタム コンテンツ タイプを指定します (例: `application/xml`)。|  
 |`sample`|string|表現の例。|  
   
-##  <a name="Subscription"></a> Subscription  
+##  <a name="subscription"></a><a name="Subscription"></a> Subscription  
  `subscription` エンティティには、次のプロパティがあります。  
   
 |プロパティ|種類|説明|  
@@ -291,20 +291,20 @@ ms.locfileid: "73176542"
 |`state`|string|サブスクリプションの状態。 次の状態があります。<br /><br /> - `0 - suspended` – サブスクリプションがブロックされています。サブスクライバーは製品の API を呼び出すことができません。<br /><br /> - `1 - active` – サブスクリプションがアクティブです。<br /><br /> - `2 - expired` – サブスクリプションの期限になり、サブスクリプションが非アクティブ化されました。<br /><br /> - `3 - submitted` – サブスクリプション要求が開発者によって行われましたが、まだ承認または拒否されていません。<br /><br /> - `4 - rejected` – サブスクリプション要求が管理者によって拒否されました。<br /><br /> - `5 - cancelled` – サブスクリプションが開発者または管理者によって取り消されました。|  
 |`DisplayName`|string|サブスクリプションの表示名。|  
 |`CreatedDate`|dateTime|ISO 8601 形式のサブスクリプションが作成された日付: `2014-06-24T16:25:00Z`。|  
-|`CanBeCancelled`|ブール値|現在のユーザーがサブスクリプションを取り消すことができるかどうか。|  
-|`IsAwaitingApproval`|ブール値|サブスクリプションが承認を待っているかどうか。|  
+|`CanBeCancelled`|boolean|現在のユーザーがサブスクリプションを取り消すことができるかどうか。|  
+|`IsAwaitingApproval`|boolean|サブスクリプションが承認を待っているかどうか。|  
 |`StartDate`|dateTime|ISO 8601 形式のサブスクリプションの開始日: `2014-06-24T16:25:00Z`。|  
 |`ExpirationDate`|dateTime|ISO 8601 形式のサブスクリプションの有効期限: `2014-06-24T16:25:00Z`。|  
 |`NotificationDate`|dateTime|ISO 8601 形式のサブスクリプションの通知日: `2014-06-24T16:25:00Z`。|  
 |`primaryKey`|string|プライマリ サブスクリプション キー。 最大長は 256 文字です。|  
 |`secondaryKey`|string|セカンダリ サブスクリプション キー。 最大長は 256 文字です。|  
-|`CanBeRenewed`|ブール値|現在のユーザーがサブスクリプションを更新できるかどうか。|  
-|`HasExpired`|ブール値|サブスクリプションが期限切れになっているかどうか。|  
-|`IsRejected`|ブール値|サブスクリプション要求が拒否されたかどうか。|  
+|`CanBeRenewed`|boolean|現在のユーザーがサブスクリプションを更新できるかどうか。|  
+|`HasExpired`|boolean|サブスクリプションが期限切れになっているかどうか。|  
+|`IsRejected`|boolean|サブスクリプション要求が拒否されたかどうか。|  
 |`CancelUrl`|string|サブスクリプションを取り消すための相対 URL。|  
 |`RenewUrl`|string|サブスクリプションを更新するための相対 URL。|  
   
-##  <a name="SubscriptionSummary"></a> Subscription summary  
+##  <a name="subscription-summary"></a><a name="SubscriptionSummary"></a> Subscription summary  
  `subscription summary` エンティティには、次のプロパティがあります。  
   
 |プロパティ|種類|説明|  
@@ -312,7 +312,7 @@ ms.locfileid: "73176542"
 |`Id`|string|リソース識別子。 現在の API Management サービス インスタンス内のサブスクリプションを一意に識別します。 値は `subscriptions/{sid}` 形式の有効な相対 URL です。ここで、`{sid}` はサブスクリプション識別子です。 このプロパティは読み取り専用です。|  
 |`DisplayName`|string|サブスクリプションの表示名|  
   
-##  <a name="UserAccountInfo"></a> User account info  
+##  <a name="user-account-info"></a><a name="UserAccountInfo"></a> User account info  
  `user account info` エンティティには、次のプロパティがあります。  
   
 |プロパティ|種類|説明|  
@@ -323,9 +323,9 @@ ms.locfileid: "73176542"
 |`Password`|string|ユーザー アカウントのパスワード。|  
 |`NameIdentifier`|string|アカウント識別子。ユーザーの電子メールと同じです。|  
 |`ProviderName`|string|認証プロバイダーの名前。|  
-|`IsBasicAccount`|ブール値|このアカウントが電子メールとパスワードを使用して登録されている場合は true、このアカウントがプロバイダーを使用して登録されている場合は false です。|  
+|`IsBasicAccount`|boolean|このアカウントが電子メールとパスワードを使用して登録されている場合は true、このアカウントがプロバイダーを使用して登録されている場合は false です。|  
   
-##  <a name="UseSignIn"></a> User sign in  
+##  <a name="user-sign-in"></a><a name="UseSignIn"></a> User sign in  
  `user sign in` エンティティには、次のプロパティがあります。  
   
 |プロパティ|種類|説明|  
@@ -333,27 +333,27 @@ ms.locfileid: "73176542"
 |`Email`|string|電子メール アドレス。 空にしないでください。値は、サービス インスタンス内で一意である必要があります。 最大長は 254 文字です。|  
 |`Password`|string|ユーザー アカウントのパスワード。|  
 |`ReturnUrl`|string|ユーザーがサインインをクリックしたページの URL。|  
-|`RememberMe`|ブール値|現在のユーザーの情報を保存するかどうか。|  
-|`RegistrationEnabled`|ブール値|登録が有効になっているかどうか。|  
-|`DelegationEnabled`|ブール値|委任されたサインインが有効になっているかどうか。|  
+|`RememberMe`|boolean|現在のユーザーの情報を保存するかどうか。|  
+|`RegistrationEnabled`|boolean|登録が有効になっているかどうか。|  
+|`DelegationEnabled`|boolean|委任されたサインインが有効になっているかどうか。|  
 |`DelegationUrl`|string|委任されたサインイン URL (有効な場合)。|  
 |`SsoSignUpUrl`|string|ユーザーのシングル サインオン URL (存在する場合)。|  
 |`AuxServiceUrl`|string|現在のユーザーが管理者である場合、これは、Azure Portal のサービス インスタンスへのリンクを示します。|  
 |`Providers`|[Provider](#Provider) エンティティのコレクション|このユーザーの認証プロバイダー。|  
 |`UserRegistrationTerms`|string|ユーザーがサインインする前に同意する必要がある条件。|  
-|`UserRegistrationTermsEnabled`|ブール値|条件が有効になっているかどうか。|  
+|`UserRegistrationTermsEnabled`|boolean|条件が有効になっているかどうか。|  
   
-##  <a name="UserSignUp"></a> User sign up  
+##  <a name="user-sign-up"></a><a name="UserSignUp"></a> User sign up  
  `user sign up` エンティティには、次のプロパティがあります。  
   
-|プロパティ|種類|Description|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
-|`PasswordConfirm`|ブール値|[sign-up](api-management-page-controls.md#sign-up) コントロールで使用される値。|  
+|`PasswordConfirm`|boolean|[sign-up](api-management-page-controls.md#sign-up) コントロールで使用される値。|  
 |`Password`|string|ユーザー アカウントのパスワード。|  
 |`PasswordVerdictLevel`|number|[sign-up](api-management-page-controls.md#sign-up) コントロールで使用される値。|  
 |`UserRegistrationTerms`|string|ユーザーがサインインする前に同意する必要がある条件。|  
 |`UserRegistrationTermsOptions`|number|[sign-up](api-management-page-controls.md#sign-up) コントロールで使用される値。|  
-|`ConsentAccepted`|ブール値|[sign-up](api-management-page-controls.md#sign-up) コントロールで使用される値。|  
+|`ConsentAccepted`|boolean|[sign-up](api-management-page-controls.md#sign-up) コントロールで使用される値。|  
 |`Email`|string|電子メール アドレス。 空にしないでください。値は、サービス インスタンス内で一意である必要があります。 最大長は 254 文字です。|  
 |`FirstName`|string|名。 空にしないでください。 最大長は 100 文字です。|  
 |`LastName`|string|姓。 空にしないでください。 最大長は 100 文字です。|  
@@ -361,5 +361,5 @@ ms.locfileid: "73176542"
 |`NameIdentifier`|string|[sign-up](api-management-page-controls.md#sign-up) コントロールで使用される値。|  
 |`ProviderName`|string|認証プロバイダーの名前。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

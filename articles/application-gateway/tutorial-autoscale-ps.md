@@ -9,10 +9,10 @@ ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: e07fc34c7177e3a1dace34ab298b64dc3aa6a06a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74011364"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>チュートリアル:Web アプリケーションのアクセスを改善するアプリケーション ゲートウェイを作成する
@@ -45,7 +45,7 @@ Connect-AzAccount
 Select-AzSubscription -Subscription "<sub name>"
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 利用可能ないずれかの場所で、リソース グループを作成します。
 
 ```azurepowershell
@@ -184,13 +184,13 @@ $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
 
 `Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP`
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 最初に、アプリケーション ゲートウェイで作成されたリソースを調べます。 次に、必要がないときは、`Remove-AzResourceGroup` コマンドを使用して、リソース グループ、アプリケーション ゲートウェイ、およびすべての関連リソースを削除できます。
 
 `Remove-AzResourceGroup -Name $rg`
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [URL パスベースのルーティング規則のあるアプリケーション ゲートウェイを作成する](./tutorial-url-route-powershell.md)

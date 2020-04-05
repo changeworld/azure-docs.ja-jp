@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.openlocfilehash: 3b56cd12aec21cffd98a0143f5cf3f083ec55e94
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74960555"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>チュートリアル:Custom Vision からエクスポートされた ONNX モデルを Windows ML (プレビュー) で使用する
@@ -76,7 +76,7 @@ Custom Vision Service からエクスポートされた ONNX モデルを Window
 
 1. ボタンをクリックして、評価するイメージを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Custom Vision モデルをエクスポートして使用する別の方法については、次のドキュメントを参照してください。
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
 ms.openlocfilehash: 971d311dfb54d417a8f66f504d01f08f8bcfc48b
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74942097"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Azure Data Factory で LastModifiedDate に基づいて新規および変更済みのファイルをコピーする
@@ -103,6 +103,6 @@ ms.locfileid: "74942097"
 
     ![結果を確認する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Factory の概要](introduction.md)

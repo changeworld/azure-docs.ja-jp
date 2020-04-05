@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
 ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78190060"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Monitor で Azure AD B2C を監視する

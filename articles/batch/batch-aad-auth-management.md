@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: labrenne
-ms.openlocfilehash: f1f47df841b61599b6aed8cd4d6715decd27a288
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5c217971bd213c97a2ee31a0a1f513b601d14df9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025981"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472981"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch 管理ソリューションの認証に Active Directory を使用する
 
@@ -35,7 +35,7 @@ Batch Management .NET ライブラリと AccountManagement サンプルの使用
 
 Azure [Active Directory Authentication Library][aad_adal] (ADAL) は、アプリケーション内で使用するためのプログラム インターフェイスを Azure AD に提供します。 アプリケーションから ADAL を呼び出すには、Azure AD テナントにアプリケーションを登録する必要があります。 アプリケーションを登録する場合は、アプリケーションに関する情報 (Azure AD テナント内でのアプリケーション名など) を Azure AD で指定します。 これで、Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するアプリケーション ID が提供されます。 アプリケーション ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
 
-AccountManagement サンプル アプリケーションを登録するには、[Azure Active Directory とアプリケーションの統合][aad_integrate]に関するページの[アプリケーションの追加](../active-directory/develop/quickstart-register-app.md)の手順に従います。 アプリケーションの種類として、 **[ネイティブ クライアント アプリケーション]** を指定します。 **リダイレクト URI** の業界標準 OAuth 2.0 に準拠した URI は `urn:ietf:wg:oauth:2.0:oob` です。 しかし、**リダイレクト URI** には、任意の有効な URI (`http://myaccountmanagementsample`など) を指定することができます。実際のエンドポイントである必要はありません。
+AccountManagement サンプル アプリケーションを登録するには、[Azure Active Directory とアプリケーションの統合](../active-directory/develop/quickstart-register-app.md)に関するページの[アプリケーションの追加][aad_integrate]の手順に従います。 アプリケーションの種類として、 **[ネイティブ クライアント アプリケーション]** を指定します。 **リダイレクト URI** の業界標準 OAuth 2.0 に準拠した URI は `urn:ietf:wg:oauth:2.0:oob` です。 しかし、`http://myaccountmanagementsample`リダイレクト URI **には、任意の有効な URI (** など) を指定することができます。実際のエンドポイントである必要はありません。
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
@@ -91,9 +91,9 @@ private const string ResourceUri = "https://management.core.windows.net/";
 
 ```csharp
 // Specify the unique identifier (the "Client ID") for your application. This is required so that your
-// native client application (i.e. this sample) can access the Microsoft Azure AD Graph API. For information
-// about registering an application in Azure Active Directory, please see "Adding an Application" here:
-// https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/
+// native client application (i.e. this sample) can access the Microsoft Graph API. For information
+// about registering an application in Azure Active Directory, please see "Register an application with the Microsoft identity platform" here:
+// https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app
 private const string ClientId = "<application-id>";
 ```
 また、登録プロセス時に指定したリダイレクト URI をコピーします。 コードに指定するリダイレクト URI は、アプリケーションを登録したときに指定したリダイレクト URI と一致している必要があります。

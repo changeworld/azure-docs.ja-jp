@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
 ms.openlocfilehash: a951bc07c4a8ed42b1c116332d13674656bbaafd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646797"
 ---
 # <a name="what-is-a-private-azure-dns-zone"></a>プライベート Azure DNS ゾーンとは

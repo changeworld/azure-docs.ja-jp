@@ -7,11 +7,11 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550946"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223949"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>チュートリアル:Azure FXT Edge Filer ノードをネットワークに接続し、電源を供給する
 

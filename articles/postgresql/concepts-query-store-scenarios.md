@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 31e3f82b6ea1b1fc15c0832dc03edce2a59f1e1b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74768352"
 ---
 # <a name="usage-scenarios-for-query-store"></a>クエリ ストアの使用シナリオ
@@ -57,5 +57,5 @@ ms.locfileid: "74768352"
  
 ユーザーがアプリケーションのコードを管理している場合は、ストアド プロシージャまたはパラメーター化クエリを使用するようにデータ アクセス層を書き直すことを検討できます。 しかし、このような状況は、データベース全体 (すべてのクエリ) またはクエリ ハッシュが同じ個々のクエリ テンプレートに対し、クエリのパラメーター化を強制することにより、アプリケーションを変更しないで改善することもできます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 詳細については、[クエリ ストアの使用のベスト プラクティス](concepts-query-store-best-practices.md)に関するページをご覧ください。

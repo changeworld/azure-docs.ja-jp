@@ -4,10 +4,10 @@ description: Azure Service Fabric の主要な概念と主な領域について�
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.openlocfilehash: 4e6e21f5f9ebfeddb5292e00dc8a929341e77372
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458151"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
@@ -105,7 +105,7 @@ Service Fabric は [ASP.NET Core](service-fabric-reliable-services-communication
 * [フェールオーバー シナリオ](service-fabric-testability-scenarios.md#failover-test) - 他のサービスに影響させずに、特定のサービス パーティションを対象にした、混乱のテスト シナリオの 1 つのバージョンです。
 
 ## <a name="clusters"></a>クラスター
-[Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターは多数のマシンにスケールできます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 それぞれのノードには、ノード名 (文字列) が割り当てられます。 ノードには、配置プロパティなどの特性があります。 それぞれのコンピューターまたは VM には、自動的に開始されるサービス (`FabricHost.exe`) が存在します。このサービスがコンピューターまたは VM の起動時に開始され、2 つの実行可能ファイル Fabric.exe と FabricGateway.exe を起動します。 ノードは、この 2 つの実行可能ファイルから成ります。 テストのシナリオでは、`Fabric.exe` と `FabricGateway.exe` の複数のインスタンスを実行することによって、1 台のコンピューターまたは VM で複数のノードをホストできます。
+[Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターは多数のマシンにスケールできます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 それぞれのノードには、ノード名 (文字列) が割り当てられます。 ノードには、配置プロパティなどの特性があります。 それぞれのコンピューターまたは VM には、自動的に開始されるサービス (`FabricHost.exe`) が存在します。このサービスがコンピューターまたは VM の起動時に開始され、Fabric.exe と FabricGateway.exe の 2 つの実行可能ファイルを起動します。 ノードは、この 2 つの実行可能ファイルから成ります。 テストのシナリオでは、`Fabric.exe` と `FabricGateway.exe` の複数のインスタンスを実行することによって、1 台のコンピューターまたは VM で複数のノードをホストできます。
 
 Service Fabric クラスターは、Windows Server や Linux が動作している仮想マシン上や物理マシン上に作成できます。 オンプレミスか、Microsoft Azure 上か、任意のクラウド プロバイダー上かに関係なく、相互接続された一連の Windows Server コンピューターまたは Linux コンピューターがある任意の環境に、Service Fabric アプリケーションをデプロイして実行できます。
 

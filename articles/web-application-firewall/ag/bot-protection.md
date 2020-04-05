@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 10/31/2019
 ms.author: victorh
 ms.openlocfilehash: 89c863e85d9eab27a47bc1bf7b98cd1c8d89e900
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73511524"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway-preview"></a>Azure Application Gateway での Web アプリケーション ファイアウォールのボット保護を構成する (プレビュー)
@@ -36,6 +36,6 @@ ms.locfileid: "73511524"
 > [!div class="mx-imgBorder"]
 > ![ボット保護](../media/bot-protection/bot-protection.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 カスタム ルールの詳細については、[Azure Application Gateway での Web アプリケーション ファイアウォール v2 のカスタム規則](custom-waf-rules-overview.md)に関する記事を参照してください。

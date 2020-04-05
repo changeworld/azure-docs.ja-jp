@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 98f9e0377e560fa0bba2fd470ff01431b2ed21d9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181615"
 ---
 | ポート番号| インまたはアウト | ポート範囲| 必須|   メモ |   |
@@ -21,5 +21,5 @@ ms.locfileid: "67181615"
 | UDP 67 (DHCP)|アウト|LAN|場合により必須<br>メモを参照|このポートは、ローカル DHCP サーバーを使用する場合にのみ必要です。  |
 | TCP 80 (HTTP)|アウト/イン|LAN|はい|このポートは、ローカル管理に使用するデバイスのローカル UI 用の受信ポートです。 <br>HTTP 経由でのローカル UI へのアクセスは、自動的に HTTPS にリダイレクトされます。  |
 | TCP 443 (HTTPS)|アウト/イン|LAN|はい|このポートは、ローカル管理に使用するデバイスのローカル UI 用の受信ポートです。 |
-| TCP 445 (SMB)|イン|LAN|場合により必須<br>メモを参照|このポートは、SMB を介して接続する場合にのみ必要です。 |
-| TCP 2049 (NFS)|イン|LAN|場合により必須<br>メモを参照|このポートは、NFS を介して接続する場合にのみ必要です。 |
+| TCP 445 (SMB)|場所|LAN|場合により必須<br>メモを参照|このポートは、SMB を介して接続する場合にのみ必要です。 |
+| TCP 2049 (NFS)|場所|LAN|場合により必須<br>メモを参照|このポートは、NFS を介して接続する場合にのみ必要です。 |

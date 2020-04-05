@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837294"
 ---
 # <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: Detect
@@ -45,7 +45,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 要求ヘッダーには次のものがあります。
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">ヘッダー</th>
   <th>説明</th>
   <tr>
     <td>認証ヘッダー</td>
@@ -61,7 +61,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*省略可能*。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。</td>
+    <td>*オプション*。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。</td>
   </tr>
 </table> 
 
@@ -85,15 +85,15 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 正常な応答は、入力配列内の文字列ごとに 1 つの結果が含まれる JSON 配列となります。 結果オブジェクトには次のプロパティが含まれています。
 
-  * `language`:検出された言語のコードです。
+  * `language`: 検出された言語のコードです。
 
-  * `score`:結果内の信頼度を示す浮動小数点値です。 スコアは 0 から 1 の範囲であり、低いスコアは低い信頼度を示します。
+  * `score`: 結果内の信頼度を示す浮動小数点値です。 スコアは 0 から 1 の範囲であり、低いスコアは低い信頼度を示します。
 
-  * `isTranslationSupported`:検出された言語がテキスト翻訳でサポートされている言語の 1 つである場合に true になるブール値です。
+  * `isTranslationSupported`: 検出された言語がテキスト翻訳でサポートされている言語の 1 つである場合に true になるブール値。
 
-  * `isTransliterationSupported`:検出された言語が音訳でサポートされている言語の 1 つである場合に true になるブール値です。
+  * `isTransliterationSupported`: 検出された言語が音訳でサポートされている言語の 1 つである場合に true になるブール値。
   
-  * `alternatives`:利用可能な他の言語の配列です。 配列の各要素は、上記にリストしたのと同じプロパティ (`language`、`score`、`isTranslationSupported`、`isTransliterationSupported`) を持つ別のオブジェクトです。
+  * `alternatives`: 利用可能な他の言語の配列。 配列の各要素は、上記にリストしたのと同じプロパティ (`language`、`score`、`isTranslationSupported`、`isTransliterationSupported`) を持つ別のオブジェクトです。
 
 JSON 応答の例を次に示します。
 
@@ -125,7 +125,7 @@ JSON 応答の例を次に示します。
 ## <a name="response-headers"></a>応答ヘッダー
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">ヘッダー</th>
   <th>説明</th>
   <tr>
     <td>X-RequestId</td>
@@ -142,7 +142,7 @@ JSON 応答の例を次に示します。
   <th>説明</th>
   <tr>
     <td>200</td>
-    <td>成功。</td>
+    <td>正常終了しました。</td>
   </tr>
   <tr>
     <td>400</td>

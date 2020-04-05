@@ -16,10 +16,10 @@ ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.openlocfilehash: 933b648f15418c4838d3da1ea8379267765c784b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073336"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>一般化した VHD を Azure にアップロードして新しい VM を作成する
@@ -40,7 +40,7 @@ ms.locfileid: "74073336"
   * Sysprep を使用した仮想マシンの一般化
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>Sysprep を使用した Windows 仮想マシンの一般化
-このセクションでは、Windows 仮想マシンをイメージとして使用できるように一般化する方法について説明します。 特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「[How to Use Sysprep: An Introduction (Sysprep の使用方法: 紹介)](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+このセクションでは、Windows 仮想マシンをイメージとして使用できるように一般化する方法について説明します。 特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「 [Sysprep の使用方法: 紹介](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
 
 コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳しくは、「 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
@@ -53,7 +53,7 @@ ms.locfileid: "74073336"
 2. 管理者としてコマンド プロンプト ウィンドウを開きます。 ディレクトリを **%windir%\system32\sysprep** に変更し、`sysprep.exe` を実行します。
 3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスがオンになっていることを確認します。
 4. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
-5. Click **OK**.
+5. **[OK]** をクリックします。
    
     ![Sysprep の開始](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep は完了時に仮想マシンをシャットダウンします。 
@@ -112,7 +112,7 @@ Get-AzStorageAccount
     New-AzResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、このリソース グループに **mystorageaccount** というストレージ アカウントを作成します。
+2. **New-AzStorageAccount** コマンドレットを使用して、このリソース グループに [mystorageaccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) というストレージ アカウントを作成します。
    
     ```powershell
     New-AzStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
@@ -289,7 +289,7 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
     $vmList.Name
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure PowerShell で新しい仮想マシンを管理する方法については、 [Azure Resource Manager と PowerShell を使用した仮想マシンの管理](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
 

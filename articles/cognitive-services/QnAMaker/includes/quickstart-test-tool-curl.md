@@ -11,10 +11,10 @@ ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
 ms.openlocfilehash: f3a1a33b2fe859839deec587191b3b3a319c0cf8
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77495301"
 ---
 この cURL ベースのクイック スタートでは、ナレッジ ベースから回答を取得する手順を紹介しています。

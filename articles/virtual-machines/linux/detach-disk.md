@@ -8,10 +8,10 @@ ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74036366"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンから切断する方法
@@ -117,6 +117,6 @@ az vm disk detach \
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 データ ディスクを再利用する場合は、[別の VM にそのデータ ディスクをアタッチ](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)します。
 

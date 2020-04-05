@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 01/15/2020
 ms.author: spelluru
 ms.openlocfilehash: 0a4b76bd1febca864cab6060fbdbd96dd0061cff
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77162618"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-javascript-azureevent-hubs-version-2"></a>クイック スタート:JavaScript を使用して Azure Event Hubs との間でイベントを送受信する (@azure/event-hubs バージョン 2)
@@ -24,7 +24,7 @@ ms.locfileid: "77162618"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Event Hubs を初めて使用する場合は、このクイックスタートを行う前に[イベント ハブの概要](event-hubs-about.md)に関するページを参照してください。 
+Azure Event Hubs を初めて使用する場合は、このクイックスタートを行う前に[イベント ハブの概要](event-hubs-about.md)を参照してください。 
 
 このクイック スタートを完了するには、次の前提条件を用意しておく必要があります。
 

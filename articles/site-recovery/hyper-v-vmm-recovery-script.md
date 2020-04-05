@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 6902876e066649ae4dff4134fb8cc462f30dd0b7
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74084866"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>復旧計画への VMM スクリプトの追加
@@ -76,6 +76,6 @@ VMM ソース サイトが存在する場合、VMM サーバー上にスクリ�
 1. 復旧計画のテスト フェールオーバーを実行して、スクリプトが期待どおりに動作することを確認します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * フェールオーバーの実行については、[こちら](site-recovery-failover.md)を参照してください。
 

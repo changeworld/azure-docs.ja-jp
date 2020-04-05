@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と ClickTime の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と ClickTime の統合 | Microsoft Docs'
 description: Azure Active Directory と ClickTime の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 233ddde25645cbdd9073011eeec2a20e42c8e9a8
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73157409"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>チュートリアル:Azure Active Directory と ClickTime の統合
+# <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>チュートリアル: Azure Active Directory と ClickTime の統合
 
 このチュートリアルでは、ClickTime と Azure Active Directory (Azure AD) を統合する方法について説明します。
 ClickTime と Azure AD の統合には、次の利点があります。
@@ -137,7 +137,7 @@ ClickTime で Azure AD シングル サインオンを構成するには、次�
 
 1. **[Single Sign-On Preferences]** 構成セクションで、次の手順を実行します。
    
-    ![Security Settings](./media/clicktime-tutorial/tic777280.png "[Security Settings]")
+    ![Security Settings](./media/clicktime-tutorial/tic777280.png "セキュリティ設定")
    
     a.  **[Azure AD]** を指定し、シングル サインオン (SSO) を使用したサインインの **[Allow (許可)]** を選択します。
    
@@ -145,7 +145,7 @@ ClickTime で Azure AD シングル サインオンを構成するには、次�
    
     c.  Azure Portal からダウンロードされた **Base-64 でエンコードされた証明書**を**メモ帳**で開き、その内容をコピーしてから、それを **[X.509 証明書]** ボックスに貼り付けます。
    
-    d.  **[Save]** をクリックします。
+    d.  **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -229,7 +229,7 @@ ClickTime の場合、プロビジョニングは手動で行います。
     > [!NOTE]
     > 必要に応じて、新しいユーザー オブジェクトの追加プロパティを設定できます。
    
-    c.  **[Save]** をクリックします。
+    c.  **[保存]** をクリックします。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

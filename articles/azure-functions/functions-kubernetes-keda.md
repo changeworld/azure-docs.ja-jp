@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
 ms.openlocfilehash: 2c06fdba8f60243acf4e0fabd23df8b832c210db
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78301677"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA を使用した Kubernetes での Azure Functions

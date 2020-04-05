@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
 ms.openlocfilehash: 69d324647af014a5122c404929c104a9077d5f13
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74225305"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Azure CLI を使用した複数の IP 構成での負荷分散
@@ -31,7 +31,7 @@ ms.locfileid: "74225305"
 この記事で紹介するシナリオを実現するには、次の手順に従います。
 
 1. リンクされている記事の手順に従って [Azure CLI をインストールして構成](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)し、Azure アカウントにログインします。
-2. 次のように *contosofabrikam* という名前の[リソース グループを作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group)します。
+2. 次のように [contosofabrikam](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) という名前の*リソース グループを作成*します。
 
     ```azurecli
     az group create contosofabrikam westcentralus
@@ -43,14 +43,14 @@ ms.locfileid: "74225305"
     az vm availability-set create --resource-group contosofabrikam --location westcentralus --name myAvailabilitySet
     ```
 
-4. *myVNet* という名前の[仮想ネットワークを作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet)し、*mySubnet* という名前のサブネットを作成します。
+4. [myVNet](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet) という名前の*仮想ネットワークを作成*し、*mySubnet* という名前のサブネットを作成します。
 
     ```azurecli
     az network vnet create --resource-group contosofabrikam --name myVnet --address-prefixes 10.0.0.0/16  --location westcentralus --subnet-name MySubnet --subnet-prefix 10.0.0.0/24
 
     ```
 
-5. *mylb* という名前の[ロード バランサーを作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)します。
+5. [mylb](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) という名前の*ロード バランサーを作成*します。
 
     ```azurecli
     az network lb create --resource-group contosofabrikam --location westcentralus --name mylb
@@ -71,7 +71,7 @@ ms.locfileid: "74225305"
     az network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp2 --name fabrkamfe
     ```
 
-8. バックエンド アドレス プール (*contosopool*、*fabrikampool*)、[プローブ](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json)  - (*HTTP*)、負荷分散規則 (*HTTPc*、*HTTPf*) を作成します。
+8. バックエンド アドレス プール (*contosopool*、*fabrikampool*)、[プローブ](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - (*HTTP*)、負荷分散規則 (*HTTPc*、*HTTPf*) を作成します。
 
     ```azurecli
     az network lb address-pool create --resource-group contosofabrikam --lb-name mylb --name contosopool
@@ -119,6 +119,6 @@ ms.locfileid: "74225305"
 
 13. 最後に、Load Balancer の各フロントエンド IP アドレスを指すように DNS リソース レコードを構成する必要があります。 ドメインを Azure DNS でホストする場合もあります。 Azure DNS を Load Balancer で使用する方法の詳細については、「[Azure DNS を他の Azure サービスで使用する](../dns/dns-for-azure-services.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure で負荷分散サービスを組み合わせて使う方法について詳しくは、「[Azure で負荷分散サービスを使用する](../traffic-manager/traffic-manager-load-balancing-azure.md)」をご覧ください。
 - Azure の各種ログを使って、ロード バランサーの管理やトラブルシューティングを行う方法については、「[Azure Load Balancer のログ分析](../load-balancer/load-balancer-monitor-log.md)」をご覧ください。

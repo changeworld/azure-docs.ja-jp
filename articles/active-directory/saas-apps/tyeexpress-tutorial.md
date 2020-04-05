@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と T&E Express の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と T&E Express の統合 | Microsoft Docs'
 description: Azure Active Directory と T&E Express の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 10ebe796f5aed827a4934a94d568aedbef704503
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67088227"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-te-express"></a>チュートリアル:Azure Active Directory と T&E Express の統合
+# <a name="tutorial-azure-active-directory-integration-with-te-express"></a>チュートリアル: Azure Active Directory と T&E Express の統合
 
 このチュートリアルでは、T&E Express と Azure Active Directory (Azure AD) を統合する方法について説明します。
 T&E Express と Azure AD の統合には、次の利点があります。
@@ -49,7 +49,7 @@ T&E Express と Azure AD の統合を構成するには、次のものが必要�
 
 ## <a name="adding-te-express-from-the-gallery"></a>ギャラリーから T&E Express を追加する
 
-Azure AD への T&amp;E Express の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に T&amp;E Express を追加する必要があります。
+Azure AD への T&E Express の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に T&amp;amp;E Express を追加する必要があります。
 
 **ギャラリーから T&E Express を追加するには、次の手順に従います。**
 

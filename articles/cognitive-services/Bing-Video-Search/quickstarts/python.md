@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
 ms.openlocfilehash: fbf20c2d54506b0f314697d6df34f9a430e7c016
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75382686"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>クイック スタート:Bing Video Search REST API と Python を使用して動画を検索する
@@ -193,6 +193,6 @@ ms.locfileid: "75382686"
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>参照 
+## <a name="see-also"></a>関連項目 
 
  [Bing Video Search API とは](../overview.md)

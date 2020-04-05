@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435684"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Spark & Hive Tools for Visual Studio Code を使用する
@@ -282,7 +282,7 @@ Python ジョブを送信すると、Visual Studio Code の **[OUTPUT]\(出力\)
 
     **POST/バッチ**要求本文
 
-    | name | description | 型 |
+    | name | description | type |
     | :- | :- | :- |
     | file | 実行するアプリケーションを含むファイル | パス (必須) |
     | proxyUser | ジョブの実行時に権限を借用するユーザー | String |
@@ -303,13 +303,13 @@ Python ジョブを送信すると、Visual Studio Code の **[OUTPUT]\(出力\)
 
     応答本文   作成された Batch オブジェクト。
 
-    | name | description | 型 |
+    | name | description | type |
     | :- | :- | :- |
     | id | セッション ID | int |
     | appId | このセッションのアプリケーション ID | String |
     | appInfo | アプリケーションの詳細情報 | キーのマップ = val |
     | log | ログの行 | 文字列のリスト |
-    | 状態 |バッチの状態 | String |
+    | state |バッチの状態 | String |
 
     > [!NOTE]
     > 割り当てられた Livy の構成は、スクリプトの送信時に出力ウィンドウに表示されます。

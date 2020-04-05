@@ -7,10 +7,10 @@ author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
 ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77654394"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure Network Performance Monitor の価格の変更

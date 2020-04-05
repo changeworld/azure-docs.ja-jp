@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 96a4afff3e58bfa1ebf661909f380aa525fea76e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6c8ceeaf49d8ebfa15a83118e8b518190f6ff85e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820146"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80241075"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin モジュールおよび依存関係をゼロからデプロイする
 
@@ -111,7 +111,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 ### <a name="prerequisites"></a>前提条件
 
-1. OPC Twin の[依存関係](howto-opc-twin-deploy-dependencies.md)をデプロイし、結果の `.env` ファイルを取得した。 結果の `.env` ファイル内の `PCS_IOTHUBREACT_HUB_NAME` 変数のデプロイ済み `hub name` をメモします。
+1. OPC Twin の[依存関係](howto-opc-twin-deploy-dependencies.md)をデプロイし、結果の `.env` ファイルを取得した。 結果の `hub name` ファイル内の `PCS_IOTHUBREACT_HUB_NAME` 変数のデプロイ済み `.env` をメモします。
 
 2. [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) または [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge ゲートウェイを登録して起動し、その `device id` をメモします。
 
@@ -178,7 +178,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 ### <a name="prerequisites"></a>前提条件
 
-1. [こちら](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)から [Azure コマンド ライン インターフェイス (AZ)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) の最新バージョンをインストールします。
+1. [こちら](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)から [Azure コマンド ライン インターフェイス (AZ)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) の最新バージョンをインストールします。
 
 ### <a name="quickstart"></a>クイック スタート
 
@@ -186,7 +186,7 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 2. 次のコマンドを使用して、IoT Edge デバイスに構成を適用します。
 
-   ```bash
+   ```azurecli
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content ./deployment.json
    ```
 
@@ -195,13 +195,13 @@ OPC Twin モジュールは IoT Edge 上で動作し、OPC デバイス ツイ�
 
 3. モジュールをデバイスにデプロイした後で、そのすべてを次のコマンドで表示できます。
 
-   ```bash
+   ```azurecli
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
    device ID パラメーターでは大文字と小文字が区別されます。 ![az iot hub module-identity list の出力](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、OPC Twin をゼロからデプロイする方法を学習しました。次に以下の記事を読むことをお勧めします。
 

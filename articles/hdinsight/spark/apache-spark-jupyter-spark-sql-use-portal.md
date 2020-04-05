@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2020
 ms.openlocfilehash: 5f4d1b8ef742a8dcafa2b8e34a6209f85ae050d9
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77650640"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Spark クラスターを作成する
@@ -47,7 +47,7 @@ Azure portal を使用して、クラスター ストレージとして Azure St
     |サブスクリプション  | ドロップダウン リストから、このクラスターに使用する Azure サブスクリプションを選択します。 |
     |Resource group | ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** を選択します。|
     |クラスター名 | グローバルに一意の名前を入力します。|
-    |リージョン   | クラスターの作成先となるリージョンをドロップダウン リストから選択します。 |
+    |リージョン   | ドロップダウン リストから、クラスターの作成先となるリージョンを選択します。 |
     |クラスターの種類| [クラスターの種類の選択] を選択して一覧を開きます。 一覧から、 **[Spark]** を選択します。|
     |クラスターのバージョン|クラスターの種類が選択されると、このフィールドに既定のバージョンが自動的に入力されます。|
     |クラスター ログイン ユーザー名| クラスターのログイン ユーザー名を入力します。  既定の名前は **admin**です。クイック スタートの後半で、このアカウントを使って Jupyter Notebook にログインします。 |

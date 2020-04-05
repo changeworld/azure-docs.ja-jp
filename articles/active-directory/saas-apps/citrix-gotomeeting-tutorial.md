@@ -16,10 +16,10 @@ ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2835fda7b709ded9fac5503d4ba0bf4b8bdd5ec
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76290667"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-gotomeeting"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GoToMeeting の統合

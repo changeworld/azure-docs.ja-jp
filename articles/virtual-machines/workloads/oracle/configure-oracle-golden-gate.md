@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 31137bba8c9b6b88c6a8b9569c02ae887e73e8d0
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0706b7d3c238c154d3694b5760266299a7d788ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309598"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536872"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM での Oracle Golden Gate の実装 
 
@@ -40,7 +40,7 @@ Oracle Golden Gate のインストールを実行するには、同じ可用性�
 > |  | **プライマリ サイト** | **レプリケート サイト** |
 > | --- | --- | --- |
 > | **Oracle リリース** |Oracle 12c リリース 2 – (12.1.0.2) |Oracle 12c リリース 2 – (12.1.0.2)|
-> | **マシン名** |myVM1 |myVM2 |
+> | **コンピューター名** |myVM1 |myVM2 |
 > | **オペレーティング システム** |Oracle Linux 6.x |Oracle Linux 6.x |
 > | **Oracle SID** |CDB1 |CDB1 |
 > | **レプリケーション スキーマ** |TEST|TEST |
@@ -56,11 +56,11 @@ Oracle Golden Gate のインストールを実行するには、同じ可用性�
 az login
 ```
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
-次の例では、`myResourceGroup` という名前のリソース グループを `westus` の場所に作成します。
+次の例では、`westus` の場所に `myResourceGroup` という名前のリソース グループを作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -85,6 +85,7 @@ az vm availability-set create \
 次の例では、`myVM1` と `myVM2` という名前の 2 つの VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
 
 #### <a name="create-myvm1-primary"></a>myVM1 (プライマリ) を作成します。
+
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -97,7 +98,7 @@ az vm create \
 
 VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 (`publicIpAddress` を書き留めておきます。 このアドレスは、VM へのアクセスに使用されます。)
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -111,6 +112,7 @@ VM が作成されると、Azure CLI によって次の例のような情報が�
 ```
 
 #### <a name="create-myvm2-replicate"></a>myVM2 (レプリケート) を作成します。
+
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -139,7 +141,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 結果は、次の応答のようになります。
 
-```bash
+```output
 {
   "access": "Allow",
   "description": null,
@@ -172,7 +174,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 次のコマンドを使用して、仮想マシンとの SSH セッションを作成します。 IP アドレスを仮想マシンの `publicIpAddress` に置き換えます。
 
-```bash 
+```bash
 ssh <publicIpAddress>
 ```
 
@@ -207,9 +209,10 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
+
 出力は次のようになります。
 
-```bash
+```output
 Copying database files
 1% complete
 2% complete
@@ -259,6 +262,7 @@ export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 ```
 
 ### <a name="start-oracle-listener"></a>Oracle リスナーの起動
+
 ```bash
 $ lsnrctl start
 ```
@@ -268,6 +272,7 @@ $ lsnrctl start
 ```bash
 sudo su - oracle
 ```
+
 データベースを作成します。
 
 ```bash
@@ -289,6 +294,7 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
+
 変数 ORACLE_SID および ORACLE_HOME を設定します。
 
 ```bash
@@ -309,6 +315,7 @@ export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 ```
 
 ### <a name="start-oracle-listener"></a>Oracle リスナーの起動
+
 ```bash
 $ sudo su - oracle
 $ lsnrctl start
@@ -426,11 +433,12 @@ Oracle Golden Gate ソフトウェアをダウンロードして準備するに�
 Oracle Golden Gate をインストールするには、次の手順を実行します。
 
 1. oracle としてサインインします。 (パスワードの入力を要求されることなくサインインできるはずです)。インストールを開始する前に、Xming が実行されていることを確認してください。
- 
+
    ```bash
    $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
    $ ./runInstaller
    ```
+
 2. [Oracle GoldenGate for Oracle Database 12c] を選択します。 **[Next]\(次へ\)** をクリックして続行します。
 
    ![インストーラーの [Select Installation]\(インストールの選択\) ページのスクリーンショット](./media/oracle-golden-gate/golden_gate_install_01.png)
@@ -536,6 +544,7 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
 
    GGSCI> EDIT PARAMS EXTORA
    ```
+
 5. vi コマンドを使用して、Extract パラメーター ファイルに次を追加します。 Esc キーを押すか、":wq!" で ファイルを保存します。 
 
    ```bash
@@ -550,6 +559,7 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
    TABLE pdb1.test.TCUSTMER;
    TABLE pdb1.test.TCUSTORD;
    ```
+
 6. Extract (統合された Extract) を登録します。
 
    ```bash
@@ -565,6 +575,7 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
 
    GGSCI> exit
    ```
+
 7. Extract チェックポイントを設定し、リアルタイムの Extract を開始します。
 
    ```bash
@@ -587,6 +598,7 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
    MANAGER     RUNNING
    EXTRACT     RUNNING     EXTORA      00:00:11      00:00:04
    ```
+
    この手順では起点の SCN を検索します。これは後ほど別のセクションで使用します。
 
    ```bash
@@ -684,6 +696,7 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
    $ ./ggsci
    GGSCI> EDIT PARAMS REPORA  
    ```
+
    REPORA パラメーター ファイルの内容:
 
    ```bash
@@ -726,12 +739,14 @@ Oracle Golden Gate をインストールするには、次の手順を実行し�
   $ ./ggsci
   GGSCI> EDIT PARAMS MGR
   ```
+
 次のようにファイルを更新します。
 
   ```bash
   PORT 7809
   ACCESSRULE, PROG *, IPADDR *, ALLOW
   ```
+
 続いて、Manager サービスを再起動します。
 
   ```bash
@@ -750,6 +765,7 @@ $ ./ggsci
 GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
+
 #### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3.myVM2 (レプリケート) でのレプリケーションのセットアップ
 
 前に取得した番号で、SCN 番号を変更します。
@@ -759,12 +775,13 @@ GGSCI> VIEW REPORT INITEXT
   $ ./ggsci
   START REPLICAT REPORA, AFTERCSN 1857887
   ```
+
 レプリケーションが開始されたら、テスト テーブルに新しいレコードを挿入してテストすることができます。
 
 
 ### <a name="view-job-status-and-troubleshooting"></a>ジョブの状態とトラブルシューティングの表示
 
-#### <a name="view-reports"></a>レポートを表示する
+#### <a name="view-reports"></a>レポートの表示
 myVM1 でレポートを表示するには、次のコマンドを実行します。
 
   ```bash
@@ -802,7 +819,7 @@ myVM2 で状態と履歴を表示するには、次のコマンドを実行し�
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [可用性が高い仮想マシンの作成のチュートリアル](../../linux/create-cli-complete.md)
 

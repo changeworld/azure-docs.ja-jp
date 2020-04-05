@@ -14,10 +14,10 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 3a48cef2210721bf7116b1c4ad1169779288f47d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75644836"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Azure DevTest Labs インフラストラクチャをスケールアップする

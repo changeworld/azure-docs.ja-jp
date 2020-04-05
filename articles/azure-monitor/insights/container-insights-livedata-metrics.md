@@ -3,12 +3,12 @@ title: Azure Monitor for containers でメトリックをリアルタイムで�
 description: この記事では、Azure Monitor for containers でメトリックを kubectl を使用せずにリアルタイムで表示する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: fbb08a8ed3deeff061065916241ee2d724603be3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4604635c985057ec0b7f49a0d1cca7111dfc8eec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404943"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79216580"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>メトリックをリアルタイムで表示する方法
 
@@ -34,7 +34,7 @@ Live Data (プレビュー) 機能は、Kubernetes API に直接アクセスし�
 
 ポーリング間隔は、 **[間隔の設定]** ドロップダウンから構成できます。1 秒、5 秒、15 秒、および 30 秒ごとの新しいデータのポーリングを設定できます。 
 
-![[ライブに移動] ドロップダウン ポーリング間隔](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.ping.png)
+![[ライブに移動] ドロップダウン ポーリング間隔](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
 >短時間で問題のトラブルシューティングを行う場合は、ポーリング間隔を 1 秒に設定することをお勧めします。 これらの要求は、クラスターの Kubernetes API の可用性とスロットリングに影響を与える可能性があります。 その後、より長いポーリング間隔へと再構成します。 

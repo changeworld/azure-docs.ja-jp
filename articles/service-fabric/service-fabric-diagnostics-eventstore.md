@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
 ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645737"
 ---
 # <a name="eventstore-overview"></a>EventStore の概要

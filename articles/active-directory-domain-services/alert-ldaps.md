@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: iainfou
 ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71258044"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services の Secure LDAP アラート
@@ -30,7 +30,7 @@ ms.locfileid: "71258044"
 
 "*マネージド ドメインに対してインターネット経由のセキュリティで Secure LDAP が有効になっています。ただし、ポート 636 へのアクセスはネットワーク セキュリティ グループを使用してロックダウンされていません。これにより、マネージド ドメインのユーザー アカウントがパスワードの総当り攻撃の対象になる可能性があります。* "
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 Secure LDAP を有効にする場合は、特定の IP アドレスへの受信 LDAPS アクセスを制限する追加の規則を作成することをお勧めします。 これらの規則は、Azure AD DS マネージド ドメインをブルート フォース攻撃から保護します。 Secure LDAP への TCP ポート 636 アクセスを制限するようにネットワーク セキュリティ グループを更新するには、次の手順を実行します。
 
@@ -54,11 +54,11 @@ Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動�
 
 *マネージド ドメインのセキュリティで保護された LDAP 証明は[日付] に有効期限が切れます。*
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 交換用の Secure LDAP 証明書を作成するには、「[Secure LDAP 用の証明書を作成する](tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)」の手順を実行してください。 交換用の証明書を Azure AD DS に適用し、Secure LDAP を使用して接続するすべてのクライアントにその証明書を配布します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ問題が解決しない場合は、さらなるトラブルシューティングの支援を求めて、[Azure サポート リクエストを開いて][azure-support]ください。
 

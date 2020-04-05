@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: fbdf8e316368be02ebd0c4bfd320917c20d80777
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77069457"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>データ依存ルーティングを使用して、クエリを適切なデータベースにルーティングする
@@ -35,7 +35,7 @@ ms.locfileid: "77069457"
 
 ## <a name="using-a-shardmapmanager-in-a-data-dependent-routing-application"></a>データ依存ルーティング アプリケーションでの ShardMapManager の使用
 
-アプリケーションは、ファクトリ呼び出し **GetSQLShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) を使用して、初期化中に **ShardMapManager** をインスタンス化する必要があります。 この例では、**ShardMapManager** と、これが含んでいる特定の **ShardMap** の両方が初期化されます。 また、GetSqlShardMapManager メソッドと GetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap)、[.NET](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))) メソッドを使用しています。
+アプリケーションは、ファクトリ呼び出し **GetSQLShardMapManager** (**Java**、[.NET](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager)) を使用して、初期化中に [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager) をインスタンス化する必要があります。 この例では、**ShardMapManager** と、これが含んでいる特定の **ShardMap** の両方が初期化されます。 また、GetSqlShardMapManager メソッドと GetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap)、[.NET](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))) メソッドを使用しています。
 
 ```Java
 ShardMapManager smm = ShardMapManagerFactory.getSqlShardMapManager(connectionString, ShardMapManagerLoadPolicy.Lazy);

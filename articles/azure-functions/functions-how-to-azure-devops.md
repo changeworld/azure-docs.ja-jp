@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 5e2fc8fb06248e2cdad9067c56647da6d9626b50
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255752"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps を使用した継続的デリバリー

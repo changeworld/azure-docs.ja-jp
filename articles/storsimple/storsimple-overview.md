@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68965113"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
@@ -215,7 +215,7 @@ Microsoft Azure StorSimple は、重複除去とデータ圧縮を使用して�
 | コラボレーション |SharePoint |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
 | アーカイブ |簡易ファイルのアーカイブ |はい | |すべてのバージョン |
 | 仮想化 |仮想マシン |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
-| Database |SQL |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
+| データベース |SQL |はい* |ローカル固定ボリュームでのみサポート |Update 2 以降 |
 | ビデオの監視 |ビデオの監視 |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 2 以降 |
 | バックアップ |プライマリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
 | バックアップ |セカンダリ対象バックアップ |はい* |StorSimple デバイスがこのワークロード専用の場合のみサポート |Update 3 以降 |
@@ -313,6 +313,6 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 | ボリューム シャドウ コピー サービス (VSS) |VSS 対応アプリケーションとやり取りして増分スナップショットの作成を調整することで、アプリケーション整合性を促進する Windows Server オペレーティング システム サービス。 VSS は、スナップショットの作成時に、アプリケーションが一時的に非アクティブ状態になるようにします。 |
 | StorSimple 用 Windows PowerShell |StorSimple デバイスを操作および管理するために使用される Windows PowerShell ベースのコマンド ライン インターフェイス。 このインターフェイスは、Windows PowerShell の基本機能の一部を維持するとともに、StorSimple デバイスの管理に適合するように調整された専用のコマンドレットを持っています。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [StorSimple のセキュリティ](storsimple-8000-security.md)の詳細を確認します。
 

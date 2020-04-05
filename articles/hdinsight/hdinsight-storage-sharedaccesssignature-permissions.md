@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 725bdfd4efe3be600c993e568f1a5c7edccc6952
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 1a4ae0701174278203023c156a86aad8feb1ca4c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74148221"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240616"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
@@ -92,7 +92,7 @@ Shared Access Signature の詳細については、「 [SAS モデルについ�
 
 `RESOURCEGROUP`、`STORAGEACCOUNT`、`STORAGECONTAINER` は、既存のストレージ コンテナーの適切な値に置き換えてください。 ディレクトリを `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` に変更するか、または `Set-AzStorageblobcontent` の絶対パスを含むように `-File` パラメーターを修正します。 次の PowerShell コマンドを入力します。
 
-```PowerShell
+```powershell
 $resourceGroupName = "RESOURCEGROUP"
 $storageAccountName = "STORAGEACCOUNT"
 $containerName = "STORAGECONTAINER"
@@ -175,7 +175,7 @@ Set-AzStorageblobcontent `
 
 2. 取得したプライマリ キーを、後で使用するために変数に設定します。 `PRIMARYKEY` を前の手順で取得した値に置き換えてから、次のコマンドを入力します。
 
-    ```azurecli
+    ```console
     #set variable for primary key
     set AZURE_STORAGE_KEY=PRIMARYKEY
     ```
@@ -434,7 +434,7 @@ Remove-AzResourceGroup `
 
     このとき、操作が正常に完了する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HDInsight クラスターにアクセスが制限されたストレージを追加する方法を学習しました。クラスターのデータと連携するその他の方法を確認してください。
 

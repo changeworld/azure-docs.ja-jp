@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: 44d3b7c2b9e23b90f696162747d9728b18fb7d3f
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77623367"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割されたグラフの使用

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
 ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632870"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228167"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>StorSimple デバイス マネージャー サービスを使用してハードウェア コンポーネントと状態を監視する
 
@@ -79,7 +79,7 @@ ms.locfileid: "60632870"
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>StorSimple デバイスの主エンクロージャのコンポーネントの一覧
 次の表では、オンプレミスの StorSimple デバイスの主エンクロージャ (8100 と 8600 の両方に存在します) に含まれる物理コンポーネントと論理コンポーネントについて説明します。
 
-| コンポーネント | モジュール | Type | Location | 現場交換可能ユニット (FRU) である | 説明 |
+| コンポーネント | [Module] | 種類 | Location | 現場交換可能ユニット (FRU) である | 説明 |
 | --- | --- | --- | --- | --- | --- |
 | スロット [0 ～ 11] のドライブ |ディスク ドライブ |物理 |共有 |はい |主エンクロージャの SSD ドライブまたは HDD ドライブごとに 1 ラインあります。 |
 | 周辺温度センサー |エンクロージャ |物理 |共有 |いいえ |シャーシ内の温度を測定します。 |
@@ -120,7 +120,7 @@ ms.locfileid: "60632870"
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>StorSimple デバイスの EBOD エンクロージャのコンポーネントの一覧
 次の表では、オンプレミスの StorSimple デバイスの EBOD エンクロージャ (8600 モデルにのみ存在します) に含まれる物理コンポーネントと論理コンポーネントについて説明します。
 
-| コンポーネント | モジュール | Type | Location | FRU である | 説明 |
+| コンポーネント | [Module] | 種類 | Location | FRU である | 説明 |
 | --- | --- | --- | --- | --- | --- |
 | スロット [0 ～ 11] のドライブ |ディスク ドライブ |物理 |共有 |はい |EBOD エンクロージャの前面にある HDD ドライブごとに 1 ラインあります。 |
 | 周辺温度センサー |エンクロージャ |物理 |共有 |いいえ |シャーシ内の温度を測定します。 |
@@ -143,7 +143,7 @@ ms.locfileid: "60632870"
 | エンクロージャ エレクトロニクス診断 |I/O |物理 |コントローラー |いいえ |コントローラーによって提供される診断サブシステムの状態を示します。 |
 | デバイス コントローラーへの接続 |I/O |物理 |コントローラー |いいえ |EBOD I/O モジュールとデバイス コントローラー間の接続の状態を示します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * StorSimple デバイス マネージャー サービスを使用してデバイスを管理する方法については、[StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)を参照してください。
 * 機能低下または障害の状態のデバイス コンポーネントのトラブルシューティングが必要な場合は、「 [StorSimple モニタリング インジケーター](storsimple-monitoring-indicators.md)」をご覧ください。
 * 障害が発生したハードウェア コンポーネントを交換するには、「 [StorSimple のハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」をご覧ください。

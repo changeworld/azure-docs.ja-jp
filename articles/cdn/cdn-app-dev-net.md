@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7e3ad3a5928b36c221bb83b1c4012c3c9e14f35d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67594174"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]
-> * [Node.JS](cdn-app-dev-node.md)
+> * [Node.js](cdn-app-dev-node.md)
 > * [.NET](cdn-app-dev-net.md)
 > 
 > 
@@ -44,7 +44,7 @@ ms.locfileid: "67594174"
 
 Visual Studio 2015 で、 **[ファイル]** 、 **[新規]** 、 **[プロジェクト]** の順にクリックして、新しいプロジェクト ダイアログを開きます。  左側のウィンドウで **[Visual C#]** を展開し、 **[Windows]** を選択します。  中央のウィンドウで **[コンソール アプリケーション]** をクリックします。  プロジェクトに名前を付け、 **[OK]** をクリックします。  
 
-![新しいプロジェクト](./media/cdn-app-dev-net/cdn-new-project.png)
+![[新しいプロジェクト]](./media/cdn-app-dev-net/cdn-new-project.png)
 
 このプロジェクトでは、NuGet パッケージに含まれているいくつかの Azure ライブラリを使用します。  それでは、ライブラリをプロジェクトに追加していきましょう。
 
@@ -155,7 +155,7 @@ Visual Studio 2015 で、 **[ファイル]** 、 **[新規]** 、 **[プロジ�
 
 これで、プログラムの基本的な構造が作成されました。次に、`Main` メソッドによって呼び出されるメソッドを作成します。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 Azure CDN Management Library を使用するには、サービス プリンシパルを認証し、認証トークンを取得する必要があります。  このメソッドは、ADAL を使用してトークンを取得します。
 
 ```csharp
@@ -270,7 +270,7 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> 上の例では、ホスト名 `www.contoso.com` を持つ *Contoso* という名前のオリジンをエンドポイントに割り当てています。  オリジンのホスト名を指すようにこれを変更する必要があります。
+> 上の例では、ホスト名 *を持つ*Contoso`www.contoso.com` という名前のオリジンをエンドポイントに割り当てています。  オリジンのホスト名を指すようにこれを変更する必要があります。
 > 
 > 
 
@@ -291,7 +291,7 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> 上記の例の文字列 `/*` は、エンドポイント パスのルートにあるものをすべて消去することを示します。  これは、Azure Portal の "消去" ダイアログで **[すべて消去]** を選択するのと同じです。 `CreateCdnProfile` メソッドでは、`Sku = new Sku(SkuName.StandardVerizon)` というコードを使用して **Azure CDN from Verizon** としてプロファイルを作成しているため、このコードは動作します。  ただし、**Azure CDN from Akamai** プロファイルでは **[すべて消去]** がサポートされません。このチュートリアルで使用するプロファイルが Akamai プロファイルであった場合は、消去する特定のパスを含める必要があります。
+> 上記の例の文字列 `/*` は、エンドポイント パスのルートにあるものをすべて消去することを示します。  これは、Azure Portal の "消去" ダイアログで **[すべて消去]** を選択するのと同じです。 `CreateCdnProfile` メソッドでは、**というコードを使用して**Azure CDN from Verizon`Sku = new Sku(SkuName.StandardVerizon)` としてプロファイルを作成しているため、このコードは動作します。  ただし、**Azure CDN from Akamai** プロファイルでは **[すべて消去]** がサポートされません。このチュートリアルで使用するプロファイルが Akamai プロファイルであった場合は、消去する特定のパスを含める必要があります。
 > 
 > 
 
@@ -329,7 +329,7 @@ Visual Studio の **[開始]** をクリックして、プログラムをコン�
 
 プログラムによって上記のプロンプトが表示された時点で、Azure ポータルでリソース グループに戻り、このプロファイルが作成されたことを確認できます。
 
-![成功です。](./media/cdn-app-dev-net/cdn-success.png)
+![Success!](./media/cdn-app-dev-net/cdn-success.png)
 
 次に、プログラムの残りの部分を実行するかどうかを確認できます。
 

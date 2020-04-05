@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7bf064ff01693f7a65c756a99c435d7f1a39840e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61409417"
 ---
 # <a name="install-updates-on-your-storsimple-virtual-array---azure-portal"></a>StorSimple Virtual Array に更新プログラムをインストールする - Azure Portal
@@ -79,7 +79,7 @@ ms.locfileid: "61409417"
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update/update1m.png)
 
-2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[適用]** をクリックします。
+2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。 更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。 **[Apply]** をクリックします。
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update/update2m.png)
 
@@ -98,7 +98,7 @@ ms.locfileid: "61409417"
    
     ![デバイスの更新](./media/storsimple-virtual-array-install-update/update6m.png)
 
-## <a name="use-the-azure-portal"></a>Azure Portal の使用
+## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
 Update 0.2 を実行している場合は、Azure Portal から更新プログラムをインストールすることをお勧めします。 ポータルの手順では、ユーザーは更新プログラムをスキャン、ダウンロード、およびインストールする必要があります。 この手順の所要時間は約 7 分です。 次の手順を実行して、更新プログラムまたは修正プログラムをインストールします。
 
@@ -107,7 +107,7 @@ Update 0.2 を実行している場合は、Azure Portal から更新プログ�
 インストールが完了したら (ジョブの状態が 100% と示されます)、StorSimple デバイス マネージャー サービスに移動します。 **[デバイス]** を選択し、このサービスに接続されているデバイスの一覧から、更新するデバイスを選択してクリックします。 **[設定]** ブレードで、 **[管理]** セクションに移動し、 **[デバイスの更新プログラム]** を選択します。 表示されるソフトウェアのバージョンは **10.0.10288.0** です。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 

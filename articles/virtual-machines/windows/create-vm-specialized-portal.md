@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
 ms.openlocfilehash: 587acd37f465dda7e514b595f8451afe3d259dea
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74039146"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Azure Portal を使用して VHD から VM を作成する
@@ -77,7 +77,7 @@ Azure で仮想マシン (VM) を作成する方法には、次のいくつか�
 12. VM 構成が検証に合格したら、 **[作成]** を選択してデプロイを開始します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 PowerShell を使用して [VHD を Azure にアップロードし特殊化した VM を作成](create-vm-specialized.md)することもできます。
 

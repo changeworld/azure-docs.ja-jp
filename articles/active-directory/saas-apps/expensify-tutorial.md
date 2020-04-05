@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Expensify の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Expensify の統合 | Microsoft Docs
 description: Azure Active Directory と Expensify の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e9ed129bccbd763bf4459fa7818e0dba4e7e65b5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73156525"
 ---
 # <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>チュートリアル:Expensify と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "73156525"
 
 * Expensify にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Expensify に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

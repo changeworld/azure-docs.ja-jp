@@ -17,18 +17,18 @@ ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: daf86270224d2a76eb124e879594ac2588b46776
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72969734"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mail-luck"></a>チュートリアル:Azure Active Directory と Mail Luck! のシングル サイン オン (SSO) 統合
 
-このチュートリアルでは、Mail Luck! と Azure Active Directory (Azure AD) を統合する方法について学習します。 Mail Luck! を Azure AD と統合すると、次のことができます。
+このチュートリアルでは、Mail Luck! と Azure Active Directory (Azure AD) を統合する方法について説明します。 Mail Luck! を Azure AD と統合すると、次のことができます。
 
 * Mail Luck! にアクセスできるユーザーを Azure AD で制御します。
-* ユーザーが自分の Azure AD アカウントを使用して Mail Luck! に自動的にサインインできるようにします。
+* ユーザーが自分の Azure AD アカウントを使用して Mail Luck! に自動的に サインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
@@ -48,18 +48,18 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="adding-mail-luck-from-the-gallery"></a>ギャラリーからの Mail Luck! の追加
 
-Mail Luck! の Azure AD への統合を構成するには、Mail Luck! をギャラリーから管理対象 SaaS アプリの一覧に追加する必要があります。
+Mail Luck! の Azure AD への統合を構成するには、 Mail Luck! をギャラリーからマネージド SaaS アプリ の一覧に追加する必要があります。
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Mail Luck!** 」 と入力します。
-1. 結果パネルから **[Mail Luck!]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. 結果パネルで **[Mail Luck!]** を選択し、 アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-mail-luck"></a>Mail Luck! の Azure AD シングル サインオンの構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、Mail Luck! に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Mail Luck! の関連ユーザーとの間にリンク関係を確立する必要があります。
+Mail Luck! に対する Azure AD SSO を構成してテストします。 **B.Simon** というテスト ユーザーを使用します。 SSO が機能するためには、Azure AD ユーザーと Mail Luck! の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 Mail Luck! で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
@@ -67,14 +67,14 @@ Mail Luck! で Azure AD SSO を構成してテストするには、次の構成�
     * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Mail Luck! SSO の構成](#configure-mail-luck-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    * **[Mail Luck! のテスト ユーザーの作成](#create-mail-luck-test-user)** - Mail Luck! で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
+    * **[Mail Luck! のテスト ユーザーの作成](#create-mail-luck-test-user)** - Azure AD でのユーザーにリンクされた、Mail Luck! での Britta Simon の対応するユーザーを作成します。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Mail Luck!** アプリケーション統合ページで、 **[管理]** セクションを見つけ、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **[Mail Luck!]** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -127,7 +127,7 @@ Mail Luck! で Azure AD SSO を構成してテストするには、次の構成�
 
 **Mail Luck!** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Mail Luck! サポート チーム](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
-### <a name="create-mail-luck-test-user"></a>Mail Luck! のテスト ユーザーの作成
+### <a name="create-mail-luck-test-user"></a>Mail Luck! テスト ユーザー の作成
 
 このセクションでは、Mail Luck! で B.Simon というユーザーを作成します。  [Mail Luck! サポート チーム](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi)と連携し、Mail Luck! プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
@@ -135,7 +135,7 @@ Mail Luck! で Azure AD SSO を構成してテストするには、次の構成�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Mail Luck!] タイルをクリックすると、SSO を設定した Mail Luck! に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Mail Luck!] タイルをクリックすると、SSO を設定した Mail Luck! に自動的にサインイン します。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

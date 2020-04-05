@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 782240c51833fc841af9f4260860db4c03897c03
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71086444"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Azure VM のゲスト OS 上のファイアウォール規則を有効または無効にする

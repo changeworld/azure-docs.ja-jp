@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839775"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229807"
 ---
 # <a name="azure-data-box-heavy-system-requirements"></a>Azure Data Box Heavy のシステム要件
 
@@ -40,7 +40,7 @@ ms.locfileid: "67839775"
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
 
-### <a name="supported-storage-types"></a>サポートされるストレージの種類
+### <a name="supported-storage-types"></a>サポートされているストレージの種類
 
 [!INCLUDE [data-box-supported-storage-types](../../includes/data-box-supported-storage-types.md)]
 
@@ -58,6 +58,6 @@ SMB または NFS トラフィックを許可するためにファイアウォ�
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Data Box をデプロイする](data-box-deploy-ordered.md)

@@ -4,17 +4,17 @@ titleSuffix: Azure Storage
 description: このクイックスタートでは、Azure Storage Explorer を使用してコンテナーと BLOB を作成する方法や、その BLOB をローカル コンピューターにダウンロードする方法、さらにコンテナーにあるすべての BLOB を表示する方法について説明します。
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: f19152b5b8bc569fa07109b6135fa85b9b55bff1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 04530844316610bb8a97e8a299b5fb41ebf49955
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892466"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061370"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>クイック スタート:Azure Storage Explorer を使用して BLOB を作成する
 
@@ -94,7 +94,7 @@ Shared Access Signature (SAS) は Storage Explorer を使用して取得でき�
 
 ![Microsoft Azure Storage Explorer - コンテナー内の BLOB の一覧](media/storage-quickstart-blobs-storage-explorer/sharedaccesssignature.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、**Azure Storage Explorer** を使用してローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Blob Storage の操作の詳細を学習するには、Blob Storage の操作方法に進みます。
 

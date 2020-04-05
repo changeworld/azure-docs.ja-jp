@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.custom: seodec18
 ms.openlocfilehash: 2c946c49884ef0de6843028976d4ec00ccfbcdfe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934844"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Azure Portal で新しい Time Series Insights 環境を作成する
@@ -28,7 +28,7 @@ Time Series Insights では、Azure IoT Hub や Event Hubs に送信されたデ
 
 次の手順に従って、環境を作成します。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. **[+ リソースの作成]** ボタンを選択します。
 

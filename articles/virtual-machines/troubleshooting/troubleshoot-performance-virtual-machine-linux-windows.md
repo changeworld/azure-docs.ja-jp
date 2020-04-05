@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
 ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75772620"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Linux または Windows での Azure 仮想マシンのパフォーマンスのトラブルシューティング

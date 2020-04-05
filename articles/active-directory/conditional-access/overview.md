@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c85fbc2c1f926f89dbfe9f2a5ae47cc48edf73
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966284"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215990"
 ---
 # <a name="what-is-conditional-access"></a>条件付きアクセスとは
 
@@ -65,7 +65,7 @@ ms.locfileid: "74966284"
    - 最も制限が弱い決定でも、次のオプションのうち 1 つ以上を要求することができます。
       - 多要素認証が必要です
       - デバイスは準拠としてマーク済みである必要がある
-      - Hybrid Azure AD 参加済みデバイスが必要
+      - ハイブリッド Azure AD 参加済みのデバイスを必要とする
       - 承認済みクライアント アプリを必須にする
       - アプリの保護ポリシーが必要 (プレビュー)
 
@@ -92,9 +92,9 @@ Azure AD の条件付きアクセスを使用して、自動化されたアク�
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-[Microsoft 365 Business ライセンス](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。 
+[Microsoft 365 Business ライセンス](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [条件付きアクセス ポリシーを 1 つずつ作成する](concept-conditional-access-policies.md)
 
@@ -102,6 +102,6 @@ Azure AD の条件付きアクセスを使用して、自動化されたアク�
 
 [Identity Protection について学ぶ](../identity-protection/overview-v2.md)
 
-[Microsoft Cloud App Security について学ぶ](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)
+[Microsoft Cloud App Security について学ぶ](/cloud-app-security/what-is-cloud-app-security)
 
-[Microsoft Intune について学ぶ](https://docs.microsoft.com/intune/index)
+[Microsoft Intune について学ぶ](/intune/index)

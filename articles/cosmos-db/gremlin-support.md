@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
 ms.openlocfilehash: 564e69e3cd852c6a0f8c20278d4742b77f064298
-ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75499998"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB での Gremlin グラフのサポート
-Azure Cosmos DB は、[Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) と呼ばれる、[Apache TinkerPop](https://tinkerpop.apache.org) のグラフ トラバーサル言語をサポートしています。 Gremlin 言語を使用して、グラフ エンティティ (頂点と辺) の作成、エンティティ内のプロパティの変更、クエリとトラバーサルの実行、エンティティの削除を行うことができます。 
+Azure Cosmos DB は、[Gremlin](https://tinkerpop.apache.org) と呼ばれる、[Apache TinkerPop](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) のグラフ トラバーサル言語をサポートしています。 Gremlin 言語を使用して、グラフ エンティティ (頂点と辺) の作成、エンティティ内のプロパティの変更、クエリとトラバーサルの実行、エンティティの削除を行うことができます。 
 
 この記事では、Gremlin の簡単なチュートリアルを提供し、Gremlin API でサポートされている Gremlin の機能を紹介します。
 

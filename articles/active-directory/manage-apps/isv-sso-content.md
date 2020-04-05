@@ -13,10 +13,10 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4c89a83ade6305579e700afb86f0b9e3aca2695e
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67795182"
 ---
 # <a name="enable-single-sign-on-for-your-multi-tenant-application"></a>マルチテナント アプリケーションのシングル サインオンを有効にする  

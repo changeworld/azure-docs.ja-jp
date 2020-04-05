@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
 ms.openlocfilehash: 1d24261edea843fa928ad00e3ce7babcb84acd3b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873337"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL クエリの使用を開始する
@@ -52,7 +52,7 @@ SQL API Cosmos DB アカウントで、`Families` というコンテナーを作
 }
 ```
 
-2 つ目の項目は、`firstName` と `lastName` の代わりに `givenName` と `familyName` を使用します。
+2 つ目の項目は、`givenName` と `familyName` の代わりに `firstName` と `lastName` を使用します。
 
 ```json
 {
@@ -118,7 +118,7 @@ Azure Cosmos DB の SQL クエリ言語の重要な側面について理解す�
     }]
 ```
 
-次のクエリは、JSON 出力を異なる形式に変更します。 このクエリは、住所の都市が州と同じ場合に、2 つの選択したフィールド (`Name` と `City`) を持つ JSON `Family` オブジェクトをプロジェクションします。 "NY, NY" はこのケースに一致します。
+次のクエリは、JSON 出力を異なる形式に変更します。 このクエリは、住所の都市が州と同じ場合に、2 つの選択したフィールド (`Family` と `Name`) を持つ JSON `City` オブジェクトをプロジェクションします。 "NY, NY" はこのケースに一致します。
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family
@@ -168,7 +168,7 @@ Azure Cosmos DB の SQL クエリ言語の重要な側面について理解す�
 
 * Cosmos コンテナーは、JSON 項目のスキーマなしのコレクションです。 コンテナー項目内および項目全体の関係は、含有関係によって暗黙的にキャプチャされ、主キーと外部キーの関係ではキャプチャされません。 この機能は、この記事で後述する項目間結合に重要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の概要](introduction.md)
 - [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)

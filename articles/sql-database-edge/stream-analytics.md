@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: 21a8bb6953fd879b17816361f536596571678697
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74384171"
 ---
 # <a name="using-sql-database-dac-packages-and-stream-analytics-jobs-with-sql-database-edge"></a>SQL Database Edge で SQL Database DAC パッケージと Stream Analytics ジョブを使用する
@@ -100,10 +100,10 @@ Azure SQL Database Edge には、ストリーム分析ランタイムがネイ�
     |フィールド      | 説明 |
     |---------------|-------------|
     |出力エイリアス | 出力エイリアスの名前。|
-    |Database | SQL データベースの名前。 SQL Database Edge インスタンスに存在するデータベースの有効な名前である必要があります。|
+    |データベース | SQL データベースの名前。 SQL Database Edge インスタンスに存在するデータベースの有効な名前である必要があります。|
     |サーバー名 | SQL インスタンスの名前 (または IP アドレス) とポート番号の詳細。 SQL Database Edge のデプロイの場合、**tcp:.,1433** をサーバー名に使用できます。|
     |ユーザー名 | 以前に指定したデータベースへのデータ閲覧者とデータ作成者のアクセス権を持つ SQL サインイン アカウント。|
-    |パスワード | 以前に指定した SQL サインイン アカウントのパスワード。|
+    |Password | 以前に指定した SQL サインイン アカウントのパスワード。|
     |テーブル | ストリーミング ジョブの出力対象となるテーブルの名前。|
     |パーティション分割の継承| 以前のクエリ ステップまたは入力のパーティション構成を継承できます。 このオプションを有効にすると、ディスクベースのテーブルに書き込んでいて、ジョブの完全並列トポロジがある場合にスループットの向上を期待できます。|
     |バッチ サイズ| すべての一括挿入トランザクションで送信されるレコードの最大数。|
@@ -174,7 +174,7 @@ Azure SQL Database Edge には、ストリーム分析ランタイムがネイ�
 
 10. モジュールの更新後、Stream Analytics ジョブ ファイルがダウンロードおよび解凍され、SQL Database Edge インスタンスにデプロイされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 価格と可用性の詳細については、[Azure SQL Database Edge](https://azure.microsoft.com/services/sql-database-edge/) に関するページを参照してください。
 - お使いのサブスクリプションに対して Azure SQL Database Edge の有効化を要求します。

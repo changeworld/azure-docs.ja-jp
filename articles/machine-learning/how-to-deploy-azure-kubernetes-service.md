@@ -11,10 +11,10 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
 ms.openlocfilehash: db2e80ebb6cbe5f31f2d99a1403a15daf38fd877
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722409"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする

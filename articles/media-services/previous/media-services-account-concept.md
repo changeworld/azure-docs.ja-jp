@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.openlocfilehash: 09a5f004570430fafe5c86f4f8ae048f2d1fe4c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981939"
 ---
 # <a name="manage-azure-media-services-v2-accounts"></a>Azure Media Services v2 アカウントの管理
@@ -38,7 +38,7 @@ Media Services v2 では、マルチ テナント モデルはサポートされ
 > [!IMPORTANT]
 > 移動が正常に完了するまで、ストリーミング エンドポイントを開始しないでください。
 
-### <a name="troubleshoot"></a>[トラブルシューティング] 
+### <a name="troubleshoot"></a>トラブルシューティング 
 
 リソース グループの移動後に、Media Services アカウントまたは関連付けられた Azure Storage アカウントが "切断" される場合、ストレージ アカウント キーの交換を試してください。 ストレージ アカウント キーの交換で Media Services アカウントの "切断" 状態が解決されない場合は、Media Services アカウントの [サポート + トラブルシューティング] メニューから新しいサポート リクエストを提出してください。  
  

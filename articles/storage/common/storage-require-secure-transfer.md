@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 3b2d78bd929e23d49a57f337022f6678114bb5fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75457445"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>セキュリティで保護された接続を確保するために安全な転送を要求する
@@ -32,7 +32,7 @@ Azure portal でストレージ アカウントを作成すると、既定では
 
 ## <a name="require-secure-transfer-in-the-azure-portal"></a>Azure portal で安全な転送を要求する
 
-[Azure portal](https://portal.azure.com) でストレージ アカウントを作成するときに、 **[安全な転送が必須]** プロパティを有効にすることができます。 既存のストレージ アカウントの場合も有効にすることができます。
+**Azure portal** でストレージ アカウントを作成するときに、[[安全な転送が必須]](https://portal.azure.com) プロパティを有効にすることができます。 既存のストレージ アカウントの場合も有効にすることができます。
 
 ### <a name="require-secure-transfer-for-a-new-storage-account"></a>新しいストレージ アカウントの安全な転送が必須
 

@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 8175563d8c1c2ec59b4195b2ede06f6e1dbf8556
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823557"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228635"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>シャード マップ マネージャーでデータベースをスケールアウトする
 
@@ -53,11 +53,11 @@ Elastic Scale では、シャーディング キーとして次の型がサポ�
 
 | .NET | Java |
 | --- | --- |
-| integer |integer |
+| 整数 (integer) |整数 (integer) |
 | long |long |
 | guid |uuid |
 | byte[]  |byte[] |
-| datetime | timestamp |
+| DATETIME | timestamp |
 | TimeSpan | duration|
 | datetimeoffset |offsetdatetime |
 

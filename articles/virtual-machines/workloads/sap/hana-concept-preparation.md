@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70101258"
 ---
 # <a name="disaster-recovery-principles"></a>ディザスター リカバリーの原則
@@ -104,6 +104,6 @@ HANA L インスタンスでは、さまざまな Azure リージョンの HANA 
 
 フェールオーバーが発生した場合、最新のストレージ スナップショットではなく、古いストレージ スナップショットへの復元を選択することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「[ディザスター リカバリーのフェールオーバー手順](hana-failover-procedure.md)」を参照してください。

@@ -9,10 +9,10 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.openlocfilehash: 05b94ca9bd14392bad5288882a80f5c75590ef7b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76931790"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>クイック スタート:Microsoft Genomics サービス経由でワークフローを実行する
@@ -37,7 +37,7 @@ Microsoft Genomics アカウントを作成するには、Azure portal の [[Cre
  |サブスクリプション         | お使いのサブスクリプション名|これは、Azure サービスの課金単位です。サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページをご覧ください。 |      
  |Resource group       | MyResourceGroup       |  リソース グループを使用すると、複数の Azure リソース (Storage アカウント、Genomics アカウントなど) を1 つのグループにまとめて、管理を簡単にできます。 詳細については、「[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)」を参照してください。 有効なリソース グループ名については、「[名前付け規則](/azure/architecture/best-practices/resource-naming)」をご覧ください。 |
  |アカウント名         | MyGenomicsAccount     |一意のアカウント識別子を選択します。 有効な名前については、「[名前付け規則](/azure/architecture/best-practices/resource-naming)」をご覧ください。 |
- |Location                   | 米国西部 2                    |    サービスは、米国西部 2、西ヨーロッパ、および東南アジアで利用可能です。 |
+ |場所                   | 米国西部 2                    |    サービスは、米国西部 2、西ヨーロッパ、および東南アジアで利用可能です。 |
 
 最上部のメニュー バーにある **[通知]** を選択すると、デプロイ プロセスを監視できます。
 
@@ -101,7 +101,7 @@ Microsoft Genomics サービスでは、Azure Storage アカウントのブロ�
  |サブスクリプション         | お使いの Azure サブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページをご覧ください。 |      
  |Resource group       | MyResourceGroup       |  お使いの Genomics アカウントと同じリソース グループを選択できます。 有効なリソース グループ名については、[名前付けルール](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
  |ストレージ アカウント名         | MyStorageAccount     |一意のアカウント識別子を選択します。 有効な名前については、[名前付けルール](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
- |Location                  | 米国西部 2                  | お使いの Genomics アカウントの場所と同じ場所を使用し、エグレス料金を削減すると共に待ち時間を短縮します。  | 
+ |場所                  | 米国西部 2                  | お使いの Genomics アカウントの場所と同じ場所を使用し、エグレス料金を削減すると共に待ち時間を短縮します。  | 
  |パフォーマンス                  | Standard                   | 既定値は Standard です。 Standard および Premium ストレージ アカウントの詳細については、[Microsoft Azure Storage の概要](https://docs.microsoft.com/azure/storage/common/storage-introduction)に関するページを参照してください。    |
  |アカウントの種類       | BlobStorage       |  BLOB ストレージでは、汎用的な目的の場合より、2 ～ 5 倍のダウンロードおよびアップロードの高速化が可能です。 |
  |レプリケーション                  | ローカル冗長ストレージ                  | ローカル冗長ストレージでは、お使いのストレージ アカウントが作成されたリージョンのデータセンター内に、データをレプリケートします。 詳細については、「[Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/common/storage-redundancy)」をご覧ください。    |

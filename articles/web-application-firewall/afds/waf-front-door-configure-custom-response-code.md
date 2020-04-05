@@ -9,10 +9,10 @@ ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: 215d4058937ad5fded6bef7a36e873b52a1b5ae9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185340"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールに対するカスタム応答を構成する
@@ -40,7 +40,7 @@ Install-Module PowerShellGet -Force -AllowClobber
 Install-Module -Name Az.FrontDoor
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure で、関連するリソースをリソース グループに割り当てます。 この例では、[New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup) を使用してリソース グループを作成します。
 
@@ -83,5 +83,5 @@ Update-AzFrontDoorFireWallPolicy `
 -CustomBlockResponseBody "<html><head><title> Forbidden</title></head><body></body></html>"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Front Door での Web アプリケーション ファイアウォール](../afds/afds-overview.md)について詳しく確認します

@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
 ms.openlocfilehash: 32c516ccee3a9f4f7604a3e330285703a776b47d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67133124"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Azure DNS 用に Azure PowerShell をセットアップする
@@ -72,7 +72,7 @@ Get-AzureRmSubscription
 Select-AzureRmSubscription -SubscriptionName "your_subscription_name"
 ```
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。 この場所は、そのリソース グループ内のリソースの既定の保存先として使用されます。 ただし、すべての DNS リソースはグローバルであり、リージョンの違いがないため、リソース グループの場所を選択しても、Azure DNS には影響しません。
 

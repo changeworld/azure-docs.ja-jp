@@ -7,10 +7,22 @@
       href: ../azure-management.md
     - name: 管理グループ
       href: ./overview.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   expanded: true
   items:
     - name: 管理グループの作成
       href: ./create.md
     - name: リソースの管理
       href: ./manage.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/account/management-group
+    - name: Azure PowerShell
+      href: '/powershell/module/az.resources/#resources'
+    - name: Azure SDK for .NET
+      href: /dotnet/api/overview/azure/managementgroups
+    - name: Azure SDK For Node
+      href: /javascript/api/@azure/arm-managementgroups/managementgroups
+    - name: REST
+      href: /rest/api/resources/managementgroups

@@ -1,19 +1,18 @@
 ---
 title: Power BI アプリ オファーの技術情報 | Azure Marketplace
 description: Microsoft AppSource Marketplace 用に Power BI アプリ オファーに技術情報フィールドを構成する。
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 02c98e38f26fff73d02dc4c2b838ad3428cd2996
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ab84cc2f4910d1186e842758df7814ca5dd6464d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819040"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281648"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>Power BI アプリの [技術的情報] タブ
 
@@ -34,7 +33,7 @@ ms.locfileid: "73819040"
 |  |  |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [[電子店舗の詳細]](./cpp-storefront-details-tab.md) タブ上で、アプリに関するマーケティングおよび法的な情報を入力します。
 

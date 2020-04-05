@@ -14,17 +14,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/10/2020
 ms.author: shvija
-ms.openlocfilehash: 414179d62970315a7575be0411bf1cb152349fdc
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 485f51e45e342ca28d54d609fd975bef5b204f7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162295"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372222"
 ---
 # <a name="event-processor-host"></a>イベント プロセッサ ホスト
 > [!NOTE]
 > この記事は、以前のバージョンの Azure Event Hubs SDK に適用されます。 新しいバージョンの SDK にコードを移行する方法については、以下の移行ガイドを参照してください。 
-> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
 > - [Java Script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)

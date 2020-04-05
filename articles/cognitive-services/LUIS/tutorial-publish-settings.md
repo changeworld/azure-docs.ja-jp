@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: diberry
 ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75890382"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>チュートリアル:感情分析を発行設定として追加する

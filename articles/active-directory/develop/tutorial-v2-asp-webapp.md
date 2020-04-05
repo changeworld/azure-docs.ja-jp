@@ -17,10 +17,10 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: e33f52d5c1f9c06a5acbae5c66b051ca82ef14c0
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79126633"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリに Microsoft へのサインインを追加する

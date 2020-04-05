@@ -17,10 +17,10 @@ ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ba96dd2fcfb995afa6e3b1302a2c8b075abfd90
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72968689"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dynatrace"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Dynatrace の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72968689"
 
 * Dynatrace にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Dynatrace に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -94,13 +94,13 @@ Dynatrace に対する Azure AD SSO を構成してテストするには、次�
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-1. **[SAML 署名証明書]** セクションで **[編集]** ボタンを選択して、 **[SAML 署名証明書]** ダイアログ ボックスを開きます。 次の手順を完了します。
+1. **[SAML 署名証明書]** セクションで **[編集]** ボタンを選択して、 **[SAML 署名証明書]** ダイアログ ボックスを開きます。 次の手順を実行します。
 
     ![SAML 署名証明書の編集](common/edit-certificate.png)
 
     a. **[署名オプション]** の設定はあらかじめ入力されています。 組織ごとの設定を確認してください。
 
-    b. **[Save]** をクリックします。
+    b. **[保存]** をクリックします。
 
     ![Communifire の署名オプション](./media/dynatrace-tutorial/tutorial-dynatrace-signing-option.png)
 

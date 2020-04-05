@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: 1c24782285ac9b06d5499351eebe1693ade07297
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78162946"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB で IP ファイアウォールを構成する
@@ -21,7 +21,7 @@ ms.locfileid: "78162946"
 * Azure Resource Manager テンプレートを使用した宣言による
 * Azure CLI または Azure PowerShell を介してプログラムで、**ipRangeFilter** プロパティを更新する。
 
-## <a id="configure-ip-policy"></a> Azure portal を使用して IP ファイアウォールを構成する
+## <a name="configure-an-ip-firewall-by-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Azure portal を使用して IP ファイアウォールを構成する
 
 Azure portal で IP アクセス制御ポリシーを構成するには、Azure Cosmos DB アカウント ページに移動し、ナビゲーション メニューで **[ファイアウォールと仮想ネットワーク]** を選択します。 **[許可するアクセス元]** の値を **[選択されたネットワーク]** に変更し、 **[保存]** を選択します。
 
@@ -92,7 +92,7 @@ Azure Cosmos DB を使用する中間層サービスのホスティングには�
 
 インターネット上のコンピューターからご利用の Azure Cosmos DB アカウントにアクセスするときは、そのコンピューターのクライアント IP アドレスまたは IP アドレス範囲を、ご利用のアカウントの IP アドレスの許可リストに追加する必要があります。
 
-## <a id="configure-ip-firewall-arm"></a>Resource Manager テンプレートを使用して IP ファイアウォールを構成する
+## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Resource Manager テンプレートを使用して IP ファイアウォールを構成する
 
 ご利用の Azure Cosmos DB アカウントへのアクセス制御を構成するには、Resource Manager テンプレートで、許可される IP 範囲のリストを使用して **ipRangeFilter** 属性を指定します。 既にデプロイされている Cosmos アカウントに IP ファイアウォールを構成する場合には、配列 `locations` が現在デプロイされているものと一致していることを確認します。 配列 `locations` とそれ以外のプロパティを同時に変更することはできません。 Azure Cosmos DB 用の Azure Resource Manager テンプレートの詳細とサンプルについては、「[Azure Cosmos DB の Azure Resource Manager テンプレート](resource-manager-samples.md)」を参照してください。
 
@@ -113,7 +113,7 @@ Azure Cosmos DB を使用する中間層サービスのホスティングには�
 }
 ```
 
-## <a id="configure-ip-firewall-cli"></a>Azure CLI を使用して IP アクセス制御ポリシーを構成する
+## <a name="configure-an-ip-access-control-policy-by-using-the-azure-cli"></a><a id="configure-ip-firewall-cli"></a>Azure CLI を使用して IP アクセス制御ポリシーを構成する
 
 次のコマンドでは、IP アクセス制御を使用して Azure Cosmos DB アカウントを作成する方法が示されています。
 
@@ -132,7 +132,7 @@ az cosmosdb create \
     --ip-range-filter $ipRangeFilter
 ```
 
-## <a id="configure-ip-firewall-ps"></a>PowerShell を使用して IP アクセス制御ポリシーを構成する
+## <a name="configure-an-ip-access-control-policy-by-using-powershell"></a><a id="configure-ip-firewall-ps"></a>PowerShell を使用して IP アクセス制御ポリシーを構成する
 
 次のスクリプトでは、IP アクセス制御を使用して Azure Cosmos DB アカウントを作成する方法が示されています。
 
@@ -159,7 +159,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-## <a id="troubleshoot-ip-firewall"></a>IP アクセス制御ポリシーに関する問題のトラブルシューティング
+## <a name="troubleshoot-issues-with-an-ip-access-control-policy"></a><a id="troubleshoot-ip-firewall"></a>IP アクセス制御ポリシーに関する問題のトラブルシューティング
 
 次のオプションを使用して IP アクセス制御ポリシーに関する問題のトラブルシューティングを行うことができます。
 

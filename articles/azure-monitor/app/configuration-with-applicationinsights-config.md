@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.openlocfilehash: b2c407036277b17c0f8c08f3261c932a6dc66624
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655483"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234763"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config または .xml を使った Application Insights SDK の構成
 Application Insights .NET SDK は、いくつかの NuGet パッケージで構成されます。 [コア パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights) は、テレメトリを Application Insights に送信するための API を提供します。 [その他のパッケージ](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)は、アプリケーションとそのコンテキストからテレメトリを自動的に追跡するためのテレメトリ *モジュール*と*初期化子*を提供します。 構成ファイルを調整することによって、テレメトリ モジュールと初期化子を有効または無効にしたり、その中のいくつかに対してパラメーターを設定したりできます。

@@ -16,10 +16,10 @@ ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 01fe4d06d5f73eacee1d1cdaf1963232b84daf05
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77046786"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex の統合
@@ -100,7 +100,7 @@ Cisco Webex で Azure AD SSO を構成してテストするには、次の構成
 
 1. その他に、Cisco Webex アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
   
-    | Name |  ソース属性|
+    | 名前 |  ソース属性|
     | ---------------|--------- |
     | uid | user.userprincipalname |
 

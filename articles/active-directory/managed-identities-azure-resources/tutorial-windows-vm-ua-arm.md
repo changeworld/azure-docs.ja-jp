@@ -16,10 +16,10 @@ ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec9956f0c5d834633646938da19f03e5467a9f6d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75977851"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>チュートリアル:Windows VM 上でユーザー割り当てマネージド ID を使用して Azure Resource Manager にアクセスする
@@ -55,7 +55,7 @@ ms.locfileid: "75977851"
 - `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` を実行して `Az.ManagedServiceIdentity` モジュールのプレリリース バージョンをインストールして、この記事のユーザー割り当て ID 操作を実行します。
 
 
-## <a name="enable"></a>[有効化]
+## <a name="enable"></a>有効化
 
 ユーザー割り当て ID に基づくシナリオの場合は、次の手順を実行する必要があります。
 

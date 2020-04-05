@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/20/2020
 ms.custom: seodec18
 ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77526818"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>チュートリアル:Azure Time Series Insights プレビューの環境を設定する
@@ -121,7 +121,7 @@ ms.locfileid: "77526818"
 
    [![作成した IoT ハブをイベント ソースとして構成します。](media/v2-update-provision/tsi-configure-event-source.png)](media/v2-update-provision/tsi-configure-event-source.png#lightbox)
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
     [![[Review + create]\(確認と作成\) ページと [Create]\(作成\) ボタン。](media/v2-update-provision/tsi-environment-confirmation.png)](media/v2-update-provision/tsi-environment-confirmation.png#lightbox)
 

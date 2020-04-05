@@ -4,10 +4,10 @@ description: UK OFFICIAL および UK NHS のブループリント サンプル�
 ms.date: 06/26/2019
 ms.topic: sample
 ms.openlocfilehash: e6ba277c879f8569e32ec963aaa15a2e14fe78c0
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/25/2020
 ms.locfileid: "74546380"
 ---
 # <a name="overview-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルの概要
@@ -18,7 +18,7 @@ UK OFFICIAL および UK NHS のブループリント サンプルでは、UK OF
 
 コントロール マッピングのセクションでは、このイニシアチブ内に含まれるポリシーについてと、それらのポリシーが、UK OFFICIAL と UK NHS のフレームワークによって定義されたさまざまなコントロールに対応するうえでどのように役立つかについて詳しく説明します。 リソースはアーキテクチャに割り当てられると、割り当て済みのポリシーに違反していないかどうかを Azure Policy によって評価されます。 詳細については、[Azure Policy](../../../policy/overview.md) に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 UK OFFICIAL および UK NHS のブループリント サンプルの概要とアーキテクチャを確認しました。 次に、コントロール マッピングと、このサンプルをデプロイする方法を確認するには、次の記事を参照してください。
 

@@ -8,10 +8,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1076fc152ddf2c3a2d4f2346262ca90215d68ddf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75390380"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>アセット ファイルと出力ファイルをレンダリングするためのストレージとデータ移動のオプション

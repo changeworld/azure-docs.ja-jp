@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: dekapur
 ms.openlocfilehash: d440aadb66562e32331c9725a9367c12440a315d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464251"
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>Active Directory ユーザーまたはグループとしてサービスを実行する

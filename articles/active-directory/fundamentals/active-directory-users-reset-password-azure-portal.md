@@ -15,10 +15,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b4fdbbd4d71a9c97259678413cd9e59ee8aeae6b
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69032662"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのパスワードをリセットする
@@ -51,7 +51,7 @@ ms.locfileid: "69032662"
     >[!Note]
     >一時パスワードに期限はありません。 次回ユーザーがサインインすると、一時パスワードが生成されてから経過している時間にかかわらず、パスワードは引き続き機能します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ユーザーのパスワードをリセットしたら、次の基本的な手順を行うことができます。
 
@@ -63,4 +63,4 @@ ms.locfileid: "69032662"
 
 - [基本的なグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md)
 
-または、委任の割り当て、ポリシーの使用、ユーザー アカウントの共有など、より複雑なユーザー シナリオを実行することもできます。 他の使用可能なアクションについて詳しくは、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」をご覧ください。
+または、委任の割り当て、ポリシーの使用、ユーザー アカウントの共有など、より複雑なユーザー シナリオを実行することもできます。 他の実行可能なアクションの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。

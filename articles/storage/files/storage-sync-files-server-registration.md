@@ -8,11 +8,11 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 2656716560b981481273c3032fc0c7b1a06be8a2
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597645"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228275"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Azure File Sync に登録されたサーバーの管理
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -185,7 +185,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ### <a name="use-windows-server-storage-qos"></a>Windows Server の記憶域 QoS を使用する 
 Windows Server 仮想化ホストで実行されている仮想マシンで Azure File Sync がホストされている場合、記憶域 QoS (記憶域のサービス品質) を使用して記憶域 IO の使用を調整できます。 記憶域 QoS ポリシーは、最大値 (制限、上記の StorageSyncNetwork の制限を強制する方法と同様) または最小値 (予約) として設定できます。 最大値ではなく最小値を設定すると、使用可能なストレージ帯域幅を他のワークロードが使用していない場合に、Azure File Sync がバーストして使用できるようになります。 詳細については、[記憶域のサービス品質](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview)に関する記事をご覧ください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 - [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
 - [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)
 - [Azure File Sync の監視](storage-sync-files-monitoring.md)

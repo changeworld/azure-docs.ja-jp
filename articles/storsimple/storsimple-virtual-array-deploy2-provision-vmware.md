@@ -9,10 +9,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f5ded3faec3a080022eea70de2cca5d27529c4d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76272092"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Virtual Array をデプロイする - VMware でプロビジョニングする
@@ -151,7 +151,7 @@ VMware ESXi 5.0、5.5、6.0、または 6.5 を実行しているホスト シ�
 26. **[Advanced Options]** ページで既定値をそのまま使用して、 **[Next]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image27.png)
-27. **[Ready to Complete]** ページで、新しい仮想マシンに関連するすべての設定を確認します。 **[Edit the virtual machine settings before completion]** をオンにします。 **[続行]** をクリックします。
+27. **[Ready to Complete]** ページで、新しい仮想マシンに関連するすべての設定を確認します。 **[Edit the virtual machine settings before completion]** をオンにします。 **[Continue]** をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
 28. **[Virtual Machines Properties]** ページの **[Hardware]** タブでデバイス ハードウェアを見つけます。 **[New Hard Disk]** を選択します。 **[追加]** をクリックします。

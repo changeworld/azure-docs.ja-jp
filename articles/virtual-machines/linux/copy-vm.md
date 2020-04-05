@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.openlocfilehash: ed8574133eafe751699e90ea8cae832ee649fb00
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969595"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Azure CLI と Managed Disks を使用して Linux VM のコピーを作成する

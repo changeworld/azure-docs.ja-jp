@@ -9,10 +9,10 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 05a155584f0cb69191883cb82b3db0af435ccc12
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970094"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB ストレージの不変ポリシーを設定および管理する

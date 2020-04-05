@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 08/01/2019
 ms.openlocfilehash: 854760ea0158d356cc5449c9f1fdab6161588640
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68976855"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>クイック スタート:Azure データ カタログを作成する
@@ -100,7 +100,7 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
     ![Azure Data Catalog--pricing tier](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、組織の Azure Data Catalog を作成する方法を学習しました。 これで、データ カタログにデータ ソースを登録できるようになりました。
 

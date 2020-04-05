@@ -3,7 +3,7 @@ title: Azure Resource Health を使用してデータベースの正常性を監
 description: Azure Resource Health を使用して SQL Database の正常性を監視すると、Azure の問題がお客様のリソースに影響を及ぼしている場合に、診断するためとサポートを受けるために役立ちます。
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 02/26/2019
-ms.openlocfilehash: 1cf14c9e133b7e6e3e0b5219eb9e16bd3a0178dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9e19e904b47d69444b491dd88ffe49ff812aafc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79208863"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Resource Health を使用して、Azure SQL Database の接続をトラブルシューティングする
 
@@ -32,11 +32,11 @@ Resource Health では、リソースへのログインの成功と失敗を調�
 
 ## <a name="health-states"></a>正常性の状態
 
-### <a name="available"></a>使用可能
+### <a name="available"></a>利用可能
 
 **[使用可能]** という状態は、Resource Health によって、お使いの SQL リソースでシステム エラーによるログインの失敗が検出されていないことを意味します。
 
-![使用可能](./media/sql-database-resource-health/sql-resource-health-available.jpg)
+![利用可能](./media/sql-database-resource-health/sql-resource-health-available.jpg)
 
 ### <a name="degraded"></a>低下しています
 
@@ -72,10 +72,10 @@ Azure インフラストラクチャでは、計画メンテナンス (データ
 
 再構成は一時的な状態であると考えられ、ときどき発生することが想定されます。 これらのイベントは、負荷分散やソフトウェア/ハードウェア障害によってトリガーされる可能性があります。 クラウド データベースに接続するクライアントの運用アプリケーションでは、堅牢な接続[再試行ロジック](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)を実装する必要があります。それによって状況が緩和され、通常はエンド ユーザーにとってエラーが透過的になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [一時的なエラーに対する再試行ロジック](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)の詳細を確認します。
-- [SQL 接続エラーをトラブルシューティング、診断、および回避します。](./sql-database-connectivity-issues.md)
+- [SQL 接続エラーのトラブルシューティング、診断、および回避](./sql-database-connectivity-issues.md)
 - [Resource Health のアラートの構成](../service-health/resource-health-alert-arm-template-guide.md)の詳細を確認します。
 - [Resource Health](../service-health/resource-health-overview.md) の概要を確認します。
 - [Resource Health の FAQ](../service-health/resource-health-faq.md)

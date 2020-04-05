@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
 ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76544720"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Linux および Windows 用の Chef VM 拡張機能
@@ -67,16 +67,16 @@ Chef VM 拡張機能では、コンテンツ配信ネットワーク (CDN) か�
 
 ### <a name="core-property-values"></a>コア プロパティ値
 
-| Name | 値/例 | データ型
+| 名前 | 値/例 | データ型
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | string |
-| 型 | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | string |
+| type | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.13` | string (double) |
 
 ### <a name="settings"></a>設定
 
-| Name | 値/例 | データ型 | 必須
+| 名前 | 値/例 | データ型 | 必須
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Y |
 | settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Y |
@@ -84,7 +84,7 @@ Chef VM 拡張機能では、コンテンツ配信ネットワーク (CDN) か�
 
 ### <a name="protected-settings"></a>保護された設定
 
-| Name | 例 | データ型 | 必須
+| 名前 | 例 | データ型 | 必須
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Y |
 

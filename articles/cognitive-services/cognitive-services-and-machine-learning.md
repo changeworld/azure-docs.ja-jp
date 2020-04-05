@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
 ms.openlocfilehash: cde505e4c95de9b9693a0e9d260d7fa84f3e905b
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75531481"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習
@@ -24,9 +24,9 @@ Cognitive Services は、一般的な問題を解決する機械学習機能を�
 
 |サービス カテゴリ|目的|
 |--|--|
-|[Decision](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|情報に基づく、効率的な意思決定のためのレコメンデーションを提示するアプリを構築します。|
+|[決定](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|情報に基づく、効率的な意思決定のためのレコメンデーションを提示するアプリを構築します。|
 |[Language](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|お使いのアプリが、構築済みスクリプトで自然言語を処理し、センチメントを評価し、ユーザーの求めるものを認識する方法を学習できるようにします。|
-|[Search](https://azure.microsoft.com/services/cognitive-services/directory/search/)|お使いのアプリに Bing Search API を組み込み、1 つの API 呼び出しで何十億もの Web ページ、画像、動画、ニュースをくまなく調べる機能を実装します。|
+|[検索](https://azure.microsoft.com/services/cognitive-services/directory/search/)|お使いのアプリに Bing Search API を組み込み、1 つの API 呼び出しで何十億もの Web ページ、画像、動画、ニュースをくまなく調べる機能を実装します。|
 |[Speech](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|音声をテキストに変換し、テキストを自然な音声に変換します。 ある言語を別の言語に翻訳し、話者の認証と認識を可能にします。|
 |[Vision](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|写真、動画、デジタル インク コンテンツの認識、識別、キャプションの追加、インデックスの作成、モデレートを行います。|
 ||||
@@ -48,24 +48,24 @@ Cognitive Services は次の場合に使用します。
 
 機械学習は、[Azure Machine Learning (AML) の製品とサービス](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context)を通じて提供されます。
 
-## <a name="what-is-a-cognitive-service"></a>Cognitive Services とは
+## <a name="what-is-a-cognitive-service"></a>コグニティブ サービスとは
 
-Cognitive Services は、機械学習ソリューションのコンポーネントであるデータ、アルゴリズム、トレーニング済みモデルの一部または全部を提供します。 これらのサービスは、データに関する一般的な知識が前提になりますが、機械学習やデータ サイエンスの経験は不要です。 これらのサービスでは REST API と言語ベースの SDK の両方を提供しています。 そのため、これらのサービスを使用するにはプログラミング言語の知識が必要です。
+コグニティブ サービスは、機械学習ソリューションのコンポーネントであるデータ、アルゴリズム、トレーニング済みモデルの一部または全部を提供します。 これらのサービスは、データに関する一般的な知識が前提になりますが、機械学習やデータ サイエンスの経験は不要です。 これらのサービスでは REST API と言語ベースの SDK の両方を提供しています。 そのため、これらのサービスを使用するにはプログラミング言語の知識が必要です。
 
-## <a name="how-are-cognitive-services-and-azure-machine-learning-aml-similar"></a>Cognitive Services と Azure Machine Learning (AML) の類似点
+## <a name="how-are-cognitive-services-and-azure-machine-learning-aml-similar"></a>コグニティブ サービスと Azure Machine Learning (AML) の類似点
 
 実現方法はそれぞれのオファリングで異なりますが、どちらも人工知能 (AI) を業務の強化に応用するという最終目標があります。 
 
 一般に、対象ユーザーは異なります。
 
-* Cognitive Services は機械学習の経験がない開発者を対象としています。
+* コグニティブ サービスは機械学習の経験がない開発者を対象としています。
 * Azure Machine Learning はデータ サイエンティスト向けに特化されています。 
 
-## <a name="how-is-a-cognitive-service-different-from-machine-learning"></a>Cognitive Services と機械学習の違い
+## <a name="how-is-a-cognitive-service-different-from-machine-learning"></a>コグニティブ サービスと機械学習の違い
 
-Cognitive Services では、ユーザーに対してトレーニング済みのモデルが提供されます。これはデータとアルゴリズムを統合したもので、REST API や SDK から利用できます。シナリオによっては、このサービスを数分で実装できます。Cognitive Services は、テキスト内のキー フレーズや画像内の項目識別といった一般的な問題を解決します。 
+コグニティブ サービスでは、ユーザーに対してトレーニング済みのモデルが提供されます。 これはデータとアルゴリズムを統合したもので、REST API や SDK から利用できます。 シナリオによっては、このサービスを数分で実装できます。  コグニティブ サービスは、テキスト内のキー フレーズや画像内の項目識別といった一般的な問題を解決します。 
 
-機械学習は、通常、適切に実装するために長時間を要するプロセスです。Cognitive Services と同等の機能を実現するために、この時間を費やしてデータの収集、クリーニング、変換、アルゴリズムの選択、モデルのトレーニング、およびデプロイが行われます。機械学習では、きわめて特殊な問題や具体的な問題を解決することが可能です。機械学習の問題では、データ サイエンスの専門知識だけでなく、検討中の問題の特定の主題とデータについて理解する必要があります。
+機械学習は、通常、適切に実装するために長時間を要するプロセスです。 コグニティブ サービスと同等の機能を実現するために、この時間を費やしてデータの収集、クリーニング、変換、アルゴリズムの選択、モデルのトレーニング、およびデプロイが行われます。 機械学習では、きわめて特殊な問題や具体的な問題を解決することが可能です。 機械学習の問題では、データ サイエンスの専門知識だけでなく、検討中の問題の特定の主題とデータについて理解する必要があります。
 
 ## <a name="what-kind-of-data-do-you-have"></a>保有するデータの種類
 
@@ -89,7 +89,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 
 次のデータは、各サービスが許可または要求するデータの種類でサービスを分類したものです。
 
-|Cognitive Services|トレーニング データが不要|ユーザーがトレーニング データを一部または全部提供|リアルタイムまたはほぼリアルタイムでデータを収集|
+|コグニティブ サービス|トレーニング データが不要|ユーザーがトレーニング データを一部または全部提供|リアルタイムまたはほぼリアルタイムでデータを収集|
 |--|--|--|--|
 |[Anomaly Detector](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing Search |x|||
@@ -109,11 +109,11 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 |[音声翻訳](speech-service/speech-translation.md)|x|||
 |[Text Analytics](./text-analytics/overview.md)|x|||
 |[Translator Text](./translator/translator-info-overview.md)|x|||
-|[Translator Text - custom translator](./translator/custom-translator/overview.md)||x||
+|[Translator Text - カスタム翻訳ツール](./translator/custom-translator/overview.md)||x||
 
 *Personalizer は、(リアルタイムで動作するため) サービスが収集したトレーニング データだけでユーザーのポリシーとデータを評価します。 Personalizer の事前トレーニングやバッチ トレーニングには、大量の履歴データセットが必要ありません。 
 
-## <a name="where-can-you-use-cognitive-services"></a>Cognitive Services を使用できる場所
+## <a name="where-can-you-use-cognitive-services"></a>コグニティブ サービスを使用できる場所
  
 このサービスは、REST API または SDK 呼び出しを行うことができるアプリケーションで使用されます。 たとえば、Web サイト、ボット、仮想現実や複合現実、デスクトップ アプリケーション、モバイル アプリケーションなどです。 
 
@@ -121,13 +121,13 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 
 [Azure Cognitive Search](../search/search-what-is-azure-search.md) は独立したクラウド検索サービスであり、必要に応じて Cognitive Services を使用して、イメージと自然言語の処理をインデックス作成ワークロードに追加します。 Cognitive Services は、個々の API をラップする[組み込みのスキル](../search/cognitive-search-predefined-skills.md)を通じて Azure Cognitive Search で公開されます。 チュートリアルには無料のリソースを使用できますが、ボリュームが大きい場合は[課金対象のリソース](../search/cognitive-search-attach-cognitive-services.md)を作成して接続するようにしてください。
 
-## <a name="how-can-you-use-cognitive-services"></a>Cognitive Services の用途
+## <a name="how-can-you-use-cognitive-services"></a>コグニティブ サービスの用途
 
-各サービスからユーザーのデータに関する情報が提供されます。 サービスを組み合わせて複数のソリューションを連結できます。たとえば、音声 (オーディオ) をテキストに変換し、そのテキストを多数の言語に翻訳し、翻訳された言語でナレッジベースから回答を得ることができます。 Cognitive Services は、インテリジェントなソリューションを独自に作成するために使用できるほか、従来の機械学習プロジェクトと組み合わせてモデルを補完したり、開発プロセスを高速化したりすることもできます。 
+各サービスからユーザーのデータに関する情報が提供されます。 サービスを組み合わせて複数のソリューションを連結できます。たとえば、音声 (オーディオ) をテキストに変換し、そのテキストを多数の言語に翻訳し、翻訳された言語でナレッジベースから回答を得ることができます。 コグニティブ サービスは、インテリジェントなソリューションを独自に作成するために使用できるほか、従来の機械学習プロジェクトと組み合わせてモデルを補完したり、開発プロセスを高速化したりすることもできます。 
 
-他の機械学習ツールにモデルをエクスポートできる Cognitive Services:
+他の機械学習ツールにモデルをエクスポートできるコグニティブ サービス:
 
-|Cognitive Services|モデル情報|
+|コグニティブ サービス|モデル情報|
 |--|--|
 |[Custom Vision](./custom-vision-service/home.md)|Tensorflow for Android、CoreML for iOS11、ONNX for Windows ML に対して[エクスポート](./Custom-Vision-Service/export-model-python.md)|
 
@@ -138,8 +138,8 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure portal](cognitive-services-apis-create-account.md) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) で Cognitive Services のアカウントを作成する。
-* Cognitive Services の[認証](authentication.md)方法を確認する。
+* [Azure portal](cognitive-services-apis-create-account.md) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) でコグニティブ サービスのアカウントを作成する。
+* コグニティブ サービスの[認証](authentication.md)方法を確認する。
 * 問題の特定とデバッグに[診断ログ](diagnostic-logging.md)を使用する。 
-* Docker [コンテナー](cognitive-services-container-support.md)に Cognitive Services をデプロイする。
+* Docker [コンテナー](cognitive-services-container-support.md)にコグニティブ サービスをデプロイする。
 * [サービスの更新情報](https://azure.microsoft.com/updates/?product=cognitive-services)で最新情報を入手する。

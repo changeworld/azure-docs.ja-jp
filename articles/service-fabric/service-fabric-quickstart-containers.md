@@ -6,13 +6,13 @@ ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75466269"
 ---
-# <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>クイック スタート:Service Fabric に Windows コンテナーをデプロイする
+# <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>クイック スタート: Service Fabric に Windows コンテナーをデプロイする
 
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。
 
@@ -132,7 +132,7 @@ Thumbprint                                Subject
 
 ソリューション エクスプローラーで **[MyFirstContainer]** を右クリックして、 **[発行]** を選択します。 [発行] ダイアログが表示されます。
 
-前に `Import-PfxCertificate` コマンドを実行したときの PowerShell ウィンドウで **CN=** に続く内容をコピーし、それにポート `19000` を追加します。 たとえば、「 `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000` 」のように入力します。 それを **[接続のエンドポイント]** フィールドにコピーします。 この値は、後の手順で必要になるため、覚えておいてください。
+前に **コマンドを実行したときの PowerShell ウィンドウで**CN=`Import-PfxCertificate` に続く内容をコピーし、それにポート `19000` を追加します。 たとえば、「 `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000` 」のように入力します。 それを **[接続のエンドポイント]** フィールドにコピーします。 この値は、後の手順で必要になるため、覚えておいてください。
 
 **[詳細な接続パラメーター]** をクリックし、接続パラメーターの情報を確認します。  *FindValue* と *ServerCertThumbprint* の値は、前の手順で `Import-PfxCertificate` を実行したときにインストールされた証明書の拇印に一致する必要があります。
 

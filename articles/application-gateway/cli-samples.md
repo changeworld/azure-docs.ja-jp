@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 11/16/2019
 ms.author: victorh
 ms.openlocfilehash: 57df87f6cc101f4cc097b464d93238d3b868c93b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74129784"
 ---
 # <a name="azure-cli-examples-for-azure-application-gateway"></a>Azure Application Gateway のための Azure CLI の例

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: bb67f765684c77ed5f8527226bef578e450579e0
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758684"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Azure DevOps からイメージ ファクトリを実行する
@@ -78,7 +78,7 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 コマンド ライン パラメーターを簡素化するには、イメージ ファクトリを一連のビルド変数にするキー値をカプセル化します。 **[変数]** タブを選択すると、いくつかの既定の変数の一覧が表示されます。 Azure DevOps に入力する変数の一覧を次に示します。
 
 
-| 変数名 | Value | メモ |
+| 変数名 | 値 | Notes |
 | ------------- | ----- | ----- |
 | ConfigurationLocation | /Scripts/ImageFactory/Configuration | これは、リポジトリ内の **Configuration** フォルダーへのフルパスです。 上記のリポジトリ全体をインポートした場合、左側の値が正しいです。 そうでない場合、構成の場所を指すように更新します。 |
 | DevTestLabName | MyImageFactory | イメージを生成するためのファクトリとして使用される Azure DevTest Labs のラボの名前です。 それがない場合は、作成します。 ラボが、サービス エンドポイントがアクセスするのと同じサブスクリプション内にあることを確認します。 |

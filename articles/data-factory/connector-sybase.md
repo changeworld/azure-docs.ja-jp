@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 0552cdc50e2b760600ad8c58bd3d1cd4d2dc50a2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930995"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータをコピーする
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-sybase-connector.md)
 > * [現在のバージョン](connector-sybase.md)
 
@@ -43,10 +43,10 @@ Sybase データベースから、サポートされている任意のシンク 
 
 この Sybase コネクタを使用するには、次の手順が必要です。
 
-- セルフホステッド統合ランタイムをセットアップします。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
+- セルフホステッド統合ランタイムをセットアップする。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
 - 統合ランタイムのコンピューターに、[Sybase iAnywhere.Data.SQLAnywhere 用データ プロバイダー](https://go.microsoft.com/fwlink/?linkid=324846) (16 以降) をインストールします。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -174,11 +174,11 @@ Sybase からデータをコピーするとき、Sybase のデータ型から Az
 
 Sybase では、T-SQL 型をサポートします。 SQL 型から Azure Data Factory 中間データ型へのマッピング テーブルについては、「[Azure SQL Database Connector - data type mapping (Azure SQL Database Connector - データ型マッピング)](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)」セクションを参照してください。
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

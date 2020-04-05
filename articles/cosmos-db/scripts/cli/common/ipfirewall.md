@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 9/25/2019
 ms.openlocfilehash: 8b0ab04e2117108566962cc9a473556098e0e51d
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71275169"
 ---
 # <a name="create-an-azure-cosmos-account-with-ip-firewall-using-azure-cli"></a>Azure CLI を使用して、IP ファイアウォールを使用する Azure Cosmos アカウントを作成する
@@ -23,7 +23,7 @@ CLI をローカルにインストールして使用することを選択した�
 ## <a name="sample-script"></a>サンプル スクリプト
 
 > [!NOTE]
-> このサンプルでは、SQL (Core) API アカウントの使用方法を紹介しています。 このサンプルを他の API に対して使用するには、お使いの API 固有のスクリプトの `az cosmosdb account create` コマンドに対して、次のスクリプトの `ip-range-filter` パラメーターを適用します。
+> このサンプルでは、SQL (Core) API アカウントの使用方法を紹介しています。 このサンプルを他の API に対して使用するには、お使いの API 固有のスクリプトの `ip-range-filter` コマンドに対して、次のスクリプトの `az cosmosdb account create` パラメーターを適用します。
 
 [!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/common/ipfirewall.sh "Create an Azure Cosmos account with ip firewall.")]
 
@@ -45,7 +45,7 @@ az group delete --name $resourceGroupName
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB アカウントを作成します。 |
 | [az group delete](/cli/azure/resource#az-resource-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB CLI の詳細については、[Azure Cosmos DB CLI のドキュメント](/cli/azure/cosmosdb)を参照してください。
 

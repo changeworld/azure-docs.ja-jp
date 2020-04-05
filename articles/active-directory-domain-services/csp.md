@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: iainfou
 ms.openlocfilehash: 1134c078ee36a146cb1e1cbf8ca46f6cd9f8d775
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72754439"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure Cloud Solution Provider (CSP) 用 Azure Active Directory (AD) Domain Services
@@ -86,7 +86,7 @@ Azure CSP サブスクリプションでマネージド ドメインを管理す
 * **継続的な管理用に作成されたユーザー アカウントを "AAD DC Administrators" グループに追加する必要がある。** "AAD DC Administrators" グループには、特定の委任された管理タスクをマネージド ドメインで実行する権限があります。 これらのタスクには、DNS の構成、組織単位の作成、グループ ポリシーの管理などがあります。CSP パートナーがマネージド ドメインでこのようなタスクを実行するには、顧客の Azure AD ディレクトリ内にユーザー アカウントを作成する必要があります。 このアカウントの資格情報は、CSP パートナーの管理エージェントと共有する必要があります。 また、このユーザー アカウントを使用して、マネージド ドメインで構成タスクを実行できるようにするには、このユーザーアカウントを "AAD DC Administrators" グループに追加する必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure CSP プログラムに登録](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program)し、Azure CSP を通じてビジネスを創出する
 * [Azure CSP で利用できる Azure サービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)の一覧を確認する
 * [PowerShell を使用して Azure AD Domain Services を有効にする](powershell-create-instance.md)

@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 384157828e9c816b150e40bf3f09b74578c4a98e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67482091"
 ---
-# <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>チュートリアル:最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる
+# <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>チュートリアル: 最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる
 
 Azure Active Directory (Azure AD) のデバイス管理を使用して、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを保証できます。 詳細については、「[Introduction to device management in Azure Active Directory](overview.md)」(Azure Active Directory のデバイス管理の概要) を参照してください。
 
@@ -33,7 +33,7 @@ Windows の *out-of-box experience* では、オンプレミス Active Directory
  > [!div class="checklist"]
 > * 前提条件
 > * デバイスを参加させる
-> * 確認
+> * 検証
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,13 +68,13 @@ Windows 10 デバイスを参加させるには、デバイスを登録できる
    - 管理対象ユーザーの場合は、自動サインイン プロセスによりデスクトップに移動します。
    - フェデレーション ユーザーの場合は、資格情報を入力するための Windows サインイン画面が表示されます。
 
-## <a name="verification"></a>確認
+## <a name="verification"></a>検証
 
 デバイスが Azure AD に参加しているかどうかを確認するには、Windows デバイスで **[職場または学校にアクセスする]** ダイアログを参照します。 このダイアログでは、Azure AD ディレクトリに接続していることが示されます。
 
 ![職場または学校にアクセスする](./media/azuread-joined-devices-frx/13.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 詳細については、「[Introduction to device management in Azure Active Directory](overview.md)」(Azure Active Directory のデバイス管理の概要) を参照してください。
 - Azure AD ポータルでのデバイス管理の詳細については、[Azure Portal によるデバイスの管理](device-management-azure-portal.md)に関するページを参照してください。

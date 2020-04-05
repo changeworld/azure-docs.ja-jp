@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/24/2019
 ms.author: juliako
 ms.openlocfilehash: e4eee3b9f3f97bf7cd7a7b61425ec5c9a3a198ef
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76543077"
 ---
 # <a name="live-event-states-and-billing"></a>ライブ イベントの状態と課金

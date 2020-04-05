@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 51713db8532eb33f102de9320dea9eaeb98c4019
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4f1760c32117b34d4d453964473cba3c7d07f725
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359079"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79202180"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure Virtual Network NAT のメトリック
 
@@ -30,9 +30,6 @@ Azure Virtual Network NAT ゲートウェイ リソースは、多次元メト�
 </p>
 
 *図:インターネットへのアウトバウンド接続のための Virtual Network NAT*
-
->[!NOTE] 
->Virtual Network NAT は、現時点ではパブリック プレビューとして提供されています。 現在は、ご利用いただける[リージョン](nat-overview.md#region-availability)が限られています。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms)」をご覧ください。
 
 ## <a name="metrics"></a>メトリック
 

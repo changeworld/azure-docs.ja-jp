@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
 ms.openlocfilehash: 93880269edd72477f3aa85b2dbdc9d9f3ec8ef25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435940"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する
@@ -65,7 +65,7 @@ Enterprise セキュリティ パッケージ (旧称 HDInsight Premium) は、�
 - **管理** – 標準 API を使用して、コードの管理とジョブの自動化を実行できます (Livy や HS2 など)。
 - **監査** – SSH では、どのユーザーがクラスターに SSH で接続したかを監査する方法はありません。 これは、ジョブがユーザーのコンテキストで実行されるため、標準エンドポイント経由で構築される場合に該当しません。
 
-### <a name="beeline"></a>Beeline を使用する
+### <a name="use-beeline"></a><a name="beeline"></a>Beeline を使用する
 
 Beeline をローカルにインストールし、次のパラメーターを使用してパブリック インターネット経由で接続します。
 

@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.openlocfilehash: 7aa1e0aa6bbbee9d40eb0d48318a8e2908a75f9d
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78897854"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB Graph アカウントのリージョン エンドポイント
@@ -27,7 +27,7 @@ Azure Cosmos DB Graph データベースは[グローバルに分散](distribute
 
 Cosmos DB Graph データベース エンジンは複数のリージョンで実行されており、そのそれぞれに複数のクラスターが含まれています。 各クラスターには数百台のマシンがあります。 Cosmos DB グラフ アカウントの DNS CNAME *accountname.gremlin.cosmos.azure.com* は、クラスターの DNS A レコードに解決されます。 ロードバランサーの単一の IP アドレスによって、内部クラスターのトポロジが隠されます。
 
-Cosmos DB Graph アカウントのすべてのリージョンに対して、リージョンの DNS CNAME レコードが作成されます。 リージョン エンドポイントの形式は *accountname-region.gremlin.cosmos.azure.com* です。 リージョン エンドポイントのリージョン セグメントは、[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions)名からすべてのスペースを削除することによって取得されます。 たとえば、`"contoso"` グローバル データベース アカウントの `"East US 2"` リージョンの DNS CNAME は、*contoso-eastus2.gremlin.cosmos.azure.com* になります
+Cosmos DB Graph アカウントのすべてのリージョンに対して、リージョンの DNS CNAME レコードが作成されます。 リージョン エンドポイントの形式は *accountname-region.gremlin.cosmos.azure.com* です。 リージョン エンドポイントのリージョン セグメントは、[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions)名からすべてのスペースを削除することによって取得されます。 たとえば、`"East US 2"` グローバル データベース アカウントの `"contoso"` リージョンの DNS CNAME は、*contoso-eastus2.gremlin.cosmos.azure.com* になります
 
 TinkerPop Gremlin クライアントは、単一のサーバーで動作するように設計されています。 アプリケーションでは、読み取りおよび書き込みトラフィックにグローバルな書き込み可能 DNS CNAME を使用できます。 リージョン対応アプリケーションでは、読み取りトラフィックにリージョン エンドポイントを使用する必要があります。 特定のリージョンが書き込みを受け入れるように構成されている場合にのみ、書き込みトラフィックにリージョン エンドポイントを使用します。 
 

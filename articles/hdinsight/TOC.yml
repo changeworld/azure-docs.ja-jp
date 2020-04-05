@@ -19,6 +19,8 @@
           href: ./hdinsight-administer-use-powershell.md
         - name: Runbook を使用してクラスターを作成する
           href: ./manage-clusters-runbooks.md
+        - name: Apache Ambari のメール通知
+          href: ./apache-ambari-email.md
         - name: ETL パイプラインの作成
           href: ./hdinsight-sales-insights-etl.md
     - name: サンプル
@@ -272,7 +274,8 @@
           href: ./spark/apache-spark-jupyter-spark-sql-use-powershell.md
         - name: Apache Spark クラスターの作成 - Azure CLI
           href: ./spark/apache-spark-create-cluster-cli.md
-        - name: Apache Spark クラスターの作成 - テンプレート
+        - name: Apache Spark クラスターの作成 - ARM テンプレート
+          displayName: Resource Manager
           href: ./spark/apache-spark-jupyter-spark-sql.md
     - name: チュートリアル
       items:
@@ -416,8 +419,8 @@
       items:
         - name: Apache Hadoop クラスターの作成 - ポータル
           href: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
-        - name: Apache Hadoop クラスターの作成 - テンプレート
-          displayName: 'resource manager template, arm template, resource manager group'
+        - name: Apache Hadoop クラスターの作成 - ARM テンプレート
+          displayName: Resource Manager
           href: ./hadoop/apache-hadoop-linux-tutorial-get-started.md
     - name: チュートリアル
       items:
@@ -435,8 +438,54 @@
               href: use-pig.md
         - name: 開発
           items:
-            - name: 空のエッジ ノードを使用する
-              href: ./hdinsight-apps-use-edge-node.md
+            - name: Apache Hadoop と MapReduce を使用する
+              items:
+                - name: MapReduce の概要
+                  href: ./hadoop/hdinsight-use-mapreduce.md
+                - name: SSH の使用
+                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
+                - name: cURL の使用
+                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
+                - name: Azure PowerShell の使用
+                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
+                - name: .NET 用 SDK の使用
+                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
+                - name: MapReduce サンプルの実行
+                  href: ./hadoop/apache-hadoop-run-samples-linux.md
+                - name: カスタムの Apache Hadoop MapReduce プログラムを実行する
+                  href: ./hadoop/apache-hadoop-run-custom-programs.md
+                - name: 'C# ストリーミング MapReduce プログラムを開発する'
+                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
+                - name: Java MapReduce プログラムを開発する
+                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
+            - name: 抽出、変換、読み込み (ETL) ツールとして Apache Hive を使用する
+              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
+            - name: 大規模な抽出、変換、読み込み
+              href: ./hadoop/apache-hadoop-etl-at-scale.md
+            - name: 非対話型認証 .NET HDInsight アプリケーションを作成する
+              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
+            - name: ビッグ データの分析
+              items:
+                - name: Power Query を使用して分析する
+                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
+                - name: Power BI を対話型クエリに接続する
+                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
+                - name: Power BI を Apache Hadoop に接続する
+                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
+                - name: Excel を Apache Hadoop に接続する
+                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
+                - name: Apache Hive JDBC ドライバーを使用して接続する
+                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
+                - name: 格納されたツイートを分析する
+                  href: ./hdinsight-analyze-twitter-data-linux.md
+                - name: Apache Mahout で推奨事項を生成する
+                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
+                - name: HDInsight の高度な分析
+                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
+            - name: 管理する
+              items:
+                - name: 空のエッジ ノードを使用する
+                  href: ./hdinsight-apps-use-edge-node.md
         - name: トラブルシューティング
           items:
             - name: 一般的な問題
@@ -499,8 +548,8 @@
           href: ./kafka/apache-kafka-get-started.md
         - name: Apache Kafka クラスターの作成 - PowerShell
           href: ./kafka/apache-kafka-quickstart-powershell.md
-        - name: Apache Kafka クラスターの作成 - テンプレート
-          displayName: 'resource manager template, arm template, resource manager group'
+        - name: Apache Kafka クラスターの作成 - ARM テンプレート
+          displayName: Resource Manager
           href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
     - name: チュートリアル
       items:
@@ -564,6 +613,9 @@
           href: ./hbase/apache-hbase-overview.md
     - name: クイックスタート
       items:
+        - name: Apache HBase クラスターの作成 - ARM テンプレート
+          displayName: Resource Manager
+          href: ./hbase/quickstart-resource-manager-template.md
         - name: Apache HBase のクエリ - Apache Phoenix
           href: ./hbase/apache-hbase-query-with-phoenix.md
         - name: Apache HBase のクエリ - HBase シェル
@@ -636,6 +688,9 @@
           href: ./interactive-query/apache-interactive-query-get-started.md
     - name: クイックスタート
       items:
+        - name: Interactive Query クラスターの作成 - ARM テンプレート
+          displayName: Resource Manager
+          href: ./interactive-query/quickstart-resource-manager-template.md
         - name: Apache Hive クエリの実行 - Apache Zeppelin
           href: ./interactive-query/hdinsight-connect-hive-zeppelin.md
     - name: チュートリアル
@@ -718,6 +773,9 @@
           href: ./r-server/r-server-overview.md
     - name: クイックスタート
       items:
+        - name: ML Services クラスターの作成 - ARM テンプレート
+          displayName: Resource Manager
+          href: ./r-server/quickstart-resource-manager-template.md
         - name: サンプル ジョブ - RStudio Server
           href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
         - name: サンプル ジョブ - R コンソール
@@ -800,8 +858,6 @@
           href: ./domain-joined/hdinsight-security-overview.md
     - name: チュートリアル
       items:
-        - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
-          href: ./hdinsight-restrict-outbound-traffic.md
         - name: Apache HBase RBAC と Apache Ranger の併用
           href: ./domain-joined/apache-domain-joined-run-hbase.md
         - name: Apache Hive RBAC と Apache Ranger の併用
@@ -850,6 +906,8 @@
           href: ./domain-joined/ssh-domain-accounts.md
         - name: データのセキュリティ保護
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+        - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
+          href: ./hdinsight-restrict-outbound-traffic.md
         - name: トラブルシューティング
           items:
             - name: ESP 認証の問題

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/27/2020
 ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199009"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233663"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>HDInsight の Apache Hadoop クラスターで空のエッジ ノードを使用する
 
@@ -81,7 +81,7 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
     |---|---|
     |サブスクリプション|クラスターの作成に使用される Azure サブスクリプションを選択します。|
     |Resource group|既存の HDInsight クラスターに使用されるリソース グループを選択します。|
-    |Location|既存の HDInsight クラスターの場所を選択します。|
+    |場所|既存の HDInsight クラスターの場所を選択します。|
     |クラスター名|既存の HDInsight クラスターの名前を入力します。|
 
 1. エッジ ノードを作成するには、 **[上記の使用条件に同意する]** をオンにし、 **[購入]** を選択します。
@@ -105,7 +105,7 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
     |---|---|
     |サブスクリプション|クラスターの作成に使用される Azure サブスクリプションを選択します。|
     |Resource group|クラスターの新しいリソース グループを作成します。|
-    |Location|リソース グループの場所を選びます。|
+    |場所|リソース グループの場所を選びます。|
     |クラスター名|新しく作成するクラスターの名前を入力します。|
     |[Cluster Login User Name]\(クラスター ログイン ユーザー名\)|Hadoop HTTP ユーザー名を入力します。  既定の名前は **admin**です。|
     |[クラスター ログイン パスワード]|HTTP ユーザー パスワードを入力します。|

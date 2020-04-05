@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.openlocfilehash: 8325b4ef6b89a76eeec418386cec4922cb5916b1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979149"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Azure Monitor を使用してデータ ファクトリのアラート送信および監視を行う
@@ -112,7 +112,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | --- | --- | --- |
 | **storageAccountId** |String | 診断ログを送信するストレージ アカウントのリソース ID。 |
 | **serviceBusRuleId** |String | 診断ログのストリーミングのために Event Hubs を作成するサービス バス名前空間のサービス バス ルール ID。 ルール ID の形式は、`{service bus resource ID}/authorizationrules/{key name}` です。|
@@ -287,7 +287,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 種類 | 説明 | 例 |
+| プロパティ | Type | 説明 | 例 |
 | --- | --- | --- | --- |
 | **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
 | **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -333,7 +333,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 種類 | 説明 | 例 |
+| プロパティ | Type | 説明 | 例 |
 | --- | --- | --- | --- |
 | **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
 | **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -377,7 +377,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```
 
-| プロパティ | 種類 | 説明 | 例 |
+| プロパティ | Type | 説明 | 例 |
 | --- | --- | --- | --- |
 | **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
 | **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -401,12 +401,12 @@ Log Analytics は、Monitor からスキーマを継承します。ただし、�
 * "Level" 列はありません。
 * 動的な "properties" 列は、次の動的 JSON BLOB の種類として維持されます。
 
-    | Azure Monitor の列 | Log Analytics の列 | 種類 |
+    | Azure Monitor の列 | Log Analytics の列 | Type |
     | --- | --- | --- |
     | $.properties.UserProperties | UserProperties | 動的 |
     | $.properties.Annotations | 注釈 | 動的 |
     | $.properties.Input | 入力 | 動的 |
-    | $.properties.Output | Output | 動的 |
+    | $.properties.Output | 出力 | 動的 |
     | $.properties.Error.errorCode | ErrorCode | INT |
     | $.properties.Error.message | ErrorMessage | string |
     | $.properties.Error | エラー | 動的 |

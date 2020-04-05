@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75649183"
 ---
 # <a name="azure-custom-providers-resource-onboarding-overview"></a>Azure カスタム プロバイダー リソースのオンボードの概要
@@ -58,7 +58,7 @@ Azure カスタム プロバイダーの例を次に示します。
 ---|---|---
 name | はい | エンドポイント定義の名前。 リソースのオンボードの場合、名前は "associations" である必要があります。
 routingType | はい | エンドポイントとのコントラクトの種類を決定します。 リソースのオンボードの場合、有効な **routingTypes** は "Proxy,Cache,Extension" および "Webhook,Cache,Extension" です。
-エンドポイント (endpoint) | はい | 要求をルーティングするエンドポイント。 これにより、応答と、要求の副作用がすべて処理されます。
+endpoint | はい | 要求をルーティングするエンドポイント。 これにより、応答と、要求の副作用がすべて処理されます。
 
 associations のリソースの種類でカスタム プロバイダーを作成すると、Microsoft.CustomProviders/associations を使用してターゲットを指定できます。 Microsoft.CustomProviders/associations は、他のすべての Azure リソースを拡張できる拡張リソースです。 Microsoft.CustomProviders/associations のインスタンスが作成されると、それは **targetResourceId** プロパティを取得します。これは、有効な Microsoft.CustomProviders/resourceProviders または Microsoft.Solutions/applications リソース ID である必要があります。 このような場合、要求は、作成した Microsoft.CustomProviders/resourceProviders インスタンスの associations のリソースの種類に転送されます。
 
@@ -158,6 +158,6 @@ Azure カスタム リソース プロバイダーの開発に関する質問が
 
 - [チュートリアル:カスタム プロバイダーを使用したリソースのオンボード](./tutorial-resource-onboarding.md)
 - [チュートリアル:Azure でカスタム アクションとカスタム リソースを作成する](./tutorial-get-started-with-custom-providers.md)
-- [クイック スタート:カスタム リソース プロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
+- [クイック スタート: カスタム リソース プロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
 - [方法: カスタム アクションを Azure REST API に追加する](./custom-providers-action-endpoint-how-to.md)
 - [方法: カスタム リソースを Azure REST API に追加する](./custom-providers-resources-endpoint-how-to.md)

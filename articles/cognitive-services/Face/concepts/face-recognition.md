@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
 ms.openlocfilehash: 164e5a8c107f445b376d26f9be7db92a7983b0d3
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73743077"
 ---
 # <a name="face-recognition-concepts"></a>顔認識の概念
@@ -25,7 +25,7 @@ ms.locfileid: "73743077"
 
 認識操作では、主に次のデータ構造を使用します。 これらのオブジェクトはクラウドに格納され、その ID 文字列によって表すことができます。 ID 文字列は、サブスクリプション内で常に一意です。 名前フィールドは重複している可能性があります。
 
-|名前|説明|
+|Name|説明|
 |:--|:--|
 |DetectedFace| この 1 つの顔の表現は、[顔検出](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)操作によって取得されます。 その ID は作成後 24 時間で期限が切れます。|
 |PersistedFace| DetectedFace オブジェクトがグループ (FaceList または Person) に追加されると、これらは PersistedFace オブジェクトになります。 これらはいつでも[取得](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c)することができ、期限が切れることはありません。|
@@ -37,7 +37,7 @@ ms.locfileid: "73743077"
 
 このセクションでは、4 つの認識操作で前に示されたデータ構造をどのように使用するかについて説明します。 それぞれの認識操作の広範な説明については、[概要](../Overview.md)に関するページを参照してください。
 
-### <a name="verify"></a>確認
+### <a name="verify"></a>Verify (英語の可能性あり)
 
 [確認](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)操作では、DetectedFace または PersistedFace からの顔 ID と、別の顔 ID または Person オブジェクトのいずれかを取得し、同じ人に属しているかどうかを判断します。 Person オブジェクトを渡す場合、パフォーマンスを向上させるために、任意で Person が属している PersonGroup を渡すことができます。
 
@@ -67,7 +67,7 @@ ms.locfileid: "73743077"
   * 年齢による顔立ちの変化
   * 極端な表情
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 顔認識の概念を理解したので、トレーニング済みの PersonGroup に対して顔を識別するスクリプトを作成する方法について説明します。
 

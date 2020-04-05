@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 01/24/2020
+ms.date: 03/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 71afce335910e4d42fb3d67f6d443510a6599b8b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ac6bc8f78bd3d526e68dba3e81825a28a9ac47f7
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918324"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80294124"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>クイック スタート:Java で Azure Service Bus キューを使用してメッセージを送受信する
 
@@ -41,9 +41,12 @@ ms.locfileid: "77918324"
 
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
-このサンプルを作成する前に [Azure SDK for Java][Azure SDK for Java] がインストールされていることを確認してください。 Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] をインストールできます。 これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。
+このサンプルを作成する前に [Azure SDK for Java][Azure SDK for Java] がインストールされていることを確認してください。 
+
+Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] をインストールできます。 これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。 IntelliJ を使用している場合は、[Azure Toolkit for IntelliJ のインストール](/azure/java/intellij/azure-toolkit-for-intellij-installation)に関するページを参照してください。 
 
 ![Microsoft Azure Libraries for Java を Eclipse プロジェクトに追加する](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
+
 
 次の `import` ステートメントを Java ファイルの先頭に追加します。
 
@@ -126,7 +129,7 @@ Service Bus はメッセージを読み取り済みとしてマークしてい�
 
 **PeekLock** モードでは、メッセージの受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して **complete()** を呼び出して受信処理の第 2 段階を完了します。 Service Bus が **complete()** の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。 
 
-次の例では、(既定モードではなく) **PeekLock** モードを使用したメッセージの受信および処理の方法を示しています。 次の例では、登録済みのメッセージ ハンドラーでコールバック モデルを使用し、メッセージが `TestQueue` に到着したときにメッセージを処理します。 このモードでは、コールバックが正常に返された場合に **complete ()** が自動的に呼び出され、コールバックが例外をスローした場合は **abandon()** が呼び出されます。 
+次の例では、(既定モードではなく) **PeekLock** モードを使用したメッセージの受信および処理の方法を示しています。 次の例では、メッセージ ハンドラーを登録したコールバック モデルを使用し、メッセージが `TestQueue` に到着したときにメッセージを処理します。 このモードでは、コールバックが正常に返された場合に **complete ()** が自動的に呼び出され、コールバックが例外をスローした場合は **abandon()** が呼び出されます。 
 
 ```java
     public void run() throws Exception {

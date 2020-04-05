@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 85aeafb2c4461b50d399e40d9abff2ac04b677c0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887140"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233711"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Azure HDInsight のリージョン サーバーに関する問題
 
@@ -34,7 +34,7 @@ Apache HBase Master UI から、すべてのリージョン サーバーのバ�
 
 この穴は、オフライン リージョンによって生じた可能性があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 割り当てを修正します。 以下の手順に従って、未割り当てのリージョンを通常の状態に戻してください。
 
@@ -66,7 +66,7 @@ WAL ディレクトリが複数に分割されています。
 
 1. `wals.out` ファイルを確認します。 (*-splitting で始まる) 分割ディレクトリの数が多すぎる場合、これらのディレクトリのためにリージョン サーバーが失敗している可能性があります。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 1. Ambari ポータルから HBase を停止します。
 

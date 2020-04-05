@@ -9,10 +9,10 @@ ms.date: 04/29/2019
 ms.author: rolyon
 ms.custom: include file
 ms.openlocfilehash: d791c4ba46587ac5709d72cb31bc76f087118b03
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67476239"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>1 つ以上のアクセス レビューを作成する

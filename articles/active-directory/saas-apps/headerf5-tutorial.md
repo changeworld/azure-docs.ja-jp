@@ -17,10 +17,10 @@ ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ad6b7150a43a286a4bec39a0482e08f50d95c06
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77048060"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合
@@ -314,7 +314,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
     ![F5 (ヘッダー ベース) の構成](./media/headerf5-tutorial/configure20.png) 
 
-1. アプリのプロパティを変更できるようにします。 **[Main]\(メイン\) > [IApps] > [Application Services: Applications]\(アプリケーション サービス: アプリケーション\) >> [HeaderApp2]** の順にクリックします。 **[Strict Updates]\(更新の制限\)** チェック ボックスをオフにします (一部の設定は GUI 以外で変更します)。 **[Update]\(更新\)** ボタンをクリックします。
+1. アプリのプロパティを変更できるようにします。 **[Main]\(メイン\) > [IApps] > [Application Services: Applications]\(アプリケーション サービス: アプリケーション\) > [HeaderApp2]** の順にクリックします。 **[Strict Updates]\(更新の制限\)** チェック ボックスをオフにします (一部の設定は GUI 以外で変更します)。 **[Update]\(更新\)** ボタンをクリックします。
 
     ![F5 (ヘッダー ベース) の構成](./media/headerf5-tutorial/configure21.png) 
 

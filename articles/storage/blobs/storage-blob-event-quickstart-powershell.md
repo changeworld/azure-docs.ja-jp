@@ -9,13 +9,13 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68847162"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>クイック スタート: PowerShell を使用してストレージ イベントを Web エンドポイントにルーティングする
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>クイック スタート:PowerShell を使用してストレージ イベントを Web エンドポイントにルーティングする
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure PowerShell を使用して Blob Storage のイベントをサブスクライブし、イベントをトリガーして結果を表示します。 
 
@@ -45,7 +45,7 @@ Connect-AzAccount
 $location = "westus2"
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
@@ -161,14 +161,14 @@ Set-AzStorageBlobContent -File gridTestFile.txt -Container $containerName -Conte
 
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 このストレージ アカウントとイベント サブスクリプションを使用して作業を続ける場合は、この記事で作成したリソースをクリーンアップしないでください。 引き続き使用する予定がない場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 トピックを作成し、イベントをサブスクライブする方法がわかったら、Blob Storage のイベントについて、また Event Grid でできることについて、さらに情報を収集しましょう。
 

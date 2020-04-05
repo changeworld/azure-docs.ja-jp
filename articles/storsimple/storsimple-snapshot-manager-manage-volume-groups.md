@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 5198729cf96fb48c5dcd05096c04ea4d77c26de5
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75931488"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>StorSimple Snapshot Manager を使用したボリューム グループの作成と管理
@@ -50,7 +50,7 @@ ms.locfileid: "75931488"
 
 | 結果の列 | 説明 |
 |:--- |:--- |
-| Name |**[名前]** 列には、ボリューム グループの名前が含まれます。 |
+| 名前 |**[名前]** 列には、ボリューム グループの名前が含まれます。 |
 | Application |**[アプリケーション]** 列は、Windows ホスト上で現在インストールされ、実行されている VSS ライターの数を示します。 |
 | Selected |**[オン]** 列には、ボリューム グループに含まれているボリュームの数が表示されます。 ゼロ (0) は、ボリューム グループ内のボリュームに関連付けられたアプリケーションが存在しないことを示します。 |
 | インポート済み |**[インポート済み]** 列には、インポートされたボリュームの数が表示されます。 **True** に設定されている場合、この列はボリューム グループが Azure Portal からインポートされ、StorSimple Snapshot Manager では作成されなかったことを示します。 |

@@ -1,18 +1,16 @@
 ---
-title: Azure Log Analytics エージェントの管理 | Microsoft Docs
+title: Azure Log Analytics エージェントの管理
 description: この記事では、コンピューターに配置された Windows または Linux 用 Log Analytics エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
-ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 7e9725c2a33bd63b7ce6751f346da17eb68fe6f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364783"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234431"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
@@ -34,7 +32,7 @@ Windows VM 上のエージェントを、Log Analytics VM 拡張機能を使用�
 
 Windows エージェントの最新バージョンは、次の手順を実行することによって、Log Analytics ワークスペースからダウンロードできます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 2. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。
 

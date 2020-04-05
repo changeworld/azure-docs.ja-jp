@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: labrenne
 ms.openlocfilehash: bdf0b3bfc955d8a2e2ce1b363c8699ca719b957c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919007"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>仮想ファイル システムを Batch プールにマウントする

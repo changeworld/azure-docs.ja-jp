@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
 ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792169"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack が適用された Azure Logic Apps で B2B エンタープライズ統合用の XML を検証する
@@ -63,6 +63,6 @@ ms.locfileid: "74792169"
 
 1. 検証アクションをテストするには、ロジック アプリのワークフローをトリガーする要求を送信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) について詳細を確認する

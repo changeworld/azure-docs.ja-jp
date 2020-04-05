@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: rohink
 ms.openlocfilehash: c398763405472c9018a5c30d34fbd3963ecb93b7
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938366"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager での機能低下状態のトラブルシューティング

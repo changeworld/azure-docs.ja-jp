@@ -15,10 +15,10 @@ ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: a5d34ac7eea50b67bd679d8cb8ddecf7ca277abd
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773377"
 ---
 ## <a name="register-secrets-or-certificates"></a>シークレットまたは証明書の登録

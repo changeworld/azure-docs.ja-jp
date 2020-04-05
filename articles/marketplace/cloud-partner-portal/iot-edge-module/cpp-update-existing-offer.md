@@ -1,19 +1,18 @@
 ---
 title: 既存の Azure IoT Edge モジュール プランの更新 | Azure Marketplace
 description: Azure Marketplace で既存の IoT Edge モジュール プランを更新する方法。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: pabutler
-ms.openlocfilehash: cd0167e1af5bf8ef667df88237d83e9f33ed41f9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: dceff3e320554edc972654aa49552bffbc4c9a13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813394"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286491"
 ---
 # <a name="update-an-existing-iot-edge-module-offer"></a>既存の IoT Edge モジュール プランの更新
 
@@ -25,7 +24,7 @@ ms.locfileid: "73813394"
 -  新しい SKU を追加する。
 -  プランまたは 個々の SKU のマーケットプレース メタデータを更新する。
 
-これらの変更を支援するために、ポータルには**比較**機能と**履歴**機能があります。  
+このような変更をサポートするため、ポータルには**比較**機能と**履歴**機能があります。  
 
 
 ## <a name="unpermitted-changes-to-iot-edge-module-offer-or-sku"></a>IoT Edge モジュール プランまたは SKU の許可されない変更

@@ -6,14 +6,14 @@ services: iot-central
 author: sarahhubbard
 ms.author: sahubbar
 ms.date: 03/03/2020
-ms.topic: conceptual
+ms.topic: how-to
 manager: peterpr
-ms.openlocfilehash: 8f982dbb10a15a1e02a62a97431cdd1b7015472c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c9d5a0daa364b09e45699e898511c28d4b4d92ce
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252235"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157757"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでのジョブの作成と実行
 
@@ -68,7 +68,7 @@ Microsoft Azure IoT Central を使用して、ジョブを使用して大規模�
 
 | ステータス メッセージ       | ステータスの意味                                          |
 | -------------------- | ------------------------------------------------------- |
-| 完了            | このジョブはすべてのデバイスで実行されました。              |
+| [完了]            | このジョブはすべてのデバイスで実行されました。              |
 | 失敗               | このジョブは失敗し、デバイスで完全には実行されませんでした。  |
 | 保留中              | このジョブはデバイスでまだ実行が開始されていません。         |
 | 実行中              | このジョブはデバイスで実行中です。             |
@@ -87,7 +87,7 @@ Microsoft Azure IoT Central を使用して、ジョブを使用して大規模�
 
 | ステータス メッセージ       | ステータスの意味                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |
-| 完了            | このデバイスで、ジョブが実行されました。                                     |
+| [完了]            | このデバイスで、ジョブが実行されました。                                     |
 | 失敗               | このデバイスでのジョブの実行に失敗しました。 エラー メッセージに詳細情報が表示されます。  |
 | 保留中              | このデバイスで、ジョブがまだ実行されていません。                                   |
 

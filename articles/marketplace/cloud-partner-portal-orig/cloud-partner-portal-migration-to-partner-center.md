@@ -1,19 +1,18 @@
 ---
 title: パートナー センターへの移行 | Azure Marketplace
 description: Cloud パートナー ポータルからパートナー センターへプランを移行します。
-services: Azure, Marketplace, Cloud Partner Portal, Partner Center
-author: ChJenk
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.author: v-chjen
-ms.openlocfilehash: cf1f7f7ebd7d0761f3bec0ab5a27e1d54fde256e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: 8ef117425f945d14db535ea3ecedc50d18819868
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475193"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280169"
 ---
 # <a name="cloud-partner-portal-migration-to-partner-center"></a>クラウド パートナー ポータルのパートナー センターへの移行
 

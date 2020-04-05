@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/27/2019
 ms.author: glenga
 ms.openlocfilehash: d697334fe56fb9133a06cee79067c60bc3a37281
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68639154"
 ---
 バインド拡張機能をインストールする最も簡単な方法は、[拡張機能のバンドル](../articles/azure-functions/functions-bindings-register.md#extension-bundles)を有効にすることです。 バンドルを有効にすると、事前定義された一連の拡張機能パッケージが自動的にインストールされます。

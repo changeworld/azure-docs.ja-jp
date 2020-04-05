@@ -12,10 +12,10 @@ metadata:
   manager: rkarlin
   ms.date: 09/19/2019
   ms.openlocfilehash: 9e592fdb5fa87487f131bb0aca0c6176175e5385
-  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/26/2019
+  ms.lasthandoff: 03/25/2020
   ms.locfileid: "71300098"
 landingContent:
 - title: Dedicated HSM について
@@ -36,7 +36,7 @@ landingContent:
       url: supportability.md
     - text: 監視
       url: monitoring.md
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: deploy
     links:

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616641"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight 上で JDBC ドライバーを使用して Apache Hive のクエリを実行する
@@ -83,7 +83,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
 5. [Add Driver\(ドライバーの追加\)] ダイアログで、次の情報を追加します。
 
-    |プロパティ | Value |
+    |プロパティ | 値 |
     |---|---|
     |名前|Hive|
     |Example URL (URL の例)|jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2|
@@ -100,7 +100,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
 7. **[Add Alias]\(エイリアスの追加\)** ダイアログでは次の値を使用します。
 
-    |プロパティ |Value |
+    |プロパティ |値 |
     |---|---|
     |名前|HDInsight の Hive|
     |Driver|ドロップダウンを使用して、**Hive** ドライバーを選択します。|

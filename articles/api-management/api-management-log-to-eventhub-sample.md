@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442523"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Azure API Management、Event Hubs、Moesif を使用した API の監視
@@ -79,7 +79,7 @@ Event Hubs には、複数のコンシューマー グループにイベント�
 ### <a name="policy-declaration"></a>ポリシーの宣言
 このポリシー式に関して触れておく必要があることがいくつかあります。 この log-to-eventhub ポリシーには、API Management サービス内で作成されたロガーの名前を参照する、logger-id という名前の属性があります。 API Management サービスでイベント ハブ ロガーを設定する方法の詳細については、「[Azure API Management で Azure Event Hubs にイベントを記録する方法](api-management-howto-log-event-hubs.md)」というドキュメントを参照してください。 2 番目の属性は、メッセージを格納するパーティションをイベント ハブに指示する省略可能なパラメーターです。 Event Hubs では、パーティションを使用してスケーラビリティを実現するため、2 つ以上のパーティションが必要になります。 メッセージの順次配信は、パーティション内でのみ保証されます。 どのパーティションにメッセージを格納するかをイベント ハブに指示しなかった場合は、ラウンドロビン アルゴリズムを使用して負荷が分散されます。 ただし、その場合、メッセージのいくつかは順序どおりに処理されない可能性があります。
 
-### <a name="partitions"></a>[メジャー グループ]
+### <a name="partitions"></a>メジャー グループ
 メッセージが順番にコンシューマーに配信されるようにして、パーティションの負荷分散機能を利用するために、ここでは、HTTP 要求メッセージを 1 つのパーティションに送信し、HTTP 応答メッセージをもう 1 つのパーティションに送信することにしました。 これにより、負荷が均等に分散されるようになるため、すべての要求が順序どおりに使用されることとすべての応答が順序どおりに使用されることを保証できます。 応答が対応する要求の前に使用される可能性はありますが、それは問題ではありません。なぜなら、要求を応答に対応付けるために別のメカニズムを使用しており、要求が常に応答の前に処理されることがわかっているためです。
 
 ### <a name="http-payloads"></a>HTTP ペイロード

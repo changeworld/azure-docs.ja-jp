@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 02/12/2019
 ms.openlocfilehash: ae119dd23da670f16c0239b14119519c431e6326
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73827010"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>クイック スタート: PHP を使用して Azure SQL データベースに照会する
@@ -32,10 +32,10 @@ ms.locfileid: "73827010"
   | 作成| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
+  | [構成] | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
   |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
-  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
-  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
+  |データの読み込み|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
+  |||[GitHub](sql-database-import.md) の [BACPAC](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) ファイルから Adventure Works を復元またはインポートする|
   |||
 
   > [!IMPORTANT]
@@ -53,7 +53,7 @@ ms.locfileid: "73827010"
 
 Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
 
@@ -100,7 +100,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 1. 先頭から 20 行が返されることを確認して、アプリ ウィンドウを閉じます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [最初の Azure SQL データベースの設計](sql-database-design-first-database.md)
 
@@ -108,4 +108,4 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 - [問題の報告と質問](https://github.com/Microsoft/msphpsql/issues)
 
-- [再試行ロジックの例:PHP を使用して SQL に弾性的に接続する](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
+- [再試行ロジックの例: PHP を使用して SQL に弾性的に接続する](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)

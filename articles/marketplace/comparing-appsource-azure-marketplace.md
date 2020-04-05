@@ -1,20 +1,18 @@
 ---
 title: AppSource と Azure Marketplace の比較 | Azure
 description: この記事では、Microsoft AppSource および Azure Marketplace のネットショップについて説明します。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/05/2018
-ms.author: ellacroi
-ms.openlocfilehash: 1e1ce36fa29000b5d8dd82a31278f390144384e2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: bd6c375231facc3d7afb35df74210d26b5f50ba8
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825990"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387786"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>AppSource と Azure Marketplace の比較
 [Azure Marketplace](https://azuremarketplace.microsoft.com) と [Microsoft AppSource](https://appsource.microsoft.com) のネットショップは、固有の顧客要件に対応します。 ネットショップを使用してロール単位で顧客をターゲティングします。 顧客に基づいて、適切なソリューションまたはサービスを提供できます。
@@ -36,6 +34,6 @@ ms.locfileid: "73825990"
 | **複数のクラウド種類** | 以下の種類を使用して、パブリック クラウドとオンプレミスの両方でソリューションを公開します。<ul> <li>Azure Stack</li> <li>Azure Government</li> <li>リージョン クラウド (中国およびドイツを含む)</li></ul> | 現在、Azure Stack、Azure Government、またはリージョン クラウドはサポートされていません。 |
 | **顧客へのコンテキスト内プレゼンテーション** | コンテキスト検索のために、Azure portal 内エクスペリエンスでソリューションを利用できるようにします。 仮想マシンと Azure アプリのソリューション テンプレート公開オプションを使用します。 | Dynamics 365、Power BI、Office 365 など Microsoft 製品のアプリ内エクスペリエンスをより多くのお客様に届けます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 *   「[Azure Marketplace と AppSource のパブリッシャー ガイド](./marketplace-publishers-guide.md)」をご覧ください。
 

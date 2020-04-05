@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 186b2c048a9de42318e4af287393d731a4eb16f1
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153464"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure の FAQ

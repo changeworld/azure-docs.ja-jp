@@ -12,10 +12,10 @@ ms.date: 02/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: d5df28728c2e911537d67b9276157dc94b080e23
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77119429"
 ---
 # <a name="quickstart-synthesize-speech-into-an-audio-file"></a>クイック スタート:オーディオ ファイルに音声を合成する

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
 ms.openlocfilehash: 11e32c9d1290227e638a314ed8417b1bed906842
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75749538"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric プログラミング モデルの概要
@@ -46,7 +46,7 @@ ASP.NET Core はオープンソースのクロスプラットフォーム フレ
 
 ## <a name="reliable-actors"></a>Reliable Actor
 
-Reliable Actors フレームワークは Reliable Services 上に構築され、計算[アクター モデル](https://en.wikipedia.org/wiki/Actor_model)に基づいて、[Virtual Actor](https://research.microsoft.com/en-us/projects/orleans/) パターンを実装するアプリケーション フレームワークです。 Reliable Actors フレームワークは、独立したコンピューティングのユニットと、*アクター*という単一スレッドの実行を含む状態を使用します。 Reliable Actors フレームワークには、アクターとプリセットされた状態の永続性とスケールアウト構成に対応する組み込みの通信が用意されています。
+Reliable Actors フレームワークは Reliable Services 上に構築され、計算[アクター モデル](https://research.microsoft.com/en-us/projects/orleans/)に基づいて、[Virtual Actor](https://en.wikipedia.org/wiki/Actor_model) パターンを実装するアプリケーション フレームワークです。 Reliable Actors フレームワークは、独立したコンピューティングのユニットと、*アクター*という単一スレッドの実行を含む状態を使用します。 Reliable Actors フレームワークには、アクターとプリセットされた状態の永続性とスケールアウト構成に対応する組み込みの通信が用意されています。
 
 Reliable Actors は、Reliable Services 上に構築されたアプリケーション フレームワークであるため、Service Fabric プラットフォームと完全に統合されており、プラットフォームによって用意される機能をすべて利用できます。
 

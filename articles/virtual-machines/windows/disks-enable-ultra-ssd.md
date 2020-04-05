@@ -8,10 +8,10 @@ ms.date: 11/14/2019
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: fdb005d0e8caea9c9439e6a3d9b49c261b81ae0a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74124141"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra ディスクの使用

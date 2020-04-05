@@ -10,15 +10,15 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: e892a8bfa3b4b0bb53d7a943e475d4e2a8228add
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76514138"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>チュートリアル:ケーブルを配線して Azure Data Box に接続する
+# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>チュートリアル: ケーブルを配線して Azure Data Box に接続する
 
 ::: zone-end
 
@@ -42,7 +42,7 @@ ms.locfileid: "76514138"
 
 開始する前に次の点を確認します。
 
-1. [チュートリアル:Azure Data Box を注文する](data-box-deploy-ordered.md)を完了していること。
+1. [Azure Data Box の注文に関するチュートリアル](data-box-deploy-ordered.md)を完了していること。
 2. Data Box の受け取りが済んでいて、ポータルで注文の状態が **[配信済み]** に更新されていること。 
     - 現在のラベルの下にデバイスに貼付されているクリア ポーチに、配送先住所ラベルがあります。 このラベルは返品用に使用するため、安全に保管してください。
     - ヨーロッパの一部のリージョンについては、デバイスが箱に梱包されて発送されます。 デバイスを開梱し、箱は返送用に必ず保管しておいてください。
@@ -143,7 +143,7 @@ ms.locfileid: "76514138"
 
 ## <a name="connect-your-device"></a>ご利用のデバイスを接続する
 
-1. デバイスのパスワードを取得するには、[Azure Portal](https://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。
+1. デバイスのパスワードを取得するには、**Azure Portal** で [[全般] > [デバイスの詳細]](https://portal.azure.com) に移動します。
 2. Data Box に接続するために使用するコンピューターのイーサネット アダプターを、静的 IP アドレス 192.168.100.5、サブネット 255.255.255.0 で構成します。 `https://192.168.100.10` からデバイスのローカル Web UI にアクセスします。 デバイスを起動してから接続するまで最大 5 分かかることがあります。 
 3. Azure portal からパスワードを使用してサインインします。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 ブラウザー固有の手順に従い Web ページに進みます。
 4. 既定では、10 Gbps のデータ インターフェイス(または 1 Gbps) のネットワーク設定は、DHCP として構成されます。 必要に応じて、このインターフェイスを静的インターフェイスとして構成し、IP アドレスを入力することができます。 

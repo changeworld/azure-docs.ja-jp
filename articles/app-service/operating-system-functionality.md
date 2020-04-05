@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74671624"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service におけるオペレーティング システムの機能
@@ -51,7 +51,7 @@ App Service には、ローカル ドライブやネットワーク ドライブ
 - App Service によって排他的に使用される (顧客はアクセスできない) Azure Package cspkg ファイルを含むアプリケーション ドライブ。
 - "ユーザー" ドライブ (C:\ ドライブ)。このサイズは、VM のサイズによって変わります。 
 
-アプリケーションの成長に伴い、ディスク使用率を監視することが重要です。 ディスク クォータに達すると、アプリケーションに悪影響が及ぶ可能性があります。 例: 
+アプリケーションの成長に伴い、ディスク使用率を監視することが重要です。 ディスク クォータに達すると、アプリケーションに悪影響が及ぶ可能性があります。 次に例を示します。 
 
 - ディスク上の領域が不足していることを示すエラーがアプリからスローされることがあります。
 - ブラウザーで Kudu コンソールにアクセスするときにディスク エラーが表示されることがあります。

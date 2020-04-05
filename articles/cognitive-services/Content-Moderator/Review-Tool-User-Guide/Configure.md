@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169590"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218853"
 ---
 # <a name="configure-the-review-tool"></a>レビュー ツールの構成
 
@@ -111,7 +111,7 @@ ms.locfileid: "76169590"
 
 ![Content Moderator のワークフロー設定](images/settings-5-workflows.png)
 
-## <a name="credentials"></a>[資格情報]
+## <a name="credentials"></a>資格情報
 
 **[資格情報]** タブを使用すると、REST 呼び出しまたはクライアント SDK からいずれかのモデレーション サービスにアクセスするために必要な Content Moderator サブスクリプション キーにすばやくアクセスできます。
 

@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
 ms.openlocfilehash: b8492e8934c782451fb77d5a0ff56b96c34c9a00
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75439869"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
@@ -28,7 +28,7 @@ ms.locfileid: "75439869"
 
 セルフホステッド統合ランタイムが Data Factory サービス (バックエンド) に接続できません。 この問題は、通常、ファイアウォールのネットワーク設定によって発生します。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 1. 統合ランタイム サービスが実行されているかどうかを確認します。
     
@@ -94,7 +94,7 @@ ms.locfileid: "75439869"
 
 この動作は、ノードが相互に通信できない場合に発生します。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 1. ノードでホストされている VM にログインします。 イベント ビューアーを開き、 **[アプリケーションとサービス ログ]**  >  **[統合ランタイム]** 以下のすべてのエラー ログをフィルター処理します。
 

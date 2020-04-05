@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: menchi
 ms.openlocfilehash: e18d448d9aee0137f1167d23a2bbf53486d0c764
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953841"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT Hub モジュール ID とモジュール ツイン (Python) の概要
@@ -176,7 +176,7 @@ if __name__ == '__main__':
     iothub_client_sample_run()
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 引き続き IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
 

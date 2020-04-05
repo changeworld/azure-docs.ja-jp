@@ -5,16 +5,16 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 9a829b0c84c397f297539cdb04b3ad027a18c834
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c9447d356cff792d9a70e33cc2a5e35898d8982b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75455626"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80131888"
 ---
-# <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する
+# <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する
 
-Visual Studio Code と Azure Resource Manager ツール拡張機能を使用して Azure Resource Manager テンプレートを作成および編集する方法について説明します。 Visual Studio Code では、拡張機能を使わずに Resource Manager テンプレートを作成することもできますが、拡張機能を利用すれば、オートコンプリート機能によってテンプレートの開発を省力化することができます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、[テンプレートのデプロイの概要](overview.md)に関するページを参照してください。
+Visual Studio Code と Azure Resource Manager ツール拡張機能を使用して Azure Resource Manager (ARM) テンプレートを作成および編集する方法について説明します。 Visual Studio Code では、拡張機能を使わずに ARM テンプレートを作成することもできますが、拡張機能を利用すれば、オートコンプリート機能によってテンプレートの開発を省力化することができます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、[テンプレートのデプロイの概要](overview.md)に関するページを参照してください。
 
 このクイックスタートでは、ストレージ アカウントをデプロイします。
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
-ゼロからテンプレートを作成するのではなく、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)からテンプレートを開きます。 Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。
+ゼロからテンプレートを作成するのではなく、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)からテンプレートを開きます。 Azure クイック スタート テンプレートは、ARM テンプレートのリポジトリです。
 
 このクイック スタートで使用されるテンプレートは、[Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) と呼ばれます。 テンプレートにより、Azure ストレージ アカウント リソースが定義されます。
 
@@ -94,11 +94,11 @@ Visual Studio Code を使用してテンプレートを編集する方法を体�
 
 2. 左上の **[PowerShell]** または **[Bash]** (CLI) を選択して、希望の環境を選択します。  切り替えた場合は、シェルを再起動する必要があります。
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
 
     ![Azure portal の Cloud Shell の CLI](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Azure portal の Cloud Shell の PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
 
@@ -106,11 +106,11 @@ Visual Studio Code を使用してテンプレートを編集する方法を体�
 
 3. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
 
     ![Azure portal の Cloud Shell のファイルのアップロード](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Azure portal の Cloud Shell のファイルのアップロード](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
 
@@ -120,28 +120,28 @@ Visual Studio Code を使用してテンプレートを編集する方法を体�
 
     オプションで **ls** コマンドと **cat** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
 
     ![Azure portal の Cloud Shell のファイルの一覧表示](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Azure portal の Cloud Shell のファイルの一覧表示](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
 
     ---
 4. Cloud Shell で次のコマンドを実行します。 PowerShell コードまたは CLI コードを表示するタブを選択します。
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
     ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
     echo "Enter the location (i.e. centralus):" &&
     read location &&
     az group create --name $resourceGroupName --location "$location" &&
-    az group deployment create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
     ```
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -157,11 +157,11 @@ Visual Studio Code を使用してテンプレートを編集する方法を体�
 
     次のスクリーンショットは、サンプルのデプロイを示しています。
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
 
     ![Azure portal の Cloud Shell のテンプレートのデプロイ](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Azure portal の Cloud Shell のテンプレートのデプロイ](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
 
@@ -171,7 +171,7 @@ Visual Studio Code を使用してテンプレートを編集する方法を体�
 
 5. 次の CLI または PowerShell コマンドを実行して、新しく作成されたストレージ アカウントの一覧を表示します。
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
     ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
@@ -180,7 +180,7 @@ Visual Studio Code を使用してテンプレートを編集する方法を体�
     az storage account show --resource-group $resourceGroupName --name $storageAccountName
     ```
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

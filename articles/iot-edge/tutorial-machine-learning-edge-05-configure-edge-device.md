@@ -8,12 +8,12 @@ ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ab3ed567d34c6284959f7875bb121ced4770d65e
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: d2bad581c925bb62cbe65a45000f6d3ae35db011
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133346"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372684"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>チュートリアル:IoT Edge デバイスの構成
 
@@ -165,7 +165,7 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
     * まだ存在しない場合、リソース グループを作成する
     * 仮想マシンの作成
-    * ポート 22 (SSH)、5671 (AMQP)、5672 (AMPQ)、および 443 (SSL) に対して VM の NSG 例外を追加する
+    * ポート 22 (SSH)、5671 (AMQP)、5672 (AMPQ)、および 443 (TLS) に対して VM の NSG 例外を追加する
     * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest) をインストールする
 
 7. スクリプトは、VM に接続するための SSH 接続文字列を出力します。 次のステップのために接続文字列をコピーします。
@@ -196,7 +196,7 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
 1. Linux 仮想マシン上の SSH セッションから、Azure CLI を使用して Azure にサインインします。
 
-    ```bash
+    ```azurecli
     az login
     ```
 
@@ -206,7 +206,7 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
 1. Azure CLI コマンドで使用する Azure サブスクリプションを設定します。
 
-    ```bash
+    ```azurecli
     az account set --subscription <subscriptionId>
     ```
 
@@ -218,7 +218,7 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
 1. キー コンテナーに保存した証明書をダウンロードします: new-edge-device-full-chain.cert.pem、new-edge-device.key.pem、および azure-iot-test-only.root.ca.cert.pem
 
-    ```bash
+    ```azurecli
     key_vault_name="<key vault name>"
     sudo az keyvault secret download --vault-name $key_vault_name --name new-edge-device-full-chain-cert-pem -f /edgeMlCertificates/new-edge-device-full-chain.cert.pem
     sudo az keyvault secret download --vault-name $key_vault_name --name new-edge-device-key-pem -f /edgeMlCertificates/new-edge-device.key.pem

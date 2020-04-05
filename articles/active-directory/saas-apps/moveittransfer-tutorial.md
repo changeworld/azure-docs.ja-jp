@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と MOVEit Transfer - Azure AD integration の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と MOVEit Transfer - Azure AD integration の統合 | Microsoft Docs'
 description: Azure Active Directory と MOVEit Transfer - Azure AD integration の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 43383e82d983c998d159728997da4757cc364999
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161327"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>チュートリアル:Azure Active Directory と MOVEit Transfer - Azure AD integration の統合
+# <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>チュートリアル: Azure Active Directory と MOVEit Transfer - Azure AD integration の統合
 
 このチュートリアルでは、MOVEit Transfer - Azure AD integration と Azure Active Directory (Azure AD) を統合する方法について説明します。
 MOVEit Transfer - Azure AD integration と Azure AD の統合には、次の利点があります。

@@ -5,10 +5,10 @@ ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
 ms.openlocfilehash: b6ab3e80c7a27263039de3d371adea3d49ddfcc9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75437015"
 ---
 |  | **プライベート ピアリング** | **Microsoft ピアリング** |  **パブリック ピアリング** (新しい回線では非推奨) |

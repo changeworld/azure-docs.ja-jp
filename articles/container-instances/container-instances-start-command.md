@@ -4,11 +4,11 @@ description: Azure コンテナー インスタンスのデプロイ時にコン
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533402"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225823"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>コンテナー インスタンスにコマンド ラインを設定して既定のコマンド ライン操作をオーバーライドする
 
@@ -20,7 +20,7 @@ ms.locfileid: "74533402"
 
 * 既定では、このコマンド ラインでは、コンテナーで*シェルを使用せずに開始する単一のプロセス*を指定します。 たとえば、コマンド ラインにより Python スクリプトまたは実行ファイルを実行できます。 このプロセスでは、追加のパラメーターまたは引数を指定できます。
 
-* 複数のコマンドを実行するには、コンテナーのオペレーティング システムでサポートされるシェル環境を設定することで、コマンド ラインを開始します。 次に例を示します。
+* 複数のコマンドを実行するには、コンテナーのオペレーティング システムでサポートされるシェル環境を設定することで、コマンド ラインを開始します。 例 :
 
   |オペレーティング システム  |既定のシェル  |
   |---------|---------|
@@ -110,7 +110,7 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 [('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 複数のコンテナーがある大きなデータセットのバッチ処理など、タスク ベースのシナリオでは、実行時にカスタムのコマンド ラインを使用するとメリットがあります。 タスク ベースのコンテナーの実行に関する詳細については、「[再起動ポリシーによるコンテナー化タスクの実行](container-instances-restart-policy.md)」を参照してください。
 

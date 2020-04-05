@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 7f3f5177e084693c45bed1088a4e1d091be100ed
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960260"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233183"
 ---
 # <a name="500xxx-internal-errors"></a>500xxx 内部エラー
 

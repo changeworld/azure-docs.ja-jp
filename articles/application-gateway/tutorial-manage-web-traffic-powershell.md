@@ -9,15 +9,15 @@ ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: a313296a9a19aa762803652a3b139cdac7ca3a58
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68359933"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>Azure PowerShell を使用して、アプリケーション ゲートウェイで Web トラフィックを管理する
 
-アプリケーション ゲートウェイは、管理対象サーバーへの Web トラフィックの管理とセキュリティ保護のために使用します。 バックエンド サーバーで Web トラフィックを管理するため、Azure PowerShell を使用して、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用する[アプリケーション ゲートウェイ](overview.md)を作成できます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。
+アプリケーション ゲートウェイは、管理対象サーバーへの Web トラフィックの管理とセキュリティ保護のために使用します。 バックエンド サーバーで Web トラフィックを管理するため、Azure PowerShell を使用して、[仮想マシン スケール セット](overview.md)を使用する[アプリケーション ゲートウェイ](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を作成できます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。
 
 この記事では、次のことについて説明します。
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 PowerShell をローカルにインストールして使用する場合、この記事では Azure PowerShell モジュール バージョン 1.0.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzAccount` を実行して Azure との接続を作成することも必要です。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。  
 
@@ -46,7 +46,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
 
-[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を使用して、*myBackendSubnet* および *myAGSubnet* という名前のサブネットを構成します。 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) とサブネット構成を使用して、*myVNet* という仮想ネットワークを作成します。 最後に、[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。 こうしたリソースは、アプリケーション ゲートウェイとその関連リソースにネットワーク接続を提供するために使用されます。
+*New-AzVirtualNetworkSubnetConfig* を使用して、*myBackendSubnet* および [myAGSubnet](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) という名前のサブネットを構成します。 *New-AzVirtualNetwork* とサブネット構成を使用して、[myVNet](/powershell/module/az.network/new-azvirtualnetwork) という仮想ネットワークを作成します。 最後に、*New-AzPublicIpAddress* を使用して [myAGPublicIPAddress](/powershell/module/az.network/new-azpublicipaddress) という名前のパブリック IP アドレスを作成します。 こうしたリソースは、アプリケーション ゲートウェイとその関連リソースにネットワーク接続を提供するために使用されます。
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -82,7 +82,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP 構成とフロントエンド ポートの作成
 
-[New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) を使用して、前に作成した *myAGSubnet* をアプリケーション ゲートウェイに関連付けます。 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) を使用して、*myAGPublicIPAddress* をアプリケーション ゲートウェイに割り当てます。
+*New-AzApplicationGatewayIPConfiguration* を使用して、前に作成した [myAGSubnet](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) をアプリケーション ゲートウェイに関連付けます。 *New-AzApplicationGatewayFrontendIPConfig* を使用して、[myAGPublicIPAddress](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) をアプリケーション ゲートウェイに割り当てます。
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -106,7 +106,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool-and-settings"></a>バックエンド プールと設定の作成
 
-[New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) を使用して、アプリケーション ゲートウェイに対して *appGatewayBackendPool* という名前のバックエンド プールを作成します。 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) を使用して、バックエンド アドレス プールの設定を構成します。
+*New-AzApplicationGatewayBackendAddressPool* を使用して、アプリケーション ゲートウェイに対して [appGatewayBackendPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool) という名前のバックエンド プールを作成します。 [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) を使用して、バックエンド アドレス プールの設定を構成します。
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -124,7 +124,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 アプリケーション ゲートウェイがバックエンド プールに対して適切にトラフィックをルーティングするためにはリスナーが必要です。 この例では、ルート URL でトラフィックをリッスンする基本的なリスナーを作成します。 
 
-[New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) と、前に作成したフロントエンド構成およびフロントエンド ポートを使用して、*myDefaultListener* という名前のリスナーを作成します。 着信トラフィックに使用するバックエンド プールをリスナーが判断するには、ルールが必要です。 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) を使用して、*rule1* という名前の基本ルールを作成します。
+*New-AzApplicationGatewayHttpListener* と、前に作成したフロントエンド構成およびフロントエンド ポートを使用して、[myDefaultListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) という名前のリスナーを作成します。 着信トラフィックに使用するバックエンド プールをリスナーが判断するには、ルールが必要です。 *New-AzApplicationGatewayRequestRoutingRule* を使用して、[rule1](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) という名前の基本ルールを作成します。
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -248,7 +248,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![アプリケーション ゲートウェイでのベース URL のテスト](./media/tutorial-manage-web-traffic-powershell/tutorial-iistest.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループ、アプリケーション ゲートウェイ、およびすべての関連リソースを削除します。
 
@@ -256,6 +256,6 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Web アプリケーション ファイアウォールによる Web トラフィックの制限](./tutorial-restrict-web-traffic-powershell.md)

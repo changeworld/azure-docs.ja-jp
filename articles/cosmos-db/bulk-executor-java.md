@@ -10,10 +10,10 @@ ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: bf2a2385b3129ddf24ede7f6d851701186b0e33c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445704"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
@@ -26,14 +26,14 @@ ms.locfileid: "75445704"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。  
 
-* Azure サブスクリプションを必要とせず、課金や契約もなく [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、`https://localhost:8081` エンドポイントで [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) を使用できます。 主キーは、[要求の認証](local-emulator.md#authenticating-requests)で与えられます。  
+* Azure サブスクリプションを必要とせず、課金や契約もなく [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、[ エンドポイントで ](https://docs.microsoft.com/azure/cosmos-db/local-emulator)Azure Cosmos DB Emulator`https://localhost:8081` を使用できます。 主キーは、[要求の認証](local-emulator.md#authenticating-requests)で与えられます。  
 
 * [Java Development Kit (JDK) 1.7 以降](https://aka.ms/azure-jdks)  
   - Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。  
 
   - 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。
 
-* [Maven](https://maven.apache.org/) バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)  
+* [Maven](https://maven.apache.org/download.cgi) バイナリ アーカイブの[ダウンロード](https://maven.apache.org/install.html)と[インストール](https://maven.apache.org/)  
   
   - Ubuntu で `apt-get install maven` を実行して Maven をインストールします。
 

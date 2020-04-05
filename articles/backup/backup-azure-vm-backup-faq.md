@@ -5,10 +5,10 @@ ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.openlocfilehash: 5d2f702b49e1e7aeb2ab33008556e91264b39427
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705413"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
@@ -47,7 +47,7 @@ Recovery Services コンテナーと VM が異なるリソース グループに
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>最近いくつかの VM で Azure Disk Encryption を有効にしました。 既存のバックアップは今後も正常に機能しますか。
 
-Azure Backup に Key Vault へのアクセス許可を付与してください。 [Azure Backup PowerShell](backup-azure-vms-automation.md) ドキュメントの**バックアップの有効化**に関するセクションの説明に従って、PowerShell でアクセス許可を指定します。
+Azure Backup に Key Vault へのアクセス許可を付与してください。 **Azure Backup PowerShell** ドキュメントの[バックアップの有効化](backup-azure-vms-automation.md)に関するセクションの説明に従って、PowerShell でアクセス許可を指定します。
 
 ### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>VM ディスクをマネージド ディスクに移行しました。 既存のバックアップは今後も正常に機能しますか。
 
@@ -83,7 +83,7 @@ WA 対応ディスクでスナップショットを作成することはでき�
 
 Azure Backup では WA 対応ディスクをバックアップできませんが、バックアップから除外することはできます。 ただし、バックアップによってデータベース整合性が維持されなくなります。WA 対応ディスクの情報がバックアップされないためです。 オペレーティング システム ディスクのバックアップ、および WA 対応ではないディスクのバックアップが必要な場合は、この構成でディスクをバックアップできます。
 
-RPO が 15 分の SAP HANA バックアップに対するプライベート プレビューを実行中です。 このプレビューは同様の方法で SQL DB バックアップに組み込まれていて、backInt インターフェイスが、SAP HANA 認定のサード パーティ ソリューションに対して使用されています。 関心をお持ちの場合は、"**Azure VM での SAP HANA バックアップのプライベート プレビューへのサインアップ**" という件名で、`AskAzureBackupTeam@microsoft.com` 宛てにメールでご連絡ください。
+RPO が 15 分の SAP HANA バックアップに対するプライベート プレビューを実行中です。 このプレビューは同様の方法で SQL DB バックアップに組み込まれていて、backInt インターフェイスが、SAP HANA 認定のサード パーティ ソリューションに対して使用されています。 関心をお持ちの場合は、"`AskAzureBackupTeam@microsoft.com`Azure VM での SAP HANA バックアップのプライベート プレビューへのサインアップ **" という件名で、** 宛てにメールでご連絡ください。
 
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>自分の VM バックアップ ポリシーで設定した、スケジュールされたバックアップ時刻からバックアップ開始時刻までの最大遅延時間はどれぐらいですか。
 

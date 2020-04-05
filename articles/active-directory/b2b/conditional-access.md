@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c0b6ceba4c3c9202e2024b5c163c0e98bb6cbf55
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272996"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザーの条件付きアクセス
@@ -105,7 +105,7 @@ B2B ユーザーのデバイスが Contoso によって管理されていない�
 
 現時点では、リスク評価は B2B ユーザーのホーム組織で実行されるため、B2B ユーザーに対してリスクベースのサインイン ポリシーを適用することはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 

@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
 ms.openlocfilehash: 138e077f7b47fa9f38a4710db95eb7208cef78e3
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78675313"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Web アプリで Azure IoT Hub からのリアルタイム センサー データを視覚化する

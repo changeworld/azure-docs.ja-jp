@@ -7,17 +7,17 @@ author: navyasric
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
-ms.openlocfilehash: 40f5935c7d653ce90aa56bc5ee2bb15711bb9dd8
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
+ms.openlocfilehash: 2649d885d31bcd0fef403e7e4eddbc828fd17b93
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399250"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80050253"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>クイック スタート:JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
@@ -79,10 +79,9 @@ ms.locfileid: "78399250"
 > Node.js を使用して Web サーバーでプロジェクトを実行する
 
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [コード サンプルをダウンロードします]()
+> [コード サンプルをダウンロードします](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
 
 > [!div renderon="docs"]
-
 > #### <a name="step-3-configure-your-javascript-app"></a>手順 3:JavaScript アプリの構成
 >
 > *JavaScriptSPA* フォルダーで、*authConfig.js* を編集し、`msalConfig` の下にある `clientID`、`authority`、および `redirectUri` の値を設定します。

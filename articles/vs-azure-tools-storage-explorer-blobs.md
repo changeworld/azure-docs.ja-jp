@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
 ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442980"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224983"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Storage Explorer を使用して Azure Blob Storage リソースを管理する
 
@@ -223,7 +223,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      2. メイン ウィンドウのツール バーで、 **[削除]** を選択します。
      3. 確認のダイアログで **[はい]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [最新の Storage Explorer のリリース ノートとビデオ](https://www.storageexplorer.com)を確認します。
 * [Azure BLOB、テーブル、キュー、ファイルを使ってアプリケーションを作成する](https://azure.microsoft.com/documentation/services/storage/)方法について学習します。

@@ -8,10 +8,10 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76275421"
 ---
 # <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(非推奨) Azure Container Service で使用するコンテナー イメージを作成する

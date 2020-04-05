@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 86c6c0bac5caae0873d0067c6abcb5a8ac864c88
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68596409"
 ---
 # <a name="get-started-with-azure-security-center-for-iot"></a>Azure Security Center for IoT の使用を開始する
@@ -42,7 +42,7 @@ IoT Hub の監視と推奨事項を備えた[組み込みデプロイ](iot-hub-i
 エージェントベースの包括的な脅威保護とセキュリティ体制の管理ソリューションを備えた、[強化されたデプロイ](security-agents.md)を開始します。
    
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Security Center for IoT](quickstart-onboard-iot-hub.md) を有効にする
 - [ソリューションを構成する](quickstart-configure-your-solution.md)

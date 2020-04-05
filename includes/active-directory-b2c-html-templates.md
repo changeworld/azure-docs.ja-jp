@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/12/2020
 ms.author: mimart
 ms.openlocfilehash: d43b879057001d62ea72bd2e011ad52957d47470
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189025"
 ---
 ## <a name="sample-templates"></a>サンプル テンプレート
@@ -27,7 +27,7 @@ git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
 
 1. ローカル コンピューターにリポジトリを複製します。 テンプレート フォルダーの `/ocean_blue` または `/slate_gray` を選択します。
 1. 前のセクションの説明に従い、テンプレート フォルダーと `/assets` フォルダーの下にあるすべてのファイルを Blob Storage にアップロードします。
-1. 次に、`/ocean_blue` または `/slate_gray` のルートにある各 `\*.html` ファイルを開き、相対 URL のすべての出現箇所を、手順 2 でアップロードした css、images、および fonts ファイルの URL に置き換えます。 次に例を示します。
+1. 次に、`\*.html` または `/ocean_blue` のルートにある各 `/slate_gray` ファイルを開き、相対 URL のすべての出現箇所を、手順 2 でアップロードした css、images、および fonts ファイルの URL に置き換えます。 次に例を示します。
     ```html
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```

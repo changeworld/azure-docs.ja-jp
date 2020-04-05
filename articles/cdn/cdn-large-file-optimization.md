@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 4fe72985a799595908a0ff6bceb1a73dca823c8f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593779"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Azure CDN を使用した大きなファイルのダウンロードの最適化
@@ -110,8 +110,8 @@ CDN は受信したチャンクをすべてキャッシュします。 ファイ
 
 |    | 一般 Web | 大きなファイルの最適化 
 --- | --- | --- 
-キャッシュ:Positive <br> HTTP 200、203、300、 <br> 301、302、410 | 7 日 |1 日  
-キャッシュ:Negative <br> HTTP 204、305、404、 <br> 405 | なし | 1 秒 
+キャッシュ: 正の値 <br> HTTP 200、203、300、 <br> 301、302、410 | 7 日 |1 日  
+キャッシュ: 負の値 <br> HTTP 204、305、404、 <br> 405 | なし | 1 秒 
 
 ### <a name="deal-with-origin-failure"></a>配信元のエラーの処理
 
@@ -130,7 +130,7 @@ CDN は受信したチャンクをすべてキャッシュします。 ファイ
 ファイルの最大サイズ | 150 GB 
 配信元サーバーの特性 | バイト範囲要求をサポートする必要があります 
 
-## <a name="additional-considerations"></a>追加の考慮事項
+## <a name="additional-considerations"></a>その他の注意点
 
 この最適化を利用する場合は次のような点も考慮する必要があります。
 

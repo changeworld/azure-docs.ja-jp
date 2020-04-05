@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
 ms.openlocfilehash: f2ca1566358fad45f6ec2860fcca96b887c54adb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722579"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする

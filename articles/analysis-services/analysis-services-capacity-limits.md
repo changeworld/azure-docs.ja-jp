@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f309c9863eb2f3065251537380a2977839f990d8
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73573212"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Analysis Services のリソースとオブジェクトの制限
@@ -26,9 +26,9 @@ Developer、Basic、Standard の各レベルの QPU とメモリの制限につ�
 
 この制限は理論上のものです。 数字が小さくなると、パフォーマンスが低下します。
 
-|Object|最大サイズ/数|  
+|Object|最大サイズと最大数|  
 |------------|----------------------------|  
-|インスタンスのデータベース|16,000|  
+|インスタンス内のデータベース|16,000|  
 |データベース内のテーブルと列の合計数|16,000|  
 |テーブル内の行|無制限<br /><br /> **警告:** テーブル内の 1 つの列には 1,999,999,997 を超える個別値を設定することができないという制限があります。|  
 |テーブル内の階層|15,999|  

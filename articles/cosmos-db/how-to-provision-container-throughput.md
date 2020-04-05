@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mjbrown
 ms.openlocfilehash: e416501cb3c532b3ba0a262442b35b236875a463
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273289"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Azure Cosmos コンテナー上でのスループットをプロビジョニングする
@@ -19,7 +19,7 @@ ms.locfileid: "78273289"
 
 ## <a name="azure-portal"></a>Azure portal
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. [新しい Azure Cosmos アカウントを作成する](create-sql-api-dotnet.md#create-account)か、既存の Azure Cosmos アカウントを選択します。
 
@@ -48,7 +48,7 @@ ms.locfileid: "78273289"
 > [!Note]
 > Cassandra API を除くすべての Cosmos DB API シリーズに対するスループットをプロビジョニングするには、SQL API 用の Cosmos SDK を使用します。
 
-### <a id="dotnet-most"></a>SQL API、MongoDB API、Gremlin API、Table API
+### <a name="sql-mongodb-gremlin-and-table-apis"></a><a id="dotnet-most"></a>SQL API、MongoDB API、Gremlin API、Table API
 ### <a name="net-v2-sdk"></a>.Net V2 SDK
 
 ```csharp
@@ -96,7 +96,7 @@ offer.content.offerThroughput = 2000;
 await client.offer(offer.id).replace(offer);
 ```
 
-### <a id="dotnet-cassandra"></a>Cassandra API
+### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API
 
 同様のコマンドは、CQL に準拠している任意のドライバーを使用して発行できます。
 

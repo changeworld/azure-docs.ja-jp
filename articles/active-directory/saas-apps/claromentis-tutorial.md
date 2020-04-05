@@ -17,10 +17,10 @@ ms.date: 12/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4c6eaf23950f83592a33709574be464f4499f0ab
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74823034"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-claromentis"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Claromentis の統合
@@ -173,7 +173,7 @@ Claromentis で Azure AD SSO を構成してテストするには、次の構成
 
     c. Azure portal からダウンロードした**フェデレーション メタデータ XML** ファイルをアップロードします。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
 1. これで、すべての URL が **[SAML Config]\(SAML 構成\)** セクションの **[Identity Provider]\(ID プロバイダー\)** セクション内に設定されたことになります。
 

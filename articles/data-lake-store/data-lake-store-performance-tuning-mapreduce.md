@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: a645049665bc1d51efa94a879b9d2e4e5529282f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73904585"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight の MapReduce と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス
@@ -23,7 +23,7 @@ ms.locfileid: "73904585"
 * **HDInsight での MapReduce の使用**。 詳細については、「[HDInsight での MapReduce と Hadoop の使用](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)」を参照してください。
 * **Data Lake Storage Gen1 のパフォーマンス チューニング ガイドラインを確認します**。 一般的なパフォーマンスの概念については、[Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)を参照してください。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 MapReduce ジョブの実行時に、Data Lake Storage Gen1 のパフォーマンスを向上させるために構成できる最も重要なパラメーターは次のとおりです。
 

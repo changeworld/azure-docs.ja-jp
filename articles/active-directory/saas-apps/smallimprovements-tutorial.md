@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: d2d0bbc7a6e1c680434041d1b9d55e39a96b6f44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090375"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>チュートリアル:Azure Active Directory と Small Improvements の統合
@@ -150,7 +150,7 @@ Small Improvements で Azure AD シングル サインオンを構成するに�
 
     d. **[SAML プロンプト]** ボックスに、SSO ログイン ボタンの名前として適切な値を入力します。  
 
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

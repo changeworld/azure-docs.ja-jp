@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
 ms.openlocfilehash: 4990d815721ddbdde8e6eb6ebf8d6d3b49adc700
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74173381"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API を使用して Azure 仮想マシンを復元する
@@ -27,13 +27,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 `{containerName}` および `{protectedItemName}` は、[こちら](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)のように構成されています。 `{fabricName}` は "Azure" です。
 
-*GET* URI にはすべての必要なパラメーターが含まれます。 追加の要求本文は必要ありません
+*GET* URI には、すべての必須パラメーターが含まれます。 追加の要求本文は必要ありません
 
 ### <a name="responses"></a>Responses
 
 |名前  |Type  |説明  |
 |---------|---------|---------|
-|200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
+|200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       [OK]  |
 
 #### <a name="example-response"></a>応答の例
 
@@ -273,7 +273,7 @@ X-Powered-By: ASP.NET
 
 [前に説明したディスクの復元](#response)と同じように、応答を処理する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Backup REST API について詳しくは、次のドキュメントをご覧ください。
 

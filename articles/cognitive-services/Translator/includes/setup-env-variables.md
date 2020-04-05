@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: c737447c3a3bd2d76d3ed620b7c61aaa81250130
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70393838"
 ---
-## <a name="set-up"></a>セットアップ
+## <a name="set-up"></a>設定
 
 ### <a name="create-a-translator-text-resource"></a>Translator Text リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル コンピューター上に Translator Text のリソースを作成します。 さらに、以下を実行できます。
+Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル コンピューター上に Translator Text のリソースを作成します。 次のこともできます。
 
 * 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services)を無料で入手する。 これは、サインアップ後に Azure Web サイトで入手できます。
 * [Azure portal](https://portal.azure.com/) で既存のリソースを表示する。

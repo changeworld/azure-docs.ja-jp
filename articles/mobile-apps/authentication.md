@@ -1,18 +1,18 @@
 ---
 title: Visual Studio App Center と Azure サービスを使用してモバイル アプリに認証を追加する
 description: ユーザー認証を設定したり、モバイル アプリケーションがソーシャル アカウント、Azure Active Directory、およびカスタム認証を使用して認証を受けられるようにしたりするのに役立つ Visual Studio App Center などのサービスについて説明します。
-author: elamalani
+author: codemillmatt
 ms.assetid: 34a8a070-2222-4faf-9090-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 261c12e63f8f348e1673dbc46c89c614caf3283b
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 820005bca008ea3bdb59659c815da3ec36beb0d4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78296356"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80241047"
 ---
 # <a name="add-authentication-and-manage-user-identities-in-your-mobile-apps"></a>ご利用のモバイル アプリに認証を追加し、ユーザー ID を管理する
 
@@ -37,7 +37,7 @@ ms.locfileid: "78296356"
 - iOS、Android、Xamarin、React Native のプラットフォームのサポート。
 
 **参照**
-- [Visual Studio App Center でのサインアップ](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 
+- [Visual Studio App Center にサインアップする](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs) 
 - [App Center Auth を使ってみる](/appcenter/auth/)
 
 ## <a name="azure-active-directory-b2c"></a>Azure Active Directory B2C

@@ -11,15 +11,15 @@ ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
 ms.openlocfilehash: 332f33bb4046a9ca9d6abf9bec75f60bb4ca9e32
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169089"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
-Azure Cognitive Services は、開発者が直接的な AI またはデータ サイエンスのスキルや知識がなくてもインテリジェントなアプリケーションを構築するために使用できる API、SDK、およびサービスです。 Azure Cognitive Services によって、開発者は簡単にアプリケーションに Cognitive 機能を追加できます。 Azure Cognitive Services の目標は、開発者が、聞いたり、話したり、理解したり、推論し始めたりできるアプリケーションの作成を支援することです。 Azure Cognitive Services 内のサービス カタログは、5 つの主要な柱として、視覚、音声、言語、Web 検索、および意思決定に分類できます。
+Azure Cognitive Services は、開発者が直接的な AI またはデータ サイエンスのスキルや知識がなくてもインテリジェントなアプリケーションを構築するために使用できる API、SDK、およびサービスです。 Azure Cognitive Services によって、開発者は簡単にアプリケーションにコグニティブ機能を追加できます。 Azure Cognitive Services の目標は、開発者が、聞いたり、話したり、理解したり、推論し始めたりできるアプリケーションの作成を支援することです。 Azure Cognitive Services 内のサービス カタログは、5 つの主要な柱として、視覚、音声、言語、Web 検索、および意思決定に分類できます。
 
 ## <a name="vision-apis"></a>Vision API
 
@@ -45,7 +45,7 @@ Azure Cognitive Services は、開発者が直接的な AI またはデータ �
 > [Azure Cognitive Search](https://docs.microsoft.com/azure/search/) をお探しですか? 一部のタスクに Cognitive Services が使用されますが、他のシナリオをサポートする異なる検索テクノロジです。
 
 
-## <a name="language-apis"></a>Language API
+## <a name="language-apis"></a>言語 API
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
@@ -102,7 +102,7 @@ Cognitive Services の API は、Microsoft マネージド データ センタ�
 
 ## <a name="securing-resources"></a>リソースのセキュリティ
 
-Azure Cognitive Services には、[Azure Virtual Networks](cognitive-services-virtual-networks.md)、有効なリソース キー、Azure Active Directory の資格情報を使用した[認証](authentication.md)を含む多層型のセキュリティ モデルが採用されています。
+Azure Cognitive Services には、[Azure Virtual Networks](authentication.md)、有効なリソース キー、Azure Active Directory の資格情報を使用した[認証](cognitive-services-virtual-networks.md)を含む多層型のセキュリティ モデルが採用されています。
 
 ## <a name="container-support"></a>コンテナー サポート
 

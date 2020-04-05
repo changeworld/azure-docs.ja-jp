@@ -4,10 +4,10 @@ description: Azure の委任されたリソース管理に顧客をオンボー�
 ms.date: 01/16/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6ae93759073be6b05d118ccf46f6b6367fff5fc6
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78328944"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する

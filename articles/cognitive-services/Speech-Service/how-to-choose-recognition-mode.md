@@ -12,10 +12,10 @@ ms.date: 03/10/2020
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: d997cb592d9d648998f2b44d9f61f465f05faeb0
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79079822"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>音声認識モードを選択する

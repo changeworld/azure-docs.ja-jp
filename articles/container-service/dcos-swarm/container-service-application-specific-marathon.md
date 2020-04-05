@@ -8,10 +8,10 @@ ms.date: 04/12/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: 423dc7f62806f774a5ec4855faa8be9001292773
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277714"
 ---
 # <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>(非推奨) アプリケーションまたはユーザー固有の Marathon サービスの作成
@@ -45,7 +45,7 @@ dcos package install --options=marathon-alice.json marathon
 これで、実行されている `marathon-alice` サービスが、DC/OS UI のサービス タブに表示されます。 直接アクセスする場合、UI は `http://<hostname>/service/marathon-alice/` です。
 
 ## <a name="set-the-dcos-cli-to-access-the-service"></a>サービスにアクセスするための DC/OS CLI の設定
-必要に応じて、この新しいサービスにアクセスするように DC/OS CLI を構成することができます。そのためには、次のように、`marathon-alice` インスタンスを指すように `marathon.url` プロパティを設定します。
+必要に応じて、この新しいサービスにアクセスするように DC/OS CLI を構成することができます。そのためには、次のように、`marathon.url` インスタンスを指すように `marathon-alice` プロパティを設定します。
 
 ```bash
 dcos config set marathon.url http://<hostname>/service/marathon-alice/

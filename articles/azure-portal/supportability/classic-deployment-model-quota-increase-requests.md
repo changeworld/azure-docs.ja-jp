@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: a3d5106cafc1d3bfe77f3e42e85cedb668fc4fa0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76835637"
 ---
 # <a name="classic-deployment-model"></a>クラシック デプロイ モデル

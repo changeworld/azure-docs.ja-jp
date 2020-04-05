@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: diberry
 ms.openlocfilehash: 6a155f4c43da03ccdc40d289742918973aa6da7b
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74326778"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>サブジェクト ドメインとデータ抽出を使用して LUIS アプリ スキーマを計画する
 
-LUIS アプリ スキーマには、サブジェクト [ドメイン](luis-glossary.md#domain)に関連する[意図](luis-glossary.md#intent)と[エンティティ](luis-glossary.md#entity)が含まれています。 [意図](luis-glossary.md#utterance)はユーザーの発話を分類し、エンティティはユーザー発話からデータを抽出します。
+LUIS アプリ スキーマには、サブジェクト [ドメイン](luis-glossary.md#intent)に関連する[意図](luis-glossary.md#entity)と[エンティティ](luis-glossary.md#domain)が含まれています。 [意図](luis-glossary.md#utterance)はユーザーの発話を分類し、エンティティはユーザー発話からデータを抽出します。
 
 ## <a name="identify-your-domain"></a>ドメインの特定
 
@@ -57,7 +57,7 @@ LUIS アプリはサブジェクト ドメインが中心です。 たとえば�
 > [!TIP]
 > LUIS には、一般的な会話ユーザーのシナリオに合わせて[構築済みのエンティティ](luis-prebuilt-entities.md)が用意されています。 アプリケーション開発の出発点として、構築済みのエンティティを使用することを検討してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [LUIS 開発ライフサイクルの学習](luis-concept-app-iteration.md)

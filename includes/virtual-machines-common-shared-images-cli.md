@@ -9,15 +9,15 @@ ms.date: 05/21/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 57736a3cd553e83294d5290867e261b626cb035f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66814890"
 ---
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事の例を完了するには、汎用 VM の既存のマネージド イメージを保持している必要があります。 詳細については、[チュートリアル: Azure CLI を使用して Azure VM のカスタム イメージを作成する](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)を参照してください。 マネージド イメージにデータ ディスクが含まれている場合、データ ディスクのサイズが 1 TB を超えることはできません。
+この記事の例を完了するには、汎用 VM の既存のマネージド イメージを保持している必要があります。 詳細については、「[チュートリアル:Azure CLI を使用して Azure VM のカスタム イメージを作成する](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)を参照してください。 マネージド イメージにデータ ディスクが含まれている場合、データ ディスクのサイズが 1 TB を超えることはできません。
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 

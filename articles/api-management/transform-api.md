@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70067464"
 ---
 # <a name="transform-and-protect-your-api"></a>API を変換および保護する
@@ -108,13 +108,13 @@ ms.locfileid: "70067464"
 
 ### <a name="set-the-transformation-policy"></a>変換ポリシーを設定する
 
-1.  **[Demo Conference API]\(デモ会議 API\)** を選択します。
+1.  **[Demo Conference API]\(デモ会議 API)** を選択します。
 2.  **[すべての操作]** を選択します。
 3.  画面の上部の **[デザイン]** タブを選択します。
 4.  **[送信処理]** セクションで、 **[</>]** アイコンをクリックします。
 5.  **&lt;outbound&gt;** 要素内にカーソルを配置します。
 6.  右側のウィンドウの **[変換ポリシー]** で、 **[+ Find and replace string in body]\(+ 本文内の文字列の検索および置換\)** をクリックします。
-7.  **find-and-replace** コード ( **\<outbound\>** 要素内) を変更して、APIM ゲートウェイと一致するように URL を置換します。 例:
+7.  **find-and-replace** コード ( **\<outbound\>** 要素内) を変更して、APIM ゲートウェイと一致するように URL を置換します。 次に例を示します。
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -199,7 +199,7 @@ ms.locfileid: "70067464"
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

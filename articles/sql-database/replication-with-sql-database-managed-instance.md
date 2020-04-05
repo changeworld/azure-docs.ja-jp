@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 7356f627c8a85cb89f3900e1af84d5e0a7d4be17
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 9af7b471210ca3cc69428e68aef4aafaee159344
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096203"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79299075"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Azure SQL Database マネージド インスタンス データベースにレプリケーションを構成する
 
@@ -42,7 +42,6 @@ ms.locfileid: "79096203"
 
 パブリッシャー、ディストリビューター、またはその両方として機能するようにマネージド インスタンスを構成するには、以下の要件があります。
 
-- マネージ インスタンスが、geo レプリケーションのリレーションシップに現在参加していない。
 - パブリッシャー マネージド インスタンスがディストリビューターおよびサブスクライバーと同じ仮想ネットワーク上にあるか、[vNet ピアリング](../virtual-network/tutorial-connect-virtual-networks-powershell.md)が 3 つのエンティティすべての仮想ネットワーク間に確立されている。 
 - 接続では、レプリケーション参加者間で SQL 認証を使用します。
 - レプリケーション作業ディレクトリの Azure ストレージ アカウント共有。
@@ -53,7 +52,7 @@ ms.locfileid: "79096203"
  > Azure SQL Database 内の単一データベースとプールされたデータベースは、サブスクライバーとしてのみ使用できます。 
 
 
-## <a name="features"></a>機能
+## <a name="features"></a>特徴
 
 サポートするものは次のとおりです。
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: b5d8f67a70961aab21312b6f241081dcb33f66fb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67180969"
 ---
 ```json
@@ -21,7 +21,7 @@ ms.locfileid: "67180969"
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |maxBatchSize|64|受信ループあたりで受信される最大イベント数。|
 |prefetchCount|該当なし|基になる EventProcessorHost に使用される既定の PrefetchCount。| 

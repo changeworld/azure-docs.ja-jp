@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:プレビュー段階の機能 | Microsoft Docs
+title: 'Azure AD Connect: プレビュー段階の機能 |Microsoft Docs'
 description: このトピックでは、Azure AD Connect のプレビュー段階の機能について詳しく説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347806"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230179"
 ---
 # <a name="more-details-about-features-in-preview"></a>プレビュー段階の機能の詳細
 このトピックでは、現在プレビュー段階の機能を使用する方法について説明します。
@@ -51,7 +51,7 @@ Office 365 グループは、オンプレミスの AD DS では配布グルー�
 >
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「[Azure AD Connect のカスタム インストール](how-to-connect-install-custom.md)」に進んでください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

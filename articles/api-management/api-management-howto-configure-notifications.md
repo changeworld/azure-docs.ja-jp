@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902480"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224883"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Azure API Management で通知と電子メール テンプレートを構成する方法
 
@@ -26,11 +26,11 @@ API Management には、特定のイベントの通知を構成する機能と�
 
 ## <a name="prerequisites"></a>前提条件
 
-API Management サービス インスタンスを保有していない場合は、次のクイック スタートを完了してください。[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
+API Management サービス インスタンスを保有していない場合は、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="publisher-notifications"> </a>通知の構成
+## <a name="configure-notifications"></a><a name="publisher-notifications"> </a>通知の構成
 
 1.  **API Management** インスタンスを選択します。
 2.  **[通知]** をクリックして、使用可能な通知を表示します。
@@ -58,7 +58,7 @@ API Management サービス インスタンスを保有していない場合は�
 
 4.  **[追加]** をクリックします。
 
-## <a name="email-templates"> </a>通知テンプレートの構成
+## <a name="configure-notification-templates"></a><a name="email-templates"> </a>通知テンプレートの構成
 
 API Management には、サービスの管理および使用に関連して送信する電子メール メッセージ向けの通知テンプレートが用意されています。 次の電子メール テンプレートが用意されています。
 

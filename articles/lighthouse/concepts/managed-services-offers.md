@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace のマネージド サービス オファー
 description: マネージド サービス オファーにより、サービス プロバイダーは、Azure Marketplace で顧客にリソース管理オファーを販売することができます。
-ms.date: 12/16/2019
+ms.date: 03/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b4f0d7457a74afe710a48f429cfe47535a9b122
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2d6e39f753736c0582e9d91870a99b66ae41255b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453583"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500792"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Azure Marketplace のマネージド サービス オファー
 
-この記事では、[Azure Marketplace](https://azuremarketplace.microsoft.com) での新しいオファーの種類である、**マネージド サービス**について説明します。 マネージド サービス オファーでは、Azure の委任されたリソース管理機能を利用したリソース管理サービスを顧客に提供できます。 これらのオファーは、潜在顧客すべてに公開することも、1 名または複数の特定の顧客のみに公開することもできます。 こうしたマネージド サービスに関連する費用についてはお客様から顧客に直接請求していただくので、Microsoft から料金が課されることはありません。
+この記事では、**Azure Marketplace** での新しいオファーの種類である、[マネージド サービス](https://azuremarketplace.microsoft.com)について説明します。 マネージド サービス オファーでは、Azure の委任されたリソース管理機能を利用したリソース管理サービスを顧客に提供できます。 これらのオファーは、潜在顧客すべてに公開することも、1 名または複数の特定の顧客のみに公開することもできます。 こうしたマネージド サービスに関連する費用についてはお客様から顧客に直接請求していただくので、Microsoft から料金が課されることはありません。
 
 ## <a name="understand-managed-services-offers"></a>マネージド サービス オファーについて
 
@@ -31,7 +31,7 @@ ms.locfileid: "75453583"
 必要に応じて、同じオファーにパブリック プランとプライベート プランの両方を含めることができます。
 
 > [!IMPORTANT]
-> プランをパブリックとして公開した後でプライベートに変更することはできません。 どの顧客がプランを受け入れて、リソースを委任できるようにするかを制御するには、プライベート プランを使用します。 パブリック プランの場合、対象範囲を特定の顧客に制限したり、対象となる顧客数を限定したりできません (ただし、必要に応じてプランの販売を完全に中止することはできます)。 顧客がプランを受け入れたときに、委任を拒否または削除するメカニズムは現時点ではありません。ただし、いつでも顧客に連絡して、[アクセスを削除](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)するように依頼することはできます。
+> プランをパブリックとして公開した後でプライベートに変更することはできません。 どの顧客がプランを受け入れて、リソースを委任できるようにするかを制御するには、プライベート プランを使用します。 パブリック プランの場合、対象範囲を特定の顧客に制限したり、対象となる顧客数を限定したりできません (ただし、必要に応じてプランの販売を完全に中止することはできます)。 オファーを発行し、カスタマーがそれを受け入れた後に[委任へのアクセス権を削除](../how-to/onboard-customer.md#remove-access-to-a-delegation)できるのは、 その**ロールの定義**セットに「**管理されたサービスの登録割り当て削除ロール**」の[承認](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)を含めた場合に限ります。 また、カスタマーに連絡して、[アクセスを削除](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)するよう依頼することもできます。
 
 ## <a name="publish-managed-service-offers"></a>マネージド サービス オファーの公開
 

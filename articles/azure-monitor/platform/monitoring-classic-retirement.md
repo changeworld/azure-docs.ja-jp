@@ -8,10 +8,10 @@ ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: dec4d6824644cabf8b1872da207b8554fee0b3d3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77659477"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor のアラートと監視の統合によるクラシックなアラートと監視の置換

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925491"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228907"
 ---
 # <a name="scale-with-additional-process-servers"></a>追加のプロセス サーバーによるスケール
 
@@ -81,7 +81,7 @@ UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCred
 
 [!INCLUDE [site-recovery-unified-setup-parameters](../../includes/site-recovery-unified-installer-command-parameters.md)]
 
-例:
+次に例を示します。
 
 ```
 MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
@@ -101,5 +101,5 @@ UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /
 * ProxyPassword="Password"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [プロセス サーバー設定の管理](vmware-azure-manage-process-server.md)について学習します

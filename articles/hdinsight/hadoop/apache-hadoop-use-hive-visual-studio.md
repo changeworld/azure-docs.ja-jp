@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 27ab13481525819eb1435f4c9ac256a21acd21fb
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687796"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用して Apache Hive クエリを実行する
@@ -23,7 +23,7 @@ Data Lake Tools for Visual Studio を使って Apache Hive のクエリを実行
 
 * HDInsight の Apache Hadoop クラスター。 この項目の作成については、「[Resource Manager テンプレートを使用して Azure HDInsight で Apache Hadoop クラスターを作成する](./apache-hadoop-linux-tutorial-get-started.md)」を参照してください。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/)。 この記事の手順では、Visual Studio 2019 を使用します。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/). この記事の手順では、Visual Studio 2019 を使用します。
 
 * HDInsight Tools for Visual Studio または Azure Data Lake Tools for Visual Studio ツールのインストールと構成の詳細については、「[Data Lake Tools for Visual Studio のインストール](apache-hadoop-visual-studio-tools-get-started.md#install-data-lake-tools-for-visual-studio)」を参照してください。
 
@@ -145,7 +145,7 @@ Hive アプリケーションを作成して Hive クエリを実行するには
 
 4. ジョブによってテーブルが作成されたことを確認するには、**サーバー エクスプローラー**に移動し、 **[Azure]**  >  **[HDInsight]** を展開します。 HDInsight クラスターを展開し、 **[Hive データベース]**  >  **[既定値]** を展開します。 **errorLogs** テーブルと **log4jLogs** テーブルが表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 おわかりのように、Visual Studio の HDInsight ツールを使用すると、HDInsight で Hive クエリを簡単に操作できます。
 

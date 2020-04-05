@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e350d6338b6ca589ab18d068ef6a314363fe205c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272827"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>例:Active Directory フェデレーション サービス (AD FS) との直接フェデレーション (プレビュー)
@@ -35,7 +35,7 @@ Azure AD B2B は、以下に示す特定の要件に従って、SAML プロト�
 
 直接フェデレーションを設定するには、ID プロバイダーからの SAML 2.0 応答において以下の属性が受け取られる必要があります。 これらの属性は、オンライン セキュリティ トークン サービスの XML ファイルにリンクするか手動で入力することによって、構成できます。 「[Create a test AD FS instance](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed)」(AD FS テスト インスタンスの作成) のステップ 12 では、AD FS エンドポイントを検索する方法や、メタデータ URL (たとえば `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`) を生成する方法について説明しています。 
 
-|Attribute  |値  |
+|属性  |値  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |対象ユーザー     |`urn:federation:MicrosoftOnline`         |
@@ -44,7 +44,7 @@ Azure AD B2B は、以下に示す特定の要件に従って、SAML プロト�
 ID プロバイダーによって発行される SAML 2.0 トークン内に以下の要求が構成されている必要があります。
 
 
-|Attribute  |値  |
+|属性  |値  |
 |---------|---------|
 |NameID の形式     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -101,14 +101,14 @@ ID プロバイダーによって発行される SAML 2.0 トークン内に以�
 
 3. **[完了]** をクリックします。 
 4. **[要求規則の編集]** ウィンドウに新しい規則が表示されます。 **[Apply]** をクリックします。 
-5. Click **OK**. これで、SAML 2.0 プロトコルを使用した直接フェデレーション用に AD FS サーバーが構成されました。
+5. **[OK]** をクリックします。 これで、SAML 2.0 プロトコルを使用した直接フェデレーション用に AD FS サーバーが構成されました。
 
 ## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>AD FS を WS-Fed の直接フェデレーション用に構成する 
 Azure AD B2B は、以下に示す特定の要件に従って、WS-Fed プロトコルを使用する ID プロバイダーと連携するように構成できます。 現時点で 2 つの WS-Fed プロバイダー (AD FS と Shibboleth) が、Azure AD との互換性テスト済みです。 ここでは、WS-Fed ID プロバイダーの例として、Active Directory フェデレーション サービス (AD FS) を使用します。 WS-Fed 準拠のプロバイダーと Azure AD の間に証明書利用者信頼を確立する方法の詳細については、Azure AD ID プロバイダーの互換性に関するドキュメントをダウンロードしてください。
 
 直接フェデレーションを設定するには、ID プロバイダーからの WS-Fed メッセージにおいて以下の属性が受け取られる必要があります。 これらの属性は、オンライン セキュリティ トークン サービスの XML ファイルにリンクするか手動で入力することによって、構成できます。 「[Create a test AD FS instance](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed)」(AD FS テスト インスタンスの作成) のステップ 12 では、AD FS エンドポイントを検索する方法や、メタデータ URL (たとえば `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`) を生成する方法について説明しています。
  
-|Attribute  |値  |
+|属性  |値  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |対象ユーザー     |`urn:federation:MicrosoftOnline`         |
@@ -116,7 +116,7 @@ Azure AD B2B は、以下に示す特定の要件に従って、WS-Fed プロト
 
 IdP によって発行される WS-Fed トークンに必須の要求:
 
-|Attribute  |値  |
+|属性  |値  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -151,7 +151,7 @@ IdP によって発行される WS-Fed トークンに必須の要求:
 
 1.  **[完了]** を選択します。 
 1.  **[要求規則の編集]** ウィンドウに新しい規則が表示されます。 **[Apply]** をクリックします。  
-1.  Click **OK**. これで、WS-Fed を使用した直接フェデレーション用に AD FS サーバーが構成されました。
+1.  **[OK]** をクリックします。 これで、WS-Fed を使用した直接フェデレーション用に AD FS サーバーが構成されました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次に、Azure AD ポータルで、または PowerShell を使用して、[Azure AD 上で直接フェデレーションを構成](direct-federation.md#step-2-configure-direct-federation-in-azure-ad)します。 

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: 82f2acb811bcb239f6329ab8d8b4008e13ac6490
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a22ae3b4b11a4eac7da147cf3ad896bbad435448
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446741"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370265"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>クイック スタート:翻訳のためのカスタム モデルを構築、デプロイ、および使用する
 
@@ -26,7 +26,21 @@ ms.locfileid: "75446741"
 
 2. Azure portal を通じた Translator Text API へのサブスクリプション。 Custom Translator 内のお客様のワークスペースに関連付ける Translator Text API サブスクリプション キーが必要です。 「[Translator Text API にサインアップする方法](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)」を参照してください。
 
-3. 上記の両方がある場合は、[Custom Translator](https://portal.customtranslator.azure.ai) ポータルにサインインします。 Custom Translator ポータルで [設定] ページに移動します。ここでは、お客様の Microsoft Translator Text API サブスクリプション キーをお客様のワークスペースに関連付けることができます。
+3. 上記の両方がある場合は、[カスタム翻訳ツール](https://portal.customtranslator.azure.ai) ポータルにサインインしてワークスペースとプロジェクトを作成し、ファイルをアップロードしてモデルを作成、デプロイします。
+
+## <a name="create-a-workspace"></a>ワークスペースの作成
+
+初回使用時は、ワークスペースを作成して Microsoft Translator Text API サブスクリプションに関連付ける際に、サービス利用規約への同意を求められます。
+
+![ワークスペースの作成](media/quickstart/terms-of-service.png)
+![ワークスペースの作成](media/quickstart/create-workspace-1.png)
+![ワークスペースの作成](media/quickstart/create-workspace-2.png)
+![ワークスペースの作成](media/quickstart/create-workspace-3.png)
+![ワークスペースの作成](media/quickstart/create-workspace-4.png)
+![ワークスペースの作成](media/quickstart/create-workspace-5.png)
+![ワークスペースの作成](media/quickstart/create-workspace-6.png)
+
+2 回目以降は、Custom Translator ポータルにアクセスし、[設定] ページに移動してワークスペースを管理できます。ワークスペースを作成したり、Microsoft Translator Text API のサブスクリプション キーをワークスペースに関連付けたり、共同所有者を追加したり、サブスクリプション キーを変更したりすることが可能です。
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 

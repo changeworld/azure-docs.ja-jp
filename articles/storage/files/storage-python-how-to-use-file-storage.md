@@ -8,10 +8,10 @@ ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 139e3009722761172b7bbd57805a7f5b07e55fc0
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68699389"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Python での Azure Files 用の開発
@@ -176,7 +176,7 @@ file_service.delete_share(share_name, snapshot=snapshot_id)
 file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Python での Azure Files を操作する方法を習得したので、詳細について次のリンクを参照してください。
 
 * [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)

@@ -12,10 +12,10 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b23b60ae49a4973fa04e6fa5f795f99536e32e7f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188751"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines を使用してカスタム ポリシーをデプロイする
@@ -131,7 +131,7 @@ Azure Pipelines を有効にして Azure AD B2C 内でカスタム ポリシー�
 1. **[変数]** タブを選択します。
 1. **[パイプライン変数]** の下に次の変数を追加し、指定された値を設定します。
 
-    | 名前 | Value |
+    | 名前 | 値 |
     | ---- | ----- |
     | `clientId` | 前に登録したアプリケーションの**アプリケーション (クライアント) ID**。 |
     | `clientSecret` | 前に作成した**クライアント シークレット**の値。 <br /> 変数の型を**シークレット**に変更します (ロック アイコンを選択)。 |

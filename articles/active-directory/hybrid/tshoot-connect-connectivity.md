@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7519f47037d2d7ff37564ab27c1cc58b65ff6c14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72dbb404d1b4d3618909e0233f332d2f98b51516
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64572783"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049726"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 接続性のトラブルシューティング
 この記事では、Azure AD Connect と Azure AD の間の接続のしくみと、接続に関する問題のトラブルシューティング方法について説明します。 このような問題は、プロキシ サーバーを備えた環境において発生する可能性が最も高くなります。
@@ -78,10 +78,10 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 インストール ウィザードによる Azure AD への接続は成功したものの、パスワード自体を確認できない場合に、このエラーが表示されます。  
 ![間違ったパスワード。](./media/tshoot-connect-connectivity/badpassword.png)
 
-* そのパスワードは一時パスワードで、変更が必要ではないでしょうか。 また、本当に正しいパスワードでしょうか。 Azure AD Connect サーバーとは別のコンピューターで https://login.microsoftonline.com へのサインインを試し、アカウントが使用可能であることを確認してください。
+* そのパスワードは一時パスワードで、変更が必要ではないでしょうか。 また、本当に正しいパスワードでしょうか。 Azure AD Connect サーバーとは別のコンピューターで `https://login.microsoftonline.com` へのサインインを試し、アカウントが使用可能であることを確認してください。
 
 ### <a name="verify-proxy-connectivity"></a>プロキシ接続を検証する
-Azure AD Connect サーバーがプロキシおよびインターネットと実際に接続できているかどうかを検証するには、PowerShell を使用して、プロキシが Web 要求を許可しているかどうかを確認します。 PowerShell プロンプトで、`Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` を実行します (厳密には、最初に呼び出すのは https://login.microsoftonline.com です。この URI は同様に機能しますが、応答が速いのは前の URI です)。
+Azure AD Connect サーバーがプロキシおよびインターネットと実際に接続できているかどうかを検証するには、PowerShell を使用して、プロキシが Web 要求を許可しているかどうかを確認します。 PowerShell プロンプトで、`Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc` を実行します (厳密には、最初に呼び出すのは `https://login.microsoftonline.com` です。この URI は同様に機能しますが、応答が速いのは前の URI です)。
 
 PowerShell は、machine.config 内の構成を使用してプロキシに接続します。 winhttp や netsh 内の設定値がこれらのコマンドレットに影響することはありません。
 
@@ -93,9 +93,9 @@ PowerShell は、machine.config 内の構成を使用してプロキシに接続
 プロキシが正しく構成されていない場合、次のエラーが表示されます。![proxy200](./media/tshoot-connect-connectivity/invokewebrequest403.png)
 ![proxy407](./media/tshoot-connect-connectivity/invokewebrequest407.png)
 
-| Error | エラー テキスト | Comment (コメント) |
+| エラー | エラー テキスト | 解説 |
 | --- | --- | --- |
-| 403 |許可されていません |要求された URL に対してプロキシが開かれていません。 プロキシ構成を再検討し、 [URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) が開かれていることを確認してください。 |
+| 403 |Forbidden |要求された URL に対してプロキシが開かれていません。 プロキシ構成を再検討し、 [URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) が開かれていることを確認してください。 |
 | 407 |プロキシの認証が必要です |プロキシ サーバーがサインイン情報を要求しましたが、何も指定されていません。 お使いのプロキシ サーバーで認証が必要な場合は、その設定が machine.config ファイル内で構成されているようにしてください。また、ウィザードを実行しているユーザーおよびサービス アカウントにドメイン アカウントを使用していることを確認してください。 |
 
 ### <a name="proxy-idle-timeout-setting"></a>プロキシ アイドル タイムアウトの設定
@@ -104,14 +104,14 @@ Azure AD Connect が Azure AD にエクスポート要求を送信すると、Az
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Azure AD Connect と Azure AD の間の通信パターン
 以上の手順をすべて実行しても接続できない場合は、その時点でネットワーク ログを確認することをお勧めします。 このセクションでは、通常の成功を示す接続パターンについて記載しています。 また、ネットワーク ログを確認するときに無視できる情報についても一覧にまとめています。
 
-* [https://dc.services.visualstudio.com](https://dc.services.visualstudio.com ) への呼び出しが行われています。 インストールを正常に実行するうえで、この URL をプロキシで開いておくことは必須ではないため、この呼び出しは無視できます。
+* [https://dc.services.visualstudio.com](`https://dc.services.visualstudio.com`) への呼び出しが行われています。 インストールを正常に実行するうえで、この URL をプロキシで開いておくことは必須ではないため、この呼び出しは無視できます。
 * DNS 解決によって DNS 名前空間の nsatc.net、および microsoftonline.com に属していない他の名前空間に含まれる実際のホストが一覧表示されます。 ただし、実際のサーバー名に対する Web サービス要求は発生しないため、この URL をプロキシに追加する必要はありません。
 * エンドポイントの adminwebservice と provisioningapi は検出エンドポイントであり、実際に使用するエンドポイントを見つけるために使用されます。 こうしたエンドポイントは、リージョンによって異なります。
 
 ### <a name="reference-proxy-logs"></a>参照用プロキシ ログ
 実際のプロキシ ログのダンプと、その取得元のインストール ウィザード ページを次に示します (エンドポイントが重複する項目は削除してあります)。 このセクションは、お使いの環境でのプロキシおよびネットワーク ログの参照用としてご利用ください。 実際のエンドポイントは環境によって異なる場合があります (特に "*斜体*" で示された URL)。
 
-**Connect to Azure AD**
+**Azure への接続**
 
 | Time | URL |
 | --- | --- |
@@ -235,5 +235,5 @@ Multi-Factor Authentication (MFA) 要求が取り消されました。
   ![netshshow](./media/tshoot-connect-connectivity/netshshow.png)
 * 正しいようであれば、「 [プロキシ接続を検証する](#verify-proxy-connectivity) 」の手順に従って、ウィザード外部でも同じように問題が発生するかどうかを確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

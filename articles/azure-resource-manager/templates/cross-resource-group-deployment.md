@@ -3,12 +3,12 @@ title: サブスクリプションおよびリソース グループにまたが
 description: デプロイ時に複数の Azure サブスクリプションとリソース グループを対象にする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 3cc31e64e9595c637a23fc54d9d02274ded40dda
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 70868f5a3598c26ffff81f0ad3536a6c5c0a7e53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944027"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460349"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする
 
@@ -172,7 +172,7 @@ secondRG="secondarygroup"
 
 az group create --name $firstRG --location southcentralus
 az group create --name $secondRG --location eastus
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group $firstRG \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
@@ -194,7 +194,7 @@ az group create --name $secondRG --location eastus
 az account set --subscription $firstSub
 az group create --name $firstRG --location southcentralus
 
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group $firstRG \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
@@ -209,16 +209,16 @@ az group deployment create \
 
 次の表は、これらの関数が親と埋め込みのどちらのリソース グループおよびサブスクリプションに解決されるかを示しています。
 
-| テンプレートの種類 | Scope | 解像度 |
+| テンプレートの種類 | スコープ | 解決策 |
 | ------------- | ----- | ---------- |
-| 入れ子        | outer (既定) | 親リソース グループ |
-| 入れ子        | inner | サブ リソース グループ |
+| 入れ子        | 外側 (既定) | 親リソース グループ |
+| 入れ子        | 内部 (inner) | サブ リソース グループ |
 | リンク済み        | 該当なし   | サブ リソース グループ |
 
 次の[テンプレートの例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)は、次のものを示しています。
 
-* 既定の (outer) スコープを持つ入れ子になったテンプレート
-* inner スコープを持つ入れ子になったテンプレート
+* 既定の (外側の) スコープを持つ入れ子になったテンプレート
+* 内側のスコープを持つ入れ子になったテンプレート
 * リンク済みテンプレート
 
 ```json
@@ -347,7 +347,7 @@ az group create --name parentGroup --location southcentralus
 az group create --name inlineGroup --location southcentralus
 az group create --name linkedGroup --location southcentralus
 
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group parentGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json

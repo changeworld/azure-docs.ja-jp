@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74173161"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server と DPM - FAQ
@@ -23,11 +23,11 @@ ms.locfileid: "74173161"
 
 ### <a name="can-i-register-the-server-to-multiple-vaults"></a>サーバーを複数のコンテナーに登録することはできますか。
 
-No. DPM サーバーまたは Azure Backup Server は 1 つのコンテナーにしか登録できません。
+いいえ。 DPM サーバーまたは Azure Backup Server は 1 つのコンテナーにしか登録できません。
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>DPM を使用して Azure Stack でアプリをバックアップすることはできますか。
 
-No. Azure Backup を使用して Azure Stack を保護することはできますが、Azure Backup では DPM を使用した Azure Stack でのアプリのバックアップをサポートしていません。
+いいえ。 Azure Backup を使用して Azure Stack を保護することはできますが、Azure Backup では DPM を使用した Azure Stack でのアプリのバックアップをサポートしていません。
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>ファイルとフォルダーを保護するために Azure Backup エージェントをインストールしてある場合、System Center DPM をインストールしてオンプレミスのワークロードを Azure にバックアップすることはできますか。
 
@@ -63,7 +63,7 @@ VMware/Hyper-V を保護するために個別のライセンスは必要あり�
 
 SharePoint データベースは SQL AlwaysOn で構成されているので、可用性グループを削除しない限り、変更することはできません。 結果として、DPM は元の場所にデータベースを復元できません。 SQL Server データベースを別の SQL Server インスタンスに回復することはできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 その他のよく寄せられる質問をお読みください。
 

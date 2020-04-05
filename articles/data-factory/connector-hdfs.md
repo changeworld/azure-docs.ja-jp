@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 2cd76afa9412e89c57cfb6c357eb164ce5d3d1c4
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75830430"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS からデータをコピーする
@@ -57,11 +57,11 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは、次のように設定する必要があります:**Hdfs**。 | はい |
+| type | type プロパティは、次のように設定する必要があります:**Hdfs**。 | はい |
 | url |HDFS への URL |はい |
 | authenticationType | 使用できる値は、以下のとおりです。**Anonymous** または **Windows**。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、[こちらのセクション](#use-kerberos-authentication-for-hdfs-connector)を参照して、オンプレミス環境を設定します。 |はい |
 | userName |Windows 認証のユーザー名。 Kerberos 認証の場合は `<username>@<domain>.com` を指定します。 |あり (Windows 認証用) |
-| パスワード |Windows 認証のパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |あり (Windows 認証用) |
+| password |Windows 認証のパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |あり (Windows 認証用) |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例: 匿名認証の使用**
@@ -118,7 +118,7 @@ HDFS では、形式ベースのデータセットの `location` 設定におい
 
 | プロパティ   | 説明                                                  | 必須 |
 | ---------- | ------------------------------------------------------------ | -------- |
-| 型       | データセットの `location` の type プロパティは、**HdfsLocation** に設定する必要があります。 | はい      |
+| type       | データセットの `location` の type プロパティは、**HdfsLocation** に設定する必要があります。 | はい      |
 | folderPath | フォルダーのパス。 フォルダーをフィルター処理するためにワイルドカードを使用する場合は、この設定をスキップし、アクティビティのソースの設定で指定します。 | いいえ       |
 | fileName   | 特定の folderPath の下のファイル名。 ファイルをフィルター処理するためにワイルドカードを使用する場合は、この設定をスキップし、アクティビティのソースの設定で指定します。 | いいえ       |
 
@@ -160,7 +160,7 @@ HDFS では、形式ベースのコピー ソースの `storeSettings` 設定に
 
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| 型                     | `storeSettings` の type プロパティは **HdfsReadSettings** に設定する必要があります。 | はい                                           |
+| type                     | `storeSettings` の type プロパティは **HdfsReadSettings** に設定する必要があります。 | はい                                           |
 | recursive                | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。 使用可能な値: **true** (既定値) および **false**。 | いいえ                                            |
 | wildcardFolderPath       | ソース フォルダーをフィルター処理するための、ワイルドカード文字を含むフォルダー パス。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br>「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | いいえ                                            |
 | wildcardFileName         | ソース ファイルをフィルター処理するための、特定の folderPath/wildcardFolderPath の下のワイルドカード文字を含むファイル名。 <br>使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。  「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の他の例をご覧ください。 | はい (データセットで `fileName` が指定されていない場合) |
@@ -257,7 +257,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 * オプション 1: [セルフホステッド統合ランタイム コンピューターを Kerberos 領域に参加させる](#kerberos-join-realm)
 * オプション 2:[Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>オプション 1: セルフホステッド統合ランタイム コンピューターを Kerberos 領域に参加させる
+### <a name="option-1-join-self-hosted-integration-runtime-machine-in-kerberos-realm"></a><a name="kerberos-join-realm"></a>オプション 1: セルフホステッド統合ランタイム コンピューターを Kerberos 領域に参加させる
 
 #### <a name="requirements"></a>必要条件
 
@@ -287,7 +287,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 * Kerberos プリンシパル名とパスワードによる **Windows 認証** を行って HDFS データ ソースに接続するように HDFS コネクタを構成します。 構成の詳細については、「[HDFS のリンクされたサービスのプロパティ](#linked-service-properties)」セクションを参照してください。
 
-### <a name="kerberos-mutual-trust"></a>オプション 2: Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする
+### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>オプション 2: Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする
 
 #### <a name="requirements"></a>必要条件
 
@@ -406,7 +406,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは、次のように設定する必要があります:**FileShare** |はい |
+| type | データセットの type プロパティは、次のように設定する必要があります:**FileShare** |はい |
 | folderPath | フォルダーへのパス。 ワイルドカード フィルターがサポートされいます。使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br/><br/>例: ルートフォルダー/サブフォルダー。「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の例を参照してください。 |はい |
 | fileName |  指定された "folderPath" の下にあるファイルの**名前またはワイルドカード フィルター**。 このプロパティの値を指定しない場合、データセットはフォルダー内のすべてのファイルをポイントします。 <br/><br/>フィルターに使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"fileName": "*.csv"`<br/>- 例 2: `"fileName": "???20180427.txt"`<br/>実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 |いいえ |
 | modifiedDatetimeStart | ファイルはフィルター処理され、元になる属性は最終更新時刻です。 最終変更時刻が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の間に含まれる場合は、ファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> 多数のファイルにファイル フィルターを実行する場合は、この設定を有効にすることで、データ移動の全体的なパフォーマンスが影響を受けることに注意してください。 <br/><br/> プロパティは、ファイル属性フィルターをデータセットに適用しないことを意味する NULL にすることができます。  `modifiedDatetimeStart` に datetime 値を設定し、`modifiedDatetimeEnd` を NULL にした場合は、最終更新時刻属性が datetime 値以上であるファイルが選択されることを意味します。  `modifiedDatetimeEnd` に datetime 値を設定し、`modifiedDatetimeStart` を NULL にした場合は、最終更新時刻属性が datetime 値以下であるファイルが選択されることを意味します。| いいえ |
@@ -451,7 +451,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**HdfsSource** |はい |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**HdfsSource** |はい |
 | recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダー/サブフォルダーはシンクでコピー/作成されないことに注意してください。<br/>使用可能な値: **true** (既定値)、**false** | いいえ |
 | distcpSettings | HDFS DistCp を使用する場合の プロパティ グループ。 | いいえ |
 | resourceManagerEndpoint | YARN リソース マネージャー エンドポイント | はい (DistCp を使用する場合) |

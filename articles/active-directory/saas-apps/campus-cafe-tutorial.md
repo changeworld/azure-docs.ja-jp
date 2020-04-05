@@ -16,10 +16,10 @@ ms.date: 02/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0c813b1cafbf71297c8ac39bc0847b56e450de0c
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77562675"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-campus-caf"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Campus Café の統合

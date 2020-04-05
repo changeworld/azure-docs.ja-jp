@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.openlocfilehash: d959f4948d6b848f3b399c1310add06991d72012
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74806322"
 ---
 # <a name="speech-service-for-telephony-data"></a>電話データのための Speech サービス
@@ -70,7 +70,7 @@ Speech サービスがコール センターで利用される場合、機能的
 
 また、新しい合成音声は人間と区別が付かなくなっています。 これらの音声を使用して自分のボットに個性を与えることができます。
 
-### <a name="search"></a>Search
+### <a name="search"></a>検索
 
 分析のもう 1 つの中心的要素は、特定のイベントまたは体験が発生したやりとりを特定することです。 これは通常、2 つの手法のいずれかで行われます。ユーザーがフレーズを入力し、システムが応答するその場限りの検索か、通話の中でシナリオを特定する一連の論理的発言をアナリストが作成し、そのような一連の問い合わせに対して通話ごとに索引を付けられる、構造化の度合いが高いクエリです。 "この通話は品質向上のために録音されます..." という、あらゆるところで耳にするコンプライアンスに関する表明が検索の典型的な例です。 多くの企業では、通話の録音前に、エージェントがこの免責事項を顧客に確実に伝えることを望んでいます。 ほとんどの分析システムでは、クエリ/検索アルゴリズムによって検出される動作の傾向を把握できます。この傾向のレポートは、最終的に分析システムの最も重要な機能の 1 つです。 [Cognitive サービス ディレクトリ](https://azure.microsoft.com/services/cognitive-services/directory/search/)を利用することで、エンドツーエンド ソリューションを索引作成と検索の機能で大幅に強化できます。
 
@@ -144,7 +144,7 @@ Speech サービスの各機能のサンプル コードは、GitHub で入手�
 - [REST API: テキスト読み上げ](rest-text-to-speech.md)
 - [REST API: 一括文字起こしとカスタマイズ](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)

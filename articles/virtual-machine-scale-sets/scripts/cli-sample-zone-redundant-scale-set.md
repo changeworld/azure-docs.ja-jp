@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d03eb9ca86472670caf89f8a9f9c4cf861b2eb62
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278718"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Azure CLI を使用してゾーン冗長仮想マシン スケール セットを作成する

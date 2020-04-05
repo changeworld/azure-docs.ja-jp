@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 1fa9f4e790b49e83ed4c46e92242ff182d9a47b5
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970641"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)
@@ -44,7 +44,7 @@ Azure Disk Encryption は [Azure Key Vault](https://azure.microsoft.com/document
 >暗号化シークレットがリージョンの境界を超えないようにするため、Azure Disk Encryption では Key Vault と VM を同じリージョンに併置する必要があります。 暗号化する VM と同じリージョン内に Key Vault を作成し、使用します。 
 
 
-### <a name="bkmk_KVPSH"></a> PowerShell を使用してキー コンテナーを作成する
+### <a name="create-a-key-vault-with-powershell"></a><a name="bkmk_KVPSH"></a> PowerShell を使用してキー コンテナーを作成する
 
 Azure PowerShell で [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault) コマンドレットを使用してキー コンテナーを作成できます。 Key Vault のその他のコマンドレットについては、[Az.KeyVault](/powershell/module/az.keyvault/) を参照してください。 
 
@@ -64,7 +64,7 @@ Azure PowerShell で [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVa
 4. 返される**コンテナー名**、**リソース グループ名**、**リソース ID**、**コンテナーの URI**、および**オブジェクト ID** をメモします。これらの情報は、後でディスクを暗号化するときに使用します。 
 
 
-### <a name="bkmk_KVCLI"></a> Azure CLI を使用してキー コンテナーを作成する
+### <a name="create-a-key-vault-with-azure-cli"></a><a name="bkmk_KVCLI"></a> Azure CLI を使用してキー コンテナーを作成する
 [az keyvault](/cli/azure/keyvault#commands) コマンドを使用して Azure CLI でキー コンテナーを管理できます。 キー コンテナーを作成するには、[az keyvault create](/cli/azure/keyvault#az-keyvault-create) を使用します。
 
 1. 必要に応じて、[az group create](/cli/azure/group#az-group-create) を使用して新しいリソース グループを作成します。 場所を一覧表示するには、[az account list-locations](/cli/azure/account#az-account-list) を使用します。 
@@ -82,7 +82,7 @@ Azure PowerShell で [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVa
 
 4. 返される**コンテナー名** (名前)、**リソース グループ名**、**リソース ID** (ID)、**コンテナーの URI**、および**オブジェクト ID** をメモします。これらの情報は後で使用します。 
 
-### <a name="bkmk_KVRM"></a> Resource Manager テンプレートでキー コンテナーを作成する
+### <a name="create-a-key-vault-with-a-resource-manager-template"></a><a name="bkmk_KVRM"></a> Resource Manager テンプレートでキー コンテナーを作成する
 
 [Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)を使用してキー コンテナーを作成できます。
 
@@ -90,11 +90,11 @@ Azure PowerShell で [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVa
 2. サブスクリプション、リソース グループ、リソース グループの場所、キー コンテナー名、オブジェクト ID、法律条項および契約を選択し、 **[購入]** をクリックします。 
 
 
-## <a name="bkmk_ADapp"></a> Azure AD アプリとサービス プリンシパルを設定する 
+## <a name="set-up-an-azure-ad-app-and-service-principal"></a><a name="bkmk_ADapp"></a> Azure AD アプリとサービス プリンシパルを設定する 
 Azure で実行中の VM に対して暗号化を有効にする必要がある場合、Azure Disk Encryption により、暗号化キーが生成され、Key Vault に書き込まれます。 Key Vault の暗号化キーを管理するには、Azure AD 認証が必要です。 この目的で Azure AD アプリケーションを作成します。 認証には、クライアント シークレット ベースの認証か、[クライアント証明書ベースの Azure AD 認証](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)を使用できます。
 
 
-### <a name="bkmk_ADappPSH"></a> Azure PowerShell で Azure AD アプリとサービス プリンシパルを設定する 
+### <a name="set-up-an-azure-ad-app-and-service-principal-with-azure-powershell"></a><a name="bkmk_ADappPSH"></a> Azure PowerShell で Azure AD アプリとサービス プリンシパルを設定する 
 次のコマンドを実行するには、[Azure AD PowerShell モジュール](/powershell/azure/active-directory/install-adv2)を取得して使用します。 
 
 1. [New-AzADApplication](/powershell/module/az.resources/new-azadapplication) PowerShell コマンドレットを使用して Azure AD アプリケーションを作成します。 MyApplicationHomePage と MyApplicationUri には、任意の値を指定できます。
@@ -109,7 +109,7 @@ Azure で実行中の VM に対して暗号化を有効にする必要がある�
 3. $azureAdApplication.ApplicationId は Azure AD ClientID、$aadClientSecret はクライアント シークレットです。これらは、Azure Disk Encryption を有効にするために後で使用します。 Azure AD のクライアント シークレットは適切に保護してください。 `$azureAdApplication.ApplicationId` を実行すると、ApplicationID が表示されます。
 
 
-### <a name="bkmk_ADappCLI"></a> Azure CLI で Azure AD アプリとサービス プリンシパルを設定する
+### <a name="set-up-an-azure-ad-app-and-service-principal-with-azure-cli"></a><a name="bkmk_ADappCLI"></a> Azure CLI で Azure AD アプリとサービス プリンシパルを設定する
 
 Azure CLI で [az ad sp](/cli/azure/ad/sp) コマンドを使用してサービス プリンシパルを管理できます。 詳細については、[Azure サービス プリンシパルの作成](/cli/azure/create-an-azure-service-principal-azure-cli)に関するページを参照してください。
 
@@ -120,7 +120,7 @@ Azure CLI で [az ad sp](/cli/azure/ad/sp) コマンドを使用してサービ�
      ```
 3.  返される appId は、他のコマンドで使用される Azure AD ClientID です。 これは、az keyvault set-policy に使用する SPN でもあります。 パスワードは、あとで Azure Disk Encryption を有効にするために使用するクライアント シークレットです。 Azure AD のクライアント シークレットは適切に保護してください。
  
-### <a name="bkmk_ADappRM"></a> Azure portal を使用して Azure AD アプリとサービス プリンシパルを設定する
+### <a name="set-up-an-azure-ad-app-and-service-principal-though-the-azure-portal"></a><a name="bkmk_ADappRM"></a> Azure portal を使用して Azure AD アプリとサービス プリンシパルを設定する
 [ポータルを使用した、リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](../../active-directory/develop/howto-create-service-principal-portal.md)に関する記事の手順を使用して、Azure AD アプリケーションを作成します。 以下の各手順で、完了する必要がある記事のセクションに直接進むことができます。 
 
 1. [必要なアクセス許可を確認する](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
@@ -131,13 +131,13 @@ Azure CLI で [az ad sp](/cli/azure/ad/sp) コマンドを使用してサービ�
         - 認証キーは、Azure AD にサインインするための資格情報としてアプリケーションによって使用されます。 Azure portal では、このシークレットはキーと呼ばれますが、キー コンテナーとは関係がありません。 このシークレットはセキュリティで適切に保護してください。 
      - アプリケーション ID は、あとで Set-AzVMDiskEncryptionExtension の AadClientId と Set-AzKeyVaultAccessPolicy の ServicePrincipalName として使用されます。 
 
-## <a name="bkmk_KVAP"></a> Azure AD アプリのキー コンテナー アクセス ポリシーを設定する
+## <a name="set-the-key-vault-access-policy-for-the-azure-ad-app"></a><a name="bkmk_KVAP"></a> Azure AD アプリのキー コンテナー アクセス ポリシーを設定する
 指定した Key Vault に暗号化シークレット情報を書き込むには、シークレットを Key Vault に書き込むアクセス許可を持つ Azure Active Directory アプリケーションのクライアント ID とクライアント シークレットが Azure Disk Encryption に必要です。 
 
 > [!NOTE]
 > Azure Disk Encryption では、Azure AD のクライアント アプリケーションに対して、次のアクセス ポリシーを構成する必要があります:_WrapKey_ および _Set_ アクセス許可。
 
-### <a name="bkmk_KVAPPSH"></a> Azure PowerShell を使用して Azure AD アプリのキー コンテナー アクセス ポリシーを設定する
+### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-powershell"></a><a name="bkmk_KVAPPSH"></a> Azure PowerShell を使用して Azure AD アプリのキー コンテナー アクセス ポリシーを設定する
 Azure AD アプリケーションには、Vault 内のキーまたはシークレットへのアクセス権が必要です。 [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) コマンドレットで、 _–ServicePrincipalName_ パラメーター値としてクライアント ID (アプリケーションの登録時に生成されたもの) を使用して、アプリケーションに権限を付与します。 詳しくは、ブログ投稿「[Azure Key Vault - Step by Step](https://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx)」(Azure Key Vault - 手順) をご覧ください。 
 
 1. PowerShell を使用して AD アプリケーションのキー コンテナー アクセス ポリシーを設定します。
@@ -149,7 +149,7 @@ Azure AD アプリケーションには、Vault 内のキーまたはシーク�
      Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys 'WrapKey' -PermissionsToSecrets 'Set' -ResourceGroupName $KVRGname
      ```
 
-### <a name="bkmk_KVAPCLI"></a> Azure CLI を使用して Azure AD アプリのキー コンテナー アクセス ポリシーを設定する
+### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-cli"></a><a name="bkmk_KVAPCLI"></a> Azure CLI を使用して Azure AD アプリのキー コンテナー アクセス ポリシーを設定する
 [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) を使用してアクセス ポリシーを設定します。 詳細については、[CLI 2.0 を使用した Key Vault の管理](../../key-vault/key-vault-manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret)に関するページを参照してください。
 
 次のコマンドを使用して、Azure CLI アクセス経由で作成したサービス プリンシパルにシークレット キーとラップ キーを渡します。
@@ -158,7 +158,7 @@ Azure AD アプリケーションには、Vault 内のキーまたはシーク�
      az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the Azure AD ClientID>" --key-permissions wrapKey --secret-permissions set
      ```
 
-### <a name="bkmk_KVAPRM"></a> ポータルを使用して Azure AD アプリのキー コンテナー アクセス ポリシーを設定する
+### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-the-portal"></a><a name="bkmk_KVAPRM"></a> ポータルを使用して Azure AD アプリのキー コンテナー アクセス ポリシーを設定する
 
 1. キー コンテナーを使用してリソース グループを開きます。
 2. キー コンテナーを選択し、 **[アクセス ポリシー]** に移動し、 **[新規追加]** をクリックします。
@@ -171,10 +171,10 @@ Azure AD アプリケーションには、Vault 内のキーまたはシーク�
 
 ![Azure Key Vault の [シークレットのアクセス許可] - [設定]](./media/disk-encryption/keyvault-portal-fig3b.png)
 
-## <a name="bkmk_KVper"></a>キー コンテナーに高度なアクセス ポリシーを設定する
+## <a name="set-key-vault-advanced-access-policies"></a><a name="bkmk_KVper"></a>キー コンテナーに高度なアクセス ポリシーを設定する
 Azure プラットフォームには、Key Vault 内の暗号化キーまたはシークレットへのアクセス権を付与する必要があります。これにより、ボリュームをブートして暗号化する際に、それらの情報を VM に提供できるようになります。 キー コンテナーのディスク暗号化を有効にします。そうしないと、デプロイは失敗します。  
 
-### <a name="bkmk_KVperPSH"></a> Azure PowerShell を使用してキー コンテナーに高度なアクセス ポリシーを設定する
+### <a name="set-key-vault-advanced-access-policies-with-azure-powershell"></a><a name="bkmk_KVperPSH"></a> Azure PowerShell を使用してキー コンテナーに高度なアクセス ポリシーを設定する
  キー コンテナーの PowerShell コマンドレット [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) を使用してキー コンテナーのディスク暗号化を有効にします。
 
   - **Key Vault のディスク暗号化を有効にする:** Azure Disk Encryption には EnabledForDiskEncryption が必要です。
@@ -195,7 +195,7 @@ Azure プラットフォームには、Key Vault 内の暗号化キーまたは�
      Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForTemplateDeployment
      ```
 
-### <a name="bkmk_KVperCLI"></a> Azure CLI を使用してキー コンテナーに高度なアクセス ポリシーを設定する
+### <a name="set-key-vault-advanced-access-policies-using-the-azure-cli"></a><a name="bkmk_KVperCLI"></a> Azure CLI を使用してキー コンテナーに高度なアクセス ポリシーを設定する
 [az keyvault update](/cli/azure/keyvault#az-keyvault-update) を使用し、キー コンテナーのディスク暗号化を有効にします。 
 
  - **Key Vault のディスク暗号化を有効にする:** Enabled-for-disk-encryption が必要です。 
@@ -215,7 +215,7 @@ Azure プラットフォームには、Key Vault 内の暗号化キーまたは�
      ```
 
 
-### <a name="bkmk_KVperrm"></a> Azure portal を使用してキー コンテナーに高度なアクセス ポリシーを設定する
+### <a name="set-key-vault-advanced-access-policies-through-the-azure-portal"></a><a name="bkmk_KVperrm"></a> Azure portal を使用してキー コンテナーに高度なアクセス ポリシーを設定する
 
 1. キー コンテナーを選択し、 **[アクセス ポリシー]** に移動し、 **[クリックして高度なアクセス ポリシーを表示する]** を選択します。
 2. **[ボリューム暗号化に対して Azure Disk Encryption へのアクセスを有効にする]** というボックスをオンにします。
@@ -225,7 +225,7 @@ Azure プラットフォームには、Key Vault 内の暗号化キーまたは�
 ![Azure Key Vault の高度なアクセス ポリシー](./media/disk-encryption/keyvault-portal-fig4.png)
 
 
-## <a name="bkmk_KEK"></a> キー暗号化キーを設定する (省略可能)
+## <a name="set-up-a-key-encryption-key-optional"></a><a name="bkmk_KEK"></a> キー暗号化キーを設定する (省略可能)
 暗号化キーのセキュリティに対する追加レイヤーとしてキー暗号化キー (KEK) を使用する場合は、キー コンテナーに KEK を追加します。 キー コンテナーにキー暗号化キーを作成するには、[Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) コマンドレットを使用します。 オンプレミスのキー管理 HSM から KEK をインポートすることもできます。 詳細については、[Key Vault](../../key-vault/key-vault-hsm-protected-keys.md) のドキュメントを参照してください。 キー暗号化キーが指定されている場合、Azure Disk Encryption では、Key Vault への書き込みの前に、そのキーを使用して暗号化シークレットがラップされます。 
 
 * キーを生成するときは、RSA のキーの種類を使用します。 Azure Disk Encryption では、楕円曲線キーの使用はまだサポートされていません。
@@ -240,7 +240,7 @@ Azure プラットフォームには、Key Vault 内の暗号化キーまたは�
   * 許容できないキー コンテナー URL *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * 許容されるキー コンテナー URL: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-### <a name="bkmk_KEKPSH"></a> Azure PowerShell でキー暗号化キーを設定する 
+### <a name="set-up-a-key-encryption-key-with-azure-powershell"></a><a name="bkmk_KEKPSH"></a> Azure PowerShell でキー暗号化キーを設定する 
 PowerShell スクリプトを使用する前に、Azure Disk Encryption の前提条件をよく読み、スクリプトの手順を理解しておく必要があります。 サンプル スクリプトは、実際の環境に合わせて変更が必要な場合があります。 このスクリプトで、すべての Azure Disk Encryption の前提条件が作成され、既存の IaaS VM が暗号化され、キー暗号化キーを使用してディスク暗号化キーがラップされます。 
 
  ```powershell
@@ -288,7 +288,7 @@ PowerShell スクリプトを使用する前に、Azure Disk Encryption の前�
      Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
 ```
 
-## <a name="bkmk_Cert"></a> 証明書ベースの認証 (省略可能)
+## <a name="certificate-based-authentication-optional"></a><a name="bkmk_Cert"></a> 証明書ベースの認証 (省略可能)
 証明書認証を使用する場合は、キー コンテナーにアップロードして、それをクライアントに展開することができます。 PowerShell スクリプトを使用する前に、Azure Disk Encryption の前提条件をよく読み、スクリプトの手順を理解しておく必要があります。 サンプル スクリプトは、実際の環境に合わせて変更が必要な場合があります。
 
      
@@ -367,7 +367,7 @@ PowerShell スクリプトを使用する前に、Azure Disk Encryption の前�
    Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
  ```
 
-## <a name="bkmk_CertKEK"></a> 証明書ベースの認証と KEK (省略可能)
+## <a name="certificate-based-authentication-and-a-kek-optional"></a><a name="bkmk_CertKEK"></a> 証明書ベースの認証と KEK (省略可能)
 
 証明書認証を使用し、暗号化キーを KEK でラップする場合は、例として以下のスクリプトを使用できます。 PowerShell スクリプトを使用する前に、前述の Azure Disk Encryption の前提条件をすべてよく読み、スクリプトの手順を理解しておく必要があります。 サンプル スクリプトは、実際の環境に合わせて変更が必要な場合があります。
 

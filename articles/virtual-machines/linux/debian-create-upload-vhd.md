@@ -1,17 +1,17 @@
 ---
 title: Debian Linux VHD を準備する
 description: Azure で VM をデプロイするために Debian VHD イメージを作成する方法について説明します。
-author: mimckitt
+author: gbowerman
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/13/2018
-ms.author: mimckitt
-ms.openlocfilehash: f17759fb65cec1609298d34b29829e895526e080
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.author: guybo
+ms.openlocfilehash: d54f7a11d929c31fee29a788eb3a2ae2cc8f2703
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970250"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066712"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Azure 用の Debian VHD の準備
 ## <a name="prerequisites"></a>前提条件
@@ -25,7 +25,7 @@ ms.locfileid: "78970250"
 * Azure の VHD の仮想サイズはすべて、1 MB にアラインメントさせる必要があります。 未フォーマット ディスクから VHD に変換するときに、変換する前の未フォーマット ディスクのサイズが 1 MB の倍数であることを確認する必要があります。 詳細については、「[Linux のインストールに関する一般的な注記](create-upload-generic.md#general-linux-installation-notes)」に関する記事を参照してください。
 
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>Azure-Manage を使用した Debian VHD の作成
-[credativ](https://www.credativ.com/) の [azure-manage](https://github.com/credativ/azure-manage) スクリプトなど、Azure 用に Debian VHD を生成するために使用できるツールがあります。 これは、最初からイメージを作成するよりもお勧めの方法です。 たとえば、Debian 8 VHD を作成するには、次のコマンドを実行して `azure-manage` ユーティリティ (および依存関係ファイル) をダウンロードし、`azure_build_image` スクリプトを実行します。
+[credativ](https://github.com/credativ/azure-manage) の [azure-manage](https://www.credativ.com/) スクリプトなど、Azure 用に Debian VHD を生成するために使用できるツールがあります。 これは、最初からイメージを作成するよりもお勧めの方法です。 たとえば、Debian 8 VHD を作成するには、次のコマンドを実行して `azure-manage` ユーティリティ (および依存関係ファイル) をダウンロードし、`azure_build_image` スクリプトを実行します。
 
     # sudo apt-get update
     # sudo apt-get install git qemu-utils mbr kpartx debootstrap
@@ -42,7 +42,7 @@ ms.locfileid: "78970250"
 ## <a name="manually-prepare-a-debian-vhd"></a>手動での Debian VHD の準備
 1. Hyper-V マネージャーで仮想マシンを選択します。
 2. **[接続]** をクリックすると、仮想マシンのコンソール ウィンドウが開きます。
-3. ISO を使用して OS をインストールした場合は、`/etc/apt/source.list` 内の "`deb cdrom`" に関連するすべての行をコメント化します。
+3. ISO を使用して OS をインストールした場合は、`deb cdrom` 内の "`/etc/apt/source.list`" に関連するすべての行をコメント化します。
 
 4. `/etc/default/grub` ファイルを編集し、**GRUB_CMDLINE_LINUX** パラメーターを次のように変更して、Azure の追加のカーネル パラメーターを含めます。
    

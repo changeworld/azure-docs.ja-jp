@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dech
 ms.openlocfilehash: 57ba647ade45928f03cd7fb2b037642d5e4d52cc
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096820"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Azure Cosmos Explorer を使ってデータを操作する 

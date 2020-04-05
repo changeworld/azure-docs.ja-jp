@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 02/24/2020
+ms.date: 03/24/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: c6883b9b79adfc4f91af354147d45ea27d806d78
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: cc3f48ec1113f954336cfae0bda2cba2499d9a1d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396109"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80240118"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>クイック スタート:Text Analytics クライアント ライブラリを使用する
 
@@ -44,7 +44,6 @@ Text Analytics クライアント ライブラリを使って次のことを実�
 
 > [!IMPORTANT]
 > * このクイックスタートは、Text Analytics クライアント ライブラリのバージョン `3.0-preview` 専用です。これには、強化された[感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)および[名前付きエンティティの認識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) のパブリック プレビューが含まれています。
->    * 必ず、使用するバージョンの手順にのみ従ってください。
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
@@ -57,6 +56,7 @@ Text Analytics クライアント ライブラリを使って次のことを実�
 > * Text Analytics API の最新のプレビュー バージョンは `3.0-preview` です。これには、強化された[感情分析](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)および[名前付きエンティティの認識 (NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) のパブリック プレビューが含まれています。 最新の安定バージョンは `2.1` です。
 >    * 必ず、使用するバージョンの手順にのみ従ってください。
 > * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 運用環境のシナリオでは、パフォーマンスとスケーラビリティを確保するために、バッチ処理された非同期メソッドを使用することをお勧めします。 以下のリファレンス ドキュメントを参照してください。
+> * このバージョンの Text Analytics クライアント ライブラリは、[お使いのブラウザー](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)でも実行できます。
 
 [!INCLUDE [NodeJS quickstart](../includes/quickstarts/nodejs-sdk.md)]
 

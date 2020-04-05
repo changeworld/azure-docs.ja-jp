@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 02/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: cbf181b9a6d3860854c7b61cca0e6c50810cced9
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616062"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235491"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
@@ -224,7 +224,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 |ScheduledStartStop_Parent | アクション:開始または停止 <br>VMList <br> WhatIf: True または False | この設定は、サブスクリプション内のすべての VM に影響します。 これらの対象のリソース グループでのみ実行されるように、**External_Start_ResourceGroupNames** と **External_Stop_ResourceGroupNames** を編集します。 **External_ExcludeVMNames** 変数を更新することで、特定の VM を除外することもできます。<br> VMList: VM のコンマ区切りリストです。 _vm1, vm2, vm3_ など。<br> _WhatIf_ は Runbook ロジックを実行せずに検証します。|
 |SequencedStartStop_Parent | アクション:開始または停止 <br> WhatIf: True または False<br>VMList| 起動/停止アクティビティのシーケンスを指定する各 VM に、**sequencestart** および **sequencestop** という名前のタグを作成します。 これらのタグ名では、大文字と小文字が区別されます。 タグの値は、起動または停止する順序に対応する正の整数 (1、2、3) にする必要があります。 <br> VMList: VM のコンマ区切りリストです。 _vm1, vm2, vm3_ など。 <br> _WhatIf_ は Runbook ロジックを実行せずに検証します。 <br> **注**:Azure Automation 変数で External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames、および External_ExcludeVMNames として定義されたリソース グループ内に VM が存在する必要があります。 アクションを有効にするための適切なタグが必要です。|
 
-### <a name="variables"></a>変数:
+### <a name="variables"></a>変数
 
 次の表は、Automation アカウント内に作成される変数の一覧です。 **External** プレフィックスが付いた変数のみを変更するようにしてください。 **Internal** プレフィックスが付いた変数を変更すると、望ましくない効果がもたらされます。
 
@@ -347,7 +347,7 @@ Azure Portal で、[監視]、[アクション グループ] の順に移動し�
 
 ![Automation Update Management ソリューション ページ](media/automation-solution-vm-management/email.png)
 
-## <a name="add-exclude-vms"></a>VM を追加/除外する
+## <a name="addexclude-vms"></a><a name="add-exclude-vms"></a>VM を追加/除外する
 
 ソリューションには、ソリューションの対象となる VM を追加する機能、ソリューションからマシンを除外する機能があります。
 

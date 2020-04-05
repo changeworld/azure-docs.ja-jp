@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solution - AVS プライベート クラウド用のワークロード DNS と DHCP を設定する
-description: AVS プライベート クラウド環境で実行されるアプリケーションとワークロードのために、DNS および DHCP を設定する方法について説明します
+title: Azure VMware Solution by CloudSimple - プライベート クラウド用のワークロード DNS と DHCP の設定
+description: CloudSimple プライベート クラウド環境で実行されるアプリケーションとワークロードのために DNS および DHCP を設定する方法について説明します
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f2a5cae868f2d8f3689f05dd9d466715ab2008a3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024689"
 ---
-# <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-avs-private-cloud"></a>AVS プライベート クラウドで DNS および DHCP アプリケーションとワークロードを設定する
+# <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドでの DNS および DHCP アプリケーションとワークロードの設定
 
-AVS プライベート クラウド環境で実行されるアプリケーションとワークロードには、ルックアップと IP アドレスの割り当てのための名前解決と DHCP サービスが必要です。 これらのサービスを提供する、適切な DHCP と DNS インフラストラクチャが必要です。 AVS プライベート クラウド環境でこれらのサービスを提供するように、仮想マシンを構成することができます。 
+プライベート クラウド環境で実行されるアプリケーションとワークロードには、ルックアップと IP アドレスの割り当てのための名前解決と DHCP サービスが必要です。  これらのサービスを提供する、適切な DHCP と DNS インフラストラクチャが必要です。  仮想マシンを構成して、プライベート クラウド環境でこれらのサービスを提供することができます。  
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,7 +27,7 @@ AVS プライベート クラウド環境で実行されるアプリケーショ
 
 ## <a name="linux-based-dns-server-setup"></a>Linux ベースの DNS サーバーの設定
 
-Linux では、DNS サーバーを設定するためのさまざまなパッケージが提供されています。 ここでは、[DigitalOcean による設定例](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04)と、オープンソースの BIND DNS サーバーを設定する手順を示します。
+Linux では、DNS サーバーを設定するためのさまざまなパッケージが提供されています。  ここでは、[DigitalOcean による設定例](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04)と、オープンソースの BIND DNS サーバーを設定する手順を示します。
 
 ## <a name="windows-based-setup"></a>Windows ベースのセットアップ
 

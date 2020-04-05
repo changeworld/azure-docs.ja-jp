@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: pafarley
 ms.openlocfilehash: 0be77dc1ac249c37f9b59078451d8fbe35f17458
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72754250"
 ---
 # <a name="define-and-use-moderation-workflows"></a>モデレーション ワークフローを定義して使用する
 
-このガイドでは、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com) Web サイトで[ワークフロー](../review-api.md#workflows)を設定して使用する方法について説明します。 ワークフローは、コンテンツをより効率的に処理するために使用できるクラウドベースのカスタマイズされたフィルターです。 ワークフローで、さまざまなサービスに接続してさまざまな方法でコンテンツをフィルター処理した後、適切なアクションを実行することができます。 このガイドでは、Content Moderator コネクタ (既定で含まれています) を使用してコンテンツをフィルター処理し、一般的なモデレーション シナリオの人間によるレビューを設定する方法について説明します。
+このガイドでは、[レビュー ツール](../review-api.md#workflows) Web サイトで[ワークフロー](https://contentmoderator.cognitive.microsoft.com)を設定して使用する方法について説明します。 ワークフローは、コンテンツをより効率的に処理するために使用できるクラウドベースのカスタマイズされたフィルターです。 ワークフローでは、さまざまなサービスに接続してさまざまな方法でコンテンツをフィルター処理した後、適切なアクションを実行することができます。 このガイドでは、Content Moderator コネクタ (既定で含まれています) を使用してコンテンツをフィルター処理し、一般的なモデレーション シナリオの人間によるレビューを設定する方法について説明します。
 
 ## <a name="create-a-new-workflow"></a>新しいワークフローの作成
 
@@ -81,6 +81,6 @@ ms.locfileid: "72754250"
 
 ![画像のレビュー](images/image-workflow-review.PNG)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドでは、Content Moderator の[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)からモデレーション ワークフローを設定して使用する方法について学習しました。 次は、[REST API ガイド](../try-review-api-workflow.md)を参照して、プログラムでワークフローを作成する方法について学習してください。

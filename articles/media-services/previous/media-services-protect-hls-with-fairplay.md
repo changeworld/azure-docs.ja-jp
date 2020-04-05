@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 873bc4ab5e435b91ff4400a39c92db0d0bb9baa8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74968767"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護
 
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。   > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 >
 
 Azure Media Services では、次の形式を使用して HTTP ライブ ストリーミング (HLS) コンテンツを動的に暗号化することができます。  
@@ -98,7 +98,7 @@ FairPlay で暗号化されたストリームを再生するには、まず実�
 1. 資産を作成し、その資産にファイルをアップロードします。
 2. ファイルが含まれる資産をアダプティブ ビットレート MP4 セットにエンコードします。
 3. コンテンツ キーを作成し、それをエンコードした資産に関連付けます。  
-4. コンテンツ キーの承認ポリシーを構成します。 次を指定します。
+4. コンテンツ キーの承認ポリシーを構成します。 次の指定を行います。
 
    * 配信方法 (ここでは FairPlay)。
    * FairPlay ポリシー オプションの構成 FairPlay を構成する方法の詳細については、以下のサンプルの **ConfigureFairPlayPolicyOptions()** メソッドをご覧ください。

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61247245"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227091"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard のプリセットのカスタマイズ  
 
@@ -32,7 +32,7 @@ ms.locfileid: "61247245"
 > [!NOTE]
 > この記事で説明されているカスタム プリセットは、[Media Services V3](https://docs.microsoft.com/azure/media-services/latest/) 変換または CLI コマンドでは使用できません。 詳細については、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)をご覧ください。
 
-## <a id="customizing_presets"></a>MES プリセットのカスタマイズ
+## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>MES プリセットのカスタマイズ
 
 ### <a name="original-preset"></a>元のプリセット
 
@@ -113,7 +113,7 @@ ms.locfileid: "61247245"
     }  
 ```
 
-## <a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
 
 次のコード サンプルでは、Media Services SDK を使用して次のタスクを実行します。
 
@@ -264,7 +264,7 @@ namespace CustomizeMESPresests
 }
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [CLI を使用してカスタム変換でエンコードする方法](../latest/custom-preset-cli-howto.md)
 - [Media Services v3 でのエンコード](../latest/encoding-concept.md)

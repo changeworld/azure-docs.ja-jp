@@ -1,6 +1,6 @@
 ---
 title: リスクベースの MFA および SSPR と Azure Identity Protection
-description: このチュートリアルでは、Multi-Factor Authentication とセルフサービスによるパスワードのリセットに対して Azure Identity Protection 統合を有効にして、危険な動作を減らします。
+description: このチュートリアルでは、Multi-Factor Authentication とセルフサービス パスワード リセット に対して Azure Identity Protection 統合を有効にして、危険な動作を減らします。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1a6858d5eda8227b3f7c1b90dee86f44273a258
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74846353"
 ---
 # <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>チュートリアル:リスク検出を使用して多要素認証とパスワード変更をトリガーする
@@ -44,7 +44,7 @@ Azure AD Identity Protection の詳細については、[Azure AD Identity Prote
 
 * 少なくとも試用版 Azure AD Premium P2 ライセンスが割り当てられた、動作している Azure AD テナントへのアクセス。
 * Azure AD テナントで全体管理者特権を持つアカウント。
-* 前のセルフサービスによるパスワードのリセット (SSPR) と Multi-Factor Authentication (MFA) のチュートリアルを完了していること。
+* 前のセルフサービス パスワード リセット (SSPR) と Multi-Factor Authentication (MFA) のチュートリアルを完了していること。
 
 ## <a name="enable-risk-based-policies-for-sspr-and-mfa"></a>SSPR と MFA に対してリスクベースのポリシーを有効にする
 
@@ -54,12 +54,12 @@ Azure AD Identity Protection の詳細については、[Azure AD Identity Prote
 
 Azure AD Identity Protection には、ユーザーを Multi-Factor Authentication に登録させ、現在の登録状況を簡単に識別できるようにする、既定のポリシーが含まれています。 このポリシーを有効にしても、ユーザーが Multi-Factor Authentication の実行を要求されるようにはなりませんが、事前登録を求められます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. **[すべてのサービス]** をクリックし、 **[Azure AD Identity Protection]** に移動します。
 1. **[MFA 登録]** をクリックします。
 1. [ポリシーの適用] を **[オン]** に設定します。
    1. このポリシーを設定すると、すべてのユーザーが方法を登録し、それを Multi-Factor Authentication で使用するための準備を行う必要があります。
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
    ![サインイン時に MFA への登録をユーザーに求める](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
 
@@ -87,6 +87,6 @@ Microsoft では、研究者、法執行機関、Microsoft のさまざまなセ
 1. [ポリシーの適用] を **[オン]** に設定します。
 1. **[保存]**
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 テストを完了し、リスクベースのポリシーを有効にする必要がなくなった場合は、無効にする各ポリシーに戻り、 **[ポリシーの適用]** を **[オフ]** に設定します。

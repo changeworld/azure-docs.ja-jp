@@ -7,10 +7,10 @@ ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
 ms.openlocfilehash: eb48a8558aab6c7a832efe45650686d9df0d7426
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624506"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>チュートリアル:Jenkins の継続的インテグレーションおよびデプロイを使用して GitHub から Azure Kubernetes Service (AKS) にデプロイする

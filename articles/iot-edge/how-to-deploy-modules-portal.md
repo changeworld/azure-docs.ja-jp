@@ -10,11 +10,11 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 5c44561895bc1905328ec0eb357bee1c68a8eb55
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510534"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233307"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure Portal から Azure IoT Edge モジュールをデプロイする
 

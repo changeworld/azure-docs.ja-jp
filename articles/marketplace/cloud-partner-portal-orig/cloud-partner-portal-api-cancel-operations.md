@@ -1,23 +1,22 @@
 ---
 title: 操作のキャンセル API | Azure Marketplace
 description: 操作をキャンセルします。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 374425dbd2abacb2114b5792d7476bc341fa353a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 6d4c1f52f0f3b1e05ec06f5a66a36323f346d4eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819786"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280543"
 ---
 # <a name="cancel-operation"></a>操作を取り消す 
 
-この API は、現在プランで進行中の操作をキャンセルします。 この API に渡す `operationId` は、[操作の取得 API](./cloud-partner-portal-api-retrieve-operations.md) を使用して取得します。 キャンセルは同期操作であるのが一般的ですが、一部の複雑なシナリオでは、既存の操作をキャンセルするために新しい操作が必要になることがあります。 このケースでは、状態を照会するために使用すべき操作の場所が HTTP 応答本文に格納されます。
+この API は、現在プランで進行中の操作をキャンセルします。 この API に渡す [ は、](./cloud-partner-portal-api-retrieve-operations.md)操作の取得 API`operationId` を使用して取得します。 キャンセルは同期操作であるのが一般的ですが、一部の複雑なシナリオでは、既存の操作をキャンセルするために新しい操作が必要になることがあります。 このケースでは、状態を照会するために使用すべき操作の場所が HTTP 応答本文に格納されます。
 
 要求と共にメール アドレスのコンマ区切りのリストを指定すると、それらのアドレスに操作の進行状況が API から通知されます。
 
@@ -28,8 +27,8 @@ ms.locfileid: "73819786"
 
 |  **Name**    |      **説明**                                  |    **データの種類**  |
 | ------------ |     ----------------                                  |     -----------   |
-| publisherId  |  パブリッシャー ID (例: `contoso`)         |   string          |
-| offerId      |  オファー ID                                     |   string          |
+| publisherId  |  パブリッシャー ID (例: `contoso`)         |   String          |
+| offerId      |  オファー ID                                     |   String          |
 | api-version  |  API の現在のバージョン                               |    Date           |
 |  |  |  |
 
@@ -37,10 +36,10 @@ ms.locfileid: "73819786"
 <a name="header"></a>ヘッダー
 ------
 
-|  **Name**              |  **値**         |
+|  **Name**              |  **Value**         |
 |  ---------             |  ----------        |
 |  Content-Type          |  application/json  |
-|  Authorization         |  Bearer <実際のトークン> |
+|  承認         |  Bearer <実際のトークン> |
 |  |  |
 
 
@@ -72,7 +71,7 @@ ms.locfileid: "73819786"
 
 ### <a name="response-header"></a>応答ヘッダー
 
-|  **Name**             |    **値**                       |
+|  **Name**             |    **Value**                       |
 |  ---------            |    ----------                      |
 | Operation-Location    | 操作の現在の状態を確認するための、クエリ可能な URL。 |
 |  |  |

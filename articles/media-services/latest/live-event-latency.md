@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
 ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78199650"
 ---
 # <a name="live-event-low-latency-settings"></a>ライブ イベントの低待機時間設定

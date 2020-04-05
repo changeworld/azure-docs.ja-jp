@@ -12,10 +12,10 @@ ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
 ms.openlocfilehash: 3281b4dafa5436c9df760ac8aa3fc82f535b4286
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944868"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
@@ -62,13 +62,13 @@ Instance Metadata Service はバージョン管理されています。HTTP 要�
 > [!NOTE]
 > 応答は JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
 
-**Request**
+**要求**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance"
 ```
 
-**Response**
+**応答**
 
 ```json
 {
@@ -142,13 +142,13 @@ HTTP 状態コード | 理由
 
 #### <a name="retrieving-network-information"></a>ネットワーク情報の取得
 
-**Request**
+**要求**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
 ```
 
-**Response**
+**応答**
 
 > [!NOTE]
 > 応答は JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
@@ -189,13 +189,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 
 #### <a name="retrieving-all-metadata-for-an-instance"></a>インスタンスのすべてのメタデータの取得
 
-**Request**
+**要求**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
 ```
 
-**Response**
+**応答**
 
 > [!NOTE]
 > 応答は JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
@@ -338,7 +338,7 @@ name | VM の名前 | 2017-04-02
 offer | VM イメージのオファーの情報。Azure イメージ ギャラリーからデプロイされるイメージについてのみ存在します。 | 2017-04-02
 osType | Linux または Windows | 2017-04-02
 placementGroupId | お使いの仮想マシン スケール セットの[配置グループ](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-plan | VM が Azure Marketplace イメージである場合、[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)にはその名前、製品、および発行元が含まれています | 2018-04-02
+プラン | VM が Azure Marketplace イメージである場合、[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)にはその名前、製品、および発行元が含まれています | 2018-04-02
 platformUpdateDomain |  VM を実行中の[更新ドメイン](manage-availability.md) | 2017-04-02
 platformFaultDomain | VM を実行中の[障害ドメイン](manage-availability.md) | 2017-04-02
 provider | VM のプロバイダー | 2018-10-01
@@ -380,7 +380,7 @@ Instance Metadata Service によって提供されるシナリオの一部は、
 > [!NOTE]
 > すべての API の応答は、JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
 
- **Request**
+ **要求**
 
  ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
@@ -390,7 +390,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-ver
 api-version は必須フィールドです。 サポートされる API バージョンについては、「[サービスの提供状況](#service-availability)」セクションを参照してください。
 nonce は、省略可能な 10 桁の文字列です。 指定しない場合は、その代わりに IMDS によって現在の UTC タイムスタンプが返されます。 IMDS のキャッシュ メカニズムにより、以前にキャッシュされた nonce 値が返される場合もあります。
 
- **Response**
+ **応答**
 
 > [!NOTE]
 > 応答は JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
@@ -409,13 +409,13 @@ signature BLOB は、ドキュメントの [pkcs7](https://aka.ms/pkcs7) で署�
 
 サービス プロバイダーは、ソフトウェアを実行している VM の数を追跡する必要があったり、VM の一意性を追跡する必要のあるエージェントを使用していたりする場合があります。 VM の一意の ID を取得できるようにするには、Instance Metadata Service から `vmId` フィールドを使用します。
 
-**Request**
+**要求**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
-**Response**
+**応答**
 
 ```text
 5c08b38e-4d57-4c23-ac45-aca61037f084
@@ -423,17 +423,17 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 
 ### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>障害/更新ドメインに基づくコンテナー、データ パーティションの配置
 
-特定のシナリオでは、異なるレプリカの配置が非常に重要です。 たとえば、[Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) を介した[ HDFS レプリカの配置](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps)またはコンテナーの配置では、VM が実行されている `platformFaultDomain` と `platformUpdateDomain` を把握しておかなければならない場合があります。
+特定のシナリオでは、異なるレプリカの配置が非常に重要です。 たとえば、[Orchestrator](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) を介した[ HDFS レプリカの配置](https://kubernetes.io/docs/user-guide/node-selection/)またはコンテナーの配置では、VM が実行されている `platformFaultDomain` と `platformUpdateDomain` を把握しておかなければならない場合があります。
 これらの決定を行うために、インスタンスの[可用性ゾーン](../../availability-zones/az-overview.md)を使用することもできます。
 このデータは、Instance Metadata Service を使用して直接照会できます。
 
-**Request**
+**要求**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
-**Response**
+**応答**
 
 ```text
 0
@@ -443,13 +443,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 
 サービス プロバイダーとして、VM の詳細情報を得る必要があるサポート コールを受けることがあります。 顧客にコンピューティング メタデータの共有を依頼すると、サポート担当者が Azure 上の VM の種類を確認するための基本情報を得られる場合があります。
 
-**Request**
+**要求**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
 ```
 
-**Response**
+**応答**
 
 > [!NOTE]
 > 応答は JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
@@ -543,12 +543,12 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 
 Azure には、[Azure Government](https://azure.microsoft.com/overview/clouds/government/) など多数のソブリン クラウドがあります。 ランタイムの決定を行うために、Azure 環境が必要な場合があります。 次の例では、この動作を実現する方法を示します。
 
-**Request**
+**要求**
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
-**Response**
+**応答**
 
 ```bash
 AzurePublicCloud
@@ -567,13 +567,13 @@ AzurePublicCloud
 
 論理的に分類するために Azure VM にタグが適用されている場合があります。 次の要求を使用して、VM に割り当てられたタグを取得できます。
 
-**Request**
+**要求**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
 ```
 
-**Response**
+**応答**
 
 ```text
 Department:IT;Environment:Test;Role:WebRole
@@ -581,13 +581,13 @@ Department:IT;Environment:Test;Role:WebRole
 
 `tags` フィールドは、セミコロンで区切られたタグを含む文字列です。 これは、タグ自体でセミコロンが使用されている場合に問題になることがあります。 プログラムでタグを抽出するようにパーサーが記述されている場合、`tagsList` フィールドに依存してください。これは区切り記号のない JSON 配列であり、結果的に解析が楽になります。
 
-**Request**
+**要求**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=json"
 ```
 
-**Response**
+**応答**
 
 ```json
 [
@@ -613,7 +613,7 @@ Marketplace ベンダーは、自分たちのソフトウェアが Azure での�
 > [!NOTE]
 > jq をインストールする必要があります。
 
-**Request**
+**要求**
 
  ```bash
   # Get the signature
@@ -631,7 +631,7 @@ Marketplace ベンダーは、自分たちのソフトウェアが Azure での�
   openssl smime -verify -in sign.pk7 -inform pem -noverify
  ```
 
- **Response**
+ **応答**
 
 ```json
 Verification successful
@@ -656,7 +656,7 @@ Verification successful
 Data | 説明
 -----|------------
 nonce | 要求でのユーザー提供の省略可能な文字列。 要求で nonce が提供されなかった場合は、現在の UTC タイムスタンプが返されます
-plan | VM の Azure Marketplace イメージの[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には、名前、製品、および発行元が含まれています
+プラン | VM の Azure Marketplace イメージの[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には、名前、製品、および発行元が含まれています
 timestamp/createdOn | 最初の署名付きドキュメントが作成された UTC タイムスタンプ
 timestamp/expiresOn | 署名付きドキュメントの有効期限が切れる UTC タイムスタンプ
 vmId |  VM の[一意の識別子](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
@@ -744,13 +744,13 @@ writeAcceleratorEnabled | ディスクで writeAccelerator が有効になって
 
 VM のストレージ情報のクエリを実行する方法の例を次に示します。
 
-**Request**
+**要求**
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
 ```
 
-**Response**
+**応答**
 
 > [!NOTE]
 > 応答は JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
@@ -813,7 +813,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageP
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>VM 内でさまざまな言語を使用してメタデータ サービスを呼び出す例
 
-Language | 例
+言語 | 例
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
 Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go

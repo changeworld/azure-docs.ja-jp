@@ -12,10 +12,10 @@ ms.author: MirekS
 ms.reviewer: GeneMi, vanto
 ms.date: 10/11/2019
 ms.openlocfilehash: 5e7d58e5e0fc79e407e77ae9d73314a1d5d22666
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73692307"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用して Azure SQL Database に接続する
@@ -91,7 +91,7 @@ Azure SQL Database の Azure AD 管理者とユーザーの詳細については
 
 SQL Database サーバーの Azure AD 管理者は、C# サンプル プログラムを実行できます。 Azure AD ユーザーは、データベースに登録されていればプログラムを実行できます。 データベースに既に登録され、データベースに対して `ALTER ANY USER` アクセス許可を持つ Azure AD SQL 管理者または Azure AD ユーザーは、ユーザーを追加できます。
 
-SQL [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) コマンドを使用してデータベースにユーザーを追加できます。 例: `CREATE USER [<username>] FROM EXTERNAL PROVIDER`。
+SQL [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) コマンドを使用してデータベースにユーザーを追加できます。 たとえば `CREATE USER [<username>] FROM EXTERNAL PROVIDER` です。
 
 詳細については、「[Use Azure Active Directory Authentication for authentication with SQL Database, Managed Instance, or SQL Data Warehouse (SQL Database、マネージド インスタンス、または SQL Data Warehouse での認証に Azure Active Directory Authentication を使用する)](sql-database-aad-authentication.md)」をご覧ください。
 
@@ -331,7 +331,7 @@ In method 'AcquireTokenAsync', case_0 == '.ActiveDirectoryInteractive'.
 >>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]

@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790283"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>静的な結果を設定してモック データでロジック アプリをテストする
@@ -86,7 +86,7 @@ ms.locfileid: "74790283"
 
 1. 完全な JavaScript Object Notation (JSON) オブジェクトか、出力セクションやヘッダー セクションなどの使用する特定のサブセクションのどちらかをコピーします。
 
-1. [[静的な結果を設定する]](#set-up-static-results) でアクションに応じた **[静的な結果]** ボックスを開く手順に従います。
+1. **[静的な結果を設定する]** でアクションに応じた [[静的な結果]](#set-up-static-results) ボックスを開く手順に従います。
 
 1. **[静的な結果]** ボックスが開いたら、次のどちらかの手順を選択します。
 
@@ -140,6 +140,6 @@ ms.locfileid: "74790283"
 
 基になるワークフロー定義でのこの設定の詳細については、「[Static results - Schema reference for Workflow Definition Language (静的結果 - ワークフロー定義言語のスキーマ参照)](../logic-apps/logic-apps-workflow-definition-language.md#static-results)」と「[runtimeConfiguration.staticResult - Runtime configuration settings (runtimeConfiguration.staticResult - ランタイム構成設定)](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)」を参照してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps](../logic-apps/logic-apps-overview.md) について学習します

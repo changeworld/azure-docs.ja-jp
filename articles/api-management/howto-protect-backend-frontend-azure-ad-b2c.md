@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: fde48d63bd343fbed1f82e60819131ffb043a795
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 55acea360de11c5fcc699d65daf92cf24dfd691d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967629"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475478"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>OAuth 2.0、Azure Active Directory B2C、および Azure API Management を使用して SPA バックエンドを保護する
 
@@ -250,7 +250,7 @@ IP 制限パネルに CIDR 形式のアドレス ブロックを追加する必�
 
    > [!NOTE]
    > 次のセクションは省略可能であり、開発者ポータルをサポートしない**従量課金**レベルには適用されません。
-   > 開発者ポータルを使用しない場合、または従量課金レベルを使用しているため使用できない場合は、この手順をスキップして、「[API を使用する JavaScript SPA を構築する](##build-the-javascript-spa-to-consume-the-api)」に進んでください。
+   > 開発者ポータルを使用しない場合、または従量課金レベルを使用しているため使用できない場合は、この手順をスキップして、「[API を使用する JavaScript SPA を構築する](#build-the-javascript-spa-to-consume-the-api)」に進んでください。
 
 ## <a name="optional-configure-the-developer-portal"></a>[省略可能] 開発者ポータルを構成する
 
@@ -461,8 +461,5 @@ Azure AD B2C と API Management のさまざまな用途に合わせて、上記
 * [Azure Active Directory と OAuth2.0](../active-directory/develop/authentication-scenarios.md) の詳細を確認します。
 * API Management についてのその他の [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management) をご覧ください。
 * バックエンド サービスを保護するその他の方法については、「[相互証明書認証](api-management-howto-mutual-certificates.md)」を参照してください。
-* Azure AD Graph API を使用してカスタム要求を割り当て、API Management ポリシーを使用してそれらがトークンに存在することを確認することを検討してください。
-
 * [API Management サービス インスタンスの作成](get-started-create-service-instance.md)。
-
 * [Azure API Management での最初の API の管理](import-and-publish.md)。

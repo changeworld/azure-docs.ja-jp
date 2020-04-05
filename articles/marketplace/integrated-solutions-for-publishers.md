@@ -1,19 +1,18 @@
 ---
 title: 統合ソリューション - Azure Marketplace
 description: Azure Marketplace と Microsoft AppSource の統合ソリューション
-services: Azure, Marketplace, Compute, Storage, Networking
-author: MaggiePucciEvans
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/16/2019
-ms.author: evansma
-ms.openlocfilehash: 6f09df7c4ccdfa8a339b9d7f2655128c7ead5184
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.author: dsindona
+ms.openlocfilehash: 356713bd7d51be6f3550a6975a766fe1b6a0fc05
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978639"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286219"
 ---
 # <a name="publish-an-integrated-solution"></a>統合ソリューションを公開する
 
@@ -62,7 +61,7 @@ ms.locfileid: "75978639"
 1. 主要なビジネスおよび技術に関するディスカッションをワークショップ形式で実施し、ソリューションと統合へのアプローチを定義します。
 
     ソリューションについてのディスカッションでは、次の点を検討する必要があります。
-    * スコープ
+    * Scope
     * 対象の顧客
     * 価値の提案
     * 価格

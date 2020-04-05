@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 1917bd6744e100db54fe959292e29486f8a1784b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74770188"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server 上で自動バキュームを最適化する
@@ -101,7 +101,7 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 
 自動バキュームは、テーブルごとの同期プロセスです。 テーブルにある使用不能タプルの割合が増えるにつれて、自動バキュームを行う "コスト" が高くなります。 更新と削除の頻度が高いテーブルは、複数のテーブルに分割できます。 テーブルを分割することで、自動バキュームを並列化し、1 つのテーブルで自動バキュームを完了するための "コスト" を削減できます。 並列の自動バキューム worker の数を増やし、worker が豊富にスケジュールされるようにすることもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 自動バキュームの使用方法と調整方法の詳細については、以下の PostgreSQL ドキュメントを参照してください。
 
  - [第 18 章、サーバー構成](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)

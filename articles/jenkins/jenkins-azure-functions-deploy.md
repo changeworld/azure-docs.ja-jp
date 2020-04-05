@@ -5,10 +5,10 @@ keywords: Jenkins, Azure, DevOps, Java, Azure Functions
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: 731bac13a596bbeaf970b3f6ce976a582d1f11ae
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78250920"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Jenkins Azure Functions プラグインを使用した Azure Functions へのデプロイ

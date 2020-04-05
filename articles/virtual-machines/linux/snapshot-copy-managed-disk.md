@@ -15,10 +15,10 @@ ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 15696469ca3861586617e9f418f8a55a7ea90467
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034792"
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成 
@@ -41,7 +41,7 @@ osDiskId=$(az vm show \
    -o tsv)
 ```
 
-[az snapshot create](/cli/azure/snapshot#az-snapshot-create) を使用して、*osDisk-backup* という名前のスナップショットを取得します。
+*az snapshot create* を使用して、[osDisk-backup](/cli/azure/snapshot#az-snapshot-create) という名前のスナップショットを取得します。
 
 ```azurecli-interactive
 az snapshot create \
@@ -63,7 +63,7 @@ az snapshot list \
 
 ## <a name="use-azure-portal"></a>Azure Portal の使用 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 左上の **[リソースの作成]** をクリックし、 **[スナップショット]** を探します。 検索結果から **[スナップショット]** を選択します。
 3. **[スナップショット]** ブレードで **[作成]** をクリックします。
 4. スナップショットの **[名前]** を入力します。
@@ -73,7 +73,7 @@ az snapshot list \
 9. **Create** をクリックしてください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
- スナップショットからマネージド ディスクを作成し、その新しいマネージド ディスクを OS ディスクとして接続することで、スナップショットから仮想マシンを作成します。 詳細については、「[PowerShell でスナップショットから仮想マシンを作成する](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json)」のスクリプトを参照してください。
+ スナップショットからマネージド ディスクを作成し、その新しいマネージド ディスクを OS ディスクとして接続することで、スナップショットから仮想マシンを作成します。 詳細については、[スナップショットからの仮想マシンの作成に関する記事のスクリプトを参照してください](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json)。
 

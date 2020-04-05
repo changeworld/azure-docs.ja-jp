@@ -12,10 +12,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
 ms.openlocfilehash: 52b1d93935e6428563c72361655893ffddf8a507
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74941859"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory で SSIS Integration Runtime 管理のトラブルシューティングを行う
@@ -163,7 +163,7 @@ Azure-SSIS IR を Azure Virtual Network に参加させる場合、特定の IP 
 
 上記の仮想ネットワークの問題に加えて、静的パブリック IP アドレス関連の問題も発生することがあります。 解決策については、次のエラーを確認してください。
 
-### <a name="InvalidPublicIPSpecified"></a>InvalidPublicIPSpecified
+### <a name="invalidpublicipspecified"></a><a name="InvalidPublicIPSpecified"></a>InvalidPublicIPSpecified
 
 このエラーは、Azure-SSIS IR の開始時にさまざまな理由で発生する可能性があります。
 

@@ -9,11 +9,11 @@ author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
 ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771517"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225623"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Table storage のテーブル設計ガイド:スケーラビリティとパフォーマンスに優れたテーブル
 
@@ -199,7 +199,7 @@ Table storage では、読み取り、書き込み、またはその両方の負
 | `RowKey` (従業員 ID) |String |
 | `FirstName` |String |
 | `LastName` |String |
-| `Age` |整数 |
+| `Age` |Integer |
 | `EmailAddress` |String |
 
 ここでは、Table storage のクエリの設計に関する一般的なガイドラインを示します。 以下の例で使用しているフィルター構文は、Table storage REST API のものです。 詳細については、[クエリ エンティティ](https://msdn.microsoft.com/library/azure/dd179421.aspx)に関する記事を参照してください。  

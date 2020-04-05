@@ -5,13 +5,13 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 2fb08d7aba3e35fb6147b75bbcee35b46873b5f6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252734"
 ---
-# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのランタイムをアップグレードする
+# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure で Service Fabric クラスターのランタイムをアップグレードする
 
 このチュートリアルは、4 つのシリーズの一部で、Azure Service Fabric クラスター上の Service Fabric ランタイムをアップグレードする方法について説明します。 チュートリアルのこの部分は、Azure で実行されている Service Fabric クラスター用に書かれており、スタンドアロン Service Fabric クラスターには適用されません。
 

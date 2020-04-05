@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Zoho One の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Zoho One の統合 | Microsoft Docs'
 description: Azure Active Directory と Zoho One の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 0a37789e7c7efeb71770ff0e8061d57e6603b6c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67086241"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>チュートリアル:Azure Active Directory と Zoho One の統合
+# <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>チュートリアル: Azure Active Directory と Zoho One の統合
 
 このチュートリアルでは、Zoho One と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Zoho One と Azure AD の統合には、次の利点があります。
@@ -158,9 +158,9 @@ Zoho One で Azure AD シングル サインオンを構成するには、次の
 
     c. **[Browse]\(参照\)** をクリックし、Azure Portal からダウンロードした**証明書 (Base64)** をアップロードします。
 
-    d. **[Save]** をクリックします。
+    d. **[保存]** をクリックします。
 
-4. SAML 認証設定を保存した後、 **[SAML-Identifier]\(SAML 識別子\)** の値をコピーし、`<saml-identifier>` を置き換える形で**応答 URL** に追加します (例: `https://accounts.zoho.com/samlresponse/one.zoho.com`)。こうして得られた値を **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けてください。
+4. SAML 認証設定を保存した後、 **[SAML-Identifier]\(SAML 識別子\)** の値をコピーし、 **を置き換える形で**応答 URL`<saml-identifier>` に追加します (例: `https://accounts.zoho.com/samlresponse/one.zoho.com`)。こうして得られた値を **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けてください。
 
     ![Zoho One、SAML](./media/zohoone-tutorial/tutorial_zohoone_samlidenti.png)
 

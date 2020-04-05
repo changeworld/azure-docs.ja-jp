@@ -9,10 +9,10 @@ ms.date: 05/23/2018
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 6163392c80d40b6ea65e681aa175c21c244099b9
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74122698"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>クイック スタート:Java で Azure Cache for Redis を使用する
@@ -130,7 +130,7 @@ mvn exec:java -D exec.mainClass=example.demo.App
 
 ![Azure Cache for Redis アプリが完了した](./media/cache-java-get-started/azure-cache-redis-complete.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 次のチュートリアルに進む場合は、このクイック スタートで作成したリソースを維持して、再利用することができます。
 
@@ -150,9 +150,9 @@ mvn exec:java -D exec.mainClass=example.demo.App
 
 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Java アプリケーションから Azure Cache for Redis を使用する方法を説明しました。 ASP.NET Web アプリで Azure Cache for Redis を使用するには、次のクイック スタートに進みます。
+このクイック スタートでは、Java アプリケーションから Azure Cache for Redis を使用する方法を説明しました。 ASP.NET Web アプリと Azure Cache for Redis を使用するには、次のクイック スタートに進みます。
 
 > [!div class="nextstepaction"]
 > [Azure Cache for Redis を使用する ASP.NET Web アプリを作成する](./cache-web-app-howto.md)

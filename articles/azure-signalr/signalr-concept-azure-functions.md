@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74157611"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Azure Functions および Azure SignalR Service を使用してリアルタイム アプリを構築する
@@ -62,7 +62,7 @@ SignalR サービスのバインドを使用する方法の例として、Azure 
 
 SignalR サービスでは、すべてのクライアントや、単一のユーザーに属しているなどのクライアントのサブセットにのみメッセージをブロードキャストすることができます。 Azure Functions 向けの SignalR サービスのバインドは、App Service 認証と組み合わせることで、Azure Active Directory、Facebook、Twitter などのプロバイダーでユーザーを認証できます。 これらの認証されたユーザーにメッセージを直接送信できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、SignalR サービスと Azure Functions を使用して、さまざまなサーバーレス リアルタイム メッセージング シナリオを有効にする方法についての概要を把握しました。
 

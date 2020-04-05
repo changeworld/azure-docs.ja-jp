@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: c731e2a7d4da1a66aabb50b335d526fbb6a0a302
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671525"
 ---
 リージョン VNet 統合を使用すると、アプリは次のものにアクセスできるようになります。

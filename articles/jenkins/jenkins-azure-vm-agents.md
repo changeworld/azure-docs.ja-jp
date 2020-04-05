@@ -5,10 +5,10 @@ keywords: Jenkins, Azure, 開発,仮想マシン, エージェント
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: 2e811d628c017316a5bc50a8ddc22ee24d6f744e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158540"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>要求を満たすために、Azure VM エージェントを使用して Jenkins デプロイをスケーリングします。
@@ -85,7 +85,7 @@ ms.locfileid: "74158540"
             }
      ```
 
-    完了したサービス プリンシパルには、**サブスクリプション ID** に `id` フィールドを、**クライアント ID** に `appId` の値を、**クライアント シークレット**に `password` を、**テナント ID** に `tenant` を、それぞれ使用する必要があります。 **[追加]** を選択してサービス プリンシパルを追加し、プラグインを構成して新しく作成された資格情報を使用します。
+    完了したサービス プリンシパルには、`id`サブスクリプション ID**に** フィールドを、`appId`クライアント ID**に** の値を、`password`クライアント シークレット**に**  を、`tenant`テナント ID**に** を、それぞれ使用する必要があります。 **[追加]** を選択してサービス プリンシパルを追加し、プラグインを構成して新しく作成された資格情報を使用します。
 
     ![Azure サービス プリンシパルを構成する](./media/jenkins-azure-vm-agents/new-service-principal.png)
 
@@ -100,10 +100,10 @@ ms.locfileid: "74158540"
 Azure VM エージェントの定義に使用するテンプレートを構成します。 このテンプレートは、各エージェントが作成された時に保持する計算リソースを定義します。
 
 1. **[Add Azure Virtual Machine Template]\(Azure 仮想マシン テンプレートの追加\)** の横にある **[追加]** を選択します。
-1. **Name** に `defaulttemplate` を入力します。
-1. **Label** に `ubuntu` を入力します。
+1. `defaulttemplate`Name**に** を入力します。
+1. `ubuntu`Label**に** を入力します。
 1. コンボ ボックスから目的の [[Azure リージョン]](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を選びます。
-1. **[Virtual Machine Size]\(仮想マシンのサイズ\)** の下にあるドロップダウン リストから [VM サイズ](/azure/virtual-machines/linux/sizes)を選択します。 汎用的な `Standard_DS1_v2` サイズであれば、このチュートリアルでは十分です。   
+1. [[Virtual Machine Size]\(仮想マシンのサイズ\)](/azure/virtual-machines/linux/sizes) の下にあるドロップダウン リストから **VM サイズ**を選択します。 汎用的な `Standard_DS1_v2` サイズであれば、このチュートリアルでは十分です。   
 1. **[保持時間]** は `60` のままにしておきます。 この設定は、Jenkins がアイドル状態のエージェントの割り当てを解除するまで待機する分単位の時間を定義します。 アイドル状態のエージェントが自動的に削除されないようにする場合は、0 を指定します。
 
    ![全般的な VM の構成](./media/jenkins-azure-vm-agents/general-config.png)
@@ -122,10 +122,10 @@ Azure VM エージェントの定義に使用するテンプレートを構成�
 
 1. Jenkins ダッシュボードで、 **[New Item]** をクリックします。 
 1. 名前に `demoproject1` を入力し、 **[Freestyle project]\(フリースタイル プロジェクト\)** 選択してから **[OK]** を選択します。
-1. **[全般]** タブで、 **[Restrict where project can be run]\(プロジェクトを実行できる場所を制限する\)** をオンにして、 **[ラベル式]** に `ubuntu` と入力します。 前の手順で作成したクラウドの構成によってラベルが提供されていることを確認するメッセージが表示されます。 
+1. **[全般]** タブで、 **[Restrict where project can be run]\(プロジェクトを実行できる場所を制限する\)** をオンにして、`ubuntu`[ラベル式]**に** と入力します。 前の手順で作成したクラウドの構成によってラベルが提供されていることを確認するメッセージが表示されます。 
    ![ジョブを設定する](./media/jenkins-azure-vm-agents/job-config.png)
 1. **[ソース コード管理]** タブで **[Git]** を選択し、 **[リポジトリの URL]** フィールドに `https://github.com/spring-projects/spring-petclinic.git` のURL を追加します。
-1. **[ビルド]** タブで **[Add build step]\(ビルド ステップの追加\)** を選択し、**Maven の最上位のターゲットを呼び出し**ます。 **[Goals]\(目標\)** フィールドに `package` を入力します。
+1. **[ビルド]** タブで **[Add build step]\(ビルド ステップの追加\)** を選択し、**Maven の最上位のターゲットを呼び出し**ます。 `package`[Goals]\(目標\)**フィールドに** を入力します。
 1. **[保存]** を選択してジョブ定義を保存します。
 
 ## <a name="build-the-new-job-on-an-azure-vm-agent"></a>Azure VM エージェントで新しいジョブを作成する
@@ -140,7 +140,7 @@ Azure VM エージェントの定義に使用するテンプレートを構成�
 
 Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https://issues.jenkins-ci.org/) で特定のコンポーネントについて問題を報告してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure App Service への CI/CD](java-deploy-webapp-tutorial.md)

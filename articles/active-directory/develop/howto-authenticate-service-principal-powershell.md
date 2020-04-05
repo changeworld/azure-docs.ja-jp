@@ -15,11 +15,11 @@ ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.openlocfilehash: 8e428732fb49d27e3991071b87abee53b6e375b2
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648395"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230695"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>方法:Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する
 

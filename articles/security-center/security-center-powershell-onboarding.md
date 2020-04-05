@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
 ms.openlocfilehash: 5aaaf539c07a7ba2c2463d5bfd1f452853f52379
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603694"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell を使用した Azure Security Center へのオンボードの自動化
@@ -58,7 +58,7 @@ Security Center のコマンドレットを実行する前に、これらの手�
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
-2.  省略可能:サブスクリプションのカバレッジ レベル (価格レベル) を設定します (定義されない場合、価格レベルは無料に設定されます)。
+2.  省略可能: サブスクリプションのカバレッジ レベル (価格レベル) を設定します (定義されない場合、価格レベルは無料に設定されます)。
 
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
@@ -78,7 +78,7 @@ Security Center のコマンドレットを実行する前に、これらの手�
     > Azure 仮想マシンが Azure Security Center によって必ず自動的に保護されるように、自動プロビジョニングを有効にすることをお勧めします。
     >
 
-5.  省略可能:オンボードするサブスクリプションのセキュリティ連絡先の詳細を定義することを強くお勧めします。その連絡先は Security Center により生成されるアラートと通知の受信者として使用されます。
+5.  省略可能: オンボードするサブスクリプションのセキュリティ連絡先の詳細を定義することを強くお勧めします。その連絡先は Security Center により生成されるアラートと通知の受信者として使用されます。
 
         Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
 
@@ -97,7 +97,7 @@ Security Center のコマンドレットを実行する前に、これらの手�
 
 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 PowerShell を使用して Security Center へのオンボードを自動化する方法の詳細については、次の記事を参照してください。
 
 * [Az.Security](https://docs.microsoft.com/powershell/module/az.security)。

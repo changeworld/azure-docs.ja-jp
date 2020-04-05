@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a04867d356aaf2f55dbe900d2e35b42f74206851
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873269"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>数学関数 (Azure Cosmos DB)  
@@ -30,7 +30,7 @@ ms.locfileid: "74873269"
     [4]
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>関数
 
 一般に、次のサポートされている組み込みの数学関数では、入力引数に基づいて計算を実行し、数値式を返します。
   
@@ -47,7 +47,7 @@ ms.locfileid: "74873269"
   
 RAND を除く、すべての数学関数が決定論的関数です。 これは、特定の入力値のセットを使用して呼び出されるたびに、同じ結果を返すことを意味します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)

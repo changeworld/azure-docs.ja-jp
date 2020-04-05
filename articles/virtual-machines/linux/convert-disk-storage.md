@@ -8,10 +8,10 @@ ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: cd9bb92b3ed86c3a57b5fc70411a4593335acedb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75431504"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure マネージド ディスク ストレージを Standard から Premium に、または Premium から Standard に変換する
@@ -131,7 +131,7 @@ az vm start --ids $vmId
 
 次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **仮想マシン**の一覧から VM を選択します。
 3. VM が停止していない場合、VM の **[概要]** ウィンドウの一番上で **[停止]** を選択し、VM が停止するまで待ちます。
 4. VM のウィンドウで、メニューから **[ディスク]** を選択します。

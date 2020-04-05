@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
 ms.openlocfilehash: f78b65169899107bcd4626bbed65bd4fddd8af43
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77595452"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)

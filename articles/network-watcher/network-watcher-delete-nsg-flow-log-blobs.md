@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
 ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77587211"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Network Watcher のネットワーク セキュリティ グループ フロー ログのストレージ BLOB の削除

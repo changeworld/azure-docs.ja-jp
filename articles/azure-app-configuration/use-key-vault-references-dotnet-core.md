@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 4e896c5fa6f8656be29eed7eb8d4e8854a94ecfa
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: eceb4a9d4e0cc84166280f30b094b82088f53a4a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116623"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79475308"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで Key Vault 参照を使用する
 
@@ -61,7 +61,7 @@ App Configuration に格納されているその他のキーの場合と同様�
     - **[キー コンテナー名]** では、一意の名前が必要です。 このチュートリアルでは、「**Contoso-vault2**」と入力します。
     - **[リージョン]** ドロップダウン リストで、場所を選択します。
 1. **[キー コンテナーの作成]** オプションは既定値のままにしておきます。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 この時点で、お使いの Azure アカウントが、この新しいコンテナーへのアクセスが承認されている唯一のアカウントになります。
 
@@ -78,7 +78,7 @@ App Configuration に格納されているその他のキーの場合と同様�
     - **Name**:「**Message**」と入力します。
     - **値**: 「**Hello from Key Vault**」と入力します。
 1. **[シークレットの作成]** の他のプロパティは既定値のままにしておきます。
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>App Configuration に Key Vault 参照を追加する
 
@@ -110,7 +110,6 @@ App Configuration に格納されているその他のキーの場合と同様�
     "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
     "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
     "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net/",
     "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
     "galleryEndpointUrl": "https://gallery.azure.com/",
     "managementEndpointUrl": "https://management.core.windows.net/"
@@ -245,13 +244,13 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 1. .NET Core CLI を使用してアプリケーションをビルドするには、コマンド シェルで次のコマンドを実行します。
 
-    ```
+    ```dotnetcli
     dotnet build
     ```
 
 1. ビルドが完了したら、次のコマンドを実行して、Web アプリをローカルで実行します。
 
-    ```
+    ```dotnetcli
     dotnet run
     ```
 

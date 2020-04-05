@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8babacfede6e13fde629492e1cd9f80af7f0e53f
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943070"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>新しいシミュレートされたデバイスの作成とテスト
@@ -30,7 +30,7 @@ ms.locfileid: "78943070"
 
 *Properties*
 
-| 名前                     | 値                      |
+| Name                     | 値                      |
 | ------------------------ | --------------------------- |
 | Color                    | 白、赤、青            |
 | 明るさ               | 0 から 100                    |
@@ -40,7 +40,7 @@ ms.locfileid: "78943070"
 
 次の表に、電球がクラウドにデータ ストリームとしてレポートするデータを示します。
 
-| 名前   | 値      |
+| Name   | 値      |
 | ------ | ----------- |
 | Status | "オン"、"オフ" |
 | 気温 | 度 (華氏) |
@@ -53,7 +53,7 @@ ms.locfileid: "78943070"
 
 次の表に、新しいデバイスがサポートするアクションを示します。
 
-| 名前        |
+| Name        |
 | ----------- |
 | オンにする   |
 | オフにする  |
@@ -62,7 +62,7 @@ ms.locfileid: "78943070"
 
 次の表に、デバイスの初期状態を示します。
 
-| 名前                     | 値 |
+| Name                     | 値 |
 | ------------------------ | -------|
 | 初期の色            | White  |
 | 初期の明るさ       | 75     |

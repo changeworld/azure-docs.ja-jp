@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
 ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67849260"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>クラウド ソリューション プロバイダー (CSP) 向けの ExpressRoute
@@ -114,7 +114,7 @@ Azure 仮想ネットワークを作成すると、VNet がそのサブネット
 ### <a name="user-defined-routing-udr"></a>ユーザー定義のルーティング (UDR)
 ユーザー定義のルーティングでは、割り当てられたサブネットから仮想ネットワーク内の他のサブネットへの送信トラフィックや、他の定義済みゲートウェイ (ExpressRoute、インターネット、または VPN) のいずれかを介した送信トラフィックを制御できます。 既定のシステム ルーティング テーブルはユーザー定義のルーティング テーブルに置き換えることができます。これによって既定のルーティング テーブルがカスタム ルートに置き換わります。 ユーザー定義のルーティングを使用すると、顧客はファイアウォールのようなアプライアンスまたは侵入検出アプライアンスへの特定のルートを作成することや、ユーザー定義のルートをホストするサブネットから特定のサブネットへのアクセスをブロックすることができます。 ユーザー定義のルートの概要については、[こちら](../virtual-network/virtual-networks-udr-overview.md)を参照してください。 
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 Connect-To モデルと Connect-Through モデルのどちらが使用されているかによって、顧客が VNet 内のセキュリティ ポリシーを定義するか、VNet に定義するセキュリティ ポリシーの要件を CSP に提供するかが決まります。 定義できるセキュリティ基準を以下に示します。
 
 1. **顧客の分離** - Azure プラットフォームでは、顧客 ID と VNet 情報をセキュリティで保護されたデータベースに保存し、それを使用して顧客ごとのトラフィックを GRE トンネルでカプセル化することにより、顧客の分離を実現しています。
@@ -124,7 +124,7 @@ Connect-To モデルと Connect-Through モデルのどちらが使用されて�
 
 ![alt text](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 クラウド ソリューション プロバイダー サービスを利用することで、高価なインフラストラクチャや機能を購入することなく、顧客に対する自社の価値を高めることが可能になり、同時にプライマリ アウトソーシング プロバイダーとしての地位も保つことができます。 CSP API を通じて Microsoft Azure とのシームレスな統合が実現できるため、既存の管理フレームワークの範囲内で Microsoft Azure の管理を統合することができます。  
 
 詳細については、以下のリンクを参照してください。

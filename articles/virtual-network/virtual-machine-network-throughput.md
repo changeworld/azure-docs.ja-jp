@@ -16,11 +16,11 @@ ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
 ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358546"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225303"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>仮想マシンのネットワーク帯域幅
 
@@ -39,10 +39,10 @@ Azure の仮想マシンには、少なくとも 1 つ (複数可) のネット�
 VM の各サイズで想定される送信スループットとサポートされるネットワーク インターフェイスの数については、[Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) と [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の Azure VM サイズに関するページを参照してください。 型 (汎用など) を選択し、結果として表示されるページでサイズ シリーズ (Dv2 シリーズなど) を選択します。 各シリーズの表の最後に、**最大 NIC 数/想定ネットワーク パフォーマンス (Mbps)** というネットワーク仕様の列があります。 
 
 このスループット制限が仮想マシンに適用されます。 スループットは、次の要因には影響されません。
-- **ネットワーク インターフェイスの数**:帯域幅の制限は、仮想マシンからのすべての送信トラフィックの累積です。
-- **高速ネットワーク**:この機能は公開された制限まで達成するためには役立ちますが、制限自体は変更されません。
-- **トラフィックの送信先**:すべての送信先が、送信制限に達するまでカウントされます。
-- **プロトコル**:すべてのプロトコルに対するすべての送信トラフィックが、制限に達するまでカウントされます。
+- **ネットワーク インターフェイスの数**: 帯域幅の制限は、仮想マシンからのすべての送信トラフィックの累積です。
+- **高速ネットワーク**: この機能はスループットを公開された制限まで向上させるためには役立ちますが、制限自体は変更されません。
+- **トラフィックの送信先**: すべての送信先が、送信制限に達するまでカウントされます。
+- **プロトコル**: すべてのプロトコルに対するすべての送信トラフィックが、制限に達するまでカウントされます。
 
 ## <a name="network-flow-limits"></a>ネットワーク フローの制限
 

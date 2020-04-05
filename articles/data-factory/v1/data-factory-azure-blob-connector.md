@@ -13,11 +13,11 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: eab332f102b9e39981e2d8ed6e84f73fada87a1a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981661"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236595"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -184,7 +184,7 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     ```
 
 ### <a name="create-the-data-factory"></a>Data Factory の作成
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左上隅にある **[リソースの作成]** 、 **[インテリジェンス + 分析]** 、 **[データ ファクトリ]** の順にクリックします。
 3. **[新しいデータ ファクトリ]** ウィンドウで、次の手順を実行します。  
     1. **[名前]** に「**ADFBlobConnectorDF**」と入力します。 Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー `*Data factory name “ADFBlobConnectorDF” is not available` が発生した場合は、データ ファクトリの名前を変更して (yournameADFBlobConnectorDF など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。

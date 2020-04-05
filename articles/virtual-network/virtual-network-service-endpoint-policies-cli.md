@@ -18,10 +18,10 @@ ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
 ms.openlocfilehash: e01af052a936403162115965f2dc5b3ad46dd9cf
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78271182"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Azure CLI を使って仮想ネットワーク サービス エンドポイント ポリシーで Azure Storage アカウントへのデータの流出を管理する

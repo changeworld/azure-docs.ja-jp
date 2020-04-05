@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174648"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230367"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージのリソース ロールを変更する
 
@@ -92,8 +92,8 @@ ms.locfileid: "73174648"
 
     |  |  |
     | --- | --- |
-    | セキュリティ | リソースにアクセスを付与するために使用されます。 |
-    | ディストリビューション | ユーザー グループに通知を送信するために使用されます。 |
+    | Security | リソースにアクセスを付与するために使用されます。 |
+    | Distribution | ユーザー グループに通知を送信するために使用されます。 |
     | O365 | Teams が有効になっていない Office 365 グループ。 社内と社外の両方でユーザー間の共同作業に使用されます。 |
     | チーム | Teams が有効になっている Office 365 グループ。 社内と社外の両方でユーザー間の共同作業に使用されます。 |
 
@@ -180,7 +180,7 @@ Azure AD では、ユーザーにアクセス パッケージが割り当てら�
 
 チームのメンバーを削除すると、Office 365 グループからも削除されます。 チームのチャット機能から削除されるタイミングは遅れる場合があります。 詳細については、「[グループ メンバーシップ](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../fundamentals/active-directory-groups-create-azure-portal.md)
 - [方法: エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する](../develop/active-directory-enterprise-app-role-management.md)

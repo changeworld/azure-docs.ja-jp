@@ -3,12 +3,12 @@ title: データの変更 - LUIS
 description: Language Understanding (LUIS) での予測前にデータを変更する方法について説明します。
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 5547724a6333d248a7ba4e9aeecaaa8f331feb7d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: b3b36351a64a4e1a0bd13d5785a4e0609a80901d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148268"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292078"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>予測前または予測中に発話データに変更を加える
 LUIS では、予測前または予測中に発話を操作する方法が用意されています。 これらには、[スペルの修正](luis-tutorial-bing-spellcheck.md)や、事前構築済み [datetimeV2](luis-reference-prebuilt-datetimev2.md) でのタイム ゾーンの問題の修正が含まれます。
@@ -28,7 +28,7 @@ LUIS では、[Bing Spell Check API V7](../Bing-Spell-Check/overview.md) を使�
 
 スペル修正が機能するためには、エンドポイントに 2 つのパラメーターが必要です。
 
-|Param|Value|
+|Param|値|
 |--|--|
 |`spellCheck`|boolean|
 |`bing-spell-check-subscription-key`|[Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) エンドポイント キー|
@@ -76,34 +76,34 @@ LUIS で使用される Bing スペル チェック API は、スペル チェ�
 LUIS アプリで事前構築済み [datetimeV2](luis-reference-prebuilt-datetimev2.md) エンティティを使用している場合、予測の応答で datetime 値が返されることがあります。 要求のタイム ゾーンを使用して、返すべき正しい datetime が決定されます。 要求元がボットであったり、LUIS の前段階の集約化された他のアプリケーションであったりする場合は、LUIS で使用するタイム ゾーンを修正します。
 
 ### <a name="endpoint-querystring-parameter"></a>エンドポイントのクエリ文字列パラメーター
-タイム ゾーンは、`timezoneOffset` パラメーターを使用してユーザーのタイム ゾーンを[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)に追加することで修正します。 時刻を変更するためは、`timezoneOffset` の値は正または負の数値 (分単位) である必要があります。
+タイム ゾーンは、[ パラメーターを使用してユーザーのタイム ゾーンを](https://go.microsoft.com/fwlink/?linkid=2092356)エンドポイント`timezoneOffset`に追加することで修正します。 時刻を変更するためは、`timezoneOffset` の値は正または負の数値 (分単位) である必要があります。
 
-|Param|Value|
+|Param|値|
 |--|--|
 |`timezoneOffset`|正または負の数値 (分単位)|
 
 ### <a name="daylight-savings-example"></a>夏時間の例
-返される事前構築済み datetimeV2 を夏時間用に調整する必要がある場合は、[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356) クエリで、正負の値 (分単位) を含む `timezoneOffset` クエリ文字列パラメーターを使用する必要があります。
+返される事前構築済み datetimeV2 を夏時間用に調整する必要がある場合は、`timezoneOffset`エンドポイント[ クエリで、正負の値 (分単位) を含む ](https://go.microsoft.com/fwlink/?linkid=2092356) クエリ文字列パラメーターを使用する必要があります。
 
 #### <a name="v2-prediction-endpoint-request"></a>[V2 予測エンドポイントの要求](#tab/V2)
 
 60 分を追加する場合は、次の手順を実行します。
 
-https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
 60 分を削除する場合は、次の手順を実行します。
 
-https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=-60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=-60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
 #### <a name="v3-prediction-endpoint-request"></a>[V3 予測エンドポイントの要求](#tab/V3)
 
 60 分を追加する場合は、次の手順を実行します。
 
-https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
+`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
 60 分を削除する場合は、次の手順を実行します。
 
-https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=-60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
+`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=-60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
 [V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 

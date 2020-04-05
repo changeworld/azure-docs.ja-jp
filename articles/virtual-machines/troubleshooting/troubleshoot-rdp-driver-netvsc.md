@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
 ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71057987"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>netvsc.sys のために Azure 内の Windows 10 または Windows Server 2016 VM にリモート接続できない
@@ -54,7 +54,7 @@ ms.locfileid: "71057987"
 
 2. 同じリージョンから作業用 VM にアタッチされている新規または既存のデータ ディスクに、適切な更新プログラムをダウンロードします。
 
-   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562)  以降の更新プログラム
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) 以降の更新プログラム
    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) 以降の更新プログラム
 
 3. 作業用 VM からユーティリティ ディスクをデタッチして、破損した VM にアタッチします。
@@ -97,7 +97,7 @@ ms.locfileid: "71057987"
 
 12. 適切な更新プログラムをダウンロードします。
 
-    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562)  以降の更新プログラム
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) 以降の更新プログラム
     - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) 以降の更新プログラム
 
 13. 更新プログラムをダウンロードできる復旧用 VM で、データ ディスクとしてシステム ディスクをアタッチします。

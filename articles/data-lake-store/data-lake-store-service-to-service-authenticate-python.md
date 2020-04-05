@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 009aff2703829e6d30f93b3c8e3696724594f29b
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290769"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229875"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Azure Data Lake Storage Gen1 に対する Python を使用したサービス間認証
 > [!div class="op_single_selector"]

@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: 7fabc1e3445d3dbd357700ffde3caeb985cc60c4
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b7385ef27cd17705f2c86b6f57d4780511b6935c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67601967"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246859"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal を使用して HTTP から HTTPS にリダイレクトする Front Door を作成する
 
@@ -29,10 +29,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-front-door-with-an-existing-web-app-resource"></a>既存の Web アプリ リソースを使用して Front Door を作成する
 
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 3. 検索バーを使用して **Front Door** を検索し、リソースの種類を見つけたら、 **[作成]** をクリックします。
-4. サブスクリプションを選択して、既存のリソース グループを使用するか、新しいものを作成します。 UI で指定するよう求められる場所は、このリソース グループ専用です。 Front Door 構成は、[Azure Front Door の POP の場所](https://docs.microsoft.com/azure/frontdoor/front-door-faq#what-are-the-pop-locations-for-azure-front-door-service)全体にわたってデプロイされます。
+4. サブスクリプションを選択して、既存のリソース グループを使用するか、新しいものを作成します。 UI で指定するよう求められる場所は、このリソース グループ専用です。 Front Door 構成は、[Azure Front Door の POP の場所](front-door-faq.md#what-are-the-pop-locations-for-azure-front-door)全体にわたってデプロイされます。
 
     ![新規 Front Door の基本を構成する](./media/front-door-url-redirect/front-door-create-basics.png)
 
@@ -75,11 +75,11 @@ CNAME を追加した後の DNS レコード ページは次の例のように�
 
 ![Front Door に対する CNAME カスタム ドメイン](./media/front-door-url-redirect/front-door-dns-cname.png)
 
-#### <a name="onboard-the-custom-domain-on-your-front-door"></a>カスタム ドメインを Front Door にオンボードする
+#### <a name="onboard-the-custom-domain-on-your-front-door"></a>カスタム ドメインをフロント ドアにオンボードする
 
-1. [Front Door デザイナー] タブで、フロントエンド ホスト セクションの '+' アイコンをクリックして、新しいカスタム ドメインを追加します。 
+1. [Front Door デザイナー] タブで、[フロントエンド ホスト] セクションの [+] アイコンをクリックして、新しいカスタム ドメインを追加します。 
 2. カスタム ホスト名フィールドに完全修飾カスタム DNS 名を入力します (例: `www.contosonews.com`)。 
-3. ドメインから Front Door への CNAME マッピングを確認したら、 **[追加]** をクリックしてカスタム ドメインを追加します。
+3. ドメインからご自分のフロント ドアへの CNAME マッピングが検証されたら、 **[追加]** をクリックしてカスタム ドメインを追加します。
 4. **[保存]** をクリックして、変更を送信します。
 
 ![[カスタム ドメイン] メニュー](./media/front-door-url-redirect/front-door-add-custom-domain.png)
@@ -104,7 +104,7 @@ CNAME を追加した後の DNS レコード ページは次の例のように�
 4. 他のルーティング規則についても (つまりカスタム ドメインを追加するための転送ルートについても)、同じ操作を実行します。
 5. **[保存]** をクリックして変更を送信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
 - [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

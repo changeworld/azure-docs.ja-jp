@@ -1,20 +1,19 @@
 ---
 title: SaaS Fulfillment API v1 | Azure Marketplace
 description: 関連付けられている Fulfillment v1 API を使用して Azure Marketplace で SaaS オファーを作成し、管理する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 05/23/2019
-ms.author: evansma
+ms.author: dsindona
 ROBOTS: NOINDEX
-ms.openlocfilehash: f56e9b4f6c3db6fb47452c7478f5a27445955e87
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3ec8373288a2ea5809ee5d349c52c57051586035
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715394"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288344"
 ---
 # <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS Fulfillment API バージョン 1 (非推奨)
 
@@ -49,7 +48,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 ユーザーが ISV の Web サイトにリダイレクトされると、URL に、クエリ パラメーターのトークンが含まれます。 ISV は、このトークンを使用し、それを解決するための要求を行うことが期待されます。 応答には、リソースの一意の SAAS サブスクリプション ID、名前、オファーID、およびプランが含まれます。 このトークンは、1 時間だけ有効です。
 
-*要求*
+*Request*
 
 **POST**
 
@@ -247,7 +246,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 サブスクライブ エンドポイントでの DELETE アクションにより、ユーザーは特定の ID のサブスクリプションを削除することができます。
 
-*要求*
+*Request*
 
 **DELETE**
 
@@ -297,7 +296,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 このエンドポイントを使用すると、ユーザーはトリガーされた非同期操作 (プランのサブスクライブ、サブスクライブ解除、変更) の状態を追跡できます。
 
-*要求*
+*Request*
 
 **GET**
 
@@ -365,7 +364,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 サブスクライブ エンドポイントでの GET アクションにより、ユーザーは特定のリソース ID のサブスクリプションを取得することができます。
 
-*要求*
+*Request*
 
 **GET**
 
@@ -438,7 +437,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
 
 サブスクリプション エンドポイントでの GET アクションにより、ユーザーはすべてのオファーに関するすべてのサブスクリプションを ISV から取得することができます。
 
-*要求*
+*Request*
 
 **GET**
 

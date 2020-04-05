@@ -4,10 +4,10 @@ description: この記事では、コンテナー用 Azure Monitor に関する�
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: 17a2817b320599b2aa2c331c354d316b9d864a32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75403373"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>コンテナー用 Azure Monitor のトラブルシューティング
@@ -21,7 +21,7 @@ ms.locfileid: "75403373"
 
 また、次の手順を実行することによって、Azure Portal からこのロールを手動で付与することもできます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 2. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Kubernetes**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Azure Kubernetes]** を選択します。
 3. Kubernetes クラスターの一覧から選択します。
 2. 左側のメニューから、 **[アクセス制御 (IAM)]** をクリックします。

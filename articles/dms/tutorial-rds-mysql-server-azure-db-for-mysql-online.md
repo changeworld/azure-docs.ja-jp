@@ -3,8 +3,8 @@ title: チュートリアル:RDS MySQL をオンラインで Azure Database for 
 titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用する RDS MySQL から Azure Database for MySQL へのオンライン移行の実行について学習します。
 services: dms
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 27002d1fc861d49e083fc294bcfbc7f51f7c1a12
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: c34de48d0184057f42d1b779abee56e1fa9ac169
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255162"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル:DMS を使用して RDS MySQL を Azure Database for MySQL にオンラインで移行する

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
 ms.openlocfilehash: 9e4c6577f0b8b18aff343ac54b31ff292632f5d0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979238"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Azure Security Center 調査で検出されたユーザー データの管理

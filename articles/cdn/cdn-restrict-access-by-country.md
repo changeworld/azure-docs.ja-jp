@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
 ms.openlocfilehash: 75c422d456f2509ce478e2609a6509f78a6eb31e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593427"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>国/地域別の Azure CDN コンテンツの制限
@@ -69,7 +69,7 @@ geo フィルタリングは、スラッシュ (/) を指定してすべての�
 
 ![geo フィルタリング ルール](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 ルールを削除するには、 **[geo フィルタリング]** ページでルールを選択し、 **[削除]** を選択します。
 
 ## <a name="azure-cdn-premium-from-verizon-profiles"></a>Azure CDN Premium from Verizon プロファイル
@@ -95,7 +95,7 @@ geo フィルタリングは、スラッシュ (/) を指定してすべての�
 
     ![geo フィルタリング ルール](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
-### <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースをクリーンアップする
 国/地域フィルタリング ルール テーブルでは、ルールの横にある削除アイコンを選択して削除するか、または編集アイコンを選択して変更します。
 
 ## <a name="considerations"></a>考慮事項

@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: bb44e078a3958a788d23356c970b62fd97cbf420
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9e35ba5a3f3705a52e80262da9bbfbfda489bf83
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696318"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050373"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Authentication Library 構成ファイル
 
@@ -30,7 +30,7 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 
 ### <a name="general-settings"></a>全般設定
 
-| プロパティ | データ型 | Required | メモ |
+| プロパティ | データ型 | 必須 | Notes |
 |-----------|------------|-------------|-------|
 | `client_id` | String | はい | [アプリケーション登録ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)からのアプリのクライアント ID |
 | `redirect_uri`   | String | はい | [アプリケーション登録ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)からのアプリのリダイレクト URI |
@@ -86,13 +86,13 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 
 #### <a name="map-aad-authority--audience-to-microsoft-identity-platform-endpoints"></a>AAD 機関および対象ユーザーを Microsoft ID プラットフォーム エンドポイントにマップする
 
-| 種類 | 対象ユーザー | テナント ID | Authority_Url | 結果としてのエンドポイント | メモ |
+| Type | 対象ユーザー | テナント ID | Authority_Url | 結果としてのエンドポイント | Notes |
 |------|------------|------------|----------------|----------------------|---------|
-| AAD | AzureADandPersonalMicrosoftAccount | | | https://login.microsoftonline.com/common | `common` は、アカウントがあるテナントの別名です。 たとえば、特定の Azure Active Directory テナントや Microsoft アカウント システムなどです。 |
-| AAD | AzureADMyOrg | contoso.com | | https://login.microsoftonline.com/contoso.com | contoso.com に存在するアカウントのみがトークンを取得できます。 検証されたドメインまたはテナント GUID は、テナント ID として使用できる可能性があります。 |
-| AAD | AzureADMultipleOrgs | | | https://login.microsoftonline.com/organizations | このエンドポイントで使用できるのは、Azure Active Directory アカウントだけです。 Microsoft アカウントは、組織のメンバーとすることができます。 組織内のリソースに対して Microsoft アカウントを使用してトークンを取得するには、トークンの取得元とする組織テナントを指定します。 |
-| AAD | PersonalMicrosoftAccount | | | https://login.microsoftonline.com/consumers | このエンドポイントを使用できるのは Microsoft アカウントだけです。 |
-| B2C | | | 結果としてのエンドポイントを参照してください | https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/ | トークンを取得できるには、contoso.onmicrosoft.com テナントに存在するアカウントのみです。 この例では、B2C ポリシーは機関 URL パスの一部です。 |
+| AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common` は、アカウントがあるテナントの別名です。 たとえば、特定の Azure Active Directory テナントや Microsoft アカウント システムなどです。 |
+| AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | contoso.com に存在するアカウントのみがトークンを取得できます。 検証されたドメインまたはテナント GUID は、テナント ID として使用できる可能性があります。 |
+| AAD | AzureADMultipleOrgs | | | `https://login.microsoftonline.com/organizations` | このエンドポイントで使用できるのは、Azure Active Directory アカウントだけです。 Microsoft アカウントは、組織のメンバーとすることができます。 組織内のリソースに対して Microsoft アカウントを使用してトークンを取得するには、トークンの取得元とする組織テナントを指定します。 |
+| AAD | PersonalMicrosoftAccount | | | `https://login.microsoftonline.com/consumers` | このエンドポイントを使用できるのは Microsoft アカウントだけです。 |
+| B2C | | | 結果としてのエンドポイントを参照してください | `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/` | トークンを取得できるには、contoso.onmicrosoft.com テナントに存在するアカウントのみです。 この例では、B2C ポリシーは機関 URL パスの一部です。 |
 
 > [!NOTE]
 > MSAL では、機関の検証を有効および無効にすることはできません。
@@ -101,7 +101,7 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 
 #### <a name="authority-properties"></a>機関のプロパティ
 
-| プロパティ | データ型  | Required | メモ |
+| プロパティ | データ型  | 必須 | Notes |
 |-----------|-------------|-----------|--------|
 | `type` | String | はい | ご利用のアプリがターゲットとする対象ユーザーまたはアカウントの種類をミラー化します。 指定できる値: `AAD`、`B2C` |
 | `audience` | Object | いいえ | Type=`AAD` の場合にのみ適用されます。 ご利用のアプリがターゲットとする ID を指定します。 ご利用のアプリの登録からの値を使用します |
@@ -110,7 +110,7 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 
 #### <a name="audience-properties"></a>対象ユーザーのプロパティ
 
-| プロパティ | データ型  | Required | メモ |
+| プロパティ | データ型  | 必須 | Notes |
 |-----------|-------------|------------|-------|
 | `type` | String | はい | ご利用のアプリでターゲットとする対象ユーザーを指定します。 指定できる値: `AzureADandPersonalMicrosoftAccount`、`PersonalMicrosoftAccount`、`AzureADMultipleOrgs`、`AzureADMyOrg` |
 | `tenant_id` | String | はい | `"type":"AzureADMyOrg"` の場合にのみ必要です。 他の `type` 値の場合は省略可能です。 これには、`contoso.com` などのテナント ドメインや、`72f988bf-86f1-41af-91ab-2d7cd011db46` などのテナント ID にすることができます |
@@ -138,7 +138,7 @@ Microsoft ID ブローカーと互換性のあるブローカー内リダイレ�
 
 HTTP タイムアウトのグローバル設定を構成します。次に例を示します。
 
-| プロパティ | データ型 | Required | メモ |
+| プロパティ | データ型 | 必須 | Notes |
 | ---------|-----------|------------|--------|
 | `connect_timeout` | INT | いいえ | ミリ秒単位 |
 | `read_timeout` | INT | いいえ | ミリ秒単位 |
@@ -147,7 +147,7 @@ HTTP タイムアウトのグローバル設定を構成します。次に例を
 
 次のグローバル設定は、ログ記録用のものです。
 
-| プロパティ | データ型  | Required | メモ |
+| プロパティ | データ型  | 必須 | Notes |
 | ----------|-------------|-----------|---------|
 | `pii_enabled`  | boolean | いいえ | 個人データを出力するかどうか |
 | `log_level`   | boolean | いいえ | どのログ メッセージを出力するか |

@@ -1,5 +1,5 @@
 ---
-title: Azure Billing API による Azure の使用状況の取得 | Microsoft Docs
+title: Azure Billing API シリーズによる Azure の使用状況の取得
 description: Azure Billing Usage API と RateCard API について説明します。これらの API を使用すると、Azure のリソース消費と傾向を把握できます。
 author: tonguyen
 ms.reviewer: mumami
@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 2765a1acca21081a696bb165b75a96e1a668aa40
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 7a9762d36d2c9ae6ede6718a31cae99afa230ef6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200420"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237634"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure Billing API を使用して、Azure の使用状況に関する詳細なデータをプログラムによって取得する
 Azure Billing API を使用すると、使用状況やリソースに関するデータを、お使いのデータ分析ツールで取得できます。 Azure Resource Usage API と Azure Resource RateCard API は、コストを正確に予測して管理するうえで役立ちます。 これらの API は、Azure Resource Manager が公開している API ファミリに含まれ、リソース プロバイダーとして実装されています。  

@@ -9,11 +9,11 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
 ms.openlocfilehash: b4278cb2e8c5152f522258a37c37acda5efbacf8
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775321"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79223809"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
 
@@ -49,7 +49,7 @@ ms.locfileid: "76775321"
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-## <a name="openvwan"></a>仮想 WAN を作成する
+## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>仮想 WAN を作成する
 
 ブラウザーから Azure portal に移動し、Azure アカウントでサインインします。
 
@@ -67,25 +67,25 @@ ms.locfileid: "76775321"
 4. フィールドへの入力を完了したら、 **[確認および作成]** を選択します。
 5. 検証に合格したら、 **[作成]** を選択して仮想 WAN を作成します。
 
-## <a name="hub"></a>ハブを作成する
+## <a name="create-a-hub"></a><a name="hub"></a>ハブを作成する
 
 ハブは、サイト間、ExpressRoute、またはポイント対サイト機能のためのゲートウェイを含めることができる仮想ネットワークです。 ハブが作成されると、サイトをアタッチしていない場合でも、ハブに対して課金されます。 仮想ハブ内にサイト間 VPN ゲートウェイを作成するには 30 分かかります。
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-## <a name="site"></a>サイトを作成する
+## <a name="create-a-site"></a><a name="site"></a>サイトを作成する
 
 これで、この物理的な場所に対応するサイトを作成する準備ができました。 物理的な場所に合わせて必要な数のサイトを作成します。 たとえば、NY、ロンドン、および LA にブランチ オフィスがある場合は、3 つの別個のサイトを作成します。 これらのサイトには、オンプレミス VPN デバイスのエンドポイントが含まれています。 仮想 WAN 内の仮想ハブあたり最大 1000 個のサイトを作成できます。 複数のハブがある場合は、それらの各ハブあたり 1000 個作成できます。 仮想 WAN パートナー (リンクを挿入) の CPE デバイスがある場合は、そのパートナーに Azure へのオートメーションについて確認してください。 通常、オートメーションとは、単純なクリック操作で、大規模なブランチ情報を Azure にエクスポートし、CPE から Azure Virtual WAN VPN ゲートウェイへの接続を設定できることを意味します。 詳細については、[Azure から CPE パートナーへのオートメーション ガイダンス](virtual-wan-configure-automation-providers.md)を参照してください。
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-## <a name="connectsites"></a>VPN サイトをハブに接続する
+## <a name="connect-the-vpn-site-to-the-hub"></a><a name="connectsites"></a>VPN サイトをハブに接続する
 
 この手順では、VPN サイトをハブに接続します。
 
 [!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-## <a name="vnet"></a>VNet をハブに接続する
+## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>VNet をハブに接続する
 
 この手順では、ハブと VNet の間の接続を作成します。 接続する VNet ごとにこれらの手順を繰り返します。
 
@@ -99,7 +99,7 @@ ms.locfileid: "76775321"
     * **[仮想ネットワーク]** - このハブに接続する仮想ネットワークを選択します。 仮想ネットワークに既存の仮想ネットワーク ゲートウェイを設定することはできません。
 4. **[OK]** をクリックして、仮想ネットワーク接続を作成します。
 
-## <a name="device"></a>VPN 構成をダウンロードする
+## <a name="download-vpn-configuration"></a><a name="device"></a>VPN 構成をダウンロードする
 
 オンプレミス VPN デバイスを構成するには、VPN デバイス構成を使用します。
 
@@ -251,7 +251,7 @@ ms.locfileid: "76775321"
 * 新しい仮想 WAN は、IKEv1 と IKEv2 の両方をサポートできます。
 * Virtual WAN では、ポリシー ベースとルート ベースの両方の VPN デバイスとデバイスの手順を使用できます。
 
-## <a name="viewwan"></a>仮想 WAN を表示する
+## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>仮想 WAN を表示する
 
 1. 仮想 WAN に移動します。
 2. **[概要]** ページで、マップ上の各ポイントはハブを表します。 任意のポイントにマウス ポインターを置くと、ハブの正常性の概要、接続の状態、および入出力バイト数が表示されます。

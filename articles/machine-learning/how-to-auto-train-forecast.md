@@ -11,10 +11,10 @@ ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: d4e36c0d3838af85768453496a51ecd295c22b93
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79081847"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
@@ -124,7 +124,7 @@ test_labels = test_data.pop(label).values
 
 詳しくは、[リファレンス ドキュメント](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)をご覧ください。
 
-ディクショナリ オブジェクトとして時系列設定を作成します。 `time_column_name` をデータ セットの `day_datetime` フィールドに設定します。 ストア A と B 用の **2 つの個別の時系列グループ**がデータに対して作成されるように `grain_column_names` パラメーターを定義します。最後に、テスト セット全体に対して予測を行うために `max_horizon` を 50 に設定します。 `target_rolling_window_size` で予測ウィンドウを 10 期間に設定し、`target_lags` パラメーターで前方に 2 期間のターゲット値に 1 つのラグを指定します。 `max_horizon`、`target_rolling_window_size`、および `target_lags` は "auto" に設定することをお勧めします。これにより、これらの値が自動的に検出されます。 次の例では、これらのパラメーターに "auto" 設定が使用されています。 
+ディクショナリ オブジェクトとして時系列設定を作成します。 `time_column_name` をデータ セットの `day_datetime` フィールドに設定します。 ストア A と B 用の `grain_column_names`2 つの個別の時系列グループ**がデータに対して作成されるように**  パラメーターを定義します。最後に、テスト セット全体に対して予測を行うために `max_horizon` を 50 に設定します。 `target_rolling_window_size` で予測ウィンドウを 10 期間に設定し、`target_lags` パラメーターで前方に 2 期間のターゲット値に 1 つのラグを指定します。 `max_horizon`、`target_rolling_window_size`、および `target_lags` は "auto" に設定することをお勧めします。これにより、これらの値が自動的に検出されます。 次の例では、これらのパラメーターに "auto" 設定が使用されています。 
 
 ```python
 time_series_settings = {
@@ -210,9 +210,9 @@ predict_labels = fitted_model.predict(test_data)
 actual_labels = test_labels.flatten()
 ```
 
-または、`predict()` ではなく `forecast()` 関数を使用することもできます。これにより、いつ予測を開始するかを指定できます。 次の例では、最初に `y_pred` のすべての値を `NaN` に置き換えます。 `predict()` を使用すると通常そうなるように、このケースでは、予測の始まりはトレーニング データの最後になります。 ただし、`y_pred` の後半部分のみを `NaN` に置き換えた場合、この関数では前半の数値を変更しないまま、後半の `NaN` の値を予測します。 この関数は、予測値と調整された特徴の両方を返します。
+または、`forecast()` ではなく `predict()` 関数を使用することもできます。これにより、いつ予測を開始するかを指定できます。 次の例では、最初に `y_pred` のすべての値を `NaN` に置き換えます。 `predict()` を使用すると通常そうなるように、このケースでは、予測の始まりはトレーニング データの最後になります。 ただし、`y_pred` の後半部分のみを `NaN` に置き換えた場合、この関数では前半の数値を変更しないまま、後半の `NaN` の値を予測します。 この関数は、予測値と調整された特徴の両方を返します。
 
-`forecast()` 関数の `forecast_destination` パラメーターを使用して、指定した日付までの値を予測することもできます。
+`forecast_destination` 関数の `forecast()` パラメーターを使用して、指定した日付までの値を予測することもできます。
 
 ```python
 label_query = test_labels.copy().astype(np.float)

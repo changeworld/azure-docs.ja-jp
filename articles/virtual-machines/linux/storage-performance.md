@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
 ms.openlocfilehash: 8d99f63ae084b4f1dae3c0125420eaecf5655e2d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034752"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Lsv2 シリーズの仮想マシン上でパフォーマンスを最適化する
@@ -108,6 +108,6 @@ Lsv2 VM にある 1.92 TB NVMe ディスク上のローカル ストレージは
 
    このほか、最善のパフォーマンスが得られるのは、未加工 (パーティション分割をしておらず、ファイル システムがなく、RAID 0 を構成していないなど) の各 NVMe デバイスに対して直接 I/O を実行したときであるという点にご注意ください。テスト セッションを開始する前に、それぞれの NVMe デバイスで `blkdiscard` を実行し、構成が既知のフレッシュまたはクリーンな状態になっていることを確認してください。
    
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure 上で[ストレージのパフォーマンスを高めるために最適化されたすべての VM](sizes-storage.md) の仕様を確認してください。

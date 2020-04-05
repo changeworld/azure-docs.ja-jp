@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: bbf2e3204cb1e703aba445822bfb699fae13a112
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/20/2020
+ms.openlocfilehash: 50a3eebaa18674a0d0a7e9da88b8d3386e5016c5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454313"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067793"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL サーバーの作成
 
@@ -47,7 +47,7 @@ Azure Database for MySQL サーバーを作成するには、次の手順に従�
     サーバー管理者のログイン | myadmin | サーバーに接続するときに使用するサインイン アカウント。 管理者のサインイン名に **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** は使用できません。
     Password | *<任意>* | サーバー管理者アカウントの新しいパスワードを入力します。 8 文字以上 128 文字以内にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。
     [パスワードの確認入力] | *<任意>*| 管理者アカウントのパスワードを確認します。
-    Location | *ユーザーに最も近いリージョン*| ユーザーや他の Azure アプリケーションに最も近い場所を選択します。
+    場所 | *ユーザーに最も近いリージョン*| ユーザーや他の Azure アプリケーションに最も近い場所を選択します。
     Version | *最新のメジャー バージョン*| 最新メジャー バージョン (別のバージョンを指定する特定の要件がある場合を除く)。
     Pricing tier | **汎用**、**Gen 5**、**2 仮想コア**、**5 GB**、**7 日**、**地理冗長** | 新しいサーバーのコンピューティング、ストレージ、およびバックアップ構成。 **[価格レベル]** を選択します。 次に、 **[汎用]** タブを選択します。*Gen 5*、"*4 仮想コア*"、*100 GB*、および "*7 日*" は、それぞれ **[コンピューティング世代]** 、 **[仮想コア]** 、 **[ストレージ]** 、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにします。 サーバー バックアップを geo 冗長ストレージで有効にするには、 **[バックアップ冗長オプション]** から **[地理冗長]** を選択します。 この価格レベルの選択を保存するには、 **[OK]** を選択します。 次のスクリーンショットは、これらの選択を示しています。
   
@@ -57,7 +57,7 @@ Azure Database for MySQL サーバーを作成するには、次の手順に従�
 
    ![サーバーの作成 - [価格レベル] ウィンドウ](./media/quickstart-create-mysql-server-database-using-azure-portal/3-pricing-tier.png)
 
-4. **[作成]** を選択して、サーバーをプロビジョニングします。 プロビジョニングには、最大 20 分かかる場合があります。
+4. **[確認および作成]** を選択して、サーバーをプロビジョニングします。 プロビジョニングには、最大 20 分かかる場合があります。
    
 5. デプロイ プロセスを監視するには、ツール バーの **[通知]** (ベル アイコン) を選択します。
    
@@ -171,7 +171,7 @@ Azure Database for MySQL サービスでは、サーバー レベルでファイ
 ## <a name="connect-to-the-server-by-using-the-mysql-workbench-gui-tool"></a>MySQL Workbench GUI ツールを使用したサーバーへの接続
 GUI ツールである MySQL Workbench を使用してサーバーに接続するには、次の手順を実行します。
 
-1.  クライアント コンピューターで MySQL Workbench アプリケーションを起動します。 MySQL Workbench は「[Download MySQL Workbench (MySQL Workbench のダウンロード)](https://dev.mysql.com/downloads/workbench/)」からダウンロードしてインストールできます。
+1.    クライアント コンピューターで MySQL Workbench アプリケーションを起動します。 MySQL Workbench は「[Download MySQL Workbench (MySQL Workbench のダウンロード)](https://dev.mysql.com/downloads/workbench/)」からダウンロードしてインストールできます。
 
 2. 新しい接続を作成します。 **[MySQL Connections]\(MySQL 接続\)** という見出しの横に表示されている正符号 (+) アイコンを選択します。
 
@@ -202,9 +202,9 @@ GUI ツールである MySQL Workbench を使用してサーバーに接続す�
 
 新しく作成したサーバーを含むリソース グループ全体を削除する手順は次のとおりです。
 
-1.  Azure Portal で目的のリソース グループを探します。 左側のメニューで **[リソース グループ]** を選択し、目的のリソース グループの名前 (この例の **myresourcegroup** など) を選択します。
+1.    Azure Portal で目的のリソース グループを探します。 左側のメニューで **[リソース グループ]** を選択し、目的のリソース グループの名前 (この例の **myresourcegroup** など) を選択します。
 
-2.  リソース グループ ページで **[削除]** を選択します。 次に、リソース グループの名前 (この例の **myresourcegroup** など) をボックスに入力して削除の確認を行い、 **[削除]** を選択します。
+2.    リソース グループ ページで **[削除]** を選択します。 次に、リソース グループの名前 (この例の **myresourcegroup** など) をボックスに入力して削除の確認を行い、 **[削除]** を選択します。
 
 新しく作成したサーバーだけを削除する手順は次のとおりです。
 

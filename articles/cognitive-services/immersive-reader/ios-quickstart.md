@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 9003eb85938cc3afaad7fef341b1ed2826e8fbc9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841611"
 ---
 # <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>クイック スタート:イマーシブ リーダーを起動する iOS アプリを作成する (Swift)

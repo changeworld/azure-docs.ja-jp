@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: 7c77e25d0dcabc49f2e6672645c6bc41e8662ec8
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75551031"
 ---
 # <a name="tutorial-install-azure-fxt-edge-filer"></a>チュートリアル:Azure FXT Edge Filer を設置する 

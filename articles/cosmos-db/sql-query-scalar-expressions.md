@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74870736"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB の SQL クエリでのスカラー式
@@ -54,7 +54,7 @@ ms.locfileid: "74870736"
   
 - `input_alias`  
   
-   `FROM` 句によって導入された `input_alias` で定義された値を表します。  
+   `input_alias` 句によって導入された `FROM` で定義された値を表します。  
   この値は、**undefined** ではないことが保証されます。入力内の **undefined** 値はスキップされます。  
   
 - `<scalar_expression>.property_name`  
@@ -139,7 +139,7 @@ ms.locfileid: "74870736"
     ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の概要](introduction.md)
 - [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)

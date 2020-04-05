@@ -13,10 +13,10 @@ ms.date: 12/07/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d6591cdb8f19484c87bb05f9007521adc34778f9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72298872"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
@@ -496,7 +496,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 
 1. アプリケーションを実行し、 **[BLOB の削除]** を選択して、`CloudBlobContainer.GetBlockBlobReference` メソッドの呼び出しで指定された BLOB を削除します。 *success!* というテキストが ブラウザーに表示されます。 ブラウザーの **[戻る]** ボタンを選択し、 **[BLOB の一覧表示]** を選択して、BLOB がコンテナーに存在しないことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ASP.NET を使用することで、Azure Storage に対して BLOB を格納、一覧表示、取得する方法について学習しました。 Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
 

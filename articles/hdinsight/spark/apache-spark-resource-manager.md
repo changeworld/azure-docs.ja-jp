@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 3aab89f86dcd48328771cd0fda03d1c9de4bc2c2
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75932101"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight での Apache Spark クラスターのリソースの管理
 
-[Apache Spark](https://spark.apache.org/) クラスターに関連付けられた [Apache Ambari](https://ambari.apache.org/) UI、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI、[Spark History Server](./apache-azure-spark-history-server.md) などのインターフェイスにアクセスする方法、および最適なパフォーマンスが得られるようにクラスター構成を調整する方法について説明します。
+[Apache Spark](https://ambari.apache.org/) クラスターに関連付けられた [Apache Ambari](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI、[Apache Hadoop YARN](./apache-azure-spark-history-server.md) UI、[Spark History Server](https://spark.apache.org/) などのインターフェイスにアクセスする方法、および最適なパフォーマンスが得られるようにクラスター構成を調整する方法について説明します。
 
 ## <a name="open-the-spark-history-server"></a>Spark History Server を開く
 
@@ -85,11 +85,11 @@ Spark Thrift サーバーを使用すると、Spark クラスターに JDBC/ODBC
 
 Spark Thrift サーバーでは、Spark の Dynamic Executor Allocation が使用されるため、`spark.executor.instances` は使用されません。 代わりに、Executor 数の指定に `spark.dynamicAllocation.maxExecutors` と `spark.dynamicAllocation.minExecutors` が使用されます。 Executor のサイズ変更には、構成パラメーターとして `spark.executor.cores` と `spark.executor.memory` が使用されます。 次の手順に示すように、これらのパラメーターは変更できます。
 
-* `spark.dynamicAllocation.maxExecutors`、`spark.dynamicAllocation.minExecutors` の各パラメーターを更新するには、**Advanced spark2-thrift-sparkconf** カテゴリを展開します。
+* **、** の各パラメーターを更新するには、`spark.dynamicAllocation.maxExecutors`Advanced spark2-thrift-sparkconf`spark.dynamicAllocation.minExecutors` カテゴリを展開します。
 
     ![Spark Thrift サーバーの構成](./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png "Configure Spark thrift server")
 
-* パラメーター `spark.executor.cores` および `spark.executor.memory` を更新するには、**Custom spark2-thrift-sparkconf** カテゴリを展開します。
+* パラメーター **および** を更新するには、`spark.executor.cores`Custom spark2-thrift-sparkconf`spark.executor.memory` カテゴリを展開します。
 
     ![Spark Thrift サーバーのパラメーターの構成](./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png "Spark Thrift サーバーのパラメーターの構成")
 
@@ -146,8 +146,8 @@ Spark の動的割り当てにより、Thrift サーバーから利用できる�
 
 ### <a name="for-data-analysts"></a>データ アナリスト向け
 
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と Machine Learning: HDInsight 上で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 * [HDInsight での Apache Spark を使用した Application Insight テレメトリ データ分析](apache-spark-analyze-application-insight-logs.md)
 

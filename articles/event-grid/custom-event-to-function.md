@@ -8,12 +8,12 @@ ms.author: babanisa
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: a9281ba1e2bf68da2318c32ab7037515697f92a5
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 5e38571cf84537fd722093b96cd277743e8ce80c
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708848"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80292165"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>クイック スタート:Event Grid を使用して Azure 関数にカスタム イベントをルーティングする
 
@@ -54,7 +54,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
     5. **[イベント スキーマ]** フィールドでは、既定値の **[イベント グリッド スキーマ]** をそのまま使用します。 
 
        ![[トピックの作成] ページ](./media/custom-event-to-function/create-custom-topic.png)
-    6. **作成** を選択します。 
+    6. **［作成］** を選択します 
 
 5. カスタム トピックが作成されると、成功の通知が表示されます。 **[リソース グループに移動]** を選択します。 
 
@@ -124,7 +124,7 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 ### <a name="azure-powershell"></a>Azure PowerShell
 2 番目の例では、PowerShell を使用して、同様の手順を実行します。
 
-1. Azure portal で **Cloud Shell** を選択します (または https://shell.azure.com/) にアクセスします)。 Cloud Shell ウィンドウの左上隅の **[PowerShell]** を選択します。 「Azure CLI」セクションにあるサンプルの **Cloud Shell** ウィンドウの画像を参照してください。
+1. Azure portal で **[Cloud Shell]** を選択します (または `https://shell.azure.com/` にアクセスします)。 Cloud Shell ウィンドウの左上隅の **[PowerShell]** を選択します。 「Azure CLI」セクションにあるサンプルの **Cloud Shell** ウィンドウの画像を参照してください。
 2. 次の変数を設定します。 コマンドをコピーして貼り付けた後、**トピック名**と**リソース グループ名**を更新してから、次のコマンドを実行します。
 
     ```powershell

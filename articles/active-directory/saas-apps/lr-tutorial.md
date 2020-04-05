@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と LoginRadius の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と LoginRadius の統合 | Microsoft Docs'
 description: Azure Active Directory と LoginRadius の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0087288bed06a09b3a78b190f3d60e8985d7ad29
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67097760"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>チュートリアル:Azure Active Directory と LoginRadius の統合
+# <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>チュートリアル: Azure Active Directory と LoginRadius の統合
 
 このチュートリアルでは、LoginRadius と Azure Active Directory (Azure AD) を統合する方法について説明します。
 LoginRadius と Azure AD の統合には、次の利点があります。
@@ -111,7 +111,7 @@ LoginRadius で Azure AD シングル サインオンを構成するには、次
     b. **[識別子 (エンティティ ID)]** ボックスに、`https://LoginRadius.hub.loginradius.com/` という URL を入力します。
 
     > [!NOTE]
-    > [サインオン URL] ページを開きます。 **[シングル サインオン]** タブをクリックし、[LoginRadius サポート チーム](mailto:support@loginradius.com)から提供された**プラグイン名**を入力した後、 **[サインイン]** ボタンをクリックします。ログインのために Azure AD ページにリダイレクトされます。
+    > [サインオン URL] ページを開きます。 **[シングル サインオン]** タブをクリックし、**LoginRadius サポート チーム**から提供された[プラグイン名](mailto:support@loginradius.com)を入力した後、 **[サインイン]** ボタンをクリックします。ログインのために Azure AD ページにリダイレクトされます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 

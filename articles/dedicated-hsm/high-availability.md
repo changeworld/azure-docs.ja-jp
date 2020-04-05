@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70882255"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure Dedicated HSM の高可用性
@@ -31,15 +31,15 @@ Azure Dedicated HSM は、Microsoft の高可用データセンターによっ�
 
 ![高可用性の図](media/high-availability/high-availability.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 デバイスのプロビジョニングやアプリケーションの設計、アプリケーションのデプロイ前に、高可用性やセキュリティなど、サービスのすべての主要概念を十分に理解しておくことをお勧めします。
-さらに詳しい概念レベルのトピックを次に示します。
+その他の概念レベルのトピックを次に示します。
 
 * [デプロイ アーキテクチャ](deployment-architecture.md)
 * [物理的なセキュリティ](physical-security.md)
 * [ネットワーク](networking.md)
 * [サポート可能性](supportability.md)
-* [監視](monitoring.md)
+* [Monitoring](monitoring.md)
 
 高可用性に対応する HSM デバイスの構成の詳細については、Gemalto カスタマー サポート ポータルの「Administrator Guides」(管理者ガイド) のセクション 6 を参照してください。

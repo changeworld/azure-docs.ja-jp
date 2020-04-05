@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
 ms.openlocfilehash: 80e8a5e5de1da2098d895e09b36fb209050743a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60743081"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>帯域幅/スループットのテスト (NTTTCP)
@@ -165,7 +165,7 @@ ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 </Endpoints> 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 結果によっては、シナリオに適合するように[マシンのネットワーク スループットの最適化](virtual-network-optimize-network-bandwidth.md)を実行できる余地がある場合があります。
 * [仮想マシンに帯域幅が割り当てられる方法](virtual-machine-network-throughput.md)に関するページを参照してください
 * 「[Azure Virtual Network についてよく寄せられる質問 (FAQ)](virtual-networks-faq.md)」を参照してください。

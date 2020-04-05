@@ -4,11 +4,11 @@ description: サービス構成には、サービスによる報酬の処理方�
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623728"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218573"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Personalizer の学習ループを構成する
 
@@ -26,7 +26,7 @@ Azure portal で、その Personalizer リソースの **[構成]** ページで
 > [!div class="mx-imgBorder"]
 > ![フィードバック ループの報酬値を構成する](media/settings/configure-model-reward-settings.png)
 
-|Value|目的|
+|値|目的|
 |--|--|
 |Reward wait time (報酬の待機時間)|Personalizer が、Rank 呼び出しに対する報酬値を収集する時間 (Rank 呼び出しの時点から) を設定します。 この値を設定するには、次のことを決定します。「Personalizer で報酬呼び出しをどの程度待機する必要があるか。」 このウィンドウの後に到着した報酬はログには記録されますが、学習には使用されません。|
 |Default reward (既定の報酬)|Rank 呼び出しに関連付けられた報酬の待機時間ウィンドウ中に Personalizer が報酬呼び出しを受信しなかった場合、Personalizer は既定の報酬を割り当てます。 既定では、またほとんどのシナリオでは、既定の報酬はゼロ (0) です。|

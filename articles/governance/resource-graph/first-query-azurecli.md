@@ -4,11 +4,11 @@ description: このクイックスタートでは、手順に従って、Azure C
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: e75152c720d94f084b43f855452e5e8ce4dc6bc8
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304131"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215640"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>クイック スタート:Azure CLI を使用して最初の Resource Graph クエリを実行します
 
@@ -80,7 +80,7 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
 
 最終的なクエリを複数回実行したとき、環境内で何も変更がないと仮定すると、返される結果は一貫性があり、想定どおりになります。つまり、結果は**名前**プロパティで並べ替えられますが、上位 5 件に制限されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Resource Graph 拡張機能を Azure CLI 環境から削除する場合は、次のコマンドを使用して行うことができます。
 
@@ -89,7 +89,7 @@ Resource Graph 拡張機能を Azure CLI 環境から削除する場合は、次
 az extension remove -n resource-graph
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Azure CLI 環境に Resource Graph 拡張機能を追加し、最初のクエリを実行しました。 Resource Graph 言語の詳細については、クエリ言語の詳細のページに進んでください。
 

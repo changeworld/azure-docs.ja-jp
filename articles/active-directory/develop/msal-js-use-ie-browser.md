@@ -14,13 +14,13 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: c4f3c4153e1404a5576427be7ef218f5a669387e
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76695859"
 ---
-# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer および Microsoft Edge ブラウザー (MSAL.js) に関する既知の問題
+# <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer および Microsoft Edge ブラウザーに関する既知の問題 (MSAL.js)
 
 JavaScript 用 Microsoft Authentication Library (MSAL.js) は、Internet Explorer ブラウザーで実行できるように、[JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) 向けに生成されています。 ただし、いくつかの点について知っておく必要があります。
 

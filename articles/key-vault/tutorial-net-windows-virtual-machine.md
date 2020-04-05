@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 9d3e9484fc6726241ff9bc1eafc56fce92d711cd
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1bf280ac8b9b01189c306f33e8fcc232a5cec8b6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198101"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472675"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>チュートリアル:.NET で Windows 仮想マシンを使用して Azure Key Vault を使用する
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 Windows、Mac、Linux:
   * [Git](https://git-scm.com/downloads)
-  * このチュートリアルでは、Azure CLI をローカルで実行する必要があります。 Azure CLI バージョン 2.0.4 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](https://review.docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+  * このチュートリアルでは、Azure CLI をローカルで実行する必要があります。 Azure CLI バージョン 2.0.4 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="about-managed-service-identity"></a>マネージド サービス ID について
 
@@ -85,7 +85,7 @@ az group create --name "<YourResourceGroupName>" --location "West US"
 
 * キー コンテナー名: 数字 (0-9)、文字 (a-z、A-Z)、ハイフン (-) のみを含んだ 3 から 24 文字の文字列
 * リソース グループ名
-* 場所: **[米国西部]**
+* 場所:**米国西部**
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -119,7 +119,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 システムによって割り当てられた ID が次のコードに表示されていることにご注意ください。 上記のコマンドの出力は次のようになります。 
 
-```azurecli
+```output
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}
@@ -159,9 +159,9 @@ dotnet run
 
 ### <a name="install-the-packages"></a>パッケージのインストール
 
- コンソール ウィンドウで、このクイックスタートで必要な .NET パッケージをインストールします。
+コンソール ウィンドウで、このクイックスタートで必要な .NET パッケージをインストールします。
 
- ```console
+```console
 dotnet add package System.IO;
 dotnet add package System.Net;
 dotnet add package System.Text;

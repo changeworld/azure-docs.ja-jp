@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1127a470a48660ffffa892d24c9f2991ec64c8e6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76716673"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Team Data Science Process (TDSP) の特徴選択
@@ -23,8 +23,8 @@ ms.locfileid: "76716673"
 
 特徴のエンジニアリングと選択は Team Data Science Process (TDSP) の一部です。TDSP の概要については、「[Team Data Science Process とは](overview.md)」を参照してください。 特徴エンジニアリングと特徴選択は、TDSP の**特徴の開発**ステップの一部です。
 
-* **特徴エンジニアリング**:このプロセスは、データに内在している既存の生の特徴から、関連する特徴を作成し、学習アルゴリズムの予測力を高めようとします。
-* **特徴選択**:このプロセスは、トレーニング問題の次元を削減しようとして、元のデータが持つ特徴のキーのサブセットを選択します。
+* **特徴エンジニアリング**: このプロセスは、データ内の既存の生の特徴から、関連する特徴を作成し、学習アルゴリズムの予測力を高めようとします。
+* **特徴選択**: このプロセスは、トレーニング問題の次元を削減するために、元のデータの特徴のキーのサブセットを選択します。
 
 通常、**特徴エンジニアリング**は追加の特徴を生成するために最初に適用され、その後、無関係な特徴、重複した特徴、関連性の高い特徴を排除するために**特徴選択**の手順が実行されます。
 

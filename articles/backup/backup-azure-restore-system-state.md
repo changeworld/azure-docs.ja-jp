@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77602458"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元

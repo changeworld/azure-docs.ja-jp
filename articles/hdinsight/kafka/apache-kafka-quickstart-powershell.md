@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.openlocfilehash: d14d8f38ff8a2bed01584d5c5fec56d254cede05
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73494745"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>クイック スタート:PowerShell を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
@@ -139,7 +139,7 @@ HDInsight クラスターの作成には最大で 20 分かかります。
 
 (クラスターの作成時または作成後のスケーリングで) 32 個を超えるワーカー ノードを使うことを計画している場合は、`-HeadNodeSize` パラメーターを使って、コア数が 8 個以上、RAM が 14 GB 以上の VM サイズを指定する必要があります。 ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
-## <a name="connect-to-the-cluster"></a>クラスターへの接続
+## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
 1. Kafka クラスターのプライマリ ヘッド ノードに接続するには、次のコマンドを使います。 `sshuser` を SSH ユーザー名で置き換えます。 `mykafka` を Kafka クラスターの名前に置き換えます
 
@@ -174,7 +174,7 @@ Welcome to Kafka on HDInsight.
 Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 ```
 
-## <a id="getkafkainfo"></a>Apache Zookeeper およびブローカーのホスト情報を取得する
+## <a name="get-the-apache-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>Apache Zookeeper およびブローカーのホスト情報を取得する
 
 Kafka を使うときは、*Apache Zookeeper* ホストと "*ブローカー*" ホストについて理解しておく必要があります。 これらのホストは、Kafka の API や、Kafka に付属するユーティリティの多くで使用されます。
 
@@ -317,7 +317,7 @@ Kafka では、トピック内に*レコード*が格納されます。 レコ�
 
 プロデューサーとコンシューマーをプログラムから作成することもできます。 この API の使用例については、[HDInsight における Apache Kafka Producer API と Consumer API](apache-kafka-producer-consumer-api.md) に関するドキュメントを参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使って、リソース グループ、HDInsight、すべての関連リソースを削除できます。
 
@@ -330,7 +330,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 > 
 > HDInsight クラスター上の Kafka を削除すると、Kafka に格納されているすべてのデータが削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Apache Kafka で Apache Spark を使用する](../hdinsight-apache-kafka-spark-structured-streaming.md)

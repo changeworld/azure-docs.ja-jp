@@ -17,10 +17,10 @@ ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: 8ca47912a73a9d6e0502bd7847720154775c631f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034666"
 ---
 # <a name="troubleshooting-shared-image-galleries"></a>共有イメージ ギャラリーのトラブルシューティング
@@ -28,6 +28,6 @@ ms.locfileid: "74034666"
 
 [!INCLUDE [virtual-machines-common-shared-image-troubleshooting](../../../includes/virtual-machines-common-shared-image-troubleshooting.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[共有イメージ ギャラリー](shared-image-galleries.md)に関するページを参照してください。

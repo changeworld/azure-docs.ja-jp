@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 448b14168e85e75b7ed19e189600186ce11c2902
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756421"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227267"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
 
@@ -62,7 +62,7 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
 
-## リソース トークン <a id="resource-tokens"></a>
+## <a name="resource-tokens"></a>リソース トークン <a id="resource-tokens"></a>
 
 リソース トークンは、データベース内のアプリケーション リソースへのアクセスを提供します。 リソース トークン:
 
@@ -95,7 +95,7 @@ Cosmos DB リソース トークンにより、付与されたアクセス許可
 
 ブローカー リソース トークンを生成するために使用する中間層サービスの例については、[ResourceTokenBroker アプリ](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)に関するページを参照してください。
 
-## ユーザー<a id="users"></a>
+## <a name="users"></a>ユーザー<a id="users"></a>
 
 Azure Cosmos DB ユーザーは、Cosmos データベースに関連付けらていれます。  各データベースには、0 人以上の Cosmos DB ユーザーを含めることができます。 次のコード サンプルは、[Azure Cosmos DB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement) を使用して Cosmos DB ユーザーを作成する方法を示しています。
 
@@ -109,12 +109,12 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > 各 Cosmos DB ユーザーには、ユーザーに関連付けられた[アクセス許可](#permissions)の一覧を取得するために使用できる ReadAsync() メソッドがあります。
 
-## アクセス許可<a id="permissions"></a>
+## <a name="permissions"></a>アクセス許可<a id="permissions"></a>
 
 アクセス許可リソースはユーザーに関連付けられ、コンテナーおよびパーティション キー レベルで割り当てられます。 各ユーザーには、0 個以上のアクセス許可を含めることができます。 アクセス許可リソースによって、ユーザーが特定のパーティション キー内の特定のコンテナーまたはデータにアクセスするときに必要なセキュリティ トークンへのアクセスが提供されます。 アクセス許可リソースによって提供できるアクセス レベルは 2 つあります。
 
-- All:ユーザーはリソースに対して完全なアクセス許可を持ちます。
-- Read:ユーザーは、リソースの内容の読み取りのみを行えますが、リソースへの書き込み、更新、または削除の操作を実行することはできません。
+- All: ユーザーはリソースに対して完全なアクセス許可を持ちます。
+- Read: ユーザーは、リソースの内容を読み取りのみができますが、リソースへの書き込み、更新、または削除の操作を実行することはできません。
 
 > [!NOTE]
 > ストアド プロシージャを実行するには、ストアド プロシージャを実行するコンテナーの All 権限を持つ必要があります。

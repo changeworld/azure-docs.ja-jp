@@ -5,10 +5,10 @@ ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: ad121d605e521704597471b446fa79cb43dfccc7
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255846"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Azure App Service 向けの Linux PHP アプリを構成する
@@ -112,7 +112,7 @@ PHP のインストールを変更する必要がある場合は、以下の手�
 > PHP のバージョンと現在の *php.ini* 構成を確認する最善の方法は、アプリで [phpinfo()](https://php.net/manual/function.phpinfo.php) を呼び出すことです。
 >
 
-### <a name="Customize-non-PHP_INI_SYSTEM directives"></a> 非 PHP_INI_SYSTEM ディレクティブをカスタマイズする
+### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a> 非 PHP_INI_SYSTEM ディレクティブをカスタマイズする
 
 PHP_INI_USER、PHP_INI_PERDIR、および PHP_INI_ALL ディレクティブ ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照) をカスタマイズするには、 *.htaccess* ファイルをアプリのルート ディレクトリに追加します。
 
@@ -132,7 +132,7 @@ php_value upload_max_filesize 10M
 
 *.htaccess* を使用する代わりに、アプリで [ini_set()](https://www.php.net/manual/function.ini-set.php) を使用して、これらの非 PHP_INI_SYSTEM ディレクティブをカスタマイズできます。
 
-### <a name="customize-php_ini_system-directives"></a>PHP_INI_SYSTEM ディレクティブをカスタマイズする
+### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>PHP_INI_SYSTEM ディレクティブをカスタマイズする
 
 PHP_INI_SYSTEM ディレクティブをカスタマイズするには ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照)、 *.htaccess* アプローチは使用できません。 App Service は、`PHP_INI_SCAN_DIR` アプリ設定を使用して、別のメカニズムを提供します。
 

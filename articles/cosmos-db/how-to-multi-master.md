@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 654baed649093add2aa62f4ba81bf6ce7c3e0df5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873643"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB を使用するアプリケーションでマルチマスターを構成する
@@ -20,7 +20,7 @@ ms.locfileid: "74873643"
 > [!Note]
 > 初期構成が単一書き込みリージョンである Cosmos アカウントを、ダウンタイムなしで複数書き込みリージョン (つまりマルチマスター) に構成できます。 詳細については、[複数書き込みリージョンの構成](how-to-manage-database-account.md#configure-multiple-write-regions)に関する記事を参照してください。
 
-## <a id="netv2"></a>.NET SDK v2
+## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
 
 アプリケーションでマルチマスターを有効にするには、`UseMultipleWriteLocations` を `true` に設定します。 また、`SetCurrentLocation` は、アプリケーションがデプロイされ、Azure Cosmos DB がレプリケートされているリージョンに設定します。
 
@@ -34,7 +34,7 @@ ConnectionPolicy policy = new ConnectionPolicy
 policy.SetCurrentLocation("West US 2");
 ```
 
-## <a id="netv3"></a>.NET SDK v3
+## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET SDK v3
 
 アプリケーションでマルチマスターを有効にするには、`ApplicationRegion` を、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
 
@@ -55,7 +55,7 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-s
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-## <a id="java"></a>Java Async SDK
+## <a name="java-async-sdk"></a><a id="java"></a>Java Async SDK
 
 アプリケーションでマルチマスターを有効にするには、`policy.setUsingMultipleWriteLocations(true)` を設定し、`policy.setPreferredLocations` は、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
 
@@ -72,7 +72,7 @@ AsyncDocumentClient client =
         .withConnectionPolicy(policy).build();
 ```
 
-## <a id="javascript"></a>Node.js、JavaScript、および TypeScript SDK
+## <a name="nodejs-javascript-and-typescript-sdks"></a><a id="javascript"></a>Node.js、JavaScript、および TypeScript SDK
 
 アプリケーションでマルチマスターを有効にするには、`connectionPolicy.UseMultipleWriteLocations` を `true` に設定します。 また、`connectionPolicy.PreferredLocations` は、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
 
@@ -89,7 +89,7 @@ const client = new CosmosClient({
 });
 ```
 
-## <a id="python"></a>Python SDK
+## <a name="python-sdk"></a><a id="python"></a>Python SDK
 
 アプリケーションでマルチマスターを有効にするには、`connection_policy.UseMultipleWriteLocations` を `true` に設定します。 また、`connection_policy.PreferredLocations` は、アプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに設定します。
 
@@ -102,7 +102,7 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
                                     'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Session)
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事を参照してください。
 

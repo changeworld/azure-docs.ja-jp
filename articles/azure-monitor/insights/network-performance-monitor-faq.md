@@ -7,10 +7,10 @@ author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
 ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79096217"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ

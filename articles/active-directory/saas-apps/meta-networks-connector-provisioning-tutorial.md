@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
 ms.openlocfilehash: 03c2dc6253fba5c2c7d59f3aefc5c1c663ed8248
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77061361"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>チュートリアル:Meta Networks Connector を構成して自動ユーザー プロビジョニングに対応させる

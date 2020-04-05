@@ -1,5 +1,5 @@
 ---
-title: パフォーマンスの調整:Hive、HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs
+title: 'パフォーマンスをチューニングする: Hive、HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs'
 description: Azure Data Lake Storage Gen2 の Hive パフォーマンス チューニング ガイドライン。
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -9,25 +9,25 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 66042568cede364c16302fbd85751de4113bbe0f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327581"
 ---
-# <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスの調整:Hive、HDInsight & Azure Data Lake Storage Gen2
+# <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスをチューニングする: Hive、HDInsight & Azure Data Lake Storage Gen2
 
 既定の設定は、多種多様なユース ケースで適切なパフォーマンスを提供するように設定されています。  I/O 集中型クエリの場合、Hive は Azure Data Lake Storage Gen2 でパフォーマンスが高くなるように調整できます。  
 
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Data Lake Storage Gen2 アカウント**。 アカウントの作成手順については、「[クイック スタート:Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください。
+* **Data Lake Storage Gen2 アカウント**。 アカウントの作成手順については、[クイック スタート:Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください。
 * Data Lake Storage Gen2 アカウントにアクセスできる **Azure HDInsight クラスター**。 「[Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)」をご覧ください
 * **HDInsight での Hive の実行**。  HDInsight の Hive ジョブを実行する方法については、[HDInsight での Hive の使用](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)に関する記事を参照してください。
 * **Data Lake Storage Gen2 のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、[Data Lake Storage Gen2 のパフォーマンス チューニング ガイダンス](data-lake-storage-performance-tuning-guidance.md)を参照してください。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 Data Lake Storage Gen2 のパフォーマンスを向上するためのチューニングに重要な設定を次に示します。
 
@@ -55,7 +55,7 @@ Data Lake Storage Gen2 のパフォーマンスを向上するためのチュー
 
 I/O 集中型のワークロードでは、Tez コンテナーのサイズの削減による並列処理の増加からメリットを得ることができます。 これにより、コンテナーの数が増え、コンカレンシーが高まります。  ただし、一部の Hive クエリでは、大量のメモリ が必要です (例: MapJoin)。  タスクに十分なメモリがない場合は、実行時にメモリ不足例外が発生します。  メモリ不足例外が発生した場合は、メモリを増やす必要があります。   
 
-実行される同時実行タスクの数または並列処理は、YARN メモリの総量によって制限されます。  YARN コンテナーの数は、実行できる同時実行タスクの数を決定します。  ノードごとの YARN メモリを確認するには、Ambari を参照することができます。  YARN に移動し、[Configs (構成)] タブを表示します。YARN メモリは、このウィンドウに表示されます。  
+実行される同時実行タスクの数または並列処理は、YARN メモリの総量によって制限されます。  YARN コンテナーの数は、実行できる同時実行タスクの数を決定します。  ノードごとの YARN メモリを確認するには、Ambari を参照することができます。  YARN に移動し、[Configs] \(構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  
 
         Total YARN memory = nodes * YARN memory per node
         # of YARN containers = Total YARN memory / Tez container size

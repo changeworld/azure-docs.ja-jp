@@ -9,14 +9,16 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: fd2e3a5ec7e69280b38d653009f551580618a541
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 6afd222730a9864e0b8edd681b1ce919b03c3be8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168949"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204292"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) 用 PowerShell モジュール
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 PowerShell モジュールを使用すると、ワークスペース、データセット、Web サービスなどの Studio (クラシック) のリソースと資産をプログラムで管理できます。
 
@@ -30,7 +32,7 @@ PowerShell モジュールを使用すると、ワークスペース、データ
 
 以下の[サポート表](#support-table)で、各モジュールでサポートされるリソースを確認してください。 
 
-## <a name="az-rm"></a> Azure PowerShell Az および AzureRM
+## <a name="azure-powershell-az-and-azurerm"></a><a name="az-rm"></a> Azure PowerShell Az および AzureRM
 
 Az は、現在、Azure とやり取りすることを目的とした PowerShell モジュールであり、AzureRM の以前のすべての機能が含まれています。 AzureRM は引き続きバグ修正プログラムを受信しますが、新しいコマンドレットや機能は受信しなくなります。  Az と AzureRM は、両方とも、**Azure Resource Manager** デプロイ モデルを使ってソリューションを管理します。 これらのリソースには、Studio (クラシック) ワークスペースと Studio (クラシック) の "新しい" Web サービスが含まれます。 
 
@@ -38,7 +40,7 @@ PowerShell クラシックを Az または AzureRM と共にインストール�
 
 Az の使用を開始するには、[Azure Az のインストール手順](https://docs.microsoft.com/powershell/azure/install-az-ps)に従ってください。
 
-## <a name="classic"></a> PowerShell クラシック
+## <a name="powershell-classic"></a><a name="classic"></a> PowerShell クラシック
 
 Studio (クラシック) の [PowerShell クラシック モジュール](https://aka.ms/amlps)を使用すると、**クラシック デプロイ モデル**を使用してデプロイされたリソースを管理することができます。 これらのリソースには、Studio (クラシック) ユーザーの資産、"従来の" Web サービス、および "従来の" Web サービス エンドポイントが含まれます。
 
@@ -48,7 +50,7 @@ PowerShell クラシックを初めて使用する方は、GitHub から[リリ�
 
 PowerShell クラシックを Az または AzureRM と共にインストールし、"新規" と "クラシック" 両方のリソースの種類をカバーすることができます。
 
-## <a name="support-table"></a> PowerShell サポート表
+## <a name="powershell-support-table"></a><a name="support-table"></a> PowerShell サポート表
 
 
 | | **Az** |  **PowerShell クラシック** |

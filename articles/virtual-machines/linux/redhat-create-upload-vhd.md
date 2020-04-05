@@ -3,7 +3,7 @@ title: Azure で使用するための Red Hat Enterprise Linux VHD の作成と�
 description: Red Hat Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
+author: gbowerman
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
-ms.author: mimckitt
-ms.openlocfilehash: a8a0c64a4a68827c77ba54e7f64ecefd7d1ab8af
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.author: guybo
+ms.openlocfilehash: cd0a71c60930e3eb659255a23cdb03360730f2a3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251623"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060729"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure 用の Red Hat ベースの仮想マシンの準備
 この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。 この記事で取り上げる RHEL のバージョンは 6.7+ と 7.1+ で、 準備対象のハイパーバイザーは Hyper-V、Kernel-based Virtual Machine (KVM)、VMware です。 Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)と [Azure での RHEL の実行](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)に関するページを参照してください。 RHEL イメージの作成を自動化する方法については、[Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview) を参照してください。

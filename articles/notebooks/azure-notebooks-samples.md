@@ -4,10 +4,10 @@ description: サンプルは、無料の Azure Notebooks クラウド サービ�
 ms.topic: sample
 ms.date: 01/11/2019
 ms.openlocfilehash: f67c37d0ffe0e90e13e05bb50ed6c523e0b3a14e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75646315"
 ---
 # <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>Azure Notebooks プレビューでサンプル ノートブックを検出して使用する

@@ -1,5 +1,5 @@
 ---
-title: Azure 課金情報へのアクセスの管理 | Microsoft Docs
+title: Azure 課金情報へのアクセスの管理
 description: チームのメンバーが Azure 課金情報にアクセスできるようにする方法について説明します。
 author: vikramdesai01
 ms.reviewer: amberb
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 5a4d725d88ee38bb68ea3da4f3e2a6a9bfc7e201
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: e7a6f105c6c8292e8e95b388d60dd95c3548dbb5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200695"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79237668"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Asure の課金情報へのアクセスの管理
 
@@ -44,7 +44,7 @@ Azure portal では自分のアカウントの課金情報へのアクセス権�
 ** EA のお客様の場合は、アカウント所有者は上記のロールをチームの他のユーザーに割り当てることができます。 ただし、これらのユーザーが課金情報を表示するには、エンタープライズ管理者は、Enterprise Portal で AO ビューの請求額を有効にする必要があります。
 
 
-### <a name="opt-in"></a> ユーザーに請求書のダウンロードを許可する
+### <a name="allow-users-to-download-invoices"></a><a name="opt-in"></a> ユーザーに請求書のダウンロードを許可する
 
 アカウント管理者は他のユーザーに適切なロールを割り当てた後、Azure portal 内で請求書をダウンロードするためのアクセスを有効にする必要があります。 2016 年 12 月よりも前の請求書を入手できるのはアカウント管理者のみです。
 

@@ -1,41 +1,33 @@
 ---
 title: Azure Stream Analytics の JavaScript ユーザー定義関数
-description: このチュートリアルでは、JavaScript ユーザー定義関数を使用して高度なクエリ機構を実行します
-author: rodrigoamicrosoft
+description: この記事では、Stream Analytics における JavaScript のユーザー定義関数について概説します。
+author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
-ms.date: 04/01/2018
-ms.openlocfilehash: feb0361b460f5b18b5a8aaa585332e2179023458
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.date: 03/23/2020
+ms.openlocfilehash: 58d750b47f3f6a2bcfbf23399ca249131e7876ae
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851162"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80235381"
 ---
-# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>チュートリアル:Azure Stream Analytics の JavaScript ユーザー定義関数
+# <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics での JavaScript ユーザー定義関数
  
 Azure Stream Analytics は、JavaScript で記述されたユーザー定義関数をサポートします。 JavaScript が提供する一連の豊富な **String**、**RegExp**、**Math**、**Array**、**Date** メソッドによって、Stream Analytics ジョブを伴う複雑なデータ変換の作成が容易になります。
 
-このチュートリアルでは、以下の内容を学習します。
+## <a name="overview"></a>概要
 
-> [!div class="checklist"]
-> * JavaScript ユーザー定義関数を定義する
-> * ポータルに関数を追加する
-> * 関数を実行するクエリを定義する
-
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-
-## <a name="javascript-user-defined-functions"></a>JavaScript ユーザー定義関数
 JavaScript ユーザー定義関数は、外部との接続を必要としない、ステートレスの計算のみのスカラー関数をサポートします。 関数の戻り値には、スカラー (単一) 値のみを指定できます。 ジョブに JavaScript ユーザー定義関数を追加した後は、組み込みのスカラー関数と同様に、クエリ内の任意の場所で関数を使用できます。
 
 ここでは、JavaScript ユーザー定義関数が役立つ可能性があるシナリオをいくつか示します。
 * 正規表現関数を用いた文字列の解析と操作 (例: **Regexp_Replace()** and **Regexp_Extract()** )
 * データのデコードとエンコード (例: バイナリから 16 進数への変換)
-* JavaScript の **Math** 関数を用いた数値計算の実行
-* 並び替え、結合、検索、塗りつぶしなどの配列操作の実行
+* JavaScript の **Math** 関数を用いた数値計算
+* 並べ替え、結合、検索、値の設定などの配列操作の実行
 
 Stream Analytics の JavaScript ユーザー定義関数では実行できないことを次に示します。
 * 外部の REST エンドポイントの呼び出し (IP の逆引き参照の実行、外部ソースからの参照データのプルなど)
@@ -44,41 +36,34 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
 
 関数定義において禁止されているわけではありませんが、**Date.GetDate()** や **Math.random()** などの関数の使用は避ける必要があります。 これらの関数では呼び出すたびに同じ結果が**返らず**、Azure Stream Analytics サービスは関数呼び出しや戻り値のジャーナルを保持しません。 関数が同じイベントで異なる結果を返す場合、ユーザーや Stream Analytics サービスによってジョブが再起動された際の再現性は保証されません。
 
-## <a name="add-a-javascript-user-defined-function-in-the-azure-portal"></a>Azure Portal での JavaScript ユーザー定義関数の追加
-既存の Stream Analytics ジョブの下で単一の JavaScript ユーザー定義関数を作成するには、次の手順に従います。
+## <a name="add-a-javascript-user-defined-function-to-your-job"></a>JavaScript のユーザー定義関数をジョブに追加する
 
 > [!NOTE]
 > これらの手順は、クラウド内で実行するように構成された Stream Analytics ジョブに対して有効です。 お使いの Stream Analytics ジョブが Azure IoT Edge 上で実行されるように構成されている場合は、代わりに Visual Studio を使用し、[C# を使ってユーザー定義関数を記述](stream-analytics-edge-csharp-udf.md)します。
 
-1.  Azure Portal で Stream Analytics ジョブを見つけます。
+Stream Analytics ジョブに JavaScript のユーザー定義関数を作成するには、 **[ジョブ トポロジ]** の **[関数]** を選択します。 次に、 **[+ 追加]** ドロップダウン メニューから **[JavaScript UDF]** を選択します。 
 
-2. **[ジョブ トポロジ]** 見出しの下にある **[関数]** を選択します。 空の関数一覧が表示されます。
+![JavaScript UDF を追加する](./media/javascript/stream-analytics-jsudf-add.png)
 
-3.  新しいユーザー定義関数を作成するには、 **[追加]** を選択します。
+さらに次のプロパティを入力して、 **[保存]** を選択する必要があります。
 
-4.  **[新しい関数]** ブレードの **[関数の種類]** で、 **[JavaScript]** を選択します。 既定の関数テンプレートがエディターに表示されます。
+|プロパティ|説明|
+|--------|-----------|
+|関数のエイリアス|クエリ内で関数を呼び出すための名前を入力します。|
+|出力の種類|JavaScript のユーザー定義関数によって Stream Analytics クエリに返される型。|
+|関数の定義|クエリから UDF が呼び出されるたびに実行される JavaScript 関数の実装。|
 
-5.  **[UDF alias (UDF エイリアス)]** に「**hex2Int**」と入力し、関数の実装を次のように変更します。
+## <a name="test-and-troubleshoot-javascript-udfs"></a>JavaScript UDF のテストとトラブルシューティング 
 
-    ```javascript
-    // Convert Hex value to integer.
-    function hex2Int(hexValue) {
-        return parseInt(hexValue, 16);
-    }
-    ```
+JavaScript UDF ロジックは、任意のブラウザーでテストおよびデバッグできます。 これらのユーザー定義関数のロジックのデバッグとテストは、現在、Stream Analytics ポータルではサポートされていません。 関数が想定どおりに動作したら、前述のように Stream Analytics ジョブに追加してから、クエリから直接呼び出すことができます。 JavaScript UDF を使ったクエリのロジックは、[Visual Studio 用 Stream Analytics ツール](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)を使用してテストすることができます。
 
-6.  **[保存]** を選択します。 作成した関数が関数一覧に表示されます。
-7.  新しい **hex2Int** 関数を選択し、関数の定義を確認します。 すべての関数で、関数のエイリアスにプレフィックス **UDF** が追加されています。 Stream Analytics クエリでは、関数を呼び出す際に*プレフィックスを含める*必要があります。 この場合は、**UDF.hex2Int** を呼び出します。
-
-## <a name="testing-javascript-udfs"></a>JavaScript UDF をテストする 
-JavaScript UDF ロジックは、任意のブラウザーでテストおよびデバッグできます。 これらのユーザー定義関数のロジックのデバッグとテストは、現在、Stream Analytics ポータルではサポートされていません。 関数が想定どおりに動作したら、前述のように Stream Analytics ジョブに追加してから、クエリから直接呼び出すことができます。
+JavaScript ランタイム エラーは致命的とみなされ、アクティビティ ログに表示されます。 Azure Portal からログを取得するには、ジョブに移動し、 **[アクティビティ ログ]** を選択します。
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>クエリでの JavaScript ユーザー定義関数の呼び出し
 
-1. クエリ エディターで、 **[ジョブ トポロジ]** 見出しの下にある **[クエリ]** を選択します。
-2.  クエリを編集し、次のようにユーザー定義関数を呼び出します。
+JavaScript 関数は、**udf** というプレフィックスで始まる関数のエイリアスを使用して、クエリから簡単に呼び出すことができます。 以下に示したのは、16 進値を整数に変換する JavaScript UDF を、Stream Analytics のクエリから呼び出す例です。
 
-    ```SQL
+```SQL
     SELECT
         time,
         UDF.hex2Int(offset) AS IntOffset
@@ -86,13 +71,10 @@ JavaScript UDF ロジックは、任意のブラウザーでテストおよび�
         output
     FROM
         InputStream
-    ```
-
-3.  サンプル データ ファイルをアップロードするには、ジョブ入力を右クリックします。
-4.  クエリをテストするには、 **[テスト]** を選択します。
-
+```
 
 ## <a name="supported-javascript-objects"></a>サポートされている JavaScript オブジェクト
+
 Azure Stream Analytics の JavaScript ユーザー定義関数は、JavaScript の標準のビルトイン オブジェクトをサポートしています。 これらのオブジェクトの一覧については、[グローバル オブジェクト](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)に関する記事を参照してください。
 
 ### <a name="stream-analytics-and-javascript-type-conversion"></a>Stream Analytics と JavaScript の型変換
@@ -109,9 +91,7 @@ Record | Object
 Array | Array
 NULL | [Null]
 
-
 JavaScript から Stream Analytics への変換を以下に示します。
-
 
 JavaScript | Stream Analytics
 --- | ---
@@ -123,14 +103,12 @@ Array | Array
 Null, Undefined | NULL
 他のすべての種類 (関数やエラーなど) | サポート対象外 (ランタイム エラーが発生します)
 
-JavaScript 言語は大文字と小文字を区別し、JavaScript コード内のオブジェクト フィールドの大文字と小文字は、受信データのフィールドの大文字と小文字に一致する必要があります。 互換性レベル 1.0 のジョブは SQL SELECT ステートメントのフィールドを小文字に変換することに注意してください。 互換性レベル 1.1 以降では、SELECT ステートメントのフィールドが SQL クエリでの指定と同じ大文字と小文字になります。
-
-## <a name="troubleshooting"></a>トラブルシューティング
-JavaScript ランタイム エラーは致命的とみなされ、アクティビティ ログに表示されます。 Azure Portal からログを取得するには、ジョブに移動し、 **[アクティビティ ログ]** を選択します。
+JavaScript 言語は大文字と小文字を区別し、JavaScript コード内のオブジェクト フィールドの大文字と小文字は、受信データのフィールドの大文字と小文字に一致する必要があります。 互換性レベル 1.0 のジョブでは SQL SELECT ステートメントのフィールドが小文字に変換されます。 互換性レベル 1.1 以降では、SELECT ステートメントのフィールドが SQL クエリでの指定と同じ大文字と小文字になります。
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>その他の JavaScript ユーザー定義関数のパターン
 
 ### <a name="write-nested-json-to-output"></a>入れ子になった JSON を記述して出力する
+
 Stream Analytics ジョブ出力を入力として使用し、その入力が JSON フォーマットを必要とするフォローアップ処理手順の場合は、JSON 文字列を記述して出力することができます。 次の例では **JSON.stringify()** 関数を呼び出し、入力のすべての名前/値のペアをまとめ、単一の文字列値として出力します。
 
 **JavaScript ユーザー定義関数の定義:**
@@ -154,19 +132,7 @@ FROM
     input PARTITION BY PARTITIONID
 ```
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合は、ジョブを停止し、必要なときに再起動することができます。 このジョブの使用を続けない場合は、以下の手順に従って、このクイック スタートで作成したすべてのリソースを削除してください。
-
-1. Azure Portal の左側のメニューで、 **[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。  
-2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
-
-## <a name="get-help"></a>ヘルプの参照
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)をご覧ください。
-
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、単純な JavaScript ユーザー定義関数を実行する Stream Analytics ジョブを作成しました。 Stream Analytics についてさらに学習するには、以下のリアルタイム シナリオの記事に進んでください。
-
-> [!div class="nextstepaction"]
-> [Azure Stream Analytics でのリアルタイム Twitter 感情分析](stream-analytics-twitter-sentiment-analysis-trends.md)
+* [Machine Learning UDF](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
+* [C# UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)

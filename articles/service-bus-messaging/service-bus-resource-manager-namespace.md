@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/21/2019
 ms.author: spelluru
 ms.openlocfilehash: 5febdd63ab6f854ca3244f8449f6f715a75e735f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264477"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Service Bus 名前空間の作成
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-service-bus-namespace"></a>Service Bus 名前空間の作成を作成する
 
-このクイック スタートでは、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)から[既存の Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/azuredeploy.json)を使用します。
+このクイック スタートでは、[Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/azuredeploy.json)から[既存の Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/)を使用します。
 
 [!code-json[create-azure-service-bus-namespace](~/quickstart-templates/101-servicebus-create-namespace/azuredeploy.json)]
 

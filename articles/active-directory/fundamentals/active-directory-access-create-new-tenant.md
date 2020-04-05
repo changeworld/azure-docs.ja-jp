@@ -10,21 +10,21 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: ajburnle
-ms.custom: fasttrack-edit
+ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de205beaf9800c2061cc41343b4153bd0e2b5dc7
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5f29d103ce1be426fb0b5c462cc1d831fefe87b6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024604"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80050004"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>クイック スタート:Azure Active Directory で新しいテナントを作成する
 Azure Active Directory (Azure AD) ポータルを使用して、組織の新しいテナントの作成など、すべての管理タスクを実行できます。 
 
 このクイック スタートでは、Azure portal と Azure Active Directory にアクセスする方法と、組織の基本的なテナントを作成する方法について説明します。
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>組織の新しいテナントを作成する
 Azure portal にサインインすると、組織の新しいテナントを作成できます。 新しいテナントは組織を表し、社内外のユーザー向けに特定インスタンスの Microsoft クラウド サービスを管理するために役立ちます。
@@ -51,7 +51,7 @@ Azure portal にサインインすると、組織の新しいテナントを作�
 
     - **[国またはリージョン]** ボックスは _[米国]_ オプションのままにします。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 新しいテナントは、ドメイン contoso.onmicrosoft.com で作成されます。
 

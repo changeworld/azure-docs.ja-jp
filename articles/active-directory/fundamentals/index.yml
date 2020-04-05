@@ -12,12 +12,12 @@ metadata:
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: c0f85c065a4334f41c7f52a05e2b885f97dde25f
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.openlocfilehash: 7a6692b4ed0314acc8200e3e364e9a045d33e799
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70124893"
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "80049676"
 landingContent:
 - title: Azure AD の概要
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
     links:
     - text: Azure AD のアーキテクチャ
       url: active-directory-architecture.md
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
@@ -63,5 +63,7 @@ landingContent:
     links:
     - text: ユーザーを追加または削除する
       url: add-users-azure-active-directory.md
+    - text: ユーザーにロールを割り当てる
+      url: active-directory-users-assign-role-azure-portal.md
     - text: ユーザーへのライセンスの割り当て
       url: license-users-groups.md

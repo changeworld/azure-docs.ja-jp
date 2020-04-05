@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.openlocfilehash: d723ffc4e94dcdcb63d74d65c55288015931adad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75413051"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>クイック スタート:.NET Core アプリと Azure Cache for Redis を使用する

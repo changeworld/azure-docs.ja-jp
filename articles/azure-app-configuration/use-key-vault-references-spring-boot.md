@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: d1fb963753577e9518d93262f9c9c7a1cf984005
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b6b6d10165eed331c397e17a18e382b095e1f74f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656009"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79216739"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>チュートリアル:Java Spring アプリで Key Vault 参照を使用する
 
@@ -110,7 +110,6 @@ App Configuration に格納されているその他のキーの場合と同様�
     "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
     "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
     "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "activeDirectoryGraphResourceId": "https://graph.windows.net/",
     "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
     "galleryEndpointUrl": "https://gallery.azure.com/",
     "managementEndpointUrl": "https://management.core.windows.net/"

@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:設計概念 | Microsoft Docs
+title: 'Azure AD Connect: 設計概念 |Microsoft Docs'
 description: このトピックでは、特定の実装設計の各領域について詳しく説明します。
 services: active-directory
 documentationcenter: ''
@@ -18,13 +18,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135740"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227903"
 ---
-# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect:設計概念
+# <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: 設計概念
 このドキュメントの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 このドキュメントでは特定の領域について詳しく説明しますが、これらの概念については、他のドキュメントでも簡単に説明しています。
 
 ## <a name="sourceanchor"></a>sourceAnchor
@@ -119,7 +119,7 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 
 ![カスタム インストール - sourceAnchor 構成](./media/plan-connect-design-concepts/consistencyGuid-02.png)
 
-| Setting | 説明 |
+| 設定 | 説明 |
 | --- | --- |
 | ソース アンカーの管理を Azure に任せる | Azure AD に属性を選択させる場合は、このオプションを選択します。 このオプションを選択した場合、Azure AD Connect ウィザードで[高速インストール時に使用される sourceAnchor 属性の選択ロジック](#express-installation)が同じように適用されます。 高速インストールと同様、どの属性がソース アンカー属性として選択されたかは、カスタム インストールの完了後、ウィザードに表示されます。 |
 | 特有の属性 | sourceAnchor 属性として既存の AD 属性を指定する場合は、このオプションを選択します。 |
@@ -140,7 +140,7 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 
 3. Azure AD の管理者資格情報を入力し、 **[次へ]** をクリックします。
 
-4. オンプレミスの Active Directory で ms-DS-ConsistencyGuid 属性の状態が Azure AD Connect ウィザードによって解析されます。 属性がディレクトリ内のどのオブジェクトにも構成されていない場合、Azure AD Connect はその属性を使用しているアプリケーションは現在なく、ソース アンカー属性として使用しても問題がないと判断します。 **[次へ]** をクリックして続行します。
+4. オンプレミスの Active Directory で ms-DS-ConsistencyGuid 属性の状態が Azure AD Connect ウィザードによって解析されます。 属性がディレクトリ内のどのオブジェクトにも構成されていない場合、Azure AD Connect はその属性を使用しているアプリケーションは現在なく、ソース アンカー属性として使用しても問題がないと判断します。 **[次へ]** をクリックして次に進みます。
 
    ![既存のデプロイで ConsistencyGuid を有効にする - 手順 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
@@ -197,5 +197,5 @@ John は、contoso.com に属するユーザーです。 Azure AD ディレク�
 
 ルーティング不可能なドメイン環境で実行している場合、その環境が Azure AD Connect で検出され、簡単設定を続行するかどうかについて適切な警告が表示されます。 ルーティング不可能なドメインで運用している場合は、ユーザーの UPN でもルーティング不可能なサフィックスが使用されている可能性があります。 たとえば、contoso.local で運用している場合、Azure AD Connect では簡単設定を使用するのではなく、カスタム設定を使用するように推奨されます。 カスタム設定を使用すると、ユーザーの Azure AD への同期後に Azure へのサインインで UPN として使用する属性を指定できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

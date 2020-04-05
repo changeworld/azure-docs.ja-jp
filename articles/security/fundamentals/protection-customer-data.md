@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 741cbc82f2ed3ffffb553b146d981b4e35a273f4
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726678"
 ---
 # <a name="azure-customer-data-protection"></a>Azure での顧客データの保護   
@@ -45,7 +45,7 @@ Azure では、既定およびお客様のオプションの両方で、堅牢�
 - お客様とクラウド間での通信
 - Azure システムとデータセンター間の内部的な通信
 
-**暗号化**: ストレージ内のデータおよび転送時のデータの暗号化は、データの機密性および整合性を保証するためのベスト プラクティスとして、お客様がデプロイできます。 お客様は、SSL を使用してインターネットからの通信と Azure がホストする VM 間の通信でさえも保護するように、Azure クラウド サービスを簡単に構成できます。
+**暗号化**:ストレージ内のデータおよび転送時のデータの暗号化は、データの機密性および整合性を保証するためのベスト プラクティスとして、お客様がデプロイできます。 お客様は、SSL を使用してインターネットからの通信と Azure がホストする VM 間の通信でさえも保護するように、Azure クラウド サービスを簡単に構成できます。
 
 **[Data redundancy]\(データの冗長性\)** :データセンターへのサイバー攻撃や物理的破損がある場合に、Microsoft はデータが確実に保護されることを支援します。 お客様には、次の選択肢があります。
 
@@ -73,10 +73,10 @@ Azure では、お客様は、データをエクスポートして製品から�
 ## <a name="electronic-discovery-e-discovery"></a>電子情報開示 (E-Discovery)
 Azure のお客様は、Azure サービスの使用において電子情報開示の要件に準拠する責任があります。 Azure のお客様が、顧客データを保存する必要がある場合、データをローカルにエクスポートしてデータを保存できます。 さらに、お客様は、Azure カスタマー サポート部門からのデータのエクスポートを要求できます。 お客様によるデータのエクスポートを許可するだけでなく、Azure では、詳細なログ記録と監視を内部的に実施します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Microsoft が提供する Azure アーキテクチャの保護の詳細については、以下を参照してください。
 
-- [Azure ファシリティ、プレミス、および物理的なセキュリティ](physical-security.md)
+- [Azure の施設、建物、および物理上のセキュリティ](physical-security.md)
 - [Azure インフラストラクチャの可用性](infrastructure-availability.md)
 - [Azure 情報システムのコンポーネントと境界](infrastructure-components.md)
 - [Azure ネットワーク アーキテクチャ](infrastructure-network.md)

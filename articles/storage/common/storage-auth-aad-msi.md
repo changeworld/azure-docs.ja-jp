@@ -11,11 +11,11 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: f3bac0d47a53da1ec4d1fa08b5f0933f5f65dc56
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965776"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228351"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する
 
@@ -47,7 +47,7 @@ Azure ID クライアント ライブラリの利点は、アプリケーショ�
 
 ### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>データにアクセスするためのロールベースのアクセス制御 (RBAC) ロールを割り当てる
 
-Azure AD セキュリティ プリンシパルが Blob またはキュー データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での Blob またはキュー データへのアクセスを許可する RBAC ロールをセキュリティ プリンシパルに割り当てる必要があります。 RBAC 経由でのアクセス許可の割り当てについては、「[Azure Active Directory を使用して Azure Blob およびキューへのアクセスを承認します](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)」にある「**アクセス権に RBAC ロールを割り当てる**」というタイトルのセクションを参照してください。
+Azure AD セキュリティ プリンシパルが Blob またはキュー データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での Blob またはキュー データへのアクセスを許可する RBAC ロールをセキュリティ プリンシパルに割り当てる必要があります。 RBAC 経由でのアクセス許可の割り当てについては、「**Azure Active Directory を使用して Azure Blob およびキューへのアクセスを承認します**」にある「[アクセス権に RBAC ロールを割り当てる](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)」というタイトルのセクションを参照してください。
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>開発環境でユーザーを認証する
 
@@ -106,7 +106,7 @@ Azure ID クライアント ライブラリでは、実行時に 3 つの環境�
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET コード例: ブロック BLOB を作成する
+## <a name="net-code-example-create-a-block-blob"></a>.NET コード例: ブロック BLOB の作成
 
 Azure ID と Azure Storage クライアント ライブラリを使用するために、次の `using` ディレクティブをコードに追加します。
 

@@ -9,10 +9,10 @@ ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: a58e408feadd10e6dbc9d6878b82a4d045918ea6
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68781469"
 ---
 ## <a name="access-the-virtual-machine"></a>仮想マシンにアクセスする

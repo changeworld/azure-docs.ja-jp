@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: dapine
 ms.openlocfilehash: dd5a531e4a979cba9c2a766c7774762a0427ad02
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79037322"
 ---
 # <a name="configure-speech-service-containers"></a>Speech Service コンテナーを構成する
@@ -115,7 +115,7 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 
 { _<引数名>_ } はお客様独自の値に置き換えてください。
 
-| プレースホルダー | Value | 形式または例 |
+| プレースホルダー | 値 | 形式または例 |
 | ----------- | ----- | ----------------- |
 | **{API_KEY}** | Azure `Speech` の [キー] ページの `Speech` リソースのエンドポイント キー。   | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`                                                                                  |
 | **{ENDPOINT_URI}** | 課金エンドポイントの値は、Azure `Speech` の [概要] ページで確認できます。 | 明示的な例が必要であれば、[必須パラメーターの収集](speech-container-howto.md#gathering-required-parameters)に関するページを参照してください。 |

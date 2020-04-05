@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: mjbrown
 ms.openlocfilehash: 325840f8961fac49e599f1aa567ad8d4137820b4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705804"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227287"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure CLI を使用した Azure Cosmos リソースの管理
 
@@ -133,7 +133,7 @@ az cosmosdb failover-priority-change --ids $accountId \
     --failover-policies 'East US 2'=0 'South Central US'=1 'West US 2'=2
 ```
 
-## <a id="list-account-keys"></a> すべてのアカウント キーを一覧表示する
+## <a name="list-all-account-keys"></a><a id="list-account-keys"></a> すべてのアカウント キーを一覧表示する
 
 Cosmos アカウントのすべてのキーを取得します。
 

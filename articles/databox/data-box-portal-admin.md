@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987470"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229783"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Azure portal を使用して Azure Data Box および Azure Data Box Heavy を管理する
 
@@ -214,6 +214,6 @@ Data Box の注文が完了すると、デバイス ディスク上のデータ�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Data Box および Data Box Heavy の問題のトラブルシューティング](data-box-troubleshoot.md)に関するページを参照してください。

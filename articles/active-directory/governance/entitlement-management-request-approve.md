@@ -16,12 +16,12 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 634e3532e13fcba5c9b802bd77c9530c0a831eb8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 20ec63efe16f1120ca6e7d07c8917d8ad2b3a0e0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422516"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230315"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス要求を承認または拒否する
 
@@ -43,7 +43,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 メールが届いていない場合は、これらの手順に従って、承認待ちのアクセス要求を見つけることができます。
 
-1. [https://myaccess.microsoft.com](https://myaccess.microsoft.com) でマイ アクセス ポータルにサインインします。
+1. [https://myaccess.microsoft.com](https://myaccess.microsoft.com) でマイ アクセス ポータルにサインインします。  (米国政府の場合、マイ アクセス ポータルのリンクのドメインは `myaccess.microsoft.us` になります)。
 
 1. 左側のニューで、 **[承認]** をクリックして、承認待ちのアクセス要求のリストを表示します。
 

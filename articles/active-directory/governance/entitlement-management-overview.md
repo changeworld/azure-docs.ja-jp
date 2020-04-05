@@ -3,7 +3,7 @@ title: エンタイトルメント管理とは - Azure AD
 description: Azure Active Directory のエンタイトルメント管理と、それを使用してグループ、アプリケーション、SharePoint Online サイトへの内部および外部ユーザーのアクセスを管理する方法の概要を説明します。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/10/2020
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d1faf501aff8960a4b1961b34164be07b1d685d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 3deb87fec8241ad6126314f3f6ce5fb9600ad1fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932477"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128563"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理とは
 

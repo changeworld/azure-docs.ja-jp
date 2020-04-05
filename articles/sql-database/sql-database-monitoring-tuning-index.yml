@@ -3,7 +3,7 @@ title: Azure SQL Database の監視とパフォーマンスのチューニング
 summary: Azure SQL Database には、データベースを監視してそのパフォーマンスを向上させるためにメトリックと診断情報を収集するのに役立つツールが用意されています。
 metadata:
   title: Azure SQL Database の監視とパフォーマンスのチューニング
-  description: Azure SQL Database には、データベースを監視してそのパフォーマンスを向上させるためにメトリックと診断情報を収集するのに役立つツールが用意されています。
+  description: メトリックと診断の収集やデータベースのパフォーマンス向上に役立つ、Azure SQL Database の監視およびパフォーマンス チューニング ツールについて説明します。
   ms.service: sql-database
   ms.subservice: performance
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: CarlRabeler
   ms.author: carlrab
   ms.date: 03/10/2020
-  ms.openlocfilehash: 43f74ea126ab7e028b39a86e2eb1edad4cae41a2
-  ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+  ms.openlocfilehash: bc2c2a64cfce8bde6f04835bf090b632b8839a6f
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/13/2020
-  ms.locfileid: "79208905"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80373110"
 landingContent:
 - title: 監視とパフォーマンスのチューニングについて
   linkLists:

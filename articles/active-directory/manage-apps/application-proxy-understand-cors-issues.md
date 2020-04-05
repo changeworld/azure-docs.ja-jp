@@ -12,10 +12,10 @@ ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
 ms.openlocfilehash: c49535ad11139ac5145d4f283374bf9cc6d71f52
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72025794"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory アプリケーション プロキシの CORS の問題を理解して解決する
@@ -64,7 +64,7 @@ CORSWebClient アプリは、オンプレミスでホストしたときは動作
 
 上記の CORS の問題は、複数ある方法のいずれかで解決できます。
 
-### <a name="option-1-set-up-a-custom-domain"></a>オプション 1:カスタム ドメインの設定
+### <a name="option-1-set-up-a-custom-domain"></a>オプション 1: カスタム ドメインの設定
 
 アプリのオリジン、コード、またはヘッダーを変更する必要なしに、同じオリジンから公開するには、Azure AD アプリケーション プロキシの[カスタム ドメイン](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains)を使用します。 
 
@@ -85,7 +85,7 @@ CORSWebClient アプリは、オンプレミスでホストしたときは動作
 - https:\//corswebclient-contoso.msappproxy.net/CORSWebService
 - https:\//corswebclient-contoso.msappproxy.net/CORSWebClient
 
-### <a name="option-3-update-http-headers"></a>オプション 3: HTTP ヘッダーを更新する
+### <a name="option-3-update-http-headers"></a>オプション 3:HTTP ヘッダーを更新する
 
 オリジン要求に一致するように、Web サービス上でカスタム HTTP 応答ヘッダーを追加します。 インターネット インフォメーション サービス (IIS) で実行されている Web サイトの場合、IIS マネージャーを使用してヘッダーを変更します。
 
@@ -106,11 +106,11 @@ X-AspNet-Version:4.0.30319\
 X-Powered-By:ASP.NET\
 Content-Length:17
 
-### <a name="option-4-modify-the-app"></a>オプション 4: アプリを変更する
+### <a name="option-4-modify-the-app"></a>オプション 4:アプリを変更する
 
 適切な値と共に Access-Control-Allow-Origin ヘッダーを追加することによって、CORS をサポートするようにアプリを変更することができます。 ヘッダーを追加する方法は、アプリのコードの言語によって異なります。 最も多くの作業量が必要なため、コードの変更は最もお勧めしない選択肢です。
 
-### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>オプション 5: アクセス トークンの有効期間を延長する
+### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>オプション 5:アクセス トークンの有効期間を延長する
 
 アプリが認証のために *login.microsoftonline.com* にリダイレクトし、アクセス トークンの期限が切れた場合など、一部の CORS の問題は解決できません。 このとき、CORS の呼び出しは失敗します。 このシナリオの回避策は、ユーザーのセッション中に期限が切れるのを防ぐために、アクセス トークンの有効期間を延長することです。 このための手順については、[Azure AD の構成可能なトークン有効期間](../develop/active-directory-configurable-token-lifetimes.md)に関する記事を参照してください。
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: f422d1dd6c76d78448ae4fb1012a5dae8d6108b3
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 63c5f068adab58c901acf5fd26261d57e1183f0d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78299076"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481519"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメインを構成および管理するための管理 VM を作成する
 
@@ -89,6 +89,7 @@ Azure AD DS のマネージド ドメインはロックダウンされており�
 
     ![Azure portal から Bastion を使用して Windows 仮想マシンに接続する](./media/join-windows-vm/connect-to-vm.png)
 
+    [Azure Bastion ホスト (現在プレビュー段階) を作成、使用][azure-bastion]して、TLS を介した Azure portal 経由のアクセスのみを許可することもできます。
 1. VM の資格情報を入力し、 **[接続]** を選択します。
 
    ![Azure portal から Bastion ホストを使用して接続する](./media/join-windows-vm/connect-to-bastion.png)

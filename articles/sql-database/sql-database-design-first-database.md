@@ -10,10 +10,10 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.openlocfilehash: 9764c4bc794eb8d133270b762fa2bca30a056fea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75459630"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>チュートリアル:SSMS を使用して Azure SQL Database 内の単一データベースでリレーショナル データベースを設計する
@@ -33,7 +33,7 @@ Azure SQL データベースは、Microsoft Cloud (Azure) のリレーショナ�
 > [!TIP]
 > 次の Microsoft Learn モジュールは、単純なデータベースの作成など、[Azure SQL Database に対してクエリを行う ASP.NET アプリケーションを開発および構成する](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)方法を無料で学習するのに役立ちます。
 > [!NOTE]
-> このチュートリアルでは、単一データベースを使用しています。 エラスティック プールでプールされたデータベース、またはマネージド インスタンスのインスタンス データベースを使用することもできます。 マネージド インスタンスへの接続については、以下のマネージド インスタンスのクイック スタートを参照してください。[クイック スタート:「Azure SQL Database Managed Instance に接続するように Azure VM を構成する」](sql-database-managed-instance-configure-vm.md)および[「クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する」](sql-database-managed-instance-configure-p2s.md)。
+> このチュートリアルでは、単一データベースを使用しています。 エラスティック プールでプールされたデータベース、またはマネージド インスタンスのインスタンス データベースを使用することもできます。 マネージド インスタンスへの接続については、以下のマネージド インスタンスのクイック スタートを参照してください。[クイック スタート: 「Azure SQL Database Managed Instance に接続するように Azure VM を構成する」](sql-database-managed-instance-configure-vm.md)および[「クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する」](sql-database-managed-instance-configure-p2s.md)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ Azure SQL データベースは、Microsoft Cloud (Azure) のリレーショナ�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com/) にサインインする
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-blank-single-database"></a>空の単一データベースを作成する
 
@@ -73,7 +73,7 @@ Azure SQL Database の単一データベースは、定義済みの一連のコ�
     | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
     | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[データベース識別子](/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
     | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が含まれていること、また、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が使用されていることが必要です。 |
-    | **Location** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
+    | **場所** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
 
     ![データベース サーバーの作成](./media/sql-database-design-first-database/create-database-server.png)
 
@@ -141,7 +141,7 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
 
     ![サーバー上のデータベースに接続](./media/sql-database-design-first-database/options-connect-to-db.png)  
 
-4. **[接続]** をクリックします。 SSMS で**オブジェクト エクスプローラー** ウィンドウが開きます。
+4. **[Connect]** をクリックします。 SSMS で**オブジェクト エクスプローラー** ウィンドウが開きます。
 
 5. **オブジェクト エクスプローラー**で、**Databases**、*yourDatabase* の順に展開して、サンプル データベース内のオブジェクトを表示します。
 

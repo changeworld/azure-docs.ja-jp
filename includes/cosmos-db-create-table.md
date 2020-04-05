@@ -9,10 +9,10 @@ ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 5743d785afb87aef6b3a89af6dc8eb18f66b164d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68854633"
 ---
 Azure Portal でデータ エクスプローラー ツールを使ってデータベースとテーブルを作成できるようになりました。 
@@ -25,7 +25,7 @@ Azure Portal でデータ エクスプローラー ツールを使ってデー�
 
 2. **[テーブルの追加]** ページで、新しいテーブルの設定を入力します。
 
-    Setting|推奨値|説明
+    設定|推奨値|説明
     ---|---|---
     テーブル ID|sample-table|新しいテーブルの ID。 テーブル名の文字要件はデータベース ID と同じです。 データベース名は、1 - 255 文字である必要があります。また、`/ \ # ?` は使えず、末尾にスペースを入れることもできません。
     スループット|400 RU|スループットを 400 要求ユニット (RU/秒) に変更します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。

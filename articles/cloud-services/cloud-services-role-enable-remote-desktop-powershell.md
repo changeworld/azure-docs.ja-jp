@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: e4e8dca6c5359e865e6a17fc47fe47802b0ee9e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75386121"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>PowerShell を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
@@ -96,7 +96,7 @@ Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallCo
 > [!NOTE]
 > 拡張機能の構成を完全に削除するには、 *UninstallConfiguration* パラメーターを使用して **Remove** コマンドレットを呼び出す必要があります。
 >
-> **UninstallConfiguration** パラメーターを使用すると、サービスに適用されている拡張機能の構成がアンインストールされます。 拡張機能の構成は、いずれもサービスの構成に関連付けられています。 **UninstallConfiguration** を使用せずに *Remove* コマンドレットを呼び出すと、拡張機能の構成から<mark>デプロイ</mark>との関連付けが解除されるため、実質的には拡張機能が削除されることになります。 ただし、拡張機能の構成は、サービスに関連付けられたままになります。
+> **UninstallConfiguration** パラメーターを使用すると、サービスに適用されている拡張機能の構成がアンインストールされます。 拡張機能の構成は、いずれもサービスの構成に関連付けられています。 *UninstallConfiguration* を使用せずに **Remove** コマンドレットを呼び出すと、拡張機能の構成から<mark>デプロイ</mark>との関連付けが解除されるため、実質的には拡張機能が削除されることになります。 ただし、拡張機能の構成は、サービスに関連付けられたままになります。
 
 ## <a name="additional-resources"></a>その他のリソース
 

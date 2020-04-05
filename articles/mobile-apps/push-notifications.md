@@ -1,18 +1,18 @@
 ---
 title: Visual Studio App Center と Azure Notification Hubs によるモバイル アプリのプッシュ通知の重要性
 description: モバイル アプリケーション ユーザーとの連携に使用できる Visual Studio App Center などのサービスについて説明します。
-author: elamalani
+author: codemillmatt
 ms.assetid: 12bbb070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 1717bf6da849218f60bae7dafca20cb304286976
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: bc59857cdb843dfff54e69f2226f13cfe70df8f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453144"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235324"
 ---
 # <a name="engage-with-your-application-users-by-sending-push-notifications"></a>プッシュ通知の送信でアプリケーション ユーザーとつながる
 
@@ -52,7 +52,7 @@ ms.locfileid: "75453144"
 - iOS、Android、macOS、Xamarin、React Native、Unity、および Cordova のプラットフォーム サポートを利用できます。
 
 **参照**
-- [Visual Studio App Center でのサインアップ](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
+- [Visual Studio App Center にサインアップする](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
 - [App Center Push を使ってみる](/appcenter/push/)
 
 ## <a name="azure-notification-hubs"></a>Azure 通知ハブ

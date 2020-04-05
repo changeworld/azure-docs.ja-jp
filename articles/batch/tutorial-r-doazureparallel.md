@@ -12,13 +12,13 @@ ms.date: 01/23/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 64daede5de4f2d1bbc69c65f88fe5b5875a0a5b8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77025845"
 ---
-# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>チュートリアル:Azure Batch で並列 R シミュレーションを実行する 
+# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>チュートリアル: Azure Batch での並列 R シミュレーションの実行 
 
 R セッションから直接 Azure Batch を使用できる軽量な R パッケージである [doAzureParallel](https://www.github.com/Azure/doAzureParallel) を使用して、大規模な並列 R ワークロードを実行します。 doAzureParallel パッケージは、一般的な [foreach](https://cran.r-project.org/web/packages/foreach/index.html) R パッケージに基づいて作成されています。 doAzureParallel は foreach ループの各イテレーションを取得し、それを Azure Batch タスクとして送信します。
 
@@ -40,7 +40,7 @@ R セッションから直接 Azure Batch を使用できる軽量な R パッ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>doAzureParallel のインストール
@@ -108,7 +108,7 @@ generateClusterConfig("cluster.json")
 このチュートリアルでは、構成を次のように変更します。
 
 * `maxTasksPerNode` を *2* に増やし、各ノード上で両方のコアを活用できるようにします。
-* `dedicatedNodes` を *0* に設定し、Batch で使用できる低優先度 VM を試すことができるようにします。 `lowPriorityNodes` の `min` を *5* に設定します。 `max` を *10* に設定するか、必要に応じてより小さい数を選択します。 
+* `dedicatedNodes` を *0* に設定し、Batch で使用できる低優先度 VM を試すことができるようにします。 `min` の `lowPriorityNodes` を *5* に設定します。 `max` を *10* に設定するか、必要に応じてより小さい数を選択します。 
 
 残りの設定は既定値のままにして、ファイルを保存します。 これは次のようになります。
 
@@ -214,7 +214,7 @@ difftime(end_s, start_s)
 ```
 
 
-次に、`%dopar%` キーワードと共に `foreach` を使用してコードを実行し、Azure で 1,000 万件のシミュレーションを実行するのにかかる時間を比較します。 Batch でシミュレーションを並列化するために、10 万件のシミュレーションの 100 イテレーションを実行します。
+次に、`foreach` キーワードと共に `%dopar%` を使用してコードを実行し、Azure で 1,000 万件のシミュレーションを実行するのにかかる時間を比較します。 Batch でシミュレーションを並列化するために、10 万件のシミュレーションの 100 イテレーションを実行します。
 
 ```R
 # Optimize runtime. Chunking allows running multiple iterations on a single R instance.

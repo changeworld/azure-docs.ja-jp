@@ -4,11 +4,11 @@ description: Azure Service Fabric で初めての Windows コンテナー アプ
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906252"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229315"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 
@@ -37,8 +37,8 @@ ms.locfileid: "76906252"
   
 クラスターに必要な Windows Server with Containers のバージョンを確認するには、開発用コンピューターで Windows コマンド プロンプトから `ver` コマンドを実行します。
 
-* バージョンに *x.x.14323.x* が含まれている場合は、[クラスターの作成](service-fabric-cluster-creation-via-portal.md) 時にオペレーティング システムに *WindowsServer 2016-Datacenter-with-Containers* を選択します。
-  * バージョンに *x.x.16299.x* が含まれている場合は、[クラスターの作成](service-fabric-cluster-creation-via-portal.md) 時にオペレーティング システムに *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* を選択します。
+* バージョンに *x.x.14323.x* が含まれている場合は、*クラスターの作成* 時にオペレーティング システムに [WindowsServer 2016-Datacenter-with-Containers](service-fabric-cluster-creation-via-portal.md) を選択します。
+  * バージョンに *x.x.16299.x* が含まれている場合は、*クラスターの作成* 時にオペレーティング システムに [WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers](service-fabric-cluster-creation-via-portal.md) を選択します。
 
 * Azure Container Registry のレジストリ。Azure サブスクリプションに[コンテナー レジストリを作成します](../container-registry/container-registry-get-started-portal.md)。
 
@@ -270,7 +270,7 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
    >
 
 ## <a name="configure-resource-governance"></a>リソース管理を構成する
-[リソース管理](service-fabric-resource-governance.md)は、コンテナーがホスト上で使用できるリソースを制限します。 `ResourceGovernancePolicy` 要素はアプリケーション マニフェストで指定され、サービス コード パッケージのリソース制限を宣言するために使用されます。 次のリソースのリソースの制限を設定できます。Memory、MemorySwap、CpuShares (CPU の相対的な重み)、MemoryReservationInMB、BlkioWeight (BlockIO の相対的な重み)。 この例では、Guest1Pkg というサービス パッケージが配置されたクラスター ノード上で 1 つのコアを取得しています。 Memory の制限は絶対的であるため、コード パッケージのメモリは両方とも 1,024 MB に制限されます (ソフト保証予約は同じです)。 コード パッケージ (コンテナーまたはプロセス) は、この制限を超えてメモリを割り当てることはできず、割り当てようとするとメモリ不足の例外が発生します。 リソース制限の強制を機能させるには、サービス パッケージ内のすべてのコード パッケージでメモリ制限を指定する必要があります。
+[リソース管理](service-fabric-resource-governance.md)は、コンテナーがホスト上で使用できるリソースを制限します。 `ResourceGovernancePolicy` 要素はアプリケーション マニフェストで指定され、サービス コード パッケージのリソース制限を宣言するために使用されます。 リソースの制限は、Memory、MemorySwap、CpuShares (CPU の相対的な重み)、MemoryReservationInMB、BlkioWeight (BlockIO の相対的な重み) の各リソースに対して設定できます。 この例では、Guest1Pkg というサービス パッケージが配置されたクラスター ノード上で 1 つのコアを取得しています。 Memory の制限は絶対的であるため、コード パッケージのメモリは両方とも 1,024 MB に制限されます (ソフト保証予約は同じです)。 コード パッケージ (コンテナーまたはプロセス) は、この制限を超えてメモリを割り当てることはできず、割り当てようとするとメモリ不足の例外が発生します。 リソース制限の強制を機能させるには、サービス パッケージ内のすべてのコード パッケージでメモリ制限を指定する必要があります。
 
 ```xml
 <ServiceManifestImport>
@@ -283,9 +283,9 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
 ```
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK を構成する 
 
-Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 
+Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、[health_status](service-fabric-visualizing-your-cluster.md) が "*正常*" のときに、*Service Fabric Explorer* に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 
 
-v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエラーとしてレポートするかどうかの選択肢ができました。 このオプションを有効にすると、*health_status* が*正常*の場合、**OK** 正常性レポートが表示され、*health_status* が*異常*の場合、**ERROR** が表示されます。
+v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエラーとしてレポートするかどうかの選択肢ができました。 このオプションを有効にすると、**health_status** が*正常*の場合、*OK* 正常性レポートが表示され、**health_status** が*異常*の場合、*ERROR* が表示されます。
 
 コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される Dockerfile に存在する必要があります。
 
@@ -313,7 +313,7 @@ ApplicationManifest の **ContainerHostPolicies** の一部として **HealthCon
 
 *RestartContainerOnUnhealthyDockerHealthStatus* を **true** に設定すると、異常を繰り返し報告するコンテナーが (おそらく他のノードで) 再起動されます。
 
-*TreatContainerUnhealthyStatusAsError* が **true** に設定されている場合、コンテナーの *health_status* が*異常*のとき、**ERROR** 正常性レポートが表示されます。
+*TreatContainerUnhealthyStatusAsError* が **true** に設定されている場合、コンテナーの **health_status** が*異常*のとき、*ERROR* 正常性レポートが表示されます。
 
 Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する場合、[EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) を **false** に設定する必要があります。
 
@@ -324,7 +324,7 @@ Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する
 
 **[発行]** をクリックします。
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。 ブラウザーを開き、 `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` に移動して、アプリケーションのデプロイを進めます。 アプリケーションはデプロイされますが、クラスター ノードにイメージがダウンロードされるまではエラー状態となります (イメージのサイズによって時間がかかる場合があります)。![Error][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。 ブラウザーを開き、 `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` に移動して、アプリケーションのデプロイを進めます。 アプリケーションはデプロイされますが、クラスター ノードにイメージがダウンロードされるまではエラー状態となります (イメージのサイズによって時間がかかる場合があります)。![エラー][1]
 
 ```Ready``` 状態になったら、アプリケーションの準備は完了しています。![準備完了][2]
 

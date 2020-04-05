@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60383262"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227799"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したパスワード ハッシュ同期のトラブルシューティング
 
@@ -235,7 +235,7 @@ Azure AD テナントに対応するオブジェクトがないため、この�
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
 
-   例:
+   次に例を示します。
 
    ```powershell
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
@@ -359,7 +359,7 @@ Azure AD との接続がありますか。
 | SourceConnectorNotPresent |オンプレミスの Active Directory コネクタ スペースにオブジェクトがありません。 |
 | TargetNotExportedToDirectory |Azure AD コネクタ スペースのオブジェクトはまだエクスポートされていません。 |
 | MigratedCheckDetailsForMoreInfo |ログ エントリはビルド 1.0.9125.0 より前に作成されており、従来の状態で表示されます。 |
-| Error |サービスから不明なエラーが返されました。 |
+| エラー |サービスから不明なエラーが返されました。 |
 | Unknown |パスワード ハッシュのバッチを処理するときにエラーが発生しました。  |
 | MissingAttribute |Azure AD Domain Services で必要な特定の属性 (たとえば、Kerberos ハッシュ) を使用できません。 |
 | RetryRequestedByTarget |以前、Azure AD Domain Services で必要な特定の属性 (たとえば、Kerberos ハッシュ) を使用できませんでした。 ユーザーのパスワード ハッシュの再同期が試行されました。 |
@@ -442,7 +442,7 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $aadConnector -Enable $true
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD Connect Sync によるパスワード ハッシュ同期の導入](how-to-connect-password-hash-synchronization.md)
 * [Azure AD Connect 同期: 同期オプションをカスタマイズする](how-to-connect-sync-whatis.md)

@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: f1a16228b72d7e0f45048669ade94a0c78d9ac52
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74327942"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する
@@ -23,7 +23,7 @@ Azure Data Lake Storage Gen2 は、I/O 集中型分析とデータ移動での�
 
 Data Lake Storage Gen2 は、あらゆる分析シナリオで必要とされるスループットを提供するようにスケーリングできます。 既定では、Data Lake Storage Gen2 アカウントは、広範なカテゴリのユース ケースのニーズを満たすのに十分なスループットを自動的に提供します。 お客様が既定の制限に達した場合、[Azure サポート](https://azure.microsoft.com/support/faq/)に連絡して、さらに高いスループットを提供するように Data Lake Storage Gen2 アカウントを構成することができます。
 
-## <a name="data-ingestion"></a>データの取り込み
+## <a name="data-ingestion"></a>データ インジェスト
 
 ソース システムから Data Lake Storage Gen2 にデータを取り込む場合には、ソース ハードウェア、ソース ネットワーク ハードウェア、および Data Lake Storage Gen2 へのネットワークの接続性がボトルネックとなる可能性があることを考慮することが重要です。  
 
@@ -138,5 +138,5 @@ HDInsight クラスター内には 3 つのレイヤーがあります。これ�
 | [HDInsight の MapReduce](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [HDInsight の Storm](data-lake-storage-performance-tuning-storm.md)| <ul><li>ワーカー プロセスの数</li><li>スパウトの Executor インスタンスの数</li><li>ボルトの Executor インスタンスの数 </li><li>スパウトのタスクの数</li><li>ボルトのタスクの数</li></ul>|
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 * [Azure Data Lake Storage Gen2 の概要](data-lake-storage-introduction.md)

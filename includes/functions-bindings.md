@@ -6,16 +6,16 @@ ms.date: 09/04/2018
 ms.author: glenga
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 819eed1eb4e32469bf0572a6548f5a2a44091ef0
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77279635"
 ---
 この表は、Azure Functions のメジャー バージョンのランタイムでサポートされているバインディングを示しています。
 
 
-| Type | 1.x | 2.x 以降<sup>1</sup> | トリガー | 入力 | Output |
+| 種類 | 1.x | 2.x 以降<sup>1</sup> | トリガー | 入力 | Output |
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|

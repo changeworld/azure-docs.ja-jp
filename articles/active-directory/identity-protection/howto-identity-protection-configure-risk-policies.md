@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ffa08f7ebf013d42d6da0589ce0f1ccc97289de
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75707007"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>方法:リスク ポリシーを構成して有効にする

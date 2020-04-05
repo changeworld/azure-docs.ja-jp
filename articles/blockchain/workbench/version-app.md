@@ -5,10 +5,10 @@ ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 45219790cf0cd064e0fcd456e262b2f93aa03ac9
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74323909"
 ---
 # <a name="azure-blockchain-workbench-preview-application-versioning"></a>Azure Blockchain Workbench プレビューでのアプリケーションのバージョン管理
@@ -54,6 +54,6 @@ Azure Blockchain Workbench プレビュー アプリの複数のバージョン�
 
     新しいコントラクトを作成したり、以前のバージョンのコントラクトで操作を実行することができます。 アプリケーションのバージョンはアプリケーション名に続けて表示され、以前のバージョンに関する警告が表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Blockchain Workbench のトラブルシューティング](troubleshooting.md)

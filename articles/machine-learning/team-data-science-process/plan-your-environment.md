@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76710313"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>高度な分析データ処理のためのシナリオとプランを特定する方法
@@ -102,9 +102,9 @@ ms.locfileid: "76710313"
 
 ### <a name="how-large-is-your-data"></a>データのサイズはどの程度か?
 
-* 小さい:2 GB 未満
-* 中程度:2 GB から 10 GB
-* 大きい:10 GB 超
+* 小さい: 2 GB 未満
+* 中程度: 2 GB から 10 GB
+* 大きい: 10 GB 超
 
 たとえば Azure Machine Learning Studio (クラシック) 環境を使用します。
 

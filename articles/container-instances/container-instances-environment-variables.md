@@ -3,24 +3,24 @@ title: コンテナー インスタンスで環境変数を設定する
 description: Azure Container Instances で実行するコンテナーで環境変数を設定する方法を説明します
 ms.topic: article
 ms.date: 04/17/2019
-ms.openlocfilehash: d12d3204740f2971216636f9f5dd6403b17ecbff
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483188"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225855"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>コンテナー インスタンスで環境変数を設定する
 
-Container Instances で環境変数を設定すると、コンテナーによって実行されるアプリケーションまたはスクリプトの動的な構成を提供できます。 これは、`docker run` に対する `--env` コマンドライン引数に似ています。 
+Container Instances で環境変数を設定すると、コンテナーによって実行されるアプリケーションまたはスクリプトの動的な構成を提供できます。 これは、`--env` に対する `docker run` コマンドライン引数に似ています。 
 
 コンテナーで環境変数を設定するには、コンテナー インスタンスを作成するときに指定します。 この記事では、[Azure CLI](#azure-cli-example)、[Azure PowerShell](#azure-powershell-example)、および [Azure portal](#azure-portal-example) を使用してコンテナーを開始する際の環境変数の設定の例を示します。 
 
 たとえば、Microsoft [aci-wordcount][aci-wordcount] コンテナー イメージを実行する場合は、次の環境変数を指定することによって動作を変更できます。
 
-*NumWords*:STDOUT に送信された単語の数。
+*NumWords*: STDOUT に送信された単語の数。
 
-*MinLength*:単語内のカウントする文字の最小数。 数値を大きくすると、"of" や "the" のようなよく使用される単語は無視されます。
+*MinLength*: 単語内のカウントする文字の最小数。 数値を大きくすると、"of" や "the" のようなよく使用される単語は無視されます。
 
 シークレットを環境変数として渡す必要がある場合、Azure Container Instances が Windows と Linux の両方のコンテナーの[セキュリティで保護された値](#secure-values)をサポートします。
 
@@ -58,8 +58,8 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 コンテナーの出力には、環境変数を設定して、2 番目のコンテナーのスクリプトの動作をどのように変更したが示されます。
 
-```console
-azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name mycontainer1
+**mycontainer1**
+```output
 [('the', 990),
  ('and', 702),
  ('of', 628),
@@ -70,8 +70,10 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
  ('my', 441),
  ('in', 399),
  ('HAMLET', 386)]
+```
 
-azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name mycontainer2
+**mycontainer2**
+```output
 [('CLAUDIUS', 120),
  ('POLONIUS', 113),
  ('GERTRUDE', 82),
@@ -83,7 +85,7 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 PowerShell での環境変数の設定は CLI と似ていますが、`-EnvironmentVariable` コマンド ライン引数を使用します。
 
-まず、この [New-AzContainerGroup][new-Azcontainergroup] コマンドを使用して、既定の構成で [aci-wordcount][aci-wordcount] コンテナーを起動します。
+まず、この [New-AzContainerGroup][aci-wordcount] コマンドを使用して、既定の構成で [aci-wordcount][new-Azcontainergroup] コンテナーを起動します。
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
@@ -92,7 +94,7 @@ New-AzContainerGroup `
     -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
-ここで、次の [New-AzContainerGroup][new-Azcontainergroup] コマンドを実行します。 これは、配列変数 `envVars` の設定後に、環境変数の *NumWords* と *MinLength* を指定しています。
+ここで、次の [New-AzContainerGroup][new-Azcontainergroup] コマンドを実行します。 これは、配列変数 *の設定後に、環境変数の*NumWords*と*MinLength`envVars` を指定しています。
 
 ```azurepowershell-interactive
 $envVars = @{'NumWords'='5';'MinLength'='8'}
@@ -142,7 +144,7 @@ Azure:\
 Azure portal においてコンテナー開始時の環境変数を設定するには、コンテナーを作成するときに **[構成]** ページで指定します。
 
 1. **[詳細]** ページ上で、 **[再起動ポリシー]** を *[エラー時]* に設定します。
-2. **[環境変数]** 下で、最初の変数には値 `5` を指定して `NumWords` を入力し、2 番目の変数には値 `8` を指定して `MinLength` を入力します。 
+2. **[環境変数]** 下で、最初の変数には値 `NumWords` を指定して `5` を入力し、2 番目の変数には値 `MinLength` を指定して `8` を入力します。 
 1. **[確認と作成]** を選択して確定してから、コンテナーをデプロイします。
 
 ![環境変数の有効化ボタンとテキスト ボックスを表示しているポータル ページ][portal-env-vars-01]
@@ -157,7 +159,7 @@ Azure portal においてコンテナー開始時の環境変数を設定する�
 
 セキュリティで保護された値を含んだ環境変数は、コンテナーのプロパティに表示されないため、その値はコンテナー内からのみアクセスできます。 たとえば Azure portal や Azure CLI からコンテナーのプロパティを表示すると、セキュリティで保護された変数の名前だけが表示され、その値は表示されません。
 
-セキュリティで保護された環境変数は、変数の型に通常の `value` の代わりに `secureValue` プロパティを指定することで設定します。 次の YAML で定義されている 2 つの変数は、2 つの変数の型を示します。
+セキュリティで保護された環境変数は、変数の型に通常の `secureValue` の代わりに `value` プロパティを指定することで設定します。 次の YAML で定義されている 2 つの変数は、2 つの変数の型を示します。
 
 ### <a name="yaml-deployment"></a>YAML のデプロイ
 
@@ -234,7 +236,7 @@ root@caas-ef3ee231482549629ac8a40c0d3807fd-3881559887-5374l:/# echo $SECRET
 my-secret-value
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 いくつかのコンテナーがある大きなデータセットのバッチ処理など、タスク ベースのシナリオでは、実行時にカスタムの環境変数のメリットがあります。 タスク ベースのコンテナーの実行に関する詳細については、「[再起動ポリシーによるコンテナー化タスクの実行](container-instances-restart-policy.md)」を参照してください。
 

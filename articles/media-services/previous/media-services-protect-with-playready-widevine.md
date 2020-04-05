@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 79c24eb078cc3de764ecc1c814e5b8772777eab6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78199497"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady および Widevine に動的な Common Encryption を使用する
@@ -98,17 +98,17 @@ Media Services ライセンス配信サービスと動的暗号化を使用し�
 
 エンコード手順については、[Media Encoder Standard による資産のエンコード](media-services-dotnet-encode-with-media-encoder-standard.md)に関するページを参照してください。
 
-## <a id="create_contentkey"></a>コンテンツ キーを作成し、それをエンコードした資産に関連付ける
+## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>コンテンツ キーを作成し、それをエンコードした資産に関連付ける
 Media Services では、コンテンツ キーに、資産を暗号化するときに使用するキーが含まれています。
 
 詳細については、[コンテンツ キーの作成](media-services-dotnet-create-contentkey.md)に関するページを参照してください。
 
-## <a id="configure_key_auth_policy"></a>コンテンツ キーの承認ポリシーを構成する
+## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>コンテンツ キーの承認ポリシーを構成する
 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーを構成する必要があります。 キーがクライアント (プレーヤー) に配信される前に、クライアントはポリシーの要件を満たす必要があります。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。
 
 詳細については、[コンテンツ キー承認ポリシーの構成](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption)に関するページを参照してください。
 
-## <a id="configure_asset_delivery_policy"></a>資産の配信ポリシーを構成する
+## <a name="configure-an-asset-delivery-policy"></a><a id="configure_asset_delivery_policy"></a>資産の配信ポリシーを構成する
 資産の配信ポリシーを構成します。 資産の配信ポリシーの構成には、次のような内容が含まれます。
 
 * DRM ライセンス取得 URL
@@ -117,7 +117,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 詳細については、[資産配信ポリシーの構成](media-services-dotnet-configure-asset-delivery-policy.md)に関するページを参照してください。
 
-## <a id="create_locator"></a>ストリーミング URL を取得するために OnDemand ストリーミング ロケーターを作成する
+## <a name="create-an-ondemand-streaming-locator-to-get-a-streaming-url"></a><a id="create_locator"></a>ストリーミング URL を取得するために OnDemand ストリーミング ロケーターを作成する
 Smooth Streaming、DASH、または HLS のストリーミング URL をユーザーに提供する必要があります。
 
 > [!NOTE]

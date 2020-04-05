@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75360312"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>クラウド サービスのスタートアップ タスクを構成して実行する方法
@@ -23,7 +23,7 @@ ms.locfileid: "75360312"
 > 
 
 ## <a name="how-startup-tasks-work"></a>スタートアップ タスクの動作方法
-スタートアップ タスクはロールが開始する前に実行されるアクションであり、[ServiceDefinition.csdef] ファイルにおいて [Startup] 要素の [Task] 要素を使用して定義されます。 多くの場合スタートアップ タスクはバッチ ファイルですが、コンソール アプリケーションまたは PowerShell スクリプトを開始するバッチ ファイルでもかまいません。
+スタートアップ タスクはロールが開始する前に実行されるアクションであり、[ServiceDefinition.csdef] ファイルにおいて [Startup] 要素の [Startup] 要素を使用して定義されます。 多くの場合スタートアップ タスクはバッチ ファイルですが、コンソール アプリケーションまたは PowerShell スクリプトを開始するバッチ ファイルでもかまいません。
 
 スタートアップ タスクに情報を渡すには環境変数を使用し、スタートアップ タスクから情報を受け取るにはローカル ストレージを使用します。 たとえば、環境変数を使用してインストールするプログラムへのパスを指定でき、ファイルをローカル ストレージに書き込んでおいて後からロールで読み取ることができます。
 
@@ -76,7 +76,7 @@ EXIT /B 0
 ```
 
 > [!NOTE]
-> スタートアップ バッチ ファイルが Azure のプロジェクトに適切にデプロイされるようにするには (Web ロールの場合は **approot\\bin**、worker ロールの場合は **approot**)、Visual Studio で、スタートアップ バッチ ファイルの **[出力ディレクトリにコピー]** プロパティを **[常にコピーする]** に設定する必要があります。
+> スタートアップ バッチ ファイルが Azure のプロジェクトに適切にデプロイされるようにするには (Web ロールの場合は **approot**bin **、worker ロールの場合は** approot **)、Visual Studio で、スタートアップ バッチ ファイルの \\[出力ディレクトリにコピー]** プロパティを **[常にコピーする]** に設定する必要があります。
 > 
 > 
 
@@ -93,7 +93,7 @@ EXIT /B 0
 **executionContext** -スタートアップ タスクの特権レベルを指定します。 指定できる特権レベルは limited または elevated です。
 
 * **limited**  
-  スタートアップ タスクは、ロールと同じ特権で実行します。 [Runtime] 要素の **executionContext** 属性も **limited** である場合は、ユーザー特権が使用されます。
+  スタートアップ タスクは、ロールと同じ特権で実行します。 **Runtime** 要素の [Runtime] 属性も **limited** である場合は、ユーザー特権が使用されます。
 * **elevated**  
   スタートアップ タスクは、管理者特権で実行します。 これにより、ロール自体の特権レベルを上げることなく、プログラムのインストール、IIS の構成の変更、レジストリの変更、その他の管理者レベル タスクを実行できます。  
 
@@ -121,11 +121,11 @@ EXIT /B 0
 ## <a name="environment-variables"></a>環境変数
 環境変数は、スタートアップ タスクに情報を渡すための手段です。 たとえば、インストールするプログラムを含む BLOB へのパス、ロールで使用するポート番号、スタートアップ タスクの機能を制御する設定などを設定できます。
 
-スタートアップ タスクの環境変数には、静的環境変数と、 [RoleEnvironment] クラスのメンバーに基づく環境変数の 2 種類があります。 どちらも [ServiceDefinition.csdef] ファイルの [Environment] セクションにあり、[Variable] 要素と **name** 属性を使用します。
+スタートアップ タスクの環境変数には、静的環境変数と、 [RoleEnvironment] クラスのメンバーに基づく環境変数の 2 種類があります。 どちらも [Environment] ファイルの [ServiceDefinition.csdef] セクションにあり、[Variable] 要素と **name** 属性を使用します。
 
 静的環境変数は、 **Variable** 要素の [Variable] 属性を使用します。 上の例では、**MyVersionNumber** という名前の環境変数を作成し、静的な値 "**1.0.0.0**" を設定しています。 もう 1 つの例として、**StagingOrProduction** という名前の環境変数を作成し、手動で値 "**staging**" または "**production**" を設定して、**StagingOrProduction** 環境変数の値に基づいて異なるスタートアップ アクションを実行できます。
 
-RoleEnvironment クラスに基づく環境変数では、 **Variable** 要素の [Variable] 属性は使用しません。 代わりに [RoleInstanceValue] 子要素と適切な **xPath** 属性値を使用して、[RoleEnvironment] クラスの特定のメンバーに基づいて環境変数を作成します。 さまざまな [RoleEnvironment] の値にアクセスするための **XPath** 属性の値については、[こちら](cloud-services-role-config-xpath.md)を参照してください。
+RoleEnvironment クラスに基づく環境変数では、 **Variable** 要素の [Variable] 属性は使用しません。 代わりに [RoleInstanceValue] 子要素と適切な **xPath** 属性値を使用して、[RoleEnvironment] クラスの特定のメンバーに基づいて環境変数を作成します。 さまざまな **RoleEnvironment** の値にアクセスするための [RoleEnvironment] 属性の値については、[こちら](cloud-services-role-config-xpath.md)を参照してください。
 
 たとえば、インスタンスがコンピューティング エミュレーターで実行しているときは "**true**"、クラウドで実行しているときは "**false**" になる環境変数を作成するには、次の [Variable] 要素と [RoleInstanceValue] 要素を使用します。
 
@@ -154,7 +154,7 @@ Cloud Service で [一般的なスタートアップ タスク](cloud-services-s
 [パッケージ化](cloud-services-model-and-package.md) します。  
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment

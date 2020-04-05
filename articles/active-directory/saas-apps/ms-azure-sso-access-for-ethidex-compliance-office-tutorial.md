@@ -17,10 +17,10 @@ ms.date: 09/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00cbb5ff4b9354d0d1702161460b2646669f34c2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70844379"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ms-azure-sso-access-for-ethidex-compliance-office"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と MS Azure SSO Access for Ethidex Compliance Office™ の統合
@@ -29,7 +29,7 @@ ms.locfileid: "70844379"
 
 * MS Azure SSO Access for Ethidex Compliance Office™ にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して MS Azure SSO Access for Ethidex Compliance Office™ に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

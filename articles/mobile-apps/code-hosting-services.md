@@ -1,18 +1,18 @@
 ---
 title: GitHub と Azure DevOps を使用してクラウド内でモバイル アプリケーションのソース コードをホストする
 description: Microsoft サービスを使用してクラウド内でモバイル アプリケーション コードをホストするためのサービスについて説明します。
-author: elamalani
+author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-2222-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 8662b9f77614339ff514fa4fcf97dc1ee8fc7417
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 66d8980ab53010af0703d789fbe791c60a32052d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454483"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240960"
 ---
 # <a name="cloud-hosted-source-code-management-services"></a>クラウドでホストされるソース コードの管理サービス
 貴社の開発チームの複数のチーム メンバーが同じコード ベースで作業する場合、コードをホストする適切な場所を見つける必要があります。 クラウドにデータを格納し、一元化されたリポジトリを用意することにより、すべてのユーザーがコード ファイルのアップロード、編集、および管理を行うことができます。 また、プロジェクトの他の開発者とやりとりすることもできます。 インターネットに接続しているかぎり、どこにいてもコードに簡単にアクセスできます。

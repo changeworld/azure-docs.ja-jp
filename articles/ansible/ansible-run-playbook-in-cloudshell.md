@@ -5,10 +5,10 @@ keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, プレイブック, Bash
 ms.topic: quickstart
 ms.date: 04/30/2019
 ms.openlocfilehash: 2a938179cf2e07a61749042db32ef9e1c9d843ba
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78247889"
 ---
 # <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>クイック スタート:Azure Cloud Shell での Bash を使用した Ansible プレイブックの実行

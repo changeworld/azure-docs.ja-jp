@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 02/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: beb69edc57b5a13db0f6d2e5e1536804f3472aff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75421908"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Automation から Azure Monitor ログにジョブの状態とジョブ ストリームを転送する

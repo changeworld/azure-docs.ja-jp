@@ -14,10 +14,10 @@ ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75965624"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Azure での既存の Windows VM の再起動またはサイズ変更に関するデプロイメントの問題のトラブルシューティング
@@ -32,7 +32,7 @@ ms.locfileid: "75965624"
 
 [アクティビティ ログを表示して Azure リソースを管理する](../../resource-group-audit.md)
 
-## <a name="issue-error-when-starting-a-stopped-vm"></a>問題点:停止している VM の起動時のエラー
+## <a name="issue-error-when-starting-a-stopped-vm"></a>問題: 停止している VM の起動時のエラー
 停止している VM を起動しようとしたときに、割り当てエラーが発生します。
 
 ### <a name="cause"></a>原因
@@ -45,7 +45,7 @@ ms.locfileid: "75965624"
   2. すべての VM が停止したら、停止している各 VM を選択し、[起動] をクリックします。
 * 後で再起動要求を再試行します。
 
-## <a name="issue-error-when-resizing-an-existing-vm"></a>問題点:既存の VM のサイズ変更時のエラー
+## <a name="issue-error-when-resizing-an-existing-vm"></a>問題: 既存の VM のサイズ変更時のエラー
 既存の VM のサイズを変更しようとしたときに割り当てエラーが発生します。
 
 ### <a name="cause"></a>原因

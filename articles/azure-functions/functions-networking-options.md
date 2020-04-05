@@ -111,7 +111,7 @@ Azure Functions の仮想ネットワーク統合では、App Service Web アプ
 
 ### <a name="restricting-your-storage-account-to-a-virtual-network"></a>お使いのストレージ アカウントを仮想ネットワークに制限する
 
-関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 現在、このアカウントに対して仮想ネットワークの制限を使用することはできません。 関数アプリに使用しているストレージ アカウントに仮想ネットワーク サービス エンドポイントを構成すると、アプリが中断されます。この機能は現在、Premium プランと仮想ネットワーク統合を使用して利用できます。
+関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 現在、このアカウントに対して仮想ネットワークの制限を使用することはできません。 関数アプリに使用しているストレージ アカウントに仮想ネットワーク サービス エンドポイントを構成すると、アプリが中断されます。
 
 [ストレージ アカウントの要件の詳細を確認する](./functions-create-function-app-portal.md#storage-account-requirements)。
 

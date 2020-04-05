@@ -13,25 +13,27 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 6f4d237d5e923aab61ae34a235d2e1f759399e6d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: d67f007ac91d4830557a2cae646698b130b02314
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640912"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345800"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:Azure SQL Database Machine Learning Services (プレビュー) を使用して R でクラスタリング モデルをデプロイする
 
 この 3 部構成のチュートリアル シリーズのパート 3 では、Azure SQL Database Machine Learning Services (プレビュー) を使用して、R で開発したクラスタリング モデルを SQL データベースにデプロイします。
 
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
+
 クラスタリングを実行する埋め込みの R スクリプトを含むストアド プロシージャを作成します。 モデルは Azure SQL データベースで実行されるため、データベースに格納されているデータに対して簡単にトレーニングすることができます。
 
-この記事では、以下の方法について説明します。
+この記事では、次の方法について学習します。
 
 > [!div class="checklist"]
-> * モデルを生成するストアド プロシージャを作成する
-> * SQL データベースでクラスタリングを実行する
-> * クラスタリング情報を使用する
+> * モデルを生成するストアド プロシージャの作成
+> * SQL Database 上でのクラスタリング実行
+> * クラスタリング情報の使用
 
 [パート 1](sql-database-tutorial-clustering-model-prepare-data.md) では、クラスタリングを実行するために Azure SQL データベースのデータを準備する方法を学習しました。
 
@@ -43,12 +45,12 @@ ms.locfileid: "68640912"
 
 * このチュートリアル シリーズのパート 3 では、[**パート 1**](sql-database-tutorial-clustering-model-prepare-data.md) と[**パート 2**](sql-database-tutorial-clustering-model-build.md) が完了していることを前提とします。
 
-## <a name="create-a-stored-procedure-that-generates-the-model"></a>モデルを生成するストアド プロシージャを作成する
+## <a name="create-a-stored-procedure-that-generates-the-model"></a>モデルを生成するストアド プロシージャの作成
 
-次の T-SQL スクリプトを実行してストアド プロシージャを作成します。 このプロシージャにより、このチュートリアル シリーズのパート 1 と 2 で開発した手順が再作成されます。
+以下の T-SQL スクリプトを実行して、ストアド プロシージャを作成します。 このプロシージャでは、本チュートリアル シリーズの第 1 部・2 部で作成した手順を再作成します。
 
-* 購入履歴と返品履歴に基づいて顧客を分類する
-* K-Means アルゴリズムを使用して顧客のクラスターを 4 つ生成する
+* 購入・返却履歴に基づく顧客の分類
+* K-Means アルゴリズムを使用した、4 つの顧客クラスターの生成
 
 このプロシージャにより、結果として作成された顧客のクラスター マッピングがデータベース テーブル **customer_return_clusters** に格納されます。
 
@@ -175,7 +177,7 @@ END;
 GO
 ```
 
-## <a name="perform-clustering-in-sql-database"></a>SQL データベースでクラスタリングを実行する
+## <a name="perform-clustering-in-sql-database"></a>SQL Database 上でのクラスタリング実行
 
 ストアド プロシージャを作成したところで、次のスクリプトを実行してクラスタリングを実行します。
 
@@ -206,9 +208,9 @@ cluster  customer  orderRatio  itemsRatio  monetaryRatio  frequency
 2        32549     0           0           0.031281       4
 ```
 
-## <a name="use-the-clustering-information"></a>クラスタリング情報を使用する
+## <a name="use-the-clustering-information"></a>クラスタリング情報の使用
 
-クラスタリングのプロシージャをデータベースに格納したため、同じデータベースに格納されている顧客データに対して効率的にクラスタリングを実行できます。 顧客データが更新されるたびにプロシージャを実行し、更新されたクラスタリング情報を使用することができます。
+クラスタリングのプロシージャはデータベースに格納されているため、同じデータベースに格納されている顧客データに対し、効率的にクラスタリングを実行できます。 顧客データが更新されるたびにプロシージャを実行し、更新されたクラスタリング情報を利用できます。
 
 クラスター 3 (より積極的に返品を行うグループ) の顧客にプロモーション用のメールを送信したいとします (4 つのクラスターの説明は[パート 2](sql-database-tutorial-clustering-model-build.md#analyze-the-results) を参照してください)。 次のコードでは、クラスター 3 に含まれる顧客のメール アドレスを選択します。
 
@@ -224,7 +226,7 @@ WHERE r.cluster = 3
 
 **r.cluster**の値を変更すると、他のクラスターに含まれる顧客のメール アドレスを返すことができます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルを完了した場合は、Azure SQL Database サーバーから tpcxbb_1gb データベースを削除できます。
 
@@ -235,13 +237,13 @@ Azure portal から次の手順を実行します。
 1. **tpcxbb_1gb** データベースを選択します。
 1. **[概要]** ページで **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアル シリーズのパート 3 では、これらの手順を完了しました。
+このチュートリアル シリーズのパート 3 では、次の手順を完了しました。
 
-* モデルを生成するストアド プロシージャを作成する
-* SQL データベースでクラスタリングを実行する
-* クラスタリング情報を使用する
+* モデルを生成するストアド プロシージャの作成
+* SQL Database 上でのクラスタリング実行
+* クラスタリング情報の使用
 
 Azure SQL Database Machine Learning Services (プレビュー) での R の使用について、さらに学習する場合は、以下を参照してください。
 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: yushwang
 ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148334"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235755"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>パートナー VPN デバイス構成の概要
 この記事では、オンプレミスの VPN デバイスを Azure VPN ゲートウェイに接続するための構成の概要について説明します。 サンプルの Azure 仮想ネットワークと VPN ゲートウェイの設定を使って、同じパラメーターで異なるオンプレミス VPN デバイス構成に接続する方法を紹介します。
@@ -22,7 +22,7 @@ ms.locfileid: "77148334"
 ## <a name="device-requirements"></a>デバイスの要件
 Azure VPN ゲートウェイは、標準の IPsec/IKE プロトコル スイートをサイト間 (S2S) VPN トンネルに使います。 Azure VPN ゲートウェイで使用される IPsec/IKE パラメーターと暗号アルゴリズムの一覧については、[VPN デバイス](vpn-gateway-about-vpn-devices.md)に関するページを参照してください。 [暗号化の要件](vpn-gateway-about-compliance-crypto.md)に関する記事の説明に従って、特定の接続を対象に、暗号アルゴリズムとキーの強度を具体的に指定することもできます。
 
-## <a name ="singletunnel"></a>単一の VPN トンネル
+## <a name="single-vpn-tunnel"></a><a name ="singletunnel"></a>単一の VPN トンネル
 サンプルの 1 つ目の構成は、Azure VPN ゲートウェイとオンプレミスの VPN デバイスとの間にある単一の S2S VPN トンネルから成ります。 必要に応じて、[VPN トンネル上にボーダー ゲートウェイ プロトコル (BGP)](#bgp) を構成することもできます。
 
 ![単一の S2S VPN トンネルの図](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
@@ -111,7 +111,7 @@ $lng5gw  = Get-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1
 New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False
 ```
 
-### <a name ="policybased"></a> (オプション) UsePolicyBasedTrafficSelectors でカスタム IPsec/IKE ポリシーを使用する
+### <a name="optional-use-custom-ipsecike-policy-with-usepolicybasedtrafficselectors"></a><a name ="policybased"></a> (オプション) UsePolicyBasedTrafficSelectors でカスタム IPsec/IKE ポリシーを使用する
 VPN デバイスが任意の環境間のトラフィック セレクター (ルートベース/VTI ベースの構成など) をサポートしていない場合は、[UsePolicyBasedTrafficSelectors](vpn-gateway-connect-multiple-policybased-rm-ps.md) オプションを使ってカスタム IPsec/IKE ポリシーを作成します。
 
 > [!IMPORTANT]
@@ -119,8 +119,8 @@ VPN デバイスが任意の環境間のトラフィック セレクター (ル�
 
 
 このサンプル スクリプトでは、次のアルゴリズムとパラメーターを使用して IPsec/IKE ポリシーが作成されます。
-* IKEv2:AES256、SHA384、DHGroup24
-* IPsec:AES256、SHA1、PFS24、SA の有効期間 7,200 秒および 20,480,000 KB (20 GB)
+* IKEv2: AES256、SHA384、DHGroup24
+* IPsec: AES256、SHA1、PFS24、SA の有効期間 7,200 秒および 20,480,000 KB (20 GB)
 
 このスクリプトでは、接続に IPsec/IKE ポリシーを適用して **UsePolicyBasedTrafficSelectors** オプションを有効にします。
 
@@ -133,7 +133,7 @@ $lng5gw  = Get-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1
 New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False -IpsecPolicies $ipsecpolicy5 -UsePolicyBasedTrafficSelectors $True
 ```
 
-### <a name ="bgp"></a>(オプション) S2S VPN 接続で BGP を使用する
+### <a name="optional-use-bgp-on-s2s-vpn-connection"></a><a name ="bgp"></a>(オプション) S2S VPN 接続で BGP を使用する
 S2S VPN 接続を作成するとき、必要に応じて [VPN ゲートウェイに BGP](vpn-gateway-bgp-resource-manager-ps.md) を使用することができます。 このアプローチには 2 つの違いがあります。
 
 * オンプレミスのアドレス プレフィックスには、1 つのホスト アドレスを指定できます。 オンプレミスの BGP ピア IP アドレスは次のように指定します。

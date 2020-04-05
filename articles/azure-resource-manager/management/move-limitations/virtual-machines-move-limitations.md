@@ -4,10 +4,10 @@ description: Azure Resource Manager を使用して、新しいリソース グ�
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.openlocfilehash: 97c49f90dab2aafd89de322e57ad44ff1fc9d367
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75474917"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>仮想マシンの移動に関するガイダンス

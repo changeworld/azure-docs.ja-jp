@@ -4,10 +4,10 @@ description: このチュートリアルでは、Azure portal を使用して、
 ms.date: 06/10/2019
 ms.topic: tutorial
 ms.openlocfilehash: ec9074a39f2ece7878c0c3ef828dc21748d0ab89
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76293931"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Azure portal 内での Azure ファイル共有のバックアップ

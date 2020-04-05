@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 7e68f12ce062831ad361c88345188aca61922c4c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921726"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>App Service アプリを別のリージョンに移動する

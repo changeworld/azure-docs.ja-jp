@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: ec1422d03cce78bdd8206f6687a78b63ddf989dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f78ba5b351a3da46d7b8b3780cf00772c4f3b2ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984927"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289313"
 ---
 # <a name="match-on-patterns-and-special-characters-dashes"></a>パターンと特殊文字 (ダッシュ) の一致
 
@@ -40,11 +40,11 @@ ms.locfileid: "75984927"
 |----------|-----------|
 | [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | フィールド全体の内容は、1 つの用語としてトークン化されます。 |
 | [whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | 空白文字のみを区切ります。 ダッシュまたはその他の文字を含む用語は、1 つのトークンとして扱われます。 |
-| [カスタム アナライザー](index-add-custom-analyzers.md) | (推薦) カスタム アナライザーを作成すると、トークナイザーとトークン フィルターの両方を指定できます。 前述のアナライザーはそのまま使用する必要があります。 カスタム アナライザーでは、使用するトークナイザーとトークン フィルターを選択できます。 <br><br>推奨される組み合わせは、[小文字のトークン フィルター](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)と[キーワード トークナイザー](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)です。 定義済みの[キーワード アナライザー](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)単体では大文字のテキストを小文字に変換できないため、クエリが失敗する可能性があります。 カスタム アナライザーには、小文字のトークン フィルターを追加するためのメカニズムが用意されています。 |
+| [カスタム アナライザー](index-add-custom-analyzers.md) | (推薦) カスタム アナライザーを作成すると、トークナイザーとトークン フィルターの両方を指定できます。 前述のアナライザーはそのまま使用する必要があります。 カスタム アナライザーでは、使用するトークナイザーとトークン フィルターを選択できます。 <br><br>推奨される組み合わせは、[小文字のトークン フィルター](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)と[キーワード トークナイザー](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)です。 定義済みの[キーワード アナライザー](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)単体では大文字のテキストを小文字に変換できないため、クエリが失敗する可能性があります。 カスタム アナライザーには、小文字のトークン フィルターを追加するためのメカニズムが用意されています。 |
 
 Postman のような Web API テスト ツールを使用している場合は、[テスト アナライザーの REST 呼び出し](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)を追加して、トークン化された出力を検査できます。 既存のインデックスと、ダッシュまたは用語の一部を含むフィールドが指定されている場合は、特定の用語に対してさまざまなアナライザーを試して、どのトークンが生成されるかを確認できます。  
 
-1. 標準アナライザーを使用して、用語が既定でトークン化されているかどうかを確認します。
+1. Standard アナライザーを使用して、用語が既定でどのようにトークン化されているかを確認します。
 
    ```json
    {
@@ -88,7 +88,7 @@ Postman のような Web API テスト ツールを使用している場合は�
     }
     ```
 
-1. これで、応答は 1 つのトークンで構成され、文字列の一部としてダッシュが保持されます。 パターンまたは用語の一部を検索する必要がある場合、これでクエリ エンジンが一致を見つけるための基礎となります。
+1. これで、応答は大文字の 1 つのトークンで構成され、文字列の一部としてダッシュが保持されます。 パターンまたは用語の一部を検索する必要がある場合、これでクエリ エンジンが一致を見つけるための基礎となります。
 
 
     ```json
@@ -109,7 +109,7 @@ Postman のような Web API テスト ツールを使用している場合は�
 
 ## <a name="analyzer-definitions"></a>アナライザーの定義
  
-アナライザーを評価する場合も、特定の構成を使用する場合も、アナライザーをフィールド定義に指定する必要があります。また、組み込みのアナライザーを使用しない場合は、アナライザー自体を構成することもできます。 アナライザーをスワップする場合は、通常、インデックスを再構築 (削除、再作成、および再読み込み) する必要があります。 
+アナライザーを評価する場合も、特定の構成を使用する場合も、アナライザーをフィールド定義に指定する必要があります。また、組み込みアナライザーを使用しない場合は、アナライザー自体を構成します。 アナライザーをスワップする場合は、通常、インデックスを再構築 (削除、再作成、および再読み込み) する必要があります。 
 
 ### <a name="use-built-in-analyzers"></a>組み込みアナライザーを使用する
 
@@ -134,7 +134,7 @@ Postman のような Web API テスト ツールを使用している場合は�
 用語全体のトークン化が目的である場合は、**キーワード トークナイザー**で構成されるカスタム アナライザーと**小文字のトークン フィルター**を選択することをお勧めします。
 
 + キーワード トークナイザーは、フィールドの内容全体に対して 1 つのトークンを作成します。
-+ lowercase トークン フィルターは、大文字を小文字に変換します。 通常、クエリ パーサーでは、大文字のテキスト入力が小文字になります。 小文字に変換することで、トークン化された用語を使用して入力を均質化します。
++ lowercase トークン フィルターは、大文字を小文字に変換します。 通常、クエリ パーサーでは、大文字のテキスト入力が小文字に変換されます。 小文字に変換することで、トークン化された用語を使用して入力を均質化します。
 
 次の例は、キーワード トークナイザーと lowercase トークン フィルターを提供するカスタム アナライザーを示しています。
 
@@ -151,7 +151,7 @@ Postman のような Web API テスト ツールを使用している場合は�
   "sortable": false,
   "facetable": false
   }
-]
+],
 
 "analyzers": [
   {
@@ -191,7 +191,7 @@ Keyword_v2 トークナイザーと小文字のトークン フィルターを�
   "sortable": false,
   "facetable": false
   }
-]
+],
 
 "analyzers": [
   {
@@ -217,11 +217,11 @@ Keyword_v2 トークナイザーと小文字のトークン フィルターを�
 
 ### <a name="use-different-analyzers-for-indexing-and-query-processing"></a>インデックス作成とクエリ処理に別のアナライザーを使用する
 
-アナライザーは、インデックスの作成時とクエリの実行中に呼び出されます。 どちらの場合も同じアナライザーを使用するのが一般的ですが、各ワークロードに対してカスタム アナライザーを構成できます。 アナライザーのオーバーライドは `analyzers` セクションの [インデックス定義](https://docs.microsoft.com/rest/api/searchservice/create-index)で指定され、その後特定のフィールドで参照されます。 
+アナライザーは、インデックスの作成時とクエリの実行中に呼び出されます。 どちらの場合も同じアナライザーを使用するのが一般的ですが、各ワークロードに対してカスタム アナライザーを構成できます。 アナライザーのオーバーライドは [ セクションの ](https://docs.microsoft.com/rest/api/searchservice/create-index)インデックス定義`analyzers`で指定され、その後特定のフィールドで参照されます。 
 
 インデックス作成中にのみカスタム分析を行う必要がある場合は、カスタム アナライザーをインデックス作成のみに適用し、標準の Lucene アナライザー (または別のアナライザー) を使用してクエリを続行できます。
 
-ロール固有の分析を指定するには、各プロパティのフィールドにプロパティを設定し、既定の `analyzer` プロパティの代わりに `indexAnalyzer` と `searchAnalyzer` を設定します。
+ロール固有の分析を指定するには、各プロパティのフィールドにプロパティを設定し、既定の `indexAnalyzer` プロパティの代わりに `searchAnalyzer` と `analyzer` を設定します。
 
 ```json
 "name": "featureCode",
@@ -252,7 +252,7 @@ Keyword_v2 トークナイザーと小文字のトークン フィルターを�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、アナライザーがクエリの問題に寄与し、クエリの問題を解決する方法について説明します。 次の手順として、アナライザーによるインデックス作成とクエリ処理への影響について詳しく見ていきます。 特に、Analyze Text API を使用してトークン化された出力を返すことを検討してください。これにより、アナライザーがインデックス用に作成した内容を正確に確認できます。
+この記事では、アナライザーがどのようにクエリの問題に寄与し、クエリの問題を解決するかについて説明します。 次の手順として、アナライザーによるインデックス作成とクエリ処理への影響について詳しく見ていきます。 特に、Analyze Text API を使用してトークン化された出力を返すことを検討してください。これにより、アナライザーがインデックス用に作成した内容を正確に確認できます。
 
 + [言語アナライザー](search-language-support.md)
 + [Azure Cognitive Search でのテキスト処理のためのアナライザー](search-analyzers.md)

@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: cbd171e10cc1a8b27de98d9d4d779f345ac5a3ed
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754918"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225667"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割と水平スケーリング
 
@@ -19,7 +19,7 @@ ms.locfileid: "72754918"
 
 ## <a name="logical-partitions"></a>論理パーティション
 
-論理パーティションは、同じパーティション キーを持つ一連のアイテムで構成されます。 たとえば、すべてのアイテムに `City` プロパティが含まれているコンテナーでは、`City` は、コンテナーのパーティション キーとして使用できます。 `London`、`Paris`、`NYC` など、`City` に特定の値を持つアイテムのグループが、個別の論理パーティションを形成します。 基になるデータを削除するときに、パーティションの削除方法を心配する必要はありません。
+論理パーティションは、同じパーティション キーを持つ一連のアイテムで構成されます。 たとえば、すべてのアイテムに `City` プロパティが含まれているコンテナーでは、`City` は、コンテナーのパーティション キーとして使用できます。 `City`、`London`、`Paris` など、`NYC` に特定の値を持つアイテムのグループが、個別の論理パーティションを形成します。 基になるデータを削除するときに、パーティションの削除方法を心配する必要はありません。
 
 Azure Cosmos DB では、コンテナーがスケーラビリティの基本単位です。 コンテナーに追加されたデータと、コンテナーに対してプロビジョニングしたスループットは、一連の論理パーティション全体で自動的に (水平方向に) パーティション分割されます。 データとスループットは、Azure Cosmos コンテナーに指定したパーティション キーに基づいてパーティション分割されます。 詳細については、「[Azure Cosmos コンテナーを作成する](how-to-create-container.md)」を参照してください。
 
@@ -37,7 +37,7 @@ Azure Cosmos コンテナーは、多数の論理パーティションを超え�
 
 論理パーティションとは異なり、物理パーティションはシステムの内部実装です。 物理パーティションのサイズ、配置、または数は制御できません。また、論理パーティションと物理パーティションの間のマッピングは制御できません。 ただし、[適切な論理パーティション キーを選択する](partitioning-overview.md#choose-partitionkey)ことによって、論理パーティションの数、データ、ワークロード、スループットの分散を制御することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [パーティション キーの選択](partitioning-overview.md#choose-partitionkey)について確認します。
 * [Azure Cosmos DB におけるスループットのプロビジョニング](request-units.md)について理解します。

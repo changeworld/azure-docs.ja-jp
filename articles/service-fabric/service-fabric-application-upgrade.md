@@ -4,11 +4,11 @@ description: この記事では、アップグレード モードの選択や正
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426769"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229491"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric アプリケーションのアップグレード
 Service Fabric アプリケーションは、サービスのコレクションです。 アップグレードの際、Service Fabric は新しい [アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md) を以前のバージョンと比較し、アプリケーション内でアップグレードの必要があるサービスを決定します。 Service Fabric は、サービス マニフェスト内のバージョン番号を、以前のバージョンのバージョン番号と比較します。 サービスが変更されていない場合は、そのサービスはアップグレードされません。

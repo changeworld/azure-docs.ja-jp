@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 4ebb52aa3e8d4ccfee6b36fb60c7f041df08a69a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 44f57f52be512924e228d6488a786d117c6444e7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163026"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79370595"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Java を使用して Azure Event Hubs との間でイベントを送受信する (azure-messaging-eventhubs)
 このクイックスタートでは、**azure-messaging-eventhubs** Java パッケージを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。
@@ -55,7 +55,7 @@ import com.azure.messaging.eventhubs.*;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class Sender {
-    public static void main(String[] args) {
+       public static void main(String[] args) {
     }
 }
 ```
@@ -208,7 +208,7 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
      }
     ```
     
-2. [GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs) から **InMemoryCheckpointStore. java** ファイルをダウンロードし、プロジェクトに追加します。 
+2. [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/InMemoryCheckpointStore.java) から **InMemoryCheckpointStore. java** ファイルをダウンロードし、プロジェクトに追加します。 
 3. プログラムをビルドし、エラーがないことを確認します。 
 
 ## <a name="run-the-applications"></a>アプリケーションの実行

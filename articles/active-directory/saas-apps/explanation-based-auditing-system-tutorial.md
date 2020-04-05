@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 49c15365b60359bc393dcd854c7f9487810f0a7d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73156312"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-explanation-based-auditing-system"></a>チュートリアル:Azure Active Directory と Explanation-Based Auditing System の統合
@@ -82,7 +82,7 @@ Explanation-Based Auditing System で Azure AD のシングル サインオン�
 2. **[Explanation-Based Auditing System のシングル サインオンの構成](#configure-explanation-based-auditing-system-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Explanation-Based Auditing System のテスト ユーザーの作成](#create-explanation-based-auditing-system-test-user)** - Explanation-Based Auditing System で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[Explanation-Based Auditing System のテスト ユーザーの作成](#create-explanation-based-auditing-system-test-user)** - Explanation-Based Auditing System で Britta Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成

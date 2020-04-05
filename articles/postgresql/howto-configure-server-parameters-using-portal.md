@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: a9d078fe9aab12b9044733d17a1437801d5130a4
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74763676"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>Azure portal を使用した Azure Database for PostgreSQL - Single Server でのサーバー パラメーターの構成 
@@ -43,7 +43,7 @@ Azure Portal を使用して、Azure Database for PostgreSQL サーバーの構�
 8. パラメーターの新しい値を保存した場合は、 **[すべて既定値にリセット]** を選択していつでもすべてを既定値に戻すことができます。
 ![すべて既定値にリセット](./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 内容は次のとおりです。
 - [Azure Database for PostgreSQL のサーバー パラメーターの概要](concepts-servers.md)
 - [Azure CLI を使用したパラメーターの構成](howto-configure-server-parameters-using-cli.md)

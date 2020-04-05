@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69614335"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB でのユーザー定義関数 (UDF)
@@ -126,7 +126,7 @@ UDF のパラメーターに参照されるプロパティを JSON 値で利用�
 
 前述の例でわかるように、UDF は、JavaScript 言語の機能と SQL API を統合します。 UDF は、組み込みの JavaScript ランタイム機能を活用して、手続き型で条件付きの複雑なロジックを実行するためのリッチ プログラミング インターフェイスを提供します。 SQL API は、現在の WHERE 句または SELECT 句の処理の段階で、各ソース項目に、UDF への引数を提供します。 結果は、実行パイプライン全体にシームレスに組み込まれます。 まとめると、複雑なビジネス ロジックをクエリの一部として実行するには、UDF は非常に便利な手段です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB の概要](introduction.md)
 - [システム関数](sql-query-system-functions.md)

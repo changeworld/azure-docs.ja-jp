@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Service Fabric にデプロイする
+title: 'チュートリアル: Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Service Fabric にデプロイする'
 description: Azure DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 DevOps Projects を使用することによって、いくつかの簡単な手順で ASP.NET Core アプリを Azure Service Fabric に簡単にデプロイできます。
 ms.author: mlearned
 ms.manager: gwallace
@@ -10,13 +10,13 @@ ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
 ms.openlocfilehash: 5f14164da5cd89cc7d0578e6b64c39d227734d75
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71969470"
 ---
-# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>チュートリアル:Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Service Fabric にデプロイする
+# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>チュートリアル: Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Service Fabric にデプロイする
 
 Azure DevOps Projects によって提供される簡略化されたエクスペリエンスを使用すると、既存のコードと Git リポジトリを使用するか、サンプル アプリケーションを選択して、Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。 
 
@@ -33,7 +33,7 @@ DevOps Projects には、以下の機能もあります。
 > * CI パイプライン を確認する
 > * CD パイプライン を確認する
 > * Git への変更をコミットし、Azure に自動的にデプロイする
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,7 +43,7 @@ DevOps Projects には、以下の機能もあります。
 
 DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに Service Fabric クラスターなどの Azure リソースも作成されます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 左側のウィンドウで、 **[リソースの作成]** を選びます。
 
@@ -148,7 +148,7 @@ Web サイトに最新の作業を自動的にデプロイする CI/CD プロセ
 
 1. リリースが完了したら、アプリを更新して、変更を確認します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 テストを行っている場合は、リソースをクリーンアップすることによって、課金を回避することができます。 このチュートリアルで作成した Azure Service Fabric クラスターと関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Projects ダッシュボードで**削除**機能を使用します。
 
@@ -159,7 +159,7 @@ Web サイトに最新の作業を自動的にデプロイする CI/CD プロセ
 1. 右上の **[削除]** を選択します。 
 1. 確認のメッセージで **[はい]** を選択すると、リソースが "*完全に削除*" されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 必要に応じて、ご自身のチームのニーズを満たすように Azure CI/CD パイプラインを変更できます。 この CI/CD パターンをご自身の他のパイプラインのテンプレートとして使用することもできます。 このチュートリアルでは、以下の内容を学習しました。
 
@@ -169,7 +169,7 @@ Web サイトに最新の作業を自動的にデプロイする CI/CD プロセ
 > * CI パイプライン を確認する
 > * CD パイプライン を確認する
 > * 変更を Git にコミットし、Azure に自動的にデプロイする
-> * リソースのクリーンアップ
+> * リソースをクリーンアップする
 
 Service Fabric とマイクロサービスの詳細については、以下を参照してください。
 

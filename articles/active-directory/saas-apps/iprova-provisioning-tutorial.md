@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
 ms.openlocfilehash: bb730bad2837616aee0ebfa2da04015542782d9a
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057504"
 ---
 # <a name="tutorial-configure-iprova-for-automatic-user-provisioning"></a>チュートリアル:iProva を構成し、自動ユーザー プロビジョニングに対応させる

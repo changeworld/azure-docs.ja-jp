@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: dnb
 ms.openlocfilehash: 4a350953a5755f24c938011ae4b98e1e35e094e8
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77599556"
 ---
 # <a name="books-about-site-reliability-engineering"></a>サイト信頼性エンジニアリングに関する書籍

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
 ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610014"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236727"
 ---
 # <a name="scaling-in-service-fabric"></a>Service Fabric での拡大縮小
 Azure Service Fabric では、クラスター内のノードでサービス、パーティション、およびレプリカを管理することにより、スケーラブルなアプリケーションを簡単に構築できます。 同じハードウェアで多くのワークロードを実行することで、リソースを最大限に活用すると同時に、ワークロードを拡大縮小する方法も柔軟に選択できます。 この Channel 9 ビデオでは、スケーラブルなマイクロサービス アプリケーションを構築する方法について説明します。

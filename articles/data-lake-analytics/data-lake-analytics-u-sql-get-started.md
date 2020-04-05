@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
 ms.openlocfilehash: 8130679dcc519cecd25abf43902c003ad8047df3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672836"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics の U-SQL を使用する
@@ -27,7 +27,7 @@ U-SQL は、あらゆる規模のデータの処理を可能にするために�
 
 ## <a name="prerequisites"></a>前提条件
 
-このドキュメントの U-SQL サンプルを実行する前に、次の資料を読んで完了します: 「[チュートリアル:Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する](data-lake-analytics-data-lake-tools-get-started.md)」。 このチュートリアルでは、Azure Data Lake Tools for Visual Studio での U-SQL の使用のメカニズムについて説明しています。
+このドキュメントの U-SQL のサンプルをご覧になる前に、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を読み、完了してください。 このチュートリアルでは、Azure Data Lake Tools for Visual Studio での U-SQL の使用のメカニズムについて説明しています。
 
 ## <a name="your-first-u-sql-script"></a>最初の U-SQL スクリプト
 
@@ -224,6 +224,6 @@ U-SQL の ORDER BY 句では、SELECT 式で FETCH 句と組み合わせる必�
 
 高度な集計シナリオについては、U-SQL リファレンス ドキュメントで[集計、分析、参照の各関数](/u-sql/built-in-functions)をご確認ください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する](data-lake-analytics-data-lake-tools-get-started.md)

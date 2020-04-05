@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
 ms.openlocfilehash: ab07da38c01b052a4220274fb059683a22950a3f
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750697"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>IoT Hub を操作の監視から診断設定に移行する

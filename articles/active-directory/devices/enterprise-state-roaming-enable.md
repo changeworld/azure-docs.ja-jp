@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c44d6266f5ea8cdd4f75d0449cb49852e71c905
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672408"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
@@ -73,9 +73,9 @@ Enterprise State Roaming を使用して Microsoft クラウドと同期され�
 
 明示的な削除とは、Azure 管理者がユーザーまたはディレクトリを削除するか、データを削除することを明示的に要求したときの削除です。
 
-* **ユーザーの削除**:Azure AD でユーザーが削除された場合、そのユーザー アカウントのローミング データは 90 - 180 日後に削除されます。 
-* **ディレクトリの削除**:Azure AD からディレクトリ全体を削除した場合は、その操作が直ちに実行されます。 そのディレクトリに関連付けられた設定データはすべて、90 ～ 180 日後に削除されます。 
-* **要求による削除**:Azure AD 管理者の方は、特定のユーザーのデータまたは設定データを手動で削除する必要がある場合、[Azure サポート](https://azure.microsoft.com/support/)にチケットを提出してください。 
+* **ユーザーの削除**: Azure AD でユーザーが削除された場合、ユーザー アカウント ローミング データは 90 ～ 180 日後に削除されます。 
+* **ディレクトリの削除**: Azure AD からディレクトリ全体を削除した場合は、その操作が直ちに実行されます。 そのディレクトリに関連付けられた設定データはすべて、90 ～ 180 日後に削除されます。 
+* **要求による削除**: Azure AD 管理者の方は、特定のユーザーのデータまたは設定データを手動で削除する必要がある場合、 [Azure サポート](https://azure.microsoft.com/support/)にチケットを提出してください。 
 
 ### <a name="stale-data-deletion"></a>古いデータの削除
 

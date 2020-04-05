@@ -1,5 +1,6 @@
 ---
 title: HTTPS 経由で Azure CDN のカスタム ドメインを使用してストレージ BLOB にアクセスする
+description: Azure CDN のカスタム ドメインを追加し、ご利用のカスタム Blob Storage のエンドポイントに対してそのドメインで HTTPS を有効にする方法について説明します。
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -14,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e6415c9e8e0ab8743042891a2d0d422dffe37bdb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: be09229136289e343856f1e2ba61cda63730d21f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279111"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80053960"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>チュートリアル:HTTPS 経由で Azure CDN のカスタム ドメインを使用してストレージ BLOB にアクセスする
 
@@ -58,7 +59,7 @@ Azure CDN 経由で BLOB にアクセスする場合、POP サーバーと配信
 
 たとえば、Azure CDN を使用してアクセスされている米国でストレージ アカウントを所有し、ヨーロッパにいる任意のユーザーが Azure CDN 経由でそのストレージ アカウントの BLOB のいずれかにアクセスしようとしている場合、Azure CDN ではまずその BLOB 向けにヨーロッパに最も近い POP が確認されます。 見つかった場合は、Azure CDN でその BLOB のコピーにアクセスします｡これは Azure CDN からアクセスされているので、CDN 価格になります｡ 見つからなかった場合は、Azure CDN で POP サーバーに BLOB をコピーし (BLOB ストレージ価格で指定されたようにエグレス料金とトランザクション料金が発生)、その POP サーバー上のファイルにアクセスします (Azure CDN 課金が発生)｡
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [チュートリアル:Azure CDN キャッシュ規則の設定](cdn-caching-rules-tutorial.md)
 
 

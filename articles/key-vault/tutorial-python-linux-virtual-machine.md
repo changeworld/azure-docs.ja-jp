@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 3c80a206af74eb370470c38a7af9c7f1fe840406
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 59b8abf59212d9cfb0719b6b76e9542249ee4c41
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198152"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472692"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>チュートリアル:Linux VM と Python アプリを使用してシークレットを Azure Key Vault に格納する
 
@@ -43,7 +43,7 @@ Azure Key Vault は、API キーや、アプリケーション、サービス、
 
 ## <a name="understand-managed-service-identity"></a>マネージド サービス ID について
 
-Azure Key Vault には、資格情報をコードに含めることなく安全に格納することができます。 それらを取得するためには、Azure Key Vault に対して認証を行う必要があります。 しかし、Key Vault に対して認証するには資格情報が必要になります。 これは、古典的なブートストラップ問題です。 マネージド サービス ID (MSI) は、Azure と Azure Active Directory (Azure AD) を通じてブートストラップ ID を提供します。これにより、物事が簡単になります。
+Azure Key Vault は資格情報を安全に格納できるため、それらはコードに含まれません。 それらを取得するためには、Azure Key Vault に対して認証を行う必要があります。 しかし、Key Vault に対して認証するには資格情報が必要になります。 これは、古典的なブートストラップ問題です。 マネージド サービス ID (MSI) は、Azure と Azure Active Directory (Azure AD) を通じてブートストラップ ID を提供します。これにより、物事が簡単になります。
 
 Azure サービス (Virtual Machines、App Service、Functions など) に対して MSI を有効にすると、そのサービスのインスタンスに使用されるサービス プリンシパルが Azure AD に作成されます。 サービスのインスタンスには、サービス プリンシパルの資格情報が挿入されます。
 
@@ -113,7 +113,7 @@ az vm create \
 
 VM とサポートするリソースを作成するには数分かかります。 次の出力例は、成功した VM 作成操作を示します。
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -138,7 +138,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 コマンドの出力結果は次のとおりです。
 
-```azurecli
+```output
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}

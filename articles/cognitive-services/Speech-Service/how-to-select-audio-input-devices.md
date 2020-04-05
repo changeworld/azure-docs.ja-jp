@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
 ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74109979"
 ---
 # <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>方法:Speech SDK を使用してオーディオ入力デバイスを選択する
@@ -380,7 +380,7 @@ iOS では、Speech SDK を使用したオーディオ デバイスの選択は�
 
 JavaScript では、[MediaDevices.enumerateDevices()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) メソッドを使用してメディア デバイスを列挙することにより、`fromMicrophone(...)` に渡すデバイス ID を検索できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [GitHub でサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)

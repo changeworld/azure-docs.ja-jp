@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
 ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72757141"
 ---
 # <a name="create-human-reviews-rest"></a>人によるレビューの作成 (REST)
@@ -23,7 +23,7 @@ ms.locfileid: "72757141"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Content Moderator [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)サイトにサインインするか、またはアカウントを作成します。
+- Content Moderator [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) サイトにサインインするか、アカウントを作成します。
 
 ## <a name="create-a-review"></a>レビューを作成する
 
@@ -45,7 +45,7 @@ ms.locfileid: "72757141"
 - **Metadata**:コールバック エンドポイントに返される、カスタムのキー/値のペア。 キーが[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)で定義された短いコードの場合は、タグとして表示されます。
 - **Content**: イメージや動画コンテンツの場合、コンテンツを指す URL 文字列です。 テキスト コンテンツの場合、実際のテキスト文字列です。
 - **ContentId**:カスタム識別子の文字列。 この文字列は API に渡され、コールバックで返されます。 これは、内部識別子またはメタデータをモデレーション ジョブの結果に関連付けるために役立ちます。
-- **CallbackEndpoint**: (オプション) レビューが完了したときにコールバック情報を受信する URL。
+- **CallbackEndpoint**: (省略可能) レビューが完了したときにコールバック情報を受信する URL。
 
 既定の要求本文は、作成可能なさまざまな種類のレビューの例を示します。
 
@@ -190,6 +190,6 @@ ms.locfileid: "72757141"
 - **reviewerResultTags**: 人によるレビュー チームによってタグが手動で追加された場合に、表示されます (**createdBy** フィールドが表示されます)。
 - **metadata**: 人によるレビュー チームが変更を加える前に、最初にレビューに追加されたタグが表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このガイドでは、REST API を使用してコンテンツ モデレーション レビューを作成する方法について説明しました。 次に、レビューを、[E コマース モデレーション](./ecommerce-retail-catalog-moderation.md) チュートリアルなどのエンドツーエンドのモデレーション シナリオに統合します。

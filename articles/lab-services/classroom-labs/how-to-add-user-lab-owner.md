@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: 9302cadf0b900c9faac382bad86b51cea7d828fb
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77443518"
 ---
 # <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>Azure Lab Services で既存のラボに所有者を追加する方法
@@ -26,7 +26,7 @@ ms.locfileid: "77443518"
 ## <a name="add-user-to-the-reader-role-for-the-lab-account"></a>ラボ アカウントの閲覧者ロールにユーザーを追加する
 既存のラボに追加の所有者としてユーザーを追加するには、まず、ラボ アカウントに対する**読み取り** アクセス許可をユーザーに付与する必要があります。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 左側のメニューから、 **[すべてのサービス]** を選択します。 **[Lab Services]** を探して選択します。
 3. 一覧からお使いの**ラボ アカウント**を選択します。 
 2. **[ラボ アカウント]** ページで、左側のメニューから **[アクセス制御 (IAM)]** を選択します。 

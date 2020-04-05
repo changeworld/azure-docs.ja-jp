@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e779f633efccf7b594c193e165a584d22b1d653b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74021970"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールに対する要求を承認または拒否する
@@ -32,7 +32,7 @@ Azure リソース ロールの要求を承認または拒否するには、こ�
 
 代理承認者は、Azure リソース ロール要求が代理承認者による承認を待っている状態になると、電子メール通知を受け取ります。 これらの保留中の要求は、Privileged Identity Management で表示できます。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
@@ -76,7 +76,7 @@ Azure リソース ロールの要求を承認または拒否するには、こ�
 >[!Note]
 >承認されたユーザーをアクティブにしないほうがよいと見なしたリソース管理者は、Privileged Identity Management でアクティブなロールの割り当てを削除できます。 リソース管理者は、承認者でない限り、保留中の要求の通知を受け取りませんが、Privileged Identity Management で保留中の要求を表示することで、すべてのユーザーの保留中の要求を確認およびキャンセルできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Privileged Identity Management で Azure リソース ロールを延長または更新する](pim-resource-roles-renew-extend.md)
 - [Privileged Identity Management での電子メール通知](pim-email-notifications.md)

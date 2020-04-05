@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 37f70399e8125db559098869cdfffdf4533498d7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73835833"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
@@ -48,7 +48,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 要求ヘッダーを次に示します。
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">ヘッダー</th>
   <th>説明</th>
   <tr>
     <td>Accept-Language</td>
@@ -97,11 +97,11 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `translation` プロパティの値は、キーと値のペアの辞書です。 各キーは BCP 47 言語タグです。 キーは、テキストの翻訳先の言語または元の言語を識別します。 キーに関連付けられる値は、言語を表すプロパティを持つ JSON オブジェクトです。
 
-  * `name`:`Accept-Language` ヘッダー経由で要求されたロケールの言語の表示名。
+  * `name`: `Accept-Language` ヘッダー経由で要求されたロケールの言語の表示名。
 
-  * `nativeName`:この言語にネイティブなロケールの言語の表示名。
+  * `nativeName`: この言語にネイティブなロケールの言語の表示名。
 
-  * `dir`:方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
+  * `dir`: 方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
 
   例を示します。
           
@@ -123,21 +123,21 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `transliteration` プロパティの値は、キーと値のペアの辞書です。 各キーは BCP 47 言語タグです。 キーは、テキストをある書記体系から別の書記体系に変換できる言語を示します。 キーに関連付けられる値は、言語とそのサポートされる書記体系を表すプロパティを持つ JSON オブジェクトです。
 
-  * `name`:`Accept-Language` ヘッダー経由で要求されたロケールの言語の表示名。
+  * `name`: `Accept-Language` ヘッダー経由で要求されたロケールの言語の表示名。
 
-  * `nativeName`:この言語にネイティブなロケールの言語の表示名。
+  * `nativeName`: この言語にネイティブなロケールの言語の表示名。
 
-  * `scripts`:変換元の書記体系の一覧。 `scripts` の一覧の各要素には、次のプロパティがあります。
+  * `scripts`: 変換元の書記体系の一覧。 `scripts` の一覧の各要素には、次のプロパティがあります。
 
-    * `code`:書記体系を識別するコード。
+    * `code`: 書記体系を識別するコード。
 
-    * `name`:`Accept-Language` ヘッダー経由で要求されたロケールの書記体系の表示名。
+    * `name`: `Accept-Language` ヘッダー経由で要求されたロケールの書記体系の表示名。
 
-    * `nativeName`:この言語にネイティブなロケールの言語の表示名。
+    * `nativeName`: この言語にネイティブなロケールの言語の表示名。
 
-    * `dir`:方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
+    * `dir`: 方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
 
-    * `toScripts`:テキストの変換先として使用できる書記体系の一覧。 `toScripts` の一覧の各要素には、前述したとおり `code`、`name`、`nativeName`、`dir` の各プロパティがあります。
+    * `toScripts`: テキストの変換先として使用できる書記体系の一覧。 `toScripts` の一覧の各要素には、前述したとおり `code`、`name`、`nativeName`、`dir` の各プロパティがあります。
 
   例を示します。
 
@@ -188,21 +188,21 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `dictionary` プロパティの値は、キーと値のペアの辞書です。 各キーは BCP 47 言語タグです。 キーは、代替翻訳と逆翻訳が利用可能な言語を識別します。 値は、ソース言語と利用可能な翻訳があるターゲット言語を記述する JSON オブジェクトです。
 
-  * `name`:`Accept-Language` ヘッダー経由で要求されたロケールのソース言語の表示名。
+  * `name`: `Accept-Language` ヘッダー経由で要求されたロケールのソース言語の表示名。
 
-  * `nativeName`:この言語にネイティブなロケールの言語の表示名。
+  * `nativeName`: この言語にネイティブなロケールの言語の表示名。
 
-  * `dir`:方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
+  * `dir`: 方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
 
-  * `translations`:代替翻訳とソース言語で表現されたクエリの例を含む言語の一覧。 `translations` の一覧の各要素には、次のプロパティがあります。
+  * `translations`: 代替翻訳とソース言語で表現されたクエリの例を含む言語の一覧。 `translations` の一覧の各要素には、次のプロパティがあります。
 
-    * `name`:`Accept-Language` ヘッダー経由で要求されたロケールのターゲット言語の表示名。
+    * `name`: `Accept-Language` ヘッダー経由で要求されたロケールのターゲット言語の表示名。
 
-    * `nativeName`:ターゲット言語にネイティブなロケールのターゲット言語の表示名。
+    * `nativeName`: ターゲット言語にネイティブなロケールのターゲット言語の表示名。
 
-    * `dir`:方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
+    * `dir`: 方向性。右から左に記述する言語の場合は `rtl`、左から右に記述する言語の場合は `ltr`。
     
-    * `code`:ターゲット言語を識別する言語コード。
+    * `code`: ターゲット言語を識別する言語コード。
 
   例を示します。
 
@@ -229,11 +229,11 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 ## <a name="response-headers"></a>応答ヘッダー
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">ヘッダー</th>
   <th>説明</th>
   <tr>
     <td>ETag</td>
-    <td>要求されたサポートされる言語のグループのエンティティ タグの現在の値。 後続の要求をより効率的にするために、クライアントは、`If-None-Match` ヘッダー フィールドで `ETag` 値を送信することができます。
+    <td>要求されたサポートされる言語のグループのエンティティ タグの現在の値。 後続の要求をより効率的にするために、クライアントは、`ETag` ヘッダー フィールドで `If-None-Match` 値を送信することができます。
     </td>
   </tr>
   <tr>
@@ -251,7 +251,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   <th>説明</th>
   <tr>
     <td>200</td>
-    <td>成功。</td>
+    <td>正常終了しました。</td>
   </tr>
   <tr>
     <td>304</td>

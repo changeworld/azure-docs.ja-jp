@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 5/23/2018
 ms.author: anmola
 ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75466190"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Windows で Service Fabric Reliable Services と Reliable Actors をコンテナー化する

@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2cb19c82f8c19bf87eeef755adb5756b2452512
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025286"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory でカスタム ロールを作成して割り当てる
@@ -176,7 +176,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 1. ロールを選択して、 **[割り当て]** ページを開きます。
 1. **[割り当ての追加]** を選択してユーザーを追加します。 このユーザーには、選択したアプリ登録に対してのみアクセス許可が付与されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure AD 管理ロール フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)でご意見をお寄せください。
 - ロールと管理者ロールの割り当ての詳細については、[管理者ロールの割り当て](directory-assign-admin-roles.md)に関するページを参照してください。

@@ -10,16 +10,18 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 829921ae5600873fdc8f2946ae3ff355bffb06a8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a48c553f1c96b8777e0a591f428dca3f15d7d30e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978596"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80053634"
 ---
 # <a name="what-is-custom-vision"></a>Custom Vision とは
 
-Custom Vision は、独自の画像分類器を構築、デプロイ、改良できるようにする Cognitive Services です。 画像分類器は、視覚特性に基づいて画像にラベル ("_クラス_" を表す) を適用する AI サービスです。 [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) サービスとは異なり、Custom Vision では適用するラベルをユーザーが決定できます。
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+
+Custom Vision は、独自の画像分類器を構築、デプロイ、改良できるようにするコグニティブ サービスです。 画像分類器は、視覚特性に基づいて画像にラベル ("_クラス_" を表す) を適用する AI サービスです。 [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) サービスとは異なり、Custom Vision では適用するラベルをユーザーが決定できます。
 
 ## <a name="what-it-does"></a>実行内容
 
@@ -29,7 +31,7 @@ Custom Vision サービスでは、画像にラベルを適用するために機
 
 Custom Vision の機能は、2 つに分割できます。 **画像の分類**では、画像に 1 つまたは複数のラベルを適用します。 **オブジェクトの検出**では、同様のことを行いますが、適用されたラベルを見つけることができる画像内の座標も返されます。
 
-### <a name="optimization"></a>最適化
+### <a name="optimization"></a>Optimization
 
 Custom Vision サービスは、画像間の主な違いをすばやく認識するために最適化されているため、少量のデータを含むモデルでプロトタイプの作成を始めることができます。 ラベルあたり 50 個の画像が、通常は適切な出発点です。 しかし、このサービスは、画像の微妙な違いの検出 (たとえば、品質保証のシナリオにおける小さな割れやへこみの検出) には最適ではありません。
 
@@ -45,6 +47,6 @@ Custom Vision Service は、[Custom Vision ホーム ページ](https://customvi
 
 Cognitive Services 全般に言えることですが、Custom Vision サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに留意する必要があります。 詳細については、Microsoft セキュリティ センターの [Cognitive Services のページ](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [分類器の構築](getting-started-build-a-classifier.md)に関するガイドに従って、Web で Custom Vision の使用を開始するか、[画像分類のチュートリアル](csharp-tutorial.md)を実行して、コードで基本的なシナリオを実装します。

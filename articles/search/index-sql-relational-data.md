@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3b973dd05d23d190c77986ca9bf6d39656739cd8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72790087"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Azure Cognitive Search でのインポートおよびインデックス作成用にリレーショナル SQL データをモデル化する方法
@@ -150,7 +150,7 @@ Azure Cognitive Search 側で、入れ子になった JSON を使用して一対
 
 前の結果セットと上記のインデックス スキーマがあれば、インデックス作成操作を成功させるために必要なすべてのコンポーネントが用意されています。 フラット化されたデータ セットはインデックス作成の要件を満たしていますが、詳細情報も保持されます。 Azure Cognitive Search インデックスでは、検索結果がホテルベースのエンティティに簡単に分類され、さらに個々の客室とその属性のコンテキストが保持されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 独自のデータ セットを使用して、[データのインポート ウィザード](search-import-data-portal.md)を使用してインデックスを作成し、読み込むことができます。 ウィザードによって、*Rooms* に含まれているものなど、埋め込み JSON コレクションが検出され、複合型コレクションを含むインデックス スキーマが推測されます。 
 
@@ -159,4 +159,4 @@ Azure Cognitive Search 側で、入れ子になった JSON を使用して一対
 データのインポート ウィザードの基本的な手順については、次のクイックスタートを試してください。
 
 > [!div class="nextstepaction"]
-> [クイック スタート:Azure portal を使用して検索インデックスを作成する](search-get-started-portal.md)
+> [クイック スタート: Azure portal を使用して検索インデックスを作成する](search-get-started-portal.md)

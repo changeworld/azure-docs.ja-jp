@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: shlo
 ms.openlocfilehash: 73e6e4e69a245485ca473f048bbeafef21dbbf37
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73836787"
 ---
 # <a name="custom-neural-voice-gating-overview"></a>カスタム ニューラル音声の制限の概要
@@ -49,6 +49,6 @@ Microsoft の目的は、個人や社会の権利を保護し、人間とコン�
 * [合成音声テクノロジの責任あるデプロイのためのガイドライン](concepts-guidelines-responsible-deployment-synthetic.md)
 * [開示する方法](concepts-disclosure-guidelines.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [合成音声テクノロジの責任あるデプロイのためのガイドライン](concepts-guidelines-responsible-deployment-synthetic.md)

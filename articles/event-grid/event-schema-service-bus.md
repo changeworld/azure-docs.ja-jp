@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: babanisa
 ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561763"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>Service Bus 用の Azure Event Grid イベント スキーマ
@@ -102,7 +102,7 @@ Service Bus から出力されるイベントの種類は次のとおりです�
 | topicName | string | アクティブなメッセージのある Service Bus サブスクリプションが属しているトピック。 キューを使っている場合は値 null。 |
 | subscriptionName | string | アクティブなメッセージのある Service Bus サブスクリプション。 キューを使っている場合は値 null。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

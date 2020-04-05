@@ -3,13 +3,13 @@ title: チュートリアル:コンテナーを使用したレガシ アプリ (
 description: Azure App Service にカスタムの Windows コンテナーを移行し、カスタム ソフトウェアをコンテナーにデプロイする方法について説明します。
 ms.topic: tutorial
 ms.date: 10/22/2019
-ms.custom: seodec18
-ms.openlocfilehash: 5fc65a4d3f9989ac462d7716b7652a1011281413
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 74cb88bc1ace87155a35163ca8f9d3d6c4242ae0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671972"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80046613"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Windows コンテナー (プレビュー) を使用して Azure App Service に ASP.NET アプリを移行する
 
@@ -45,7 +45,7 @@ ms.locfileid: "74671972"
 
 このフォントは、[Google Fonts](https://fonts.google.com/specimen/Fredericka+the+Great) で一般公開されています。
 
-### <a name="run-the-app"></a>アプリの実行
+### <a name="run-the-app"></a>アプリを実行する
 
 *custom-font-win-container/CustomFontSample.sln* ファイルを Visual Studio で開きます。 
 
@@ -111,7 +111,7 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 次の表の推奨値に基づいて新しいコンテナー レジストリを構成します。 完了したら、 **[作成]** をクリックします。
 
-| Setting  | 推奨値 | BLOB の詳細 |
+| 設定  | 推奨値 | 詳細情報 |
 | ----------------- | ------------ | ----|
 |**DNS プレフィックス**| 生成されたレジストリ名をそのまま使用するか、または別の一意名に変更します。 |  |
 |**リソース グループ**| **[新規]** をクリックし、「**myResourceGroup**」と入力して、 **[OK]** をクリックします。 |  |
@@ -132,13 +132,13 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ### <a name="configure-app-basics"></a>アプリの基本情報を構成する
 
-**[基本]** タブで、次の表に従って設定を構成し、 **[Next: Docker]\(次へ: Docker\)** をクリックします。
+**基本** タブで、次の表に従って設定を構成し、**Next: Docker\(次へ: Docker** をクリックします。
 
-| Setting  | 推奨値 | BLOB の詳細 |
+| 設定  | 推奨値 | 詳細情報 |
 | ----------------- | ------------ | ----|
 |**サブスクリプション**| 正しいサブスクリプションが選択されていることを確認します。 |  |
 |**リソース グループ**| **[新規作成]** を選択し、「**myResourceGroup**」と入力して、 **[OK]** をクリックします。 |  |
-|**Name**| 一意の名前を入力します。 | Web アプリの URL は `http://<app-name>.azurewebsites.net` です。`<app-name>` には自分のアプリの名前を指定します。 |
+|**名前**| 一意の名前を入力します。 | Web アプリの URL は `http://<app-name>.azurewebsites.net` です。`<app-name>` には自分のアプリの名前を指定します。 |
 |**発行**| Docker コンテナー | |
 |**オペレーティング システム**| Windows | |
 |**リージョン**| 西ヨーロッパ | |
@@ -152,7 +152,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 **[Docker]** タブで、次の表に示したようにカスタム Windows コンテナーを構成し、 **[確認および作成]** を選択します。
 
-| Setting  | 推奨値 |
+| 設定  | 推奨値 |
 | ----------------- | ------------ |
 |**イメージのソース**| Azure Container Register |
 |**レジストリ**| [以前に作成したレジストリ](#publish-to-azure-container-registry)を選択します。 |

@@ -7,15 +7,15 @@ author: ReutAmior
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
-ms.topic: article
+ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: c1395bc3b329630a1ecbd479d275c30c9c787bb1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e9a4575ce2f353d61654263aea8d968c650a689e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839011"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79499750"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>クイック スタート:Video Indexer にユーザーを招待する
 
@@ -51,7 +51,7 @@ ms.locfileid: "73839011"
 
 ユーザーは、削除されても通知を受け取りません。 削除されると、ユーザーはログインを承認されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、[Video Indexer Web サイト](video-indexer-view-edit.md)または [Video Indexer 開発者ポータル](video-indexer-use-apis.md)を使用してビデオの分析情報を表示できます。
 

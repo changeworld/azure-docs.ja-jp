@@ -16,10 +16,10 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ab6f304d78357e261c68ebbcfcb3746844edce8a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74038560"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Windows VM 用の サンプルの Azure インフラストラクチャによるチュートリアル
@@ -60,7 +60,7 @@ Adventure Works Cycles では、以下の項目で構成されるオンライン
 ## <a name="azure-subscriptions-and-accounts"></a>Azure サブスクリプションとアカウント
 Adventure Works Cycles は、Adventure Works Enterprise Subscription という名前のエンタープライズ サブスクリプションを使用して、この IT ワークロードに対する課金を行います。
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 Adventure Works Cycles では、Azure Managed Disks を使用する必要があると決定しました。 VM を作成するときに、使用可能な両方のストレージ層が使用されます。
 
 * Web サーバー、アプリケーション サーバー、ドメイン コントローラーとそれらのデータ ディスクの **Standard Storage**。
@@ -71,15 +71,15 @@ Adventure Works Cycles では、Azure Managed Disks を使用する必要があ�
 
 Contoso は、Azure ポータルを使用して次の設定でクラウド専用仮想ネットワークを作成しました。
 
-* 名前:AZOS-USE-VN01
-* 場所:米国東部 2
-* 仮想ネットワークのアドレス空間:10.0.0.0/8
+* 名前: AZOS-USE-VN01
+* 場所: East US 2
+* 仮想ネットワークのアドレス空間: 10.0.0.0/8
 * 1 番目のサブネット:
-  * 名前:FrontEnd
-  * アドレス空間:10.0.1.0/24
+  * 名前: FrontEnd
+  * アドレス空間: 10.0.1.0/24
 * 2 番目のサブネット:
-  * 名前:BackEnd
-  * アドレス空間:10.0.2.0/24
+  * 名前: BackEnd
+  * アドレス空間: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>可用性セット
 オンライン ストアの 4 つの階層すべてで高可用性を維持するため、Adventure Works Cycles は次の 4 つの可用性セットを採用しました。

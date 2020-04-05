@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
 ms.openlocfilehash: 72a87c3b23e0eed6cfbf1614388702443f4e99d0
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588789"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227275"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB SQL (コア) API リソースを管理する
 
@@ -42,7 +42,7 @@ Azure Cosmos DB リソースを作成するには、次のテンプレート例�
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 > [!NOTE]
-> 大きいパーティション キーを持つコンテナーを作成するには、前のテンプレートを変更して、`partitionKey` オブジェクト内に `"version":2` プロパティを含めます。
+> 大きいパーティション キーを持つコンテナーを作成するには、前のテンプレートを変更して、`"version":2` オブジェクト内に `partitionKey` プロパティを含めます。
 
 ### <a name="deploy-via-powershell"></a>PowerShell 経由でのデプロイ
 

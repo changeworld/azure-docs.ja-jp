@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4780786f0caea2c211b6b93fb0736feaade8de80
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74274831"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Azure Active Directory アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス 
@@ -68,7 +68,7 @@ Azure AD アプリケーション プロキシの特徴:
 | Active Directory (AD) | Active Directory はオンプレミスで実行され、ドメイン アカウントの認証を行います。 シングル サインオンが構成されている場合、コネクタは必要な追加認証を実行するために AD と通信します。
 | オンプレミスのアプリケーション | 最終的にユーザーは、オンプレミス アプリケーションにアクセスできます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 アプリケーション プロキシの使用を開始するには、[アプリケーション プロキシを使用したリモート アクセスを行うためのオンプレミス アプリケーションの追加に関するチュートリアル](application-proxy-add-on-premises-application.md)を参照してください。 
 
 最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](https://blogs.technet.com/b/applicationproxyblog/)を参照してください。

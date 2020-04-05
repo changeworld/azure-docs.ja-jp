@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect:パススルー認証 | Microsoft Docs
+title: 'Azure AD Connect: パススルー認証 | Microsoft Docs'
 description: この記事では、Azure Active Directory (Azure AD) パススルー認証について説明します。パススルー認証は、オンプレミス Active Directory に対してユーザーのパスワードを検証することで Azure AD のサインインを可能にします。
 services: active-directory
 keywords: Azure AD Connect パススルー認証とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d4b52a3025bfb15e2679709353cebf28254a75c2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77185501"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証によるユーザー サインイン
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-この機能は、組織にクラウド認証の同じメリットをもたらす、[Azure AD のパスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)の代わりです。 ただし、自身のオンプレミスの Active Directory のセキュリティとパスワード ポリシーを適用する必要がある特定の組織は、代わりにパススルー認証を使用することを選択できます。 Azure AD の各種サインイン方法の比較および組織に合った適切なサインイン方法の選び方については、[こちらのガイド](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)をご覧ください。
+この機能は、組織にクラウド認証を同じメリットをもたらす、[Azure AD のパスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)の代わりです。 ただし、自身のオンプレミスの Active Directory のセキュリティとパスワード ポリシーを適用する必要がある特定の組織は、代わりにパススルー認証を使用することを選択できます。 Azure AD の各種サインイン方法の比較および組織に合った適切なサインイン方法の選び方については、[こちらのガイド](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)をご覧ください。
 
 ![Azure AD パススルー認証](./media/how-to-connect-pta/pta1.png)
 

@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 9/25/2019
 ms.openlocfilehash: 8cc04b766ba63fb522417310177a539ea04fcdd6
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71274869"
 ---
 # <a name="update-rus-for-a-table-api-table-for-azure-cosmos-db-azure-cli"></a>Azure Cosmos DB Azure CLI 用の Table API テーブルの RU/秒を更新する
@@ -46,7 +46,7 @@ az group delete --name $resourceGroupName
 | [az cosmosdb table throughput update](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-update) | Azure Cosmos Table API テーブルの RU/秒を更新します。 |
 | [az group delete](/cli/azure/resource#az-resource-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB CLI の詳細については、[Azure Cosmos DB CLI のドキュメント](/cli/azure/cosmosdb)を参照してください。
 

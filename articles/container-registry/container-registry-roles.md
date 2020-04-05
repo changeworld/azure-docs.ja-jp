@@ -4,10 +4,10 @@ description: Azure のロールベースのアクセス制御 (RBAC) と ID お�
 ms.topic: article
 ms.date: 12/02/2019
 ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74893486"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry のロールとアクセス許可
@@ -16,7 +16,7 @@ Azure Container Registry サービスは、Azure コンテナー レジストリ
 
 | ロール/アクセス許可       | [Resource Manager へのアクセス](#access-resource-manager) | [レジストリの作成/削除](#create-and-delete-registry) | [イメージのプッシュ](#push-image) | [イメージのプル](#pull-image) | [イメージ データを削除する](#delete-image-data) | [ポリシーの変更](#change-policies) |   [イメージの署名](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| Owner | X | X | X | X | X | X |  |  
+| 所有者 | X | X | X | X | X | X |  |  
 | Contributor | X | X | X |  X | X | X |  |  
 | Reader | X |  |  | X |  |  |  |
 | AcrPush |  |  | X | X | |  |  |  
@@ -83,7 +83,7 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 > [!IMPORTANT]
 > カスタムロールでは、Azure Container Registry は、現在、一致するすべてのアクションへのアクセスを許可する `Microsoft.ContainerRegistry/*` や `Microsoft.ContainerRegistry/registries/*` などのワイルドカードを、サポートしていません。 ロールに、必要なアクションを個別に指定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure portal](../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md)、またはその他の Azure ツールを使用した Azure ID への RBAC ロールの割り当てについてさらに理解します。
 

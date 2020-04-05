@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Graph の概要
 description: Azure Resource Graph サービスによってサブスクリプションとテナントにまたがるリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
-ms.date: 10/21/2019
+ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: 1e84de19d35f0c5f5d7975c8a94d5164100013e4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936509"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79214770"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Resource Graph とは
 
@@ -31,7 +31,7 @@ Azure Resource Graph は Azure 内のサービスであり、Azure Resource Mana
 
 Azure Resource Manager では現在、基本的なリソース フィールドに対するクエリがサポートされています。具体的には、リソース名、ID、種類、リソース グループ、サブスクリプション、および場所です。 Resource Manager には、一度に 1 つのリソースについて詳細なプロパティを得るために個別のリソース プロバイダーを呼び出す機能も用意されています。
 
-Azure Resource Graph を使用することにより、各リソースプロバイダーへの個別の呼び出しを行う必要なく、リソースプロバイダーが返すこれらのプロパティにアクセスすることができます。 サポートされるリソースの種類については、[完全モード デプロイでのリソース](../../azure-resource-manager/templates/complete-mode-deletion.md)に関する表で "**はい**" を探してください。 その他のリソースの種類については、関連する「[Resource Graph テーブル](./concepts/query-language.md#resource-graph-tables)」を参照してください。 サポートされるリソースの種類は、[Azure Resource Graph エクスプローラーのスキーマ ブラウザー](./first-query-portal.md#schema-browser)を使用して確認することもできます。
+Azure Resource Graph を使用することにより、各リソースプロバイダーへの個別の呼び出しを行う必要なく、リソースプロバイダーが返すこれらのプロパティにアクセスすることができます。 サポートされるリソースの種類の一覧については、[テーブルとリソースの種類のリファレンス](./reference/supported-tables-resources.md)に関するページを確認してください。 サポートされるリソースの種類は、[Azure Resource Graph エクスプローラーのスキーマ ブラウザー](./first-query-portal.md#schema-browser)を使用して確認することもできます。
 
 Azure Resource Graph では、次のことができます。
 

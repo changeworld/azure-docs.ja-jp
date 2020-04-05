@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
 ms.openlocfilehash: ca52a458104b4de0f7b3ed2aa3f76109a5623c97
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74067310"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの WinRM アクセスを設定する
@@ -33,14 +33,14 @@ ms.locfileid: "74067310"
 
  
 
-## <a name="step-1-create-a-key-vault"></a>手順 1:Key Vault の作成
+## <a name="step-1-create-a-key-vault"></a>手順 1: Key Vault を作成する
 次のコマンドを使用して、Key Vault を作成します
 
 ```
 New-AzKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
 ```
 
-## <a name="step-2-create-a-self-signed-certificate"></a>手順 2:自己署名証明書の作成
+## <a name="step-2-create-a-self-signed-certificate"></a>手順 2: 自己署名証明書を作成する
 この PowerShell スクリプトを使用して、自己署名証明書を作成します
 
 ```
@@ -55,7 +55,7 @@ $password = Read-Host -Prompt "Please enter the certificate password." -AsSecure
 Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $password
 ```
 
-## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>手順 3:Key Vault に自己署名証明書をアップロードする
+## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>手順 3: Key Vault に自己署名証明書をアップロードする
 手順 1 で作成した Key Vault に証明書をアップロードする前に、Microsoft.Compute リソース プロバイダーが理解する形式への変換が必要です。 次の PowerShell スクリプトにより、実行が許可されます
 
 ```
@@ -78,7 +78,7 @@ $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
 Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
 ```
 
-## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>手順 4:Key Vault の自己署名証明書の URL を取得する
+## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>手順 4: Key Vault の自己署名証明書の URL を取得する
 VM をプロビジョニングするときに、Microsoft.Compute リソース プロバイダーには Key Vault 内部のシークレットへの URL が必要です。 これにより、Microsoft.Compute リソース プロバイダーがシークレットをダウンロードして、VM 上に同様の証明書を作成することができます。
 
 > [!NOTE]
@@ -94,7 +94,7 @@ VM をプロビジョニングするときに、Microsoft.Compute リソース �
 
     $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
-## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>手順 5:VM を作成するときに、自己署名証明書の URL を参照する
+## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>手順 5: VM を作成するときに、自己署名証明書の URL を参照する
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 テンプレートを使用して VM を作成する場合、"secrets" セクションと "WinRM" セクションで証明書を次のように参照します。
 
@@ -143,7 +143,7 @@ VM をプロビジョニングするときに、Microsoft.Compute リソース �
     $CertificateStore = "My"
     $vm = Add-AzVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
 
-## <a name="step-6-connecting-to-the-vm"></a>手順 6:VM に接続する
+## <a name="step-6-connecting-to-the-vm"></a>手順 6 - VM に接続する
 VM に接続する前に、WinRM リモート管理のためにコンピューターが構成されていることを確認する必要があります。 管理者として PowerShell を開始し、次のコマンドを実行して設定を確認します。
 
     Enable-PSRemoting -Force

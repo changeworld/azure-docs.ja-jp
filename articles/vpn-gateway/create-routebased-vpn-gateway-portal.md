@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 6156d689a29ee348f9b1974d1520eb7d186a8d8d
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78331351"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Azure Portal を使用してルートベースの VPN ゲートウェイをすばやく作成する
@@ -21,11 +21,11 @@ ms.locfileid: "78331351"
 
 この記事の手順では、VNet、サブネット、ゲートウェイ サブネット、およびルートベースの VPN ゲートウェイ (仮想ネットワーク ゲートウェイ) を作成します。 ゲートウェイの作成が完了すると、接続を作成できます。 これらの手順には、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="vnet"></a>仮想ネットワークの作成
+## <a name="create-a-virtual-network"></a><a name="vnet"></a>仮想ネットワークの作成
 
 [!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="gwvalues"></a>ゲートウェイの構成または作成
+## <a name="configure-and-create-the-gateway"></a><a name="gwvalues"></a>ゲートウェイの構成または作成
 
 この手順では、VNet の仮想ネットワーク ゲートウェイを作成します。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。
 
@@ -38,7 +38,7 @@ ms.locfileid: "78331351"
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="viewgw"></a>VPN ゲートウェイの表示
+## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>VPN ゲートウェイの表示
 
 1. ゲートウェイの作成後、ポータルで VNet1 に移動します。 VPN ゲートウェイは、接続されたデバイスとして [概要] ページに表示されます。
 

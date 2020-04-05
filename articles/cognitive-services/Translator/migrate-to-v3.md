@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: eb43d549d3e0cd449c865d533fc8701c4c3912fd
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73837308"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API を V2 から V3 に移行する
@@ -61,7 +61,7 @@ V2 メソッドと V3 メソッドについてまとめた次のリストで、V
 
 Microsoft Translator Text Translation V2 では、XML 形式でデータを受け取り、返しました。 V3 では、API を利用して送受信されるすべてのデータが JSON 形式になります。 XML は V3 では受け取られず、返されません。
 
-この変更は、V2 Text Translation API のために記述されたアプリケーションのいくつかの面に影響を与えます。 例Languages API は、テキスト翻訳メソッド、表記変換メソッド、2 か国語辞書メソッドの言語情報を返します。 1 回の呼び出しですべてのメソッドのすべての言語情報を要求するか、それらを個別に要求できます。
+この変更は、V2 Text Translation API のために記述されたアプリケーションのいくつかの面に影響を与えます。 例: Languages API は、テキスト翻訳メソッド、音訳メソッド、2 か国語辞書メソッドの言語情報を返します。 1 回の呼び出しですべてのメソッドのすべての言語情報を要求するか、それらを個別に要求できます。
 
 言語メソッドは認証を要求しません。次のリンクをクリックすると、V3 の全言語情報を JSON で参照できます。
 
@@ -143,7 +143,7 @@ V3 テキスト API によるニューラル翻訳では、標準カテゴリ (S
 * [Microsoft Azure の法的情報](https://azure.microsoft.com/support/legal)
 * [オンライン サービス規約](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [V3.0 ドキュメントを見る](reference/v3-0-reference.md)

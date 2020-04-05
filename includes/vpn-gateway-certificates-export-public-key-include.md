@@ -5,21 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/13/2019
+ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: afd4836229c60ebef1536d4fa1ca4206a492e56d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d2dba0f657b418267db90c07014dc8996ed12a10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181051"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059934"
 ---
 自己署名ルート証明書を作成した後、ルート証明書の (秘密キーではなく) 公開キーの .cer ファイルをエクスポートします。 後でこのファイルを Azure にアップロードします。 次の手順で、自己署名ルート証明書の .cer ファイルをエクスポートしてください。
 
 1. 証明書から .cer ファイルを取得するには、 **[ユーザー証明書の管理]** を開きます。 自己署名ルート証明書を探して右クリックします (通常は 'Current User\Personal\Certificates' にあります)。 **[すべてのタスク]** 、 **[エクスポート]** の順にクリックします。 **証明書のエクスポート ウィザード**が開きます。 Current User\Personal\Certificates に証明書が見つからない場合は、誤って "Certificates - Current User" ではなく "Certificates - Local Computer" を開いている可能性があります。 PowerShell を使用して現在のユーザー スコープで証明書マネージャーを開きたい場合は、コンソール ウィンドウで「*certmgr*」と入力します。
 
-   ![エクスポート](./media/vpn-gateway-certificates-export-public-key-include/export.png)
+   ![[エクスポート]](./media/vpn-gateway-certificates-export-public-key-include/export.png)
 2. ウィザードで **[次へ]** をクリックします。
 
    ![証明書をエクスポートします。](./media/vpn-gateway-certificates-export-public-key-include/exportwizard.png)

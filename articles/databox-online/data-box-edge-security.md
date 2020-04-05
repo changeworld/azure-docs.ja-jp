@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 375576dd4a7897c48474fd2af00a99084292d854
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69970879"
 ---
 # <a name="azure-data-box-edge-security-and-data-protection"></a>Azure Data Box Edge のセキュリティとデータ保護
@@ -93,6 +93,6 @@ Data Box Edge サービスは、次のシナリオで個人情報を収集しま
 
 詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)で Microsoft のプライバシー ポリシーを確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Data Box Edge デバイスをデプロイする](data-box-edge-deploy-prep.md)

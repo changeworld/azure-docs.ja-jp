@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: e3a5807a0ccfa39cc80acacedaa5fb4d3afaaed3
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862766"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224991"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway のリセット
 
@@ -28,7 +28,7 @@ VPN Gateway は、アクティブ/スタンバイ構成で動作する 2 つの 
 
 2 回再起動してもクロスプレミス接続の問題が解消しない場合は、Azure ポータルからサポート リクエストを作成してください。
 
-## <a name="before"></a>開始する前に
+## <a name="before-you-begin"></a><a name="before"></a>開始する前に
 
 ゲートウェイをリセットする前に、個々の IPsec サイト間 (S2S) VPN トンネルについて、以下に挙げた主な項目を確認してください。 いずれか 1 つの項目でも不備があると、S2S VPN トンネルの接続が失われます。 オンプレミスの VPN ゲートウェイと Azure VPN Gateway に使用されている構成を確認して修正すれば、そのゲートウェイ上で正常に機能している他の接続に対して無駄な再起動や中断を行わずに済みます。
 
@@ -38,7 +38,7 @@ VPN Gateway は、アクティブ/スタンバイ構成で動作する 2 つの 
 * Azure の VPN ゲートウェイとオンプレミスの VPN ゲートウェイが同じ事前共有キーを持っていること。
 * 暗号化、ハッシュ アルゴリズム、PFS (Perfect Forward Secrecy) など特定の IPsec/IKE 構成を適用する場合、Azure の VPN ゲートウェイとオンプレミスの VPN ゲートウェイとに、必ず同じ構成を適用すること。
 
-## <a name="portal"></a>Azure Portal
+## <a name="azure-portal"></a><a name="portal"></a>Azure Portal
 
 Azure Portal を使用して Resource Manager VPN Gateway をリセットできます。 クラシック ゲートウェイをリセットする場合は、[PowerShell](#resetclassic) の手順を参照してください。
 
@@ -50,7 +50,7 @@ Azure Portal を使用して Resource Manager VPN Gateway をリセットでき�
    ![Reset VPN Gateway blade](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
 3. [リセット] ブレードで、 **[リセット]** ボタンをクリックします。
 
-## <a name="ps"></a>PowerShell
+## <a name="powershell"></a><a name="ps"></a>PowerShell
 
 ### <a name="resource-manager-deployment-model"></a>Resource Manager デプロイ モデル
 
@@ -67,7 +67,7 @@ Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 
 返された結果を受け取ったら、ゲートウェイのリセットが成功したとみなすことができます。 ただし、返された結果にはリセットが成功したことをはっきりと示すものは何もありません。 ゲートウェイのリセットが発生した正確な時間の履歴を詳細に調査したい場合は、[Azure Portal](https://portal.azure.com) でその情報を見ることができます。 ポータル上で、 **'GatewayName' から [リソース正常性]** に移動します。
 
-### <a name="resetclassic"></a>クラシック デプロイ モデル
+### <a name="classic-deployment-model"></a><a name="resetclassic"></a>クラシック デプロイ モデル
 
 ゲートウェイをリセットするためのコマンドレットは **Reset-AzureVNetGateway** です。 サービス管理のための Azure PowerShell コマンドレットは、デスクトップのローカルにインストールする必要があります。 Azure Cloud Shell は使用できません。 リセットを実行する前に [Service Management (SM) PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets) の最新版があることを確認します。 このコマンドを使用する場合は、必ず仮想ネットワークの完全名を使用してください。 ポータルを使用して作成されたクラシック VNet には、PowerShell に必要な長い名前が付いています。 長い名前を表示するには、'Get-AzureVNetConfig -ExportToFile C:\Myfoldername\NetworkConfig.xml' を使用します。
 
@@ -88,7 +88,7 @@ RequestId      : 9ca273de2c4d01e986480ce1ffa4d6d9
 StatusCode     : OK
 ```
 
-## <a name="cli"></a>Azure CLI
+## <a name="azure-cli"></a><a name="cli"></a>Azure CLI
 
 ゲートウェイをリセットするには [az network vnet-gateway reset](https://docs.microsoft.com/cli/azure/network/vnet-gateway) コマンドを使用します。 次の例では、TestRG5 リソース グループの VNet5GW という名前の仮想ネットワーク ゲートウェイをリセットします。
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 05355ad37183d4c14cb8f6598141292ded0386d9
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906963"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
@@ -76,7 +76,7 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)」を参照してください。
+> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)」を参照してください。
 
 ## <a name="build-the-request"></a>要求を作成する
 
@@ -215,7 +215,7 @@ go run get-languages.go
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 API のリファレンスを見て、Translator Text API でできるすべてのことを理解してください。
 

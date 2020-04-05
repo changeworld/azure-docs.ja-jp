@@ -9,10 +9,10 @@ ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
 ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77193083"
 ---
 ## <a name="for-users-in-your-directory"></a>ディレクトリ内のユーザーの場合

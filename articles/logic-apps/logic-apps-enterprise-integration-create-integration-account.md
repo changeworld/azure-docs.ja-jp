@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251006"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232963"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の統合アカウントを作成および管理する
 
@@ -55,7 +55,7 @@ ms.locfileid: "78251006"
 
    ![統合アカウントの詳細の指定](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | プロパティ | 必須 | Value | 説明 |
+   | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **名前** | はい | <*integration-account-name*> | 統合アカウントの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"Fabrikam-Integration" を使用します。 |
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | Azure サブスクリプションの名前 |

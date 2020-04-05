@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 9604da5252254120ac7bd3fca3f0cc97324aef92
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76293217"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs を Azure Pipelines CI/CD パイプラインに統合する
@@ -120,7 +120,7 @@ ms.locfileid: "76293217"
    
 1. 変数ごとに **[追加]** を選択し、名前と値を入力します。
    
-   |Name|値|
+   |名前|値|
    |---|---|
    |*vmName*|Resource Manager テンプレートで割り当てた VM 名|
    |*userName*|VM にアクセスするユーザー名|

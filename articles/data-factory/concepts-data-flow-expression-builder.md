@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/9/2019
 ms.openlocfilehash: 1dd782092ce91f7b71a3a2a6f2ed1646ee39a7e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444530"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>マッピング データ フローで式を構築する

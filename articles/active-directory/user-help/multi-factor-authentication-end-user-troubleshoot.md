@@ -13,10 +13,10 @@ ms.date: 02/20/2020
 ms.author: curtand
 ms.reviewer: kexia
 ms.openlocfilehash: c28b63749cfdbcd16b94cbd3ca7dd4023f46a351
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78897722"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>2 要素認証と職場または学校アカウントの一般的な問題
@@ -72,7 +72,7 @@ Azure Active Directory (Azure AD) 組織が 2 要素認証を有効にすると�
 
 ## <a name="i-got-a-new-phone-number-and-i-want-to-add-it"></a>新しい電話番号にしたので追加したい
 
-電話番号が新しくなった場合は、検証プロンプトが適切な場所に送られるように、セキュリティ検証方法の詳細を更新する必要があります。 検証方法を更新するには、「[2 要素認証方法の設定を管理する](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number)」記事の「**電話番号を追加または変更する**」の手順に従います。
+電話番号が新しくなった場合は、検証プロンプトが適切な場所に送られるように、セキュリティ検証方法の詳細を更新する必要があります。 検証方法を更新するには、「**2 要素認証方法の設定を管理する**」記事の「[電話番号を追加または変更する](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number)」の手順に従います。
 
 ## <a name="i-got-a-new-mobile-device-and-i-want-to-add-it"></a>新しいモバイル デバイスを入手したので追加したい
 
@@ -86,7 +86,7 @@ Azure Active Directory (Azure AD) 組織が 2 要素認証を有効にすると�
 
 - 「[Microsoft Authenticator アプリのダウンロードとインストール](user-help-auth-app-download-install.md)」の手順に従って、モバイル デバイスに Microsoft Authenticator アプリをダウンロードしてインストールし、セットアップします。
 
-- 信頼されたデバイスの 2 要素認証を有効にするには、「[2 要素認証方法の設定を管理する](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)」の「**信頼されたデバイスで 2 要素認証のプロンプトを有効にする**」に関する手順に従います。
+- 信頼されたデバイスの 2 要素認証を有効にするには、「**2 要素認証方法の設定を管理する**」の「[信頼されたデバイスで 2 要素認証のプロンプトを有効にする](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)」に関する手順に従います。
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>旅行中にモバイル デバイスにサインインするときに問題が発生します
 
@@ -94,7 +94,7 @@ Azure Active Directory (Azure AD) 組織が 2 要素認証を有効にすると�
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>アプリ パスワードを動作させることができません
 
-2 要素認証がサポートされていない古いバージョンのデスクトップ アプリケーションでは、アプリ パスワードによって通常のパスワードが置き換えられます。 まず、パスワードを正しく入力したことを確認してください。 それでも問題が解決しない場合は、「[2 段階認証のアプリ パスワードを管理する](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)」の「**MyApps ポータルを使用してアプリ パスワードを作成および削除する**」の手順に従って、アプリの新しいアプリ パスワードを作成してみてください。
+2 要素認証がサポートされていない古いバージョンのデスクトップ アプリケーションでは、アプリ パスワードによって通常のパスワードが置き換えられます。 まず、パスワードを正しく入力したことを確認してください。 それでも問題が解決しない場合は、「**2 段階認証のアプリ パスワードを管理する**」の「[MyApps ポータルを使用してアプリ パスワードを作成および削除する](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)」の手順に従って、アプリの新しいアプリ パスワードを作成してみてください。
 
 ## <a name="i-cant-turn-two-factor-verification-off"></a>2 要素認証を無効にできません
 

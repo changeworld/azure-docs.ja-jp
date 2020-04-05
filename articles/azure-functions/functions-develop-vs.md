@@ -5,11 +5,11 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: b3d683153a1e70f4c65dcc5e401f4ee702af8b49
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358283"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235047"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
@@ -40,7 +40,7 @@ Azure Storage アカウントなど、他の必要なリソースは、発行プ
 >
 > Visual Studio 2019 を使用しているときは、これらのセクションを省略してください。
 
-### <a name="check-your-tools-version"></a>Visual Studio 2017 でツールのバージョンを確認する
+### <a name="check-your-tools-version-in-visual-studio-2017"></a><a name="check-your-tools-version"></a>Visual Studio 2017 でツールのバージョンを確認する
 
 1. **[ツール]** メニューの **[拡張機能と更新プログラム]** を選択します。 **[インストール済み]**  >  **[ツール]** メニューを展開し、 **[Azure Functions と Web ジョブ ツール]** を選択します。
 
@@ -71,9 +71,9 @@ Azure Storage アカウントなど、他の必要なリソースは、発行プ
 
 プロジェクト テンプレートでは、C# プロジェクトの作成、`Microsoft.NET.Sdk.Functions` NuGet パッケージのインストール、およびターゲット フレームワークの設定が行われます。 新しいプロジェクトには次のファイルが含まれます。
 
-* **host.json**:Functions のホストを構成できます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
+* **host.json**: Functions のホストを構成することができます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
 
-* **local.settings.json**:関数をローカルで実行するときに使用される設定を保持します。 Azure で実行している場合、これらの設定は使用されません。 詳細については、「[ローカル設定ファイル](#local-settings-file)」を参照してください。
+* **local.settings.json**: 関数をローカルで実行するときに使用される設定を保持します。 Azure で実行している場合、これらの設定は使用されません。 詳細については、「[ローカル設定ファイル](#local-settings-file)」を参照してください。
 
     >[!IMPORTANT]
     >local.settings.json ファイルにはシークレットを含めることができるため、それをプロジェクト ソース管理から除外する必要があります。 このファイルの **[出力ディレクトリにコピー]** 設定は、常に **[新しい場合はコピーする]** にする必要があります。 
@@ -90,7 +90,7 @@ Azure Storage アカウントなど、他の必要なリソースは、発行プ
 
 ## <a name="configure-the-project-for-local-development"></a>ローカル開発用のプロジェクトを構成する
 
-Functions ランタイムでは内部的に Azure Storage アカウントを使用します。 HTTP と webhook 以外のすべてのトリガーの種類については、**Values.AzureWebJobsStorage** キーを有効な Azure Storage アカウントの接続文字列に設定する必要があります。 関数アプリで、プロジェクトに必要な **AzureWebJobsStorage** 接続設定に [Azure Storage エミュレーター](../storage/common/storage-use-emulator.md)を使用することもできます。 エミュレーターを使用するには、**AzureWebJobsStorage** の値を `UseDevelopmentStorage=true` に設定します。 この設定は、デプロイ前に実際のストレージ アカウント接続文字列に変更します。
+Functions ランタイムでは内部的に Azure Storage アカウントを使用します。 HTTP と webhook 以外のすべてのトリガーの種類については、**Values.AzureWebJobsStorage** キーを有効な Azure Storage アカウントの接続文字列に設定する必要があります。 関数アプリで、プロジェクトに必要な [AzureWebJobsStorage](../storage/common/storage-use-emulator.md) 接続設定に **Azure Storage エミュレーター**を使用することもできます。 エミュレーターを使用するには、**AzureWebJobsStorage** の値を `UseDevelopmentStorage=true` に設定します。 この設定は、デプロイ前に実際のストレージ アカウント接続文字列に変更します。
 
 ストレージ アカウントの接続文字列を設定するには、次のようにします。
 
@@ -148,7 +148,7 @@ C# クラス ライブラリ関数では、関数で使用されるバインド�
 
 2. 特定のバインディングに適した NuGet 拡張機能パッケージを追加します。 詳細については、「Azure Functions でのトリガーとバインドの概念」の記事の「[Visual Studio を使用したローカルでの C# 開発](./functions-bindings-register.md#local-csharp)」を参照してください。 バインド固有の NuGet パッケージの要件については、バインドの参照記事で確認できます。 たとえば、Event Hubs トリガーのパッケージ要件については、[Event Hubs のバインドの参照記事](functions-bindings-event-hubs.md)を参照してください。
 
-3. バインドが必要なアプリ設定がある場合は、[ローカル ファイルの設定](functions-run-local.md#local-settings-file)の **Values** コレクションに追加します。 関数がローカルで実行される場合は、これらの値が使用されます。 関数が Azure の関数アプリ で実行される場合は、[関数アプリの設定](#function-app-settings)が使用されます。
+3. バインドが必要なアプリ設定がある場合は、**ローカル ファイルの設定**の [Values](functions-run-local.md#local-settings-file) コレクションに追加します。 関数がローカルで実行される場合は、これらの値が使用されます。 関数が Azure の関数アプリ で実行される場合は、[関数アプリの設定](#function-app-settings)が使用されます。
 
 4. 適切なバインド属性をメソッド シグネチャに追加します。 次の例では、キュー メッセージによって関数がトリガーされ、出力バインドによって、同じテキストの新しいキュー メッセージが別のキューに作成されます。
 

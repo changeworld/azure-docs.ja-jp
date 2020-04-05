@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
 ms.openlocfilehash: de60712451d4c2e8a7d931f7a09352f55be05694
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73810259"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL Database でのインメモリ テクノロジを使用したパフォーマンスの最適化
@@ -178,7 +178,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [クイック スタート 1:T-SQL のパフォーマンスの高速化のためのインメモリ OLTP テクノロジ](https://msdn.microsoft.com/library/mt694156.aspx)
 - [既存の Azure SQL アプリケーションにおけるインメモリ OLTP の使用](sql-database-in-memory-oltp-migration.md)

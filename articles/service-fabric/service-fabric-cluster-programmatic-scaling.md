@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
 ms.openlocfilehash: ffe07960c6d32bea8ec31b1fe8248b6abc2b63af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458293"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>プログラムによる Service Fabric クラスターのスケール 

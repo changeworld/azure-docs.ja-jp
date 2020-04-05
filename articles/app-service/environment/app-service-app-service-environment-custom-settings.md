@@ -6,13 +6,13 @@ ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: stefsch
-ms.custom: seodec18
-ms.openlocfilehash: 42a06724274288955b11c3daf9cbf33d72ddf75d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 25393007a3cc878737ea5927cb65bcf7ef945313
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430503"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057562"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service Environment のカスタム構成設定
 ## <a name="overview"></a>概要

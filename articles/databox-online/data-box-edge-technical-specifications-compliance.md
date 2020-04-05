@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
 ms.openlocfilehash: b646ee9b727d5adf4ec1c8b5c769b3d8f5c0fc1c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252044"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge の技術仕様
@@ -23,7 +23,7 @@ Microsoft Azure Data Box Edge デバイスのハードウェア コンポーネ�
 
 Data Box Edge デバイスには、コンピューティングとメモリについて次のような仕様があります。
 
-| 仕様           | Value                  |
+| 仕様           | 値                  |
 |-------------------------|----------------------------|
 | CPU    | 2 X 10 コア CPU                     |
 | メモリ              | 128 GB RAM                  |
@@ -33,7 +33,7 @@ Data Box Edge デバイスには、コンピューティングとメモリにつ
 
 Machine Learning (ML) のシナリオが可能なすべての Data Box Edge デバイスには、Field Programmable Gate Array (FPGA) が含まれています。 
 
-| 仕様           | Value                  |
+| 仕様           | 値                  |
 |-------------------------|----------------------------|
 | FPGA   | Intel Arria 10 <br> 利用可能なディープ ニューラル ネットワーク (DNN) モデルは、[クラウド FPGA インスタンスでサポートされる](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure)ものと同じです。| 
 
@@ -65,7 +65,7 @@ Data Box Edge デバイスには、PORT1-PORT6 という 6 つのネットワー
 
 Data Box Edge デバイスは 2.5 インチ NVMe SSD を 9 個備えており、各 SSD の容量は 1.6 TB です。 この SSD のうち、1 つがオペレーティング システム ディスクで、残りの 8 つがデータ ディスクです。 デバイスで利用できる容量の合計は約 12.5 TB となります。 次の表は、デバイスのストレージ容量の詳細です。
 
-|     仕様                          |     Value             |
+|     仕様                          |     値             |
 |--------------------------------------------|-----------------------|
 |    ソリッド ステート ドライブ (SSD) の数     |    8                  |
 |    単一の SSD 容量                     |    1.6 TB             |

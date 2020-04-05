@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: absha
 ms.openlocfilehash: 2663c049245a7025b5948a64fc5008bb9e7dee90
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74173716"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>アプリケーション ゲートウェイを作成して HTTP ヘッダーを書き換える
 
-[自動スケールおよびゾーン冗長アプリケーション ゲートウェイの SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) を新規作成するときには、Azure PowerShell を使用して、[HTTP 要求および応答ヘッダーを書き換えるルール](rewrite-http-headers.md)を構成できます
+[自動スケールおよびゾーン冗長アプリケーション ゲートウェイの SKU](rewrite-http-headers.md) を新規作成するときには、Azure PowerShell を使用して、[HTTP 要求および応答ヘッダーを書き換えるルール](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)を構成できます
 
 この記事では、次のことについて説明します。
 
@@ -43,7 +43,7 @@ Connect-AzAccount
 Select-AzSubscription -Subscription "<sub name>"
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 利用可能ないずれかの場所で、リソース グループを作成します。
 
 ```azurepowershell
@@ -167,12 +167,12 @@ Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP
 
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 最初に、アプリケーション ゲートウェイで作成されたリソースを調べます。 次に、必要がないときは、`Remove-AzResourceGroup` コマンドを使用して、リソース グループ、アプリケーション ゲートウェイ、およびすべての関連リソースを削除できます。
 
 `Remove-AzResourceGroup -Name $rg`
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [URL パスベースのルーティング規則のあるアプリケーション ゲートウェイを作成する](./tutorial-url-route-powershell.md)

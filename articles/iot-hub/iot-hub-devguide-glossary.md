@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: d73dcb89739395e4dd52b1ef4d39c41ad6125666
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3471bd7297118dc75fb97390c4601179f61e6416
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457148"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79497547"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 この記事では、IoT Hub の記事で使用される一般的な用語の一部を示します。
@@ -79,13 +79,13 @@ IoT Hub から接続されたデバイスに送信されるメッセージを指
 - *接続文字列* を使用すると、IoT Hub 上のサービス向けエンドポイントにバックエンド アプリを接続できます。
 
 ## <a name="custom-endpoints"></a>カスタム エンドポイント
-[ルーティング ルール](#routing-rules)によって送信されたメッセージを配信するカスタム [エンドポイント](iot-hub-devguide-endpoints.md)を IoT hub に作成できます。 カスタム エンドポイントは、Event hub、Service Bus キュー、または Service Bus トピックに直接接続します。
+[ルーティング ルール](iot-hub-devguide-endpoints.md)によって送信されたメッセージを配信するカスタム [エンドポイント](#routing-rules)を IoT hub に作成できます。 カスタム エンドポイントは、Event hub、Service Bus キュー、または Service Bus トピックに直接接続します。
 
 ## <a name="custom-gateway"></a>カスタム ゲートウェイ
 ゲートウェイは、[IoT Hub](#iot-hub) に直接接続できないデバイスの接続を有効にします。 Azure IoT Edge を使用して、メッセージを処理するカスタム ロジック、カスタム プロトコルの変換、およびその他の処理を Edge 上で実装するカスタム ゲートウェイを構築できます。
 
 ## <a name="data-point-message"></a>データ ポイント メッセージ
-データ ポイント メッセージは、風速や温度などの[テレメトリ](#telemetry) データを含む[デバイスからクラウドへの](#device-to-cloud)メッセージです。
+データ ポイント メッセージは、風速や温度などの[テレメトリ](#device-to-cloud) データを含む[デバイスからクラウドへの](#telemetry)メッセージです。
 
 ## <a name="desired-configuration"></a>必要な構成
 [デバイス ツイン](iot-hub-devguide-device-twins.md)においては、必要な構成とは、デバイスと同期する必要がある、デバイス ツイン内のプロパティとメタデータの完全なセットを指します。
@@ -133,7 +133,7 @@ IoT においては、デバイスは、通常は、データの収集や他の�
 [ダイレクト メソッド](iot-hub-devguide-direct-methods.md)は、IoT Hub 上で API を呼び出すことによって、デバイス上で実行するメソッドをトリガーするための方法です。
 
 ## <a name="endpoint"></a>エンドポイント
-IoT Hub は、アプリの IoT Hub への接続を有効にする複数の[エンドポイント](iot-hub-devguide-endpoints.md)を公開します。 [デバイスからクラウドへ](#device-to-cloud)のメッセージの送信や、[クラウドからデバイスへ](#cloud-to-device)のメッセージの受信といった操作をデバイスで実行できるようにする、デバイス向けのエンドポイントがあります。 [デバイス ID](#device-identity) の管理とデバイス ツインの管理といった操作を[バックエンド アプリ](#back-end-app)で実行できるようにする、サービス向けの管理エンドポイントがあります。 デバイスからクラウドへのメッセージを読み取るためのサービス向けの[組み込みエンドポイント](#built-in-endpoints)があります。 [ルーティング ルール](#routing-rules)によって送信されたデバイスからクラウドへのメッセージを受信するカスタム [エンドポイント](#custom-endpoints)を作成できます。
+IoT Hub は、アプリの IoT Hub への接続を有効にする複数の[エンドポイント](iot-hub-devguide-endpoints.md)を公開します。 [デバイスからクラウドへ](#device-to-cloud)のメッセージの送信や、[クラウドからデバイスへ](#cloud-to-device)のメッセージの受信といった操作をデバイスで実行できるようにする、デバイス向けのエンドポイントがあります。 [デバイス ID](#back-end-app) の管理とデバイス ツインの管理といった操作を[バックエンド アプリ](#device-identity)で実行できるようにする、サービス向けの管理エンドポイントがあります。 デバイスからクラウドへのメッセージを読み取るためのサービス向けの[組み込みエンドポイント](#built-in-endpoints)があります。 [ルーティング ルール](#custom-endpoints)によって送信されたデバイスからクラウドへのメッセージを受信するカスタム [エンドポイント](#routing-rules)を作成できます。
 
 ## <a name="event-hubs-service"></a>Event Hubs サービス
 [Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) は、拡張性の高いデータ イングレス サービスであり、1 秒間に数百万件のイベントを取り込むことができます。 このサービスを使用すれば、接続デバイスやアプリケーションが生成する膨大な量のデータを処理し、分析することができます。 IoT Hub サービスとの比較については、「[Comparison of Azure IoT Hub and Azure Event Hubs (Azure IoT Hub と Azure Event Hubs の比較)](iot-hub-compare-event-hubs.md)」を参照してください。
@@ -165,7 +165,7 @@ IoT Hub は、何百万ものデバイスとソリューションのバックエ
 [IoT Hub メトリック](iot-hub-metrics.md)は、[Azure サブスクリプション](#subscription)内の IoT Hub の状態に関するデータを提供します。 IoT Hub メトリックにより、ユーザーはサービスとそれに接続されたデバイスの全体的な正常性を評価することができます。 IoT Hub メトリックは、IoT Hub で起こっていることを確認するため、また、Azure サポートに連絡することなく問題の根本原因を調査するための有用な情報となります。
 
 ## <a name="iot-hub-query-language"></a>IoT Hub クエリ言語
-[IoT Hub クエリ言語](iot-hub-devguide-query-language.md)は SQL に似た言語であり、[](#job)とデバイス ツインにクエリを実行できます。
+[IoT Hub クエリ言語](iot-hub-devguide-query-language.md)は SQL に似た言語であり、[ジョブ](#job)とデバイス ツインにクエリを実行できます。
 
 ## <a name="iot-hub-resource-rest-api"></a>IoT Hub リソース REST API
 [IoT Hub リソース REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) を使用して、ハブの作成、更新、削除などの操作を実行する [Azure サブスクリプション](#subscription)の IoT Hub を管理できます。
@@ -177,7 +177,7 @@ Azure IoT ソリューション アクセラレータは、複数の Azure サ�
 [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)は、クロスプラットフォームのコマンドライン ツールです。 このツールを使用すると、[ID レジストリ](#identity-registry)でデバイスを管理し、デバイスからメッセージやファイルを送受信し、IoT Hub の操作を監視できます。
 
 ## <a name="job"></a>ジョブ
-ソリューションのバックエンドは、[ジョブ](iot-hub-devguide-jobs.md)を使用して、IoT Hub に登録されたデバイスでのアクティビティのスケジュール設定と追跡を実行できます。 アクティビティには、デバイス ツインの[必要なプロパティ](#desired-properties)の更新、デバイス ツインの[タグ](#tags)の更新、および[ダイレクト メソッド](#direct-method)の呼び出しが含まれます。 [IoT Hub](#iot-hub) は、ジョブを使用して [ID レジストリ](#identity-registry)との間で[インポートおよびエクスポート](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)も行います。
+ソリューションのバックエンドは、[ジョブ](iot-hub-devguide-jobs.md)を使用して、IoT Hub に登録されたデバイスでのアクティビティのスケジュール設定と追跡を実行できます。 アクティビティには、デバイス ツインの[必要なプロパティ](#desired-properties)の更新、デバイス ツインの[タグ](#tags)の更新、および[ダイレクト メソッド](#direct-method)の呼び出しが含まれます。 [IoT Hub](#iot-hub) は、ジョブを使用して [ID レジストリ](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)との間で[インポートおよびエクスポート](#identity-registry)も行います。
 
 ## <a name="modules"></a>モジュール
 デバイス側では、IoT Hub デバイス SDK を使用して、それぞれが IoT Hub への独立した接続を確立する[モジュール](iot-hub-devguide-module-twins.md)を作成できます。 この機能により、デバイスのさまざまなコンポーネントごとに個別の名前空間を使用することができます。
@@ -206,7 +206,7 @@ IoT Hub 上のデバイス向け、またはサービス向けエンドポイン
 プロトコル ゲートウェイは、通常はクラウドに展開され、[IoT Hub](#iot-hub) に接続するデバイスに対してプロトコル変換サービスを提供します。 詳細については、「[Azure IoT Hub とは](about-iot-hub.md)」を参照してください。
 
 ## <a name="quotas-and-throttling"></a>クォータと調整
-[IoT Hub](#iot-hub)の使用に適用される[クォータ](iot-hub-devguide-quotas-throttling.md)はさまざまですが、多くのクォータは IoT Hub の層によって異なります。 [IoT Hub](#iot-hub) は、実行時のサービスの使用に[スロットル](iot-hub-devguide-quotas-throttling.md)も適用します。
+[IoT Hub](iot-hub-devguide-quotas-throttling.md)の使用に適用される[クォータ](#iot-hub)はさまざまですが、多くのクォータは IoT Hub の層によって異なります。 [IoT Hub](#iot-hub) は、実行時のサービスの使用に[スロットル](iot-hub-devguide-quotas-throttling.md)も適用します。
 
 ## <a name="reported-configuration"></a>報告される構成
 [デバイス ツイン](iot-hub-devguide-device-twins.md)においては、報告される構成とは、ソリューションのバック エンドに報告する必要がある、デバイス ツイン内のプロパティとメタデータの完全なセットを指します。
@@ -221,13 +221,13 @@ IoT Hub 上のデバイス向け、またはサービス向けエンドポイン
 クラウド サービスに接続する場合、再試行ポリシーを使用して、[一時的なエラー](/azure/architecture/best-practices/transient-faults)を処理します。
 
 ## <a name="routing-rules"></a>ルーティング ルール
-デバイスからクラウドへのメッセージを、ソリューションのバックエンドで処理するために[組み込みエンドポイント](#built-in-endpoints)または[カスタム エンドポイント](#custom-endpoints)にルーティングする[ルーティング ルール](iot-hub-devguide-messages-read-custom.md)を IoT hub に構成します。
+デバイスからクラウドへのメッセージを、ソリューションのバックエンドで処理するために[組み込みエンドポイント](iot-hub-devguide-messages-read-custom.md)または[カスタム エンドポイント](#built-in-endpoints)にルーティングする[ルーティング ルール](#custom-endpoints)を IoT hub に構成します。
 
 ## <a name="sasl-plain"></a>SASL PLAIN
 SASL PLAIN は、AMQP プロトコルがセキュリティ トークンを転送するために使用するプロトコルです。
 
 ## <a name="service-rest-api"></a>サービス REST API
-ソリューションのバックエンドから [Service REST API](https://docs.microsoft.com/rest/api/iothub/service) を使用して、デバイスを管理できます。 API を使用して、[デバイス ツイン](#device-twin)のプロパティの取得と更新、[ダイレクト メソッド](#direct-method)の呼び出し、および[ジョブ](#job)のスケジュールを実行できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[サービス SDK](#azure-iot-service-sdks) のいずれかを使用する必要があります。
+ソリューションのバックエンドから [Service REST API](https://docs.microsoft.com/rest/api/iothub/service/configuration) を使用して、デバイスを管理できます。 API を使用して、[デバイス ツイン](#device-twin)のプロパティの取得と更新、[ダイレクト メソッド](#direct-method)の呼び出し、および[ジョブ](#job)のスケジュールを実行できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[サービス SDK](#azure-iot-service-sdks) のいずれかを使用する必要があります。
 
 ## <a name="shared-access-signature"></a>共有アクセス署名
 Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 SAS 認証には _共有アクセス ポリシー_ と _Shared Access Signature_ (多くの場合トークンと呼ばれます) という 2 つのコンポーネントがあります。 デバイスは、IoT Hub での認証に SAS を使用します。 [バック エンド アプリ](#back-end-app)も IoT Hub 上のサービス向けエンドポイントでの認証に SAS を使用します。 通常、SAS トークンは、IoT Hub への接続を確立するためにアプリが使用する[接続文字列](#connection-string)に含めます。
@@ -254,10 +254,10 @@ Azure サブスクリプションでは、課金が発生します。 作成す�
 デバイスは風速や温度などのテレメトリ データを収集し、データ ポイント メッセージを使用して IoT ハブにテレメトリを送信します。
 
 ## <a name="token-service"></a>トークン サービス
-トークン サービスを使用して、デバイスに認証メカニズムを実装できます。 このサービスは、**DeviceConnect** アクセス許可が指定された IoT Hub [共有アクセス ポリシー](#shared-access-policy)を使用して、*デバイスを対象とする*トークンを作成します。 これらのトークンにより、デバイスは IoT Hub に接続できるようになります。 デバイスは、カスタム認証機構を使用して、トークン サービスで認証を受けます。 デバイスが正常に認証された場合、トークン サービスはデバイスに対して IoT Hub へのアクセスに使用する SAS トークンを発行します。
+トークン サービスを使用して、デバイスに認証メカニズムを実装できます。 このサービスは、[DeviceConnect](#shared-access-policy) アクセス許可が指定された IoT Hub **共有アクセス ポリシー**を使用して、*デバイスを対象とする*トークンを作成します。 これらのトークンにより、デバイスは IoT Hub に接続できるようになります。 デバイスは、カスタム認証機構を使用して、トークン サービスで認証を受けます。 デバイスが正常に認証された場合、トークン サービスはデバイスに対して IoT Hub へのアクセスに使用する SAS トークンを発行します。
 
 ## <a name="twin-queries"></a>ツイン クエリ
-[デバイスおよびモジュールのツイン クエリ](iot-hub-devguide-query-language.md)は、SQL に似た IoT Hub クエリ言語を使用して、デバイス ツインまたはモジュール ツインから情報を取得します。 同じ IoT Hub クエリ言語を使用して、IoT Hub で実行されている[](#job)に関する情報を取得できます。
+[デバイスおよびモジュールのツイン クエリ](iot-hub-devguide-query-language.md)は、SQL に似た IoT Hub クエリ言語を使用して、デバイス ツインまたはモジュール ツインから情報を取得します。 同じ IoT Hub クエリ言語を使用して、IoT Hub で実行されている[ジョブ](#job)に関する情報を取得できます。
 
 ## <a name="twin-synchronization"></a>ツインの同期
 ツインの同期では、デバイス ツインまたはモジュール ツインの[必要なプロパティ](#desired-properties)を使用してデバイスまたはモジュールを構成し、それらから[報告されたプロパティ](#reported-properties)を取得して、ツインに格納します。

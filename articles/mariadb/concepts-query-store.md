@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: fbc814b5d263e20cea1d961891afb19894b78965
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: a502638744009fc34a7f0a27f8034b89d2c8fa26
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772218"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527811"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>クエリ ストアを使用した Azure Database for MariaDB のパフォーマンスの監視
 
@@ -75,7 +75,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 クエリ ストア内の待機統計を使用してワークロードの詳細な分析情報を得る方法の例を次にいくつか示します。
 
-| **観測** | **アクション** |
+| **観測** | **操作** |
 |---|---|
 |ロック待機が長い | 影響を受けているクエリのクエリ テキストを確認し、ターゲット エンティティを識別します。 同じエンティティを変更する他のクエリのクエリ ストアで、頻繁に実行されているクエリ、実行時間が長いクエリ、あるいはその両方を探します。 これらのクエリを特定した後で、コンカレンシーを向上させるためにアプリケーション ロジックを変更するか、より制限の低い分離レベルを使用します。 |
 |バッファー IO 待機が長い | クエリ ストア内で物理読み取り回数が多いクエリを検索します。 それらと IO 待機が長いクエリが一致する場合は、スキャンではなくシークを実行するために、基になるエンティティへのインデックスの導入を検討します。 これにより、クエリの IO オーバーヘッドが最小限に抑えられます。 ポータル上でサーバーの **[パフォーマンスの推奨事項]** を調べて、このサーバーに対してクエリを最適化するインデックスの推奨事項があるかどうかを確認します。 |
@@ -87,7 +87,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 次のオプションは、クエリ ストア パラメーターを構成するために使用できます。
 
-| **パラメーター** | **説明** | **既定値** | **Range** |
+| **パラメーター** | **説明** | **[Default]** | **Range** |
 |---|---|---|---|
 | query_store_capture_mode | この値に基づいて、クエリ ストア機能をオンまたはオフにします。 注:performance_schema がオフの場合、query_store_capture_mode をオンにすると、この機能に必要な performance_schema とパフォーマンス スキーマ インストルメントのサブセットが有効になります。 | ALL | NONE、ALL |
 | query_store_capture_interval | クエリ ストアのキャプチャ間隔 (分単位)。 クエリ メトリックを集計する間隔を指定できます。 | 15 | 5 から 60 |
@@ -96,9 +96,9 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 待機統計には次のオプションが適用されます。
 
-| **パラメーター** | **説明** | **既定値** | **Range** |
+| **パラメーター** | **説明** | **[Default]** | **Range** |
 |---|---|---|---|
-| query_store_wait_sampling_capture_mode | 待機統計をオンまたはオフにすることができます。 | なし | NONE、ALL |
+| query_store_wait_sampling_capture_mode | 待機統計をオンまたはオフにすることができます。 | NONE | NONE、ALL |
 | query_store_wait_sampling_frequency | 待機サンプリングの頻度を秒単位で変更します。 5 から 300 秒です。 | 30 | 5 から 300 |
 
 > [!NOTE]
@@ -116,23 +116,23 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 このビューでは、クエリ ストア内のすべてのデータが返されます。 個別のデータベース ID、ユーザー ID、クエリ ID ごとに 1 つの行があります。
 
-| **Name** | **データ型** | **IS_NULLABLE** | **説明** |
+| **名前** | **[データ型]** | **IS_NULLABLE** | **説明** |
 |---|---|---|---|
 | `schema_name`| varchar(64) | NO | スキーマの名前 |
 | `query_id`| bigint(20) | NO| 特定のクエリに対して生成される一意の ID。同じクエリが異なるスキーマで実行されると、新しい ID が生成されます。 |
 | `timestamp_id` | timestamp| NO| クエリが実行されたタイムスタンプ。 これは、query_store_interval の構成に基づきます。|
 | `query_digest_text`| longtext| NO| すべてのリテラルを削除した後の正規化されたクエリ テキスト|
 | `query_sample_text` | longtext| NO| リテラルを含む実際のクエリの最初の出現|
-| `query_digest_truncated` | bit| はい| クエリ テキストが切り詰められたかどうか。 クエリが 1 KB を超えると、値は Yes になります。|
+| `query_digest_truncated` | bit| YES| クエリ テキストが切り詰められたかどうか。 クエリが 1 KB を超えると、値は Yes になります。|
 | `execution_count` | bigint(20)| NO| このタイムスタンプ ID で、または構成済みの間隔中にクエリが実行された回数|
 | `warning_count` | bigint(20)| NO| この間隔中に、このクエリによって生成された警告の数|
 | `error_count` | bigint(20)| NO| この間隔中に、このクエリによって生成されたエラーの数|
-| `sum_timer_wait` | double| はい| この間隔中のこのクエリの合計実行時間|
-| `avg_timer_wait` | double| はい| この間隔中のこのクエリの平均実行時間|
-| `min_timer_wait` | double| はい| このクエリの最小実行時間|
-| `max_timer_wait` | double| はい| 最大実行時間|
+| `sum_timer_wait` | double| YES| この間隔中のこのクエリの合計実行時間|
+| `avg_timer_wait` | double| YES| この間隔中のこのクエリの平均実行時間|
+| `min_timer_wait` | double| YES| このクエリの最小実行時間|
+| `max_timer_wait` | double| YES| 最大実行時間|
 | `sum_lock_time` | bigint(20)| NO| この時間枠内に、このクエリ実行のすべてのロックに費やされた合計時間|
-| `sum_rows_affected` | bigint(20)| NO| 影響を受けた行の数|
+| `sum_rows_affected` | bigint(20)| NO| 影響を受ける行の数|
 | `sum_rows_sent` | bigint(20)| NO| クライアントに送信された行の数|
 | `sum_rows_examined` | bigint(20)| NO| 検査された行の数|
 | `sum_select_full_join` | bigint(20)| NO| 完全結合の数|
@@ -149,7 +149,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 このビューでは、クエリ ストア内の待機イベント データが返されます。 個別のデータベース ID、ユーザー ID、クエリ ID、イベントごとに 1 つの行があります。
 
-| **Name**| **データ型** | **IS_NULLABLE** | **説明** |
+| **名前**| **[データ型]** | **IS_NULLABLE** | **説明** |
 |---|---|---|---|
 | `interval_start` | timestamp | NO| 間隔の開始 (15 分単位)|
 | `interval_end` | timestamp | NO| 間隔の終了 (15 分単位)|
@@ -161,9 +161,9 @@ SELECT * FROM mysql.query_store_wait_stats;
 | `count_star` | bigint(20) | NO| クエリの間隔中にサンプリングされた待機イベントの数 |
 | `sum_timer_wait_ms` | double | NO| この間隔中のこのクエリの合計待機時間 (ミリ秒単位) |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>関数
 
-| **Name**| **説明** |
+| **名前**| **説明** |
 |---|---|
 | `mysql.az_purge_querystore_data(TIMESTAMP)` | 指定されたタイム スタンプより前のクエリ ストア データをすべて消去します |
 | `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | 指定されたタイム スタンプより前の待機イベント データをすべて消去します |
@@ -176,6 +176,6 @@ SELECT * FROM mysql.query_store_wait_stats;
 - 待機統計の保持期間は 24 時間です。
 - 待機統計では、サンプリングを使用してイベントの一部をキャプチャします。 `query_store_wait_sampling_frequency` パラメーターを使用して頻度を変更できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Query Performance Insight](concepts-query-performance-insight.md) の詳細を確認する

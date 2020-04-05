@@ -1,19 +1,18 @@
 ---
 title: Azure IoT Edge モジュールの前提条件 | Azure Marketplace
 description: IoT Edge モジュールを発行するための前提条件です。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 610f9bc8d87ac75e2868e247fe1332574480b498
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b6e021fc452b45edd7b1be9fd5afd77b792b4853
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813875"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286542"
 ---
 # <a name="iot-edge-module-publishing-prerequisites"></a>IoT Edge モジュールの発行の前提条件
 
@@ -38,6 +37,6 @@ IoT Edge モジュールを Azure Marketplace に発行するには、次の前�
     - サポートの連絡先
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [IoT Edge モジュールの技術資産を準備](./cpp-create-technical-assets.md)したら、[IoT Edge モジュール オファーを作成](./cpp-create-offer.md)する準備が整います。 

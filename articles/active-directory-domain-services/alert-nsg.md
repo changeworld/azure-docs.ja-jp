@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 09/19/2019
 ms.author: iainfou
 ms.openlocfilehash: 959f1e3f25602938d769c574ea975c4bba9300e1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71257999"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services でのネットワーク構成アラート
@@ -38,7 +38,7 @@ Azure AD DS マネージド ドメインのネットワーク セキュリティ
 
 ### <a name="inbound-security-rules"></a>受信セキュリティ規則
 
-| Priority | 名前 | Port | Protocol | source | Destination | Action |
+| Priority | 名前 | Port | Protocol | source | 宛先 | アクション |
 |----------|------|------|----------|--------|-------------|--------|
 | 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Any | Allow |
 | 201      | AllowRD | 3389 | TCP | CorpNetSaw | Any | Allow |
@@ -49,7 +49,7 @@ Azure AD DS マネージド ドメインのネットワーク セキュリティ
 
 ### <a name="outbound-security-rules"></a>送信セキュリティ規則
 
-| Priority | 名前 | Port | Protocol | source | Destination | Action |
+| Priority | 名前 | Port | Protocol | source | 宛先 | アクション |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow |
 | 65001    | AllowAzureLoadBalancerOutBound | Any | Any |  Any | インターネット | Allow |
@@ -81,7 +81,7 @@ Azure AD DS マネージド ドメインのネットワーク セキュリティ
 
 セキュリティ規則が追加されて一覧に表示されるまでにしばらく時間がかかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ問題が解決しない場合は、さらなるトラブルシューティングの支援を求めて、[Azure サポート リクエストを開いて][azure-support]ください。
 

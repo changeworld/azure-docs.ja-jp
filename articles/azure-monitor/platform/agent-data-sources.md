@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668776"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226431"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Azure Monitor のエージェント データ ソース
 Azure Monitor がエージェントから収集するデータは、構成されたデータ ソースによって定義されます。  エージェントからのデータは、一連のレコードを含んだ[ログ データ](data-platform-logs.md)として格納されます。  データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 97bf62c61aee63ce97496e54b99ad641d6150876
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1c7bd97de4e46e1c8da467840006fe2520851caf
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972705"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238861"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>クイック スタート:Node.js を使用して Bing Custom Search エンドポイントを呼び出す
 
@@ -25,7 +25,7 @@ ms.locfileid: "74972705"
 
 - Bing Custom Search インスタンス。 「[クイック スタート:初めての Bing Custom Search インスタンスを作成する](quick-start.md)」で詳細を確認する。
 
-- [Node.JS](https://www.nodejs.org/)
+- [Node.js](https://www.nodejs.org/)
 
 - [JavaScript Request ライブラリ](https://github.com/request/request)
 
@@ -74,7 +74,7 @@ ms.locfileid: "74972705"
             }
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Custom Search Web アプリの作成](./tutorials/custom-search-web-page.md)

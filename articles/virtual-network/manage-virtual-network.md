@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
 ms.openlocfilehash: 70523dc12f3f20362fcf4a2c3cb456a182038e8a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357536"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236011"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 

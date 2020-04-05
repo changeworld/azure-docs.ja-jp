@@ -9,10 +9,10 @@ ms.date: 05/24/2018
 ms.author: cfowler
 ms.custom: include file
 ms.openlocfilehash: 8aa6cb3f10b86a6821cd93190ecc2135508739cb
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67594004"
 ---
 ## <a name="create-a-new-cdn-profile"></a>新しい CDN プロファイルを作成する
@@ -31,9 +31,9 @@ CDN プロファイルは、CDN エンドポイントのコンテナーであり
 
 3. CDN プロファイルの設定については、次の表で指定されている値を使います。
    
-    | Setting  | 値 |
+    | 設定  | 値 |
     | -------- | ----- |
-    | **Name** | プロファイル名として「*my-cdn-profile-123*」と入力します。 この名前はグローバルに一意でなければなりません。この名前が既に使用されている場合は、別の名前を入力してください。 |
+    | **名前** | プロファイル名として「*my-cdn-profile-123*」と入力します。 この名前はグローバルに一意でなければなりません。この名前が既に使用されている場合は、別の名前を入力してください。 |
     | **サブスクリプション** | ドロップダウン リストから Azure サブスクリプションを選択します。 |
     | **リソース グループ** | **[新規作成]** を選択し、リソース グループ名として「*my-resource-group-123*」と入力します。 既に使用している場合は、別の名前を入力するか、 **[既存のものを使用]** を選択し、ドロップダウン リストから **[my-resource-group-123]** を選択できます。 | 
     | **リソース グループの場所** | ドロップダウンから **[米国中部]** を選択します。 |

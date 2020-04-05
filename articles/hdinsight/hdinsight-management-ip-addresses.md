@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
 ms.openlocfilehash: 5e8f39b58f258742108fe323d9395efd87bc288f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78271801"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight の管理 IP アドレス
@@ -48,7 +48,7 @@ Azure で提供される DNS サービスを使用している場合は、ポー
 
 | Country | リージョン | 許可されているソース IP アドレス | 許可されている宛先 | Direction |
 | ---- | ---- | ---- | ---- | ----- |
-| Asia | 東アジア | 23.102.235.122</br>52.175.38.134 | \*:443 | 受信 |
+| アジア | 東アジア | 23.102.235.122</br>52.175.38.134 | \*:443 | 受信 |
 | &nbsp; | 東南アジア | 13.76.245.160</br>13.76.136.249 | \*:443 | 受信 |
 | オーストラリア | オーストラリア東部 | 104.210.84.115</br>13.75.152.195 | \*:443 | 受信 |
 | &nbsp; | オーストラリア南東部 | 13.77.2.56</br>13.77.2.94 | \*:443 | 受信 |

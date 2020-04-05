@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と G Suite の統合 | Microsoft Docs
-description: Azure Active Directory と G Suite の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Google Cloud (G Suite) Connector の統合 | Microsoft Docs
+description: Azure Active Directory と Google Cloud (G Suite) Connector の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,19 +15,19 @@ ms.topic: tutorial
 ms.date: 02/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5ef5816759074073c57ef0f616ddea4a159956f
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 5b3282dd88b62a6811031e95672638d67702215a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370349"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048461"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と G Suite の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Google Cloud (G Suite) Connector の統合
 
-このチュートリアルでは、G Suite と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と G Suite を統合すると、次のことができます。
+このチュートリアルでは、Google Cloud (G Suite) Connector と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Google Cloud (G Suite) Connector を統合すると、次のことができます。
 
-* G Suite にアクセスできるユーザーを Azure AD で制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して G Suite に自動的にサインインするように設定できます。
+* Google Cloud (G Suite) Connector にアクセスする Azure AD ユーザーを制御する。
+* ユーザーが自分の Azure AD アカウントを使用して Google Cloud (G Suite) Connector に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
@@ -37,11 +37,11 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 開始するには、次が必要です。
 
 - Azure AD サブスクリプション。
-- G Suite でのシングル サインオン (SSO) が有効なサブスクリプション。
+- Google Cloud (G Suite) Connector でのシングル サインオン (SSO) が有効なサブスクリプション。
 - Google Apps サブスクリプションまたは Google Cloud Platform サブスクリプション
 
 > [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 このドキュメントは、新しいユーザー シングル サインオン エクスペリエンスを使用して作成されました。 まだ古いものを使用している場合、セットアップは異なります。 G-Suite アプリケーションのシングル サインオン設定で、新しいエクスペリエンスを有効にすることができます。 **[Azure AD, Enterprise applications]\(Azure AD Enterprise アプリケーション\)** に移動し、 **[G Suite]** を選択し、 **[Single Sign-on]\(シングル サインオン\)** を選択し、 **[Try out our new experience]\(新しいエクスペリエンスを試す\)** をクリックします。
+> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 このドキュメントは、新しいユーザー シングル サインオン エクスペリエンスを使用して作成されました。 まだ古いものを使用している場合、セットアップは異なります。 G-Suite アプリケーションのシングル サインオン設定で、新しいエクスペリエンスを有効にすることができます。 **[Azure AD, Enterprise applications]\(Azure AD Enterprise アプリケーション\)** に移動し、 **[Google Cloud (G Suite) Connector]** 、 **[シングル サインオン]** の順に選択して、 **[新しいエクスペリエンスをお試しください]** をクリックします。
 
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
@@ -56,19 +56,19 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 2. **Q:Chromebook とその他の Chrome デバイスは、Azure AD シングル サインオンと互換性がありますか。**
   
-    A:はい。ユーザーは Azure AD の資格情報を使用して、Chromebook デバイスにサインインすることができます。 ユーザーに資格情報の入力を求めるメッセージが 2 回表示される場合がある理由については、[G Suite のこちらのサポート記事](https://support.google.com/chrome/a/answer/6060880)をご覧ください。
+    A:はい。ユーザーは Azure AD の資格情報を使用して、Chromebook デバイスにサインインすることができます。 ユーザーに資格情報の入力を求めるメッセージが 2 回表示される場合がある理由については、[Google Cloud (G Suite) Connector のこちらのサポート記事](https://support.google.com/chrome/a/answer/6060880)をご覧ください。
 
 3. **Q:シングル サインオンを有効にした場合、ユーザーは Google Classroom、GMail、Google Drive、YouTube などの Google 製品にサインインするために Azure AD 資格情報を使用できますか。**
 
-    A:はい。[G Suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) ごとに、組織で有効にするか無効にするかを選択します。
+    A:はい。[Google Cloud (G Suite) Connector](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) ごとに、組織で有効にするか無効にするかを選択します。
 
-4. **Q:一部の G Suite ユーザーに対してのみ、シングル サインオンを有効にすることはできますか。**
+4. **Q:Google Cloud (G Suite) Connector ユーザーの一部のみを対象に、シングル サインオンを有効にすることはできますか。**
 
-    A:いいえ。シングル サインオンを有効にすると、直ちにすべての G Suite ユーザーが Azure AD の資格情報での認証を要求されるようになります。 G Suite では複数の ID プロバイダーをサポートしていないため、G Suite 環境の ID プロバイダーは Azure AD か Google であり、同時に両方を設定することはできません。
+    A:いいえ。シングル サインオンを有効にすると、直ちにすべての Google Cloud (G Suite) Connector ユーザーが自分の Azure AD 資格情報での認証を要求されるようになります。 Google Cloud (G Suite) Connector は複数の ID プロバイダーの利用をサポートしていないため、Google Cloud (G Suite) Connector 環境の ID プロバイダーは Azure AD か Google であり、同時に両方を利用することはできません。
 
-5. **Q:Windows でサインインしたユーザーは、パスワードの入力を求められることなく、G Suite に対して自動的に認証されますか。**
+5. **Q:Windows でサインインしたユーザーは、パスワードの入力を求められることなく、自動的に Google Cloud (G Suite) Connector に対して認証されますか。**
 
-    A:このシナリオを有効にするには、2 つのオプションがあります。 まず、ユーザーは [Azure Active Directory 参加](../device-management-introduction.md)を通じて Windows 10 デバイスにサインインできます。 また、ユーザーは、 [Active Directory フェデレーション サービス (AD FS)](../hybrid/plan-connect-user-signin.md) デプロイを通じて Azure AD へのシングル サインオンが有効になっているオンプレミスの Active Directory にドメイン参加している Windows デバイスにサインインすることもできます。 どちらのオプションでも、以下のチュートリアルの手順に従って、Azure AD と G Suite の間のシングル サインオンを有効にする必要があります。
+    A:このシナリオを有効にするには、2 つのオプションがあります。 まず、ユーザーは [Azure Active Directory 参加](../device-management-introduction.md)を通じて Windows 10 デバイスにサインインできます。 また、ユーザーは、 [Active Directory フェデレーション サービス (AD FS)](../hybrid/plan-connect-user-signin.md) デプロイを通じて Azure AD へのシングル サインオンが有効になっているオンプレミスの Active Directory にドメイン参加している Windows デバイスにサインインすることもできます。 どちらのオプションでも、以下のチュートリアルの手順に従って、Azure AD と Google Cloud (G Suite) Connector との間のシングル サインオンを有効にする必要があります。
 
 6. **Q:"無効な電子メール" というエラー メッセージが表示される場合はどうすればよいでしょうか。**
 
@@ -84,40 +84,40 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* G Suite では、**SP** によって開始される SSO がサポートされます
+* Google Cloud (G Suite) Connector では、**SP** Initiated SSO がサポートされます
 
-* G Suite では、[**自動化された**ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)がサポートされます
-* G Suite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Google Cloud (G Suite) Connector では、[**自動化された**ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)がサポートされます
+* Google Cloud (G Suite) Connector を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
-## <a name="adding-g-suite-from-the-gallery"></a>ギャラリーからの G Suite の追加
+## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>ギャラリーからの Google Cloud (G Suite) Connector の追加
 
-Azure AD への G Suite の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に G Suite を追加する必要があります。
+Azure AD への Google Cloud (G Suite) Connector の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Google Cloud (G Suite) Connector を追加する必要があります。
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**G Suite**」と入力します。
-1. 結果のパネルから **[G Suite]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Google Cloud (G Suite) Connector**」と入力します。
+1. 結果のパネルから **[Google Cloud (G Suite) Connector]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-g-suite"></a>G Suite の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-single-sign-on-for-google-cloud-g-suite-connector"></a>Google Cloud (G Suite) Connector に対する Azure AD シングル サインオンの構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、G Suite に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと G Suite の関連ユーザーとの間にリンク関係を確立する必要があります。
+**B.Simon** というテスト ユーザーを使用して、Google Cloud (G Suite) Connector に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Google Cloud (G Suite) Connector の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-G Suite に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+Google Cloud (G Suite) Connector で Azure AD の SSO を構成してテストするには、次の構成要素を完了します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[G Suite SSO の構成](#configure-g-suite-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[G Suite テスト ユーザーの作成](#create-g-suite-test-user)** - G Suite で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[Google Cloud (G Suite) Connector SSO の構成](#configure-google-cloud-g-suite-connector-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[Google Cloud (G Suite) Connector のテスト ユーザーの作成](#create-google-cloud-g-suite-connector-test-user)** - Google Cloud (G Suite) Connector で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **G Suite** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Google Cloud (G Suite) Connector** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -165,9 +165,9 @@ G Suite に対する Azure AD SSO を構成してテストするには、次の�
     | `https://google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 G Suite ではシングル サインオン構成のエンティティ ID または識別子の値が提供されないため、 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオフにすると、識別子の値は `google.com` になります。 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオンにすると、値は `google.com/a/<yourdomainname.com>` になります。 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオンまたはオフにするには、チュートリアルの後半で説明する「**G Suite SSO の構成**」セクションに移動する必要があります。 詳細については、[G Suite クライアント サポート チーム](https://www.google.com/contact/)にお問い合わせください。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 Google Cloud (G Suite) Connector ではシングル サインオン構成のエンティティ ID も識別子の値も提供されないため、 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオフにすると、識別子の値は `google.com` になります。 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオンにすると、値は `google.com/a/<yourdomainname.com>` になります。 **[domain specific issuer]\(ドメイン固有の発行者\)** オプションをオンまたはオフにするには、以降のチュートリアルで説明する「**Google Cloud (G Suite) Connector SSO の構成**」セクションに移動する必要があります。 詳細については、[Google Cloud (G Suite) Connector クライアント サポート チーム](https://www.google.com/contact/)にお問い合わせください。
 
-1. G Suite アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットはその例です。 **[一意のユーザー ID]** の既定値は **user.userprincipalname** ですが、G Suite ではこれがユーザーのメール アドレスにマップされることが想定されています。 そのため、一覧の **user.mail** 属性を使用するか、組織構成に基づいて適切な属性値を使用できます。
+1. Google Cloud (G Suite) Connector アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、カスタム属性マッピングを SAML トークン属性構成に追加する必要があります。 次のスクリーンショットはその例です。 **[一意のユーザー ID]** の既定値は **user.userprincipalname** ですが、Google Cloud (G Suite) Connector ではこれがユーザーのメール アドレスにマップされることが想定されています。 そのため、一覧の **user.mail** 属性を使用するか、組織構成に基づいて適切な属性値を使用できます。
 
     ![image](common/default-attributes.png)
 
@@ -176,7 +176,7 @@ G Suite に対する Azure AD SSO を構成してテストするには、次の�
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-1. **[G Suite のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
+1. **[Google Cloud (G Suite) Connector のセットアップ]** セクションで、自分の要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -194,10 +194,10 @@ G Suite に対する Azure AD SSO を構成してテストするには、次の�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、B.Simon に G Suite へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Google Cloud (G Suite) Connector へのアクセスを許可することで、B.Simon が Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で **[G Suite]** を選択します。
+1. アプリケーションの一覧で **[Google Cloud (G Suite) Connector]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
@@ -210,9 +210,9 @@ G Suite に対する Azure AD SSO を構成してテストするには、次の�
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-g-suite-sso"></a>G Suite SSO の構成
+## <a name="configure-google-cloud-g-suite-connector-sso"></a>Google Cloud (G Suite) Connector SSO の構成
 
-1. ブラウザーで新しいタブを開き、管理者アカウントを使用して、[G Suite 管理コンソール](https://admin.google.com/)にサインインします。
+1. ブラウザーで新しいタブを開き、管理者アカウントを使用して [Google Cloud (G Suite) Connector の管理コンソール](https://admin.google.com/)にサインインします。
 
 2. **[セキュリティ]** をクリックします。 このリンクが表示されていない場合、画面下部の **[その他の設定]** に隠れていることがあります。
 
@@ -228,26 +228,26 @@ G Suite に対する Azure AD SSO を構成してテストするには、次の�
 
     a. **[Setup SSO with third-party identity provider]\(サード パーティの ID プロバイダーで SSO を設定する\)** を選択します。
 
-    b. G Suite の **[サインイン ページの URL]** フィールドに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    b. Google Cloud (G Suite) Connector の **[Sign-in page URL]\(サインイン ページの URL\)** フィールドに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    c. G Suite の **[サインアウト ページの URL]** フィールドに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    c. Google Cloud (G Suite) Connector の **[Sign-out page URL]\(サインアウト ページの URL\)** フィールドに、Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
 
-    d. G Suite の **[パスワードの URL の変更]** フィールドに、Azure Portal からコピーした **[パスワードの URL の変更]** の値を貼り付けます。
+    d. Google Cloud (G Suite) Connector の **[Change password URL]\(パスワードの URL の変更\)** フィールドに、Azure portal からコピーした **[パスワードの URL の変更]** の値を貼り付けます。
 
-    e. G Suite の **[検証証明書]** に、Azure Portal からダウンロードした証明書をアップロードします。
+    e. Google Cloud (G Suite) Connector の **[Verification certificate]\(検証証明書\)** に、Azure portal からダウンロードした証明書をアップロードします。
 
     f. 上記の Azure AD の **[基本的な SAML 構成]** セクションに記載されている注意事項に従って、 **[Use a domain specific issuer]\(ドメイン固有の発行者を使用する\)** オプションをオンまたはオフにします。
 
     g. **[変更を保存]** をクリックします。
 
-### <a name="create-g-suite-test-user"></a>G Suite テスト ユーザーの作成
+### <a name="create-google-cloud-g-suite-connector-test-user"></a>Google Cloud (G Suite) Connector のテスト ユーザーの作成
 
-このセクションの目的は、B.Simon という[ユーザーを G Suite で作成する](https://support.google.com/a/answer/33310?hl=en)ことです。 G Suite で手動で作成されたユーザーは、自分の Office 365 のログイン資格情報を使用してサインインできるようになります。
+このセクションの目的は、B.Simon という[ユーザーを Google Cloud (G Suite) Connector で作成する](https://support.google.com/a/answer/33310?hl=en)ことです。 Google Cloud (G Suite) Connector で手動で作成したユーザーは、自分の Office 365 のログイン資格情報を使用してサインインできるようになります。
 
-G Suite では、自動ユーザー プロビジョニングもサポートされています。 自動ユーザープロビジョニングを構成するには、まず、[G Suite を構成し、自動ユーザー プロビジョニングに対応させる](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)必要があります。
+Google Cloud (G Suite) Connector では、自動ユーザー プロビジョニングがサポートされています。 自動ユーザープロビジョニングを構成するには、まず [Google Cloud (G Suite) Connector を構成し、自動ユーザー プロビジョニングに対応させる](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)必要があります。
 
 > [!NOTE]
-> シングル サインオンをテストする前に Azure AD でのプロビジョニングが有効にされていない場合は、既に G Suite にユーザーが存在していることを確認してください。
+> シングル サインオンをテストする前に Azure AD でのプロビジョニングが有効にされていない場合は、既に Google Cloud (G Suite) Connector にユーザーが存在していることを確認してください。
 
 > [!NOTE]
 > ユーザーを手動で作成する必要がある場合は、[Google サポート チーム](https://www.google.com/contact/)にお問い合わせください。
@@ -256,7 +256,7 @@ G Suite では、自動ユーザー プロビジョニングもサポートさ�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [G Suite] タイルをクリックすると、SSO を設定した G Suite に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Google Cloud (G Suite) Connector] タイルをクリックすると、SSO を設定した Google Cloud (G Suite) Connector に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -268,11 +268,11 @@ G Suite では、自動ユーザー プロビジョニングもサポートさ�
 
 - [[ユーザー プロビジョニングの構成]](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
 
-- [Azure AD で G Suite を試す](https://aad.portal.azure.com/)
+- [Azure AD を使用して Google Cloud (G Suite) Connector を試す](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって G Suite を保護する方法](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
+- [高度な可視性と制御によって Google Cloud (G Suite) Connector を保護する方法](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
 
 <!--Image references-->
 

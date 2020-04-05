@@ -7,7 +7,7 @@
     - name: Bing Search API を比較する
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: REST API のクイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: REST API

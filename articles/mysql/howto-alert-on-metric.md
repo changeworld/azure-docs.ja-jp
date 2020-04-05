@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 487ca76115b93020a762cfa2afb5fd5a3be40a66
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: c917804b42bc987228bbb2542682fe9fb308a467
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770664"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067890"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Azure Portal を使用して Azure Database for MySQL のメトリックのアラートを設定する 
 
@@ -84,6 +84,6 @@ ms.locfileid: "74770664"
 * アラートを**無効**にしてアラートを一時的に停止する、または**有効**にして通知の受け取りを再開する。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
 * [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。

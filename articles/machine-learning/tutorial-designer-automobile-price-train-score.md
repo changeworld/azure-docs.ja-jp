@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 01/30/2020
-ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.date: 03/12/2020
+ms.openlocfilehash: 0488002352d222abb0166737f9a042060b1a1bb1
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623631"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389428"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -103,7 +103,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **Automobile price data (Raw)** モジュールを選択します。
 
-1. キャンバスの右側にある [モジュールの詳細] ペインで **[出力]** を選択します。
+1. キャンバスの右側にある [モジュールの詳細] ペインで **[Outputs + log]\(出力 + ログ\)** を選択します。
 
 1. グラフ アイコンを選択してデータを視覚化します。
 
@@ -168,6 +168,12 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **[Clean Missing Data]\(見つからないデータのクリーンアップ\)** モジュールを選択します。
 
+1. キャンバスの右側にある [モジュールの詳細] ペインで **[列の編集]** を選択します。
+
+1. 表示される **[クリーニング対象の列]** ウィンドウで、 **[含める]** の横にあるドロップダウン メニューを展開します。 **[すべての列]** を選択します
+
+1. **[保存]** を選びます。
+
 1. キャンバスの右側にある [モジュールの詳細] ペインで、 **[Cleaning mode]\(クリーニング モード\)** の **[Remove entire row]\(行全体を削除\)** を選択します。
 
 1. キャンバスの右側にある [モジュールの詳細] ペインで **[コメント]** ボックスを選択し、「*Remove missing value rows*」と入力します。 
@@ -213,9 +219,11 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **[Regression]\(回帰\)**  >  **[Linear Regression]\(線形回帰\)** の順に選択し、パイプライン キャンバスにドラッグします。
 
-1. **[Train Model]\(モデルのトレーニング\)** モジュールを見つけて、パイプライン キャンバスにドラッグします。 
-
 1. **[Linear Regression]\(線形回帰\)** モジュールの出力を **[Train Model]\(モデルのトレーニング\)** モジュールの左側の入力に接続します。
+
+1. モジュール パレットで **[Module training]\(モジュールのトレーニング\)** セクションを展開し、 **[Train Model]\(モデルのトレーニング\)** モジュールをキャンバスにドラッグします。
+
+1. **[Train Model]\(モデルのトレーニング\)** モジュールを選択し、パイプライン キャンバスにドラッグします。
 
 1. **[Split Data]\(データの分割\)** モジュールのトレーニング データ出力 (左側のポート) を **[Train Model]\(モデルのトレーニング\)** モジュールの右側の入力に接続します。
     
@@ -224,8 +232,6 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
     ![Train Model (モデルのトレーニング) モジュールの正しい構成を示すスクリーンショット。 Linear Regression (線形回帰) モジュールが、Train Model (モデルのトレーニング) モジュールの左側のポートに接続され、Split Data (データの分割) モジュールが、Train Model (モデルのトレーニング) モジュールの右側のポートに接続されています。](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
-1. モジュール パレットで **[Module training]\(モジュールのトレーニング\)** セクションを展開し、 **[Train Model]\(モデルのトレーニング\)** モジュールをキャンバスにドラッグします。
-
 1. **Train Model** (モデルのトレーニング) モジュールを選択します。
 
 1. キャンバスの右側にある [モジュールの詳細] ペインで **[列の編集]** セレクターを選択します。
@@ -233,6 +239,9 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 1. **[Label column]\(ラベル列\)** ダイアログ ボックスのドロップダウン メニューを展開して **[列名]** を選択します。 
 
 1. テキスト ボックスに「*price*」(価格) を入力して、モデルで予測しようとする値を指定します。
+
+    >[!IMPORTANT]
+    > 列名を正確に入力してください。 **price** は大文字にしないでください。 
 
     パイプラインは次のようになっているはずです。
 
@@ -258,22 +267,24 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
     ![パイプラインの正しい構成を示すスクリーンショット。](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
-## <a name="run-the-pipeline"></a>パイプラインを実行する
+## <a name="submit-the-pipeline"></a>パイプラインを送信する
 
-パイプラインの設定がすべて完了したら、パイプラインの実行を送信して機械学習モデルをトレーニングすることができます。 デザイナーでパイプラインを構築している間、いつでもパイプラインの実行を送信することができます。 そうすることで、作業内容を途中でチェックしながら、想定したとおりにパイプラインが機能することを確認できます。
+パイプラインの設定がすべて完了したら、パイプラインの実行を送信して機械学習モデルをトレーニングすることができます。 有効なパイプライン実行をいつでも送信できます。これを使用すると、開発中にパイプラインの変更を確認できます。
 
-1. キャンバス上部の **[実行]** を選択します。
+1. キャンバス上部の **[Submit]\(送信\)** を選択します。
 
-1. **[パイプライン実行のセットアップ]** ダイアログ ボックスで、 **[実験]** の **[+ 新しい実験]** を選択します。
+1. **[Set up pipeline run]\(パイプライン実行のセットアップ\)** ダイアログ ボックスで、 **[Create new]\(新規作成\)** を選択します。
 
     > [!NOTE]
     > 実験グループの同様のパイプラインは同時に実行されます。 パイプラインを複数回実行する場合は、一連の実行に対して同じ実験を選択できます。
 
-    1. **[実験名]** にわかりやすい名前を入力します。
+    1. **[New experiment Name]\(新しい実験名\)** にわかりやすい名前を入力します。
 
-    1. **[実行]** を選択します。
+    1. **[Submit]\(送信\)** をクリックします。
     
     実行の状態と詳細は、キャンバスの右上で確認できます。
+    
+    最初の実行の場合は、パイプラインの実行が完了するまでに最大 20 分かかることがあります。 既定のコンピューティング設定の最小ノード サイズは 0 です。これは、アイドル状態になった後に、デザイナーによってリソースが割り当てられる必要があることを意味します。 コンピューティング リソースが既に割り当てられているため、パイプラインの反復実行にかかる時間は短くなります。 さらにデザイナーでは、各モジュール用にキャッシュされた結果を使用して、効率を向上させます。
 
 ### <a name="view-scored-labels"></a>スコア付けラベルを確認する
 
@@ -281,7 +292,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **[Score Model]\(モデルのスコア付け\)** モジュールを選択して、その出力を表示します。
 
-1. キャンバスの右側にある [モジュールの詳細] ペインで、 **[出力]** 、![視覚化アイコン](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) (グラフ アイコン) の順に選択して結果を表示します。
+1. キャンバスの右側にある [モジュールの詳細] ペインで、 **[Outputs + logs]\(出力 + ログ\)** 、![視覚化アイコン](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) (グラフ アイコン) の順に選択して結果を表示します。
 
     ここでは、予測された価格と、データのテストによる実際の価格を確認できます。
 
@@ -293,7 +304,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **[Evaluate Model]\(モデルの評価\)** モジュールを選択して、その出力を表示します。
 
-1. キャンバスの右側にある [モジュールの詳細] ペインで、 **[出力]** 、![視覚化アイコン](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) (グラフ アイコン) の順に選択して結果を表示します。
+1. キャンバスの右側にある [モジュールの詳細] ペインで、 **[Outputs + logs]\(出力 + ログ\)** 、![視覚化アイコン](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) (グラフ アイコン) の順に選択して結果を表示します。
 
 作成したモデルに対して、以下の統計値が表示されます。
 

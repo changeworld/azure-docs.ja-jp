@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4ac8fe2e5bf1c338fa67619a675225eb80256c3f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690988"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79135906"
 ---
 # <a name="list-blob-containers-with-net"></a>.NET を使用して BLOB コンテナーを一覧表示する
 
-Azure Storage アカウント内のコンテナーをコードから一覧表示する際には、Azure Storage からの結果の取得方法を管理するためのオプションをいくつか指定できます。 この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage/client)を使用してコンテナーを一覧表示する方法について説明します。  
+Azure Storage アカウント内のコンテナーをコードから一覧表示する際には、Azure Storage からの結果の取得方法を管理するためのオプションをいくつか指定できます。 この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)を使用してコンテナーを一覧表示する方法について説明します。  
 
 ## <a name="understand-container-listing-options"></a>コンテナーの一覧表示オプションについて
 
@@ -98,7 +98,7 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 [コンテナーの一覧表示](/rest/api/storageservices/list-containers2)
 [Enumerating Blob Resources (Blob リソースの列挙)](/rest/api/storageservices/enumerating-blob-resources)

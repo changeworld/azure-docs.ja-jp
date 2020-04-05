@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8b38b38789edfd5a0a30fdd589849bfa345eaac9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77157858"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス  

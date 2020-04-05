@@ -9,10 +9,10 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/28/2018
 ms.openlocfilehash: 14bb46d8917aedb3ea5a625db2489c97a4fd0ba3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66122064"
 ---
 # <a name="create-an-azure-database-for-postgresql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Azure CLI を使った Azure Database for PostgreSQL サーバーの作成とファイアウォール規則の構成
@@ -33,13 +33,13 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 ## <a name="script-explanation"></a>スクリプトの説明
 このスクリプトで使用されているコマンドを次の表にまとめました。
 
-| **コマンド** | **メモ** |
+| **コマンド** | **注** |
 |---|---|
 | [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az postgres server create](/cli/azure/postgres/server) | データベースをホストする PostgreSQL サーバーを作成します。 |
 | [az postgres server firewall create](/cli/azure/postgres/server/firewall-rule) | 対象のサーバーとそこにあるデータベースに対し、入力した IP アドレス範囲からアクセスできるようにするファイアウォール規則を作成します。 |
 | [az group delete](/cli/azure/group) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure)
-- さらに他のスクリプトも試す: [Azure Database for PostgreSQL 用 Azure CLI サンプル](../sample-scripts-azure-cli.md)
+- 他のスクリプトを試す: [Azure Database for PostgreSQL の Azure CLI サンプル](../sample-scripts-azure-cli.md)

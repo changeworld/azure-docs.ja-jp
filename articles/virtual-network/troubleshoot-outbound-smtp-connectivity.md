@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
 ms.openlocfilehash: b8acb50978c5932fe6e6838be86b65c12a0984ac
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71058933"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Azure でのアウトバウンド SMTP 接続に関する問題のトラブルシューティング

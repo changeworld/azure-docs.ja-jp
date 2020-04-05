@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
 ms.openlocfilehash: 13c640d25265b2663520ef7ab203b0b0a33829e2
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68301699"
 ---
 # <a name="create-a-group-for-assessment"></a>評価用のグループを作成する
@@ -36,7 +36,7 @@ ms.locfileid: "68301699"
 評価の作成以外で手動でグループを作成する場合は、次の手順を実行します。
 
 1. Azure Migrate プロジェクトの **[概要]** で、 **[サーバーの評価と移行]** をクリックします。 **Azure Migrate:Server Assessment** で、 **[グループ]** をクリックします。
-    - まだ Azure Migrate:Server Assessment ツールを追加していない場合は、クリックして追加します。 [詳細情報](how-to-assess.md)。
+    - まだ Azure Migrate:Server Assessment ツールを追加していない場合は、クリックして追加します。 [詳細については、こちらを参照してください](how-to-assess.md)。
     - Azure Migrate プロジェクトをまだ作成していない場合は、[詳細を参照してください](how-to-add-tool-first-time.md)。
 
     ![グループを選択する](./media/how-to-create-a-group/select-groups.png)
@@ -60,7 +60,7 @@ ms.locfileid: "68301699"
 
 1. **[サーバー]** タブの **[Azure Migrate:Server Assessment]** タイルで、 **[グループ]** をクリックします。
 2. 絞り込むグループをクリックします。
-    - 依存関係マッピングをまだ設定していない場合は、 **[依存関係]** 列に **[要インストール]** 状態が表示されます。 依存関係を視覚化する VM ごとに、 **[要インストール]** をクリックします。 マシンの依存関係をマップする前に、各 VM に 2 つのエージェントをインストールします。 [詳細情報](how-to-create-group-machine-dependencies.md)。
+    - 依存関係マッピングをまだ設定していない場合は、 **[依存関係]** 列に **[要インストール]** 状態が表示されます。 依存関係を視覚化する VM ごとに、 **[要インストール]** をクリックします。 マシンの依存関係をマップする前に、各 VM に 2 つのエージェントをインストールします。 [詳細については、こちらを参照してください](how-to-create-group-machine-dependencies.md)。
 
         ![依存関係マッピングを追加する](./media/how-to-create-a-group/add-dependency-mapping.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "68301699"
     - 必要に応じて、グループを変更したときに新しいアセスメントを作成することもできます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [依存関係マッピング](how-to-create-group-machine-dependencies.md)を設定し、使用して、信頼度の高いグループを作成する方法を確認します。
 

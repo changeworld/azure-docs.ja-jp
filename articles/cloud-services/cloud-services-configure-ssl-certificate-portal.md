@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386767"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233827"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Azure でアプリケーションの SSL を構成する
 
@@ -27,7 +27,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 クラウド サービスを作成していない場合は、まず [こちら](cloud-services-how-to-create-deploy-portal.md) を参照してください。
 
-## <a name="step-1-get-an-ssl-certificate"></a>手順 1:SSL 証明書を取得する
+## <a name="step-1-get-an-ssl-certificate"></a>手順 1. SSL 証明書を取得する
 アプリケーションの SSL を構成するには、最初に、セキュリティ保護のための証明書を発行する信頼されたサード パーティである、証明機関 (CA) によって署名された SSL 証明書を取得する必要があります。 まだ SSL 証明書がない場合は、SSL 証明書を販売する会社から取得する必要があります。
 
 証明書は、Azure における SSL 証明書の次の要件を満たす必要があります。
@@ -43,7 +43,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 <a name="modify"> </a>
 
-## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>手順 2:サービス定義ファイルとサービス構成ファイルを変更する
+## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>ステップ 2: サービス定義ファイルとサービス構成ファイルを変更する
 アプリケーションは、証明書を使用するように構成する必要があります。また、HTTPS エンドポイントを追加する必要があります。 その結果として、サービス定義ファイルおよびサービス構成ファイルを更新する必要があります。
 
 1. お使いの開発環境で、サービス定義ファイル (CSDEF) を開き、**WebRole** セクション内に  **Certificates** セクションを追加し、証明書 (および中間証明書) に関する次の情報を含めます。
@@ -132,7 +132,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 サービス定義ファイルとサービス構成ファイルが更新されたので、Azure にアップロードするためにデプロイメントをパッケージ化します。 **cspack** を使用している場合は、 **/generateConfigurationFile** フラグを使用しないでください。このフラグは、先ほど挿入した証明書情報を上書きしてしまいます。
 
-## <a name="step-3-upload-a-certificate"></a>手順 3:証明書のアップロード
+## <a name="step-3-upload-a-certificate"></a>ステップ 3: 証明書のアップロード
 Azure Portal に接続して...
 
 1. Portal の **[すべてのリソース]** セクションで、対象のクラウド サービスを選択します。
@@ -149,7 +149,7 @@ Azure Portal に接続して...
 
 4. **ファイル**、**パスワード**を提供し、データ入力領域の下部にある **[アップロード]** をクリックします。
 
-## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>手順 4:HTTPS を使用してロール インスタンスに接続する
+## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>ステップ 4: HTTPS を使用してロール インスタンスに接続する
 Azure でデプロイメントを実行できるようになったため、HTTPS を使用して接続できます。
 
 1. **[サイトの URL]** をクリックして、Web ブラウザーを開きます。
@@ -166,7 +166,7 @@ Azure でデプロイメントを実行できるようになったため、HTTPS
    ![サイトのプレビュー](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > 運用環境のデプロイメントではなくステージング環境のデプロイメントに SSL を使用する場合は、最初に、ステージング環境のデプロイメントに使用されている URL を確認する必要があります。 クラウド サービスをデプロイした後、ステージング環境の URL は、形式 `https://deployment-id.cloudapp.net/` の**デプロイ ID** GUID によって決定されます。  
+   > 運用環境のデプロイメントではなくステージング環境のデプロイメントに SSL を使用する場合は、最初に、ステージング環境のデプロイメントに使用されている URL を確認する必要があります。 クラウド サービスをデプロイした後、ステージング環境の URL は、形式  **の**デプロイ ID`https://deployment-id.cloudapp.net/` GUID によって決定されます。  
    >
    > GUID ベースの URL と同じ共通名 (CN) で証明書を作成します (たとえば **328187776e774ceda8fc57609d404462.cloudapp.net**)。 ポータルを使用して、この証明書をステージングされたクラウド サービスに追加します。 次に、証明書情報を CSDEF ファイルと CSCFG ファイルに追加し、アプリケーションを再パッケージ化し、新しいパッケージを使用するようにステージング デプロイを更新します。
    >

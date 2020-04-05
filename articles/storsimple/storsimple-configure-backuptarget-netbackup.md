@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
 ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67876203"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>NetBackup を使用したバックアップ ターゲットとしての StorSimple
@@ -73,13 +73,13 @@ StorSimple には次の利点があります。
 -   クラウドを使用してこれまでにない重複除去レベルを実現するための一意の重複除去と圧縮アルゴリズム
 -   高可用性
 -   Azure を使用した geo レプリケーション
--   Azure の統合
+-   Azure との統合
 -   クラウドのデータ暗号化
 -   ディザスター リカバリーとコンプライアンスの強化
 
 StorSimple には 2 つの主要なデプロイメント シナリオ (プライマリ バックアップ ターゲットとセカンダリ バックアップ ターゲット) が用意されていますが、基本的にはシンプルなブロック ストレージ デバイスです。 StorSimple では、すべての圧縮と重複除去が行われます。 クラウドとアプリケーションおよびファイル システムの間で、データはシームレスに送受信されます。
 
-StorSimple について詳しくは、「[StorSimple 8000 シリーズ:ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](storsimple-technical-specifications-and-compliance.md)に関するページも参照してください。
+StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](storsimple-technical-specifications-and-compliance.md)に関するページも参照してください。
 
 > [!IMPORTANT]
 > バックアップ ターゲットとして StorSimple デバイスを使用できるのは、StorSimple 8000 の Update 3 以降のバージョンのみです。
@@ -184,7 +184,7 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 
 | StorSimple のデプロイメント タスク  | その他のコメント |
 |---|---|
-| オンプレミスの StorSimple デバイスのデプロイ。 | サポートされているバージョン:Update 3 以降。 |
+| オンプレミスの StorSimple デバイスのデプロイ。 | サポートされているバージョンは Update 3 以降です。 |
 | バックアップ ターゲットを有効にする。 | バックアップ ターゲット モードの有効化または無効化、および状態の取得には次のコマンドを使用します。 詳細については、[StorSimple デバイスへのリモート接続](storsimple-remote-connect.md)に関するページをご覧ください。</br> バックアップ モードを有効にする: `Set-HCSBackupApplianceMode -enable` </br> バックアップ モードを無効にする: `Set-HCSBackupApplianceMode -disable` </br> バックアップ モード設定の現在の状態を取得する: `Get-HCSBackupApplianceMode` |
 | バックアップ データを格納するボリュームの共通ボリューム コンテナーを作成する。 ボリューム コンテナー内のすべてのデータが重複除去されます。 | StorSimple のボリューム コンテナーでは、重複除去のドメインを定義します。  |
 | StorSimple ボリュームを作成する。 | ボリューム サイズはクラウド スナップショットの実行時間に影響するため、予想される使用量に可能な限り近いサイズのボリュームを作成します。 ボリューム サイズの決定方法については、「[保持ポリシー](#retention-policies)」を参照してください。</br> </br> StorSimple 階層化ボリュームを使用し、 **[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにします。 </br> ローカル固定ボリュームのみの使用はサポートされていません。 |
@@ -290,7 +290,7 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 ## <a name="set-up-storsimple-as-a-primary-backup-target"></a>プライマリ バックアップ ターゲットとして StorSimple をセットアップする
 
 > [!NOTE]
-> クラウドに階層化されたバックアップからのデータの復元は、クラウドのスピードで実行されます。
+> クラウドに階層化済みのバックアップからのデータ復元は、クラウドのスピードで実行されます。
 
 次の図は、バックアップ ジョブに対する一般的なボリュームのマッピングを示しています。 この場合、週単位のバックアップはすべて "土曜日 - 完全" ディスクにマッピングし、増分バックアップは月曜日から金曜日の増分ディスクにマッピングしています。 すべてのバックアップと復元は、StorSimple 階層化ボリュームから行われます。
 
@@ -300,7 +300,7 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 
 4 週間、月単位、および年単位の GFS ローテーション スケジュールの例を以下に示します。
 
-| 頻度/バックアップ タイプ | 完全 | 増分 (1 - 5 日目)  |   
+| 頻度/バックアップ タイプ | [完全] | 増分 (1 - 5 日目)  |   
 |---|---|---|
 | 週単位 (第 1 - 4 週) | 土曜日 | 月曜日 - 金曜日 |
 | 月単位  | 土曜日  |   |
@@ -406,9 +406,9 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 \* 合計容量は、StorSimple ディスクの 17 TiB とローカル RAID ボリュームの 1 TiB の合計です。
 
 
-### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS スケジュールの例:週、月、年単位の GFS ローテーション スケジュール
+### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS スケジュール例: 週、月、年単位の GFS ローテーション スケジュール
 
-| 週 | 完全 | 増分 (1 日目) | 増分 (2 日目) | 増分 (3 日目) | 増分 (4 日目) | 増分 (5 日目) |
+| Week | [完全] | 増分 (1 日目) | 増分 (2 日目) | 増分 (3 日目) | 増分 (4 日目) | 増分 (5 日目) |
 |---|---|---|---|---|---|---|
 | 第 1 週 | ローカル RAID ボリューム  | ローカル RAID ボリューム | ローカル RAID ボリューム | ローカル RAID ボリューム | ローカル RAID ボリューム | ローカル RAID ボリューム |
 | 第 2 週 | StorSimple 第 2 - 4 週 |   |   |   |   |   |
@@ -535,16 +535,16 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 | NetBackup サーバーの障害 | バックアップと復元のオペレーションが中断されます。 | バックアップ サーバーを再構築し、データベースの復元を実行します。 | ディザスター リカバリー サイトの NetBackup サーバーを再構築または復元する必要があります。 データベースを最新の時点に復元します。 復元された NetBackup データベースが最新のバックアップ ジョブと同期しない場合、インデックスとカタログの作成が必要です。 このインデックスとカタログの再スキャン プロセスでは、すべてのバックアップ セットがスキャンされ、クラウドの階層からローカル デバイスの階層に戻される場合があります。 これにはさらに時間がかかります。 |
 | バックアップ サーバーと StorSimple 両方の損失を招くサイトの不具合 | バックアップと復元のオペレーションが中断されます。 | まず StorSimple を復元し、次に NetBackup を復元します。 | まず StorSimple を復元し、次に NetBackup を復元します。 デバイスの復旧後に復元を実行する必要がある場合、完全なデータのワーキング セットがクラウドから新しいデバイスに送られます。 すべてのオペレーションはクラウドのスピードで実行されます。 |
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 この記事では次のドキュメントを参考にしています。
 
 - [StorSimple のマルチパス I/O のセットアップ](storsimple-configure-mpio-windows-server.md)
-- [ストレージ シナリオ:シン プロビジョニング](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [GPT ドライブを使用する (Using GPT drives)](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [共有フォルダーのシャドウ コピーのセットアップ](https://technet.microsoft.com/library/cc771893.aspx)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [バックアップ セットからの復元方法](storsimple-restore-from-backup-set-u2.md)について確認します。
 - [デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)の実行方法について確認します。

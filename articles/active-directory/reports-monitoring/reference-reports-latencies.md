@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74007701"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
@@ -59,7 +59,7 @@ ms.locfileid: "74007701"
 
 次の表に、セキュリティ レポートの待機時間情報を一覧表示します。
 
-| レポート | 最小値 | 平均 | 最大値 |
+| レポート | 最小値 | Average | 最大値 |
 | :-- | --- | --- | --- |
 | リスクのあるユーザー          | 5 分   | 約 15 分  | 2 時間  |
 | リスクの高いサインイン         | 5 分   | 約 15 分  | 2 時間  |
@@ -70,7 +70,7 @@ Azure AD では、アダプティブ機械学習アルゴリズムとヒュー�
 
 次の表に、リスク検出の待機時間情報を一覧表示します。
 
-| レポート | 最小値 | 平均 | 最大値 |
+| レポート | 最小値 | Average | 最大値 |
 | :-- | --- | --- | --- |
 | 匿名の IP アドレスからのサインイン |5 分 |約 15 分 |2 時間 |
 | 未知の場所からのサインイン |5 分 |約 15 分 |2 時間 |
@@ -80,7 +80,7 @@ Azure AD では、アダプティブ機械学習アルゴリズムとヒュー�
 | 不審なアクティビティのある IP アドレスからのサインイン |2 時間 |4 時間 |8 時間  |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure AD レポートの概要](overview-reports.md)
 * [Azure AD レポートへのプログラムによるアクセス](concept-reporting-api.md)

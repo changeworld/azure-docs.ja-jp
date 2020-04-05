@@ -4,10 +4,10 @@ description: Application Insights は、アプリのテレメトリの詳細な�
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.openlocfilehash: e232295f9da2a2ae8f3c6fafdd1dc33a42e92e69
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671802"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights のスマート検出
@@ -40,7 +40,7 @@ ms.locfileid: "77671802"
 
 ## <a name="smart-detection-email-notifications"></a>スマート検出の電子メール通知
 
-_プレビュー_ とマークされているルールを除く、すべてのスマート検出ルールは、検出の発見時に既定で電子メール通知を送信するように構成されます。
+_プレビュー_とマークされているルールを除く、すべてのスマート検出ルールは、検出の発見時に既定で電子メール通知を送信するように構成されます。
 
 特定のスマート検出ルールの電子メール通知を構成するには、スマート検出の **[設定]** ブレードを開き、ルールを選択すると、 **[ルールの編集]** ブレードが開きます。
 

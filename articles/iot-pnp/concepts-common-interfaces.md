@@ -7,12 +7,12 @@ ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f697a0d6aba4f137b75faa2a200424c72aa78c3b
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: c6ac90f917b9afc37b3a39d8da679fbcad091778
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531413"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234698"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT プラグ アンド プレイ プレビュー共通インターフェイス
 
@@ -20,7 +20,7 @@ ms.locfileid: "75531413"
 
 ## <a name="summary-of-common-interfaces"></a>共通インターフェイスの概要
 
-| Name | id | 説明 | Azure IoT SDK によって実装される | 機能モデルで宣言する必要がある |
+| 名前 | id | 説明 | Azure IoT SDK によって実装される | 機能モデルで宣言する必要がある |
 | -------- | -------- | -------- | -------- | -------- | -------- |
 | モデル情報 | urn:azureiot:ModelDiscovery:ModelInformation:1 | デバイスが機能モデル ID とインターフェイスを宣言するため。 すべての IoT プラグ アンド プレイ デバイスに必要です。 | はい | いいえ |
 | デジタル ツイン クライアント SDK 情報 | urn:azureiot:Client:SDKInformation:1 | デバイスを Azure に接続するためのクライアント SDK。 [認定資格](tutorial-build-device-certification.md)のために必要です | はい | いいえ |
@@ -37,11 +37,11 @@ ms.locfileid: "75531413"
 
 Azure CLI 用の Azure IoT 拡張機能を使用して、パブリック モデル リポジトリから共通インターフェイスを取得できます。
 
-```cmd/sh
+```azurecli
 az iot pnp interface show --interface {InterfaceID}
 ```
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model show --model {ModelID}
 ```
 

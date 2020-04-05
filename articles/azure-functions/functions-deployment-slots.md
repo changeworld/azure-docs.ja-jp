@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
 ms.openlocfilehash: 0e8c93ea6d5c2b525ccbea2af900f100afcc3d93
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75769219"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions デプロイ スロット

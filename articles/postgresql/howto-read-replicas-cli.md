@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774802"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLI、REST API から読み取りレプリカを作成および管理する

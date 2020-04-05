@@ -4,12 +4,12 @@ description: メトリックおよび自動スケーリングのクラシック 
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 980f4e840f7778c6ea3025db9b37a3454267bac7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9dfa6b278587f4ed79b1c3cd9eff1defd09ec0bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663557"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294656"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>メトリックおよび自動スケーリング用クラシック デプロイ モデル API の Azure Monitor での提供終了
 
@@ -35,7 +35,7 @@ Azure ポータルまたはさまざまな[監視パートナー サービス](.
 
 コードまたはカスタム ツールでクラシック API を呼び出しているかどうかがわからない場合は、以下を参照してください。
 
-- コードまたはツールで参照されている URI を確認します。 クラシック API では https://management.core.windows.net という URI が使用されます。 使用する必要がある、Resource Manager ベースの API の新しい URI は https://management.azure.com/ で始まります。
+- コードまたはツールで参照されている URI を確認します。 クラシック API では https://management.core.windows.net という URI が使用されます。 使用する必要がある、Resource Manager ベースの API の新しい URI は `https://management.azure.com/` で始まります。
 
 - ご利用のコンピューター上のアセンブリ名を比較します。 古いクラシック アセンブリは https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ にあります。
 

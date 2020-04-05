@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
 ms.openlocfilehash: 1d6b43110046f26d8c8070b19587366588eee7b6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68881749"
 ---
 # <a name="performance-benchmark-test-results-for-azure-netapp-files"></a>Azure NetApp Files のパフォーマンス ベンチマークのテスト結果

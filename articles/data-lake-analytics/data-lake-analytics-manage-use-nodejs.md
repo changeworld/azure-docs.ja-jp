@@ -10,10 +10,10 @@ ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 21d59f6543df7fe9d1fad47a006260bff9c93e2b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988058"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Azure SDK for Node.js を使用して Azure Data Lake Analytics を管理する
@@ -22,10 +22,10 @@ ms.locfileid: "76988058"
 この記事では、Azure SDK for Node.js を使用して記述されたアプリを使用して、Azure Data Lake Analytics のアカウント、データ ソース、ユーザー、ジョブを管理する方法について説明します。 
 
 次のバージョンがサポートされています。
-* **Node.js バージョン:0.10.0 以降**
-* **アカウント用の REST API のバージョン:2015-10-01-preview**
-* **カタログ用の REST API のバージョン:2015-10-01-preview**
-* **ジョブ用の REST API のバージョン:2016-03-20-preview**
+* **Node.js のバージョン: 0.10.0 以降**
+* **アカウント用の REST API のバージョン: 2015-10-01-preview**
+* **カタログ用の REST API のバージョン: 2015-10-01-preview**
+* **ジョブ用の REST API のバージョン: 2016-03-20-preview**
 
 ## <a name="features"></a>[機能]
 * アカウント管理: 作成、取得、一覧表示、更新、および削除。

@@ -17,10 +17,10 @@ ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d18676e0a8a4f366237a71784436580a8069e53
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70743615"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contractworks"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ContractWorks の統合
@@ -29,7 +29,7 @@ ms.locfileid: "70743615"
 
 * ContractWorks にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して ContractWorks に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

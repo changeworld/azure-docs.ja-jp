@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbf9cde8dd2032e81abe0fb2572c2181d4ba21ee
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f8a2c962c69ead28c4e79b663010eab77a499f5c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160218"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048426"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーの OpenID および OAuth アプリケーションを構成する
 
@@ -71,7 +71,7 @@ ms.locfileid: "73160218"
 > [!NOTE]
 > 複数のディレクトリ内のユーザーがアプリケーションを使用できるようにする場合、ユーザーが属するテナントを確認するためのメカニズムが必要です。 シングルテナント アプリケーションでは、それ自体のディレクトリでユーザーを探すだけで済みます。 マルチテナント アプリケーションでは、Azure AD のすべてのディレクトリから特定のユーザーを識別する必要があります。
 > 
-> このタスクを実行するために、Azure AD には、テナント固有のエンドポイントの代わりに、マルチテナント アプリケーションがサインイン要求を送信できる共通の認証エンドポイントが用意されています。 このエンドポイントは Azure AD のすべてのディレクトリで [https://login.microsoftonline.com/common](https://login.microsoftonline.com/common) です。 テナント固有のエンドポイントであれば [https://login.microsoftonline.com/contoso.onmicrosoft.com](https://login.microsoftonline.com/contoso.onmicrosoft.com) のようになります。 
+> このタスクを実行するために、Azure AD には、テナント固有のエンドポイントの代わりに、マルチテナント アプリケーションがサインイン要求を送信できる共通の認証エンドポイントが用意されています。 このエンドポイントは Azure AD のすべてのディレクトリで `https://login.microsoftonline.com/common` です。 テナント固有のエンドポイントであれば `https://login.microsoftonline.com/contoso.onmicrosoft.com` のようになります。 
 >
 > アプリケーションを開発するときは、共通のエンドポイントを考慮することが重要です。 サインイン、サインアウト、トークンの検証時に複数のテナントに対応するためのロジックが必要となります。
 

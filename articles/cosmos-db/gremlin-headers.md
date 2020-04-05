@@ -8,10 +8,10 @@ ms.date: 09/03/2019
 author: luisbosquez
 ms.author: lbosq
 ms.openlocfilehash: 95677f4c45c0213de5ffac5521bac1c6bf7294e4
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72755078"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin サーバーの応答ヘッダー
@@ -19,7 +19,7 @@ ms.locfileid: "72755078"
 
 これらのヘッダーへの依存関係があると、アプリケーションの移植性が他の Gremlin の実装に限定されることに注意してください。 その代わり、Cosmos DB Gremlin との統合はより緊密になります。 これらのヘッダーは TinkerPop 標準ではありません。
 
-## <a name="headers"></a>headers
+## <a name="headers"></a>ヘッダー
 
 | ヘッダー | 種類 | 値の例 | 含まれる場合 | 説明 |
 | --- | --- | --- | --- | --- |
@@ -106,7 +106,7 @@ try {
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Cosmos DB の HTTP 状態コード](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
 * [Azure Cosmos DB の一般的な REST 応答ヘッダー](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
 * [TinkerPop Graph Driver Provider の要件]( http://tinkerpop.apache.org/docs/current/dev/provider/#_graph_driver_provider_requirements)

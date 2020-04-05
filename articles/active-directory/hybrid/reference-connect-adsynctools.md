@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a1b8abf15233c06e8ff9e507b315cc8a3703970
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60454661"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect:ADSyncTools PowerShell リファレンス
@@ -25,7 +25,7 @@ ms.locfileid: "60454661"
 ### <a name="synopsis"></a>概要
 mS-Ds-ConsistencyGuid を AD ユーザーからクリアします
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Clear-ADSyncToolsConsistencyGuid [-User] <Object> [<CommonParameters>]
@@ -46,7 +46,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-user"></a>-User
 設定する AD のターゲット ユーザー
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 {{概要を入力}}
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-ADSyncToolsADModuleLoaded
@@ -95,7 +95,7 @@ PS C:\> {{ Add example code here }}
 ### <a name="synopsis"></a>概要
 {{概要を入力}}
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Connect-AdSyncDatabase [-Server] <String> [[-Instance] <String>] [[-Database] <String>] [[-UserName] <String>]
@@ -114,7 +114,7 @@ PS C:\> {{ Add example code here }}
 
 {{例の説明をここに追加}}
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-database"></a>-Database
 {{データベースの説明を入力}}
@@ -200,7 +200,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 ConsistencyGuid レポートをエクスポートします
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Export-ADSyncToolsConsistencyGuidMigration [-AlternativeLoginId] [-UserPrincipalName] <String>
@@ -222,7 +222,7 @@ Import-Csv .\AllSyncUsers.csv | Export-ADSyncToolsConsistencyGuidMigration -Outp
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-alternativeloginid"></a>-AlternativeLoginId
 代替ログイン ID (メール) を使用します
@@ -293,7 +293,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 {{概要を入力}}
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncSQLBrowserInstances [[-hostName] <String>]
@@ -311,7 +311,7 @@ PS C:\> {{ Add example code here }}
 
 {{例の説明をここに追加}}
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-hostname"></a>-hostName
 {{ホスト名の説明を入力}}
@@ -333,7 +333,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 AD からユーザーを取得します
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsADuser [-User] <Object> [<CommonParameters>]
@@ -354,7 +354,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-user"></a>-User
 ConsistencyGuid を設定する AD のターゲット ユーザー
@@ -380,7 +380,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 AD ユーザーから mS-Ds-ConsistencyGuid を取得します
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsConsistencyGuid [-User] <Object> [<CommonParameters>]
@@ -401,7 +401,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-user"></a>-User
 設定する AD のターゲット ユーザー
@@ -427,7 +427,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 AD ユーザーから ObjectGuid を取得します
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsObjectGuid [-User] <Object> [<CommonParameters>]
@@ -448,7 +448,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-user"></a>-User
 設定する AD のターゲット ユーザー
@@ -474,7 +474,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 AAD 接続実行履歴を取得します
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsRunHistory [[-Days] <Int32>] [<CommonParameters>]
@@ -495,7 +495,7 @@ Get-ADSyncToolsRunHistory
 Get-ADSyncToolsRunHistory -Days 1
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-days"></a>-Days
 {{日の説明を入力}}
@@ -521,7 +521,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 SourceAnchor の変更エラーのあるユーザーを取得します
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsSourceAnchorChanged [-sourcePath] <Object> [-outputPath] <Object> [<CommonParameters>]
@@ -546,7 +546,7 @@ $sourcePath = Read-Host -Prompt "ログ ファイルのパスとファイル名�
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-sourcepath"></a>-sourcePath
 {{ソース パスの説明を入力}}
@@ -587,7 +587,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 AAD から ImmutableID をインポートします
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Import-ADSyncToolsImmutableIdMigration [-Output] <String> [-IncludeSyncUsersFromRecycleBin]
@@ -609,7 +609,7 @@ Import-ADSyncToolsImmutableIdMigration -OutputFile '.\AllSyncUsers.csv'
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-output"></a>-Output
 出力 CSV ファイル
@@ -651,7 +651,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 {{概要を入力}}
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Invoke-AdSyncDatabaseQuery [-SqlConnection] <SqlConnection> [[-Query] <String>] [<CommonParameters>]
@@ -669,7 +669,7 @@ PS C:\> {{ Add example code here }}
 
 {{例の説明をここに追加}}
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-query"></a>-Query
 {{クエリの説明を入力}}
@@ -710,7 +710,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 UserCertificate 属性から有効期限が切れた証明書を削除するスクリプト
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Remove-ADSyncToolsExpiredCertificates [-TargetOU] <String> [[-BackupOnly] <Boolean>] [-ObjectClass] <String>
@@ -739,7 +739,7 @@ Delete Expired Certs from all Computer objects in target OU - Expired Certificat
 
 Remove-ADSyncToolsExpiredCertificates -TargetOU "OU=Computers,OU=Corp,DC=Contoso,DC=com" -ObjectClass computer -BackupOnly $false
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-targetou"></a>-TargetOU
 AD オブジェクトを検索するターゲット OU
@@ -795,7 +795,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 簡単な説明
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Repair-ADSyncToolsAutoUpgradeState
@@ -821,7 +821,7 @@ Another example of how to use this cmdlet
 ### <a name="synopsis"></a>概要
 {{概要を入力}}
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Resolve-ADSyncHostAddress [[-hostName] <String>]
@@ -839,7 +839,7 @@ PS C:\> {{ Add example code here }}
 
 {{例の説明をここに追加}}
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-hostname"></a>-hostName
 {{ホスト名の説明を入力}}
@@ -861,7 +861,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 (TO DO) 証明書ファイルから AD UserCertificate 属性を復元します
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Restore-ADSyncToolsExpiredCertificates
@@ -887,7 +887,7 @@ Another example of how to use this cmdlet
 ### <a name="synopsis"></a>概要
 AD ユーザーに mS-Ds-ConsistencyGuid を設定します
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Set-ADSyncToolsConsistencyGuid [-User] <Object> [-Value] <Object> [<CommonParameters>]
@@ -908,7 +908,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-user"></a>-User
 ConsistencyGuid を設定する AD のターゲット ユーザー
@@ -949,7 +949,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 {{概要を入力}}
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Test-ADSyncNetworkPort [[-hostName] <String>] [[-port] <String>]
@@ -967,7 +967,7 @@ PS C:\> {{ Add example code here }}
 
 {{例の説明をここに追加}}
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-hostname"></a>-hostName
 {{ホスト名の説明を入力}}
@@ -1004,7 +1004,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 AD インポート手順からトレース ファイルを作成します
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Trace-ADSyncToolsADImport [[-ADConnectorXML] <String>] [[-dc] <String>] [[-rootDN] <String>]
@@ -1026,7 +1026,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectorxml"></a>-ADConnectorXML
 {{ADConnectorXML の説明を入力}}
@@ -1128,7 +1128,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 簡単な説明
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Trace-ADSyncToolsLdapQuery [-Context] <String> [-Server] <String> [-Port] <Int32> [-Filter] <String>
@@ -1150,7 +1150,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-context"></a>-Context
 Param1 のヘルプの説明
@@ -1221,7 +1221,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>概要
 新しい ConsistencyGuid (ImmutableId) でユーザーを更新します
 
-### <a name="syntax"></a>構文
+### <a name="syntax"></a>SYNTAX
 
 ```
 Update-ADSyncToolsConsistencyGuidMigration [[-DistinguishedName] <String>] [-ImmutableIdGUID] <String>
@@ -1243,7 +1243,7 @@ Import-Csv .\AllSyncUsersTEST-Report.csv -Delimiter "`t"| Update-ADSyncToolsCons
 Import-Csv .\AllSyncUsersTEST-Report.csv -Delimiter "`t"| Update-ADSyncToolsConsistencyGuidMigration -Output .\AllSyncUsersTEST-Result2
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-distinguishedname"></a>-DistinguishedName
 DistinguishedName
@@ -1276,7 +1276,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-action"></a>-Action
-Action
+アクション
 
 ```yaml
 Type: String

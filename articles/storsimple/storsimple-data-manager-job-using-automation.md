@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 034b4996672f0961cf31d342aa6055482f099b9f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76273987"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Azure Automation を使用してジョブをトリガーする
@@ -86,7 +86,7 @@ Runbook をインポート、発行、実行してジョブ定義をトリガー
 
 2. **[Runbook の追加]** で、 **[既存の Runbook のインポート]** をクリックします。
 
-3. **[Runbook ファイル]** で、Azure PowerShell スクリプト ファイル `Trigger-DataTransformation-Job.ps1`を参照します。 Runbook の種類が自動的に選択されます。 Runbook の名前と説明 (オプション) を入力します。 **Create** をクリックしてください。
+3. `Trigger-DataTransformation-Job.ps1`[Runbook ファイル]**で、Azure PowerShell スクリプト ファイル**を参照します。 Runbook の種類が自動的に選択されます。 Runbook の名前と説明 (オプション) を入力します。 **Create** をクリックしてください。
 
     ![Runbook の追加 2](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 

@@ -9,13 +9,13 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 12/02/2019
 ms.openlocfilehash: dc8c7352856b11cb6cc4c9c404eb567cb72b720d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74770647"
 ---
-# <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>Azure Database for MySQL: Ruby を使った接続とデータの照会
+# <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>Azure Database for MySQL: Ruby を使用した接続とデータの照会
 このクイックスタートでは、Windows、Ubuntu Linux、Mac の各プラットフォームから [Ruby](https://www.ruby-lang.org) アプリケーションと [mysql2](https://rubygems.org/gems/mysql2) gem を使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、Ruby を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
@@ -221,6 +221,6 @@ ensure
 end
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./concepts-migrate-import-export.md)

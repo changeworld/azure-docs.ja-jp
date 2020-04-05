@@ -10,10 +10,10 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
 ms.openlocfilehash: 38bd1755ed87050cf8b91a0a82f6e5f1d2af9db5
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75933854"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>チュートリアル:Time Series Insights を使用して Azure Digital Twins からのイベントを視覚化および分析する
@@ -48,15 +48,15 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 ### <a name="create-an-event-hub"></a>イベント ハブの作成
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 左側のウィンドウで、 **[リソースの作成]** を選びます。
 
-1. **[Event Hubs]** を見つけて選択します。 **作成** を選択します。
+1. **[Event Hubs]** を見つけて選択します。 **［作成］** を選択します
 
     [![Event Hubs 名前空間の作成](./media/tutorial-facilities-analyze/tutorial-create-event-hubs.png)](./media/tutorial-facilities-analyze/tutorial-create-event-hubs.png#lightbox)
 
-1. Event Hubs 名前空間の**名前**を入力します。 **Standard** **価格レベル**、**サブスクリプション**、Digital Twins インスタンスに使用した**リソース グループ**、**場所**を選択します。 **作成** を選択します。
+1. Event Hubs 名前空間の**名前**を入力します。 **Standard** **価格レベル**、**サブスクリプション**、Digital Twins インスタンスに使用した**リソース グループ**、**場所**を選択します。 **［作成］** を選択します
 
 1. Event Hubs 名前空間のデプロイで、 **[概要]** ウィンドウを選択し、 **[リソースに移動]** を選択します。
 
@@ -69,7 +69,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
    イベント ハブは、デプロイ後、Event Hubs 名前空間の **[Event Hubs]** ウィンドウに **[アクティブ]** 状態として表示されます。 このイベント ハブを選択して、 **[概要]** ウィンドウを開きます。
 
-1. 最上部にある **[コンシューマー グループ]** をクリックし、コンシューマー グループの名前 (たとえば、**tsievents**) を選択します。 **作成** を選択します。
+1. 最上部にある **[コンシューマー グループ]** をクリックし、コンシューマー グループの名前 (たとえば、**tsievents**) を選択します。 **［作成］** を選択します
 
     [![イベント ハブ コンシューマー グループ](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
@@ -139,9 +139,9 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. [Azure portal](https://portal.azure.com) の左側のウィンドウで、 **[リソースの作成]** を選択します。 
 
-1. **Time Series Insights** の一般公開 (GA) リソースを検索して選択します。 **作成** を選択します。
+1. **Time Series Insights** の一般公開 (GA) リソースを検索して選択します。 **［作成］** を選択します
 
-1. Time Series Insights インスタンスの**名前**を入力し、**サブスクリプション**を選択します。 Digital Twins インスタンスに対して使用した**リソース グループ**と**場所**を選択します。 **[次へ:イベント ソース]** ボタンまたは **[イベント ソース]** タブを選択します。
+1. Time Series Insights インスタンスの**名前**を入力し、**サブスクリプション**を選択します。 Digital Twins インスタンスに対して使用した**リソース グループ**と**場所**を選択します。 **イベント ソース** ボタンまたは **イベント ソース** タブを選択します。
 
     [![Time Series Insights インスタンスを作成するための選択内容](./media/tutorial-facilities-analyze/tutorial-create-tsi-environment.png)](./media/tutorial-facilities-analyze/tutorial-create-tsi-environment.png#lightbox)
 

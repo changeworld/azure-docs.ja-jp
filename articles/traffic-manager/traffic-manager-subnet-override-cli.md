@@ -10,10 +10,10 @@ ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: rohink
 ms.openlocfilehash: 818b692884bd9d31efd08663a582ebcfec2032e9
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938471"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Azure CLI を使用した Traffic Manager のサブネットのオーバーライド
@@ -64,7 +64,7 @@ az network traffic-manager endpoint update \
 
 ```
 
-IP アドレス範囲を削除するには、 **--remove** オプションを指定して [az network traffic-manager endpoint update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) を実行します。
+IP アドレス範囲を削除するには、[--remove](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) オプションを指定して **az network traffic-manager endpoint update** を実行します。
 
 ```azurecli
 

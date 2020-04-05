@@ -11,10 +11,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 04/06/2018
 ms.openlocfilehash: 28a4a53851155c56e8d34981862bf52a3a2cf15b
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72249174"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Microsoft Genomics によるビジネス継続性の概要
@@ -45,5 +45,5 @@ ms.locfileid: "72249174"
 * 適切なセカンダリ リージョンを特定し、そのリージョンに Genomics アカウントを前もって作成しておきます
 * プライマリ リージョンとセカンダリ リージョンでデータを複製し、セカンダリ リージョンでデータをすぐに利用できるようにします。 これは、手動で行うことも、Azure Storage で利用できる [geo 冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy)を使用して行うこともできます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Microsoft Genomics サービスを使用するときのビジネス継続性とディザスター リカバリーのオプションについて説明しました。 Azure での一般的なビジネス継続性とディザスター リカバリーについては、「[Azure の回復性技術ガイダンス](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)」をご覧ください。 

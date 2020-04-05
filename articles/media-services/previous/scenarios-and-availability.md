@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 4766f22cd84b2aab00f6dcc4064dbeea8018f694
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564976"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227011"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Media Services のシナリオとデータ センターにおける機能の可用性
 
@@ -104,7 +104,7 @@ Media Analytics は音声および視覚コンポーネントの集合体であ�
     SAS ロケーターを使用する場合、コンテンツは Azure BLOB ストレージからダウンロードされます。 この場合、開始状態のストリーミング エンドポイントは必要ありません。
 4. コンテンツを徐々にダウンロードします。
 
-## <a id="live_scenarios"></a>ライブ ストリーミング イベントの配信 
+## <a name="delivering-live-streaming-events"></a><a id="live_scenarios"></a>ライブ ストリーミング イベントの配信 
 
 1. さまざまなライブ ストリーミング プロトコル (RTMP や Smooth Streaming など) を使用してライブ コンテンツを取り込みます。
 2. (省略可) ストリームをアダプティブ ビットレート ストリームにエンコードします。
@@ -143,7 +143,7 @@ Azure Media Services には、ほとんどのプラットフォーム (iOS デ�
 
 Media Services では、Azure CDN との統合をサポートしています。 Azure CDN を有効にする方法については、「 [Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
 
-## <a id="scaling"></a>Media Services アカウントのスケーリング
+## <a name="scaling-a-media-services-account"></a><a id="scaling"></a>Media Services アカウントのスケーリング
 
 AMS のお客様は、AMS アカウントのストリーミング エンドポイント、メディア処理、ストレージをスケーリングできます。
 
@@ -151,7 +151,7 @@ AMS のお客様は、AMS アカウントのストリーミング エンドポ�
 
     **Premium** ストリーミング エンドポイントは専用のスケーラブルな帯域幅の容量を提供するため、高度なワークロードに適しています。 **Premium** ストリーミング エンドポイントを持つユーザーは、既定で 1 つのストリーミング ユニット (SU) を取得します。 ストリーミング エンドポイントは、SU を追加することで拡張できます。 各 SU は、アプリケーションに追加の帯域幅の容量を提供します。 **Premium** ストリーミング エンドポイントのスケーリングの詳細については、[ストリーミング エンドポイントのスケーリング](media-services-portal-scale-streaming-endpoints.md)に関するトピックを参照してください。
 
-* Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。 予約ユニットの種類は、以下から選択できます:**S1**、**S2**、**S3**。 たとえば、同じエンコード ジョブの場合に、予約ユニットの種類として **S1** よりも **S2** を使用する方が、ジョブの実行が高速になります。
+* Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。 予約ユニットの種類は、**S1**、**S2**、**S3** から選択できます。 たとえば、同じエンコード ジョブの場合に、予約ユニットの種類として **S1** よりも **S2** を使用する方が、ジョブの実行が高速になります。
 
     予約ユニットの種類を指定するだけでなく、**予約ユニット** (RU) を使用したアカウントのプロビジョニングを指定することもできます。 プロビジョニングされた RU の数によって、所定のアカウントで並列処理できるメディア タスクの数が決まります。
 
@@ -161,7 +161,7 @@ AMS のお客様は、AMS アカウントのストリーミング エンドポ�
     詳細については、[メディア処理のスケーリング](media-services-portal-scale-media-processing.md)に関するページを参照してください。
 * ストレージ アカウントを追加して、Media Services アカウントの規模を設定することもできます。 各ストレージ アカウントの上限は 500 TB (テラバイト) です。 既定の上限を超えるストレージ容量を設定するために、複数のストレージ アカウントを単一の Media Services アカウントにアタッチすることを選択できます。 詳細については、[ストレージ アカウントの管理](meda-services-managing-multiple-storage-accounts.md)に関するページを参照してください。
 
-## <a id="availability"></a> データ センターにおける Media Services 機能の可用性
+## <a name="availability-of-media-services-features-across-datacenters"></a><a id="availability"></a> データ センターにおける Media Services 機能の可用性
 
 このセクションでは、データ センターにおける Media Services 機能の可用性について詳しく説明します。
 
@@ -177,7 +177,7 @@ Media Services のお客様は、**Standard** と **Premium** のいずれかの
 
 #### <a name="availability"></a>可用性
 
-|名前|Status|データ センター
+|Name|Status|データ センター
 |---|---|---|
 |Standard|GA|All|
 |Premium|GA|All|
@@ -186,7 +186,7 @@ Media Services のお客様は、**Standard** と **Premium** のいずれかの
 
 #### <a name="availability"></a>可用性
 
-以下を除く、すべてのデータ センターで利用できます:ドイツ、ブラジル南部、インド西部、インド南部、インド中部。 
+ドイツ、ブラジル南部、インド西部、インド南部、インド中部を除く、すべてのデータ センターで利用できます。 
 
 ### <a name="encoding-media-processors"></a>Encoding メディア プロセッサ
 
@@ -202,6 +202,9 @@ AMS には、**Media Encoder Standard** と **Media Encoder Premium ワークフ
 ### <a name="analytics-media-processors"></a>Analytics メディア プロセッサ
 
 Media Analytics は音声および視覚コンポーネントの集合体であり、組織や企業がこれを活用することで、ビデオ ファイルから実用的な洞察を簡単に引き出すことができます。 詳細については、「 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)」を参照してください。
+
+> [!NOTE]
+> 一部の分析メディア プロセッサはインベントリから削除されます。 提供終了日については、[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。
 
 #### <a name="availability"></a>可用性
 
@@ -240,7 +243,7 @@ Microsoft Azure Media Services を使用すると、メディアがコンピュ�
 
 ### <a name="reserved-unit-ru-type"></a>予約ユニット (RU) の種類
 
-Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。 予約ユニットの種類は、以下から選択できます:S1、S2、S3。
+Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。 予約ユニットの種類は、S1、S2、S3 から選択できます。
 
 詳細については、[スケーリング](#scaling)に関するセクションを参照してください。
 

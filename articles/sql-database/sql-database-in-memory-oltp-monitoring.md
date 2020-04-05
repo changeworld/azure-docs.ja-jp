@@ -3,7 +3,7 @@ title: XTP インメモリ ストレージの監視
 description: XTP インメモリ ストレージの使用量と容量を推定し、監視します。また、容量不足エラー 41823 を解決します
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: d67a6d151f65252faab40f8f7289fe9e884eff17
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 22ff83b1ccd009624082e45073123a45006df70f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689802"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79209429"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>インメモリ OLTP ストレージの監視
 
@@ -59,5 +59,5 @@ ms.locfileid: "73689802"
 > [!NOTE] 
 > まれに、エラー 41823 および 41840 が一時的なものである場合があります。これは、利用できるインメモリ OLTP ストレージが十分にあり、操作の再試行が成功することを意味します。 したがって、使用可能なインメモリ OLTP ストレージの総量を監視し、かつ、エラー 41823 または 41840 が初めて発生した場合は再試行することをお勧めします。 再試行ロジックについて詳しくは、[インメモリ OLTP での競合の検出と再試行ロジック](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic)に関する項目をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 管理のガイダンスについては、「[動的管理ビューを使用した Azure SQL Database の監視](sql-database-monitoring-with-dmvs.md)」をご覧ください。

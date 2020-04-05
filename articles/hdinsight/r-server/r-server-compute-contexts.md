@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: b67bd5b6310e1f8ce35dc14690757209ef62c9d7
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75660258"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション
@@ -75,7 +75,7 @@ RevoScaleR コンピューティング コンテキストの詳細と例につ�
 
     > ?rxSetComputeContext
 
-「[Machine Learning Server documentation (Machine Learning Server ドキュメント)](https://docs.microsoft.com/machine-learning-server/)」の「[Distributed computing overview (分散コンピューティングの概要)](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing)」にも関連情報があります。
+「[Machine Learning Server documentation (Machine Learning Server ドキュメント)](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing)」の「[Distributed computing overview (分散コンピューティングの概要)](https://docs.microsoft.com/machine-learning-server/)」にも関連情報があります。
 
 ## <a name="next-steps"></a>次のステップ
 

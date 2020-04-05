@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 52a0ab0a31600c1548283c7d899b17e497811b5a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75421485"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー

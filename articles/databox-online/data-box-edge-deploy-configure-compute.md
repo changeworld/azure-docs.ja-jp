@@ -10,11 +10,11 @@ ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: b641ae62ba6e0cdacaeb46b1ffee2f02c7544763
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277307"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222859"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge"></a>チュートリアル:Azure Data Box Edge を使用してデータを変換する
 
@@ -50,14 +50,14 @@ Data Box Edge でコンピューティングを構成するために、IoT Hub �
 3. **[Edge コンピューティングの構成]** ブレードで、次を入力します。
 
    
-    |フィールド  |値  |
+    |フィールド  |Value  |
     |---------|---------|
     |IoT Hub     | **[新規]** または **[既存]** を選択します。 <br> 既定では、IoT リソースの作成には Standard レベル (S1) が使用されます。 Free レベルの IoT リソースを使用するには、それを作成してから既存のリソースを選択します。 <br> いずれの場合も、IoT Hub リソースでは、Data Box Edge リソースによって使用されるのと同じサブスクリプションとリソース グループが使用されます。     |
     |名前     |自分の IoT Hub リソースの名前を入力します。         |
 
     ![コンピューティングの開始](./media/data-box-edge-deploy-configure-compute/configure-compute-2.png)
 
-4. **作成** を選択します。 IoT Hub リソースの作成には数分かかります。 IoT Hub リソースが作成された後、 **[コンピューティングの構成]** タイルが更新され、コンピューティングの構成が表示されます。 Edge コンピューティング ロールが構成されたことを確認するには、 **[コンピューティングの構成]** タイルの **[View Compute]\(コンピューティングの表示\)** を選択します。
+4. **［作成］** を選択します IoT Hub リソースの作成には数分かかります。 IoT Hub リソースが作成された後、 **[コンピューティングの構成]** タイルが更新され、コンピューティングの構成が表示されます。 Edge コンピューティング ロールが構成されたことを確認するには、 **[コンピューティングの構成]** タイルの **[View Compute]\(コンピューティングの表示\)** を選択します。
     
     ![コンピューティングの開始](./media/data-box-edge-deploy-configure-compute/configure-compute-3.png)
 
@@ -109,7 +109,7 @@ Data Box Edge でコンピューティングを構成するために、IoT Hub �
 2. **[Configure and add module]\(モジュールの構成と追加\)** ブレードで、以下の値を入力します。
 
     
-    |フィールド  |値  |
+    |フィールド  |Value  |
     |---------|---------|
     |名前     | モジュールの一意の名前。 このモジュールは、お客様の Data Box Edge に関連付けられている IoT Edge デバイスにデプロイできる Docker コンテナーです。        |
     |イメージの URI     | モジュールの対応するコンテナー イメージのイメージ URI。        |
@@ -155,7 +155,7 @@ Data Box Edge でコンピューティングを構成するために、IoT Hub �
 検証プロセスが完了しました。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74896017"
 ---
 #  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Media Encoder Standard を使用してビットレート ラダーを自動生成する  
@@ -34,7 +34,7 @@ ms.locfileid: "74896017"
 
 ストリーミングするだけでなくプログレッシブ ダウンロードする MP4 ファイルを生成する目的のソース ビデオの場合は、エンコード タスク作成時に "コンテンツ アダプティブ マルチビット レート MP4" プリセットを使用します。 **コンテンツ アダプティブ マルチビット レート MP4** プリセットを使用する場合、MES エンコーダーでは、上記と同じエンコーディング ロジックが適用されますが、出力アセットにはオーディオとビデオインターリーブされた MP4 ファイルが含まれます。 これらの MP4 ファイル (たとえば、最高ビットレート バージョン) の 1 つを、プログレッシブ ダウンロード ファイルとして使用できます。
 
-## <a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
 
 次のコード サンプルでは、Media Services SDK を使用して次のタスクを実行します。
 
@@ -167,14 +167,14 @@ namespace AdaptiveStreamingMESPresest
 }
 ```
 
-## <a id="output"></a>出力
+## <a name="output"></a><a id="output"></a>出力
 
 このセクションでは、**アダプティブ ストリーミング** プリセットを使用してエンコードした結果として MES によって生成された出力レイヤーの 3 つの例を示します。 
 
 ### <a name="example-1"></a>例 1
 高さが "1080" でフレーム レートが "29.970" のソースからは、6 層のビデオ レイヤーが生成されます。
 
-|レイヤー|高さ|幅|ビットレート (kbps)|
+|レイヤー|[高さ]|幅|ビットレート (kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -186,7 +186,7 @@ namespace AdaptiveStreamingMESPresest
 ### <a name="example-2"></a>例 2
 高さが "720" でフレーム レートが "23.970" のソースからは、5 層のビデオ レイヤーが生成されます。
 
-|レイヤー|高さ|幅|ビットレート (kbps)|
+|レイヤー|[高さ]|幅|ビットレート (kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -197,7 +197,7 @@ namespace AdaptiveStreamingMESPresest
 ### <a name="example-3"></a>例 3
 高さが "360" でフレーム レートが "29.970" のソースからは、3 層のビデオ レイヤーが生成されます。
 
-|レイヤー|高さ|幅|ビットレート (kbps)|
+|レイヤー|[高さ]|幅|ビットレート (kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|
@@ -208,6 +208,6 @@ namespace AdaptiveStreamingMESPresest
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [Media Services Encoding の概要](media-services-encode-asset.md)
 

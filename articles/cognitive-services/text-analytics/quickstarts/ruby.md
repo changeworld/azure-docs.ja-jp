@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Ruby を使用して Text Analytics API を呼び出す
+title: 'クイック スタート: Ruby を使用して Text Analytics API を呼び出す'
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Azure Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 0e43d6c3565ea8ae019ab624cbc85965678ea3b4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75378468"
 ---
-# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Ruby を使用して Text Analytics Cognitive Service を呼び出す
+# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: Ruby を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
 
-この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を Ruby で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
+この記事では、[Text Analytics API シリーズ](#Detect)[を Ruby で使用して、](#SentimentAnalysis)言語の検出[、](#KeyPhraseExtraction)センチメントの分析[、](#Entities)キー フレーズの抽出 [、および](//go.microsoft.com/fwlink/?LinkID=759711)リンクされているエンティティの識別 を行う方法について説明します。
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 

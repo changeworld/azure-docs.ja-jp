@@ -17,12 +17,12 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4f35162be513873637f9a87260410d891fdace10
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6e3f021fd888bbb408fa66964c54d22f0d68e84e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78300470"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297694"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft ID プラットフォームと暗黙的な許可のフロー
 
@@ -64,11 +64,14 @@ JavaScript ベースのアプローチを最大限に活用するアプリケー
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>暗黙的な許可に適切なアプリ
 
-暗黙的な許可は他の許可よりもリスクが高くなるため、注意を払う必要のある領域が詳しく解説されています (「Misuse of Access Token to Impersonate Resource Owner in Implicit Flow (暗黙的フローでの偽装リソース所有者に対するアクセス トークンの誤用) [OAuth2-Spec-Implicit-Misuse]」や「OAuth 2.0 Threat Model and Security Considerations] (OAuth 2.0 の脅威モデルとセキュリティの考慮事項) [OAuth2-Threat-Model-And-Security-Implications]」など)。 ただし、よりリスクが高いプロファイルは、多くの場合、リモート リソースによってブラウザーに対して処理されるアクティブ コードを実行するアプリケーションを有効にしなければならないという事実に起因します。 SPA アーキテクチャを計画していて、バックエンド コンポーネントがない場合、または JavaScript を使用して Web API を呼び出そうとしている場合は、トークンの取得に暗黙的フローを使用することをお勧めします。
+暗黙的な付与は他の付与よりリスクが大きくなります。また、注意を払うべき領域が詳しく記録されます (たとえば、「[Misuse of Access Token to Impersonate Resource Owner in Implicit Flow (暗黙的フローでの偽装リソース所有者に対するアクセス トークンの誤用)][OAuth2-Spec-Implicit-Misuse]」や「[OAuth 2.0 Threat Model and Security Considerations (OAuth 2.0 の脅威モデルとセキュリティの考慮事項)][OAuth2-Threat-Model-And-Security-Implications]」)。 ただし、よりリスクが高いプロファイルは、多くの場合、リモート リソースによってブラウザーに対して処理されるアクティブ コードを実行するアプリケーションを有効にしなければならないという事実に起因します。 SPA アーキテクチャを計画していて、バックエンド コンポーネントがない場合、または JavaScript を使用して Web API を呼び出そうとしている場合は、トークンの取得に暗黙的フローを使用することをお勧めします。
 
 アプリケーションがネイティブ クライアントの場合は、暗黙的フローはあまり向いていません。 ネイティブ クライアントのコンテキストには Azure AD のセッション Cookie がないので、アプリケーションには存続期間の長いセッションを維持する手段がありません。 つまり、アプリケーションは新しいリソースのアクセス トークンを取得する場合、繰り返しユーザーに求めることになります。
 
 バックエンドを含む Web アプリケーションを開発しており、そのバックエンド コードから API を使用する場合も、暗黙的フローはあまり向いていません。 他の方法の方がはるかに便利です。 たとえば、OAuth2 クライアント資格情報付与では、ユーザー委任とは対照的に、アプリケーション自体に割り当てられているアクセス許可を反映したトークンを取得できます。 これは、ユーザーがセッションにアクティブに関与していない場合などでも、クライアントがプログラムによるリソース アクセスを維持できることを意味します。 メリットはそれだけにとどまりません。このような付与では、セキュリティ保証が強化されます。 たとえば、アクセス トークンがユーザーのブラウザーを通過せず、ブラウザーの履歴に保存されるなどのリスクがありません。 また、クライアント アプリケーションは、トークンの要求時に強力な認証を実行できます。
+
+[OAuth2-Spec-Implicit-Misuse]: https://tools.ietf.org/html/rfc6749#section-10.16
+[OAuth2-Threat-Model-And-Security-Implications]: https://tools.ietf.org/html/rfc6819
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 

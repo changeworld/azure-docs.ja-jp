@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2020
 ms.author: iainfou
-ms.openlocfilehash: d15877107e49c57f8f33b8ec41caeb7d48230b91
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f853d6d59a4c23b7b52a2a0ba800ace58c997f6e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613870"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79481587"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>チュートリアル:Windows Server 仮想マシンのマネージド ドメインへの参加
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
     * 必要であれば、[Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance]してください。
-* Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
+* Azure AD DS のマネージド ドメインの一部であるユーザー アカウント。
     * アカウントが Azure AD DS マネージド ドメインにサインインできるように、Azure AD Connect のパスワード ハッシュの同期またはセルフサービス パスワード リセット が実行されていることを確認します。
 * Azure AD DS 仮想ネットワークにデプロイされた Azure Bastion ホスト。
     * 必要に応じて [Azure Bastion ホストを作成][azure-bastion]してください。
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 1. 既定では、Azure に作成された VM にインターネットから RDP を使用してアクセスすることができます。 RDP が有効になっていると、自動サインイン攻撃が発生する可能性があります。これにより、サインインの試行が複数回連続して失敗するため、*admin* や *administrator* などの一般的な名前を持つアカウントが無効になる場合があります。
 
-    RDP は、必要な場合にのみ有効にし、承認された IP 範囲のセットに限定する必要があります。 この構成により、VM のセキュリティが向上し、攻撃される可能性がある領域が減少します。 または、Azure Bastion ホストを作成、使用して、SSL を介した Azure portal 経由のアクセスのみを許可することもできます。 このチュートリアルの次の手順では、Azure Bastion ホストを使用して安全に VM に接続します。
+    RDP は、必要な場合にのみ有効にし、承認された IP 範囲のセットに限定する必要があります。 この構成により、VM のセキュリティが向上し、攻撃される可能性がある領域が減少します。 または、Azure Bastion ホストを作成、使用して、TLS を介した Azure portal 経由のアクセスのみを許可することもできます。 このチュートリアルの次の手順では、Azure Bastion ホストを使用して安全に VM に接続します。
 
     現時点では、VM との直接 RDP 接続は無効にしておきます。
 
@@ -153,7 +153,7 @@ VM を作成し、Azure Bastion を使用して Web ベースの RDP 接続を�
 
     ![参加する Azure AD DS マネージド ドメインを指定する](./media/join-windows-vm/join-domain.png)
 
-1. ドメインの資格情報を入力してドメインに参加します。 *Azure AD DC administrators* グループに属しているユーザーの資格情報を使用します。 このグループのメンバーだけが、マシンを Azure AD DS マネージド ドメインに参加させるための権限を持っています。 アカウントは Azure AD DS マネージド ドメインまたは Azure AD テナントの一部である必要があります。Azure AD テナントに関連付けられている外部ディレクトリのアカウントが、ドメイン参加プロセス中に正しく認証を行うことはできません。 アカウントの資格情報は、次のいずれかの方法で指定できます。
+1. ドメインの資格情報を入力してドメインに参加します。 Azure AD DS のマネージド ドメインの一部であるユーザーの資格情報を使用します。 アカウントは Azure AD DS マネージド ドメインまたは Azure AD テナントの一部である必要があります。Azure AD テナントに関連付けられている外部ディレクトリのアカウントが、ドメイン参加プロセス中に正しく認証を行うことはできません。 アカウントの資格情報は、次のいずれかの方法で指定できます。
 
     * **UPN 形式** (推奨) - Azure AD で構成したように、ユーザー アカウントのユーザー プリンシパル名 (UPN) サフィックスを入力します。 たとえば、ユーザー *contosoadmin* の UPN サフィックスは `contosoadmin@aaddscontoso.onmicrosoft.com` になります。 *SAMAccountName* 形式ではなく UPN 形式を使用するとドメインに確実にサインインできる一般的なユースケースが 2 つあります。
         * ユーザーの UPN プレフィックスが長い場合 (例: *deehasareallylongname*)、*SAMAccountName* が自動生成される場合があります。
@@ -169,7 +169,7 @@ VM を作成し、Azure Bastion を使用して Web ベースの RDP 接続を�
 1. Azure AD DS マネージド ドメインに参加するプロセスを完了するには、VM を再起動します。
 
 > [!TIP]
-> PowerShell の [Add-Computer][add-computer] コマンドレットを使用して、VM をドメインに参加させることができます。 次の例では、*AADDSCONTOSO* ドメインに参加した後、VM を再起動しています。 要求されたら、*Azure AD DC administrators* グループに属しているユーザーの資格情報を入力します。
+> PowerShell の [Add-Computer][add-computer] コマンドレットを使用して、VM をドメインに参加させることができます。 次の例では、*AADDSCONTOSO* ドメインに参加した後、VM を再起動しています。 メッセージが表示されたら、Azure AD DS のマネージド ドメインの一部であるユーザーの資格情報を入力します。
 >
 > `Add-Computer -DomainName AADDSCONTOSO -Restart`
 >
@@ -218,7 +218,7 @@ Azure AD DS マネージド ドメインから VM を削除するには、もう
 
 以下の各トラブルシューティング手順を実行した後、Windows Server VM をマネージド ドメインに再度参加させてください。
 
-* 指定したユーザー アカウントが *AAD DC Administrators* グループに属していることを確認します。
+* 指定するユーザー アカウントが Azure AD DS マネージド ドメインに属していることを確認します。
 * アカウントが Azure AD DS マネージド ドメインまたは Azure AD テナントの一部であることを確認してください。 Azure AD テナントに関連付けられている外部ディレクトリのアカウントが、ドメイン参加プロセス中に正しく認証を行うことはできません。
 * UPN 形式を使用して資格情報を指定します (例: `contosoadmin@aaddscontoso.onmicrosoft.com`)。 たくさんのユーザーがテナントで同じ UPN プレフィックスを使用している場合、または UPN プレフィックスが最大文字数を超えている場合は、アカウントの *SAMAccountName* が自動生成される可能性があります。 そのような場合、アカウントの *SAMAccountName* 形式が、想定されている形式やオンプレミス ドメインで使用されている形式と異なる可能性があります。
 * マネージド ドメインとの[パスワード同期を有効にしている][password-sync]ことを確認します。 この構成手順を行わないと、サインインの試行を正しく認証するために必要なパスワード ハッシュが、Azure AD DS マネージド ドメインに存在しません。

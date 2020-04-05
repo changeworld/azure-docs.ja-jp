@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: a16acfc8f9be820e9cc9b3bd59d6675b7f75d2ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445563"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>整合性、可用性、パフォーマンスのトレードオフ 
@@ -44,7 +44,7 @@ Azure Cosmos DB では、幅広い選択肢を利用できるデータ整合性�
 
 - 書き込み操作の種類 (挿入、置換、アップサート、削除) が指定された場合、要求ユニットに対するスループットはすべての整合性レベルで同じです。
 
-## <a id="rto"></a>整合性レベルとデータ持続性
+## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>整合性レベルとデータ持続性
 
 グローバルに分散されるデータベース環境内では、リージョン全体にわたる停止が発生した場合の整合性レベルとデータ持続性の間には、直接的な関係があります。 ビジネス継続性計画を開発するときは、破壊的なイベントが発生してから、アプリケーションが完全に復旧するまでの最大許容時間について理解する必要があります。 アプリケーションを完全に復旧するために必要な時間は、**目標復旧時間** (**RTO**) と呼ばれます。 さらに、破壊的なイベントの発生後、復旧中にアプリケーションが損失を許容できる新しいデータ更新の最大期間についても理解する必要があります。 損失を許容できる更新の期間は、**目標復旧時点** (**RPO**) と呼ばれます。
 

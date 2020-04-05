@@ -8,11 +8,11 @@ ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: ce995a84d2290845e83416caf9c8b0004242eed4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355930"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232171"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>PowerShell を使用して Windows VM にデータ ディスクを接続する
 
@@ -49,7 +49,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="using-managed-disks-in-an-availability-zone"></a>可用性ゾーンでマネージド ディスクを使用する場合
 
-可用性ゾーンにディスクを作成するには、`-Zone` パラメーターを指定して [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) を使用します。 次の例では、ゾーン *1* にディスクを作成します。
+可用性ゾーンにディスクを作成するには、[ パラメーターを指定して ](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig)New-AzDiskConfig`-Zone` を使用します。 次の例では、ゾーン *1* にディスクを作成します。
 
 ```powershell
 $rgName = 'myResourceGroup'

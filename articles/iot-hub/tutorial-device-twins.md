@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.date: 06/21/2019
 ms.custom: mvc
 ms.openlocfilehash: bda8f1e3419f80faabb2f469a9ac5fd5c77bd79e
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78674395"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
-# <a name="tutorial-configure-your-devices-from-a-back-end-service"></a>チュートリアル:バックエンド サービスからデバイスを構成する
+# <a name="tutorial-configure-your-devices-from-a-back-end-service"></a>チュートリアル: バックエンド サービスからデバイスを構成する
 
 場合によっては、デバイスからテレメトリを受信するだけでなく、バックエンド サービスからデバイスを構成する必要があります。 デバイスに必要な構成を送信するときに、それらのデバイスから状態とコンプライアンスの更新を受信したい場合もあります。 たとえば、デバイスの目標動作温度範囲を設定する場合や、デバイスからファームウェアのバージョン情報を収集する場合などです。
 

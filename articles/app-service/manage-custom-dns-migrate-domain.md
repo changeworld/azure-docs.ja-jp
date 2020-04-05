@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 79bd0a19a9bd8ebd100ed80ca0206656d73ef76c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74672372"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Azure App Service へのアクティブな DNS 名の移行
@@ -127,7 +127,7 @@ Azure でのアクティブなカスタム ドメインは、サブスクリプ�
 
 FTP/S URL `<deployment-unit>.ftp.azurewebsites.windows.net` のドメイン名を確認することで、アプリの展開単位がわかります。 ソース アプリとターゲット アプリ間で展開単位が必ず異なることを確認してください。 アプリの展開単位は、それ自体が含まれている [App Service プラン](overview-hosting-plans.md)によって決まります。 プランを作成するときに Azure によってランダムに選択され、変更することはできません。 Azure では、[同じリソース グループ*かつ*同じリージョン内に作成する](app-service-plan-manage.md#create-an-app-service-plan)場合、2 つのプランが同じ展開単位内にあることだけを確認し、異なる展開単位にプランがあることを確認するロジックは用意されていません。 異なる展開単位にプランを作成する唯一の方法は、別の展開単位を取得するまで、新しいリソース グループまたはリージョン内にプランを作成し続けることです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 カスタム SSL 証明書を App Service にバインドする方法を確認します。
 

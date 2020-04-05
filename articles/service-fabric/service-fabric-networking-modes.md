@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
 ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75639804"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric コンテナー ネットワーク モード
@@ -194,7 +194,7 @@ ms.locfileid: "75639804"
    |設定 |値 | |
    | --- | --- | --- |
    |Priority |2000 | |
-   |Name |Custom_Dns  | |
+   |名前 |Custom_Dns  | |
    |source |VirtualNetwork | |
    |宛先 | VirtualNetwork | |
    |サービス | DNS (UDP/53) | |

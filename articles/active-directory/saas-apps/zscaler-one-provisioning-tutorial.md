@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 87413932acee576934ee50b59546371b03ceaf7e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064174"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>チュートリアル:Zscaler One を構成し、自動ユーザー プロビジョニングに対応させる

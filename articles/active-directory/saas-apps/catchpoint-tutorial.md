@@ -16,10 +16,10 @@ ms.date: 02/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c56d34a331821ffbc3d0d4f2cf5e9b033f4011ff
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78968475"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-catchpoint"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Catchpoint の統合

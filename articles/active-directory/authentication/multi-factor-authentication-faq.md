@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a622245a7431058582131d9ba224ddfb676d8aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75425136"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
@@ -68,7 +68,7 @@ Multi-Factor Authentication Server では、ユーザーのデータはオンプ
    * 759731 
    * 673801
 
-Microsoft は、一貫した SMS や音声ベース Multi-Factor Authentication のプロンプトが同じ番号で配信されることを保証しません。 ユーザーのために、Microsoft は、ルートを調整して SMS の配信率を向上させる際に任意のタイミングでショート コードを追加または削除する場合があります。 Microsoft は、米国とカナダ以外の国/地域ではショート コードをサポートしていません。
+Microsoft では、SMS または音声ベース Multi-Factor Authentication のプロンプトを常に同一番号で配信するとは限りません。 ユーザーのために、Microsoft は、ルートを調整して SMS の配信率を向上させる際に任意のタイミングでショート コードを追加または削除する場合があります。 Microsoft は、米国とカナダ以外の国/地域ではショート コードをサポートしていません。
 
 ## <a name="billing"></a>課金
 
@@ -198,7 +198,7 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 セキュリティ情報の登録を求めるメッセージがユーザーに表示される場合、以下のようないくつかの理由が考えられます。
 
 - そのユーザーは Azure AD の管理者によって MFA が有効化されているが、まだアカウントにセキュリティ情報を登録していない。
-- そのユーザーに対して、Azure AD でのセルフサービスによるパスワードのリセットが有効化されている。 セキュリティ情報は、将来パスワードを忘れた場合に、それをリセットするために役立ちます。
+- そのユーザーに対して、Azure AD でのセルフサービス パスワード リセット が有効化されている。 セキュリティ情報は、将来パスワードを忘れた場合に、それをリセットするために役立ちます。
 - そのユーザーは事前に MFA への登録を行わずに、MFA を要求する条件付きアクセス ポリシーのあるアプリケーションにアクセスした。
 - そのユーザーは Azure AD (Azure AD Join を含む) にデバイスを登録しようとしており、ユーザーの組織ではデバイスの登録に MFA を要求しているが、ユーザーは事前に MFA への登録を行っていない。
 - そのユーザーは Windows 10 で Windows Hello for Business を生成 (この操作に MFA が必要) しようとしているが、事前に MFA への登録を行っていない。

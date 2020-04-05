@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Absorb LMS の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Absorb LMS の統合 | Microsoft Docs'
 description: Azure Active Directory と Absorb LMS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 936de76d1117c56f5a9dec48b51f33b9afa15351
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67107496"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>チュートリアル:Azure Active Directory と Absorb LMS の統合
+# <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>チュートリアル: Azure Active Directory と Absorb LMS の統合
 
 このチュートリアルでは、Absorb LMS と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Absorb LMS と Azure AD の統合には、次の利点があります。
@@ -269,7 +269,7 @@ Azure AD ユーザーが Absorb LMS にサインインするには、そのユ�
     ![[Only Allow SSO Login]\(SSO ログインのみを許可する\) の切り替え](./media/absorblms-tutorial/save.png)
 
     > [!NOTE]
-    > 既定では、ユーザー プロビジョニングは SSO では有効になりません。 顧客がこの機能を有効にすることを望む場合は、[こちら](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning)のドキュメントで説明されているように設定する必要があります。 また、ユーザー プロビジョニングは ACS URL が `https://company.myabsorb.com/api/rest/v2/authentication/saml` の **Absorb 5 - New Learner Experience** でのみ使用できることに注意してください。
+    > 既定では、ユーザー プロビジョニングは SSO では有効になりません。 顧客がこの機能を有効にすることを望む場合は、[こちら](https://support.absorblms.com/hc/en-us/articles/360014083294-Incoming-SAML-2-0-SSO-Account-Provisioning)のドキュメントで説明されているように設定する必要があります。 また、ユーザー プロビジョニングは ACS URL が **の**Absorb 5 - New Learner Experience`https://company.myabsorb.com/api/rest/v2/authentication/saml` でのみ使用できることに注意してください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

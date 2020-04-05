@@ -14,10 +14,10 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 03e22c4c179850e5140015c0abc2d89f16d4b624
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76774542"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>クイック スタート:Python で Service Bus のトピックとサブスクリプションを使用する

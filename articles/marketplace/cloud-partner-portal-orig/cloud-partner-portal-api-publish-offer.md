@@ -1,19 +1,18 @@
 ---
 title: プランの発行 | Azure Marketplace
 description: 指定したオファーを発行するための API。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b7ad8086c417cf1f14d9116fa4abcb0a88030922
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4163bf5727c327d559b81db42f99684aa0cc8d5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819655"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280526"
 ---
 <a name="publish-an-offer"></a>プランの発行
 ================
@@ -27,8 +26,8 @@ ms.locfileid: "73819655"
 
 |  **Name**      |    **説明**                               |  **データの種類** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | パブリッシャー ID。たとえば、`contoso`      |   string       |
-|  offerId       | オファー ID                                 |   string       |
+|  publisherId   | パブリッシャー ID。たとえば、`contoso`      |   String       |
+|  offerId       | オファー ID                                 |   String       |
 |  api-version   | API の最新バージョン                        |   Date         |
 |  |  |
 
@@ -36,10 +35,10 @@ ms.locfileid: "73819655"
 <a name="header"></a>ヘッダー
 ------
 
-|  **Name**        |    **値**          |
+|  **Name**        |    **Value**          |
 |  --------        |    ---------          |
 |  Content-Type    | `application/json`    |
-|  Authorization   |  `Bearer YOUR_TOKEN`  |
+|  承認   |  `Bearer YOUR_TOKEN`  |
 |  |  |
 
 
@@ -72,7 +71,7 @@ ms.locfileid: "73819655"
 
 ### <a name="response-header"></a>応答ヘッダー
 
-|  **Name**             |    **値**                                                                 |
+|  **Name**             |    **Value**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
 | Operation-Location    | 操作の現在の状態を確認するための、クエリ可能な URL。    |
 |  |  |

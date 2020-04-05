@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
 ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76037590"
 ---
 このドキュメントでは、Azure Resource Manager テンプレートを使って仮想マシンをプロビジョニングする際のマネージド ディスクと非管理対象ディスクの違いについて説明します。 以下の例は、非管理対象ディスクが使用されている既存のテンプレートを管理ディスクに更新する際にお役立てください。 ここでは参考として [101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) テンプレートを使用しています。 [マネージド ディスク](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json)を使用したテンプレートと[非管理対象ディスク](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json)を使用した以前のバージョンを見て直接比較することもできます。
@@ -88,7 +88,7 @@ ms.locfileid: "76037590"
 Azure Managed Disks を使用した場合、そのディスクが最上位のリソースとなり、ユーザーによって作成されるストレージ アカウントは不要となります。 マネージド ディスクは、最初 `2016-04-30-preview` の API バージョンで公開され、その後のすべての API バージョンで使用でき、既定のディスク タイプになりました。 以降のセクションでは、既定の設定とディスクのカスタマイズ方法について詳しく見ていきます。
 
 > [!NOTE]
-> `2016-04-30-preview` と `2017-03-30` の間で大きな変更があったため、`2016-04-30-preview` 以降の API バージョンを使うことをお勧めします。
+> `2016-04-30-preview` と `2016-04-30-preview` の間で大きな変更があったため、`2017-03-30` 以降の API バージョンを使うことをお勧めします。
 >
 >
 
@@ -232,7 +232,7 @@ VM オブジェクト内で、アタッチするディスク オブジェクト�
 Resource Manager テンプレートで Standard SSD ディスクを作成するには、次のパラメーターが必要です。
 
 * Microsoft.Compute の *apiVersion* を `2018-04-01` (またはそれ以降) として設定する必要があります。
-* `StandardSSD_LRS` として *managedDisk.storageAccountType* を指定します。
+* *として*managedDisk.storageAccountType`StandardSSD_LRS` を指定します。
 
 次の例は、Standard SSD ディスクを使用する VM の *properties.storageProfile.osDisk* セクションを示したものです。
 

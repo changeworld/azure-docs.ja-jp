@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: anzaman
 ms.openlocfilehash: 09e6fd8530ddb1745a92c6f31f4d5a5843a2ac10
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513169"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Video Indexer でのコンテンツ モデルのカスタマイズ

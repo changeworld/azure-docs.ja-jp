@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198226"
 ---
 # <a name="how-to-use-image-templates"></a>イメージ テンプレートの使用方法

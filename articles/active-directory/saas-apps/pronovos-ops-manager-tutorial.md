@@ -17,10 +17,10 @@ ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95c898dd36387d4474f5129943c6bd76f754ffe2
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70213537"
 ---
 # <a name="tutorial-integrate-pronovos-ops-manager-with-azure-active-directory"></a>チュートリアル:ProNovos Ops Manager と Azure Active Directory の統合
@@ -29,7 +29,7 @@ ms.locfileid: "70213537"
 
 * ProNovos Ops Manager にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して ProNovos Ops Manager に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 

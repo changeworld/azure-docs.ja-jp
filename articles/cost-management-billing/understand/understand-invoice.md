@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: a3bf55bef0f6fc25f98b362b4a22e22471a031f1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77199060"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の用語を確認します。
@@ -93,15 +93,15 @@ ms.locfileid: "77199060"
 
 | 期間 |説明 |
 | --- | --- |
-| 名前 |使用状況の最上位レベルのサービスを示します |
-| Type |料金に影響する Azure サービスの種類を定義します |
+| Name |使用状況の最上位レベルのサービスを示します |
+| 種類 |料金に影響する Azure サービスの種類を定義します |
 | リソース |消費しているメーターの測定単位を示します |
 | リージョン |データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します |
 | 使用量 |請求期間中に使用されたメーターの量 |
 | Included |現在の請求期間内に無料で含まれるメーターの量 |
 | Billable |消費量と含まれる量の差が表示されます。 この差異について課金されます。 プランに一定量が含まれない従量課金制では、この合計は消費量と同じになります。 |
 | 料金 |課金対象項目ごとに請求される価格 |
-| Value |[超過量] 列に [単価] 列を掛けた料金を示します。 消費量が含まれる量を超過していない場合、この列の料金は発生しません。 |
+| 値 |[超過量] 列に [単価] 列を掛けた料金を示します。 消費量が含まれる量を超過していない場合、この列の料金は発生しません。 |
 | 小計 |この請求期間の課税前の合計料金 |
 | 総計 |この請求期間の課税後の合計料金 |
 

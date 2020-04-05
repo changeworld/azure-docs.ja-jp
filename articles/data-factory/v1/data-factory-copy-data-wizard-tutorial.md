@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル:コピー ウィザードを使用してパイプラインを作成する '
+title: 'チュートリアル: コピー ウィザードを使用してパイプラインを作成する '
 description: このチュートリアルでは、Data Factory でサポートされているコピー ウィザードを使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。
 services: data-factory
 documentationcenter: ''
@@ -13,13 +13,13 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8bbe32a202af3b8684c16cc2e56d5a111511bef5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75438916"
 ---
-# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>チュートリアル:コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する
+# <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>チュートリアル: コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
@@ -61,7 +61,7 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
       - **[既存のものを使用]** を選択し、既存のリソース グループを選択します。
       - **[新規作成]** を選択し、リソース グループの名前を入力します。
           
-        このチュートリアルの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../../azure-resource-manager/management/overview.md)に関するページを参照してください。
+        このチュートリアルの一部の手順は、 **ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../../azure-resource-manager/management/overview.md)に関するページを参照してください。
    4. データ ファクトリの**場所**を選択します。
    5. ブレードの一番下にある **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。  
    6. **Create** をクリックしてください。

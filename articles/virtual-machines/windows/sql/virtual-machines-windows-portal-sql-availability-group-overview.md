@@ -16,10 +16,10 @@ ms.date: 01/13/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 8119990ab4ab4a918e325976092100086a547aa4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74037493"
 ---
 # <a name="introducing-sql-server-availability-groups-on-azure-virtual-machines"></a>Azure 仮想マシンでの SQL Server 可用性グループの概要
@@ -40,8 +40,8 @@ Azure Virtual Machines での可用性グループの重要な違いは、Azure 
 
 |  | Windows Server のバージョン | SQL Server のバージョン | SQL Server のエディション | WSFC クォーラムの構成 | マルチリージョンの DR | マルチサブネットのサポート | 既存の AD のサポート | マルチゾーン同一リージョンの DR | Dist-AG サポート (AD ドメインなし) | Dist-AG サポート (クラスターなし) |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| [SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) | 2016 | 2017 </br>2016   | Ent | クラウド監視 | いいえ | 可能 | はい | はい | いいえ | いいえ |
-| [クイック スタート テンプレート](virtual-machines-windows-sql-availability-group-quickstart-template.md) | 2016 | 2017</br>2016  | Ent | クラウド監視 | いいえ | 可能 | はい | はい | いいえ | いいえ |
+| [SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) | 2016 | 2017 </br>2016   | Ent | クラウド監視 | いいえ | はい | はい | はい | いいえ | いいえ |
+| [クイック スタート テンプレート](virtual-machines-windows-sql-availability-group-quickstart-template.md) | 2016 | 2017</br>2016  | Ent | クラウド監視 | いいえ | はい | はい | はい | いいえ | いいえ |
 | [Portal テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) | 2016 </br>2012 R2 | 2016</br>2014 | Ent | ファイル共有 | いいえ | いいえ | いいえ | いいえ | いいえ | いいえ |
 | [手動](virtual-machines-windows-portal-sql-availability-group-prereq.md) | All | All | All | All | はい | はい | はい | はい | はい | はい |
 | &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
@@ -66,12 +66,12 @@ Azure クイック スタート テンプレートは、SQL VM リソース プ�
 
 ## <a name="manually-in-azure-portal"></a>Azure portal で自動的に行う
 
-テンプレートを使わずに、自分で仮想マシンを作成することもできます。 最初に、前提条件を満たした後、可用性グループを作成します。 以下のトピックをご覧ください。 
+テンプレートを使わずに、自分で仮想マシンを作成することもできます。 最初に、前提条件を満たした後、可用性グループを作成します。 次のトピックを参照してください。 
 
 - [Azure Virtual Machines で Always On 可用性グループを作成するための前提条件を満たす](virtual-machines-windows-portal-sql-availability-group-prereq.md)
 
 - [Always On 可用性グループを作成して可用性と障害復旧を向上させる](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [異なるリージョンの Azure Virtual Machines に SQL Server AlwaysOn 可用性グループを構成する](virtual-machines-windows-portal-sql-availability-group-dr.md)

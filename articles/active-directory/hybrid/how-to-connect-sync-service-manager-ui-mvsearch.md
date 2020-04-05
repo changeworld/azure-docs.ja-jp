@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59a52fa1b67d37abfc79fd5738d70afb8aecf670
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60382924"
 ---
 # <a name="sync-service-manager-metaverse-search"></a>Sync Service Manager のメタバース検索
@@ -31,7 +31,7 @@ ms.locfileid: "60382924"
 
 検索結果では、オブジェクトを選択してから **[Properties]** (プロパティ) を選択すると [メタバース オブジェクトのプロパティ](tshoot-connect-object-not-syncing.md#metaverse-object-properties)を確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD Connect Sync](how-to-connect-sync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

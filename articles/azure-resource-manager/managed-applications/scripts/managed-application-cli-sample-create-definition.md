@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.openlocfilehash: f4d5a0036ba44f7e0054db7ce820b91b0de629b8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75648969"
 ---
 # <a name="create-a-managed-application-definition-with-azure-cli"></a>Azure CLI を使用してマネージド アプリケーション定義を作成する

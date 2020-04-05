@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.openlocfilehash: df28116c588ed77f02c78a42a85feb91ca339e7b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75366702"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation Runbook をトリガーするアラートを使用する

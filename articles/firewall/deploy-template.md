@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: b9e82998283bf44eede88148a12d88aae521b1ca
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74169197"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>テンプレートを使用して Azure Firewall をデプロイする
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ポータルの **[Create a sandbox setup of AzureFirewall]\(AzureFirewall のサンド ボックス設定の作成\)** ページで、次の値を入力または選択します。
    
-   - **リソース グループ**: **[新規作成]** を選択して、リソース グループの名前を入力し、 **[OK]** を選択します。 
+   - **[リソース グループ]** : **[新規作成]** を選択して、リソース グループの名前を入力し、 **[OK]** を選択します。 
    - **仮想ネットワーク名**: 新しい VNet の名前を入力します。 
    - **管理ユーザー名**: 管理者ユーザー アカウントのユーザー名を入力します。
    - **管理パスワード**: 管理者パスワードを入力します。 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 テンプレートにあるファイアウォールの JSON の構文とプロパティに関する詳細については、[Microsoft.Network/azureFirewalls](/azure/templates/microsoft.network/azurefirewalls)に関する記事を参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソースが必要なくなった場合は、PowerShell コマンド [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループ、ファイアウォール、およびすべての関連リソースを削除できます。 *MyResourceGroup* という名前のリソース グループを削除するには、次を実行します。 
 
@@ -65,9 +65,9 @@ Remove-AzResourceGroup -Name MyResourceGroup
 ```
 引き続きファイアウォール監視チュートリアルに進む場合は、リソース グループとファイアウォールをまだ削除しないでください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、Azure Firewall のログを監視することができます。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Azure Firewall のログを監視する](./tutorial-diagnostics.md)
+> [チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)

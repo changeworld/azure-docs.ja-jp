@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 45478c8e4f5003ff41eb8b486d67caa452739cd4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8287250df4e278d4904e31121ed7d2df208e1c9
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75384748"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80238847"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>クイック スタート:最初の Bing Custom Search インスタンスの作成
 
@@ -52,4 +52,4 @@ Bing Custom Search インスタンスを作成するには:
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [クイック スタート:Bing Custom Search エンドポイントを呼び出す](./call-endpoint-csharp.md)
+> [クイック スタート: Bing Custom Search エンドポイントを呼び出す](./call-endpoint-csharp.md)

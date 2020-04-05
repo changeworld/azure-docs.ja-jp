@@ -4,10 +4,10 @@ description: Application Insights を使用して Log4J または Logback のト
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657216"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights を使用した Java トレース ログの探索

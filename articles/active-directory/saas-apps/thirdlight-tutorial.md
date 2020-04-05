@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 448d46cd21a63488c4f567d5555fe6406fc0fa73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67089086"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>チュートリアル:Azure Active Directory と ThirdLight の統合
@@ -134,7 +134,7 @@ ThirdLight に対する Azure AD シングル サインオンを構成するに�
 
 1. **[Configuration]\(構成\)**  >  **[System Administration]\(システム管理\)**  >  **[SAML2]** の順に移動します。
 
-    ![System Administration](./media/thirdlight-tutorial/ic805843.png "System Administration")
+    ![システム管理](./media/thirdlight-tutorial/ic805843.png "システム管理")
 
 1. SAML2 の構成セクションで、次の手順を実行します。
   
@@ -170,7 +170,7 @@ ThirdLight に対する Azure AD シングル サインオンを構成するに�
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 
-    1. **作成** を選択します。
+    1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -214,7 +214,7 @@ Azure AD ユーザーが ThirdLight にサインインできるようにする�
 
 1. プロビジョニングする有効な Azure AD アカウントのユーザー名、名前または説明、メール アドレスを入力します。 新しいメンバーのプリセットまたはグループを選択します。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 > [!NOTE]
 > ThirdLight から提供されているユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。

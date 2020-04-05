@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 7ee17fa1ddb0c70921f8a9625944053e71ec016f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 111003718fc82683f1756276132def0aea7b7375
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201930"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239572"
 ---
 # <a name="quickstart-configure-linux-virtual-machines-in-azure-using-ansible"></a>クイック スタート:Ansible を使用して Azure で Linux 仮想マシンを構成する
 
@@ -220,7 +220,7 @@ Azure 仮想マシン (VM) を作成する場合、[仮想ネットワーク](/a
 
 1. 次のように、(プレイブックを保存するための) `azure_create_complete_vm.yml` という名前のファイルを作成し、vi エディターで開きます。
 
-   ```azurecli-interactive
+   ```bash
    vi azure_create_complete_vm.yml
    ```
 

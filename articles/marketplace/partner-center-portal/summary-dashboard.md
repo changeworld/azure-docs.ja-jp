@@ -1,19 +1,18 @@
 ---
-title: コマーシャル マーケットプレースでのパートナー センター分析用の [Summary]\(概要\) ダッシュボード
-description: マーケットプレースのアクティビティが要約された集計データのグラフ、傾向、値にパートナー センターの [Summary]\(概要\) ダッシュボードからアクセスする方法を説明します。
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+title: コマーシャル マーケットプレースでのパートナー センター分析用の [Summary](概要) ダッシュボード
+description: マーケットプレースのアクティビティが要約された集計データのグラフ、傾向、値にパートナー センターの [Summary](概要) ダッシュボードからアクセスする方法を説明します。
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: e20f3d156df139cfaf1935bae7fc7babd3e35fc5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3da3109bd813fc3b99a4f59e5a357fa351c75394
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475101"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281376"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [Summary]\(概要\) ダッシュボード
 
@@ -118,8 +117,8 @@ ms.locfileid: "75475101"
 
 - パートナー センターのコマーシャル マーケットプレースで利用可能な分析レポートの概要については、「[パートナー センターでの商用マーケットプレース向け分析](./analytics.md)」を参照してください。
 - グラフィカルでダウンロード可能な形式での注文の詳細については、「[コマーシャル マーケットプレース分析の注文ダッシュボード](./orders-dashboard.md)」を参照してください。
-- 仮想マシン (VM) オファーの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](./usage-dashboard.md)」を参照してください。
+- 仮想マシン (VM) プランの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](./usage-dashboard.md)」を参照してください。
 - 成長傾向など、顧客の詳細については、「[コマーシャル マーケットプレース分析の顧客ダッシュボード](./customer-dashboard.md)」を参照してください。
 - 過去 30 日間のダウンロード要求の一覧については、「[コマーシャル マーケットプレース分析のダウンロード ダッシュボード](./downloads-dashboard.md)」を参照してください。
-- Azure Marketplace と AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[コマーシャル マーケットプレース分析の評価とレビューのダッシュボード](./ratings-reviews.md)」を参照してください。
+- Azure Marketplace と AppSource でのオファーに関する顧客からのフィードバックを統合して表示する方法については、「[コマーシャル マーケットプレース分析の [評価とレビュー] ダッシュボード](./ratings-reviews.md)」を参照してください。
 - コマーシャル マーケットプレース分析についてよく寄せられる質問と、データ用語の包括的な辞書については、「[コマーシャル マーケットプレース分析に関するよく寄せられる質問と用語](./faq-terminology.md)」を参照してください。

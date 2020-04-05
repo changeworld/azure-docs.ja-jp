@@ -16,10 +16,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe97956d99bd5c677e499b532ef85a1bb4d324ef
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275422"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシの個人データの削除
@@ -79,6 +79,6 @@ Kerberos の制約付き委任を使用するアプリケーションによっ�
 
 ![削除すべき強調表示されたコードを含むコード スニペットを示します](./media/application-proxy-remove-personal-data/01.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリケーション プロキシの概要については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](application-proxy.md)」をご覧ください。

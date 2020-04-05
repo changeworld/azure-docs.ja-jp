@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5bd305d2943d1b12756171748f28d32300081d71
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443402"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>エンド ユーザーがアプリケーションに同意する方法を構成する
@@ -147,7 +147,7 @@ Azure AD PowerShell プレビュー モジュール ([AzureADPreview](https://do
 
 [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
 
-[アプリケーションに対してテナント全体の管理者の同意を付与する](grant-admin-consent.md)
+[アプリケーションへのテナント全体の管理者の同意の付与](grant-admin-consent.md)
 
 [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/active-directory-v2-scopes.md)
 

@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 12/02/2019
-ms.openlocfilehash: f2dc6ec2fb99addc6a2c050c072e0221fd2c8e0b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 84fd24890495e7278c69c2f83c7182fd65f86791
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769083"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79535563"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Azure Database for MariaDB とは
 
@@ -41,7 +41,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>数秒以内でのパフォーマンスの調整とスケール
 
-Azure Database for MariaDB サービスには、次の複数のサービス レベルが用意されています。Basic、汎用、メモリ最適化。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、レベルごとに異なるパフォーマンスと機能 を提供しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳しくは、 [価格レベル](concepts-pricing-tiers.md)に関するページをご覧ください。
+Azure Database for MariaDB サービスには、複数のサービス レベル (Basic、汎用、およびメモリ最適化) が用意されています。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、レベルごとに異なるパフォーマンスと機能 を提供しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳しくは、 [価格レベル](concepts-pricing-tiers.md)に関するページをご覧ください。
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
 
@@ -64,7 +64,7 @@ Azure Database for MariaDB についての質問や提案は、(テクニカル 
 - ご利用のアカウントに関する問題を解決するには、Azure portal で[サポート要求をオープン](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)します。
 - フィードバックを提供したり、新しい機能を要求したりするには、[Azure フィードバック フォーラム](https://feedback.azure.com/forums/915439-azure-database-for-mariadb)でエントリを作成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Database for MariaDB の概要を読み終えたら、次の作業に進むことができます。
 - コストの比較と計算については、[価格](https://azure.microsoft.com/pricing/details/mariadb/)のページを参照してください。 

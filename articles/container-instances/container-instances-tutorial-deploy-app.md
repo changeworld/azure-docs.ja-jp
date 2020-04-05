@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 757b41bd69d69deb901e3b5b9a633dce3b9e133a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78249968"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>チュートリアル:Azure Container Instances にコンテナー アプリケーションをデプロイする

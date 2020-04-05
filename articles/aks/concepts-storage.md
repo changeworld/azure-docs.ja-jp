@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.openlocfilehash: 4bb19d7da971a82aef9c0e1fc092cc648ac49c4c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595996"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのストレージ オプション

@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
 ms.openlocfilehash: 0d800102b6f6ff77944a2b625d3bcecef69c1ee9
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75548754"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool

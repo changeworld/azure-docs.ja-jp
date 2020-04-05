@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door Service | Microsoft Docs
+title: Azure Front Door | Microsoft Docs
 description: この記事では、Azure Front Door の概要を示します。 実際のアプリケーションのユーザー トラフィックを負荷分散するための選択肢として適切かどうかを見極めましょう。
 services: frontdoor
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: e92e51e8aabf24f1c5c4db31e2e203f391620ecc
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 0ee35f4f0b4bd8c46a0445e2905ae3b50d11f721
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423474"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79471651"
 ---
-# <a name="what-is-azure-front-door-service"></a>Azure Front Door Service とは
-Azure Front Door Service では、高可用性のために最大限のパフォーマンスと即時グローバル フェイルオーバーを最適化することで、Web トラフィックのグローバル ルーティングを定義、管理、および監視することができます。 Front Door を使用すると、グローバル (複数リージョン) のコンシューマーや企業のアプリケーションを、Azure を使用して世界中のユーザーに発信する、堅牢で高性能なパーソナライズされた最新のアプリケーション、API、およびコンテンツに変換することができます。
+# <a name="what-is-azure-front-door"></a>Azure Front Door とは
+Azure Front Door では、高可用性のために最大限のパフォーマンスと即時グローバル フェールオーバーを最適化することで、Web トラフィックのグローバル ルーティングを定義、管理、監視することができます。 Front Door を使用すると、グローバル (複数リージョン) のコンシューマーや企業のアプリケーションを、Azure を使用して世界中のユーザーに発信する、堅牢で高性能なパーソナライズされた最新のアプリケーション、API、およびコンテンツに変換することができます。
 
 Front Door は、レイヤー 7 または HTTP/HTTPS 層で動作し、スプリット TCP と Microsoft のグローバル ネットワークでエニーキャスト プロトコルを使用してグローバル接続を向上させます。 そのため、構成でルーティング方法を選択することで、Front Door がクライアント要求を最も高速で最も使用可能なアプリケーション バックエンドにルーティングすることを保証できます。 アプリケーション バックエンドは、Azure の内部または外部でホストされている、インターネットに公開されたサービスです。 Front Door には、さまざまなアプリケーション ニーズと自動フェールオーバー モデルに対応する、さまざまな[トラフィック ルーティング方法](front-door-routing-methods.md)と[バックエンドの正常性監視オプション](front-door-health-probes.md)が用意されています。 [Traffic Manager](../traffic-manager/traffic-manager-overview.md) と同様、Front Door は Azure リージョン全体の障害などの障害に対応します。
 
@@ -44,7 +44,7 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 たとえば、`http://www.contoso.com/users/*` の要求は UserProfilePool にルーティングされ、`http://www.contoso.com/products/*` は ProductInventoryPool にルーティングされます。  Front Door では、最も一致するアルゴリズムを使用してさらに複雑なルート照合のシナリオも可能なため、一致するパスのパターンがない場合は `http://www.contoso.com/*` の既定のルーティング規則が選択され、トラフィックは既定の包括的なルーティング規則に送信されます。 詳細は、[ルートの照合](front-door-route-matching.md)に関するページを参照してください。
 
 ## <a name="multiple-site-hosting"></a>複数サイトのホスティング
-複数サイトのホストにより、同じ Front Door 構成に複数の Web サイトを構成することができます。 この機能を使用すると、さまざまな Web サイトを 1 つの Front Door 構成に追加することによって、デプロイのための効率的なトポロジを構成できます。 Azure Front Door Service は、アプリケーションのアーキテクチャに基づいて、各 web サイトをその独自のバックエンド プールに送信するか、さまざまな Web サイトが同じバックエンド プールに送信されるように構成することができます。 たとえば、Front Door では、ImagePool と VideoPool という 2 つのバックエンド プールから、`images.contoso.com` と `videos.contoso.com` のトラフィックを処理することができます。 あるいは、両方のフロント エンド ホストを、MediaPool と呼ばれる 1 つのバックエンド プールにトラフィックを送信するように構成できます。
+複数サイトのホストにより、同じ Front Door 構成に複数の Web サイトを構成することができます。 この機能を使用すると、さまざまな Web サイトを 1 つの Front Door 構成に追加することによって、デプロイのための効率的なトポロジを構成できます。 Azure Front Door は、アプリケーションのアーキテクチャに基づいて、各 web サイトをその独自のバックエンド プールに送信するか、さまざまな Web サイトが同じバックエンド プールに送信されるように構成することができます。 たとえば、Front Door では、ImagePool と VideoPool という 2 つのバックエンド プールから、`images.contoso.com` と `videos.contoso.com` のトラフィックを処理することができます。 あるいは、両方のフロント エンド ホストを、MediaPool と呼ばれる 1 つのバックエンド プールにトラフィックを送信するように構成できます。
 
 同様に、`www.contoso.com` と `www.fabrikam.com` という 2 つの異なるドメインを、同じ Front Door 上に構成することができます。
 
@@ -66,9 +66,9 @@ Front Door プラットフォーム自体は、[Azure DDoS Protection](../virtua
 ## <a name="url-redirection"></a>URL リダイレクト
 セキュリティで保護された通信のみをサポートすることが業界で強力に推進されているため、Web アプリケーションは HTTP トラフィックを自動的に HTTPS にリダイレクトすることが求められています。 これにより、ユーザーとアプリケーション間のすべての通信が、暗号化されたパスを経由して行われるようになります。 
 
-これまでは、アプリケーションの所有者は、HTTP で受信した要求を HTTPS にリダイレクトすることが唯一の目的である専用のサービスを作成することによって、この要件に対処してきました。 Azure Front Door Service では、トラフィックを HTTP から HTTPS にリダイレクトする機能がサポートされています。 これにより、アプリケーションの構成が簡単になり、リソースの使用が最適化され、グローバルなリダイレクトやパスに基づくリダイレクトなどの新しいリダイレクト シナリオがサポートされるようになります。 Azure Front Door Service からの URL リダイレクトは、HTTP から HTTPS へのリダイレクトだけでなく、別のホスト名へのリダイレクト、別のパスへのリダイレクト、または URL 内の新しいクエリ文字列へのリダイレクトにも対応しています。
+これまでは、アプリケーションの所有者は、HTTP で受信した要求を HTTPS にリダイレクトすることが唯一の目的である専用のサービスを作成することによって、この要件に対処してきました。 Azure Front Door では、トラフィックを HTTP から HTTPS にリダイレクトする機能がサポートされています。 これにより、アプリケーションの構成が簡単になり、リソースの使用が最適化され、グローバルなリダイレクトやパスに基づくリダイレクトなどの新しいリダイレクト シナリオがサポートされるようになります。 Azure Front Door からの URL リダイレクトは、HTTP から HTTPS へのリダイレクトだけでなく、別のホスト名へのリダイレクト、別のパスへのリダイレクト、または URL 内の新しいクエリ文字列へのリダイレクトにも対応しています。
 
-詳細については、Azure Front Door Service による[トラフィックのリダイレクト](front-door-url-redirect.md)に関するページを参照してください。
+詳細については、Azure Front Door による[トラフィックのリダイレクト](front-door-url-redirect.md)に関するページを参照してください。
 
 ## <a name="url-rewrite"></a>URL 書き換え
 Front Door では、バックエンドに転送する要求の作成時に使用する、省略可能なカスタム転送パスの構成を許可することで、[URL 書き換え](front-door-url-rewrite.md)がサポートされています。 さらに、Front Door では、バックエンドに要求を転送するときに送信されるようにホスト ヘッダーを構成することができます。
@@ -76,13 +76,13 @@ Front Door では、バックエンドに転送する要求の作成時に使用
 ## <a name="protocol-support---ipv6-and-http2-traffic"></a>プロトコルのサポート - IPv6 および HTTP/2 トラフィック
 Azure Front Door は、エンド ツー エンドの IPv6 接続と、HTTP/2 プロトコルも、ネイティブでサポートします。 
 
-HTTP/2 プロトコルによって、長時間実行されている TCP 接続上でアプリケーション バックエンドとクライアント間の全二重通信が可能になります。 HTTP/2 により、HTTP ベースの実装では必須だったポーリングを使用することなく、バックエンドとクライアントの間により対話的な双方向通信が可能になります。 HTTP/2 プロトコルは、HTTP とは異なってオーバーヘッドが少なく、複数の要求や応答で同じ TCP 接続を再利用できるため、リソースをより効率的に使用できます。 詳細については、[Azure Front Door Service の HTTP/2 サポート](front-door-http2.md)に関するページを参照してください。
+HTTP/2 プロトコルによって、長時間実行されている TCP 接続上でアプリケーション バックエンドとクライアント間の全二重通信が可能になります。 HTTP/2 により、HTTP ベースの実装では必須だったポーリングを使用することなく、バックエンドとクライアントの間により対話的な双方向通信が可能になります。 HTTP/2 プロトコルは、HTTP とは異なってオーバーヘッドが少なく、複数の要求や応答で同じ TCP 接続を再利用できるため、リソースをより効率的に使用できます。 詳細については、[Azure Front Door の HTTP/2 サポート](front-door-http2.md)に関するページを参照してください。
 
 ## <a name="pricing"></a>価格
 
 料金情報については、[Front Door の価格](https://azure.microsoft.com/pricing/details/frontdoor/)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
 - [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

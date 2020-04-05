@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
 ms.openlocfilehash: f69e245d72a63b942896cdd9f4a2225cb4c1706d
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208527"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>PowerShell を使用し、近接通信配置グループに VM をデプロイする

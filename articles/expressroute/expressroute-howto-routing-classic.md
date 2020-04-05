@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: cherylmc
 ms.openlocfilehash: 05602538f206032d924b39a7dd8f4325c48a5224
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931373"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>ExpressRoute 回線のピアリングの作成と変更 (クラシック)
@@ -88,7 +88,7 @@ ms.locfileid: "74931373"
    * セカンダリ リンク用の /30 サブネット。 これを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。
    * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングで同じ VLAN ID を使用していないことを確認します。
    * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。 このピアリングではプライベート AS 番号を使用できます。 65515 を使用していないことを確認します。
-   * いずれかを使用する場合は、MD5 ハッシュ。 **省略可能**。
+   * いずれかを使用する場合は、MD5 ハッシュ。 **オプション**。
      
    次の例を使用して、回線用に Azure プライベート ピアリングを構成できます。
 
@@ -195,7 +195,7 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
    * セカンダリ リンク用の /30 サブネット。 これは有効なパブリック IPv4 プレフィックスである必要があります。
    * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングで同じ VLAN ID を使用していないことを確認します。
    * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
-   * いずれかを使用する場合は、MD5 ハッシュ。 **省略可能**。
+   * いずれかを使用する場合は、MD5 ハッシュ。 **オプション**。
 
    > [!IMPORTANT]
    > 顧客 ASN ではなく、ピアリング ASN として AS 番号を指定していることを確認します。
@@ -300,9 +300,9 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングで同じ VLAN ID を使用していないことを確認します。
    * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
    * アドバタイズするプレフィックス:BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定する必要があります。 パブリック IP アドレス プレフィックスのみが受け入れられます。 一連のプレフィックスを送信する計画の場合は、コンマ区切りの一覧を送信できます。 これらのプレフィックスは、RIR/IRR に登録する必要があります。
-   * 顧客 ASN: ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスを登録する AS 番号を指定できます。 **省略可能**。
-   * ルーティング レジストリ名: AS 番号とプレフィックスが登録される RIR/IRR を指定できます。
-   * いずれかを使用する場合は、MD5 ハッシュ。 **省略可能。**
+   * 顧客 ASN: ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスを登録する AS 番号を指定できます。 **オプション**。
+   * ルーティング レジストリ名: AS 番号とプレフィックスを登録する RIR/IRR を指定することができます。
+   * いずれかを使用する場合は、MD5 ハッシュ。 **省略可。**
      
    回線用に Microsoft ピアリングを構成するには、次のコマンドレットを実行します。
  
@@ -350,7 +350,7 @@ Set-AzureBGPPeering -AccessType Microsoft -ServiceKey "*************************
 Remove-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、 [ExpressRoute 回線に VNet をリンクします](expressroute-howto-linkvnet-classic.md)。
 

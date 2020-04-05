@@ -1,6 +1,6 @@
 ---
-title: VMware Solutions (AVS) 用のノードを削除する - Azure
-description: AVS デプロイで VMware からノードを削除する方法について説明します
+title: VMware Solution by CloudSimple のノードの削除 - Azure
+description: CloudSimple デプロイで VMware からノードを削除する方法について学習します
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/05/2019
@@ -8,45 +8,45 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 30d128d6bd2f2e1e2705a7b742f02d11fd947a03
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024740"
 ---
-# <a name="delete-nodes-from-azure-vmware-solution-by-avs"></a>Azure VMware Solution by AVS からノードを削除する
+# <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Azure VMware Solution by CloudSimple からのノードの削除
 
-AVS ノードは、作成されると従量制で課金されます。 ノードの従量制課金を停止するには、ノードを削除する必要があります。 Azure portal から、使用されていないノードを削除します。
+CloudSimple ノードは、作成されると従量制で課金されます。  ノードの従量制課金を停止するには、ノードを削除する必要があります。  Azure portal から、使用されていないノードを削除します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 ノードは、次の条件下でのみ削除できます。
 
-* ノードと共に作成された AVS プライベート クラウドが削除されている。 AVS プライベート クラウドを削除する場合は、[Azure VMware Solution by AVS プライベート クラウドの削除](delete-private-cloud.md)に関するページを参照してください。
-* AVS プライベート クラウドを縮小することによって、ノードが AVS プライベート クラウドから削除されている。 AVS プライベート クラウドを縮小する場合は、[Azure VMware Solution by AVS プライベート クラウドの縮小](shrink-private-cloud.md)に関するページを参照してください。
+* ノードと共に作成されたプライベート クラウドが削除されている。  プライベート クラウドを削除するには、「[Azure VMware Solution by CloudSimple プライベート クラウドの削除](delete-private-cloud.md)」を参照してください。
+* プライベート クラウドを縮小することによって、ノードがプライベート クラウドから削除されている。  プライベート クラウドを縮小するには、「[Azure VMware Solution by CloudSimple プライベート クラウドの縮小](shrink-private-cloud.md)」を参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
-## <a name="delete-avs-node"></a>AVS ノードを削除する
+## <a name="delete-cloudsimple-node"></a>CloudSimple ノードの削除
 
 1. **[すべてのサービス]** を選択します。
 
-2. **AVS ノード**を検索します。
+2. **CloudSimple ノード** を検索します。
 
-   ![AVS ノードの検索](media/create-cloudsimple-node-search.png)
+   ![CloudSimple ノードを検索します。](media/create-cloudsimple-node-search.png)
 
-3. **[AVS Nodes]\(AVS ノード\)** を選択します。
+3. **CloudSimple ノード** を選択します。
 
-4. 削除する AVS プライベート クラウドに属していないノードを選択します。 **[AVS PRIVATE CLOUD NAME]\(AVS のプライベート クラウド名\)** 列に、ノードが属している AVS プライベート クラウド名が表示されます。 ノードが AVS プライベート クラウドで使用されていない場合、値は空になります。 
+4. 削除するプライベート クラウドに属していないノードを選択します。  **[PRIVATE CLOUD NAME]\(プライベート クラウド名\)** 列に、ノードが属しているプライベート クラウド名が表示されます。  ノードがプライベート クラウドで使用されていない場合、値は空になります。 
 
-    ![AVS ノードを選択する](media/select-delete-cloudsimple-node.png)
+    ![[CloudSimple Nodes]\(CloudSimple ノード\) を選択する](media/select-delete-cloudsimple-node.png)
 
 > [!NOTE]
-> 削除できるのは、AVS プライベート クラウドの一部ではないノードのみです。
+> 削除できるのは、プライベート クラウドの一部ではないノードだけです。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [AVS プライベート クラウド](cloudsimple-private-cloud.md)について確認する
+* [プライベート クラウド](cloudsimple-private-cloud.md)について説明します。

@@ -4,10 +4,10 @@ description: Application Insights でシステムとカスタムの .NET/.NET Co
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: 2094c012e86131073fc66be4f2ac2fb2e81ef4c1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77663591"
 ---
 # <a name="eventcounters-introduction"></a>EventCounter の概要
@@ -146,6 +146,6 @@ EventCounter には特別なアクセス許可は必要なく、.NET Core 3.0 �
 
  この機能は、ASP.NET Core 向けの [Application Insights 拡張機能](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps) ではまだサポートされていません。 この機能がサポートされるようになりましたら、このドキュメントは更新されます。
 
-## <a name="next"></a>次のステップ
+## <a name="next-steps"></a><a name="next"></a>次のステップ
 
 * [依存関係の追跡](../../azure-monitor/app/asp-net-dependencies.md)

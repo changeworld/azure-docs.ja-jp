@@ -17,10 +17,10 @@ ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2e456114d186e548cede656da8e8d227efa09aa
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75550113"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netop-portal"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Netop Portal の統合
@@ -92,7 +92,7 @@ Netop Portal で Azure AD SSO を構成してテストするには、次の構�
 
 1. その他に、Netop Portal アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name |  ソース属性|
+    | 名前 |  ソース属性|
     | ---------------| --------- |
     | NRC-ACCOUNT-ID | "adfs-demo" |
     | NRC-EMAIL | user.userprincipalname |

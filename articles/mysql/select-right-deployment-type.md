@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 50bcd42189b1bcc945d726277975892f07f1baa1
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255531"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Azure で適切な MySQL サーバー オプションを選択する

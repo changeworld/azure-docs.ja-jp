@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, H1Hack27Feb2017, mvc
 ms.openlocfilehash: 551a3659feb39943c9f794484abb6f2da4367f39
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74455155"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用したプライベート コンテナー レジストリの作成
@@ -21,9 +21,9 @@ Docker もローカルにインストールする必要があります。 Docker
 
 Azure Cloud Shell には、必要な Docker コンポーネント (`dockerd` デーモン) すべてが含まれていないため、このクイックスタートで Cloud Shell を使用することはできません。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create][az-group-create] コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[az group create][az-group-create] コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
@@ -110,7 +110,7 @@ v1
 
 [!INCLUDE [container-registry-quickstart-docker-pull](../../includes/container-registry-quickstart-docker-pull.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[az group delete][az-group-delete] コマンドを使用して、リソース グループ、コンテナー レジストリ、そこに格納されているコンテナー イメージを削除できます。
 
@@ -118,7 +118,7 @@ v1
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Azure CLI を使って Azure Container Registry を作成し、レジストリにコンテナー イメージをプッシュしてから、レジストリからイメージをプルして実行しました。 Azure Container Registry のチュートリアルに進んで、ACR についての理解を深めましょう。
 

@@ -13,11 +13,11 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78185779"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231083"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C 監査ログへのアクセス
 
@@ -53,7 +53,7 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 
 |Section|フィールド|説明|
 |-------|-----|-----------|
-| アクティビティ | 名前 | 実行されたアクティビティ。 たとえば、実際のユーザー サインインを終了する "*アプリケーションへの id_token の発行*"。 |
+| アクティビティ | Name | 実行されたアクティビティ。 たとえば、実際のユーザー サインインを終了する "*アプリケーションへの id_token の発行*"。 |
 | 開始者 (アクター) | ObjectId | ユーザーがサインインする B2C アプリケーションの**オブジェクト ID**。 この識別子は Azure portal には表示されませんが、Microsoft Graph API を使用してアクセスできます。 |
 | 開始者 (アクター) | Spn | ユーザーがサインインする B2C アプリケーションの**アプリケーション ID**。 |
 | ターゲット | ObjectId | サインインするユーザーの**オブジェクト ID**。 |

@@ -7,11 +7,11 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 2027629e1e9e297c97cbf40485ebe7dc2e3e6c0d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78398226"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235239"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions の Azure Event Grid トリガー
 
@@ -27,7 +27,7 @@ HTTP トリガーの例については、「[HTTP エンドポイントへのイ
 
 ### <a name="c-2x-and-higher"></a>C# (2.x 以降)
 
-次の例は、`EventGridEvent` にバインドする[ C# 関数](functions-dotnet-class-library.md)を示したものです。
+次の例は、[ にバインドする](functions-dotnet-class-library.md) C# 関数`EventGridEvent`を示したものです。
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -53,7 +53,7 @@ namespace Company.Function
 
 ### <a name="version-1x"></a>バージョン 1.x
 
-次の例は、`JObject` にバインドする Functions 1.x の [C# 関数](functions-dotnet-class-library.md)を示したものです。
+次の例は、[ にバインドする Functions 1.x の ](functions-dotnet-class-library.md)C# 関数`JObject`を示したものです。
 
 ```cs
 using Microsoft.Azure.WebJobs;

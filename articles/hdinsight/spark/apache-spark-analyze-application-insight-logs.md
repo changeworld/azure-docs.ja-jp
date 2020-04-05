@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 6fd7682f56fbe446904a4acdb39e78525f2523a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435236"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>HDInsight 上の Apache Spark で Application Insights テレメトリ ログを分析する
@@ -45,7 +45,7 @@ HDInsight 上の [Apache Spark](https://spark.apache.org/) を使用して Appli
 
 Application Insights は、BLOB にテレメトリ情報を連続してエクスポートするように構成できます。 こうすることで、HDInsight が BLOB に格納されたデータを読み取ることができます。 ただし、守る必要のある要件がいくつかあります。
 
-* **[場所]** :ストレージ アカウントと HDInsight が別の場所にあると、待ち時間が長くなることがあります。 また、地域間のデータ移動に対して料金が適用されるので、コストも大きくなります。
+* **場所**: ストレージ アカウントと HDInsight が別の場所にあると、待ち時間が長くなることがあります。 また、地域間のデータ移動に対して料金が適用されるので、コストも大きくなります。
 
     > [!WARNING]  
     > HDInsight 以外の場所でストレージ アカウントを使用することはできません。
@@ -109,7 +109,7 @@ HDInsight クラスターを作成している場合は、クラスターの作�
    > [!NOTE]  
    > このセクションの残りの手順では、`wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` ディレクトリを使用しました。 ディレクトリ構造は異なる場合があります。
 
-6. 隣のセルに次のコードを入力します。`WASB_PATH` は、前の手順のパスに置き換えてください。
+6. 次のセルに、次のコードを入力します。`WASB_PATH` を前の手順のパスに置き換えます。
 
    ```python
    jsonFiles = sc.textFile('WASB_PATH')
@@ -252,7 +252,7 @@ HDInsight クラスターを作成している場合は、クラスターの作�
    > [!NOTE]  
    > このセクションの残りの手順では、`wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` ディレクトリを使用しました。 テレメトリ データが Web アプリのものでない場合、このディレクトリは存在しない可能性があります。
 
-6. 隣のセルに次のコードを入力します。`WASB\_PATH` は、前の手順のパスに置き換えてください。
+6. 次のセルに、次のコードを入力します。`WASB\_PATH` を前の手順のパスに置き換えます。
 
    ```scala
    var jsonFiles = sc.textFile('WASB_PATH')
@@ -359,9 +359,9 @@ HDInsight クラスターを作成している場合は、クラスターの作�
 
 Apache Spark を使用して Azure のデータやサービスを操作するその他の例については、次のドキュメントを参照してください。
 
-* [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark と BI: HDInsight の Spark と BI ツールを使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
+* [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と Machine Learning: HDInsight 上で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 
 Spark アプリケーションを作成および実行する方法については、次のドキュメントを参照してください。

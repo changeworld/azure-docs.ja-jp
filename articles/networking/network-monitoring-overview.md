@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
 ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67672174"
 ---
 # <a name="network-monitoring-solutions"></a>ネットワーク監視ソリューション 
@@ -37,7 +37,7 @@ Network Performance Monitor (NPM) は機能のスイートであり、各機能�
 
 パフォーマンス モニター、ExpressRoute モニター、およびサービス接続モニターは、NPM 内の監視機能です。以下のセクションでこれらについて説明します。
 
-## <a name="performance-monitor"></a>パフォーマンスの監視
+## <a name="performance-monitor"></a>パフォーマンス モニター
 
 Performance Monitor は NPM の一部であり、クラウド、ハイブリッド、オンプレミスの環境のネットワーク監視を行います。 リモート ブランチとフィールド オフィス、店舗の場所、データ センター、クラウドの間のネットワーク接続性を監視できます。 ユーザーから不満があがる前に、ネットワークの問題を検出できます。 主な利点は次のとおりです。
 

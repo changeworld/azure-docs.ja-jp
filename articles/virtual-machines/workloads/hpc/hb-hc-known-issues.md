@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: 8d4b57fb2fee3849e102868c86fe3cab465fc70d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67707794"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>HB シリーズおよび HC シリーズの VM に関する既知の問題
@@ -87,6 +87,6 @@ Linux で HB シリーズの VM を起動すると、次のようなカーネル
 
 この警告は無視できます。 これは、Azure ハイパーバイザーの既知の制限事項であり、今後対処する予定です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure 上の[ハイ パフォーマンス コンピューティング](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)に関する詳細を確認する。

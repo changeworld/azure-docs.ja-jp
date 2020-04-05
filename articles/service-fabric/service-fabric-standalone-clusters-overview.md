@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
 ms.openlocfilehash: e8912ef5bc0fd6009443b736031fc9af57ab6c5b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75465641"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Service Fabric スタンドアロン クラスターの概要

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 785a8a031a10232a37b235711ba919fdc1df35d3
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77061423"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset"></a>Azure Active Directory のセルフサービス パスワード リセットを計画する
@@ -35,7 +35,7 @@ SSPR の主な機能は次のとおりです。
 
 ## <a name="learn-about-sspr"></a>SSPR の詳細
 
-SSPR の詳細を参照してください。 「[動作のしくみ:Azure AD のセルフ サービスによるパスワードのリセット](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)をご覧ください。
+SSPR の詳細を参照してください。 「[動作のしくみ:Azure AD のセルフサービス パスワード リセット のクイック スタート](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)に関する記事をご覧ください。
 
 ### <a name="key-benefits"></a>主な利点
 
@@ -142,7 +142,7 @@ SSPR の初期構成はテスト環境で行うことをお勧めします。 �
 
 推奨値で SSPR を有効にするには、次の設定が必要です。
 
-| 領域 | 設定 | Value |
+| 領域 | 設定 | 値 |
 | --- | --- | --- |
 | **SSPR のプロパティ** | セルフサービス パスワード リセット が有効 | パイロットの場合は **[選択済み]** グループ/運用環境の場合は **[すべて]** |
 | **認証方法** | Authentication methods required to register (登録に必要な認証方法) | リセットのため必要な数より常に 1 つ多い値 |
@@ -316,7 +316,7 @@ Azure portal で構築済みのレポートを使用して、SSPR のパフォ�
 
 [使用状況と分析情報](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-methods-usage-insights)を使うと、Azure MFA や SSPR などの機能の認証方法が組織内でどのように機能しているかについて理解を深めることができます。 このレポート機能は、組織がどの方法で登録を行い、それらをどのように使用しているかを把握するための手段となるものです。
 
-### <a name="troubleshoot"></a>[トラブルシューティング]
+### <a name="troubleshoot"></a>トラブルシューティング
 
 * 「[セルフサービスのパスワードのリセットのトラブルシューティング](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-troubleshoot)」を参照してください 
 

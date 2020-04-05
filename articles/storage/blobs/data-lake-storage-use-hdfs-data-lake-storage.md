@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
 ms.openlocfilehash: 1d5313f3f0fff128dd09f9c9857b7dd9921ea4f8
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69992217"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で HDFS CLI を使用する
@@ -58,7 +58,7 @@ hdfs dfs -mkdir /samplefolder
 
 `<path>` プレースホルダーを、コンテナーまたはコンテナー フォルダーの URI に置き換えます。
 
-次に例を示します。`hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
+例: `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
 ## <a name="create-a-directory"></a>ディレクトリを作成する
 
@@ -66,7 +66,7 @@ hdfs dfs -mkdir /samplefolder
 
 `<path>` プレースホルダーを、ルート コンテナー名またはお使いのコンテナー内のフォルダーに置き換えます。
 
-次に例を示します。`hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
+例: `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 
 ## <a name="delete-a-file-or-directory"></a>ファイルまたはディレクトリを削除する
 
@@ -74,7 +74,7 @@ hdfs dfs -mkdir /samplefolder
 
 `<path>` プレースホルダーを、削除するファイルまたはフォルダーの URI に置き換えます。
 
-次に例を示します。`hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
+例: `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
 ## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>ファイルとディレクトリのアクセス制御リスト (ACL) を表示する
 
@@ -116,7 +116,7 @@ hdfs dfs -mkdir /samplefolder
 
 コマンドの完全な一覧は、[Apache Hadoop 2.4.1 ファイル システム シェル ガイド](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)の Web サイトでご覧になれます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Use an Azure Data Lake Storage Gen2 capable account in Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md) (Azure Databricks で Azure Data Lake Storage Gen2 対応アカウントを使用する)
 

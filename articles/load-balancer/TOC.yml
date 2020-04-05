@@ -64,6 +64,14 @@
       href: load-balancer-security-controls.md
 - name: 方法
   items:
+    - name: 仮想マシン スケール セット
+      items:
+        - name: 既存の Azure Load Balancer での使用 - ポータル
+          href: configure-vm-scale-set-portal.md
+        - name: 既存の Azure Load Balancer での使用 - PowerShell
+          href: configure-vm-scale-set-powershell.md
+        - name: 既存の Azure Load Balancer での使用 - CLI
+          href: configure-vm-scale-set-cli.md
     - name: Basic Load Balancer を Standard Load Balancer にアップグレードする
       items:
         - name: Basic Public Load Balancer のアップグレード

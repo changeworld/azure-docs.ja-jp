@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/13/2019
 ms.author: spelluru
 ms.openlocfilehash: 1d7175d000eebd3f68665e7f097bbe3f68025bc8
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72302789"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボにタグを追加する
@@ -40,7 +40,7 @@ ms.locfileid: "72302789"
 
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>既存のラボのタグを管理する手順
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
 1. 必要に応じて、 **[All Services]\(その他のサービス\)** を選択し、一覧から **[DevTest Labs]** を選択します。 お使いのラボは、 **[すべてのリソース]** の [ダッシュボード] に既に表示されている場合があります。
 1. ラボの一覧から、タグを追加して管理するラボを選択します。
 1. ラボの **[概要]** で、 **[Configuration and policies]\(構成とポリシー\)** を選択します。
@@ -67,6 +67,6 @@ ms.locfileid: "72302789"
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * カスタマイズしたポリシーを使用して、サブスクリプションの制約と規則を適用できます。 定義するポリシーには、すべてのリソースが特定のタグに値が指定されていることが必要になる場合があります。 詳細については、[ポリシーとスケジュールの設定](devtest-lab-set-lab-policy.md)に関するページをご覧ください。
 * [DevTest Labs Azure Resource Manager のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)を調べてください。

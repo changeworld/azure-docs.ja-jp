@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: d4dcd319000edb204ba188ed14b4c797dba5cd38
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610099"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Service Fabric サービスのために Cluster Resource Manager の設定を構成する

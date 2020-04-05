@@ -15,10 +15,10 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77913006"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Azure Media Analytics で動作を検出する
@@ -45,7 +45,7 @@ ms.locfileid: "77913006"
 ### <a name="parameters"></a>パラメーター
 次のパラメーターを使用できます。
 
-| 名前 | オプション | 説明 | Default |
+| 名前 | Options | 説明 | Default |
 | --- | --- | --- | --- |
 | sensitivityLevel |文字列: "low"、"medium"、"high" |モーション報告の感度を設定します。 誤検出の数を調整します。 |"medium" |
 | frameSamplingValue |正の整数 |アルゴリズムの実行頻度を設定します。 1 = すべてのフレーム、2 = 2 フレームごと、以降同様に続きます。 |1 |
@@ -90,7 +90,7 @@ ms.locfileid: "77913006"
 
 Motion Detector API は、固定背景ビデオ (監視ビデオなど) 内に動く対象物があると、インジケーターを提供します。 Motion Detector は、照明と影の変化などの誤アラームが減るようにトレーニングされます。 アルゴリズムの現在の制限事項としては、暗視ビデオ、半透明の対象物、小さな対象物などがあります。
 
-### <a id="output_elements"></a>出力 JSON ファイルの要素
+### <a name="elements-of-the-output-json-file"></a><a id="output_elements"></a>出力 JSON ファイルの要素
 > [!NOTE]
 > 最新リリースでは、出力 JSON 形式が変更されています。これは、一部のお客様にとっては重大な変更である場合があります。
 > 

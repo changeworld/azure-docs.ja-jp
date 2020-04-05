@@ -10,10 +10,10 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
 ms.openlocfilehash: 1cd617204bbc12a99b6ae9e3b55fbc59b0e0578a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75933685"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>チュートリアル:Logic Apps を使用して Azure Digital Twins 空間から通知を受け取る
@@ -51,13 +51,13 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 [Event Grid トピック](../event-grid/concepts.md#topics)は、ユーザー定義関数によって生成されたイベントをルーティングするためのインターフェイスを提供します。 
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 左側のウィンドウで、 **[リソースの作成]** を選びます。 
 
-1. **[Event Grid トピック]** を見つけて選択します。 **作成** を選択します。
+1. **[Event Grid トピック]** を見つけて選択します。 **［作成］** を選択します
 
-1. Event Grid トピックの**名前**を入力し、**サブスクリプション**を選択します。 Digital Twins インスタンスに対して使用または作成した**リソース グループ**と**場所**を選択します。 **作成** を選択します。 
+1. Event Grid トピックの**名前**を入力し、**サブスクリプション**を選択します。 Digital Twins インスタンスに対して使用または作成した**リソース グループ**と**場所**を選択します。 **［作成］** を選択します 
 
     [![Event Grid トピックを作成する](./media/tutorial-facilities-events/create-event-grid-topic.png)](./media/tutorial-facilities-events/create-event-grid-topic.png#lightbox)
 
@@ -110,9 +110,9 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. [Azure portal](https://portal.azure.com) の左側のウィンドウで、 **[リソースの作成]** を選択します。
 
-1. 新しい**ロジック アプリ** リソースを見つけて選択します。 **作成** を選択します。
+1. 新しい**ロジック アプリ** リソースを見つけて選択します。 **［作成］** を選択します
 
-1. ロジック アプリ リソースの**名前**を入力し、**サブスクリプション**、**リソース グループ**、**場所**を選択します。 **作成** を選択します。
+1. ロジック アプリ リソースの**名前**を入力し、**サブスクリプション**、**リソース グループ**、**場所**を選択します。 **［作成］** を選択します
 
     [![Logic Apps リソースを作成する](./media/tutorial-facilities-events/tutorial-create-logic-app.png)](./media/tutorial-facilities-events/tutorial-create-logic-app.png#lightbox)
 

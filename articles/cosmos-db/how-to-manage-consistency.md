@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 68be15e1ffd9093ab67fc046edaad991d633ca7e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 651daa0af8188b386220d97390e7a61615f94120
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445360"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79369405"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB で一貫性レベルを管理する
 
@@ -25,7 +25,7 @@ ms.locfileid: "75445360"
 
 ### <a name="cli"></a>CLI
 
-```bash
+```azurecli
 # create with a default consistency
 az cosmosdb create --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Session
 
@@ -69,7 +69,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 クライアントは、サービスによって設定された既定の一貫性レベルを上書きできます。 整合性レベルは要求ごとに設定できます。この設定によって、アカウント レベルで設定される既定の整合性レベルがオーバーライドされます。
 
-### <a id="override-default-consistency-dotnet"></a>.NET SDK V2
+### <a name="net-sdk-v2"></a><a id="override-default-consistency-dotnet"></a>.NET SDK V2
 
 ```csharp
 // Override consistency at the client level
@@ -81,7 +81,7 @@ RequestOptions requestOptions = new RequestOptions { ConsistencyLevel = Consiste
 var response = await client.CreateDocumentAsync(collectionUri, document, requestOptions);
 ```
 
-### <a id="override-default-consistency-dotnet-v3"></a>.NET SDK V3
+### <a name="net-sdk-v3"></a><a id="override-default-consistency-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 // Override consistency at the request level via request options
@@ -94,7 +94,7 @@ var response = await client.GetContainer(databaseName, containerName)
         requestOptions);
 ```
 
-### <a id="override-default-consistency-java-async"></a>Java Async SDK
+### <a name="java-async-sdk"></a><a id="override-default-consistency-java-async"></a>Java Async SDK
 
 ```java
 // Override consistency at the client level
@@ -108,7 +108,7 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-### <a id="override-default-consistency-java-sync"></a>Java Sync SDK
+### <a name="java-sync-sdk"></a><a id="override-default-consistency-java-sync"></a>Java Sync SDK
 
 ```java
 // Override consistency at the client level
@@ -116,7 +116,7 @@ ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy, ConsistencyLevel.Eventual);
 ```
 
-### <a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
+### <a name="nodejsjavascripttypescript-sdk"></a><a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 // Override consistency at the client level
@@ -129,7 +129,7 @@ const client = new CosmosClient({
 const { body } = await item.read({ consistencyLevel: ConsistencyLevel.Eventual });
 ```
 
-### <a id="override-default-consistency-python"></a>Python SDK
+### <a name="python-sdk"></a><a id="override-default-consistency-python"></a>Python SDK
 
 ```python
 # Override consistency at the client level
@@ -144,7 +144,7 @@ Azure Cosmos DB の整合性レベルの 1 つとして、"*セッション*" �
 
 セッション トークンを手動で管理するには、応答からセッション トークンを取得し、それらを要求ごとに設定します。 セッション トークンを手動で管理する必要がない場合は、これらのサンプルを使用する必要はありません。 SDK では、セッション トークンが自動的に追跡されます。 セッション トークンを手動で設定しなかった場合、既定では、SDK によって直近のセッション トークンが使用されます。
 
-### <a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
+### <a name="net-sdk-v2"></a><a id="utilize-session-tokens-dotnet"></a>.NET SDK V2
 
 ```csharp
 var response = await client.ReadDocumentAsync(
@@ -157,7 +157,7 @@ var response = await client.ReadDocumentAsync(
                 UriFactory.CreateDocumentUri(databaseName, collectionName, "SalesOrder1"), options);
 ```
 
-### <a id="utilize-session-tokens-dotnet-v3"></a>.NET SDK V3
+### <a name="net-sdk-v3"></a><a id="utilize-session-tokens-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 Container container = client.GetContainer(databaseName, collectionName);
@@ -169,7 +169,7 @@ options.SessionToken = sessionToken;
 ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(salesOrder.Id, new PartitionKey(salesOrder.PartitionKey), options);
 ```
 
-### <a id="utilize-session-tokens-java-async"></a>Java Async SDK
+### <a name="java-async-sdk"></a><a id="utilize-session-tokens-java-async"></a>Java Async SDK
 
 ```java
 // Get session token from response
@@ -191,7 +191,7 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-### <a id="utilize-session-tokens-java-sync"></a>Java Sync SDK
+### <a name="java-sync-sdk"></a><a id="utilize-session-tokens-java-sync"></a>Java Sync SDK
 
 ```java
 // Get session token from response
@@ -204,7 +204,7 @@ options.setSessionToken(sessionToken);
 ResourceResponse<Document> response = client.readDocument(documentLink, options);
 ```
 
-### <a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript SDK
+### <a name="nodejsjavascripttypescript-sdk"></a><a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 // Get session token from response
@@ -215,7 +215,7 @@ const sessionToken = headers["x-ms-session-token"];
 const { body } = await item.read({ sessionToken });
 ```
 
-### <a id="utilize-session-tokens-python"></a>Python SDK
+### <a name="python-sdk"></a><a id="utilize-session-tokens-python"></a>Python SDK
 
 ```python
 // Get the session token from the last response headers

@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.topic: conceptual
 ms.author: raynew
 ms.openlocfilehash: c1d30a9cdd2cd6ca288edd609a2e2e7bee9174d7
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68718162"
 ---
 # <a name="common-questions-about-site-recovery-monitoring"></a>Site Recovery 監視に関する一般的な質問
@@ -69,7 +69,7 @@ Site Recovery では、マルチステップの非同期プロセスを使用し
 通常、ログのサイズは 15 から 20 KB です。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Site Recovery の組み込み監視](site-recovery-monitor-and-troubleshoot.md)または [Azure Monitor](monitor-log-analytics.md) を使用して監視する方法を学習してください。
 

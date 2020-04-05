@@ -16,10 +16,10 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: b1578547fbca4caaecb209021569f0fbb2f1ae24
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790642"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Azure PowerShell を使用して SQL Server 仮想マシンをプロビジョニングする方法
@@ -63,10 +63,10 @@ $StorageName = $ResourceGroupName + "storage"
 $StorageSku = "Premium_LRS"
 ```
 
-### <a name="network-properties"></a>Network properties
+### <a name="network-properties"></a>ネットワークのプロパティ
 仮想マシンのネットワークで使用するプロパティを定義します。 
 
-- Linux
+- ネットワーク インターフェイス
 - TCP/IP の割り当て方法
 - 仮想ネットワーク名
 - 仮想サブネット名
@@ -129,7 +129,7 @@ $OSDiskName = $VMName + "OSDisk"
    $Sku = "SQLDEV"
    ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 Resource Manager デプロイ モデルで最初に作成するオブジェクトはリソース グループです。 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、Azure リソース グループとそのリソースを作成します。 前に初期化した、リソース グループの名前と場所の変数を指定します。
 
 このコマンドレットを実行し、新しいリソース グループを作成します。
@@ -424,7 +424,7 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualM
 New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで仮想マシンが作成され、以下のことを実行できます。
 
 - RDP を使用して仮想マシンに接続します

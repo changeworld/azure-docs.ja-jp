@@ -9,10 +9,10 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 5/6/2019
 ms.openlocfilehash: 4ac462873d34faa5ffa9d1e1bd873734be88e442
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74767978"
 ---
 # <a name="azure-database-for-postgresql---single-server-use-net-c-to-connect-and-query-data"></a>Azure Database for PostgreSQL - Single Server: .NET (C#) を使った接続とデータの照会
@@ -297,6 +297,6 @@ namespace Driver
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./howto-migrate-using-export-and-import.md)

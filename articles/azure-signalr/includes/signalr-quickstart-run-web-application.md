@@ -8,10 +8,10 @@ ms.date: 03/04/2019
 ms.author: antchu
 ms.custom: include file
 ms.openlocfilehash: 73d4d4e1a5f148dce6099b2d747ee1c290bcf7c1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67181546"
 ---
 ## <a name="run-the-web-application"></a>Web アプリケーションの実行
@@ -34,4 +34,4 @@ ms.locfileid: "67181546"
 1. Web アプリケーションの別のインスタンスを、別のブラウザー ウィンドウで開きます。 送信したメッセージがアプリケーションのすべてのインスタンスで表示されることを確認します。
 
 > [!IMPORTANT]
-> HTML ページは HTTPS を使用して返されますが、ローカルの Azure Functions Runtime には HTTP が既定で使用されます。そのため、お使いのブラウザー (Firefox など) によって矛盾したコンテンツ ポリシーが強制され、Web ページから関数への要求がブロックされることがあります。 これを解決するためには、この制限がないブラウザーを使用するか、またはローカル HTTP サーバー ( */docs/demo/chat-v2* ディレクトリの [http-server](https://www.npmjs.com/package/http-server) など) を起動します。 *local.settings.json* の `CORS` 設定にオリジンが追加されていることを確認してください。
+> HTML ページは HTTPS を使用して返されますが、ローカルの Azure Functions Runtime には HTTP が既定で使用されます。そのため、お使いのブラウザー (Firefox など) によって矛盾したコンテンツ ポリシーが強制され、Web ページから関数への要求がブロックされることがあります。 これを解決するためには、この制限がないブラウザーを使用するか、またはローカル HTTP サーバー ([/docs/demo/chat-v2](https://www.npmjs.com/package/http-server) ディレクトリの *http-server* など) を起動します。 `CORS`local.settings.json*の* 設定にオリジンが追加されていることを確認してください。

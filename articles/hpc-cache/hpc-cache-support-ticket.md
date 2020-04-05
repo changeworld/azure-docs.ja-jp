@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: rohogue
 ms.openlocfilehash: 76261f4e2e42b4272abcd976fcf2644fd43aa818
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74169376"
 ---
 # <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Azure HPC Cache のサポート チケットを開く

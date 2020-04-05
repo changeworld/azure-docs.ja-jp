@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ffba203bafaf3837cd2d7fc1a6fd962a6926b186
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72298756"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
@@ -45,7 +45,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 **string** だけでなく、パラメーターにはバイト配列、**CloudQueueMessage** オブジェクト、または自分で定義した POCO があります。
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### <a name="poco-plain-old-clr-object-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
 次の例では、**BlobName** プロパティを持つ **BlobInformation** オブジェクトの JSON がキュー メッセージに含まれています。 SDK は自動的にオブジェクトを逆シリアル化します。
 
 ```csharp
@@ -73,7 +73,7 @@ public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] str
 }
 ```
 
-Async 関数は、BLOB をコピーする次の例が示すように、[キャンセル トークン](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)を必要とする場合があります。 (**queueTrigger** プレースホルダーの説明については、「[BLOB](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message)」セクションをご覧ください。)
+Async 関数は、BLOB をコピーする次の例が示すように、[キャンセル トークン](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)を必要とする場合があります (**queueTrigger** プレースホルダーの説明については、「[BLOB](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message)」セクションをご覧ください。)
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -97,7 +97,7 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="polling-algorithm"></a>ポーリング アルゴリズム
 SDK はランダムな指数バックオフ アルゴリズムを実装することで、ストレージ トランザクション コストにおけるアイドル状態のキューのポーリングの影響を軽減しています。  SDK はメッセージを見つけると 2 秒間待ってから別のメッセージを確認します。メッセージが見つからなかった場合は、約 4 秒間待ってから再試行します。 再試行後もキュー メッセージが取得できなかった場合、待ち時間が最大になるまで再試行が続けられます。既定の最大待ち時間は 1 分間です。 [この最大待機時間の設定は変更可能です](#how-to-set-configuration-options)。
 
-## <a name="multiple-instances"></a>複数のインスタンス
+## <a name="multiple-instances"></a>複数インスタンス
 Web アプリが複数のインスタンス上で稼働している場合、継続的な Web ジョブは各マシン上で実行され、各マシンがトリガーを待機して関数の実行を試行します。 一部のシナリオでは、これによっていくつかの関数が同じデータを 2 回処理する場合があるため、関数をべき等にする (同じ入力データで関数を繰り返し呼び出しても重複した結果を生成しないように記述する) 必要があります。  
 
 ## <a name="parallel-execution"></a>並列実行
@@ -106,7 +106,7 @@ Web アプリが複数のインスタンス上で稼働している場合、継�
 1 つのキューに対して複数のメッセージが受信される場合も同様に処理されます。 既定では、SDK は一度にキュー メッセージ 16 個のバッチを取得し、それらを並列処理する関数を実行します。 [バッチ サイズの設定は変更可能です](#how-to-set-configuration-options)。 処理中のメッセージの数がバッチ サイズの半分まで減少すると、SDK は別のバッチを取得し、そのメッセージの処理を開始します。 そのため、1 つの関数につき同時に処理されるメッセージの最大数は、バッチ サイズの 1.5 倍です。 この制限は、 **QueueTrigger** 属性を持つ各関数に個別に適用されます。 1 つのキューで受信した複数のメッセージを並列に実行したくない場合は、バッチ サイズを 1 に設定します。
 
 ## <a name="get-queue-or-queue-message-metadata"></a>キューまたはキュー メッセージ メタデータの取得
-メソッド シグネチャにパラメーターを追加すると、次のメッセージ プロパティを取得できます。
+メソッド シグネチャにパラメーターを追加することで、次のメッセージ プロパティを取得できます。
 
 * **DateTimeOffset** expirationTime
 * **DateTimeOffset** insertionTime
@@ -202,7 +202,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### <a name="poco-plain-old-clr-object-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
 文字列ではなく POCO オブジェクトを含むキュー メッセージを作成するには、出力パラメーターとして POCO 型を **Queue** 属性のコンス トラクターに渡します。
 
 ```csharp
@@ -297,7 +297,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### <a name="poco-plain-old-clr-object-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
 キュー メッセージ内に JSON として格納される POCO については、プレースホルダーを使用して、**Queue** 属性の **blobPath** パラメーター内でオブジェクトのプロパティを指定できます。 また、キュー メタデータのプロパティ名もプレースホルダーとして使用できます。 「 [キューまたはキュー メッセージ メタデータの取得](#get-queue-or-queue-message-metadata)」をご覧ください。
 
 次の例では、BLOB を別の拡張子を持つ新しい BLOB にコピーします。 キュー メッセージは、**BlobName** および **BlobNameWithoutExtension** プロパティを含む **BlobInformation** オブジェクトです。 プロパティの名前は、 **Blob** 属性の BLOB パスのプレース ホルダーとして使用されます
@@ -341,7 +341,7 @@ BLOB をオブジェクトにバインドする前に関数内でいくつかの
 関数の失敗を引き起こす内容を含むメッセージは*有害メッセージ*と呼ばれます。 関数が失敗してもキュー メッセージは削除されず、最終的には回収されて、このサイクルを繰り返します。 SDK では一定数繰り返し送信されると自動的にそのサイクルを中断します。また手動でも処理できます。
 
 ### <a name="automatic-poison-message-handling"></a>有害メッセージの自動処理
-SDKでは、キュー メッセージを処理する関数を最大 5 回呼び出します。 5 回目の実行に失敗した場合、メッセージは有害キューに移動されます。 再試行の最大数を構成する方法については、「 [構成オプションの設定方法](#how-to-set-configuration-options)」をご覧ください。
+SDKでは、キュー メッセージを処理する関数を最大 5 回呼び出します。 5 回目が失敗すると、メッセージは有害メッセージ キューに移動します。 再試行の最大数を構成する方法については、「 [構成オプションの設定方法](#how-to-set-configuration-options)」をご覧ください。
 
 有害キューには *{originalqueuename}* -poison という名前が付けられます。 メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。
 
@@ -559,6 +559,6 @@ Azure テーブルでは **Console.Out** および **Console.Error** ログが�
 
 ![テーブル内の ERROR ログ](./media/vs-storage-webjobs-getting-started-queues/tableerror.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。 Azure WebJobs および WebJobs SDK の使用方法の詳細については、「 [Azure WebJobs のドキュメント リソース](https://go.microsoft.com/fwlink/?linkid=390226)」をご覧ください。
 

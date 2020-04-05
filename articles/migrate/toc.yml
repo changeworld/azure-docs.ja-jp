@@ -8,13 +8,13 @@
       href: whats-new.md
     - name: 一般的な質問
       items:
-        - name: Azure Migrate に関する質問
+        - name: 全般
           href: resources-faq.md
-        - name: Azure Migrate アプライアンスに関する質問
+        - name: Azure Migrate アプライアンス
           href: common-questions-appliance.md
-        - name: 検出、評価、依存関係の視覚化に関する質問
+        - name: Server Assessment ツールまたは依存関係の分析
           href: common-questions-discovery-assessment.md
-        - name: サーバーの移行に関する質問
+        - name: Server Migration ツール
           href: common-questions-server-migration.md
 - name: チュートリアル
   items:
@@ -74,34 +74,40 @@
           href: migrate-appliance.md
         - name: レプリケーション アプライアンスの要件
           href: migrate-replication-appliance.md
+    - name: Azure Migrate アプライアンスのアーキテクチャ
+      href: migrate-appliance-architecture.md
     - name: Hyper-V 移行アーキテクチャ
       href: hyper-v-migration-architecture.md
-    - name: エージェントベースの移行アーキテクチャ
+    - name: エージェントベースの VMware 移行のアーキテクチャ
       href: agent-based-migration-architecture.md
-    - name: 評価のベスト プラクティス
-      href: best-practices-assessment.md
     - name: 評価の概要
       href: concepts-assessment-calculation.md
-    - name: 依存関係の視覚化
+    - name: 評価のベスト プラクティス
+      href: best-practices-assessment.md
+    - name: 依存関係の分析の概要
       href: concepts-dependency-visualization.md
 - name: 操作方法ガイド
   items:
-    - name: 以前のバージョンの使用
-      href: migrate-v1.md
     - name: Azure Migrate プロジェクトの作成と管理
       href: create-manage-projects.md
-    - name: VMware アプライアンスのデプロイ
-      href: how-to-set-up-appliance-vmware.md
-    - name: Hyper-V アプライアンスのデプロイ
-      href: how-to-set-up-appliance-hyper-v.md
-    - name: 物理サーバー アプライアンスのデプロイ
-      href: how-to-set-up-appliance-physical.md
-    - name: アプリケーション/ロール/機能の検出
-      href: how-to-discover-applications.md
     - name: ツールの初回追加
       href: how-to-add-tool-first-time.md
     - name: 評価ツールの追加
       href: how-to-assess.md
+    - name: Azure Migrate アプライアンスのデプロイ
+      items:
+        - name: VMware 向けアプライアンスのデプロイ (OVA)
+          href: how-to-set-up-appliance-vmware.md
+        - name: Hyper-V 向けアプライアンスのデプロイ (VHD)
+          href: how-to-set-up-appliance-hyper-v.md
+        - name: VMware/Hyper-V 向けアプライアンスのデプロイ (スクリプト)
+          href: deploy-appliance-script.md
+        - name: 物理サーバー向けアプライアンスのデプロイ
+          href: how-to-set-up-appliance-physical.md
+    - name: VMware VM の検出スコープの制限
+      href: set-discovery-scope.md
+    - name: アプリケーション/ロール/機能の検出
+      href: how-to-discover-applications.md
     - name: アセスメントためのマシンのグループ化
       href: how-to-create-a-group.md
     - name: マシンの依存関係の分析 (エージェントベース)
@@ -122,6 +128,8 @@
       href: prepare-for-migration.md
     - name: Azure Migrate プロジェクトの削除
       href: how-to-delete-project.md
+    - name: 以前のバージョンの使用
+      href: migrate-v1.md
     - name: 評価の移行のスケール
       items:
         - name: 大量の VMware VM を評価する

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Help Scout の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Help Scout の統合 | Microsoft Docs'
 description: Azure Active Directory と Help Scout の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b71ccbc6cfdb9d3d37fc46b0e932fa98eee2fb43
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73159095"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>チュートリアル:Azure Active Directory と Help Scout の統合
+# <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>チュートリアル: Azure Active Directory と Help Scout の統合
 
 このチュートリアルでは、Help Scout と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Help Scout と Azure AD の統合には、次の利点があります。
@@ -210,11 +210,11 @@ Help Scout で Azure AD シングル サインオンを構成するには、次�
 
     b. **[証明書のアップロード]** をクリックして、Azure Portal からダウンロードした**証明書 (Base64)** をアップロードします。
 
-    c. **[メール ドメイン]** ボックスに、組織のメール ドメイン (例: `contoso.com`) を入力します。 複数のドメインを指定する場合は、コンマで区切ります。 Help Scout ユーザーまたは管理者が [Help Scout ログイン ページ](https://secure.helpscout.net/members/login/)で特定のドメインを入力すると必ず、その資格情報で認証するために ID プロバイダーにルーティングされます。
+    c. `contoso.com`[メール ドメイン]**ボックスに、組織のメール ドメイン (例:** ) を入力します。 複数のドメインを指定する場合は、コンマで区切ります。 Help Scout ユーザーまたは管理者が [Help Scout ログイン ページ](https://secure.helpscout.net/members/login/)で特定のドメインを入力すると必ず、その資格情報で認証するために ID プロバイダーにルーティングされます。
 
     d. 最後に、ユーザーがこの方法以外で Help Scout にログオンできないようにする場合は、 **[Force SAML Sign-on]\(強制 SAML サインオン\)** の設定を切り替えてオンにします。 Help Scout 資格情報でも引き続きサインインできるようにする場合は、この設定をオフのままにします。 これを有効にしても、アカウント所有者は、いつでも自身のアカウント パスワードで Help Scout にログインにします。
 
-    e. **[Save]** をクリックします。
+    e. **[保存]** をクリックします。
 
 ### <a name="create-help-scout-test-user"></a>Help Scout テスト ユーザーの作成
 

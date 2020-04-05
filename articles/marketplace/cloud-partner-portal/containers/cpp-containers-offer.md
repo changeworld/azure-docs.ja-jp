@@ -1,19 +1,18 @@
 ---
 title: Azure Containers イメージ オファー | Azure Marketplace
 description: Azure Marketplace でコンテナー オファーを発行するプロセスの概要です。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2018
-ms.author: pabutler
-ms.openlocfilehash: f0e71d8135a5dd691dc1f746ec54cfb6170e281d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9c0b4ca6e9a26f13d1539845ca9fb43f31a1a9dd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823227"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281716"
 ---
 # <a name="containers"></a>Containers
 
@@ -41,6 +40,6 @@ ms.locfileid: "73823227"
 3. SKU を作成する - オファーに関連付けられた SKU を作成します。 発行を計画しているイメージごとに固有の SKU が必要です。
 4. オファーを認定して発行する - オファーと技術資産が完成したら、オファーを送信できます。 この送信によって発行プロセスが開始します。 このプロセスの間に、ソリューションがテストされ、検証され、認定されて、Azure Marketplace での "運用が開始" されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これらの手順を検討する前に、Microsoft Azure Marketplace へのコンテナーの発行に関する[技術要件とビジネス要件](./cpp-prerequisites.md)を満たしている必要があります。

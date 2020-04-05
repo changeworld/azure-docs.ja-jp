@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
 ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954374"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
@@ -353,7 +353,7 @@ VMware ツールまたは open-vm-tools は、データストアを検出でき�
     * ONBOOT=yes
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 マスター ターゲットのインストールと登録が完了したら、そのマスター ターゲットが **[Site Recovery インフラストラクチャ]** にある **[マスター ターゲット]** セクションの構成サーバーの概要の下に表示されることを確認できます。
 
 [再保護](vmware-azure-reprotect.md)とフェールバックの作業に進んでください。

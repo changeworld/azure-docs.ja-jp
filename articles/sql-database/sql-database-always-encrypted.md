@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviwer: ''
 ms.date: 03/08/2019
 ms.openlocfilehash: 82c3c3274a8a9d66019ce906ee7be47cedac7470
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822038"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: 機密データを保護し、Windows 証明書ストアに暗号化キーを格納する
@@ -42,11 +42,11 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 * Azure アカウントとサブスクリプション。 お持ちでない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 * [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) バージョン 13.0.700.242 以降。
 * [.NET framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) 以降 (クライアント コンピューター上)。
-* [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)。
+* [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[リソースの作成]**  >  **[データ + ストレージ]**  >  **[SQL データベース]** をクリックします。
 3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL データベース](sql-database-single-database-get-started.md)」を参照してください。
 
@@ -190,7 +190,7 @@ Always Encrypted を有効にするには、接続文字列に **Column Encrypti
 * 暗号化された列にデータを挿入する。
 * 暗号化された列をフィルター処理して、特定の値を持つレコードを選択する。
 
-**Program.cs** の内容を次のコードに置き換えます。 Main メソッドのすぐ上の行にある connectionString のグローバル変数の接続文字列を、Azure ポータルから取得した有効な接続文字列に置き換えます。 コードに対する変更はこれだけです。
+**Program.cs** のコンテンツを次のコードに置き換えます。 Main メソッドのすぐ上の行にある connectionString のグローバル変数の接続文字列を、Azure ポータルから取得した有効な接続文字列に置き換えます。 コードに対する変更はこれだけです。
 
 アプリケーションを実行して、Always Encrypted の動作を見てみましょう。
 
@@ -528,7 +528,7 @@ SSMS を使用してプレーンテキスト データにアクセスするに�
 > [!NOTE]
 > 別のコンピューターの SSMS (または任意のクライアント) から接続した場合は暗号化キーにアクセスできず、データの暗号化を解除することはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Always Encrypted を使用するデータベースを作成したら、次の操作を試してみてください。
 
@@ -540,7 +540,7 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 ## <a name="related-information"></a>関連情報
 
 * [Always Encrypted (クライアント開発)](https://msdn.microsoft.com/library/mt147923.aspx)
-* [透過的なデータ暗号化](https://msdn.microsoft.com/library/bb934049.aspx)
+* [Transparent Data Encryption](https://msdn.microsoft.com/library/bb934049.aspx)
 * [SQL Server の暗号化](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
-* [Always Encrypted に関するブログ](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+* [Always Encrypted 関連のブログ](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)

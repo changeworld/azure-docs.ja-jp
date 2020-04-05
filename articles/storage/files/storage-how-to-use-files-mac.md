@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
 ms.openlocfilehash: 0e3420e469b117d90efb2949dab828021bfedcb6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74924707"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>macOS を使用して SMB 経由で Azure ファイル共有をマウントする
@@ -56,7 +56,7 @@ ms.locfileid: "74924707"
 
     ![マウントされた Azure ファイル共有のスナップショット](./media/storage-how-to-use-files-mac/mount-via-terminal-1.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Files の詳細については、次のリンクをご覧ください。
 
 * [Apple サポート記事 - Mac 上のファイル共有に接続する方法](https://support.apple.com/HT204445)

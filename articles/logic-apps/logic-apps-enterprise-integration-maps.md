@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979408"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps でマップを使用して XML を変換する
@@ -36,7 +36,7 @@ Azure Logic Apps でのエンタープライズ統合シナリオ用に XML デ�
   * アセンブリの場合は、アセンブリをアップロードできる Azure BLOB コンテナーと、そのコンテナーの場所が必要になります。 これにより、後でアセンブリを統合アカウントに追加する際に、その場所を指定できるようになります。 
   このタスクを実行するには、次の項目が必要です。
 
-    | アイテム | 説明 |
+    | Item | 説明 |
     |------|-------------|
     | [Azure Storage アカウント](../storage/common/storage-account-overview.md) | このアカウントには、アセンブリの Azure BLOB コンテナーを作成します。 [ストレージ アカウントの作成方法](../storage/common/storage-account-create.md)を確認してください。 |
     | BLOB コンテナー | このコンテナーに、アセンブリをアップロードできます。 このコンテナーの場所は、アセンブリを統合アカウントに追加するときにも必要になります。 [BLOB コンテナーの作成方法についてはこちら](../storage/blobs/storage-quickstart-blobs-portal.md)を参照してください。 |

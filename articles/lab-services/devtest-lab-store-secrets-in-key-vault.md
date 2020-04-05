@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 29a4d20390575778ccdecde390c257ccf6a48eb1
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720930"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Azure DevTest Labs でキー コンテナーにシークレットを格納する

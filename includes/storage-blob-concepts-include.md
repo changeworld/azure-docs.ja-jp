@@ -9,10 +9,10 @@ ms.date: 11/05/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: e90e750bf248bdcc8e50c6ddc6e9fa0273660195
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79136020"
 ---
 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。 非構造化データとは、特定のデータ モデルや定義に従っていないデータであり、テキスト データやバイナリ データなどがあります。

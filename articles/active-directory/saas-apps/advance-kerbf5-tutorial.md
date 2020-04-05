@@ -17,10 +17,10 @@ ms.date: 11/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 984fd0c7946a50922315269c87e08b1c35b74348
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74074753"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合
@@ -29,7 +29,7 @@ ms.locfileid: "74074753"
 
 * F5 にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して F5 に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -172,7 +172,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
     ![F5 (Advanced Kerberos) の構成](./media/advance-kerbf5-tutorial/configure08.png)
  
-1. Click **OK**.
+1. **[OK]** をクリックします。
 
 1. SP 構成を選択し、 **[Bind/UnBind IdP Connectors]\(IdP コネクタのバインドまたはバインド解除\)** をクリックします。
 
@@ -188,7 +188,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
     >[!Note]
     >Kerberos 委任アカウントを作成し、指定する必要があります。 KCD セクションを参照してください (変数リファレンスについては、付録を参照してください)
 
-    •   ユーザー名のソース  `session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    •   ユーザー名のソース  `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
     •   ユーザー領域のソース  `session.logon.last.domain`
 
@@ -246,7 +246,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 >[!Note]
 >詳細については、[こちら](https://www.f5.com/pdf/deployment-guides/kerberos-constrained-delegation-dg.pdf)を参照してください
 
-* **手順 1:委任アカウントの作成**
+* **ステップ 1:委任アカウントの作成**
 
     * 例
     ```
@@ -263,7 +263,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
     setspn –A host/big-ipuser.superdemo.live big-ipuser
     ```
 
-* **手順 3:SPN 委任 (App Service アカウントに対して)**
+* **ステップ 3:SPN 委任 (App Service アカウントに対して)**
 
     * F5 委任アカウントに適切な委任を設定します。
     * 次の例では、FRP-App1.superdemo.live アプリの KCD に対して APM 委任アカウントが構成されています。

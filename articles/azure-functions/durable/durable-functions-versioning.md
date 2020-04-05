@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 87cbb94dbab241630dc7585bdf4314d858d5b4da
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232759"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) でのバージョン管理
@@ -47,7 +47,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> 前述の C# の例は Durable Functions 2.x をターゲットにしています。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+> 前述の C# の例は Durable Functions 2.x をターゲットにしています。 Durable Functions 1.x の場合、`DurableOrchestrationContext` の代わりに `IDurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 この変更は、オーケストレーター関数の新しいインスタンスではすべて正しく機能しますが、処理中のインスタンスでは中断を発生させます。 たとえば、オーケストレーション インスタンスで `Foo` という名前の関数を呼び出し、ブール値を返し、その後チェックポイントを返す場合を考えます。 シグネチャの変更がこの時点でデプロイされると、チェックポイントが付いたインスタンスは、`context.CallActivityAsync<int>("Foo")` の呼び出しを再開して再生すると、直ちに失敗します。 この失敗が起きるのは、履歴テーブル内の結果が `bool` であるにも関わらず、新しいコードで `int` への逆シリアル化が試行されるためです。
 
@@ -85,9 +85,9 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 ```
 
 > [!NOTE]
-> 前述の C# の例は Durable Functions 2.x をターゲットにしています。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+> 前述の C# の例は Durable Functions 2.x をターゲットにしています。 Durable Functions 1.x の場合、`DurableOrchestrationContext` の代わりに `IDurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-この変更では、**Foo** と **Bar** の間に **SendNotification** への新しい関数呼び出しを追加します。 シグネチャの変更はありません。 **Bar** の呼び出しから既存のインスタンスを再開すると、問題が発生します。 再生中に、元の **Foo** への呼び出しから `true` が返されると、オーケストレーターの再生で実行履歴にない **SendNotification** が呼び出されます。 その結果、**Bar** の呼び出しの実行が想定されるときに **SendNotification** の呼び出しが発生したことで、Durable Task フレームワークが `NonDeterministicOrchestrationException` で失敗します。 `CreateTimer`、`WaitForExternalEvent` などの "持続性のある" API の呼び出しを追加すると、同じ種類の問題が発生する可能性があります。
+この変更では、**Foo** と **Bar** の間に **SendNotification** への新しい関数呼び出しを追加します。 シグネチャの変更はありません。 **Bar** の呼び出しから既存のインスタンスを再開すると、問題が発生します。 再生中に、元の **Foo** への呼び出しから `true` が返されると、オーケストレーターの再生で実行履歴にない **SendNotification** が呼び出されます。 その結果、`NonDeterministicOrchestrationException`Bar**の呼び出しの実行が想定されるときに**SendNotification**の呼び出しが発生したことで、Durable Task フレームワークが** で失敗します。 `CreateTimer`、`WaitForExternalEvent` などの "持続性のある" API の呼び出しを追加すると、同じ種類の問題が発生する可能性があります。
 
 ## <a name="mitigation-strategies"></a>対応方法
 
@@ -153,7 +153,7 @@ Durable Functions v1.x の既定値は `DurableFunctionsHub` です。 Durable F
 > [!NOTE]
 > この方法は、オーケストレーター関数の HTTP トリガーや Webhook トリガーを使用する場合に最適です。 キューや Event Hubs などの HTTP 以外のトリガーの場合、トリガー定義は、スワップ操作の一環として更新された[アプリ設定を派生する](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings)必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [パフォーマンスとスケーリングの問題に対応する方法を知る](durable-functions-perf-and-scale.md)

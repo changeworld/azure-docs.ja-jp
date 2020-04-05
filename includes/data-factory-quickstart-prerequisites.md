@@ -9,10 +9,10 @@ ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: 4d77cb8128105a40143a40e48ebe450115f7cf1e
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78164169"
 ---
 ## <a name="prerequisites"></a>前提条件

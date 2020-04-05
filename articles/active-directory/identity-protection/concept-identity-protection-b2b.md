@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95ea7eb470a5880bc88b3df903d33854f363e974
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72881322"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection と B2B ユーザー
@@ -43,13 +43,13 @@ B2B ユーザーのリスク評価と修復は、それらのユーザーのホ�
 
 ### <a name="what-do-i-do-if-a-b2b-collaboration-user-was-blocked-due-to-a-risk-based-policy-in-my-organization"></a>組織内のリスクベース ポリシーによって B2B コラボレーション ユーザーがブロックされた場合はどうすればよいですか?
 
-ディレクトリ内の危険な B2B ユーザーがリスクベースのポリシーによってブロックされた場合、そのユーザーは自分のホーム ディレクトリでそのリスクを修復する必要があります。 ユーザーは、セキュリティで保護されたパスワードのリセットをホーム ディレクトリで実行することにより、リスクを修復できます。 ユーザーのホーム ディレクトリでセルフサービスによるパスワードのリセットが有効になっていない場合は、そのユーザーが組織の IT スタッフに連絡して、管理者にリスクを手動で無視してもらったり、パスワードをリセットしてもらう必要があります。
+ディレクトリ内の危険な B2B ユーザーがリスクベースのポリシーによってブロックされた場合、そのユーザーは自分のホーム ディレクトリでそのリスクを修復する必要があります。 ユーザーは、セキュリティで保護されたパスワードのリセットをホーム ディレクトリで実行することにより、リスクを修復できます。 ユーザーのホーム ディレクトリでセルフサービス パスワード リセット が有効になっていない場合は、そのユーザーが組織の IT スタッフに連絡して、管理者にリスクを手動で無視してもらったり、パスワードをリセットしてもらう必要があります。
 
 ### <a name="how-do-i-prevent-b2b-collaboration-users-from-being-impacted-by-risk-based-policies"></a>B2B コラボレーション ユーザーがリスクベース ポリシーの影響を受けないようにするにはどうすればよいですか?
 
 組織のリスクベース条件付きアクセスポリシーから B2B ユーザーを除外すると、B2B ユーザーがリスク評価によって影響を受けたり、ブロックされたりするのを防ぐことができます。 これらの B2B ユーザーを除外するには、組織のすべてのゲストユーザーを含むグループを Azure AD に作成します。 その後、組み込みの Identity Protection ユーザー リスク ポリシーとサインイン リスク ポリシーの除外対象として、そのグループを追加します。また、サインイン リスクを条件として使用している条件付きアクセスポリシーについても、同様の操作を行います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 

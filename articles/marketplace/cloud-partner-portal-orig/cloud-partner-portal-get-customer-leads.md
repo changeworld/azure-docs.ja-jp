@@ -1,19 +1,18 @@
 ---
 title: 潜在顧客の構成 | Azure Marketplace
 description: Cloud パートナー ポータルでリードを構成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: 312e172321c25248f1b0801bdbccf71762319989
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 56012fb2a907a6db6f87554660ee36b99a3dcbf9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818808"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280322"
 ---
 <a name="get-customer-leads"></a>潜在顧客の獲得
 ==================
@@ -66,7 +65,7 @@ ms.locfileid: "73818808"
 
 リードのソースの形式は、"**ソース**-**アクション** |  **オファー**" です
 
-**Sources**:"AzureMarketplace"、"AzurePortal"、"TestDrive"、"AppSource (SPZA)"
+**ソース**: "AzureMarketplace"、"AzurePortal"、"TestDrive"、"AppSource (SPZA)"
 
 **Actions**:
 - "INS" -- インストール。 このアクションは、Azure Marketplace または AppSource で顧客が製品を購入したことを示します。
@@ -89,7 +88,7 @@ checkpoint.check-point-r77-10sg-byol、bitnami.openedxcypress、docusign.3701c77
 - Phone: 1234567890
 - Country: US
 - Company: Microsoft
-- タイトル:CTO
+- Title: CTO
 
 >[!Note]
 >個々のリードについて、上記の例のすべてのデータが常に得られるわけではありません。

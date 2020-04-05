@@ -9,10 +9,10 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.custom: include
 ms.openlocfilehash: de79ea50d12ab322d1e28d0ad650df30ecc0c222
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74806586"
 ---
 ## <a name="install-client-library-packages"></a>クライアント ライブラリ パッケージをインストールする

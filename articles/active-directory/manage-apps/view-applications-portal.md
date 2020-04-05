@@ -17,10 +17,10 @@ ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d40e968bb7079d50e3fa18889ae996c9b59c90f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74421822"
 ---
 # <a name="quickstart-view-your-azure-active-directory-tenant-applications"></a>クイック スタート:Azure Active Directory テナントのアプリケーションの表示
@@ -72,7 +72,7 @@ Azure AD テナント アプリケーションは、Azure portal の **[エン�
 
     ![Sales で始まるすべてのアプリを表示する例](media/view-applications-portal/search-by-prefix.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Azure AD テナント内でアプリケーションを表示する方法について学習しました。 アプリケーションの種類、状態、可視性によって、アプリケーションの一覧をフィルター処理する方法を学習しました。 また、特定のアプリケーションを検索する方法についても学習しました。
 

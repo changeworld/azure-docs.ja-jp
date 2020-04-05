@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: b4c3fcb86fb098263840accc561785a40b767952
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67181363"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Azure Portal を使用して更新プログラムをインストールするには
@@ -33,7 +33,7 @@ ms.locfileid: "67181363"
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate6m.png)
 
-5. **[新しい更新プログラム]** ブレードで、リリース ノートを確認します。 更新プログラムをダウンロードしたら、インストールを確認する必要があることにもご注意ください。 Click **OK**.
+5. **[新しい更新プログラム]** ブレードで、リリース ノートを確認します。 更新プログラムをダウンロードしたら、インストールを確認する必要があることにもご注意ください。 **[OK]** をクリックします。
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal-1/azupdate7m.png)
 

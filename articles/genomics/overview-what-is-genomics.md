@@ -1,7 +1,7 @@
 ---
 title: Microsoft Genomics とは
 titleSuffix: Microsoft Genomics
-description: Microsoft Genomics を使用して、ゲノム解析のための BWA-GATK ワークフローを実行する方法について説明します。
+description: Microsoft Genomics を使用すると、Burrows-Wheeler Aligner (BWA) と Genome Analysis Toolkit (GATK) のクラウド実装を利用して、ゲノム シーケンシングを強化できます。ここではその方法を説明します。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,11 +9,11 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: overview
 ms.date: 12/07/2017
-ms.openlocfilehash: 461e385bae3b091c72355ed27a35ae5408bda7c2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 04ecab58db822aa80ca2abba1bebaa39598498bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73498809"
 ---
 # <a name="what-is-microsoft-genomics"></a>Microsoft Genomics とは
@@ -31,7 +31,7 @@ Microsoft Genomics では、ワークフロー要求の受信に関して 99.99%
 Microsoft Genomics サービスは ISO 27001、ISO 27018、ISO 9001 の認定を受け、HIPAA の規制に準拠しています。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/trustcenter/security)をご覧ください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで Microsoft Genomics の概要を学習したので、次のことを実行できます。
 - コストの比較と計算については、価格のページを参照してください。 [料金](https://azure.microsoft.com/pricing/details/genomics/)
 - Microsoft Genomics サービス経由で最初のワークフローを実行して使用を開始します。 [Microsoft Genomics サービス経由でワークフローを実行する](quickstart-run-genomics-workflow-portal.md)

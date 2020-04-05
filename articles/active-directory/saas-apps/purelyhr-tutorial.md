@@ -17,10 +17,10 @@ ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 56049e1b1253cd749a8e16061957c6b5b8786e3c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72594533"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purelyhr"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と PurelyHR の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72594533"
 
 * PurelyHR にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して PurelyHR に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -170,7 +170,7 @@ Velpic SAML 企業サイトに管理者としてサインインし、次の手�
 
 2. **[Create New User] \(新しいユーザーの作成)** ダイアログ ページで、次の手順を実行します。
 
-    ![ユーザー](./media/velpicsaml-tutorial/velpic_8.png)
+    ![user](./media/velpicsaml-tutorial/velpic_8.png)
 
     a. **[First Name]\(名\)** ボックスに、ユーザーの名 B を入力します。
 

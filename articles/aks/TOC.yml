@@ -14,7 +14,8 @@
           href: kubernetes-walkthrough.md
         - name: Azure ポータルの使用
           href: kubernetes-walkthrough-portal.md
-        - name: Resource Manager テンプレートを使用する
+        - name: Resource Manager テンプレートの使用
+          displayName: Resource Manager
           href: kubernetes-walkthrough-rm-template.md
     - name: アプリケーションを開発する
       expanded: true
@@ -73,6 +74,8 @@
       href: concepts-storage.md
     - name: スケール
       href: concepts-scale.md
+    - name: ノードの自動修復
+      href: node-auto-repair.md
     - name: ベスト プラクティス
       items:
         - name: 概要
@@ -123,6 +126,8 @@
           href: upgrade-cluster.md
         - name: ノードの OS の更新プログラムの処理
           href: node-updates-kured.md
+        - name: AKS クラスターの構成
+          href: cluster-configuration.md
         - name: ACR と AKS クラスターの統合
           href: cluster-container-registry-integration.md
         - name: 仮想ノードの作成
@@ -198,7 +203,7 @@
       items:
         - name: サービス プリンシパルの作成
           href: kubernetes-service-principal.md
-        - name: マネージド ID の使用 (プレビュー)
+        - name: マネージド ID の使用
           href: use-managed-identity.md
         - name: クラスター構成ファイルへのアクセスの制限
           href: control-kubeconfig-access.md
@@ -216,6 +221,8 @@
           href: limit-egress-traffic.md
         - name: Azure Active Directory の統合の有効化
           items:
+            - name: Azure AD の統合 (プレビュー)
+              href: azure-ad-v2.md
             - name: Azure CLI の使用
               href: azure-ad-integration-cli.md
             - name: Azure ポータルの使用
@@ -307,10 +314,6 @@
                   maintainContext: true
         - name: Helm を使用したアプリケーションの実行
           href: kubernetes-helm.md
-        - name: Open Service Broker for Azure の使用
-          href: integrate-azure.md
-        - name: MongoDB と OSBA に対する Cosmos DB API の使用
-          href: use-cosmosdb-osba-mongo-app.md
         - name: OpenFaaS の使用
           href: openfaas.md
         - name: Spark ジョブの実行

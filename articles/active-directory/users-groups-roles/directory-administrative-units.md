@@ -15,10 +15,10 @@ ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3c4958975a080a98fb900bf317229ba9eda795d5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74028410"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Azure Active Directory での管理単位の管理 (プレビュー)
@@ -41,6 +41,6 @@ ms.locfileid: "74028410"
 
 Azure AD モジュールのソフトウェア要件とインストールの詳細、管理単位を管理するための Azure AD モジュールのコマンドレットの参照情報 (構文、パラメーターの説明、例など) については、「[Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Active Directory のエディション](../fundamentals/active-directory-whatis.md)

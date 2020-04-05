@@ -9,10 +9,10 @@ ms.date: 04/20/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 70dc2913365d41bf751b62bc4c55f94c97d8d9dc
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71168784"
 ---
 > [!IMPORTANT]

@@ -17,10 +17,10 @@ ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0b14c08604fcc0f6d2550127ca1f1aa053172b75
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72026739"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workteam"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workteam の統合
@@ -29,7 +29,7 @@ ms.locfileid: "72026739"
 
 * Workteam にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントで自動的に Workteam にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -130,7 +130,7 @@ Workteam で Azure AD SSO を構成してテストするには、次の構成要
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-2. ブラウザーに拡張機能を追加した後、 **[Workteam のセットアップ]** をクリックすると、Workteam アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して Workteam にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 6 が自動化されます。
+2. ブラウザーに拡張機能を追加した後、 **[Workteam のセットアップ]** をクリックすると、Workteam アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して Workteam にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
 
     ![セットアップの構成](common/setup-sso.png)
 
@@ -156,7 +156,7 @@ Workteam で Azure AD SSO を構成してテストするには、次の構成要
 
     d. Azure portal からダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をコピーして **[SAML Signing Certificate (Base64)]\(SAML 署名証明書 (Base64)\)** ボックスに貼り付けます。
 
-    e. Click **OK**.
+    e. **[OK]** をクリックします。
 
 ### <a name="create-workteam-test-user"></a>Workteam のテスト ユーザーの作成
 
@@ -178,7 +178,7 @@ Azure AD ユーザーが Workteam にサインインできるようにするに�
 
     b. **[電子メール]** ボックスに、ユーザーのメール アドレスを入力します (例: `B.Simon\@contoso.com`)。
 
-    c. Click **OK**.
+    c. **[OK]** をクリックします。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

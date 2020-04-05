@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Wikispaces の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Wikispaces の統合 | Microsoft Docs'
 description: Azure Active Directory と Wikispaces の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 7a683923ba48b1f354f90ac94d746cb92f359e7a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74233313"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>チュートリアル:Azure Active Directory と Wikispaces の統合
+# <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>チュートリアル: Azure Active Directory と Wikispaces の統合
 
 このチュートリアルでは、Wikispaces と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Wikispaces と Azure AD の統合には、次の利点があります。
@@ -190,7 +190,7 @@ Azure AD ユーザーが Wikispaces にサインインできるようにする�
 
 2. **[メンバー]** に移動します。
    
-    ![[メンバー]](./media/wikispaces-tutorial/ic787193.png "Members")
+    ![[メンバー]](./media/wikispaces-tutorial/ic787193.png "メンバー")
 
 3. **[ユーザーの招待]** をクリックします。
    

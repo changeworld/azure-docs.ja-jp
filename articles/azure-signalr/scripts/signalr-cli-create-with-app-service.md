@@ -9,15 +9,15 @@ ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: eb45adb699ef0f97782e6cdb8e141e254b3993f9
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158026"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>App Service で SignalR サービスを作成する
 
-このサンプル スクリプトでは、リアルタイムのコンテンツ更新をクライアントにプッシュするために使用される新しい Azure SignalR サービス リソースを作成します。 このスクリプトは、SignalR サービスを使用する ASP.NET Core Web アプリをホストする新しい Web アプリと App Service プランも追加します。 Web アプリは、*AzureSignalRConnectionString* という名前のアプリ設定で構成されて、新しい SignalR サービス リソースに接続します。
+このサンプル スクリプトでは、リアルタイムのコンテンツ更新をクライアントにプッシュするために使用される、新しい Azure SignalR Service リソースを作成します。 また、SignalR サービスを使用した ASP.NET Core Web アプリをホストするための、新しい Web アプリと App Service プランも追加します。 Web アプリは、*AzureSignalRConnectionString* という名前のアプリ設定で構成されて、新しい SignalR サービス リソースに接続します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -87,7 +87,7 @@ az webapp config appsettings set --name $myWebAppName --resource-group $myResour
 | [az webapp create](/cli/azure/webapp#az-webapp-create) | App Service ホスティング プランを使用して Azure Web アプリを作成します。 |
 | [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Web アプリ用の新しいアプリ設定を追加します。 このアプリ設定は、SignalR 接続文字列を保存するために使用されます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 

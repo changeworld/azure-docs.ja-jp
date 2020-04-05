@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
 ms.openlocfilehash: e5ed60ea59dc8cf19b8f9ca7e96777dbc6980171
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906056"
 ---
 # <a name="azure-database-security-overview"></a>Azure のデータベース セキュリティの概要
@@ -69,7 +69,7 @@ SQL Database は、次の暗号化を提供することでデータを保護し�
 
 データベースを保護するために、いくつかの対策を講じることができます。 たとえば、セキュリティで保護されたシステムの設計、機密資産の暗号化、データベース サーバーに対するファイアウォールの構築を行います。 しかし、物理メディア (ドライブやバックアップ テープなど) が盗まれるシナリオでは、悪意のある第三者がデータベースを復元するかアタッチするだけでデータを閲覧することができます。
 
-ソリューションの 1 つとして、データベース内の機密データを暗号化し、証明書を使用してデータを暗号化するために使用するキーを保護することが挙げられます。 このソリューションにより、キーを持たないユーザーによるデータの使用を防ぐことはできますが、このような保護方法は事前に計画しなければなりません。
+解決策の 1 つは、データベース内の機密データを暗号化し、データの暗号化に使用されるキーを証明書で保護することです。 このソリューションにより、キーを持たないユーザーによるデータの使用を防ぐことはできますが、このような保護方法は事前に計画しなければなりません。
 
 この問題を解決するため、SQL Server と SQL Database では [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017) をサポートしています。 Transparent Data Encryption では、保存データの暗号化と呼ばれる SQL Server および SQL Database データ ファイルの暗号化が行われます。
 
@@ -77,7 +77,7 @@ Transparent Data Encryption は、悪意のあるアクティビティの脅威�
 
 Transparent Data Encryption は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。 SQL Database では、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。 組み込みのサーバー証明書は、SQL Database サーバーごとに一意です。
 
-データベースが Geo DR リレーションシップに含まれる場合は、サーバーごとに異なるキーで保護されます。 2 つのデータベースが同じサーバーに接続されている場合は、同じ組み込み証明書が共有されます。 Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的にローテーションします。 
+データベースが Geo DR リレーションシップに含まれる場合は、サーバーごとに異なるキーで保護されます。 2 つのデータベースが同じサーバーに接続されている場合は、同じ組み込みの証明書が共有されます。 Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的に回転します。 
 
 詳細については、「[透過的なデータ暗号化](/sql/relational-databases/security/encryption/transparent-data-encryption-tde)」を参照してください。
 
@@ -111,7 +111,7 @@ Always Encrypted では、データの所有者 (データを表示できるユ�
 
 Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用できます。 コンピューターから SQL Database にアクセスするには、クライアント コンピューターのファイアウォールで、TCP ポート 1433 での TCP 通信の発信を許可する必要があります。 他のアプリケーションで着信接続が必要ない場合は、TCP ポート 1433 でブロックします。
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>認証
 
 認証とは、データベースへの接続時に ID を証明する方法のことです。 SQL Database は、2 種類の認証をサポートしています。
 
@@ -126,7 +126,7 @@ Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用で�
   - 外部の (Azure AD) グループを使用してデータベースのアクセス許可を管理できます。
   - 統合 Windows 認証や、Azure AD でサポートされる他の認証形式を有効にすることで、パスワードが保存されないようにすることができます。
 
-#### <a name="authorization"></a>Authorization
+#### <a name="authorization"></a>承認
 
 [承認](/azure/sql-database/sql-database-manage-logins)とは、Azure SQL データベース内でユーザーが実行できる操作を指します。 ユーザー アカウントのデータベースの[ロール メンバーシップ](https://msdn.microsoft.com/library/ms189121)と[オブジェクトレベル権限](https://msdn.microsoft.com/library/ms191291.aspx)によって制御されます。 承認とは、プリンシパルがアクセスできるセキュリティ保護可能なリソースと、それらのリソースに対して実行できる操作を決めるプロセスです。
 
@@ -144,7 +144,7 @@ Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用で�
 
 [SQL Database の動的データ マスク](/azure/sql-database/sql-database-dynamic-data-masking-get-started)は、特権のないユーザーに対して重要なデータをマスクすることでデータの公開を制限します。 Azure SQL Database の V12 バージョンでは、動的データ マスクがサポートされています。
 
-[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)では、公開する機微なデータの量を指定することで、機微なデータに対する未承認のアクセスを防ぐことができ、アプリケーション レイヤーへの影響は最小限に抑えられます。 これはポリシー ベースのセキュリティ機能であり、指定されたデータベース フィールドに対するクエリの結果セットに含まれるデリケートなデータが表示されないようにします。データベース内のデータは変更されません。
+[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)では、公開する機微なデータの量を指定することで、機微なデータに対する未承認のアクセスを防ぐことができ、アプリケーション レイヤーへの影響は最小限に抑えられます。 これはポリシー ベースのセキュリティ機能です。これにより、データベース内のデータはそのままで、指定されたデータベース フィールドに対するクエリの結果セットで機微なデータを非表示にすることができます。
 
 > [!Note]
 > 動的データ マスクを構成できるのは、Azure Database 管理者、サーバー管理者、またはセキュリティ責任者の各ロールです。
@@ -155,7 +155,7 @@ Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用で�
 
 ![行レベルのセキュリティによって、ユーザーはクライアント アプリ経由でテーブル内の行にアクセスできる](./media/database-security-overview/azure-database-fig4.png)
 
-アクセス制限のロジックは、別のアプリケーション層のデータから離れた場所ではなく、データベース層に配置されています。 任意の階層からデータ アクセスが試行されるたびに、データベース システムによってアクセス制限が適用されます。 これによりセキュリティ システムの外部からのアクセスが減り、そのシステムの信頼性と堅牢性が向上します。
+アクセスの制限のロジックは、別のアプリケーション層のデータから離れてではなく、データベース層にあります。 任意の層からデータへのアクセスが試行されるたびに、データベース システムにはアクセス制限が適用されます。 これによりセキュリティ システムの外部からのアクセスが減り、そのシステムの信頼性と堅牢性が向上します。
 
 行レベルのセキュリティには、述語ベースのアクセス制御が取り入れられています。 柔軟かつ一元化された評価機能により、メタデータや、管理者が必要に応じて決めるその他の条件を考慮に入れて評価することができます。 述語は、データへの適切なアクセス権がユーザーにあるかどうかをユーザー属性に基づき判定するための条件として使用されます。 述語ベースのアクセス制御を使用することで、ラベルベースのアクセス制御を実装できます。
 
@@ -228,7 +228,7 @@ Azure Security Center で [SQL Information Protection](/azure/security-center/se
 Azure Marketplace は、新興企業および独立系ソフトウェア会社 (ISV) が独自のソリューションを世界中の Azure のお客様に提供できるようにするアプリケーションおよびサービスのオンライン マーケットプレースです。
 Azure Marketplace では、お客様とパートナーにより良いサービスを提供するために、Microsoft Azure の複数のパートナー エコシステムを組み合わせて 1 つの統合プラットフォームとしています。 [検索を実行](https://azuremarketplace.microsoft.com/marketplace/apps?search=Database%20Security&page=1)して、Azure Marketplace で利用可能なデータベース セキュリティ製品を表示できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure SQL データベースのセキュリティ保護](/azure/sql-database/sql-database-security-tutorial)
 - [Azure Security Center と Azure SQL Database サービス](/azure/security-center/security-center-sql-database)

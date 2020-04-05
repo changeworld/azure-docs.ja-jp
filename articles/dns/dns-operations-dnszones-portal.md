@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: rohink
 ms.openlocfilehash: 002f210048c18c6dd99dfb5981bacce8666ee563
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76936777"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Azure Portal で DNS ゾーンを管理する方法
@@ -44,7 +44,7 @@ ms.locfileid: "76936777"
    |**Name**|contoso.com|DNS ゾーンの名前です。|
    |**サブスクリプション**|<該当するサブスクリプション>|DNS ゾーンを作成するサブスクリプションを選択します。|
    |**リソース グループ**|**[新規作成]** : contosoDNSRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。 リソース グループについて詳しくは、[Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) の概要に関する記事をご覧ください。|
-   |**地域**|米国西部||
+   |**Location**|米国西部||
 
 > [!NOTE]
 > リソース グループの設定はリソース グループの場所を指定するものであり、DNS ゾーンには影響しません。 DNS ゾーンの場所は常に "グローバル" であり、それは表示されません。

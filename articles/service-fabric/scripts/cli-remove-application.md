@@ -15,10 +15,10 @@ ms.date: 12/06/2017
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: fd5d20ed3f2cc41f4d7d51f06d4bc90a6afd22eb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75526534"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster-using-the-service-fabric-cli"></a>Service Fabric CLI を使用して Service Fabric クラスターからアプリケーションを削除する

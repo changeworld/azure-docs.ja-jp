@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/24/2019
 ms.author: allensu
 ms.openlocfilehash: b75f49155991bfc71f788ad88f166c0bec281841
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589694"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Azure portal を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 ## <a name="create-a-load-balancer"></a>ロード バランサーの作成
 
@@ -38,13 +38,13 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Load Balancer]** を選択します。
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力または選択します。
 
-    | 設定                 | Value                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「**myResourceGroupSLB**」と入力します。|
-    | 名前                   | **myLoadBalancer**                                   |
+    | Name                   | **myLoadBalancer**                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
-    | Type          | **[パブリック]** を選択します。                                        |
+    | 種類          | **[パブリック]** を選択します。                                        |
     | SKU           | **[Standard]** または **[Basic]** を選択します。 Microsoft では、運用環境のワークロードに Standard をお勧めします。 |
     | パブリック IP アドレス | **[新規作成]** を選択します。 使用したいパブリック IP が既にある場合は、 **[既存のものを使用]** を選択します。  既存のパブリック IP は **[Standard]** SKU である必要があります。  [Basic] パブリック IP には、 **[Standard]** SKU ロード バランサーとの互換性がありません。  |
     | パブリック IP アドレス名              | テキスト ボックスに「**myPublicIP**」と入力します。|
@@ -79,9 +79,9 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 1. 左側のメニューで **[すべてのサービス]** 、 **[すべてのリソース]** の順に選択し、リソースの一覧で **[myLoadBalancer]** を選択します。
 2. **[設定]** で、 **[正常性プローブ]** 、 **[追加]** の順に選択します。
     
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「**myHealthProbe**」と入力します。 |
+    | Name | 「**myHealthProbe**」と入力します。 |
     | Protocol | **[HTTP]** を選択します。 |
     | Port | 「**80**」と入力します。|
     | Interval | プローブの試行の**間隔**を示す秒数として、「**15**」を入力します。 |
@@ -106,9 +106,9 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 2. **[設定]** で、 **[負荷分散規則]** 、 **[追加]** の順に選択します。
 3. 負荷分散規則の構成には、以下の値を使用します。
     
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「**myHTTPRule**」と入力します。 |
+    | Name | 「**myHTTPRule**」と入力します。 |
     | Protocol | **[TCP]** を選択します。 |
     | Port | 「**80**」と入力します。|
     | バックエンド ポート | 「**80**」と入力します。 |
@@ -128,9 +128,9 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 3. 送信用のフロントエンド IP 構成の設定には、以下の値を使用します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「**LoadBalancerFrontEndOutbound**」と入力します。 |
+    | Name | 「**LoadBalancerFrontEndOutbound**」と入力します。 |
     | IP バージョン | **[IPv4]** を選択します。 |
     | IP の種類 | **[IP アドレス]** を選択します。|
     | パブリック IP アドレス | **[新規作成]** を選択します。 **[パブリック IP アドレスの追加]** で「**myPublicIPOutbound**」と入力します。  **[OK]** を選択します。 |
@@ -153,9 +153,9 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 3. アウトバウンド規則の構成には、以下の値を使用します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「**myOutboundRule**」と入力します。 |
+    | Name | 「**myOutboundRule**」と入力します。 |
     | フロントエンド IP アドレス | **[LoadBalancerFrontEndOutbound]** を選択します。 |
     | アイドル タイムアウト (分) | スライダーを **15 分に移動します。|
     | TCP リセット | **[Enabled]** を選択します。|

@@ -9,10 +9,10 @@ ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
 ms.openlocfilehash: a8e25907b40b910f2b91884d355b6ac85eeaa250
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158197"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>Azure SignalR Service のイベントに対応する
@@ -58,7 +58,7 @@ Azure SignalR Service のイベントには、データの変更に対応する�
 
 詳しくは、[SignalR Service のイベント スキーマに関する記事](../event-grid/event-schema-azure-signalr.md)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Event Grid の詳細について理解し、Azure SignalR Service のイベントを試してみてください。
 

@@ -4,12 +4,12 @@ description: 迅速に Kubernetes クラスターを作成し、Azure CLI を使
 services: container-service
 ms.topic: article
 ms.date: 01/27/2020
-ms.openlocfilehash: 3a3374ea8e88b2494bb48c6835b4c22f1256ec84
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 259728da5ea7f71110ce183ae25bb47a0f873614
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592682"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475512"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>プレビュー - Azure CLI を使用して Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
 
@@ -184,13 +184,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 クラスターへの接続を確認するには、クラスター ノードの一覧を返す [kubectl get][kubectl-get] コマンドを使用します。
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 次の出力例は、クラスター内のすべてのノードを示しています。 すべてのノードの状態が *[準備完了]* であることを確認します。
 
-```
+```output
 NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.15.7
 aksnpwin987654                      Ready    agent   108s   v1.15.7
@@ -252,13 +252,13 @@ spec:
 
 [kubectl apply][kubectl-apply] コマンドを使用してアプリケーションをデプロイし、ご利用の YAML マニフェストの名前を指定します。
 
-```azurecli-interactive
+```console
 kubectl apply -f sample.yaml
 ```
 
 次の出力例は、正常に作成されたデプロイおよびサービスを示しています。
 
-```
+```output
 deployment.apps/sample created
 service/sample created
 ```
@@ -269,20 +269,20 @@ service/sample created
 
 進行状況を監視するには、[kubectl get service][kubectl-get] コマンドを `--watch` 引数と一緒に使用します。
 
-```azurecli-interactive
+```console
 kubectl get service sample --watch
 ```
 
 最初に、"*サンプル*" サービスの *EXTERNAL-IP* が "*保留中*" として表示されます。
 
-```
+```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 sample             LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 *EXTERNAL-IP* アドレスが "*保留中*" から実際のパブリック IP アドレスに変わったら、`CTRL-C` を使用して `kubectl` ウォッチ プロセスを停止します。 次の出力例は、サービスに割り当てられている有効なパブリック IP アドレスを示しています。
 
-```
+```output
 sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 

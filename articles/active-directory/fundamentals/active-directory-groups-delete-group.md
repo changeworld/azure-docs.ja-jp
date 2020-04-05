@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdba55e0655a13e65e403f5da73fcb69db5dbca5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68561908"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Azure Active Directory を使用してグループを削除する
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) グループはさまざまな理由で削除�
 - グループが不要になった。
 
 ## <a name="to-delete-a-group"></a>グループを削除するには
-1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 
 2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択します。
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) グループはさまざまな理由で削除�
 
     ![[削除] オプションが強調表示された [MDM policy - East]\(MDM ポリシー - 東部\) の [概要] ページ](media/active-directory-groups-delete-group/group-overview-blade.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 間違ってグループを削除してしまった場合、それを再作成することができます。 詳細については、[基本グループを作成し、メンバーを追加する方法](active-directory-groups-create-azure-portal.md)に関するページを参照してください。
 

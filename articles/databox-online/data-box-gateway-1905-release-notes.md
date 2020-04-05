@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 345666b53336cc6959a65eefd4b0f2475bea8c80
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67068110"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Azure Data Box Edge と Azure Data Box Gateway 1905 のリリース ノート
@@ -40,7 +40,7 @@ ms.locfileid: "67068110"
 今回のリリースで特にリリースされた新しい問題はありません。 リリース ノートに記載されている問題はすべて、以前のリリースからの持ち越しです。 既知の問題の一覧を表示するには、「[GA リリースの既知の問題](data-box-gateway-release-notes.md#known-issues-in-ga-release)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Data Box Gateway のデプロイを準備する](data-box-gateway-deploy-prep.md)
 - [Azure Data Box Edge のデプロイを準備する](data-box-edge-deploy-prep.md)

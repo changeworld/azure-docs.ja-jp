@@ -14,10 +14,10 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 0998bb04b0dfc69db4696f2e390cfe259eba6718
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696523"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Android 用 MSAL と B2C を一緒に使用する
@@ -54,7 +54,7 @@ Android 用 MSAL では、B2C ポリシー (ユーザー体験) は個々の機�
 }
 ```
 
-`redirect_uri` は、アプリ構成で登録する必要があります。さらに、[承認コード付与フロー](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code)中にリダイレクトをサポートするために、`AndroidManifest.xml` に登録する必要があります。
+`redirect_uri` は、アプリ構成で登録する必要があります。さらに、`AndroidManifest.xml`承認コード付与フロー[中にリダイレクトをサポートするために、](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code) に登録する必要があります。
 
 ## <a name="initialize-ipublicclientapplication"></a>IPublicClientApplication を初期化する
 
@@ -139,7 +139,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>ポリシーを指定する
 
-B2C のポリシーは個別の機関として表されるため、既定値以外のポリシー呼び出しを実現するには、`acquireToken` または `acquireTokenSilent` パラメーターを構築するときに `fromAuthority` 句を指定します。  次に例を示します。
+B2C のポリシーは個別の機関として表されるため、既定値以外のポリシー呼び出しを実現するには、`fromAuthority` または `acquireToken` パラメーターを構築するときに `acquireTokenSilent` 句を指定します。  次に例を示します。
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()

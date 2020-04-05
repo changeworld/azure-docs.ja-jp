@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev
 ms.openlocfilehash: 15dd9bf6ac19bdac7bc8b50fc70e0b3b0a4e9a83
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083775"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用

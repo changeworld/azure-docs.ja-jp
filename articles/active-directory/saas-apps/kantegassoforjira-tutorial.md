@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Kantega SSO for JIRA の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Kantega SSO for JIRA の統合 | Microsoft Docs'
 description: Azure Active Directory と Kantega SSO for JIRA の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e97a66a1b21b46649a1206eb522c180e84a0a0d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67099150"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>チュートリアル:Azure Active Directory と Kantega SSO for JIRA の統合
+# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>チュートリアル: Azure Active Directory と Kantega SSO for JIRA の統合
 
 このチュートリアルでは、Kantega SSO for JIRA と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Kantega SSO for JIRA と Azure AD を統合すると、次の利点が得られます。
@@ -217,7 +217,7 @@ Kantega SSO for JIRA で Azure AD のシングル サインオンを構成する
 
     b. **[Known domains]\(既知のドメイン\)** ボックスにドメイン名を入力します。
 
-    c. **[Save]** をクリックします。
+    c. **[保存]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

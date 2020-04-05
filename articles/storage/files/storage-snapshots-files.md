@@ -8,10 +8,10 @@ ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c05b79d2f1da8076b507ca9ee7a06504de21d5ea
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72333174"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure Files の共有スナップショットの概要 
@@ -82,7 +82,7 @@ Azure でインフラストラクチャを実行するときには、可能な�
 
 共有スナップショットは、ファイル レベルの保護のみを提供します。 共有スナップショットでは、タイプミスによるファイル共有またはストレージ アカウントの削除を防ぐことはできません。 ストレージ アカウントを誤って削除しないようにするために、ストレージ アカウントまたはリソース グループをロックできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 次のツールで共有スナップショットを操作する方法:
     - [PowerShell](storage-how-to-use-files-powershell.md)
     - [CLI](storage-how-to-use-files-cli.md)

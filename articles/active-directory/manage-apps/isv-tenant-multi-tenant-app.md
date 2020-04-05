@@ -13,10 +13,10 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 637adba89445e6974e83486f0641576225ccd268
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70812618"
 ---
 # <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>マルチテナント アプリケーション用に Azure テナントを作成する  

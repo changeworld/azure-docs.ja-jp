@@ -1,19 +1,18 @@
 ---
 title: Marketplace のオファーを削除する | Azure Marketplace
 description: Cloud パートナー ポータルを使用して Azure Marketplace および AppSource Marketplace でオファーを削除します
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: pabutler
-ms.openlocfilehash: 6a75fbb0c4b9c364342a406a8076128346943101
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: fa8ee834bd6d9261c47c540e9517c200c894b6c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826779"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286457"
 ---
 # <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>Azure Marketplace および AppSource のオファーまたは SKU を削除する
 
@@ -60,7 +59,7 @@ ms.locfileid: "73826779"
 
 公開されているオファーの削除には、手続き、ビジネス、法律に関してさまざまな側面があります。 公開されているオファーの Azure Marketplace からの削除については、次の手順に従ってサポート チームからガイダンスを入手してください。
 
-1.  「[Create an incident](https://go.microsoft.com/fwlink/?linkid=844975)」(インシデントの作成) ページを使用してサポート チケットを提出するか、または [Cloud パートナー ポータル](https://cloudpartner.azure.com/)の右上隅にある **[Support]\(サポート\)** をクリックします。
+1.  「[Create an incident](https://go.microsoft.com/fwlink/?linkid=844975)」(インシデントの作成) ページを使用してサポート チケットを提出するか、または **Cloud パートナー ポータル**の右上隅にある [[Support]\(サポート\)](https://cloudpartner.azure.com/) をクリックします。
 
 2.  **[Problem type]\(問題の種類\)** の一覧で特定のオファーの種類を選択し、 **[Category]\(カテゴリ\)** の一覧で **[Remove a published offer]\(公開したオファーの削除\)** を選択します。
 
@@ -72,6 +71,6 @@ ms.locfileid: "73826779"
 > オファー (または SKU) を削除しても、そのオファー (または SKU) の現時点での購入には影響しません。 それらの購入は、以前と同様に機能し続けます。 ただし、削除されたオファーまたは SKU をそれ以降に購入することはできなくなります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 オファーの管理に使用する基本的な操作に慣れたら、Microsoft [Marketplace オファー](../cpp-marketplace-offers.md)のインスタンスを作成できます。

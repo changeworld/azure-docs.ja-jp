@@ -18,10 +18,10 @@ ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 9d2df175fa9d1ed33eb17ae85e01a4fd7a24e728
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77611942"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft ID プラットフォームの認証ライブラリ

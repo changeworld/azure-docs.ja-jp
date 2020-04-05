@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/04/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1caa80469504d52d3103fb2776fb3e7210971690
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024400"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Time Series Insights リソースを作成する
@@ -73,7 +73,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
      | パラメーター | 説明 |
      | --- | --- |
-     | existingEventHubResourceId | イベント ソースを介して Time Series Insights 環境に接続する既存のイベント ハブの省略可能なリソース ID。 **注:** テンプレートを展開するユーザーには、イベント ハブに対して listkeys 操作を実行する特権が必要です。 値が渡されない場合、新しいイベント ハブがテンプレートによって作成されます。 |
+     | existingEventHubResourceId | イベント ソースを介して Time Series Insights 環境に接続する既存のイベント ハブの省略可能なリソース ID。 **注:** テンプレートを展開するユーザーには、イベント ハブに対して listkeys 操作を実行する権限が必要です。 値が渡されない場合、新しいイベント ハブがテンプレートによって作成されます。 |
      | environmentDisplayName | ツールやユーザー インターフェイスで環境名の代わりに表示される省略可能なフレンドリ名。 |
      | environmentSkuName | SKU の名前。 詳細については、「[Time Series Insights の価格](https://azure.microsoft.com/pricing/details/time-series-insights/)」ページを参照してください。  |
      | environmentSkuCapacity | SKU のユニット容量。 詳細については、「[Time Series Insights の価格](https://azure.microsoft.com/pricing/details/time-series-insights/)」ページを参照してください。|

@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
 ms.openlocfilehash: 83babd65fdf22ab40b0137d93a1cbe7f1fd7ff04
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844804"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
@@ -60,7 +60,7 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 * Debian GNU/Linux 8 および 9
 * Ubuntu Linux 14.04 LTS および 16.04 LTS
 
-## <a name="onboard"></a>Change Tracking とインベントリの有効化
+## <a name="enable-change-tracking-and-inventory"></a><a name="onboard"></a>Change Tracking とインベントリの有効化
 
 変更の追跡を開始するには、Change Tracking および Inventory ソリューションを有効にする必要があります。 Change Tracking と Inventory にマシンをオンボーディングする方法は多数あります。 以下に、推奨およびサポートされている、ソリューションにオンボードする方法を示します。
 
@@ -105,7 +105,7 @@ FIM が既に有効になっていて、完全な Change Tracking ソリュー�
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
-|Group     | ファイルを論理的にグループ化するためのグループ名。        |
+|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス。 例: "/etc/*.conf"       |
 |パスの種類     | 追跡する項目の種類。"ファイル" または "ディレクトリ" を指定できます。        |
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
@@ -128,7 +128,7 @@ FIM が既に有効になっていて、完全な Change Tracking ソリュー�
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
-|Group     | ファイルを論理的にグループ化するためのグループ名。        |
+|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス (例: "c:\temp\\\*.txt")。<br>"%winDir%\System32\\\*.*" などの環境変数も使用できます。       |
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
 |すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用できるオプションは **True** または **False** です。|
@@ -160,7 +160,7 @@ FIM が既に有効になっていて、完全な Change Tracking ソリュー�
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するレジストリ キーのフレンドリ名。        |
-|Group     | レジストリ キーを論理的にグループ化するためのグループ名。        |
+|グループ     | レジストリ キーを論理的にグループ化するためのグループ名。        |
 |Windows レジストリ キー   | レジストリ キーを確認するためのパス。 次に例を示します。"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ## <a name="limitations"></a>制限事項

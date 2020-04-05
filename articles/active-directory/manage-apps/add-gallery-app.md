@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: af0a826c499790c86a20ea7061075a6c3e66b3a4
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73062566"
 ---
 # <a name="add-a-gallery-app-to-your-azure-ad-organization"></a>Azure AD 組織にギャラリー アプリを追加する
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) には、Enterprise Single Sign-on に対応�
 
     ![[新しいアプリケーション] を選択してテナントにギャラリー アプリケーションを追加](media/add-gallery-app/new-application.png)
 
- 4. 新しいギャラリー プレビュー エクスペリエンスに切り替えます。 **[アプリケーションの追加]** ページの上部にあるバナーで、 **[Click here to try out the new and improved app gallery]\(改善された新しいアプリ ギャラリーを試すには、こちらをクリックしてください\)** というリンクを選択します。
+ 4. 新しいギャラリー プレビュー エクスペリエンスに切り替えます。 **[アプリケーションの追加]** ページの上部にあるバナーで、 **[Click here to try out the new and improved app gallery] (改善された新しいアプリ ギャラリーを試すには、こちらをクリックしてください)** というリンクを選択します。
 
 5. **[Azure AD ギャラリーの参照]** ペインが開き、クラウド プラットフォーム、オンプレミス アプリケーション、および注目のアプリケーションのタイルが表示されます。 なお、 **[注目のアプリケーション]** セクションに一覧表示されているアプリケーションには、フェデレーション シングル サインオン (SSO) とプロビジョニングをサポートしているかどうかを示すアイコンがあります。
 
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) には、Enterprise Single Sign-on に対応�
 
     ![ギャラリーからアプリケーションを追加する方法を示します](media/add-gallery-app/create-application.png)
 
-7. **作成** を選択します。 [作業の開始] ページが表示され、組織のアプリケーションを構成するためのオプションが表示されます。
+7. **［作成］** を選択します [作業の開始] ページが表示され、組織のアプリケーションを構成するためのオプションが表示されます。
 
 ## <a name="configure-user-sign-in-properties"></a>ユーザーのサインイン プロパティを構成する
 
@@ -71,27 +71,27 @@ Azure Active Directory (Azure AD) には、Enterprise Single Sign-on に対応�
        |---|---|---|---|---|
        | ユーザーのサインインが有効になっていますか? | ユーザーの割り当てが必要ですか? | ユーザーに表示しますか? | 割り当てられているユーザーはサインインできますか? | 割り当てられているユーザーにアプリケーションが表示されますか?* |
        | はい | はい | はい | はい | はい  |
-       | はい | はい | ×  | はい | ×   |
-       | はい | ×  | はい | はい | はい  |
-       | はい | ×  | ×  | はい | ×   |
-       | ×  | はい | はい | ×  | ×   |
-       | ×  | はい | ×  | ×  | ×   |
-       | ×  | ×  | はい | ×  | ×   |
-       | ×  | ×  | ×  | ×  | ×   |
+       | はい | はい | no  | はい | no   |
+       | はい | no  | はい | はい | はい  |
+       | はい | no  | no  | はい | no   |
+       | no  | はい | はい | no  | no   |
+       | no  | はい | no  | no  | no   |
+       | no  | no  | はい | no  | no   |
+       | no  | no  | no  | no  | no   |
 
       **割り当てられていない**ユーザーの動作:
 
        | アプリケーション プロパティの設定 | | | 割り当てられていないユーザーのエクスペリエンス | |
        |---|---|---|---|---|
        | ユーザーのサインインが有効になっていますか? | ユーザーの割り当てが必要ですか? | ユーザーに表示しますか? | 割り当てられていないユーザーはサインインできますか? | 割り当てられていないユーザーにアプリケーションが表示されますか?* |
-       | はい | はい | はい | ×  | ×   |
-       | はい | はい | ×  | ×  | ×   |
-       | はい | ×  | はい | はい | ×   |
-       | はい | ×  | ×  | はい | ×   |
-       | ×  | はい | はい | ×  | ×   |
-       | ×  | はい | ×  | ×  | ×   |
-       | ×  | ×  | はい | ×  | ×   |
-       | ×  | ×  | ×  | ×  | ×   |
+       | はい | はい | はい | no  | no   |
+       | はい | はい | no  | no  | no   |
+       | はい | no  | はい | はい | no   |
+       | はい | no  | no  | はい | no   |
+       | no  | はい | はい | no  | no   |
+       | no  | はい | no  | no  | no   |
+       | no  | no  | はい | no  | no   |
+       | no  | no  | no  | no  | no   |
 
      \* ユーザーのアクセス パネルと Office 365 アプリ ランチャーにアプリケーションが表示されますか?
 
@@ -101,7 +101,7 @@ Azure Active Directory (Azure AD) には、Enterprise Single Sign-on に対応�
 
 1. 完了したら、 **[保存]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure AD 組織にアプリケーションを追加したので、使用する[シングル サインオン方法を選択](what-is-single-sign-on.md#choosing-a-single-sign-on-method)し、次の該当する記事を参照します。
 

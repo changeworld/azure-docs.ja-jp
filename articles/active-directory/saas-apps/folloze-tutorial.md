@@ -17,10 +17,10 @@ ms.date: 10/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 776e45f51bec9d30afc0976d3757faaad129cd1a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75561206"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-folloze"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Folloze の統合
@@ -95,7 +95,7 @@ Folloze に対する Azure AD SSO を構成してテストするには、次の�
 
 1. その他に、Folloze アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | Name |  ソース属性|
+    | 名前 |  ソース属性|
     | ---------------| --------- |
     | Email | user.othermail |
     | Nameasemail | user.userprincipalname |

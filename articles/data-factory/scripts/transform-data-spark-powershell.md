@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
 ms.openlocfilehash: c09d0532b845472d0ccaac1ad57e3772630bb5c9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74932061"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell スクリプト - Azure Data Factory を使用してクラウド内のデータを変換する
@@ -63,7 +63,7 @@ ms.locfileid: "74932061"
 
 ### <a name="upload-the-input-file"></a>入力ファイルをアップロードする
 1. **minecraftstory.txt** という名前のファイルを作成し、任意のテキストを入力しておきます。 このテキストの単語数が Spark プログラムによってカウントされます。 
-2. BLOB コンテナーの `spark` フォルダーに、`inputfiles` という名前のサブフォルダーを作成します。 
+2. BLOB コンテナーの `inputfiles` フォルダーに、`spark` という名前のサブフォルダーを作成します。 
 3. `minecraftstory.txt` を `inputfiles` サブフォルダーにアップロードします。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
@@ -100,7 +100,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

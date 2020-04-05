@@ -4,10 +4,10 @@ description: Recovery Services コンテナーの概要と Azure Backup コン�
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.openlocfilehash: 94a3e5a0865bcc8c0a9ecb866ca013f20a558e1a
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673234"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services コンテナーの概要
@@ -22,15 +22,15 @@ Backup コンテナーをまだ使用している場合、Recovery Services コ�
 
 Recovery Services コンテナーが Azure の Azure Resource Manager モデルに基づいているのに対し、バックアップ コンテナーは Azure Service Manager モデルに基づいています。 Backup コンテナーを Recovery Services コンテナーにアップグレードする場合、バックアップ データはアップグレード プロセスの実行中でも実行後でもそのまま残ります。 Recovery Services コンテナーには、Backup コンテナーにはない次のような機能があります。
 
-- **強化されたバックアップ データの保護機能**:Recovery Services コンテナーの場合、Azure Backup によってクラウド バックアップを保護するセキュリティ機能が提供されます。 このセキュリティ機能により、バックアップをセキュリティで保護することができ、運用サーバーとバックアップ サーバーが侵害された場合でもデータを安全に回復できます。 [詳細情報](backup-azure-security-feature.md)
+- **強化されたバックアップ データの保護機能**: Recovery Services コンテナーの場合、Azure Backup によってクラウド バックアップを保護するセキュリティ機能が提供されます。 このセキュリティ機能により、バックアップをセキュリティで保護することができ、運用サーバーとバックアップ サーバーが侵害された場合でもデータを安全に回復できます。 [詳細情報](backup-azure-security-feature.md)
 
-- **ハイブリッド IT 環境の一元監視**:Recovery Services コンテナーの場合、[Azure IaaS VM](backup-azure-manage-vms.md) だけでなく、[オンプレミス資産](backup-azure-manage-windows-server.md#manage-backup-items)も中央ポータルで監視することができます。 [詳細情報](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
+- **ハイブリッド IT 環境の一元監視**: Recovery Services コンテナーの場合、[Azure IaaS VM](backup-azure-manage-vms.md) だけでなく、[オンプレミス資産](backup-azure-manage-windows-server.md#manage-backup-items)も中央ポータルで監視することができます。 [詳細情報](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **ロールベースのアクセス制御 (RBAC)** :RBAC を使用して、Azure のアクセス権を詳細に管理できます。 [Azure にはさまざまな組み込みのロールがあります](../role-based-access-control/built-in-roles.md)。また、Azure Backup には、[復旧ポイントを管理するための 3 つの組み込みのロールがあります](backup-rbac-rs-vault.md)。 Recovery Services コンテナーは、定義されたユーザー ロールのセットに対するバックアップと復元アクセスを制限する RBAC と互換性があります。 [詳細情報](backup-rbac-rs-vault.md)
+- **ロールベースのアクセス制御 (RBAC)** : RBAC を使用して、Azure のアクセス権を詳細に管理できます。 [Azure にはさまざまな組み込みのロールがあります](../role-based-access-control/built-in-roles.md)。また、Azure Backup には、[復旧ポイントを管理するための 3 つの組み込みのロールがあります](backup-rbac-rs-vault.md)。 Recovery Services コンテナーは、定義されたユーザー ロールのセットに対するバックアップと復元アクセスを制限する RBAC と互換性があります。 [詳細情報](backup-rbac-rs-vault.md)
 
-- **Azure Virtual Machines のあらゆる構成の保護**:Recovery Services コンテナーは、Resource Manager ベースの VM (Premium ディスク、マネージド ディスク、暗号化された VM など) を保護します。 Backup コンテナーを Recovery Services コンテナーにアップグレードすると、Service Manager ベースの VM を Resource Manager ベースの VM にアップグレードできます。 コンテナーをアップグレードするときに、Service Manager ベースの VM の復旧ポイントを維持し、アップグレードされた (Resource Manager が有効な) VM の保護を構成できます。 [詳細情報](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
+- **Azure Virtual Machines のあらゆる構成の保護**: Recovery Services コンテナーは、Resource Manager ベースの VM (Premium ディスク、Managed Disks、暗号化された VM など) を保護します。 Backup コンテナーを Recovery Services コンテナーにアップグレードすると、Service Manager ベースの VM を Resource Manager ベースの VM にアップグレードできます。 コンテナーをアップグレードするときに、Service Manager ベースの VM の復旧ポイントを維持し、アップグレードされた (Resource Manager が有効な) VM の保護を構成できます。 [詳細情報](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **IaaS VM のインスタント リストア**:Recovery Services コンテナーを使用すると、VM 全体を復元せずに IaaS VM からファイルとフォルダーを復元できるため、復元時間を短縮できます。 IaaS VM のインスタント リストアは、Windows VM と Linux VM の両方で利用できます。 [詳細情報](backup-instant-restore-capability.md)
+- **IaaS VM のインスタント リストア**: Recovery Services コンテナーを使用すると、VM 全体を復元せずに IaaS VM からファイルとフォルダーを復元できるため、復元時間を短縮できます。 IaaS VM のインスタント リストアは、Windows VM と Linux VM の両方で利用できます。 [詳細情報](backup-instant-restore-capability.md)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>ポータルでの Recovery Services コンテナーの管理
 

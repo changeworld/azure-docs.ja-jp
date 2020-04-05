@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
 ms.openlocfilehash: fa71f472294b91baebc2a6075ddb2b50123e545d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593391"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>トークン認証による Azure CDN 資産の保護
@@ -29,7 +29,7 @@ ms.locfileid: "67593391"
 
 トークン認証メカニズムを使用すると、承認されていないクライアントに Azure Content Delivery Network (CDN) が資産を提供できないように指定できます。 トークン認証は、通常、コンテンツの "*ホットリンク*" を防止するために行います。このホットリンクでは、自分の資産が他の Web サイト (掲示板など) によって許可なく使用されます。 ホットリンクは、コンテンツの配信コストに影響を与えることがあります。 CDN でトークン認証を有効にすると、CDN がコンテンツを配信する前に、CDN エッジ サーバーで要求が認証されます。 
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 トークン認証では、要求元に関するエンコードされた情報を含むトークン値を要求に求めることで、その要求が、信頼済みサイトによって生成されていることを確認します。 コンテンツが要求元に提供されるのは、そのエンコードされた情報が要件を満たす場合だけです。それ以外の場合、要求は拒否されます。 要件を設定するには、以下のパラメーターを 1 つ以上使用します。
 
@@ -72,7 +72,7 @@ ms.locfileid: "67593391"
 
       ```rand -hex <key length>```
 
-      例:
+      次に例を示します。
 
       ```OpenSSL> rand -hex 32``` 
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と &frankly の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と &frankly の統合 | Microsoft Docs'
 description: Azure Active Directory と &frankly の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 736cca668057f38431f91e36ff8fa97840274a38
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76120657"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-frankly"></a>チュートリアル:Azure Active Directory と &frankly の統合
+# <a name="tutorial-azure-active-directory-integration-with-frankly"></a>チュートリアル: Azure Active Directory と &frankly の統合
 
 このチュートリアルでは、&frankly と Azure Active Directory (Azure AD) を統合する方法について説明します。
 &frankly と Azure AD の統合には、次の利点があります。

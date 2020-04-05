@@ -9,15 +9,15 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74085255"
 ---
 仮想ネットワーク ゲートウェイを作成する場合、使用するゲートウェイの SKU を指定する必要があります。 ワークロード、スループット、機能、および SLA の種類に基づいて、要件を満たす SKU を選択します。 Azure Availability Zones における仮想ネットワーク ゲートウェイの SKU については、[Azure Availability Zones でのゲートウェイの SKU](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md) に関するページを参照してください。
 
-###  <a name="benchmark"></a>各ゲートウェイ SKU のトンネル数、接続数、およびスループット
+###  <a name="gateway-skus-by-tunnel-connection-and-throughput"></a><a name="benchmark"></a>各ゲートウェイ SKU のトンネル数、接続数、およびスループット
 
 [!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "74085255"
 >  * ExpressRoute ゲートウェイ SKU については、「[ExpressRoute 用の仮想ネットワーク ゲートウェイについて](../articles/expressroute/expressroute-about-virtual-network-gateways.md)」を参照してください。
 >
 
-###  <a name="feature"></a>各ゲートウェイ SKU の機能セット
+###  <a name="gateway-skus-by-feature-set"></a><a name="feature"></a>各ゲートウェイ SKU の機能セット
 
 新しい VPN ゲートウェイ SKU では、ゲートウェイで提供される機能セットが効率化されています。
 
@@ -39,13 +39,13 @@ ms.locfileid: "74085255"
 
 ( * ) "PolicyBasedTrafficSelectors" を構成することによって、ルートベースの VPN ゲートウェイを、オンプレミスにある複数のポリシーベース ファイアウォール デバイスに接続することができます。 詳細については、[PowerShell を使って複数のオンプレミス ポリシーベース VPN デバイスに VPN ゲートウェイを接続する方法](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)に関するページを参照してください。
 
-(\*\*) Basic SKU はレガシ SKU とみなされます。 Basic SKU には一定の機能制限があります。 Basic SKU を使用するゲートウェイのサイズを変更し、新しいゲートウェイ SKU のいずれかにすることはできず、その代わり、新しい SKU に変更する必要があります。この場合、VPN ゲートウェイの削除と再作成が必要です。
+(\*\*) Basic SKU はレガシ SKU とみなされます。 Basic SKU には一定の機能制限があります。 Basic SKU を使用するゲートウェイのサイズを変更し、新しいゲートウェイ SKU のいずれかにすることはできません。その代わり、新しい SKU に変更する必要があります。
 
-###  <a name="workloads"></a>ゲートウェイの SKU - 運用環境と開発テスト環境のワークロード
+###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>ゲートウェイの SKU - 運用環境と開発テスト環境のワークロード
 
 SLA と機能セットに違いがあるため、運用環境と開発テスト環境には以下の SKU をお勧めします。
 
-| **ワークロード**                       | **SKU**               |
+| **[ワークロード]**                       | **SKU**               |
 | ---                                | ---                    |
 | **運用環境での重要なワークロード** | Basic を除くすべての Generation1 および Generation2 SKU |
 | **開発テストまたは概念実証**   | Basic (\*\*)                 |

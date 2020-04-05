@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176492"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226555"
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API Management テンプレート リソース
 Azure API Management には、開発者ポータル テンプレート用に次の種類のリソースが用意されています。  
@@ -31,7 +31,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="strings"></a> 文字列リソース  
+##  <a name="string-resources"></a><a name="strings"></a> 文字列リソース  
  API Management には、開発者ポータルで使用するための包括的な文字列リソースのセットが用意されています。 これらのリソースは、API Management でサポートされているすべての言語にローカライズされます。 既定のテンプレート セットでは、開発者ポータルに表示されるページのヘッダー、ラベル、定数文字列にこれらのリソースを使用します。 テンプレートで文字列リソースを使用するには、次の例に示すように、リソース文字列のプレフィックスに続いて文字列名を指定します。  
   
 ```  
@@ -48,7 +48,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 次のローカライズ オプションがサポートされています。
 
-| Locale    | 言語               |
+| Locale    | Language               |
 |-----------|------------------------|
 | "en"      | "English"              |
 | "cs"      | "Čeština"              |
@@ -111,13 +111,13 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 -   [UserProfile](#UserProfile)  
   
-###  <a name="ApisStrings"></a> ApisStrings  
+###  <a name="apisstrings"></a><a name="ApisStrings"></a> ApisStrings  
   
 |名前|Text|  
 |----------|----------|  
 |PageTitleApis|API|  
   
-###  <a name="AppDetailsStrings"></a> AppDetailsStrings  
+###  <a name="appdetailsstrings"></a><a name="AppDetailsStrings"></a> AppDetailsStrings  
   
 |名前|Text|  
 |----------|----------|  
@@ -126,29 +126,29 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |WebApplicationsScreenshotAlt|Screenshot|  
 |WebApplicationsScreenshotsHeader|Screenshots (スクリーンショット)|  
   
-###  <a name="ApplicationListStrings"></a> ApplicationListStrings  
+###  <a name="applicationliststrings"></a><a name="ApplicationListStrings"></a> ApplicationListStrings  
   
 |名前|Text|  
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Are you sure that you want to remove application? (アプリケーションを削除しますか?)|  
 |WebDevelopersAppNotPublished|Not published (未発行)|  
 |WebDevelopersAppNotSubmitted|Not submitted (未申請)|  
-|WebDevelopersAppTableCategoryHeader|Category|  
+|WebDevelopersAppTableCategoryHeader|カテゴリ|  
 |WebDevelopersAppTableNameHeader|名前|  
 |WebDevelopersAppTableStateHeader|State|  
-|WebDevelopersEditLink|Edit|  
+|WebDevelopersEditLink|[編集]|  
 |WebDevelopersRegisterAppLink|アプリケーションを登録する|  
-|WebDevelopersRemoveLink|Remove|  
+|WebDevelopersRemoveLink|[削除]|  
 |WebDevelopersSubmitLink|[送信]|  
 |WebDevelopersYourApplicationsHeader|ご利用のアプリケーションへの応用|  
   
-###  <a name="AppStrings"></a> AppStrings  
+###  <a name="appstrings"></a><a name="AppStrings"></a> AppStrings  
   
 |名前|Text|  
 |----------|----------|  
-|WebApplicationsHeader|[アプリケーション]|  
+|WebApplicationsHeader|アプリケーション|  
   
-###  <a name="CommonResources"></a> CommonResources  
+###  <a name="commonresources"></a><a name="CommonResources"></a> CommonResources  
   
 |名前|Text|  
 |----------|----------|  
@@ -159,17 +159,17 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |AzureActiveDirectory|Azure Active Directory|  
 |HttpLargeRequestMessage|Http Request Body too large. (HTTP 要求の本文が大きすぎます。)|  
   
-###  <a name="CommonStrings"></a> CommonStrings  
+###  <a name="commonstrings"></a><a name="CommonStrings"></a> CommonStrings  
   
 |名前|Text|  
 |----------|----------|  
-|ButtonLabelCancel|キャンセル|  
+|ButtonLabelCancel|Cancel|  
 |ButtonLabelSave|保存|  
 |GeneralExceptionMessage|Something is not right. (問題があります。) It could be a temporary glitch or a bug. (一時的な障害またはバグである可能性があります。) Please, try again. (もう一度実行してください。)|  
 |NoItemsToDisplay|There are no items to display. (表示する項目がありません。)|  
 |PagerButtonLabelFirst|First (先頭へ)|  
 |PagerButtonLabelLast|Last (最後へ)|  
-|PagerButtonLabelNext|次へ|  
+|PagerButtonLabelNext|Next|  
 |PagerButtonLabelPrevious|Prev (前へ)|  
 |PagerLabelPageNOfM|ページ {0} / {1}|  
 |PasswordTooShort|The Password is too short (パスワードが短すぎます)|  
@@ -181,9 +181,9 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |PagerLabelPageSize|Page size (ページ サイズ)|  
 |CurtainLabelLoading|Loading... (読み込んでいます...)|  
 |TablePlaceholderNothingToDisplay|There is no data for the selected period and scope (選択した期間とスコープのデータがありません)|  
-|ButtonLabelClose|閉じます|  
+|ButtonLabelClose|閉じる|  
   
-###  <a name="Documentation"></a> Documentation  
+###  <a name="documentation"></a><a name="Documentation"></a> Documentation  
   
 |名前|Text|  
 |----------|----------|  
@@ -212,7 +212,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Description|<p\>         The client initiates the flow by directing the resource owner's         user-agent to the authorization endpoint. (クライアントは、リソース所有者のユーザー エージェントを承認エンドポイントに導くことで、フローを開始します。)  The client includes         its client identifier, requested scope, local state, and a         redirection URI to which the authorization server will send the         user-agent back once access is granted (or denied). (クライアントには、クライアント識別子、要求されたスコープ、ローカルの状態に加え、アクセスが許可 (または拒否) されると承認サーバーによってユーザー エージェントが再度送信されるリダイレクト URI が含まれます。)     </p\>     <p\>         The authorization server authenticates the resource owner (via         the user-agent) and establishes whether the resource owner         grants or denies the client's access request. (承認サーバーによってリソースの所有者が認証され (ユーザー エージェントを使用)、リソースの所有者がクライアントのアクセス要求を許可するか、否定するかが設定されます。)     </p\>     <p\>         Assuming the resource owner grants access, the authorization         server redirects the user-agent back to the client using the         redirection URI provided earlier (in the request or during         client registration). (リソース所有者がアクセスを許可した場合、承認サーバーは以前 (要求時、またはクライアント登録中) に提供されたリダイレクト URI を使用してユーザー エージェントをクライアントにリダイレクトします。)  The redirection URI includes an         authorization code and any local state provided by the client         earlier. (リダイレクト URI には認証コードと、以前にクライアントから提供されたローカル状態が含まれています。)     </p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ErrorDescription|<p\>If the user denies the access request of if the request is invalid, the client will be informed using the following parameters added on to the redirect: </p\> (ユーザーがアクセス要求を拒否した場合または要求が無効な場合、クライアントには、リダイレクトに追加された次のパラメーターを使用して通知されます:)|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Name|Authorization request (承認要求)|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_RequestDescription|<p\>         The client app must send the user to the authorization endpoint in order to initiate the OAuth process. (クライアント アプリは、OAuth プロセスを開始するために、ユーザーを承認エンドポイントに送信する必要があります。)          At the authorization endpoint, the user authenticates and then grants or denies access to the app. (承認エンドポイントでは、ユーザーが認証された後、アプリへのアクセスを許可または拒否します。)     </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_RequestDescription|<p\>         The client app must send the user to the authorization endpoint in order to initiate the OAuth process. (クライアント アプリは、OAuth プロセスを開始するために、ユーザーを承認エンドポイントに送信する必要があります。)          At the authorization endpoint, the user authenticates and then grants or denies access to the app. (承認エンドポイントでは、ユーザーが認証された後、アプリへのアクセスが許可または拒否されます。)     </p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ResponseDescription|<p\>     Assuming the resource owner grants access, authorization server     redirects the user-agent back to the client using the     redirection URI provided earlier (in the request or during     client registration). (リソース所有者がアクセスを許可した場合、承認サーバーは以前 (要求時、またはクライアント登録中) に提供されたリダイレクト URI を使用して、ユーザー エージェントをクライアントにリダイレクトします。)  The redirection URI includes an     authorization code and any local state provided by the client     earlier. (リダイレクト URI には認証コードと、以前にクライアントから提供されたローカル状態が含まれています。) </p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_Description|<p\>  The client requests an access token from the authorization     server''s token endpoint by including the authorization code     received in the previous step. (クライアントは、前の手順で受け取った承認コードを含めることで、承認サーバーのトークン エンドポイントにアクセス トークンを要求します。)  When making the request, the     client authenticates with the authorization server. (クライアントは、要求を行う際に、承認サーバーで認証を行います。)  The client     includes the redirection URI used to obtain the authorization     code for verification. (クライアントには、検証用の承認コードを取得するためのリダイレクト URI が含まれています。) </p\> <p\>     The authorization server authenticates the client, validates the     authorization code, and ensures that the redirection URI     received matches the URI used to redirect the client in     step (C). (承認サーバーはクライアントを認証し、承認コードを確認して、受け取ったリダイレクト URI が、手順 (C) でクライアントのリダイレクトに使用された URI と一致するかどうかを確認します。)  If valid, the authorization server responds back with     an access token and, optionally, a refresh token. (有効な場合、承認サーバーはアクセス トークン、およびオプションで更新トークンを使用して応答を返します。) </p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ErrorDescription|<p\>If the request client authentication failed or is invalid, the authorization server responds with an HTTP 400 (Bad Request) status code (unless specified otherwise) and includes the following parameters with the response. (要求のクライアント認証が失敗した場合または無効な場合、承認サーバーは、(別途指定がない限り) HTTP 400 (無効な要求) 状態コードで応答を返し、応答に次のパラメーターを含めます。) </p\>|  
@@ -249,16 +249,16 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |OAuth2ClientId_ImplicitGrant_AuthorizationRequest|REQUIRED. (必須。) The client identifier. (クライアント識別子。)|  
 |OAuth2Code_AuthorizationCodeGrant_AuthorizationResponse|REQUIRED. (必須。) The authorization code generated by the authorization server. (承認サーバーによって生成された承認コード。)|  
 |OAuth2Code_AuthorizationCodeGrant_TokenRequest|REQUIRED. (必須。) The authorization code received from the authorization server. (承認サーバーから受け取った承認コード。承認サーバーから受け取った承認コード。)|  
-|OAuth2ErrorDescription_AuthorizationCodeGrant_AuthorizationErrorResponse|OPTIONAL. (省略可能。) Human-readable ASCII text providing additional information. (追加情報を提供する、人間が判読できる ASCII テキスト。)|  
-|OAuth2ErrorDescription_AuthorizationCodeGrant_TokenErrorResponse|OPTIONAL. (省略可能。) Human-readable ASCII text providing additional information. (追加情報を提供する、人間が判読できる ASCII テキスト。)|  
-|OAuth2ErrorDescription_ClientCredentialsGrant_TokenErrorResponse|OPTIONAL. (省略可能。) Human-readable ASCII text providing additional information. (追加情報を提供する、人間が判読できる ASCII テキスト。)|  
-|OAuth2ErrorDescription_ImplicitGrant_AuthorizationErrorResponse|OPTIONAL. (省略可能。) Human-readable ASCII text providing additional information. (追加情報を提供する、人間が判読できる ASCII テキスト。)|  
-|OAuth2ErrorDescription_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|OPTIONAL. (省略可能。) Human-readable ASCII text providing additional information. (追加情報を提供する、人間が判読できる ASCII テキスト。)|  
-|OAuth2ErrorUri_AuthorizationCodeGrant_AuthorizationErrorResponse|OPTIONAL. (省略可能。) A URI identifying a human-readable web page with information about the error. (エラーに関する情報を含む、人間が判読できる Web ページを識別する URI。)|  
-|OAuth2ErrorUri_AuthorizationCodeGrant_TokenErrorResponse|OPTIONAL. (省略可能。) A URI identifying a human-readable web page with information about the error. (エラーに関する情報を含む、人間が判読できる Web ページを識別する URI。)|  
-|OAuth2ErrorUri_ClientCredentialsGrant_TokenErrorResponse|OPTIONAL. (省略可能。) A URI identifying a human-readable web page with information about the error. (エラーに関する情報を含む、人間が判読できる Web ページを識別する URI。)|  
-|OAuth2ErrorUri_ImplicitGrant_AuthorizationErrorResponse|OPTIONAL. (省略可能。) A URI identifying a human-readable web page with information about the error. (エラーに関する情報を含む、人間が判読できる Web ページを識別する URI。)|  
-|OAuth2ErrorUri_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|OPTIONAL. (省略可能。) A URI identifying a human-readable web page with information about the error. (エラーに関する情報を含む、人間が判読できる Web ページを識別する URI。)|  
+|OAuth2ErrorDescription_AuthorizationCodeGrant_AuthorizationErrorResponse|省略可能。 Human-readable ASCII text providing additional information. (追加情報を提供する、人間が判読できる ASCII テキスト。)|  
+|OAuth2ErrorDescription_AuthorizationCodeGrant_TokenErrorResponse|省略可能。 Human-readable ASCII text providing additional information. (追加情報を提供する、人間が判読できる ASCII テキスト。)|  
+|OAuth2ErrorDescription_ClientCredentialsGrant_TokenErrorResponse|省略可能。 Human-readable ASCII text providing additional information. (追加情報を提供する、人間が判読できる ASCII テキスト。)|  
+|OAuth2ErrorDescription_ImplicitGrant_AuthorizationErrorResponse|省略可能。 Human-readable ASCII text providing additional information. (追加情報を提供する、人間が判読できる ASCII テキスト。)|  
+|OAuth2ErrorDescription_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|省略可能。 Human-readable ASCII text providing additional information. (追加情報を提供する、人間が判読できる ASCII テキスト。)|  
+|OAuth2ErrorUri_AuthorizationCodeGrant_AuthorizationErrorResponse|省略可能。 A URI identifying a human-readable web page with information about the error. (エラーに関する情報を含む、人間が判読できる Web ページを識別する URI。)|  
+|OAuth2ErrorUri_AuthorizationCodeGrant_TokenErrorResponse|省略可能。 A URI identifying a human-readable web page with information about the error. (エラーに関する情報を含む、人間が判読できる Web ページを識別する URI。)|  
+|OAuth2ErrorUri_ClientCredentialsGrant_TokenErrorResponse|省略可能。 A URI identifying a human-readable web page with information about the error. (エラーに関する情報を含む、人間が判読できる Web ページを識別する URI。)|  
+|OAuth2ErrorUri_ImplicitGrant_AuthorizationErrorResponse|省略可能。 A URI identifying a human-readable web page with information about the error. (エラーに関する情報を含む、人間が判読できる Web ページを識別する URI。)|  
+|OAuth2ErrorUri_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|省略可能。 A URI identifying a human-readable web page with information about the error. (エラーに関する情報を含む、人間が判読できる Web ページを識別する URI。)|  
 |OAuth2Error_AuthorizationCodeGrant_AuthorizationErrorResponse|REQUIRED. (必須。) A single ASCII error code from the following: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable. (次のうち 1 つの ASCII エラー コード: invalid_request、unauthorized_client、access_denied、unsupported_response_type、invalid_scope、server_error、temporarily_unavailable。)|  
 |OAuth2Error_AuthorizationCodeGrant_TokenErrorResponse|REQUIRED. (必須。) A single ASCII error code from the following: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope. (次のうち 1 つの ASCII エラー コード: invalid_request、invalid_client、invalid_grant、unauthorized_client、unsupported_grant_type、invalid_scope。)|  
 |OAuth2Error_ClientCredentialsGrant_TokenErrorResponse|REQUIRED. (必須。) A single ASCII error code from the following: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope. (次のうち 1 つの ASCII エラー コード: invalid_request、invalid_client、invalid_grant、unauthorized_client、unsupported_grant_type、invalid_scope。)|  
@@ -272,21 +272,21 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |OAuth2GrantType_ClientCredentialsGrant_TokenRequest|REQUIRED. (必須。) Value MUST be set to "client_credentials". (値は "client_credentials" に設定する必要があります。)|  
 |OAuth2GrantType_ResourceOwnerPasswordCredentialsGrant_TokenRequest|REQUIRED. (必須。) Value MUST be set to "password". (値は "password" に設定する必要があります。)|  
 |OAuth2Password_ResourceOwnerPasswordCredentialsGrant_TokenRequest|REQUIRED. (必須。) The resource owner password. (リソース所有者のパスワード。)|  
-|OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|OPTIONAL. (省略可能。) The redirection endpoint URI must be an absolute URI. (リダイレクトのエンドポイント URI は、絶対 URI にする必要があります。)|  
+|OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|省略可能。 The redirection endpoint URI must be an absolute URI. (リダイレクトのエンドポイント URI は、絶対 URI にする必要があります。)|  
 |OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|REQUIRED if the "redirect_uri" parameter was included in the authorization request, and their values MUST be identical. ("redirect_uri" パラメーターが承認要求に含まれていた場合は必須。これらの値は同一である必要があります。)|  
-|OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|OPTIONAL. (省略可能。) The redirection endpoint URI must be an absolute URI. (リダイレクトのエンドポイント URI は、絶対 URI にする必要があります。)|  
-|OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|OPTIONAL. (省略可能。) The refresh token, which can be used to obtain new access tokens. (新しいアクセス トークンを取得するために使用できる更新トークン。)|  
-|OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|OPTIONAL. (省略可能。) The refresh token, which can be used to obtain new access tokens. (新しいアクセス トークンを取得するために使用できる更新トークン。)|  
-|OAuth2RefreshToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|OPTIONAL. (省略可能。) The refresh token, which can be used to obtain new access tokens. (新しいアクセス トークンを取得するために使用できる更新トークン。)|  
+|OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|省略可能。 The redirection endpoint URI must be an absolute URI. (リダイレクトのエンドポイント URI は、絶対 URI にする必要があります。)|  
+|OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|省略可能。 The refresh token, which can be used to obtain new access tokens. (新しいアクセス トークンを取得するために使用できる更新トークン。)|  
+|OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|省略可能。 The refresh token, which can be used to obtain new access tokens. (新しいアクセス トークンを取得するために使用できる更新トークン。)|  
+|OAuth2RefreshToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|省略可能。 The refresh token, which can be used to obtain new access tokens. (新しいアクセス トークンを取得するために使用できる更新トークン。)|  
 |OAuth2ResponseType_AuthorizationCodeGrant_AuthorizationRequest|REQUIRED. (必須。) Value MUST be set to "code". (値は "code" に設定する必要があります。)|  
 |OAuth2ResponseType_ImplicitGrant_AuthorizationRequest|REQUIRED. (必須。) Value MUST be set to "token". (値は "token" に設定する必要があります。)|  
-|OAuth2Scope_AuthorizationCodeGrant_AuthorizationRequest|OPTIONAL. (省略可能。) The scope of the access request. (アクセス要求のスコープ。)|  
+|OAuth2Scope_AuthorizationCodeGrant_AuthorizationRequest|省略可能。 The scope of the access request. (アクセス要求のスコープ。)|  
 |OAuth2Scope_AuthorizationCodeGrant_TokenResponse|OPTIONAL if identical to the scope requested by the client; otherwise, REQUIRED. (クライアントによって要求されたスコープと同じ場合は省略可能、それ以外の場合は必須。)|  
-|OAuth2Scope_ClientCredentialsGrant_TokenRequest|OPTIONAL. (省略可能。) The scope of the access request. (アクセス要求のスコープ。)|  
+|OAuth2Scope_ClientCredentialsGrant_TokenRequest|省略可能。 The scope of the access request. (アクセス要求のスコープ。)|  
 |OAuth2Scope_ClientCredentialsGrant_TokenResponse|OPTIONAL, if identical to the scope requested by the client; otherwise, REQUIRED. (クライアントによって要求されたスコープと同じ場合は省略可能、それ以外の場合は必須。)|  
-|OAuth2Scope_ImplicitGrant_AuthorizationRequest|OPTIONAL. (省略可能。) The scope of the access request. (アクセス要求のスコープ。)|  
+|OAuth2Scope_ImplicitGrant_AuthorizationRequest|省略可能。 The scope of the access request. (アクセス要求のスコープ。)|  
 |OAuth2Scope_ImplicitGrant_AuthorizationResponse|OPTIONAL if identical to the scope requested by the client; otherwise, REQUIRED. (クライアントによって要求されたスコープと同じ場合は省略可能、それ以外の場合は必須。)|  
-|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenRequest|OPTIONAL. (省略可能。) The scope of the access request. (アクセス要求のスコープ。)|  
+|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenRequest|省略可能。 The scope of the access request. (アクセス要求のスコープ。)|  
 |OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenResponse|OPTIONAL, if identical to the scope requested by the client; otherwise, REQUIRED. (クライアントによって要求されたスコープと同じ場合は省略可能、それ以外の場合は必須。)|  
 |OAuth2State_AuthorizationCodeGrant_AuthorizationErrorResponse|REQUIRED if the "state" parameter was present in the client authorization request. ("state" パラメーターがクライアント承認要求に存在する場合は必須。)  The exact value received from the client. (クライアントから受け取った正確な値。)|  
 |OAuth2State_AuthorizationCodeGrant_AuthorizationRequest|RECOMMENDED. (推奨。) An opaque value used by the client to maintain state between the request and callback. (クライアントが要求とコールバックの間で状態を維持するために使用する非透過的な値。)  The authorization server includes this value when redirecting the user-agent back to the client. (承認サーバーは、ユーザー エージェントをクライアントにリダイレクトするときにこの値を含めます。)  The parameter SHOULD be used for preventing cross-site request forgery. (クロスサイト リクエスト フォージェリを防ぐために、このパラメーターを使用してください。)|  
@@ -302,7 +302,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |OAuth2UnsupportedTokenType|Token type '{0}' is not supporetd. (トークンの種類 '{0}' はサポートされていません。)|  
 |OAuth2InvalidState|Invalid response from authorization server (承認サーバーからの応答が無効です)|  
 |OAuth2GrantType_AuthorizationCode|Authorization code (承認コード)|  
-|OAuth2GrantType_Implicit|暗黙|  
+|OAuth2GrantType_Implicit|Implicit|  
 |OAuth2GrantType_ClientCredentials|クライアントの資格情報|  
 |OAuth2GrantType_ResourceOwnerPassword|Resource owner password (リソース所有者のパスワード)|  
 |WebDocumentation302Code|302 Found (302 検出)|  
@@ -331,7 +331,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |SectionHeadingCodeSamples|コード サンプル|  
 |TextblockOpenidConnectHeaderDescription|OpenID Connect ID token obtained from <i\>{0}</i\>. (OpenID Connect ID トークンを <i>{0}</i> から取得しました。) Supported grant types: <i\>{1}</i\>. (サポートされている付与タイプ: <i>{0}</i>。)|  
   
-###  <a name="ErrorPageStrings"></a> ErrorPageStrings  
+###  <a name="errorpagestrings"></a><a name="ErrorPageStrings"></a> ErrorPageStrings  
   
 |名前|Text|  
 |----------|----------|  
@@ -349,7 +349,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |TitlePotentialCause|Potential cause (潜在的な原因)|  
 |TitlePotentialSolution|It's possibly just a temporary issue, a few things to try (単に一時的な問題である可能性があります。次を実行してみてください)|  
   
-###  <a name="IssuesStrings"></a> IssuesStrings  
+###  <a name="issuesstrings"></a><a name="IssuesStrings"></a> IssuesStrings  
   
 |名前|Text|  
 |----------|----------|  
@@ -360,7 +360,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |WebIssuesSignIn|sign in|  
 |WebIssuesStatusReportedBy|Status: {0} &#124; Reported by {1} (状態: {0} &#124; 報告者: {0})|  
   
-###  <a name="NotFoundStrings"></a> NotFoundStrings  
+###  <a name="notfoundstrings"></a><a name="NotFoundStrings"></a> NotFoundStrings  
   
 |名前|Text|  
 |----------|----------|  
@@ -375,7 +375,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |TitlePotentialCause|Potential cause (潜在的な原因)|  
 |TitlePotentialSolution|Potential solution (可能性のある解決方法)|  
   
-###  <a name="ProductDetailsStrings"></a> ProductDetailsStrings  
+###  <a name="productdetailsstrings"></a><a name="ProductDetailsStrings"></a> ProductDetailsStrings  
   
 |名前|Text|  
 |----------|----------|  
@@ -386,9 +386,9 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |WebProductsYouAreNotSubscribed|You are subscribed to this product. (この製品をサブスクライブしています。)|  
 |WebProductsYouRequestedSubscription|You requested subscription to this product. (この製品に対するサブスクリプションを要求しました。)|  
 |ErrorYouNeedToAgreeWithLegalTerms|You must agree to the Terms of Use before you can proceed. (続行する前に、使用条件に同意する必要があります。)|  
-|ButtonLabelAddSubscription|[サブスクリプションの追加]|  
+|ButtonLabelAddSubscription|サブスクリプションを追加する|  
 |LinkLabelChangeSubscriptionName|change (変更)|  
-|ButtonLabelConfirm|確認|  
+|ButtonLabelConfirm|Confirm|  
 |TextblockMultipleSubscriptionsCount|You have {0} subscriptions to this product: (この製品のサブスクリプションが {0} 個があります:)|  
 |TextblockSingleSubscriptionsCount|You have {0} subscription to this product: (この製品のサブスクリプションが {0} 個があります:)|  
 |TextblockSingleApisCount|This product contains {0} API: (この製品には {0} 個の API が含まれています:)|  
@@ -397,13 +397,13 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |TextblockSubscriptionDescription|A new subscription will be created as follows: (新しいサブスクリプションは次のように作成されます:)|  
 |TextblockSubscriptionLimitReached|Subscriptions limit reached. (サブスクリプション数の制限に達しました。)|  
   
-###  <a name="ProductsStrings"></a> ProductsStrings  
+###  <a name="productsstrings"></a><a name="ProductsStrings"></a> ProductsStrings  
   
 |名前|Text|  
 |----------|----------|  
 |PageTitleProducts|製品|  
   
-###  <a name="ProviderInfoStrings"></a> ProviderInfoStrings  
+###  <a name="providerinfostrings"></a><a name="ProviderInfoStrings"></a> ProviderInfoStrings  
   
 |名前|Text|  
 |----------|----------|  
@@ -411,7 +411,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |TextboxExternalIdentitiesSigninInvitation|Alternatively, sign in with (次のアカウントでサインインすることもできます)|  
 |TextboxExternalIdentitiesSigninInvitationPrimary|Sign in with: (次のアカウントでサインイン:)|  
   
-###  <a name="SigninResources"></a> SigninResources  
+###  <a name="signinresources"></a><a name="SigninResources"></a> SigninResources  
   
 |名前|Text|  
 |----------|----------|  
@@ -434,7 +434,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |ValidationErrorEmailInvalid|Invalid e-mail address (メール アドレスが無効です)|  
 |TextboxLabelEmail|Email|  
 |ValidationErrorEmailRequired|Email is required. (メール アドレスは必須です。)|  
-|WebAuthenticationErrorNoticeHeader|Error|  
+|WebAuthenticationErrorNoticeHeader|エラー|  
 |WebAuthenticationFieldLengthErrorMessage|{0} must be a maximum length of {1} ({0} は最大長 {0} である必要があります)|  
 |TextboxLabelEmailFirstName|名|  
 |ValidationErrorFirstNameRequired|First name is required. (名が必要です。)|  
@@ -456,9 +456,9 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |WebAuthenticationPasswordChangedNotice|Your password was successfully updated (パスワードは正常に更新されました)|  
 |WebAuthenticationPasswordChangedNoticeTitle|Password updated (パスワードが更新されました)|  
 |WebAuthenticationPasswordCompareErrorMessage|Passwords don't match (パスワードが一致しません)|  
-|WebAuthenticationPasswordConfirmLabel|パスワードの確認|  
+|WebAuthenticationPasswordConfirmLabel|[パスワードの確認入力]|  
 |ValidationErrorPasswordInvalidDetailed|Password is too weak. (パスワードが脆弱すぎます。)|  
-|WebAuthenticationPasswordLabel|パスワード|  
+|WebAuthenticationPasswordLabel|Password|  
 |ValidationErrorPasswordRequired|Password is required. (パスワードが必要です。)|  
 |WebAuthenticationPasswordResetSendNotice|Change password confirmation email is on the way to {0}. (パスワードの変更確認メールは {0} に送信中です。) Please follow the instructions within the email to continue your password change process. (メールに記載されている指示に従って、パスワードの変更プロセスを続行してください。)|  
 |WebAuthenticationPasswordResetSendNoticeHeader|Your password reset request was successfully processed (パスワードのリセット要求が正常に処理されました)|  
@@ -477,7 +477,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |ButtonLabelChangePassword|パスワードの変更|  
 |ButtonLabelChangeAccountInfo|Change account information (アカウント情報の変更)|  
 |ButtonLabelCloseAccount|Close account (アカウントの削除)|  
-|WebAuthenticationInvalidCaptchaErrorMessage|Text entered doesn't match text on the picture. (入力されたテキストが、画像のテキストと一致しません。) もう一度実行してください。|  
+|WebAuthenticationInvalidCaptchaErrorMessage|Text entered doesn't match text on the picture. (入力されたテキストが、画像のテキストと一致しません。) 再試行してください。|  
 |ValidationErrorCredentialsInvalid|Email or password is invalid. (メール アドレスまたはパスワードが無効です。) Please correct the errors and try again. (エラーを修正してやり直してください。)|  
 |WebAuthenticationRequestIsNotValid|Request is not valid (要求は無効です)|  
 |WebAuthenticationUserIsNotConfirm|Please confirm your registration before attempting to sign in. (サインインする前に登録を確認してください。)|  
@@ -507,7 +507,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |DialogHeadingTermsOfUse|使用条件|  
 |ValidationMessageConsentNotAccepted|You must agree to the Terms of Use before you can proceed. (続行する前に、使用条件に同意する必要があります。)|  
   
-###  <a name="SigninStrings"></a> SigninStrings  
+###  <a name="signinstrings"></a><a name="SigninStrings"></a> SigninStrings  
   
 |名前|Text|  
 |----------|----------|  
@@ -519,7 +519,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |WebAuthenticationSigninTitle|サインイン|  
 |WebAuthenticationSignUpNow|今すぐサインアップ|  
   
-###  <a name="SignupStrings"></a> SignupStrings  
+###  <a name="signupstrings"></a><a name="SignupStrings"></a> SignupStrings  
   
 |名前|Text|  
 |----------|----------|  
@@ -529,7 +529,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |WebAuthenticationSigninNow|Sign in now (今すぐサインイン)|  
 |ButtonLabelSignup|サインアップ|  
   
-###  <a name="SubscriptionListStrings"></a> SubscriptionListStrings  
+###  <a name="subscriptionliststrings"></a><a name="SubscriptionListStrings"></a> SubscriptionListStrings  
   
 |名前|Text|  
 |----------|----------|  
@@ -552,7 +552,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |PageTitleRenameSubscription|Rename subscription (サブスクリプションの名前変更)|  
 |SubscriptionPropertyLabelName|サブスクリプション名|  
   
-###  <a name="SubscriptionStrings"></a> SubscriptionStrings  
+###  <a name="subscriptionstrings"></a><a name="SubscriptionStrings"></a> SubscriptionStrings  
   
 |名前|Text|  
 |----------|----------|  
@@ -563,14 +563,14 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |InformationMessageKeyWasRegenerated|Are you sure that you want to regenerate this key? (このキーを再生成しますか?)|  
 |ButtonLabelShowKey|表示|  
   
-###  <a name="UpdateProfileStrings"></a> UpdateProfileStrings  
+###  <a name="updateprofilestrings"></a><a name="UpdateProfileStrings"></a> UpdateProfileStrings  
   
 |名前|Text|  
 |----------|----------|  
 |ButtonLabelUpdateProfile|プロファイルの更新|  
 |PageTitleUpdateProfile|Update account information (アカウント情報の更新)|  
   
-###  <a name="UserProfile"></a> UserProfile  
+###  <a name="userprofile"></a><a name="UserProfile"></a> UserProfile  
   
 |名前|Text|  
 |----------|----------|  
@@ -594,7 +594,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |ValidationMessageSubscriptionNameRequired|サブスクリプション名を空にすることはできません。|  
 |ApiManagementUserLimitReached|This service has reached the maximum number of allowed users. (このサービスでは、許可されたユーザーの最大数に達しました。) Please upgrade to a higher pricing tier. (より上位の価格レベルにアップグレードしてください。)|  
   
-##  <a name="glyphs"></a> グリフ リソース  
+##  <a name="glyph-resources"></a><a name="glyphs"></a> グリフ リソース  
  API Management 開発者ポータル テンプレートでは、[Bootstrap の glyphicon](https://getbootstrap.com/components/#glyphicons) のページからグリフを使用できます。 このグリフのセットには、[Glyphicon](https://glyphicons.com/) の Halflings セットのフォント形式の 250 個を超えるグリフが含まれています。 このセットからグリフを使用するには、次の構文を使用してください。  
   
 ```html  
@@ -603,5 +603,5 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
  グリフの完全な一覧については、[Bootstrap の Glyphicon](https://getbootstrap.com/components/#glyphicons)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.custom: mvc
 ms.openlocfilehash: 154238eae78ce44b9fc91058e58d9a11e254c0f9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74171776"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップする
@@ -113,7 +113,7 @@ Unregister-AzRecoveryServicesBackupContainer -Container $namedContainer
 Remove-AzRecoveryServicesVault -Vault $vault1
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * PowerShell での Azure VM のバックアップと復元に関するより詳細なチュートリアルを[確認](backup-azure-vms-automation.md)する。
 * [Azure VM を管理および監視する](backup-azure-manage-vms.md)

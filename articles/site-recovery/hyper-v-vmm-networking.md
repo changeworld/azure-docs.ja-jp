@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73961421"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>フェールオーバー後にセカンダリ オンプレミス サイトに接続するように IP アドレス指定を設定する
@@ -125,7 +125,7 @@ VM の保護を有効にしたら、以下のサンプル スクリプトを使�
 ![異なる IP アドレス - フェールオーバー後](./media/hyper-v-vmm-networking/network-design11.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [フェールオーバーの実行](hyper-v-vmm-failover-failback.md)
 

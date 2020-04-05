@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/14/2019
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357550"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234999"
 ---
 # <a name="manage-your-function-app"></a>お使いの関数アプリの管理 
 
@@ -33,7 +33,7 @@ Azure Functions では、関数アプリに個々の関数の実行コンテキ�
 
 関数アプリの管理に必要なすべての機能には、概要ページからアクセスできます (特に **[[アプリケーションの設定]](#settings)** と **[[プラットフォーム機能]](#platform-features)** )。
 
-## <a name="settings"></a>アプリケーションの設定
+## <a name="application-settings"></a><a name="settings"></a>アプリケーションの設定
 
 **[アプリケーションの設定]** タブでは、関数アプリに使用される設定を管理します。 これらの設定は暗号化されて格納されているため、ポータルで値を表示するには **[値を表示する]** を選択する必要があります。 また、Azure CLI を使用してアプリケーション設定にアクセスすることもできます。
 
@@ -87,7 +87,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 App Service の設定を使用する方法の詳細については、[Azure App Service の設定の構成](../app-service/configure-common.md)に関するページをご覧ください。
 
-### <a name="editor"></a>App Service Editor
+### <a name="app-service-editor"></a><a name="editor"></a>App Service Editor
 
 ![App Service Editor](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
@@ -95,7 +95,7 @@ App Service Editor は、JSON 構成ファイルとコード ファイルを変�
 
 お使いの関数は、お使いのローカル コンピューターで開発することを検討することをお勧めします。 ローカルで開発し、Azure に発行する場合、お使いのプロジェクト ファイルはポータルで読み取り専用になります。 詳細については、「[Azure Functions をローカルでコーディングしてテストする](functions-develop-local.md)」を参照してください。
 
-### <a name="console"></a>コンソール
+### <a name="console"></a><a name="console"></a>コンソール
 
 ![関数アプリ コンソール](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
 
@@ -103,18 +103,18 @@ App Service Editor は、JSON 構成ファイルとコード ファイルを変�
 
 ローカルで開発する場合、[Azure Functions Core Tools](functions-run-local.md) および [Azure CLI] を使用することをお勧めします。
 
-### <a name="kudu"></a>高度なツール (Kudu)
+### <a name="advanced-tools-kudu"></a><a name="kudu"></a>高度なツール (Kudu)
 
 ![Kudu の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-App Service 用の高度なツール (Kudu とも呼ばれます) を使用すると、関数アプリの高度な管理機能にアクセスできます。 Kudu から、システム情報、アプリ設定、環境変数、サイト拡張機能、HTTP ヘッダー、およびサーバー変数を管理します。 また、`https://<myfunctionapp>.scm.azurewebsites.net/` など、関数アプリの SCM エンドポイントにアクセスして、**Kudu** を起動することもできます 
+App Service 用の高度なツール (Kudu とも呼ばれます) を使用すると、関数アプリの高度な管理機能にアクセスできます。 Kudu から、システム情報、アプリ設定、環境変数、サイト拡張機能、HTTP ヘッダー、およびサーバー変数を管理します。 また、 **など、関数アプリの SCM エンドポイントにアクセスして、** Kudu`https://<myfunctionapp>.scm.azurewebsites.net/` を起動することもできます 
 
 
-### <a name="deployment"></a>デプロイ センター
+### <a name="deployment-center"></a><a name="deployment"></a>デプロイ センター
 
 ソース管理ソリューションを使用してお使いの関数コードを開発および管理する場合、デプロイ センターを使用すると、ソース管理からビルドおよびデプロイをすることができます。 更新を行う場合、お使いのプロジェクトは Azure にビルドされ、デプロイされます。 詳細については、「[Azure Functions のデプロイ テクノロジ](functions-deployment-technologies.md)」を参照してください。
 
-### <a name="cors"></a>クロス オリジン リソース共有
+### <a name="cross-origin-resource-sharing"></a><a name="cors"></a>クロス オリジン リソース共有
 
 最新のブラウザーでは、クライアントで悪意のあるコードが実行されるのを防ぐために、Web アプリケーションから別のドメインで実行されるリソースへの要求をブロックします。 [クロス オリジン リソース共有 (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) を使用すると、お使いの関数アプリでどこのオリジンがエンドポイントを呼び出せるかを `Access-Control-Allow-Origin` ヘッダーで宣言できます。
 
@@ -136,7 +136,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 
 現在許可されているオリジンを列挙するには、[`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) コマンドを使用します。
 
-### <a name="auth"></a>認証
+### <a name="authentication"></a><a name="auth"></a>認証
 
 ![関数アプリの認証を構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 

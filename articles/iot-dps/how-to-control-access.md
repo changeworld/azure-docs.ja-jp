@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453804"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237523"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のアクセスを制御する
 
@@ -34,7 +34,7 @@ ms.locfileid: "75453804"
 
 * **共有アクセス承認ポリシー**。 共有アクセス ポリシーにより、[アクセス許可](#device-provisioning-service-permissions)を自由に組み合わせて付与できます。 ポリシーは、[Azure portal][lnk-management-portal] 上で定義することも、[Device Provisioning Service REST API][lnk-resource-provider-apis] を使用してプログラムから定義することもできます。 新しく作成されたプロビジョニング サービスには、次の既定のポリシーがあります。
 
-* **provisioningserviceowner**:すべてのアクセス許可を持つポリシー。
+* **provisioningserviceowner**: すべてのアクセス許可を持つポリシー。
 
 > [!NOTE]
 > 詳細については、[権限](#device-provisioning-service-permissions)に関する項目をご覧ください。
@@ -77,14 +77,14 @@ Device Provisioning Service では、サービスの認証にセキュリティ 
 
 | 値 | 説明 |
 | --- | --- |
-| {signature} |HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。 **重要**:キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。|
+| {signature} |HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。 **重要**: キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。|
 | {expiry} |1970 年 1 月 1 日の 00 時 00 分 00 秒 UTC からのエポック秒で表される UTF8 文字列。 |
 | {URL-encoded-resourceURI} | 小文字のリソース URI の小文字の URL エンコード。 IoT Device Provisioning Service のホスト名 (プロトコルなし) で始まる、このトークンを使用してアクセスできるエンドポイントの (セグメント単位の) URI プレフィックス。 たとえば、「 `mydps.azure-devices-provisioning.net` 」のように入力します。 |
 | {policyName} |このトークンの参照先となる共有アクセス ポリシーの名前。 |
 
 **プレフィックスに関する注意事項**: URI プレフィックスは、文字単位ではなくセグメント単位で計算されます。 たとえば、`/a/b` は `/a/b/c` のプレフィックスであり、`/a/bc` のプレフィックスではありません。
 
-次の Node.js スニペットは、`resourceUri, signingKey, policyName, expiresInMins` の入力からトークンを計算する **generateSasToken** という名前の関数を示しています。 以降のセクションでは、さまざまなトークンの使用例の各種入力を初期化する方法について詳しく説明します。
+次の Node.js スニペットは、**の入力からトークンを計算する**generateSasToken`resourceUri, signingKey, policyName, expiresInMins` という名前の関数を示しています。 以降のセクションでは、さまざまなトークンの使用例の各種入力を初期化する方法について詳しく説明します。
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {

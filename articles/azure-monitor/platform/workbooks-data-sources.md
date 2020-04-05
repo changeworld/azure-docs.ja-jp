@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658373"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226271"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor ブックのデータ ソース
 
@@ -77,7 +77,7 @@ Azure Monitor には、Windows または Linux ゲスト オペレーティン�
 
 ## <a name="azure-data-explorer-preview"></a>Azure Data Explorer (プレビュー)
 
-強力な [Kusto](https://docs.microsoft.com/azure/kusto/query/index) クエリ言語を使用できる [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/) クラスターからのクエリがブックでサポートされるようになりました。   
+強力な [Kusto](https://docs.microsoft.com/azure/data-explorer/) クエリ言語を使用できる [Azure Data Explorer](https://docs.microsoft.com/azure/kusto/query/index) クラスターからのクエリがブックでサポートされるようになりました。   
 
 ![Kusto クエリ ウィンドウのスクリーンショット](./media/workbooks-overview/data-explorer.png)
 

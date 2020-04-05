@@ -5,10 +5,10 @@ keywords: Ansible, Azure, DevOps, Bash, プレイブック, 仮想マシン, 仮
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.openlocfilehash: f784419736854095cc1bc5da14f3867ac3f7eb12
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155826"
 ---
 # <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>チュートリアル:Ansible を使用して Azure Shared Image Gallery から VM または仮想マシン スケール セットを作成する
@@ -364,7 +364,7 @@ ansible-playbook 06-get-info.yml
 ansible-playbook 07-delete-gallery.yml
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事で作成したリソースが不要になったら、削除してください。 
 
@@ -386,7 +386,7 @@ ansible-playbook 07-delete-gallery.yml
         state: absent
 ```
 
-以下に、サンプルのプレイブックを使用する際に考慮すべき重要な点をいくつか示します。
+以下に、サンプル プレイブックを使用する際に考慮すべき重要な点をいくつか示します。
 
 - `{{ resource_group_name }}` プレースホルダーは実際のリソース グループの名前に置き換えます。
 - 指定した 2 つのリソース グループ内のすべてのリソースが削除されます。
@@ -397,7 +397,7 @@ ansible-playbook 07-delete-gallery.yml
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Azure 上の Ansible](/azure/ansible/)

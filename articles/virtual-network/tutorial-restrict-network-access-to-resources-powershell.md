@@ -18,17 +18,17 @@ ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 1d0cf65bb39dbda2b7451c50629ff8949c5507cb
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185537"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>PowerShell を使用して仮想ネットワーク サービス エンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-仮想ネットワーク サービス エンドポイントを使うと、一部の Azure サービス リソースへのネットワーク アクセスを、仮想ネットワーク サブネットに制限できます。 また、リソースに対するインターネット アクセスを排除することもできます。 サービス エンドポイントにより、使用している仮想ネットワークからサポートされている Azure サービスへの直接接続が提供されるため、ご自身の仮想ネットワークのプライベート アドレス スペースを使用して、Azure サービスにアクセスできるようになります。 サービス エンドポイントを介して Azure リソースに送信されるトラフィックは、常に Microsoft Azure のバックボーン ネットワーク上に留まります。 この記事では、次のことについて説明します:
+仮想ネットワーク サービス エンドポイントを使うと、一部の Azure サービス リソースへのネットワーク アクセスを、仮想ネットワーク サブネットに制限できます。 また、リソースに対するインターネット アクセスを排除することもできます。 サービス エンドポイントにより、使用している仮想ネットワークからサポートされている Azure サービスへの直接接続が提供されるため、ご自身の仮想ネットワークのプライベート アドレス スペースを使用して、Azure サービスにアクセスできるようになります。 サービス エンドポイントを介して Azure リソースに送信されるトラフィックは、常に Microsoft Azure のバックボーン ネットワーク上に留まります。 この記事では、次のことについて説明します。
 
 * 1 つのサブネットを含む仮想ネットワークを作成する
 * サブネットを追加し、サービス エンドポイントを有効にする
@@ -241,7 +241,7 @@ Add-AzStorageAccountNetworkRule `
 
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-ストレージ アカウントへのネットワーク アクセスをテストするには、各サブネットに VM をデプロイします。
+ストレージ アカウントへのネットワーク アクセスをテストするには、各サブネットに VM を展開します。
 
 ### <a name="create-the-first-virtual-machine"></a>最初の仮想マシンを作成する
 
@@ -299,7 +299,7 @@ mstsc /v:<publicIpAddress>
 
 リモート デスクトップ プロトコル (.rdp) ファイルが作成され、お使いのコンピューターにダウンロードされます。 ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、 **[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、 **[その他]** 、 **[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。 **[OK]** を選択します。 サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、 **[はい]** または **[続行]** を選択して接続処理を続行します。
 
-*myVmPrivate* VM で、PowerShell を使用して、Azure ファイル共有を Z ドライブにマップします。 次のコマンドを実行する前に、`<storage-account-key>` と `<storage-account-name>` を、ご自身で指定した値、または「[ストレージ アカウントの作成](#create-a-storage-account)」で取得した値で置き換えます。
+*myVmPrivate* VM で、PowerShell を使って、Azure ファイル共有を Z ドライブにマップします。 次のコマンドを実行する前に、`<storage-account-key>` と `<storage-account-name>` を、ご自身で指定した値、または「[ストレージ アカウントの作成](#create-a-storage-account)」で取得した値で置き換えます。
 
 ```powershell
 $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
@@ -352,7 +352,7 @@ $credential = New-Object System.Management.Automation.PSCredential -ArgumentList
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
 ```
 
-共有へのアクセスが拒否され、`New-PSDrive : Access is denied` エラーが発生します。 *myVmPublic* VM が *Public* サブネットにデプロイされているため、アクセスが拒否されました。 *Public* サブネットでは、Azure Storage に対してサービス エンドポイントが有効になっていません。ストレージ アカウントが許可しているのは *Public* サブネットからではなく、*Private* サブネットからのネットワーク アクセスです。
+共有へのアクセスが拒否され、`New-PSDrive : Access is denied` エラーが発生します。 *myVmPublic* VM が *Public* サブネットに展開されているため、アクセスが拒否されました。 *Public* サブネットでは、Azure Storage に対してサービス エンドポイントが有効になっていません。ストレージ アカウントが許可しているのは *Public* サブネットからではなく、*Private* サブネットからのネットワーク アクセスです。
 
 *myVmPublic* VM へのリモート デスクトップ セッションを閉じます。
 
@@ -364,9 +364,9 @@ Get-AzStorageFile `
   -Context $storageContext
 ```
 
-アクセスが拒否され、*Get-AzStorageFile :リモート サーバーがエラー「(403) 許可されていません」を返しました。HTTP 状態コード:403 -HTTP エラー メッセージ:"This request is not authorized to perform this operation (この要求には、この操作を実行する権限がありません)* " というエラーが発生します。これは、使っているコンピューターが *MyVirtualNetwork* 仮想ネットワークの *Private* サブネットにないためです。
+アクセスが拒否され、*Get-AzStorageFile :リモート サーバーがエラー(403) 禁止。HTTP 状態コード: 403 -HTTP エラー メッセージ:"This request is not authorized to perform this operation (この要求には、この操作を実行する権限がありません)* " というエラーが発生します。これは、使っているコンピューターが *MyVirtualNetwork* 仮想ネットワークの *Private* サブネットにないためです。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要なくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。
 
@@ -374,7 +374,7 @@ Get-AzStorageFile `
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、仮想ネットワーク サブネットのサービス エンドポイントを有効にしました。 複数の Azure サービスでデプロイされているリソースに対して、サービス エンドポイントを有効にできることを学習しました。 Azure ストレージ アカウントを作成し、そのストレージ アカウントへのネットワーク アクセスを、仮想ネットワーク サブネット内のリソースだけに制限しました。 サービス エンドポイントの詳細については、[サービス エンドポイントの概要](virtual-network-service-endpoints-overview.md)と[サブネットの管理](virtual-network-manage-subnet.md)に関するページをご覧ください。
 

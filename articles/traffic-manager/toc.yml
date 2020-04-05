@@ -95,7 +95,7 @@
           href: traffic-manager-subnet-override-cli.md
         - name: サブネットのオーバーライドの構成 - PowerShell
           href: traffic-manager-subnet-override-powershell.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: Azure Traffic Manager での機能低下状態のトラブルシューティング
           href: traffic-manager-troubleshooting-degraded.md
@@ -119,14 +119,6 @@
       href: 'https://msdn.microsoft.com/library/mt163667.aspx'
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.network/trafficmanagerprofiles
-- name: 関連項目
-  items:
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: Load Balancer
-      href: /azure/load-balancer/
-    - name: Azure DNS
-      href: /azure/dns/
 - name: リソース
   items:
     - name: Azure のロードマップ

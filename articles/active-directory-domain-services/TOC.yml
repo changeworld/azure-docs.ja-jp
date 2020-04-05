@@ -91,6 +91,8 @@
           href: password-policy.md
         - name: セキュリティ監査イベントを有効にする
           href: security-audit-events.md
+        - name: Azure Monitor ブックを使用した監査イベントの分析
+          href: use-azure-monitor-workbooks.md
     - name: VM のドメイン参加
       items:
         - name: テンプレートによる Windows Server VM

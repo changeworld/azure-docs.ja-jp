@@ -6,11 +6,11 @@ ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
 ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261553"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290110"
 ---
 # <a name="durable-orchestrations"></a>持続的オーケストレーション
 
@@ -57,7 +57,7 @@ Durable Functions では、イベント ソーシングが透過的に使用さ�
 
 Durable Task Framework のイベント ソーシング動作は、記述したオーケストレーター関数のコードと密接に結び付けられています。 次のオーケストレーター関数のような、アクティビティ チェーン オーケストレーター関数があるものとします。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -75,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -131,22 +131,22 @@ Durable Task Framework では、`await` (C#) または `yield` (JavaScript) ス�
 
 列の値に関する注意点:
 
-* **PartitionKey**:オーケストレーションのインスタンス ID が含まれます。
-* **EventType**:イベントの種類を表します。 次のいずれかの種類です。
-  * **OrchestrationStarted**:オーケストレーター関数が await から再実行されました。または初回実行中です。 `Timestamp` 列は、`CurrentUtcDateTime` (.NET) および `currentUtcDateTime` (JavaScript) API の決定論的な値を設定するために使用されます。
-  * **ExecutionStarted**:オーケストレーター関数は初めて実行を開始しました。 このイベントには、`Input` 列の関数入力も含まれています。
-  * **TaskScheduled**:アクティビティ関数がスケジュールされました。 アクティビティ関数の名前は `Name` 列でキャプチャされます。
-  * **TaskCompleted**:アクティビティ関数が完了しました。 関数の結果は `Result` 列に含まれます。
-  * **TimerCreated**:持続的タイマーが作成されました。 `FireAt` 列には、タイマーが期限切れになるスケジュールされた UTC 時間が含まれます。
-  * **TimerFired**:持続的タイマーが開始されました。
-  * **EventRaised**:外部イベントがオーケストレーション インスタンスに送信されました。 `Name` 列は、イベントの名前をキャプチャし、`Input` 列は、イベントのペイロードをキャプチャします。
-  * **OrchestratorCompleted**:オーケストレーター関数が待機状態になりました。
-  * **ContinueAsNew**:オーケストレーター関数が完了し、新しい状態で再実行されました。 `Result` 列には、再起動されたインスタンスで入力として使用される値が含まれます。
-  * **ExecutionCompleted**:オーケストレーター関数が実行され、完了 (または失敗) しました。 関数またはエラーの詳細の出力は `Result` 列に格納されます。
-* **[タイムスタンプ]** : 履歴イベントの UTC タイムスタンプ。
-* **Name**:呼び出された関数の名前。
-* **入力**:関数の JSON 形式の入力。
-* **Result**:関数の出力、つまり、戻り値。
+* **PartitionKey**: オーケストレーションのインスタンス ID が含まれます。
+* **EventType**: イベントの種類を表します。 次のいずれかの種類です。
+  * **OrchestrationStarted**: オーケストレーター関数が await から再実行されました。または初回実行中です。 `Timestamp` 列は、`CurrentUtcDateTime` (.NET) および `currentUtcDateTime` (JavaScript) API の決定論的な値を設定するために使用されます。
+  * **ExecutionStarted**: オーケストレーター関数は初めて実行を開始しました。 このイベントには、`Input` 列の関数入力も含まれています。
+  * **TaskScheduled**: アクティビティ関数がスケジュールされました。 アクティビティ関数の名前は `Name` 列でキャプチャされます。
+  * **TaskCompleted**: アクティビティ関数が完了しました。 関数の結果は `Result` 列に含まれます。
+  * **TimerCreated**: 持続的タイマーが作成されました。 `FireAt` 列には、タイマーが期限切れになるスケジュールされた UTC 時間が含まれます。
+  * **TimerFired**: 持続的タイマーが開始されました。
+  * **EventRaised**: 外部イベントがオーケストレーション インスタンスに送信されました。 `Name` 列は、イベントの名前をキャプチャし、`Input` 列は、イベントのペイロードをキャプチャします。
+  * **OrchestratorCompleted**: オーケストレーター関数が待機状態になりました。
+  * **ContinueAsNew**: オーケストレーター関数が完了し、新しい状態で再実行されました。 `Result` 列には、再起動されたインスタンスで入力として使用される値が含まれます。
+  * **ExecutionCompleted**: オーケストレーター関数が実行され、完了 (または失敗) しました。 関数またはエラーの詳細の出力は `Result` 列に格納されます。
+* **Timestamp**: 履歴イベントの UTC タイムスタンプ。
+* **Name**: 呼び出された関数の名前。
+* **Input**: 関数の JSON 形式の入力。
+* **Result**: 関数の出力、つまり、戻り値。
 
 > [!WARNING]
 > これはデバッグ ツールとしては便利ですが、このテーブルにあまり依存しないようにしてください。 Durable Functions 拡張機能の刷新に伴って変更される可能性があります。
@@ -188,7 +188,7 @@ Durable Task Framework では、`await` (C#) または `yield` (JavaScript) ス�
 
 ### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>重要なセクション (Durable Functions 2.x、現在 .NET のみ)
 
-オーケストレーションのインスタンスはシングルスレッドであるため、オーケストレーションの "*内部*" の競合状態について考慮する必要はありません。 ただし、オーケストレーションから外部システムとやりとりする場合、競合状態が発生する可能性があります。 外部システムと相互作用するときの競合状態を軽減するため、オーケストレーター関数では .NET の `LockAsync` メソッドを使用して "*クリティカル セクション*" を定義できます。
+オーケストレーションのインスタンスはシングルスレッドであるため、オーケストレーションの "*内部*" の競合状態について考慮する必要はありません。 ただし、オーケストレーションから外部システムとやりとりする場合、競合状態が発生する可能性があります。 外部システムと相互作用するときの競合状態を軽減するため、オーケストレーター関数では .NET の  *メソッドを使用して "* クリティカル セクション`LockAsync`" を定義できます。
 
 次のサンプル コードで示すオーケストレーター関数では、クリティカル セクションが定義されています。 クリティカル セクションに入るには、`LockAsync` メソッドを使用します。 このメソッドでは、持続的にロック状態を管理する[持続エンティティ](durable-functions-entities.md)への 1 つ以上の参照を渡す必要があります。 クリティカル セクション内のコードを実行できるこのオーケストレーションのインスタンスは、一度に 1 つだけです。
 
@@ -216,7 +216,7 @@ public static async Task Synchronize(
 
 [オーケストレーター関数のコードの制約](durable-functions-code-constraints.md)に関する記事で説明されているように、オーケストレーター関数は I/O を行うことを許可されていません。 この制限に対する一般的な回避策は、I/O を行う必要があるすべてのコードをアクティビティ関数内にラップすることです。 外部システムとのやりとりが頻繁に行われるオーケストレーションでは、アクティビティ関数を使用して、HTTP の呼び出しを行い、その結果をオーケストレーションに返します。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 この一般的なパターンを簡略化するため、オーケストレーター関数では、`CallHttpAsync` メソッドを使用して、HTTP API を直接呼び出すことができます。
 
@@ -238,7 +238,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -265,9 +265,9 @@ module.exports = df.orchestrator(function*(context) {
 
 アクティビティ関数に複数のパラメーターを直接渡すことはできません。 オブジェクトの配列または複合オブジェクトを渡すことをお勧めします。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-.NET では、[ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) オブジェクトを使用することもできます。 次の例では、[C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) に追加された [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) の新機能を使用しています。
+.NET では、[ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) オブジェクトを使用することもできます。 次の例では、[C# 7](https://docs.microsoft.com/dotnet/csharp/tuples) に追加された [ValueTuples](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) の新機能を使用しています。
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -304,7 +304,7 @@ public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContex
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 #### <a name="orchestrator"></a>オーケストレーター
 

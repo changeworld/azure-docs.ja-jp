@@ -14,10 +14,10 @@ ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: aad4e3ff3df8b4aeecbbbee7883ba383b9fd0d9c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617259"
 ---
 # <a name="available-skus-for-hli"></a>HLI で利用可能な SKU
@@ -25,7 +25,7 @@ ms.locfileid: "77617259"
 リビジョン 3 スタンプに基づく SAP HANA on Azure (L インスタンス) サービスは、次の Azure リージョンで、複数の構成で使用できます。
 
 - 米国西部
-- 米国東部
+- East US
 - オーストラリア東部
 - オーストラリア南東部
 - 西ヨーロッパ
@@ -36,7 +36,7 @@ ms.locfileid: "77617259"
 リビジョン 4 スタンプに基づく SAP HANA on Azure (L インスタンス) サービスは、次の Azure リージョンで、複数の構成で使用できます。
 
 - 米国西部 2
-- 米国東部
+- East US
 - 米国中南部
 - 西ヨーロッパ
 - 北ヨーロッパ
@@ -47,12 +47,12 @@ ms.locfileid: "77617259"
 
 | SAP ソリューション | CPU | メモリ | ストレージ | 可用性 |
 | --- | --- | --- | --- | --- |
-| OLAP に合わせて最適化:SAP BW、BW/4HANA<br /> または SAP HANA (一般的な OLAP ワークロード向け) | SAP HANA on Azure S72<br /> – 2 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 36 CPU コアと 72 CPU スレッド |  768 GB |  3 TB | 提供終了 |
+| OLAP 用に最適化: SAP BW、BW/4HANA、<br /> または SAP HANA (一般的な OLAP ワークロード向け) | SAP HANA on Azure S72<br /> – 2 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 36 CPU コアと 72 CPU スレッド |  768 GB |  3 TB | 提供終了 |
 | --- | SAP HANA on Azure S144<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 72 CPU コアと 144 CPU スレッド |  1.5 TB |  6 TB | 提供終了 |
 | --- | SAP HANA on Azure S192<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 96 CPU コアと 192 CPU スレッド |  2.0 TB |  8 TB | 提供終了 |
 | --- | SAP HANA on Azure S224<br /> – 4 x Intel® Xeon® Platinum 8276 プロセッサ (Cascade lake とも呼ばれます)<br /> 112 CPU コアと 224 CPU スレッド |  3.0 TB |  6.3 TB | Revision3 スタンプと Revision4 スタンプで使用可能  |
 | --- | SAP HANA on Azure S384<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  4.0 TB |  16 TB | Revision4 スタンプで使用可能 |
-| OLTP に合わせて最適化:SAP Business Suite<br /> on SAP HANA または S/4HANA (OLTP)、<br /> 一般的な OLTP | SAP HANA on Azure S72m<br /> – 2 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 36 CPU コアと 72 CPU スレッド |  1.5 TB |  6 TB | 提供終了 |
+| OLTP 用に最適化: SAP Business Suite<br /> on SAP HANA または S/4HANA (OLTP)、<br /> 一般的な OLTP | SAP HANA on Azure S72m<br /> – 2 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 36 CPU コアと 72 CPU スレッド |  1.5 TB |  6 TB | 提供終了 |
 |---| SAP HANA on Azure S144m<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 72 CPU コアと 144 CPU スレッド |  3.0 TB |  12 TB | 提供終了 |
 |---| SAP HANA on Azure S192m<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 96 CPU コアと 192 CPU スレッド  |  4.0 TB |  16 TB | 提供終了 |
 | --- | SAP HANA on Azure S224m<br /> – 4 x Intel® Xeon® Platinum 8276 プロセッサ (Cascade lake とも呼ばれます)<br /> 112 CPU コアと 224 CPU スレッド |  6.0 TB |  10.5 TB | Revision3 スタンプと Revision4 スタンプで使用可能  |
@@ -98,9 +98,9 @@ SAP HANA TDIv5 の場合、SAP を使用してユーザー固有のサイズと�
 
 完全な HANA L インスタンス スタンプは、1 件のお客様専用に割り当てられるわけではありません。 これは、Azure にデプロイされたネットワーク ファブリック経由で接続されるコンピューティング リソースとストレージ リソースのラックにも当てはまります。 Azure などの HANA L インスタンス インフラストラクチャでは、次の 3 つのレベルで相互に分離されたお客様のさまざまな &quot;テナント&quot; をデプロイします。
 
-- **ネットワーク**:HANA L インスタンス スタンプ内の仮想ネットワークによって分離します。
+- **ネットワーク**: HANA L インスタンス スタンプ内の仮想ネットワークによって分離します。
 - **ストレージ**: ストレージ ボリュームが割り当てられており、テナント間でストレージ ボリュームを分離するストレージ仮想マシンによって分離します。
-- **コンピューティング**:サーバー ユニットを 1 つのテナント専用に割り当てます。 サーバー ユニットがハード パーティション分割やソフト パーティション分割されることはありません。 1 つのサーバー ユニットやホスト ユニットがテナント間で共有されることもありません。 
+- **コンピューティング**: サーバー ユニットを 1 つのテナント専用に割り当てます。 サーバー ユニットがハード パーティション分割やソフト パーティション分割されることはありません。 1 つのサーバー ユニットやホスト ユニットがテナント間で共有されることもありません。 
 
 異なるテナント間で HANA L インスタンス ユニットのデプロイが相互に表示されることはありません。 異なるテナントにデプロイされた HANA L インスタンス ユニットは、HANA L インスタンス スタンプ レベルで相互に直接通信することはできません。 HANA L インスタンス スタンプ レベルでは、同じテナント内の HANA L インスタンス ユニットだけが相互に通信できます。
 

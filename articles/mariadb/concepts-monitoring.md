@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 4f94ef66610b56d8843d59e5ca72a48143b742e8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.date: 3/18/2020
+ms.openlocfilehash: 20a2066dc0228fe9c2fee09387d96bf6aafeb32f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251390"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531976"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MariaDB には、サーバーの動作への洞察を提供する各種のメトリックが用意されています。
@@ -58,7 +58,7 @@ ms.locfileid: "78251390"
 
 ## <a name="planned-maintenance-notification"></a>計画メンテナンスの通知
 
-**計画メンテナンスの通知**によって、Azure Database for MariaDB に対して今後予定されているメンテナンスに関するアラートを受信できます。 これらの通知は [Service Health の](../service-health/overview.md)計画メンテナンスに統合されており、サブスクリプションに対してスケジュールされたすべてのメンテナンスを 1 か所に表示できます。 また、異なるリソースに対しては異なる連絡先が必要になる場合があるため、さまざまなリソース グループに対して適切なユーザーへの通知をスケールすることも可能です。 今後のメンテナンスに関する通知は、イベントの 72 時間前に受信します。
+**計画メンテナンスの通知**によって、Azure Database for MariaDB に対して今後予定されているメンテナンスに関するアラートを受信できます。 これらの通知は [Service Health の](../service-health/overview.md)計画メンテナンスに統合されており、サブスクリプションに対してスケジュールされたすべてのメンテナンスを 1 か所に表示できます。 また、異なるリソースに対しては異なる連絡先が必要になる場合があるため、さまざまなリソース グループに対して適切なユーザーへの通知をスケーリングすることも可能です。 今後のメンテナンスに関する通知は、イベントの 72 時間前に受信します。
 
 > [!Note]
 > Microsoft では、**計画メンテナンスの通知**の 72 時間での通知をすべてのイベントに対して提供するために、あらゆる試みを行います。 ただし、重大時やセキュリティ更新プログラムに関する場合には、イベントが迫ってから通知が送信されたり、あるいは通知が省略されたりすることがあります。
@@ -71,10 +71,10 @@ ms.locfileid: "78251390"
 4. 必須フィールドに入力します。 
 5. **[イベントの種類]** を選択し、 **[計画メンテナンス]** または **[すべて選択]** を選択します
 6. **[アクション グループ]** で、アラートの受信方法 (電子メールの取得、ロジック アプリのトリガーなど) を定義します。  
-7. 必ず、[ルールの作成時に有効にする] を [はい] に設定します。
+7. [ルールの作成時に有効にする] を確実に [はい] に設定します。
 8. **[アラート ルールの作成]** を選択してアラートを完成させます
 
-**サービス正常性アラート**を作成する方法の詳細な手順については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications.md)」を参照してください。
+**サービス正常性アラート**の作成方法の詳細な手順については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications.md)」を参照してください。
 
 > [!IMPORTANT]
 > 計画メンテナンスの通知は現在、プレビュー段階です

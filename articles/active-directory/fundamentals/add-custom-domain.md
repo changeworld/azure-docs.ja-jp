@@ -14,11 +14,11 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073524"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230447"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory ポータルを使用してカスタム ドメイン名を追加する
 
@@ -108,7 +108,7 @@ Azure AD でカスタム ドメイン名を検証できない場合は、次の�
 
 - **管理されていない Power BI テナントがないことを確認します。** ユーザーがセルフサービス サインアップから Power BI をアクティブ化し、組織に対して管理されていないテナントを作成した場合、PowerShell を使用して、内部管理者または外部管理者として管理を引き継ぐ必要があります。 詳細については、「[Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ](../users-groups-roles/domains-admin-takeover.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - ディレクトリに別の全体管理者を追加します。 詳細については、[ロールと管理者を割り当てる方法](active-directory-users-assign-role-azure-portal.md)に関するページを参照してください。
 

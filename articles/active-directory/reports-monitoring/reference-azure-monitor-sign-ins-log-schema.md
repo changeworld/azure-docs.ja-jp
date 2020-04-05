@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5525f2f8ab4ef83ba9c3aeeff945bc9d875600d5
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75748672"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Azure Monitor での Azure AD サインイン ログ スキーマを解釈する
@@ -164,7 +164,7 @@ ms.locfileid: "75748672"
 | CorrelationId | クライアントから渡される省略可能な GUID。 この値は、クライアント側の操作をサーバー側の操作と関連付けるために役立ちます。また、複数のサービスにまたがるログをトレースする場合に便利です。 |
 | ID | 要求を行ったときに提示されたトークンからの ID。 ユーザー アカウント、システム アカウント、またはサービス プリンシパルです。 |
 | Level | メッセージの種類を指定します。 監査の場合は常に *Informational* です。 |
-| Location | サインイン アクティビティの場所を指定します。 |
+| 場所 | サインイン アクティビティの場所を指定します。 |
 | Properties | サインインに関連付けられたすべてのプロパティを一覧表示します。詳しくは、[Microsoft Graph API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)をご覧ください。 読みやすくするため、このスキーマではサインイン リソースと同じ属性名を使用しています。
 
 ## <a name="next-steps"></a>次のステップ

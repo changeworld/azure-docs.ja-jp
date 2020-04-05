@@ -11,14 +11,14 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ed393f721d4461ebadea41f8dad707d4881865cd
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183907"
 ---
-# <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C:認証プロトコル
-Azure Active Directory B2C (Azure AD B2C) では、業界標準である次の 2 つのプロトコルをサポートすることによって Identity-as-a-Service (サービスとしての ID) 機能がアプリに提供されます:OpenID Connect と OAuth 2.0。 このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。
+# <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C: 認証プロトコル
+Azure Active Directory B2C (Azure AD B2C) では、業界標準のプロトコルである OpenID Connect と OAuth 2.0 をサポートすることによって Identity-as-a-Service (サービスとしての ID) 機能がアプリに提供されます。 このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。
 
 ここでは、オープン ソース ライブラリを使うのではなく、コードから直接 HTTP 要求を送信して処理する場合に役立つ情報を紹介します。 特定のプロトコルの詳細を学習する前に、このページを読むことをお勧めします。 ただし、Azure AD B2C について既に詳しい場合は、[プロトコル リファレンス ガイド](#protocols)にすぐに進んでもかまいません。
 
