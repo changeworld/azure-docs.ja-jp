@@ -15,7 +15,7 @@ ms.locfileid: "67712609"
 
 次の表に、`ApplicationInsights` セクションでサポートされている構成設定について説明します。
 
-|必須| Name | データ型 | 説明 |
+|必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
 |いいえ| `InstrumentationKey` | String | コンテナーのテレメトリ データの送信先の Application Insights インスタンスのインストルメンテーション キー。 詳細については、「[Application Insights for ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core)」を参照してください。 <br><br>例:<br>`InstrumentationKey=123456789`|
 
