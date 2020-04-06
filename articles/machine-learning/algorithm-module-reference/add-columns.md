@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 55fe3a2a4fd0f45b0873e47f29b7ea013558be40
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: f2e067f76d6ed7d89a38e9b8920c407f161969a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152484"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456780"
 ---
 # <a name="add-columns-module"></a>列の追加モジュール
 
@@ -33,9 +33,9 @@ ms.locfileid: "77152484"
 
     - 個々の列を選択して追加することはできません。 **列の追加**を使用すると、各データセットのすべての列が連結されます。 このため、列のサブセットのみを追加する場合は、"データセット内の列の選択" を使用して、必要な列でデータセットを作成します。
 
-3. パイプラインを実行します。
+3. パイプラインを送信します。
 
-### <a name="results"></a>[結果]
+### <a name="results"></a>結果
 パイプラインの実行後:
 
 - 新しいデータセットの最初の行を表示するには、 **[列の追加]** モジュールを右クリックして、[可視化] を選択します。 または、モジュールを選択し、右側のパネルの **[出力]** タブに切り替え、 **[Port outputs]\(ポートの出力\)** 内のヒストグラム アイコンをクリックして結果を可視化します。

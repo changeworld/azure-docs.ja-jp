@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: absha
-ms.openlocfilehash: b6f26eca0592017306eaefd3f5fecb544dc6fb36
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d0b28770940f0e1adeec16aa89cd087299bd4abc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932190"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132991"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Application Gateway で HTTP ヘッダーを書き換える
 
@@ -20,7 +20,7 @@ ms.locfileid: "68932190"
 
 クライアントとサーバーは、HTTP ヘッダーを使用して、要求または応答に追加の情報を渡すことができます。 これらのヘッダーの書き換えによって、HSTS/X-XSS-Protection などのセキュリティ関連ヘッダー フィールドの追加、機密情報が漏れる可能性のある応答ヘッダー フィールドの削除、X-Forwarded-For ヘッダーからのポート情報の削除など、重要なタスクを実現できます。
 
-Application Gateway は、要求/応答パケットがクライアントとバックエンド プールの間を移動する間に、HTTP 要求および応答ヘッダーを追加、削除、または更新することができます。 また、条件を追加して、特定の条件が満たされた場合にのみ、確実に特定のヘッダーが書き換えられるようにします。
+Application Gateway を使用することで、要求/応答パケットがクライアントとバックエンド プールの間を移動する間に、HTTP 要求および応答ヘッダーを追加、削除、または更新することができます。 また、条件を追加することで、特定の条件が満たされた場合にのみ、指定したヘッダーが確実に書き換えられるようにできます。
 
 Application Gateway は、要求と応答に関する追加情報を格納するための複数の[サーバー変数](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables)もサポートしています。 このため、簡単に強力な書き換え規則を作成できます。
 
@@ -64,7 +64,7 @@ Application Gateway では、サーバー変数を使用して、サーバー、
 | -------------------------- | :----------------------------------------------------------- |
 | add_x_forwarded_for_proxy  | X-Forwarded-For クライアント要求ヘッダー フィールドと、IP1、IP2、IP3 などの形式でそれに追加される `client_ip` 変数 (この表で後ほど説明します) が含まれています。 X-Forwarded-For フィールドがクライアント要求ヘッダーにない場合、`add_x_forwarded_for_proxy` 変数は `$client_ip` 変数と等しくなります。 この変数は、Application Gateway によって設定された X-Forwarded-For ヘッダーを書き換えるときに特に有用です。この方法により、ヘッダーにはポート情報は含まれず、IP アドレスのみが含まれるようになります。 |
 | ciphers_supported          | クライアントでサポートされている暗号の一覧。          |
-| ciphers_used               | 確立された SSL 接続で使用される暗号の文字列。 |
+| ciphers_used               | 確立された TLS 接続で使用される暗号の文字列。 |
 | client_ip                  | アプリケーション ゲートウェイが要求を受信したクライアントの IP アドレス。 アプリケーション ゲートウェイと元のクライアントの前にリバース プロキシがある場合、*client_ip* ではリバース プロキシの IP アドレスが返されます。 |
 | client_port                | クライアント ポート。                                                  |
 | client_tcp_rtt             | クライアント TCP 接続の情報。 TCP_INFO ソケット オプションをサポートするシステムで使用できます。 |
@@ -81,8 +81,8 @@ Application Gateway では、サーバー変数を使用して、サーバー、
 | request_uri                | 完全な元の要求 URI (引数を含む)。                   |
 | sent_bytes                 | クライアントに送信されたバイト数。                             |
 | server_port                | 要求を受け付けたサーバーのポート。                 |
-| ssl_connection_protocol    | 確立された SSL 接続のプロトコル。        |
-| ssl_enabled                | 接続が SSL モードで動作する場合は「オン」。 それ以外の場合は、空の文字列です。 |
+| ssl_connection_protocol    | 確立された TLS 接続のプロトコル。        |
+| ssl_enabled                | 接続が TLS モードで動作する場合は “オン”。 それ以外の場合は、空の文字列です。 |
 
 ## <a name="rewrite-configuration"></a>書き換えの構成
 
@@ -161,7 +161,7 @@ HTTP 要求または応答ヘッダーを評価し、ヘッダーまたはサー
 
 - ヘッダー名には、任意の英数字と、[RFC 7230](https://tools.ietf.org/html/rfc7230#page-27) で定義されている特定の記号を含めることができます。 現在はヘッダー名内で特殊文字のアンダー スコア (\_) がサポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HTTP ヘッダーを書き換える方法について学習するには、以下をご覧ください。
 

@@ -2,13 +2,13 @@
 title: QnA Maker サービスを設定する - QnA Maker
 description: QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA Maker サービスをセットアップしておく必要があります。 QnA Maker サービスは、サブスクリプション内で新しいリソースを作成することが認可されているユーザーであれば、だれでもセットアップできます。
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: 663cbce0e096c6189d97cf7872d466383d272f06
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.date: 03/19/2020
+ms.openlocfilehash: 8ec57f441ba58227e45398c35c7931dc75fa658f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650420"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131699"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker のリソースを管理する
 
@@ -188,6 +188,31 @@ QnA Maker の **App Service** リソースには Cognitive Search リソース�
     > ![構成設定の変更後に App Service を再起動する Azure portal のスクリーンショット](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
 
 Azure Resource Manager テンプレートを使用して QnA サービスを作成する場合は、すべてのリソースを作成し、既存の Search サービスを使用するように App Service の作成を制御できます。
+
+詳しくは、App Service の[アプリケーションの設定](../../../app-service/configure-common.md#configure-app-settings)を構成する方法をご覧ください。
+
+## <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>タイムアウトを回避するように App Service のアイドル設定を構成する
+
+公開されたナレッジ ベースの QnA Maker 予測ランタイムを提供する App Service にはアイドル タイムアウトの構成があり、サービスがアイドル状態の場合、既定では自動的にタイムアウトします。 QnA Maker の場合、これは、予測ランタイム GenerateAnswer API は、一定期間トラフィックがないとタイムアウトする場合があることを意味します。
+
+トラフィックがない場合でも、予測エンドポイント アプリが読み込まれたままにするには、アイドル状態を常時オンに設定します。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. QnA Maker リソースの App Service を探して選択します。 名前は QnA Maker リソースと同じですが、App Service の**種類**は異なります。
+1. **[設定]** を探し、 **[構成]** を選択します。
+1. [構成] ペインで **[一般設定]** を選択して、 **[常にオン]** を探し、値として **[オン]** を選択します。
+
+    > [!div class="mx-imgBorder"]
+    > ![[構成] ペインの **[一般設定]** の **[常にオン]** を **[オン]** に設定する。](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
+
+1. **[保存]** を選んで構成を保存します。
+1. アプリを再起動して新しい設定を使用するかどうかを確認するメッセージが表示されます。 **[続行]** をクリックします。
+
+詳しくは、App Service の[一般設定](../../../app-service/configure-common.md#configure-general-settings)を構成する方法をご覧ください。
+
+## <a name="delete-azure-resources"></a>Azure リソースを削除する
+
+QnA Maker ナレッジ ベースに使用されているいずれかの Azure リソースを削除すると、ナレッジ ベースは機能しなくなります。 いずれかのリソースを削除する前に、 **[設定]** ページから確実にナレッジ ベースをエクスポートしてください。
 
 ## <a name="next-steps"></a>次のステップ
 

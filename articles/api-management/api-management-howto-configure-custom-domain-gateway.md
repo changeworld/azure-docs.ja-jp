@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: 1df2cce04021c1cd14c356311df921dd1c0298e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1f2184c7c62887a98a76877528b167d173c3d75b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510584"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335946"
 ---
 # <a name="configure-a-custom-domain-name"></a>カスタム ドメイン名の構成
 
@@ -37,7 +37,7 @@ ms.locfileid: "73510584"
 - セルフホステッド ゲートウェイ。 詳細については、[セルフホステッド ゲートウェイのプロビジョニング方法](api-management-howto-provision-self-hosted-gateway.md)に関する記事を参照してください
 -   自分または自分の所属する組織が所有しているカスタム ドメイン名。 このトピックでは、カスタム ドメイン名を取得する手順は説明しません。
 -   カスタム ドメイン名をセルフホステッド ゲートウェイの IP アドレスにマップする DNS サーバーでホストされている DNS レコード。 このトピックでは、DNS レコードをホストする手順は説明しません。
--   パブリックおよびプライベート キー (.PFX) 付きの有効な証明書。 サブジェクトまたはサブジェクト代替名 (SAN) はドメイン名と一致している必要があります (これにより、API Management インスタンスは SSL 経由で URL を安全に公開できます)。
+-   パブリックおよびプライベート キー (.PFX) 付きの有効な証明書。 サブジェクトまたはサブジェクト代替名 (SAN) はドメイン名と一致している必要があります (これにより、API Management インスタンスは TLS 経由で URL を安全に公開できます)。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -64,6 +64,6 @@ ms.locfileid: "73510584"
     > この設定は、ゲートウェイに対して構成されたすべてのドメイン名で共有されます。
 9. **[追加]** を選択し、選択したセルフホステッド ゲートウェイにカスタム ドメイン名を割り当てます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [サービスのアップグレードとスケーリングを行う](upgrade-and-scale.md)

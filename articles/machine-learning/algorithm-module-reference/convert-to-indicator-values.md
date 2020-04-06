@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: fc059eca3a01b5c6cde642af5ceb6a3822672def
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163828"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477665"
 ---
 # <a name="convert-to-indicator-values"></a>インジケーター値への変換
 この記事では、Azure Machine Learning デザイナーのモジュールについて説明します。
@@ -39,9 +39,9 @@ Azure Machine Learning で**インジケーター値への変換**モジュー�
     > [!TIP]
     >  上書きするオプションを選択した場合、ソース列が実際に削除または変更されるわけではありません。 代わりに、新しい列が生成され、出力データセットに表示されます。ソース列は引き続きワークスペースで使用できます。 元のデータを参照する必要がある場合は、いつでも [[列の追加]](add-columns.md) モジュールを使用して、ソース列を元に戻すことができます。
 
-1. パイプラインを実行します。
+1. パイプラインを送信します。
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 サーバーが失敗する確率が高、中、低のどれであるかを示すスコアを格納した列があるとします。  
 
@@ -88,7 +88,7 @@ Azure Machine Learning で**インジケーター値への変換**モジュー�
 
    保存した変換を適用するときに、どの列を変換するかを選択することはできません。 これは、変換が定義されていて、元の操作で指定されたデータ型に自動的に適用されるからです。
 
-1. パイプラインを実行します。
+1. パイプラインを送信します。
  
 ## <a name="technical-notes"></a>テクニカル ノート  
 

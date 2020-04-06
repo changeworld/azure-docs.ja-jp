@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b84084dafe79a8caa9cdb70bc201f68834079845
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 8cb68b1a5363889e6ea7c49cf0cdda6ed5f0e027
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196078"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294551"
 ---
 # <a name="authentication-requests-and-responses"></a>認証、要求、応答
 
@@ -113,7 +113,7 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   authorization:要求のアクセス トークンの取得に使用できる OAuth2 承認サービスのアドレス。  
 
--   resource:リソースの名前 (承認要求で使用する https://vault.azure.net) )。  
+-   resource:承認要求で使用するリソースの名前 (`https://vault.azure.net`)。  
 
 ## <a name="see-also"></a>参照  
  [キー、シークレット、証明書について](about-keys-secrets-and-certificates.md)

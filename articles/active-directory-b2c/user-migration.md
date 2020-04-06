@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 90ef9402e0891915be4ed6bb89573eced546c59a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b3ee069985fd39288a562d3caafc50b12290c060
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183144"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332331"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>ユーザーを Azure AD B2C に移行する
 
@@ -43,7 +43,7 @@ ms.locfileid: "78183144"
 - パスワードが (ハッシュ関数を使用した場合のように) 一方向の暗号化形式で格納されている。
 - パスワードがレガシの ID プロバイダーによって、ユーザーがアクセスできない方法で格納されている。 たとえば、ID プロバイダーが Web サービスを呼び出して資格情報を検証している場合。
 
-シームレスな移行フローではユーザー アカウントの一括移行がやはり必要ですが、その後、[カスタム ポリシー](restful-technical-profile.md)を使用して [REST API](rest-api-claims-exchange-dotnet.md) (ユーザーが作成したもの) へのクエリを実行し、最初のサインイン時に各ユーザーのパスワードを設定します。
+シームレスな移行フローではユーザー アカウントの一括移行がやはり必要ですが、その後、[カスタム ポリシー](custom-policy-get-started.md)を使用して [REST API](custom-policy-rest-api-intro.md) (ユーザーが作成したもの) へのクエリを実行し、最初のサインイン時に各ユーザーのパスワードを設定します。
 
 このため、シームレスな移行フローには、*一括インポート*と*資格情報の設定*の 2 つのフェーズがあります。
 
@@ -73,7 +73,7 @@ ms.locfileid: "78183144"
 
 シームレスな移行方法では、独自のカスタム REST API を使用して、レガシ ID プロバイダーに対してユーザーの資格情報を検証します。
 
-**REST API をブルート フォース攻撃から保護する必要があります。** 攻撃者は、ユーザーの資格情報を最終的に当てるために、複数のパスワードを送信することがあります。 このような攻撃を防ぐには、サインイン試行回数が特定のしきい値に達したときに、REST API への要求の送信を停止します。 また、[クライアント証明書](secure-rest-api-dotnet-certificate-auth.md)を使用して、Azure AD B2C と REST API 間の通信をセキュリティ保護します。
+**REST API をブルート フォース攻撃から保護する必要があります。** 攻撃者は、ユーザーの資格情報を最終的に当てるために、複数のパスワードを送信することがあります。 このような攻撃を防ぐには、サインイン試行回数が特定のしきい値に達したときに、REST API への要求の送信を停止します。 また、Azure AD B2C と REST API 間の通信もセキュリティで保護します。 お使いの RESTful API を実稼働用にセキュリティで保護する方法については、[RESTful API のセキュリティ保護](secure-rest-api.md)に関するページを参照してください。
 
 ### <a name="user-attributes"></a>ユーザー属性
 

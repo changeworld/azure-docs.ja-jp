@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/21/2020
+ms.date: 03/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 8f2de656473d52c7a40bef83237bf2aed563e111
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 73b958149d9d6d907785fe1c2c56b8198bb91f70
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566167"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80351098"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -27,14 +27,14 @@ ms.locfileid: "77566167"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2009879]: https://launchpad.support.sap.com/#/notes/2009879
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2009879]:https://launchpad.support.sap.com/#/notes/2009879
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -86,15 +86,10 @@ ms.locfileid: "77566167"
 
 SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、SAP HANA データベースでは、仮想ホスト名と仮想 IP アドレスが使用されます。 Azure では、仮想 IP アドレスを使用するためにロード バランサーが必要になります。 [Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal) の使用をお勧めします。 (A)SCS および ERS ロード バランサーの構成を次に示します。
 
-> [!IMPORTANT]
-> Azure VM での Red Hat Linux をゲスト オペレーティング システムとした SAP ASCS/ERS のマルチ SID クラスタリングは**サポートされていません**。 マルチ SID クラスタリングとは、1 つの Pacemaker クラスター内での異なる SID を持つ複数の SAP ASCS/ERS インスタンスのインストールを指します。
-
 ### <a name="ascs"></a>(A)SCS
 
 * フロントエンドの構成
   * IP アドレス 10.0.0.7
-* バックエンドの構成
-  * (A)SCS/ERS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
 * プローブ ポート
   * ポート 620<strong>&lt;nr&gt;</strong>
 * 負荷分散規則
@@ -112,8 +107,6 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、SAP HANA データ�
 
 * フロントエンドの構成
   * IP アドレス 10.0.0.8
-* バックエンドの構成
-  * (A)SCS/ERS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
 * プローブ ポート
   * ポート 621<strong>&lt;nr&gt;</strong>
 * 負荷分散規則
@@ -124,6 +117,9 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、SAP HANA データ�
     * 5<strong>&lt;nr&gt;</strong>13 TCP
     * 5<strong>&lt;nr&gt;</strong>14 TCP
     * 5<strong>&lt;nr&gt;</strong>16 TCP
+
+* バックエンドの構成
+  * (A)SCS/ERS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
 
 ## <a name="setting-up-glusterfs"></a>GlusterFS の設定
 
@@ -180,17 +176,14 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
          1. 割り当てを "静的" に設定し、IP アドレスを入力します (例: **10.0.0.7**)
          1. [OK] をクリックします
       1. ASCS ERS の IP アドレス 10.0.0.8
-         * 上記の手順を繰り返して、ERS の IP アドレスを作成します (例: **10.0.0.8** と **nw1-aers-backend**)
-   1. バックエンド プールを作成します
-      1. ASCS のバックエンド プールの作成
-         1. ロード バランサーを開き、[バックエンド プール] を選択して [追加] をクリックします
-         1. 新規のバックエンド プールの名前を入力します (例: **nw1-ascs-backend**)
-         1. [仮想マシンの追加] をクリックします。
-         1. 仮想マシンを選択します。
-         1. (A)SCS クラスターの仮想マシンとその IP アドレスを選択します。
-         1. [追加] をクリックします。
-      1. ASCS ERS のバックエンド プールを作成します
-         * 上記の手順を繰り返して、ERS のバックエンド プールを作成します (例: **nw1-aers-backend**)
+         * 上記の手順を繰り返して、ERS の IP アドレスを作成します (例: **10.0.0.8** と **nw1-aers-frontend**)
+   1. バックエンド プールの作成
+      1. ロード バランサーを開き、[バックエンド プール] を選択して [追加] をクリックします
+      1. 新規のバックエンド プールの名前を入力します (例: **nw1-backend**)
+      1. [仮想マシンの追加] をクリックします。
+      1. 仮想マシンを選択します。
+      1. (A)SCS クラスターの仮想マシンとその IP アドレスを選択します。
+      1. [追加] をクリックします。
    1. 正常性プローブを作成します
       1. ASCS のポート 620**00**
          1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
@@ -203,7 +196,7 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
       1. ASCS の負荷分散規則
          1. ロード バランサーを開き、負荷分散規則を選択して [追加] をクリックします
          1. 新しいロード バランサー規則の名前を入力します (例: **nw1-lb-ascs**)
-         1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **nw1-ascs-frontend**、**nw1-ascs-backend**、および **nw1-ascs-hp**)
+         1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **nw1-ascs-frontend**、**nw1-backend**、および **nw1-ascs-hp**)
          1. **[HA ポート]** を選択します
          1. アイドル タイムアウトを 30 分に増やします
          1. **Floating IP を有効にします**
@@ -217,17 +210,14 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
          1. 割り当てを "静的" に設定し、IP アドレスを入力します (例: **10.0.0.7**)
          1. [OK] をクリックします
       1. ASCS ERS の IP アドレス 10.0.0.8
-         * 上記の手順を繰り返して、ERS の IP アドレスを作成します (例: **10.0.0.8** と **nw1-aers-backend**)
-   1. バックエンド プールを作成します
-      1. ASCS のバックエンド プールの作成
-         1. ロード バランサーを開き、[バックエンド プール] を選択して [追加] をクリックします
-         1. 新規のバックエンド プールの名前を入力します (例: **nw1-ascs-backend**)
-         1. [仮想マシンの追加] をクリックします。
-         1. 前の手順で作成した可用性セットを選択します
-         1. (A)SCS クラスターの仮想マシンを選択します
-         1. [OK] をクリックします
-      1. ASCS ERS のバックエンド プールを作成します
-         * 上記の手順を繰り返して、ERS のバックエンド プールを作成します (例: **nw1-aers-backend**)
+         * 上記の手順を繰り返して、ERS の IP アドレスを作成します (例: **10.0.0.8** と **nw1-aers-frontend**)
+   1. バックエンド プールの作成
+      1. ロード バランサーを開き、[バックエンド プール] を選択して [追加] をクリックします
+      1. 新規のバックエンド プールの名前を入力します (例: **nw1-backend**)
+      1. [仮想マシンの追加] をクリックします。
+      1. 前の手順で作成した可用性セットを選択します
+      1. (A)SCS クラスターの仮想マシンを選択します
+      1. [OK] をクリックします
    1. 正常性プローブを作成します
       1. ASCS のポート 620**00**
          1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
@@ -639,7 +629,7 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
    sudo firewall-cmd --zone=public --add-port=5<b>02</b>16/tcp
    </code></pre>
 
-## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>SAP NetWeaver アプリケーション サーバーの準備
+## <a name="sap-netweaver-application-server-preparation"></a><a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>SAP NetWeaver アプリケーション サーバーの準備
 
 一部のデータベースでは、データベース インスタンスのインストールがアプリケーション サーバーで実行される必要があります。 このような場合に使用できるようにアプリケーション サーバー仮想マシンを準備します。
 
@@ -1053,6 +1043,7 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
 
 ## <a name="next-steps"></a>次のステップ
 
+* [RHEL for SAP アプリケーション マルチ SID 上の Azure VM での SAP NW の HA ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]

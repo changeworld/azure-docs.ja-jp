@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: cf70124f2e310dd62fd32de0e17edb40c047a318
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615676"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234987"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
@@ -27,11 +27,11 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-この例の `<RESOURCE_GROUP>` と `<PLAN_NAME>` は、それぞれ実際のリソース グループおよびリソース グループ内で一意となる実際のプランの名前に置き換えてください。 [サポートされる `<REGION>`](#regions) を指定します。 Linux をサポートする Premium プランを作成するには、`--is-linux` オプションを指定します。
+この例の `<RESOURCE_GROUP>` と `<PLAN_NAME>` は、それぞれ実際のリソース グループおよびリソース グループ内で一意となる実際のプランの名前に置き換えてください。 [サポートされる `<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions) を指定します。 Linux をサポートする Premium プランを作成するには、`--is-linux` オプションを指定します。
 
 プランが作成されたら、[az functionapp create](/cli/azure/functionapp#az-functionapp-create) を使用して関数アプリを作成できます。 ポータルで、プランとアプリの両方が同時に作成されます。 完全な Azure CLI スクリプトの例については、「[Premium プランの関数アプリを作成する](scripts/functions-cli-create-premium-plan.md)」を参照してください。
 
-## <a name="features"></a>[機能]
+## <a name="features"></a>特徴
 
 Premium プランにデプロイされた関数アプリでは、次の機能を利用できます。
 
@@ -65,7 +65,7 @@ Premium プランで関数アプリにサブネットを割り当てるときは
 
 ### <a name="longer-run-duration"></a>実行継続時間の延長
 
-Azure Functions の従量課金プランでは、1 回の実行が 10 分までに制限されています。  Premium プランでは、実行中の暴走を防ぐために、実行継続時間の既定値が 30 分になっています。 ただし、[host.json 構成を変更](./functions-host-json.md#functiontimeout)して、Premium プランのアプリでこれを 60 分にすることができます。
+Azure Functions の従量課金プランでは、1 回の実行が 10 分までに制限されています。  Premium プランでは、実行中の暴走を防ぐために、実行継続時間の既定値が 30 分になっています。 ただし、[host.json 構成を変更](./functions-host-json.md#functiontimeout)して、Premium プランのアプリでこれを無制限 (60 分を保証) にすることができます。
 
 ## <a name="plan-and-sku-settings"></a>プランと SKU の設定
 
@@ -99,43 +99,42 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 たとえば、JavaScript 関数アプリには、Node.js の既定のメモリ上限の制限があります。 この固定のメモリ制限を増やすには、値に `--max-old-space-size=<max memory in MB>` を使用して `languageWorkers:node:arguments` のアプリ設定を追加します。
 
-## <a name="regions"></a>リージョン
+## <a name="region-max-scale-out"></a>リージョン最大スケール アウト
 
-各 OS で現在サポートされているリージョンは次のとおりです。
+以下は、1 つのプランでサポートされている最大スケールアウト値をリージョンと OS の構成ごとにまとめたものです。 増加を依頼するには、サポート チケットをご利用ください。
+
+Functions のリージョン別アベイラビリティはすべて、[Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions) で確認できます。
 
 |リージョン| Windows | Linux |
 |--| -- | -- |
-|オーストラリア中部| ✔<sup>1</sup> | |
-|オーストラリア中部 2| ✔<sup>1</sup> | |
-|オーストラリア東部| ✔ | ✔<sup>1</sup> |
-|オーストラリア南東部 | ✔ | ✔<sup>1</sup> |
-|ブラジル南部| ✔<sup>2</sup> |  |
-|カナダ中部| ✔ | ✔<sup>1</sup> |
-|米国中部| ✔ |  |
-|東アジア| ✔ |  |
-|米国東部 | ✔ | ✔<sup>1</sup> |
-|米国東部 2| ✔ | ✔<sup>1</sup> |
-|フランス中部| ✔ |  |
-|ドイツ中西部| ✔ | |
-|東日本| ✔ | ✔<sup>1</sup> |
-|西日本| ✔ | ✔<sup>1</sup> |
-|韓国中部| ✔ | ✔<sup>1</sup> |
-|米国中北部| ✔ |  |
-|北ヨーロッパ| ✔ | ✔<sup>1</sup> |
-|米国中南部| ✔ | ✔<sup>1</sup> |
-|インド南部 | ✔ | |
-|東南アジア| ✔ | ✔<sup>1</sup> |
-|英国南部| ✔ | ✔<sup>1</sup> |
-|英国西部| ✔ |  |
-|西ヨーロッパ| ✔ | ✔<sup>1</sup> |
-|インド西部| ✔ |  |
-|米国中西部| | ✔<sup>1</sup> |
-|米国西部| ✔ | ✔<sup>1</sup> |
-|米国西部 2| ✔ |  |
-
-<sup>1</sup>最大スケールアウトは 20 個のインスタンスに制限されます。  
-<sup>2</sup>最大スケールアウトは 60 個のインスタンスに制限されます。
-
+|オーストラリア中部| 20 | 利用不可 |
+|オーストラリア中部 2| 20 | 利用不可 |
+|オーストラリア東部| 100 | 20 |
+|オーストラリア南東部 | 100 | 20 |
+|ブラジル南部| 60 | 20 |
+|カナダ中部| 100 | 20 |
+|米国中部| 100 | 20 |
+|東アジア| 100 | 20 |
+|米国東部 | 100 | 20 |
+|米国東部 2| 100 | 20 |
+|フランス中部| 100 | 20 |
+|ドイツ中西部| 100 | 利用不可 |
+|東日本| 100 | 20 |
+|西日本| 100 | 20 |
+|韓国中部| 100 | 20 |
+|米国中北部| 100 | 20 |
+|北ヨーロッパ| 100 | 20 |
+|ノルウェー東部| 20 | 20 |
+|米国中南部| 100 | 20 |
+|インド南部 | 100 | 利用不可 |
+|東南アジア| 100 | 20 |
+|英国南部| 100 | 20 |
+|英国西部| 100 | 20 |
+|西ヨーロッパ| 100 | 20 |
+|インド西部| 100 | 20 |
+|米国中西部| 20 | 20 |
+|米国西部| 100 | 20 |
+|米国西部 2| 100 | 20 |
 
 ## <a name="next-steps"></a>次のステップ
 

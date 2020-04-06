@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: 046b2da7cdb966192e485ff9f5510eb63c9e0008
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 03/23/2020
+ms.openlocfilehash: 63dd1b4d9396d340dd17a7afb92ff9c38a2b38b3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086549"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132668"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>クイック スタート:自分の仮想ネットワークに Azure Databricks ワークスペースを作成する
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
     |-------|---------------|-----------|
     |サブスクリプション|\<該当するサブスクリプション\>|使用する Azure サブスクリプションを選択します。|
     |Resource group|databricks-quickstart|**[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。|
-    |Name|databricks-quickstart|仮想ネットワークの名前を選択します。|
+    |名前|databricks-quickstart|仮想ネットワークの名前を選択します。|
     |リージョン|\<ユーザーに最も近いリージョンを選択\>|お客様の仮想ネットワークをホストできる地理的な場所を選択します。 お客様のユーザーに最も近い場所を使用します。|
 
     ![Azure portal 上の仮想ネットワークの [基本]](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
     |設定|推奨値|説明|
     |-------|---------------|-----------|
     |IPv4 アドレス空間|10.2.0.0/16|CIDR 表記の仮想ネットワークのアドレス範囲。 CIDR の範囲は /16 から /24 の間である必要があります|
-    |サブネット名|既定値 (default)|仮想ネットワークの既定のサブネットの名前を選択します。|
+    |サブネット名|default|仮想ネットワークの既定のサブネットの名前を選択します。|
     |サブネットのアドレス範囲|10.2.0.0/24|サブネットのアドレス範囲 (CIDR 表記)。 仮想ネットワークのアドレス空間に含まれている必要があります。 使用中のサブネットのアドレス範囲を編集することはできません。|
 
     ![Azure portal で仮想ネットワークの IP 構成を設定する](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-ip-config.png)
@@ -75,7 +75,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
     |ワークスペース名|databricks-quickstart|Azure Databricks ワークスペースの名前を選択します。|
     |サブスクリプション|\<該当するサブスクリプション\>|使用する Azure サブスクリプションを選択します。|
     |Resource group|databricks-quickstart|仮想ネットワークに使用したものと同じリソース グループを選択します。|
-    |Location|\<ユーザーに最も近いリージョンを選択\>|仮想ネットワークと同じ場所を選択します。|
+    |場所|\<ユーザーに最も近いリージョンを選択\>|仮想ネットワークと同じ場所を選択します。|
     |価格レベル|Standard と Premium のいずれかを選択します。|価格レベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。|
 
     ![Azure Databricks ワークスペースの作成 (基本)](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
@@ -100,6 +100,8 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
     マネージド リソース グループは変更可能ではありません。また、仮想マシンの作成には使用されません。 自分で管理しているリソース グループ内に仮想マシンを作成するだけです。
 
     ![Azure Databricks マネージド リソース グループ](./media/quickstart-create-databricks-workspace-vnet-injection/managed-resource-group.png)
+
+    ワークスペースのデプロイが失敗した場合でも、ワークスペースはエラー状態で作成されます。 失敗したワークスペースを削除し、デプロイ エラーのない新しいワークスペースを作成します。 失敗したワークスペースを削除すると、管理対象リソース グループと、正常にデプロイされたリソースもすべて削除されます。
 
 ## <a name="create-a-cluster"></a>クラスターの作成
 

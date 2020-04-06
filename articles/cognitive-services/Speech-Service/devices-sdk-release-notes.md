@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: c12aaea1dbc99a3f6db064e03b4b49e569f15194
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 29dcb3c0e74482fd6670d1a0983e751043379d6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189057"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80371617"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>リリース ノート:Speech Devices SDK
 
@@ -58,7 +58,7 @@ ms.locfileid: "77189057"
 **重大な変更**
 
 - 新しいキーワード テクノロジに伴い、改良されたキーワード ポータルですべてのキーワードを作成し直す必要があります。 デバイスから古いキーワードを完全に削除するには、古いアプリをアンインストールしてください。
-  - adb uninstall com.microsoft.coginitiveservices.speech.samples.sdsdkstarterapp
+  - adb uninstall com.microsoft.cognitiveservices.speech.samples.sdsdkstarterapp
 
 ## <a name="speech-devices-sdk-140-2019-apr-release"></a>Speech Devices SDK 1.4.0:2019-Apr リリース
 

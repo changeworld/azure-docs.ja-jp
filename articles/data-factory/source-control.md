@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: 1cc5932eca520b0bbc0c592b54d36ea8b5942b08
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 6645c2672e15c562216b4347f779ef3634a2f124
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031631"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80130866"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 
@@ -70,7 +70,7 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 
 構成ウィンドウに次の Azure Repos コード リポジトリの設定が表示されます。
 
-| 設定 | 説明 | Value |
+| 設定 | 説明 | 値 |
 |:--- |:--- |:--- |
 | **リポジトリの種類** | Azure Repos コード リポジトリの種類。<br/> | Azure DevOps Git または GitHub |
 | **Azure Active Directory** | Azure AD テナントの名前。 | `<your tenant name>` |
@@ -141,7 +141,7 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 |:--- |:--- |:--- |
 | **リポジトリの種類** | Azure Repos コード リポジトリの種類。 | GitHub |
 | **GitHub Enterprise の使用** | GitHub Enterprise を選択するチェックボックス | オフ (既定値) |
-| **GitHub Enterprise の URL** | GitHub Enterprise のルート URL。 (例: https://github.mydomain.com )。 **[Use GitHub Enterprise]\(GitHub Enterprise を使用する\)** がオンの場合にのみ必要です | `<your GitHub enterprise url>` |                                                           
+| **GitHub Enterprise の URL** | GitHub Enterprise ルート URL (ローカル GitHub Enterprise サーバーの場合は HTTPS である必要があります)。 (例: https://github.mydomain.com )。 **[Use GitHub Enterprise]\(GitHub Enterprise を使用する\)** がオンの場合にのみ必要です | `<your GitHub enterprise url>` |                                                           
 | **GitHub アカウント** | GitHub アカウント名。 この名前は、https:\//github.com/{アカウント名}/{リポジトリ名} で確認できます。 このページに移動すると、お使いの GitHub アカウントへの GitHub OAuth の資格情報を入力するよう求められます。 | `<your GitHub account name>` |
 | **リポジトリ名**  | GitHub コード リポジトリ名。 GitHub アカウントには、ソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内の既存のリポジトリを使用できます。 | `<your repository name>` |
 | **コラボレーション ブランチ** | 発行に使用される GitHub コラボレーション ブランチ。 既定は master です。 別のブランチからのリソースを発行する場合は、この設定を変更します。 | `<your collaboration branch>` |

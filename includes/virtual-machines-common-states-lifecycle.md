@@ -9,10 +9,10 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67181114"
 ---
 Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは "*プロビジョニング状態*" と "*電源の状態*" に分類することができます。 この記事の目的は、各状態について説明し、ユーザーがインスタンスの使用料金を課金されるタイミングを具体的に明示することです。 
@@ -29,7 +29,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
 <table>
 <tr>
 <th>
-状態
+State
 </th>
 <th>
 説明
@@ -94,7 +94,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
 </tr>
 <tr>
 <td>
-<p><b>Stopped</b></p>
+<p><b>停止</b></p>
 </td>
 <td>
 <p>ゲスト OS 内から、または PowerOff API によって、VM がシャットダウンされています。</p>
@@ -244,7 +244,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
  "displayStatus": "OS Provisioning Complete"<br>
  }<br>
 ]</code><br>
-<p><b>メモ</b>:OS でエラーが発生するか、時間内に OS をインストールできない場合、OS のプロビジョニングが**失敗**に移行する場合があります。 お客様は、インフラストラクチャ上にデプロイした VM に対して課金されます。</p>
+<p><b>注</b>:OS でエラーが発生するか、時間内に OS をインストールできない場合、OS のプロビジョニングが**失敗**に移行する場合があります。 お客様は、インフラストラクチャ上にデプロイした VM に対して課金されます。</p>
 </td>
 </tr>
 </table>

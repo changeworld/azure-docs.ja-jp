@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service - ルーティング規則照合の監視 | Microsoft Docs
-description: この記事は、着信要求の照合において、Azure Front Door Service がどのルーティング規則を使用するかを理解するためのものです。
+title: Azure Front Door - ルーティング規則照合の監視 | Microsoft Docs
+description: この記事は、着信要求の照合において、Azure Front Door がどのルーティング規則を使用するかを理解するためのものです。
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: eec99bde0ea73a99a9dc1345f938b821a95a7c05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 605974e76c3ca878784129f7c9827a78d0642da6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736287"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471593"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door が要求をルーティング規則と照合する方法
 
@@ -51,7 +51,7 @@ Front Door のルーティング規則の構成は、大きく分けて「左側
 | ルーティング ルール | フロント エンド ホスト | Path |
 |-------|--------------------|-------|
 | A | foo.contoso.com | /\* |
-| b | foo.contoso.com | /users/\* |
+| B | foo.contoso.com | /users/\* |
 | C | www\.fabrikam.com, foo.adventure-works.com  | /\*、/images/\* |
 
 次の着信要求が Front Door に送信された場合、以下のルーティング規則に対して、上から照合されます。
@@ -81,7 +81,7 @@ Front Door は、フロント エンド ホストを特定し、そのフロン�
 | ルーティング ルール | フロントエンド ホスト    | Path     |
 |-------|---------|----------|
 | A     | www\.contoso.com | /        |
-| b     | www\.contoso.com | /\*      |
+| B     | www\.contoso.com | /\*      |
 | C     | www\.contoso.com | /ab      |
 | D     | www\.contoso.com | /abc     |
 | E     | www\.contoso.com | /abc/    |
@@ -94,18 +94,18 @@ Front Door は、フロント エンド ホストを特定し、そのフロン�
 | 着信要求    | 一致するルート |
 |---------------------|---------------|
 | www\.contoso.com/            | A             |
-| www\.contoso.com/a           | b             |
+| www\.contoso.com/a           | B             |
 | www\.contoso.com/ab          | C             |
 | www\.contoso.com/abc         | D             |
-| www\.contoso.com/abzzz       | b             |
+| www\.contoso.com/abzzz       | B             |
 | www\.contoso.com/abc/        | E             |
 | www\.contoso.com/abc/d       | F             |
 | www\.contoso.com/abc/def     | G             |
 | www\.contoso.com/abc/defzzz  | F             |
 | www\.contoso.com/abc/def/ghi | F             |
-| www\.contoso.com/path        | b             |
+| www\.contoso.com/path        | B             |
 | www\.contoso.com/path/       | H             |
-| www\.contoso.com/path/zzz    | b             |
+| www\.contoso.com/path/zzz    | B             |
 
 >[!WARNING]
 > </br> キャッチオール ルートの Path (`/*`) でフロント エンド ホストと完全に一致するルーティング規則が存在しない場合、いずれのルーティング規則とも一致しません。
@@ -120,12 +120,12 @@ Front Door は、フロント エンド ホストを特定し、そのフロン�
 >
 > | 着信要求       | 一致するルート |
 > |------------------------|---------------|
-> | profile.domain.com/other | なし。 Error 400: 正しくない要求 |
+> | profile.domain.com/other | [なし] : Error 400: 正しくない要求 |
 
 ### <a name="routing-decision"></a>ルーティングの決定
 一つの Front Door のルーティング規則と一致した場合、次にその要求の処理方法を選択する必要があります。 一致したルーティング規則に対して、Front Door にキャッシュされたレスポンスがある場合、そのレスポンスがクライアントに送信されます。 ない場合は、一致したルーティング規則に対して、[URL Rewrite (カスタム フォワーディング パス)](front-door-url-rewrite.md) が構成されているかどうかの確認がおこなわれます。 カスタム フォワーディング パスが定義されていない場合、その要求は、構成されたバックエンド プール内の適切なバックエンドにそのまま転送されます。 それ以外の場合、要求パスは、定義された[カスタム フォワーディング パス](front-door-url-rewrite.md)に従って更新された後、バックエンドに転送されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
 - [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

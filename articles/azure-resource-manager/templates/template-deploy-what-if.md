@@ -5,16 +5,16 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: jgao
-ms.openlocfilehash: b9d4150779842614a5dc284a2b3a489593fabfe1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: bc42585204e5cc2c3ece5293a3934fd22fe8507b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388541"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156448"
 ---
-# <a name="resource-manager-template-deployment-what-if-operation-preview"></a>Resource Manager テンプレートのデプロイの what-if 操作 (プレビュー)
+# <a name="arm-template-deployment-what-if-operation-preview"></a>ARM テンプレートのデプロイの what-if 操作 (プレビュー)
 
-テンプレートをデプロイする前に、発生する変更をプレビューしたいことがあります。 Azure Resource Manager の what-if 操作を使うと、テンプレートをデプロイした場合にリソースがどのように変更されるかを確認できます。 what-if 操作では、既存のリソースに対していかなる変更も行われません。 代わりに、指定したテンプレートがデプロイされた場合の変更が予測されます。
+Azure Resource Manager (ARM) テンプレートをデプロイする前に、発生する変更をプレビューすることをお勧めします。 Azure Resource Manager の what-if 操作を使うと、テンプレートをデプロイした場合にリソースがどのように変更されるかを確認できます。 what-if 操作では、既存のリソースに対していかなる変更も行われません。 代わりに、指定したテンプレートがデプロイされた場合の変更が予測されます。
 
 > [!NOTE]
 > what-if 操作は、現在プレビューの段階です。 使用するには、[プレビューにサインアップする](https://aka.ms/armtemplatepreviews)必要があります。 プレビュー リリースなので、実際には何も変更されないときに、結果ではリソースが変更されることが示される場合があります。 このような問題を減らす作業が行われていますが、お客様の支援が必要です。 これらの問題を、[https://aka.ms/whatifissues](https://aka.ms/whatifissues)で報告してください。
@@ -287,5 +287,5 @@ Are you sure you want to execute the deployment?
 ## <a name="next-steps"></a>次のステップ
 
 - what-if のプレビュー リリースで正しくない結果が表示された場合は、[https://aka.ms/whatifissues](https://aka.ms/whatifissues) で問題を報告してください。
-- Azure PowerShell を使用してテンプレートをデプロイするには、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。
-- REST を使用してテンプレートをデプロイするには、「[Resource Manager テンプレートと Resource Manager REST API を使用したリソースのデプロイ](deploy-rest.md)」を参照してください。
+- Azure PowerShell を使用してテンプレートをデプロイするには、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。
+- REST を使用してテンプレートをデプロイするには、「[ARM テンプレートと Resource Manager REST API を使用したリソースのデプロイ](deploy-rest.md)」を参照してください。

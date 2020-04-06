@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cddf2ab36b2372ce93ae8a2a6230ccb02ae30117
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: f9ed613972f166f1f9955fc34e9bb640d87da6b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721033"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331440"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect と Azure AD Connect Health のインストール ロードマップ
 
@@ -51,7 +51,7 @@ Azure AD Connect は [Microsoft ダウンロード センター](https://go.micr
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Azure AD Connect のインストールの詳細
 [運用](how-to-connect-sync-operations.md) 上の問題への備えも必要になることがあります。 [障害](how-to-connect-sync-staging-server.md#disaster-recovery)が発生したときにフェールオーバーできるように、スタンバイ サーバーを用意するという方法もあります。 頻繁に構成を変更する予定がある場合は、 [ステージング モード](how-to-connect-sync-staging-server.md) サーバーについて計画してください。
 
-|トピック |リンク|  
+|トピック |Link|  
 | --- | --- |
 |サポートされているトポロジ | [Azure AD Connect のトポロジ](plan-connect-topologies.md)|
 |設計概念 | [Azure AD Connect の設計概念](plan-connect-design-concepts.md)|
@@ -101,14 +101,14 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 |技術的概念 | [Azure AD Connect 同期:技術的概念](how-to-connect-sync-technical-concepts.md)|
 |既定の構成について | [Azure AD Connect 同期:既定の構成について](concept-azure-ad-connect-sync-default-configuration.md)|
 |ユーザーと連絡先について | [Azure AD Connect 同期:ユーザーと連絡先について](concept-azure-ad-connect-sync-user-and-contacts.md)|
-|宣言型のプロビジョニング | [Azure AD Connect Sync: 宣言型のプロビジョニングの式について](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
+|宣言型のプロビジョニング | [Azure AD Connect 同期: 宣言型のプロビジョニングの式について](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
 |既定の構成の変更 | [既定の構成の変更するためのベスト プラクティス](how-to-connect-sync-best-practices-changing-default-configuration.md)|
 
 ## <a name="configure-federation-features"></a>フェデレーション機能を構成する
 
 Azure AD Connect には、Azure AD との認証連携を AD FS の使用とフェデレーション信頼の管理を通じて省力化するさまざまな機能が備わっています。 Azure AD Connect では、Windows Server 2012R2 以降の AD FS がサポートされます。
 
-フェデレーション信頼の管理に Azure AD Connect を使っていない場合でも、[AD FS ファームの SSL 証明書を更新](how-to-connect-fed-ssl-update.md)することができます。
+フェデレーション信頼の管理に Azure AD Connect を使用していない場合でも、[AD FS ファームの TLS/SSL 証明書を更新](how-to-connect-fed-ssl-update.md)することができます。
 
 ファームに [AD FS サーバーを追加](how-to-connect-fed-management.md#addadfsserver)することで必要に応じてファームを拡張できます。
 
@@ -162,7 +162,7 @@ Azure AD Connect Health ポータルでは、アラート、パフォーマン�
 * **[クイック スタート]** :このオプションを選択すると、 **[クイック スタート]** ブレードが開きます。 **[ツールの入手]** を選択することで、Azure AD Connect Health エージェントをダウンロードできます。 ドキュメントの利用とフィードバックの提供もできます。
 * **[Azure Active Directory Connect (Sync)]** : このオプションを選択すると、Azure AD Connect Health が現在監視している Azure AD Connect サーバーが表示されます。 **[同期エラー]** エントリは、カテゴリごとに、最初のオンボード同期サービスの基本的な同期エラーを示します。 **[同期サービス]** エントリを選択すると、ブレードが開いて Azure AD Connect サーバーに関する情報が表示されます。 [Azure AD Connect Health for Sync の使用](how-to-connect-health-sync.md)に関するページで各種機能を参照してください。
 * **[Active Directory フェデレーション サービス]** : このオプションを選択すると、Azure AD Connect Health が現在監視しているすべての AD FS サービスが表示されます。 インスタンスを選択すると、ブレードが開いてそのサービス インスタンスに関する情報が表示されます。 この情報には、概要、プロパティ、アラート、監視、使用状況の分析などが含まれます。 [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)に関するページで各種機能を参照してください。
-* **[Active Directory Domain Services]** : このオプションを選択すると、Azure AD Connect Health が現在監視しているすべての AD DS フォレストが表示されます。 フォレストを選択すると、ブレードが開いてそのフォレストに関する情報が表示されます。 この情報には、重要度のきわめて高い情報、ドメイン コントローラーのダッシュボード、レプリケーションの状態のダッシュボード、アラート、監視の概要が含まれます。 「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」で各種機能を参照してください。
+* **Active Directory Domain Services**: このオプションを選択すると、Azure AD Connect Health が現在監視しているすべての AD DS フォレストが表示されます。 フォレストを選択すると、ブレードが開いてそのフォレストに関する情報が表示されます。 この情報には、重要度のきわめて高い情報、ドメイン コントローラーのダッシュボード、レプリケーションの状態のダッシュボード、アラート、監視の概要が含まれます。 「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」で各種機能を参照してください。
 * **構成する**:このセクションには、次の機能をオンまたはオフに切り替えるオプションがあります。
 
    - Azure AD Connect Health エージェントの最新バージョンへの**自動更新**: 新しいバージョンが利用可能になるたびに、Azure AD Connect Health エージェントが自動的に更新されます。 このオプションは、既定で有効です。

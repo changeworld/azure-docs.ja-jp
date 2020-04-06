@@ -1,24 +1,24 @@
 ---
-title: Azure Database for PostgreSQL 単一サーバー (プレビュー) 用のプライベート リンクの CLI のセットアップ方法
+title: Private Link - Azure CLI - Azure Database for PostgreSQL - 単一サーバー
 description: Azure CLI から Azure Database for PostgreSQL 単一サーバー用のプライベート リンクを構成する方法について説明します。
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 0eacf0f65346247d5fda5b26ead924a8cfd94dd9
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: d4288b901a0e6e132e32f8391d108e79861fc331
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562090"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371037"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-cli"></a>CLI を使用して Azure Database for PostgreSQL 単一サーバー (プレビュー) 用のプライベート リンクを作成および管理する
+# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>CLI を使用して Azure Database for PostgreSQL 単一サーバー用の Private Link を作成および管理する
 
 プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 この記事では、Azure CLI を使用して Azure Virtual Network 内に VM を作成し、Azure プライベート エンドポイントを含む Azure Database for PostgreSQL 単一サーバーを作成する方法について説明します。
 
 > [!NOTE]
-> この機能は、Azure Database for PostgreSQL 単一サーバーが汎用およびメモリ最適化の価格レベルをサポートしているすべての Azure リージョンで使用できます。
+> この機能は、Azure Database for PostgreSQL 単一サーバーで "汎用" および "メモリ最適化" の価格レベルがサポートされているすべての Azure リージョンで利用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -122,7 +122,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 ```
 
 > [!NOTE] 
-> お客様の DNS 設定の FQDN は、構成されている非公開 IP では解決されません。 [こちら](../dns/dns-operations-recordsets-portal.md)に示されているように、構成された FQDN の DNS ゾーンを設定する必要があります。
+> お客様の DNS 設定の FQDN は、構成されている非公開 IP では解決されません。 [こちら](../dns/dns-operations-recordsets-portal.md)で示すように、構成された FQDN の DNS ゾーンを設定する必要があります。
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
 
@@ -168,7 +168,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 4. **[新しい接続]** で、この情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | サーバーの種類| **[PostgreSQL]** を選択します。|
     | サーバー名| *[mydemopostgresserver.privatelink.postgres.database.azure.com]* を選択します。 |

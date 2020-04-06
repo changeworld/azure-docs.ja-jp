@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
 ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70072319"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API Management のポリシー
@@ -27,7 +27,7 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 
 ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー][Control flow] ポリシーや[変数の設定][Set variable]ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー][Advanced policies]」と「[ポリシーの式][Policy expressions]」をご覧ください。
 
-## <a name="sections"> </a>ポリシー構成について
+## <a name="understanding-policy-configuration"></a><a name="sections"> </a>ポリシー構成について
 
 ポリシー定義は、一連の受信ステートメントと送信ステートメントが記述された単純な XML ドキュメントです。 XML は、定義ウィンドウで直接編集できます。 ウィンドウの右側にはステートメントの一覧が表示され、現在のスコープに適用できるステートメントが有効になり強調表示されます。
 
@@ -60,7 +60,7 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 
 要求の処理中にエラーが発生した場合、`inbound`、`backend`、または `outbound` セクションの残りの手順はスキップされ、実行は `on-error` セクションのステートメントにジャンプします。 `on-error` セクションにポリシー ステートメントを配置することで、`context.LastError` プロパティを使用してエラーを確認し、`set-body` ポリシーを使用してエラーの検査とカスタマイズを行い、エラーが発生した場合の動作を構成できます。 組み込み手順用と、ポリシー ステートメントの処理中に発生する可能性があるエラー用のエラー コードがあります。 詳細については、 [API Management のポリシーにおけるエラー処理](/azure/api-management/api-management-error-handling-policies)に関するページを参照してください。
 
-## <a name="scopes"> </a>ポリシーの構成方法
+## <a name="how-to-configure-policies"></a><a name="scopes"> </a>ポリシーの構成方法
 
 ポリシーの構成方法については、[ポリシーの設定と編集](set-edit-policies.md)に関する記事をご覧ください。
 
@@ -113,7 +113,7 @@ Azure API Management (APIM) のポリシーは、発行者がその構成を通�
 </ip-filter>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60198264"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229879"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護
 Azure Data Lake Storage Gen1 のデータをセキュリティで保護するには 3 つの手順が必要です。  ユーザーとセキュリティ グループに対してデータへのアクセスを完全に有効にするには、ロールベースのアクセス制御 (RBAC) とアクセス制御リスト (ACL) の両方を設定する必要があります。
@@ -74,13 +74,13 @@ AAD セキュリティ グループを作成する手順および AAD セキュ�
    
     ![セキュリティ グループを追加する](./media/data-lake-store-secure-data/adl.add.user.2.png "セキュリティ グループを追加する")
    
-5. **[Save]** をクリックします。 次に示すように追加したセキュリティ グループが表示されます。
+5. **[保存]** をクリックします。 次に示すように追加したセキュリティ グループが表示されます。
    
     ![追加されたセキュリティ グループ](./media/data-lake-store-secure-data/adl.add.user.3.png "追加されたセキュリティ グループ")
 
 6. これで、ユーザーまたはセキュリティ グループは、Data Lake Storage Gen1 アカウントにアクセスできるようになりました。 特定のユーザーにアクセス権を付与する場合は、対象ユーザーをセキュリティ グループに追加します。 同様に、ユーザーのアクセス権を取り消す場合は、セキュリティ グループから対象ユーザーを削除します。 アカウントには複数のセキュリティ グループを割り当てることもできます。 
 
-## <a name="filepermissions"></a>ユーザーまたはセキュリティ グループを ACL として Data Lake Storage Gen1 ファイル システムに割り当てる
+## <a name="assign-users-or-security-groups-as-acls-to-the-data-lake-storage-gen1-file-system"></a><a name="filepermissions"></a>ユーザーまたはセキュリティ グループを ACL として Data Lake Storage Gen1 ファイル システムに割り当てる
 ユーザーまたはセキュリティ グループを Data Lake Storage Gen1 ファイル システムに割り当てて、Data Lake Storage Gen1 に格納されたデータに対するアクセス制御を設定します。
 
 1. Data Lake Storage Gen1 アカウントのブレードで、 **[データ エクスプローラー]** をクリックします。
@@ -102,7 +102,7 @@ AAD セキュリティ グループを作成する手順および AAD セキュ�
 4. **[追加]** アイコンをクリックして、 **[アクセス許可の割り当て]** ブレードを開きます。 このブレードの **[ユーザーまたはグループの選択]** をクリックし、 **[ユーザーまたはグループの選択]** ブレードで、Azure Active Directory で以前に作成したセキュリティ グループを検索します。 検索対象のグループが多数存在する場合は、上部にあるテキスト ボックスを使用してグループ名をフィルター処理できます。 追加するグループをクリックして、 **[選択]** をクリックします。
    
     ![グループを追加する](./media/data-lake-store-secure-data/adl.acl.3.png "グループを追加する")
-5. **[アクセス許可の選択]** をクリックし、アクセス許可、アクセス許可を再帰的に適用するかどうか、アクセス許可をアクセス ACL、既定の ACL、その両方のどれとして割り当てるかを選択します。 Click **OK**.
+5. **[アクセス許可の選択]** をクリックし、アクセス許可、アクセス許可を再帰的に適用するかどうか、アクセス許可をアクセス ACL、既定の ACL、その両方のどれとして割り当てるかを選択します。 **[OK]** をクリックします。
    
     ![グループにアクセス許可を割り当てる](./media/data-lake-store-secure-data/adl.acl.4.png "グループにアクセス許可を割り当てる")
    

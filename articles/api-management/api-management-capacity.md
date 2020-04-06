@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a585ab059319b15be1f2a86bf10b7dc58da72494
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: b6d949b50be348e72cedfc3710383308b04de106
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299462"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336003"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API Management インスタンスの容量
 
@@ -48,7 +48,7 @@ ms.locfileid: "71299462"
 
 + 要求処理など API Management のデータ プレーン サービス (要求の転送やポリシーの実行が含まれます)。
 + API Management 管理プレーン サービス (Azure portal または ARM 経由で適用された管理アクション、[開発者ポータル](api-management-howto-developer-portal.md)から来る負荷など)。
-+ 一部のオペレーティング システム プロセス (新しい接続での SSL ハンドシェイクのコストを伴うプロセスが含まれます)。
++ 選択したオペレーティング システム プロセス (新しい接続での TLS ハンドシェイクのコストを伴うプロセスが含まれます)。
 
 合計**容量**は、API Management インスタンスの各ユニットの値の平均です。
 
@@ -104,6 +104,6 @@ ms.locfileid: "71299462"
 >[!TIP]  
 > あらかじめトラフィックを見積もることができる場合は、予想するワークロードで APIM インスタンスをテストしてください。 テナントに対する要求の負荷を徐々に増やし、ピーク負荷に対応する容量メトリックの値を監視することができます。 前のセクションの手順に従って、Azure portal を使用して常に容量の使用量を把握してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [API Management インスタンスのアップグレードとスケーリングを行う](upgrade-and-scale.md)

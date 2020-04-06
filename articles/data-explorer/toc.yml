@@ -67,7 +67,13 @@
     - name: データの取り込み
       items:
         - name: ワンクリックでのインジェスト
-          href: ingest-data-one-click.md
+          items:
+            - name: ワンクリックでのインジェストの概要
+              href: ingest-data-one-click.md
+            - name: 新しいテーブルへのワンクリックでのインジェスト
+              href: one-click-ingestion-new-table.md
+            - name: 既存のテーブルへのワンクリックでのインジェスト
+              href: one-click-ingestion-existing-table.md
         - name: ストリーミング インジェスト
           href: ingest-data-streaming.md
         - name: LightIngest の使用
@@ -188,6 +194,8 @@
               href: customer-managed-keys-csharp.md
             - name: Azure Resource Manager テンプレート
               href: customer-managed-keys-resource-manager.md
+        - name: Azure AD アプリを作成する
+          href: provision-azure-ad-app.md
     - name: 管理する
       items:
         - name: クラスター
@@ -208,6 +216,8 @@
                   href: cluster-principal-python.md
                 - name: Azure Resource Manager テンプレート
                   href: cluster-principal-resource-manager.md
+            - name: クラスター言語拡張機能の管理
+              href: language-extensions.md
         - name: データベース
           items:
             - name: フォロワー データベース
@@ -240,6 +250,8 @@
           href: using-diagnostic-logs.md
         - name: メトリックを使用してクラスターの正常性を監視する
           href: using-metrics.md
+        - name: リソースの正常性を使用してクラスターの正常性を監視する
+          href: monitor-with-resource-health.md
     - name: 他のツールとの統合
       items:
         - name: Azure Data Factory
@@ -264,6 +276,8 @@
           href: connect-from-databricks.md
         - name: Jupyter Notebook と Kqlmagic でデータを分析する
           href: kqlmagic.md
+        - name: Azure Notebooks でのデータの分析
+          href: azure-notebooks.md
         - name: Azure Pipelines
           href: devops.md
     - name: トラブルシューティング

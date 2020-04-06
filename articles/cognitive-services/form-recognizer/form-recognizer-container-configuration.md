@@ -52,7 +52,7 @@ Form Recognizer コンテナーのランタイム環境は、`docker run` コマ
 |--|------|-----------|-------------|
 |はい| `Billing` | String | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](form-recognizer-container-howto.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
 
-## <a name="eula-setting"></a>Eula 設定
+## <a name="eula-setting"></a>Eula の設定
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 

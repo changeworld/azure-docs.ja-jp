@@ -6,14 +6,14 @@ ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/23/2019
-ms.topic: conceptual
+ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 40c5f612b5b1571bb3d39f452d64a7005701f7c1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5d876d7db13ce73603f212ec11544cb2f680bf46
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023805"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158182"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central アプリケーションを CSP ポータルから作成して管理する
 
@@ -73,21 +73,13 @@ Azure サブスクリプションがない場合は、Microsoft パートナー 
 
 詳細については、[Azure サブスクリプション](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) に関するページを参照してください。
 
-## <a name="region"></a>リージョン
+## <a name="location"></a>場所
 
-Azure IoT Central アプリケーションを作成するリージョンまたは[地理的な場所](https://azure.microsoft.com/global-infrastructure/geographies/)を選択します。 通常、最適なパフォーマンスを得るには、デバイスに物理的に最も近いリージョンを選択する必要があります。
-
-詳細については、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」と「[Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)」を参照してください。
-
-Azure IoT Central を使用できるリージョンは、[[リージョン別の利用可能な製品]](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) ページで確認できます。
-
-> [!Note]
-> いったんリージョンを選択すると、後でアプリケーションを別のリージョンに移動することはできません。
+"**場所**" は、アプリケーションを作成する[地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 現時点では、IoT Central アプリケーションは、**オーストラリア**、**アジア太平洋**、**ヨーロッパ**、または**米国**、**イギリス**、**日本**の地域で作成できます。 いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
 
 ## <a name="application-template"></a>アプリケーション テンプレート
 
 アプリケーションに使用するアプリケーション テンプレートを選択します。
-
 
 ## <a name="next-steps"></a>次のステップ
 

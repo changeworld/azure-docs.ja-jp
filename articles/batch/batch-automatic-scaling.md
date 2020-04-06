@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: f3edbc4fc48abd9c7df92aedcdea50dd77a0fd4b
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 398b6d9c3fc05a6cf164b4003f57b94ecd6c1972
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086264"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80054011"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードをスケーリングするための自動式を作成する
 
@@ -200,7 +200,7 @@ $NodeDeallocationOption = taskcompletion;
 ## <a name="functions"></a>関数
 次の定義済みの **関数** は、自動スケールの数式の定義に使用できます。
 
-| Function | の戻り値の型 : | 説明 |
+| 機能 | の戻り値の型 : | 説明 |
 | --- | --- | --- |
 | avg(doubleVecList) |double |doubleVecList のすべての値の平均値を返します。 |
 | len(doubleVecList) |double |doubleVecList から作成されたベクター長を返します。 |
@@ -228,7 +228,7 @@ $NodeDeallocationOption = taskcompletion;
 
 *doubleVecList* 値は、評価の前に 1 つの *doubleVec* に変換されます。 たとえば、`v = [1,2,3]` の場合、`avg(v)` の呼び出しは、`avg(1,2,3)` の呼び出しに相当します。 `avg(v, 7)` の呼び出しは、`avg(1,2,3,7)` の呼び出しに相当します。
 
-## <a name="getsampledata"></a>サンプル データの取得
+## <a name="obtain-sample-data"></a><a name="getsampledata"></a>サンプル データの取得
 
 自動スケールの数式は、Batch サービスから提供されるメトリック データ (サンプル) に基づいて作用します。 プール サイズは、サービスから数式に与えられる値に基づいて拡大されたり縮小されたりします。 前のサービス定義の変数は、関連付けられたデータにアクセスするメソッドを提供するオブジェクトです。 たとえば、次の式は、最後の 5 分間の CPU 使用率を取得する要求を示しています。
 
@@ -668,6 +668,7 @@ $isWorkingWeekdayHour = $workHours && $isWeekday;
 $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
 $NodeDeallocationOption = taskcompletion;
 ```
+`$curTime` は、`TimeZoneInterval_Hour` と UTC オフセットの積に `time()` を追加することで、ローカル タイム ゾーンを反映するように調整できます。 たとえば、山地夏時間 (MDT) には `$curTime = time() + (-6 * TimeInterval_Hour);` を使用します。 オフセットは、夏時間の開始時と終了時に調整する必要があることに注意してください (該当する場合)。
 
 ### <a name="example-2-task-based-adjustment"></a>例 2:タスクベースの調整
 

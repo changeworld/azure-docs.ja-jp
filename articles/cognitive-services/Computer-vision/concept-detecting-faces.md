@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3675acf59c6889dd00c8f26089f509bbcd3c724e
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d10e4c98d3e2f00e7139063c8263e65ffd015d7c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945246"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244703"
 ---
 # <a name="face-detection-with-computer-vision"></a>Computer Vision での顔の検出
 
@@ -111,6 +111,9 @@ Computer Vision は、画像内の人間の顔を検出し、検出された各�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="use-the-api"></a>API の使用
 
-顔検出機能を使用する方法については、[画像分析](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)のリファレンス ドキュメントを参照してください。
+顔検出機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 `Faces` を **visualFeatures** クエリ パラメーターに追加します。 その後、完全な JSON 応答が得られたら、`"faces"` セクションのコンテンツを対象に文字列を解析します。
+
+* [クイック スタート: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [クイック スタート: 画像の分析 (REST API)](./quickstarts/csharp-analyze.md)

@@ -1,18 +1,14 @@
 ---
 title: Azure Site Recovery を使用した VMware のディザスター リカバリーについてよくある質問
 description: Azure Site Recovery を使用してオンプレミスの VMware VM を Azure にディザスター リカバリーする場合のよくある質問に対する回答を確認します。
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 11f593bae6b3aab8355a8f39b56639cad8133b51
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ae16138ae44262f53a8f9948d6287f0acf621244
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719553"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240017"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
@@ -69,7 +65,7 @@ Site Recovery では、次のことを実行するために、VMware サーバ�
 
 ### <a name="is-replication-data-sent-to-site-recovery"></a>レプリケーション データは Site Recovery に送信されますか?
 
-いいえ。Site Recovery は、レプリケートされたデータをインターセプトすることも、VM での実行内容に関するどのような情報を持つこともありません。 レプリケーション データは、VMware ハイパーバイザーと Azure Storage の間で交換されます。 Site Recovery には、これらのデータをインターセプトする能力はありません。 レプリケーションとフェールオーバーを調整するために必要なメタデータのみが、Site Recovery サービスに送信されます。  
+いいえ。Site Recovery は、レプリケートされたデータをインターセプトすることも、VM での実行内容に関するどのような情報を持つこともありません。 レプリケーション データは、VMware ハイパーバイザーと Azure Storage の間で交換されます。 Site Recovery には、これらのデータをインターセプトする能力はありません。 レプリケーションとフェールオーバーを調整するために必要なメタデータのみが、Site Recovery サービスに送信されます。
 
 Site Recovery は ISO 27001:2013 および 27018、HIPAA、DPA の認証を受けています。 SOC2 および FedRAMP JAB の評価が進行中です。
 
@@ -305,6 +301,10 @@ Recovery Services コンテナーで、 **[Site Recovery インフラストラ�
 ### <a name="how-do-i-update-the-process-server-to-version-924-or-later-for-accurate-health-information"></a>正確な正常性情報を得るためにバージョン 9.24 以降に更新するにはどうすればよいですか?
 
 [バージョン 9.24](service-updates-how-to.md#links-to-currently-supported-update-rollups) 以降、プロセス サーバーの正常性を示すためにさらに多くのアラートが追加されました。 すべてのアラートが生成されるように、[Site Recovery コンポーネントをバージョン 9.24 以降に更新](service-updates-how-to.md#links-to-currently-supported-update-rollups)してください。
+
+### <a name="how-can-i-ensure-high-availability-of-the-process-server"></a>プロセス サーバーの高可用性を確保するにはどうすればよいですか?
+
+複数のプロセス サーバーを構成することにより、保護されたマシンを異常なプロセス サーバーから稼働中のプロセス サーバーに柔軟に移動できる設計となります。 プロセス サーバー間でのマシンの移動は、この[プロセス サーバー間での VM の移動](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)に関する記事で定義されている手順に従って、明示的または手動で開始する必要があります。
 
 ## <a name="failover-and-failback"></a>フェールオーバーとフェールバック
 

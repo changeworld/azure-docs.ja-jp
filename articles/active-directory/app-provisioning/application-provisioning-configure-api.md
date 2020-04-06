@@ -16,12 +16,12 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50b59bceb07facd944d7159eeb416c7e9e91557c
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: c72217a565071f9531281af1862ba3681e353a4d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522732"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481468"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Microsoft Graph API を使用してプロビジョニングを構成する
 
@@ -55,7 +55,7 @@ Azure portal は、個々のアプリのプロビジョニングを一度に 1 �
 ### <a name="retrieve-the-gallery-application-template-identifier"></a>ギャラリー アプリケーション テンプレート識別子を取得する
 Azure AD アプリケーション ギャラリーのアプリケーションにはそれぞれ、そのアプリケーションのメタデータを記述する[アプリケーション テンプレート](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http)があります。 このテンプレートを使用して、管理用のテナントにアプリケーションとサービス プリンシパルのインスタンスを作成できます。
 
-#### <a name="request"></a>*要求*
+#### <a name="request"></a>*Request*
 
 <!-- {
   "blockType": "request",
@@ -66,7 +66,7 @@ Azure AD アプリケーション ギャラリーのアプリケーションに�
 GET https://graph.microsoft.com/beta/applicationTemplates
 ```
 
-#### <a name="response"></a>*応答*
+#### <a name="response"></a>*Response*
 
 <!-- {
   "blockType": "response",
@@ -107,7 +107,7 @@ Content-type: application/json
 
 前のステップで取得したアプリケーションのテンプレート ID を使用して、ご自身のテナント内にアプリケーションとサービス プリンシパルの[インスタンスを作成](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http)します。
 
-#### <a name="request"></a>*要求*
+#### <a name="request"></a>*Request*
 
 <!-- {
   "blockType": "request",
@@ -123,7 +123,7 @@ Content-type: application/json
 }
 ```
 
-#### <a name="response"></a>*応答*
+#### <a name="response"></a>*Response*
 
 
 <!-- {
@@ -174,9 +174,9 @@ Content-type: application/json
 
 ### <a name="retrieve-the-template-for-the-provisioning-connector"></a>プロビジョニング コネクタのテンプレートを取得する
 
-ギャラリー内の、プロビジョニングが有効になっているアプリケーションには、構成を効率化するためのテンプレートがあります。 次の要求を使用して、[プロビジョニング構成のテンプレートを取得](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http)します。
+ギャラリー内の、プロビジョニングが有効になっているアプリケーションには、構成を効率化するためのテンプレートがあります。 次の要求を使用して、[プロビジョニング構成のテンプレートを取得](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http)します。 ID を指定する必要があることに注意してください。 ID は、前のリソース (この場合は ServicePrincipal) を示します。 
 
-#### <a name="request"></a>*要求*
+#### <a name="request"></a>*Request*
 
 <!-- {
   "blockType": "request",
@@ -187,7 +187,7 @@ GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/temp
 ```
 
 
-#### <a name="response"></a>*応答*
+#### <a name="response"></a>*Response*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -214,7 +214,7 @@ HTTP/1.1 200 OK
 ### <a name="create-the-provisioning-job"></a>プロビジョニング ジョブを作成する
 プロビジョニングを有効にするには、まず[ジョブを作成する](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http)必要があります。 プロビジョニング ジョブを作成するには、以下の要求を使用します。 ジョブに使用するテンプレートを指定するときは、前の手順の templateId を使用します。
 
-#### <a name="request"></a>*要求*
+#### <a name="request"></a>*Request*
 <!-- {
   "blockType": "request",
   "name": "create_synchronizationjob_from_synchronization"
@@ -228,7 +228,7 @@ Content-type: application/json
 }
 ```
 
-#### <a name="response"></a>*応答*
+#### <a name="response"></a>*Response*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -266,10 +266,10 @@ Content-type: application/json
 
 ### <a name="test-the-connection-to-the-application"></a>アプリケーションへの接続をテストする
 
-サードパーティ アプリケーションとの接続をテストします。 次の例は、clientSecret と secretToken を必要とするアプリケーションの場合です。 アプリケーションにはそれぞれ独自の要件があります。 [API ドキュメント](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http)を参照して、使用可能なオプションを確認してください。 
+サードパーティ アプリケーションとの接続をテストします。 次の例は、clientSecret と secretToken を必要とするアプリケーションの場合です。 アプリケーションにはそれぞれ独自の要件があります。 アプリケーションでは、多くの場合、ClientSecret の代わりに BaseAddress を使用します。 アプリで必要な資格情報を確認するには、アプリケーションのプロビジョニング構成ページに移動し、開発者モードでテスト接続をクリックします。 ネットワーク トラフィックに、資格情報に使用されたパラメーターが表示されます。 すべての資格情報の一覧は、[こちら](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http)で確認できます。 
 
-#### <a name="request"></a>*要求*
-```http
+#### <a name="request"></a>*Request*
+```msgraph-interactive
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{id}/validateCredentials
 { 
     credentials: [ 
@@ -278,7 +278,7 @@ POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/job
     ]
 }
 ```
-#### <a name="response"></a>*応答*
+#### <a name="response"></a>*Response*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -292,8 +292,8 @@ HTTP/1.1 204 No Content
 
 プロビジョニングを構成するには、Azure AD とアプリケーションの間に信頼を確立する必要があります。 サードパーティ アプリケーションへのアクセスを承認します。 次の例は、clientSecret と secretToken を必要とするアプリケーションの場合です。 アプリケーションにはそれぞれ独自の要件があります。 [API ドキュメント](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http)を参照して、使用可能なオプションを確認してください。 
 
-#### <a name="request"></a>*要求*
-```json
+#### <a name="request"></a>*Request*
+```msgraph-interactive
 PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
  
 { 
@@ -304,7 +304,7 @@ PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secr
 }
 ```
 
-#### <a name="response"></a>*応答*
+#### <a name="response"></a>*Response*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -318,7 +318,7 @@ HTTP/1.1 204 No Content
 プロビジョニング ジョブが構成されたので、次のコマンドを使用して[ジョブを開始](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http)します。 
 
 
-#### <a name="request"></a>*要求*
+#### <a name="request"></a>*Request*
 <!-- {
   "blockType": "request",
   "name": "synchronizationjob_start"
@@ -327,7 +327,7 @@ HTTP/1.1 204 No Content
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/start
 ```
 
-#### <a name="response"></a>*応答*
+#### <a name="response"></a>*Response*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -344,7 +344,7 @@ HTTP/1.1 204 No Content
 
 プロビジョニング ジョブが実行中になっているので、次のコマンドを使用して、現在のプロビジョニング サイクルの進行状況と、ターゲット システムで作成されたユーザーとグループの数などの現在までの統計情報を追跡します。 
 
-#### <a name="request"></a>*要求*
+#### <a name="request"></a>*Request*
 <!-- {
   "blockType": "request",
   "name": "get_synchronizationjob"
@@ -353,7 +353,7 @@ HTTP/1.1 204 No Content
 GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/
 ```
 
-#### <a name="response"></a>*応答*
+#### <a name="response"></a>*Response*
 <!-- {
   "blockType": "response",
   "truncated": true,
@@ -399,11 +399,11 @@ Content-length: 2577
 ### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>プロビジョニング ログを使用してプロビジョニング イベントを監視する
 プロビジョニング ジョブの状態を監視するだけでなく、[プロビジョニング ログ](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http)を使用して、発生しているすべてのイベントのクエリを実行できます (例: 特定のユーザーを照会して、それらのユーザーが正常にプロビジョニングされたかどうかを判断する)。
 
-#### <a name="request"></a>*要求*
+#### <a name="request"></a>*Request*
 ```msgraph-interactive
 GET https://graph.microsoft.com/beta/auditLogs/provisioning
 ```
-#### <a name="response"></a>*応答*
+#### <a name="response"></a>*Response*
 <!-- {
   "blockType": "response",
   "truncated": true,

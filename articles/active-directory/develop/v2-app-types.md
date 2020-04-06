@@ -17,12 +17,12 @@ ms.date: 04/06/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8bfe668dc2eb4e0e00de34231f4c232f5240a82d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 94cddf097f2a9e51f061909f6bdd3dcd82f18bfe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700755"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230563"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft ID プラットフォームのアプリケーションの種類
 
@@ -43,7 +43,7 @@ Microsoft ID プラットフォーム エンドポイントを使う各アプリ
 
 登録の済んだアプリは、エンドポイントに要求を送ることによって、Microsoft ID プラットフォームと通信します。 これらの要求の詳細に対処するオープン ソース フレームワークとライブラリをご用意しています。 これらのエンドポイントへの要求を作成して、自分で認証ロジックを実装してもかまいません。
 
-```
+```HTTP
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
 https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
@@ -62,7 +62,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ブラウザーからアクセスされる Web アプリ (.NET、PHP、Java、Ruby、Python、Node) の場合、ユーザーのサインインに [OpenID Connect](active-directory-v2-protocols.md) を使うことができます。 OpenID Connect では、Web アプリは ID トークンを受け取ります。 ID トークンは、ユーザーの ID を検証し、要求の形でユーザーに関する情報を提供するセキュリティ トークンです。
 
-```
+```JSON
 // Partial raw ID token
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
@@ -91,7 +91,7 @@ Web サーバー アプリは、単純なサインインを実行するだけで
 
 Microsoft ID プラットフォーム エンドポイントを使用すると、アプリの RESTful Web API などの Web サービスをセキュリティで保護できます。 Web API は、さまざまなプラットフォームや言語で実装できます。 また、Azure Functions で HTTP トリガーを使用して実装することもできます。 Web API では、ID トークンとセッション Cookie の代わりに OAuth 2.0 アクセス トークンを使ってデータをセキュリティ保護し、受信要求を認証します。 Web API の呼び出し元は、HTTP 要求の承認ヘッダーの末尾にアクセス トークンを次のように追加します。
 
-```
+```HTTP
 GET /api/items HTTP/1.1
 Host: www.mywebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6...
@@ -99,7 +99,7 @@ Accept: application/json
 ...
 ```
 
-Web API はそのアクセス トークンを使って API の呼び出し元の ID を検証し、アクセス トークンでエンコードされている要求から呼び出し元に関する情報を抽出します。 Microsoft ID プラットフォーム エンドポイントで使われている各種トークンについて詳しくは、[アクセス トークン](access-tokens.md)および [id_token](id-tokens.md) のリファレンス記事をご覧ください
+Web API はそのアクセス トークンを使って API の呼び出し元の ID を検証し、アクセス トークンでエンコードされている要求から呼び出し元に関する情報を抽出します。 Microsoft ID プラットフォーム エンドポイントで使われている各種のトークンに関する詳細については、[アクセス トークン](access-tokens.md)および [id_token](id-tokens.md) のリファレンス記事を参照してください。
 
 Web API は、アクセス許可 ([スコープ](v2-permissions-and-consent.md)とも呼ばれる) を公開することで、特定の機能またはデータをオプトイン/オプトアウトできるようにします。 呼び出し元のアプリがスコープに対するアクセス許可を取得するには、ユーザーがフローの途中でスコープに同意する必要があります。 Microsoft ID プラットフォーム エンドポイントはユーザーにアクセス許可を求め、Web API が受け取るすべてのアクセス トークンにアクセス許可を記録します。 Web API は、呼び出しごとに受け取るアクセス トークンを検証し、承認チェックを行います。
 
@@ -121,7 +121,7 @@ OAuth2 アクセス トークンを使用して Web API をセキュリティ保
 
 ## <a name="daemons-and-server-side-apps"></a>デーモンおよびサーバー側のアプリ
 
-長時間実行されるプロセスを含んだアプリや、ユーザーの介入なしで動作するアプリも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリは、OAuth 2.0 クライアント資格情報フローで (ユーザーの委任 ID ではなく) アプリの ID を使用して認証を行い、トークンを取得することができます。 アプリの ID は、クライアント シークレットまたは証明書を使用して証明することができます。 詳しくは、「[Authenticating to Microsoft identity platform in daemon apps with certificates (証明書を使用したデーモン アプリでの Microsoft ID プラットフォームへの認証)](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/)」をご覧ください。
+長時間実行されるプロセスを含んだアプリや、ユーザーの介入なしで動作するアプリも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリは、OAuth 2.0 クライアント資格情報フローで (ユーザーの委任 ID ではなく) アプリの ID を使用して認証を行い、トークンを取得することができます。 アプリの ID は、クライアント シークレットまたは証明書を使用して証明することができます。 詳細については、[Microsoft ID プラットフォームを使用する .NET Core デーモン コンソール アプリケーション](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)に関する記事を参照してください。
 
 このフローでは、アプリは `/token` エンドポイントと直接対話してアクセスを取得します。
 

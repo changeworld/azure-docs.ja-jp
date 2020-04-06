@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 1ec0c83655574cb09724bcf97be19519e1f6d72f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 450328fecde3be0ee0cead174c9d172bf3ac1000
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467072"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155972"
 ---
 # <a name="whats-new-in-personalizer"></a>Personalizer の新機能
 
@@ -23,12 +23,16 @@ ms.locfileid: "73467072"
 
 ## <a name="release-notes"></a>リリース ノート 
 
+### <a name="march-2020"></a>2020 年 3 月
+
+* TLS 1.2 は現在、このサービスへのすべての HTTP 要求に適用されるようになりました。 詳細については、[Azure Cognitive Services のセキュリティ](../cognitive-services-security.md)に関するページを参照してください。
+
 ### <a name="november-2019---ignite-conference"></a>2019 年 11 月 - Ignite Conference
 
 * Personalizer の一般提供 (GA)
 * ライフサイクル全体を対象とした Azure Notebooks [チュートリアル](tutorial-use-azure-notebook-generate-loop-data.md)
 
-### <a name="may-6-2019---build-conference"></a>2019 年 5 月 6 日- //Build Conference
+### <a name="may-2019---build-conference"></a>2019 年 5 月- //Build Conference
 
 Build 2019 Conference では、次のプレビュー機能が公開されました。
 
@@ -44,7 +48,7 @@ Build 2019 Conference では、次のプレビュー機能が公開されまし�
 
 [Cognitive Services に対する Azure 更新プログラムのお知らせ](https://azure.microsoft.com/updates/?product=cognitive-services)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [クイック スタート:C# でフィードバック ループを作成する](csharp-quickstart-commandline-feedback-loop.md)
+* [クイック スタート: C# でフィードバック ループを作成する](csharp-quickstart-commandline-feedback-loop.md)
 * [対話型デモを使用する](https://personalizationdemo.azurewebsites.net/)

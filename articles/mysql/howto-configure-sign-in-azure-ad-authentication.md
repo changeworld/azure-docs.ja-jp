@@ -1,17 +1,17 @@
 ---
-title: Azure Active Directory の使用 - Azure Database for MySQL (単一サーバー)
-description: Azure Database for MySQL (単一サーバー) での認証に Azure Active Directory (Azure AD) を設定する方法について説明します
+title: Azure Active Directory の使用 - Azure Database for MySQL
+description: Azure Database for MySQL での認証に Azure Active Directory (Azure AD) を設定する方法について説明します
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 0403edadd491609c2c88d5b5ac6980d97163f8d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110612"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79299007"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL での認証に Azure Active Directory を使用する
 
@@ -205,7 +205,7 @@ Azure Database for MySQL での Azure AD 認証により、ユーザーが MySQL
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Database for MySQL (単一サーバー) を使用した Azure Active Directory 認証](concepts-azure-ad-authentication.md)の全体的な概念を確認する
+* [Azure Database for MySQL を使用した Azure Active Directory 認証](concepts-azure-ad-authentication.md)の全体的な概念を確認する
 
 <!--Image references-->
 

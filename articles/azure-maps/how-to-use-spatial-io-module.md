@@ -1,31 +1,34 @@
 ---
 title: Azure Maps の空間 IO モジュールの使用方法 | Microsoft Azure Maps
 description: Azure Maps Web SDK で提供される、空間 IO モジュールの使用方法について説明します。 このモジュールには、開発者が Azure Maps Web SDK に空間データを簡単に統合するための堅牢な機能があります。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c309473529666d369e8accd1617021249867fb19
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5bcfeebc1fcb96cfdf6ea802293eb4027f339815
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370394"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335206"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure Maps の空間 IO モジュールの使用方法
 
 Azure Maps Web SDK には、JavaScript または TypeScript を使用して、空間データを Azure Maps Web SDK に統合する、**空間 IO モジュール**が用意されています。 開発者は、このモジュールの堅牢な機能により、次のことを行うことができます。
 
-- [一般的な空間ファイルに対するデータの読み書き](spatial-io-read-write-spatial-data.md)。 サポートされているファイル形式は以下の通りです｡空間情報を含む列がある、KML、KMZ、GPX、GeoRSS、GML、および CSV ファイル。
-- [Open Geospatial Consortium (OGC) サービスに接続し、Azure Maps Web SDK と統合する。Web Mapping Service (WMS) と Web Map Tile Service (WMTS) をマップにレイヤーとしてオーバーレイする。](spatial-io-add-ogc-map-layer.md)
+- [一般的な空間データ ファイルに対する読み取りと書き込み](spatial-io-read-write-spatial-data.md)。 サポートされているファイル形式は以下の通りです｡空間情報を含む列がある、KML、KMZ、GPX、GeoRSS、GML、CSV ファイル。 また、Well-Known Text (WKT) もサポートされています。
+- [Open Geospatial Consortium (OGC) サービスに接続し、Azure Maps Web SDK と統合する。Web Map Service (WMS) と Web Map Tile Service (WMTS) をマップにレイヤーとしてオーバーレイする。](spatial-io-add-ogc-map-layer.md)
 - [Web Feature Service (WFS) でデータを照会する。](spatial-io-connect-wfs-service.md)
-- [スタイル情報を含む複雑なデータ セットをオーバーレイし、それらが自動的にレンダリングされるようにする。](spatial-io-add-simple-data-layer.md)
+- [スタイル情報を含む複雑なデータ セットをオーバーレイし、最小コードを使用してそれらが自動的にレンダリングされるようにする。](spatial-io-add-simple-data-layer.md)
 - [高速 XML および区切りファイル リーダーとライター クラスを利用する。](spatial-io-core-operations.md)
 
 このガイドでは、Web アプリケーションに空間 IO モジュールを統合して使用する方法について説明します。
+
+> [!WARNING]
+> 特に別のドメインから参照する場合は、信頼できるソースからのデータとサービスのみを使用します。 空間 IO モジュールではリスクを最小限に抑えるための手順を行いますが、最初にアプリケーションに危険なデータを許可しないことが最も安全な方法です。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -111,7 +114,7 @@ Azure Maps 空間 IO モジュールは、次の 2 つのオプションのい�
     </html>
     ```
 
-2. Azure Maps の空間 IO モジュールを読み込みます。 この演習では、Azure Maps 空間 IO モジュール用の CDN を使用します。 次の参照をお使いの HTML ファイルの `<head>` 要素に追加します。
+2. Azure Maps の空間 IO モジュールを読み込みます。 この演習では、Azure Maps 空間 IO モジュール用の CDN を使用します。 次の参照を HTML ファイルの `<head>` 要素に追加します。
 
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>

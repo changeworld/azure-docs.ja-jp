@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2d93099f0f76f173cc7e77ab7f24f27d1560835
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 16a5e0bb3e50e3a90951572e8d2847d379c1b114
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516775"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297644"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介してファイル サーバーとしてセットアップする
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -37,7 +37,7 @@ ms.locfileid: "68516775"
 StorSimple Virtual Array を構成およびセットアップする前に、以下のことを確認します。
 
 * 「[Hyper-V で StorSimple Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md)」または「[VMware で StorSimple Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md)」の説明に従って、仮想アレイをプロビジョニングし、そのアレイに接続していること。
-* StorSimple Virtual Array を管理するために作成した、StorSimple デバイス マネージャー サービスからのサービス登録キーがあること。 詳細については、StorSimple Virtual Array の「[手順 2: サービス登録キーを取得する](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)」を参照してください。
+* StorSimple Virtual Array を管理するために作成した、StorSimple デバイス マネージャー サービスからのサービス登録キーがあること。 詳細については、「[手順 2: サービス登録キーを取得する](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)」を参照してください。
 * 既存の StorSimple デバイス マネージャー サービスに登録する 2 番目以降の仮想アレイの場合は、サービス データ暗号化キーがあるはずです。 このキーは、最初のデバイスがこのサービスに正常に登録されたときに生成されています。 このキーを紛失した場合は、StorSimple Virtual Array の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 」をご覧ください。
 
 ## <a name="step-by-step-setup"></a>セットアップの手順
@@ -106,7 +106,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     4. **[Apply]** をクリックします。 これにより、構成済みの時刻設定が検証され、適用されます。
 11. デバイスのクラウドの設定を構成します。 この手順では、ローカル デバイスの構成を完了してから、StorSimple デバイス マネージャー サービスにそのデバイスを登録します。
     
-    1. **サービス登録キー** (StorSimple Virtual Array の「[手順 2: サービス登録キーを取得する](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)」で取得したもの) を入力します。
+    1. **サービス登録キー** (「[手順 2: サービス登録キーを取得する](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)」で取得したもの) を入力します。
     2. このサービスに登録する最初のデバイスの場合は、**サービス データ暗号化キー**が提供されます。 このキーをコピーし、安全な場所に保存しておきます。 このキーは、StorSimple デバイス マネージャー サービスに追加のデバイスを登録するときに、サービス登録キーと共に必要になります。 
        
        このサービスに登録する最初のデバイスでない場合は、サービス データ暗号化キーを指定する必要があります。 詳しくは、ローカル Web UI の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 」を参照してください。
@@ -149,7 +149,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     
     3. 場所は、指定したストレージ アカウントに基づいて自動的に入力されます。 
     
-    4. デバイスとクラウドの間のネットワーク通信チャネルを確実にセキュリティで保護するには、SSL を有効にします。
+    4. デバイスとクラウドの間のネットワーク通信チャネルを確実にセキュリティで保護するには、TLS を有効にします。
     
     5. **[追加]** をクリックして、このストレージ アカウントの資格情報を追加します。 
    
@@ -203,7 +203,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
 次に、前の手順で作成した 1 つ以上の共有に接続する必要があります。 StorSimple Virtual Array に接続されている Windows Server ホストで、次の手順を実行します。
 
 #### <a name="to-connect-to-the-share"></a>共有に接続するには
-1. ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R キーを押します。[ファイル名を指定して実行] ウィンドウで、パスとして *&#92;&#92;&lt;ファイル サーバー名&gt;* を指定します。*file server name* は、ファイル サーバーに割り当てたデバイス名で置き換えます。 Click **OK**.
+1. ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R キーを押します。[ファイル名を指定して実行] ウィンドウで、パスとして *&#92;&#92;&lt;ファイル サーバー名&gt;* を指定します。*file server name* は、ファイル サーバーに割り当てたデバイス名で置き換えます。 **[OK]** をクリックします。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. これによりファイル エクスプローラーが開きます。 フォルダーとして作成した共有が表示されます。 コンテンツを表示するには、共有 (フォルダー) を選択してダブルクリックします。
@@ -211,6 +211,6 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
 3. これらの共有にファイルを追加して、バックアップを作成することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ローカル Web UI を使用して [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
 

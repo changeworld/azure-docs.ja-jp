@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MySQL (プレビュー) 用のプライベート リンクのポータルでの設定方法
+title: プライベート リンク - Azure portal - Azure Database for MySQL
 description: Azure portal から Azure Database for MySQL 用のプライベート リンクを構成する方法について説明します
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 193227ff98accb31c15e388c810aea7460a2cb5d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 4a4824a9f8340b12bca7e18562d723eb24e58b71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561665"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371921"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-portal"></a>ポータルを使用して Azure Database for MySQL (プレビュー) 用のプライベート リンクを作成および管理する
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>ポータルを使用して Azure Database for MySQL 用のプライベート リンクを作成および管理する
 
 プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 この記事では、Azure portal を使用して Azure 仮想ネットワーク内に VM を作成し、Azure プライベート エンドポイントを含む Azure Database for MySQL サーバーを作成する方法について説明します。
 
@@ -35,13 +35,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
 2. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | 「*MyVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
-    | Location | **[西ヨーロッパ]** を選択します。|
+    | 場所 | **[西ヨーロッパ]** を選択します。|
     | サブネット - 名前 | 「*mySubnet*」と入力します。 |
     | サブネット アドレス範囲 | 「*10.1.0.0/24*」と入力します。 |
     |||
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -63,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | リージョン | **[西ヨーロッパ]** を選択します。 |
     | 可用性のオプション | 既定値 **[インフラストラクチャ冗長は必要ありません]** をそのまま使用します。 |
     | Image | **[Windows Server 2019 Datacenter]** を選択します。 |
-    | Size | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
+    | サイズ | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
     | **管理者アカウント** |  |
     | ユーザー名 | 任意のユーザー名を入力します。 |
     | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[仮想マシンの作成 - ネットワーク]** で次の情報を選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値 **[MyVirtualNetwork]** のままにします。  |
     | アドレス空間 | 既定値 **[10.1.0.0/24]** のままにします。|
@@ -103,7 +103,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[Azure Database for MySQL]** で、これらの情報を入力します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -112,7 +112,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |サーバー名  | 「*myServer*」と入力します。 この名前を取得する場合は、一意の名前を作成します。|
     | 管理者ユーザー名| 任意の管理者名を入力します。 |
     | Password | 任意のパスワードを入力します。 パスワードは 8 文字以上で、定義された要件を満たす必要があります。 |
-    | Location | MySQL サーバーを配置する Azure リージョンを選択します。 |
+    | 場所 | MySQL サーバーを配置する Azure リージョンを選択します。 |
     |Version  | 必要な MySQL サーバーのデータベース バージョンを選択します。|
     | コンピューティングとストレージ| ワークロードに基づいて、サーバーに必要な価格レベルを選択します。 |
     |||
@@ -126,15 +126,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このセクションでは、MySQL サーバーを作成し、それにプライベート エンドポイントを追加します。 
 
-1. Azure portal の画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[プライベート リンク センター (プレビュー)]** を選択します。
+1. Azure portal の画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[プライベート リンク]** を選択します。
 
-2. **[プライベート リンク センター - 概要]** の**サービスへのプライベート接続を構築する**オプションで、 **[開始]** を選択します。
+2. **[プライベート リンク センター - 概要]** の**サービスへのプライベート接続を構築する**オプションで、 **[開始]** を選択します。
 
     ![Private Link の概要](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. **[Create a private endpoint (Preview) - Basics]\(プライベート エンドポイント (プレビュー) の作成 - 基本\)** で次の情報を入力または選択します。
+1. **[Create a private endpoint - Basics]\(プライベート エンドポイントの作成 - 基本\)** で次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -147,7 +147,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 5. **リソース** を選択します。
 6. **[プライベート エンドポイントの作成 - リソース]** で、次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     |接続方法  | 自分のディレクトリ内の Azure リソースに接続するように選択します。|
     | サブスクリプション| サブスクリプションを選択します。 |
@@ -156,9 +156,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |ターゲット サブリソース |*[mysqlServer]* を選択します|
     |||
 7. **構成** を選択します。
-8. **[Create a private endpoint (Preview) - Configuration]\(プライベート エンドポイント (プレビュー) の作成 - 構成\)** で次の情報を入力または選択します。
+8. **[Create a private endpoint - Configuration]\(プライベート エンドポイントの作成 - 構成\)** で次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     |**ネットワーク**| |
     | 仮想ネットワーク| *[MyVirtualNetwork]* を選択します。 |
@@ -221,7 +221,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. **[新しい接続]** で、この情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | サーバーの種類| **[MySQL]** を選択します。|
     | サーバー名| *[myServer.privatelink.mysql.database.azure.com]* を選択します。 |

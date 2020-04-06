@@ -12,19 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 03/17/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 18e80383bfcbebc6a442663c141100faa56fd061
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c1c9440f7ec70cea98f270f04c3030c800dd0fde
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313809"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79461114"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services 動的暗号化を使用してコンテンツを保護する
 
-Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでの全過程をセキュリティ保護できます。 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。  
+Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでの全過程をセキュリティ保護できます。 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 コンテンツが AES クリア キーで暗号化され、HTTPS で送信される場合、クライアントに到達するまで平文になりません。 
 
 Media Services v3 では、コンテンツ キーがストリーミング ロケーターに関連付けられています ([この例](protect-with-aes128.md)を参照)。 Media Services キー配信サービスを使用している場合は、Azure Media Services でコンテンツ キーを生成できます。 独自のキー配信サービスを使用している場合、または 2 つのデータセンターに同じコンテンツ キーが必要な高可用性シナリオに対応する必要がある場合は、コンテンツ キーを自分で生成する必要があります。
 
@@ -249,7 +249,7 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 > [!NOTE]
 > Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
-## <a name="troubleshoot"></a>[トラブルシューティング]
+## <a name="troubleshoot"></a>トラブルシューティング
 
 `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` エラーが発生する場合は、適切なストリーミング ポリシーを指定していることを確認してください。
 

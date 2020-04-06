@@ -14,12 +14,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 8fc1fab89a89fbf7e20414f292a1b02f77ac7907
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 056b787bbbcde6ba7f9510043deabdcf85ac7467
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776092"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050522"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Chrome ブラウザーにおける SameSite Cookie の変更の処理
 
@@ -36,7 +36,7 @@ ms.locfileid: "76776092"
 
 最近行われた [SameSite の標準への更新](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00)では、Lax に設定されている値が 1 つもない場合、`SameSite` の既定の動作を行うことでアプリを保護することが提案されています。 この軽減策は、 Cookie が、他のサイトから行われた GET 以外の HTTP 要求に制限されることを意味します。 また、送信される Cookie に対する制限を除去するために、**None** の値が導入されました。 これらの更新は間もなく、Chrome ブラウザーの今後のバージョンでリリースされる予定です。
 
-Web アプリが応答モード "form_post" を使用して Microsoft ID プラットフォームで認証すると、ログイン サーバーは、トークンまたは認証コードを送信するために、HTTP POST を使用してアプリケーションに応答します。 この要求はドメイン間要求 (`login.microsoftonline.com` からお使いのドメイン、たとえば https://contoso.com/auth) のため、お使いのアプリによって設定された Cookie は、Chrome の新しいルールに該当するようになりました。 クロスサイトのシナリオで使用する必要がある Cookie は、 *state* と *nonce* の値を保持する Cookie で、これはログイン要求でも送信されす。 セッションを保持するために Azure AD によって削除された他の Cookie があります。
+Web アプリが応答モード "form_post" を使用して Microsoft ID プラットフォームで認証すると、ログイン サーバーは、トークンまたは認証コードを送信するために、HTTP POST を使用してアプリケーションに応答します。 この要求はドメイン間要求 (`login.microsoftonline.com` から自分のドメイン、たとえば `https://contoso.com/auth`) のため、お使いのアプリによって設定された Cookie は、Chrome の新しいルールに該当するようになりました。 クロスサイトのシナリオで使用する必要がある Cookie は、 *state* と *nonce* の値を保持する Cookie で、これはログイン要求でも送信されす。 セッションを保持するために Azure AD によって削除された他の Cookie があります。
 
 Web アプリを更新しないと、この新しい動作によって認証エラーが発生します。
 
@@ -48,7 +48,7 @@ Web アプリを更新しないと、この新しい動作によって認証エ�
 
 以下のコード サンプルで、この手法の例を示します。
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 次の表は、ASP.NET と ASP.NET Core サンプルでの SameSite の変更を回避するプル要求を示しています。
 
@@ -63,13 +63,13 @@ ASP.NET と ASP.NET Core で SameSite cookie を処理する方法の詳細に�
 - [ASP.NET Core での SameSite cookie の使用](https://docs.microsoft.com/aspnet/core/security/samesite)。
 - [SameSite の問題に関する ASP.NET ブログ](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 | サンプル |
 | ------ |
 |  [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp)  |
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 | サンプル | プル要求 |
 | ------ | ------------ |

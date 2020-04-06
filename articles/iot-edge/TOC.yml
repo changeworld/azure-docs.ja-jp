@@ -143,12 +143,18 @@
           href: how-to-auto-provision-x509-certs.md
         - name: 対称キーの構成証明
           href: how-to-auto-provision-symmetric-keys.md
-    - name: カスタム モジュールの開発とデバッグ
+    - name: カスタム モジュールの開発
       items:
-        - name: Visual Studio 2019
+        - name: Visual Studio 2019 を使用した開発
           href: how-to-visual-studio-develop-module.md
-        - name: Visual Studio Code
+        - name: Visual Studio Code を使用した開発
           href: how-to-vs-code-develop-module.md
+        - name: モジュール createOptions の構成
+          items:
+            - name: createOptions を理解して使用する
+              href: how-to-use-create-options.md
+            - name: モジュールにデバイスのローカル ストレージへのアクセスを許可する
+              href: how-to-access-host-storage-from-module.md
     - name: モジュールのデプロイ
       items:
         - name: 個々のデバイスへのデプロイ
@@ -183,11 +189,9 @@
           href: deploy-modbus-gateway.md
     - name: プロキシ サポートの構成
       href: how-to-configure-proxy-support.md
-    - name: エッジでのデータの格納
+    - name: IoT Edge 上の Azure Blob Storage
       items:
-        - name: モジュールにデバイスのローカル ストレージへのアクセスを許可する
-          href: how-to-access-host-storage-from-module.md
-        - name: IoT Edge 上の Azure Blob Storage
+        - name: エッジでの BLOB ストレージについて
           href: how-to-store-data-blob.md
         - name: Blob Storage モジュールのデプロイ
           href: how-to-deploy-blob.md

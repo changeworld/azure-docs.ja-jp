@@ -23,6 +23,9 @@
           href: knowledge-store-create-portal.md
         - name: 検索エクスプローラーを使用したクエリ実行
           href: search-explorer.md
+    - name: ARM テンプレート
+      displayName: Resource Manager
+      href: search-get-started-arm.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -77,14 +80,6 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST サンプル
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
-- name: トレーニング
-  items:
-    - name: 入門 (Microsoft Learn)
-      href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
-    - name: アプリに検索を追加する (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
-    - name: 開発者向けコース (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
 - name: 概念
   items:
     - name: フルテキスト検索
@@ -233,7 +228,7 @@
           href: search-query-simple-examples.md
         - name: 完全な Lucene 構文を使用する
           href: search-query-lucene-examples.md
-        - name: 特殊文字と部分的な語句
+        - name: 部分的な語句と特殊文字
           href: search-query-partial-matching.md
         - name: Power Apps からのクエリ
           href: search-howto-powerapps.md
@@ -261,7 +256,7 @@
           href: search-example-adventureworks-multilevel-faceting.md
     - name: 結果
       items:
-        - name: ページ関連の機能
+        - name: 結果を操作する
           href: search-pagination-page-layout.md
         - name: 関連性のチューニング (スコアリング プロファイル)
           href: index-add-scoring-profiles.md
@@ -460,6 +455,14 @@
           href: 'https://aka.ms/azjobsdemo'
         - name: Search のユース ケース
           href: 'https://searchsamples.azurewebsites.net/'
+    - name: トレーニング
+      items:
+        - name: 入門 (Microsoft Learn)
+          href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
+        - name: アプリに検索を追加する (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
+        - name: 開発者向けコース (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
     - name: よく寄せられる質問
       href: search-faq-frequently-asked-questions.md
     - name: 価格

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2020
+ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: e1c3798c36b497423ea1d0cb5da6fabbd6a935f7
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 9c1a0cb92fbaf98d25799ffb5a85e666e7c05f8c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761017"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158905"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 
@@ -33,7 +33,14 @@ Azure Service Bus キューおよびトピック サブスクリプションで�
 
 API とプロトコルの観点では、DLQ は他のキューとほとんど同じですが、メッセージを再送信できるのは親エンティティの配信不能操作でのみである点が異なります。 また、有効期間は監視されず、DLQ のメッセージを配信不能にすることはできません。 配信不能キューでは、ピーク ロック配信やトランザクション操作が完全にサポートされます。
 
-DLQ は自動的にクリーンアップされないことに注意してください。 DLQ から明示的に取得し、配信不能メッセージに対して [Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) を呼び出すまで、メッセージは DLQ に残ります。
+DLQ は自動的にクリーンアップされません。 DLQ から明示的に取得し、配信不能メッセージに対して [Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) を呼び出すまで、メッセージは DLQ に残ります。
+
+## <a name="dlq-message-count"></a>DLQ のメッセージ数
+配信不能キュー内のメッセージの数をトピック レベルで取得することはできません。 これは、Service Bus が内部エラーをスローしない限り、メッセージはトピック レベルに存在しないためです。 送信者がトピックにメッセージを送信すると、メッセージはミリ秒以内にトピックのサブスクリプションに転送されるため、トピック レベルには存在しなくなります。 したがって、トピックのサブスクリプションに関連付けられている DLQ にメッセージが表示されます。 次の例では、**Service Bus Explorer** で、サブスクリプション "test1" の DLQ に現在 62 件のメッセージがあることが示されています。 
+
+![DLQ のメッセージ数](./media/service-bus-dead-letter-queues/dead-letter-queue-message-count.png)
+
+Azure CLI コマンド [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription?view=azure-cli-latest#az-servicebus-topic-subscription-show) を使用して、DLQ のメッセージ数を取得することもできます。 
 
 ## <a name="moving-messages-to-the-dlq"></a>DLQ にメッセージを移動する
 
@@ -48,7 +55,7 @@ Service Bus には、メッセージがメッセージング エンジン自体�
 | Always (常に) |HeaderSizeExceeded |このストリームのサイズ クォータを超えています。 |
 | !TopicDescription.<br />EnableFilteringMessagesBeforePublishing and SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |exception.Message |
 | EnableDeadLetteringOnMessageExpiration |TTLExpiredException |メッセージの有効期限が切れているため、配信不能です。 |
-| SubscriptionDescription.RequiresSession |セッション id は Null です。 |セッションが有効なエンティティではセッション ID が Null のメッセージは許可されません。 |
+| SubscriptionDescription.RequiresSession |Session ID is null. (セッション ID は Null です。) |セッションが有効なエンティティではセッション ID が Null のメッセージは許可されません。 |
 | !dead letter queue | MaxTransferHopCountExceeded | キュー間で転送するときに許容される最大ホップ数。 値は 4 に設定されています。 |
 | Application での明示的な配信不能処理 |アプリケーションで指定 |アプリケーションで指定 |
 
@@ -56,13 +63,13 @@ Service Bus には、メッセージがメッセージング エンジン自体�
 
 キューおよびサブスクリプションにはそれぞれ [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) および [SubscriptionDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) プロパティがあり、既定値は 10 です。 メッセージがロック状態で配信されたが ([ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode))、明示的に破棄されたかロックが期限切れになった場合は、メッセージの [BrokeredMessage.DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) が増えます。 [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) が [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) を超えると、メッセージは DLQ に移動にされ、`MaxDeliveryCountExceeded` 理由コードが示されます。
 
-この動作を無効にすることはできませんが、[MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) を非常に大きい数に設定することはできます。
+この動作を無効にすることはできませんが、[MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) を大きい数に設定することはできます。
 
 ## <a name="exceeding-timetolive"></a>TimeToLive の超過
 
 [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) または [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) プロパティが **true** に設定されている場合 (既定値は **false**)、期限が切れるメッセージはすべて DLQ に移動され、`TTLExpiredException` 理由コードが示されます。
 
-メイン キューまたはサブスクリプションに対してプルを実行しているアクティブな受信者が少なくとも 1 つある場合は、期限切れメッセージは単に消去され、DLQ に移動されるだけであることに注意してください (この動作は仕様によるものです)。
+メイン キューまたはサブスクリプションに対してプルを実行しているアクティブな受信者が少なくとも 1 つある場合は、期限切れメッセージは単に消去され、DLQ に移動されるだけです (この動作は仕様によるものです)。
 
 ## <a name="errors-while-processing-subscription-rules"></a>サブスクリプション ルールの処理中のエラー
 
@@ -70,7 +77,7 @@ Service Bus には、メッセージがメッセージング エンジン自体�
 
 ## <a name="application-level-dead-lettering"></a>アプリケーション レベルの配信不能処理
 
-システム指定の配信不能処理機能に加え、アプリケーションでは DLQ を使用して許容できないメッセージを明示的に拒否できます。 これには、何らかのシステムの問題により適切に処理できないメッセージ、誤った形式のペイロードを保持するメッセージ、メッセージ レベルのセキュリティ スキームの使用時に認証に失敗したメッセージが含まれる可能性があります。
+システム指定の配信不能処理機能に加え、アプリケーションでは DLQ を使用して許容できないメッセージを明示的に拒否できます。 それらには、何らかのシステムの問題により適切に処理できないメッセージ、誤った形式のペイロードを保持するメッセージ、メッセージ レベルのセキュリティ スキームの使用時に認証に失敗したメッセージなどがあります。
 
 ## <a name="dead-lettering-in-forwardto-or-sendvia-scenarios"></a>ForwardTo または SendVia での配信不能シナリオ
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: 68379fd2334e517df4011c05bb32543f7ce4a173
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3976f4114df6222d34f19e2bb44fd05d53057321
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190402"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80123292"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtual WAN パートナーと仮想ハブの場所
 
@@ -23,7 +23,7 @@ Azure Virtual WAN は、Azure を介して支店間接続を最適化し、自�
 
 オンプレミス デバイスからの接続は、自動化された方法で仮想ハブに向けて確立されます。 仮想ハブは、Microsoft のマネージド仮想ネットワークです。 ハブには、オンプレミス ネットワーク (vpnsite) からの接続を可能にするさまざまなサービス エンドポイントが含まれています。 ハブはリージョンごとに 1 つしか存在できません。
 
-## <a name="automation"></a>接続パートナーからの自動化
+## <a name="automation-from-connectivity-partners"></a><a name="automation"></a>接続パートナーからの自動化
 
 Azure Virtual WAN に接続するデバイスには、接続の自動化が組み込まれています。 これは通常、VPN ブランチ デバイスと Azure Virtual Hub VPN エンドポイント (VPN ゲートウェイ) 間の接続および構成管理を設定するデバイス管理 UI (または同等の機能) で設定されます。
 
@@ -36,13 +36,13 @@ Azure Virtual WAN に接続するデバイスには、接続の自動化が組�
 
 接続パートナーによっては、自動化を拡張して Azure Virtual Hub VNet および VPN Gateway の作成を含める場合があります。 自動化の詳細については、[仮想 WAN パートナー向けの自動化ガイドライン](virtual-wan-configure-automation-providers.md)を参照してください。
 
-## <a name="partners"></a>パートナー経由の接続
+## <a name="connectivity-through-partners"></a><a name="partners"></a>パートナー経由の接続
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-次のパートナーが近い将来のロードマップに追加されることが予定されています。Arista、Aruba HPE、Cisco Systems、F5 Networks、Open Systems、Oracle SD-WAN、SharpLink、VMWare Velocloud。
+次のパートナーが近い将来のロードマップに追加されることが予定されています。128 Technologies、Arista、Aruba HPE、Cisco Systems、F5 Networks、Open Systems、Oracle SD-WAN、SharpLink、VMWare Velocloud。
 
-## <a name="locations"></a>場所
+## <a name="locations"></a><a name="locations"></a>場所
 
 [!INCLUDE [regions](../../includes/virtual-wan-regions-include.md)]
 

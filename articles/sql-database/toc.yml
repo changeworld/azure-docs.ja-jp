@@ -780,6 +780,8 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: アプリケーションの接続
           href: sql-database-managed-instance-connect-app.md
+        - name: アラートを作成する
+          href: sql-database-managed-instance-alerts.md
     - name: サンプル
       items:
         - name: Azure CLI

@@ -4,10 +4,10 @@ description: リソースがいつ変更されたかを見つけ、変更され�
 ms.date: 10/09/2019
 ms.topic: how-to
 ms.openlocfilehash: 9504ac77fc4a3b03434912cc65284e2001df6e03
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873031"
 ---
 # <a name="get-resource-changes"></a>リソースの変更の取得
@@ -21,7 +21,7 @@ ms.locfileid: "74873031"
 
 次のサンプル シナリオにとって、変更の検出と詳細は貴重です。
 
-- インシデント管理中に、_潜在的に_ 関連している変更を把握する。 特定の時間枠の間の変更イベントのクエリを実行し、変更の詳細を評価する。
+- インシデント管理中に、_潜在的に_関連している変更を把握する。 特定の時間枠の間の変更イベントのクエリを実行し、変更の詳細を評価する。
 - CMDB (Configuration Management Database) を最新状態に保つ。 スケジュールされた頻度ですべてのリソースとそれらの全プロパティ セットを更新する代わりに、変更されたものだけを取得します。
 - リソースがコンプライアンス状態を変更したときに他のどのプロパティが変更された可能性があるかを把握する。 これらの追加プロパティの評価により、Azure Policy 定義による管理が必要な可能性がある他のプロパティの分析情報を得ることができます。
 
@@ -40,8 +40,8 @@ ms.locfileid: "74873031"
 
 **resourceChanges** エンドポイントでは、要求本文で次の 2 つのパラメーターが受け入れられます。
 
-- **resourceId** \[required\]:変更を検索する対象の Azure リソース。
-- **interval** \[required\]:**Zulu タイム ゾーン (Z)** を使用して変更イベントを確認する期間の _start_ 日付と _end_ 日付を持つプロパティ。
+- **resourceId** \[必須\]:変更を検索する対象の Azure リソース。
+- **interval** \[必須\]:**Zulu タイム ゾーン (Z)** を使用して変更イベントを確認する期間の _start_ 日付と _end_ 日付を持つプロパティ。
 - **fetchPropertyChanges** (省略可能):応答オブジェクトにプロパティの変更が含まれている場合に設定するブール型プロパティ。
 
 要求本文の例
@@ -284,7 +284,7 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 
 結果を比較するには、**resourceChanges** の **changes** プロパティを使用するか、**resourceChangeDetails** で各スナップショットの**コンテンツ**部分を評価して相違点を確認します。 スナップショットを比較すると、**timestamp**は、予期されているにもかかわらず、常に違いとして示されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [初歩的なクエリ](../samples/starter.md)で使用されている言語を確認します。
 - [高度なクエリ](../samples/advanced.md)で高度な使用方法を確認します。

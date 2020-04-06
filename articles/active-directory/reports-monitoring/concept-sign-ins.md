@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 02/26/2020
+ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb2ff87eb78ed4088225f832b6df55726196493
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656624"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246519"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -47,7 +47,11 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>サインイン アクティビティにアクセスするために必要な Azure AD ライセンスを教えてください。
 
-* すべてのサインイン アクティビティ レポートを閲覧するためには、ご利用のテナントに、Azure AD Premium ライセンスが関連付けられている必要があります。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。 アップグレード前のアクティビティ データがない状態でプレミアム ライセンスにアップグレードした後、データがレポートに表示されるまでには数日間かかります。
+- サインイン アクティビティ レポートは、[Azure AD のすべてのエディション](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)で使用できます。
+
+- API を使用してサインイン データにアクセスする場合は、テナントに [Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) ライセンスが関連付けられている必要があります。
+
+
 
 ## <a name="sign-ins-report"></a>サインイン レポート
 
@@ -172,13 +176,17 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 **関連付け ID** - アクティビティの関連付け ID です。
 
 
+
+
 **条件付きアクセス** - 適用されている条件付きアクセス規則の状態です
 
-- 適用されていません 
+- **適用されていません**:サインイン中にポリシーがユーザーとアプリケーションに適用されていません。
 
-- Success
+- **成功**:サインイン中に 1 つ以上の条件付きアクセス ポリシーがユーザーとアプリケーションに適用されました (ただし、必ずしも他の条件が適用されたとは限りません)。 
 
-- 障害
+- **失敗**:サインイン中に 1 つ以上の条件付きアクセス ポリシーが適用されましたが、満たされませんでした。
+
+
 
 
 

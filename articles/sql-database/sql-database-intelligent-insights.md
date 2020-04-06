@@ -10,19 +10,19 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 12/19/2018
-ms.openlocfilehash: d32ce79d0c8b26e0e78e2bae0f0335315c1a3a40
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/10/2020
+ms.openlocfilehash: d7b9ada17871dc7882209b7a8a449a8edcd61a94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587330"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214069"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>AI を使用してデータベース パフォーマンスの監視とトラブルシューティングを行う Intelligent Insights (プレビュー)
 
-Azure SQL Database Intelligent Insights では、SQL Database と Managed Instance データベースのパフォーマンスに起きていることを把握できます。
+Azure SQL Database Intelligent Insights では、データベースのパフォーマンスに何が起きているかを把握できます。
 
-Intelligent Insights は、組み込まれているインテリジェンスを使って、人工知能によりデータベースの使用状況を継続的に監視し、パフォーマンス低下の原因となる破壊的なイベントを検出します。 検出されると、詳細な分析が実行され、問題のインテリジェントなアセスメントを含む診断ログが生成されます。 このアセスメントは、データベース パフォーマンスの問題の根本原因分析と、可能な場合にはパフォーマンス向上に関する推奨事項で構成されます。
+Intelligent Insights は、組み込まれているインテリジェンスを使って、人工知能によりデータベースの使用状況を継続的に監視し、パフォーマンス低下の原因となる破壊的なイベントを検出します。 検出されると、詳細な分析が実行され、問題のインテリジェントなアセスメントを含む Intelligent Insights リソース ログ (通称 SQLInsights) が生成されます。 このアセスメントは、データベース パフォーマンスの問題の根本原因分析と、可能な場合にはパフォーマンス向上に関する推奨事項で構成されます。
 
 ## <a name="what-can-intelligent-insights-do-for-you"></a>Intelligent Insights でできること
 
@@ -38,17 +38,17 @@ Intelligent Insights は、Azure の組み込みインテリジェンスの固�
 
 ## <a name="how-does-intelligent-insights-work"></a>Intelligent Insights のしくみ
 
-Intelligent Insights は、過去 1 時間のデータベース ワークロードを過去 7 日間のベースライン ワークロードと比較して、データベースのパフォーマンスを分析します。 データベースのワークロードは、データベースのパフォーマンスに最も影響していると判断されたクエリから構成されます。たとえば、最も反復されているクエリや最大のクエリなどです。 各データベースは、その構造体、データ、使用状況、アプリケーションに基づいて一意です。そのため、生成される各ワークロード ベースラインは個々のインスタンスに固有です。 Intelligent Insights はワークロード ベースラインに依存せず、絶対的な運用しきい値も監視し、過剰な待機時間、重大な例外、パフォーマンスに影響を与える可能性のあるクエリ パラメーター化の問題を検出します。
+Intelligent Insights は、過去 1 時間のデータベース ワークロードを過去 7 日間のベースライン ワークロードと比較して、データベースのパフォーマンスを分析します。 データベースのワークロードは、データベースのパフォーマンスに最も影響していると判断されたクエリから構成されます。たとえば、最も反復されているクエリや最大のクエリなどです。 各データベースは、その構造体、データ、使用状況、アプリケーションに基づいて一意です。そのため、生成される各ワークロード ベースラインはそのワークロードに固有です。 Intelligent Insights はワークロード ベースラインに依存せず、絶対的な運用しきい値も監視し、過剰な待機時間、重大な例外、パフォーマンスに影響を与える可能性のあるクエリ パラメーター化の問題を検出します。
 
 人工知能を使用して複数の監視対象メトリックからパフォーマンスの低下問題が検出されると、分析が実行されます。 データベースで発生している状況のインテリジェントな洞察を含む診断ログが生成されます。 Intelligent Insights では、最初の出現から解決まで、データベース パフォーマンスの問題を簡単に追跡できます。 検出された各問題は、最初の問題検出からパフォーマンス向上の検証、その完了までのライフ サイクル全体を通じて追跡されます。
 
 ![データベース パフォーマンスの分析ワークフロー](./media/sql-database-intelligent-insights/intelligent-insights-concept.png)
 
-データベース パフォーマンスの問題の測定と検出に使用されるメトリックは、クエリ実行時間、タイムアウト要求、過剰な待機時間、エラーが発生した要求に基づきます。 メトリックの詳細については、このドキュメントの「[検出メトリック](sql-database-intelligent-insights.md#detection-metrics)」を参照してください。
+データベース パフォーマンスの問題の測定と検出に使用されるメトリックは、クエリ実行時間、タイムアウト要求、過剰な待機時間、エラーが発生した要求に基づきます。 メトリックの詳細については、「[検出メトリック](#detection-metrics)」を参照してください。
 
-特定された SQL Database のパフォーマンス低下は、次のプロパティで構成されるインテリジェントなエントリを含む診断ログに記録されます。
+特定された SQL Database のパフォーマンス低下は、次のプロパティで構成されるインテリジェントなエントリを含む SQLInsights ログに記録されます。
 
-| プロパティ             | 詳細              |
+| プロパティ | 詳細 |
 | :------------------- | ------------------- |
 | データベース情報 | リソース URI など、洞察が検出されたデータベースに関するメタデータ |
 | 監視された時間の範囲 | 検出された洞察の期間の開始日時と終了日時。 |
@@ -59,12 +59,12 @@ Intelligent Insights は、過去 1 時間のデータベース ワークロー�
 | 根本原因分析 | 人間が判読可能な形式で特定された、問題の根本原因分析。 一部の洞察には、可能な場合にパフォーマンス向上に関する推奨事項が含まれます。 |
 |||
 
-Azure SQL Analytics を伴う Intelligent Insights の使用に関する実践的な概要と、一般的な使用シナリオについては、埋め込みのビデオをご覧ください。
+Azure SQL Analytics を伴う Intelligent Insights の使用に関する実践的な概要と、一般的な使用シナリオについては、このビデオをご覧ください。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
-Intelligent Insights は、SQL Database のパフォーマンス問題の検出とトラブルシューティングで威力を発揮します。 Intelligent Insights を使用して SQL Database および Managed Instance データベースのパフォーマンスの問題をトラブルシューティングする方法については、「[Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-intelligent-insights-troubleshoot-performance.md)」をご覧ください。
+Intelligent Insights は、SQL Database のパフォーマンス問題の検出とトラブルシューティングで威力を発揮します。 Intelligent Insights を使用してデータベース パフォーマンスの問題を解決する方法については、「[Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-intelligent-insights-troubleshoot-performance.md)」をご覧ください。
 
 ## <a name="intelligent-insights-options"></a>Intelligent Insights のオプション
 
@@ -72,32 +72,28 @@ Azure SQL Database で使用可能な Intelligent Insights のオプションは
 
 | Intelligent Insights のオプション | 単一データベースとプールされたデータベースのサポート | インスタンス データベースのサポート |
 | :----------------------------- | ----- | ----- |
-| **[Configure Intelligent Insights]\(Intelligent Insights を構成する\)** - データベース用に Intelligent Insights の分析を構成します。 | はい | はい | 
-| **[Stream insights to Azure SQL Analytics]\(Azure SQL Analytics に分析情報をストリーム配信する\)** - Azure SQL Database 用の Azure SQL Analytics 監視ソリューションに分析情報をストリーム配信します。 | はい | はい | 
-| **[Stream insights to Event Hub]\(Event Hubs に分析情報をストリーム配信する\)** - 詳細なカスタム統合のために Event Hubs に分析情報をストリーム配信します。 | はい | はい | 
+| **[Configure Intelligent Insights]\(Intelligent Insights を構成する\)** - データベース用に Intelligent Insights の分析を構成します。 | はい | はい |
+| **[Stream insights to Azure SQL Analytics]\(Azure SQL Analytics に分析情報をストリーム配信する\)** - Azure SQL Database 用の Azure SQL Analytics 監視ソリューションに分析情報をストリーム配信します。 | はい | はい |
+| **[Stream insights to Event Hub]\(Event Hubs に分析情報をストリーム配信する\)** - 詳細なカスタム統合のために Event Hubs に分析情報をストリーム配信します。 | はい | はい |
 | **[Stream insights to Azure Storage]\(Azure Storage に分析情報をストリーム配信する\)** - 詳細な分析と長期的なアーカイブのために、Azure Storage に分析情報をストリーム配信します。 | はい | はい |
 
-## <a name="configure-intelligent-insights"></a>Intelligent Insights を構成する
+## <a name="configure-the-export-of-the-intelligent-insights-log"></a>Intelligent Insights ログのエクスポートを構成する
 
-Intelligent Insights の出力は、優れたパフォーマンス診断ログです。 Azure SQL Analytics、Azure Event Hubs、Azure Storage、またはサード パーティの製品にストリーミングして、このログを複数の方法で使用できます。
+Intelligent Insights の出力は、分析のためにいずれかの宛先にストリーム配信できます。
 
-- Azure portal のユーザー インターフェイスで分析情報を表示するには、この製品を [Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) と共に使用します。 これは統合された Azure ソリューションであり、分析情報を表示する最も一般的な方法です。
-- カスタムの監視および警告シナリオを開発する場合は、この製品と Azure Event Hubs を使用します。
-- カスタム レポートや長期データ アーカイブなどのカスタム アプリケーションを開発する場合は、この製品と Azure Storage を使用します。
+- Azure portal のユーザー インターフェイスで分析情報を表示する目的で、Log Analytics ワークスペースにストリーム配信された出力を [Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) と共に使用できます。 これは統合された Azure ソリューションであり、分析情報を表示する最も一般的な方法です。
+- カスタムの監視および警告シナリオを開発する目的で、Azure Event Hubs にストリーム配信された出力を使用できます。
+- カスタム レポートや長期データ アーカイブなどのカスタム アプリケーションを開発する目的で、Azure Storage にストリーム配信された出力を使用できます。
 
-Azure SQL Analytics、Azure Event Hub、Azure Storage などの他製品、または使用するサード パーティ製品との Intelligent Insights の統合を実行するには、最初にデータベースの診断設定ブレードで Intelligent Insights ログ記録 ("SQLInsights" ログ) を有効にしてから、これらの製品のいずれかに Intelligent Insights ログ データがストリーミングされるように構成します。
+Azure SQL Analytics、Azure Event Hub、Azure Storage、または情報を利用するサード パーティ製品は、最初にデータベースの診断設定ブレードで Intelligent Insights ログ記録 ("SQLInsights" ログ) を有効にしてから、これらの宛先のいずれかに Intelligent Insights ログ データがストリーミングされるように構成することで統合されます。
 
-Intelligent Insights のログ記録を有効にして、使用する製品にログ データがストリーミングされるように構成する方法については、「[Azure SQL Database のメトリックと診断のロギング](sql-database-metrics-diag-logging.md)」をご覧ください。
+Intelligent Insights のログ記録を有効にして、情報を利用する製品にメトリックとリソース ログ データがストリーミングされるように構成する方法については、「[Azure SQL Database のメトリックと診断のロギング](sql-database-metrics-diag-logging.md)」をご覧ください。
 
 ### <a name="set-up-with-azure-sql-analytics"></a>Azure SQL Analytics で使用するように設定する
 
-Azure SQL Analytics ソリューションは、Intelligent Insights 診断ログ データと共に、データベースのパフォーマンスについてのグラフィカル ユーザー インターフェイス、レポート、アラート機能を提供します。
+Azure SQL Analytics ソリューションでは、Intelligent Insights リソース ログ データを利用し、データベースのパフォーマンスについてのグラフィカル ユーザー インターフェイス、レポート、アラート機能を提供します。
 
-> [!TIP]
-> 簡単な使用開始方法: Intelligent Insights を使い始めるときの最も簡単な方法は、データベース パフォーマンスの問題に対するグラフィカル ユーザー インターフェイスを提供する Azure SQL Analytics と共に使用することです。 Marketplace から Azure SQL Analytics ソリューションを追加し、このソリューションの内部にワークスペースを作成してから、Intelligent Insights を有効にするデータベースごとに、データベースの [診断設定] ブレードで、Azure SQL Analytics のワークスペースに対する "SQLInsights" ログのストリーミングを構成します。
->
-
-前提となる要件は、Marketplace から Azure portal ダッシュボードに Azure SQL Analytics を追加して、ワークスペースを作成することです。[Azure SQL Analytics の構成](../azure-monitor/insights/azure-sql.md#configuration)に関するページをご覧ください。
+Marketplace から Azure portal ダッシュボードに Azure SQL Analytics を追加して、ワークスペースを作成する方法については、[Azure SQL Analytics の構成](../azure-monitor/insights/azure-sql.md#configuration)に関するページをご覧ください。
 
 Azure SQL Analytics と共に Intelligent Insights を使用するには、前のステップで作成した Azure SQL Analytics ワークスペースにストリーミングされるように、Intelligent Insights ログ データを構成します。「[Azure SQL Database のメトリックと診断のロギング](sql-database-metrics-diag-logging.md)」をご覧ください。
 
@@ -107,13 +103,13 @@ Azure SQL Analytics で表示された Intelligent Insights の例を以下に�
 
 ### <a name="set-up-with-event-hubs"></a>Event Hubs で使用するように設定する
 
-Event Hubs と共に Intelligent Insights を使用するには、Event Hubs に Intelligent Insights ログ データがストリーミングされるように構成します。「[Azure Diagnostics ログを Event Hubs 名前空間にストリーミングする](../azure-monitor/platform/resource-logs-stream-event-hubs.md)」をご覧ください。
+Event Hubs と共に Intelligent Insights を使用する方法と、Event Hubs に Intelligent Insights ログ データがストリーミングされるように構成する方法については、「[Azure SQL Database のメトリックと診断のロギング](sql-database-metrics-diag-logging.md)」と「[Azure Diagnostics ログを Event Hubs 名前空間にストリーミングする](../azure-monitor/platform/resource-logs-stream-event-hubs.md)」をご覧ください。
 
-Event Hubs をカスタムの監視とアラートの設定に使用するには、「[Event Hubs におけるメトリックと診断ログの活用方法](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)」をご覧ください。
+Event Hubs をカスタムの監視とアラートの設定に使用するには、「[Event Hubs におけるメトリックと診断ログの活用方法](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)」をご覧ください。
 
 ### <a name="set-up-with-azure-storage"></a>Azure Storage で使用するように設定する
 
-Storage と共に Intelligent Insights を使用するには、Storage に Intelligent Insights ログ データがストリーミングされるように構成します。「[Azure Storage にストリーミングする](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)」をご覧ください。
+Storage と共に Intelligent Insights を使用する方法と、Storage に Intelligent Insights ログ データがストリーミングされるように構成する方法については、「[Azure SQL Database のメトリックと診断のロギング](sql-database-metrics-diag-logging.md)」と「[Azure Storage にストリーミングする](sql-database-metrics-diag-logging.md#stream-into-azure-storage)」をご覧ください。
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>Intelligent Insights ログのカスタム統合
 
@@ -187,7 +183,5 @@ Intelligent Insights ログには、エラーになった要求数が出力さ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Intelligent Insights を使用した SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-intelligent-insights-troubleshoot-performance.md)の習得
-- [Intelligent Insights SQL Database パフォーマンス診断ログ](sql-database-intelligent-insights-use-diagnostics-log.md)の使用
 - [SQL Analytics を使用した SQL Database の監視](../azure-monitor/insights/azure-sql.md)の習得
-- [Azure リソースからのログ データの収集と使用](../azure-monitor/platform/platform-logs-overview.md)の習得
+- [Intelligent Insights を使用した SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-intelligent-insights-troubleshoot-performance.md)の習得

@@ -1,5 +1,5 @@
 ---
-title: Speech SDK を使用してクライアントでカスタム コマンドを実行する方法
+title: Speech SDK を使用してクライアント上でコマンドを実行する
 titleSuffix: Azure Cognitive Services
 description: この記事では、Speech SDK を使用して、クライアントでカスタム コマンド アクティビティを処理する方法について説明します。
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 03/12/2020
 ms.author: donkim
-ms.openlocfilehash: b55bb1c8379cf0a80a95aa0ba1a29297154d5831
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e109955774722da7f55defe1417de35ff202cce8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156507"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367751"
 ---
-# <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>方法:Speech SDK を使用してクライアントでコマンドを実行する (プレビュー)
+# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>Speech SDK (プレビュー) を使用してクライアントからのコマンドを実行する
 
 カスタム コマンド アプリケーションを使用してタスクを実行するために、接続されているクライアント デバイスにカスタム ペイロードを送信できます。
 
@@ -53,7 +53,7 @@ ms.locfileid: "76156507"
    | ------- | --------------- | ----------- |
    | 規則の名前 | UpdateDeviceState | ルールの目的を説明する名前 |
    | 条件 | 必須のパラメーター - `OnOff` および `SubjectDevice` | ルールを実行できるタイミングを決定する条件 |
-   | アクション | `SendActivity` (下記参照) | ルール条件が真のときに実行するアクション |
+   | Actions | `SendActivity` (下記参照) | ルール条件が真のときに実行するアクション |
 
    > [!div class="mx-imgBorder"]
    > ![アクティビティの送信のペイロード](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)

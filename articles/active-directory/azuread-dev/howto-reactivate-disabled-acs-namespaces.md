@@ -12,12 +12,13 @@ ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.openlocfilehash: 85696a5580c4ed6c03f257787e2693a61a6158de
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: ff0ce05b13fea8409475e3415c5d810d7c79769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163544"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154867"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>方法:無効化された Access Control Service 名前空間を再アクティブ化する
 
@@ -91,14 +92,14 @@ Microsoft では、2019 年 1 月 21 日より、新しい延長要請を受け�
 1. Azure portal にサインインし、[新しいサポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を作成します。
 1. 次の例に示すように、新しいサポート リクエスト フォームに入力します。
 
-    | サポート リクエストのフィールド | Value |
+    | サポート リクエストのフィールド | 値 |
     |-----------------------|--------------------|
     | **問題の種類** | `Technical` |
     | **サブスクリプション** | 対象のサブスクリプションに設定します |
     | **サービス** | `All services` |
     | **リソース** | `General question/Resource not available` |
     | **問題の種類** | `ACS to SAS Migration` |
-    | **[件名]** | 問題を説明します |
+    | **件名** | 問題を説明します |
 
    ![新しいテクニカル サポート リクエストの例](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 

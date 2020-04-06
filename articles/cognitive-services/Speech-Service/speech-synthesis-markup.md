@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/23/2020
 ms.author: dapine
-ms.openlocfilehash: c4a27db8bec6dbbd2f1b2be8acfdd034d45d37d5
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 7d5dd79399b15ade90173a55aeb71dacbc61fa78
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561922"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80365807"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -50,16 +50,16 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 **構文**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
 ```
 
 **属性**
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `version` | ドキュメント マークアップの解釈に使用される SSML 仕様のバージョンを指定します。 現行バージョンは 1.0 です。 | Required |
-| `xml:lang` | ルート ドキュメントの言語を指定します。 この値には、小文字、2 文字の言語コード (`en` など)、または言語コードと大文字の国/地域 (`en-US` など) を含めることができます。 | Required |
-| `xmlns` | SSML のドキュメントのマークアップ ボキャブラリ (要素型と属性名) を定義するドキュメントへの URI を指定します。 現在の URI は https://www.w3.org/2001/10/synthesis です。 | Required |
+| `version` | ドキュメント マークアップの解釈に使用される SSML 仕様のバージョンを指定します。 現行バージョンは 1.0 です。 | 必須 |
+| `xml:lang` | ルート ドキュメントの言語を指定します。 この値には、小文字、2 文字の言語コード (`en` など)、または言語コードと大文字の国/地域 (`en-US` など) を含めることができます。 | 必須 |
+| `xmlns` | SSML のドキュメントのマークアップ ボキャブラリ (要素型と属性名) を定義するドキュメントへの URI を指定します。 現在の URI は http://www.w3.org/2001/10/synthesis です。 | 必須 |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>テキスト読み上げのための音声を選択する
 
@@ -77,16 +77,16 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `name` | テキスト読み上げの出力に使用される音声を識別します。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。 | Required |
+| `name` | テキスト読み上げの出力に使用される音声を識別します。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。 | 必須 |
 
 **例**
 
 > [!NOTE]
-> この例では、`en-US-Jessa24kRUS` 音声を使用します。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。
+> この例では、`en-US-AriaRUS` 音声を使用します。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。
 
 ```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         This is the text that is spoken.
     </voice>
 </speak>
@@ -100,7 +100,7 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `name` | テキスト読み上げの出力に使用される音声を識別します。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。 | Required |
+| `name` | テキスト読み上げの出力に使用される音声を識別します。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。 | 必須 |
 
 > [!IMPORTANT]
 > 複数の音声はワード境界機能に対応していません。 複数の音声を使用するには、ワード境界機能を無効にする必要があります。
@@ -176,12 +176,12 @@ speechConfig!.setPropertyTo(
 **例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         Good morning!
     </voice>
     <voice name="en-US-Guy24kRUS">
-        Good morning to you too Jessa!
+        Good morning to you too Aria!
     </voice>
 </speak>
 ```
@@ -194,44 +194,48 @@ speechConfig!.setPropertyTo(
 既定では、テキスト読み上げサービスは、標準の音声とニューラル音声の両方のニュートラルな話し方を使用してテキストを合成します。 ニューラル音声では、話し方を調整して、`<mstts:express-as>` 要素を使用して陽気さ、共感、または感情を表現することができます。 これは、Speech Service に固有の省略可能な要素です。
 
 現在、これらのニューラル音声では話し方の調整がサポートされています。
-* `en-US-JessaNeural`
+* `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
+* `pt-BR-FranciscaNeural`
 
 変更は文章レベルで適用され、スタイルは音声によって異なります。 スタイルがサポートされていない場合、サービスは既定のニュートラルな話し方の音声を返します。
 
 **構文**
 
 ```xml
-<mstts:express-as type="string"></mstts:express-as>
+<mstts:express-as style="string"></mstts:express-as>
 ```
 
 **属性**
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `type` | 話し方を指定します。 現在のところ、話し方は音声に固有です。 | ニューラル音声の話し方を調整する場合は、必須です。 `mstts:express-as` を使用する場合は、型を指定する必要があります。 無効な値を指定すると、この要素は無視されます。 |
+| `style` | 話し方を指定します。 現在のところ、話し方は音声に固有です。 | ニューラル音声の話し方を調整する場合は、必須です。 `mstts:express-as` を使用する場合は、スタイルを指定する必要があります。 無効な値を指定すると、この要素は無視されます。 |
 
 各ニューラル音声でサポートされている話し方を確認するには、次の表を使用してください。
 
-| 音声 | Type | 説明 |
+| 音声 | Style | 説明 |
 |-------|------|-------------|
-| `en-US-JessaNeural` | `type="cheerful"` | ポジティブで幸せな感情を示します |
-| | `type="empathy"` | 思いやりと理解を示します |
-| | `type="chat"` | カジュアルで緩やかな語調で話します |
-| | `type="newscast"` | ニュース放送に似たフォーマルなトーンを示します |
-| | `type="customerservice"` | 顧客サービスとして友好的で忍耐強く話します |
-| `zh-CN-XiaoxiaoNeural` | `type="newscast"` | ニュース放送に似たフォーマルなトーンを示します |
-| | `type="sentiment"` | 感動的なメッセージやストーリーを伝えます |
+| `en-US-AriaNeural` | `style="newscast"` | ニュースを読み上げる改まった職業的な語調を表します |
+| | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します |
+| | `style="chat"` | カジュアルでリラックスした語調を表します |
+| | `style="cheerful"` | 肯定的で幸せな語調を表します |
+| | `style="empathetic"` | 思いやりと理解を示します |
+| `zh-CN-XiaoxiaoNeural` | `style="newscast"` | ニュースを読み上げる改まった職業的な語調を表します |
+| | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します |
+| | `style="assistant"` | デジタル アシスタント向けの暖かくてリラックスした語調を表します  |
+| | `style="lyrical"` | 音楽的でセンチメンタルな方法で感情を表現します |
+| `pt-BR-FranciscaNeural` | `style="cheerful"` | 肯定的で幸せな語調を表します |
 
 **例**
 
 この SSML スニペットは、`<mstts:express-as>` 要素を使用して話し方を `cheerful` に変更する方法を示しています。
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis"
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
        xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
-    <voice name="en-US-JessaNeural">
-        <mstts:express-as type="cheerful">
+    <voice name="en-US-AriaNeural">
+        <mstts:express-as style="cheerful">
             That'd be just amazing!
         </mstts:express-as>
     </voice>
@@ -272,8 +276,8 @@ speechConfig!.setPropertyTo(
 **例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
@@ -297,8 +301,8 @@ speechConfig!.setPropertyTo(
 **例**
 
 ```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <p>
             <s>Introducing the sentence element.</s>
             <s>Used to mark individual sentences.</s>
@@ -327,26 +331,129 @@ speechConfig!.setPropertyTo(
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `alphabet` | `ph` 属性の文字列の発音を合成するときに使用する音標文字を指定します。 アルファベット順を指定する文字列は、小文字で指定する必要があります。 指定できる可能性のあるアルファベットは次のとおりです。<ul><li>ipa &ndash; 国際音標文字</li><li>sapi &ndash; Speech API 音素セット</li><li>ups &ndash; 汎用音素セット</li></ul>アルファベットは、要素内の音素にのみ適用されます。 詳細については、[音標文字リファレンス](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)に関するページを参照してください。 | 省略可能 |
+| `alphabet` | `ph` 属性の文字列の発音を合成するときに使用する音標文字を指定します。 アルファベット順を指定する文字列は、小文字で指定する必要があります。 指定できる可能性のあるアルファベットは次のとおりです。<ul><li>`ipa` &ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国際音標文字 <span class="docon docon-navigate-external x-hidden-focus"></span></a></li><li>`sapi` &ndash; [Speech サービス発音アルファベット](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash; 汎用音素セット</li></ul><br>アルファベットは、要素内の `phoneme` にのみ適用されます。 | 省略可能 |
 | `ph` | `phoneme` 要素内の単語の発音を指定する音素を含む文字列。 指定した文字列に認識されない音素が含まれている場合、テキスト読み上げ (TTS) サービスは SSML ドキュメント全体を拒否し、ドキュメントに指定されている音声出力を生成しません。 | 音素を使用する場合は必須です。 |
 
 **使用例**
 
-```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
-        <s>His name is Mike <phoneme alphabet="ups" ph="JH AU"> Zhou </phoneme></s>
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
+        <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
     </voice>
 </speak>
 ```
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
-        <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
+    <voice name="en-US-AriaRUS">
+        <phoneme alphabet="sapi" ph="iy eh n y uw eh s"> en-US </phoneme>
     </voice>
 </speak>
 ```
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
+        <s>His name is Mike <phoneme alphabet="ups" ph="JH AU"> Zhou </phoneme></s>
+    </voice>
+</speak>
+```
+
+## <a name="use-custom-lexicon-to-improve-pronunciation"></a>カスタム辞書を使用して発音を改善する
+
+TTS では、会社や外国の名前などの単語を正確に発音できない場合があります。 開発者は、SSML で `phoneme` および `sub` タグを使用してこのようなエンティティの読み取りを定義するか、`lexicon` タグを使用してカスタム辞書ファイルを参照することで複数のエンティティの読み取りを定義することができます。
+
+**構文**
+
+```XML
+<lexicon uri="string"/>
+```
+
+**属性**
+
+| 属性 | 説明 | 必須/省略可能 |
+|-----------|-------------|---------------------|
+| `uri` | 外部 PLS ドキュメントのアドレス。 | 必須。 |
+
+**使用方法**
+
+手順 1:カスタム辞書を定義する 
+
+.xml または .pls ファイルとして保存されたカスタム辞書項目の一覧によって、エンティティの読み取りを定義できます。
+
+**例**
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="ipa" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme> 
+    <alias>By the way</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme> 
+    <phoneme> bɛˈniːnji</phoneme>
+  </lexeme>
+</lexicon>
+```
+
+各 `lexeme` 要素は辞書項目です。 `grapheme` には、`lexeme` の正書法を説明するテキストが含まれています。 読み上げフォームは `alias` として指定できます。 音素文字列は `phoneme` 要素で指定できます。
+
+`lexicon` 要素には、少なくとも 1 つの `lexeme` 要素が含まれています。 各 `lexeme` 要素には、少なくとも 1 つの `grapheme` 要素と、1 つ以上の `grapheme`、`alais`、および `phoneme` 要素が含まれています。 `grapheme` 要素には、<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">正書法 <span class="docon docon-navigate-external x-hidden-focus"></span></a> を説明するテキストが含まれています。 `alias` 要素は、頭字語または短縮語の発音を示すために使用されます。 `phoneme` 要素には、`lexeme` の発音方法を説明するテキストを指定します。
+
+カスタム辞書ファイルの詳細については、W3C Web サイトの「[Pronunciation Lexicon Specification (PLS) Version 1.0](https://www.w3.org/TR/pronunciation-lexicon/)」 (発音辞書仕様 (PLS) バージョン 1.0) を参照してください。
+
+手順 2:手順 1 で作成したカスタム辞書ファイルをオンラインでアップロードします。任意の場所に保存できます。たとえば、[Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) のように、Microsoft Azure に保存することをお勧めします。
+
+手順 3:SSML でカスタム辞書ファイルを参照する
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
+          xmlns:mstts="http://www.w3.org/2001/mstts" 
+          xml:lang="en-US">
+<lexicon uri="http://www.example.com/customlexicon.xml"/>
+BTW, we will be there probably 8:00 tomorrow morning.
+Could you help leave a message to Robert Benigni for me?
+</speak>
+```
+"BTW" は "By the way" と読みます。 "Benigni" は、IPA の指定により、"bɛˈniːnji" と読みます。  
+
+**制限事項**
+- ファイル サイズ: カスタム辞書ファイル サイズの上限は 100 KB です。このサイズを超えると、合成要求は失敗します。
+- 辞書キャッシュの更新: カスタム辞書は、最初に読み込まれたときに TTS サービスのキーとして URI と共にキャッシュされます。 15 分間は同じ URI の辞書が再読み込みされないため、カスタム辞書の変更が反映されるまでに最大 15 分間待つ必要があります。
+
+**Speech サービス発音設定**
+
+上記のサンプルでは、国際音標アルファベット(IPA 音素セットとも呼ばれます) を使用しています。 IPA は国際標準であるため、開発者は IPA を使用することをお勧めします。 IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`、`zh-TW`) の発音セットが定義されています。
+
+次に示すように、カスタム辞書では `alphabet` 属性の谷として `sapi` を使用できます。
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="sapi" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme>
+    <alias> By the way </alias>
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme>
+    <phoneme> b eh 1 - n iy - n y iy </phoneme>
+  </lexeme>
+</lexicon>
+```
+
+詳細な Speech サービスの発音記号については、「[Speech サービス発音設定](speech-ssml-phonetic-sets.md)」を参照してください。
 
 ## <a name="adjust-prosody"></a>韻律を調整する
 
@@ -364,12 +471,12 @@ speechConfig!.setPropertyTo(
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `pitch` | テキストのベースラインのピッチを示します。 ピッチは次のように表されます。<ul><li>絶対値。数字の後に "Hz" (ヘルツ) が付いて表されます。 たとえば、600 Hz。</li><li>相対値。前に "+" または "-" が付き、後にピッチの変更量を指定する "Hz" または "st" が付いた数字として表されます。 たとえば、+80 Hz、-2st。 "st" は、変更単位が半音 (標準の全音階での全音の半分) であることを示します。</li><li>定数値:<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>既定値 (default)</li></ul></li></ul>。 | 省略可能 |
+| `pitch` | テキストのベースラインのピッチを示します。 ピッチは次のように表されます。<ul><li>絶対値。数字の後に "Hz" (ヘルツ) が付いて表されます。 たとえば、600 Hz。</li><li>相対値。前に "+" または "-" が付き、後にピッチの変更量を指定する "Hz" または "st" が付いた数字として表されます。 たとえば、+80 Hz、-2st。 "st" は、変更単位が半音 (標準の全音階での全音の半分) であることを示します。</li><li>定数値:<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>default</li></ul></li></ul>。 | 省略可能 |
 | `contour` | ニューラル音声では、音調はサポートされていません。 音調とは音の高さの変化です。 この変化は、音声出力において指定の時間位置にあるターゲットの配列として表わされます。 各ターゲットは、パラメーターのペアのセットによって定義されます。 次に例を示します。 <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>パラメーターの各セットの最初の値は、ピッチの変更位置をテキストの継続時間の割合として指定します。 2 番目の値は、ピッチの相対値または列挙値を使用して、ピッチを増減する量を指定します (`pitch` を参照)。 | 省略可能 |
 | `range` | テキストのピッチの範囲を表す値。 `range` は、`pitch` の記述に使用されるものと同じ絶対値、相対値、または列挙値を使用して表すことができます。 | 省略可能 |
-| `rate` | テキストの読み上げ速度を示します。 `rate` は次のように表されます。<ul><li>相対値。既定値の乗数として機能する数字で表されます。 たとえば、値 *1* では速度は変更されません。 値 *0.5* では、速度が半分になります。 値 *3* では、速度が 3 倍になります。</li><li>定数値:<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>既定値 (default)</li></ul></li></ul> | 省略可能 |
+| `rate` | テキストの読み上げ速度を示します。 `rate` は次のように表されます。<ul><li>相対値。既定値の乗数として機能する数字で表されます。 たとえば、値 *1* では速度は変更されません。 値 *0.5* では、速度が半分になります。 値 *3* では、速度が 3 倍になります。</li><li>定数値:<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>default</li></ul></li></ul> | 省略可能 |
 | `duration` | 音声合成 (TTS) サービスがテキストを読んでいる間に経過する時間 (秒またはミリ秒)。 たとえば、*2s* または *1800ms* です。 | 省略可能 |
-| `volume` | 読み上げている音声の音量レベルを示します。 音量は次のように表されます。<ul><li>絶対値。0.0 から 100.0 (*quietest* から *loudest* まで) の範囲の数字として表されます。 たとえば、75 です。 既定値は 100.0 です。</li><li>相対値。音量の変更量を指定する、前に "+" または "-" が付いた数字として表されます。 たとえば、+10、-5.5。</li><li>定数値:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>既定値 (default)</li></ul></li></ul> | 省略可能 |
+| `volume` | 読み上げている音声の音量レベルを示します。 音量は次のように表されます。<ul><li>絶対値。0.0 から 100.0 (*quietest* から *loudest* まで) の範囲の数字として表されます。 たとえば、75 です。 既定値は 100.0 です。</li><li>相対値。音量の変更量を指定する、前に "+" または "-" が付いた数字として表されます。 たとえば、+10、-5.5。</li><li>定数値:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>default</li></ul></li></ul> | 省略可能 |
 
 ### <a name="change-speaking-rate"></a>読み上げ速度を変更する
 
@@ -378,7 +485,7 @@ speechConfig!.setPropertyTo(
 **例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-Guy24kRUS">
         <prosody rate="+30.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
@@ -394,8 +501,8 @@ speechConfig!.setPropertyTo(
 **例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <prosody volume="+20.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -410,7 +517,7 @@ speechConfig!.setPropertyTo(
 **例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-Guy24kRUS">
         Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
     </voice>
@@ -425,8 +532,8 @@ speechConfig!.setPropertyTo(
 **例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <prosody contour="(80%,+20%) (90%,+30%)" >
             Good morning.
         </prosody>
@@ -447,7 +554,7 @@ speechConfig!.setPropertyTo(
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `interpret-as` | 要素のテキストのコンテンツの種類を示します。 種類の一覧については、次の表を参照してください。 | Required |
+| `interpret-as` | 要素のテキストのコンテンツの種類を示します。 種類の一覧については、次の表を参照してください。 | 必須 |
 | `format` | あいまいな形式を持つ可能性のあるコンテンツの種類に対して、要素のテキストの正確な書式設定に関する追加情報を提供します。 SSML では、それらを使用するコンテンツの種類の形式が定義されます (次の表を参照)。 | 省略可能 |
 | `detail` | 読み上げられる詳細のレベルを示します。 たとえば、この属性では、音声合成エンジンが句読点を発音するように要求する場合があります。 `detail` に対して定義されている標準値はありません。 | 省略可能 |
 
@@ -476,8 +583,8 @@ speechConfig!.setPropertyTo(
 音声合成エンジンは、"Your first request was for one room on October nineteenth twenty ten with early arrival at twelve thirty five PM" (最初のリクエストは 2010 年 10 月 19 日に 1 部屋、午後 12 時 35 分にアーリー アライバル、というものでした) という例を読み上げます。
  
 ```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <p>
         Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
         on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
@@ -492,7 +599,7 @@ speechConfig!.setPropertyTo(
 
 SSML ドキュメントに含まれるオーディオは、次の要件を満たしている必要があります。
 
-* MP3 は、インターネットからアクセス可能な HTTPS エンドポイントでホストされている必要があります。 HTTPS は必須であり、MP3 ファイルをホストしているドメインは信頼できる有効な SSL 証明書を提示する必要があります。
+* MP3 は、インターネットからアクセス可能な HTTPS エンドポイントでホストされている必要があります。 HTTPS は必須であり、MP3 ファイルをホストしているドメインは信頼できる有効な TLS/SSL 証明書を提示する必要があります。
 * MP3 は有効な MP3 ファイル (MPEG v2) である必要があります。
 * ビット レートは 48 kbps である必要があります。
 * サンプル レートは 16,000 Hz である必要があります。
@@ -514,8 +621,8 @@ SSML ドキュメントに含まれるオーディオは、次の要件を満た
 **例**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <p>
             <audio src="https://contoso.com/opinionprompt.wav"/>
             Thanks for offering your opinion. Please begin speaking after the beep.
@@ -555,7 +662,7 @@ SSML ドキュメントに含まれるオーディオは、次の要件を満た
 ```xml
 <speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">
     <mstts:backgroundaudio src="https://contoso.com/sample.wav" volume="0.7" fadein="3000" fadeout="4000"/>
-    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)">
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, AriaRUS)">
         The text provided in this document will be spoken over the background audio.
     </voice>
 </speak>

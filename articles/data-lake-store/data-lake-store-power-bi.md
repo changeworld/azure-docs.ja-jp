@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: d8717b8f365e692b5f27bf8a04d65c5147b8f31b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65603200"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Power BI を使用して Azure Data Lake Storage Gen1 のデータを分析する
@@ -46,7 +46,7 @@ ms.locfileid: "65603200"
     ![Data Lake Storage Gen1 への接続](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Data Lake Storage Gen1 への接続")
 7. 次のダイアログ ボックスに、Data Lake Storage Gen1 アカウントにアップロードしたファイルが表示されます。 情報を確認してから **[ロード]** をクリックします。
    
-    ![Data Lake Storage Gen1 からのデータの読み込み](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Data Lake Storage Gen1 からのデータの読み込み")
+    ![Data Lake Storage Gen1 からデータをダウンロードする](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Data Lake Storage Gen1 からデータをダウンロードする")
 8. データが Power BI に正常に読み込まれたら、 **[フィールド]** タブに以下のフィールドが表示されます。
    
     ![インポートされたフィールド](./media/data-lake-store-power-bi/imported-fields.png "インポートされたフィールド")
@@ -58,19 +58,19 @@ ms.locfileid: "65603200"
     次の手順では、必要な形式でインポートされたデータを変換するためにクエリを更新します。
 9. **[ホーム]** リボンの **[クエリの編集]** をクリックします。
    
-    ![クエリの編集](./media/data-lake-store-power-bi/edit-queries.png "クエリの編集")
+    ![クエリの編集](./media/data-lake-store-power-bi/edit-queries.png "[クエリの編集]")
 10. クエリ エディターで、 **[コンテンツ]** 列の下にある **[バイナリ]** をクリックします。
     
-    ![クエリの編集](./media/data-lake-store-power-bi/convert-query1.png "クエリの編集")
+    ![クエリの編集](./media/data-lake-store-power-bi/convert-query1.png "[クエリの編集]")
 11. アップロードした **Drivers.txt** ファイルを表すファイル アイコンが表示されます。 このファイルを右クリックしてから **[CSV]** をクリックします。    
     
-    ![クエリの編集](./media/data-lake-store-power-bi/convert-query2.png "クエリの編集")
+    ![クエリの編集](./media/data-lake-store-power-bi/convert-query2.png "[クエリの編集]")
 12. 出力は次のようになります。 これで、データは視覚エフェクトの作成に使用できる形式で利用できるようになりました。
     
-    ![クエリの編集](./media/data-lake-store-power-bi/convert-query3.png "クエリの編集")
+    ![クエリの編集](./media/data-lake-store-power-bi/convert-query3.png "[クエリの編集]")
 13. **[ホーム]** リボンで、 **[閉じて適用]** 、 **[閉じて適用]** の順にクリックします。
     
-    ![クエリの編集](./media/data-lake-store-power-bi/load-edited-query.png "クエリの編集")
+    ![クエリの編集](./media/data-lake-store-power-bi/load-edited-query.png "[クエリの編集]")
 14. クエリが更新されたら、 **[フィールド]** タブに、視覚エフェクトで使用可能な新しいフィールドが表示されます。
     
     ![更新されたフィールド](./media/data-lake-store-power-bi/updated-query-fields.png "更新されたフィールド")
@@ -81,16 +81,16 @@ ms.locfileid: "65603200"
         ![円グラフを作成する](./media/data-lake-store-power-bi/create-pie-chart.png "円グラフを作成する")
     2. 使用する列は **Column 4** (都市名) と **Column 7** (国または地域名) です。 以下のように、これらの列を **[フィールド]** タブから **[視覚エフェクト]** タブにドラッグします。
        
-        ![グラフの作成](./media/data-lake-store-power-bi/create-visualizations.png "グラフの作成")
+        ![視覚化の作成](./media/data-lake-store-power-bi/create-visualizations.png "グラフを作成します")
     3. これで、円グラフの外観は以下のようになります。
        
-        ![円グラフ](./media/data-lake-store-power-bi/pie-chart.png "グラフを作成する")
+        ![円グラフ](./media/data-lake-store-power-bi/pie-chart.png "グラフを作成します")
 16. これで、ページ レベル フィルターから特定の国または地域を選択し、選択した国または地域の各都市のドライバー数を確認できます。 たとえば、 **[視覚エフェクト]** タブの **[ページ レベル フィルター]** で、 **[ブラジル]** を選択します。
     
-    ![国を選択する](./media/data-lake-store-power-bi/select-country.png "国または地域を選択する")
+    ![国を選択する](./media/data-lake-store-power-bi/select-country.png "国/リージョンの選択")
 17. 円グラフが自動的に更新され、ブラジルの各都市のドライバーが表示されます。
     
-    ![国内のドライバー](./media/data-lake-store-power-bi/driver-per-country.png "国または地域ごとのドライバー")
+    ![国のドライバー](./media/data-lake-store-power-bi/driver-per-country.png "国/地域ごとのドライバー")
 18. **[ファイル]** メニューの **[保存]** をクリックして、Power BI Desktop ファイルとして視覚エフェクトを保存します。
 
 ## <a name="publish-report-to-power-bi-service"></a>レポートを Power BI サービスに発行する

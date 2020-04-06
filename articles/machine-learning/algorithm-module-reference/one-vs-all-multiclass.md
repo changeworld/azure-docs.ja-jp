@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 939ac7caacac7cfb55bd29ed9a5d9c136a8e5c90
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 29934758ab729e0fb888c10b7f834da3d0bf7fb0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314251"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456082"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All Multiclass
 
-この記事では、Azure Machine Learning デザイナーで One-vs-All Multiclass モジュールを使用する方法について説明します。 目標は、*one-versus-all* アプローチを使って複数のクラスを予測できる分類モデルを作成することです。
+この記事では、Azure Machine Learning デザイナー (プレビュー) で One-vs-All Multiclass モジュールを使用する方法について説明します。 目標は、*one-versus-all* アプローチを使って複数のクラスを予測できる分類モデルを作成することです。
 
 このモジュールは、結果が連続またはカテゴリ予測変数に依存する場合に、考えられる 3 つ以上の結果を予測するモデルを作成する際に役立ちます。 また、この方法では、複数の出力クラスを必要とする問題に二項分類法を使用することもできます。
 
@@ -50,9 +50,9 @@ ms.locfileid: "76314251"
 
 4. [モデルのトレーニング](train-model.md)のもう一方の入力で、複数のクラス値を含むラベル付きトレーニング データセットを接続します。
 
-5. パイプラインを実行します。
+5. パイプラインを送信します。
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 トレーニングが完了したら、モデルを使用して多クラス予測を行うことができます。
 

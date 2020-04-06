@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 2e7c1eedf02c8a7783ee90f403dbd77ec2ee53ea
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963352"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297703"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 シリーズのソフトウェア、高可用性、ネットワークの要件
 
@@ -39,7 +39,7 @@ Microsoft Azure StorSimple へようこそ。 この記事では、StorSimple �
 
 次のソフトウェア要件は、StorSimple デバイスにアクセスするストレージ クライアントに適用されます。
 
-| サポートされているオペレーティング システム | 必須のバージョン | その他の要件/注意事項 |
+| サポートされるオペレーティング システム | 必須のバージョン | その他の要件/注意事項 |
 | --- | --- | --- |
 | Windows Server |2008 R2 SP1、2012、2012 R2、2016 |StorSimple iSCSI ボリュームの使用は以下の Windows ディスク タイプのみでサポートされます。<ul><li>ベーシック ディスク上のシンプル ボリューム</li><li>ダイナミック ディスク上のシンプルおよびミラー ボリューム</li></ul>サポートされるのは、オペレーティング システムにネイティブで存在するソフトウェア iSCSI イニシエーターだけです。 ハードウェア iSCSI イニシエーターはサポートされません。<br></br>Windows Server 2012 および 2016 のシン プロビジョニングおよび ODX 機能は StorSimple iSCSI ボリュームを使用している場合にサポートされます。<br><br>StorSimple は、シン プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームを作成できます。 部分的にプロビジョニングされたボリュームは作成できません。<br><br>シン プロビジョニングされたボリュームを再フォーマットすると長い時間がかかる場合があります。 再フォーマットするのではなく、ボリュームを削除して、新しいボリュームを作成することをお勧めします。 それでもボリュームを再フォーマットする場合は以下を実行します。<ul><li>領域の再利用による遅延を避けるために、再フォーマットする前に次のコマンドを実行します。 <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>フォーマットが完了したら、次のコマンドを使用して領域の再利用を再び有効にします。<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>[KB 2878635](https://support.microsoft.com/kb/2870270) の説明に従って、Windows Server 2012 の修正プログラムを Windows Server コンピューターに適用します。</li></ul></li></ul></ul> StorSimple Snapshot Manager または SharePoint 用 StorSimple アダプターを構成する場合は、「[オプション コンポーネントのソフトウェア要件](#software-requirements-for-optional-components)」を参照してください。 |
 | VMware ESX |5.5 および 6.0 |iSCSI クライアントとして VMware vSphere でサポートされます。 VAAI ブロック機能は、StorSimple デバイス上の VMware vSphere でサポートされます。 |
@@ -63,16 +63,16 @@ Microsoft Azure StorSimple へようこそ。 この記事では、StorSimple �
 
 StorSimple デバイスはロックされたデバイスです。 ただし、iSCSI、クラウド、管理トラフィックを許可するには、ファイアウォールでポートを開く必要があります。 次の表は、ファイアウォールで開く必要があるポートの一覧です。 この表では、*イン*または*受信*はデバイスにアクセスするクライアント要求が入ってくる方向を意味します。 *アウト*または*送信*は StorSimple デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
 
-| ポート番号<sup>1,2</sup> | インまたはアウト | ポート範囲 | 必須 | メモ |
+| ポート番号<sup>1,2</sup> | インまたはアウト | ポート範囲 | 必須 | Notes |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP)<sup>3</sup> |アウト |WAN |いいえ |<ul><li>送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li></ul> |
 | TCP 443 (HTTPS)<sup>3</sup> |アウト |WAN |はい |<ul><li>送信ポートは、クラウドのデータへのアクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li><li>このポートは、ガベージ コレクション用のコントローラーでも使用されます。</li></ul> |
 | UDP 53 (DNS) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 |
 | UDP 123 (NTP) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。 |
 | TCP 9354 |アウト |WAN |はい |送信ポートは、StorSimple デバイス マネージャー サービスと通信するために StorSimple デバイスによって使用されます。 |
-| 3260 (iSCSI) |イン |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
-| 5985 |イン |LAN |いいえ |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
-| 5986 |イン |LAN |いいえ |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 3260 (iSCSI) |場所 |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
+| 5985 |場所 |LAN |いいえ |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 5986 |場所 |LAN |いいえ |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
 
 <sup>1</sup> 受信ポートがパブリック インターネットで開かれている必要はありません。
 
@@ -81,7 +81,7 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 <sup>3</sup> StorSimple デバイスのコントローラーの固定の IP アドレスがルーティング可能でインターネットに直接または構成済みの Web プロキシ経由で接続可能である必要があります。 固定 IP アドレスは、デバイスに更新プログラムを提供したりガベージ コレクションを実行したりするために使用されます。 デバイスのコントローラーが固定の IP を使用してインターネットに接続できない場合は、StorSimple デバイスを更新できず、ガベージ コレクションは正しく動作しません。
 
 > [!IMPORTANT]
-> StorSimple デバイスと Azure 間でファイアウォールが SSL トラフィックの変更や暗号化解除を行わないことを確認します。
+> StorSimple デバイスと Azure 間でファイアウォールが TLS トラフィックの変更や暗号化解除を行っていないことを確認します。
 
 
 ### <a name="url-patterns-for-firewall-rules"></a>ファイアウォール ルールの URL パターン
@@ -129,7 +129,7 @@ Update 2 以降のバージョンに使用されるルーティング メトリ�
 * 事前に定義された一連の値が、ネットワーク インターフェイスに割り当てられています。
 * 以下に示す表の例では、さまざまなネットワーク インターフェイスがクラウド対応の場合とクラウド非対応 (ただしゲートウェイが構成済み) の場合に、割り当てられる値を示しています。 ここで割り当てられている値はあくまでも一例です。
 
-    | Linux | クラウド対応 | クラウド非対応 (ゲートウェイを使用) |
+    | ネットワーク インターフェイス | クラウド対応 | クラウド非対応 (ゲートウェイを使用) |
     |-----|---------------|---------------------------|
     | Data 0  | 1            | -                        |
     | Data 1  | 2            | 20                       |
@@ -157,7 +157,7 @@ Update 2 以降のバージョンに使用されるルーティング メトリ�
 * VIP エラーが発生すると、StorSimple デバイスでアラートも生成されます。 詳細については、 [アラートのクイック リファレンス](storsimple-8000-manage-alerts.md)に関するページを参照してください。
 * 再試行に関しては、クラウドよりも iSCSI が優先されます。
   
-    次の例を考えてみます。StorSimple デバイスで、2 つのネットワーク インターフェイス Data 0 と Data 1 が有効になっています。 Data 0 はクラウド対応ですが、Data 1 はクラウドと iSCSI の両方に対応しています。 このデバイス上の他のネットワーク インターフェイスは、クラウドにも iSCSI にも対応していません。
+    次の例を確認してください。StorSimple デバイスで、2 つのネットワーク インターフェイス Data 0 と Data 1 が有効になっています。 Data 0 はクラウド対応ですが、Data 1 はクラウドと iSCSI の両方に対応しています。 このデバイス上の他のネットワーク インターフェイスは、クラウドにも iSCSI にも対応していません。
   
     Data 1 が失敗した場合、これが最後の iSCSI ネットワーク インターフェイスであるため、他のコントローラー上の Data 1 に対するコントローラー フェールオーバーが発生します。
 
@@ -244,7 +244,7 @@ StorSimple デバイスに接続されているホストの高可用性を確保
 * [2 ノード ファイル サーバー クラスター構成][1]を使用した StorSimple を構成します。 単一障害点を削除し、ホスト側の冗長性を構築することにより、ソリューション全体の可用性が向上します。
 * ストレージ コントローラーのフェールオーバー中の高可用性を目的として、Windows Server 2012 (SMB 3.0) で利用できる継続的可用性 (CA) 共有を使用します。 ファイル サーバー クラスターと Windows Server 2012 との継続的可用性の共有を構成するための追加情報については、この [ビデオ メモ](https://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [StorSimple システムの制限の詳細](storsimple-8000-limits.md)
 * [StorSimple ソリューションをデプロイする方法](storsimple-8000-deployment-walkthrough-u2.md)

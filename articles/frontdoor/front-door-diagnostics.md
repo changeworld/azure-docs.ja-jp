@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service でのメトリックとログの監視 | Microsoft Docs
-description: この記事では、Azure Front Door Service でサポートされるさまざまなメトリックとアクセス ログについて説明します
+title: Azure Front Door でのメトリックとログの監視 | Microsoft Docs
+description: この記事では、Azure Front Door でサポートされるさまざまなメトリックとアクセス ログについて説明します
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: e379e67fb733c968a755afd245d079239f559c89
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b935355cce36a6e26b168db286ab40248f8f0f68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751409"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471729"
 ---
-# <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Azure Front Door Service でのメトリックとログの監視
+# <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Azure Front Door でのメトリックとログの監視
 
-Azure Front Door Service を使用すると、次の方法でリソースを監視できます。
+Azure Front Door を使用すると、次の方法でリソースを監視できます。
 
 - **メトリック**。 現在、Azure Front Door にはパフォーマンス カウンターを表示するメトリックが 7 つあります。
 - **ログ**。 アクティビティ ログや診断ログでは、リソースのパフォーマンス、アクセス、その他のデータを監視目的で保存または使用することができます。
@@ -40,14 +40,14 @@ Azure Front Door Service を使用すると、次の方法でリソースを監�
 | BackendHealthPercentage | バックエンドの正常性の割合 | Percent | バックエンド</br>BackendPool | Front Door からバックエンドへの成功した正常性プローブの割合。 |
 | WebApplicationFirewallRequestCount | Web アプリケーション ファイアウォール要求の数 | Count | PolicyName</br>RuleName</br>アクション | Front Door のアプリケーション レイヤー セキュリティによって処理されたクライアント要求の数。 |
 
-## <a name="activity-log"></a>アクティビティ ログ
+## <a name="activity-logs"></a><a name="activity-log"></a>アクティビティ ログ
 
-アクティビティ ログは、Front Door Service に対して行われた操作に関する情報を提供します。 また、これらは、Front Door Service で行われた書き込み操作 (PUT、POST、DELETE) について、いつだれが何を行ったのかを特定します。
+アクティビティ ログは、Front Door に対して行われた操作に関する情報を提供します。 また、これらは、Front Door で行われた書き込み操作 (PUT、POST、DELETE) について、いつだれが何を行ったのかを特定します。
 
 >[!NOTE]
 >アクティビティ ログには、読み取り (GET) 操作は含まれません。 また、Azure portal または元の Management API を使用して実行する操作も含まれません。
 
-アクティビティ ログに Front Door Service でアクセスするか、Azure リソースのすべてのログに Azure Monitor でアクセスします。 アクティビティ ログを表示するには、次の手順に従います。
+アクティビティ ログに Front Door でアクセスするか、Azure リソースのすべてのログに Azure Monitor でアクセスします。 アクティビティ ログを表示するには、次の手順に従います。
 
 1. Front Door インスタンスを選択します。
 2. **[アクティビティ ログ]** を選択します。
@@ -56,39 +56,53 @@ Azure Front Door Service を使用すると、次の方法でリソースを監�
 
 3. フィルター処理のスコープを選択し、 **[適用]** を選択します。
 
-## <a name="diagnostic-logging"></a>診断ログ
+## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>診断ログ
 診断ログは、監査やトラブルシューティングにとって重要な操作とエラーに関する豊富な情報を提供します。 診断ログは、アクティビティ ログとは異なります。
 
 アクティビティ ログは、Azure リソースに対して行われた操作に関する分析情報を提供します。 診断ログは、自分のリソースが実行した操作に関する分析情報を提供します。 詳細については、[Azure Monitor の診断ログ](../azure-monitor/platform/platform-logs-overview.md)に関するドキュメントを参照してください。
 
 ![診断ログ](./media/front-door-diagnostics/diagnostic-log.png)
 
-Front Door Service の診断ログを構成するには:
+Front Door の診断ログを構成するには、以下の手順を実行します。
 
-1. Azure Front Door Service を選択します。
+1. Azure Front Door を選択します。
 
 2. **[診断設定]** を選択します。
 
 3. **[診断を有効にする]** を選択します。 診断ログをメトリックと共にストレージ アカウントにアーカイブし、それらをイベント ハブにストリーム配信したり、Azure Monitor ログに送信したりします。
 
-現在、Front Door Service は診断ログ (1 時間ごとにバッチ処理) を提供しています。 診断ログでは、次のスキーマを使用した各エントリが個々の API 要求に提供されます。
+現在、Front Door では診断ログ (1 時間ごとにバッチ処理) が提供されています。 診断ログでは、次のスキーマを使用した各エントリが個々の API 要求に提供されます。
 
 | プロパティ  | 説明 |
 | ------------- | ------------- |
-| ClientIp | 要求を行ったクライアントの IP アドレス。 |
+| BackendHostname | 要求がバックエンドに転送されていた場合、このフィールドではバックエンドのホスト名が示されます。 要求がリージョンのキャッシュにリダイレクトまたは転送された場合は (ルーティング規則でキャッシュが有効になっている場合)、このフィールドは空白になります。 |
+| CacheStatus | キャッシュのシナリオの場合、このフィールドでは POP でのキャッシュのヒットとミスが定義されます |
+| ClientIp | 要求を行ったクライアントの IP アドレス。 要求に X-Forwarded-For ヘッダーがあった場合、同じものからクライアント IP が選択されます。 |
 | ClientPort | 要求を行ったクライアントの IP アドレス。 |
 | HttpMethod | 要求で使用される HTTP メソッド。 |
 | HttpStatusCode | プロキシから返された HTTP 状態コード。 |
 | HttpStatusDetails | 要求の結果の状態。 この文字列値の意味は、状態参照テーブルで確認できます。 |
 | HttpVersion | 要求または接続の種類。 |
+| POP | 要求が到着したエッジの短い名前。 |
 | RequestBytes | 要求ヘッダーと要求本文を含む HTTP 要求メッセージのサイズ (バイト単位)。 |
 | RequestUri | 受信した要求の URI。 |
 | ResponseBytes | 応答としてバックエンド サーバーによって送信されたバイト数。  |
 | RoutingRuleName | 要求が一致したルーティング規則の名前。 |
 | SecurityProtocol | 要求によって使用された TLS/SSL プロトコルのバージョン。暗号化がない場合は、null 値。 |
+| SentToOriginShield | 最初の環境でキャッシュ ミスがあり、要求がリージョンのキャッシュに送信されたかどうかを表すブール値フィールド。 ルーティング規則がリダイレクトの場合、またはルーティング規則でキャッシュが有効になっていない場合は、このフィールドを無視します。 |
 | TimeTaken | アクションにかかった時間の長さ (ミリ秒単位)。 |
-| UserAgent | クライアントで使用されたブラウザーの種類 |
 | TrackingReference | Front Door によって提供された要求を識別する一意の参照文字列。X-Azure-Ref ヘッダーとしてクライアントにも送信されます。 アクセス ログで特定の要求の詳細を検索するために必要です。 |
+| UserAgent | クライアントで使用されたブラウザーの種類。 |
+
+**注:** さまざまなルーティング構成やトラフィック動作に対し、backendHostname、cacheStatus、sentToOriginShield、POP などの一部のフィールドでは、応答の値が異なる場合があります。 次の表では、さまざまなシナリオでこれらのフィールドに設定される異なる値について説明します。
+
+| シナリオ | ログ エントリの数 | POP | BackendHostname | SentToOriginShield | CacheStatus |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| キャッシュが有効になっていないルーティング規則 | 1 | エッジの POP コード | 要求が転送されたバックエンド | False | CONFIG_NOCACHE |
+| キャッシュが有効になっているルーティング規則。 エッジ POP でのキャッシュ ヒット | 1 | エッジの POP コード | Empty | False | HIT |
+| キャッシュが有効になっているルーティング規則。 エッジ POP ではキャッシュ ミスだが、親キャッシュ POP でキャッシュ ヒット | 2 | 1.エッジの POP コード</br>2.親キャッシュの POP コード | 1.親キャッシュの POP ホスト名</br>2.Empty | 1.True</br>2.False | 1.MISS</br>2.PARTIAL_HIT |
+| キャッシュが有効になっているルーティング規則。 エッジと親キャッシュの両方の POP でキャッシュ ミス | 2 | 1.エッジの POP コード</br>2.親キャッシュの POP コード | 1.親キャッシュの POP ホスト名</br>2.キャッシュの設定に役立つバックエンド | 1.True</br>2.False | 1.MISS</br>2.MISS |
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,21 +4,21 @@ description: Azure PowerShell を使用して、URL パスベースでトラフ�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 11/14/2019
+ms.date: 03/19/2020
 ms.author: victorh
-ms.topic: tutorial
-ms.openlocfilehash: 04cd390681d0492dc28308c3304753a6ecaf1c3c
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.topic: conceptual
+ms.openlocfilehash: c577859f6e8a44dd3573537aecadba638a5f6fa6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047606"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059385"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Azure PowerShell を使用して URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する
 
-[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure PowerShell を使用して [URL ベースのルーティング規則](application-gateway-url-route-overview.md)を構成できます。 このチュートリアルでは、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用してバックエンド プールを作成します。 次に、Web トラフィックが適切なバックエンド プールにリダイレクトされるようにする URL ルーティング規則を作成します。
+[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure PowerShell を使用して [URL ベースのルーティング規則](application-gateway-url-route-overview.md)を構成できます。 この記事では、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用してバックエンド プールを作成します。 次に、Web トラフィックが適切なバックエンド プールにリダイレクトされるようにする URL ルーティング規則を作成します。
 
-このチュートリアルでは、以下の内容を学習します。
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * ネットワークのセットアップ
@@ -30,7 +30,7 @@ ms.locfileid: "74047606"
 
 ![URL ルーティングの例](./media/tutorial-url-redirect-powershell/scenario.png)
 
-好みに応じて、[Azure CLI](tutorial-url-redirect-cli.md) を使ってこのチュートリアルの手順を実行することもできます。
+好みに応じて、[Azure CLI](tutorial-url-redirect-cli.md) を使ってこの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -38,9 +38,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 1.0.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をローカルにインストールして使用することを選択した場合、この手順には Azure PowerShell モジュール バージョン 1.0.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。  
 
@@ -129,7 +129,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>既定のリスナーとルールの作成
 
-アプリケーション ゲートウェイがバックエンド プールに対して適切にトラフィックをルーティングするためにはリスナーが必要です。 このチュートリアルでは、複数のリスナーを作成します。 最初の基本的なリスナーは、ルート URL でトラフィックを待機します。 他のリスナーは、特定の URL でトラフィックを待機します (`http://52.168.55.24:8080/images/` や `http://52.168.55.24:8081/video/` など)。
+アプリケーション ゲートウェイがバックエンド プールに対して適切にトラフィックをルーティングするためにはリスナーが必要です。 この記事では、複数のリスナーを作成します。 最初の基本的なリスナーは、ルート URL でトラフィックを待機します。 他のリスナーは、特定の URL でトラフィックを待機します (`http://52.168.55.24:8080/images/` や `http://52.168.55.24:8081/video/` など)。
 
 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) と、前に作成したフロントエンド構成およびフロントエンド ポートを使用して、*defaultListener* という名前のリスナーを作成します。 着信トラフィックに使用するバックエンド プールをリスナーが判断するには、ルールが必要です。 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) を使用して、*rule1* という名前の基本ルールを作成します。
 
@@ -346,7 +346,7 @@ Add-AzApplicationGatewayUrlPathMapConfig `
 Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 
-### <a name="add-routing-rules"></a>ルーティング規則を追加する
+### <a name="add-routing-rules"></a>ルーティング規則の追加
 
 ルーティング規則によって、作成したリスナーに URL マップが関連付けられます。 [Add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule) を使用して、*defaultRule* および *redirectedRule* という名前の規則を追加できます。
 
@@ -509,14 +509,14 @@ URL を http://&lt;ip-address&gt;:8080/video/test.htm に変更します。&lt;i
 
 URL を http://&lt;ip-address&gt;:8081/images/test.htm に変更します。&lt;ip-address&gt; は使用している IP アドレスに置き換えてください。トラフィックが http://&lt;ip-address&gt;:8080/images の images バックエンド プールにリダイレクトされるのがわかります。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループ、アプリケーション ゲートウェイ、およびすべての関連リソースを削除します。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [アプリケーション ゲートウェイでできることについてさらに学習する](application-gateway-introduction.md)

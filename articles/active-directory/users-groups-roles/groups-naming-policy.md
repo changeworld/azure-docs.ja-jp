@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9136ce26f0070c8822292c741be59de537d3667
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 141e83e21db18f21468113fd9927c2bdd2ed176d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941055"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79497882"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Azure Active Directory での Office 365 グループに対する名前付けポリシーの強制
 
@@ -29,6 +29,8 @@ ms.locfileid: "75941055"
 > Office 365 グループに対して Azure AD 名前付けポリシーを使用するには、1 つ以上の Office 365 グループのメンバーである一意のユーザーごとに Azure Active Directory Premium P1 ライセンスまたは Azure AD Basic EDU ライセンスを持っている必要がありますが、必ずしも割り当てる必要はありません。
 
 名前付けポリシーは、ワークロード (Outlook、Microsoft Teams、SharePoint、Exchange、Planner など) でのグループの作成または編集に適用されます。 ポリシーは、グループ名とグループ エイリアスの両方に適用されます。 Azure AD で名前付けポリシーを設定し、既存の Exchange グループ名前付けポリシーもある場合は、組織では Azure AD の名前付けポリシーが強制されます。
+
+グループの名前付けポリシーが構成されると、エンド ユーザーが作成した新しい Office 365 グループにこのポリシーが適用されます。 名前付けポリシーは、全体管理者やユーザー管理者などの特定のディレクトリ ロールには適用されません (グループの名前付けポリシーから除外されるロールの完全な一覧については、以下を参照してください)。 既存の Office 365 グループの場合、ポリシーは構成時にすぐには適用されません。 グループ所有者がこれらのグループのグループ名を編集すると、名前付けポリシーが適用されます。
 
 ## <a name="naming-policy-features"></a>名前付けポリシーの機能
 

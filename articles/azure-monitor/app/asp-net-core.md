@@ -1,18 +1,14 @@
 ---
 title: ASP.NET Core アプリケーション用の Azure Application Insights | Microsoft Docs
 description: ASP.NET Core Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 5f54605dd5b43236a75fe73aa3b47a4e619530a1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d6a0e507022452f1491e71651ba3bc8db3d1c090
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765803"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284791"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
@@ -32,7 +28,7 @@ ms.locfileid: "76765803"
 * **IDE**: Visual Studio、VS Code、コマンド ライン。
 
 > [!NOTE]
-> Application Insights と共に ASP.NET Core 3.0 を使用している場合は、[2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) バージョン以降を使用してください。 これは、ASP.NET Core 3.0 をサポートする唯一のバージョンです。
+> Application Insights と共に ASP.NET Core 3.X を使用している場合は、[2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) バージョン以降を使用してください。 これは、ASP.NET Core 3.X をサポートする唯一のバージョンです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,7 +62,7 @@ ms.locfileid: "76765803"
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.12.0" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.13.1" />
         </ItemGroup>
     ```
 
@@ -145,7 +141,7 @@ ASP.NET Core での[パフォーマンス カウンター](https://azure.microso
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule` は既定で有効になっており、.NET Core 3.0 アプリから既定のカウンター セットが収集されます。 [EventCounter](eventcounters.md) チュートリアルには、収集される既定のカウンター セットがリスト表示されています。 また、リストのカスタマイズについても説明されています。
+`EventCounterCollectionModule` は既定で有効になっており、.NET Core 3.X アプリから既定のカウンター セットが収集されます。 [EventCounter](eventcounters.md) チュートリアルには、収集される既定のカウンター セットがリスト表示されています。 また、リストのカスタマイズについても説明されています。
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>Web アプリケーションに対してクライアント側のテレメトリを有効にする
 
@@ -162,6 +158,14 @@ ASP.NET Core での[パフォーマンス カウンター](https://azure.microso
     ```cshtml
         @Html.Raw(JavaScriptSnippet.FullScript)
         </head>
+    ```
+    
+または、`FullScript` を使用するには、SDK v2.14 で `ScriptBody` を使用します。 コンテンツ セキュリティ ポリシーを設定するために `<script>` タグをコントロールする必要がある場合は、次のようにします。
+
+    ```cshtml
+        <script> // apply custom changes to this script tag.
+            @Html.Raw(JavaScriptSnippet.ScriptBody)
+        </script>
     ```
 
 上で参照されている `.cshtml` ファイル名は、既定の MVC アプリケーション テンプレートからのものです。 最終的に、アプリケーションに対するクライアント側の監視を正しく有効にするためには、JavaScript スニペットが、監視するアプリケーションの各ページの `<head>` セクションにある必要があります。 このアプリケーション テンプレートでは、Javascript スニペットを `_Layout.cshtml` に追加することで、実質的にこの目標を達成できます。 
@@ -197,6 +201,12 @@ public void ConfigureServices(IServiceCollection services)
 
 |設定 | 説明 | Default
 |---------------|-------|-------
+|EnablePerformanceCounterCollectionModule  | `PerformanceCounterCollectionModule` を有効または無効にします | true
+|EnableRequestTrackingTelemetryModule   | `RequestTrackingTelemetryModule` を有効または無効にします | true
+|EnableEventCounterCollectionModule   | `EventCounterCollectionModule` を有効または無効にします | true
+|EnableDependencyTrackingTelemetryModule   | `DependencyTrackingTelemetryModule` を有効または無効にします | true
+|EnableAppServicesHeartbeatTelemetryModule  |  `AppServicesHeartbeatTelemetryModule` を有効または無効にします | true
+|EnableAzureInstanceMetadataTelemetryModule   |  `AzureInstanceMetadataTelemetryModule` を有効または無効にします | true
 |EnableQuickPulseMetricStream | LiveMetrics 機能を有効または無効にします | true
 |EnableAdaptiveSampling | アダプティブ サンプリングを有効または無効にします | true
 |EnableHeartbeat | ハートビート機能を有効または無効にします。この機能は、"HeartBeatState" という名前のカスタム メトリックを、.NET バージョン、Azure 環境情報 (該当する場合) などのランタイムに関する情報と共に定期的に (既定では 15 分) 送信します。 | true
@@ -313,6 +323,8 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
+2\.12.2 バージョン以降、[`ApplicationInsightsServiceOptions`](#using-applicationinsightsserviceoptions) には、任意の既定のモジュールを無効にする簡単なオプションが含まれています。
+
 ### <a name="configuring-a-telemetry-channel"></a>テレメトリ チャネルを構成する
 
 既定のチャネルは `ServerTelemetryChannel` です。 次の例のようにしてオーバーライドできます。
@@ -351,11 +363,11 @@ using Microsoft.ApplicationInsights.Channel;
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-### <a name="does-application-insights-support-aspnet-core-30"></a>Application Insights で ASP.NET Core 3.0 はサポートされますか?
+### <a name="does-application-insights-support-aspnet-core-3x"></a>Application Insights で ASP.NET Core 3.X はサポートされますか?
 
-はい。 [Application Insights SDK for ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) バージョン 2.8.0 以降に更新してください。 これより古いバージョンの SDK では、ASP.NET Core 3.0 はサポートされていません。
+はい。 [Application Insights SDK for ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) バージョン 2.8.0 以降に更新してください。 これより古いバージョンの SDK では、ASP.NET Core 3.X はサポートされていません。
 
-また、[こちら](#enable-application-insights-server-side-telemetry-visual-studio)の Visual Studio ベースの手順を使用している場合は、最新バージョンの Visual Studio 2019 (16.3.0) に更新してオンボードしてください。 以前のバージョンの Visual Studio では、ASP.NET Core 3.0 アプリの自動オンボードはサポートされていません。
+また、[こちら](#enable-application-insights-server-side-telemetry-visual-studio)の Visual Studio ベースの手順を使用している場合は、最新バージョンの Visual Studio 2019 (16.3.0) に更新してオンボードしてください。 以前のバージョンの Visual Studio では、ASP.NET Core 3.X アプリの自動オンボードはサポートされていません。
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>自動的に収集されないテレメトリを追跡するにはどうすればよいですか?
 
@@ -388,7 +400,7 @@ Application Insights でのカスタム データ レポートについては、
 
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>一部の Visual Studio テンプレートでは、Application Insights を有効にする目的で UseApplicationInsights() 拡張メソッドが IWebHostBuilder で使用されていました。 この使用方法は今でも有効ですか?
 
-拡張メソッド `UseApplicationInsights()` はまだサポートされていますが、Application Insights SDK バージョン 2.8.0 以降では古いものとしてマークされています。 次のメジャー バージョンの SDK で削除されます。 Application Insights テレメトリを有効にする方法としては、いくつかの構成を制御するためのオーバーロードが用意されているため、`AddApplicationInsightsTelemetry()` を使用することをお勧めします。 また、ASP.NET Core 3.0 アプリでは、`services.AddApplicationInsightsTelemetry()` が Application Insights を有効にする唯一の方法です。
+拡張メソッド `UseApplicationInsights()` はまだサポートされていますが、Application Insights SDK バージョン 2.8.0 以降では古いものとしてマークされています。 次のメジャー バージョンの SDK で削除されます。 Application Insights テレメトリを有効にする方法としては、いくつかの構成を制御するためのオーバーロードが用意されているため、`AddApplicationInsightsTelemetry()` を使用することをお勧めします。 また、ASP.NET Core 3.X アプリでは、`services.AddApplicationInsightsTelemetry()` が Application Insights を有効にする唯一の方法です。
 
 ### <a name="im-deploying-my-aspnet-core-application-to-web-apps-should-i-still-enable-the-application-insights-extension-from-web-apps"></a>ASP.NET Core アプリケーションを Web Apps にデプロイしています。 Application Insights 拡張を Web アプリから有効にできますか?
 
@@ -435,9 +447,9 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
     }
 ```
 
-### <a name="is-this-sdk-supported-for-the-new-net-core-30-worker-service-template-applications"></a>この SDK は、新しい .NET Core 3.0 ワーカー サービス テンプレート アプリケーションでサポートされていますか?
+### <a name="is-this-sdk-supported-for-the-new-net-core-3x-worker-service-template-applications"></a>この SDK は、新しい .NET Core 3.X ワーカー サービス テンプレート アプリケーションでサポートされていますか?
 
-この SDK には `HttpContext` が必要であるため、.NET Core 3.0 ワーカー サービス アプリケーションを含め、HTTP 以外のアプリケーションでは機能しません。 新しくリリースされた Microsoft.ApplicationInsights.WorkerService SDK を使用して、このようなアプリケーションで Application Insights を有効にする方法については、[こちら](worker-service.md)を参照してください。
+この SDK には `HttpContext` が必要であるため、.NET Core 3.X ワーカー サービス アプリケーションを含め、HTTP 以外のアプリケーションでは機能しません。 新しくリリースされた Microsoft.ApplicationInsights.WorkerService SDK を使用して、このようなアプリケーションで Application Insights を有効にする方法については、[こちら](worker-service.md)を参照してください。
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 

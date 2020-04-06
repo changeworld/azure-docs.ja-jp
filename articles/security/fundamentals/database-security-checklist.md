@@ -15,27 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 9298b802417f5a7162ef74bb0f7906144aae4e35
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d9283a36d5f7ccb82b2cc211485487d5a3dcce7b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745714"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79201027"
 ---
 # <a name="azure-database-security-checklist"></a>Azure のデータベース セキュリティのチェックリスト
 
 Azure データベースには、セキュリティ向上を促進するために、アクセスを制限および制御するために使用できるセキュリティ制御が多数組み込まれています。
 
-チェックの内容は次のとおりです
+これには以下が含まれます。
 
--   IP アドレスで接続を制限する[ファイアウォール規則](../../sql-database/sql-database-firewall-configure.md)を作成できるファイアウォール
--   Azure Portal からアクセス可能なサーバーレベルのファイアウォール
--   SSMS からアクセス可能なデータベースレベルのファイアウォール規則
--   セキュリティで保護された接続文字列を使用した、データベースへのセキュリティで保護された接続
--   アクセス管理の使用
--   データの暗号化
--   SQL Database 監査
--   SQL Database の脅威の検出
+-    IP アドレスで接続を制限する[ファイアウォール規則](../../sql-database/sql-database-firewall-configure.md)を作成できるファイアウォール
+-    Azure Portal からアクセス可能なサーバーレベルのファイアウォール
+-    SSMS からアクセス可能なデータベースレベルのファイアウォール規則
+-    セキュリティで保護された接続文字列を使用した、データベースへのセキュリティで保護された接続
+-    アクセス管理の使用
+-    データの暗号化
+-    SQL Database 監査
+-    SQL Database の脅威の検出
 
 ## <a name="introduction"></a>はじめに
 クラウド コンピューティングには新しいセキュリティ パラダイムが必要ですが、これは多くのアプリケーション ユーザー、データベース管理者、およびプログラマにとって馴染みのないものです。 そのため、把握されているセキュリティ リスクを理由にデータ管理用のクラウド インフラストラクチャを実装することを躊躇している組織もあります。 ただし、この懸念の多くは、Microsoft Azure および Microsoft Azure SQL Database に組み込まれているセキュリティ機能への理解を深めることで緩和できます。
@@ -50,11 +50,11 @@ Azure データベースには、セキュリティ向上を促進するため�
 | <br> 移動/転送時の暗号化| <ul><li>[トランスポート層セキュリティ](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol)は、データがネットワークに移動するときのデータの暗号化を目的としています。</li><li>データベースは、TLS (トランスポート層セキュリティ) 経由の [TDS (表形式データ ストリーム)](https://msdn.microsoft.com/library/dd357628.aspx) プロトコルに基づく、クライアントからのセキュリティで保護された通信を必要とします。</li></ul> |
 |<br>保存時の暗号化| <ul><li>[Transparent Data Encryption](https://go.microsoft.com/fwlink/?LinkId=526242)。非アクティブなデータがデジタル形式で物理的に保存されているとき。</li></ul>|
 |**アクセスの制御**||  
-|<br> データベース アクセス | <ul><li>[認証](../../sql-database/sql-database-control-access.md) (Azure Active Directory 認証)。AD 認証は、Azure Active Directory によって管理されている ID を使用します。</li><li>[承認](../../sql-database/sql-database-control-access.md)によって、必要最小限の特権がユーザーに付与されます。</li></ul> |
+|<br> データベース アクセス | <ul><li>[認証](../../sql-database/sql-database-manage-logins.md) (Azure Active Directory 認証)。AD 認証は、Azure Active Directory によって管理されている ID を使用します。</li><li>[承認](../../sql-database/sql-database-manage-logins.md)によって、必要最小限の特権がユーザーに付与されます。</li></ul> |
 |<br>アプリケーション アクセス| <ul><li>[行レベル セキュリティ](https://msdn.microsoft.com/library/dn765131) (セキュリティ ポリシーを使用。同時にユーザーの ID、ロール、または実行コンテキストに基づいて行レベルのアクセスを制限)。</li><li>[動的データ マスク](../../sql-database/sql-database-dynamic-data-masking-get-started.md) (アクセス許可とポリシーを使用。特権のないユーザーに対して機密データをマスクすることでデータの公開を制限)</li></ul>|
 |**プロアクティブな監視**||  
 | <br>追跡および検出| <ul><li>[監査](../../sql-database/sql-database-auditing.md)では、データベース イベントを追跡し、[Azure ストレージ アカウント](../../storage/common/storage-create-storage-account.md)の監査ログ/アクティビティ ログにイベントを書き込みます。</li><li>[Azure Monitor のアクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)を使用して Azure データベースの正常性を追跡します。</li><li>[脅威の検出](../../sql-database/sql-database-threat-detection.md)は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。 </li></ul> |
-|<br>Azure Security Center| <ul><li>[データ監視](../../security-center/security-center-enable-auditing-on-sql-databases.md)では、SQL などの Azure サービスの一元的なセキュリティ監視ソリューションとして Azure Security Center を使用します。</li></ul>|       
+|<br>Azure Security Center| <ul><li>[データ監視](../../security-center/security-center-enable-auditing-on-sql-databases.md)では、SQL などの Azure サービスの一元的なセキュリティ監視ソリューションとして Azure Security Center を使用します。</li></ul>|        
 
 ## <a name="conclusion"></a>まとめ
 Azure データベースは、多くの組織や規制のコンプライアンス要件を満たすセキュリティ機能を豊富に備えた堅牢なデータベース プラットフォームです。 データへの物理的アクセスの制御と、Transparent Data Encryption、セルレベルの暗号化、行レベルのセキュリティによるファイル、列、または行レベルのデータ セキュリティの各種オプションの使用によって、データを簡単に保護することができます。 Always Encrypted によって、暗号化されたデータに対する操作も可能になり、アプリケーションの更新プロセスが簡略化されます。 そして、SQL Database のアクティビティの監査ログにアクセスして必要な情報を入手し、データがいつどのようにアクセスされているかを把握することができます。

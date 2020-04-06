@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.openlocfilehash: 6771cdb206920c8e3b746e28573de1742543b4c8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 03/11/2020
+ms.openlocfilehash: 6e0c98cffef06fb6d6345fc2b23bbc22715909b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646695"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79370187"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>ファイアウォールを使用して Azure HDInsight クラスターのアウトバウンド ネットワーク トラフィックを構成する
 
@@ -26,12 +26,13 @@ Azure HDInsight クラスターは、通常は独自の仮想ネットワーク�
 
 HDInsight の送信トラフィックの依存関係は、ほぼすべて、背後に静的 IP アドレスがない FQDN を使用して定義されています。 静的アドレスがないということは、ネットワーク セキュリティ グループ (NSG) を使用してクラスターからの送信トラフィックをロックできないことを意味します。 アドレスは頻繁に変わるので、現在の名前解決に基づいてルールを設定し、それを使用して NSG ルールを設定することができません。
 
-送信アドレスをセキュリティで保護する解決策は、ドメイン名に基づいて送信トラフィックを制御できるファイアウォール デバイスを使用することです。 Azure Firewall では、宛先の FQDN または [FQDN タグ](https://docs.microsoft.com/azure/firewall/fqdn-tags)に基づいて送信 HTTP および HTTPS トラフィックを制限できます。
+送信アドレスをセキュリティで保護する解決策は、ドメイン名に基づいて送信トラフィックを制御できるファイアウォール デバイスを使用することです。 Azure Firewall では、宛先の FQDN または [FQDN タグ](../firewall/fqdn-tags.md)に基づいて送信 HTTP および HTTPS トラフィックを制限できます。
 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>HDInsight に合わせて Azure Firewall を構成する
 
 Azure Firewall を使用して既存の HDInsight からのエグレスをロックダウンする手順の概要は、次のとおりです。
 
+1. サブネットを作成します。
 1. ファイアウォールを作成します。
 1. ファイアウォールにアプリケーション ルールを追加します
 1. ファイアウォールにネットワーク ルールを追加します。
@@ -61,23 +62,23 @@ Azure Firewall を使用して既存の HDInsight からのエグレスをロッ
 
     | プロパティ|  値|
     |---|---|
-    |Name| FwAppRule|
+    |名前| FwAppRule|
     |Priority|200|
     |アクション|Allow|
 
     **[FQDN タグ] セクション**
 
-    | Name | ソース アドレス | FQDN タグ | メモ |
+    | 名前 | ソース アドレス | FQDN タグ | Notes |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate と HDInsight | HDI サービスに必要 |
 
     **[ターゲットの FQDN] セクション**
 
-    | Name | ソース アドレス | プロトコル:ポート | ターゲット FQDN | メモ |
+    | 名前 | ソース アドレス | プロトコル:ポート | ターゲット FQDN | Notes |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Windows ログイン アクティビティを許可する |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Windows ログイン アクティビティを許可する |
-    | Rule_4 | * | https:443、http:80 | storage_account_name.blob.core.windows.net | `storage_account_name` を実際のストレージ アカウント名に置き換えます。 クラスターが WASB によってサポートされている場合は、WASB のルールを追加します。 https 接続のみを使用するには、[[安全な転送が必須]](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) がストレージ アカウントで有効になっていることを確認します。 |
+    | Rule_4 | * | https:443、http:80 | storage_account_name.blob.core.windows.net | `storage_account_name` を実際のストレージ アカウント名に置き換えます。 クラスターが WASB によってサポートされている場合は、WASB のルールを追加します。 https 接続のみを使用するには、[[安全な転送が必須]](../storage/common/storage-require-secure-transfer.md) がストレージ アカウントで有効になっていることを確認します。 |
 
    ![タイトル:アプリケーション ルール コレクションの詳細を入力する](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -95,13 +96,13 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
     | プロパティ|  値|
     |---|---|
-    |Name| FwNetRule|
+    |名前| FwNetRule|
     |Priority|200|
     |アクション|Allow|
 
     **[IP アドレス] セクション**
 
-    | Name | Protocol | ソース アドレス | 宛先アドレス | 宛先ポート | メモ |
+    | 名前 | Protocol | ソース アドレス | 宛先アドレス | 宛先ポート | Notes |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Time サービス |
     | Rule_2 | Any | * | DC_IP_Address_1、DC_IP_Address_2 | * | Enterprise セキュリティ パッケージ (ESP) を使用している場合は、ESP クラスター用に AAD DS との通信を許可するネットワーク ルールを [IP アドレス] セクションに追加します。 ドメイン コントローラーの IP アドレスはポータルの [AAD-DS] セクションで確認できます |
@@ -110,7 +111,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
     **[サービス タグ] セクション**
 
-    | Name | Protocol | ソース アドレス | サービス タグ | ターゲット ポート | メモ |
+    | 名前 | Protocol | ソース アドレス | サービス タグ | ターゲット ポート | Notes |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | ファイアウォールをバイパスする SQL Server のサービス エンドポイントを HDInsight サブネットに構成していない限り、SQL トラフィックをログに記録して監査できるようにする SQL のネットワーク ルールを [サービス タグ] セクションに構成します。 |
 
@@ -182,7 +183,7 @@ Azure Firewall のスケールの制限と要求の増加については、[こ�
 
 ## <a name="access-to-the-cluster"></a>クラスターへのアクセス
 
-ファイアウォールを正常にセットアップした後は、内部エンドポイント (`https://CLUSTERNAME-int.azurehdinsight.net`) を使用して VNET 内から Ambari にアクセスできます。
+ファイアウォールを正常にセットアップした後は、内部エンドポイント (`https://CLUSTERNAME-int.azurehdinsight.net`) を使用して仮想ネットワーク内から Ambari にアクセスできます。
 
 パブリック エンドポイント (`https://CLUSTERNAME.azurehdinsight.net`) または SSH エンドポイント (`CLUSTERNAME-ssh.azurehdinsight.net`) を使用するには、[こちら](../firewall/integrate-lb.md)で説明されている非対称ルーティングの問題を回避するために、必ずルート テーブルに正しいルートとNSG ルールが指定されていることを確認します。 特にこのケースでは、インバウンド NSG 規則のクライアント IP アドレスを許可し、次ホップを `internet` に設定してユーザー定義ルート テーブルに追加する必要があります。 これが正しくセットアップされていない場合、タイムアウト エラーが表示されます。
 

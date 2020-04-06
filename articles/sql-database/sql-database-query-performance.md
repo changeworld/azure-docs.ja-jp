@@ -1,6 +1,6 @@
 ---
 title: Query Performance Insight
-description: クエリのパフォーマンスを監視して、Azure SQL データベースの CPU 消費量が最も多いクエリを識別します。
+description: クエリのパフォーマンスを監視して、Azure SQL データベースの単一およびプールされたデータベースに対して、CPU の消費量と実行時間が最大のクエリを特定します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,35 +10,31 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/03/2019
-ms.openlocfilehash: 56daca0aa817d03298bad971506402739d71482e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/10/2020
+ms.openlocfilehash: f5998fde6659715de4fcb533cb0f41a8939b1c48
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821249"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214054"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database の Query Performance Insight
 
-リレーショナル データベースのパフォーマンスの管理とチューニングには、専門知識と時間が必要です。 Query Performance Insight は、Azure SQL Database インテリジェント パフォーマンス製品ラインの一部です。 これは、短時間でデータベース パフォーマンスのトラブルシューティングを行うのに役立ちます。提供される内容は次のとおりです。
+Query Performance Insight は、単一およびプールされたデータベースに対するインテリジェントなクエリ分析を提供します。 これは、ワークロードで最もリソースを消費し、長時間実行されるクエリを特定するのに役立ちます。 これにより、ワークロードの全体的なパフォーマンスを向上させるため、およびコストをかけているリソースを効率的に使用するために、最適化するクエリを見つけることができます。 Query Performance Insight を使用すると、以下が提供され、データベースのパフォーマンスのトラブルシューティングに費やす時間を短縮できます。
 
-* データベース リソース (DTU) の消費量の詳細な情報。
-* CPU、期間、および実行回数での上位データベース クエリの詳細 (パフォーマンス向上のためのチューニングの対象となる可能性があります)。
-* クエリの詳細にドリルダウンして、クエリ テキストやリソース使用率の履歴を表示する機能。
-* [SQL Database Advisor](sql-database-advisor.md) からのパフォーマンスに関する推奨事項を示す注釈。
+* データベース リソース (DTU) の消費量の詳細な情報
+* CPU、期間、および実行回数別の上位データベース クエリの詳細 (パフォーマンス向上のためのチューニングの対象となる可能性があります)
+* クエリの詳細にドリルダウンして、クエリ テキストやリソース使用率の履歴を表示する機能
+* [データベース アドバイザー](sql-database-advisor.md)からのパフォーマンスに関する推奨事項を示す注釈
 
 ![Query Performance Insight](./media/sql-database-query-performance/opening-title.png)
-
-> [!TIP]
-> Azure SQL Database で基本的なパフォーマンス監視を行う場合は、Query Performance Insight をお勧めします。 この記事に記載されている製品の制限に注意してください。 大規模にデータベース パフォーマンスの高度な監視を行う場合は、[Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) をお勧めします。 自動化されたパフォーマンスのトラブルシューティングのためのインテリジェンスが組み込まれています。 データベースの最も一般的なパフォーマンスのいくつかの問題を自動的にチューニングする場合は、[自動チューニング](sql-database-automatic-tuning.md)をお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
 
 Query Performance Insight では、 [クエリ ストア](https://msdn.microsoft.com/library/dn817826.aspx) がデータベース上で実行されている必要があります。 既定では、自動的にすべての Azure SQL データベースに対して有効になります。 クエリ ストアが実行されていない場合、Azure portal で有効にするように求められます。
 
 > [!NOTE]
-> ポータルで "クエリ ストアはこのデータベースで適切に構成されていません" というメッセージが表示された場合は、[クエリ ストア構成の最適化](#optimize-the-query-store-configuration-for-query-performance-insight)に関する記述を参照してください。
->
+> ポータルで "クエリ ストアはこのデータベースで適切に構成されていません" というメッセージが表示された場合は、[クエリ ストア構成の最適化](#optimize-the-query-store-configuration)に関する記述を参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -65,6 +61,11 @@ Query Performance Insight は簡単に使用できます。
 
 > [!NOTE]
 > Query Performance Insight で情報を表示する SQL Database の場合、クエリ ストアで数時間分のデータをキャプチャする必要があります。 一定の期間に、データベースでアクティビティが発生していない場合、またはクエリ ストアがアクティブではなかった場合、Query Performance Insight でその時間の範囲が表示されたときにグラフは空になります。 クエリ ストアが実行されていない場合はいつでも有効にできます。 詳細については、「[クエリ ストアを使用するときの推奨事項](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)」を参照してください。
+>
+
+データベースのパフォーマンスに関する推奨事項を確認する場合は、Query Performance Insight のナビゲーション ブレードの [[推奨事項]](sql-database-advisor.md) を選択します。
+
+![[推奨事項] タブ](./media/sql-database-query-performance/ia.png)
 
 ## <a name="review-top-cpu-consuming-queries"></a>上位の CPU 消費量クエリを確認する
 
@@ -72,9 +73,9 @@ Query Performance Insight は簡単に使用できます。
 
 1. グラフに表示する個別のクエリを選別するには、チェック ボックスをオンまたはオフにします。
 
-    上の折れ線は、データベース全体の DTU の割合を示しています。 棒グラフは、選択された期間に選択されたクエリで消費された CPU の割合を示しています。 たとえば、 **[過去 1 週間]** が選択されている場合、各棒は 1 日を表します。
+   上の折れ線は、データベース全体の DTU の割合を示しています。 棒グラフは、選択された期間に選択されたクエリで消費された CPU の割合を示しています。 たとえば、 **[過去 1 週間]** が選択されている場合、各棒は 1 日を表します。
 
-    ![上位のクエリ](./media/sql-database-query-performance/top-queries.png)
+   ![上位のクエリ](./media/sql-database-query-performance/top-queries.png)
 
    > [!IMPORTANT]
    > 折れ線で示されている DTU は、1 時間の最大消費値に集計されます。 これは、クエリ実行の統計情報でのみ大まかに比較するためです。 DTU 使用率が実行されたクエリに比べて高すぎるように見える場合がありますが、そうでない可能性もあります。
@@ -217,7 +218,7 @@ Query Performance Insight でワークロードを調べる際に、垂直線付
 
 相互に関連するクエリやパフォーマンス チューニング アクションは、ワークロードの理解を深めるのに役立つ場合があります。
 
-## <a name="optimize-the-query-store-configuration-for-query-performance-insight"></a>Query Performance Insight 用にクエリ ストア構成を最適化する
+## <a name="optimize-the-query-store-configuration"></a>クエリ ストアの構成の最適化
 
 Query Performance Insight を使用しているときに、次のようなクエリ ストアのエラー メッセージが表示される場合があります。
 
@@ -241,8 +242,8 @@ Query Performance Insight を使用しているときに、次のようなクエ
 
 キャプチャ ポリシーは、次のように設定できます。
 
-* **すべて**:クエリ ストアですべてのクエリがキャプチャされます。
-* **自動**:クエリ ストアでは、低頻度のクエリおよびコンパイル期間と実行期間が重要ではないクエリは無視されます。 実行回数、コンパイル期間、実行期間のしきい値は内部的に決定されます。 これが既定のオプションです。
+* **[すべて]** : クエリ ストアですべてのクエリがキャプチャされます。
+* **Auto**:クエリ ストアでは、低頻度のクエリおよびコンパイル期間と実行期間が重要ではないクエリは無視されます。 実行回数、コンパイル期間、実行期間のしきい値は内部的に決定されます。 既定のオプションです。
 * **なし**: クエリ ストアでは新しいクエリのキャプチャが停止されます。しかし、既にキャプチャされているクエリの実行時統計は引き続き収集されます。
 
 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または Azure portal から以下のコマンドを実行して、すべてのポリシーを **AUTO** に設定し、クリーンアップ ポリシーを 30 日に設定することをお勧めします (`YourDB` はデータベース名に置き換えてください)。
@@ -260,7 +261,7 @@ Query Performance Insight を使用しているときに、次のようなクエ
 
 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) または Azure portal 経由でデータベースに接続し、以下のクエリを実行して、クエリ ストアのサイズを増やします (`YourDB` はデータベース名に置き換えてください)。
 
-```T-SQL
+```SQL
     ALTER DATABASE [YourDB]
     SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
 ```
@@ -274,16 +275,6 @@ Query Performance Insight を使用しているときに、次のようなクエ
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 ```
 
-## <a name="summary"></a>まとめ
+## <a name="next-steps"></a>次のステップ
 
-Query Performance Insight は、クエリ ワークロードの影響や、データベース リソースの消費量との関係を理解するのに役立ちます。 この機能を使用して、データベースでの上位の消費量クエリについて学習し、問題になる前に最適化するクエリを見つけます。
-
-## <a name="next-steps"></a>次の手順
-
-* データベースのパフォーマンスに関する推奨事項を確認する場合は、Query Performance Insight のナビゲーション ブレードの [[推奨事項]](sql-database-advisor.md) を選択します。
-
-    ![[推奨事項] タブ](./media/sql-database-query-performance/ia.png)
-
-* 一般的なデータベースのパフォーマンスの問題については、[自動チューニング](sql-database-automatic-tuning.md)を有効にすることをお勧めします。
-* データベースのパフォーマンスの問題を自動的にトラブルシューティングするのに、[Intelligent Insights](sql-database-intelligent-insights.md) がどのように役立つかについて学習します。
-* 数多くの SQL データベース、エラスティック プール、およびインテリジェンスが組み込まれている Managed Instance について高度なパフォーマンス監視を行う場合は、[Azure SQL Analytics]( ../azure-monitor/insights/azure-sql.md) の使用を検討してください。
+多数の単一およびプールされたデータベース、エラスティック プール、マネージド インスタンス、およびインスタンス データベースについて高度なパフォーマンス監視を行う場合は、[Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) の使用を検討してください。

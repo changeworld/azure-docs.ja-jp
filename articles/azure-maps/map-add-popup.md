@@ -1,7 +1,7 @@
 ---
 title: マップ上のポイントにポップアップを追加する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Web SDK を使用して、ポイントにポップアップを追加する方法について説明します。
-author: jingjing-z
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 02/27/2020
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 588de08666930937c3ad965b2609f8e207b75eca
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: cf6424d2a6cbcfb7c5052201b5a9190c81fddaff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208850"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055949"
 ---
 # <a name="add-a-popup-to-the-map"></a>マップにポップアップを追加する
 
@@ -22,7 +22,7 @@ ms.locfileid: "78208850"
 
 ## <a name="understand-the-code"></a>コードの理解
 
-次のコードでは、シンボル レイヤーを使用して、`name` プロパティと `description` プロパティを持つポイント フィーチャーをマップに追加します。 [Popup クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)のインスタンスが作成されますが、表示されません。 ポップアップのオープンとクローズをトリガーするためのマウス イベントがシンボル レイヤーに追加されます。 マーカー シンボルをマウスでポイントすると、ポップアップの `position` プロパティがマーカーの位置に応じて更新され、マウスでポイントされているポイント フィーチャーの `name` プロパティと `description` プロパティをラップしている HTML に応じて `content` オプションが更新されます。 次に、その `open` 関数を使用してマップにポップアップが表示されます。
+次のコードでは、シンボル レイヤーを使用して、`name` プロパティと `description` プロパティを持つポイント フィーチャーをマップに追加します。 [Popup クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)のインスタンスが作成されますが、表示されません。 ポップアップのオープンとクローズをトリガーするためのマウス イベントがシンボル レイヤーに追加されます。 マーカー シンボルをマウスでポイントすると、ポップアップの `position` プロパティがマーカーの位置に応じて更新され、マウスでポイントされているポイント フィーチャーの `name` プロパティと `description` プロパティをラップしている HTML に応じて `content` オプションが更新されます。 次に、その `open` 関数を使用してマップにポップアップが表示されます。
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -106,6 +106,14 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 ポップアップ テンプレートを使用すると、ポップアップ用のデータ ドリブン レイアウトを簡単に作成できます。 以下のセクションでは、フィーチャーのプロパティを使用して書式設定されたコンテンツを生成するためのさまざまなポップアップ テンプレートの使用方法を示します。
 
+> [!NOTE]
+> 既定では、ポップアップ テンプレートを使用してレンダリングされるすべてのコンテンツは、iframe 内にセキュリティ機能としてサンドボックス化されます。 ただし、次のような制限があります。
+>
+> - すべてのスクリプト、フォーム、ポインター ロック、上部ナビゲーションの機能は無効になります。 リンクは、クリックすると新しいタブで開くことができます。 
+> - iframe の `srcdoc` パラメーターをサポートしていない古いブラウザーでは、少量のコンテンツのレンダリングに制限されます。
+> 
+> ポップアップに読み込まれるデータを信頼しており、潜在的に、ポップアップに読み込まれるこれらのスクリプトがアプリケーションにアクセスできるようにしたい場合は、ポップアップ テンプレートの `sandboxContent` オプションを false に設定することによって、これを無効にすることができます。 
+
 ### <a name="string-template"></a>文字列テンプレート
 
 文字列テンプレートでは、プレースホルダーがフィーチャー プロパティの値に置き換えられます。 このフィーチャーのプロパティに、文字列型の値を割り当てる必要はありません。 たとえば、`value1` では整数が保持されます。 これらの値は、次に `popupTemplate` のコンテンツ プロパティに渡されます。 
@@ -116,20 +124,26 @@ map.events.add('mouseleave', symbolLayer, function (){
 > 文字列テンプレートでイメージをレンダリングできる方法は 1 つだけです。 まず、文字列テンプレートにはイメージ タグを用意する必要があります。 イメージ タグに渡す値は、イメージへの URL とする必要があります。 次に、文字列テンプレートでは、`HyperLinkFormatOptions` 内で `isImage` を true に設定する必要があります。 `isImage` オプションで、ハイパーリンクがイメージ用であることが指定されると、ハイパーリンクはイメージ タグに読み込まれます。 ハイパーリンクをクリックすると、イメージが開きます。
 
 ```javascript
-new atlas.data.Feature(new atlas.data.Point([-20, -20]), {
+var templateOptions = {
+  content: 'This template uses a string template with placeholders.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
+  numberFormat: {
+    maximumFractionDigits: 2
+  }
+};
+
+var feature = new atlas.data.Feature(new atlas.data.Point([0, 0]), {
     title: 'Template 1 - String template',
     value1: 1.2345678,
     value2: {
         subValue: 'Pizza'
     },
-    arrayValue: [3, 4, 5, 6],
-    popupTemplate: {
-        content: 'This template uses a string template with placeholders.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
-        numberFormat: {
-            maximumFractionDigits: 2
-        }
-    }
-}),
+    arrayValue: [3, 4, 5, 6]
+});
+
+var popup = new atlas.Popup({
+  content: atlas.PopupTemplate.applyTemplate(feature.properties, templateOptions),
+  position: feature.geometry.coordinates
+});
 ```
 
 ### <a name="propertyinfo-template"></a>PropertyInfo テンプレート
@@ -139,51 +153,57 @@ PropertyInfo テンプレートには、フィーチャーの使用可能なプ�
 PropertyInfo テンプレートでは、プロパティをエンド ユーザーに表示する前に、プロパティがそのフィーチャーに対して実際に定義されていることを再帰的に確認します。 また、スタイルおよびタイトルのプロパティを表示することは無視されます。 たとえば、`color`、`size`、`anchor`、`strokeOpacity`、および `visibility` は表示されません。 このため、バックエンドでプロパティ パスのチェックが完了すると、コンテンツは PropertyInfo テンプレートによってテーブル形式で表示されます。
 
 ```javascript
-new atlas.data.Feature(new atlas.data.Point([20, -20]), {
+var templateOptions = {
+  content: [
+    {
+        propertyPath: 'createDate',
+        label: 'Created Date'
+    },
+    {
+        propertyPath: 'dateNumber',
+        label: 'Formatted date from number',
+        dateFormat: {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          timeZone: 'UTC',
+          timeZoneName: 'short'
+        }
+    },
+    {
+        propertyPath: 'url',
+        label: 'Code samples',
+        hideLabel: true,
+        hyperlinkFormat: {
+          lable: 'Go to code samples!',
+          target: '_blank'
+        }
+    },
+    {
+        propertyPath: 'email',
+        label: 'Email us',
+        hideLabel: true,
+        hyperlinkFormat: {
+          target: '_blank',
+          scheme: 'mailto:'
+        }
+    }
+  ]
+};
+
+var feature = new atlas.data.Feature(new atlas.data.Point([0, 0]), {
     title: 'Template 2 - PropertyInfo',
     createDate: new Date(),
     dateNumber: 1569880860542,
     url: 'https://aka.ms/AzureMapsSamples',
-    email: 'info@microsoft.com',
-    popupTemplate: {
-        content: [{
-    propertyPath: 'createDate',
-    label: 'Created Date'
-    },
-    {
-    propertyPath: 'dateNumber',
-    label: 'Formatted date from number',
-    dateFormat: {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        timeZone: 'UTC',
-        timeZoneName: 'short'
-    }
-    },
-    {
-    propertyPath: 'url',
-    label: 'Code samples',
-    hideLabel: true,
-    hyperlinkFormat: {
-        lable: 'Go to code samples!',
-        target: '_blank'
-    }
-    },
-    {
-    propertyPath: 'email',
-    label: 'Email us',
-    hideLabel: true,
-    hyperlinkFormat: {
-        target: '_blank',
-        scheme: 'mailto:'
-        }
-    }
-        ]
-    }
+    email: 'info@microsoft.com'
 }),
 
+var popup = new atlas.Popup({
+  content: atlas.PopupTemplate.applyTemplate(feature.properties, templateOptions),
+  position: feature.geometry.coordinates
+});
 ```
 
 ### <a name="multiple-content-templates"></a>複数のコンテンツ テンプレート
@@ -191,32 +211,37 @@ new atlas.data.Feature(new atlas.data.Point([20, -20]), {
 また、フィーチャーには、文字列テンプレートと PropertyInfo テンプレートの組み合わせを使用してコンテンツを表示することもできます。 この場合、白の背景上に文字列テンプレートによってプレースホルダーの値がレンダリングされます。  さらに、テーブル内に PropertyInfo テンプレートによって全幅のイメージがレンダリングされます。 このサンプル内のプロパティは、前のサンプルで説明したプロパティに似ています。
 
 ```javascript
-new atlas.data.Feature(new atlas.data.Point([0, 0]), {
+var templateOptions = {
+  content: [
+    'This template has two pieces of content; a string template with placeholders and a array of property info which renders a full width image.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
+    [{
+      propertyPath: 'imageLink',
+      label: 'Image',
+      hideImageLabel: true,
+      hyperlinkFormat: {
+        isImage: true
+      }
+    }]
+  ],
+  numberFormat: {
+    maximumFractionDigits: 2
+  }
+};
+
+var feature = new atlas.data.Feature(new atlas.data.Point([0, 0]), {
     title: 'Template 3 - Multiple content template',
     value1: 1.2345678,
     value2: {
     subValue: 'Pizza'
     },
     arrayValue: [3, 4, 5, 6],
-    imageLink: 'https://azuremapscodesamples.azurewebsites.net/common/images/Pike_Market.jpg',
-    popupTemplate: {
-    content: [
-      'This template has two pieces of content; a string template with placeholders and a array of property info which renders a full width image.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
-      [{
-        propertyPath: 'imageLink',
-        label: 'Image',
-        hideImageLabel: true,
-        hyperlinkFormat: {
-          isImage: true
-        }
-      }]
-    ],
-    numberFormat: {
-      maximumFractionDigits: 2
-    }
-    }
-    }),
-]);
+    imageLink: 'https://azuremapscodesamples.azurewebsites.net/common/images/Pike_Market.jpg'
+});
+
+var popup = new atlas.Popup({
+  content: atlas.PopupTemplate.applyTemplate(feature.properties, templateOptions),
+  position: feature.geometry.coordinates
+});
 ```
 
 ### <a name="points-without-a-defined-template"></a>テンプレートが定義されていないポイント
@@ -254,10 +279,13 @@ CodePen でマップ上のポイントをクリックします。 次の各ポ�
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
 
 > [!div class="nextstepaction"]
-> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
+> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
+
+> [!div class="nextstepaction"]
+> [PopupTemplate](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popuptemplate)
 
 完全なコードのサンプルについては、次の優れた記事をご覧ください。
 

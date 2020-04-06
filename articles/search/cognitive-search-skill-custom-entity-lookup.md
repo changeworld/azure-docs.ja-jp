@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 8674438032ebd925296c95e9ffa0a2a0b95322f1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651340"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79369779"
 ---
-#    <a name="custom-entity-lookup-cognitive-skill-preview"></a>カスタム エンティティの参照認知スキル (プレビュー)
+#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>カスタム エンティティの参照認知スキル (プレビュー)
 
 > [!IMPORTANT] 
 > このスキルは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 現時点では、ポータルと .NET SDK によるサポートはありません。
@@ -38,9 +38,9 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| entitiesDefinitionUri | 照合対象のすべてのターゲット テキストを含む JSON ファイルまたは CSV ファイルのパス。 このエンティティ定義は、インデクサー実行の開始時に読み取られます。このファイルの実行中に行われた更新は、後続の実行まで反映されません。 この構成には、HTTPS 経由でアクセスできる必要があります。 想定される CSV または JSON スキーマについては、後述する「[カスタム エンティティ定義の形式](#custom-entity-definition-format)」を参照してください。|
+| entitiesDefinitionUri    | 照合対象のすべてのターゲット テキストを含む JSON ファイルまたは CSV ファイルのパス。 このエンティティ定義は、インデクサー実行の開始時に読み取られます。このファイルの実行中に行われた更新は、後続の実行まで反映されません。 この構成には、HTTPS 経由でアクセスできる必要があります。 想定される CSV または JSON スキーマについては、後述する「[カスタム エンティティ定義の形式](#custom-entity-definition-format)」を参照してください。|
 |inlineEntitiesDefinition | インライン JSON エンティティの定義。 このパラメーターは、entitiesDefinitionUri パラメーター (存在する場合) よりも優先されます。 10 KB を超える構成をインラインで指定することはできません。 想定される JSON スキーマについては、後述する「[カスタム エンティティ定義の形式](#custom-entity-definition-format)」を参照してください。 |
-|defaultLanguageCode |  (省略可能) 入力テキストのトークン化と記述に使用される入力テキストの言語コード。 次の言語がサポートされます。`da, de, en, es, fi, fr, it, ko, pt` 既定値は英語 (`en`) です。 languagecode-countrycode 形式を渡す場合、形式の languagecode 部分のみが使用されます。  |
+|defaultLanguageCode |    (省略可能) 入力テキストのトークン化と記述に使用される入力テキストの言語コード。 次の言語がサポートされます。`da, de, en, es, fi, fr, it, ko, pt` 既定値は英語 (`en`) です。 languagecode-countrycode 形式を渡す場合、形式の languagecode 部分のみが使用されます。  |
 
 
 ## <a name="skill-inputs"></a>スキルの入力
@@ -48,13 +48,13 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 | 入力名      | 説明                   |
 |---------------|-------------------------------|
 | text          | 分析するテキスト。          |
-| languageCode  | 省略可能。 既定値は `"en"` です。  |
+| languageCode    | 省略可能。 既定値は `"en"` です。  |
 
 
 ## <a name="skill-outputs"></a>スキルの出力
 
 
-| 出力名     | 説明                   |
+| 出力名      | 説明                   |
 |---------------|-------------------------------|
 | entities | 検出された一致に関する情報と、関連するメタデータが格納されるオブジェクトの配列。 識別される各エンティティには、次のフィールドが含まれる場合があります。  <ul> <li> *name*:識別される最上位のエンティティ。 エンティティは、"正規化された" 形式を表します。 </li> <li> *id*:"カスタム エンティティ定義の形式" でユーザーによって定義されたエンティティの一意の識別子。</li> <li> *description*:"カスタム エンティティ定義の形式" でユーザーによって定義されたエンティティの説明。 </li> <li> *type:* "カスタム エンティティ定義の形式" でユーザーによって定義されたエンティティ型。</li> <li> *subtype:* "カスタム エンティティ定義形式" でユーザーによって定義されたサブ エンティティ型。</li>  <li> *matches*:ソース テキストのそのエンティティの各一致を記述するコレクション。 各一致には次のメンバーが含まれます。 </li> <ul> <li> *text*:ソース ドキュメントからの未加工のテキスト一致。 </li> <li> *offset*:一致が見つかったテキスト内の場所。 </li> <li> *length*:一致したテキストの長さ。 </li> <li> *matchDistance*:この一致と異なる文字数は、元のエンティティ名または別名に由来します。  </li> </ul> </ul>
   |
@@ -168,7 +168,7 @@ JSON 定義のより複雑な例として、必要に応じて、各エンティ
 場合によっては、インラインでスキル定義に直接一致するカスタム エンティティの一覧を指定する方が便利です。 その場合は前述のような JSON 形式を使用できますが、スキル定義にインラインで指定されます。
 サイズが 10 KB (シリアル化されたサイズ) 未満の構成のみをインラインで定義できます。 
 
-##  <a name="sample-definition"></a>定義例
+##    <a name="sample-definition"></a>定義例
 
 インライン形式を使用したスキル定義例を次に示します。
 
@@ -231,7 +231,7 @@ JSON 定義のより複雑な例として、必要に応じて、各エンティ
 
 ```
 
-##  <a name="sample-input"></a>サンプル入力
+##    <a name="sample-input"></a>サンプル入力
 
 ```json
 {
@@ -248,7 +248,7 @@ JSON 定義のより複雑な例として、必要に応じて、各エンティ
 }
 ```
 
-##  <a name="sample-output"></a>サンプル出力
+##    <a name="sample-output"></a>サンプル出力
 
 ```json
   { 
@@ -295,6 +295,12 @@ JSON 定義のより複雑な例として、必要に応じて、各エンティ
     ] 
   } 
 ```
+
+## <a name="errors-and-warnings"></a>エラーと警告
+
+### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>警告:一致の最大容量に達したため、以降の重複する一致はすべてスキップされます。
+
+この警告は、検出された一致の数が許容される最大値を超えた場合に出力されます。 この場合、重複する一致を含める処理は停止されます。 これを容認できない場合は、個別のユース ケースを支援できるように[サポート チケット](https://ms.portal.azure.com/#create/Microsoft.Support)をお送りください。
 
 ## <a name="see-also"></a>関連項目
 

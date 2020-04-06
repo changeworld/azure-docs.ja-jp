@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 8f748764d0f61e4932b2d4710f5a6805a5eddf0e
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: f9758678708338a284a35b45f7f9dd43b9a9017c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047466"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335957"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -139,7 +139,7 @@ REST API は [API Management Service - Backup](/rest/api/apimanagement/2019-01-0
 request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
-### <a name="step1"> </a>API Management サービスのバックアップ
+### <a name="back-up-an-api-management-service"></a><a name="step1"> </a>API Management サービスのバックアップ
 
 API Management サービスをバックアップするには、次の HTTP 要求を発行します。
 
@@ -175,7 +175,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   バックアップの進行中は、**サービスでの管理の変更は避けてください** (SKU のアップグレードやダウングレード、ドメイン名の変更など)。
 -   バックアップの復元は、作成されたときから **30 日間だけ保証されます**。
 -   分析レポートの生成に使用される**使用状況データ**は、バックアップに**含まれません**。 [Azure API Management REST API][azure api management rest api] を使用して、分析レポートを保管用に定期的に取り出します。
--   さらに、バックアップ データの一部ではない項目として、カスタム ドメインの SSL 証明書および顧客によってアップロードされたすべての中間証明書またはルート証明書、開発者ポータルのコンテンツ、および仮想ネットワーク統合設定があります。
+-   さらに、バックアップ データの一部ではない項目として、カスタム ドメインの TLS/SSL 証明書および顧客によってアップロードされたすべての中間証明書またはルート証明書、開発者ポータルのコンテンツ、仮想ネットワーク統合設定があります。
 -   サービス バックアップを実行する頻度は、復旧ポイントの目標に影響を与えます。 その頻度を最小限に抑えるため、定期的なバックアップを実装すると共に、API Management サービスに対して変更を行った後のオンデマンドのバックアップを実行することをお勧めします。
 -   バックアップ処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われた**変更**は、**バックアップ対象から除外され、その結果失われる可能性があります**。
 -   [ファイアウォール][azure-storage-ip-firewall]が有効になっている場合は、コントロール プレーンから Azure Storage アカウントへのアクセスを**許可**します。 お客様は、バックアップまたは復元用のストレージ アカウントで [Azure API Management コントロール プレーンの IP アドレス][control-plane-ip-address] セットを開く必要があります。 
@@ -183,7 +183,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 > [!NOTE]
 > [ファイアウォール][azure-storage-ip-firewall]が有効になっているストレージ アカウントを使用して、API Management サービスとの間でバックアップ/復元を実行しようとすると、同じ Azure リージョンでは、これは機能しません。 これは、Azure Storage への要求が、SNAT によってコンピューティング > (Azure API Management コントロール プレーン) からパブリック IP に変換されないためです。 リージョン間のストレージ要求は、SNAT により変換されます。
 
-### <a name="step2"> </a>API Management サービスの復元
+### <a name="restore-an-api-management-service"></a><a name="step2"> </a>API Management サービスの復元
 
 以前に作成されたバックアップから API Management サービスを復元するには、次の HTTP 要求を行います。
 

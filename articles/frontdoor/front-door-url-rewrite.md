@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service - URL 書き換え | Microsoft Docs
-description: この記事では、Azure Front Door Service で構成されている場合に、ルートに対して URL 書き換えがどのように実行されるかについて説明します。
+title: Azure Front Door - URL 書き換え | Microsoft Docs
+description: この記事では、Azure Front Door で構成されている場合に、ルートに対する URL 書き換えがどのように実行されるかについて説明します。
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: dc2126276e3e8e0d35ce8ed1f835544386659eff
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1e5bd565be7a1cabf08ddf33c65eb12b5294249f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60736185"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471474"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL 書き換え (カスタム転送パス)
-Azure Front Door Service では、バックエンドに転送する要求の作成時に使用する、省略可能な**カスタム転送パス**の構成を許可することで、URL 書き換えがサポートされています。 既定では、カスタム転送パスが指定されていない場合、Front Door により、転送された要求で使用される URL に受信 URL パスがコピーされます。 転送された要求で使用されるホスト ヘッダーは、選択されたバックエンド用に構成されています。 その機能と構成方法については、「[バックエンド ホスト ヘッダー](front-door-backend-pool.md#hostheader)」をご覧ください。
+Azure Front Door では、バックエンドに転送する要求を作成するときに使用するオプションの**カスタム転送パス**を構成できるようにすることで、URL 書き換えがサポートされています。 既定では、カスタム転送パスが指定されていない場合、Front Door により、転送された要求で使用される URL に受信 URL パスがコピーされます。 転送された要求で使用されるホスト ヘッダーは、選択されたバックエンド用に構成されています。 その機能と構成方法については、「[バックエンド ホスト ヘッダー](front-door-backend-pool.md#hostheader)」をご覧ください。
 
 カスタム転送パスを使用した URL 書き換えの強力な部分では、転送されたパスに、ワイルドカード パスと一致する受信パスの任意の部分をコピーします (これらのパス セグメントは、次の例の**緑色**のセグメントです)。
 </br>
@@ -28,7 +28,7 @@ Azure Front Door Service では、バックエンドに転送する要求の作�
 ## <a name="url-rewrite-example"></a>URL 書き換えの例
 次のフロントエンド ホストおよびパスが構成されているルーティング規則を考えてみてください。
 
-| ホスト      | パス       |
+| Hosts      | パス       |
 |------------|-------------|
 | www\.contoso.com | /\*         |
 |            | /foo        |
@@ -57,7 +57,7 @@ Azure Front Door Service では、バックエンドに転送する要求の作�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
 - [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

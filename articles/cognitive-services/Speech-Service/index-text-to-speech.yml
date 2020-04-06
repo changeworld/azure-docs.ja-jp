@@ -7,19 +7,18 @@ metadata:
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 9070577c07cb826d10b911689f456d64709450b7
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: 4aa2cb134bc47841da2964f4f83898875098e6c4
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943374"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "80052798"
 landingContent:
-- title: はじめに
+- title: テキスト読み上げについて
   linkLists:
   - linkListType: overview
     links:
@@ -33,51 +32,33 @@ landingContent:
       url: quickstarts/text-to-speech-audio-file.md
     - text: 長い形式の音声で音声を合成する
       url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
-- title: ステップバイステップ ガイド
+- title: テキスト読み上げを使用して開発する
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: SSML を使用して合成を改善する
       url: speech-synthesis-markup.md
-    - text: Custom Voice を使用して合成を改善する
-      url: how-to-custom-voice.md
-    - text: Long Audio API を使用して音声を合成する
-      url: long-audio-api.md
     - text: REST を使用して音声のリストを取得する (Python)
       url: quickstart-python-get-text-to-speech-voices.md
     - text: REST を使用してテキストを音声に変換する (Python)
       url: quickstart-python-text-to-speech.md
-    - text: Audio Content Creation を使用して合成を向上させる
-      url: how-to-audio-content-creation.md
   - linkListType: concept
     links:
     - text: Custom Voice の概要
       url: how-to-custom-voice.md
-    - text: カスタム音声のデータを用意する
-      url: how-to-custom-voice-prepare-data.md
     - text: Custom Voice モデルを作成して使用する
       url: how-to-custom-voice-create-voice.md
-    - text: 音声サンプルを録音する
-      url: record-custom-voice-samples.md
     - text: Custom Voice のゲーティング
       url: concepts-gating-overview.md
-    - text: 合成テクノロジのデプロイ
-      url: concepts-guidelines-responsible-deployment-synthetic.md
-    - text: 開示設計のガイドライン
-      url: concepts-disclosure-guidelines.md
-    - text: 設計パターンを開示する
-      url: concepts-disclosure-patterns.md
 - title: リファレンス
   linkLists:
   - linkListType: reference
     links:
-    - text: 言語のサポート
-      url: language-support.md#text-to-speech
-    - text: 価格
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: 標準の音声サポート
+      url: language-support.md#standard-voices
+    - text: ニューラルの音声サポート
+      url: language-support.md#neural-voices
     - text: SSML 音素セット
       url: speech-ssml-phonetic-sets.md
-    - text: 倫理規定
-      url: https://aka.ms/custom-neural-code-of-conduct
-    - text: ボイス タレント向けの開示
-      url: https://aka.ms/disclosure-voice-talent
+    - text: テキスト読み上げの価格
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: a9d3d0287e7839d6396553d532ba6f293fb19b68
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 808eef5424d678559ae94ffd04e41eacd0f16aee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647667"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371103"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Azure Logic Apps と IBM 3270 コネクタを使用して IBM メインフレーム上の 3270 画面駆動型アプリを Azure と統合する
 
@@ -184,7 +184,7 @@ Design Tool では、Screen Recognition エディターを使用して、"*認�
 
    | プランの種類 | 説明 |
    |-----------|-------------|
-   | **[処理]** | スタンドアロン プランまたは結合プランの場合 |
+   | **処理** | スタンドアロン プランまたは結合プランの場合 |
    | **のインスタンスに接続するときには、** | 接続プランの場合 |
    | **Disconnect (切断)** | 切断プランの場合 |
    |||
@@ -358,7 +358,7 @@ Design Tool では、Screen Recognition エディターを使用して、認識�
 
 1. まだ接続が存在しない場合は、接続に必要な情報を指定し、 **[作成]** を選択します。
 
-   | プロパティ | Required | Value | 説明 |
+   | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **Connection Name** | はい | <*connection-name*> | 接続の名前 |
    | **統合アカウント ID** | はい | <*integration-account-name*> | 統合アカウントの名前 |
@@ -368,7 +368,7 @@ Design Tool では、Screen Recognition エディターを使用して、認識�
    | **デバイスの種類** | いいえ | <*IBM-terminal-model*> | エミュレートする IBM 端末のモデルの名前または番号。 空白のままにすると、コネクタでは既定値が使用されます。 |
    | **コード ページ** | いいえ | <*code-page-number*> | ホストのコード ページ番号。 空白のままにすると、コネクタでは既定値として `37` が使用されます。 |
    | **論理ユニット名** | いいえ | <*logical-unit-name*> | ホストから要求する特定の論理ユニット名 |
-   | **SSL を有効にしますか?** | いいえ | [オン] または [オフ] | SSL 暗号化を有効または無効にします。 |
+   | **SSL を有効にしますか?** | いいえ | [オン] または [オフ] | TLS 暗号化を有効または無効にします。 |
    | **Validate host ssl certificate? (ホストの SSL 証明書を検証しますか?)** | いいえ | [オン] または [オフ] | サーバーの証明書の検証を有効または無効にします。 |
    ||||
 
@@ -378,7 +378,7 @@ Design Tool では、Screen Recognition エディターを使用して、認識�
 
 1. アクションに必要な情報を指定します。
 
-   | プロパティ | Required | Value | 説明 |
+   | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **hidx 名** | はい | <*HIDX-file-name*> | 使用する 3270 HIDX ファイルを選択します。 |
    | **メソッド名** | はい | <*method-name*> | 使用する HIDX ファイル内のメソッドを選択します。 メソッドを選択すると、 **[新しいパラメーターの追加]** の一覧が表示されるので、そのメソッドで使用するパラメーターを選択できます。 |
@@ -409,10 +409,10 @@ Design Tool では、Screen Recognition エディターを使用して、認識�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細は、[コネクタの参照ページ](https://docs.microsoft.com/connectors/si3270/)を参照してください。
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](https://docs.microsoft.com/connectors/si3270/)を参照してください。
 
 > [!NOTE]
-> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリでは、代わりにこのコネクタの ISE のラベルがついたバージョンが [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)を使用します。
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

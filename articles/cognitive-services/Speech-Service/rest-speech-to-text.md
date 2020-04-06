@@ -3,23 +3,23 @@ title: Speech to Text API リファレンス (REST) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Speech to Text REST API の使用方法について説明します。 この記事では、認可のオプションとクエリのオプション、さらに要求を構築する方法と応答を受信する方法について説明します。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.author: erhopf
-ms.openlocfilehash: 26fe995f45a97a5863bfc20fd1564df89124ed88
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.date: 03/16/2020
+ms.author: dapine
+ms.openlocfilehash: 759ea697e4093da5bfc1c082c886c6dfda636f42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168311"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474800"
 ---
 # <a name="speech-to-text-rest-api"></a>Speech to Text REST API
 
-[Speech SDK](speech-sdk.md) の代替手段となる Speech Services では、REST API を使用して音声テキスト変換を実行できます。 アクセス可能な各エンドポイントは、リージョンに関連付けられています。 アプリケーションには、使用を検討しているエンドポイントのサブスクリプション キーが必要となります。
+[Speech SDK](speech-sdk.md) の代替手段となる Speech Services では、REST API を使用して音声テキスト変換を実行できます。 アクセス可能な各エンドポイントは、リージョンに関連付けられています。 アプリケーションには、使用を検討しているエンドポイントのサブスクリプション キーが必要となります。 REST API は非常に制限されており、[Speech SDK](speech-sdk.md) を使用ができない場合にのみ使用する必要があります。
 
 Speech to Text REST API を使用する前に、次のことを理解してください。
 
@@ -51,9 +51,10 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 
 | パラメーター | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `language` | 認識の対象として発話された言語を識別します。 [サポートされている言語](language-support.md#speech-to-text)を参照してください。 | Required |
+| `language` | 認識の対象として発話された言語を識別します。 [サポートされている言語](language-support.md#speech-to-text)を参照してください。 | 必須 |
 | `format` | 結果の形式を指定します。 指定できる値は、`simple` と `detailed` です。 単純な結果には `RecognitionStatus`、`DisplayText`、`Offset`、`Duration`が含まれます。 詳細な応答には、信頼度の値と 4 つの異なる表現を持った複数の結果が含まれます。 既定の設定は `simple` です。 | 省略可能 |
 | `profanity` | 認識結果内の不適切な表現をどう扱うかを指定します。 指定できる値は、`masked` (不適切な表現をアスタリスクに置き換える)、`removed` (すべての不適切な表現を結果から除去する)、または `raw` (不適切な表現を結果に含める) です。 既定の設定は `masked` です。 | 省略可能 |
+| `cid` | [Custom Speech ポータル](how-to-custom-speech.md)を使用してカスタム モデルを作成する場合、 **[デプロイ]** ページにある **[エンドポイント ID]** を使用してカスタム モデルを使用できます。 `cid` クエリ文字列パラメーターの引数として **[エンドポイント ID]** を使用します。 | 省略可能 |
 
 ## <a name="request-headers"></a>要求ヘッダー
 
@@ -63,7 +64,7 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 音声サービスのサブスクリプション キー。 | このヘッダーと `Authorization` のどちらかが必須となります。 |
 | `Authorization` | 単語 `Bearer` が前に付いた認証トークン。 詳細については、[認証](#authentication)に関するページをご覧ください。 | このヘッダーと `Ocp-Apim-Subscription-Key` のどちらかが必須となります。 |
-| `Content-type` | 指定したオーディオ データの形式とコーデックを記述します。 指定できる値は、`audio/wav; codecs=audio/pcm; samplerate=16000` と `audio/ogg; codecs=opus` です。 | Required |
+| `Content-type` | 指定したオーディオ データの形式とコーデックを記述します。 指定できる値は、`audio/wav; codecs=audio/pcm; samplerate=16000` と `audio/ogg; codecs=opus` です。 | 必須 |
 | `Transfer-Encoding` | オーディオを個別のファイルとしてではなくチャンク データとして送信することを指定します。 このヘッダーは、オーディオ データをチャンクにする場合にのみ使用してください。 | 省略可能 |
 | `Expect` | チャンク転送を使用する場合、`Expect: 100-continue` を送信します。 音声サービスは最初の要求を確認し、追加のデータを待ちます。| オーディオのチャンク データを送信する場合は必須となります。 |
 | `Accept` | 指定する場合は、`application/json` とする必要があります。 Speech Service からは、結果が JSON 形式で返されます。Speech Service からは、結果が JSON 形式で返されます。 一部の要求フレームワークでは、互換性のない既定値が提供されます。 常に `Accept` を含めることをお勧めします。 | 省略可能ですが、指定することをお勧めします。 |
@@ -72,10 +73,10 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 
 オーディオは HTTP `POST` 要求の本文で送信されます。 この表内のいずれかの形式にする必要があります。
 
-| Format | コーデック | Bitrate | サンプル レート |
-|--------|-------|---------|-------------|
-| WAV | PCM 0 | 16 ビット | 16 kHz、モノラル |
-| OGG | OPUS | 16 ビット | 16 kHz、モノラル |
+| Format | コーデック | Bitrate | サンプル レート  |
+|--------|-------|---------|--------------|
+| WAV    | PCM 0   | 16 ビット  | 16 kHz、モノラル |
+| OGG    | OPUS  | 16 ビット  | 16 kHz、モノラル |
 
 >[!NOTE]
 >上の形式は、Speech Service の REST API と WebSocket を介してサポートされます。 現在、[Speech SDK](speech-sdk.md) では PCM コーデックの WAV 形式と、[その他の形式](how-to-use-codec-compressed-audio-input-streams.md)がサポートされています。
@@ -100,50 +101,43 @@ Expect: 100-continue
 
 | HTTP 状態コード | 説明 | 考えられる理由 |
 |------------------|-------------|-----------------|
-| 100 | Continue | 最初の要求が受け付けられました。 残りのデータの送信を続行します。 (チャンク転送で使用されます。) |
-| 200 | [OK] | 要求は成功しました。応答本文は JSON オブジェクトです。 |
-| 400 | 正しくない要求 | 言語コードが提供されていない、サポートされていない言語、無効な音声ファイルなどです。 |
-| 401 | 権限がありません | サブスクリプション キーまたは認証トークンが指定のリージョンで無効であるか、または無効なエンドポイントです。 |
-| 403 | Forbidden | サブスクリプション キーまたは認証トークンがありません。 |
+| `100` | Continue | 最初の要求が受け付けられました。 残りのデータの送信を続行します。 (チャンク転送で使用されます) |
+| `200` | [OK] | 要求は成功しました。応答本文は JSON オブジェクトです。 |
+| `400` | 正しくない要求 | 言語コードが提供されていない、サポートされていない言語、無効な音声ファイルなどです。 |
+| `401` | 権限がありません | サブスクリプション キーまたは認証トークンが指定のリージョンで無効であるか、または無効なエンドポイントです。 |
+| `403` | Forbidden | サブスクリプション キーまたは認証トークンがありません。 |
 
 ## <a name="chunked-transfer"></a>チャンク転送
 
 チャンク転送 (`Transfer-Encoding: chunked`) は、認識の待ち時間を短縮するのに役立ちます。 これにより、Speech Services では、音声ファイルを転送中にファイルの処理を開始できます。 REST API は部分的または中間的な結果を提供しません。
 
-このコード サンプルは、オーディオをチャンクで送信する方法を示しています。 最初のチャンクだけに、オーディオ ファイルのヘッダーが含まれている必要があります。 `request` は、適切な REST エンドポイントに接続された HTTPWebRequest オブジェクトです。 `audioFile` はディスク上のオーディオ ファイルのパスです。
+このコード サンプルは、オーディオをチャンクで送信する方法を示しています。 最初のチャンクだけに、オーディオ ファイルのヘッダーが含まれている必要があります。 `request` は、適切な REST エンドポイントに接続された `HttpWebRequest` オブジェクトです。 `audioFile` はディスク上のオーディオ ファイルのパスです。
 
 ```csharp
+var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
+request.SendChunked = true;
+request.Accept = @"application/json;text/xml";
+request.Method = "POST";
+request.ProtocolVersion = HttpVersion.Version11;
+request.Host = host;
+request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
+request.Headers["Ocp-Apim-Subscription-Key"] = "YOUR_SUBSCRIPTION_KEY";
+request.AllowWriteStreamBuffering = false;
 
-    HttpWebRequest request = null;
-    request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
-    request.SendChunked = true;
-    request.Accept = @"application/json;text/xml";
-    request.Method = "POST";
-    request.ProtocolVersion = HttpVersion.Version11;
-    request.Host = host;
-    request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
-    request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
-    request.AllowWriteStreamBuffering = false;
-
-using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
+using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 {
-    /*
-    * Open a request stream and write 1024 byte chunks in the stream one at a time.
-    */
+    // Open a request stream and write 1024 byte chunks in the stream one at a time.
     byte[] buffer = null;
     int bytesRead = 0;
-    using (Stream requestStream = request.GetRequestStream())
+    using (var requestStream = request.GetRequestStream())
     {
-        /*
-        * Read 1024 raw bytes from the input audio file.
-        */
+        // Read 1024 raw bytes from the input audio file.
         buffer = new Byte[checked((uint)Math.Min(1024, (int)fs.Length))];
         while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) != 0)
         {
             requestStream.Write(buffer, 0, bytesRead);
         }
 
-        // Flush
         requestStream.Flush();
     }
 }

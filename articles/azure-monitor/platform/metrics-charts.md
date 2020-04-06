@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: c754f33ab5f4346413b6603ca2cd404acac5443f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2df1e0bb7d586edb13dc86e163f0e5728608d2a2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662402"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371593"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの高度な機能
 
@@ -110,6 +110,19 @@ Y 軸の範囲を制御するには、 グラフの […] メニューを使用�
 
 > [!WARNING]
 > 通常、ある期間にわたってさまざまな個数や合計を追跡する (カウント、合計、最小、最大などの集計を使用する) グラフで Y 軸の境界をロックするためには、自動による既定の設定をそのまま使うのではなく、時間の粒度を固定的に指定する必要があります。 なぜなら、ブラウザー ウィンドウのサイズや画面の解像度をユーザーが変更することで、時間の粒度が自動的に変わると、グラフ上の値が変化するためです。 それによって生じた時間の粒度の変化がグラフの外観に影響を及ぼし、Y 軸の範囲に対する現在の選択が適さなくなってしまいます。
+
+## <a name="change-colors-of-chart-lines"></a>グラフの線の色を変更する
+
+グラフを構成すると、グラフの線の色は既定のパレットから自動的に割り当てられます。 これらの色は変更できます。
+
+グラフの線の色を変更するには、グラフに対応する凡例の色分けされたバーをクリックします。 カラー ピッカーのダイアログが開きます。 カラー ピッカーを使用して、線の色を構成します。
+
+構成したグラフの色はその後、グラフをダッシュボードにピン留めしても、そのままになります。 次のセクションでは、グラフをピン留めする方法について説明します。
+
+> [!NOTE]
+> Microsoft のリリースと発行のスケジュールの制約により、一時的処置として、グラフの線の色を変更するには、Azure portal [https://portal.azure.com/?feature.colorpicker=true](https://portal.azure.com/?feature.colorpicker=true) を開始するときに特別なパラメーター **?feature.colorpicker=true**を渡す必要があります。 この制限は間もなく解除される予定です。 
+
+![メトリックの画像](./media/metrics-charts/018.png)
 
 ## <a name="pin-charts-to-dashboards"></a>ダッシュボードにグラフをピン留めする
 

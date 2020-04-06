@@ -6,20 +6,20 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/25/2020
 ms.author: memildin
-ms.openlocfilehash: 34dbace304ccf70891ef53dd768de60d87e26967
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: c709890ae6c57a001c6a0e9df4e973bd3bd24602
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666637"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258262"
 ---
-# <a name="using-custom-security-policies-preview"></a>カスタム セキュリティ ポリシーの使用 (プレビュー)
+# <a name="using-custom-security-policies"></a>カスタム セキュリティ ポリシーの使用
 
 システムと環境のセキュリティ保護を支援するために、Azure Security Center ではセキュリティに関する推奨事項が生成されます。 これらの推奨事項は業界のベスト プラクティスに基づいており、すべてのお客様に提供される既定の汎用セキュリティ ポリシーに組み込まれています。 また、業界標準と規制基準に関する Security Center のナレッジから提供される場合もあります。
 
-このプレビュー機能を使用して、独自の "*カスタム*" イニシアティブを追加できます。 作成したポリシーに環境が従っていない場合は、推奨事項が提供されます。 作成したカスタム イニシアチブは、「[規制に対するコンプライアンスの向上](security-center-compliance-dashboard.md)」チュートリアルで説明している規制コンプライアンス ダッシュボードの組み込みイニシアチブと一緒に表示されます。
+この機能を使用して、独自の "*カスタム*" イニシアティブを追加できます。 作成したポリシーに環境が従っていない場合は、推奨事項が提供されます。 作成したカスタム イニシアチブは、「[規制に対するコンプライアンスの向上](security-center-compliance-dashboard.md)」チュートリアルで説明している規制コンプライアンス ダッシュボードの組み込みイニシアチブと一緒に表示されます。
 
 [この](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) Azure Policy のドキュメントで説明しているように、カスタム イニシアチブの場所を指定するとき、その場所は管理グループまたはサブスクリプションである必要があります。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "75666637"
     >
     > カスタム標準を追加すると、そのスコープに "*イニシアティブ*" が割り当てられます。 そのため、その割り当てに必要な最も広いスコープを選択することをお勧めします。
 
-1. [セキュリティ ポリシー] ページの [カスタム イニシアティブ (プレビュー)] で、 **[カスタム イニシアティブの追加]** をクリックします。
+1. [セキュリティ ポリシー] ページの [Your custom initiatives]\(カスタム イニシアティブ\) で、 **[カスタム イニシアティブの追加]** をクリックします。
 
     [![**[カスタム イニシアティブの追加]** をクリック](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 

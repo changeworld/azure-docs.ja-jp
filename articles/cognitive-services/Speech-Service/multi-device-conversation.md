@@ -1,5 +1,5 @@
 ---
-title: マルチデバイスの会話 (プレビュー) について - 音声サービス
+title: マルチデバイスの会話 (プレビュー) - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: d94b3392d6bd5ab539d49c8a4cfdd568fbbb1cd0
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: b3802e66b0ba5a68c898e69ec64b01edce1541c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560815"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371360"
 ---
-# <a name="about-multi-device-conversation-preview"></a>マルチデバイスの会話 (プレビュー) について
+# <a name="what-is-multi-device-conversation-preview"></a>マルチデバイスの会話とは (プレビュー)
 
 **マルチデバイスの会話** を使用すると、複数のクライアント間で音声やテキストによる会話を簡単に作成し、その間で送信されるメッセージを調整することができます。
 
@@ -64,7 +64,7 @@ ms.locfileid: "77560815"
 
 ## <a name="how-it-works"></a>しくみ
 
-すべてのクライアントが会話の作成または参加に Speech SDK を使用します。 Speech SDK はマルチデバイスの会話サービスと連携して、参加者の一覧、各クライアントの選択言語、送信されたメッセージを含む、会話の有効期間を管理します。  
+すべてのクライアントが会話の作成または参加に Speech SDK を使用します。 Speech SDK では、マルチデバイスの会話サービスと連携して、参加者の一覧、各クライアントの選択言語、送信されたメッセージを含む会話の有効期間の管理が行われます。  
 
 各クライアントは、音声またはインスタント メッセージを送信できます。 サービスは音声認識を使用して音声をテキストに変換し、インスタント メッセージとしてそのまま送信します。 クライアントが別の言語を選択した場合、サービスはすべてのメッセージを各クライアントの指定した言語に翻訳します。
 
@@ -75,8 +75,8 @@ ms.locfileid: "77560815"
 **会話**は、1 人のユーザーによって開始され、他のユーザーが参加しているセッションです。 すべてのクライアントは、5 文字の**会話コード**を使用して、会話に接続します。
 
 それぞれの会話では、次のものを含むメタデータが作成されます。
--   会話が開始および終了したときのタイムスタンプ
--   会話内のすべての参加者の一覧。各ユーザーが選択したニックネームと、音声またはテキスト入力に使用する第 1 言語が含まれます。
+-    会話が開始および終了したときのタイムスタンプ
+-    会話内のすべての参加者の一覧。各ユーザーが選択したニックネームと、音声またはテキスト入力に使用する第 1 言語が含まれます。
 
 
 会話には、**ホスト**と**参加者**という 2 種類のユーザーがいます。

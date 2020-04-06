@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 64f285ea27bde4565d051a84a65c5b4d7b8e9e8c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906987"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237383"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -105,7 +105,7 @@ IoT Hub により、その他の運用上の制限が適用されます。
 | cloud-to-device のメッセージング<sup>1</sup> | 最大メッセージ サイズは 64 KB。 デバイスあたりの配信の保留中のメッセージの最大数は 50。 |
 | ダイレクト メソッド<sup>1</sup> | ダイレクト メソッドの最大ペイロード サイズは 128 KB。 |
 | デバイスおよびモジュールの自動構成<sup>1</sup> | 有料の SKU ハブあたり 100 構成。 無料の SKU ハブあたり 20 構成。 |
-| IoT Edge の自動デプロイ<sup>1</sup> | 展開あたり 20 モジュール。 有料の SKU ハブあたり 100 デプロイ (多層デプロイを含む)。 無料の SKU ハブあたり 10 デプロイ。 |
+| IoT Edge の自動デプロイ<sup>1</sup> | デプロイあたり 50 モジュール。 有料の SKU ハブあたり 100 デプロイ (多層デプロイを含む)。 無料の SKU ハブあたり 10 デプロイ。 |
 | ツイン<sup>1</sup> | 必要なプロパティ セクションと報告されたプロパティ セクションの最大サイズはそれぞれ 32 KB です。 タグ セクションの最大サイズは 8 KB です。 |
 | 共有アクセス ポリシー | 共有アクセス ポリシーの最大数は 16 です |
 

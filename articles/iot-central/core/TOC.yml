@@ -45,7 +45,7 @@
       href: concepts-architecture.md
     - name: アプリケーション テンプレートとは
       href: concepts-app-templates.md
-    - name: 接続する
+    - name: デバイスの接続性
       href: concepts-get-connected.md
     - name: IoT Edge デバイスへの接続
       href: concepts-iot-edge.md

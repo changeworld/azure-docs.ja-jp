@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: cae128505c61e7c640819041c6ffdae10a4947e7
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: efe09c1d516b37c23b024e07ae387772fa7e5992
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152280"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477614"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>テキストからの N gram 特徴抽出モジュール リファレンス
 
@@ -73,7 +73,7 @@ ms.locfileid: "77152280"
 
 1. 特徴ベクトルを正規化するには、 **[Normalize n-gram feature vectors]\(N-gram の特徴ベクトルの正規化\)** を選択します。 このオプションが有効になっている場合、各 N-gram の特徴ベクトルは L2 ノルムで除算されます。
 
-1. パイプラインを実行します。
+1. パイプラインを送信します。
 
 ### <a name="use-an-existing-n-gram-dictionary"></a>既存の N-gram 辞書を使用する
 
@@ -92,7 +92,7 @@ ms.locfileid: "77152280"
 
 1.  他のすべてのオプションについては、[前のセクション](#create-a-new-n-gram-dictionary)にあるプロパティの説明を参照してください。
 
-1.  パイプラインを実行します。
+1.  パイプラインを送信します。
 
 ### <a name="score-or-publish-a-model-that-uses-n-grams"></a>N-gram を使用するモデルのスコア付けまたは発行を行う
 
@@ -106,7 +106,7 @@ ms.locfileid: "77152280"
 
 1.  スコアリング グラフで、保存したデータセットをテキストからの N-gram 特徴抽出モジュールに接続します。
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 テキストからの N-gram 特徴抽出モジュールでは、次の 2 つの種類の出力が作成されます。 
 

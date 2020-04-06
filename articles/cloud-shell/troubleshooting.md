@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 1d244d7b62fcfefeec6f628f473274ae982bf4d8
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 0b1b22095c77344ed71762d3d51b12f19d9f1811
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120232"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79458054"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティングと制限事項
 
@@ -168,7 +168,7 @@ Azure Cloud Shell は、ユーザーの個人データを慎重に取り扱い�
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-### <a name="export"></a>[エクスポート]
+### <a name="export"></a>エクスポート
 選択されたシェル、フォント サイズ、フォントの種類など、Cloud Shell によって保存されるユーザー設定を**エクスポート**するには、次のコマンドを実行します。
 
 1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
@@ -212,3 +212,6 @@ PowerShell:
   ```
 ## <a name="azure-government-limitations"></a>Azure Government の制限事項
 Azure Government の Azure Cloud Shell には Azure portal からのみアクセスできます。
+
+>[!Note]
+> 現在、Exchange Online 用の GCC-High または Government DoD Cloud への接続はサポートされていません。

@@ -5,24 +5,21 @@ services: active-directory
 documentationcenter: .net
 author: navyasric
 manager: CelesteDG
-editor: ''
-ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 59bd8eb09a5a6cd8e35434a1b9bc8dac8c73434a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ROBOTS: NOINDEX
+ms.openlocfilehash: a301029f30a77f4e62ad3529aac488a81c12566e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377866"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154527"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>On-Behalf-Of フローでの委任ユーザー ID を使用するサービス間の呼び出し
 
@@ -35,7 +32,7 @@ OAuth 2.0 On-Behalf-Of (OBO) フローにより、サービスまたは Web API 
 
 ## <a name="on-behalf-of-flow-diagram"></a>On-Behalf-Of フローの図
 
-OBO フローは、[OAuth 2.0 認証コード付与フロー](v1-protocols-oauth-code.md)を使用するアプリケーションでユーザーが認証された後に開始されます。 その時点で、アプリケーションは中間層の Web API (API A) に、API A にアクセスするためのユーザーの要求と同意を含むアクセス トークン (トークン A) を送信します。次に、API A はダウンストリームの Web API (API B) に認証済み要求を行います。
+OBO フローは、[OAuth 2.0 認証コード付与フロー](v1-protocols-oauth-code.md)を使用するアプリケーションでユーザーが認証された後に開始されます。 その時点で、アプリケーションによって、中間層の Web API (API A) に、API A にアクセスするためのユーザーの要求と同意を含むアクセス トークン (トークン A) が送信されます。次に、API A によって、ダウンストリームの Web API (API B) への認証済み要求が行われます。
 
 On-Behalf-Of フローは次の手順で構成されます。![OAuth2.0 の On-Behalf-Of フローの手順](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 

@@ -4,7 +4,6 @@ description: Azure Active Directory の AppSource 認定を取得する方法に
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 21206407-49f8-4c0b-84d1-c25e17cd4183
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.topic: conceptual
@@ -13,12 +12,13 @@ ms.date: 08/21/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 8b966df3f0ca59edbaa304212f05daffeb9ef17d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3ad4efa3b8126a9b9c6557822f61e3bfff3fe120
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163588"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154884"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory の AppSource 認定を取得する方法
 

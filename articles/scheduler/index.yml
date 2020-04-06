@@ -1,0 +1,37 @@
+### YamlMime:Landing
+title: Azure Scheduler のドキュメント
+summary: Azure Logic Apps は、廃止予定の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く Azure Logic Apps に移行してください。
+metadata:
+  title: Azure Scheduler のドキュメント
+  description: 定期的なアプリケーション アクションや日常的なメンテナンスなど、自動化されたジョブの作成、スケジュール設定、実行をクラウドで行います。 Azure Logic Apps は、廃止予定の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く Azure Logic Apps に移行してください。
+  services: scheduler
+  ms.service: scheduler
+  ms.topic: landing-page
+  author: derek1ee
+  ms.author: estfan
+  ms.date: 03/30/2020
+  ms.openlocfilehash: 04be683d3bd3d874efb44685b0d40b8c2d5a9698
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "80422980"
+landingContent:
+- title: 移行
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Scheduler とは
+      url: scheduler-intro.md
+    - text: Azure Logic Apps とは
+      url: ../logic-apps/logic-apps-overview.md
+  - linkListType: get-started
+    links:
+    - text: Azure Scheduler ジョブを Azure Logic Apps に移行する
+      url: migrate-from-scheduler-to-logic-apps.md
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/scheduler/
+    - text: PowerShell
+      url: scheduler-powershell-reference.md

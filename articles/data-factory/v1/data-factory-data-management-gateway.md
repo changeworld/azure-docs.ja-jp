@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9d86fa9bfe9c17867b8a30519b79d9ee8c5af363
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1340c205477b256e3d96ff7ccacb64e575725c2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358583"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065401"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
@@ -326,7 +326,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 * ゲートウェイで使われる **証明書** を表示、変更、エクスポートする。 この証明書は、データ ソースの資格情報の暗号化に使用されます。
 * エンドポイントの **HTTPS ポート** を変更する。 ゲートウェイでデータ ソースの資格情報を設定するためにポートが開かれます。
 * **状態**
-* **SSL 証明書**を表示する。この証明書は、データ ソースの資格情報を設定するためにポータルとゲートウェイ間の SSL 通信に使用されます。
+* **SSL 証明書**を表示する。この証明書は、データ ソースの資格情報を設定するためにポータルとゲートウェイ間の TLS/SSL 通信に使用されます。
 
 ### <a name="remote-access-from-intranet"></a>イントラネットからのリモート アクセス
 この機能は今後有効になります。 今後の更新プログラム (v3.4 以降) で、資格情報を暗号化するために PowerShell または資格情報マネージャー アプリケーションを使用しながら、ポート 8050 (前のセクションを参照) を使用して現在発生しているすべてのリモート接続を有効または無効にできます。

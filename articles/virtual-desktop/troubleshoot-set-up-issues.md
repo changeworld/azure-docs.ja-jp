@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 17505084095eb8fbe46c20c7aa226131e128b286
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 36b15b41279edc60d337a7ba70abe2ca64d4bc7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127427"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371598"
 ---
 # <a name="tenant-and-host-pool-creation"></a>テナントとホスト プールの作成
 
@@ -145,7 +145,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 これを解決するには、次の操作を実行します。
 
-1. Azure portal を開き、 **[仮想ネットワーク]** ブレードに移動します。
+1. Azure Portal を開き、 **[仮想ネットワーク]** タブに移動します。
 2. お使いの VNET を見つけて、 **[DNS サーバー]** を選択します。
 3. 画面の右側に DNS サーバーのメニューが表示されます。 そのメニューで、 **[カスタム]** を選択します。
 4. [カスタム] の下に表示されている DNS サーバーが、ドメイン コントローラーまたは Active Directory ドメインと一致していることを確認します。 お使いの DNS サーバーが表示されない場合は、 **[DNS サーバーの追加]** フィールドに値を入力して追加できます。

@@ -4,12 +4,12 @@ description: この記事では、Azure Backup を使用して Azure 仮想マ�
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 7a6bae3a850b5e67af8da80a06b862e7e2e7561d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 5b10907738feeecbec06669175e82578f2915f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120839"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233887"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM での SQL Server データベースのバックアップ
 
@@ -97,6 +97,10 @@ IP 範囲を許可する | 追加のコストが発生しない | IP アドレ�
 NSG サービス タグを使用する | 範囲の変更が自動的にマージされるため管理しやすい <br/><br/> 追加のコストが発生しない <br/><br/> | NSG でのみ使用可能 <br/><br/> サービス全体へのアクセスを提供する
 Azure Firewall の FQDN タグを使用する | 必要な FQDN が自動的に管理されるため管理しやすい | Azure Firewall でのみ使用可能
 HTTP プロキシを使用する | VM に対するインターネット アクセスを単一の場所で実現 <br/> | プロキシ ソフトウェアで VM を実行するための追加のコストが発生する <br/> 公開されている FQDN アドレスがなく、許可規則は Azure の IP アドレスの変更の影響を受けやすい
+
+#### <a name="private-endpoints"></a>プライベート エンドポイント
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Azure Backup のためのデータベースの命名に関するガイドライン
 

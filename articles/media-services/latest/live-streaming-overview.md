@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/12/2019
+ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: af7bfe74d8df177650cea76a9bed7b0d7311f87e
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: e2c4e5b6c10b06d82a1933962cb2d97e031876a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968995"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80068017"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -33,7 +33,7 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 この記事では、Media Services を使用したライブ ストリーミングの概要とガイダンスを説明し、他の関連記事のリンクを提供します。
  
 > [!NOTE]
-> [Azure portal](https://portal.azure.com/) を使用し、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示、API へのアクセスに関する情報の取得を行うことができます。 他のすべての管理タスク (変換とジョブなど) については、[REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
+> [Azure portal](https://portal.azure.com/) を使用し、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示、API へのアクセスに関する情報の取得を行うことができます。 他のすべての管理タスク (変換とジョブなど) については、[REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 ## <a name="dynamic-packaging"></a>ダイナミック パッケージ
 
@@ -118,6 +118,10 @@ Media Services v3 のライブ ストリーミング ワークフローを理解
 - [ライブ イベントの種類の機能の比較](live-event-types-comparison.md)
 - [状態と課金](live-event-states-billing.md)
 - [待機時間](live-event-latency.md)
+
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+[よく寄せられる質問](frequently-asked-questions.md#live-streaming)に関する記事をご覧ください。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 

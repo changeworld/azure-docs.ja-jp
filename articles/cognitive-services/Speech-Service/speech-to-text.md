@@ -3,38 +3,39 @@ title: 音声変換 - Speech Service
 titleSuffix: Azure Cognitive Services
 description: 音声変換機能を使用すると、オーディオ ストリームをテキストにリアルタイムで文字起こしできます。 アプリケーション、ツール、またはデバイスで、このテキスト入力を使用、表示することや、このテキスト入力に基づきアクションを実行することができます。 このサービスは、テキスト読み上げ (音声合成) と音声翻訳機能とシームレスに連携します。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.author: erhopf
-ms.openlocfilehash: 8518f92a4f4df1686d4b338783a93d969e04d219
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/12/2020
+ms.author: dapine
+ms.openlocfilehash: 2854f4e8d91164c8ae1f35761d6f605cae725245
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379957"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80052641"
 ---
 # <a name="what-is-speech-to-text"></a>音声変換の概要
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Speech Service の音声変換 (音声認識とも呼ばれる) を使用すると、オーディオ ストリームをテキストにリアルタイムで文字起こしできます。 アプリケーション、ツール、またはデバイスで、このテキストを使用、表示することや、このテキストをコマンド入力としてアクションを実行することができます。 このサービスでは、Microsoft が Cortana や Office 製品に対して使用するのと同じ認識テクノロジが採用されています。 これは、<a href="./speech-translation.md" target="_blank">翻訳 <span class="docon docon-navigate-external x-hidden-focus"></span></a> および<a href="./text-to-speech.md" target="_blank">テキスト読み上げ <span class="docon docon-navigate-external x-hidden-focus"></span></a> サービス オファリングとシームレスに連携します。 使用可能な音声変換の言語の詳細については、[サポートされる言語](language-support.md#speech-to-text)に関するページを参照してください。
 
 既定では、音声変換サービスでは、汎用言語モデルが使用されます。 このモデルは、Microsoft が所有するデータでトレーニングされて、クラウドにデプロイされています。 このモデルは、会話や口述のシナリオに最適です。 独自の環境で認識と文字起こしのために音声変換を使用している場合は、カスタムの音響、言語、および発音モデルを作成してトレーニングできます。 カスタマイズは、アンビエント ノイズや業界固有の語彙に対処する場合に役立ちます。
 
 > [!NOTE]
-> Bing Speech は、2019 年 10 月 15 日に使用が停止されました。 アプリケーション、ツール、または製品で Bing Speech API または Custom Speech をご使用の方に向けて、Speech Service への移行に役立つガイドを作成しました。
+> Bing Speech は、2019 年 10 月 15 日に使用が停止されました。 アプリケーション、ツール、または製品で Bing Speech API を使用している場合、Speech サービスへの移行に役立つガイドが作成されています。
 > - [Bing Speech から Speech Service に移行する](how-to-migrate-from-bing-speech.md)
-> - [Custom Speech から Speech Service への移行](how-to-migrate-from-custom-speech-service.md)
 
 ## <a name="get-started-with-speech-to-text"></a>音声変換の概要
 
 音声変換サービスは、[Speech SDK](speech-sdk.md) を介して利用できます。 さまざまな言語とプラットフォームで、いくつかの一般的なシナリオがクイックスタートとして用意されています。
 
- - [クイック スタート:マイク入力を使用して音声を認識する](quickstarts/speech-to-text-from-microphone.md)
- - [クイック スタート:ファイルから音声を認識する](quickstarts/speech-to-text-from-file.md)
- - [クイック スタート:BLOB ストレージに格納された音声を認識する](quickstarts/from-blob.md)
+ - [クイック スタート: マイク入力を使用して音声を認識する](quickstarts/speech-to-text-from-microphone.md)
+ - [クイック スタート: ファイルから音声を認識する](quickstarts/speech-to-text-from-file.md)
+ - [クイック スタート: BLOB ストレージに格納された音声を認識する](quickstarts/from-blob.md)
 
 音声変換 REST サービスを使用する場合は、[REST API](rest-speech-to-text.md) に関するページを参照してください。
 

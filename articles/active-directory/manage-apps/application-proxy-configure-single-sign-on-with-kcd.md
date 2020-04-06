@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab378fe1e06de49df0fe6481a1aa475d426648dc
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032558"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227771"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任
 
@@ -66,17 +66,27 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
 
 #### <a name="connector-and-application-server-in-different-domains"></a>異なるドメインにあるコネクタとアプリケーション サーバー
 1. ドメイン間の KCD を使用するための前提条件の一覧については、「 [ドメイン間の Kerberos の制約付き委任](https://technet.microsoft.com/library/hh831477.aspx)」を参照してください。
-2. コネクタ サーバーの `principalsallowedtodelegateto` プロパティを使って、アプリケーション プロキシを有効にし、コネクタ サーバーを代行します。 アプリケーション サーバーは `sharepointserviceaccount`、委任サーバーは `connectormachineaccount` です。 Windows 2012 R2 では、例としてこのコードを使います。
+2. Web アプリケーションのサービス アカウント (コンピューターまたは専用ドメインのユーザー アカウント) の `principalsallowedtodelegateto` プロパティを使用して、アプリケーション プロキシ (コネクタ) からの Kerberos 認証の委任を有効にします。 アプリケーション サーバーは `webserviceaccount` のコンテキストで実行され、委任サーバーは `connectorcomputeraccount` です。 `webserviceaccount` のドメイン内の (Windows Server 2012 R2 以降を実行している) ドメイン コントローラーで次のコマンドを実行します。 両方のアカウントにフラット名 (UPN 以外) を使用します。
 
-```powershell
-$connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
+   `webserviceaccount` がコンピューター アカウントの場合は、次のコマンドを使用します。
 
-Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+   ```powershell
+   $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
 
-Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
-```
+   Set-ADComputer -Identity webserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
 
-`sharepointserviceaccount` には、SPS コンピューター アカウントか、SPS アプリ プールの実行に使用されているサービス アカウントを指定できます。
+   Get-ADComputer webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+   ```
+
+   `webserviceaccount` がユーザー アカウントの場合は、次のコマンドを使用します。
+
+   ```powershell
+   $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
+
+   Set-ADUser -Identity webserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+
+   Get-ADUser webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+   ```
 
 ## <a name="configure-single-sign-on"></a>Configure single sign-on 
 1. 「 [アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-add-on-premises-application.md)」で説明されている手順に従って、アプリケーションを発行します。 **[事前認証方法]** で **[Azure Active Directory]** が選択されていることを確認してください。
@@ -142,11 +152,10 @@ Kerberos について詳しくは、「[All you want to know about Kerberos Cons
 SSO プロセスにエラーがある場合は、「[トラブルシューティング](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)」で説明するように、コネクタ コンピューターのイベント ログに表示されます。
 ただし、場合によっては、バックエンド アプリケーションが他のさまざまな HTTP 応答に応答している間に、要求が正常に送信されることがあります。 このような場合のトラブルシューティングは、アプリケーション プロキシ セッションのイベント ログで、コネクタ コンピューターのイベント番号 24029 を調べることから始める必要があります。 委任のために使用されたユーザー ID は、イベント詳細の [ユーザー] フィールドに表示されます。 セッション ログを有効にするには、イベント ビューアーで [表示] メニューの **[分析およびデバッグ ログの表示]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Kerberos の制約付き委任を使用するようにアプリケーション プロキシ アプリケーションを構成する方法](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](application-proxy-troubleshoot.md)
 
 
 最新のニュースと更新プログラムについては、 [アプリケーション プロキシに関するブログ](https://blogs.technet.com/b/applicationproxyblog/)
-

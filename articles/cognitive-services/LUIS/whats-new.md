@@ -3,18 +3,22 @@ title: 新機能 - Language Understanding (LUIS)
 description: この記事では、Azure Cognitive Services Language Understanding API に関するニュースが定期的に更新されています。
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 716860b54e7d8e75984c0365cac61d14153c09ff
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 562f7f8b4974363daab91991e6a8219b352432fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137802"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156006"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
 サービス内の新機能について説明します。 これらの項目には、リリース ノート、ビデオ、ブログ記事、およびその他の種類の情報が含まれています。 このページをブックマークして、常にサービスの最新情報を確認してください。
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="march-2020"></a>2020 年 3 月
+
+* TLS 1.2 は現在、このサービスへのすべての HTTP 要求に適用されるようになりました。 詳細については、[Azure Cognitive Services のセキュリティ](../cognitive-services-security.md)に関するページを参照してください。
 
 ### <a name="november-4-2019---ignite"></a>2019 年 11 月 4 日 - Ignite
 

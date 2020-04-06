@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: 309a2592dbac2918aeb532fbe91e33d296f4e5a5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280884"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219161"
 ---
 # <a name="intents-in-your-luis-app"></a>LUIS アプリにおける意図
 
@@ -53,7 +53,7 @@ ms.locfileid: "74280884"
 
 ユーザーの _意図_ によって、checkweather() 関数の呼び出しなど、クライアント アプリケーションでアクションをトリガーする場合に、意図を作成します。 次に、アクションの実行に必要なパラメーターを表すエンティティを作成します。 
 
-|Intent   | エンティティ | 発話の例   | 
+|Intent   | Entity | 発話の例   | 
 |------------------|------------------------------|------------------------------|
 | CheckWeather | { "型": "場所", "エンティティ": "シアトル" }<br>{ "型": "builtin.datetimeV2.date","エンティティ": "明日","解像度":"2018-05-23" } | `Seattle` の `tomorrow` の天気はどうですか |
 | CheckWeather | { "型": "日付の範囲", "エンティティ": "今週末" } | `this weekend` の天気予報を教えてください | 
@@ -100,7 +100,7 @@ ms.locfileid: "74280884"
 ### <a name="request-help-for-apps-with-significant-number-of-intents"></a>非常に多くの意図を持つアプリに関するヘルプの要求
 意図の数を減らしたり、意図を複数のアプリに分割できない場合は、サポートにお問い合わせください。 Azure サブスクリプションにサポート サービスが含まれている場合は、[Azure のテクニカル サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 意図に関連する重要な単語である、[エンティティ](luis-concept-entity-types.md)について詳細を確認します。
 * LUIS アプリで[意図を追加および管理](luis-how-to-add-intents.md)する方法を確認します。

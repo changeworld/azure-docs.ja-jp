@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: bb14369275a111476867f2263766e1bb87b7c87d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620724"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295346"
 ---
 # <a name="conditional-access-conditions"></a>条件付きアクセス:条件
 
@@ -72,7 +72,7 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
       - このオプションには、最新の認証をサポートしていない基本またはレガシ認証プロトコルを使用するクライアントが含まれます。
          - 認証済み SMTP - 電子メール メッセージを送信するために POP および IMAP クライアントで使用されます。
          - 自動検出 - Exchange Online でメールボックスを検索して接続するために Outlook および EAS のクライアントで使用されます。
-         - Exchange Online PowerShell - リモート PowerShell を使用して Exchange Online に接続するために使用されます。 Exchange Online PowerShell の基本認証をブロックする場合は、Exchange Online PowerShell モジュールを使用して接続する必要があります。 手順については、「[多要素認証を使用して Exchange Online PowerShell に接続する](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)」を参照してください。
+         - Exchange Online PowerShell - リモート PowerShell を使用して Exchange Online に接続するために使用されます。 Exchange Online PowerShell の基本認証をブロックする場合は、Exchange Online PowerShell モジュールを使用して接続する必要があります。 手順については、「[多要素認証を使用して Exchange Online PowerShell に接続する](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)」を参照してください。
          - Exchange Web サービス (EWS) - Outlook、Outlook for Mac、およびサードパーティ製アプリによって使用されるプログラミング インターフェイスです。
          - IMAP4 - IMAP 電子メール クライアントで使用されます。
          - MAPI over HTTP (MAPI/HTTP) - Outlook 2010 以降で使用されます。
@@ -142,8 +142,8 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 | メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)| Office 365 Exchange Online | Windows 10 |
 | アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。| 任意のマイ アプリ アプリ サービス | Android および iOS |
 | Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する | Microsoft Teams | Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS |
-| Office 2016 アプリ、Office 2013 (最新の認証を使用)、[OneDrive 同期クライアント](https://docs.microsoft.com/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1、Windows 7 |
-| Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、[OneDrive 同期クライアント](https://docs.microsoft.com/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
+| Office 2016 アプリ、Office 2013 (最新の認証を使用)、[OneDrive 同期クライアント](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1、Windows 7 |
+| Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、[OneDrive 同期クライアント](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
 | Office 2016 (Word、Excel、PowerPoint、OneNote のみ)。 | Office 365 SharePoint Online | macOS |
 | Office 2019| Office 365 SharePoint Online | Windows 10、macOS |
 | Office モバイル アプリ | Office 365 SharePoint Online | Android、iOS |

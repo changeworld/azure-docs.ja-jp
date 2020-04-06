@@ -1,7 +1,7 @@
 ---
-title: ポータルを使用してエンド ツー エンドの SSL 暗号化を構成する
+title: ポータルを使用してエンド ツー エンドの TLS 暗号化を構成する
 titleSuffix: Azure Application Gateway
-description: Azure portal を使用して、エンド ツー エンド SSL 暗号化によりアプリケーション ゲートウェイを作成する方法について説明します。
+description: Azure portal を使用して、エンド ツー エンド TLS 暗号化によりアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: a878b966266bdd326db35d266bc14b2f81161e92
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6f86f32e64bbbe79ea5a403d04f7d6c29ee6b980
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075136"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133010"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>ポータルで Application Gateway を使用してエンド ツー エンド SSL を構成する
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>ポータルで Application Gateway を使用してエンド ツー エンド TLS を構成する
 
-この記事では、Azure portal を使用して Application Gateway v1 SKU でエンド ツー エンド Secure Sockets Layer (SSL) 暗号化を構成する方法について説明します。
+この記事では、Azure portal を使用して Application Gateway v1 SKU でエンド ツー エンド Transport Layer Security (TLS) 暗号化 (以前の Secure Sockets Layer (SSL) 暗号化) を構成する方法について説明します。
 
 > [!NOTE]
 > Application Gateway v2 SKU では、エンド ツー エンド構成を有効化するために、信頼されたルート証明書が必要です。
@@ -27,19 +27,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-アプリケーション ゲートウェイでエンドツーエンドの SSL を構成するには、ゲートウェイ用の証明書が必要です。 バックエンド サーバーにも証明書が必要です。 ゲートウェイ証明書は、SSL プロトコルの仕様に準拠して対称キーを得る目的で使用されます。 対称キーは、ゲートウェイに送信されたトラフィックの暗号化と暗号化の解除に使用されます。 
+アプリケーション ゲートウェイでエンドツーエンドの TLS を構成するには、ゲートウェイ用の証明書が必要です。 バックエンド サーバーにも証明書が必要です。 ゲートウェイ証明書は、TLS プロトコルの仕様に準拠して対称キーを得る目的で使用されます。 対称キーは、ゲートウェイに送信されたトラフィックの暗号化と暗号化の解除に使用されます。 
 
-エンド ツー エンド SSL 暗号化の場合、適切なバックエンド サーバーがアプリケーション ゲートウェイで許可されている必要があります。 このアクセスを許可するには、アプリケーション ゲートウェイにバックエンド サーバーの公開証明書 (認証証明書 (v1) または信頼されたルート証明書 (v2) とも呼ばれます) をアップロードします。 証明書を追加することにより、アプリケーション ゲートウェイが既知のバックエンド インスタンスのみと通信することが保証されます。 この構成によりエンド ツー エンド通信のセキュリティがさらに強化されます。
+エンド ツー エンド TLS 暗号化の場合、適切なバックエンド サーバーがアプリケーション ゲートウェイで許可されている必要があります。 このアクセスを許可するには、アプリケーション ゲートウェイにバックエンド サーバーの公開証明書 (認証証明書 (v1) または信頼されたルート証明書 (v2) とも呼ばれます) をアップロードします。 証明書を追加することにより、アプリケーション ゲートウェイが既知のバックエンド インスタンスのみと通信することが保証されます。 この構成によりエンド ツー エンド通信のセキュリティがさらに強化されます。
 
-詳細については、[SSL 終了とエンド ツー エンド SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview) に関するページを参照してください。
+詳細については、[Application Gateway での TLS ターミネーションとエンド ツー エンド TLS の概要](https://docs.microsoft.com/azure/application-gateway/ssl-overview)に関する記事を参照してください。
 
-## <a name="create-a-new-application-gateway-with-end-to-end-ssl"></a>エンド ツー エンド SSL を使用して新しいアプリケーション ゲートウェイを作成する
+## <a name="create-a-new-application-gateway-with-end-to-end-tls"></a>エンド ツー エンド TLS を使用して新しいアプリケーション ゲートウェイを作成する
 
-エンド ツー エンド SSL 暗号化を使用して新しいアプリケーション ゲートウェイを作成するには、新しいアプリケーション ゲートウェイの作成中に、まず SSL 終了を有効化する必要があります。 このアクションにより、クライアントとアプリケーション ゲートウェイの間の通信で SSL 暗号化が有効になります。 次に、HTTP 設定でバックエンド サーバーの証明書を安全な受信者リストに配置する必要があります。 この構成により、アプリケーション ゲートウェイとバックエンド サーバー間の通信に SSL 暗号化が有効になります。 これにより、エンドツーエンドの SSL 暗号化が実現されます。
+エンド ツー エンド TLS 暗号化を使用して新しいアプリケーション ゲートウェイを作成するには、新しいアプリケーション ゲートウェイの作成中に、まず TLS 終了を有効化する必要があります。 このアクションにより、クライアントとアプリケーション ゲートウェイの間の通信で TLS 暗号化が有効になります。 次に、HTTP 設定でバックエンド サーバーの証明書を安全な受信者リストに配置する必要があります。 この構成により、アプリケーション ゲートウェイとバックエンド サーバー間の通信に TLS 暗号化が有効になります。 これにより、エンドツーエンドの TLS 暗号化が実現されます。
 
-### <a name="enable-ssl-termination-while-creating-a-new-application-gateway"></a>新しいアプリケーション ゲートウェイの作成中に SSL 終了を有効化する
+### <a name="enable-tls-termination-while-creating-a-new-application-gateway"></a>新しいアプリケーション ゲートウェイの作成中に TLS 終了を有効化する
 
-詳細については、「[新しいアプリケーション ゲートウェイの作成中に SSL 終了を有効化する](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)」を参照してください。
+詳細については、「[新しいアプリケーション ゲートウェイの作成中に TLS 終了を有効化する](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)」を参照してください。
 
 ### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>バックエンド サーバーの認証証明書またはルート証明書を追加する
 
@@ -69,14 +69,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 8. **[保存]** を選択します。
 
-## <a name="enable-end-to-end-ssl-for-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイでエンド ツー エンド SSL を有効化する
+## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイでエンド ツー エンド TLS を有効化する
 
-エンド ツー エンド SSL 暗号化を使用して既存のアプリケーション ゲートウェイを構成するには、リスナーでまず SSL 終了を有効化する必要があります。 このアクションにより、クライアントとアプリケーション ゲートウェイの間の通信で SSL 暗号化が有効になります。 次に、HTTP 設定でバックエンド サーバー用のこれらの証明書を、安全な受信者リストに配置します。 この構成により、アプリケーション ゲートウェイとバックエンド サーバー間の通信に SSL 暗号化が有効になります。 これにより、エンドツーエンドの SSL 暗号化が実現されます。
+エンド ツー エンド TLS 暗号化を使用して既存のアプリケーション ゲートウェイを構成するには、リスナーでまず TLS 終了を有効化する必要があります。 このアクションにより、クライアントとアプリケーション ゲートウェイの間の通信で TLS 暗号化が有効になります。 次に、HTTP 設定でバックエンド サーバー用のこれらの証明書を、安全な受信者リストに配置します。 この構成により、アプリケーション ゲートウェイとバックエンド サーバー間の通信に TLS 暗号化が有効になります。 これにより、エンドツーエンドの TLS 暗号化が実現されます。
 
-SSL 終了を有効化するために、HTTPS プロトコルおよび証明書を含むリスナーを使用する必要があります。 これらの条件を満たす既存のリスナーを使用するか、新しいリスナーを作成することができます。 前者を選択した場合は、次に示す「既存のアプリケーション ゲートウェイで SSL 終了を有効化する」セクションを無視して、「バックエンド サーバーの認証証明書または信頼されたルート証明書を追加する」に直接進むことができます。
+TLS 終了を有効化するために、HTTPS プロトコルおよび証明書を含むリスナーを使用する必要があります。 これらの条件を満たす既存のリスナーを使用するか、新しいリスナーを作成することができます。 前者を選択した場合は、次に示す「既存のアプリケーション ゲートウェイで TLS 終了を有効化する」セクションを無視して、「バックエンド サーバーの認証証明書または信頼されたルート証明書を追加する」に直接進むことができます。
 
 後者のオプションを選択した場合は、次の手順を実行します。
-### <a name="enable-ssl-termination-in-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイで SSL 終了を有効化する
+### <a name="enable-tls-termination-in-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイで TLS 終了を有効化する
 
 1. **[すべてのリソース]** を選択し、**myAppGateway** を選択します。
 
@@ -86,7 +86,7 @@ SSL 終了を有効化するために、HTTPS プロトコルおよび証明書�
 
 4. **[プロトコル]** で **[HTTPS]** を選択します。 **[証明書]** ウィンドウが表示されます。
 
-5. クライアントとアプリケーション ゲートウェイの間で SSL 終了に使用する PFX 証明書をアップロードします。
+5. クライアントとアプリケーション ゲートウェイの間で TLS 終了に使用する PFX 証明書をアップロードします。
 
    > [!NOTE]
    > テスト目的で、自己署名証明書を使用してもかまいません。 ただし、これらは管理が難しく、完全にセキュリティで保護されていないため、運用環境のワークロードには推奨されません。 詳細については、「[自己署名証明書の作成](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate)」を参照してください。
@@ -121,7 +121,7 @@ SSL 終了を有効化するために、HTTPS プロトコルおよび証明書�
 
 8. **[保存]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Azure CLI を使用してアプリケーション ゲートウェイで Web トラフィックを管理する](./tutorial-manage-web-traffic-cli.md)

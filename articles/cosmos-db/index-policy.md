@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB インデックス作成ポリシー
 description: Azure Cosmos DB でのインデックス作成の自動化とパフォーマンス向上のために、既定のインデックス作成ポリシーを構成および変更する方法について説明します。
-author: ThomasWeiss
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/10/2019
-ms.author: thweiss
-ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 03/26/2020
+ms.author: tisande
+ms.openlocfilehash: 930f156ebec76be860e7af02d41540ce67982f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292052"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 
@@ -27,14 +27,14 @@ Azure Cosmos DB では、すべてのコンテナーに、コンテナーの項�
 Azure Cosmos DB では 2 つのインデックス作成モードがサポートされます。
 
 - **同期**: 項目を作成、更新、削除すると、それに同期してインデックスが更新されます。 つまり、読み取りクエリの一貫性は、[アカウント用に構成された整合性](consistency-levels.md)になります。
-- **なし**:コンテナーでインデックス作成が無効になっています。 これは、コンテナーがセカンダリ インデックスを必要としない純粋なキー値ストアとして使用される場合に一般的に使用されます。 一括操作のパフォーマンスを改善する目的で使用することもできます。 一括操作が完了したら、インデックス モードを Consistent に設定し、完了まで [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) を利用して監視できます。
+- **なし**: コンテナーでインデックス作成が無効になっています。 これは、コンテナーがセカンダリ インデックスを必要としない純粋なキー値ストアとして使用される場合に一般的に使用されます。 一括操作のパフォーマンスを改善する目的で使用することもできます。 一括操作が完了したら、インデックス モードを Consistent に設定し、完了まで [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) を利用して監視できます。
 
 > [!NOTE]
-> Cosmos DB はインデックス モード Lazy にも対応しています。 Lazy 方式のインデックスではインデックス更新の優先順位が低く、エンジンが他に何も作業をしていないときに実行されます。 結果的に、クエリの結果に**一貫性がなくなったり、不完全になったり**します。 また、一括操作で "なし" の代わりに Lazy インデックスを使用した場合、インデックス モードを変更するたびにインデックスが破棄されたり、再作成されたりするため、何の利点も与えられません。 このような理由から、お客様にはこれを使用しないことをお勧めしています。 一括操作のパフォーマンスを上げるには、インデックス モードをなしに設定し、Consistent モードに戻り、完了するまでコンテナーの `IndexTransformationProgress` プロパティを監視します。
+> Azure Cosmos DB では、Lazy インデックス作成モードもサポートされます。 Lazy 方式のインデックスではインデックス更新の優先順位が低く、エンジンが他に何も作業をしていないときに実行されます。 結果的に、クエリの結果に**一貫性がなくなったり、不完全になったり**します。 Cosmos コンテナーに対してクエリを実行する場合は、Lazy インデックス作成を選択しないでください。
 
 既定では、インデックス作成ポリシーは `automatic` に設定されます。 これはインデックス作成ポリシーの `automatic` プロパティを `true` に設定することで行います。 このプロパティを `true` に設定すると、Azure Cosmos DB で、ドキュメントが書き込まれたときに自動的にインデックスを作成できます。
 
-## <a name="including-and-excluding-property-paths"></a>プロパティ パスを含めるか除外する
+## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a> プロパティ パスを含める/除外する
 
 カスタム インデックス作成ポリシーには、明示的にインデックス作成に含めるかインデックス作成から除外するプロパティ パスを指定できます。 インデックスが作成されるパスの数を最適化することによって、コンテナーによって使用されるストレージの量を削減し、書き込み操作の待機時間を短縮できます。 これらのパスは、[インデックス作成の概要内のセクションで説明されている方法](index-overview.md#from-trees-to-property-paths)に従って定義され、以下のように追加されます。
 
@@ -75,7 +75,9 @@ Azure Cosmos DB では 2 つのインデックス作成モードがサポート�
 
 - 英数字や _ (アンダースコア) を含む通常文字から成るパスの場合は、パス文字列を二重引用符で囲んでエスケープする必要はありません ("/path/?" など)。 他の特殊文字を含むパスの場合は、パス文字列を二重引用符で囲んでエスケープする必要があります ("/\"path-abc\"/?" など)。 パスの中に特殊文字が予測される場合は、安全のために、すべてのパスをエスケープすることができます。 機能的には、すべてのパスをエスケープしても、特殊文字を含むパスだけをエスケープしても何も違いはありません。
 
-- システム プロパティ "etag" は、インデックス作成の対象となるパスに etag が追加されていない限り、既定でインデックス作成から除外されます。
+- システム プロパティ `_etag` は、etag がインデックス作成対象パスに追加されていない限り、既定でインデックス作成から除外されます。
+
+- インデックス作成モードが **[consistent]\(同期\)** に設定されている場合、システム プロパティ `id` と `_ts` には自動的にインデックスが作成されます。
 
 パスを含めたり除外したりするときに、次の属性が見つかる場合があります。
 
@@ -91,7 +93,7 @@ Azure Cosmos DB では 2 つのインデックス作成モードがサポート�
 | ----------------------- | -------------------------------- |
 | `kind`   | `range` |
 | `precision`   | `-1`  |
-| `dataType`    | `String` と `Number` |
+| `dataType`    | `String` および `Number` |
 
 パスを含めたり除外したりするためのインデックス作成ポリシーの例については、[こちらのセクション](how-to-manage-indexing-policy.md#indexing-policy-examples)を参照してください。
 
@@ -99,9 +101,9 @@ Azure Cosmos DB では 2 つのインデックス作成モードがサポート�
 
 インデックス作成ポリシーで空間パスを定義する場合は、そのパスに適用するインデックスの ```type``` を定義する必要があります。 空間インデックスには、次のような種類があります。
 
-* Point
+* ポイント
 
-* Polygon
+* 多角形
 
 * MultiPolygon
 
@@ -255,7 +257,7 @@ SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.time
 - パスが含まれていない
 - 唯一の除外パスとして `/*` が指定されている
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 以下の記事で、インデックス作成についての詳細を参照してください。
 

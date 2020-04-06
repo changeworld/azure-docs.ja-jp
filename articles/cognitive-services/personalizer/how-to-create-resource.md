@@ -2,13 +2,13 @@
 title: Personalizer リソースを作成する
 description: サービス構成には、サービスによる報酬の処理方法、サービスによる探索の頻度、モデルの再トレーニング頻度、格納するデータ量などがあります。
 ms.topic: conceptual
-ms.date: 02/19/2020
-ms.openlocfilehash: cb14415f3a5950ad1534d9eb8da94198a41f4f91
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.date: 03/26/2020
+ms.openlocfilehash: adb97db53d1fc0b6f0cdb14b697c82ec52501b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77624185"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336056"
 ---
 # <a name="create-a-personalizer-resource"></a>Personalizer リソースを作成する
 
@@ -29,20 +29,24 @@ Personalizer で Web ページの複数のコンテンツ領域に最適なコ�
 
 1. **[作成]** を選択して、リソースを作成します。
 
-1. リソースがデプロイされたら、 **[リソースに移動]** ボタンを選択して、Personalizer リソースに移動します。 新しいリソースの **[構成]** ページに移動して、[学習ループを構成](how-to-settings.md)します。
+1. リソースがデプロイされた後、 **[リソースに移動]** ボタンを選択して、Personalizer リソースに移動します。
+
+1. リソースの **[クイック スタート]** ページを選択し、エンドポイントとキーの値をコピーします。 Rank API と Reward API を使用するには、リソース エンドポイントとキーの両方が必要です。
+
+1. 新しいリソースの **[構成]** ページを選択し、[学習ループを構成](how-to-settings.md)します。
 
 ## <a name="create-a-resource-with-the-azure-cli"></a>Azure CLI を使用してリソースを作成する
 
 1. 次のコマンドを使用して、Azure CLI にサインインします。
 
-    ```bash
+    ```azurecli-interactive
     az login
     ```
 
 1. リソース グループを作成します。これは、Personalizer リソースで使用する予定のすべての Azure リソースを管理するための論理グループです。
 
 
-    ```bash
+    ```azurecli-interactive
     az group create \
         --name your-personalizer-resource-group \
         --location westus2
@@ -50,7 +54,7 @@ Personalizer で Web ページの複数のコンテンツ領域に最適なコ�
 
 1. 既存のリソース グループに対して次のコマンドを使用して、新しい Personalizer リソースである、"_学習ループ_" を作成します。
 
-    ```bash
+    ```azurecli-interactive
     az cognitiveservices account create \
         --name your-personalizer-learning-loop \
         --resource-group your-personalizer-resource-group \
@@ -59,6 +63,19 @@ Personalizer で Web ページの複数のコンテンツ領域に最適なコ�
         --location westus2 \
         --yes
     ```
+
+    これにより、**リソース エンドポイント**を含む JSON オブジェクトが返されます。
+
+1. 次の Azure CLI コマンドを使用して、**リソース キー**を取得します。
+
+    ```azurecli-interactive
+        az cognitiveservices account keys list \
+        --name your-personalizer-learning-loop \
+        --resource-group your-personalizer-resource-group
+    ```
+
+    Rank API と Reward API を使用するには、リソース エンドポイントとキーの両方が必要です。
+
 ## <a name="next-steps"></a>次のステップ
 
 * Personalizer の学習ループを[構成する](how-to-settings.md)

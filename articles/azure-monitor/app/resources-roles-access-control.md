@@ -3,12 +3,12 @@ title: Azure Application Insights のリソース、ロール、アクセス制�
 description: 組織の insights の所有者、共同作成者、閲覧者。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 617134c523148e713f7d34b46e0fbf6ae862591f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 1e57af269c4052d0dcd4a8f7970ca23017024299
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671530"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473134"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights のリソース、ロール、アクセス制御
 
@@ -37,7 +37,7 @@ Azure [Application Insights][start] では、[Microsoft Azure のロールベー
 * [**サブスクリプション**](https://portal.azure.com) - Application Insights またはその他の Azure リソースを使用するには、Azure サブスクリプションにサインインします。 すべてのリソース グループは 1 つの Azure サブスクリプションに属し、そこでは価格パッケージが選択されるほか、会社のサブスクリプションである場合にメンバーとそのアクセス許可が選択されます。
 * [**Microsoft アカウント**][account] - Microsoft Azure サブスクリプション、XBox Live、Outlook.com、およびその他の Microsoft サービスへのサインインに使用するユーザー名とパスワード。
 
-## <a name="access"></a> リソース グループのコントロール制御
+## <a name="control-access-in-the-resource-group"></a><a name="access"></a> リソース グループのコントロール制御
 
 アプリケーションに作成したリソースに加え、アラートと Web テストには非表示の個別リソースもあることを理解することが重要です。 これらはご利用の Application Insights リソースと同じ[リソース グループ](#resource-group)に関連付けられています。 Web サイトやストレージなど、他の Azure サービスをそこに配置することもあります。
 
@@ -76,7 +76,7 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 | --- | --- |
 | [所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |ユーザー アクセスを含め、あらゆるものを変更できます。 |
 | [Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |すべてのリソースを含め、あらゆるものを編集できます。 |
-| [Application Insights コンポーネントの共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Application Insights のリソース、Web テスト、アラートを編集できます。 |
+| [Application Insights コンポーネントの共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Application Insights リソースを編集できます。 |
 | [Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |表示はできますが、何も変更することはできません。 |
 | [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガー機能を使用するためのアクセス許可をユーザーに付与します。 このロールは、所有者ロールにも共同作成者ロールにも含まれていないことに注意してください。 |
 | Azure Service Deploy リリース管理の共同作成者 | Azure Service Deploy を使用してデプロイするサービスの共同作成者ロール。 |
@@ -85,7 +85,7 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 | [Log Analytics Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure Diagnostics の構成が含まれます。  |
 | [Log Analytics Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure Diagnostics 構成の表示など、監視設定の表示を行うことができます。 |
 | masterreader | ユーザーがあらゆるものを表示できるようにします。ただし、変更することはできません。 |
-| [Monitoring Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | すべての監視データを読み取り、監視設定を更新できます。 |
+| [Monitoring Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | すべての監視データを読み取り、監視設定を更新できます。|
 | [監視メトリック パブリッシャー](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Azure リソースに対するメトリックの公開を有効にします。 |
 | [Monitoring Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | すべての監視データを読み取ることができます。 |
 | リソース ポリシーの共同作成者 (プレビュー) | リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。  |

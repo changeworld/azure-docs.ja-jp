@@ -3,20 +3,20 @@ title: 音声テキスト変換に自動言語検出を使用する方法
 titleSuffix: Azure Cognitive Services
 description: Speech SDK では、音声テキスト変換の自動言語検出をサポートしています。 この機能を使用すると、入力された音声が提供された言語一覧で照合され、可能性が最も高い一致が決定されます。 値が返されたらそれを利用し、音声テキスト変換に使用する言語モデルを選択できます。
 services: cognitive-services
-author: susanhu
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.author: qiohu
-zone_pivot_groups: programming-languages-set-seven
-ms.openlocfilehash: bc438c3e606fefc10e9ffbb64c79f7167d9af062
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/16/2020
+ms.author: dapine
+zone_pivot_groups: programming-languages-set-two
+ms.openlocfilehash: 5592fc3e50db892c6abb09fc2516b8e1c03f0f03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122051"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239598"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>音声テキスト変換の自動言語検出
 
@@ -25,7 +25,7 @@ ms.locfileid: "76122051"
 この記事では、`AutoDetectSourceLanguageConfig` を利用して `SpeechRecognizer` オブジェクトを構築し、検出された言語を取得する方法について説明します。
 
 > [!IMPORTANT]
-> この機能は C#、C++、Java 用の Speech SDK でのみ利用できます。
+> この機能は、C#、C++、Java、Python 用の Speech SDK でのみ利用できます。
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Speech SDK による自動言語検出
 
@@ -39,11 +39,18 @@ ms.locfileid: "76122051"
 ::: zone pivot="programming-language-csharp"
 
 ```csharp
-var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromLanguages(new string[] { "en-US", "de-DE" });
-using (var recognizer = new SpeechRecognizer(speechConfig, autoDetectSourceLanguageConfig, audioConfig))
+var autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig.FromLanguages(
+        new string[] { "en-US", "de-DE" });
+
+using (var recognizer = new SpeechRecognizer(
+    speechConfig,
+    autoDetectSourceLanguageConfig,
+    audioConfig))
 {
     var speechRecognitionResult = await recognizer.RecognizeOnceAsync();
-    var autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult.FromResult(speechRecognitionResult);
+    var autoDetectSourceLanguageResult =
+        AutoDetectSourceLanguageResult.FromResult(speechRecognitionResult);
     var detectedLanguage = autoDetectSourceLanguageResult.Language;
 }
 ```
@@ -52,11 +59,18 @@ using (var recognizer = new SpeechRecognizer(speechConfig, autoDetectSourceLangu
 
 ::: zone pivot="programming-language-cpp"
 
-```C++
-auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "de-DE" });
-auto recognizer = SpeechRecognizer::FromConfig(speechConfig, autoDetectSourceLanguageConfig, audioConfig);
+```cpp
+auto autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "de-DE" });
+
+auto recognizer = SpeechRecognizer::FromConfig(
+    speechConfig,
+    autoDetectSourceLanguageConfig,
+    audioConfig);
+
 speechRecognitionResult = recognizer->RecognizeOnceAsync().get();
-auto autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult::FromResult(speechRecognitionResult);
+auto autoDetectSourceLanguageResult =
+    AutoDetectSourceLanguageResult::FromResult(speechRecognitionResult);
 auto detectedLanguage = autoDetectSourceLanguageResult->Language;
 ```
 
@@ -64,12 +78,19 @@ auto detectedLanguage = autoDetectSourceLanguageResult->Language;
 
 ::: zone pivot="programming-language-java"
 
-```Java
-AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.fromLanguages(Arrays.asList("en-US", "de-DE"));
-SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, autoDetectSourceLanguageConfig, audioConfig);
+```java
+AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig.fromLanguages(Arrays.asList("en-US", "de-DE"));
+
+SpeechRecognizer recognizer = new SpeechRecognizer(
+    speechConfig,
+    autoDetectSourceLanguageConfig,
+    audioConfig);
+
 Future<SpeechRecognitionResult> future = recognizer.recognizeOnceAsync();
 SpeechRecognitionResult result = future.get(30, TimeUnit.SECONDS);
-AutoDetectSourceLanguageResult autoDetectSourceLanguageResult = AutoDetectSourceLanguageResult.fromResult(result);
+AutoDetectSourceLanguageResult autoDetectSourceLanguageResult =
+    AutoDetectSourceLanguageResult.fromResult(result);
 String detectedLanguage = autoDetectSourceLanguageResult.getLanguage();
 
 recognizer.close();
@@ -77,6 +98,22 @@ speechConfig.close();
 autoDetectSourceLanguageConfig.close();
 audioConfig.close();
 result.close();
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+auto_detect_source_language_config = \
+        speechsdk.languageconfig.AutoDetectSourceLanguageConfig(languages=["en-US", "de-DE"])
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, 
+        auto_detect_source_language_config=auto_detect_source_language_config, 
+        audio_config=audio_config)
+result = speech_recognizer.recognize_once()
+auto_detect_source_language_result = speechsdk.AutoDetectSourceLanguageResult(result)
+detected_language = auto_detect_source_language_result.language
 ```
 
 ::: zone-end
@@ -95,29 +132,52 @@ var sourceLanguageConfigs = new SourceLanguageConfig[]
     SourceLanguageConfig.FromLanguage("en-US"),
     SourceLanguageConfig.FromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR")
 };
-var autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.FromSourceLanguageConfigs(sourceLanguageConfigs);
+var autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig.FromSourceLanguageConfigs(
+        sourceLanguageConfigs);
 ```
 
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
 
-```C++
+```cpp
 std::vector<std::shared_ptr<SourceLanguageConfig>> sourceLanguageConfigs;
-sourceLanguageConfigs.push_back(SourceLanguageConfig::FromLanguage("en-US"));
-sourceLanguageConfigs.push_back(SourceLanguageConfig::FromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR"));
-auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromSourceLanguageConfigs(sourceLanguageConfigs);
+sourceLanguageConfigs.push_back(
+    SourceLanguageConfig::FromLanguage("en-US"));
+sourceLanguageConfigs.push_back(
+    SourceLanguageConfig::FromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR"));
+
+auto autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig::FromSourceLanguageConfigs(
+        sourceLanguageConfigs);
 ```
 
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 
-```Java
+```java
 List sourceLanguageConfigs = new ArrayList<SourceLanguageConfig>();
-sourceLanguageConfigs.add(SourceLanguageConfig.fromLanguage("en-US"));
-sourceLanguageConfigs.add(SourceLanguageConfig.fromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR"));
-AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig.fromSourceLanguageConfigs(sourceLanguageConfigs);
+sourceLanguageConfigs.add(
+    SourceLanguageConfig.fromLanguage("en-US"));
+sourceLanguageConfigs.add(
+    SourceLanguageConfig.fromLanguage("fr-FR", "The Endpoint Id for custom model of fr-FR"));
+
+AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig =
+    AutoDetectSourceLanguageConfig.fromSourceLanguageConfigs(
+        sourceLanguageConfigs);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+ en_language_config = speechsdk.languageconfig.SourceLanguageConfig("en-US")
+ fr_language_config = speechsdk.languageconfig.SourceLanguageConfig("fr-FR", "The Endpoint Id for custom model of fr-FR")
+ auto_detect_source_language_config = speechsdk.languageconfig.AutoDetectSourceLanguageConfig(
+        sourceLanguageConfigs=[en_language_config, fr_language_config])
 ```
 
 ::: zone-end

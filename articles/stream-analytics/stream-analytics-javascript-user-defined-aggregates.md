@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics の JavaScript ユーザー定義集計
 description: この記事では、Azure Stream Analytics の JavaScript ユーザー定義集計で高度なクエリ機構を実行する方法を説明します。
-author: rodrigoamicrosoft
+author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: d9b37810146f66806be9b8ce7a38f8dac31facb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c509d174787a58abeee33e039eb7bbbcbcb43f38
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426089"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531736"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics の JavaScript ユーザー定義集計
  

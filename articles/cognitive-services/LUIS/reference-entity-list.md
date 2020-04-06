@@ -1,21 +1,14 @@
 ---
 title: リスト エンティティ型 - LUIS
-titleSuffix: Azure Cognitive Services
 description: リスト エンティティは、固定かつ限定された関連単語セットとそのシノニムを表します。 LUIS では、リスト エンティティの追加の値は検出されません。 現在のリストに基づいて新しい単語の候補を表示するには、[Recommend] (推奨) 機能を使用します。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/11/2019
-ms.author: diberry
-ms.openlocfilehash: 4313a1d644750c0961298bbee3ae211946de360a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 03/12/2020
+ms.openlocfilehash: 795d16bc2e0c4223ff3ac283a72493923d3ab355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849770"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79297239"
 ---
 # <a name="list-entity"></a>リスト エンティティ
 
@@ -28,7 +21,7 @@ ms.locfileid: "74849770"
 * 既知のセットである。
 * あまり変化しない。 リストを頻繁に変更する必要がある、またはリストを自己拡張させたい場合、フレーズ リストで強化したシンプル エンティティの方が良い選択肢です。
 * セットがこのエンティティ型の最大 LUIS [境界](luis-boundaries.md)を超えていない。
-* 発話内のテキストがシノニムまたは正規名に完全に一致している。 LUIS では、完全なテキストの一致以外にリストは使用されません。 あいまい一致、大文字と小文字の区別なし、語幹抽出、複数形、その他のバリエーションは、リスト エンティティでは解決されません。 バリエーションを管理するには、オプションのテキスト構文で[パターン](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)を使用することを検討します。
+* 発話内のテキストがシノニムまたは正規名に大文字と小文字が区別されず一致している。 LUIS では、この一致以外にリストは使用されません。 あいまい一致、語幹抽出、複数形、その他のバリエーションは、リスト エンティティでは解決されません。 バリエーションを管理するには、オプションのテキスト構文で[パターン](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)を使用することを検討します。
 
 ![リスト エンティティ](./media/luis-concept-entities/list-entity.png)
 
@@ -70,7 +63,7 @@ ms.locfileid: "74849770"
 
 前の発話では、単語 `paris` は、`Cities` リスト エンティティの一部として、パリ項目にマップされます。 このリスト エンティティは、項目のシノニムだけでなく、項目の正規化された名前と一致します。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
   "entities": [
@@ -88,7 +81,7 @@ ms.locfileid: "74849770"
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 
 これは、クエリ文字列で `verbose=false` が設定されている場合の JSON です。
@@ -137,6 +130,6 @@ ms.locfileid: "74849770"
 |リスト エンティティ|`Cities`|`paris`|
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この[チュートリアル](tutorial-list-entity.md)では、**リスト エンティティ**を使用して既知の項目の一覧からテキストの完全一致を抽出する方法について説明します。

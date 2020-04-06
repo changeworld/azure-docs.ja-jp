@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 292844f611008b6dafbed4e46cad07c45dbecc54
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72255985"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Azure FXT Edge Filer のサポート チケットを開く
@@ -31,7 +31,7 @@ Microsoft カスタマー サービスおよびサポートのサポート チ�
     1. **[サービス]** で、 **[Azure FXT Edge Filer]** を選択します。 それを見つけるために **[すべてのサービス]** フィルター コントロールのクリックが必要になることがあります。 
     1. **[概要]** に入力し、 **[問題の種類]** を選択します。 
     ![空白のサポート要求フォームのスクリーンショット](media/fxt-support-populated.png) 
-    1. **[次へ]** をクリックして続行します。 
+    1. **[次へ]** をクリックして次に進みます。 
 1. **[詳細]** タブで、問題と連絡方法に関するより詳細な情報を追加します。 問題に関連したファイルをアップロードできます。 
 1. **[確認と作成]** で、情報を確認し、 **[作成]** ボタンをクリックして要求を送信します。
 

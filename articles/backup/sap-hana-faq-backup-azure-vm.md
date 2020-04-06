@@ -3,12 +3,12 @@ title: FAQ - Azure VM 上の SAP HANA データベースのバックアップ
 description: この記事では、Azure Backup サービスを使用した SAP HANA データベースのバックアップに関する一般的な質問への回答を示します。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: d9d10e38885ba814045d8476b83671153feb7b8c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a46c4d6cccc00452a56567880400ef5779e6aed4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919687"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155394"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>よく寄せられる質問 - Azure VM 上の SAP HANA データベースをバックアップする
 
@@ -53,6 +53,14 @@ SAP HANA インスタンスからデータベースが削除された場合で�
 
 トラブルシューティング ガイドの[こちらのセクション](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20)をご覧ください。
 
+### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>仮想マシンではなく、仮想 IP (ロード バランサー) に対して Azure HANA バックアップを設定できますか?
+
+現時点では、仮想 IP のみに対してソリューションを設定することはできません。 ソリューションを実行するには、仮想マシンが必要です。
+
+### <a name="i-have-a-sap-hana-system-replication-hsr-how-should-i-configure-backup-for-this-setup"></a>SAP HANA システム レプリケーション (HSR) を使用しています。この設定のバックアップはどのように構成すればよいですか?
+
+HSR のプライマリおよびセカンダリのノードは、関連のない 2 つの個別の VM として扱われます。 バックアップはプライマリ ノードで構成する必要があります。また、フェールオーバーが発生したときに、セカンダリ ノード (これがプライマリ ノードになります) でバックアップを構成する必要があります。 他のノードに対するバックアップの自動 "フェールオーバー" はありません。
+
 ## <a name="restore"></a>復元
 
 ### <a name="why-cant-i-see-the-hana-system-i-want-my-database-to-be-restored-to"></a>データベースの復元先の HANA システムが表示されないのはなぜですか?
@@ -63,7 +71,7 @@ SAP HANA インスタンスからデータベースが削除された場合で�
 
 復元の間に **[強制的に上書きします]** オプションが選択されていることを確認します。
 
-### <a name="why-do-i-see-the-source-and-target-systems-for-restore-are-incompatible-error"></a>"復元のソース システムとターゲット システムには互換性がありません" エラーが表示されるのはなぜですか?
+### <a name="why-do-i-see-the-source-and-target-systems-for-restore-are-incompatible-error"></a>"復元のソース システムとターゲット システムには互換性がありません" というエラーが表示されるのはなぜですか?
 
 SAP HANA ノート [1642148](https://launchpad.support.sap.com/#/notes/1642148) を参照し、現在サポートされている復元の種類を確認してください。
 

@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672363"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234311"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Diagnostics 拡張機能のスキーマ
 Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure コンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 仮想マシンおよびその他のコンピューティング リソースで Diagnostics 拡張機能を構成するために使用するスキーマについて詳細に説明します。
@@ -506,7 +506,7 @@ JSON のユース ケースでは、ほとんどの場合、*PublicConfig* と *
 ```
 
 > [!NOTE]
-> パブリック構成の Azure Monitor シンクの定義には、*PrincipalId* と *Secret* の 2 つのプロパティがあります。 これらは、クラシック VM と従来の Cloud Services のみに必要です。 これらのプロパティを他のリソースに使用することはできません。
+> プライベート構成の Azure Monitor シンクの定義には、*PrincipalId* と *Secret* の 2 つのプロパティがあります。 これらは、クラシック VM と従来の Cloud Services のみに必要です。 これらのプロパティを他のリソースに使用することはできません。
 
 
 ```json

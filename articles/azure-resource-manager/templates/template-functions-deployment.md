@@ -3,16 +3,16 @@ title: テンプレート関数 - デプロイ
 description: Azure Resource Manager テンプレートで、デプロイ情報を取得するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 86a1d3d7e05fedacd7a3c044ecab241ca9d059c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207283"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156329"
 ---
-# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのデプロイ関数 
+# <a name="deployment-functions-for-arm-templates"></a>ARM テンプレートのデプロイ関数 
 
-リソース マネージャーには、現在のデプロイに関連する値を取得する次の関数が用意されています。
+Resource Manager には、Azure Resource Manager (ARM) テンプレートの現在のデプロイに関連する値を取得する次の関数が用意されています。
 
 * [デプロイ](#deployment)
 * [environment](#environment)
@@ -239,7 +239,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |はい |string |返されるパラメーターの名前。 |
 
@@ -326,7 +326,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | Value |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | stringOutput | String | option 1 |
 | intOutput | int | 1 |
@@ -344,7 +344,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | variableName |はい |String |返す変数の名前。 |
 
@@ -392,7 +392,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
         "var4": {
             "property1": "value1",
             "property2": "value2"
-        }
+          }
     },
     "resources": [],
     "outputs": {
@@ -418,7 +418,7 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | Value |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |

@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 01/02/2020
-ms.openlocfilehash: d0b9c59852175b91b4bf799a366ae5124fa0ae42
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 03/16/2020
+ms.openlocfilehash: 115cb3e499117457629e130b6432a1cbc2224edb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644794"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79463052"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フロー アクティビティ
 
@@ -62,6 +62,14 @@ staging.linkedService | SQL DW ソースまたはシンクを使用している�
 staging.folderPath | SQL DW ソースまたはシンクを使用している場合は、PolyBase ステージングに使用する BLOB ストレージ アカウント内のフォルダー パス | String | データ フローが SQL DW に対して読み取りまたは書き込みを行う場合のみ
 
 ![データ フローの実行](media/data-flow/activity-data-flow.png "データ フローの実行")
+
+### <a name="dynamically-size-data-flow-compute-at-runtime"></a>実行時、データ フロー コンピューティングのサイズを動的に設定する
+
+Core Count プロパティと Compute Type プロパティは、実行時に入ってくるソース データのサイズに合わせて調整されるよう、動的に設定できます。 ソース データセット データのサイズを見つける目的で、Lookup や Get Metadata など、パイプライン アクティビティを使用します。 次に、Data Flow アクティビティ プロパティで Add Dynamic Content を使用します。
+
+![動的データ フロー](media/data-flow/dyna1.png "動的データ フロー")
+
+[この短い動画チュートリアルでこの手法について説明しています](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
 ### <a name="data-flow-integration-runtime"></a>データ フロー統合ランタイム
 

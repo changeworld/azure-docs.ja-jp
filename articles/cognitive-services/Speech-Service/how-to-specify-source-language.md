@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e4f4dd3c1e23855a8a1a69dac72c232779206f1d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: f0723534d9d2187593cb73f058ffea62473b80a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121711"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235969"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>音声テキスト変換のソース言語を指定する
 
@@ -114,24 +114,31 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 
 ## <a name="how-to-specify-source-language-in-python"></a>Python でソース言語を指定する方法
 
-最初のステップは、`speech_config` を作成することです。
+この例では、`SpeechRecognizer` コンストラクトを使って、ソース言語をパラメーターとして明示的に指定します。
 
 ```Python
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
-speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, language="de-DE", audio_config=audio_config)
 ```
 
-次に、`speech_recognition_language` でオーディオのソース言語を指定します。
+この例では、`SourceLanguageConfig` を使ってソース言語を提供します。 次に、`SourceLanguageConfig` をパラメーターとして `SpeechRecognizer` コンストラクトに渡します。
 
 ```Python
-speech_config.speech_recognition_language="de-DE"
+source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE")
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
 
-認識にカスタムモデルを使っている場合は、`endpoint_id` でエンドポイントを指定できます。
+この例では、`SourceLanguageConfig` を使ってソース言語とカスタム エンドポイントを提供します。 次に、`SourceLanguageConfig` をパラメーターとして `SpeechRecognizer` コンストラクトに渡します。
 
 ```Python
-speech_config.endpoint_id = "The Endpoint ID for your custom model."
+source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE", "The Endpoint ID for your custom model.")
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
+
+>[!Note]
+> `speech_recognition_language` および `endpoint_id` プロパティは、Python の `SpeechConfig` クラスで非推奨になっています。 これらのプロパティの使用は推奨されていないので、`SpeechRecognizer` を構築するときに使わないでください。
 
 ::: zone-end
 
@@ -179,7 +186,7 @@ speechConfig.endpointId = @"The Endpoint ID for your custom model.";
 
 ::: zone-end
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * 音声テキスト変換に対してサポートされている言語とロケールの一覧については、[言語のサポート](language-support.md)に関する記事を参照してください。
 

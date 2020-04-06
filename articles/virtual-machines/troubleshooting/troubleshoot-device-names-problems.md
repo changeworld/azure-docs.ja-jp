@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71058216"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Linux VM デバイス名の変更トラブルシューティング
@@ -42,7 +42,7 @@ Linux のデバイス パスは、再起動前後の一貫性が保証されて�
 
 この問題を解決するには、永続的な名前付けを使用します。 永続的な名前付けを行うには 4 つの方法があります。それは、ファイル システム ラベル、UUID、ID、パスのいずれかを利用する方法です。 Azure Linux VM には、ファイル システム ラベルまたは UUID の使用をお勧めします。
 
-ほとんどのディストリビューションでは、`fstab` **nofail** または **nobootwait** パラメーターが提供されています。 これらのパラメーターにより、起動時にディスクのマウントに失敗しても、システムを起動できます。 これらのパラメーターについて詳しくは、ディストリビューションのドキュメントをご覧ください。 データ ディスクの追加時に UUID を使用するように Linux VM を構成する方法について詳しくは、[Linux VM に接続した新しいディスクのマウント](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)に関するページをご覧ください。
+ほとんどのディストリビューションでは、`fstab`**nofail** または **nobootwait** パラメーターが提供されています。 これらのパラメーターにより、起動時にディスクのマウントに失敗しても、システムを起動できます。 これらのパラメーターについて詳しくは、ディストリビューションのドキュメントをご覧ください。 データ ディスクの追加時に UUID を使用するように Linux VM を構成する方法について詳しくは、[Linux VM に接続した新しいディスクのマウント](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)に関するページをご覧ください。
 
 Azure Linux エージェントが VM にインストールされている場合、エージェントは /dev/disk/azure パスにシンボリック リンクのセットを構築するために Udev ルールを使用します。 アプリケーションとスクリプトは、VM にアタッチされているディスクと、ディスクの種類およびディスク LUN を識別するために Udev ルールを使用します。
 

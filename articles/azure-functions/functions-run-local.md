@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 0b15b35f6fc83097e94f7d69815a163a0e98a228
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 19691a654162ee3855cb257fd42e29d2e1fc0157
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523273"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234911"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -18,7 +18,7 @@ Azure Functions Core Tools を使用すると、ローカル コンピュータ�
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-Core Tools を使用して、ローカル コンピューターで関数を開発し、Azure に発行するには、次の基本的な手順に従います。
+Core Tools を使用して、ローカル コンピューターで関数を開発し、Azure に発行する基本的な手順は次の通りです。
 
 > [!div class="checklist"]
 > * [Core Tools と依存関係をインストールします。](#v2)
@@ -46,7 +46,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 >[!IMPORTANT]
 >Azure Functions Core Tools から Azure に発行できるようにするには、[Azure CLI](/cli/azure/install-azure-cli) がローカルにインストールされている必要があります。  
 
-### <a name="v2"></a>バージョン 2.x および 3.x
+### <a name="version-2x-and-3x"></a><a name="v2"></a>バージョン 2.x および 3.x
 
 バージョン 2.x および 3.x のツールは、.NET Core 上に構築されている Azure Functions ランタイムを使用します。 このバージョンは、[Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2)、[macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)、[Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) など、.NET Core が対応しているすべてのプラットフォームでサポートされています。 
 
@@ -65,13 +65,13 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
     ##### <a name="v2x"></a>v2.x
 
-    ```bash
+    ```cmd
     npm install -g azure-functions-core-tools
     ```
 
     ##### <a name="v3x"></a>v3.x
 
-    ```bash
+    ```cmd
     npm install -g azure-functions-core-tools@3
     ```
 
@@ -79,7 +79,7 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 1. [拡張バンドル]を使用しない場合、[.NET Core 2.x SDK for Windows](https://www.microsoft.com/net/download/windows) をインストールします。
 
-# <a name="macos"></a>[MacOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 次の手順では、Homebrew を使用して macOS 上に Core Tools をインストールします。
 
@@ -163,33 +163,33 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 ターミナル ウィンドウまたはコマンド プロンプトで、次のコマンドを実行してプロジェクトおよびローカルの Git リポジトリを作成します。
 
-```bash
+```
 func init MyFunctionProj
 ```
 
 プロジェクト名を指定すると、その名前の新しいフォルダーの作成と初期化が実行されます。 それ以外の場合は、現在のフォルダーが初期化されます。  
 バージョン 2.x では、コマンドを実行するときにプロジェクトのランタイムを選択する必要があります。 
 
-```output
+<pre>
 Select a worker runtime:
 dotnet
 node
 python 
 powershell
-```
+</pre>
 
 上/下方向キーを使用して言語を選択し、Enter キーを押します。 JavaScript または TypeScript 関数の開発を計画している場合は、**ノード**を選択し、言語を選択します。 TypeScript には[いくつかの追加要件](functions-reference-node.md#typescript)があります。 
 
 出力は、次の JavaScript プロジェクトの例のようになります。
 
-```output
+<pre>
 Select a worker runtime: node
 Writing .gitignore
 Writing host.json
 Writing local.settings.json
 Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
-```
+</pre>
 
 `func init` では、次のオプションがサポートされています。特に注意書きがない限り、バージョン 2.x だけが対象です。
 
@@ -243,32 +243,32 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
   ![Storage Explorer から接続文字列をコピーする](./media/functions-run-local/storage-explorer.png)
 
-+ Core Tools を使用して、次のコマンドのいずれで Azure から接続文字列をダウンロードします。
++ Core Tools を使用して、次のコマンドのいずれかで Azure から接続文字列をダウンロードします。
 
   + 既存の関数アプリからすべての設定をダウンロードします。
 
-    ```bash
+    ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
   + 特定のストレージ アカウントの接続文字列を取得します。
 
-    ```bash
+    ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
     Azure にまだサインインしていない場合は、それを求めるメッセージが表示されます。
 
-## <a name="create-func"></a>関数を作成する
+## <a name="create-a-function"></a><a name="create-func"></a>関数を作成する
 
 関数を作成するには、次のコマンドを実行します。
 
-```bash
+```
 func new
 ```
 
 バージョン 2.x では、`func new` を実行したときに関数アプリの既定の言語のテンプレートを選択するように求められ、次に関数の名前を選択するように求められます。 バージョン 1.x では、さらに言語を選択するように求められます。
 
-```output
+<pre>
 Select a language: Select a template:
 Blob trigger
 Cosmos DB trigger
@@ -279,18 +279,18 @@ SendGrid
 Service Bus Queue trigger
 Service Bus Topic trigger
 Timer trigger
-```
+</pre>
 
 次のキュー トリガーの出力に示すように、指定した関数名のサブフォルダーに関数のコードが生成されます。
 
-```output
+<pre>
 Select a language: Select a template: Queue trigger
 Function name: [QueueTriggerJS] MyQueueTrigger
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\index.js
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\readme.md
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\sample.dat
 Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
-```
+</pre>
 
 次の引数を使用して、コマンドでこれらのオプションを指定することもできます。
 
@@ -303,62 +303,65 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 たとえば、JavaScript HTTP トリガーを 1 つのコマンドで作成するには、次を実行します。
 
-```bash
+```
 func new --template "Http Trigger" --name MyHttpTrigger
 ```
 
 キューによってトリガーされる関数を 1 つのコマンドで作成するには、次を実行します。
 
-```bash
+```
 func new --template "Queue Trigger" --name QueueTriggerJS
 ```
 
-## <a name="start"></a>関数をローカルで実行する
+## <a name="run-functions-locally"></a><a name="start"></a>関数をローカルで実行する
 
-Functions プロジェクトを実行するには、Functions ホストを実行します。 ホストによって、プロジェクトのすべての関数に対するトリガーが有効になります。 
+Functions プロジェクトを実行するには、Functions ホストを実行します。 ホストによって、プロジェクトのすべての関数に対するトリガーが有効になります。 起動コマンドは、使用するプロジェクトの言語によって異なります。
 
-### <a name="version-2x"></a>バージョン 2.x
+# <a name="c"></a>[C\#](#tab/csharp)
 
-ランタイムのバージョン 2.x では、開始コマンドはプロジェクトの言語によって異なります。
-
-#### <a name="c"></a>C\#
-
-```command
+```
 func start --build
 ```
+# <a name="javascript"></a>[JavaScript](#tab/node)
 
-#### <a name="javascript"></a>JavaScript
-
-```command
+```
 func start
 ```
 
-#### <a name="typescript"></a>TypeScript
+# <a name="python"></a>[Python](#tab/python)
 
-```command
+```
+func start
+```
+このコマンドは[仮想環境で実行する](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv)必要があります。
+
+# <a name="typescript"></a>[TypeScript](#tab/ts)
+
+```
 npm install
 npm start     
 ```
 
-### <a name="version-1x"></a>バージョン 1.x
+---
 
-Functions ランタイムのバージョン 1.x では、次の例のように `host` コマンドが必要です。
-
-```command
-func host start
-```
+>[!NOTE]  
+> Functions ランタイムのバージョン 1.x では、次の例のように `host` コマンドが必要です。
+>
+> ```
+> func host start
+> ```
 
 `func start` では、次のオプションがサポートされています。
 
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
-| **`--no-build`** | 実行前に現在のプロジェクトをビルドしません。 dotnet プロジェクトの場合のみ。 既定値は false に設定されます。 Version 2.x のみ。 |
-| **`--cert`** | 秘密キーが含まれる .pfx ファイルへのパス。 `--useHttps` でのみ使用されます。 Version 2.x のみ。 |
-| **`--cors-credentials`** | クロスオリジン認証済み要求 (つまり、Cookie と Authentication ヘッダー) バージョン 2.x のみを許可します。 |
+| **`--no-build`** | 実行前に現在のプロジェクトをビルドしません。 dotnet プロジェクトの場合のみ。 既定値は false に設定されます。 バージョン 1.x はサポートされません。 |
+| **`--cert`** | 秘密キーが含まれる .pfx ファイルへのパス。 `--useHttps` でのみ使用されます。 バージョン 1.x はサポートされません。 |
+| **`--cors-credentials`** | クロスオリジン認証済み要求 (つまり、Cookie と Authentication ヘッダー) バージョン 1.x はサポートされません。 |
 | **`--cors`** | CORS オリジンのコンマ区切りのリスト (スペースなし)。 |
-| **`--language-worker`** | 言語ワーカーを構成するための引数。 たとえば、[デバッグ ポートとその他の必要な引数](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)を指定して、言語ワーカーのデバッグを有効にすることができます。 Version 2.x のみ。 |
+| **`--language-worker`** | 言語ワーカーを構成するための引数。 たとえば、[デバッグ ポートとその他の必要な引数](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)を指定して、言語ワーカーのデバッグを有効にすることができます。 バージョン 1.x はサポートされません。 |
 | **`--nodeDebugPort`** 、 **`-n`** | 使用する Node.js デバッガーのポート。 既定値はlaunch.json または 5858 の値。 バージョン 1.x のみ。 |
-| **`--password`** | .pfx ファイルのパスワードまたはパスワードが格納されているファイルのいずれか。 `--cert` でのみ使用されます。 Version 2.x のみ。 |
+| **`--password`** | .pfx ファイルのパスワードまたはパスワードが格納されているファイルのいずれか。 `--cert` でのみ使用されます。 バージョン 1.x はサポートされません。 |
 | **`--port`** 、 **`-p`** | ローカル ポート。このポートでリッスンします。 既定値:7071。 |
 | **`--pause-on-error`** | プロセスを終了する前に、追加入力を一時停止します。 統合開発環境 (IDE) から Core Tools を起動した場合にのみ使用されます。|
 | **`--script-root`** 、 **`--prefix`** | 実行または展開される関数アプリのルートへのパスを指定するために使用されます。 これは、サブフォルダーにプロジェクト ファイルを生成するコンパイル済みプロジェクトに使用されます。 たとえば、C# クラス ライブラリ プロジェクトをビルドすると、host.json、local.settings.json、および function.json ファイルが、`MyProject/bin/Debug/netstandard2.0` のようなパスの "*ルート*" サブフォルダーに生成されます。 この場合は、プレフィックスを `--script-root MyProject/bin/Debug/netstandard2.0` と設定します。 これは、Azure で実行する場合の関数アプリのルートです。 |
@@ -367,13 +370,13 @@ func host start
 
 Functions ホストの起動時、HTTP によってトリガーされる関数の URL が出力されます。
 
-```output
+<pre>
 Found the following functions:
 Host.Functions.MyHttpTrigger
 
 Job host started
 Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
-```
+</pre>
 
 >[!IMPORTANT]
 >ローカルで実行される場合、HTTP エンドポイントに対して承認は適用されません。 つまり、ローカルの HTTP 要求はすべて、`authLevel = "anonymous"` として処理されます。 詳細については、[HTTP バインディング](functions-bindings-http-webhook-trigger.md#authorization-keys)に関する記事を参照してください。
@@ -397,21 +400,31 @@ Functions ホストがリッスンしているのと同じサーバー名とポ�
 
 次の cURL コマンドは、`MyHttpTrigger` クイックスタート関数を、クエリ文字列で渡された _name_ パラメーターを使用して、GET 要求からトリガーします。
 
-```bash
+```
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
 
 次の例は、要求本文で _name_ を渡す POST 要求から呼び出される同じ関数です。
 
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```cmd
+curl --request POST http://localhost:7071/api/MyHttpTrigger --data "{'name':'Azure Rocks'}"
+```
+---
 
 ブラウザーから GET 要求を行ってクエリ文字列でデータを渡すことが可能です。 その他すべての HTTP メソッドについては、cURL、Fiddler、Postman、または類似の HTTP テスト ツールを使用する必要があります。
 
 #### <a name="non-http-triggered-functions"></a>HTTP でトリガーされない関数
 
-HTTP トリガーと webhook を除く、あらゆる種類の関数の場合、管理エンドポイントを呼び出すことによって、関数をローカルでテストできます。 HTTP POST 要求を使ってローカル サーバーでこのエンドポイントを呼び出すと、関数がトリガーされます。 必要に応じて、POST 要求の本体でテスト データを実行に渡すことができます。 この機能は、Azure Portal の **[テスト]** タブに似ています。
+HTTP トリガー、Webhook トリガー、Event Grid トリガーを除く、あらゆる種類の関数の場合、管理エンドポイントを呼び出すことによって、関数をローカルでテストできます。 HTTP POST 要求を使ってローカル サーバーでこのエンドポイントを呼び出すと、関数がトリガーされます。 
+
+Event Grid でトリガーされた関数をローカルでテストする方法については、「[ビューアー Web アプリでのローカル テスト](functions-bindings-event-grid-trigger.md#local-testing-with-viewer-web-app)」を参照してください。
+
+必要に応じて、POST 要求の本体でテスト データを実行に渡すことができます。 この機能は、Azure Portal の **[テスト]** タブに似ています。
 
 次の管理者エンドポイントを呼び出して、非 HTTP 関数をトリガーします。
 
@@ -427,16 +440,22 @@ HTTP トリガーと webhook を除く、あらゆる種類の関数の場合、
 
 `<trigger_input>` 値には、関数が必要とする形式でデータが含まれています。 次の cURL の例は、`QueueTriggerJS` 関数に対する POST です。 この場合、入力は、キューにあることが期待されるメッセージに相当する文字列です。
 
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
-curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
+curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTrigger
 ```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```bash
+curl --request POST -H "Content-Type:application/json" --data "{'input':'sample queue data'}" http://localhost:7071/admin/functions/QueueTrigger
+```
+---
 
-#### <a name="using-the-func-run-command-in-version-1x"></a>バージョン 1.x での `func run` コマンドの使用
+#### <a name="using-the-func-run-command-version-1x-only"></a>`func run` コマンドの使用 (バージョン 1.x のみ)
 
 >[!IMPORTANT]
-> `func run` コマンドは、ツールのバージョン 2.x ではサポートされていません。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](set-runtime-version.md)」を参照してください。
+> `func run` コマンドは、ツールのバージョン 1.x でのみサポートされます。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](set-runtime-version.md)」を参照してください。
 
-`func run <FunctionName>` を使用して関数を直接呼び出し、関数の入力データを渡すこともできます。 このコマンドは、Azure Portal の **[テスト]** タブを使用して関数を実行するのと似ています。
+バージョン 1.x では、`func run <FunctionName>` を使用して関数を直接呼び出し、関数の入力データを渡すこともできます。 このコマンドは、Azure Portal の **[テスト]** タブを使用して関数を実行するのと似ています。
 
 `func run` では、次のオプションがサポートされています。
 
@@ -450,11 +469,11 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 たとえば、HTTP によってトリガーされる関数を呼び出して、コンテンツ本文を渡すには、次のコマンドを実行します。
 
-```bash
+```
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
-## <a name="publish"></a>Azure に発行する
+## <a name="publish-to-azure"></a><a name="publish"></a>Azure に発行する
 
 Azure Functions Core Tools でサポートされている 2 種類のデプロイは、[Zip デプロイ](functions-deployment-technologies.md#zip-deploy)による関数アプリへの関数プロジェクト ファイルの直接的なデプロイと、[カスタム Docker コンテナーのデプロイ](functions-deployment-technologies.md#docker-container)です。 コードをデプロイする [Azure サブスクリプションで関数アプリを作成してある](functions-cli-samples.md#create)必要があります。 コンパイルを必要とするプロジェクトは、バイナリをデプロイできるように、ビルドする必要があります。
 
@@ -463,11 +482,11 @@ Azure Functions Core Tools でサポートされている 2 種類のデプロ�
 
 プロジェクト フォルダーには、発行するべきではない言語固有のファイルやディレクトリが含まれている場合があります。 除外された項目は、ルート プロジェクト フォルダーの .funcignore ファイルにリストされます。     
 
-### <a name="project-file-deployment"></a>デプロイ (プロジェクト ファイル)
+### <a name="deploy-project-files"></a><a name="project-file-deployment"></a>プロジェクト ファイルのデプロイ
 
 Azure で ローカル コードを関数アプリに発行するには、`publish` コマンドを使用します。
 
-```bash
+```
 func azure functionapp publish <FunctionAppName>
 ```
 
@@ -494,17 +513,17 @@ func azure functionapp publish <FunctionAppName>
 | **`--nozip`** | 既定の `Run-From-Package` モードをオフにします。 |
 | **`--build-native-deps`** | Python 関数アプリを発行するときに、.wheels フォルダーの生成をスキップします。 |
 | **`--build`** 、 **`-b`** | Linux 関数アプリにデプロイするときにビルド アクションを実行します。 `remote` および `local` を受け入れます。 |
-| **`--additional-packages`** | ネイティブの依存関係を構築するときにインストールするパッケージの一覧。 (例: `python3-dev libevent-dev`)。 |
+| **`--additional-packages`** | ネイティブの依存関係を構築するときにインストールするパッケージの一覧 (例: `python3-dev libevent-dev`)。 |
 | **`--force`** | 特定のシナリオで発行前の検証を無視します。 |
 | **`--csx`** | C# スクリプト (.csx) プロジェクトを発行します。 |
 | **`--no-build`** | .NET クラス ライブラリ関数をビルドしません。 |
 | **`--dotnet-cli-params`** | コンパイル済み C# (.csproj) 関数を発行するとき、Core Tools は "dotnet build --output bin/publish" を呼び出します。 これに渡されるすべてのパラメーターは、コマンド ラインに追加されます。 |
 
-### <a name="deployment-custom-container"></a>デプロイ (カスタム コンテナー)
+### <a name="deploy-custom-container"></a>カスタム コンテナーのデプロイ
 
 Azure Functions では、[カスタム Docker コンテナー](functions-deployment-technologies.md#docker-container)に関数プロジェクトをデプロイできます。 詳しくは、「[カスタム イメージを使用して Linux で関数を作成する](functions-create-function-linux-custom-image.md)」をご覧ください。 カスタム コンテナーには、Dockerfile が必要です。 Dockerfile でアプリを作成するには、`func init` で --dockerfile オプションを使用します。
 
-```bash
+```
 func deploy
 ```
 

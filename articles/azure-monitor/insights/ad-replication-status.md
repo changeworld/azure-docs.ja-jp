@@ -1,17 +1,17 @@
 ---
-title: Azure Monitor で Active Directory のレプリケーション状態を監視する | Microsoft Docs
+title: Active Directory レプリケーションの状態を監視する
 description: Active Directory レプリケーションの状態ソリューション パックは、レプリケーションの失敗がないか Active Directory 環境を定期的に監視します。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: bfc9572e8b21692a386c510ffd3409c571eff8f4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 30b0c7c87f6d55586b931be1445b175ce58565d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77667178"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055895"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Monitor で Active Directory のレプリケーション状態を監視する
 

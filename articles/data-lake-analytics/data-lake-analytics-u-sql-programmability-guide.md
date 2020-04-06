@@ -10,10 +10,10 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: dc55615d7a5c6ae9a393ed4fd5f49cd92aedc0f9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73162585"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL プログラミング ガイド
@@ -533,7 +533,7 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 * **シリアル化**: 指定されたルートのオブジェクトまたはオブジェクトのグラフをシリアル化し、指定されたストリームに送ります。
 
-`MyType` instance: 型のインスタンスです。  
+`MyType` インスタンス: 型のインスタンスです。  
 `IColumnWriter` writer / `IColumnReader` reader: 基になる列ストリームです。  
 `ISerializationContext` context: シリアル化の実行中にストリームのソースまたは宛先に関するコンテキストを指定するフラグのセットを定義する列挙型です。
 
@@ -945,11 +945,11 @@ public class GuidAggregate : IAggregate<string, string, string>
 public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
-* T1: Accumulate の 1 つ目のパラメーター
+* T1: Accumulate の 2 つ目のパラメーター
 * T2:Accumulate の 2 つ目のパラメーター
 * TResult: Terminate の戻り値の型
 
-例:
+次に例を示します。
 
 ```
 public class GuidAggregate : IAggregate<string, int, int>

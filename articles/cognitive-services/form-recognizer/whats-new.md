@@ -7,23 +7,70 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 2109d25d3962063c711dcab491855d9ebf1cf694
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 7f20244906581dd2869bbc7fcd997d5245540eda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901885"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155173"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Recognizer の新機能
 
-この記事では、新しいバージョンの Form Recognizer API に付随する主な変更点について説明します。
+Form Recognizer サービスは、継続的に更新されます。 この記事で、機能の強化、修正、ドキュメントの更新についての最新情報を入手してください。
 
 > [!NOTE]
-> このドキュメント セットのクイックスタートおよびガイドでは、特に指定がない限り、常に最新バージョンの API が使用されます。
+> Form Recognizer のクイックスタートとガイドでは、特に指定がない限り、常に最新バージョンの API が使用されます。
 
-## <a name="form-recognizer-20-preview"></a>Form Recognizer 2.0 (プレビュー)
+## <a name="march-2020"></a>2020 年 3 月 
+
+### <a name="extraction-enhancements"></a>抽出の機能強化
+
+このリリースでは、抽出の機能強化と精度の向上が行われています。具体的には、テキストの同じ行に複数のキーと値のペアが含まれる場合の、ラベル付けと抽出の機能です。 
+ 
+### <a name="form-recognizer-sample-labeling-tool-is-now-open-source"></a>Form Recognizer のサンプル ラベル付けツールがオープンソースになった
+
+Form Recognizer のサンプル ラベル付けツールが、オープンソース プロジェクトとして使用できるようになりました。 ソリューションにそれを統合し、ニーズに合わせて顧客固有の変更を行うことができます。
+
+Form Recognizer のサンプル ラベル付けツールの詳細については、[GitHub](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md) で入手できるドキュメントを参照してください。
+
+### <a name="labeling-value-types"></a>値の型のラベル付け
+
+Form Recognizer サンプル ラベル付けツールで、値の型を使用できるようになりました。 現在サポートされている値の型は次のとおりです。 
+
+* String
+* Number 
+* Integer
+* Date 
+* Time
+
+次の図では、Form Recognizer サンプル ラベル付けツールでの値の型の選択内容を示します。
+
+> [!div class="mx-imgBorder"]
+> ![サンプル ラベル付けツールでの値の型の選択](./media/whats-new/formre-value-type.png)
+
+抽出されたテーブルは、`pageResults` の JSON 出力で使用できます。
+
+### <a name="table-visualization"></a>テーブルの視覚化 
+
+Form Recognizer のラベル付けツールで、ドキュメントで認識されたテーブルが表示されるようになりました。 これにより、Form Recognizer のサンプル ラベル付けツールでラベル付けおよび分析を行う前に、ドキュメントから認識されて抽出されたテーブルを表示できます。 この機能は、レイヤー オプションを使用してオンとオフを切り替えることができます。 
+
+テーブルが認識されて抽出される方法の例を次に示します。
+
+> [!div class="mx-imgBorder"]
+> ![サンプル ラベル付けツールを使用したテーブルの視覚化](./media/whats-new/formre-table-viz.png)
+
+> [!IMPORTANT]
+> テーブルのラベル付けはサポートされていません。 テーブルの認識と抽出が自動的に行われない場合は、キーと値のペアとしてのみラベルを付けることができます。 キーと値のペアとしてテーブルのラベル付けを行うときは、各セルに値としてラベルを付けてください。
+
+### <a name="tls-12-enforcement"></a>TLS 1.2 の適用
+
+* TLS 1.2 は現在、このサービスへのすべての HTTP 要求に適用されるようになりました。 詳細については、[Azure Cognitive Services のセキュリティ](../cognitive-services-security.md)に関するページを参照してください。
+
+## <a name="january-2020"></a>2020 年 1 月
+
+このリリースでは、Form Recognizer 2.0 (プレビュー) が導入されています。 以下のセクションでは、新機能、機能強化、および変更の詳細について説明します。 
 
 ### <a name="new-features"></a>新機能
 

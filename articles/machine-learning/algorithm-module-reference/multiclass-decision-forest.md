@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: b1f7aaeaf5d1537e0e5a427ad994f7e31e43fee3
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9a0a70f94be337eedf8f8ba4cc17af896f7a03b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921370"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477546"
 ---
 # <a name="multiclass-decision-forest-module"></a>多クラス デシジョン フォレスト モジュール
 
@@ -55,7 +55,7 @@ Azure Machine Learning のデシジョン フォレスト分類子は、デシ�
 
     + **Single Parameter (単一パラメーター)** : モデルの構成方法を決めている場合はこのオプションを選択し、特定の値のセットを引数として渡します。
 
-    + **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわかっておらず、パラメーター スイープを実行したい場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。   
+    + **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからず、パラメーター スイープを実行する場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。   
 
 5. **[Number of decision trees]\(デシジョン ツリーの数\)** :アンサンブルに作成できるデシジョン ツリーの最大数を入力します。 作成するデシジョン ツリーを増やすと、カバレッジが向上する可能性はありますが、トレーニング時間が長くなるおそれがあります。
 
@@ -75,7 +75,7 @@ Azure Machine Learning のデシジョン フォレスト分類子は、デシ�
 
     + **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](./train-model.md) モジュールを使用します。
 
-11. パイプラインを実行します。
+11. パイプラインを送信します。
 
 
 

@@ -1,18 +1,18 @@
 ---
-title: マネージド ディスクの増分スナップショット (プレビュー)
-description: PowerShell と Azure Resource Manager を使用した作成方法を含む、マネージド ディスクの増分スナップショット (プレビュー) について学習します。
+title: マネージド ディスクの増分スナップショット
+description: CLI と Azure Resource Manager を使用した作成方法を含む、マネージド ディスクの増分スナップショットについて学習します。
 author: roygara
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 03/13/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 74c1c84b4deb1f2d904f88887fcf81b880f0f8ec
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: cc2685c234bceb302b86ebd84d0ec091ac11f098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970415"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79370867"
 ---
-# <a name="creating-an-incremental-snapshot-preview-for-managed-disks"></a>マネージド ディスクの増分スナップショット (プレビュー) の作成
-[!INCLUDE [virtual-machines-disks-incremental-snapshot](../../../includes/virtual-machines-disks-incremental-snapshot.md)]
+# <a name="create-an-incremental-snapshot-for-managed-disks---cli"></a>マネージド ディスクの増分スナップショットの作成 - CLI
+[!INCLUDE [virtual-machines-disks-incremental-snapshot-cli](../../../includes/virtual-machines-disks-incremental-snapshot-cli.md)]

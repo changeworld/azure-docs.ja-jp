@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1fb9ef702de4cec2a655aadebe0bc4d69f583ff7
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b6436059cc8b3637edfc2a146d0aab3e2beae6a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128207"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154340"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Windows デスクトップ クライアントを使用して接続する
 
@@ -23,6 +23,9 @@ Windows デスクトップ クライアントを使用して、Windows 7 また�
 
 > [!IMPORTANT]
 > Windows Virtual Desktop では、RemoteApp とデスクトップ接続 (RADC) クライアントおよびリモート デスクトップ接続 (MSTSC) クライアントはサポートされていません。
+
+> [!IMPORTANT]
+> Windows Virtual Desktop では、現在、Windows Store のリモート デスクトップ クライアントはサポートされていません。 このクライアントのサポートは、将来のリリースで追加されます。
 
 ## <a name="install-the-windows-desktop-client"></a>Windows デスクトップ クライアントをインストールする
 

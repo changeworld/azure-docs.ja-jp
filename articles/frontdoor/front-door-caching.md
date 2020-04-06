@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service - キャッシュ | Microsoft Docs
-description: この記事では、Azure Front Door Service によってバックエンドの正常性がどのように監視されるかを説明します
+title: Azure Front Door - キャッシュ | Microsoft Docs
+description: この記事は、バックエンドの正常性が Azure Front Door によってどのように監視されるかを理解するのに役立ちます
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 70ee0af0b39e80aa90d143303b3c522fbb3cc780
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839215"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471746"
 ---
-# <a name="caching-with-azure-front-door-service"></a>Azure Front Door Service でのキャッシュ
-次のドキュメントは、キャッシュを有効にしたルーティング規則を使用して Front Door の動作を指定します。
+# <a name="caching-with-azure-front-door"></a>Azure Front Door でのキャッシュ
+次のドキュメントは、キャッシュを有効にしたルーティング規則を使用して Front Door の動作を指定します。 Front Door は最新の Content Delivery Network (CDN) であり、動的サイト アクセラレーションおよび負荷分散に加えて、他の CDN と同様にキャッシュの動作もサポートされています。
 
 ## <a name="delivery-of-large-files"></a>大きなファイルの配信
-Azure Front Door Service では、ファイル サイズの制限なしで、大きなファイルを配信します。 Front Door では、オブジェクト チャンクと呼ばれる方法を使用します。 大きなファイルが要求されると、Front Door はバックエンドからファイルを分割して取得します。 完全なファイル要求またはバイト範囲を指定したファイル要求を受け取った後、Front Door 環境は、8 MB のチャンク単位でバックエンドにファイルを要求します。
+Azure Front Door では、ファイル サイズの制限なしで、大きなファイルが配信されます。 Front Door では、オブジェクト チャンクと呼ばれる方法を使用します。 大きなファイルが要求されると、Front Door はバックエンドからファイルを分割して取得します。 完全なファイル要求またはバイト範囲を指定したファイル要求を受け取った後、Front Door 環境は、8 MB のチャンク単位でバックエンドにファイルを要求します。
 
 </br>Front Door 環境に届いたチャンクはキャッシュされ、即座にユーザーに提供されます。 その後、Front Door は並列処理で次のチャンクをプリフェッチします。 このプリフェッチにより、コンテンツはチャンク 1 つ分だけ常にユーザーより先行することになるため、待ち時間が短縮されます。 この処理は、ファイル全体がダウンロードされるか (要求があった場合)、すべてのバイト範囲が利用可能になるか (要求があった場合)、クライアントが接続を終了するまで続けられます。
 
@@ -92,7 +92,7 @@ Front Door は、アセットの Time-to-Live (TTL) が期限切れになるま�
 </br>ユーザーが常にアセットの最新コピーを取得するのを確実にするベスト プラクティスは、更新ごとにアセットにバージョンを付け、新しい URL として発行することです。 Front Door では、次のクライアント要求のための新しいアセットが直ちに取得されます。 必要に応じて、すべてのエッジ ノードのキャッシュされたコンテンツを消去し、すべてのエッジ ノードが新しい更新されたアセットを取得するように強制することもできます。 たとえば、Web アプリケーションの更新に対応する場合や、正しくない情報を含むアセットをすばやく更新する場合などです。
 
 </br>エッジ ノードから消去するアセットを選択します。 すべてのアセットを消去する場合は、[すべて消去] チェック ボックスをオンにします。 それ以外の場合は、消去する各アセットのパスを [パス] テキスト ボックスに入力します。 パスには次の形式がサポートされています。
-1. **単一 URL の消去**: 完全な URL (ファイル拡張子付き) を指定することによって、個別のアセットを消去します (例: /pictures/strasbourg.png)。
+1. **1 つのパスの消去**: (プロトコルとドメインを除く) アセットの完全なパスをファイル拡張子と共に指定して、個々のアセットを消去します (例: /pictures/strasbourg.png)。
 2. **ワイルドカードによる消去**: アスタリスク (\*) をワイルドカードとして使用できます。 パスに /\* を付けてエンドポイントの下のすべてのフォルダー、サブフォルダー、およびファイルを消去するか、またはフォルダーと /\* (たとえば /pictures/\*) を指定して特定のフォルダーの下のすべてのサブフォルダーおよびファイルを消去します。
 3. **ルート ドメインの消去**: パスに "/" を付けてエンドポイントのルートを削除します。
 
@@ -106,15 +106,13 @@ Front Door でのキャッシュの消去では、大文字と小文字が区別
 
 応答がキャッシュされないことを示す Cache-Control 応答ヘッダー (Cache-Control: private、Cache-Control: no-cache、Cache-Control: no-store など) は受け入れられます。 ただし、POP で処理中の同じ URL の複数の要求がある場合、それらは応答を共有する場合があります。 キャッシュ制御が存在しない場合、既定の動作として、AFD によってリソースが X 時間の間、キャッシュに入れられます。ここで、X は 1 日から 3 日までの範囲からランダムに選択されます。
 
-
 ## <a name="request-headers"></a>要求ヘッダー
 
 キャッシュを使用している場合、次の要求ヘッダーはバックエンドに転送されません。
-- Authorization
 - Content-Length
 - Transfer-Encoding
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
 - [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

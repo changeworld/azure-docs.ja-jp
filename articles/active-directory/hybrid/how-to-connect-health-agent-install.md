@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e9468c0a0f6844c7522ff43761cf58f4beea27e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 47fede0726ff1a540a71b9c42ca0c07117865d9e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897353"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331620"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 
@@ -38,7 +38,7 @@ ms.locfileid: "76897353"
 | Azure AD Connect Health エージェントが対象となる個々のサーバーにインストールされていること | Azure AD Connect Health がデータを受信し、監視機能および分析機能を提供するためには、対象となるサーバーに Health エージェントがインストールおよび構成されている必要があります。 <br /><br />たとえば、AD FS インフラストラクチャからデータを入手するためには、AD FS サーバーと Web アプリケーション プロキシ サーバーにエージェントがインストールされている必要があります。 同様に、オンプレミス AD DS インフラストラクチャに関するデータを入手するためには、ドメイン コントローラーにエージェントがインストールされている必要があります。 <br /><br /> |
 | Azure サービスのエンドポイントに対する送信接続 | エージェントをインストールしたり実行したりするためには、Azure AD Connect Health サービスのエンド ポイントへの接続が必要となります。 ファイアウォールを使用して送信接続がブロックされている場合は、確実に以下のエンドポイントを許可リストに追加してください。 [送信接続エンドポイント](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)に関するセクションをご覧ください。 |
 |IP アドレスに基づく送信接続 | ファイアウォールでの IP アドレスに基づくフィルタリングについては、[Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページをご覧ください。|
-| 送信トラフィックの SSL 検査がフィルタリングまたは無効化されていること | ネットワーク層で送信トラフィックの SSL 検査または SSL 終了が設定されている場合、エージェントの登録手順が失敗する可能性があります。 詳細については、[SSL 検査のセットアップ方法](https://technet.microsoft.com/library/ee796230.aspx)に関するページをご覧ください |
+| 送信トラフィックの TLS 検査のフィルタリングまたは無効化 | ネットワーク層で送信トラフィックの TLS 検査または TLS 終了が設定されている場合、エージェントの登録手順またはデータのアップロード操作が失敗する可能性があります。 詳細については、[TLS 検査のセットアップ方法](https://technet.microsoft.com/library/ee796230.aspx)に関するページをご覧ください |
 | エージェントを実行するサーバー上のファイアウォール ポート |エージェントが Azure AD Health サービス エンドポイントと通信するには、次のファイアウォール ポートが開いている必要があります。<br /><br /><li>TCP ポート 443</li><li>TCP ポート 5671</li> <br />ポート 5671 は最新バージョンのエージェントでは必要なくなったことに注意してください。 ポート 443 のみが必要なように、最新バージョンにアップグレードしてください。 詳細については、[ファイアウォール ポートの有効化](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx)に関するページを参照してください。 |
 | IE セキュリティ強化が有効になっている場合は以下の Web サイトが許可されていること |エージェントのインストール対象となるサーバーで IE セキュリティ強化が有効になっている場合、次の Web サイトを許可する必要があります。<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https:\//aadcdn.msftauth.net</li><li>Azure Active Directory によって信頼されている組織のフェデレーション サーバー 例: https:\//sts.contoso.com</li> 詳細については、[IE の構成方法](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)に関するページを参照してください。 ネットワーク内にプロキシがある場合は、以下の注意事項を参照してください。|
 | PowerShell v4.0 以降がインストールされていること | <li>Windows Server 2008 R2 には PowerShell v2.0 が付属しますが、それだけではエージェントの要件が満たされません。 後出の「[Windows Server 2008 R2 サーバーへのエージェントのインストール](#agent-installation-on-windows-server-2008-r2-servers)」の説明に従って PowerShell を更新してください。</li><li>Windows Server 2012 には PowerShell v3.0 が付属しますが、それだけではエージェントの要件が満たされません。  Windows Management Framework を[更新](https://www.microsoft.com/download/details.aspx?id=40855)します。</li><li>Windows Server 2012 R2 以降には、要件を満たした新しいバージョンの PowerShell が付属します。</li>|

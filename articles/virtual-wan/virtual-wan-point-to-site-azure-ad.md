@@ -1,26 +1,26 @@
 ---
-title: Azure へのポイント対サイト接続に Azure AD 認証を構成する | Microsoft Docs
-description: このチュートリアルでは、ユーザー VPN に Azure Active Directory 認証を構成する方法について説明します。
+title: ユーザー VPN 接続用に Azure AD 認証を構成する:Virtual WAN
+description: ユーザー VPN 用に Azure Active Directory 認証を構成する方法について説明します。
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: tutorial
-ms.date: 02/07/2019
+ms.topic: conceptual
+ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: b3508c4c8da5b4987fb5f38cf3bf701f2dda1097
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 703b832d58f2374eac131cfd380ba27f2c890618
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122035"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059481"
 ---
-# <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してユーザー VPN 接続を作成する
+# <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>ユーザー VPN 用に Azure Active Directory 認証を構成する
 
-このチュートリアルでは、Virtual WAN のユーザー VPN に Azure AD 認証を構成し、OpenVPN VPN 接続経由で Azure のリソースに接続する方法について説明します。 Azure Active Directory 認証は、OpenVPN プロトコルを使用するゲートウェイと、Windows を実行するクライアントでのみ使用できます。
+この記事では、Virtual WAN のユーザー VPN 用に Azure AD 認証を構成し、OpenVPN VPN 接続経由で Azure のリソースに接続する方法について説明します。 Azure Active Directory 認証は、OpenVPN プロトコルを使用するゲートウェイと、Windows を実行するクライアントでのみ使用できます。
 
 この種類の接続では、クライアント コンピューターでクライアントを構成する必要があります。 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。
 
-このチュートリアルでは、以下の内容を学習します。
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * WAN を作成する
@@ -31,7 +31,6 @@ ms.locfileid: "77122035"
 > * VNet をハブに接続する
 > * VPN クライアント構成をダウンロードして適用する
 > * 仮想 WAN を表示する
-> * リソースの正常性を表示する
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwanp2s.png)
 
@@ -47,7 +46,7 @@ ms.locfileid: "77122035"
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-## <a name="wan"></a>仮想 WAN を作成する
+## <a name="create-a-virtual-wan"></a><a name="wan"></a>仮想 WAN を作成する
 
 ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
@@ -65,7 +64,7 @@ ms.locfileid: "77122035"
 4. フィールドへの入力を完了したら、 **[確認および作成]** を選択します。
 5. 検証に合格したら、 **[作成]** を選択して仮想 WAN を作成します。
 
-## <a name="site"></a>空の仮想ハブを作成する
+## <a name="create-an-empty-virtual-hub"></a><a name="site"></a>空の仮想ハブを作成する
 
 1. 仮想 WAN で [ハブ] を選択し、 **[+ 新しいハブ]** をクリックします。
 
@@ -82,7 +81,7 @@ ms.locfileid: "77122035"
 3. **[Review + create]\(レビュー + 作成\)** をクリックします。
 4. **[検証に成功しました]** ページで **[作成]** をクリックします。
 
-## <a name="site"></a>新しい P2S 構成を作成する
+## <a name="create-a-new-p2s-configuration"></a><a name="site"></a>新しい P2S 構成を作成する
 
 P2S 構成には、リモート クライアントを接続するためのパラメーターが定義されています。
 
@@ -98,7 +97,7 @@ P2S 構成には、リモート クライアントを接続するためのパラ
 
    ![新しい構成](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
-## <a name="hub"></a>ハブの割り当てを編集する
+## <a name="edit-hub-assignment"></a><a name="hub"></a>ハブの割り当てを編集する
 
 1. 仮想 WAN の下にある **[ハブ]** ブレードに移動します。
 2. VPN サーバーの構成を関連付けるハブを選択し、省略記号 (...) をクリックします。
@@ -112,7 +111,7 @@ P2S 構成には、リモート クライアントを接続するためのパラ
 6. **[Confirm]\(確認\)** をクリックします。
 7. この操作は、完了するまで最大 30 分かかることがあります。
 
-## <a name="device"></a>VPN プロファイルをダウンロードする
+## <a name="download-vpn-profile"></a><a name="device"></a>VPN プロファイルをダウンロードする
 
 VPN プロファイルを使用してクライアントを構成します。
 
@@ -126,14 +125,14 @@ VPN プロファイルを使用してクライアントを構成します。
 接続するには、Azure VPN Client (プレビュー) をダウンロードし、前の手順でダウンロードした VPN クライアント プロファイルを、VNet に接続する各コンピューターでインポートします。
 
 > [!NOTE]
-> Azure AD 認証は、OpenVPN® プロトコル接続でのみサポートされています。
+> Azure AD 認証は、OpenVPN&reg; プロトコル接続でのみサポートされています。
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>Azure VPN Client をダウンロードするには
 
 この[リンク](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)を使用して、Azure VPN Client をダウンロードします。
 
-#### <a name="import"></a>クライアント プロファイルをインポートするには
+#### <a name="to-import-a-client-profile"></a><a name="import"></a>クライアント プロファイルをインポートするには
 
 1. ページ上で、 **[インポート]** を選択します。
 
@@ -155,7 +154,7 @@ VPN プロファイルを使用してクライアントを構成します。
 
     ![import](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
 
-#### <a name="delete"></a>クライアント プロファイルを削除するには
+#### <a name="to-delete-a-client-profile"></a><a name="delete"></a>クライアント プロファイルを削除するには
 
 1. 削除するクライアント プロファイルの横にある省略記号 (...) を選択します。 **[削除]** を選択します。
 
@@ -165,7 +164,7 @@ VPN プロファイルを使用してクライアントを構成します。
 
     ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
-#### <a name="diagnose"></a>接続の問題を診断する
+#### <a name="diagnose-connection-issues"></a><a name="diagnose"></a>接続の問題を診断する
 
 1. 接続の問題を診断するには、**診断**ツールを使用します。 診断する VPN 接続の横にある省略記号 (...) を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
 
@@ -183,19 +182,14 @@ VPN プロファイルを使用してクライアントを構成します。
 
     ![診断](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
 
-## <a name="viewwan"></a>仮想 WAN を表示する
+## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>仮想 WAN を表示する
 
 1. 仮想 WAN に移動します。
-2. [概要] ページのマップ上の各ポイントは、ハブを表します。 任意のポイントにカーソルを置くと、ハブの正常性の概要が表示されます。
+2. [概要] ページのマップ上の各ポイントは、ハブを表します。
 3. ハブと接続のセクションでは、ハブの状態、サイト、リージョン、VPN 接続の状態、および入出力バイト数を表示できます。
 
-## <a name="viewhealth"></a>リソースの正常性を表示する
 
-1. WAN に移動します。
-2. WAN のページの **[サポート + トラブルシューティング]** セクションで、 **[正常性]** をクリックしてリソースを表示します。
-
-
-## <a name="cleanup"></a>リソースをクリーンアップする
+## <a name="clean-up-resources"></a><a name="cleanup"></a>リソースをクリーンアップする
 
 これらのリソースが不要になったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
 

@@ -3,16 +3,19 @@ title: Logic Apps を使用して Azure Application Insights プロセスを自�
 description: Application Insights コネクタをお使いのロジック アプリに追加することで、反復可能なプロセスを迅速に自動化する方法を説明します。
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 9a7f411ca5ec47e3f25d8120d0388fb030b00c72
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4a0944e661932d86fac75f78c4faf5be751806c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655006"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473168"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps を使って Application Insights のプロセスを自動化する
 
 お使いのサービスが正常に機能しているかを確認するために、利用統計情報に対して同じクエリを繰り返し実行していませんか。 これらのクエリを自動化して傾向や異常を検出し、関連する独自のワークフローを構築する方法を確認しましょう。 これには、Logic Apps 対応の Azure Application Insights コネクタが最適なツールです。
+
+> [!NOTE]
+> Azure Application Insights コネクタは、API キーを必要とする代わりに Azure Active Directory に統合された[Azure Monitor コネクタ](../platform/logicapp-flow-connector.md)に置き換えられ、Log Analytics ワークスペースからのデータの取得も可能になりました。
 
 この統合によって、一行のコードも記述せずに、膨大な数のプロセスを自動化できます。 Application Insights コネクタを使ってロジック アプリを作成し、どの Application Insights プロセスでも迅速に自動化できます。 
 

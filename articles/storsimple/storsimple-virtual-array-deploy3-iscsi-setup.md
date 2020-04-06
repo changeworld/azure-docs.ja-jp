@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516810"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228091"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介して iSCSI サーバーとしてセットアップする
 
@@ -45,9 +45,9 @@ StorSimple Virtual Array を構成およびセットアップする前に、以�
 
 StorSimple Virtual Array をセットアップして構成するには、次の手順を実行します。
 
-* [手順 1:ローカル Web UI の設定を完了し、デバイスを登録する](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
+* [ステップ 1:ローカル Web UI の設定を完了し、デバイスを登録する](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
 * 手順 2:必要なデバイスのセットアップを完了する
-* [手順 3:ボリュームを追加する](#step-3-add-a-volume)
+* [ステップ 3:ボリュームを追加する](#step-3-add-a-volume)
 * [手順 4:ボリュームをマウント、初期化、フォーマットする](#step-4-mount-initialize-and-format-a-volume)
 
 ## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>手順 1:ローカル Web UI の設定を完了し、デバイスを登録する
@@ -133,7 +133,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
 
 #### <a name="to-configure-the-device-as-iscsi-server"></a>デバイスを iSCSI サーバーとして構成するには
 
-1. StorSimple デバイス マネージャー サービスに移動し、 **[管理] > [デバイス]** の順に移動します。 **[デバイス]** ブレードで、先ほど作成したデバイスを選択します。 このデバイスは**セットアップの準備が完了している**状態として表示されます。
+1. StorSimple デバイス マネージャー サービスに移動し、 **[管理] > [デバイス]** の順に移動します。 **[デバイス]** ブレードで、先ほど作成したデバイスを選択します。 このデバイスは、**セットアップの準備が完了している**状態として表示されます。
    
     ![デバイスを iSCSI サーバーとして構成](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png) 
 2. デバイスをクリックすると、デバイスのセットアップの準備が完了していることを示すバナー メッセージが表示されます。
@@ -162,7 +162,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
 2. **[ボリュームの追加]** ブレードで、次の操作を行います。
    
    * **[ボリューム名]** フィールドに、ボリュームの一意の名前を入力します。 名前は 3 ～ 127 文字を含む文字列である必要があります。
-   * **[種類]** ドロップダウン リストで、作成するボリュームの種類として**階層型**または**ローカル固定**のいずれかを指定します。 ローカルの保証、低待機時間、高パフォーマンスを必要とするワークロードでは、 **[ローカル固定** **ボリューム]** を選択します。 それ以外のデータの場合は、 **[階層化** **ボリューム]** を選択します。
+   * **[種類]** ドロップダウン リストで、作成するボリュームの種類として**階層型**または**ローカル固定**のいずれかを指定します。 ローカルの保証、低待機時間、高パフォーマンスを必要とするワークロードでは、**ローカル固定** **ボリューム**を選択します。 それ以外のデータの場合は、**階層化** **ボリューム**を選択します。
    * **[容量]** フィールドで、ボリュームのサイズを指定します。 階層化ボリュームは 500 GB ～ 5 TB、ローカル固定ボリュームは 50 GB ～ 500 GB の範囲内で指定する必要があります。
      
      ローカル固定のボリュームはシック プロビジョニングされ、ボリューム上のプライマリ データがデバイスに残り、クラウドへの書き込みは行われません。
@@ -228,7 +228,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     
     ![オンラインのボリューム](./media/storsimple-virtual-array-deploy3-iscsi-setup/image33.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ローカル Web UI を使用して [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
 

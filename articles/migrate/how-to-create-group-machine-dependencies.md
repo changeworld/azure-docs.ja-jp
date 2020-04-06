@@ -1,34 +1,34 @@
 ---
-title: Azure Migrate で依存関係の視覚化を設定する
-description: この記事では、Azure Migrate Server Assessment で依存関係の視覚化を設定する方法について説明します。
-ms.topic: article
+title: Azure Migrate Server Assessment でエージェントベースの依存関係の分析を設定する
+description: この記事では、Azure Migrate Server Assessment でエージェントベースの依存関係の分析を設定する方法について説明します。
+ms.topic: how-to
 ms.date: 2/24/2020
-ms.openlocfilehash: 2b75a38a376558946841d08ab7a9dbf730232e51
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: e61b7b4e6c3e566aa67d2bd585d2049ae885083b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78941047"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79453617"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
-この記事では、Azure Migrate: Server Assessment で依存関係の視覚化を設定する方法について説明します。 [依存関係の視覚化](concepts-dependency-visualization.md#what-is-dependency-visualization)は、評価や Azure への移行を行うマシン間の依存関係を特定し、理解するために役立ちます。
+この記事では、Azure Migrate:Server Assessment でエージェントベースの依存関係の分析を設定する方法について説明します。 [依存関係の分析](concepts-dependency-visualization.md)は、評価や Azure への移行を行うマシン間の依存関係を特定し、理解するために役立ちます。
 
 ## <a name="before-you-start"></a>開始する前に
 
-- 依存関係の視覚化に関連する要件とコストを[確認](concepts-dependency-visualization.md)します。
+- エージェントベースの依存関係の分析について[理解します](concepts-dependency-visualization.md#agent-based-analysis)。
+- [VMware VM](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements)、[物理サーバー](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)、[Hyper-V VM](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements) のエージェントベースの依存関係の視覚化を設定するための前提条件とサポート要件を確認します。
 - Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
-- プロジェクトを既に作成してある場合は、次のツールを[追加済み](how-to-assess.md)であることを確認します。Azure Migrate: Server Assessment ツールを追加済みであることを確認してください。
-- オンプレミスのマシンを検出するための [Azure Migrate アプライアンス](migrate-appliance.md)を設定済みであることを確認します。 [VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用のアプライアンスの設定方法を確認してください。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment を使用して作成する方法について説明します。
+- プロジェクトを既に作成している場合は、Azure Migrate Server:Assessment ツールを[追加](how-to-assess.md)済みであることを確認します。
+- オンプレミスのマシンを検出するための [Azure Migrate アプライアンス](migrate-appliance.md)を設定済みであることを確認します。 [VMware](how-to-set-up-appliance-vmware.md)、[Hyper-V](how-to-set-up-appliance-hyper-v.md)、または[物理サーバー](how-to-set-up-appliance-physical.md)用のアプライアンスを設定する方法を理解します。 このアプライアンスにより、オンプレミスのマシンが検出され、Azure Migrate:Server Assessment にメタデータとパフォーマンス データが送信されます。
 - 依存関係の視覚化を利用するには、[Log Analytics ワークスペース](../azure-monitor/platform/manage-access.md)を Azure Migrate プロジェクトに関連付けます。
+    - Azure Migrate アプライアンスを設定して Azure Migrate プロジェクトでマシンが検出された後にのみ、ワークスペースをアタッチできます。
     - ワークスペースが、Azure Migrate プロジェクトを含むサブスクリプション内にあることを確認します。
     - ワークスペースは、米国東部リージョン、東南アジア リージョン、または西ヨーロッパ リージョンに存在する必要があります。 他のリージョンにあるワークスペースをプロジェクトに関連付けることはできません。
     - ワークスペースは、[Service Map がサポートされている](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)リージョンに存在する必要があります。
     - 新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付けることができます。
     - ワークスペースのアタッチは、マシンの依存関係の視覚化を初めて設定したときに行います。 Azure Migrate プロジェクトのワークスペースは、追加後に変更できません。
     - Log Analytics では、Azure Migrate に関連付けられたワークスペースは、移行プロジェクト キーとプロジェクト名のタグが付けられます。
-
-- ワークスペースをアタッチできるのは、Azure Migrate プロジェクトでマシンが検出された後のみになります。 これは、Azure Migrate アプライアンスを [VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用に設定することで実行できます。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment を使用して作成する方法について説明します。 [詳細については、こちらを参照してください](migrate-appliance.md)。
 
 ## <a name="associate-a-workspace"></a>ワークスペースを関連付ける
 
@@ -51,7 +51,7 @@ ms.locfileid: "78941047"
 分析する各マシンにエージェントをインストールします。
 
 > [!NOTE]
-    > System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 Service Map は Operations Manager と統合されます。 [この](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)統合ガイダンスに従ってください。
+> System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 Service Map は Operations Manager と統合されます。 統合ガイダンスに[従ってください](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)。
 
 1. **Azure Migrate:Server Assessment** で、 **[Discovered servers]\(検出済みサーバー\)** をクリックします。
 2. 依存関係の視覚化を利用して分析する各マシンについて、 **[依存関係]** 列の **[エージェントをインストールする必要があります]** をクリックします。

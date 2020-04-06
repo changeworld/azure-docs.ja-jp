@@ -1,19 +1,18 @@
 ---
 title: Dynamics 365 for Customer Engagement リード管理 | Azure Marketplace
 description: Dynamics 365 for Customer Engagement のリード管理を構成します。
-services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.author: evansma
-ms.openlocfilehash: 37cf613b6e0bd2ec9910dd3e7431c0feaa02431c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8af6b3a451d20bcc9cab3fa4adb9643f82b85e49
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812303"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288820"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Dynamics 365 for Customer Engagement のリード管理の構成
 
@@ -94,7 +93,7 @@ ms.locfileid: "73812303"
 10. クライアント シークレットが正常に作成されたらすぐに、**クライアント シークレットの値をコピー**します。 ページから移動した後は値を取得できなくなります。 この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要がある "*クライアント シークレット*" 値です。 
 11. アプリの左側のナビゲーションで **[API のアクセス許可]** を選択し、 **[アクセス許可の追加]** を選択します。
 12. [Microsoft API] を選択してから、API として **[Dynamics CRM]** を選択します。
-13. " *[アプリケーションに必要なアクセス許可の種類]* " で、 **[委任されたアクセス許可]** が選択されていることを確認します。 [**user_impersonation** "*Access Common Data Service as organization users*"]\(user_impersonation 組織ユーザーとして Common Data Service にアクセス\) のアクセス許可を確認します。 **[アクセス許可の追加]** を選択します.
+13. " *[アプリケーションに必要なアクセス許可の種類]* " で、 **[委任されたアクセス許可]** が選択されていることを確認します。 [**user_impersonation** *Access Common Data Service as organization users*]\(user_impersonation 組織ユーザーとして Common Data Service にアクセス\) のアクセス許可を確認します。 **[アクセス許可の追加]** を選択します.
 
     ![Add permissions](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 

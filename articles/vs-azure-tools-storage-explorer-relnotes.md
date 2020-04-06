@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 1adfb59843150ffaa6ed76411d07d8ec6cf6a44b
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 986da8980a569583ef454833957ace85dd1bfbb6
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555263"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80351069"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
@@ -167,13 +167,15 @@ ms.locfileid: "74555263"
   * デバイス コード フローのサインインの有効化
   * 自動更新 (#1526)
   * AzCopy の有効化
-  * SAS 期間の AzCopy 他に追加を希望する設定がある場合は、希望する設定を説明して、[GitHub でイシューを開いてください](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=)。
+  * AzCopy の SAS 期間。他に追加して表示したい設定がある場合は、表示したい設定について説明し、[GitHub に問題を投稿](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=)してください。
 * Storage Explorer でマネージド ディスクがサポートされるようになりました。 次のようにすることができます。
   * オンプレミスの VHD を新しいディスクにアップロードする
   * ディスクをダウンロードする
   * 複数のリソース グループおよびリージョン間でディスクのコピーと貼り付けを行う
   * ディスクを削除する
-  * ディスクのスナップショットを作成するディスクのアップロード、ダウンロード、およびリージョン間のコピーは、AzCopy v10 を利用して行われます。
+  * ディスクのスナップショットを作成する
+
+ディスクのアップロード、ダウンロード、およびリージョン間のコピーは、AzCopy v10 を利用して行われます。
 * Linux の Snap Store を介して Storage Explorer をインストールできるようになりました。 Snap Store を介してインストールすると、.NET Core を含めてすべての依存関係がインストールされます。 現時点では、Ubuntu および CentOS で Storage Explorer が正常に動作することを確認済みです。 他の Linux ディストリビューションにおいて Snap Store からのインストールで問題が発生した場合は、[GitHub でイシューを開いてください](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 Snap Store からのインストールの詳細については、[概要ガイド](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux)を参照してください。 #68
 * Azure Active Directory (Azure AD) でのアタッチに対して、この機能が ADLS Gen2 ユーザーにとってより使いやすくなるように、次の 2 つの大きな変更が行われました。
   * アタッチするリソースが存在するテナントを選択できるようになりました。 これは、リソースのサブスクリプションへの RBAC アクセスが必要がなくなったことを意味します。
@@ -239,7 +241,7 @@ ms.locfileid: "74555263"
     * AzCopy の有効化
     * SAS 期間の AzCopy
 
-    他に追加を希望する設定がある場合は、[希望する設定を説明して、GitHub でイシューを開いてください](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=)。
+    他に追加して表示したい設定がある場合は、[表示したい設定について説明し、GitHub に問題を投稿してください](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=)。
 * Storage Explorer でマネージド ディスクがサポートされるようになりました。 次のようにすることができます。
     * オンプレミスの VHD を新しいディスクにアップロードする
     * ディスクをダウンロードする
@@ -751,7 +753,7 @@ ms.locfileid: "74555263"
 * リースの解約は一度に 1 つの BLOB 上のみで実行することができます。 さらに、解約するリースを含む BLOB の名前を入力する必要があります。 この変更は、特に VM の場合に、誤ってリースを解約する可能性を低減するために加えられました。 #394
 * サインインの問題が発生した場合、認証のリセットを試行できるようになりました。 この機能にアクセスするには、[ヘルプ] メニューに移動して [リセット] をクリックします。 #419
 
-### <a name="fix"></a>解決策
+### <a name="fix"></a>Fix
 
 * 強力なユーザーのフィードバックの後、既定のエミュレーター ノードを再度有効にしています。 引き続き [接続] ダイアログからさらにエミュレーターの接続を追加することはできますが、ご利用のエミュレーターが既定のポートを使用するように構成されている場合は、[Local & Attached]\(ローカルおよびアタッチ済み\)、[ストレージ アカウント] の下で "エミュレーター * 既定のポート" ノードを使用することもできます。 #669
 * Storage Explorer では、先頭または末尾に空白がある BLOB メタデータの値を設定することはできなくなりました。 #760
@@ -1200,7 +1202,7 @@ ms.locfileid: "74555263"
 * AAD に対応した Azure Stack アカウントの場合、[Target Azure Stack]\(対象となる Azure Stack\) が有効になっていると、Storage Explorer が Azure Stack サブスクリプションを取得するようになりました。 カスタム ログイン環境を作成する必要がなくなりました。
 * より迅速に操作できるように、ショートカットがいくつか追加されました。 これには、さまざまなパネルの切り替えやエディター間の移動などがあります。 詳細については、[表示] メニューを参照してください。
 * Storage Explorer のフィードバックが GitHub で公開されるようになりました。 左下にあるフィードバック ボタンをクリックするか、[https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) にアクセスすると、問題に関するページに移動できます。 自由に、提案、問題の報告、質問を行ったり、その他の形式のフィードバックを提供したりしてください。
-* SSL 証明書の問題が発生していて、問題となっている証明書が見つからない場合に、コマンド ラインから `--ignore-certificate-errors` フラグを指定して Storage Explorer を起動できるようになりました。 このフラグを指定して起動すると、Storage Explorer は SSL 証明書のエラーを無視します。
+* TLS/SSL 証明書の問題が発生していて、問題となっている証明書が見つからない場合に、コマンド ラインから `--ignore-certificate-errors` フラグを指定して Storage Explorer を起動できるようになりました。 このフラグを指定して起動すると、Storage Explorer では TLS/SSL 証明書のエラーが無視されます。
 * BLOB とファイル項目のコンテキスト メニューに「ダウンロード」オプションが追加されました。
 * アクセシビリティとスクリーン リーダーのサポートが強化されました。 ユーザー補助機能を使用する場合、詳細については、[アクセシビリティのドキュメント](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility)を参照してください。
 * Storage Explorer で Electron 1.8.3 を使用するようになりました。
@@ -1586,12 +1588,12 @@ ms.locfileid: "74555263"
 
 #### <a name="fixes"></a>修正
 
-* 修正:ファイルのアップロードは、メモリ不足エラーを発生させる高い可能性がありました
-* 修正:PIN/スマートカードでサインインできるようになりました
-* 修正済み:[ポータルで開く] が、Azure China 21Vianet、Azure Germany、Azure US Government、Azure Stack で機能するようになりました
-* 修正済み:フォルダーを BLOB コンテナーにアップロードしているときに、"無効な操作" エラーが発生する場合があります
-* 修正:スナップショットを管理しているときに、[すべて選択] が無効になっていました
-* 修正:ベース BLOB のメタデータは、そのスナップショットのプロパティを表示した後に上書きされる可能性があります
+* 固定:ファイルのアップロードは、メモリ不足エラーを発生させる高い可能性がありました
+* 固定:PIN/スマートカードでサインインできるようになりました
+* 固定:[ポータルで開く] が、Azure China 21Vianet、Azure Germany、Azure US Government、Azure Stack で機能するようになりました
+* 固定:フォルダーを BLOB コンテナーにアップロードしているときに、"無効な操作" エラーが発生する場合があります
+* 固定:スナップショットを管理しているときに、[すべて選択] が無効になっていました
+* 固定:ベース BLOB のメタデータは、そのスナップショットのプロパティを表示した後に上書きされる可能性があります
 
 #### <a name="known-issues"></a>既知の問題
 
@@ -1625,7 +1627,7 @@ ms.locfileid: "74555263"
 * Azure Active Directory (AAD) を基にした Azure Stack アカウントにサインインできるようになりました。
 * 32MB を超えるアーカイブ ファイルを Premium ストレージ アカウントにアップロードできるようになりました
 * アクセシビリティ サポートの向上
-* [編集] &gt; [SSL 証明書] &gt; [証明書のインポート] に移動して、信頼できる Base 64 encoded X.509 SSL 証明書を追加できるようになりました
+* [編集] &gt; [SSL 証明書] &gt; [証明書のインポート] に移動して、信頼できる Base 64 encoded X.509 TLS/SSL 証明書を追加できるようになりました
 
 #### <a name="fixes"></a>修正
 
@@ -1700,13 +1702,13 @@ ms.locfileid: "74555263"
 
 #### <a name="fixes"></a>修正
 
-* 修正:Storage Explorer は、Mac の信頼できるアプリになりました
-* 修正:Ubuntu 14.04 が再びサポートされるようになりました
-* 修正:サブスクリプションを読み込むときに [アカウントの追加] UI が点滅することがありました
-* 修正:左側のナビゲーション ウィンドウにすべてのストレージ リソースが一覧表示されないことがありました
-* 修正:操作ウィンドウに空の操作が表示されることがありました
-* 修正:前回終了したセッションからウィンドウ サイズが維持されるようになりました
-* 修正:コンテキスト メニューを使って同じリソースに対して複数のタブを開くことができるようになりました
+* 固定:Storage Explorer は、Mac の信頼できるアプリになりました
+* 固定:Ubuntu 14.04 が再びサポートされるようになりました
+* 固定:サブスクリプションを読み込むときに [アカウントの追加] UI が点滅することがありました
+* 固定:左側のナビゲーション ウィンドウにすべてのストレージ リソースが一覧表示されないことがありました
+* 固定:操作ウィンドウに空の操作が表示されることがありました
+* 固定:前回終了したセッションからウィンドウ サイズが維持されるようになりました
+* 固定:コンテキスト メニューを使って同じリソースに対して複数のタブを開くことができるようになりました
 
 #### <a name="known-issues"></a>既知の問題
 
@@ -1736,14 +1738,14 @@ ms.locfileid: "74555263"
 
 #### <a name="fixes"></a>修正
 
-* 修正:画面がフリーズする問題
-* 修正:強化されたセキュリティ
-* 修正:アタッチされたアカウントが重複して表示されることがあります
-* 修正:定義されていないコンテンツ タイプを持つ BLOB は、例外を生成する場合があります
-* 修正:空のテーブルでクエリ パネルを開くことができませんでした
-* 修正:検索でのさまざまなバグ
-* 修正:[さらに読み込む] をクリックしたときに読み込まれるリソース数が 50 から 100 に増えました
-* 修正:最初の実行で、アカウントがサインインされた場合、既定でアカウントにすべてのサブスクリプションを選択するようになりました
+* 固定:画面がフリーズする問題
+* 固定:強化されたセキュリティ
+* 固定:アタッチされたアカウントが重複して表示されることがあります
+* 固定:定義されていないコンテンツ タイプを持つ BLOB は、例外を生成する場合があります
+* 固定:空のテーブルでクエリ パネルを開くことができませんでした
+* 固定:検索でのさまざまなバグ
+* 固定:[さらに読み込む] をクリックしたときに読み込まれるリソース数が 50 から 100 に増えました
+* 固定:最初の実行で、アカウントがサインインされた場合、既定でアカウントにすべてのサブスクリプションを選択するようになりました
 
 #### <a name="known-issues"></a>既知の問題
 
@@ -1764,8 +1766,8 @@ ms.locfileid: "74555263"
 #### <a name="fixes"></a>修正
 
 * 修正: 検索中の競合状態は、ノードが展開不可能になることがあります
-* 修正:アカウント名とキーでストレージ アカウントに接続している場合、"HTTP の使用" は動作しません
-* 修正:SAS キー (特にポータルで生成されたキー) は、"末尾のスラッシュ" エラーを返します
+* 固定:アカウント名とキーでストレージ アカウントに接続している場合、"HTTP の使用" は動作しません
+* 固定:SAS キー (特にポータルで生成されたキー) は、"末尾のスラッシュ" エラーを返します
 * 修正: テーブルのインポートの問題
     * パーティション キーと行キーが逆順になる場合がありました
     * "null" のパーティション キーを読み取ることができません
@@ -1811,7 +1813,7 @@ ms.locfileid: "74555263"
 
 #### <a name="fixes"></a>修正
 
-* 修正:Microsoft アカウントは、8 - 12 時間ごとに再認証が必要です
+* 固定:Microsoft アカウントは、8 - 12 時間ごとに再認証が必要です
 
 #### <a name="known-issues"></a>既知の問題
 
@@ -1867,7 +1869,7 @@ ms.locfileid: "74555263"
 
 * 修正: 大きい BLOB のアップロードまたはダウンロードは、不完全なアップロードまたはダウンロードになります
 * 修正: 数値文字列 ("1") を含むエンティティの編集、追加、またはインポートは、double に変換されます
-* 修正:ローカル開発環境のテーブル ノードを展開できません
+* 固定:ローカル開発環境のテーブル ノードを展開できません
 
 #### <a name="known-issues"></a>既知の問題
 

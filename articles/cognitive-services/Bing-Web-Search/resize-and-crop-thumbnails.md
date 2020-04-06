@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
 ms.openlocfilehash: 630b86f55a537d109c851cb585cfccc34d229f83
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74110643"
 ---
 # <a name="resize-and-crop-thumbnail-images"></a>サムネイル画像のサイズ変更とトリミング
 
-Bing Search API からの回答には、Bing によって提供されるサムネイル イメージへの URL が含まれています。これは、サイズ変更とトリミングが可能で、クエリ パラメーターを含めることができます。 例:
+Bing Search API からの回答には、Bing によって提供されるサムネイル イメージへの URL が含まれています。これは、サイズ変更とトリミングが可能で、クエリ パラメーターを含めることができます。 次に例を示します。
 
 `https://<host>/th?id=AMMS_92772df988...&w=110&h=73&rs=1&qlt=80&cdv=1&pid=16.1`
 
@@ -75,8 +75,8 @@ Bing Search API からの回答には、Bing によって提供されるサム�
 
 イメージをトリミングするには、`c` (トリミング) クエリ パラメーターを含めます。 次の値を使用できます。
   
-- `4` - Blind Ratio  
-- `7` - Smart Ratio  
+- `4` &mdash; Blind Ratio  
+- `7` &mdash; Smart Ratio  
 
 ### <a name="smart-ratio-cropping"></a>Smart Ratio トリミング
 
@@ -124,7 +124,7 @@ Blind Ratio トリミングを要求 (`c` パラメーターを `4` に設定) �
   
 ![100 x 200 にトリミングされたひまわりのイメージ](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Bing Search API とは](bing-api-comparison.md)
 * [Bing Search API の利用と表示の要件](use-display-requirements.md)

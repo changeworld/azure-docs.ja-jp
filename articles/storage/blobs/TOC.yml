@@ -13,7 +13,7 @@
           href: storage-blobs-introduction.md
     - name: クイックスタート
       items:
-        - name: コードを使用しない BLOB 管理
+        - name: BLOB の使用
           items:
             - name: Azure portal
               href: storage-quickstart-blobs-portal.md
@@ -23,8 +23,6 @@
               href: storage-quickstart-blobs-powershell.md
             - name: CLI
               href: storage-quickstart-blobs-cli.md
-        - name: BLOB を使用した開発
-          items:
             - name: .NET
               items:
                 - name: .NET (v12 SDK)

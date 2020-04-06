@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 0fe83b8e28b96f1d89a7c98cfe86a6e924f1bc49
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566468"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367586"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB の地理空間データと GeoJSON 位置データ
 
@@ -25,7 +25,10 @@ ms.locfileid: "77566468"
 
 空間データは、物体の空間における位置と形状を表現します。 ほとんどのアプリケーションにおける空間データは、地球上の物体、および地理空間データに対応します。 空間データを使用することで、人物の位置や、関心のある場所、都市や湖の境界を表現することができます。 代表的な使用例に近接検索クエリがあります (例: "現在地付近に存在するコーヒー ショップをすべて検索")。
 
-Azure Cosmos DB の SQL API では、**geography** データ型がサポートされます。 **geography** 型は、球体地球座標系のデータを表します。
+Azure Cosmos DB の SQL API では、**geometry** データ型と **geography** データ型の 2 つの空間データ型がサポートされています。
+
+- **geometry** 型では、ユークリッド (平面) 座標系でデータを表します。
+- **geography** 型は、球体地球座標系のデータを表します。
 
 ## <a name="supported-data-types"></a>サポートされるデータ型
 
@@ -70,7 +73,11 @@ Azure Cosmos DB では、次の空間データ型がサポートされます。
 }
 ```
 
-### <a name="points-in-geography-coordinate-system"></a>geography 座標系のポイント
+### <a name="points-in-a-geometry-coordinate-system"></a>geometry 座標系のポイント
+
+**geometry** データ型の場合、GeoJSON の仕様では、まず水平軸が指定され、次に垂直軸が指定されます。
+
+### <a name="points-in-a-geography-coordinate-system"></a>geography 座標系のポイント
 
 **geography** データ型の場合、GeoJSON 仕様では、最初に経度、次に緯度と指定されています。 他の地図作成アプリケーションと同様、経度と緯度は角度であり、度 (°) の単位で表されます。 経度値は、グリニッジ子午線を基準とする -180°～ 180.0°の範囲で測定され、緯度値は、赤道を基準とする -90.0°～ 90.0°の範囲で測定されます。
 
@@ -125,20 +132,20 @@ Azure Cosmos DB では座標が WGS-84 測地系で解釈されます。 座標�
 ```json
 {
     "type":"MultiPolygon",
-    "coordinates":[ [
+    "coordinates":[[[
         [52.0, 12.0],
         [53.0, 12.0],
         [53.0, 13.0],
         [52.0, 13.0],
         [52.0, 12.0]
-    ],
-    [
+        ]],
+        [[
         [50.0, 0.0],
         [51.0, 0.0],
         [51.0, 5.0],
         [50.0, 5.0],
         [50.0, 0.0]
-    ] ]
+        ]]]
 }
 ```
 

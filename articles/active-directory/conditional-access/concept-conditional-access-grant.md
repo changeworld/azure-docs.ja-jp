@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5df7eedcd92d338d3f741f7092ff6ef73f3442d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 02ec8dace971cd4dc1407c9e8d20839504c9ecc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585885"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331835"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -35,7 +35,7 @@ ms.locfileid: "77585885"
 管理者は、アクセス権を付与するときに 1 つ以上のコントロールを適用することを選択できます。 これらのコントロールには、次のオプションがあります。 
 
 - [多要素認証 (Azure Multi-Factor Authentication) を要求する](../authentication/concept-mfa-howitworks.md)
-- [デバイスが準拠としてマーク済みであることを必要とする (Microsoft Intune)](https://docs.microsoft.com/intune/protect/device-compliance-get-started)
+- [デバイスが準拠としてマーク済みであることを必要とする (Microsoft Intune)](/intune/protect/device-compliance-get-started)
 - [ハイブリッド Azure AD 参加済みのデバイスを必要とする](../devices/concept-azure-ad-join-hybrid.md)
 - [承認済みクライアント アプリを必須にする](app-based-conditional-access.md)
 - [アプリの保護ポリシーを必須にする](app-protection-based-conditional-access.md)
@@ -53,9 +53,9 @@ ms.locfileid: "77585885"
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>デバイスは準拠としてマーク済みである必要がある
 
-Microsoft Intune をデプロイしている組織では、デバイスから返された情報を使用して、特定の準拠要件を満たすデバイスを識別することができます。 このポリシー準拠情報は Intune から Azure AD に転送され、条件付きアクセスはそこで、リソースへのアクセスを許可するかブロックするかを決定できます。 準拠ポリシーの詳細については、「[Intune を使用して組織内のリソースへのアクセスを許可するように、デバイス上でルールを設定する](https://docs.microsoft.com/intune/protect/device-compliance-get-started)」という記事を参照してください。
+Microsoft Intune をデプロイしている組織では、デバイスから返された情報を使用して、特定の準拠要件を満たすデバイスを識別することができます。 このポリシー準拠情報は Intune から Azure AD に転送され、条件付きアクセスはそこで、リソースへのアクセスを許可するかブロックするかを決定できます。 準拠ポリシーの詳細については、「[Intune を使用して組織内のリソースへのアクセスを許可するように、デバイス上でルールを設定する](/intune/protect/device-compliance-get-started)」という記事を参照してください。
 
-デバイスを準拠としてマークするには、Intune (任意のデバイス OS の場合) または Windows 10 デバイス用のサード パーティ製 MDM システムを使用できます。 Windows 10 以外のデバイスの OS の種類のサードパーティ製 MDM システムはサポートされていません。
+デバイスを準拠としてマークするには、Intune (任意のデバイス OS の場合) または Windows 10 デバイス用のサード パーティ製 MDM システムを使用できます。 Jamf pro は、唯一サポートされているサードパーティ製 MDM システムです。 統合の詳細については、「[コンプライアンスのために Jamf Pro を Intune と統合する](/intune/protect/conditional-access-integrate-jamf)」を参照してください。
 
 デバイスを準拠としてマークするには、あらかじめそのデバイスが Azure AD に登録されている必要があります。 デバイス登録の詳細については、「[デバイス ID とは](../devices/overview.md)」を参照してください。
 
@@ -67,7 +67,9 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 
 組織は、選択したクラウド アプリへのアクセス試行を、承認されたクライアント アプリから行うように要求することができます。 これらの承認されたクライアント アプリは、モバイル デバイス管理 (MDM) ソリューションには一切依存せずに、[Intune アプリ保護ポリシー](/intune/app-protection-policy)をサポートします。
 
-この設定は、以下のクライアント アプリに適用されます。
+この許可の制御を活用するために、条件付きアクセスでは、ブローカー アプリを使用する必要がある Azure Active Directory にデバイスを登録する必要があります。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft ポータル サイトのいずれかを使用できます。 ユーザーが認証を試みたときにブローカー アプリがデバイスにインストールされていない場合、ユーザーはブローカー アプリをインストールするために、App Store にリダイレクトされます。
+
+この設定は、以下の iOS アプリと Android アプリに適用されます。
 
 - Microsoft Azure Information Protection
 - Microsoft Bookings
@@ -80,6 +82,8 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
+- Microsoft Office
+- Microsoft Office ハブ
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
@@ -96,17 +100,23 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - Microsoft Visio
 - Microsoft Word
 - Microsoft Yammer
+- Microsoft Whiteboard
 
 **解説**
 
 - 承認されたクライアント アプリは、Intune モバイル アプリケーション管理機能をサポートしています。
 - **[承認されたクライアント アプリが必要です]** 要件:
    - デバイス プラットフォームの条件に関しては、iOS と Android のみがサポートされます。
+   - デバイスを登録するには、ブローカー アプリが必要です。 iOS では、ブローカー アプリは Microsoft Authenticator であり、Android では Intune ポータル サイト アプリです。
 - 条件付きアクセスでは、InPrivate モードの Microsoft Edge を承認されたクライアント アプリと見なすことはできません。
+
+「[方法: 条件付きアクセスを使用してクラウド アプリへのアクセスに承認されたクライアント アプリを要求する](app-based-conditional-access.md)」を参照して構成の例を確認してください。
 
 ### <a name="require-app-protection-policy"></a>アプリの保護ポリシーを必須にする
 
 条件付きアクセス ポリシー内で、選択したクラウド アプリがアクセスできるようにする前に、クライアント アプリに [Intune アプリ保護ポリシー](/intune/app-protection-policy)が存在することを要求できます。 
+
+この許可の制御を活用するために、条件付きアクセスでは、ブローカー アプリを使用する必要がある Azure Active Directory にデバイスを登録する必要があります。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft ポータル サイトのいずれかを使用できます。 ユーザーが認証を試みたときにブローカー アプリがデバイスにインストールされていない場合、ユーザーはブローカー アプリをインストールするために、App Store にリダイレクトされます。
 
 この設定は、以下のクライアント アプリに適用されます。
 
@@ -120,6 +130,9 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - アプリ保護ポリシーのアプリは、ポリシー保護を含む Intune モバイル アプリケーション管理機能をサポートしています。
 - **アプリの保護ポリシーが必要**の要件:
     - デバイス プラットフォームの条件に関しては、iOS と Android のみがサポートされます。
+    - デバイスを登録するには、ブローカー アプリが必要です。 iOS では、ブローカー アプリは Microsoft Authenticator であり、Android では Intune ポータル サイト アプリです。
+
+「[方法: 条件付きアクセスを使用して、クラウド アプリへのアクセスにアプリ保護ポリシーと承認済みクライアント アプリの使用を必須にする](app-protection-based-conditional-access.md)」を参照して構成の例を確認してください。
 
 ### <a name="terms-of-use"></a>使用条件
 

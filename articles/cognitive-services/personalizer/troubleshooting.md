@@ -4,12 +4,12 @@ description: この記事では、Personalizer についてよく寄せられる
 ms.topic: troubleshooting
 ms.date: 02/26/2020
 ms.author: diberry
-ms.openlocfilehash: 39db920b663ace12f2fc6ca35f9082a791da1541
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 904953f028eb31afe42cf477ac05be43e8b72a4d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228032"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336024"
 ---
 # <a name="personalizer-troubleshooting"></a>Personalizer のトラブルシューティング
 

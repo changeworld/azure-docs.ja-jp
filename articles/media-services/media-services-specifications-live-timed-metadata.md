@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 03b40dea4949bb50c30f7755b56294ac53107403
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 551fb0cb9f3745a62d5d84f2c4878bbbbe5ad9a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905250"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79137324"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>ライブ ストリーミングでの時間指定メタデータのシグナル通知 
 
@@ -74,7 +74,7 @@ ms.locfileid: "76905250"
 | [AMF0]            | ["アクション メッセージ形式 AMF0"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)                                                                                                              |
 | [DASH-IF-IOP]     | DASH Industry Forum Interop Guidance (DASH 業界フォーラム相互運用性ガイダンス) v 4.2 [https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html)    |
 | [HLS-TMD]         | HTTP ライブ ストリーミング用の時間指定メタデータ - [https://developer.apple.com/streaming](https://developer.apple.com/streaming)                                                                                        |
-| [CMAF-ID3]        | [Common Media Application Format (CMAF) の時間指定メタデータ](https://aomediacodec.github.io/av1-id3/)                                                                                                        |
+| [CMAF-ID3]        | [Common Media Application Format (CMAF) の時間指定メタデータ](https://github.com/AOMediaCodec/id3-emsg)                                                                                                        |
 | [ID3v2]           | ID3 タグ バージョン 2.4.0  [http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure)                                                                                                                |
 | [ISO-14496-12]    | ISO/IEC 14496-12:パート 12 ISO ベースのメディア ファイル形式、第 4 版、2012 年 7 月 15 日                                                                                                                                 |
 | [MPEGDASH]        | 情報技術 -- HTTP 経由のダイナミック アダプティブ ストリーミング (DASH) -- パート 1:メディア プレゼンテーションの説明とセグメント形式。 2014 年 5 月。 公開済み。 URL: https://www.iso.org/standard/65274.html         |
@@ -210,7 +210,7 @@ RTMP プロトコルを使用するアップストリーム エンコーダー�
 ### <a name="built-in-supported-scheme-id-uris"></a>組み込みのサポートされているスキーム ID の URI
 | スキーム ID URI                 | 説明                                                                                                                                                                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| https:\//aomedia.org/emsg/ID3 | [ID3v2] メタデータを CMAF 互換の [MPEGCMAF] フラグメント化 MP4 内の時間指定メタデータとして伝達する方法について説明します。 詳細については、「[Timed Metadata in the Common Media Application Format (CMAF) (Common Media Application Format (CMAF) の時間指定メタデータ)](https://aomediacodec.github.io/av1-id3/)」を参照してください。 |
+| https:\//aomedia.org/emsg/ID3 | [ID3v2] メタデータを CMAF 互換の [MPEGCMAF] フラグメント化 MP4 内の時間指定メタデータとして伝達する方法について説明します。 詳細については、「[Timed Metadata in the Common Media Application Format (CMAF) (Common Media Application Format (CMAF) の時間指定メタデータ)](https://github.com/AOMediaCodec/id3-emsg)」を参照してください。 |
 
 ### <a name="event-processing-and-manifest-signaling"></a>イベント処理とマニフェストのシグナリング
 
@@ -239,11 +239,11 @@ Azure Media Services は、いくつかの [AMF0] メッセージ型をリッス
 
 | フィールド名 | フィールドの型 | 必須 | 説明                                                                                                                                                                                                                                                                        |
 | ---------- | ---------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 型       | String     | Required  | イベント メッセージ。  シンプル モードのスプライスを指定する "SpliceOut" である必要があります。                                                                                                                                                                                                         |
-| id         | String     | Required  | スプライスまたはセグメントを記述する一意識別子。 メッセージのこのインスタンスを示します。                                                                                                                                                                                       |
-| duration   | Number     | Required  | スプライスの継続時間。 単位は秒の小数部です。                                                                                                                                                                                                                           |
+| type       | String     | 必須  | イベント メッセージ。  シンプル モードのスプライスを指定する "SpliceOut" である必要があります。                                                                                                                                                                                                         |
+| id         | String     | 必須  | スプライスまたはセグメントを記述する一意識別子。 メッセージのこのインスタンスを示します。                                                                                                                                                                                       |
+| duration   | Number     | 必須  | スプライスの継続時間。 単位は秒の小数部です。                                                                                                                                                                                                                           |
 | elapsed    | Number     | 省略可能  | チューニングをサポートするためにシグナルを繰り返す場合は、スプライスが開始してから経過したプレゼンテーション時間の長さをこのフィールドに設定する必要があります。 単位は秒の小数部です。 シンプル モードを使う場合、この値はスプライスの元の継続時間を超えてはなりません。 |
-| time       | Number     | Required  | プレゼンテーション時間で表されたスプライスの時間。 単位は秒の小数部です。                                                                                                                                                                                                |
+| time       | Number     | 必須  | プレゼンテーション時間で表されたスプライスの時間。 単位は秒の小数部です。                                                                                                                                                                                                |
 
 ---
  
@@ -267,12 +267,12 @@ Azure Media Services は、いくつかの [AMF0] メッセージ型をリッス
 
 | フィールド名 | フィールドの型 | 必須 | 説明                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ---------- | ---------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cue        | String     | Required  | イベント メッセージ。  [SCTE-35] メッセージの場合、HLS、Smooth、Dash クライアントにメッセージが送信されるためには、このフィールドは base64 でエンコードされた [RFC4648] バイナリの splice_info_section() でなければなりません。                                                                                                                                                                                                                               |
-| 型       | String     | Required  | メッセージのスキームを示す URN または URL。 [SCTE-35] メッセージの場合、[Adobe-Primetime] に準拠する HLS、Smooth、Dash クライアントにメッセージが送信されるためには、これが **"scte35"** である**必要があります**。 オプションで、[SCTE-35] メッセージをシグナル通知するために URN "urn:scte:scte35:2013:bin" を使用することもできます。                                                                                                        |
-| id         | String     | Required  | スプライスまたはセグメントを記述する一意識別子。 メッセージのこのインスタンスを示します。  同じセマンティクスを持つメッセージには、同じ値が設定されている必要があります。                                                                                                                                                                                                                                                       |
-| duration   | Number     | Required  | イベントまたは広告スプライス セグメントの継続時間 (わかっている場合)。 わからない場合は、0 にする**必要があります**。                                                                                                                                                                                                                                                                                                                    |
+| cue        | String     | 必須  | イベント メッセージ。  [SCTE-35] メッセージの場合、HLS、Smooth、Dash クライアントにメッセージが送信されるためには、このフィールドは base64 でエンコードされた [RFC4648] バイナリの splice_info_section() でなければなりません。                                                                                                                                                                                                                               |
+| type       | String     | 必須  | メッセージのスキームを示す URN または URL。 [SCTE-35] メッセージの場合、[Adobe-Primetime] に準拠する HLS、Smooth、Dash クライアントにメッセージが送信されるためには、これが **"scte35"** である**必要があります**。 オプションで、[SCTE-35] メッセージをシグナル通知するために URN "urn:scte:scte35:2013:bin" を使用することもできます。                                                                                                        |
+| id         | String     | 必須  | スプライスまたはセグメントを記述する一意識別子。 メッセージのこのインスタンスを示します。  同じセマンティクスを持つメッセージには、同じ値が設定されている必要があります。                                                                                                                                                                                                                                                       |
+| duration   | Number     | 必須  | イベントまたは広告スプライス セグメントの継続時間 (わかっている場合)。 わからない場合は、0 にする**必要があります**。                                                                                                                                                                                                                                                                                                                    |
 | elapsed    | Number     | 省略可能  | チューニングのために [SCTE-35] 広告シグナルを繰り返す場合は、スプライスが開始してから経過したプレゼンテーション時間の長さをこのフィールドに設定する必要があります。 単位は秒の小数部です。 [SCTE-35] モードでは、この値はスプライスまたはセグメントで指定されている元の継続時間を超えてもかまいません。                                                                                                                   |
-| time       | Number     | Required  | イベントまたは広告スプライスのプレゼンテーション時間。  プレゼンテーション時間と継続時間は、[ISO-14496-12] Annex I で定義されているように、タイプ 1 または 2 のストリーム アクセス ポイント (SAP) と一致している**必要があります**。HLS エグレスの場合は、プレゼンテーション時間と継続時間はセグメントの境界と一致する**必要があります**。 同じイベント ストリームに含まれる異なるイベント メッセージのプレゼンテーション時間と継続時間は、オーバーラップしてはなりません。 単位は秒の小数部です。 |
+| time       | Number     | 必須  | イベントまたは広告スプライスのプレゼンテーション時間。  プレゼンテーション時間と継続時間は、[ISO-14496-12] Annex I で定義されているように、タイプ 1 または 2 のストリーム アクセス ポイント (SAP) と一致している**必要があります**。HLS エグレスの場合は、プレゼンテーション時間と継続時間はセグメントの境界と一致する**必要があります**。 同じイベント ストリームに含まれる異なるイベント メッセージのプレゼンテーション時間と継続時間は、オーバーラップしてはなりません。 単位は秒の小数部です。 |
 
 ---
 
@@ -293,7 +293,7 @@ Elemental Live オンプレミス エンコーダーは、RTMP シグナル内�
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | name       | 名前は Elemental Live による "**scte35**" である必要があります。                                                                                                                                                                              |
 | time       | タイムライン中にビデオ ファイルでキュー ポイントが発生した時間 (秒)                                                                                                                                           |
-| 型       | キュー ポイントの種類は "**event**" に設定する必要があります。                                                                                                                                                                             |
+| type       | キュー ポイントの種類は "**event**" に設定する必要があります。                                                                                                                                                                             |
 | parameters | SCTE-35 メッセージからの (ID や期間などの) 情報を含む名前/値ペア文字列の連想配列。 これらの値は Azure Media Services によって解析され、マニフェスト装飾タグに含められます。 |
 
 
@@ -417,12 +417,12 @@ Fragments(video=1583488022000000,format=m3u8-aapl-v8)
 
 | **属性名** | **フィールドの型** | **必須** | **説明**                                                                                                                                                                                                              |
 | ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| systemBitrate      | Number         | Required      | "0" で**なければなりません**。不明な可変ビットレートのトラックを示します。                                                                                                                                                          |
-| parentTrackName    | String         | Required      | 親トラックの名前で**なければなりません**。スパース トラックの時間コードは親トラックのタイムスケールに揃えられます。 スパース トラックを親トラックにすることはできません。                                                                             |
-| manifestOutput     | Boolean        | Required      | "true" で**なければなりません**。スパース トラックが Smooth クライアント マニフェストに埋め込まれることを示します。                                                                                                                        |
-| Subtype            | String         | Required      | 4 文字のコード "DATA" で**なければなりません**。                                                                                                                                                                                  |
-| Scheme             | String         | Required      | メッセージのスキームを示す URN または URL で**なければなりません**。 [SCTE-35] メッセージの場合、[SCTE-35] に準拠する HLS、Smooth、Dash クライアントにメッセージが送信されるためには、これが "urn:scte:scte35:2013:bin" で**なければなりません**。 |
-| trackName          | String         | Required      | スパース トラックの名前で**なければなりません**。trackName を使って、同じスキームの複数のイベント ストリームを区別できます。 一意のイベント ストリームはそれぞれ、一意のトラック名を持って**いなければなりません**。                                |
+| systemBitrate      | Number         | 必須      | "0" で**なければなりません**。不明な可変ビットレートのトラックを示します。                                                                                                                                                          |
+| parentTrackName    | String         | 必須      | 親トラックの名前で**なければなりません**。スパース トラックの時間コードは親トラックのタイムスケールに揃えられます。 スパース トラックを親トラックにすることはできません。                                                                             |
+| manifestOutput     | Boolean        | 必須      | "true" で**なければなりません**。スパース トラックが Smooth クライアント マニフェストに埋め込まれることを示します。                                                                                                                        |
+| Subtype            | String         | 必須      | 4 文字のコード "DATA" で**なければなりません**。                                                                                                                                                                                  |
+| Scheme             | String         | 必須      | メッセージのスキームを示す URN または URL で**なければなりません**。 [SCTE-35] メッセージの場合、[SCTE-35] に準拠する HLS、Smooth、Dash クライアントにメッセージが送信されるためには、これが "urn:scte:scte35:2013:bin" で**なければなりません**。 |
+| trackName          | String         | 必須      | スパース トラックの名前で**なければなりません**。trackName を使って、同じスキームの複数のイベント ストリームを区別できます。 一意のイベント ストリームはそれぞれ、一意のトラック名を持って**いなければなりません**。                                |
 | timescale          | Number         | 省略可能      | 親のトラックのタイムスケールで**なければなりません**。                                                                                                                                                                               |
 
 ---
@@ -435,7 +435,7 @@ Movie Box ("moov") は、スパース トラックのストリーム ヘッダ�
 
 | **フィールド名** | **フィールドの型**          | **必須** | **説明**                                                                                                    |
 | -------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ |
-| duration       | 64 ビット符号なし整数 | Required      | 0 である**必要があります**。これは、トラック ボックスは 0 サンプルであり、トラック ボックスのサンプルの合計継続時間は 0 であるためです。 |
+| duration       | 64 ビット符号なし整数 | 必須      | 0 である**必要があります**。これは、トラック ボックスは 0 サンプルであり、トラック ボックスのサンプルの合計継続時間は 0 であるためです。 |
 
 ---
 
@@ -443,7 +443,7 @@ Movie Box ("moov") は、スパース トラックのストリーム ヘッダ�
 
 | **フィールド名** | **フィールドの型**          | **必須** | **説明**       |
 | -------------- | ----------------------- | ------------- | --------------------- |
-| handler_type   | 32 ビット符号なし整数 | Required      | "meta" である**必要があります**。 |
+| handler_type   | 32 ビット符号なし整数 | 必須      | "meta" である**必要があります**。 |
 
 ---
 
@@ -461,8 +461,8 @@ MovieFragmentBox ("moof") ボックスは、[MS-SSTR] で定義された以下�
 
 | **フィールド名**         | **フィールドの型**          | **必須** | **説明**                                                                                           |
 | ---------------------- | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
-| fragment_absolute_time | 64 ビット符号なし整数 | Required      | イベントの到着時間で**なければなりません**。 この値により、メッセージと親トラックの位置が一致します。           |
-| fragment_duration      | 64 ビット符号なし整数 | Required      | イベントの継続時間で**なければなりません**。 継続時間は、値が不明であることを示す 0 にすることができます。 |
+| fragment_absolute_time | 64 ビット符号なし整数 | 必須      | イベントの到着時間で**なければなりません**。 この値により、メッセージと親トラックの位置が一致します。           |
+| fragment_duration      | 64 ビット符号なし整数 | 必須      | イベントの継続時間で**なければなりません**。 継続時間は、値が不明であることを示す 0 にすることができます。 |
 
 ---
 
@@ -471,10 +471,10 @@ MediaDataBox ("mdat") ボックスは次のような形式で**なければな�
 
 | **フィールド名**          | **フィールドの型**                   | **必須** | **説明**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ----------------------- | -------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| version                 | 32 ビット符号なし整数 (uimsbf) | Required      | "mdat" ボックスの内容の形式を決定します。 認識されないバージョンは無視されます。 現在サポートされている値は 1 だけです。                                                                                                                                                                                                                                                                                                                                                                      |
-| id                      | 32 ビット符号なし整数 (uimsbf) | Required      | メッセージのこのインスタンスを示します。 同じセマンティクスのメッセージは、同じ値を持つことになります。つまり、同じ ID を持ついずれか 1 つのイベント メッセージ ボックスを処理すれば十分です。                                                                                                                                                                                                                                                                                                                            |
-| presentation_time_delta | 32 ビット符号なし整数 (uimsbf) | Required      | TrackFragmentExtendedHeaderBox で指定されている fragment_absolute_time と presentation_time_delta の合計は、イベントのプレゼンテーション時間で**なければなりません**。 プレゼンテーション時間と継続時間は、[ISO-14496-12] Annex I で定義されているように、タイプ 1 または 2 のストリーム アクセス ポイント (SAP) と一致している**必要があります**。HLS エグレスの場合は、プレゼンテーション時間と継続時間はセグメントの境界と一致する**必要があります**。 同じイベント ストリームに含まれる異なるイベント メッセージのプレゼンテーション時間と継続時間は、オーバーラップ**してはなりません**。 |
-| message                 | byte array                       | Required      | イベント メッセージ。 [SCTE-35] メッセージの場合、メッセージはバイナリの splice_info_section() です。 [SCTE-35] メッセージの場合、[SCTE-35] に準拠する HLS、Smooth、Dash クライアントにメッセージが送信されるためには、このフィールドは splice_info_section() で**なければなりません**。 [SCTE-35] メッセージの場合、バイナリの splice_info_section() が "mdat" ボックスのペイロードであり、base64 でエンコードされては**いません**。                                                                                                                     |
+| version                 | 32 ビット符号なし整数 (uimsbf) | 必須      | "mdat" ボックスの内容の形式を決定します。 認識されないバージョンは無視されます。 現在サポートされている値は 1 だけです。                                                                                                                                                                                                                                                                                                                                                                      |
+| id                      | 32 ビット符号なし整数 (uimsbf) | 必須      | メッセージのこのインスタンスを示します。 同じセマンティクスのメッセージは、同じ値を持つことになります。つまり、同じ ID を持ついずれか 1 つのイベント メッセージ ボックスを処理すれば十分です。                                                                                                                                                                                                                                                                                                                            |
+| presentation_time_delta | 32 ビット符号なし整数 (uimsbf) | 必須      | TrackFragmentExtendedHeaderBox で指定されている fragment_absolute_time と presentation_time_delta の合計は、イベントのプレゼンテーション時間で**なければなりません**。 プレゼンテーション時間と継続時間は、[ISO-14496-12] Annex I で定義されているように、タイプ 1 または 2 のストリーム アクセス ポイント (SAP) と一致している**必要があります**。HLS エグレスの場合は、プレゼンテーション時間と継続時間はセグメントの境界と一致する**必要があります**。 同じイベント ストリームに含まれる異なるイベント メッセージのプレゼンテーション時間と継続時間は、オーバーラップ**してはなりません**。 |
+| message                 | byte array                       | 必須      | イベント メッセージ。 [SCTE-35] メッセージの場合、メッセージはバイナリの splice_info_section() です。 [SCTE-35] メッセージの場合、[SCTE-35] に準拠する HLS、Smooth、Dash クライアントにメッセージが送信されるためには、このフィールドは splice_info_section() で**なければなりません**。 [SCTE-35] メッセージの場合、バイナリの splice_info_section() が "mdat" ボックスのペイロードであり、base64 でエンコードされては**いません**。                                                                                                                     |
 
 ---
 
@@ -501,38 +501,38 @@ StreamIndex には "DATA" の Subtype が**なければならず**、CustomAttri
 
 #### <a name="smooth-client-manifest-example-showing-base64-encoded-scte35-splice_info_section"></a>base64 でエンコードされた [SCTE-35] splice_info_section() を示す Smooth クライアントのマニフェストの例
 ~~~ xml
-<?xml version=”1.0” encoding=”utf-8”?>
-<SmoothStreamingMedia MajorVersion=”2” MinorVersion=”0” TimeScale=”10000000” IsLive=”true” Duration=”0”
-  LookAheadFragmentCount=”2” DVRWindowLength=”6000000000”>
+<?xml version="1.0" encoding="utf-8"?>
+<SmoothStreamingMedia MajorVersion="2" MinorVersion="0" TimeScale="10000000" IsLive="true" Duration="0"
+  LookAheadFragmentCount="2" DVRWindowLength="6000000000">
 
-  <StreamIndex Type=”video” Name=”video” Subtype=”” Chunks=”0” TimeScale=”10000000”
-    Url=”QualityLevels({bitrate})/Fragments(video={start time})”>
-    <QualityLevel Index=”0” Bitrate=”230000”
-      CodecPrivateData=”250000010FC3460B50878A0B5821FF878780490800704704DC0000010E5A67F840” FourCC=”WVC1”
-      MaxWidth=”364” MaxHeight=”272”/>
-    <QualityLevel Index=”1” Bitrate=”305000”
-      CodecPrivateData=”250000010FC3480B50878A0B5821FF87878049080894E4A7640000010E5A67F840” FourCC=”WVC1”
-      MaxWidth=”364” MaxHeight=”272”/>
-    <c t=”0” d=”20000000” r=”300” />
+  <StreamIndex Type="video" Name="video" Subtype="" Chunks="0" TimeScale="10000000"
+    Url="QualityLevels({bitrate})/Fragments(video={start time})">
+    <QualityLevel Index="0" Bitrate="230000"
+      CodecPrivateData="250000010FC3460B50878A0B5821FF878780490800704704DC0000010E5A67F840" FourCC="WVC1"
+      MaxWidth="364" MaxHeight="272"/>
+    <QualityLevel Index="1" Bitrate="305000"
+      CodecPrivateData="250000010FC3480B50878A0B5821FF87878049080894E4A7640000010E5A67F840" FourCC="WVC1"
+      MaxWidth="364" MaxHeight="272"/>
+    <c t="0" d="20000000" r="300" />
   </StreamIndex>
-  <StreamIndex Type=”audio” Name=”audio” Subtype=”” Chunks=”0” TimeScale=”10000000”
-    Url=”QualityLevels({bitrate})/Fragments(audio={start time})”>
-    <QualityLevel Index=”0” Bitrate=”96000” CodecPrivateData=”1000030000000000000000000000E00042C0”
-      FourCC=”WMAP” AudioTag=”354” Channels=”2” SamplingRate=”44100” BitsPerSample=”16” PacketSize=”4459”/>
-    <c t=”0” d=”20000000” r=”300” />
+  <StreamIndex Type="audio" Name="audio" Subtype="" Chunks="0" TimeScale="10000000"
+    Url="QualityLevels({bitrate})/Fragments(audio={start time})">
+    <QualityLevel Index="0" Bitrate="96000" CodecPrivateData="1000030000000000000000000000E00042C0"
+      FourCC="WMAP" AudioTag="354" Channels="2" SamplingRate="44100" BitsPerSample="16" PacketSize="4459"/>
+    <c t="0" d="20000000" r="300" />
   </StreamIndex>
-  <StreamIndex Type=”text” Name=”scte35-sparse-stream” Subtype=”DATA” Chunks=”0” TimeScale=”10000000”
-    ParentStreamIndex=”video” ManifestOutput=”true” 
-    Url=”QualityLevels({bitrate})/Fragments(captions={start time})”>
-    <QualityLevel Index=”0” Bitrate=”0” CodecPrivateData=”” FourCC=””>
+  <StreamIndex Type="text" Name="scte35-sparse-stream" Subtype="DATA" Chunks="0" TimeScale="10000000"
+    ParentStreamIndex="video" ManifestOutput="true" 
+    Url="QualityLevels({bitrate})/Fragments(captions={start time})">
+    <QualityLevel Index="0" Bitrate="0" CodecPrivateData="" FourCC="">
       <CustomAttributes>
-        <Attribute Name=”Scheme” Value=”urn:scte:scte35:2013:bin”/>
+        <Attribute Name="Scheme" Value="urn:scte:scte35:2013:bin"/>
       </CustomAttributes>
     </QualityLevel>
     <!-- The following <c> and <f> fragments contains the base64-encoded [SCTE35] splice_info_section() message -->
-    <c t=”600000000” d=”300000000”>    <f>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTUwMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</f>
+    <c t="600000000" d="300000000">    <f>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTUwMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</f>
     </c>
-    <c t=”1200000000” d=”400000000”>      <f>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTYyMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</f>
+    <c t="1200000000" d="400000000">      <f>PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48QWNxdWlyZWRTaWduYWwgeG1sbnM9InVybjpjYWJsZWxhYnM6bWQ6eHNkOnNpZ25hbGluZzozLjAiIGFjcXVpc2l0aW9uUG9pbnRJZGVudGl0eT0iRVNQTl9FYXN0X0FjcXVpc2l0aW9uX1BvaW50XzEiIGFjcXVpc2l0aW9uU2lnbmFsSUQ9IjRBNkE5NEVFLTYyRkExMUUxQjFDQTg4MkY0ODI0MDE5QiIgYWNxdWlzaXRpb25UaW1lPSIyMDEyLTA5LTE4VDEwOjE0OjI2WiI+PFVUQ1BvaW50IHV0Y1BvaW50PSIyMDEyLTA5LTE4VDEwOjE0OjM0WiIvPjxTQ1RFMzVQb2ludERlc2NyaXB0b3Igc3BsaWNlQ29tbWFuZFR5cGU9IjUiPjxTcGxpY2VJbnNlcnQgc3BsaWNlRXZlbnRJRD0iMzQ0NTY4NjkxIiBvdXRPZk5ldHdvcmtJbmRpY2F0b3I9InRydWUiIHVuaXF1ZVByb2dyYW1JRD0iNTUzNTUiIGR1cmF0aW9uPSJQVDFNMFMiIGF2YWlsTnVtPSIxIiBhdmFpbHNFeHBlY3RlZD0iMTAiLz48L1NDVEUzNVBvaW50RGVzY3JpcHRvcj48U3RyZWFtVGltZXM+PFN0cmVhbVRpbWUgdGltZVR5cGU9IkhTUyIgdGltZVZhbHVlPSI1MTYyMDAwMDAwMDAiLz48L1N0cmVhbVRpbWVzPjwvQWNxdWlyZWRTaWduYWw+</f>
     </c>
   </StreamIndex>
 </SmoothStreamingMedia>
@@ -764,12 +764,12 @@ Azure Media Services (バージョン 2 および 3 API) では、[Adobe-Primeti
 
 | **属性名** | **Type**                      | **必須**                             | **説明**                                                                                                                                                                                                                                                                          |
 | ------------------ | ----------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CUE                | 引用符で囲まれた文字列                 | Required                                  | [RFC4648] で説明されているように、base64 エンコード文字列としてエンコードされたメッセージ。 [SCTE-35] メッセージの場合、これは base64 でエンコードされた splice_info_section() です。                                                                                                                                      |
-| TYPE               | 引用符で囲まれた文字列                 | Required                                  | メッセージのスキームを示す URN または URL。 [SCTE-35] メッセージの場合、タイプは特別な値 "scte35" です。                                                                                                                                                                          |
-| id                 | 引用符で囲まれた文字列                 | Required                                  | イベントの一意識別子。 メッセージが取り込まれときに ID が指定されていない場合は、Azure Media Services が一意 ID を生成します。                                                                                                                                              |
-| DURATION           | 10 進浮動小数点数 | Required                                  | イベントの期間。 わからない場合は、0 にする**必要があります**。 単位は秒の小数部です。                                                                                                                                                                                           |
+| CUE                | 引用符で囲まれた文字列                 | 必須                                  | [RFC4648] で説明されているように、base64 エンコード文字列としてエンコードされたメッセージ。 [SCTE-35] メッセージの場合、これは base64 でエンコードされた splice_info_section() です。                                                                                                                                      |
+| TYPE               | 引用符で囲まれた文字列                 | 必須                                  | メッセージのスキームを示す URN または URL。 [SCTE-35] メッセージの場合、タイプは特別な値 "scte35" です。                                                                                                                                                                          |
+| id                 | 引用符で囲まれた文字列                 | 必須                                  | イベントの一意識別子。 メッセージが取り込まれときに ID が指定されていない場合は、Azure Media Services が一意 ID を生成します。                                                                                                                                              |
+| DURATION           | 10 進浮動小数点数 | 必須                                  | イベントの期間。 わからない場合は、0 にする**必要があります**。 単位は秒の小数部です。                                                                                                                                                                                           |
 | ELAPSED            | 10 進浮動小数点数 | オプション、ただしスライディング ウィンドウの場合は必須。 | スライディング プレゼンテーション ウィンドウをサポートするためにシグナルを繰り返す場合、このフィールドは、イベントが開始してから経過したプレゼンテーション時間の長さで**なければなりません**。 単位は秒の小数部です。 この値はスプライスまたはセグメントで指定されている元の継続時間を超えてもかまいません。 |
-| TIME               | 10 進浮動小数点数 | Required                                  | イベントのプレゼンテーション時間。 単位は秒の小数部です。                                                                                                                                                                                                                        |
+| TIME               | 10 進浮動小数点数 | 必須                                  | イベントのプレゼンテーション時間。 単位は秒の小数部です。                                                                                                                                                                                                                        |
 
 
 HLS プレーヤーのアプリケーション レイヤーは、TYPE を使って、メッセージの形式を識別し、メッセージをデコードし、必要な時間変換を適用して、イベントを処理します。  イベントは、イベントのタイムスタンプに従って、親トラックのセグメント プレイリストの時間と同期されます。  イベントは、最も近いセグメント (#EXTINF タグ) の前に挿入されます。
@@ -881,9 +881,9 @@ EventStream 要素には次の属性があります。
 
 | **属性名** | **Type**                | **必須** | **説明**                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------ | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| scheme_id_uri      | string                  | Required      | メッセージのスキームを示します。 スキームは、Live Server Manifest Box の Scheme 属性の値に設定されます。 値は、メッセージ スキームを識別する URN または URL である**必要があります**。サポートされている出力 schemeId は、[SCTE-214-1] のセクション 6.7.4 (MPD) に従って "urn:scte:scte35:2014:xml+bin" である必要があります。これは、サービスは現時点で、簡潔さのために MPD では "xml+bin" のみをサポートしているためです。 |
+| scheme_id_uri      | string                  | 必須      | メッセージのスキームを示します。 スキームは、Live Server Manifest Box の Scheme 属性の値に設定されます。 値は、メッセージ スキームを識別する URN または URL である**必要があります**。サポートされている出力 schemeId は、[SCTE-214-1] のセクション 6.7.4 (MPD) に従って "urn:scte:scte35:2014:xml+bin" である必要があります。これは、サービスは現時点で、簡潔さのために MPD では "xml+bin" のみをサポートしているためです。 |
 | value              | string                  | 省略可能      | メッセージのセマンティクスをカスタマイズするためにスキームの所有者によって使われる追加の文字列値。 スキームが同じ複数のイベント ストリームを区別するため、値はイベント ストリームの名前に設定**しなければなりません** ([MS-SSTR-Ingest] の場合は trackName、[RTMP] の取り込みの場合は AMF メッセージ名)。                                                                         |
-| タイムスケール          | 32 ビット符号なし整数 | Required      | タイムスケール (単位は 1 秒あたりのティック数)。                                                                                                                                                                                                                                                                                                                                                     |
+| タイムスケール          | 32 ビット符号なし整数 | 必須      | タイムスケール (単位は 1 秒あたりのティック数)。                                                                                                                                                                                                                                                                                                                                                     |
 
 
 ### <a name="332-example-event-streams-for-mpeg-dash"></a>3.3.2 MPEG DASH のイベント ストリームの例
@@ -1133,13 +1133,13 @@ EventStream 要素には次の属性があります。
 
 | **フィールド名**          | **フィールドの型**          | **必須** | **説明**                                                                                                                                                                                                                                                                                        |
 | ----------------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| scheme_id_uri           | string                  | Required      | メッセージのスキームを示します。 スキームは、Live Server Manifest Box の Scheme 属性の値に設定されます。 値はメッセージのスキームを示す URN で**なければなりません**。 [SCTE-35] メッセージの場合、これは [SCTE-214-3] に準拠した "urn:scte:scte35:2013:bin" で**なければなりません**。          |
-| Value                   | string                  | Required      | メッセージのセマンティクスをカスタマイズするためにスキームの所有者によって使われる追加の文字列値。 スキームが同じ複数のイベント ストリームを区別するため、値はイベント ストリームの名前に設定されます (Smooth の取り込みの場合は trackName、RTMP の取り込みの場合は AMF メッセージ名)。 |
-| タイムスケール               | 32 ビット符号なし整数 | Required      | "emsg" ボックス内の時間フィールドと継続時間フィールドのタイムスケール (1 秒間のティック数)。                                                                                                                                                                                                            |
-| Presentation_time_delta | 32 ビット符号なし整数 | Required      | イベントのプレゼンテーション時間と、このセグメントでの最も早いプレゼンテーション時刻の間を表す、メディア プレゼンテーション時間の差分。 プレゼンテーション時間と継続時間は、[ISO-14496-12] Annex I で定義されているように、タイプ 1 または 2 のストリーム アクセス ポイント (SAP) と一致している**必要があります**。                                  |
-| event_duration          | 32 ビット符号なし整数 | Required      | イベントの継続時間、または継続時間が不明であることを示す 0xFFFFFFFF。                                                                                                                                                                                                                              |
-| Id                      | 32 ビット符号なし整数 | Required      | メッセージのこのインスタンスを示します。 同じセマンティクスを持つメッセージには、同じ値が設定されている必要があります。 メッセージが取り込まれときに ID が指定されていない場合は、Azure Media Services が一意 ID を生成します。                                                                                        |
-| Message_data            | byte array              | Required      | イベント メッセージ。 [SCTE-35] メッセージの場合、メッセージ データは [SCTE-214-3] に準拠したバイナリ splice_info_section() です。                                                                                                                                                                        |
+| scheme_id_uri           | string                  | 必須      | メッセージのスキームを示します。 スキームは、Live Server Manifest Box の Scheme 属性の値に設定されます。 値はメッセージのスキームを示す URN で**なければなりません**。 [SCTE-35] メッセージの場合、これは [SCTE-214-3] に準拠した "urn:scte:scte35:2013:bin" で**なければなりません**。          |
+| 値                   | string                  | 必須      | メッセージのセマンティクスをカスタマイズするためにスキームの所有者によって使われる追加の文字列値。 スキームが同じ複数のイベント ストリームを区別するため、値はイベント ストリームの名前に設定されます (Smooth の取り込みの場合は trackName、RTMP の取り込みの場合は AMF メッセージ名)。 |
+| タイムスケール               | 32 ビット符号なし整数 | 必須      | "emsg" ボックス内の時間フィールドと継続時間フィールドのタイムスケール (1 秒間のティック数)。                                                                                                                                                                                                            |
+| Presentation_time_delta | 32 ビット符号なし整数 | 必須      | イベントのプレゼンテーション時間と、このセグメントでの最も早いプレゼンテーション時刻の間を表す、メディア プレゼンテーション時間の差分。 プレゼンテーション時間と継続時間は、[ISO-14496-12] Annex I で定義されているように、タイプ 1 または 2 のストリーム アクセス ポイント (SAP) と一致している**必要があります**。                                  |
+| event_duration          | 32 ビット符号なし整数 | 必須      | イベントの継続時間、または継続時間が不明であることを示す 0xFFFFFFFF。                                                                                                                                                                                                                              |
+| Id                      | 32 ビット符号なし整数 | 必須      | メッセージのこのインスタンスを示します。 同じセマンティクスを持つメッセージには、同じ値が設定されている必要があります。 メッセージが取り込まれときに ID が指定されていない場合は、Azure Media Services が一意 ID を生成します。                                                                                        |
+| Message_data            | byte array              | 必須      | イベント メッセージ。 [SCTE-35] メッセージの場合、メッセージ データは [SCTE-214-3] に準拠したバイナリ splice_info_section() です。                                                                                                                                                                        |
 
 
 #### <a name="example-inbandevenstream-entity-for-adobe-simple-mode"></a>Adobe Simple モードの InBandEvenStream エンティティの例

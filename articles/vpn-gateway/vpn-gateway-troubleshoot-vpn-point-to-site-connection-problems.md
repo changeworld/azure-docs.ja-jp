@@ -6,14 +6,14 @@ services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 09/30/2019
+ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: 2c5e8b344cad6928ee586dc5a5b69095f0b14552
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 119f9c28b5413b8d2db5fa14ea839d1743f3d64a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863650"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297624"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング:Azure ポイント対サイト接続の問題
 
@@ -39,7 +39,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 2. 次の証明書が正しい場所にあることを確認します。
 
-    | Certificate | Location |
+    | Certificate | 場所 |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
     | AzureRoot.cer    | ローカル コンピューター\信頼されたルート証明機関|
@@ -115,7 +115,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 1. 次の証明書が正しい場所にあることを確認します。
 
-    | Certificate | Location |
+    | Certificate | 場所 |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
     | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
@@ -338,6 +338,19 @@ NIC ドライバーを更新します。
 3. デバイス名をダブルクリックして **[ドライバーの更新]** を選択し、 **[自動的に更新されたドライバ ソフトウェアを検索します]** を選択します。
 4. Windows によって新しいドライバーが検出されない場合、デバイス製造元の Web サイト上にあるドライバーを探してその手順に従うことができます。
 5. コンピューターを再起動して、もう一度接続を試してみてください。
+
+## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN クライアント エラー:Dialing VPN connection <VPN Connection Name>, Status = VPN Platform did not trigger connection (VPN 接続 <VPN Connection Name> にダイヤルしています、状況 = VPN プラットフォームでは接続がトリガーされませんでした)
+
+また、RasClient からイベント ビューアーに次のエラーが表示されることがあります: "ユーザー <User> は <VPN Connection Name> という接続にダイヤルし、失敗しました。 失敗時に返された理由コードは 1460 です。"
+
+### <a name="cause"></a>原因
+
+Windows のアプリ設定で、Azure VPN クライアントについては [バックグラウンド アプリ] アプリのアクセス許可が有効になっていません。
+
+### <a name="solution"></a>解決策
+
+1. Windows で、[設定]-> [プライバシー]-> [バックグラウンドアプリ] にアクセスします
+2. [アプリのバックグラウンド実行を許可する] をオンに切り替えます
 
 ## <a name="error-file-download-error-target-uri-is-not-specified"></a>エラー:'ファイル ダウンロード エラー: ターゲット URI が指定されていません'
 

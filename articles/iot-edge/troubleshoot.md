@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 98d75f75a985fca3448becab216ad6570d948468
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 13eab175356ed1ec20caa3263ba00d0563384f0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772230"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064391"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -44,6 +44,28 @@ IoT Edge のトラブルシューティング時の最初のステップは、`c
 * 運用環境の準備状況チェック:デバイス証明機関 (CA) の証明書およびモジュール ログ ファイルの構成など、推奨される運用上のベスト プラクティスを探します。
 
 診断チェックの完全なリストについては、[組み込みのトラブルシューティング機能](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)に関する記事を参照してください。
+
+## <a name="gather-debug-information-with-iotedge-support-bundle-command"></a>iotedge の "support-bundle" コマンドを使用してデバッグ情報を収集する
+
+IoT Edge デバイスからログを収集する必要がある場合、最も便利な方法は `support-bundle` コマンドを使用することです。 このコマンドを使うと、既定では、モジュールと IoT Edge セキュリティ マネージャーとコンテナー エンジンのログ、"iotedge check" の JSON 出力、および他の有用なデバッグ情報が収集されます。 共有しやすいように、それらが 1 つのファイルに圧縮されます。 `support-bundle` コマンドは、[リリース 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) 以降で使用できます。
+
+ログを取得する過去の期間を指定するには、`--since` フラグを指定して `support-bundle` コマンドを実行します。 たとえば、`6h` では過去 6 時間、`6d` では過去 6 日間、`6m` では過去 6 分間のログが取得されます。 オプションの完全な一覧を表示するには、`--help` フラグを含めます。
+
+
+* Linux の場合:
+
+  ```bash
+  sudo iotedge support-bundle --since 6h
+  ```
+
+* Windows の場合:
+
+  ```powershell
+  iotedge support-bundle --since 6h
+  ```
+
+> [!WARNING]
+> `support-bundle` コマンドからの出力には、ホスト、デバイス名とモジュール名、モジュールによってログに記録された情報などが含まれる場合があります。パブリック フォーラムで出力を共有する場合は、この点に注意してください。
 
 ## <a name="standard-diagnostic-steps"></a>標準的な診断手順
 
@@ -403,7 +425,7 @@ IoT Edge は、Azure IoT Edge ランタイムとデプロイされたモジュ�
 
 プラットフォームの適切な場所に `daemon.json` を置きます。
 
-| プラットフォーム | Location |
+| プラットフォーム | 場所 |
 | --------- | -------- |
 | Linux | `/etc/docker` |
 | Windows コンテナーを使用した Windows ホスト | `C:\ProgramData\iotedge-moby\config` |

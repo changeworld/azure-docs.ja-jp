@@ -3,16 +3,16 @@ title: デプロイ用のテンプレートをリンクする
 description: Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。 パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: e26b795a645ab9128dd738ba6a54b66ac0b7da2a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 322797383ee865ceb66c44793387da827aeb8879
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355105"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131923"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
-複雑なソリューションをデプロイするには、テンプレートを複数の関連するテンプレートに分割し、メイン テンプレートを使用してそれらをまとめてデプロイできます。 関連するテンプレートは、独立したファイルでも、メイン テンプレート内に埋め込まれるテンプレート構文でもかまいません。 この記事では、メイン テンプレートからリンクされる独立したテンプレート ファイルに対して、**リンクされたテンプレート**という用語を使用します。 メイン テンプレートに埋め込まれたテンプレート構文に対して、**入れ子になったテンプレート**という用語を使用します。
+複雑なソリューションをデプロイするには、テンプレートを複数の関連するテンプレートに分割し、メイン テンプレートを使用してそれらをまとめてデプロイできます。 関連するテンプレートは、独立したファイルでも、メイン テンプレート内に埋め込まれるテンプレート構文でもかまいません。 この記事では、メイン テンプレートからリンクを介して参照される独立したテンプレート ファイルに対して、**リンクされたテンプレート**という用語を使用します。 メイン テンプレートに埋め込まれたテンプレート構文に対して、**入れ子になったテンプレート**という用語を使用します。
 
 中小規模のソリューションの場合、テンプレートを 1 つにするとわかりやすく、保守も簡単になります。 すべてのリソースと値を 1 つのファイルで参照できます。 高度なシナリオの場合、リンクされたテンプレートを使用することで、対象となるコンポーネントにソリューションを分割することができます。 これらのテンプレートは、他のシナリオで簡単に再利用できます。
 
@@ -92,11 +92,11 @@ ms.locfileid: "78355105"
 }
 ```
 
-### <a name="scope-for-expressions-in-nested-templates"></a>入れ子になったテンプレート内の式のスコープ
+### <a name="expression-evaluation-scope-in-nested-templates"></a>入れ子になったテンプレートでの式の評価のスコープ
 
 入れ子になったテンプレートを使用する場合、テンプレート式の評価のスコープを親テンプレートにするか入れ子にするかを指定できます。 スコープによって、[resourceGroup](template-functions-resource.md#resourcegroup) や [subscription](template-functions-resource.md#subscription) などのパラメーター、変数、および関数がどのように解決されるかが決まります。
 
-スコープは、`expressionEvaluationOptions` プロパティを使用して設定します。 既定では、`expressionEvaluationOptions` プロパティは `outer` に設定されます。これは、親テンプレート スコープを使用することを意味します。 式のスコープをネストされたテンプレートにするには、値を `inner` に設定します。
+スコープは、`expressionEvaluationOptions` プロパティを使用して設定します。 既定では、`expressionEvaluationOptions` プロパティは `outer` に設定されます。これは、親テンプレート スコープを使用することを意味します。 値を `inner` に設定すると、入れ子になったテンプレートのスコープ内で式が評価されます。
 
 ```json
 {
@@ -158,14 +158,14 @@ ms.locfileid: "78355105"
 }
 ```
 
-変数の値は、スコープに基づいて変化します。 次の表に、両方のスコープの結果を示します。
+`exampleVar` の値は、`expressionEvaluationOptions` の `scope` プロパティの値によって変わります。 次の表に、両方のスコープの結果を示します。
 
-| Scope | 出力 |
+| `expressionEvaluationOptions` `scope` | 出力 |
 | ----- | ------ |
 | inner | 入れ子になったテンプレートから |
 | outer (既定値) | 親テンプレートから |
 
-次の例では、SQL サーバーをデプロイし、パスワードに使用するキー コンテナー シークレットを取得します。 キー コンテナー ID は動的に作成され、パラメーターとして入れ子になったテンプレートに渡されるため、スコープは `inner` に設定されます。
+次の例では、SQL サーバーをデプロイし、パスワードに使用するキー コンテナー シークレットを取得します。 キー コンテナー ID は動的に作成され (outer テンプレート `parameters` の `adminPassword.reference.keyVault` を参照)、パラメーターとして入れ子になったテンプレートに渡されるため、スコープは `inner` に設定されます。
 
 ```json
 {
@@ -215,6 +215,22 @@ ms.locfileid: "78355105"
         "expressionEvaluationOptions": {
           "scope": "inner"
         },
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "adminLogin": {
+            "value": "ghuser"
+          },
+          "adminPassword": {
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId(parameters('vaultSubscription'), parameters('vaultResourceGroupName'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+              },
+              "secretName": "[parameters('secretName')]"
+            }
+          }
+        },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
@@ -250,22 +266,6 @@ ms.locfileid: "78355105"
               "value": "[reference(variables('sqlServerName')).fullyQualifiedDomainName]"
             }
           }
-        },
-        "parameters": {
-          "location": {
-            "value": "[parameters('location')]"
-          },
-          "adminLogin": {
-            "value": "ghuser"
-          },
-          "adminPassword": {
-            "reference": {
-              "keyVault": {
-                "id": "[resourceId(parameters('vaultSubscription'), parameters('vaultResourceGroupName'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
-              },
-              "secretName": "[parameters('secretName')]"
-            }
-          }
         }
       }
     }
@@ -277,7 +277,7 @@ ms.locfileid: "78355105"
 
 > [!NOTE]
 >
-> スコープを `outer` に設定した場合は、入れ子になったテンプレートの outputs セクションで、入れ子になったテンプレートでデプロイしているリソースに対する `reference` 関数を使用することはできません。 入れ子になったテンプレートでデプロイされたリソースの値を返すには、inner スコープを使用するか、入れ子になったテンプレートをリンクされたテンプレートに変換します。
+> スコープを `outer` に設定した場合は、入れ子になったテンプレートの outputs セクションで、入れ子になったテンプレートでデプロイしているリソースに対する `reference` 関数を使用することはできません。 入れ子になったテンプレートでデプロイされたリソースの値を返すには、`inner` スコープを使用するか、入れ子になったテンプレートをリンクされたテンプレートに変換します。
 
 ## <a name="linked-template"></a>リンク済みテンプレート
 
@@ -308,9 +308,15 @@ ms.locfileid: "78355105"
 }
 ```
 
-ローカル ファイルや、ローカル ネットワークだけで使用可能なファイルは指定できません。 **http** または **https** のいずれかを含む URI 値のみを指定できます。 Resource Manager は、テンプレートにアクセスできる必要があります。 1 つと選択肢として、ストレージ アカウントにリンク済みテンプレートを配置し、その項目の URI を使用できます。
+リンク済みテンプレートを参照する場合、`uri` の値は、ローカル ファイル、またはローカル ネットワークでのみ使用できるファイルにはしないでください。 **http** または **https** としてダウンロードできる URI 値を指定する必要があります。 
 
-テンプレートまたはパラメーターには、`contentVersion` プロパティを指定する必要はありません。 コンテンツのバージョン値を指定しない場合、テンプレートの現在のバージョンがデプロイされます。 コンテンツのバージョン値を指定する場合、リンクされているテンプレートのバージョンと一致している必要があります。それ以外の場合、デプロイはエラーで失敗します。
+> [!NOTE]
+>
+> 次のように `_artifactsLocation` パラメーターを使用するなど、**http** または **https** を使用するものに最終的に 解決されるパラメーターを使用して、テンプレートを参照できます: `"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+
+
+
+Resource Manager は、テンプレートにアクセスできる必要があります。 1 つと選択肢として、ストレージ アカウントにリンク済みテンプレートを配置し、その項目の URI を使用できます。
 
 ### <a name="parameters-for-linked-template"></a>リンクされたテンプレートのパラメーター
 
@@ -325,12 +331,12 @@ ms.locfileid: "78355105"
   "properties": {
     "mode": "Incremental",
     "templateLink": {
-    "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
-    "contentVersion":"1.0.0.0"
+      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+      "contentVersion":"1.0.0.0"
     },
     "parametersLink": {
-    "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
-    "contentVersion":"1.0.0.0"
+      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
+      "contentVersion":"1.0.0.0"
     }
   }
   }
@@ -360,6 +366,41 @@ ms.locfileid: "78355105"
 ```
 
 インライン パラメーターとパラメーター ファイルへのリンクの両方を使用することはできません。 `parametersLink` と `parameters` の両方が指定された場合、デプロイは失敗します。
+
+## `contentVersion`
+
+`templateLink` または `parametersLink` プロパティには `contentVersion` プロパティを指定する必要はありません。 `contentVersion` を指定しない場合、テンプレートの現在のバージョンがデプロイされます。 コンテンツのバージョン値を指定する場合、リンクされているテンプレートのバージョンと一致している必要があります。それ以外の場合、デプロイはエラーで失敗します。
+
+## <a name="using-variables-to-link-templates"></a>変数を使用したテンプレートのリンク
+
+前の例では、URL の値をハード コーディングしてテンプレートをリンクする方法について説明しました。 この方法は簡単なテンプレートには適していますが、モジュール構造の大規模な一連のテンプレートにはあまり適していません。 その場合は、メイン テンプレートのベース URL を格納する静的変数を作成し、リンクされたテンプレートの URL をそのベース URL から動的に作成することができます。 この方法の利点は、テンプレートを簡単に移動またはフォークできることです。これは、メイン テンプレート内の静的変数のみ変更すれば済むためです。 メイン テンプレート内の静的変数を変更するだけで、正しい URI が、メイン テンプレートから、分解されたテンプレート全体に渡されます。
+
+次の例では、ベース URL を使用して、リンクされたテンプレート (**sharedTemplateUrl** と **vmTemplate**) の 2 つの URL を作成する方法を示しています。
+
+```json
+"variables": {
+  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
+  "sharedTemplateUrl": "[uri(variables('templateBaseUrl'), 'shared-resources.json')]",
+  "vmTemplateUrl": "[uri(variables('templateBaseUrl'), 'database-2disk-resources.json')]"
+}
+```
+
+[deployment()](template-functions-deployment.md#deployment) を使用して、現在のテンプレートのベース URL を取得したり、同じ場所にある他のテンプレートの URL を取得したりすることもできます。 この方法は、テンプレートの場所が変更された場合や、テンプレート ファイルのハード コーディング URL を回避する必要がある場合に便利です。 templateLink プロパティは、URL を含むリモート テンプレートにリンクした場合にのみ返されます。 ローカル テンプレートを使用している場合、そのプロパティは使用できません。
+
+```json
+"variables": {
+  "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
+}
+```
+
+最終的には、`templateLink` プロパティの `uri` プロパティで変数を使用します。
+
+```json
+"templateLink": {
+ "uri": "[variables('sharedTemplateUrl')]",
+ "contentVersion":"1.0.0.0"
+}
+```
 
 ## <a name="using-copy"></a>copy の使用
 
@@ -410,35 +451,13 @@ ms.locfileid: "78355105"
 ]
 ```
 
-## <a name="using-variables-to-link-templates"></a>変数を使用したテンプレートのリンク
-
-前の例では、URL の値をハード コーディングしてテンプレートをリンクする方法について説明しました。 この方法は簡単なテンプレートには適していますが、モジュール構造の大規模な一連のテンプレートを使用する場合にはあまり適していません。 その場合は、メイン テンプレートのベース URL を格納する静的変数を作成し、リンクされたテンプレートの URL をそのベース URL から動的に作成することができます。 この方法の利点としては、テンプレートを簡単に移動したり、フォークしたりできることが挙げられます。 メイン テンプレート内の静的変数を変更するだけで、正しい URI が、メイン テンプレートから、分解されたテンプレート全体に渡されます。
-
-次の例では、ベース URL を使用して、リンクされたテンプレート (**sharedTemplateUrl** と **vmTemplate**) の 2 つの URL を作成する方法を示しています。
-
-```json
-"variables": {
-  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
-  "sharedTemplateUrl": "[concat(variables('templateBaseUrl'), 'shared-resources.json')]",
-  "vmTemplateUrl": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]"
-}
-```
-
-[deployment()](template-functions-deployment.md#deployment) を使用して、現在のテンプレートのベース URL を取得したり、同じ場所にある他のテンプレートの URL を取得したりすることもできます。 この方法は、テンプレートの場所が変更された場合や、テンプレート ファイルのハード コーディング URL を回避する必要がある場合に便利です。 templateLink プロパティは、URL を含むリモート テンプレートにリンクした場合にのみ返されます。 ローカル テンプレートを使用している場合、そのプロパティは使用できません。
-
-```json
-"variables": {
-  "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
-}
-```
-
 ## <a name="get-values-from-linked-template"></a>リンク済みテンプレートから値を取得する
 
 リンクされたテンプレートから出力値を取得するには、`"[reference('deploymentName').outputs.propertyName.value]"` のような構文でプロパティ値を取得します。
 
 リンクされたテンプレートから出力プロパティを取得する場合、プロパティ名にダッシュを含めることはできません。
 
-次の例では、リンクされたテンプレートを参照して、出力値を取得する方法を示します。 リンクされたテンプレートは、単純なメッセージを返します。
+次の例では、リンクされたテンプレートを参照して、出力値を取得する方法を示します。 リンクされたテンプレートは、単純なメッセージを返します。  最初に、リンクされたテンプレートを示します。
 
 ```json
 {
@@ -487,9 +506,9 @@ ms.locfileid: "78355105"
 }
 ```
 
-他の種類のリソース同様、リンクされたテンプレートとその他のリソース間の依存関係を設定できます。 他のリソースにリンク済みテンプレートからの出力値が必要な場合は、そのリソースの前にリンク済みテンプレートが確実にデプロイされるようにしてください。 または、リンク済みテンプレートが他のリソースに依存する場合は、そのリンク済みテンプレートの前に他のリソースが確実にデプロイされるようにしてください。
+他の種類のリソースと同様に、リンクされたテンプレートとその他のリソース間の依存関係を設定できます。 他のリソースにリンク済みテンプレートからの出力値が必要な場合は、そのリソースの前にリンク済みテンプレートが確実にデプロイされるようにしてください。 または、リンク済みテンプレートが他のリソースに依存する場合は、そのリンク済みテンプレートの前に他のリソースが確実にデプロイされるようにしてください。
 
-次の例では、パブリック IP アドレスをデプロイし、リソース ID を返すテンプレートを示します。
+次の例では、パブリック IP アドレスをデプロイし、そのパブリック IP の Azure リソースのリソース ID を返すテンプレートを示します。
 
 ```json
 {
@@ -524,7 +543,7 @@ ms.locfileid: "78355105"
 }
 ```
 
-ロード バランサーの展開時に、前のテンプレートからのパブリック IP アドレスを使用するには、テンプレートにリンクし、展開リソースに依存関係を追加します。 ロード バランサーのパブリック IP アドレスは、リンクされているテンプレートからの出力値に設定されます。
+ロード バランサーのデプロイ時に、前のテンプレートからのパブリック IP アドレスを使用するには、テンプレートにリンクし、`Microsoft.Resources/deployments` リソースで依存関係を宣言します。 ロード バランサーのパブリック IP アドレスは、リンクされているテンプレートからの出力値に設定されます。
 
 ```json
 {
@@ -554,6 +573,7 @@ ms.locfileid: "78355105"
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
+                // this is where the output value from linkedTemplate is used
                 "id": "[reference('linkedTemplate').outputs.resourceID.value]"
               }
             }
@@ -566,6 +586,7 @@ ms.locfileid: "78355105"
         "outboundNatRules": [],
         "inboundNatPools": []
       },
+      // This is where the dependency is declared
       "dependsOn": [
         "linkedTemplate"
       ]
@@ -686,7 +707,7 @@ Bash シェルの Azure CLI スクリプトでは次のようになります。
 for i in 0 1 2;
 do
   name="linkedTemplate$i";
-  deployment=$(az group deployment show -g examplegroup -n $name);
+  deployment=$(az deployment group show -g examplegroup -n $name);
   ip=$(echo $deployment | jq .properties.outputs.returnedIPAddress.value);
   echo "deployment $name returned $ip";
 done
@@ -759,7 +780,7 @@ url=$(az storage blob url \
   --output tsv \
   --connection-string $connection)
 parameter='{"containerSasToken":{"value":"?'$token'"}}'
-az group deployment create --resource-group ExampleGroup --template-uri $url?$token --parameters $parameter
+az deployment group create --resource-group ExampleGroup --template-uri $url?$token --parameters $parameter
 ```
 
 ## <a name="example-templates"></a>サンプル テンプレート

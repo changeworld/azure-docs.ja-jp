@@ -8,28 +8,22 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 8658bc44e41f61e717cf228a6d8e7cee6b477022
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5e323d8faa19ceb0712aa6183df17740ce2a0a1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264952"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79370383"
 ---
 # <a name="public-preview-service-limits"></a>パブリック プレビューのサービスの制限
 
-パブリック プレビュー期間中の Azure Digital Twins には、サブスクリプション、インスタンス、レートに関して以下の一時的な制限があります。
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
-これらの制約は、新しいサービスとその多くの機能についての学習を簡単にするために設けられています。
-
-> [!NOTE]
-> これらの制限は、一般公開 (GA) の時点で増やされたり除去されたりします。
+パブリック プレビュー期間中の Azure Digital Twins には、既存顧客のサブスクリプション、インスタンス、レートに関して以下の一時的な制限があります。 これらの制約は、新しいサービスとその多くの機能についての学習を簡単にするために設けられています。一般提供 (GA) で増えたり、削除されたりします。
 
 ## <a name="per-subscription-limits"></a>サブスクリプションごとの制限
 
-パブリック プレビュー期間中、各 Azure サブスクリプションで作成または実行できる Azure Digital Twins インスタンスは、厳密に一度に 1 つだけです。
-
-> [!TIP]
-> インスタンスを削除すると、新しいインスタンスを作成できます。
+パブリック プレビュー期間中、各 Azure サブスクリプションで作成または実行できる Azure Digital Twins インスタンスは、厳密に一度に 1 つだけです。 インスタンスを削除すると、新しいインスタンスを作成できます。
 
 ## <a name="per-instance-limits"></a>インスタンスごとの制限
 
@@ -71,7 +65,7 @@ Azure Digital Twins Management API に対する要求のレート制限は次の
 以下の制限では、デバイスが Azure Digital Twins インスタンスに送信できる全メッセージの合計数が制限されます。
 
 - 全デバイスで 1 秒あたり 100 件のメッセージ
--   デバイスごとに 1 秒あたり 25 件のメッセージ
+-    デバイスごとに 1 秒あたり 25 件のメッセージ
 
 ## <a name="next-steps"></a>次のステップ
 

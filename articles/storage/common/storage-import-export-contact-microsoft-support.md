@@ -9,17 +9,17 @@ ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 8361c32860d48b78c778ea5106ba04715fcc5f3c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67621053"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Import/Export ジョブのサポート チケットを開く
 
 Import/Export サービスで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 この記事で説明する内容は次のとおりです。
 
-* サポート要求を作成する方法
+* サポート リクエストを作成する方法
 * ポータル内からサポート要求ライフ サイクルを管理する方法
 
 ## <a name="create-a-support-request"></a>サポート要求の作成
@@ -53,7 +53,7 @@ Import/Export サービスで問題が発生した場合は、テクニカル �
     7. **[診断情報の共有]** チェック ボックスをオンにします。
     8. **[次へ]** をクリックします。
 
-       ![問題点](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
+       ![問題](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
 4. **[新しいサポート要求]** で、 **[手順 3 連絡先情報]** をクリックします。 **[連絡先情報]** で、次の手順を実行します。
 
@@ -85,6 +85,6 @@ Import/Export サービスで問題が発生した場合は、テクニカル �
     ![サポート要求を管理する](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Import/Export サービスに関連する問題を解決する](storage-import-export-tool-troubleshooting-v1.md)方法について説明します。

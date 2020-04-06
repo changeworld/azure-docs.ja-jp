@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 78b36e1f5ababf2551bd69682807a8ed308ae24d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: b8708aec1137836516852135412c4c7cec2feba4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298447"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79408404"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Azure Active Directory (パブリック プレビュー) を使ってアプリケーションに対するグループ要求を構成する
 
@@ -107,13 +107,13 @@ Azure AD objectID ではなく、Active Directory から同期されている Ac
 
 アプリケーションに割り当てられているグループを変更するには、 **[エンタープライズ アプリケーション]** の一覧からアプリケーションを選択し、アプリケーションの左側のナビゲーション メニューの **[ユーザーとグループ]** をクリックします。
 
-アプリケーションへのグループの割り当ての管理の詳細については、[ユーザーとグループをアプリに割り当てる方法](../../active-directory/manage-apps/methods-for-assigning-users-and-groups.md#assign-groups)に関するページを参照してください。
+アプリケーションへのグループの割り当ての管理の詳細については、ドキュメント「[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)」を参照してください。
 
 ### <a name="advanced-options"></a>[詳細オプション]
 
 グループ要求が出力される方法は、[詳細オプション] 下にある設定によって変更できます。
 
-[グループ要求の名前をカスタマイズする]: 選択した場合、別の要求の種類をグループ要求に指定できます。   [名前] フィールドに要求の種類を、[名前空間] フィールドに要求のオプションの名前空間を入力します。
+[グループ要求の名前をカスタマイズする]\: 選択した場合、別の要求の種類をグループ要求に指定できます。   [名前] フィールドに要求の種類を、[名前空間] フィールドに要求のオプションの名前空間を入力します。
 
 ![要求の UI](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
@@ -177,7 +177,7 @@ Azure AD objectID ではなく、Active Directory から同期されている Ac
    }
    ```
 
-   | オプション要求のスキーマ | Value |
+   | オプション要求のスキーマ | 値 |
    |----------|-------------|
    | **name:** | 必ず "groups" になります |
    | **source:** | 使用されていません。 省略するか、null を指定します |
@@ -222,6 +222,6 @@ SAML および OIDC ID トークンの中でロール要求として netbiosDoma
 
 ## <a name="next-steps"></a>次のステップ
 
-[ユーザーとグループをアプリに割り当てる方法](../../active-directory/manage-apps/methods-for-assigning-users-and-groups.md#assign-groups)
+[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
 
 [ロール要求を構成する](../../active-directory/develop/active-directory-enterprise-app-role-management.md)

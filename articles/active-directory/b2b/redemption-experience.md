@@ -5,24 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0a71da025b8b2bb571dc9b00e23bc691ecdd44c
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 043e0f3a0ff2c1c642c63a387c571b575f77cf7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758286"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050829"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B コラボレーションの招待の利用
 
 この記事では、ゲスト ユーザーがリソースにアクセスできる方法と実行する同意プロセスについて説明します。 招待メールをゲストに送信する場合、その招待には、ゲストがアプリまたはポータルにアクセスするために利用できるリンクを含めます。 招待メールは、ゲストがリソースにアクセスできる方法の 1 つにすぎません。 別の方法として、ゲストをディレクトリに追加し、共有したいポータルまたはアプリへの直接リンクを提供することができます。 使用する方法に関係なく、ゲストには初回の同意プロセスが示されます。 このプロセスにより、ゲストは確実にプライバシー条項に同意し、設定された[利用規約](https://docs.microsoft.com/azure/active-directory/governance/active-directory-tou)を承諾することになります。
 
 ゲスト ユーザーをディレクトリに追加すると、そのゲスト ユーザーのアカウントは同意状態 (PowerShell で表示可能) になります。これは、最初は **PendingAcceptance** に設定されます。 ゲストが招待を受け入れ、プライバシー ポリシーと利用規約に同意するまで、この設定は維持されます。 その後、同意の状態が**承認済み**に変わり、同意ページはゲストに表示されなくなります。
+
+   > [!IMPORTANT]
+   > **2021 年 3 月 31 日以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 準備として、お客様には、[電子メールのワンタイム パスコード認証](one-time-passcode.md)を選択することをお勧めしています。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
 
 ## <a name="redemption-through-the-invitation-email"></a>招待メールによる利用
 

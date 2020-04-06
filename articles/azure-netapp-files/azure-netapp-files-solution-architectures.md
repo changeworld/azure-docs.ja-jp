@@ -12,17 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 03/27/2020
 ms.author: b-juche
-ms.openlocfilehash: 81711394b56287e67c51882744a5032555a186f0
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 8eae528c965e599e7adfb546a09b0d5879e7c54f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206301"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369521"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
+
+## <a name="azure-high-performance-computing-hpc-solutions"></a>Azure ハイ パフォーマンス コンピューティング (HPC) ソリューション
+
+* [Azure 上での貯留層シミュレーション ソフトウェアの実行](https://docs.microsoft.com/azure/architecture/example-scenario/infrastructure/reservoir-simulation)
+* [Azure Batch と Azure NetApp Files で MPI ワークロードを実行する](https://azure.microsoft.com/resources/run-mpi-workloads-with-azure-batch-and-azure-netapp-files/)
 
 ## <a name="azure-kubernetes-service-aks-solutions"></a>Azure Kubernetes Service (AKS) ソリューション
 
@@ -46,10 +51,11 @@ ms.locfileid: "78206301"
 * [RedHat Enterprise Linux 上で Azure NetApp Files を使用した Azure VM のスタンバイ ノードを使用して SAP HANA をスケールアウトする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
 * [Azure NetApp Files – SAP HANA のバックアップ (秒単位)](https://blog.netapp.com/azure-netapp-files-sap-hana-backup-in-seconds/)
 * [Azure NetApp Files – スナップショット バックアップから HANA データベースを復元する](https://blog.netapp.com/azure-netapp-files-backup-sap-hana/)
+* [Azure NetApp Files – クラウド同期を使用した SAP HANA のオフロード バックアップ](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [Azure NetApp Files を使用して SAP HANA システムのコピーを高速化する](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
-* [Cloud Volumes ONTAP と Azure NetApp Files:SAP HANA システムの移行が簡単に](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
+* [Cloud Volumes ONTAP と Azure NetApp Files:SAP HANA システムの移行が簡単に](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/) 
 
-## <a name="talon-solutions"></a>Talon ソリューション
+## <a name="global-file-caching-solutions"></a>グローバル ファイル キャッシュ ソリューション
 
 * [Azure NetApp Files および Talon FAST™ とのグローバルに配布されたエンタープライズ ファイルの共有](https://www.talonstorage.com/products/azure-netapp-files)
 

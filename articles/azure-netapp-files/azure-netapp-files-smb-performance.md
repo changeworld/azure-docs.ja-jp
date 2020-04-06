@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 6391a3eeead6a52371c11011a65f4b4de7260156
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 24b3710861f0ee158619ae9103584dcdb181f3d5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046245"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460451"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Azure NetApp Files に対する SMB のパフォーマンスに関する FAQ
 
@@ -94,12 +94,12 @@ Azure では、仮想マシンの種類とサイズごとにネットワーク�
 
 ![シーケンシャル I/O の比較](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests-list.png)
 
-## <a name="is-advanced-networking-recommended"></a>高度なネットワークは推奨されますか?
+## <a name="is-accelerated-networking-recommended"></a>高速ネットワークは推奨されますか?
 
-パフォーマンスを最大にするには、可能な限り高度なネットワークを構成することをお勧めします。 以下の点に注意してください。  
+パフォーマンスを最大にするには、可能な限り[高速なネットワーク](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell)を構成することをお勧めします。 以下の点に注意してください。  
 
-* Azure portal では、この機能をサポートする仮想マシンに対し、既定で高度なネットワークが有効になります。  ただし、Ansible やそれと似た構成ツールなどの他のデプロイ方法では、有効にならない場合があります。  高度なネットワークを有効にしないと、マシンのパフォーマンスが低下する可能性があります。  
-* インスタンスの種類またはサイズがサポートされていないために仮想マシンのネットワーク インターフェイスで高度なネットワークが有効になっていない場合、インスタンスの種類を大きくしても無効のままです。 そのような場合は、手動で介入する必要があります。
+* Azure portal では、この機能をサポートする仮想マシンに対し、既定で高速ネットワークが有効になります。  ただし、Ansible やそれと似た構成ツールなどの他のデプロイ方法では、有効にならない場合があります。  高速ネットワークを有効にしないと、マシンのパフォーマンスが低下する可能性があります。  
+* インスタンスの種類またはサイズがサポートされていないために仮想マシンのネットワーク インターフェイスで高速ネットワークが有効になっていない場合、インスタンスの種類を大きくしても無効のままです。 そのような場合は、手動で介入する必要があります。
 
 ## <a name="are-jumbo-frames-supported"></a>ジャンボ フレームはサポートされていますか?
 

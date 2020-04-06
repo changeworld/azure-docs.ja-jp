@@ -4,33 +4,31 @@ description: Azure Key Vault で Azure Cosmos DB アカウントのカスタマ�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 44bbd7eab80ecb1cbfef9738e42b4070dff31180
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 6e2a90b8f81b9b945905ee98beb1686c54a62e8a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506050"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063763"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault で Azure Cosmos アカウントのカスタマー マネージド キーを構成する
 
 > [!NOTE]
 > 現時点では、この機能を使用するにはアクセスを要求する必要があります。 それを行うには、[azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) にお問い合わせください。
 
-Azure Cosmos アカウントに格納されているデータは、自動的かつシームレスに暗号化されます。 Azure Cosmos DB には、保存データの暗号化に使用されるキーを管理するための次の 2 つのオプションが用意されています。
+Azure Cosmos アカウントに格納されているデータは、Microsoft が管理するキー (**サービス マネージド キー**) を使用して自動的かつシームレスに暗号化されます。 自分で管理するキー (**カスタマー マネージド キー**) を使用する暗号化の 2 番目のレイヤーを追加することもできます。
 
-- **サービスが管理するキー**: 既定では、お使いの Azure Cosmos アカウントのデータの暗号化に使用するキーは Microsoft が管理します。
-
-- **カスタマー マネージド キー (CMK)** :必要に応じ、お使いのご自分のキーに 2 番目の暗号化レイヤーの追加を選択できます。
+![顧客データに関する暗号化のレイヤー](./media/how-to-setup-cmk/cmk-intro.png)
 
 カスタマー マネージド キーは [Azure Key Vault](../key-vault/key-vault-overview.md) に格納し、カスタマー マネージド キーが有効になっている Azure Cosmos アカウントごとにキーを指定する必要があります。 このキーは、そのアカウントに格納されているすべてのデータを暗号化するために使用されます。
 
 > [!NOTE]
 > 現在、カスタマー マネージド キーは新しい Azure Cosmos アカウントでのみ使用できます。 これらは、アカウントの作成時に構成します。
 
-## <a id="register-resource-provider"></a> Azure サブスクリプション用の Azure Cosmos DB リソース プロバイダーを登録する
+## <a name="register-the-azure-cosmos-db-resource-provider-for-your-azure-subscription"></a><a id="register-resource-provider"></a> Azure サブスクリプション用の Azure Cosmos DB リソース プロバイダーを登録する
 
 1. [Azure portal](https://portal.azure.com/) にサインインし、お使いの Azure サブスクリプションに移動して **[設定]** タブの **[リソース プロバイダー]** を選択します。
 
@@ -189,6 +187,22 @@ New-AzResourceGroupDeployment `
     -keyVaultKeyUri $keyVaultKeyUri
 ```
 
+### <a name="using-the-azure-cli"></a>Azure CLI の使用
+
+Azure CLI を使用して新しい Azure Cosmos アカウントを作成する場合は、先に **--key-uri** パラメーターでコピーした Azure Key Vault キーの URI を渡します。
+
+```azurecli-interactive
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
+keyVaultKeyUri = 'https://<my-vault>.vault.azure.net/keys/<my-key>'
+
+az cosmosdb create \
+    -n $accountName \
+    -g $resourceGroupName \
+    --locations regionName='West US 2' failoverPriority=0 isZoneRedundant=False \
+    --key-uri $keyVaultKeyUri
+```
+
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="is-there-any-additional-charge-for-using-customer-managed-keys"></a>カスタマー マネージド キーを使用する場合、何からの追加料金は発生しますか?
@@ -217,7 +231,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>カスタマー マネージド キーはバックアップにどのように影響しますか?
 
-Azure Cosmos DB は、アカウントに格納されているデータの[定期的な自動バックアップ](./online-backup-and-restore.md)を取得します。 この操作では、暗号化されたデータがバックアップされます。 復元されたバックアップを使用するには、バックアップの時点で使用していた暗号化キーが必要です。 つまり、失効されておらず、バックアップの時点で使用していたキーのバージョンが依然有効になっている必要があります。
+Azure Cosmos DB は、アカウントに格納されているデータの[定期的な自動バックアップ](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)を取得します。 この操作では、暗号化されたデータがバックアップされます。 復元されたバックアップを使用するには、バックアップの時点で使用していた暗号化キーが必要です。 つまり、失効されておらず、バックアップの時点で使用していたキーのバージョンが依然有効になっている必要があります。
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>暗号化キーを失効させるにはどうすればよいですか?
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9bbbcc38116c5681e3b5c867690c296f60507ad1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: dd8be482009e067bf9016cc8e351fc42a2db39c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358112"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233395"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 
@@ -120,6 +120,7 @@ Key Vault が使う暗号化モジュールは、HSM でもソフトウェアで
 -   **ES384** - SHA-384 ダイジェストおよび P-384 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、[RFC7518](https://tools.ietf.org/html/rfc7518) で説明されます。
 -   **ES512** - SHA-512 ダイジェストおよび P-521 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、[RFC7518](https://tools.ietf.org/html/rfc7518) で説明されます。
 
+
 ###  <a name="rsa-algorithms"></a>RSA アルゴリズム  
  Key Vault の RSA および RSA-HSM キーでは、次のアルゴリズム識別子がサポートされます。  
 
@@ -130,6 +131,9 @@ Key Vault が使う暗号化モジュールは、HSM でもソフトウェアで
 
 #### <a name="signverify"></a>SIGN/VERIFY
 
+-   **PS256** - [RFC7518](https://tools.ietf.org/html/rfc7518) に記載されている、SHA-256 を使用する RSASSA-PSS と SHA-256 を使用する MGF1。
+-   **PS384** - [RFC7518](https://tools.ietf.org/html/rfc7518) に記載されている、SHA-384 を使用する RSASSA-PSS と SHA-384 を使用する MGF1。
+-   **PS512** - [RFC7518](https://tools.ietf.org/html/rfc7518) に記載されている SHA-512 を使用する RSASSA-PSS と SHA-512 を使用する MGF1。
 -   **RS256** - SHA-256 を使用する RSASSA-PKCS-v1_5。 アプリケーション提供のダイジェスト値は SHA-256 を使用して計算され、長さは 32 バイトである必要があります。  
 -   **RS384** - SHA-384 を使用する RSASSA-PKCS-v1_5。 アプリケーション提供のダイジェスト値は SHA-384 を使用して計算され、長さは 48 バイトである必要があります。  
 -   **RS512** - SHA-512 を使用する RSASSA-PKCS-v1_5。 アプリケーション提供のダイジェスト値は SHA-512 を使用して計算され、長さは 64 バイトである必要があります。  

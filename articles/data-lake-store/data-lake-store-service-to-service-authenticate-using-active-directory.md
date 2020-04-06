@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 3fbf2f2540e8f1ca84aad2759b9a1fc790e4065d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66241368"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory を使用した Azure Data Lake Storage Gen1 に対するサービス間認証
@@ -58,7 +58,7 @@ Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサー
 1. [Azure Portal](https://portal.azure.com) にサインオンします。 上記で作成した Azure Active Directory アプリケーションに関連付ける Data Lake Storage Gen1 アカウントを開きます。
 2. Data Lake Storage Gen1 アカウントのブレードで、 **[データ エクスプローラー]** をクリックします。
    
-    ![Data Lake Storage Gen1 アカウントにディレクトリを作成する](./media/data-lake-store-authenticate-using-active-directory/adl.start.data.explorer.png "Data Lake Store アカウントにディレクトリを作成する")
+    ![Data Lake Storage Gen1 アカウントにディレクトリを作成する](./media/data-lake-store-authenticate-using-active-directory/adl.start.data.explorer.png "Data Lake アカウントにディレクトリを作成する")
 3. **[データ エクスプローラー]** ブレードで、Azure AD アプリケーションへのアクセスを付与するファイルまたはフォルダーをクリックし、 **[アクセス]** をクリックします。 ファイルへのアクセスを構成する場合は、 **[ファイルのプレビュー]** ブレードから **[アクセス]** をクリックします。
    
     ![Data Lake ファイル システムに ACL を設定する](./media/data-lake-store-authenticate-using-active-directory/adl.acl.1.png "Data Lake ファイル システムに ACL を設定する")
@@ -68,7 +68,7 @@ Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサー
 5. **[追加]** アイコンをクリックして、 **[カスタム アクセスの追加]** ブレードを開きます。 このブレードの **[ユーザーまたはグループの選択]** をクリックし、 **[ユーザーまたはグループの選択]** ブレードで、作成しておいた Azure Active Directory アプリケーションを探します。 検索対象のグループが多数存在する場合は、上部にあるテキスト ボックスを使用してグループ名をフィルター処理できます。 追加するグループをクリックして、 **[選択]** をクリックします。
    
     ![グループを追加する](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "グループを追加する")
-6. **[アクセス許可の選択]** をクリックして、アクセス許可を選択するともに、このアクセス許可に既定の ACL、アクセス ACL、またはその両方のいずれを割り当てるか選択します。 Click **OK**.
+6. **[アクセス許可の選択]** をクリックして、アクセス許可を選択するともに、このアクセス許可に既定の ACL、アクセス ACL、またはその両方のいずれを割り当てるか選択します。 **[OK]** をクリックします。
    
     ![グループにアクセス許可を割り当てる](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "グループにアクセス許可を割り当てる")
    
@@ -99,7 +99,7 @@ Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサー
 
     ![OAuth トークン エンドポイント](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth トークン エンドポイント")   
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Azure AD Web アプリケーションを作成し、.NET SDK、Java、Python、REST API などを使用して作成するクライアント アプリケーションに必要な情報を収集しました。これで、以下の記事に進むことができます。これらの記事では、Azure AD ネイティブ アプリケーションを使用して、Data Lake Storage Gen1 に対し、まず認証を行ってからその他の操作を実行する方法について説明しています。
 
 * [Data Lake Storage Gen1 に対する Java を使用したサービス間認証](data-lake-store-service-to-service-authenticate-java.md)

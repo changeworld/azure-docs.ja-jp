@@ -3,12 +3,12 @@ title: Azure Functions の Python 開発者向けリファレンス
 description: Python を使用して関数を開発する方法について説明します
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: cfac28c4a759cee66c932c7b8cfea053c9c4f505
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 30f40db33b6aa8b40202c023f301265565257180
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921790"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234919"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -22,25 +22,9 @@ Azure Functions では、関数は入力を処理して出力を生成する Pyt
 
 トリガーとバインディングからのデータをメソッド属性を介して関数にバインドするには、*function.json* ファイル内で定義されている `name` プロパティを使用します。 たとえば、次の _function.json_ には、`req` という名前の HTTP 要求によってトリガーされるシンプルな関数が記述されています。
 
-```json
-{
-  "bindings": [
-    {
-      "name": "req",
-      "direction": "in",
-      "type": "httpTrigger",
-      "authLevel": "anonymous"
-    },
-    {
-      "name": "$return",
-      "direction": "out",
-      "type": "http"
-    }
-  ]
-}
-```
+:::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
-`__init__.py` ファイルには、次の関数コードが含まれています。
+この定義に基づき、関数コードを含む `__init__.py` ファイルは次の例のようになります。
 
 ```python
 def main(req):
@@ -81,16 +65,16 @@ Python 関数プロジェクトの推奨フォルダー構造は、次の例の�
 
 ```
  __app__
- | - MyFirstFunction
+ | - my_first_function
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - MySecondFunction
+ | - my_second_function
  | | - __init__.py
  | | - function.json
- | - SharedCode
- | | - myFirstHelperFunction.py
- | | - mySecondHelperFunction.py
+ | - shared_code
+ | | - my_first_helper_function.py
+ | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
  tests
@@ -105,19 +89,47 @@ Python 関数プロジェクトの推奨フォルダー構造は、次の例の�
 
 各関数には、独自のコード ファイルとバインディング構成ファイル (function.json) があります。 
 
-共有コードは、\_\_app\_\_ 内の別のフォルダーに保存する必要があります。 SharedCode フォルダー内のモジュールを参照するには、次の構文を使用します。
+Azure の関数アプリにプロジェクトをデプロイする場合は、メイン プロジェクト ( *\_\_app\_\_* ) フォルダーの内容全体をパッケージに含める必要がありますが、フォルダー自体は含めないでください。 テストは、プロジェクト フォルダーとは別のフォルダー (この例では `tests`) に保存することをお勧めします。 これにより、アプリでテスト コードをデプロイすることを防ぐことができます。 詳細については、「[単体テスト](#unit-testing)」を参照してください。
+
+## <a name="import-behavior"></a>インポートの動作
+
+明示的な相対参照と絶対参照の両方を使用して、関数コードにモジュールをインポートすることができます。 以下のインポートは、上記のフォルダー構造に基づいて、関数ファイル *\_\_app\_\_\my\_first\_function\\_\_init\_\_.py* 内から機能します。
 
 ```python
-from __app__.SharedCode import myFirstHelperFunction
+from . import example #(explicit relative)
 ```
-
-関数に対してローカルになるモジュールを参照するには、次のような相対インポート構文を使用できます。
 
 ```python
-from . import example
+from ..shared_code import my_first_helper_function #(explicit relative)
 ```
 
-Azure の関数アプリにプロジェクトをデプロイする場合は、*FunctionApp* フォルダーの内容全体をパッケージに含める必要がありますが、フォルダー自体は含めないでください。 テストは、プロジェクト フォルダーとは別のフォルダー (この例では `tests`) に保存することをお勧めします。 これにより、アプリでテスト コードをデプロイすることを防ぐことができます。 詳細については、「[単体テスト](#unit-testing)」を参照してください。
+```python
+from __app__ import shared_code #(absolute)
+```
+
+```python
+import __app__.shared_code #(absolute)
+```
+
+以下のインポートは、同じファイル内からは "*機能しません*"。
+
+```python
+import example
+```
+
+```python
+from example import some_helper_code
+```
+
+```python
+import shared_code
+```
+
+共有コードは、 *\_\_app\_\_* 内の別のフォルダーに保管する必要があります。 *shared\_code* フォルダー内のモジュールを参照するには、次の構文を使用します。
+
+```python
+from __app__.shared_code import my_first_helper_function
+```
 
 ## <a name="triggers-and-inputs"></a>トリガーと入力
 
@@ -236,7 +248,7 @@ def main(req):
 
 他にもログ記録メソッドが用意されています。これにより、さまざまなトレース レベルでコンソールへの書き込みが可能になります。
 
-| 方法                 | 説明                                |
+| Method                 | 説明                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | ルート ロガー上に CRITICAL レベルのメッセージを書き込みます。  |
 | **`error(_message_)`**   | ルート ロガー上に ERROR レベルのメッセージを書き込みます。    |
@@ -382,7 +394,18 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ## <a name="python-version"></a>Python バージョン 
 
-現時点では、Azure Functions は Python 3.6.x と 3.7.x (公式の CPython ディストリビューション) の両方をサポートしています。 ローカルで実行する場合、ランタイムは使用可能な Python バージョンを使用します。 Azure で関数アプリを作成するときに特定の Python バージョンを要求するには、[`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) コマンドの `--runtime-version` オプションを使用します。 バージョンの変更は、関数アプリの作成時にのみ許可されます。  
+Azure Functions では次の Python バージョンがサポートされています。
+
+| Functions バージョン | Python<sup>*</sup> バージョン |
+| ----- | ----- |
+| 3.x | 3.8<br/>3.7<br/>3.6 |
+| 2.x | 3.7<br/>3.6 |
+
+<sup>*</sup>公式 CPython ディストリビューション
+
+Azure で関数アプリを作成するときに特定の Python バージョンを要求するには、[`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) コマンドの `--runtime-version` オプションを使用します。 Functions ランタイム バージョンは `--functions-version` オプションによって設定されます。 Python バージョンは関数アプリの作成時に設定され、変更できません。  
+
+ローカルで実行する場合、ランタイムは使用可能な Python バージョンを使用します。 
 
 ## <a name="package-management"></a>パッケージの管理
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 1660dca34b2f128ef5889145fcdeed0d2523b9bb
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593200"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Azure CDN from Verizon Premium ルール エンジンの一致条件
@@ -30,23 +30,23 @@ ms.locfileid: "67593200"
 
 「Always (常に)」一致条件では、一連の既定の機能がすべての要求に適用されます。
 
-Name | 目的
+名前 | 目的
 -----|--------
-[Always (常に)](#always) | 一連の既定の機能をすべての要求に適用します。
+[毎回](#always) | 一連の既定の機能をすべての要求に適用します。
 
 ## <a name="device-match-condition"></a>「Device (デバイス)」一致条件
 
 この「Device (デバイス)」一致条件では、モバイル デバイスからの要求をそのプロパティに基づいて識別します。  
 
-Name | 目的
+名前 | 目的
 -----|--------
-[デバイス](#device) | モバイル デバイスからの要求をそのプロパティに基づいて識別します。
+[[デバイス]](#device) | モバイル デバイスからの要求をそのプロパティに基づいて識別します。
 
 ## <a name="location-match-conditions"></a>「Location (場所)」一致条件
 
 「Location (場所)」一致条件では、要求者の位置情報に基づいて要求を識別します。
 
-Name | 目的
+名前 | 目的
 -----|--------
 [AS Number (AS 番号)](#as-number) | 特定のネットワークから送信される要求を識別します。
 [Country (国)](#country) | 指定した国/地域から送信される要求を識別します。
@@ -55,7 +55,7 @@ Name | 目的
 
 「配信元 (Origin)」一致条件では、Content Delivery Network ストレージまたは顧客の配信元サーバーを参照する要求を識別します。
 
-Name | 目的
+名前 | 目的
 -----|--------
 [CDN Origin (CDN 配信元)](#cdn-origin) | Content Delivery Network ストレージに格納されたコンテンツの要求を識別します。
 [Customer Origin (顧客配信元)](#customer-origin) | 特定の顧客の配信元サーバーに格納されているコンテンツの要求を識別します。
@@ -64,7 +64,7 @@ Name | 目的
 
 「要求 (Request)」一致条件では、プロパティに基づいて要求が識別されます。
 
-Name | 目的
+名前 | 目的
 -----|--------
 [Client IP Address (クライアント IP アドレス)](#client-ip-address) | 特定の IP アドレスから送信される要求を識別します。
 [Cookie Parameter (Cookie パラメーター)](#cookie-parameter) | 指定した値の各要求に関連付けられている Cookie を確認します。
@@ -81,7 +81,7 @@ Name | 目的
 
 「URL」一致条件では、URL に基づいて要求が識別されます。
 
-Name | 目的
+名前 | 目的
 -----|--------
 [URL Path Directory (URL パス ディレクトリ)](#url-path-directory) | 相対パスで要求を識別します。
 [URL Path Extension (URL パス拡張子)](#url-path-extension) | ファイル名の拡張子で要求を識別します。
@@ -165,10 +165,10 @@ AS Number ネットワークは、自律システム番号 (ASN) で識別され
 重要な情報:
 
 - CIDR 表記を使用します。
-- 複数の IP アドレスまたは IP アドレス ブロックを指定する場合は、IP アドレスまたは IP ブロックごとに単一の空白で区切ります。 例:
+- 複数の IP アドレスまたは IP アドレス ブロックを指定する場合は、IP アドレスまたは IP ブロックごとに単一の空白で区切ります。 次に例を示します。
   - **IPv4 の例**:"1.2.3.4 10.20.30.40" と指定した場合、アドレス 1.2.3.4 または 10.20.30.40 から配信される要求と一致します。
   - **IPv6 の例**:"1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80" と指定した場合、アドレス 1:2:3:4:5:6:7:8 または 10:20:30:40:50:60:70:80 から配信される要求と一致します。
-- IP アドレス ブロックの構文では、ベース IP アドレスの末尾にスラッシュおよびプレフィックス サイズを付与します。 例:
+- IP アドレス ブロックの構文では、ベース IP アドレスの末尾にスラッシュおよびプレフィックス サイズを付与します。 次に例を示します。
   - **IPv4 の例**:"5.5.5.64/26" と指定した場合、アドレス 5.5.5.64 ～ 5.5.5.127 から配信される要求と一致します。
   - **IPv6 の例**:"1:2:3:/48" と指定した場合、アドレス 1:2:3:0:0:0:0:0 ～ 1:2:3:ffff:ffff:ffff:ffff:ffff から配信される要求と一致します。
 - キャッシュ設定の追跡方法が原因で、この一致条件は次の機能との互換性がありません。
@@ -334,7 +334,7 @@ Type     | 説明
 ---------|------------
 リテラル  | [リテラル値](cdn-verizon-premium-rules-engine-reference.md#literal-values)を使用して、ほとんどの文字が特別な意味を持たないようにするには、このオプションを選択します。
 ワイルドカード | すべての[ワイルドカード文字] ([ワイルドカード値](cdn-verizon-premium-rules-engine-reference.md#wildcard-values)) を利用するには、このオプションを選択します。
-正規表現    | [正規表現](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)を使用するには、このオプションを選択します。 正規表現は、文字のパターンを定義する際に便利です。
+Regex    | [正規表現](cdn-verizon-premium-rules-engine-reference.md#regular-expressions)を使用するには、このオプションを選択します。 正規表現は、文字のパターンを定義する際に便利です。
 
 #### <a name="wurfl-capabilities"></a>WURFL 機能
 
@@ -815,7 +815,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
     
 - 複数の URL パスを指定するには、各パスを単一のスペースで区切ります。
 
-   例: /marketing/asset.* /sales/*.htm
+   例: /marketing/asset.\* /sales/\*.htm
 
 - URL のクエリ文字列は無視されます。
     
@@ -832,7 +832,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 値                   | 基準    | 結果 
 ------------------------|----------------|-------
 \*/test.html \*/test.php  | ルートまたは配信元 | 任意のフォルダーの "test.html" または "test.php" という名前の資産の要求が、このパターンに一致します。
-/80ABCD/origin/text/*   | ルート           | 要求された資産が次の条件を満たしている場合、このパターンに一致します。 <br />- "origin" という顧客配信元に存在する。 <br />- 相対パスが "text" というフォルダーで始まる (つまり、要求された資産が、"text" フォルダーまたは再帰サブフォルダーに存在する)
+/80ABCD/origin/text/*   | Root           | 要求された資産が次の条件を満たしている場合、このパターンに一致します。 <br />- "origin" という顧客配信元に存在する。 <br />- 相対パスが "text" というフォルダーで始まる (つまり、要求された資産が、"text" フォルダーまたは再帰サブフォルダーに存在する)
 */css/* */js/*          | ルートまたは配信元 | css または js フォルダーを含むすべての CDN URL またはエッジ CNAME URL が、このパターンに一致します。
 *.jpg *.gif *.png       | ルートまたは配信元 | .jpg、.gif、または .png で終わる すべての CDN URL またはエッジ CNAME URL が、このパターンに一致します。 このパターンを指定する別の方法は、「[URL Path Extension (URL パス拡張子)](#url-path-extension)」一致条件を使用することです。
 /images/\* /media/\*      | Origin (配信元)         | 相対パスが "images" または "media" フォルダーで始まる CDN URL またはエッジ CNAME URL が、このパターンに一致します。 <br />- CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/images/sales/event1.png<br />- サンプル エッジ CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
@@ -862,9 +862,9 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
     
 - 特定の文字には URL エンコードが必要です。 パーセント記号を使用して、次の文字を URL エンコードします。
 
-   Character | URL エンコード
+   文字 | URL エンコード
    ----------|---------
-   スペース     | %20
+   Space     | %20
    &         | %25
 
 - キャッシュ設定の追跡方法が原因で、この一致条件は次の機能との互換性がありません。
@@ -902,9 +902,9 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
    - 各パラメーター値パターンは、1 つ以上のアスタリスク (*) で構成できます。各アスタリスクは 1 つ以上の一連の文字と一致します。
    - 特定の文字には URL エンコードが必要です。 パーセント記号を使用して、次の文字を URL エンコードします。
 
-       Character | URL エンコード
+       文字 | URL エンコード
        ----------|---------
-       スペース     | %20
+       Space     | %20
        &         | %25
 
 - 複数のクエリ文字列パラメーター値を指定するには、各値を単一のスペースで区切ります。 要求に、指定した名前と値の組み合わせのいずれかが含まれている場合に、この一致条件が満たされます。
@@ -953,7 +953,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 
 次の例は、このオプションが特定の状況でどのように機能するかを示しています。
 
-Name  | 値 |  結果
+名前  | 値 |  結果
 ------|-------|--------
 User  | Joe   | 要求された URL のクエリ文字列が "?user=joe" の場合、このパターンに一致します。
 User  | *     | 要求された URL のクエリ文字列に User パラメーターが含まれている場合、このパターンに一致します。
@@ -984,16 +984,16 @@ Email | Joe\* | 要求された URL のクエリ文字列に、"Joe" で始ま�
     
 - 特定の文字には URL エンコードが必要です。 パーセント記号を使用して、次の文字を URL エンコードします。
 
-   Character | URL エンコード | 値
+   文字 | URL エンコード | 値
    ----------|--------------|------
-   スペース     | %20          | \%20
+   Space     | %20          | \%20
    &         | %25          | \%25
 
    パーセント記号はエスケープする必要があります。
 
 - 正規表現にバックスラッシュを含めるには、正規表現の特殊文字 (例: \^$.+) をダブル エスケープします。
 
-   例:
+   次に例を示します。
 
    値 | 解釈 
    ------|---------------
@@ -1029,14 +1029,14 @@ Email | Joe\* | 要求された URL のクエリ文字列に、"Joe" で始ま�
    - 各パラメーター値パターンは、1 つ以上のアスタリスク (*) で構成できます。各アスタリスクは 1 つ以上の一連の文字と一致します。
    - 特定の文字には URL エンコードが必要です。 パーセント記号を使用して、次の文字を URL エンコードします。
 
-     Character | URL エンコード
+     文字 | URL エンコード
      ----------|---------
-     スペース     | %20
+     Space     | %20
      &         | %25
 
 - 複数の値を指定する場合は、値ごとに単一の空白で区切ります。
 
-   例: *Parameter1=ValueA* *ValueB* *Parameter1=ValueC&Parameter2=ValueD*
+   次に例を示します。*Parameter1=ValueA* *ValueB* *Parameter1=ValueC&Parameter2=ValueD*
 
 - この一致条件を満たすのは、指定した 1 以上のクエリ文字列パラメーターとの完全一致だけです。
     
@@ -1053,7 +1053,7 @@ Email | Joe\* | 要求された URL のクエリ文字列に、"Joe" で始ま�
 
 次の例は、このオプションが特定の状況でどのように機能するかを示しています。
 
- Name                 | 説明
+ 名前                 | 説明
  ---------------------|------------
 user=joe              | 要求された URL のクエリ文字列が "?user=joe" の場合、このパターンに一致します。
 \*user=\* \*optout=\* | CDN URL クエリに user または optout パラメーターが含まれている場合、このパターンに一致します。
@@ -1062,7 +1062,7 @@ user=joe              | 要求された URL のクエリ文字列が "?user=joe"
 
 </br>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Content Delivery Network の概要](cdn-overview.md)
 - [ルール エンジンのリファレンス](cdn-verizon-premium-rules-engine-reference.md)

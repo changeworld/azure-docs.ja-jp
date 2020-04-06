@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
-ms.openlocfilehash: ca223de2bc0b26e4968d400ea418761a399dacae
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2a2cd4bfc3d393543b41eea776f02723d94054b1
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462358"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345827"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database Machine Learning Services と R (プレビュー)
 
@@ -38,11 +38,11 @@ Machine Learning Services には、R の基本ディストリビューション�
 
 ### <a name="r-packages"></a>R パッケージ
 
-最も一般的なオープン ソースの R パッケージが、Machine Learning Services にプレインストールされています。 Microsoft が提供する次の R パッケージも含まれます。
+最も一般的なオープン ソースの R パッケージが、Machine Learning Services にプレインストールされています。 Microsoft の次の R パッケージも含まれています。
 
 | R パッケージ | 説明|
 |-|-|
-| [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open は、Microsoft が提供する R の強化されたディストリビューションです。 統計分析とデータ サイエンスのための完全なオープン ソース プラットフォームです。 R が基になっていて、R との間に 100% の互換性があり、パフォーマンスと再現性が向上する追加機能が含まれています。 |
+| [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open は、Microsoft が提供する R の強化されたディストリビューションです。 これは、統計分析とデータ サイエンスの機能が一式そろったオープンソース プラットフォームです。 R に基づき、100% の互換性があり、パフォーマンスと再現性を向上させる追加機能が含まれています。 |
 | [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR は、スケーラブルな R のためのプライマリ ライブラリです。このライブラリの関数は最も広く使用されています。 データの変換と操作、統計の要約、視覚化、およびモデリングと分析の多くのフォームが、これらのライブラリに収められています。 さらに、これらのライブラリの関数は、並列処理のためにワークロードを使用可能なコア間に自動的に分散させ、計算エンジンによって調整および管理されるデータのチャンクを処理する機能を備えています。 |
 | [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | MicrosoftML では、テキスト分析、画像分析、およびセンチメント分析用のカスタム モデルを作成するための機械学習アルゴリズムが追加されます。 |
 
@@ -50,14 +50,12 @@ Machine Learning Services には、R の基本ディストリビューション�
 
 <a name="signup"></a>
 
-## <a name="sign-up-for-the-preview"></a>プレビューのサインアップ
+## <a name="sign-up-for-the-preview-closed"></a>プレビューのサインアップ (クローズ)
 
 > [!IMPORTANT]
-> Azure SQL Database Machine Learning Services (プレビュー) のサインアップは現在クローズされています。
+> Azure SQL Database Machine Learning Services (プレビュー) のサインアップは現在**クローズ**されています。
 
-プレビューの期間中は、運用環境のワークロードに対する Machine Learning Services と R の使用は推奨されません。
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [SQL Server Machine Learning Services との重要な違い](sql-database-machine-learning-services-differences.md)に関する記事を参照してください。
 - Azure SQL Database Machine Learning Services (プレビュー) を R で照会する方法について、「[クイック スタート ガイド](sql-database-connect-query-r.md)」を参照してください。

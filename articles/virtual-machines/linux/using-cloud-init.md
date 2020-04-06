@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: danis
-ms.openlocfilehash: 0309d9a794a978c736ffc4689c46565ee8fb5b00
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 1f0395956fa6977be5d1d6f4f4faf06b84c094d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226697"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79465041"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
 この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セットを構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init 構成は、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
@@ -53,10 +53,10 @@ cloud-init が Azure 上の動作保証済み Linux ディストリビューシ�
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |はい | はい - 次のパッケージ バージョンからサポート:*18.2-1.el7_6.2*|
 |RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 | はい (これはプレビュー イメージであり、すべての RHEL 7.7 イメージで cloud-init がサポートされると、これは削除されることに注意してください。2020 年の中頃に通知があります) | はい - 次のパッケージ バージョンからサポート:*18.5-3.el7*|
-|RedHat 7.7 |RHEL |7-RAW | 該当なし| いいえ - 2020 年 2 月からイメージが更新されます| はい - 次のパッケージ バージョンからサポート:*18.5-3.el7*|
-|RedHat 7.7 |RHEL |7-LVM | 該当なし| いいえ - 2020 年 2 月からイメージが更新されます| はい - 次のパッケージ バージョンからサポート:*18.5-3.el7*|
-|RedHat 7.7 |RHEL |7.7 | 該当なし| いいえ - 2020 年 2 月からイメージが更新されます | はい - 次のパッケージ バージョンからサポート:*18.5-3.el7*|
-|RedHat 7.7 |rhel-byos | rhel-lvm77 | 該当なし|いいえ - 2020 年 2 月からイメージが更新されます  | はい - 次のパッケージ バージョンからサポート:*18.5-3.el7*|
+|RedHat 7.7 |RHEL |7-RAW | 該当なし| いいえ - 2020 年 4 月の終わりにイメージの更新が完了| はい - 次のパッケージ バージョンからサポート:*18.5-3.el7*|
+|RedHat 7.7 |RHEL |7-LVM | 該当なし| いいえ - 4 月の終わりにイメージの更新が完了| はい - 次のパッケージ バージョンからサポート:*18.5-3.el7*|
+|RedHat 7.7 |RHEL |7.7 | 該当なし| いいえ - 4 月の終わりにイメージの更新が完了 | はい - 次のパッケージ バージョンからサポート:*18.5-3.el7*|
+|RedHat 7.7 |rhel-byos | rhel-lvm77 | 該当なし|いいえ - 4 月の終わりにイメージの更新が完了  | はい - 次のパッケージ バージョンからサポート:*18.5-3.el7*|
 
 ### <a name="centos"></a>CentOS
 
@@ -64,7 +64,7 @@ cloud-init が Azure 上の動作保証済み Linux ディストリビューシ�
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |OpenLogic 7.7 |CentOS |7-CI |7.7.20190920 |はい (これはプレビュー イメージであり、すべての CentOS 7.7 イメージで cloud-init がサポートされると、これは削除されることに注意してください。2020 年の中頃に通知があります) | はい - 次のパッケージ バージョンからサポート:*18.5-3.el7.centos*|
 
-* cloud-init が有効になる CentOS 7.7 イメージは、2020 年 2 月に更新されます 
+* cloud-init が有効になる CentOS 7.7 イメージは、2020 年 3 月に更新されます 
 
 ### <a name="oracle"></a>Oracle
 

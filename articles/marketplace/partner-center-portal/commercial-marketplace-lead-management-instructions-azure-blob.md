@@ -1,19 +1,18 @@
 ---
 title: 商業マーケットプレース プログラム内の Azure テーブル | Azure Marketplace
 description: Azure BLOB 用にリード管理を構成します
-services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.author: evansma
-ms.openlocfilehash: 5da4e0ab315b3f66a477b816f6fc5d27de7aa339
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 062252b007e22fcd2644c8b647fc0ecc2f5938cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812364"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285250"
 ---
 # <a name="lead-management-instructions-for-azure-blob"></a>Azure BLOB でのリード管理の手順
 

@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74112270"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>BLOB のインデックス作成して複数の検索ドキュメントを生成する
@@ -97,7 +97,7 @@ _Blob2.json_
 > [!NOTE]
 > 抽出されたエンティティごとの一意性を確保するために `AzureSearch_DocumentKey` で使用される手法は変更される可能性があるため、アプリケーションのニーズに応じて、その値に依存しないようにしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 BLOB のインデックス作成の基本構造とワークフローについてまだよく理解していない場合は、まず [Azure Cognitive Search で Azure Blob Storage のインデックスを作成する](search-howto-index-json-blobs.md)方法に関するページを参照してください。 さまざまな種類の BLOB コンテンツ タイプ の解析モードに関する詳細については、次の記事を参照してください。
 

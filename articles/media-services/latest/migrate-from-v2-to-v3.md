@@ -13,25 +13,27 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/02/2019
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: dc3b122ab7f4a243f3a4ecd6f220caa00beb044e
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 72d413c5d8bc982d885d889da35b29a3607410cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505778"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472069"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
 >この URL (`https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us`) をコピーして、お使いの RSS フィード リーダーに貼り付け、更新内容を確認するためにこのページに再度アクセスするタイミングに関する通知を受け取るようにしてください。
 
-この記事では、Azure Media Services v3 で導入された変更点について説明し、2 つのバージョンの違いを示し、移行のガイダンスを提供します。
+この記事では、Media Services v2 から v3 への移行のガイダンスも提供します。
 
 もしあなたが今日、[従来の Media Services v2 API](../previous/media-services-overview.md) 上に動画サービスを開発した場合、v3 API に移行する前に次のガイドラインと考慮事項を確認してください。 v3 API には Media Services の開発者エクスペリエンスと機能を向上させる多くのメリットおよび新機能があります。 ただし、この記事の「[既知の問題](#known-issues)」セクションで示すように、API バージョン間の変更によるいくつかの制限事項もあります。 このページは、v3 API に対して Media Services チームが継続的な改善を行い、バージョン間の差異に対処するたびに更新されます。 
 
-> [!NOTE]
-> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](media-services-apis-overview.md#sdks) のいずれかを使用してください。
+## <a name="prerequisites"></a>前提条件
+
+* 「[Media Services v2 対 v3](media-services-v2-vs-v3.md)」を確認してください
+* [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="benefits-of-media-services-v3"></a>Media Services v3 のメリット
   
@@ -57,62 +59,15 @@ ms.locfileid: "77505778"
 * RTMPS のセキュアな取り込み。<br/>ライブ イベントを作成すると、4 つの取り込み URL を取得します。 4 つの取り込み URL はほとんど同じで。ストリーミング トークン (AppId) は同じですが、ポート番号の部分のみが異なります。 URL のうち 2 つは RTMPS のプライマリとバックアップです。   
 * エンティティに対するロールベースのアクセス制御 (RBAC) があります。 
 
-## <a name="changes-from-v2"></a>v2 からの変更点
-
-* v3 で作成されたアセットの場合、Media Services は [Azure Storage サーバー側のストレージ暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)のみをサポートします。
-    * V3 API は、[ストレージ暗号化](../previous/media-services-rest-storage-encryption.md) (AES 256) が Media Services によって提供された v2 API で作成されたアセットと一緒に使用できます。
-    * v3 API を使用して従来の AES 256 [ストレージ暗号化](../previous/media-services-rest-storage-encryption.md)で新しいアセットを作成することはできません。
-* v3 の[アセット](assets-concept.md)のプロパティは v2 と異なります。[プロパティのマッピング](assets-concept.md#map-v3-asset-properties-to-v2)に関するページを参照してください。
-* v3 SDK が Storage SDK から分離されたため、使用する Storage SDK のバージョンをより詳細に制御し、バージョン管理の問題を回避できるようになりました。 
-* v3 API では、エンコード ビット レートはすべてビット/秒単位です。 これは v2 Media Encoder Standard のプリセットとは異なります。 たとえば、v2 のビットレートは 128 (kbps) と指定されていますが、v3 では 128,000 (ビット/秒) です。 
-* v3 にはエンティティ AssetFiles、AccessPolicies、IngestManifests が存在しません。
-* v3 には IAsset.ParentAssets プロパティが存在しません。
-* ContentKeys はエンティティではなくなり、ストリーミング ロケーターのプロパティになりました。
-* Event Grid のサポートによって NotificationEndpoints を置き換えられました。
-* 次のエンティティ名が変更されました
-    * ジョブ出力は Task を置き換え、ジョブの一部になりました。
-    * ストリーミング ロケーターによって Locator が置き換えられました。
-    * ライブ イベントによって Channel が置き換えられました。<br/>ライブ イベントの課金はライブ チャンネルの測定に基づいています。 詳細については、[価格](live-event-states-billing.md)と[課金](https://azure.microsoft.com/pricing/details/media-services/)に関するセクションを参照してください。
-    * ライブ出力によって Program が置き換えられました。
-* ライブ出力は作成すると開始され、削除されると停止します。 v2 API ではプログラムの動作方法が異なり、作成後に起動される必要がありました。
-* ジョブに関する情報を取得するには、ジョブが作成された Transform の名前を知っている必要があります。 
-* v2 では、XML の[入力](../previous/media-services-input-metadata-schema.md)と[出力](../previous/media-services-output-metadata-schema.md)のメタデータ ファイルは、エンコード ジョブの結果として生成されます。 v3 では、メタデータの形式が XML から JSON に変更されました。 
-
-> [!NOTE]
-> [Media Services v3 リソース](media-services-apis-overview.md#naming-conventions)に適用される名前付け規則をご確認ください。 [BLOB の名前付け](assets-concept.md#naming)についてもご確認ください。
-
-## <a name="feature-gaps-with-respect-to-v2-apis"></a>v2 API に関する機能のギャップ
-
-v3 API には v2 API に関して次の機能ギャップがあります。 ギャップを埋めることは進行中の作業です。
-
-* [Premium Encoder](../previous/media-services-premium-workflow-encoder-formats.md) と従来の [Media Analytics プロセッサ](../previous/media-services-analytics-overview.md)(Azure Media Services Indexer 2 プレビュー、Face Redactor など) は v3 を使用してアクセスできません。<br/>Media Indexer 1 または2 のプレビューからの移行を希望するお客様は、v3 API でプリセットされている AudioAnalyzer をすぐに使用できます。  この新しいプリセットには、古い Media Indexer 1 または 2 より多くの機能が含まれています。 
-* 次に示すような、API の [v2 における Media Encoder Standard の高度な機能](../previous/media-services-advanced-encoding-with-mes.md) の多くは現在、v3 では利用できません。
-  
-    * アセットの結合
-    * オーバーレイ
-    * トリミング
-    * サムネイル スプライト
-    * 音声が入力されない場合に、無音オーディオ トラックを挿入する
-    * 入力に映像が含まれていない場合に、ビデオ トラックを挿入する
-* 現在、コード変換を使用するライブ イベントでは、ストリーム中のスレート挿入および API 呼び出しによる Ad マーカー挿入はサポートされていません。 
-
-> [!NOTE]
-> この記事にブックマークを設定し、更新がないか随時確認してください。
- 
-## <a name="code-differences"></a>コードの違い
-
-次の表では、一般的なシナリオでの v2 と v3 のコードの違いを示します。
-
-|シナリオ|V2 API|V3 API|
-|---|---|---|
-|アセットの作成とファイルのアップロード |[v2 .NET の例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET の例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
-|ジョブの送信|[v2 .NET の例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET の例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>まず変換を作成し、次にジョブを送信する方法を示しています。|
-|AES 暗号化を使用してアセットを公開する |1.ContentKeyAuthorizationPolicyOption を作成します<br/>2.ContentKeyAuthorizationPolicy を作成します<br/>3.AssetDeliveryPolicy を作成します<br/>4.アセットを作成し、コンテンツをアップロードするか、ジョブを送信して出力資産を使用します<br/>5.AssetDeliveryPolicy を資産に関連付けます<br/>6.ContentKey を作成します<br/>7.ContentKey をアセットにアタッチします<br/>8.AccessPolicy を作成します<br/>9.ロケーターを作成します<br/><br/>[v2 .NET の例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1.コンテンツ キー ポリシーを作成します<br/>2.アセットを作成します<br/>3.コンテンツをアップロードするか、アセットを JobOutput として使用します<br/>4.ストリーミング ロケーターを作成します<br/><br/>[v3 .NET の例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
-|ジョブの詳細を取得し、ジョブを管理する |[v2 を使用したジョブの管理](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[v3 を使用したジョブの管理](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
-
 ## <a name="known-issues"></a>既知の問題
 
-* 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI、またはサポートされている SDK のいずれかを使用します。
+*  現時点では、[Azure portal](https://portal.azure.com/) を使って次のことを実行できます。
+
+    * Media Services v3 の[ライブ イベント](live-events-outputs-concept.md)を管理する 
+    * v3 の[アセット](assets-concept.md)を表示する (管理ではない) 
+    * [API のアクセスに関する情報を取得する](access-api-portal.md)。 
+
+    他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 * ジョブ (特にビデオまたはオーディオ分析を伴うもの) のコンカレンシーとパフォーマンスを制御するには、アカウントでメディア占有ユニット (MRU) をプロビジョニングする必要があります。 詳細については、[メディア処理のスケール設定](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。 MRU の管理には、[CLI 2.0 for Media Services v3](media-reserved-units-cli-how-to.md)、[Azure portal](../previous/media-services-portal-scale-media-processing.md)、または [v2 API](../previous/media-services-dotnet-encoding-units.md) を使用できます。 Media Services v2 と v3 のどちらの API を使用する場合でも、MRU をプロビジョニングする必要があります。
 * v3 API を使用して作成された Media Services エンティティは v2 API で管理できません。  
 * V2 API 内のすべてのエンティティが V3 API に自動的に表示されるわけではありません。  2 つのバージョンで互換性のないエンティティの例を次に示します。  
@@ -128,5 +83,4 @@ v3 API には v2 API に関して次の機能ギャップがあります。 ギ�
 
 ## <a name="next-steps"></a>次のステップ
 
-ビデオ ファイルのエンコードおよびストリーミングを簡単に始める方法については、[ファイルのストリーム配信](stream-files-dotnet-quickstart.md)に関するページをご覧ください。 
-
+[チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - .NET](stream-files-dotnet-quickstart.md)

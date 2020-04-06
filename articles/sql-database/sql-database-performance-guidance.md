@@ -1,24 +1,24 @@
 ---
-title: パフォーマンス チューニング ガイダンス
-description: 推奨事項を使用して、Microsoft Azure SQL Database のクエリのパフォーマンスを手動でチューニングする方法について説明します。
+title: アプリケーションとデータベースのパフォーマンス チューニング ガイダンス
+description: Azure SQL Database でデータベース アプリケーションとデータベースのパフォーマンスを調整する方法について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: juliemsft
-ms.author: jrasnick
-ms.reviewer: carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: carlrab; jrasnick
+ms.date: 03/10/2020
+ms.openlocfilehash: 4f30ebe39d86db7076baa8c29b2a5cf060b07bf5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009101"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228539"
 ---
-# <a name="manual-tune-query-performance-in-azure-sql-database"></a>Azure SQL Database でのクエリのパフォーマンスを手動でチューニングする
+# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>Azure SQL Database でアプリケーションとデータベースのパフォーマンスを調整します。
 
 SQL Database で発生しているパフォーマンスの問題が明らかになったら、この記事を読むと次のことに役立ちます。
 
@@ -232,6 +232,10 @@ ORDER BY start_time DESC
 
 ワークロードに一連の反復的なクエリが含まれる場合は、データベースをホストするために必要な最小リソース サイズ単位を把握できるため、たいてい、プラン選択肢の最適性を理解して検証することは合理的です。 検証した後、プランのパフォーマンスが低くなっていないことを確認するために、ときどきプランを調べ直してください。 詳細については、「 [クエリ ヒント (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx)」をご覧ください。
 
+### <a name="very-large-database-architectures"></a>非常に大規模なデータベースのアーキテクチャ
+
+Azure SQL Database で単一データベース向けに[ハイパースケール](sql-database-service-tier-hyperscale.md) サービス レベルが始まる前は、顧客が個々のデータベースで容量上限に達することがよくありました。 そのような容量上限は、エラスティック プールのプールされたデータベースやマネージド インスタンスのインスタンス データベースに依然として存在します。 次の 2 つのセクションでは、ハイパースケール サービス レベルを利用できないとき、Azure SQL Database で非常に大規模なデータベースに発生する問題を解決するための 2 つのオプションについて説明します。
+
 ### <a name="cross-database-sharding"></a>データベース間のシャーディング
 
 Azure SQL Database は汎用ハードウェアで実行されるため、従来のオンプレミス SQL Server インストールと比べ、1 つのデータベースに対する容量制限が低くなります。 データベース操作が Azure SQL Database の 1 つのデータベースの制限内に収まらないときにシャーディング手法を使用して、複数のデータベースに操作を分散しているユーザーもいます。 Azure SQL Database でシャーディング手法を利用するほとんどのユーザーは、1 つのディメンションのデータを複数のデータベースで分割します。 この手法では、OLTP アプリケーションは多くの場合、スキーマ内の 1 行のみ、またはほんの数行から成るグループに適用されるトランザクションを実行することを理解しておく必要があります。
@@ -243,7 +247,7 @@ Azure SQL Database は汎用ハードウェアで実行されるため、従来�
 
 データベース シャーディングではソリューションの総リソース容量を減らすことはできませんが、複数のデータベースにまたがる非常に大規模なソリューションに対応する際に非常に効果的です。 各データベースを異なるコンピューティング サイズで実行し、リソース要件の高い、非常に大規模で "効果的な" データベースに対応できます。
 
-### <a name="functional-partitioning"></a>機能的パーティション分割
+#### <a name="functional-partitioning"></a>機能的パーティション分割
 
 SQL Server ユーザーは多くの場合、1 つのデータベースのさまざまな機能を組み合わせます。 たとえば、店舗の在庫を管理するロジックがアプリケーションに含まれている場合、そのデータベースには、在庫に関連付けられているロジック、購買発注の追跡、ストアド プロシージャ、月末報告を管理するインデックス付きビュー/具体化されたビューが含まれていることがあります。 この手法では、バックアップなどの操作に関するデータベースの管理が容易になりますが、アプリケーションの機能全体でピーク負荷を処理できるようにハードウェアのサイズを調整する必要もあります。
 
@@ -259,7 +263,7 @@ Azure SQL Database 内でスケールアウト アーキテクチャを使用す
 
 一部のデータベース アプリケーションでは、ワークロードの大半が読み取りになります。 キャッシュ層を利用すれば、データベースの負荷を減らすことができます。また、Azure SQL Database を使用してデータベースをサポートするために必要なコンピューティング サイズを下げられる可能性があります。 [Azure Cache for Redis](https://azure.microsoft.com/services/cache/) を利用すると、読み取りが多いワークロードがある場合に、データを 1 回 (または、構成方法に応じてアプリケーション層コンピューターごとに 1 回) 読み込んでから、SQL データベースの外部にそのデータを格納することができます。 この方法は、データベースの負荷 (CPU と読み取り IO) を減らすことができるものの、トランザクションの整合性に影響があります。データがキャッシュから読み込まれると、データベースのデータとの同期が失われることがあるためです。 多くのアプリケーションではある程度の不整合が許容されますが、すべてのワークロードで許容されるとは限りません。 アプリケーション層のキャッシュ手法を実装する前に、あらゆるアプリケーション要件を完全に理解しておく必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - DTU ベースのサービス レベルの詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)に関するページを参照してください。
 - 仮想コアベースのサービス レベルの詳細については、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関するページを参照してください。

@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 7/29/2019
+ms.date: 3/13/2020
 ms.author: mayg
-ms.openlocfilehash: 72b1311227f5c9f9efc35b2940d3c843a21dc261
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 07c1f7f258dbea7bcf7a6e7ea51fdcfdfaa006aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954012"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79368725"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Azure Site Recovery Deployment Planner による Hyper-V から Azure へのディザスター リカバリー
 
@@ -84,7 +84,7 @@ Azure Site Recovery Deployment Planner の実行中のインスタンスごと�
 
 | サーバーの要件 | 説明 |
 |---|---|
-|VM リストの取得、プロファイル、スループット測定 |<ul><li>オペレーティング システム:Microsoft Windows Server 2016 または Microsoft Windows Server 2012 R2 </li><li>コンピューターの構成:8 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual Studio 2012 の Microsoft Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>このサーバーから Azure へのインターネット アクセス</li><li>Azure ストレージ アカウント</li><li>サーバー上の管理者アクセス権</li><li>100 GB 以上の空きディスク領域 (平均 3 台のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)</li><li>Azure Site Recovery Deployment Planner ツールが実行される VM は、すべての Hyper-V サーバーの TrustedHosts リストに追加する必要があります。</li><li>プロファイル対象のすべての Hyper-V サーバーは、ツールが実行されるクライアント VM の TrustedHosts リストに追加する必要があります。 [TrustedHosts リストへのサーバーの追加について詳細を確認してください](#steps-to-add-servers-into-trustedhosts-list)。 </li><li> このツールは、クライアントで PowerShell またはコマンドライン コンソールを使用して、管理特権で実行する必要があります</ul></ul>|
+|VM リストの取得、プロファイル、スループット測定 |<ul><li>オペレーティング システム:Microsoft Windows Server 2016 または Microsoft Windows Server 2012 R2 </li><li>コンピューターの構成:8 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual Studio 2012 の Microsoft Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>このサーバーから Azure (*.blob.core.windows.net) へのインターネット アクセス、ポート 443<br>[これは省略可能です。 レポート生成時に使用可能な帯域幅を手動で指定することを選択できます。]</li><li>Azure ストレージ アカウント</li><li>サーバー上の管理者アクセス権</li><li>100 GB 以上の空きディスク領域 (平均 3 台のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)</li><li>Azure Site Recovery Deployment Planner ツールが実行される VM は、すべての Hyper-V サーバーの TrustedHosts リストに追加する必要があります。</li><li>プロファイル対象のすべての Hyper-V サーバーは、ツールが実行されるクライアント VM の TrustedHosts リストに追加する必要があります。 [TrustedHosts リストへのサーバーの追加について詳細を確認してください](#steps-to-add-servers-into-trustedhosts-list)。 </li><li> このツールは、クライアントで PowerShell またはコマンドライン コンソールを使用して、管理特権で実行する必要があります</ul></ul>|
 | レポートの生成 | Microsoft Excel 2013 以降がインストールされた Windows PC または Windows Server |
 | ユーザーのアクセス許可 | VM リストの取得操作とプロファイル操作の際に Hyper-V クラスター/Hyper-V ホストにアクセスするための管理者アカウント。<br>プロファイルが必要なすべてのホストには、同じ資格情報 (ユーザー名とパスワード) を備えたドメイン管理者アカウントが必要です
  |
@@ -139,5 +139,5 @@ Azure Site Recovery Deployment Planner ツールの最新バージョンは 2.5 
 各更新で追加された修正については、「[Azure Site Recovery Deployment Planner Version History (Azure Site Recovery Deployment Planner のバージョン履歴)](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx)」を参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Deployment Planner の実行](site-recovery-hyper-v-deployment-planner-run.md)。

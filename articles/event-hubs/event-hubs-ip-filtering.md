@@ -11,51 +11,38 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 769a70cee4f5a1d5d5f77cdd4e55108e3ba40fa1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fb11d1bdcf8145d4e78285833789b41c92b0ce4e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978689"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064874"
 ---
-# <a name="azure-event-hubs---use-firewall-rules"></a>Azure Event Hubs - ファイアウォール規則の使用
+# <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>Azure Event Hubs 名前空間に対する IP ファイアウォール規則を構成する
+既定では、要求が有効な認証と承認を受けている限り、Event Hubs 名前空間にはインターネットからアクセスできます。 IP ファイアウォールを使用すると、[CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみにアクセスを制限できます。
 
-Azure Event Hubs が特定の既知のサイトからのみアクセスできるシナリオでは、ファイアウォール ルールにより、特定の IPv4 アドレスからのトラフィックの受け入れのルールを構成することができます。 たとえば、これらのアドレスは、企業の NAT ゲートウェイのアドレスである可能性があります。
+この機能は、特定の既知のサイトからのみ Azure Event Hubs にアクセスできるようにする必要がある場合に役立ちます。 ファイアウォール規則を使用すると、特定の IPv4 アドレスから送信されたトラフィックを受け入れる規則を構成できます。 たとえば、[Azure ExpressRoute][express-route] で Event Hubs を使用する場合、オンプレミス インフラストラクチャ IP アドレスからのトラフィックのみ許可する**ファイアウォール規則**を作成できます。 
 
-## <a name="when-to-use"></a>使用する場合
+## <a name="ip-firewall-rules"></a>IP ファイアウォール規則
+IP ファイアウォール規則は、Event Hubs 名前空間レベルで適用されます。 したがって、規則は、サポートされているプロトコルを使用するクライアントからのすべての接続に適用されます。 Event Hubs 名前空間上の許可 IP 規則に一致しない IP アドレスからの接続試行は、未承認として拒否されます。 IP 規則に関する記述は応答に含まれません。 IP フィルター規則は順に適用され、IP アドレスと一致する最初の規則に基づいて許可アクションまたは拒否アクションが決定されます。
 
-指定した IP アドレス範囲のみからトラフィックを受信し、それ以外のすべてを拒否するように、Event Hubs 名前空間を設定する必要がある場合は、*ファイアウォール ルール*を利用して Event Hub エンドポイントを他の IP アドレスからブロックすることができます。 たとえば、[Azure Express Route][express-route] で Event Hubs を使用する場合は、オンプレミス インフラストラクチャ IP アドレスからのトラフィックを制限するための*ファイアウォール規則*を作成できます。
+## <a name="use-azure-portal"></a>Azure Portal の使用
+このセクションでは、Azure portal を使用して、Event Hubs 名前空間に対する IP ファイアウォール規則を作成する方法について説明します。 
 
-## <a name="how-filter-rules-are-applied"></a>フィルター規則の適用方法
+1. [Azure portal](https://portal.azure.com) で **[Event Hubs 名前空間]** に移動します。
+2. 左側のメニューで、 **[ネットワーク]** オプションを選択します。 **[すべてのネットワーク]** オプションを選択した場合、イベント ハブはあらゆる IP アドレスからの接続を受け入れます。 この設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。 
 
-IP フィルター規則は、Event Hubs 名前空間レベルで適用されます。 したがって、規則は、サポートされているプロトコルを使用するクライアントからのすべての接続に適用されます。
+    ![ファイアウォールで [すべてのネットワーク] のオプションが選択されている](./media/event-hubs-firewall/firewall-all-networks-selected.png)
+1. アクセスを特定のネットワークと IP アドレスに制限するには、 **[選択されたネットワーク]** オプションを選択します。 **[ファイアウォール]** セクションで、次の手順のようにします。
+    1. 現在のクライアントの IP アドレスに名前空間へのアクセスを許可するには、 **[クライアント IP アドレスを追加する]** オプションを選択します。 
+    2. **[アドレス範囲]** に、特定の IPv4 アドレスまたは IPv4 アドレスの範囲を CIDR 表記で入力します。 
+    3. **信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する**かどうかを指定します。 
 
-Event Hubs 名前空間上の許可 IP 規則に一致しない IP アドレスからの接続試行は、未承認として拒否されます。 IP 規則に関する記述は応答に含まれません。
+        ![ファイアウォールで [すべてのネットワーク] のオプションが選択されている](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
+3. ツール バーの **[保存]** を選択して設定を保存します。 ポータルの通知に確認が表示されるまで、数分間お待ちください。
 
-## <a name="default-setting"></a>既定の設定
 
-既定では、ポータルの Event Hubs の **[IP フィルター]** は空白になっています。 この既定の設定は、イベント ハブが任意の IP アドレスからの接続を受け入れることを意味します。 この既定の設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。
-
-## <a name="ip-filter-rule-evaluation"></a>IP フィルター規則の評価
-
-IP フィルター規則は順に適用され、IP アドレスと一致する最初の規則に基づいて許可アクションまたは拒否アクションが決定されます。
-
->[!WARNING]
-> ファイアウォールを実装すると、他の Azure サービスが Event Hubs と対話するのを禁止できます。
->
-> IP フィルター処理 (ファイアウォール) が実装されているときは信頼できる Microsoft サービスはサポートされませんが、近日中に使用できるようになります。
->
-> IP フィルター処理では動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
-> - Azure Stream Analytics
-> - Azure Event Grid との統合
-> - Azure IoT Hub ルート
-> - Azure IoT Device Explorer
->
-> 次の Microsoft サービスが仮想ネットワーク上に存在する必要があります
-> - Azure Web Apps
-> - Azure Functions
-
-### <a name="creating-a-firewall-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してファイアウォール ルールを作成する
+## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
 
 > [!IMPORTANT]
 > ファイアウォール ルールは、**Standard** レベルと **Dedicated** レベルの Event Hubs でサポートされます。 Basic レベルではサポートされません。
@@ -74,7 +61,7 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 > ```json
 > "defaultAction": "Allow"
 > ```
-> から
+> to
 > ```json
 > "defaultAction": "Deny"
 > ```
@@ -133,6 +120,7 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
                 "action":"Allow"
             }
           ],
+          "trustedServiceAccessEnabled": false,
           "defaultAction": "Deny"
         }
       }

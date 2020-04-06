@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ebb512fee0186bed3cc7f49f0525dac43e57da3a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818966"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228611"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database での単一データベースとプールされたデータベースの管理
 
@@ -91,7 +91,7 @@ Azure SQL DB ではバックアップを作成しません。なぜなら必要�
 
 SQL Database ではセキュリティとプライバシーが非常に重視されています。 SQL Database 内のセキュリティはデータベース レベルとプラットフォーム レベルで利用でき、最も理解しやすいのは複数のレイヤーに分類されているときです。 各レイヤーで、アプリケーションを制御して最善のセキュリティを提供します。 以下のレイヤーがあります。
 
-- ID と認証 ([Windows/SQL 認証および Azure Active Directory (AAD) 認証](sql-database-control-access.md))。
+- ID と認証 ([SQL 認証および Azure Active Directory (AAD) 認証](sql-database-manage-logins.md))。
 - アクティビティの監視 ([監査](sql-database-auditing.md)および[脅威の検出](sql-database-threat-detection.md))。
 - 実際のデータの保護 ([Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) および [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine))。
 - 機密データおよび特権データの制御 ([行レベル セキュリティ](/sql/relational-databases/security/row-level-security)および[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking))。
@@ -100,10 +100,10 @@ SQL Database ではセキュリティとプライバシーが非常に重視さ�
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>SQL Database ではどのようなユーザー認証方法が提供されますか
 
-SQL Database では [2 種類の認証方法](sql-database-control-access.md#authentication)が提供されています。
+SQL Database では 2 種類の認証方法が提供されています。
 
 - [Azure Active Directory 認証](sql-database-aad-authentication.md)
-- SQL 認証
+- [SQL 認証](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 従来の Windows 認証はサポートされていません。 Azure Active Directory (AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 AAD は [MFA (多要素認証)](sql-database-ssms-mfa-authentication.md) をサポートし、[数クリック](../active-directory/hybrid/how-to-connect-install-express.md)で AAD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定の SDL Database サーバーの任意のデータベースでユーザーを認証できます。 このサービスを使用すると、SQL Database および SQL Data Warehouse で、Azure AD ドメイン内において多要素認証とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
 
@@ -168,11 +168,11 @@ SQL Database では、監査を有効にしてデータベース イベントを
 SQL Database では、既定により、記憶域サブシステムのデータ ファイルとログ ファイルに保存されているデータは、[Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) によって常に完全に暗号化されます。 バックアップも暗号化されます。 TDE を使う場合、このデータにアクセスするアプリケーション側を変更する必要はありません。 名前のとおり、暗号化と復号化は透過的に行われます。
 使用中と保存中の機微なデータを保護するため、SQL Database には [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine) という名前の機能が用意されています。 AE はクライアント側暗号化の 1 種であり、データベースの機密列を暗号化します (このため、これらの列は、データベース管理者および未承認ユーザーに対しては暗号化テキストになります)。 サーバーは、最初に暗号化されたデータを受け取ります。 Always Encrypted のキーもクライアント側に格納されるため、機密列の暗号化を解除できるのは承認済みクライアントのみに限られます。 暗号化キーはクライアントに格納されるため、サーバー管理者およびデータ管理者は機微なデータを確認することはできません。 AE は、未承認のクライアントから物理ディスクまで、テーブル内の機密列をエンド ツー エンドで暗号化します。 AE では現在等値比較がサポートされているため、DBA では引き続き、SQL コマンドの一環として暗号化された列に対してクエリを行うことができます。 Always Encrypted は、[Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)、Windows 証明書ストア、ローカル ハードウェアのセキュリティ モジュールなどの多様なキー ストア オプションと組み合わせて使用できます。
 
-|**特性**|**常に暗号化**|**透過的なデータ暗号化**|
+|**特性**|**常に暗号化**|**Transparent Data Encryption**|
 |---|---|---|
 |**暗号化の範囲**|End-to-end|保存データ|
 |**データベース サーバーは機微なデータにアクセスできる**|いいえ|はい (暗号化は保存データに対するものであるため)|
-|**許可される T-SQL の操作**|等値比較|T-SQL のすべての公開されている部分を使用できます|
+|**許可される T-SQL の操作**|等価比較|T-SQL のすべての公開されている部分を使用できます|
 |**機能を使うために必要なアプリの変更**|最小限|極めて最小限|
 |**暗号化の細分性**|列レベル|データベース レベル|
 ||||
@@ -189,7 +189,7 @@ SQL Database では、既定により、記憶域サブシステムのデータ 
 
 Always Encrypted (クライアント側暗号化) および Transparent Data Encryption (保存時暗号化) ではともに、キー管理オプションが用意されています。 暗号化キーを定期的にローテーションすることをお勧めします。 ローテーションの頻度は、組織内部の規制とコンプライアンス要件の両方に合わせる必要があります。
 
-#### <a name="transparent-data-encryption-tde"></a>透過的なデータ暗号化 (TDE)
+#### <a name="transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE)
 
 TDE は 2 キー階層になっており、各ユーザー データベースのデータは対称的でデータベース固有の AES-256 データベース暗号化キー (DEK) で暗号化され、さらにサーバー固有の非対称の RSA 2048 マスター キーで暗号化されます。 マスター キーは次のどちらかで管理できます。
 
@@ -226,7 +226,7 @@ Always Encrypted は [2 キー階層](/sql/relational-databases/security/encrypt
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL Database はすべての規制要件に準拠していますか。また、SQL Database は組織のコンプライアンスにどのように役立ちますか
 
-SQL Database は、さまざまな規制に準拠しています。 SQL Database が準拠するコンプライアンスの最新の一覧を参照するには、[Microsoft Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) にアクセスしてご自分の組織に重要なコンプライアンスを細かく調査し、SQL Database が準拠する Azure サービスに含まれているかどうかを確認してください。 SQL Database はコンプライアンスに準拠しているサービスとして認証を受けていますが、これは組織のサービスのコンプライアンスを支援するものであり、自動的にコンプライアンスを保証するものではないことに注意してください。
+SQL Database は、さまざまな規制に準拠しています。 SQL Database が準拠するコンプライアンスの最新の一覧を参照するには、[Microsoft セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)にアクセスしてご自分の組織に重要なコンプライアンスを細かく調査し、SQL Database が準拠する Azure サービスに含まれているかどうかを確認してください。 SQL Database はコンプライアンスに準拠しているサービスとして認証を受けていますが、これは組織のサービスのコンプライアンスを支援するものであり、自動的にコンプライアンスを保証するものではないことに注意してください。
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>移行後のインテリジェントなデータベースの監視とメンテナンス
 
@@ -260,7 +260,7 @@ Azure SQL プラットフォームにより、サーバーのデータベース�
 
 SQL Database では、プラットフォームのインテリジェントな洞察を利用して、パフォーマンスを監視し、それに応じて調整することができます。 SQL Database のパフォーマンスとリソース使用率は、次の方法で監視できます。
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
 Azure portal でデータベースを選択し [概要] ペインのグラフをクリックすると、データベースの使用率が表示されます。 このグラフは、CPU 使用率、DTU の割合、データ IO の割合、セッションの割合、データベース サイズの割合など、複数のメトリックを表示するように変更できます。
 
@@ -319,11 +319,11 @@ SQL Database では、特定のクラスのデータ破損にデータを失う�
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database"></a>SQL Database のデータを BACPAC ファイルとしてエクスポートおよびインポートするにはどうすればよいですか
 
-- **エクスポート**:Azure portal から Azure SQL データベースを BACPAC ファイルとしてエクスポートできます。
+- **Export**:Azure portal から Azure SQL データベースを BACPAC ファイルとしてエクスポートできます。
 
    ![データベースのエクスポート](./media/sql-database-export/database-export1.png)
 
-- **インポート**:Azure portal を使って、データを BACPAC ファイルとしてデータベースにインポートすることもできます。
+- **Import**:Azure portal を使って、データを BACPAC ファイルとしてデータベースにインポートすることもできます。
 
    ![データベースのインポート](./media/sql-database-import/import1.png)
 
@@ -334,6 +334,6 @@ SQL Database では、特定のクラスのデータ破損にデータを失う�
 - **[データ同期](sql-database-sync-data.md)** – この機能を使うと、複数のオンプレミス SQL Server データベースと SQL Database の間でデータを双方向に同期することができます。 オンプレミスの SQL Server データベースと同期するには、ローカル コンピューターに同期エージェントをインストールして構成し、発信 TCP ポート 1433 を開く必要があります。
 - **[トランザクション レプリケーション](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – トランザクション レプリケーションを使うと、オンプレミスをパブリッシャー、Azure SQL DB をサブスクライバーにして、オンプレミスから Azure SQL DB にデータを同期できます。 現時点では、このセットアップのみがサポートされています。 最小限のダウンタイムでオンプレミスから Azure SQL にデータを移行する方法の詳細については、「[トランザクション レプリケーションの使用](sql-database-single-database-migrate.md#method-2-use-transactional-replication)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [SQL Database](sql-database-technical-overview.md) についての詳細情報。

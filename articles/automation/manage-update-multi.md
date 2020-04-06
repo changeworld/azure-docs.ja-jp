@@ -3,14 +3,14 @@ title: 複数の Azure 仮想マシンの更新を管理する
 description: この記事では、Azure 仮想マシンと Azure 以外の仮想マシンの更新プログラムを管理する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 01/16/2020
+ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: de7171d3807540ae7d5f09c3a877031631248e49
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: c9a3c88ea0c3e656adf0f8c514b418cfc07c9590
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168042"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335769"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -29,21 +29,7 @@ Update Management を使用するには、以下が必要です。
 
 - ソリューションにオンボードされている Linux VM の更新リポジトリへのアクセス。
 
-## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
-
-Update Management は、次のオペレーティング システムでサポートされています。
-
-|オペレーティング システム  |メモ  |
-|---------|---------|
-|Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします。         |
-|Windows Server 2008 R2 SP1 以降     |Windows PowerShell 4.0 以降が必要です ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。</br> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))。         |
-|CentOS 6 (x86/x64) および 7 (x64)      | |
-|Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | |
-|SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | |
-|Ubuntu 14.04 LTS、16.04 LTS、および 18.04 LTS (x86/x64)      | |
-
-> [!NOTE]
-> Ubuntu でメンテナンス期間外に更新プログラムが適用されないようにするには、無人アップグレード パッケージを再構成して自動更新を無効にします。 詳細については、[Ubuntu サーバー ガイドの自動更新に関するトピック](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)を参照してください。
+Update Management のシステム必要条件の詳細については、[Update Management のクライアント要件](automation-update-management.md#clients)に関するページを参照してください。
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Update Management を Azure 仮想マシンに対して有効にする
 
@@ -79,7 +65,7 @@ Update Management が最近有効になったコンピューターは、まだ�
 
 - **評価が行われていません**:想定されている時間内にコンピューターから更新プログラムの評価データを受信していません。 Linux コンピューターでは、想定されている時間は、最後の 1 時間です。 Windows コンピューターでは、想定されている時間は、最後の 12 時間です。
 
-エージェントの状態を表示するには、 **[Update エージェントの準備]** 列のリンクを選択します。 このオプションを選択すると、**ハイブリッド Worker** ウィンドウが開いて、ハイブリッド worker の状態が表示されます。 次の図は、長期間 Update Management に接続されていないエージェントの例を示しています。
+エージェントの状態を表示するには、 **[エージェントの更新の準備]** 列のリンクを選択します。 このオプションを選択すると、**ハイブリッド Worker** ウィンドウが開いて、ハイブリッド worker の状態が表示されます。 次の図は、長期間 Update Management に接続されていないエージェントの例を示しています。
 
 ![[コンピューター] タブの表示](./media/manage-update-multi/update-agent-broken.png)
 
@@ -204,5 +190,4 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 ## <a name="next-steps"></a>次のステップ
 
-ログ、出力、エラーを含む Update Management の詳細については、「[Azure の Update Management ソリューション](../operations-management-suite/oms-solution-update-management.md)」をご覧ください。
-
+Update Management ログ、出力、エラーの詳細については、[Update Management の更新レコードに対するクエリの実行](automation-update-management-query-logs.md)に関するページを参照してください。

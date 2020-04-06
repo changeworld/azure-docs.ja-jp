@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5f4435ca213584fff84f3ddad9bda6f7e06628a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190655"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236911"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Cognitive Search へのファセット ナビゲーションの実装方法
 
@@ -34,7 +34,7 @@ ms.locfileid: "78190655"
 ## <a name="sample-code-and-demo"></a>サンプル コードとデモ
 この記事では、例としてジョブ検索ポータルを使用します。 この例は、ASP.NET MVC アプリケーションとして実装されます。
 
-- [Azure Cognitive Search ジョブ ポータル デモ](http://azjobsdemo.azurewebsites.net/)に関するページにある実際に使用可能なデモをオンラインで参照し、テストしてください。
+- [Azure Cognitive Search ジョブ ポータル デモ](https://aka.ms/azjobsdemo)に関するページにある実際に使用可能なデモをオンラインで参照し、テストしてください。
 
 - [GitHub の Azure 用サンプル リポジトリ](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)からコードをダウンロードします。
 
@@ -78,7 +78,7 @@ Azure Cognitive Search では、要求は 1 以上のクエリ パラメータ�
 フィルターによってどのように正確さが向上するのかをよく理解するため、次のような複雑な検索式とフィルター式を含む式を比較してみてください。
 
 -   `GET /indexes/hotel/docs?search=lodging budget +Seattle –motel +parking`
--   `GET /indexes/hotel/docs?search=lodging&$filter=City eq ‘Seattle’ and Parking and Type ne ‘motel’`
+-   `GET /indexes/hotel/docs?search=lodging&$filter=City eq 'Seattle' and Parking and Type ne 'motel'`
 
 どちらのクエリも有効ですが、シアトルで駐車場のあるモーテル以外を探している場合は 2 番目の方が優れています。
 -   1 番目のクエリは、Name や Description などの文字列フィールドおよび検索可能なデータを含む他のフィールドにおいて、特定の単語が言及されている、または言及されていないことに依存します。
@@ -232,7 +232,7 @@ SearchParameters sp = new SearchParameters()
 
 ファセット クエリ パラメーターはフィールドに対して設定され、データの種類によっては、`count:<integer>`、`sort:<>`、`interval:<integer>`、および `values:<list>` を含むコンマ区切りリストによってさらにパラメーター化できます。 値リストは、範囲を設定するときに数値データに対してサポートされます。 使用方法の詳細については、[ドキュメントの検索 (Azure Cognitive Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) に関するページを参照してください。
 
-アプリケーションで作成する要求では、ファセットだけでなく、ファセット値の選択に基づいて候補ドキュメントのセットを絞り込むフィルターも作成する必要があります。 自転車ストアの場合、ファセット ナビゲーションでは「*どのような色、製造元、および種類の自転車が手にはいるか*」のような質問への手掛かりが提供されます。 フィルター処理は、「*赤、マウンテン バイク、特定の価格範囲という条件を満たす自転車*」のような質問に回答します。 ユーザーが [Red] をクリックして赤い商品だけを表示するように指示すると、アプリケーションが送信する次のクエリには `$filter=Color eq ‘Red’` が含まれます。
+アプリケーションで作成する要求では、ファセットだけでなく、ファセット値の選択に基づいて候補ドキュメントのセットを絞り込むフィルターも作成する必要があります。 自転車ストアの場合、ファセット ナビゲーションでは「*どのような色、製造元、および種類の自転車が手にはいるか*」のような質問への手掛かりが提供されます。 フィルター処理は、「*赤、マウンテン バイク、特定の価格範囲という条件を満たす自転車*」のような質問に回答します。 ユーザーが [Red] をクリックして赤い商品だけを表示するように指示すると、アプリケーションが送信する次のクエリには `$filter=Color eq 'Red'` が含まれます。
 
 Business Title のファセットから値を選択した場合、`JobsSearch.cs` ページからの次のコード スニペットでは、選択した Business Title がフィルターに追加されます。
 
@@ -297,7 +297,7 @@ if (businessTitleFacet != "")
 
 ナビゲーション ツリーの各ファセット フィールドの値は、既定で 10 個に制限されています。 この既定値は、値のリストが管理しやすいサイズに保たれるため、ナビゲーション構造にとって意味のあるものです。 count に値を割り当てることによって、既定値をオーバーライドできます。
 
-* `&facet=city,count:5` は、上位ランクの結果で見つかった最初の 5 つの都市のみが、ファセットの結果として返されることを指定します。 検索語句が “airport” で 32 個が一致したサンプル クエリがあるとします。 クエリで `&facet=city,count:5` を指定した場合、検索結果に最も多くのドキュメントが含まれる最初の 5 つの一意な都市のみが、ファセットの結果に含まれます。
+* `&facet=city,count:5` は、上位ランクの結果で見つかった最初の 5 つの都市のみが、ファセットの結果として返されることを指定します。 検索語句が "airport" で 32 個が一致したサンプル クエリがあるとします。 クエリで `&facet=city,count:5` を指定した場合、検索結果に最も多くのドキュメントが含まれる最初の 5 つの一意な都市のみが、ファセットの結果に含まれます。
 
 ファセットの結果と検索結果の違いに注意してください。 検索結果は、クエリに一致するすべてのドキュメントです。 ファセットの結果は、各ファセットの値と一致するものです。 この例では、検索結果には、ファセット分類リスト (この例では 5) に含まれていない都市名が含まれます。 ファセット ナビゲーションによって除外された結果は、ファセットをクリアするか、または都市以外の他のファセットを選択することによって、表示されるようになります。 
 
@@ -371,7 +371,7 @@ Azure Cognitive Search には、**geo.distance** および **geo.intersects** �
 ## <a name="try-the-demo"></a>デモの試用
 この記事で参照されている例は、Azure Cognitive Search ジョブ ポータル デモに含まれています。
 
--   [Azure Cognitive Search ジョブ ポータル デモ](https://azjobsdemo.azurewebsites.net/)に関するページにある実際に使用可能なデモをオンラインで参照し、テストしてください。
+-   [Azure Cognitive Search ジョブ ポータル デモ](https://aka.ms/azjobsdemo)に関するページにある実際に使用可能なデモをオンラインで参照し、テストしてください。
 
 -   [GitHub の Azure 用サンプル リポジトリ](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)からコードをダウンロードします。
 

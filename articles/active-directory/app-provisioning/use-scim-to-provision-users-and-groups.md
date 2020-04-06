@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42fc10c1e7e88e36e4d2174671702e043fb96538
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 0507989ec25db595a85b89f15d8ff7d056a970f8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78926838"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297674"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD) を利用し、SCIM エンドポイントを構築し、ユーザー プロビジョニングを構成する
 
@@ -287,10 +287,10 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 
 #### <a name="get-user"></a>ユーザーの取得
 
-###### <a name="request-1"></a>要求
+###### <a name="request"></a><a name="request-1"></a>要求
 *GET /Users/5d48a0a8e9f04aa38008* 
 
-###### <a name="response-1"></a>応答 (ユーザー検出)
+###### <a name="response-user-found"></a><a name="response-1"></a>応答 (ユーザー検出)
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -334,11 +334,11 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 
 #### <a name="get-user-by-query"></a>クエリによるユーザーの取得
 
-##### <a name="request-2"></a>要求
+##### <a name="request"></a><a name="request-2"></a>要求
 
 *GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
 
-##### <a name="response-2"></a>応答
+##### <a name="response"></a><a name="response-2"></a>応答
 
 *HTTP/1.1 200 OK*
 ```json
@@ -375,11 +375,11 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 
 #### <a name="get-user-by-query---zero-results"></a>クエリによるユーザーの取得 - 0 件の結果
 
-##### <a name="request-3"></a>要求
+##### <a name="request"></a><a name="request-3"></a>要求
 
 *GET /Users?filter=userName eq "non-existent user"*
 
-##### <a name="response-3"></a>応答
+##### <a name="response"></a><a name="response-3"></a>応答
 
 *HTTP/1.1 200 OK*
 ```json
@@ -395,7 +395,7 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 
 #### <a name="update-user-multi-valued-properties"></a>ユーザーの更新 [複数値のプロパティ]
 
-##### <a name="request-4"></a>要求
+##### <a name="request"></a><a name="request-4"></a>要求
 
 *PATCH /Users/6764549bef60420686bc HTTP/1.1*
 ```json
@@ -416,7 +416,7 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 }
 ```
 
-##### <a name="response-4"></a>応答
+##### <a name="response"></a><a name="response-4"></a>応答
 
 *HTTP/1.1 200 OK*
 ```json
@@ -446,7 +446,7 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 
 #### <a name="update-user-single-valued-properties"></a>ユーザーの更新 [単一値のプロパティ]
 
-##### <a name="request-5"></a>要求
+##### <a name="request"></a><a name="request-5"></a>要求
 
 *PATCH /Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
@@ -460,7 +460,7 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 }
 ```
 
-##### <a name="response-5"></a>応答
+##### <a name="response"></a><a name="response-5"></a>応答
 
 *HTTP/1.1 200 OK*
 ```json
@@ -491,7 +491,7 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 
 ### <a name="disable-user"></a>ユーザーの無効化
 
-##### <a name="request-14"></a>要求
+##### <a name="request"></a><a name="request-14"></a>要求
 
 *PATCH /Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
@@ -509,7 +509,7 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 }
 ```
 
-##### <a name="response-14"></a>応答
+##### <a name="response"></a><a name="response-14"></a>応答
 
 ```json
 {
@@ -545,11 +545,11 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 ```
 #### <a name="delete-user"></a>ユーザーの削除
 
-##### <a name="request-6"></a>要求
+##### <a name="request"></a><a name="request-6"></a>要求
 
 *DELETE /Users/5171a35d82074e068ce2 HTTP/1.1*
 
-##### <a name="response-6"></a>応答
+##### <a name="response"></a><a name="response-6"></a>応答
 
 *HTTP/1.1 204 No Content*
 
@@ -562,7 +562,7 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 
 #### <a name="create-group"></a>グループの作成
 
-##### <a name="request-7"></a>要求
+##### <a name="request"></a><a name="request-7"></a>要求
 
 *POST /Groups HTTP/1.1*
 ```json
@@ -576,7 +576,7 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 }
 ```
 
-##### <a name="response-7"></a>応答
+##### <a name="response"></a><a name="response-7"></a>応答
 
 *HTTP/1.1 201 Created*
 ```json
@@ -597,11 +597,11 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 
 #### <a name="get-group"></a>グループの取得
 
-##### <a name="request-8"></a>要求
+##### <a name="request"></a><a name="request-8"></a>要求
 
 *GET /Groups/40734ae655284ad3abcc?excludedAttributes=members HTTP/1.1*
 
-##### <a name="response-8"></a>応答
+##### <a name="response"></a><a name="response-8"></a>応答
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -619,10 +619,10 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 
 #### <a name="get-group-by-displayname"></a>displayName でのグループの取得
 
-##### <a name="request-9"></a>要求
+##### <a name="request"></a><a name="request-9"></a>要求
 *GET /Groups?excludedAttributes=members&filter=displayName eq "displayName" HTTP/1.1*
 
-##### <a name="response-9"></a>応答
+##### <a name="response"></a><a name="response-9"></a>応答
 
 *HTTP/1.1 200 OK*
 ```json
@@ -648,7 +648,7 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 
 #### <a name="update-group-non-member-attributes"></a>グループの更新 [非メンバー属性]
 
-##### <a name="request-10"></a>要求
+##### <a name="request"></a><a name="request-10"></a>要求
 
 *PATCH /Groups/fa2ce26709934589afc5 HTTP/1.1*
 ```json
@@ -662,13 +662,13 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 }
 ```
 
-##### <a name="response-10"></a>応答
+##### <a name="response"></a><a name="response-10"></a>応答
 
 *HTTP/1.1 204 No Content*
 
 ### <a name="update-group-add-members"></a>グループの更新 [メンバーの追加]
 
-##### <a name="request-11"></a>要求
+##### <a name="request"></a><a name="request-11"></a>要求
 
 *PATCH /Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
@@ -685,13 +685,13 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 }
 ```
 
-##### <a name="response-11"></a>応答
+##### <a name="response"></a><a name="response-11"></a>応答
 
 *HTTP/1.1 204 No Content*
 
 #### <a name="update-group-remove-members"></a>グループの更新 [メンバーの削除]
 
-##### <a name="request-12"></a>要求
+##### <a name="request"></a><a name="request-12"></a>要求
 
 *PATCH /Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
@@ -708,17 +708,17 @@ Azure AD との互換性を確保するために、SCIM エンドポイントの
 }
 ```
 
-##### <a name="response-12"></a>応答
+##### <a name="response"></a><a name="response-12"></a>応答
 
 *HTTP/1.1 204 No Content*
 
 #### <a name="delete-group"></a>グループの削除
 
-##### <a name="request-13"></a>要求
+##### <a name="request"></a><a name="request-13"></a>要求
 
 *DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
-##### <a name="response-13"></a>応答
+##### <a name="response"></a><a name="response-13"></a>応答
 
 *HTTP/1.1 204 No Content*
 
@@ -752,10 +752,368 @@ TLS 1.2 暗号スイートの最低条件:
 
 ## <a name="step-3-build-a-scim-endpoint"></a>手順 3:SCIM エンドポイントを構築する
 
-これでスキーマを設計し、Azure AD SCIM の実装を理解したので、SCIM エンドポイントの開発を開始できます。 最初から開始して完全に独自の実装を構築するのではなく、SCIM コミュニティによって発行された多数のオープンソース SCIM ライブラリを使用できます。  
+これでスキーマを設計し、Azure AD SCIM の実装を理解したので、SCIM エンドポイントの開発を開始できます。 最初から開始して完全に独自の実装を構築するのではなく、SCIM コミュニティによって発行された多数のオープンソース SCIM ライブラリを使用できます。
+
 Azure AD プロビジョニング チームによって発行されたオープンソースの .NET Core [参照コード](https://aka.ms/SCIMReferenceCode)は、開発を開始するためのリソースの 1 つです。 SCIM エンドポイントを構築したら、それをテストします。参照コードの一部として提供されている [Postman テスト](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)のコレクションを使用したり、[上記](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)の要求または応答のサンプルを通じて実行したりすることができます。  
 
-注:参照コードは、SCIM エンドポイントの構築を開始するのに役立ち、"現状のまま" 提供されることを目的としています。 コードのビルドと保守に役立つため、コミュニティからの貢献は歓迎されます。 
+   > [!Note]
+   > 参照コードは、SCIM エンドポイントの構築を開始するのに役立ち、"現状のまま" 提供されることを目的としています。 コードのビルドと保守に役立つため、コミュニティからの貢献は歓迎されます。
+
+このソリューションは、_Microsoft.SCIM_ および _Microsoft.SCIM.WebHostSample_ の 2 つのプロジェクトで構成されています。
+
+_Microsoft.SCIM_ プロジェクトは、SCIM 仕様に準拠する Web サービスのコンポーネントを定義するライブラリです。 これによりインターフェイス _Microsoft.SCIM.IProvider_ が宣言され、要求がプロバイダーのメソッドへの呼び出しに変換され、ID ストアで動作するようにプログラムされます。
+
+![内訳:プロバイダーのメソッドへの呼び出しに変換された要求](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
+
+_Microsoft.SCIM.WebHostSample_ プロジェクトは、_空の_テンプレートに基づく Visual Studio ASP.NET Core Web アプリケーションです。 これにより、サンプル コードをスタンドアロンとしてデプロイし、コンテナーまたはインターネット インフォメーション サービス内でホストすることができます。 また、_Microsoft.SCIM.IProvider_ インターフェイスを実装して、クラスをサンプル ID ストアとしてメモリに保持することができます。
+
+```csharp
+    public class Startup
+    {
+        ...
+        public IMonitor MonitoringBehavior { get; set; }
+        public IProvider ProviderBehavior { get; set; }
+
+        public Startup(IWebHostEnvironment env, IConfiguration configuration)
+        {
+            ...
+            this.MonitoringBehavior = new ConsoleMonitor();
+            this.ProviderBehavior = new InMemoryProvider();
+        }
+        ...
+```
+
+### <a name="building-a-custom-scim-endpoint"></a>カスタム SCIM エンドポイントの構築
+
+SCIM サービスには、HTTP アドレスと、ルート証明機関が次のいずれかの名前であるサーバー認証証明書が設定されている必要があります。
+
+* CNNIC
+* Comodo
+* CyberTrust
+* DigiCert
+* GeoTrust
+* GlobalSign
+* Go Daddy
+* VeriSign
+* WoSign
+
+.NET Core SDK には、開発時に使用できる HTTPS 開発証明書が含まれています。この証明書は、最初の実行エクスペリエンスの一部としてインストールされます。 ASP.NET Core Web アプリケーションの実行方法に応じて、異なるポートがリッスンされます。
+
+* Microsoft.SCIM.WebHostSample: https://localhost:5001
+* IIS Express: https://localhost:44359/
+
+ASP.NET Core の HTTPS の詳細については、次のリンクを参照してください: 「[ASP.NET Core に HTTPS を適用する](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl)」
+
+### <a name="handling-endpoint-authentication"></a>エンドポイント認証の処理
+
+Azure Active Directory からの要求には、OAuth 2.0 のベアラー トークンが含まれます。 要求を受信するサービスでは、発行者が本来の Azure Active Directory テナントに対応する Azure Active Directory であることを認証する必要があります。
+
+トークンでは、発行者は、`"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"` のような iss 要求によって識別されます。 この例では、要求値のベース アドレスである `https://sts.windows.net` では発行者である Azure Active Directory を識別し、相対アドレス セグメントである _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_ は、トークンの発行対象となった Azure Active Directory テナントの一意識別子になっています。
+
+トークンの対象は、ギャラリー内のアプリケーションのアプリケーション テンプレート ID になります。単一のテナントに登録されている各アプリケーションは、同じ `iss` 要求を SCIM 要求と共に受信する場合があります。 ギャラリー内の各アプリケーションのアプリケーション テンプレート ID はさまざまです。ギャラリー アプリケーションのアプリケーション テンプレート ID に関する質問は、[ProvisioningFeedback@microsoft.com](mailto:ProvisioningFeedback@microsoft.com) にお問い合わせください。 すべてのカスタム アプリのアプリケーション テンプレート ID は _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_ です。
+
+このサンプル コードでは、要求は Microsoft.AspNetCore.Authentication.JwtBearer パッケージを使用して認証されます。 次のコードでは、あらゆるサービスのエンドポイントに対する要求が、指定のテナントに対して Azure Active Directory から発行されたベアラー トークンを使用して認証されるようになります。
+
+```csharp
+        public void ConfigureServices(IServiceCollection services)
+        {
+            if (_env.IsDevelopment())
+            {
+                ...
+            }
+            else
+            {
+                services.AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                    .AddJwtBearer(options =>
+                    {
+                        options.Authority = " https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/";
+                        options.Audience = "8adf8e6e-67b2-4cf2-a259-e3dc5476c621";
+                        ...
+                    });
+            }
+            ...
+        }
+
+        public void Configure(IApplicationBuilder app)
+        {
+            ...
+            app.UseAuthentication();
+            app.UseAuthorization();
+            ...
+       }
+```
+
+ベアラートークンは、提供された [Postman テスト](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)を使用し、localhost を使用してローカル デバッグを実行するためにも必要です。 このサンプル コードでは、ASP.NET Core 環境を使用し、開発段階で認証オプションを変更して、自己署名トークンを使用できるようにします。
+
+ASP.NET Core の複数の環境の詳細については、次のリンクを参照してください: [ASP.NET Core で複数の環境を使用する](
+https://docs.microsoft.com/aspnet/core/fundamentals/environments)
+
+次のコードでは、あらゆるサービスのエンドポイントに対する要求が、カスタム キーを使用して署名されたベアラー トークンを使用して認証されるようになります。
+
+```csharp
+        public void ConfigureServices(IServiceCollection services)
+        {
+            if (_env.IsDevelopment())
+            {
+                services.AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                    .AddJwtBearer(options =>
+                    {
+                        options.TokenValidationParameters =
+                            new TokenValidationParameters
+                            {
+                                ValidateIssuer = false,
+                                ValidateAudience = false,
+                                ValidateLifetime = false,
+                                ValidateIssuerSigningKey = false,
+                                ValidIssuer = "Microsoft.Security.Bearer",
+                                ValidAudience = "Microsoft.Security.Bearer",
+                                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("A1B2C3D4E5F6A1B2C3D4E5F6"))
+                            };
+                    });
+            }
+        ...
+```
+
+GET 要求をトークン コントローラーに送信することで有効なベアラー トークンが取得されます。メソッド _GenerateJSONWebToken_ により、開発用に構成されたパラメーターに一致するトークンが作成されます。
+
+```csharp
+        private string GenerateJSONWebToken()
+        {
+            // Create token key
+            SymmetricSecurityKey securityKey =
+                new SymmetricSecurityKey(Encoding.UTF8.GetBytes("A1B2C3D4E5F6A1B2C3D4E5F6"));
+            SigningCredentials credentials =
+                new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            // Set token expiration
+            DateTime startTime = DateTime.UtcNow;
+            DateTime expiryTime = startTime.AddMinutes(120);
+
+            // Generate the token
+            JwtSecurityToken token =
+                new JwtSecurityToken(
+                    "Microsoft.Security.Bearer",
+                    "Microsoft.Security.Bearer",
+                    null,
+                    notBefore: startTime,
+                    expires: expiryTime,
+                    signingCredentials: credentials);
+
+            string result = new JwtSecurityTokenHandler().WriteToken(token);
+            return result;
+        }
+```
+
+### <a name="handling-provisioning-and-deprovisioning-of-users"></a>ユーザーのプロビジョニングとプロビジョニング解除の処理
+
+***例 1.一致するユーザーをサービスに照会する***
+
+Azure Active Directory は、Azure AD 内のユーザーの mailNickname 属性値に一致する externalId 属性値を持つユーザーをサービスに照会します。 クエリは次の例のようなハイパーテキスト転送プロトコル (HTTP) 要求として表現されます。jyoung は Azure Active Directory 内のユーザーの mailNickname 例です。
+
+>[!NOTE]
+> これは一例です。 すべてのユーザーに mailNickname 属性があるわけではありません。また、ユーザーが持つ値はディレクトリ内で一意ではない場合もあります。 また、照合に使用される属性 (この場合は externalId) は、[Azure AD 属性マッピング](customize-application-attributes.md)で構成可能です。
+
+```
+GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
+ Authorization: Bearer ...
+```
+
+このサンプル コードでは、要求はサービスのプロバイダーの QueryAsync メソッドへの呼び出しに変換されます。 このメソッドのシグネチャを次に示します。 
+
+```csharp
+ // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+ // Microsoft.SCIM.IRequest is defined in 
+ // Microsoft.SCIM.Service.  
+ // Microsoft.SCIM.Resource is defined in 
+ // Microsoft.SCIM.Schemas.  
+ // Microsoft.SCIM.IQueryParameters is defined in 
+ // Microsoft.SCIM.Protocol.  
+
+ Task<Resource[]> QueryAsync(IRequest<IQueryParameters> request);
+```
+
+externalId 属性に特定の値を持つユーザーのサンプル クエリでは、QueryAsync メソッドに渡される引数の値は次のようになります。
+
+* parameters.AlternateFilters.Count:1
+* parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
+* parameters.AlternateFilters.ElementAt(0).ComparisonOperator:ComparisonOperator.Equals
+* parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
+
+***例 2.ユーザーをプロビジョニングする***
+
+ユーザーの mailNickname 属性値に一致する externalId 属性値を持つユーザーを Web サービスに照会したときに、応答でユーザーが返されなかった場合、Azure Active Directory は、Azure Active Directory 内のユーザーに対応するユーザーをプロビジョニングするようにサービスに要求します。  このような要求の例を次に示します。 
+
+```
+ POST https://.../scim/Users HTTP/1.1
+ Authorization: Bearer ...
+ Content-type: application/scim+json
+ {
+   "schemas":
+   [
+     "urn:ietf:params:scim:schemas:core:2.0:User",
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0User"],
+   "externalId":"jyoung",
+   "userName":"jyoung",
+   "active":true,
+   "addresses":null,
+   "displayName":"Joy Young",
+   "emails": [
+     {
+       "type":"work",
+       "value":"jyoung@Contoso.com",
+       "primary":true}],
+   "meta": {
+     "resourceType":"User"},
+    "name":{
+     "familyName":"Young",
+     "givenName":"Joy"},
+   "phoneNumbers":null,
+   "preferredLanguage":null,
+   "title":null,
+   "department":null,
+   "manager":null}
+```
+
+このサンプル コードでは、要求はサービスのプロバイダーの CreateAsync メソッドへの呼び出しに変換されます。 このメソッドのシグネチャを次に示します。 
+
+```csharp
+ // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+ // Microsoft.SCIM.IRequest is defined in 
+ // Microsoft.SCIM.Service.  
+ // Microsoft.SCIM.Resource is defined in 
+ // Microsoft.SCIM.Schemas.  
+
+ Task<Resource> CreateAsync(IRequest<Resource> request);
+```
+
+ユーザーをプロビジョニングする要求では、resource 引数の値は、Microsoft.SCIM.Schemas ライブラリで定義されている Microsoft.SCIM.Core2EnterpriseUser クラスのインスタンスです。  ユーザーをプロビジョニングする要求が成功すると、メソッドの実装により、Microsoft.SCIM.Core2EnterpriseUser クラスのインスタンスが返され、Identifier プロパティの値に新たにプロビジョニングされたユーザーの一意識別子が設定されると想定されています。  
+
+***例 3.ユーザーの現在の状態を照会する*** 
+
+SCIM によってアクセスされる ID ストアに存在することがわかっているユーザーを更新するために、Azure Active Directory は、次のような要求を使用して、そのユーザーの現在の状態をサービスに要求して処理を続行します。 
+
+```
+ GET ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
+ Authorization: Bearer ...
+```
+
+このサンプル コードでは、要求はサービスのプロバイダーの RetrieveAsync メソッドへの呼び出しに変換されます。 このメソッドのシグネチャを次に示します。 
+
+```csharp
+ // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+ // Microsoft.SCIM.IRequest is defined in 
+ // Microsoft.SCIM.Service.  
+ // Microsoft.SCIM.Resource and 
+ // Microsoft.SCIM.IResourceRetrievalParameters 
+ // are defined in Microsoft.SCIM.Schemas 
+
+ Task<Resource> RetrieveAsync(IRequest<IResourceRetrievalParameters> request);
+```
+
+ユーザーの現在の状態を取得する要求の例では、parameters 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
+  
+* Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
+* SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+
+***例 4.更新する参照属性の値を照会する*** 
+
+参照属性を更新する場合、Azure Active Directory は、サービスによってアクセスされる ID ストア内の参照属性の現在の値が Azure Active Directory 内のその属性の値と既に一致しているかどうかを判別するために、サービスにクエリを実行します。 ユーザーの場合、この方法で現在の値を照会する属性は、manager 属性のみです。 ユーザー オブジェクトの manager 属性に特定の値があるかどうかを判別する要求の例を次に示します。このサンプル コードでは、要求はサービスのプロバイダーの QueryAsync メソッドへの呼び出しに変換されます。 parameters 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
+  
+* parameters.AlternateFilters.Count:2
+* parameters.AlternateFilters.ElementAt(x).AttributePath:"ID"
+* parameters.AlternateFilters.ElementAt(x).ComparisonOperator:ComparisonOperator.Equals
+* parameters.AlternateFilter.ElementAt(x).ComparisonValue:"54D382A4-2050-4C03-94D1-E769F1D15682"
+* parameters.AlternateFilters.ElementAt(y).AttributePath: "manager"
+* parameters.AlternateFilters.ElementAt(y).ComparisonOperator:ComparisonOperator.Equals
+* parameters.AlternateFilter.ElementAt(y).ComparisonValue:"2819c223-7f76-453a-919d-413861904646"
+* parameters.RequestedAttributePaths.ElementAt(0):"ID"
+* parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+
+ここでは、filter クエリ パラメーターの式の順序に応じて、インデックス x の値が 0、インデックス y の値が 1 になるか、または x の値が 1、y の値が 0 になります。   
+
+***例 5.Azure AD から SCIM サービスに対するユーザーの更新を要求する*** 
+
+Azure Active Directory から SCIM サービスに対するユーザーを更新する要求の例を次に示します。 
+
+```
+  PATCH ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
+  Authorization: Bearer ...
+  Content-type: application/scim+json
+  {
+    "schemas": 
+    [
+      "urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+    "Operations":
+    [
+      {
+        "op":"Add",
+        "path":"manager",
+        "value":
+          [
+            {
+              "$ref":"http://.../scim/Users/2819c223-7f76-453a-919d-413861904646",
+              "value":"2819c223-7f76-453a-919d-413861904646"}]}]}
+```
+
+このサンプル コードでは、要求はサービスのプロバイダーの UpdateAsync メソッドへの呼び出しに変換されます。 このメソッドのシグネチャを次に示します。 
+
+```csharp
+ // System.Threading.Tasks.Tasks and 
+ // System.Collections.Generic.IReadOnlyCollection<T>  // are defined in mscorlib.dll.  
+ // Microsoft.SCIM.IRequest is defined in
+ // Microsoft.SCIM.Service.
+ // Microsoft.SCIM.IPatch, 
+ // is defined in Microsoft.SCIM.Protocol. 
+
+ Task UpdateAsync(IRequest<IPatch> request);
+```
+
+ユーザーを更新する要求の例では、patch 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
+  
+* ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
+* ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+* (PatchRequest as PatchRequest2).Operations.Count:1
+* (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName:OperationName.Add
+* (PatchRequest as PatchRequest2).Operations.ElementAt(0).Path.AttributePath: "manager"
+* (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.Count:1
+* (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Reference: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
+* (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value:2819c223-7f76-453a-919d-413861904646
+
+***例 6.ユーザーのプロビジョニングを解除する***
+
+SCIM サービスによってアクセスされる ID ストアからユーザーのプロビジョニングを解除するために、Azure AD は次のような要求を送信します。
+
+```
+  DELETE ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
+  Authorization: Bearer ...
+```
+
+このサンプル コードでは、要求はサービスのプロバイダーの DeleteAsync メソッドへの呼び出しに変換されます。 このメソッドのシグネチャを次に示します。 
+
+```csharp
+ // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+ // Microsoft.SCIM.IRequest is defined in 
+ // Microsoft.SCIM.Service.  
+ // Microsoft.SCIM.IResourceIdentifier, 
+ // is defined in Microsoft.SCIM.Protocol. 
+
+ Task DeleteAsync(IRequest<IResourceIdentifier> request);
+```
+
+ユーザーのプロビジョニングを解除する要求の例では、resourceIdentifier 引数の値として指定されたオブジェクトのプロパティ値は次のようになります。 
+
+* ResourceIdentifier.Identifier:"54D382A4-2050-4C03-94D1-E769F1D15682"
+* ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>手順 4:SCIM エンドポイントを Azure AD SCIM クライアントと統合する
 
@@ -786,7 +1144,7 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
    ![例:Azure portal のアプリのプロビジョニング ページ](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
    *Azure portal でのプロビジョニングの構成*
 
-7. **[テナント URL]** フィールドに、アプリケーションの SCIM エンドポイントの URL を入力します。 例: https://api.contoso.com/scim/
+7. **[テナント URL]** フィールドに、アプリケーションの SCIM エンドポイントの URL を入力します。 例: `https://api.contoso.com/scim/`
 8. SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンをオプションの **[シークレット トークン]** フィールドにコピーします。 このフィールドを空白のままにすると、Azure AD では各要求に Azure AD を発行元とする OAuth ベアラー トークンを含めます。 ID プロバイダーとして Azure AD を使用するアプリは、この Azure AD によって発行されたトークンを検証できます。 
    > [!NOTE]
    > このフィールドを空白のままにして、Azure AD によって生成されるトークンに依存することは推奨 "***されません***"。 このオプションは、主にテスト目的で使用できます。

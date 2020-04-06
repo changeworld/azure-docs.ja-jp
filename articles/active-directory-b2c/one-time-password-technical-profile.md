@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4732d780bb241a18e0738c99603799c31c2102f
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: bd5fed45332c73c633db1137bdc23aea66fd3403
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933061"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332777"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C カスタム ポリシーでワンタイム パスワードの技術プロファイルを定義する
 
@@ -80,10 +80,6 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 | Operation | はい | 実行する操作。 指定できる値: `GenerateCode`。 |
 | ReuseSameCode | いいえ | 指定されたコードの有効期限が切れておらず、まだ有効である場合に、新しいコードを生成するのではなく、重複するコードを指定する必要があるかどうか。 既定値は `false` です。 |
 
-### <a name="returning-error-message"></a>返却エラー メッセージ
-
-コード生成モードでは、エラー メッセージは返されません。
-
 ### <a name="example"></a>例
 
 次の例の `TechnicalProfile` は、コードを生成するために使用されます。
@@ -139,9 +135,9 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 | Operation | はい | 実行する操作。 指定できる値: `VerifyCode`。 |
 
 
-### <a name="error-messages"></a>エラー メッセージ
+### <a name="ui-elements"></a>UI 要素
 
-次の設定を使用して、コード確認に失敗したときに表示されるエラー メッセージを構成できます。 メタデータは、[セルフアサート](self-asserted-technical-profile.md)技術プロファイルで構成する必要があります。 エラー メッセージは、[ローカライズ](localization-string-ids.md#one-time-password-error-messages)できます。
+次のメタデータを使用して、コード確認に失敗したときに表示されるエラー メッセージを構成できます。 メタデータは、[セルフアサート](self-asserted-technical-profile.md)技術プロファイルで構成する必要があります。 エラー メッセージは、[ローカライズ](localization-string-ids.md#one-time-password-error-messages)できます。
 
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |

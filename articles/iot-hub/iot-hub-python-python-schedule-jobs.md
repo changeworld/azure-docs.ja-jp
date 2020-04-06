@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 03/17/2020
 ms.author: robinsh
-ms.openlocfilehash: c424c18538a4e428c0e713bb814c2febe28d2d04
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 1d721e89534c09a5572e5674796f28355f652165
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555570"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527403"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>ジョブのスケジュールとブロードキャスト (Python)
 
@@ -55,7 +55,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+[!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -168,7 +168,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 5. **[共有アクセス ポリシー]** ウィンドウに戻り、ポリシーの一覧から新しいポリシーを選択します。
 
-6. **[共有アクセス キー]** で、 **[接続文字列 - プライマリ キー]** のコピー アイコンを選択してその値を保存します。
+6. **[共有アクセス キー]** で、 **[接続文字列 - プライマリ キー]** のコピー アイコンを選択し、その値を保存します。
 
     ![接続文字列を取得する方法を示す画面](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
 
@@ -176,17 +176,13 @@ IoT Hub の共有アクセス ポリシーとアクセス許可の詳細につ�
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>ダイレクト メソッドを呼び出し、デバイス ツインのプロパティを更新するジョブのスケジュール
 
-このセクションでは、ダイレクト メソッドを使用してデバイスでリモート **lockDoor** を開始する Python コンソール アプリを作成し、デバイス ツインのプロパティを更新します。
+このセクションでは、ダイレクト メソッドを使用してデバイスでリモート **lockDoor** を開始する Python コンソール アプリを作成し、さらにデバイス ツインの必要なプロパティを更新します。
 
-1. コマンド プロンプトで次のコマンドを実行して **azure-iot-service-client** パッケージをインストールします。
+1. コマンド プロンプトで次のコマンドを実行して **azure-iot-hub** パッケージをインストールします。
 
     ```cmd/sh
-    pip install azure-iothub-service-client
+    pip install azure-iot-hub
     ```
-
-   > [!NOTE]
-   > azure-iothub-service-client 用の pip パッケージは、現在 Windows OS でのみ利用できます。 Linux/Mac OS については、[Python 用の開発環境の準備](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md)に関する記事で、Linux と Mac OS の各セクションを参照してください。
-   >
 
 2. テキスト エディターを使用して、作業ディレクトリに新しい **scheduleJobService.py** ファイルを作成します。
 
@@ -198,16 +194,15 @@ IoT Hub の共有アクセス ポリシーとアクセス許可の詳細につ�
     import threading
     import uuid
 
-    import iothub_service_client
-    from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod
-    from iothub_service_client import IoTHubDeviceTwin, IoTHubDeviceMethod, IoTHubError
+    from azure.iot.hub import IoTHubRegistryManager
+    from azure.iot.hub.models import Twin, TwinProperties, CloudToDeviceMethod, CloudToDeviceMethodResult, QuerySpecification, QueryResult
 
     CONNECTION_STRING = "{IoTHubConnectionString}"
     DEVICE_ID = "{deviceId}"
 
     METHOD_NAME = "lockDoor"
     METHOD_PAYLOAD = "{\"lockTime\":\"10m\"}"
-    UPDATE_JSON = "{\"properties\":{\"desired\":{\"building\":43,\"floor\":3}}}"
+    UPDATE_PATCH = {"building":43,"floor":3}
     TIMEOUT = 60
     WAIT_COUNT = 5
     ```
@@ -215,18 +210,12 @@ IoT Hub の共有アクセス ポリシーとアクセス許可の詳細につ�
 4. デバイスのクエリに使用する次の関数を追加します。
 
     ```python
-    def query_condition(device_id):
-        iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
+    def query_condition(iothub_registry_manager, device_id):
 
-        number_of_devices = 10
-        dev_list = iothub_registry_manager.get_device_list(number_of_devices)
+        query_spec = QuerySpecification(query="SELECT * FROM devices WHERE deviceId = '{}'".format(device_id))
+        query_result = iothub_registry_manager.query_iot_hub(query_spec, None, 1)
 
-        for device in range(0, number_of_devices):
-            if dev_list[device].deviceId == device_id:
-                return 1
-
-        print ( "Device not found" )
-        return 0
+        return len(query_result.items)
     ```
 
 5. ダイレクト メソッドとデバイス ツインを呼び出すジョブを実行する次のメソッドを追加します。
@@ -237,10 +226,13 @@ IoT Hub の共有アクセス ポリシーとアクセス許可の詳細につ�
         print ( "Scheduling job: " + str(job_id) )
         time.sleep(wait_time)
 
-        if query_condition(device_id):
-            iothub_device_method = IoTHubDeviceMethod(CONNECTION_STRING)
+        iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
 
-            response = iothub_device_method.invoke(device_id, METHOD_NAME, METHOD_PAYLOAD, TIMEOUT)
+
+        if query_condition(iothub_registry_manager, device_id):
+            deviceMethod = CloudToDeviceMethod(method_name=METHOD_NAME, payload=METHOD_PAYLOAD)
+
+            response = iothub_registry_manager.invoke_device_method(DEVICE_ID, deviceMethod)
 
             print ( "" )
             print ( "Direct method " + METHOD_NAME + " called." )
@@ -250,10 +242,13 @@ IoT Hub の共有アクセス ポリシーとアクセス許可の詳細につ�
         print ( "Scheduling job " + str(job_id) )
         time.sleep(wait_time)
 
-        if query_condition(device_id):
-            iothub_twin_method = IoTHubDeviceTwin(CONNECTION_STRING)
+        iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
 
-            twin_info = iothub_twin_method.update_twin(DEVICE_ID, UPDATE_JSON)
+        if query_condition(iothub_registry_manager, device_id):
+
+            twin = iothub_registry_manager.get_twin(DEVICE_ID)
+            twin_patch = Twin(properties= TwinProperties(desired=UPDATE_PATCH))
+            twin = iothub_registry_manager.update_twin(DEVICE_ID, twin_patch, twin.etag)
 
             print ( "" )
             print ( "Device twin updated." )
@@ -298,9 +293,9 @@ IoT Hub の共有アクセス ポリシーとアクセス許可の詳細につ�
                     time.sleep(1)
                     status_counter += 1
 
-        except IoTHubError as iothub_error:
+        except Exception as ex:
             print ( "" )
-            print ( "Unexpected error {0}" % iothub_error )
+            print ( "Unexpected error {0}" % ex )
             return
         except KeyboardInterrupt:
             print ( "" )
@@ -338,7 +333,7 @@ IoT Hub の共有アクセス ポリシーとアクセス許可の詳細につ�
 
     ![IoT Hub ジョブ サンプル 2 -- デバイスの出力](./media/iot-hub-python-python-schedule-jobs/sample2-deviceoutput.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ジョブを使用して、デバイスへのダイレクト メソッドと、デバイス ツインのプロパティの更新をスケジュールしました。
 

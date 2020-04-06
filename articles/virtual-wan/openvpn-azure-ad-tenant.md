@@ -1,28 +1,29 @@
 ---
-title: 'VPN Gateway: P2S VPN 接続用の Azure AD テナント:Azure AD 認証'
-description: P2S VPN を使用して VNet に接続する場合には、Azure AD 認証を使用できます
+title: ユーザー VPN 接続用の Azure AD テナント:Azure AD 認証
+description: Azure Virtual WAN ユーザー VPN (ポイント対サイト) で、Azure AD 認証を使用して VNet に接続することができます
+titleSuffix: Azure Virtual WAN
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 12/27/2019
+ms.date: 03/19/2020
 ms.author: alzam
-ms.openlocfilehash: 1f7cf97e38bf201679593819cce814249f9625b0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 74347ce969b6a5ffd57f5ca8396517e78590f3f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930419"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059454"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Azure Active Directory テナントを作成する
+# <a name="create-an-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>ユーザー VPN OpenVPN プロトコル接続用の Azure Active Directory テナントを作成する
 
-VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証を使用できます。 ただし、Open VPN プロトコルを使用する場合は、Azure Active Directory 認証を使用することもできます。 この記事では、P2S Open VPN 認証用の Azure AD テナントを設定する方法について説明します。
+VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証を使用できます。 ただし、Open VPN プロトコルを使用する場合は、Azure Active Directory 認証を使用することもできます。 この記事では、仮想 WAN ユーザー VPN (ポイント対サイト) Open VPN 認証用の Azure AD テナントを設定する方法について説明します。
 
 > [!NOTE]
-> Azure AD 認証は、OpenVPN® プロトコル接続でのみサポートされています。
+> Azure AD 認証は、OpenVPN&reg; プロトコル接続でのみサポートされています。
 >
 
-## <a name="tenant"></a>1.Azure AD テナントを作成する
+## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1.Azure AD テナントを作成する
 
 [新しいテナントの作成](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)に関する記事の手順に従って、Azure AD テナントを作成します。
 
@@ -33,7 +34,7 @@ VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証�
 
    ![新しい Azure AD テナント](./media/openvpn-create-azure-ad-tenant/newtenant.png)
 
-## <a name="users"></a>2.Azure AD テナント ユーザーを作成する
+## <a name="2-create-azure-ad-tenant-users"></a><a name="users"></a>2.Azure AD テナント ユーザーを作成する
 
 次に、2 つのユーザー アカウントを作成します。 グローバル管理者アカウントを 1 つ、マスター ユーザー アカウントを 1 つ作成します。 マスター ユーザー アカウントは、マスター埋め込みアカウント (サービス アカウント) として使用されます。 Azure AD テナント ユーザー アカウントを作成する際には、作成するユーザーの種類に応じてディレクトリ ロールを調整します。
 
@@ -42,7 +43,7 @@ VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証�
 * 全体管理者
 * User
 
-## <a name="enable-authentication"></a>3.VPN ゲートウェイでの Azure AD 認証を有効にする
+## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3.VPN ゲートウェイでの Azure AD 認証を有効にする
 
 1. 認証に使用するディレクトリのディレクトリ ID を特定します。 これは、[Active Directory] ページの [プロパティ] セクションに表示されます。
 

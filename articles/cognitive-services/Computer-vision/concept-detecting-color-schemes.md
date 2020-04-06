@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e0fa85b8a90ea57d9b81bd2eeaa6d080b7582acd
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: af0c39ed8211ac2041d143112437ad5d6b384259
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945271"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244734"
 ---
 # <a name="detect-color-schemes-in-images"></a>イメージ内の配色を検出する
 
@@ -56,8 +56,8 @@ Computer Vision では、イメージが白黒であるかどうかを示すブ�
 
 | Image | ドミナント カラー |
 |-------|-----------------|
-|![白い花と緑の背景](./Images/flower.png)| 前景:黒<br/>背景:白<br/>色:黒、白、緑|
-![駅を通過中の電車](./Images/train_station.png) | 前景:黒<br/>背景:黒<br/>色:黒 |
+|![白い花と緑の背景](./Images/flower.png)| 前景:Black<br/>背景:White<br/>色:黒、白、緑|
+![駅を通過中の電車](./Images/train_station.png) | 前景:Black<br/>背景:Black<br/>色:Black |
 
 ### <a name="accent-color-examples"></a>アクセント カラーの例
 
@@ -78,6 +78,9 @@ Computer Vision では、イメージが白黒であるかどうかを示すブ�
 |![マンハッタンのビル群の白黒写真](./Images/bw_buildings.png) | true |
 |![青い家と前庭](./Images/house_yard.png) | false |
 
-## <a name="next-steps"></a>次の手順
+## <a name="use-the-api"></a>API の使用
 
-[イメージの種類の検出](concept-detecting-image-types.md)に関する概念を理解します。
+配色検出機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 `Color` を **visualFeatures** クエリ パラメーターに追加します。 その後、完全な JSON 応答が得られたら、`"color"` セクションのコンテンツを対象に文字列を解析します。
+
+* [クイック スタート: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [クイック スタート: 画像の分析 (REST API)](./quickstarts/csharp-analyze.md)

@@ -9,13 +9,13 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 02/27/2020
-ms.openlocfilehash: 0cb76884fd46a45bb45fa3e29a03a6f9dbd0250b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.date: 03/18/2020
+ms.openlocfilehash: 3b1fc5dc427a8a9a1987b0ef916b99edb25e292a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920299"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063976"
 ---
 # <a name="reuse-environments-for-training-and-deployment-by-using-azure-machine-learning"></a>Azure Machine Learning を使用してトレーニングとデプロイのための環境を再利用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -157,6 +157,9 @@ conda_dep.add_conda_package("scikit-learn==0.21.3")
 myenv.python.conda_dependencies=conda_dep
 ```
 
+>[!IMPORTANT]
+> 別の実行に同じ環境定義を使用する場合、Azure Machine Learning service では、自分の環境にキャッシュされているイメージが再利用されます。 ```numpy``` など、固定されていないパッケージの依存関係を持つ環境を作成すると、その環境では、"_環境の作成時_" にインストールされたパッケージのバージョンが引き続き使用されます。 また、一致した定義を持つ将来の環境では、古いバージョンが使用され続けます。 詳細については、「[環境のビルド、キャッシュ、再利用](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)」を参照してください。
+
 ### <a name="private-wheel-files"></a>プライベート wheel ファイル
 
 プライベート pip wheel ファイルは、最初にワークスペース ストレージにそれらをアップロードすることで使用できます。 静的 [`add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) メソッドを使用して、それらをアップロードします。 次に、ストレージ URL をキャプチャし、その URL を `add_pip_package()` メソッドに渡します。
@@ -219,7 +222,7 @@ Run.get_environment()
 
 ### <a name="debug-the-image-build"></a>イメージ ビルドをデバッグする
 
-次の例では、[`build()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#build-workspace-) メソッドを使用して、環境を Docker イメージとして手動で作成します。 [`wait_for_completion()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) を使用して、イメージ ビルドからの出力ログを監視します。 その後、ビルドされたイメージは、ワークスペースの Azure Container Registry インスタンスに表示されます。 この情報はデバッグに役立ちます。
+次の例では、[`build()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#build-workspace--image-build-compute-none-) メソッドを使用して、環境を Docker イメージとして手動で作成します。 [`wait_for_completion()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) を使用して、イメージ ビルドからの出力ログを監視します。 その後、ビルドされたイメージは、ワークスペースの Azure Container Registry インスタンスに表示されます。 この情報はデバッグに役立ちます。
 
 ```python
 from azureml.core import Image
@@ -248,7 +251,7 @@ myenv.docker.base_image="your_base-image"
 myenv.docker.base_image_registry="your_registry_location"
 ```
 
-または、カスタム Dockerfile を指定することもできます。 Docker ```FROM``` コマンドを使用して Azure Machine Learning 基本イメージの一つから開始し、独自のカスタム手順を追加することが最も簡単にできます。 Python 以外のパッケージを依存関係としてインストールする必要がある場合は、この方法を使用します。
+カスタム Dockerfile を指定することもできます。 Docker ```FROM``` コマンドを使用していずれかの Azure Machine Learning 基本イメージから開始し、独自のカスタム ステップを追加する方法が最も簡単です。 Python 以外のパッケージを依存関係としてインストールする必要がある場合は、この方法を使用します。
 
 ```python
 # Specify docker steps as a string. Alternatively, load the string from a file.
@@ -262,8 +265,29 @@ myenv.docker.base_image = None
 myenv.docker.base_dockerfile = dockerfile
 ```
 
-> [!NOTE]
-> カスタム Docker イメージの使用中に `environment.python.user_managed_dependencies=False` を指定すると、サービスによって、イメージ内に Conda 環境がビルドされます。 基本イメージにインストールした Python ライブラリを使用するのではなく、その環境で実行されます。 独自にインストールしたパッケージを使用するには、パラメーターを `True` に設定します。
+### <a name="use-user-managed-dependencies"></a>ユーザーによって管理される依存関係を使用する
+
+場合によっては、使用するパッケージを含む Python 環境がカスタム基本イメージに含まれていることがあります。
+
+既定では、指定した依存関係を含む Conda 環境が Azure Machine Learning service で構築され、その環境で実行が行われます。基本イメージにインストールされている Python ライブラリは使用されません。 
+
+独自にインストールしたパッケージを使用するには、パラメーターを `Environment.python.user_managed_dependencies = True` に設定します。 基本イメージに Python インタープリターが含まれており、トレーニング スクリプトに必要なパッケージがあることを確実にします。
+
+たとえば、NumPy パッケージがインストールされている基本の Miniconda 環境で実行するには、まず、パッケージをインストールするステップを含む Dockerfile を指定します。 ユーザーによって管理される依存関係を `True` に設定します。 
+
+また、`Environment.python.interpreter_path` 変数を設定することにより、イメージ内の特定の Python インタープリターへのパスを指定することもできます。
+
+```python
+dockerfile = """
+FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+RUN conda install numpy
+"""
+
+myenv.docker.base_image = None
+myenv.docker.base_dockerfile = dockerfile
+myenv.python.user_managed_dependencies=True
+myenv.python.interpreter_path = "/opt/miniconda/bin/python"
+```
 
 ## <a name="use-environments-for-training"></a>トレーニングに環境を使用する
 

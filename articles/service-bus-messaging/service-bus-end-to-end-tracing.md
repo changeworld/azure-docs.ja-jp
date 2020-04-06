@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: a184e76faa89199d3e13ece3e17f94f73d995a12
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 7c2efc9c736097873201505f280af5d47bed4847
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760268"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294167"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus メッセージングを介した分散トレースおよび相関付け
 
@@ -30,12 +30,12 @@ ms.locfileid: "76760268"
 Microsoft Azure Service Bus メッセージングによってペイロード プロパティが定義され、プロデューサーとコンシューマーはこれを使用してトレース コンテキストを渡す必要があります。
 プロトコルは [HTTP 相関関係プロトコル](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)に基づいています。
 
-| プロパティ名 | 説明 |
+| プロパティ名        | 説明                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | プロデューサーからキューへの外部呼び出しの一意識別子。 論理的根拠、考慮事項、形式について詳しくは、[HTTP プロトコルの Request-Id](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) に関するページをご覧ください。 |
 |  Correlation-Context | 操作の処理に関連するすべてのサービスに伝達される操作コンテキスト。 詳しくは、[HTTP プロトコルの Correlation-Context](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) に関するページをご覧ください。 |
 
-## <a name="service-bus-net-client-auto-tracing"></a>Service Bus .NET クライアントの自動トレース
+## <a name="service-bus-net-client-autotracing"></a>Service Bus .NET クライアントの自動トレース
 
 バージョン 3.0.0 以降の [Microsoft Azure ServiceBus Client for .NET](/dotnet/api/microsoft.azure.servicebus.queueclient) ではトレース インストルメンテーション ポイントが提供され、トレーシング システムまたはクライアント コードの一部でこれを受け取ることができます。
 インストルメンテーションによって、すべての呼び出しをクライアント側から Service Bus メッセージング サービスまで追跡できるようになります。 メッセージの処理が[メッセージ ハンドラー パターン](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)を使用して行われる場合は、メッセージの処理もインストルメント化されます。
@@ -84,6 +84,12 @@ async Task ProcessAsync(Message message)
 メッセージ処理中に報告された入れ子のトレースと例外にも、`RequestTelemetry` の "子" であることを表す相関関係プロパティがスタンプされます。
 
 メッセージ処理中にサポートされる外部コンポーネントへの呼び出しを行った場合は、それらの呼び出しも自動的に追跡されて相関付けられます。 手動での追跡と相関付けについて詳しくは、「[Application Insights .NET SDK でカスタム操作を追跡する](../azure-monitor/app/custom-operations-tracking.md)」をご覧ください。
+
+Application Insights SDK に加えて外部コードを実行している場合は、Application Insights ログを表示するときの**期間**が長くなります。 
+
+![Application Insights ログの期間が長くなる](./media/service-bus-end-to-end-tracing/longer-duration.png)
+
+これは、メッセージの受信で遅延があったことを意味するわけではありません。 このシナリオでは、メッセージは SDK コードにパラメーターとして渡されるため、メッセージは既に受信されています。 また、App Insights ログの **name** タグ (**Process**) は、メッセージが現在、外部イベント処理コードによって処理されていることを示しています。 この問題は、Azure に関連したものではありません。 メッセージが Service Bus から既に受信されていることを考えると、これらのメトリックは外部コードの効率を意味します。 [GitHub のこのファイル](https://github.com/Azure/azure-sdk-for-net/blob/4bab05144ce647cc9e704d46d3763de5f9681ee0/sdk/servicebus/Microsoft.Azure.ServiceBus/src/ServiceBusDiagnosticsSource.cs)を参照して、メッセージが Service Bus から受信された後に **Process** タグが生成されて割り当てられていることを確認してください。 
 
 ### <a name="tracking-without-tracing-system"></a>トレース システムなしで追跡する
 ご使用のトレーシング システムで自動的な Service Bus 呼び出し追跡がサポートされない場合は、トレーシング システムまたはアプリケーションにそのようなサポートを追加することを検討してください。 このセクションでは、Service Bus .NET クライアントによって送信される診断イベントについて説明します。  

@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service - バックエンドの正常性監視 | Microsoft Docs
-description: この記事では、Azure Front Door Service によってバックエンドの正常性がどのように監視されるかを説明します
+title: Azure Front Door - バックエンドの正常性監視 | Microsoft Docs
+description: この記事は、バックエンドの正常性が Azure Front Door によってどのように監視されるかを理解するのに役立ちます
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,22 +11,33 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 289b05a2c50a2b4af50eb2114515a49bb653cf1a
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: e2e656c395f1a31c1f5ebbd46d5a18a046f854f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742386"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471576"
 ---
 # <a name="health-probes"></a>正常性プローブ
 
-それぞれの Front Door 環境では、各バックエンドの正常性を確認するために、構成されている各バックエンドに合成 HTTP/HTTPS 要求を定期的に送信します。 Front Door は、これらのプローブからの応答を使用して、実際のクライアント要求のルーティング先として "最適な" バックエンドを決定します。 Front Door は世界中に多くのエッジ環境があるので、バックエンドに対する正常性プローブ要求の量は、1 秒あたり複数の要求に達することがあり、構成された正常性プローブ頻度によって異なります。 
+それぞれの Front Door 環境では、特定の Front Door 環境から各バックエンドの正常性と近接性を確認するために、構成されている各バックエンドに合成 HTTP/HTTPS 要求を定期的に送信します。 Front Door は、これらのプローブからの応答を使用して、実際のクライアント要求のルーティング先として "最適な" バックエンドを決定します。 
 
-
+> [!WARNING]
+> Front Door は世界中に多くのエッジ環境があるので、バックエンドに対する正常性プローブ要求の量が極めて多くなる可能性があります。構成されている正常性プローブの頻度にもよりますが、毎分 25 回要求されることもあれば、多いときは毎分 1200 回要求されることもあります。 既定のプローブ頻度は 30 秒であり、バックエンドのプローブ量は毎分 200 要求程度になるはずです。
 
 ## <a name="supported-protocols"></a>サポートされるプロトコル
 
 Front Door では、HTTP または HTTPS プロトコルを使用したプローブの送信をサポートしています。 これらのプローブは、クライアント要求のルーティング用に構成された同じ TCP ポートを介して送信され、オーバーライドすることはできません。
+
+## <a name="supported-http-methods-for-health-probes"></a>正常性プローブでサポートされている HTTP メソッド
+
+Front Door では、正常性プローブを送信するための次の HTTP メソッドがサポートされています。
+
+1. **GET:** GET メソッドでは、Request-URI によって特定された情報 (エンティティ形式) がすべて取得されます。
+2. **HEAD:** HEAD メソッドは、サーバーからは応答でメッセージ本文を返すことが禁止されるという点を除き、GET と同じです。 新しい Front Door プロファイルの場合、既定では、プローブ メソッドは HEAD に設定されます。
+
+> [!NOTE]
+> Front Door でバックエンドの負荷とコストを抑える場合、正常性プローブに HEAD 要求を推奨しています。
 
 ## <a name="health-probe-responses"></a>正常性プローブの応答
 
@@ -37,7 +48,7 @@ Front Door では、HTTP または HTTPS プロトコルを使用したプロー
 
 ## <a name="how-front-door-determines-backend-health"></a>Front Door によるバックエンドの正常性の判定方法
 
-Azure Front Door Service では、すべてのアルゴリズムで次の同じ 3 段階のプロセスを使用して、正常性を判定します。
+Azure Front Door では、すべてのアルゴリズムで次の同じ 3 段階のプロセスを使用して、正常性を判定します。
 
 1. 無効なバックエンドを除外します。
 
@@ -57,7 +68,11 @@ Azure Front Door Service では、すべてのアルゴリズムで次の同じ 
 
 いずれかのバックエンドが正常な状態に戻った時点で、Front Door は通常の負荷分散アルゴリズムを再開します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="disabling-health-probes"></a>正常性プローブを無効にする
+
+バックエンド プールにバックエンドが 1 つある場合、正常性プローブを無効にし、アプリケーション バックエンドの負荷を減らすことができます。 バックエンド プールに複数のバックエンドがあるが、そのうちの 1 つだけが有効な状態にある場合でも、正常性プローブを無効にできます。
+
+## <a name="next-steps"></a>次のステップ
 
 - [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
 - [Front Door のしくみ](front-door-routing-architecture.md)について学習します。
