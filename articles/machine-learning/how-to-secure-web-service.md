@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1f4b699476902fa24fa285754f13b1c61ddca8f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: a58b0120feaba907c62bc646f4f85d9185227fed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355522"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80287341"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,12 +43,12 @@ TLS と SSL の両方とも、"*デジタル証明書*" に依存しています
 
 2. デジタル証明書を取得します。
 
-3. SSL が有効な Web サービスをデプロイするか更新します。
+3. TLS が有効になっている Web サービスをデプロイするか更新します。
 
 4. その Web サービスを指すように DNS を更新します。
 
 > [!IMPORTANT]
-> Azure Kubernetes Service (AKS) にデプロイする場合は、独自の証明書を購入するか、Microsoft によって提供される証明書を使用することができます。 Microsoft 提供の証明書を使用する場合は、ドメイン名または SSL 証明書を取得する必要はありません。 詳細については、この記事の「[SSL を有効にしてデプロイする](#enable)」セクションを参照してください。
+> Azure Kubernetes Service (AKS) にデプロイする場合は、独自の証明書を購入するか、Microsoft によって提供される証明書を使用することができます。 Microsoft 提供の証明書を使用する場合は、ドメイン名または TLS/SSL 証明書を取得する必要はありません。 詳細については、この記事の「[TLS を有効にしてデプロイする](#enable)」セクションを参照してください。
 
 複数の[デプロイ ターゲット](how-to-deploy-and-where.md)にわたってセキュリティで保護する場合は、わずかな違いがあります。
 
@@ -56,9 +56,9 @@ TLS と SSL の両方とも、"*デジタル証明書*" に依存しています
 
 ドメイン名をまだ所有していない場合は、*ドメイン名レジストラー* から購入します。 プロセスと価格は、レジストラーによって異なります。 レジストラーは、ドメイン名を管理するためのツールを提供します。 これらのツールを使用して、完全修飾ドメイン名 (FQDN) (www\.contoso.com など) を、Web サービスをホストする IP アドレスにマップします。
 
-## <a name="get-an-ssl-certificate"></a>SSL 証明書を取得する
+## <a name="get-a-tlsssl-certificate"></a>TLS/SSL 証明書を取得する
 
-SSL 証明書 (デジタル証明書) を取得する方法はたくさんあります。 最も一般的な方法は、*証明機関* (CA) から購入することです。 証明書の取得場所に関係なく、次のファイルが必要です。
+TLS/SSL 証明書 (デジタル証明書) を取得する方法はたくさんあります。 最も一般的な方法は、*証明機関* (CA) から購入することです。 証明書の取得場所に関係なく、次のファイルが必要です。
 
 * **証明書**。 証明書は、完全な証明書チェーンを含み、"PEM でエンコード" されている必要があります。
 * **キー**。 キーも、PEM でエンコードされている必要があります。
@@ -71,9 +71,9 @@ SSL 証明書 (デジタル証明書) を取得する方法はたくさんあり
 > [!WARNING]
 > *自己署名*証明書は開発時にのみ使用します。 運用環境では使用しないでください。 自己署名証明書により、お使いのクライアント アプリケーションで問題が発生する可能性があります。 詳しくは、お使いのクライアント アプリケーションで使用されているネットワーク ライブラリに関するドキュメントをご覧ください。
 
-## <a id="enable"></a>SSL を有効にしてデプロイする
+## <a name="enable-tls-and-deploy"></a><a id="enable"></a> TLS を有効にしてデプロイする
 
-SSL が有効なサービスをデプロイ (または再デプロイ) するには、*ssl_enabled* パラメーターを "True" に設定します (該当する場合は必ず)。 *ssl_certificate* パラメーターを *certificate* ファイルの値に設定します。 *ssl_key* を *key* ファイルの値に設定します。
+TLS が有効なサービスをデプロイ (または再デプロイ) するには、"*ssl_enabled*" パラメーターを "True" に設定します (該当する場合は必ず)。 *ssl_certificate* パラメーターを *certificate* ファイルの値に設定します。 *ssl_key* を *key* ファイルの値に設定します。
 
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>AKS およびフィールド プログラマブル ゲート アレイ (FPGA) にデプロイする
 
@@ -89,16 +89,16 @@ AKS にデプロイする場合、新しい AKS クラスターを作成する�
 
   * Microsoft 提供の証明書を使用する場合、*leaf_domain_label* パラメーターを使用する必要があります。 このパラメーターは、サービスの DNS 名を生成します。 たとえば、"contoso" の値は、"contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com" のドメイン名を作成します。ここで、\<azureregion> は、サービスを格納する領域です。 必要に応じて、*overwrite_existing_domain* パラメーターを使用して既存の *leaf_domain_label* を上書きできます。
 
-    SSL が有効なサービスをデプロイ (または再デプロイ) するには、*ssl_enabled* パラメーターを "True" に設定します (該当する場合は必ず)。 *ssl_certificate* パラメーターを *certificate* ファイルの値に設定します。 *ssl_key* を *key* ファイルの値に設定します。
+    TLS が有効なサービスをデプロイ (または再デプロイ) するには、"*ssl_enabled*" パラメーターを "True" に設定します (該当する場合は必ず)。 *ssl_certificate* パラメーターを *certificate* ファイルの値に設定します。 *ssl_key* を *key* ファイルの値に設定します。
 
     > [!IMPORTANT]
     > Microsoft 提供の証明書を使用する場合、独自の証明書またはドメイン名を購入する必要はありません。
 
-    次の例では、Microsoft 提供の SSL 証明書を有効にする構成の作成方法を示します。
+    次の例では、Microsoft 提供の TLS/SSL 証明書を有効にする構成の作成方法を示します。
 
     ```python
     from azureml.core.compute import AksCompute
-    # Config used to create a new AKS cluster and enable SSL
+    # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
@@ -106,7 +106,7 @@ AKS にデプロイする場合、新しい AKS クラスターを作成する�
     provisioning_config.enable_ssl(leaf_domain_label = "contoso")
 
 
-    # Config used to attach an existing AKS cluster to your workspace and enable SSL
+    # Config used to attach an existing AKS cluster to your workspace and enable TLS
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
     # Leaf domain label generates a name using the formula
@@ -115,11 +115,11 @@ AKS にデプロイする場合、新しい AKS クラスターを作成する�
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
-  * *購入した証明書*を使用する場合、*ssl_cert_pem_file*、*ssl_key_pem_file*、および *ssl_cname* のパラメーターを使用します。 次の例では、 *.pem* ファイルを使用して、購入した SSL 証明書を使用する構成を作成する方法を示します。
+  * *購入した証明書*を使用する場合、*ssl_cert_pem_file*、*ssl_key_pem_file*、および *ssl_cname* のパラメーターを使用します。 次の例では、 *.pem* ファイルを使用して、購入した TLS/SSL 証明書を使用する構成を作成する方法を示します。
 
     ```python
     from azureml.core.compute import AksCompute
-    # Config used to create a new AKS cluster and enable SSL
+    # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
     provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
@@ -134,7 +134,7 @@ AKS にデプロイする場合、新しい AKS クラスターを作成する�
 
 ### <a name="deploy-on-azure-container-instances"></a>Azure Container Instances にデプロイする
 
-Azure Container Instances にデプロイするとき、次のコード スニペットに示すように、SSL 関連のパラメーターの値を入力します。
+Azure Container Instances にデプロイするとき、次のコード スニペットに示すように、TLS 関連のパラメーターの値を入力します。
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -143,7 +143,7 @@ aci_config = AciWebservice.deploy_configuration(
     ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
 ```
 
-詳細については、[AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) に関する記事を参照してください。
+詳細については、[AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) に関する記事を参照してください。
 
 ## <a name="update-your-dns"></a>DNS を更新する
 
@@ -162,11 +162,11 @@ aci_config = AciWebservice.deploy_configuration(
 
   左ウィンドウの **[設定]** タブの下の **[構成]** タブで、AKS クラスターのパブリック IP アドレスの DNS を更新します。 (次の図を参照してください)。パブリック IP アドレスは、AKS エージェント ノードとその他のネットワーク リソースを含むリソース グループの下に作成されるリソースの種類です。
 
-  [![Azure Machine Learning: SSL を使用して Web サービスをセキュリティで保護する](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: TLS を使用して Web サービスをセキュリティで保護する](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
-## <a name="update-the-ssl-certificate"></a>SSL 証明書を更新する
+## <a name="update-the-tlsssl-certificate"></a>TLS/SSL 証明書を更新する
 
-SSL 証明書の有効期限が切れたため、更新する必要があります。 通常、これは毎年発生します。 Azure Kubernetes Service にデプロイされているモデルの証明書を更新するには、次のセクションの情報を参照してください。
+TLS/SSL 証明書には有効期限切れがあるため、更新する必要があります。 通常、これは毎年発生します。 Azure Kubernetes Service にデプロイされているモデルの証明書を更新するには、次のセクションの情報を参照してください。
 
 ### <a name="update-a-microsoft-generated-certificate"></a>Microsoft が生成した証明書を更新する
 
@@ -239,9 +239,9 @@ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n 
 * [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
 * [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
 
-## <a name="disable-ssl"></a>SSL を無効にする
+## <a name="disable-tls"></a>TLS を無効にする
 
-Azure Kubernetes Service にデプロイされたモデルに対して SSL を無効にするには、`status="Disabled"` を使用して `SslConfiguration` を作成してから、更新を実行します。
+Azure Kubernetes Service にデプロイされたモデルに対して TLS を無効にするには、`status="Disabled"` を指定して `SslConfiguration` を作成してから、更新を実行します。
 
 ```python
 from azureml.core.compute import AksCompute
@@ -251,7 +251,7 @@ from azureml.core.compute.aks import SslConfiguration
 # Get the existing cluster
 aks_target = AksCompute(ws, clustername)
 
-# Disable SSL
+# Disable TLS
 ssl_configuration = SslConfiguration(status="Disabled")
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: f8005bccf3a726a6022efdecb2eb5738669f3bc2
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/27/2020
+ms.openlocfilehash: 619dc05d709f41941d16764bf32b49a0d2a11958
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762626"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372988"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure Portal を使用して Azure Database for MySQL サーバーのバックアップと復元を行う方法
 
@@ -64,7 +64,7 @@ Azure Database for MySQL では、サーバーの過去の特定時点まで遡�
    ![Azure Database for MySQL - 情報の復元](./media/howto-restore-server-portal/3-restore.png)
    - **復元ポイント**:復元先の特定の時点を選択します。
    - **対象サーバー**:新しいサーバーの名前を指定します。
-   - **場所**:リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
+   - **[場所]** :リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
    - **価格レベル**:ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
 
 4. **[OK]** をクリックして、特定の時点までサーバーを復元します。 
@@ -73,7 +73,7 @@ Azure Database for MySQL では、サーバーの過去の特定時点まで遡�
 
 ポイントインタイム リストアによって作成された新しいサーバーには、選択した特定の時点の既存のサーバーに対して有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 
-復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則または VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。
+復元中に作成される新しいサーバーには、元のサーバーに存在した VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。 元のサーバーのファイアウォール規則は復元されます。
 
 ## <a name="geo-restore"></a>geo リストア
 地理冗長バックアップを使用するようにサーバーを構成した場合は、新しいサーバーをその既存のサーバーのバックアップから作成できます。 この新しいサーバーは、Azure Database for MySQL を使用できる任意のリージョンに作成できます。  
@@ -93,11 +93,9 @@ Azure Database for MySQL では、サーバーの過去の特定時点まで遡�
 
 geo リストアによって作成された新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 
-復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則または VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。
+復元中に作成される新しいサーバーには、元のサーバーに存在した VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。 元のサーバーのファイアウォール規則は復元されます。
 
-
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - サービスの[バックアップ](concepts-backup.md)の詳細について確認します
 - [レプリカ](concepts-read-replicas.md)について確認します
 - [ビジネス継続性](concepts-business-continuity.md)オプションについて確認します

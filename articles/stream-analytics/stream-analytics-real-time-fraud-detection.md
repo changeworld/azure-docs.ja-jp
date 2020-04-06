@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: b7ca4677507f73467dddac09050f250ae34342a9
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: c0b2943e1f0d7f2386ec09da03d297a570eede7a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78329466"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276480"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用:リアルタイムでの不正検出
 
@@ -69,7 +69,7 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
     
 5. サブスクリプションを選択し、リソース グループを作成または選択して、 **[作成]** をクリックします。
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
+    <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
 
 6. イベント ハブの名前空間のデプロイが完了したら、Azure リソースの一覧でその名前空間を見つけます。 
 
@@ -79,7 +79,7 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
  
 8. 新しいイベント ハブに `asa-eh-frauddetection-demo` という名前を付けます。 別の名前を使用してもかまいません。 その場合、名前を書き留めておきます。後でこの名前が必要になります。 イベント ハブの他のオプションをここで設定する必要はありません。
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
+    <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
 9. **Create** をクリックしてください。
 
@@ -87,32 +87,33 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
 
 プロセスがイベント ハブにデータを送信できるようにするには、イベント ハブに、適切なアクセスを許可するポリシーが必要です。 アクセス ポリシーにより、承認情報を含む接続文字列が生成されます。
 
-1.  イベント名前空間ウィンドウで、 **[イベント ハブ]** をクリックし、新しいイベント ハブの名前をクリックします。
+1. イベント名前空間ウィンドウで、 **[イベント ハブ]** をクリックし、新しいイベント ハブの名前をクリックします。
 
-2.  イベント ハブ ウィンドウで、 **[共有アクセス ポリシー]** をクリックし、 **[+&nbsp;追加]** をクリックします。
+2. イベント ハブ ウィンドウで、 **[共有アクセス ポリシー]** をクリックし、 **[+&nbsp;追加]** をクリックします。
 
-    >[!NOTE]
-    >イベント ハブの名前空間ではなく、イベント ハブを操作していることを確認してください。
+    > [!NOTE]
+    > イベント ハブの名前空間ではなく、イベント ハブを操作していることを確認してください。
 
-3.  `asa-policy-manage-demo` という名前のポリシーを追加し、 **[要求]** の **[管理]** を選択します。
+3. `asa-policy-manage-demo` という名前のポリシーを追加し、 **[要求]** の **[管理]** を選択します。
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
+    <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4.  **Create** をクリックしてください。
+4. **Create** をクリックしてください。
 
-5.  ポリシーがデプロイされたら、共有アクセス ポリシーの一覧でそのポリシーをクリックします。
+5. ポリシーがデプロイされたら、共有アクセス ポリシーの一覧でそのポリシーをクリックします。
 
-6.  **[接続文字列 - 主キー]** というボックスを見つけ、接続文字列の横のコピー ボタンをクリックします。 
+6. **[接続文字列 - 主キー]** というボックスを見つけ、接続文字列の横のコピー ボタンをクリックします。 
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-shared-access-policy-copy-connection-string-new-portal.png" alt="Stream Analytics shared access policy" width="300px"/>
+    <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-shared-access-policy-copy-connection-string-new-portal.png" alt="Stream Analytics shared access policy" width="300px"/>
  
-7.  接続文字列をテキスト エディターに貼り付けます。 この接続文字列は、少し編集を加えた後に、次のセクションで必要になります。
+7. 接続文字列をテキスト エディターに貼り付けます。 この接続文字列は、少し編集を加えた後に、次のセクションで必要になります。
 
     接続文字列は次のようになります。
 
-        Endpoint=sb://YOURNAME-eh-ns-demo.servicebus.windows.net/;SharedAccessKeyName=asa-policy-manage-demo;SharedAccessKey=Gw2NFZwU1Di+rxA2T+6hJYAtFExKRXaC2oSQa0ZsPkI=;EntityPath=asa-eh-frauddetection-demo
+    `Endpoint=sb://YOURNAME-eh-ns-demo.servicebus.windows.net/;SharedAccessKeyName=asa-policy-manage-demo;SharedAccessKey=Gw2NFZwU1Di+rxA2T+6hJYAtFExKRXaC2oSQa0ZsPkI=;EntityPath=asa-eh-frauddetection-demo`
 
     接続文字列には、セミコロンで区切られた複数のキーと値のペア (`Endpoint`、`SharedAccessKeyName`、`SharedAccessKey`、`EntityPath`) が含まれています。  
+
 
 ## <a name="configure-and-start-the-event-generator-application"></a>イベント ジェネレーター アプリケーションの構成と起動
 
@@ -129,20 +130,27 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
    * `EventHubName` キーの値をイベント ハブ名 (つまり、エンティティ パスの値) に設定します。
    * `Microsoft.ServiceBus.ConnectionString` キーの値を接続文字列に設定します。 
 
-   `<appSettings>` セクションは、次の例のようになります (わかりやすくするため、行を折り返し、承認トークンから一部の文字を削除してあります)。
+   `<appSettings>` セクションは、次の例のようになります。
 
-   ![TelcoGenerator 構成ファイルに示されるイベント ハブ名と接続文字列](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
+    ```xml
+    <appSettings>
+     <!-- Service Bus specific app setings for messaging connections -->
+     <add key="EventHubName" value="asa-eh-ns-demo"/>
+     <add key="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://asa-eh-ns-demo.servicebus.windows.net/;SharedAccessKeyName=asa-policy-manage-demo;SharedAccessKey=GEcnTKf2//1MRn6SN1A2u0O76MP9pj3v0Ccyf1su4Zo="/>
+   </appSettings>
+    ```
  
 4. ファイルを保存します。 
 
 ### <a name="start-the-app"></a>アプリを起動する
-1.  コマンド ウィンドウを開き、TelcoGenerator アプリを解凍したフォルダーに移動します。
 
-2.  次のコマンドを入力します。
+1. コマンド ウィンドウを開き、TelcoGenerator アプリを解凍したフォルダーに移動します。
 
-   ```cmd
-   telcodatagen.exe 1000 0.2 2
-   ```
+2. 次のコマンドを入力します。
+
+    ```console
+    telcodatagen.exe 1000 0.2 2
+    ```
 
    パラメーターは、次のとおりです。 
 
@@ -176,7 +184,7 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
 
     最適なパフォーマンスを実現し、リージョン間でのデータ転送の料金がかからないように、ジョブとイベント ハブを同じリージョンに配置することをお勧めします。
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
+    <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
 3. **Create** をクリックしてください。
 
@@ -269,11 +277,11 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 1. コード エディターでクエリを次のように変更します。
 
-   ```SQL
-   SELECT CallRecTime, SwitchNum, CallingIMSI, CallingNum, CalledNum 
-   FROM 
-       CallStream
-   ```
+    ```SQL
+    SELECT CallRecTime, SwitchNum, CallingIMSI, CallingNum, CalledNum 
+    FROM 
+        CallStream
+    ```
 
 2. もう一度 **[Test]** をクリックします。 
 
@@ -287,13 +295,13 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 1. コード エディターでクエリを次のように変更します。
 
-        ```SQL
-        SELECT 
-            System.Timestamp as WindowEnd, SwitchNum, COUNT(*) as CallCount 
-        FROM
-            CallStream TIMESTAMP BY CallRecTime 
-        GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
-        ```
+    ```SQL
+    SELECT 
+        System.Timestamp as WindowEnd, SwitchNum, COUNT(*) as CallCount 
+    FROM
+        CallStream TIMESTAMP BY CallRecTime 
+    GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
+    ```
 
     このクエリでは、`FROM` 句で `Timestamp By` キーワードを使って、タンブリング ウィンドウの定義に使う入力ストリームのタイムスタンプ フィールドを指定します。 この場合、ウィンドウは各レコードの `CallRecTime` フィールドによってデータをセグメントに分割します。 フィールドを指定しないと、各イベントがイベント ハブに到着した時刻がウィンドウ化操作に使われます。 「[Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)」(Stream Analytics クエリ言語リファレンス) の「Arrival Time Vs Application Time」(到着時刻とアプリケーション時刻) をご覧ください。 
 
@@ -315,19 +323,19 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 1. コード エディターでクエリを次のように変更します。 
 
-        ```SQL
-        SELECT  System.Timestamp as Time, 
-            CS1.CallingIMSI, 
-            CS1.CallingNum as CallingNum1, 
-            CS2.CallingNum as CallingNum2, 
-            CS1.SwitchNum as Switch1, 
-            CS2.SwitchNum as Switch2 
-        FROM CallStream CS1 TIMESTAMP BY CallRecTime 
-            JOIN CallStream CS2 TIMESTAMP BY CallRecTime 
-            ON CS1.CallingIMSI = CS2.CallingIMSI 
-            AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5 
-        WHERE CS1.SwitchNum != CS2.SwitchNum
-        ```
+    ```SQL
+    SELECT  System.Timestamp as Time, 
+        CS1.CallingIMSI, 
+        CS1.CallingNum as CallingNum1, 
+        CS2.CallingNum as CallingNum2, 
+        CS1.SwitchNum as Switch1, 
+        CS2.SwitchNum as Switch2 
+    FROM CallStream CS1 TIMESTAMP BY CallRecTime 
+        JOIN CallStream CS2 TIMESTAMP BY CallRecTime 
+        ON CS1.CallingIMSI = CS2.CallingIMSI 
+        AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5 
+    WHERE CS1.SwitchNum != CS2.SwitchNum
+    ```
 
     このクエリは、`DATEDIFF` 関数が結合に含まれることを除けば、他の SQL 結合と似ています。 `DATEDIFF` のこのバージョンは Streaming Analytics に固有であり、`ON...BETWEEN` 句で使う必要があります。 パラメーターは、時間単位 (この例では秒) と、結合の 2 つのソースの別名です これは、SQL の標準的な `DATEDIFF` 関数と異なります。
 
@@ -339,7 +347,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 3. **[保存]** をクリックして、自己結合クエリを Stream Analytics ジョブの一部として保存します (サンプル データは保存されません)。
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-save-button-new-portal.png" alt="Save Stream Analytics query in portal" width="300px"/>
+    <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-save-button-new-portal.png" alt="Save Stream Analytics query in portal" width="300px"/>
 
 ## <a name="create-an-output-sink-to-store-transformed-data"></a>変換されたデータを格納する出力シンクを作成する
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: af0466299d1f972fe9334beb5f31c886c1928a1c
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: a9569c1f5de797c77f447b5df15e85a57e8be84b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78329001"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472930"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Batch 用の Azure セキュリティ ベースライン
 
@@ -788,10 +788,10 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 **ガイダンス**: サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワークなど) のクエリまたは検出を実行するには、Azure Resource Graph を使用します。 テナント内の適切な (読み取り) アクセス許可を持っており、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙できることを確認します。
 
 
-従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager (ARM) リソースを作成して使用することを強くお勧めします。
+従来の Azure リソースは Azure Resource Graph Explorer で検出できますが、今後は Azure Resource Manager (ARM) リソースを作成して使用することを強くお勧めします。
 
 
-Azure Graph を使用してクエリを作成する方法:
+Azure Resource Graph Explorer を使用してクエリを作成する方法:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -870,7 +870,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-Azure Graph を使用してクエリを作成する方法: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Azure Resource Graph Explorer を使用してクエリを作成する方法: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Azure Security Center の監視**: 現在は使用できません
 

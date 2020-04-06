@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/01/2019
-ms.openlocfilehash: 9bfadf55e4f68bb7188b27e4ef5bc03e3955f375
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/16/2020
+ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662050"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480285"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor ログ クエリの例
 この記事には、[Kusto クエリ言語](/azure/kusto/query/)を使用して Azure Monitor から複数の種類のログ データを取得する、多様な[クエリ](log-query-overview.md)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
@@ -375,40 +375,47 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>使用法
 
-### <a name="calculate-the-average-size-of-perf-usage-reports-per-computer"></a>コンピューターごとのパフォーマンス使用量レポートの平均サイズの計算
+`Usage` データ型を使用して、取り込まれたデータ ボリュームをソリューションまたはデータ型ごとに追跡できます。 [コンピューター](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer)または[Azure サブスクリプション、リソース グループまたはリソース](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)ごとに、取り込まれたデータ ボリュームを調査するその他の手法があります。
 
-次の例は、過去 3 時間のコンピューターごとのパフォーマンス使用量レポートの平均サイズを計算します。
-結果は、棒グラフで表示されます。
-```Kusto
+#### <a name="data-volume-by-solution"></a>ソリューション別のデータ ボリューム
+
+過去 1 か月間 (まだ終わっていない最終日を除く) の課金対象データ ボリュームをソリューション別に表示するために使用するクエリは、次のとおりです。
+
+```kusto
 Usage 
-| where TimeGenerated > ago(3h)
-| where DataType == "Perf" 
-| where QuantityUnit == "MBytes" 
-| summarize avg(Quantity) by Computer
-| sort by avg_Quantity desc nulls last
-| render barchart
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-### <a name="timechart-latency-percentiles-50-and-95"></a>時間グラフ待機時間のパーセンタイル 50 および 95
+句 `where IsBillable = true` は、取り込み料金がかからない特定のソリューションからのデータの種類を除外することに注意してください。  また、`TimeGenerated` を含む句は、Azure portal のクエリ機能が既定の 24 時間を超えてさかのぼって参照するようにするためだけのものです。 Usage データ型を使用する場合、`StartTime` と `EndTime` は、結果が表示される時間バケットを表します。 
 
-次の例は、過去 24 時間に時間単位でレポートされた **avgLatency** の 50 および 95 パーセンタイルを計算し、グラフ化します。
+#### <a name="data-volume-by-type"></a>種類別のデータ ボリューム
 
-```Kusto
-Usage
-| where TimeGenerated > ago(24h)
-| summarize percentiles(AvgLatencyInSeconds, 50, 95) by bin(TimeGenerated, 1h) 
-| render timechart
+さらにドリルダウンして、データの種類別にデータの傾向を確認できます。
+
+```kusto
+Usage 
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
 ```
 
-### <a name="usage-of-specific-computers-today"></a>当日の特定のコンピューターの使用状況
-次の例は、コンピューター名に文字列 _ContosoFile_ が含まれているコンピューターの過去 1 日間の **Usage** を取得します。 結果は、**TimeGenerated** で並べ替えられます。
+または、過去 1 か月について、ソリューション別および種類別にテーブルを表示するには、次のようにします
 
-```Kusto
-Usage
-| where TimeGenerated > ago(1d)
-| where  Computer contains "ContosoFile" 
-| sort by TimeGenerated desc nulls last
+```kusto
+Usage 
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by Solution, DataType
+| sort by Solution asc, DataType asc
 ```
+
+> [!NOTE]
+> 使用状況データ型の一部のフィールドは、スキーマにはまだありますが非推奨とされていて、その値が設定されなくなります。 これらは、**Computer** と、取り込みに関連するフィールド (**TotalBatches**、**BatchesWithinSla**、**BatchesOutsideSla**、**BatchesCapped**、および **AverageProcessingTimeMs**) です。
 
 ## <a name="updates"></a>更新プログラム
 

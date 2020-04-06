@@ -3,21 +3,23 @@ title: テキスト読み上げ - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 音声サービスのテキスト読み上げ機能を使用すると、アプリケーション、ツール、またはデバイスでテキストを人間のような自然な合成音声に変換できます。 事前設定の音声を選択するか、独自のカスタム音声を作成します。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.author: erhopf
-ms.openlocfilehash: d076d2520bda4d6209fbdd991df57c4eedaa3938
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/23/2020
+ms.author: dapine
+ms.openlocfilehash: 7c7574ee4e9f75b9b650ff63a10666c5e379fca8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379880"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131559"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 音声サービスのテキスト読み上げを使用すると、アプリケーション、ツール、またはデバイスで、テキストを人間のような合成音声に変換できます。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を作成することもできます。 標準音声は、45 を超える言語とロケールで 75 種類以上が用意されています。ニューラル音声は、一部の言語とロケールで 5 種類が用意されています。 サポートされている音声、言語、ロケールの一覧については、[サポートされている言語](language-support.md#text-to-speech)に関する記事をご覧ください。
 
@@ -25,11 +27,11 @@ ms.locfileid: "75379880"
 > Bing Speech は、2019 年 10 月 15 日に使用が停止されました。 アプリケーション、ツール、または製品で Bing Speech API または Custom Speech をご使用の方に向けて、Speech Service への移行に役立つガイドを作成しました。
 > - [Bing Speech から Speech Service に移行する](how-to-migrate-from-bing-speech.md)
 
-## <a name="core-features"></a>コア機能 
+## <a name="core-features"></a>コア機能
 
 * 音声合成 - [Speech SDK](quickstarts/text-to-speech-audio-file.md) または [REST API](rest-text-to-speech.md) を使用して、標準音声、ニューラル音声、またはカスタム音声を使ってテキストを音声に変換します。
 
-* 長い音声の非同期合成 - [Long Audio API](long-audio-api.md) を使用して、10 分以上のテキスト読み上げファイル (オーディオ ブックや講義など) を非同期に合成します。 Speech SDK または Speech-to-Text REST API を使用して実行される合成とは異なり、応答はリアルタイムで返されません。 要求が非同期に送信され、応答がポーリングされること、および合成音声がサービスから利用可能になったときにダウンロードされることを想定しています。 ニューラル音声のみがサポートされています。
+* 長い音声の非同期合成 - [Long Audio API](long-audio-api.md) を使用して、10 分以上のテキスト読み上げファイル (オーディオ ブックや講義など) を非同期に合成します。 Speech SDK または Speech-to-Text REST API を使用して実行される合成とは異なり、応答はリアルタイムで返されません。 要求が非同期に送信され、応答がポーリングされること、および合成音声がサービスから利用可能になったときにダウンロードされることを想定しています。 カスタム ニューラル音声のみがサポートされています。
 
 * 標準音声 - 統計的パラメトリック音声合成手法や連結音声合成手法を使用して作成されます。 このような音声は非常にわかりやすく、自然に聞こえます。 さまざまな音声オプションを使用して、アプリケーションが 45 を超える言語で簡単に話せるようにすることができます。 これらの音声は、略語、頭字語の展開、日付/時刻の解釈、多音字などのサポートを含め、高度な発音精度を実現しています。 標準音声の一覧については、[サポートされている言語](language-support.md#text-to-speech)に関する記事をご覧ください。
 
@@ -54,7 +56,7 @@ ms.locfileid: "75379880"
 - [テキスト読み上げのサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [テキスト読み上げのサンプル (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
-## <a name="customization"></a>カスタマイズ 
+## <a name="customization"></a>カスタマイズ
 
 標準音声とニューラル音声に加え、製品またはブランドに固有のカスタム音声を作成し、微調整できます。 作業を始めるにあたって必要なのは、少数のオーディオ ファイルと関連する文字起こしだけです。 詳細については、「[Get started with Custom Voice (カスタム音声の概要)](how-to-custom-voice.md)」をご覧ください。
 

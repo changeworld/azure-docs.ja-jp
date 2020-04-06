@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 530eebea19d9e53f85a0079d6fba91c615ee6dd1
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 86dbcdc24c90ba8b161b041af96cbdd0665ad827
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498905"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227727"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールに対するセキュリティ アラートを構成する
 
@@ -87,7 +87,7 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 | **修正方法** | リスト内のアカウントを確認します。 もうアクセスが不要になっているアカウントは、特権ロールから削除します。 |
 | **防止** | パスワードを知っているユーザーの変更がある場合に、共有されているアカウントが、強固なパスワードのローテーションを行っていることを確認します。 </br>[アクセス レビュー](pim-how-to-start-security-review.md)を使用して特権ロールを持つアカウントを定期的に確認し、不要になっているロールの割り当てを削除します。 |
 | **ポータル内での軽減策のアクション** | 対象の特権ロールからアカウントを削除します。 |
-| **ベスト プラクティス** | パスワードを使って認証を行い、グローバル管理者やセキュリティ管理者などの高い特権を持つ管理者ロールに割り当てられる共有、サービス、および緊急アクセス用のアカウントでは、次の場合にパスワードをローテーションする必要があります。<ul><li>管理アクセス権の悪用や侵害が関係するセキュリティ インシデントの後</li><li>管理者ではなくなったユーザーの特権を変更した後 (たとえば、IT 管理者であった従業員が IT 部門から異動したり退職したりした後)</li><li>IT スタッフの認識された侵害や変更がない場合でも、一定の間隔で (たとえば、毎四半期または毎年)</li></ul>これらのアカウントの資格情報には複数のユーザーがアクセスできるので、資格情報をローテーションして、それらのロールから抜けたユーザーがアカウントにアクセスできないようにする必要があります。 [詳細情報](https://aka.ms/breakglass) |
+| **ベスト プラクティス** | パスワードを使って認証を行い、グローバル管理者やセキュリティ管理者などの高い特権を持つ管理者ロールに割り当てられる共有、サービス、および緊急アクセス用のアカウントでは、次の場合にパスワードをローテーションする必要があります。<ul><li>管理アクセス権の悪用や侵害が関係するセキュリティ インシデントの後</li><li>管理者ではなくなったユーザーの特権を変更した後 (たとえば、IT 管理者であった従業員が IT 部門から異動したり退職したりした後)</li><li>IT スタッフの認識された侵害や変更がない場合でも、一定の間隔で (たとえば、毎四半期または毎年)</li></ul>これらのアカウントの資格情報には複数のユーザーがアクセスできるので、資格情報をローテーションして、それらのロールから抜けたユーザーがアカウントにアクセスできないようにする必要があります。 [アカウントの保護に関する詳細情報](../users-groups-roles/directory-admin-roles-secure.md) |
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>ロールが Privileged Identity Management の外部に割り当てられている
 

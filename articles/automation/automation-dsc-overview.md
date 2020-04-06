@@ -10,16 +10,16 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 787cade13a0636bb25afa1d4043a977f512484f9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 46cf0d6a12ffbc836db7bd79c0f2738a94e23085
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850892"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283193"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration の概要
 
-Azure Automation State Configuration は、PowerShell の Desired State Configuration (DSC) [構成](/powershell/scripting/dsc/configurations/configurations)の書き込み、管理、コンパイル、[DSC リソース](/powershell/scripting/dsc/resources/resources)のインポート、および構成のターゲット ノードへの割り当てを、すべてクラウドで実行できる Azure サービスです。
+Azure Automation State Configuration は、PowerShell の Desired State Configuration (DSC) [構成](/powershell/scripting/dsc/configurations/configurations)の書き込み、管理、コンパイルを実行できる Azure サービスです。 また、サービスでは、[DSC リソース](/powershell/scripting/dsc/resources/resources)のインポートと、ターゲット ノードへの構成の割り当てをすべて、クラウドで実行できます。
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Azure Automation State Configuration を使用する理由
 
@@ -27,23 +27,21 @@ Azure Automation State Configuration には、Azure の外部で DSC を使用�
 
 ### <a name="built-in-pull-server"></a>組み込みのプル サーバー
 
-Azure Automation State Configuration には、ターゲット ノードが自動的に構成を受信して、目的の状態に適合し、その準拠の状態に関するレポートを返すことができる [Windows Feature DSC-Service](/powershell/scripting/dsc/pull-server/pullserver) と似た DSC プル サーバーが用意されています。 Azure Automation の組み込みのプル サーバーでは、独自のプル サーバーを設定して管理する必要はありません。 Azure Automation は、クラウドまたはオンプレミスの仮想または物理的な Windows コンピューターや Linux コンピューターを対象とすることができます。
+Azure Automation State Configuration では、[Windows 機能 DSC サービス](/powershell/scripting/dsc/pull-server/pullserver)に似た DSC プル サーバーが提供されます。 ターゲット ノードでは、自動的に構成を受信し、目的の状態に適合させ、コンプライアンスについて報告することができます。 Azure Automation の組み込みのプル サーバーでは、独自のプル サーバーを設定して管理する必要はありません。 Azure Automation は、クラウドまたはオンプレミスの仮想または物理的な Windows コンピューターや Linux コンピューターを対象とすることができます。
 
 ### <a name="management-of-all-your-dsc-artifacts"></a>すべての DSC アーティファクトの管理
 
-Azure Automation State Configuration は、Azure Automation が PowerShell スクリプト用に提供するものと同じ管理レイヤーを [PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) に提供します。
-
-Azure Portal から、または PowerShell から、すべての DSC 構成、リソース、およびターゲット ノードを管理できます。
+Azure Automation State Configuration では、PowerShell スクリプト用に提供されるものと同じ管理レイヤーが、[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) に提供されます。 Azure portal から、または PowerShell から、すべての DSC 構成、リソース、およびターゲット ノードを管理できます。
 
 ![Azure Automation ページのスクリーンショット](./media/automation-dsc-overview/azure-automation-blade.png)
 
-### <a name="import-reporting-data-into-azure-monitor-logs"></a>Azure Monitor ログへのレポート データのインポート
+### <a name="import-of-reporting-data-into-azure-monitor-logs"></a>Azure Monitor ログへのレポート データのインポート
 
-Azure Automation State Configuration で管理されているノードは、組み込みのプル サーバーに詳細なレポート ステータス データを送信します。 Azure Automation State Configuration を構成して、このデータを Log Analytics ワークスペースに送信できます。 Log Analytics ワークスペースに State Configuration 状態データを送信する方法については、「[Azure Monitor ログへの Azure Automation State Configuration レポート データの転送](automation-dsc-diagnostics.md)」を参照してください。
+Azure Automation State Configuration で管理されているノードは、組み込みのプル サーバーに詳細なレポート ステータス データを送信します。 Azure Automation State Configuration を構成して、このデータを Log Analytics ワークスペースに送信できます。 「[Azure Monitor ログへの Azure Automation State Configuration レポート データの転送](automation-dsc-diagnostics.md)」を参照してください。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites-for-using-azure-automation-state-configuration"></a>Azure Automation State Configuration を使用するための前提条件
 
-Azure Automation State Configuration (DSC) を使用する場合は、次の要件を検討してください。
+DSC に対して Azure Automation State Configuration を使用する場合は、次の要件を検討してください。
 
 ### <a name="operating-system-requirements"></a>オペレーティング システムの要件
 
@@ -58,50 +56,48 @@ Windows を実行しているノードの場合は、次のバージョンがサ
 - Windows 8.1
 - Windows 7
 
-[Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) のスタンドアロン製品 SKU は Desired State Configuration の実装を含んでいないため、PowerShell DSC や Azure Automation State Configuration では管理できません。
+>[!NOTE]
+>[Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) スタンドアロン製品 SKU には、DSC の実装は含まれていません。 したがって、PowerShell DSC または Azure Automation State Configuration で管理することはできません。
 
-Linux を実行しているノードの場合は、次のディストリビューション/バージョンがサポートされます。
-
-DSC Linux 拡張機能では、「[サポートされている Linux ディストリビューション](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)」に一覧表示されている Linux ディストリビューションがすべてサポートされます。
+Linux が実行されているノードの場合、DSC Linux 拡張機能では、「[サポートされている Linux ディストリビューション](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)」の一覧で示されている Linux ディストリビューションがすべてサポートされます。
 
 ### <a name="dsc-requirements"></a>DSC 要件
 
-Azure で実行されているすべての Windows ノードに対して、[WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) がオンボード中にインストールされます。  Windows Server 2012 および Windows 7 を実行しているノードでは、[WinRM が有効になります](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency)。
+Azure で実行されているすべての Windows ノードに対して、[WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) がオンボード中にインストールされます。 Windows Server 2012 および Windows 7 を実行しているノードでは、[WinRM が有効になります](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency)。
 
 Azure で実行しているすべての Linux ノードで、オンボード中に [Linux 用の PowerShell DSC](https://github.com/Microsoft/PowerShell-DSC-for-Linux) がインストールされます。
 
-### <a name="network-planning"></a>プライベート ネットワークを構成する
+### <a name="configuration-of-private-networks"></a><a name="network-planning"></a>プライベート ネットワークの構成
 
-ノードが非公開ネットワーク内にある場合、State Configuration (DSC) が Automation と通信するには、次のポートと URL が必要です。
+ノードがプライベート ネットワークに配置されている場合は、次のポートと URL が必要です。 これらのリソースにより、マネージド ノードに対するネットワーク接続が提供され、DSC で Azure Automation と通信できます。
 
-* ポート: 送信インターネット アクセスには TCP 443 のみが必要です。
-* グローバル URL: *.azure-automation.net
-* 米国バージニア州 (政府機関向け) のグローバル URL: *.azure automation.us
-* エージェント サービス: https://\<workspaceId\>.agentsvc.azure-automation.net
+* ポート: 送信インターネット アクセスには TCP 443 のみが必要です
+* グローバル URL: * **.azure-automation.net**
+* US Gov バージニアのグローバル URL: * **.azure automation.us**
+* エージェント サービス: **https://\<workspaceId\>.agentsvc.azure-automation.net**
 
-これにより、マネージド ノードが Azure Automation と通信するためのネットワーク接続が提供されます。
-ノード間で通信する DSC リソース ([WaitFor * リソース](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)など) を使用している場合、ノード間のトラフィックを許可する必要もあります。
-これらのネットワーク要件を理解するには、各 DSC リソースのドキュメントを参照してください。
+ノード間で通信する DSC リソース ([WaitFor * リソース](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)など) を使用している場合、ノード間のトラフィックを許可する必要もあります。 これらのネットワーク要件を理解するには、各 DSC リソースのドキュメントを参照してください。
 
 #### <a name="proxy-support"></a>プロキシのサポート
 
-DSC エージェントのプロキシは、Windows バージョン 1809 以降でサポートされます。
-このオプションを構成するには、ノードの登録に使用される [metaconfiguration スクリプト](automation-dsc-onboarding.md#generating-dsc-metaconfigurations)の **ProxyURL** と **ProxyCredential** の値を設定します。
-以前のバージョンの Windows では、DSC のプロキシは利用できません。
+DSC エージェントのプロキシは、Windows バージョン 1809 以降でサポートされます。 このオプションを有効にするには、ノードの登録に使用される[メタ構成スクリプト](automation-dsc-onboarding.md#generating-dsc-metaconfigurations)で `ProxyURL` と `ProxyCredential` の値を設定します。
 
-Linux ノードでは、DSC エージェントがプロキシをサポートしており、http_proxy 変数を利用して URL が特定されます。
+>[!NOTE]
+>Azure Automation State Configuration では、以前のバージョンの Windows に対する DSC プロキシ サポートは提供されません。
 
-#### <a name="azure-state-configuration-network-ranges-and-namespace"></a>Azure State Configuration のネットワークの範囲と名前空間
+Linux ノードでは、DSC エージェントによってプロキシがサポートされ、`http_proxy` 変数を使用して URL が特定されます。
 
-例外を定義するときは、一覧に示されているアドレスを使用することをお勧めします。 [Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)の IP アドレスをダウンロードできます。 このファイルは毎週更新され、現在デプロイされている範囲と今後変更される IP 範囲が反映されます。
+#### <a name="azure-automation-state-configuration-network-ranges-and-namespace"></a>Azure Automation State Configuration のネットワークの範囲と名前空間
+
+例外を定義するときは、次の一覧に示されているアドレスを使用することをお勧めします。 IP アドレスについては、[Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)をダウンロードできます。 このファイルは毎週更新され、現在デプロイされている範囲と今後変更される IP 範囲が反映されます。
 
 特定のリージョンに対して定義された Automation アカウントがある場合は、そのリージョン データセンターへの通信を制限できます。 次の表は、リージョンごとの DNS レコードを示しています。
 
-| **[リージョン]** | **DNS レコード** |
+| **リージョン** | **DNS レコード** |
 | --- | --- |
 | 米国中西部 | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | 米国中南部 |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| East US   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
+| 米国東部    | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
 | 米国東部 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | カナダ中部 |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | 西ヨーロッパ |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
@@ -111,20 +107,20 @@ Linux ノードでは、DSC エージェントがプロキシをサポートし�
 | 東日本 |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | オーストラリア東南部 |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
 | 英国南部 | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| 米国政府バージニア州 | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| US Gov バージニア州 | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 リージョン名の代わりにリージョン IP アドレスの一覧を入手するには、Microsoft ダウンロード センターから [Azure データセンター IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653) XML ファイルをダウンロードします。
 
 > [!NOTE]
 > Azure データセンター IP アドレス XML ファイルには、Microsoft Azure データセンターで使用されている IP アドレス範囲が一覧表示されています。 このファイルには、計算、SQL、およびストレージの範囲が含まれています。
 >
->更新されたファイルが毎週投稿されます。 このファイルには、現在デプロイされている範囲と、次に予定されている IP 範囲の変更が反映されています。 このファイルに現れる新しい範囲は、少なくとも 1 週間はデータセンターで使用されません。
->
-> 新しい XML ファイルを毎週ダウンロードすることをお勧めします。 その後、Azure で実行されているサービスを正しく識別するようにサイトを更新します。 Azure ExpressRoute ユーザーは、このファイルが、毎月第 1 週に Azure 領域の Border Gateway Protocol (BGP) アドバタイズを更新するために使用されることに注意してください。
+>更新されたファイルが毎週投稿されます。 このファイルには、現在デプロイされている範囲と、次に予定されている IP 範囲の変更が反映されています。 このファイルに現れる新しい範囲は、少なくとも 1 週間はデータセンターで使用されません。 新しい XML ファイルを毎週ダウンロードすることをお勧めします。 その後、Azure で実行されているサービスを正しく識別するようにサイトを更新します。 
 
-## <a name="next-steps"></a>次の手順
+Azure ExpressRoute ユーザーは、このファイルが、毎月第 1 週に Azure 領域の Border Gateway Protocol (BGP) アドバタイズを更新するために使用されることに注意してください。
 
-- 使用を開始するには、「[Azure Automation State Configuration の使用](automation-dsc-getting-started.md)」をご覧ください。
+## <a name="next-steps"></a>次のステップ
+
+- Azure Automation State Configuration で DSC の使用を始めるには、「[Azure Automation State Configuration の使用開始](automation-dsc-getting-started.md)」をご覧ください。
 - ノードをオンボードにする方法は、「[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」をご覧ください。
 - DSC 構成をコンパイルしてターゲット ノードに割り当てることができるようにする方法の詳細については、「[Azure Automation State Configuration での構成のコンパイル](automation-dsc-compile.md)」をご覧ください。
 - PowerShell コマンドレットのリファレンスについては、[Azure Automation State Configuration のコマンドレット](/powershell/module/azurerm.automation/#automation)に関するページをご覧ください。

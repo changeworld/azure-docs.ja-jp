@@ -3,18 +3,18 @@ title: インデクサーのフィールド マッピング
 titleSuffix: Azure Cognitive Search
 description: フィールド名とデータ表現の間の違いを調整するようにインデクサーでフィールド マッピングを構成します。
 manager: nitinme
-author: mgottein
+author: mattmsft
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 72623787cdb27c568fe2b4ec075010674a3996ef
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 3e09741e841897032b8146dee67b79e0c26ea5cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74124002"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275154"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Cognitive Search インデクサーを使用したフィールドのマッピングと変換
 
@@ -123,7 +123,7 @@ api-key: [admin key]
 
 #### <a name="example---document-key-lookup"></a>例 - ドキュメント キーの検索
 
-Azure Cognitive Search ドキュメント キーには、URL で使用できる文字のみを使用できます ([Lookup API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) を使用してドキュメントのアドレスを指定できるようにする必要があるため)。 URL の安全ではない文字がキーのソース フィールドに含まれている場合は、インデックス作成時に `base64Encode` 関数を使用して変換できます。
+Azure Cognitive Search ドキュメント キーには、URL で使用できる文字のみを使用できます ([Lookup API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) を使用してドキュメントのアドレスを指定できるようにする必要があるため)。 URL の安全ではない文字がキーのソース フィールドに含まれている場合は、インデックス作成時に `base64Encode` 関数を使用して変換できます。 ただし、ドキュメント キー (変換前と変換後の両方) を 1024 文字より長くすることはできません。
 
 検索時にエンコードされたキーを取得すると、`base64Decode` 関数を使用して元のキー値を取得し、それを使用してソース ドキュメントを取得できます。
 
@@ -292,6 +292,28 @@ Azure SQL Database には、Azure Cognitive Search の `Collection(Edm.String)` 
     "targetFieldName" : "SearchableMetadata",
     "mappingFunction" : {
       "name" : "urlDecode"
+    }
+  }]
+ ```
+ 
+ <a name="fixedLengthEncodeFunction"></a>
+ 
+ ### <a name="fixedlengthencode-function"></a>fixedLengthEncode 関数
+ 
+ この関数は、任意の長さの文字列を固定長文字列に変換します。
+ 
+ ### <a name="example---map-document-keys-that-are-too-long"></a>例 - 長すぎるドキュメント キーをマップする
+ 
+ドキュメント キーの長さが 1024 文字を超えていることを通知するエラーが発生した場合、この関数を適用して、ドキュメント キーの長さを短くすることができます。
+
+ ```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "metadata_storage_path",
+    "targetFieldName" : "your key field",
+    "mappingFunction" : {
+      "name" : "fixedLengthEncode"
     }
   }]
  ```

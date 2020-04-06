@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) の Kubernetes ネットワーク �
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 92e726529f2c81b169dc5ad485148ad8118bbc81
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 37b6ebd1c8b147db0a9cead4678a0b2bb4ed234d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592868"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473610"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護
 
@@ -42,7 +42,7 @@ Azure CLI バージョン 2.0.61 以降がインストールされて構成さ�
 
 Azure には、ネットワーク ポリシーを実装する 2 つの方法が用意されています。 AKS クラスターを作成するときに、ネットワーク ポリシーのオプションを選択します。 クラスターの作成後は、ポリシー オプションは変更できません。
 
-* *Azure ネットワーク ポリシー*という、Azure の独自の実装。
+* "*Azure ネットワーク ポリシー*" と呼ばれる Azure の独自の実装。
 * [Tigera][tigera] によって設立されたオープンソース ネットワークおよびネットワーク セキュリティ ソリューションである *Calico ネットワーク ポリシー*。
 
 どちらの実装も Linux *IPTables* を使用して、指定されたポリシーを適用します。 ポリシーは、許可される IP ペアと許可されない IP ペアのセットに変換されます。 その後、これらのペアは IPTable フィルタ ルールとしてプログラミングされます。
@@ -172,7 +172,7 @@ wget -qO- http://backend
 
 次のサンプル出力は、既定の NGINX Web ページが返されたことを示しています。
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -204,14 +204,15 @@ spec:
   ingress: []
 ```
 
+[https://shell.azure.com](https://shell.azure.com) にアクセスし、ブラウザーで Azure Cloud Shell を開きます。
+
 [kubectl apply][kubectl-apply] コマンドを使用してネットワーク ポリシーを適用し、YAML マニフェストの名前を指定します。
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
 ### <a name="test-the-network-policy"></a>ネットワーク ポリシーをテストする
-
 
 再びバックエンド ポッドで NGINX Web ページを使用できるかどうかを確認しましょう。 別のテスト ポッドを作成してターミナル セッションをアタッチします。
 
@@ -222,8 +223,10 @@ kubectl run --rm -it --image=alpine network-policy --namespace development --gen
 シェル プロンプトで `wget` を使用して、既定の NGINX Web ページにアクセスできるかどうかを確認します。 今回は、タイムアウト値を *2* 秒に設定します。 ネットワーク ポリシーがすべての受信トラフィックをブロックするようになったため、次の例に示すように、ページを読み込めません。
 
 ```console
-$ wget -qO- --timeout=2 http://backend
+wget -qO- --timeout=2 http://backend
+```
 
+```output
 wget: download timed out
 ```
 
@@ -264,7 +267,7 @@ spec:
 
 [kubectl apply][kubectl-apply] コマンドを使用して、更新されたネットワーク ポリシーを適用し、YAML マニフェストの名前を指定します。
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
@@ -282,7 +285,7 @@ wget -qO- http://backend
 
 イングレス ルールは *app: webapp,role: frontend* のラベルが付いたポッドのトラフィックを許可するため、フロントエンド ポッドからのトラフィックは許可されます。 次の出力例は、既定の NGINX Web ページが返されたことを示しています。
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -307,8 +310,10 @@ kubectl run --rm -it --image=alpine network-policy --namespace development --gen
 シェル プロンプトで `wget` を使用して、既定の NGINX Web ページにアクセスできるかどうかを確認します。 ネットワーク ポリシーが受信トラフィックをブロックするため、次の例に示すように、ページを読み込めません。
 
 ```console
-$ wget -qO- --timeout=2 http://backend
+wget -qO- --timeout=2 http://backend
+```
 
+```output
 wget: download timed out
 ```
 
@@ -343,7 +348,7 @@ wget -qO- http://backend.development
 
 ポッドのラベルがネットワーク ポリシーで現在許可されているものに一致するため、トラフィックは許可されます。 ネットワーク ポリシーは名前空間を調べず、ポッド ラベルだけを調べます。 次の出力例は、既定の NGINX Web ページが返されたことを示しています。
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>
@@ -387,7 +392,7 @@ spec:
 
 [kubectl apply][kubectl-apply] コマンドを使用して、更新されたネットワーク ポリシーを適用し、YAML マニフェストの名前を指定します。
 
-```azurecli-interactive
+```console
 kubectl apply -f backend-policy.yaml
 ```
 
@@ -402,8 +407,10 @@ kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend -
 シェル プロンプトで `wget` を使用して、ネットワーク ポリシーがトラフィックを拒否するようになったことを確認します。
 
 ```console
-$ wget -qO- --timeout=2 http://backend.development
+wget -qO- --timeout=2 http://backend.development
+```
 
+```output
 wget: download timed out
 ```
 
@@ -427,7 +434,7 @@ wget -qO- http://backend
 
 そのポッドが、ネットワーク ポリシーで許可されているものに一致する名前空間でスケジュールされているため、トラフィックは許可されます。 次のサンプル出力は、既定の NGINX Web ページが返されたことを示しています。
 
-```
+```output
 <!DOCTYPE html>
 <html>
 <head>

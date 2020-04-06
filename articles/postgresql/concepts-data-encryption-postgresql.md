@@ -1,17 +1,17 @@
 ---
-title: カスタマーマネージド キーを使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
+title: カスタマーマネージド キーを使用したデータ暗号化 - Azure Database for PostgreSQL - 単一サーバー
 description: カスタマーマネージド キーによる Azure Database for PostgreSQL 単一サーバーのデータ暗号化では、保存データの保護に Bring Your Own Key (BYOK) を使用できます。 また、組織でキーとデータの管理における職務の分離を実装することもできます。
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 5516bfcb3ed32ba6635943298db2a7773db0a622
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 20e01e681c382e3c9c69f76c95a90f709f409d6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198702"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79297024"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>カスタマーマネージド キーを使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
@@ -32,9 +32,9 @@ Key Vault は、クラウドベースの外部キー管理システムです。 
 Azure Database for PostgreSQL 単一サーバーのデータ暗号化には、次の利点があります。
 
 * キーを削除してデータベースにアクセスできないようにすることで、ユーザーがデータアクセスを完全に制御できる 
-*   キーライフサイクルの完全な制御 (企業ポリシーに合わせたキーの交換を含む)
-*   Azure Key Vault でのキーの一元的な管理と整理
-*   セキュリティ責任者と、DBA およびシステム管理者の間での職務の分離を実装できる
+*    キーライフサイクルの完全な制御 (企業ポリシーに合わせたキーの交換を含む)
+*    Azure Key Vault でのキーの一元的な管理と整理
+*    セキュリティ責任者と、DBA およびシステム管理者の間での職務の分離を実装できる
 
 ## <a name="terminology-and-description"></a>用語と説明
 
@@ -92,7 +92,7 @@ Key Vault を構成するための要件を以下に示します。
 
 ## <a name="inaccessible-customer-managed-key-condition"></a>カスタマーマネージド キーのアクセス不可状態
 
-Key Vault でカスタマー マネージド キーを使用してデータ暗号化を構成する場合に、サーバーをオンラインに保つには、このキーへの継続的なアクセスが必要です。 サーバーで Key Vault のカスタマーマネージドキーにアクセスできなくなった場合、サーバーでは 10 分以内にすべての接続を拒否し始めます。 サーバーで対応するエラー メッセージが発行され、サーバーの状態が "*アクセス不可*" に変更されます。 この状態でデータベースに対して許可される唯一のアクションは、削除のみです。
+Key Vault でカスタマー マネージド キーを使用してデータ暗号化を構成する場合に、サーバーをオンラインに保つには、このキーへの継続的なアクセスが必要です。 サーバーで Key Vault のカスタマーマネージド キーにアクセスできなくなった場合、サーバーでは 10 分以内にすべての接続を拒否し始めます。 サーバーで対応するエラー メッセージが発行され、サーバーの状態が "*アクセス不可*" に変更されます。 この状態でデータベースに対して許可される唯一のアクションは、削除のみです。
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Key Vault からの誤ったキー アクセスの失効
 
@@ -122,7 +122,7 @@ Key Vault に格納されている顧客のマネージド キーで Azure Datab
 
 * マスター Azure Database for PostgreSQL 単一サーバーから、復元または読み取りレプリカの作成プロセスを開始します。
 * 新しく作成されたサーバー (復元またはレプリカ) は、アクセス不可状態のままにしておきます。これは、その一意の ID に Key Vault へのアクセス許可がまだ付与されていないためです。
-* 復元またはレプリカ サーバーで、カスタマーマネージド キーをデータ暗号化設定で再確認します。 これにより、新しく作成されたサーバーに、Key Vault に格納されているキーに対するラップとそのラップ解除の権限が確実に与えられます。
+* 復元またはレプリカ サーバーで、カスタマーマネージド キーをデータ暗号化設定で再確認します。 これにより、新しく作成されたサーバーに、Key Vault に格納されているキーに対するラップとそのラップ解除のアクセス許可が確実に与えられます。
 
 ## <a name="next-steps"></a>次のステップ
 

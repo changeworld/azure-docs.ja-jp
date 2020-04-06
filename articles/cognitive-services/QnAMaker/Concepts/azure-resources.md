@@ -2,13 +2,13 @@
 title: Azure リソース - QnA Maker
 description: QnA Maker では、それぞれ異なる目的で複数の Azure ソースを使用します。 それらが個別にどのように使用されるかを理解すると、正しい価格レベルを計画して選択し、価格レベルを変更する時期を把握できるようになります。 これらを組み合わせて使用する方法を理解すると、発生した問題を見つけて修正できるようになります。
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.openlocfilehash: 77aced459c7731a2cac432538cfc66ed9ce83f9d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 03/25/2020
+ms.openlocfilehash: 8a5cc0f4889e31470514015035a92d230c40ed43
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902071"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284247"
 ---
 # <a name="azure-resources-for-qna-maker"></a>QnA Maker 用の Azure リソース
 
@@ -30,7 +30,9 @@ QnA Maker では、それぞれ異なる目的で複数の Azure ソースを使
 
 通常、次の 3 つのパラメーターを考慮する必要があります。
 
-* **サービスに必要なスループット**: App Service の適切な[アプリ プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)を、実際のニーズに基づいて選択します。 アプリは[スケールアップ](https://docs.microsoft.com/azure/app-service/manage-scale-up)またはスケールダウンすることができます。 この点は、Azure Cognitive Search の SKU の選択にも影響します。詳細については、[こちら](https://docs.microsoft.com/azure/search/search-sku-tier)を参照してください。
+* **サービスに必要なスループット**:
+    * App Service の適切な[アプリ プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)を、実際のニーズに基づいて選択します。 アプリは[スケールアップ](https://docs.microsoft.com/azure/app-service/manage-scale-up)またはスケールダウンすることができます。
+    * この点は、Azure **Cognitive Search** の SKU の選択にも影響します。詳細については、[こちら](https://docs.microsoft.com/azure/search/search-sku-tier)を参照してください。 さらに、レプリカで Cognitive Search の[容量](../../../search/search-capacity-planning.md)を調整することが必要になる場合があります。
 
 * **ナレッジ ベースのサイズと数**: 実際のシナリオに合った適切な [Azure Search SKU](https://azure.microsoft.com/pricing/details/search/) を選択してください。 通常は、さまざまな主題の領域の数に基づいて必要なナレッジ ベースの数を決定します。 (1 つの言語の) 主題の領域を 1 つのナレッジ ベースに含めるようにします。
 
@@ -53,7 +55,7 @@ QnA Maker では、それぞれ異なる目的で複数の Azure ソースを使
 |アップグレード|理由|
 |--|--|
 |QnA Maker 管理 SKU の[アップグレード](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)|ナレッジ ベースにさらに多くの QnA セットまたはドキュメント ソースが必要。|
-|App Service SKU の[アップグレード](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service)|ナレッジ ベースでクライアント アプリ (チャット ボットなど) からのより多くの要求に対応する必要がある。|
+|App Service SKU の[アップグレード](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service)、Cognitive Search のレベルの確認、および [Cognitive Search レプリカの作成](../../../search/search-capacity-planning.md)|ナレッジ ベースでクライアント アプリ (チャット ボットなど) からのより多くの要求に対応する必要がある。|
 |Azure Cognitive Search サービスの[アップグレード](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)|多数のナレッジ ベースを使用する予定である。|
 
 [Azure portal で App Service を更新](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)して、最新のランタイム更新プログラムを取得します。
@@ -114,7 +116,7 @@ QnA Maker リソースを使うと、オーサリングおよび公開 API だ�
 
 #### <a name="qna-maker-resource-configuration-settings"></a>QnA Maker リソースの構成設定
 
-[QnA Maker ポータル](https://qnamaker.ai)で新しいナレッジ ベースを作成する場合、リソース レベルで適用される設定は **言語** 設定のみです。 リソースに最初のナレッジ ベースを作成するときに、言語を選択します。 
+[QnA Maker ポータル](https://qnamaker.ai)で新しいナレッジ ベースを作成する場合、リソース レベルで適用される設定は **言語** 設定のみです。 リソースに最初のナレッジ ベースを作成するときに、言語を選択します。
 
 ### <a name="app-service-and-app-service-plan"></a>App Service と App Service プラン
 
@@ -160,7 +162,7 @@ QnA Maker サービスでは、App Service でホストされるランタイム�
 
 ![キー管理](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Name|Location|目的|
+|名前|場所|目的|
 |--|--|--|
 |オーサリング キー|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|これらのキーは、[QnA Maker 管理サービス API](https://go.microsoft.com/fwlink/?linkid=2092179) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
 |クエリ エンドポイント キー|[QnA Maker ポータル](https://www.qnamaker.ai)|これらのキーは、公開されたナレッジ ベースのエンドポイントにクエリを実行して、ユーザーの質問に対する回答を取得する目的で使用されます。 通常、このクエリ エンドポイントは、QnA Maker サービスに接続するチャット ボットまたはクライアント アプリケーション コードで使用されます。 これらのキーは、QnA Maker ナレッジ ベースを公開するときに作成されます。<br><br>これらのキーは、 **[サービスの設定]** ページで確認できます。 このページは、ページの右上にあるドロップダウン メニュー内のユーザーのメニューに含まれています。|

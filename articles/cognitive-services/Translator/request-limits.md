@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 03/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 3694c8cb34b2a050c9e18265c8cc0a0198456076
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8d26efec2783d6f121c319e46b1b505b6e1b1e09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533720"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498934"
 ---
 # <a name="request-limits-for-translator-text"></a>Translator Text に対する要求の制限
 
@@ -23,7 +23,7 @@ ms.locfileid: "74533720"
 
 ## <a name="character-and-array-limits-per-request"></a>要求あたりの文字および配列制限
 
-各翻訳要求は 5,000 文字に制限されています。 要求の数ではなく、文字単位で課金されます。 送信する要求を短くすることをお勧めします。
+各翻訳要求は、翻訳先のすべての対象言語の合計で 5,000 文字までに制限されています。 たとえば、1,500 文字を 3 つの異なる言語に翻訳する翻訳要求を送信すると、要求のサイズは 1,500 x 3 = 4,500 文字になり、要求の上限が満たされます。 要求の数ではなく、文字単位で課金されます。 送信する要求を短くすることをお勧めします。
 
 次の表には、Translator Text API の各操作に関する配列要素および文字の制限が一覧表示されています。
 
@@ -64,21 +64,21 @@ Translator Text API の最大待ち時間は、標準モデルを使用した場
 
 [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) 関数を使用する場合、文の長さは 275 文字に制限されます。 以下の言語については例外があります。
 
-| 言語 | コード | 文字数制限 |
+| Language | コード | 文字数制限 |
 |----------|------|-----------------|
-| 中国語 | zh | 132 |
-| ドイツ語 | de | 290 |
-| イタリア語 | it | 280 |
-| 日本語 | ja | 150 |
-| ポルトガル語 | pt | 290 |
-| スペイン語 | es | 280 |
-| イタリア語 | it | 280 |
-| タイ語 | th | 258 |
+| Chinese | zh | 132 |
+| German | de | 290 |
+| Italian | it | 280 |
+| Japanese | ja | 150 |
+| Portuguese | pt | 290 |
+| Spanish | es | 280 |
+| Italian | it | 280 |
+| Thai | th | 258 |
 
 > [!NOTE]
 > この制限は、翻訳には適用されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [料金](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [リージョン別の提供状況](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: 35f5cffdc644370082e229c88d67db33e853c446
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 20f78d9269d4b2270293c8746157ba495c694562
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499165"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80272647"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure Cognitive Services コンテナーのセキュリティ
 
@@ -27,7 +27,7 @@ ms.locfileid: "73499165"
 
 ![コンテナーのセキュリティ](../media/container-security.svg)
 
-別の "*セキュリティで保護された*" アプローチとして、Cognitive Services コンテナーのコンシューマーでは、コンテナー エンドポイントを非公開に保ちながら、前面のコンポーネントを使用してコンテナーを補強できます。 イングレス ゲートウェイとして [Istio][istio] を使用するシナリオについて考えてみましょう。 Istio は、HTTPS/SSL およびクライアント証明書の認証をサポートします。 このシナリオでは、Istio のフロントエンドでコンテナー アクセスが公開され、事前に Istio でホワイトリストに登録されているクライアント証明書が提示されています。
+別の "*セキュリティで保護された*" アプローチとして、Cognitive Services コンテナーのコンシューマーでは、コンテナー エンドポイントを非公開に保ちながら、前面のコンポーネントを使用してコンテナーを補強できます。 イングレス ゲートウェイとして [Istio][istio] を使用するシナリオについて考えてみましょう。 Istio では、HTTPS/TLS およびクライアント証明書の認証がサポートされます。 このシナリオでは、Istio のフロントエンドでコンテナー アクセスが公開され、事前に Istio でホワイトリストに登録されているクライアント証明書が提示されています。
 
 [Nginx][nginx] は、同じカテゴリにあるもう 1 つの一般的な選択肢です。 Istio と Nginx はどちらもサービス メッシュとして機能し、負荷分散、ルーティング、レート制御などの追加機能が提供されます。
 

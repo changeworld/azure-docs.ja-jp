@@ -1,7 +1,7 @@
 ---
 title: Azure Maps を使用してマップを作成する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Web SDK を使用して、Web ページにマップをレンダリングする方法について説明します。
-author: jingjing-z
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 07/26/2019
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 578abae5b206b31674b00b9d27ef34174b93759f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: cfeff430e5313c8728582c4790c9aca9482d63aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988585"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534919"
 ---
 # <a name="create-a-map"></a>マップを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "76988585"
 
 ## <a name="loading-a-map"></a>マップを読み込む
 
-マップを読み込むには、[Map クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)の新しいインスタンスを作成します。 マップを初期化するときに、マップをレンダリングするための DIV 要素 ID を渡し、マップの読み込み時に使用するオプションのセットを渡します。 `atlas` 名前空間で既定の認証情報が指定されていない場合は、マップの読み込み時にマップ オプションでこの情報を指定する必要があります。 マップでは、パフォーマンス向上のために複数のリソースが非同期的に読み込まれます。 そのため、マップ インスタンス作成後に、`ready` または `load` イベントをマップにアタッチし、マップと対話する追加のコードをイベント ハンドラーに追加します。 `ready` イベントは、プログラムで対話するのに十分なリソースがマップに読み込まれるとすぐに発生します。 `load` イベントは、初期マップ ビューの読み込みが完全に完了した後で発生します。 
+マップを読み込むには、[Map クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)の新しいインスタンスを作成します。 マップを初期化するときに、マップをレンダリングするための DIV 要素 ID を渡し、マップの読み込み時に使用するオプションのセットを渡します。 `atlas` 名前空間で既定の認証情報が指定されていない場合は、マップの読み込み時にマップ オプションでこの情報を指定する必要があります。 マップでは、パフォーマンス向上のために複数のリソースが非同期的に読み込まれます。 そのため、マップ インスタンス作成後に、`ready` または `load` イベントをマップにアタッチし、マップと対話する追加のコードをイベント ハンドラーに追加します。 `ready` イベントは、プログラムで対話するのに十分なリソースがマップに読み込まれるとすぐに発生します。 `load` イベントは、初期マップ ビューの読み込みが完全に完了した後で発生します。 
 
 <br/>
 
@@ -43,6 +43,18 @@ ms.locfileid: "76988585"
 <a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopies = false</a>」Pen を表示します。
 </iframe>
 
+
+## <a name="map-options"></a>マップ オプション
+
+マップを作成するときに、マップの機能をカスタマイズするために渡すことができる、以下のような各種オプションがあります。
+
+- [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions) と [CameraBoundOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraboundsoptions) は、マップに表示する領域を指定するために使用します。
+- [ServiceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) は、マップを機能強化するサービスとマップとの対話方法を指定するために使用します。
+- [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) は、マップのスタイル設定とレンダリング方法を指定するために使用します。
+- [UserInteractionOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.userinteractionoptions) は、ユーザーによるマップの操作時にマップがどのようになるかを指定するために使用します。 
+
+これらのオプションは、`setCamera`、`setServiceOptions`、`setStyle`、および `setUserInteraction` の各関数を使用してマップを読み込んだ後に更新することもできます。 
+
 ## <a name="controlling-the-map-camera"></a>マップ カメラの制御
 
 マップのカメラを使用してマップの表示領域を設定する方法が 2 つあります。 マップの読み込み時にカメラのオプションを設定できます。 または、マップが読み込まれた後の任意の時点で `setCamera` オプションを呼び出して、プログラムによってマップ ビューを更新できます。  
@@ -51,7 +63,25 @@ ms.locfileid: "76988585"
 
 ### <a name="set-the-camera"></a>カメラの設定
 
-次のコードでは、[Map オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)が作成され、中心とズームのオプションが設定されます。 中心やズーム レベルなどのマップのプロパティは、[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) の一部です。
+マップ カメラは、マップ キャンバスのビューポートに表示される内容を制御します。 カメラ オプションは、初期化時にマップ オプションに渡すか、マップの `setCamera` 関数に渡すことができます。
+
+```javascript
+//Set the camera options when creating the map.
+var map = new atlas.Map('map', {
+    center: [-122.33, 47.6],
+    zoom: 12
+
+    //Additional map options.
+};
+
+//Update the map camera at anytime using setCamera function.
+map.setCamera({
+    center: [-110, 45],
+    zoom: 5 
+});
+```
+
+次のコードでは、[Map オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)が作成され、中心とズームのオプションが設定されます。 中心やズーム レベルなどのマップのプロパティは、[CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions) の一部です。
 
 <br/>
 
@@ -62,7 +92,16 @@ ms.locfileid: "76988585"
 
 ### <a name="set-the-camera-bounds"></a>カメラ境界の設定
 
-次のコードでは、`new atlas.Map()` によって [Map オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)が構築されます。 `CameraBoundsOptions` などの Map プロパティは、Map クラスの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 関数を介して定義できます。 境界とパディングのプロパティは、`setCamera` を使用して設定します。
+境界ボックスを使用して、マップ カメラを更新できます。 境界ボックスがポイント データから計算された場合、アイコンのサイズを考慮するために、カメラ オプションでピクセル パディング値も指定すると役立つ場合がよくあります。 これにより、ポイントがマップ ビューポートに収まらなくなるのを防ぐことができます。
+
+```javascript
+map.setCamera({
+    bounds: [-122.4, 47.6, -122.3, 47.7],
+    padding: 10
+});
+```
+
+次のコードでは、`new atlas.Map()` によって [Map オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)が構築されます。 `CameraBoundsOptions` などの Map プロパティは、Map クラスの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) 関数を介して定義できます。 境界とパディングのプロパティは、`setCamera` を使用して設定します。
 
 <br/>
 
@@ -70,6 +109,17 @@ ms.locfileid: "76988585"
 </iframe>
 
 ### <a name="animate-map-view"></a>マップ ビューをアニメーション化する
+
+マップのカメラ オプションを設定するときに、[アニメーション オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.animationoptions)を設定することもできます。 これらのオプションでは、カメラの移動に必要なアニメーションの種類と継続時間を指定します。
+
+```javascript
+map.setCamera({
+    center: [-122.33, 47.6],
+    zoom: 12,
+    duration: 1000,
+    type: 'fly'  
+});
+```
 
 次のコードでは、最初のコード ブロックでマップが作成され、中心とズームのマップ スタイルが設定されます。 2 番目のコード ブロックでは、アニメーション ボタンのクリック イベント ハンドラーが作成されます。 このボタンがクリックされると、`setCamera` 関数が呼び出され、[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) と [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) にはランダムな値が指定されます。
 
@@ -89,7 +139,7 @@ ms.locfileid: "76988585"
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)

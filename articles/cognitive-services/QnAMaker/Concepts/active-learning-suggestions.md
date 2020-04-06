@@ -2,13 +2,13 @@
 title: アクティブ ラーニングの提案 - QnA Maker
 description: アクティブ ラーニングの提案を使用すると、質問と回答のペアに対して、ユーザーの送信内容に基づく代わりの質問を提案することで、ナレッジ ベースの品質を改善できます。
 ms.topic: conceptual
-ms.date: 02/27/2020
-ms.openlocfilehash: 56f3ab870e148c39912d4f1f5e6e7133a5df4a98
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.date: 03/19/2020
+ms.openlocfilehash: af4f6b399bfd537b38ea741d03e59371ee81e588
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921652"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053152"
 ---
 # <a name="active-learning-suggestions"></a>アクティブ ラーニングの提案
 
@@ -32,6 +32,13 @@ QnA Maker は、暗黙的および明示的フィードバックによって、�
 アクティブ ラーニングでは、エンドポイントが、妥当な量で多様性のある使用状況クエリを受け取っている場合、可能な限り最適な提案が示されます。 類似のクエリが 5 つ以上クラスター化された場合、QnA Maker は 30 分おきに、ユーザー ベースの質問をナレッジ ベース デザイナーに提案し、承認または却下を求めます。 すべての提案は類似度によって一緒にクラスター化され、エンドユーザーによる特定のクエリの頻度に基づいて、代わりの質問に対する上位の提案が表示されます。
 
 QnA Maker ポータルで質問が提案されたら、それらの提案をレビューして、承認または拒否する必要があります。 提案を管理するための API はありません。
+
+## <a name="turn-on-active-learning"></a>アクティブ ラーニングを有効にする
+
+アクティブ ラーニングは、既定では**無効**になっています。
+アクティブ ラーニングを使用するには:
+* QnA Maker でナレッジ ベース用の代わりの質問を収集できるように、[アクティブ ラーニングを有効にする](../How-To/use-active-learning.md#turn-on-active-learning-for-alternate-questions)必要があります。
+* 提案された代わりの質問を表示するには、[編集] ページの [[表示] オプションを使用](../How-To/improve-knowledge-base.md#view-suggested-questions)します。
 
 ## <a name="how-qna-makers-implicit-feedback-works"></a>QnA Maker の暗黙的フィードバックの動作方法
 

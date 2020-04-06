@@ -7,69 +7,56 @@ metadata:
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 50027fde619d4e69fdbb181544d23dba4a9cf144
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: 6ae919317269753cbc3c8bf5b0df11e19a47989f
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943344"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415157"
 landingContent:
-- title: はじめに
+- title: 音声アシスタントについて
   linkLists:
   - linkListType: overview
     links:
-    - text: 音声アシスタント ソリューション
+    - text: 音声アシスタントとは
       url: voice-assistants.md
-    - text: カスタム コマンドについて
+    - text: カスタム コマンド アプリとは
       url: custom-commands.md
-    - text: Direct Line Speech について
+    - text: Direct Line Speech とは
       url: direct-line-speech.md
   - linkListType: reference
     links:
-    - text: 価格
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
     - text: 音声アシスタントの FAQ
       url: faq-voice-assistants.md
-- title: カスタム キーワード
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: カスタム キーワード
-      url: speech-devices-sdk-create-kws.md
-  - linkListType: reference
-    links:
-    - text: カスタム キーワードの名前付けのガイドライン
-      url: speech-devices-sdk-kws-guidelines.md
-- title: カスタム コマンド
+    - text: 音声アシスタントの価格
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+- title: カスタム コマンドを使用して開発する
   linkLists:
   - linkListType: quickstart
     links:
-    - text: カスタム コマンドを作成する (プレビュー)
+    - text: カスタム コマンド アプリを作成する
       url: quickstart-custom-speech-commands-create-new.md
-    - text: パラメーターを使用してカスタム コマンドを作成する (プレビュー)
+    - text: パラメーターを使用してカスタム コマンドを作成する
       url: quickstart-custom-speech-commands-create-parameters.md
-    - text: Custom Voice でカスタム コマンドを使用する (プレビュー)
+    - text: カスタム音声でカスタム コマンドを使用する
       url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: Speech SDK でカスタム コマンドを使用する (プレビュー)
+    - text: Speech SDK でカスタム コマンドを使用する
       url: quickstart-custom-speech-commands-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: Speech SDK でのカスタム コマンド
+    - text: クライアントからコマンドを実行する
       url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Speech SDK でカスタム コマンドを実行する
-      url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: カスタム コマンドにパラメーターの検証を追加する
+    - text: パラメーターの検証を追加する
       url: how-to-custom-speech-commands-validations.md
-    - text: カスタム コマンドに確認を追加する
+    - text: 確認を追加する
       url: how-to-custom-speech-commands-confirmations.md
-    - text: カスタム コマンドにワンステップ修正を追加する
+    - text: ワンステップ修正を追加する
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: Direct Line Speech
+- title: Direct Line Speech を使用して開発する
   linkLists:
   - linkListType: quickstart
     links:
@@ -83,3 +70,13 @@ landingContent:
     links:
     - text: Speech SDK を使用してボットを音声対応にする
       url: tutorial-voice-enable-your-bot-speech-sdk.md
+- title: カスタム キーワードを使用して開発する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: カスタム キーワードを作成する
+      url: speech-devices-sdk-create-kws.md
+  - linkListType: reference
+    links:
+    - text: カスタム キーワードの名前付けのガイドライン
+      url: speech-devices-sdk-kws-guidelines.md

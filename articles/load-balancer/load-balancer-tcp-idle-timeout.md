@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 39cd5b5d6e9d6007994ccc29732186ec6a8bdc2e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d0bb73b58aa23e5f7eb784772acf37b05df463ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023890"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456830"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Azure Load Balancer の TCP アイドル タイムアウト設定を構成する
 
@@ -29,13 +29,13 @@ ms.locfileid: "77023890"
 PowerShell をインストールしてローカルで使用する場合、この記事では Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="tcp-idle-timeout"></a>TCP アイドル タイムアウト
-既定の構成では、Azure Load Balancer はアイドル タイムアウトが 4 分に設定されています。 アイドル時間がタイムアウト値よりも長い場合、クライアントとクラウド サービス間の TCP または HTTP セッションが維持されるという保証はありません。
+Azure Load Balancer では、アイドル タイムアウトは 4 分から 30 分に設定されています。 既定では 4 分に設定されています。 アイドル時間がタイムアウト値よりも長い場合、クライアントとクラウド サービス間の TCP または HTTP セッションが維持されるという保証はありません。
 
 接続が閉じられると、クライアント アプリケーションは、次のエラー メッセージを受信する場合があります。"基になる接続が閉じられました: 維持される必要があった接続が、サーバーによって切断されました。"
 
 一般的な方法として、TCP keep-alive を使用します。 この方法を使用すると、接続が長時間アクティブ状態に維持されます。 詳細については、こちらの [.NET の例](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)をご覧ください。 keep-alive を有効にすると、接続のアイドル時間にパケットが送信されます。 keep-alive パケットにより、アイドル タイムアウト値に達することがなくなり、接続が長時間維持されます。
 
-設定は、着信接続に対してのみ有効です。 接続の切断を避けるためには、アイドル タイムアウト設定よりも小さい間隔で、TCP keep-alive を構成するか、アイドル タイムアウト値を大きくします。 これらのシナリオをサポートするために、構成可能なアイドル タイムアウトのサポートが追加されました。 これにより、タイムアウトを 4 ～ 30 分に設定できるようになりました。
+設定は、着信接続に対してのみ有効です。 接続の切断を避けるためには、アイドル タイムアウト設定よりも小さい間隔で、TCP keep-alive を構成するか、アイドル タイムアウト値を大きくします。 これらのシナリオをサポートするために、構成可能なアイドル タイムアウトのサポートが追加されました。
 
 TCP keep-alive は、バッテリーの寿命に制約がないシナリオに適しています。 モバイル アプリケーションでは推奨されません。 モバイル アプリケーションで TCP keep-alive を使用すると、デバイスのバッテリーの消耗を速める可能性があります。
 

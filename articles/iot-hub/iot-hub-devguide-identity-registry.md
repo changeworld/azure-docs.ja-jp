@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccb840caea5d28975daaf8cbf6f0d4985bdf006d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61363178"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499146"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub の ID レジストリを理解する
 
@@ -79,6 +79,8 @@ IoT ハブの ID レジストリにデバイス ID を一括インポートす�
 
 インポート API とエクスポート API の詳細については、[IoT Hub のリソースプロバイダー REST API](/rest/api/iothub/iothubresource) に関する記事を参照してください。 インポートおよびエクスポート ジョブの実行方法の詳細については、[IoT Hub デバイス ID の一括管理](iot-hub-bulk-identity-mgmt.md)に関するページを参照してください。
 
+デバイス ID は、[REST API](/rest/api/iothub/service/jobclient/createimportexportjob)、またはいずれかの IoT Hub [サービス SDK](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks) のどちらかを使用して、サービス API を介して IoT Hub からエクスポートおよびインポートすることもできます。
+
 ## <a name="device-provisioning"></a>デバイス プロビジョニング
 
 特定の IoT ソリューションに格納されるデバイス データは、そのソリューションの具体的な要件によって異なりますが、 ソリューションには少なくともデバイスの ID と認証キーを格納する必要があります。 Azure IoT Hub には、各デバイスの ID、認証キー、状態コードなどの値を保存できる ID レジストリがあります。 ソリューションでは、Table Storage、Blob Storage、Cosmos DB などの他の Azure サービスを使用して、さらにデバイス データを保存できます。
@@ -105,7 +107,7 @@ IoT Hub は、ライフサイクルの通知を送信することで、ID がい
 
 デバイスの通知メッセージ:
 
-| Name | 値 |
+| 名前 | 値 |
 | --- | --- |
 |$content-type | application/json |
 |$iothub-enqueuedtime |  通知が送信された時刻 |
@@ -141,7 +143,7 @@ IoT Hub は、ライフサイクルの通知を送信することで、ID がい
 ```
 モジュールの通知メッセージ:
 
-| Name | 値 |
+| 名前 | 値 |
 | --- | --- |
 $content-type | application/json |
 $iothub-enqueuedtime |  通知が送信された時刻 |
@@ -181,14 +183,14 @@ iothub-message-schema | moduleLifecycleNotification |
 
 デバイス ID は、次のプロパティを持つ JSON ドキュメントとして表されます。
 
-| プロパティ | オプション | 説明 |
+| プロパティ | Options | 説明 |
 | --- | --- | --- |
 | deviceId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- . + % _ # * ? ! ( ) , = @ $ '`)。 |
 | generationId |必須、読み取り専用 |IoT Hub によって生成された、大文字と小文字が区別される文字列 (最大 128 文字)。 この値は、デバイスが削除されて再作成された場合に、同じ **deviceId** を持つデバイスを区別するために使用します。 |
 | etag |必須、読み取り専用 |[RFC7232](https://tools.ietf.org/html/rfc7232) に準拠した、デバイス ID の弱い ETag を表す文字列。 |
 | auth |省略可能 |認証情報とセキュリティのマテリアルを含む複合オブジェクト。 |
 | auth.symkey |省略可能 |base64 形式でプライマリ キーとセカンダリ キーを格納する複合オブジェクト。 |
-| status |必須 |アクセス インジケーター。 **[有効]** または **[無効]** のいずれか。 **[有効]** の場合、デバイスからの接続が許可されます。 **[無効]** の場合、このデバイスからデバイス向けのエンドポイントにアクセスできません。 |
+| status |required |アクセス インジケーター。 **[有効]** または **[無効]** のいずれか。 **[有効]** の場合、デバイスからの接続が許可されます。 **[無効]** の場合、このデバイスからデバイス向けのエンドポイントにアクセスできません。 |
 | statusReason |省略可能 |デバイス ID の状態の理由を格納する、長さが 128 文字の文字列。 すべての UTF-8 文字を使用できます。 |
 | statusUpdateTime |読み取り専用 |状態が最後に更新された日時を示す時間のインジケーター。 |
 | connectionState |読み取り専用 |接続状態を示すフィールド。**Connected** または **Disconnected** のいずれか。 このフィールドは、デバイスの接続状態に関する IoT Hub ビューを表します。 **重要**:このフィールドは、開発およびデバッグ専用として使用してください。 接続状態は、MQTT または AMQP を使用するデバイスについてのみ更新されます。 また、この更新はプロトコル レベルの ping (MQTT ping または AMQP ping) に基づいており、遅延は最大でもわずか 5 分です。 このため、接続状態にあると報告されているが切断状態にあるデバイスのように、偽陽性を示す可能性があります。 |
@@ -205,7 +207,7 @@ iothub-message-schema | moduleLifecycleNotification |
 
 モジュール ID は、次のプロパティを持つ JSON ドキュメントとして表されます。
 
-| プロパティ | オプション | 説明 |
+| プロパティ | Options | 説明 |
 | --- | --- | --- |
 | deviceId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- . + % _ # * ? ! ( ) , = @ $ '`)。 |
 | moduleId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- . + % _ # * ? ! ( ) , = @ $ '`)。 |
@@ -213,7 +215,7 @@ iothub-message-schema | moduleLifecycleNotification |
 | etag |必須、読み取り専用 |[RFC7232](https://tools.ietf.org/html/rfc7232) に準拠した、デバイス ID の弱い ETag を表す文字列。 |
 | auth |省略可能 |認証情報とセキュリティのマテリアルを含む複合オブジェクト。 |
 | auth.symkey |省略可能 |base64 形式でプライマリ キーとセカンダリ キーを格納する複合オブジェクト。 |
-| status |必須 |アクセス インジケーター。 **[有効]** または **[無効]** のいずれか。 **[有効]** の場合、デバイスからの接続が許可されます。 **[無効]** の場合、このデバイスからデバイス向けのエンドポイントにアクセスできません。 |
+| status |required |アクセス インジケーター。 **[有効]** または **[無効]** のいずれか。 **[有効]** の場合、デバイスからの接続が許可されます。 **[無効]** の場合、このデバイスからデバイス向けのエンドポイントにアクセスできません。 |
 | statusReason |省略可能 |デバイス ID の状態の理由を格納する、長さが 128 文字の文字列。 すべての UTF-8 文字を使用できます。 |
 | statusUpdateTime |読み取り専用 |状態が最後に更新された日時を示す時間のインジケーター。 |
 | connectionState |読み取り専用 |接続状態を示すフィールド。**Connected** または **Disconnected** のいずれか。 このフィールドは、デバイスの接続状態に関する IoT Hub ビューを表します。 **重要**:このフィールドは、開発およびデバッグ専用として使用してください。 接続状態は、MQTT または AMQP を使用するデバイスについてのみ更新されます。 また、この更新はプロトコル レベルの ping (MQTT ping または AMQP ping) に基づいており、遅延は最大でもわずか 5 分です。 このため、接続状態にあると報告されているが切断状態にあるデバイスのように、偽陽性を示す可能性があります。 |
@@ -237,7 +239,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 
 * [IoT Hub の MQTT サポート](iot-hub-mqtt-support.md): IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT ハブの ID レジストリの使用方法を理解できたら、次の IoT Hub 開発者ガイドのトピックも参考にしてください。
 

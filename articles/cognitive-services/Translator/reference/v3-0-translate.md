@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 11/12/2019
+ms.date: 03/20/2020
 ms.author: swmachan
-ms.openlocfilehash: d58383b20e4311f8ab9490dc241722eee2e44ad6
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1821623fbe2a22234af649934ac06e72897a19cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184803"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80052393"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -59,39 +59,39 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>  
   <tr>
     <td>textType</td>
-    <td><em>省略可能なパラメーター</em>。<br/>翻訳するテキストがプレーン テキストか、それとも HTML テキストかを定義します。 HTML の場合は、適切な形式の完全な要素である必要があります。 指定できる値は <code>plain</code> (既定値) または <code>html</code> です。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>翻訳するテキストがプレーン テキストか、それとも HTML テキストかを定義します。 HTML の場合は、適切な形式の完全な要素である必要があります。 指定できる値は <code>plain</code> (既定値) または <code>html</code> です。</td>
   </tr>
   <tr>
     <td>category</td>
-    <td><em>省略可能なパラメーター</em>。<br/>翻訳のカテゴリ (ドメイン) を指定する文字列。 このパラメーターは、<a href="../customization.md">Custom Translator</a> でビルドしたカスタマイズされたシステムから翻訳を取得するために使用します。 デプロイ済みのカスタマイズされたシステムを使用するには、カスタム翻訳ツール <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">プロジェクトの詳細</a>からこのパラメーターにカテゴリ ID を追加します。 既定値は <code>general</code> です。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>翻訳のカテゴリ (ドメイン) を指定する文字列。 このパラメーターは、<a href="../customization.md">Custom Translator</a> でビルドしたカスタマイズされたシステムから翻訳を取得するために使用します。 デプロイ済みのカスタマイズされたシステムを使用するには、カスタム翻訳ツール <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">プロジェクトの詳細</a>からこのパラメーターにカテゴリ ID を追加します。 既定値は <code>general</code> です。</td>
   </tr>
   <tr>
     <td>profanityAction</td>
-    <td><em>省略可能なパラメーター</em>。<br/>翻訳での不適切な表現の処理方法を指定します。 指定できる値は <code>NoAction</code> (既定値)、<code>Marked</code>、または <code>Deleted</code> です。 不適切な表現の処理方法を理解するには、<a href="#handle-profanity">不適切な表現の処理</a>に関するセクションを参照してください。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>翻訳での不適切な表現の処理方法を指定します。 指定できる値は <code>NoAction</code> (既定値)、<code>Marked</code>、または <code>Deleted</code> です。 不適切な表現の処理方法を理解するには、<a href="#handle-profanity">不適切な表現の処理</a>に関するセクションを参照してください。</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td><em>省略可能なパラメーター</em>。<br/>翻訳での不適切な表現のマーキング方法を指定します。 指定できる値は <code>Asterisk</code> (既定値) または <code>Tag</code> です。 不適切な表現の処理方法を理解するには、<a href="#handle-profanity">不適切な表現の処理</a>に関するセクションを参照してください。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>翻訳での不適切な表現のマーキング方法を指定します。 指定できる値は <code>Asterisk</code> (既定値) または <code>Tag</code> です。 不適切な表現の処理方法を理解するには、<a href="#handle-profanity">不適切な表現の処理</a>に関するセクションを参照してください。</td>
   </tr>
   <tr>
     <td>includeAlignment</td>
-    <td><em>省略可能なパラメーター</em>。<br/>ソース テキストから翻訳済みテキストへのアライメント プロジェクションを含めるかどうかを指定します。 指定できる値は <code>true</code> または <code>false</code> (既定値) です。 </td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>ソース テキストから翻訳済みテキストへのアライメント プロジェクションを含めるかどうかを指定します。 指定できる値は <code>true</code> または <code>false</code> (既定値) です。 </td>
   </tr>
   <tr>
     <td>includeSentenceLength</td>
-    <td><em>省略可能なパラメーター</em>。<br/>入力テキストと翻訳済みテキストに対して文の境界を含めるかどうかを指定します。 指定できる値は <code>true</code> または <code>false</code> (既定値) です。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>入力テキストと翻訳済みテキストに対して文の境界を含めるかどうかを指定します。 指定できる値は <code>true</code> または <code>false</code> (既定値) です。</td>
   </tr>
   <tr>
     <td>suggestedFrom</td>
-    <td><em>省略可能なパラメーター</em>。<br/>入力テキストの言語を識別できない場合のフォールバック言語を指定します。 <code>from</code> パラメーターが省略されている場合は、言語自動検出が適用されます。 検出に失敗した場合は、<code>suggestedFrom</code> 言語と見なされます。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>入力テキストの言語を識別できない場合のフォールバック言語を指定します。 <code>from</code> パラメーターが省略されている場合は、言語自動検出が適用されます。 検出に失敗した場合は、<code>suggestedFrom</code> 言語と見なされます。</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td><em>省略可能なパラメーター</em>。<br/>入力テキストのスクリプトを指定します。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>入力テキストのスクリプトを指定します。</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td><em>省略可能なパラメーター</em>。<br/>翻訳済みテキストのスクリプトを指定します。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>翻訳済みテキストのスクリプトを指定します。</td>
   </tr>
   <tr>
     <td>allowFallback</td>
@@ -103,7 +103,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 要求ヘッダーには次のものがあります。
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">ヘッダー</th>
   <th>説明</th>
   <tr>
     <td>認証ヘッダー</td>
@@ -119,7 +119,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td><em>省略可能</em>。<br/>要求を一意に識別する、クライアントで生成された GUID。 <code>ClientTraceId</code> という名前のクエリ パラメーターを使用してクエリ文字列内にトレース ID を含める場合、このヘッダーは省略できます。</td>
+    <td><em>オプション</em>。<br/>要求を一意に識別する、クライアントで生成された GUID。 <code>ClientTraceId</code> という名前のクエリ パラメーターを使用してクエリ文字列内にトレース ID を含める場合、このヘッダーは省略できます。</td>
   </tr>
 </table> 
 
@@ -164,7 +164,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
     翻訳が実行されない場合、`transliteration` オブジェクトは含められません。
 
-    * `alignment`:`proj` という名前の 1 つの文字列プロパティを持つオブジェクトです。これにより、入力テキストが翻訳済みテキストにマッピングされます。 アライメント情報は、要求パラメーター `includeAlignment` が `true` である場合に提供されるだけとなります。 アライメントは、次の形式の文字列値として返されます: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`。  コロンによって開始および終了インデックスが区切られ、ダッシュによって言語が区切られ、スペースによって単語が区切られます。 1 個の単語が他の言語の 0 個、1 個、または複数個の単語にアライメントされる場合があります。さらに、アライメントされる単語が連続していない場合もあります。 アライメント情報が使用できない場合、アライメント要素は空になります。 例と制限事項については、「[アライメント情報を取得する](#obtain-alignment-information)」を参照してください。
+    * `alignment`:`proj` という名前の 1 つの文字列プロパティを持つオブジェクトです。これにより、入力テキストが翻訳済みテキストにマッピングされます。 アライメント情報は、要求パラメーター `includeAlignment` が `true` である場合に提供されるだけとなります。 アライメントは、次の形式の文字列値として返されます: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`。  コロンによって開始および終了インデックスが区切られ、ダッシュによって言語が区切られ、スペースによって単語が区切られます。 1 つの単語が他の言語では 0 個、1 個、または複数個の単語にアライメントされる場合があり、アライメントされた単語が連続していない場合もあります。 アライメント情報が使用できない場合、アライメント要素は空になります。 例と制限事項については、「[アライメント情報を取得する](#obtain-alignment-information)」を参照してください。
 
     * `sentLen`:入力テキストと出力テキスト内で文の境界を返すオブジェクトです。
 
@@ -181,7 +181,7 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
 ## <a name="response-headers"></a>応答ヘッダー
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">ヘッダー</th>
   <th>説明</th>
     <tr>
     <td>X-RequestId</td>
@@ -202,7 +202,7 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
   <th>説明</th>
   <tr>
     <td>200</td>
-    <td>成功。</td>
+    <td>正常終了しました。</td>
   </tr>
   <tr>
     <td>400</td>
@@ -363,7 +363,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Action</th>
+  <th>アクション</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>これは既定の動作です。 不適切な表現はソースからターゲットに渡されます。<br/><br/>
@@ -390,7 +390,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
   </tr>
 </table> 
 
-例:
+次に例を示します。
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
@@ -427,7 +427,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="translate-content-with-markup-and-decide-whats-translated"></a>マークアップを含むコンテンツの翻訳および翻訳対象の決定
 
-HTML ページからのコンテンツや XML ドキュメントからのコンテンツなど、マークアップを含むコンテンツを翻訳するのが一般的です。 タグ付きのコンテンツを翻訳する場合は、クエリ パラメーター `textType=html` を含めます。 さらに、特定のコンテンツを翻訳から除外すると便利な場合があります。 属性 `class=notranslate` を使用すると、元の言語のまま残す必要があるコンテンツを指定できます。 次の例では、1 番目の `div` 要素内のコンテンツは翻訳されませんが、2 番目の `div` 要素内のコンテンツは変換されます。
+HTML ページからのコンテンツや XML ドキュメントからのコンテンツなど、マークアップを含むコンテンツを翻訳するのが一般的です。 タグ付きのコンテンツを翻訳する場合は、クエリ パラメーター `textType=html` を含めます。 さらに、特定のコンテンツを翻訳から除外すると便利な場合があります。 属性 `class=notranslate` を使用すると、元の言語のまま残す必要があるコンテンツを指定できます。 次の例では、1 番目の `div` 要素内のコンテンツは翻訳されませんが、2 番目の `div` 要素内のコンテンツは翻訳されます。
 
 ```
 <div class="notranslate">This will not be translated.</div>
@@ -479,7 +479,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 アライメント情報は `0:2-0:1` で始まっています。これは、ソース テキスト内の最初の 3 文字 (`The`) が翻訳済みテキスト内の最初の 2 文字 (`La`) にマッピングされていることを意味します。
 
 #### <a name="limitations"></a>制限事項
-次の制限事項に注意してください。
+アラインメント情報の取得は、フレーズ マッピングの可能性があるプロトタイプの研究とエクスペリエンスのために有効にされている試験的な機能です。 今後、このサポートは停止される可能性があります。 アラインメントがサポートされない場合の重要な制限事項を次に示します。
 
 * HTML 形式のテキスト、つまり textType=html の場合、配置は使用できません。
 * アライメントは言語ペアのサブセットに対してのみ返されます。
@@ -487,6 +487,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
   - 他の任意の言語から英語へ。ただし、繁体字中国語、繁体字中国語、およびラトビア語から英語については除く
   - 日本語から韓国語へ、または韓国語から日本語へ
 * 文があらかじめ用意された翻訳である場合、アラインメントは返されません。 あらかじめ用意された翻訳には、"This is a test" や "I love you" など高い頻度で出現する文があります。
+* [こちら](../prevent-translation.md)で説明されているように、翻訳を禁止するためのいずれかのアプローチを適用する場合、アラインメントは使用できません
 
 ### <a name="obtain-sentence-boundaries"></a>文の境界を取得する
 

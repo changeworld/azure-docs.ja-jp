@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7c15786e9a5d2fe65c20a26606087cee994ab54b
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: cc76f8c87eca059db85a68acbe4c317cf4904d39
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302850"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457187"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Key Vault 用の Azure セキュリティ ベースライン
 
@@ -118,10 +118,7 @@ Azure サービス タグの概要: https://docs.microsoft.com/azure/virtual-net
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
-**ガイダンス**: Azure Policy を使用して、Azure Key Vault インスタンスに関連付けられているネットワーク リソースの標準的なセキュリティ構成を定義して実装します。 Azure Key Vault インスタンスのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.KeyVault" と "Microsoft.Network" の名前空間で Azure Policy エイリアスを使用します。 次のように、Azure Key Vault に関連する組み込みのポリシー定義を使用することもできます。
-
-
-Key Vault で仮想ネットワーク サービス エンドポイントを使用する必要がある
+**ガイダンス**: Azure Policy を使用して、Azure Key Vault インスタンスに関連付けられているネットワーク リソースの標準的なセキュリティ構成を定義して実装します。 Azure Key Vault インスタンスのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.KeyVault" と "Microsoft.Network" の名前空間で Azure Policy エイリアスを使用します。 次のように、Azure Key Vault に関連する組み込みのポリシー定義を使用することもできます。[Key Vault は仮想ネットワーク サービス エンドポイントを使用する必要があります](key-vault-overview-vnet-service-endpoints.md)
 
 
 チュートリアル:コンプライアンスを強制するポリシーの作成と管理:
@@ -559,7 +556,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7:ホストベースのデータ損失防止を使用してアクセス制御を実施する
 
-**ガイダンス**: Microsoft では、Azure Key Vault 用の基になるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。
+**ガイダンス**: Microsoft では、Azure Key Vault 用の基になるインフラストラクチャを管理し、顧客データの損失や漏洩を防ぐための厳格な管理を実施してきました。Azure Security Center を使用して、Azure Key Vault で保護されたリソースのベースライン スキャンを実行します。
 
 
 Azure Key Vault とは: https://docs.microsoft.com/azure/key-vault/key-vault-overview
@@ -915,7 +912,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9:Azure サービスの自動構成監視を実装する
 
-**ガイダンス**: Azure Security Center を使用して、Azure Key Vault 対応リソースのベースライン スキャンを実行します。 
+**ガイダンス**: Azure Security Center を使用して、Azure Key Vault で保護されたリソースのベースライン スキャンを実行します。 
 
   
 
@@ -1243,5 +1240,5 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)」を参照します
-- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習します
+- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/azure/security/benchmarks/overview)に関するページを参照する
+- [Azure セキュリティ ベースライン](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)の詳細について学習する

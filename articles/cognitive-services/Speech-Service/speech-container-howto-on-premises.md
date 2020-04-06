@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: dapine
-ms.openlocfilehash: cd4ff97902b1ce3d1d5a0ea066608fd33e6bf697
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 6ad5a843c8cc287834305e09b48cd3fafe09ca51
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037093"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474766"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Kubernetes および Helm と共に Speech サービス コンテナーを使用する
 
@@ -25,12 +25,12 @@ ms.locfileid: "79037093"
 
 オンプレミスの Speech コンテナーを使用する前の前提条件は次のとおりです。
 
-|必須|目的|
-|--|--|
+| 必須 | 目的 |
+|----------|---------|
 | Azure アカウント | Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][free-azure-account] を作成してください。 |
 | コンテナー レジストリのアクセス | Kubernetes でクラスターに Docker イメージをプルするには、コンテナー レジストリにアクセスする必要があります。 |
 | Kubernetes CLI | コンテナー レジストリからの共有資格情報を管理するには、[Kubernetes CLI][kubernetes-cli] が必要です。 また、Kubernetes は、Kubernetes のパッケージ マネージャーである Helm の前に必要です。 |
-| Helm CLI | [Helm CLI][helm-install] のインストールの一環として、Helm を初期化する必要もあります。これにより、[Tiller][tiller-install] がインストールされます。 |
+| Helm CLI | Helm Chart (コンテナー パッケージ定義) のインストールに使用される [Helm CLI][helm-install] をインストールします。 |
 |Speech リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための _Speech_ Azure リソース。 これらの値は、どちらも Azure portal の **Speech** の [概要] ページと [キー] ページで入手でき、コンテナーを起動するために必要です。<br><br>**{API_KEY}** : リソース キー<br><br>**{ENDPOINT_URI}** : エンドポイント URI の例: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>推奨されるホスト コンピューターの構成

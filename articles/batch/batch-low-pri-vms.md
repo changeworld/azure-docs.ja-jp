@@ -8,15 +8,15 @@ ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
 ms.topic: article
 ms.workload: na
-ms.date: 12/05/2019
-ms.author: markscu
+ms.date: 03/19/2020
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: dfd79bc9cfd8e897cdbb18127deaf8da4922ef3a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9f4b9ed9254eaf950311dd27d5716c4681707614
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023720"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053911"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Batch で優先順位の低い VM を使用する
 
@@ -31,7 +31,7 @@ Azure Batch には Batch ワークロードのコストを減らす優先順位�
 > [!NOTE]
 > [単一インスタンス VM](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms) と [VM スケールセット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)に[スポット VM](https://azure.microsoft.com/pricing/spot/) を使用できるようになりました。 スポット VM は優先順位の低い VM の進化版ですが、その価格の差はさまざまで、オプションの最大価格をスポット VM の割り当て時に設定することもできます。
 >
-> Azure Batch プールでは、2020 の第 1 四半期に、[Batch API とツール](https://docs.microsoft.com/azure/batch/batch-apis-tools)の新しいバージョンと共にスポット VM のサポートが開始されます。 優先順位の低い VM は、API とツールの現バージョンを使用して、少なくとも 12 か月間引き続きサポートされます。これにより、スポット VM への移行に十分な時間をかけられます。 
+> Azure Batch プールでは、新しいバージョンの [Batch API とツール](https://docs.microsoft.com/azure/batch/batch-apis-tools)とともに、スポット VM の一般公開から数か月以内にそのサポートを開始する予定です。 スポット VM のサポートが開始されると、優先順位の低い VM は非推奨になりますが、スポット VM への移行に十分な時間を確保するため、API とツールの現在のバージョンを使用して、少なくとも 12 か月間は引き続きサポートされます。 
 >
 > スポット VM は、[クラウド サービス構成](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration)プールではサポートされません。 スポット VM を使用するには、クラウド サービス プールを[仮想マシン構成](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)プールに移行する必要があります。
 

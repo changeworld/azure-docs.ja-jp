@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545621"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236103"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift の Azure Active Directory 統合
 
@@ -92,14 +92,19 @@ Azure アプリケーション オブジェクトの詳細については、「[
 
 ## <a name="add-api-permissions"></a>API アクセス許可を追加する
 
+[//]: # (Microsoft Graph に変更しないでください。Microsoft Graph では機能しません。)
 1. **[管理]** セクションで **[API のアクセス許可]** をクリックします。
-2. **[アクセス許可の追加]** をクリックし、 **[Azure Active Directory Graph]** 、 **[委任されたアクセス許可]** の順に選択します。 
-3. 下の一覧で **[ユーザー]** を展開し、**User.Read** アクセス許可を有効にします。 **User.Read** が既定で有効になっている場合、それが **Microsoft Graph** のアクセス許可 **User.Read** では "*なく*"、**Azure Active Directory Graph** のアクセス許可 **User.Read**であることを確認してください。
+2. **[アクセス許可の追加]** をクリックし、 **[Azure Active Directory Graph]** 、 **[委任されたアクセス許可]** の順に選択します。
+> [!NOTE]
+> "Microsoft Graph" タイルではなく、"Azure Active Directory Graph" を選択したことを確認します。
+
+3. 下の一覧で **[ユーザー]** を展開し、**User.Read** アクセス許可を有効にします。 **User.Read** が既定で有効になっている場合、**Azure Active Directory Graph** のアクセス許可 **User.Read** であることを確認してください。
 4. 上にスクロールして **[アプリケーションのアクセス許可]** を選択します。
-5. 下のリストで **[ディレクトリ]** を展開し、**Directory.ReadAll** を有効にします。
+5. 下の一覧で **[ディレクトリ]** を展開し、**Directory.ReadAll** を有効にします。
 6. **[アクセス許可の追加]** をクリックして変更を適用します。
 7. この時点で、API アクセス許可パネルに *User.Read* と *Directory.ReadAll* の両方が表示されているはずです。 *Directory.ReadAll* の隣の **[Admin consent required]\(管理者の同意が必要\)** 列の警告に注意してください。
 8. *Azure サブスクリプション管理者*である場合、下の **[Grant admin consent for *Subscription Name*]\(<サブスクリプション名> に管理者の同意を付与する\)** をクリックします。 *Azure サブスクリプション管理者*でない場合、管理者からの同意を要求します。
+
 ![API アクセス許可パネルのスクリーンショット。 User.Read および Directory.ReadAll アクセス許可が追加され、Directory.ReadAll に管理者の同意が必要](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]

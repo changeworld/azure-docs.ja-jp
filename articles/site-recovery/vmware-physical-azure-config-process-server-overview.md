@@ -1,26 +1,22 @@
 ---
 title: Azure Site Recovery の構成、プロセス、マスター ターゲットのサーバーについて
 description: この記事では、Azure Site Recovery を使ってオンプレミスの VMware VM から Azure へのディザスター リカバリーを設定するときに使われる構成サーバー、プロセス サーバー、およびマスター ターゲット サーバーの概要を説明します
-author: rayne-wiselman
-ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.author: raynew
-ms.openlocfilehash: ad816f39dd4182dfa41fca975c99824a5d77f860
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.date: 03/17/2020
+ms.openlocfilehash: cd5ded18d1a8f1f5fd96212d37725bb5db13002f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961305"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062084"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Site Recovery のコンポーネント (構成、プロセス、およびマスター ターゲット) について
 
-この記事では、[Site Recovery](site-recovery-overview.md) サービスを使用して VMware VM と物理サーバーを Azure にレプリケートするときに使用される構成サーバー、プロセス サーバー、およびマスター ターゲット サーバーについて説明します。
+この記事では、VMware VM と物理サーバーを Azure にレプリケートするために[Site Recovery](site-recovery-overview.md) サービスで使用される構成、プロセス、およびマスター ターゲットの各サーバーについて説明します。
 
 ## <a name="configuration-server"></a>構成サーバー
 
-オンプレミスの VMware VM と物理サーバーをディザスター リカバリーする場合、オンプレミスに展開された Site Recovery 構成サーバーが必要です。
+オンプレミスの VMware VM と物理サーバーをディザスター リカバリーする場合、オンプレミスの Site Recovery 構成サーバーを展開します。
 
 **設定** | **詳細** | **リンク**
 --- | --- | ---
@@ -31,25 +27,25 @@ ms.locfileid: "73961305"
 **物理サーバーの要件** | オンプレミスの物理サーバーでディザスター リカバリーを行う場合は、構成サーバーを手動で設定します。 | 前提条件を[確認する](physical-azure-set-up-source.md#prerequisites)。
 **物理サーバーの展開** | 構成サーバーを VMware VM としてインストールできない場合は、物理サーバーにインストールすることができます。 | 構成サーバーを手動で[展開する](physical-azure-set-up-source.md#set-up-the-source-environment)。
 
-
 ## <a name="process-server"></a>プロセス サーバー
+
+プロセス サーバーは、フェールオーバーおよびフェールバック中にレプリケーション データを処理し、オンプレミスの VMware VM と物理サーバー用の Mobility Service をインストールします。
 
 **設定** | **詳細** | **リンク**
 --- | --- | ---
-**Deployment**  | オンプレミスの VMware VM と物理サーバーをディザスター リカバリーおよびレプリケーションする場合、オンプレミスにプロセス サーバーが必要です。 既定では、プロセス サーバーは構成サーバーの展開時に構成サーバーにインストールされます。 | [詳細情報](vmware-azure-architecture.md?#architectural-components)。
-**役割 (オンプレミス)** | - レプリケーションが有効になっているマシンからレプリケーション データを受け取ります。<br/> - レキャッシュ、圧縮、暗号化によってプリケーション データを最適化し、Azure Storage に送信します。<br/> - レプリケートするオンプレミスの VMware VM と物理サーバーに対して Site Recovery Mobility Service のプッシュ インストールを実行します。<br/> - オンプレミス マシンの自動検出を実行します。 | [詳細情報](vmware-physical-azure-config-process-server-overview.md#process-server)。 
-**役割 (Azure からのフェールバック)** | オンプレミス サイトからのフェールオーバー後に、オンプレミスの場所へのフェールバックを処理するために、Azure で Azure VM としてプロセス サーバーを設定します。<br/><br/> Azure 上のプロセス サーバーは一時的なものです。 Azure VM は、フェールバックの完了後に削除できます。 | [詳細情報](vmware-azure-set-up-process-server-azure.md)。
-**スケーリング** | 大規模な展開では、オンプレミスで追加のスケール アウト プロセス サーバーを設定することができます。 追加のサーバーでは、レプリケートする多数のマシンおよび大量のレプリケーション トラフィックを処理することによって、容量をスケール アウトします。<br/><br/> レプリケーション トラフィックを負荷分散するために、2 つのプロセス サーバー間でマシンを移動できます。 | [詳細情報](vmware-azure-set-up-process-server-scale.md)。
-
+**デプロイ**  | 既定では、構成サーバーが展開されるときに、プロセス サーバーがインストールされます。 <br/><br/> オンプレミスのプロセス サーバーは、オンプレミスの VMware VM と物理サーバーのディザスター リカバリーおよびレプリケーションに必要です。 | [詳細については、こちらを参照してください](vmware-azure-architecture.md#architectural-components)。
+**役割 (オンプレミス)** | レプリケーションが有効になっているマシンからレプリケーション データを受け取ります。 <br/><br/> キャッシュ、圧縮、暗号化によってレプリケーション データを最適化し、Azure Storage に送信します。 <br/><br/> レプリケートするオンプレミスの VMware VM と物理サーバーに対して Site Recovery Mobility Service のプッシュ インストールを実行します。 <br/><br/> オンプレミスのマシンの自動検出を実行します。 | [詳細については、こちらを参照してください](vmware-azure-enable-replication.md)。
+**役割 (Azure からのフェールバック)** | オンプレミス サイトからのフェールオーバー後に、オンプレミスの場所へのフェールバックを処理するために、Azure で Azure VM としてプロセス サーバーを設定します。<br/><br/> Azure 上のプロセス サーバーは一時的なものです。 Azure VM は、フェールバックの完了後に削除できます。 | [詳細については、こちらを参照してください](vmware-azure-set-up-process-server-azure.md)。
+**スケーリング** | 大規模な展開では、オンプレミスで追加のスケール アウト プロセス サーバーを設定することができます。 追加のサーバーでは、レプリケートする多数のマシンおよび大量のレプリケーション トラフィックを処理することによって、容量をスケール アウトします。<br/><br/> レプリケーション トラフィックを負荷分散するために、2 つのプロセス サーバー間でマシンを移動できます。 | [詳細については、こちらを参照してください](vmware-azure-set-up-process-server-scale.md)。
 
 ## <a name="master-target-server"></a>マスター ターゲット サーバー
 
 マスター ターゲット サーバーは、Azure からのフェールバック中にレプリケーション データを処理します。
 
-- 構成サーバーに既定でインストールされます。
+- 既定では、マスター ターゲット サーバーは構成サーバーにインストールされます。
 - 大規模なデプロイでは、フェールバック用に別のマスター ターゲット サーバーを追加できます。
 
+## <a name="next-steps"></a>次のステップ
 
-## <a name="next-steps"></a>次の手順
 - VMware VM および物理サーバーのディザスター リカバリーの[アーキテクチャ](vmware-azure-architecture.md)を確認します。
-- VMware VM および物理サーバーから Azure へのディザスター リカバリーの[要件と前提条件](vmware-physical-azure-support-matrix.md)を確認します。 
+- VMware VM および物理サーバーから Azure へのディザスター リカバリーの[要件と前提条件](vmware-physical-azure-support-matrix.md)を確認します。

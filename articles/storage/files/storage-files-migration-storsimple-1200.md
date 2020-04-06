@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 6863e7f8ef8e2f263cda824fd13186dc7b035454
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 69225da1506ced879363b10b098d939df93cbfba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943607"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502378"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 の Azure File Sync への移行
 
@@ -113,11 +113,43 @@ Windows Server ターゲット フォルダーへの最初のローカル コピ
 次の RoboCopy コマンドを実行すると、StorSimple Azure Storage からローカル StorSimple にファイルが呼び出された後、Windows Server のターゲット フォルダーに移動されます。 Windows Server によってそれが Azure ファイル共有に同期されます。 ローカル環境の Windows Server ボリュームがいっぱいになると、クラウドを使った階層化により、既に正常に同期されているファイルの階層化が開始されます。 クラウドを使った階層化により、StorSimple 仮想アプライアンスからのコピーを続けるのに十分な領域が生成されます。 クラウドを使った階層化では、1 時間に 1 回、同期されたものが確認されて、ボリューム空き領域 99% になるようにディスク領域が解放されます。
 
 ```console
-Robocopy /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 背景:
 
+:::row:::
+   :::column span="1":::
+      /MT
+   :::column-end:::
+   :::column span="1":::
+      RoboCopy でマルチスレッドを実行できるようにします。 既定値は 8 です。最大値は 128 です。
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /UNILOG:<file name>
+   :::column-end:::
+   :::column span="1":::
+      状態を UNICODE 形式でログ ファイルに出力します (既存のログを上書きします)。
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /TEE
+   :::column-end:::
+   :::column span="1":::
+      コンソール ウィンドウに出力します。 ログ ファイルへの出力と組み合わせて使用されます。
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /B
+   :::column-end:::
+   :::column span="1":::
+      バックアップ アプリケーションが使用するのと同じモードで RoboCopy を実行します。 これにより、現在のユーザーがアクセス許可を持っていないファイルを、RoboCopy で移動できます。
+   :::column-end:::
+:::row-end:::
 :::row:::
    :::column span="1":::
       /MIR

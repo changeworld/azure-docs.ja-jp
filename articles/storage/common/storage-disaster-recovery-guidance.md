@@ -10,18 +10,20 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: f7a8f6d0d3ab3b456c41128da9b689f6b7eda0f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894526"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79365367"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>災害復旧とアカウントのフェールオーバー (プレビュー)
 
 Microsoft は、Azure サービスを常に使用できるようにする作業に取り組んでいます。 そうはいっても、計画されていないサービスの停止が発生する可能性はあります。 アプリケーションで回復性が必要な場合は、geo 冗長ストレージを使用して、データが 2 番目のリージョンにコピーされるようにすることをお勧めします。 さらに、お客様は、リージョン規模のサービス停止に対処するため、ディザスター リカバリー計画を用意する必要があります。 ディザスター リカバリー計画の重要な部分は、プライマリ エンドポイントが使用できなくなった場合に、セカンダリ エンドポイントにフェールオーバーするための準備です。
 
 Azure Storage では、geo 冗長ストレージ アカウントのアカウント フェールオーバー (プレビュー) がサポートされています。 アカウントのフェールオーバーでは、プライマリ エンドポイントが使用できなくなった場合に、ストレージ アカウントのフェールオーバー プロセスを開始できます。 フェールオーバーでは、セカンダリ エンドポイントが更新されて、ストレージ アカウントのプライマリ エンドポイントになります。 フェールオーバーが完了すると、クライアントは新しいプライマリ エンドポイントへの書き込みを開始できます。
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 この記事では、アカウントのフェールオーバーに関する概念とプロセスについて、および顧客への影響が最小限になるようにストレージ アカウントの復旧を準備する方法について説明します。 Azure portal または PowerShell でアカウントのフェールオーバーを開始する方法については、「[Initiate an account failover (preview) (アカウントのフェールオーバー (プレビュー) を開始する)](storage-initiate-account-failover.md)」をご覧ください。
 

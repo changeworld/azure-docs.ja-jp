@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: d1e93c18b13e7171274eda2a7e8d07eefbefb592
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 3a591badab29a1669d109f01f8a93732704d2fd4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920384"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456100"
 ---
 # <a name="neural-network-regression-module"></a>ニューラル ネットワーク回帰モジュール
 
@@ -50,7 +50,7 @@ ms.locfileid: "77920384"
     
     この方法は、既にニューラル ネットワークについてある程度の知識がある方に最適です。 Net# 言語を使用してネットワーク アーキテクチャを定義します。  
 
-##  <a name="bkmk_DefaultArchitecture"></a> 既定のアーキテクチャを使用してニューラル ネットワーク モデルを作成する
+##  <a name="create-a-neural-network-model-using-the-default-architecture"></a><a name="bkmk_DefaultArchitecture"></a> 既定のアーキテクチャを使用してニューラル ネットワーク モデルを作成する
 
 1.  デザイナーで**ニューラル ネットワーク回帰**モジュールをパイプラインに追加します。 このモジュールは、 **[Machine Learning]\(機械学習\)** の **[初期化]** の **[回帰]** カテゴリにあります。 
   
@@ -58,7 +58,7 @@ ms.locfileid: "77920384"
   
     -   **Single Parameter (単一パラメーター)** : モデルを構成する方法が既にわかっている場合は、このオプションを選択します。
 
-    -   **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわかっておらず、パラメーター スイープを実行したい場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。   
+    -   **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからず、パラメーター スイープを実行する場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。   
 
 3.  **[Hidden layer specification]\(隠れ層の仕様\)** で **[Fully connected case]\(全結合ケース\)** を選択します。 このオプションでは、既定のニューラル ネットワーク アーキテクチャを使用してモデルが作成されます。これは、ニューラル ネットワーク回帰モデルに関して、次の属性を備えます。  
   
@@ -86,9 +86,9 @@ ms.locfileid: "77920384"
     -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[[Train Model]\(モデルのトレーニング\)](./train-model.md) を使用します。  
   
    
-14. パイプラインを実行します。  
+14. パイプラインを送信します。  
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 トレーニングの完了後:
 

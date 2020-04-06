@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 11/06/2019
-ms.openlocfilehash: ddd81c4788cae7c239678366305fe97c6c08ba99
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 03/17/2020
+ms.openlocfilehash: 924bd2fdba2359e6f1108c39802ad3ce95ebdf07
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932208"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472377"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>Azure Machine Learning で既存のモデルを使用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,11 +69,13 @@ model = Model.register(model_path = "./models",
 az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 ```
 
+> [!TIP]
+> また、登録されているモデルに、`tags` および `properties` ディクショナリ オブジェクトを設定することもできます。 これらの値は、後で特定のモデルを識別するために使用できます。 たとえば、使用されているフレームワーク、トレーニング パラメーターなどです。
+
 詳細については、[az ml model register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) のリファレンスを参照してください。
 
 
 一般的なモデル登録の詳細については、「[モデルを管理、デプロイ、および監視する](concept-model-management-and-deployment.md)」を参照してください。
-
 
 ## <a name="define-inference-configuration"></a>推論構成を定義する
 

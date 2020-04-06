@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/03/2020
+ms.date: 03/13/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3806fead9226978c277e87f3d97b14ee38d9552d
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 0df0ba4ce76d249bcb4738b41c94677e061f14ca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665421"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409859"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>ストレージアカウントに使用されている Azure Storage 暗号化キーモデルを決定する
 
@@ -32,18 +32,22 @@ ms.locfileid: "75665421"
 
 ストレージアカウントが Microsoft によって管理されているキーまたはユーザーが管理するキーを暗号化に使用しているかどうかを判断するには、次のいずれかの方法を使用します。
 
-# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Azure portal を使用してストレージアカウントの暗号化モデルを確認するには、次の手順を実行します。
 
 1. Azure Portal のストレージ アカウントに移動します。
 1. **[暗号化]** 設定を選択し、設定を書き留めます。
 
-次の図は、顧客マネージド キーが暗号化で使用されているストレージアカウントを示しています。
+次の画像は、Microsoft マネージド キーで暗号化されているストレージ アカウントを示しています。
+
+![Microsoft のマネージド キーで暗号化されたアカウントを表示する](media/storage-encryption-key-model-get/microsoft-managed-encryption-key-setting-portal.png)
+
+そして、次の画像は、顧客マネージド キーで暗号化されているストレージ アカウントを示しています。
 
 ![Azure portal の暗号化キー設定を示すスクリーンショット](media/storage-encryption-key-model-get/customer-managed-encryption-key-setting-portal.png)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 PowerShell を使用してストレージアカウントの暗号化モデルを確認するには、[Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) コマンドを呼び出して、そのアカウントの **KeySource** プロパティを確認します。
 
@@ -55,7 +59,7 @@ $account.Encryption.KeySource
 
 **KeySource** プロパティの値が `Microsoft.Storage` の場合、アカウントは Microsoft マネージド キーで暗号化されます。 **KeySource** プロパティの値が `Microsoft.Keyvault` の場合、アカウントは顧客マネージド キーで暗号化されます。
 
-# <a name="azure-clitabcli"></a>[Azure CLI](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
 Azure CLIを使用してストレージアカウントの暗号化モデルを確認するには、[az storage account show](/cli/azure/storage/account#az-storage-account-show) コマンドを呼び出して、アカウントの **keySource** プロパティを確認します。
 
@@ -73,4 +77,5 @@ key_source=$(az storage account show \
 
 ## <a name="next-steps"></a>次のステップ
 
-[保存データに対する Azure Storage 暗号化](storage-service-encryption.md)
+- [保存データに対する Azure Storage 暗号化](storage-service-encryption.md)
+- [Azure Key Vault で顧客マネージド キーを使用して Azure Storage の暗号化を管理する](encryption-customer-managed-keys.md)

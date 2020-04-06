@@ -5,12 +5,12 @@ ms.subservice: cloud-provisioning
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
-ms.openlocfilehash: ba1bdd60a3363cfab694bae9b8ee3cf63e24b054
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3aa1571b46938b03f556fa124d3f0a2a70f2c5c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907162"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79504291"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>シングル サインオンを有効にする手順
 クラウド プロビジョニングはシングル サインオンで動作します。  現時点では、エージェントのインストール時に SSO を有効にするオプションはありませんが、以下の手順を使用して SSO を有効にし、使用することができます。 

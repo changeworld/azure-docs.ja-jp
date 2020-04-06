@@ -2,13 +2,13 @@
 title: 管理グループにリソースをデプロイする
 description: Azure Resource Manager テンプレートを使用して、管理グループのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: dc46762755718c798b4a7eed6f2dc6b8afce9b98
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.date: 03/16/2020
+ms.openlocfilehash: 863d1330412fa238b820eb0f1f05351fc723de6f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942762"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460315"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>管理グループ レベルでリソースを作成する
 
@@ -45,13 +45,24 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 管理グループのデプロイ用のコマンドは、リソース グループのデプロイ用のコマンドとは異なります。
 
-Azure PowerShell では、[New-AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment) を使用します。 
+Azure CLI の場合は、[az deployment mg create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create) を使用します。
+
+```azurecli-interactive
+az deployment mg create \
+  --name demoMGDeployment \
+  --location WestUS \
+  --management-group-id myMG \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json"
+```
+
+Azure PowerShell では、[New-AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment) を使用します。
 
 ```azurepowershell-interactive
 New-AzManagementGroupDeployment `
-  -ManagementGroupId "myMG" `
+  -Name demoMGDeployment `
   -Location "West US" `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json
+  -ManagementGroupId "myMG" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json"
 ```
 
 REST API の場合は、[管理グループ スコープでの作成によるデプロイ](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)に関するページを参照してください。

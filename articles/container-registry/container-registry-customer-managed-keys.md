@@ -4,12 +4,12 @@ description: Azure コンテナー レジストリの保存時の暗号化、お
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: 8bce77c776fe088e5c317f02cd2757738a287069
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: fe0736f83db2ba5b872d50bcf1262ca423de9f09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096510"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498950"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>カスタマー マネージド キーを使用した暗号化
 
@@ -27,6 +27,7 @@ ms.locfileid: "79096510"
 
 * 現在、この機能を有効にできるのは、レジストリを作成するときだけです。
 * レジストリでカスタマー マネージド キーを有効にした後、それを無効にすることはできません。
+* 現在、カスタマー マネージド キーで暗号化されたレジストリでは、[コンテンツの信頼](container-registry-content-trust.md)はサポートされていません。
 * カスタマー マネージド キーで暗号化されたレジストリでは、現在、[ACR タスク](container-registry-tasks-overview.md)に対する実行ログは 24 時間だけ保持されます。 それより長くログを保持する必要がある場合は、[タスク実行ログのエクスポートと保存](container-registry-tasks-logs.md#alternative-log-storage)に関するガイダンスを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -407,9 +408,9 @@ az keyvault delete-policy \
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
 [az-keyvault-create]: /cli/azure/keyvault#az-keyvault-create
-[az-keyvault-key-create]: /cli/azure/keyvault/keyt#az-keyvault-key-create
-[az-keyvault-set-policy]: /cli/azure/keyvault/keyt#az-keyvault-set-policy
-[az-keyvault-delete-policy]: /cli/azure/keyvault/keyt#az-keyvault-delete-policy
+[az-keyvault-key-create]: /cli/azure/keyvault/key#az-keyvault-key-create
+[az-keyvault-set-policy]: /cli/azure/keyvault#az-keyvault-set-policy
+[az-keyvault-delete-policy]: /cli/azure/keyvault#az-keyvault-delete-policy
 [az-resource-show]: /cli/azure/resource#az-resource-show
 [az-acr-create]: /cli/azure/acr#az-acr-create
 [az-acr-show]: /cli/azure/acr#az-acr-show

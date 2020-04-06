@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4c3e60e9c296dc8e3a1e31a52a262d8462237407
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a86b8ddb59719db9bdaffea44aecd5428ad16834
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75765665"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282666"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPG
 * `auth_enabled` - キー認証が有効になっている場合は `True`、それ以外の場合は `False` です。
 * `token_auth_enabled` - トークン認証が有効になっている場合は `True`、それ以外の場合は `False` です。
 * `scoring_uri` - REST API のアドレス。
-* `swagger_uri` - OpenAPI 仕様のアドレス。 この URI は、スキーマの自動生成を有効にした場合に使用できます。 詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md#schema)」を参照してください。
+* `swagger_uri` - OpenAPI 仕様のアドレス。 この URI は、スキーマの自動生成を有効にした場合に使用できます。 詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 デプロイされた Web サービスについてこの情報を取得する場合、次の 3 つの方法があります。
 
@@ -75,12 +75,12 @@ Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPG
 
 ### <a name="secured-web-service"></a>セキュリティで保護された Web サービス
 
-SSL 証明書を使用してデプロイされた Web サービスをセキュリティで保護した場合、[HTTPS](https://en.wikipedia.org/wiki/HTTPS) を使用して、スコアリングまたは swagger URI を使用してサービスに接続できます。 HTTPS は、クライアントと Web サービスの間の通信を暗号化することで双方の間の通信をセキュリティで保護する場合に役立ちます。 暗号化は[トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) を使用します。 TLS は、現在も、TLS の前身である *Secure Sockets Layer* (SSL) と呼ばれることがあります。
+TLS/SSL 証明書を使用してデプロイされた Web サービスをセキュリティで保護した場合、[HTTPS](https://en.wikipedia.org/wiki/HTTPS) を使用して、スコアリングまたは swagger URI を使用してサービスに接続できます。 HTTPS は、クライアントと Web サービスの間の通信を暗号化することで双方の間の通信をセキュリティで保護する場合に役立ちます。 暗号化は[トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) を使用します。 TLS は、現在も、TLS の前身である *Secure Sockets Layer* (SSL) と呼ばれることがあります。
 
 > [!IMPORTANT]
 > Azure Machine Learning によってデプロイされた Web サービスは、TLS バージョン 1.2 のみをサポートします。 クライアント アプリケーションを作成するときは、このバージョンがサポートされていることを確認してください。
 
-詳細については、「[SSL を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)」を参照してください。
+詳細については、「[TSL を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)」を参照してください。
 
 ### <a name="authentication-for-services"></a>サービスの認証
 

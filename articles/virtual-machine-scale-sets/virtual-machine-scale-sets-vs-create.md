@@ -1,7 +1,7 @@
 ---
 title: Visual Studio を利用して仮想マシン スケールをデプロイする
 description: Visual Studio とリソース マネージャーのテンプレートを利用して仮想マシン スケール セットをデプロイする
-ms.custom: H1Hack27Feb2017
+ms.custom: vs-azure, H1Hack27Feb2017
 ms.workload: azure-vs
 author: mayanknayar
 tags: azure-resource-manager
@@ -10,12 +10,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: manayar
-ms.openlocfilehash: 0d0dc3fbb7e48b1f7e6936cfb65473dba882b776
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c49b4f42bc726c68880bdd4d6f58956936e83177
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274231"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066975"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Visual Studio による仮想マシン スケール セットの作成方法
 
@@ -35,7 +35,7 @@ Visual Studio で Virtual Machine Scale Sets をデプロイするには、次�
 >[!NOTE]
 >この記事では、Visual Studio 2019 と [Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/) を使用します。
 
-## プロジェクトを作成する<a name="creating-a-project"></a> 
+## <a name="create-a-project"></a>プロジェクトを作成する<a name="creating-a-project"></a> 
 
 1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。
 
@@ -83,7 +83,7 @@ Azure Resource Manager テンプレートをデプロイして、仮想マシン
 
    ![出力で結果が表示される](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
 
-## 仮想マシン スケール セットを確認する<a name="exploring-your-virtual-machine-scale-set"></a>
+## <a name="explore-your-virtual-machine-scale-set"></a>仮想マシン スケール セットを確認する<a name="exploring-your-virtual-machine-scale-set"></a>
 
 **[表示]**  >  **[Cloud Explorer]** を選択して、新しい仮想マシン スケール セットを表示します。 必要に応じて、 **[すべてを最新の情報に更新]** を使用します。
 
@@ -95,4 +95,4 @@ Azure Resource Manager テンプレートをデプロイして、仮想マシン
 
 ## <a name="next-steps"></a>次のステップ
 
-Visual Studio を使用して仮想マシン スケール セットを正常にデプロイしたら、実際のアプリケーションの要件に合わせてプロジェクトをさらにカスタマイズできます。 たとえば、**Insights** リソースを追加して自動スケーリングを構成します。 スタンドアロン仮想マシンなどのテンプレートにインフラストラクチャを追加したり、カスタム スクリプト拡張機能を使用してアプリケーションをデプロイしたりすることができます。 テンプレートの適切なサンプルを、[Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates)の GitHub リポジトリで入手できます。 `vmss` を検索します。
+Visual Studio を使用して Virtual Machine Scale Sets を正常にデプロイしたら、実際のアプリケーションの要件に合わせてプロジェクトをさらにカスタマイズできます。 たとえば、**Insights** リソースを追加して自動スケーリングを構成します。 スタンドアロン仮想マシンなどのテンプレートにインフラストラクチャを追加したり、カスタム スクリプト拡張機能を使用してアプリケーションをデプロイしたりすることができます。 テンプレートの適切なサンプルを、[Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates)の GitHub リポジトリで入手できます。 `vmss` を検索します。

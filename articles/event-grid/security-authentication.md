@@ -1,21 +1,21 @@
 ---
 title: Azure Event Grid のセキュリティと認証
-description: Azure Event Grid とその概念について説明します。
+description: この記事では、Event Grid リソース (WebHook、サブスクリプション、カスタム トピック) へのアクセスを認証するためのさまざまな方法について説明します。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: e8913c1f198c89bdcd779d2faf2706f9d4079c5c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0b7c5b42ac6291c6687337ba8d6a9d35830b9bda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846301"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236251"
 ---
-# <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
+# <a name="authenticating-access-to-event-grid-resources"></a>Event Grid リソースへのアクセスの認証
 
 Azure Event Grid には、3 種類の認証があります。
 
@@ -104,7 +104,7 @@ HTTP 200 OK 応答状態コードを返す必要があります。 HTTP 202 Acce
 
 #### <a name="azure-ad"></a>Azure AD
 
-Event Grid の認証に Azure Active Directory を使用することで Webhook エンドポイントを保護し、エンドポイントにイベントを発行できます。 Azure Active Directory アプリケーションを作成したり、アプリケーションで Event Grid を認証するためのロールとサービス プリンシプルを作成したり、Azure AD アプリケーションを使用するようにイベント サブスクリプションを構成したりする必要があります。 [Event Grid で AAD を構成する方法について学習してください](secure-webhook-delivery.md)。
+Event Grid の認証に Azure Active Directory を使用することで Webhook エンドポイントを保護し、エンドポイントにイベントを発行できます。 Azure Active Directory アプリケーションを作成すること、アプリケーションで Event Grid を認証するためのロールとサービス プリンシプルを作成すること、Azure AD アプリケーションを使用するようにイベント サブスクリプションを構成することが必要になります。 [Event Grid で AAD を構成する方法について学習してください](secure-webhook-delivery.md)。
 
 #### <a name="query-parameters"></a>クエリ パラメーター
 イベント サブスクリプションを作成するときに、webhook URL にクエリ パラメーターを追加することで、webhook エンドポイントをセキュリティで保護できます。 これらのクエリ パラメーターのいずれかを、[アクセス トークン](https://en.wikipedia.org/wiki/Access_token)などのシークレットに設定します。 Webhook はシークレットを使用して、イベントが有効なアクセス許可を持つ Event Grid からのものであることを認識できます。 Event Grid には、webhook へのすべてのイベント配信にこれらのクエリ パラメーターが含められます。
@@ -186,170 +186,7 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 }
 ```
 
-## <a name="management-access-control"></a>管理アクセス制御
-
-Azure Event Grid を使用すると、イベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な管理操作を実行する各ユーザーに付与するアクセス レベルを制御できます。 Event Grid は、Azure のロール ベースのアクセス制御 (RBAC) を使います。
-
-### <a name="operation-types"></a>操作の種類
-
-Event Grid では、以下の操作がサポートされています。
-
-* Microsoft.EventGrid/*/read
-* Microsoft.EventGrid/*/write
-* Microsoft.EventGrid/*/delete
-* Microsoft.EventGrid/eventSubscriptions/getFullUrl/action
-* Microsoft.EventGrid/topics/listKeys/action
-* Microsoft.EventGrid/topics/regenerateKey/action
-
-最後の 3 つの操作は秘密情報を返す可能性がありますが、この情報は通常の読み取り操作からはフィルターで除外されます。 このような操作へのアクセスは制限することをお勧めします。 
-
-### <a name="built-in-roles"></a>組み込みのロール
-
-Event Grid には、イベント サブスクリプションを管理するための組み込みロールが 2 つ用意されています。 これらは、イベント ドメイン内のトピックをサブスクライブするために必要なアクセス許可をユーザーに提供するため、[イベント ドメイン](event-domains.md)を実装するときに重要です。 これらのロールはイベント サブスクリプションだけを対象としたものであり、トピックの作成などのアクションに対するアクセス権は付与されません。
-
-[これらのロールはユーザーまたはグループに割り当てる](../role-based-access-control/quickstart-assign-role-user-portal.md)ことができます。
-
-**EventGrid EventSubscription 共同作成者**: Event Grid のサブスクリプション操作を管理します
-
-```json
-[
-  {
-    "Description": "Lets you manage EventGrid event subscription operations.",
-    "IsBuiltIn": true,
-    "Id": "428e0ff05e574d9ca2212c70d0e0a443",
-    "Name": "EventGrid EventSubscription Contributor",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/*",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Resources/deployments/*",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Support/*"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": [],
-        "Condition": null
-      }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
-
-**EventGrid EventSubscription 閲覧者**: Event Grid のサブスクリプションを読みます
-
-```json
-[
-  {
-    "Description": "Lets you read EventGrid event subscriptions.",
-    "IsBuiltIn": true,
-    "Id": "2414bbcf64974faf8c65045460748405",
-    "Name": "EventGrid EventSubscription Reader",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/read",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": []
-       }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
-
-### <a name="custom-roles"></a>カスタム ロール
-
-組み込みロールとは異なるアクセス許可を指定する必要がある場合は、カスタム ロールを作成できます。
-
-さまざまなアクションの実行をユーザーに許可する Event Grid ロール定義の例を以下に示します。 これらのカスタム ロールは、イベント サブスクリプションより広範囲のアクセス権を付与するため、組み込みロールとは異なります。
-
-**EventGridReadOnlyRole.json**:読み取り専用操作のみを許可します。
-
-```json
-{
-  "Name": "Event grid read only role",
-  "Id": "7C0B6B59-A278-4B62-BA19-411B70753856",
-  "IsCustom": true,
-  "Description": "Event grid read only role",
-  "Actions": [
-    "Microsoft.EventGrid/*/read"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription Id>"
-  ]
-}
-```
-
-**EventGridNoDeleteListKeysRole.json**:制限付きの投稿アクションを許可しますが、削除アクションは禁止します。
-
-```json
-{
-  "Name": "Event grid No Delete Listkeys role",
-  "Id": "B9170838-5F9D-4103-A1DE-60496F7C9174",
-  "IsCustom": true,
-  "Description": "Event grid No Delete Listkeys role",
-  "Actions": [
-    "Microsoft.EventGrid/*/write",
-    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
-    "Microsoft.EventGrid/topics/listkeys/action",
-    "Microsoft.EventGrid/topics/regenerateKey/action"
-  ],
-  "NotActions": [
-    "Microsoft.EventGrid/*/delete"
-  ],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription id>"
-  ]
-}
-```
-
-**EventGridContributorRole.json**:すべての Event Grid アクションを許可します。
-
-```json
-{
-  "Name": "Event grid contributor role",
-  "Id": "4BA6FB33-2955-491B-A74F-53C9126C9514",
-  "IsCustom": true,
-  "Description": "Event grid contributor role",
-  "Actions": [
-    "Microsoft.EventGrid/*/write",
-    "Microsoft.EventGrid/*/delete",
-    "Microsoft.EventGrid/topics/listkeys/action",
-    "Microsoft.EventGrid/topics/regenerateKey/action",
-    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
-  ],
-  "NotActions": [],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription id>"
-  ]
-}
-```
-
-カスタム ロールは、[PowerShell](../role-based-access-control/custom-roles-powershell.md)、[Azure CLI](../role-based-access-control/custom-roles-cli.md)、[REST API](../role-based-access-control/custom-roles-rest.md) で作成できます。
-
-## <a name="encryption-at-rest"></a>保存時の暗号化
+### <a name="encryption-at-rest"></a>保存時の暗号化
 
 Event Grid サービスによってディスクに書き込まれるすべてのイベントまたはデータは、保存時に確実に暗号化されるように、Microsoft マネージド キーによって暗号化されます。 また、[Event Grid の再試行ポリシー](delivery-and-retry.md)に従って、イベントまたはデータが保持される最大期間は 24 時間です。 Event Grid では、24時間またはイベントの Time-To-Live のいずれか少ない方が経過すると、すべてのイベントまたはデータが自動的に削除されます。
 

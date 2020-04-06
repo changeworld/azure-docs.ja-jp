@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 37f93099027f810e8089119536e089e07080d0bc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: df56f53b64a35737700529b80c004efeb31eaabc
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898639"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348673"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure App Configuration のベスト プラクティス
 
@@ -56,6 +56,8 @@ configBuilder.AddAzureAppConfiguration(options => {
 });
 ```
 
+「[ラベルを使用してさまざまな環境でさまざまな構成を有効にする](./howto-labels-aspnet-core.md)」に、完全な例が挙げられています。
+
 ## <a name="app-configuration-bootstrap"></a>App Configuration の準備
 
 アプリ構成ストアには、対応する接続文字列を Azure portal から入手してアクセスできます。 接続文字列は資格情報を含んでいるため、シークレットと見なされます。 これらのシークレットは Azure Key Vault に格納する必要があり、コードはそれらを取得するために Key Vault に対して認証を行う必要があります。
@@ -70,6 +72,20 @@ configBuilder.AddAzureAppConfiguration(options => {
 * 接続文字列を Key Vault の App Configuration ストアに保存し、[App Service からそれを参照](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references)します。
 * Azure マネージド ID を使用して App Configuration ストアにアクセスします。 詳細については、「[Integrate with Azure managed identities (Azure マネージド ID と統合する)](howto-integrate-azure-managed-service-identity.md)」を参照してください。
 * App Configuration から App Service に構成をプッシュします。 App Configuration には、データを直接 App Service に送信するエクスポート機能があります (Azure portal および Azure CLI)。 この方法であれば、アプリケーション コードに一切変更を加える必要がありません。
+
+## <a name="reduce-requests-made-to-app-configuration"></a>App Configuration に対する要求を減らす
+
+App Configuration に過剰な要求があると、調整や超過分料金が発生する可能性があります。 要求の数を減らすには、次のようにします。
+
+* 更新のタイムアウトを大きくします (特に構成値が頻繁に変更されない場合)。 [`SetCacheExpiration` メソッド](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration)を使用して、新しい更新のタイムアウトを指定します。
+
+* 個々のキーを監視するのではなく、1 つの "*センチネル キー*" を監視します。 そのセンチネル キーが変更された場合にのみ、すべての構成を更新します。 例については、「[ASP.NET Core アプリで動的な構成を使用する](enable-dynamic-configuration-aspnet-core.md)」を参照してください。
+
+* 変更を常にポーリングするのではなく、Azure Event Grid を使用して、構成が変更されたときに通知を受信します。 詳細については、[Azure App Configuration イベントの Web エンドポイントへのルーティング](./howto-app-configuration-event.md)に関する記事を参照してください
+
+## <a name="importing-configuration-data-into-app-configuration"></a>App Configuration への構成データのインポート
+
+App Configuration には、Azure portal または CLI のいずれかを使用して、現在の構成ファイルから構成設定を一括[インポート](https://aka.ms/azconfig-importexport1)するオプションが用意されています。 また、同じオプションを使用して、関連するストア間などで App Configuration から値をエクスポートすることもできます。 GitHub リポジトリとの継続的な同期を設定する場合は、Microsoft の [GitHub Actions](https://aka.ms/azconfig-gha2) を使用できます。これにより、App Configuration のメリットを得ながら、既存のソース管理手法を引き続き使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

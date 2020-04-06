@@ -1,71 +1,105 @@
 ---
 title: Azure Cosmos DB のコンテナーを照会する
-description: インパーティション クエリ、クロスパーティション クエリ、部分クロス パーティション クエリを使用して、Azure Cosmos DB のコンテナーにクエリを実行する方法について説明します。
+description: インパーティション クエリとクロスパーティション クエリを使用して、Azure Cosmos DB 内のコンテナーのクエリを実行する方法について説明します
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 88ebb8bb80ec3406c98b77db481994d415b04373
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 299980b67caaea85fbfb40cb1a30ee50fa32d0f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872028"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131395"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Azure Cosmos コンテナーを照会する
 
-この記事では、Azure Cosmos DB のコンテナー (コレクション、グラフ、またはテーブル) のクエリを実行する方法について説明します。
+この記事では、Azure Cosmos DB のコンテナー (コレクション、グラフ、またはテーブル) のクエリを実行する方法について説明します。 特に、Azure Cosmos DB でのインパーティション クエリとクロスパーティション クエリの動作について説明します。
 
 ## <a name="in-partition-query"></a>インパーティション クエリ
 
-コンテナーのデータのクエリを実行するとき、クエリでパーティション キー フィルターを指定すると、Azure Cosmos DB ではクエリが自動的に処理されます。 クエリは、フィルターで指定されているパーティション キーの値に対応するパーティションにルーティングされます。 たとえば、次のクエリは、パーティション キー値 `XMS-0001` に対応するすべてのドキュメントが保持されている `DeviceId` パーティションにルーティングされます。
+コンテナーのデータのクエリを実行するとき、クエリでパーティション キー フィルターを指定すると、Azure Cosmos DB によってクエリが自動的に最適化されます。 クエリは、フィルターで指定されているパーティション キーの値に対応する[物理パーティション](partition-data.md#physical-partitions)にルーティングされます。
 
-```csharp
-// Query using partition key into a class called, DeviceReading
-IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
-    UriFactory.CreateDocumentCollectionUri("myDatabaseName", "myCollectionName"))
-    .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
+たとえば、`DeviceId` に対する等値フィルターが含まれる次のようなクエリについて考えます。 `DeviceId` でパーティション分割されたコンテナーに対してこのクエリを実行すると、1 つの物理パーティションにフィルターされます。
+
+```sql
+    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
+```
+
+前の例と同様に、このクエリでも 1 つのパーティションにフィルターされます。 `Location` に対するフィルターを追加しても、これは変わりません。
+
+```sql
+    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
+```
+
+次に示すクエリでは、パーティション キーに対する範囲フィルターがあり、1 つの物理パーティションにスコープされません。 インパーティション クエリにするには、クエリにパーティション キーを含む等値フィルターが必要です。
+
+```sql
+    SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
 ```
 
 ## <a name="cross-partition-query"></a>クロスパーティション クエリ
 
-次のクエリにはパーティション キー (`DeviceId`) にフィルターがないので、クエリはすべてのパーティションにファンアウトされて、パーティションのインデックスに対して実行されます。 複数のパーティションでクエリを実行するには、`EnableCrossPartitionQuery` を true に設定します (または、REST API では `x-ms-documentdb-query-enablecrosspartition`)。
+次のクエリには、パーティション キー (`DeviceId`) に対するフィルターがありません。 そのため、各パーティションのインデックスに対して実行されるすべての物理パーティションにファンアウトする必要があります。
 
-EnableCrossPartitionQuery プロパティは、ブール値を受け取ります。 true に設定すると、クエリにパーティション キーが存在しない場合でも、Azure Cosmos DB によってパーティション全体にクエリが展開されます。 この展開動作は、個々のクエリをすべてのパーティションに発行することによって行われます。 クエリの結果を読み取るためには、クライアント アプリケーションが FeedResponse から結果を取り込んで ContinuationToken プロパティを調べる必要があります。 すべての結果を読み取るには、ContinuationToken が null になるまでデータを反復処理してください。 
-
-```csharp
-// Query across partition keys into a class called, DeviceReading
-IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
-    UriFactory.CreateDocumentCollectionUri("myDatabaseName", "myCollectionName"),
-    new FeedOptions { EnableCrossPartitionQuery = true })
-    .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
+```sql
+    SELECT * FROM c WHERE c.Location = 'Seattle`
 ```
 
-Azure Cosmos DB では、SQL を使用することで、コンテナーに対する集計関数 (COUNT、MIN、MAX、AVG) がサポートされています。 コンテナーに対する集計関数は、SDK バージョン 1.12.0 以降でサポートされます。 クエリには、1 つの集計演算子と、プロジェクション内の 1 つの値を含める必要があります。
+各物理パーティションには、独自のインデックスがあります。 そのため、コンテナーに対してクロスパーティション クエリを実行すると、実質的には物理パーティション "*ごと*" に 1 つのクエリが実行されることになります。 Azure Cosmos DB によって、異なる物理パーティションに対する結果が自動的に集計されます。
+
+異なる物理パーティション内のインデックスは、互いに独立しています。 Azure Cosmos DB にはグローバル インデックスはありません。
 
 ## <a name="parallel-cross-partition-query"></a>並列クロスパーティション クエリ
 
-Azure Cosmos DB SDK 1.9.0 以降では、並列クエリ実行オプションがサポートされています。 並列パーティション間クエリを使用すれば、複数のパーティションにまたがるクエリでも、少ない待ち時間で実行できます。 たとえば、次のクエリはパーティション全体で並列に実行されるように構成されています。
-
-```csharp
-// Cross-partition Order By Query with parallel execution
-IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<DeviceReading>(
-    UriFactory.CreateDocumentCollectionUri("myDatabaseName", "myCollectionName"),  
-    new FeedOptions { EnableCrossPartitionQuery = true, MaxDegreeOfParallelism = 10, MaxBufferedItemCount = 100})
-    .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100)
-    .OrderBy(m => m.MetricValue);
-```
+Azure Cosmos DB SDK 1.9.0 以降では、並列クエリ実行オプションがサポートされています。 並列パーティション間クエリを使用すれば、複数のパーティションにまたがるクエリでも、少ない待ち時間で実行できます。
 
 次のパラメーターを調整することで、並列クエリの実行を管理できます。
 
-- **MaxDegreeOfParallelism**:コンテナーのパーティションに対する同時ネットワーク接続数の上限を設定します。 このプロパティを -1 に設定した場合、SDK によって並列処理次数が管理されます。  `MaxDegreeOfParallelism`  を指定しないか、または 0 (既定値) に設定すると、コンテナーのパーティションへのネットワーク接続は 1 つのみになります。
+- **MaxConcurrency**: コンテナーのパーティションに対する同時ネットワーク接続数の上限を設定します。 このプロパティを `-1` に設定した場合、SDK によって並列処理次数が管理されます。  `MaxConcurrency` が `0` に設定されている場合は、コンテナーのパーティションに対して 1 つのネットワーク接続が存在します。
 
 - **MaxBufferedItemCount**:クエリの待ち時間とクライアント側のメモリ使用率のバランスを調整します。 このオプションを省略するか -1 に設定した場合、並列クエリの実行中にバッファリングされる項目の数は SDK によって管理されます。
 
-コレクションが同じ状態の場合、並列クエリでは順次実行と同じ順序で結果が返されます。 並べ替え演算子 (ORDER BY、TOP) を含むクロスパーティション クエリを実行すると、Azure Cosmos DB SDK から複数のパーティションに並列にクエリが発行されます。 部分的に並べ替えられた結果がクライアント側でマージされて、グローバルに並べ替えられた結果が作成されます。
+Azure Cosmos DB ではクロスパーティション クエリを並列化できるため、クエリの待機時間は通常、システムによって[物理パーティション](partition-data.md#physical-partitions)が追加されると適切にスケーリングされます。 一方、RU 使用量は、物理パーティションの合計数が増えるにつれて大幅に増加します。
 
-## <a name="next-steps"></a>次の手順
+クロスパーティション クエリを実行する場合、基本的には個別の物理パーティションごとに異なるクエリが実行されます。 クロスパーティション クエリでは、インデックスが利用可能な場合は使用されますが、インパーティション クエリほど効率的ではありません。
+
+## <a name="useful-example"></a>便利な例
+
+次のような比喩を使うと、クロスパーティション クエリを理解しやすくなります。
+
+異なるアパートに荷物を配達する必要がある配送ドライバーがいるものとします。 各アパートには建物のリストがあり、すべての居住者のユニット番号が示されています。 各アパートは物理パーティション、各リストは物理パーティションのインデックスと考えることができます。
+
+この例を使用して、インパーティション クエリとクロスパーティション クエリを比較できます。
+
+### <a name="in-partition-query"></a>インパーティション クエリ
+
+配送ドライバーが適切なアパート (物理パーティション) を認識している場合は、すぐに正しい建物に向かうことができます。 ドライバーは、アパートに対する居住者のユニット番号 (インデックス) のリストを確認し、適切な荷物を迅速に配達できます。 この場合、ドライバーは、あるアパートまで運転していって荷物の受取人がそこに住んでいるかどうかを確認するのに無駄な時間や労力を使わなくて済みます。
+
+### <a name="cross-partition-query-fan-out"></a>クロスパーティション クエリ (ファンアウト)
+
+配送ドライバーが正しいアパート (物理パーティション) を知らない場合は、個々のすべてのアパートまで行き、すべての居住者のユニット番号 (インデックス) を含むリストを確認する必要があります。 各アパートに到着したら、各居住者の住所のリストを使用できます。 ただし、荷物の受取人がそこに住んでいるかどうかにかかわらず、すべてのアパートのリストを確認する必要があります。 これがクロスパーティション クエリの動作方法です。 インデックスを使用することはできますが (すべてのドアをノックする必要はありません)、すべての物理パーティションでインデックスを個別に確認する必要があります。
+
+### <a name="cross-partition-query-scoped-to-only-a-few-physical-partitions"></a>クロスパーティション クエリ (少数の物理パーティションにのみスコープされている)
+
+荷物のすべての受取人が特定のいくつかのアパートに住んでいることを配送ドライバーが知っている場合、すべてのアパートに行く必要はありません。 いくつかのアパートに行くには 1 つの建物だけに行くより多くの作業が必要になりますが、それでもかなりの時間と労力を節約できます。 クエリのフィルターに `IN` キーワードでパーティション キーが含まれる場合、データに関連する物理パーティションのインデックスだけがチェックされます。
+
+## <a name="avoiding-cross-partition-queries"></a>クロスパーティション クエリを回避する
+
+ほとんどのコンテナーでは、いくつかのクロスパーティション クエリを使用することは避けられません。 少数のクロスパーティション クエリであれば問題ありません。 ほとんどすべてのクエリ操作では、パーティションをまたぐことが (論理パーティション キーと物理パーティションの両方) サポートされています。 また、Azure Cosmos DB では、複数の物理パーティションを対象とするクエリ実行を並列化するための多くの最適化が、クエリ エンジンとクライアント SDK に用意されています。
+
+読み取り量の多いほとんどのシナリオでは、クエリ フィルターで最も一般的なプロパティを選択することをお勧めします。 また、パーティション キーが他の[パーティション キー選択のベスト プラクティス](partitioning-overview.md#choose-partitionkey)に従っていることを確認する必要もあります。
+
+通常、クロスパーティション クエリの回避は大規模なコンテナーだけの問題です。 物理パーティションのインデックスで結果を確認するたびに、クエリのフィルターと一致する項目が物理パーティションにない場合であっても、少なくとも約 2.5 RU の料金がかかります。 そのため、物理パーティションが 1 つだけ (または少数) の場合は、インパーティション クエリよりクロスパーティション クエリの方がはるかに多くの RU を使用するということはありません。
+
+物理パーティションの数は、プロビジョニングされた RU の量に関連付けられています。 各物理パーティションでは、最大 10,000 RU をプロビジョニングでき、最大 50 GB のデータを格納できます。 物理パーティションは、Azure Cosmos DB によって自動的に管理されます。 コンテナー内の物理パーティションの数は、プロビジョニングされたスループットと使用されているストレージに依存します。
+
+ワークロードが以下の条件を満たしている場合は、クロスパーティション クエリを避ける必要があります。
+- 30,000 より多くの RU をプロビジョニングする予定である
+- 100 GB を超えるデータを格納する予定である
+
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB でのパーティション分割については、次の記事を参照してください。
 

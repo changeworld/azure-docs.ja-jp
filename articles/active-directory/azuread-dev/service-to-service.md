@@ -2,26 +2,23 @@
 title: Azure Active Directory のサービス間アプリ
 description: サービス間アプリケーションとは何かと、この種のアプリのプロトコル フロー、登録、およびトークンの有効期限の基本について説明します。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: ryanwi
-ms.reviewer: saeeda, jmprieur, andret
+ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ff27ada23e45f2bbbb09e47af9458c1f83af277a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 179034533d90dbbb6ca362fc6f72996f32873729
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163424"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154765"
 ---
 # <a name="service-to-service-apps"></a>サービス間アプリ
 
@@ -35,7 +32,7 @@ ms.locfileid: "77163424"
 
 - OAuth 2.0 の On-Behalf-Of ドラフト仕様に基づいて構築された、web API を呼び出す必要がある (web API などの) サーバー アプリケーション
 
-    このシナリオでは、ユーザーがネイティブ アプリケーションで既に認証されており、このネイティブ アプリケーションが Web API を呼び出す必要があるとします。 Azure AD は、Web API を呼び出すために、JWT アクセス トークンを発行します。 Web API が別のダウンストリーム Web API を呼び出す必要がある場合、Web API は代理フローを使用してユーザーの ID を委任し、第 2 層の Web API に対して認証できます。
+    このシナリオでは、ユーザーがネイティブ アプリケーションで既に認証されており、このネイティブ アプリケーションが Web API を呼び出す必要があるとします。 Azure AD は、Web API を呼び出すために、JWT アクセス トークンを発行します。 Web API では、別のダウンストリーム Web API を呼び出す必要がある場合、代理フローを使用してユーザーの ID を委任し、第 2 層の Web API に対する認証を行うことができます。
 
 ## <a name="diagram"></a>ダイアグラム
 
@@ -45,16 +42,16 @@ ms.locfileid: "77163424"
 
 ### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>アプリケーション ID と OAuth 2.0 クライアント資格情報付与
 
-1. まず、サーバー アプリケーションは、対話形式のサインオン ダイアログなどのユーザー操作を使用せずに、Azure AD で自身を認証する必要があります。 サーバー アプリケーションは、資格情報、アプリケーション ID、アプリケーション ID の URI を提供して、Azure AD のトークン エンドポイントに要求を送信します。
+1. まず、サーバー アプリケーションは、対話形式のサインオン ダイアログなどのユーザー操作を使用せずに、Azure AD で自身を認証する必要があります。 資格情報、アプリケーション ID、アプリケーション ID の URI を提供して、Azure AD のトークン エンドポイントに要求を送信します。
 1. Azure AD がアプリケーションを認証し、Web API の呼び出しに使用する JWT アクセス トークンを返します。
-1. Web アプリケーションは、返された JWT アクセス トークンを HTTPS 経由で使用して、Web API への要求の承認ヘッダーに、"Bearer" を指定した JWT 文字列を追加します。 その後、Web API が JWT を検証します。検証が正常に行われると、目的のリソースが返されます。
+1. Web アプリケーションでは、HTTPS 経由で返された JWT アクセス トークンを使用して、Web API への要求の Authorization ヘッダーに、"Bearer" を指定した JWT 文字列を追加します。 その後、Web API が JWT を検証します。検証が正常に行われると、目的のリソースが返されます。
 
 ### <a name="delegated-user-identity-with-oauth-20-on-behalf-of-draft-specification"></a>委任ユーザー ID と OAuth 2.0 On-Behalf-Of ドラフト仕様
 
 次に説明するフローは、ユーザーが別のアプリケーション (ネイティブ アプリケーションなど) で認証されていることと、第 1 層の Web API へのアクセス トークンを取得するためにユーザー ID が使用されたことを前提としています。
 
 1. ネイティブ アプリケーションが、第 1 層の Web API にアクセス トークンを送信します。
-1. 第 1 層の Web API が、アプリケーション ID と資格情報、およびユーザーのアクセス トークンを提供して、Azure AD のトークン エンドポイントに要求を送信します。 また、この要求は、Web API が元のユーザーに代わってダウンストリーム Web API を呼び出すために新しいトークンを要求していることを示す、on_behalf_of パラメーターと共に送信されます。
+1. 第 1 層の Web API は、アプリケーション ID と資格情報、およびユーザーのアクセス トークンを提供して、Azure AD のトークン エンドポイントに要求を送信します。 また、この要求は、Web API が元のユーザーに代わってダウンストリーム Web API を呼び出すために新しいトークンを要求していることを示す、on_behalf_of パラメーターと共に送信されます。
 1. Azure AD は、第 1 層の Web API に第 2 層の Web API へのアクセス権限があることを確認し、要求を検証して、第 1 層の Web API に JWT アクセス トークンと JWT 更新トークンを返します。
 1. 第 1 層の Web API は、要求の承認ヘッダーにトークン文字列を追加して、第 2 層の Web API を HTTPS 経由で呼び出します。 アクセス トークンと更新トークンが有効であれば、第 1 層の Web API は、第 2 層の Web API を引き続き呼び出すことができます。
 

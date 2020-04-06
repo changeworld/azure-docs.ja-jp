@@ -1,26 +1,24 @@
 ---
 title: ナレッジ ベースの移行 - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: ナレッジ ベースを移行するには、一方のナレッジ ベースからエクスポートしてから他方のナレッジ ベースにインポートする必要があります。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/28/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 942932c229ace82a0bf66da7a5421f936b028088
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/25/2020
+ms.openlocfilehash: 13e5e79bf4eaf6ec59e41b3e12aa1bb23f2c1578
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302561"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258092"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>エクスポート/インポートを使用したナレッジ ベースの移行
 
-ナレッジ ベースを移行するには、一方のナレッジ ベースからエクスポートしてから他方のナレッジ ベースにインポートする必要があります。
+移行は、既存のナレッジ ベースから新しいナレッジ ベースを作成するプロセスです。 これを行うには、いくつかの理由があります。
+
+* バックアップと復元のプロセス
+* CI/CD パイプライン
+* リージョンの移動
+
+ナレッジ ベースを移行するには、既存のナレッジ ベースからエクスポートし、別のナレッジ ベースにインポートする必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,6 +47,20 @@ ms.locfileid: "78302561"
 1. テスト パネルを使用して、新しいナレッジ ベースを**テスト**します。 [ナレッジ ベースのテスト](../How-To/test-knowledge-base.md)方法を確認してください。
 
 1. ナレッジ ベースを**公開**し、チャットボットを作成します。 [ナレッジ ベースの公開](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)方法を確認してください。
+
+## <a name="programmatically-migrate-a-knowledge-base-from-qna-maker"></a>プログラムで QnA Maker からナレッジ ベースを移行する
+
+次の REST API を使用して、プログラムで移行プロセスを利用できます。
+
+**エクスポート**
+
+* [ナレッジ ベースのダウンロード API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)
+
+**[インポート]**
+
+* [置換 API (同じナレッジ ベース ID での再読み込み)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)
+* [作成 API (新しいナレッジ ベース ID での読み込み)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+
 
 ## <a name="chat-logs-and-alterations"></a>チャットログと変更
 大文字と小文字が区別されない変更 (シノニム) は、自動的にはインポートされません。 [V4 API](https://go.microsoft.com/fwlink/?linkid=2092179) を使用して、新しいナレッジ ベースに変更を移行します。

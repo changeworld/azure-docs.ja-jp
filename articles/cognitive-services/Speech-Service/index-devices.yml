@@ -7,33 +7,32 @@ metadata:
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: f7105a4f0330c61ee10d8dee00d40ce17bc40188
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 5fc9e045162c03585f20e0b06a01524480070050
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562782"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415361"
 landingContent:
-- title: はじめに
+- title: Speech Devices SDK について
   linkLists:
   - linkListType: overview
     links:
-    - text: Speech Devices SDK について
+    - text: Speech Devices SDK とは
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:
-    - text: Speech Devices SDK の使用 (Windows)
+    - text: Speech Devices SDK を使用する (Windows)
       url: speech-devices-sdk-quickstart.md?pivots=platform-windows
-    - text: Speech Devices SDK の使用 (Linux)
+    - text: Speech Devices SDK を使用する (Linux)
       url: speech-devices-sdk-quickstart.md?pivots=platform-linux
-    - text: Speech Devices SDK の使用 (Android)
+    - text: Speech Devices SDK を使用する (Android)
       url: speech-devices-sdk-quickstart.md?pivots=platform-android
-- title: ステップバイステップ ガイド
+- title: Speech Devices SDK を使用して開発する
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -49,5 +48,5 @@ landingContent:
       url: devices-sdk-release-notes.md
   - linkListType: reference
     links:
-    - text: '[トラブルシューティング]'
+    - text: トラブルシューティング
       url: speech-devices-sdk-troubleshooting.md

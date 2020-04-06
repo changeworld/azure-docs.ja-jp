@@ -7,19 +7,18 @@ metadata:
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: c45c16b4421bf48e5728f95e7043ef7ffc109c3a
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 75f620d5210f5ba0dc61ac1c5be2f30aa23dea9c
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562806"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415327"
 landingContent:
-- title: はじめに
+- title: 音声翻訳について
   linkLists:
   - linkListType: overview
     links:
@@ -33,7 +32,7 @@ landingContent:
       url: quickstarts/translate-speech-to-text-multiple-languages.md
     - text: 音声間翻訳
       url: quickstarts/translate-speech-to-speech.md
-- title: ステップバイステップ ガイド
+- title: 音声翻訳を使用して開発する
   linkLists:
   - linkListType: learn
     links:
@@ -49,7 +48,7 @@ landingContent:
     links:
     - text: 言語のサポート
       url: language-support.md#speech-translation
-    - text: 価格
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
     - text: 音声翻訳のよくあるご質問
       url: https://www.microsoft.com/translator/business/faq/
+    - text: 音声翻訳の価格
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

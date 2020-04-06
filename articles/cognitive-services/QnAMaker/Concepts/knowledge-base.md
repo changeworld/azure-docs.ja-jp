@@ -2,13 +2,13 @@
 title: データ ソースからのインポート - QnA Maker
 description: QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペアと、各 QnA セットに関連付けられている省略可能なメタデータで構成されます。
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/16/2020
+ms.openlocfilehash: e7772b2c76dfb92ced4d2c0d4b8dae97a59d1b83
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843361"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457823"
 ---
 # <a name="importing-from-data-sources"></a>データ ソースからのインポート
 
@@ -28,7 +28,7 @@ ms.locfileid: "76843361"
 
 ナレッジ ベースをインポートすると、既にあるナレッジ ベースの内容が置き換えられます。 インポートには、質問と回答を含む構造化された `.tsv` ファイルが必要です。 この情報によって、QnA Maker は質問とその回答のセットをグループ化し、その帰属先となるデータ ソースを特定することができます。
 
-| 質問  | Answer  | source| メタデータ (1 つのキー: 1 つの値) |
+| Question  | Answer  | source| メタデータ (1 つのキー: 1 つの値) |
 |-----------|---------|----|---------------------|
 | 質問 1 | 回答 1 | URL 1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 質問 2 | 回答 2 | 編集|    `Key:Value`       |
@@ -56,14 +56,16 @@ ms.locfileid: "76843361"
 
 ## <a name="export-as-example"></a>例としてエクスポートする
 
-`.tsv` ファイルで QnA セットを表す方法がわからない場合は、QnA Maker ポータルでセットを作成し、保存してから、セットを表す方法の例としてナレッジ ベースをエクスポートします。
+`.tsv` ファイルで QnA セットを表す方法がわからない場合:
+* この [GitHub からダウンロードできるサンプル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)を使用します
+* または、QnA Maker ポータルでセットを作成し、保存してから、セットを表す方法の例としてナレッジ ベースをエクスポートします。
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースの開発ライフサイクル](./development-lifecycle-knowledge-base.md)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 QnA Maker の[マークダウンのリファレンス](../reference-markdown-format.md)を参照して、回答の形式を整えます。
 

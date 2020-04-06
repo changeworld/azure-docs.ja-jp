@@ -7,25 +7,24 @@ metadata:
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 278dc182b682615d621bfd8a891cc77591a511f1
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 87e698c2a9b09b54c6015293b5be26ea2006a786
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562778"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415174"
 landingContent:
-- title: はじめに
+- title: 意図認識について
   linkLists:
   - linkListType: quickstart
     links:
     - text: 音声、意図、エンティティを認識する
       url: quickstarts/intent-recognition.md
-- title: ステップバイステップ ガイド
+- title: 意図認識を使用して開発する
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -41,5 +40,5 @@ landingContent:
       url: ../luis/developer-reference-resource.md
     - text: 言語のサポート
       url: ../luis/luis-language-support.md#languages-supported
-    - text: 価格
+    - text: 意図認識の価格
       url: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services

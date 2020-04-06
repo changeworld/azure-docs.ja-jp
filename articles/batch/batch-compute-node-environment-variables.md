@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 09/12/2019
 ms.author: labrenne
-ms.openlocfilehash: b6a9e21157884c86577b498671e4cfd0bc6068cd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ebaa06acf309a0f941b8b4efd76fa4e9e7460810
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020201"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053948"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch ランタイム環境変数
 
@@ -48,7 +48,7 @@ Batch での環境変数の使用に関する詳細については、「[タス�
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | タスクが属する Batch アカウントの名前。                  | すべてのタスク。   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Batch アカウントの URL。 | すべてのタスク。 | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | すべてのアプリ パッケージ環境変数のプレフィックス。 たとえば、アプリケーション "FOO" のバージョン "1" がプールにインストールされる場合、環境変数は AZ_BATCH_APP_PACKAGE_FOO_1 です。 AZ_BATCH_APP_PACKAGE_FOO_1 は、パッケージがダウンロードされた場所 (フォルダー) を示します。 アプリ パッケージの既定のバージョンを使用する場合は、バージョン番号を指定せずに AZ_BATCH_APP_PACKAGE 環境変数を使用します。 | 関連付けられたアプリ パッケージがある任意のタスク。 ノード自体にアプリケーション パッケージがある場合は、すべてのタスクに対しても使用できます。 | AZ_BATCH_APP_PACKAGE_FOO_1 |
+| AZ_BATCH_APP_PACKAGE            | すべてのアプリ パッケージ環境変数のプレフィックス。 たとえば、アプリケーション "FOO" のバージョン "1" がプールにインストールされる場合、環境変数は AZ_BATCH_APP_PACKAGE_FOO_1 (Linux の場合) または AZ_BATCH_APP_PACKAGE_FOO#1 (Windows の場合) です。 AZ_BATCH_APP_PACKAGE_FOO_1 は、パッケージがダウンロードされた場所 (フォルダー) を示します。 アプリ パッケージの既定のバージョンを使用する場合は、バージョン番号を指定せずに AZ_BATCH_APP_PACKAGE 環境変数を使用します。 Linux の場合、アプリケーション パッケージ名が "Agent-Linux-x64" で、バージョンが "1.1.46.0" だとすると、環境名は実際には次のようになります。AZ_BATCH_APP_PACKAGE_agent_linux_x64_1_1_46_0 (アンダースコアと小文字を使用)。 詳細については、[こちら](https://docs.microsoft.com/azure/batch/batch-application-packages#execute-the-installed-applications)を参照してください。 | 関連付けられたアプリ パッケージがある任意のタスク。 ノード自体にアプリケーション パッケージがある場合は、すべてのタスクに対しても使用できます。 | AZ_BATCH_APP_PACKAGE_FOO_1 (Linux) または AZ_BATCH_APP_PACKAGE_FOO # 1 (Windows) |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | Batch サービス操作の制限されたセットへのアクセスを許可する認証トークン。 この環境変数は、[タスクが追加される](/rest/api/batchservice/task/add#request-body)ときに、[authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) が設定された場合のみに存在します。 このトークン値は、[BatchClient.Open() .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_) などの Batch API 内で、Batch クライアントを作成するための資格署名として使用されます。 | すべてのタスク。 | OAuth2 アクセス トークン |
 | AZ_BATCH_CERTIFICATES_DIR       | [ タスク作業ディレクトリ内のディレクトリ][files_dirs]、この中に Linux コンピューティング ノードの証明書が格納される。 この環境変数は Windows コンピューティング ノードに適用されません。                                                  | すべてのタスク。   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | [マルチ インスタンス タスク][multi_instance]に割り当てられているノードのリストを形式 `nodeIP,nodeIP` で示します。 | マルチ インスタンスのプライマリおよびサブタスク。 | `10.0.0.4,10.0.0.5` |
@@ -67,7 +67,7 @@ Batch での環境変数の使用に関する詳細については、「[タス�
 | AZ_BATCH_POOL_ID                | タスクが実行されているプールの ID。 | すべてのタスク。 | batchpool001 |
 | AZ_BATCH_TASK_DIR               | ノード上の[タスク ディレクトリ][files_dirs]の完全パス。 このディレクトリには、タスクの `stdout.txt` と `stderr.txt`、および AZ_BATCH_TASK_WORKING_DIR が含まれます。 | すべてのタスク。 | C:\user\tasks\workitems\batchjob001\job-1\task001 |
 | AZ_BATCH_TASK_ID                | 現在のタスクの ID。 | 開始タスクを除くすべてのタスク。 | task001 |
-| AZ_BATCH_TASK_SHARED_DIR | プライマリ タスクと、[マルチインスタンス タスク][multi_instance]のすべてのサブタスクで同一なディレクトリ パス。 パスは、マルチインスタンス タスクが実行されるすべてのノードで存在し、そのノードで実行されるタスク コマンド ([調整コマンド][coord_cmd]と[アプリケーション コマンド][app_cmd]の両方) に対して読み取りおよび書き込みアクセス可能です。 サブタスクや他のノードで実行されるプライマリ タスクにはこのディレクトリに対するリモート アクセス権がありません (「共有」ネットワーク ディレクトリではありません)。 | マルチ インスタンスのプライマリおよびサブタスク。 | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
+| AZ_BATCH_TASK_SHARED_DIR | プライマリ タスクと、[マルチインスタンス タスク][multi_instance]のすべてのサブタスクで同一なディレクトリ パス。 パスは、マルチインスタンス タスクが実行されるすべてのノードで存在し、そのノードで実行されるタスク コマンド ([調整コマンド][coord_cmd]と[アプリケーション コマンド][app_cmd]の両方) に対して読み取りおよび書き込みアクセス可能です。 他のノードで実行されるサブタスクやプライマリ タスクにはこのディレクトリに対するリモート アクセス権がありません (「共有」ネットワーク ディレクトリではありません)。 | マルチ インスタンスのプライマリおよびサブタスク。 | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
 | AZ_BATCH_TASK_WORKING_DIR       | ノード上の[タスク作業ディレクトリ][files_dirs]の完全パス。 現在実行中のタスクにはこのディレクトリに対する読み取り/書き込みアクセス権があります。 | すべてのタスク。 | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
 | CCP_NODES                       | ノードのリストと、[マルチインスタンス タスク][multi_instance]に割り当てられているノードあたりのコア数。 ノードとコアが `numNodes<space>node1IP<space>node1Cores<space>` の形式で一覧表示されます<br/>`node2IP<space>node2Cores<space> ...`、ノードの番号の後に 1 つまたは複数のノード IP アドレスと、それぞれのコア数が続きます。 |  マルチ インスタンスのプライマリおよびサブタスク。 |`2 10.0.0.4 1 10.0.0.5 1` |
 

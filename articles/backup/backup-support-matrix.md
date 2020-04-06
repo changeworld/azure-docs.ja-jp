@@ -3,12 +3,12 @@ title: Azure Backup のサポート マトリックス
 description: Azure Backup サービスのサポート設定と制限事項の概要を説明します。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 15c2fdfbe63dd73e665a4bac01dd2cd1b1144949
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: d036e527880a98d323e8de2f3a8721d7e12dbb07
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505856"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233867"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -32,10 +32,10 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 --- | ---
 **サブスクリプション内のコンテナー数** | 1 つのサブスクリプションで、最大 500 個の Recovery Services コンテナー。
 **コンテナー内のマシン数** | 1 つのコンテナーで、最大 1,000 台の Azure VM。<br/><br/> 1 つのコンテナーに最大で 50 MABS を登録することができます。
-**コンテナー ストレージ内のデータ ソース量** | 最大 54,400 GB。 Azure VM のバックアップに関する制限はありません。
+**[データ ソース]** | 個々の[データ ソース](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined)の最大サイズは 54,400 GB です。 この制限は、Azure VM のバックアップには適用されません。 コンテナーにバックアップできるデータの総量には、制限は適用されません。
 **コンテナーへのバックアップ回数** | **Azure VM:** 1 日あたり 1 回。<br/><br/>**DPM/MABS で保護されたマシン:** 1 日に 2 回。<br/><br/> **MARS エージェントを使用し直接バックアップされるマシン:** 1 日に 3 回。
 **コンテナー間のバックアップ** | バックアップは 1 つのリージョン内です。<br/><br/> バックアップする VM が含まれるすべての Azure リージョンにコンテナーが必要です。 異なるリージョンにバックアップすることはできません。
-**コンテナーの移動** | 異なるサブスクリプション間で、または同じサブスクリプション内のリソース グループ間で、[コンテナーを移動](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)できます。 ただし、リージョン間でのコンテナーの移動はサポートされていません。
+**コンテナーの移動** | 異なるサブスクリプション間で、または同じサブスクリプション内のリソース グループ間で、[コンテナーを移動](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)できます。 ただし、リージョン間でのコンテナーの移動はサポートされていません。
 **コンテナー間のデータの移動** | コンテナー間でのバックアップ データの移動はサポートされていません。
 **コンテナー ストレージの種類の変更** | コンテナー ストレージのレプリケーションの種類 (geo 冗長ストレージまたはローカル冗長ストレージのいずれか) は、バックアップを格納する前に変更できます。 コンテナーでバックアップが開始された後は、レプリケーションの種類を変更できません。
 
@@ -84,7 +84,7 @@ Linux マシンをバックアップをしたい場合に何がサポートさ�
 
 ## <a name="daylight-saving-time-support"></a>夏時間のサポート
 
-Azure Backup では、Azure VM のバックアップでの夏時間への時計の自動調整はサポートしていません。 必要に応じて手動でバックアップ ポリシーを変更します。
+Azure Backup では、Azure VM のバックアップでの夏時間への時計の自動調整はサポートしていません。 バックアップ時刻の繰り上げや繰り下げは行われません。 バックアップが希望時刻に実行されるようにするには、必要に応じてバックアップ ポリシーを手動で変更してください。
 
 ## <a name="disk-deduplication-support"></a>ディスクの重複除去のサポート
 
@@ -155,8 +155,6 @@ Azure Backup に、データの可用性と回復性の機能を強化するた�
 | MARS エージェント/オンプレミス | いいえ                                                           | 該当なし               |
 | SQL/SAP HANA          | いいえ                                                           | 該当なし               |
 | AFS                    | いいえ                                                           | 該当なし               |
-
-
 
 ## <a name="next-steps"></a>次のステップ
 

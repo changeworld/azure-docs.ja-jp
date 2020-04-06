@@ -4,7 +4,7 @@ description: この記事では、 Azure の組み込み機能を利用した、
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/06/2019
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934740"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224707"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure のデータ セキュリティと暗号化のベスト プラクティス
 この記事では、データ セキュリティと暗号化のベスト プラクティスについて説明します。
@@ -108,7 +108,7 @@ Azure VPN Gateway、SSL/TLS、および HTTPS の使用に固有のベスト プ
 **詳細**: [ポイント対サイト VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) を使用します。
 
 **ベスト プラクティス**: 大規模なデータ セットは、専用の高速 WAN リンク経由で移動する。   
-**詳細**: [ExpressRoute](/azure/expressroute/expressroute-introduction) を使用します。 ExpressRoute を使用する場合、[SSL/TLS](https://support.microsoft.com/kb/257591) などのプロトコルを使用してアプリケーション レベルでデータを暗号化することで、さらに保護を強化できます。
+**詳細**: [ExpressRoute](/azure/expressroute/expressroute-introduction) を使用します。 ExpressRoute を使用する場合、SSL/TLS などのプロトコルを使用してアプリケーション レベルでデータを暗号化することで、さらに保護を強化できます。
 
 **ベスト プラクティス**: Azure portal を通して Azure Storage を操作する。   
 **詳細**: すべてのトランザクションは HTTPS 経由で行われます。 また、HTTPS 経由で [Storage REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) を使用して [Azure Storage](https://azure.microsoft.com/services/storage/) を操作することもできます。
@@ -128,12 +128,12 @@ Azure VPN Gateway、SSL/TLS、および HTTPS の使用に固有のベスト プ
 推奨事項は次のとおりです。
 
 - 組織に [Azure Information Protection をデプロイする](/azure/information-protection/deployment-roadmap)。
-- ビジネス要件を反映しているラベルを適用する。 例: 機密性が高いデータを含むすべてのドキュメントと電子メールに "極秘" という名前のラベルを適用して、このデータを分類して保護します。 その後、承認されたユーザーのみが、指定された制限内でデータにアクセスできます。
+- ビジネス要件を反映しているラベルを適用する。 次に例を示します。機密性が高いデータを含むすべてのドキュメントと電子メールに "極秘" という名前のラベルを適用して、このデータを分類して保護します。 その後、承認されたユーザーのみが、指定された制限内でデータにアクセスできます。
 - [Azure RMS の使用状況ログ](/azure/information-protection/log-analyze-usage)を構成して、組織が保護サービスをどのように使用しているかを監視できるようにします。
 
 [データ分類](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)やファイル保護が不十分な組織は、データ漏洩やデータ誤用のリスクが高くなる可能性があります。 適切なファイル保護を使用すれば、データ フローを分析して、ビジネスの分析情報の取得、危険な行為の検出と是正措置の実行、ドキュメントへのアクセスの追跡などを行うことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](best-practices-and-patterns.md)」を参照してください。
 

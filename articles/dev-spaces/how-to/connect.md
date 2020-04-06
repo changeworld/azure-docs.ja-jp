@@ -1,18 +1,18 @@
 ---
-title: 開発用マシンを AKS クラスターに接続する (プレビュー)
+title: 開発用コンピューターを AKS クラスターに接続する (プレビュー)
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Azure Dev Spaces を使用して AKS クラスターに開発用コンピューターを接続する方法について説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 13e6f16e66941be0ae463e8280827dc0b8183450
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 772f221a8047a71902f36fa98ded6c24b5e02d27
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196095"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235014"
 ---
-# <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>開発用マシンを AKS クラスターに接続する (プレビュー)
+# <a name="connect-your-development-computer-to-an-aks-cluster-preview"></a>開発用コンピューターを AKS クラスターに接続する (プレビュー)
 
 Azure Dev Spaces を使用すると、開発用コンピューター上のコンテナーの有無にかかわらずコードを実行およびデバッグできるだけでなく、残りのアプリケーションやサービスを使用して Kubernetes クラスターに接続できます。 開発用コンピューターをクラスターに接続すると、Docker または Kubernetes の構成を作成しなくても、アプリケーションを短期間で開発し、エンドツーエンドのテストを実行できます。 同じクラスターを使用している他のワークロードやユーザーに影響を与えずに、AKS クラスターに接続することもできます。
 
@@ -42,9 +42,9 @@ Azure Dev Spaces では、接続された AKS クラスターと開発用コン�
 * [Azure Dev Spaces][azds-vs-code] 拡張機能がインストールされ、MacOS または Windows 10 で実行されている [Visual Studio Code][vs-code]。
 * [Azure Dev Spaces 自転車共有サンプル アプリケーション](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp)または AKS クラスターで実行している独自のアプリケーション。
 
-## <a name="connect-your-development-machine"></a>開発用コンピューターを接続する
+## <a name="connect-your-development-computer"></a>開発用コンピューターを接続する
 
-Visual Studio Code で *dev-spaces/samples/BikeSharingApp/Bikes* を開き、Azure Dev Spaces 拡張機能を使用し、開発用コンピューターを AKS クラスターに接続します。
+Visual Studio Code で *dev-spaces/samples/BikeSharingApp/Bikes* を開き、Azure Dev Spaces 拡張機能を使用して、開発用コンピューターを AKS クラスターに接続します。
 
 Azure Dev Spaces 拡張機能を使用するには、 *[表示]* 、 *[コマンド パレット]* の順にクリックし、Visual Studio Code でコマンド パレットを開きます。 「`Azure Dev Spaces: Redirect`」の入力を開始して、`Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]`、`Azure Dev Spaces: Redirect an existing Kubernetes pod to my machine [Preview]`、`Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]` をクリックします。
 
@@ -64,7 +64,7 @@ Azure Dev Spaces 拡張機能を使用するには、 *[表示]* 、 *[コマン
 
 このオプションでは、特定のポッドに接続されます。 このオプションは、トラフィックを送受信しないポッドとのやりとりや、終了したポッドのレプリケートに便利です。 ポッドでトラフィックが送受信されない場合、このオプションは `Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]` と同じように動作し、選択したポッドのサービスに関連するすべてのポッドについて、AKS クラスターのすべてのトラフィックがリダイレクトされます。
 
-`Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]` を実行する場合、既存のポッドまたはサービスを選択するように求められません。 このオプションでは、開発用コンピューター上で実行されているアプリケーションから AKS クラスターに外向きのすべてのトラフィックがリダイレクトされます。
+`Azure Dev Spaces: Redirect a new Kubernetes pod to my machine [Preview]` を実行する場合、既存のポッドまたはサービスを選択するように求められません。 このオプションでは、開発用コンピューター上で実行されているアプリケーションから AKS クラスターに送信トラフィックがすべてリダイレクトされます。
 
 たとえば、`Azure Dev Spaces: Redirect an existing Kubernetes service to my machine [Preview]` を選択し、*自転車*サービスを選択します。
 
@@ -74,7 +74,7 @@ Azure Dev Spaces 拡張機能を使用するには、 *[表示]* 、 *[コマン
 
 ![置換または複製](../media/how-to-connect/connect-replace-clone.png)
 
-*[置換]* オプションでは、AKS クラスターの現在のポッドまたはサービスが置換され、そのサービスのトラフィックがすべて、開発用コンピューターにリダイレクトされます。 このオプションは、AKS クラスター内のサービスで、リダイレクト対象のサービスとやりとりする他のサービスを妨害する可能性があります。妨害されたサービスは、開発用コンピューターでアプリケーションを起動するまで機能しないことがあります。 *[複製]* オプションでは、開発用コンピューターにポッドまたはサービスのトラフィックをリダイレクトする目的で既存の子 Dev Space (開発空間) を選択するか、新しい子 Dev Space を作成できます。 このオプションでは、隔離状態で作業することが可能であり、他のサービスを妨害しません。その子 Dev Space 宛てのトラフィックのみが開発用コンピューターにリダイレクトされるためです。 *[複製]* オプションを使用するには、AKS クラスターで Azure Dev Spaces を有効にする必要があります。
+*[置換]* オプションでは、AKS クラスターの現在のポッドまたはサービスが置換され、そのサービスのトラフィックがすべて、開発用コンピューターにリダイレクトされます。 このオプションにより、AKS クラスター内のサービスのうち、リダイレクト対象のサービスとやりとりする他のサービスが悪影響を受ける可能性があり、開発用コンピューターでアプリケーションが起動されるまで機能しないことがあります。 *[複製]* オプションでは、開発用コンピューターにポッドまたはサービスのトラフィックをリダイレクトする目的で既存の子開発スペースを選択するか、新しい子開発スペースを作成できます。 このオプションを使用すると、その子開発スペースへのトラフィックのみが開発用コンピューターにリダイレクトされるため、隔離状態で作業でき、他のサービスを妨害しません。 *[複製]* オプションを使用するには、AKS クラスターで Azure Dev Spaces を有効にする必要があります。
 
 この例では、 *[置換]* を選択します。
 
@@ -89,10 +89,10 @@ Azure Dev Spaces 拡張機能を使用するには、 *[表示]* 、 *[コマン
 
 ### <a name="confirm-you-are-connected"></a>接続されていることを確認する
 
-アプリケーションの TCP ポートを選択すると、Azure Dev Spaces により、AKS クラスターへの接続が確立されます。 Azure Dev Spaces によりエージェントが AKS クラスターに挿入され、AKS クラスターと開発用コンピューターの間でトラフィックがリダイレクトされます。 この接続の確立には数分かかることがあります。 Azure Dev Spaces からはまた、開発用コンピューターの*ホスト* ファイルを変更する目的で、管理者アクセスが要求されます。
+アプリケーションの TCP ポートを選択すると、Azure Dev Spaces により、AKS クラスターへの接続が確立されます。 Azure Dev Spaces によりエージェントが AKS クラスターに挿入され、AKS クラスターと開発用コンピューターの間でトラフィックがリダイレクトされます。 この接続の確立には数分かかることがあります。 また、開発用コンピューターの *hosts* ファイルを変更するために Azure Dev Spaces から管理者アクセスが要求されます。
 
 > [!IMPORTANT]
-> Azure Dev Spaces で AKS クラスターへの接続が確立されても、接続モードに *[置換]* が選択された場合、AKS クラスターの他のサービスは、開発用コンピューターでサービスを開始するまで、正しく機能しない可能性があります。 代わりに *[複製]* 接続モードを選択することで、リダイレクト用に子 Dev Space を作成し、親 Space の混乱を回避できます。 また、開発用コンピューターで利用できない依存関係がサービスに含まれているとき、場合によっては、アプリケーションを変更したり、[追加で構成](#additional-configuration)したりする必要があります。
+> Azure Dev Spaces で AKS クラスターへの接続が確立されると、 *[置換]* 接続モードを選択した場合、AKS クラスターの他のサービスは、開発用コンピューターでユーザーがそのサービスを開始するまで正しく機能しない可能性があります。 代わりに *[複製]* 接続モードを選択することで、リダイレクト用に子 Dev Space を作成し、親 Space の混乱を回避できます。 また、開発用コンピューターで利用できない依存関係がサービスに含まれているとき、場合によっては、アプリケーションを変更したり、[追加で構成](#additional-configuration)したりする必要があります。
 
 AKS クラスターへの接続が確立されると、Azure Dev Spaces により、「*AZDS Connect - Bikes*」というタイトルのターミナル ウィンドウが開きます。 このターミナル ウィンドウには、AKS クラスターから構成されたあらゆる環境変数と DNS エントリが与えられます。 このターミナル ウィンドウで、あるいは Visual Studio Code デバッガーを使用することで実行するあらゆるコードが AKS クラスターに接続されます。
 
@@ -108,7 +108,7 @@ Azure Dev Spaces には、接続状態を示すステータス バー項目も�
 
 ステータス バーに *Dev Spaces:Connected to dev/bikes on local port 3000* と表示されていることを確認します。
 
-### <a name="configure-your-application-on-your-development-machine"></a>開発用コンピューターでアプリケーションを構成する
+### <a name="configure-your-application-on-your-development-computer"></a>開発用コンピューターでアプリケーションを構成する
 
 *AZDS Connect - Bikes* ターミナル ウィンドウを開き、`npm install` を実行します。
 
@@ -151,7 +151,7 @@ $ npm install
   }
 ```
 
-### <a name="start-your-application-on-your-development-machine"></a>開発用コンピューターでアプリケーションを開始する
+### <a name="start-your-application-on-your-development-computer"></a>開発用コンピューターでアプリケーションを開始する
 
 左にある *[デバッグ]* アイコンをクリックし、上にある *[NPM による起動]* の横にある [開始] ボタンをクリックします。
 
@@ -202,37 +202,43 @@ Azure Dev Spaces ステータス バーをクリックし、アプリケーシ�
 
 ## <a name="additional-configuration"></a>追加構成
 
-Azure Dev Spaces では、ルーティング トラフィックを処理し、追加の構成なしで環境変数をレプリケートできます。 ConfigMap ファイルなど、マウントされているファイルを AKS クラスターのコンテナーにダウンロードする必要がある場合、`azds-local.env` を作成し、開発用コンピューターにそれらのファイルをダウンロードできます。
+Azure Dev Spaces では、ルーティング トラフィックを処理し、追加の構成なしで環境変数をレプリケートできます。 ConfigMap ファイルなど、AKS クラスターのコンテナーにマウントされているファイルをダウンロードする必要がある場合、`azds-local.env` を作成し、開発用コンピューターにそれらのファイルをダウンロードできます。
 
 例 `azds-local.env` を以下に示します。
 
 ```
 # This downloads the "whitelist" volume from the container,
-# saves it to a temporary directory on your development machine,
+# saves it to a temporary directory on your development computer,
 # and sets the full path to an environment variable called WHITELIST_PATH.
 
 WHITELIST_PATH=${volumes.whitelist}/whitelist
 
 # This downloads a file from the container's 'default-token-<any>' mount directory 
-# to /var/run/secrets/kubernetes.io/serviceaccount on your development machine.
+# to /var/run/secrets/kubernetes.io/serviceaccount on your development computer.
 
 KUBERNETES_IN_CLUSTER_CONFIG_OVERWRITE=${volumes.default-token-*|/var/run/secrets/kubernetes.io/serviceaccount}
 
 
-# This makes the myapp1 service available to your development machine
+# This makes the myapp1 service available to your development computer
 # regardless of the AKS cluster you are connected to and
 # sets the local IP to an environment variable called MYAPP1_SERVICE_HOST.
-
-MYAPP1_SERVICE_HOST=${services.myapp1}
 
 # If the myapp1 service is made available in this way, 
 # you can also access it using "myapp1" and "myapp1.svc.cluster.local"
 # in addition to the IP in the MYAPP1_SERVICE_HOST environment variable.
+
+MYAPP1_SERVICE_HOST=${services.myapp1}
+
+# This makes the service myapp2 in namespace mynamespace available to your 
+# development computer regardless of the AKS cluster you are connected to and
+# sets the local IP to an environment variable called MYAPP2_SERVICE_HOST.
+
+MYAPP2_SERVICE_HOST=${services.mynamespace.myapp2}
 ```
 
 ## <a name="using-logging-and-diagnostics"></a>ログ記録と診断の使用
 
-開発マシンを AKS クラスターに接続した後、*Dev Spaces Connect* ウィンドウにログ出力が書き込まれます。
+開発用コンピューターを AKS クラスターに接続した後、*Dev Spaces Connect* ウィンドウにログ出力が書き込まれます。
 
 ![出力](../media/how-to-connect/connect-output.png)
 
@@ -240,7 +246,7 @@ Azure Dev Spaces のステータス バーをクリックし、 *[診断情報�
 
 ![診断付きの出力](../media/how-to-connect/connect-output-diagnostics.png)
 
-また、この診断ログは、ご利用の[開発マシンの *TEMP* ディレクトリ][azds-tmp-dir]にある `Azure Dev Spaces` ディレクトリで見つけることができます。
+また、この診断ログは、ご利用の[開発用コンピューターの *TEMP* ディレクトリ][azds-tmp-dir]にある `Azure Dev Spaces` ディレクトリにあります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,23 +1,23 @@
 ---
 title: 準拠していないリソースを修復する
 description: このガイドでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
-ms.date: 09/09/2019
+ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: e3db0f5f8ae1be4a6ab6eb281801958bfb816228
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 71af5c81e0dce4d5c0a0461534f634db36bd66a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544183"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471389"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
-**deployIfNotExists** や **modify** に準拠していないリソースは､**修復**を使って準拠状態にすることができます。 修復は､既存のリソースに割り当てられているポリシーの **deployIfNotExists** 効果やタグ**操作**を実行するように Azure Policy に指示することによって実行されます。 この記事では、Azure Policy による修復を理解して実行するために必要な手順を示します。
+**deployIfNotExists** や **modify** に準拠していないリソースは､**修復**を使って準拠状態にすることができます。 修復は､既存のリソースに割り当てられているポリシーの **deployIfNotExists** 効果やタグ **operations** を実行するように Azure Policy に指示することによって実行されます。その割り当てが、管理グループ、サブスクリプション、リソース グループ、または個々のリソースのいずれに対するものかは関係ありません。 この記事では、Azure Policy による修復を理解して実行するために必要な手順を示します。
 
 ## <a name="how-remediation-security-works"></a>修復のセキュリティの仕組み
 
 **deployIfNotExists** ポリシー定義にあるテンプレートを実行するとき､Azure Policy では[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) が使用されます｡
-マネージド ID は Azure Policy によって各割り当てに対して作成されますが、どのようなロールをマネージド ID に付与するかについての詳細が必要です。 管理対象 ID にロールが存在しない場合、そのポリシーまたはイニシアチブの割り当て中にこのエラーが表示されます。 ポータルを使用している場合、割り当てが開始されると、Azure Policy によって、示されているロールのすべてが自動的にマネージド ID に付与されます。
+マネージド ID は Azure Policy によって各割り当てに対して作成されますが、どのようなロールをマネージド ID に付与するかについての詳細が必要です。 管理対象 ID にロールが存在しない場合、そのポリシーまたはイニシアチブの割り当て中にこのエラーが表示されます。 ポータルを使用している場合、割り当てが開始されると、Azure Policy によって、示されているロールが自動的にマネージド ID に付与されます。 マネージド ID の "_場所_" は、Azure Policy による操作に影響を与えません。
 
 ![管理対象 ID - ロールが存在しない](../media/remediate-resources/missing-role.png)
 

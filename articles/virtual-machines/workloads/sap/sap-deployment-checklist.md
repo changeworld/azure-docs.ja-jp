@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c3c52fc85e6c915587db27a3f5ce247fd05ea51
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 7b8c1b0bcc74d73f1f869972488ba7c5dfe610d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598325"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060065"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -158,13 +158,13 @@ ms.locfileid: "77598325"
             -   [SAP サポート ノート #2791572 - Azure で Hyper-V に対する VDSO サポートがないため、パフォーマンスが低下する](https://launchpad.support.sap.com/#/notes/2791572)
             -   [SAP サポート ノート #2382421 - HANA および OS レベルでのネットワーク構成の最適化](https://launchpad.support.sap.com/#/notes/2382421)
             -   [SAP サポート ノート #2694118 - Azure での Red Hat Enterprise Linux HA アドオン](https://launchpad.support.sap.com/#/notes/2694118)
-            -   [SAP サポート ノート #1984787 – SUSE Linux Enterprise Server 12: インストールに関する注意事項](https://launchpad.support.sap.com/#/notes/1984787)
+            -   [SAP サポート ノート #1984787 - SUSE LINUX Enterprise Server 12: インストールに関する注意事項](https://launchpad.support.sap.com/#/notes/1984787)
             -   [SAP support note #2002167 - Red Hat Enterprise Linux 7.x: インストールとアップグレード](https://launchpad.support.sap.com/#/notes/0002002167)
             -   [SAP support note #2292690 - SAP HANA DB:Recommended OS settings for RHEL 7 (SAP HANA DB: RHEL 7 に推奨される OS 設定)](https://launchpad.support.sap.com/#/notes/0002292690)
             -   [SAP サポート ノート #2772999 - Red Hat Enterprise Linux 8.x: インストールと構成](https://launchpad.support.sap.com/#/notes/2772999)
             -   [SAP サポート ノート #2777782 - SAP HANA DB: RHEL 8 に推奨される OS 設定](https://launchpad.support.sap.com/#/notes/2777782)
             -   [SAP サポート ノート #2578899 - SUSE Linux Enterprise Server 15: インストールに関する注意事項](https://launchpad.support.sap.com/#/notes/2578899)
-            -   [SAP サポート ノート # https://launchpad.support.sap.com/#/notes/0002455582)(https://launchpad.support.sap.com/#/notes/0002455582)
+            -   [SAP サポート ノート #2455582 - Linux:GCC 6.x でコンパイルされた SAP アプリケーションの実行](https://launchpad.support.sap.com/#/notes/0002455582)
             -    [SAP サポート ノート #2729475 - SAP HANA が認定されている Azure VM での "ハイパーバイザーはサポートされていません" というエラーによる HWCCT の障害](https://launchpad.support.sap.com/#/notes/2729475)
 1. 高可用性とディザスター リカバリーの手順をテストします。
    1. VM をシャットダウンするか (Windows ゲスト オペレーティング システム)、オペレーティング システムをパニック モードにすることで (Linux ゲスト オペレーティング システム)、フェールオーバーの状況をシミュレートします。 この手順は、フェールオーバー構成が設計どおりに動作するかどうかを判断するのに役立ちます。
@@ -182,7 +182,7 @@ ms.locfileid: "77598325"
 1. パフォーマンス テスト。 SAP で、SAP のトレースと測定値に基づいて次の比較を行います。
    - 該当する場合は、上位 10 個のオンライン レポートを現在の実装と比較します。
    - 該当する場合は、上位 10 個のバッチ ジョブを現在の実装と比較します。
-   - インターフェイスを使用した SAP システムへのデータ転送を比較します。 オンプレミスから Azure へのように、異なる場所の間で現在転送が行われていることがわかっているインターフェイスに注目します。
+   - インターフェイスを使用した SAP システムへのデータ転送を比較します。 オンプレミスから Azure へのように、異なる場所の間で転送が行われていることがわかっているインターフェイスに注目します。
 
 
 ## <a name="non-production-phase"></a>非運用フェーズ 

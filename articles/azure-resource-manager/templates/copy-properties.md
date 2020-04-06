@@ -3,16 +3,16 @@ title: プロパティの複数のインスタンスを定義する
 description: Azure Resource Manager テンプレートで copy 操作を使用して、リソースのプロパティを作成する際に複数回反復処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: b759389cd1065c399658bd8d0c1ddd263054697c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: e86d38b0e5d2e39d54b3c419b6eebdcda74022db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622857"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258109"
 ---
-# <a name="property-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのプロパティ反復
+# <a name="property-iteration-in-arm-templates"></a>ARM テンプレートでのプロパティの反復処理
 
-この記事では、Azure Resource Manager テンプレートでプロパティの複数のインスタンスを作成する方法について説明します。 テンプレート内のリソースの properties セクションに **copy** 要素を追加することにより、デプロイ時にプロパティの項目数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
+この記事では、Azure Resource Manager (ARM) テンプレートでプロパティの複数のインスタンスを作成する方法について説明します。 テンプレート内のリソースの properties セクションに **copy** 要素を追加することにより、デプロイ時にプロパティの項目数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
 
 [リソース](copy-resources.md)、[変数](copy-variables.md)、および [出力](copy-outputs.md)でもコピーを使用できます。
 
@@ -119,7 +119,7 @@ copy 要素は配列であるため、リソースの複数のプロパティを
 {
   "type": "Microsoft.Network/loadBalancers",
   "apiVersion": "2017-10-01",
-  "name": "examleLB",
+  "name": "exampleLB",
   "properties": {
     "copy": [
       {
@@ -191,11 +191,11 @@ count は負の数値にすることはできません。 Azure PowerShell 2.6 �
 
 ## <a name="next-steps"></a>次のステップ
 
-* チュートリアルについては、「[チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)」を参照してください。
+* チュートリアルを実行するには、「[チュートリアル: ARM テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)」を参照してください。
 * copy 要素のその他の使用方法については、以下を参照してください。
-  * [Azure Resource Manager テンプレートでのリソースの反復](copy-resources.md)
-  * [Azure Resource Manager テンプレートでの変数の反復](copy-variables.md)
-  * [Azure Resource Manager テンプレートでの出力の反復](copy-outputs.md)
-* テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](template-syntax.md)」を参照してください。
-* テンプレートをデプロイする方法については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)」を参照してください。
+  * [ARM テンプレートでのリソースの反復処理](copy-resources.md)
+  * [ARM テンプレートでの変数の反復処理](copy-variables.md)
+  * [ARM テンプレートでの出力の反復処理](copy-outputs.md)
+* テンプレートのセクションについては、[ARM テンプレートの作成](template-syntax.md)に関する記事を参照してください。
+* テンプレートをデプロイする方法については、[ARM テンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関する記事を参照してください。
 

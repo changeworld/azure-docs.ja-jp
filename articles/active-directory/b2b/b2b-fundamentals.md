@@ -12,15 +12,18 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e17e0f1f01e836a7a240100c1c0e1f015da5f00
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 54f5721ef606b6ea916f5a00031c58f5e2adeb0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368154"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050843"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B のベスト プラクティス
 この記事には、Azure Active Directory (Azure AD) での企業間 (B2B) コラボレーションに関する推奨事項とベストプラクティスが含まれています。
+
+   > [!IMPORTANT]
+   > **2021 年 3 月 31 日以降**、Microsoft は、B2B コラボレーションのシナリオで管理されていない Azure AD アカウントとテナントを作成することによる、招待の引き換えをサポートしなくなります。 準備として、お客様は、[電子メール ワンタイム パスコード認証](one-time-passcode.md)をオプトインすることをお勧めします。 さらに多くの方法で共同作業を行うことができるように、このパブリック プレビュー機能についてフィードバックをお待ちしております。
 
 ## <a name="b2b-recommendations"></a>B2B の推奨事項
 | 推奨 | 説明 |

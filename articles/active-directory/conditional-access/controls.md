@@ -5,45 +5,29 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 02/25/2020
+ms.date: 03/18/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb
+ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fff08690eb2807fbbd50f297761c57d3fef88fe
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: f8c149279a755eb186a3fdc7891e9b511d18c7f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78671844"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050546"
 ---
 # <a name="custom-controls-preview"></a>カスタム コントロール (プレビュー)
 
-カスタム コントロールは、Azure Active Directory Premium P1 エディションの機能です。 カスタム コントロールを使用すると、Azure Active Directory の外部でさらなる要件を満たすために、ユーザーが互換性のあるサービスにリダイレクトされます。 このコントロールを満たすために、ユーザーのブラウザーは外部サービスにリダイレクトされ、すべての必要な認証または検証アクティビティを実行してから、元の Azure Active Directory にリダイレクトされます。 Azure Active Directory は応答を検証し、ユーザーが正常に認証または検証された場合、そのユーザーは条件付きアクセス フロー内にとどまります。
+カスタム コントロールは、Azure Active Directory のプレビュー機能です。 カスタム コントロールを使用すると、Azure Active Directory の外部で認証要件を満たすために、ユーザーが互換性のあるサービスにリダイレクトされます。 このコントロールを満たすために、ユーザーのブラウザーは外部サービスにリダイレクトされ、すべての必要な認証を実行してから、元の Azure Active Directory にリダイレクトされます。 Azure Active Directory は応答を検証し、ユーザーが正常に認証または検証された場合、そのユーザーは条件付きアクセス フロー内にとどまります。
 
-これらのコントロールは、特定の外部サービスまたはカスタム サービスを条件付きアクセス コントロールとして使用できるようにし、一般には条件付きアクセスの機能を拡張します。
-
-現在、互換性のあるサービスを提供しているプロバイダーには次のものがあります。
-
-- [Duo Security](https://duo.com/docs/azure-ca)
-- [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
-- [GSMA](https://mobileconnect.io/azure/)
-- [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
-- [RSA](https://community.rsa.com/docs/DOC-81278)
-- [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
-- [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
-- [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
-- [Thales (Gemalto)](https://resources.eu.safenetid.com/help/AzureMFA/Azure_Help/Index.htm)
-- [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
-
-これらのサービスの詳細については、プロバイダーに直接問い合せてください。
+> [!NOTE]
+> カスタム コントロール機能に関して計画されている変更の詳細については、2020 年 2 月の[新しい更新プログラム](../fundamentals/whats-new.md#upcoming-changes-to-custom-controls)に関する記事をご覧ください。
 
 ## <a name="creating-custom-controls"></a>カスタム コントロールの作成
 
-カスタム コントロールを作成するには、まず利用するプロバイダーに連絡する必要があります。 Microsoft 以外の各プロバイダーには、サインアップ、サブスクライブ、またはサービスの一部になることや、条件付きアクセスとの統合の意思表示について、独自のプロセスと要件があります。 その時点で、プロバイダーからは JSON 形式のデータ ブロックが提供されます。 このデータにより、プロバイダーと条件付きアクセスがユーザーのテナント用に連携して動作できるようになり、新しいコントロールが作成され、ユーザーがプロバイダーの検証を正常に実行した場合は条件付きアクセスからどのように伝えられるかが定義されます。
-
-カスタム コントロールは、多要素認証を必要とする Identity Protection の自動化に使用できず、 Privileged Identity Manager (PIM) でのロールの昇格に使用できません。
+カスタム コントロールを使用できるのは、一部の承認された認証プロバイダーだけです。 カスタム コントロールを作成するには、まず利用するプロバイダーに連絡する必要があります。 Microsoft 以外の各プロバイダーには、サインアップ、サブスクライブ、またはサービスの一部になることや、条件付きアクセスとの統合の意思表示について、独自のプロセスと要件があります。 その時点で、プロバイダーからは JSON 形式のデータ ブロックが提供されます。 このデータにより、プロバイダーと条件付きアクセスがユーザーのテナント用に連携して動作できるようになり、新しいコントロールが作成され、ユーザーがプロバイダーの検証を正常に実行した場合は条件付きアクセスからどのように伝えられるかが定義されます。
 
 その JSON データをコピーし、それを関連するテキスト ボックスに貼り付けます。 自分が行う変更を明示的に理解していない限り、JSON を変更しないでください。 少しでも変更すると、プロバイダーと Microsoft の間の接続が中断され、アカウントからロック アウトされる可能性があります。
 
@@ -66,6 +50,10 @@ ms.locfileid: "78671844"
 ## <a name="editing-custom-controls"></a>カスタム コントロールの編集
 
 カスタム コントロールを編集するには、現在のコントロールを削除し、更新された情報で新しいコントロールを作成する必要があります。
+
+## <a name="known-limitations"></a>既知の制限事項
+
+カスタム コントロールは、Azure Multi-Factor Authentication、Azure AD のセルフサービス パスワード リセット (SSPR)、多要素認証要求の要件を満たすこと、または Privileged Identity Manager (PIM) でのロールの昇格のいずれかを必要とする ID 保護の自動化では使用できません。
 
 ## <a name="next-steps"></a>次のステップ
 

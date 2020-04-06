@@ -3,21 +3,21 @@ title: チュートリアル:Azure portal を介してオンラインで Postgre
 titleSuffix: Azure Database Migration Service
 description: Azure portal を介して Azure Database Migration Service を使用し、オンプレミスの PostgreSQL から Azure Database for PostgreSQL へのオンライン移行を実行する方法について学習します。
 services: dms
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 02/17/2020
-ms.openlocfilehash: 67eced7f647d50733dc8d273bdd9cd8a31b7b6dc
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.date: 03/25/2020
+ms.openlocfilehash: 4985c492c8ca71da87cf1a519ebc658c203d3952
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255498"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246978"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>チュートリアル:Azure portal を介して DMS を使用してオンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
 
@@ -34,7 +34,7 @@ Azure Database Migration Service を使用して、アプリケーションへ�
 > * 一括移行を実行する。
 
 > [!NOTE]
-> Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。
+> Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。 移行プロセス中のデータの盗難を防ぐために、ディスクは暗号化します。
 
 > [!IMPORTANT]
 > 最適な移行エクスペリエンスのために、ターゲット データベースと同じ Azure リージョンに Azure Database Migration Service のインスタンスを作成することをお勧めします。 リージョンや地域をまたいでデータを移動する場合、移行プロセスが遅くなり、エラーが発生する可能性があります。
@@ -116,29 +116,35 @@ Azure Database Migration Service を使用して、アプリケーションへ�
    > スキーマに外部キーがあると、移行の初回の読み込みと継続的同期が失敗します。
 
     ```
-    SELECT Queries.tablename
-           ,concat('alter table ', Queries.tablename, ' ', STRING_AGG(concat('DROP CONSTRAINT ', Queries.foreignkey), ',')) as DropQuery
-                ,concat('alter table ', Queries.tablename, ' ',
-                                                STRING_AGG(concat('ADD CONSTRAINT ', Queries.foreignkey, ' FOREIGN KEY (', column_name, ')', 'REFERENCES ', foreign_table_name, '(', foreign_column_name, ')' ), ',')) as AddQuery
-        FROM
+    SELECT Q.table_name
+        ,CONCAT('ALTER TABLE ', table_schema, '.', table_name, STRING_AGG(DISTINCT CONCAT(' DROP CONSTRAINT ', foreignkey), ','), ';') as DropQuery
+            ,CONCAT('ALTER TABLE ', table_schema, '.', table_name, STRING_AGG(DISTINCT CONCAT(' ADD CONSTRAINT ', foreignkey, ' FOREIGN KEY (', column_name, ')', ' REFERENCES ', foreign_table_schema, '.', foreign_table_name, '(', foreign_column_name, ')' ), ','), ';') as AddQuery
+    FROM
         (SELECT
+        S.table_schema,
+        S.foreignkey,
+        S.table_name,
+        STRING_AGG(DISTINCT S.column_name, ',') AS column_name,
+        S.foreign_table_schema,
+        S.foreign_table_name,
+        STRING_AGG(DISTINCT S.foreign_column_name, ',') AS foreign_column_name
+    FROM
+        (SELECT DISTINCT
         tc.table_schema,
-        tc.constraint_name as foreignkey,
-        tc.table_name as tableName,
+        tc.constraint_name AS foreignkey,
+        tc.table_name,
         kcu.column_name,
         ccu.table_schema AS foreign_table_schema,
         ccu.table_name AS foreign_table_name,
         ccu.column_name AS foreign_column_name
-    FROM
-        information_schema.table_constraints AS tc
-        JOIN information_schema.key_column_usage AS kcu
-          ON tc.constraint_name = kcu.constraint_name
-          AND tc.table_schema = kcu.table_schema
-        JOIN information_schema.constraint_column_usage AS ccu
-          ON ccu.constraint_name = tc.constraint_name
-          AND ccu.table_schema = tc.table_schema
-    WHERE constraint_type = 'FOREIGN KEY') Queries
-      GROUP BY Queries.tablename;
+        FROM information_schema.table_constraints AS tc
+        JOIN information_schema.key_column_usage AS kcu ON tc.constraint_name = kcu.constraint_name AND tc.table_schema = kcu.table_schema
+        JOIN information_schema.constraint_column_usage AS ccu ON ccu.constraint_name = tc.constraint_name AND ccu.table_schema = tc.table_schema
+    WHERE constraint_type = 'FOREIGN KEY'
+        ) S
+        GROUP BY S.table_schema, S.foreignkey, S.table_name, S.foreign_table_schema, S.foreign_table_name
+        ) Q
+        GROUP BY Q.table_schema, Q.table_name;
     ```
 
 5. クエリの結果内の外部キー削除 (2 列目) を実行します。
@@ -149,8 +155,8 @@ Azure Database Migration Service を使用して、アプリケーションへ�
    > データ内のトリガー (insert または update) により、ソースからデータがレプリケートされる前にターゲットにデータの整合性が適用されます。 そのため、移行時は**ターゲットの**すべてのテーブル内のトリガーを無効にし、移行の完了後にトリガーを再度有効にすることをお勧めします。
 
     ```
-    select concat ('alter table ', event_object_table, ' disable trigger ', trigger_name)
-    from information_schema.triggers;
+    SELECT DISTINCT CONCAT('ALTER TABLE ', event_object_schema, '.', event_object_table, ' DISABLE TRIGGER ', trigger_name, ';')
+    FROM information_schema.triggers
     ```
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する

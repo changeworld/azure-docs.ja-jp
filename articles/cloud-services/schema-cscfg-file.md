@@ -1,5 +1,6 @@
 ---
 title: Azure Cloud Services 定義スキーマ (.cscfg ファイル) | Microsoft Docs
+description: サービス構成 (.cscfg) ファイルでは、ロールごとに配置するロール インスタンスの数、構成値、およびロールの証明書のサムプリントを指定します。
 services: cloud-services
 ms.custom: ''
 ms.date: 12/07/2016
@@ -8,12 +9,12 @@ ms.topic: reference
 caps.latest.revision: 35
 author: tgore03
 ms.author: tagore
-ms.openlocfilehash: 71c0bb1b09d480a05a9e5a54b269d0da8fde5bc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449114"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534747"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services 構成のスキーマ (.cscfg ファイル)
 サービス構成ファイルは、サービスのロールごとに配置するロール インスタンスの数、すべての構成設定の値、ロールに関連付けられているすべての証明書のサムプリントを指定します。 サービスが仮想ネットワークの一部である場合は、仮想ネットワーク構成ファイルだけでなく、サービス構成ファイルでネットワークの構成情報を指定してください。 サービス構成ファイルの既定の拡張子は .cscfg です。
@@ -50,12 +51,12 @@ ms.locfileid: "75449114"
 ## <a name="service-configuration-namespace"></a>サービス構成名前空間
 サービス構成ファイルの XML 名前空間は、次のとおりです。`http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration`
 
-##  <a name="ServiceConfiguration"></a>ServiceConfiguration 要素
+##  <a name="serviceconfiguration-element"></a><a name="ServiceConfiguration"></a>ServiceConfiguration 要素
 `ServiceConfiguration` 要素は、サービス構成ファイルの最上位の要素です。
 
 以下の表に、`ServiceConfiguration` 要素の属性を示します。 すべての属性値は、文字列型です。
 
-| Attribute | 説明 |
+| 属性 | 説明 |
 | --------- | ----------- |
 |serviceName|必須。 クラウド サービスの名前。 ここで与えられた名前は、サービス定義ファイルで指定された名前と一致する必要があります。|
 |osFamily|省略可能。 クラウド サービスのロール インスタンスで実行されるゲスト OS を指定します。 サポートされるゲスト OS のリリース版については、「[Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)」をご覧ください。<br /><br /> `osFamily` 値を含めず、特定のゲスト OS バージョンについて `osVersion` 属性を設定していない場合、既定値 1 が使用されます。|

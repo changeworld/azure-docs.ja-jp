@@ -3,12 +3,12 @@ title: Azure Advisor を使用してサービス コストを削減する
 description: Azure Advisor を使用して、Azure のデプロイにかかるコストを最適化します。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: afa5a4068d2ec5f4730d261801760fe68d7a330e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443126"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229691"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor を使用してサービス コストを削減する
 
@@ -47,9 +47,12 @@ Azure Advisor は、繰り返し障害が発生している Azure Data Factory �
 ## <a name="use-standard-snapshots-for-managed-disks"></a>マネージド ディスクに Standard スナップショットを使用する
 コストの 60% を節約するために、親ディスクのストレージの種類には関係なく、スナップショットを Standard Storage に格納することをお勧めします。 このオプションは、マネージド ディスクのスナップショットの既定オプションです。 Azure Advisor は、Premium Storage に格納されているスナップショットを識別し、スナップショットを Premium Storage から Standard Storage に移行することを推奨します。 [マネージド ディスクの価格](https://aka.ms/aa_manageddisksnapshot_learnmore)の詳細を確認してください。
 
+## <a name="utilize-lifecycle-management"></a>ライフサイクル管理を使用する
+Azure Advisor は、Azure BLOB ストレージのオブジェクト数、合計サイズ、およびトランザクションに関するインテリジェンスを利用して、ライフサイクル管理でデータを階層化できるようにするために 1 つ以上のストレージ アカウントが最適かどうかを検出します。 アプリケーションの互換性のために Azure BLOB ストレージにご自身のデータを保持しながらストレージ コストを最適化するために、ライフサイクル管理ルールを作成してデータをクールまたはアーカイブに自動的に階層化するように求めるメッセージが表示されます。
+
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Advisor のコストに関する推奨事項にアクセスする方法
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 任意のページから [ **[Advisor]** ](https://aka.ms/azureadvisordashboard) を検索して選択します。
 

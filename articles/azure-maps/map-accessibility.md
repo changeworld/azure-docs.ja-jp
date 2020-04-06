@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: b0d9437b10bc54aac481eb630f12a2b99d2360a1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 5fa9e159fa0ac76ce8c585936059fb7f3151c7c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672465"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473321"
 ---
 # <a name="building-an-accessible-application"></a>アクセス可能なアプリケーションをビルド
 
@@ -41,7 +41,7 @@ Azure Maps Web SDK には、次のような多くのユーザー補助機能が�
 - マウスを使用してホイールをスクロールし、マップを拡大縮小します。
 - タッチスクリーンを使用して 2 本の指でマップをタッチし、指でつまむようにすると縮小し、指を広げると拡大します。
 - タッチスクリーンを使用してマップをダブルタップし、1 レベル分拡大します。
-- マップにフォーカスがある状態でプラス記号 (`+`) または * 等号 (`=`) を使用して、1 レベル分拡大します。
+- マップにフォーカスがある状態でプラス記号 (`+`) または等号 (`=`) を使用して、1 レベル分拡大します。
 - マップにフォーカスがある状態でマイナス記号、ハイフン (`-`)、またはアンダースコア (`_`) を使用して、1 レベル分縮小します。
 - マウス、タッチ、またはキーボードの Tab キーか Enter キーでズーム コントロールを使用します。
 - マップ上で、`Shift` ボタンを押したままマウスの左ボタンを押しながらドラッグし、マップを拡大する領域を描きます。

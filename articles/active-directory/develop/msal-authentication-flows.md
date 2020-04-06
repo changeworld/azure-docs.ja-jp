@@ -13,12 +13,12 @@ ms.date: 01/30/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ace636152f6a0c9bf3896860eb17cc291bef2887
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 25c219bedbbbec9fbc0c5617c7bd9fc482faf49a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377259"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050511"
 ---
 # <a name="authentication-flows"></a>認証フロー
 
@@ -151,7 +151,7 @@ MSAL では、ユーザーがスマート TV、IoT デバイス、プリンタ�
 
 前の図で:
 
-1. ユーザー認証が必要になるたびに、アプリがコードを提供し、ユーザーに別のデバイス (インターネットに接続されたスマートフォンなど) を使用して特定の URL (たとえば、 https://microsoft.com/devicelogin) ) に移動するよう求めます。 その後、ユーザーはコードの入力を求められ、必要に応じて、同意のプロンプトや多要素認証を含む通常の認証エクスペリエンスが実行されます。
+1. ユーザー認証が必要になるたびに、アプリがコードを提供し、ユーザーに別のデバイス (インターネットに接続されたスマートフォンなど) を使用して特定の URL (たとえば、`https://microsoft.com/devicelogin`) に移動するよう求めます。 その後、ユーザーはコードの入力を求められ、必要に応じて、同意のプロンプトや多要素認証を含む通常の認証エクスペリエンスが実行されます。
 
 2. 認証が成功すると、コマンドライン アプリはバック チャネル経由で必要なトークンを受信し、それらを使用して必要な Web API の呼び出しを実行します。
 

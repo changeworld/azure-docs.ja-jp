@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 7b084954cb53d19739a0f633661e0c76fa82dd13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fc63de4057def632d3ac1980e8cb3eaedbff2175
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820936"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500745"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Azure SQL Database の単一データベースとは
 
@@ -37,7 +37,7 @@ ms.locfileid: "73820936"
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
 
-組み込みの[パフォーマンス監視](sql-database-performance.md)および[アラート ツール](sql-database-insights-alerts-portal.md)と、パフォーマンス評価とを組み合わせて使用します。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 さらに、SQL Database では、監視を容易にするための[メトリックと診断ログを出力](sql-database-metrics-diag-logging.md)することができます。
+組み込みの[パフォーマンス監視](sql-database-performance-guidance.md)および[アラート ツール](sql-database-insights-alerts-portal.md)と、パフォーマンス評価とを組み合わせて使用します。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 さらに、SQL Database では、監視を容易にするために[メトリックとリソース ログを出力する](sql-database-metrics-diag-logging.md)ことができます。
 
 ## <a name="availability-capabilities"></a>可用性に関する機能
 
@@ -50,14 +50,14 @@ ms.locfileid: "73820936"
 
 詳細については、「[SQL Database への移行時に Transact-SQL の相違点を解決する](sql-database-transact-sql-information.md)」を参照してください。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 SQL Database は、アプリケーションがさまざまなセキュリティとコンプライアンスの要件を満たすために役立つ、幅広い[組み込みのセキュリティとコンプライアンス](sql-database-security-overview.md)の機能を備えています。
 
 > [!IMPORTANT]
 > Azure SQL Database (すべてのデプロイ オプション) は、さまざまなコンプライアンス標準に対して認定されています。 詳細については、[Microsoft Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)に関するページを参照してください。ここから最新の SQL Database コンプライアンス証明書の一覧を入手できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 単一データベースをすぐに使い始めるには、[単一データベースのクイック スタート ガイド](sql-database-single-database-quickstart-guide.md)から始めてください。
 - SQL Server データベースを Azure に移行する方法については、「[Azure SQL Database に移行](sql-database-single-database-migrate.md)」を参照してください。

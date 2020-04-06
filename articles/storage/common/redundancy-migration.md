@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 14ad6dbf139b34f501e0b0ea8c16d8570b2ace5b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 5c37dbdc34138faab8adae6ad18252c18a75cad4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212568"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80337084"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>ストレージ アカウントがレプリケートされる方法を変更する
 
@@ -44,6 +44,9 @@ Azure Storage には、以下の種類のレプリケーションが用意され
 | <b>元: GZRS/RA-GZRS</b> | 手動の移行を実行する | 手動の移行を実行する | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 該当なし |
 
 <sup>1</sup> 1 回限りのエグレス料金が発生します。
+
+> [!CAUTION]
+> (RA-)GRS または (RA-)GZRS アカウントに対して[アカウントのフェールオーバー](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance)を実行した場合は、新しいプライマリ リージョンでローカル冗長になるように構成されます。 そのような LRS アカウントでの ZRS または GZRS へのライブ マイグレーションはサポートされていません。 [手動の移行](https://docs.microsoft.com/azure/storage/common/redundancy-migration#perform-a-manual-migration-to-zrs)を実行する必要があります。
 
 ## <a name="change-the-replication-setting"></a>レプリケーション設定を変更する
 
@@ -127,7 +130,7 @@ Microsoft はお客様のライブ マイグレーションの要求に速やか
     - **[詳細]** : **[詳細]** ボックスには、たとえば、\_\_ リージョンで [LRS、GRS] から ZRS に移行するなどの詳細情報を入力します。
 5. **[次へ]** を選択します。
 6. **[連絡先情報]** ブレードの連絡先情報が正しいことを確認します。
-7. **作成** を選択します。
+7. **［作成］** を選択します
 
 サポート担当者はお客様に連絡し、必要なサポートを提供します。
 

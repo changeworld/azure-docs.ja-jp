@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 42f25c1b66261ac644f015290bed2c7473acbdaa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a02c099871ce9748f4c5f604900a7c4d57bb96b6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422233"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473525"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service のアクセス制限 #
 
@@ -42,7 +42,7 @@ Azure Virtual Network (VNet) からご自分の Web アプリへのアクセス�
 
 ## <a name="adding-ip-address-rules"></a>IP アドレス規則の追加
 
-**[[+] 追加]** をクリックすると、新しいアクセス制限の規則を追加できます。 規則は、追加するとすぐに有効になります。 規則は、最も小さい数字から始まり大きい数字に向かって、優先順位順に適用されます。 追加した規則が 1 つであっても、暗黙の "すべて拒否" 規則があります。
+**[[+] ルールの追加]** をクリックすると、新しいアクセス制限の規則を追加できます。 規則は、追加するとすぐに有効になります。 規則は、最も小さい数字から始まり大きい数字に向かって、優先順位順に適用されます。 追加した規則が 1 つであっても、暗黙の "すべて拒否" 規則があります。
 
 規則を作成するときは、許可/拒否だけでなく規則の種類も選択する必要があります。 優先度の値およびアクセス制限対象を指定する必要もあります。  必要に応じて、規則に名前と説明を追加できます。  
 

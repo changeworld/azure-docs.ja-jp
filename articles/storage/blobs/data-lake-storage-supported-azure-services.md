@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/26/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: cb68f1bc851a8573ddec01d1eee803135a11b067
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 0cf8a4a78894cb7f0e1ddcf7aa18bbb4006bbeeb
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195360"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345646"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 がサポートされている Azure のサービス
 
@@ -40,7 +40,8 @@ Azure のサービスを使用して、データを取り込み、分析を実�
 |Power BI| 一般公開|[Power BI を使用して Data Lake Storage Gen2 のデータを分析する](https://docs.microsoft.com/power-query/connectors/datalakestorage)|
 |SQL Data Warehouse|一般公開|[Azure SQL Data Warehouse で使用する](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
 |SQL Server Integration Services (SSIS)|一般公開|[Azure Storage 接続マネージャー](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
-|Azure Cognitive Search| プレビュー|[Azure Data Lake Storage Gen2 ドキュメントのインデックスと検索 (プレビュー)](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
+|Azure Cognitive Search|プレビュー|[Azure Data Lake Storage Gen2 ドキュメントのインデックスと検索 (プレビュー)](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
+|Azure Data Explorer|プレビュー|[Azure Data Explorer を使用して Azure Data Lake でデータのクエリを実行する](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data)|
 |Azure Content Delivery Network|まだサポートされていません|[Azure Data Lake Storage Gen2 ドキュメントのインデックスと検索 (プレビュー)](https://docs.microsoft.com/azure/cdn/cdn-overview)|
 
 

@@ -1,18 +1,18 @@
 ---
-title: 仮想ネットワーク ゲートウェイを Azure Virtual WAN に接続する | Microsoft Docs
+title: 仮想ネットワーク ゲートウェイを Azure Virtual WAN に接続する
 description: この記事は、Azure 仮想ネットワーク ゲートウェイを Azure Virtual WAN VPN ゲートウェイに接続する作業を支援するものです
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1f8e0db9921c305edd2ee34efad22cdcf568f8df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 688183bc07aa14d5e5df182d7de0897cec93f0b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510936"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066232"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (仮想ネットワーク ゲートウェイ) を Virtual WAN に接続する
 
@@ -31,29 +31,29 @@ Azure Virtual WAN
 
 Azure Virtual Network
 
-* 仮想ネットワーク ゲートウェイのない仮想ネットワークを作成します。 オンプレミス ネットワークのどのサブネットも接続先の仮想ネットワークと重複していないことを確認してください。 Azure portal で仮想ネットワークを作成する場合には、[クイックスタート](../virtual-network/quick-create-portal.md)を参照してください。
+* 仮想ネットワーク ゲートウェイのない仮想ネットワークを作成します。 オンプレミス ネットワークのどのサブネットも接続先の仮想ネットワークと重複していないことを確認してください。 Azure portal で仮想ネットワークを作成するには、[クイックスタート](../virtual-network/quick-create-portal.md)を参照してください。
 
-## <a name="vnetgw"></a>1.Azure 仮想ネットワーク ゲートウェイを作成する
+## <a name="1-create-an-azure-virtual-network-gateway"></a><a name="vnetgw"></a>1.Azure 仮想ネットワーク ゲートウェイを作成する
 
 仮想ネットワークのために、アクティブ/アクティブ モードで仮想ネットワークの VPN Gateway 仮想ネットワーク ゲートウェイを作成します。 ゲートウェイを作成する際には、2 つのゲートウェイ インスタンスについて既存のパブリック IP アドレスを使用するか、新しいパブリック IP を作成するかを選ぶことができます。 これらのパブリック IP は、Virtual WAN サイトを設定するときに使用します。 アクティブ/アクティブ モードに関する詳細については、[アクティブ/アクティブ接続の構成](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway)に関するページを参照してください。
 
-### <a name="active-active"></a>アクティブ/アクティブ モードの設定
+### <a name="active-active-mode-setting"></a><a name="active-active"></a>アクティブ/アクティブ モードの設定
 
 ![アクティブ/アクティブ](./media/connect-virtual-network-gateway-vwan/active.png "アクティブ/アクティブ")
 
-### <a name="BGP"></a>BGP の設定
+### <a name="bgp-setting"></a><a name="BGP"></a>BGP の設定
 
 BGP の ASN を 65515 にすることはできません。 66515 は、Azure Virtual WAN が使用します。
 
 ![BGP](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
 
-### <a name="pip"></a>パブリック IP アドレス
+### <a name="public-ip-addresses"></a><a name="pip"></a>パブリック IP アドレス
 
 ゲートウェイを作成する際には、 **[プロパティ]** ページに移動します。 プロパティと構成の設定は、次の例のようになります。 ゲートウェイに使用しているパブリック IP アドレスが 2 つあることに注目してください。
 
 ![properties](./media/connect-virtual-network-gateway-vwan/publicip.png "properties")
 
-## <a name="vwansite"></a>2.Virtual WAN VPN サイトを作成する
+## <a name="2-create-virtual-wan-vpn-sites"></a><a name="vwansite"></a>2.Virtual WAN VPN サイトを作成する
 
 Virtual WAN VPN サイトを作成するには、仮想 WAN に移動し、 **[接続]** の下にある **[VPN サイト]** を選択します。 このセクションでは、前のセクションで作成した仮想ネットワーク ゲートウェイに対応する Virtual WAN VPN サイトを 2 つ作成します。
 
@@ -75,17 +75,17 @@ Virtual WAN VPN サイトを作成するには、仮想 WAN に移動し、 **[�
 5. ここまでの手順をもう一度繰り返して、VPN Gateway 仮想ネットワーク ゲートウェイの 2 つ目のインスタンスに対応するサイトを作成します。 使用する設定は同じですが、パブリック IP アドレスと BGP ピア IP アドレスについては、VPN Gateway の構成にあるもののうち、先ほどと異なる方を使用してください。
 6. これで 2 つのサイトのプロビジョニングが終わったので、次の構成ファイルをダウンロードするセクションに進みます。
 
-## <a name="downloadconfig"></a>3.VPN 構成ファイルをダウンロードする
+## <a name="3-download-the-vpn-configuration-files"></a><a name="downloadconfig"></a>3.VPN 構成ファイルをダウンロードする
 
 このセクションでは、1 つ前のセクションで作成したサイトのそれぞれで使用する VPN 構成ファイルをダウンロードします。
 
 1. Virtual WAN の **[VPN サイト]** ページの上部で、 **[サイト]** 、 **[Download Site-to-site VPN configuration]\(サイト間 VPN 構成をダウンロードする\)** の順に選択します。 Azure により、設定情報を格納した構成ファイルが作成されます。
 
-   ![構成ファイルのダウンロード](./media/connect-virtual-network-gateway-vwan/download.png "ダウンロード")
+   ![構成ファイルのダウンロード](./media/connect-virtual-network-gateway-vwan/download.png "download")
 2. 構成ファイルをダウンロードし、開きます。
 3. 2 つ目のサイトについても、ここまでの手順を繰り返します。 両方の構成ファイルを開いたら、次のセクションに進みます。
 
-## <a name="createlocalgateways"></a>4.ローカル ネットワーク ゲートウェイを作成する
+## <a name="4-create-the-local-network-gateways"></a><a name="createlocalgateways"></a>4.ローカル ネットワーク ゲートウェイを作成する
 
 このセクションでは、Azure VPN Gateway ローカル ネットワーク ゲートウェイを 2 つ作成します。 前の手順で入手した構成ファイルには、ゲートウェイの構成に関する設定が格納されています。 その設定を使用し、Azure VPN Gateway ローカル ネットワーク ゲートウェイを作成および構成していきます。
 
@@ -101,7 +101,7 @@ Virtual WAN VPN サイトを作成するには、仮想 WAN に移動し、 **[�
 
    ![構成ファイルのダウンロード](./media/connect-virtual-network-gateway-vwan/lng2.png "instance1")
 
-## <a name="createlocalgateways"></a>5.接続を作成する
+## <a name="5-create-connections"></a><a name="createlocalgateways"></a>5.接続を作成する
 
 このセクションでは、VPN Gateway ローカル ネットワーク ゲートウェイと仮想ネットワーク ゲートウェイの間の接続を作成します。 VPN Gateway の接続を作成する手順については、[接続の構成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)に関するページを参照してください。
 
@@ -118,10 +118,10 @@ Virtual WAN VPN サイトを作成するには、仮想 WAN に移動し、 **[�
 3. **[OK]** をクリックして、接続を作成します。
 4. 仮想ネットワーク ゲートウェイの **[接続]** ページで接続を確認できます。
 
-   ![Connection](./media/connect-virtual-network-gateway-vwan/connect.png "connection")
+   ![接続](./media/connect-virtual-network-gateway-vwan/connect.png "connection")
 5. 上記の手順をもう一度繰り返して、2 つ目の接続を作成します。 2 つ目の接続については、作成したローカル ネットワーク ゲートウェイのうち、先ほど選択しなかった方を選択します。
 
-## <a name="test"></a>6.テスト接続
+## <a name="6-test-connections"></a><a name="test"></a>6.テスト接続
 
 仮想マシンを 2 台 (1 台は VPN Gateway 仮想ネットワーク ゲートウェイ側に、もう 1 台は Virtual WAN 用の仮想ネットワークに) 作成したうえで、両方の仮想マシンに対して ping を実行すると、接続をテストすることができます。
 
@@ -136,7 +136,7 @@ Virtual WAN VPN サイトを作成するには、仮想 WAN に移動し、 **[�
 4. **[OK]** をクリックして、仮想ネットワーク接続を作成します。
 5. VM の間に接続が設定されます。 ファイアウォールのような通信をブロックするポリシーがない限り、一方の VM からもう一方の VM に対して ping を実行できるはずです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 カスタム IPsec ポリシーを構成する手順については、[Virtual WAN 用のカスタム IPsec ポリシーの構成](virtual-wan-custom-ipsec-portal.md)に関するページを参照してください。
 仮想 WAN の詳細については、「[About Azure Virtual WAN](virtual-wan-about.md)」(Azure Virtual WAN について) および「[Azure Virtual WAN FAQ](virtual-wan-faq.md)」(Azure Virtual WAN のよくあるご質問) を参照してください。

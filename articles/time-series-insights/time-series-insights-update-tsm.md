@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 884244b245be06f1477d27a4828cad18e36eca24
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 648578563a0e53d3ed5bda6ab47f85c3c6a2a24e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368623"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476656"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューの時系列モデル
 
@@ -210,10 +210,10 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 
 | タイム シリーズ ID | インスタンス フィールド |
 | --- | --- |
-| ID1 | "building" = "1000", "floor" = "10", "room" = "55"  |
-| ID2 | "building" = "1000", "room" = "55" |
+| ID1 | "building" = "1000"、"floor" = "10"、"room" = "55"  |
+| ID2 | "building" = "1000"、"room" = "55" |
 | ID3 | "floor" = "10" |
-| ID4 | "building" = "1000", "floor" = "10"  |
+| ID4 | "building" = "1000"、"floor" = "10"  |
 | ID5 | "building"、"floor"、"room" のどれも設定されていない。 |
 
 タイム シリーズ **ID1** と **ID4** は、階層 **H1** の一部として [Azure Time Series Insights エクスプローラー](time-series-insights-update-explorer.md)に表示されます。それは完全に定義され、適切に並べられた *building*、*floor*、および *room* パラメーターを持つためです。
@@ -284,7 +284,7 @@ Time Series Insights 環境に対してイベント ソースが構成される�
 }
 ```
 
-### <a name="variables"></a>変数:
+### <a name="variables"></a>変数
 
 Time Series Insights 型には、イベントに対する式および計算ルールを指定する多数の変数が含まれている場合があります。
 
@@ -344,7 +344,7 @@ Time Series Insights 型には、イベントに対する式および計算ル�
 "Status": {
   "kind": "categorical",
   "value": {
-     "tsx": "toLong($event.[Status].Double)" 
+     "tsx": "toLong($event.[Status].Double)"
 },
   "interpolation": {
     "kind": "step",
@@ -354,7 +354,7 @@ Time Series Insights 型には、イベントに対する式および計算ル�
   },
   "categories": [
     {
-      "values": [0, 1, 2, 3],
+      "values": [0, 1, 2],
       "label": "Good"
     },
     {

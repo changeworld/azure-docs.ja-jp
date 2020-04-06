@@ -3,16 +3,16 @@ title: テンプレート関数
 description: 値の取得、文字列の処理、デプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: a9d10ad4899f35acd45069cb3d351a60632fed3a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207044"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156261"
 ---
-# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager テンプレートの関数
+# <a name="arm-template-functions"></a>ARM テンプレート関数
 
-この記事では、Azure Resource Manager テンプレートで使用できるすべての関数について説明します。 ご自分のテンプレート内で関数を使用する方法の詳細については、[テンプレートの構文](template-expressions.md)に関するセクションを参照してください。
+この記事では、Azure Resource Manager (ARM) テンプレートで使用できるすべての関数について説明します。 ご自分のテンプレート内で関数を使用する方法の詳細については、[テンプレートの構文](template-expressions.md)に関するセクションを参照してください。
 
 独自の関数を作成するには、[ユーザー定義関数](template-syntax.md#functions)に関するページをご覧ください。
 
@@ -228,7 +228,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure リソース マネージャー テンプレートのセクションの説明については、「 [Azure リソース マネージャーのテンプレートの作成](template-syntax.md)
+* ARM テンプレートのセクションについては、[ARM テンプレートの作成](template-syntax.md)に関する記事をご覧ください。
 * 複数のテンプレートをマージするには、 [Azure リソース マネージャーでのリンクされたテンプレートの使用](linked-templates.md)
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](copy-resources.md)」を参照してください。
-* 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関するページを参照してください。
+* 作成したテンプレートをデプロイする方法については、[ARM のテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関する記事をご覧ください。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 994ac88f78dfe5a5b0ee6fef3fa97d66d53c911b
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 96312bac369cfa5fe3cb8a00fd63ecfbec624918
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156694"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80348530"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>クイック スタート:パラメーターを使用してカスタム コマンドを作成する (プレビュー)
 
@@ -36,11 +36,11 @@ ms.locfileid: "76156694"
 
    | 設定            | 推奨値     | 説明                                                                                               |
    | ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------- |
-   | Name               | OnOff               | パラメーターのわかりやすい名前                                                                     |
+   | 名前               | OnOff               | パラメーターのわかりやすい名前                                                                     |
    | Is Global          | チェック解除           | このパラメーターの値がプロジェクトのすべてのコマンドにグローバルで適用されるかどうかを示すチェックボックス |
    | 必須           | チェック             | コマンドを完了する前にこのパラメーターの値を必須とするかどうかを示すチェックボックス          |
    | 応答テンプレート  | "- On or off? (付けますか、消しますか)"      | 理解されていないとき、このパラメーターの値を問うプロンプト                                       |
-   | 種類               | String              | Number、String、Date Time など、パラメーターの型                                               |
+   | Type               | String              | Number、String、Date Time など、パラメーターの型                                               |
    | 構成      | String List         | Strings の場合、String List により入力が一連の指定可能値に限定されます。                                      |
    | 文字列一覧値 | on、off             | String List パラメーターの場合、一連の指定可能値とそのシノニム                                |
 
@@ -48,11 +48,11 @@ ms.locfileid: "76156694"
 
    | 設定            | 推奨値       | 説明                                                                                               |
    | ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------- |
-   | Name               | SubjectDevice         | パラメーターのわかりやすい名前                                                                     |
+   | 名前               | SubjectDevice         | パラメーターのわかりやすい名前                                                                     |
    | Is Global          | チェック解除             | このパラメーターの値がプロジェクトのすべてのコマンドにグローバルで適用されるかどうかを示すチェックボックス |
    | 必須           | チェック               | コマンドを完了する前にこのパラメーターの値を必須とするかどうかを示すチェックボックス          |
    | 応答テンプレート  | "- Which device? (どのデバイスですか?)"     | 理解されていないとき、このパラメーターの値を問うプロンプト                                       |
-   | 種類               | String                | Number、String、Date Time など、パラメーターの型                                               |
+   | Type               | String                | Number、String、Date Time など、パラメーターの型                                               |
    | 構成      | String List           | Strings の場合、String List により入力が一連の指定可能値に限定されます。                                      |
    | 文字列一覧値 | tv、fan               | String List パラメーターの場合、一連の指定可能値とそのシノニム                                |
    | シノニム (tv)      | television、telly     | String List パラメーターの指定可能値別の任意のシノニム                                      |
@@ -91,7 +91,7 @@ turn something
 1. `OnOff` と `SubjectDevice` を使用するように音声応答アクションを編集します。
 
    ```
-   Ok, turning {OnOff} the {SubjectDevice}
+   - Ok, turning {OnOff} the {SubjectDevice}
    ```
 
 ## <a name="try-it-out"></a>試してみる
@@ -111,4 +111,4 @@ turn something
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
-> [クイック スタート: Speech SDK でカスタム コマンド アプリケーションに接続する (プレビュー)](./quickstart-custom-speech-commands-speech-sdk.md)
+> [クイック スタート: カスタム音声でカスタム コマンドを使用する (プレビュー)](./quickstart-custom-speech-commands-select-custom-voice.md)

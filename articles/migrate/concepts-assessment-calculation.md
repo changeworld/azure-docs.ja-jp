@@ -1,68 +1,75 @@
 ---
-title: Azure Migrate での評価
-description: Azure Migrate での評価について説明します。
+title: Azure Migrate Server Assessment での評価
+description: Azure Migrate Server Assessment での評価について説明します
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 0cf933dd1c8c61edfcea20ea954c5813f3848b28
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: ae55686f0152d9c2b170ae1b34d7493ed7ac8d94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425699"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127776"
 ---
-# <a name="about-assessments-in-azure-migrate"></a>Azure Migrate での評価について
+# <a name="assessments-in-azure-migrateserver-assessment"></a>Azure Migrate:Server Assessment での評価
 
-この記事では [Azure Migrate: Server Assessment で評価を計算する方法について説明します。Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) を使用した評価と依存関係の視覚化に関する問題のトラブルシューティングに役立ちます。 オンプレミス マシンのグループに対して評価を実行し、Azure Migrate への移行の準備ができているかどうかを確認します。
+この記事では、[Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) ツールでの評価の概要について説明します。 Server Assessment ツールを使用すると、Azure への移行について、オンプレミスの VMware VM、Hyper-V VM、物理サーバーを評価できます。
 
-## <a name="how-do-i-run-an-assessment"></a>評価を実行する方法
-評価を実行するには、Azure Migrate:Server Assessment、または別の Azure ツールやサードパーティー製ツールを使用できます。 Azure Migrate プロジェクトを作成したら、必要なツールを追加します。 [詳細情報](how-to-add-tool-first-time.md)
+## <a name="whats-an-assessment"></a>評価とは
 
-### <a name="collect-compute-data"></a>コンピューティング データを収集する
+Server Assessment ツールを使用した評価では、オンプレミスのサーバーの Azure への移行の対応性が判定され、その影響が見積もられます。
 
-コンピューティング設定のパフォーマンス データは、次のように収集されます。
+## <a name="types-of-assessments"></a>評価の種類
 
-1. [Azure Migrate アプライアンス](migrate-appliance.md)は、リアルタイムのサンプル ポイントを収集します。
-
-    - **VMware VM**:VMware VM の場合、Azure Migrate アプライアンスは、20 秒間隔ごとにリアルタイムのサンプル ポイントを収集します。
-    - **Hyper-V VM**:Hyper-V VM の場合、リアルタイムのサンプル ポイントは 30 秒間隔で収集されます。
-    - **物理サーバー**:物理サーバーの場合、リアルタイムのサンプル ポイントは 5 分間隔で収集されます。 
-    
-2. アプライアンスは、サンプル ポイント (20 秒、30 秒、5 分) をロール アップして、10 分ごとに 1 つのデータ ポイントを作成します。 1 つのデータ ポイントを作成するために、アプライアンスではすべてのサンプルからピーク値が選択されて、Azure に送信されます。
-3. Server Assessment では、過去 1 か月のすべての 10 分のサンプル ポイントが格納されます。
-4. 評価を作成するときに、Server Assessment は *[パフォーマンス履歴]* と *[百分位数の使用率]* のパーセンタイル値に基づいて、適切なサイズ設定に使用する適切なデータ ポイントを識別します。
-
-    - たとえば、パフォーマンス履歴を 1 週に、百分位数の使用率を 95 番目に設定した場合、Server Assessment では、過去 1 週間の 10 分のサンプル ポイントが昇順で並べ替えられ、正しいサイズ設定のために 95 番目のパーセンタイル値が選択されます。 
-    - 95 番目のパーセンタイル値を設定することにより、99 番目のパーセンタイルを選択した場合に含まれる可能性がある外れ値はすべて無視されるようになります。
-    - 期間中のピーク使用率を選択し、外れ値を見逃さないようにする場合は、パーセンタイル使用率として 99 番目のパーセンタイルを選択する必要があります。
-
-5. この値に快適性係数が乗算されて、アプライアンスが収集する各メトリック (CPU 使用率、メモリ使用率、ディスク IOPS (読み取りと書き込み)、ディスク スループット (読み取りと書き込み)、ネットワーク スループット (インとアウト)) の有効なパフォーマンス使用率データが得られます。
-
-Server Assessment で評価を実行するには、オンプレミスと Azure で評価を準備し、オンプレミスのマシンを継続的に検出するように Azure Migrate アプライアンスを設定します。 マシンが検出されたら、それらをグループにまとめて評価します。 より詳細で信頼性の高い評価を行うために、マシン間の依存関係を視覚化してマップし、移行方法を確認することができます。
-
-- [VMware VM](tutorial-prepare-vmware.md)、[Hyper-V VM](tutorial-prepare-hyper-v.md)、[物理サーバー](tutorial-prepare-physical.md)の評価を実行する方法について説明します。
-- [CSV ファイルでインポート](tutorial-assess-import.md)されたサーバーを評価する方法について説明します。
-- [依存関係の視覚化](concepts-dependency-visualization.md)について説明します。
-
-## <a name="assessments-in-server-assessment"></a>Server Assessment での評価 
-
-Azure Migrate Server Assessment を使用して作成した評価は、特定の時点におけるデータのスナップショットです。 Server Assessment ツールには、2 種類の評価が用意されています。
+Server Assessment を使用して作成した評価は、特定の時点のデータのスナップショットです。 Server Assessment には、2 種類の評価が用意されています。
 
 **評価の種類** | **詳細** | **データ**
 --- | --- | ---
 **パフォーマンスベース** | 収集されたパフォーマンス データに基づいて推奨を行う評価 | VM サイズの推奨値は、CPU とメモリの使用率データに基づきます。<br/><br/> ディスクの種類に関する推奨事項 (標準 HDD/SSD またはプレミアム マネージド ディスク) は、オンプレミス ディスクの IOPS とスループットに基づきます。
 **現状のオンプレミス** | パフォーマンス データを使用せずに推奨を行う評価。 | VM サイズに関する推奨事項は、オンプレミスの VM サイズに基づきます<br/><br> 推奨されるディスクの種類は、評価用に選択されたストレージの種類に基づきます。
 
-## <a name="collecting-performance-data"></a>パフォーマンス データの収集
+## <a name="how-do-i-run-an-assessment"></a>評価を実行する方法
 
-パフォーマンス データは次のように収集されます。
+評価を実行するには、いくつかの方法があります。
 
-1. [Azure Migrate アプライアンス](migrate-appliance.md)は、リアルタイムのサンプル ポイントを収集します。
+- 軽量な Azure Migrate アプライアンスによって収集されたサーバー メタデータを使用してマシンを評価する。 アプライアンスによりオンプレミスのマシンが検出され、マシンのメタデータやパフォーマンス データが Azure Migrate に送信されます。
+- コンマ区切り値 (CSV) 形式でインポートされたサーバー メタデータを使用してマシンを評価する。
 
-    - **VMware VM**:VMware VM の場合、Azure Migrate アプライアンスは、20 秒間隔ごとにリアルタイムのサンプル ポイントを収集します。
-    - **Hyper-V VM**:Hyper-V VM の場合、リアルタイムのサンプル ポイントは 30 秒間隔で収集されます。
-    - **物理サーバー**:物理サーバーの場合、リアルタイムのサンプル ポイントは 5 分間隔で収集されます。 
+## <a name="how-do-i-assess-with-the-appliance"></a>アプライアンスで評価する方法
+
+オンプレミスのサーバーを検出するために Azure Migrate アプライアンスをデプロイする場合は、以下を実行します。
+
+1. Server Assessment と連携するように Azure とオンプレミス環境を設定します。
+2. 最初の評価では、Azure プロジェクトを作成し、それに Server Assessment ツールを追加します。
+3. 軽量の Azure Migrate アプライアンスをデプロイします。 アプライアンスは継続的にオンプレミスのマシンを検出し、マシンのメタデータとパフォーマンス データを Azure Migrate に送信します。 アプライアンスは、VM または物理マシンとしてデプロイされます。 評価対象のマシンには何もインストールする必要はありません。
+4. アプライアンスによるマシンの検出が開始されたら、評価対象のマシンをグループにまとめて、そのグループに対して評価を実行できます。
+
+[VMware](tutorial-prepare-vmware.md)、[Hyper-V](tutorial-prepare-hyper-v.md)、または[物理サーバー](tutorial-prepare-physical.md)向けのチュートリアルに従って、これらの手順を試すことができます。
+
+## <a name="how-do-i-assess-with-imported-data"></a>インポートされたデータを使用して評価する方法
+
+CSV ファイルを使用してサーバーを評価する場合、アプライアンスは不要です。 代わりに、以下を実行します。
+
+1. Server Assessment と連携するように Azure を設定します。
+2. 最初の評価では、Azure プロジェクトを作成し、それに Server Assessment ツールを追加します。
+3. CSV テンプレートをダウンロードし、それにサーバー データを追加します。
+4. テンプレートを Server Assessment にインポートします。
+5. インポートによって追加されたサーバーを検出し、それらをグループにまとめて、そのグループに対して評価を実行します。
+
+## <a name="what-data-does-the-appliance-collect"></a>アプライアンスはどのようなデータを収集しますか。
+
+評価に Azure Migrate アプライアンスを使用する場合は、[VMware](migrate-appliance.md#collected-data---vmware) および [Hyper-V](migrate-appliance.md#collected-data---hyper-v) の場合に収集されるメタデータとパフォーマンス データについて理解します。
+
+## <a name="how-does-the-appliance-calculate-performance-data"></a>アプライアンスでのパフォーマンス データの計算方法
+
+アプライアンスを検出に使用すると、コンピューティング設定のパフォーマンス データは、次のように収集されます。
+
+1. アプライアンスで、リアルタイムのサンプル ポイントが収集されます。
+
+    - **VMware VM**:アプライアンスで、リアルタイムのサンプル ポイントは 20 秒間隔で収集されます。
+    - **Hyper-V VM**:リアルタイムのサンプル ポイントは 30 秒間隔で収集されます。
+    - **物理サーバー**:リアルタイムのサンプル ポイントは 5 分間隔で収集されます。 
     
-2. アプライアンスは、サンプル ポイント (20 秒、30 秒、5 分) をロール アップして、10 分ごとに 1 つのデータ ポイントを作成します。 1 つのデータ ポイントを作成するために、アプライアンスではすべてのサンプルからピーク値が選択されて、Azure に送信されます。
+2. アプライアンスは、サンプル ポイント (20 秒、30 秒、5 分) をロール アップして、10 分ごとに 1 つのデータ ポイントを作成します。 1 つのポイントを作成するために、アプライアンスではすべてのサンプルからピーク値が選択され、Azure に送信されます。
 3. Server Assessment では、過去 1 か月のすべての 10 分のサンプル ポイントが格納されます。
 4. 評価を作成するときに、Server Assessment は *[パフォーマンス履歴]* と *[百分位数の使用率]* のパーセンタイル値に基づいて、適切なサイズ設定に使用する適切なデータ ポイントを識別します。
 
@@ -71,9 +78,23 @@ Azure Migrate Server Assessment を使用して作成した評価は、特定の
     - 期間中のピーク使用率を選択し、外れ値を見逃さないようにする場合は、パーセンタイル使用率として 99 番目のパーセンタイルを選択する必要があります。
 
 5. この値に快適性係数が乗算されて、アプライアンスが収集する各メトリック (CPU 使用率、メモリ使用率、ディスク IOPS (読み取りと書き込み)、ディスク スループット (読み取りと書き込み)、ネットワーク スループット (インとアウト)) の有効なパフォーマンス使用率データが得られます。
+
+
+
+## <a name="how-are-assessments-calculated"></a>評価の計算方法 
+
+Server Assessment での評価は、オンプレミスのマシンのメタデータやパフォーマンス データを使用して計算されます。 Azure Migrate アプライアンスをデプロイした場合は、アプライアンスによって収集されたデータが評価に使用されます。 .CSV ファイルを使用してインポートされたマシンの評価を実行する場合は、計算用のメタデータを指定します。 計算は、次の 3 段階で行われます。
+
+1. **Azure 対応性を計算する**:マシンが Azure への移行に適しているかどうかを評価します。
+2. **サイズ設定に関する推奨事項を計算する**:コンピューティング、ストレージ、ネットワークのサイズ設定を見積もります。 
+2. **毎月のコストを計算する**:移行後に Azure でマシンを実行するためのコンピューティングとストレージの月間推定コストを計算します。
+
+計算は順番に行われ、前の段階で合格したマシン サーバーだけが次の段階に進みます。 たとえば、Azure 対応性に合格しなかったサーバーは、Azure に不適合とマークされ、サイズ設定とコスト計算は行われません。
+
+
 ## <a name="whats-in-an-assessment"></a>評価の内容
 
-Azure Migrate: Server Assessment での評価に含まれる内容は次のとおりです。Server Assessment を使用して作成する方法について説明します。
+Server Assessment での評価に含まれる内容は次のとおりです。
 
 **プロパティ** | **詳細**
 --- | ---
@@ -93,17 +114,6 @@ Azure Migrate: Server Assessment での評価に含まれる内容は次のと�
 **Azure ハイブリッド特典** | ソフトウェア アシュアランスがあり、かつ [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を受ける資格があるかどうかを指定します。 [はい] (既定の設定) に設定すると、Windows VM に Windows Azure 以外の価格は考慮されません。
 
 Server Assessment で評価を作成するための[ベスト プラクティスを確認](best-practices-assessment.md)してください。
-
-## <a name="how-are-assessments-calculated"></a>評価の計算方法 
-
-Azure Migrate:Server Assessment での評価は、オンプレミス マシンについて収集されたメタデータを使って計算されます。 .CSV ファイルを使用してインポートされたマシンに対して評価を実行する場合は、計算用のメタデータを指定します。 計算は、次の 3 段階で行われます。
-
-1. **Azure 対応性を計算する**:マシンが Azure への移行に適しているかどうかを評価します。
-2. **サイズ設定に関する推奨事項を計算する**:コンピューティング、ストレージ、ネットワークのサイズ設定を見積もります。 
-2. **毎月のコストを計算する**:移行後に Azure でマシンを実行するためのコンピューティングとストレージの月間推定コストを計算します。
-
-計算は順番に行われ、前の段階で合格したマシン サーバーだけが次の段階に進みます。 たとえば、Azure 対応性に合格しなかったサーバーは、Azure に不適合とマークされ、サイズ設定とコスト計算は行われません。
-
 
 
 ## <a name="calculate-readiness"></a>対応性を計算する
@@ -153,24 +163,29 @@ Linux | Azure はこれらの [Linux オペレーティング システム](../v
 vCenter Server で **[Other]\(その他\)** と指定された OS | この場合、Azure Migrate は OS を識別できません。 | 対応不明。 VM で実行している OS が Azure でサポートされることを確認します。
 32 ビット オペレーティング システム | マシンは Azure で起動できますが、Azure がフル サポートを提供しない可能性があります。 | Azure に条件付きで対応。 Azure に移行する前に、マシンの OS を 32 ビット OS から 64 ビット OS にアップグレードすることをご検討ください。
 
-## <a name="calculate-sizing-as-is-on-premises"></a>サイズ設定を計算する (現状のオンプレミス)
-
-マシンが Azure に対応することが確認されると、Server Assessment は推奨のサイズ設定を作成して、Azure VM とディスク SKU を特定します。 オンプレミスのサイズ設定を使用する場合、Server Assessment は VM とディスクのパフォーマンス履歴を考慮しません。
-
-**コンピューティングのサイズ設定**:オンプレミスで割り当てられたサイズに基づいて、Azure VM SKU を割り当てます。
-**ストレージ/ディスクのサイズ設定**:Server Assessment は、評価プロパティで指定したストレージの種類 (Standard HDD/SSD/Premium) を確認し、それに応じてディスクの種類を推奨します。 既定のストレージの種類は Premium ディスクです。
-**ネットワークのサイズ設定**:Server Assessment は、オンプレミスのマシン上のネットワーク アダプターを考慮します。
+## <a name="calculating-sizing"></a>サイズ設定の計算
 
 
-## <a name="calculate-sizing-performance-based"></a>サイズを計算する (パフォーマンスベース)
+マシンが Azure に対応することが確認されると、Server Assessment は推奨のサイズ設定を作成して、Azure VM とディスク SKU を特定します。 サイズ設定の計算は、現状のオンプレミスのサイズ設定またはパフォーマンスベースのサイズ設定のどちらを使用するかによって異なります。
 
-マシンが Azure に対応することが確認された後、パフォーマンスベースのサイズ設定を使用する場合、Server Assessment はサイズ設定に関する推奨事項を次のように作成します。
+### <a name="calculate-sizing-as-is-on-premises"></a>サイズ設定を計算する (現状のオンプレミス)
+
+ オンプレミスのサイズ設定を使用する場合、Server Assessment は VM とディスクのパフォーマンス履歴を考慮しません。
+
+- **コンピューティングのサイズ設定**:オンプレミスで割り当てられたサイズに基づいて、Azure VM SKU を割り当てます。
+- **ストレージ/ディスクのサイズ設定**:Server Assessment は、評価プロパティで指定したストレージの種類 (Standard HDD/SSD/Premium) を確認し、それに応じてディスクの種類を推奨します。 既定のストレージの種類は Premium ディスクです。
+- **ネットワークのサイズ設定**:Server Assessment は、オンプレミスのマシン上のネットワーク アダプターを考慮します。
+
+
+### <a name="calculate-sizing-performance-based"></a>サイズを計算する (パフォーマンスベース)
+
+パフォーマンスベースのサイズ設定を使用する場合、Server Assessment は次のように推奨のサイズ設定を作成します。
 
 - Server Assessment はマシンのパフォーマンス履歴を考慮して Azure での VM サイズとディスクの種類を特定します。
 - CSV ファイルを使用してサーバーがインポートされた場合は、指定した値が使用されます。 この方法は、オンプレミスのマシンを割り当て過ぎて使用率が実際に低下した場合に、Azure で VM のサイズを適切に設定してコストを削減したい場合に特に役立ちます。 
 - パフォーマンス データを使用しない場合は、前のセクションで説明したように、サイズ設定条件を現状のオンプレミスにリセットします。
 
-### <a name="calculate-storage-sizing"></a>ストレージのサイズ設定を計算する
+#### <a name="calculate-storage-sizing"></a>ストレージのサイズ設定を計算する
 
 ストレージのサイズ設定では、Azure Migrate は、マシンに接続されているすべてのディスクを Azure のディスクにマップしようとし、次のように動作します。
 
@@ -182,7 +197,7 @@ vCenter Server で **[Other]\(その他\)** と指定された OS | この場合
     - 対象となるディスクが複数ある場合は、Server Assessment は最も低コストのディスクを選択します。
     - どのディスクのパフォーマンス データも得られない場合は、ディスクの構成データ (ディスク サイズ) を使用して Azure で Standard SSD ディスクが検索されます。
 
-### <a name="calculate-network-sizing"></a>ネットワークのサイズ設定を計算する
+#### <a name="calculate-network-sizing"></a>ネットワークのサイズ設定を計算する
 
 Server Assessment は、オンプレミス マシンに接続されたネットワーク アダプターの数およびそれらのネットワーク アダプターが必要とするパフォーマンスに対応できる Azure VM を見つけようとします。
 - オンプレミス VM の有効なネットワーク パフォーマンスを取得するために、Server Assessment は、すべてのネットワーク アダプターについてマシンから送信される 1 秒あたりのデータ容量 (MBps) (ネットワーク出力) を集計し、快適性係数を適用します。 この数値を使用して、必要なネットワーク パフォーマンスをサポートできる Azure VM を見つけます。
@@ -190,7 +205,7 @@ Server Assessment は、オンプレミス マシンに接続されたネット�
 - ネットワーク パフォーマンス データが使用できない場合は、Server Assessment は、VM のサイズ設定でネットワーク アダプター数だけを考慮します。
 
 
-### <a name="calculate-compute-sizing"></a>コンピューティングのサイズ設定を計算する
+#### <a name="calculate-compute-sizing"></a>コンピューティングのサイズ設定を計算する
 
 ストレージとネットワークの要件が計算されると、Server Assessment は CPU とメモリの要件を考慮して Azure での適切な VM サイズを求めます。
 - Azure Migrate は、有効な使用コア数とメモリを確認して、Azure での適切な VM サイズを割り出します。
@@ -199,18 +214,21 @@ Server Assessment は、オンプレミス マシンに接続されたネット�
 - 条件を満たす Azure VM サイズが複数ある場合、最も低コストのディスクをお勧めします。
 
 
-### <a name="calculate-confidence-ratings"></a>信頼度レーティングを計算する
+## <a name="confidence-ratings-performance-based"></a>信頼度レーティング (パフォーマンスベース)
 
-Azure Migrate のパフォーマンス ベースの評価には、それぞれ 1 つ星 (最低) から 5 つ星 (最高) までの範囲の信頼度レーティングが関連付けられます。
+Azure Migrate のパフォーマンス ベースの評価には、それぞれ 1 つ星 (最低) から 5 つ星 (最高) までの範囲の信頼度レーティングが関連付けられます。 信頼度レーティングは、Azure Migrate によって提供される推奨サイズの信頼性を判断する目安となります。
+
 - 信頼度レーティングは、評価の計算に必要なデータ ポイントの可用性に基づいて、評価に割り当てられます。
-- 評価の信頼度レーティングは、Azure Migrate による推奨サイズの信頼性を判断する目安となります。
-- 信頼度レーティングは、*オンプレミス*の評価には適用されません。
 - パフォーマンス ベースのサイズ設定では、Server Assessment が以下を必要とします。
     - CPU と VM メモリの使用率データ。
     - VM に接続されているディスクごとの、ディスク IOPS とスループット データ。
     - VM に接続したネットワーク アダプターごとにパフォーマンス ベースのサイズ設定を処理するためのネットワーク I/O。
+    - これらの使用率の数値のいずれかが利用できない場合は、推奨サイズの信頼性が損なわれる可能性があります。
 
-   これらの使用率の数値のいずれかが vCenter Server で利用できない場合は、推奨サイズの信頼性が損なわれる可能性があります。
+> [!NOTE]
+> 信頼度レーティングは、インポートされた .CSV ファイルを使用して評価されたサーバーには割り当てられません。 また、レーティングは、現状のオンプレミスの評価には適用されません。
+   
+### <a name="ratings"></a>Ratings
 
 使用可能なデータ ポイントの割合に応じて、評価の信頼度レーティングは次のようになります。
 
@@ -222,10 +240,7 @@ Azure Migrate のパフォーマンス ベースの評価には、それぞれ 1
    61-80% | 4 つ星
    81-100% | 5 つ星
 
-> [!NOTE]
-> .CSV ファイルを使用して Azure Migrate にインポートされたサーバーの評価には、信頼度の評価は割り当てられません。 
-
-#### <a name="low-confidence-ratings"></a>信頼度レーティングが低い
+### <a name="low-confidence-ratings"></a>信頼度レーティングが低い
 
 次のようないくつかの理由で、評価の信頼度レーティングが低くなることがあります。
 
@@ -253,3 +268,8 @@ Azure Migrate のパフォーマンス ベースの評価には、それぞれ 1
 ## <a name="next-steps"></a>次のステップ
 
 評価作成のベストプラクティスを[確認](best-practices-assessment.md)します。 
+
+
+- [VMware VM](tutorial-prepare-vmware.md)、[Hyper-V VM](tutorial-prepare-hyper-v.md)、[物理サーバー](tutorial-prepare-physical.md)の評価を実行する方法について説明します。
+- [CSV ファイルでインポート](tutorial-assess-import.md)されたサーバーを評価する方法について説明します。
+- [依存関係の視覚化](concepts-dependency-visualization.md)について説明します。

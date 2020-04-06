@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80f8d66795971c6a5c84be7088387e63d7acd7a7
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3f35658a75adb4d4c6c279e45087e741b8117e65
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78248682"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481383"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでカスタム ドメインを構成する
 
@@ -120,7 +120,7 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 
 ## <a name="certificates-for-custom-domains"></a>カスタム ドメインの証明書
 
-証明書により、カスタム ドメイン用のセキュリティで保護された SSL 接続が作成されます。 
+証明書により、セキュリティで保護された TLS 接続がカスタム ドメイン用に作成されます。 
 
 ### <a name="certificate-formats"></a>証明書の形式
 

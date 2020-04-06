@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965450"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232179"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>StorSimple 8000 シリーズ デバイスの StorSimple デバイス マネージャー サービスをデプロイする
 
@@ -200,7 +200,7 @@ Azure Portal では、Update 5.0 以降を実行している StorSimple デバ�
 | ボリュームの作成、変更、および削除                                                                                             | いいえ             |
 | バックアップ ポリシーの作成、変更、および削除                                                                                      | いいえ             |
 | 手動バックアップの取得                                                                                                            | いいえ             |
-| スケジュールされたバックアップの作成                                                                                                         | 適用不可 |
+| スケジュールされたバックアップの作成                                                                                                         | 適用なし |
 | バックアップセットからの復元                                                                                                        | いいえ             |
 | Update 3.0 以降を実行しているデバイスへの複製 <br> ソース デバイスは Update 3.0 より前のバージョンを実行しています。                                | はい            |
 | Update 3.0 より前のバージョンを実行しているデバイスへの複製                                                                          | いいえ             |
@@ -211,7 +211,7 @@ Azure Portal では、Update 5.0 以降を実行している StorSimple デバ�
 | デバイス コントローラーのオンとオフ                                                                                              | はい            |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple デプロイのプロセスの詳細](storsimple-8000-deployment-walkthrough-u2.md)
 * [StorSimple ストレージ アカウントの管理の詳細](storsimple-8000-manage-storage-accounts.md)
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)

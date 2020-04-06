@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 03/12/2019
-ms.openlocfilehash: 9db6b5ff517a1b0d67e59591ee634dfad685527b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/18/2019
+ms.openlocfilehash: af88fdf3378a6290c773c658ea6dd3469d7c92cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461471"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531279"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database と Azure SQL Data Warehouse の IP ファイアウォール規則
 
@@ -39,7 +39,7 @@ ms.locfileid: "75461471"
 
 ### <a name="server-level-ip-firewall-rules"></a>サーバーレベルの IP ファイアウォール規則
 
-  これらの規則により、クライアントは、Azure SQL サーバー全体、つまり、同じ SQL Database サーバー内のすべてのデータベースにアクセスできるようになります。 規則は、*master* データベースに保存されます。 Azure SQL Server に対し、最大 128 個のサーバー レベルの IP ファイアウォール規則を作成できます。
+  これらの規則により、クライアントは、Azure SQL サーバー全体、つまり、同じ SQL Database サーバー内のすべてのデータベースにアクセスできるようになります。 規則は、*master* データベースに保存されます。 Azure SQL Server に対し、最大 128 個のサーバー レベルの IP ファイアウォール規則を作成できます。 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** の設定を有効にしてある場合、これは Azure SQL Server に対する 1 つのファイアウォール規則としてカウントされます。
   
   サーバー レベルの IP ファイアウォール規則を構成するには、Azure portal、PowerShell、または Transact-SQL ステートメントを使用します。
   - ポータルまたは PowerShell を使用するには、サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ad01751f7f7c573352c8fd15cc0f8cc2ebbbe700
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 887f6d9163f800ecbe8a5ab9a0715fd171f1d3d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945104"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244513"
 ---
 # <a name="applying-content-tags-to-images"></a>コンテンツ タグの画像への適用
 
@@ -83,6 +83,13 @@ Computer Vision では、数千個の認識可能なオブジェクト、生物�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="use-the-api"></a>API の使用
 
-[イメージの分類](concept-categorizing-images.md)および[イメージの説明](concept-describing-images.md)に関する概念を確認します。
+タグ付け機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 `Tags` を **visualFeatures** クエリ パラメーターに追加します。 その後、完全な JSON 応答が得られたら、`"tags"` セクションのコンテンツを対象に文字列を解析します。
+
+* [クイック スタート: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [クイック スタート: 画像の分析 (REST API)](./quickstarts/csharp-analyze.md)
+
+## <a name="next-steps"></a>次のステップ
+
+[イメージの分類](concept-categorizing-images.md)および[イメージの説明](concept-describing-images.md)に関連する概念を学習します。

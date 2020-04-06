@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: e3e8476d09541518d964bfaff4dabad47755eeb9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3f15033095b02dd35c2d8d7bda60ca184df64c9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189645"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475021"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>データ ドリブンのスタイルの式 (Web SDK)
 
@@ -91,6 +91,8 @@ Azure Maps Web SDK では、さまざまな種類の式がサポートされて�
 | `['has', string, object]` | boolean | オブジェクトのプロパティに、指定されたプロパティがあるかどうかを判断します。 |
 | `['id']` | value | 機能の ID がある場合は取得します。 |
 | `['length', string | array]` | number | 文字列または配列の長さを取得します。 |
+| `['in', boolean | string | number, array]` | boolean | 項目が配列に存在するかどうかを判断します |
+| `['in', substring, string]` | boolean | substring が文字列に存在するかどうかを判断します |
 
 **使用例**
 
@@ -790,6 +792,44 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 <center>
 
 ![数値形式の式の例](media/how-to-expressions/number-format-expression.png) </center>
+
+### <a name="image-expression"></a>イメージ式
+
+イメージ式は、シンボル レイヤーの `image` および `textField` オプション、および多角形レイヤーの `fillPattern` オプションで使用できます。 この式では、要求したイメージがスタイルに存在するかどうかがチェックされて、イメージが現在スタイル内に存在するかどうかに応じて、解決されたイメージ名または `null` が返されます。 この検証プロセスは同期的であり、イメージ引数でイメージを要求する前に、イメージがスタイルに追加されている必要があります。
+
+**例**
+
+次の例では、`image` 式を使用して、シンボル レイヤーのテキストの行内にアイコンを追加します。 
+
+```javascript
+ //Load the custom image icon into the map resources.
+map.imageSprite.add('wifi-icon', 'wifi.png').then(function () {
+
+    //Create a data source and add it to the map.
+    datasource = new atlas.source.DataSource();
+    map.sources.add(datasource);
+
+    //Create a point feature and add it to the data source.
+    datasource.add(new atlas.data.Point(map.getCamera().center));
+
+    //Add a layer for rendering point data as symbols.
+    map.layers.add(new atlas.layer.SymbolLayer(datasource, null, {
+        iconOptions: {
+            image: 'none'
+        },
+        textOptions: {
+            //Create a formatted text string that has an icon in it.
+            textField: ["format", 'Ricky\'s ', ["image", "wifi-icon"], ' Palace']
+        }
+    }));
+});
+```
+
+このレイヤーでは、次の図に示すように、シンボル レイヤーのテキスト フィールドがレンダリングされます。
+
+<center>
+
+![イメージ式の例](media/how-to-expressions/image-expression.png)</center>
 
 ## <a name="zoom-expression"></a>ズーム式
 
