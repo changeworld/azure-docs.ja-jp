@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MySQL 用の Private Link (プレビュー)
+title: プライベート リンク - Azure Database for MySQL
 description: Azure Database for MySQL で Private link がどのように機能するかについて説明します。
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: d9738a1dca39e1b43f690bd65ff05d20b6a94fa1
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/10/2020
+ms.openlocfilehash: c2cc4986542404281424286882c046dec39f5daf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898927"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371292"
 ---
-# <a name="private-link-for-azure-database-for-mysql-preview"></a>Azure Database for MySQL 用の Private Link (プレビュー)
+# <a name="private-link-for-azure-database-for-mysql"></a>Azure Database for MySQL 用の Private Link
 
 Private Link を使用すると、プライベート エンドポイントを経由して Azure 内のさまざまな PaaS サービスに接続できます。 Azure Private Link は基本的に、プライベート仮想ネットワーク (VNet) 内に Azure サービスを提供します。 PaaS リソースには、VNet 内のその他のリソースと同様に、プライベート IP アドレスを使用してアクセスできます。
 
@@ -45,7 +45,7 @@ Private Link を使用することで、NSG のようなネットワーク ア�
 
 オンプレミスのマシンからパブリック エンドポイントに接続する場合、サーバーレベルのファイアウォール規則を使用して、ご自分の IP アドレスを IP ベースのファイアウォールに追加する必要があります。 このモデルは、開発またはテストのワークロード用に個々のコンピューターへのアクセスを許可する場合には適していますが、運用環境で管理するのは困難です。
 
-Private Link を使用すると、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) (ER)、プライベート ピアリング、または [VPN トンネル](https://docs.microsoft.com/azure/vpn-gateway/)を使用して、プライベート エンドポイントへのクロスプレミス アクセスを有効にすることができます。 その後、パブリック エンドポイント経由のすべてのアクセスを無効にして、IP ベースのファイアウォールを使用しないようにすることができます。
+Private Link を使用すると、[Express Route](https://azure.microsoft.com/services/expressroute/) (ER)、プライベート ピアリング、または [VPN トンネル](https://docs.microsoft.com/azure/vpn-gateway/)を使用して、プライベート エンドポイントへのクロスプレミス アクセスを有効にすることができます。 その後、パブリック エンドポイント経由のすべてのアクセスを無効にして、IP ベースのファイアウォールを使用しないようにすることができます。
 
 ## <a name="configure-private-link-for-azure-database-for-mysql"></a>Azure Database for MySQL 用に Private Link を構成する
 
@@ -57,15 +57,12 @@ Private Link を有効にするには、プライベート エンドポイント
 * [CLI](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>承認プロセス
-ネットワーク管理者がプライベート エンドポイント (PE) を作成すると、MySQL 管理者は Azure Database for MySQL へのプライベート エンドポイント接続 (PEC) を管理できます。
-
-> [!NOTE]
-> 現時点では、Azure Database for MySQL は、プライベート エンドポイントの自動承認のみをサポートしています。
+ネットワーク管理者がプライベート エンドポイント (PE) を作成すると、MySQL 管理者は Azure Database for MySQL へのプライベート エンドポイント接続 (PEC) を管理できます。 ネットワーク管理者と DBA の職掌分散は、Azure Database for MySQL 接続の管理に役立ちます。 
 
 * Azure portal で Azure Database for MySQL サーバー リソースに移動します。 
-    * 左側のペインで、プライベート エンドポイント接続を選択します
-    * すべてのプライベート エンドポイント接続 (PEC) の一覧を表示します
-    * 作成された対応するプライベート エンドポイント (PE)
+    * 左側のウィンドウで、プライベート エンドポイント接続を選択します
+    * すべてのプライベート エンドポイント接続 (PEC) の一覧が表示されます
+    * 対応するプライベート エンドポイント (PE) が作成されます
 
 ![プライベート エンドポイントの選択のポータル](media/concepts-data-access-and-security-private-link/select-private-link-portal.png)
 
@@ -77,7 +74,7 @@ Private Link を有効にするには、プライベート エンドポイント
 
 ![プライベート エンドポイントの選択のメッセージ](media/concepts-data-access-and-security-private-link/select-private-link-message.png)
 
-* 承認または拒否すると、一覧には応答テキストとともに適切な状態が反映されます
+* 承認または拒否すると、一覧には応答テキストと共に適切な状態が反映されます
 
 ![プライベート エンドポイントの選択の最終状態](media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png)
 
@@ -109,6 +106,19 @@ Private Link とファイアウォール規則を組み合わせて使用する�
 * パブリック トラフィックまたはサービス エンドポイントを構成し、プライベート エンドポイントを作成する場合、さまざまな種類の受信トラフィックが、対応する種類のファイアウォール規則によって承認されます。
 
 * パブリック トラフィックまたはサービス エンドポイントを構成せずにプライベート エンドポイントを作成する場合、Azure Database for MySQL にはプライベート エンドポイントからのみアクセスできます。 パブリック トラフィックまたはサービス エンドポイントを構成しない場合、すべての承認済みプライベート エンドポイントが拒否または削除されると、いずれのトラフィックも Azure Database for MySQL にアクセスできません。
+
+## <a name="deny-public-access-for-azure-database-for-mysql"></a>Azure Database for MySQL のパブリック アクセスの拒否
+
+Azure Database for MySQL にアクセスする方法をプライベート エンドポイントのみに依存する場合、データベース サーバーで **[パブリック ネットワーク アクセスの拒否]** 構成を設定し、すべてのパブリック エンドポイント設定 (すなわち、[ファイアウォール規則](concepts-firewall-rules.md)や [VNet サービス エンドポイント](concepts-data-access-and-security-vnet.md)) を無効にできます。 
+
+この設定が *[はい]* に設定されている場合、Azure Database for MySQL にはプライベート エンドポイント経由の接続のみが許可されます。 この設定が *[いいえ]* に設定されている場合、ファイアウォール設定または VNet サービス エンドポイント設定に基づいてクライアントは Azure Database for MySQL に接続できます。 また、プライベート ネットワーク アクセスの値が設定されると、既存のファイアウォール規則や VNet サービス エンドポイント規則は追加も更新もできなくなります。
+
+> [!Note]
+> この機能は、Azure Database for PostgreSQL 単一サーバーで "General Purpose" および "メモリ最適化" 価格レベルがサポートされる、すべての Azure リージョンで利用できます。
+>
+> この設定は、Azure Database for MySQL の SSL 構成と TLS 構成に何の影響も与えません。
+
+Azure portal から Azure Database for MySQL の **[パブリック ネットワーク アクセスの拒否]** を設定する方法については、[パブリック ネットワーク アクセスの拒否を構成する](howto-deny-public-network-access.md)方法に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

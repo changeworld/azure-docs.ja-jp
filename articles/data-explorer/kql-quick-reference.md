@@ -1,18 +1,18 @@
 ---
 title: KQL クイック リファレンス
 description: 有用な KQL 関数およびその定義と構文例の一覧。
-author: yossi-karp
-ms.author: v-yokarp
+author: orspod
+ms.author: orspodek
 ms.reviewer: ''
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: c5d331b809d3f9f7db8d8c36add8b283bf0b9e39
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: e7196ccccb1203ce56b2e53fa358d091374cd3f8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664866"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79139081"
 ---
 # <a name="kql-quick-reference"></a>KQL クイック リファレンス
 

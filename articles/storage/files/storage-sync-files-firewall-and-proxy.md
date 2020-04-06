@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dcf6160c3650975431bf50fcf5bcba67f833a717
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 7f398012edc25ba6a04e230fa8049e7264f857bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750450"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294516"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure File Sync のプロキシとファイアウォールの設定
 Azure File Sync は、オンプレミスのサーバーを Azure Files に接続することで、マルチサイトの同期とクラウドの階層化の機能を実現します。 そのため、オンプレミスのサーバーがインターネットに接続されている必要があります。 サーバーから Azure Cloud Services に到達するための最適なパスは、IT 管理者が決める必要があります。
@@ -91,9 +91,9 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 | サービス | パブリック クラウド エンドポイント | Azure Government のエンドポイント | 使用法 |
 |---------|----------------|---------------|------------------------------|
-| **Azure Resource Manager** | https://management.azure.com | https://management.usgovcloudapi.net | 初回サーバー登録呼び出しを含め、すべてのユーザー呼び出し (PowerShell など) は、この URL に向かうか、この URL を経由します。 |
-| **Azure Active Directory** | https://login.windows.net<br>https://login.microsoftonline.com | https://login.microsoftonline.us | Azure Resource Manager の呼び出しは、認証済みのユーザーが行う必要があります。 成功するためには、この URL を使用してユーザー認証を行う必要があります。 |
-| **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | Azure File Sync をデプロイする過程で、サブスクリプションの Azure Active Directory のサービス プリンシパルを作成する必要があります。 この URL は、その際に使用されます。 このプリンシパルは、最小限の権限一式を Azure File Sync サービスに委任する目的で使用されます。 Azure File Sync の初回セットアップは、サブスクリプション所有者の権限を持った認証済みユーザーが実行する必要があります。 |
+| **Azure Resource Manager** | `https://management.azure.com` | https://management.usgovcloudapi.net | 初回サーバー登録呼び出しを含め、すべてのユーザー呼び出し (PowerShell など) は、この URL に向かうか、この URL を経由します。 |
+| **Azure Active Directory** | https://login.windows.net<br>`https://login.microsoftonline.com` | https://login.microsoftonline.us | Azure Resource Manager の呼び出しは、認証済みのユーザーが行う必要があります。 成功するためには、この URL を使用してユーザー認証を行う必要があります。 |
+| **Azure Active Directory** | https://graph.microsoft.com/ | https://graph.microsoft.com/ | Azure File Sync をデプロイする過程で、サブスクリプションの Azure Active Directory のサービス プリンシパルを作成する必要があります。 この URL は、その際に使用されます。 このプリンシパルは、最小限の権限一式を Azure File Sync サービスに委任する目的で使用されます。 Azure File Sync の初回セットアップは、サブスクリプション所有者の権限を持った認証済みユーザーが実行する必要があります。 |
 | **Azure ストレージ** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | サーバーがファイルをダウンロードするとき、ストレージ アカウント内の Azure ファイル共有との間で直接通信を行った方が、データの移動を効率よく実行することができます。 このサーバーには、対象のファイル共有へのアクセスのみが許可された SAS キーが与えられます。 |
 | **Azure File Sync** | &ast;.one.microsoft.com<br>&ast;.afs.azure.net | &ast;.afs.azure.us | サーバーの初回登録後、そのサーバーには、特定のリージョン内の Azure File Sync サービス インスタンスに使用されるリージョン固有の URL が送信されます。 サーバーは、この URL を使って、その同期処理を行うインスタンスと直接かつ効率的に通信を行います。 |
 | **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Azure File Sync エージェントがインストールされると、PKI URL を使用して、Azure File Sync サービスと Azure ファイル共有との通信に必要な中間証明書がダウンロードされます。 OCSP URL は、証明書の状態を確認するために使用されます。 |
@@ -115,7 +115,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 | パブリック | インド中部 | https:\//kailani-cin.one.microsoft.com | インド南部 | https:\//tm-kailani-cin.one.microsoft.com |
 | パブリック | 米国中部 | https:\//kailani-cus.one.microsoft.com | 米国東部 2 | https:\//tm-kailani-cus.one.microsoft.com |
 | パブリック | 東アジア | https:\//kailani11.one.microsoft.com | 東南アジア | https:\//tm-kailani11.one.microsoft.com |
-| パブリック | East US | https:\//kailani1.one.microsoft.com | 米国西部 | https:\//tm-kailani1.one.microsoft.com |
+| パブリック | 米国東部 | https:\//kailani1.one.microsoft.com | 米国西部 | https:\//tm-kailani1.one.microsoft.com |
 | パブリック | 米国東部 2 | https:\//kailani-ess.one.microsoft.com | 米国中部 | https:\//tm-kailani-ess.one.microsoft.com |
 | パブリック | 東日本 | https:\//japaneast01.afs.azure.net | 西日本 | https:\//tm-japaneast01.afs.azure.net |
 | パブリック | 西日本 | https:\//japanwest01.afs.azure.net | 東日本 | https:\//tm-japanwest01.afs.azure.net |
@@ -130,7 +130,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 | パブリック | 英国西部 | https:\//kailani-ukw.one.microsoft.com | 英国南部 | https:\//tm-kailani-ukw.one.microsoft.com |
 | パブリック | 米国中西部 | https:\//westcentralus01.afs.azure.net | 米国西部 2 | https:\//tm-westcentralus01.afs.azure.net |
 | パブリック | 西ヨーロッパ | https:\//kailani6.one.microsoft.com | 北ヨーロッパ | https:\//tm-kailani6.one.microsoft.com |
-| パブリック | 米国西部 | https:\//kailani.one.microsoft.com | East US | https:\//tm-kailani.one.microsoft.com |
+| パブリック | 米国西部 | https:\//kailani.one.microsoft.com | 米国東部 | https:\//tm-kailani.one.microsoft.com |
 | パブリック | 米国西部 2 | https:\//westus201.afs.azure.net | 米国中西部 | https:\//tm-westus201.afs.azure.net |
 | Government | US Gov アリゾナ | https:\//usgovarizona01.afs.azure.us | US Gov テキサス | https:\//tm-usgovarizona01.afs.azure.us |
 | Government | US Gov テキサス | https:\//usgovtexas01.afs.azure.us | US Gov アリゾナ | https:\//tm-usgovtexas01.afs.azure.us |
@@ -144,6 +144,122 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 > - https:\//kailani.one.microsoft.com (プライマリ エンドポイント: 米国西部)
 > - https:\//kailani1.one.microsoft.com (ペアのフェールオーバー リージョン: 米国東部)
 > - https:\//tm-kailani.one.microsoft.com (プライマリ リージョンの探索 URL)
+
+### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Azure File Sync IP アドレスの許可リスト
+Azure File Sync では[サービス タグ](../../virtual-network/service-tags-overview.md)の使用がサポートされています。これは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表すものです。 サービス タグを使用して、Azure File Sync サービスとの通信を可能にするファイアウォール規則を作成できます。 Azure File Sync のサービス タグは `StorageSyncService` です。
+
+Azure 内で Azure File Sync を使用している場合は、ネットワーク セキュリティ グループでサービス タグ名を直接使用して、トラフィックを許可することができます。 詳しい方法については、「[セキュリティ グループ](../../virtual-network/security-overview.md)」を参照してください。
+
+オンプレミスの Azure File Sync を使用している場合は、サービス タグ API を使用して、ファイアウォールの許可リスト用の特定の IP アドレス範囲を取得できます。 この情報を取得するには、次の 2 つの方法があります。
+
+- サービス タグをサポートするすべての Azure サービスの最新の IP アドレス範囲の一覧が、Microsoft ダウンロード センターに JSON ドキュメントの形式で毎週公開されています。 各 Azure クラウドには、そのクラウドに関連する IP アドレス範囲が記載された独自の JSON ドキュメントが存在します。
+    - [Azure Public](https://www.microsoft.com/download/details.aspx?id=56519)
+    - [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)
+    - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
+    - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)
+- サービス タグ検出 API (プレビュー) を使用すると、サービス タグの現在の一覧をプログラムで取得できます。 プレビューの段階では、サービス タグ検出 API によって返される情報は、Microsoft ダウンロード センターに公開されている JSON ドキュメントから返される情報よりも古い場合があります。 API サーフェスは、ご自分の自動化の設定に基づいて使用できます。
+    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+
+サービス タグ検出 API は、Microsoft ダウンロード センターに公開される JSON ドキュメントほど頻繁に更新されないため、JSON ドキュメントを使用して、オンプレミスのファイアウォールの許可リストを更新することをお勧めします。 そのためには、次の手順に従います。
+
+```PowerShell
+# The specific region to get the IP address ranges for. Replace westus2 with the desired region code 
+# from Get-AzLocation.
+$region = "westus2"
+
+# The service tag for Azure File Sync. Do not change unless you're adapting this
+# script for another service.
+$serviceTag = "StorageSyncService"
+
+# Download date is the string matching the JSON document on the Download Center. 
+$possibleDownloadDates = 0..7 | `
+    ForEach-Object { [System.DateTime]::Now.AddDays($_ * -1).ToString("yyyyMMdd") }
+
+# Verify the provided region
+$validRegions = Get-AzLocation | `
+    Where-Object { $_.Providers -contains "Microsoft.StorageSync" } | `
+    Select-Object -ExpandProperty Location
+
+if ($validRegions -notcontains $region) {
+    Write-Error `
+            -Message "The specified region $region is not available. Either Azure File Sync is not deployed there or the region does not exist." `
+            -ErrorAction Stop
+}
+
+# Get the Azure cloud. This should automatically based on the context of 
+# your Az PowerShell login, however if you manually need to populate, you can find
+# the correct values using Get-AzEnvironment.
+$azureCloud = Get-AzContext | `
+    Select-Object -ExpandProperty Environment | `
+    Select-Object -ExpandProperty Name
+
+# Build the download URI
+$downloadUris = @()
+switch($azureCloud) {
+    "AzureCloud" { 
+        $downloadUris = $possibleDownloadDates | ForEach-Object {  
+            "https://download.microsoft.com/download/7/1/D/71D86715-5596-4529-9B13-DA13A5DE5B63/ServiceTags_Public_$_.json"
+        }
+    }
+
+    "AzureUSGovernment" {
+        $downloadUris = $possibleDownloadDates | ForEach-Object { 
+            "https://download.microsoft.com/download/6/4/D/64DB03BF-895B-4173-A8B1-BA4AD5D4DF22/ServiceTags_AzureGovernment_$_.json"
+        }
+    }
+
+    "AzureChinaCloud" {
+        $downloadUris = $possibleDownloadDates | ForEach-Object { 
+            "https://download.microsoft.com/download/9/D/0/9D03B7E2-4B80-4BF3-9B91-DA8C7D3EE9F9/ServiceTags_China_$_.json"
+        }
+    }
+
+    "AzureGermanCloud" {
+        $downloadUris = $possibleDownloadDates | ForEach-Object { 
+            "https://download.microsoft.com/download/0/7/6/076274AB-4B0B-4246-A422-4BAF1E03F974/ServiceTags_AzureGermany_$_.json"
+        }
+    }
+
+    default {
+        Write-Error -Message "Unrecognized Azure Cloud: $_" -ErrorAction Stop
+    }
+}
+
+# Find most recent file
+$found = $false 
+foreach($downloadUri in $downloadUris) {
+    try { $response = Invoke-WebRequest -Uri $downloadUri -UseBasicParsing } catch { }
+    if ($response.StatusCode -eq 200) {
+        $found = $true
+        break
+    }
+}
+
+if ($found) {
+    # Get the raw JSON 
+    $content = [System.Text.Encoding]::UTF8.GetString($response.Content)
+
+    # Parse the JSON
+    $serviceTags = ConvertFrom-Json -InputObject $content -Depth 100
+
+    # Get the specific $ipAddressRanges
+    $ipAddressRanges = $serviceTags | `
+        Select-Object -ExpandProperty values | `
+        Where-Object { $_.id -eq "$serviceTag.$region" } | `
+        Select-Object -ExpandProperty properties | `
+        Select-Object -ExpandProperty addressPrefixes
+} else {
+    # If the file cannot be found, that means there hasn't been an update in
+    # more than a week. Please verify the download URIs are still accurate
+    # by checking https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+    Write-Verbose -Message "JSON service tag file not found."
+    return
+}
+```
+
+その後、`$ipAddressRanges` 内の IP アドレス範囲を使用して、ファイアウォールを更新できます。 ファイアウォールを更新する方法については、ご利用のファイアウォールまたはネットワーク アプライアンスの Web サイトを確認してください。
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>サービス エンドポイントへのネットワーク接続をテストする
 サーバーが Azure File Sync サービスに登録されたら、Test-StorageSyncNetworkConnectivity コマンドレットと ServerRegistration.exe を使用して、このサーバーに固有のすべてのエンドポイント (URL) との通信をテストできます。 このコマンドレットは、不完全な通信によってサーバーが Azure File Sync で完全に動作しない場合のトラブルシューティングに役立ちます。また、プロキシとファイアウォールの構成を微調整するために使用できます。

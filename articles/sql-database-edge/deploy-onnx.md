@@ -6,16 +6,15 @@ services: sql-database-edge
 ms.service: sql-database-edge
 ms.subservice: machine-learning
 ms.topic: conceptual
-author: ronychatterjee
-ms.author: achatter
-ms.reviewer: davidph
-ms.date: 11/04/2019
-ms.openlocfilehash: 37fc04919b844d1edf87be62a587c34de4a8c4d5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: dphansen
+ms.author: davidph
+ms.date: 03/26/2020
+ms.openlocfilehash: aff9346595d3b8985d3558658af32d05f88c0554
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692340"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365448"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-in-sql-database-edge-preview"></a>SQL Database Edge プレビューでの ONNX モデルを使用したデプロイと予測
 
@@ -32,8 +31,8 @@ ms.locfileid: "73692340"
 * Azure Data Studio を開き、次の手順に従って、このクイックスタートに必要なパッケージをインストールします。
 
     1. Python 3 カーネルに接続された[新しいノートブック](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks)を開きます。 
-    1. **[パッケージの管理]** をクリックし、 **[新規追加]** で **sklearn** を検索して、scikit-learn パッケージをインストールします。 
-    1. また、**onnxmltools**、**onnxruntime**、**skl2onnx**、**sqlalchemy** の各パッケージもインストールします。
+    1. **[パッケージの管理]** をクリックし、 **[新規追加]** で **scikit-learn** を検索して、scikit-learn パッケージをインストールします。 
+    1. また、**setuptools**、**numpy**、**onnxmltools**、**onnxruntime**、**skl2onnx**、**pyodbc**、および **sqlalchemy** パッケージもインストールします。
     
 * Azure Data Studio ノートブックのセルに以下の各スクリプト部分を入力し、セルを実行します。
 
@@ -61,7 +60,6 @@ x = df.drop(['MEDV'], axis = 1)
 
 # y is what we are trying to predict - the median value
 y = df.iloc[:,-1]
-
 
 # Split the data frame into features and target
 x_train = df.drop(['MEDV'], axis = 1)

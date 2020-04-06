@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service - HTTP2 のサポート | Microsoft Docs
-description: この記事は、Azure Front Door Service の HTTP/2 サポートについて学習するのに役立ちます
+title: Azure Front Door - HTTP2 のサポート | Microsoft Docs
+description: この記事は、Azure Front Door の HTTP/2 サポートについて学習するのに役立ちます
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: c3c1721454c0b3c96071c685a764f34d4fa540b9
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 415a89cbccd6b43d64ba1a553d44ac003df5806a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775267"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471627"
 ---
-# <a name="http2-support-in-azure-front-door-service"></a>Azure Front Door Service の HTTP/2 サポート
+# <a name="http2-support-in-azure-front-door"></a>Azure Front Door の HTTP/2 サポート
 
 現在、HTTP/2 サポートは、すべての Front Door 構成に対してアクティブです。 顧客からのそれ以上のアクションは必要ありません。
 

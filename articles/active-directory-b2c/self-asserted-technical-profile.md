@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e0a282be9b8a20c64cd3e74e7860a289baa5aec6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2b29b8b0975639e5c5315a55e1382794d7662665
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183807"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332507"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーでセルフ アサート技術プロファイルを定義します。
 
@@ -120,6 +120,8 @@ ms.locfileid: "78183807"
 
 **OutputClaims** 要素には、次のオーケストレーション手順に返される要求の一覧が含まれます。 **DefaultValue** 属性は、要求が設定されてない場合にのみ有効です。 前のオーケストレーション手順で設定されていた場合は、ユーザーが値を空白にした場合でも、既定値が有効になることはありません。 既定値の使用を強制するには、 **AlwaysUseDefaultValue** 属性を`true`に設定します。
 
+セキュリティ上の理由により、パスワード要求の値 (`UserInputType` は `Password` に設定) は、セルフ アサート技術プロファイルの検証技術プロファイルでのみ使用できます。 次のオーケストレーション手順では、パスワード要求を使用できません。 
+
 > [!NOTE]
 > Identity Experience Framework (IEF) の以前のバージョンでは、出力要求を使用してユーザーからデータを収集していました。 ユーザーからデータを収集するには、代わりに **DisplayClaims** コレクションを使用してください。
 
@@ -175,7 +177,7 @@ ms.locfileid: "78183807"
 
 ## <a name="persist-claims"></a>永続化した要求
 
-**PersistedClaims** 要素が存在しない場合、セルフ アサート技術プロファイルは、Azure AD B2C にデータを保持しません。 代わりに、データの永続化を担当する検証技術プロファイルが呼び出されます。 たとえば、サインアップ ポリシーは、新しいユーザー プロファイルを収集するために`LocalAccountSignUpWithLogonEmail`セルフ アサート技術プロファイルを使用します。 `LocalAccountSignUpWithLogonEmail`技術プロファイルは、Azure AD B2C でアカウントを作成するには、検証技術プロファイルを呼び出します。
+PersistedClaims 要素は使用されません。 セルフ アサート技術プロファイルでは、データが Azure AD B2C に保持されません。 代わりに、データの永続化を担当する検証技術プロファイルが呼び出されます。 たとえば、サインアップ ポリシーは、新しいユーザー プロファイルを収集するために`LocalAccountSignUpWithLogonEmail`セルフ アサート技術プロファイルを使用します。 `LocalAccountSignUpWithLogonEmail`技術プロファイルは、Azure AD B2C でアカウントを作成するには、検証技術プロファイルを呼び出します。
 
 ## <a name="validation-technical-profiles"></a>検証技術プロファイル
 
@@ -199,6 +201,7 @@ ms.locfileid: "78183807"
 | setting.showContinueButton | いいえ | [続行する] ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
 | setting.showSignupLink <sup>2</sup>| いいえ | サインアップ ボタンが表示されます。 指定できる値は `true`(既定値) または`false`です。 |
 | setting.forgotPasswordLinkLocation <sup>2</sup>| いいえ| パスワードを忘れた場合のリンクを表示します。 使用可能な値: `AfterInput` (既定) ではリンクがページ下部に表示される、`None` ではパスワードを忘れた場合のリンクが削除される。|
+| setting.enableRememberMe <sup>2</sup>| いいえ| [[サインインしたままにする]](custom-policy-keep-me-signed-in.md) チェックボックスを表示します。 指定できる値: `true` または `false` (既定値)。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 
 注:

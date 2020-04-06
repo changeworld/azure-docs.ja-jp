@@ -9,18 +9,20 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a980c7bd068a463956191eece43ec1be233e7890
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981833"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367620"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>不変ストレージを使用してビジネスに不可欠な BLOB データを保存する
 
 Azure Blob Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータ オブジェクトを WORM (Write Once Read Many) 状態で保存できます。 この状態では、ユーザーが指定した期間、データを消去および変更できなくなります。 保持間隔の間、BLOB の作成と読み取りは可能ですが、変更や削除を行うことはできません。 不変ストレージは、すべての Azure リージョン内の汎用 v1、汎用 V2、BlobStorage、および BlockBlobStorage アカウントで使用できます。
 
 Azure portal、PowerShell、または Azure CLI を使用して、訴訟ホールドを設定またはクリアしたり、時間ベースの保持ポリシーを作成したりする方法については、「[BLOB ストレージの不変ポリシーを設定および管理する](storage-blob-immutability-policies-manage.md)」を参照して ください。
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="about-immutable-blob-storage"></a>不変 BLOB ストレージについて
 
@@ -84,15 +86,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
 ロックされていない時間ベースの保持ポリシーを使用すると、`allowProtectedAppendWrites` の設定をいつでも有効または無効にすることができます。 時間ベースの保持ポリシーがロックされた場合、`allowProtectedAppendWrites` の設定は変更できません。
 
-訴訟ホールド ポリシーでは、`allowProtectedAppendWrites` を有効にすることはできず、追加 BLOB に新しいブロックを追加することはできません。 `allowProtectedAppendWrites` が有効になっている時間ベースの保持ポリシーに訴訟ホールドが適用されている場合、訴訟ホールドが解除されるまで、*AppendBlock* API は失敗します。
-
-> [!IMPORTANT] 
-> 時間ベースの保持における保護された追加 BLOB の書き込みの許可の設定は、現時点では次のリージョンで使用できます。
-> - East US
-> - 米国中南部
-> - 米国西部 2
->
-> 現時点では、指定されたもの以外の他のリージョンで `allowProtectedAppendWrites` を有効にしないことを強くお勧めします。これは、断続的なエラーが発生し、追加 BLOB のコンプライアンスに影響を与える可能性があるためです。 時間ベースの保持ポリシーを設定およびロックする方法の詳細については、「[保護された追加 BLOB の書き込みを有効にする](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)」を参照してください。
+訴訟ホールドのポリシーでは `allowProtectedAppendWrites` を有効にできません。また、いかなる訴訟ホールドでも、"allowProtectedAppendWrites" プロパティは無効化されません。 `allowProtectedAppendWrites` が有効になっている時間ベースの保持ポリシーに訴訟ホールドが適用されている場合、訴訟ホールドが解除されるまで、*AppendBlock* API は失敗します。
 
 ## <a name="legal-holds"></a>訴訟ホールド
 
@@ -140,7 +134,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
 **訴訟ホールドと時間ベースのリテンション ポリシーを両方とも適用することはできますか?**
 
-はい。コンテナーには、訴訟ホールドと時間ベースのアイテム保持ポリシーの両方を同時に適用できます。 有効なリテンション期間が終了していても、すべての訴訟ホールドがクリアされるまで、そのコンテナー内のすべての BLOB が不変状態のままになります。 逆に、すべての訴訟ホールドがクリアされていても、有効なリテンション期間が終了するまで、BLOB は不変状態のままになります。
+はい。1 つのコンテナーに訴訟ホールドと時間ベースのリテンション ポリシーを同時に含めることはできます。ただし、訴訟ホールドが消去されるまで、"allowProtectedAppendWrites" 設定は適用されません。 有効なリテンション期間が終了していても、すべての訴訟ホールドがクリアされるまで、そのコンテナー内のすべての BLOB が不変状態のままになります。 逆に、すべての訴訟ホールドがクリアされていても、有効なリテンション期間が終了するまで、BLOB は不変状態のままになります。 
 
 **訴訟ホールド ポリシーは訴訟手続き専用ですか? その他の使用のシナリオはありますか?**
 
@@ -164,7 +158,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
 **支払いを怠ったときに、リテンション期間がまだ終了していない場合はどうなりますか?**
 
-未払いの場合、Microsoft との契約条件に明記されているように、通常のデータ保有ポリシーが適用されます。
+未払いの場合、Microsoft との契約条件に明記されているように、通常のデータ保有ポリシーが適用されます。 全般的な情報については、「[Microsoft でのデータ管理](https://www.microsoft.com/en-us/trust-center/privacy/data-management)」を参照してください。 
 
 **機能を試してみるだけの試用期間または猶予期間は設けられていますか?**
 

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 1/24/2020
+ms.date: 3/13/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c6ed72e5c94191411572c6ab67533141e2fe47d6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1248063c1b4c1b1e124ff671797450dd5c1b8727
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185816"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050166"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能 
 
@@ -41,6 +41,28 @@ ms.locfileid: "77185816"
 ## <a name="upcoming-changes"></a>今後の変更
 
 現時点ではスケジュールされていません。  運用環境の変更または変更予定については、以下を参照してください。 
+
+## <a name="march-2020"></a>2020 年 3 月 
+
+### <a name="user-passwords-will-be-restricted-to-256-characters"></a>ユーザーのパスワードは、256 文字に制限されます。
+
+**発効日**:2020 年 3 月 13 日
+
+**影響を受けるエンドポイント**:v1.0 と v2.0 の両方
+
+**影響を受けるプロトコル**:すべてのユーザー フローです。 
+
+256 文字を超えるパスワードを使用して (ADFS などのフェデレーション IDP ではなく) Azure AD に直接接続するユーザーは、2020 年 3 月 13 日以降はサインインできなくなり、パスワードをリセットするように求められます。  管理者は、ユーザーのパスワード リセットを支援する要求を受信する場合があります。 
+
+サインイン ログのエラーは、AADSTS 50052: InvalidPasswordExceedsMaxLength
+
+メッセージ: `The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
+
+修復:
+
+パスワードが許可されている最大長を超えているため、ユーザーはログインできません。 パスワードをリセットするには、管理者に連絡する必要があります。 テナントで SSPR が有効になっている場合は、[パスワードを忘れた場合] のリンクを使用してパスワードをリセットできます。
+
+
 
 ## <a name="february-2020"></a>2020 年 2 月 
 
@@ -104,7 +126,7 @@ login.microsoftonline.com から HTTP リダイレクト経由で認証応答が
 
 **影響を受けるプロトコル**:すべてのフロー
 
-[RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2) に従って、Azure AD アプリケーションでは、OAuth 2.0 要求に対する静的クエリ パラメーター (https://contoso.com/oauth2?idp=microsoft) など) でリダイレクト (応答) URI を登録して使用できるようになりました。  動的リダイレクト URI は、セキュリティ上のリスクがあり、認証要求全体で状態情報を保持するために使用できないため、引き続き許可されません。そのためには、`state` パラメーターを使用します。
+[RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2) に従って、Azure AD アプリケーションでは、OAuth 2.0 要求に対する静的クエリ パラメーター (`https://contoso.com/oauth2?idp=microsoft` など) でリダイレクト (応答) URI を登録して使用できるようになりました。  動的リダイレクト URI は、セキュリティ上のリスクがあり、認証要求全体で状態情報を保持するために使用できないため、引き続き許可されません。そのためには、`state` パラメーターを使用します。
 
 静的クエリ パラメーターは、リダイレクト URI の他の部分と同様に、リダイレクト URI の文字列照合の対象になります。URI でデコードされたリダイレクト URI に一致する文字列が登録されていない場合、要求は拒否されます。  アプリの登録で URI が見つかった場合は、静的クエリ パラメーターを含む文字列全体が、ユーザーをリダイレクトするために使われます。 
 

@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dce9b93dfe4ddfca370d1d3131d1d12cb6f121d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1193bfc08ccbd86d4da09c4de472f09bb49208f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561764"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049934"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Azure Active Directory のヘルプを検索してサポート チケットを開く
 Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前、課金、サブスクリプションの各サポートを幅広く提供しています。 サポートは、Microsoft Azure の有料版および試用版サブスクリプションについて、オンラインと電話の両方で利用できます。 また、電話サポートとオンライン課金サポートは追加の言語で利用できます。 
@@ -49,15 +49,26 @@ Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前
 2. **[トラブルシューティング + サポート]** まで下方向へスクロールし、 **[新しいサポート要求]** を選択します。
    
 3. **[基本]** ブレードの **[問題の種類]** で、 **[技術]** を選択します。
-   
-4. **[サービス]** で **[Azure Active Directory]** を選択し、 **[次へ]** を選択します。
 
-5. **[問題]** ブレードで、[[重大度]](https://azure.microsoft.com/support/plans/response/) を選択します。
+4. **サブスクリプション**を選択します。
+
+5. **[サービス]** で、 **[Azure Active Directory]** を選択します。
+
+6. 要求の**概要**を作成します。 概要は 140 文字未満にする必要があります。
   
-6. **[問題の種類]** を選択し、その種類の **[カテゴリ]** を選択します。 この時点で、問題のカテゴリについてのセルフヘルプ情報も提供されます。
+7. **[問題の種類]** を選択し、その種類のカテゴリを選択します。 この時点で、問題のカテゴリについてのセルフヘルプ情報も提供されます。
   
-7. 問題に関する情報の残りの部分を追加し、 **[次へ]** をクリックします。
-  
+7. 問題に関する情報の残りの部分を追加し、 **[次へ]** をクリックします。 
+
+8. この時点で、 **[ソリューション]** ブレードにセルフヘルプ ソリューションとドキュメントが提供されます。 どのソリューションでも問題が解決しない場合は、 **[次へ]** をクリックします。 
+
+9. **[詳細]** ブレードに、必要な詳細を入力し、[[重要度]](https://azure.microsoft.com/support/plans/response/) を選択します。 
+ 
+![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
+ 
+10. 連絡先情報を入力し、 **[次へ]** を選択します。 
+
+
 8. 連絡先情報を入力し、 **[作成]** を選択します。
   ![問題のカテゴリについてのセルフヘルプのスクリーンショット](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
@@ -86,7 +97,7 @@ Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前
 
 サポートの電話番号については、[Microsoft のサポートの連絡先](https://portal.office.com/Support/ContactUs.aspx)に関するページを参照してください。
 
-##  <a name="next-steps"></a>次の手順
+##  <a name="next-steps"></a>次のステップ
 
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/)
 

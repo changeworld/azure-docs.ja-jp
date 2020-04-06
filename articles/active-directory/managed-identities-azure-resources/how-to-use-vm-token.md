@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ac0f4d5c10cf128b6161163a81cc171bcafbd36
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: a58103bad3914bd0c0c6e70f8e3d2882271e1070
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158997"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049206"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法 
 
@@ -75,7 +75,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `GET` | HTTP 動詞。エンドポイントからデータを取得する必要があることを示します。 この例では、OAuth アクセス トークンです。 | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | Instance Metadata Service 用の Azure リソース エンドポイントのマネージド ID。 |
 | `api-version`  | クエリ文字列パラメーター。IMDS エンドポイントの API バージョンです。 API バージョン `2018-02-01` 以上を使用してください。 |
-| `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が https://management.azure.com/ の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
+| `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が `https://management.azure.com/` の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
 | `Metadata` | HTTP 要求ヘッダー フィールド。サーバー側のリクエスト フォージェリ (SSRF) 攻撃に対する軽減策として Azure リソースのマネージド ID に必要です。 この値は、"true" に設定し、すべて小文字にする必要があります。 |
 | `object_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の object_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
 | `client_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の client_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
@@ -92,7 +92,7 @@ Metadata: true
 | ------- | ----------- |
 | `GET` | HTTP 動詞。エンドポイントからデータを取得する必要があることを示します。 この例では、OAuth アクセス トークンです。 | 
 | `http://localhost:50342/oauth2/token` | Azure リソース エンドポイントのマネージド ID (50342 は既定のポートであり、構成可能です)。 |
-| `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が https://management.azure.com/ の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
+| `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が `https://management.azure.com/` の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
 | `Metadata` | HTTP 要求ヘッダー フィールド。サーバー側のリクエスト フォージェリ (SSRF) 攻撃に対する軽減策として Azure リソースのマネージド ID に必要です。 この値は、"true" に設定し、すべて小文字にする必要があります。|
 | `object_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の object_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
 | `client_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の client_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
@@ -391,7 +391,7 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 
 再試行については、次の方法をお勧めします。 
 
-| **再試行戦略** | **[設定]** | **値** | **動作のしくみ** |
+| **再試行戦略** | **設定** | **値** | **動作のしくみ** |
 | --- | --- | --- | --- |
 |ExponentialBackoff |再試行回数<br />最小バックオフ<br />最大バックオフ<br />差分バックオフ<br />最初の高速再試行 |5<br />0 秒<br />60 秒<br />2 秒<br />false |試行 1 - 0 秒の遅延<br />試行 2 - 最大 2 秒の遅延<br />試行 3 - 最大 6 秒の遅延<br />試行 4 - 最大 14 秒の遅延<br />試行 5 - 最大 30 秒の遅延 |
 

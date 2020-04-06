@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 02/01/2020
-ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/09/2020
+ms.openlocfilehash: 97ce402045cfd2c990b457c5d4d06888cda632d5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587296"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228551"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>仮想コアと DTU の購入モデルから選択する
 
@@ -86,6 +86,11 @@ DTU ベースの購入モデルから仮想コア ベースの購入モデルに
 - Standard レベルでの 100 DTU ごとに、General Purpose サービス レベルでは少なくとも 1 つの仮想コアが必要です。
 - Premium レベルでの 125 DTU ごとに、Business Critical サービス レベルでは少なくとも 1 つの仮想コアが必要です。
 
+> [!NOTE]
+> 仮想コアあたりの DTU サイズのガイドラインは概算であり、ターゲット データベース サービスの目標を最初に見積もるときに役立てる目的で提供されます。 ターゲット データベースの最適な構成はワークロードに依存します。 
+> 
+> 価格とパフォーマンスの間で最適なバランスを見つけるには、仮想コア モデルの柔軟性を活用し、仮想コアの数、[ハードウェア生成](sql-database-service-tiers-vcore.md#hardware-generations)、[サービス](sql-database-service-tiers-vcore.md#service-tiers) レベルと[コンピューティング](sql-database-service-tiers-vcore.md#compute-tiers) レベルを調整し、また、[並列処理の最大値](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)など、データベース構成のその他のパラメーターを調整する必要が場合によってはあります。
+
 ## <a name="dtu-based-purchasing-model"></a>DTU ベースの購入モデル
 
 データベース トランザクション ユニット (DTU) は、CPU、メモリ、読み取り、書き込みを組み合わせた測定値を表します。 DTU ベースの購入モデルは、事前構成済みコンピューティング リソースと付属ストレージのバンドル セットを提供することで、さまざまなレベルのアプリケーション パフォーマンスを実現します。 事前構成済みバンドルと毎月支払う料金が決まっているというシンプルさを好む場合は、DTU ベースのモデルがニーズに適している可能性があります。
@@ -142,6 +147,20 @@ DTU ベースの購入モデルでは、[単一データベース](sql-database-
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>リソースのエラスティック プールを使うとメリットがあるワークロード
 
 プールは、リソース使用率の平均が低く、使用率の急上昇が比較的発生しにくいデータベースに最適です。 詳しくは、「[SQL Database エラスティック プールを検討すべきとき](sql-database-elastic-pool.md)」をご覧ください。
+
+### <a name="hardware-generations-in-the-dtu-based-purchasing-model"></a>DTU ベースの購入モデルのハードウェア世代
+
+DTU ベースの購入モデルでは、お客様は自分のデータベースに使用されるハードウェア世代を選択できません。 データベースは通常、長い間 (通例、数か月)、特定のハードウェア世代に留まりますが、データベースを別のハードウェア世代に移すイベントがあります。
+
+たとえば、別のサービス目標にスケール アップまたはスケール ダウンする場合、データ センターにある現在のインフラストラクチャがその容量制限に近づいている場合、あるいは現在使用されているハードウェアが耐用年数終了により使用停止にする場合、データベースを別のハードウェア世代に移動できます。
+
+データベースを別のハードウェアに移動すると、ワークロード パフォーマンスが変わることがあります。 DTU モデルでは、サービス目標 (DTU の数) が同じである限り、データベースを別のハードウェア世代に移動しても、[DTU ベンチマーク](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) ワークロードのスループットと応答時間がおおむね同じになります。 
+
+ただし、Azure SQL Database で実行されている顧客ワークロードは幅が広く、同じサービス目標に別のハードウェアを使用したときの影響がもっと目立つこともあります。 ハードウェアの構成や特徴が違えば、ワークロードが受ける恩恵もさまざまです。 そのため、DTU ベンチマーク以外のワークロードについては、データベースをあるハードウェア世代から別のハードウェア世代に移す場合、パフォーマンスに違いが見られることがあります。
+
+たとえば、ネットワークの待機時間が重要となるアプリケーションの場合、Gen5 と Gen4 を比較したとき、高速ネットワークを使用しているため Gen5 の方がパフォーマンスの面で優れています。一方、集中的な読み取りで IO が発生するアプリケーションの場合、Gen5 と Gen4 では Gen4 がパフォーマンスに優れています。Gen4 ではコアあたりメモリの比率が高くなるからです。
+
+ワークロードがハードウェア変更の影響を受けやすい場合、あるいはデータベースのハードウェア世代を選択することを望む場合、お客様は[仮想コア](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) モデルを利用し、データベースの作成時と拡張時、望みのハードウェア世代を選択できます。 仮想コア モデルでは、[単一データベース](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases)と[エラスティック プール](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools)の両方に対して、ハードウェア世代ごとに各サービス目標のリソース上限が記録されます。 仮想コア モデルのハードウェア世代の詳細については、「[ハードウェアの世代](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations)」を参照してください。
 
 ## <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)
 

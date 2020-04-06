@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: ajburnle
 ms.reviewer: kexia
-ms.custom: fasttrack-edit
+ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea0bc131f7eb3fc66f3b024b4c9902f8c73f9a7d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 441fdd14cc2c734b6ce532f3ad1d30663b2f56c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422834"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049789"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>組織の Azure Active Directory のサインイン ページにブランドを追加する
 組織のロゴとカスタム カラー スキーマを使用して、Azure Active Directory (Azure AD) のサインイン ページの外観に一貫性を持たせます。 サインイン ページは、Azure AD を ID プロバイダーとして使用している組織の Web ベースのアプリ (Office 365 など) にユーザーが サインインするときに表示されます。
@@ -27,7 +27,7 @@ ms.locfileid: "75422834"
 >カスタム ブランドを追加するには、Azure Active Directory Premium 1 エディション、Premium 2 エディション、または Basic エディションを使用しているか、Office 365 ライセンスを持っている必要があります。 ライセンスとエディションの詳細については、「[Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)」を参照してください。<br><br>Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure AD Premium および Basic エディションを使用できます。 中国の 21Vianet が運営する Azure サービスでは、Azure AD Premium エディションと Basic エディションは現在サポートされていません。 詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)を利用してお問い合わせください。
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Azure AD のサインイン ページをカスタマイズする
-Azure AD のサインイン ページをカスタマイズできます。このページは、ユーザーが組織のテナント固有のアプリ ([ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com) など) にサインインするとき、またはドメイン変数 ([ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com)) を渡すときに表示されます。
+Azure AD のサインイン ページをカスタマイズできます。このページは、ユーザーが組織のテナント固有のアプリ (`https://outlook.com/contoso.com` など) にサインインするとき、またはドメイン変数 (`https://passwordreset.microsoftonline.com/?whr=contoso.com`) を渡すときに表示されます。
 
 カスタム ブランドは、ユーザーが www\.office.com などのサイトに移動したときにすぐに表示されるわけではありません。 カスタマイズされたブランドは、ユーザーがサインインした後で表示されます。 ユーザーがサインインすると、ブランド化に 15 分以上かかることがあります。 
 
@@ -130,9 +130,9 @@ Azure AD のサインイン ページをカスタマイズできます。この�
 **例:**
 
 **元の URL:** https://aka.ms/MFASetup<br>
-**カスタム URL:** https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com
+**カスタム URL:** `https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com`
 
 **元の URL:** https://aka.ms/SSPR<br>
-**カスタム URL:** https://passwordreset.microsoftonline.com/?whr=contoso.com
+**カスタム URL:** `https://passwordreset.microsoftonline.com/?whr=contoso.com`
 
  

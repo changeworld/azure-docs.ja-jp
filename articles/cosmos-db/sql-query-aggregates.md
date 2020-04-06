@@ -4,18 +4,18 @@ description: SQL 集計関数の構文、Azure Cosmos DB でサポートされ�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 03/16/2020
 ms.author: tisande
-ms.openlocfilehash: df9700dd51c8915ff28c34cf0a29c2f5e48baa44
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78897826"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79464463"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB の集計関数
 
-集計関数は、SELECT 句内の一連の値を計算して 1 つの値を返します。 たとえば、次のクエリでは、`Families` コンテナー内にある項目の数が返されます。
+集計関数は、`SELECT` 句内の一連の値を計算して 1 つの値を返します。 たとえば、次のクエリでは、`Families` コンテナー内にある項目の数が返されます。
 
 ## <a name="examples"></a>例
 
@@ -61,9 +61,9 @@ VALUE キーワードを使用して、集計のスカラー値のみを返す�
 
 ## <a name="types-of-aggregate-functions"></a>集計関数の種類
 
-SQL API は、次の集計関数をサポートしています。 SUM と AVG は数値に対して機能し、COUNT、MIN、および MAX は、数値、文字列、ブール値、および null 値に対して機能します。
+SQL API は、次の集計関数をサポートしています。 `SUM` と `AVG` は数値に対して機能し、`COUNT`、`MIN`、および `MAX` は、数値、文字列、ブール値、および null 値に対して機能します。
 
-| Function | 説明 |
+| 機能 | 説明 |
 |-------|-------------|
 | [COUNT] | 式の項目の数を返します。 |
 | [SUM]   | 式のすべての値の合計を返します。 |
@@ -75,6 +75,10 @@ SQL API は、次の集計関数をサポートしています。 SUM と AVG �
 
 > [!NOTE]
 > Azure portal のデータ エクスプローラーでは、集計クエリが、1 ページのみのクエリ ページに対する部分的な結果を集計することがあります。 SDK は、すべてのページにわたって累計した単一の値を生成します。 コードを使用して集計クエリを実行するには、.NET SDK 1.12.0、.NET Core SDK 1.1.0、または Java SDK 1.9.5 以降が必要です。
+
+## <a name="remarks"></a>解説
+
+この集計システム関数は、[範囲インデックス](index-policy.md#includeexclude-strategy)の恩恵を受けます。 あるプロパティで `COUNT`、`SUM`、`MIN`、`MAX`、`AVG` を行うことが予想される場合、[インデックス作成ポリシーに関連パスを含めてください](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>次のステップ
 

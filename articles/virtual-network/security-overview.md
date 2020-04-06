@@ -1,31 +1,31 @@
 ---
-title: Azure セキュリティ グループの概要
+title: Azure ネットワーク セキュリティ グループの概要
 titlesuffix: Azure Virtual Network
-description: ネットワークとアプリケーションのセキュリティ グループについて説明します。 セキュリティ グループは、フィルターを使って Azure リソース間のネットワーク トラフィックを絞り込む際に役立つものです。
+description: ネットワーク セキュリティ グループについて説明します。 ネットワーク セキュリティ グループは、Azure リソース間のネットワーク トラフィックをフィルター処理するのに役立ちます。
 services: virtual-network
 documentationcenter: na
-author: malopMSFT
+author: KumudD
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/22/2020
-ms.author: malop
+ms.date: 02/27/2020
+ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: c465d86c3a284a45063b9da183e4866fde7e28e9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8f3497f113981ae563023750ad8979c88c640f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544516"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80123334"
 ---
-# <a name="security-groups"></a>セキュリティ グループ
+# <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
 <a name="network-security-groups"></a>
 
-ネットワーク セキュリティ グループを使用して、Azure [仮想ネットワーク](virtual-networks-overview.md)の Azure リソース間のネットワーク トラフィックをフィルター処理できます。 ネットワーク セキュリティ グループには、何種類かの Azure リソースとの送受信ネットワーク トラフィックを許可または拒否する[セキュリティ規則](#security-rules)が含まれています。 どの種類の Azure リソースを仮想ネットワークへのデプロイ後にネットワーク セキュリティ グループに関連付けできるのかについては、「[Azure サービスの仮想ネットワーク統合](virtual-network-for-azure-services.md)」を参照してください。 各規則で、送信元と送信先、ポート、およびプロトコルを指定することができます。
+ネットワーク セキュリティ グループを使用して、Azure 仮想ネットワークの Azure リソース間のネットワーク トラフィックをフィルター処理できます。 ネットワーク セキュリティ グループには、いくつかの種類の Azure リソースとの受信ネットワーク トラフィックまたは送信ネットワーク トラフィックを許可または拒否するセキュリティ規則が含まれています。 どの種類の Azure リソースを仮想ネットワークへのデプロイ後にネットワーク セキュリティ グループに関連付けできるのかについては、「[Azure サービスの仮想ネットワーク統合](virtual-network-for-azure-services.md)」を参照してください。 各規則で、送信元と送信先、ポート、およびプロトコルを指定することができます。
 
-この記事では、ネットワーク セキュリティ グループを効果的に使用できるように、その概念について説明します。 ネットワーク セキュリティ グループを作成したことがない場合は、簡単な[チュートリアル](tutorial-filter-network-traffic.md)で作成作業を体験することができます。 ネットワーク セキュリティ グループに精通していて、それらを管理する必要がある場合は、[ネットワーク セキュリティ グループの管理](manage-network-security-group.md)に関するページを参照してください。 通信に問題があり、ネットワーク セキュリティ グループのトラブルシューティングが必要な場合は、「[仮想マシン ネットワーク トラフィック フィルターの問題を診断する](diagnose-network-traffic-filter-problem.md)」を参照してください。 [ネットワーク セキュリティ グループのフロー ログ](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を有効にして、ネットワーク セキュリティ グループが関連付けられているリソース間の[ネットワーク トラフィックを分析](../network-watcher/traffic-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)することができます。
+この記事では、ネットワーク セキュリティ グループを効果的に使用できるように、その概念について説明します。 ネットワーク セキュリティ グループを作成したことがない場合は、簡単な[チュートリアル](tutorial-filter-network-traffic.md)で作成作業を体験することができます。 ネットワーク セキュリティ グループに精通していて、それらを管理する必要がある場合は、[ネットワーク セキュリティ グループの管理](manage-network-security-group.md)に関するページを参照してください。 通信に問題があり、ネットワーク セキュリティ グループのトラブルシューティングが必要な場合は、「[仮想マシン ネットワーク トラフィック フィルターの問題を診断する](diagnose-network-traffic-filter-problem.md)」を参照してください。 [ネットワーク セキュリティ グループのフロー ログ](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を有効にして、ネットワーク セキュリティ グループが関連付けられているリソース間のネットワーク トラフィックを分析することができます。
 
 ## <a name="security-rules"></a>セキュリティ規則
 
@@ -33,7 +33,7 @@ ms.locfileid: "76544516"
 
 |プロパティ  |説明  |
 |---------|---------|
-|Name|ネットワーク セキュリティ グループ内で一意の名前。|
+|名前|ネットワーク セキュリティ グループ内で一意の名前。|
 |Priority | 100 ～ 4096 の数値。 規則は、優先順位に従って処理され、数値が小さいほど優先順位が高いために、大きい数値の前に小さい数値が処理されます。 トラフィックが規則に一致すると、処理が停止します。 この結果、優先順位低く (数値が大きい)、優先順位が高い規則と同じ属性を持つ規則は処理されません。|
 |ソース/宛先| IP アドレス、クラスレス ドメイン間ルーティング (CIDR) ブロック (例: 10.0.0.0/24)、[サービス タグ](service-tags-overview.md)、または[アプリケーション セキュリティ グループ](#application-security-groups)。 Azure リソースのアドレスを指定する場合は、そのリソースに割り当てられているプライベート IP アドレスを指定します。 受信トラフィックの場合、ネットワーク セキュリティ グループが処理されるタイミングは、Azure でパブリック IP アドレスがプライベート IP アドレスに変換された後です。送信トラフィックの場合は、Azure でプライベート IP アドレスがパブリック IP アドレスに変換される前になります。 Azure IP アドレスの詳細については、[こちら](virtual-network-ip-addresses-overview-arm.md)を参照してください。 範囲、サービス タグ、またはアプリケーション セキュリティ グループを指定すると、作成するセキュリティ規則の数を減らせます。 規則内で複数の個別 IP アドレスと範囲 (複数のサービス タグまたはアプリケーション グループは指定できません) を指定する機能は、[拡張セキュリティ規則](#augmented-security-rules)と呼ばれています。 拡張セキュリティ規則は、Resource Manager デプロイ モデルで作成されたネットワーク セキュリティ グループでのみ作成できます。 クラシック デプロイ モデルで作成されたネットワーク セキュリティ グループで、複数の IP アドレスおよび IP アドレス範囲を指定することはできません。 Azure のデプロイ モデルの詳細については、[こちら](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を参照してください。|
 |Protocol     | TCP、UDP、ICMP、または Any。|
@@ -46,107 +46,67 @@ ms.locfileid: "76544516"
 
 ネットワーク セキュリティ グループ内に作成できるセキュリティ規則の数には、制限があります。 詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) に関する記事をご覧ください。
 
-## <a name="augmented-security-rules"></a>拡張セキュリティ規則
-
-拡張セキュリティ規則を使用すると仮想ネットワークのセキュリティ定義が簡略化され、大規模で複雑なネットワーク セキュリティ ポリシーを少ない規則で定義できます。 複数のポート、複数の明示的 IP アドレスおよび範囲を組み合わせて、単一のわかりやすいセキュリティ規則を作成することができます。 拡張規則は、規則のソース、宛先、ポート フィールドで使います。 セキュリティ規則の定義の保守を簡素化するには、拡張セキュリティ規則と[サービス タグ](service-tags-overview.md) または [アプリケーション セキュリティ グループ](#application-security-groups) を組み合わせます。 規則に指定できるアドレス、範囲、およびポートの数には、制限があります。 詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) に関する記事をご覧ください。
-
-## <a name="service-tags"></a>サービス タグ
-
-サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 これは、ネットワーク セキュリティ規則の頻繁な更新の複雑さを最小限に抑えるのに役立ちます。
-
-詳細については、[Azure サービス タグ](service-tags-overview.md)に関するページをご覧ください。 
-
-## <a name="default-security-rules"></a>既定セキュリティ規則
+### <a name="default-security-rules"></a>既定セキュリティ規則
 
 作成する各ネットワーク セキュリティ グループに、Azure によって次の既定の規則が作成されます。
 
-### <a name="inbound"></a>受信
+#### <a name="inbound"></a>受信
 
-#### <a name="allowvnetinbound"></a>AllowVNetInBound
+##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
 |Priority|source|ソース ポート|宛先|宛先ポート|Protocol|アクセス|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Any|Allow|
 
-#### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
+##### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
 |Priority|source|ソース ポート|宛先|宛先ポート|Protocol|アクセス|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Any|Allow|
 
-#### <a name="denyallinbound"></a>DenyAllInbound
+##### <a name="denyallinbound"></a>DenyAllInbound
 
 |Priority|source|ソース ポート|宛先|宛先ポート|Protocol|アクセス|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Any|拒否|
 
-### <a name="outbound"></a>送信
+#### <a name="outbound"></a>送信
 
-#### <a name="allowvnetoutbound"></a>AllowVnetOutBound
+##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
 |Priority|source|ソース ポート| 宛先 | 宛先ポート | Protocol | アクセス |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Any | Allow |
 
-#### <a name="allowinternetoutbound"></a>AllowInternetOutBound
+##### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
 |Priority|source|ソース ポート| 宛先 | 宛先ポート | Protocol | アクセス |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | インターネット | 0-65535 | Any | Allow |
 
-#### <a name="denyalloutbound"></a>DenyAllOutBound
+##### <a name="denyalloutbound"></a>DenyAllOutBound
 
 |Priority|source|ソース ポート| 宛先 | 宛先ポート | Protocol | アクセス |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Any | 拒否 |
 
-"**ソース**" 列と "**宛先**" 列の *VirtualNetwork*、*AzureLoadBalancer*、および *Internet* は、IP アドレスではなく[サービス タグ](service-tags-overview.md)です。 "プロトコル" 列で "**Any**" は TCP、UDP、ICMP を含みます。 規則を作成するときに、TCP、UDP、ICMP、または Any を指定できます。 "**ソース**" 列と "**宛先**" 列の *0.0.0.0/0* は、すべてのアドレスを表します。 Azure portal、Azure CLI、または Powershell などのクライアントでは * または any をこの式に使用できます。
+"**ソース**" 列と "**宛先**" 列の *VirtualNetwork*、*AzureLoadBalancer*、および *Internet* は、IP アドレスではなく[サービス タグ](service-tags-overview.md)です。 "プロトコル" 列で "**Any**" は TCP、UDP、ICMP を含みます。 規則を作成するときに、TCP、UDP、ICMP、または Any を指定できます。 "**ソース**" 列と "**宛先**" 列の *0.0.0.0/0* は、すべてのアドレスを表します。 Azure portal、Azure CLI、または PowerShell などのクライアントでは * または any をこの式に使用できます。
  
 既定の規則は削除できませんが、優先順位の高い規則を作成することでオーバーライドできます。
 
-## <a name="application-security-groups"></a>アプリケーション セキュリティ グループ
+### <a name="augmented-security-rules"></a>拡張セキュリティ規則
 
-アプリケーション セキュリティ グループを使用すると、ネットワーク セキュリティをアプリケーションの構造の自然な拡張として構成でき、仮想マシンをグループ化して、それらのグループに基づくネットワーク セキュリティ ポリシーを定義できます。 明示的な IP アドレスを手動でメンテナンスせずに、大きなセキュリティ ポリシーを再利用することができます。 プラットフォームが明示的な IP アドレスと複数の規則セットの複雑さを処理するので、ユーザーはビジネス ロジックに専念することができます。 アプリケーション セキュリティ グループをよりよく理解するために、次の例について考えてください。
+拡張セキュリティ規則を使用すると仮想ネットワークのセキュリティ定義が簡略化され、大規模で複雑なネットワーク セキュリティ ポリシーを少ない規則で定義できます。 複数のポート、複数の明示的 IP アドレスおよび範囲を組み合わせて、単一のわかりやすいセキュリティ規則を作成することができます。 拡張規則は、規則のソース、宛先、ポート フィールドで使います。 セキュリティ規則の定義の保守を簡素化するには、拡張セキュリティ規則と[サービス タグ](service-tags-overview.md) または [アプリケーション セキュリティ グループ](#application-security-groups) を組み合わせます。 規則に指定できるアドレス、範囲、およびポートの数には、制限があります。 詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) に関する記事をご覧ください。
 
-![アプリケーション セキュリティ グループ](./media/security-groups/application-security-groups.png)
+#### <a name="service-tags"></a>サービス タグ
 
-前の図では、*NIC1* と *NIC2* が *AsgWeb* アプリケーション セキュリティ グループのメンバーです。 *NIC3* は、*AsgLogic* アプリケーション セキュリティ グループのメンバーです。 *NIC4* は、*AsgDb* アプリケーション セキュリティ グループのメンバーです。 この例の各ネットワーク インターフェイスは 1 つのアプリケーション セキュリティ グループだけのメンバーですが、ネットワーク インターフェイスは複数のアプリケーション セキュリティ グループのメンバーにすることができます (最大数については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)を参照してください)。 ネットワーク セキュリティ グループが関連付けられているネットワーク インターフェイスはありません。 *NSG1* は両方のサブネットに関連付けられており、次の規則を含んでいます。
+サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 これは、ネットワーク セキュリティ規則の頻繁な更新の複雑さを最小限に抑えるのに役立ちます。
 
-### <a name="allow-http-inbound-internet"></a>Allow-HTTP-Inbound-Internet
+詳細については、[Azure サービス タグ](service-tags-overview.md)に関するページをご覧ください。 ストレージ サービス タグを使用してネットワーク アクセスを制限する方法の例については、[PaaS リソースへのネットワーク アクセスの制限](tutorial-restrict-network-access-to-resources.md)に関する記事を参照してください。
 
-この規則は、インターネットから Web サーバーへのトラフィックを許可するために必要です。 インターネットからの受信トラフィックは [DenyAllInbound](#denyallinbound) 既定セキュリティ規則によって拒否されるため、*AsgLogic* または *AsgDb* アプリケーション セキュリティ グループでは追加の規則は必要ありません。
+#### <a name="application-security-groups"></a>アプリケーション セキュリティ グループ
 
-|Priority|source|ソース ポート| 宛先 | 宛先ポート | Protocol | アクセス |
-|---|---|---|---|---|---|---|
-| 100 | インターネット | * | AsgWeb | 80 | TCP | Allow |
-
-### <a name="deny-database-all"></a>Deny-Database-All
-
-[AllowVNetInBound](#allowvnetinbound) 既定セキュリティ規則では、同じ仮想ネットワーク上にあるリソース間の通信がすべて許可されるため、この規則はすべてのリソースからのトラフィックを拒否するために必要です。
-
-|Priority|source|ソース ポート| 宛先 | 宛先ポート | Protocol | アクセス |
-|---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | Any | 拒否 |
-
-### <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
-
-この規則は、*AsgLogic* アプリケーション セキュリティ グループから *AsgDb* アプリケーション セキュリティ グループへのトラフィックを許可します。 この規則の優先度は、*Deny-Database-All* 規則の優先度よりも高くなっています。 その結果、この規則は *Deny-Database-All* 規則の前に処理されるため、*AsgLogic* アプリケーション セキュリティ グループからのトラフィックは許可されますが、他のすべてのトラフィックはブロックされます。
-
-|Priority|source|ソース ポート| 宛先 | 宛先ポート | Protocol | アクセス |
-|---|---|---|---|---|---|---|
-| 110 | AsgLogic | * | AsgDb | 1433 | TCP | Allow |
-
-アプリケーション セキュリティ グループを送信元または送信先として指定されている規則は、アプリケーション セキュリティ グループのメンバーであるネットワーク インターフェイスにのみ適用されます。 ネットワーク インターフェイスがアプリケーション セキュリティ グループのメンバーでない場合、ネットワーク セキュリティ グループがサブネットに関連付けられていても、規則はネットワーク インターフェイスに適用されません。
-
-アプリケーション セキュリティ グループには、次の制約があります。
-
--   アプリケーション セキュリティ グループに関しては他にもいくつかの制限がありますが、サブスクリプションに含めることができるアプリケーション セキュリティ グループの数にも制限があります。 詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) に関する記事をご覧ください。
-- セキュリティ規則のソースおよび宛先として、1 つのアプリケーション セキュリティ グループを指定できます。 送信元と送信先に複数のアプリケーション セキュリティ グループを指定することはできません。
-- アプリケーション セキュリティ グループに最初に割り当てられたネットワーク インターフェイスが存在する仮想ネットワークに、そのアプリケーション セキュリティ グループに割り当てられたすべてのネットワーク インターフェイスが存在する必要があります。 たとえば、*AsgWeb* という名前のアプリケーション セキュリティ グループに最初に割り当てられたネットワーク インターフェイスが *VNet1* という名前の仮想ネットワークにある場合、*AsgWeb* に以降に割り当てられるすべてのネットワーク インターフェイスが *VNet1* に存在する必要があります。 異なる仮想ネットワークからのネットワーク インターフェイスを同じアプリケーション セキュリティ グループに追加することはできません。
-- セキュリティ規則のソースおよび宛先としてアプリケーション セキュリティ グループを指定する場合、両方のアプリケーション セキュリティ グループのネットワーク インターフェイスが、同じ仮想ネットワークに存在している必要があります。 たとえば、*VNet1* のネットワーク インターフェイスが *AsgLogic*、*VNet2* のネットワーク インターフェイスが *AsgDb* に存在する場合、規則の送信元として *AsgLogic*、送信先として *AsgDb* を割り当てることはできません。 送信元と送信先の両方のアプリケーション セキュリティ グループ内のすべてのネットワーク インターフェイスは、同じ仮想ネットワークに存在している必要があります。
-
-> [!TIP]
-> 必要なセキュリティ規則の数と、規則を変更する必要性を最小限に抑えるには、必要なアプリケーション セキュリティ グループを綿密に計画し、できる限り個々の IP アドレスまたは IP アドレスの範囲ではなく、サービス タグまたはアプリケーション セキュリティ グループを使用して規則を作成します。
+アプリケーション セキュリティ グループを使用すると、ネットワーク セキュリティをアプリケーションの構造の自然な拡張として構成でき、仮想マシンをグループ化して、それらのグループに基づくネットワーク セキュリティ ポリシーを定義できます。 明示的な IP アドレスを手動でメンテナンスせずに、大きなセキュリティ ポリシーを再利用することができます。 詳細については、「[アプリケーション セキュリティ グループ](application-security-groups.md)」を参照してください。
 
 ## <a name="how-traffic-is-evaluated"></a>トラフィックの評価方法
 
@@ -193,7 +153,7 @@ Azure がネットワーク セキュリティ グループの受信規則と送
 
 ## <a name="azure-platform-considerations"></a>Azure プラットフォームに関する考慮事項
 
-- **ホスト ノードの仮想 IP**:DHCP、DNS、IMDS、正常性の監視などの基本的なインフラストラクチャ サービスは、仮想化されたホストの IP アドレス 168.63.129.16 および 169.254.169.254 を通じて提供されます。 これらの IP アドレスは Microsoft に属し、この目的のためにすべてのリージョンで使われる唯一の仮想化 IP アドレスです。
+- **ホスト ノードの仮想 IP**:DHCP、DNS、IMDS、正常性の監視などの基本的なインフラストラクチャ サービスは、仮想化されたホストの IP アドレス 168.63.129.16 および 169.254.169.254 を通じて提供されます。 これらの IP アドレスは Microsoft に属し、この目的のためにすべてのリージョンで使われる唯一の仮想化 IP アドレスです。 有効なセキュリティ ルールと有効なルートには、これらのプラットフォーム規則は含まれません。 この基本的なインフラストラクチャ通信をオーバーライドするには、ネットワーク セキュリティ グループの規則に、次の[サービス タグ](service-tags-overview.md)を使用してトラフィックを拒否するセキュリティ規則を作成します: AzurePlatformDNS、AzurePlatformIMDS、AzurePlatformLKM。 [ネットワーク トラフィック フィルタリングの診断](diagnose-network-traffic-filter-problem.md)および[ネットワーク ルーティングの診断](diagnose-network-routing-problem.md)方法について確認してください。
 - **ライセンス (キー管理サービス)** :仮想マシンで実行されている Windows イメージのライセンスを取得する必要があります。 ライセンスを適用するために、そのような問い合わせを処理するキー管理サービスのホスト サーバーには要求が送信されます。 この要求は、ポート 1688 を通じて送信されます。 [default route 0.0.0.0/0](virtual-networks-udr-overview.md#default-route) 構成を使用したデプロイに関しては、このプラットフォーム ルールは無効となります。
 - **負荷分散プール内の仮想マシン**:適用されるソース ポートおよびアドレス範囲は、元のコンピューターからのもので、ロード バランサーではありません。 宛先ポートとアドレス範囲は、ロード バランサーのものではなく、宛先コンピューターのものになります。
 - **Azure のサービス インスタンス**:HDInsight、Application Service Environments、および仮想マシン スケール セットなどの Azure サービスのインスタンスが仮想ネットワークのサブネットにデプロイされています。 仮想ネットワークにデプロイできるサービスの詳細な一覧については、[Azure サービスの仮想ネットワーク](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)に関するページをご覧ください。 リソースがデプロイされているサブネットにネットワーク セキュリティ グループを適用する前に、各サービスのポート要件を確認してください。 サービスに必要なポートを拒否すると、サービスは正しく機能しません。

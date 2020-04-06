@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382c588ca005f95f4ae38e7506c0e3e8d842bd2c
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 45648170f69d513b15e79cdd76f56e66bbc88bfa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298651"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332082"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングの前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド プロビジョニングを選択して使用する方法に関するガイダンスを示します。
@@ -53,7 +53,7 @@ Azure AD Connect クラウド プロビジョニングを使用するには、�
 
         | ポート番号 | 用途 |
         | --- | --- |
-        | **80** | SSL 証明書を検証する際に証明書失効リスト (CRL) をダウンロードします。  |
+        | **80** | TLS/SSL 証明書を検証する際に、証明書失効リスト (CRL) をダウンロードします。  |
         | **443** | サービスを使用したすべての送信方向の通信を処理します。 |
         | **8080** (省略可能) | ポート 443 が使用できない場合、エージェントは、ポート 8080 経由で 10 分おきにその状態をレポートします。 この状態は Azure AD ポータルに表示されます。 |
      

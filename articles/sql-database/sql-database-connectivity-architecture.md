@@ -11,17 +11,22 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-ms.date: 07/02/2019
-ms.openlocfilehash: 6a90e9ba264c4abddf2c26cb7b1761a7a51b1778
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 03/09/2020
+ms.openlocfilehash: 6fdfbce6dce2428a8f2757b0755e6f982f02240f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647681"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228683"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL の接続アーキテクチャ
+> [!NOTE]
+> この記事は Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
 
-この記事では Azure SQL Database および SQL Data Warehouse の接続アーキテクチャのほか、さまざまなコンポーネントがどのように機能し、トラフィックが Azure SQL インスタンスに送信されるか説明します。 これらの接続コンポーネントが機能し、Azure 内外からクライアントが接続する Azure SQL Database または SQL Data Warehouse にネットワーク トラフィックが送信されます。 この記事では、接続方法を変更するためのスクリプト サンプルと、既定の接続設定の変更に関連する考慮事項も提供します。
+> [!IMPORTANT]
+> この記事は、**Azure SQL Database Managed Instance** には "*適用されません*"。 [マネージド インスタンスの接続アーキテクチャ](sql-database-managed-instance-connectivity-architecture.md)に関するページを参照してください。
+
+この記事では、Azure SQL Database または SQL Data Warehouse にネットワーク トラフィックを誘導するさまざまなコンポーネントのアーキテクチャについて説明します。 さまざまな接続ポリシーと、それが Azure 内から接続するクライアントと Azure 外から接続するクライアントに与える影響について説明します。 
 
 ## <a name="connectivity-architecture"></a>接続のアーキテクチャ
 
@@ -39,11 +44,11 @@ ms.locfileid: "75647681"
 
 Azure SQL Database は、SQL Database サーバーの接続ポリシー設定について次の 3 つのオプションをサポートしています。
 
-- **リダイレクト (推奨):** クライアントは、データベースをホストしているノードへの直接接続を確立します。これにより、待機時間が短縮され、スループットが向上します。 接続でこのモードを使用するには、クライアントで次のことを行う必要があります
-   - 11000 11999 の範囲のポートで、クライアントから、リージョン内のすべての Azure IP アドレスへのインバウンドおよびアウトバウンド通信を許可します。  
-   - ポート 1433 で、クライアントから、Azure SQL Database ゲートウェイの IP アドレスへのインバウンドおよびアウトバウンド通信を許可します。
+- **リダイレクト (推奨):** クライアントは、データベースをホストしているノードへの直接接続を確立します。これにより、待機時間が短縮され、スループットが向上します。 接続でこのモードを使用するには、クライアントで次を行う必要があります。
+   - 11000 11999 の範囲のポートで、クライアントから、リージョン内のすべての Azure IP アドレスへのアウトバウンド通信を許可します。 SQL のサービス タグを使用すると、この管理が簡単になります。  
+   - ポート 1433 で、クライアントから、Azure SQL Database ゲートウェイの IP アドレスへのアウトバウンド通信を許可します。
 
-- **プロキシ:** このモードでは、すべての接続が Azure SQL Database ゲートウェイ経由でプロキシ化されるため、待機時間が長くなり、スループットが低下します。 接続でこのモードを使用するには、クライアントのポート 1433 で、クライアントから、Azure SQL Database ゲートウェイの IP アドレスへのインバウンドおよびアウトバウンド通信を許可する必要があります。
+- **プロキシ:** このモードでは、すべての接続が Azure SQL Database ゲートウェイ経由でプロキシ化されるため、待機時間が長くなり、スループットが低下します。 接続でこのモードを使用するには、クライアントのポート 1433 で、クライアントから、Azure SQL Database ゲートウェイの IP アドレスへのアウトバウンド通信を許可する必要があります。
 
 - **既定値:** これは、明示的に接続ポリシーを `Proxy` または `Redirect` に変更しない限り、作成後のすべてのサーバーで有効になる接続ポリシーです。 Azure の内部からの (たとえば、Azure 仮想マシンからの) すべてのクライアント接続の既定のポリシーは `Redirect` であり、外部からのすべてのクライアント接続 (たとえば、ローカル ワークステーションからの接続) の既定のポリシーは `Proxy` です。
 
@@ -82,12 +87,12 @@ Azure 外から接続する場合、接続には既定で `Proxy` の接続ポ�
 | カナダ中部       | 40.85.224.249      |
 | カナダ東部          | 40.86.226.166      |
 | 米国中部           | 13.67.215.62、52.182.137.15、23.99.160.139、104.208.16.96、104.208.21.1 | 
-| 中国 (東部)           | 139.219.130.35     |
+| 中国東部           | 139.219.130.35     |
 | 中国東部 2         | 40.73.82.1         |
-| 中国 (北部)          | 139.219.15.17      |
+| 中国北部          | 139.219.15.17      |
 | 中国北部 2        | 40.73.50.0         |
 | 東アジア            | 191.234.2.139、52.175.33.150、13.75.32.4 |
-| East US              | 40.121.158.30、40.79.153.12、191.238.6.43、40.78.225.32 |
+| 米国東部              | 40.121.158.30、40.79.153.12、191.238.6.43、40.78.225.32 |
 | 米国東部 2            | 40.79.84.180、52.177.185.181、52.167.104.0、191.239.224.107、104.208.150.3 | 
 | フランス中部       | 40.79.137.0、40.79.129.1 |
 | ドイツ中部      | 51.4.144.100       |
@@ -101,6 +106,8 @@ Azure 外から接続する場合、接続には既定で `Proxy` の接続ポ�
 | 韓国南部          | 52.231.200.86      |
 | 米国中北部     | 23.96.178.199、23.98.55.75、52.162.104.33 |
 | 北ヨーロッパ         | 40.113.93.91、191.235.193.75、52.138.224.1 | 
+| ノルウェー東部          | 51.120.96.0        |
+| ノルウェー西部          | 51.120.216.0       |
 | 南アフリカ北部   | 102.133.152.0      |
 | 南アフリカ西部    | 102.133.24.0       |
 | 米国中南部     | 13.66.62.124、23.98.162.75、104.214.16.32   | 
@@ -115,78 +122,7 @@ Azure 外から接続する場合、接続には既定で `Proxy` の接続ポ�
 | 米国西部 2            | 13.66.226.202      |
 |                      |                    |
 
-## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL Database 接続ポリシーを変更する
 
-Azure SQL Database サーバーの Azure SQL Database 接続ポリシーを変更するには、[conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) コマンドを使用します。
-
-- 接続ポリシーを `Proxy` に設定すると、すべてのネットワーク パケットが Azure SQL Database ゲートウェイ経由で送信されます。 この設定の場合、Azure SQL Database ゲートウェイ IP のみに送信を許可する必要があります。 `Proxy` の設定を利用すると、`Redirect` の設定より待ち時間が長くなります。
-- 接続ポリシーで `Redirect` を設定すると、すべてのネットワーク パケットがデータベース クラスターに直接送信されます。 この設定の場合、複数の IP への送信を許可する必要があります。
-
-## <a name="script-to-change-connection-settings-via-powershell"></a>接続の設定を変更する PowerShell のスクリプト
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 次のスクリプトは [Azure PowerShell](/powershell/azure/install-az-ps) モジュールを必要とします。
-
-次の PowerShell スクリプトは、接続ポリシーの変更方法を示しています。
-
-```powershell
-# Get SQL Server ID
-$sqlserverid=(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).ResourceId
-
-# Set URI
-$id="$sqlserverid/connectionPolicies/Default"
-
-# Get current connection policy
-(Get-AzResource -ResourceId $id).Properties.connectionType
-
-# Update connection policy
-Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
-```
-
-## <a name="script-to-change-connection-settings-via-azure-cli"></a>接続の設定を変更する Azure CLI のスクリプト
-
-> [!IMPORTANT]
-> このスクリプトは [Azure CLI ](https://docs.microsoft.com/cli/azure/install-azure-cli) を必要とします。
-
-### <a name="azure-cli-in-a-bash-shell"></a>bash シェルでの Azure CLI
-
-> [!IMPORTANT]
-> このスクリプトは [Azure CLI ](https://docs.microsoft.com/cli/azure/install-azure-cli) を必要とします。
-
-次の CLI スクリプトは、bash シェルでの接続ポリシーの変更方法を示しています。
-
-```azurecli-interactive
-# Get SQL Server ID
-sqlserverid=$(az sql server show -n sql-server-name -g sql-server-group --query 'id' -o tsv)
-
-# Set URI
-ids="$sqlserverid/connectionPolicies/Default"
-
-# Get current connection policy
-az resource show --ids $ids
-
-# Update connection policy
-az resource update --ids $ids --set properties.connectionType=Proxy
-```
-
-### <a name="azure-cli-from-a-windows-command-prompt"></a>Windows のコマンド プロンプトからの Azure CLI
-
-> [!IMPORTANT]
-> このスクリプトは [Azure CLI ](https://docs.microsoft.com/cli/azure/install-azure-cli) を必要とします。
-
-次の CLI スクリプトは、(Azure CLI がインストールされている場合に) Windows コマンド プロンプトから接続ポリシーを変更する方法を示しています。
-
-```azurecli
-# Get SQL Server ID and set URI
-FOR /F "tokens=*" %g IN ('az sql server show --resource-group myResourceGroup-571418053 --name server-538465606 --query "id" -o tsv') do (SET sqlserverid=%g/connectionPolicies/Default)
-
-# Get current connection policy
-az resource show --ids %sqlserverid%
-
-# Update connection policy
-az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
-```
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,12 +3,12 @@ title: コンテナーに対する Azure Monitor を使用してライブ デー
 description: この記事では、コンテナー用 Azure Monitor による kubectl を使用せずに、Kubernetes ログ、イベント、およびポッド メトリックをリアルタイム ビューで表示する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 18ae091a32d0256288d27ad1439ffc7be26db5f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404754"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79216565"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes ログ、イベント、ポッド メトリックをリアルタイムで表示する方法
 
@@ -84,7 +84,7 @@ ms.locfileid: "75404754"
     
 選択したオブジェクトがコンテナーの場合は、ウィンドウの **[イベント]** オプションを選択します。 ノード、ポッド、またはコントローラーを選択した場合は、イベントの表示が自動的に選択されます。 
 
-    ![Controller properties pane view events](./media/container-insights-livedata-overview/controller-properties-live-events.png)  
+![コントローラーのプロパティ ウィンドウのイベント表示](./media/container-insights-livedata-overview/controller-properties-live-event.png)  
 
 ウィンドウのタイトルには、コンテナーがグループ化されているポッドの名前が表示されます。
 

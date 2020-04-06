@@ -1,26 +1,20 @@
 ---
 title: インクルード ファイル
 description: Microsoft 商業マーケットプレース標準契約のテキストのインクルード ファイル
-services: commercial marketplace
 documentationcenter: partner-center-commercial-marketplace
-author: ChJenk
-manager: evansma
-editor: ''
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 01/22/2020
-ms.author: v-chjen
+ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: 76603ef30cefa14018a7c6b976eb8541b9b608f4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9b99876b66826cc5a66cba686a7d6a5243b47b98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76760899"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277224"
 ---
 Microsoft では、商業マーケットプレース向けに標準契約テンプレートを提供しています。
 
@@ -47,9 +41,9 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 >[!NOTE]
 > これらの 2 種類の修正は、互いに重なり合っています。 カスタム修正の対象となるお客様には、購入中に標準契約へのユニバーサル修正も示されます。
 
-**[Universal amendment terms to the Standard Contract for Microsoft’s commercial marketplace]\(Microsoft の商業マーケットプレース向け標準契約のユニバーサル修正条項\)** : このボックスには、ユニバーサルな修正条項を入力します。 オファーごとに 1 つのユニバーサル修正を提供できます。 このボックスに入力できる文字数は無制限です。 これらの条項は、AppSource、Azure Marketplace、Azure portal で、発見と購入のフロー中に顧客に表示されます。
+**[Microsoft のコマーシャル マーケットプレース向け標準契約へのユニバーサル変更条件]** : このボックスには、ユニバーサルな修正条項を入力します。 オファーごとに 1 つのユニバーサル修正を提供できます。 このボックスに入力できる文字数は無制限です。 これらの条項は、AppSource、Azure Marketplace、Azure portal で、発見と購入のフロー中に顧客に表示されます。
 
-**[Custom amendment terms to the Standard Contract for Microsoft’s commercial marketplace]\(Microsoft の商業マーケットプレース向け標準契約のカスタム修正条項\)** : まず、 **[Add custom amendment terms]\(カスタム修正条項の追加\)** を選択します。 オファーごとに 10 件までのカスタム修正条項を提供できます。
+**[Custom amendment terms to the Standard Contract for Microsoft's commercial marketplace]\(Microsoft の商業マーケットプレース向け標準契約のカスタム修正条項\)** : まず、 **[Add custom amendment terms]\(カスタム修正条項の追加\)** を選択します。 オファーごとに 10 件までのカスタム修正条項を提供できます。
 
 - **[Custom amendment terms]\(カスタム修正条項\)** : カスタム修正条項をカスタム修正条項ボックスに入力します。 このボックスに入力できる文字数は無制限です。 Azure portal では、これらのカスタム修正条項に対して指定したテナント ID の顧客にのみ、オファーの購入フローでカスタム修正条項が提示されます。  
 - **[テナント ID]** (必須): それぞれのカスタム修正で対象にできるテナント ID は 20 個までです。 カスタム修正を追加する場合、少なくとも 1 つのテナント ID を指定する必要があります。 テナント ID は Azure で顧客を識別します。 この ID は顧客に問い合わせることができ、顧客は portal.azure.com > [Azure Active Directory] > [プロパティ] にアクセスして ID を確認できます。 ディレクトリ ID の値はテナント ID です (例: 50c464d3-4930-494c-963c-1e951d15360e)。 [[What is my Microsoft Azure and Office 365 tenant ID?]\(Microsoft Azure および Office 365 テナント ID の確認\)](https://www.whatismytenantid.com) で、顧客のドメイン名 URL を使用して顧客の組織のテナント ID を検索することもできます。

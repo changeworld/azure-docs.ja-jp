@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
-ms.openlocfilehash: f21c99b18102adc9d43c21964e51b7c7b769771e
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 214b2868f9733dfc6790c492543fb86a832f18b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431215"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065505"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する
 
@@ -73,7 +73,7 @@ Azure BLOB コネクタは、次の認証の種類をサポートします。詳
 
 ストレージ アカウント キー認証の使用には、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、**AzureBlobStorage** (推奨) または **AzureStorage** (後の注を参照) に設定する必要があります。 |はい |
 | connectionString | connectionString プロパティのために Storage に接続するために必要な情報を指定します。 <br/> アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
@@ -144,7 +144,7 @@ Shared Access Signature を使用すると、ストレージ アカウント内�
 
 Shared Access Signature 認証の使用には、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、**AzureBlobStorage** (推奨) または **AzureStorage** (後の注を参照) に設定する必要があります。 |はい |
 | sasUri | BLOB、コンテナーなどの Storage リソースへの Shared Access Signature URI を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 自動ローテーションを活用してトークン部分を削除するために、SAS トークンを Azure Key Vault に配置することもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
@@ -228,7 +228,7 @@ Shared Access Signature の URI を作成する際は、次の点に注意して
 
 Azure BLOB ストレージのリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、**AzureBlobStorage** に設定する必要があります。 |はい |
 | serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure BLOB ストレージ サービス エンドポイントを指定します。 |はい |
@@ -264,7 +264,7 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 }
 ```
 
-### <a name="managed-identity"></a> Azure リソースのマネージド ID 認証
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure リソースのマネージド ID 認証
 
 データ ファクトリは、特定のデータ ファクトリを表す、[Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 独自のサービス プリンシパルを使用するのと同様に、BLOB ストレージ認証にこのマネージド ID を直接使用できます。 これにより、この指定されたファクトリは、BLOB ストレージにアクセスしてデータをコピーできます。
 
@@ -282,7 +282,7 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 
 Azure BLOB ストレージのリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、**AzureBlobStorage** に設定する必要があります。 |はい |
 | serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure BLOB ストレージ サービス エンドポイントを指定します。 |はい |
@@ -317,7 +317,7 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 
 Azure BLOB では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
-| プロパティ   | 説明                                                  | Required |
+| プロパティ   | 説明                                                  | 必須 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | データセット内の location の type プロパティは、**AzureBlobStorageLocation** に設定する必要があります。 | はい      |
 | container  | BLOB コンテナー。                                          | はい      |
@@ -361,7 +361,7 @@ Azure BLOB では、形式ベースのデータセットの `location` 設定に
 
 Azure BLOB では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
-| プロパティ                 | 説明                                                  | Required                                      |
+| プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` の type プロパティは **AzureBlobStorageReadSettings** に設定する必要があります。 | はい                                           |
 | recursive                | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。 使用可能な値: **true** (既定値) および **false**。 | いいえ                                            |
@@ -422,7 +422,7 @@ Azure BLOB では、形式ベースのコピー ソースの `storeSettings` 設
 
 Azure BLOB では、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
 
-| プロパティ                 | 説明                                                  | Required |
+| プロパティ                 | 説明                                                  | 必須 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` の type プロパティは **AzureBlobStorageWriteSettings** に設定する必要があります。 | はい      |
 | copyBehavior             | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイルまたは BLOB の名前を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ       |
@@ -514,7 +514,8 @@ Amazon S3、Azure Blob、Azure Data Lake Storage Gen2 から Azure Data Lake Sto
 * ```[]``` - 角カッコ内の文字のいずれか 1 つと一致します。
 
 * ```/data/sales/**/*.csv``` - /data/sales の下のすべての csv ファイルを取得します。
-* ```/data/sales/20??/**``` - 20 世紀のすべてのファイルを取得します。
+* ```/data/sales/20??/**/``` - 20 世紀のすべてのファイルを取得します。
+* ```/data/sales/*/*/*.csv``` - /data/sales の 2 レベル下の csv ファイルを取得します。
 * ```/data/sales/2004/*/12/[XY]1?.csv``` - 前に 2 桁の数字が付いた X または Y で始まる、2004 年 12 月のすべての csv ファイルを取得します。
 
 **[Partition root path]\(パーティションのルート パス\):** ```key=value``` 形式 (例: year=2019) のファイル ソース内のフォルダーをパーティション分割した場合、そのパーティション フォルダー ツリーの最上位をデータ フロー データ ストリーム内の列名に割り当てることができます。
@@ -566,7 +567,7 @@ Amazon S3、Azure Blob、Azure Data Lake Storage Gen2 から Azure Data Lake Sto
    * **既定**:Spark は PART の既定値に基づいて、ファイルに名前を付けることができます。
    * **パターン**:パーティションごとに出力ファイルを列挙するパターンを入力します。 たとえば、**loans[n].csv** と入力すると、loans1.csv、loans2.csv のように作成されます。
    * **Per partition**(パーティションあたり):パーティションごとに 1 つのファイル名を入力します。
-   * **As data in column**(列内のデータとして):出力ファイルを列の値に設定します。 パスは、書き込み先フォルダーではなく、データセット コンテナーからの相対パスです。
+   * **As data in column**(列内のデータとして):出力ファイルを列の値に設定します。 パスは、書き込み先フォルダーではなく、データセット コンテナーからの相対パスです。 データセット内にフォルダー パスがある場合は、上書きされます。
    * **Output to a single file**(1 つのファイルに出力する):パーティション分割された出力ファイルを単一の名前付きファイルに結合します。 パスは、データセット フォルダーからの相対パスです。 このマージ操作は、ノード サイズによっては失敗する可能性があることに注意してください。 このオプションは、大規模なデータセットに対しては推奨されません。
 
 **Quote all**\(すべてを引用符で囲む\):すべての値を引用符で囲むかどうかを決定します
@@ -590,7 +591,7 @@ Amazon S3、Azure Blob、Azure Data Lake Storage Gen2 から Azure Data Lake Sto
 
 ### <a name="legacy-dataset-model"></a>レガシ データセット モデル
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの type プロパティは、**AzureBlob** に設定する必要があります。 |はい |
 | folderPath | BLOB ストレージのコンテナーとフォルダーのパス。 <br/><br/>ワイルドカード フィルターは、コンテナー名を除くパスに対してサポートされます。 使用できるワイルドカーは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。実際のフォルダー名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。 <br/><br/>例: myblobcontainer/myblobfolder/。「[フォルダーとファイル フィルターの例](#folder-and-file-filter-examples)」の例を参照してください。 |はい (Copy/Lookup アクティビティの場合)、いいえ (GetMetadata アクティビティの場合) |
@@ -635,7 +636,7 @@ Amazon S3、Azure Blob、Azure Data Lake Storage Gen2 から Azure Data Lake Sto
 
 ### <a name="legacy-copy-activity-source-model"></a>レガシ コピー アクティビティ ソース モデル
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティを **BlobSource** に設定する必要があります |はい |
 | recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定され、シンクがファイル ベースのストアである場合、空のフォルダーおよびサブフォルダーはシンクでコピーも作成もされないことに注意してください。<br/>使用可能な値: **true** (既定値) および **false**。 | いいえ |
@@ -675,7 +676,7 @@ Amazon S3、Azure Blob、Azure Data Lake Storage Gen2 から Azure Data Lake Sto
 
 ### <a name="legacy-copy-activity-sink-model"></a>レガシ コピー アクティビティ シンク モデル
 
-| プロパティ | 説明 | Required |
+| プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティは **BlobSink** に設定する必要があります。 |はい |
 | copyBehavior | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイルまたは BLOB の名前を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ |

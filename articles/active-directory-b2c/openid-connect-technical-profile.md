@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e8a56fdfd57b44677cf5459eb1a4e6e46e6bdae
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: e259a57a9cd6b24362862ffd6cb738157ca912d5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399077"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332761"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OpenID Connect 技術プロファイルを定義する
 
@@ -91,6 +91,16 @@ Azure Active Directory B2C (Azure AD B2C) では、[OpenID Connect](https://open
 | MarkAsFailureOnStatusCode5xx | いいえ | Http 状態コードが 5xx の範囲にある場合、外部サービスへの要求を失敗としてマークする必要があるかどうかを示します。 既定では、 `false`です。 |
 | DiscoverMetadataByTokenIssuer | いいえ | JWT トークンで発行者を使用して OIDC メタデータを検出する必要があるかどうかを示します。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
+
+### <a name="ui-elements"></a>UI 要素
+ 
+次の設定を使用して、失敗したときに表示されるエラー メッセージを構成できます。 メタデータは、OpenID Connect 技術プロファイルで構成する必要があります。 エラー メッセージは、[ローカライズ](localization-string-ids.md#sign-up-or-sign-in-error-messages)できます。
+
+| 属性 | Required | 説明 |
+| --------- | -------- | ----------- |
+| UserMessageIfClaimsPrincipalDoesNotExist | いいえ | 指定されたユーザー名のアカウントがディレクトリに見つからなかった場合に、ユーザーに表示するメッセージ。 |
+| UserMessageIfInvalidPassword | いいえ | パスワードが正しくない場合にユーザーに表示するメッセージ。 |
+| UserMessageIfOldPasswordUsed| いいえ |  古いパスワードが使用されている場合にユーザーに表示するメッセージ。|
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

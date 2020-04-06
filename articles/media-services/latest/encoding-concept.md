@@ -13,18 +13,21 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6e1c9aa5c2e049d5fc1ebd8bf745417f56d232ec
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981101"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366580"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Media Services を使用したビデオとオーディオのエンコード
 
 Media Services では、エンコードという用語は、デジタル ビデオやデジタル オーディオを含むファイルをある標準形式から別の標準形式に変換するプロセスを表します。変換の目的は、(a) ファイルのサイズを減らしたり、(b) 広範なデバイスやアプリと互換性のある形式を生成したりすることにあります。 このプロセスは、ビデオ圧縮やコード変換とも呼ばれます。 この概念の詳細については、「[Data compression (データ圧縮)](https://en.wikipedia.org/wiki/Data_compression)」と「[What Is Encoding and Transcoding? (エンコードとコード変換とは)](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx)」を参照してください。
 
 通常、ビデオは[プログレッシブ ダウンロード](https://en.wikipedia.org/wiki/Progressive_download)または[アダプティブ ビットレート ストリーミング](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)を介してデバイスとアプリに配信されます。
+
+> [!IMPORTANT]
+> Media Services では、取り消されたジョブまたはエラーのあるジョブに対する課金は行われません。 たとえば、進行状況が 50% で取り消されたジョブが、ジョブの分数の 50% に対して課金されることはありません。 完了したジョブに対してのみ課金されます。
 
 * プログレッシブ ダウンロードによって配信する場合、Azure Media Services を使用してデジタル メディア ファイル (中間ファイル) を [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) ファイルに変換できます。MP4 には、[H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) コーデックでエンコードされているビデオと、[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) コーデックでエンコードされているオーディオが含まれています。 この MP4 ファイルは、ご使用のストレージ アカウントの資産に書き込まれます。 Azure Storage API または SDK ([Storage REST API](../../storage/common/storage-rest-api-auth.md)、[.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md) など) を使用して、ファイルを直接ダウンロードできます。 ストレージで特定のコンテナー名を使用して出力資産を作成した場合は、その場所を使用してください。 それ以外の場合は、Media Services を使用して、[資産コンテナーの URL を一覧表示](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)できます。 
 * アダプティブ ビットレート ストリーミングによって配信するコンテンツを準備するには、中間ファイルを複数のビット レート (高から低) でエンコードする必要があります。 品質を適切に推移させるために、ビットレートが低下するとビデオの解像度が低下します。 これにより、解像度とビットレートの表である、いわゆるエンコード ラダーが生成されます ([自動生成されたアダプティブ ビットレート ラダー](autogen-bitrate-ladder.md)に関するページを参照)。 Media Services を使用して、中間ファイルを複数のビットレートでエンコードできます。 これにより、一連の MP4 ファイルと、それらに関連付けられたストリーミング構成ファイルが得られ、ご利用のストレージ アカウント内のアセットに書き込まれます。 次に、Media Services の[ダイナミック パッケージ](dynamic-packaging-overview.md)機能を使用して、[MPEG DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) や [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) などのストリーミング プロトコルを介して動画を配信します。 そのためには、[ストリーミング ロケーター](streaming-locators-concept.md)を作成し、サポートされているプロトコルに対応するストリーミング URL を構築します。次に、これらは機能に基づいてデバイスやアプリに渡すことができます。
@@ -39,11 +42,11 @@ Media Services では、エンコードという用語は、デジタル ビデ�
 
 Media Services v3 でエンコードするには、[変換](https://docs.microsoft.com/rest/api/media/transforms)と[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)を作成する必要があります。 変換では、エンコード設定と出力のレシピを定義します。ジョブはレシピのインスタンスです。 詳しくは、「[Transform と Job](transforms-jobs-concept.md)」をご覧ください。
 
-Media Services でエンコードする場合、プリセットを使用してエンコーダーに入力メディア ファイルの処理方法を指示します。 たとえば、エンコードされたコンテンツに必要なビデオ解像度やオーディオ チャンネルの数を指定できます。
+Media Services でエンコードする場合、プリセットを使用してエンコーダーに入力メディア ファイルの処理方法を指示します。 Media Services v3 では、Standard Encoder を使用してファイルをエンコードします。 たとえば、エンコードされたコンテンツに必要なビデオ解像度やオーディオ チャンネルの数を指定できます。
 
 業界のベスト プラクティスに基づいて推奨される組み込みのプリセットのいずれかを使用して、すぐに始めることができます。また、特定のシナリオやデバイスの要件を対象とするカスタム プリセットを作成することもできます。 詳細については、[カスタム変換を使用するエンコード](customize-encoder-presets-how-to.md)に関するページを参照してください。
 
-2019 年 1 月より、Media Encoder Standard でエンコードして MP4 ファイルを生成すると、新しい .mpi ファイルが生成され、出力アセットに追加されます。 この MPI ファイルの目的は、[ダイナミック パッケージ](dynamic-packaging-overview.md)とストリーミングのシナリオのパフォーマンスを向上させることです。
+2019 年 1 月より、Standard Encoder でエンコードして MP4 ファイルを生成すると、新しい .mpi ファイルが生成され、出力アセットに追加されます。 この MPI ファイルの目的は、[ダイナミック パッケージ](dynamic-packaging-overview.md)とストリーミングのシナリオのパフォーマンスを向上させることです。
 
 > [!NOTE]
 > MPI ファイルを変更または削除したり、サービスにこのようなファイルが存在するかどうかに依存しないようにしてください。
@@ -135,6 +138,12 @@ Media Services v3 では、プリセットは API 自体で厳密に型指定さ
 ## <a name="scaling-encoding-in-v3"></a>v3 でのエンコードのスケーリング
 
 メディア処理のスケール設定を行うには、[CLI を使用したスケーリング](media-reserved-units-cli-how-to.md)に関するトピックをご覧ください。
+
+## <a name="billing"></a>課金
+
+Media Services では、取り消されたジョブまたはエラーのあるジョブに対する課金は行われません。 たとえば、進行状況が 50% で取り消されたジョブが、ジョブの分数の 50% に対して課金されることはありません。 完了したジョブに対してのみ課金されます。
+
+詳細については、[価格](https://azure.microsoft.com/pricing/details/media-services/)に関するページを参照してください。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 

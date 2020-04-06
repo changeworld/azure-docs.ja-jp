@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6d1ab50e471c9c603c7886130375dc74e9b2a755
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626181"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237363"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>リファレンス - 通信プロトコルの選択
 
@@ -48,7 +48,7 @@ IoT Hub によって、デバイスはデバイス側の通信に次のプロト
 * **ペイロードのサイズ**。 MQTT と AMQP はバイナリ プロトコルであり、HTTPS よりもペイロードが小さくなります。
 
 > [!WARNING]
-> HTTPS を使う場合、各デバイスでは 25 分以上の間隔で C2D メッセージをポーリングする必要があります。 ただし、開発段階では、ポーリングの頻度を 25 分より短く設定することができます。
+> HTTPS を利用する場合、各デバイスがクラウドからデバイスへのメッセージを確認する間隔はせいぜい 25 分に 1 回にしてください。 開発中は、必要に応じて、各デバイスでもっと頻繁にポーリングできます。
 
 ## <a name="port-numbers"></a>ポート番号
 
@@ -64,6 +64,6 @@ IoT Hub によって、デバイスはデバイス側の通信に次のプロト
 
 Azure リージョンに IoT Hub を作成すると、その IoT Hub は IoT Hub の存続期間中同じ IP アドレスを保持します。 ただし、サービス品質を維持するため、Microsoft によって IoT Hub が別のスケール ユニットに移動されると、新しい IP アドレスが割り当てられます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT Hub による MQTT プロトコルの実装方法の詳細については、[「MQTT プロトコルを使用した IoT Hub との通信」をご覧ください](iot-hub-mqtt-support.md)。

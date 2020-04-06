@@ -1,31 +1,31 @@
 ---
 title: 認証方法 | Microsoft Azure Maps
 description: この記事では、Azure Active Directory (Azure AD) と共有キー認証について説明します。 どちらも Microsoft Azure Maps サービスに使用されます。 Azure Maps のサブスクリプション キーを取得する方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 01/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 171219c001f43137a52f29b282fb1705b3d836aa
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 21d29cba85adfc147ec9deb6ab362a5da943bf10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649825"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335696"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Maps による認証
 
 Azure Maps には、要求の認証方法が 2 つあります。共有キー認証と Azure Active Directory 認証です。 この記事では、Azure Maps サービスの実装の参考になるように、これらの認証方法について説明します。
 
 > [!NOTE]
-> Azure Maps とのセキュリティで保護された通信を強化するために、TLS (トランスポート層セキュリティ) 1.2 がサポートされるようになりました。TLS 1.0 と1.1 のサポートは廃止されます。 サービスの中断を回避するために、**2020 年 4 月 2 日より前に、TLS 1.2 を使用するようにサーバーとアプリケーションを更新してください**。  現在 TLS 1.x を使用している場合は、[TLS 1.0 の問題の解決](https://docs.microsoft.com/security/solving-tls1-problem)に関する記事で説明されているテストを使用して、TLS 1.2 の準備を評価し、移行計画を作成します。
+> Azure Maps とのセキュリティで保護された通信を強化するために、TLS (トランスポート層セキュリティ) 1.2 がサポートされるようになりました。TLS 1.0 と 1.1 のサポートは廃止されます。 サービスの中断を回避するために、**2020 年 4 月 2 日より前に、TLS 1.2 を使用するようにサーバーとアプリケーションを更新してください**。  現在 TLS 1.x を使用している場合は、[TLS 1.0 の問題の解決](https://docs.microsoft.com/security/solving-tls1-problem)に関する記事で説明されているテストを使用して、TLS 1.2 の準備を評価し、移行計画を作成します。
 
 ## <a name="shared-key-authentication"></a>共有キー認証
 
- Azure Maps アカウントの作成後、主キーと 2 次キーが生成されます。 共有キー認証を使用して Azure Maps を呼び出す場合は、プライマリ キーをサブスクリプション キーとして使用することをお勧めします。 共有キー認証では、Azure Maps アカウントによって生成されたキーを Azure Maps サービスに渡します。 Azure Maps サービスへの要求ごとに、*サブスクリプション キー*をパラメーターとして URL に追加します。 2 次キーは、キーのローリング変更などのシナリオで使用できます。  
+ Azure Maps アカウントの作成後、主キーと 2 次キーが生成されます。 共有キー認証を使用して Azure Maps を呼び出す場合は、プライマリ キーをサブスクリプション キーとして使用することをお勧めします。 共有キー認証では、Azure Maps アカウントによって生成されたキーを Azure Maps サービスに渡します。 Azure Maps サービスへの要求ごとに、*サブスクリプション キー*をパラメーターとして URL に追加します。 2 次キーは、キーのローリング変更などのシナリオで使用できます。  
 
 Azure portal でキーを表示する方法について詳しくは、[認証の管理](https://aka.ms/amauthdetails)に関する記事をご覧ください。
 
@@ -60,7 +60,7 @@ Azure AD からのトークンの要求について詳しくは、「[認証と�
 
 Azure AD がトークンを受信すると、Azure Maps は次の一連の必須の要求ヘッダーを使用して要求を送信します。
 
-| 要求ヘッダー    |    Value    |
+| 要求ヘッダー    |    値    |
 |:------------------|:------------|
 | x-ms-client-id    | 30d7cc….9f55|
 | 承認     | Bearer eyJ0e….HNIVN |

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: db561761acbd5ff991f88cfd18cec8d4625336f2
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 8d538deca610fd9981d401d28b6bea1c31c6d4c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255518"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298868"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用して RDS SQL Server を Azure SQL Database または Azure SQL Database マネージド インスタンスにオンラインで移行する
 Azure Database Migration Service を使用すれば、RDS SQL Server インスタンスから [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) または [Azure SQL Database マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)に、最小限のダウンタイムでデータベースを移行できます。 このチュートリアルでは、Azure Database Migration Service を使用して、SQL Server 2012 (以降) の RDS SQL Server インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database または Azure SQL Database マネージド インスタンスに移行します。
@@ -223,7 +223,7 @@ DMA を使用して、Azure SQL Database にスキーマを移行します。
     信頼できる証明書がインストールされていない場合、SQL Server はインスタンスの開始時に自己署名証明書を生成します。 この証明書は、クライアント接続の資格情報の暗号化に使用されます。
 
     > [!CAUTION]
-    > 自己署名証明書を使用して暗号化されている SSL 接続のセキュリティは強力ではありません。 man-in-the-middle (中間者) 攻撃を受ける可能性が高くなります。 運用環境や、インターネットに接続されているサーバーでは、自己署名証明書を使用した SSL を信頼しないでください。
+    > 自己署名証明書で暗号化されている TLS 接続のセキュリティは強力ではありません。 man-in-the-middle (中間者) 攻撃を受ける可能性が高くなります。 実稼働環境やインターネットに接続しているサーバーでは、自己署名証明書を使用した TLS 接続は使用しないことをお勧めします。
 
    ![ソースの詳細](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-source-details3.png)
 

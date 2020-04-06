@@ -8,31 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/03/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4638b5bfc3ff31d0d2149e7ee227c46d3360a306
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 410f413fc8450c0ee33c3ca95e860a3e8de34107
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78254989"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332607"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) では、独自の RESTful サービスのサポートを提供しています。 Azure AD B2C は、入力要求コレクションでデータを RESTful サービスに送信し、出力要求コレクションで返却データを受信します。 RESTful サービスの統合により、次の操作を実行できます。
-
-- **ユーザー入力データの検証** - 不正なデータが Azure AD B2C に残らないようにします。 ユーザーが入力した値が有効でない場合、ユーザーに入力を指示するエラー メッセージがご利用の RESTful サービスによって返されます。 たとえば、ユーザーによって入力されたメール アドレスが顧客データベースに存在するかどうかを確認できます。
-- **入力要求の上書き** - 入力要求で値の書式を再設定できるようにします。 たとえば、ユーザーが名をすべて小文字または大文字で入力する場合に、名の最初の文字だけを大文字にするように書式設定できます。
-- **ユーザー データの拡充** - 企業の基幹業務アプリケーションとさらに統合できるようにします。 たとえば、RESTful サービスでは、ユーザーのメール アドレスを受け取り、顧客のデータベースを照会し、ユーザーのロイヤルティ番号を Azure AD B2C に返すことができます。 返された要求は、保存するか、次のオーケストレーション手順で評価するか、またはアクセス トークンに追加できます。
-- **カスタム ビジネス ロジックの実行** - プッシュ通知を送信する、企業データベースを更新する、ユーザー移行プロセスを実行する、アクセス許可を管理する、データベースを監査するなどの、アクションを実行できるようにします。
-
-お使いのポリシーでは、入力要求を REST API に送信する場合があります。 また、REST API は、お使いのポリシーで後に使用できる出力要求を返すか、エラー メッセージをスローする可能性があります。 次の方法で、RESTful サービスとの統合を設計できます。
-
-- **検証技術プロファイル** - 検証技術プロファイルは、RESTful サービスを呼び出します。 検証技術プロファイルでは、ユーザー体験を続ける前に、ユーザーが入力したデータを検証します。 検証技術プロファイルにより、エラー メッセージが自己宣言されたページに表示され、出力要求で返されます。
-- **要求の交換** - RESTful サービスへの呼び出しは、オーケストレーションの手順を経て行われます。 このシナリオでは、エラー メッセージを表示するためのユーザー インターフェイスはありません。 REST API がエラーを返す場合、ユーザーは、エラー メッセージがある証明書利用者アプリケーションにリダイレクトで戻されます。
+Azure Active Directory B2C (Azure AD B2C) では、独自の RESTful サービスの統合に対するサポートを提供しています。 Azure AD B2C は、入力要求コレクションでデータを RESTful サービスに送信し、出力要求コレクションで返却データを受信します。 詳細については、「[REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合](custom-policy-rest-api-intro.md)」を参照してください。  
 
 ## <a name="protocol"></a>Protocol
 
@@ -132,6 +122,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 | DebugMode | いいえ | 技術プロファイルをデバッグ モードで実行します。 指定できる値: `true` または `false` (既定値)。 デバッグ モードでは、REST API はより多くの情報を返すことができます。 [返却エラー メッセージ](#returning-error-message)のセクションを参照してください。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 | ResolveJsonPathsInJsonTokens  | いいえ | 技術プロファイルが JSON パスを解決するかどうかを示します。 指定できる値: `true` または `false` (既定値)。 このメタデータを使用して、入れ子になった JSON 要素からデータを読み取ります。 [OutputClaim](technicalprofiles.md#outputclaims) で、`PartnerClaimType` を、出力する JSON パス要素に設定します。 例: `firstName.localized`、または `data.0.to.0.email`。|
+| UseClaimAsBearerToken| いいえ| ベアラー トークンを含む要求の名前。|
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
@@ -218,19 +209,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 ## <a name="returning-error-message"></a>返却エラー メッセージ
 
-REST API は、「そのユーザーは CRM システムでは見つかりませんでした」などの、エラー メッセージを返す必要がある場合があります。 エラーが発生した場合、REST API は次の属性を持つ HTTP 409 エラー メッセージ (応答ステータスコードの競合) を返すことになります。
-
-| 属性 | Required | 説明 |
-| --------- | -------- | ----------- |
-| version | はい | 1.0.0 |
-| status | はい | 409 |
-| code | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからのエラー コード。 |
-| requestId | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからの要求識別子。 |
-| userMessage | はい | ユーザーに示されるエラー メッセージ。 |
-| developerMessage | いいえ | `DebugMode` が有効な場合に表示される、問題の詳細な説明とそれを修正する方法。 |
-| moreInfo | いいえ | `DebugMode` が有効な場合に表示される、追加情報をポイントする URI。 |
-
-次の例は、JSON で書式設定されたエラー メッセージを返す REST API を示しています。
+REST API は、「そのユーザーは CRM システムでは見つかりませんでした」などの、エラー メッセージを返す必要がある場合があります。 エラーが発生した場合、REST API によって 400 (無効な要求) や 409 (競合) の応答状態コードなど、HTTP 4xx エラー メッセージが返されます。 応答本文には、JSON で書式設定されたエラー メッセージが含まれています。
 
 ```JSON
 {
@@ -243,6 +222,17 @@ REST API は、「そのユーザーは CRM システムでは見つかりませ
   "moreInfo": "https://restapi/error/API12345/moreinfo"
 }
 ```
+
+| 属性 | Required | 説明 |
+| --------- | -------- | ----------- |
+| version | はい | ご利用の REST API バージョン。 次に例を示します。1.0.1 |
+| status | はい | 409 である必要があります。 |
+| code | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからのエラー コード。 |
+| requestId | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからの要求識別子。 |
+| userMessage | はい | ユーザーに示されるエラー メッセージ。 |
+| developerMessage | いいえ | `DebugMode` が有効な場合に表示される、問題の詳細な説明とそれを修正する方法。 |
+| moreInfo | いいえ | `DebugMode` が有効な場合に表示される、追加情報をポイントする URI。 |
+
 
 次の例は、エラー メッセージを返す C# クラスを示しています。
 
@@ -263,7 +253,8 @@ public class ResponseContent
 
 RESTful 技術プロファイルの使用例については、次の記事を参照してください。
 
-- [ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](rest-api-claims-exchange-dotnet.md)
-- [HTTP 基本認証を使用して RESTful サービスを保護する](secure-rest-api-dotnet-basic-auth.md)
-- [クライアント証明書を使用して RESTful サービスを保護する](secure-rest-api-dotnet-certificate-auth.md)
-- [チュートリアル:REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する](custom-policy-rest-api-claims-validation.md)」をご覧ください
+- [REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合](custom-policy-rest-api-intro.md)
+- [チュートリアル:ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](custom-policy-rest-api-claims-validation.md)
+- [チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する](custom-policy-rest-api-claims-validation.md)
+- [REST API サービスをセキュリティで保護する](secure-rest-api.md)
+

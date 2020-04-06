@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MySQL (プレビュー) 用のプライベート リンクの CLI のセットアップ方法
+title: プライベート リンク - Azure CLI - Azure Database for MySQL
 description: Azure CLI から Azure Database for MySQL 用のプライベート リンクを構成する方法について説明します。
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d9a401bfbf1f0c63995c8f7773abb6e8e874e7e
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: f83f52f1c1800803c5e1d47f1931f7b13b2c11de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561699"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79368011"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-cli"></a>CLI を使用して Azure Database for MySQL (プレビュー) 用のプライベート リンクを作成および管理する
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>CLI を使用して Azure Database for MySQL 用のプライベート リンクを作成および管理する
 
 プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 この記事では、Azure CLI を使用して Azure Virtual Network 内に VM を作成し、Azure プライベート エンドポイントを含む Azure Database for MySQL サーバーを作成する方法について説明します。
 
@@ -165,7 +165,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 4. **[新しい接続]** で、この情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 接続名| ご自身で選んだ接続の名前を選択します。|
     | hostname | *mydemoserver.privatelink.mysql.database.azure.com* を選択します。 |

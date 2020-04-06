@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 3440713c287967655678e1cde2c000a6ed28b900
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 01b8e1dbc290bed86ccfc3c7016e8bd9168e427a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183948"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049065"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>仮想マシンのマネージド ID 拡張機能の使用を止めて Azure Instance Metadata Service の使用を開始する方法
 
@@ -123,7 +123,7 @@ Metadata: true
 | ------- | ----------- |
 | `GET` | HTTP 動詞。エンドポイントからデータを取得する必要があることを示します。 この例では、OAuth アクセス トークンです。 | 
 | `http://localhost:50342/oauth2/token` | Azure リソース エンドポイントのマネージド ID (50342 は既定のポートであり、構成可能です)。 |
-| `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が https://management.azure.com/ の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
+| `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が `https://management.azure.com/` の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
 | `Metadata` | HTTP 要求ヘッダー フィールド。サーバー側のリクエスト フォージェリ (SSRF) 攻撃に対する軽減策として Azure リソースのマネージド ID に必要です。 この値は、"true" に設定し、すべて小文字にする必要があります。|
 | `object_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の object_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
 | `client_id` | (省略可能) クエリの文字列パラメーター。トークン用の管理対象 ID の client_id を示します。 VM に複数のユーザーが割り当てたマネージド ID がある場合は必須です。|
@@ -172,7 +172,7 @@ Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <loc
 
 #### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>Azure リソース拡張機能のマネージド ID のスキーマ エクスポートを試行すると、"自動スクリプト" が失敗する
 
-仮想マシンで Azure リソースのマネージド ID が有効になっている場合、その仮想マシン またはリソース グループに対して "自動スクリプト" 機能を使用しようとすると、次のエラーが表示されます。
+仮想マシンで Azure リソースのマネージド ID が有効になっている場合、その仮想マシンまたはリソース グループに対して "自動スクリプト" 機能を使用しようとすると、次のエラーが表示されます。
 
 ![Azure リソースのマネージド ID の自動スクリプトのエクスポート エラー](./media/howto-migrate-vm-extension/automation-script-export-error.png)
 

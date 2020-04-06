@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 21b46ba0012b71ed0e09dc09d041ceb020824843
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c32fdc67c74e100e0e31dad3afde128c05c356d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967453"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335968"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -40,7 +40,7 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 * [AD FS セキュリティを使用して OAuth 2.0 承認サーバーを構成できますか。](#can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security)
 * [複数の地理的な場所へのデプロイでは、API Management はどのようなルーティング方法を使用しますか。](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [Azure Resource Manager テンプレートを使用して API Management サービス インスタンスを作成することはできますか。](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
-* [バックエンドに自己署名 SSL 証明書を使用できますか。](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
+* [バックエンドに自己署名 TLS/SSL 証明書を使用できますか。](#can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end)
 * [リポジトリを複製しようとすると認証に失敗します。原因は何でしょうか。](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [API Management は Azure ExpressRoute と共に使用できますか。](#does-api-management-work-with-azure-expressroute)
 * [Resource Manager スタイルの VNET に API Management をデプロイする場合、その VNET 内に専用サブネットが必要なのはなぜですか。](#why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them)
@@ -62,7 +62,7 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 API Management ゲートウェイとバックエンド サービス間の接続は複数の方法で保護できます。 次のようにすることができます。
 
 * HTTP 基本認証を使用します。 詳細については、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」を参照してください。
-* 「[Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法](api-management-howto-mutual-certificates.md)」の説明に従って、SSL 相互認証を使用します。
+* 「[Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法](api-management-howto-mutual-certificates.md)」の説明に従って、TLS 相互認証を使用します。
 * バックエンド サービスで IP ホワイトリストを使用します。 従量課金レベルを除く API Management のすべてのレベルで、ゲートウェイの IP アドレスは一定のままであり、[IP ドキュメントに関する記事](api-management-howto-ip-addresses.md)に説明されているいくつかの注意事項があります。
 * API Management インスタンスを Azure Virtual Network に接続します。
 
@@ -83,7 +83,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>ユーザーを Administrators グループに追加するにはどうすればよいですか。
 次の手順に従って、ユーザーを Administrators グループに追加できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 更新する API Management インスタンスが含まれているリソース グループに移動します。
 3. API Management で、目的のユーザーに **API Management サービス共同作成者**ロールを割り当てます。
 
@@ -115,7 +115,7 @@ API Management では、複数の地理的な場所へのデプロイで[パフ�
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Azure Resource Manager テンプレートを使用して API Management サービス インスタンスを作成することはできますか。
 はい。 詳細については、[Azure API Management サービス](https://aka.ms/apimtemplate)のクイックスタート テンプレートを参照してください。
 
-### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>バックエンドに自己署名 SSL 証明書を使用できますか。
+### <a name="can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end"></a>バックエンドに自己署名 TLS/SSL 証明書を使用できますか。
 はい。 これを行うには、PowerShell を使用するか、API に直接送信します。 これにより、証明書チェーン検証を無効になり、API Management からバックエンド サービスへの通信時に、自己署名証明書または個人署名証明書を使用することができます。
 
 #### <a name="powershell-method"></a>Powershell を使用する場合 ####

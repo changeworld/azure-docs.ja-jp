@@ -3,16 +3,16 @@ title: ネットワーク プロキシ対応のデバイスを構成する - Azu
 description: Azure IoT Edge ランタイムおよびインターネット対応の任意の IoT Edge モジュールを構成して、プロキシ サーバー経由で通信する方法。
 author: kgremban
 ms.author: kgremban
-ms.date: 11/19/2019
+ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a8ee1e07dafac46467aa26f89b609cd499346974
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 0600568ace5384cfb13688d14d1cf79e473f3208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186575"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133210"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
@@ -200,13 +200,13 @@ IoT Edge エージェントは、すべての IoT Edge デバイス上で最初�
 
 ## <a name="configure-deployment-manifests"></a>配置マニフェストを構成する  
 
-プロキシ サーバーを利用するように IoT Edge デバイスが構成されたら、以降の配置マニフェストでも引き続き、環境変数を宣言する必要があります。 配置マニフェストを編集するには、Azure portal ウィザードを使用するか、配置マニフェストの JSON ファイルを編集します。
+プロキシ サーバーを利用するように IoT Edge デバイスが構成されたら、以降のデプロイ マニフェストでも引き続き、HTTPS_PROXY 環境変数を宣言する必要があります。 配置マニフェストを編集するには、Azure portal ウィザードを使用するか、配置マニフェストの JSON ファイルを編集します。
 
 edgeAgent と edgeHub の 2 つのランタイム モジュールは、IoT Hub との接続を維持できるよう、必ずプロキシ サーバー経由で通信するように構成してください。 edgeAgent モジュールからプロキシ情報を削除した場合、前のセクションで説明したように、接続を再確立する唯一の方法は、デバイス上の config.yaml ファイルを編集することです。
 
-インターネットに接続する他の IoT Edge モジュールも、プロキシ サーバー経由で通信するように構成する必要があります。 ただし、edgeHub 経由でメッセージをルーティングするモジュールや、デバイス上の他のモジュールとのみ通信するモジュールには、プロキシ サーバーの詳細は不要です。
+edgeAgent モジュールと edgeHub モジュールに加えて、他のモジュールにはプロキシ構成が必要になる場合があります。 これらのモジュールは、BLOB ストレージなどの IoT Hub だけでなく Azure リソースにアクセスする必要があり、デプロイ マニフェスト ファイルでそのモジュールに対して HTTPS_PROXY 変数が指定されている必要があります。
 
-この手順は、IoT Edge デバイスの有効期間を通して継続されます。
+次の手順は、IoT Edge デバイスの有効期間を通して適用できます。
 
 ### <a name="azure-portal"></a>Azure portal
 

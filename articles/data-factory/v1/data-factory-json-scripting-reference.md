@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e85696afde5f0332ff6481bfadabbde5ac2d4800
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3492f917be8116d0eed0c7ec03ed8aa9ff506520
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894905"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346594"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -87,7 +87,7 @@ ms.locfileid: "75894905"
 | --- | --- | --- |
 | name |アクティビティの名前。 アクティビティで実行するように構成されているアクションを表す名前を指定します。<br/><ul><li>最大文字数: 260</li><li>文字、数字、またはアンダースコア (\_) で始まる必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\"</li></ul> |はい |
 | description |アクティビティの用途を説明するテキスト。 |いいえ |
-| 型 |アクティビティの種類を指定します。 アクティビティの種類については、「[データ ストア](#data-stores)」および「[データ変換アクティビティ](#data-transformation-activities)」をご覧ください。 |はい |
+| type |アクティビティの種類を指定します。 アクティビティの種類については、「[データ ストア](#data-stores)」および「[データ変換アクティビティ](#data-transformation-activities)」をご覧ください。 |はい |
 | inputs |アクティビティで使用される入力テーブル<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |HDInsightStreaming および SqlServerStoredProcedure アクティビティの場合は "いいえ" <br/> <br/> それ以外の場合は "はい" |
 | outputs |アクティビティで使用される出力テーブル。<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": “outputtable1” } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": “outputtable1” }, { "name": “outputtable2” }  ],` |はい |
 | linkedServiceName |アクティビティで使用される、リンクされたサービスの名前。 <br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 |HDInsight アクティビティ、Azure Machine Learning アクティビティ、ストアド プロシージャ アクティビティの場合は "はい"。 <br/><br/>それ以外の場合は "いいえ" |
@@ -100,12 +100,12 @@ ms.locfileid: "75894905"
 
 | プロパティ | 使用できる値 | Default value | 説明 |
 | --- | --- | --- | --- |
-| concurrency |整数 <br/><br/>最大値: 10 |1 |アクティビティの同時実行の数。<br/><br/>異なるスライスで実行できる並列アクティビティ実行の数を決定します。 たとえば、アクティビティが大量のデータを処理する必要がある場合、コンカレンシーの値を大きくするとデータ処理が速くなります。 |
+| concurrency |Integer <br/><br/>最大値: 10 |1 |アクティビティの同時実行の数。<br/><br/>異なるスライスで実行できる並列アクティビティ実行の数を決定します。 たとえば、アクティビティが大量のデータを処理する必要がある場合、コンカレンシーの値を大きくするとデータ処理が速くなります。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |処理されるデータ スライスの順序を決定します。<br/><br/>たとえば、2 個のスライス (午後 4 時と午後 5 時の実行) があり、どちらも実行が保留されているとします。 executionPriorityOrder を NewestFirst に設定すると、午後 5 時のスライスが最初に処理されます。 同様に、executionPriorityORder を OldestFIrst に設定すると、午後 4 時のスライスが処理されます。 |
-| retry |整数<br/><br/>最大値は 10 |0 |スライスのデータ処理が失敗としてマークされるまでの再試行回数。 データ スライスのアクティビティの実行は、指定された再試行回数まで再試行されます。 再試行は、障害発生後にできるだけ早く行われます。 |
+| retry |Integer<br/><br/>最大値は 10 |0 |スライスのデータ処理が失敗としてマークされるまでの再試行回数。 データ スライスのアクティビティの実行は、指定された再試行回数まで再試行されます。 再試行は、障害発生後にできるだけ早く行われます。 |
 | timeout |TimeSpan |00:00:00 |アクティビティのタイムアウト。 例:00:10:00 (10 分のタイムアウトを示す)<br/><br/>値が指定されていない場合、または値が 0 の場合は、タイムアウトは無期限です。<br/><br/>スライスのデータ処理時間がタイムアウト値を超えた場合、処理は取り消され、システムは処理の再試行を試みます。 再試行の回数は、retry プロパティで指定します。 タイムアウトが発生すると、ステータスは TimedOut に設定されます。 |
 | delay |TimeSpan |00:00:00 |スライスのデータ処理を開始する前の遅延時間を指定します。<br/><br/>データ スライスのアクティビティの実行は、予想実行時刻を Delay だけ過ぎてから開始します。<br/><br/>例:00:10:00 (10 分の遅延を示す) |
-| longRetry |整数<br/><br/>最大値: 10 |1 |スライスの実行が失敗になるまでの、長い再試行の回数。<br/><br/>longRetry の試行は longRetryInterval の間隔で行われます。 再試行間隔の時間を指定する必要がある場合は、longRetry を使用します。 Retry と longRetry の両方を指定すると、各 longRetry に Retry が含まれ、最大再試行回数は Retry * longRetry になります。<br/><br/>たとえば、アクティビティ ポリシーに次のような設定があるとします。<br/>Retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>実行するスライスは 1 つだけ (ステータスは Waiting)、アクティビティ実行は毎回失敗するとします。 最初に 3 つの連続する試行があります。 試行するたびに、スライスの状態は Retry になります。 最初の 3 つの試行が終わると、スライスの状態は LongRetry になります。<br/><br/>1 時間 (longRetryInteval の値) が経過した後、再度 3 回連続して試行されます。 その後、スライスの状態は Failed になり、それ以上再試行は行われません。 したがって、全部で 6 回試行されます。<br/><br/>いずれかの実行が成功すると、スライスの状態は Ready になり、それ以上再試行は行われません。<br/><br/>longRetry は、依存するデータがいつ到着するかわからない場合、またはデータ処理が行われる環境全体が当てにならない場合などに使用します。 このような場合、連続して再試行しても意味がなく、時間をおくと成功することがあります。<br/><br/>注意: longRetry または longRetryInterval に大きい値を設定しないでください。 通常、大きな値は、その他のシステムの問題があることを意味します。 |
+| longRetry |Integer<br/><br/>最大値: 10 |1 |スライスの実行が失敗になるまでの、長い再試行の回数。<br/><br/>longRetry の試行は longRetryInterval の間隔で行われます。 再試行間隔の時間を指定する必要がある場合は、longRetry を使用します。 Retry と longRetry の両方を指定すると、各 longRetry に Retry が含まれ、最大再試行回数は Retry * longRetry になります。<br/><br/>たとえば、アクティビティ ポリシーに次のような設定があるとします。<br/>Retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>実行するスライスは 1 つだけ (ステータスは Waiting)、アクティビティ実行は毎回失敗するとします。 最初に 3 つの連続する試行があります。 試行するたびに、スライスの状態は Retry になります。 最初の 3 つの試行が終わると、スライスの状態は LongRetry になります。<br/><br/>1 時間 (longRetryInteval の値) が経過した後、再度 3 回連続して試行されます。 その後、スライスの状態は Failed になり、それ以上再試行は行われません。 したがって、全部で 6 回試行されます。<br/><br/>いずれかの実行が成功すると、スライスの状態は Ready になり、それ以上再試行は行われません。<br/><br/>longRetry は、依存するデータがいつ到着するかわからない場合、またはデータ処理が行われる環境全体が当てにならない場合などに使用します。 このような場合、連続して再試行しても意味がなく、時間をおくと成功することがあります。<br/><br/>注意: longRetry または longRetryInterval に大きい値を設定しないでください。 通常、大きな値は、その他のシステムの問題があることを意味します。 |
 | longRetryInterval |TimeSpan |00:00:00 |長い再試行の間の遅延 |
 
 ### <a name="typeproperties-section"></a>typeProperties セクション
@@ -285,7 +285,7 @@ Azure Data Factory のデータセットは次のように定義されます。
 | プロパティ | 説明 | 必須 | Default |
 | --- | --- | --- | --- |
 | name | データセットの名前。 名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。 |はい |NA |
-| 型 | データセットの型。 Azure Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 Data Factory でサポートされるデータ ストアとデータセットの種類の全一覧については、「[データ ストア](#data-stores)」セクションを参照してください。 |
+| type | データセットの型。 Azure Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 Data Factory でサポートされるデータ ストアとデータセットの種類の全一覧については、「[データ ストア](#data-stores)」セクションを参照してください。 |
 | structure | データセットのスキーマ。 列やその型が含まれます。 | いいえ |NA |
 | typeProperties | 選択された型に対応するプロパティ。 サポートされている型とそのプロパティについては、「[データ ストア](#data-stores)」セクションを参照してください。 |はい |NA |
 | external | データセットをデータ ファクトリ パイプラインによって明示的に生成するかどうかを指定するブール型のフラグ。 |いいえ |false |
@@ -297,7 +297,7 @@ Azure Data Factory のデータセットは次のように定義されます。
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | name |列の名前です。 |はい |
-| 型 |列のデータ型です。  |いいえ |
+| type |列のデータ型です。  |いいえ |
 | culture |型を指定するときに使用される .NET ベースのカルチャ。 .NET 型の `Datetime` または `Datetimeoffset` です。 既定値は `en-us` です。 |いいえ |
 | format |型を指定するときに使用される書式指定文字列。 .NET 型の `Datetime` または `Datetimeoffset` です。 |いいえ |
 
@@ -354,7 +354,7 @@ structure:
 
 データセットは Azure Data Factory で作成されている場合を除き、 **external**とマークされます。 この設定は通常、パイプライン内の最初のアクティビティの入力に適用されます (アクティビティまたはパイプラインの連鎖が使用されている場合を除く)。
 
-| Name | 説明 | 必須 | Default value |
+| 名前 | 説明 | 必須 | Default value |
 | --- | --- | --- | --- |
 | dataDelay |特定のスライスの外部データの可用性チェックを遅らせる時間。 データが 1 時間ごとに使用できる場合、外部データが利用可能であるかどうかと、対応するスライスが準備完了であるかどうかのチェックは、dataDelay を使用して延期できます。<br/><br/>これは、現在の時刻にのみ適用されます。  たとえば、現在時刻が午後 1 時 00 分で、この値が 10 分の場合、検証は午後 1 時 10 分に開始されます。<br/><br/>この設定は、過去のスライス ([スライス終了時間] + dataDelay < 現在時刻) には影響しません。過去のスライスは遅延なく処理されます。<br/><br/>23 時間 59 分を超える時間は、`day.hours:minutes:seconds` 形式で指定する必要があります。 たとえば、24 時間を指定するには、24:00:00 ではなく、1.00:00:00 を使用します。 24:00:00 を使用した場合は、24 日間 (24.00:00:00) として処理されます。 1 日と 4 時間の場合は 1:04:00:00 と指定します。 |いいえ |0 |
 | retryInterval |エラーと次の再試行の間の待機時間です。 再試行に失敗した場合、次に試行されるのは retryInterval 後になります。 <br/><br/>現在時刻が午後 1 時 00 分の場合に最初の試行を開始したとします。 最初の検証チェックを完了するための時間が 1 分のとき、操作に失敗した場合、次の再試行は "1:00 + 1 分 (チェック時間) + 1 分 (再試行間隔) = 1:02 PM" になります。 <br/><br/>過去のスライスの場合、遅延はありません。 再試行は直ちに行われます。 |いいえ |00:01:00 (1 分) |
@@ -590,7 +590,7 @@ Azure Data Lake Store のリンクされたサービスを定義するには、�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは、次のように設定する必要があります:**AzureDataLakeStore** | はい |
+| type | type プロパティは、次のように設定する必要があります:**AzureDataLakeStore** | はい |
 | dataLakeStoreUri | Azure Data Lake Store アカウントの情報を指定します。 `https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` という形式で指定します。 | はい |
 | subscriptionId | Data Lake Store が属する Azure サブスクリプション ID。 | シンクでは必須 |
 | resourceGroupName | Data Lake Store が所属する Azure リソース グループの名前。 | シンクでは必須 |
@@ -884,7 +884,7 @@ Azure Cosmos DB にデータをコピーする場合は、コピー アクティ
 | **プロパティ** | **説明** | **指定できる値** | **必須** |
 | --- | --- | --- | --- |
 | nestingSeparator |入れ子になった文書が必要であることを示すソース列名の特殊文字。 <br/><br/>上記の例の場合: 出力テーブルの `Name.First` は、Cosmos DB ドキュメントで次の JSON 構造を生成します。<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |入れ子レベルの分割に使用される文字。<br/><br/>既定値は `.` (ドット) です。 |入れ子レベルの分割に使用される文字。 <br/><br/>既定値は `.` (ドット) です。 |
-| writeBatchSize |Azure Cosmos DB サービスにドキュメントの作成を要求する並列要求の数。<br/><br/>このプロパティを使用して、Azure Cosmos DB との間でデータをコピーするときのパフォーマンスを微調整できます。 writeBatchSize を増やすと、Azure Cosmos DB に送信される並列要求の数が増えるため、パフォーマンスを向上させることができます。 ただし、"要求レートが大きい" というエラー メッセージをスローする可能性のあるスロットルを回避する必要があります。<br/><br/>スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求ユニット)。 |整数 |いいえ (既定値: 5) |
+| writeBatchSize |Azure Cosmos DB サービスにドキュメントの作成を要求する並列要求の数。<br/><br/>このプロパティを使用して、Azure Cosmos DB との間でデータをコピーするときのパフォーマンスを微調整できます。 writeBatchSize を増やすと、Azure Cosmos DB に送信される並列要求の数が増えるため、パフォーマンスを向上させることができます。 ただし、"要求レートが大きい" というエラー メッセージをスローする可能性のあるスロットルを回避する必要があります。<br/><br/>スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求ユニット)。 |Integer |いいえ (既定値: 5) |
 | writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。 |TimeSpan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ |
 
 #### <a name="example"></a>例
@@ -1311,7 +1311,7 @@ Azure Cognitive Search データセットを定義するには、データセッ
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| 型 | type プロパティを **AzureSearchIndex** に設定する必要があります。| はい |
+| type | type プロパティを **AzureSearchIndex** に設定する必要があります。| はい |
 | indexName | 検索インデックスの名前。 Data Factory では、インデックスは作成されません。 このインデックスは Azure Cognitive Search に存在する必要があります。 | はい |
 
 #### <a name="example"></a>例
@@ -1398,7 +1398,7 @@ Azure Cognitive Search データセットを定義するには、データセッ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 |type プロパティは、次のように設定する必要があります:**AzureStorage** |はい |
+| type |type プロパティは、次のように設定する必要があります:**AzureStorage** |はい |
 | connectionString |connectionString プロパティのために Azure Storage に接続するために必要な情報を指定します。 |はい |
 
 **例:**
@@ -1420,7 +1420,7 @@ Azure Storage SAS のリンクされたサービスを利用すると、Shared A
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 |type プロパティは、次のように設定する必要があります:**AzureStorageSas** |はい |
+| type |type プロパティは、次のように設定する必要があります:**AzureStorageSas** |はい |
 | sasUri |BLOB、コンテナー、テーブルなどの Azure Storage リソースへの Shared Access Signature URI を指定します。 |はい |
 
 **例:**
@@ -1594,9 +1594,9 @@ Amazon Redshift のリンクされたサービスを定義するには、リン�
 | --- | --- | --- |
 | server |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |はい |
 | port |Amazon Redshift サーバーがクライアント接続のリッスンに使用する TCP ポートの数。 |いいえ、既定値: 5439 |
-| [データベース] |Amazon Redshift データベースの名前。 |はい |
+| database |Amazon Redshift データベースの名前。 |はい |
 | username |データベースへのアクセスを持つユーザーの名前。 |はい |
-| パスワード |ユーザー アカウントのパスワード。 |はい |
+| password |ユーザー アカウントのパスワード。 |はい |
 
 #### <a name="example"></a>例
 
@@ -1705,11 +1705,11 @@ IBM DB2 のリンクされたサービスを定義するには、リンクされ
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | server |DB2 サーバーの名前です。 |はい |
-| [データベース] |DB2 データベースの名前です。 |はい |
+| database |DB2 データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ |
 | authenticationType |DB2 データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows です。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 | gatewayName |Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 #### <a name="example"></a>例
@@ -1821,11 +1821,11 @@ MySQL のリンクされたサービスを定義するには、リンクされ�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | server |MySQL サーバーの名前です。 |はい |
-| [データベース] |MySQL データベースの名前です。 |はい |
+| database |MySQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 |いいえ |
 | authenticationType |MySQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。`Basic` |はい |
 | userName |MySQL データベースに接続するユーザー名を指定します。 |はい |
-| パスワード |指定したユーザー アカウントのパスワードを指定します。 |はい |
+| password |指定したユーザー アカウントのパスワードを指定します。 |はい |
 | gatewayName |Data Factory サービスが、オンプレミスの MySQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 #### <a name="example"></a>例
@@ -2112,11 +2112,11 @@ PostgreSQL のリンクされたサービスを定義するには、リンクさ
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | server |PostgreSQL サーバーの名前です。 |はい |
-| [データベース] |PostgreSQL データベースの名前です。 |はい |
+| database |PostgreSQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ |
 | authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows です。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 | gatewayName |Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 #### <a name="example"></a>例
@@ -2234,7 +2234,7 @@ server | SAP BW インスタンスが存在するサーバーの名前。 | stri
 systemNumber | SAP BW システムのシステムの数。 | 2 桁の 10 進数の文字列として表されます。 | はい
 clientId | SAP BW システム内のクライアントのクライアント ID。 | 3 桁の 10 進数の文字列として表されます。 | はい
 username | SAP サーバーにアクセスするユーザーの名前 | string | はい
-パスワード | ユーザーのパスワード。 | string | はい
+password | ユーザーのパスワード。 | string | はい
 gatewayName | Data Factory サービスが、オンプレミスの SAP BW インスタンスへの接続に使用するゲートウェイの名前。 | string | はい
 encryptedCredential | 暗号化された資格情報の文字列。 | string | いいえ
 
@@ -2343,7 +2343,7 @@ SAP HANA のリンクされたサービスを定義するには、リンクさ�
 server | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | string | はい
 authenticationType | 認証の種類。 | string。 "Basic" または"Windows" | はい
 username | SAP サーバーにアクセスするユーザーの名前 | string | はい
-パスワード | ユーザーのパスワード。 | string | はい
+password | ユーザーのパスワード。 | string | はい
 gatewayName | Data Factory サービスが、オンプレミスの SAP HANA インスタンスへの接続に使用するゲートウェイの名前。 | string | はい
 encryptedCredential | 暗号化された資格情報の文字列。 | string | いいえ
 
@@ -2452,11 +2452,11 @@ SAP HANA データ ストアからデータをコピーする場合は、コピ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
+| type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
 | connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
 | gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
 | username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 
 **New-AzDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
 
@@ -2670,11 +2670,11 @@ Sybase のリンクされたサービスを定義するには、リンクされ�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | server |Sybase サーバーの名前です。 |はい |
-| [データベース] |Sybase データベースの名前です。 |はい |
+| database |Sybase データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 |いいえ |
 | authenticationType |Sybase データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows です。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 | gatewayName |Data Factory サービスが、オンプレミスの Sybase データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 #### <a name="example"></a>例
@@ -2792,7 +2792,7 @@ Teradata のリンクされたサービスを定義するには、リンクさ�
 | server |Teradata のサーバーの名前です。 |はい |
 | authenticationType |Teradata データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows です。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 | gatewayName |Data Factory サービスが、オンプレミスの Teradata データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 #### <a name="example"></a>例
@@ -2907,7 +2907,7 @@ Cassandra のリンクされたサービスを定義するには、リンクさ�
 | port |Cassandra サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ、既定値: 9042 |
 | authenticationType |Basic、または匿名 |はい |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい (authenticationType が Basic に設定されている場合)。 |
-| パスワード |ユーザー アカウントのパスワードを指定します。 |はい (authenticationType が Basic に設定されている場合)。 |
+| password |ユーザー アカウントのパスワードを指定します。 |はい (authenticationType が Basic に設定されている場合)。 |
 | gatewayName |オンプレミスの Cassandra データベースへの接続に使用されるゲートウェイの名前。 |はい |
 | encryptedCredential |ゲートウェイによって暗号化された資格情報。 |いいえ |
 
@@ -3034,7 +3034,7 @@ MongoDB のリンクされたサービスを定義するには、リンクされ
 | port |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |省略可能、既定値: 27017 |
 | authenticationType |Basic または Anonymous。 |はい |
 | username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
-| パスワード |ユーザーのパスワード。 |はい (基本認証が使用される場合)。 |
+| password |ユーザーのパスワード。 |はい (基本認証が使用される場合)。 |
 | authSource |認証のために資格情報を確認する際に使用する MongoDB データベースの名前。 |省略可能 (基本認証が使用される場合)。 既定では、管理者アカウントと、databaseName プロパティで指定されたデータベースが使用されます。 |
 | databaseName |アクセスする MongoDB データベースの名前。 |はい |
 | gatewayName |データ ストアにアクセスするゲートウェイの名前。 |はい |
@@ -3315,10 +3315,10 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティが **OnPremisesFileServer** に設定されていることを確認します。 |はい |
+| type |type プロパティが **OnPremisesFileServer** に設定されていることを確認します。 |はい |
 | host |コピーするフォルダーのルート パスを指定します。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「サンプルのリンクされたサービスとデータセットの定義」を参照してください。 |はい |
 | userid |サーバーにアクセスするユーザーの ID を指定します。 |No (encryptedCredential を選択する場合) |
-| パスワード |ユーザー (userid) のパスワードを指定します。 |いいえ (encryptedCredential を選択する場合) |
+| password |ユーザー (userid) のパスワードを指定します。 |いいえ (encryptedCredential を選択する場合) |
 | encryptedCredential |New-AzDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します。 |いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合) |
 | gatewayName |Data Factory が、オンプレミスのファイル サーバーへの接続に使用するゲートウェイの名前を指定します。 |はい |
 
@@ -3553,12 +3553,12 @@ FTP のリンクされたサービスを定義するには、リンクされた�
 | host |FTP サーバーの名前または IP アドレス |はい |&nbsp; |
 | authenticationType |認証の種類を指定します |はい |Basic、Anonymous |
 | username |FTP サーバーへのアクセスを持つユーザー |いいえ |&nbsp; |
-| パスワード |ユーザーのパスワード (ユーザー名) |いいえ |&nbsp; |
+| password |ユーザーのパスワード (ユーザー名) |いいえ |&nbsp; |
 | encryptedCredential |FTP サーバーにアクセスするための暗号化された資格情報 |いいえ |&nbsp; |
 | gatewayName |オンプレミスの FTP サーバーに接続するための Data Management Gateway の名前 |いいえ |&nbsp; |
 | port |FTP サーバーがリッスンしているポート |いいえ |21 |
 | enableSsl |FTP over SSL/TLS チャネルを使用するかどうかを指定します |いいえ |true |
-| enableServerCertificateValidation |FTP over SSL/TLS チャネルを使用した場合にサーバーの SSL 証明書の検証を有効にするかどうかを指定します |いいえ |true |
+| enableServerCertificateValidation |SSL/TLS チャネルで FTP を使用した場合に、サーバーの TLS/SSL 証明書の検証を有効にするかどうかを指定します |いいえ |true |
 
 #### <a name="example-using-anonymous-authentication"></a>例:匿名認証を使用する
 
@@ -3728,11 +3728,11 @@ HDFS のリンクされたサービスを定義するには、リンクされた
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティは、次のように設定する必要があります:**Hdfs** |はい |
+| type |type プロパティは、次のように設定する必要があります:**Hdfs** |はい |
 | url |HDFS への URL |はい |
 | authenticationType |Anonymous または Basic。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、こちらのセクションを参照して、オンプレミス環境を設定します。 |はい |
 | userName |Windows 認証のユーザー名。 |あり (Windows 認証用) |
-| パスワード |Windows 認証のパスワード。 |あり (Windows 認証用) |
+| password |Windows 認証のパスワード。 |あり (Windows 認証用) |
 | gatewayName |Data Factory サービスが、HDFS への接続に使用するゲートウェイの名前。 |はい |
 | encryptedCredential |アクセス資格情報の [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) 出力。 |いいえ |
 
@@ -3879,7 +3879,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | username | SFTP サーバーにアクセスできるユーザー。 |はい |
-| パスワード | ユーザー (username) のパスワード。 | はい |
+| password | ユーザー (username) のパスワード。 | はい |
 
 ```json
 {
@@ -4073,7 +4073,7 @@ HTTP のリンクされたサービスを定義するには、リンクされた
 | --- | --- | --- |
 | url | Web サーバーへのベース URL | はい |
 | authenticationType | 認証の種類を指定します。 使用できる値は、以下のとおりです。**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate**。 <br><br> これらの認証の種類それぞれのプロパティと JSON の使用例については、この表の後のセクションを参照してください。 | はい |
-| enableServerCertificateValidation | ソースが HTTPS Web サーバーである場合に、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 | いいえ。既定値は true です。 |
+| enableServerCertificateValidation | ソースが HTTPS Web サーバーである場合に、サーバーの TLS/SSL 証明書の検証を有効にするかどうかを指定します | いいえ。既定値は true です。 |
 | gatewayName | オンプレミスの HTTP ソースに接続するための Data Management Gateway の名前。 | はい (オンプレミスの HTTP ソースからデータをコピーする場合)。 |
 | encryptedCredential | HTTP エンドポイントにアクセスするための暗号化された資格情報。 コピー ウィザードまたは ClickOnce ポップアップ ダイアログで認証情報を構成すると自動生成されます。 | いいえ。 オンプレミスの HTTP サーバーからデータをコピーする場合にのみ適用します。 |
 
@@ -4083,7 +4083,7 @@ HTTP のリンクされたサービスを定義するには、リンクされた
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | username | HTTP エンドポイントにアクセスするためのユーザー名。 | はい |
-| パスワード | ユーザー (username) のパスワード。 | はい |
+| password | ユーザー (username) のパスワード。 | はい |
 
 ```json
 {
@@ -4108,7 +4108,7 @@ HTTP のリンクされたサービスを定義するには、リンクされた
 | --- | --- | --- |
 | embeddedCertData | Personal Information Exchange (PFX) ファイルのバイナリ データの Base64 でエンコードされたコンテンツ。 | `embeddedCertData` または `certThumbprint` を指定します。 |
 | certThumbprint | ゲートウェイ コンピューターの証明書ストアにインストールされた証明書の拇印。 オンプレミスの HTTP ソースからデータをコピーする場合にのみ適用します。 | `embeddedCertData` または `certThumbprint` を指定します。 |
-| パスワード | 証明書に関連付けられているパスワード。 | いいえ |
+| password | 証明書に関連付けられているパスワード。 | いいえ |
 
 認証に `certThumbprint` を使用し、証明書がローカル コンピューターの個人用ストアにインストールされている場合は、ゲートウェイ サービスに読み取りアクセス許可を付与する必要があります。
 
@@ -4272,7 +4272,7 @@ OData のリンクされたサービスを定義するには、リンクされ�
 | url |OData サービスの URL です。 |はい |
 | authenticationType |OData ソースへの接続に使用される認証の種類です。 <br/><br/> クラウド OData の場合、有効な値は、匿名、基本、または OAuth です (Azure Data Factory で現在サポートされているのは Azure Active Directory ベースの OAuth のみです)。 <br/><br/> オンプレミスの OData では、Anonymous、Basic、Windows のいずれかの値になります。 |はい |
 | username |基本認証を使用している場合は、ユーザー名を指定します。 |はい (基本認証を使用している場合のみ) |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |はい (基本認証を使用している場合のみ) |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |はい (基本認証を使用している場合のみ) |
 | authorizedCredential |OAuth を使用している場合は、Data Factory コピー ウィザードまたはエディターの **[承認]** ボタンをクリックして資格情報を入力すると、このプロパティの値が自動生成されます。 |はい (OAuth 認証を使用している場合のみ) |
 | gatewayName |Data Factory サービスが、オンプレミスの OData サービスへの接続に使用するゲートウェイの名前。 オンプレミスの OData ソースからデータをコピーする場合にのみ指定します。 |いいえ |
 
@@ -4443,7 +4443,7 @@ ODBC のリンクされたサービスを定義するには、リンクされた
 | 資格情報 (credential) |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |いいえ |
 | authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous および Basic。 |はい |
 | username |基本認証を使用している場合は、ユーザー名を指定します。 |いいえ |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 | gatewayName |Data Factory サービスが、ODBC データ ストアへの接続に使用するゲートウェイの名前。 |はい |
 
 #### <a name="example---using-basic-authentication"></a>例: 基本認証を使用する
@@ -4595,7 +4595,7 @@ Salesforce のリンクされたサービスを定義するには、リンクさ
 | --- | --- | --- |
 | environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定では "https:\//login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい |
-| パスワード |ユーザー アカウントのパスワードを指定します。 |はい |
+| password |ユーザー アカウントのパスワードを指定します。 |はい |
 | securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 |はい |
 
 #### <a name="example"></a>例
@@ -4743,7 +4743,7 @@ Web データセットを定義するには、データセットの **type** を
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| 型 |データセットの型。 **データセット** |はい |
+| type |データセットの型。 **データセット** |はい |
 | path |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
 | インデックス (index) |リソースのテーブルのインデックス。 HTML ページでテーブルのインデックスを取得する手順については、「HTML ページのテーブルのインデックスを取得する」セクションを参照してください。 |はい |
 
@@ -4836,7 +4836,7 @@ Azure Data Factory サービスは、データを処理するための Windows/L
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティは **HDInsightOnDemand**に設定されます。 |はい |
+| type |type プロパティは **HDInsightOnDemand**に設定されます。 |はい |
 | clusterSize |クラスター内の worker/データ ノードの数です。 このプロパティで指定した worker ノード数と共に 2 つのヘッド ノードを使用して HDInsight クラスターが作成されます。 ノードのサイズは Standard_D3 (4 コア) であるため、4 worker ノード クラスターのコアは 24 個になります (worker ノード用に 4\*4 = 16 個のコアと、ヘッド ノード用に 2\*4 = 8 個のコア)。 Standard_D3 レベルの詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 |はい |
 | timetolive |オンデマンド HDInsight クラスターに許可されるアイドル時間です。 他のアクティブなジョブがクラスターにない場合、アクティビティ実行の完了後にオンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。<br/><br/>たとえば、アクティビティ実行に 6 分かかるときに timetolive が 5 分に設定されている場合、アクティビティ実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。 別のアクティビティ実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。<br/><br/>オンデマンド HDInsight クラスターの作成は高額な作業であり (時間もかかることがあります)、オンデマンド HDInsight クラスターを再利用し、Data Factory のパフォーマンスを改善する必要がある場合にこの設定を利用します。<br/><br/>timetolive 値を 0 に設定した場合、アクティビティ実行の処理直後にクラスターが削除されます。 その一方で、高い値を設定した場合、クラスターは不必要にアイドル状態を維持し、コストの上昇を招きます。 そのため、ニーズに合わせて適切な値を設定することが重要です。<br/><br/>timetolive プロパティ値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターの同じインスタンスを共有できます。 |はい |
 | version |HDInsight クラスターのバージョン。 詳細については、「[Azure Data Factory でサポートされる HDInsight バージョン](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory)」をご覧ください。 |いいえ |
@@ -4874,10 +4874,10 @@ Azure HDInsight の「リンクされたサービス」を作成し、独自の 
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティは **HDInsight**に設定されます。 |はい |
+| type |type プロパティは **HDInsight**に設定されます。 |はい |
 | clusterUri |HDInsight クラスターの URI です。 |はい |
 | username |既存の HDInsight クラスターに接続するために使用されるユーザーの名前を指定します。 |はい |
-| パスワード |ユーザー アカウントのパスワードを指定します。 |はい |
+| password |ユーザー アカウントのパスワードを指定します。 |はい |
 | linkedServiceName | HDInsight クラスターで使われる Azure Blob Storage を参照する Azure Storage のリンクされたサービスの名前です。 <p>現在は、Azure Data Lake Store のリンクされたサービスをこのプロパティに指定することはできません。 HDInsight クラスターが Data Lake Store にアクセスできる場合、Hive/Pig スクリプトから Azure Data Lake Store 内のデータにアクセスできます。 </p>  |はい |
 
 サポートされている HDInsight クラスターのバージョン一覧は、「[サポートされる HDInsight のバージョン](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory)」をご覧ください。
@@ -4907,7 +4907,7 @@ Azure Batch のリンクされたサービスを作成し、仮想マシン (VM)
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティは **AzureBatch**に設定されます。 |はい |
+| type |type プロパティは **AzureBatch**に設定されます。 |はい |
 | accountName |Azure Batch アカウントの名前です。 |はい |
 | accessKey |Azure Batch アカウントのアクセス キーです。 |はい |
 | poolName |仮想マシンのプールの名前です。 |はい |
@@ -4939,7 +4939,7 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 種類 |type プロパティは次の値に設定されます。**AzureML**。 |はい |
+| Type |type プロパティは次の値に設定されます。**AzureML**。 |はい |
 | mlEndpoint |バッチ スコアリング URL です。 |はい |
 | apiKey |公開されたワークスペース モデルの API です。 |はい |
 
@@ -4967,7 +4967,7 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 種類 |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |はい |
+| Type |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |はい |
 | accountName |Azure Data Lake Analytics アカウント名。 |はい |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |いいえ |
 | authorization |Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 |はい |
@@ -5007,11 +5007,11 @@ SQL Server のリンクされたサービスを作成し、 [ストアド プロ
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| 型 |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
+| type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
 | connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
 | gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
 | username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 
 **New-AzDataFactoryEncryptValue** コマンドレットを使用して資格情報を暗号化し、次の例で示すようにそれを接続文字列で使用できます (**EncryptedCredential** プロパティ)。
 

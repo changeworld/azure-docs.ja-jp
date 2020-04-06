@@ -1,22 +1,22 @@
 ---
 title: Azure IoT Hub の高可用性とディザスター リカバリー | Microsoft Docs
 description: ディザスター リカバリー機能を持つ高可用性 Azure IoT ソリューションの構築を支援する Azure および IoT Hub 機能について説明します。
-author: rkmanda
+author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 173be8207df2f0128dfc9ae3c36aa3c3dc392bee
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 615dc1b7bd1a31069a542ebb7ea44693c404cb40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748557"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499096"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub の高可用性とディザスター リカバリー
 
-回復力のある IoT ソリューションを実装するための第一歩として、設計者、開発者、経営者は、構築しているソリューションのアップタイム目標を定義する必要があります。 この目標は、主にシナリオごとの細かい事業目標に基づいて定義できます。 このような背景から、この[Azure ビジネス継続性テクニカル ガイダンス](https://docs.microsoft.com/azure/architecture/resiliency/)に関する記事では、ビジネス継続性とディザスター リカバリーについて考慮する際に役立つ一般的なフレームワークについて説明しています。 [Azure アプリケーションのディザスター リカバリーと高可用性](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery)に関するページでは、高可用性 (HA) とディザスター リカバリー (DR) を実現するための Azure アプリケーションの戦略に関するアーキテクチャのガイダンスを確認できます。
+回復力のある IoT ソリューションを実装するための第一歩として、設計者、開発者、経営者は、構築しているソリューションのアップタイム目標を定義する必要があります。 この目標は、主にシナリオごとの細かい事業目標に基づいて定義できます。 このような背景から、この[Azure ビジネス継続性テクニカル ガイダンス](https://docs.microsoft.com/azure/architecture/resiliency/)に関する記事では、ビジネス継続性とディザスター リカバリーについて考慮する際に役立つ一般的なフレームワークについて説明しています。 「[Disaster recovery and high availability for Azure applications](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery)」(Azure アプリケーションのディザスター リカバリーと高可用性) では、高可用性 (HA) とディザスター リカバリー (DR) を実現するための Azure アプリケーションの戦略に関するアーキテクチャのガイダンスを確認できます。
 
 この記事では、特に IoT Hub サービスによって提供されている HA および DR の機能について説明します。 この記事では、次のように幅広い分野について取り上げています。
 
@@ -35,13 +35,13 @@ IoT ソリューションに定義するアップタイム目標に応じて、�
 IoT Hub サービスは、サービスのほぼすべてのレイヤーに冗長性を実装することで、リージョン内 HA を提供しています。 [IoT Hub サービスで発行されている SLA](https://azure.microsoft.com/support/legal/sla/iot-hub) は、これらの冗長性を利用することで達成されます。 これらの HA 機能を利用するために、IoT ソリューションの開発者が追加の作業を行う必要はありません。 IoT Hub ではかなり高いアップタイムが保証されていますが、分散コンピューティング プラットフォームの場合と同様に一時的な障害が発生する可能性があります。 ソリューションをオンプレミス ソリューションからクラウドに移行し始めたばかりの場合は、重視する点を "平均失敗間隔" の最適化から "平均回復時間" の最適化に移す必要があります。 言い換えると、混在環境のクラウドで運用している場合、一時的な障害は正常とみなされます。 一時的な障害に対処するには、クラウド アプリケーションと対話するコンポーネントに適切な[再試行ポリシー](iot-hub-reliability-features-in-sdks.md)を組み込む必要があります。
 
 > [!NOTE]
-> また、一部の Azure サービスは、 [Availability Zone (AZ)](../availability-zones/az-overview.md) と統合することで、リージョン内の可用性のレイヤーを追加しています。 現在、AZs は IoT Hub サービスでサポートされていません。
+> また、一部の Azure サービスは、[Availability Zones (AZs)](../availability-zones/az-overview.md) と統合することで、リージョン内の可用性のレイヤーを追加しています。 現在、AZs は IoT Hub サービスでサポートされていません。
 
 ## <a name="cross-region-dr"></a>リージョン間 DR
 
 停電やその他の物理的な資産の不具合により、データセンターに長時間の停止が発生する場合があります。 このようなイベントはまれであり、その間に、前述のリージョン内 HA 機能があっても常に役立つとは限りません。 IoT Hub には、このような長時間の停止から回復するための複数のソリューションが用意されています。 
 
-このような状況でお客様が利用できる回復オプションは、[Microsoft が開始するフェールオーバー](#microsoft-initiated-failover)と[手動フェールオーバー](#manual-failover)です。 この 2 つの根本的な違いは、前者は Microsoft が開始し、後者はユーザーが開始する点です。 また、Microsoft が開始するフェールオーバー オプションと比較して、手動フェールオーバーは目標復旧時間 (RTO) が短くなります。 各オプションで指定する具体的な RTO については、以下のセクションで説明します。 いずれかのオプションを使用してプライマリ リージョンから IoT Hub のフェールオーバーを実行すると、対応する [Azure geo ペア リージョン](../best-practices-availability-paired-regions.md)でハブは完全に機能します。
+このような状況でお客様が利用できる回復オプションは、[Microsoft が開始するフェールオーバー](#microsoft-initiated-failover)と[手動フェールオーバー](#manual-failover)です。 この 2 つの根本的な違いは、前者は Microsoft が開始し、後者はユーザーが開始する点です。 また、Microsoft が開始するフェールオーバー オプションと比較して、手動フェールオーバーは目標復旧時間 (RTO) が短くなります。 各オプションで指定する具体的な RTO については、以下のセクションで説明します。 いずれかのオプションを使用してプライマリ リージョンから IoT ハブのフェールオーバーを実行すると、対応する [Azure geo ペア リージョン](../best-practices-availability-paired-regions.md)でそのハブは完全に機能します。
 
 これらのいずれのフェールオーバー オプションにも、次の回復ポイントの目標 (RPO) が提供されています。
 
@@ -60,9 +60,9 @@ IoT Hub サービスは、サービスのほぼすべてのレイヤーに冗長
 IoT Hub のフェールオーバー操作が完了すると、デバイスおよびバックエンド アプリケーションからのすべての操作は、機能し続けることが期待されます。手動操作は必要ありません。 これは、device-to-cloud メッセージが引き続き動作するはずであり、デバイス レジストリ全体が破損していないことを意味します。 Event Grid から発行されたイベントは、Event Grid のサブスクリプションを引き続き利用できる限り、以前に構成されたその同じサブスクリプションから使用できます。
 
 > [!CAUTION]
-> - そのIoT Hub の組み込みイベント エンドポイントのイベント ハブと互換性のある名前とエンドポイントは、フェールオーバー後に変更されます。 イベント ハブ クライアントまたはイベント プロセッサ ホストのいずれかを使用して組み込みエンドポイントからテレメトリ メッセージを受信する場合は、[その IoT ハブの接続文字列](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)を使用して接続を確立する必要があります。 これにより、フェールオーバー後に手動操作することなく、バックエンド アプリケーションは継続的に動作します。 バックエンド アプリケーションでイベント ハブと互換性のある名前とエンドポイントを直接使用する場合、フェールオーバー後も運用を継続するには、[新しいイベント ハブ互換の名前とエンドポイントを取得して](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)アプリケーションを再構成する必要があります。
+> - IoT Hub の組み込みイベント エンドポイントのイベント ハブと互換性のある名前とエンドポイントはフェールオーバー後に変更され、構成されたコンシューマー グループは削除されます (これは 2020 年 5 月より前に修正されるバグです)。 イベント ハブ クライアントまたはイベント プロセッサ ホストを使用して組み込みエンドポイントからテレメトリ メッセージを受信する場合は、[その IoT ハブの接続文字列を使用](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)して接続を確立する必要があります。 これにより、フェールオーバー後に手動操作することなく、バックエンド アプリケーションは継続的に動作します。 アプリケーションでイベント ハブと互換性のある名前とエンドポイントを直接使用する場合、フェールオーバー後も運用を継続するには、[使用するコンシューマー グループを再構成し、新しいイベント ハブと互換性のあるエンドポイントをフェッチする](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint)必要があります。 Azure Functions または Azure Stream Analytics を使用して組み込みのエンドポイントを接続する場合は、**再起動**が必要になることがあります。
 >
-> - ストレージにルーティングするときは、パーティションを想定せずにすべての BLOB またはファイルを確実に読み取るために、BLOB またはファイルの一覧を取得したうえでそれらを反復処理することをお勧めします。 Microsoft が開始するフェールオーバー中や手動フェールオーバー中にパーティションの範囲が変化する可能性があります。 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) を使用すると BLOB の一覧を、[List ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) を使用するとファイルの一覧をそれぞれ列挙できます。 
+> - ストレージにルーティングするときは、パーティションを想定せずにすべての BLOB またはファイルを確実に読み取るために、BLOB またはファイルの一覧を取得したうえでそれらを反復処理することをお勧めします。 Microsoft が開始するフェールオーバー中や手動フェールオーバー中にパーティションの範囲が変化する可能性があります。 [List Blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) を使用して BLOB の一覧を、または [List ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) を使用してファイルの一覧を列挙できます。 
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft が開始するフェールオーバー
 
@@ -76,10 +76,15 @@ Microsoft が開始するフェールオーバーで指定されている RTO �
 
 プライマリ リージョンでダウンタイムが発生しているかどうかにかかわらず、手動フェールオーバー オプションは常に使用できます。 そのため、このオプションは、計画されたフェールオーバーを実行する場合にも使用することができます。 計画されたフェールオーバーの使用例の 1 つとして、定期的なフェールオーバー ドリルを実行する場合です。 ただし、計画されたフェールオーバー操作により、このオプションの RTO で定義された期間にハブのダウンタイムが発生し、前述の RPO の表で定義されたデータ損失が発生する点にも注意してください。 実際の災害が発生したときにエンドツーエンドのソリューションが稼動することを確認するために、計画されたフェールオーバー オプションを定期的に実行するように、テスト IoT Hub インスタンスを設定することをお勧めします。
 
-> [!IMPORTANT]
-> - 運用環境で使用されている IoT Hub では、テスト ドリルを実行しないでください。
->
-> - 手動フェールオーバーは、Azure の geo ペア リージョン間でハブを永続的に移行するメカニズムとして使用しないでください。 以前のプライマリ リージョンをホームとするデバイスからハブに対して実行される操作の待機時間が長くなります。
+詳細な手順については、[チュートリアル:IoT ハブの手動フェールオーバーを実行する](tutorial-manual-failover.md)
+
+### <a name="running-test-drills"></a>テスト ドリルの実行
+
+運用環境で使用されている IoT Hub では、テスト ドリルを実行しないでください。
+
+### <a name="dont-use-manual-failover-to-migrate-iot-hub-to-a-different-region"></a>手動フェールオーバーを使用して IoT ハブを別のリージョンに移行しない
+
+手動フェールオーバーは、Azure の geo ペア リージョン間でハブを永続的に移行するメカニズムとして使用 "*しない*" でください。 そのようにすると、以前のプライマリ リージョンをホームとするデバイスから IoT ハブに対して実行される操作の待機時間が長くなります。
 
 ## <a name="failback"></a>フェールバック
 
@@ -129,7 +134,7 @@ IoT ソリューションでのデプロイ トポロジの詳しい説明はこ
 | 手動フェールオーバー |10 分 - 2 時間|前述の RPO の表を参照してください|はい|非常に低い。 この操作は、ポータルからトリガーする必要があります。|なし|
 | リージョン間 HA |1 分未満|カスタム HA ソリューションのレプリケーション頻度によって変わります|いいえ|高|1 IoT Hub のコストの 1 倍を超えます|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure IoT Hub とは](about-iot-hub.md)
 * [IoT Hub の使用 (クイック スタート)](quickstart-send-telemetry-dotnet.md)

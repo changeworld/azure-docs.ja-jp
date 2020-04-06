@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/29/2020
+ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: e8d251cef9e67cb8fc0c11df8ce546383f75a679
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 711e8a7ae31888c9754252d88404d90f24e8030e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900815"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131997"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>ロールベースのアクセス制御を使用して Azure ダッシュボードを共有する
 
@@ -60,7 +60,7 @@ Azure サブスクリプションがあり、チームのさまざまなメン�
 
     ![ダッシュボードの発行](./media/azure-portal-dashboard-share-access/publish-dashboard-for-access-control.png)
 
-     デフォルトでは、共有すると**ダッシュボード**という名前のリソース グループにダッシュボードが発行されます。
+     デフォルトでは、共有により**ダッシュボード**という名前のリソース グループに自分のダッシュボードが発行されます。 別のリソース グループを選択するには、チェックボックスをオフにします。
 
 ダッシュボードが発行されました。 サブスクリプションから継承したアクセス許可が適切であれば、それ以上何もする必要はありません。 組織内の他のユーザーは、サブスクリプション レベルのロールに基づいてダッシュボードにアクセスし、変更できます。
 
@@ -68,15 +68,15 @@ Azure サブスクリプションがあり、チームのさまざまなメン�
 
 そのダッシュボードのロールにユーザーのグループを割り当てることができます。
 
-1. ダッシュボードを公開した後、**共有 + アクセス制御**で**ユーザーの管理**を選択します。
+1. ダッシュボードを発行した後、 **[共有]** または **[共有の解除]** オプションを選択して **[共有 + アクセス制御]** にアクセスします。
+
+1. **[共有 + アクセス制御]** で、 **[ユーザーの管理]** を選択します。
 
     ![ダッシュボードのユーザーを管理する](./media/azure-portal-dashboard-share-access/manage-users-for-access-control.png)
 
-    ダッシュボードから**共有 + アクセス制御**にアクセスするには、**共有**または**共有解除**オプションを選択してください。
-
 1. このダッシュボードにすでにロールが割り当てられている既存のユーザーを表示するには、**ロール割り当て**を選択します。
 
-1. 新しいユーザーまたはグループを追加するには、 **[追加]** を選択します。
+1. 新しいユーザーまたはグループを追加するには、 **[追加]** 、 **[ロールの割り当ての追加]** の順に選択します。
 
     ![ダッシュボードにアクセスするためのユーザーを追加する](./media/azure-portal-dashboard-share-access/manage-users-existing-users.png)
 
@@ -84,11 +84,7 @@ Azure サブスクリプションがあり、チームのさまざまなメン�
 
 1. ロールに割り当てるユーザーまたはグループを選択します。 目的のユーザーまたはグループが一覧に表示されない場合は、検索ボックスを使用します。 使用できるグループの一覧は、Active Directory で作成したグループによって異なります。
 
-1. ユーザーまたはグループを追加したら、 **[OK]** を選択します。
-
-    新しい割り当てがユーザーの一覧に追加されます。 その**アクセス**は、**継承済み**ではなく**割り当て済み**としてリストされています。
-
-    ![assigned roles](./media/azure-portal-dashboard-share-access/assigned-roles.png)
+1. ユーザーまたはグループの追加が完了したら、 **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

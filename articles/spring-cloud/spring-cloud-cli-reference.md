@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: reference
 ms.date: 10/03/2019
 ms.author: brendm
-ms.openlocfilehash: 869a47469f8e0429d3726651c28f5a58acfcb856
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 33d13d2d4fa9003ef041c4c96be83a69ac595a78
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279041"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298787"
 ---
 # <a name="az-spring-cloud"></a>az spring-cloud
 
@@ -82,7 +82,7 @@ ms.locfileid: "76279041"
 
 Azure Spring Cloud で既定のデプロイを使用して新しいアプリを作成します。
 
-```cli
+```azurecli
 az spring-cloud create  --name -n
                         --resource-group -g
                         --location -l
@@ -103,7 +103,7 @@ az spring-cloud create  --name -n
 
 WestUS に新しい Azure Spring Cloud を作成します
 
-```cli
+```azurecli
 az spring-cloud create -n MyService -g MyResourceGroup -l westus
 ```
 
@@ -111,7 +111,7 @@ az spring-cloud create -n MyService -g MyResourceGroup -l westus
 
 Azure Spring Cloud のインスタンスを削除します。
 
-```cli
+```azurecli
 az spring cloud --name -n
                 --resource-group -g
                 --no-wait
@@ -130,7 +130,7 @@ az spring cloud --name -n
 
 "MyResourceGroup" から "MyService" という名前の Azure Spring Cloud インスタンスを削除します。
 
-```cli
+```azurecli
 az spring-cloud delete -n MyService -g MyResourceGroup
 ```
 
@@ -138,7 +138,7 @@ az spring-cloud delete -n MyService -g MyResourceGroup
 
 指定したリソース グループに関連付けられているすべての Azure Spring Cloud インスタンスを一覧表示します。 リソース グループを指定しないと、サブスクリプション ID の一覧が表示されます。
 
-```cli
+```azurecli
 az spring-cloud list --resource-group -g
 ```
 
@@ -150,7 +150,7 @@ az spring-cloud list --resource-group -g
 
 指定した Azure Spring Cloud インスタンスの詳細を表示します。
 
-```cli
+```azurecli
 az spring-cloud show --name -n
                      -- resource-group -g
 ```
@@ -164,7 +164,7 @@ az spring-cloud show --name -n
 
 Azure Spring Cloud に新しいアプリを作成します。
 
-```cli
+```azurecli
 az spring-cloud app create --name -n
                             --resource-group -g
                             --service -s
@@ -193,13 +193,13 @@ az spring-cloud app create --name -n
 
 既定の構成でアプリを作成します。
 
-```cli
+```azurecli
 az spring-cloud app create -n MyApp -s MyService
 ```
 
 3 つのインスタンスで、パブリックにアクセス可能なアプリを作成します。  各インスタンスには、3 GB のメモリと 2 つの CPU コアがあります。
 
-```cli
+```azurecli
 az spring-cloud app create -n MyApp -s MyService --is-public true --cpu 2 --memory 3
 ```
 
@@ -207,7 +207,7 @@ az spring-cloud app create -n MyApp -s MyService --is-public true --cpu 2 --memo
 
 Azure Spring Cloud のアプリを削除します。
 
-```cli
+```azurecli
 az spring cloud app delete  --name -n
                             --resource-group -g
                             --service -s
@@ -223,7 +223,7 @@ az spring cloud app delete  --name -n
 
 ソース コードまたはビルド済みバイナリから Azure Spring Cloud にアプリをデプロイし、関連する構成を更新します。
 
-```cli
+```azurecli
 az spring cloud app deploy  --name -n
                             --resource-group -g
                             --service -s
@@ -264,19 +264,19 @@ az spring cloud app deploy  --name -n
 
 ソース コードをアプリにデプロイします。 これにより、現在のディレクトリがパックされ、Pivotal Build Service を使用してバイナリがビルドされた後、アプリにデプロイされます。
 
-```cli
+```azurecli
 az spring-cloud app deploy -n MyApp -s MyService
 ```
 
 JVM オプションと環境変数を使用して、ビルド済み jar をアプリにデプロイします。
 
-```cli
+```azurecli
 az spring-cloud app deploy -n MyApp -s MyService --jar-path app.jar --jvm-options="-XX:+UseG1GC -XX:+UseStringDeduplication" --env foo=bar
 ```
 
 アプリの特定のデプロイにソース コードをデプロイします。
 
-```cli
+```azurecli
 az spring-cloud app deploy -n MyApp -s Myspring-cloud -d green-deployment
 ```
 
@@ -284,7 +284,7 @@ az spring-cloud app deploy -n MyApp -s Myspring-cloud -d green-deployment
 
 Azure Spring Cloud インスタンスのすべてのアプリを一覧表示します。
 
-```cli
+```azurecli
 az spring-cloud app list --resource-group -g
                          --service -s
 ```
@@ -298,7 +298,7 @@ az spring-cloud app list --resource-group -g
 
 アプリのインスタンスを再起動します。  既定値は運用環境のデプロイです。
 
-```cli
+```azurecli
 az spring-cloud app restart --name -n
                             --resource-group -g
                             --service -s
@@ -321,7 +321,7 @@ az spring-cloud app restart --name -n
 
 アプリまたはそのデプロイを手動でスケーリングします。
 
-```cli
+```azurecli
 az spring-cloud app scale --name -n
                           --resource-group -g
                           --service -s
@@ -350,13 +350,13 @@ az spring-cloud app scale --name -n
 
 インスタンスあたり 4 CPU コアと 8 GB メモリに、アプリをスケールアップします。
 
-```cli
+```azurecli
 az spring-cloud app scale -n MyApp -s MyService --cpu 3 --memory 8
 ```
 
 アプリのデプロイを 5 インスタンスにスケールアウトします。
 
-```cli
+```azurecli
 az spring-cloud app scale -n MyApp -s MyService -d green-deployment --instance-count 5
 ```
 
@@ -364,7 +364,7 @@ az spring-cloud app scale -n MyApp -s MyService -d green-deployment --instance-c
 
 アプリの運用環境のデプロイの構成オプションを設定します。
 
-```cli
+```azurecli
 az spring-cloud app set-deployment --deployment -d
                                    --name -n
                                    --resource-group -g
@@ -387,7 +387,7 @@ az spring-cloud app set-deployment --deployment -d
 
 アプリのステージング環境のデプロイを運用環境にスワップします。
 
-```cli
+```azurecli
 az spring-cloud app set-deployment -d green-deployment -n MyApp -s MyService
 ```
 
@@ -395,7 +395,7 @@ az spring-cloud app set-deployment -d green-deployment -n MyApp -s MyService
 
 Azure Spring Cloud のアプリの詳細を表示します。
 
-```cli
+```azurecli
 az spring-cloud app show --name -n
                          --resource-group -g
                          --service -s
@@ -411,7 +411,7 @@ az spring-cloud app show --name -n
 
 ソース コードからの最後のデプロイのビルド ログを表示します。  既定値は運用環境です。
 
-```cli
+```azurecli
 az spring-cloud app show-deploy-log --name -n
                                     --resource-group -g
                                     --service -s
@@ -432,7 +432,7 @@ az spring-cloud app show-deploy-log --name -n
 
 アプリのインスタンスを起動します。  既定値は運用環境です。
 
-```cli
+```azurecli
 az spring-cloud app start --name -n
                           --resource-group -g
                           --service -s
@@ -455,7 +455,7 @@ az spring-cloud app start --name -n
 
 アプリのインスタンスを停止します。  既定値は運用環境です。
 
-```cli
+```azurecli
 az spring-cloud app stop --name -n
                          --resource-group -g
                          --service -s
@@ -478,7 +478,7 @@ az spring-cloud app stop --name -n
 
 アプリの格納されている構成を更新します。
 
-```cli
+```azurecli
 az spring-cloud app update --name -n
                            --resource-group -g
                            --service -s
@@ -511,7 +511,7 @@ az spring-cloud app update --name -n
 
 アプリの環境変数を追加します。
 
-```cli
+```azurecli
 az spring-cloud app update --env foo=bar
 ```
 
@@ -519,7 +519,7 @@ az spring-cloud app update --env foo=bar
 
 アプリ内のすべてのサービス バインドを一覧表示します。
 
-```cli
+```azurecli
 az spring-cloud app binding list --app
                                  --resource-group -g
                                  --service -s
@@ -535,7 +535,7 @@ az spring-cloud app binding list --app
 
 アプリからサービス バインドを削除します。
 
-```cli
+```azurecli
 az spring-cloud app binding list --app
                                  --name -n
                                  --resource-group -g
@@ -553,7 +553,7 @@ az spring-cloud app binding list --app
 
 サービス バインドの詳細を表示します。
 
-```cli
+```azurecli
 az spring-cloud app binding show --app
                                  --name -n
                                  --resource-group -g
@@ -571,7 +571,7 @@ az spring-cloud app binding show --app
 
 Azure Cosmos DB とアプリをバインドします。
 
-```cli
+```azurecli
 az spring-cloud app binding cosmos add --api-type
                                        --app
                                        --name -n
@@ -583,7 +583,7 @@ az spring-cloud app binding cosmos add --api-type
                                        --key-space
 ```
 
-```cli
+```azurecli
 az spring-cloud app binding list --app
                                  --name -n
                                  --resource-group -g
@@ -606,7 +606,7 @@ az spring-cloud app binding list --app
 
 ## <a name="az-spring-cloud-app-binding-cosmos-update"></a>az spring-cloud app binding cosmos update
 
-```cli
+```azurecli
 az spring-cloud app binding cosmos update --app
                                           --name -n
                                           --resource-group -g
@@ -631,7 +631,7 @@ az spring-cloud app binding cosmos update --app
 
 ## <a name="az-spring-cloud-app-binding-mysql-add"></a>az spring-cloud app binding mysql add
 
-```cli
+```azurecli
 az spring-cloud app binding mysql add --app
                                       --database-name
                                       --key
@@ -656,7 +656,7 @@ az spring-cloud app binding mysql add --app
 
 Azure Database for MySQL へのアプリのサービス バインド接続を更新します。
 
-```cli
+```azurecli
 az spring-cloud app binding mysql update --add
                                          --name -n
                                          --resource-group -g
@@ -683,7 +683,7 @@ az spring-cloud app binding mysql update --add
 
 Azure Cache for Redis とアプリをバインドします。
 
-```cli
+```azurecli
 az spring-cloud app binding redis add --app
                                       --name -n
                                       --resource-group -g
@@ -702,7 +702,7 @@ az spring-cloud app binding redis add --app
 
 | 省略可能なパラメーター | |
 | --- | ---: |
-| --disable-ssl | SSL を無効にします。 |
+| --disable-ssl | TLS を無効にする。 |
 
 ## <a name="az-spring-cloud-app-binding-redis-update"></a>az spring-cloud app binding redis update
 
@@ -717,7 +717,7 @@ Azure Cache for Redis に対するサービス バインドを更新します。
 
 | 省略可能なパラメーター | |
 | --- | ---: |
-| --disable-ssl | SSL を無効にします。 |
+| --disable-ssl | TLS を無効にする。 |
 
 ## <a name="az-spring-cloud-app-deployment-create"></a>az spring-cloud app deployment create
 
@@ -750,13 +750,13 @@ Azure Cache for Redis に対するサービス バインドを更新します。
 
 アプリの新しいデプロイにソース コードをデプロイします。  これにより、現在のディレクトリがパックされ、Pivotal Build System を使用してバイナリがビルドされた後、デプロイされます。
 
-```cli
+```azurecli
 az spring-cloud app deployment create -n green-deployment --app MyApp -s MyService
 ```
 
 JVM オプションと環境変数を使用して、ビルド済み jar をアプリにデプロイします。
 
-```cli
+```azurecli
 az spring-cloud app deployment create -n green-deployment --app MyApp -s MyService --jar-path app.jar --jvm-options="-XX:+UseStringDeDuplication" --env foo=bar
 ```
 
@@ -764,7 +764,7 @@ az spring-cloud app deployment create -n green-deployment --app MyApp -s MyServi
 
 アプリのデプロイを削除します。
 
-```cli
+```azurecli
 az spring-cloud app deployment delete --app
                                       --name -n
                                       --resource-group -g
@@ -782,7 +782,7 @@ az spring-cloud app deployment delete --app
 
 アプリのすべてのデプロイを一覧表示します。
 
-```cli
+```azurecli
 az spring-cloud app deployment list --app
                                     --resource-group -g
                                     --service -s
@@ -798,7 +798,7 @@ az spring-cloud app deployment list --app
 
 デプロイの詳細を表示します。
 
-```cli
+```azurecli
 az spring-cloud app deployment show --app
                                     --name -n
                                     --resource-group -g
@@ -816,7 +816,7 @@ az spring-cloud app deployment show --app
 
 構成サーバーのすべての構成設定を消去します。
 
-```cli
+```azurecli
 az spring-cloud config-server clear --name
                                         --resource-group -g
 ```
@@ -830,7 +830,7 @@ az spring-cloud config-server clear --name
 
 YAML ファイルを使用して、構成サーバーの構成設定を設定します。
 
-```cli
+```azurecli
 az spring-cloud config-server set --config-file
                                   --name -n
                                   --resource-group -g
@@ -851,7 +851,7 @@ az spring-cloud config-server set --config-file
 
 構成サーバーの設定を表示します。
 
-```cli
+```azurecli
 az spring-cloud config-server show --name -n
                                    --resource-group -g
 ```
@@ -865,7 +865,7 @@ az spring-cloud config-server show --name -n
 
 構成サーバーの Git プロパティを設定します。  これにより、既存のすべての Git プロパティが上書きされます。
 
-```cli
+```azurecli
 az spring-cloud config-server git set --name -n
                                       --resource-group g
                                       --uri
@@ -900,7 +900,7 @@ az spring-cloud config-server git set --name -n
 
 ## <a name="az-spring-cloud-config-server-git-repo-add"></a>az spring-cloud config-server git repo add
 
-```cli
+```azurecli
 az spring-cloud config-server git repo add --name -n
                                            --repo-name
                                            --resource-group -g
@@ -941,7 +941,7 @@ az spring-cloud config-server git repo add --name -n
 
 構成サーバーで定義されているすべての Git リポジトリを一覧表示します
 
-```cli
+```azurecli
 az spring-cloud config-server git repo list --name -n
                                        --resource-group -g
                                        --defer
@@ -960,7 +960,7 @@ az spring-cloud config-server git repo list --name -n
 
 構成サーバーから既存の Git リポジトリ構成を削除します。
 
-```cli
+```azurecli
 az spring-cloud config-server git repo remove --name -n
                                          --repo-name
                                          --resource-group -g
@@ -981,7 +981,7 @@ az spring-cloud config-server git repo remove --name -n
 
 Azure Spring Cloud のテスト エンドポイントを無効にします
 
-```cli
+```azurecli
 az spring-cloud test-endpoint disable --name -n
                                       --resource-group -g
 ```
@@ -995,7 +995,7 @@ az spring-cloud test-endpoint disable --name -n
 
 Azure Spring Cloud のテスト エンドポイントを有効にします。 
 
-```cli 
+```azurecli
 az spring-cloud test-endpoint enable --name -n
                                      --resource-group -g
 ```
@@ -1009,7 +1009,7 @@ az spring-cloud test-endpoint enable --name -n
 
 Azure Spring Cloud で使用可能なテスト エンドポイント キーを一覧表示します。
 
-```cli
+```azurecli
 az spring-cloud test-endpoint list --name -n
                                    --resource-group -g
                                    --app
@@ -1030,7 +1030,7 @@ az spring-cloud test-endpoint list --name -n
 
 Azure Spring Cloud のテスト エンドポイント キーを再生成します。
 
-```cli
+```azurecli
 az spring-cloud test-endpoint renew-key --name -n
                                         --resource-group -g
                                         --type

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 03/23/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba579d6da8c759a4653b729f1a471efdedc2baa7
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 07ba38a5d7e8e8a89ba122efb1734c1f13a94d48
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505754"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332181"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory のパスワードレス認証オプション
 
@@ -26,7 +26,7 @@ ms.locfileid: "77505754"
 | --- | --- | --- |
 | パスワードレス | Windows 10 デバイス、電話、またはセキュリティ キー | 生体認証または PIN |
 
-認証については、組織ごとにさまざまなニーズがあります。 Microsoft では、次の 3 つのパスワードレス認証オプションを提供しています。
+認証については、組織ごとにさまざまなニーズがあります。 Microsoft では、Azure Active Directory (Azure AD) と統合された次の 3 つのパスワードレス認証オプションを提供しています。
 
 - Windows Hello for Business
 - Microsoft Authenticator アプリ
@@ -38,6 +38,20 @@ ms.locfileid: "77505754"
 
 Windows Hello for Business は、指定した Windows PC を所有しているインフォメーション ワーカーに最適です。 生体認証と PIN はユーザーの PC に直接関連付けられるため、所有者以外のユーザーからのアクセスは防止されます。 公開キー基盤 (PKI) 統合およびシングル サインオン (SSO) の組み込みサポートにより、Windows Hello for Business では、オンプレミスおよびクラウドの会社のリソースにシームレスにアクセスできる便利な方法を提供します。
 
+![Windows Hello for Business を使用したユーザー サインインの例](./media/concept-authentication-passwordless/windows-hellow-sign-in.jpeg)
+
+次の手順では、Azure Active Directory でのサインイン プロセスのしくみについて示します。
+
+![Windows Hello for Business を使用したユーザー サインインに関連する手順の概要を示す図](./media/concept-authentication-passwordless/windows-hello-flow.png)
+
+1. ユーザーは、生体認証または PIN のジェスチャを使用して Windows にサインインします。 このジェスチャによって、Windows Hello for Business の秘密キーのロックが解除され、*クラウド AP プロバイダー*というクラウド認証セキュリティ サポート プロバイダーに送信されます。
+1. クラウド AP プロバイダーから Azure AD に nonce が要求されます。
+1. Azure AD からは 5 分間有効な nonce が返されます。
+1. クラウド AP プロバイダーでは、ユーザーの秘密キーを使用して nonce に署名され、署名済みの nonce が Azure AD に返されます。
+1. Azure AD では、ユーザーの安全に登録された公開キーを使用して、署名済みの nonce が nonce の署名に対して検証されます。 署名の検証後、Azure AD では返された署名済み nonce が検証されます。 nonce が検証されると、Azure AD ではデバイスのトランスポート キーに暗号化されたセッション キーを使用してプライマリ更新トークン (PRT) が作成され、それがクラウド AP プロバイダーに返されます。
+1. クラウド AP プロバイダーは、セッション キーと共に暗号化された PRT を受け取ります。 クラウド AP プロバイダーでは、デバイスのプライベート トランスポート キーを使用してセッション キーが復号化され、デバイスのトラステッド プラットフォーム モジュール (TPM) を使用してセッション キーが保護されます。
+1. クラウド AP プロバイダーから Windows に成功した認証応答が返されます。 その後、ユーザーは再度認証を行う必要なく (SSO)、Windows とクラウドおよびオンプレミスのアプリケーションにアクセスできるようになります。
+
 Windows Hello for Business の[計画ガイド](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide)を使用すると、Windows Hello for Business の展開の種類と、検討する必要がある選択肢を決定することができます。
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator アプリ
@@ -46,7 +60,20 @@ Windows Hello for Business の[計画ガイド](https://docs.microsoft.com/windo
 
 ![Microsoft Authenticator アプリを使用して Microsoft Edge にサインインする](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
-Authenticator アプリは、あらゆる iOS や Android フォンを、強力なパスワードレスの資格情報に変えます。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証 (指紋または顔) あるいは PIN を使用して確認できます。
+Authenticator アプリは、あらゆる iOS や Android フォンを、強力なパスワードレスの資格情報に変えます。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証 (指紋または顔) あるいは PIN を使用して確認できます。 インストールの詳細については、「[Microsoft Authenticator アプリのダウンロードとインストール](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)」を参照してください。
+
+Authenticator アプリを使用したパスワードレス認証では、Windows Hello for Business と同じ基本的なパターンに従います。 これは、Azure AD によって使用されている Microsoft Authenticator アプリのバージョンを見つけられるように、ユーザーを識別する必要があるため、少し複雑になります。
+
+![Microsoft Authenticator アプリでのユーザー サインインに関連する手順の概要を示す図](./media/concept-authentication-passwordless/authenticator-app-flow.png)
+
+1. ユーザーは自分のユーザー名を入力します。
+1. Azure AD では、ユーザーが強力な資格情報を持っていることが検出され、強力な資格情報フローが開始されます。
+1. iOS デバイス上では Apple Push Notification Service (APNS) を介して、Android デバイス上では Firebase Cloud Messaging (FCM) を介して、通知がアプリに送信されます。
+1. ユーザーはプッシュ通知を受け取り、アプリを開きます。
+1. アプリでは Azure AD が呼び出され、プレゼンス証明のチャレンジと nonce を受け取ります。
+1. ユーザーは、自分の生体認証または PIN を入力して秘密キーのロックを解除することでチャレンジを完了します。
+1. nonce は秘密キーで署名され、Azure AD に返送されます。
+1. Azure AD では公開キーと秘密キーの検証が実行され、トークンが返されます。
 
 ## <a name="fido2-security-keys"></a>FIDO2 セキュリティ キー
 
@@ -55,6 +82,20 @@ FIDO2 セキュリティ キーは、フォーム ファクターとして提供
 パブリック プレビューでは、従業員はセキュリティ キーを使用して、Azure AD またはハイブリッド Azure AD に参加済みの Windows 10 デバイスにサインインし、クラウドおよびオンプレミス リソースへのシングル サインオンを行うことができます。 ユーザーは、サポートされているブラウザーにサインインすることもできます。 FIDO2 セキュリティ キーは、セキュリティに非常に敏感であるか、2 番目のファクターとしての電話の使用を望まない、あるいは使用できないシナリオまたは従業員が存在する企業向けの優れたオプションです。
 
 ![セキュリティ キーを使用して Microsoft Edge にサインインする](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
+
+次のプロセスは、ユーザーが FIDO2 セキュリティ キーを使用してサインインするときに使用されます。
+
+![FIDO2 セキュリティ キーを使用したユーザー サインインに関連する手順の概要を示す図](./media/concept-authentication-passwordless/fido2-security-key-flow.png)
+
+1. ユーザーは、FIDO2 セキュリティ キーをコンピューターにプラグインします。
+2. Windows で FIDO2 セキュリティ キーが検出されます。
+3. Windows から認証要求が送信されます。
+4. Azure AD から nonce が返送されます。
+5. ユーザーはジェスチャを完了して、FIDO2 セキュリティ キーのセキュリティで保護されたエンクレーブに保存されている秘密キーのロックを解除します。
+6. FIDO2 セキュリティ キーでは、秘密キーを使用して nonce に署名されます。
+7. 署名された nonce を含むプライマリ更新トークン (PRT) トークン要求が Azure AD に送信されます。
+8. Azure AD で、FIDO2 公開キーを使用して署名済みの nonce が検証されます。
+9. Azure AD から PRT が返され、オンプレミスのリソースにアクセスできるようになります。
 
 FIDO Alliance によって FIDO2 認定されたキーが多数存在する場合、Microsoft では、最大限のセキュリティと最適なエクスペリエンスを保証するために、ベンダーによって実装される FIDO2 Client-to-Authenticator Protocol (CTAP) 仕様の一部の省略可能な拡張機能が必要になります。
 
@@ -77,6 +118,9 @@ FIDO Alliance によって FIDO2 認定されたキーが多数存在する場�
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | eWBM | [https://www.ewbm.com/support](https://www.ewbm.com/support) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
+| Gemalto (Thales Group) | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
+| OneSpan Inc. | [https://www.onespan.com/sites/default/files/2019-08/Digipass-SecureClick_datasheet.pdf](https://www.onespan.com/sites/default/files/2019-08/Digipass-SecureClick_datasheet.pdf) |
+| IDmelon Technologies Inc. | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) | 
 
 > [!NOTE]
 > NFC ベースのセキュリティ キーを購入して使用する予定の場合は、セキュリティ キーとしてサポートされている NFC リーダーが必要になります。 NFC リーダーは、Azure の要件でも制限事項でもありません。 使用している NFC ベースのセキュリティ キーでサポートされている NFC リーダーの一覧については、ベンダーにご確認ください。
@@ -90,7 +134,31 @@ FIDO Alliance によって FIDO2 認定されたキーが多数存在する場�
 - エンド ユーザーは、アカウント ポータルでこれらのパスワードレスの認証方法を登録して管理することができます
 - エンド ユーザーは、これらのパスワードレスの認証方法でサインインすることができます
    - Microsoft Authenticator アプリ:すべてのブラウザー間で、Windows 10 の Out Of Box (OOBE) セットアップ時に、また、オペレーティング システム上の統合されたモバイル アプリでなど、Azure AD 認証が使用されるシナリオで動作します。
-   - セキュリティ キー:Windows 10 のロック画面、および Microsoft Edge などのサポートされているブラウザーの Web で動作します。
+   - セキュリティ キー:Windows 10 のロック画面、および Microsoft Edge (従来のものと新しい Edge の両方) などのサポートされているブラウザーの Web で動作します。
+
+## <a name="choose-a-passwordless-method"></a>パスワードレスの方法を選択する
+
+これら 3 つのパスワードレス オプションのいずれを選択するかは、会社のセキュリティ、プラットフォーム、アプリの要件によって変わります。
+
+Microsoft のパスワードレス テクノロジを選択する際には、考慮する必要がある要素がいくつかあります。
+
+||**Windows Hello for Business**|**Microsoft Authenticator アプリでのパスワードレスのサインイン**|**FIDO2 セキュリティ キー**|
+|:-|:-|:-|:-|
+|**前提条件**| Windows 10 バージョン 1809 以降<br>Azure Active Directory| Microsoft Authenticator アプリ<br>電話 (iOS デバイスおよび Android 6.0 以降を実行している Android デバイス)|Windows 10 バージョン 1809 以降<br>Azure Active Directory|
+|**モード**|プラットフォーム|ソフトウェア|ハードウェア|
+|**システムとデバイス**|トラステッド プラットフォーム モジュール (TPM) が組み込まれた PC<br>PIN と生体認証の認識 |電話での PIN と生体認証の認識|Microsoft 互換の FIDO2 セキュリティ デバイス|
+|**ユーザー エクスペリエンス**|Windows デバイスで PIN または生体認証の認識 (顔、虹彩、または指紋) を使用してサインインします。<br>Windows Hello の認証はデバイスに関連付けられています。ユーザーが会社のリソースにアクセスするには、デバイスと、PIN や生体認証要素などのサインイン コンポーネントの両方が必要です。|指紋スキャン、顔または虹彩の認識、または PIN を使用して携帯電話を使用してサインインします。<br>ユーザーは自分の PC または携帯電話から職場または個人用のアカウントにサインインします。|FIDO2 セキュリティ デバイス (生体認証、PIN、および NFC) を使用してサインインします<br>ユーザーは組織の管理に基づいてデバイスにアクセスし、PIN、USB セキュリティ キーや NFC 対応のスマート カードなどのデバイスを使用した生体認証、キー、またはウェアラブル デバイスに基づいて認証できます。|
+|**有効なシナリオ**| Windows デバイスでのパスワードレスのエクスペリエンス。<br>デバイスやアプリケーションへのシングル サインオン機能を使用する専用の作業用 PC に適用できます。|携帯電話を使用するパスワードレスの任意の場所のソリューション。<br>任意のデバイスから Web 上の仕事用または個人用アプリケーションにアクセスするために適しています。|生体認証、PIN、および NFC を使用するワーカー向けのパスワードレスのエクスペリエンス。<br>共有の PC や携帯電話が実行可能な選択肢ではない場合 (ヘルプ デスク担当者、公共のキオスク、病院のチームなど) に適用できます|
+
+次の表を使用して、お客様の要件とユーザーをサポートする方法を選択します。
+
+|ペルソナ|シナリオ|環境|パスワードレスのテクノロジ|
+|:-|:-|:-|:-|
+|**管理者**|管理タスク用デバイスへのセキュリティで保護されたアクセス|割り当てられた Windows 10 デバイス|Windows Hello for Business、FIDO2 セキュリティ キー、またはその両方|
+|**管理者**|Windows 以外のデバイスでの管理タスク| モバイルまたは Windows 以外のデバイス|Microsoft Authenticator アプリでのパスワードレスのサインイン|
+|**インフォメーション ワーカー**|業務効率化作業|割り当てられた Windows 10 デバイス|Windows Hello for Business、FIDO2 セキュリティ キー、またはその両方|
+|**インフォメーション ワーカー**|業務効率化作業| モバイルまたは Windows 以外のデバイス|Microsoft Authenticator アプリでのパスワードレスのサインイン|
+|**現場のワーカー**|工場、プラント、小売店、またはデータ入力でのキオスク|共有 Windows 10 デバイス|FIDO2 セキュリティ キー|
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,17 +1,17 @@
 ---
-title: Azure Log Analytics の IT Service Management Connector とのサポートされている接続 | Microsoft Docs
+title: Azure Monitor の IT Service Management Connector
 description: この記事では、ITSM 製品/サービスを Azure Monitor の IT Service Management Connector (ITSMC) に接続して、ITSM 作業項目を一元的に監視して管理する方法に関する情報を提供します。
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: c6cad29b6cc392746a2e56323302521302835b2f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: eb3b09c6f349024d30d68a6c970770e2a78924ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665869"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132307"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](../../azure-monitor/platform/itsmc-overview.md)に関する記事をご覧ください。
@@ -180,6 +180,8 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
 次の前提条件が満たされていることを確認してください。
 - ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - ServiceNow でサポートされているバージョン: New York、Madrid、London、Kingston、Jakarta、Istanbul、Helsinki、Geneva。
+> [!NOTE]
+> ITSMC では、ServiceNow からの公式の SaaS サービスのみがサポートされています。 ServiceNow のプライベート デプロイはサポートされていません。 
 
 **ServiceNow 管理者は、ServiceNow インスタンスで次のことを行う必要があります。**
 - ServiceNow 製品のクライアント ID とクライアント シークレットを生成します。 クライアント ID とシークレットを生成する方法については、必要に応じて以下の情報をご覧ください。
@@ -220,7 +222,7 @@ ServiceNow 接続を作成するには、次の手順に従います。
 | **パートナーの種類**   | **[ServiceNow]** を選択します。 |
 | **ユーザー名**   | ITSMC への接続をサポートするために ServiceNow アプリで作成した統合ユーザー名を入力します。 詳細情報: [ServiceNow アプリのユーザー ロールの作成](#create-integration-user-role-in-servicenow-app)に関するページ。|
 | **パスワード**   | このユーザー名に関連付けられているパスワードを入力します。 **注**:ユーザー名とパスワードは、認証トークンを生成するためにのみ使用され、ITSMC サービス内のどこにも格納されません。  |
-| **[サーバー URL]**   | ITSMC に接続する ServiceNow インスタンスの URL を入力します。 |
+| **[サーバー URL]**   | ITSMC に接続する ServiceNow インスタンスの URL を入力します。 URL は、".servicenow.com" というサフィックスが付いたサポートされている SaaS バージョンを指している必要があります。|
 | **クライアント ID**   | 先ほど生成した、OAuth2 認証に使用するクライアント ID を入力します。  クライアント ID とシークレットの生成の詳細については、 [OAuth のセットアップ](https://wiki.servicenow.com/index.php?title=OAuth_Setup)に関するページを参照してください。 |
 | **クライアント シークレット**   | この ID 用に生成したクライアント シークレットを入力します。   |
 | **データ同期スコープ**   | ITSMC 経由で Azure Log Analytics に同期する ServiceNow 作業項目を選択します。  選択した値は、ログ分析にインポートされます。   **オプション:** インシデント、変更要求。|

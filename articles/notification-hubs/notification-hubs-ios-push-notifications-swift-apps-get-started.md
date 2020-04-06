@@ -16,14 +16,14 @@ ms.date: 05/21/2019
 ms.author: miparker
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 8dae5bcc082ba5dd0953e3e97f609e4031547a35
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a721c519c7a836e20455c6f1887bcfa7b52951f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030643"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336635"
 ---
-# <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>チュートリアル:Notification Hubs REST API を使用する Swift iOS アプリにプッシュ通知を送信する
+# <a name="tutorial-send-push-notifications-to-swift-ios-apps-using-notification-hubs-rest-api"></a>チュートリアル:Notification Hubs REST API を使用して Swift iOS アプリにプッシュ通知を送信する
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
@@ -41,6 +41,8 @@ ms.locfileid: "72030643"
 > * APNs 情報を利用して通知ハブを構成する。
 > * iOS アプリを通知ハブに接続する。
 > * ソリューションをテストする。
+
+このチュートリアルの完成したコードは、[GitHub](https://github.com/xamcat/mobcat-samples/tree/master/notification_hub_rest) 上にあります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -89,12 +91,12 @@ ms.locfileid: "72030643"
 
 1. プロビジョニングした通知ハブからの独自の値を使用して、次の構成エントリが含まれるように **devsettings.plist** を更新します。
 
-   | Key                            | 種類                     | 値                     |
+   | Key                            | Type                     | 値                     |
    |--------------------------------| -------------------------| --------------------------|
-   | notificationHubKey             | string                   | \<hubKey>                  |
-   | notificationHubKeyName         | string                   | \<hubKeyName>              |
-   | notificationHubName            | string                   | \<hubName>                 |
-   | notificationHubNamespace       | string                   | \<hubNamespace>            |
+   | notificationHubKey             | String                   | \<hubKey>                  |
+   | notificationHubKeyName         | String                   | \<hubKeyName>              |
+   | notificationHubName            | String                   | \<hubName>                 |
+   | notificationHubNamespace       | String                   | \<hubNamespace>            |
 
    Azure portal の通知ハブ リソースに移動して、必要な値を見つけることができます。 特に、**notificationHubName** および **notificationHubNamespace** の値は、 **[概要]** ページ内の **[要点]** サマリーの右上隅にあります。
 
@@ -114,18 +116,18 @@ ms.locfileid: "72030643"
 
 1. **[Identity]\(ID\)** を見つけ、 **[Bundle Identifier]\(バンドル識別子\)** の値を、前の手順の **[アプリ ID]** に対して使用される値である `com.<organization>.PushDemo` と一致するように設定します。
 
-1. **[Signing]\(署名\)** を見つけ、お使いの **[Apple Developer Account]\(Apple Developer アカウント\)** に適した **[チーム]** を選択します。 **[チーム]** の値は、自分の証明書とプロファイルを作成したときのものに一致するようにします。
+1. **[Signing & Capabilities]\(署名と機能\)** を見つけ、お使いの **[Apple Developer アカウント]** に適した **[チーム]** を選択します。 **[チーム]** の値は、自分の証明書とプロファイルを作成したときのものに一致するようにします。
 
-1. Xcode により、**バンドル識別子**に基づいて適切な**プロビジョニング プロファイル**の値が自動的にプルダウンします。 新しい**プロビジョニング プロファイル**の値が表示されない場合は、 **[Xcode]**  >  **[Preferences]\(環境設定\)**  >  **[アカウント]**  >  **[View Details]\(詳細を表示\)** を選択して、 **[Signing Identity]\(署名 ID\)** のプロファイルを更新してみてください。 **[Signing Identity]\(署名 ID\)** を選択し、右下にある **[Refresh]\(更新\)** ボタンをクリックしてプロファイルをダウンロードします。
+1. Xcode により、**バンドル識別子**に基づいて適切な**プロビジョニング プロファイル**の値が自動的にプルダウンします。 新しい**プロビジョニング プロファイル**の値が表示されない場合は、 **[Xcode]**  >  **[Preferences]\(環境設定\)**  >  **[アカウント]** を選択して、 **[Signing Identity]\(署名 ID\)** のプロファイルを更新してみてから、 **[Download Manual Profiles]\(手動プロファイルのダウンロード\)** ボタンを選択し、プロファイルをダウンロードします。
 
-1. **[Capabilities]\(機能\)** タブを選択し、 **[push notifications]\(プッシュ通知\)** が有効になっていることを確認します。
+1. 引き続き **[Signing & Capabilities]\(署名と機能\)** タブで、 **[+ 機能]** ボタンをクリックし、一覧から **[プッシュ通知]** をダブルタップして **[プッシュ通知]** を確実に有効にします。
 
 1. **AppDelegate.swift** ファイルを開いて **UNUserNotificationCenterDelegate** プロトコルを実装し、次のコードをクラスの先頭に追加します。
 
     ```swift
     @UIApplicationMain
     class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-
+        
         ...
 
         var configValues: NSDictionary?
@@ -134,13 +136,12 @@ ms.locfileid: "72030643"
         var notificationHubKeyName : String?
         var notificationHubKey : String?
         let tags = ["12345"]
-        let genericTemplate = PushTemplate(withBody: "{\"aps\":{\"alert\":\"$(message)\"}}")
-
+        
         ...
     }
     ```
 
-    後でこれらのメンバーを使用します。 具体的には、後で登録の一部として **tags** および **genericTemplate** メンバーを使用します。 タグの詳細については、[登録用のタグ](notification-hubs-tags-segment-push-message.md)に関するページおよび[テンプレートの登録](notification-hubs-templates-cross-platform-push-messages.md)に関するページを参照してください。
+    後でこれらのメンバーを使用します。 具体的には、**カスタム テンプレート**を使用した登録の一部として **tags** メンバーを使用します。 タグの詳細については、[登録用のタグ](notification-hubs-tags-segment-push-message.md)に関するページおよび[テンプレートの登録](notification-hubs-templates-cross-platform-push-messages.md)に関するページを参照してください。
 
 1. 同じファイルで、**didFinishLaunchingWithOptions** 関数に次のコードを追加します。
 
@@ -186,7 +187,8 @@ ms.locfileid: "72030643"
     func showAlert(withText text : String) {
         let alertController = UIAlertController(title: "PushDemo", message: text, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
-        self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
     ```
 
@@ -211,6 +213,11 @@ ms.locfileid: "72030643"
     ```
 
 1. **didRegisterForRemoteNotificationsWithDeviceToken** 関数の末尾に print ステートメントを追加して、**installationId** および **pushChannel** に値が割り当てられることを確認します。
+
+    ```swift
+    print(installationId)
+    print(pushChannel)
+    ```
 
 1. 後でプロジェクトに追加する基本コンポーネント用の **Models**、**Services**、および **Utilities** フォルダーを作成します。
 
@@ -313,7 +320,7 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
 
 1. ブリッジ ヘッダーを参照するようにターゲットの**ビルド設定**を更新します。
 
-   1. **[Building Settings]\(ビルド設定\)** タブを開き、 **[Swift Compiler]\(Swift コンパイラ\)** セクションまで下にスクロールします。
+   1. **[PushDemo]** プロジェクトをタップして、 **[Swift Compiler]\(Swift コンパイラ\)** セクションまで下にスクロールします。
 
    1. **[Install Objective-C Compatibility Header]\(Objective-C 互換性ヘッダーをインストールする\)** オプションを確実に **[はい]** に設定します。
 
@@ -392,11 +399,25 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
 
    [Azure Storage iOS SDK](https://github.com/Azure/azure-storage-ios/blob/master/Lib/Azure%20Storage%20Client%20Library/Azure%20Storage%20Client%20Library/AZSUtil.m) は、Objective-C でこれらの操作にアプローチする方法の良い例です。 Azure Service Bus SAS トークンの詳細については、[Azure Service Bus に関するドキュメント](../service-bus-messaging/service-bus-sas.md)を参照してください。
 
+1. **AppDelegate.swift** で、*didRegisterForRemoteNotificationsWithDeviceToken* 関数に次のコードを追加して、**TokenUtility.getSasToken** が有効なトークンを生成していることを確認します。
+    
+    ```swift
+    let baseAddress = "https://<notificaitonHubNamespace>.servicebus.windows.net/<notifiationHubName>"
+
+    let tokenData = TokenUtility.getSasToken(forResourceUrl: baseAddress,
+                                                withKeyName: self.notificationHubKeyName!,
+                                                andKey: self.notificationHubKey!)
+    
+    print(tokenData.token)
+    ```
+
+    **baseAddress** 文字列のプレースホルダー値を独自のものに置き換えてください。
+
 ### <a name="verify-the-sas-token"></a>SAS トークンを検証する
 
 クライアントにインストール サービスを実装する前に、任意の HTTP ユーティリティを使用して、アプリから正常に SAS トークンが生成されていることを確認してください。 このチュートリアルのために私たちが選んだツールは **Postman** です。
 
-適切に配置された print ステートメントまたはブレークポイントを使用して、アプリによって生成される **installationId** および **token** の値をメモします。
+アプリによって生成される **installationId** と **token** の値をメモしておきます。
 
 次の手順に従って、**Installations** API を呼び出します。
 
@@ -413,7 +434,7 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
    | Key           | 値            |
    | ------------- | ---------------- |
    | Content-Type  | application/json |
-   | Authorization | \<sasToken>       |
+   | 承認 | \<sasToken>       |
    | x-ms-version  | 2015-01          |
 
 1. **[保存]** ボタンの下の、右上に表示される **[コード]** ボタンを選択します。 要求は次の例のようになります。
@@ -455,7 +476,8 @@ class NotificationRegistrationService {
     private let keyName : String
     private let key : String
     private var tokenData : TokenData? = nil
-
+    private var tokenExpiryDate : Date? = nil
+    
     init(withInstallationId installationId : String,
             andPushChannel pushChannel : String,
             andHubNamespace hubNamespace : String,
@@ -470,58 +492,67 @@ class NotificationRegistrationService {
         self.key = key
         self.defaultHeaders = ["Content-Type": "application/json", "x-ms-version": apiVersion]
     }
-
+    
     func register(
         withTags tags : [String]? = nil,
         andTemplates templates : Dictionary<String, PushTemplate>? = nil,
         completeWith completion: ((_ result: Bool) -> ())? = nil) {
-
+        
         var deviceInstallation = DeviceInstallation(withInstallationId: installationId, andPushChannel: pushChannel)
-
+        
         if let tags = tags {
             deviceInstallation.tags = tags
         }
-
+        
         if let templates = templates {
             deviceInstallation.templates = templates
         }
-
+        
         if let deviceInstallationJson = encodeToJson(deviceInstallation) {
             let sasToken = getSasToken()
             let requestUrl = String.init(format: tokenizedCreateOrUpdateInstallationRequest, installationId, apiVersion)
             let apiEndpoint = "\(getBaseAddress())\(requestUrl)"
-
+            
             var request = URLRequest(url: URL(string: apiEndpoint)!)
             request.httpMethod = "PUT"
-
+            
             for (key,value) in self.defaultHeaders {
                 request.addValue(value, forHTTPHeaderField: key)
             }
-
+            
             request.addValue(sasToken, forHTTPHeaderField: "Authorization")
             request.httpBody = Data(deviceInstallationJson.utf8)
-
+            
             (self.session.dataTask(with: request) { dat, res, err in
                 if let completion = completion {
-                        completion(err == nil && (res as! HTTPURLResponse).statusCode == 200)
+                        completion(err == nil && 
+                        (res as! HTTPURLResponse).statusCode == 200)
                 }
             }).resume()
         }
     }
-
+    
     private func getBaseAddress() -> String {
         return String.init(format: tokenizedBaseAddress, hubNamespace, hubName)
     }
-
+    
     private func getSasToken() -> String {
         if (tokenData == nil ||
-            Date(timeIntervalSince1970: Double((tokenData?.expiration)!)) < Date(timeIntervalSinceNow: -(5 * 60))) {
-            self.tokenData = TokenUtility.getSasToken(forResourceUrl: getBaseAddress(), withKeyName: self.keyName, andKey: self.key)
+            tokenExpiryDate == nil ||
+            Date() >= tokenExpiryDate!) {
+            
+            self.tokenData = TokenUtility.getSasToken(
+                forResourceUrl: getBaseAddress(),
+                withKeyName: self.keyName,
+                andKey: self.key)
+            
+            self.tokenExpiryDate = Date(timeIntervalSinceNow: -(5 * 60))
+                .addingTimeInterval(TimeInterval(tokenData!.expiration))
         }
 
         return (tokenData?.token)!
     }
-
+    
     private func encodeToJson<T : Encodable>(_ object: T) -> String? {
         do {
             let jsonData = try jsonEncoder.encode(object)
@@ -552,10 +583,11 @@ class NotificationRegistrationService {
 
 最後の手順では、**NotificationRegistrationService** を使用して **NotificationHub** に登録するように、**AppDelegate** を更新します。
 
-1. **AppDelegate.swift** を開き、**NotificationRegistrationService** への参照を格納するクラスレベルの変数を追加します。
+1. **AppDelegate.swift** を開き、**NoficiationRegistrationService** と一般的な **PushTemplate** への参照を格納するクラス レベルの変数を追加します。
 
     ```swift
     var registrationService : NotificationRegistrationService?
+    let genericTemplate = PushTemplate(withBody: "{\"aps\":{\"alert\":\"$(message)\"}}")
     ```
 
 1. 同じファイルで、必要なパラメーターを使用して **NotificationRegistrationService** を初期化した後、**register** 関数を呼び出すように、**didRegisterForRemoteNotificationsWithDeviceToken** 関数を更新します。
@@ -618,6 +650,8 @@ class NotificationRegistrationService {
 }
 ```
 
+以前の **SAS トークン**の有効期限が切れている場合は、**TokenUtility** クラスの**行 24** に**ブレークポイント**を追加して、新しい **SAS トークン**を取得し、その新しい値で **Authorization** ヘッダーを更新することができます。
+
 ### <a name="send-a-test-notification-azure-portal"></a>テスト通知を送信する (Azure portal)
 
 通知を受信できるようになったことをテストする最も簡単な方法は、Azure portal の通知ハブを参照することです。
@@ -661,7 +695,7 @@ class NotificationRegistrationService {
    | Key                            | 値                          |
    | ------------------------------ | ------------------------------ |
    | Content-Type                   | application/json;charset=utf-8 |
-   | Authorization                  | \<sasToken>                     |
+   | 承認                  | \<sasToken>                     |
    | ServiceBusNotification-Format  | template                       |
    | Tags                           | "12345"                        |
 
@@ -692,9 +726,9 @@ class NotificationRegistrationService {
 
 1. **[送信]** ボタンを選択します。
 
-成功状態コードが届くと共に、クライアント デバイスで通知が届きます。
+"**201 作成されました**" という成功状態コードを取得し、クライアント デバイスで通知を受け取ります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、[REST API](/rest/api/notificationhubs/) を介して通知ハブに接続された基本的な iOS Swift アプリが完成し、通知を送受信できるようになりました。 詳細については、次の記事を参照してください。
 
 - [Azure Notification Hubs の概要](notification-hubs-push-notification-overview.md)

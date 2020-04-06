@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60403383"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Azure Service Bus キューを使用する .NET 多層アプリケーション
@@ -350,7 +350,7 @@ Service Bus には、ブローカー メッセージングをサポートする�
     
     ![][20]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Bus の詳細については、次のリソースを参照してください。  
 
 * [Service Bus キューの使用][sbacomqhowto]

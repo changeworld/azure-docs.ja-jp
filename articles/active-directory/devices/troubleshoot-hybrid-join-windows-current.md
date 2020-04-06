@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3ce27c59ead4e126cb143d1831ece0e93e119ef
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 26e52930211611673b6fe2309e2dca067a91ebc8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672288"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331781"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング 
 
@@ -277,7 +277,7 @@ WamDefaultAuthority: organizations
    - 理由:認証エンドポイントとの接続が中止されました。
    - 解決策:しばらくしてからやり直すか、または別の安定したネットワークの場所から参加を試みます。
 - **ERROR_ADAL_INTERNET_SECURE_FAILURE** (0xcaa82f8f/-894947441)
-   - 理由:サーバーから送信された Secure Sockets Layer (SSL) 証明書を検証できませんでした。
+   - 理由:以前は SSL (Secure Sockets Layer) として知られていた、サーバーによって送信されたトランスポート層セキュリティ (TLS) 証明書を検証できませんでした。
    - 解決策:クライアント時間のずれを確認します。 しばらくしてからやり直すか、または別の安定したネットワークの場所から参加を試みます。 
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
    - 理由:`https://login.microsoftonline.com` への接続に失敗しました。

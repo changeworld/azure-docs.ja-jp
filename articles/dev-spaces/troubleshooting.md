@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces を有効にして使用するときに発生する一般的な問題をトラブルシューティングおよび解決する方法について説明します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: b926e651200a4ab23306b0ec2443cb64400b8f7b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: c12dfd385962d8dd7de8239a0d4ecd46746499c0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605255"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239762"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces のトラブルシューティング
 
@@ -44,7 +44,7 @@ azds remove -g <resource group name> -n <cluster name>
 
 Azure Dev Spaces CLI がインストールされていない場合は、まず次のコマンドを使用してインストールしてからコントローラーを削除できます。
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
@@ -76,12 +76,15 @@ azds controller create --name my-controller --target-name MyAKS --resource-group
 
 この問題を解決するには、少なくとも 1 つの Linux ノードで容認を指定せずに確実にポッドをスケジュールできるように、AKS クラスターで[テイント構成を更新](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations)します。 また、容認を指定せずポッドをスケジュールできる少なくとも 1 つの Linux ノードが、*準備完了*状態であることも確認します。 ノードが*準備完了*状態に達するのに時間がかかっている場合は、ノードの再起動を試みることができます。
 
-### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>`az aks use-dev-spaces` の実行時のエラー "Azure Dev Spaces CLI が正しくインストールされていません"
+### <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>az aks use-dev-spaces の実行時のエラー "Azure Dev Spaces CLI not installed properly (Azure Dev Spaces CLI が正しくインストールされていません)"
 
 Azure Dev Spaces CLI に対する更新により、そのインストール パスが変更されました。 2\.0.63 より前のバージョンの Azure CLI を使用している場合は、このエラーが表示されることがあります。 Azure CLI のバージョンを表示するには、`az --version` を使用します。
 
-```bash
-$ az --version
+```azurecli
+az --version
+```
+
+```output
 azure-cli                         2.0.60 *
 ...
 ```
@@ -126,7 +129,7 @@ Azure Dev Spaces でネイティブにサポートされる言語でアプリケ
 `azds up` を `--verbose` スイッチを指定して実行するか、Visual Studio で詳細ログを有効にした場合、次の詳細が表示されます。
 
 ```cmd
-$ azds up --verbose
+azds up --verbose
 
 Installed chart in 2s
 Waiting for container image build...
@@ -223,7 +226,7 @@ Visual Studio で次の操作を行います。
 
 このクラスターに関連付けられた Azure Dev Spaces を削除してから再作成した後、サービスを再実行しようとすると、"*Service cannot be started (サービスを開始できません)* " エラーが発生します。 このような状況では、詳細出力に次のテキストが含まれます。
 
-```cmd
+```output
 Installing Helm chart...
 Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
 Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
@@ -292,7 +295,7 @@ PATH 環境変数が正しく設定されているコマンド プロンプト�
 
 Visual Studio Code デバッガーを実行しているときに、このエラーが表示されることがあります。 C# 用の VS Code 拡張機能が開発マシンにインストールされていない可能性があります。 C# 拡張機能には、.NET Core (CoreCLR) 用のデバッグ サポートが含まれています。
 
-この問題を解決するには、[C# 用 VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)をインストールします。
+この問題を解決するには、[C# 用 VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)をインストールします。
 
 ### <a name="error-configured-debug-type-coreclr-is-not-supported"></a>エラー "Configured debug type 'coreclr' is not supported (構成されているデバッグの種類 'coreclr' はサポートされていません)"
 
@@ -329,7 +332,7 @@ Visual Studio Code デバッガーを実行しているときに、このエラ�
 1. %ProgramFiles%/Microsoft SDKs\Azure\Azure Dev Spaces CLI で `azds.exe` を探してください。 見つかった場合は、その場所を PATH 環境変数に追加します。
 2. `azds.exe` がインストールされていない場合は、次のコマンドを実行します。
 
-    ```cmd
+    ```azurecli
     az aks use-dev-spaces -n <cluster-name> -g <resource-group>
     ```
 
@@ -337,13 +340,13 @@ Visual Studio Code デバッガーを実行しているときに、このエラ�
 
 Azure Dev Spaces を管理するには、お使いの Azure サブスクリプション内に "*所有者*" または "*共同作成者*" アクセス権が必要です。 Dev Spaces を管理しようとしたが、関連付けられている Azure サブスクリプションに "*所有者*" アクセス権も "*共同作成者*" アクセス権もない場合、承認エラーが表示されることがあります。 次に例を示します。
 
-```console
+```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
 ```
 
 この問題を解決するには、Azure サブスクリプションの*所有者*または*共同作成者*のアクセス権を持つアカウントを使用して、`Microsoft.DevSpaces` 名前空間を手動で登録します。
 
-```console
+```azurecli
 az provider register --namespace Microsoft.DevSpaces
 ```
 
@@ -359,8 +362,11 @@ kubectl get pods --all-namespaces --include-uninitialized
 
 この問題を解決するには、[Dev Spaces CLI を最新バージョンに更新](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools)して、Azure Dev Spaces コントローラーから *azds InitializerConfiguration* を削除します。
 
-```bash
+```azurecli
 az aks get-credentials --resource-group <resource group name> --name <cluster name>
+```
+
+```bash
 kubectl delete InitializerConfiguration azds
 ```
 
@@ -422,9 +428,8 @@ Azure Dev Spaces コントローラーにアクセスするユーザーは、AKS
 この問題を解決するには、次の手順に従います。
 
 1. コンテナーがビルド/デプロイ処理中の場合、2 ～ 3 秒待ってからサービスへのアクセスを再試行できます。 
-1. ポート 構成を確認します。 次のすべてのアセットに指定されたポート番号が**同一**である必要があります。
-    * **Dockerfile:** `EXPOSE` 命令によって指定されます。
-    * **[Helm チャート](https://docs.helm.sh):** サービスの `externalPort` および `internalPort` 値 (多くの場合、`values.yml` ファイルにある) で指定されます。
+1. 次の資産のポート構成を確認します。
+    * **[Helm チャート](https://docs.helm.sh):** `azds prep` コマンドでの values.yaml scaffolded 内に `service.port` と `deployment.containerPort` によって指定されています。
     * Node.js などのアプリケーション コードで開かれているポートがあります: `var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>型または名前空間名 "MyLibrary" が見つかりませんでした
@@ -442,7 +447,7 @@ Azure Dev Spaces コントローラーにアクセスするユーザーは、AKS
 
 ### <a name="horizontal-pod-autoscaling-not-working-in-a-dev-space"></a>開発スペースでポッドの水平オートスケール機能が動作しない
 
-開発スペースでサービスを実行すると、そのサービスのポッドが[インストルメンテーション用の追加のコンテナーと共に挿入されます](how-dev-spaces-works.md#prepare-your-aks-cluster)。また、ポッド内のすべてのコンテナーでは、ポッドの水平オートスケール機能に対してリソース制限と要求を設定する必要があります。
+開発スペースでサービスを実行すると、そのサービスのポッドが[インストルメンテーション用の追加のコンテナーと共に挿入されます](how-dev-spaces-works-cluster-setup.md#prepare-your-aks-cluster)。また、ポッド内のすべてのコンテナーでは、ポッドの水平オートスケール機能に対してリソース制限と要求を設定する必要があります。
 
 この問題を解決するには、挿入された Dev Spaces コンテナーにリソースの要求と制限を適用します。 ポッド仕様に `azds.io/proxy-resources` 注釈を追加することで、挿入されたコンテナー (devspaces-proxy) にリソースの要求と制限を適用できます。この値は、プロキシのコンテナー仕様の resources セクションを表す JSON オブジェクトに設定する必要があります。
 
@@ -457,9 +462,12 @@ azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"}
 
 AKS クラスター内の既存の名前空間で Azure Dev Spaces を有効にするには、`use-dev-spaces` を実行し、`kubectl` を使用して、その名前空間内のすべてのポッドを再起動します。
 
-```console
+```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space my-namespace --yes
+```
+
+```console
 kubectl -n my-namespace delete pod --all
 ```
 
@@ -484,3 +492,17 @@ kubeconfig ファイルが、Azure Dev Spaces クライアント側ツールで�
 
 * `az aks use-dev-spaces -g <resource group name> -n <cluster name>` を使用して、現在のコンテキストを更新します。 このコマンドによって、AKS クラスターで Azure Dev Spaces も有効になります (まだ有効になっていない場合)。 または、`kubectl config use-context <cluster name>` を使用して現在のコンテキストを更新することもできます。
 * `az account show` を使用して、対象となっている現在の Azure サブスクリプションを表示し、これが正しいことを確認します。 `az account set` を使用して、対象とするサブスクリプションを変更できます。
+
+### <a name="error-using-dev-spaces-after-rotating-aks-certificates"></a>AKS 証明書のローテーション後に Dev Spaces を使用するエラー
+
+[AKS クラスターで証明書をローテーションした](../aks/certificate-rotation.md)後に、`azds space list` や `azds up` などの特定の操作が失敗します。 また、クラスター上で証明書をローテーションした後に、Azure Dev Spaces コントローラー上で証明書を更新する必要があります。
+
+この問題を解決するには、`az aks get-credentials` を使用して *kubeconfig* に更新された証明書がある状態を確保してから、`azds controller refresh-credentials` コマンドを実行します。 次に例を示します。
+
+```azurecli
+az aks get-credentials -g <resource group name> -n <cluster name>
+```
+
+```console
+azds controller refresh-credentials -g <resource group name> -n <cluster name>
+```

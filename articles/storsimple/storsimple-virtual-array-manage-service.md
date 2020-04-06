@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516675"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232079"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>StorSimple Virtual Array の StorSimple デバイス マネージャー サービスをデプロイする
 
@@ -122,7 +122,7 @@ StorSimple デバイス マネージャー サービスに関連する一般的�
    
    このキーをコピーし、このサービスに新しいデバイスを登録するときのために保存します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * StorSimple Virtual Array の[使用を開始](storsimple-virtual-array-deploy1-portal-prep.md)する方法を確認します。
 * [StorSimple デバイスを管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
 

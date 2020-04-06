@@ -4,12 +4,12 @@ description: ASP.NET Core とコンソール アプリケーションで Azure A
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2c97c79229c6f136c154169253f2299b7756a105
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 0f40c1c1a8ee7f20c769a62e9746da43face4cc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192474"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276378"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider for .NET Core の ILogger ログ
 
@@ -18,9 +18,9 @@ ASP.NET Core では、さまざまな種類の組み込みおよびサードパ�
 
 ## <a name="aspnet-core-applications"></a>ASP.NET Core アプリケーション
 
-[Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) バージョン 2.7.1 (以降) では、次のいずれかの標準の方法を使用して通常の Application Insights の監視を有効にすると、ApplicationInsightsLoggerProvider が既定で有効になります。
+[Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) バージョン 2.7.1 (以降) では、次のいずれかの方法を使用して通常の Application Insights の監視を有効にすると、ApplicationInsightsLoggerProvider が既定で有効になります。
 
-- IWebHostBuilder で **UseApplicationInsights** 拡張メソッドを呼び出す
+- IWebHostBuilder で **UseApplicationInsights** 拡張メソッドを呼び出す (現在は非推奨です)
 - IServiceCollection で **AddApplicationInsightsTelemetry** 拡張メソッドを呼び出す
 
 ApplicationInsightsLoggerProvider によってキャプチャされる ILogger ログには、収集される他のテレメトリと同じ構成が適用されます。 他のテレメトリと同じ TelemetryInitializer と TelemetryProcessor のセットを持ち、同じ TelemetryChannel を使用し、同じ方法で相関およびサンプリングされます。 バージョン 2.7.1 以降を使用する場合は、ILogger ログをキャプチャするために操作は必要ありません。
@@ -78,7 +78,7 @@ ApplicationInsightsLoggerProvider によってキャプチャされる ILogger �
 ```csharp
 public class ValuesController : ControllerBase
 {
-    private readonly `ILogger` _logger;
+    private readonly ILogger _logger;
 
     public ValuesController(ILogger<ValuesController> logger)
     {
@@ -159,7 +159,7 @@ public class Program
 ```csharp
 public class Startup
 {
-    private readonly `ILogger` _logger;
+    private readonly ILogger _logger;
 
     public Startup(IConfiguration configuration, ILogger<Startup> logger)
     {
@@ -325,22 +325,20 @@ ASP.NET Core の *ILogger* インフラには、[ログのフィルタリング]
 
 ### <a name="create-filter-rules-in-configuration-with-appsettingsjson"></a>appsettings.json を使用して構成でフィルター規則を作成する
 
-ApplicationInsightsLoggerProvider では、プロバイダーの別名は `ApplicationInsights` です。 *appsettings.json* の次のセクションでは、すべてのカテゴリからの "*警告*" 以上と、"Microsoft" で始まるカテゴリからの "*エラー*" 以上が、`ApplicationInsightsLoggerProvider` に送信されるようにログが構成されます。
+ApplicationInsightsLoggerProvider では、プロバイダーの別名は `ApplicationInsights` です。 *appsettings.json* の次のセクションでは、ログ プロバイダーに対して、通常、"*警告*" 以上のレベルでログ記録するように指示しています。 次に、`ApplicationInsightsLoggerProvider` をオーバーライドして、"Microsoft" で始まるカテゴリを "*エラー*" 以上のレベルでログ記録します。
 
 ```json
 {
   "Logging": {
-    "ApplicationInsights": {
-      "LogLevel": {
-        "Default": "Warning",
-        "Microsoft": "Error"
-      }
-    },
     "LogLevel": {
       "Default": "Warning"
+    },
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Microsoft": "Error"
+      }
     }
-  },
-  "AllowedHosts": "*"
+  }
 }
 ```
 

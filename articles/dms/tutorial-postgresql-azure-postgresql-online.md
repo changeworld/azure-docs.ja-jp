@@ -3,8 +3,8 @@ title: チュートリアル:Azure CLI を介してオンラインで PostgreSQL
 titleSuffix: Azure Database Migration Service
 description: CLI を介して、Azure Database Migration Service を使用して、オンプレミスの PostgreSQL から Azure Database for PostgreSQL にオンライン移行を実行する方法を説明します。
 services: dms
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/17/2020
-ms.openlocfilehash: fc2852aaa77dec9537aa8fc42f7f08ca441a129a
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 44df35957dfbd3aa4856d256dc1a7d9e6527fde0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255639"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240671"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>チュートリアル:Azure CLI を介して DMS を使用してオンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
 
@@ -33,7 +33,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 > * 移行を監視する。
 
 > [!NOTE]
-> Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。
+> Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。 移行プロセス中のデータの盗難を防ぐために、ディスクは暗号化します。
 
 > [!IMPORTANT]
 > 最適な移行エクスペリエンスのために、ターゲット データベースと同じ Azure リージョンに Azure Database Migration Service のインスタンスを作成することをお勧めします。 リージョンや地域をまたいでデータを移動する場合、移行プロセスが遅くなり、エラーが発生する可能性があります。
@@ -159,7 +159,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 1. dms の同期の拡張機能をインストールします。
    * 次のコマンドを実行して Azure にサインインします。
-       ```
+       ```azurecli
        az login
        ```
 
@@ -167,24 +167,24 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
    * dms の拡張機能を追加します。
        * 使用可能な拡張機能を一覧表示するには、次のコマンドを実行します。
 
-           ```
+           ```azurecli
            az extension list-available –otable
            ```
 
        * 拡張機能をインストールするには、次のコマンドを実行します。
 
-           ```
+           ```azurecli
            az extension add –n dms-preview
            ```
 
    * dms の拡張機能が正しくインストールされていることを確認するには、次のコマンドを実行します。
 
-       ```
+       ```azurecli
        az extension list -otable
        ```
        次の出力が表示されます。
 
-       ```
+       ```output
        ExtensionType    Name
        ---------------  ------
        whl              dms
@@ -195,19 +195,19 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
    * DMS でサポートされているすべてのコマンドを表示するには、次のコマンドを実行します。
 
-       ```
+       ```azurecli
        az dms -h
        ```
 
    * 複数の Azure サブスクリプションがある場合は、次のコマンドを実行して、DMS サービスのインスタンスのプロビジョニングに使用するサブスクリプションを設定します。
 
-        ```
+        ```azurecli
        az account set -s 97181df2-909d-420b-ab93-1bff15acb6b7
         ```
 
 2. 次のコマンドを実行して、DMS のインスタンスをプロビジョニングします。
 
-   ```
+   ```azurecli
    az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name Premium_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
    ```
 
@@ -218,7 +218,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
    * リソース グループ名:PostgresDemo
    * DMS サービス名:PostgresCLI
 
-   ```
+   ```azurecli
    az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name Premium_4vCores
    ```
 
@@ -226,19 +226,19 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 3. DMS エージェントの IP アドレスを特定して Postgres pg_hba.conf ファイルに追加できるようにするには、次のコマンドを実行します。
 
-    ```
+    ```azurecli
     az network nic list -g <ResourceGroupName>--query '[].ipConfigurations | [].privateIpAddress'
     ```
 
     次に例を示します。
 
-    ```
+    ```azurecli
     az network nic list -g PostgresDemo --query '[].ipConfigurations | [].privateIpAddress'
     ```
 
     次のアドレスのような結果が表示されます。 
 
-    ```
+    ```output
     [
       "172.16.136.18"
     ]
@@ -256,7 +256,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 5. 次に、以下のコマンドを実行して、PostgreSQL の移行プロジェクトを作成します。
     
-    ```
+    ```azurecli
     az dms project create -l <location> -g <ResourceGroupName> --service-name <yourServiceName> --source-platform PostgreSQL --target-platform AzureDbforPostgreSQL -n <newProjectName>
     ```
 
@@ -269,7 +269,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
    * ソース プラットフォーム:PostgreSQL
    * ターゲット プラットフォーム:AzureDbForPostgreSql
 
-     ```
+     ```azurecli
      az dms project create -l westcentralus -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
      ```
 
@@ -279,7 +279,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
    * オプションの完全な一覧を表示するには、次のコマンドを実行します。
 
-       ```
+       ```azurecli
        az dms project task create -h
        ```
 
@@ -287,7 +287,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
        PostgreSQL の接続に対する接続 JSON オブジェクトの形式。
         
-       ```
+       ```json
        {
                    "userName": "user name",    // if this is missing or null, you will be prompted
                    "password": null,           // if this is missing or null (highly recommended) you will
@@ -301,7 +301,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
    * json オブジェクトを一覧表示するデータベース オプションの json ファイルもあります。 PostgreSQL の場合、データベース オプションの JSON オブジェクトの形式は次のとおりです。
 
-       ```
+       ```json
        [
            {
                "name": "source database",
@@ -313,7 +313,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
    * メモ帳で json ファイルを作成し、次のコマンドをコピーしてこのファイルに貼り付け、C:\DMS\source.json にこのファイルを保存します。
 
-        ```
+        ```json
        {
                    "userName": "postgres",    
                    "password": null,           
@@ -326,7 +326,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
    * target.json という別のファイルを作成し、C:\DMS\target.json として保存します。 次のコマンドを含めます。
 
-       ```
+       ```json
        {
                "userName": " dms@builddemotarget",    
                "password": null,           
@@ -338,7 +338,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
    * 移行するデータベースとしてインベントリを一覧表示する、データベース オプションの json ファイルを作成します。
 
-       ``` 
+       ```json
        [
            {
                "name": "dvdrental",
@@ -349,7 +349,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
    * 次のコマンドを実行します。このコマンドは、接続元、接続先、および DB オプションの json ファイルを取り込みます。
 
-       ``` 
+       ```azurecli
        az dms project task create -g PostgresDemo --project-name PGMigration --source-platform postgresql --target-platform azuredbforpostgresql --source-connection-json c:\DMS\source.json --database-options-json C:\DMS\option.json --service-name PostgresCLI --target-connection-json c:\DMS\target.json –task-type OnlineMigration -n runnowtask    
        ```
 
@@ -357,19 +357,19 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 7. タスクの進行状況を表示するには、次のコマンドを実行します。
 
-   ```
+   ```azurecli
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
    ```
 
    OR
 
-    ```
+    ```azurecli
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output
     ```
 
 8. 展開の出力から migrationState をクエリすることもできます。
 
-    ```
+    ```azurecli
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output --query 'properties.output[].migrationState | [0]' "READY_TO_COMPLETE"
     ```
 
@@ -377,7 +377,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 出力ファイルには、移行の進行状況を示すいくつかのパラメーターがあります。 たとえば、次の出力ファイルを参照してください。
 
-  ```
+  ```output
     "output": [                                 Database Level
           {
             "appliedChanges": 0,        //Total incremental sync applied after full load
@@ -472,19 +472,19 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 1. 次のコマンドを使用して、データベースの一括移行タスクを実行します。
 
-    ```
+    ```azurecli
     az dms project task cutover -h
     ```
 
     次に例を示します。
 
-    ```
+    ```azurecli
     az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --object-name Inventory
     ```
 
 2. 一括移行の進行状況を監視するには、次のコマンドを実行します。
 
-    ```
+    ```azurecli
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
     ```
 
@@ -499,28 +499,28 @@ DMS タスク、プロジェクト、またはサービスをキャンセルま�
 
 1. 実行中のタスクをキャンセルするには、次のコマンドを使用します。
 
-    ```
+    ```azurecli
     az dms project task cancel --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
      ```
 
 2. 実行中のタスクを削除するには、次のコマンドを使用します。
-    ```
+    ```azurecli
     az dms project task delete --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
     ```
 
 3. 実行中のプロジェクトをキャンセルするには、次のコマンドを使用します。
-     ```
+     ```azurecli
     az dms project task cancel -n runnowtask --project-name PGMigration -g PostgresDemo --service-name PostgresCLI
      ```
 
 4. 実行中のプロジェクトを削除するには、次のコマンドを使用します。
-    ```
+    ```azurecli
     az dms project task delete -n runnowtask --project-name PGMigration -g PostgresDemo --service-name PostgresCLI
     ```
 
 5. DMS サービスを削除するには、次のコマンドを使用します。
 
-     ```
+     ```azurecli
     az dms delete -g ProgresDemo -n PostgresCLI
      ```
 

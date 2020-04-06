@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 32db7b19b7ec63135c3359f9685dd767dd0921f5
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: a5f46f5af723e1245afbc6bca90d25ae9036d646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169860"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472428"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,6 @@ ms.locfileid: "77169860"
 | [ローカル環境](#local) | 開発環境と依存関係を完全に制御できます。 任意のビルド ツール、環境、または IDE を使用できます。 | 始めるのに時間がかかります。 必要な SDK パッケージをインストールする必要があり、環境がまだない場合はそれもインストールする必要があります。 |
 | [Azure Databricks](#aml-databricks) | スケーラブルな Apache Spark プラットフォームで大規模な集中型機械学習ワークフローを実行する場合に適しています。 | 実験用機械学習、または小規模な実験とワークフローでは過剰です。 Azure Databricks の追加コストが発生します。 [価格の詳細](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。 |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | クラウドベースのコンピューティング インスタンスに似ていますが (Python と SDK はプレインストールされています)、その他の一般的なデータ サイエンスおよび機械学習ツールがプレインストールされています。 簡単にスケーリングし、他のカスタム ツールやワークフローと組み合わせることができます。 | クラウドベースのコンピューティング インスタンスと比較して、作業の開始に時間がかかります。 |
-
 
 この記事では、次のツールに関する追加の使用ヒントについても説明します。
 
@@ -54,18 +53,17 @@ Azure Machine Learning ワークスペース。 ワークスペースを作成�
 
 - Windows の場合、コマンド プロンプトまたは Anaconda プロンプト (Anaconda および Miniconda によってインストール済み) が必要です。
 
-## <a id="compute-instance"></a>独自のクラウドベースのコンピューティング インスタンス
+## <a name="your-own-cloud-based-compute-instance"></a><a id="compute-instance"></a>独自のクラウドベースのコンピューティング インスタンス
 
 Azure Machine Learning の[コンピューティング インスタンス (プレビュー) ](concept-compute-instance.md)は、セキュリティで保護された、クラウドベースの Azure ワークステーションであり、データ サイエンティスト向けに Jupyter Notebook サーバー、JupyterLab、完全に準備された ML 環境を提供します。
 
 コンピューティング インスタンスでインストールまたは構成するものはありません。  Azure Machine Learning ワークスペース内から、いつでも作成できます。 名前を指定し、Azure VM の種類を指定するだけです。 今すぐお試しいただくには、「[チュートリアル:環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了することです。
 
-
 [コンピューティング インスタンス](concept-compute-instance.md)の詳細を参照してください。
 
 コンピューティング料金の発生を停止するには、[コンピューティング インスタンス](tutorial-1st-experiment-sdk-train.md#clean-up-resources)を停止します。
 
-## <a id="dsvm"></a>Data Science Virtual Machine
+## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
 
 DSVM は、カスタマイズされた仮想マシン (VM) イメージです。 これは、以下の項目が事前に構成されているデータ サイエンスの作業向けに設計されています。
 
@@ -96,7 +94,7 @@ DSVM を開発環境として使用するには
 
         * Ubuntu Data Science Virtual Machine を作成するには、次のいずれかのコマンドを使用します。
 
-            ```azurecli
+            ```azurecli-interactive
             # create a Ubuntu DSVM in your resource group
             # note you need to be at least a contributor to the resource group in order to execute this command successfully
             # If you need to create a new resource group use: "az group create --name YOUR-RESOURCE-GROUP-NAME --location YOUR-REGION (For example: westus2)"
@@ -105,7 +103,7 @@ DSVM を開発環境として使用するには
 
         * Windows Data Science Virtual Machine を作成するには、次のいずれかのコマンドを使用します。
 
-            ```azurecli
+            ```azurecli-interactive
             # create a Windows Server 2016 DSVM in your resource group
             # note you need to be at least a contributor to the resource group in order to execute this command successfully
             az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:dsvm-windows:server-2016:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --authentication-type password
@@ -115,13 +113,13 @@ DSVM を開発環境として使用するには
 
     * Ubuntu DSVM の場合:
 
-        ```shell
+        ```bash
         conda activate py36
         ```
 
     * Windows DSVM の場合:
 
-        ```shell
+        ```bash
         conda activate AzureML
         ```
 
@@ -136,7 +134,7 @@ DSVM を開発環境として使用するには
 
 詳細については、「[Data Science Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)」を参照してください。
 
-## <a id="local"></a>ローカル コンピューター
+## <a name="local-computer"></a><a id="local"></a>ローカル コンピューター
 
 ローカル コンピューター (リモート仮想マシンの場合もある) を使用している場合は、Anaconda 環境を作成し、SDK をインストールします。 次に例を示します。
 
@@ -146,13 +144,13 @@ DSVM を開発環境として使用するには
 
     次のコマンドを実行して環境を作成します。
 
-    ```shell
+    ```bash
     conda create -n myenv python=3.6.5
     ```
 
     次に、その環境をアクティブにします。
 
-    ```shell
+    ```bash
     conda activate myenv
     ```
 
@@ -160,13 +158,13 @@ DSVM を開発環境として使用するには
 
 1. 新しく作成した環境で次のコマンドを実行し、環境固有の IPython カーネルを有効にします。 このようにしておくと、Anaconda 環境内で Jupyter Notebook を操作する際の、必要なカーネルとパッケージのインポート動作を確実にすることができます。
 
-    ```shell
+    ```bash
     conda install notebook ipykernel
     ```
 
     それから、次のコマンドを実行してカーネルを作成します。
 
-    ```shell
+    ```bash
     ipython kernel install --user --name myenv --display-name "Python (myenv)"
     ```
 
@@ -174,7 +172,7 @@ DSVM を開発環境として使用するには
 
     このコマンドで、ベース Azure Machine Learning SDK が、notebook extra および `automl` extra と一緒にインストールされます。 `automl` extra は大規模なインストールになるので、自動化された機械学習の実験を実行する予定がない場合はブラケットから削除できます。 `automl` extra には、既定で Azure Machine Learning Data Prep SDK も依存関係として含まれます。
 
-    ```shell
+    ```bash
     pip install azureml-sdk[notebooks,automl]
     ```
 
@@ -187,24 +185,23 @@ DSVM を開発環境として使用するには
    >
    >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
-
    SDK をインストールするには数分かかります。 インストール オプションの詳細については、[インストール ガイド](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)を参照してください。
 
 1. 機械学習の実験に必要な他のパッケージをインストールします。
 
     次のコマンドのどちらかを使用します。その際、 *\<new package>* の部分を、インストールするパッケージに置き換えてください。 `conda install` からパッケージをインストールするには、そのパッケージが現在のチャネルの一部である必要があります (Anaconda クラウドに新しいチャネルを追加できます)。
 
-    ```shell
+    ```bash
     conda install <new package>
     ```
 
     または、`pip` からパッケージをインストールすることもできます。
 
-    ```shell
+    ```bash
     pip install <new package>
     ```
 
-### <a id="jupyter"></a>Jupyter Notebooks
+### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter Notebooks
 
 Jupyter Notebook は、[Jupyter プロジェクト](https://jupyter.org/)の一部です。 これらは、ライブ コードと説明のテキストとグラフィックスが混在するドキュメントを作成する対話型のコーディング エクスペリエンスを提供します。 また、Jupyter Notebook は、ドキュメントにコード セクションの出力を保存できるので、結果を他のユーザーと共有する優れた方法です。 Jupyter Notebook は、さまざまなプラットフォームにインストールできます。
 
@@ -214,19 +211,19 @@ Jupyter Notebook 環境内でこれらのコンポーネントを有効にする
 
 1. Anaconda プロンプトを開いて、環境をアクティブにします。
 
-    ```shell
+    ```bash
     conda activate myenv
     ```
 
 1. サンプル ノートブックのセットに対して [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
 
-    ```CLI
+    ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
 1. 次のコマンドを使用して、Jupyter Notebook サーバーを起動します。
 
-    ```shell
+    ```bash
     jupyter notebook
     ```
 
@@ -246,8 +243,7 @@ Jupyter Notebook 環境内でこれらのコンポーネントを有効にする
 
 1. Azure Machine Learning ワークスペースを使用するよう Jupyter Notebook を構成するには、「[ワークスペース構成ファイルを作成する](#workspace)」セクションを参照してください。
 
-
-### <a id="vscode"></a>Visual Studio Code
+### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
 
 Visual Studio Code は、[Visual Studio マーケットプレース](https://marketplace.visualstudio.com/vscode)で利用可能な拡張機能を通じて、幅広いプログラミング言語とツールのセットをサポートする、非常に一般的なクロス プラットフォームのコード エディターです。 [Azure Machine Learning 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)では、すべての種類の Python 環境 (仮想、Anaconda など) でコーディングを行うために、[Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)がインストールされます。 さらに、これにより、Visual Studio Code を離れることなく、Azure Machine Learning リソースを操作し、Azure Machine Learning 実験をすべて実行するための便利な機能が提供されます。
 
@@ -289,7 +285,7 @@ Azure Databricks が Azure Machine Learning と連携する仕組み:
 
 次の設定を使用します。
 
-| 設定 |適用対象| Value |
+| 設定 |適用対象| 値 |
 |----|---|---|
 | クラスター名 |常時| yourclustername |
 | Databricks ランタイム |常時|ML 以外のランタイム 6.0 (scala 2.11、spark 2.4.3) |
@@ -347,7 +343,7 @@ Azure Databricks が Azure Machine Learning と連携する仕組み:
 
 + [トレーニング コンピューティングとして Databricks を使用してパイプラインを作成](how-to-create-your-first-pipeline.md)する方法を確認します。
 
-## <a id="workspace"></a>ワークスペース構成ファイルを作成する
+## <a name="create-a-workspace-configuration-file"></a><a id="workspace"></a>ワークスペース構成ファイルを作成する
 
 ワークスペース構成ファイルは、Azure Machine Learning ワークスペースと通信する方法を SDK に示す JSON ファイルです。 ファイルの名前は *config.json* で、形式は次のとおりです。
 
@@ -389,7 +385,6 @@ Azure Databricks が Azure Machine Learning と連携する仕組み:
     ```
 
     このコードでは、構成ファイルが *.azureml/config.json* ファイルに書き込まれます。
-
 
 ## <a name="next-steps"></a>次のステップ
 

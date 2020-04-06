@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 5137f35a4707aa68adfbf3f326ca9e4bfb40f0f4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f3bd7bc78eeb62cc33a01ed31bb04d94078cae4b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970331"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294333"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング  
 
@@ -92,8 +92,8 @@ private static string ConfigureWidevineLicenseTemplateOffline(Uri keyDeliveryUrl
         {
             can_play = true,
             can_persist = true,
-            //can_renew = true,                             //if you set can_renew = false, you do not need renewal_server_url
-            //renewal_server_url = keyDeliveryUrl.ToString(),   //not mandatory, renewal_server_url is needed only if license_duration_seconds is set
+            //can_renew = true,                                //if you set can_renew = false, you do not need renewal_server_url
+            //renewal_server_url = keyDeliveryUrl.ToString(),    //not mandatory, renewal_server_url is needed only if license_duration_seconds is set
             can_renew = false,
             //rental_duration_seconds = 1209600,
             //playback_duration_seconds = 1209600,
@@ -108,7 +108,7 @@ private static string ConfigureWidevineLicenseTemplateOffline(Uri keyDeliveryUrl
 
 ## <a name="configuring-the-android-player-for-offline-playback"></a>オフライン再生用の Android Player の構成
 
-Android デバイス用のネイティブ プレーヤー アプリを開発する最も簡単な方法は、オープンソースのビデオ プレーヤー SDK である [Google ExoPlayer SDK](https://github.com/google/ExoPlayer) を使うことです。 ExoPlayer は、Android のネイティブ MediaPlayer API では現在サポートされていない、MPEG-DASH や Microsoft Smooth Streaming 配信プロトコルなどの機能をサポートしています。
+Android デバイス用のネイティブ プレーヤー アプリを開発する最も簡単な方法は、オープンソースのビデオ プレーヤー SDK である [Google ExoPlayer SDK](https://github.com/google/ExoPlayer) を使うことです。 ExoPlayer では、Android のネイティブ MediaPlayer API では現在サポートされていない、MPEG-DASH や Microsoft Smooth Streaming 配信プロトコルなどの機能がサポートされています。
 
 ExoPlayer バージョン 2.6 以降には、Widevine DRM のオフライン再生をサポートする多くのクラスが含まれています。 具体的には、OfflineLicenseHelper クラスでは、オフライン ライセンスのダウンロード、更新、解放のための DefaultDrmSessionManager の使用を容易にするユーティリティ関数が提供されています。 SDK のフォルダー "library/core/src/main/java/com/google/android/exoplayer2/offline/" で提供されているクラスは、オフライン ビデオ コンテンツのダウンロードをサポートします。
 
@@ -157,7 +157,7 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
 
 上記のオープンソース PWA アプリは、Node.js で作成されています。 独自のバージョンを Ubuntu サーバーでホストする場合は、再生を妨げる可能性のある、以下のよく発生する問題に留意してください。
 
-1. CORS の問題:サンプル アプリ内のサンプル ビデオは、 https://storage.googleapis.com/biograf-video-files/videos/ でホストされます。 Google は、Google Cloud Storage バケットでホストされているすべてのテスト サンプル用に CORS を設定しています。 これらは CORS ヘッダーで提供され、CORS エントリ https://biograf-155113.appspot.com (Google がサンプルをホストしているドメイン) が明示的に指定されていて、他のサイトではアクセスできません。 アクセスしようとすると、次のような HTTP エラーが表示されます。Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. 非透過の応答が要求に対応している場合は、要求のモードを 'no-cors' に設定し、CORS を無効にしてリソースをフェッチしてください。
+1. CORS の問題:サンプル アプリ内のサンプル ビデオは、 https://storage.googleapis.com/biograf-video-files/videos/ でホストされます。 Google は、Google Cloud Storage バケットでホストされているすべてのテスト サンプル用に CORS を設定しています。 これらは CORS ヘッダーで提供され、CORS エントリ `https://biograf-155113.appspot.com` (Google がサンプルをホストしているドメイン) が明示的に指定されていて、他のサイトではアクセスできません。 アクセスしようとすると、次のような HTTP エラーが表示されます: `Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
 2. 証明書の問題:Chrome v 58 以降では、Widevine 用の EME には HTTPS が必要です。 したがって、X509 証明書を使って HTTPS 経由でサンプル アプリをホストする必要があります。 通常のテスト証明書は次の要件のため機能しません。次の最小要件を満たす証明書を取得する必要があります。
     - Chrome および Firefox では、SAN-Subject Alternative Name の設定が証明書に存在する必要があります
     - 証明書には信頼された CA が必要であり、開発用の自己署名証明書は機能しません
@@ -165,7 +165,7 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 
 一部のクライアント/ユーザーには永続ライセンス (オフライン有効) を提供し、他のクライアント/ユーザーには非永続ライセンス (オフライン無効) を提供するにはどうすればよいですか。 コンテンツを複製し、別のコンテンツ キーを使う必要がありますか。
 
@@ -179,13 +179,13 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
 
 つまり、Secure Token Service (STS) には、対応する要求値をトークンに追加するための、ビジネス ロジックとクライアント/デバイスに関する情報が必要です。
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 
-Widevine のセキュリティ レベルについて、Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)」(Widevine DRM アーキテクチャの概要) ドキュメントでは、3 つの異なるセキュリティ レベルが定義されています。 一方、[Widevine ライセンス テンプレートに関する Azure Media Services のドキュメント](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)では、5 つの異なるセキュリティ レベルが示されています。 2 つの異なるセキュリティ レベル セットの間にはどのような関係または対応がありますか。
+Widevine のセキュリティ レベルについて、Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)」 (Widevine DRM アーキテクチャの概要) ドキュメントでは、3 つの異なるセキュリティ レベルが定義されています。 一方、[Widevine ライセンス テンプレートに関する Azure Media Services のドキュメント](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)では、5 つの異なるセキュリティ レベルが示されています。 2 つの異なるセキュリティ レベル セットの間にはどのような関係または対応がありますか。
 
 ### <a name="answer"></a>Answer
 
-Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)」(Widevine DRM アーキテクチャの概要) では、次の 3 つのセキュリティ レベルが定義されています。
+Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)」 (Widevine DRM アーキテクチャの概要) では、次の 3 つのセキュリティ レベルが定義されています。
 
 1.  セキュリティ レベル 1:すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。
 2.  セキュリティ レベル 2:暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。
@@ -207,7 +207,7 @@ Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com
 **セキュリティ レベル 2**:暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。| **security_level=3**:キー マテリアルと暗号化の操作を、ハードウェアを基盤にした TEE で実行する必要があります。 |
 | **セキュリティ レベル 3**:デバイス上に TEE はありません。 ホスト オペレーティング システム上の暗号化に関する情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 の実装は、ハードウェア暗号化エンジンを含む場合がありますが、セキュリティのためではなく、パフォーマンス向上のためだけです。 | **security_level=2**:ソフトウェア暗号化と難読化デコーダーが必須です。<br/><br/>**security_level=1**:ソフトウェアベースのホワイトボックス暗号化が必須です。|
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 
 コンテンツのダウンロードに時間がかかるのはなぜですか。
 
@@ -222,7 +222,7 @@ Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="summary"></a>まとめ
 

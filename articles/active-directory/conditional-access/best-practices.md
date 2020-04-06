@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f4560a514ddb9949c8cc07864b2319a5878b245e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963938"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295353"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 
-[Azure Active Directory (Azure AD) の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)を使用すると、許可されているユーザーがクラウド アプリにアクセスする方法を制御できます。 この記事では、次の項目に関する情報を提供します。
+[Azure Active Directory (Azure AD) の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)を使うと、承認されたユーザーによるクラウド アプリへのアクセスを制御できます。 この記事では、次の項目に関する情報を提供します。
 
 - 知っておくべきこと 
 - 条件付きアクセス ポリシーを構成するときに避けるべきこと 
@@ -138,12 +138,12 @@ Office 365 のアプリは相互接続されているため、ポリシーを作
 
 - 以前は処理できなかったシナリオに対処できるようになった可能性があります。
 - ポリシーを統合することで、管理する必要のあるポリシーの数を減らすことができます。   
-- 一元的な場所ですべての条件付きアクセス ポリシーを管理できます。
+- 一元的な場所ですべての条件付きアクセス ポリシーを管理することができます。
 - Azure クラシック ポータルは廃止されました。   
 
 詳しくは、「[Azure Portal でクラシック ポリシーを移行する](policy-migration.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のことが知りたい場合:
 

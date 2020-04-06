@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 16d8faa1f20227241d1a582dd4d80e0123f7a31e
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 1fa8f7a48c03ead7e939185b23834b3049b3e21c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368498"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064856"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Azure Active Directory を使用して Event Hubs リソースへのアクセスを承認する
 Azure Event Hubs は、Azure Active Directory (Azure AD) を使用して Event Hubs リソースへの要求を承認することをサポートしています。 Azure AD では、ロールベースのアクセス制御 (RBAC) を使用して、サービス プリンシパル (ユーザーまたはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。 ロールとロールの割り当ての詳細については、[各種ロールの理解](../role-based-access-control/overview.md)に関するページを参照してください。
@@ -21,7 +21,7 @@ Azure Event Hubs は、Azure Active Directory (Azure AD) を使用して Event H
 ## <a name="overview"></a>概要
 セキュリティ プリンシパル (ユーザーまたはアプリケーション) が Event Hubs リソースにアクセスしようとした場合、要求は承認される必要があります。 Azure AD では、リソースへのアクセスは 2 段階のプロセスです。 
 
- 1. まず、セキュリティ プリンシパルの ID が認証され、OAuth 2.0 トークンが返されます。 トークンを要求するリソース名は `https://eventhubs.azure.net/` です。
+ 1. まず、セキュリティ プリンシパルの ID が認証され、OAuth 2.0 トークンが返されます。 トークンを要求するリソース名は `https://eventhubs.azure.net/` です。 Kafka クライアントの場合、トークンを要求するリソースは `https://<namespace>.servicebus.windows.net` です。
  1. 次に、指定したリソースへのアクセスを承認するために、トークンが要求の一部として Event Hubs サービスに渡されます。
 
 認証の手順により、実行時にアプリケーション要求に OAuth 2.0 アクセス トークンが含まれる必要があります。 アプリケーションが Azure VM、仮想マシン スケール セット、または Azure 関数アプリなどの Azure エンティティ内から実行されている場合、マネージド ID を使用してリソースにアクセスできます。 マネージド ID によって Event Hubs サービスに対して行われる要求を認証する方法については、[Azure リソースに Azure Active Directory とマネージド ID を使用して Azure Event Hubs リソースへのアクセスを認証する](authenticate-managed-identity.md)方法に関する記事を参照してください。 

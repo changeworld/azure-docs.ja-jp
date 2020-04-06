@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door Service - Azure のアプリケーション配信スイートでの負荷分散 | Microsoft Docs
+title: Azure Front Door - Azure のアプリケーション配信スイートでの負荷分散 | Microsoft Docs
 description: この記事は、Azure で勧められているアプリケーション配信スイートでの負荷分散の方法を学習するのに役立ちます。
 services: frontdoor
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 3d5c0ac068a6644f3499da6c3b642a4a04408370
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f8d1959549eaddfb4a2c9ea271094db0073c788
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736507"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471712"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Azure のアプリケーション配信スイートでの負荷分散
 
 ## <a name="introduction"></a>はじめに
-Microsoft Azure では、ネットワーク トラフィックの分散や負荷分散の方法を管理するための多数のグローバル サービスおよびリージョン サービス(Traffic Manager、Front Door Service、Application Gateway、および Load Balancer) を利用できます。  Azure の多くのリージョンとゾーン アーキテクチャと共に、これらのサービスを一緒に使用することで、堅牢でスケーラブルな高パフォーマンスのアプリケーションをビルドすることができます。
+Microsoft Azure では、ネットワーク トラフィックの分散や負荷分散の方法を管理するための多数のグローバル サービスおよびリージョン サービス(Traffic Manager、Front Door、Application Gateway、および Load Balancer) を利用できます。  Azure の多くのリージョンとゾーン アーキテクチャと共に、これらのサービスを一緒に使用することで、堅牢でスケーラブルな高パフォーマンスのアプリケーションをビルドすることができます。
 
 ![アプリケーション配信スイート ][1]
  
@@ -41,11 +41,11 @@ Microsoft Azure では、ネットワーク トラフィックの分散や負荷
 
 クライアントはそのバックエンドに直接接続されます。 Azure Traffic Manager で、バックエンドが正常でないことが検出されると、クライアントが別の正常なインスタンスにリダイレクトされます。 サービスの詳細については、[Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) に関するドキュメントを参照してください。
 
-**Azure Front Door Service** では、グローバル HTTP 負荷分散を含む動的 Web サイトの高速化 (DSA) が提供されます。  特定のホスト名、URL パス、構成されたルールについて、最も近いサービス バックエンドやリージョンへの受信 HTTP 要求ルートを調べます。  
+**Azure Front Door** では、グローバル HTTP 負荷分散を含む動的 Web サイトの高速化 (DSA) が提供されます。  特定のホスト名、URL パス、構成されたルールについて、最も近いサービス バックエンドやリージョンへの受信 HTTP 要求ルートを調べます。  
 Front Door では、Microsoft のネットワークのエッジで HTTP 要求を終了し、アクティブに調べ、アプリケーションまたはインフラストラクチャの正常性や待機時間の変化を検出します。  その後、Front Door では常に、最も高速で利用可能な (正常な) バックエンドにトラフィックをルーティングします。 サービスの詳細については、Front Door の[ルーティング アーキテクチャ](front-door-routing-architecture.md)の詳細と[トラフィックのルーティング方法](front-door-routing-methods.md)に関するページを参照してください。
 
 ## <a name="regional-load-balancing"></a>リージョン負荷分散
-Application Gateway では、アプリケーション配信コントローラー (ADC) をサービスとして提供することで、さまざまなレイヤー 7 負荷分散機能をアプリケーションで利用できるようにします。 これにより、CPU を集中的に使用する SSL ターミネーションをお客様が Application Gateway にオフロードし、Web ファームの生産性を最適化できます。 着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。 Application Gateway は Azure によって完全に管理され、非常にスケーラブルで、高い可用性を備えています。 管理しやすいように診断機能とログ機能が豊富に用意されているほか、
+Application Gateway では、アプリケーション配信コントローラー (ADC) をサービスとして提供することで、さまざまなレイヤー 7 負荷分散機能をアプリケーションで利用できるようにします。 これにより、CPU を集中的に使用する SSL ターミネーションをお客様が Application Gateway にオフロードし、Web ファームの生産性を最適化できます。 着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。 Application Gateway は Azure によって完全に管理され、非常にスケーラブルで、高い可用性を備えています。 管理しやすいように診断機能とログ機能が豊富に用意されています。
 Load Balancer は、Azure SDN スタックの重要な構成要素であり、すべての UDP と TCP プロトコル向けの高パフォーマンス、低待機時間のレイヤー 4 負荷分散サービスを備えています。 受信接続と送信接続を管理します。 負荷分散されるパブリックおよび内部のエンドポイントを構成したり、TCP を使用して受信接続をバックエンド プールの送信先にマッピングする規則や、サービスの可用性を管理するための HTTP の正常性プローブ オプションを定義したりできます。
 
 
@@ -54,9 +54,9 @@ Load Balancer は、Azure SDN スタックの重要な構成要素であり、�
 - **複数の地理的冗長性:** 1 つのリージョンがダウンした場合は、最も近いリージョンにトラフィックがシームレスにルーティングされます。アプリケーション所有者による操作は必要ありません。
 - **最も近いリージョンへのルーティング:** トラフィックは自動的に最も近いリージョンにルーティングされます。
 
-</br>次の表で、Traffic Manager と Azure Front Door Service との違いについて説明します。</br>
+</br>次の表で、Traffic Manager と Azure Front Door との違いについて説明します。</br>
 
-| Traffic Manager | Azure Front Door Service |
+| Traffic Manager | Azure Front Door |
 | --------------- | ------------------------ |
 |**あらゆるプロトコル:** Traffic Manager は DNS レイヤーで動作するため、HTTP、TCP、UDP など、あらゆる種類のネットワーク トラフィックをルーティングすることができます。 | **HTTP の高速化:** Front Door では、Microsoft のネットワークのエッジでトラフィックがプロキシ処理されます。  このため、SSL ネゴシエーションの待機時間が短縮され、AFD からアプリケーションへのホット接続が使用されることで、HTTP (S) 要求での待機時間とスループットが改善されます。|
 |**オンプレミス ルーティング:** DNS レイヤーでのルーティングにより、トラフィックは常にポイント間で送信されるようになります。  ブランチ オフィスからオンプレミス データセンターへのルーティングでは、直接パスを使用できます。Traffic Manager を使用する独自のネットワークでも同様です。 | **独立したスケーラビリティ:** Front Door で HTTP 要求が処理されるため、ルールと各アプリケーションのマイクロサービスの正常性に基づいて、さまざまな URL パスへの要求をさまざまなバックエンドやリージョン サービス プール (マイクロサービス) にルーティングすることができます。|
@@ -65,7 +65,7 @@ Load Balancer は、Azure SDN スタックの重要な構成要素であり、�
 </br>Front Door では HTTP ワークロードに対するパフォーマンス、運用およびセキュリティ上の利点が得られるため、HTTP ワークロードでは Front Door を使用することをお勧めします。    Traffic Manager と Front Door を並行して使用することで、アプリケーションのすべてのトラフィックを処理できます。 
 
 ## <a name="building-with-azures-application-delivery-suite"></a>Azure のアプリケーション配信スイートでの構築 
-すべての Web サイト、API、サービスに地理的な冗長性を持たせ、そのユーザーへのトラフィックを、できる限り最も近い (待機時間が最も短い) 場所から配信することをお勧めします。  Traffic Manager、Front Door Service、Application Gateway、Load Balancer のサービスを組み合わせることで、地理的およびゾーン的な冗長性を構築し、信頼性、スケール、パフォーマンスを最大化できます。
+すべての Web サイト、API、サービスに地理的な冗長性を持たせ、そのユーザーへのトラフィックを、できる限り最も近い (待機時間が最も短い) 場所から配信することをお勧めします。  Traffic Manager、Front Door、Application Gateway、Load Balancer のサービスを組み合わせることで、地理的およびゾーン的な冗長性を構築し、信頼性、スケーリング、パフォーマンスを最大化させることができます。
 
 次の図では、これらすべてのサービスの組み合わせを使用してグローバル Web サービスを構築するサービス例について説明します。   ここでは、アーキテクトは Traffic Manager を使用して、ファイルやオブジェクトを配信するためにグローバル バックエンドにルーティングしています。同時に、Front Door を使用して、App Service に移行されたサービスに対して /store/* のパターンと一致する URL パスをグローバルにルーティングし、その他のすべての要求をリージョンの Application Gateway にルーティングします。
 

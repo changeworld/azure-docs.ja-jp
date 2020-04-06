@@ -16,14 +16,14 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fe38b434c4e54b375b22d76c573d3bbe88b0e16
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6fc45033cdf1bdaa6d4ecd6ab58cc7f90ff9c1ca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889942"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331414"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory パススルー認証: クイック スタート
+# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory パススルー認証:クイック スタート
 
 ## <a name="deploy-azure-ad-pass-through-authentication"></a>Azure AD パススルー認証をデプロイする
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 
 テナントでパススルー認証をデプロイするには、次の手順を実行します。
 
-## <a name="step-1-check-the-prerequisites"></a>手順 1: 前提条件を確認する
+## <a name="step-1-check-the-prerequisites"></a>手順 1:前提条件を確認する
 
 次の前提条件が満たされていることを確認します。
 
@@ -61,7 +61,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 
      | ポート番号 | 用途 |
      | --- | --- |
-     | **80** | SSL 証明書を検証する際に証明書失効リスト (CRL) をダウンロードする |
+     | **80** | TLS/SSL 証明書を検証する際に証明書失効リスト (CRL) をダウンロードする |
      | **443** | サービスを使用したすべての送信方向の通信を処理する |
      | **8080** (省略可能) | ポート 443 が使用できない場合、認証エージェントは、ポート 8080 経由で 10 分ごとにその状態を報告します。 この状態は Azure AD ポータルに表示されます。 ポート 8080 は、ユーザー サインインには _使用されません_。 |
      
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
    - 認証エージェントは初回の登録のために **login.windows.net** と **login.microsoftonline.com** にアクセスする必要があるため、 これらの URL にもファイアウォールを開きます。
    - 証明書の検証のために、URL **mscrl.microsoft.com:80**、**crl.microsoft.com:80**、**ocsp.msocsp.com:80**、**www\.microsoft.com:80** のブロックを解除します。 他の Microsoft 製品でもこれらの URL を証明書の検証に使用しているので、URL のブロックを既に解除している可能性もあります。
 
-## <a name="step-2-enable-the-feature"></a>手順 2: 機能を有効にする
+## <a name="step-2-enable-the-feature"></a>手順 2:機能を有効にする
 
 [Azure AD Connect](whatis-hybrid-identity.md) を使用してパススルー認証を有効にします。
 
@@ -88,7 +88,7 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 >[!IMPORTANT]
 >パススルー認証はテナント レベルの機能です。 有効にすると、テナントに含まれる "_すべての_" マネージド ドメインのユーザー サインインに影響を及ぼします。 Active Directory フェデレーション サービス (AD FS) からパススルー認証に切り替える場合は、12 時間以上経ってから AD FS インフラストラクチャをシャットダウンする必要があります。 これは、移行中もユーザーが Exchange ActiveSync にサインインできるようにするための措置です。 AD FS からパススルー認証への移行の詳細については、[こちら](https://aka.ms/adfstoptadpdownload)で公開されている詳しいデプロイ計画をご覧ください。
 
-## <a name="step-3-test-the-feature"></a>手順 3: 機能をテストする
+## <a name="step-3-test-the-feature"></a>手順 3:機能をテストする
 
 この手順に従って、パススルー認証の有効化を正しく行ったことを確認します。
 
@@ -104,7 +104,7 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 
 この段階で、テナントに含まれるすべてのマネージド ドメインのユーザーが、パススルー認証を使用してサインインできます。 ただし、フェデレーション ドメインのユーザーは引き続き、AD FS または既に構成済みのその他のフェデレーション プロバイダーを使用してサインインします。 ドメインをフェデレーションから管理対象に変換すると、そのドメインのすべてのユーザーが、パススルー認証を使用したサインインを自動的に開始します。 クラウド専用ユーザーはパススルー認証機能の影響を受けません。
 
-## <a name="step-4-ensure-high-availability"></a>手順 4: 高可用性を確保する
+## <a name="step-4-ensure-high-availability"></a>手順 4:高可用性を確保する
 
 運用環境にパススルー認証をデプロイする場合は、追加のスタンドアロン認証エージェントをインストールする必要があります。 これらの認証エージェントは、Azure AD Connect を実行しているサーバー "_以外_" のサーバーにインストールします。 この設定により、ユーザー サインイン要求の高可用性が確保されます。
 
@@ -148,7 +148,7 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
         $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
 3. **C:\Program Files\Microsoft Azure AD Connect 認証エージェント**に移動し、作成済みの `$cred` オブジェクトを使用して次のスクリプトを実行します。
 
-        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 >[!IMPORTANT]
 >仮想マシンに認証エージェントをインストールする場合は、仮想マシンを複製して、別の認証エージェントを設定することはできません。 この方法は**サポートされていません**。
@@ -157,10 +157,10 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 
 スマート ロックアウトは、組織のユーザーのパスワードを推測したり、ブルート フォース方法を使用して侵入しようとする悪意のあるユーザーのロックアウトを支援します。 Azure AD でのスマート ロックアウトの設定と、オンプレミスの Active Directory での適切なロックアウトの設定の両方または一方を構成することにより、攻撃は Active Directory に到達する前にフィルターで除去されます。 テナントにスマート ロックアウトの設定を構成してユーザー アカウントを保護する方法の詳細については、[こちらの記事](../authentication/howto-password-smart-lockout.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [AD FS からパススルー認証への移行](https://aka.ms/adfstoptadp) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。
 - [スマート ロックアウト](../authentication/howto-password-smart-lockout.md): ユーザー アカウントを保護するようにご利用のテナント上でスマート ロックアウト機能を構成する方法について説明します。
-- [現時点での制限事項](how-to-connect-pta-current-limitations.md): パススルー認証でサポートされているシナリオと、サポートされていないシナリオについて説明します。
+- [現時点での制限事項](how-to-connect-pta-current-limitations.md):パススルー認証でサポートされているシナリオと、サポートされていないシナリオについて説明します。
 - [技術的な詳細](how-to-connect-pta-how-it-works.md): パススルー認証機能のしくみについて説明します。
 - [よく寄せられる質問](how-to-connect-pta-faq.md): よく寄せられる質問の回答を探します。
 - [トラブルシューティング](tshoot-connect-pass-through-authentication.md): パススルー認証機能に関する一般的な問題を解決する方法について説明します。

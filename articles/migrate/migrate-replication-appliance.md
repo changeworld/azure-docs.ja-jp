@@ -4,15 +4,15 @@ description: エージェントベースの VMWare の移行のための Azure M
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901559"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225435"
 ---
 # <a name="replication-appliance"></a>レプリケーション アプライアンス
 
-この記事では、エージェントベースの移行を使用して、VMware VM、物理マシン、プライベート/パブリック クラウドの VM を Azure に移行する場合に、[Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) によって使用されるレプリケーション アプライアンスについて説明します。 
+この記事では、エージェントベースの移行を使用して、VMware VM、物理マシン、プライベートまたはパブリック クラウドの VM を Azure に移行する場合に、[Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) ツールによって使用されるレプリケーション アプライアンスについて説明します。 
 
 
 ## <a name="overview"></a>概要
@@ -76,7 +76,7 @@ Azure Migrate でダウンロードしてインストールする | アプライ
 
 レプリケーション アプライアンスは、次の URL にアクセスできる必要があります。
 
-**[URL]** | **詳細**
+**URL** | **詳細**
 --- | ---
 \*.backup.windowsazure.com | レプリケートされたデータの転送と調整に使用
 \*.store.core.windows.net | レプリケートされたデータの転送と調整に使用
@@ -91,7 +91,7 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 
 ## <a name="port-access"></a>ポート アクセス
 
-**[デバイス]** | **[接続]**
+**[デバイス]** | **接続**
 --- | ---
 VM | VM 上で実行される Mobility Service は、レプリケーション管理のために、インバウンド ポート HTTPS 443 でオンプレミスのレプリケーション アプライアンス (構成サーバー) と通信します。<br/><br/> VM は、受信ポート HTTPS 9443 でレプリケーション データを (構成サーバー マシン上で実行されている) プロセス サーバーに送信します。 このポートは変更可能です。
 レプリケーション アプライアンス | レプリケーション アプライアンスは、アウトバウンド ポート HTTPS 443 経由で Azure によるレプリケーションを調整します。

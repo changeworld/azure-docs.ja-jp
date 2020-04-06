@@ -6,13 +6,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 8c1c521488270ff0bfe3b306470345bc2cd885ce
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: a68f351276c47f623728a279ad551744c61b6d14
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773532"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063226"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Azure Database for MySQL への接続に関する問題のトラブルシューティング
 
@@ -47,7 +47,7 @@ ms.locfileid: "74773532"
 アプリケーションが Azure Database for MySQL への接続に引き続き失敗する場合は、一般的に、次のいずれかの問題が考えられます。
 
 * サーバーのファイアウォールの構成:Azure Database for MySQL サーバーのファイアウォールが、プロキシ サーバーやゲートウェイなど、クライアントからの接続を許可するように構成されていることを確認します。
-* クライアント ファイアウォールの構成:クライアント上のファイアウォールで、データベース サーバーへの接続を許可する必要があります。 一部のファイアウォールでは、MySQL などのアプリケーション名だけでなく、自分に権限のないサーバーの IP アドレスとポートも許可されている必要があります。
+* クライアントのファイアウォールの構成:クライアント上のファイアウォールで、データベース サーバーへの接続を許可する必要があります。 一部のファイアウォールでは、MySQL などのアプリケーション名だけでなく、自分に権限のないサーバーの IP アドレスとポートも許可されている必要があります。
 * ユーザー エラー:接続文字列のサーバー名の間違いや、ユーザー名に *\@servername* サフィックスがないなど、接続パラメーターを誤って入力している可能性があります。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>永続的な接続の問題を解決する手順
@@ -55,8 +55,8 @@ ms.locfileid: "74773532"
 1. クライアントの IP アドレスを許可するには、 [ファイアウォール規則](howto-manage-firewall-using-portal.md) を設定します。 一時的なテストのためのみには、0.0.0.0 を開始 IP アドレス、255.255.255.255 を終了 IP アドレスとするファイアウォール規則を設定します。 これにより、サーバーがすべての IP アドレスに開かれます。 これによって接続の問題が解決する場合は、この規則を削除した後、IP アドレスまたはアドレス範囲を適切に制限するファイアウォール規則を作成します。
 2. クライアントとインターネットの間のすべてのファイアウォールで、ポート 3306 が送信接続用に開かれていることを確認します。
 3. 接続文字列およびその他の接続設定を確認します。 「[Azure Database for MySQL にアプリケーションを接続する方法](howto-connection-string.md)」を参照してください。
-4. ダッシュ ボードでサービスの正常性を確認します。 リージョンで停止が起きていると考えられる場合は、新しいリージョンに復旧する手順について「[Overview of business continuity with Azure Database for MySQL](concepts-business-continuity.md)」を参照してください。
+4. ダッシュ ボードでサービスの正常性を確認します。 リージョンで停止が起きていると考えられる場合は、新しいリージョンに復旧するステップを「[Azure Database for MySQL でのビジネス継続性を理解する](concepts-business-continuity.md)」で参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Handling of transient connectivity errors for Azure Database for MySQL](concepts-connectivity.md)

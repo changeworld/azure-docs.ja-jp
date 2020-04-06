@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbcc05093d801261493745c61dc5f68878d338b0
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607670"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331259"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect ユーザーのサインイン オプション
 Azure Active Directory (Azure AD) Connect では、ユーザーは同じパスワードを使用して、クラウドとオンプレミス両方のリソースにサインインできます。 この記事では、Azure AD へのサインインに使用する ID を選択できるようにするために、各 ID モデルの主要な概念について説明します。
@@ -52,7 +52,7 @@ Office 365、SaaS アプリケーション、およびその他の Azure AD ベ�
 認証方法の選択の詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](../../security/fundamentals/choose-ad-authn.md)」を参照してください。
 
 ### <a name="password-hash-synchronization"></a>パスワード ハッシュの同期
-パスワード ハッシュの同期では、ユーザー パスワードのハッシュがオンプレミスの Active Directory から Azure AD に同期されます。 オンプレミスでパスワードが変更またはリセットされると、ユーザーが常にクラウドのリソースとオンプレミスのリソースに同じパスワードを使用できるように、新しいパスワード ハッシュが直ちに Azure AD に同期されます。 パスワードがクリア テキストの状態で Azure AD に送信されたり Azure AD に格納されたりすることはありません。 パスワード ハッシュの同期をパスワードの書き戻しと共に使用すると、Azure AD でセルフサービスのパスワード リセットを有効にできます。
+パスワード ハッシュの同期では、ユーザー パスワードのハッシュがオンプレミスの Active Directory から Azure AD に同期されます。 オンプレミスでパスワードが変更またはリセットされると、ユーザーが常にクラウドのリソースとオンプレミスのリソースに同じパスワードを使用できるように、新しいパスワード ハッシュが直ちに Azure AD に同期されます。 パスワードがクリア テキストの状態で Azure AD に送信されたり Azure AD に格納されたりすることはありません。 パスワード ハッシュの同期をパスワードの書き戻しと共に使用すると、Azure AD でセルフサービス パスワード リセットを有効にできます。
 
 さらに、企業ネットワーク上にある、ドメインに参加しているマシン上のユーザーに対して[シームレス SSO](how-to-connect-sso.md) を有効にすることができます。 シングル サインオンを使用すれば、有効になっているユーザーはユーザー名のみを入力して、クラウド リソースに安全にアクセスできます。
 
@@ -85,7 +85,7 @@ Office 365、SaaS アプリケーション、およびその他の Azure AD ベ�
 
 * フェデレーション サーバー用の Windows Server 2012 R2 サーバー。
 * Web アプリケーション プロキシ用の Windows Server 2012 R2 サーバー。
-* 目的のフェデレーション サービス名に対する SSL 証明書を 1 つ含んだ .pfx ファイル。 サービス名の例: www.contoso.com。
+* 目的のフェデレーション サービス名に対する TLS/SSL 証明書を 1 つ含んだ .pfx ファイル。 サービス名の例: www.contoso.com。
 
 新しいファームをデプロイするか、既存のファームを使用する場合は、次のものが必要です。
 
@@ -126,7 +126,7 @@ Azure AD のサインイン エクスペリエンスは、同期するユーザ�
 Azure AD Connect は、ドメインに対して定義されているUPN サフィックスをリストし、それらを Azure AD 内のカスタム ドメインと照合しようとします。 その後、ユーザーが実行するべき適切な操作を支援します。
 Azure AD のサインイン ページには、オンプレミスの Active Directory に対して定義されている UPN サフィックスの一覧と、各サフィックスの状態が表示されます。 状態値は、次のいずれかになります。
 
-| 状態 | 説明 | 必要な対処 |
+| State | 説明 | 必要な対処 |
 |:--- |:--- |:--- |
 | Verified |Azure AD Connect が、Azure AD で一致する確認済みのドメインを検出しました。 このドメインのすべてのユーザーは、オンプレミスの資格情報を使用してサインインできます。 |対処は必要ありません。 |
 | 未確認 |Azure AD Connect が Azure AD 内の一致するカスタム ドメインを検出しましたが、そのドメインはまだ確認されていません。 ドメインが確認されなかった場合、そのドメインのユーザーの UPN サフィックスは、同期後に既定のサフィックス (.onmicrosoft.com) へと変更されます。 | [Azure AD でカスタム ドメインを確認します。](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
@@ -155,7 +155,7 @@ Azure AD ディレクトリのカスタム ドメインの状態と、オンプ�
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>簡易設定/パスワード ハッシュの同期
 
-| 状態 | ユーザーの Azure サインイン エクスペリエンスへの影響 |
+| State | ユーザーの Azure サインイン エクスペリエンスへの影響 |
 |:---:|:--- |
 | 追加されていません |この場合、contoso.com のカスタム ドメインは Azure AD ディレクトリに追加されていません。 オンプレミスの UPN にサフィックス @contoso.com が付いているユーザーは、オンプレミスの UPN を使用して Azure にサインインすることができません。 代わりに、Azure AD によって提供された新しい UPN を使用する必要があります。この UPN は、既定の Azure AD ディレクトリのサフィックスを追加して作成されます。 たとえば、azurecontoso.onmicrosoft.com という Azure AD ディレクトリにユーザーを同期する場合、オンプレミス ユーザー user@contoso.com には、user@azurecontoso.onmicrosoft.com という UPN が与えられます。 |
 | 未確認 |この場合、カスタム ドメイン contoso.com は既に Azure AD ディレクトリに追加されています。 ただし、まだ確認されていません。 ドメインを確認しないままユーザーの同期を進めようとすると、"追加されていません" のシナリオの場合と同様の方法で、Azure AD からユーザーに新しい UPN が割り当てられます。 |
@@ -166,7 +166,7 @@ Azure AD ディレクトリのカスタム ドメインの状態と、オンプ�
 
 ユーザー サインイン オプションとして **[AD FS とのフェデレーション]** を選択した場合、Azure AD でのフェデレーションの作成を続行するには、カスタム ドメインが必要です。 この例では、カスタム ドメイン contoso.com が Azure AD ディレクトリに追加されている必要があります。
 
-| 状態 | ユーザーの Azure サインイン エクスペリエンスへの影響 |
+| State | ユーザーの Azure サインイン エクスペリエンスへの影響 |
 |:---:|:--- |
 | 追加されていません |これは、Azure AD Connect が、UPN サフィックス contoso.com と一致するカスタム ドメインを Azure AD ディレクトリ内に検出できなかったことを意味します。 ユーザーが AD FS を使用して、オンプレミス UPN (user@contoso.com など) でサインインできるようにするには、カスタム ドメイン contoso.com を追加する必要があります。 |
 | 未確認 |この場合は、Azure AD Connect の確認メッセージに、後でドメインを確認する方法についての適切な情報が示されます。 |
@@ -190,6 +190,6 @@ Azure AD ディレクトリのカスタム ドメインの状態と、オンプ�
 >
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)に関する記事をご覧ください。
 - [Azure AD Connect の設計概念](plan-connect-design-concepts.md)についての詳しく知る。

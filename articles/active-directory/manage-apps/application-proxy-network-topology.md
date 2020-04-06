@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 075b2c92168afe0c366608266c38b14394b73cff
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: eaceaf1f5e9b6e34ced5db39b61e607fffcb5953
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275482"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295135"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項
 
@@ -41,7 +41,7 @@ ms.locfileid: "74275482"
 
 Azure AD テナントにサインアップするとき、指定した国/地域によってテナントのリージョンが決まります。 アプリケーション プロキシを有効にすると、テナント用のアプリケーション プロキシ サービス インスタンスは、Azure AD テナントと同じリージョン、またはその最寄りのリージョン内で選択されるか作成されます。
 
-たとえば、Azure AD テナントの国またはリージョンが英国の場合、すべてのアプリケーション プロキシ コネクタは、EU のデータ センターにあるサービス インスタンスを使用します。 ユーザーが公開アプリケーションにアクセスする場合、トラフィックはこの場所のアプリケーション プロキシ サービス インスタンスを経由して送信されます。
+たとえば、Azure AD テナントの国またはリージョンが英国の場合、すべてのアプリケーション プロキシ コネクタで、ヨーロッパのデータ センターにあるサービス インスタンスが使用されます。 ユーザーが公開アプリケーションにアクセスする場合、トラフィックはこの場所のアプリケーション プロキシ サービス インスタンスを経由して送信されます。
 
 ## <a name="considerations-for-reducing-latency"></a>待機時間を削減するための考慮事項
 
@@ -162,17 +162,17 @@ ExpressRoute プライベート ピアリング経由で企業ネットワーク
 
 ### <a name="use-case-5"></a>ユース ケース 5
 
-**シナリオ:** アプリケーションは EU 内の組織のネットワークにあり、アプリケーション プロキシ インスタンスと大部分のユーザーは米国内に存在している。
+**シナリオ:** アプリケーションはヨーロッパ内の組織のネットワークにあり、アプリケーション プロキシ インスタンスと大部分のユーザーは米国内に存在している。
 
 **推奨事項:** コネクタをアプリケーションの近くに配置します。 米国のユーザーは、同じリージョンのアプリケーション プロキシ インスタンスにアクセスしているため、ホップ 1 のコストが高すぎるということはありません。 ホップ 3 は最適化されています。 ExpressRoute を使用して ホップ 2 を最適化することを検討してください。
 
-![ユーザーとプロキシが米国内に、コネクタとアプリケーションは EU 内に存在することを示す図](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
+![ユーザーとプロキシが米国内に、コネクタとアプリケーションはヨーロッパ内に存在することを示す図](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 
-このような状況では、もう 1 つのバリエーションを使用することも検討できます。 組織内のほとんどのユーザーが米国内に存在する場合、ネットワークが米国まで拡張される可能性があります。 コネクタを米国内に配置し、EU 内のアプリケーションへの専用の内部企業ネットワーク回線を使用します。 これにより、ホップ 2 と 3 が最適化されます。
+このような状況では、もう 1 つのバリエーションを使用することも検討できます。 組織内のほとんどのユーザーが米国内に存在する場合、ネットワークが米国まで拡張される可能性があります。 コネクタを米国内に配置し、ヨーロッパ内のアプリケーションへの専用の内部企業ネットワーク回線を使用します。 これにより、ホップ 2 と 3 が最適化されます。
 
-![ユーザー、プロキシ、コネクタは米国内に、アプリケーションは EU 内に存在することを示す図](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
+![ユーザー、プロキシ、コネクタは米国内に、アプリケーションはヨーロッパ内に存在することを示す図](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アプリケーション プロキシを有効にする](application-proxy-add-on-premises-application.md)
 - [シングル サインオンを有効にする](application-proxy-configure-single-sign-on-with-kcd.md)
