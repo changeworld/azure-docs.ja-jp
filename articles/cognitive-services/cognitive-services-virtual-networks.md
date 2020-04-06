@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 1ae3caa2d1f90bbbae1070d95d676eb206a361a0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 0988c8154c63bb408493edf3243078e625c80d53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647351"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371224"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services 仮想ネットワークを構成する
 
@@ -39,7 +39,7 @@ Azure Cognitive Services に対して、REST や WebSocket などのすべての
 
 ## <a name="supported-regions-and-service-offerings"></a>サポートされているリージョンとサービス内容
 
-Cognitive Services で仮想ネットワークが使用できるのは、*カナリア - 米国中部 EUAP*、*西ヨーロッパ*、*米国西部 2* Azure リージョンに限定されています。 また、すべての Cognitive Service のオファリングで仮想ネットワークをサポートしているわけではありません。 次の Cognitive Service のオファリングにより、仮想ネットワークを使用できます。 ここに記載されていないサービス内容では、仮想ネットワークはサポートされません。
+以下に記載されている Cognitive Services に対する仮想ネットワークのサポートは、*米国中部 EUAP*、*米国中南部*、*米国東部*、*米国西部 2*、*北ヨーロッパ*、*南アフリカ北部*、*西ヨーロッパ*、*インド中部*、*オーストラリア東部*、*米国西部*、および *US Gov バージニア*の 各 Azure リージョンに限定されています。 ここに記載されていないサービス内容では、仮想ネットワークはサポートされません。
 
 > [!div class="checklist"]
 > * [Anomaly Detector](./anomaly-detector/index.yml)
@@ -51,6 +51,27 @@ Cognitive Services で仮想ネットワークが使用できるのは、*カナ
 > * [LUIS](./luis/index.yml)
 > * [Personalizer](./personalizer/index.yml)
 > * [Text Analytics](./text-analytics/index.yml)
+> * [QnA Maker](./qnamaker/index.yml)
+
+以下に記載されている Cognitive Services の仮想ネットワークのサポートは、*米国中部 EUAP*、*米国中南部*、*米国東部*、*米国西部 2*、*グローバル*、*米国政府バージニア州*の 各 Azure リージョンに限定されています。
+> [!div class="checklist"]
+> * [Translator Text](./translator/index.yml)
+
+## <a name="service-tags"></a>サービス タグ
+上記のサービス用の仮想ネットワーク サービス エンドポイントのサポートに加え、Cognitive Services では、送信ネットワーク ルール構成用のサービス タグもサポートされています。 CognitiveServicesManagement サービス タグには、次のサービスが含まれています。
+> [!div class="checklist"]
+> * [Anomaly Detector](./anomaly-detector/index.yml)
+> * [Computer Vision](./computer-vision/index.yml)
+> * [Content Moderator](./content-moderator/index.yml)
+> * [Custom Vision](./custom-vision-service/index.yml)
+> * [Face](./face/index.yml)
+> * [Form Recognizer](./form-recognizer/index.yml)
+> * [LUIS](./luis/index.yml)
+> * [Personalizer](./personalizer/index.yml)
+> * [Text Analytics](./text-analytics/index.yml)
+> * [QnA Maker](./qnamaker/index.yml)
+> * [Translator Text](./translator/index.yml)
+> * [Speech Service](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>既定のネットワーク アクセス ルールの変更
 
@@ -63,7 +84,7 @@ Cognitive Services で仮想ネットワークが使用できるのは、*カナ
 
 Cognitive Services リソースの規定のネットワーク アクセス ルールは、Azure portal、PowerShell、または Azure CLI で管理できます。
 
-# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. セキュリティで保護する Cognitive Services リソースにアクセスします。
 
@@ -78,7 +99,7 @@ Cognitive Services リソースの規定のネットワーク アクセス ル�
 
 1. **[保存]** を選択して変更を保存します。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして[サインイン](/powershell/azure/authenticate-azureps)するか、 **[試してみる]** を選択します。
 
@@ -114,7 +135,7 @@ Cognitive Services リソースの規定のネットワーク アクセス ル�
     Update-AzCognitiveServicesAccountNetworkRuleSet @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして[サインイン](/cli/azure/authenticate-azure-cli)するか、 **[試してみる]** を選択します。
 
@@ -165,7 +186,7 @@ Cognitive Services リソースとアクセスを許可される仮想ネット�
 
 Cognitive Services リソースの 仮想ネットワーク規則は、Azure portal、PowerShell、または Azure CLI で管理できます。
 
-# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. セキュリティで保護する Cognitive Services リソースにアクセスします。
 
@@ -200,7 +221,7 @@ Cognitive Services リソースの 仮想ネットワーク規則は、Azure por
 
 1. **[保存]** を選択して変更を保存します。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして[サインイン](/powershell/azure/authenticate-azureps)するか、 **[試してみる]** を選択します。
 
@@ -260,7 +281,7 @@ Cognitive Services リソースの 仮想ネットワーク規則は、Azure por
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして[サインイン](/cli/azure/authenticate-azure-cli)するか、 **[試してみる]** を選択します。
 
@@ -340,7 +361,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから 
 
 Cognitive Services リソースの IP ネットワーク ルールは、Azure portal、PowerShell、または Azure CLI で管理できます。
 
-# <a name="azure-portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 1. セキュリティで保護する Cognitive Services リソースにアクセスします。
 
@@ -358,7 +379,7 @@ Cognitive Services リソースの IP ネットワーク ルールは、Azure po
 
 1. **[保存]** を選択して変更を保存します。
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. [Azure PowerShell](/powershell/azure/install-az-ps) をインストールして[サインイン](/powershell/azure/authenticate-azureps)するか、 **[試してみる]** を選択します。
 
@@ -416,7 +437,7 @@ Cognitive Services リソースの IP ネットワーク ルールは、Azure po
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. [Azure CLI](/cli/azure/install-azure-cli) をインストールして[サインイン](/cli/azure/authenticate-azure-cli)するか、 **[試してみる]** を選択します。
 
@@ -464,7 +485,7 @@ Cognitive Services リソースの IP ネットワーク ルールは、Azure po
 > [!IMPORTANT]
 > **拒否**するように[既定のルールを設定](#change-the-default-network-access-rule)します。そうしないと、ネットワーク ルールは効力を発揮しません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * さまざまな [AzureCognitive Services](welcome.md) をご覧ください
 * [Azure 仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)の詳細を確認する

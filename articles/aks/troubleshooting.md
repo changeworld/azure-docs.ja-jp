@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: b7aa90bd19e52059319570f1e7f6e64b90dee6e4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 7bdabf2ec109fe96c28185bd1a2a680ce19c2650
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593349"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79368334"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -298,7 +298,7 @@ Kubernetes バージョン 1.9.2 以降では、複数のアタッチ/デタッ�
 一部のケースでは、Azure Disk のデタッチ操作が最初の試行で失敗した場合、デタッチ操作は再試行されず、元のノード VM にアタッチされたままになります。 このエラーは、ディスクを 1 つのノードから別のノードに移動するときに発生する可能性があります。 次に例を示します。
 
 ```console
-[Warning] AttachVolume.Attach failed for volume “pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9” : Attach volume “kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance “/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0” failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code=“ConflictingUserInput” Message=“Disk ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9’ cannot be attached as the disk is already owned by VM ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1’.”
+[Warning] AttachVolume.Attach failed for volume "pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" : Attach volume "kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance "/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0" failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code="ConflictingUserInput" Message="Disk '/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9' cannot be attached as the disk is already owned by VM '/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1'."
 ```
 
 この問題は、次のバージョンの Kubernetes で修正されました。
@@ -348,12 +348,12 @@ Azure Disk のデタッチに失敗すると、エクスポネンシャル バ�
 この問題の修正プログラムがインストールされていないバージョンの Kubernetes を使用し、かつノード VM がエラー状態である場合は、次のいずれかを使用して VM の状態を手動で更新することで、この問題を軽減できます。
 
 * 可用性セットベースのクラスターの場合:
-    ```console
+    ```azurecli
     az vm update -n <VM_NAME> -g <RESOURCE_GROUP_NAME>
     ```
 
 * VMSS ベースのクラスターの場合:
-    ```console
+    ```azurecli
     az vmss update-instances -g <RESOURCE_GROUP_NAME> --name <VMSS_NAME> --instance-id <ID>
     ```
 
@@ -491,6 +491,10 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 ```
 
 このエラーは、上流クラスターのオートスケーラー競合状態が原因で発生します。この場合、クラスター オートスケーラーは、クラスター内に実際にある値とは異なる値で終了しています。 この状態を修正するには、単純に[クラスター オートスケーラー][cluster-autoscaler]を無効にしてから再度有効にします。
+
+### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>低速のディスクの接続では、GetAzureDiskLun の実行に 10 分から 15 分かかり、エラーが発生します
+
+Kubernetes の **1.15.0 より古いバージョン**では、**WaitForAttach でディスクの LUN を見つけることができない**などのエラーが発生する場合があります。  これを回避するには、約 15 分間待機してから再試行します。
 
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: eceb4b312476d701ec8ce4eb0ce4886621824b3a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ec96189185a06c1fcbd95eed6216ade47f3089c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841593"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214658"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 
@@ -39,33 +39,81 @@ HDInsight 3.6 と HDInsight 4.0 には異なるメタストア スキーマが�
 
 内部メタストアを使用している場合は、クエリを使用して Hive メタストア内のオブジェクト定義をエクスポートし、新しいデータベースにインポートできます。
 
+このスクリプトの完了後は、スクリプトで参照されているテーブルやデータベースにアクセスするために古いクラスターは使用されなくなることが想定されています。
+
+> [!NOTE]
+> ACID テーブルの場合、テーブルのデータの新しいコピーが作成されます。
+
 1. [Secure Shell (SSH) クライアント](../hdinsight-hadoop-linux-use-ssh-unix.md)で HDInsight クラスターに接続します。
 
 1. 次のコマンドを入力して、開いている SSH セッションから [Beeline クライアント](../hadoop/apache-hadoop-use-hive-beeline.md)を使用して HiveServer2 に接続します。
 
     ```hiveql
-    for d in `beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show databases;"`; do echo "create database $d; use $d;" >> alltables.sql; for t in `beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show tables;"` ; do ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;"`; echo "$ddl ;" >> alltables.sql ; echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t ;" >> alltables.sql ; done; done
+    for d in `beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show databases;"`; 
+    do
+        echo "Scanning Database: $d"
+        echo "create database if not exists $d; use $d;" >> alltables.hql; 
+        for t in `beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show tables;"`;
+        do
+            echo "Copying Table: $t"
+            ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;"`;
+
+            echo "$ddl;" >> alltables.hql;
+            lowerddl=$(echo $ddl | awk '{print tolower($0)}')
+            if [[ $lowerddl == *"'transactional'='true'"* ]]; then
+                if [[ $lowerddl == *"partitioned by"* ]]; then
+                    # partitioned
+                    raw_cols=$(beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;" | tr '\n' ' ' | grep -io "CREATE TABLE .*" | cut -d"(" -f2- | cut -f1 -d")" | sed 's/`//g');
+                    ptn_cols=$(beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;" | tr '\n' ' ' | grep -io "PARTITIONED BY .*" | cut -f1 -d")" | cut -d"(" -f2- | sed 's/`//g');
+                    final_cols=$(echo "(" $raw_cols "," $ptn_cols ")")
+
+                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "create external table ext_$t $final_cols TBLPROPERTIES ('transactional'='false');";
+                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "insert into ext_$t select * from $t;";
+                    staging_ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table ext_$t;"`;
+                    dir=$(echo $staging_ddl | grep -io " LOCATION .*" | grep -m1 -o "'.*" | sed "s/'[^-]*//2g" | cut -c2-);
+
+                    parsed_ptn_cols=$(echo $ptn_cols| sed 's/ [a-z]*,/,/g' | sed '$s/\w*$//g');
+                    echo "create table flattened_$t $final_cols;" >> alltables.hql;
+                    echo "load data inpath '$dir' into table flattened_$t;" >> alltables.hql;
+                    echo "insert into $t partition($parsed_ptn_cols) select * from flattened_$t;" >> alltables.hql;
+                    echo "drop table flattened_$t;" >> alltables.hql;
+                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "drop table ext_$t";
+                else
+                    # not partitioned
+                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "create external table ext_$t like $t TBLPROPERTIES ('transactional'='false');";
+                    staging_ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table ext_$t;"`;
+                    dir=$(echo $staging_ddl | grep -io " LOCATION .*" | grep -m1 -o "'.*" | sed "s/'[^-]*//2g" | cut -c2-);
+
+                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "insert into ext_$t select * from $t;";
+                    echo "load data inpath '$dir' into table $t;" >> alltables.hql;
+                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "drop table ext_$t";
+                fi
+            fi
+            echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t;" >> alltables.hql;
+        done;
+    done
     ```
 
-    このコマンドによって、**alltables.sql** という名前のファイルが生成されます。 既定のデータベースは削除/再作成できないため、**alltables.sql** の `create database default;` ステートメントを削除してください。
+    このコマンドによって、**alltables.hql** という名前のファイルが生成されます。
 
-1. SSH セッションを終了します。 次に、scp コマンドを入力して **alltables.sql** をローカルにダウンロードします。
+1. SSH セッションを終了します。 次に、scp コマンドを入力して **alltables.hql** をローカルにダウンロードします。
 
     ```bash
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.sql c:/hdi
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
     ```
 
-1. **alltables.sql** を "*新しい*" HDInsight クラスターにアップロードします。
+1. **alltables.hql** を "*新しい*" HDInsight クラスターにアップロードします。
 
     ```bash
-    scp c:/hdi/alltables.sql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
+    scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
 1. 次に SSH を使用して、"*新しい*" HDInsight クラスターに接続します。 SSH セッションから次のコードを実行します。
 
     ```bash
-    beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" -i alltables.sql
+    beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" -i alltables.hql
     ```
+
 
 ## <a name="upgrade-metastore"></a>メタストアのアップグレード
 
@@ -73,10 +121,10 @@ HDInsight 3.6 と HDInsight 4.0 には異なるメタストア スキーマが�
 
 下にある表の値を使用してください。 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` は、**コピーした** Hive メタストアの適切な値に置き換え、スペースで区切ります。 SQL サーバー名を指定するときに ".database.windows.net" を含めないでください。
 
-|プロパティ | Value |
+|プロパティ | 値 |
 |---|---|
 |スクリプトの種類|- Custom|
-|Name|Hive アップグレード|
+|名前|Hive アップグレード|
 |Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |ノードの種類|Head|
 |パラメーター|SQLSERVERNAME DATABASENAME USERNAME PASSWORD|
@@ -176,10 +224,10 @@ HDInsight 4.0 では、Hive CLI は BeeLine に置き換えられています。
 
 HDInsight 3.6 では、Hive サーバーと対話するための GUI クライアントは Ambari Hive ビューです。 HDInsight 4.0 には Ambari ビューは付属していません。 お客様が Data Analytics Studio (DAS) を使用する方法を提供しています。これは、中核となる HDInsight サービスではありません。 DAS には HDInsight クラスターは標準では付属せず、公式にサポートされているパッケージではありません。 ただし、次のように[スクリプト アクション](../hdinsight-hadoop-customize-cluster-linux.md)を使用して DAS をクラスターにインストールできます。
 
-|プロパティ | Value |
+|プロパティ | 値 |
 |---|---|
 |スクリプトの種類|- Custom|
-|Name|DAS|
+|名前|DAS|
 |Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |ノードの種類|Head|
 

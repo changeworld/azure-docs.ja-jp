@@ -13,11 +13,13 @@
       href: quick-create-cli.md
     - name: Azure PowerShell を使って作成する
       href: quick-create-powershell.md
-    - name: テンプレートを使って作成する
+    - name: ARM テンプレートを使って作成する
       items:
         - name: Linux スケール セット
+          displayName: 'ARM, resource manager'
           href: quick-create-template-linux.md
         - name: Windows スケール セット
+          displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
 - name: チュートリアル
   items:

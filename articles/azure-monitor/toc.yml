@@ -15,7 +15,7 @@
     - name: 仮想マシンの監視
       items:
         - name: Azure VM
-          href: learn/quick-collect-azurevm.md
+          href: learn/quick-monitor-azure-vm.md
         - name: Linux コンピューター
           href: learn/quick-collect-linux-computer.md
         - name: Windows コンピューター
@@ -303,10 +303,6 @@
             - name: テレメトリの関連付け
               href: app/correlation.md
               displayname: 'correlation headers, w3c, distributed tracing, tracing'
-            - name: ローカル フォワーダー
-              href: app/opencensus-local-forwarder.md
-            - name: Go
-              href: app/opencensus-go.md
         - name: ライブ メトリック ストリーム
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
@@ -488,9 +484,17 @@
             - name: 概要
               displayName: 'Platform logs, Resource logs, Activity log'
               href: platform/platform-logs-overview.md
-            - name: アクティビティ ログを表示する
-              displayName: Platform logs
-              href: platform/activity-log-view.md
+            - name: アクティビティ ログ
+              items:
+                - name: Azure portal に表示
+                  displayName: 'Platform logs, Activity log'
+                  href: platform/activity-log-view.md
+                - name: 収集と分析
+                  displayName: 'Platform logs, Activity log'
+                  href: platform/activity-log-collect.md
+                - name: エクスポート (レガシ)
+                  displayname: Activity log
+                  href: platform/activity-log-export.md
             - name: 宛先に送信する
               items:
                 - name: Log Analytics ワークスペース
@@ -502,20 +506,6 @@
                 - name: Event Hubs
                   displayname: 'Resource logs, Activity log, Platform logs'
                   href: platform/resource-logs-stream-event-hubs.md
-            - name: レガシ アクティビティ ログの収集
-              items:
-                - name: 概要
-                  displayName: Resource logs
-                  href: platform/diagnostic-settings-legacy.md
-                - name: 収集と分析
-                  displayname: Activity log
-                  href: platform/activity-log-collect.md
-                - name: テナントをまたいだ収集
-                  displayname: Activity log
-                  href: platform/activity-log-collect-tenants.md
-                - name: エクスポート
-                  displayname: Activity log
-                  href: platform/activity-log-export.md
         - name: 診断設定
           items:
             - name: 診断設定の作成
@@ -531,6 +521,8 @@
           href: platform/stream-monitoring-data-event-hubs.md
     - name: VM とゲスト OS の監視
       items:
+        - name: Azure 仮想マシンの監視
+          href: insights/monitor-vm-azure.md
         - name: エージェント
           items:
             - name: エージェントの概要
@@ -636,12 +628,10 @@
           items:
             - name: 概要
               href: insights/vminsights-overview.md
-            - name: 既知の問題
-              href: insights/vminsights-known-issues.md
             - name: 一般提供の FAQ
               href: insights/vminsights-ga-release-faq.md
             - name: よく寄せられる質問
-              href: 'faq.md#azure-monitor-for-vms-preview'
+              href: 'faq.md#azure-monitor-for-vms'
             - name: 監視を有効にする
               items:
                 - name: 監視の有効化の概要
@@ -654,18 +644,16 @@
                   href: insights/vminsights-enable-at-scale-powershell.md
                 - name: ハイブリッド環境対応にする
                   href: insights/vminsights-enable-hybrid-cloud.md
-                - name: Operations Manager との統合
-                  href: insights/service-map-scom.md
-            - name: 正常性の監視
-              href: insights/vminsights-health.md
             - name: 依存関係のマップ
               href: insights/vminsights-maps.md
             - name: パフォーマンスの監視
               href: insights/vminsights-performance.md
-            - name: ブックの使用
-              href: insights/vminsights-workbooks.md
             - name: ログ クエリによるデータの分析
               href: insights/vminsights-log-search.md
+            - name: ブックを使用したデータの視覚化
+              href: insights/vminsights-workbooks.md
+            - name: アラート ルールの作成
+              href: insights/vminsights-alerts.md
             - name: 依存関係エージェントのアップグレード
               href: insights/vminsights-dependency-agent-maintenance.md
             - name: 監視を無効にする
@@ -680,6 +668,8 @@
               href: insights/wire-data.md
             - name: Service Map ソリューション
               href: insights/service-map.md
+            - name: Service Map と Operations Manager
+              href: insights/service-map-scom.md
         - name: コンピューター グループ
           href: platform/computer-groups.md
     - name: コンテナーの監視
@@ -708,6 +698,8 @@
               href: insights/container-insights-analyze.md
             - name: 正常性の監視
               href: insights/container-insights-health.md
+            - name: GPU パフォーマンスの監視
+              href: insights/container-insights-gpu-monitoring.md
             - name: ライブ データを表示する
               items:
                 - name: ライブ データ (プレビュー) の概要
@@ -896,13 +888,11 @@
                   href: log-query/query-optimization.md
                 - name: テキスト データの解析
                   href: log-query/parse-text.md
-        - name: Flow および Logic Apps
+        - name: Logic Apps
           items:
-            - name: Flow コネクタとログ
-              href: platform/flow-tutorial.md
-            - name: Flow コネクタとアプリケーション
-              href: app/automate-with-flow.md
-            - name: Logic Apps とアプリケーション
+            - name: Azure Monitor Logs コネクタ
+              href: platform/logicapp-flow-connector.md
+            - name: Application Insights コネクタ
               href: app/automate-with-logic-apps.md
         - name: REST API
           displayname: 'metrics, analyze'
@@ -975,6 +965,8 @@
           href: platform/grafana-plugin.md
     - name: アラート
       items:
+        - name: アラートのトラブルシューティング
+          href: platform/alerts-troubleshoot.md
         - name: アプリケーション アラート ルール
           items:
             - name: 可用性
@@ -999,7 +991,7 @@
               href: platform/alerts-log-query.md
             - name: Webhook アクション
               href: platform/alerts-log-webhook.md
-            - name: トラブルシューティング
+            - name: ログ アラートのトラブルシューティング
               href: platform/alert-log-troubleshoot.md
         - name: アクティビティ ログ アラート ルール
           items:
@@ -1263,8 +1255,6 @@
           href: 'https://azure.microsoft.com/updates/?product=log-analytics'
         - name: SDK リリース ノート
           href: app/release-notes.md
-    - name: Windows Analytics
-      href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
     - name: ビデオ

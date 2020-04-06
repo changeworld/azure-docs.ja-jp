@@ -1,5 +1,5 @@
 ---
-title: Speech Devices SDK について - Speech Service
+title: Speech Devices SDK - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: Speech Devices SDK を使ってみましょう。 音声サービスは、さまざまなデバイスやオーディオ ソースと連携します。 Speech Devices SDK は、専用マイク配列開発キットとの組み合わせで事前に調整されたライブラリです。
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 43d08b466076672587e7f6545193e326283c0031
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330789"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79370646"
 ---
-# <a name="about-the-speech-devices-sdk"></a>Speech Devices SDK について
+# <a name="what-is-the-speech-devices-sdk"></a>Speech Devices SDK とは
 
 [Speech Service](overview.md) は、さまざまなデバイスやオーディオ ソースと連携します。 適合するハードウェアやソフトウェアで音声アプリケーションを次のレベルに引き上げることができます。 Speech Devices SDK は、専用マイク配列開発キットとの組み合わせで事前に調整されたライブラリです。
 
@@ -49,7 +49,7 @@ Windows の場合、サンプル アプリケーションは、クロスプラ�
 Linux の場合、サンプル アプリケーションは、クロスプラットフォーム Java アプリケーションとして提供されます。 [JRE Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) の最新バージョンをダウンロードします。
 アプリケーションは、Speech SDK パッケージと、64 ビット Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8) 上の Eclipse Java IDE (v4) によって構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
-今後公開されるデバイス [Roobo v2 DDK ](https://aka.ms/sdsdk-download-roobov2)および [Urbetter DDK ](https://aka.ms/sdsdk-download-urbetter)をサポートするために、追加のバイナリが提供されます。
+今後公開されるデバイス ([Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2)、[Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)、および [GGEC Speaker](https://aka.ms/sdsdk-download-speaker)) をサポートするために、追加のバイナリが提供されます。
 
 ## <a name="next-steps"></a>次のステップ
 

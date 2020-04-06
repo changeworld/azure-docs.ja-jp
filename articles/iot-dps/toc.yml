@@ -103,6 +103,8 @@
       href: concepts-tpm-attestation.md
     - name: 対称キーの構成証明
       href: concepts-symmetric-key-attestation.md
+    - name: デバイス製造元のセキュリティ プラクティス
+      href: concepts-device-oem-security-practices.md
 - name: 操作方法ガイド
   items:
     - name: IoT Hub に対する MXChip IoT DevKit の接続

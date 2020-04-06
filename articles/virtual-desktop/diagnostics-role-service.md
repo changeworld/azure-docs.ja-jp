@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: 9c907052f10fa7d1cfd1ff79e981fdccef874ee5
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: ce85fb70e1480ad285eee78fe20faa8d77b9a147
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367341"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228019"
 ---
 # <a name="identify-and-diagnose-issues"></a>問題の特定と診断
 
@@ -34,23 +35,66 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 Windows Virtual Desktop 診断では、1 つの PowerShell コマンドレットだけが使用されますが、問題を絞り込んで特定するために多くの省略可能なパラメーターが含まれています。 以下のセクションでは、問題を診断するために実行できるコマンドレットの一覧を示します。 ほとんどのフィルターは一緒に適用できます。 `<tenantName>` などの角かっこで囲まれた値は、自分の状況に適用される値で置き換える必要があります。
 
-### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>テナント内の診断アクティビティを取得する
+>[!IMPORTANT]
+>診断機能は、シングルユーザーのトラブルシューティング用です。 PowerShell を使用するすべてのクエリには、 *-UserName* または *-ActivityID*パラメーターのいずれかが含まれている必要があります。 監視機能については、Log Analytics を使用します。 診断データをワークスペースに送信する方法の詳細については、「[診断機能に Log Analytics を使用する](diagnostics-log-analytics.md)」を参照してください。 
 
-**Get-RdsDiagnosticActivities** コマンドレットを入力して、診断アクティビティを取得することができます。 次のコマンドレット例では、診断アクティビティの一覧が新しい順に返されます。
+### <a name="filter-diagnostic-activities-by-user"></a>ユーザーによって診断アクティビティをフィルター処理する
 
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName>
-```
-
-他の Windows Virtual Desktop PowerShell コマンドレットと同様に、 **-TenantName** パラメーターを使用して、クエリに使用するテナントの名前を指定する必要があります。 テナント名は、ほぼすべての診断アクティビティ クエリに適用できます。
-
-### <a name="retrieve-detailed-diagnostic-activities"></a>詳細な診断アクティビティを取得する
-
-**-Detailed** パラメーターは、返される各診断アクティビティの詳細を提供します。 各アクティビティの形式は、そのアクティビティの種類によって異なります。 **-Detailed** パラメーターは、次の例に示すように、任意の **Get-RdsDiagnosticActivities** クエリに追加できます。
+**-UserName** パラメーターでは、次のコマンドレット例に示すように、指定したユーザーによって開始された診断アクティビティの一覧が返されます。
 
 ```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Detailed
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
 ```
+
+**-UserName** パラメーターは、他の省略可能なフィルター パラメーターと組み合わせることもできます。
+
+### <a name="filter-diagnostic-activities-by-time"></a>時間によって診断アクティビティをフィルター処理する
+
+**-StartTime** パラメーターと **-EndTime** パラメーターを使用して、返される診断アクティビティの一覧をフィルター処理することができます。 **-StartTime** パラメーターでは、次の例に示すように、特定の日付から開始する診断アクティビティの一覧が返されます。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018"
+```
+
+**-StartTime** パラメーターを指定したコマンドレットに **-EndTime** パラメーターを追加して、結果を受け取る特定の期間を指定できます。 次のコマンドレット例では、8 月 1 日から 8 月 10 日までの診断アクティビティの一覧が返されます。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018" -EndTime "08/10/2018"
+```
+
+**-StartTime** パラメーターと **-EndTime** パラメーターは、他の省略可能なフィルター パラメーターと組み合わせることもできます。
+
+### <a name="filter-diagnostic-activities-by-activity-type"></a>アクティビティの種類によって診断アクティビティをフィルター処理する
+
+**-ActivityType** パラメーターを使用して、診断アクティビティをアクティビティの種類によってフィルター処理することもできます。 次のコマンドレットでは、エンドユーザー接続の一覧が返されます。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -ActivityType Connection
+```
+
+次のコマンドレットでは、管理者の管理タスクの一覧が返されます。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
+```
+
+**Get-RdsDiagnosticActivities** コマンドレットでは、フィードを ActivityType として指定することは現在サポートされていません。
+
+### <a name="filter-diagnostic-activities-by-outcome"></a>結果によって診断アクティビティをフィルター処理する
+
+**-Outcome** パラメーターを使用して、返される診断アクティビティの一覧を結果でフィルター処理することができます。 次のコマンドレット例では、成功した診断アクティビティの一覧が返されます。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -Outcome Success
+```
+
+次のコマンドレット例では、失敗した診断アクティビティの一覧が返されます。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
+```
+
+**-Outcome** パラメーターは、他の省略可能なフィルター パラメーターと組み合わせることもできます。
 
 ### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>アクティビティ ID によって特定の診断アクティビティを取得する
 
@@ -68,63 +112,13 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityIdGuid
 Get-RdsDiagnosticActivities -TenantName <tenantname> -ActivityId <ActivityGuid> -Detailed | Select-Object -ExpandProperty Errors
 ```
 
-### <a name="filter-diagnostic-activities-by-user"></a>ユーザーによって診断アクティビティをフィルター処理する
+### <a name="retrieve-detailed-diagnostic-activities"></a>詳細な診断アクティビティを取得する
 
-**-UserName** パラメーターでは、次のコマンドレット例に示すように、指定したユーザーによって開始された診断アクティビティの一覧が返されます。
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
-```
-
-**-UserName** パラメーターは、他の省略可能なフィルター パラメーターと組み合わせることもできます。
-
-### <a name="filter-diagnostic-activities-by-time"></a>時間によって診断アクティビティをフィルター処理する
-
-**-StartTime** パラメーターと **-EndTime** パラメーターを使用して、返される診断アクティビティの一覧をフィルター処理することができます。 **-StartTime** パラメーターでは、次の例に示すように、特定の日付から開始する診断アクティビティの一覧が返されます。
+**-Detailed** パラメーターは、返される各診断アクティビティの詳細を提供します。 各アクティビティの形式は、そのアクティビティの種類によって異なります。 **-Detailed** パラメーターは、次の例に示すように、任意の **Get-RdsDiagnosticActivities** クエリに追加できます。
 
 ```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018"
+Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> -Detailed
 ```
-
-**-StartTime** パラメーターを指定したコマンドレットに **-EndTime** パラメーターを追加して、結果を受け取る特定の期間を指定できます。 次のコマンドレット例では、8 月 1 日から 8 月 10 日までの診断アクティビティの一覧が返されます。
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018" -EndTime "08/10/2018"
-```
-
-**-StartTime** パラメーターと **-EndTime** パラメーターは、他の省略可能なフィルター パラメーターと組み合わせることもできます。
-
-### <a name="filter-diagnostic-activities-by-activity-type"></a>アクティビティの種類によって診断アクティビティをフィルター処理する
-
-**-ActivityType** パラメーターを使用して、診断アクティビティをアクティビティの種類によってフィルター処理することもできます。 次のコマンドレットでは、エンドユーザー接続の一覧が返されます。
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Connection
-```
-
-次のコマンドレットでは、管理者の管理タスクの一覧が返されます。
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
-```
-
-**Get-RdsDiagnosticActivities** コマンドレットでは、フィードを ActivityType として指定することは現在サポートされていません。
-
-### <a name="filter-diagnostic-activities-by-outcome"></a>結果によって診断アクティビティをフィルター処理する
-
-**-Outcome** パラメーターを使用して、返される診断アクティビティの一覧を結果でフィルター処理することができます。 次のコマンドレット例では、成功した診断アクティビティの一覧が返されます。
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Success
-```
-
-次のコマンドレット例では、失敗した診断アクティビティの一覧が返されます。
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
-```
-
-**-Outcome** パラメーターは、他の省略可能なフィルター パラメーターと組み合わせることもできます。
 
 ## <a name="common-error-scenarios"></a>一般的なエラー シナリオ
 

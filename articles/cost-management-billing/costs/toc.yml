@@ -32,6 +32,8 @@
           href: migrate-cost-management-api.md
     - name: 操作方法ガイド
       items:
+        - name: 予期しない料金の防止と分析
+          href: ../manage/getting-started.md
         - name: データへのアクセスの割り当て
           href: assign-access-acm-data.md
         - name: 一般的なタスクにコスト分析を使用する

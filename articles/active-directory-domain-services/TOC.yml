@@ -93,6 +93,8 @@
           href: security-audit-events.md
         - name: Azure Monitor ブックを使用した監査イベントの分析
           href: use-azure-monitor-workbooks.md
+        - name: VM へのリモート アクセスをセキュリティで保護する
+          href: secure-remote-vm-access.md
     - name: VM のドメイン参加
       items:
         - name: テンプレートによる Windows Server VM
@@ -143,13 +145,9 @@
       href: faqs.md
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
-    - name: 互換性のあるサードパーティ製ソフトウェア
-      href: compatible-software.md
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/active-directory-ds/'
     - name: Azure AD フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: お問い合わせ
-      href: contact-us.md
     - name: Azure CSP サブスクリプションで Azure AD Domain Services を使用する
       href: csp.md

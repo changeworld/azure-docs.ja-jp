@@ -85,6 +85,10 @@
           items:
             - name: Azure Active Directory Domain Services インスタンスの作成
               href: ../active-directory-domain-services/tutorial-create-instance.md
+    - name: Edge Zone のドキュメント
+      items:
+        - name: Edge Zone とは
+          href: ../networking/edge-zones-overview.md
 - name: ディザスター リカバリー
   items:
     - name: Azure Site Recovery を使用する

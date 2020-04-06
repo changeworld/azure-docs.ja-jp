@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: fe79cf5af86e1f303e4735214b993d8db4488a25
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74793255"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションを制御する条件付きステートメントを作成する
@@ -36,7 +36,7 @@ ms.locfileid: "74793255"
 
 1. 必要な場所に条件を追加します。 
 
-   ステップの間に条件を追加するには、条件を追加する位置の矢印の上にポインターを移動します。 表示される**プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。 例:
+   ステップの間に条件を追加するには、条件を追加する位置の矢印の上にポインターを移動します。 表示される**プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。 次に例を示します。
 
    ![ステップの間にアクションを追加する](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "74793255"
    サブ条件のグループを追加するには、 **[追加]**  >  **[グループの追加]** を選択します。 
    既存の行をグループ化するには、グループ化する行のチェック ボックスをオンにし、いずれかの行の省略記号 [...] ボタンを選択して、 **[Make group]\(グループにする\)** を選択します。
 
-1. **[If true]\(true の場合\)** と **[If false]\(false の場合\)** の下に、条件を満たすかどうかに基づいて実行するステップを追加します。 例:
+1. **[If true]\(true の場合\)** と **[If false]\(false の場合\)** の下に、条件を満たすかどうかに基づいて実行するステップを追加します。 次に例を示します。
 
    ![[If true]\(true の場合\) パスと [If false]\(false の場合\) パスを使用した条件](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 
@@ -113,7 +113,7 @@ ms.locfileid: "74793255"
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能や提案について投稿や投票を行うには、[Azure Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [さまざまな値に基づいてステップを実行する (switch ステートメント)](../logic-apps/logic-apps-control-flow-switch-statement.md)
 * [ステップを実行して繰り返す (ループ)](../logic-apps/logic-apps-control-flow-loops.md)

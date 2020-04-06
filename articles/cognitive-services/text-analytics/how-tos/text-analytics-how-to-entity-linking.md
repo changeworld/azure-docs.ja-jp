@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 243086ddaae47eba20eea6877fe6d7f8f9889290
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117484"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79203493"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -182,14 +182,13 @@ Text Analytics API はステートレスです。 データはアカウントに
 
 すべての POST 要求で、ID と検出されたエンティティのプロパティを含む JSON 形式の応答が返されます。
 
-出力はすぐに返されます。 結果は、JSON を受け付けるアプリケーションにストリームするか、ローカル システム上のファイルに出力を保存してから、そのファイルを、データの並べ替え、検索、および操作が可能なアプリケーションにインポートすることができます。
-
+出力はすぐに返されます。 結果は、JSON を受け付けるアプリケーションにストリームするか、ローカル システム上のファイルに出力を保存してから、そのファイルを、データの並べ替え、検索、および操作が可能なアプリケーションにインポートすることができます。 多言語と絵文字のサポートにより、応答にはテキスト オフセットが含まれる場合があります。 詳細については[オフセットの処理方法](../concepts/text-offsets.md)に関するページを参照してください。
 
 #### <a name="version-30-preview"></a>[バージョン 3.0-preview)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>v3 の応答の例
 
-バージョン 3 では、NER とエンティティ リンク設定に別々のエンドポイントが用意されています。 両方の操作の応答を次に示します。
+バージョン 3 では、NER とエンティティ リンク設定に別々のエンドポイントが用意されています。 両方の操作の応答を次に示します。 
 
 #### <a name="example-ner-response"></a>NER の応答の例
 

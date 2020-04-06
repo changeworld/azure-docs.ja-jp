@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
 ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60803745"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP エンドポイントへのイベントの受信
@@ -28,7 +28,7 @@ HTTP によってトリガーされる関数を含む関数アプリが必要で
 
 ## <a name="add-dependencies"></a>依存関係を追加する
 
-.NET で開発する場合は、`Microsoft.Azure.EventGrid` [Nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)の関数に[依存関係を追加します](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)。 この記事の例では、バージョン 1.4.0 以降が必要です。
+.NET で開発する場合は、`Microsoft.Azure.EventGrid`[Nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)の関数に[依存関係を追加します](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)。 この記事の例では、バージョン 1.4.0 以降が必要です。
 
 他の言語用の SDK は、[発行 SDK](./sdk-overview.md#data-plane-sdks) リファレンスを介して利用できます。 これらのパッケージには、`EventGridEvent``StorageBlobCreatedEventData`、`EventHubCaptureFileCreatedEventData` などのネイティブなイベントの種類用のモデルが含まれています。
 
@@ -366,7 +366,7 @@ module.exports = function (context, req) {
 
 この機能は、[カスタム イベントと CURL をポータルから送信する](./custom-event-quickstart-portal.md)か、[Postman](https://www.getpostman.com/) などのエンドポイントに POST できる任意のサービスまたはアプリケーションを使用して[カスタム トピックを投稿する](./post-to-custom-topic.md)ことで、ライブでテストすることもできます。 エンドポイントが関数 URL として設定されたカスタム トピックとイベント サブスクリプションを作成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Event Grid の Management SDK と Publish SDK](./sdk-overview.md) を確認する
 * [カスタム トピックを投稿する](./post-to-custom-topic.md)方法を確認する

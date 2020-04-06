@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: f2e875c625431867e6e83cfd1e0b2c6d7a2781f7
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74112852"
 ---
 # <a name="create-an-azure-cognitive-search-index-in-the-portal"></a>ポータルで Azure Cognitive Search インデックスを作成する
@@ -65,7 +65,7 @@ Azure Cognitive Search では、プロトタイプまたは Azure Cognitive Sear
 
 フィールド属性は、フィールドがどのように使用されるか (フルテキスト検索、ファセット ナビゲーション、並べ替えなどの操作で使用されるかどうか) を決定します。 次の表は、各属性を示しています。
 
-|Attribute|説明|  
+|属性|説明|  
 |---------------|-----------------|  
 |**検索可能**|フルテキスト検索可能であり、インデックス作成中の単語分割などの字句解析に従います。 検索可能フィールドを "sunny day" などの値に設定した場合、その値は内部的に個別のトークン "sunny" と "day" に分割されます。 詳細については、「[フルテキスト検索のしくみ](search-lucene-query-architecture.md)」を参照してください。|  
 |**フィルター可能**|**$filter** クエリで参照されます。 型 `Edm.String` または `Collection(Edm.String)` のフィルター可能フィールドは単語分割されないため、比較は完全に一致するかどうかだけになります。 たとえば、このようなフィールドを "sunny day" に設定した場合、`$filter=f eq 'sunny'` では一致が見つかりませんが、`$filter=f eq 'sunny day'` では見つかります。 |  
@@ -74,7 +74,7 @@ Azure Cognitive Search では、プロトタイプまたは Azure Cognitive Sear
 |**key**|インデックス内のドキュメントの一意識別子。 キー フィールドとして正確に 1 つのフィールドを選択する必要があり、それは型 `Edm.String` である必要があります。|  
 |**取得可能**|検索結果でこのフィールドを返すことができるかどうかを決定します。 これは、あるフィールド (*利幅* など) をフィルター、並べ替え、またはスコア付けのメカニズムとして使用するが、このフィールドをエンド ユーザーには表示したくない場合に役立ちます。 `true` for `key` である必要があります。|  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Search インデックスを作成した後、次の[検索可能なデータをインデックスにアップロードする](search-what-is-data-import.md)手順に進むことができます。
 
@@ -83,5 +83,5 @@ Azure Search インデックスを作成した後、次の[検索可能なデー
 ## <a name="see-also"></a>関連項目
 
  [フルテキスト検索のしくみ](search-lucene-query-architecture.md)  
- [検索サービス REST API](https://docs.microsoft.com/rest/api/searchservice/) [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)
+ [検索サービス REST API](https://docs.microsoft.com/rest/api/searchservice/)[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)
 

@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/18/2019
 ms.openlocfilehash: 04faafca0811e60ded47d1e91a82054a1c1cdb25
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74406168"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Kafka と Azure Cosmos DB で Apache Spark 構造化ストリーミングを使用する
 
-[Apache Spark](https://spark.apache.org/) [構造化ストリーミング](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) を使って、Azure HDInsight 上で [Apache Kafka](https://kafka.apache.org/) からデータを読み込み、そのデータを Azure Cosmos DB に保存する方法を説明します。
+[Apache Spark](https://spark.apache.org/) [構造化ストリーミング](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)を使って、[Azure HDInsight 上で Apache Kafka](https://kafka.apache.org/) からデータを読み込み、そのデータを Azure Cosmos DB に保存する方法を説明します。
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、グローバル分散型のマルチモデル データベースです。 この例では、SQL API データベース モデルを使用します。 詳細については、「[Azure Cosmos DB の概要](../cosmos-db/introduction.md)」のドキュメントを参照してください。
 
@@ -66,7 +66,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
     |プロパティ |値 |
     |---|---|
-    |Subscription|Azure サブスクリプションを選択します。|
+    |サブスクリプション|Azure サブスクリプションを選択します。|
     |Resource group|グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。|
     |Cosmos DB Account Name (Cosmos DB アカウント名)|この値が、Cosmos DB アカウントの名前として使用されます。 名前に含めることができるのは、英小文字、数字、ハイフン (-) のみです。 長さは 3 文字から 31 文字でなければなりません。|
     |Base Cluster Name (ベース クラスター名)|この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**myhdi**」と入力すると、__spark-myhdi__ という名前の Spark クラスターと、**kafka-myhdi** という名前の Kafka クラスターが作成されます。|
@@ -154,7 +154,7 @@ az cosmosdb keys list --name $name --resource-group $resourceGroupName --type ke
 
 [Jupyter Notebook](https://jupyter.org/) のホーム ページから、__Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ エントリを選択します。 ノートブックの手順に従い、Spark 構造化ストリーミングを使って Kafka から Azure Cosmos DB にデータをストリーミングします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Apache Spark 構造化ストリームの使用方法を説明しました。Apache Spark、Apache Kafka、および Azure Cosmos DB の操作に関する詳細については、以下のドキュメントをご覧ください。
 

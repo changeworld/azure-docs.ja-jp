@@ -74,6 +74,8 @@
           href: custom-policy-overview.md
     - name: ユーザー アカウント
       href: user-overview.md
+    - name: ユーザー プロファイルの属性
+      href: user-profile-attributes.md
 - name: 操作方法ガイド
   items:
     - name: アプリの統合
@@ -231,18 +233,16 @@
               href: direct-signin.md
         - name: 独自のビジネス ロジックの追加
           items:
+            - name: REST API の統合
+              href: custom-policy-rest-api-intro.md
             - name: ユーザー入力の検証
               href: custom-policy-rest-api-claims-validation.md
               displayName: 'rest claims validation, validate'
             - name: 追加の要求の取得
               href: custom-policy-rest-api-claims-exchange.md
               displayName: rest claims exchange
-            - name: 独自の RESTful API の追加
-              href: rest-api-claims-exchange-dotnet.md
-            - name: 基本認証を使用した RESTful API のセキュリティ保護
-              href: secure-rest-api-dotnet-basic-auth.md
-            - name: 証明書認証を使用した RESTful API のセキュリティ保護
-              href: secure-rest-api-dotnet-certificate-auth.md
+            - name: REST API のセキュリティ保護
+              href: secure-rest-api.md
         - name: カスタム属性を定義する
           href: custom-policy-custom-attributes.md
         - name: トラブルシューティング
@@ -275,7 +275,7 @@
                       href: date-transformations.md
                     - name: 全般
                       href: general-transformations.md
-                    - name: 整数
+                    - name: Integer
                       href: integer-transformations.md
                     - name: JSON
                       href: json-transformations.md
@@ -309,13 +309,15 @@
                   items:
                     - name: 技術プロファイルについて
                       href: technical-profiles-overview.md
+                    - name: 検証技術プロファイルとは
+                      href: validation-technical-profile.md
+                    - name: Application Insights
+                      href: application-insights-technical-profile.md
+                    - name: Azure Active Directory
+                      href: active-directory-technical-profile.md
                     - name: Azure Multi-Factor Authentication
                       href: multi-factor-auth-technical-profile.md
                       displayName: mfa
-                    - name: 要求リゾルバー
-                      href: claim-resolver-overview.md
-                    - name: Azure Active Directory
-                      href: active-directory-technical-profile.md
                     - name: 要求の変換
                       href: claims-transformation-technical-profile.md
                     - name: JWT トークン発行者
@@ -329,6 +331,8 @@
                       displayName: otp
                     - name: OpenID Connect
                       href: openid-connect-technical-profile.md
+                    - name: 電話要素
+                      href: phone-factor-technical-profile.md
                     - name: REST
                       href: restful-technical-profile.md
                     - name: SAML
@@ -340,12 +344,12 @@
                     - name: SSO セッション
                       href: custom-policy-reference-sso.md
                       displayName: single sign-on
-                    - name: 検証
-                      href: validation-technical-profile.md
             - name: UserJourneys
               href: userjourneys.md
             - name: RelyingParty
               href: relyingparty.md
+            - name: 要求リゾルバー
+              href: claim-resolver-overview.md
     - name: b2clogin.com の使用
       items:
         - name: b2clogin.com の概要
@@ -353,7 +357,7 @@
         - name: Web API を b2clogin.com に移行する
           href: multiple-token-endpoints.md
           displayName: 'migrate, b2clogin, owin'
-    - name: Automation
+    - name: オートメーション
       items:
         - name: Azure Monitor
           href: azure-monitor.md
@@ -389,28 +393,28 @@
           href: user-migration.md
 - name: リファレンス
   items:
-    - name: Identity Experience Framework のリリース ノート
-      href: custom-policy-developer-notes.md
+    - name: 課金モデル
+      href: billing.md
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
-    - name: ページ レイアウト バージョン
-      href: page-layout.md
     - name: Cookie の定義
       href: cookie-definitions.md
       displayName: 'cookies, SameSite'
     - name: エラー コード
       href: error-codes.md
+    - name: Extensions アプリ
+      href: extensions-app.md
+    - name: IEF リリース ノート
+      href: custom-policy-developer-notes.md
     - name: Microsoft Graph API の操作
       href: microsoft-graph-operations.md
+    - name: ページ レイアウト バージョン
+      href: page-layout.md
     - name: 利用可能なリージョンとデータの保存場所
       href: data-residency.md
-    - name: 課金モデル
-      href: billing.md
     - name: 脅威管理
       href: threat-management.md
       displayName: security
-    - name: Extensions アプリ
-      href: extensions-app.md
     - name: ユーザー フローのバージョン
       href: user-flow-versions.md
 - name: リソース

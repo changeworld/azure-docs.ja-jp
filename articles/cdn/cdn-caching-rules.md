@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: magattus
 ms.openlocfilehash: ddd7dc7e1245c2a77e866a454bf6bfa3c1f16f88
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74278131"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>キャッシュ規則で Azure CDN キャッシュの動作を制御する
@@ -67,7 +67,7 @@ Azure Content Delivery Network (CDN) には、ファイルのキャッシュ方�
 ## <a name="cache-expiration-duration"></a>キャッシュの有効期間
 グローバル キャッシュ規則とカスタム キャッシュ規則では、日数、時間、分、および秒でキャッシュの有効期間を指定できます。
 
-- **[オーバーライド]** と **[存在しない場合に設定]** の**キャッシュ動作**設定の場合、有効なキャッシュ期間は 0 秒から 366 日の範囲です。 値が 0 秒の場合は、CDN はコンテンツをキャッシュしますが、要求ごとに送信元のサーバーを再検証する必要があります。
+- **[キャッシュ動作]** の設定が **[オーバーライド]** および **[存在しない場合に設定]** の場合、有効なキャッシュ期間は 0 秒から 366 日の範囲です。 値が 0 秒の場合は、CDN はコンテンツをキャッシュしますが、要求ごとに送信元のサーバーを再検証する必要があります。
 
 - **[キャッシュのバイパス]** 設定の場合は、キャッシュ期間は自動的に 0 秒に設定されて、変更できません。
 
@@ -98,7 +98,7 @@ Azure Content Delivery Network (CDN) には、ファイルのキャッシュ方�
    - キャッシュの有効期間:2 日
 
 - カスタム キャッシュ規則 2:
-   - 一致条件:**拡張機能**
+   - 一致条件:**拡張子**
    - 一致する値: _.html_
    - キャッシュ動作:**存在しない場合に設定**
    - キャッシュの有効期間:3 日

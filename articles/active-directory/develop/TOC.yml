@@ -26,6 +26,8 @@
     - name: シングルページ アプリ
       displayName: SPA
       items:
+        - name: Angular
+          href: quickstart-v2-angular.md
         - name: JavaScript
           href: quickstart-v2-javascript.md
     - name: Web Apps
@@ -69,6 +71,8 @@
     - name: シングルページ アプリ
       displayName: SPA
       items:
+        - name: Angular
+          href: tutorial-v2-angular.md
         - name: JavaScript
           href: tutorial-v2-javascript-spa.md
     - name: Web Apps
@@ -219,8 +223,12 @@
               href: scenario-mobile-app-configuration.md
             - name: モバイル プラットフォーム固有の構成
               items:
+                - name: Apple デバイス用の Microsoft Enterprise SSO プラグイン
+                  href: apple-sso-plugin.md
                 - name: Android デバイスの共有デバイス モード
-                  href: shared-device-mode.md
+                  href: msal-android-shared-devices.md
+                - name: iOS デバイスの共有デバイス モード
+                  href: msal-ios-shared-devices.md
                 - name: Xamarin Android
                   href: msal-net-xamarin-android-considerations.md
                 - name: Android のシステム ブラウザー
@@ -308,6 +316,17 @@
           href: msal-handling-exceptions.md
         - name: ログ記録
           href: msal-logging.md
+        - name: 共有デバイス
+          items:
+            - name: 概要 - 共有デバイス
+              href: msal-shared-devices.md
+              displayName: 'shared device mode, firstline worker, frontline worker'
+            - name: iOS デバイスの共有デバイス モード
+              href: msal-ios-shared-devices.md
+              displayName: 'firstline worker, frontline worker'
+            - name: Android デバイスの共有デバイス モード
+              href: msal-android-shared-devices.md
+              displayName: 'firstline worker, frontline worker'
         - name: シングル サインオン
           displayName: SSO
           items:

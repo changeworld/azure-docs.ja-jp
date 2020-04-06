@@ -697,6 +697,10 @@
       items:
         - name: 対話型クエリを使用したデータの分析
           href: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
+    - name: 概念
+      items:
+        - name: ゲートウェイのベスト プラクティス
+          href: ./interactive-query/gateway-best-practices.md
     - name: 方法
       items:
         - name: 開発
@@ -816,6 +820,8 @@
       items:
         - name: Apache Storm を使用してストレージに書き込む
           href: ./storm/apache-storm-write-data-lake-store.md
+        - name: Apache Kafka と Apache Storm (Java)
+          href: ./hdinsight-apache-storm-with-kafka.md
     - name: 方法
       items:
         - name: Storm から Spark への移行
@@ -836,10 +842,6 @@
                   href: ./storm/apache-storm-example-topology.md
             - name: ストリーミング パイプライン
               items:
-                - name: Apache Kafka と Apache Storm (Java)
-                  href: ./hdinsight-apache-storm-with-kafka.md
-                - name: イベント ハブ、Storage、Data Lake Storage (Java)
-                  href: 'https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/'
                 - name: 'Event Hubs と Apache Storm (C# および Java)'
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
         - name: 管理する

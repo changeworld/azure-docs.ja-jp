@@ -120,7 +120,7 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
         - name: Azure SDK for JavaScript
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
-        - name: REST
+        - name: REST API
           href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: 機能の管理
       items:
@@ -128,6 +128,10 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
         - name: .NET Core フィルター ライブラリ
           href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
+    - name: 構成ストアの管理
+      items:
+        - name: REST API
+          href: 'https://docs.microsoft.com/rest/api/appconfiguration/'
 - name: リソース
   items:
     - name: 価格

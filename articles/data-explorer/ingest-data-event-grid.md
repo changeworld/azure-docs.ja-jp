@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: ec218b1638183db463ff09488c988cad64d78c6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096419"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79370442"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid の通知をサブスクライブすることで Azure Data Explorer に BLOB を取り込む
 
@@ -69,7 +69,7 @@ Azure Data Explorer で、Event Hubs のデータの送信先となるテーブ�
 
 1. 次のコマンドをウィンドウにコピーし、 **[実行]** を選択して、取り込んだデータを受け取るテーブル (TestTable) を作成します。
 
-    ```Kusto
+    ```kusto
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
     ```
 
@@ -77,7 +77,7 @@ Azure Data Explorer で、Event Hubs のデータの送信先となるテーブ�
 
 1. 次のコマンドをウィンドウにコピーし、 **[実行]** を選択して、テーブル (TestTable) の列名とデータ型に受信 JSON データをマップします。
 
-    ```Kusto
+    ```kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.TimeStamp"},{"column":"Value","path":"$.Value"},{"column":"Source","path":"$.Source"}]'
     ```
 
@@ -130,11 +130,11 @@ Azure Storage リソースを操作するいくつかの基本的な Azure CLI �
 
 ファイルにデータを保存し、このスクリプトでそれをアップロードします。
 
-```Json
+```json
 {"TimeStamp": "1987-11-16 12:00","Value": "Hello World","Source": "TestSource"}
 ```
 
-```bash
+```azurecli
 #!/bin/bash
 ### A simple Azure Storage example script
 
@@ -195,14 +195,14 @@ BLOB メタデータを使用して、BLOB インジェストの[インジェス
 
 1. これまでにデータベースに届いたメッセージ数を確認するには、テスト データベースで次のクエリを実行します。
 
-    ```Kusto
+    ```kusto
     TestTable
     | count
     ```
 
 1. メッセージの内容を表示するには、テスト データベースに対して次のクエリを実行します。
 
-    ```Kusto
+    ```kusto
     TestTable
     ```
 

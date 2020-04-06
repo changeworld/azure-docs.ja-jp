@@ -1,5 +1,5 @@
-- name: SQL Server Stretch Database のドキュメント
-  href: index.md
+- name: Azure SQL Server Stretch Database のドキュメント
+  href: index.yml
 - name: 概要
   items:
     - name: Stretch Database とは
@@ -14,7 +14,7 @@
       href: /sql/sql-server/stretch-database/get-started-by-running-the-enable-database-for-stretch-wizard
 - name: 操作方法
   items:
-    - name: '[有効化]'
+    - name: 有効化
       items:
         - name: データベースを有効にする
           href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-database
@@ -32,7 +32,7 @@
           href: /sql/sql-server/stretch-database/manage-and-troubleshoot-stretch-database
         - name: バックアップ
           href: /sql/sql-server/stretch-database/backup-stretch-enabled-databases-stretch-database
-        - name: '[復元]'
+        - name: 復元
           href: /sql/sql-server/stretch-database/restore-stretch-enabled-databases-stretch-database
         - name: Strech Database を無効にする
           href: /sql/sql-server/stretch-database/disable-stretch-database-and-bring-back-remote-data

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 9219c9a72ce9e1cfba3504b0b8e16ade77f8a5e5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812910"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79369898"
 ---
-# <a name="about-voice-assistants"></a>音声アシスタントについて
+# <a name="what-is-a-voice-assistant"></a>音声アシスタントとは
 
 音声サービスを使用した音声アシスタントにより、開発者は、そのアプリケーションとエクスペリエンスのための自然で人間のような会話型インターフェイスを作成できます。
 
@@ -46,7 +46,7 @@ ms.locfileid: "74812910"
 
 アシスタントの対話を作成する手段として [Direct Line Speech](direct-line-speech.md) と[カスタム コマンド (プレビュー)](custom-commands.md) のどちらを選んだとしても、その豊富なカスタマイズ機能を使用して、ブランド、製品、パーソナリティに合わせてアシスタントをカスタマイズできます。
 
-| Category | 機能 |
+| カテゴリ | 特徴 |
 |----------|----------|
 |[カスタム キーワード](speech-devices-sdk-create-kws.md) | ユーザーは、"Hey Contoso" などのカスタム キーワードを使用してアシスタントとの会話を始めることができます。 これは、アプリが Speech SDK のカスタム キーワード エンジンを使用して行います。カスタム キーワード エンジンは、[ここで生成できる](speech-devices-sdk-create-kws.md)カスタム キーワードを使用して構成できます。 音声アシスタントは、サービス側のキーワード検証を使用することで、(デバイス単体の場合と比べて) キーワード アクティブ化の正確性を高めることができます。
 |[音声テキスト変換](speech-to-text.md) | 音声アシスタントは、音声サービスの[音声変換](speech-to-text.md)を使用してリアルタイム オーディオを認識されたテキストに変換します。 このテキストは文字起こしされているため、アシスタントの実装とクライアント アプリケーションのどちらからでも利用できます。
@@ -58,9 +58,9 @@ ms.locfileid: "74812910"
 
 | クイック スタート | プラットフォーム | API リファレンス |
 |------------|----------|---------------|
-| C#、UWP | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| Java | Windows、macOS、Linux | [Browse](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Browse](https://aka.ms/csspeech/javaref) |
+| C#、UWP | Windows | [[参照]](https://aka.ms/csspeech/csharpref) |
+| Java | Windows、macOS、Linux | [[参照]](https://aka.ms/csspeech/javaref) |
+| Java | Android | [[参照]](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>サンプル コード
 
@@ -85,7 +85,7 @@ ms.locfileid: "74812910"
 * [Speech SDK](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
 * [Speech SDK を取得する](speech-sdk.md)

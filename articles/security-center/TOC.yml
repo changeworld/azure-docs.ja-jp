@@ -29,6 +29,8 @@
       href: quick-onboard-azure-stack.md
 - name: チュートリアル
   items:
+    - name: 計画と運用のガイド
+      href: security-center-planning-and-operations-guide.md
     - name: リソースの保護
       href: tutorial-protect-resources.md
     - name: インシデントへの対応
@@ -71,8 +73,8 @@
           href: security-center-incident.md
         - name: クラウドのスマート アラートの関連付け (インシデント)
           href: security-center-alerts-cloud-smart.md
-        - name: セキュリティ アラート マップと脅威インテリジェンス
-          href: security-center-threat-intel.md
+        - name: 脅威レポート
+          href: security-center-threat-report.md
         - name: アラートの検証 (EICAR テスト ファイル)
           href: security-center-alert-validation.md
 - name: 操作方法ガイド
@@ -149,6 +151,8 @@
           href: security-center-sql-service-recommendations.md
         - name: ID とアクセス権限の保護
           href: security-center-identity-access.md
+        - name: 調査で得られたユーザー データの管理
+          href: security-center-investigation-user-data.md
     - name: クラウドの防御の適用
       items:
         - name: Just-In-Time アクセスの管理
@@ -159,24 +163,6 @@
           href: security-center-file-integrity-monitoring.md
         - name: アダプティブ ネットワークのセキュリティ強化機能
           href: security-center-adaptive-network-hardening.md
-    - name: アーカイブ
-      items:
-        - name: ディスク暗号化の適用
-          href: security-center-apply-disk-encryption.md
-        - name: システムの更新の適用
-          href: security-center-apply-system-updates.md
-        - name: Endpoint Protection をインストールします
-          href: security-center-install-endpoint-protection.md
-        - name: 脅威レポート
-          href: security-center-threat-report.md
-        - name: アラート信頼度スコア
-          href: security-center-confidence-score.md
-        - name: 調査
-          href: security-center-investigation.md
-        - name: 調査で得られたユーザー データの管理
-          href: security-center-investigation-user-data.md
-        - name: 計画と運用
-          href: security-center-planning-and-operations-guide.md
 - name: リファレンス
   items:
     - name: REST API

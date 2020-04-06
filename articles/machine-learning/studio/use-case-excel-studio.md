@@ -10,16 +10,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 5831f83d8cd38cc07c64fdc398405c3a70935485
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 85bae9bfc10460b51935c6eb1e14e3a3dd816a8c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169087"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79217795"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>Excel から Azure Machine Learning Studio (クラシック) に分析を移行する
 
-> *Kate Baroni* 氏と *Ben Boatman* 氏は、マイクロソフトの Data Insights Center of Excellence のエンタープライズ ソリューション設計者です。 この記事では、Azure Machine Learning Studio (クラシック) を使用して、クラウド ベースのソリューションに既存の回帰分析スイートを移行する彼らの実験について説明します。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+> *Kate Baroni* 氏と *Ben Boatman* 氏は、Microsoft の Data Insights Center of Excellence のエンタープライズ ソリューション設計者です。 この記事では、Azure Machine Learning Studio (クラシック) を使用して、クラウド ベースのソリューションに既存の回帰分析スイートを移行する彼らの実験について説明します。
 
 ## <a name="goal"></a>目標
 

@@ -1,39 +1,59 @@
 ---
-title: ビジネス継続性とディザスター リカバリー - Azure のペアになっているリージョン
-description: データセンターでの障害発生時にアプリケーションの耐障害性を確保するための Azure のリージョン ペアについて説明します。
-author: rayne-wiselman
-manager: carmon
+title: Azure のペアになっているリージョンを使用したビジネス継続性とディザスター リカバリー
+description: Azure リージョン ペアを使用してアプリケーションの回復性を確保する
+author: jpconnock
+manager: angrobe
 ms.service: multiple
-ms.topic: article
-ms.date: 07/01/2019
-ms.author: raynew
-ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.topic: conceptual
+ms.date: 03/03/2020
+ms.author: jeconnoc
+ms.openlocfilehash: 778943dad9a04632797d5d9165b6f1f9a3eb9850
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718755"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226171"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>ビジネス継続性とディザスター リカバリー (BCDR):Azure のペアになっているリージョン
 
 ## <a name="what-are-paired-regions"></a>ペアになっているリージョンとは
 
-Azure は、世界中の複数の geo で動作します。 Azure の geo とは、少なくとも 1 つの Azure リージョンを含む、世界の定義済みの地域です。 Azure リージョンは、geo に含まれる領域で、1 つ以上のデータセンターが含まれます。
+Azure リージョンは一連のデータ センターで構成されています。それらのデータ センターは、待機時間で定義された境界内にデプロイされ、待機時間の短い専用ネットワークを介して接続されています。  これにより、Azure リージョン内の Azure サービスで最大限のパフォーマンスとセキュリティが確実に提供されます。  
 
-各 Azure リージョンは、同じ geo 内の別のリージョンと組み合わせて、リージョン ペアにして使用します。 例外はブラジル南部で、geo の外部のリージョンとペアになっています。 リージョンのペアの間で、Azure はプラットフォームの更新をシリアル化し (計画メンテナンス)、一度に 1 つのペアになったリージョンだけが更新されるようにします。 障害のイベントが複数のリージョンに影響を与える場合、各ペアの少なくとも 1 つのリージョンが優先的に復旧されます。
+Azure 地域とは、少なくとも 1 つの Azure リージョンを含む、世界の中の地域のことです。 地域には個別のマーケットが定義され、通常は 2 つ以上のリージョンを含み、データ所在地とコンプライアンスの境界を保持します。  Azure のグローバル インフラストラクチャの詳細については、[こちら](https://azure.microsoft.com/global-infrastructure/regions/)を参照してください。
+
+リージョン ペアは、同じ地域内の 2 つのリージョンで構成されます。 Azure では、リージョン ペアに対してプラットフォームの更新 (計画メンテナンス) をシリアル化し、一度に更新されるリージョンが各ペアのうち 1 つのみになるようにしています。 停止によって複数のリージョンに影響がある場合、各ペアの少なくとも 1 つのリージョンが優先的に復旧されます。
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-図 1 – Azure リージョン ペア
+一部の Azure サービスでは、ペアのリージョンをさらに活用することでビジネス継続性を確保し、データの損失を防いでいます。  Azure には、ペアのリージョンを活用してデータの可用性を確保する[ストレージ ソリューション](./storage/common/storage-redundancy.md#redundancy-in-a-secondary-region)がいくつか用意されています。 たとえば、[Azure Geo 冗長ストレージ](./storage/common/storage-redundancy.md#geo-redundant-storage) (GRS) では、データがセカンダリ リージョンに自動的にレプリケートされるため、プライマリ リージョンが復旧できない場合でもデータの持続性を保つことができます。 
 
-| [地理的な場所] | ペアになっているリージョン |  |
+すべての Azure サービスで自動的にデータがレプリケートされるわけではなく、また、すべての Azure サービスで障害が発生したリージョンからペアへの自動的なフォールバックが行われるわけでもないことに注意してください。  このような場合、復旧とレプリケーションはお客様が構成する必要があります。
+
+## <a name="can-i-select-my-regional-pairs"></a>リージョン ペアは自分で選択できますか?
+
+いいえ。 一部の Azure サービス (Azure の[冗長ストレージ](./storage/common/storage-redundancy.md)など) はリージョン ペアに依存しています。 それらのサービスでは、新しいリージョン ペアを作成することはできません。  同様に、リージョン ペアの計画メンテナンスと回復の優先順位付けが Azure によって制御されるため、それらのサービスを利用するために独自のリージョン ペアを定義することはできません。 ただし、任意の数のリージョン内にサービスを構築し、Azure サービスを利用してそれらのリージョンを組み合わせることで、独自のディザスター リカバリー ソリューションを作成できます。 
+
+たとえば、[AzCopy](./storage/common/storage-use-azcopy-v10.md) などの Azure サービスを使用して、別のリージョンのストレージ アカウントへのデータ バックアップをスケジュールすることができます。  お客様は、[Azure DNS と Azure Traffic Manager](./networking/disaster-recovery-dns-traffic-manager.md) を使用して、プライマリ リージョンの消失に耐えられる回復力のあるアーキテクチャをアプリケーション用に設計できます。
+
+## <a name="am-i-limited-to-using-services-within-my-regional-pairs"></a>サービスの使用はリージョン ペア内に制限されていますか?
+
+いいえ。 特定の Azure サービスはリージョン ペアに依存する場合がありますが、ビジネス ニーズを満たすご自身の他のサービスを任意のリージョンでホストすることができます。  Azure GRS ストレージ ソリューションでは、米国東部にあるコンピューティング リソースを使用しながら、カナダ東部のピアとカナダ中部のデータをペアリングできます。  
+
+## <a name="must-i-use-azure-regional-pairs"></a>Azure リージョン ペアは必ず使用する必要があるのですか?
+
+いいえ。 お客様は Azure サービスを活用して、Azure のリージョン ペアに依存することなく、回復力のあるサービスを設計できます。  ただし、リージョン ペアの間で事業継続とディザスター リカバリー (BCDR) を構成して、[分離](./security/fundamentals/isolation-choices.md)を活用し、[可用性](./availability-zones/az-overview.md)を向上させることをお勧めします。 複数のアクティブなリージョンをサポートするアプリケーションでは、可能な場合はリージョン ペアの両方のリージョンを使用することをお勧めします。 これにより、アプリケーションの最適な可用性が保証され、災害発生時の復旧時間が最小になります。 可能な限り、[最大の回復性](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)と[ディザスター リカバリー](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)の容易さを実現するようにアプリケーションを設計してください。
+
+## <a name="azure-regional-pairs"></a>Azure リージョン ペア
+
+| [地理的な場所] | リージョン ペア A | リージョン ペア B  |
 |:--- |:--- |:--- |
-| アジア |東アジア |東南アジア |
+| アジア太平洋 |東アジア (香港) | 東南アジア (シンガポール) |
 | オーストラリア |オーストラリア東部 |オーストラリア南東部 |
 | オーストラリア |オーストラリア中部 |オーストラリア中部 2 |
 | ブラジル |ブラジル南部 |米国中南部 |
-| カナダ |カナダ中部 |カナダ東部 |
-| 中国 |中国 (北部) |中国 (東部)|
+| Canada |カナダ中部 |カナダ東部 |
+| 中国 |中国北部 |中国東部|
 | 中国 |中国北部 2 |中国東部 2|
 | ヨーロッパ |北ヨーロッパ (アイルランド) |西ヨーロッパ (オランダ) |
 | フランス |フランス中部|フランス南部|
@@ -42,31 +62,27 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 | インド |インド西部 |インド南部 |
 | 日本 |東日本 |西日本 |
 | 韓国 |韓国中部 |韓国南部 |
-| 北米 |East US |米国西部 |
+| 北米 |米国東部 |米国西部 |
 | 北米 |米国東部 2 |米国中部 |
 | 北米 |米国中北部 |米国中南部 |
-| 北米 |米国西部 2 |米国中西部 
-| 南アフリカ | 南アフリカ北部 | 南アフリカ西部
+| 北米 |米国西部 2 |米国中西部 |
+| ノルウェー | ノルウェー東部 | ノルウェー西部 |
+| 南アフリカ | 南アフリカ北部 |南アフリカ西部 |
+| スイス | スイス北部 |スイス西部 |
 | 英国 |英国西部 |英国南部 |
 | アラブ首長国連邦 | アラブ首長国連邦北部 | アラブ首長国連邦中部
 | 米国国防総省 |US DoD East |US DoD Central |
-| 米国政府 |米国政府アリゾナ |米国政府テキサス |
-| 米国政府 |US Gov アイオワ |米国政府バージニア州 |
-| 米国政府 |米国政府バージニア州 |米国政府テキサス |
+| 米国政府 |US Gov アリゾナ |US Gov テキサス |
+| 米国政府 |US Gov アイオワ |US Gov バージニア州 |
+| 米国政府 |US Gov バージニア州 |US Gov テキサス |
 
-表 1 - Azure リージョン ペアの組み合わせ
+> [!Important]
+> - インド西部は、一方向のみでペアになっています。 インド西部のセカンダリ リージョンはインド南部ですが、インド南部のセカンダリ リージョンはインド中部です。
+> - ブラジル南部は、地域外のリージョンとペアになっているため特殊です。 ブラジル南部のセカンダリ リージョンは米国中南部です。 米国中南部のセカンダリ リージョンはブラジル南部ではありません。
 
-- インド西部は、一方向のみでペアになっています。 インド西部のセカンダリ リージョンはインド南部ですが、インド南部のセカンダリ リージョンはインド中部です。
-- ブラジル南部は、自身の geo 外のリージョンとペアになっているため特殊です。 ブラジル南部のセカンダリ リージョンは米国中南部です。 米国中南部のセカンダリ リージョンはブラジル南部ではありません。
-- US Gov アイオワのセカンダリ リージョンは US Gov バージニアです。
-- US Gov バージニアのセカンダリ リージョンは US Gov テキサスです。
-- US Gov テキサスのセカンダリ リージョンは US Gov アリゾナです。
-
-
-リージョン ペアの間で事業継続とディザスター リカバリー (BCDR) を構成して、Azure の分離と可用性のポリシーを活用することをお勧めします。 複数のアクティブなリージョンをサポートするアプリケーションでは、可能な場合はリージョン ペアの両方のリージョンを使用することをお勧めします。 これにより、アプリケーションの最適な可用性が保証され、災害発生時の復旧時間が最小になります。 
 
 ## <a name="an-example-of-paired-regions"></a>ペアになっているリージョンの例
-以下の図 2 は、一対のリージョンを使ってディザスター リカバリーを行う架空のアプリケーションです。 緑色の番号は、 3 つの Azure サービス (Azure コンピューティング、ストレージ、およびデータベース) のリージョン間アクティビティと、そのアクティビティが、リージョン間でのレプリケートのためにどのように構成されているかを示しています。 リージョン ペアにデプロイするメリットは、オレンジ色の番号で示されています。
+以下の図は、リージョン ペアを使ってディザスター リカバリーを行う架空のアプリケーションを示しています。 緑色の番号は、3 つの Azure サービス (Azure コンピューティング、ストレージ、およびデータベース) のリージョン間アクティビティと、そのアクティビティが、リージョン間でのレプリケートのためにどのように構成されているかを示しています。 リージョン ペアにデプロイするメリットは、オレンジ色の番号で示されています。
 
 ![ペア リージョンのメリットの概要](./media/best-practices-availability-paired-regions/PairedRegionsOverview2.png)
 
@@ -75,28 +91,22 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 ## <a name="cross-region-activities"></a>リージョン間アクティビティ
 図 2 を参照してください。
 
-![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (IaaS)** – 災害発生中に別のリージョンでリソースを確実に使用できるように、追加のコンピューティング リソースを事前にプロビジョニングする必要があります。 詳細については、「[Azure の回復性技術ガイダンス](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)」をご覧ください。
+1. **Azure Compute (IaaS)** – 災害発生中に別のリージョンでリソースを確実に使用できるように、追加のコンピューティング リソースを事前にプロビジョニングする必要があります。 詳細については、「[Azure の回復性技術ガイダンス](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)」をご覧ください。 
 
-![Storage](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** - マネージド ディスクを使用している場合は、Azure Backup を使用した[リージョン間のバックアップ](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)、および Azure Site Recovery を使用したリージョン間での [VM のレプリケーション](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)について確認してください。 ストレージ アカウントを使用している場合は、Azure Storage アカウントの作成時に、geo 冗長ストレージ (GRS) が既定で構成されます。 GRS を使用すると、データはプライマリ リージョン内で 3 回、ペア リージョンで 3 回、自動的にレプリケートされます。 詳細については、「 [Azure Storage 冗長オプション](storage/common/storage-redundancy.md)」をご覧ください。
+2. **Azure Storage** - マネージド ディスクを使用している場合は、Azure Backup を使用した[リージョン間のバックアップ](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)、および Azure Site Recovery を使用したリージョン間での [VM のレプリケーション](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)について確認してください。 ストレージ アカウントを使用している場合は、Azure Storage アカウントの作成時に、geo 冗長ストレージ (GRS) が既定で構成されます。 GRS を使用すると、データはプライマリ リージョン内で 3 回、ペア リージョンで 3 回、自動的にレプリケートされます。 詳細については、「 [Azure Storage 冗長オプション](storage/common/storage-redundancy.md)」をご覧ください。
 
-![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** – Azure SQL Database geo レプリケーションを使用すると、世界中の任意のリージョンへのトランザクションの非同期レプリケーションを構成できます。ただし、ほとんどのディザスター リカバリー シナリオでは、これらのリソースをペア リージョン内にデプロイすることをお勧めします。 詳細については、「[Azure SQL Database の geo レプリケーション](sql-database/sql-database-geo-replication-overview.md)」を参照してください。
+3. **Azure SQL Database** – Azure SQL Database geo レプリケーションを使用すると、世界中の任意のリージョンへのトランザクションの非同期レプリケーションを構成できます。ただし、ほとんどのディザスター リカバリー シナリオでは、これらのリソースをペア リージョン内にデプロイすることをお勧めします。 詳細については、「[Azure SQL Database の geo レプリケーション](sql-database/sql-database-geo-replication-overview.md)」を参照してください。
 
-![Resource Manager](./media/best-practices-availability-paired-regions/4Green.png) **Azure Resource Manager** - ARM では本質的に、リージョン全体のコンポーネントが論理的に切り離されています。 つまり、1 つのリージョンで論理的な障害が発生しても、他のリージョンが影響を受ける可能性はそれほど高くありません。
+4. **Azure Resource Manager** - Resource Manager では本質的に、リージョン全体のコンポーネントが論理的に切り離されています。 つまり、1 つのリージョンで論理的な障害が発生しても、他のリージョンが影響を受ける可能性はそれほど高くありません。
 
 ## <a name="benefits-of-paired-regions"></a>ペアになっているリージョンのメリット
-図 2 を参照してください。  
 
-![分離](./media/best-practices-availability-paired-regions/5Orange.png)
-**物理的な分離** – Azure が推奨するリージョン内の各データセンター間の距離は 300 マイル (480 km) ですが、これは一部の地域では現実的ではなく、実現できないこともあります。 物理データセンターを切り離すことで、自然災害、社会不安、停電、および物理ネットワーク障害が両方のリージョンにすぐに影響を及ぼす可能性が少なくなります。 分離は、geo 内の制約 (広さ、電源/ネットワーク インフラストラクチャの可用性、規制など) に左右されます。  
+5. **物理的な分離** – 可能な場合、Azure で推奨されるリージョン内の各データセンター間の距離は 300 マイル (480 km) ですが、これは一部の地域では現実的ではなく、実現できないこともあります。 物理データセンターを切り離すことで、自然災害、社会不安、停電、および物理ネットワーク障害が両方のリージョンにすぐに影響を及ぼす可能性が少なくなります。 分離は、geo 内の制約 (広さ、電源/ネットワーク インフラストラクチャの可用性、規制など) に左右されます。  
 
-![レプリケーション](./media/best-practices-availability-paired-regions/6Orange.png)
-**プラットフォームに備わっているレプリケーション** - geo 冗長ストレージなど一部のサービスには、ペア リージョンへの自動レプリケーション機能が用意されています。
+6. **プラットフォームに備わっているレプリケーション** - geo 冗長ストレージなどの一部のサービスには、ペア リージョンへの自動レプリケーション機能が用意されています。
 
-![復旧](./media/best-practices-availability-paired-regions/7Orange.png)
-**リージョン復旧順序** – 広範囲にわたって障害が発生した場合は、すべてのペアで一方のリージョンの復旧が優先されます。 ペア リージョンにまたがってデプロイされているアプリケーションについては、そのアプリケーションのリージョンのどちらかが必ず優先的に復旧します。 ペアになっていない複数のリージョンにアプリケーションがデプロイされていると、復旧が遅れる可能性があり、最悪の場合は、回復されてない最後の 2 つになってしまうことがあります。
+7. **リージョン復旧順序** – 広範囲にわたって障害が発生した場合は、すべてのペアで一方のリージョンの復旧が優先されます。 ペア リージョンにまたがってデプロイされているアプリケーションについては、そのアプリケーションのリージョンのどちらかが必ず優先的に復旧します。 ペアになっていない複数のリージョンにアプリケーションがデプロイされていると、復旧が遅れる可能性があり、最悪の場合は、回復されてない最後の 2 つになってしまうことがあります。
 
-![更新](./media/best-practices-availability-paired-regions/8Orange.png)
-**順次更新** – 計画的な Azure システム更新プログラムは、ダウンタイム、バグの影響、および更新プログラムの不具合 (まれではありますが) による論理的な障害を最小限に抑えるために、ペア リージョンに (同時にではなく) 順番に展開されます。
+8. **順次更新** – 計画的な Azure システム更新プログラムは、ダウンタイム、バグの影響、および更新プログラムの不具合 (まれではありますが) による論理的な障害を最小限に抑えるために、ペア リージョンに (同時にではなく) 順番に展開されます。
 
-![データ](./media/best-practices-availability-paired-regions/9Orange.png)
-**データ常駐** – リージョンは、税および法の執行を目的としたデータ常駐要件を満たすために、ペアとして同じ geo に常駐しています (ブラジル南部を除く)。
+9. **データ所在地** – リージョンは、税および法の執行を目的としたデータ所在地の要件を満たすために、ペアとして同じ地域に存在しています (ブラジル南部を除く)。

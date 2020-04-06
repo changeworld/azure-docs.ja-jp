@@ -15,22 +15,31 @@
     - name: Automation 実行アカウントを管理する
       href: manage-runas-account.md
       displayName: certificate renewal
-    - name: AWS を使って認証を構成する
-      href: automation-config-aws-account.md
-    - name: Azure Automation でのセキュリティで保護された資産の暗号化
-      href: automation-secure-asset-encryption.md
     - name: ロールベースのアクセス制御を管理する
       href: automation-role-based-access-control.md
       displayName: RBAC
+    - name: Azure Automation で Azure AD を使用して Azure に対して認証する
+      href: automation-use-azure-ad.md
+    - name: Azure Automation を使用して Office 365 サービスを管理する
+      href: manage-office-365.md
+    - name: AWS を使って認証を構成する
+      href: automation-config-aws-account.md
+    - name: Azure Automation でセキュリティで保護された資産を暗号化する
+      href: automation-secure-asset-encryption.md
     - name: Automation アカウントを別のサブスクリプションに移動する
       href: how-to/move-account.md
     - name: Automation サービスのオンボードを自動化する
       href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
-    - name: Log Analytics ワークスペースのマッピングがサポートされるリージョン
-      href: how-to/region-mappings.md
     - name: Azure Automation データを管理する
       href: automation-managing-data.md
       displayName: backup
+    - name: Log Analytics ワークスペースのマッピングがサポートされるリージョン
+      href: how-to/region-mappings.md
+    - name: トラブルシューティング
+      items:
+        - name: Automation アカウントのトラブルシューティング
+          href: troubleshoot/automation-account.md
+          displayName: troubleshoot
 - name: プロセスの自動化
   items:
     - name: Hybrid Runbook Worker の概要
@@ -51,7 +60,15 @@
     - name: ハウツー ガイド
       items:
         - name: 勤務時間外の VM の起動/停止
-          href: automation-solution-vm-management.md
+          items:
+            - name: 概要
+              href: automation-solution-vm-management.md
+            - name: ソリューションを有効にする
+              href: automation-solution-vm-management-enable.md
+            - name: ソリューションを構成する
+              href: automation-solution-vm-management-config.md
+            - name: ログ クエリによるデータの分析
+              href: automation-solution-vm-management-logs.md
         - name: Runbook を管理する
           href: manage-runbooks.md
         - name: Runbook を作成する
@@ -119,7 +136,7 @@
               displayName: 'github, vsts, azure devops, personal access token'
             - name: ソース管理の統合 - レガシ
               href: source-control-integration-legacy.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: Microsoft Azure Automation のケースを開くときに収集するデータ
           href: troubleshoot/collect-data-microsoft-azure-automation-case.md
@@ -167,7 +184,7 @@
           href: automation-update-management-query-logs.md
         - name: 更新の評価を表示する
           href: automation-view-update-assessments.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: オンボード
           href: troubleshoot/onboarding.md
@@ -203,7 +220,7 @@
         - name: 追跡対象ファイルのファイル内容の表示
           href: change-tracking-file-contents.md
           displayName: 'change tracking, hash'
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: オンボード
           href: troubleshoot/onboarding.md
@@ -229,7 +246,7 @@
         - name: VM に対する変更のトラブルシューティング
           href: automation-tutorial-troubleshoot-changes.md
           displayName: inventory
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: オンボード
           href: troubleshoot/onboarding.md
@@ -278,7 +295,7 @@
         - name: Azure Monitor ログに状態の構成のレポート データを転送する
           href: automation-dsc-diagnostics.md
           displayName: DSC
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: オンボード
           href: troubleshoot/onboarding.md
@@ -308,19 +325,19 @@
       href: shared-resources/certificates.md
     - name: 接続
       href: automation-connections.md
-    - name: '[資格情報]'
+    - name: 資格情報
       href: shared-resources/credentials.md
     - name: PowerShell モジュール
       items:
-        - name: モジュール
+        - name: Azure Automation でモジュールを管理する
           href: shared-resources/modules.md
-        - name: Azure Automation での Az モジュールの使用
+        - name: Azure Automation での Az モジュールのサポート
           href: az-modules.md
         - name: Azure PowerShell モジュールの更新
           href: automation-update-azure-modules.md
     - name: スケジュール
       href: shared-resources/schedules.md
-    - name: '変数:'
+    - name: 変数
       href: shared-resources/variables.md
     - name: Python 2 パッケージの管理
       href: python-packages.md

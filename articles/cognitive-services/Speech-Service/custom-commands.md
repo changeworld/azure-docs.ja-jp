@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 9349969f1f9b037a271cb727233517daba999acd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2e1b6ee0bd6c392804915fac6ff23278a00b6d33
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446979"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367841"
 ---
-# <a name="custom-commands-preview"></a>カスタム コマンド (プレビュー)
+# <a name="what-are-custom-commands-preview"></a>カスタム コマンド (プレビュー) とは
 
-[音声アシスタント](voice-assistants.md)などの音声アプリケーションでは、ユーザーの音声を聞き取り、応答としてアクションを実行します (多くの場合は、音声で応答します)。 これは、[音声テキスト変換](speech-to-text.md)を使用してユーザーの音声を文字に変換し、そのテキストの自然言語理解に対してアクションを実行します。 このアクションには、多くの場合、[テキスト読み上げ](text-to-speech.md)で生成されたアシスタントからの音声出力が含まれます。 デバイスは、Speech SDK の `DialogServiceConnector` オブジェクトを使用してアシスタントに接続します。
+[音声アシスタント](voice-assistants.md)などの音声アプリケーションでは、ユーザーの音声を聞き取り、応答としてアクションを実行します (多くの場合は、音声で応答します)。 これは、[音声テキスト変換](speech-to-text.md)を使用してユーザーの音声を文字に変換し、そのテキストの自然言語理解に対してアクションを実行します。 このアクションには、多くの場合、[テキスト読み上げ](text-to-speech.md)で生成されたアシスタントからの音声出力が含まれます。 デバイスは、Speech SDK の `DialogServiceConnector` オブジェクトを使用してアシスタントに接続されます。
 
 **カスタム コマンド (プレビュー)** は、音声アプリケーションを作成するための簡素化されたソリューションです。 これにより、統一された作成エクスペリエンスと自動ホスティング モデルが提供され、[Direct Line Speech](direct-line-speech.md) など他のオプションと比べて複雑さが低くなっています。 ただし、この簡素化と引き替えに柔軟性が低下します。 そのため、カスタム コマンド (プレビュー) は、タスクの完了やコマンドと制御のシナリオに最適です。 特に、モノのインターネット (IoT) やヘッドレス デバイスに適しています。
 

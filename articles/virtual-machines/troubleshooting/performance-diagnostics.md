@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
 ms.openlocfilehash: 16be3d1695608165405a3490b686a01ba6a2a62c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70080597"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 仮想マシンのパフォーマンス診断
@@ -29,7 +29,7 @@ Azure portal から直接パフォーマンス診断を実行することもで�
 > [!NOTE]
 > 現在 Windows では、.NET SDK バージョン 4.5 以降のバージョンがインストールされている VM でパフォーマンス診断がサポートされています。 クラシック VM でパフォーマンス診断を実行する手順については、[Azure パフォーマンス診断 VM 拡張機能](performance-diagnostics-vm-extension.md)に関するページを参照してください。
 
-## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 ### <a name="windows"></a>Windows
 
@@ -197,7 +197,7 @@ Shared Access Signature を使用して、レポートの圧縮ファイルへ�
 
 現在のところ、VM 拡張機能のインストールが完了したときを正確に把握する簡単な方法はありません。 一般的に、VM 拡張機能のインストールには約 45 秒から 1 分かかります。 VM 拡張機能をインストールした後は、パフォーマンス診断でトラブルシューティングのために正しいデータ セットがキャプチャされるように再現手順を実行できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 パフォーマンス診断の分析情報とレポートを確認しても問題の原因を特定できず、さらにサポートが必要な場合は、Microsoft カスタマー サポートとのサポート チケットを開くことができます。
 

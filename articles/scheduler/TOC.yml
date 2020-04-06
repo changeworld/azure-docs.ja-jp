@@ -1,5 +1,5 @@
-- name: Scheduler のドキュメント
-  href: index.md
+- name: Azure Scheduler のドキュメント
+  href: index.yml
 - name: 概要
   items:
     - name: Azure Scheduler とは

@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 ms.date: 10/16/2018
 ms.openlocfilehash: 3277318e01362df8fc21ff7ca769aaeb8006abc6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73827987"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>シャード化されたマルチテナント アプリケーションをデプロイおよび操作する
@@ -57,8 +57,8 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 ### <a name="plan-the-names"></a>名前を考える
 
 このセクションの手順では、リソース名がグローバルに一意であることを保証するために使用される "*ユーザー*" 値と、アプリのデプロイによって作成されるすべてのリソースを含む "*リソース グループ*" を指定します。 たとえば、名前が *Ann Finley* である場合、次のような名前にすることをお勧めします。
-- *ユーザー:* **af1**   *(イニシャルに一桁の数字を付けます。アプリをもう一度デプロイする場合は、別の値を使用します (例: af2)。)* "
-- "*リソース グループ:* " **wingtip-mt-af1** " *(wingtip-dpt は、これがシャード化されたマルチテナント アプリであることを示します。ユーザー名 af1 の追加によって、リソース グループ名とリソースを含む名前が関連付けられます。)* "
+- *ユーザー:* **af1** *(イニシャルに一桁の数字を付けます。アプリをもう一度デプロイする場合は、別の値を使用します (例: af2)。)* "
+- "*リソース グループ:* " **wingtip-mt-af1** " *(wingtip-mt は、これがシャード化されたマルチテナント アプリであることを示します。ユーザー名 af1 の追加によって、リソース グループ名とリソースを含む名前が関連付けられます。)* "
 
 名前を選択し、書き留めておきます。 
 
@@ -100,7 +100,7 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 3. **[Download ZIP]** をクリックし、ファイルを保存します。
 4. **WingtipTicketsSaaS-MultiTenantDb-master.zip** ファイルを右クリックし、 **[プロパティ]** を選択します。
 5. **[全般]** タブで **[ブロックの解除]** を選択し、 **[適用]** をクリックします。
-6. Click **OK**.
+6. **[OK]** をクリックします。
 7. ファイルを解凍します。
 
 スクリプトは、 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\* フォルダーにあります。
@@ -130,7 +130,7 @@ Wingtip アプリでは、テナントは会場です。 会場は、イベン�
 
 2. **Events Hub** で **[Fabrikam Jazz Club]** をクリックします。
 
-   ![イベント](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![events](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure の Traffic Manager
 
@@ -252,7 +252,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
   - [エラスティック プールを利用した複数の Azure SQL データベースの管理およびスケーリング](sql-database-elastic-pool.md)
   - [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルで学習した内容は次のとおりです。
 

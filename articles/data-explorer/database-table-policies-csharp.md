@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: 17312840b0081056ad04723f2b2c241c47902021
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667305"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>C# を使用して Azure Data Explorer のデータベースとテーブルのポリシーを作成する
@@ -156,6 +156,6 @@ await kustoManagementClient.Databases.AddPrincipalsAsync(resourceGroupName, clus
                     }
                 });
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [データベースおよびテーブルのポリシーの詳細を確認する](https://docs.microsoft.com/azure/kusto/management/policies)

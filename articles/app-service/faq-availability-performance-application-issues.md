@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c12e14b8b842e3ccf9f2bf9e0ab783d8852ee69b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 433f5885c7f057226e78c4ae57e03d7619004d21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357783"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229743"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
@@ -92,8 +92,9 @@ Web アプリのプロセス レベルの情報を表示するには、次の 2 
 既定では、設定された期間だけアイドル状態が続くと Web アプリはアンロードされます。 このようにして、システムはリソースを節約できます。 欠点は、Web アプリが読み込まれて応答の処理を開始できるようにするために、Web アプリがアンロードされた後の最初の要求への応答が長くなることです。 [基本] および [標準] サービス プランでは、アプリを常に読み込まれた状態にするために、 **[常時接続]** 設定をオンにすることができます。 これにより、アプリがアイドル状態になった後の読み込み時間が長くなることはなくなります。 **[常時接続]** 設定を変更するには:
 
 1. Azure Portal で、Web アプリに移動します。
-2. **[アプリケーションの設定]** を選択します。
-3. **[常時接続]** の **[On] \(オン)** を選択します。
+2. **[構成]** を選択します。
+3. **[全般設定]** を選択します。
+4. **[常時接続]** の **[On] \(オン)** を選択します。
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>失敗した要求トレースをオンにするにはどうすればよいですか?
 

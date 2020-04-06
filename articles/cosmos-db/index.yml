@@ -11,12 +11,12 @@ metadata:
   author: SnehaGunda
   ms.author: sngun
   ms.date: 09/10/2019
-  ms.openlocfilehash: ebe88aea9b84e640ccc4cecb495d2beedae2893e
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 0d54189212a3597902c58f2889959891f6c8c07c
+  ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75934106"
+  ms.lasthandoff: 04/02/2020
+  ms.locfileid: "80584291"
 landingContent:
 - title: Azure Cosmos DB について
   linkLists:
@@ -164,6 +164,8 @@ landingContent:
       url: sql-api-dotnet-application.md
     - text: 非同期 SDK を使用した Java アプリ
       url: sql-api-async-java-get-started.md
+    - text: 変更フィードを使用した Java アプリのサンプル
+      url: create-sql-api-java-changefeed.md
     - text: SQL クエリを使用してデータにクエリを実行する
       url: tutorial-query-sql-api.md
   - linkListType: how-to-guide

@@ -102,6 +102,8 @@
               href: how-to-enable-nested-virtualization-template-vm-using-script.md
         - name: Windows テンプレート VM の準備
           href: how-to-prepare-windows-template.md
+        - name: Windows のシャットダウン動作を制御する
+          href: how-to-windows-shutdown.md
         - name: サポート情報の表示 (講師)
           href: lab-creator-support-information.md
     - name: クラスルーム ラボの VM に接続する (学生)

@@ -4,10 +4,10 @@ description: Azure Policy 定義をコードとしてデプロイし、リソー
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 0914ba6510c9d2ef87d3f83417f97340d42c8bce
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74267275"
 ---
 # <a name="design-policy-as-code-workflows"></a>コードとしてのポリシー ワークフローの設計
@@ -119,11 +119,11 @@ ms.locfileid: "74267275"
 
 このような場合、テスト サブスクリプションまたはリソース グループに対するアプリケーションまたはインフラストラクチャのデプロイが完了した後で、既存のすべてのポリシーとイニシアチブのスコープ検査の検証のために、ポリシーの評価を行う必要があります。 このような環境では **enforcementMode** が _disabled_ として構成されている場合もありますが、アプリケーションまたはインフラストラクチャのデプロイがポリシー定義に違反しているかどうかを早期に把握しておくと便利です。 したがって、このポリシーの評価はこれらのワークフローの 1 つの手順であり、非準拠のリソースを作成するデプロイメントを不合格とする必要があります。
 
-## <a name="review"></a>レビュー
+## <a name="review"></a>確認
 
 この記事では、コードとしてのポリシーの一般的なワークフローについて、またポリシーの評価は他のデプロイ ワークフローの一部であるべき場合について説明しました。 このワークフローは、スクリプト化した手順と、トリガーに基づく自動化をサポートするすべての環境で使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ポリシー定義の構造](./definition-structure.md)についてさらに学習します。
 - [ポリシー割り当ての構造](./assignment-structure.md)についてさらに学習します。

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
 ms.openlocfilehash: a69babdf2fffb4cb9d963f1806f3c85755e50294
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74454360"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>ユーザーの登録と成果物のサブスクリプションを委任する方法
@@ -26,7 +26,7 @@ ms.locfileid: "74454360"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="delegate-signin-up"> </a>開発者のサインインおよびサインアップ処理の委任
+## <a name="delegating-developer-sign-in-and-sign-up"></a><a name="delegate-signin-up"> </a>開発者のサインインおよびサインアップ処理の委任
 
 開発者のサインインおよびサインアップ処理を既存の Web サイトに委任するには、サイト上で特別な委任エンドポイントを作成する必要があります。 このエンドポイントは、API Management 開発者ポータルから開始された要求のエントリ ポイントとして機能する必要があります。
 
@@ -92,7 +92,7 @@ ms.locfileid: "74454360"
 * **salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
 * **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
 
-## <a name="delegate-product-subscription"> </a>成果物のサブスクリプション処理の委任
+## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>製品のサブスクリプション処理の委任
 製品のサブスクリプション処理を委任するしくみは、ユーザーのサインイン/サインアップ処理の委任と似ています。 最終的なワークフローは次のようになります。
 
 1. 開発者が API Management 開発者ポータルで製品を選択し、[サブスクライブ] ボタンをクリックします。
@@ -131,7 +131,7 @@ ms.locfileid: "74454360"
 3. **operation** で要求された操作の種類 (課金、追加の質問など) に基づいて、製品のサブスクリプションを処理します。
 4. お客様の側で製品へのユーザーのサブスクリプションを正常に処理できたら、API Management 製品へのユーザーのサブスクリプション処理を行います。そのためには、[サブスクリプションのための REST API の呼び出し]。
 
-## <a name="delegate-example-code"> </a> コード例
+## <a name="example-code"></a><a name="delegate-example-code"> </a>コード例
 
 以下のコード サンプルは、次の操作を行う方法を示しています｡
 
@@ -177,7 +177,7 @@ var signature = digest.toString('base64');
 > [!IMPORTANT]
 > 委任変更を有効にするには、[開発者ポータルを再発行](api-management-howto-developer-portal-customize.md#publish)する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 委任に関する詳細については、次のビデオをご覧ください。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Delegating-User-Authentication-and-Product-Subscription-to-a-3rd-Party-Site/player]

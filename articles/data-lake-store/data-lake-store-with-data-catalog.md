@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60196618"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Azure Data Catalog に Azure Data Lake Storage Gen1 のデータを登録する
@@ -59,7 +59,7 @@ ms.locfileid: "60196618"
     c. **[登録されるオブジェクト]** ボックスには、Azure Data Catalog に登録するファイルとフォルダーがリストされます。
 
     ![データ構造の表示](./media/data-lake-store-with-data-catalog/view-data-structure.png "データ構造の表示")
-1. このチュートリアルでは、ディレクトリ内のすべてのファイルを登録する必要があります。 そのため、![オブジェクトの移動ボタン](./media/data-lake-store-with-data-catalog/move-objects.png "オブジェクトの移動")をクリックして、すべてのファイルを **[登録するオブジェクト]** ボックスに移動します。
+1. このチュートリアルでは、ディレクトリ内のすべてのファイルを登録する必要があります。 そのため、![オブジェクトの移動](./media/data-lake-store-with-data-catalog/move-objects.png "オブジェクトの移動")ボタンをクリックして、すべてのファイルを **[登録するオブジェクト]** ボックスに移動します。
 
     データは組織全体のデータ カタログに登録されるため、後でデータをすばやく見つけるために使用できるメタデータをいくつか追加することをお勧めします。 たとえば、データの所有者 (データをアップロードするユーザー) の電子メール アドレスを追加したり、データを識別するタグを追加したりすることができます。 以下の画面キャプチャには、データに追加するタグが示されています。
 
@@ -68,7 +68,7 @@ ms.locfileid: "60196618"
     **[登録]** をクリックします。
 1. 次のキャプチャ画面は、データが Data Catalog に正常に登録されたことを示しています。
 
-    ![登録完了](./media/data-lake-store-with-data-catalog/registration-complete.png "データ構造の表示")
+    ![登録の完了](./media/data-lake-store-with-data-catalog/registration-complete.png "データ構造の表示")
 1. **[ポータルの表示]** をクリックして Data Catalog ポータルに戻り、ポータルから登録されたデータにアクセスできるようになったことを確認します。 データを検索する場合は、データの登録時に使用したタグを使用できます。
 
      ![カタログ内のデータの検索](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "カタログ内のデータの検索")
