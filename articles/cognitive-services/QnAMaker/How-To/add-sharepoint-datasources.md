@@ -3,12 +3,12 @@ title: SharePoint ファイル - QnA Maker
 description: ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加して、Active Directory によりセキュリティで保護されている可能性がある質問と回答でサポート情報を補強できます。
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 402d8239ee9fbac01e64e3624a7e4d8a13f2e7d8
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 6f05079e39c8afb001bd4ba09d68f435c18efad5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650437"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294879"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>ご自分のサポート情報にセキュリティで保護された SharePoint データ ソースを追加する
 
@@ -21,7 +21,7 @@ QnA Maker サポート情報マネージャーが Active Directory マネージ�
 ## <a name="prerequisites"></a>前提条件
 
 * クラウドベースの SharePoint - QnA Maker では、アクセス許可に Microsoft Graph を使用します。 SharePoint がオンプレミスにある場合は、Microsoft Graph がアクセス許可を判断できないため、SharePoint から抽出できません。
-* URL 形式 - QnA Maker では、共有用に生成され、形式が https://*.sharepoint.com の SharePoint URL のみがサポートされます。
+* URL 形式 - QnA Maker では、共有用に生成され、形式が `https://\*.sharepoint.com` の SharePoint URL のみがサポートされます
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>サポート情報へのサポート対象ファイルの種類の追加
 
@@ -32,7 +32,7 @@ SharePoint サイトからご自分のサポート情報に、QnA Maker でサ�
 
    ![ファイルの省略記号メニューを選択してから URL をコピーして、SharePoint ファイルの URL を取得します。](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
-1. QnA Maker ポータルの **[設定]** ページでサポート情報に [URL を追加](edit-knowledge-base.md#add-datasource)します。
+1. QnA Maker ポータルの **[設定]** ページでサポート情報に [URL を追加](manage-knowledge-bases.md#edit-knowledge-base)します。
 
 ### <a name="images-with-sharepoint-files"></a>SharePoint ファイルでのイメージ
 
@@ -69,7 +69,7 @@ QnA Maker マネージャーがアカウントを選択すると、Azure Active 
 
 ### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Active Directory マネージャー: QnA Maker へのファイルの読み取りアクセスの付与
 
-(QnA Maker マネージャーではなく) Active Directory マネージャーは SharePoint リソースにアクセスできるよう、[こちらのリンク](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2F www.qnamaker.ai%3A%2FCreate&state=68)を選択して QnA Maker Portal SharePoint エンタープライズ アプリがファイルの読み取りアクセス許可を持つことができるよう、QnA Maker にアクセスを付与する必要があります。
+(QnA Maker マネージャーではなく) Active Directory マネージャーは SharePoint リソースにアクセスできるよう、[こちらのリンク](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68)を選択して QnA Maker Portal SharePoint エンタープライズ アプリがファイルの読み取りアクセス許可を持つことができるよう、QnA Maker にアクセスを付与する必要があります。
 
 ![対話形式でアクセス許可を付与する Azure Active Directory マネージャー](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
 

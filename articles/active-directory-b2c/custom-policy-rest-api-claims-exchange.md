@@ -7,96 +7,87 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 351b41f45fb84384ec0193f8e3130347d0b19401
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6316165ba08d055be1186995e2fe2ad5a0079fb7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189091"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330717"
 ---
-# <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する
+# <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) で RESTful API との対話を[カスタム ポリシー](custom-policy-overview.md)に追加できます。 この記事では、RESTful サービスと対話する Azure AD B2C ユーザー体験を作成する方法について説明します。
+ID 開発者は、Azure Active Directory B2C (Azure AD B2C) で、RESTful API との対話をユーザー体験に統合できます。 このチュートリアルの最後では、[RESTful サービス](custom-policy-rest-api-intro.md)と対話する Azure AD B2C ユーザー体験を作成することができます。
 
-対話には REST API 要求と Azure AD B2C の間の情報の要求の交換が含まれています。 要求の交換の特性を次に示します。
+このシナリオでは、企業の基幹業務ワークフローと統合し、ユーザーのトークン データを強化します。 Azure AD B2C は、ローカルまたはフェデレーション アカウントを使用したサインアップまたはサインイン時に REST API を呼び出し、リモート データ ソースからユーザーの拡張プロファイル データを取得します。 このサンプルでは、Azure AD B2C は、ユーザーの一意の識別子である objectId を送信します。 これにより REST API は、ユーザーのアカウント残高 (ランダムな数値) を返します。 このサンプルは、お使いのご自分の CRM システム、マーケティング データベース、または任意の基幹業務ワークフローと統合して、出発点として使用することができます。
 
-- オーケストレーション手順として設計できます。
-- 外部アクションをトリガーできます。 たとえば、外部データベースにイベントを記録できます。
-- 値をフェッチしてユーザー データベースに格納するために使用できます。
-- 実行フローを変更します。
-
-この記事のシナリオには次のアクションが含まれています。
-
-1. 外部システム内のユーザーを検索します。
-2. そのユーザーが登録されている都市を取得します。
-3. その属性を要求としてアプリケーションに返します。
+また、対話を検証技術プロファイルとして設計することもできます。 これは、REST API が画面上のデータを検証して要求を返す場合に適しています。 詳細については、「[チュートリアル:ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](custom-policy-rest-api-claims-validation.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [カスタム ポリシーの概要](custom-policy-get-started.md)に関するページの手順を完了します。
-- 対話する REST API エンドポイント。 このチュートリアルでは、単純な Azure 関数を例として使用します。 Azure 関数を作成するには、「[Azure portal で初めての関数を作成する](../azure-functions/functions-create-first-azure-function.md)」を参照してください。
+- [カスタム ポリシーの概要](custom-policy-get-started.md)に関するページの手順を完了します。 ローカル アカウントでのサインアップとサインインのために作業用カスタム ポリシーを持つ必要があります。
+- [REST API 要求交換のお使いの Azure Active Directory B2C カスタム ポリシーへの統合](custom-policy-rest-api-intro.md)に関する方法を参照してください。
 
-## <a name="prepare-the-api"></a>API を準備する
+## <a name="prepare-a-rest-api-endpoint"></a>REST API エンドポイントを準備する
 
-このセクションでは、`email` の値を受け取ってから、Azure AD B2C が要求として使用できる `city` の値を返すように Azure 関数を準備します。
+このチュートリアルでは、ユーザーの Azure AD B2C の objectId がご自分のバックエンド システムに登録されているかどうかを検証する REST API が必要です。 登録されている場合、REST API によってユーザー アカウントの残高が返されます。 それ以外の場合は、REST API によってディレクトリに新しいアカウントが登録され、`50.00` の開始残高が返されます。
 
-作成した Azure 関数の run.csx ファイルを、次のコードを使用するように変更します。
+次の JSON コードでは、お使いの REST API エンドポイントに送信される Azure AD B2C のデータを示しています。 
 
-```csharp
-#r "Newtonsoft.Json"
-
-using System.Net;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Primitives;
-using Newtonsoft.Json;
-
-public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
+```json
 {
-  log.LogInformation("C# HTTP trigger function processed a request.");
-  string email = req.Query["email"];
-  string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-  dynamic data = JsonConvert.DeserializeObject(requestBody);
-  email = email ?? data?.email;
-
-  return email != null
-    ? (ActionResult)new OkObjectResult(
-      new ResponseContent
-      {
-        version = "1.0.0",
-        status = (int) HttpStatusCode.OK,
-        city = "Redmond"
-      })
-      : new BadRequestObjectResult("Please pass an email on the query string or in the request body");
-}
-
-public class ResponseContent
-{
-    public string version { get; set; }
-    public int status { get; set; }
-    public string city {get; set; }
+    "objectId": "User objectId",
+    "language": "Current UI language"
 }
 ```
 
-## <a name="configure-the-claims-exchange"></a>要求の交換を構成する
+データがお使いの REST API によって検証されると、次の JSON データと共に HTTP 200 (Ok) が返されます。
 
-技術プロファイルには、要求の交換に対する構成が用意されています。
+```json
+{
+    "balance": "760.50"
+}
+```
 
-*TrustFrameworkExtensions.xml* ファイルを開き、次の **ClaimsProvider** XML 要素を **ClaimsProviders** 要素内に追加します。
+REST API エンドポイントの設定は、この記事では扱っていません。 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) のサンプルを作成しました。 Azure 関数の完全なコードは、[GitHub](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function) から入手できます。
 
-```XML
+## <a name="define-claims"></a>要求を定義する
+
+要求は、Azure AD B2C ポリシーの実行時に、データの一時的なストレージとなります。 要求は、[claims schema](claimsschema.md) セクションで宣言できます。 
+
+1. お使いのポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>です。
+1. [BuildingBlocks](buildingblocks.md) 要素を検索します。 要素が存在しない場合は追加します。
+1. [ClaimsSchema](claimsschema.md) 要素を見つけます。 要素が存在しない場合は追加します。
+1. 次の要求を **ClaimsSchema** 要素に追加します。  
+
+```xml
+<ClaimType Id="balance">
+  <DisplayName>Your Balance</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+<ClaimType Id="userLanguage">
+  <DisplayName>User UI language (used by REST API to return localized error messages)</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+```
+
+## <a name="configure-the-restful-api-technical-profile"></a>RESTful API 技術プロファイルを構成する 
+
+[Restful 技術プロファイル](restful-technical-profile.md)では、お使いの独自の RESTful サービスとのインターフェイスをサポートしています。 Azure AD B2C は、`InputClaims` コレクションでデータを RESTful サービスに送信し、`OutputClaims` コレクションで返却データを受信します。 お使いの <em> **`TrustFrameworkExtensions.xml`** </em> ファイルで **ClaimsProviders** を見つけ、次のように新しい要求プロバイダーを追加します。
+
+```xml
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>
-    <TechnicalProfile Id="AzureFunctions-WebHook">
-      <DisplayName>Azure Function Web Hook</DisplayName>
+    <TechnicalProfile Id="REST-GetProfile">
+      <DisplayName>Get user extended profile Azure Function web hook</DisplayName>
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
-        <Item Key="ServiceUrl">https://myfunction.azurewebsites.net/api/HttpTrigger1?code=bAZ4lLy//ZHZxmncM8rI7AgjQsrMKmVXBpP0vd9smOzdXDDUIaLljA==</Item>
+        <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/GetProfile?code=your-code</Item>
         <Item Key="SendClaimsIn">Body</Item>
         <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
         <Item Key="AuthenticationType">None</Item>
@@ -104,10 +95,13 @@ public class ResponseContent
         <Item Key="AllowInsecureAuthInProduction">true</Item>
       </Metadata>
       <InputClaims>
-        <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="email" />
+        <!-- Claims sent to your REST API -->
+        <InputClaim ClaimTypeReferenceId="objectId" />
+        <InputClaim ClaimTypeReferenceId="userLanguage" PartnerClaimType="lang" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
       </InputClaims>
       <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="city" PartnerClaimType="city" />
+        <!-- Claims parsed from your REST API -->
+        <OutputClaim ClaimTypeReferenceId="balance" />
       </OutputClaims>
       <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
     </TechnicalProfile>
@@ -115,153 +109,114 @@ public class ResponseContent
 </ClaimsProvider>
 ```
 
-**InputClaims** 要素によって、REST サービスに送信される要求が定義されます。 この例では、要求 `givenName` の値が要求 `email` として REST サービスに送信されます。 **OutputClaims** 要素によって、REST サービスから期待される要求が定義されます。
+この例では、`userLanguage` が JSON ペイロード内の `lang` として REST サービスに送信されます。 `userLanguage` 要求の値には、現在のユーザーの言語 ID が含まれます。 詳細については、[要求リゾルバー](claim-resolver-overview.md)に関するページを参照してください。
 
-`AuthenticationType` と `AllowInsecureAuthInProduction` の上のコメントに、運用環境に移行するときに行う必要がある変更が指定されています。 実稼働用の RESTful API をセキュリティで保護する方法については、「[基本認証を使用した RESTful API のセキュリティ保護](secure-rest-api-dotnet-basic-auth.md)」と「[証明書認証を使用した RESTful API のセキュリティ保護](secure-rest-api-dotnet-certificate-auth.md)」を参照してください。
-
-## <a name="add-the-claim-definition"></a>要求の定義を追加する
-
-`city` の定義を **BuildingBlocks** 要素内に追加します。 この要素は、TrustFrameworkExtensions.xml ファイルの先頭で見つけることができます。
-
-```XML
-<BuildingBlocks>
-  <ClaimsSchema>
-    <ClaimType Id="city">
-      <DisplayName>City</DisplayName>
-      <DataType>string</DataType>
-      <UserHelpText>Your city</UserHelpText>
-      <UserInputType>TextBox</UserInputType>
-    </ClaimType>
-  </ClaimsSchema>
-</BuildingBlocks>
-```
+`AuthenticationType` と `AllowInsecureAuthInProduction` の上のコメントに、運用環境に移行するときに行う必要がある変更が指定されています。 お使いの RESTful API を実稼働用にセキュリティで保護する方法については、[RESTful API のセキュリティ保護](secure-rest-api.md)に関するページを参照してください。
 
 ## <a name="add-an-orchestration-step"></a>オーケストレーション手順を追加する
 
-REST API 呼び出しをオーケストレーション手順として使用できる多くのユース ケースがあります。 オーケストレーション手順としては、ユーザーが最初の登録などのタスクを正常に完了した後の外部システムに対する更新として、または情報の同期状態を保つためのプロファイルの更新として使用できます。 このケースでは、プロファイルの編集後にアプリケーションに提供される情報を増やすために使用されています。
+[ユーザー体験](userjourneys.md)では、証明書利用者アプリケーションがユーザーの任意の要求を取得できるようにする、ポリシーの明示的なパスを指定します。 ユーザー体験は、トランザクションを成功させるために従う必要のあるオーケストレーション シーケンスとして表されます。 オーケストレーションのステップは追加または削除できます。 この場合は、ユーザーのサインアップまたはサインイン後に、REST API の呼び出しでアプリケーションに提供する、情報を拡張する新しいオーケストレーション ステップを追加します。
 
-ステップをプロファイル編集ユーザー体験に追加します。 ユーザーは、自身が認証されてから (次の XML 内のオーケストレーション手順 1 ～ 4)、更新されたプロファイル情報が提供します (手順 5)。 プロファイル編集ユーザー体験の XML コードを、*TrustFrameworkBase.xml* ファイルから *TrustFrameworkExtensions.xml* ファイルの **UserJourneys** 要素内にコピーします。 次に、手順 6 を変更します。
+1. ポリシーの基本ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>です。
+1. `<UserJourneys>` 要素を検索します。 要素全体をコピーしてから、削除します。
+1. お使いのポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>です。
+1. `<ClaimsProviders>` 要素を閉じた後、拡張ファイルに `<UserJourneys>` を貼り付けます。
+1. `<UserJourney Id="SignUpOrSignIn">` を見つけて、最後のオーケストレーション ステップの前に次のオーケストレーション ステップを追加します。
 
-```XML
-<OrchestrationStep Order="6" Type="ClaimsExchange">
-  <ClaimsExchanges>
-    <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-WebHook" />
-  </ClaimsExchanges>
-</OrchestrationStep>
+    ```XML
+    <OrchestrationStep Order="7" Type="ClaimsExchange">
+      <ClaimsExchanges>
+        <ClaimsExchange Id="RESTGetProfile" TechnicalProfileReferenceId="REST-GetProfile" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+    ```
+
+1. `Order` を `8` に変更して、最後のオーケストレーション ステップをリファクターします。 お使いの最後の 2 つのオーケストレーション ステップは次のようになります。
+
+    ```XML
+    <OrchestrationStep Order="7" Type="ClaimsExchange">
+      <ClaimsExchanges>
+        <ClaimsExchange Id="RESTGetProfile" TechnicalProfileReferenceId="REST-GetProfile" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+
+    <OrchestrationStep Order="8" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+    ```
+
+1. **ProfileEdit** と **PasswordReset** のユーザー体験で、最後の 2 つのステップを繰り返します。
+
+
+## <a name="include-a-claim-in-the-token"></a>トークンに要求を含める 
+
+`balance` 要求を証明書利用者アプリケーションに返すには、出力要求を <em>`SocialAndLocalAccounts/` **`SignUpOrSignIn.xml`** </em> ファイルに追加します。 出力要求を追加すると、ユーザー体験が成功した後、その要求がトークンに追加され、アプリケーションに送信されます。 証明書利用者セクション内の技術プロファイル要素を変更して、`balance` を出力要求として追加します。
+ 
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="OpenIdConnect" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+      <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+      <OutputClaim ClaimTypeReferenceId="balance" DefaultValue="" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" />
+  </TechnicalProfile>
+</RelyingParty>
 ```
 
-ユーザー体験の最終的な XML は次の例のようになります。
+**ProfileEdit.xml** および **PasswordReset.xml** のユーザー体験にこの手順を繰り返します。
 
-```XML
-<UserJourney Id="ProfileEdit">
-  <OrchestrationSteps>
-    <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
-      <ClaimsProviderSelections>
-        <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
-        <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
-      </ClaimsProviderSelections>
-    </OrchestrationStep>
-    <OrchestrationStep Order="2" Type="ClaimsExchange">
-      <ClaimsExchanges>
-        <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
-        <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-      </ClaimsExchanges>
-    </OrchestrationStep>
-    <OrchestrationStep Order="3" Type="ClaimsExchange">
-      <Preconditions>
-        <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
-          <Value>authenticationSource</Value>
-          <Value>localAccountAuthentication</Value>
-          <Action>SkipThisOrchestrationStep</Action>
-        </Precondition>
-      </Preconditions>
-      <ClaimsExchanges>
-        <ClaimsExchange Id="AADUserRead" TechnicalProfileReferenceId="AAD-UserReadUsingAlternativeSecurityId" />
-      </ClaimsExchanges>
-    </OrchestrationStep>
-    <OrchestrationStep Order="4" Type="ClaimsExchange">
-      <Preconditions>
-        <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
-          <Value>authenticationSource</Value>
-          <Value>socialIdpAuthentication</Value>
-          <Action>SkipThisOrchestrationStep</Action>
-        </Precondition>
-      </Preconditions>
-      <ClaimsExchanges>
-        <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
-      </ClaimsExchanges>
-    </OrchestrationStep>
-    <OrchestrationStep Order="5" Type="ClaimsExchange">
-      <ClaimsExchanges>
-        <ClaimsExchange Id="B2CUserProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate" />
-      </ClaimsExchanges>
-    </OrchestrationStep>
-    <!-- Add a step 6 to the user journey before the JWT token is created-->
-    <OrchestrationStep Order="6" Type="ClaimsExchange">
-      <ClaimsExchanges>
-        <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-WebHook" />
-      </ClaimsExchanges>
-    </OrchestrationStep>
-    <OrchestrationStep Order="7" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
-  </OrchestrationSteps>
-  <ClientDefinition ReferenceId="DefaultWeb" />
-</UserJourney>
-```
+変更した次のファイルを保存します。*TrustFrameworkBase.xml* および *TrustFrameworkExtensions.xml*、*SignUpOrSignin.xml*、*ProfileEdit.xml*、および *PasswordReset.xml*。 
 
-## <a name="add-the-claim"></a>要求を追加する
+## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
 
-*ProfileEdit.xml* ファイルを編集し、`<OutputClaim ClaimTypeReferenceId="city" />` を **OutputClaims** 要素に追加します。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
+1. **[Identity Experience Framework]** を選択します。
+1. **[カスタム ポリシーのアップロード]** を選択し、変更した次のポリシー ファイルをアップロードします。*TrustFrameworkBase.xml* および *TrustFrameworkExtensions.xml*、*SignUpOrSignin.xml*、*ProfileEdit.xml*、および *PasswordReset.xml*。 
+1. アップロードしたサインアップまたはサインイン ポリシーを選択し、 **[今すぐ実行]** ボタンをクリックします。
+1. メール アドレスまたは Facebook のアカウントを使用してサインアップできるはずです。
+1. アプリケーションに返送されるトークンには、`balance` 要求が含まれています。
 
-新しい要求を追加した後の技術プロファイルは次の例のようになります。
-
-```XML
-<TechnicalProfile Id="PolicyProfile">
-  <DisplayName>PolicyProfile</DisplayName>
-  <Protocol Name="OpenIdConnect" />
-  <OutputClaims>
-    <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-    <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
-    <OutputClaim ClaimTypeReferenceId="city" />
-  </OutputClaims>
-  <SubjectNamingInfo ClaimType="sub" />
-</TechnicalProfile>
-```
-
-## <a name="upload-your-changes-and-test"></a>変更内容をアップロードしてテストする
-
-1. (省略可能:)続行する前に、ファイルの既存のバージョンを (ダウンロードして) 保存します。
-2. *TrustFrameworkExtensions.xml* と *ProfileEdit.xml* をアップロードし、選択して、既存のファイルを上書きします。
-3. **B2C_1A_ProfileEdit** を選択します。
-4. カスタム ポリシーの概要ページの **[アプリケーションの選択]** で、以前に登録した *webapp1* という名前の Web アプリケーションを選択します。 **[返信 URL]** が `https://jwt.ms` であることを確認します。
-4. **[今すぐ実行]** を選択します。 お使いのアカウントの資格情報を使用してサインインし、 **[続行]** をクリックします。
-
-すべてが適切に設定されている場合、トークンには新しい要求 `city` が追加され、値 `Redmond` が設定されています。
-
-```JSON
+```json
 {
-  "exp": 1493053292,
-  "nbf": 1493049692,
+  "typ": "JWT",
+  "alg": "RS256",
+  "kid": "X5eXk4xyojNFum1kl2Ytv8dlNP4-c57dO6QGTVBwaNk"
+}.{
+  "exp": 1584961516,
+  "nbf": 1584957916,
   "ver": "1.0",
   "iss": "https://contoso.b2clogin.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
-  "sub": "a58e7c6c-7535-4074-93da-b0023fbaf3ac",
-  "aud": "4e87c1dd-e5f5-4ac8-8368-bc6a98751b8b",
-  "acr": "b2c_1a_profileedit",
+  "aud": "e1d2612f-c2bc-4599-8e7b-d874eaca1ee1",
+  "acr": "b2c_1a_signup_signin",
   "nonce": "defaultNonce",
-  "iat": 1493049692,
-  "auth_time": 1493049692,
-  "city": "Redmond"
+  "iat": 1584957916,
+  "auth_time": 1584957916,
+  "name": "Emily Smith",
+  "email": "emily@outlook.com",
+  "given_name": "Emily",
+  "family_name": "Smith",
+  "balance": "202.75"
+  ...
 }
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
-検証プロファイルとして対話を設計することもできます。 詳細については、「[チュートリアル:REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する](custom-policy-rest-api-claims-validation.md)」をご覧ください。
 
-[プロファイルの編集を変更してユーザーから追加情報を収集する方法](custom-policy-custom-attributes.md)
-
-[リファレンス: RESTful 技術プロファイル](restful-technical-profile.md)
+## <a name="next-steps"></a>次のステップ
 
 API をセキュリティで保護する方法については、次の記事を参照してください。
 
-* [基本認証 (ユーザー名とパスワード) を使用して RESTful API をセキュリティで保護する](secure-rest-api-dotnet-basic-auth.md)
-* [クライアント証明書を使用して RESTful API をセキュリティで保護する](secure-rest-api-dotnet-certificate-auth.md)
+- [チュートリアル:REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する](custom-policy-rest-api-claims-exchange.md)
+- [お使いの RESTful API を保護する](secure-rest-api.md)
+- [リファレンス: RESTful 技術プロファイル](restful-technical-profile.md)
