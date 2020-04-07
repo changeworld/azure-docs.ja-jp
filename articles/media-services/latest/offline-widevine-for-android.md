@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 55ed849b6083435e70d0943a359c83793ca0842d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 64cd93acc78f4cb5b7ebc4266e7359aec662890c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705906"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295415"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Media Services v3 を使用した Android 用のオフラインの Widevine ストリーミング
 
@@ -98,7 +98,7 @@ Widevine ライセンスの**オフライン** モードを有効にするには
 
 ## <a name="configuring-the-android-player-for-offline-playback"></a>オフライン再生用の Android Player の構成
 
-Android デバイス用のネイティブ プレーヤー アプリを開発する最も簡単な方法は、オープンソースのビデオ プレーヤー SDK である [Google ExoPlayer SDK](https://github.com/google/ExoPlayer) を使うことです。 ExoPlayer は、Android のネイティブ MediaPlayer API では現在サポートされていない、MPEG-DASH や Microsoft Smooth Streaming 配信プロトコルなどの機能をサポートしています。
+Android デバイス用のネイティブ プレーヤー アプリを開発する最も簡単な方法は、オープンソースのビデオ プレーヤー SDK である [Google ExoPlayer SDK](https://github.com/google/ExoPlayer) を使うことです。 ExoPlayer では、Android のネイティブ MediaPlayer API では現在サポートされていない、MPEG-DASH や Microsoft Smooth Streaming 配信プロトコルなどの機能がサポートされています。
 
 ExoPlayer バージョン 2.6 以降には、Widevine DRM のオフライン再生をサポートする多くのクラスが含まれています。 具体的には、OfflineLicenseHelper クラスでは、オフライン ライセンスのダウンロード、更新、解放のための DefaultDrmSessionManager の使用を容易にするユーティリティ関数が提供されています。 SDK のフォルダー "library/core/src/main/java/com/google/android/exoplayer2/offline/" で提供されているクラスは、オフライン ビデオ コンテンツのダウンロードをサポートします。
 
@@ -147,7 +147,7 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
 
 上記のオープンソース PWA アプリは、Node.js で作成されています。 独自のバージョンを Ubuntu サーバーでホストする場合は、再生を妨げる可能性のある、以下のよく発生する問題に留意してください。
 
-1. CORS の問題:サンプル アプリ内のサンプル ビデオは、 https://storage.googleapis.com/biograf-video-files/videos/ でホストされます。 Google は、Google Cloud Storage バケットでホストされているすべてのテスト サンプル用に CORS を設定しています。 これらは CORS ヘッダーで提供され、CORS エントリ https://biograf-155113.appspot.com (Google がサンプルをホストしているドメイン) が明示的に指定されていて、他のサイトではアクセスできません。 アクセスしようとすると、次のような HTTP エラーが表示されます。Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. 非透過の応答が要求に対応している場合は、要求のモードを 'no-cors' に設定し、CORS を無効にしてリソースをフェッチしてください。
+1. CORS の問題:サンプル アプリ内のサンプル ビデオは、 https://storage.googleapis.com/biograf-video-files/videos/ でホストされます。 Google は、Google Cloud Storage バケットでホストされているすべてのテスト サンプル用に CORS を設定しています。 これらは CORS ヘッダーで提供され、CORS エントリ `https://biograf-155113.appspot.com` (Google がサンプルをホストしているドメイン) が明示的に指定されていて、他のサイトではアクセスできません。 試みると、次のような HTTP エラーが表示されます: `Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
 2. 証明書の問題:Chrome v 58 以降では、Widevine 用の EME には HTTPS が必要です。 したがって、X509 証明書を使って HTTPS 経由でサンプル アプリをホストする必要があります。 通常のテスト証明書は次の要件のため機能しません。次の最小要件を満たす証明書を取得する必要があります。
     - Chrome および Firefox では、SAN-Subject Alternative Name の設定が証明書に存在する必要があります
     - 証明書には信頼された CA が必要であり、開発用の自己署名証明書は機能しません
@@ -155,26 +155,26 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 
 一部のクライアント/ユーザーには永続ライセンス (オフライン有効) を提供し、他のクライアント/ユーザーには非永続ライセンス (オフライン無効) を提供するにはどうすればよいですか。 コンテンツを複製し、別のコンテンツ キーを使う必要がありますか。
 
 ### <a name="answer"></a>Answer
 Media Services v3 では 1 つの資産が複数の StreamingLocator を持つことができます。 次のように指定できます。
 
-1.  license_type = "persistent" である 1 つの ContentKeyPolicy、"persistent" を要求する ContentKeyPolicyRestriction、およびその StreamingLocator。
-2.  license_type="nonpersistent" である 1 つの ContentKeyPolicy、"nonpersistent" を要求する ContentKeyPolicyRestriction、およびその StreamingLocator。
-3.  2 つの StreamingLocator では ContentKey が異なります。
+1.    license_type = "persistent" である 1 つの ContentKeyPolicy、"persistent" を要求する ContentKeyPolicyRestriction、およびその StreamingLocator。
+2.    license_type="nonpersistent" である 1 つの ContentKeyPolicy、"nonpersistent" を要求する ContentKeyPolicyRestriction、およびその StreamingLocator。
+3.    2 つの StreamingLocator では ContentKey が異なります。
 
 カスタム STS のビジネス ロジックに応じて、さまざまな要求が JWT トークンで発行されます。 トークンを使用して、対応するライセンスのみ取得でき、対応する URL のみを再生できます。
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 
-Widevine のセキュリティ レベルについて、Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)」(Widevine DRM アーキテクチャの概要) ドキュメントでは、3 つの異なるセキュリティ レベルが定義されています。 一方、[Widevine ライセンス テンプレートに関する Azure Media Services のドキュメント](widevine-license-template-overview.md)では、5 つの異なるセキュリティ レベルが示されています。 2 つの異なるセキュリティ レベル セットの間にはどのような関係または対応がありますか。
+Widevine のセキュリティ レベルについて、Google の「Widevine DRM Architecture Overview」(Widevine DRM アーキテクチャの概要) というドキュメントでは、3 つの異なるセキュリティ レベルが定義されています。 一方、[Widevine ライセンス テンプレートに関する Azure Media Services のドキュメント](widevine-license-template-overview.md)では、5 つの異なるセキュリティ レベルが示されています。 2 つの異なるセキュリティ レベル セットの間にはどのような関係または対応がありますか。
 
 ### <a name="answer"></a>Answer
 
-Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)」(Widevine DRM アーキテクチャの概要) では、次の 3 つのセキュリティ レベルが定義されています。
+Google の「Widevine DRM Architecture Overview」(Widevine DRM アーキテクチャの概要) というドキュメントでは、次の 3 つのセキュリティ レベルが定義されています。
 
 1.  セキュリティ レベル 1:すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。
 2.  セキュリティ レベル 2:暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。
@@ -196,7 +196,7 @@ Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com
 **セキュリティ レベル 2**:暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。| **security_level=3**:キー マテリアルと暗号化の操作を、ハードウェアを基盤にした TEE で実行する必要があります。 |
 | **セキュリティ レベル 3**:デバイス上に TEE はありません。 ホスト オペレーティング システム上の暗号化に関する情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 の実装は、ハードウェア暗号化エンジンを含む場合がありますが、セキュリティのためではなく、パフォーマンス向上のためだけです。 | **security_level=2**:ソフトウェア暗号化と難読化デコーダーが必須です。<br/><br/>**security_level=1**:ソフトウェアベースのホワイトボックス暗号化が必須です。|
 
-### <a name="question"></a>質問
+### <a name="question"></a>Question
 
 コンテンツのダウンロードに時間がかかるのはなぜですか。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能 | Microsoft Docs
-description: 実際のトラフィック パターン、ネットワーク セキュリティ グループ (NSG) のルールに基づいて、セキュリティ体制を強化し、さらに向上させる方法について説明します。
+description: 実際のトラフィック パターンを使用してネットワーク セキュリティ グループ (NSG) のルールを強化し、セキュリティ体制さらに向上させる方法について説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/24/2019
+ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: fb1e381f9b956a0c6414a82505aced2cbdb2d680
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: a75be23e2e8215d86aebcfd7f4317f2f597d3c5b
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559277"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385080"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能
 Azure Security Center のアダプティブ ネットワークのセキュリティ強化機能を構成する方法を説明します。
@@ -30,10 +30,12 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 
 たとえば、既存の NSG ルールがポート 22 の 140.20.30.10/24 からのトラフィックを許可するとします。 アダプティブ ネットワークのセキュリティ強化機能の推奨事項は、分析に基づいて、範囲を狭め、140.23.30.10/29 からのトラフィックを許可します。これは、より狭い IP 範囲で、そのポートへのその他すべてのトラフィックを拒否します。
 
+>[!TIP]
+> アダプティブ ネットワークのセキュリティ強化機能の推奨事項は、(UDP と TCP の両方において) 次の特定のポートでのみサポートされています。13、17、19、22、23、53、69、81、111、119、123、135、137、138、139、161、162、389、445、512、514、593、636、873、1433、1434、1900、2049、2301、2323、2381、3268、3306、3389、4333、5353、5432、5555、5800、5900、5900、5985、5986、6379、6379、7000、7001、7199、8081、8089、8545、9042、9160、9300、11211、16379、26379、27017、37215
+
+
 ![ネットワーク強化のビュー](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
-> [!NOTE]
-> アダプティブ ネットワークのセキュリティ強化機能の推奨事項は、次のポートでサポートされます。22、3389、21、23、445、4333、3306、1433、1434、53、20、5985、5986、5432、139、66、1128
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>アダプティブ ネットワークのセキュリティ強化機能のアラートとルールの表示
 
@@ -73,7 +75,7 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
     ![ルールの適用](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
 
 
-### ルールの変更<a name ="modify-rule"> </a>
+### <a name="modify-a-rule"></a>ルールの変更  <a name ="modify-rule"> </a>
 
 推奨されたルールのパラメーターを変更することもできます。 たとえば、推奨された IP 範囲を変更することができます。
 
@@ -106,7 +108,7 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 
     ![ルールの適用](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
-### 新しいルールの追加<a name ="add-rule"> </a>
+### <a name="add-a-new-rule"></a>新しいルールの追加 <a name ="add-rule"> </a>
 
 Security Center によって推奨されていない "許可" ルールを追加することができます。
 
@@ -129,7 +131,7 @@ Security Center によって推奨されていない "許可" ルールを追加
     ![ルールの適用](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
-### ルールを削除する<a name ="delete-rule"> </a>
+### <a name="delete-a-rule"></a>ルールを削除する <a name ="delete-rule"> </a>
 
 現在のセッションの推奨されるルールが不要な場合は、削除できます。 たとえば、推奨されるルールを適用すると、正当なトラフィックがブロックされると判断することがあるかもしれません。
 
@@ -138,12 +140,3 @@ Security Center によって推奨されていない "許可" ルールを追加
 1. **[ルール]** タブで、ルールの行の最後にある 3 つのドット (...) をクリックし、 **[削除]** をクリックします。  
 
     ![強化ルール](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
-
-
-
-
-
-
-
- 
-

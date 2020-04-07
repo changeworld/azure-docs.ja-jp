@@ -4,11 +4,11 @@ description: Azure Policy の評価と効果によって、コンプライアン
 ms.date: 02/01/2019
 ms.topic: how-to
 ms.openlocfilehash: 891c9c72d8e83dc8f9adb930e8ebd11b70f6aad8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873150"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236135"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
 
@@ -84,7 +84,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 割り当てのリソースがポリシーや統括ルールに従っていない場合、そのリソースは**非準拠**になります。
 次の表は、さまざまなポリシーの効果での条件の評価と、その結果であるコンプライアンスの状態を示しています。
 
-| リソースの状態 | 効果 | ポリシーの評価 | コンプライアンスの状態 |
+| リソースの状態 | 結果 | ポリシーの評価 | コンプライアンスの状態 |
 | --- | --- | --- | --- |
 | Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 準拠していない |
 | Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 対応 |
@@ -399,7 +399,7 @@ Trent Baker
 
 ![Azure Monitor ログを使用した Azure Policy のコンプライアンス](../media/getting-compliance-data/compliance-loganalytics.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Policy のサンプル](../samples/index.md)を確認します。
 - 「[Azure Policy の定義の構造](../concepts/definition-structure.md)」を確認します。

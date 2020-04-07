@@ -5,22 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da44e8482e335c209f45db478797efa5461bbfe1
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 3d9bec829d7fb3e76eb243bda73423303670585e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78671851"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295113"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>レポートのみモードで条件付きアクセス ポリシーを構成する (プレビュー)
 
 レポートのみモードで条件付きアクセス ポリシーを構成するには:
+
+> [!IMPORTANT]
+> 組織でまだ行っていない場合は、[Azure AD との Azure Monitor 統合を設定](#set-up-azure-monitor-integration-with-azure-ad)します。 このプロセスは、データがレビューに使用できるようになるまでに行う必要があります。
 
 1. **Azure portal** に、条件付きアクセス管理者、セキュリティ管理者、またはグローバル管理者としてサインインします。
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。

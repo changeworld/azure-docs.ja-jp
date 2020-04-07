@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 164f07f6545c1c225814958bba5722536b11a9b4
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 883dbc95ee77d03aee4c3231c6ab8c03f9f7f6e4
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78269431"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387837"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows を実行している N シリーズ VM に AMD GPU ドライバーをインストールする
 
@@ -40,7 +40,7 @@ Windows を実行している新しい Azure NVv4 シリーズ VM の GPU 機能
 
 2. NVv4 プレビューのお客様は、VM を停止し、停止 (割り当て解除) 状態に移行するまでお待ちください。
 
-3. VM を起動してから、フォルダー "...\AMDCleanUninstallUtility" にある "amdcleanuputility-x64.exe" を実行してプレビュー ドライバーをアンインストールします。 正確なパスは、以前のドライバーのインストール ファイルの場所によって異なります。  
+3. VM を起動し、最新の [AMD Cleanup Utility](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe) をダウンロードしてください。 "amdcleanuputility-x64.exe" を実行して、既存のドライバーをアンインストールします。 以前のドライバーと共にインストールされた既存のクリーンナップ ユーティリティは使用しないでください。  
 
 4. 最新のドライバーをダウンロードしてインストールします。
 

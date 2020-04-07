@@ -75,6 +75,8 @@
           href: overview-security.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
+        - name: 組み込みのセキュリティ
+          href: key-vault-security-controls.md
         - name: セキュリティ ワールド
           href: key-vault-ovw-security-worlds.md
         - name: キー コンテナーのセキュリティ保護

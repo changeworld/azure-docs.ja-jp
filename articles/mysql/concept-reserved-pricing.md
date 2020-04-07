@@ -5,19 +5,19 @@ author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 44bdd9a58bfe2f1a8d3a0102aa6652bb340ac719
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 78c8750de7189bad33e9bbc766a3d7543a646f6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773833"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159355"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>予約容量を使用して Azure Database for MySQL 計算リソースを前払いする
 
-Azure Database for MySQL では計算リソースを前払いすることで、従量課金制よりコストを節約できるようになりました。 Azure Database for MySQL の予約容量を使用すると、MySQL サーバーを 1 年分前払いすることで計算コストを大幅に引き下げることができます。 Azure Database for MySQL の予約容量を購入するには、Azure リージョン、デプロイの種類、パフォーマンス レベル、および期間を指定する必要があります。 </br>
+Azure Database for MySQL では計算リソースを前払いすることで、従量課金制よりコストを節約できるようになりました。 Azure Database for MySQL の予約容量を使用すると、MySQL サーバーを 1 年分または 3 年分前払いすることで計算コストを大幅に引き下げることができます。 Azure Database for MySQL の予約容量を購入するには、Azure リージョン、デプロイの種類、パフォーマンス レベル、および期間を指定する必要があります。 </br>
 
-特定の Azure Database for MySQL サーバーに予約を割り当てる必要はありません。 既に実行している Azure Database for MySQL または新しくデプロイされたものには、予約価格の特典が自動的に適用されます。 予約を購入すると、計算コストを 1 年間分前払いすることになります。 予約を購入するとすぐに、予約の属性に一致する Azure Database for MySQL のコンピューティング料金は従量課金制で課金されなくなります。 予約には、MySQL データベース サーバーに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金が Azure Database for MySQL に適用されます。 予約は自動更新されません。 価格の詳細については、[Azure Database for MySQL の予約容量オファー](https://azure.microsoft.com/pricing/details/mysql/)に関するページを参照してください。 </br>
+特定の Azure Database for MySQL サーバーに予約を割り当てる必要はありません。 既に実行している Azure Database for MySQL または新しくデプロイされたものには、予約価格の特典が自動的に適用されます。 予約を購入すると、計算コストを 1 年間または 3 年間分前払いすることになります。 予約を購入するとすぐに、予約の属性に一致する Azure Database for MySQL のコンピューティング料金は従量課金制で課金されなくなります。 予約には、MySQL データベース サーバーに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金が Azure Database for MySQL に適用されます。 予約は自動更新されません。 価格の詳細については、[Azure Database for MySQL の予約容量オファー](https://azure.microsoft.com/pricing/details/mysql/)に関するページを参照してください。 </br>
 
 Azure Database for MySQL の予約容量は、[Azure portal](https://portal.azure.com/) で購入できます。 予約容量を購入するには:
 
@@ -32,12 +32,12 @@ Azure Database for MySQL の予約容量は、[Azure portal](https://portal.azur
 
 予約のサイズは、既存のまたはすぐにデプロイされる予定のサーバー (特定のリージョン内で同じパフォーマンス階層とハードウェア世代を使用するもの) で使用される計算量の合計に基づいて決める必要があります。</br>
 
-たとえば、1 つの汎用の Gen5 - 32 仮想コア MySQL データベースと、2 つのメモリ最適化済みの Gen5 - 16 仮想コア MySQL データベースを実行しているとします。 さらに、来月中に汎用の Gen5 - 32 仮想コア データベース サーバーを 1 つと、メモリ最適化済みの Gen5 - 16 仮想コア データベース サーバーを 1 つデプロイする予定だとします。 少なくとも 1 年間はこれらのリソースが必要になることがわかっているとします。 この場合、単一データベースの汎用 - Gen5 用に 64 (2x32) 仮想コア 1 年予約分と、単一データベース メモリ最適化済み - Gen5 用に 48 (2x16 + 16) 仮想コア 1 年予約分を購入する必要があります。
+たとえば、1 つの汎用の Gen5 - 32 仮想コア MySQL データベースと、2 つのメモリ最適化済みの Gen5 - 16 仮想コア MySQL データベースを実行しているとします。 さらに、来月中に汎用の Gen5 - 32 仮想コア データベース サーバーを 1 つと、メモリ最適化済みの Gen5 - 16 仮想コア データベース サーバーを 1 つデプロイする予定だとします。 少なくとも 1 年間はこれらのリソースが必要になることがわかっているとします。 この場合、単一データベースの汎用 - Gen5 用に 64 (2x32) 個の仮想コア 1 年予約分と、単一データベース メモリ最適化済み - Gen5 用に 48 (2x16 + 16) 個の仮想コア 1 年予約分を購入する必要があります。
 
 
 ## <a name="buy-azure-database-for-mysql-reserved-capacity"></a>Azure Database for MySQL の予約容量を購入する
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[すべてのサービス]**  >  **[予約]** を選択します。
 3. **[追加]** を選択し、[購入予約] ペインで **[Azure Database for MySQL]** を選択して MySQL データベースの新しい予約を購入します。
 4. 必須フィールドに入力します。 選択した属性と一致する既存または新規のデータベースが、予約容量の割引を受けられます。 割引を受ける Azure Database for MySQL サーバーの実際の数は、選択したスコープと数量によって変わります。
@@ -50,8 +50,8 @@ Azure Database for MySQL の予約容量は、[Azure portal](https://portal.azur
 
 | フィールド | 説明 |
 | :------------ | :------- |
-| Subscription   | Azure Database for MySQL の予約容量の予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、Azure Database for MySQL の予約容量の予約の前払いコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制料金の個々の契約 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。
-| Scope (スコープ) | 1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を仮想コアの予約のスコープにすることができます。 以下を選択した場合: </br></br> **共有** - 仮想コアの予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている Azure Database for MySQL サーバーに適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。</br></br> **単一サブスクリプション** - 仮想コアの予約割引はこのサブスクリプションの Azure Database for MySQL サーバーに適用されます。 </br></br> **1 つのリソース グループ** - 予約割引は、選択したサブスクリプションおよびそのサブスクリプション内の選択したリソース グループ内の Azure Database for MySQL サーバーに適用されます。
+| サブスクリプション   | Azure Database for MySQL の予約容量の予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、Azure Database for MySQL の予約容量の予約の前払いコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制料金の個々の契約 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制料金の個々のサブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。
+| Scope | 1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を仮想コアの予約のスコープにすることができます。 以下を選択した場合: </br></br> **共有** - 仮想コアの予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている Azure Database for MySQL サーバーに適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。</br></br> **単一サブスクリプション** - 仮想コアの予約割引はこのサブスクリプションの Azure Database for MySQL サーバーに適用されます。 </br></br> **1 つのリソース グループ** - 予約割引は、選択したサブスクリプションおよびそのサブスクリプション内の選択したリソース グループ内の Azure Database for MySQL サーバーに適用されます。
 | リージョン | Azure Database for MySQL 予約容量の予約の対象となる Azure リージョン。
 | デプロイの種類 | 予約を購入する Azure Database for MySQL リソースの種類。
 | パフォーマンス レベル | Azure Database for MySQL サーバーのサービス レベル。
@@ -70,7 +70,7 @@ Azure Database for MySQL の予約容量は、[Azure portal](https://portal.azur
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 仮想コアの予約割引は、Azure Database for MySQL の予約容量の予約スコープと属性に一致する複数の Azure Database for MySQL サーバーに自動的に適用されます。 Azure Database for MySQL の予約容量の予約スコープは、Azure portal、PowerShell、CLI、または API で更新できます。 </br></br>
 Azure Database for MySQL の予約容量を管理する方法については、Azure Database for MySQL の予約容量の管理に関するページを参照してください。

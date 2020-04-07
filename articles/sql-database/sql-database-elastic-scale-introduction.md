@@ -4,19 +4,16 @@ description: これらのツールを使用すると、Software as a Service (Sa
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3e30e54eb18eb5d487da6821d285109b1a22297f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 44c6147402cbe05e62c091863cb0bd4f9235bfab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823616"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061642"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Azure SQL Database によるスケールアウト
 **Elastic Database** ツールを使用すると、Azure SQL データベースを簡単にスケールアウトできます。 これらのツールと機能では、**Azure SQL Database** のデータベースのリソースを使用して、トランザクションのワークロードに対するソリューション、特にサービスとしてのソフトウェア (SaaS) アプリケーションを作成できます。 Elastic Database は、次の機能で構成されています。
@@ -85,7 +82,7 @@ ms.locfileid: "73823616"
 ### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>マルチテナントデータベースからシングルテナント データベースへのデータ移動
 SaaS アプリケーションを作成する場合は、見込顧客に試用版のソフトウェアを提供するのが一般的です。 この場合は、データにマルチテナント データベースを使用すると費用対効果を高めることができます。 ただし、見込顧客が実際に顧客になった場合、シングルテナント データベースを使用した方がパフォーマンスが向上します。 このため、顧客が試用期間中にデータを作成していた場合には、 [分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md) を使用して、マルチテナント データベースから新しいシングルテナント データベースにデータを移動します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 クライアント ライブラリの使い方を示すサンプル アプリについては、「[Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md)」をご覧ください。
 
 ツールを使用するように既存のデータベースを変換する方法については、「[既存のデータベースを移行してスケールアウト](sql-database-elastic-convert-to-use-elastic-tools.md)」をご覧ください。

@@ -1,19 +1,18 @@
 ---
 title: Marketo でリード管理を構成する | Azure Marketplace
 description: Azure Marketplace のお客様向けに Marketo でリード管理を構成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: 7949507c8c7ef57cded25cde8579c1945aa93a81
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9fa05eae2d297cbd6ae7243d191cae5a7a3f990e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825214"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288531"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Marketo でリード管理を構成する
 
@@ -42,7 +41,7 @@ ms.locfileid: "73825214"
 `<script src="//app-ys12.marketo.com/js/forms2/js/forms2.min.js"></script>`
 
     <form id="mktoForm_1179"></form>
-    <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
+    <script>MktoForms2.loadForm("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
 
 1. [Embed Code]\(埋め込みコード\) に示された値をコピーすると、Cloud パートナー ポータルの Marketo フィールドで **Server Id**、**Munchkin Id**、および **Form Id** を構成できます。
 
@@ -50,4 +49,4 @@ Marketo の [Embed Code]\(埋め込みコード\) の例から必要な ID を�
 
 - Server Id = **ys12**
 - Munchkin Id = **123-PQR-789**
-- Form Id = **1179**\
+- Form Id = **1179**

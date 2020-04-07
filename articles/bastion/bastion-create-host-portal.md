@@ -1,24 +1,24 @@
 ---
-title: Azure Bastion ホストの作成 | Microsoft Docs
-description: この記事では、Azure Bastion ホストを作成する方法について学習します
+title: 'Azure Bastion ホストを作成する: ポータル'
+description: この記事では、ポータルを使用して Azure Bastion ホストを作成する方法について学習します
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: f907dcb4427fd07a2c212e5de91ccce5e8198960
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 14a596d78fb1f560c62013e7e439ed60d3a29b8f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990421"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79366145"
 ---
-# <a name="create-an-azure-bastion-host"></a>Azure Bastion ホストを作成する
+# <a name="create-an-azure-bastion-host-using-the-portal"></a>ポータルを使用して Azure Bastion ホストを作成する
 
 この記事では、Azure portal を利用し、Azure Bastion ホストを作成する方法について示します。 お使いの仮想ネットワークに Azure Bastion サービスをプロビジョニングすると、同じ仮想ネットワークのすべての VM でシームレスに RDP/SSH をご利用いただけます。 Azure Bastion デプロイは、サブスクリプションやアカウント、仮想マシン単位ではなく、仮想ネットワーク単位です。
 
-すべての設定を手動で指定するか、既存の VM に対応する設定を使用することで、ポータルで新しい Bastion ホスト リソースを作成できます。 任意で、[Azure PowerShell](bastion-create-host-powershell.md) を使用して Azure Bastion ホストを作成することができます。
+すべての設定を手動で指定するか、既存の VM に対応する設定を使用することで、ポータルで新しい Bastion ホスト リソースを作成できます。 VM 設定を使用して要塞ホストを作成するには、[クイックスタート](quickstart-host-portal.md)に関する記事を参照してください。 任意で、[Azure PowerShell](bastion-create-host-powershell.md) を使用して Azure Bastion ホストを作成することができます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -26,7 +26,7 @@ Bastion は、以下の Azure パブリック リージョンで利用できま�
 
 [!INCLUDE [available regions](../../includes/bastion-regions-include.md)]
 
-## <a name="createhost"></a>Bastion ホストの作成 - 設定の指定
+## <a name="create-a-bastion-host"></a><a name="createhost"></a>Bastion ホストの作成
 
 このセクションは、Azure portal から新しい Azure Bastion リソースを作成するのに役立ちます。
 
@@ -58,26 +58,6 @@ Bastion は、以下の Azure パブリック リージョンで利用できま�
 1. 設定の指定が完了したら、 **[レビュー + 作成]** をクリックします。 これにより、値が検証されます。 検証をパスすると、作成プロセスを開始できます。
 1. **[Bastion の作成]** ページで **[作成]** をクリックします。
 1. デプロイが進行中であることを知らせるメッセージが表示されます。 リソースが作成されたときに、状態がこのページに表示されます。 Bastion リソースを作成してデプロイするには、約 5 分かかります。
-
-## <a name="createvmset"></a>Bastion ホストの作成 - VM 設定の使用
-
-既存の VM を使用してポータルで Bastion ホストを作成する場合、特に指定しなければ、さまざまな設定がお使いの仮想マシンまたは仮想ネットワークに対応するように自動設定されます。
-
-1. [Azure Portal](https://portal.azure.com)を開きます。 お使いの仮想マシンに移動し、 **[接続]** をクリックします。
-
-   ![VM の接続](./media/bastion-create-host-portal/vmsettings.png)
-1. 右側のサイドバーで、 **[Bastion]** 、 **[Use Bastion]\(Bastion を使用\)** の順にクリックします。
-
-   ![Bastion](./media/bastion-create-host-portal/vmbastion.png)
-1. [Bastion] ページで、次の設定フィールドを入力します。
-
-   * **Name**:作成する Bastion ホストの名前です。
-   * **サブネット**:Bastion リソースがデプロイされる仮想ネットワーク内のサブネットです。 このサブネットは **AzureBastionSubnet** という名前で作成される必要があります。 これにより、Bastion リソースをデプロイするサブネットが Azure で認識されます。 これはゲートウェイ サブネットとは異なります。 /27 かそれより大きいサブネットを使用する必要があります (/27、/26 など)。 ネットワーク セキュリティ グループ、ルート テーブル、委任なしでサブネットを作成します。 後で **AzureBastionSubnet** でネットワーク セキュリティ グループを使用することに決めた場合、[NSG の使用](bastion-nsg.md)に関するページを参照してください。
-   
-     **[サブネット構成の管理]** をクリックして **AzureBastionSubnet** を作成します。  **[作成]** をクリックしてサブネットを作成し、次の設定を続けます。
-   * **[パブリック IP アドレス]** : RDP/SSH でアクセスされる (ポート 443 経由) Bastion リソースのパブリック IP です。 新しいパブリック IP を作成するか、既存のものを使用します。 パブリック IP アドレスは、作成している Bastion リソースと同じリージョン内にある必要があります。
-   * **パブリック IP アドレス名**:パブリック IP アドレス リソースの名前です。
-1. 検証画面で、 **[作成]** をクリックします。 Bastion リソースが作成され、デプロイされるまで、約 5 分お待ちください。
 
 ## <a name="next-steps"></a>次のステップ
 

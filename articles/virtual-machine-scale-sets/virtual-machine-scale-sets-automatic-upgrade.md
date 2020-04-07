@@ -1,18 +1,18 @@
 ---
 title: Azure 仮想マシン スケール セットを使用した OS イメージの自動アップグレード
 description: スケール セット内の VM インスタンス上の OS イメージを自動的にアップグレードする方法について説明します
-author: shandilvarun
+author: mayanknayar
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 07/16/2019
-ms.author: vashan
-ms.openlocfilehash: c452ba5b8abfce4227d72922139824d639c62755
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.date: 03/18/2020
+ms.author: manayar
+ms.openlocfilehash: 6d550e8e960cb8e212702796467c91d1cd1ebb23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278155"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235171"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード
 
@@ -21,9 +21,9 @@ ms.locfileid: "76278155"
 OS の自動アップグレードには、次の特徴があります。
 
 - 構成すると、イメージ発行元によって公開された最新の OS イメージが、ユーザーの介入なしでスケール セットに自動的に適用されます。
-- 新しいプラットフォーム イメージが発行元によって発行されるたびに、ローリング方法でバッチごとにインスタンスをアップグレードします。
+- 新しいイメージが発行元によって発行されるたびに、ローリングの方法でバッチごとにインスタンスをアップグレードします。
 - アプリケーション正常性プローブおよび[アプリケーション正常性拡張機能](virtual-machine-scale-sets-health-extension.md)と統合されます。
-- すべての VM サイズ、および Windows と Linux の両方のプラットフォーム イメージで動作します。
+- すべての VM サイズについて、Windows と Linux の両方のイメージで動作します。
 - 自動アップグレードはいつでも停止できます (OS のアップグレードは、手動でも開始できます)。
 - VM の OS ディスクが、最新バージョンのイメージで作成された新しい OS ディスクに置き換えられます。 永続化されているデータ ディスクは保持されたまま、構成済みの拡張機能とカスタム データ スクリプトが実行されます。
 - [拡張機能のシーケンス処理](virtual-machine-scale-sets-extension-sequencing.md)がサポートされています。
@@ -35,7 +35,7 @@ OS の自動アップグレードには、次の特徴があります。
 
 アップグレード プロセスは次のように実行されます。
 1. アップグレード プロセスを開始する前に、オーケストレーターは異常なインスタンスが全体的なスケール セットの 20% を超えていないことを確認します。
-2. アップグレード オーケストレーターは、アップグレードする VM インスタンスのバッチ (インスタンスの合計数の最大 20% を含む 1 つのバッチ) を識別します。 インスタンス数が 5 以下の小規模なスケール セットの場合、アップグレードのバッチ サイズは 1 仮想マシン インスタンスです。
+2. アップグレード オーケストレーターは、どの 1 つのバッチも最大で合計インスタンス数の 20% であり、1 つの仮想マシンの最小バッチ サイズを満たしているという条件で、アップグレードする VM インスタンスのバッチを識別します。
 3. VM インスタンスの選択したバッチの OS ディスクは、最新のイメージから作成された新しい OS ディスクに置き換えられます。 スケール セット モデルに指定されたすべての拡張機能と構成は、アップグレードされたインスタンスに適用されます。
 4. 構成済みのアプリケーション正常性プローブやアプリケーション正常性拡張機能があるスケール セットの場合、アップグレードはインスタンスが正常になるまで 5 分間待機した後、次のバッチのアップグレードに進みます。 アップグレードから 5 分以内にインスタンスの正常性が回復しない場合は、既定でそのインスタンスの以前の OS ディスクが復元されます。
 5. また、アップグレード オーケストレーターでは、アップグレード後に異常が発生したインスタンスの割合も追跡されます。 アップグレード処理中に異常なアップグレード済みインスタンスの割合が 20% を超えた場合、アップグレードは停止します。
@@ -44,9 +44,9 @@ OS の自動アップグレードには、次の特徴があります。
 スケール セットの OS アップグレード オーケストレーターは、各バッチをアップグレードする前に、スケール セットの全体の正常性を確認します。 バッチのアップグレード中には、他の計画済みまたは計画外メンテナンスが同時に発生することがあり、それによってスケール セット インスタンスの正常性が影響を受ける場合があります。 そのような場合、スケール セットのインスタンスの 20% 以上が異常な状態になると、スケール セットのアップグレードは現在のバッチが終了した時点で停止します。
 
 ## <a name="supported-os-images"></a>サポート対象の OS イメージ
-現時点では、特定の OS プラットフォーム イメージのみがサポートされています。 カスタム イメージは現時点ではサポートされていません。
+現時点では、特定の OS プラットフォーム イメージのみがサポートされています。 カスタム イメージのサポートは、[Shared Image Gallery](shared-image-galleries.md) から入手できる[プレビュー段階](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images-preview)のカスタム イメージとして提供されています。
 
-現時点では、次の SKU がサポートされています (定期的に追加される予定です)。
+現時点では、以下のプラットフォーム SKU がサポートされています (定期的に追加されます)。
 
 | Publisher               | OS 製品      |  Sku               |
 |-------------------------|---------------|--------------------|
@@ -66,7 +66,7 @@ OS の自動アップグレードには、次の特徴があります。
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>OS イメージの自動アップグレードを構成するための要件
 
-- プラットフォーム イメージの *version* プロパティには *latest* を設定する必要があります。
+- イメージの *version* プロパティを *latest* に設定する必要があります。
 - Service Fabric 以外のスケール セットには、アプリケーション正常性プローブまたは[アプリケーション正常性拡張機能](virtual-machine-scale-sets-health-extension.md)を使用します。
 - コンピューティング API バージョン 2018-10-01 以降を使用します。
 - スケール セット モデルで指定された外部リソースが利用可能であり、更新可能であることを確認してください。 例としては、VM 拡張プロパティ内のブートストラップ ペイロードの SAS URI、ストレージ アカウント内のペイロード、モデル内のシークレットへの参照などが挙げられます。
@@ -80,6 +80,86 @@ Service Fabric を使用している場合は、次の条件が満たされて�
 -   持続性レベルは、スケール セット モデル定義の Service Fabric クラスターと Service Fabric 拡張機能で同じである必要があります。
 
 Service Fabric クラスターと Service Fabric 拡張機能で持続性の設定に不一致がないことを確認します。これは、一致しない場合にアップグレード エラーが発生する可能性があるためです。 持続性レベルは、[このページ](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)で説明されているガイドラインに従って変更できます。
+
+
+## <a name="automatic-os-image-upgrade-for-custom-images-preview"></a>カスタム イメージの OS イメージの自動アップグレード (プレビュー)
+
+> [!IMPORTANT]
+> カスタム イメージの OS イメージの自動アップグレードは、現在パブリック プレビューの段階にあります。 後述するパブリック プレビュー機能を使用するためには、オプトイン手順が必要です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+OS イメージの自動アップグレードは、[Shared Image Gallery](shared-image-galleries.md) を通して展開されるプレビュー段階のカスタム イメージに対して提供されています。 その他のカスタム イメージは、OS イメージの自動アップグレードではサポートされていません。
+
+プレビュー機能を有効にするには、以下で詳しく説明するように、サブスクリプションごとに *AutomaticOSUpgradeWithGalleryImage* 機能を 1 回のみオプトインする必要があります。
+
+### <a name="rest-api"></a>REST API
+次の例では、お使いのサブスクリプションでプレビューを有効にする方法について説明します。
+
+```
+POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage/register?api-version=2015-12-01`
+```
+
+機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには:
+
+```
+GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage?api-version=2015-12-01`
+```
+
+サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。
+
+```
+POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-10-01`
+```
+
+### <a name="azure-powershell"></a>Azure PowerShell
+[Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) コマンドレットを使用して、サブスクリプションでのプレビューを有効にします。
+
+```azurepowershell-interactive
+Register-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
+```
+
+機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには:
+
+```azurepowershell-interactive
+Get-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
+```
+
+サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。
+
+```azurepowershell-interactive
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+[az feature register](/cli/azure/feature#az-feature-register) を使用して、サブスクリプションでのプレビューを有効にします。
+
+```azurecli-interactive
+az feature register --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
+```
+
+機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには:
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
+```
+
+サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute
+```
+
+### <a name="additional-requirements-for-custom-images"></a>カスタム イメージのその他の要件
+- 上で説明したオプトイン プロセスは、サブスクリプションごとに 1 回だけ完了する必要があります。 オプトインの完了後、そのサブスクリプションのすべてのスケール セットに対して自動 OS アップグレードを有効にできます。
+- Shared Image Gallery はどのサブスクリプション内にあってもよく、個別にオプトインする必要はありません。 機能のオプトインが必要なのは、スケール セットのサブスクリプションのみです。
+- OS イメージの自動アップグレードの構成プロセスは、このページの[構成に関するセクション](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade)で詳しく説明されているように、すべてのスケール セットについて同一です。
+- OS イメージの自動アップグレードに向けて構成されたスケール セット インスタンスは、新しいバージョンのイメージが発行され、そのスケール セットのリージョンに[レプリケートされた](shared-image-galleries.md#replication)ときに、Shared Image Gallery のイメージの最新バージョンにアップグレードされます。 スケールがデプロイされているリージョンに新しいイメージがレプリケートされていない場合、スケール セット インスタンスは最新バージョンにアップグレードされません。 リージョンのイメージ レプリケーションによって、スケール セットの新しいイメージのロールアウトを制御することができます。
+- そのギャラリー イメージの最新バージョンから、新しいイメージ バージョンを除外しないでください。 ギャラリー イメージの最新バージョンから除外されたイメージ バージョンは、OS イメージの自動アップグレードによってスケール セットにロールアウトされません。
+
+> [!NOTE]
+>スケール セットが OS の自動アップグレードに向けて構成された後、スケール セットが最初のイメージのロールアウトを取得するまで、最大 2 時間かかることがあります。 これは、スケール セットごとに 1 回限りの遅延です。 それ以降のイメージのロールアウトは、この遅延なしにスケール セットに適用されます。
+
 
 ## <a name="configure-automatic-os-image-upgrade"></a>OS イメージの自動アップグレードの構成
 OS イメージの自動アップグレードを構成するには、スケール セットのモデル定義で *automaticOSUpgradePolicy.enableAutomaticOSUpgrade* プロパティが *true* に設定されていることを確認します。
@@ -249,7 +329,7 @@ az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServ
 > OS イメージのアップグレードの手動トリガーでは、自動ロールバック機能を利用できません。 アップグレード操作後にインスタンスの正常性が回復しない場合、その以前の OS ディスクは復元できません。
 
 ### <a name="rest-api"></a>REST API
-[OS アップグレードの開始](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API 呼び出しを使用してローリング アップグレードを開始し、すべての仮想マシン スケール セット インスタンスを入手できる最新のプラットフォーム イメージ OS バージョンに移動します。 入手できる最新の OS バージョンを既に実行しているインスタンスは影響を受けません。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セット上でローリング OS アップグレードを開始する方法を説明したものです。
+[OS アップグレードの開始](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API 呼び出しを使用してローリング アップグレードを開始し、すべての仮想マシン スケール セット インスタンスを、入手できる最新のイメージ OS バージョンに移行します。 入手できる最新の OS バージョンを既に実行しているインスタンスは影響を受けません。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セット上でローリング OS アップグレードを開始する方法を説明したものです。
 
 ```
 POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2018-10-01`

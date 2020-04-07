@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
-ms.date: 07/16/2019
-ms.openlocfilehash: 1c1995b4daf3b76abf7663d8d6c1f4cb7b1d6e2b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/17/2020
+ms.openlocfilehash: 393d67b200a4f8d44cb001b3a7e2e491209e9d58
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201681"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80364162"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database マネージド インスタンスに関してよく寄せられる質問 (FAQ)
 
@@ -42,13 +42,13 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 
 **既知の問題やバグはどこで確認できますか?**
 
-バグや既知の問題については、「[既知の問題](sql-database-managed-instance-transact-sql-information.md#Issues)」をご覧ください。
+バグや既知の問題については、「[既知の問題](sql-database-release-notes.md#known-issues)」をご覧ください。
 
 ## <a name="new-features"></a>新機能
 
 **最新の機能とパブリック プレビュー段階の機能はどこにありますか?**
 
-新機能とプレビュー機能については、[リリース ノート](/azure/sql-database/sql-database-release-notes?tabs=managed-instance)を参照してください。
+新機能とプレビュー機能については、[リリース ノート](sql-database-release-notes.md?tabs=managed-instance)を参照してください。
 
 ## <a name="deployment-times"></a>デプロイ時間 
 
@@ -60,7 +60,11 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 
 **マネージド インスタンスにオンプレミスの SQL Server と同じ名前を付けることはできますか?**
 
-マネージド インスタンスには、*database.windows.net* で終わる名前を付ける必要があります。 既定値の代わりに別の DNS ゾーン、たとえば **mi-another-name**.contoso.com などを使用するには、次のようにします。 
+マネージド インスタンス名の変更はサポートされていません。
+
+マネージド インスタンスの既定の DNS ゾーン *.database.windows.net* は変更できました。 
+
+既定値の代わりに別の DNS ゾーン、たとえば *.contoso.com* などを使用するには、次のようにします。 
 - CliConfig を使用して別名を定義する。 このツールは単なるレジストリ設定ラッパーなので、グループ ポリシーやスクリプトを使用して行うことも可能です。
 - *TrustServerCertificate=true* オプションを指定した *CNAME* を使用する。
 
@@ -125,24 +129,24 @@ General Purpose マネージド インスタンスでは、データおよびロ
 
 **管理ポートでインバウンド NSG 規則を設定するには、どうすればよいですか?**
 
-組み込みファイアウォール機能は、Microsoft の管理またはデプロイ用マシンのみに関連付けられた IP 範囲からのインバウンド接続を許可するよう、クラスター内のすべての仮想マシンで Windows ファイアウォールを構成すると共に、管理ワークステーションを効果的に保護してネットワーク層を介した侵入を防止します。
+マネージド インスタンス コントロール プレーンは、管理ポートを保護する NSG ルールを保持します。
 
-各ポートの用途は次のとおりです。
+管理ポートの用途は次のとおりです。
 
 ポート 9000 および 9003 は、Service Fabric インフラストラクチャによって使用されます。 Service Fabric の主な役割は、仮想クラスターを正常な状態に保ち、コンポーネントのレプリカ数に関して目標とする状態を維持することです。
 
-ポート 1438、1440、および 1452 は、Node Agent によって使用されます。 Node Agent とは、クラスター内で実行され、コントロール プレーンによって管理コマンドを実行するために使用されるアプリケーションです。
+ポート 1438、1440、および 1452 は、ノード エージェントによって使用されます。 Node Agent とは、クラスター内で実行され、コントロール プレーンによって管理コマンドを実行するために使用されるアプリケーションです。
 
-通信は、ネットワーク層での組み込みファイアウォールに加え、証明書でも保護されます。
+NSG ルールに加えて、組み込みファイアウォールにより、ネットワーク レイヤー上のインスタンスが保護されます。 アプリケーション レイヤーの通信は証明書で保護されます。
   
 詳細および組み込みファイアウォールの確認方法については、[Azure SQL Database マネージド インスタンスの組み込みファイアウォール](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)に関するページを参照してください。
 
 
-## <a name="mitigate-network-risks"></a>ネットワークのリスクを軽減する  
+## <a name="mitigate-data-exfiltration-risks"></a>データ窃盗リスクを軽減する  
 
-**ネットワークのリスクを軽減するには、どうすればよいですか?**
+**データ窃盗リスクを軽減するにはどうすればいいですか?**
 
-ネットワークのリスクを軽減するために、以下に示す一連のセキュリティ設定および制御を適用することをお勧めします。
+データ窃盗リスクを軽減するために、以下に示す一連のセキュリティ設定および制御を適用することをお勧めします。
 
 - すべてのデータベースで [Transparent Data Encryption (TDE)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) を有効にする。
 - 共通言語ランタイム (CLR) を無効にする。 これは、オンプレミスでも推奨される設定です。
@@ -180,19 +184,19 @@ DNS 構成は、最終的に次の場合に更新されます。
 回避策として、マネージド インスタンスを 4 個の仮想コアにダウングレードしてからアップグレードし直します。 これには、DNS 構成の更新という副作用があります。
 
 
-## <a name="static-ip-address"></a>静的 IP アドレス
+## <a name="ip-address"></a>IP アドレス
+
+**IP アドレスを使用してマネージド インスタンスに接続できますか?**
+
+IP アドレスを使用したマネージド インスタンスへの接続はサポートされていません。 マネージド インスタンスのホスト名は、マネージド インスタンスの仮想クラスターの前にあるロード バランサーにマップされます。 1 つの仮想クラスターが複数のマネージド インスタンスをホストすることが可能なため、名前を指定しないで適切なマネージド インスタンスに接続をルーティングすることはできません。
+
+マネージド インスタンス仮想クラスターのアーキテクチャの詳細については、「[仮想クラスターの接続アーキテクチャ](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture)」を参照してください。
 
 **マネージド インスタンスに静的 IP アドレスを付与することはできますか?**
 
 まれではあるものの不可欠な状況として、マネージド インスタンスを新しい仮想クラスターにオンラインで移行することが必要になる場合があります。 必要な場合、この移行を行うのは、サービスのセキュリティおよび信頼性の向上を目指してテクノロジ スタックに変更を加えるためです。 新しい仮想クラスターに移行すると、マネージド インスタンスのホスト名にマップされている IP アドレスが変更されます。 マネージド インスタンス サービスは、静的 IP アドレスのサポートを要求することはなく、定期的なメンテナンス サイクルの一環として、そのアドレスを予告なしに変更する権限を有しています。
 
 このような理由から、IP アドレスの不変性を当てにすると不要なダウンタイムの発生につながるので、変更を想定しておくことを強くお勧めします。
-
-## <a name="moving-mi"></a>MI の移動
-
-**マネージド インスタンスまたはその VNet を別のリソース グループに移動することはできますか?**
-
-いいえ、これは現在のプラットフォームの制限事項です。 マネージド インスタンスを作成した後は、マネージド インスタンスまたは VNet を別のリソース グループまたはサブスクリプションに移動することはできません。
 
 ## <a name="change-time-zone"></a>タイムゾーンの変更
 

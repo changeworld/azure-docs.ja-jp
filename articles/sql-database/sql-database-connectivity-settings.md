@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Database と Data Warehouse の接続の設定
-description: このドキュメントでは、Azure SQL の TLS バージョンの選択と、プロキシとリダイレクトの設定について説明します
+description: このドキュメントでは、TLS バージョンの選択と、Azure SQL のプロキシとリダイレクトの設定の比較について説明します
 services: sql-database
 ms.service: sql-database
 titleSuffix: Azure SQL Database and SQL Data Warehouse
@@ -10,11 +10,11 @@ ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
 ms.openlocfilehash: d18fdee85bd0fbabe68fe9890c4a2dc74366041d
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096682"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79366089"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL の接続の設定
 > [!NOTE]

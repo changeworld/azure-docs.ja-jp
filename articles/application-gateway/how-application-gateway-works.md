@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: d9d7ae3bc321f1f000fac1a875589df352077f33
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 84a7bdfb9f8f7c741140cbe2086149dff90db211
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129811"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132983"
 ---
 # <a name="how-an-application-gateway-works"></a>アプリケーション ゲートウェイの動作
 
@@ -46,7 +46,7 @@ ms.locfileid: "74129811"
 
 アプリケーション ゲートウェイでバックエンド サーバーが決定されると、HTTP 設定に基づいて、そのバックエンド サーバーとの新しい TCP セッションが開かれます。 HTTP 設定には、バックエンド サーバーとの新しいセッションを確立するために必要なプロトコル、ポート、その他のルーティング関連の設定が指定されています。
 
-アプリケーション ゲートウェイとバックエンド サーバーの間でトラフィックが暗号化されるかどうか (またそれによって、エンド ツー エンドの SSL が達成されるかどうか) は、HTTP 設定で使用されているポートとプロトコルによって決まります。
+アプリケーション ゲートウェイとバックエンド サーバーの間でトラフィックが暗号化されるかどうか (またそれによって、エンド ツー エンドの TLS が達成されるかどうか) は、HTTP 設定で使用されているポートとプロトコルによって決まります。
 
 アプリケーション ゲートウェイによって元の要求がバックエンド サーバーに送信されるときに、HTTP 設定内のホスト名、パス、およびプロトコルをオーバーライドするためのカスタム構成が使用されます。 このアクションによって、Cookie ベースのセッション アフィニティ、接続のドレイン、バックエンドからのホスト名の選択が管理されます。
 
@@ -64,6 +64,6 @@ x-forwarded-proto の有効な値は、HTTP または HTTPS です。 x-forwarde
 
 [HTTP ヘッダーの書き換え](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)を使用してヘッダーを変更したり、path-override 設定を使用して URI パスを変更したりするようにアプリケーション ゲートウェイを構成できます。 ただし、そのように構成されていない限り、すべての受信要求はバックエンドにプロキシ処理されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [アプリケーション ゲートウェイのコンポーネントを確認する](application-gateway-components.md)

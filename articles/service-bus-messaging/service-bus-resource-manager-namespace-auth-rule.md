@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: c795c61ec4891205ad9c77e96914d9b374fa88af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1bfb2d2d946a85c1d051315fb29a5a63f7a00871
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426914"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384927"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Service Bus の名前空間とキューに使用する承認規則を Azure Resource Manager テンプレートで作成する
 
@@ -58,6 +58,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 このテンプレートでは、次のパラメーターを定義します。
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 作成する Service Bus 名前空間の名前。
 
 ```json
@@ -67,6 +68,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 ```
 
 ### <a name="namespaceauthorizationrulename"></a>namespaceAuthorizationRuleName
+
 名前空間の承認規則の名前。
 
 ```json
@@ -76,6 +78,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 ```
 
 ### <a name="servicebusqueuename"></a>serviceBusQueueName
+
 Service Bus 名前空間のキューの名前。
 
 ```json
@@ -85,6 +88,7 @@ Service Bus 名前空間のキューの名前。
 ```
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 テンプレートの Service Bus API バージョン。
 
 ```json
@@ -97,6 +101,7 @@ Service Bus 名前空間のキューの名前。
 ```
 
 ## <a name="resources-to-deploy"></a>デプロイ対象のリソース
+
 **Messaging**タイプの標準的な Service Bus 名前空間を作成すると共に、Service Bus の名前空間とエンティティに使用する承認規則を作成します。
 
 ```json
@@ -152,21 +157,25 @@ Service Bus 名前空間のキューの名前。
 JSON の構文とプロパティについては、[namespaces](/azure/templates/microsoft.servicebus/namespaces)、[queues](/azure/templates/microsoft.servicebus/namespaces/queues)、および [AuthorizationRules](/azure/templates/microsoft.servicebus/namespaces/authorizationrules) を参照してください。
 
 ## <a name="commands-to-run-deployment"></a>デプロイを実行するコマンド
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
-```powershell
+
+```powershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-```azurecli
+
+```azurecli-interactive
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/301-servicebus-create-authrule-namespace-and-queue/azuredeploy.json>
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
 Azure Resource Manager を使ってリソースを作成、デプロイしたら、それらのリソースを管理する方法を次の記事で確認しましょう。
 
 * [PowerShell で Service Bus を管理する](service-bus-powershell-how-to-provision.md)

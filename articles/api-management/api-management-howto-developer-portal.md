@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/05/2020
+ms.date: 03/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 311ce34a4b5cfbb9a54a285094dac34c7dd5a225
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: fefa5ff5d112b479110d484ee0ea4c358b5c88a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126535"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335904"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management 開発者ポータルの概要
 
@@ -30,7 +30,7 @@ ms.locfileid: "79126535"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="managed-vs-self-hosted"></a>マネージド バージョンとセルフホステッド バージョン
+## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a>マネージド バージョンとセルフホステッド バージョン
 
 開発者ポータルは 2 つの方法で構築できます。
 
@@ -64,11 +64,11 @@ ms.locfileid: "79126535"
 
 ポータルは、[Paperbits フレームワーク](https://paperbits.io/)の適合されたフォークに基づいています。 元の Paperbits の機能が拡張され、API Management 固有のウィジェット (API の一覧、製品の一覧など)、およびコンテンツを保存および取得するための API Management サービスへのコネクタが提供されるようになりました。
 
-## <a name="faq"></a>よく寄せられる質問
+## <a name="frequently-asked-questions"></a><a name="faq"></a>よく寄せられる質問
 
 このセクションでは、この開発者ポータルに関してよく寄せられる一般的な質問に回答します。 セルフホステッド バージョンに関する質問については、[GitHub リポジトリの wiki セクション](https://github.com/Azure/api-management-developer-portal/wiki)を参照してください。
 
-### <a name="a-idpreview-to-ga-how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> ポータルのプレビューバージョンから移行するにはどうすればよいですか。
+### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> ポータルのプレビューバージョンから移行するにはどうすればよいですか。
 
 開発者ポータルのプレビュー バージョンを使用して、API Management サービスのプレビュー コンテンツのプロビジョニングを行いました。 ユーザー エクスペリエンスを向上させるために、一般公開バージョンでは既定のコンテンツが大幅に変更されています。 また、新しいウィジェットも含まれています。
 
@@ -136,26 +136,22 @@ API Management サービスが内部 VNet にあり、インターネットか�
 
 (VNet、サインイン、製品条項などの) ほとんどの構成変更には[ポータルの再発行](api-management-howto-developer-portal-customize.md#publish)が必要です。
 
-### <a name="cors"></a> 対話型コンソールを使用すると、CORS エラーが発生します
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a> 対話型コンソールを使用すると、CORS エラーが発生します
 
-対話型コンソールは、ブラウザーからクライアント側の API 要求を行います。 API に [CORS ポリシー](api-management-cross-domain-policies.md#CORS)を追加して、CORS の問題を解決することができます。 すべてのパラメーターを手動で指定するか、ワイルドカード `*` の値を使用することができます。 次に例を示します。
+対話型コンソールは、ブラウザーからクライアント側の API 要求を行います。 API に [CORS ポリシー](api-management-cross-domain-policies.md#CORS)を追加して、CORS の問題を解決します。
 
-```XML
-<cors allow-credentials="true">
-    <allowed-origins>
-        <origin>https://contoso.com</origin>
-    </allowed-origins>
-    <allowed-methods preflight-result-max-age="300">
-        <method>*</method>
-    </allowed-methods>
-    <allowed-headers>
-        <header>*</header>
-    </allowed-headers>
-    <expose-headers>
-        <header>*</header>
-    </expose-headers>
-</cors>
-```
+CORS ポリシーの状態は、Azure portal の API Management サービスの **[ポータルの概要]** セクションで確認できます。 警告ボックスは、ポリシーが存在しないか、構成が正しくないことを示します。
+
+![API Management 開発者ポータル](media/api-management-howto-developer-portal/cors-azure-portal.png)
+
+**[CORS を有効にする]** ボタンをクリックして、CORS ポリシーを自動的に適用します。
+
+CORS は手動で有効にすることもできます。
+
+1. 生成されたポリシー コードを表示するには、 **[Manually apply it on the global level]/(手動でグローバル レベルに適用する/)** リンクをクリックします。
+2. Azure portal で API Management サービスの **[API]** セクションにある **[すべての API]** に移動します。
+3. **[受信処理]** セクションで **[</>]** アイコンをクリックします。
+4. XML ファイルの **[<inbound>]** セクションにポリシーを挿入します。 **<origin>** 値が、開発者ポータルのドメインと一致していることを確認します。
 
 > [!NOTE]
 > 
@@ -203,7 +199,7 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
 API Management サービスが VNet 内にある場合は、VNet 接続に関する前出の質問を参照してください。
 
-カスタム ドメインに割り当てられているがブラウザーで信頼されていない SSL 証明書が原因で呼び出しが失敗する場合もあります。 軽減策として、管理エンドポイントのカスタム ドメインを削除することができます。API Management は、信頼できる証明書を使用して既定のエンドポイントにフォールバックします。
+カスタム ドメインに割り当てられているがブラウザーで信頼されていない TLS/SSL 証明書が原因で呼び出しが失敗する場合もあります。 軽減策として、管理エンドポイントのカスタム ドメインを削除することができます。API Management は、信頼できる証明書を使用して既定のエンドポイントにフォールバックします。
 
 ### <a name="whats-the-browser-support-for-the-portal"></a>ポータルのブラウザー サポートとは何ですか？
 

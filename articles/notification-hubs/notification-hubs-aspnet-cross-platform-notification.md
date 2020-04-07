@@ -16,14 +16,14 @@ ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: 8f4de88ed79ee802866579448681cfe6cee3e654
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: fc3cec348517244c8a7f54d2d3d17298c58e4262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293417"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127044"
 ---
-# <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>通知ハブによるユーザーへのクロスプラットフォーム通知の送信
+# <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Azure Notification Hubs を使用してクロスプラットフォーム通知を送信する
 
 このチュートリアルは、前のチュートリアル「[Azure Notification Hubs を使用して特定のユーザーに通知を送信する]」に基づいています。 そのチュートリアルでは、認証された特定のユーザーに登録されているすべてのデバイスにプッシュ通知を行う方法について説明しました。 その方法では、サポートされる各クライアント プラットフォームに通知を送信するため、複数の要求が必要でした。 Azure Notification Hubs ではテンプレートがサポートされています。テンプレートを使用して、特定のデバイスが通知を受信する方法を指定できます。 この方法により、クロスプラットフォーム通知の送信が簡単になります。
 
@@ -99,7 +99,7 @@ ms.locfileid: "72293417"
 
 1. 必要に応じて、クライアント アプリケーションを 2 つ目のデバイスにデプロイしてから、アプリケーションを実行します。 通知が各デバイスに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルはこれで終了です。Notification Hubs とテンプレートの詳細については、次の記事を参照してください。
 

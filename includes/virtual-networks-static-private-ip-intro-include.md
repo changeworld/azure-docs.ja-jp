@@ -2,14 +2,13 @@
 author: genlin
 ms.service: virtual-network
 ms.topic: include
-ms.date: 02/27/2019
+ms.date: 02/14/2020
 ms.author: genli
-ms.openlocfilehash: 63853ee34d99516b139b0356f609f41637ac2b39
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3d0c475cebedf28b41f16fbde312a1aac14ef207
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181086"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060448"
 ---
-仮想ネットワーク (VM) には、デプロイされているサブネットに基づいて、指定された範囲のプライベート IP アドレスが自動的に割り当てられます。 このアドレスは、VM が削除されるまで VM によって保持されます。 Azure は、次に VM に作成されているサブネットから使用可能なプライベート IP アドレスを自動的に割り当てます。 VM に割り当てられているサブネットから特定の IP アドレスが必要な場合は、静的 IP アドレスを割り当てます。
-
+仮想マシン (VM) には、その VM がデプロイされているサブネットに基づいて、指定された範囲のプライベート IP アドレスが自動的に割り当てられます。 VM では、その VM が削除されるまでこのアドレスが保持されます。 Azure は、次に VM に作成されているサブネットから使用可能なプライベート IP アドレスを自動的に割り当てます。 VM に割り当てられているサブネットの特定の IP アドレスが必要な場合は、静的 IP アドレスを割り当てます。

@@ -14,12 +14,12 @@ ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c99a6e018edd0806daac7cd429135e522f217f23
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: d5f83fa040de501adf3afa523086e100244fa619
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159830"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331799"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
 Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](how-to-connect-install-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
@@ -246,16 +246,16 @@ Azure AD Connect との AD FS の構成は簡単であり、必要なのは数�
 
 * フェデレーション サーバー用の Windows Server 2012 R2 以降のサーバー (リモート管理を有効に設定)
 * Web アプリケーション プロキシ サーバー用の Windows Server 2012 R2 以降のサーバー (リモート管理を有効に設定)
-* 使用する予定のフェデレーション サービス名の SSL 証明書 (sts.contoso.com など)
+* 使用する予定のフェデレーション サービス名の TLS/SSL 証明書 (sts.contoso.com など)
 
 >[!NOTE]
->フェデレーション信頼の管理に Azure AD Connect を使っていない場合でも、AD FS ファームの SSL 証明書は、Azure AD Connect を使って更新することができます。
+>フェデレーション信頼の管理に Azure AD Connect を使っていない場合でも、AD FS ファームの TLS/SSL 証明書は、Azure AD Connect を使って更新することができます。
 
 ### <a name="ad-fs-configuration-pre-requisites"></a>AD FS の構成の前提条件
 Azure AD Connect を使用して AD FS ファームを構成するには、リモート サーバー上で WinRM が有効になっている必要があります。 [フェデレーションの前提条件](how-to-connect-install-prerequisites.md#prerequisites-for-federation-installation-and-configuration)の他のタスクを完了したことを確認します。 加えて、「[表 3 - Azure AD Connect とフェデレーション サーバー/WAP](reference-connect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap)」に記載されているポート要件も確認してください。
 
 ### <a name="create-a-new-ad-fs-farm-or-use-an-existing-ad-fs-farm"></a>新しい AD FS ファームの作成または既存の AD FS ファームの使用
-既存の AD FS ファームを使用することも、新しい AD FS ファームを作成することもできます。 新しく作成する場合は、SSL 証明書を提供する必要があります。 SSL 証明書がパスワードで保護されている場合は、パスワードを入力するように求められます。
+既存の AD FS ファームを使用することも、新しい AD FS ファームを作成することもできます。 新しく作成する場合は、TLS/SSL 証明書を提供する必要があります。 TLS/SSL 証明書がパスワードで保護されている場合は、パスワードを入力するように求められます。
 
 ![AD FS ファーム](./media/how-to-connect-install-custom/adfs1.png)
 
@@ -320,7 +320,7 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 ## <a name="configuring-federation-with-pingfederate"></a>PingFederate とのフェデレーションの構成
 Azure AD Connect との PingFederate の構成は簡単であり、必要なのは数回のクリックのみです。 ただし、以下の前提条件を満たす必要があります。
 - PingFederate 8.4 以降。  詳細については、「[PingFederate Integration with Azure Active Directory and Office 365 (Azure Active Directory および Office 365 と PingFederate の統合)](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html)」を参照してください。
-- 使用する予定のフェデレーション サービス名の SSL 証明書 (sts.contoso.com など)
+- 使用する予定のフェデレーション サービス名の TLS/SSL 証明書 (sts.contoso.com など)
 
 ### <a name="verify-the-domain"></a>ドメインの検証
 PingFederate でフェデレーションを選択すると、フェデレーションするドメインを検証するように求められます。  ドロップダウン ボックスでドメインを選択します。

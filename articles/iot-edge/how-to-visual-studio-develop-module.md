@@ -5,15 +5,15 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 07/22/2019
+ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 8c174c5c201aecd83fb343a217c7944d503616c3
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9722c7dec3a066d8f776424cb599be0d463416d9
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509294"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384859"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする
 
@@ -71,7 +71,7 @@ Visual Studio 2019 の準備ができたら、次のツールとコンポーネ�
 
 ### <a name="check-your-tools-version"></a>ツールのバージョンを確認する
 
-1. **[ツール]** メニューの **[拡張機能と更新プログラム]** を選択します。 **[インストール済み] > [ツール]** の順に展開すると、 **[Azure IoT Edge Tools]** と **[Cloud Explorer for Visual Studio]** が見つかります。
+1. **[拡張機能]** メニューで、 **[拡張機能の管理]** を選択します。 **[インストール済み] > [ツール]** の順に展開すると、 **[Azure IoT Edge Tools for Visual Studio]** と **[Cloud Explorer for Visual Studio]** が見つかります。
 
 1. インストールされているバージョンを確認します。 このバージョンと、Visual Studio Marketplace での最新バージョンを比較できます ([Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS2019)、[Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools))
 
@@ -79,7 +79,7 @@ Visual Studio 2019 の準備ができたら、次のツールとコンポーネ�
 
 ### <a name="update-your-tools"></a>ツールを更新する
 
-1. **[拡張機能と更新プログラム]** ダイアログで、 **[更新プログラム] > [Visual Studio Marketplace]** の順に展開し、 **[Azure IoT Edge Tools]** または **[Cloud Explorer for Visual Studio]** を選択して、 **[更新]** を選択します。
+1. **[拡張機能の管理]** ウィンドウで、 **[更新プログラム] > [Visual Studio Marketplace]** の順に展開し、 **[Azure IoT Edge Tools]** または **[Cloud Explorer for Visual Studio]** を選択して、 **[更新]** を選択します。
 
 1. ツールの更新プログラムをダウンロードしたら、Visual Studio を終了し、VSIX インストーラーを使用してツールの更新プログラムを起動します。
 
@@ -122,7 +122,7 @@ C# モジュールの場合、**IotEdgeModule1** プロジェクトは .NET Core
 
    ![Edge デバイスの接続文字列をコピーする](./media/how-to-visual-studio-develop-csharp-module/copy-edge-conn-string.png)
 
-1. **[ツール]**  >  **[Azure IoT Edge Tools]**  >  **[Setup IoT Edge Simulator]\(IoT Edge シミュレーターのセットアップ\)** の順に移動し、接続文字列を貼り付けて **[OK]** をクリックします。
+1. **[ツール]** メニューから **[Azure IoT Edge Tools]**  >  **[Setup IoT Edge Simulator]\(IoT Edge シミュレーターのセットアップ\)** の順に移動し、接続文字列を貼り付けて **[OK]** をクリックします。
 
    ![[Set Edge Connection String]\(Edge の接続文字列の設定\) 画面を開く](./media/how-to-visual-studio-develop-csharp-module/set-edge-conn-string.png)
 
@@ -135,7 +135,7 @@ C# モジュールの場合、**IotEdgeModule1** プロジェクトは .NET Core
 
 通常は、複数のモジュールを含むソリューション全体の中で実行する前に、各モジュールをテストしてデバッグします。
 
-1. **IotEdgeModule1** を右クリックし、コンテキスト メニューから **[スタートアップ プロジェクトに設定]** を選択します。
+1. **ソリューション エクスプローラー**で **[IotEdgeModule1]** を右クリックし、コンテキスト メニューから **[スタートアップ プロジェクトに設定]** を選択します。
 
    ![スタートアップ プロジェクトを設定する](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
 
@@ -166,7 +166,7 @@ C# モジュールの場合、**IotEdgeModule1** プロジェクトは .NET Core
 
 1 つのモジュールの開発が完了したら、複数のモジュールを含むソリューション全体を実行してデバッグします。
 
-1. **AzureIoTEdgeApp1** を右クリックし、 **[追加]**  >  **[New IoT Edge Module]\(新しい IoT Edge モジュール\)** の順に選択して、ソリューションに 2 つ目のモジュールを追加します。 2 つ目のモジュールの既定の名前は **IotEdgeModule2** で、別のパイプ モジュールとして機能します。
+1. **ソリューション エクスプローラー**で **[AzureIoTEdgeApp1]** を右クリックし、 **[追加]**  >  **[New IoT Edge Module]\(新しい IoT Edge モジュール\)** の順に選択して、ソリューションに 2 つ目のモジュールを追加します。 2 つ目のモジュールの既定の名前は **IotEdgeModule2** で、別のパイプ モジュールとして機能します。
 
 1. `deployment.template.json` ファイルを開くと、**IotEdgeModule2** が **modules** セクションに追加されていることがわかります。 **routes** セクションを次の内容に置き換えます。 モジュール名をカスタマイズしている場合は、これらの名前を一致するように必ず更新してください。
 
@@ -194,7 +194,7 @@ C# モジュールの場合、**IotEdgeModule1** プロジェクトは .NET Core
     > [!NOTE]
     > **[デバッグ]** を選択すると、Visual Studio では、Docker イメージのビルドに `Dockerfile.(amd64|windows-amd64).debug` が使用されます。 これにより、コンテナー イメージのビルド中に .NET Core コマンド ライン デバッガー VSDBG が組み込まれます。 運用環境対応の IoT Edge モジュールの場合は、 **[リリース]** 構成を使用することをお勧めします。これには、VSDBG が含まれていない `Dockerfile.(amd64|windows-amd64)` が使用されます。
 
-1. Azure Container Registry のようなプライベート レジストリを使用している場合は、次の Docker コマンドを使用してサインインします。 ローカル レジストリを使用している場合は、[ローカル レジストリを実行する](https://docs.docker.com/registry/deploying/#run-a-local-registry)ことができます。
+1. Azure Container Registry (ACR) のようなプライベート レジストリを使用している場合は、次の Docker コマンドを使用してサインインします。  ユーザー名とパスワードは、Azure portal のレジストリの **[アクセス キー]** ページから取得できます。 ローカル レジストリを使用している場合は、[ローカル レジストリを実行する](https://docs.docker.com/registry/deploying/#run-a-local-registry)ことができます。
 
     ```cmd
     docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -216,9 +216,7 @@ C# モジュールの場合、**IotEdgeModule1** プロジェクトは .NET Core
           }
     ```
 
-1. **AzureIoTEdgeApp1** を右クリックし、 **[Build and Push Edge Solution]\(Edge ソリューションのビルドとプッシュ\)** を選択して、各モジュールの Docker イメージをビルドしてプッシュします。
-
-   ![イメージをビルドしてプッシュする](./media/how-to-visual-studio-develop-csharp-module/build-and-push.png)
+1. **ソリューション エクスプローラー**で **AzureIoTEdgeApp1** を右クリックし、 **[Build and Push IoT Edge Modules]\(IoT Edge モジュールをビルドしてプッシュする\)** を選択して、各モジュールの Docker イメージをビルドしてプッシュします。
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
@@ -228,18 +226,15 @@ IoT Edge デバイスの設定に使用したクイック スタートの記事�
 
 1. **Cloud Explorer** でサブスクリプションを展開し、Azure IoT Hub とデプロイする Azure IoT Edge デバイスを探します。
 
-1. IoT Edge デバイスを右クリックしてデプロイを作成します。`$AzureIoTEdgeAppSolutionDir\config\deployment.(amd64|amd64.debug|windows-amd64).json` にある配置マニフェスト ファイルを選択する必要があります。
-
-   > [!NOTE]
-   > `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json` は選択しないでください
+1. IoT Edge デバイスを右クリックして、デプロイを作成します。 `deployment.arm32v7.json` など、Visual Studio ソリューションの **config** フォルダーにある、プラットフォーム用に構成されている配置マニフェストに移動します。
 
 1. 更新ボタンをクリックすると、新しいモジュールが、**SimulatedTemperatureSensor** モジュール、 **$edgeAgent** および **$edgeHub** と一緒に実行されていることが表示されます。
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
-1. 特定のデバイスの D2C のメッセージを監視するには、一覧でそのデバイスを選択し、 **[アクション]** ウィンドウで **[Start Monitoring Built-in Event Endpoint]\(組み込みイベントのエンドポイントの監視を開始\)** をクリックします。
+1. 特定の IoT Edge デバイスの D2C メッセージを監視するには、**Cloud Explorer** の IoT ハブでデバイスを選択し、 **[アクション]** ウィンドウで **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** をクリックします。
 
-1. データの監視を停止するには、一覧でデバイスを選択し、 **[アクション]** ウィンドウで **[Stop Monitoring Built-in Event Endpoint]\(組み込みイベントのエンドポイントの監視を停止\)** を選択します。
+1. データの監視を停止するには、 **[アクション]** ウィンドウで **[Stop Monitoring Built-in Event Endpoint]\(組み込みイベントのエンドポイントの監視を停止する\)** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

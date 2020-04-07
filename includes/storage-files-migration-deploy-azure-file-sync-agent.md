@@ -8,10 +8,10 @@ ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 694becc49667204ef2071a140bb6330285089039
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78209278"
 ---
 このセクションでは、Azure File Sync エージェントを Windows Server にインストールします。
@@ -34,8 +34,8 @@ Install-Module -Name Az.StorageSync
 サーバー "*インストール*" ウィザードの終了時に、サーバー "*登録*" ウィザードがポップアップ表示されます。
 以前からのストレージ同期サービスの Azure リソースにサーバーを登録します。
 
-最初にインストールする必要がある上記の PowerShell モジュールを含め、これらの手順については、デプロイ ガイドの [Azure File Sync エージェントのインストール](../articles/storage/files/storage-sync-files-deployment-guide.md)に関するセクションで詳しく説明されています。
+最初にインストールする必要がある上記の PowerShell モジュールを含め、これらの手順については、デプロイ ガイドで詳しく説明されています:[Azure File Sync エージェントのインストール](../articles/storage/files/storage-sync-files-deployment-guide.md)。
 
-最新のエージェントを使用する必要があります。これは、Microsoft ダウンロード センター ([Azure File Sync - エージェント](https://aka.ms/AFS/agent "Azure File Sync エージェントのダウンロード")) からダウンロードできます。
+最新のエージェントを使用する必要があります。これは、Microsoft ダウンロード センターからダウンロードできます:[Azure File Sync - エージェント](https://aka.ms/AFS/agent "Azure File Sync エージェントのダウンロード")。
 
 インストールとサーバーの登録が正常に完了したら、次のようにして、この手順が正常に完了したことを確認できます。Azure portal でストレージ同期サービス リソースに移動し、左側のメニューに従って「登録済みサーバー」を表示します。 サーバーがそこにすぐに一覧表示されます。

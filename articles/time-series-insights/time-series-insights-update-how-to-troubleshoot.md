@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: a306707f0ed47fba8fd854d820554bc1bd80e8bc
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 667dee6365f38ae058e91c61c24838d8912df26a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110270"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80152658"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>プレビュー環境の診断とトラブルシューティング
 
@@ -72,6 +72,20 @@ ms.locfileid: "77110270"
 
     > [!NOTE]
     > 現時点では、Time Series Insights でサポートされる最大インジェスト速度は 6 Mbps です。
+
+## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>問題: データは表示されたがインジェストが停止した
+
+- イベント ソース キーが再生成された可能性があり、お使いのプレビュー環境には新しいイベント ソース キーが必要です。
+
+この問題は、イベント ソースの作成時に指定されたキーが有効ではなくなったときに発生します。 テレメトリはハブに表示されますが、Time Series Insights にイングレス受信のメッセージが表示されません。 キーが再生成されたかどうか不明な場合は、Event Hubs のアクティビティ ログで、"Create or Update Namespace Authorization Rules (名前空間の承認規則を作成または更新します)" を検索するか、IoT hub の "IotHub リソースを作成または更新します" を検索します。 
+
+新しいキーで Time Series Insights プレビュー環境を更新するには、Azure portal でお使いのハブ リソースを開き、新しいキーをコピーします。 TSI リソースに移動して、[イベント ソース] をクリックします。 
+
+   [![キーを更新する。](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
+
+インジェストが停止した原因のイベント ソースを選択し、新しいキーを貼り付けて、[保存] をクリックします。
+
+   [![キーを更新する。](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>問題: イベント ソースのタイムスタンプ プロパティ名が機能しない
 

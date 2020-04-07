@@ -1,19 +1,18 @@
 ---
 title: Microsoft Azure ベースの VM イメージの Shared Access Signature URI を取得する | Azure Marketplace
 description: VM イメージの Shared Access Signature (SAS) URI を取得する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/19/2018
-ms.author: pabutler
-ms.openlocfilehash: cb6f1772c7c6f9abd268a8cb58550b253f095dbf
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.author: dsindona
+ms.openlocfilehash: 6fe15fb18d8865911363a4696e44dd7fe1d90c09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132448"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277805"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM イメージの Shared Access Signature URI の取得
 
@@ -30,18 +29,17 @@ VHD の SAS URI を生成するときは、次の要件を遵守してくださ�
 
 一般に SAS URL は、次のツールを使用した 2 とおりの方法で生成できます。
 
--   Microsoft Storage Explorer - Windows、macOS、Linux 向けに提供されているグラフィカル ツール
--   Microsoft Azure CLI - Windows 以外の OS や自動化された環境、継続的インテグレーション環境に推奨
-
+- Microsoft Storage Explorer - Windows、macOS、Linux 向けに提供されているグラフィカル ツール
+- Microsoft Azure CLI - Windows 以外の OS や自動化された環境、継続的インテグレーション環境に推奨
 
 ### <a name="azure-cli"></a>Azure CLI
 
 Azure CLI を使用して SAS URI を生成するには次の手順に従います。
 
-1. [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/) をダウンロードしてインストールします。  Windows と macOS のほか、各種 Linux ディストリビューション向けのバージョンが用意されています。
+1. [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/) をダウンロードしてインストールします。 Windows と macOS のほか、各種 Linux ディストリビューション向けのバージョンが用意されています。
 2. PowerShell ファイル (`.ps1` ファイル拡張子) を作成し、次のコードをコピーして、ローカルに保存します。
 
-   ``` powershell
+   ```azurecli-interactive
    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
    ```
 
@@ -54,8 +52,8 @@ Azure CLI を使用して SAS URI を生成するには次の手順に従いま�
 
    次の例では、(本記事の執筆時点における) 適切なパラメーター値を示します。
 
-   ``` powershell
-       az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
+   ```azurecli-interactive
+   az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
    ```
 
 4. この PowerShell スクリプトに対する変更を保存します。
@@ -81,7 +79,6 @@ Azure CLI を使用して SAS URI を生成するには次の手順に従いま�
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
 発行する予定の SKU に含まれる各 VHD について、これらの手順を繰り返します。
-
 
 ### <a name="microsoft-storage-explorer"></a>Microsoft Storage Explorer
 
@@ -119,17 +116,16 @@ Microsoft Azure Storage Explorer で、次の手順を使用して SAS URI を�
 
 発行する予定の SKU に含まれる各 VHD について、これらの手順を繰り返します。
 
-
 ## <a name="verify-the-sas-uri"></a>SAS URI の検証
 
 生成された各 SAS URI を確認するには、次のチェックリストを使用してください。  次のことを確認します。
-- URI が `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>` 形式になっている。
+
+- URI が次の形式になっている: `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 - URI に実際の VHD イメージのファイル名 (拡張子 ".vhd" を含む) が含まれている。
 - URI の中間付近に `sp=rl` が指定されている。 この文字列は、`Read` アクセスと `List` アクセスが指定されていることを示します。
 - その後ろに、`sr=c` も表示されている。 この文字列は、コンテナー レベルのアクセスが指定されていることを示します。
 - この URI をコピーしてブラウザーに貼り付けて、関連する BLOB をダウンロードします  (この操作は、ダウンロードの完了前に取り消すことができます)。
 
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 SAS URI を生成できない場合は、[SAS URL の一般的な問題](./cpp-common-sas-url-issues.md)に関するページを参照してください。  それ以外の場合は、SAS URI を後で使用できるよう安全な場所に保存します。 これは、Cloud パートナー ポータルで [VM プランを発行](./cpp-publish-offer.md)する際に必要となります。

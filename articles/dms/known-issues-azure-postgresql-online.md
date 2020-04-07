@@ -1,10 +1,10 @@
 ---
 title: 既知の問題:PostgreSQL から Azure Database for PostgreSQL へのオンライン移行
 titleSuffix: Azure Database Migration Service
-description: Azure Database Migration Service を使用した PostgreSQL から Azure Database for PostgreSQ へのオンライン移行に関する既知の問題と移行の制限事項について説明します。
+description: Azure Database Migration Service を使用した PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項について説明します。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: ded3302c590a55f0da8e4e37869f2b7f5a702838
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 3d1bc627ccb8814ab2dfb61fb0653ef0ac644038
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650505"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235265"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>PostgreSQL から Azure DB for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項
 

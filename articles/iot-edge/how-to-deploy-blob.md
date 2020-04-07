@@ -3,16 +3,16 @@ title: モジュール上の Blob Storage をデバイスにデプロイする -
 description: Azure Blob Storage モジュールをご利用の IoT Edge デバイスにデプロイして、そのエッジにデータを格納します。
 author: kgremban
 ms.author: kgremban
-ms.date: 12/13/2019
+ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: 8c2df4854f4cdb93c08e22f7dcdc23b1b69b13d6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 04b145622a1a4237b576a1bb512b5f749f9c3823
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548783"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133325"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge モジュール上の Azure Blob Storage を自分のデバイスにデプロイする
 
@@ -260,8 +260,41 @@ IoT Edge モジュールで Azure Blob Storage の複数のインスタンスを
 
 追加の BLOB ストレージ モジュールに接続すると、更新されたホスト ポートをポイントするエンドポイントを変更します。
 
+## <a name="configure-proxy-support"></a>プロキシ サポートの構成
+
+組織でプロキシ サーバーを使用している場合は、edgeAgent および edgeHub のランタイム モジュールのプロキシ サポートを構成する必要があります。 このプロセスには、次の 2 つのタスクが含まれます。
+
+- デバイスでランタイム デーモンと IoT Edge エージェントを構成します。
+- 配置マニフェスト JSON ファイルでモジュールの HTTPS_PROXY 環境変数を設定します。
+
+このプロセスについては、「[IoT Edge デバイスを構成してプロキシ サーバー経由で通信する](how-to-configure-proxy-support.md)」を参照してください。
+
+さらに、Blob Storage モジュールでは、マニフェスト配置ファイルに HTTPS_PROXY 設定も必要です。 配置マニフェスト ファイルを直接編集することも、Azure portal を使用することもできます。
+
+1. Azure portal で IoT Hub に移動し、左側のウィンドウ メニューから **[IoT Edge]** を選択します。
+
+1. モジュールを構成するデバイスを選択します。
+
+1. **[Set Modules] \(モジュールの設定)** を選択します。
+
+1. ページの **[IoT Edge モジュール]** セクションで、BLOB Storage モジュールを選択します。
+
+1. **[IoT Edge モジュールの更新]** ページで、 **[環境変数]** タブを選択します。
+
+1. **[名前]** に `HTTPS_PROXY` を、 **[値]** にプロキシ URL を追加します。
+
+      ![HTTPS_PROXY 環境変数を設定する](./media/how-to-deploy-blob/https-proxy-config.png)
+
+1. **[更新]** 、 **[確認および作成]** の順にクリックします。
+
+1. 配置マニフェストでプロキシがモジュールに追加されていることに注意し、 **[作成]** を選択します。
+
+1. デバイス詳細ページからモジュールを選択して設定を確認し、 **[IoT Edge Modules Details]/(IoT Edge モジュールの詳細/)** ページの下部にある **[環境変数]** タブを選択します。
+
+      ![HTTPS_PROXY 環境変数を設定する](./media/how-to-deploy-blob/verify-proxy-config.png)
+
 ## <a name="next-steps"></a>次のステップ
 
-[IoT Edge 上のAzure Blob Storage ](how-to-store-data-blob.md)の詳細を確認する
+[IoT Edge 上の Azure Blob Storage](how-to-store-data-blob.md) の詳細を確認する。
 
 配置マニフェストのしくみとその作成方法について詳しくは、「[IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する](module-composition.md)」をご覧ください。

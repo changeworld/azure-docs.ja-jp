@@ -1,26 +1,36 @@
 ---
-title: Azure Migrate でエージェントレスの依存関係の視覚化を設定する
-description: Azure Migrate Server Assessment でエージェントレスの依存関係の視覚化を使用してグループを設定します。
-ms.topic: article
+title: Azure Migrate Server Assessment でエージェントレスの依存関係の分析を設定する
+description: Azure Migrate Server Assessment でエージェントレスの依存関係の分析を設定します。
+ms.topic: how-to
 ms.date: 2/24/2020
-ms.openlocfilehash: c9425ad1fa78f14a194d3fe13c259dadf4eb5eb6
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: af767bf73a3b9a6f2a91298987f11974499fd694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589132"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455708"
 ---
 # <a name="set-up-agentless-dependency-visualization"></a>エージェントレスの依存関係の視覚化を設定する 
 
-この記事では、Azure Migrate:Server Assessment で依存関係の視覚化を設定する方法について説明します。 [依存関係の視覚化](concepts-dependency-visualization.md#what-is-dependency-visualization)は、評価や Azure への移行を行うマシン間の依存関係を特定し、理解するために役立ちます。
+この記事では、Azure Migrate:Server Assessment でエージェントレスの依存関係の分析を設定する方法について説明します。 [依存関係の分析](concepts-dependency-visualization.md)は、評価や Azure への移行を行うマシン間の依存関係を特定し、理解するために役立ちます。
 
-エージェントレスの依存関係を視覚化すると、マシンにエージェントをインストールせずにマシンの依存関係を特定できます。 これは、エージェントレスの視覚化が有効になっているマシンから TCP 接続データをキャプチャすることで機能します。
 
 > [!IMPORTANT]
-> 現在、エージェントレスの依存関係の視覚化は、Azure VMware VM 用のみのプレビュー段階であり、Azure Migrate:Server Assessment ツールで検出されます。
+> 現在、エージェントレスの依存関係の視覚化は、VMware VM 用のみのプレビュー段階であり、Azure Migrate:Server Assessment ツールで検出されます。
 > 機能が制限されているか、不完全である可能性があります。
 > このプレビューはカスタマー サポートの対象であり、運用ワークロードで使用できます。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+
+
+## <a name="before-you-start"></a>開始する前に
+
+- エージェントレスの依存関係の分析について[理解](concepts-dependency-visualization.md#agentless-analysis)します。
+- VMware VM のエージェントレスの依存関係の視覚化を設定するための前提条件とサポート要件を[確認](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)します。
+- Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
+- プロジェクトを既に作成している場合は、Azure Migrate Server:Assessment ツールを[追加](how-to-assess.md)済みであることを確認します。
+- オンプレミスのマシンを検出するための [Azure Migrate アプライアンス](migrate-appliance.md)を設定済みであることを確認します。 [VMware VM](how-to-set-up-appliance-vmware.md) のアプライアンスを設定する方法を確認します。 アプライアンスは、オンプレミス マシンを検出して、Azure Migrate:Server Assessment にメタデータとパフォーマンス データを送信します。
+
 
 ## <a name="current-limitations"></a>現在の制限
 
@@ -28,21 +38,10 @@ ms.locfileid: "77589132"
 - サーバー グループの依存関係マップは現在使用できません。
 - 現在、依存関係データを表形式でダウンロードすることはできません。
 
-## <a name="before-you-start"></a>開始する前に
-
-- エージェントレスの依存関係の視覚化に関連する要件とコストを[確認](concepts-dependency-visualization.md#agentless-visualization)します。
-- エージェントレスの依存関係の視覚化を設定するための[サポート要件](migrate-support-matrix-vmware.md#agentless-dependency-visualization)を確認します。
-- Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
-- プロジェクトを既に作成している場合は、Azure Migrate Server:Assessment ツールを[追加](how-to-assess.md)済みであることを確認します。
-- オンプレミスのマシンを検出するための [Azure Migrate アプライアンス](migrate-appliance.md)を設定済みであることを確認します。 [VMware VM](how-to-set-up-appliance-vmware.md) のアプライアンスを設定する方法を確認します。 アプライアンスは、オンプレミス マシンを検出して、Azure Migrate:Server Assessment にメタデータとパフォーマンス データを送信します。
-
-
 ## <a name="create-a-user-account-for-discovery"></a>検出用のユーザー アカウントを作成する
 
-サーバー評価で検出のために VM にアクセスできるように、ユーザー アカウントを設定します。 1 つのユーザー アカウントを指定できます。
+サーバー評価で検出のために VM にアクセスできるように、ユーザー アカウントを設定します。 アカウントの要件を[確認](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)します。
 
-- **Windows VM**:ユーザー アカウントは、ローカル管理者またはドメイン管理者である必要があります。
-- **Linux VM**:アカウントには root 特権が必要です。 また、ユーザー アカウントには /bin/netstat ファイルと /bin/ls ファイルに対する次の 2 つの機能が必要です。CAP_DAC_READ_SEARCH と CAP_SYS_PTRACE。
 
 ## <a name="add-the-user-account-to-the-appliance"></a>アプライアンスにユーザー アカウントを追加する
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: a665ee97f923620bb484243d5cd4904a647969e4
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c1bcbb6a368c9c80f968c48c1a6e0bc6c95133d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917436"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456406"
 ---
 # <a name="evaluate-model-module"></a>Evaluate Model (モデルの評価) モジュール
 
@@ -62,9 +62,9 @@ ms.locfileid: "77917436"
 
 1. [Score Model (モデルのスコア付け)](score-model.md) の **Scored dataset (スコア付けされたデータセット)** 出力を **Evaluate Model (モデルの評価)** の入力に接続します。 
 2. 2 つ目のモデルのモデルのスコア付けモジュールの出力を **Evaluate Model (モデルの評価)** の右側の入力に接続します。
-3. パイプラインを実行します。
+3. パイプラインを送信します。
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 **Evaluate Model (モデルの評価)** の実行後、モジュールを右クリックして **[Visualize Evaluation results]\(評価結果の視覚化\)** を選択し、結果を表示します。
 

@@ -6,19 +6,19 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c929ac1c171547a4ff485fc43f0f329440f9c3b5
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: a9f12849525daeea69ece6e81077446f062e8889
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74763642"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384400"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
 
 この記事では、Azure Database for PostgreSQL を使用して Azure Active Directory アクセスを構成する方法と、Azure AD トークンを使用して接続する方法について説明します。
 
 > [!IMPORTANT]
-> Azure Database for PostgreSQL の Azure AD 認証は現在、パブリック プレビュー段階にあります。
+> Azure Database for PostgreSQL 向けの Azure AD 認証は現在、パブリック プレビュー段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
@@ -93,7 +93,7 @@ Azure AD 統合は、psql などの一般的な PostgreSQL ツールと連携す
 
 Azure CLI ツールを呼び出して、Azure AD で認証します。 ご自分の Azure AD ユーザー ID とパスワードを指定する必要があります。
 
-```
+```azurecli-interactive
 az login
 ```
 
@@ -109,19 +109,19 @@ Azure CLI ツールを起動して、手順 1 で認証された Azure AD ユー
 
 例 (パブリック クラウドの場合):
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
 上記のリソース値は、示されているとおりに正確に指定する必要があります。 他のクラウドの場合、リソース値は次を使用して検索できます。
 
-```shell
+```azurecli-interactive
 az cloud show
 ```
 
 Azure CLI バージョン 2.0.71 以降では、すべてのクラウドに対して、次のより便利なバージョンでコマンドを指定できます。
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
 
@@ -163,7 +163,7 @@ export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 これで、通常行っているように、Azure Database for PostgreSQL との接続を開始できるようになりました。
 
 ```shell
-psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres"
+psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
 
 これで、Azure AD 認証を使用して PostgreSQL サーバーに対して認証されました。
@@ -172,16 +172,16 @@ psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgre
 
 Azure Database for PostgreSQL での Azure AD 認証により、ユーザーが PostgreSQL サーバーに存在することが保証され、トークンの内容を検証することによってトークンの有効性がチェックされます。 次のトークンの検証手順が実行されます。
 
--   トークンが Azure AD によって署名されていて、改ざんされていないこと
--   トークンがサーバーに関連付けられているテナントの Azure AD によって発行されたこと
--   トークンの有効期限が切れていないこと
--   トークンが (別の Azure リソースではなく) Azure Database for PostgreSQL リソース用であること
+- トークンが Azure AD によって署名されていて、改ざんされていないこと
+- トークンがサーバーに関連付けられているテナントの Azure AD によって発行されたこと
+- トークンの有効期限が切れていないこと
+- トークンが (別の Azure リソースではなく) Azure Database for PostgreSQL リソース用であること
 
 ## <a name="migrating-existing-postgresql-users-to-azure-ad-based-authentication"></a>既存の PostgreSQL ユーザーを Azure AD ベースの認証に移行する
 
 既存のユーザーに対して Azure AD 認証を有効にすることができます。 考慮すべきケースが 2 つあります。
 
-### <a name="case-1-postgresql-username-matches-the-azure-ad-user-principal-name"></a>ケース 1:PostgreSQL ユーザー名が Azure AD のユーザー プリンシパル名と一致している
+### <a name="case-1-postgresql-username-matches-the-azure-ad-user-principal-name"></a>ケース 1: PostgreSQL ユーザー名が Azure AD のユーザー プリンシパル名と一致している
 
 まれなケースで既存のユーザーが Azure AD のユーザー名と既に一致している場合は、そのユーザーに Azure AD 認証を有効にするために `azure_ad_user` ロールを付与することができます。
 
@@ -191,7 +191,7 @@ GRANT azure_ad_user TO "existinguser@yourtenant.onmicrosoft.com";
 
 これで、以前に構成した PostgreSQL ユーザー パスワードを使用するのではなく、Azure AD の資格情報でサインインできるようになります。
 
-### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>ケース 2:PostgreSQL ユーザー名が Azure AD のユーザー プリンシパル名と異なっている
+### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>ケース 2: PostgreSQL ユーザー名が Azure AD のユーザー プリンシパル名と異なっている
 
 PostgreSQL ユーザーが Azure AD に存在しない場合、または別のユーザー名を持っている場合は、Azure AD グループを使用して、この PostgreSQL ユーザーとして認証することができます。 既存の Azure Database for PostgreSQL ユーザーを Azure AD に移行するには、PostgreSQL ユーザーと一致する名前を持つ Azure AD グループを作成し、既存の PostgreSQL ユーザーにロール azure_ad_user を付与します。
 
@@ -201,7 +201,7 @@ GRANT azure_ad_user TO "DBReadUser";
 
 これは、Azure AD に "DBReadUser" というグループが作成されていることを前提としています。 これで、そのグループに属するユーザーが、このユーザーとしてデータベースにサインインできるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Database for PostgreSQL (単一サーバー) を使用した Azure Active Directory 認証](concepts-aad-authentication.md)の全体的な概念を確認する
 

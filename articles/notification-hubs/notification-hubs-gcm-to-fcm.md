@@ -14,14 +14,14 @@ ms.date: 04/10/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/10/2019
-ms.openlocfilehash: 80eae09240bde61870995468485338db5f0b9c2d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 2f2ca4b56445b3f399477e396de579d8a8c539e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212303"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127022"
 ---
-# <a name="azure-notification-hubs-and-the-google-firebase-cloud-messaging-fcm-migration"></a>Azure Notification Hubs および Google Firebase Cloud Messaging (FCM) の移行
+# <a name="azure-notification-hubs-and-google-firebase-cloud-messaging-migration"></a>Azure Notification Hubs および Google Firebase Cloud Messaging の移行
 
 ## <a name="current-state"></a>現在の状態
 
@@ -45,7 +45,7 @@ Google の FCM FAQ には、何もする必要がないと記されています�
 
 **質問:** 互換性を維持するため、期限までにどのようなことを行う必要がありますか (Google の現在の期限は 5 月 29 日で、変更される可能性があります)。
 
-**A:** 何もありません。 既存の GCM 通知スキーマとの互換性が維持されます。 GCM キーは、アプリケーションで使用されているすべての GCM SDK およびライブラリと同様に、通常どおり機能し続けます。
+**A:** Nothing。 既存の GCM 通知スキーマとの互換性が維持されます。 GCM キーは、アプリケーションで使用されているすべての GCM SDK およびライブラリと同様に、通常どおり機能し続けます。
 
 新しい機能を利用するために FCM SDK およびライブラリへのアップグレードを決定した場合でも、GCM キーは引き続き動作します。 FCM キーの使用への切り替えは可能ですが、新しい Firebase プロジェクトを作成するときには、必ず既存の GCM プロジェクトに Firebase を追加してください。 これにより、GCM SDK とライブラリを使用し続けている旧バージョンのアプリを実行している顧客との下位互換性が保証されます。
 
@@ -53,7 +53,7 @@ Google の FCM FAQ には、何もする必要がないと記されています�
 
 **質問:** 古い GCM エンドポイントを使用していることに関するこのメールは、なぜ送られてきたのでしょうか。 どうすればよいですか。
 
-**A:** 何もありません。 新しいエンドポイントへの移行中ですが、まもなく完了しますので、変更は必要ありません。 何も中断されません。1 つのエンドポイントが失われたために、Google から警告メッセージが送られただけです。
+**A:** Nothing。 新しいエンドポイントへの移行中ですが、まもなく完了しますので、変更は必要ありません。 何も中断されません。1 つのエンドポイントが失われたために、Google から警告メッセージが送られただけです。
 
 **質問:** 既存のユーザーを中断せずに、新しい FCM SDK およびライブラリに移行するにはどうすればよいですか。
 

@@ -1,19 +1,18 @@
 ---
 title: Dynamics CRM | Azure Marketplace
 description: Dynamics CRM の潜在顧客管理を構成します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: 4ccc8b85e72a4da3b0e640abcc70d24b7cdc54af
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 524ae203a311d538431205bf8c6498de45aeb4d1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825256"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280305"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Dynamics CRM Online の潜在顧客管理を構成する
 
@@ -64,7 +63,7 @@ ms.locfileid: "73825256"
 4.  アプリケーションの名前を入力します。
 5.  [種類] では、 **[Web アプリ/API]** を選択します。
 6.  URL を指定します。 このフィールドは潜在顧客では必要ありませんが、アプリケーションを作成するために必要です。
-7. **作成** を選択します。
+7. **［作成］** を選択します
 8.  これでアプリケーションが登録されたので、 **[プロパティ]** を選択し、 **[アプリケーション ID のコピー]** を選択します。この接続情報は、Cloud パートナー ポータルで使用します。
 9.  [プロパティ] で、アプリケーションを [マルチテナント] として設定し、 **[保存]** を選択します。
 
@@ -140,7 +139,7 @@ Azure Active Directory を使用したくない場合は、*Microsoft 365 管理
 
 ## <a name="wrap-up"></a>まとめ
 
-生成されたアカウント情報を Cloud パートナー ポータルに追加することで、潜在顧客を管理するための Dynamics CRM の構成を終了します。 例:
+生成されたアカウント情報を Cloud パートナー ポータルに追加することで、潜在顧客を管理するための Dynamics CRM の構成を終了します。 次に例を示します。
 
 -   **Azure Active Directory** - **アプリケーション ID** (例: *23456052-aaaa-bbbb-8662-1234df56788f*)、**ディレクトリ ID** (例: *12345678-8af1-4asf-1234-12234d01db47*)、および**アプリケーション キー** (例: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=* )。
 -   **Office 365** - **URL** (例: *https://contoso.crm4.dynamics.com* )、**ユーザー名** (例: *contoso\@ contoso.onmicrosoft.com*)、および**パスワード** (例: *P\@ ssw0rd*)。

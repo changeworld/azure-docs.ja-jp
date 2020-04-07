@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: 8611abd4e504e0378b744b12d0adb5fa22f5476b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e4511cf4393172e7d2b1ab8a985c76d8f98d4015
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920367"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456065"
 ---
 # <a name="permutation-feature-importance"></a>順列の特徴量の重要度
 
@@ -54,7 +54,7 @@ ms.locfileid: "77920367"
 
      これらの評価メトリックとその計算方法の詳細については、[モデルの評価](evaluate-model.md)に関する記事を参照してください。  
 
-6.  パイプラインを実行します。  
+6.  パイプラインを送信します。  
 
 7.  このモジュールは、特徴列とそれらに関連付けられているスコアの一覧を出力します。 この一覧はスコアの降順でランク付けされます。  
 

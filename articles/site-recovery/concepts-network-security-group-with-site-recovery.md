@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 0c06283080a4ee51f863714e4c515672299b420d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb5ba99133f5726c44164b0ba45b7ab5d94e292f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773035"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292359"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Azure Site Recovery でのネットワーク セキュリティ グループ
 
@@ -27,9 +27,9 @@ Resource Manager デプロイ モデルでは、NSG をサブネットまたは�
 個別のサブネットには、1 つの NSG を関連付けることができ、NSG をまったく関連付けなくてもかまいません。 個別のネットワーク インターフェイスにも、1 つの NSG を関連付けるか、またはまったく関連付けないことができます。 したがって、最初にサブネットに NSG を関連付けた後、別の NSG を仮想マシンのネットワーク インターフェイスに関連付けることによって、VM のトラフィックを効果的に二重に制限することができます。 このケースでの NSG ルールの適用は、トラフィックの方向と、適用されるセキュリティ規則の優先順位に依存します。
 
 次のような 1 台の仮想マシンによる簡単な例を考えてみます。
--   仮想マシンは、**Contoso サブネット**の内部に配置されています。
--   **Contoso サブネット**は、**サブネット NSG** と関連付けられています。
--   VM ネットワーク インターフェイスは、さらに **VM NSG** と関連付けられています。
+-    仮想マシンは、**Contoso サブネット**の内部に配置されています。
+-    **Contoso サブネット**は、**サブネット NSG** と関連付けられています。
+-    VM ネットワーク インターフェイスは、さらに **VM NSG** と関連付けられています。
 
 ![NSG と Site Recovery](./media/concepts-network-security-group-with-site-recovery/site-recovery-with-network-security-group.png)
 
@@ -48,10 +48,10 @@ Azure Site Recovery により、オンプレミスの [HYPER-V 仮想マシン](
 Azure へのフェールオーバー後に VM が作成された場合、NSG を使って仮想ネットワークおよび VM へのネットワーク トラフィックを制限することができます。 Site Recovery は、フェールオーバー操作の一部としては NSG を作成しません。 フェールオーバーを開始する前に、必要な Azure NSG を作成することをお勧めします。 そうすれば、Site Recovery の強力な[復旧計画](site-recovery-create-recovery-plans.md)で自動化スクリプトを使って、フェールオーバーの間にフェールオーバーされた VM に NSG を自動的に関連付けることができます。
 
 たとえば、フェールオーバー後の VM 構成が上で詳しく説明した[シナリオ例](concepts-network-security-group-with-site-recovery.md#using-network-security-groups)に似ている場合、次のようになります。
--   ターゲット Azure リージョンでの DR 計画の一部として、**Contoso VNet** および **Contoso サブネット**を作成できます。
--   また、同じ DR 計画の一部として、**サブネット NSG** と **VM NSG** の両方を作成して構成することもできます。
--   NSG とサブネットの両方が既に使用できるので、**サブネット NSG** を **Contoso サブネット**とすぐに関連付けることができます。
--   **VM NSG** は、復旧計画を使用するフェールオーバーの間に VM と関連付けることができます。
+-    ターゲット Azure リージョンでの DR 計画の一部として、**Contoso VNet** および **Contoso サブネット**を作成できます。
+-    また、同じ DR 計画の一部として、**サブネット NSG** と **VM NSG** の両方を作成して構成することもできます。
+-    NSG とサブネットの両方が既に使用できるので、**サブネット NSG** を **Contoso サブネット**とすぐに関連付けることができます。
+-    **VM NSG** は、復旧計画を使用するフェールオーバーの間に VM と関連付けることができます。
 
 NSG を作成して構成した後は、[テスト フェールオーバー](site-recovery-test-failover-to-azure.md)を実行して、スクリプト化した NSG の関連付けとフェールオーバー後の VM の接続を確認することをお勧めします。
 
@@ -59,20 +59,20 @@ NSG を作成して構成した後は、[テスト フェールオーバー](sit
 
 Azure Site Recovery によって、[Azure 仮想マシン](azure-to-azure-architecture.md)のディザスター リカバリーが可能になります。 Azure VM のレプリケーションを有効にすると、Site Recovery は、ターゲット リージョンにレプリカ仮想ネットワーク (サブネットとゲートウェイ サブネットを含む) を作成し、ソースとターゲットの仮想ネットワーク間に必要なマッピングを作成することができます。 また、ターゲット側のネットワークとサブネットを事前に作成して、レプリケーションを有効化する際に同じものを使用することもできます。 Site Recovery が[フェールオーバー](azure-to-azure-tutorial-failover-failback.md)の前にターゲット Azure リージョンに VM を作成することはありません。
 
-Azure VM レプリケーションでは、ソース Azure リージョンの NSG ルールで、レプリケーション トラフィックに対して[送信接続](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)を許可する必要があります。 この [NSG 構成の例](azure-to-azure-about-networking.md#example-nsg-configuration)を使用すると、これらの必要なルールもテストして確認することができます。
+Azure VM レプリケーションでは、ソース Azure リージョンの NSG ルールで、レプリケーション トラフィックに対して[送信接続](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)を許可する必要があります。 この [NSG 構成の例](azure-to-azure-about-networking.md#example-nsg-configuration)を使用すると、これらの必要なルールもテストして確認することができます。
 
 Site Recovery は、フェールオーバー操作の一部としては NSG を作成またはレプリケートしません。 フェールオーバーを開始する前に、ターゲット Azure リージョンに必要な NSG を作成しておくことをお勧めします。 そうすれば、Site Recovery の強力な[復旧計画](site-recovery-create-recovery-plans.md)で自動化スクリプトを使って、フェールオーバーの間にフェールオーバーされた VM に NSG を自動的に関連付けることができます。
 
 前に説明した[シナリオ例](concepts-network-security-group-with-site-recovery.md#using-network-security-groups)について考えます。
--   VM に対してレプリケーションが有効になっていると、Site Recovery はターゲット Azure リージョン上に **Contoso VNet** と **Contoso サブネット**のレプリカを作成できます。
--   ターゲット Azure リージョンに**サブネット NSG** と **VM NSG** の目的のレプリカを作成し (たとえば、それぞれ **ターゲット サブネット NSG** および**ターゲット VM NSG** という名前にします)、ターゲット リージョンで必要な追加規則に対応できます。
--   NSG とサブネットの両方が既に使用できるので、**ターゲット サブネット NSG** をターゲット リージョン サブネットとすぐに関連付けることができます。
--   **ターゲット VM NSG** は、復旧計画を使用するフェールオーバーの間に VM と関連付けることができます。
+-    VM に対してレプリケーションが有効になっていると、Site Recovery はターゲット Azure リージョン上に **Contoso VNet** と **Contoso サブネット**のレプリカを作成できます。
+-    ターゲット Azure リージョンに**サブネット NSG** と **VM NSG** の目的のレプリカを作成し (たとえば、それぞれ **ターゲット サブネット NSG** および**ターゲット VM NSG** という名前にします)、ターゲット リージョンで必要な追加規則に対応できます。
+-    NSG とサブネットの両方が既に使用できるので、**ターゲット サブネット NSG** をターゲット リージョン サブネットとすぐに関連付けることができます。
+-    **ターゲット VM NSG** は、復旧計画を使用するフェールオーバーの間に VM と関連付けることができます。
 
 NSG を作成して構成した後は、[テスト フェールオーバー](azure-to-azure-tutorial-dr-drill.md)を実行して、スクリプト化した NSG の関連付けとフェールオーバー後の VM の接続を確認することをお勧めします。
 
-## <a name="next-steps"></a>次の手順
--   [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md#network-security-groups)の詳細を確認する。
--   NSG の[セキュリティ規則](../virtual-network/security-overview.md#security-rules)の詳細を確認する。
--   NSG の[効果的なセキュリティ規則](../virtual-network/diagnose-network-traffic-filter-problem.md)の詳細を確認する。
--   アプリケーションのフェールオーバーを自動化するための[復旧計画](site-recovery-create-recovery-plans.md)の詳細を確認する。
+## <a name="next-steps"></a>次のステップ
+-    [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md#network-security-groups)の詳細を確認する。
+-    NSG の[セキュリティ規則](../virtual-network/security-overview.md#security-rules)の詳細を確認する。
+-    NSG の[効果的なセキュリティ規則](../virtual-network/diagnose-network-traffic-filter-problem.md)の詳細を確認する。
+-    アプリケーションのフェールオーバーを自動化するための[復旧計画](site-recovery-create-recovery-plans.md)の詳細を確認する。

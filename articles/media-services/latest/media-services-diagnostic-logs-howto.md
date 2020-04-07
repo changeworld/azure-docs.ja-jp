@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: bf83c87c71c8e05dc74d7754c82c76489de1bd85
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4d4587c701a054828fc34785e2ae680fef47625d
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750902"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382921"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services 診断ログの監視
 
 [Azure Monitor](../../azure-monitor/overview.md) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 この機能の詳細な説明と、Azure Media Services のメトリックと診断ログを使用する必要がある理由については、「[Media Services のメトリックと診断ログの監視](media-services-metrics-diagnostic-logs.md)」を参照してください。
 
-この記事では、データをストレージ アカウントにルーティングし、そのデータを表示する方法を示します。 
+この記事では、データをストレージ アカウントにルーティングし、そのデータを表示する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +34,7 @@ ms.locfileid: "75750902"
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>ポータルを使用してストレージ アカウントにデータをルーティングする
 
 1. Azure Portal (https://portal.azure.com ) にログインします。
-1. Media Services アカウントに移動し、 **[監視]** の下の **[診断設定]** をクリックします。 サブスクリプションに含まれ Azure Monitor で監視データを生成するすべてのリソースの一覧が表示されます。 
+1. Media Services アカウントに移動し、 **[監視]** の下の **[診断設定]** をクリックします。 サブスクリプションに含まれ Azure Monitor で監視データを生成するすべてのリソースの一覧が表示されます。
 
     ![[診断設定] セクション](media/media-services-diagnostic-logs/logs01.png)
 
@@ -53,11 +53,11 @@ ms.locfileid: "75750902"
 
 リソースからの監視データが、ストレージ アカウントに送られるようになります。
 
-## <a name="route-data-to-the-storage-account-using-the-cli"></a>CLI を使用してストレージ アカウントにデータをルーティングする
+## <a name="route-data-to-the-storage-account-using-the-azure-cli"></a>Azure CLI を使用してストレージ アカウントにデータをルーティングする
 
-ストレージ アカウントでの診断ログの保存を有効にするには、次の `az monitor diagnostic-settings` CLI コマンドを実行します。 
+ストレージ アカウントでの診断ログの保存を有効にするには、次の `az monitor diagnostic-settings` Azure CLI コマンドを実行します。
 
-```cli
+```azurecli-interactive
 az monitor diagnostic-settings create --name <diagnostic name> \
     --storage-account <name or ID of storage account> \
     --resource <target resource object ID> \
@@ -75,7 +75,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 次に例を示します。
 
-```cli
+```azurecli-interactive
 az monitor diagnostic-settings create --name amsv3diagnostic \
     --storage-account storageaccountforams  \
     --resource "/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount" \
@@ -178,7 +178,7 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
 
 * Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Azure Monitor のメトリック](../../azure-monitor/platform/data-platform.md)
 * [Azure Monitor 診断ログ](../../azure-monitor/platform/platform-logs-overview.md)

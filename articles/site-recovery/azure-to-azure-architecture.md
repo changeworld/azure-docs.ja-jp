@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 852059317c45dec4885b3f56de5617695d82e1e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 94da1639b5398a03b36fba3ff88877468a97ec36
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759808"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294111"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -129,17 +129,19 @@ Azure VM でレプリケーションを有効にすると、次のことが行�
 
 VM の送信アクセスが URL で制御されている場合は、次の URL を許可します。
 
-| **[URL]** | **詳細** |
+| **URL** | **詳細** |
 | ------- | ----------- |
 | *.blob.core.windows.net | ソース リージョンのキャッシュ ストレージ アカウントに、VM からデータが書き込まれるよう許可します。 |
 | login.microsoftonline.com | Site Recovery サービス URL に対する承認と認証を提供します。 |
 | *.hypervrecoverymanager.windowsazure.com | VM と Site Recovery サービスの通信を許可します。 |
 | *.servicebus.windows.net | VM による Site Recovery の監視および診断データの書き込みを許可します。 |
+| *.vault.azure.net | ADE が有効な仮想マシンのレプリケーションをポータルを介して有効にするためのアクセスを許可します
+| *.automation.ext.azure.com | レプリケートされる項目に対してモビリティ エージェントの自動アップグレードをポータルを介して有効にすることを許可します
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP アドレス範囲に対する送信接続
 
 IP アドレスを使用して VM の送信接続を制御するには、次のアドレスを許可します。
-ネットワーク接続要件の詳細は[ネットワークに関するホワイトペーパー](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)に記載されていることに注意してください 
+ネットワーク接続要件の詳細は[ネットワークに関するホワイトペーパー](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)に記載されていることに注意してください 
 
 #### <a name="source-region-rules"></a>ソース リージョンのルール
 
@@ -149,6 +151,8 @@ HTTPS の送信を許可する: ポート 443 | ソース リージョンのス�
 HTTPS の送信を許可する: ポート 443 | Azure Active Directory (Azure AD) に対応する範囲を許可します  | AzureActiveDirectory
 HTTPS の送信を許可する: ポート 443 | ターゲットリージョンのイベントハブに対応する範囲を許可します。 | イベントハブ。\<リージョン名 >
 HTTPS の送信を許可する: ポート 443 | Azure Site Recovery に対応する範囲を許可します。  | AzureSiteRecovery
+HTTPS の送信を許可する: ポート 443 | Azure Key Vault に対応する範囲を許可します (これは、ADE が有効になっている仮想マシンのレプリケーションを、ポータルを介して有効にする場合にのみ必要です) | AzureKeyVault
+HTTPS の送信を許可する: ポート 443 | Azure Automation コントローラーに対応する範囲を許可します (これは、レプリケートされる項目に対してモビリティ エージェントの自動アップグレードをポータルを介して有効にする場合にのみ必要です) | GuestAndHybridManagement
 
 #### <a name="target-region-rules"></a>ターゲット リージョンのルール
 
@@ -158,6 +162,8 @@ HTTPS の送信を許可する: ポート 443 | ターゲット リージョン�
 HTTPS の送信を許可する: ポート 443 | Azure AD に対応する範囲を許可します  | AzureActiveDirectory
 HTTPS の送信を許可する: ポート 443 | ソースリージョンのイベントハブに対応する範囲を許可します。 | イベントハブ。\<リージョン名 >
 HTTPS の送信を許可する: ポート 443 | Azure Site Recovery に対応する範囲を許可します。  | AzureSiteRecovery
+HTTPS の送信を許可する: ポート 443 | Azure Key Vault に対応する範囲を許可します (これは、ADE が有効になっている仮想マシンのレプリケーションを、ポータルを介して有効にする場合にのみ必要です) | AzureKeyVault
+HTTPS の送信を許可する: ポート 443 | Azure Automation コントローラーに対応する範囲を許可します (これは、レプリケートされる項目に対してモビリティ エージェントの自動アップグレードをポータルを介して有効にする場合にのみ必要です) | GuestAndHybridManagement
 
 
 #### <a name="control-access-with-nsg-rules"></a>NSG ルールでアクセスを制御する
@@ -170,7 +176,7 @@ HTTPS の送信を許可する: ポート 443 | Azure Site Recovery に対応す
     - サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えます。
     - Microsoft は、時間の経過と共に、サービス タグを自動的に更新します。 
  
-詳しくは、Site Recovery の[送信接続](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)に関する記事、および[NSG による接続の制御](concepts-network-security-group-with-site-recovery.md)に関する記事をご覧ください。
+詳しくは、Site Recovery の[送信接続](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)に関する記事、および[NSG による接続の制御](concepts-network-security-group-with-site-recovery.md)に関する記事をご覧ください。
 
 
 ### <a name="connectivity-for-multi-vm-consistency"></a>マルチ VM 整合性の接続

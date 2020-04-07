@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: acdf268874b1dc1c24116ba36e2b4233a2702a5f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 085280a8064e4d12ac63939ada7cdb296d47dc70
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064497"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365774"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Azure AD ID で Azure Cosmos DB アカウントのキーにアクセスするための証明書ベースの認証
 
@@ -142,13 +142,15 @@ Azure portal から、証明書ベースの資格情報を Azure AD 内のクラ
    ```powershell
    Login-AzAccount -ApplicationId <Your_Application_ID> -CertificateThumbprint $cert.Thumbprint -ServicePrincipal -Tenant <Tenant_ID_of_your_application>
 
-   Invoke-AzResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <Resource_Group_Name_of_your_Azure_Cosmos_account> -ResourceName <Your_Azure_Cosmos_Account_Name> 
+   Get-AzCosmosDBAccountKey `
+      -ResourceGroupName "<Resource_Group_Name_of_your_Azure_Cosmos_account>" `
+      -Name "<Your_Azure_Cosmos_Account_Name>" `
+      -Type "Keys"
    ```
 
-前のコマンドでは、Azure Cosmos アカウントのプライマリおよびセカンダリ マスター キーが表示されます。 キー取得要求が成功し、そのイベントが "sampleApp" アプリケーションによって開始されたことを検証するには、Azure Cosmos アカウントのアクティビティ ログを表示できます。 
- 
-![Azure AD でのキー取得の呼び出しを検証する](./media/certificate-based-authentication/activity-log-validate-results.png)
+前のコマンドでは、Azure Cosmos アカウントのプライマリおよびセカンダリ マスター キーが表示されます。 キー取得要求が成功し、そのイベントが "sampleApp" アプリケーションによって開始されたことを検証するには、Azure Cosmos アカウントのアクティビティ ログを表示できます。
 
+![Azure AD でのキー取得の呼び出しを検証する](./media/certificate-based-authentication/activity-log-validate-results.png)
 
 ## <a name="access-the-keys-from-a-c-application"></a>C# アプリケーションからキーにアクセスする 
 
@@ -245,4 +247,4 @@ namespace TodoListDaemonWithCert
 
 * [Azure Key Vault を使用して Azure Cosmos キーをセキュリティで保護する](access-secrets-from-keyvault.md)
 
-* [Azure Cosmos DB のセキュリティ コントロール](cosmos-db-security-controls.md)
+* [Azure Cosmos DB のセキュリティ ベースライン](security-baseline.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: anavin
-ms.openlocfilehash: 66cbb843369dee103f102c9c743da544a833ccf1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: a5bb9bb9c584aef8ac79b3c275d01d3c498da843
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355967"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060633"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Azure Portal を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -30,25 +30,25 @@ ms.locfileid: "78355967"
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>複数の IP アドレスを持つ VM を作成する
+## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>複数の IP アドレスを持つ VM を作成する
 
 複数の IP アドレスまたは静的プライベート IP アドレスを持つ VM を作成する場合は、PowerShell または Azure CLI を使用して VM を作成する必要があります。 その方法については、この記事の上部にある PowerShell または CLI オプションをクリックしてください。 単一の動的プライベート IP アドレスと (必要に応じて) 単一のパブリック IP アドレスを持つ VM を作成できます。 [Windows VM の作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)または [Linux VM の作成](../virtual-machines/linux/quick-create-portal.md)に関する記事の手順に従ってポータルを使用してください。 VM を作成したら、この記事の「[VM に IP アドレスを追加する](#add)」セクションの手順に従ってポータルを使用することにより、IP アドレス タイプを動的から静的に変更して、別の IP アドレスを追加できます。
 
-## <a name="add"></a>VM に IP アドレスを追加する
+## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>VM に IP アドレスを追加する
 
 プライベート IP アドレスとパブリック IP アドレスを Azure ネットワーク インターフェイスに追加するには、次の手順を実行します。 次のセクションの例では、[シナリオ](#scenario)で説明している 3 つの IP 構成を使用した VM を既に所有していることを前提としていますが、必須ではありません。
 
-### <a name="coreadd"></a>主な手順
+### <a name="core-steps"></a><a name="coreadd"></a>主な手順
 
 1. 必要に応じて、 https://portal.azure.com で Azure Portal を開き、サインインします。
 2. そのポータルで、 **[その他のサービス]** をクリックし、フィルター ボックスに「*virtual machines*」と入力して、 **[Virtual Machines]** をクリックします。
-3. **[Virtual Machines]** ウィンドウで、IP アドレスを追加する VM をクリックします。 表示された仮想マシン ウィンドウで **[ネットワーク インターフェイス]** をクリックして、IP アドレスを追加するネットワーク インターフェイスを選択します。 次の図に示す例では、「*myVM*」という名前の VM の「*myNIC*」という名前の NIC を選択しています。
+3. **[Virtual Machines]** ウィンドウで、IP アドレスを追加する VM をクリックします。 **[ネットワーク]** タブに移動します。このページで **[ネットワーク インターフェイス]** をクリックします。 次の図に示すようになります。 
 
-    ![ネットワーク インターフェイス](./media/virtual-network-multiple-ip-addresses-portal/figure1.png)
 
-4. 選択した NIC について表示されるウィンドウで、 **[IP 構成]** をクリックします。
+    ![VM に対するパブリック IP アドレスの追加](./media/virtual-network-multiple-ip-addresses-portal/figure200319.png)
+4. **[ネットワーク インターフェイス]** ウィンドウで、 **[IP 構成]** をクリックします。
 
-追加する IP アドレスのタイプに基づいて、以下のセクションのいずれかの手順を実行します。
+5. 選択した NIC について表示されるウィンドウで、 **[IP 構成]** をクリックします。 **[追加]** をクリックし、追加する IP アドレスのタイプに基づいて、以下のセクションのいずれかの手順を完了してから、 **[OK]** をクリックします。 
 
 ### <a name="add-a-private-ip-address"></a>**プライベート IP アドレスを追加する**
 
@@ -72,7 +72,7 @@ ms.locfileid: "78355967"
 > パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
 > 
 
-### <a name="create-public-ip"></a>パブリック IP アドレス リソースの作成
+### <a name="create-a-public-ip-address-resource"></a><a name="create-public-ip"></a>パブリック IP アドレス リソースの作成
 
 パブリック IP アドレスは、パブリック IP アドレス リソースの設定の 1 つです。 IP 構成に関連付ける予定で、まだ IP 構成に関連付けられていないパブリック IP アドレス リソースがある場合は、次の手順を省略して、必要に応じてそれに続く手順の 1 つを実行します。 利用できるパブリック IP アドレス リソースがない場合は、次の手順を実行して 1 つ作成します。
 

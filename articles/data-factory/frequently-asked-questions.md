@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 2e50d226282536fa4e8c044d2ee3d91df4cfd1ee
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 34972e70039fef17161bdef66f64278cbabf908f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131465"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80130796"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 この記事では、Azure Data Factory に関してよく寄せられる質問に対する回答を示します。  
@@ -78,15 +78,15 @@ SSIS ワークロードを移動する場合は、データ ファクトリを�
 ### <a name="new-features-for-ssis-in-data-factory"></a>Data Factory の SSIS の新機能
 2017 年のパブリック プレビュー リリースより、Data Factory は SSIS に次の機能を追加しています。
 
--   プロジェクトやパッケージの SSIS データベース (SSISDB) をホストする、Azure SQL Database の次の 3 つの追加構成およびバリアントのサポート。
--   仮想ネットワーク サービス エンドポイントを使用する SQL Database
--   マネージド インスタンス
--   エラスティック プール
--   将来廃止されるクラシック仮想ネットワーク上の Azure Resource Manager 仮想ネットワークに対するサポート。これにより、仮想ネットワーク サービス エンドポイント/MI/オンプレミス データ アクセスを使用する SQL Database 用に構成された仮想ネットワークに対して、Azure-SSIS 統合ランタイムを挿入したり、参加させたりできます。 詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](join-azure-ssis-integration-runtime-virtual-network.md)」も参照してください。
--   SSISDB に接続する際の Azure Active Directory (Azure AD) 認証および SQL 認証のサポート。これにより、Azure リソース用の Data Factory マネージド ID で Azure AD 認証を行うことができます。
--   独自のオンプレミスの SQL Server ライセンスの利用のサポート。Azure ハイブリッド特典オプションから実質的なコスト削減を得られます。
--   Azure-SSIS 統合ランタイムのエンタープライズ エディションのサポート。これにより、高度な機能やプレミアム機能、追加のコンポーネントや拡張機能をインストールするカスタム セットアップ インターフェイス、およびパートナーのエコシステムを使用できます。 詳細については、「[Enterprise Edition, Custom Setup, and 3rd Party Extensibility for SSIS in ADF (ADF の SSIS 用のエンタープライズ エディション、カスタム セットアップ、およびサード パーティの拡張性)](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/)」を参照してください。 
--   Data Factory と SSIS のより深い統合。これにより、Data Factory パイプラインのファースト クラスの SSIS パッケージ実行アクティビティを呼び出し/トリガーし、SSMS でそれらのスケジュールを設定できます。 詳細については、「[Modernize and extend your ETL/ELT workflows with SSIS activities in ADF pipelines (ADF パイプラインでの SSIS アクティビティを含む ETL/ELT ワークフローの最新化と拡張)](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)」を参照してください。
+-    プロジェクトやパッケージの SSIS データベース (SSISDB) をホストする、Azure SQL Database の次の 3 つの追加構成およびバリアントのサポート。
+-    仮想ネットワーク サービス エンドポイントを使用する SQL Database
+-    マネージド インスタンス
+-    エラスティック プール
+-    将来廃止されるクラシック仮想ネットワーク上の Azure Resource Manager 仮想ネットワークに対するサポート。これにより、仮想ネットワーク サービス エンドポイント/MI/オンプレミス データ アクセスを使用する SQL Database 用に構成された仮想ネットワークに対して、Azure-SSIS 統合ランタイムを挿入したり、参加させたりできます。 詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](join-azure-ssis-integration-runtime-virtual-network.md)」も参照してください。
+-    SSISDB に接続する際の Azure Active Directory (Azure AD) 認証および SQL 認証のサポート。これにより、Azure リソース用の Data Factory マネージド ID で Azure AD 認証を行うことができます。
+-    独自のオンプレミスの SQL Server ライセンスの利用のサポート。Azure ハイブリッド特典オプションから実質的なコスト削減を得られます。
+-    Azure-SSIS 統合ランタイムのエンタープライズ エディションのサポート。これにより、高度な機能やプレミアム機能、追加のコンポーネントや拡張機能をインストールするカスタム セットアップ インターフェイス、およびパートナーのエコシステムを使用できます。 詳細については、「[Enterprise Edition, Custom Setup, and 3rd Party Extensibility for SSIS in ADF (ADF の SSIS 用のエンタープライズ エディション、カスタム セットアップ、およびサード パーティの拡張性)](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/)」を参照してください。 
+-    Data Factory と SSIS のより深い統合。これにより、Data Factory パイプラインのファースト クラスの SSIS パッケージ実行アクティビティを呼び出し/トリガーし、SSMS でそれらのスケジュールを設定できます。 詳細については、「[Modernize and extend your ETL/ELT workflows with SSIS activities in ADF pipelines (ADF パイプラインでの SSIS アクティビティを含む ETL/ELT ワークフローの最新化と拡張)](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)」を参照してください。
 
 
 ## <a name="what-is-the-integration-runtime"></a>統合ランタイムについて
@@ -207,8 +207,7 @@ Microsoft では、データ フローに関するサポートやトラブルシ
 * オーストラリア東部
 * カナダ中部
 * インド中部
-* 米国中部
-* East US
+* 米国東部
 * 米国東部 2
 * 東日本
 * 北ヨーロッパ

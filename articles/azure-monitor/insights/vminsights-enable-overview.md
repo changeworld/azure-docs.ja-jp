@@ -1,25 +1,25 @@
 ---
-title: Azure Monitor for VMs の有効化 (プレビュー) の概要 | Microsoft Docs
+title: Azure Monitor for VMs の有効化の概要
 description: Azure Monitor for VMs のデプロイと構成の方法を説明します。 システム要件を確認してください。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/14/2019
-ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/27/2020
+ms.openlocfilehash: 26ed33e967aff1714d2a6fb174eab623e71534c2
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669575"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382734"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor for VMs の有効化 (プレビュー) の概要
+# <a name="enable-azure-monitor-for-vms-overview"></a>Azure Monitor for VMs の有効化の概要
 
-この記事では、Azure Monitor for VMs の設定に使用できるオプションの概要について説明します。 正常性とパフォーマンスを監視するには、Azure Monitor for VMs を使用します。 Azure 仮想マシン (VM) と仮想マシンのスケール セット、オンプレミスの VM、または別のクラウド環境でホストされている VM で実行されるアプリケーションの依存関係を発見します。  
+この記事では、仮想マシンで Azure Monitor for VMs を有効にして正常性とパフォーマンスを監視するために使用できるオプションの概要について説明します。 Azure 仮想マシン (VM) と仮想マシンのスケール セット、オンプレミスの VM、または別のクラウド環境でホストされている VM で実行されるアプリケーションの依存関係を発見します。  
 
 Azure Monitor for VMs を設定する方法は、次のとおりです。
 
-* VM または仮想マシン スケール セットから直接 **Insights (プレビュー)** を選択して、単一の Azure VM または仮想マシン スケール セットを有効にします。
+* VM または仮想マシン スケール セットから直接 **Insights** を選択して、単一の Azure VM または仮想マシン スケール セットを有効にします。
 * Azure Policy を使用して、複数の Azure VM および仮想マシン スケール セットを有効にします。 この方法を使用すると、既存および新規の VM とスケール セットに、必要な依存関係が確実にインストールされ、適切に構成されます。 準拠していない VM とスケール セットがレポートされるので、それらを有効にするかどうかと、それらを修復するかどうかを決めることができます。
 * PowerShell を使用して、指定したサブスクリプションまたはリソース グループ全体の複数の Azure VM または仮想マシン スケール セットを有効にします。
 * 企業ネットワークまたはその他のクラウド環境でホストされている VM または物理コンピューターを監視するために、Azure Monitor for VMs を有効にします。
@@ -55,20 +55,20 @@ Azure Monitor for VMs は、次のリージョンで Log Analytics ワークス�
 - オーストラリア南東部
 
 >[!NOTE]
->任意のリージョンから Azure VM をデプロイすることができます。 これらの VM は、Log Analytics ワークスペースでサポートされているリージョンに限定されません。
+>Azure VM は任意のリージョンで監視できます。 VM 自体は、Log Analytics ワークスペースでサポートされているリージョンに限定されません。
 >
 
-ワークスペースがない場合は、次のいずれかのリソースを使用して作成できます。
+Log Analytics ワークスペースがない場合は、次のいずれかのリソースを使用して作成できます。
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
-* [Azure ポータル](../../azure-monitor/learn/quick-create-workspace.md)
+* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
 Azure portal で単一の Azure VM または仮想マシン スケール セットに対する監視を有効にしているときにも、ワークスペースを作成できます。
 
 Azure Policy、Azure PowerShell、または Azure Resource Manager テンプレートを使用した大規模なシナリオを設定するには、Log Analytics ワークスペースで次の操作を行います。
 
-* ServiceMap および InfrastructureInsights ソリューションをインストールします。 提供されている Azure Resource Manager テンプレートを使用して、このインストールを完了できます。 または、 **[はじめに]** タブで **[ワークスペースの構成]** を選択します。
+* *ServiceMap* および *InfrastructureInsights* ソリューションをインストールします。 提供されている Azure Resource Manager テンプレートを使用して、このインストールを完了できます。 または、Azure portal の **[開始]** タブで、 **[ワークスペースの構成]** を選択します。
 * パフォーマンス カウンターを収集するように Log Analytics ワークスペースを構成します。
 
 大規模シナリオ用ワークスペースを構成するには、次のいずれかの方法を使用します。
@@ -175,8 +175,8 @@ Dependency Agent は、以下の場所からダウンロードできます。
 
 | ファイル | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.2 | 6DFF19B9690E42CA190E3B69137C77904B657FA02895033EAA4C3A6A41DA5C6A |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.2.9060 | B7725B6B205CF8C336D9AAD87956336C816412740E9D6499BCACB6F862AE3896  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.2.9060 | C6995A67A7782AEC312647D74A99C3C823F68F5FFA490FD4BB6006A2FF2941B0 |
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
@@ -184,60 +184,16 @@ Azure Monitor for VMs の機能を有効にしてアクセスするには、"*Lo
 
 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../../azure-monitor/platform/manage-access.md)」を参照してください。
 
-## <a name="how-to-enable-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs を有効にする方法 (プレビュー)
+## <a name="how-to-enable-azure-monitor-for-vms"></a>Azure Monitor for VMs を有効にする方法
 
 この表で説明されているいずれかの方法で、Azure Monitor for VMs を有効にします。
 
 | デプロイの状態 | Method | 説明 |
 |------------------|--------|-------------|
-| 単一の Azure VM または仮想マシン スケール セット | [VM から有効にする](vminsights-enable-single-vm.md) | 単一の Azure VM を有効にするには、VM または仮想マシン スケール セットから直接 **Insights (プレビュー)** を選択します。 |
+| 単一の Azure VM または仮想マシン スケール セット | [VM から有効にする](vminsights-enable-single-vm.md) | 単一の Azure VM を有効にするには、VM または仮想マシン スケール セットから直接 **Insights** を選択します。 |
 | 複数の Azure VM または仮想マシン スケール セット | [Azure Policy を介して有効にする](vminsights-enable-at-scale-policy.md) | Azure Policy と使用可能なポリシー定義を使用すると、複数の Azure VM を有効にできます。 |
 | 複数の Azure VM または仮想マシン スケール セット | [Azure PowerShell または Azure Resource Manager テンプレートを介して有効にする](vminsights-enable-at-scale-powershell.md) | Azure PowerShell または Azure Resource Manager テンプレートを使用すると、指定したサブスクリプションまたはリソース グループ全体の複数の Azure VM または仮想マシン スケール セットを有効にできます。 |
 | ハイブリッド クラウド | [ハイブリッド環境用に有効にする](vminsights-enable-hybrid-cloud.md) | ご自身のデータ センターやその他のクラウド環境でホストされている VM または物理コンピューターにデプロイできます。 |
-
-## <a name="performance-counters-enabled"></a>パフォーマンス カウンターの有効化 
-
-Azure Monitor for VMs では、使用されているパフォーマンス カウンターが収集されるように Log Analytics ワークスペースが構成されます。 次の表は、60 秒ごとに収集されるオブジェクトとカウンターの一覧です。
-
->[!NOTE]
->次の Azure Monitor for VMs によって有効にされたパフォーマンス カウンターのリストでは、ワークスペースに報告する VM から収集する必要がある追加のカウンターを有効にすることもできます。 また、これらのカウンターを無効にすると、パフォーマンス機能に含まれるパフォーマンス グラフのセットで VM からのリソース使用率が表示されなくなります。
-
-### <a name="windows-performance-counters"></a>Windows パフォーマンス カウンター
-
-|オブジェクト名 |カウンター名 |
-|------------|-------------|
-|LogicalDisk |% Free Space |
-|LogicalDisk |Avg.Disk sec/Read |
-|LogicalDisk |Avg.Disk sec/Transfer |
-|LogicalDisk |Avg.Disk sec/Write |
-|LogicalDisk |Disk Bytes/sec |
-|LogicalDisk |Disk Read Bytes/sec |
-|LogicalDisk |Disk Reads/sec |
-|LogicalDisk |Disk Transfers/sec |
-|LogicalDisk |Disk Write Bytes/sec |
-|LogicalDisk |Disk Writes/sec |
-|LogicalDisk |Free Megabytes |
-|メモリ |Available MBytes |
-|ネットワーク アダプター |Bytes Received/sec |
-|ネットワーク アダプター |Bytes Sent/sec |
-|プロセッサ |% Processor Time |
-
-### <a name="linux-performance-counters"></a>Linux パフォーマンス カウンター
-
-|オブジェクト名 |カウンター名 |
-|------------|-------------|
-|論理ディスク |% Used Space |
-|論理ディスク |Disk Read Bytes/sec |
-|論理ディスク |Disk Reads/sec |
-|論理ディスク |Disk Transfers/sec |
-|論理ディスク |Disk Write Bytes/sec |
-|論理ディスク |Disk Writes/sec |
-|論理ディスク |Free Megabytes |
-|論理ディスク |Logical Disk Bytes/sec |
-|メモリ |Available MBytes Memory |
-|ネットワーク |Total Bytes Received |
-|ネットワーク |Total Bytes Transmitted |
-|プロセッサ |% Processor Time |
 
 ## <a name="management-packs"></a>管理パック
 

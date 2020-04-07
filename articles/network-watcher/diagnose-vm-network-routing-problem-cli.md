@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: bf4c5e364b7f18b363f9915f54e43c7ea54c33c4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ae139ea7aca7c3896fcd7b0acf2bf6673490a2f4
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834677"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382904"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>仮想マシン ネットワークのルーティングの問題を診断する - Azure CLI
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.28 以降を実行していることが要件です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 CLI のバージョンを確認した後、`az login` を実行して Azure との接続を作成します。 この記事の CLI コマンドは、Bash シェルで実行されることを想定して書式設定されています。
+Azure CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.28 以降を実行していることが要件となります。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI のバージョンを確認した後、`az login` を実行して Azure との接続を作成します。 この記事の Azure CLI コマンドは、Bash シェルで実行されることを想定して書式設定されています。
 
 ## <a name="create-a-vm"></a>VM の作成
 
@@ -52,7 +52,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-VM の作成には数分かかります。 VM が作成されて、CLI から出力が返されるまでは、次の手順に進まないでください。
+VM の作成には数分かかります。 VM が作成されて、Azure CLI から出力が返されるまでは、次の手順に進まないでください。
 
 ## <a name="test-network-communication"></a>ネットワーク通信をテストする
 
@@ -113,7 +113,7 @@ az network nic show-effective-route-table \
 
 返される出力には、次のテキストが含まれます。
 
-```azurecli
+```
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false
@@ -133,7 +133,7 @@ az network nic show-effective-route-table \
 
 ただし、172.31.0.100 への送信通信のテストに `az network watcher show-next-hop` コマンドを使用したときの結果は、次ホップの種類がないことを示しています。 返される出力には、次のテキストも含まれます。
 
-```azurecli
+```
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false

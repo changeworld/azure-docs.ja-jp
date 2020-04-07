@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 0ac169060f7ba0e58aeb3e36e3af1629b6453fc1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 63d8d8d3701a9adca4bd01e6e061877f5d0bd245
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77667365"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333356"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
 このドキュメントでは、[Azure セキュリティ センター](../../security/fundamentals/trust-center.md)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
@@ -151,7 +151,7 @@ Operations Manager の場合、Operations Manager 管理グループは、Log An
 各エージェントが Log Analytics のデータを収集します。 収集されるデータの種類は、使用するソリューションの種類によって異なります。 データ収集の概要については「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](../../azure-monitor/insights/solutions.md)」を参照してください。 また、ほぼすべてのソリューションについて、より詳細な収集情報も提供されています。 ソリューションは、定義済みビュー、ログ検索クエリ、データの収集ルール、処理ロジックのバンドルになります。 Log Analytics を使用してソリューションをインポートできるのは管理者のみです。 ソリューションはインポート後、Operations Manager 管理サーバー (使用する場合) に移動され、選択した任意のエージェントに移動されます。 その後、エージェントはデータを収集します。
 
 ## <a name="2-send-data-from-agents"></a>2.エージェントからデータを送信する
-登録キーを使用してすべての種類のエージェントを登録すると、証明書ベースの認証とポート 443 による SSL が使用され、エージェントと Log Analytics サービス間にセキュリティで保護された接続が確立します。 Log Analytics では、キーの生成と管理にシークレット ストアを使用します。 秘密キーは 90 日ごとに交換されて Azure に格納され、厳密な規制およびコンプライアンス手順に従う Azure オペレーターによって管理されます。
+登録キーを使用してすべての種類のエージェントを登録すると、証明書ベースの認証とポート 443 による TLS が使用され、エージェントと Log Analytics サービス間にセキュリティで保護された接続が確立します。 Log Analytics では、キーの生成と管理にシークレット ストアを使用します。 秘密キーは 90 日ごとに交換されて Azure に格納され、厳密な規制およびコンプライアンス手順に従う Azure オペレーターによって管理されます。
 
 Operations Manager では、Log Analytics ワークスペースに登録されている管理グループは、Operations Manager 管理サーバーとのセキュアな HTTPS 接続を確立します。
 
@@ -161,7 +161,7 @@ Log Analytics に統合されている Operations Manager 管理グループに�
 
 Windows または管理サーバー エージェントのキャッシュされたデータは、オペレーティング システムの資格情報ストアによって保護されています。 2 時間が経過してもサービスがデータを処理できない場合、エージェントはデータをキューに格納します。 キューがいっぱいになると、エージェントはパフォーマンス データから順にデータ型を削除し始めます。 エージェントのキューの上限はレジストリ キーであるため、必要に応じて変更できます。 収集されたデータは圧縮され、負荷を追加しないように Operations Manager 管理グループ データベースをバイパスして、サービスに送信されます。 収集したデータが送信されると、データはキャッシュから削除されます。
 
-前述のように、管理サーバーまたは直接接続エージェントからのデータが SSL 経由で Microsoft Azure データセンターに送信されます。 必要に応じて、ExpressRoute を使用してデータのセキュリティを強化できます。 ExpressRoute は、ネットワーク サービス プロバイダーによって提供されるマルチ プロトコル ラベル スイッチング (MPLS) VPN などの、既存の WAN ネットワークから Azure に直接接続する方法です。 詳細については、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) に関するページを参照してください。
+前述のように、管理サーバーまたは直接接続エージェントからのデータが TLS 経由で Microsoft Azure データセンターに送信されます。 必要に応じて、ExpressRoute を使用してデータのセキュリティを強化できます。 ExpressRoute は、ネットワーク サービス プロバイダーによって提供されるマルチ プロトコル ラベル スイッチング (MPLS) VPN などの、既存の WAN ネットワークから Azure に直接接続する方法です。 詳細については、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) に関するページを参照してください。
 
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3.Log Analytics サービスでデータを受信して処理する
 Log Analytics サービスでは、Azure 認証で証明書とデータの整合性を検証することにより、入力されるデータが信頼できる発行元からのものであることを確認します。 未処理の生データは、リージョンの Azure Event Hub に格納され、データは最終的に保存されます。 保存されているデータの種類は、インポートしてデータを収集するために使用したソリューションの種類によって異なります。 次に、Log Analytics サービスは、生データを処理してデータベースに取り込みます。

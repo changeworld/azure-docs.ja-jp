@@ -1,17 +1,17 @@
 ---
-title: Active Directory 認証 - Azure Database for MySQL - 単一サーバー
-description: Azure Database for MySQL (単一サーバー) での認証に関する Azure Active Directory の概念について説明します
+title: Active Directory 認証 - Azure Database for MySQL
+description: Azure Database for MySQL での認証に関する Azure Active Directory の概念について説明します
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: eb26bc09ce273280b55a023c563427b5b323ace9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 960536c3f80aa7870d6f2056d8e95cd1a4338dfe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706034"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79299024"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL での認証に Azure Active Directory を使用する
 
@@ -90,7 +90,7 @@ Active Directory に対して認証された後、トークンを取得します
 ## <a name="next-steps"></a>次のステップ
 
 - Azure AD を作成して設定し、Azure Database for MySQL で Azure AD を構成する方法については、[Azure Database for MySQL 向けの Azure AD での構成とサインイン](howto-configure-sign-in-azure-ad-authentication.md)に関するページを参照してください。
-- Azure Database for MySQL のログインとデータベース ユーザーの概要については、[Azure Database for MySQL (単一サーバー) でのユーザーの作成](howto-create-users.md)に関する記事を参照してください。
+- Azure Database for MySQL のログインとデータベース ユーザーの概要については、[Azure Database for MySQL でのユーザーの作成](howto-create-users.md)に関する記事を参照してください。
 
 <!--Image references-->
 

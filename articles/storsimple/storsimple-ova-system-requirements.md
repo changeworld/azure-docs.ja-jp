@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273768"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298822"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array のシステム要件
 
@@ -102,7 +102,7 @@ iSCSI、SMB、クラウド、または管理トラフィックを許可するた
 <sup>1</sup> 受信ポートがパブリック インターネットで開かれている必要はありません。
 
 > [!IMPORTANT]
-> StorSimple デバイスと Azure 間でファイアウォールが SSL トラフィックの変更や暗号化解除を行わないことを確認します。
+> StorSimple デバイスと Azure 間でファイアウォールが TLS トラフィックの変更や暗号化解除を行っていないことを確認します。
 > 
 > 
 

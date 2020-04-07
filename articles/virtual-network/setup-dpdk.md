@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: 876e64cd29aabe1fd4274872800a29cf1a83a0d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c79c1fd687e329b97a854a3ff66a3cf95076b5d6
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350503"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384230"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Linux 仮想マシンでの DPDK の設定
 
@@ -38,15 +38,15 @@ DPDK は、複数のオペレーティング システムの配布をサポー�
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-Azure ギャラリーの次のディストリビューションがサポートされています。
+Azure Marketplace の次のディストリビューションがサポートされています。
 
-| Linux OS     | カーネル バージョン        |
-|--------------|----------------       |
-| Ubuntu 16.04 | 4.15.0-1015-azure     |
-| Ubuntu 18.04 | 4.15.0-1015-azure     |
-| SLES 15      | 4.12.14-5.5-azure     |
-| RHEL 7.5     | 3.10.0-862.9.1.el7    |
-| CentOS 7.5   | 3.10.0-862.3.3.el7    |
+| Linux OS     | カーネル バージョン               | 
+|--------------|---------------------------   |
+| Ubuntu 16.04 | 4.15.0-1014-azure+           | 
+| Ubuntu 18.04 | 4.15.0-1014-azure+           |
+| SLES 15 SP1  | 4.12.14-8.27-azure+          | 
+| RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64+  | 
+| CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64+  | 
 
 **カスタムのカーネル サポート**
 
@@ -86,7 +86,7 @@ sudo dracut --add-drivers "mlx4_en mlx4_ib mlx5_ib" -f
 yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel libmnl-devel
 ```
 
-### <a name="sles-15"></a>SLES 15
+### <a name="sles-15-sp1"></a>SLES 15 SP1
 
 **Azure のカーネル**
 
@@ -108,7 +108,7 @@ zypper \
 
 ## <a name="set-up-the-virtual-machine-environment-once"></a>仮想マシン環境のセットアップ (1 回のみ)
 
-1. [最新 DPDK をダウンロードします](https://core.dpdk.org/download)。 Azure にはバージョン 18.02 以降が必要です。
+1. [最新 DPDK をダウンロードします](https://core.dpdk.org/download)。 Azure には、バージョン 18.11 LTS または 19.11 LTS が必要です。
 2. `make config T=x86_64-native-linuxapp-gcc` を使って既定の構成を構築します。
 3. `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config` を使って、生成された構成で Mellanox PMD を有効にします。
 4. `make` を使ってコンパイルします。
@@ -120,32 +120,30 @@ zypper \
 
 1. hugepage
 
-   * すべての numanode に対して 1 回、次のコマンドを実行して hugepage を構成します。
+   * NUMA ノードごとに 1 回ずつ次のコマンドを実行して、hugepage を構成します。
 
      ```bash
-     echo 1024 | sudo tee
-     /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
+     echo 1024 | sudo tee /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
    * `mkdir /mnt/huge` を使って、マウント用のディレクトリを作成します。
    * `mount -t hugetlbfs nodev /mnt/huge` を使って hugepage をマウントします。
    * `grep Huge /proc/meminfo` を使って、hugepage が予約されていることを確認します。
 
-     > [!NOTE]
-     > DPDK の[手順](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)に従って、hugepage がブートで予約されるように、grub ファイルを変更する方法があります。 ページの下部に手順があります。 Azure Linux 仮想マシンで実行している場合は、複数のリブートに及ぶ hugepage を予約するために、代わりに **/etc/config/grub.d** 下のファイルを変更してください。
+     > [注意] DPDK 向けの[手順](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)に従って、hugepage がブート時に予約されるように grub ファイルを変更する方法があります。 ページの下部に手順があります。 Azure Linux 仮想マシンで実行している場合は、複数のリブートに及ぶ hugepage を予約するために、代わりに **/etc/config/grub.d** 下のファイルを変更してください。
 
-2. MAC および IP アドレス: `ifconfig –a` を使用して、ネットワーク インターフェイスの MAC および IP アドレスを表示します。 *VF* ネットワーク インターフェイスおよび *NETVSC* ネットワーク インターフェイスは、同一の MAC アドレスを保持しますが、*NETVSC* ネットワーク インターフェイスだけが IP アドレスを保持します。 VF インターフェイスは、NETVSC インターフェイスの下位インターフェイスとして実行されています。
+2. MAC および IP アドレス: `ifconfig –a` を使用して、ネットワーク インターフェイスの MAC および IP アドレスを表示します。 *VF* ネットワーク インターフェイスおよび *NETVSC* ネットワーク インターフェイスは、同一の MAC アドレスを保持しますが、*NETVSC* ネットワーク インターフェイスだけが IP アドレスを保持します。 *VF* インターフェイスは、*NETVSC* インターフェイスの下位インターフェイスとして実行されています。
 
 3. PCI アドレス
 
    * `ethtool -i <vf interface name>` を使って *VF* で使用される PCI アドレスを調べます。
-   * *eth0* で高度なネットワークを有効化した場合、testpmd が誤って *eth0* の VF pci デバイスを引き継ぐことはありません。 DPDK アプリケーションが誤って管理ネットワーク インターフェイスを引き継ぎ、SSH 接続が失われた場合、シリアル コンソールを使用して DPDK アプリケーションを停止します。 また、シリアル コンソールを使用して仮想マシンを停止または起動することもできます。
+   * *eth0* で高速ネットワークが有効化されている場合、testpmd が誤って *eth0* の *VF* PCI デバイスを引き継ぐことのないようにしてください。 DPDK アプリケーションが誤って管理ネットワーク インターフェイスを引き継ぎ、SSH 接続が失われた場合、シリアル コンソールを使用して DPDK アプリケーションを停止します。 また、シリアル コンソールを使用して仮想マシンを停止または起動することもできます。
 
 4. `modprobe -a ib_uverbs` を使って、各リブートで *ibuverbs* を読み込みます。 SLES 15 の場合のみ、`modprobe -a mlx4_ib` を使って *mlx4_ib* も読み込みます。
 
 ## <a name="failsafe-pmd"></a>フェールセーフの PMD
 
-DPDK アプリケーションは、Azure で公開されたフェールセーフの PMD 経由で実行される必要があります。 VF PMD 経由でアプリケーションが直接実行される場合、一部のパケットは統合インターフェイス経由で表示されるので、VM を宛先とする**すべての**パケットが受信されることはありません。 
+DPDK アプリケーションは、Azure で公開されたフェールセーフの PMD 経由で実行される必要があります。 *VF* PMD 経由でアプリケーションが直接実行される場合、一部のパケットは統合インターフェイス経由で表示されるので、VM を宛先とする**すべての**パケットが受信されるわけではありません。 
 
 DPDK アプリケーションをフェールセーフの PMD 経由で実行すると、該当のアプリケーションを宛先とするすべてのパケットが、そのアプリケーションで受信されることが保証されます。 また、ホストがサービス提供されている場合に VF が取り消されたとしても、アプリケーションは確実に、引き続き DPDK モードで実行されます。 フェールセーフの PMD の詳細については、[フェールセーフでのポーリング モードのドライバー ライブラリ](https://doc.dpdk.org/guides/nics/fail_safe.html)を参照してください。
 

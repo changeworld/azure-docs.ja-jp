@@ -1,15 +1,15 @@
 ---
-title: Webhook を使用して Azure Service Health の通知を送信する
+title: Webhook を介して Azure Service Health の通知を送信する
 description: サービス正常性イベントについて個人用に設定された通知を、既存の問題管理システムに送信します。
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
-ms.openlocfilehash: 95926185057d9fc1177b974fe76b2da18ebfc124
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 2609a267bd151354f83482ab16c4b9345aa88cc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551677"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062854"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Webhook を使用して問題管理システム用に正常性通知を構成する
 

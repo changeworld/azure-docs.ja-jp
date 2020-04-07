@@ -3,16 +3,16 @@ title: リソースの複数のインスタンスをデプロイする
 description: Azure Resource Manager テンプレートで copy 操作と配列を使用して、リソースの種類を複数回デプロイします。
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: e90673504ceaccdc25a477e856defa77eed37d86
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: e65ab93c21daffa0053e53d953fe95fa9f28e2a3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620232"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153320"
 ---
-# <a name="resource-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのリソースの反復
+# <a name="resource-iteration-in-arm-templates"></a>ARM テンプレートでのリソースの反復処理
 
-この記事では、Azure Resource Manager テンプレートでリソースの複数のインスタンスを作成する方法について説明します。 テンプレートのリソース セクションに **copy** 要素を追加することで、デプロイするリソースの数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
+この記事では、Azure Resource Manager (ARM) テンプレートでリソースの複数のインスタンスを作成する方法について説明します。 テンプレートのリソース セクションに **copy** 要素を追加することで、デプロイするリソースの数を動的に設定できます。 テンプレートの構文を繰り返す必要もありません。
 
 [プロパティ](copy-properties.md)、[変数](copy-variables.md)、および[出力](copy-outputs.md)でもコピーを使用できます。
 
@@ -20,7 +20,7 @@ ms.locfileid: "77620232"
 
 ## <a name="resource-iteration"></a>リソースの反復
 
-この copy 要素には、次の一般的な形式があります。
+このコピー要素には、次の一般的な形式があります。
 
 ```json
 "copy": {
@@ -172,7 +172,7 @@ mode プロパティでも **parallel** が既定値として使用されます�
 
 ## <a name="depend-on-resources-in-a-loop"></a>ループ内のリソースへの依存
 
-`dependsOn` 要素を使用することで、リソースを別のリソースの後にデプロイするよう指定することが可能です。 ループ内のリソースの集合に依存するリソースをデプロイするには、dependsOn 要素にコピー ループの名前を指定します。 次の例では、仮想マシンをデプロイする前に 3 つのストレージ アカウントをデプロイする方法を示します。 完全な仮想マシン定義は示されていません。 copy 要素の name が `storagecopy` に設定され、Virtual Machines の dependsOn 要素が `storagecopy` に設定されるよう注意してください。
+`dependsOn` 要素を使用することで、リソースを別のリソースの後にデプロイするよう指定することが可能です。 ループ内のリソースの集合に依存するリソースをデプロイするには、dependsOn 要素にコピー ループの名前を指定します。 次の例では、仮想マシンをデプロイする前に 3 つのストレージ アカウントをデプロイする方法を示します。 完全な仮想マシン定義は示されていません。 コピー要素の name が `storagecopy` に設定され、Virtual Machines の dependsOn 要素が `storagecopy` に設定されるよう注意してください。
 
 ```json
 {
@@ -280,12 +280,12 @@ count は負の数値にすることはできません。 Azure PowerShell 2.6 �
 
 ## <a name="next-steps"></a>次のステップ
 
-* チュートリアルについては、「[チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)」を参照してください。
+* チュートリアルを実行するには、「[チュートリアル: ARM テンプレートを使用した複数のリソース インスタンスの作成](template-tutorial-create-multiple-instances.md)」を参照してください。
 * copy 要素のその他の使用方法については、以下を参照してください。
-  * [Azure Resource Manager テンプレートでのプロパティの反復](copy-properties.md)
-  * [Azure Resource Manager テンプレートでの変数の反復](copy-variables.md)
-  * [Azure Resource Manager テンプレートでの出力の反復](copy-outputs.md)
+  * [ARM テンプレートでのプロパティの反復処理](copy-properties.md)
+  * [ARM テンプレートでの変数の反復処理](copy-variables.md)
+  * [ARM テンプレートでの出力の反復処理](copy-outputs.md)
 * 入れ子になったテンプレートで copy を使用する方法については、「[copy の使用](linked-templates.md#using-copy)」を参照してください。
-* テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](template-syntax.md)」を参照してください。
-* テンプレートをデプロイする方法については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)」を参照してください。
+* テンプレートのセクションについては、[ARM テンプレートの作成](template-syntax.md)に関する記事を参照してください。
+* テンプレートをデプロイする方法については、[ARM テンプレートを使用したアプリケーションのデプロイ](deploy-powershell.md)に関する記事を参照してください。
 

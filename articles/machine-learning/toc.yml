@@ -17,18 +17,22 @@
   items:
     - name: Studio とデザイナー
       items:
-        - name: 'デザイナー: 1. 回帰モデルをトレーニングする'
-          displayName: studio
-          href: tutorial-designer-automobile-price-train-score.md
-        - name: 'デザイナー: 2. そのモデルをデプロイする'
-          displayName: studio
-          href: tutorial-designer-automobile-price-deploy.md
-        - name: 自動 ML の実験を作成する
-          displayName: 'automl, automated, auto ml, portal, ui'
-          href: tutorial-first-experiment-automated-ml.md
-        - name: 自動 ML を使用した需要予測 (自転車シェア データ)
-          displayName: 'automl, automated, auto ml, portal, ui'
-          href: tutorial-automated-ml-forecast.md
+        - name: デザイナー (ドラッグ アンド ドロップ)
+          items:
+            - name: 'デザイナー: 1. 回帰モデルをトレーニングする'
+              displayName: studio
+              href: tutorial-designer-automobile-price-train-score.md
+            - name: 'デザイナー: 2. そのモデルをデプロイする'
+              displayName: studio
+              href: tutorial-designer-automobile-price-deploy.md
+        - name: 自動化された ML (UI)
+          items:
+            - name: 自動 ML の実験を作成する
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-first-experiment-automated-ml.md
+            - name: 自動 ML を使用した需要予測 (自転車シェア データ)
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-automated-ml-forecast.md
     - name: Python SDK
       items:
         - name: 初めての ML 実験を作成する
@@ -95,6 +99,9 @@
     - name: モデル トレーニング
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
+    - name: 分散トレーニング
+      displayName: 'parallellization, deep learning, deep neural network, dnn'
+      href: concept-distributed-training.md
     - name: モデル管理 (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
@@ -111,6 +118,9 @@
     - name: 自動化された機械学習
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
+    - name: ML の落とし穴の管理
+      displayName: 'automl, auto ml, risks'
+      href: concept-manage-ml-pitfalls.md
     - name: コンピューティング インスタンス
       displayName: 'resource, dsvm, Data Science Virtual Machine'
       href: concept-compute-instance.md
@@ -133,6 +143,9 @@
             - name: 仮想ネットワークの使用
               displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
+            - name: Private Link を使用する
+              displayName: private endpoint
+              href: how-to-configure-private-link.md
             - name: SSL を使用して Web サービスをセキュリティで保護する
               href: how-to-secure-web-service.md
             - name: AKS デプロイで Azure AD ID を使用する
@@ -184,39 +197,47 @@
           href: concept-train-model-git-integration.md
     - name: データの処理
       items:
-        - name: Azure Storage のデータに接続する
-          displayName: 'blob, get, fileshare, access storage, mount, download'
-          href: how-to-access-data.md
-        - name: データストアからデータを取得する
-          displayName: 'data, data set, register, access data'
-          href: how-to-create-register-datasets.md
-        - name: データセットを使用したトレーニング
-          displayName: 'data, dataset, mount'
-          href: how-to-train-with-datasets.md
-        - name: デザイナーでデータをインポートする
-          displayName: 'designer, data, import, dataset, datastore'
-          href: how-to-designer-import-data.md
-        - name: データセットのドリフトを検出する
-          displayName: 'data, dataset'
-          href: how-to-monitor-datasets.md
-        - name: データセットのバージョン管理と追跡
-          displayName: 'data, data set'
-          href: how-to-version-track-datasets.md
-        - name: ラベルの付いたデータの取得
-          displayName: 'data, dataset, labeling'
-          href: how-to-create-labeling-projects.md
-        - name: ラベル イメージ
-          displayName: 'data, dataset, labeling'
-          href: how-to-label-images.md
-        - name: ラベル付きのデータセットを作成する
-          displayName: 'data, labels, torchvision'
-          href: how-to-use-labeled-dataset.md
-        - name: Azure Data Factory を使用したデータ インジェスト
-          displayName: 'data, ingestion, adf'
-          href: how-to-data-ingest-adf.md
-        - name: データ インジェスト用 DevOps
-          displayName: 'data, ingestion, devops'
-          href: how-to-cicd-data-ingestion.md
+        - name: データへのラベル付け
+          items:
+            - name: ラベルの付いたデータの取得
+              displayName: 'data, dataset, labeling'
+              href: how-to-create-labeling-projects.md
+            - name: ラベル イメージ
+              displayName: 'data, dataset, labeling'
+              href: how-to-label-images.md
+            - name: ラベル付きのデータセットを作成する
+              displayName: 'data, labels, torchvision'
+              href: how-to-use-labeled-dataset.md
+        - name: データを取得する
+          items:
+            - name: Azure Data Factory を使用したデータ インジェスト
+              displayName: 'data, ingestion, adf'
+              href: how-to-data-ingest-adf.md
+            - name: データ インジェスト用 DevOps
+              displayName: 'data, ingestion, devops'
+              href: how-to-cicd-data-ingestion.md
+            - name: デザイナーでデータをインポートする
+              displayName: 'designer, data, import, dataset, datastore'
+              href: how-to-designer-import-data.md
+        - name: データにアクセスする
+          items:
+            - name: Azure Storage への接続
+              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              href: how-to-access-data.md
+            - name: データストアからデータを取得する
+              displayName: 'data, data set, register, access data'
+              href: how-to-create-register-datasets.md
+        - name: データの管理と使用
+          items:
+            - name: データセットを使用したトレーニング
+              displayName: 'data, dataset, mount'
+              href: how-to-train-with-datasets.md
+            - name: データセットのドリフトを検出する
+              displayName: 'data, dataset'
+              href: how-to-monitor-datasets.md
+            - name: データセットのバージョン管理と追跡
+              displayName: 'data, data set'
+              href: how-to-version-track-datasets.md
     - name: モデルをトレーニングする
       items:
         - name: ML に Estimator を使用する
@@ -240,8 +261,6 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
-        - name: Chainer
-          href: how-to-train-chainer.md
     - name: モデルを解釈する
       displayName: interpretability
       items:
@@ -337,6 +356,7 @@
         - name: パイプラインをトリガーする
           href: how-to-trigger-published-pipeline.md
         - name: パイプラインのデバッグとトラブルシューティングを行う
+          displayName: designer
           href: how-to-debug-pipelines.md
         - name: Application Insights でパイプラインをデバッグする
           displayname: 'pipelines, log, monitor'

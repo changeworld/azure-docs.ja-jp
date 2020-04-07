@@ -18,6 +18,14 @@
       items:
         - name: Azure CDN 上の Web アプリケーション ファイアウォール
           href: ./cdn/cdn-overview.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: Application Gateway
+      items:
+        - name: WAF v2 のデプロイ - ARM テンプレート
+          displayName: Resource Manager
+          href: ./ag/quick-create-template.md
 - name: チュートリアル
   items:
     - name: Application Gateway

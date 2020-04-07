@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: cfa39799e44cee0a2d36efccd454ccf8ca15157f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 4080825bbb1f6c274f5b5aafd28e8c672148b98f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603234"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159287"
 ---
 # <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard-preview"></a>規制コンプライアンス ダッシュボードでの動的コンプライアンス パッケージへの更新 (プレビュー)
 
@@ -51,6 +51,9 @@ Azure CIS ベンチマークの動的コンプライアンス パッケージで
 
 1. 必要に応じて、 **[標準をさらに追加]** をクリックして、 **[規制コンプライアンス標準の追加]** ページを開きます。 そこで、**Azure CIS 1.1.0 (New)** や、他のコンプライアンス標準の動的パッケージ (**NIST SP 800-53 R4**、**SWIFT CSP CSCF-v2020**、**UKO および UK NHS**、**Canada PBMM** など) を手動で検索できます。
     
+    > [!TIP]
+    > 所有者またはポリシーの共同作成者であるユーザーのみが、コンプライアンス標準を追加するために必要なアクセス許可を持っています。 
+
     ![Azure Security Center の規制コンプライアンス ダッシュボードへの規制パッケージの追加](./media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-additional-standards.png)
 
 

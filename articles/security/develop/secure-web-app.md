@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 640900458eccc36afe58cb148ffd7b94b43be879
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 75890efebc42b74c56fb95ed1803152b516588b9
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934910"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385216"
 ---
 # <a name="develop-a-secure-web-app"></a>セキュリティで保護された Web アプリを開発する
 
@@ -45,7 +45,8 @@ ms.locfileid: "68934910"
 
 ![サンプル Web アプリ](./media/secure-web-app/demo-app.png)
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
+
 このアプリは、3 つの階層を持つ典型的な n 層アプリケーションです。 次に示すように、フロントエンド、バックエンド、データベースの各レイヤーに、監視コンポーネントとシークレット管理コンポーネントが統合されています。
 
 ![アプリのアーキテクチャ](./media/secure-web-app/architecture.png)
@@ -59,6 +60,7 @@ ms.locfileid: "68934910"
 - [Azure Security Center](../../security-center/index.yml) と [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)。 アプリの操作に関する監視とアラートを提供します。
 
 ## <a name="threat-model"></a>脅威モデル
+
 脅威モデリングは、ビジネスとアプリケーションに対する潜在的なセキュリティ上の脅威を特定して、適切な軽減計画を確保するプロセスです。
 
 このサンプルでは、[Microsoft Threat Modeling Tool](threat-modeling-tool.md) を使用して、セキュリティで保護されたサンプル アプリに対する脅威モデリングを実装しています。 コンポーネントとデータ フローを図式化することで、開発プロセスの早い段階で問題と脅威を特定できます。 これは後々、時間やコストに節約にもつながります。
@@ -75,7 +77,8 @@ Threat Modeling Tool によって生成される脅威と潜在的脆弱性の�
 
 開発者は、脅威モデルの出力に示されている各脅威を軽減することによって、システムの全体的なセキュリティを向上させることができます。
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
+
 次のオプションを使用すると、Azure App Service で Linux を実行できます。
 
 - サポート技術 (Python、Ruby、PHP、Java、node.js、.NET Core) を使用して作成された、Azure 上の事前構築済み Microsoft コンテナーの一覧からコンテナーを選択します。
@@ -92,7 +95,7 @@ Azure にアプリをデプロイする方法は、次のように多数あり�
 - Azure Resource Manager のテンプレート
 - PowerShell
 - Azure CLI
-- Azure ポータル
+- Azure portal
 - Azure DevOps
 
 このアプリケーションでは、以下を使用します。
@@ -104,6 +107,7 @@ Azure にアプリをデプロイする方法は、次のように多数あり�
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 
 ### <a name="network"></a>ネットワーク
+
 このサンプル アプリでは、ネットワークとの間でやり取りされる転送中のデータに、エンド ツー エンドの SSL 暗号化を使用します。 ゲートウェイは自己署名証明書を使用して構成されます。
 > [!IMPORTANT]
 > このデモでは、自己署名証明書を使用します。 運用環境では、検証済みの証明機関 (CA) から証明書を取得する必要があります。
@@ -112,29 +116,35 @@ Azure にアプリをデプロイする方法は、次のように多数あり�
 アプリケーション ゲートウェイでは、脅威モデルで検出された DDoS と SQL インジェクションの脅威が発生する可能性が軽減されます。
 
 ### <a name="identity"></a>ID
+
 このサンプル アプリでは、リソースへのアクセス権が割り当てられている Azure Active Directory (Azure AD) 管理者がポータルにサインインする際に Multi-factor Authentication が使用されます。
 サンプル アプリでは、マネージド ID を使用して、Azure Key Vault からシークレットの読み取りと取得を行うためのアクセス許可を取得します。これにより、アプリでは、シークレットを読み取るための資格情報とトークンをハード コーディングする必要がなくなります。 Azure AD では、マネージド ID の使用時に、アプリでシークレットを読み取ったり変更したりするために必要なサービス プリンシパルが自動的に作成されます。
 
 Azure リソースと MFA にマネージド ID を使用すると、敵対者が特権を取得し、システム内で特権を昇格させることが難しくなります。 これは、脅威モデルで指摘されていた脅威です。
 アプリでは OAuth を使用します。これにより、OAuth アプリケーションに登録されているユーザーがアプリにサインインできるようになります。
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
+
 PostgreSQL データベースのデータは、保存時に Azure Database for PostgreSQL によって自動的に暗号化されます。 データベースでは App Service IP アドレスを承認することによって、デプロイされている App Service Web アプリだけが適切な認証資格情報を使用してデータベース リソースにアクセスできるようにします。
 
 ### <a name="logging-and-auditing"></a>ログ記録と監査
+
 アプリには Application Insights を使用したログ記録が実装されており、発生したメトリック、ログ、例外を追跡できます。 このログ記録によって、開発者や運用チームのメンバーにアプリの状態を知らせるための十分なアプリ メタデータが提供されます。 また、セキュリティ インシデントが発生した場合にバックトラックできるだけの十分なデータも提供されます。
 
 ## <a name="cost-considerations"></a>コストに関する考慮事項
+
 まだ Azure アカウントを持っていない場合は、無料で作成できます。 開始するには、[無料アカウントのページ](https://azure.microsoft.com/free/)に移動し、無料の Azure アカウントでできることと、12 か月間無料で使用できる製品をご確認ください。
 
 セキュリティ機能を備えたサンプル アプリのリソースをデプロイするには、いくつかの Premium 機能に対して料金を支払う必要があります。 アプリケーションの規模が拡大し、Azure によって提供される無料レベルと試用版をアップグレードしてアプリケーションの要件を満たす必要が生じるにつれ、コストが増加する可能性があります。 コストの見積もりには、Azure [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)をご利用ください。
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
+
 ### <a name="prerequisites"></a>前提条件
+
 アプリケーションを起動して稼働させるには、次のツールをインストールする必要があります。
 
 - アプリケーション コードを表示および変更するためのコード エディター。[Visual Studio Code](https://code.visualstudio.com/) はオープンソース オプションです。
-- 開発コンピューター上の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&viewFallbackFrom=azure-cli-latest,)。
+- 開発コンピューター上の [Azure CLI](/cli/azure/install-azure-cli)。
 - システム上の [Git](https://git-scm.com/)。 Git を使用してソース コードをローカルに複製します。
 - [jq](https://stedolan.github.io/jq/)。わかりやすい方法で JSON にクエリを実行するための UNIX ツールです。
 
@@ -143,22 +153,24 @@ PostgreSQL データベースのデータは、保存時に Azure Database for P
 これらのツールをインストールすると、アプリを Azure にデプロイする準備が整います。
 
 ### <a name="environment-setup"></a>環境のセットアップ
+
 デプロイ スクリプトを実行して、環境とサブスクリプションを設定します。
 
 1. ソース コード リポジトリを複製するには、次の Git コマンドを使用します。
 
-   ``` git
+   ```shell
    git clone https://github.com/Azure-Samples/sample-linux-python-app tutorial-project
    ```
+
 2. ディレクトリに移動するには、次のコマンドを使用します。
 
-   ```
+   ```shell
    cd tutorial-project/scripts
    ```
 
-3. スクリプト フォルダーには、使用しているプラットフォーム (Windows または Linux) に固有のファイルがあります。 Azure CLI が既にインストールされているため、コマンド プロンプトで次の CLI コマンドを実行して、Azure アカウントにサインインします。
+3. スクリプト フォルダーには、使用しているプラットフォーム (Windows または Linux) に固有のファイルがあります。 Azure CLI が既にインストールされているため、コマンド プロンプトで次の Azure CLI コマンドを実行して、Azure アカウントにサインインします。
 
-   ``` azurecli
+   ```azurecli-interactive
    az login
    ```
 
@@ -173,6 +185,7 @@ PostgreSQL データベースのデータは、保存時に Azure Database for P
 次の例では、主要なコンポーネントのスニペットを紹介します。 サンプルを個別にデプロイすることも、デプロイ ファイルを実行することで他のコンポーネントと共にデプロイすることもできます。
 
 ### <a name="implementation-guidance"></a>実装ガイダンス
+
 デプロイ スクリプトは、4 つのフェーズに分割できる 1 つのスクリプトです。 各フェーズでは、[アーキテクチャ ダイアグラム](#architecture)に含まれる Azure リソースが 1 つずつデプロイおよび構成されます。
 
 4 つのフェーズは次のとおりです。
@@ -187,6 +200,7 @@ PostgreSQL データベースのデータは、保存時に Azure Database for P
 実装手順を完了するには、「[前提条件](#prerequisites)」に記載されているツールがインストールされていることを確認します。
 
 #### <a name="deploy-azure-key-vault"></a>Azure Key Vault をデプロイする
+
 このセクションでは、シークレットと証明書の格納に使用する Azure Key Vault インスタンスを作成してデプロイします。
 
 デプロイが完了すると、Azure Key Vault インスタンスが Azure にデプロイされます。
@@ -198,7 +212,7 @@ Azure CLI を使用して Azure Key Vault をデプロイするには、次の�
 3. インスタンスのリソース グループを作成します。
 4. 手順 3. で作成したリソース グループに Azure Key Vault インスタンスを作成します。
 
-   ``` azurecli
+   ```powershell-interactive
 
     function Get-Hash() {
         return (New-Guid).Guid.Split('-')[4]
@@ -233,9 +247,11 @@ Azure CLI を使用して Azure Key Vault をデプロイするには、次の�
        --verbose
 
    ```
+
 リソースへのアクセスにキー コンテナーを使用するアプリでは、Azure リソースにマネージド ID を使用することをお勧めします。 キー コンテナーへのアクセス キーをコードや構成に格納しない場合、その分、セキュリティ体制が高まります。
 
 #### <a name="deploy-azure-database-for-postgresql"></a>Azure Database for PostgreSQL をデプロイする
+
 まずデータベース サーバーを作成し、次にスキーマとデータを格納するデータベースを作成することで、Azure Database for PostgreSQL が機能するようになります。
 
 デプロイを完了すると、PostgreSQL サーバーとデータベースが Azure で実行されます。
@@ -250,7 +266,7 @@ Azure CLI を使用して Azure Database for PostgreSQL をデプロイするに
 
 以下のコードは、上記のキー コンテナーのデプロイ手順で作成した Azure Key Vault に格納されている PGUSERNAME および PGPASSWORD シークレットに依存しています。
 
-   ``` azurecli
+   ```powershell-interactive
    $pgUsername = $(az keyvault secret show --name PGUSERNAME --vault-name $kvName --query value) -replace '"',''
    $pgPassword = $(az keyvault secret show --name PGPASSWORD --vault-name $kvName --query value) -replace '"',''
 
@@ -309,13 +325,13 @@ PostgreSQL インスタンスへのリモートアクセスを有効にするに
 次に、Azure portal の PostgreSQL インスタンスの **[接続文字列]** タブにある接続文字列を指定して、次の psql コマンドを実行し、インスタンスに接続します。
 空の中かっこをデータベースの [接続文字列] ブレードのパラメーターで置き換え、パスワードを Azure Key Vault のパスワードで置き換えます。
 
-```sql
+```shell
 psql "host={} port=5432 dbname=hellodb user={} password=PGPASSWORD sslmode=require"
 ```
 
 データベースに接続していることを確認した後、次の PL/pgSQL スクリプトを実行します。 このスクリプトでは、データベースにデータを挿入するために使用されるストアド関数が作成されます。
 
-```sql
+```shell
 CREATE OR REPLACE FUNCTION insert_visitor(country VARCHAR(40), browser VARCHAR(40), operating_system VARCHAR(40)) RETURNS void AS $$
 BEGIN
     INSERT INTO visitor(
@@ -332,7 +348,6 @@ BEGIN
 END;
 $$ LANGUAGE PLPGSQL;
 
-
 CREATE OR REPLACE FUNCTION insert_azure_document(title VARCHAR(40), url VARCHAR(100), category VARCHAR(40)) RETURNS void AS $$
 BEGIN
     INSERT INTO azure_document(
@@ -348,29 +363,29 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
-
-PostgreSQL の SSL および証明機関 (CA) 検証を設定する方法の詳細については、[Azure Database for PostgreSQL での SSL 接続の構成](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)に関するページをご覧ください。
+PostgreSQL の SSL および証明機関 (CA) 検証を設定する方法の詳細については、[Azure Database for PostgreSQL での SSL 接続の構成](/azure/postgresql/concepts-ssl-connection-security)に関するページをご覧ください。
 
 ルート証明書はコンテナーに含まれています。 証明書を取得するには、次の手順を実行します。
 
 1. [証明機関](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt)から証明書ファイルをダウンロードします。
-2. [マシンに OpenSSL をダウンロードしてインストールします](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)。
+2. [マシンに OpenSSL をダウンロードしてインストールします](/azure/postgresql/concepts-ssl-connection-security)。
 3. 次のコマンドを実行して、証明書ファイルをデコードします。
 
-   ```powershell
+   ```shell
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-PostgreSQL に SSL のセキュリティを構成する方法の詳細については、[SSL 接続のセキュリティの構成](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)に関するページをご覧ください。
+PostgreSQL に SSL のセキュリティを構成する方法の詳細については、[SSL 接続のセキュリティの構成](/azure/postgresql/concepts-ssl-connection-security)に関するページをご覧ください。
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>Azure Web Apps on Linux をデプロイする
+
 Azure では、Python、Ruby、C#、Java など、広く使用されている言語用に一連の事前構築済みコンテナーとイメージが用意されているため、Azure App Service 上に Linux サービスを簡単に構築できます。 Azure ではカスタム コンテナーもサポートしているため、事実上すべてのプログラミング言語を Azure App Service プラットフォームで実行できます。
 
 デプロイされるアプリは、最新の Ubuntu Linux ディストリビューションで実行される単純な Python アプリです。 このアプリは、前のセクションで作成した Azure Key Vault インスタンス (資格情報の管理用) と PostgreSQL インスタンス (データ ストレージ用) に接続します。
 
 アプリのルート フォルダーには、次の Docker ファイルが用意されています。
 
-``` docker
+```dockerfile
 # Docker file for the basic web app
 # Using the latest Alpine Linux
 
@@ -431,7 +446,7 @@ ENTRYPOINT ["/usr/local/bin/init.sh"]
 4. Web アプリ コンテナーのログ記録を有効にします。
 5. コンテナーのアプリ設定で一部のアプリ構成を設定します。
 
-   ```
+   ```powershell-interactive
    Write-Host "Retrieving the Azure Key Vault URL"
    $kvURI = $(az keyvault show --name $kvName --query properties.vaultUri)
 
@@ -500,7 +515,6 @@ ENTRYPOINT ["/usr/local/bin/init.sh"]
            --end-ip-address $outboundIps[$i] `
            --verbose
    }
-
    ```
 
 このスクリプトにより、シークレットをコードまたは構成にハード コーディングすることなく、Azure Key Vault と対話するために MSI で使用できる、App Service インスタンス用の割り当て ID が作成されます。
@@ -517,6 +531,7 @@ ENTRYPOINT ["/usr/local/bin/init.sh"]
 アクセス ポリシーを保存し、 **[アクセスポリシー]** タブで新しい変更を保存して、ポリシーを更新します。
 
 #### <a name="deploy-application-gateway-with-web-application-firewall-enabled"></a>Web アプリケーション ファイアウォールが有効になったアプリケーション ゲートウェイをデプロイする
+
 Web アプリでは、外部のインターネット上にサービスを直接公開することはお勧めしません。
 負荷分散とファイアウォール規則を使用すると、セキュリティが強化され、受信トラフィックが制御され、管理が容易になります。
 
@@ -529,7 +544,7 @@ Application Gateway インスタンスをデプロイするには、次の手順
 5. アプリケーション ゲートウェイをプロビジョニングします。
 6. ゲートウェイで Web アプリケーション ファイアウォールを有効にします。
 
-   ``` azurecli
+   ```powershell-interactive
    az keyvault certificate create --vault-name $kvName `
        --name $certName `
        --policy `@policy.json `
@@ -564,7 +579,7 @@ Application Gateway インスタンスをデプロイするには、次の手順
 
 このセクションでは、次を実行してアプリケーション ゲートウェイをデプロイします。
 
-```powershell
+```powershell-interactive
 # Create a virtual network required by the gateway
 Write-Host "Creating the Azure Virtual Network: $($vnetName)"
 az network vnet create --name $vnetName `
@@ -677,6 +692,7 @@ App Service インスタンスは、仮想ネットワークと統合できま�
    ![新しい仮想ネットワーク統合](./media/secure-web-app/app-vnet-menu.png)
 
     "*App Service 用の新しい仮想ネットワーク統合*"
+
 1. 次のページで、 **[VNet の追加 (プレビュー)]** を選択します。
 
 1. 次のメニューで、デプロイで作成した、名前が `hello-vnet` で始まる仮想ネットワークを選択します。 新しいワークスペースを作成することも、既存のワークスペースを選択することができます。
@@ -743,7 +759,6 @@ App Service インスタンスは、仮想ネットワークと統合できま�
 
 "*ゲートウェイ IP のみに App Service へのアクセスを許可する*"
 
-
 #### <a name="implement-azure-active-directory-oauth"></a>Azure Active Directory OAuth を実装する
 
 サンプル Web アプリ ページに配布される Azure ドキュメントは、保護が必要となる可能性のある、アプリのリソースです。 Azure Active Directory (Azure AD) では、さまざまな認証フローを使用して、Web アプリ、デスクトップ アプリ、およびモバイル アプリの認証を実装できます。
@@ -760,7 +775,7 @@ Azure portal で、次のように、必要な資格情報が使用されるよ�
    "*Azure AD アプリの登録を作成する*"
 
 3. 次のページで、アプリの名前を入力します。 **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
-    **[リダイレクト URI]** に、アプリが実行される基本ドメインと、トークン エンド ポイントを含むドメインを入力します。 例: *GATEWAY_HASH*.cloudapp.net/token。
+    **[リダイレクト URI]** に、アプリが実行される基本ドメインと、トークン エンド ポイントを含むドメインを入力します。 次に例を示します。*GATEWAY_HASH*.cloudapp.net/token。
 
    ![Azure AD アプリの登録を構成する](./media/secure-web-app/ad-auth-type.png)
 
@@ -813,6 +828,7 @@ Application Insights インスタンスを作成したら、アプリにイン�
 キー コンテナーで、`APPINSIGHTSKEY` シークレットを設定し、その値をインストルメンテーション キーとして設定します。 これにより、アプリは Application Insights にログとメトリックを送信できるようになります。
 
 #### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Azure Active Directory に Multi-Factor Authentication を実装する
+
 管理者は、ポータルのサブスクリプション アカウントが保護されていることを確認する必要があります。 作成したリソースはサブスクリプションで管理されているため、サブスクリプションは攻撃に対して脆弱です。 サブスクリプションを保護するには、サブスクリプションの **[Azure Active Directory]** タブで Multi-Factor Authentication を有効にします。
 
 Azure AD は、特定の条件に合致するユーザーまたはユーザー グループに適用されるポリシーに基づいて動作します。
@@ -847,8 +863,9 @@ Azure では、管理者がポータルにサインインするために 2 要�
 すべての Azure 管理者に対して MFA を要求するベースライン ポリシーがあります。 ポータルですぐにこれを有効にすることができます。 このポリシーを有効にすると、現在のセッションが無効になり、再度サインインするように強制される可能性があります。
 
 ベースライン ポリシーが有効になっていない場合は、次の手順を実行します。
-1.  **[管理者に MFA を要求する]** を選択します。
-2.  **[ポリシーをすぐに使用する]** を選択します。
+
+1. **[管理者に MFA を要求する]** を選択します。
+2. **[ポリシーをすぐに使用する]** を選択します。
 
    ![[ポリシーをすぐに使用する] を選択する](./media/secure-web-app/ad-mfa-conditional-enable.png)
 
@@ -916,6 +933,7 @@ Azure Sentinel を設定するには、さまざまなリソースから収集�
 メトリックを設定すると、分析するデータを Azure Sentinel で使用できるようになります。
 
 ## <a name="evaluate-and-verify"></a>評価と検証
+
 アーキテクチャを開発してデプロイした後、コードとデプロイしたサービスがセキュリティ標準を満たしていることを確認する必要があります。 ソフトウェアを検証するために実行できる手順を次に示します。
 
 - スタティック コード分析
@@ -925,6 +943,7 @@ Azure Sentinel を設定するには、さまざまなリソースから収集�
 これらは、セキュリティで保護された開発におけるベスト プラクティスの基本的な構成要素です。
 
 ### <a name="static-code-analysis"></a>スタティック コード分析
+
 サンプル アプリでは、スタティック分析ツールによる検証において、テイント チェックやデータフロー分析などの手法を使用して、アプリ コードの脆弱性を検出する必要があります。 Python スタティック分析ツールを使用すると、アプリのセキュリティを向上できます。
 
 **リンティング**
@@ -950,6 +969,7 @@ Python のリンティング ライブラリである PyFlakes は、次に示�
 "*PyLint の実行後*"
 
 ### <a name="vulnerability-scanning"></a>脆弱性のスキャン
+
 [OWASP の ZAP](https://www.zaproxy.org/) ツールは、サンプル アプリの脆弱性を確認するために使用できる、オープンソースの Web アプリケーション脆弱性スキャナーです。 このツールをサンプル アプリで実行すると、考えられるエラーと攻撃ベクトルが明らかになります。
 
 ![ZAP ツール](./media/secure-web-app/zap-tool.png)
@@ -957,6 +977,7 @@ Python のリンティング ライブラリである PyFlakes は、次に示�
 "*ZAP ツール*"
 
 ### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>アプリの依存関係の脆弱性を発見して修正する
+
 アプリケーションの依存関係を検索して修正するには、[OWASP のDependency Check](https://www.owasp.org/index.php/OWASP_Dependency_Check) を使用します。
 
 Safety も、依存関係を確認する類似のアプリケーションです。 これは [GitHub](https://github.com/pyupio/safety) にあります。 Safety では、既知の脆弱性データベースに登録されている脆弱性が検出されます。
@@ -965,7 +986,8 @@ Safety も、依存関係を確認する類似のアプリケーションです�
 
 "*Safety*"
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
 次の記事は、セキュリティで保護されたアプリケーションを設計、開発、およびデプロイする際に役立ちます。
 
 - [Design (デザイン)](secure-design.md)

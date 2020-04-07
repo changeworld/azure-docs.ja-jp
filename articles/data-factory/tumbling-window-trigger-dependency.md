@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: 3a4d31cb6986f8fc841a6afe20388e40e9f28c9b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0557c9b9eb65654c4a11c1389ace4776ab60a61d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926674"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532572"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>タンブリング ウィンドウ トリガーの依存関係の作成
 
@@ -147,6 +147,10 @@ ms.locfileid: "74926674"
 
 ![自己依存関係の例](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "自己依存関係の例")
 
+タンブリング ウィンドウ トリガーを使用して Azure Data Factory 内に依存パイプラインを作成する方法のデモについては、次のビデオをご覧ください。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
+
 ## <a name="monitor-dependencies"></a>依存関係を監視する
 
 [トリガーの実行] 監視ページで、依存関係チェーンと該当するウィンドウを監視できます。 **[監視]、[トリガーの実行]** の順に移動します。 [アクション] 列で、トリガーを再実行したり、その依存関係を確認することができます。
@@ -161,6 +165,6 @@ ms.locfileid: "74926674"
 
 ![依存関係を監視する](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "依存関係を監視する")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [タンブリング ウィンドウ トリガーの作成方法](how-to-create-tumbling-window-trigger.md)を確認します

@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 4ff4025941e9a77148daa91995ecf182231d1f0b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 88e0e1c18722fd86e79fc1fa7722b59b3cb8966a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976283"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460961"
 ---
 # <a name="content-protection-overview"></a>コンテンツ保護の概要 
 
 > [!NOTE]
 > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
-Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム (Microsoft PlayReady、Google Widevine、および Apple FairPlay) によって動的に暗号化されたライブまたはオンデマンドのコンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 
+Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 
 
 次の図は、Media Services でのコンテンツ保護のワークフローを示しています。 
 
@@ -35,12 +35,17 @@ Azure Media Services を使用すると、メディアがコンピューター�
 この記事では、Media Services でのコンテンツ保護の理解に関連する概念と用語について説明します。 また、コンテンツの保護方法が説明されている記事へのリンクも示します。 
 
 ## <a name="dynamic-encryption"></a>動的な暗号化
- Media Services を使用すると、AES クリアキーまたは DRM 暗号化 (PlayReady、Widevine、または FairPlay を使用) によって動的に暗号化されたコンテンツを配信できます。 現時点では、暗号化できる形式は、HTTP ライブ ストリーミング (HLS)、MPEG DASH、および Smooth Streaming です。 プログレッシブ ダウンロードでの暗号化はサポートされていません。 各暗号化方法は、次のストリーミング プロトコルをサポートします。
 
+Media Services を使用すると、AES クリアキーまたは DRM 暗号化 (PlayReady、Widevine、または FairPlay を使用) によって動的に暗号化されたコンテンツを配信できます。 コンテンツは、AES クリア キーで暗号化されて、HTTPS で送信される場合、クライアントに到達するまで平文になりません。 
+
+各暗号化方法は、次のストリーミング プロトコルをサポートします。
+ 
 - AES: MPEG-DASH、Smooth Streaming、HLS
 - PlayReady: MPEG-DASH、Smooth Streaming、HLS
 - Widevine: MPEG-DASH
 - FairPlay: HLS
+
+プログレッシブ ダウンロードでの暗号化はサポートされていません。 
 
 資産を暗号化するには、暗号化コンテンツ キーを資産に関連付けて、キーの承認ポリシーを構成する必要があります。 コンテンツ キーは、指定することも、Media Services で自動生成することもできます。
 
@@ -75,6 +80,19 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 
 トークン制限ポリシーを構成する際には、プライマリ検証キー、発行者、および対象ユーザーの各パラメーターを指定する必要があります。 プライマリ検証キーには、トークンの署名に使用されたキーが含まれています。 発行者は、トークンを発行するセキュリティ トークン サービスです。 対象ユーザー (スコープとも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。 Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 
+### <a name="token-replay-prevention"></a>トークン再生の防止
+
+*トークン再生の防止*機能を使用すると、Media Services のユーザーは、同じトークンを使用してキーまたはライセンスを要求できる回数に制限を設定できます。 ユーザーは `urn:microsoft:azure:mediaservices:maxuses` の種類の要求をトークンに追加できます。この値は、トークンを使用してライセンスまたはキーを取得できる回数です。 キー配信に対して同じトークンを使用する後続のすべての要求では、"許可されていません" 応答が返されます。 [DRM サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)で、要求を追加する方法を参照してください。
+ 
+#### <a name="considerations"></a>考慮事項
+
+* ユーザーは、トークンの生成を制御する必要があります。 要求は、トークン自体に配置する必要があります。
+* この機能を使用すると、要求を受信してから有効期限切れまでの時間が 1 時間を超えているトークンを含む要求は、"許可されていません" 応答により拒否されます。
+* トークンは、その署名によって一意に識別されます。 ペイロードに変更が加えられる (たとえば、有効期限や要求が更新される) と、トークンの署名が変更され、以前にキー配信が確認したことがない新しいトークンとしてカウントされます。
+* ユーザーによって設定された `maxuses` 値をトークンが超えると、再生は失敗します。
+* この機能は、既存の保護されているすべてのコンテンツに使用できます (発行されたトークンのみを変更する必要があります)。
+* この機能は、JWT と SWT の両方で動作します。
+
 ## <a name="streaming-urls"></a>ストリーミング URL
 資産を複数の DRM を使用して暗号化した場合は、ストリーミング URL で暗号化タグを使用します (format='m3u8-aapl', encryption='xxx')。
 
@@ -84,15 +102,16 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 * 1 つの暗号化のみが資産に適用された場合、暗号化タイプを URL で指定する必要はありません。
 * 暗号化タイプでは大文字と小文字が区別されます。
 * 指定できる暗号化タイプは次のとおりです。
+
   * **cenc**: PlayReady または Widevine の場合 (共通暗号化)
   * **cbcs-aapl**: FairPlay の場合 (AES CBC 暗号化)
   * **cbc**: AES エンベロープ暗号化の場合
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 以下の記事では、コンテンツ保護を開始するために役立つ次の手順について説明しています。
 
 * [ストレージ暗号化で保護する](media-services-rest-storage-encryption.md)

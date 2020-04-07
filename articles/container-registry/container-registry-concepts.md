@@ -3,12 +3,12 @@ title: リポジトリとイメージについて
 description: Azure のコンテナー レジストリ、リポジトリ、およびコンテナー イメージの主要な概念について紹介します。
 ms.topic: article
 ms.date: 09/10/2019
-ms.openlocfilehash: 9de0c344b226a0b13e76c7f02977ba3c91ba2d2a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455296"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225803"
 ---
 # <a name="about-registries-repositories-and-images"></a>レジストリ、リポジトリ、イメージについて
 
@@ -24,9 +24,7 @@ Docker コンテナー イメージに加え、Azure Container Registry では�
 
 Azure Container Registry 内の成果物のアドレスには、次の要素が含まれています。 
 
-```
-[loginUrl]/[namespace]/[artifact:][tag]
-```
+`[loginUrl]/[namespace]/[artifact:][tag]`
 
 * **loginUrl** - レジストリ ホストの完全修飾名。 Azure Container Registry のレジストリ ホストは、*myregistry*.azurecr.io (すべて小文字) の形式です。 Docker またはその他のクライアント ツールを使用して Azure Container Registry との間で成果物をプルまたはプッシュするには、loginUrl を指定する必要があります。 
 * **namespace** - 関連イメージまたは成果物 (ワークグループやアプリなど) の、スラッシュで区切られた論理グループ
@@ -36,9 +34,7 @@ Azure Container Registry 内の成果物のアドレスには、次の要素が�
 
 たとえば、Azure Container Registry のイメージの完全名は次ようになります。
 
-```
-myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2
-```
+*myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2*
 
 これらの要素の詳細については、以下のセクションを参照してください。
 
@@ -46,21 +42,18 @@ myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2
 
 コンテナー レジストリでは、名前が同じでタグが異なるコンテナー イメージまたはその他の成果物のコレクションである "*リポジトリ*" を管理します。 たとえば、次の 3 つのイメージは "acr-helloworld" リポジトリ内にあります。
 
-```
-acr-helloworld:latest
-acr-helloworld:v1
-acr-helloworld:v2
-```
+
+- *acr-helloworld:latest*
+- *acr-helloworld:v1*
+- *acr-helloworld:v2*
 
 リポジトリ名には、[名前空間](container-registry-best-practices.md#repository-namespaces)を含めることもできます。 名前空間を使用すると、スラッシュで区切られたリポジトリ名を使用してイメージをグループ化できます。次に示すのはその例です。
 
-```
-marketing/campaign10-18/web:v2
-marketing/campaign10-18/api:v3
-marketing/campaign10-18/email-sender:v2
-product-returns/web-submission:20180604
-product-returns/legacy-integrator:20180715
-```
+- *marketing/campaign10-18/web:v2*
+- *marketing/campaign10-18/api:v3*
+- *marketing/campaign10-18/email-sender:v2*
+- *product-returns/web-submission:20180604*
+- *product-returns/legacy-integrator:20180715*
 
 ## <a name="image"></a>Image
 
@@ -92,8 +85,11 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName>
 
 たとえば、"acr-helloworld" リポジトリのマニフェストの一覧は次のようになります。
 
-```console
-$ az acr repository show-manifests --name myregistry --repository acr-helloworld
+```azurecli
+az acr repository show-manifests --name myregistry --repository acr-helloworld
+```
+
+```output
 [
   {
     "digest": "sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108",
@@ -128,14 +124,12 @@ $ az acr repository show-manifests --name myregistry --repository acr-helloworld
 
 たとえば、マニフェスト ダイジェストによる "acr-helloworld" リポジトリからのイメージのプルは次のようになります。
 
-```console
-$ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108
-```
+`docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108`
 
 > [!IMPORTANT]
 > 同じタグを持つ変更されたイメージを繰り返しプッシュする場合、孤立したイメージ (タグは付けられていないが、それでもレジストリの領域を消費するイメージ) が作成されることがあります。 Azure CLI または Azure portal でタグを使用してイメージを一覧表示または表示したとき、タグなしのイメージは表示されません。 ただし、それらのレイヤーはまだ存在し、レジストリの領域を消費します。 特定のレイヤーを指すマニフェストが他に存在しなければ (つまり最後のマニフェストであれば)、タグの付いていないイメージを削除することで、レジストリの領域は解放されます。 タグの付いていないイメージによって使用されている領域を開放する方法の詳細については、「[Azure Container Registry のコンテナー イメージを削除する](container-registry-delete.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Container Registry での[イメージ ストレージ](container-registry-storage.md)と[サポートされているコンテンツの形式](container-registry-image-formats.md)について詳細を確認します。
 

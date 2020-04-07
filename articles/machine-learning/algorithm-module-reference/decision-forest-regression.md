@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 6d326b3cb5a964e43ce77ee459533a4271d5ed73
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 63d90a5239e6bf350d8a6b66f35157e4c7d15aee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919942"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456541"
 ---
 # <a name="decision-forest-regression-module"></a>デシジョン フォレスト回帰モジュール
 
@@ -60,7 +60,7 @@ ms.locfileid: "77919942"
 
       モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。 これらの値は、実験によって得られるか、またはガイダンスとして得られます。
 
-    - **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターはわからないが、パラメーター スイープを実行したい場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。 
+    - **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからず、パラメーター スイープを実行する場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。 
 
 
 
@@ -84,9 +84,9 @@ ms.locfileid: "77919942"
 
    
 
-10. パイプラインを実行します。
+10. パイプラインを送信します。
 
-### <a name="results"></a>[結果]
+### <a name="results"></a>結果
 
 トレーニングの完了後:
 

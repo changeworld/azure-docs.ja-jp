@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のポッドで使用するための
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: b84f62dd02aa29a4c1aa64e3235c0a1e7cc66522
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 17795ae696c0d710f099a5c21aa754fc925953ca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596744"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80047939"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure ディスクを含むボリュームの手動での作成および使用
 
@@ -28,7 +28,7 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 
 ## <a name="create-an-azure-disk"></a>Azure ディスクを作成する
 
-AKS で使用するための Azure ディスクを作成する場合は、**ノード** リソース グループ内にディスク リソースを作成することができます。 この方法により、AKS クラスターがディスク リソースにアクセスおよび管理できるようになります。 代わりに独立したリソース グループにディスクを作成する場合は、クラスターの Azure Kubernetes Service (AKS) サービス プリンシパルに、ディスクのリソース グループに対する `Contributor` ロールを付与する必要があります。
+AKS で使用するための Azure ディスクを作成する場合は、**ノード** リソース グループ内にディスク リソースを作成することができます。 この方法により、AKS クラスターがディスク リソースにアクセスおよび管理できるようになります。 代わりに独立したリソース グループにディスクを作成する場合は、クラスターの Azure Kubernetes Service (AKS) サービス プリンシパルに、ディスクのリソース グループに対する `Contributor` ロールを付与する必要があります。 または、サービス プリンシパルの代わりに、システム割り当てマネージド ID をアクセス許可のために使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
 
 この記事では、ノード リソース グループ内にディスクを作成します。 最初に、[az aks show][az-aks-show] コマンドを使用してリソース グループ名を取得し、`--query nodeResourceGroup` クエリ パラメーターを追加します。 次の例では、リソース グループ名 *myResourceGroup* にある AKS クラスター名のノード リソース グループ *myAKSCluster* を取得しています｡
 

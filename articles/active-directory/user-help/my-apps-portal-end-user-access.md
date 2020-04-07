@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: a5dae30c8b8f43602581b39005389211da83cb9e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ab3ab25df6ce41d4045a270754830d501fe40689
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022307"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80347167"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>マイ アプリ ポータルからアプリにサインインして開始する
 
@@ -69,7 +69,8 @@ ms.locfileid: "77022307"
 
 - **Mozilla Firefox**。 **[Firefox Add-ons]** (Firefox アドオン) ページから、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://addons.mozilla.org/firefox/addon/access-panel-extension/)機能に移動して、 **[Add to Firefox]** (Firefox に追加) を選択します。
 
-- **Microsoft Edge**。Microsoft Store から、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab)機能に移動して、 **[取得]** を選択します。
+- **Microsoft Edge**。Microsoft Store から、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab)機能に移動してから、 **[取得]** を選択して Microsoft Edge レガシ ブラウザー用の拡張機能を取得します。  
+新しい Microsoft Edge ブラウザー (Chromium に基づく Edge) を使用している場合は、[Microsoft Edge アドオン ストア](https://microsoftedge.microsoft.com/addons/category/EdgeExtensionsEditorsPick)から拡張機能を取得できます。
 
 アイコンは**アドレス** バーの右側に追加され、サインインして拡張機能をカスタマイズできます。
 

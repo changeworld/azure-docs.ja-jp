@@ -456,8 +456,6 @@
           href: speech-sdk.md
         - name: シナリオの利用可否
           href: scenario-availability.md
-        - name: アプリケーションの出荷
-          href: ship-application.md
     - name: クイック スタート
       items:
         - name: Speech SDK を設定する
@@ -472,6 +470,9 @@
         - name: Linux 用 OpenSSL の構成
           displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
           href: how-to-configure-openssl-linux.md
+        - name: RHEL/CentOS 7 の構成
+          href: how-to-configure-rhel-centos-7.md
+          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
     - name: サンプル
       items:
         - name: Speech SDK のサンプル (GitHub)

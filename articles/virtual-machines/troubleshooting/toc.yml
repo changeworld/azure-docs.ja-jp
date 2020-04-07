@@ -77,6 +77,8 @@
           href: troubleshoot-guide-critical-process-died.md
         - name: 重要なサービスが失敗しました
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: ローカル ユーザーとグループ ポリシーの適用時に VM が応答しない
+          href: troubleshoot-vm-unresponsive-group-policy-local-users.md
         - name: 起動可能なディスクではありません
           href: troubleshoot-guide-not-bootable-disk.md
         - name: 再起動ループ
@@ -87,6 +89,8 @@
           href: troubleshoot-vm-boot-configure-update.md
         - name: Windows ブート マネージャーが原因で VM を起動できない
           href: troubleshoot-guide-windows-boot-manager-menu.md
+        - name: 更新が原因で VM が応答しない
+          href: unresponsive-vm-apply-windows-update.md
 - name: VM に接続できない
   items:
     - name: RDP

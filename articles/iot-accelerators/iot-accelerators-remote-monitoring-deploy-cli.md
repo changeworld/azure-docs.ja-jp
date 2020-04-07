@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447014"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258296"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>CLI を使用してリモート監視ソリューション アクセラレータをデプロイする
 
@@ -23,7 +23,7 @@ ms.locfileid: "61447014"
 
 リモート監視ソリューション アクセラレータをデプロイするには、アクティブな Azure サブスクリプションが必要です。
 
-アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
 CLI を実行するには、[Node.js](https://nodejs.org/) がローカル コンピューターにインストールされている必要があります。
 
@@ -52,7 +52,7 @@ pcs login
 | オプション | 値 | 説明 |
 | ------ | ------ | ----------- |
 | SKU    | `basic`、`standard`、`local` | _基本_ デプロイは、テストおよびデモを目的としており、すべてのマイクロサービスを単一の仮想マシンにデプロイします。 _標準_ デプロイは、実稼働を目的としており、マイクロサービスをいくつかの仮想マシンにデプロイします。 _ローカル_ デプロイは、ローカル コンピューターでマイクロサービスを実行するように Docker コンテナーを構成し、Azure クラウド サービス (ストレージや Cosmos DB など) を使用します。 |
-| ランタイム | `dotnet`、`java` | マイクロサービスの言語の実装を選択します。 |
+| ランタイム | `dotnet`, `java` | マイクロサービスの言語の実装を選択します。 |
 
 ローカル デプロイの使用方法の詳細については、[リモート監視ソリューションのローカルでの実行](iot-accelerators-remote-monitoring-deploy-local.md)に関するページを参照してください。
 
@@ -68,7 +68,7 @@ Basic デプロイは、ソリューションを紹介することを目的と�
 
 Basic デプロイによって Azure サブスクリプション内に作成されるサービスは次のとおりです。
 
-| Count | Resource                       | Type         | 用途 |
+| Count | リソース                       | Type         | 用途 |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux Virtual Machine](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | マイクロサービスのホスト |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard レベル | デバイス管理との通信 |
@@ -89,13 +89,13 @@ Standard デプロイは、開発者がカスタマイズして拡張できる�
 
 Standard デプロイによって Azure サブスクリプション内に作成されるサービスは次のとおりです。
 
-| Count | Resource                                     | SKU/サイズ      | 用途 |
+| Count | リソース                                     | SKU/サイズ      | 用途 |
 |-------|----------------------------------------------|-----------------|----------|
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| フル マネージドの Kubernetes コンテナー オーケストレーション サービスをぜひご利用ください。既定のエージェントは 3 つです。|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – Standard レベル | デバイス管理、コマンドとコントロール |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | 構成データ、およびルール、アラート、メッセージなどのデバイス テレメトリの格納 |
 | 5     | [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | VM ストレージ用に 4 つ、およびストリーミング チェックポイント用に 1 つ |
-| 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | SSL 経由のアプリケーション ゲートウェイ |
+| 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | TLS 経由のアプリケーション ゲートウェイ |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | ユーザー ID とセキュリティを管理する |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | アセットの場所を表示する |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 ユニット              | リアルタイム分析を有効にする |
@@ -144,7 +144,7 @@ pcs -h
 
 CLI の詳細については、[CLI の使用方法](https://github.com/Azure/pcs-cli/blob/master/README.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この攻略ガイドで学習した内容は次のとおりです。
 

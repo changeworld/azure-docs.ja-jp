@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5cce4337e3ef95c6407d46d9b8b6401fe4f6600b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48bd909eefbaea15cf6ca2427e106ad9bc0ffbb4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576188"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298740"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>StorSimple 診断ツールを使用して、8000 シリーズ デバイスに関する問題のトラブルシューティングを行います。
 
@@ -323,7 +323,7 @@ hcs_startup                                   Stopped hcs_startup
 
 ### <a name="network-test"></a>ネットワーク テスト
 
-このテストでは、StorSimple デバイスのネットワーク インターフェイス、ポート、DNS および NTP サーバーへの接続、SSL 証明書、ストレージ アカウントの資格情報、更新サーバーへの接続、および Web プロキシ接続の状態が検証されます。
+このテストでは、StorSimple デバイスのネットワーク インターフェイス、ポート、DNS および NTP サーバーへの接続、TLS/SSL 証明書、ストレージ アカウントの資格情報、更新サーバーへの接続、および Web プロキシ接続の状態が検証されます。
 
 #### <a name="sample-output-of-network-test-when-only-data0-is-enabled"></a>DATA 0 のみが有効になっているときのネットワーク テストの出力例
 
@@ -333,7 +333,7 @@ hcs_startup                                   Stopped hcs_startup
 * DNS サーバーの構成が有効であり、DNS サーバーを介してデバイスを接続できます。
 * NTP サーバーの接続も問題ありません。
 * ポート 80 および 443 が開いています。 しかし、ポート 9354 はブロックされています。 [システムのネットワーク要件](storsimple-system-requirements.md)に基づいて、このポートを Service Bus 通信のために開く必要があります。
-* SSL 証明書は有効です。
+* TLS/SSL 証明書は有効です。
 * ストレージ アカウント _myss8000storageacct_ にデバイスを接続できます。
 * 更新サーバーへの接続は有効です。
 * このデバイスに Web プロキシは構成されていません。
@@ -417,7 +417,7 @@ Controller0>
 | PowerShell パラメーター    | 説明  |
 |-------------------------|------------------|
 | インスタンス ID             | すべてのコントローラーに一意の識別子または GUID が関連付けられています。|
-| Name                    | Azure ポータルでデバイスのデプロイ中に構成されるデバイスのフレンドリ名。 既定のフレンドリ名は、デバイスのシリアル番号です。 |
+| 名前                    | Azure ポータルでデバイスのデプロイ中に構成されるデバイスのフレンドリ名。 既定のフレンドリ名は、デバイスのシリアル番号です。 |
 | モデル                   | ご利用の StorSimple 8000 シリーズ デバイスのモデル。 モデルは 8100 または 8600 です。|
 | SerialNumber            | デバイスのシリアル番号は、出荷時に割り当てられる 15 個の文字です。 たとえば、8600-SHX0991003G44HT は次の内容を示します。<br> 8600 – デバイス モデルです。<br>SHX – 製造サイトです。<br> 0991003 - 特定の製品を示します。 <br> G44HT- 最後の 5 桁は、一意のシリアル番号を作成するためにインクリメントされます。 これは連番でない場合があります。|
 | TimeZone                | Azure ポータルでデバイスのデプロイ中に構成されるデバイスのタイム ゾーン。|
@@ -438,7 +438,7 @@ Controller0>
 | RemoteManagementMode    | Windows PowerShell インターフェイスを使用してデバイスをリモート管理できるかどうかを示します。 |
 | FipsMode                | デバイスで米国連邦情報処理標準 (FIPS) モードが有効になっているかどうかを示します。 FIPS 140 標準には、機密データ保護のために米国連邦政府のコンピューター システムに使用することが承認されている暗号化アルゴリズムが定義されています。 Update 4 以降を実行しているデバイスでは、既定で FIPS モードが有効になっています。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Invoke-HcsDiagnostics コマンドレットの構文](https://technet.microsoft.com/library/mt795371.aspx)を確認します。
 

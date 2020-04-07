@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 03/26/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2078869aef5964b30723d8b6854c4b15f0423205
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 3a853dc32f8716f3f2ba32896a7a4a239efcc5bd
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127545"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349879"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Azure Automation を使用してセッション ホストをスケーリングする
 
@@ -97,11 +97,11 @@ ms.locfileid: "79127545"
 
 5. コマンドレットの出力には、Webhook の URI が含まれています。 Azure ロジック アプリの実行スケジュールを設定するときにパラメーターとして使用するため、必ずこの URI を記録しておいてください。
 
-Azure Automation アカウントの設定が完了したら、Azure サブスクリプションにサインインし、次の図に示すように、指定のリソースグループに Azure Automation アカウントと関連する Runbook が表示されていることを確認します。
+6. Azure Automation アカウントの設定が完了したら、Azure サブスクリプションにサインインし、次の図に示すように、指定のリソースグループに Azure Automation アカウントと関連する Runbook が表示されていることを確認します。
 
-![新しく作成した Automation アカウントと Runbook を示す Azure の概要ページの画像。](media/automation-account.png)
+   ![新しく作成した Automation アカウントと Runbook を示す Azure の概要ページの画像。](media/automation-account.png)
 
-Webhook が必要な場所にあるかどうかを確認するには、画面の左側にあるリソースの一覧に移動し、**Webhook** を選択します。
+  Webhook が必要な場所にあるかどうかを確認するには、Runbook の名前を選択します。 次に、Runbook の Resources セクションに移動して、 **[Webhooks]** を選択します。
 
 ## <a name="create-an-azure-automation-run-as-account"></a>Azure Automation の実行アカウントを作成する
 
@@ -256,3 +256,7 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 Azure Automation アカウントをホストしているリソース グループの Runbook (既定の名前は WVDAutoScaleRunbook) に移動して、 **[概要]** を選択します。 [概要] ページで、[最近のジョブ] の下にあるジョブを選択すると、次の図に示すようなスケーリング ツールの出力が表示されます。
 
 ![スケーリング ツールの出力ウィンドウの画像。](media/tool-output.png)
+
+## <a name="report-issues"></a>レポートに関する問題
+
+スケーリング ツールで何か問題が発生した場合は、[RDS の GitHub ページ](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)で報告できます。

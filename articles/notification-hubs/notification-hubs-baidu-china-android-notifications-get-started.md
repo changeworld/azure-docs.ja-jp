@@ -10,23 +10,20 @@ ms.devlang: java
 ms.topic: conceptual
 ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
-ms.date: 06/19/2019
+ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.openlocfilehash: de02c1add1d6ea3a98d30407b7661e71a28458fe
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211919"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536991"
 ---
-# <a name="deprecated-get-started-with-notification-hubs-using-baidu"></a>非推奨:Baidu での Notification Hubs の使用
+# <a name="get-started-with-notification-hubs-using-baidu"></a>Baidu での Notification Hubs の使用
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
-
-> [!IMPORTANT]
-> このチュートリアルは非推奨です。 
 
 Baidu クラウド プッシュは、プッシュ通知をモバイル デバイスに送信するために使用することのできる中国のクラウド サービスです。
 
@@ -40,65 +37,12 @@ Google Play と FCM (Firebase Cloud Messaging) は中国では利用できない
 * [Baidu Push Android SDK]
 
 > [!NOTE]
-> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)を参照してください。
+> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)」を参照してください。
 
-## <a name="create-a-baidu-account"></a>Baidu アカウントを作成する
+使用を開始するには、以下を実行します。
 
-Baidu を使用するには、Baidu アカウントが必要です。 既にアカウントを持っている場合は、 [Baidu ポータル] にログインし、次の手順にスキップします。 アカウントを持っていない場合は、Baidu アカウントの作成方法に関する次の手順を参照してください。  
-
-1. [Baidu ポータル]で **[登录]** (**ログイン**) のリンクをクリックします。 **[立即注册]** \(**今すぐ登録する**\) をクリックしてアカウントの登録プロセスを開始します。
-
-    ![Baidu の登録](./media/notification-hubs-baidu-get-started/BaiduRegistration.png)
-
-2. 電話番号/電子メール アドレス、パスワード、認証コードなどの必要情報を入力し、[注册]\(**サインアップ**\) をクリックします。
-
-    ![Baidu の登録の入力](./media/notification-hubs-baidu-get-started/BaiduRegistrationInput.png)
-
-3. 入力した電子メール アドレスに、Baidu アカウントをアクティブ化するためのリンクが記載された電子メールが届きます。
-
-    ![Baidu の登録の確認](./media/notification-hubs-baidu-get-started/BaiduConfirmation.png)
-
-4. 電子メール アカウントにログインし、Baidu のアクティブ化メールを開き、リンクをクリックして Baidu アカウントをアクティブ化します。
-
-    ![Baidu のアクティブ化メール](./media/notification-hubs-baidu-get-started/BaiduActivationEmail.png)
-
-アクティブ化した Baidu アカウントを取得したら、 [Baidu ポータル]にログインします。
-
-## <a name="create-a-baidu-cloud-push-project"></a>Baidu クラウド プッシュ プロジェクトを作成する
-
-Baidu クラウド プッシュ プロジェクトを作成すると、アプリケーション ID、API キー、およびシークレット キーが届きます。
-
-1. [Baidu ポータル]にログインしたら、 **[更多>>]** (**詳細**) をクリックします。
-
-    ![登録 - 詳細](./media/notification-hubs-baidu-get-started/BaiduRegistrationMore.png)
-
-2. **[站长与开发者服务]** \(**Web 管理者および開発者向けサービス**\) セクションを下へスクロールし、 **[百度云推送]** \(**Baidu クラウド プッシュ**\) をクリックします。
-
-    ![Baidu オープン クラウド プラットフォーム](./media/notification-hubs-baidu-get-started/BaiduOpenCloudPlatform.png)
-
-3. 次のページで、右上隅にある **[登录]** \(**ログイン**\) をクリックします。
-
-    ![Baidu ログイン](./media/notification-hubs-baidu-get-started/BaiduLogin.png)
-
-4. 次に、このページの **[创建应用]** \(**アプリケーションの作成**\) をクリックします。
-
-    ![Baidu アプリケーションの作成](./media/notification-hubs-baidu-get-started/BaiduCreateApplication.png)
-
-5. 次のページで、[创建新应用]\(**新しいアプリケーションの作成**\) をクリックします。
-
-    ![Baidu の新しいアプリケーションの作成](./media/notification-hubs-baidu-get-started/BaiduCreateNewApplication.png)
-
-6. アプリケーション名を入力し、[创建]\(**作成**\) をクリックします。
-
-    ![](./media/notification-hubs-baidu-get-started/BaiduCreateApplicationDoCreate.png)
-
-7. Baidu クラウド プッシュ プロジェクトが正常に作成されると、**AppID**、**API キー**、**シークレット キー**を含むページが表示されます。 API キーとシークレット キーは後で使用するので書き留めておきます。
-
-    ![Baidu プッシュ シークレット](./media/notification-hubs-baidu-get-started/BaiduGetSecrets.png)
-
-8. 左側のウィンドウで [创建通知]\(**通知の作成**\) をクリックし、プッシュ通知用のプロジェクトを構成します。
-
-    ![](./media/notification-hubs-baidu-get-started/BaiduCreateNotification.png)
+1. Baidu アカウントを作成します。
+2. Baidu クラウド プッシュ プロジェクトを作成し、API キーと秘密鍵をメモしておきます。
 
 ## <a name="configure-a-new-notification-hub"></a>新しい Notification Hub を構成する
 
@@ -484,7 +428,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 * **Microsoft Azure Notification Hubs .NET SDK**: Visual Studio 用の NuGet パッケージ マネージャーで、[Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) を実行します。
 * **Node.js**:[Node.js から Notification Hubs を使用する方法](notification-hubs-nodejs-push-notification-tutorial.md)。
 * **Mobile Apps**: Notification Hubs に統合されている Azure App Service Mobile Apps のバックエンドから通知を送信する方法の例については、[モバイル アプリにプッシュ通知を追加](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)する方法を説明したページを参照してください。
-* **Java / PHP**: REST API を使用した通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-push-notification-tutorial.md)  |  [PHP](notification-hubs-php-push-notification-tutorial.md)) を参照してください。
+* **Java / PHP**: REST API を使用した通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)) を参照してください。
 
 ## <a name="optional-send-notifications-from-a-net-console-app"></a>(省略可能) .NET コンソール アプリケーションから通知を送信する
 
@@ -542,4 +486,4 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Push Android SDK]: https://push.baidu.com/sdk/push_client_sdk_for_android
 [Azure Portal]: https://portal.azure.com/
-[Baidu ポータル]: https://www.baidu.com/
+[Baidu portal]: https://www.baidu.com/

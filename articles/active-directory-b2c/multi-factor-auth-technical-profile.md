@@ -8,23 +8,27 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 05851dba9de06b5dfba2da4f455fbaf5e9376d08
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c9ed0e329b498112feafaf21c34e85ea436cbb77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184283"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332819"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C カスタム ポリシーで Azure MFA 技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) では、Azure Multi-Factor Authentication (MFA) を使用して電話番号を確認するためのサポートが提供されています。 この技術プロファイルを使用して、コードを生成し、電話番号に送信してから、コードを確認します。
+Azure Active Directory B2C (Azure AD B2C) では、Azure Multi-Factor Authentication (MFA) を使用して電話番号を確認するためのサポートが提供されています。 この技術プロファイルを使用して、コードを生成し、電話番号に送信してから、コードを確認します。 Azure MFA 技術プロファイルからは、エラー メッセージが返される場合もあります。  検証技術プロファイルでは、ユーザー体験を続ける前に、ユーザーが入力したデータを検証します。 検証技術プロファイルにより、エラー メッセージがセルフアサート ページに表示されます。
 
-Azure MFA 技術プロファイルからは、エラー メッセージが返される場合もあります。 **検証技術プロファイル**を使用して、Azure MFA との統合を設計できます。 検証技術プロファイルでは、Azure MFA サービスが呼び出されます。 検証技術プロファイルでは、ユーザー体験を続ける前に、ユーザーが入力したデータを検証します。 検証技術プロファイルにより、エラー メッセージが自己宣言されたページに表示されます。
+この技術プロファイル:
+
+- ユーザーとやり取りするためのインターフェイスは用意していません。 代わりに、ユーザー インターフェイスは、[セルフアサート](self-asserted-technical-profile.md)技術プロファイルから、または[検証技術プロファイル](validation-technical-profile.md)としての[表示制御](display-controls.md)から呼び出されます。
+- Azure MFA サービスを使用して、コードを生成し、電話番号に送信してから、コードを確認します。  
+- テキスト メッセージを介して電話番号を検証します。
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -73,17 +77,17 @@ Azure MFA プロトコル プロバイダーでは **OutputClaims** は返され
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Operation | はい | **OneWaySMS** になっている必要があります。  |
-| UserMessageIfInvalidFormat | いいえ | 指定された電話番号が有効な電話番号ではない場合のカスタム エラー メッセージ |
-| UserMessageIfCouldntSendSms | いいえ | 指定された電話番号で SMS が受け付けられない場合のカスタム エラー メッセージ |
-| UserMessageIfServerError | いいえ | サーバーで内部エラーが発生した場合のカスタム エラー メッセージ |
 
-### <a name="return-an-error-message"></a>エラー メッセージを返す
+#### <a name="ui-elements"></a>UI 要素
 
-「[メタデータ](#metadata)」で説明されているように、さまざまなエラー ケースに対してユーザーに表示するエラー メッセージをカスタマイズできます。 ロケールにプレフィックスを付けることで、これらのメッセージをさらにローカライズできます。 次に例を示します。
+次のメタデータを使用して、SMS 送信に失敗したときに表示されるエラー メッセージを構成できます。 メタデータは、[セルフアサート](self-asserted-technical-profile.md)技術プロファイルで構成する必要があります。 エラー メッセージは、[ローカライズ](localization-string-ids.md#azure-mfa-error-messages)できます。
 
-```XML
-<Item Key="en.UserMessageIfInvalidFormat">Invalid phone number.</Item>
-```
+| 属性 | Required | 説明 |
+| --------- | -------- | ----------- |
+| UserMessageIfCouldntSendSms | いいえ | 指定された電話番号で SMS が受け付けられない場合のユーザー エラー メッセージ。 |
+| UserMessageIfInvalidFormat | いいえ | 指定された電話番号が有効な電話番号ではない場合のユーザー エラー メッセージ。 |
+| UserMessageIfServerError | いいえ | サーバーで内部エラーが発生した場合のユーザー エラー メッセージ。 |
+| UserMessageIfThrottled| いいえ | 要求が調整された場合のユーザー エラー メッセージ。|
 
 ### <a name="example-send-an-sms"></a>例: SMS を送信する
 
@@ -91,19 +95,19 @@ Azure MFA プロトコル プロバイダーでは **OutputClaims** は返され
 
 ```XML
 <TechnicalProfile Id="AzureMfa-SendSms">
-    <DisplayName>Send Sms</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">OneWaySMS</Item>
-    </Metadata>
-    <InputClaimsTransformations>
-        <InputClaimsTransformation ReferenceId="CombinePhoneAndCountryCode" />
-        <InputClaimsTransformation ReferenceId="ConvertStringToPhoneNumber" />
-    </InputClaimsTransformations>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="userPrincipalName" />
-        <InputClaim ClaimTypeReferenceId="fullPhoneNumber" PartnerClaimType="phoneNumber" />
-    </InputClaims>
+  <DisplayName>Send Sms</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">OneWaySMS</Item>
+  </Metadata>
+  <InputClaimsTransformations>
+    <InputClaimsTransformation ReferenceId="CombinePhoneAndCountryCode" />
+    <InputClaimsTransformation ReferenceId="ConvertStringToPhoneNumber" />
+  </InputClaimsTransformations>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="userPrincipalName" />
+    <InputClaim ClaimTypeReferenceId="fullPhoneNumber" PartnerClaimType="phoneNumber" />
+  </InputClaims>
 </TechnicalProfile>
 ```
 
@@ -128,24 +132,22 @@ Azure MFA プロトコル プロバイダーでは **OutputClaims** は返され
 
 **OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
-## <a name="metadata"></a>Metadata
+### <a name="metadata"></a>Metadata
 
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Operation | はい | **Verify** になっている必要があります |
-| UserMessageIfInvalidFormat | いいえ | 指定された電話番号が有効な電話番号ではない場合のカスタム エラー メッセージ |
-| UserMessageIfWrongCodeEntered | いいえ | 検証のために入力されたコードが間違っている場合のカスタム エラー メッセージ |
-| UserMessageIfMaxAllowedCodeRetryReached | いいえ | ユーザーによる確認コードの試行回数が多すぎる場合のカスタム エラー メッセージ |
-| UserMessageIfThrottled | いいえ | ユーザーがスロットルされている場合のカスタム エラー メッセージ |
-| UserMessageIfServerError | いいえ | サーバーで内部エラーが発生した場合のカスタム エラー メッセージ |
 
-### <a name="return-an-error-message"></a>エラー メッセージを返す
+#### <a name="ui-elements"></a>UI 要素
 
-「[メタデータ](#metadata)」で説明されているように、さまざまなエラー ケースに対してユーザーに表示するエラー メッセージをカスタマイズできます。 ロケールにプレフィックスを付けることで、これらのメッセージをさらにローカライズできます。 次に例を示します。
+次のメタデータを使用して、コード確認に失敗したときに表示されるエラー メッセージを構成できます。 メタデータは、[セルフアサート](self-asserted-technical-profile.md)技術プロファイルで構成する必要があります。 エラー メッセージは、[ローカライズ](localization-string-ids.md#azure-mfa-error-messages)できます。
 
-```XML
-<Item Key="en.UserMessageIfWrongCodeEntered">Wrong code has been entered.</Item>
-```
+| 属性 | Required | 説明 |
+| --------- | -------- | ----------- |
+| UserMessageIfMaxAllowedCodeRetryReached| いいえ | ユーザーによる確認コードの試行回数が多すぎる場合のユーザー エラー メッセージ。 |
+| UserMessageIfServerError | いいえ | サーバーで内部エラーが発生した場合のユーザー エラー メッセージ。 |
+| UserMessageIfThrottled| いいえ | 要求が調整されている場合のユーザー エラー メッセージ。|
+| UserMessageIfWrongCodeEntered| いいえ| 検証のために入力されたコードが間違っている場合のユーザー エラー メッセージ。|
 
 ### <a name="example-verify-a-code"></a>例: コードを検証する
 

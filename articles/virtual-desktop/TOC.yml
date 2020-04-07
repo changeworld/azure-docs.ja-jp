@@ -88,6 +88,10 @@
       href: app-attach.md
     - name: Microsoft Teams の使用
       href: teams-on-wvd.md
+    - name: Azure Multi-Factor Authentication を設定する
+      href: set-up-mfa.md
+    - name: 言語パックをインストールする
+      href: language-packs.md
 - name: 概念
   items:
     - name: Windows Virtual Desktop の環境

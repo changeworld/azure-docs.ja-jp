@@ -8,16 +8,20 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7107eae5c798deb78d4d35eccdf4adcf5273335
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229151"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388901"
 ---
 # <a name="about-migration"></a>移行について
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスがマシンの移行にどのように役立つかを簡単に説明します。 
+
+> [!TIP]
+> VM とサーバーを Azure に移行するには、Azure Site Recovery サービスではなく、Azure Migrate サービスを使用しなければならなくなりました。 [詳細については、こちらを参照してください](../migrate/migrate-services-overview.md)。
+
 
 Site Recovery を使用すると次の移行に対応できます。
 
@@ -26,7 +30,7 @@ Site Recovery を使用すると次の移行に対応できます。
 - **AWS の移行**: AWS Windows インスタンスを Azure IaaS VM に移行します。 
 
 > [!NOTE]
-> これで、Azure Migrate サービスを使用してオンプレミスから Azure に移行できます。 詳細については、[こちら](../migrate/migrate-overview.md)をご覧ください。
+> これで、Azure Migrate サービスを使用してオンプレミスから Azure に移行できます。 [詳細については、こちらを参照してください](../migrate/migrate-overview.md)。
 
 ## <a name="what-do-we-mean-by-migration"></a>移行が意味すること
 

@@ -11,18 +11,22 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 0c81523d43fd316c3dc65cc2a5b34557f24014b5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303411"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346292"
 ---
 # <a name="download-the-results-of-a-job"></a>ジョブの結果をダウンロードする
 
 Azure Media Services では、ご利用のビデオを処理するとき (エンコードや分析など)、自分の[ジョブ](transforms-jobs-concept.md)の結果を格納するために出力[アセット](assets-concept.md)を作成する必要があります。 Media Service と Storage API を使用して、それらの結果をローカル フォルダーにダウンロードすることができます。 
 
 この記事では、Java と .NET SDK を使用して結果をダウンロードする方法について説明します。
+
+## <a name="prerequisites"></a>前提条件 
+
+「[アセットの管理](manage-asset-concept.md)」を確認する。
 
 ## <a name="java"></a>Java
 

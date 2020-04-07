@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 887019bbdb92807d49c09af3a83313470f334a52
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 4587909ad6fca6cdf21d54d11d89f797bbb29833
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649546"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335835"
 ---
 # <a name="configure-a-custom-domain-name"></a>カスタム ドメイン名の構成
 
@@ -40,7 +40,7 @@ Azure API Management サービス インスタンスを作成すると、Azure �
 -   API Management インスタンス。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
 -   自分または自分の所属する組織が所有しているカスタム ドメイン名。 このトピックでは、カスタム ドメイン名を取得する手順は説明しません。
 -   DNS サーバーでホストしている CNAME レコード。カスタム ドメイン名を API Management インスタンスの既定のドメイン名にマップするものです。 このトピックでは、CNAME レコードをホストする手順は説明しません。
--   パブリックおよびプライベート キー (.PFX) 付きの有効な証明書。 サブジェクトまたはサブジェクト代替名 (SAN) はドメイン名と一致している必要があります (これにより、API Management インスタンスは SSL 経由で URL を安全に公開できます)。
+-   パブリックおよびプライベート キー (.PFX) 付きの有効な証明書。 サブジェクトやサブジェクトの別名 (SAN) は、ドメイン名と一致している必要があります (これによって API Management インスタンスでは、TLS を通して URL を安全に公開することができます)。
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Azure ポータルを使用してカスタム ドメイン名を設定する
 
@@ -72,9 +72,9 @@ Azure API Management サービス インスタンスを作成すると、Azure �
 
     > [!TIP]
     > 証明書を管理し、それらをオートローテーションに設定する場合は、Azure Key Vault を使用することをお勧めします。
-    > Azure Key Vault を使用してカスタム ドメインの SSL 証明書を管理する場合は、証明書が _シークレット_ ではなく、[ _証明書_ として](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate) Key Vault に挿入されていることを確認してください。
+    > Azure Key Vault を使用してカスタム ドメインの TLS/SSL 証明書を管理する場合は、証明書が、_シークレット_ではなく[_証明書_として](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate) Key Vault に挿入されていることを確認してください。
     >
-    > SSL 証明書を取得するには、API Management に、証明書が格納されている Azure Key Vault に対するシークレットの取得アクセス許可のリストが必要です。 Azure portal を使用している場合、必要なすべての構成手順が自動的に完了します。 コマンド ライン ツールまたは管理 API を使用している場合は、これらのアクセス許可を手動で付与する必要があります。 この処理は 2 段階の手順で実行されます。 まず、API Management インスタンスのマネージド ID ページを使用して、マネージド ID が有効になっていることを確認し、そのページに表示されているプリンシパル ID を書き留めます。 次に、このプリンシパル ID にアクセス許可リストを提供し、証明書が格納されている Azure Key Vault に対するシークレットの取得アクセス許可を付与します。
+    > TLS/SSL 証明書を取得するには、証明書が格納されている Azure Key Vault に対するシークレットの一覧表示および取得のアクセス許可が、API Management に付与されている必要があります。 Azure portal を使用している場合、必要なすべての構成手順が自動的に完了します。 コマンド ライン ツールまたは管理 API を使用している場合は、これらのアクセス許可を手動で付与する必要があります。 この処理は 2 段階の手順で実行されます。 まず、API Management インスタンスのマネージド ID ページを使用して、マネージド ID が有効になっていることを確認し、そのページに表示されているプリンシパル ID を書き留めます。 次に、このプリンシパル ID にアクセス許可リストを提供し、証明書が格納されている Azure Key Vault に対するシークレットの取得アクセス許可を付与します。
     >
     > 証明書がオートローテーションに設定されている場合、API Management はサービスのダウンタイムなしに最新バージョンを自動的に取得します (お使いの API Management のレベルに SLA が含まれている場合 (つまり、Developer レベルを除くすべてのレベル))。
 
@@ -93,7 +93,7 @@ Azure API Management サービス インスタンスを作成すると、Azure �
 -   API Management ゲートウェイの IP アドレスを指す A レコードを構成する。
 
 > [!NOTE]
-> API Management インスタンスの IP アドレスは静的ですが、いくつかのシナリオで変更される可能性があります。 このため、カスタム ドメインを構成するときは CNAME を使用することをお勧めします。 DNS 構成方法を選択するときは、このことを考慮してください。 詳細については、[API Management の FAQ](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services) に関するページを参照してください。
+> API Management インスタンスの IP アドレスは静的ですが、いくつかのシナリオで変更される可能性があります。 このため、カスタム ドメインを構成するときは CNAME を使用することをお勧めします。 DNS 構成方法を選択するときは、このことを考慮してください。 詳細については、[IP に関するドキュメント記事](api-management-howto-ip-addresses.md#changes-to-the-ip-addresses)と [API Management の FAQ](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services) を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

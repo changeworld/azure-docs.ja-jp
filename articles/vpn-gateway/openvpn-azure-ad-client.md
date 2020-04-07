@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 9250464e3d28bdac20840aa9f69cfac707f73b30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251614"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371483"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN プロトコル接続用に VPN クライアントを構成する:Azure AD 認証
 
@@ -22,21 +22,27 @@ ms.locfileid: "78251614"
 > Azure AD 認証は、OpenVPN® プロトコル接続でのみサポートされています。
 >
 
-## <a name="profile"></a>クライアント プロファイルの操作
+## <a name="working-with-client-profiles"></a><a name="profile"></a>クライアント プロファイルの操作
 
 接続するには、VNet への接続を必要とするすべてのコンピューターで Azure VPN クライアントをダウンロードしたうえで、それぞれに VPN クライアント プロファイルを構成する必要があります。 1 つのコンピューターでクライアント プロファイルを作成した後、それをエクスポートして、別のコンピューターにインポートすることもできます。
 
 ### <a name="to-download-the-azure-vpn-client"></a>Azure VPN Client をダウンロードするには
 
-この[リンク](https://go.microsoft.com/fwlink/?linkid=2117554)を使用して、Azure VPN Client をダウンロードします。
+この[リンク](https://go.microsoft.com/fwlink/?linkid=2117554)を使用して、Azure VPN Client をダウンロードします。 Azure VPN クライアントにバックグラウンドで実行するためのアクセス許可があることを確認してください。 アクセス許可を確認または有効にするには、次の手順に従います。
 
-### <a name="cert"></a>証明書ベースのクライアント プロファイルを作成するには
+1. [スタート] にアクセスし、[設定]-> [プライバシー]-> [バックグラウンド アプリ] を選択します。
+2. [バックグラウンド アプリ] で、 **[アプリのバックグラウンド実行を許可する]** がオンになっていることを確認します。
+3. [バックグラウンドでの実行を許可するアプリを選んでください] で、Azure VPN クライアントの設定を **[オン]** にします。
+
+  ![権限 (permission)](./media/openvpn-azure-ad-client/backgroundpermission.png)
+
+### <a name="to-create-a-certificate-based-client-profile"></a><a name="cert"></a>証明書ベースのクライアント プロファイルを作成するには
 
 証明書ベースのプロファイルを使用する場合は、クライアント コンピューターに適切な証明書がインストールされていることを確認してください。 証明書の詳細については、「[クライアント証明書のインストール](point-to-site-how-to-vpn-client-install-azure-cert.md)」を参照してください。
 
   ![cert](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
 
-### <a name="radius"></a>RADIUS クライアント プロファイルを作成するには
+### <a name="to-create-a-radius-client-profile"></a><a name="radius"></a>RADIUS クライアント プロファイルを作成するには
 
   ![radius](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
   
@@ -44,7 +50,7 @@ ms.locfileid: "78251614"
 > サーバー シークレットは、P2S VPN クライアント プロファイルでエクスポートできます。  クライアント プロファイルをエクスポートする手順については、[こちら](about-vpn-profile-download.md)を参照してください。
 >
 
-### <a name="export"></a>クライアント プロファイルをエクスポートして配布するには
+### <a name="to-export-and-distribute-a-client-profile"></a><a name="export"></a>クライアント プロファイルをエクスポートして配布するには
 
 使用するプロファイルを作成した後、それを他のユーザーに配布する必要がある場合は、次の手順に従ってプロファイルをエクスポートできます。
 
@@ -56,7 +62,7 @@ ms.locfileid: "78251614"
 
     ![エクスポート](./media/openvpn-azure-ad-client/export/export2.jpg)
 
-### <a name="import"></a>クライアント プロファイルをインポートするには
+### <a name="to-import-a-client-profile"></a><a name="import"></a>クライアント プロファイルをインポートするには
 
 1. ページ上で、 **[インポート]** を選択します。
 
@@ -78,7 +84,7 @@ ms.locfileid: "78251614"
 
     ![import](./media/openvpn-azure-ad-client/import/import5.jpg)
 
-### <a name="delete"></a>クライアント プロファイルを削除するには
+### <a name="to-delete-a-client-profile"></a><a name="delete"></a>クライアント プロファイルを削除するには
 
 1. 削除するクライアント プロファイルの横にある省略記号を選択します。 **[削除]** を選択します。
 
@@ -88,7 +94,7 @@ ms.locfileid: "78251614"
 
     ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
-## <a name="connection"></a>接続を作成する
+## <a name="create-a-connection"></a><a name="connection"></a>接続を作成する
 
 1. ページ上で、 **[+]** を選択し、 **[追加 +]** を選択します。
 
@@ -110,7 +116,7 @@ ms.locfileid: "78251614"
 
     ![connection](./media/openvpn-azure-ad-client/create/create5.jpg)
 
-### <a name="autoconnect"></a>自動的に接続するには
+### <a name="to-connect-automatically"></a><a name="autoconnect"></a>自動的に接続するには
 
 Always-on を使用して自動的に接続するように構成するには、次の手順に従います。
 
@@ -130,7 +136,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 
     ![自動](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
-## <a name="diagnose"></a>接続の問題を診断する
+## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>接続の問題を診断する
 
 1. 接続の問題を診断するには、**診断**ツールを使用します。 診断する VPN 接続の横にある **[...]** を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
 
@@ -184,6 +190,10 @@ Always-on を使用して自動的に接続するように構成するには、�
 </clientconfig>
 </azvpnprofile>
 ```
+
+> [!NOTE]
+> OpenVPN Azure AD クライアントは、DNS 名前解決ポリシー テーブル (NRPT) エントリを利用します。したがって、DNS サーバーは `ipconfig /all` の出力には一覧表示されません。 使用中の DNS 設定を確認するには、PowerShell で [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) を参照してください。
+>
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>VPN クライアントにカスタム ルートを追加する方法
 

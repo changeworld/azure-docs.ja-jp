@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 429ddd62cccb8657aa18ec844968cc12df778f55
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 490d3305abcbcd906a0f727d736db8cab7e4287e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153793"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456023"
 ---
 # <a name="remove-duplicate-rows-module"></a>Remove Duplicate Rows (重複する行の削除) モジュール
 
@@ -69,7 +69,7 @@ ms.locfileid: "77153793"
     + オンにすると、最初の行が返され、他の行は破棄されます。 
     + このオプションをオフにした場合は、最後の重複する行が結果で保持され、他の行は破棄されます。 
 
-5. パイプラインを実行します。
+5. パイプラインを送信します。
 
 6. 結果を確認するには、モジュールを右クリックし、 **[可視化]** を選択します。 
 

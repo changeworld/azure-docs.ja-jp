@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/23/2020
+ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 63aef8d2036e442659145e031d384e9677c779a1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 03a3d3c7d572d7ec5b8d3ac3d527d0d59e649bc2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598070"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062241"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC と Azure portal を使用してロールの割り当てを一覧表示する
 
@@ -128,11 +128,11 @@ ms.locfileid: "77598070"
 
 ## <a name="list-number-of-role-assignments"></a>ロールの割り当ての数の一覧
 
-各サブスクリプションには、最大 **2,000** 個のロールの割り当てを保持できます。 **[ロールの割り当て]** タブには、これらの制限の追跡に役立つ、現在のロールの割り当ての数を示すグラフが表示されます。
+各サブスクリプションには、最大 **2,000** 個のロールの割り当てを保持できます。 **[ロールの割り当て]** タブには、この制限の追跡に役立つ、現在のサブスクリプションに対するロールの割り当て数を示すグラフが表示されます。
 
 ![アクセス制御 - ロールの割り当ての数のグラフ](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 
-最大数に近づいているときにロールの割り当てを追加しようとすると、 **[ロールの割り当ての追加]** ウィンドウに警告が表示されます。 不要になったロールの割り当てを削除したり、個々のユーザーではなくグループにロールを割り当てることで、ロールの割り当ての数を減らすことができます。
+最大数に近づいているときにロールの割り当てを追加しようとすると、 **[ロールの割り当ての追加]** ウィンドウに警告が表示されます。 ロールの割り当て数を減らす方法については、「[Azure リソースの RBAC のトラブルシューティング](troubleshooting.md#azure-role-assignments-limit)」を参照してください。
 
 ![アクセス制御 - ロールの割り当ての追加の警告](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 

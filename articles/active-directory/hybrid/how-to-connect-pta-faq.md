@@ -16,12 +16,12 @@ ms.date: 03/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd923a47c49bfa7a6ab16e822a80c8e7f4f9a3e0
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 59bf7ae5914f5cc886d95f25b36abccfdf09c4a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096062"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331284"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証:よく寄せられる質問
 
@@ -75,7 +75,7 @@ Azure AD Connect を使用して、サインイン方法をパスワード ハ�
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>パススルー認証エージェントはポート 80 およびポート 443 で何をやり取りしますか。
 
 - 認証エージェントは、すべての機能操作について、ポート 443 で HTTPS 要求を行います。
-- 認証エージェントは、SSL 証明書失効リスト (CRL) をダウンロードするために、ポート 80 で HTTP 要求を行います。
+- 認証エージェントは、TLS/SSL 証明書失効リスト (CRL) をダウンロードするために、ポート 80 で HTTP 要求を行います。
 
      >[!NOTE]
      >この機能に必要なポートの数は、最近の更新で減らされています。 以前のバージョンの Azure AD Connect または認証エージェントを使用している場合は、5671、8080、9090、9091、9350、9352、および 10100 - 10120 の各ポートも開いておいてください。

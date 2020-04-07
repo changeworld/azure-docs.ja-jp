@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 6ba53793e57be67e2954af870dfa4248fca465ec
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 7178417a5c20afe5b1ed02bc526ec174704962df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912207"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456252"
 ---
 # <a name="feature-hashing-module-reference"></a>特徴ハッシュ モジュール リファレンス
 
@@ -94,9 +94,9 @@ N-gram のサイズは、**N-gram** プロパティを使用して制御でき�
 
     たとえば、3 を入力すると、unigram、bigram、trigram が作成されます。
 
-1. パイプラインを実行します。
+1. パイプラインを送信します。
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 処理が完了すると、モジュールによって変換後のデータセットが出力されます。元のテキスト列が複数の列に変換されます。 各列はテキスト内の特徴を表します。 辞書の有意性によっては、結果として得られるデータセットが大きくなる可能性があります。
 

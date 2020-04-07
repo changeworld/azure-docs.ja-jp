@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/02/2020
-ms.openlocfilehash: 10149c6eb06e6d2994233aa365f237e6d9330c48
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 32100e9cad86f12dc8111ee8a0282a515540a4db
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644760"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346609"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>マッピング データ フローの結合変換
 
@@ -32,7 +32,7 @@ ms.locfileid: "75644760"
 左外部結合では、左側ストリームのすべての行と、右側ストリームで一致するレコードが返されます。 左側ストリームの行に一致するものがない場合、右側ストリームの出力列は NULL に設定されます。 出力は、内部結合で返される行と、左側ストリームの一致のない行になります。
 
 > [!NOTE]
-> Data Flow で使用される Spark エンジンでは、結合条件でデカルト積が生成されることがあります。 この場合、カスタム クロス結合に切り替えて、結合条件を手動で入力できます。 これによりデータ フローのパフォーマンスが低下する場合があります。これは、実行エンジンが、リレーションシップの両側からすべての行を計算し、行をフィルター処理する必要があるためです。
+> データ フローによって使用される Spark エンジンは、結合条件でデカルト積が生成されることがあるという理由で、失敗する場合があります。 これが発生する場合は、カスタム クロス結合に切り替えて結合条件を手動で入力することができます。 これによりデータ フローのパフォーマンスが低下する場合があります。これは、実行エンジンが、リレーションシップの両側からすべての行を計算し、行をフィルター処理する必要があるためです。
 
 ### <a name="right-outer"></a>右外部結合
 
@@ -59,7 +59,7 @@ ms.locfileid: "75644760"
 1. 目的の**結合の種類**を選択します
 1. 結合条件で照合に使用するキー列を選択します。 既定では、データフローは、1 つの列について各ストリームでの同等性を検索します。 計算値で比較するには、列のドロップダウン上にマウス ポインターを移動し、 **[計算列]** を選択します。
 
-![結合変換](media/data-flow/join.png "結合")
+![結合変換](media/data-flow/join.png "Join")
 
 ## <a name="optimizing-join-performance"></a>結合のパフォーマンスの最適化
 

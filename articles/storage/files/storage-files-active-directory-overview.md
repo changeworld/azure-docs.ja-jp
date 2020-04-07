@@ -3,15 +3,16 @@ title: 概要 - Azure Files の ID ベースの承認
 description: Azure Files は、Azure Active Directory Domain Services (AD DS) および Active Directory を使用した、SMB (Server Message Block) 上の ID ベースの認証をサポートします。 ドメインに参加している Windows 仮想マシン (VM) は、Azure AD の資格情報を使用して Azure ファイル共有にアクセスできます。
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.subservice: files
+ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: rogarana
-ms.openlocfilehash: 673bf3be59d72b2cc62b9f92af353fee235c5ddc
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 737cdfaddca3a5f7532620bdafd86149e4d61f9f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598818"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061070"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-support-for-smb-access"></a>SMB アクセスに対する Azure Files ID ベース認証サポートの概要
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -33,7 +34,7 @@ SMB を使用した Azure ファイル共有の Azure AD Domain Service 認証�
 
 -   **Azure Active Directory (Azure AD)**
 
-    Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。 Azure AD には、主要なディレクトリ サービス、アプリケーション アクセスの管理、ID 保護の機能が一つのソリューションとして統合されています。 Azure AD を使用すると、ドメインに参加している Windows 仮想マシン (VM) が Azure AD の資格情報で Azure ファイル共有にアクセスできるようになります。 詳細については、「[Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)」を参照してください。
+    Azure Active Directory (Azure AD) は、Microsoft のマルチテナント クラウド ベースのディレクトリおよび ID 管理サービスです。 Azure AD には、主要なディレクトリ サービス、アプリケーション アクセスの管理、ID 保護の機能が一つのソリューションとして統合されています。 Azure AD を使用すると、ドメインに参加している Windows 仮想マシン (VM) が Azure AD の資格情報で Azure ファイル共有にアクセスできるようになります。 詳細については、「[Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)」を参照してください。
 
 -   **Azure AD Domain Services (Azure AD DS)**
 
@@ -98,7 +99,7 @@ VM 上で実行されているアプリケーションに関連付けられて�
 
 ### <a name="enable-identity-based-authentication"></a>ID ベースの認証を有効にする
 
-新規および既存のストレージ アカウントで、Azure ファイル共有の Azure AD DS (GA) または AD (プレビュー) のいずれかを使用して ID ベースの認証を有効にすることができます。 ストレージ アカウントでのファイル アクセス認証に使用できるドメイン サービスは 1 つだけです。これは、アカウント内のすべてのファイル共有に適用されます。 Azure AD DS (GA) での認証用のファイル共有の設定に関する詳細な手順については[「Azure Files に対する Azure Active Directory Domain Services 認証を有効にする」](storage-files-identity-auth-active-directory-domain-service-enable.md)を、AD (プレビュー) に関するガイドについては、「[Azure ファイル共有に対する SMB 経由の Azure Active Directory 認証を有効にする](storage-files-identity-auth-active-directory-enable.md)」を参照してください。
+新規および既存のストレージ アカウントで、Azure ファイル共有の Azure AD DS (GA) または AD (プレビュー) のいずれかを使用して ID ベースの認証を有効にすることができます。 ストレージ アカウントでのファイル アクセス認証に使用できるドメイン サービスは 1 つだけです。これは、アカウント内のすべてのファイル共有に適用されます。 Azure AD DS (GA) での認証用のファイル共有の設定に関する詳細な手順については「[Azure Files に対する Azure Active Directory Domain Services 認証を有効にする](storage-files-identity-auth-active-directory-domain-service-enable.md)」を、AD (プレビュー) に関するガイドについては、「[Azure ファイル共有に対する SMB 経由の Azure Active Directory 認証を有効にする](storage-files-identity-auth-active-directory-enable.md)」を参照してください。
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Azure Files の共有レベルのアクセス権限を構成する
 

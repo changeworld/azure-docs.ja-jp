@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 5f695bf739a6e096083cd6d8271b6936f24c16da
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6466cea9fe04bb308a670cb03fd3de5314758142
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546828"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456609"
 ---
 # <a name="clip-values"></a>クリップの値
 
@@ -84,7 +84,7 @@ ms.locfileid: "76546828"
   
     元の列を保持し、クリップされた値で新しい列を追加するには、このオプションの選択を解除します。  
   
-1.  パイプラインを実行します。  
+1.  パイプラインを送信します。  
   
     **[Clip Values]\(クリップ値\)** モジュールを右クリックしてから **[可視化]** またはモジュールを選択し、右側のパネルの **[出力]** タブに切り替え、 **[Port outputs]\(ポートの出力\)** のヒストグラム アイコンをクリックして値を確認し、クリップ操作が期待どおりであることを確認します。  
  

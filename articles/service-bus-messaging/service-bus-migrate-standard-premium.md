@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 548163f4c86f4df4d858b31afd95e0e4615f1696
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 27e3260b91bebee14ff12188a7dbd6c7cf76355c
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587500"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385029"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>既存の Azure Service Bus Standard 名前空間を Premium レベルに移行する
+
 以前は、Azure Service Bus では Standard レベルでのみ名前空間が提供されていました。 名前空間は、低スループット環境と開発者環境用に最適化されたマルチテナントの設定です。 Premium レベルでは、名前空間ごとに専用のリソースが提供され、予測可能な待機時間と固定価格でのスループット向上が実現します。 Premium レベルは、追加のエンタープライズ機能が必要な高スループット環境および実稼働環境向けに最適化されています。
 
 この記事では、既存の Standard レベルの名前空間を Premium レベルに移行する方法について説明します。  
@@ -27,14 +28,16 @@ ms.locfileid: "77587500"
 >[!WARNING]
 > 移行は、Service Bus の Standard 名前空間を Premium レベルにアップグレードするためのものです。 移行ツールでは、ダウングレードはサポートされていません。
 
-いくつかの点に注意してください。 
+いくつかの点に注意してください。
+
 - この移行はインプレースで行われるよう設計されており、既存の送信側および受信側アプリケーションで**コードまたは構成の変更は必要ありません**。 既存の接続文字列は、新しい Premium 名前空間を自動的に指すようになります。
-- 移行を成功させるためには、**Premium** 名前空間に**エンティティが含まれない**ようにしてください。 
-- Standard 名前空間のすべての**エンティティ**は、移行プロセスの間に Premium 名前空間に**コピー**されます。 
-- 移行では、Premium レベルで**メッセージング ユニットあたり 1,000 エンティティ**がサポートされます。 必要なメッセージング ユニットの数を明らかにするには、現在の Standard 名前空間に存在するエンティティの数から始めます。 
+- 移行を成功させるためには、**Premium** 名前空間に**エンティティが含まれない**ようにしてください。
+- Standard 名前空間のすべての**エンティティ**は、移行プロセスの間に Premium 名前空間に**コピー**されます。
+- 移行では、Premium レベルで**メッセージング ユニットあたり 1,000 エンティティ**がサポートされます。 必要なメッセージング ユニットの数を明らかにするには、現在の Standard 名前空間に存在するエンティティの数から始めます。
 - **Basic レベル**から **Premium レベル**に直接移行することはできませんが、まず Basic から Standard に移行し、次のステップで Standard から Premium に移行することによって間接的に移行できます。
 
 ## <a name="migration-steps"></a>移行の手順
+
 いくつかの条件が移行プロセスに関連します。 エラーの可能性を減らすために、以下の手順をよく理解してください。 以下の手順は移行プロセスの概要であり、以降のセクションで詳細な手順について説明しています。
 
 1. 新しい Premium 名前空間を作成します。
@@ -54,7 +57,8 @@ Azure CLI または PowerShell ツールを使用して Service Bus の Standard
 1. 新しい Service Bus Premium 名前空間を作成します。 [Azure Resource Manager テンプレート](service-bus-resource-manager-namespace.md)に関する記事、または [Azure portal の使用](service-bus-create-namespace-portal.md)に関する記事をご覧ください。 **serviceBusSku** パラメーターに対して必ず **premium** を選択してください。
 
 1. 次の環境変数を設定して、移行コマンドを簡略化します。
-   ```azurecli
+
+   ```
    resourceGroup = <resource group for the standard namespace>
    standardNamespace = <standard namespace to migrate>
    premiumNamespaceArmId = <Azure Resource Manager ID of the premium namespace to migrate to>
@@ -66,17 +70,18 @@ Azure CLI または PowerShell ツールを使用して Service Bus の Standard
 
 1. Standard 名前空間と Premium 名前空間をペアにし、次のコマンドを使用して同期を開始します。
 
-    ```azurecli
+    ```azurecli-interactive
     az servicebus migration start --resource-group $resourceGroup --name $standardNamespace --target-namespace $premiumNamespaceArmId --post-migration-name $postMigrationDnsName
     ```
 
-
 1. 次のコマンドを使用して、移行の状態を確認します。
-    ```azurecli
+
+    ```azurecli-interactive
     az servicebus migration show --resource-group $resourceGroup --name $standardNamespace
     ```
 
     次の値が表示されたら、移行は完了したものとみなされます。
+
     * MigrationState = "Active"
     * pendingReplicationsOperationsCount = 0
     * provisioningState = "Succeeded"
@@ -84,7 +89,8 @@ Azure CLI または PowerShell ツールを使用して Service Bus の Standard
     このコマンドでは、移行の構成も表示されます。 値が正しく設定されていることを確認します。 また、ポータルで Premium 名前空間を調べて、すべてのキューとトピックが作成されていること、およびそれらが Standard 名前空間に存在していたものと一致することを確認します。
 
 1. 次の complete コマンドを実行して、移行をコミットします。
-   ```azurecli
+
+   ```azurecli-interactive
    az servicebus migration complete --resource-group $resourceGroup --name $standardNamespace
    ```
 
@@ -122,22 +128,22 @@ Azure portal を使用した移行の論理フローは、コマンドを使用�
 
 Azure Service Bus の Standard レベルで提供される機能の一部は、Azure Service Bus の Premium レベルではサポートされません。 Premium レベルでは予測可能なスループットと待機時間の専用リソースが提供されるため、これらは仕様です。
 
-以下は、Premium とそれらのリスク軽減でサポートされない機能のリストです。 
+以下は、Premium とそれらのリスク軽減でサポートされない機能のリストです。
 
 ### <a name="express-entities"></a>エクスプレス エンティティ
 
    すべてのメッセージ データをストレージにコミットしないエクスプレス エンティティは、Premium ではサポートされません。 専用リソースでは、エンタープライズ メッセージング システムからの予想どおり、確実にデータを保持しながら、スループットが大幅に向上しました。
-   
+
    移行中に、Standard 名前空間のいずれかのエクスプレス エンティティが、エクスプレス エンティティ以外のものとして Premium 名前空間で作成されます。
-   
+
    Azure Resource Manager (ARM) テンプレートを利用する場合は、エラーが発生することなく自動ワークフローが実行されるように、必ず、デプロイ構成から 'enableExpress' フラグを削除するようにしてください。
 
 ### <a name="partitioned-entities"></a>パーティション分割されたエンティティ
 
    パーティション分割されたエンティティは、マルチテナント設定でより優れた可用性を提供するために、Standard レベルでサポートされていました。 Premium レベルでの名前空間ごとの利用可能な専用リソースのプロビジョニングでは、これは必要なくなりました。
-   
+
    移行中に、Standard 名前空間のパーティション分割されたエンティティが、パーティション分割されていないエンティティとして Premium 名前空間に作成されます。
-   
+
    ARM テンプレートで、特定のキューまたはトピックに対して 'enablePartitioning' が 'true' に設定された場合、それはブローカーによって無視されます。
 
 ## <a name="faqs"></a>FAQ
@@ -160,19 +166,22 @@ Standard 名前空間には、移行の進行中に送信されてコミット�
 > Standard 名前空間からのメッセージがドレインされた後に、Standard 名前空間を削除します。 最初は Standard 名前空間を参照していた接続文字列が、Premium 名前空間を参照するようになっているため、これは重要なことです。 Standard 名前空間が必要になることはもうありません。 移行した Standard 名前空間を削除しておくと、後々の混乱を減らすために役立ちます。
 
 ### <a name="how-much-downtime-do-i-expect"></a>どの程度のダウンタイムが想定されますか?
+
 移行プロセスは、アプリケーションに予想されるダウンタイムを短縮するためのものです。 送信側と受信側のアプリケーションが新しい Premium 名前空間を指すために使用する接続文字列を使用することによって、ダウンタイムが短縮されます。
 
 アプリケーションで発生するダウンタイムは、Premium 名前空間を指すように DNS エントリを更新するのにかかる時間に限定されます。 ダウンタイムは約 5 分です。
 
 ### <a name="do-i-have-to-make-any-configuration-changes-while-doing-the-migration"></a>移行を行う間に構成を変更する必要はありますか?
+
 いいえ、移行を行うために、コードまたは構成の変更は必要ありません。 送信側と受信側のアプリケーションが Standard 名前空間にアクセスするために使用する接続文字列は、Premium 名前空間に対する別名として機能するように自動的にマップされます。
 
 ### <a name="what-happens-when-i-abort-the-migration"></a>移行を中止するとどうなりますか?
-移行は、`Abort` コマンドを使用して、または Azure portal を使用して中止することができます。 
+
+移行は、`Abort` コマンドを使用して、または Azure portal を使用して中止することができます。
 
 #### <a name="azure-cli"></a>Azure CLI
 
-```azurecli
+```azurecli-interactive
 az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
 ```
 

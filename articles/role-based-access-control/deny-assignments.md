@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 03/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 7ab811635ca50c3a28ecd8bdf6d0f18fad4c384f
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: db249ccde1026cd468a1c30942891119482697ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137372"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372485"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Azure リソースの拒否割り当ての概要
 
@@ -30,7 +30,7 @@ ms.locfileid: "77137372"
 
 ## <a name="how-deny-assignments-are-created"></a>拒否割り当てが作成されるしくみ
 
-拒否割り当ては、リソースを保護するために Azure によって作成および管理されます。 Azure Blueprints および Azure マネージド アプリでは、システム管理対象リソースを保護するために拒否割り当てを使用します。 Azure Blueprints と Azure マネージド アプリは、拒否割り当てを作成できる唯一の方法です。 独自の拒否割り当てを直接作成することはできません。  詳細については、「[Azure Blueprints のリソース ロックを使用して新しいリソースを保護する](../governance/blueprints/tutorials/protect-new-resources.md)」を参照してください。
+拒否割り当ては、リソースを保護するために Azure によって作成および管理されます。 Azure Blueprints および Azure マネージド アプリでは、システム管理対象リソースを保護するために拒否割り当てを使用します。 Azure Blueprints と Azure マネージド アプリは、拒否割り当てを作成できる唯一の方法です。 独自の拒否割り当てを直接作成することはできません。 Blueprints で拒否割り当てを使用してリソースをロックする方法の詳細については、「[Azure Blueprints でのリソース ロックについて](../governance/blueprints/concepts/resource-locking.md)」を参照してください。
 
 > [!NOTE]
 > 独自の拒否割り当てを直接作成することはできません。
@@ -54,7 +54,7 @@ ms.locfileid: "77137372"
  拒否割り当てには、以下のプロパティがあります。
 
 > [!div class="mx-tableFixed"]
-> | プロパティ | Required | Type | 説明 |
+> | プロパティ | 必須 | Type | 説明 |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | はい | String | 拒否割り当ての表示名。 名前は、指定のスコープで一意である必要があります。 |
 > | `Description` | いいえ | String | 拒否割り当ての説明。 |
@@ -89,5 +89,5 @@ All Principals は `ExcludePrincipals` と組み合わせて、一部のユー�
 
 ## <a name="next-steps"></a>次のステップ
 
+* [チュートリアル:Azure Blueprints のリソース ロックを使用して新しいリソースを保護する](../governance/blueprints/tutorials/protect-new-resources.md)
 * [Azure portal を使用して Azure リソースの拒否割り当てを一覧表示する](deny-assignments-portal.md)
-* [Azure リソースのロール定義の概要](role-definitions.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: aee5195fe86fed3e631908a38d3bdb7d5e4883b8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127901"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79365221"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>新しいセッション ホストで既存のホスト プールを拡張する
 
@@ -71,7 +71,7 @@ Azure Resource Manager テンプレートを再デプロイしてホスト プ�
 
 ## <a name="run-the-azure-marketplace-offering"></a>Azure Marketplace オファリングを実行する
 
-「[Azure Marketplace を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」の手順を「[新しいホスト プールをプロビジョニングするための Azure Marketplace オファリングを実行する](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)」まで実行します。 このポイントに到達したら、各ブレードについて次の情報を入力する必要があります。
+「[Azure Marketplace を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」の手順を「[新しいホスト プールをプロビジョニングするための Azure Marketplace オファリングを実行する](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)」まで実行します。 このポイントに到達したら、各タブについて次の情報を入力する必要があります。
 
 ### <a name="basics"></a>基本
 

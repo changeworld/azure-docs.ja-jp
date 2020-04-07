@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/24/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8bde9a9e9227f0c8715b38a9a376fad3015c7bf3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 40885e1de4ff4c16d2a50399c654d8596396ab53
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586259"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366376"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Azure portal からハイブリッド マシンを Azure に接続する
 
@@ -56,6 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="install-and-validate-the-agent-on-windows"></a>Windows でエージェントをインストールして検証する
 
 ### <a name="install-manually"></a>手動でインストールする
+
 Windows インストーラー パッケージ *AzureConnectedMachineAgent.msi* を実行することで、Connected Machine エージェントを手動でインストールできます。 
 
 > [!NOTE]
@@ -64,14 +65,19 @@ Windows インストーラー パッケージ *AzureConnectedMachineAgent.msi* �
 
 マシンがプロキシ サーバーを介してサービスと通信する必要がある場合は、エージェントをインストールした後、この記事で後ほど説明するコマンドを実行する必要があります。 これにより、プロキシ サーバーのシステム環境変数 `https_proxy` が設定されます。
 
-次の表に、コマンド ラインからのエージェントのセットアップでサポートされているパラメーターを示します。
+Windows インストーラー パッケージのコマンドライン オプションに詳しくない場合は、[Msiexec の標準コマンドライン オプション](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options)と [Msiexec のコマンドライン オプション](https://docs.microsoft.com/windows/win32/msi/command-line-options)に関するページを参照してください。
 
-| パラメーター | 説明 |
-|:--|:--|
-| /? | コマンド ライン オプションの一覧を返します。 |
-| /S | ユーザーの操作を必要とせずに、サイレント インストールを実行します。 |
+たとえば、ヘルプとクイック リファレンスのオプションを確認するには、`/?` パラメーターを指定してインストール プログラムを実行します。 
 
-たとえば、`/?` パラメーターを使用してインストール プログラムを実行するには、「`msiexec.exe /i AzureConnectedMachineAgent.msi /?`」と入力します。
+```dos
+msiexec.exe /i AzureConnectedMachineAgent.msi /?
+```
+
+エージェントをサイレント モードでインストールして、`C:\Support\Logs` フォルダーにセットアップ ログ ファイルを作成するには、次のコマンドを実行します。
+
+```dos
+msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
+```
 
 Connected Machine エージェントのファイルは、既定では *C:\Program Files\AzureConnectedMachineAgent* にインストールされます。 セットアップの完了後にエージェントが起動しない場合は、詳細なエラー情報のログを確認します。 ログ ディレクトリは *%Programfiles%\AzureConnectedMachineAgentAgent\logs* です。
 
@@ -147,58 +153,6 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 エージェントをインストールし、Azure Arc for servers (プレビュー) に接続するように構成したら、Azure portal に移動して、サーバーが正常に接続されていることを確認します。 自分のマシンは [Azure portal](https://aka.ms/hybridmachineportal) に表示されます。
 
 ![成功したサーバー接続](./media/onboard-portal/arc-for-servers-successful-onboard.png)
-
-## <a name="clean-up"></a>クリーンアップ
-
-Azure Arc for servers (プレビュー) からマシンの接続を切断するには、次の手順を実行します。
-
-1. [Azure portal](https://aka.ms/hybridmachineportal) に移動して、Azure Arc for servers (プレビュー) を開きます。
-
-1. 一覧でマシンを選択し、省略記号 ( **...** ) を選択してから、 **[削除]** を選択します。
-
-1. マシンから Windows エージェントをアンインストールするには、次の手順を実行します。
-
-    a. 管理者のアクセス許可を持つアカウントを使用してコンピューターにサインインします。  
-    b. **コントロール パネル**で、 **[プログラムと機能]** を選択します。  
-    c. **[プログラムと機能]** で、 **[Azure Connected Machine Agent]** を選択し、 **[アンインストール]** を選択してから、 **[はい]** を選択します。  
-
-    >[!NOTE]
-    > **AzureConnectedMachineAgent.msi** インストーラー パッケージをダブルクリックして、エージェントのセットアップ ウィザードを実行することもできます。
-
-    エージェント削除のスクリプトを作成する場合は、次の例を使用できます。この例では、Msiexec.exe コマンド ラインである `msiexec /x {Product Code}` を使用して、製品コードを取得し、エージェントをアンインストールします。 そのためには次を行います。  
-    
-    a. レジストリ エディターを開きます。  
-    b. レジストリ キー `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` で、製品コード GUID を探してコピーします。  
-    c. その後、Msiexec を使用してエージェントをアンインストールできます。
-
-    次の例は、このエージェントをアンインストールする方法を示しています。
-
-    ```powershell
-    Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
-    Get-ItemProperty | `
-    Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
-    ForEach-Object {MsiExec.exe /x "$($_.PsChildName)" /qn}
-    ```
-
-1. Linux エージェントをアンインストールするために使用するコマンドは、Linux オペレーティング システムによって異なります。
-
-    - Ubuntu の場合は、次のコマンドを実行します。
-
-      ```bash
-      sudo apt purge azcmagent
-      ```
-
-    - RHEL、CentOS、Amazon Linux の場合は、次のコマンドを実行します。
-
-      ```bash
-      sudo yum remove azcmagent
-      ```
-
-    - SLES の場合は、次のコマンドを実行します。
-
-      ```bash
-      sudo zypper remove azcmagent
-      ```
 
 ## <a name="next-steps"></a>次のステップ
 

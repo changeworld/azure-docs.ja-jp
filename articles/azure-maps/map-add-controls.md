@@ -1,19 +1,19 @@
 ---
 title: マップにコントロールを追加する | Microsoft Azure Maps
 description: Microsoft Azure Maps でズーム コントロール、ピッチ コントロール、回転コントロール、およびスタイルの選択ツールをマップに追加する方法。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: e386c136e7d0258d00c22c627dfa5047ba803169
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 094dc9fd01ec71f378a173a2b4fa64cc672d7c97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209768"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334561"
 ---
 # <a name="add-controls-to-a-map"></a>マップにコントロールを追加する
 
@@ -75,7 +75,20 @@ map.controls.add(new atlas.control.Compass(), {
 
 ## <a name="a-map-with-all-controls"></a>すべてのコントロールを含むマップ
 
-次のコード サンプルでは、スタイルの選択ツール コントロール、ズーム コントロール、ピッチ コントロール、コンパス コントロールをマップの右下隅に追加します。 どのように自動的にスタックされるかに注目してください。 スクリプト内のコントロール オブジェクトの順序により、マップに表示される順序が決まります。 マップ上のコントロールの順序を変更するには、スクリプト内の順序を変更できます。
+開発を簡略化するため、複数のコントロールを 1 つの配列に格納し、すべてを一度にマップに追加して、マップの同じ領域に配置することができます。 以下ではこの方法を使用して、標準のナビゲーション コントロールをマップに追加しています。
+
+```javascript
+map.controls.add([
+    new atlas.control.ZoomControl(),
+    new atlas.control.CompassControl(),
+    new atlas.control.PitchControl(),
+    new atlas.control.StyleControl()
+], {
+    position: "top-right"
+});
+```
+
+次のコード サンプルでは、ズーム コントロール、コンパス コントロール、ピッチ コントロール、およびスタイルの選択ツール コントロールをマップの右上隅に追加しています。 どのように自動的にスタックされるかに注目してください。 スクリプト内のコントロール オブジェクトの順序により、マップに表示される順序が決まります。 マップ上のコントロールの順序を変更するために、配列内でコントロールの順序を変更できます。
 
 <br/>
 

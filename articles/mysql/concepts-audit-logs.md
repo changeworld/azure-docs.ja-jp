@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: eae7e434ce21b5f9d9f3e6c40f94261df8baa426
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 3/19/2020
+ms.openlocfilehash: b42f0d7a8146f7f2b313959273abd22303c89a60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972355"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062540"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL の監査ログ
 
@@ -29,7 +29,7 @@ Azure Database for MySQL では、ユーザーは監査ログを使用できま�
 - `audit_log_events`: 記録するイベントを制御します。 特定の監査イベントについては、次のを参照してください。
 - `audit_log_include_users`:ログ記録の対象となる MySQL ユーザー。 このパラメーターの既定値は空で、すべてのユーザーがログに記録されます。 優先順位は、`audit_log_exclude_users` より高くなっています。 パラメーターの最大長は 512 文字です。
 > [!Note]
-> `audit_log_include_users` は、`audit_log_exclude_users`よりも優先順位が高くなっています。 たとえば、`audit_log_include_users` = `demouser` かつ `audit_log_exclude_users` = `demouser`の場合、`audit_log_include_users` の優先度が高いので、ユーザーは監査ログに含まれます。
+> `audit_log_include_users` は、`audit_log_exclude_users` よりも優先順位が高くなっています。 たとえば、`audit_log_include_users` = `demouser` かつ `audit_log_exclude_users` = `demouser`の場合、`audit_log_include_users` の優先度が高いので、ユーザーは監査ログに含まれます。
 - `audit_log_exclude_users`:ログ記録から除外する MySQL ユーザー。 パラメーターの最大長は 512 文字です。
 
 > [!Note]
@@ -55,7 +55,7 @@ Azure Database for MySQL では、ユーザーは監査ログを使用できま�
 
 次のセクションでは、イベントの種類に基づいて MySQL 監査ログによって出力される内容について説明します。 出力方法に応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。
 
-### <a name="connection"></a>接続
+### <a name="connection"></a>Connection
 
 | **プロパティ** | **説明** |
 |---|---|
@@ -113,6 +113,9 @@ Azure Database for MySQL では、ユーザーは監査ログを使用できま�
 
 ### <a name="table-access"></a>テーブル アクセス
 
+> [!NOTE]
+> テーブル アクセス ログは、MySQL 5.7 のみに関する出力です。
+
 | **プロパティ** | **説明** |
 |---|---|
 | `TenantId` | テナント ID |
@@ -136,6 +139,60 @@ Azure Database for MySQL では、ユーザーは監査ログを使用できま�
 | `sql_text_s` | 完全なクエリ テキスト |
 | `\_ResourceId` | リソース URI |
 
-## <a name="next-steps"></a>次の手順
+## <a name="analyze-logs-in-azure-monitor-logs"></a>Azure Monitor ログのログを分析する
+
+監査ログが診断ログによって Azure Monitor ログにパイプされたら、監査されたイベントの詳細な分析を実行できます。 使用を開始する際に役立つサンプル クエリを以下にいくつか示します。 以下を、お使いのサーバー名で更新してください。
+
+- 特定のサーバーの GENERAL イベントを一覧表示する
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs' and event_class_s == "general_log"
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | order by TimeGenerated asc nulls last 
+    ```
+
+- 特定のサーバーの CONNECTION イベントを一覧表示する
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs' and event_class_s == "connection_log"
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | order by TimeGenerated asc nulls last
+    ```
+
+- 特定のサーバーの監査されたイベントを集計する
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | summarize count() by event_class_s, event_subclass_s, user_s, ip_s
+    ```
+
+- 特定のサーバーの監査イベントの種類の分布をグラフ化する
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | summarize count() by LogicalServerName_s, bin(TimeGenerated, 5m)
+    | render timechart 
+    ```
+
+- 監査ログに対して診断ログが有効になっているすべての MySQL サーバーで監査されたイベントを一覧表示する
+
+    ```kusto
+    AzureDiagnostics
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | order by TimeGenerated asc nulls last
+    ``` 
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal で監査ログを構成する方法](howto-configure-audit-logs-portal.md)

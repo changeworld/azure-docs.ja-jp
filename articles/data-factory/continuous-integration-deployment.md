@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 8bbb11a8811582bea26e784636564eb5d5a4d284
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187820"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384332"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -60,7 +60,7 @@ Azure Repos Git で構成された Azure Data Factory での CI/CD のライフ�
 
    ![独自のテンプレートの作成](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. **[ファイルの読み込み]** を選択し、生成された Resource Manager テンプレートを選択します。
+1. **[ファイルの読み込み]** を選択し、生成された Resource Manager テンプレートを選択します。 これは、手順 1 でエクスポートした .zip ファイルに格納されている **arm_template.json** ファイルです。
 
    ![テンプレートの編集](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
@@ -171,7 +171,7 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 
     パラメーター ファイルも発行ブランチ内に存在する必要があります。
 
--  前のセクションで説明されている Azure Resource Manager デプロイ タスクの前に、[Azure Key Vault タスク](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)を追加します。
+1. 前のセクションで説明されている Azure Resource Manager デプロイ タスクの前に、[Azure Key Vault タスク](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)を追加します。
 
     1.  **[タスク]** タブで、新しいタスクを作成します。 **Azure Key Vault** を検索して追加します。
 
@@ -179,9 +179,9 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 
     ![Key Vault タスクの追加](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-   #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Azure Pipelines エージェントにアクセス許可を与える
+#### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Azure Pipelines エージェントにアクセス許可を与える
 
-   適切なアクセス許可が設定されていない場合、Azure Key Vault タスクがアクセス拒否エラーで失敗することがあります。 リリースのログをダウンロードし、Azure Pipelines エージェントにアクセス許可を与えるコマンドを含む .ps1 ファイルを探します。 コマンドは直接実行できます。 または、ファイルからプリンシパル ID をコピーし、Azure portal でアクセス ポリシーを手動で追加できます。 必要な最低限のアクセス許可は、`Get` と `List` です。
+適切なアクセス許可が設定されていない場合、Azure Key Vault タスクがアクセス拒否エラーで失敗することがあります。 リリースのログをダウンロードし、Azure Pipelines エージェントにアクセス許可を与えるコマンドを含む .ps1 ファイルを探します。 コマンドは直接実行できます。 または、ファイルからプリンシパル ID をコピーし、Azure portal でアクセス ポリシーを手動で追加できます。 必要な最低限のアクセス許可は、`Get` と `List` です。
 
 ### <a name="update-active-triggers"></a>アクティブなトリガーを更新する
 
@@ -214,7 +214,7 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
 
-    ![Azure PowerShell task](media/continuous-integration-deployment/continuous-integration-image11.png)
+![Azure PowerShell タスク](media/continuous-integration-deployment/continuous-integration-image11.png)
 
 こちらがデプロイ前/後に使用できるスクリプトです。 削除されたリソースとリソース参照を示しています。
 
@@ -366,7 +366,13 @@ if ($predeployment -eq $true) {
     Write-Host "Stopping deployed triggers"
     $triggerstostop | ForEach-Object { 
         Write-host "Disabling trigger " $_
-        Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+        Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force
+    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
+    while ($status.Status -ne "Disabled"){
+            Start-Sleep -s 15
+            $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
+    }
+    Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
     }
 }
 else {
@@ -459,7 +465,13 @@ else {
     Write-Host "Starting active triggers"
     $activeTriggerNames | ForEach-Object { 
         Write-host "Enabling trigger " $_
-        Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+        Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force
+    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
+    while ($status.Status -ne "Enabled"){
+            Start-Sleep -s 15
+            $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
+    }
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
     }
 }
 ```
@@ -471,7 +483,10 @@ GIT モードの場合は、Resource Manager テンプレートの既定のプ�
 * 自動化された CI/CD を使用していて、Resource Manager のデプロイ中にいくつかのプロパティを変更したいが、プロパティが既定でパラメーター化されていない。
 * ファクトリが非常に大きく、既定の Resource Manager テンプレートが許容されるパラメーターの上限 (256) よりも多いために無効である。
 
-このような条件下で既定のパラメーター化テンプレートをオーバーライドするには、データ ファクトリ Git 統合のためのルート フォルダーとして指定されたフォルダー内に arm-template-parameters-definition.json という名前のファイルを作成します。 正確なファイル名を使用する必要があります。 Data Factory は、コラボレーション ブランチからだけでなく、現在 Azure Data Factory ポータルにあるどのブランチからでもこのファイルを読み取ります。 プライベート ブランチからファイルを作成または編集し、UI の **[ARM テンプレートのエクスポート]** を選択して変更内容をテストすることができます。 その後、このファイルをコラボレーション ブランチ内にマージできます。 ファイルが見つからない場合は、既定のテンプレートが使用されます。
+このような条件下で既定のパラメーター化テンプレートをオーバーライドするには、データ ファクトリ Git 統合のためのルート フォルダーとして指定されたフォルダー内に **arm-template-parameters-definition.json** という名前のファイルを作成します。 正確なファイル名を使用する必要があります。 Data Factory は、コラボレーション ブランチからだけでなく、現在 Azure Data Factory ポータルにあるどのブランチからでもこのファイルを読み取ります。 プライベート ブランチからファイルを作成または編集し、UI の **[ARM テンプレートのエクスポート]** を選択して変更内容をテストすることができます。 その後、このファイルをコラボレーション ブランチ内にマージできます。 ファイルが見つからない場合は、既定のテンプレートが使用されます。
+
+> [!NOTE]
+> カスタム パラメーター化テンプレートでは、ARM テンプレート パラメーターの制限である 256 が変更されることはありません。 これにより、パラメーター化されたプロパティの数を選択して減らすことができます。
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>カスタム パラメーター ファイルの構文
 
@@ -657,7 +672,7 @@ GIT モードの場合は、Resource Manager テンプレートの既定のプ�
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",
@@ -821,25 +836,25 @@ Git が構成されていない場合は、 **[ARM テンプレート]** 一覧�
 
 ファクトリを運用環境にデプロイし、すぐに修正が必要なバグがあることが判明したが現在のコラボレーション ブランチをデプロイできない場合、修正プログラムのデプロイが必要なことがあります。 この方法は、クイック修正エンジニアリングまたは QFE と呼ばれています。
 
-1.  Azure DevOps で、運用環境にデプロイされたリリースに移動します。 デプロイされた最後のコミットを見つけます。
+1.    Azure DevOps で、運用環境にデプロイされたリリースに移動します。 デプロイされた最後のコミットを見つけます。
 
-2.  コミット メッセージから、コラボレーション ブランチのコミット ID を取得します。
+2.    コミット メッセージから、コラボレーション ブランチのコミット ID を取得します。
 
-3.  そのコミットから新しい修正プログラム ブランチを作成します。
+3.    そのコミットから新しい修正プログラム ブランチを作成します。
 
-4.  Azure Data Factory UX に移動し、修正プログラム ブランチに切り替えます。
+4.    Azure Data Factory UX に移動し、修正プログラム ブランチに切り替えます。
 
-5.  Azure Data Factory UX を使用して、バグを修正します。 変更をテストします。
+5.    Azure Data Factory UX を使用して、バグを修正します。 変更をテストします。
 
-6.  修正が検証されたら、 **[ARM テンプレートのエクスポート]** を選択して、修正プログラムの Resource Manager テンプレートを取得します。
+6.    修正が検証されたら、 **[ARM テンプレートのエクスポート]** を選択して、修正プログラムの Resource Manager テンプレートを取得します。
 
-7.  このビルドを adf_publish ブランチに手動でチェックインします。
+7.    このビルドを adf_publish ブランチに手動でチェックインします。
 
-8.  adf_publish のチェックインに基づいて自動的にトリガーするようにリリース パイプラインを構成している場合、新しいリリースは自動的に開始します。 それ以外の場合は、手動でリリースをキューに配置します。
+8.    adf_publish のチェックインに基づいて自動的にトリガーするようにリリース パイプラインを構成している場合、新しいリリースは自動的に開始します。 それ以外の場合は、手動でリリースをキューに配置します。
 
-9.  テストと運用ファクトリに修正プログラム リリースをデプロイします。 このリリースには、以前の運用ペイロードに加えて、手順 5 で行った修正が含まれています。
+9.    テストと運用ファクトリに修正プログラム リリースをデプロイします。 このリリースには、以前の運用ペイロードに加えて、手順 5 で行った修正が含まれています。
 
-10. 修正プログラムでの変更を開発ブランチに追加して、今後のリリースに同じバグが含まれないようにします。
+10.    修正プログラムでの変更を開発ブランチに追加して、今後のリリースに同じバグが含まれないようにします。
 
 ## <a name="best-practices-for-cicd"></a>CI/CD のベスト プラクティス
 

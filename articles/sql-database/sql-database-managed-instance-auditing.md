@@ -12,13 +12,13 @@ f1_keywords:
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/08/2019
-ms.openlocfilehash: 9b96969027431f289e366b150fbfc6a62ee6a908
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 03/27/2020
+ms.openlocfilehash: 405ac27fad3c24d3064f11476f452ad00abb9b02
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719910"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387769"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Database マネージド インスタンスの監査の概要
 
@@ -32,7 +32,7 @@ ms.locfileid: "76719910"
 以下のセクションでは、マネージド インスタンスの監査の構成について説明します。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-1. 監査ログが格納される Azure Storage **コンテナー**を作成します。
+2. 監査ログが格納される Azure Storage **コンテナー**を作成します。
 
    1. 監査ログを格納する Azure Storage に移動します。
 
@@ -50,8 +50,10 @@ ms.locfileid: "76719910"
    1. コンテナーの **[名前]** を指定し、パブリック アクセス レベルを **[プライベート]** に設定して、 **[OK]** をクリックします。
 
       ![BLOB コンテナー構成の作成アイコン](./media/sql-managed-instance-auditing/3_create_container_config.png)
-
-1. 監査ログ用のコンテナーを作成した後、それを監査ログ用のターゲットとして構成するには、[T-SQL を使用する](#blobtsql)方法と [SQL Server Management Studio (SSMS) UI を使用する](#blobssms)方法の 2 つがあります。
+  > [!IMPORTANT]
+  > サーバー レベルまたはデータベース レベルの監査イベントに対して不変のログ ストアを構成することを希望するお客様は、[Azure Storage で提供される手順](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)に従う必要があります (変更できない BLOB ストレージを構成する場合は、 **[さらに追加を許可する]** を必ず有効にしてください)
+  
+3. 監査ログ用のコンテナーを作成した後、それを監査ログ用のターゲットとして構成するには、[T-SQL を使用する](#blobtsql)方法と [SQL Server Management Studio (SSMS) UI を使用する](#blobssms)方法の 2 つがあります。
 
    - <a id="blobtsql"></a>T-SQL を使用して監査ログ用の BLOB ストレージを構成する:
 
@@ -138,12 +140,12 @@ ms.locfileid: "76719910"
 
      1. [監査の作成] ダイアログで **[OK]** をクリックします。
 
-1. <a id="createspec"></a>BLOB コンテナーを監査ログのターゲットとして構成した後、SQL Server の場合と同様に、サーバー監査仕様またはデータベース監査仕様を作成します。
+4. <a id="createspec"></a>BLOB コンテナーを監査ログのターゲットとして構成した後、SQL Server の場合と同様に、サーバー監査仕様またはデータベース監査仕様を作成して有効にします。
 
    - [サーバー監査仕様の作成 T-SQL ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [データベース監査仕様の作成 T-SQL ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-1. 手順 6 で作成したサーバー監査を有効にします。
+5. 手順 3 で作成したサーバー監査を有効にします。
 
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>]
@@ -184,7 +186,7 @@ ms.locfileid: "76719910"
     GO
     ```
 
-9. SQL Server の場合と同様に、サーバー監査仕様またはデータベース監査仕様を作成します。
+9. SQL Server の場合と同様に、サーバー監査仕様またはデータベース監査仕様を作成して有効にします。
 
    - [サーバー監査仕様の作成 T-SQL ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [データベース監査仕様の作成 T-SQL ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
@@ -192,7 +194,8 @@ ms.locfileid: "76719910"
 10. 手順 8 で作成したサーバー監査を有効にします。
  
     ```SQL
-    ALTER SERVER AUDIT [<your_audit_name>] WITH (STATE=ON);
+    ALTER SERVER AUDIT [<your_audit_name>]
+    WITH (STATE=ON);
     GO
     ```
 

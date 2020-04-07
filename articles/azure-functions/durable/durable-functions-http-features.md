@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a7d8891c6f925cfac326685f01ba5f6149a1b233
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 29d837446960b7535b26284efdfab7a1c59ea968
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356674"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132497"
 ---
 # <a name="http-features"></a>HTTP 機能
 
@@ -258,7 +258,7 @@ HTTP API を呼び出す組み込みのサポートは便利な機能です。 �
 
 オーケストレーションの内部 HTTP クライアントの動作をカスタマイズするには、[Azure Functions の .NET 依存関係の挿入](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)を使用できます。 この機能は、小規模な動作変更を行う場合に役立ちます。 これは、モック オブジェクトを挿入することによる、HTTP クライアントの単体テストにも役立ちます。
 
-次の例では、外部 HTTP エンドポイントを呼び出すオーケストレーター関数に対する SSL 証明書の検証を無効にするために、依存関係の挿入を使用する方法を示します。
+次の例では、外部 HTTP エンドポイントを呼び出すオーケストレーター関数に対する TLS/SSL 証明書の検証を無効にするために、依存関係の挿入を使用する方法を示します。
 
 ```csharp
 public class Startup : FunctionsStartup
@@ -276,7 +276,7 @@ public class MyDurableHttpMessageHandlerFactory : IDurableHttpMessageHandlerFact
 {
     public HttpMessageHandler CreateHttpMessageHandler()
     {
-        // Disable SSL certificate validation (not recommended in production!)
+        // Disable TLS/SSL certificate validation (not recommended in production!)
         return new HttpClientHandler
         {
             ServerCertificateCustomValidationCallback =

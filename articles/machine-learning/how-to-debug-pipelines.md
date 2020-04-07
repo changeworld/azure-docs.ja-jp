@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
-ms.date: 12/12/2019
-ms.openlocfilehash: 0080b64e16b979b32aa5a91f9ee497e5f9ec47fb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 03/18/2020
+ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485371"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388986"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機械学習パイプラインのデバッグとトラブルシューティング
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -79,7 +79,7 @@ ms.locfileid: "77485371"
 | 問題 | 考えられる解決策 |
 |--|--|
 | `PipelineData` ディレクトリにデータを渡せない | パイプラインがステップの出力データを想定する場所に、スクリプトでディレクトリを作成したことを確認してください。 ほとんどの場合、入力引数によって出力ディレクトリが定義されます。ディレクトリを明示的に作成してください。 出力ディレクトリを作成するには、`os.makedirs(args.output_dir, exist_ok=True)` を使用します。 この設計パターンを示すスコアリング スクリプトの例については、[こちらのチュートリアル](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script)を参照してください。 |
-| 依存関係のバグ | スクリプトをローカルで開発してテスト済みであるのに、パイプラインのリモート コンピューティングでの実行時に依存関係の問題が見つかった場合は、コンピューティング環境の依存関係とバージョンがテスト環境と一致していることを確認してください。 |
+| 依存関係のバグ | スクリプトをローカルで開発してテスト済みであるのに、パイプラインのリモート コンピューティングでの実行時に依存関係の問題が見つかった場合は、コンピューティング環境の依存関係とバージョンがテスト環境と一致していることを確認してください。 (「[環境のビルド、キャッシュ、再利用](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)」を参照してください。)|
 | コンピューティング ターゲットでのあいまいなエラー | コンピューティング ターゲットを削除して再作成すると、コンピューティング ターゲットでの特定の問題を解決できます。 |
 | ステップを再利用しないパイプライン | ステップの再利用は既定で有効になっていますが、パイプライン ステップで無効にしていないか確認してください。 再利用が無効になっている場合は、ステップの `allow_reuse` パラメーターが `False` に設定されます。 |
 | パイプラインが不必要に再実行される | 基になるデータまたはスクリプトが変更されたときにのみステップが再実行されるようにするには、各ステップのディレクトリを分離します。 複数のステップに同じソース ディレクトリを使用すると、不要に再実行される可能性があります。 パイプライン ステップ オブジェクトで `source_directory` パラメーターを使用して、そのステップの分離されたディレクトリを指定し、複数のステップで同じ `source_directory` パスを使用しないようにします。 |
@@ -136,8 +136,8 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 パイプラインの実行を送信し、作成ページを表示したままにした場合、モジュールごとに生成されたログ ファイルを確認できます。
 
 1. 作成キャンバスで任意のモジュールを選択します。
-1. プロパティ ペインで、 **[ログ]** タブに移動します。
-1. ログ ファイル `70_driver_log.txt` を選択します
+1. モジュールの右ペインで、 **[Outputs + logs]\(出力 + ログ\)** タブにアクセスします。
+1. ログ ファイル `70_driver_log.txt` を選択します。
 
     ![作成ページのモジュールのログ](./media/how-to-debug-pipelines/pipelinerun-05.png)
 
@@ -148,8 +148,8 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 1. デザイナーで作成されたパイプラインの実行を選択します。
     ![パイプラインの実行ページ](./media/how-to-debug-pipelines/pipelinerun-04.png)
 1. プレビュー ペインで任意のモジュールを選択します。
-1. プロパティ ペインで、 **[ログ]** タブに移動します。
-1. ログ ファイル `70_driver_log.txt` を選択します
+1. モジュールの右ペインで、 **[Outputs + logs]\(出力 + ログ\)** タブにアクセスします。
+1. ログ ファイル `70_driver_log.txt` を選択します。
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Application Insights のデバッグとトラブルシューティング
 この方法で OpenCensus Python ライブラリを使用する方法の詳細については、次のガイドを参照してください。[Application Insights での機械学習パイプラインのデバッグとトラブルシューティング](how-to-debug-pipelines-application-insights.md)
@@ -283,7 +283,7 @@ if not (args.output_train is None):
 
 ### <a name="configure-ml-pipeline"></a>ML パイプラインを構成する
 
-PTVSD を起動して実行コンテキストを取得するために必要な Python パッケージを提供するには、[環境]()を作成して `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']` を設定します。 使用しているものと一致するように SDK のバージョンを変更します。 次のコード スニペットでは、環境を作成する方法を示します。
+PTVSD を起動して実行コンテキストを取得するために必要な Python パッケージを提供するには、環境を作成して `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']` を設定します。 使用しているものと一致するように SDK のバージョンを変更します。 次のコード スニペットでは、環境を作成する方法を示します。
 
 ```python
 # Use a RunConfiguration to specify some additional requirements for this step.
