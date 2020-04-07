@@ -1,0 +1,6 @@
+- name: ツール
+  href: tools/toc.yml
+- name: トラブルシューティング
+  href: troubleshoot.md
+- name: 製品フィードバックの提供
+  href: 'https://feedback.azure.com/forums/928696-azure-remote-rendering'

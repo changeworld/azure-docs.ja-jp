@@ -32,8 +32,6 @@
       href: tutorial-sql-backup.md
     - name: Azure VM での SAP HANA データベースのバックアップ
       href: tutorial-backup-sap-hana-db.md
-    - name: Azure Files のファイル共有のバックアップ
-      href: tutorial-backup-azure-files.md
     - name: Windows Server のバックアップ
       href: tutorial-backup-windows-server-to-azure.md
     - name: Windows Server へのファイルの復元
