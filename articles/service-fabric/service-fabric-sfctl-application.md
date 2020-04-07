@@ -19,7 +19,7 @@ ms.locfileid: "76906202"
 
 |command|説明|
 | --- | --- |
-| 作成 | 指定された説明を使用して、Service Fabric アプリケーションを作成します。 |
+| create | 指定された説明を使用して、Service Fabric アプリケーションを作成します。 |
 | delete | 既存の Service Fabric アプリケーションを削除します。 |
 | deployed | Service Fabric ノードにデプロイされたアプリケーションに関する情報を取得します。 |
 | deployed-health | Service Fabric ノードにデプロイされたアプリケーションの正常性に関する情報を取得します。 |
