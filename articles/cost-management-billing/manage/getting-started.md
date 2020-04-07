@@ -1,19 +1,19 @@
 ---
-title: Azure で課金を管理して予想外のコストを防ぐ
-description: Azure の課金内容が予想外の金額となるのを防ぐ方法について説明します。 Azure アカウントのコスト追跡および管理機能を使用します。
+title: Azure Cost Management と Billing を利用して想定外の料金を防止および分析する
+description: Azure で想定外の料金が発生するのを防止する方法と、Azure アカウントのコスト追跡および管理機能を使用する方法について説明します。
 author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/11/2020
+ms.date: 3/30/2020
 ms.author: banders
-ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238144"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475264"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
@@ -112,11 +112,6 @@ Azure portal で、VM の自動シャットダウンと Advisor の推奨事項�
 
 コスト節約のための Advisor の推奨事項に関するガイド付きチュートリアルについては、「[推奨事項に従ってコストを最適化する](../costs/tutorial-acm-opt-recommendations.md)」をご覧ください。
 
-## <a name="review-charges-against-your-latest-invoice"></a>最新の請求書に照らして請求金額を確認する
-
-請求期間の終了時に請求書を入手できます。 [請求書と詳細な使用状況ファイルをダウンロード](download-azure-invoice-daily-usage-date.md)し、それらを比較することで、課金が正しく行われていることを確認できます。 毎日の使用状況と請求書の比較の詳細については、「[Microsoft Azure の課金内容の確認](../understand/review-individual-bill.md)」を参照してください。
-
-Microsoft 顧客契約 (MCA) で Azure を使用している場合は、[請求書をトランザクションと比較](../understand/review-customer-agreement-bill.md#review-invoiced-transactions-in-the-azure-portal)して、請求書上の請求金額を把握することもできます。
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Billing および Consumption API と統合する
 
@@ -178,9 +173,65 @@ SLA のしきい値は、サービスによって異なります。 たとえば
 
 詳細については、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」および「[Azure サービスの SLA 概要](https://azure.microsoft.com/support/legal/sla/summary/)」ドキュメントを参照してください。
 
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+## <a name="analyze-unexpected-charges"></a>想定外の料金を分析する
 
-ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+組織向けに構築されたクラウド リソース インフラストラクチャは、複雑になりがちです。 Azure にはさまざまな種類のリソースがあり、その多くはそれぞれ異なる料金が設定されています。 Azure リソースは、組織内のさまざまなチームによって所有され、各種リソースに適用される課金モデルの種類も多様です。 そうした料金について理解を深めるために、まず、以降のセクションで取り上げる 1 つまたは複数の戦略を使用して分析を行ってみましょう。
+
+### <a name="review-your-invoice-and-identify-the-resource-that-is-responsible-for-the-charge"></a>請求書を確認し、料金の対象となるリソースを特定する
+
+料金に関連付けられているリソースを特定する際に使用できる手法やツールは、Azure サービスの購入方法から明らかにすることができます。 自分に該当する手法を明らかにするには、まず[自分の Azure プランの種類を特定](../costs/understand-cost-mgt-data.md#determine-your-offer-type)します。 次に、[サポートされている Azure プラン](../costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers)の一覧で、該当する顧客カテゴリを特定します。
+
+該当する顧客タイプに基づいて請求書を確認する方法を示した詳細な手順が、以下の各記事で提供されています。 それぞれの記事には、特定の請求期間における使用状況とコスト明細を含んだ CSV ファイルのダウンロード手順が記載されています。
+
+- [従量課金制請求書の確認プロセス](../understand/review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [マイクロソフト エンタープライズ契約の請求書の確認プロセス](../understand/review-enterprise-agreement-bill.md)
+- [Microsoft 顧客契約の確認プロセス](../understand/review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
+- [Microsoft Partner Agreement の確認プロセス](../understand/review-partner-agreement-bill.md#analyze-your-azure-usage-charges)
+
+Azure の請求書では、月の料金が "_メーター_" ごとに集計されます。 メーターは、リソースの使用状況を経時的に追跡したり、請求書の計算を行ったりする目的で使用されます。 仮想マシンなど、Azure リソースを 1 つ作成すると、そのリソースに対して 1 つまたは複数のメーター インスタンスが作成されます。
+
+分析対象の請求書に記載されている _MeterName_ に基づいて、使用状況の CSV ファイルをフィルター処理すると、そのメーターに該当するすべての明細項目が表示されます。 その明細項目の _InstanceID_ は、料金の発生元となった実際の Azure リソースに対応します。
+
+該当するリソースが見つかったら、Azure Cost Management のコスト分析を使用して、リソースに関連するコストを詳しく分析できます。 コスト分析の使用について詳しくは、[コスト分析の開始](../costs/quick-acm-cost-analysis.md)に関するページを参照してください。
+
+### <a name="identify-spikes-in-cost-over-time"></a>一定期間におけるコストの急増を特定する
+
+最近発生したどのコストによって請求料金に変化が生じたのかが、明らかでない場合もあります。 どのような変化が起こったのかは、コスト分析を使用して、[日単位または月単位の経時的なコスト内訳を確認](../costs/cost-analysis-common-uses.md#view-costs-per-day-or-by-month)することで把握できます。 ビューの作成後、 **[サービス]** または **[リソース]** で料金をグループして変化を特定します。 データを見やすくするために、ビューを**折れ線**グラフに変更することもできます。
+
+![コスト分析でコストの経時変化を示している例](./media/getting-started/costs-over-time.png)
+
+### <a name="determine-resource-pricing-and-understand-its-billing-model"></a>リソースの価格を特定してその課金モデルを把握する
+
+1 つのリソースから、Azure の複数の製品やサービスにまたがって料金が発生することもあります。 Azure サービスごとの価格について詳しくは、[製品別の Azure の価格](https://azure.microsoft.com/pricing/#product-pricing)に関するページをご覧ください。 たとえば、Azure に作成された 1 つの仮想マシン (VM) に対して、その使用状況を追跡するために次のメーターが作成される場合があります。 価格はそれぞれ異なる場合があります。
+
+- コンピューティング時間
+- IP アドレス時間
+- データ転送 (受信)
+- データ転送 (送信)
+- Standard マネージド ディスク
+- Standard マネージド ディスク操作
+- Standard IO - ディスク
+- Standard IO - ブロック BLOB (読み取り)
+- Standard IO - ブロック BLOB (書き込み)
+- Standard IO - ブロック BLOB (削除)
+
+VM が作成されると、各メーターが使用状況レコードの出力を開始します。 この使用状況とメーターの価格が Azure の測定システムで追跡されます。 請求の計算に使用されたメーターは、使用状況 CSV ファイルで確認できます。
+
+### <a name="find-the-people-responsible-for-the-resource-and-engage-them"></a>リソースの担当者を探して協力を促す
+
+リソースに対して行われた変更については、特定のリソースを担当するチームが把握していることは少なくありません。 料金が発生した理由を特定する際には、そうしたチームに協力を促すことが効果的です。 たとえば所有チームが最近、リソースを作成したり、その SKU を更新 (それによってリソースのレートが変化) したり、コードの変更によってリソースに対する負荷を増やしたりした可能性があります。 リソースの所有者を特定する詳しい方法については、引き続き以降のセクションをお読みください。
+
+#### <a name="analyze-the-audit-logs-for-the-resource"></a>リソースの監査ログを分析する
+
+リソースを表示するアクセス許可があれば、その監査ログにアクセスすることができます。 そのログを確認して、リソースへの直近の変更を担当したユーザーを見つけてください。 詳細については、「[Azure アクティビティ ログ イベントを表示して取得する](../../azure-monitor/platform/activity-log-view.md)」を参照してください。
+
+#### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>リソースの親スコープに対するユーザーのアクセス許可を分析する
+
+通常、サブスクリプションまたはリソース グループへの書き込みアクセス権限を持つ人物は、作成されたリソースについての情報を把握しています。 その人物ならリソースの目的を説明したり、事情を知っている担当者を紹介したりできるはずです。 サブスクリプション スコープのアクセス許可を持つ人物を特定する方法については、「[ロールの割り当てを表示する](../../role-based-access-control/check-access.md#view-role-assignments)」を参照してください。 リソース グループについても同じようなプロセスを使用できます。
+
+### <a name="get-help-to-identify-charges"></a>料金を特定するためにサポートを要請する
+
+前述の戦略を使用しても、料金を請求された理由がわからない場合や、課金の問題について別途サポートが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
 ## <a name="next-steps"></a>次のステップ
 - 予算オーバーを防ぐために、[使用制限](spending-limit.md)の使い方を確認します。

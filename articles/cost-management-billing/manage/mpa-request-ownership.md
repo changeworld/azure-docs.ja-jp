@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: c4366b272aab160828afca927f6432c98a8fecd7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: da16e0898f08e1cca602ca5927bce82ed32353fe
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79370731"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437860"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>MPA アカウントに Azure サブスクリプションの課金所有権を取得する
 
@@ -139,7 +139,7 @@ VM、ディスク、Web サイトなどのサブスクリプションからす�
 
 ### <a name="azure-reservations-transfer"></a>Azure 予約の譲渡
 
-Azure 予約は、自動的にはサブスクリプションと共に移動しません。他のサブスクリプションのために予約を EA に維持するか、または[予約を取り消し](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)てパートナーが CSP で再購入するか、のどちらかとなります。 
+Azure 予約は、自動的にはサブスクリプションとともに移動しません。 他のサブスクリプションのために予約を EA に維持するか、または[予約を取り消し](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)てパートナーが CSP で再購入するか、のどちらかとなります。 
 
 ### <a name="access-to-azure-services"></a>Azure サービスへのアクセス
 

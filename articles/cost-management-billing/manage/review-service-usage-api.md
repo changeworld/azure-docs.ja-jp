@@ -3,15 +3,15 @@ title: REST API を使用して Azure サービスのリソースの使用状況
 description: Azure REST API を使用して Azure サービスのリソースの使用状況を確認する方法を説明します。
 author: lleonard-msft
 ms.service: cost-management-billing
-ms.topic: article
-ms.date: 02/12/2020
+ms.topic: reference
+ms.date: 03/31/2020
 ms.author: banders
-ms.openlocfilehash: 337523c489089eeae5d669252b61cc61478ae1b3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 60a9e17b16f0b539693beb987b4d0610d11a3050
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202847"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521200"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>REST API を使用して Azure リソースの使用状況を確認する
 
@@ -32,7 +32,9 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-`{subscriptionGuid}` パラメーターは必須であり、API トークンで提供された資格情報を使用して読み取ることができるサブスクリプション ID を含む必要があります。 `{reportName}`
+`{subscriptionGuid}` パラメーターは必須であり、API トークンで提供された資格情報を使用して読み取ることができるサブスクリプション ID を含む必要があります。 
+
+`{reportName}` パラメーターは、レポートの名前を指定します。 レポート名の一覧を取得したければ、Reports_List (`/subscriptions/{subscriptionId}/providers/Microsoft.CostManagement/reports`) 操作を使用して一覧を取得することができます。 出力例については、[GitHub](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/cost-management/resource-manager/Microsoft.CostManagement/preview/2018-08-01-preview/examples/ReportList.json) をご覧ください。
 
 次のヘッダーは必須です｡
 

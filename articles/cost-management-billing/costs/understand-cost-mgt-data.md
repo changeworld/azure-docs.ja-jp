@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 2af84ccf679d28251e34f4c76ced38b0cb653a58
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e27f34572eef7d50c7b140c65cb78c6d0678fa8
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203017"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477617"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -94,9 +94,9 @@ Cost Management に含まれるデータと含まれないデータを次の表�
 
 _<sup>**5**</sup> Azure サービスの使用状況は、予約および交渉済みの価格に基づきます。_
 
-_<sup>**6**</sup> マーケットプレースでの購入は、現時点では従量課金制、MSDN、Visual Studio プランではご利用いただけません。_
+_<sup>**6**</sup> マーケットプレースでの購入は、現時点では MSDN および Visual Studio プランではご利用いただけません。_
 
-_<sup>**7**</sup> 現時点では、予約購入はエンタープライズ契約 (EA) アカウントでのみご利用いただけます。_
+_<sup>**7**</sup> 現時点では、エンタープライズ契約 (EA) アカウントおよび Microsoft 顧客契約アカウントでのみ予約購入をご利用いただけます。_
 
 ## <a name="how-tags-are-used-in-cost-and-usage-data"></a>コストと使用状況のデータでのタグの使用方法
 

@@ -1,18 +1,18 @@
 ---
-title: Microsoft 顧客契約の課金の概要 - Azure
+title: Microsoft 顧客契約の課金アカウントの概要 - Azure
 description: Microsoft 顧客契約の課金アカウントについて理解する
 author: bandersmsft
 ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/27/2020
 ms.author: banders
-ms.openlocfilehash: a580dd1fb9d2965a9da1e4918733bd5cf137e443
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: df54109010c694934dda005d6e8f1c219ec49efc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79139948"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371005"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Microsoft 顧客契約の課金アカウントの概要
 
@@ -48,7 +48,7 @@ Azure portal で、請求書を表示し、ドキュメントをダウンロー�
 
 各課金プロファイルには、その請求書の支払いに使用される独自の支払方法があります。 以下の支払方法がサポートされています。
 
-| 種類             | 定義  |
+| Type             | 定義  |
 |------------------|-------------|
 |Azure クレジット    |  クレジットは請求書の対象料金に自動的に適用され、支払う必要のある金額が減額されます。 詳細については、[課金プロファイルの Azure クレジット残高の追跡](../manage/mca-check-azure-credits-balance.md)に関するページを参照してください。 |
 |小切手/電信送金 | アカウントで小切手/電信送金による支払いが承認されている場合、 小切手/電信送金で請求書に記載される請求金額を支払うことができます。 支払いの指示は請求書で与えられます |

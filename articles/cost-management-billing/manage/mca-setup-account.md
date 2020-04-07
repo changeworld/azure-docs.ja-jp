@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 24f7a81b267e858d16ae0805f9c7ab384be3b2fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
+ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200644"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80258058"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求先アカウントの設定
 
@@ -81,7 +81,7 @@ Microsoft 顧客契約に署名した組織内のユーザーが課金プロフ�
 1. 請求先アカウントを使用して、Microsoft 顧客契約の課金を管理します。 エンタープライズ管理者が課金アカウントの所有者になります。 請求先アカウントについて詳しくは、「[請求先アカウントを理解する](../understand/mca-overview.md#your-billing-account)」をご覧ください。
 2. Enterprise Agreement 加入契約の場合と同様に、課金プロファイルを使用して組織の課金を管理します。 エンタープライズ管理者が課金プロファイルの所有者になります。 課金プロファイルについて詳しくは、「[課金プロファイルを理解する」](../understand/mca-overview.md#billing-profiles)をご覧ください。
 3. Enterprise Agreement 加入契約の部署と同様に、請求書セクションを使用して、ニーズに基づいてコストを整理します。 部署が請求書セクションになり、部署の管理者がそれぞれの請求書セクションの所有者になります。 請求書セクションについて詳しくは、「[請求書セクションを理解する](../understand/mca-overview.md#invoice-sections)」をご覧ください。
-4. Enterprise Agreement で作成されたアカウントは、新しい課金アカウントではサポートされません。 アカウントのサブスクリプションは、各部署の請求書セクションに属します。 アカウント オーナーは、各自の請求書セクションのサブスクリプションを作成および管理できます。
+4. マイクロソフト エンタープライズ契約で作成されたアカウントは、新しい課金アカウントではサポートされません。 アカウントのサブスクリプションは、各部署の請求書セクションに属します。 アカウント オーナーは、各自の請求書セクションのサブスクリプションを作成および管理できます。
 
 ## <a name="changes-to-billing-administrator-access"></a>課金管理者のアクセス権を変更する
 
@@ -97,7 +97,7 @@ Microsoft 顧客契約に署名した組織内のユーザーが課金プロフ�
 
 Azure Active Directory (AD) テナントは、Microsoft 顧客契約への同意時に新しい課金アカウントに対して選択されます。 組織のテナントが存在しない場合は、新しいテナントが作成されます。 テナントは、Azure Active Directory 内の組織を表します。 組織のテナントの全体管理者は、組織内のアプリケーションとデータへのアクセスを管理するためにテナントを使用します。
 
-新しいアカウントでは、Microsoft 顧客契約に署名する際に選択したテナントのユーザーのみがサポートされます。 Enterprise Agreement に対する管理アクセス許可を持つユーザーは、テナントに属していれば、セットアップ中も新しい請求先アカウントにアクセスできます。 テナントに属していない場合は、招待されない限り、新しい請求先アカウントにアクセスできません。
+新しいアカウントでは、Microsoft 顧客契約に署名する際に選択したテナントのユーザーのみがサポートされます。 マイクロソフト エンタープライズ契約に対する管理アクセス許可を持つユーザーは、テナントに属していれば、セットアップ中も新しい請求先アカウントにアクセスできます。 テナントに属していない場合は、招待されない限り、新しい請求先アカウントにアクセスできません。
 
 ユーザーを招待すると、そのユーザーはテナントにゲスト ユーザーとして追加され、請求先アカウントにアクセスできます。 ユーザーを招待するには、テナントに対してゲスト アクセスをオンする必要があります。 詳しくは、「[Azure Active Directory 内のゲスト アクセスの制御](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory)」をご覧ください。 ゲスト アクセスがオフの場合は、テナントの全体管理者に連絡してオンにしてください。 <!-- Todo - How can they find their global administrator -->
 
@@ -115,7 +115,7 @@ Enterprise Agreement 加入契約で作成されたアカウントは、新し�
 
 ### <a name="spending-quotas"></a>支出クォータ
 
-Enterprise Agreement 加入契約で部署に対して設定された支出クォータは、新しい請求先アカウント内で予算に置き換えられます。 加入契約内の部署に対して設定された支出クォータごとに予算が作成されます。 予算について詳しくは、[Azure 予算の作成と管理](../cloudyn/manage-budgets.md)に関する記事をご覧ください。
+Enterprise Agreement 加入契約で部署に対して設定された支出クォータは、新しい請求先アカウント内で予算に置き換えられます。 加入契約内の部署に対して設定された支出クォータごとに予算が作成されます。 予算の詳細については、「[チュートリアル: Azure の予算を作成して管理する](../costs/tutorial-acm-create-budgets.md)」を参照してください。
 
 ### <a name="cost-centers"></a>コスト センター
 
