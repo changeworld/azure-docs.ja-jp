@@ -193,10 +193,10 @@
       href: luis-how-to-publish-app.md
     - name: アプリの管理
       items:
-        - name: オーサリング キーとランタイム キー
+        - name: Azure リソース
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
-        - name: 作成キーに移行する
+        - name: 作成リソースへの移行
           items:
             - name: 概要
               href: luis-migration-authoring.md
