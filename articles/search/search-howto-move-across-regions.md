@@ -8,32 +8,32 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 03/06/2020
-ms.openlocfilehash: 183a937a232dbd28962bb7d6ef42b0d78b8a81fd
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.date: 03/24/2020
+ms.openlocfilehash: 00f16d11f7a9cd276772eda5e91d6e117ada8c9f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850688"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246304"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Azure Cognitive Search サービスを別の Azure リージョンに移動する
 
-場合によっては、既存の検索サービスを別のリージョンに移動することについてお客様が問い合わせることがあります。 現時点では、このタスクを支援する組み込みのメカニズムやツールはありません。 この記事で後述する手動のプロセスがあります。
+まれに、検索サービスを別のリージョンに移動できないかとお客様から問い合わせをいただくことがあります。 現時点では、そのような作業を支援する組み込みのメカニズムやツールはありませんが、この記事では、同じ結果を手動で実現するための手順をわかりやすく説明しています。
 
 > [!NOTE]
 > Azure portal では、すべてのサービスに **Export template** コマンドがあります。 Azure Cognitive Search の場合、このコマンドを実行すると、サービスの基本定義 (名前、場所、レベル、レプリカ、およびパーティション数) が生成されますが、サービスのコンテンツは認識されず、キー、ロール、またはログにも引き継がれません。 コマンドは存在しますが、検索サービスの移動には使用しないことをお勧めします。
 
-## <a name="steps-for-moving-a-service"></a>サービスを移動する手順
+## <a name="guidance-for-moving-a-service"></a>サービスを移動するためのガイダンス
 
-検索サービスを別のリージョンに移動する必要がある場合、アプローチは次の手順のようになります。
+1. Azure Cognitive Search 以外にも移動すべきサービスがあることも考えられます。そのような場合に備え、サービスを再配置した場合の影響の全容を把握するために、依存関係や関連するサービスを特定します。
 
-1. サービスを再配置した場合の影響を理解するために、関連するサービスを特定します。 ログ、ナレッジ ストア、または外部データソースとして Azure Storage を使用している可能性があります。 AI エンリッチメントに Cognitive Services を使用している可能性があります。 他のリージョンのサービスへのアクセスは一般的に行われていることですが、追加の帯域幅料金も伴います。 AI エンリッチメントを使用している場合は、Cognitive Services と Azure Cognitive Search を同じリージョンに配置する必要があります。
+   Azure Storage は、ログ、ナレッジ ストアの作成に使用されるほか、AI エンリッチメントやインデックス作成用の外部データ ソースとしてもよく使用されます。 Cognitive Services は、AI エンリッチメントの依存関係です。 AI エンリッチメントを使用している場合は、Cognitive Services と検索サービスの両方を同じリージョンに置く必要があります。
 
-1. サービスのオブジェクトの完全な一覧を表示するには、既存のサービスをインベントリします。 ログを有効にした場合は、履歴レコードに必要な可能性のあるレポートを作成してアーカイブします。
+1. インデックス、同意語マップ、インデクサー、データ ソース、スキルセットなど、何を移動すべきかがわかるよう、サービスのすべてのオブジェクトのインベントリを作成します。 ログを有効にした場合は、履歴レコードに必要な可能性のあるレポートを作成してアーカイブします。
 
-1. 新しいリージョンの価格と可用性を確認して、Azure Cognitive Search の可用性と、同じリージョンに作成する関連サービスを確認します。 機能パリティをチェックします。 一部のプレビュー機能では、可用性が制限されています。
+1. 新しいリージョンにおける価格と利用の可否を確認して、Azure Cognitive Search とその関連サービスが新しいリージョンで確実に利用できることを確かめます。 大部分の機能はすべてのリージョンで提供されていますが、一部のプレビュー機能は、利用が制限されている場合があります。
 
-1. 新しいリージョンにサービスを作成し、既存のインデックス、インデクサー、データ ソース、スキルセット、ナレッジ ストア、およびシノニム マップをソース コードから再発行します。 サービス名は一意である必要があるため、既存の名前を再利用することはできません。
+1. 新しいリージョンにサービスを作成し、既存のインデックス、同意語マップ、インデクサー、データ ソース、スキルセットをソース コードから再発行します。 サービス名は一意である必要があるため、既存の名前を再利用することはできません。 同一リージョン要件の観点から各スキルセットをチェックして、Cognitive Services への接続が引き続き有効であるかどうかを確認します。 また、ナレッジ ストアが作成される場合、異なるサービスを使用している場合には、Azure Storage の接続文字列をチェックしてください。
 
 1. 該当する場合は、インデックスとナレッジ ストアを再度読み込みます。 アプリケーション コードを使用して JSON データをインデックスにプッシュするか、インデクサーを再度実行して外部ソースからドキュメントをプルします。 
 
@@ -45,6 +45,9 @@ ms.locfileid: "78850688"
 
 ## <a name="next-steps"></a>次のステップ
 
+前述の手順を実施するにあたっては、次のリンクを参考にしてください。より詳しい情報を入手できます。
+
++ [Azure Cognitive Search の価格とリージョン](https://azure.microsoft.com/pricing/details/search/)
 + [レベルの選択](search-sku-tier.md)
 + [Search Service の作成](search-create-service-portal.md)
 + [検索ドキュメントの読み込み](search-what-is-data-import.md)
@@ -123,7 +126,7 @@ To obtain region location codes, see [Azure Locations](https://azure.microsoft.c
     "resources": [
         {
             "type": "Microsoft.Search/searchServices",
-            "apiVersion": "2015-08-19",
+            "apiVersion": "2020-03-13",
             "name": "[parameters('searchServices_target_region_search_name')]",
             "location": "centralus",
             "sku": {

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 2e12952c04373fe47eaebb24b61a4fc563121185
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: f038293b48956ac89314e426df3f5dc491954df3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037107"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064216"
 ---
 # <a name="execute-r-script"></a>R スクリプトの実行
 
@@ -97,13 +97,16 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-パイプラインが正常に送信されると、モジュールの右側のパネルで画像をプレビューできます ![アップロードされたイメージ](media/module/upload-image-in-r-script.png)
+パイプラインの実行が完了したら、モジュールの右側のパネルで画像をプレビューできます。
+
+> [!div class="mx-imgBorder"]
+> ![アップロードされた画像](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>R スクリプトの実行を構成する方法
 
 **R スクリプトの実行**モジュールには、出発点として利用できるサンプル コードが含まれています。 **R スクリプトの実行**モジュールを構成するには、一連の入力と、実行するコードを指定します。
 
-![R モジュール](media/module/upload-image-in-r-script.png)
+![R モジュール](media/module/execute-r-script.png)
 
 デザイナーに保存されたデータセットは、このモジュールで読み込まれると自動的に R データ フレームに変換されます。
 
@@ -123,25 +126,25 @@ azureml_main <- function(dataframe1, dataframe2){
 
     作業を支援するために、 **[R Script]\(R スクリプト\)** テキスト ボックスにはサンプル コードが事前に入力されており、編集または置換することができます。
     
-```R
-# R version: 3.5.1
-# The script MUST contain a function named azureml_main
-# which is the entry point for this module.
+    ```R
+    # R version: 3.5.1
+    # The script MUST contain a function named azureml_main
+    # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
-#   Param<dataframe1>: a R DataFrame
-#   Param<dataframe2>: a R DataFrame
-azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
+    # The entry point function can contain up to two input arguments:
+    #   Param<dataframe1>: a R DataFrame
+    #   Param<dataframe2>: a R DataFrame
+    azureml_main <- function(dataframe1, dataframe2){
+    print("R script run.")
 
-  # If a zip file is connected to the third input port, it is
-  # unzipped under "./Script Bundle". This directory is added
-  # to sys.path.
+    # If a zip file is connected to the third input port, it is
+    # unzipped under "./Script Bundle". This directory is added
+    # to sys.path.
 
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
+    # Return datasets as a Named List
+    return(list(dataset1=dataframe1, dataset2=dataframe2))
+    }
+    ```
 
  * スクリプトには、このモジュールのエントリ ポイントである `azureml_main` という名前の関数を含める必要があります。
 
@@ -155,7 +158,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 1.  **Random seed (ランダム シード)** : ランダム シード値として R 環境内で使用する値を入力します。 このパラメーターは、R コードで `set.seed(value)` を呼び出すのと同じです。  
 
-1. パイプラインを実行します。  
+1. パイプラインを送信します。  
 
 ## <a name="results"></a>結果
 
@@ -174,9 +177,9 @@ R スクリプトで結果を出力する必要がある場合は、モジュー
 
 **R スクリプトの実行**モジュールは、入力として任意の R スクリプト ファイルをサポートします。 そのためには、それらを ZIP ファイルの一部としてワークスペースにアップロードする必要があります。
 
-1. R コードを含む ZIP ファイルをワークスペースにアップロードするには、 **[新規]** をクリックし、 **[データセット]** をクリックしてから、 **[ローカル ファイルから]** を選択し、 **[ZIP ファイル]** オプションを選択します。  
+1. R コードを含む ZIP ファイルをワークスペースにアップロードするには、 **[データセット]** 資産ページに移動し、 **[データセットの作成]** をクリックして、 **[ローカル ファイルから]** を選択し、データセットの種類オプションとして **[ファイル]** を選択します。  
 
-1. その ZIP ファイルが **[保存されたデータセット]** 一覧にあることを確認します。
+1. 左側のモジュール ツリーで、 **[データセット]** カテゴリの **[マイ データセット]** リストに ZIP ファイルがあることを確認します。
 
 1.  そのデータセットを**スクリプト バンドル**入力ポートに接続します。
 

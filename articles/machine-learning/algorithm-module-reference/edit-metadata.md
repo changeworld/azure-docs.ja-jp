@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 57a211c6ffab9a960c013008410f4b52b909d360
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 9853a3decc8d145fee58d1da526926e224ee2030
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137517"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064255"
 ---
 # <a name="edit-metadata-module"></a>Edit Metadata (メタデータの編集) モジュール
 
@@ -94,7 +94,7 @@ Edit Metadata (メタデータの編集) モジュールを使用して、デー
   
     + 選択したすべての列の名前を変更する必要があります。 列を省略したりスキップしたりすることはできません。  
   
-1. パイプラインを実行します。  
+1. パイプラインを送信します。  
 
 ## <a name="next-steps"></a>次のステップ
 

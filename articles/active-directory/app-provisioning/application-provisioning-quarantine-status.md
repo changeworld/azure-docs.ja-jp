@@ -16,12 +16,12 @@ ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d689bb5f76eef36b784a3285749a7d250144fd7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 563c049bf3d1606e87db54e3b003dac987594610
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522715"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154629"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>検疫状態のアプリケーションのプロビジョニング
 
@@ -36,6 +36,8 @@ Azure AD プロビジョニング サービスは、構成の正常性を監視�
 - Azure portal で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  > &lt; *[アプリケーション名]* &gt; >  **[プロビジョニング]** の順に移動し、下部にある進行状況バーにスクロールします。  
 
   ![検疫状態を示すプロビジョニング ステータス バー](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
+
+- Azure portal で **[Azure Active Directory]**  >  **[監査ログ]** に移動し、 **[アクティビティ: 検疫]** というフィルターを適用して検疫履歴を確認します。 プロビジョニングが現在検疫中であるかどうかは前述した進行状況バーのビューに表示され、アプリケーションの検疫履歴は監査ログで確認できます。 
 
 - Microsoft Graph 要求の [Get synchronizationJob](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) を使用して、プロビジョニング ジョブの状態をプログラムで取得します。
 

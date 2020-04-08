@@ -4,16 +4,16 @@ description: Azure IoT Edge デーモンとランタイムを実行できるオ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/13/2019
+ms.date: 03/06/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3f1f4efc13e2d11e7111264564a227a484d611d5
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 42c0a5d0c590f8c395c2afe366a00fcb9c83ce46
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760098"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536940"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge のサポートされるシステム
 
@@ -96,6 +96,28 @@ Azure IoT Edge はコンテナーを実行できるほとんどのオペレー�
 ```bash
 sudo apt-get install libssl1.0.2
 ```
+
+## <a name="releases"></a>リリース
+
+IoT Edge のリリース アセットとリリース ノートは、[azure-iotedge リリース](https://github.com/Azure/azure-iotedge/releases) ページから入手できます。 このセクションでは、それらのリリース ノートの情報を基に、それぞれのバージョンのコンポーネントを視覚的にわかりやすく説明しています。
+
+IoT Edge のコンポーネントは、個別にインストールまたは更新することができ、以前のバージョンのコンポーネントとの下位互換性を備えています。 次の表は、各リリースに含まれているコンポーネントの一覧です。
+
+| Release   | セキュリティ デーモン  | Edge ハブ<br>Edge エージェント | Libiothsm | Moby  |
+| --------- | ---------------- | ---------------------- | --------- | ----- |
+| **1.0.9** | 1.0.9            | 1.0.9                  | 1.0.9     |       |
+| **1.0.8** | 1.0.8            | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
+| **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7       | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl、CentOS) |
+| **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6       | 1.0.6.1<br>1.0.6 |  |
+| **1.0.5** | 1.0.5            | 1.0.5                  | 1.0.5     | 3.0.2 |
+
+IoT Edge では、Microsoft.Azure.Device.Client SDK が使用されます。 詳細については、[Azure IoT C# SDK の GitHub リポジトリ](https://github.com/Azure/azure-iot-sdk-csharp)または [Azure SDK for .NET のリファレンス コンテンツ](https://docs.microsoft.com/dotnet/api/overview/azure/iot/client?view=azure-dotnet)を参照してください。 次に示したのは、各リリースのテストに使用されたクライアント SDK のバージョンの一覧です。
+
+* **IoT Edge 1.0.9**: クライアント SDK 1.21.1
+* **IoT Edge 1.0.8**: クライアント SDK 1.20.3
+* **IoT Edge 1.0.7**: クライアント SDK 1.20.1
+* **IoT Edge 1.0.6**: クライアント SDK 1.17.1
+* **IoT Edge 1.0.5**: クライアント SDK 1.17.1
 
 ## <a name="virtual-machines"></a>Virtual Machines
 

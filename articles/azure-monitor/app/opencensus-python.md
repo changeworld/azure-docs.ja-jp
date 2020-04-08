@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 61fdc2a4694405d4f56600b2d2b71e9e37232a7a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 6ef0675e3ae3f7a5da38138177f3033051723411
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943259"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537110"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python アプリケーション用に Azure Monitor をセットアップします
 
@@ -36,7 +36,7 @@ Azure Monitor は、[OpenCensus](https://opencensus.io) との統合により、
 
 1. 構成ボックスが表示されます。 下の表を使用して、入力フィールドに入力します。
 
-   | 設定        | Value           | 説明  |
+   | 設定        | 値           | 説明  |
    | ------------- |:-------------|:-----|
    | **名前**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
    | **リソース グループ**     | myResourceGroup      | Application Insights データをホストする新しいリソース グループの名前 |
@@ -271,7 +271,8 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 - Process CPU Usage (percentage) (プロセスの CPU 使用率 (%))
 - Process Private Bytes (bytes) (プロセスのプライベート バイト (バイト))
 
-これらのメトリックは `performanceCounters` で確認できます。 受信要求率は `customMetrics` 未満になります。
+これらのメトリックは `performanceCounters` で確認できます。 受信要求率は `customMetrics` 未満になります。 これらのパフォーマンス カウンターの詳細については、[パフォーマンス カウンター](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)に関するページを参照してください。
+
 #### <a name="modify-telemetry"></a>テレメトリの変更
 
 追跡されたテレメトリを Azure Monitor に送信する前に変更する方法の詳細については、OpenCensus Python の[テレメトリ プロセッサ](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)を参照してください。
@@ -388,13 +389,33 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 
     # Use properties in logging statements
     logger.warning('action', extra=properties)
+    ```
+
+#### <a name="sending-exceptions"></a>例外を送信する
+
+OpenCensus Python では、`exception` テレメトリの追跡と送信が自動的には行われません。 これらは、Python ログ ライブラリ経由の例外を使用し、`AzureLogHandler` を通じて送信されます。 通常のログと同様、カスタム プロパティを追加することができます。
+
+    ```python
+    import logging
+    
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    )
+
+    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
 
     # Use properties in exception logs
     try:
         result = 1 / 0  # generate a ZeroDivisionError
     except Exception:
-    logger.exception('Captured an exception.', extra=properties)
+        logger.exception('Captured an exception.', extra=properties)
     ```
+例外は明示的にログする必要があるため、ハンドルされない例外をどのようにログするかはユーザーしだいです。 OpenCensus では、例外のテレメトリが明示的にログされている限り、それをユーザーがどのように行うかについて一切制限はありません。
+
 #### <a name="sampling"></a>サンプリング
 
 OpenCensus のサンプリングの詳細については、[OpenCensus でのサンプリング](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)に関するページを参照してください。

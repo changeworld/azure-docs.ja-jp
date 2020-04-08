@@ -3,16 +3,16 @@ title: テンプレート関数 - 論理
 description: Azure Resource Manager テンプレートで論理値を判定するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: aef520a26124a85f414c4f4aa1a3e307d383c29b
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: f058baa32e5f93a4177913287a5e9873fa7a9acb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207215"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156312"
 ---
-# <a name="logical-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの論理関数
+# <a name="logical-functions-for-arm-templates"></a>ARM テンプレート用の論理関数
 
-Resource Manager には、テンプレートで比較を行うための関数がいくつか用意されています。
+Resource Manager には、Azure Resource Manager (ARM) テンプレートで比較を行うための関数がいくつか用意されています。
 
 * [and](#and)
 * [bool](#bool)
@@ -28,7 +28,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |boolean |true かどうかを確認する最初の値。 |
 | arg2 |はい |boolean |true かどうかを確認する 2 番目の値。 |
@@ -66,7 +66,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | Value |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -80,7 +80,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または整数 |ブール値に変換する値。 |
 
@@ -119,7 +119,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | Value |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
@@ -134,7 +134,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | condition |はい |boolean |true か false かどうかを確認する値。 |
 | trueValue |はい | string、int、object、または array |条件が true の場合に返される値。 |
@@ -177,7 +177,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | Value |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | yesOutput | String | はい |
 | noOutput | String | no |
@@ -239,7 +239,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |boolean |変換する値。 |
 
@@ -275,7 +275,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | Value |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -299,7 +299,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | Value |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -311,7 +311,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |boolean |true かどうかを確認する最初の値。 |
 | arg2 |はい |boolean |true かどうかを確認する 2 番目の値。 |
@@ -349,7 +349,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | Value |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |

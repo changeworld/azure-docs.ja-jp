@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: e312cc0dc6c58bb33a737e1fc28dd6eb3578b764
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 056e23f0f0cf1a3a1c70042cef3c92dd41f14f82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330274"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247012"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure Storage で静的 Web サイトをホストする
 
@@ -239,11 +239,15 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 メトリックを有効にすると、 **$web** コンテナーのファイルに関するトラフィック統計情報が、メトリック ダッシュボードでレポートされます。
 
-1. **[設定]**  >  **[監視]**  >  **[メトリック]** の順にクリックします。
+1. ストレージ アカウント メニューの **[Monitor]\(監視\)** セクションの **[Metrics]\(メトリック\)** をクリックします。
 
-   メトリック データは、さまざまなメトリック API に接続することで生成されます。 データを返す API メンバーだけに注目するために、ポータルには一定期間内に使用されたメンバーのみが表示されます。 必要な API メンバーを選択できるようにするための最初の手順は、期間を展開することです。
+   > [!div class="mx-imgBorder"]
+   > ![メトリック リンク](./media/storage-blob-static-website/metrics-link.png)
 
-2. 期間のボタンをクリックして **[過去 24 時間]** を選択し、 **[適用]** をクリックします。
+   > [!NOTE]
+   > メトリック データは、さまざまなメトリック API に接続することで生成されます。 データを返す API メンバーだけに注目するために、ポータルには一定期間内に使用されたメンバーのみが表示されます。 必要な API メンバーを選択できるようにするための最初の手順は、期間を展開することです。
+
+2. 期間ボタンをクリックして期間を選択し、 **[適用]** をクリックします。
 
    ![Azure Storage 静的 Web サイトのメトリック: 時間の範囲](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 
@@ -266,6 +270,9 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 7. *[値]* セレクターで **[GetWebContent]** の横にあるチェック ボックスをオンにして、メトリック レポートを設定します。
 
    ![Azure Storage 静的 Web サイトのメトリック: GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
+
+   >[!NOTE]
+   > **[GetWebContent]** チェック ボックスが表示されるのは、その API メンバーが特定の期間内に使用された場合のみです。 データを返す API メンバーだけに注目するために、ポータルには一定期間内に使用されたメンバーのみが表示されます。 このリストに特定の API メンバーが見つからない場合は、期間を拡大してください。
 
 ## <a name="next-steps"></a>次のステップ
 

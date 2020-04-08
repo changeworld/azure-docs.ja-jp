@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の SQL クエリ演算子
 description: Azure Cosmos DB でサポートされている等値演算子、比較演算子、論理演算子などの SQL 演算子について説明します。
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: mjbrown
-ms.openlocfilehash: f3efe4bee749f0d3132206ca68a33a60f0e16b81
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 03/19/2020
+ms.author: tisande
+ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870940"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063568"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB の演算子
 
@@ -21,15 +21,15 @@ ms.locfileid: "74870940"
 
 以下の表は、SQL API の 2 つの JSON 型で等値比較を実行した結果を示しています。
 
-| **演算子** | **Undefined** | **Null** | **Boolean** | **Number** | **文字列** | **Object** | **Array** |
+| **演算子** | **Undefined** | **Null** | **Boolean** | **Number** | **String** | **Object** | **Array** |
 |---|---|---|---|---|---|---|---|
-| **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Null** | Undefined | **Ok** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Boolean** | Undefined | Undefined | **Ok** | Undefined | Undefined | Undefined | Undefined |
-| **Number** | Undefined | Undefined | Undefined | **Ok** | Undefined | Undefined | Undefined |
-| **文字列** | Undefined | Undefined | Undefined | Undefined | **Ok** | Undefined | Undefined |
-| **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **Ok** | Undefined |
-| **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **Ok** |
+| **Undefined** | 未定義。 | 未定義。 | 未定義。 | 未定義。 | 未定義。 | 未定義。 | 未定義。 |
+| **Null** | 未定義。 | **Ok** | 未定義。 | 未定義。 | 未定義。 | 未定義。 | 未定義。 |
+| **Boolean** | 未定義。 | 未定義。 | **Ok** | 未定義。 | 未定義。 | 未定義。 | 未定義。 |
+| **Number** | 未定義。 | 未定義。 | 未定義。 | **Ok** | 未定義。 | 未定義。 | 未定義。 |
+| **String** | 未定義。 | 未定義。 | 未定義。 | 未定義。 | **Ok** | 未定義。 | 未定義。 |
+| **Object** | 未定義。 | 未定義。 | 未定義。 | 未定義。 | 未定義。 | **Ok** | 未定義。 |
+| **Array** | 未定義。 | 未定義。 | 未定義。 | 未定義。 | 未定義。 | 未定義。 | **Ok** |
 
 `>`、`>=`、`!=`、`<`、および `<=` などの比較演算子では、種類全体または 2 つのオブジェクトや配列間の比較で、`Undefined` が生成されます。  
 
@@ -41,28 +41,43 @@ ms.locfileid: "74870940"
 
 **OR 演算子**
 
-| または | True | False | Undefined |
+いずれかの条件が `true` の場合に `true` を返します。
+
+|  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
-| True |True |True |True |
-| False |True |False |Undefined |
-| Undefined |True |Undefined |Undefined |
+| **True** |True |True |True |
+| **False** |True |False |未定義。 |
+| **Undefined** |True |未定義。 |未定義。 |
 
 **AND 演算子**
 
-| AND | True | False | Undefined |
+両方の式が `true` の場合に `true` を返します。
+
+|  | **True** | **False** | **Undefined** |
 | --- | --- | --- | --- |
-| True |True |False |Undefined |
-| False |False |False |False |
-| Undefined |Undefined |False |Undefined |
+| **True** |True |False |未定義。 |
+| **False** |False |False |False |
+| **Undefined** |未定義。 |False |未定義。 |
 
 **NOT 演算子**
 
-| NOT |  |
-| --- | --- |
-| True |False |
-| False |True |
-| Undefined |Undefined |
+任意のブール式の値を反転します。
 
+|  | **NOT** |
+| --- | --- |
+| **True** |False |
+| **False** |True |
+| **Undefined** |未定義。 |
+
+**演算子の優先順位**
+
+論理演算子 `OR`、`AND`、`NOT` には、次に示す優先順位レベルがあります。
+
+| **[オペレーター]** | **優先順位** |
+| --- | --- |
+| **NOT** |1 |
+| **AND** |2 |
+| **OR** |3 |
 
 ## <a name="-operator"></a>* 演算子
 
@@ -70,7 +85,7 @@ ms.locfileid: "74870940"
 
 ## <a name="-and--operators"></a>? および ?? 演算子
 
-3 項 (?) 演算子と合体 (??) 演算子は、C# や JavaScript などのプログラミング言語の場合と同様に、条件式の構築に使用することができます。 
+3 項 (?) 演算子と合体 (??) 演算子は、C# や JavaScript などのプログラミング言語の場合と同様に、条件式の構築に使用することができます。
 
 ? 演算子を 使用して、実行中に新しい JSON プロパティを構築できます。 たとえば、次のクエリは、学年を `elementary` または `other` に分類します。
 
@@ -95,7 +110,7 @@ ms.locfileid: "74870940"
     FROM Families f
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [キーワード](sql-query-keywords.md)

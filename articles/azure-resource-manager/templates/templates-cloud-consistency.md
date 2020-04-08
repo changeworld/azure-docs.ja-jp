@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: fa0df19053c3c238e3c00c46733cb4626dd64072
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c5095efef5d4bef44993bdd9cd52dbdef17378a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773142"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156108"
 ---
-# <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>クラウドの一貫性のための Azure Resource Manager テンプレートを開発する
+# <a name="develop-arm-templates-for-cloud-consistency"></a>クラウドの一貫性を実現する ARM テンプレートを開発する
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Azure の主な利点は一貫性です。 ある場所に対する開発投資を、別の場所で再利用できます。 テンプレートを使うと、グローバル Azure、Azure ソブリン クラウド、Azure Stack など、環境が異なっても一貫性があり再現可能な展開を作成できます。 ただし、異なるクラウドでテンプレートを再利用するには、このガイドで説明するように、クラウド固有の依存関係を考慮する必要があります。
+Azure の主な利点は一貫性です。 ある場所に対する開発投資を、別の場所で再利用できます。 Azure Resource Manager (ARM) テンプレートを使うと、グローバル Azure、Azure ソブリン クラウド、Azure Stack など、環境が異なっても一貫性があり再現可能なデプロイを作成できます。 ただし、異なるクラウドでテンプレートを再利用するには、このガイドで説明するように、クラウド固有の依存関係を考慮する必要があります。
 
 Microsoft は、次のように、インテリジェントでエンタープライズ対応のクラウド サービスをさまざまな場所で提供しています。
 
@@ -33,7 +33,7 @@ Microsoft は、次のように、インテリジェントでエンタープラ�
 
 ただし、グローバル クラウド、ソブリン クラウド、ホストされたクラウド、ハイブリッド クラウドが一貫性のあるサービスを提供する場合でも、すべてのクラウドが同じであるわけではありません。 そのため、特定のクラウドでのみ使用できる機能に対する依存関係を持つテンプレートを作成できます。
 
-このガイドの残りの部分では、Azure Stack 用の Azure Resource Manager テンプレートの新規開発または既存更新を計画するときに考慮すべき事柄について説明します。 一般に、チェック リストには次のものを含める必要があります。
+このガイドの残りの部分では、Azure Stack 用の ARM テンプレートの新規開発または既存更新を計画するときに考慮すべき事柄について説明します。 一般に、チェック リストには次のものを含める必要があります。
 
 * テンプレートの関数、エンドポイント、サービス、その他のリソースが展開先の場所で利用できることを確認します。
 * 入れ子になったテンプレートと構成成果物を、異なるクラウドからアクセス可能な場所に格納します。
@@ -41,11 +41,11 @@ Microsoft は、次のように、インテリジェントでエンタープラ�
 * 使用するテンプレート パラメーターが対象のクラウドで動作することを確認します。
 * リソース固有のプロパティが対象のクラウドで使用できることを確認します。
 
-Azure Resource Manger テンプレートの概要については、「[テンプレートのデプロイ](overview.md)」をご覧ください。
+ARM テンプレートの概要については、[テンプレートのデプロイ](overview.md)に関するページを参照してください。
 
 ## <a name="ensure-template-functions-work"></a>テンプレート関数を確実に動作させる
 
-Resource Manager テンプレートの基本的な構文は JSON です。 テンプレートは JSON のスーパーセットを使用しており、式と関数について構文が拡張されています。 テンプレートの言語プロセッサは、追加されたテンプレート関数をサポートするために頻繁に更新されます。 使用可能なテンプレート関数の詳細については、「[Azure Resource Manager テンプレートの関数](template-functions.md)」をご覧ください。
+ARM テンプレートの基本的な構文は JSON です。 テンプレートは JSON のスーパーセットを使用しており、式と関数について構文が拡張されています。 テンプレートの言語プロセッサは、追加されたテンプレート関数をサポートするために頻繁に更新されます。 使用可能なテンプレート関数の詳細については、「[ARM テンプレート関数](template-functions.md)」を参照してください。
 
 ソブリン クラウドまたは Azure Stack では、Azure Resource Manager に導入された新しいテンプレート関数をすぐに利用することはできません。 テンプレートを正常に展開するには、テンプレートで参照されているすべての関数を展開先のクラウドで使用できる必要があります。
 
@@ -497,7 +497,7 @@ Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | 
 
 これらの VM イメージを Azure Stack で使用できるようにする場合は、使用可能なすべてのストレージが消費されます。 最小のスケール ユニットでも対応するため、Azure Stack では環境に追加するイメージを選択できます。
 
-次のコード サンプルでは、Azure Resource Manager テンプレートでパブリッシャー、オファー、SKU パラメーターを参照するための一貫した方法を示します。
+次のコード サンプルでは、ARM テンプレートでパブリッシャー、オファー、SKU パラメーターを参照するための一貫した方法を示します。
 
 ```json
 "storageProfile": {
@@ -668,4 +668,4 @@ Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerS
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Resource Manager テンプレートに関する考慮事項](/azure-stack/user/azure-stack-develop-templates)
-* [Azure Resource Manager テンプレートのベスト プラクティス](template-syntax.md)
+* [ARM テンプレートのベスト プラクティス](template-syntax.md)

@@ -5,13 +5,13 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: bec2a40d8cf5fb178418ec6bb59a52a0bfe3eb8c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/16/2020
+ms.openlocfilehash: fa48ca287c248155a0271b5134be782d8db1c785
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453056"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063114"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Hyperscale (Citus) サーバー グループをスケーリングする
 
@@ -38,9 +38,14 @@ SELECT rebalance_table_shards('distributed_table_name');
 
 `rebalance_table_shards` 関数により、引数に指定したテーブルの[コロケーション](concepts-hyperscale-colocation.md) グループ内にあるすべてのテーブルが再調整されます。 したがって、すべての分散テーブルに対してその関数を呼び出す必要はありません。各コロケーション グループの代表的なテーブルに対して呼び出すだけです。
 
-## <a name="increase-vcores"></a>仮想コアを増やす
+## <a name="increase-or-decrease-vcores-on-nodes"></a>ノードの仮想コアを増減させる
 
-新しいノードを追加するだけでなく、既存のノードの能力を増強することもできます。 この機能は現在プレビュー段階です。サーバー グループ内のノードに対して仮想コアを増やすには、[Azure サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+> [!NOTE]
+> 現在、この機能はプレビュー段階にあります。 サーバー グループのノードを対象に仮想コアの変更を要求するには、[Azure サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+
+新しいノードを追加するだけでなく、既存のノードの能力を増強することもできます。 計算処理能力の調整 (増減) は、パフォーマンス実験のほか、トラフィック需要の短期的変更または長期的変更に役立つ場合があります。
+
+すべてのワーカー ノードの仮想コアを変更するには、 **[構成 (ワーカー ノードあたり)]** の下の **[仮想コア]** スライダーを調整します。 コーディネーター ノードの仮想コアは、個別に調整することができます。 **[コーディネーター ノード]** の **[構成の変更]** リンクをクリックします。 コーディネーターの仮想コアとストレージ容量に対するスライダーを備えたダイアログが表示されます。 必要に応じてスライダーを調整し、 **[OK]** を選択してください。
 
 ## <a name="next-steps"></a>次のステップ
 

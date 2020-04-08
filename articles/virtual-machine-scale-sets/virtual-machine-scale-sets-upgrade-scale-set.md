@@ -1,19 +1,19 @@
 ---
 title: Azure 仮想マシン スケール セットを変更する
 description: REST API、Azure PowerShell、Azure CLI を使って、Azure 仮想マシン スケール セットに変更を加え、更新する方法について説明します
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 02/14/2018
-ms.author: manayar
-ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.date: 03/10/2020
+ms.author: mimckitt
+ms.openlocfilehash: 66fd656b5175547641150a048e57c978dc06d291
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274447"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476826"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 
@@ -311,7 +311,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 >[!NOTE]
 > Service Fabric クラスターは "*自動*" モードのみを使用できますが、更新は別途処理されます。 詳しくは、「[Service Fabric アプリケーションのアップグレード](../service-fabric/service-fabric-application-upgrade.md)」をご覧ください。
 
-グローバル スケール セットのプロパティに対する変更には、アップグレード ポリシーに従わない種類が 1 つあります。 スケール セット OS プロファイル (管理者のユーザー名とパスワードなど) に対する変更は、API バージョン *2017-12-01* 以降でのみ実行できます。 これらの変更は、スケール セット モデルの変更後に作成された VM にのみ適用されます。 既存の VM を最新の状態にするには、各既存の VM の "再イメージ化" を行う必要があります。 この再イメージ化は、以下を使用して行うことができます。
+グローバル スケール セットのプロパティに対する変更には、アップグレード ポリシーに従わない種類が 1 つあります。 スケール セット OS およびデータ ディスク プロファイル (管理者のユーザー名とパスワードなど) に対する変更は、API バージョン *2017-12-01* 以降でのみ実行できます。 これらの変更は、スケール セット モデルの変更後に作成された VM にのみ適用されます。 既存の VM を最新の状態にするには、各既存の VM の "再イメージ化" を行う必要があります。 この再イメージ化は、以下を使用して行うことができます。
 
 - REST API ([compute/virtualmachinescalesets/reimage](/rest/api/compute/virtualmachinescalesets/reimage))
 
@@ -342,6 +342,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 - 可用性ゾーン
 - イメージ参照発行元
 - イメージ参照プラン
+- イメージ参照 SKU
 - 管理対象 OS ディスク ストレージ アカウントの種類
 
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>現在の値に基づいてのみ変更できるプロパティ
