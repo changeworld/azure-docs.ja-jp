@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: 15c661a1ef917dcf73b5a86cd450c94a35b08c88
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e0870ac9dc818ca07e149421b486136c76dd61a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822491"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79208814"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL Database への移行時に Transact-SQL の相違点を解決する
 
@@ -38,14 +38,14 @@ SQL Database でサポートされる機能とサポートされない機能の�
 
 - CREATE ステートメントと ALTER DATABASE ステートメントには 30 以上のオプションがあります。 ステートメントには SQL Server にのみ適用されるファイルの配置、FILESTREAM、および Service Broker のオプションが含まれます。 移行前にデータベースを作成する場合は、これは問題になりませんが、データベースを作成する T-SQL コードを移行する場合は、[CREATE DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) を [CREATE DATABASE (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) の SQL Server 構文と比較して、使用するすべてのオプションがサポートされているかを確認します。 また Azure SQL Database 用の CREATE DATABASE には、SQL Database にのみ適用されるサービス目標と柔軟なスケールのオプションがあります。
 - FILESTREAM はサポートされていないため、CREATE ステートメントと ALTER TABLE ステートメントには、SQL Database では使用できない FileTable のオプションがあります。
-- CREATE ステートメントと ALTER LOGIN ステートメントはサポートされますが、SQL Database ではすべてのオプションは提供されません。 データベースの移植性を高めるために、SQL Database は可能な限りログインの代わりに包含データベース ユーザーを使用することを推奨しています。 詳細については、「[ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx)」と「[データベース アクセスの制御と許可](sql-database-manage-logins.md)」を参照してください。
+- CREATE ステートメントと ALTER LOGIN ステートメントはサポートされますが、SQL Database ではすべてのオプションは提供されません。 データベースの移植性を高めるために、SQL Database は可能な限りログインの代わりに包含データベース ユーザーを使用することを推奨しています。 詳細については、「[CREATE/ALTER LOGIN](https://docs.microsoft.com/sql/t-sql/statements/alter-login-transact-sql)」と「[ログインとユーザーの管理](sql-database-manage-logins.md)」を参照してください。
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Azure SQL Database でサポートされない Transact-SQL 構文
 
 「 [Azure SQL Database の機能の比較](sql-database-features.md)」に記載されている、サポートされていない機能に関連する Transact-SQL ステートメントの他に、次のステートメントとステートメントのグループはサポートされていません。 そのため、移行するデータベースが次の機能のいずれかを使用している場合は、T-SQL を再構築してこれらの T-SQL の機能とステートメントを取り除きます。
 
 - システム オブジェクトの照合順序
-- 接続関連:エンドポイント ステートメント。 SQL データベースは Windows 認証をサポートしませんが、同様の Azure Active Directory 認証をサポートします。 いくつかの認証の種類には、最新バージョン の SSMS が必要です。 詳細については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」を参照してください。
+- 接続関連:エンドポイント ステートメント。 SQL データベースは Windows 認証をサポートしませんが、同様の Azure Active Directory 認証をサポートします。 いくつかの認証の種類には、最新バージョン の SSMS が必要です。 詳細については、「 [Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」を参照してください。
 - 3 部構成または 4 部構成の名前を使用したデータベース間クエリ (読み取り専用のデータベース間クエリは、[エラスティック データベース クエリ](sql-database-elastic-query-overview.md)を使用してサポートされます)。
 - データベース間での所有権の継承、`TRUSTWORTHY` 設定
 - `EXECUTE AS LOGIN` 代わりに 'EXECUTE AS USER' を使用してください。
@@ -86,6 +86,6 @@ Transact-SQL リファレンスには、SQL Server 2008 以降のバージョン
 
 場合によっては、記事にある一般的な項目を製品で使用できますが、製品間で若干の違いがあることがあります。 相違点は、必要に応じて記事の中で示されます。 場合によっては、記事にある一般的な項目を製品で使用できますが、製品間で若干の違いがあることがあります。 相違点は、必要に応じて記事の中で示されます。 たとえば CREATE TRIGGER の記事は、SQL Database で使用できます。 ただし、サーバー レベルのトリガーの **ALL SERVER** オプションでは、サーバー レベルのトリガーは SQL Database では使用できないと指示されます。 代わりにデータベース レベルのトリガーを使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 SQL Database でサポートされる機能とサポートされない機能の一覧については、「 [Azure SQL Database の機能の比較](sql-database-features.md)」をご覧ください。 このページの一覧は、その記事のガイドラインと機能を補足するもので、Transact-SQL ステートメントに重点を置いています。

@@ -11,14 +11,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.openlocfilehash: 0b0dfeb6a19e2f6f24568de0b4712758d2b7ad4a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90e7692fe0e254074d8176d719d0ca9abad54a9b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427395"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79217859"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (クラシック) Web サービスのログ記録を有効にする
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 このドキュメントでは、Machine Learning Studio (クラシック) Web サービスのログ記録機能について説明します。 ログ機能を使用すると、エラー番号とメッセージの他に追加の情報を得ることができ、Machine Learning Studio (クラシック) API の呼び出しのトラブルシューティングを実行するときに役立ちます。  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>Web サービスでのログ記録を有効にする方法
@@ -61,7 +64,7 @@ ms.locfileid: "75427395"
 
 
 ## <a name="the-effects-of-enabling-logging"></a>ログ記録の有効化による効果
-ログ記録が有効な場合、Web サービス エンドポイントの診断とエラーのログは、ユーザーのワークスペースにリンクされている Azure ストレージ アカウントの **ml-diagnostics** BLOB コンテナーに記録されます。 このコンテナーには、このストレージ アカウントに関連付けられているすべてのワークスペースの Web サービス エンドポイントの診断情報が保持されています。
+ログ記録が有効な場合、Web サービス エンドポイントの診断とエラーのログは、ユーザーのワークスペースにリンクされている Azure Storage アカウントの **ml-diagnostics** BLOB コンテナーに記録されます。 このコンテナーには、このストレージ アカウントに関連付けられているすべてのワークスペースの Web サービス エンドポイントの診断情報が保持されています。
 
 Azure のストレージ アカウントを探索できる複数のツールを使って、ログを表示できます。 最も簡単な方法は、Azure ポータルでストレージ アカウントに移動し、 **[コンテナー]** をクリックし、コンテナー **ml-diagnostics** をクリックすることです。  
 

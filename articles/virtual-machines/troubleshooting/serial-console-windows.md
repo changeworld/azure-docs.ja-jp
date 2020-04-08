@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 87ccb1c4995337b385f685797980a9fc3962bc6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68089a86b8b832638abd30aa7c36aa1c5bd84225
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231939"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410115"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows 用 Azure シリアル コンソール
 
@@ -60,7 +60,7 @@ Azure の新しい Windows Server イメージでは、既定で [Special Admini
 
 1. リモート デスクトップを使用して Windows 仮想マシンに接続します。
 1. 管理コマンド プロンプトで次のコマンドを実行します。
-    - `bcdedit /ems {current} on`
+    - `bcdedit /ems {current} on`、PowerShell の場合は `bcdedit /ems '{current}' on`
     - `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 1. システムを再起動して、SAC コンソールを有効にします。
 
@@ -102,15 +102,15 @@ Windows ブート ローダーのプロンプトを有効にしてシリアル �
 
     ![SAC に接続する](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.  「`cmd`」と入力して、CMD インスタンスがあるチャネルを作成します。
+1.    「`cmd`」と入力して、CMD インスタンスがあるチャネルを作成します。
 
-1.  「`ch -si 1`」と入力するか、`<esc>+<tab>` のショートカット キーを押して、CMD インスタンスを実行しているチャネルに切り替えます。
+1.    「`ch -si 1`」と入力するか、`<esc>+<tab>` のショートカット キーを押して、CMD インスタンスを実行しているチャネルに切り替えます。
 
-1.  **Enter** キーを押して、管理アクセス許可を持つサインイン資格情報を入力します。
+1.    **Enter** キーを押して、管理アクセス許可を持つサインイン資格情報を入力します。
 
-1.  有効な資格情報を入力すると、CMD インスタンスが開きます。
+1.    有効な資格情報を入力すると、CMD インスタンスが開きます。
 
-1.  PowerShell インスタンスを起動するには、CMD インスタンスに「`PowerShell`」と入力し、**Enter** キーを押します。
+1.    PowerShell インスタンスを起動するには、CMD インスタンスに「`PowerShell`」と入力し、**Enter** キーを押します。
 
     ![PowerShell インスタンスを開く](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 

@@ -16,10 +16,10 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b2b42880f99f3e87d75854166047896860f9eb14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784422"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Azure AD ギャラリーのアプリケーションの追加に関する問題
@@ -61,7 +61,7 @@ ms.locfileid: "65784422"
 
 5.  サポートが必要な場合は、この情報をサポート エンジニアや製品グループと共有して支援を受けることもできます。
 
-6.  **[エラーのコピー]** ボックスの右にある **[コピー]** **アイコン**をクリックしてすべての通知の詳細をコピーし、サポート エンジニアまたは製品グループの技術者と共有することができます。
+6.  すべての通知の詳細をコピーしてサポート エンジニアまたは製品グループの技術者と共有するには、 **[コピー エラー]** ボックスの右にある **[コピー]** **アイコン**をクリックします。
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>通知の詳細をサポート エンジニアに送信して支援を受ける方法
 
@@ -113,7 +113,7 @@ ms.locfileid: "65784422"
 
 -   **表示名** – **(空白でも可)** エラーの詳細な表示名
 
-    -   例 - **アプリケーションのプロキシ設定**
+    -   例 – **アプリケーション プロキシの設定**
 
 -   **状態** – 通知の特定の状態
 

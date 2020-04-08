@@ -11,10 +11,10 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: ccc422dfb3105fd1e12569a84a4ebfd22182b225
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73837812"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>データ サイエンス用のデータの準備はお済みですか?
@@ -102,6 +102,6 @@ ms.locfileid: "73837812"
 
 Microsoft Azure Machine Learning Studio (クラシック) の*初心者向けデータ サイエンス*にある他の 4 つのビデオも必ず確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試行する](create-experiment.md)
 * [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/preview/overview-what-is-azure-ml)

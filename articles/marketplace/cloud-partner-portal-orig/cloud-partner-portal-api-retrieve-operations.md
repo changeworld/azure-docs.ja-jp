@@ -1,19 +1,18 @@
 ---
 title: 操作の取得 API | Azure Marketplace
 description: オファーのすべての操作を取得するか、指定した operationId の特定の操作を取得します。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: c3eb77744d61322ca0aed20bb2b3f486cc02ac70
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4fc77407ae1c5854d3fe977da5a81f4226bf5305
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819593"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280475"
 ---
 <a name="retrieve-operations"></a>操作の取得
 ===================
@@ -32,12 +31,12 @@ ms.locfileid: "73819593"
 <a name="uri-parameters"></a>URI パラメーター
 --------------
 
-|  **Name**          |      **説明**                                                                                           | **データの種類** |
+|  **名前**          |      **説明**                                                                                           | **データの種類** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  パブリッシャー ID。たとえば、`Contoso`                                                                   |  string       |
-|  offerId           |  オファー ID                                                                                              |  string       |
+|  publisherId       |  パブリッシャー ID。たとえば、`Contoso`                                                                   |  String       |
+|  offerId           |  オファー ID                                                                                              |  String       |
 |  operationId       |  オファーの操作を一意に識別する GUID。 operationId はこの API を使用して取得できます。また、[オファーの発行](./cloud-partner-portal-api-publish-offer.md) API など、実行時間の長い任意の操作に対する応答の HTTP ヘッダーでも返されます。  |   Guid   |
-|  filteredStatus    | この API によって返されるコレクションを状態 (たとえば `running`) でフィルター処理するために使用されるオプションのクエリ パラメーター。  |   string |
+|  filteredStatus    | この API によって返されるコレクションを状態 (たとえば `running`) でフィルター処理するために使用されるオプションのクエリ パラメーター。  |   String |
 |  api-version       | API の最新バージョン                                                                                           |    Date      |
 |  |  |  |
 
@@ -45,10 +44,10 @@ ms.locfileid: "73819593"
 <a name="header"></a>ヘッダー
 ------
 
-|  **Name**          |  **値**           |
+|  **名前**          |  **Value**           |
 |  ---------------   | -------------------- |
 |  Content-Type      | `application/json`   |
-|  Authorization     | `Bearer YOUR_TOKEN`  |
+|  承認     | `Bearer YOUR_TOKEN`  |
 |  |  |
 
 
@@ -177,7 +176,7 @@ ms.locfileid: "73819593"
 
 ### <a name="response-body-properties"></a>応答本文のプロパティ
 
-|  **Name**                    |  **説明**                                                                                  |
+|  **名前**                    |  **説明**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | 操作を一意に識別する GUID                                                       |
 |  submissionType              | 報告されているオファーの操作の種類を特定します。たとえば、`Publish/GGoLive`      |

@@ -9,16 +9,16 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 6baf9d4edba9ba8db008c5c6a8d7af6832ba3273
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 578d076dfc2fc383051c0c3a8528cdbb0fbcdb15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591236"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79208778"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-microsoft-azure-sql-database"></a>Microsoft Azure SQL Database の接続に関する問題とその他のエラーのトラブルシューティング
 
-Azure SQL Database への接続に失敗すると、エラー メッセージが表示されます。 これらの接続の問題は、Azure SQL Database の再構成、ファイアウォールの設定、接続のタイムアウト、正しくないログイン情報、または[アプリケーション設計] (sql-database-develop-overview.md)プロセスの間にベスト プラクティスと設計ガイドラインを適用しなかったことが原因で、発生する可能性があります。 また、一部の Azure SQL Database リソースの上限に達した場合、Azure SQL Database に接続できません。
+Azure SQL Database への接続に失敗すると、エラー メッセージが表示されます。 これらの接続の問題は、Azure SQL Database の再構成、ファイアウォールの設定、接続のタイムアウト、正しくないログイン情報、または[アプリケーション設計](sql-database-develop-overview.md) プロセスの間にベスト プラクティスと設計ガイドラインが適用されなかったことが原因で発生する可能性があります。 また、一部の Azure SQL Database リソースの上限に達した場合、Azure SQL Database に接続できません。
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>一時的な障害のエラー メッセージ (40197、40613、その他)
 

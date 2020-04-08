@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 5a9917010b7301bf70c3bebf68c35d82f4839e0f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587279"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409058"
 ---
 # <a name="hyperscale-service-tier"></a>ハイパースケール サービス レベル
 
@@ -162,7 +162,7 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 > [!NOTE]
 > ソースとターゲットが別々のリージョンにあるため、データベースは、geo リストア以外と同様に、スナップショット ストレージをソース データベースと共有することができません。これは、非常に短時間で完了します。 Hyperscale データベースの geo リストアの場合、ターゲットが geo レプリケーション ストレージのペア リージョンにある場合でも、データのサイズに関連した操作になります。  つまり、geo リストアを実行すると、復元されるデータベースのサイズに比例した時間がかかります。  ペア リージョン内にターゲットがある場合、コピーは 1 つのリージョン内で行われます。これは、複数のリージョンにまたがって行われるコピーよりもはるかに高速になりますが、それでもデータのサイズに左右される操作になります。
 
-## <a name=regions></a>対応リージョン
+## <a name="available-regions"></a><a name=regions></a>対応リージョン
 
 現在、Azure SQL Database Hyperscale レベルは次のリージョンで使用できます。
 
@@ -205,8 +205,7 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 | 問題 | 説明 |
 | :---- | :--------- |
 | [バックアップの管理] ウィンドウに、ハイパースケール データベースが表示されません。"SQL server" でフィルター処理すると表示されます。  | ハイパースケールは別の方法でバックアップを管理しています。そのため、長期的な保有期間と特定の時点のバックアップなどの保有設定が適用されず、無効になります。 したがって、ハイパースケールのデータベースは、[バックアップの管理] ウィンドウに表示されません。 |
-| ポイントインタイム リストア | データベースがハイパースケール サービス レベルに移行された後で、移行よりも前の特定の時点への復元はサポートされません。|
-| Hyperscale ではない DB を Hyperscale に復元する (および、その反対方向の復元を行う) | Hyperscale データベースを Hyperscale 以外のデータベースに復元することも、Hyperscale 以外のデータベースを Hyperscale データベースに復元することもできません。|
+| ポイントインタイム リストア | Hyperscale データベースを、Hyperscale 以外のデータベースの保有期間の範囲内に、Hyperscale 以外のデータベースに復元することができます。 Hyperscale 以外のデータベースを Hyperscale データベースに復元することはできません。|
 | 1 TB を超えるデータ ファイルがデータベースに 1 つ以上ある場合、移行に失敗します。 | 場合によっては、サイズの大きいファイルを 1 TB 未満に圧縮することで、この問題を回避できることがあります。 移行プロセス中に使用されているデータベースを移行する場合は、1 TB を超えるファイルがないことを確認してください。 データベース ファイルのサイズを確認するには、以下のクエリを使用してください。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | マネージド インスタンス | Azure SQL Database Managed Instance は、現在、Hyperscale データベースではサポートされていません。 |
 | エラスティック プール |  エラスティック プールは、現在、SQL Database Hyperscale ではサポートされていません。|

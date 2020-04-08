@@ -8,10 +8,10 @@ ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
 ms.openlocfilehash: 33c85752903edd618044ccbab06aff7df9a791da
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74046194"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) のトラブルシューティング
@@ -332,6 +332,6 @@ v1 Web アプリケーション ファイアウォールの場合、ポータル
      
 メトリックを有効にするには、ポータルの **[メトリック]** タブを選択し、3 つのメトリックのいずれかを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Application Gateway で Web アプリケーション ファイアウォールを構成する方法](tutorial-restrict-web-traffic-powershell.md)に関するページをご覧ください。

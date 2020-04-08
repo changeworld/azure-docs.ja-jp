@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 952bfe9a669b833b20a9bccf2813fb6a5eec4826
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/27/2020
+ms.openlocfilehash: fa8ead8daa202f5747c134a62fbd43bcdf2af0d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769321"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369258"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB のサーバーのバックアップと復元を行う方法
 
@@ -66,7 +66,7 @@ Azure Database for MariaDB では、サーバーの過去の特定時点まで�
    ![Azure Database for MariaDB - 情報の復元](./media/howto-restore-server-portal/3-restore.png)
    - **復元ポイント**:復元先の特定の時点を選択します。
    - **対象サーバー**:新しいサーバーの名前を指定します。
-   - **場所**:リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
+   - **[場所]** :リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
    - **価格レベル**:ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
 
 4. **[OK]** をクリックして、特定の時点までサーバーを復元します。 
@@ -76,7 +76,7 @@ Azure Database for MariaDB では、サーバーの過去の特定時点まで�
 
 ポイントインタイム リストアによって作成された新しいサーバーには、選択した特定の時点の既存のサーバーに対して有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 
-復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則または VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。
+復元中に作成される新しいサーバーには、元のサーバーに存在した VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。 元のサーバーのファイアウォール規則は復元されます。
 
 ## <a name="geo-restore"></a>geo リストア
 
@@ -97,10 +97,9 @@ Azure Database for MariaDB では、サーバーの過去の特定時点まで�
 
 geo リストアによって作成された新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 
-復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則または VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。
+復元中に作成される新しいサーバーには、元のサーバーに存在した VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。 元のサーバーのファイアウォール規則は復元されます。
 
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - サービスの[バックアップ](concepts-backup.md)の詳細について確認します
 - [レプリカ](concepts-read-replicas.md)について確認します
 - [ビジネス継続性](concepts-business-continuity.md)オプションについて確認します

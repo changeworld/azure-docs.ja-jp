@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a621165210702e075f15fb61bd615e157f997fe1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 7db47eda47850c1c080b6a49256c8a0b37bb0d3c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79078861"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330380"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで Azure Active Directory 検証技術プロファイルを定義します。
 
@@ -115,6 +115,7 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
 ## <a name="requirements-of-an-operation"></a>操作の要件
 
 - すべての Azure AD 技術プロファイルには、**InputClaim** 要素が要求バッグに 1 つだけ存在する必要があります。
+- [ユーザー プロファイル属性に関する記事](user-profile-attributes.md)では、入力要求、出力要求、および永続化された要求で使用できる、サポートされている Azure AD B2C ユーザー プロファイル属性について説明しています。 
 - 操作が `Write` または `DeleteClaims` の場合は、**PersistedClaims** 要素にも表示する必要があります。
 - **userPrincipalName** 要求の値の形式は、`user@tenant.onmicrosoft.com` である必要があります。
 - **displayName** 要求は必須であり、空の文字列にすることはできません。
@@ -254,7 +255,7 @@ InputClaims 要素には、ディレクトリ内のアカウントを検索し�
 | ClientId | いいえ | サード パーティとしてテナントにアクセスするためのクライアント識別子。 詳細については、「[カスタム プロファイル編集ポリシーのカスタム属性を使用](custom-policy-custom-attributes.md)」を参照してください。 |
 | IncludeClaimResolvingInClaimsHandling  | いいえ | 入力と出力の要求について、[要求の解決](claim-resolver-overview.md)を技術プロファイルに含めるかどうかを指定します。 指定できる値: `true` または `false` (既定値)。 技術プロファイルで要求リゾルバーを使用する場合は、これを `true` に設定します。 |
 
-### <a name="error-messages"></a>エラー メッセージ
+### <a name="ui-elements"></a>UI 要素
  
 次の設定を使用して、失敗したときに表示されるエラー メッセージを構成できます。 メタデータは、[セルフアサート](self-asserted-technical-profile.md)技術プロファイルで構成する必要があります。 エラー メッセージは、[ローカライズ](localization.md)できます。
 

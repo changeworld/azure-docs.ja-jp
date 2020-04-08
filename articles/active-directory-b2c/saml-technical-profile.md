@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c81d2bc499c3d9cae262ef62be2dac2d7280be7
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 83a13e0b1bb4d55b889d96e42c8f3f18ce0f2b73
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183841"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408936"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML 技術プロファイルを定義する
 
@@ -90,11 +90,32 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
 
 **OutputClaims** 要素には、`AttributeStatement` セクション下に SAML ID プロバイダーにより返される要求の一覧が存在します。 お使いのポリシーに定義されている要求の名前を、ID プロバイダーで定義されている名前にマップする必要があるかもしれません。 `DefaultValue` 属性を設定している限り、ID プロバイダーにより返されない要求を追加することもできます。
 
-**[件名]** の SAML アサーション **NamedId** を正規化された要求として 読み取るには、要求 **PartnerClaimType** を `assertionSubjectName` に設定します。 **NameId** がアサーション XML 内の最初の値であることを確認します。 複数のアサーションを定義した場合、Azure AD B2C は、最後のアサーションからサブジェクト値を取得します。
+### <a name="subject-name-output-claim"></a>サブジェクト名の出力要求
 
-**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
+**[件名]** の SAML アサーション **NameId** を正規化された要求として読み取るには、要求 **PartnerClaimType** を `SPNameQualifier` 属性の値に設定します。 `SPNameQualifier` 属性が表示されない場合は、**PartnerClaimType** 要求を `NameQualifier` 属性の値に設定します。 
 
-次の例は、Facebook ID プロバイダーにより返される要求を示しています。
+
+SAML アサーション: 
+
+```XML
+<saml:Subject>
+  <saml:NameID SPNameQualifier="http://your-idp.com/unique-identifier" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">david@contoso.com</saml:NameID>
+    <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+      <SubjectConfirmationData InResponseTo="_cd37c3f2-6875-4308-a9db-ce2cf187f4d1" NotOnOrAfter="2020-02-15T16:23:23.137Z" Recipient="https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer" />
+    </SubjectConfirmation>
+  </saml:SubjectConfirmation>
+</saml:Subject>
+```
+
+出力要求：
+
+```XML
+<OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="http://your-idp.com/unique-identifier" />
+```
+
+SAML アサーションに `SPNameQualifier` または `NameQualifier` の両方の属性が表示されない場合は、**PartnerClaimType** 要求を `assertionSubjectName` に設定します。 **NameId** がアサーション XML 内の最初の値であることを確認します。 複数のアサーションを定義した場合、Azure AD B2C は、最後のアサーションからサブジェクト値を取得します。
+
+次の例は、SAML ID プロバイダーにより返される要求を示しています。
 
 - **issuerUserId** 要求は、**assertionSubjectName** 要求にマップされます。
 - **givenName** 要求にマップされている **first_name** 要求。
@@ -118,6 +139,8 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
   <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
 </OutputClaims>
 ```
+
+**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
 ## <a name="metadata"></a>Metadata
 

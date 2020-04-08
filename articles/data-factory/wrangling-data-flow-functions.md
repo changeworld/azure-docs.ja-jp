@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.openlocfilehash: e2517ec4a02a5d61fb3ce1d9ca9ffa2b5f4e8bf8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74287037"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>ラングリング データ フローの変換関数
@@ -54,7 +54,7 @@ Azure Data Factory のラングリング データ フローを使用すると�
 * 置換 ([Replacer.ReplaceText](https://docs.microsoft.com/powerquery-m/replacer-replacetext)、[Replacer.ReplaceValue](https://docs.microsoft.com/powerquery-m/replacer-replacevalue)、[Text.Replace](https://docs.microsoft.com/powerquery-m/text-replace)、[Text.Remove](https://docs.microsoft.com/powerquery-m/text-remove))
 * 位置指定テキスト抽出 ([Text.PositionOf](https://docs.microsoft.com/powerquery-m/text-positionof)、[Text.Length](https://docs.microsoft.com/powerquery-m/text-length)、[Text.Start](https://docs.microsoft.com/powerquery-m/text-start)、[Text.End](https://docs.microsoft.com/powerquery-m/text-end)、[Text.Middle](https://docs.microsoft.com/powerquery-m/text-middle)、[Text.ReplaceRange](https://docs.microsoft.com/powerquery-m/text-replacerange)、[Text.RemoveRange](https://docs.microsoft.com/powerquery-m/text-removerange))
 * 基本的なテキストの書式設定 ([Text.Lower](https://docs.microsoft.com/powerquery-m/text-lower)、[Text.Upper](https://docs.microsoft.com/powerquery-m/text-upper)、[Text.Trim](https://docs.microsoft.com/powerquery-m/text-trim)/[Start](https://docs.microsoft.com/powerquery-m/text-trimstart)/[End](https://docs.microsoft.com/powerquery-m/text-trimend)、[Text.PadStart](https://docs.microsoft.com/powerquery-m/text-padstart)/[End](https://docs.microsoft.com/powerquery-m/text-padend)、[Text.Reverse](https://docs.microsoft.com/powerquery-m/text-reverse))
-* 日付/時刻関数 ([Date.Day](https://docs.microsoft.com/powerquery-m/date-day)、[Date.Month](https://docs.microsoft.com/powerquery-m/date-month)、[Date.Year](https://docs.microsoft.com/powerquery-m/date-year) [Time.Hour](https://docs.microsoft.com/powerquery-m/time-hour)、[Time.Minute](https://docs.microsoft.com/powerquery-m/time-minute)、[Time.Second](https://docs.microsoft.com/powerquery-m/time-second)、[Date.DayOfWeek](https://docs.microsoft.com/powerquery-m/date-dayofweek)、[Date.DayOfYear](https://docs.microsoft.com/powerquery-m/date-dayofyear)、[Date.DaysInMonth](https://docs.microsoft.com/powerquery-m/date-daysinmonth))
+* 日付/時刻関数 ([Date.Day](https://docs.microsoft.com/powerquery-m/date-day)、[Date.Month](https://docs.microsoft.com/powerquery-m/date-month)、[Date.Year](https://docs.microsoft.com/powerquery-m/date-year)[Time.Hour](https://docs.microsoft.com/powerquery-m/time-hour)、[Time.Minute](https://docs.microsoft.com/powerquery-m/time-minute)、[Time.Second](https://docs.microsoft.com/powerquery-m/time-second)、[Date.DayOfWeek](https://docs.microsoft.com/powerquery-m/date-dayofweek)、[Date.DayOfYear](https://docs.microsoft.com/powerquery-m/date-dayofyear)、[Date.DaysInMonth](https://docs.microsoft.com/powerquery-m/date-daysinmonth))
 * If 式 (ただし分岐は一致する型を持つ必要があります)
 * 論理列としての行フィルター
 * 数値、テキスト、論理、日付、および日時の定数
@@ -83,7 +83,7 @@ Azure Data Factory のラングリング データ フローを使用すると�
 
 ## <a name="known-unsupported-functions"></a>既知のサポートされていない関数
 
-| Function | Status |
+| 機能 | Status |
 | -- | -- |
 | Table.PromoteHeaders | サポートされていません。 データセットで "1 行目をヘッダーとして" 設定することにより、同じ結果を得ることができます。 |
 | Table.CombineColumns | これは、直接サポートされてはいなくても、特定の 2 つの列を連結する新しい列を追加することによって実現できる一般的なシナリオです。  例: Table.AddColumn(RemoveEmailColumn, “Name”, each [FirstName] & ” ” & [LastName]) |
@@ -96,6 +96,6 @@ Azure Data Factory のラングリング データ フローを使用すると�
 | Table.Transpose | サポートされていません |
 | Table.Pivot | サポートされていません |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ラングリング データ フローの作成](wrangling-data-flow-tutorial.md)方法について確認します。

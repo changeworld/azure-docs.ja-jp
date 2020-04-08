@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1e459e96c128e20f44f1a5adcb18c5b1824c3bf5
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c3571d9ba94e1803259457d473ed3f1669ea67ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534120"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330591"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure での Linux VM の時刻同期
 
@@ -133,11 +133,13 @@ cat /sys/class/ptp/ptp0/clock_name
 
 ### <a name="chrony"></a>chrony
 
-Red Hat Enterprise Linux および CentOS 7.x では、PTP ソース クロックを使用するように [chrony](https://chrony.tuxfamily.org/) が構成されています。 ntpd (Network Time Protocol Daemon) では PTP ソースがサポートされないため、**chronyd** を使用することをお勧めします。 PTP を有効にするには、**chrony.conf** を更新します。
+Ubuntu 19.10 以降のバージョン、Red Hat Enterprise Linux、および CentOS 7.x では、PTP ソース クロックを使用するように [chrony](https://chrony.tuxfamily.org/) が構成されています。 以前の Linux リリースでは、chrony ではなく、PTP ソースがサポートされない ntpd (Network Time Protocol Daemon) が使用されています。 これらのリリースで PTP を有効にするには、chrony.conf で次のコードを使用して chrony を手動でインストールして構成する必要があります。
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 ```
+
+Ubuntu および NTP の詳細については、[時刻同期](https://help.ubuntu.com/lts/serverguide/NTP.html)に関するページを参照してください。
 
 Red Hat および NTP の詳細については、[NTP の構成](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp)に関するページを参照してください。 
 
@@ -146,23 +148,22 @@ chrony の詳細については、[chrony の使用](https://access.redhat.com/d
 chrony および TimeSync ソースの両方が同時に有効になっている場合は、一方を**優先**としてマークし、もう一方のソースをバックアップとして設定することができます。 NTP サービスでは、長時間の経過後を除き、大きなスキューが発生した場合にクロックが更新されないため、VMICTimeSync によって、NTP ベースのツールを単独で使用する場合よりはるかに早く一時停止した VM イベントからクロックが回復されます。
 
 既定では、chronyd は、時間の誤差を修正するために、システム クロックを加速または減速します。 誤差が大きすぎる場合、chrony は誤差の修正に失敗します。 これを解決するために、 **/etc/chrony.conf** の `makestep` パラメーターを変更して、誤差が指定されたしきい値を超えた場合に timesync を強制的に適用することができます。
+
  ```bash
 makestep 1.0 -1
 ```
+
 ここでは、chrony は、誤差が 1 秒よりも大きい場合に時間の更新を強制します。 変更を適用するには、chronyd サービスを再起動します。
 
 ```bash
 systemctl restart chronyd
 ```
 
-
 ### <a name="systemd"></a>systemd 
 
-Ubuntu と SUSE では、時刻同期は [systemd](https://www.freedesktop.org/wiki/Software/systemd/) を使用して構成されます。 Ubuntu の詳細については、「[Time Synchronization](https://help.ubuntu.com/lts/serverguide/NTP.html)」 (時刻同期) を参照してください。 SUSE の詳細については、[SUSE Linux Enterprise Server 12 SP3 に関するリリース ノート](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)の第 4.5.8 条を参照してください。
+19.10 より前の SUSE と Ubuntu では、時刻同期は [systemd](https://www.freedesktop.org/wiki/Software/systemd/) を使用して構成されます。 Ubuntu の詳細については、[時刻同期](https://help.ubuntu.com/lts/serverguide/NTP.html)に関するページを参照してください。 SUSE の詳細については、[SUSE Linux Enterprise Server 12 SP3 に関するリリース ノート](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement)の第 4.5.8 条を参照してください。
 
-
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、「[Windows Server 2016 の正確な時刻](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)」を参照してください。
 

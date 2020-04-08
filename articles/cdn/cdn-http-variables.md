@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
 ms.openlocfilehash: 53ad0c516547e17801bd57c2fd6b0d1704383797
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593816"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN ルール エンジンの HTTP 変数
@@ -37,7 +37,7 @@ HTTP 変数は、HTTP 要求と応答のメタデータを取得するための�
 | 名前 | 変数 | 説明 | 値の例 |
 | ---- | -------- | ----------- | ------------ |
 | ASN (要求者) | %{geo_asnum} | 要求者の AS 番号を示します。 <br /><br />**非推奨:** %{virt_dst_asnum}。 <br />%{geo_asnum} を優先して、この変数は非推奨となりました。 この非推奨の変数を使用するルールは今後も正常に機能しますが、更新して新しい変数を使用する必要があります。 | AS15133 |
-| 市区町村 (要求者) | %{geo_city} | 要求者の市区町村を示します。 | ロサンゼルス |
+| 市区町村 (要求者) | %{geo_city} | 要求者の市区町村を示します。 | Los Angeles |
 | 大陸 (要求者) | %{geo_continent} | 要求者の大陸を省略形で示します。 <br />有効な値は次のとおりです。 <br />AF:アフリカ<br />AS:アジア<br />EU:ヨーロッパ<br />NA:北米<br />OC:オセアニア<br />SA:南アメリカ<br /><br />**非推奨:** %{virt_dst_continent}。 <br />%{geo_continent} を優先して、この変数は非推奨となりました。 <br />この非推奨の変数を使用するルールは今後も正常に機能しますが、更新して新しい変数を使用する必要があります。| 該当なし |
 | Cookie 値 | %{cookie_Cookie} | Cookie という語で識別される Cookie キーに対応する値を返します。 | 使用例: <br />%{cookie__utma}<br /><br />値の例:<br />111662281.2.10.1222100123 |
 | 国 (要求者) | %{geo_country} | 国コードによって配信元の要求者の国を示します。 <br />**非推奨:** %{virt_dst_country}。 <br /><br />%{geo_country} を優先して、この変数は非推奨となりました。 この非推奨の変数を使用するルールは今後も正常に機能しますが、更新して新しい変数を使用する必要があります。 | US |
@@ -174,7 +174,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 ### <a name="pattern-removal"></a>パターンの削除
 特定のパターンに一致するテキストを、変数の値の先頭または末尾のいずれかから削除できます。
 
-| 構文 | Action |
+| 構文 | アクション |
 | ------ | ------ |
 | %{Variable#Pattern} | 指定したパターンが変数の値の先頭で見つかった場合は、テキストを削除します。 |
 | %{Variable%Pattern} | 指定したパターンが変数の値の末尾で見つかった場合は、テキストを削除します。 |
@@ -195,7 +195,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 ### <a name="find-and-replace"></a>検索と置換
 次の表で、検索と置換の構文について説明します。
 
-| 構文 | Action |
+| 構文 | アクション |
 | ------ | ------ |
 | %{Variable/Find/Replace} | 指定したパターンの最初の出現箇所の検索と置換を行います。 |
 | %{Variable//Find/Replace} | 指定したパターンのすべての出現箇所の検索と置換を行います。 |
@@ -207,7 +207,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 ### <a name="find-and-rewrite"></a>検索と書き換え
 検索と置換のバリエーションでは、書き換えるときに指定したパターンに一致するテキストを使用します。 次の表で、検索と書き換えの構文について説明します。
 
-| 構文 | Action |
+| 構文 | アクション |
 | ------ | ------ |
 | %{Variable/=Find/Rewrite} | 指定したパターンのすべてのインスタンスの検索、コピー、および書き換えを行います。 |
 | %{Variable/^Find/Rewrite} | 指定したパターンが変数の先頭にあるときに、その検索、コピー、および書き換えを行います。 |
@@ -218,7 +218,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 
 - ドル記号の後に整数を指定して (たとえば、$1)、指定したパターンに一致するテキストを展開します。
 
-- 複数のパターンを指定することができます。 パターンを指定する順序が、それに割り当てられる整数を決定します。 次の例では、最初のパターンは「www.,」に一致し、2 つ目のパターンは第 2 レベル ドメインに一致し、3 つ目のパターンはトップレベル ドメインに一致します。
+- 複数のパターンを指定することができます。 パターンを指定する順序が、それに割り当てられる整数を決定します。 次の例では、最初のパターンは「 www.,」に一致し、2 つ目のパターンは第 2 レベル ドメインに一致し、3 つ目のパターンはトップレベル ドメインに一致します。
 
     `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$2.$3:80}`
 

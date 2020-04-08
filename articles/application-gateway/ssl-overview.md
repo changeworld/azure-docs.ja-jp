@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 64b90afd598b96604fc9c3ddc4bc10586e714363
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 9c4e6124acdbb35233f8e829f43d2665fd4a5176
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75657983"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284808"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Application Gateway での SSL ターミネーションとエンド ツー エンド SSL の概要
 
@@ -43,7 +43,7 @@ SSL 接続を機能させるには、SSL 証明書が次の条件を確実に満
 Application Gateway では、次の種類の証明書がサポートされています。
 
 - CA (証明機関) の証明書:CA 証明書は、証明機関 (CA) によって発行されたデジタル証明書です
-- EV (拡張された検証) 証明書:EV 証明書は、業界標準の証明書ガイドラインです。 これにより、ブラウザーのロケーター バーが緑色になり、会社名も公開されます。
+- EV (拡張された検証) 証明書:EV 証明書は、業界標準の証明書ガイドラインに準拠する証明書です。 これにより、ブラウザーのロケーター バーが緑色になり、会社名も公開されます。
 - ワイルドカード証明書:この証明書は、*site.com に基づく任意の数のサブドメインをサポートしています。* は指定したサブドメインに置き換えられます。 ただし、ユーザーが先頭の "www" を入力せずに Web サイトにアクセスしている場合、ワイルドカード証明書はそれに対応していないため、site.com はサポートされません。
 - 自己署名証明書:クライアントのブラウザーではこれらの証明書は信頼されず、仮想サービスの証明書が信頼チェーンに含まれていないことがユーザーに警告されます。 自己署名証明書は、テストや、管理者がクライアントを制御していて、ブラウザーのセキュリティの警告を安全にバイパスできる環境に適しています。 運用環境のワークロードでは、自己署名証明書を使用しないでください。
 

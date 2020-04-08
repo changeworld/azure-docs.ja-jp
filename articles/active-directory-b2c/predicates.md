@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 887c9432f04cce775e045bb6da83f0af4a4a4bce
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187238"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396884"
 ---
 # <a name="predicates-and-predicatevalidations"></a>述語および PredicateValidations
 
@@ -45,7 +45,7 @@ ms.locfileid: "78187238"
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | Id | はい | 述語に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
-| Method | はい | 検証に使用するメソッドの型。 指定できる値**IsLengthRange**、**MatchesRegex**、**IncludesCharacters**、または **IsDateRange**。 **IsLengthRange** 値によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 **MatchesRegex** 値によって、文字列要求値が正規表現に一致するかどうかがチェックされます。 **IncludesCharacters** 値によって、文字列要求値に文字セットが含まれているかどうかがチェックされます。 **IsDateRange** 値によって、日付要求値が、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 |
+| Method | はい | 検証に使用するメソッドの型。 指定できる値[IsLengthRange](#islengthrange)、[MatchesRegex](#matchesregex)、[IncludesCharacters](#includescharacters)、または [IsDateRange](#isdaterange)。  |
 | HelpText | いいえ | チェックが失敗した場合に、ユーザーに表示されるエラー メッセージ。 この文字列は、[言語カスタマイズ](localization.md)を使ってローカライズすることができます。 |
 
 **Predicate** 要素には、次の要素が含まれています。
@@ -67,7 +67,19 @@ ms.locfileid: "78187238"
 | ------- | ----------- | ----------- |
 | Id | 1:1 | パラメーターの識別子。 |
 
-次の例は、文字列の長さ範囲を指定する `Minimum` および `Maximum` パラメーターを持つ `IsLengthRange` メソッドを示しています。
+### <a name="predicate-methods"></a>述語メソッド
+
+#### <a name="islengthrange"></a>IsLengthRange
+
+IsLengthRange メソッドによって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 述語要素は、次のパラメーターをサポートしています。
+
+| パラメーター | 必須 | 説明 |
+| ------- | ----------- | ----------- |
+| 最大値 | はい | 入力できる最大文字数です。 |
+| 最小値 | はい | 入力する必要がある最小文字数です。 |
+
+
+次の例は、文字列の長さ範囲を指定する `Minimum` および `Maximum` パラメーターを持つ IsLengthRange メソッドを示しています。
 
 ```XML
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -77,6 +89,14 @@ ms.locfileid: "78187238"
   </Parameters>
 </Predicate>
 ```
+
+#### <a name="matchesregex"></a>MatchesRegex
+
+MatchesRegex メソッドによって、文字列要求値が正規表現に一致するかどうかがチェックされます。 述語要素は、次のパラメーターをサポートしています。
+
+| パラメーター | 必須 | 説明 |
+| ------- | ----------- | ----------- |
+| RegularExpression | はい | 一致させる正規表現パターン。 |
 
 次の例は、正規表現を指定する `RegularExpression` パラメーターを持つ `MatchesRegex` メソッドを示しています。
 
@@ -88,6 +108,14 @@ ms.locfileid: "78187238"
 </Predicate>
 ```
 
+#### <a name="includescharacters"></a>IncludesCharacters
+
+IncludesCharacters メソッドによって、文字列要求値に文字セットが含まれているかどうかがチェックされます。 述語要素は、次のパラメーターをサポートしています。
+
+| パラメーター | 必須 | 説明 |
+| ------- | ----------- | ----------- |
+| CharacterSet | はい | 入力できる文字のセット。 たとえば、小文字の `a-z`、大文字の `A-Z`、数字の `0-9`、`@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` などの記号の一覧です。 |
+
 次の例は、文字セットを指定する `CharacterSet` パラメーターを持つ `IncludesCharacters` メソッドを示しています。
 
 ```XML
@@ -98,7 +126,16 @@ ms.locfileid: "78187238"
 </Predicate>
 ```
 
-次の例は、`yyyy-MM-dd` と `Today` の形式で日付範囲を指定する `Minimum` および `Maximum` パラメーターを持つ `IsDateRange` メソッドを示しています。
+#### <a name="isdaterange"></a>IsDateRange
+
+IsDateRange メソッドによって、日付要求値が、指定された最小および最大パラメーターの範囲内にあるかどうかがチェックされます。 述語要素は、次のパラメーターをサポートしています。
+
+| パラメーター | 必須 | 説明 |
+| ------- | ----------- | ----------- |
+| 最大値 | はい | 入力できる可能な最大の日付。 date の形式は `yyyy-mm-dd` 規則、または `Today` に従います。 |
+| 最小値 | はい | 入力できる可能な最小の日付。 date の形式は `yyyy-mm-dd` 規則、または `Today` に従います。|
+
+次の例は、`yyyy-mm-dd` と `Today` の形式で日付範囲を指定する `Minimum` および `Maximum` パラメーターを持つ `IsDateRange` メソッドを示しています。
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -388,3 +425,7 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
   <PredicateValidationReference Id="CustomDateRange" />
 </ClaimType>
  ```
+
+## <a name="next-steps"></a>次のステップ
+
+- 述語の検証を使用して [Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する](custom-policy-password-complexity.md)方法について確認します。

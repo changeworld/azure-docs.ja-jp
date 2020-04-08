@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820131"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>コネクテッド ファクトリ ソリューション アクセラレータの構成
@@ -267,7 +267,7 @@ Contoso の各工場には、それぞれ 3 つのステーションで構成さ
 * 名前
 * 説明
 * Image
-* Location
+* 場所
 * Units
 * Visible
 
@@ -334,10 +334,10 @@ WebApp は、すべてのトポロジ ノードの情報を含む内部データ
 * すべての値の平均。
 * 指定された期間における、すべての一意の **OpcUri** (**ApplicationUri**)、**NodeId** ペアの、すべての値の合計。
 
-**NumberOfManufactureredProducts** ノードの値の 1 つの特徴は、それが増加するのみであるということです。 その期間に製造された製品の数を計算するために、コネクテッド ファクトリは **OpCode** **SubMaxMin** を使用します。 この計算では、その期間の開始時に最小値を、その期間の終了時に最大値を取得します。
+**NumberOfManufactureredProducts** ノードの値の 1 つの特徴は、それが増加するのみであるということです。 その期間に製造された製品の数を計算するために、接続済みファクトリで **OpCode** **SubMaxMin** が使用されます。 この計算では、その期間の開始時に最小値を、その期間の終了時に最大値を取得します。
 
 構成内の **OpCode** によって計算ロジックが構成され、最大値と最小値の差の結果が計算されます。 これらの結果は、ボトムアップでルート (グローバル) レベルまで蓄積され、ダッシュボードに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次は、[コネクテッド ファクトリ ソリューションをカスタマイズする](iot-accelerators-connected-factory-customize.md)方法について学習することをお勧めします。

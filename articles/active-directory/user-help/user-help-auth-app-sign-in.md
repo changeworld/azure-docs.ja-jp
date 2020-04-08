@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: ac61c01c5e45b6e8e001a68781f93c3962cb581f
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b8c44f99953d4518f0bc3f558f396250657c632
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78297846"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79138945"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウントにサインインする
 
@@ -112,7 +112,7 @@ iOS デバイスの場合:
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>2 要素認証を使用してアカウントにサインインする
 
-標準の 2 要素認証方法では、ログインするデバイスにご自分のユーザー名とパスワードを入力した後、Microsoft Authenticator アプリで Microsoft Authenticator アプリを受信するかどうかを選択する必要があります。 Android デバイスでは、これらの確認コードは [アカウント] 画面で確認できます。 iOS デバイスでは、これらの確認コードは、アカウントの種類に応じて、 **[アカウント]** 画面またはアカウントの全画面ビューで確認できます。 Microsoft Authenticator アプリにアカウントを追加するプロセスの一環として、アカウントの 2 要素認証を有効にします。
+標準的な 2 要素認証方法では、ログインするデバイスにユーザー名とパスワードを入力する必要があります。 その後、Microsoft Authenticator アプリを開き、アカウントに対してランダムに生成されたコードを **[コードの入力]** ボックスに入力します。 Android デバイスでは、 **[アカウント]** 画面でこれらの確認コードを確認できます。 iOS デバイスでは、アカウントの種類に応じて、 **[アカウント]** 画面またはアカウントの全画面ビューで、これらの確認コードを確認できます。 Microsoft Authenticator アプリにアカウントを追加するプロセスの一環として、アカウントの 2 要素認証を有効にします。
 
 >[!Note]
 >職場または学校アカウント、または個人用アカウントが Microsoft Authenticator アプリの **[アカウント]** 画面に表示されない場合は、そのアカウントが Microsoft Authenticator アプリに追加されていないことを意味します。 アカウントを追加するには、[職場または学校アカウントの追加](user-help-auth-app-add-work-school-account.md)または[個人用アカウントの追加](user-help-auth-app-add-personal-ms-account.md)に関する記事を参照してください。

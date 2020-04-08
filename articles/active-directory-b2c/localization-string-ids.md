@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3af62a75228959478a80c2628307fff2b47c3c4a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e5339136513d4a9553c46bb50c0dd29f9785c7fa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187493"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330941"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -25,7 +25,7 @@ ms.locfileid: "78187493"
 
 ## <a name="sign-up-or-sign-in-page-elements"></a>サインアップ ページまたはサインイン ページの要素
 
-次の ID は、`api.signuporsignin`の ID を持つコンテンツ定義に使用されます。
+次の ID は、`api.signuporsignin` の ID を持つコンテンツ定義に使用されます。
 
 | id | 既定値 |
 | -- | ------------- |
@@ -33,7 +33,7 @@ ms.locfileid: "78187493"
 | **logonIdentifier_email** | 電子メール アドレス |
 | **requiredField_email** | メール アドレスを入力してください |
 | **invalid_email** | 有効な電子メール アドレスを入力してください |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&’' *+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)* $ |
+| **email_pattern** | ^[a-zA-Z0-9.!#$%&'' *+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)* $ |
 | **local_intro_username** | 自分のユーザー名でサインイン |
 | **logonIdentifier_username** | ユーザー名 |
 | **requiredField_username** | ユーザー名を入力してください |
@@ -91,7 +91,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 | **UserMessageIfUserAccountLocked** | ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。 後で再試行してください。 |
 | **AADRequestsThrottled** | この時点でリクエストが多すぎます。 しばらく待って、もう一度やり直してください。 |
 
-## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>サインアップとセルフ アサート ページのユーザー インターフェイス要素
+## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>サインアップとセルフアサート ページのユーザー インターフェイス要素
 
 以下は、`api.localaccountsignup`の ID を持つコンテンツ定義、または`api.selfasserted.profileupdate`や`api.localaccountpasswordreset`など、`api.selfasserted`で始まるコンテンツ定義の ID です。
 
@@ -132,7 +132,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 | **ver_intro_msg** | 確認が必要です。 [送信] ボタンをクリックしてください。 |
 | **ver_input** | 確認コード |
 
-### <a name="sign-up-and-self-asserted-pages-error-messages"></a>サインアップとセルフ アサート ページ エラー メッセージ
+### <a name="sign-up-and-self-asserted-pages-error-messages"></a>サインアップとセルフアサート ページ エラー メッセージ
 
 | id | 既定値 |
 | -- | ------------- |
@@ -215,9 +215,55 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 |verification_control_but_send_code |コードの送信 |
 |verification_control_but_send_new_code |新しいコードを送信します |
 |verification_control_but_verify_code |コードの確認 |
+|verification_control_code_sent| 確認コードが送信されました。 次の入力ボックスにコピーしてください。 |
+
+### <a name="example"></a>例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_change_claims">Change</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_fail_send_code">Failed to send the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_fail_verify_code">Failed to verify the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_code">Send Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_new_code">Send New Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_verify_code">Verify Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_code_sent">Verification code has been sent. Please copy it to the input box below.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="azure-mfa-error-messages"></a>Azure MFA エラー メッセージ
+
+[Azure MFA の技術プロファイル](multi-factor-auth-technical-profile.md)のエラー メッセージ用 ID を次に示します。
+
+| id | 既定値 |
+| -- | ------------- |
+|UserMessageIfCouldntSendSms | 電話に SMS を送信できません。別の電話番号をお試しください。 |
+|UserMessageIfInvalidFormat | 電話番号の形式が正しくありません。修正してから、もう一度お試しください。|
+|UserMessageIfMaxAllowedCodeRetryReached | 間違ったコードの入力回数が多くなりすぎました。後でもう一度お試しください。|
+|UserMessageIfServerError | MFA サービスを使用できませんでした。後でもう一度お試しください。|
+|UserMessageIfThrottled | 要求が調整されています。後でもう一度お試しください。|
+|UserMessageIfWrongCodeEntered|間違ったコードが入力されました。後でもう一度お試しください。|
+
+### <a name="example"></a>例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfCouldntSendSms">Cannot Send SMS to the phone, please try another phone number.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidFormat">Your phone number is not in a valid format, please correct it and try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxAllowedCodeRetryReached">Wrong code entered too many times, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfServerError">Cannot use MFA service, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfThrottled">Your request has been throttled, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfWrongCodeEntered">Wrong code entered, please try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
 
 ## <a name="one-time-password-error-messages"></a>ワンタイム パスワードのエラー メッセージ
-[ワンタイム パスワードの技術プロファイル](one-time-password-technical-profile.md)のエラー メッセージ用 ID を次に示します。
+
+[ワンタイム パスワードの技術プロファイル](one-time-password-technical-profile.md)のエラー メッセージ用 ID を次に示します
 
 | id | 既定値 |
 | -- | ------------- |
@@ -225,6 +271,44 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 |UserMessageIfSessionDoesNotExist |ワンタイム パスワードの検証セッションが期限切れになりました |
 |UserMessageIfSessionConflict |ワンタイム パスワードの検証セッションが競合しています |
 |UserMessageIfInvalidCode |検証用に指定されたワンタイム パスワードが正しくありません |
+
+### <a name="example"></a>例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+
+## <a name="claims-transformations-error-messages"></a>要求の変換のエラー メッセージ
+
+要求の変換のエラー メッセージの ID を次に示します。
+
+| id | 要求の変換 | 既定値 |
+| -- | ------------- |------------- |
+|UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | 要求の種類 "inputClaim" のブール値の要求値の比較に失敗しました。| 
+|DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | 要求値の比較に失敗しました。指定された左オペランドが右オペランドを超えています。|
+|UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | StringComparison "OrdinalIgnoreCase" を使用した要求値の比較に失敗しました。|
+
+### <a name="example"></a>例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsTransformationBooleanValueIsNotEqual">Your email address hasn't been verified.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="DateTimeGreaterThan">Expiration date must be greater that the current date.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsTransformationStringsAreNotEqual">The email entry fields do not match. Please enter the same email address in both fields and try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+
 
 
 

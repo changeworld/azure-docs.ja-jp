@@ -10,10 +10,10 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
 ms.openlocfilehash: 26837337b49d79a26404fd6709b036f6907720f8
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73838851"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>データで回答できる質問をする
@@ -36,7 +36,7 @@ ms.locfileid: "73838851"
 * ビデオ 4: [単純なモデルで回答を予測する](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
 * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
-## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>トランスクリプト:データで回答できる質問をする
+## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>トランスクリプト: データで回答できる質問をする
 "初心者向けデータ サイエンス" シリーズの 3 番目のビデオへようこそ。  
 
 このビデオでは、データで回答できる質問を考えるためのヒントが得られます。
@@ -90,6 +90,6 @@ ms.locfileid: "73838851"
 
 Microsoft Azure Machine Learning Studio (クラシック) の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試行する](create-experiment.md)
 * [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/preview/overview-what-is-azure-ml)

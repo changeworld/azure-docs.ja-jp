@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 802dfa7e3b2d0b9deac957662ac1e7604d085fd9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6bae9e871be2a5d56d057d2a077de53329b8c3ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828086"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79208947"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance への SQL Server インスタンスの移行
 
@@ -196,7 +196,7 @@ SAS 資格情報を使用してデータベース バックアップをマネー
 
 高度な管理とセキュリティの機能に加えて、マネージド インスタンスでは[ワークロードの監視とチューニング](sql-database-monitor-tune-overview.md)に役立つ高度なツールのセットが提供されます。 [Azure SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) では、マネージド インスタンスの大規模なセットを監視し、多数のインスタンスとデータベースの監視を一元化することができます。 マネージド インスタンスの[自動チューニング](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)では、SQL プランの実行統計のパフォーマンスが継続的に監視されて、識別されたパフォーマンスの問題が自動的に修正されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - マネージド インスタンスについては、[マネージド インスタンス](sql-database-managed-instance.md)に関するページを参照してください。
 - バックアップからの復元を含むチュートリアルについては、[マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)に関するページを参照してください。

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 2cf682a404154b9c1bb94680b3adb673892c1c72
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566476"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79137905"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Azure Cosmos DB を使用して地理空間データのインデックスを付ける
 
@@ -25,6 +25,44 @@ Azure Cosmos DB のデータベース エンジンは、本当にスキーマに
 > Azure Cosmos DB は、Point、LineString、Polygon、および MultiPolygon のインデックス作成をサポートしています
 >
 >
+
+## <a name="modifying-geospatial-data-type"></a>地理空間データ型の変更
+
+コンテナーでは、`geospatialConfig` によって、地理空間データのインデックスの作成方法が指定されます。 コンテナーごとに 1 つの `geospatialConfig` (geography または geometry) を指定する必要があります。 指定しない場合、`geospatialConfig` は既定で geography データ型になります。 `geospatialConfig` を変更すると、コンテナー内のすべての既存の地理空間データのインデックスが再作成されます。
+
+> [!NOTE]
+> Azure Cosmos DB では、現時点では .NET SDK バージョン 3.6 以降のみの geospatialConfig への変更がサポートされています。
+>
+
+次の例では、`geospatialConfig` プロパティを設定し、**boundingBox** を追加することで、地理空間データ型を `geometry` に変更しています。
+
+```csharp
+    //Retrieve the container's details
+    ContainerResponse containerResponse = await client.GetContainer("db", "spatial").ReadContainerAsync();
+    //Set GeospatialConfig to Geometry
+    GeospatialConfig geospatialConfig = new GeospatialConfig(GeospatialType.Geometry);
+    containerResponse.Resource.GeospatialConfig = geospatialConfig;
+    // Add a spatial index including the required boundingBox
+    SpatialPath spatialPath = new SpatialPath
+            {  
+                Path = "/locations/*",
+                BoundingBox = new BoundingBoxProperties(){
+                    Xmin = 0,
+                    Ymin = 0,
+                    Xmax = 10,
+                    Ymax = 10
+                }
+            };
+    spatialPath.SpatialTypes.Add(SpatialType.Point);
+    spatialPath.SpatialTypes.Add(SpatialType.LineString);
+    spatialPath.SpatialTypes.Add(SpatialType.Polygon);
+    spatialPath.SpatialTypes.Add(SpatialType.MultiPolygon);
+
+    containerResponse.Resource.IndexingPolicy.SpatialIndexes.Add(spatialPath);
+
+    // Update container with changes
+    await client.GetContainer("db", "spatial").ReplaceContainerAsync(containerResponse.Resource);
+```
 
 ## <a name="geography-data-indexing-examples"></a>geography データのインデックス付けの例
 
@@ -58,11 +96,64 @@ Azure Cosmos DB のデータベース エンジンは、本当にスキーマに
 
 > [!NOTE]
 > ドキュメント内の GeoJSON の location 値が無効であったり形式が正しくなかったりした場合、空間クエリ用のインデックスは作成されません。 ST_ISVALID と ST_ISVALIDDETAILED を使用して location 値を検証できます。
->
->
->
 
 Azure CLI、PowerShell、または任意の SDK を使用して、[インデックス作成ポリシーを変更する](how-to-manage-indexing-policy.md)こともできます。
+
+## <a name="geometry-data-indexing-examples"></a>geometry データのインデックス作成の例
+
+**geometry** データ型では、geography データ型と同様に、関連パスとインデックスを作成する型を指定する必要があります。 さらに、インデックス作成ポリシー内に `boundingBox` を指定して、その特定のパスに対してインデックスを作成する領域を指定する必要があります。 それぞれの地理空間パスには、独自の `boundingBox` が必要です。
+
+境界ボックスは、次のプロパティで構成されます。
+
+- **xmin**: インデックスを作成する領域の最小 x 座標
+- **ymin**: インデックスを作成する領域の最小 y 座標
+- **xmax**: インデックスを作成する領域の最大 x 座標
+- **ymax**: インデックスを作成する領域の最大 x 座標
+
+幾何データで用いられる平面は無限に広がっている可能性があるため、境界ボックスが必要です。 ただし、空間インデックスでは、有限の空間が必要です。 **geography** データ型では、地球が境界であり、境界ボックスを設定する必要はありません。
+
+データのすべて (またはほとんど) を含む境界ボックスを作成する必要があります。 空間インデックスを利用できるのは、完全に境界ボックスの内側にあるオブジェクトに対する計算を行う操作だけです。 クエリのパフォーマンスに悪影響を与えるため、境界ボックスは、必要以上に大きくしないようにする必要があります。
+
+次に示すのは、**geospatialConfig** を `geometry` に設定して、**幾何**データのインデックスを作成するインデックス作成ポリシーの例です。
+
+```json
+ {
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ],
+    "spatialIndexes": [
+        {
+            "path": "/locations/*",
+            "types": [
+                "Point",
+                "LineString",
+                "Polygon",
+                "MultiPolygon"
+            ],
+            "boundingBox": {
+                "xmin": -10,
+                "ymin": -20,
+                "xmax": 10,
+                "ymax": 20
+            }
+        }
+    ]
+}
+```
+
+上記のインデックス作成ポリシーには、x 座標 (-10, 10)、y 座標 (-20, 20) の**境界ボックス**が使用されています。 上記のインデックス作成ポリシーが指定されているコンテナーでは、この領域内にあるすべてのポイント、ポリゴン、マルチポリゴン、およびラインストリングのインデックスが作成されます。
+
+> [!NOTE]
+> **boundingBox** を含むインデックス作成ポリシーを `geography` データ型のコンテナーに追加する操作は失敗します。 **boundingBox** を追加する前に、コンテナーの **geospatialConfig** を `geometry` に変更する必要があります。 コンテナーの地理空間データ型を選択する前または後に、データの追加や、インデックス作成ポリシーの残りの部分 (パスや種類など) の変更を行うことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

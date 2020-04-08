@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66234052"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Data Lake Storage Gen1 による Azure Active Directory を使用したエンドユーザー認証
@@ -78,7 +78,7 @@ Azure Active Directory を使用して Data Lake Storage Gen1 によるエンド
 
 リンクの指示に従うときは、次のスクリーンショットに示すように、アプリケーションの種類として **[ネイティブ]** を必ず選択してください。
 
-![Web アプリの作成](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "ネイティブ アプリの作成")
+![Web アプリを作成する](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "ネイティブ アプリを作成する")
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>手順 2:アプリケーション ID とリダイレクト URI を取得する
 
@@ -115,7 +115,7 @@ Azure Active Directory を使用して Data Lake Storage Gen1 によるエンド
 
 5. 最後の 2 つの手順を繰り返して、**Windows Azure Service Management API** にも、アクセス許可を与えます。
    
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Azure AD ネイティブ アプリケーションを作成し、.NET SDK、Java SDK、REST API などを使用して作成するクライアント アプリケーションに必要な情報を収集しました。これで、以下の記事に進むことができます。これらの記事では、Azure AD Web アプリケーションを使用して、最初に Data Lake Storage Gen1 による認証を行ってからストアに対して他の操作を実行する方法について説明しています。
 
 * [Data Lake Storage Gen1 による Java SDK を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-java-sdk.md)

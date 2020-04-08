@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory の Webhook アクティビティ
-description: Webhook アクティビティは、ユーザーが指定する特定の条件でアタッチされたデータセットを検証するまで、パイプラインの実行を継続しません。
+description: Webhook アクティビティは、ユーザーが指定する特定の条件で接続されたデータセットを検証するまで、パイプラインの実行を継続しません。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,15 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 8c52bb21276071581a83fb3ee6a3a4a31ba0bb4a
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: ced2279878ee2eb361ec7338647418658e411513
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78400005"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79213011"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory の Webhook アクティビティ
-Webhook アクティビティを使用すると、カスタム コードでパイプラインの実行を制御できます。 Webhook アクティビティを使用すると、顧客は、エンドポイントを呼び出し、コールバック URL を渡ことができます。 パイプラインの実行は、コールバックが呼び出されるのを待ってから、次のアクティビティに進みます。
+
+Webhook アクティビティを使用すると、カスタム コードでパイプラインの実行を制御できます。 Webhook アクティビティを使用すると、顧客のコードでエンドポイントを呼び出して、コールバック URL を渡すことができます。 パイプラインでは、次のアクティビティに進む前に、コールバックが呼び出されるまで実行が待機されます。
 
 ## <a name="syntax"></a>構文
 
@@ -48,30 +49,27 @@ Webhook アクティビティを使用すると、カスタム コードでパ�
 
 ```
 
-
 ## <a name="type-properties"></a>型のプロパティ
-
-
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-name | Webhook アクティビティの名前 | String | はい |
-type | **WebHook** に設定する必要があります。 | String | はい |
-method | ターゲット エンドポイント用の Rest API メソッド。 | 文字列 をオンにします。 サポートされている型'POST' | はい |
-url | ターゲット エンドポイントおよびパス | 文字列 (または文字列の resultType を含む式)。 | はい |
-headers | 要求に送信されるヘッダー。 たとえば、要求に種類と言語を設定する場合: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }。 | 文字列 (または文字列の resultType を含む式) | あり。Content-type ヘッダーが必要です。 "headers":{ "Content-Type":"application/json"} |
-body | エンドポイントに送信されるペイロードを表します。 | 有効な JSON (または JSON の resultType を含む式)。 「[要求ペイロードのスキーマ](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0)」セクションにある要求ペイロードのスキーマを参照してください。 | はい |
-認証 | エンドポイントを呼び出すために使用される認証方法。 サポートされるタイプは "Basic" または "ClientCertificate" です。 詳細については、「[認証](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23authentication&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=GdA1%2Fh2pAD%2BSyWJHSW%2BSKucqoAXux%2F4L5Jgndd3YziM%3D&amp;reserved=0)」セクションを参照してください。 認証が必要ない場合は、このプロパティを除外します。 | 文字列 (または文字列の resultType を含む式) | いいえ |
-timeout | &#39;callBackUri&#39; が呼び出されるまでのアクティビティの待機時間。 "callBackUri" が呼び出されるまでのアクティビティの待機時間。 既定値は 10 分 (“00:10:00”) です。 形式は期間 (つまり、d.hh:mm:ss) です | String | いいえ |
-[Report status on callback] (コールバックで状態を報告する) | アクティビティを "失敗" とマークする Webhook アクティビティの失敗状態をユーザーが報告できるようにします。 | Boolean | いいえ |
+**name** | Webhook アクティビティの名前。 | String | はい |
+**type** | "WebHook" に設定する必要があります。 | String | はい |
+**method** | ターゲット エンドポイント用の REST API メソッド。 | 文字列 をオンにします。 サポートされている型は "POST" です。 | はい |
+**url** | ターゲット エンドポイントおよびパス。 | 文字列または **resultType** 値の文字列が含まれる式。 | はい |
+**headers** | 要求に送信されるヘッダー。 言語と種類を要求に設定する場合の例を次に示します。`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 文字列または **resultType** 値の文字列が含まれる式。 | はい。 `"headers":{ "Content-Type":"application/json"}` のような `Content-Type` ヘッダーが必要です。 |
+**body** | エンドポイントに送信されるペイロードを表します。 | 有効な JSON または **resultType** 値の JSON が含まれる式。 要求ペイロードのスキーマについては、「[要求ペイロードのスキーマ](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema)」を参照してください。 | はい |
+**認証** | エンドポイントを呼び出すために使用される認証方法。 サポートされる種類は "Basic" および "ClientCertificate" です。 詳細については、[認証](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication)に関するページをご覧ください。 認証が必要ない場合は、このプロパティを除外します。 | 文字列または **resultType** 値の文字列が含まれる式。 | いいえ |
+**timeout** | **callBackUri** で指定されたコールバックが呼び出されるまでのアクティビティの待機時間。 既定値は 10 分 ("00:10:00") です。 値の TimeSpan 形式は *d*.*hh*:*mm*:*ss* です。 | String | いいえ |
+**Report status on callback (コールバックで状態を報告する)** | ユーザーが Webhook アクティビティの失敗した状態を報告できるようにします。 | Boolean | いいえ |
 
 ## <a name="authentication"></a>認証
 
-Webhook アクティビティでサポートされている認証の種類を以下に示します。
+Webhook アクティビティでは、次の認証の種類がサポートされます。
 
 ### <a name="none"></a>なし
 
-認証が必要ない場合は、"authentication" プロパティを含めないでください。
+認証が必要ない場合は、**authentication** プロパティを含めないでください。
 
 ### <a name="basic"></a>Basic
 
@@ -109,26 +107,26 @@ PFX ファイルの Base64 でエンコードされたコンテンツとパス�
 ```
 
 > [!NOTE]
-> ご利用のデータ ファクトリが git リポジトリを使用して構成されている場合、基本認証またはクライアント証明書認証を使用するには、ご自分の資格情報を Azure Key Vault に格納する必要があります。 Azure Data Factory では、git にパスワードは保存されません。
+> ご利用のデータ ファクトリが Git リポジトリを使用して構成されている場合、基本認証またはクライアント証明書認証を使用するには、ご自分の資格情報を Azure Key Vault に格納する必要があります。 Azure Data Factory では、Git にパスワードは保存されません。
 
 ## <a name="additional-notes"></a>その他のメモ
 
-Azure Data Factory では、本文中にある追加のプロパティ "callBackUri" を url エンドポイントに渡されます。また、この uri が指定されたタイムアウト値の前に呼び出されることが期待されます。 この uri が呼び出されない場合、アクティビティは状態 'TimedOut' で失敗します。
+Data Factory では、URL エンドポイントに送信される本文に追加のプロパティ **callBackUri** が渡されます。 Data Factory は、指定されたタイムアウト値の前にこの URI が呼び出されることを想定しています。 この URI が呼び出されない場合、アクティビティは状態 'TimedOut' で失敗します。
 
-Webhook アクティビティ自体が失敗するのは、カスタム エンドポイントへの呼び出しが失敗した場合です。 すべてのエラー メッセージをコールバックの本文に追加して、後続のアクティビティで使用することができます。
+Webhook アクティビティが失敗するのは、カスタム エンドポイントへの呼び出しが失敗した場合です。 任意のエラー メッセージをコールバックの本文に追加して、その後のアクティビティで使用できます。
 
-さらに、REST API の呼び出しごとに、エンドポイントが 1 分以内に応答しなかった場合、クライアントはタイムアウトになります。これが標準の HTTP ベスト プラクティスです。 この問題を解決するには、202 パターンを実装する必要があります。この場合、エンドポイントは 202 (Accepted) を返し、クライアントはポーリングを行います。
+毎回の REST API 呼び出しでは、エンドポイントが 1 分以内に応答しない場合、クライアントがタイムアウトします。 この動作は、HTTP の標準的なベスト プラクティスです。 この問題を解決するには、202 パターンを実装します。 現在のケースでは、エンドポイントで 202 (受理) が返され、クライアントでポーリングが行われます。
 
-要求時の 1 分間のタイムアウトは、アクティビティ タイムアウトとは関係ありません。 これは callbackUri を待機するために使用されます。
+要求時の 1 分間のタイムアウトは、アクティビティ タイムアウトとは関係ありません。 後者は、**callbackUri** によって指定されたコールバックを待機するために使用されます。
 
-コールバック URI に戻される本文は、有効な JSON である必要があります。 Content-Type ヘッダーを `application/json` に設定する必要があります。
+コールバック URI に戻される本文は、有効な JSON である必要があります。 `Content-Type` ヘッダーを `application/json` に設定します。
 
-[Report status on callback] (コールバックで状態を報告する) オプションを使用する場合は、コールバックを作成するときに本文に次のスニペットを追加する必要があります。
+**[Report status on callback]\(コールバックで状態を報告する\)** プロパティを使用する場合は、コールバックを作成するときに本文に次のコードを追加する必要があります。
 
-```
+```json
 {
     "Output": {
-        // output object will be used in activity output
+        // output object is used in activity output
         "testProp": "testPropValue"
     },
     "Error": {
@@ -136,15 +134,13 @@ Webhook アクティビティ自体が失敗するのは、カスタム エン�
         "ErrorCode": "testErrorCode",
         "Message": "error message to show in activity error"
     },
-    "StatusCode": "403" // when status code is >=400, activity will be marked as failed
+    "StatusCode": "403" // when status code is >=400, activity is marked as failed
 }
 ```
 
-
-
 ## <a name="next-steps"></a>次のステップ
 
-Data Factory でサポートされている他の制御フロー アクティビティを参照してください。
+Data Factory でサポートされている次の制御フロー アクティビティを参照してください。
 
 - [If Condition アクティビティ](control-flow-if-condition-activity.md)
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)

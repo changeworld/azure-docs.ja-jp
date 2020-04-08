@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
 ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69872481"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
@@ -101,7 +101,7 @@ D2C メッセージでのデバイスのなりすましを回避するために�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * IoT Hub でのメッセージ サイズの制限については、[IoT Hub のクォータと調整](iot-hub-devguide-quotas-throttling.md)に関するページをご覧ください。
 

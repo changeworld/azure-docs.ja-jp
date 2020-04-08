@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74871144"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB での結合
@@ -252,8 +252,8 @@ JOIN 句の便利な点は、クロス積からタプルを生成できる点で
     ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [使用の開始](sql-query-getting-started.md)
+- [作業の開始](sql-query-getting-started.md)
 - [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmosdb-dotnet)
 - [サブクエリ](sql-query-subquery.md)

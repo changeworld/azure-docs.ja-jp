@@ -17,10 +17,10 @@ ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: edf918b57212cf2adfbffb358a0257d9dbea85e9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275881"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリからユーザーまたはグループの割り当てを削除する
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) で、エンタープライズ アプリケー
 1. **[Azure Active Directory - *directoryname*]** ページ (管理対象のディレクトリの Azure AD ページ) で、 **[エンタープライズ アプリケーション]** を選択します。
 1. **[エンタープライズ アプリケーション - すべてのアプリケーション]** ページに、管理できるアプリのリストが表示されます。 アプリを選択します。
 1. ***[appname]*** 概要ページ (選択したアプリの名前がタイトルに含まれるページ) で、 **[ユーザーとグループ]** を選択します。
-1. [***appname*** - **ユーザーとグループの割り当て**] ページで、1 人以上のユーザーまたは 1 つ以上のグループを選択し、 **[削除]** をクリックします。 確認メッセージが表示されたら、削除を確定します。
+1. [***appname*** **- ユーザーとグループの割り当て**] ページで、1 人以上のユーザーまたは 1 つ以上のグループを選択し、 **[削除]** をクリックします。 確認メッセージが表示されたら、削除を確定します。
 
 ## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-using-powershell"></a>PowerShell を使用してエンタープライズ アプリに対するユーザーまたはグループの割り当てを削除する方法
 
@@ -64,7 +64,7 @@ Azure Active Directory (Azure AD) で、エンタープライズ アプリケー
     Remove-AzureADServiceAppRoleAssignment -ObjectId $spo.ObjectId -AppRoleAssignmentId $assignments[assignment #].ObjectId
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [自分のグループをすべて表示する](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](assign-user-or-group-access-portal.md)

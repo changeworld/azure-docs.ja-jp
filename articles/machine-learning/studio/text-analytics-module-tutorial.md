@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 34607b15dbffa8869cbb4e8d1dd0903aa0131304
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 89fc5196977f53e040e1a6553b46ca57f39b18b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169147"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79217879"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) で感情分析モデルを作成する
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Azure Machine Learning Studio (クラシック) を使用して、テキスト分析モデルを構築し、運用可能な状態にすることができます。 こうしたモデルは、たとえば、ドキュメントの分類やセンチメント分析の問題を解決するのに役立ちます。
 
@@ -29,7 +31,7 @@ Azure Machine Learning Studio (クラシック) を使用して、テキスト�
 4. モデルのスコア付けと検証
 5. 運用環境へのモデルのデプロイ
 
-このチュートリアルでは、Amazon Book Reviews データセットを使用したセンチメント解析モデルを進めながら上記の手順を学習します。John Blitzer、Mark Dredze、Fernando Pereira による研究論文「Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification (伝記、ボリウッド、ラジオカセットレコーダ、ミキサー: 感想の分類に対する領域適応) コンピューター言語学会 (ACL)、2007 年」を参照してください。このデータセットは、レビュー スコア (1-2 または 4-5) と自由形式のテキストから構成されています。 目標は、レビュー スコアが低 (1-2) であるか高 (4-5) であるかを予測することです。
+このチュートリアルでは、Amazon Book Reviews データセットを使用した感情分析モデルを通して上記の手順を学習します (John Blitzer、Mark Dredze、Fernando Pereira による研究論文「Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification (伝記、ボリウッド、ラジカセ、ミキサー: 感想の分類に対する領域適応)、コンピューター言語学会 (ACL)、2007 年」を参照してください)。このデータセットは、レビュー スコア (1-2 または 4-5) と自由形式のテキストから構成されています。 目標は、レビュー スコアが低 (1-2) であるか高 (4-5) であるかを予測することです。
 
 Azure AI ギャラリーで、このチュートリアルで取り上げた実験をご覧になれます。
 

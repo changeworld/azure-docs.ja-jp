@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 650798fdb884e6494990efb533335a1dd8b4d89f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67875391"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple でホストされたファイル共有向けの Azure Site Recovery を使用した自動ディザスター リカバリー ソリューション
@@ -142,7 +142,7 @@ StorSimple ボリュームの **[このボリュームの既定のバックア�
 ASR で復旧計画を作成し、ファイル共有のフェールオーバー プロセスを自動化することができます。 障害が発生した場合は、ワンクリックするだけで数分以内にファイル共有を稼働できます。 この自動化を有効にするには、Azure オートメーション アカウントが必要です。
 
 #### <a name="to-create-an-automation-account"></a>オートメーション アカウントを作成するには
-1. Azure ポータル &gt; **[Automation]** セクションに移動します。
+1. Azure portal &gt; **[Automation]** セクションに移動します。
 1. **[+ 追加]** ボタンをクリックして、以下のブレードを開きます。
    
    ![Automation アカウントの追加](./media/storsimple-disaster-recovery-using-azure-site-recovery/image11.png)
@@ -282,8 +282,8 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
    
    ![フェールオーバーの開始](./media/storsimple-disaster-recovery-using-azure-site-recovery/image8.png)
    
-1. **[OK]** をクリックすると、フェールオーバーが開始されます。 進行状況を追跡するには、VM をクリックしてそのプロパティを開くか、コンテナー名 &gt; をクリックし、 **[ジョブ]** &gt; **[Site Recovery ジョブ]** の順にクリックして **[テスト フェールオーバー]** ジョブをクリックします。
-1. フェールオーバーの完了後は、Azure ポータル &gt; **[仮想マシン]** にレプリカの Azure マシンも表示されるようになります。 検証を実行できます。
+1. **[OK]** をクリックすると、フェールオーバーが開始されます。 進行状況を追跡するには、VM をクリックしてそのプロパティを開くか、コンテナー名 &gt; **[ジョブ]** &gt; **[Site Recovery ジョブ]** の順にクリックして、 **[テスト フェールオーバー]** ジョブをクリックします。
+1. フェールオーバーの完了後は、Azure portal &gt; **[仮想マシン]** にレプリカの Azure マシンも表示されるようになります。 検証を実行できます。
 1. 検証が完了したら、 **[Validations Complete (検証完了)]** をクリックします。 これで、StorSimple ボリュームが削除され、StorSimple Cloud Appliance がシャットダウンされます。
 1. 完了したら、復旧計画の **[Cleanup test failover (テスト フェールオーバーのクリーンアップ)]** をクリックします。 [メモ] を使用して、テスト フェールオーバーに関連する観察結果をすべて記録し、保存します。 これで、テスト フェールオーバー中に作成された仮想マシンが削除されます。
 
@@ -291,7 +291,7 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
    計画フェールオーバーでは、オンプレミスのファイル サーバー VM が正常にシャットダウンされ、StorSimple デバイス上のボリュームのクラウド バックアップ スナップショットが取得されます。 StorSimple ボリュームが仮想デバイスにフェールオーバーされ、Azure でレプリカ VM が稼働した後に、これらのボリュームが VM に接続されます。
 
 #### <a name="to-perform-a-planned-failover"></a>計画フェールオーバーを実行するには
-1. Azure ポータルで、ファイル サーバー VM 用に作成した **[復旧サービス]** コンテナー &gt; **[復旧計画 (サイトの回復)]** &gt; **recoveryplan_name** を選択します。
+1. Azure portal で、ファイル サーバー VM 用に作成した **[復旧サービス]** コンテナー &gt; **[復旧計画 (サイトの回復)]** &gt; **recoveryplan_name** を選択します。
 1. [復旧計画] ブレードで、 **[詳細]** &gt; **[計画されたフェールオーバー]** をクリックします。
 
    ![復旧計画](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
@@ -303,7 +303,7 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 計画外フェールオーバーでは、StorSimple ボリュームが仮想デバイスにフェールオーバーされ、レプリカ VM が Azure で稼働した後に、これらのボリュームが VM に接続されます。
 
 #### <a name="to-perform-a-failover"></a>フェールオーバーを実行するには
-1. Azure ポータルで、ファイル サーバー VM 用に作成した **[復旧サービス]** コンテナー &gt; **[復旧計画 (サイトの回復)]** &gt; **recoveryplan_name** を選択します。
+1. Azure portal で、ファイル サーバー VM 用に作成した **[復旧サービス]** コンテナー &gt; **[復旧計画 (サイトの回復)]** &gt; **recoveryplan_name** を選択します。
 1. [復旧計画] ブレードで、 **[詳細]** &gt; **[フェールオーバー]** をクリックします。
 1. **[フェールオーバーの確認]** ブレードで、ソースとターゲットの場所を選択します。
 1. **[仮想マシンをシャットダウンして最新のデータを同期]** を選択し、Site Recovery が保護された仮想マシンをシャットダウンしてデータを同期するように指定することで、最新バージョンのデータをフェールオーバーします。
@@ -314,7 +314,7 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 フェールバックでは、バックアップの作成後に、StorSimple ボリューム コンテナーが元の物理デバイスにフェールオーバーされます。
 
 #### <a name="to-perform-a-failback"></a>フェールバックを実行するには
-1. Azure ポータルで、ファイル サーバー VM 用に作成した **[復旧サービス]** コンテナー &gt; **[復旧計画 (サイトの回復)]** &gt; **recoveryplan_name** を選択します。
+1. Azure portal で、ファイル サーバー VM 用に作成した **[復旧サービス]** コンテナー &gt; **[復旧計画 (サイトの回復)]** &gt; **recoveryplan_name** を選択します。
 1. [復旧計画] ブレードで、 **[詳細]** &gt; **[計画されたフェールオーバー]** をクリックします。
 1. ソースとターゲットの場所を選択し、適切なデータ同期と VM 作成のオプションを選択します。
 1. **[OK]** ボタンをクリックして、フェールバック プロセスを開始します。

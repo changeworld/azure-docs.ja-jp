@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275695"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
@@ -86,7 +86,7 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
 ![例:KCD の正しくない構成によるエラー](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-また、イベント ログ内に見られる、該当するエントリが、イベント 13019 またはイベント 12027 として記録されます。 **Microsoft**&gt;**AadApplicationProxy**&gt;**Connector**&gt;**Admin** の**アプリケーションおよびサービスログ**&gt; 内に、コネクタのイベントログを見つけます。
+また、イベント ログ内に見られる、該当するエントリが、イベント 13019 またはイベント 12027 として記録されます。 コネクタのイベント ログを見つけます ( **[アプリケーションとサービス ログ]** &gt; **[Microsoft]** &gt; **[AadApplicationProxy]** &gt; **[コネクタ]** &gt; **[管理]** )。
 
 ![イベント 13019 (アプリケーション プロキシのイベント ログ)](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 
@@ -135,7 +135,7 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
       ![IIS アプリケーションの構成ウィンドウ](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic9.png)
 
-      Id を確認した後は、このアカウントが、問題のSPN と構成されていることを確認します。 例: `setspn –q http/spn.wacketywack.com`。 コマンド プロンプト ウィンドウに次のテキストを入力します：
+      Id を確認した後は、このアカウントが、問題のSPN と構成されていることを確認します。 たとえば `setspn –q http/spn.wacketywack.com` です。 コマンド プロンプト ウィンドウに次のテキストを入力します：
 
       ![SetSPN コマンド ウィンドウが表示されます](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
 
@@ -168,6 +168,6 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 - Azure アプリケーション プロキシは、Kerberos チケットを要求したうえで、その要求をアプリケーションに送信します。 一部のサードパーティ製アプリケーションは、この認証方法を受け付けません。 これらのアプリケーションは、より従来のネゴシエーションを実行することが予想されます。 最初の要求は、匿名です。401 を介して、サポートするタイプの認証で応答することを、アプリケーションに許可します。
 - ダブルホップ認証。アプリケーションが階層化されてバックエンドとフロントエンドがあり、どちらも認証を必要とするようなシナリオでこの認証が使用されます (SQL Reporting Services など)。 マルチホップ シナリオを構成するには、サポートの記事を参照してください。 [Kerberos 制約付き委任は、プロトコルの切り替えと複数ホップのシナリオを要求することがある](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)の記事です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [管理されたドメインで OU を作成する](../../active-directory-domain-services/deploy-kcd.md)。

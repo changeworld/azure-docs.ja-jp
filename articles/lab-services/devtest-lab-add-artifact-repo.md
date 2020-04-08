@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 1555eb4e48a0cf43a38aa811e20ffbbed8ee87a9
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1e7587c60e180fb35e1a2bed735b053b6b0c388a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755812"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294600"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>カスタム アーティファクトと Resource Manager テンプレートを格納するための Git リポジトリの追加
 
@@ -54,7 +54,7 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
 
 ### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Azure Repos のクローン URL と個人用アクセス トークンの取得
 
-1. チーム コレクションのホーム ページ (たとえば、 https://contoso-web-team.visualstudio.com) ) に移動し、プロジェクトを選択します。
+1. チーム コレクションのホーム ページ (たとえば、`https://contoso-web-team.visualstudio.com`) に移動し、プロジェクトを選択します。
 2. プロジェクトのホーム ページで、 **[コード]** を選択します。
 3. クローン URL を表示するには、プロジェクト **[Code (コード)]** ページで、 **[Clone (クローン)]** を選択します。
 4. URL を保存します。 後でこの URL を使用します。
@@ -71,7 +71,7 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
 10. [ラボのレポジトリへの接続](#connect-your-lab-to-the-repository)のセクションに進みます。
 
 ## <a name="connect-your-lab-to-the-repository"></a>ラボのレポジトリへの接続
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 2. **[その他のサービス]** を選択し、サービスの一覧で **[DevTest Labs]** を選択します。
 3. ラボの一覧でラボを選択します。 
 4. **[Configuration and policies]\(構成とポリシー\)**  >  **[リポジトリ]**  >  **[+ 追加]** を選択します。
@@ -93,7 +93,7 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 プライベート Git レポジトリを作成したら、必要に応じて、次のどちらかまたは両方を実行できます。
 * [カスタム アーティファクト](devtest-lab-artifact-author.md)を格納します。 後でこれらのアーティファクトを使用して、新しい VM を作成できます。
 * [Resource Manager テンプレートを使用して、マルチ VM 環境と PaaS リソースを作成](devtest-lab-create-environment-from-arm.md)します。 その後、テンプレートをプライベート リポジトリに格納します。

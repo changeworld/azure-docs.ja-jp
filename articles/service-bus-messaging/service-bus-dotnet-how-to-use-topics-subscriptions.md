@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/27/2019
 ms.author: aschhab
 ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74560094"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
@@ -75,7 +75,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
     static ITopicClient topicClient;
     ``` 
 
-3. `Main()` メソッドを次の **async** `Main` メソッドに置き換えて、次の手順で追加する SendmessagesAsync メソッドを使用して非同期的にメッセージを送信します。 
+3. `Main()` メソッドを、次の手順で追加する SendmessagesAsync メソッドを使用して非同期的にメッセージを送信する**非同期の** `Main` メソッドに置き換えます。 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -210,7 +210,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. `Main()` メソッドを次の **async** `Main` メソッドに置き換えます。 これにより、次の手順で追加する `RegisterOnMessageHandlerAndReceiveMessages()` メソッドが呼び出されます。 
+3. `Main()` メソッドを次の **async**`Main` メソッドに置き換えます。 これにより、次の手順で追加する `RegisterOnMessageHandlerAndReceiveMessages()` メソッドが呼び出されます。 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -373,7 +373,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
 > [!NOTE]
 > Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングのさらに高度な機能を紹介する、Service Bus の[サンプルが含まれる GitHub リポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples)を参照してください。
 

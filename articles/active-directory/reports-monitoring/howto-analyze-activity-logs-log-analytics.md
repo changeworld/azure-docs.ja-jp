@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2d6212692465270182db541889bed5f03a08a345
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74008284"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Monitor ログを使用して Azure AD アクティビティ ログを分析する
@@ -47,7 +47,7 @@ ms.locfileid: "74008284"
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Log Analytics ワークスペースに移動する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインします。 
 
 2. **[Azure Active Directory]** を選択し、 **[監視]** セクションから **[ログ]** を選択し、Log Analytics ワークスペースを開きます。 ワークスペースは既定のクエリで開きます。
 
@@ -111,7 +111,7 @@ Azure AD アクティビティ ログの事前構築済みログ分析ビュー�
 [Azure AD のアクティビティ ログ用の Log Analytics ビューをインストールして使用する](howto-install-use-log-analytics-views.md)方法を学習してください。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor ログでクエリの使用を開始する](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
 * [Create and manage alert groups in the Azure portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)

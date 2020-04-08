@@ -6,25 +6,30 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: bf0740bbdd4754aeba43e64f1076a1bea33cffc6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f049dc6d1261a8201cf79d1779e522b30d13c4b0
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844423"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409434"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics のクエリのトラブルシューティング
 
 この記事では、Stream Analytics のクエリの開発に関する一般的な問題と、そのトラブルシューティングの方法について説明します。
 
+この記事では、Azure Stream Analytics クエリの開発に関する一般的な問題、クエリの問題のトラブルシューティングの方法、および問題を修正する方法について説明します。 多くのトラブルシューティングの手順では、Stream Analytics ジョブに対して診断ログを有効にする必要があります。 診断ログが有効になっていない場合は、「[診断ログを使用した Azure Stream Analytics のトラブルシューティング](stream-analytics-job-diagnostic-logs.md)」を参照してください。
+
 ## <a name="query-is-not-producing-expected-output"></a>クエリが予想される出力を生成しない
+
 1.  ローカルでテストしてエラーを調査します。
+
     - Azure portal の **[クエリ]** タブで **[テスト]** を選択します。 ダウンロードしたサンプル データを使用して[クエリをテスト](stream-analytics-test-query.md)します。 すべてのエラーを調査し、修正を試みます。   
     - また、Visual Studio の Azure Stream Analytics ツール、または [Visual Studio Code](visual-studio-code-local-run-live-input.md) を使用して、[クエリをローカルでテスト](stream-analytics-live-data-local-testing.md)することもできます。 
 
-2.  Visual Studio の Azure Stream Analytics ツールで、[ジョブ ダイアグラムを使用して段階を追ってローカルでクエリをデバッグ](debug-locally-using-job-diagram.md)します。 ジョブ ダイアグラムには、入力ソース (イベント ハブ、IoT Hub など) のデータが複数のクエリ ステップを介して、最終的にシンクの出力までどのように流れるかが示されます。 各クエリ ステップは、WITH ステートメントを使用してスクリプトに定義された一時的結果セットにマップされます。 各中間結果セット内の各クエリ ステップのデータとメトリックを表示して、問題の原因を見つけることができます。
+2.  Visual Studio の Azure Stream Analytics ツールで、[ジョブ ダイアグラムを使用して段階を追ってローカルでクエリをデバッグ](debug-locally-using-job-diagram.md)します。 ジョブ ダイアグラムには、入力ソース (イベント ハブ、IoT Hub など) のデータが複数のクエリ手順を介して最終的に出力シンクまでどのように流れるかが示されます。 各クエリ ステップは、WITH ステートメントを使用してスクリプトに定義された一時的結果セットにマップされます。 各中間結果セット内のデータとメトリックを表示して、問題の原因を見つけることができます。
+
     ![ジョブ ダイアグラムのプレビュー結果](./media/debug-locally-using-job-diagram/preview-result.png)
 
 3.  [**Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) を使用する場合は、イベントのタイムスタンプが[ジョブの開始時刻](stream-analytics-out-of-order-and-late-events.md)より後であることを確認します。
@@ -33,7 +38,8 @@ ms.locfileid: "76844423"
     - クエリ内の [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) 句がイベントをすべて除外してしまっている。この場合、出力が生成されません。
     - [**CAST**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) 関数が失敗したため、ジョブが失敗する。 型キャスト エラーを回避するには、代わりに [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) を使用します。
     - ウィンドウ関数を使用している場合に、ウィンドウ時間が終わっていない。ウィンドウ時間が完了し、クエリの出力が表示されるのを待つ必要があります。
-    - イベントのタイムスタンプがジョブの開始時刻よりも前になっている。この状態だと、イベントがドロップされてしまいます。
+    - イベントのタイムスタンプがジョブの開始時刻よりも前になっている。イベントがドロップされてしまいます。
+    - [**JOIN**](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) 条件が一致しない。 どれとも一致しない場合は、出力は 0 個になります。
 
 5.  イベント順序ポリシーが期待どおりに構成されていることを確認します。 **[設定]** に移動し、[ **[イベント順序]** ](stream-analytics-out-of-order-and-late-events.md) を選択します。 このポリシーは、 **[テスト]** ボタンを使用してクエリをテストする場合には適用 "*されません*"。 この結果が、ブラウザーでテストする場合と、運用環境でジョブを実行する場合の相違点の 1 つです。 
 
@@ -41,12 +47,15 @@ ms.locfileid: "76844423"
     - [監査ログ](../azure-resource-manager/resource-group-audit.md)を使用してフィルター処理を行い、エラーを特定してデバッグします。
     - [ジョブの診断ログ](stream-analytics-job-diagnostic-logs.md)を使用してエラーを特定し、デバッグします。
 
-## <a name="job-is-consuming-too-many-streaming-units"></a>ジョブで消費されるストリーミング ユニットが多すぎる
+## <a name="resource-utilization-is-high"></a>リソース使用率が高い
+
 Azure Stream Analytics で並列処理を活用していることを確認します。 入力パーティションの構成と分析クエリ定義のチューニングによって、Stream Analytics ジョブの[クエリ並列処理を使用してスケーリングする](stream-analytics-parallelization.md)ことをお勧めします。
 
 ## <a name="debug-queries-progressively"></a>クエリを段階的にデバッグする
 
-リアルタイムのデータ処理では、クエリの実行中にデータの状況を把握することが役に立つ場合があります。 Azure Stream Analytics ジョブの入力またはステップは複数回読み取ることができるため、追加の SELECT INTO ステートメントを記述することができます。 これを実行すると、中間データがストレージに出力され、データの正確性を確認できるようになります。これは、プログラムをデバッグする際に "*watch 変数*" によって行われる確認とまったく同じです。
+リアルタイムのデータ処理では、クエリの実行中にデータの状況を把握することが役に立つ場合があります。 これは、Visual Studio のジョブ ダイアグラムを使用して確認できます。 Visual Studio がない場合は、中間データを出力するための追加の手順を実行できます。
+
+Azure Stream Analytics ジョブの入力またはステップは複数回読み取ることができるため、追加の SELECT INTO ステートメントを記述することができます。 これを実行すると、中間データがストレージに出力され、データの正確性を確認できるようになります。これは、プログラムをデバッグする際に "*watch 変数*" によって行われる確認とまったく同じです。
 
 Azure Stream Analytics ジョブの次のサンプル クエリには、1 つのストリーム入力と 2 つの参照データ入力があり、Azure Table Storage に出力が行われます。 このクエリはイベント ハブと 2 つの参照 BLOB からのデータを結合し、名前とカテゴリの情報を取得します。
 

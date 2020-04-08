@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73483947"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
@@ -55,7 +55,7 @@ ms.locfileid: "73483947"
 
 6. *関数アプリ: 関数アプリ名: xxx* のような内容が表示されます。 関数アプリ名を書き留めます。これは後の手順で使用します。
 
-7. Azure Resource Manager テンプレートのデプロイが完了するまで待ちます。完了すると、 *"Resource Manager template deployment:Done"* (Resource Manager テンプレートのデプロイ: 完了) というメッセージが表示されます。
+7. Azure Resource Manager テンプレートのデプロイが完了するまで待ちます。完了すると、 *"Resource Manager template deployment:Done"* (関数アプリのデプロイ: 完了) というメッセージが表示されます。
 
 ## <a name="deploy-function-app"></a>関数アプリのデプロイ
 
@@ -106,9 +106,9 @@ MXChip IoT DevKit がコンピューターに接続されている状態で、�
 ![テスト手順の例](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Azure portal でデバイス ツインの生データを表示できます。[IoT Hub] -\> [IoT デバイス] -\> *\<お使いのデバイス\>*  -\>[デバイス ツイン] の順に選択します。
+> Azure portal でデバイス ツインの生データを表示できます。[IoT Hub] -\> [IoT デバイス] -\> " *\<お使いのデバイス\>* "  -\> [デバイス ツイン]。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、以下の方法について学習しました。
 - MXChip IoT DevKit デバイスを Azure IoT リモート監視ソリューション アクセラレータに接続します。

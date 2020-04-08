@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67108296"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Microsoft アプリケーションへのサインインに関する問題
@@ -63,7 +63,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
   * ユーザーのアカウントがサインイン用に**有効になっている**ことを確認します。[ユーザーのアカウントの状態を確認する](#problems-with-the-users-account)
 
-  * ユーザーの**パスワードが期限切れになったり、忘れられたりしていない**ことを確認します。 [ユーザーのパスワードをリセットする](#reset-a-users-password)か、[セルフサービスのパスワード リセットを有効にします](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
+  * ユーザーの**パスワードが期限切れになったり、忘れられたりしていない**ことを確認します。 [ユーザーのパスワードをリセットする](#reset-a-users-password)か、[セルフサービス パスワード リセットを有効にします](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
   * **多要素認証**がユーザー アクセスをブロックしていないことを確認します。 [ユーザーの多要素認証の状態を確認する](#check-a-users-multi-factor-authentication-status)か、[ユーザーの認証の連絡先情報を確認します](#check-a-users-authentication-contact-info)
 
@@ -101,7 +101,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 -   [ユーザーのパスワードをリセットする](#reset-a-users-password)
 
--   [セルフ サービスのパスワード リセットを有効にする](#enable-self-service-password-reset)
+-   [セルフサービス パスワード リセットを有効にする](#enable-self-service-password-reset)
 
 -   [ユーザーの多要素認証の状態を確認する](#check-a-users-multi-factor-authentication-status)
 
@@ -175,9 +175,9 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 10. この新しいパスワードをユーザーに知らせます。ユーザーは次の Azure Active Directory サインイン時にこのパスワードを変更する必要があります。
 
-### <a name="enable-self-service-password-reset"></a>セルフ サービスのパスワード リセットを有効にする
+### <a name="enable-self-service-password-reset"></a>セルフサービス パスワード リセットを有効にする
 
-セルフ サービスのパスワード リセットを有効にするには、次のデプロイ手順を実行します。
+セルフサービス パスワード リセットを有効にするには、次のデプロイ手順を実行します。
 
 -   [Azure Active Directory パスワードをユーザーがリセットできるようにする](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
@@ -205,7 +205,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 9. ユーザーの一覧からユーザーを選択し、多要素認証を必要に応じて**有効**、**無効**、または**適用**します。
 
-   * **メモ**:ユーザーが**適用**状態の場合は、一時的に**無効**に設定してユーザーが自分のアカウントに戻れるようにできます。 ユーザーがアカウントに戻ったら、ユーザーの状態を再度**有効**に変更して、ユーザーの連絡先情報を次のサインイン時に再登録するように要求します。 あるいは、[ユーザーの認証の連絡先情報を確認する](#check-a-users-authentication-contact-info)の手順に従って、このユーザーのデータを検証または設定することができます。
+   * **注**:ユーザーが**適用**状態の場合は、一時的に**無効**に設定してユーザーが自分のアカウントに戻れるようにできます。 ユーザーがアカウントに戻ったら、ユーザーの状態を再度**有効**に変更して、ユーザーの連絡先情報を次のサインイン時に再登録するように要求します。 あるいは、[ユーザーの認証の連絡先情報を確認する](#check-a-users-authentication-contact-info)の手順に従って、このユーザーのデータを検証または設定することができます。
 
 ### <a name="check-a-users-authentication-contact-info"></a>ユーザーの認証の連絡先情報を確認する
 
@@ -263,7 +263,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 6.  対象のユーザーを**検索**し、**行をクリック**して選択します。
 
-7.  **[ライセンス]** をクリックして、ユーザーに現在割り当てられているライセンスを確認します。
+7.  **[ライセンス]** をクリックして、ユーザーが現在割り当てられているライセンスを確認します。
 
 ### <a name="assign-a-user-a-license"></a>ユーザーにライセンスを割り当てる 
 
@@ -528,6 +528,6 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 -   [管理者の同意エンドポイントを使用する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)の**アクセス許可をディレクトリ管理者から要求する** セクションの下の指示に従って、この管理者レベル同意を強制的に行わせることもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [管理者の同意エンドポイントを使用する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
 

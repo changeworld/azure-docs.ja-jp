@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: eb303ecb5657e9312445093841cfa6c501efda18
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944794"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366496"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>プレビュー:Azure Active Directory 認証を使用して Azure の Linux 仮想マシンにログインする
 
@@ -57,6 +57,8 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
 
 >[!IMPORTANT]
 > このプレビュー機能を使用するには、サポートされている Linux ディストリビューションおよびサポートされている Azure リージョンのみに展開してください。 この機能は、Azure Government やソブリン クラウドではサポートされていません。
+>
+> Azure Kubernetes Service (AKS) クラスターでは、この拡張機能の使用はサポートされていません。 詳細については、[AKS のポリシーのサポート](../../aks/support-policies.md)に関するページを参照してください。
 
 
 CLI をローカルにインストールして使用する場合、Azure CLI バージョン 2.0.31 以降を実行していることがこのチュートリアルの要件になります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
@@ -66,6 +68,7 @@ CLI をローカルにインストールして使用する場合、Azure CLI バ
 Azure 内の Linux VM に対して Azure AD 認証を有効にするには、VM のネットワーク構成で、TCP ポート 443 を経由した次のエンドポイントへの発信アクセスが確実に許可されているようにする必要があります。
 
 * https:\//login.microsoftonline.com
+* https:\//login.windows.net
 * https:\//device.login.microsoftonline.com
 * https:\//pas.windows.net
 * https:\//management.azure.com
@@ -147,7 +150,7 @@ az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o 
 
 Azure AD 資格情報を使用して Azure Linux 仮想マシンにログインします。 `-l` パラメーターを使用して、独自の Azure AD アカウントのアドレスを指定できます。 例のアカウントを自分のものに置き換えてください。 アカウントのアドレスは、すべて小文字で入力する必要があります。 サンプルの IP アドレスを、前のコマンドの、ご自分の VM のパブリック IP アドレスに置き換えます。
 
-```azurecli-interactive
+```console
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
@@ -168,6 +171,7 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```bash
 %aad_admins ALL=(ALL) ALL
 ```
+
 次の行に置き換えることができます。
 
 ```bash
@@ -183,7 +187,7 @@ Azure AD の資格情報を使用して SSH 経由でログインしようとし
 
 SSH プロンプトで次のエラーが表示された場合は、*仮想マシンの管理者ログイン*または*仮想マシンのユーザー ログイン* ロールのいずれかをユーザーに付与する RBAC ポリシーが VM に設定されていることを確認してください。
 
-```bash
+```output
 login as: azureuser@contoso.onmicrosoft.com
 Using keyboard-interactive authentication.
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FJX327AXD to authenticate. Press ENTER when ready.

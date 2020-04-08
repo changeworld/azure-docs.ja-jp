@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 8da40aa04381542c8c750c8d7e33c9a29879371d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65900880"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
@@ -50,7 +50,7 @@ ms.locfileid: "65900880"
       * `Microsoft.Azure.Management.DataLake.Store` - このチュートリアルでは、v2.1.3-preview を使用します。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - このチュートリアルでは、v2.2.12 を使用します。
 
-        ![NuGet ソースの追加](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "新しい Azure Data Lake アカウントの作成")
+        ![NuGet ソースを追加する](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "新しい Azure Data Lake Store アカウントを作成する")
    4. **NuGet パッケージ マネージャー**を閉じます。
 5. **Program.cs**を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
 
@@ -93,7 +93,7 @@ ms.locfileid: "65900880"
 
 記事の以降のセクションでは、認証、ファイルのアップロードなどの操作を実行する .NET メソッドの使用方法について説明します。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 * アプリケーションのエンドユーザー認証については、[Data Lake Storage Gen1 での .NET SDK を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-net-sdk.md)に関するページを参照してください。
 * アプリケーションのサービス間認証については、[.NET SDK を使用した Data Lake Storage Gen1 に対するサービス間認証](data-lake-store-service-to-service-authenticate-net-sdk.md)に関するページを参照してください。
@@ -104,7 +104,7 @@ ms.locfileid: "65900880"
     // Create client objects and set the subscription ID
     _adlsClient = new DataLakeStoreAccountManagementClient(armCreds) { SubscriptionId = _subId };
     
-## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントの作成
+## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントを作成する
 次のスニペットを使用して、Data Lake Storage Gen1 アカウント クライアント オブジェクトの作成中に指定した Azure サブスクリプションに Data Lake Storage Gen1 アカウントを作成します。
 
     // Create Data Lake Storage Gen1 account
@@ -139,5 +139,5 @@ ms.locfileid: "65900880"
 * [.NET SDK を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作](data-lake-store-data-operations-net-sdk.md)。
 * [Data Lake Storage Gen1 .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)

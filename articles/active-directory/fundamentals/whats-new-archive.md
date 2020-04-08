@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 03/25/2020
 ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd376474da2116837278cd4886465c53a99e5455
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 15f5563c11e6abc5452ace01822e5559d04808df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190621"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369642"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -31,6 +31,158 @@ Azure Active Directory の新着情報のリリース ノートでは、次の�
 - バグの修正
 - 非推奨の機能
 - 変更の計画
+
+---
+
+## <a name="september-2019"></a>2019 年 9 月
+
+### <a name="plan-for-change-deprecation-of-the-power-bi-content-packs"></a>変更の計画: Power BI コンテンツ パックの廃止
+
+**種類:** 変更の計画  
+**サービス カテゴリ:** レポーティング  
+**製品の機能:** 監視とレポート
+
+2019 年 10 月 1 日より、Power BI では、Azure AD Power BI コンテンツ パックを含む、すべてのコンテンツ パックの廃止が開始します。 このコンテンツ パックに代わり、Azure AD ブックを使用して、Azure AD 関連のサービスに関する分析情報を取得できます。 レポート専用モードの条件付きアクセス ポリシーに関するブック、アプリ同意に基づく分析情報など、その他のブックも表示されます。
+
+ブックに関する詳細については、[Azure Active Directory レポートに Azure Monitor ブックを使用する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks)に関する記事を参照してください。 コンテンツ パックの廃止に関する詳細は、「[Announcing Power BI template apps general availability](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/)」 (Power BI テンプレート アプリの一般提供に関する告知) というブログ投稿をご覧ください。
+
+---
+
+### <a name="my-profile-is-renaming-and-integrating-with-the-microsoft-office-account-page"></a>マイ プロファイルの名前が変更され、Microsoft Office アカウント ページに統合されます
+
+**種類:** 変更の計画  
+**サービス カテゴリ:** マイ プロファイル/アカウント  
+**製品の機能:** コラボレーション
+
+10月から、「マイ プロファイル」エクスペリエンスは、「マイ アカウント」になります。 その変更の一環として、現在「**マイ プロファイル**」となっているところはすべて、「**マイ アカウント**」に変更されます。 名前の変更といくつかの設計上の改善に加え、更新されたエクスペリエンスでは、Microsoft Office アカウント ページとの統合が強化されます。 具体的には、Office のインストール済み環境とサブスクリプションに **[アカウントの概要]** ページからアクセスできるようになります。また、Office に関連した連絡先の設定に **[プライバシー]** ページからアクセスできます。
+
+「マイ プロファイル」(プレビュー) エクスペリエンスの詳細については、「[マイ プロファイル (プレビュー) ポータルの概要](https://docs.microsoft.com/azure/active-directory/user-help/myprofile-portal-overview)」を参照してください。
+
+---
+
+### <a name="bulk-manage-groups-and-members-using-csv-files-in-the-azure-ad-portal-public-preview"></a>Azure AD ポータルで CSV ファイルを使用してグループとメンバーを一括管理します (パブリック プレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** グループ管理  
+**製品の機能:** コラボレーション
+
+一括グループ管理エクスペリエンスのパブリック プレビューが Azure AD ポータルでご利用いただけるようになったことを発表いたします。 CSV ファイルと Azure AD ポータルを使用して、以下を含むグループとメンバーの一覧の管理を行えるようになりました。
+
+- グループのメンバーを追加または削除する。
+
+- ディレクトリからグループの一覧をダウンロードする。
+
+- 特定グループのグループ メンバーの一覧をダウンロードする。
+
+詳細については、[メンバーの一括追加](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-import-members)、[メンバーの一括削除](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-remove-members)、[メンバー一覧の一括ダウンロード](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-download-members)、[グループ一覧の一括ダウンロード](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-download)に関する記事を参照してください。
+
+---
+
+### <a name="dynamic-consent-is-now-supported-through-a-new-admin-consent-endpoint"></a>新しい管理者の同意エンドポイントを使用した動的な同意がサポートされるようになりました
+
+**種類:** 新機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+
+動的な同意をサポートするために、新しい管理者の同意エンドポイントを作成しました。これは、Microsoft ID プラットフォームで動的な同意モデルを使用する必要があるアプリに役立ちます。
+
+この新しいエンドポイントを使用する方法について詳しくは、[管理者の同意エンドポイントの使用](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent)に関する記事を参照してください。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---september-2019"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2019 年 9 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** サード パーティ統合
+
+2019 年 9 月に、フェデレーションを使用した以下の 29 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
+
+[ScheduleLook](https://schedulelook.bbsonlineservices.net/)、[MS Azure SSO Access for Ethidex Compliance Office&trade; - Single  sign-on](https://docs.microsoft.com/azure/active-directory/saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial)、[iServer Portal](https://docs.microsoft.com/azure/active-directory/saas-apps/iserver-portal-tutorial)、[SKYSITE](https://docs.microsoft.com/azure/active-directory/saas-apps/skysite-tutorial)、[Concur Travel and Expense](https://docs.microsoft.com/azure/active-directory/saas-apps/concur-travel-and-expense-tutorial)、[WorkBoard](https://docs.microsoft.com/azure/active-directory/saas-apps/workboard-tutorial)、`https://apps.yeeflow.com/`, [ARC Facilities](https://docs.microsoft.com/azure/active-directory/saas-apps/arc-facilities-tutorial)、[Luware Stratus Team](https://stratus.emea.luware.cloud/login)、[Wide Ideas](https://wideideas.online/wideideas/)、[Prisma Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/prisma-cloud-tutorial)、[JDLT Client Hub](https://clients.jdlt.co.uk/login)、[RENRAKU](https://docs.microsoft.com/azure/active-directory/saas-apps/renraku-tutorial)、[SealPath Secure Browser](https://protection.sealpath.com/SealPathInterceptorWopiSaas/Open/InstallSealPathEditorOneDrive)、[Prisma Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/prisma-cloud-tutorial)、`https://app.penneo.com/`、`https://app.testhtm.com/settings/email-integration`、[Cintoo Cloud](https://aec.cintoo.com/login)、[Whitesource](https://docs.microsoft.com/azure/active-directory/saas-apps/whitesource-tutorial)、[Hosted Heritage Online SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/hosted-heritage-online-sso-tutorial)、[IDC](https://docs.microsoft.com/azure/active-directory/saas-apps/idc-tutorial)、[CakeHR](https://docs.microsoft.com/azure/active-directory/saas-apps/cakehr-tutorial)、[BIS](https://docs.microsoft.com/azure/active-directory/saas-apps/bis-tutorial)、[Coo Kai Team Build](https://ms-contacts.coo-kai.jp/)、[Sonarqube](https://docs.microsoft.com/azure/active-directory/saas-apps/sonarqube-tutorial)、[Adobe Identity Management](https://docs.microsoft.com/azure/active-directory/saas-apps/adobe-identity-management-tutorial)、[Discovery Benefits SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/discovery-benefits-sso-tutorial)、[Amelio](https://app.amelio.co/)、`https://itask.yipinapp.com/`
+
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+
+---
+
+### <a name="new-azure-ad-global-reader-role"></a>新しい Azure AD の全体閲覧者ロール
+
+**種類:** 新機能  
+**サービス カテゴリ:** RBAC  
+**製品の機能:** アクセス制御
+
+2019 年 9 月 24 日から、全体閲覧者という新しい Azure Active Directory (AD) ロールをロールアウトします。 このロールアウトは、運用とグローバル クラウド カスタマー (GCC) から始まり、10 月に全世界で完了します。
+
+全体閲覧者ロールは、全体管理者に対応する読み取り専用のロールです。 このロールのユーザーは、Microsoft 365 の各サービスにわたって設定と管理情報を読み取ることができますが、管理アクションを実行することはできません。 全体閲覧者ロールは、組織内の全体管理者の数を削減するのを支援するために作成されました。 全体管理者アカウントは強力であり、攻撃の対象になりやすいため、全体管理者の数は 5 人未満にすることをお勧めします。 計画、監査、または調査には、全体閲覧者ロールを使用することをお勧めします。 また、全体管理者ロールを必要とせずに作業を行うことができるように、全体閲覧者ロールを Exchange 管理者などの制限付き管理者ロールと組み合わせて使用することをお勧めします。
+
+全体閲覧者ロールは、新しい Microsoft 365 管理センター、Exchange 管理センター、Teams 管理センター、セキュリティ センター、コンプライアンス センター、Azure AD 管理センター、デバイス管理の管理センターと連携します。
+
+>[!NOTE]
+> パブリック プレビューの開始時、全体閲覧者ロールは、以下とは連携しません。SharePoint、Privileged Access Management、カスタマー ロックボックス、機密ラベル、Teams ライフサイクル、Teams レポートと通話分析、Teams IP 電話デバイス管理、および Teams アプリ カタログ。 
+
+詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)」を参照してください。
+
+---
+
+### <a name="access-an-on-premises-report-server-from-your-power-bi-mobile-app-using-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用して、オンプレミスのレポート サーバーに Power BI Mobile アプリからアクセスします
+
+**種類:** 新機能  
+**サービス カテゴリ:** アプリ プロキシ  
+**製品の機能:** アクセス制御
+
+Power BI モバイル アプリと Azure AD アプリケーション プロキシの間の新しい統合により、Power BI モバイルアプリに安全にサインインし、オンプレミスの Power BI Report Server でホストされている組織のレポートを表示することができます。
+
+Power BI Mobile アプリの詳細 (アプリのダウンロード場所など) については、[Power BI サイト](https://powerbi.microsoft.com/mobile/)を参照してください。 Azure AD アプリケーション プロキシを使用して Power BI モバイル アプリをセットアップする方法の詳細については、「[Azure AD アプリケーション プロキシを使用して Power BI Mobile へのリモート アクセスを有効にする](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-integrate-with-power-bi)」を参照してください。
+
+---
+
+### <a name="new-version-of-the-azureadpreview-powershell-module-is-available"></a>AzureADPreview PowerShell モジュールの新しいバージョンが利用可能になりました
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** その他  
+**製品の機能:** ディレクトリ
+
+次の新しいコマンドレットが AzureADPreview モジュールに追加され、Azure AD でカスタム ロールを定義し、割り当てることができるようになりました。
+
+- `Add-AzureADMSFeatureRolloutPolicyDirectoryObject`
+- `Get-AzureADMSFeatureRolloutPolicy`
+- `New-AzureADMSFeatureRolloutPolicy`
+- `Remove-AzureADMSFeatureRolloutPolicy`
+- `Remove-AzureADMSFeatureRolloutPolicyDirectoryObject`
+- `Set-AzureADMSFeatureRolloutPolicy`
+
+---
+
+### <a name="new-version-of-azure-ad-connect"></a>新しいバージョンの Azure AD Connect
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** その他  
+**製品の機能:** ディレクトリ
+
+自動アップグレードのお客様を対象とした Azure AD Connect の更新バージョンをリリースしました。 この新しいバージョンには、いくつかの新機能、機能強化、およびバグ修正が含まれています。 この新しいバージョンの詳細については、「[Azure AD Connect:バージョンのリリース履歴](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#14250)」を参照してください。
+
+---
+
+### <a name="azure-multi-factor-authentication-mfa-server-version-802-is-now-available"></a>Azure Multi-Factor Authentication (MFA) Server バージョン 8.0.2 が利用可能になりました
+
+**種類:** 固定  
+**サービス カテゴリ:** MFA  
+**製品の機能:** ID のセキュリティ & 保護
+
+2019 年 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、MFA Server の最新バージョン (バージョン 8.0.2) をダウンロードできるようになりました。 この新しいバージョンでは、次のことを行いました。
+
+- Azure AD 同期によってユーザーが無効から有効に変更されると、電子メールがユーザーに送信されるように問題を修正しました。
+
+- Tags の機能の使用を継続しながら、お客様が正常にアップグレードできるように問題を修正しました。
+
+- Kosovo (+383) の国番号を追加しました。
+
+- MultiFactorAuthSvc.log へのワンタイム バイパスの監査ログ記録を追加しました。
+
+- Web サービス SDK のパフォーマンスが向上しました。
+
+- その他の軽微なバグを修正しました。
+
+2019 年 7 月 1 日以降、Microsoft は新しいデプロイに対する MFA Server の提供を停止しました。 多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用する必要があります。 詳細については、「[クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)」を参照してください。
 
 ---
 
@@ -143,7 +295,7 @@ Azure AD Authentication ライブラリ (ADAL.NET) バージョン 5.0.0-preview
 
 2019 年 8 月に、フェデレーションを使用した以下の 26 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
 
-[Civic Platform](https://docs.microsoft.com/azure/active-directory/saas-apps/civic-platform-tutorial)、[Amazon Business](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-business-tutorial)、[ProNovos Ops Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-ops-manager-tutorial)、[Cognidox](https://docs.microsoft.com/azure/active-directory/saas-apps/cognidox-tutorial)、[Viareport's Inativ Portal (Europe)](https://docs.microsoft.com/azure/active-directory/saas-apps/viareports-inativ-portal-europe-tutorial)、[Azure Databricks](https://azure.microsoft.com/services/databricks)、[Robin](https://docs.microsoft.com/azure/active-directory/saas-apps/robin-tutorial)、[Academy Attendance](https://docs.microsoft.com/azure/active-directory/saas-apps/academy-attendance-tutorial)、[Priority Matrix](https://sync.appfluence.com/pmwebng/)、[Cousto MySpace](https://cousto.platformers.be/account/login)、[Uploadcare](https://uploadcare.com/accounts/signup/)、[Carbonite Endpoint Backup](https://docs.microsoft.com/azure/active-directory/saas-apps/carbonite-endpoint-backup-tutorial)、[CPQSync by Cincom](https://docs.microsoft.com/azure/active-directory/saas-apps/cpqsync-by-cincom-tutorial)、[Chargebee](https://docs.microsoft.com/azure/active-directory/saas-apps/chargebee-tutorial)、[deliver.media™ Portal](https://portal.deliver.media)、[Frontline Education](https://docs.microsoft.com/azure/active-directory/saas-apps/frontline-education-tutorial)、[F5](https://www.f5.com/products/security/access-policy-manager)、[stashcat AD connect](https://www.stashcat.com)、[Blink](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial)、[Vocoli](https://docs.microsoft.com/azure/active-directory/saas-apps/vocoli-tutorial)、[ProNovos Analytics](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-analytics-tutorial)、[Sigstr](https://docs.microsoft.com/azure/active-directory/saas-apps/sigstr-tutorial)、[Darwinbox](https://docs.microsoft.com/azure/active-directory/saas-apps/darwinbox-tutorial)、[Watch by Colors](https://docs.microsoft.com/azure/active-directory/saas-apps/watch-by-colors-tutorial)、[Harness](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)、[EAB Navigate Strategic Care](https://docs.microsoft.com/azure/active-directory/saas-apps/eab-navigate-strategic-care-tutorial)
+[Civic Platform](https://docs.microsoft.com/azure/active-directory/saas-apps/civic-platform-tutorial)、[Amazon Business](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-business-tutorial)、[ProNovos Ops Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-ops-manager-tutorial)、[Cognidox](https://docs.microsoft.com/azure/active-directory/saas-apps/cognidox-tutorial)、[Viareport's Inativ Portal (Europe)](https://docs.microsoft.com/azure/active-directory/saas-apps/viareports-inativ-portal-europe-tutorial)、[Azure Databricks](https://azure.microsoft.com/services/databricks)、[Robin](https://docs.microsoft.com/azure/active-directory/saas-apps/robin-tutorial)、[Academy Attendance](https://docs.microsoft.com/azure/active-directory/saas-apps/academy-attendance-tutorial)、[Priority Matrix](https://sync.appfluence.com/pmwebng/)、[Cousto MySpace](https://cousto.platformers.be/account/login)、[Uploadcare](https://uploadcare.com/accounts/signup/)、[Carbonite Endpoint Backup](https://docs.microsoft.com/azure/active-directory/saas-apps/carbonite-endpoint-backup-tutorial)、[CPQSync by Cincom](https://docs.microsoft.com/azure/active-directory/saas-apps/cpqsync-by-cincom-tutorial)、[Chargebee](https://docs.microsoft.com/azure/active-directory/saas-apps/chargebee-tutorial)、[deliver.media&trade; Portal](https://portal.deliver.media)、[Frontline Education](https://docs.microsoft.com/azure/active-directory/saas-apps/frontline-education-tutorial)、[F5](https://www.f5.com/products/security/access-policy-manager)、[stashcat AD connect](https://www.stashcat.com)、[Blink](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial)、[Vocoli](https://docs.microsoft.com/azure/active-directory/saas-apps/vocoli-tutorial)、[ProNovos Analytics](https://docs.microsoft.com/azure/active-directory/saas-apps/pronovos-analytics-tutorial)、[Sigstr](https://docs.microsoft.com/azure/active-directory/saas-apps/sigstr-tutorial)、[Darwinbox](https://docs.microsoft.com/azure/active-directory/saas-apps/darwinbox-tutorial)、[Watch by Colors](https://docs.microsoft.com/azure/active-directory/saas-apps/watch-by-colors-tutorial)、[Harness](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)、[EAB Navigate Strategic Care](https://docs.microsoft.com/azure/active-directory/saas-apps/eab-navigate-strategic-care-tutorial)
 
 アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
 
@@ -320,7 +472,7 @@ Azure AD のお客様は、組織のユーザーとグループに対する FIDO
 
 2019 年 7 月に、フェデレーションを使用した以下の 18 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
 
-[Ungerboeck Software](https://docs.microsoft.com/azure/active-directory/saas-apps/ungerboeck-software-tutorial)、[Bright Pattern Omnichannel Contact Center](https://docs.microsoft.com/azure/active-directory/saas-apps/bright-pattern-omnichannel-contact-center-tutorial)、[Clever Nelly](https://docs.microsoft.com/azure/active-directory/saas-apps/clever-nelly-tutorial)、[AcquireIO](https://docs.microsoft.com/azure/active-directory/saas-apps/acquireio-tutorial)、[Looop](https://www.looop.co/schedule-a-demo/)、[productboard](https://docs.microsoft.com/azure/active-directory/saas-apps/productboard-tutorial)、[MS Azure SSO Access for Ethidex Compliance Office™](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on#password-based-sso)、[Hype](https://docs.microsoft.com/azure/active-directory/saas-apps/hype-tutorial)、[Abstract](https://docs.microsoft.com/azure/active-directory/saas-apps/abstract-tutorial)、[Ascentis](https://docs.microsoft.com/azure/active-directory/saas-apps/ascentis-tutorial)、[Flipsnack](https://www.flipsnack.com/accounts/sign-in-sso.html)、[Wandera](https://docs.microsoft.com/azure/active-directory/saas-apps/wandera-tutorial)、[TwineSocial](https://twinesocial.com/)、[Kallidus](https://docs.microsoft.com/azure/active-directory/saas-apps/kallidus-tutorial)、[HyperAnna](https://docs.microsoft.com/azure/active-directory/saas-apps/hyperanna-tutorial)、[PharmID WasteWitness](https://www.pharmid.com/)、[i2B Connect](https://www.i2b-online.com/sign-up-to-use-i2b-connect-here-sso-access/)、[JFrog Artifactory](https://docs.microsoft.com/azure/active-directory/saas-apps/jfrog-artifactory-tutorial)
+[Ungerboeck Software](https://docs.microsoft.com/azure/active-directory/saas-apps/ungerboeck-software-tutorial)、[Bright Pattern Omnichannel Contact Center](https://docs.microsoft.com/azure/active-directory/saas-apps/bright-pattern-omnichannel-contact-center-tutorial)、[Clever Nelly](https://docs.microsoft.com/azure/active-directory/saas-apps/clever-nelly-tutorial)、[AcquireIO](https://docs.microsoft.com/azure/active-directory/saas-apps/acquireio-tutorial)、[Looop](https://www.looop.co/schedule-a-demo/)、[productboard](https://docs.microsoft.com/azure/active-directory/saas-apps/productboard-tutorial)、[MS Azure SSO Access for Ethidex Compliance Office&trade;](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on#password-based-sso)、[Hype](https://docs.microsoft.com/azure/active-directory/saas-apps/hype-tutorial)、[Abstract](https://docs.microsoft.com/azure/active-directory/saas-apps/abstract-tutorial)、[Ascentis](https://docs.microsoft.com/azure/active-directory/saas-apps/ascentis-tutorial)、[Flipsnack](https://www.flipsnack.com/accounts/sign-in-sso.html)、[Wandera](https://docs.microsoft.com/azure/active-directory/saas-apps/wandera-tutorial)、[TwineSocial](https://twinesocial.com/)、[Kallidus](https://docs.microsoft.com/azure/active-directory/saas-apps/kallidus-tutorial)、[HyperAnna](https://docs.microsoft.com/azure/active-directory/saas-apps/hyperanna-tutorial)、[PharmID WasteWitness](https://www.pharmid.com/)、[i2B Connect](https://www.i2b-online.com/sign-up-to-use-i2b-connect-here-sso-access/)、[JFrog Artifactory](https://docs.microsoft.com/azure/active-directory/saas-apps/jfrog-artifactory-tutorial)
 
 アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
 
@@ -736,7 +888,7 @@ Office 365 グループの名前付けポリシーは、次の 2 通りの方法
 
 - グループ名に自動的に追加されるプレフィックスまたはサフィックスを定義します。
 
-- グループ名で許可されない、組織の禁止されている単語のカスタマイズ セットをアップロードします (たとえば、“CEO、Payroll、HR”)。
+- グループ名で許可されない、組織の禁止されている単語のカスタマイズ セットをアップロードします (たとえば、"CEO、Payroll、HR")。
 
 詳細情報については、「[Azure Active Directory での Office 365 グループの名前付けポリシーの強制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-naming-policy)」をご覧ください。
 
@@ -810,7 +962,7 @@ Office 365 グループの名前付けポリシーは、次の 2 通りの方法
 
 - グループ名に自動的に追加されるプレフィックスまたはサフィックスを定義します。
 
-- グループ名で許可されない、組織の禁止されている単語のカスタマイズ セットをアップロードします (たとえば、“CEO、Payroll、HR”)。
+- グループ名で許可されない、組織の禁止されている単語のカスタマイズ セットをアップロードします (たとえば、"CEO、Payroll、HR")。
 
 詳細情報については、「[Azure Active Directory での Office 365 グループの名前付けポリシーの強制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-naming-policy)」をご覧ください。
 
@@ -1781,7 +1933,7 @@ Microsoft では、Azure AD に対してより大規模な IP 範囲の導入を
 **サービス カテゴリ:** アプリ プロキシ  
 **製品の機能:** アクセス制御
 
-アプリケーション プロキシ アプリには、**HTTP 専用 Cookie** と呼ばれる新しい設定があります。 この設定では、アプリケーション プロキシ アクセス Cookie とセッション Cookie の両方に対する HTTP 応答ヘッダーに HTTPOnly フラグを追加して、クライアント側スクリプトから Cookie へのアクセスを停止し、さらに Cookie のコピーや変更などのアクションを防止することにより、セキュリティを強化します。 このフラグは以前は使用されていませんでしたが、Cookie は常に暗号化され、SSL 接続を使用して送信されることで、不適切な変更から保護されていました。
+アプリケーション プロキシ アプリには、**HTTP 専用 Cookie** と呼ばれる新しい設定があります。 この設定では、アプリケーション プロキシ アクセス Cookie とセッション Cookie の両方に対する HTTP 応答ヘッダーに HTTPOnly フラグを追加して、クライアント側スクリプトから Cookie へのアクセスを停止し、さらに Cookie のコピーや変更などのアクションを防止することにより、セキュリティを強化します。 このフラグは以前は使用されていませんでしたが、Cookie は常に暗号化され、TLS 接続を使用して送信されることで、不適切な変更から保護されていました。
 
 この設定は、リモート デスクトップなどの ActiveX コントロールを使用するアプリとの互換性はありません。 このような状況の場合は、この設定をオフにすることをお勧めします。
 
@@ -1923,7 +2075,7 @@ Azure AD アクティビティ ログは、Azure Monitor (Azure のプラット�
  
 2018年 7 月に、フェデレーションを使用した以下の 16 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
 
-[Innovation Hub](https://docs.microsoft.com/azure/active-directory/saas-apps/innovationhub-tutorial)、[Leapsome](https://docs.microsoft.com/azure/active-directory/saas-apps/leapsome-tutorial)、[Certain Admin SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/certainadminsso-tutorial)、PSUC Staging、[iPass SmartConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/ipasssmartconnect-tutorial)、[Screencast-O-Matic](https://docs.microsoft.com/azure/active-directory/saas-apps/screencast-tutorial)、PowerSchool Unified Classroom、[Eli Onboarding](https://docs.microsoft.com/azure/active-directory/saas-apps/elionboarding-tutorial)、[Bomgar Remote Support](https://docs.microsoft.com/azure/active-directory/saas-apps/bomgarremotesupport-tutorial)、[Nimblex](https://docs.microsoft.com/azure/active-directory/saas-apps/nimblex-tutorial)、[Imagineer WebVision](https://docs.microsoft.com/azure/active-directory/saas-apps/imagineerwebvision-tutorial)、[Insight4GRC](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial)、[SecureW2 JoinNow Connector](https://docs.microsoft.com/azure/active-directory/saas-apps/securejoinnow-tutorial)、[Kanbanize](https://review.docs.microsoft.com/azure/active-directory/saas-apps/kanbanize-tutorial)、[SmartLPA](https://review.docs.microsoft.com/azure/active-directory/saas-apps/smartlpa-tutorial)、[Skills Base](https://docs.microsoft.com/azure/active-directory/saas-apps/skillsbase-tutorial)
+[Innovation Hub](https://docs.microsoft.com/azure/active-directory/saas-apps/innovationhub-tutorial)、[Leapsome](https://docs.microsoft.com/azure/active-directory/saas-apps/leapsome-tutorial)、[Certain Admin SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/certainadminsso-tutorial)、PSUC Staging、[iPass SmartConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/ipasssmartconnect-tutorial)、[Screencast-O-Matic](https://docs.microsoft.com/azure/active-directory/saas-apps/screencast-tutorial)、PowerSchool Unified Classroom、[Eli Onboarding](https://docs.microsoft.com/azure/active-directory/saas-apps/elionboarding-tutorial)、[Bomgar Remote Support](https://docs.microsoft.com/azure/active-directory/saas-apps/bomgarremotesupport-tutorial)、[Nimblex](https://docs.microsoft.com/azure/active-directory/saas-apps/nimblex-tutorial)、[Imagineer WebVision](https://docs.microsoft.com/azure/active-directory/saas-apps/imagineerwebvision-tutorial)、[Insight4GRC](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial)、[SecureW2 JoinNow Connector](https://docs.microsoft.com/azure/active-directory/saas-apps/securejoinnow-tutorial)、[Kanbanize](../saas-apps/kanbanize-tutorial.md)、[SmartLPA](../saas-apps/smartlpa-tutorial.md)、[Skills Base](https://docs.microsoft.com/azure/active-directory/saas-apps/skillsbase-tutorial)
 
 アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
 
@@ -2387,7 +2539,7 @@ AADConnect の 5 月のリリースには、PingFederate との統合のパブ�
 **サービス カテゴリ:** 認証 (ログイン)  
 **製品の機能:** ユーザー認証
  
-2018 年 4 月 25 日以降に作成されたアプリは、**query** response_mode を使用して **id_token** を要求することはできません。  これにより、OIDC 仕様による Azure AD のインラインが実現し、アプリの攻撃対象領域を削減できます。  2018 年 4 月 25 日より前に作成されたアプリによる **query** response_mode と **id_token** の response_type の使用はブロックされません。  AAD に id_token を要求した場合に返されるエラーは **AADSTS70007: ‘query’ is not a supported value of ‘response_mode’ when requesting a token** (AADSTS70007: トークン要求時の ‘query’ は ‘response_mode’ のサポートされている値ではありません) です。
+2018 年 4 月 25 日以降に作成されたアプリは、**query** response_mode を使用して **id_token** を要求することはできません。  これにより、OIDC 仕様による Azure AD のインラインが実現し、アプリの攻撃対象領域を削減できます。  2018 年 4 月 25 日より前に作成されたアプリによる **query** response_mode と **id_token** の response_type の使用はブロックされません。  AAD に id_token を要求した場合に返されるエラーは **AADSTS70007: 'query' is not a supported value of 'response_mode' when requesting a token** (AADSTS70007: トークン要求時の 'query' は 'response_mode' のサポートされている値ではありません) です。
 
 **fragment** と **form_post** response_modes は引き続き動作します。新しいアプリケーション オブジェクトを作成する (たとえば、アプリ プロキシで使用する) 場合は、新しいアプリケーションが作成される前にいずれかの response_modes が使用されることを確認してください。  
 

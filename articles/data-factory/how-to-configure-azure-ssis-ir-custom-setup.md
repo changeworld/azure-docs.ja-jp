@@ -11,19 +11,19 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 02/14/2020
-ms.openlocfilehash: 9c084564fec3faf59317fe9e05f3e850a38454d6
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 03/27/2020
+ms.openlocfilehash: d6252b7a0ecce553bc3a1519055375fd4cd034f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251976"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336216"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのセットアップのカスタマイズ
 
 Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) のカスタム セットアップには、使用する Azure-SSIS IR のセットアップまたは再構成中に独自の手順を追加するためのインターフェイスが用意されています。 
 
-カスタム セットアップを使用すると、既定の動作の構成または環境を変更して、たとえば、追加の Windows サービスを開始したり、ファイル共有のアクセス資格情報を永続化したりすることができます。 また、ご利用の Azure-SSIS IR の各ノード上にアセンブリ、ドライバー、拡張機能などの追加のコンポーネントをインストールすることもできます。
+カスタム セットアップを使用すると、既定の動作の構成または環境を変更して、たとえば、追加の Windows サービスを開始したり、ファイル共有のアクセス資格情報を永続化したり、強力な暗号化やより安全なネットワーク プロトコル (TLS 1.2) を使用したりすることができます。 また、ご利用の Azure-SSIS IR の各ノード上にアセンブリ、ドライバー、拡張機能などの追加のコンポーネントをインストールすることもできます。
 
 ご利用の Azure-SSIS IR では、次の 2 つの方法のいずれかでカスタム セットアップを行うことができます。 
 * **スクリプトを使用しない高速カスタム セットアップ**: いくつかの一般的なシステム構成および Windows コマンドを実行したり、スクリプトを使用せずにいくつかの一般的なまたは推奨される追加コンポーネントをインストールしたりします。
@@ -127,6 +127,8 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
 
      * **[KingswaySoft's SSIS Productivity Pack]** \(KingswaySoft の SSIS Productivity Pack\) コンポーネントを選択した場合は、お使いの Azure-SSIS IR 上の KingswaySoft から、購入した製品ライセンス キーを **[ライセンス キー]** ボックスに入力して [SSIS Productivity Pack](https://www.kingswaysoft.com/products/ssis-productivity-pack) という一連のコンポーネントをインストールできます。 現在の統合バージョンは **10.0** です。
 
+     * **Theobald Software の Xtract IS** コンポーネントを選択した場合は、お使いの Azure-SSIS IR 上の Theobald Software から、購入した製品ライセンス ファイルを **[ライセンス ファイル]** ボックスにドラッグ アンド ドロップまたはアップロードして SAP システム (ERP、S/4HANA、BW) の [Xtract IS](https://theobald-software.com/en/xtract-is/) という一連のコンポーネントをインストールできます。 現在の統合バージョンは **6.1.1.3** です。
+
    追加した高速カスタム セットアップは、 **[詳細設定]** セクションに表示されます。 これらを削除する場合は、対応するチェック ボックスをオンにしてから **[削除]** を選択します。
 
    ![カスタム セットアップでの詳細設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
@@ -139,7 +141,7 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
    $AzureSSISName = "[your Azure-SSIS IR name]"
    # Custom setup info: Standard/express custom setups
    $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
-   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO or leave it empty]" # OPTIONAL to configure an express custom setup without script
+   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
    # Add custom setup parameters if you use standard/express custom setups
    if(![string]::IsNullOrEmpty($SetupScriptContainerSasUri))
@@ -178,6 +180,24 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
        {
            $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup)
        }
+       if($ExpressCustomSetup -eq "KingswaySoft.IntegrationToolkit")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }
+       if($ExpressCustomSetup -eq "KingswaySoft.ProductivityPack")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }    
+       if($ExpressCustomSetup -eq "Theobald.XtractIS")
+       {
+           $jsonData = Get-Content -Raw -Path YourLicenseFile.json
+           $jsonData = $jsonData -replace '\s',''
+           $jsonData = $jsonData.replace('"','\"')
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString($jsonData)
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }
        # Create an array of one or more express custom setups
        $setups = New-Object System.Collections.ArrayList
        $setups.Add($setup)
@@ -203,7 +223,7 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
 
    b. **[SAS URI を使用する]** を選択してから、 **[URI]** ボックスに次の SAS URI を入力します。
 
-      `https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2018-04-08T14%3A10%3A00Z&se=2020-04-10T14%3A10%3A00Z&sv=2017-04-17&sig=mFxBSnaYoIlMmWfxu9iMlgKIvydn85moOnOch6%2F%2BheE%3D&sr=c`
+      `https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2020-03-25T04:00:00Z&se=2025-03-25T04:00:00Z&sv=2019-02-02&sr=c&sig=WAD3DATezJjhBCO3ezrQ7TUZ8syEUxZZtGIhhP6Pt4I%3D`
 
       ![コンテナーに対して Shared Access Signature を提供する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image10.png)
 
@@ -219,9 +239,9 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
 
    e. *[UserScenarios]* フォルダーをダブルクリックして、次の項目を検索します。
 
-      * *.NET FRAMEWORK 3.5* フォルダー。これには、ご利用の Azure-SSIS IR の各ノード上のカスタム コンポーネントに必要となる可能性がある、.NET Framework の以前のバージョンをインストールするためのカスタム セットアップが格納されています。
+      * *.NET FRAMEWORK 3.5* フォルダー。これには、ご利用の Azure-SSIS IR の各ノード上のカスタム コンポーネントに必要となる可能性がある、.NET Framework の以前のバージョンをインストールするためのカスタム セットアップ スクリプト (*main.cmd*) が格納されています。
 
-      * *BCP* フォルダー。これには、ご利用の Azure SSIS IR の各ノード上に、一括コピー プログラム (*bcp*) を含む SQL Server コマンドライン ユーティリティ (*MsSqlCmdLnUtils.msi*) をインストールするためのカスタム セットアップが格納されています。
+      * *BCP* フォルダー。これには、ご利用の Azure SSIS IR の各ノード上に、一括コピー プログラム (*bcp*) を含む SQL Server コマンドライン ユーティリティ (*MsSqlCmdLnUtils.msi*) をインストールするためのカスタム セットアップ スクリプト (*main.cmd*) が格納されています。
 
       * *EXCEL* フォルダー。これには、ご利用の Azure-SSIS IR の各ノード上で Excel ファイルを動的に読み書きするためにスクリプト タスクで使用できる、C# アセンブリおよびライブラリをインストールするためのカスタム セットアップ スクリプト (*main.cmd*) が格納されています。 
       
@@ -257,13 +277,15 @@ Azure-SQL Server Integration Services 統合ランタイム (Azure-SSIS IR) の�
       
         まず、SAP インストール フォルダーからの 64 ビットまたは 32 ビット バージョンの *librfc32.dll* を、*main.cmd* と共にご利用のコンテナーにアップロードします。 次に、セットアップ中にスクリプトによって SAP アセンブリが *%windir%\SysWow64* または *%windir%\System32* フォルダーにコピーされます。
 
-      * *STORAGE* フォルダー。これには、ご利用の Azure SSIS IR の各ノード上に Azure PowerShell をインストールするためのカスタム セットアップが格納されています。 このセットアップを使用すると、[ご利用の Azure ストレージ アカウントを操作するための PowerShell スクリプト](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell)を実行する SSIS パッケージをデプロイして実行できるようになります。 
+      * *STORAGE* フォルダー。これには、ご利用の Azure SSIS IR の各ノード上に Azure PowerShell をインストールするためのカスタム セットアップ スクリプト (*main.cmd*) が格納されています。 このセットアップを使用すると、[ご利用の Azure ストレージ アカウントを操作するための PowerShell スクリプト](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell)を実行する SSIS パッケージをデプロイして実行できるようになります。 
       
         *main.cmd*、サンプルの *AzurePowerShell.msi* (または最新バージョンを使用)、および *storage.ps1* をご利用のコンテナーにコピーします。 パッケージのテンプレートとして *PowerShell.dtsx* を使用します。 パッケージ テンプレートでは、*storage.ps1* を修正可能な PowerShell スクリプトとしてダウンロードする [Azure BLOB のダウンロード タスク](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task)と、各ノード上でスクリプトを実行する[プロセス実行タスク](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/)が組み合わされています。
 
       * *TERADATA* フォルダー。これには、カスタム セットアップ スクリプト (*main.cmd*)、その関連ファイル (*install.cmd*)、およびインストーラー パッケージ ( *.msi*) が格納されています。 これらのファイルによって、ご利用の Azure SSIS IR Enterprise Edition の各ノード上に Teradata コネクター、Teradata Parallel Transporter (TPT) API、および ODBC ドライバーがインストールされます。 このセットアップでは、Teradata 接続マネージャー、ソース、および変換先を使用して、Teradata サーバーに接続できます。 
       
         まず、[Teradata Tools and Utilities 15.x の zip ファイルをダウンロード](http://partnerintelligence.teradata.com)し (たとえば、*TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip*)、次にそれを、前に説明した *.cmd* および *.msi* ファイルと共にご利用のコンテナーにアップロードします。
+
+      * *TLS 1.2* フォルダー。強力な暗号化/セキュリティが強化されたネットワーク プロトコル (TLS 1.2) を使用し、Azure-SSIS IR の各ノードで古い SSL/TLS バージョンを無効にする、カスタム セットアップ スクリプト (*main.cmd*) が含まれています。
 
       * *ZULU OPENJDK* フォルダー。これには、ご利用の Azure SSIS IR の各ノード上に Zulu OpenJDK をインストールするためのカスタム セットアップ スクリプト (*main.cmd*) と PowerShell ファイル (*install_openjdk.ps1*) が格納されています。 このセットアップでは、Azure Data Lake Store または柔軟なファイル コネクタを使用して、ORC および Parquet ファイルを処理できます。 詳細については、[Integration Services 用の Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java) に関するページを参照してください。 
       

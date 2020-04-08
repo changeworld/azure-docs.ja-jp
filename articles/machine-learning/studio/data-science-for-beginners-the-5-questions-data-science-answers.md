@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: feb49b4e12bd304b49e0c50cd43ed0be52761532
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: af0611e121228a587e159bd4e6529c807132d16d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838782"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204445"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>初心者向けデータ サイエンス解説ビデオ 1:データ サイエンスが回答する 5 つの質問
 トップ データ サイエンティストによる "*初心者向けデータ サイエンス*" の 5 本の短いビデオでは、データ サイエンスの概要を簡単に説明します。 基本的な内容を扱っているビデオですが、データ サイエンスの実行に関心を持っている場合や、データ サイエンティストと共に作業する場合に便利です。
@@ -30,13 +30,13 @@ ms.locfileid: "73838782"
 ## <a name="other-videos-in-this-series"></a>このシリーズの他のビデオ
 *"初心者向けデータ サイエンス"* は、約 25 分でデータ サイエンスを簡単に説明します。 ぜひ 5 つのビデオをすべてご覧ください。
 
-* ビデオ 1:データ サイエンスが回答する 5 つの質問
-* ビデオ 2:[データ サイエンス用のデータの準備はお済みですか?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
-* ビデオ 3:[データで回答できる質問をする](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
+* ビデオ 1: データ サイエンスが回答する 5 つの質問
+* ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
+* ビデオ 3: [データで回答できる質問をする](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
 * ビデオ 4: [単純なモデルで回答を予測する](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
 * ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
-## <a name="transcript-the-5-questions-data-science-answers"></a>トランスクリプト:データ サイエンスが回答する 5 つの質問
+## <a name="transcript-the-5-questions-data-science-answers"></a>トランスクリプト: データ サイエンスが回答する 5 つの質問
 こんにちは。 ビデオ シリーズ *"初心者向けデータ サイエンス"* へようこそ。
 
 データ サイエンスと聞いて怖じ気づく方もいるかもしれないため、ここでは数式やコンピューター プログラミングの専門用語を使用せずにその基礎を紹介します。
@@ -66,7 +66,7 @@ ms.locfileid: "73838782"
 
 2 つの解答が考えられる質問に役立ちます。
 
-例:
+次に例を示します。
 
 * 次の 1,000 マイルでこのタイヤが故障するか、しないか
 * 集客が多いのは5 ドルのクーポンと 25% の割引のどちらか
@@ -134,6 +134,6 @@ ms.locfileid: "73838782"
 
 以上がデータ サイエンスで回答できる 5 つの質問です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試行する](create-experiment.md)
 * [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/preview/overview-what-is-azure-ml)

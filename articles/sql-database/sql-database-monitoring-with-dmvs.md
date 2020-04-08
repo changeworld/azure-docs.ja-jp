@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-ms.date: 12/19/2018
-ms.openlocfilehash: bea6a572e55f1a79515c385fd7b79881c54ae65e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/10/2020
+ms.openlocfilehash: 958dcd441d35b5c28746ff79a0b341e5aa7383a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802918"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214019"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>動的管理ビューを使用して Azure SQL Database のパフォーマンスを監視する
 
@@ -28,7 +28,7 @@ SQL Database は、次に示す 3 つの動的管理ビューを一部サポー�
 - 実行関連の動的管理ビュー。
 - トランザクション関連の動的管理ビュー。
 
-動的管理ビューの詳細については、SQL Server オンライン ブックの「 [動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) 」を参照してください。 
+動的管理ビューの詳細については、SQL Server オンライン ブックの「 [動的管理ビューおよび関数 (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) 」を参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -40,6 +40,17 @@ GRANT VIEW DATABASE STATE TO database_user;
 ```
 
 オンプレミスの SQL Server のインスタンスでは、動的管理ビューにサーバーの状態についての情報が表示されます。 SQL Database では、動的管理ビューには現在の論理データベースに関する情報のみが表示されます。
+
+この記事には、次の種類のクエリ パフォーマンスの問題を検出するために、SQL Server Management Studio または Azure Data Studio を使用して実行できる DMV クエリのコレクションが含まれています。
+
+- [過剰な CPU 消費に関連するクエリを特定する](#identify-cpu-performance-issues)
+- [IO ボトルネックに関連する PAGELATCH_* と WRITE_LOG の待機](#identify-io-performance-issues)
+- [TempDB の競合によって発生する PAGELATCH_*](#identify-tempdb-performance-issues)
+- [メモリ許可待機の問題によって発生する RESOURCE_SEMAHPORE 待機](#identify-memory-grant-wait-performance-issues)
+- [データベースとオブジェクトのサイズの識別](#calculating-database-and-objects-sizes)
+- [アクティブ セッションに関する情報の取得](#monitoring-connections)
+- [システム全体およびデータベース リソースの使用状況に関する情報の取得](#monitor-resource-use)
+- [クエリ パフォーマンス情報の取得](#monitoring-query-performance)
 
 ## <a name="identify-cpu-performance-issues"></a>CPU パフォーマンスに関する問題の特定
 
@@ -56,11 +67,11 @@ CPU 消費率が長時間 80% を超えている場合は、次のトラブル�
 ```sql
 PRINT '-- top 10 Active CPU Consuming Queries (aggregated)--';
 SELECT TOP 10 GETDATE() runtime, *
-FROM(SELECT query_stats.query_hash, SUM(query_stats.cpu_time) 'Total_Request_Cpu_Time_Ms', SUM(logical_reads) 'Total_Request_Logical_Reads', MIN(start_time) 'Earliest_Request_start_Time', COUNT(*) 'Number_Of_Requests', SUBSTRING(REPLACE(REPLACE(MIN(query_stats.statement_text), CHAR(10), ' '), CHAR(13), ' '), 1, 256) AS "Statement_Text"
-     FROM(SELECT req.*, SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1) AS statement_text
+FROM (SELECT query_stats.query_hash, SUM(query_stats.cpu_time) 'Total_Request_Cpu_Time_Ms', SUM(logical_reads) 'Total_Request_Logical_Reads', MIN(start_time) 'Earliest_Request_start_Time', COUNT(*) 'Number_Of_Requests', SUBSTRING(REPLACE(REPLACE(MIN(query_stats.statement_text), CHAR(10), ' '), CHAR(13), ' '), 1, 256) AS "Statement_Text"
+    FROM (SELECT req.*, SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1) AS statement_text
           FROM sys.dm_exec_requests AS req
-               CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST ) AS query_stats
-     GROUP BY query_hash) AS t
+                CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST ) AS query_stats
+    GROUP BY query_hash) AS t
 ORDER BY Total_Request_Cpu_Time_Ms DESC;
 ```
 
@@ -72,14 +83,14 @@ ORDER BY Total_Request_Cpu_Time_Ms DESC;
 PRINT '--top 10 Active CPU Consuming Queries by sessions--';
 SELECT TOP 10 req.session_id, req.start_time, cpu_time 'cpu_time_ms', OBJECT_NAME(ST.objectid, ST.dbid) 'ObjectName', SUBSTRING(REPLACE(REPLACE(SUBSTRING(ST.text, (req.statement_start_offset / 2)+1, ((CASE statement_end_offset WHEN -1 THEN DATALENGTH(ST.text)ELSE req.statement_end_offset END-req.statement_start_offset)/ 2)+1), CHAR(10), ' '), CHAR(13), ' '), 1, 512) AS statement_text
 FROM sys.dm_exec_requests AS req
-     CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST
+    CROSS APPLY sys.dm_exec_sql_text(req.sql_handle) AS ST
 ORDER BY cpu_time DESC;
 GO
 ```
 
 ### <a name="the-cpu-issue-occurred-in-the-past"></a>CPU に関する問題が過去に発生した
 
-過去に問題が発生していて、根本原因分析を行いたい場合は、[クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を使用します。 データベースにアクセスできるユーザーは、T-SQL を使用して、クエリ ストア データにクエリを実行できます。  クエリ ストアの既定の構成では、1 時間の粒度が使用されます。  大量の CPU を消費するクエリのアクティビティを確認するには、次のクエリを使用します。 このクエリは、CPU の消費が上位 15 のクエリを返します。  必ず `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()` を変更してください。
+過去に問題が発生していて、根本原因分析を行いたい場合は、[クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を使用します。 データベースにアクセスできるユーザーは、T-SQL を使用して、クエリ ストア データにクエリを実行できます。 クエリ ストアの既定の構成では、1 時間の粒度が使用されます。 大量の CPU を消費するクエリのアクティビティを確認するには、次のクエリを使用します。 このクエリは、CPU の消費が上位 15 のクエリを返します。 必ず `rsi.start_time >= DATEADD(hour, -2, GETUTCDATE()` を変更してください。
 
 ```sql
 -- Top 15 CPU consuming queries by query hash
@@ -130,7 +141,7 @@ ORDER BY end_time DESC;
 
 IO の上限に達した場合は 2 つのオプションがあります。
 
-- オプション 1:コンピューティング サイズまたはサービス レベルをアップグレードする
+- オプション 1: コンピューティング サイズまたはサービス レベルをアップグレードする
 - オプション 2:最も多くの IO を消費しているクエリを特定して調整する
 
 #### <a name="view-buffer-related-io-using-the-query-store"></a>クエリ ストアを使用したバッファー関連 IO の表示
@@ -635,19 +646,19 @@ ORDER BY start_time DESC
 
 同時要求の数を確認するには、SQL データベースで次の Transact-SQL クエリを実行します。
 
-    ```sql
-    SELECT COUNT(*) AS [Concurrent_Requests]
-    FROM sys.dm_exec_requests R;
-    ```
+```sql
+SELECT COUNT(*) AS [Concurrent_Requests]
+FROM sys.dm_exec_requests R;
+```
 
 オンプレミス SQL Server データベースのワークロードを分析するには、分析したい特定のデータベースでフィルター処理するようにこのクエリを変更します。 たとえば、MyDatabase という名前のオンプレミス データベースがある場合、次の Transact-SQL クエリはそのデータベースの同時要求の数を返します。
 
-    ```sql
-    SELECT COUNT(*) AS [Concurrent_Requests]
-    FROM sys.dm_exec_requests R
-    INNER JOIN sys.databases D ON D.database_id = R.database_id
-    AND D.name = 'MyDatabase';
-    ```
+```sql
+SELECT COUNT(*) AS [Concurrent_Requests]
+FROM sys.dm_exec_requests R
+INNER JOIN sys.databases D ON D.database_id = R.database_id
+AND D.name = 'MyDatabase';
+```
 
 これはある時点のスナップショットにすぎません。 ワークロードと同時要求の要件をさらに詳しく理解するには、時間をかけて多くのサンプルを収集する必要があります。
 
@@ -664,16 +675,20 @@ ORDER BY start_time DESC
 
 現在アクティブなセッションの数を確認するには、SQL データベースで次の Transact-SQL クエリを実行します。
 
-    SELECT COUNT(*) AS [Sessions]
-    FROM sys.dm_exec_connections
+```sql
+SELECT COUNT(*) AS [Sessions]
+FROM sys.dm_exec_connections
+```
 
 オンプレミス SQL Server のワークロードを分析する場合は、特定のデータベースが対象になるようにクエリを変更してください。 このクエリは、Azure SQL Database への移行を検討している場合に、データベースの潜在的なセッション ニーズを判断するのに役立ちます。
 
-    SELECT COUNT(*)  AS [Sessions]
-    FROM sys.dm_exec_connections C
-    INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
-    INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-    WHERE D.name = 'MyDatabase'
+```sql
+SELECT COUNT(*) AS [Sessions]
+FROM sys.dm_exec_connections C
+INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
+INNER JOIN sys.databases D ON (D.database_id = S.database_id)
+WHERE D.name = 'MyDatabase'
+```
 
 ここでも、これらのクエリはある時点の数を返します。 時間をかけて複数のサンプルを集めると、セッションの使用状況を正確に把握できます。
 
@@ -687,22 +702,22 @@ SQL Database 分析の場合、[sys.resource_stats](https://msdn.microsoft.com/l
 
 次の例では、平均 CPU 時間の上位 5 個のクエリに関する情報を返します。 この例では、論理的に等価なクエリがリソースの累計消費量ごとにグループ化されるように、クエリ ハッシュに応じてクエリを集計します。
 
-    ```sql
-    SELECT TOP 5 query_stats.query_hash AS "Query Hash",
-       SUM(query_stats.total_worker_time) / SUM(query_stats.execution_count) AS "Avg CPU Time",
-       MIN(query_stats.statement_text) AS "Statement Text"
-    FROM
-       (SELECT QS.*,
+```sql
+SELECT TOP 5 query_stats.query_hash AS "Query Hash",
+    SUM(query_stats.total_worker_time) / SUM(query_stats.execution_count) AS "Avg CPU Time",
+     MIN(query_stats.statement_text) AS "Statement Text"
+FROM
+    (SELECT QS.*,
         SUBSTRING(ST.text, (QS.statement_start_offset/2) + 1,
-        ((CASE statement_end_offset
-           WHEN -1 THEN DATALENGTH(ST.text)
-           ELSE QS.statement_end_offset END
-           - QS.statement_start_offset)/2) + 1) AS statement_text
-    FROM sys.dm_exec_query_stats AS QS
-    CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
-    GROUP BY query_stats.query_hash
-    ORDER BY 2 DESC;
-    ```
+            ((CASE statement_end_offset
+                WHEN -1 THEN DATALENGTH(ST.text)
+                ELSE QS.statement_end_offset END
+            - QS.statement_start_offset)/2) + 1) AS statement_text
+FROM sys.dm_exec_query_stats AS QS
+CROSS APPLY sys.dm_exec_sql_text(QS.sql_handle) as ST) as query_stats
+GROUP BY query_stats.query_hash
+ORDER BY 2 DESC;
+```
 
 ### <a name="monitoring-blocked-queries"></a>クエリのブロックの監視
 
@@ -712,25 +727,25 @@ SQL Database 分析の場合、[sys.resource_stats](https://msdn.microsoft.com/l
 
 クエリ プランの効率が悪いと、CPU の消費量が増える可能性があります。 次の例では、[sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) ビューを使用して、累積 CPU 時間が最も多いクエリを特定します。
 
-    ```sql
-    SELECT
-       highest_cpu_queries.plan_handle,
-       highest_cpu_queries.total_worker_time,
-       q.dbid,
-       q.objectid,
-       q.number,
-       q.encrypted,
-       q.[text]
-    FROM
-       (SELECT TOP 50
+```sql
+SELECT
+    highest_cpu_queries.plan_handle,
+    highest_cpu_queries.total_worker_time,
+    q.dbid,
+    q.objectid,
+    q.number,
+    q.encrypted,
+    q.[text]
+FROM
+    (SELECT TOP 50
         qs.plan_handle,
         qs.total_worker_time
     FROM
         sys.dm_exec_query_stats qs
-    ORDER BY qs.total_worker_time desc) AS highest_cpu_queries
-    CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
-    ORDER BY highest_cpu_queries.total_worker_time DESC;
-    ```
+ORDER BY qs.total_worker_time desc) AS highest_cpu_queries
+CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
+ORDER BY highest_cpu_queries.total_worker_time DESC;
+```
 
 ## <a name="see-also"></a>関連項目
 

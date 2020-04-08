@@ -15,28 +15,28 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 169de21b6dbdafaaeff64e315daa104f3b6faadd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74278093"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは
 CORS (クロス オリジン リソース共有) は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 クロスサイト スクリプティング攻撃の可能性を低減させるために、すべての最新の Web ブラウザーには [同一オリジン ポリシー](https://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。  これにより、Web ページは他のドメイン内の API を呼び出すことができません。  CORS を使用すれば、あるオリジン (オリジン ドメイン) から他のオリジン内の API を安全に呼び出すことができます。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 CORS 要求には、"*簡単な要求*" と "*複雑な要求*" の 2 種類があります。
 
 ### <a name="for-simple-requests"></a>単純な要求の場合:
 
-1. ブラウザーが、追加 **Origin** HTTP 要求ヘッダーを含む CORS 要求を送信します。 このヘッダーの値は、親ページを提供したオリジンで、"*プロトコル*"、"*ドメイン*"、および "*ポート*" の組み合わせとして定義されます。  https\://www.contoso.com からのページが fabrikam.com オリジンのユーザーのデータにアクセスしようとすると、次の要求ヘッダーが fabrikam.com に送信されます。
+1. ブラウザーが、追加 **Origin** HTTP 要求ヘッダーを含む CORS 要求を送信します。 このヘッダーの値は親ページを提供したオリジンであり、"*プロトコル*"、"*ドメイン*"、および "*ポート*" の組み合わせとして定義されます。  https\://www.contoso.com からのページが fabrikam.com オリジンのユーザーのデータにアクセスしようとすると、次の要求ヘッダーが fabrikam.com に送信されます。
 
    `Origin: https://www.contoso.com`
 
 2. サーバーからは次のいずれかの応答が返される場合があります。
 
-   * 許可されるオリジン サイトを示す、応答の **Access-Control-Allow-Origin** ヘッダー。 例:
+   * 許可されるオリジン サイトを示す、応答の **Access-Control-Allow-Origin** ヘッダー。 次に例を示します。
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 

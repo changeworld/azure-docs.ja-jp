@@ -10,25 +10,24 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: c4923e43613653bf3dfe8055754039ab0cf57fca
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/10/2020
+ms.openlocfilehash: 739bba7ed9ab4770a762c08fccc422ce048ae11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587381"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214092"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング
 
-このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) のデータベース パフォーマンス診断ログによって検出された、Azure SQL Database と Managed Instance のパフォーマンスに関する問題について説明します。 この診断ログ テレメトリを、[Azure Monitor ログ](../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションにストリーム配信できます。
+このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) のデータベース パフォーマンス診断ログによって検出された、Azure SQL Database と Managed Instance のパフォーマンスに関する問題について説明します。 [Azure Monitor ログ](../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-azure-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションに、メトリックとリソース ログをストリーミングできます。
 
 > [!NOTE]
 > Intelligent Insights を使った SQL Database のパフォーマンスのトラブルシューティングに関するクイック ガイドについては、このドキュメントの「[推奨されるトラブルシューティングのフロー](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow)」のフローチャートをご覧ください。
->
 
 ## <a name="detectable-database-performance-patterns"></a>データベースの検出可能なパフォーマンス パターン
 
-Intelligent Insights を使用すると、クエリ実行の待機時間、エラー、またはタイムアウトに基づいて、SQL Database と Managed Instance データベースのパフォーマンスの問題が自動的に検出されます。 検出されたパフォーマンス パターンは、診断ログに出力されます。 検出可能なパフォーマンス パターンの概要を次の表に示します。
+Intelligent Insights では、クエリ実行の待機時間、エラー、またはタイムアウトに基づいて、Azure SQL Database 内のデータベースのパフォーマンスの問題が自動的に検出されます。 Intelligent Insights では、検出されたパフォーマンス パターンが SQL Database リソース ログに出力されます。 検出可能なパフォーマンス パターンの概要を次の表に示します。
 
 | 検出可能なパフォーマンス パターン | Azure SQL Database とエラスティック プールの説明 | Managed Instance 内のデータベースの説明 |
 | :------------------- | ------------------- | ------------------- |
@@ -82,7 +81,7 @@ SQL Database 上のリソースは、通常、[DTU](sql-database-what-is-a-dtu.m
 
 いくつかの指標を組み合わせることで検出されます。 測定された基本的な指標によって、過去のワークロード ベースラインとの比較により、ワークロードの増加が検出されます。 その他の形式の検出は、クエリのパフォーマンスに影響を与えるほど大きな、アクティブなワーカー スレッド数の増加の測定に基づいています。
 
-より重大なのは、SQL データベースがワークロードを処理できないことにより、ワークロードが継続的に累積する場合です。 その場合、ワークロードのサイズが増大し続けて、ワークロードの累積状態が発生します。 この状態のため、ワークロードが実行を待機する時間が長くなります。 この状態は、最も重大なデータベース パフォーマンスの問題の 1 つです。 この問題は、中止されたワーカー スレッド数の増加を監視することで検出されます。 
+より重大なのは、SQL データベースがワークロードを処理できないことにより、ワークロードが継続的に累積する場合です。 その場合、ワークロードのサイズが増大し続けて、ワークロードの累積状態が発生します。 この状態のため、ワークロードが実行を待機する時間が長くなります。 この状態は、最も重大なデータベース パフォーマンスの問題の 1 つです。 この問題は、中止されたワーカー スレッド数の増加を監視することで検出されます。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
@@ -102,29 +101,29 @@ SQL Database 上のリソースは、通常、[DTU](sql-database-what-is-a-dtu.m
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
-診断ログには、メモリ使用量が多くなっている最大の要因としてマーク付けされたクラーク (つまりワーカー スレッド) のメモリ オブジェクトの保存詳細と、関連するタイムスタンプが出力されます。 トラブルシューティングのための基準としてこの情報を使うことができます。 
+診断ログには、メモリ使用量が多くなっている最大の要因としてマーク付けされたクラーク (つまりワーカー スレッド) のメモリ オブジェクトの保存詳細と、関連するタイムスタンプが出力されます。 トラブルシューティングのための基準としてこの情報を使うことができます。
 
 メモリ使用量の多さの要因であるクラークに関連するクエリを、最適化または削除することができます。 また、使う予定のないデータをクエリしていないかどうかを確認できます。 クエリでは常に WHERE 句を使用することをお勧めします。 さらに、データをスキャンするのではなくシークするように、非クラスター化インデックスを作成することをお勧めします。
 
 最適化したり、複数のデータベースに分散させたりすることで、ワークロードを減らすこともできます。 または、ワークロードを複数のデータベースに分散させることができます。 これらの解決策が不可能な場合は、SQL データベース サブスクリプションの価格レベルを上げて、データベースで使用可能なメモリ リソースの量を増やすことを検討します。
 
-トラブルシューティングのその他の提案については、[Memory grants meditation:The mysterious SQL Server memory consumer with many names](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/)」(メモリ許可に関する考察: さまざまな名前を持つ、SQL Server の不可解なメモリ コンシューマー) をご覧ください。
+トラブルシューティングのその他の提案については、[Memory grants meditation:The mysterious SQL Server memory consumer with many names](https://techcommunity.microsoft.com/t5/sql-server-support/memory-grants-meditation-the-mysterious-sql-server-memory/ba-p/333994)」(メモリ許可に関する考察: さまざまな名前を持つ、SQL Server の不可解なメモリ コンシューマー) をご覧ください。
 
 ## <a name="locking"></a>ロック
 
 ### <a name="what-is-happening"></a>状況
 
-このパフォーマンス パターンは、過去 7 日間のパフォーマンス ベースラインとの比較により、データベースの過剰なロックが検出された、現在のデータベース パフォーマンスの低下を表します。 
+このパフォーマンス パターンは、過去 7 日間のパフォーマンス ベースラインとの比較により、データベースの過剰なロックが検出された、現在のデータベース パフォーマンスの低下を表します。
 
 最新の RDBMS では、マルチスレッド化されたシステムを実装するために、ロックが不可欠です。そこでは、複数の worker を同時に実行し、可能な場合はデータベースでトランザクションを並列処理して、パフォーマンスが最大化されます。 この場合のロックは、1 つのトランザクションのみが必要かつ他のリソースのトランザクションと競合しない行、ページ、表、ファイルに排他的にアクセスできる、組み込みのアクセス メカニズムを指します。 リソースの使用をロックしたトランザクションでリソースの使用が完了すると、これらのリソースのロックが解除されて、他のトランザクションが必要なリソースにアクセスできるようになります。 ロックについて詳しくは、「[データベース エンジンのロック](https://msdn.microsoft.com/library/ms190615.aspx)」をご覧ください。
 
-SQL エンジンで実行されたトランザクションが、使用がロックされたリソースにアクセスするために長時間待機している場合は、この待機時間がワークロード実行のパフォーマンス低下の原因になります。 
+SQL エンジンで実行されたトランザクションが、使用がロックされたリソースにアクセスするために長時間待機している場合は、この待機時間がワークロード実行のパフォーマンス低下の原因になります。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
 診断ログには、トラブルシューティングのときに基本情報として使うことができる、ロックの詳細が出力されます。 報告されたブロッキング クエリ、つまりロックのパフォーマンス低下を引き起こすクエリを分析して、それらを削除できます。 場合によっては、ブロッキング クエリを最適化できることもあります。
 
-問題を緩和する最も簡単で安全な方法は、トランザクションを常に短くして、最もコストの高いクエリのロック フットプリントを低減させることです。 大きい操作のバッチを小さい操作に分割できます。 クエリをできるだけ効率化して、クエリのロック フットプリントを低減させることをお勧めします。 大規模なスキャンは、デッドロックの可能性を高め、データベースの全体のパフォーマンスに悪影響を及ぼすので、減らします。 ロックの原因として特定されたクエリについては、新しいインデックスを作成したり、既存のインデックスに列を追加したりして、テーブル スキャンを回避できます。 
+問題を緩和する最も簡単で安全な方法は、トランザクションを常に短くして、最もコストの高いクエリのロック フットプリントを低減させることです。 大きい操作のバッチを小さい操作に分割できます。 クエリをできるだけ効率化して、クエリのロック フットプリントを低減させることをお勧めします。 大規模なスキャンは、デッドロックの可能性を高め、データベースの全体のパフォーマンスに悪影響を及ぼすので、減らします。 ロックの原因として特定されたクエリについては、新しいインデックスを作成したり、既存のインデックスに列を追加したりして、テーブル スキャンを回避できます。
 
 その他の推奨事項については、「[SQL Server でロックのエスカレーションが原因で発生するブロッキング問題を解決する方法](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)」をご覧ください。
 
@@ -136,7 +135,7 @@ SQL エンジンで実行されたトランザクションが、使用がロッ�
 
 エキスパート システムは、ベースラインの期間と比較して現在のデータベースのパフォーマンスを分析し、 クエリ実行プランが必要以上に並列化されたために、クエリの実行が以前より遅くなったかどうかを判断します。
 
-同じクエリの並列実行に使われる CPU コア数の制御には、SQL Database の MAXDOP サーバー構成オプションが使われます。 
+同じクエリの並列実行に使われる CPU コア数の制御には、SQL Database の MAXDOP サーバー構成オプションが使われます。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
@@ -164,7 +163,7 @@ SQL データベースではさまざまな種類のラッチを使うことが�
 
 ページラッチは SQL Database の内部制御メカニズムであるため、使用のタイミングは自動的に決定されます。 スキーマ デザインを含むアプリケーションの決定は、ラッチの決定論的なビヘイビアーにより、ページラッチの動作に影響を与えます。
 
-ラッチの競合を処理する方法の 1 つは、連続したインデックス キーを連番でないキーに置き換えて、インデックスの範囲に挿入を均等に分散することです。 通常、インデックスの先頭列がワークロードを比例的に配分します。 検討すべきもうひとつの方法は、テーブル パーティションです。 パーティション テーブルの計算列でハッシュ パーティション分割のスキーマを作成することは、ラッチの過剰な競合を軽減するための一般的な方法です。 ページラッチの IO 競合の場合、インデックスの導入がパフォーマンスの問題の軽減に役立ちます。 
+ラッチの競合を処理する方法の 1 つは、連続したインデックス キーを連番でないキーに置き換えて、インデックスの範囲に挿入を均等に分散することです。 通常、インデックスの先頭列がワークロードを比例的に配分します。 検討すべきもうひとつの方法は、テーブル パーティションです。 パーティション テーブルの計算列でハッシュ パーティション分割のスキーマを作成することは、ラッチの過剰な競合を軽減するための一般的な方法です。 ページラッチの IO 競合の場合、インデックスの導入がパフォーマンスの問題の軽減に役立ちます。
 
 詳しくは、「[Diagnose and resolve latch contention on SQL Server](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf)」(SQL Server でのラッチの競合の診断と対応) (PDF をダウンロード) をご覧ください。
 
@@ -208,13 +207,13 @@ SQL データベースではさまざまな種類のラッチを使うことが�
 
 この検出可能なパフォーマンス パターンは、過去 7 日間のワークロード ベースラインと比較してパフォーマンスの低いクエリが検出された場合の、ワークロードのパフォーマンスの低下を表します。
 
-この場合、システムは他の検出可能な標準パフォーマンス カテゴリの低パフォーマンス クエリを分類することはできませんが、回帰の原因である待機の統計を検出しました。 したがって、それらを "*待機の増加の統計*" のクエリと見なし、回帰の原因である特殊な待機統計も公開されます。 
+この場合、システムは他の検出可能な標準パフォーマンス カテゴリの低パフォーマンス クエリを分類することはできませんが、回帰の原因である待機の統計を検出しました。 したがって、それらを "*待機の増加の統計*" のクエリと見なし、回帰の原因である特殊な待機統計も公開されます。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
 診断ログには、待機時間の増加の詳細と影響を受けたクエリのクエリ ハッシュに関する情報が出力されます。
 
-システムでパフォーマンスの低いクエリの根本原因を特定できなかったため、診断情報が手動でトラブルシューティングを行うための第一歩として役立ちます。 これらのクエリのパフォーマンスを最適化することができます。 使う必要のあるデータだけをフェッチして単純化し、複雑なクエリは細かく分割することをお勧めします。 
+システムでパフォーマンスの低いクエリの根本原因を特定できなかったため、診断情報が手動でトラブルシューティングを行うための第一歩として役立ちます。 これらのクエリのパフォーマンスを最適化することができます。 使う必要のあるデータだけをフェッチして単純化し、複雑なクエリは細かく分割することをお勧めします。
 
 クエリのパフォーマンスの最適化について詳しくは、「[クエリのチューニング](https://msdn.microsoft.com/library/ms176005.aspx)」をご覧ください。
 
@@ -226,15 +225,15 @@ SQL データベースではさまざまな種類のラッチを使うことが�
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
-診断ログには、tempDB の競合の詳細が出力されます。 トラブルシューティングの出発点としてこの情報を使うことができます。 この種の競合を軽減し、ワークロード全体のスループットを増やすためにできることが 2 つあります。まず、一時テーブルの使用をやめることができます。 また、メモリ最適化テーブルを使うこともできます。 
+診断ログには、tempDB の競合の詳細が出力されます。 トラブルシューティングの出発点としてこの情報を使うことができます。 この種の競合を軽減し、ワークロード全体のスループットを増やすためにできることが 2 つあります。まず、一時テーブルの使用をやめることができます。 また、メモリ最適化テーブルを使うこともできます。
 
-詳しくは、「[メモリ最適化テーブルの概要](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)」をご覧ください。 
+詳しくは、「[メモリ最適化テーブルの概要](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)」をご覧ください。
 
 ## <a name="elastic-pool-dtu-shortage"></a>エラスティック プールの DTU の不足
 
 ### <a name="what-is-happening"></a>状況
 
-この検出可能なパフォーマンス パターンは、過去 7 日間のベースラインとの比較により、現在のデータベースのワークロード パフォーマンスが低下していることを示します。 原因は、サブスクリプションのエラスティック プールで使用可能な DTU の不足です。 
+この検出可能なパフォーマンス パターンは、過去 7 日間のベースラインとの比較により、現在のデータベースのワークロード パフォーマンスが低下していることを示します。 原因は、サブスクリプションのエラスティック プールで使用可能な DTU の不足です。
 
 SQL Database のリソースは通常 [DTU リソース](sql-database-purchase-models.md#dtu-based-purchasing-model)と呼ばれ、CPU と IO (データおよびトランザクション ログ IO) リソースを組み合わせたメジャーで構成されます。 [Azure エラスティック プールのリソース](sql-database-elastic-pool.md)は、複数のデータベース間でスケーリングのために共有される、使用可能な eDTU リソースのプールとして使用されます。 エラスティック プールで使用可能な eDTU リソースが、プール内のすべてのデータベースのサポートには足りない場合、エラスティック プールの DTU の不足というパフォーマンスの問題がシステムで検出されます。
 
@@ -258,13 +257,13 @@ SQL データベースでは、クエリ実行コストが最も低いクエリ�
 
 新しいプランへの回帰の状態は、前のプランほど効率的ではない、新しいクエリ実行プランの実行が SQL Database で開始されている状態を表します。 前のプランへの回帰の状態は、SQL Database で、新しくより効率的なプランから、新しいプランほど効率的ではない前のプランの使用に切り替わった状態を表します。 ワークロードが変更された既存のプランへの回帰は、前のプランと新しいプランが継続的に交互に行われつつ、パフォーマンスの低いプランへの比重が高まっている状態を表します。
 
-プランの回帰について詳しくは、「[What is plan regression in SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/)」(SQL server のプランの回帰とは) をご覧ください。 
+プランの回帰について詳しくは、「[What is plan regression in SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/)」(SQL server のプランの回帰とは) をご覧ください。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
 診断ログには、クエリ ハッシュ、適切なプランの ID、不適切なプランの ID、およびクエリの ID が出力されます。 トラブルシューティングのための基準としてこの情報を使うことができます。
 
-提供されたクエリ ハッシュを使用して特定できるクエリに対して、どのプランのパフォーマンスが優れているかを分析できます。 クエリに対してパフォーマンスが優れているプランを判断した後、手動で適用できます。 
+提供されたクエリ ハッシュを使用して特定できるクエリに対して、どのプランのパフォーマンスが優れているかを分析できます。 クエリに対してパフォーマンスが優れているプランを判断した後、手動で適用できます。
 
 詳しくは、「[Learn how SQL Server prevents plan regressions](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/)」(SQL Server がプランの回帰を回避するしくみ) をご覧ください。
 
@@ -300,7 +299,7 @@ SQL データベースでは、クエリ実行コストが最も低いクエリ�
 
 この検出可能なパフォーマンス パターンは、クライアント側の状態を示します。 クライアント側のアプリケーションまたはネットワークでのトラブルシューティングが必要です。 診断ログには、過去 2 時間以内にクライアントによる処理を最も長い時間待機したクエリのクエリ ハッシュと待機時間が出力されます。 トラブルシューティングのための基準としてこの情報を使うことができます。
 
-これらのクエリの使用に関して、アプリケーションのパフォーマンスを最適化できます。 発生する可能性のあるネットワーク待機時間の問題について考えることもできます。 パフォーマンス低下の問題は過去 7 日間のパフォーマンス ベースラインの変化に基づくものだったので、最近のアプリケーションやネットワークの状態の変化によりこのパフォーマンス回帰イベントが発生したどうかを調査することができます。 
+これらのクエリの使用に関して、アプリケーションのパフォーマンスを最適化できます。 発生する可能性のあるネットワーク待機時間の問題について考えることもできます。 パフォーマンス低下の問題は過去 7 日間のパフォーマンス ベースラインの変化に基づくものだったので、最近のアプリケーションやネットワークの状態の変化によりこのパフォーマンス回帰イベントが発生したどうかを調査することができます。
 
 ## <a name="pricing-tier-downgrade"></a>価格レベルのダウングレード
 
@@ -318,7 +317,7 @@ SQL データベースでは、クエリ実行コストが最も低いクエリ�
 
  Intelligent Insights を使ったパフォーマンスのトラブルシューティングのお勧めの方法については、フローチャートに従ってください。
 
-Azure SQL Analytics に移動して、Azure Portal から Intelligent Insights にアクセスします。 受信したパフォーマンス アラートを検索して選びます。 検出ページで現在の状況を確認します。 問題の根本原因の解析、クエリ テキスト、クエリの時間の傾向、およびインシデントの展開に関する情報をよく読みます。 パフォーマンスの問題の軽減に関する Intelligent Insights の推奨事項を使って、問題の解決を試みます。 
+Azure SQL Analytics に移動して、Azure Portal から Intelligent Insights にアクセスします。 受信したパフォーマンス アラートを検索して選びます。 検出ページで現在の状況を確認します。 問題の根本原因の解析、クエリ テキスト、クエリの時間の傾向、およびインシデントの展開に関する情報をよく読みます。 パフォーマンスの問題の軽減に関する Intelligent Insights の推奨事項を使って、問題の解決を試みます。
 
 [![トラブルシューティングのフローチャート](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
 
@@ -328,6 +327,7 @@ Azure SQL Analytics に移動して、Azure Portal から Intelligent Insights �
 Intelligent Insights では、パフォーマンスの問題の根本原因の解析に通常 1 時間かかります。 Intelligent Insights で問題を見つけることができず、問題を見つけることが重要であるときは、クエリ データ ストアを使って、手動でパフォーマンスの問題の根本原因を特定します (通常、これらの問題とは 1 時間以内のものです)。詳しくは、「[クエリのストアを使用した、パフォーマンスの監視](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
+
 - [Intelligent Insights](sql-database-intelligent-insights.md) の概念の習得。
 - [Intelligent Insights Azure SQL Database パフォーマンス診断ログ](sql-database-intelligent-insights-use-diagnostics-log.md)の使用。
 - [Azure SQL Analytics を使用した Azure SQL Database](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) の監視。

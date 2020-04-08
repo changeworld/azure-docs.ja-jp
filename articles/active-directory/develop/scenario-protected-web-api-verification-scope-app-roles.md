@@ -17,10 +17,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 816a9620a3486b534f9293084b7c4f5b4f748033
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76768127"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>保護された Web API: スコープとアプリのロールを検証する
@@ -157,7 +157,7 @@ private void ValidateAppRole(string appRole)
 
 ### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>Web API がデーモン アプリのみによって呼び出される必要がある場合のアプリ専用トークンの受け入れ
 
-ユーザーは、「[方法: アプリケーションにアプリ ロールを追加してトークンで受け取る](howto-add-app-roles-in-azure-ad-apps.md)」に示されているように、ユーザー割り当てパターンでロール要求を使用することもできます。 ロールが両方に割り当て可能な場合は、ロールをチェックすると、アプリはユーザーとして、ユーザーはアプリとしてサインインできるようになります。 この混乱を避けるために、ユーザー用とアプリ用に異なるロールを宣言することをお勧めします。
+ユーザーは、ユーザー割り当てパターン内でロール要求を使用することもできます。使用方法は、「[方法: アプリケーションにアプリ ロールを追加してトークンで受け取る](howto-add-app-roles-in-azure-ad-apps.md)」を参照してください)。 ロールが両方に割り当て可能な場合は、ロールをチェックすると、アプリはユーザーとして、ユーザーはアプリとしてサインインできるようになります。 この混乱を避けるために、ユーザー用とアプリ用に異なるロールを宣言することをお勧めします。
 
 デーモン アプリのみが Web API を呼び出せるようにしたい場合は、アプリ ロールを検証するときに、トークンがアプリ専用トークンであるという条件を追加します。
 

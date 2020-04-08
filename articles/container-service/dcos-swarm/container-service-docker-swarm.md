@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 04cc9048271d653bd77fd7f2707c8f510ea8c29f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c76701ce74aafcccdbb2f1a2454f9528b52fc096
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61456558"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79136229"
 ---
 # <a name="deprecated-container-management-with-docker-swarm"></a>(非推奨) Docker Swarm でのコンテナーの管理
 
@@ -28,7 +28,7 @@ Docker Swarm は、コンテナーにまとめたワークロードをプール�
 
 [Azure コンテナー サービスに Swarm クラスターを作成する](container-service-deployment.md)
 
-[Azure コンテナー サービスの Swarm クラスターと接続する](../container-service-connect.md)
+[Azure Container Service 内の Swarm クラスターと接続する](../container-service-connect.md)
 
 ## <a name="deploy-a-new-container"></a>新しいコンテナーをデプロイする
 Docker Swarm で新しいコンテナーを作成するには、 `docker run` コマンドを使用します (上記の前提条件に従い、SSH トンネルをマスターに対して開いておいてください)。 この例では、 `yeasy/simple-web` イメージからコンテナーを作成します。
@@ -69,9 +69,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ## <a name="deploy-containers-by-using-docker-compose"></a>Docker Compose を使用してコンテナーをデプロイする
 Docker Compose を使用して、複数のコンテナーのデプロイと構成を自動化することができます。 自動化するには、Secure Shell (SSH) トンネルが作成され、DOCKER_HOST 変数が設定されている必要があります (上記の前提条件を参照)。
 
-ローカル システムに docker-compose.yml を作成します。 作成には、この [サンプル](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/docker-compose.yml)を使用します。
+ローカル システムに docker-compose.yml を作成します。 作成には、このサンプルを使用します。
 
-```bash
+```dockerfile
 web:
   image: adtd/web:0.1
   ports:
@@ -112,6 +112,6 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 
 当然ながら、`docker-compose ps` を使用すると、`compose.yml` ファイルに定義されているコンテナーのみを確認することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Docker Swarm の詳細](https://docs.docker.com/swarm/)
 

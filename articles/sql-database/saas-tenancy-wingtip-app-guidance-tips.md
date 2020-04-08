@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 162d1f269c65ad98afa30e8e96370bbdceca99bd
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74132303"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Wingtip Tickets サンプル SaaS アプリを使用する場合の一般的なガイダンス
@@ -34,7 +34,7 @@ ms.locfileid: "74132303"
 3. **[Download zip]** をクリックして、ファイルを保存します。
 4. zip ファイルを右クリックし、 **[プロパティ]** を選びます。 zip ファイルの名前は、リポジトリ名に対応します。 (例: _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. **[全般]** タブで **[ブロックの解除]** を選択します。
-6. Click **OK**.
+6. **[OK]** をクリックします。
 7. ファイルを解凍します。
 
 スクリプトは、 *..\\Learning Modules* フォルダーにあります。
@@ -114,7 +114,7 @@ PowerShell スクリプトの調査およびステップ実行に関するヒン
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Wingtip Tickets SaaS スタンドアロン アプリケーションをデプロイする](saas-standaloneapp-get-started-deploy.md)
 - [Wingtip Tickets SaaS Database Per Tenant アプリケーションのデプロイ](saas-dbpertenant-get-started-deploy.md)
 - [Wingtip Tickets SaaS マルチテナント データベース アプリケーションをデプロイする](saas-multitenantdb-get-started-deploy.md)

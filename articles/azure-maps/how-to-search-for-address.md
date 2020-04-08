@@ -1,19 +1,19 @@
 ---
 title: Azure Maps Search Service を使用して場所を検索する | Microsoft Azure Maps
 description: この記事では、Microsoft Azure Maps Search Service を使用してジオコーディングとリバース ジオコーディングのために場所を検索する方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 40066f24fec00610a1efd10b2cb874b1100acdee
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: cf0e5267885df1ace51271c53bb2d68ee5002f00
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209887"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335430"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Azure Maps Search Service を使用して場所を検索する
 
@@ -55,7 +55,7 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) は
 
 ![住所検索](./media/how-to-search-for-address/address_search_params.png) 
 
-| Key | Value | 
+| Key | 値 | 
 |------------------|-------------------------| 
 | api-version | 1.0 | 
 | subscription-key | \<Azure Maps キー\> | 
@@ -73,7 +73,7 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) は
 
 6. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。 
 
-| Key | Value | 
+| Key | 値 | 
 |-----|------------| 
 | typeahead | true | 
 
@@ -105,7 +105,7 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) は
 
     ![あいまい検索](./media/how-to-search-for-address/fuzzy_search_params.png)
 
-    | Key | Value |
+    | Key | 値 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<Azure Maps キー\> |
@@ -119,7 +119,7 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) は
 
 5. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
-    | Key | Value |
+    | Key | 値 |
     |------------------|-------------------------|
     | countrySet | US |
   
@@ -131,7 +131,7 @@ Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) は
 
     ![あいまい検索](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
-    | Key | Value |
+    | Key | 値 |
     |-----|------------|
     | lat | 47.620525 |
     | lon | -122.349274 |
@@ -159,7 +159,7 @@ Azure Maps の[Get Search Address Reverse API]( https://docs.microsoft.com/rest/
   
     ![住所の逆引き検索のパラメーター](./media/how-to-search-for-address/reverse_address_search_params.png)
   
-    | Key | Value |
+    | Key | 値 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<Azure Maps キー\> |
@@ -171,7 +171,7 @@ Azure Maps の[Get Search Address Reverse API]( https://docs.microsoft.com/rest/
   
 5. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
-    | Key | Value |
+    | Key | 値 |
     |-----|------------|
     | number | true |
 
@@ -179,7 +179,7 @@ Azure Maps の[Get Search Address Reverse API]( https://docs.microsoft.com/rest/
   
 6. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
-    | Key | Value |
+    | Key | 値 |
     |-----|------------|
     | returnSpeedLimit | true |
   
@@ -187,7 +187,7 @@ Azure Maps の[Get Search Address Reverse API]( https://docs.microsoft.com/rest/
 
 7. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
-    | Key | Value |
+    | Key | 値 |
     |-----|------------|
     | returnRoadUse | true |
 
@@ -195,7 +195,7 @@ Azure Maps の[Get Search Address Reverse API]( https://docs.microsoft.com/rest/
 
 8. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
-    | Key | Value |
+    | Key | 値 |
     |-----|------------|
     | roadUse | true |
 
@@ -217,7 +217,7 @@ Azure Maps の[Get Search Address Reverse API]( https://docs.microsoft.com/rest/
   
 3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
   
-    | Key | Value |
+    | Key | 値 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<Azure Maps キー\> |
@@ -227,5 +227,5 @@ Azure Maps の[Get Search Address Reverse API]( https://docs.microsoft.com/rest/
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Maps Search サービス](https://docs.microsoft.com/rest/api/maps/search) API ドキュメントを確認する。
-- [ベスト プラクティス](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search)を確認します。
+- Azure Maps [Search Service REST API のドキュメント](https://docs.microsoft.com/rest/api/maps/search)を確認します。
+- [Azure Maps Search Service のベスト プラクティス](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search)とクエリを最適化する方法について確認します。

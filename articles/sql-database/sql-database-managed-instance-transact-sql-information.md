@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 02/10/2020
+ms.date: 03/11/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3e631fae4899fffafad9bd140abaae4fb170624
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: e01c61ca4f415ffbb46c86034d4b7441bc2617d9
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462583"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365489"
 ---
-# <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>マネージド インスタンスの T-SQL の相違点、制限、既知の問題
+# <a name="managed-instance-t-sql-differences-and-limitations"></a>マネージド インスタンス T-SQL の相違点と制限事項
 
 この記事では、Azure SQL Database マネージド インスタンスとオンプレミスの SQL Server データベース エンジンの構文および動作の相違点について簡単に説明します。 マネージド インスタンスのデプロイ オプションは、オンプレミスの SQL Server データベース エンジンとの高い互換性を備えています。 SQL Server データベース エンジンのほとんどの機能がマネージド インスタンスでサポートされています。
 
@@ -34,11 +34,11 @@ Managed Instance には、SQL Server と比べて PaaS の制限と動作の違�
 
 これらの機能の大半はアーキテクチャ上の制約であり、サービスの機能を表します。
 
-このページでは、マネージド インスタンスに見つかった[一時的な既知の問題](#Issues)についても説明しています。これらの問題は、将来解決される予定です。
+マネージド インスタンスで見つかり、将来解決される予定の一時的な既知の問題については、[リリース ノート ページ](sql-database-release-notes.md)で説明しています。
 
 ## <a name="availability"></a>可用性
 
-### <a name="always-on-availability-groups"></a>Always On 可用性グループ
+### <a name="always-on-availability-groups"></a><a name="always-on-availability-groups"></a>Always On 可用性グループ
 
 [高可用性](sql-database-high-availability.md)はマネージド インスタンスに組み込まれており、ユーザーが制御することはできません。 次のステートメントはサポートされていません。
 
@@ -65,7 +65,6 @@ Managed Instance には自動バックアップがあるので、ユーザーは
 
 - Managed Instance では、最大 32 個のストライプを使用するバックアップにインスタンス データベースをバックアップできます。バックアップの圧縮を使用した場合、このバックアップで最大 4 TB のデータベースに十分対応できます。
 - サービス管理 Transparent Data Encryption (TDE) を使用して暗号化されたデータベースでは、`BACKUP DATABASE ... WITH COPY_ONLY` は実行できません。 サービス管理 TDE では、バックアップを内部の TDE のキーで暗号化するように強制します。 キーはエクスポートできないので、バックアップを復元することはできません。 自動バックアップとポイントインタイム リストアを使用するか、代わりに[顧客管理 (BYOK) TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) を使用します。 また、データベースで暗号化を無効にすることができます。
-- Azure Blob storage への手動バックアップは、[BlockBlobStorage アカウント](/azure/storage/common/storage-account-overview#types-of-storage-accounts)に対してのみサポートされています。
 - `BACKUP` コマンドを使用した場合の最大バックアップ ストライプ サイズは、最大 BLOB サイズである 195 GB です。 バックアップ コマンドでストライプ サイズを増やして、個々のストライプ サイズを減らし、この制限内に収まるようにします。
 
     > [!TIP]
@@ -140,8 +139,8 @@ Managed Instance はファイルにアクセスできないため、暗号化プ
     マネージド インスタンスは、`CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` 構文で Azure AD データベース プリンシパルをサポートします。 この機能は、Azure AD 包含データベース ユーザーとも呼ばれます。
 
 - `CREATE LOGIN ... FROM WINDOWS` 構文を使用して作成された Windows ログインはサポートされていません。 Azure Active Directory のログインとユーザーを使用します。
-- インスタンスを作成した Azure AD ユーザーは、[無制限の管理特権](sql-database-manage-logins.md#unrestricted-administrative-accounts)を持ちます。
-- 管理者以外の、データベース レベルの Azure AD ユーザーは、`CREATE USER ... FROM EXTERNAL PROVIDER` 構文を使用して作成できます。 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users) を参照してください。
+- インスタンスを作成した Azure AD ユーザーは、[無制限の管理特権](sql-database-manage-logins.md)を持ちます。
+- 管理者以外の、データベース レベルの Azure AD ユーザーは、`CREATE USER ... FROM EXTERNAL PROVIDER` 構文を使用して作成できます。 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities) を参照してください。
 - Azure AD サーバー プリンシパル (ログイン) は、1 つの Managed Instance 内のみで SQL 機能をサポートします。 同じ Azure AD テナント内か、または異なるテナント内かに関係なく、Azure AD ユーザーの場合、クロス インスタンス対話を必要とする機能はサポートされていません。 そのような機能の例として次のものがあります。
 
   - SQL トランザクション レプリケーション。
@@ -470,6 +469,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
+  - `remote access`
   - `remote data archive`
   - `remote proc trans`
 - `sp_execute_external_scripts` はサポートされていません。 [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples) に関するセクションをご覧ください。
@@ -489,7 +489,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
 - `SUSER_ID` はサポートされています。 Azure AD ログインが sys.syslogins に含まれていない場合は、NULL を返します。 [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql) に関する記事をご覧ください。 
 - `SUSER_SID` はサポートされていません。 正しくないデータが返されます。これは既知の一時的な問題です。 [SUSER_SID](/sql/t-sql/functions/suser-sid-transact-sql) に関する記事をご覧ください。 
 
-## <a name="Environment"></a>環境の制約
+## <a name="environment-constraints"></a><a name="Environment"></a>環境の制約
 
 ### <a name="subnet"></a>Subnet
 -  マネージド インスタンスをデプロイしたサブネットに他のリソース (たとえば仮想マシン) を配置することはできません。 別のサブネットを使用してこれらのリソースをデプロイしてください。
@@ -531,181 +531,9 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
 
 マネージド インスタンスでは、エラー ログに詳細情報が書き込まれます。 エラー ログに記録される内部システム イベントが数多く存在します。 カスタムの手順を使用して、関連のない項目をフィルターで除外するエラー ログを読み取ります。 詳細については、Azure Data Studio の[マネージド インスタンス - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) または[マネージド インスタンスの拡張機能 (プレビュー)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) に関する記事をご覧ください。
 
-## <a name="Issues"></a> 既知の問題
-
-
-### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>ポータルを使用したフェールオーバー グループに対する手動フェールオーバーの制限
-
-**日付:** 2020 年 1 月
-
-フェールオーバー グループが異なる複数の Azure サブスクリプションまたはリソース グループのインスタンスにまたがっている場合、フェールオーバー グループのプライマリ インスタンスから手動フェールオーバーを開始することはできません。
-
-**回避策**:Geo セカンダリ インスタンスからポータル経由でフェールオーバーを開始します。
-
-### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL エージェント ロールには、sysadmin 以外のログインに対する明示的な EXECUTE 権限が必要です
-
-**日付:** 2019 年 12 月
-
-sysadmin 以外のログインが [SQL Agent の固定データベース ロール](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)に追加されると、これらのログインを機能させるには、明示的な EXECUTE 権限を Master ストアド プロシージャに付与する必要があるという問題が存在します。 この問題が発生した場合は、次のエラーメッセージ「EXECUTE 権限がオブジェクト <object_name> で拒否されました (Microsoft SQL Server 、エラー:229)」が表示されます。
-
-**回避策**:次の SQL エージェントの固定データベース ロール:SQLAgentUserRole、SQLAgentReaderRole、または SQLAgentOperatorRole のいずれかにログインを追加した後、これらのロールに追加された各ログインに対して次の T-SQL スクリプトを実行して、一覧表示されているストアド プロシージャに明示的に EXECUTE 権限を付与します。
-
-```tsql
-USE [master]
-GO
-CREATE USER [login_name] FOR LOGIN [login_name]
-GO
-GRANT EXECUTE ON master.dbo.xp_sqlagent_enum_jobs TO [login_name]
-GRANT EXECUTE ON master.dbo.xp_sqlagent_is_starting TO [login_name]
-GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
-```
-
-### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>エージェント プロセスを再起動すると、SQL エージェント ジョブが中断されることがある
-
-**日付:** 2019 年 12 月
-
-SQL エージェントでは、ジョブが開始されるたびに新しいセッションが作成され、メモリ消費量が徐々に増加します。 内部メモリの制限に達してスケジュールされたジョブの実行がブロックされることのないように、エージェント プロセスのメモリ使用量がしきい値に達すると、エージェント プロセスが再起動されます。 これにより、再起動の時点で実行中のジョブの実行が中断される可能性があります。
-
-### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>インメモリ OLTP のメモリ制限が適用されない
-
-**日付:** 2019 年 10 月
-
-Business Critical サービス レベルでは、[メモリ最適化オブジェクトの最大メモリ制限](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)が正しく適用されない場合があります。 マネージド インスタンスでは、ワークロードが、インメモリ OLTP 操作に対してより多くのメモリを使用できる場合があり、これがインスタンスの可用性と安定性に影響を及ぼすことがあります。 インメモリ OLTP クエリは、制限に達しても、すぐには失敗しない可能性があります。 この問題は、まもなく解決されます。 多くのインメモリ OLTP メモリを使用するクエリは、[制限](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)に達するとすぐに失敗するようになります。
-
-**対処法:** [SQL Server Management Studio](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) を使用して[インメモリ OLTP ストレージの使用状況を監視](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring)し、使用可能な量を超えるメモリがワークロードによって使用されないようにします。 仮想コアの数に応じてメモリ制限を増やすか、ワークロードを最適化して、使用するメモリを減らします。
-
-### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>空ではないファイルを削除しようとしたときに誤ったエラーが返される
-
-**日付:** 2019 年 10 月
-
-SQL Server/Managed Instance では、[ユーザーは空でないファイルを削除できません](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)。 `ALTER DATABASE REMOVE FILE` ステートメントを使用して空でないデータ ファイルを削除しようとすると、エラー `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` はすぐには返されません。 Managed Instance では引き続きファイルの削除が試行されますが、30 分後に操作が失敗し、`Internal server error` になります。
-
-**回避策**:`DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` コマンドを使用して、ファイルの内容を削除します。 ファイル グループ内の唯一のファイルの場合は、ファイルを圧縮する前に、このファイル グループに関連付けられているテーブルまたはパーティションからデータを削除する必要があります。また、必要に応じて、このデータを別のテーブルまたはパーティションに読み込みます。
-
-### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>サービス レベルの変更とインスタンスの作成操作が、進行中のデータベースの復元によってブロックされる
-
-**日付:** 2019 年 9 月
-
-進行中の `RESTORE` ステートメント、データ移行サービスの移行プロセス、組み込みのポイントインタイム リストアでは、復元処理が完了するまで、サービス レベルの更新や既存のインスタンスのサイズ変更、新しいインスタンスの作成がブロックされます。 復元プロセスでは、復元プロセスが実行されているのと同じサブネット内のマネージド インスタンスとインスタンス プールでこれらの操作がブロックされます。 インスタンス プール内のインスタンスは影響を受けません。 サービス レベルの操作の作成または変更は、失敗したり、タイムアウトしたりすることはありません。復元処理が完了するかキャンセルされるまで処理が続行されます。
-
-**回避策**:サービス レベルの作成または更新操作の優先順位が高い場合は、復元プロセスが完了するか、復元プロセスがキャンセルされるまで待機します。
-
-### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Business Critical サービス レベルの Resource Governor をフェールオーバー後に再構成しなければならない場合がある
-
-**日付:** 2019 年 9 月
-
-ユーザー ワークロードに割り当てられているリソースを制限することを可能にする [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 機能では、フェールオーバー後またはサービス レベルの変更 (たとえば、仮想コアやインスタンスの最大ストレージ サイズを変更します) をユーザーが開始した後、一部のユーザー ワークロードが間違って分類されることがあります。
-
-**回避策**:[Resource Governor](/sql/relational-databases/resource-governor/resource-governor) を使用している場合、`ALTER RESOURCE GOVERNOR RECONFIGURE` を定期的に、または、インスタンスの開始時に SQL タスクを実行する SQL エージェント ジョブの一環として実行します。
-
-### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>サービス レベルのアップグレード後は、複数データベースにまたがる Service Broker のダイアログを再初期化する必要があります。
-
-**日付:** 2019 年 8 月
-
-サービス レベルの変更操作の後、複数データベースにまたがる Service Broker のダイアログで、他のデータベースのサービスにメッセージが配信されなくなります。 メッセージは**失われたわけではなく**、センダーのキューに存在します。 マネージド インスタンスの仮想コアやインスタンスのストレージ サイズを変更すると、すべてのデータベースについて、[sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) ビューの `service_broke_guid` 値が変更されます。 [BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) ステートメントを使用して作成された、他のデータベースの Service Broker を参照する `DIALOG` から、ターゲット サービスにメッセージが配信されなくなります。
-
-**対処法:** 複数データベースにまたがる Service Broker ダイアログのメッセージ交換を使用するアクティビティはすべて、サービス レベルを更新する前に停止し、後から再初期化してください。 サービス レベルの変更後、未配信のままのメッセージがあった場合は、それらのメッセージをソース キューから読み取って、ターゲット キューに再送信します。
-
-### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Azure AD ログイン タイプの偽装はサポートされない
-
-**日付:** 2019 年 7 月
-
-`EXECUTE AS USER` または `EXECUTE AS LOGIN` を使用した次の AAD プリンシパルの偽装はサポートされません。
--   別名が付けられた AAD ユーザー。 この場合は `15517` エラーが返されます。
-- AAD アプリケーションまたはサービス プリンシパルに基づく AAD のログインおよびユーザー。 この場合は `15517` および `15406` エラーが返されます。
-
-### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>sp_send_db_mail の @query パラメーターはサポートされない
-
-**日付:** 2019 年 4 月
-
-[sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) プロシージャの `@query` パラメーターは機能しません。
-
-### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>geo フェールオーバー後、トランザクション レプリケーションを再構成する必要がある
-
-**日付:** 2019 年 3 月
-
-自動フェールオーバー グループ内のデータベースでトランザクション レプリケーションが有効な場合、マネージド インスタンス管理者は、別のリージョンへのフェールオーバーが発生した後で、古いプライマリ上のすべてのパブリケーションをクリーンアップしてから、新しいプライマリ上でそれらを再構成する必要があります。 詳細については、「[レプリケーション](#replication)」を参照してください。
-
-### <a name="aad-logins-and-users-are-not-supported-in-ssdt"></a>SSDT 内では AAD のログインとユーザーがサポートされない
-
-**日付:** 2019 年 11 月
-
-SQL Server Data Tools では、Azure Active Directory のログインとユーザーが完全にはサポートされません。
-
-### <a name="temporary-database-is-used-during-restore-operation"></a>一時的なデータベースが RESTORE 操作中に使用される
-
-データベースがマネージド インスタンス上で復元されるとき、復元サービスではまず、所望の名前で空のデータベースが作成され、インスタンス上でその名前が割り当てられます。 しばらくすると、このデータベースは削除され、実際のデータベースの復元が開始されます。 *復元*状態のデータベースには、名前ではなくランダムな GUID 値が一時的に与えられます。 復元プロセスが完了すると、`RESTORE` ステートメントに指定されている所望の名前に一時的な名前が変更されます。 初期フェーズでは、ユーザーは空のデータベースにアクセスしたり、さらにはテーブルを作成したり、このデータベースにデータを読み込んだりできます。 この一時的なデータベースは、復元サービスで 2 つ目のフェーズが開始されると削除されます。
-
-**回避策**:復元の完了を確認するまで、復元中のデータベースにはアクセスしないでください。
-
-### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB の構造と内容は再作成される
-
-`tempdb` は常に 12 個のデータ ファイルに分割され、ファイルの構造は変更できません。 ファイルあたりの最大サイズは変更できず、`tempdb` に新しいファイルを追加することはできません。 `Tempdb` は、インスタンスが開始またはフェールオーバーしたときに、常に空のデータベースとして再作成され、`tempdb` で行われたどの変更も保持されません。
-
-### <a name="exceeding-storage-space-with-small-database-files"></a>小さなデータベース ファイルによる記憶域の超過
-
-インスタンスが Azure ストレージの制限に達する可能性があるため、`CREATE DATABASE`、`ALTER DATABASE ADD FILE`、および `RESTORE DATABASE` ステートメントが失敗することがあります。
-
-各 General Purpose Managed Instance には、Azure Premium ディスク領域用に予約された 最大 35 TB のストレージがあります。 各データベース ファイルは、個別の物理ディスクに配置されます。 ディスク サイズとして、128 GB、256 GB、512 GB、1 TB、4 TB のいずれかを指定できます。 ディスク上の未使用領域については請求されませんが、Azure Premium ディスクのサイズ合計が 35 TB を超えることはできません。 場合によっては、内部の断片化のために、合計で 8 TB を必要としない Managed Instance が、記憶域のサイズに関する 35 TB の Azure での制限を超える場合があります。
-
-たとえば、General Purpose マネージド インスタンスには、4 TB のディスクに配置されているサイズが 1.2 TB の大きなファイルが 1 つあります。 また、サイズがそれぞれ 1 GB のファイルが 248 個あり、これらは個別の 128 GB ディスクに配置される場合があります。 次の点に注意してください。
-
-- 割り当てられるディスク ストレージの合計サイズは、1 x 4 TB + 248 x 128 GB = 35 TB となります。
-- インスタンス上のデータベースの予約済み領域の合計は、1 x 1.2 TB + 248 x 1 GB = 1.4 TB となります。
-
-この例は、特定の状況下では、特殊なファイルの配分のために、Managed Instance が、想定していなかったアタッチ済み Azure Premium ディスクに予約されている 35 TB の制限に到達する可能性があることを示しています。
-
-この例では既存のデータベースは引き続き機能し、新しいファイルを追加しない限りは問題なく拡張できます。 すべてのデータベースの合計サイズがインスタンス サイズの上限に到達しない場合でも、新しいディスク ドライブ用の十分な領域がないため、新しいデータベースの作成や復元はできません。 その場合に返されるエラーは明確ではありません。
-
-システム ビューを使用して、[残りのファイルの数を特定](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1)できます。 この制限に達した場合は、[DBCC SHRINKFILE ステートメントを使用して、より小さなファイルをいくつか空にして削除](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file)してみるか、[この制限のない Business Critical レベル](/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)に切り替えてください。
-
-### <a name="guid-values-shown-instead-of-database-names"></a>データベース名の代わりに GUID 値が表示される
-
-複数のシステム ビュー、パフォーマンス カウンター、エラー メッセージ、XEvent、およびエラー ログ エントリで、実際のデータベース名ではなく GUID データベース識別子が表示されています。 将来、実際のデータベース名に置き換えられるため、これらの GUID 識別子には依存しないでください。
-
-### <a name="error-logs-arent-persisted"></a>エラー ログが非永続的である
-
-マネージド インスタンスで利用可能なエラー ログは永続的ではなく、このログのサイズは、最大ストレージ上限には含まれません。 フェールオーバーが発生した場合、エラー ログは自動的に消去される可能性があります。 Managed Instance が複数の仮想マシンで複数回移動されたことが原因で、エラー ログの履歴に欠落部分が生じる可能性があります。
-
-### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>同じインスタンス内にある 2 つのデータベース上でトランザクション スコープがサポートされない
-
-`TransactionScope` クラス (.NET) は、同じトランザクション スコープ下では、同一インスタンス内にある 2 つのデータベースに対して 2 つのクエリが送信された場合に機能しません。
-
-```csharp
-using (var scope = new TransactionScope())
-{
-    using (var conn1 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
-    {
-        conn1.Open();
-        SqlCommand cmd1 = conn1.CreateCommand();
-        cmd1.CommandText = string.Format("insert into T1 values(1)");
-        cmd1.ExecuteNonQuery();
-    }
-
-    using (var conn2 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
-    {
-        conn2.Open();
-        var cmd2 = conn2.CreateCommand();
-        cmd2.CommandText = string.Format("insert into b.dbo.T2 values(2)");        cmd2.ExecuteNonQuery();
-    }
-
-    scope.Complete();
-}
-
-```
-
-このコードは同一インスタンス内でデータを操作しますが、MSDTC を必要とします。
-
-**対処法:** 2 つの接続を使用する代わりに [SqlConnection.ChangeDatabase(String)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) を使って、接続コンテキスト内で他のデータベースを使用します。
-
-### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR モジュールとリンク サーバーでローカル IP アドレスを参照できないことがある
-
-Managed Instance に配置された CLR モジュールと、現在のインスタンスを参照しているリンク サーバーまたは分散クエリでは、ローカル インスタンスの IP を解決できないことがあります。 このエラーは一時的な問題です。
-
-**対処法:** 可能であれば、CLR モジュールでコンテキスト接続を使用します。
-
 ## <a name="next-steps"></a>次のステップ
 
 - Managed Instance の詳細については、[Managed Instance の概要](sql-database-managed-instance.md)に関するページを参照してください
 - 機能と比較の一覧については、「[Azure SQL Database の機能の比較](sql-database-features.md)」を参照してください。
+- 更新プログラムのリリースと既知の問題の状態については、「[SQL Database リリースノート](sql-database-release-notes.md)」を参照してください
 - 新しい Managed Instance の作成方法を示したクイックスタートについては、[Managed Instance の作成](sql-database-managed-instance-get-started.md)に関するページを参照してください。

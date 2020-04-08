@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/08/2019
+ms.date: 3/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 9ea3388cb65b18c093ffff3ec8b8c9f2764ef189
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 23d83b59c510f2565b2f66f78dad56c9c9592dd0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78300070"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79136519"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>方法:Azure AD アプリに省略可能な要求を提供する
 
@@ -85,10 +85,10 @@ ms.locfileid: "78300070"
 | `pwd_exp`     | パスワードの有効期限        | パスワードの有効期限が切れる日時。 |       |
 | `pwd_url`     | パスワードの変更 URL             | ユーザーがパスワードを変更するためにアクセスできる URL。   |   |
 | `in_corp`     | 企業ネットワーク内        | クライアントが企業ネットワークからログインしている場合に通知します。 そうでない場合、この要求は含まれません。   |  MFA の[信頼できる IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) の設定に基づきます。    |
-| `nickname`    | ニックネーム                        | ユーザーの追加の名前。 ニックネームは、姓や名とは異なります。 | 
-| `family_name` | 姓                       | ユーザー オブジェクトで定義されたユーザーの姓を示します。 <br>"family_name":"Miller" | MSA と Azure AD でサポートされています   |
-| `given_name`  | 名                      | ユーザー オブジェクトに設定されたユーザーの名を示します。<br>"given_name":"Frank"                   | MSA と Azure AD でサポートされています  |
-| `upn`         | ユーザー プリンシパル名 | username_hint パラメーターで使用できるユーザーの識別子。  そのユーザーの持続的な識別子ではないため、重要なデータには使用しないでください。 | 要求の構成については、下の[追加のプロパティ](#additional-properties-of-optional-claims)を参照してください。 |
+| `nickname`    | ニックネーム                        | ユーザーの追加の名前。 ニックネームは、姓や名とは異なります。 `profile` スコープが必要です。| 
+| `family_name` | 姓                       | ユーザー オブジェクトで定義されたユーザーの姓を示します。 <br>"family_name":"Miller" | MSA と Azure AD でサポートされています。 `profile` スコープが必要です。   |
+| `given_name`  | 名                      | ユーザー オブジェクトに設定されたユーザーの名を示します。<br>"given_name":"Frank"                   | MSA と Azure AD でサポートされています。  `profile` スコープが必要です。 |
+| `upn`         | ユーザー プリンシパル名 | username_hint パラメーターで使用できるユーザーの識別子。  そのユーザーの持続的な識別子ではないため、重要なデータには使用しないでください。 | 要求の構成については、下の[追加のプロパティ](#additional-properties-of-optional-claims)を参照してください。 `profile` スコープが必要です。|
 
 ### <a name="additional-properties-of-optional-claims"></a>省略可能な要求の追加のプロパティ
 
@@ -117,12 +117,13 @@ ms.locfileid: "78300070"
         }
     ```
 
-この OptionalClaims オブジェクトにより、ID トークンがクライアントに返され、追加のホーム テナントとリソース テナントの情報を持つ追加の upn が含められます。 トークンの `upn` 要求は、ユーザーが (認証に異なる IDP を使用する) テナントのゲストである場合にのみ変更されます。 
+この OptionalClaims オブジェクトにより、ID トークンがクライアントに返され、追加のホーム テナントとリソース テナントの情報を持つ UPN 要求が含められます。 トークンの `upn` 要求は、ユーザーが (認証に異なる IDP を使用する) テナントのゲストである場合にのみ変更されます。 
 
 ## <a name="configuring-optional-claims"></a>省略可能な要求の構成
 
 > [!IMPORTANT]
 > アクセス トークンは、クライアントではなく、**常に**リソースのマニフェストを使用して生成されます。  そのため、`...scope=https://graph.microsoft.com/user.read...` 要求では、リソースは Microsoft Graph API になります。  したがって、アクセス トークンは、クライアントのマニフェストではなく、Microsoft Graph API マニフェストを使用して作成されます。  アプリケーションのマニフェストを変更しても、Microsoft Graph API のトークンが変更されることはありません。  `accessToken` の変更が有効であることを確認するには、他のアプリではなく、自分のアプリケーションのトークンを要求します。  
+
 
 UI またはアプリケーション マニフェストを使用して、アプリケーションの省略可能な要求を構成できます。
 
@@ -207,7 +208,7 @@ UI またはアプリケーション マニフェストを使用して、アプ�
 | `additionalProperties` | コレクション (Edm.String) | 要求の追加のプロパティ。 このコレクションにプロパティが存在する場合、name プロパティに指定された省略可能な要求の動作が変更されます。                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>ディレクトリ拡張機能の省略可能な要求の構成
 
-標準の省略可能な要求セットに加え、拡張機能を含むようにトークンを構成することもできます。 ユーザーが設定した追加の識別子や重要な構成オプションなど、アプリで使用できる追加のユーザー情報をアタッチする場合にこの機能が便利です。 例については、このページの最後を参照してください。
+標準の省略可能な要求セットに加え、拡張機能を含むようにトークンを構成することもできます。 詳細については、[Microsoft Graph の extensionProperty ドキュメント](https://docs.microsoft.com/graph/api/resources/extensionproperty?view=graph-rest-1.0)に関する記事を参照してください。オプションの要求ではスキーマと開いている拡張機能はサポートされず、AAD-Graph スタイルのディレクトリ拡張機能のみがサポートされます。 ユーザーが設定した追加の識別子や重要な構成オプションなど、アプリで使用できる追加のユーザー情報をアタッチする場合にこの機能が便利です。 例については、このページの最後を参照してください。
 
 > [!NOTE]
 > - ディレクトリ スキーマ拡張機能は Azure AD のみの機能なので、アプリケーション マニフェストでカスタム拡張機能を必須にして、MSA ユーザーがアプリにログインした場合、このような拡張機能は返されません。
@@ -269,7 +270,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
    [optional claims]\(オプションの要求\) セクションにあるオンプレミス AD グループ属性をトークン内のグループに含める場合は、オプション要求の適用先となるトークンの種類、要求されるオプション要求の名前、および必要な追加のプロパティを指定します。  次に示す複数のトークンの種類が、一覧に表示される可能性があります。
 
    - OIDC ID トークン用の idToken
-   - OAuth/OIDC アクセス トークン用の accessToken
+   - OAuth アクセス トークン用の accessToken
    - SAML トークン用の Saml2Token
 
    > [!NOTE]
@@ -286,7 +287,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
        }
     ```
 
-   | 省略可能な要求のスキーマ | Value |
+   | 省略可能な要求のスキーマ | 値 |
    |----------|-------------|
    | **name:** | 必ず "groups" になります |
    | **source:** | 使用されていません。 省略するか、null を指定します |

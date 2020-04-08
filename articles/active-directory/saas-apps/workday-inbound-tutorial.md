@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: feedce112110b1c944e3cb0af79e76fe1bda4778
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d7eb01f3997ac4ab2e439c00f07990c51ec3e3d3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365637"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370359"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -132,7 +132,7 @@ Workday と Active Directory の間のワークフローのプロビジョニン
 Workday to AD User Provisioning ソリューションを使用するには、少なくとも 4 GB の RAM と .NET 4.7.1 以降のランタイムを備えた Windows 2012 R2 以降を実行するサーバーに、プロビジョニング エージェントを 1 つまたは複数デプロイする必要があります。 プロビジョニング エージェントをインストールする前に、以下の点を考慮する必要があります。
 
 * プロビジョニング エージェントを実行しているホスト サーバーが、ターゲット AD ドメインへのネットワーク アクセスを持っていることを確認します
-* プロビジョニング エージェントの構成ウィザードで、エージェントを Azure AD テナントに登録します。登録プロセスでは、SSL ポート 443 を介して *.msappproxy.net にアクセスする必要があります。 この通信を可能にするファイアウォールのアウトバウンド規則が適用されていることを確認します。 エージェントは[送信 HTTPS プロキシ構成](#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)をサポートしています。
+* プロビジョニング エージェントの構成ウィザードで、エージェントを Azure AD テナントに登録します。登録プロセスでは、TLS ポート 443 を介して *.msappproxy.net にアクセスする必要があります。 この通信を可能にするファイアウォールのアウトバウンド規則が適用されていることを確認します。 エージェントは[送信 HTTPS プロキシ構成](#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)をサポートしています。
 * プロビジョニング エージェントは、サービス アカウントを使用してオンプレミスの AD ドメインと通信します。 エージェントをインストールする前に、ドメイン管理者のアクセス許可と無期限のパスワードを持つサービス アカウントを作成することをお勧めします。  
 * プロビジョニング エージェントの構成時には、プロビジョニング要求を処理する必要のあるドメイン コント ローラーを選択できます。 地理的に分散されたドメイン コント ローラーが複数ある場合は、エンド ツー エンドのソリューションの信頼性とパフォーマンスを向上させるため、優先ドメイン コント ローラーと同じサイトにプロビジョニング エージェントをインストールします
 * 高可用性については、複数のプロビジョニング エージェントを展開し、それが同じセットのオンプレミス AD ドメインを処理するように登録できます。

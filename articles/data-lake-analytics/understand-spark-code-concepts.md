@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
 ms.openlocfilehash: bdb38e36a9f1344a3adde15d349a2ec176c0fe95
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74424004"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>U-SQL 開発者向けの Apache Spark コードについて
@@ -102,7 +102,7 @@ Cognitive Services ライブラリを参照するスクリプトを変換する�
 
 U-SQL の型システムは .NET 型システムに基づいており、Spark にはホスト言語のバインドに影響を受ける独自の型システムがあるため、扱っている型が近く、また一部の型では型の範囲、有効桁数、または小数点以下桁数が多少異なる場合があります。 さらに、U-SQL と Spark では `null` の値が異なる方法で処理されます。
 
-### <a name="data-types"></a>データの種類
+### <a name="data-types"></a>データ型
 
 次の表は、指定された U-SQL の型に対応する Spark、Scala、PySpark の各型を示しています。
 
@@ -121,7 +121,7 @@ U-SQL の型システムは .NET 型システムに基づいており、Spark �
 |`ushort`     ||||
 |`char`   | |`Char`||
 |`string` |`StringType` |`String` |`StringType` |
-|`DateTime`   |`DateType`、`TimestampType` |`java.sql.Date`、`java.sql.Timestamp` | `DateType`、`TimestampType`|
+|`DateTime`   |`DateType`, `TimestampType` |`java.sql.Date`, `java.sql.Timestamp` | `DateType`, `TimestampType`|
 |`bool`   |`BooleanType` |`Boolean` | `BooleanType`|
 |`Guid`   ||||
 |`byte[]` |`BinaryType` |`Array[Byte]` | `BinaryType`|
@@ -213,7 +213,7 @@ U-SQL では、クエリ オプティマイザーと実行エンジンにヒン�
 
 Spark のコストベースのクエリ オプティマイザーには、ヒントを提供し、クエリのパフォーマンスを調整するための独自の機能があります。 対応するドキュメントをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [U-SQL 開発者向けの Spark データ形式について](understand-spark-data-formats.md)
 - [.NET for Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)

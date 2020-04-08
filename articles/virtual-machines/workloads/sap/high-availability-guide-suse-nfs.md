@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/06/2020
+ms.date: 03/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 58e7eea487c5d00a33338a592dd064072bef3c64
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 4dce0a675f5841591da00a322b72718964d382ac
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78926687"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348868"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性
 
@@ -27,15 +27,15 @@ ms.locfileid: "78926687"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2205917]: https://launchpad.support.sap.com/#/notes/2205917
-[1944799]: https://launchpad.support.sap.com/#/notes/1944799
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2205917]:https://launchpad.support.sap.com/#/notes/2205917
+[1944799]:https://launchpad.support.sap.com/#/notes/1944799
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -147,15 +147,13 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
          1. IP アドレス 10.0.0.5 (NW2)
             * NW2 に対して上記の手順を繰り返します
       1. バックエンド プールを作成します
-         1. NFS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み (NW1)
+         1. NFS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
             1. ロード バランサーを開き、[バックエンド プール] を選択して [追加] をクリックします
-            1. 新規のバックエンド プールの名前を入力します (例: **nw1-backend**)
+            1. 新規のバックエンド プールの名前を入力します (例: **nw-backend**)
             1. [仮想ネットワーク] を選択します
             1. [仮想マシンの追加] をクリックします
             1. NFS クラスターの仮想マシンとその IP アドレスを選択します。
             1. [追加] をクリックします。
-         1. NFS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み (NW2)
-            * 上記の手順を繰り返して、NW2 に対してバックエンド プールを作成します
       1. 正常性プローブを作成します
          1. ポート 61000 (NW1)
             1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
@@ -167,7 +165,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
       1. 負荷分散規則
          1. ロード バランサーを開き、負荷分散規則を選択して [追加] をクリックします
          1. 新しいロード バランサー規則の名前を入力します (例: **nw1-lb**)
-         1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **nw1-frontend**)。 **nw1-backend** と **nw1-hp**)
+         1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **nw1-frontend**)。 **nw-backend** と **nw1-hp**)
          1. **[HA ポート]** を選択します。
          1. アイドル タイムアウトを 30 分に増やします
          1. **Floating IP を有効にします**
@@ -183,15 +181,13 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
          1. IP アドレス 10.0.0.5 (NW2)
             * NW2 に対して上記の手順を繰り返します
       1. バックエンド プールを作成します
-         1. NFS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み (NW1)
+         1. NFS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
             1. ロード バランサーを開き、[バックエンド プール] を選択して [追加] をクリックします
-            1. 新規のバックエンド プールの名前を入力します (例: **nw1-backend**)
+            1. 新規のバックエンド プールの名前を入力します (例: **nw-backend**)
             1. [仮想マシンの追加] をクリックします
             1. 前の手順で作成した可用性セットを選択します
             1. NFS クラスターの仮想マシンを選択します
             1. [OK] をクリックします
-         1. NFS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み (NW2)
-            * 上記の手順を繰り返して、NW2 に対してバックエンド プールを作成します
       1. 正常性プローブを作成します
          1. ポート 61000 (NW1)
             1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
@@ -468,9 +464,9 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
    drbd を使用してあるホストから別のホストにデータを同期するときに、スプリット ブレインと呼ばれる状況が発生することがあります。 スプリット ブレインは、両方のクラスター ノードの drbd デバイスがプライマリに昇格され、非同期になるシナリオです。これはまれな状況かもしれませんが、スプリット ブレインをできるだけ早く処理して解決する必要があります。 したがって、スプリット ブレインが発生したときに通知を受け取ることが重要です。
 
-   スプリット ブレインの通知を設定する方法については、[drbd の公式ドキュメント](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification)を参照してください。
+   スプリット ブレインの通知を設定する方法については、[drbd の公式ドキュメント](https://www.linbit.com/drbd-user-guide/users-guide-drbd-8-4/#s-split-brain-notification)を参照してください。
 
-   さらに、スプリット ブレイン シナリオから自動的に復旧することも可能です。 詳細については、「[Automatic split brain recovery policies (自動スプリット ブレイン復旧ポリシー)](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)」を参照してください
+   さらに、スプリット ブレイン シナリオから自動的に復旧することも可能です。 詳細については、「[Automatic split brain recovery policies (自動スプリット ブレイン復旧ポリシー)](https://www.linbit.com/drbd-user-guide/users-guide-drbd-8-4/#s-automatic-split-brain-recovery-configuration)」を参照してください
    
 ### <a name="configure-cluster-framework"></a>クラスター フレームワークの構成
 
@@ -574,6 +570,8 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    sudo crm configure colocation col-<b>NW2</b>_nfs_on_drbd inf: \
      g-<b>NW2</b>_nfs ms-drbd_<b>NW2</b>_nfs:Master
    </code></pre>
+
+   `exportfs` クラスター リソースの `crossmnt` オプションは、旧バージョンの SLES との下位互換性を維持するために、ドキュメントに含まれています。  
 
 1. **[1]** メンテナンス モードを無効にします
    

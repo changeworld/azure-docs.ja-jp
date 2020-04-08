@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: fcc482e6231bbd925fd500a37989052765dede58
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77538536"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Azure プライベート エンドポイント接続に関する問題のトラブルシューティング
@@ -93,7 +93,7 @@ Azure プライベート エンドポイントは、プライベート リンク
        - プライベート DNS ゾーン レコードが存在することを確認します。 存在しなければ、作成してください。
      - カスタム DNS を使用する場合:
        - カスタム DNS 設定を確認し、DNS 構成が正しいことを検証します。
-       ガイダンスについては、[プライベート エンドポイントの概要に関する記事の「DNS の構成」](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)を参照してください。
+       ガイダンスについては、[プライベート エンドポイントの概要: DNS の構成](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)に関する記事を参照してください。
 
     b. ネットワーク セキュリティ グループ (NSG) またはユーザー定義ルートが原因で接続が失敗する場合:
      - NSG アウトバウンド規則を確認し、トラフィックを許可するための適切なアウトバウンド規則を作成します。

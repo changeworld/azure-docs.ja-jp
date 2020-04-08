@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: alzam
 ms.openlocfilehash: d57663f683ba4e2107ec6813a19fac7b2dcdd26a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67605229"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>VPN Gateway メトリックにアラートを設定する
@@ -25,15 +25,15 @@ ms.locfileid: "67605229"
 |**P2SBandwidth**| バイト/秒  | 1 分  | ゲートウェイ上のすべてのポイント対サイト接続の帯域幅合計使用率の平均。    |
 |**P2SConnectionCount**| Count  | 1 分  | ゲートウェイ上のポイント対サイト接続の数。   |
 |**TunnelAverageBandwidth** | バイト/秒    | 5 分  | ゲートウェイに作成されたトンネルの帯域幅使用率の平均。 |
-|**TunnelEgressBytes** | Bytes | 5 分 | ゲートウェイに作成されたトンネルの発信トラフィック。   |
+|**TunnelEgressBytes** | バイト | 5 分 | ゲートウェイに作成されたトンネルの発信トラフィック。   |
 |**TunnelEgressPackets** | Count | 5 分 | ゲートウェイに作成されたトンネルの発信パケット数。   |
 |**TunnelEgressPacketDropTSMismatch** | Count | 5 分 | トラフィック セレクターの不一致に原因があるトンネルでドロップされた発信パケットの数。 |
-|**TunnelIngressBytes** | Bytes | 5 分 | ゲートウェイに作成されたトンネルの着信トラフィック。   |
+|**TunnelIngressBytes** | バイト | 5 分 | ゲートウェイに作成されたトンネルの着信トラフィック。   |
 |**TunnelIngressPackets** | Count | 5 分 | ゲートウェイに作成されたトンネルの着信パケットの数。   |
 |**TunnelIngressPacketDropTSMismatch** | Count | 5 分 | トラフィック セレクターの不一致に原因があるトンネルでドロップされた着信パケットの数。 |
 
 
-## <a name="setup"></a>Azure portal を使用して、メトリックに基づいた Azure Monitor のアラートを設定します
+## <a name="set-up-azure-monitor-alerts-based-on-metrics-by-using-the-azure-portal"></a><a name="setup"></a>Azure portal を使用して、メトリックに基づいた Azure Monitor のアラートを設定します
 
 次の手順の例では、ゲートウェイに次のアラートを作成します。
 
@@ -50,25 +50,25 @@ ms.locfileid: "67605229"
 
 2. リソースとして VPN ゲートウェイを選択します。
 
-   ![[選択] ボタンとリソースの一覧内の VPN ゲートウェイ](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "選択")
+   ![[選択] ボタンとリソースの一覧内の VPN ゲートウェイ](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert2.png "Select")
 
 3. アラート用に構成するメトリックを選択します。
 
-   ![メトリックの一覧内の選択されたメトリック](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "選択")
+   ![メトリックの一覧内の選択されたメトリック](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "Select")
 4. シグナル ロジックを構成します。 これには 3 つのコンポーネントがあります。
 
-    a. **Dimensions**: メトリックにディメンションがある場合、特定のディメンション値を選択して、アラートがそのディメンションのデータのみを評価するようにできます。 これらは省略可能です。
+    a. **ディメンション**: メトリックにディメンションがある場合、特定のディメンション値を選択して、アラートがそのディメンションのデータのみを評価するようにできます。 これらは省略可能です。
 
     b. **条件**: これは、メトリック値を評価する操作です。
 
-    c. **時間**:メトリック データの細分性と、アラートを評価する期間を指定します。
+    c. **Time**: メトリック データの細分性と、アラートを評価する期間を指定します。
 
-   ![シグナル ロジックの構成の詳細](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "選択")
+   ![シグナル ロジックの構成の詳細](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "Select")
 
 5. 構成済みのルールを表示するには、 **[アラート ルールの管理]** を選択します。
 
-   ![アラート ルールを管理するためのボタン](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "選択")
+   ![アラート ルールを管理するためのボタン](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Select")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 トンネル診断ログへのアラートを構成するには、[VPN Gateway 診断ログへのアラートの設定](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)に関するページを参照してください。

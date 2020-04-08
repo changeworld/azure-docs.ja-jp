@@ -87,9 +87,9 @@
           displayName: 'metadata, pair'
         - name: テスト
           href: How-To/test-knowledge-base.md
-    - name: QnA セットの管理
+    - name: QnA ペアの管理
       items:
-        - name: QnA セットの編集
+        - name: QnA ペアの編集
           href: How-To/edit-knowledge-base.md
         - name: フォローアップ プロンプトの追加
           href: How-To/multiturn-conversation.md

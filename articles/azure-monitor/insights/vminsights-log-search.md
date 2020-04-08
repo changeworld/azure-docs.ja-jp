@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor for VMs (プレビュー) からログを照会する方法 | Microsoft Docs
+title: VM 用 Azure Monitor からログを照会する方法
 description: Azure Monitor for VMs ソリューションは、メトリックとログ データを収集します。この記事では、レコードについて説明し、サンプル クエリを紹介します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/19/2019
-ms.openlocfilehash: e679345669d0954008e46f48d986930038a84c10
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/12/2020
+ms.openlocfilehash: 61a71539dc034a216689eafd8991df60db96d2a4
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670714"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396920"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) からログを照会する方法
+# <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM 用 Azure Monitor からログを照会する方法
 
 VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、コンピューターとプロセスのインベントリ データ、および正常性状態の情報を収集し、Azure Monitor 内の Log Analytics ワークスペースにこれらを転送します。  このデータは、Azure Monitor で[クエリ](../../azure-monitor/log-query/log-query-overview.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
 
@@ -214,7 +214,7 @@ VMBoundPort のすべてのレコードは、以下のフィールドで識別�
 |AzureServiceFabricClusterId | Azure Service Fabric クラスターの一意の識別子 | 
 |AzureServiceFabricClusterName | Azure Service Fabric クラスターの名前 |
 
-### <a name="vmprocess-record"></a>VMProcess レコード
+### <a name="vmprocess-records"></a>VMProcess レコード
 
 *VMProcess* 型があるレコードには、Dependency エージェントを有するサーバー上での TCP 接続プロセス用のインベントリ データがあります。 これらのレコードは、次の表に示したプロパティを持ちます。
 
@@ -247,7 +247,8 @@ VMBoundPort のすべてのレコードは、以下のフィールドで識別�
 |UserDomain | プロセスが実行されているドメイン |
 |_ResourceId | ワークスペース内のプロセスに対する一意識別子 |
 
-## <a name="sample-log-searches"></a>サンプル ログ検索
+
+## <a name="sample-map-queries"></a>サンプルのマップのクエリ
 
 ### <a name="list-all-known-machines"></a>既知のコンピューターを一覧表示
 
@@ -264,7 +265,7 @@ let Today = now(); VMComputer | extend DaysSinceBoot = Today - BootTime | summar
 ### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>イメージ、場所、および SKU 別の Azure VM の概要
 
 ```kusto
-VMComputer | where AzureLocation != "" | summarize by ComputerName, AzureImageOffering, AzureLocation, AzureImageSku
+VMComputer | where AzureLocation != "" | summarize by Computer, AzureImageOffering, AzureLocation, AzureImageSku
 ```
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>すべてのマネージド コンピューターの物理メモリ容量を一覧表示
@@ -282,7 +283,7 @@ VMComputer | summarize arg_max(TimeGenerated, *) by _ResourceId | project Comput
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>"sql" でコマンドラインのすべてのプロセスを検索
 
 ```kusto
-VMComputer | where CommandLine contains_cs "sql" | summarize arg_max(TimeGenerated, *) by _ResourceId
+VMProcess | where CommandLine contains_cs "sql" | summarize arg_max(TimeGenerated, *) by _ResourceId
 ```
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>リソース名でコンピューター (最新のレコード) を検索
@@ -306,7 +307,7 @@ VMProcess | where Machine == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summariz
 ### <a name="list-all-computers-running-sql-server"></a>SQL Server を実行しているすべてのコンピューターを一覧表示
 
 ```kusto
-VMComputer | where AzureResourceName in ((search in (VMProcess) "\*sql\*" | distinct Machine)) | distinct Computer
+VMComputer | where AzureResourceName in ((search in (VMProcess) "*sql*" | distinct Machine)) | distinct Computer
 ```
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>データセンター内にあるすべての製品バージョンの curl を一覧表示
@@ -318,7 +319,7 @@ VMProcess | where ExecutableName == "curl" | distinct ProductVersion
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>CentOS を実行しているすべてのコンピューターのコンピューター グループを作成
 
 ```kusto
-VMComputer | where OperatingSystemFullName contains_cs "CentOS" | distinct ComputerName
+VMComputer | where OperatingSystemFullName contains_cs "CentOS" | distinct Computer
 ```
 
 ### <a name="bytes-sent-and-received-trends"></a>送受信したバイトのトレンド
@@ -428,6 +429,47 @@ let remoteMachines = remote | summarize by RemoteMachine;
 // aggregate the remote information
 | summarize Remote=makeset(iff(isempty(RemoteMachine), todynamic('{}'), pack('Machine', RemoteMachine, 'Process', Process1, 'ProcessName', ProcessName1))) by ConnectionId, Direction, Machine, Process, ProcessName, SourceIp, DestinationIp, DestinationPort, Protocol
 ```
+
+## <a name="performance-records"></a>パフォーマンス レコード
+*InsightsMetrics* 型のレコードには、仮想マシンのゲスト オペレーティング システムのパフォーマンス データが含まれています。 これらのレコードは、次の表に示したプロパティを持ちます。
+
+
+| プロパティ | 説明 |
+|:--|:--|
+|TenantId | ワークスペースの一意識別子 |
+|SourceSystem | *分析情報* | 
+|TimeGenerated | 値が収集された時刻 (UTC) |
+|Computer | コンピューターの FQDN | 
+|Origin (配信元) | *vm.azm.ms* |
+|名前空間 | パフォーマンス カウンターのカテゴリ | 
+|名前 | パフォーマンス カウンターの名前 |
+|Val | 収集される値 | 
+|Tags | レコードに関する関連の詳細。 さまざまなレコードの種類で使用されるタグについては、次の表を参照してください。  |
+|AgentId | コンピューターのエージェントごとの一意の識別子 |
+|Type | *InsightsMetrics* |
+|_ResourceId_ | 仮想マシンのリソース ID |
+
+現在 *InsightsMetrics* テーブルに収集されているパフォーマンス カウンターを次の表に示します。
+
+| 名前空間 | 名前 | 説明 | ユニット | Tags |
+|:---|:---|:---|:---|:---|
+| Computer    | Heartbeat             | コンピューターのハートビート                        | | |
+| メモリ      | AvailableMB           | 使用可能なメモリ (バイト)                    | バイト          | memorySizeMB - 合計メモリ サイズ|
+| ネットワーク     | WriteBytesPerSecond   | ネットワーク書き込みバイト/秒            | BytesPerSecond | NetworkDeviceId - デバイスの ID<br>bytes - 合計送信バイト数 |
+| ネットワーク     | ReadBytesPerSecond    | ネットワーク読み取りバイト/秒             | BytesPerSecond | networkDeviceId - デバイスの ID<br>bytes - 合計受信バイト数 |
+| プロセッサ   | UtilizationPercentage | プロセッサ使用率          | Percent        | totalCpus-CPU 合計 |
+| LogicalDisk | WritesPerSecond       | 論理ディスクの書き込み秒数            | CountPerSecond | mountId - デバイスのマウント ID |
+| LogicalDisk | WriteLatencyMs        | 論理ディスクの書き込み遅延 (ミリ秒)    | MilliSeconds   | mountId - デバイスのマウント ID |
+| LogicalDisk | WriteBytesPerSecond   | 1 秒あたりの論理ディスク書き込みバイト数       | BytesPerSecond | mountId - デバイスのマウント ID |
+| LogicalDisk | TransfersPerSecond    | 論理ディスクの転送秒数         | CountPerSecond | mountId - デバイスのマウント ID |
+| LogicalDisk | TransferLatencyMs     | 論理ディスクの転送遅延 (ミリ秒) | MilliSeconds   | mountId - デバイスのマウント ID |
+| LogicalDisk | ReadsPerSecond        | 論理ディスクの 1 秒あたりの読み取り回数             | CountPerSecond | mountId - デバイスのマウント ID |
+| LogicalDisk | ReadLatencyMs         | 論理ディスクの読み取り遅延 (ミリ秒)     | MilliSeconds   | mountId - デバイスのマウント ID |
+| LogicalDisk | ReadBytesPerSecond    | 1 秒あたりの論理ディスク読み取りバイト数        | BytesPerSecond | mountId - デバイスのマウント ID |
+| LogicalDisk | FreeSpacePercentage   | 論理ディスクの空き領域比率        | Percent        | mountId - デバイスのマウント ID |
+| LogicalDisk | FreeSpaceMB           | 論理ディスクの空き領域 (バイト)             | バイト          | mountId - デバイスのマウント ID<br>diskSizeMB - 合計ディスク サイズ |
+| LogicalDisk | BytesPerSecond        | 1 秒間の論理ディスクのバイト数             | BytesPerSecond | mountId - デバイスのマウント ID |
+
 
 ## <a name="next-steps"></a>次のステップ
 

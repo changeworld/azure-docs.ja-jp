@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
 ms.openlocfilehash: 95f810ba16f358c5aabc35e26294cdb3f8c3cca0
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74807713"
 ---
 # <a name="auto-startup-lab-virtual-machines"></a>ラボの仮想マシンの自動スタートアップ  
@@ -35,7 +35,7 @@ Azure DevTest Labs を使用すると、ラボ内の仮想マシンを、スケ�
 3. **[構成とポリシー]** ページで、次の手順に従います。
     
     1. **[仮想マシンの自動開始のスケジュールを許可する]** で **[オン]** を選択し、このラボで自動開始機能を有効にします。 
-    2. **[スケジュールの開始]** フィールドで開始時刻 (例:8:00:00 AM) を選択します。 
+    2. 開始時刻 (例: 8:00:00 AM) を **[スケジュールの開始時刻]** フィールドで選択します。 
     3. 使用する**タイム ゾーン**を選択します。 
     4. VM を自動的に開始する必要がある**曜日**を選択します。 
     5. 次に、ツールバーの **[保存]** を選択して設定を保存します。 
@@ -60,5 +60,5 @@ Azure DevTest Labs を使用すると、ラボ内の仮想マシンを、スケ�
 4. 次に、ツールバーの **[保存]** を選択し、設定を保存します。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ラボの自動シャットダウン ポリシーの構成については、「[Azure DevTest Labs でラボの自動シャットダウン ポリシーを管理する](devtest-lab-auto-shutdown.md)」を参照してください。

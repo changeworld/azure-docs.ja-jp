@@ -1,20 +1,18 @@
 ---
 title: Azure Marketplace および AppSource のサポート | Azure
 description: Azure Marketplace と AppSource のサポート情報とリンク
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: MaggiePucciEvans
-manager: evansma
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
-ms.date: 3/11/2020
-ms.author: evansma
-ms.openlocfilehash: 80911ce7858308302b1736328b6c7954c0e05a86
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.topic: conceptual
+ms.date: 3/19/2020
+ms.author: dsindona
+ms.openlocfilehash: 6cb08e11910bc0afdd4b2f454582612395cbd50f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79095528"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284927"
 ---
 # <a name="support-for-the-marketplace"></a>サポート (Marketplace)  
 Marketplace のサポート オプションの一覧です。  
@@ -48,6 +46,8 @@ Marketplace のサポート オプションの一覧です。
 
 
 ## <a name="next-steps"></a>次のステップ
-「[Azure Marketplace と AppSource のパブリッシャー ガイド](./marketplace-publishers-guide.md)」ページを参照してください。  
- 
+
+* [「Azure Marketplace と AppSource の公開ガイド」ページ](https://docs.microsoft.com/azure/marketplace/)を参照してください。
+* 詳細については、「[パートナー センターでの商業マーケットプレース プログラムのサポート](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)」を参照してください。
+
 ---

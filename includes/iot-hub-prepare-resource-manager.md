@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 4eb794fa35164e3f86a5e3d6f67d446321f91f0a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67133621"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Azure Resource Manager の要求を認証するための準備
@@ -42,7 +42,7 @@ ms.locfileid: "67133621"
    
    * **{Display name}:** **MySampleApp** など、アプリケーションの表示名。
    * **{Home page URL}:** **http:\//mysampleapp/home** など、お使いのアプリのホーム ページの URL。 この URL は実際のアプリケーションを示している必要はありません。
-   * **{Application identifier}:**  **http:\//mysampleapp** などの一意の識別子。 この URL は実際のアプリケーションを示している必要はありません。
+   * **{Application identifier}:** **http:\//mysampleapp** などの一意の識別子。 この URL は実際のアプリケーションを示している必要はありません。
    * **{Password}:** 自分のアプリで認証に使用するパスワード。
      
      ```powershell
@@ -66,7 +66,7 @@ ms.locfileid: "67133621"
 * TenantId
 * SubscriptionId
 * ApplicationId
-* パスワード
+* Password
 
 [lnk-authenticate-arm]: https://msdn.microsoft.com/library/azure/dn790557.aspx
 [lnk-powershell-install]: /powershell/azure/install-az-ps

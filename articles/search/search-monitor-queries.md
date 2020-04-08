@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: a3a313ef9cd74ba901f5a6a2d82a18e3c21145dc
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462525"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Azure Cognitive Search でクエリ要求を監視する
@@ -76,7 +76,7 @@ ms.locfileid: "77462525"
 
 クライアントに応じて、スロットルされた要求は次の方法で示されます。
 
-+ サービスから "You are sending too many requests. Please try again later." (送信している要求が多すぎます。後でもう一度やり直してください。) というエラーが返されます。 
++ サービスから "You are sending too many requests. 後でもう一度やり直してください。" というエラー メッセージが表示されることがあります。 
 + サービスから、現在サービスが利用できないことを示す 503 エラー コードが返されます。 
 + ポータル (Search エクスプローラーなど) を使用している場合、クエリは通知なしで削除されるため、再度 [検索] をクリックする必要があります。
 
@@ -181,7 +181,7 @@ ms.locfileid: "77462525"
 
    ![アラートの詳細](./media/search-monitor-usage/alert-details.png "[アラートの詳細]")
 
-メール通知を指定した場合、"Microsoft Azure" から、"Azure: Activated Severity: 3 `<your rule name>`" という件名のメールを受信します。
+電子メール通知を指定した場合、"Microsoft Azure" から件名が "Azure: Activated Severity: 3 `<your rule name>`" である電子メールを受信します。
 
 <!-- ## Report query data
 

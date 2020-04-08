@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: eca2dbe7589fdc7d59a84d21ecf59749d986ade9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7429a9d5e9a803f0e9a6f900c5d81e77e7477a48
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826409"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214504"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>マルチテナントの SQL Database SaaS アプリで Azure Monitor ログを設定して使用する
 
@@ -41,7 +41,7 @@ SaaS のシナリオとパターン、および監視ソリューションの要
 
 Azure SQL Database については、Azure Portal でデータベースとプールを監視してアラートを設定できます。 この組み込みの監視機能とアラート設定機能は便利ですが、リソースに固有でもあります。 つまり、大規模なインストールを監視することや、複数のリソースやサブスクリプションを統合されたビューで確認することには向いていません。
 
-大規模なシナリオでは、監視とアラート設定に Azure Monitor ログを使用できます。 Azure Monitor は、潜在的に多くのサービスからワークスペースに集められた診断ログやテレメトリに対する分析を可能にする、別個の Azure サービスです。 Azure Monitor ログには、オペレーション データを分析できるクエリ言語とデータ視覚化ツールが組み込まれています。 SQL Analytics ソリューションには、エラスティック プールとデータベースを監視およびアラートを設定するためのさまざまな定義済みのビューとクエリが用意されています。 Azure Monitor ログには、カスタム ビュー デザイナーも用意されています。
+大規模なシナリオでは、監視とアラート設定に Azure Monitor ログを使用できます。 Azure Monitor は、潜在的に多数のサービスからワークスペースに収集されるログを分析できる別の Azure サービスです。 Azure Monitor ログには、オペレーション データを分析できるクエリ言語とデータ視覚化ツールが組み込まれています。 SQL Analytics ソリューションには、エラスティック プールとデータベースを監視およびアラートを設定するためのさまざまな定義済みのビューとクエリが用意されています。 Azure Monitor ログには、カスタム ビュー デザイナーも用意されています。
 
 OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。 Log Analytics のワークスペースと分析ソリューションは、Azure portal で開きます。 Azure portal は新しいアクセス ポイントですが、一部の領域では Operations Management Suite ポータルの背後に配置される場合があります。
 
@@ -139,7 +139,7 @@ Azure Monitor ログを使用してアラートのクエリと設定を行う方
 SQL Database の Azure Monitor ログでは、ワークスペース内のデータ量に基づいて課金されます。 このチュートリアルでは、無料のワークスペースを作成しました。このワークスペースの制限は、1 日あたり 500 MB です。 この制限に達すると、データはワークスペースに追加されなくなります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルで学習した内容は次のとおりです。
 

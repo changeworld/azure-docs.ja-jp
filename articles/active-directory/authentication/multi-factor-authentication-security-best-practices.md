@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e42234e9fcdcfe3ee5ce975babbe03b64a750e36
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74846829"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Azure AD アカウントで Azure Multi-Factor Authentication を使用するためのセキュリティ ガイダンス
@@ -61,14 +61,14 @@ Azure MFA を含むライセンスを持っていない場合は、[MFA 認証�
 
 ユーザーの大半は、パスワードのみを使用した認証に慣れているため、企業はこのプロセスに関してすべてのユーザーに認識してもらうことが重要です。 このような認識により、ユーザーが MFA 関連の重要でない問題についてヘルプ デスクに問い合わせる可能性は低くなります。 ただし、一部のシナリオでは MFA を一時的に無効にすることが必要になる場合があります。 次のガイドラインに従って、これらのシナリオへの対処方法を理解してください。
 
-* モバイル アプリまたは携帯電話で通知または電話呼び出しが受信されないためにユーザーがサインインできないシナリオに対処するように、テクニカル サポート スタッフをトレーニングします。 テクニカル サポート担当者は、[ワンタイム バイパスを有効に](howto-mfa-mfasettings.md#one-time-bypass)し、2 段階認証を "バイパス" することによってユーザーを 1 回だけ認証できるようにすることができます。 バイパスは一時的なものであり、指定された秒数が経過すると無効になります。
+* モバイル アプリまたは携帯電話で通知または電話呼び出しが受信されないためにユーザーがサインインできないシナリオに対処するように、テクニカル サポート スタッフをトレーニングします。 テクニカル サポート担当者は、[ワンタイム バイパスを有効に](howto-mfa-mfasettings.md#one-time-bypass)し、2 段階認証を "バイパス" することによってユーザーを 1 回だけ認証できるようにすることができます。 このバイパスは一時的なものであり、指定された秒数が経過すると無効になります。
 * 2 段階認証を最小限に留める方法として、Azure MFA の[信頼できる IP 機能](howto-mfa-mfasettings.md#trusted-ips)の利用を検討してください。 この機能を使用すると、管理者常駐型テナントまたはフェデレーション テナントの管理者は、会社のローカル イントラネットからサインインするユーザーの 2 段階認証をバイパスできます。 この機能は、Azure AD Premium、Enterprise Mobility Suite、または Azure Multi-Factor Authentication ライセンスを所有している Azure AD テナントで使用できます。
 
 ## <a name="best-practices-for-an-on-premises-deployment"></a>オンプレミス デプロイのベスト プラクティス
 
 企業で独自のインフラストラクチャを利用して MFA を有効にすることを決定した場合は、[Azure Multi-Factor Authentication Server をオンプレミスでデプロイする](howto-mfaserver-deploy.md)必要があります。 MFA Server のコンポーネントを次の図に示します。
 
-![既定の MFA サーバー コンポーネント](./media/multi-factor-authentication-security-best-practices/server.png) \*既定ではインストールされていません\**既定でインストールされていますが、有効になっていません
+![既定の MFA サーバー コンポーネント](./media/multi-factor-authentication-security-best-practices/server.png) \* 既定ではインストールされません \** 既定でインストールされますが、有効になっていません
 
 Azure Multi-Factor Authentication Server は、フェデレーションを使用してクラウド リソースとオンプレミスのリソースをセキュリティで保護できます。 AD FS を用意し、それを Azure AD テナントとフェデレーションしておく必要があります。
 Multi-Factor Authentication Server を設定する場合は、次の点を考慮してください。
@@ -96,7 +96,7 @@ Multi-Factor Authentication Server を設定する場合は、次の点を考慮
 * ある種の高度なアーキテクチャ設計では、2 段階認証をクライアントで使用するときに、認証場所によっては、組織のユーザー名とパスワードをアプリ パスワードと組み合わせて使用する必要があります。 オンプレミスのインフラストラクチャに対して認証するクライアントの場合は、組織のユーザー名とパスワードを使用します。 Azure AD に対して認証するクライアントはアプリケーション パスワードを使用します。
 * 既定では、ユーザーはアプリ パスワードを作成できません。 ユーザーにアプリ パスワードの作成を許可する必要がある場合は、 **[ブラウザーではないアプリケーションへのサインイン用にアプリケーション パスワードの作成を許可する]** オプションを選択します。
 
-## <a name="additional-considerations"></a>追加の考慮事項
+## <a name="additional-considerations"></a>その他の注意点
 
 オンプレミスでデプロイされる各コンポーネントの追加の考慮事項とガイダンスについては、次の一覧を参照してください。
 
@@ -110,7 +110,7 @@ Multi-Factor Authentication Server を設定する場合は、次の点を考慮
 * [Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](howto-mfaserver-deploy-mobileapp.md)。
 * Cisco ASA、Citrix Netscaler、Juniper/Pulse Secure などの VPN アプライアンスでの LDAP または RADIUS を使用した [Azure Multi-Factor Authentication による高度な VPN の構成](howto-mfaserver-nps-vpn.md)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では Azure MFA のベスト プラクティスに重点を置いて説明しましたが、このほかにも、MFA のデプロイを計画する際に利用できるリソースがあります。 このプロセスで役立つ重要な記事を次に示します。
 

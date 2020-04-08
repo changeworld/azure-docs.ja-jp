@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/26/2020
+ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 39b7e94747f556b61f661968f7126d122156d9cf
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 4cd2969f9a56c96af2b2c6db216f6829a080260c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622010"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371272"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動スケーリングとゾーン冗長 Application Gateway v2 
 
@@ -169,7 +169,7 @@ Application Gateway と WAF は、2 つのモードでスケーリングする�
 |--|--|
 |認証証明書|サポートされていません。<br>詳細については、「[Application Gateway でのエンド ツー エンド SSL の概要](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)」を参照してください。|
 |同じサブネット上の Standard_v2 と Standard Application Gateway の混在|サポートされていません|
-|Application Gateway サブネット上のユーザー定義ルート (UDR)|サポートされていません|
+|Application Gateway サブネット上のユーザー定義ルート (UDR)|サポートされています (特定のシナリオ)。 プレビュー段階です。<br> サポートされているシステムの詳細については、「[アプリケーション ゲートウェイ構成の概要](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)」を参照してください。|
 |受信ポート範囲の NSG| - Standard_v2 SKU では 65200 ～ 65535<br>- Standard SKU では 65503 ～ 65534<br>詳細については、[FAQ](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet) をご覧ください。|
 |Azure Diagnostics でのパフォーマンス ログ|サポートされていません。<br>Azure メトリックを使用する必要があります。|
 |課金|課金は、2019 年 7 月 1 日に開始される予定です。|

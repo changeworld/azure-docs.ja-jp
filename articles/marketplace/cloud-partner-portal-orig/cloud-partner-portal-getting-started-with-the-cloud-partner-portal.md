@@ -1,19 +1,18 @@
 ---
 title: 概要 | Azure Marketplace
 description: クラウド パートナー ポータルの概要。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: 6065f0485b03a53fa55ae700831869998d9453cc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: d7c317463dbf6d2b78390a90c412031ce10a01ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818369"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280271"
 ---
 # <a name="getting-started-with-the-cloud-partner-portal"></a>クラウド パートナー ポータルの概要
 

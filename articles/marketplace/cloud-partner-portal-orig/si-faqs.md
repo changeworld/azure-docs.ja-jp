@@ -1,19 +1,18 @@
 ---
 title: Seller Insights に関する FAQ
 description: Cloud パートナー ポータルの Seller Insights 機能に関してよく寄せられる質問。
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: b015d21005448d24d24923ba424a10a4af0d47b1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 011558baa43ee3db2803e9229d1d15df5158d668
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821597"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285386"
 ---
 <a name="seller-insights-faq"></a>Seller Insights に関する FAQ
 ===================
@@ -42,7 +41,7 @@ ms.locfileid: "73821597"
 <a name="calculate-revenue-by-customer-usage-period"></a>顧客の使用期間別に収益を計算する
 ------------------------------------------
 
-支払いモジュールからトランザクションをダウンロードした後、 **[Transaction Status]\(トランザクションの状態\)** というラベルの付いた列を見つけ、"Paid" (支払い済み) という値を表示するフィルターを適用します。   一覧表示された各トランザクションについて、 **[Payout Amount (PC)]\(支払い額 (PC)\)** というラベルの付いた列に、支払われた金額が表示されます。  トランザクションに関連付けられている使用期間を見積もるには、 **[課金日]** 列を使用します。これは、トランザクションが適用される期間の最終使用日の近似値です。
+支払いモジュールからトランザクションをダウンロードした後、 **[Transaction Status]\(トランザクションの状態\)** というラベルの付いた列を見つけ、"Paid" (支払い済み) という値を表示するフィルターを適用します。   一覧表示された各トランザクションについて、 **[Payout Amount (PC)]\(支払い額 (PC)\)** というラベルの付いた列に、支払われた金額が表示されます。  トランザクションに関連付けられている使用期間を見積もるには、 **[課金日]** 列を使用します。これは、トランザクションが適用される期間の最終使用日の近似値です。
 
 
 <a name="calculate-your-bad-debt"></a>貸し倒れ金を計算する

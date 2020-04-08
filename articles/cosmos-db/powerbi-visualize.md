@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: sngun
 ms.openlocfilehash: 1dbdd428a54ebf38c7b880bb9530935c0f748226
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69616807"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI コネクタを使用して Azure Cosmos DB データを視覚化する
@@ -120,7 +120,7 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
     ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - 座標一覧](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
 7. coordinates 配列をフラット化するために、LatLong という **カスタム列** を作成します。  **[列の追加]** リボンを選択し、 **[カスタム列]** をクリックします。  **[カスタム列]** ウィンドウが表示されます。
 8. "LatLong" など、新しい列の名前を入力します。
-9. 次に、新しい列のカスタム式を指定します。  たとえば、次のような式を使用して、緯度と経度の値をコンマ区切りで連結します: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 Click **OK**.
+9. 次に、新しい列のカスタム式を指定します。  たとえば、次のような式を使用して、緯度と経度の値をコンマ区切りで連結します: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 **[OK]** をクリックします。
    
     DAX 関数など Data Analysis Expressions (DAX) の詳細については、「[Power BI Desktop における DAX の基本事項](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)」を参照してください。
    
@@ -209,7 +209,7 @@ For a scheduled refresh, do the following.
 5. Expand **Schedule Refresh** and set up the schedule you want to refresh the dataset. 
 6. Click **Apply** and you are done setting up the scheduled refresh.
 -->
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Power BI の詳細については、「 [Power BI の概要](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)」を参照してください。
 * Azure Cosmos DB について詳しくは、[Azure Cosmos DB ドキュメントのランディング ページ](https://azure.microsoft.com/documentation/services/cosmos-db/)をご覧ください。
 
