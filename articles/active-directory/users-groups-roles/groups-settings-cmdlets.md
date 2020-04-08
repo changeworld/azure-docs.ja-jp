@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 03/20/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b5d74c7c599f31694a68e7582a6447af8471508
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9d56bb7c30a8289fe7f261979dca6a4ffe2bfe99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984950"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80048153"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
@@ -63,7 +63,7 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
    ```
    このコマンドレットを呼び出すと、使用可能なすべてのテンプレートが返されます。
   
-   ```powershell
+   ``` PowerShell
    Id                                   DisplayName         Description
    --                                   -----------         -----------
    62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified       ...
@@ -77,7 +77,7 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
   
    ```powershell
    $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
-   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
+   $Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value $TemplateId -EQ
    ```
 3. 次に、そのテンプレートに基づいて新しい Settings オブジェクトを作成します。
   
@@ -150,18 +150,18 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 | **設定** | **説明** |
 | --- | --- |
 |  <ul><li>EnableGroupCreation<li>型: Boolean<li>既定値はTrue |ディレクトリで管理者以外のユーザーによる Office 365 グループの作成を許可するかどうかを示すフラグ。 この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
-|  <ul><li>GroupCreationAllowedGroupId<li>型: String<li>既定値: “” |EnableGroupCreation == false の場合でも Office 365 グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
-|  <ul><li>UsageGuidelinesUrl<li>型: String<li>既定値: “” |グループ使用ガイドラインへのリンク。 |
-|  <ul><li>ClassificationDescriptions<li>型: String<li>既定値: “” | 分類に関する説明のコンマ区切りリスト。 ClassificationDescriptions の値は、次の形式でのみ有効です。<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>ここで、Classification は ClassificationList 内の文字列と一致します。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
-|  <ul><li>DefaultClassification<li>型: String<li>既定値: “” | 何も指定されていない場合にグループの既定の分類として使用される分類。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
-|  <ul><li>PrefixSuffixNamingRequirement<li>型: String<li>既定値: “” | Office 365 グループ用に構成された名前付け規則を定義する文字列。最大文字数は 64 文字です。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
-| <ul><li>CustomBlockedWordsList<li>型: String<li>既定値: “” | ユーザーによるグループ名または別名での使用が許可されていないフレーズのコンマ区切りの文字列。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
+|  <ul><li>GroupCreationAllowedGroupId<li>型: String<li>既定値: "" |EnableGroupCreation == false の場合でも Office 365 グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
+|  <ul><li>UsageGuidelinesUrl<li>型: String<li>既定値: "" |グループ使用ガイドラインへのリンク。 |
+|  <ul><li>ClassificationDescriptions<li>型: String<li>既定値: "" | 分類に関する説明のコンマ区切りリスト。 ClassificationDescriptions の値は、次の形式でのみ有効です。<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>ここで、分類は ClassificationList 内のエントリと一致します。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
+|  <ul><li>DefaultClassification<li>型: String<li>既定値: "" | 何も指定されていない場合にグループの既定の分類として使用される分類。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
+|  <ul><li>PrefixSuffixNamingRequirement<li>型: String<li>既定値: "" | Office 365 グループ用に構成された名前付け規則を定義する文字列。最大文字数は 64 文字です。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
+| <ul><li>CustomBlockedWordsList<li>型: String<li>既定値: "" | ユーザーによるグループ名または別名での使用が許可されていないフレーズのコンマ区切りの文字列。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
 | <ul><li>EnableMSStandardBlockedWords<li>型: Boolean<li>既定値は"False" | 使用しない
 |  <ul><li>AllowGuestsToBeGroupOwner<li>型: Boolean<li>既定値はFalse | ゲスト ユーザーがグループの所有者になれるかどうかを示すブール値。 |
 |  <ul><li>AllowGuestsToAccessGroups<li>型: Boolean<li>既定値はTrue | ゲスト ユーザーが Office 365 グループのコンテンツにアクセスできるかどうかを示すブール値。  この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
-|  <ul><li>GuestUsageGuidelinesUrl<li>型: String<li>既定値: “” | ゲストの使用ガイドラインへのリンクの URL。 |
-|  <ul><li>AllowToAddGuests<li>型: Boolean<li>既定値はTrue | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。 <br>*EnableMIPLabels* が *True* に設定されていて、グループに割り当てられている機密ラベルにゲスト ポリシーが関連付けられている場合は、この設定は上書きされ読み取り専用になります。 |
-|  <ul><li>ClassificationList<li>型: String<li>既定値: “” |Office 365 グループに適用できる有効な分類の値のコンマ区切りの一覧。 <br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
+|  <ul><li>GuestUsageGuidelinesUrl<li>型: String<li>既定値: "" | ゲストの使用ガイドラインへのリンクの URL。 |
+|  <ul><li>AllowToAddGuests<li>型: Boolean<li>既定値はTrue | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。 <br>*EnableMIPLabels* が *True* に設定されていて、グループに割り当てられている機密ラベルにゲスト ポリシーが関連付けられている場合は、この設定は上書きされ読み取り専用になります。<br>AllowToAddGuests 設定がテナントレベルで False に設定されている場合、グループ レベルでの AllowToAddGuests 設定はすべて無視されます。 ゲスト アクセスを少数のグループに対してのみ有効にする場合は、AllowToAddGuests をテナント レベルで true に設定した後、それを特定のグループに対して選択的に無効にする必要があります。 |
+|  <ul><li>ClassificationList<li>型: String<li>既定値: "" | Office 365 グループに適用できる有効な分類の値のコンマ区切りの一覧。 <br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
 |  <ul><li>EnableMIPLabels<li>型: Boolean<li>既定値は"False" |Microsoft 365 コンプライアンス センターで公開されている機密ラベルを Office 365 グループに適用できるかどうかを示すフラグ。 詳細については、[Office 365 グループへの機密ラベルの割り当て](groups-assign-sensitivity-labels.md)に関するページを参照してください。 |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>例:ディレクトリ レベルでグループのゲスト ポリシーを構成する
@@ -171,7 +171,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
    ```
 2. ディレクトリ レベルでグループのゲスト ポリシーを設定するには、Group.Unified テンプレートが必要です。
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value "62375ab9-6b52-47ed-826b-58e47e0e304b" -EQ
    ```
 3. 次に、そのテンプレートに基づいて新しい Settings オブジェクトを作成します。
   
@@ -262,7 +262,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
    ```
 2. Groups.Unified.Guest テンプレートのテンプレート オブジェクトを取得します。
    ```powershell
-   $Template1 = Get-AzureADDirectorySettingTemplate -Id 08d542b9-071f-4e16-94b0-74abb372e3d9
+   $Template1 = Get-AzureADDirectorySettingTemplate | where -Property Id -Value "08d542b9-071f-4e16-94b0-74abb372e3d9" -EQ
    ```
 3. テンプレートから新しい Settings オブジェクトを作成します。
    ```powershell

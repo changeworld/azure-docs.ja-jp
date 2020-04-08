@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 76e749b26be5a5204b247d294f26da169f84094c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: c01e0df1f420c8489ca3445d9fa025b251a870f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773019"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532393"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのビジネス継続性を理解する
 
@@ -48,7 +48,7 @@ Azure Database for MariaDB で提供されるビジネス継続性機能には�
 > [!IMPORTANT]
 > geo リストアは、geo 冗長バックアップ ストレージでサーバーをプロビジョニングした場合にのみ可能です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 自動バックアップについて詳しくは、[Azure Database for MariaDB でのバックアップ](concepts-backup.md)に関するページをご覧ください。
 - Azure Portal を使用して特定の時点に復元する方法については、 [Azure Portal を使用したデータベースのポイントインタイム リストア](howto-restore-server-portal.md)に関するページをご覧ください。

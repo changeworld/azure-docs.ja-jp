@@ -3,12 +3,12 @@ title: リソース ログの収集と分析
 description: 認証、イメージのプッシュ、イメージのプルなど、Azure Container Registry のリソース ログ イベントを記録および分析します。
 ms.topic: article
 ms.date: 01/03/2020
-ms.openlocfilehash: 72d03149cd24636ba2086dfaaff0dbba16d30f1e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 00f9468721126bd166051df47cec1596356e9b54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748006"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409645"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>診断の評価と監査のための Azure Container Registry ログ
 
@@ -20,11 +20,7 @@ ms.locfileid: "75748006"
 
 Azure Monitor を使用してリソース ログ データを収集すると、追加のコストが発生する可能性があります。 「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。 
 
-
-> [!IMPORTANT]
-> この機能は現在プレビュー段階であり、一定の[制限事項](#preview-limitations)が適用されます。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
-
-## <a name="preview-limitations"></a>プレビューの制限事項
+## <a name="repository-events"></a>リポジトリ イベント
 
 現在、イメージとその他の成果物に対して次のリポジトリレベル イベントがログに記録されています。
 
@@ -109,5 +105,3 @@ ContainerRegistryRepositoryEvents
 * [Log Analytics](../azure-monitor/log-query/get-started-portal.md) の使用と[ログ クエリ](../azure-monitor/log-query/get-started-queries.md)の作成の詳細について学習します。
 * 「[Azure プラットフォーム ログの概要](../azure-monitor/platform/platform-logs-overview.md)」を参照して、Azure のさまざまなレイヤーで使用できるプラットフォーム ログについて学習します。
 
-<!-- LINKS - External -->
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

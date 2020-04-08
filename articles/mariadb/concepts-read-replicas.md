@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/16/2020
-ms.openlocfilehash: 41b5d7519776ca84cf002d463048eb7a8dec2410
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.date: 3/18/2020
+ms.openlocfilehash: 39edaa32b0695f4ab83206cd5701629f12295a0f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169147"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527913"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の読み取りレプリカ
 
@@ -31,7 +31,6 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 読み取りレプリカ機能では、非同期レプリケーションが使用されます。 機能は、同期レプリケーション シナリオを目的としていません。 マスターとレプリカの間には測定可能な遅延が発生します。 レプリカ上のデータは、最終的にマスター上のデータと整合します。 この機能は、この遅延に対応できるワークロードに使用してください。
 
-
 ## <a name="cross-region-replication"></a>リージョン間レプリケーション
 マスター サーバーとは別のリージョンに読み取りレプリカを作成できます。 リージョン間レプリケーションは、ディザスター リカバリー計画や、データをユーザーの所在地の近くに配置するなどのシナリオに役立ちます。
 
@@ -49,7 +48,6 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 *米国西部 2 は、リージョン間レプリカの場所として一時的に使用できません。
 
-
 ### <a name="paired-regions"></a>ペアになっているリージョン
 ユニバーサル レプリカ リージョンに加えて、マスター サーバーの Azure のペアになっているリージョンに読み取りレプリカを作成できます。 リージョンのペアがわからない場合は、[Azure のペアになっているリージョンに関する記事](../best-practices-availability-paired-regions.md)を参照してください。
 
@@ -61,7 +59,6 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
     
 * 一方向のペア:一部の Azure リージョンは一方向にのみペアになっています。 これらのリージョンには、インド西部、ブラジル南部、および US Gov バージニアが含まれます。 
    これは、インド西部のマスター サーバーでインド南部のレプリカを作成できることを意味します。 ただし、インド南部のマスター サーバーでインド西部のレプリカを作成することはできません。 この理由は、インド西部のセカンダリ リージョンはインド南部ですが、インド南部のセカンダリ リージョンはインド西部ではないためです。
-
 
 ## <a name="create-a-replica"></a>レプリカの作成
 

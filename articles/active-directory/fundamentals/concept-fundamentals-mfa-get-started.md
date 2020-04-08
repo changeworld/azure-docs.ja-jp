@@ -1,55 +1,55 @@
 ---
-title: 組織での Multi-Factor Authentication を有効にする - Azure Active Directory
-description: ライセンスに基づいて組織の Azure MFA を有効にします
+title: 組織での Azure Multi-Factor Authentication - Azure Active Directory
+description: 組織のライセンス モデルに基づいて利用できる Azure Multi-Factor Authentication の機能について説明します
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 03/18/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe0d79f228ee2b84c00a35d4836cbda6a4847a42
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: febdb708c637ac322c0ca884eae627da9bd5904c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932176"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530395"
 ---
-# <a name="enable-multi-factor-authentication-for-your-organization"></a>組織での Multi-Factor Authentication を有効にする
+# <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>組織での Azure Multi-Factor Authentication の概要
 
-組織で所有しているライセンスに基づいて Azure Active Directory (AD) ユーザーに対して Azure Multi-Factor Authentication (MFA) を有効にする方法は複数あります。 
+Azure Active Directory (AD) ユーザーに対して Azure Multi-Factor Authentication を有効にする方法は、組織が所有しているライセンスに応じて、複数用意されています。 
 
 ![シグナルを調査し、必要に応じて MFA を適用する](./media/concept-fundamentals-mfa-get-started/verify-signals-and-perform-mfa-if-required.png)
 
-私たちの研究によると、MFA を使用すると、アカウントは 99.9% 以上侵害されにくくなります。
+私たちの研究によると、多要素認証 (MFA) を使用した場合、アカウントが侵害されるリスクは 99.9% 以上低下します。
 
-では、侵害される前に、組織が多要素認証を無料で有効にするにはどうすればよいでしょうか。
+では、侵害される前に、組織が MFA を無料で有効にするにはどうすればよいでしょうか。
 
 ## <a name="free-option"></a>Free オプション
 
 Azure AD の無料特典を利用しているお客様は、[セキュリティ既定値](../fundamentals/concept-fundamentals-security-defaults.md)を使用して、環境内で多要素認証を有効にすることができます。
 
-## <a name="office-365"></a>Office 365
+## <a name="office-365-business-premium-e3-or-e5"></a>Office 365 Business Premium、E3、または E5
 
 Office 365 をお持ちのお客様には、次の 2 つのオプションがあります。
 
-- Azure AD を通じて[セキュリティ既定値](concept-fundamentals-security-defaults.md)を有効にして、Azure Multi-Factor Authentication を使用してすべてのユーザーを保護できます。
-- 組織が多要素認証を提供する際により細かい細分性が必要な場合、Office ライセンスには[ユーザーごとの MFA](../authentication/howto-mfa-userstates.md) 機能が含まれています。 ユーザーごとの MFA は、管理者がユーザーごとに個別に有効化および適用します。
+* Azure Multi-Factor Authentication は、すべてのユーザーの、すべてのサインイン イベントに対して有効にするか無効にするかのどちらかとなります。 ユーザーのサブセットに対してのみ、もしくは特定のシナリオでのみ多要素認証を有効にすることはできません。 管理は Office 365 ポータルを介して行われます。 
+* ユーザー エクスペリエンスを向上させるには、Azure AD Premium P1 または P2 にアップグレードし、条件付きアクセスを使用します。 詳細については、多要素認証を使用した Office 365 リソースのセキュリティ保護に関するページを参照してください。
 
 ## <a name="azure-ad-premium-p1"></a>Azure AD Premium P1
 
 Azure AD Premium P1、または Enterprise Mobility + Security E3、Microsoft 365 F1、Microsoft 365 E3 など、この機能を含む同様のライセンスを持つお客様の場合: 
 
-最適なユーザー エクスペリエンスを実現するには、[条件付きアクセス ポリシー](../conditional-access/concept-conditional-access-policy-common.md)を使用することをお勧めします。
+[Azure AD 条件付きアクセス](../conditional-access/overview.md)を使用して、ビジネス要件に合わせて特定のシナリオやイベントの際に多要素認証をユーザーに求めることができます。
 
 ## <a name="azure-ad-premium-p2"></a>Azure AD Premium P2
 
 Azure AD Premium P2、または Enterprise Mobility + Security E5 や Microsoft 365 E5 など、この機能を含む同様のライセンスを持つお客様の場合: 
 
-最適なユーザー エクスペリエンスと適用の柔軟性を実現するために、[条件付きアクセス ポリシー](../conditional-access/concept-conditional-access-policy-common.md)を [Identity Protection](../identity-protection/overview-v2.md) リスク ポリシーと共に使用することをお勧めします。
+最も強力なセキュリティのポジションと、向上したユーザー エクスペリエンスを提供します。 [リスク ベースの条件付きアクセス](../conditional-access/howto-conditional-access-policy-risk.md)を Azure AD Premium P1 の機能に追加することで、ユーザーのパターンに適応し、多要素認証の回数を最小限に抑えます。
 
 ## <a name="authentication-methods"></a>認証方法
 
@@ -59,10 +59,9 @@ Azure AD Premium P2、または Enterprise Mobility + Security E5 や Microsoft 
 | モバイル アプリからの確認コードまたはハードウェア トークン |   | X |
 | 電話へのテキスト メッセージ |   | X |
 | 電話の呼び出し |   | X |
-| アプリ パスワード |   | X** |
 
-** アプリ パスワードは、管理者が有効にした場合にのみ、レガシ認証シナリオでのユーザーごとの MFA でのみ使用できます。
+## <a name="next-steps"></a>次のステップ
 
-## <a name="next-steps"></a>次の手順
+まずは、[Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](../authentication/tutorial-enable-azure-mfa.md)ためのチュートリアルを参照してください。
 
-[Azure AD の価格ページ](https://azure.microsoft.com/pricing/details/active-directory/)
+ライセンスの詳細については、「[Azure Multi-Factor Authentication の機能とライセンス](../authentication/concept-mfa-licensing.md)」を参照してください。

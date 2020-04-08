@@ -2,13 +2,13 @@
 title: Azure Migrate を使用したオンプレミス サーバーでのアプリ、ロール、機能の検出
 description: Azure Migrate Server Assessment を使用して、オンプレミス サーバー上のアプリ、ロール、および機能を検出する方法について説明します。
 ms.topic: article
-ms.date: 11/20/2019
-ms.openlocfilehash: 7c3a6360e051b8cb694393695e75578ce2c135ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/12/2020
+ms.openlocfilehash: e8ce279afc845ebf37ad4ab8b2ce7236cb18137a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846320"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79453584"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>マシンのアプリ、ロール、および機能を検出する
 
@@ -17,9 +17,9 @@ ms.locfileid: "76846320"
 オンプレミス マシンで実行されているアプリのインベントリとロール/機能を検出すると、ワークロードに合わせて調整された Azure への移行パスを特定し、計画することができます。
 
 > [!NOTE]
-> 現在、アプリ検出は VMware VM でのみサポートされており、検出のみに限定されています。 アプリベースの評価はまだ提供されていません。 オンプレミスの VMware VM、Hyper-V VM、物理サーバーに対するマシン ベースの評価です。
+> 現在、アプリ検出は VMware VM に対してプレビュー段階であり、検出のみに限定されています。 アプリベースの評価はまだ提供されていません。 オンプレミスの VMware VM、Hyper-V VM、物理サーバーに対するマシン ベースの評価です。
 
-Azure Migrate を使用したアプリ検出:Server Assessment はエージェントレスです。 マシンと VM には何もインストールする必要はありません。 Server Assessment では、検出の実行に、マシンのゲスト資格情報と共に Azure Migrate アプライアンスが使用されます。 アプライアンスから VMware マシンへのリモート アクセスには、VMware API が使用されます。
+Azure Migrate を使用したアプリ検出:Server Assessment はエージェントレスです。 マシンと VM には何もインストールされません。 Server Assessment では、検出の実行に、マシンのゲスト資格情報と共に Azure Migrate アプライアンスが使用されます。 アプライアンスから VMware マシンへのリモート アクセスには、VMware API が使用されます。
 
 
 ## <a name="before-you-start"></a>開始する前に
@@ -44,7 +44,7 @@ Azure Migrate を使用したアプリ検出:Server Assessment はエージェ�
 
 ## <a name="review-and-export-the-inventory"></a>インベントリの確認とエクスポート
 
-検出が完了すると、アプリ検出用の資格情報を指定した場合は、Azure portal でアプリ インベントリを確認してエクスポートできます。
+検出が終了すると、アプリ検出用の資格情報を指定した場合は、Azure portal でアプリ インベントリを確認してエクスポートできます。
 
 1. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** で、表示されたカウントをクリックして、 **[検出済みサーバー]** ページを開きます。
 

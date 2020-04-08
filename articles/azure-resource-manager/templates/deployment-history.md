@@ -4,12 +4,12 @@ description: Azure Resource Manager のデプロイ操作を、ポータル、Po
 tags: top-support-issue
 ms.topic: conceptual
 ms.date: 11/26/2019
-ms.openlocfilehash: 753071a3edca62690b772f7b8d34fec43641466f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0f196f86bed05094b04bfc20c7cef2248a91c65
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474333"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460298"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Resource Manager でのデプロイ履歴の表示
 
@@ -21,7 +21,7 @@ Azure Resource Manager では、デプロイ履歴を表示し、過去のデプ
 
 デプロイの詳細を表示するには、Azure portal、PowerShell、Azure CLI、または REST API を使用します。 各デプロイには、関連イベントの追跡に使用される関連付け ID があります。 これは、デプロイのトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときに有用である可能性があります。
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. 調べたいリソース グループを選択します。
 
@@ -33,11 +33,11 @@ Azure Resource Manager では、デプロイ履歴を表示し、過去のデプ
 
    ![デプロイの選択](./media/deployment-history/select-details.png)
 
-1. デプロイの概要が表示され、関連付け ID を確認できます。 
+1. デプロイの概要が表示され、関連付け ID を確認できます。
 
     ![デプロイの概要](./media/deployment-history/show-correlation-id.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 リソース グループのすべてのデプロイを一覧表示するには、[Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment) コマンドを使用します。
 
@@ -57,29 +57,29 @@ Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName Ex
 (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment).CorrelationId
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-リソース グループのデプロイを一覧表示するには、[az group deployment list](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-list) を使用します。
-
-```azurecli-interactive
-az group deployment list --resource-group ExampleGroup
-```
-
-特定のデプロイを取得するには、[az group deployment show](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-show) を使用します。
+リソース グループのデプロイを一覧表示するには、[az deployment group list](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-list) を使用します。
 
 ```azurecli-interactive
-az group deployment show --resource-group ExampleGroup --name ExampleDeployment
+az deployment group list --resource-group ExampleGroup
 ```
-  
+
+特定のデプロイを取得するには、[az deployment group show](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-show) を使用します。
+
+```azurecli-interactive
+az deployment group show --resource-group ExampleGroup --name ExampleDeployment
+```
+
 相関 ID を取得するには、以下を使用します。
 
 ```azurecli-interactive
-az group deployment show --resource-group ExampleGroup --name ExampleDeployment --query properties.correlationId
+az deployment group show --resource-group ExampleGroup --name ExampleDeployment --query properties.correlationId
 ```
 
-# <a name="httptabhttp"></a>[HTTP](#tab/http)
+# <a name="http"></a>[HTTP](#tab/http)
 
-リソース グループのデプロイを一覧表示するには、次の操作を行います。 要求で使用する最新の API バージョン番号については、「[デプロイ - リソース グループごとの一覧表示](/rest/api/resources/deployments/listbyresourcegroup)」をご覧ください。 
+リソース グループのデプロイを一覧表示するには、次の操作を行います。 要求で使用する最新の API バージョン番号については、「[デプロイ - リソース グループごとの一覧表示](/rest/api/resources/deployments/listbyresourcegroup)」をご覧ください。
 
 ```
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/?api-version={api-version}
@@ -113,7 +113,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 
 各デプロイには、複数の操作が含まれる可能性があります。 デプロイの詳細については、デプロイの操作に関する記事をご覧ください。 デプロイが失敗すると、デプロイ操作にエラー メッセージが含まれます。
 
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. デプロイの概要で、 **[操作の詳細]** を選択します。
 
@@ -123,7 +123,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 
     ![操作の詳細の表示](./media/deployment-history/see-operation-details.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 リソース グループにデプロイするためのデプロイ操作を表示するには、[Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azdeploymentoperation) コマンドを使用します。
 
@@ -143,27 +143,27 @@ Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -Deployme
 ((Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy ).Properties | Where-Object ProvisioningState -eq Failed).StatusMessage.error
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-リソース グループにデプロイするためのデプロイ操作を表示するには、[az group deployment operation list](/cli/azure/group/deployment/operation?view=azure-cli-latest#az-group-deployment-operation-list) コマンドを使用します。
+リソース グループにデプロイするためのデプロイ操作を表示するには、[az deployment group operation list](/cli/azure/group/deployment/operation?view=azure-cli-latest#az-deployment-group-operation-list) コマンドを使用します。
 
 ```azurecli-interactive
-az group deployment operation list --resource-group ExampleGroup --name ExampleDeployment
+az deployment group operation list --resource-group ExampleGroup --name ExampleDeployment
 ```
 
 失敗した操作を表示するには、**Failed** 状態で操作をフィルターします。
 
 ```azurecli-interactive
-az group deployment operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
+az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
 ```
 
 失敗した操作のステータス メッセージを取得するには、次のコマンドを使用します。
 
 ```azurecli-interactive
-az group deployment operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
+az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
 ```
 
-# <a name="httptabhttp"></a>[HTTP](#tab/http)
+# <a name="http"></a>[HTTP](#tab/http)
 
 デプロイ操作を取得するには、次の操作を行います。 要求で使用する最新の API バージョン番号については、「[デプロイ操作 - 一覧表示](/rest/api/resources/deploymentoperations/list)」を参照してください。
 

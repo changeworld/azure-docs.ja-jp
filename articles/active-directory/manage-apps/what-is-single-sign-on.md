@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e24a4209869d4c47f8ac73e250699ec55d006296
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f46bcf412403d8f911e484e12a9d1f421b1666f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786395"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79366072"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションへのシングル サインオン
 
@@ -40,13 +40,13 @@ ms.locfileid: "74786395"
 
 次の表は、シングル サインオンの方法と、詳細情報へのリンクをまとめたものです。
 
-| シングル サインオンの方法 | アプリケーションの種類 | いつ使用するか |
+| シングル サインオンの方法 | アプリケーションの種類 | 使用する場合 |
 | :------ | :------- | :----- |
 | [OpenID Connect と OAuth](#openid-connect-and-oauth) | クラウドのみ | 新しいアプリケーションを開発するときは、OpenID Connect と OAuth を使用します。 このプロトコルによってアプリケーションの構成が簡略化されます。また、簡単に使用できる SDK が用意されており、お客様のアプリケーションで MS Graph を使用できるようになります。
 | [SAML](#saml-sso) | クラウドとオンプレミス | OpenID Connect または OAuth を使用しない既存のアプリケーションには、可能な限り SAML を選択してください。 SAML は、SAML プロトコルのいずれかを使用して認証するアプリケーションの場合に機能します。|
 | [パスワード ベース](#password-based-sso) | クラウドとオンプレミス | アプリケーションがユーザー名とパスワードを使用して認証する場合にはパスワードベースを選択します。 パスワードベースのシングル サインオンでは、セキュリティで保護されたアプリケーションのパスワードの保存と、Web ブラウザーの拡張機能またはモバイル アプリを使用した再生が可能になります。 この方法では、アプリケーションによって提供される既存のサインイン プロセスが使用されますが、管理者がパスワードを管理できるようになります。 |
 | [リンク](#linked-sign-on) | クラウドとオンプレミス | アプリケーションが別の ID プロバイダー サービスでのシングル サインオンの用に構成されている場合は、リンクされたサインオンを選択します。 このオプションは、アプリケーションにシングル サインオンを追加するものではありません。 ただし、アプリケーションには、Active Directory フェデレーション サービス (AD FS) などの別のサービスを使って既にシングル サインオンが実装されている場合があります。|
-| [Disabled](#disabled-sso) | クラウドとオンプレミス | シングル サインオンのためにアプリを構成する準備ができていない場合は、無効化のシングル サインオンを選択します。 ユーザーは、そのアプリケーションを起動するたびにユーザー名とパスワードを入力する必要があります。|
+| [Disabled](#disabled-sso) | クラウドとオンプレミス | シングル サインオンのためにアプリを構成する準備ができていない場合は、無効化のシングル サインオンを選択します。 このモードは、アプリを作成するときの既定です。|
 | [統合 Windows 認証 (IWA)](#integrated-windows-authentication-iwa-sso) | オンプレミスのみ | [統合 Windows 認証 (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) を使用するアプリケーションまたは要求に対応するアプリケーションには、IWA シングル サインオンを選択します。 IWA の場合、アプリケーション プロキシ コネクタは、アプリケーションに対して Kerberos 制約付き委任 (KCD) を使用し、ユーザーを認証します。 |
 | [ヘッダーベース](#header-based-sso) | オンプレミスのみ | アプリケーションが認証のためにヘッダーを使用する場合は、ヘッダー ベースのシングル サインオンを使用します。 ヘッダーベースのシングル サインオンには、Azure AD 用の PingAccess が必要です。 アプリケーション プロキシは、Azure AD を使用してユーザーを認証してから、コネクタ サービス経由でトラフィックを渡します。  |
 
@@ -146,6 +146,8 @@ Azure AD は、リンクされたサインオンによって、既に別のサ�
 - このアプリケーションを Azure AD シングル サインオンと統合する準備ができていない場合、または
 - アプリケーションの他の側面をテスト中の場合、または
 - ユーザーを認証する必要ないオンプレミス アプリケーションへのセキュリティ層として。 無効化を指定したら、ユーザーは認証する必要があります。
+
+SP によって開始された SAML ベースのシングル サインオン用にアプリケーションを構成し、SSO モードを無効に変更した場合、ユーザーは MyApps ポータルの外部でアプリケーションにサインインできなくなるわけではないことに注意してください。 これを実現するには、[ユーザーがサインインする機能を無効にする](disable-user-sign-in-portal.md)必要があります
 
 ## <a name="integrated-windows-authentication-iwa-sso"></a>統合 Windows 認証 (IWA) による SSO
 

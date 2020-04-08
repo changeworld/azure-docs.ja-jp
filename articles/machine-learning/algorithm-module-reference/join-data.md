@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: a154874f4f1026b36da473ba18788fc804609ac9
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 38606f424e38fc68519181f485b5b698d0705d6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152229"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477580"
 ---
 # <a name="join-data"></a>データの結合
 
@@ -62,7 +62,7 @@ ms.locfileid: "77152229"
     * 両方の入力テーブルのキーを表示するには、このオプションを選択します。
     * 左側の入力のキー列のみを返すには、オフにします。
 
-1. パイプラインを実行します。
+1. パイプラインを送信します。
 
 1. 結果を表示するには、 **[Join Data]\(データの結合\)** を右クリックし、 **[可視化]** を選択します。
 

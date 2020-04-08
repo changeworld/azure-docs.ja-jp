@@ -5,18 +5,18 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/05/2020
 ms.author: yushwang
-ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356685"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235903"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
-## <a name="connecting"></a>仮想ネットワークへの接続
+## <a name="connecting-to-virtual-networks"></a><a name="connecting"></a>仮想ネットワークへの接続
 
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>仮想ネットワークは異なる Azure リージョン間でも接続できますか。
 
@@ -54,7 +54,7 @@ VPN Gateway の接続の詳細については、「[VPN Gateway について](vp
 
 VPN の種類がルート ベースのゲートウェイを使用してサイト間接続を作成すれば、サイト間接続とポイント対サイト接続の両方を同時に使用するように仮想ネットワークを構成できます。 VPN の種類がルート ベースのゲートウェイは、クラシック デプロイ モデルでは動的ゲートウェイと呼ばれます。
 
-## <a name="gateways"></a>仮想ネットワーク ゲートウェイ
+## <a name="virtual-network-gateways"></a><a name="gateways"></a>仮想ネットワーク ゲートウェイ
 
 ### <a name="is-a-vpn-gateway-a-virtual-network-gateway"></a>VPN ゲートウェイは仮想ネットワーク ゲートウェイですか。
 
@@ -131,7 +131,7 @@ Azure の VPN では PSK (事前共有キー) の認証を使用します。 事
 
 はい。Azure Marketplace から、または自社の VPN ルーターを作成して、自社の VPN ゲートウェイやサーバーを Azure 内にデプロイできます。 仮想ネットワーク内でユーザー定義ルートを構成して、オンプレミス ネットワークと仮想ネットワークのサブネットの間でトラフィックが適切にルーティングされるようにする必要があります。
 
-### <a name="gatewayports"></a>仮想ネットワーク ゲートウェイで特定のポートが開かれているのはなぜですか。
+### <a name="why-are-certain-ports-opened-on-my-virtual-network-gateway"></a><a name="gatewayports"></a>仮想ネットワーク ゲートウェイで特定のポートが開かれているのはなぜですか。
 
 Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 対象のゲートウェイの顧客を含め、適切な証明書を持たない外部エンティティは、これらのエンドポイントに影響を与えることはできません。
 
@@ -141,7 +141,7 @@ Azure インフラストラクチャの通信に必要です。 これらのポ�
 
 詳細については、「[VPN Gateway の設定について](vpn-gateway-about-vpn-gateway-settings.md)」をご覧ください。
 
-## <a name="s2s"></a>サイト間接続と VPN デバイス
+## <a name="site-to-site-connections-and-vpn-devices"></a><a name="s2s"></a>サイト間接続と VPN デバイス
 
 ### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>VPN デバイスを選択する場合の考慮事項について教えてください。
 
@@ -169,19 +169,23 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 その他のソフトウェア VPN ソリューションについては、業界標準の IPsec の実装に準拠していればマイクロソフトのゲートウェイで動作します。 構成とサポートの手順については、ソフトウェアのベンダーにお問い合わせください。
 
-## <a name="P2S"></a>ネイティブ Azure 証明書認証を使用したポイント対サイト
+## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>ポイント対サイト接続の認証の種類を変更するにはどうすればよいですか?
+
+ポイント対サイト接続の認証方法を変更するには、VPN ゲートウェイの下にある **[ポイント対サイト構成]** セクションに移動し、目的のオプション ボタンをオンにします。 現在のオプションは、 **[Azure 証明書]、[RADIUS 認証]、[Azure Active Directory]** です。 現在のクライアントは、変更後、新しいプロファイルがダウンロードされ、クライアント上で構成されるまで**接続できない場合がある**ことに注意してください。
+
+## <a name="point-to-site-using-native-azure-certificate-authentication"></a><a name="P2S"></a>ネイティブ Azure 証明書認証を使用したポイント対サイト
 
 このセクションは、Resource Manager デプロイ モデルに適用されます。
 
 [!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="P2SRADIUS"></a>RADIUS 認証を使用したポイント対サイト
+## <a name="point-to-site-using-radius-authentication"></a><a name="P2SRADIUS"></a>RADIUS 認証を使用したポイント対サイト
 
 このセクションは、Resource Manager デプロイ モデルに適用されます。
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
-## <a name="V2VMulti"></a>VNet 間接続とマルチサイト接続
+## <a name="vnet-to-vnet-and-multi-site-connections"></a><a name="V2VMulti"></a>VNet 間接続とマルチサイト接続
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
@@ -213,16 +217,16 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 はい、これはサポートされています。 詳細については、 [共存する ExpressRoute とサイト間 VPN の接続の構成](../expressroute/expressroute-howto-coexist-classic.md)を参照してください。
 
-## <a name="ipsecike"></a>IPsec/IKE ポリシー
+## <a name="ipsecike-policy"></a><a name="ipsecike"></a>IPsec/IKE ポリシー
 
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
 
-## <a name="bgp"></a>BGP
+## <a name="bgp"></a><a name="bgp"></a>BGP
 
 [!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
 
-## <a name="vms"></a>クロスプレミス接続と VM
+## <a name="cross-premises-connectivity-and-vms"></a><a name="vms"></a>クロスプレミス接続と VM
 
 ### <a name="if-my-virtual-machine-is-in-a-virtual-network-and-i-have-a-cross-premises-connection-how-should-i-connect-to-the-vm"></a>仮想ネットワーク内に仮想マシンが存在し、クロスプレミス接続が使用できる場合、その VM にはどのように接続できますか。
 
@@ -239,7 +243,7 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 [!INCLUDE [Troubleshoot VM connection](../../includes/vpn-gateway-connect-vm-troubleshoot-include.md)]
 
 
-## <a name="faq"></a>Virtual Network FAQ
+## <a name="virtual-network-faq"></a><a name="faq"></a>Virtual Network FAQ
 
 「 [Virtual Network FAQ](../virtual-network/virtual-networks-faq.md)」で、仮想ネットワークの情報をさらに詳しく参照できます。
 

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: 5f492dd2bd270d3f067c05c1dc2235d54e481847
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: d4bbd5560681aa73709019e87c6c22470a64ad78
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274875"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481740"
 ---
 # <a name="deprecated-deploy-docker-ce-cluster"></a>(非推奨) Docker CE クラスターのデプロイ
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-このクイック スタートでは、Azure CLI を使用して Docker CE クラスターをデプロイします。 次に、Web フロントエンドと Redis インスタンスで構成される複数コンテナー アプリケーションをデプロイして、このクラスターで実行します。 完了すると、このアプリケーションはインターネット経由でアクセス可能になります。
+このクイックスタートでは、Azure CLI を使用して Docker CE クラスターをデプロイします。 次に、Web フロントエンドと Redis インスタンスで構成される複数コンテナー アプリケーションをデプロイして、このクラスターで実行します。 完了すると、このアプリケーションはインターネット経由でアクセス可能になります。
 
 Azure Container Service での Docker CE は現在プレビュー段階です。**運用環境のワークロードには使用しないでください**。
 
@@ -53,7 +53,7 @@ az group create --name myResourceGroup --location westus2
 
 ## <a name="create-docker-swarm-cluster"></a>Docker Swarm クラスターの作成
 
-[az acs create](/cli/azure/acs#az-acs-create) コマンドを使用して Azure Container Service に Docker CE クラスターを作成します。 Docker CE の地域の可用性については、「[ACS regions for Docker CE](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)」(Docker CE の ACS 地域) を参照してください。
+[az acs create](/cli/azure/acs#az-acs-create) コマンドを使用して Azure Container Service に Docker CE クラスターを作成します。 Docker CE の地域の可用性については、「[ACS regions for Docker CE](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)」(Docker CE の ACS 地域) を参照してください
 
 次の例では、1 つの Linux マスター ノードと 3 つの Linux エージェント ノードを含む、*mySwarmCluster* という名前のクラスターを作成します。
 
@@ -67,16 +67,15 @@ az acs create --name mySwarmCluster --orchestrator-type dockerce --resource-grou
 
 ## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
-このクイック スタートでは、Docker Swarm マスターと Docker エージェント プールの両方の FQDN が必要です。 マスターとエージェントの両方の FQDN を返す次のコマンドを実行します。
+このクイックスタートでは、Docker Swarm マスターと Docker エージェント プールの両方の FQDN が必要です。 マスターとエージェントの両方の FQDN を返す次のコマンドを実行します。
 
-
-```bash
+```azurecli
 az acs list --resource-group myResourceGroup --query '[*].{Master:masterProfile.fqdn,Agent:agentPoolProfiles[0].fqdn}' -o table
 ```
 
 出力:
 
-```bash
+```output
 Master                                                               Agent
 -------------------------------------------------------------------  --------------------------------------------------------------------
 myswarmcluster-myresourcegroup-d5b9d4mgmt.ukwest.cloudapp.azure.com  myswarmcluster-myresourcegroup-d5b9d4agent.ukwest.cloudapp.azure.com
@@ -125,7 +124,7 @@ docker stack deploy azure-vote --compose-file azure-vote.yaml
 
 出力:
 
-```bash
+```output
 Creating network azure-vote_default
 Creating service azure-vote_azure-vote-back
 Creating service azure-vote_azure-vote-front
@@ -139,7 +138,7 @@ docker stack ps azure-vote
 
 各サービスの `CURRENT STATE` が `Running` になれば、アプリケーションは準備完了です。
 
-```bash
+```output
 ID                  NAME                            IMAGE                                 NODE                               DESIRED STATE       CURRENT STATE                ERROR               PORTS
 tnklkv3ogu3i        azure-vote_azure-vote-front.1   microsoft/azure-vote-front:v1   swarmm-agentpool0-66066781000004   Running             Running 5 seconds ago                            
 lg99i4hy68r9        azure-vote_azure-vote-back.1    redis:latest                          swarmm-agentpool0-66066781000002   Running             Running about a minute ago
@@ -160,13 +159,13 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="get-the-code"></a>コードの入手
 
-このクイック スタートでは、事前に作成したコンテナー イメージを使用して、Docker サービスを作成しました。 関連するアプリケーション コード、Dockerfile、および Compose ファイルは、GitHub で入手できます。
+このクイックスタートでは、事前に作成したコンテナー イメージを使用して、Docker サービスを作成しました。 関連するアプリケーション コード、Dockerfile、および Compose ファイルは、GitHub で入手できます。
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Docker Swarm クラスターをデプロイし、そこに複数コンテナー アプリケーションをデプロイしました。
+このクイックスタートでは、Docker Swarm クラスターをデプロイし、そこに複数コンテナー アプリケーションをデプロイしました。
 
 Docker Swarm と Azure DevOps の統合について確認するには、Docker Swarm と Azure DevOps を使用した CI/CD に進んでください。
 

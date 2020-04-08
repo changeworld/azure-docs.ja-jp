@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: 1a375f063d398c19ed86a0a401e2a41c696ef4e2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: af003f1f0422c2351bcdf9b0c0010e38785c0344
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412983"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530327"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET 出力キャッシュ プロバイダー
 
@@ -51,7 +51,7 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 
 属性の構成には、Microsoft Azure ポータルのキャッシュ ブレードの値を使用してください。その他の値は適宜構成します。 キャッシュのプロパティにアクセスする方法については、「[Configure Azure Cache for Redis settings (Azure Cache for Redis の設定を構成する)](cache-configure.md#configure-azure-cache-for-redis-settings)」を参照してください。
 
-| Attribute | 種類 | Default | 説明 |
+| 属性 | Type | Default | 説明 |
 | --------- | ---- | ------- | ----------- |
 | *host* | string | "localhost" | Redis サーバーの IP アドレスまたはホスト名 |
 | *port* | 正の整数 | 6379 (非 SSL)<br/>6380 (SSL) | Redis サーバー ポート |
@@ -67,7 +67,6 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 | *throwOnError* | boolean | true | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>エラーが発生したときに例外をスローするかどうか。<br/><br/>*throwOnError* の詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[*throwOnError* に関する注意事項](#notes-on-throwonerror)」を参照してください。 |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*。 |
 | *retryTimeoutInMilliseconds* | 正の整数 | 5000 | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>操作が失敗したときに再試行する時間の長さ。 この値が *operationTimeoutInMilliseconds* より小さい場合、プロバイダーは再試行しません。<br/><br/>*retryTimeoutInMilliseconds* の詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[*retryTimeoutInMilliseconds* に関する注意事項](#notes-on-retrytimeoutinmilliseconds)」を参照してください。 |
 | *redisSerializerType* | string | *該当なし* | Microsoft.Web.Redis.ISerializer を実装し、値をシリアル化および逆シリアル化するカスタム ロジックを含むクラスのアセンブリ修飾型名を指定します。 詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[*redisSerializerType*](#about-redisserializertype) について」を参照してください。 |
-|
 
 ## <a name="attribute-notes"></a>属性に関する注意事項
 
@@ -197,6 +196,12 @@ namespace MyCompany.Redis
 前の例では、キャッシュされたページ データが 60 秒間キャッシュに保持され、パラメーターの組み合わせごとに異なるバージョンのページがキャッシュされます。 OutputCache ディレクティブの詳細については、「 [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837)に関するページを参照してください。
 
 ここまでの手順を実行すると、アプリケーションは Redis 出力キャッシュ プロバイダーを使用するように構成されます。
+
+## <a name="third-party-output-cache-providers"></a>サードパーティ出力キャッシュ プロバイダー
+
+* [NCache](https://www.alachisoft.com/blogs/how-to-use-a-distributed-cache-for-asp-net-output-cache/)
+* [Apache Ignite](https://apacheignite-net.readme.io/docs/aspnet-output-caching)
+
 
 ## <a name="next-steps"></a>次のステップ
 

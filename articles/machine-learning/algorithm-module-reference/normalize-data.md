@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 2cf0efb24a10da602ac0c26276a081342776cdcc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a740c81aa165e221bca19987c7b3c62da56b0402
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920401"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477529"
 ---
 # <a name="normalize-data-module"></a>Normalize Data (データの正規化) モジュール
 
@@ -92,9 +92,9 @@ ms.locfileid: "77920401"
     
       ![tanh 関数を使用した正規化](media/module/aml-normalization-tanh.png "AML_normalization-tanh")
 
-6. パイプラインを実行するか、**Normalize Data (データの正規化)** モジュールをダブルクリックして **[Run Selected]\(選択した項目を実行\)** を選択します。 
+6. パイプラインを送信するか、**Normalize Data (データの正規化)** モジュールをダブルクリックして **[Run Selected]\(選択した項目を実行\)** を選択します。 
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 **Normalize Data (データの正規化)** モジュールでは、2 つの出力が生成されます。
 

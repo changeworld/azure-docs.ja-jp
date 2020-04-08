@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 64aeaf412bc8af242a9d3184a3c1f0fa0ee4809e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: e3d2673ba52ba0cca36e2a999558313b64716ade
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161768"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79299616"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Windows Virtual Machines についてのよく寄せられる質問
 この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Windows 仮想マシンについてよく寄せられる質問に回答します。 このトピックの Linux バージョンについては、「[Linux 仮想マシンについてのよく寄せられる質問](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
@@ -39,12 +39,12 @@ Azure のストレージ アカウントでは、オペレーティング シス
 ## <a name="how-can-i-access-my-virtual-machine"></a>仮想マシンへのアクセス方法を教えてください。
 Windows VM 用のリモート デスクトップ接続 (RDP) を使用してリモート接続を確立します。 手順については、「[Windows が実行されている Azure 仮想マシンに接続してサインオンする方法](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 最大 2 つのコンカレント接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。  
 
-リモート デスクトップで問題が発生した場合は、 [Windows ベースの Azure Virtual Machine へのリモート デスクトップ接続に関するトラブルシューティング](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。 
+リモート デスクトップで問題が発生した場合は、[Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。 
 
 Hyper-V に慣れている場合は、VMConnect と同様のツールを検討されるかもしれませんが、 Azure では、仮想マシンへのコンソール アクセスがサポートされていないため、類似のツールは提供されていません。
 
 ## <a name="can-i-use-the-temporary-disk-the-d-drive-by-default-to-store-data"></a>一時ディスク (既定では D: ドライブ) をデータを格納するために使用できますか。
-データの格納に一時ディスクを使用しないでください。 一時ディスクは一時的なストレージであるため、データ損失の発生時にデータを復旧できない恐れがあります。 データ損失は、仮想マシンを別のホストに移動するときに発生する可能性があります。 仮想マシンが移動される理由としては、ホストの更新、仮想マシンのサイズ変更、ホスト上のハードウェア障害などが挙げられます。
+データの格納に一時ディスクを使用しないでください。 これは一時的なストレージであるため、データ損失の発生時にデータを復旧できない恐れがあります。 データ損失は、仮想マシンを別のホストに移動するときに発生する可能性があります。 仮想マシンが移動される理由としては、ホストの更新、仮想マシンのサイズ変更、ホスト上のハードウェア障害などが挙げられます。
 
 アプリケーションで D: ドライブ文字を使用する必要がある場合は、一時ディスクで D: 以外を使用するようにドライブ文字を再割り当てできます。 手順については、「 [Windows 一時ディスクのドライブ文字を変更する方法](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
@@ -75,7 +75,7 @@ Hyper-V に慣れている場合は、VMConnect と同様のツールを検討�
 はい、できるようになりました。 最初に VM を停止して割り当てを解除する必要があります。 その後、NIC を追加または削除 (VM 上の最後の NIC でない場合) できます。 
 
 ## <a name="are-there-any-computer-name-requirements"></a>コンピューター名の要件はありますか。
-はい。 コンピューター名は最大 15 文字の長さまで指定できます。 リソースの名前付けの詳細については、[名前付け規則と制約事項](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#sample-naming-convention)に関する記事を参照してください。
+はい。 コンピューター名は最大 15 文字の長さまで指定できます。 リソースの名前付けの詳細については、[名前付け規則と制約事項](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)に関する記事を参照してください。
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>リソース グループの名前に関する要件はありますか。
 はい。 リソース グループ名は最大 90 文字の長さまで指定できます。 リソース グループの名前付けの詳細については、[名前付け規則と制約事項](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming)に関する記事を参照してください。

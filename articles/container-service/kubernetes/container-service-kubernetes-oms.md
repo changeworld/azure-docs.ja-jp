@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 3cb500d2f00d6657420d7f294a7318b339e1f81e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 02d04076ccc41d243a493838667f5e8cc6bfa5ac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271068"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371156"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(非推奨) Log Analytics による Azure Container Service クラスターの監視
 
@@ -28,8 +28,8 @@ ms.locfileid: "76271068"
 
 `az` ツールがインストールされていることを確認するには、次を実行します。
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 `az` ツールをインストールしていないない場合、[ここ](https://github.com/azure/azure-cli#installation)に手順が記載されています。
@@ -38,21 +38,24 @@ $ az --version
 `kubectl` ツールがインストールされていることを確認するには、次を実行します。
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 `kubectl` をインストールしていない場合、次を実行できます。
-```console
-$ az acs kubernetes install-cli
+
+```azurecli
+az acs kubernetes install-cli
 ```
 
 kubernetes キーが kubectl ツールにインストールされているかどうかをテストするには、次のコマンドを実行します。
+
 ```console
-$ kubectl get nodes
+kubectl get nodes
 ```
 
 上のコマンドでエラーが発生する場合は、kubernetes クラスター キーを kubectl ツールにインストールする必要があります。 これを行うには、次のコマンドを使います。
-```console
+
+```azurecli
 RESOURCE_GROUP=my-resource-group
 CLUSTER_NAME=my-acs-name
 az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
@@ -83,7 +86,7 @@ DaemonSet は Kubernetes によって使用され、クラスターのホスト�
 DaemonSet 構成にワークスペース ID とキーを追加したら、`kubectl` コマンド ライン ツールを使用してクラスターに Log Analytics エージェントをインストールできます。
 
 ```console
-$ kubectl create -f oms-daemonset.yaml
+kubectl create -f oms-daemonset.yaml
 ```
 
 ### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>Kubernetes シークレットを使用した Log Analytics エージェントのインストール
@@ -94,16 +97,24 @@ Log Analytics ワークスペースの ID とキーを保護するには、Daemo
   - シークレット テンプレート: secret-template.yaml
     - DaemonSet YAML ファイル: omsagent-ds-secrets.yaml
 - スクリプトを実行します。 スクリプトでは、Log Analytics ワークスペースの ID と主キーの指定を求められます。 それを挿入すると、スクリプトによってシークレット YAML ファイルが作成されるので、それを実行します。
-  ```
-  #> sudo bash ./secret-gen.sh
+
+  ```console
+  sudo bash ./secret-gen.sh
   ```
 
-  - 次のコマンドを実行して、シークレット ポッドを作成します。```kubectl create -f omsagentsecret.yaml```
+  - 次のコマンドを実行して、シークレット ポッドを作成します。
+
+     ```console
+     kubectl create -f omsagentsecret.yaml
+     ```
 
   - 確認するには、次のコマンドを実行します。
 
+  ```console
+  kubectl get secrets
   ```
-  root@ubuntu16-13db:~# kubectl get secrets
+
+  ```output
   NAME                  TYPE                                  DATA      AGE
   default-token-gvl91   kubernetes.io/service-account-token   3         50d
   omsagent-secret       Opaque                                2         1d
@@ -121,7 +132,11 @@ Log Analytics ワークスペースの ID とキーを保護するには、Daemo
   KEY:    88 bytes
   ```
 
-  - ```kubectl create -f omsagent-ds-secrets.yaml``` を実行して、omsagent daemon-set を作成します。
+  - 次を実行して、omsagent daemon-set を作成します。
+  
+  ```console
+  kubectl create -f omsagent-ds-secrets.yaml
+  ```
 
 ### <a name="conclusion"></a>まとめ
 これで完了です。 しばらくすると、Log Analytics ダッシュボードへのデータ フローを確認できます。

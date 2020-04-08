@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 30d15970b00a81ab85cdb85d2c0a27ee23ed1b92
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: a228a83d711c84d2aa994e6de7d90af48cca7f28
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79130312"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530939"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell を使用して専用ホストに VM をデプロイする
 
@@ -36,9 +36,9 @@ Azure PowerShell バージョン 2.8.0 以降がインストールされてい�
 可用性ゾーンと障害ドメインの両方を使用することもできます。 この例では、ゾーン 1 の 1 つのホスト グループと 2 つの障害ドメインを作成します。 
 
 
-```powershell
+```azurepowershell-interactive
 $rgName = "myDHResourceGroup"
-$location = "East US"
+$location = "EastUS"
 
 New-AzResourceGroup -Location $location -Name $rgName
 $hostGroup = New-AzHostGroup `
@@ -58,7 +58,7 @@ $hostGroup = New-AzHostGroup `
 ホスト グループの障害ドメイン数を設定した場合は、ホストの障害ドメインを指定するように求められます。 この例では、ホストの障害ドメインを 1 に設定します。
 
 
-```powershell
+```azurepowershell-interactive
 $dHost = New-AzHost `
    -HostGroupName $hostGroup.Name `
    -Location $location -Name myHost `
@@ -75,7 +75,7 @@ $dHost = New-AzHost `
 ホスト グループを作成するときに可用性ゾーンを指定した場合は、仮想マシンを作成するときに同じゾーンを使用する必要があります。 この例では、ホスト グループがゾーン 1 にあるため、ゾーン 1 に VM を作成する必要があります。  
 
 
-```powershell
+```azurepowershell-interactive
 $cred = Get-Credential
 New-AzVM `
    -Credential $cred `
@@ -95,7 +95,7 @@ New-AzVM `
 
 [GetAzHost](/powershell/module/az.compute/get-azhost) と `-InstanceView` パラメーターを使用して、ホストの正常性状態と、ホストにデプロイできる仮想マシンの数を確認できます。
 
-```
+```azurepowershell-interactive
 Get-AzHost `
    -ResourceGroupName $rgName `
    -Name myHost `
@@ -164,25 +164,71 @@ Location               : eastus
 Tags                   : {}
 ```
 
+## <a name="add-an-existing-vm"></a>既存の VM を追加する 
+
+既存の VM を専用のホストに追加することはできますが、最初に VM を Stop\Deallocated とする必要があります。 VM を専用のホストに移動する前に、その VM 構成がサポートされていることを確認してください。
+
+- VM サイズは、専用ホストと同じサイズ ファミリである必要があります。 たとえば、専用のホストが DSv3 の場合、VM のサイズは Standard_D4s_v3 になる可能性がありますが、Standard_A4_v2 となる可能性はありません。 
+- VM は、専用ホストと同じリージョンに配置する必要があります。
+- VM は、近接通信配置グループの一部になることはありません。 専用のホストに移動する前に、近接通信配置グループから VM を削除してください。 詳細については、「[近接配置グループからの VM の移動](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)」を参照してください
+- VM は、可用性セット内に置くことはできません。
+- VM が可用性ゾーン内にある場合は、ホスト グループと同じ可用性ゾーンである必要があります。 VM とホスト グループの可用性ゾーンの設定が一致している必要があります。
+
+変数の値を実際の情報に置き換えます。
+
+```azurepowershell-interactive
+$vmRGName = "movetohost"
+$vmName = "myVMtoHost"
+$dhRGName = "myDHResourceGroup"
+$dhGroupName = "myHostGroup"
+$dhName = "myHost"
+
+$myDH = Get-AzHost `
+   -HostGroupName $dhGroupName `
+   -ResourceGroupName $dhRGName `
+   -Name $dhName
+   
+$myVM = Get-AzVM `
+   -ResourceGroupName $vmRGName `
+   -Name $vmName
+   
+$myVM.Host = New-Object Microsoft.Azure.Management.Compute.Models.SubResource
+
+$myVM.Host.Id = "$myDH.Id"
+
+Stop-AzVM `
+   -ResourceGroupName $vmRGName `
+   -Name $vmName -Force
+   
+Update-AzVM `
+   -ResourceGroupName $vmRGName `
+   -VM $myVM -Debug
+   
+Start-AzVM `
+   -ResourceGroupName $vmRGName `
+   -Name $vmName
+```
+
+
 ## <a name="clean-up"></a>クリーンアップ
 
 仮想マシンがデプロイされていない場合でも、専用ホストに対して課金されます。 コストを節約するには、現在使用していないすべてのホストを削除する必要があります。  
 
 ホストを削除できるのは、それを使用している仮想マシンがなくなった場合のみです。 [Remove-AzVM](/powershell/module/az.compute/remove-azvm) を使用して VM を削除します。
 
-```powershell
+```azurepowershell-interactive
 Remove-AzVM -ResourceGroupName $rgName -Name myVM
 ```
 
 VM を削除した後、[Remove-AzHost](/powershell/module/az.compute/remove-azhost) を使用してホストを削除できます。
 
-```powershell
+```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
 すべてのホストを削除したら、[Remove-AzHostGroup](/powershell/module/az.compute/remove-azhostgroup) を使用してホスト グループを削除できます。 
 
-```powershell
+```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 

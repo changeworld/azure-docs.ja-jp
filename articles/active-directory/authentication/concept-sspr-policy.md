@@ -1,34 +1,34 @@
 ---
 title: セルフサービス パスワード リセット ポリシー - Azure Active Directory
-description: Azure AD のセルフサービス パスワード リセット ポリシーのオプションの構成
+description: Azure Active Directory のさまざまなセルフサービス パスワード リセット ポリシー オプションについて学習します
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd6cacae9c7af705b0de7b59e0f25f25637a5a89
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: fba4dae66b5adcea6cc33e61d8cf88946e29546e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962494"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051166"
 ---
-# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
+# <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセット ポリシーと制限
 
 この記事では、Azure Active Directory (Azure AD) テナント内のユーザー アカウントと関連付けられたパスワード ポリシーと複雑さの要件について説明します。
 
 ## <a name="administrator-reset-policy-differences"></a>管理者リセット ポリシーの相違点
 
-**Microsoft は、既定の強力な "*2 ゲート*" パスワード リセット ポリシーをすべての Azure 管理者ロールに適用します**。このポリシーは、ユーザーに対して定義したポリシーと異なる可能性があり、変更することはできません。 パスワードのリセット機能は、必ず Azure 管理者ロールが割り当てられていないユーザーとしてテストする必要があります。
+**Microsoft では、任意の Azure 管理者ロールに強力な既定の *2 ゲート* パスワードのリセット ポリシーを適用します**。 このポリシーは、ユーザーに対して定義したものとは異なる場合があります。また、このポリシーを変更することはできません。 パスワードのリセット機能は、必ず Azure 管理者ロールが割り当てられていないユーザーとしてテストする必要があります。
 
 2 ゲート ポリシーでは、**管理者にはセキュリティの質問を使用する機能がありません**。
 
-2 ゲート ポリシーには、**電子メール アドレス**、**認証子アプリ**、**電話番号**など、2 つの認証データが必要です。 2 ゲート ポリシーは次のような状況で適用されます。
+2 ゲート ポリシーには、*電子メール アドレス*、*認証子アプリ*、*電話番号*など、2 つの認証データが必要です。 2 ゲート ポリシーは次のような状況で適用されます。
 
 * 次のすべての Azure 管理者ロールが影響を受けます。
   * ヘルプデスク管理者
@@ -59,15 +59,15 @@ ms.locfileid: "76962494"
 
 ### <a name="exceptions"></a>例外
 
-1 ゲート ポリシーには、1 つの認証データが必要です。電子メール アドレス*または*電話番号などです。 1 ゲート ポリシーは次のような状況で適用されます。
+1 ゲート ポリシーには、1 つの認証データが必要です。電子メール アドレスまたは電話番号などです。 1 ゲート ポリシーは次のような状況で適用されます。
 
 * 試用版サブスクリプションの最初の 30 日以内である、または
-* Azure AD テナント用にカスタム ドメインが構成されていないため、既定の * *.onmicrosoft.com* を使用している。 既定の * *.onmicrosoft.com* ドメインは、実稼働環境での使用は推奨されないことに注意してください。
+* Azure AD テナント用にカスタム ドメインが構成されていないため、既定の * *.onmicrosoft.com* を使用している。 既定の * *.onmicrosoft.com* ドメインは、実稼働環境での使用は推奨されません。
 * Azure AD Connect が ID と同期していない
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>すべてのユーザー アカウントに適用される UserPrincipalName ポリシー
 
-Azure AD にサインインする必要があるすべてのユーザー アカウントは、一意のユーザー プリンシパル名 (UPN) 属性値がそのアカウントに関連付けられている必要があります。 次の表は、クラウドに同期されているオンプレミスの Active Directory ユーザー アカウントとクラウドのみのユーザー アカウントの両方に適用されるポリシーの概要です。
+Azure AD にサインインする必要があるすべてのユーザー アカウントは、一意のユーザー プリンシパル名 (UPN) 属性値がそのアカウントに関連付けられている必要があります。 次の表は、クラウドに同期されているオンプレミスの Active Directory Domain Services ユーザー アカウントとクラウドのみのユーザー アカウントの両方に適用されるポリシーの概要です。
 
 | プロパティ | UserPrincipalName の要件 |
 | --- | --- |
@@ -81,19 +81,19 @@ Azure AD にサインインする必要があるすべてのユーザー アカ�
 
 | プロパティ | 必要条件 |
 | --- | --- |
-| 使用できる文字 |<ul><li>A - Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & \* - \_ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>空白</li></ul> |
+| 使用できる文字 |<ul><li>A - Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & \* - \_ ! + = [ ] { } &#124; \ : ' , . ? / \` ~ " ( ) ;</li> <li>空白</li></ul> |
 | 使用できない文字 | Unicode 文字。 |
 | パスワードの制限 |<ul><li>8 文字以上 256 文字以下。</li><li>次の 4 つのうち、3 つが必要です。<ul><li>小文字。</li><li>大文字。</li><li>数字 (0-9)。</li><li>記号 (上述のパスワード制限を参照してください)。</li></ul></li></ul> |
 | パスワードの有効期間 (パスワードの最大有効期間) |<ul><li>既定値:**90** 日。</li><li>値を構成するには、Windows PowerShell 用 Azure Active Directory モジュールから `Set-MsolPasswordPolicy` コマンドレットを使用します。</li></ul> |
 | パスワードの期限切れの通知 (ユーザーにパスワードの有効期限が通知されるタイミング) |<ul><li>既定値:**14** 日 (パスワードの有効期限が切れる前)。</li><li>値を構成するには、`Set-MsolPasswordPolicy` コマンドレットを使用します。</li></ul> |
 | パスワードの有効期限 (パスワードを無期限にします) |<ul><li>既定値: **false** (パスワードの有効期限が指定されていることを示します)。</li><li>各ユーザー アカウントの値を構成するには、`Set-MsolUser` コマンドレットを使用します。</li></ul> |
 | パスワード変更履歴 | ユーザーがパスワードを変更する場合、前回のパスワードを再度使用することは*できません*。 |
-| パスワード リセット履歴 | ユーザーが忘れたパスワードをリセットする場合、前回のパスワードを再度使用することは*できます*。 |
-| アカウントのロックアウト | 正しくないパスワードでサインイン試行に 10 回失敗すると、ユーザーを 1 分間ロックアウトします。 不適切なサインイン試行をさらに行った場合は、ロックアウトの期間が延長されます。 [スマート ロックアウト](howto-password-smart-lockout.md)では、直近 3 つの無効なパスワード ハッシュを追跡して、同じパスワードに対するロックアウト カウンターの増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロックアウトされることはありません。 |
+| パスワード リセット履歴 | ユーザーが忘れたパスワードをリセットする場合、前回のパスワードを再度使用することが ''*できます*''。 |
+| アカウントのロックアウト | 正しくないパスワードでサインイン試行に 10 回失敗すると、ユーザーを 1 分間ロックアウトします。 不適切なサインイン試行をさらに行った場合は、ロックアウトの期間が延長されます。 [スマート ロックアウト](howto-password-smart-lockout.md)では、直近 3 つの無効なパスワード ハッシュを追跡して、同じパスワードに対するロックアウト カウンターの増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロック アウトされることはありません。 |
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Azure AD でパスワード有効期限ポリシーを設定する
 
-Microsoft クラウド サービスのグローバル管理者またはユーザー管理者は、Windows PowerShell 用 Microsoft Azure AD モジュールを使用して、ユーザーのパスワード有効期限が切れないように設定できます。 また、Windows PowerShell コマンドレットを使用すると、期限が切れない構成を削除したり、期限が切れないように設定されているユーザー パスワードを確認したりすることもできます。 
+Microsoft クラウド サービスの*グローバル管理者*または*ユーザー管理者*は、*Windows PowerShell 用 Microsoft Azure AD モジュール*を使用して、ユーザーのパスワード有効期限が切れないように設定できます。 また、Windows PowerShell コマンドレットを使用すると、期限が切れない構成を削除したり、期限が切れないように設定されているユーザー パスワードを確認したりすることもできます。
 
 このガイダンスは、Intune や Office 365 などの他のプロバイダーに適用され、これらは ID およびディレクトリ サービスについては Azure AD にも依存します。 パスワード有効期限が、ポリシーの変更できる唯一の部分です。
 
@@ -102,7 +102,7 @@ Microsoft クラウド サービスのグローバル管理者またはユーザ
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>PowerShell を使用したパスワード ポリシーの設定または確認
 
-操作を開始するには、[Azure AD PowerShell モジュールをダウンロードしてインストールする](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0)必要があります。 インストールした後、次の手順に従って各フィールドを構成できます。
+操作を開始するには、[Azure AD PowerShell モジュールをダウンロードしてインストール](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0)します。 モジュールがインストールされたら、次の手順に従って各フィールドを構成します。
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>パスワードの有効期限ポリシーを確認する
 
@@ -156,7 +156,7 @@ Microsoft クラウド サービスのグローバル管理者またはユーザ
    ```
 
    > [!WARNING]
-   > `-PasswordPolicies DisablePasswordExpiration` を設定したパスワードは、引き続き `pwdLastSet` 属性に基づいて使用時間が計測されます。 ユーザーのパスワードを無期限に設定し、90 日以上たつと、パスワードは期限切れになります。 `pwdLastSet` 属性に基づいて、有効期限を `-PasswordPolicies None` に変更すると、90 日より古い `pwdLastSet` を持つすべてのパスワードは、ユーザーが次回サインインで変更する必要があります。 この変更は多数のユーザーに影響を与える可能性があります。
+   > `-PasswordPolicies DisablePasswordExpiration` を設定したパスワードは、引き続き `pwdLastSet` 属性に基づいて使用時間が計測されます。 `pwdLastSet` 属性に基づいて、有効期限を `-PasswordPolicies None` に変更すると、90 日より古い `pwdLastSet` を持つすべてのパスワードは、ユーザーが次回サインインで変更する必要があります。 この変更は多数のユーザーに影響を与える可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

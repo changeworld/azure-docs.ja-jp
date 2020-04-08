@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5a9e7be5f582051e03cba08733fcbfa697cc8f5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3ad2032497b4b01476389428f5a2ef4a3961a1c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275048"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481247"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション
 
@@ -62,7 +62,7 @@ Azure Active Directory (Azure AD) では、大量のオンプレミス アプリ
 [カスタム ドメイン](application-proxy-configure-custom-domain.md)は他のすべてのアプリケーションではオプションですが、ワイルドカード アプリケーションでは前提条件です。 カスタム ドメインの作成には以下が必要です。
 
 1. Azure 内で確認済みドメインを作成する。
-1. PFX 形式の SSL 証明書をアプリケーション プロキシにアップロードする。
+1. PFX 形式の TLS/SSL 証明書をアプリケーション プロキシにアップロードする。
 
 作成する予定のアプリケーションに一致するワイルドカード証明書を使用することを検討する必要があります。 または、特定のアプリケーションのみが記載された証明書を使用することもできます。 この場合、証明書に記載されているアプリケーションのみが、ワイルドカード アプリケーションを通じてアクセス可能になります。
 
@@ -163,7 +163,7 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 | 青  | 明示的に発行されており、Azure portal に表示されるアプリケーション。 |
 | グレー  | 親アプリケーション経由でアクセスできるアプリケーション。 |
 
-## <a name="scenario-2-general-wildcard-application-with-exception"></a>シナリオ 2:一般的なワイルドカード アプリケーション (例外あり)
+## <a name="scenario-2-general-wildcard-application-with-exception"></a>シナリオ 2: 一般的なワイルドカード アプリケーション (例外あり)
 
 このシナリオでは、3 つの一般的なアプリケーションに加えてもう 1 つアプリケーション (`finance.adventure-works.com`) を用意します。これは、財務部門のみがアクセスできるようにする必要があります。 現在のアプリケーション構造では、ワイルドカード アプリケーションを通じてすべての従業員が財務アプリケーションにアクセスできます。 これを変更するため、財務をアクセス許可の制限が強い別個のアプリケーションとして構成して、ワイルドカードからアプリケーションを除外します。
 
@@ -191,7 +191,7 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 財務用に発行された複数のアプリケーションがあり、`finance.adventure-works.com` が確認済みドメインとしてある場合、別のワイルドカード アプリケーション `*.finance.adventure-works.com` を発行できます。 これは汎用の `*.adventure-works.com` よりも具体的であるため、ユーザーが finance ドメインのアプリケーションにアクセスする際に優先されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - **カスタム ドメイン**の詳細については、「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](application-proxy-configure-custom-domain.md)」を参照してください。
 - **アプリケーションの発行**の詳細については、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-add-on-premises-application.md)に関するページを参照してください。

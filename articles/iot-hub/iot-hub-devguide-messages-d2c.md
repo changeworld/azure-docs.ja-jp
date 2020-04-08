@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: ff50d972ad9590fb70dbcf67e21f8b5dc8c32fad
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: d10744f2536cdf89115cdccd0bea6f1e5155774c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748060"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79370459"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -27,7 +27,7 @@ ms.locfileid: "73748060"
 
 IoT Hub でメッセージのルーティングを機能させるには、これらのサービス エンドポイントへの書き込みアクセス許可が必要です。 Azure Portal を使用してエンドポイントを構成する場合、必要なアクセス許可は自動的に追加されます。 必要なスループットをサポートするようにサービスを確実に構成してください。 たとえば、Event Hubs をカスタム エンドポイントとして使用している場合は、そのイベント ハブに対して**スループット ユニット**を構成して、IoT Hub メッセージ ルーティングを介して送信する予定のイベントのイングレスを処理できるようにする必要があります。 同様に、Service Bus キューをエンドポイントとして使用する場合は、コンシューマーによって送信されるまで、キューがすべてのデータ イングレスを保持できるように、**最大サイズ**を構成する必要があります。 IoT ソリューションを初めて構成する場合は、追加したエンドポイントを監視し、実際の負荷の調整を行う必要があります。
 
-IoT ハブは、各種プロトコルにおける相互運用性を確保するためにすべての device-to-cloud メッセージ用の[共通形式](iot-hub-devguide-messages-construct.md)を定義します。 メッセージが、同じエンドポイントを指している複数のルートと一致する場合、IoT Hub はそのエンドポイントにメッセージを 1 回だけ送信します。 そのため、Service Bus キューまたはトピックで重複除去を構成する必要はありません。 パーティション分割されたキューでは、パーティションのアフィニティによってメッセージの順序が保証されます。 このチュートリアルを使用して、[メッセージ ルーティングを構成する](tutorial-routing.md)方法について学習してください。
+IoT ハブでは、各種プロトコルにおける相互運用性を確保するためにすべての device-to-cloud メッセージ用の[共通形式](iot-hub-devguide-messages-construct.md)が定義されています。 メッセージが、同じエンドポイントを指している複数のルートと一致する場合、IoT Hub はそのエンドポイントにメッセージを 1 回だけ送信します。 そのため、Service Bus キューまたはトピックで重複除去を構成する必要はありません。 パーティション分割されたキューでは、パーティションのアフィニティによってメッセージの順序が保証されます。 このチュートリアルを使用して、[メッセージ ルーティングを構成する](tutorial-routing.md)方法について学習してください。
 
 ## <a name="routing-endpoints"></a>ルーティング エンドポイント
 
@@ -75,6 +75,9 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
+> [!NOTE]
+> ストレージ アカウントに IoT Hub の接続性を制限するファイアウォール構成がある場合には、[Microsoft が信頼を置くファースト パーティの例外](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)の使用を検討してください (限られたリージョンで、管理サービス ID を持つ IoT ハブを対象に利用可能)。
+
 Azure Data Lake Gen2 と互換性のあるストレージ アカウントを作成するには、次の図に示すように、新しい V2 ストレージ アカウントを作成し、 **[詳細]** タブで *[階層型名前空間]* フィールドの *[有効]* を選択します。
 
 ![Azure Data Lake Storage Gen2 を選択する](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
@@ -84,9 +87,17 @@ Azure Data Lake Gen2 と互換性のあるストレージ アカウントを作�
 
 IoT Hub エンドポイントとして使用される Service Bus のキューおよびトピックでは、**セッション**も**重複データ検出**も有効にしないでください。 これらのオプションのいずれかが有効になっている場合、エンドポイントは Azure Portal に**到達不能**として表示されます。
 
+> [!NOTE]
+> サービス バス リソースに IoT Hub の接続性を制限するファイアウォール構成がある場合には、[Microsoft が信頼を置くファースト パーティーの例外](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)の使用を検討してください (限られたリージョンで、管理サービス ID を持つ IoT ハブを対象に利用可能)。
+
+
 ### <a name="event-hubs"></a>Event Hubs
 
 組み込みの Event Hubs 互換エンドポイントとは別に、Event Hubs タイプのカスタム エンドポイントにデータをルーティングすることもできます。 
+
+> [!NOTE]
+> イベント ハブ リソースに IoT Hub の接続性を制限するファイアウォール構成がある場合には、[Microsoft が信頼を置くファースト パーティの例外](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing)の使用を検討してください (限られたリージョンで、管理サービス ID を持つ IoT ハブを対象に利用可能)。
+
 
 ## <a name="reading-data-that-has-been-routed"></a>ルーティングされたデータの読み取り
 
@@ -103,6 +114,7 @@ IoT Hub エンドポイントとして使用される Service Bus のキュー�
 * [Service Bus キュー](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)からの読み取り
 
 * [Service Bus トピック](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)からの読み取り
+
 
 ## <a name="fallback-route"></a>フォールバック ルート
 
@@ -140,7 +152,7 @@ REST API の [GetEndpointHealth](https://docs.microsoft.com/rest/api/iothub/ioth
 
 Azure Monitor の[診断設定](../iot-hub/iot-hub-monitor-resource-health.md)の**ルート**診断ログを使用すると、IoT Hub に認識されたエンドポイントの正常性とルーティング クエリの評価中に発生したエラーを追跡することができます (エンドポイントが停止した場合など)。 これらの診断ログは、カスタム処理を実行するために、Azure Monitor ログ、Event Hubs、または Azure Storage に送信できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * メッセージ ルートの作成方法については、[ルートを使用した IoT Hub の device-to-cloud メッセージの処理](tutorial-routing.md)に関するページをご覧ください。
 

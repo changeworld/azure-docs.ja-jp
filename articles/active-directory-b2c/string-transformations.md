@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 678385d9ed16a9821fc61be476e7eb9eaf6fd4f1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: acacba591c9b895f1bd6abfbab5d3d4a4c858d12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183705"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472777"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -34,7 +34,7 @@ ms.locfileid: "78183705"
 | InputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
 | InputParameter | stringComparison | string | 文字列比較で、次のいずれかの値です。序数、OrdinalIgnoreCase。 |
 
-**AssertStringClaimsAreEqual** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayConrtol](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `UserMessageIfClaimsTransformationStringsAreNotEqual` メタデータによって制御されます。
+**AssertStringClaimsAreEqual** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayConrtol](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `UserMessageIfClaimsTransformationStringsAreNotEqual` メタデータによって制御されます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
 
 
 ![AssertStringClaimsAreEqual の実行](./media/string-transformations/assert-execution.png)

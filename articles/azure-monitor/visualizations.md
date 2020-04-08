@@ -5,20 +5,36 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/24/2018
-ms.openlocfilehash: 7bace6ff6eb7dd1c02e4907e338fc0be9d66471c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/17/2020
+ms.openlocfilehash: 877616f6fd31bdfbe193bd8f03efb3f79317ad42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657811"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535371"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Monitor からのデータを視覚化する
 この記事では、Azure Monitor に格納されたログとメトリック データを視覚化するために使用可能な方法の概要を提供します。
 
 チャートやグラフなどの視覚化は、監視データを分析して問題をドリルダウンし、パターンを特定するのに役立ちます。 使用するツールによっては、組織の内外の他のユーザーと視覚化を共有するオプションもあります。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+## <a name="workbooks"></a>Workbooks
+[Workbooks](../azure-monitor/app/usage-workbooks.md) は、データの詳細な分析情報、調査、およびチーム内のコラボレーションを提供する対話型のドキュメントです。 Workbooks が役立つ具体的な例は、トラブルシューティング ガイドとインシデントの事後分析です。
+
+![Workbooks](media/visualizations/workbook.png)
+
+### <a name="advantages"></a>長所
+- メトリックとログの両方をサポート。
+- テーブル内の要素を選択すると、関連付けられたグラフと視覚化が動的に更新される、対話型レポートを有効にするパラメーターをサポート。
+- ドキュメントのようなフロー。
+- 個人または共有の Workbooks のオプション。
+- 簡単でコラボレーションしやすい作成エクスペリエンス。
+- テンプレートでの GitHub ベースのパブリック テンプレート ギャラリーのサポート。
+
+### <a name="limitations"></a>制限事項
+- 自動更新なし。
+- ダッシュボードのような密度の高いレイアウトがなく、Workbooks が 1 つのウィンドウとして表示されるため、利便性には劣りますが、 詳細な分析情報を提供することを目的としています。
+
 
 ## <a name="azure-dashboards"></a>Azure ダッシュボード
 [Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)は、Azure の主要なダッシュボード テクノロジです。 ダッシュボードは、重要な問題をすばやく特定できるように、Azure インフラストラクチャとサービスに関する 1 つのウィンドウを提供するという点で特に役立ちます。
@@ -43,44 +59,6 @@ ms.locfileid: "77657811"
 - ログのグラフは、共有ダッシュボードにのみピン留めできます。
 - ダッシュボード データとのインタラクティビティはありません。
 - 制限されたコンテキストのドリルダウン。
-
-## <a name="azure-monitor-views"></a>Azure Monitor ビュー
-[Azure Monitor のビュー](platform/view-designer.md)では、ログ データを使用して、カスタム視覚化を作成できます。 これらのビューは、[監視ソリューション](insights/solutions.md)が収集したデータを表示するために使用します。
-
-![表示](media/visualizations/view.png)
-
-### <a name="advantages"></a>長所
-- ログ データの高度な視覚化。
-- ビューを他のリソース グループとサブスクリプションに転送するためのビューのエクスポートとインポート。
-- ワークスペースと監視ソリューションを持つ Azure Monitor 管理モデルへの統合。
-- カスタム パラメーターの[フィルター処理](platform/view-designer-filters.md)。
-- 対話型、複数レベルのドリルイン (別のビューに絞り込むビュー) をサポート
-
-### <a name="limitations"></a>制限事項
-- ログはサポートされるがメトリックはサポートされない。
-- 個人用ビューはなし。 ワークスペースへのアクセス権を持つすべてのユーザーが使用可能。
-- 自動更新なし。
-- 制限されたレイアウト オプション。
-- 複数のワークスペースや Application Insights アプリケーションに対する横断的なクエリ実行がサポートされない。
-- クエリの応答サイズは 8 MB に制限され、クエリの実行時間は 110 秒に制限される。
-
-
-## <a name="workbooks"></a>Workbooks
-[Workbooks](../azure-monitor/app/usage-workbooks.md) は、データの詳細な分析情報、調査、およびチーム内のコラボレーションを提供する対話型のドキュメントです。 Workbooks が役立つ具体的な例は、トラブルシューティング ガイドとインシデントの事後分析です。
-
-![Workbooks](media/visualizations/workbook.png)
-
-### <a name="advantages"></a>長所
-- メトリックとログの両方をサポート。
-- テーブル内の要素を選択すると、関連付けられたグラフと視覚化が動的に更新される、対話型レポートを有効にするパラメーターをサポート。
-- ドキュメントのようなフロー。
-- 個人または共有の Workbooks のオプション。
-- 簡単でコラボレーションしやすい作成エクスペリエンス。
-- テンプレートでの GitHub ベースのパブリック テンプレート ギャラリーのサポート。
-
-### <a name="limitations"></a>制限事項
-- 自動更新なし。
-- ダッシュボードのような密度の高いレイアウトがなく、Workbooks が 1 つのウィンドウとして表示されるため、利便性には劣りますが、 詳細な分析情報を提供することを目的としています。
 
 
 ## <a name="power-bi"></a>Power BI
@@ -129,6 +107,31 @@ Azure Monitor のメトリック データとログ データには、その API
 ### <a name="disadvantages"></a>短所
 - 多くのエンジニア リング作業が必要。
 
+
+## <a name="azure-monitor-views"></a>Azure Monitor ビュー
+
+> [!IMPORTANT]
+> ビューは今後非推奨となる予定です。 ビューをブックに変換する方法のガイドラインについては、「[Azure Monitor ビュー デザイナーからブックへの移行ガイド](platform/view-designer-conversion-overview.md)」を参照してください。
+
+[Azure Monitor のビュー](platform/view-designer.md)では、ログ データを使用して、カスタム視覚化を作成できます。 これらのビューは、[監視ソリューション](insights/solutions.md)が収集したデータを表示するために使用します。
+
+
+![表示](media/visualizations/view.png)
+
+### <a name="advantages"></a>長所
+- ログ データの高度な視覚化。
+- ビューを他のリソース グループとサブスクリプションに転送するためのビューのエクスポートとインポート。
+- ワークスペースと監視ソリューションを持つ Azure Monitor 管理モデルへの統合。
+- カスタム パラメーターの[フィルター処理](platform/view-designer-filters.md)。
+- 対話型、複数レベルのドリルイン (別のビューに絞り込むビュー) をサポート
+
+### <a name="limitations"></a>制限事項
+- ログはサポートされるがメトリックはサポートされない。
+- 個人用ビューはなし。 ワークスペースへのアクセス権を持つすべてのユーザーが使用可能。
+- 自動更新なし。
+- 制限されたレイアウト オプション。
+- 複数のワークスペースや Application Insights アプリケーションに対する横断的なクエリ実行がサポートされない。
+- クエリの応答サイズは 8 MB に制限され、クエリの実行時間は 110 秒に制限される。
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Monitor によって収集されたデータ](platform/data-platform.md)について学習します。

@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 08/26/2019
+ms.date: 03/11/2020
 ms.author: robinsh
-ms.openlocfilehash: a6210c4672042801350e56ef6c8e8a2c02420a81
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: c1db7f1a891646ad29f6cae95ddb7e2cf3a42bfc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110395"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409732"
 ---
 # <a name="get-started-with-device-twins-python"></a>デバイス ツインの概要 (Python)
 
@@ -29,7 +29,7 @@ ms.locfileid: "77110395"
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+[!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
 * ポート 8883 がファイアウォールで開放されていることを確認してください。 この記事のデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
@@ -54,12 +54,8 @@ ms.locfileid: "77110395"
 1. 作業ディレクトリでコマンド プロンプトを開き、**Azure IoT Hub Service SDK for Python** をインストールします。
 
    ```cmd/sh
-   pip install azure-iothub-service-client
+   pip install azure-iot-hub
    ```
-
-   > [!NOTE]
-   > azure-iothub-service-client 用の pip パッケージは、現在 Windows OS でのみ利用できます。 Linux/Mac OS については、[Python 用の開発環境の準備](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md)に関する記事で、Linux と Mac OS の各セクションを参照してください。
-   >
 
 2. テキスト エディターを使用して、新しい **AddTagsAndQuery.py** ファイルを作成します。
 
@@ -67,21 +63,16 @@ ms.locfileid: "77110395"
 
    ```python
    import sys
-   import iothub_service_client
-   from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod
-   from iothub_service_client import IoTHubDeviceTwin, IoTHubError
+   from time import sleep
+   from azure.iot.hub import IoTHubRegistryManager
+   from azure.iot.hub.models import Twin, TwinProperties, QuerySpecification, QueryResult
    ```
 
 4. 次のコードを追加します。 `[IoTHub Connection String]` を、「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT ハブ接続文字列に置き換えます。 `[Device Id]` を、「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」で登録したデバイス ID に置き換えます。
   
     ```python
-    CONNECTION_STRING = "[IoTHub Connection String]"
+    IOTHUB_CONNECTION_STRING = "[IoTHub Connection String]"
     DEVICE_ID = "[Device Id]"
-
-    UPDATE_JSON = "{\"properties\":{\"desired\":{\"location\":\"Redmond\"}}}"
-
-    UPDATE_JSON_SEARCH = "\"location\":\"Redmond\""
-    UPDATE_JSON_CLIENT_SEARCH = "\"connectivity\":\"cellular\""
     ```
 
 5. 次のコードを **AddTagsAndQuery.py** ファイルに追加します。
@@ -89,54 +80,47 @@ ms.locfileid: "77110395"
     ```python
     def iothub_service_sample_run():
         try:
-            iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
+            iothub_registry_manager = IoTHubRegistryManager(IOTHUB_CONNECTION_STRING)
 
-            iothub_registry_statistics = iothub_registry_manager.get_statistics()
-            print ( "Total device count                       : {0}".format(iothub_registry_statistics.totalDeviceCount) )
-            print ( "Enabled device count                     : {0}".format(iothub_registry_statistics.enabledDeviceCount) )
-            print ( "Disabled device count                    : {0}".format(iothub_registry_statistics.disabledDeviceCount) )
-            print ( "" )
+            new_tags = {
+                    'location' : {
+                        'region' : 'US',
+                        'plant' : 'Redmond43'
+                    }
+                }
 
-            number_of_devices = iothub_registry_statistics.totalDeviceCount
-            dev_list = iothub_registry_manager.get_device_list(number_of_devices)
+            twin = iothub_registry_manager.get_twin(DEVICE_ID)
+            twin_patch = Twin(tags=new_tags, properties= TwinProperties(desired={'power_level' : 1}))
+            twin = iothub_registry_manager.update_twin(DEVICE_ID, twin_patch, twin.etag)
 
-            iothub_twin_method = IoTHubDeviceTwin(CONNECTION_STRING)
+            # Add a delay to account for any latency before executing the query
+            sleep(1)
 
-            for device in range(0, number_of_devices):
-                if dev_list[device].deviceId == DEVICE_ID:
-                    twin_info = iothub_twin_method.update_twin(dev_list[device].deviceId, UPDATE_JSON)
+            query_spec = QuerySpecification(query="SELECT * FROM devices WHERE tags.location.plant = 'Redmond43'")
+            query_result = iothub_registry_manager.query_iot_hub(query_spec, None, 100)
+            print("Devices in Redmond43 plant: {}".format(', '.join([twin.device_id for twin in query_result.items])))
 
-            print ( "Devices in Redmond: " )
-            for device in range(0, number_of_devices):
-                twin_info = iothub_twin_method.get_twin(dev_list[device].deviceId)
+            print()
 
-                if twin_info.find(UPDATE_JSON_SEARCH) > -1:
-                    print ( dev_list[device].deviceId )
+            query_spec = QuerySpecification(query="SELECT * FROM devices WHERE tags.location.plant = 'Redmond43' AND properties.reported.connectivity = 'cellular'")
+            query_result = iothub_registry_manager.query_iot_hub(query_spec, None, 100)
+            print("Devices in Redmond43 plant using cellular network: {}".format(', '.join([twin.device_id for twin in query_result.items])))
 
-            print ( "" )
-
-            print ( "Devices in Redmond using cellular network: " )
-            for device in range(0, number_of_devices):
-                twin_info = iothub_twin_method.get_twin(dev_list[device].deviceId)
-
-                if twin_info.find(UPDATE_JSON_SEARCH) > -1:
-                    if twin_info.find(UPDATE_JSON_CLIENT_SEARCH) > -1:
-                        print ( dev_list[device].deviceId )
-
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error {0}".format(iothub_error) )
+        except Exception as ex:
+            print("Unexpected error {0}".format(ex))
             return
         except KeyboardInterrupt:
-            print ( "IoTHub sample stopped" )
+            print("IoT Hub Device Twin service sample stopped")
     ```
 
-    **Registry** オブジェクトに、サービスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 最初のコードで **Registry** オブジェクトを初期化した後、**deviceId** のデバイス ツインを更新し、最後に 2 つのクエリを実行します。 最初のクエリでは、**Redmond43** 工場にあるデバイスのデバイス ツインのみを選択し、2 番目のクエリでは携帯ネットワーク経由で接続しているデバイスのみを選択します。
+    **IoTHubRegistryManager** オブジェクトに、サービスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 最初のコードで **IoTHubRegistryManager** オブジェクトを初期化した後、**DEVICE_ID** のデバイス ツインを更新し、最後に 2 つのクエリを実行します。 最初のものでは **Redmond43** 工場にあるデバイスのデバイス ツインのみを選択し、2 番目のものでは携帯ネットワーク経由で接続しているデバイスのみを選択します。
 
 6. 次のコードを **AddTagsAndQuery.py** の末尾に追加して、**iothub_service_sample_run** 関数を実装します。
 
     ```python
     if __name__ == '__main__':
-        print ( "Starting the IoT Hub Device Twins Python service sample..." )
+        print("Starting the Python IoT Hub Device Twin service sample...")
+        print()
 
         iothub_service_sample_run()
     ```
@@ -209,16 +193,16 @@ ms.locfileid: "77110395"
             while True:
                 time.sleep(1000000)
         except KeyboardInterrupt:
-            print ( "IoTHubClient sample stopped" )
+            print ( "IoT Hub Device Twin device sample stopped" )
     ```
 
-    **Client** オブジェクトに、デバイスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 前のコードでは、**Client** オブジェクトを初期化した後、デバイスのデバイス ツインを取得して、報告されるプロパティに接続情報を含めるよう更新します。
+    **IoTHubModuleClient** オブジェクトに、デバイスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 前のコードでは、**IoTHubModuleClient** オブジェクトを初期化した後、デバイスのデバイス ツインを取得して、報告されるプロパティに接続情報を含めるよう更新します。
 
 6. 次のコードを **ReportConnectivity.py** の末尾に追加して、**iothub_client_sample_run** 関数を実装します。
 
     ```python
     if __name__ == '__main__':
-        print ( "Starting the IoT Hub Device Twins Python client sample..." )
+        print ( "Starting the Python IoT Hub Device Twin device sample..." )
         print ( "IoTHubModuleClient waiting for commands, press Ctrl-C to exit" )
 
         iothub_client_sample_run()
@@ -230,9 +214,9 @@ ms.locfileid: "77110395"
     python ReportConnectivity.py
     ```
 
-    デバイス ツインが更新されたこと示す確認メッセージが表示されます。
+    デバイス ツインの報告されるプロパティが更新されたこと示す確認メッセージが表示されます。
 
-    ![ツインの更新](./media/iot-hub-python-twin-getstarted/device-1.png)
+    ![デバイス アプリから報告されたプロパティを更新する](./media/iot-hub-python-twin-getstarted/device-1.png)
 
 8. これで、デバイスが接続情報を報告したため、両方のクエリで表示されるようになります。 戻って、クエリをもう一度実行します。
 
@@ -242,7 +226,11 @@ ms.locfileid: "77110395"
 
     今回は、 **{Device ID}** が両方のクエリ結果に表示されるはずです。
 
-    ![2 番目のクエリ](./media/iot-hub-python-twin-getstarted/service-2.png)
+    ![サービス アプリに対する 2 番目のクエリ](./media/iot-hub-python-twin-getstarted/service-2.png)
+
+    デバイス アプリで、サービス アプリによって送信された必要なプロパティ ツイン パッチが受信されたことを確認するメッセージが表示されます。
+
+    ![デバイス アプリ上で必要なプロパティを受信する](./media/iot-hub-python-twin-getstarted/device-2.png)
 
 ## <a name="next-steps"></a>次のステップ
 

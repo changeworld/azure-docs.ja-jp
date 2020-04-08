@@ -13,21 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
-ms.openlocfilehash: 15a94a9724fac29d36f6bb88ee4810b3bc7ca607
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 30405ce5cc875144fcd1cf83d4a3f883a0304989
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603484"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79415766"
 ---
-# <a name="improve-your-secure-score-in-azure-security-center"></a>Azure Security Center でセキュア スコアを向上する
+# <a name="improve-your-secure-score-in-azure-security-center"></a>Azure Security Center 上のセキュリティ スコアの向上
 
 > [!NOTE]
-> 強化されたセキュア スコアは、プレビューでご利用いただけます。 既存のセキュア スコアは最終的には高度なセキュア スコアに置き換わりますが、移行を容易にするため、しばらくの間は併用されます。
+> この記事では、以前のバージョンのセキュリティ スコアについて説明します。 このセキュリティ スコア エクスペリエンスは UI から引き続き利用できますが、段階的に廃止されます。 2 つのセキュリティ スコア エクスペリエンスは、よりスムーズな移行を可能にするためにサイドバイサイドで実行されます。
 >
-> 高度なセキュア スコアの利点の詳細については、[こちら](secure-score-security-controls.md)を参照してください。
+> 新しいセキュリティ スコアの詳細については、[こちら](secure-score-security-controls.md)をご覧ください。
 >
-> プレビューに参加するには、Azure Portal を開き、Azure Security Center を起動して、[セキュア スコア] を選択します。 このページの上部には、新しいセキュア スコア エクスペリエンスを提供するバナーが表示されます。 または、[こちら](https://aka.ms/ascnewscore)をクリックします。
 
 セキュリティ上の利点を提供する非常に多くのサービスでは、通常、ワークロードのセキュリティ保護と強化のために最初に実行する手順を知るのが困難です。 セキュリティ スコアでは、セキュリティに関する推奨事項が調査され、それらの優先順位が自動的に示されるので、ユーザーはどの推奨事項を最初に実行するかが分ります。 これは、最も重大なセキュリティの脆弱性を見つける助けになるため、調査に優先順位を付けることができます。 セキュリティ スコアは、ワークロードのセキュリティに対する姿勢を評価するのに役立つツールです。
 
@@ -78,11 +77,8 @@ Security Center では、**総合セキュリティ スコア**も提供され�
 ![個々の推奨事項のセキュリティ スコア](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
 
 
-
-
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure Security Center 上で**セキュリティ スコア**を使用して、セキュリティ体制を向上させる方法を示しました。 Security Center の詳細については、次の記事をご覧ください。
 
-* [Azure Security Center のよく寄せられる質問 (FAQ)](faq-general.md)--このサービスとセキュリティ スコアに関してよく寄せられる質問が記載されています。
+* 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
 * 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
-* [セキュリティ スコア - 強化](secure-score-security-controls.md)--現在プレビュー段階の強化されたセキュリティ スコアの利点について説明します。

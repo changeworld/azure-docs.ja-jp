@@ -1,5 +1,6 @@
 ---
 title: Azure Cloud Services のロール スキーマ | Microsoft Docs
+description: サービス構成ファイルの Role 要素では、ロールごとにデプロイするロール インスタンスの数、構成値、および証明書のサムプリントを指定します。
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
@@ -8,12 +9,12 @@ ms.topic: reference
 caps.latest.revision: 12
 author: tgore03
 ms.author: tagore
-ms.openlocfilehash: 0f0e79b462726b1aa6a953a4b8c92334d6b16492
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449085"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528423"
 ---
 # <a name="azure-cloud-services-config-role-schema"></a>Azure Cloud Services 構成のロール スキーマ
 
@@ -21,7 +22,7 @@ ms.locfileid: "75449085"
 
 Azure サービス構成スキーマの詳細については、「[Cloud Service (classic) Configuration Schema](schema-cscfg-file.md)」(クラウド サービス (クラシック) 構成スキーマ) を参照してください。 Azure サービス定義スキーマの詳細については、「[Cloud Service (classic) Definition Schema](schema-csdef-file.md)」(クラウド サービス (クラシック) 定義スキーマ) を参照してください。
 
-##  <a name="Role"></a> Role 要素
+##  <a name="role-element"></a><a name="Role"></a> Role 要素
 次の例は、`Role` 要素とその子要素を示します。
 
 ```xml 

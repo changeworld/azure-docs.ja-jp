@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 09/25/2019
-ms.openlocfilehash: 2e48b47967e29a421a96bb09dd17b2cdcdbaff3c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/09/2020
+ms.openlocfilehash: 401383f2d483836bf725051810d78167869f7b22
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77580515"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237015"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning でデータセットを使用してトレーニングする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -70,7 +70,7 @@ from azureml.core import Dataset, Run
 
 run = Run.get_context()
 # get the input dataset by name
-dataset = run.input_datasets['titanic_ds']
+dataset = run.input_datasets['titanic']
 # load the TabularDataset to pandas DataFrame
 df = dataset.to_pandas_dataframe()
 ```
@@ -106,11 +106,28 @@ experiment_run.wait_for_completion(show_output=True)
 データ ファイルをトレーニング用のコンピューティング先で使用できるようにする場合は、[FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) を使用して、それによって参照されているファイルをマウントまたはダウンロードします。
 
 ### <a name="mount-vs-download"></a>マウントとダウンロード
-データセットをマウントする場合は、データセットによって参照されているファイルをディレクトリ (マウント ポイント) に接続し、コンピューティング先で使用できるようにします。 Azure Machine Learning コンピューティング、仮想マシン、HDInsight など、Linux ベースのコンピューティングでは、マウントがサポートされています。 データ サイズがコンピューティング ディスクのサイズを超えている場合、または読み込み対象がスクリプト内のデータセットの一部のみの場合は、マウントをお勧めします。 ディスク サイズよりも大きいデータセットのダウンロードは失敗し、マウントしても、処理時にスクリプトで使用されるデータの一部しか読み込まれません。 
-
-データセットをダウンロードするとき、データセットによって参照されるすべてのファイルが、コンピューティング先にダウンロードされます。 すべてのコンピューティングの種類でダウンロードがサポートされています。 データセットによって参照されるファイルすべてのがスクリプトで処理され、コンピューティング ディスクが完全なデータセットに収まる場合は、ダウンロードによって、ストレージ サービスからのデータ ストリーミングのオーバーヘッドを回避することをお勧めします。
 
 任意の形式のファイルをダウンロードしたりマウントしたりすることは、Azure BLOB ストレージ、Azure Files、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database、および Azure Database for PostgreSQL から作成されたデータセットに対してサポートされています。 
+
+データセットをマウントする場合は、データセットによって参照されているファイルをディレクトリ (マウント ポイント) に接続し、コンピューティング先で使用できるようにします。 Azure Machine Learning コンピューティング、仮想マシン、HDInsight など、Linux ベースのコンピューティングでは、マウントがサポートされています。 データセットをダウンロードするとき、データセットによって参照されるすべてのファイルが、コンピューティング先にダウンロードされます。 すべてのコンピューティングの種類でダウンロードがサポートされています。 
+
+データセットによって参照されるファイルのすべてがスクリプトで処理され、コンピューティング ディスクが完全なデータセットに収まる場合は、ダウンロードによって、ストレージ サービスからのデータ ストリーミングのオーバーヘッドを回避することをお勧めします。 データ サイズがコンピューティング ディスクのサイズを超えると、ダウンロードできません。 このシナリオでは、処理時にスクリプトで使用されるデータ ファイルのみが読み込まれるため、マウントすることをお勧めします。
+
+次のコードを実行すると、`dataset` が `mounted_path` の一時ディレクトリにマウントされます
+
+```python
+import tempfile
+mounted_path = tempfile.mkdtemp()
+
+# mount dataset onto the mounted_path of a Linux-based compute
+mount_context = dataset.mount(mounted_path)
+
+mount_context.start()
+
+import os
+print(os.listdir(mounted_path))
+print (mounted_path)
+```
 
 ### <a name="create-a-filedataset"></a>FileDataset を作成する
 

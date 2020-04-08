@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: eff480d6763ae4bd277e6781663c559cc7c9169e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 207172f10277589af2b22ae2f41b07234a0925b3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152450"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477716"
 ---
 # <a name="module-assign-data-to-clusters"></a>モジュール:クラスターへのデータの割り当て
 
@@ -43,9 +43,9 @@ Assign Data to Clusters (データのクラスターへの割り当て) モジ�
   
     このチェック ボックスをオフにすると、結果のみが返されます。 このオプションは、Web サービスの一部として予測を作成するときに役立ちます。
   
-5.  パイプラインを実行します。  
+5.  パイプラインを送信します。  
   
-### <a name="results"></a>[結果]
+### <a name="results"></a>結果
 
 +  データセット内の値を表示するには、モジュールを右クリックして **[可視化]** を選択します。 または、モジュールを選択し、右側のパネルの **[出力]** タブに切り替え、 **[Port outputs]\(ポートの出力\)** 内のヒストグラム アイコンをクリックして結果を可視化します。
 

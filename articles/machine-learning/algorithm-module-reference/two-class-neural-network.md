@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 03e6c2ecbf8fa0c5f71218d29b67cb03cdf3d5db
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 3a5cf2b210781d43ddd1a7aa87736a53df222cf1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916797"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477393"
 ---
 # <a name="two-class-neural-network-module"></a>2 クラス ニューラル ネットワーク モジュール
 
@@ -78,9 +78,9 @@ ms.locfileid: "77916797"
   
     -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](train-model.md) モジュールを使用します。  
   
-14. パイプラインを実行します。
+14. パイプラインを送信します。
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 トレーニングの完了後:
 

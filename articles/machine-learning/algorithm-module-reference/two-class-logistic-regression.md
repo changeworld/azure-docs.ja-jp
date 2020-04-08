@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: b1afd99a569de96e9075b4b5b6eff902abd8642e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 7eb1ad00c3c947c3ed6d4ca450bddc0956a08d71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916763"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455827"
 ---
 # <a name="two-class-logistic-regression-module"></a>2 クラスのロジスティック回帰モジュール
 
@@ -75,9 +75,9 @@ ms.locfileid: "77916763"
   
     -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](./train-model.md) モジュールを使用します。  
   
-9. パイプラインを実行します。  
+9. パイプラインを送信します。  
   
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 トレーニングの完了後:
  

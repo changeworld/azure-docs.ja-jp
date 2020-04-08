@@ -1,20 +1,18 @@
 ---
-title: Azure Marketplace および AppSource のロードマップ | Azure
+title: Azure Marketplace および AppSource のロードマップ
 description: Marketplace で起こっていることのロードマップ
-services: Azure, Marketplace, Compute
 author: qianw211
-manager: MaggiePucciEvans
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/02/2019
-ms.author: blevens
-ms.openlocfilehash: ce2390f1aa71b6cfc10bbb5144127d46fc82fb19
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c9c69bb475c943003f78a69df1142653c3d5249e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826437"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288378"
 ---
 # <a name="microsoft-commercial-marketplace-roadmap"></a>Microsoft の商業マーケットプレースのロードマップ
 
@@ -31,7 +29,7 @@ ms.locfileid: "73826437"
 
 * [Marketplace + CSP 更新のブログ](https://aka.ms/marketplacemarchupdateblog)
 * [CSP チャネル (ISV) にオファリングを発行](https://aka.ms/publishtocsp)
-* [Marketplace のオファリングを再販](h https://aka.ms/marketplaceincsp)
+* [Marketplace のオファリングを再販](hhttps://aka.ms/marketplaceincsp)
 * [標準的な契約](https://aka.ms/standardcontract)
 * [SaaS Fulfillment API](https://aka.ms/saasapiv2)
 * [Marketplace の地域および通貨](https://aka.ms/marketplacegeos)
@@ -43,6 +41,6 @@ ms.locfileid: "73826437"
 ) / [既存オファーを更新する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / [分析を提供する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
 * [パートナー センターでマーケットプレースについてのサポートを得る](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Azure Marketplace と AppSource のパブリッシャー ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)」ページを参照してください。

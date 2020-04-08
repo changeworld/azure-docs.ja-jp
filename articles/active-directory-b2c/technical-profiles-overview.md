@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 48324d252e22ca898f923e1f0ad9b76df1c10861
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5d89d123fe757b0502f4c6b3a0d33c185b25224b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183654"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80057312"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの技術プロファイルについて
 
@@ -28,19 +28,21 @@ ms.locfileid: "78183654"
 
 技術プロファイルでは、これらの種類のシナリオを有効にします。
 
+- [Application Insights](application-insights-technical-profile.md) - イベント データを [Application Insights](../azure-monitor/app/app-insights-overview.md)に送信します。
 - [Azure Active Directory](active-directory-technical-profile.md) - Azure Active Directory B2C ユーザー管理をサポートします。
+- [Azure Multi-Factor Authentication](multi-factor-auth-technical-profile.md) - Azure Multi-Factor Authentication (MFA) を使用して電話番号を確認するためのサポートを提供します。 
+- [要求変換](claims-transformation-technical-profile.md) - 出力要求変換を呼び出して、要求の値を操作したり、要求を検証したり、一連の出力要求の既定値を設定したりすることができます。
 - [JWT トークン発行者](jwt-issuer-technical-profile.md) - 証明書利用者アプリケーションに戻された JWT トークンを発行します。
-- **電話ファクター プロバイダー** - 多要素認証。
 - [OAuth1](oauth1-technical-profile.md) - 任意の OAuth 1.0 プロトコル ID プロバイダーとのフェデレーション。
 - [OAuth2](oauth2-technical-profile.md) - 任意の OAuth 2.0 プロトコル ID プロバイダーとのフェデレーション。
+- [ワンタイム パスワード](one-time-password-technical-profile.md) - ワンタイム パスワードの生成と確認を管理するためのサポートが提供されています。
 - [OpenID Connect](openid-connect-technical-profile.md) - 任意の OpenID Connect プロトコル ID プロバイダーとのフェデレーション。
-- [要求変換](claims-transformation-technical-profile.md) - 出力要求変換を呼び出して、要求の値を操作したり、要求を検証したり、一連の出力要求の既定値を設定したりすることができます。
+- [電話要素](phone-factor-technical-profile.md) - 電話番号の登録と確認をサポートします。
 - [RESTful プロバイダー](restful-technical-profile.md) - ユーザーの入力の検証、ユーザー データの促進、基幹業務アプリケーションとの統合など、REST API サービスを呼び出します。
 - [SAML2](saml-technical-profile.md) - 任意の SAML プロトコル ID プロバイダーとのフェデレーション。
+- [SAML トークン発行者](saml-issuer-technical-profile.md) - 証明書利用者アプリケーションに戻された SAML トークンを発行します。
 - [セルフアサート](self-asserted-technical-profile.md) - ユーザーとやりとりします。 たとえば、ユーザーの資格情報を収集してサインインし、サインアップ ページまたはパスワードのリセットをレンダリングします。
 - [セッション管理](custom-policy-reference-sso.md) - さまざまな種類のセッションを処理します。
-- [Application Insights](../azure-monitor/app/usage-overview.md)
-- [ワンタイム パスワード](one-time-password-technical-profile.md) - ワンタイム パスワードの生成と確認を管理するためのサポートが提供されています。
 
 ## <a name="technical-profile-flow"></a>技術プロファイルのフロー
 

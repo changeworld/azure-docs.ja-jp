@@ -3,14 +3,15 @@ title: プログラムによる Azure サブスクリプションの作成
 description: 追加の Azure サブスクリプションをプログラムで作成する方法について説明します。
 author: amberbhargava
 ms.topic: conceptual
-ms.date: 04/10/2019
+ms.date: 03/17/2020
+ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: 47d4454c47967d07898492176438e547b1e561b6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 33f1d154f438b917b79cd299e81c9078e2f2e81d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198685"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460400"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>プログラムによる Azure サブスクリプションの作成 (プレビュー)
 
@@ -22,6 +23,8 @@ ms.locfileid: "77198685"
 
 
 ## <a name="create-subscriptions-for-an-ea-billing-account"></a>EA 課金アカウントのサブスクリプションを作成する
+
+次のセクションの情報を使用して、EA サブスクリプションを作成します。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -147,7 +150,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| 要素名  | Required | Type   | 説明                                                                                               |
+| 要素名  | 必須 | Type   | 説明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | いいえ      | String | サブスクリプションの表示名です。 指定されていない場合は、"Microsoft Azure エンタープライズ" などのプラン名に設定されます。                                 |
 | `offerType`   | はい      | String | サブスクリプションのオファーです。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
@@ -165,7 +168,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| 要素名  | Required | Type   | 説明                                                                                               |
+| 要素名  | 必須 | Type   | 説明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | いいえ      | String | サブスクリプションの表示名です。 指定されていない場合は、"Microsoft Azure エンタープライズ" などのプラン名に設定されます。                                 |
 | `OfferType`   | はい      | String | サブスクリプションのオファーです。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
@@ -186,7 +189,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| 要素名  | Required | Type   | 説明                                                                                               |
+| 要素名  | 必須 | Type   | 説明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | いいえ      | String | サブスクリプションの表示名です。 指定されていない場合は、"Microsoft Azure エンタープライズ" などのプラン名に設定されます。                                 |
 | `offer-type`   | はい      | String | サブスクリプションのオファーです。 EA では、[MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (運用環境用) と [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (開発/テスト用。[EA ポータルを使用してオンに設定する必要があります](https://ea.azure.com/helpdocs/DevOrTestOffer)) の 2 つのオプションがあります。                |
@@ -202,7 +205,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 ### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure Enterprise のサブスクリプション作成 API の制限事項
 
 - この API を使用して作成できるのは、Azure Enterprise サブスクリプションのみです。
-- 登録アカウントあたり作成できるサブスクリプションの上限数は 200 です。 その後、アカウントの追加のサブスクリプションは、Azure portal でのみ作成することができます。 API を使用してさらにサブスクリプションを作成する場合は、別の登録アカウントを作成します。
+- 登録アカウントあたりのサブスクリプションの上限数は 500 です。 その後、アカウントの追加のサブスクリプションは、Azure portal でのみ作成することができます。 API を使用してさらにサブスクリプションを作成する場合は、別の登録アカウントを作成します。
 - アカウント所有者ではないが、RBAC 経由で登録アカウントに追加されたユーザーは、Azure portal でサブスクリプションを作成することはできません。
 - サブスクリプションが作成されるテナントを選択することはできません。 サブスクリプションは常に、アカウント所有者のホーム テナント内に作成されます。 サブスクリプションを別のテナントに移動する場合は、[テナントのサブスクリプションの変更](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)に関する記事を参照してください。
 
@@ -337,7 +340,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| 要素名  | Required | Type   | 説明                                                                                               |
+| 要素名  | 必須 | Type   | 説明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | はい      | String | サブスクリプションの表示名です。|
 | `billingProfileId`   | はい      | String | サブスクリプションの料金に対して課金される課金プロファイルの ID です。  |
@@ -502,7 +505,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| 要素名  | Required | Type   | 説明                                                                                               |
+| 要素名  | 必須 | Type   | 説明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | はい      | String | サブスクリプションの表示名です。|
 | `skuId` | はい      | String | Azure プランの SKU ID です。 種類が Microsoft Azure プランであるサブスクリプションには *0001* を使用します。 |

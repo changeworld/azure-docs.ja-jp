@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 7787a765bf48adc15f4675c6c03ff3d04fa388c6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: cd9b5f8f182c4deab746d2c41e516a6ac23fb7aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918497"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477733"
 ---
 # <a name="add-rows-module"></a>Add Rows (行の追加) モジュール
 
@@ -36,7 +36,7 @@ ms.locfileid: "77918497"
 
 2. データセットを 2 つの入力ポートに接続します。 追加するデータセットは、2 番目 (右) のポートに接続する必要があります。 
   
-3.  パイプラインを実行します。 出力データセットの行数は、両方の入力データセットの行の合計に等しくなければなりません。
+3.  パイプラインを送信します。 出力データセットの行数は、両方の入力データセットの行の合計に等しくなければなりません。
 
     **Add Rows (行の追加)** モジュールの両方の入力に同じデータセットを追加すると、データセットは複製されます。 
 

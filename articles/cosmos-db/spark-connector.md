@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 2a0e88a439400bc36873ed7160b8eb039a16ebfb
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: bbc97489f0c7045040dd0189b97946c2bd8fb3c0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356181"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481638"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化
 
@@ -34,7 +34,7 @@ Cosmos DB Spark コネクタを使用して、Azure Cosmos DB に格納されて
 ## <a name="quickstart"></a>クイック スタート
 
 * [Java SDK の開始](sql-api-async-java-get-started.md)の手順に従って Cosmos DB アカウントをセットアップし、データを入力してください。
-* [Azure Databricks の開始](https://docs.azuredatabricks.net/getting-started/index.html)の手順に従って Azure Databricks ワークスペースとクラスターをセットアップします。
+* [Azure Databricks の開始](/azure/azure-databricks/quickstart-create-databricks-workspace-portal)の手順に従って Azure Databricks ワークスペースとクラスターをセットアップします。
 * これで、新しい Notebook を作成し、Cosmos DB コネクタ ライブラリをインポートすることができるようになりました。 ワークスペースのセットアップ方法についての詳細は、[Cosmos DB コネクタの操作](#bk_working_with_connector)に関する記事をご覧ください。
 * 次のセクションには、コネクタを使用した読み取りと書き込みの方法のスニペットがあります。
 
@@ -217,7 +217,7 @@ df
 ```
 その他のスニペットやエンド ツー エンドのサンプルは、[Jupyter](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/notebooks) を参照してください。
 
-## <a name="bk_working_with_connector"></a> コネクタの操作
+## <a name="working-with-the-connector"></a><a name="bk_working_with_connector"></a> コネクタの操作
 
 以下のリンクで、GitHub でソースからコネクタを作成したり、Maven から uber jar をダウンロードしたりすることができます。
 
@@ -313,7 +313,7 @@ mvn clean package
 
 * [Application Insights による Spark ジョブの監視](https://github.com/Azure/azure-cosmosdb-spark/tree/2.3/samples/monitoring)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 まだ行っていない場合は、[azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark) GitHub リポジトリから Spark-Azure Cosmos DB コネクタをダウンロードします。 リポジトリ内で次の追加リソースを探します。
 

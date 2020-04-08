@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: f9567238e4bb025fad41e7db33613a63d2fc25dd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ed7d62ef5c1c4837b3eb6d02f301085178fe5e0b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77911765"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528219"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -54,7 +54,7 @@ ms.locfileid: "77911765"
 第 2 世代 VM では、次の Marketplace イメージがサポートされています。
 
 * Windows Server 2019、2016、2012 R2、2012
-* Windows 10
+* Windows 10 Pro、Windows 10 Enterprise
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04、18.04、19.04、19.10 

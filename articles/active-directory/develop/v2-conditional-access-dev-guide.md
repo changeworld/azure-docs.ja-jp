@@ -7,7 +7,7 @@ author: rwike77
 manager: CelesteDG
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
-ms.date: 02/25/2020
+ms.date: 03/16/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c1f581cf5971cfa4eafda60c679a64d827109bb
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a9d82840681450ec855cb35c8700da2a53b9dd6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78201988"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481451"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -186,3 +186,4 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 * その他の Azure AD コード サンプルについては、[サンプル](sample-v2-code.md)のページを参照してください。
 * MSAL SDK の詳細とリファレンス ドキュメントについては、[Microsoft Authentication ライブラリの概要](msal-overview.md)に関する記事を参照してください。
 * マルチテナント シナリオの詳細については、[マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (AD) ユーザーがサインインできるようにする方法](howto-convert-app-to-be-multi-tenant.md)を参照してください。
+* [「条件付きアクセス」と「IoT アプリへのアクセスのセキュリティ保護」](/azure/architecture/example-scenario/iot-aad/iot-aad)に関する詳細を学習します。

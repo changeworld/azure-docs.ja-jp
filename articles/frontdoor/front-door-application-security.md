@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service - アプリケーション層セキュリティ | Microsoft Docs
-description: この記事は、Azure Front Door Service を使用することで、アプリケーション バックエンドをどのように安全に保護できるかを理解するのに役立ちます。
+title: Azure Front Door - アプリケーション層セキュリティ | Microsoft Docs
+description: この記事は、Azure Front Door を使用することで、アプリケーション バックエンドをどのように安全に保護できるかを理解するのに役立ちます
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: c7b99548e2fe1ad0c1cab39953e28a97e7ebff4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e458926930c1b95d48886559551878fc6c9d0673
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60193919"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471797"
 ---
 # <a name="application-layer-security-with-front-door"></a>Front Door によるアプリケーション層セキュリティ
-Azure Front Door Service では Wet アプリケーションの保護機能が提供されます。この機能を使用することで、SQL インジェクションやクロス サイト スクリプティング (XSS) のようなネットワーク攻撃および一般的な Web の脆弱性の悪用からご利用の Web アプリケーションを保護できます。 http(s) フロント エンドに対して有効にすることで、Front Door のアプリケーション層セキュリティがグローバルに分散され、常時接続となり、バックエンドから遠く離れた場所にある、Azure のネットワーク エッジで悪意のある攻撃を防ぐことができます。 セキュリティの強化とパフォーマンスの最適化により、Front Door ではエンド ユーザーに高速かつ安全な Web エクスペリエンスが提供されます。
+Azure Front Door では Wet アプリケーションの保護機能が提供されます。この機能を使用することで、SQL インジェクションやクロス サイト スクリプティング (XSS) のようなネットワーク攻撃および一般的な Web の脆弱性の悪用からご利用の Web アプリケーションを保護できます。 http(s) フロント エンドに対して有効にすることで、Front Door のアプリケーション層セキュリティがグローバルに分散され、常時接続となり、バックエンドから遠く離れた場所にある、Azure のネットワーク エッジで悪意のある攻撃を防ぐことができます。 セキュリティの強化とパフォーマンスの最適化により、Front Door ではエンド ユーザーに高速かつ安全な Web エクスペリエンスが提供されます。
 
 ## <a name="application-protection"></a>アプリケーション保護
 Front Door のアプリケーション保護は、アプリケーションに応じて、世界中の各エッジ環境で構成され、http(s) 以外のトラフィックが Web アプリケーションに到達しないように自動的にブロックします。 マルチテナント分散アーキテクチャでは、パフォーマンスを犠牲にすることなく、大規模なグローバル保護を行うことができます。 http(s) ワークロードでは、Front Door の Web アプリケーション保護サービスにより、カスタム ルール用の豊富なルール エンジン、一般的な攻撃に対する構成済みのルールセット、およびルールに一致するすべての要求の詳細なログが提供されます。 許可、ブロック、ログのみなどのフレキシブルなアクションがサポートされます。
@@ -49,7 +49,7 @@ Front Door では、アラートを追跡して傾向を簡単に監視するた
 Front Door のアプリケーション層セキュリティは、プレビュー中は無料です。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
 - [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

@@ -2,14 +2,14 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 10/06/2019
+ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: 2124b5241015ca74ff6507767396b1a27bd1191d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c71f35a06d904b45cb014d5199197220b57cf230
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74935811"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79486103"
 ---
 `deploymentconfig.json` ドキュメントのエントリは、[AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py) のパラメーターにマップされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
 
@@ -37,7 +37,7 @@ ms.locfileid: "74935811"
 | `keys` | NA | キーの構成要素が含まれます。 |
 | &emsp;&emsp;`primaryKey` | `primary_key` | この Web サービスに使用するプライマリ認証キー |
 | &emsp;&emsp;`secondaryKey` | `secondary_key` | この Web サービスに使用するセカンダリ認証キー |
-| `gpuCores` | `gpu_cores` | この Web サービスに割り当てる GPU コアの数。 既定値は 1 です。 整数のみがサポートされます。 |
+| `gpuCores` | `gpu_cores` | この Web サービスに割り当てる GPU コア (コンテナーごとのレプリカ) の数。 既定値は 1 です。 整数のみがサポートされます。 |
 | `livenessProbeRequirements` | NA | liveness probe 要件の構成要素が含まれます。 |
 | &emsp;&emsp;`periodSeconds` | `period_seconds` | liveness probe を実行する頻度 (秒単位)。 既定値は 10 秒です。 最大値は 1 です。 |
 | &emsp;&emsp;`initialDelaySeconds` | `initial_delay_seconds` | コンテナーの起動後、liveness probe が開始するまでの秒数。 既定値は 310 です |

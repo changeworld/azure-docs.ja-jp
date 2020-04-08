@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dbd1d96cda88d500e16fff885dae03ebfa230f0
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: a2f06a7c88a7c17f5f93201192664c2d4a97564e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079903"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480965"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory Terms of Use
 
@@ -248,7 +248,7 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 
 ## <a name="per-device-terms-of-use"></a>デバイスごとの利用規約
 
-**[各デバイスでユーザーによる同意が必要]** 設定を使用すると、エンド ユーザーがアクセスするすべてのデバイスで利用規約に同意しなければならないようにすることができます。 エンド ユーザーは、デバイスを Azure AD に参加させる必要があります。 デバイスが参加すると、デバイス ID を使用して各デバイスに利用規約が適用されます。
+**[各デバイスでユーザーによる同意が必要]** 設定を使用すると、エンド ユーザーがアクセスするすべてのデバイスで利用規約に同意しなければならないようにすることができます。 エンド ユーザーは、デバイスを Azure AD に登録する必要があります。 デバイスが登録されると、デバイス ID を使用して各デバイスに利用規約が適用されます。
 
 サポートされているプラットフォームとソフトウェアの一覧を示します。
 

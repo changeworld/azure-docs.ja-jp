@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c238600d412e53ad665214492e292aa395655b78
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185842"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79497520"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -25,7 +25,7 @@ ms.locfileid: "77185842"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Q:最近、デバイスを登録しました。 Azure portal のユーザー情報にデバイスが表示されないのはなぜですか? または、ハイブリッド Azure Active Directory (Azure AD) 参加済みデバイスのデバイス所有者が N/A とマークされるのはなぜですか?
 
 **A:** ハイブリッド Azure AD 参加済みの Windows 10 デバイスは、 **[ユーザー デバイス]** には表示されません。
-Azure portal の **[すべてのデバイス]** ビューを使用してください。 PowerShell の [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレットを使用することもできます。
+Azure portal の **[すべてのデバイス]** ビューを使用してください。 PowerShell の [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレットを使用することもできます。
 
 **[ユーザー デバイス]** には、次のデバイスだけが表示されます。
 
@@ -62,7 +62,7 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 - ユーザーが、マイ アプリ ポータルからデバイスを無効にする。 
 - 管理者 (またはユーザー) が、Azure portal で、または PowerShell を使用して、デバイスを削除または無効化する
 - Hybrid Azure AD 参加済みのみ:管理者が同期スコープからデバイス OU を削除し、その結果デバイスが Azure AD から削除される
-- Azure AD Connect のバージョン 1.4.xx.x へのアップグレード。 「[Azure AD Connect 1.4.xx.x およびデバイスの消失について](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance)」を参照してください。
+- Azure AD Connect のバージョン 1.4.xx.x へのアップグレード。 「[Azure AD Connect 1.4.xx.x およびデバイスの消失について](/azure/active-directory/hybrid/reference-connect-device-disappearance)」を参照してください。
 
 
 これらのアクションを修正する方法については、以下を参照してください。
@@ -128,7 +128,7 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 **A:** Azure AD デバイスが無効とマークされた時点から取り消しが適用されるまで、最大で 1 時間かかります。
 
 >[!NOTE] 
->登録済みデバイスの場合は、ユーザーがリソースにアクセスできないように、デバイスのワイプを実行することをお勧めします。 詳細については、「[デバイス登録とは](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune)」を参照してください。 
+>登録済みデバイスの場合は、ユーザーがリソースにアクセスできないように、デバイスのワイプを実行することをお勧めします。 詳細については、「[デバイス登録とは](/mem/intune/user-help/use-managed-devices-to-get-work-done)」を参照してください。 
 
 ---
 
@@ -180,13 +180,13 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 
 ### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>Q:ユーザーが Azure AD 参加済みデバイスからプリンターを検索できません。 どうすればそれらのデバイスからの印刷を有効にできますか?
 
-**A:** Azure AD 参加済みデバイス用にプリンターをデプロイするには、[事前認証を使用した Windows Server ハイブリッド クラウド印刷のデプロイ](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)に関するページを参照してください。 ハイブリッド クラウド印刷には、Windows Server がオンプレミスで必要です。 現在、クラウドベースの印刷サービスは利用できません。 
+**A:** Azure AD 参加済みデバイス用にプリンターをデプロイするには、[事前認証を使用した Windows Server ハイブリッド クラウド印刷のデプロイ](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)に関するページを参照してください。 ハイブリッド クラウド印刷には、Windows Server がオンプレミスで必要です。 現在、クラウドベースの印刷サービスは利用できません。 
 
 ---
 
 ### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>Q:Azure AD に参加しているリモート デバイスに接続する方法はありますか?
 
-**A:** 「[Azure Active Directory に参加しているリモート PC への接続](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)」をご覧ください。
+**A:** 「[Azure Active Directory に参加しているリモート PC への接続](/windows/client-management/connect-to-remote-aadj-pc)」をご覧ください。
 
 ---
 
@@ -220,7 +220,7 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 
 ### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>Q:PC を Azure AD に参加させようとしたときに *[申し訳ありません。エラーが発生しました]* ダイアログが表示されるのはなぜですか?
 
-**A:** このエラーは、Intune への Azure Active Directory の登録を設定するときに発生します。 Azure AD への参加を試みているユーザーに、適切な Intune ライセンスが割り当てられていることを確認してください。 詳細については、「[Windows デバイスの登録をセットアップする](https://docs.microsoft.com/intune/windows-enroll)」をご覧ください。  
+**A:** このエラーは、Intune への Azure Active Directory の登録を設定するときに発生します。 Azure AD への参加を試みているユーザーに、適切な Intune ライセンスが割り当てられていることを確認してください。 詳細については、「[Windows デバイスの登録をセットアップする](/intune/windows-enroll)」をご覧ください。  
 
 ---
 
@@ -307,8 +307,8 @@ Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されま�
 
 **A:** 次の手順を実行します。
 
-1.  [コンプライアンス ポリシーを作成する](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
-1.  [macOS デバイスの条件付きアクセス ポリシーを定義する](../active-directory-conditional-access-azure-portal.md) 
+1.    [コンプライアンス ポリシーを作成する](/intune/compliance-policy-create-mac-os)
+1.    [macOS デバイスの条件付きアクセス ポリシーを定義する](../active-directory-conditional-access-azure-portal.md) 
 
 **備考:**
 

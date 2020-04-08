@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 7053fab28b4a231c92f31e344cf09ffef3a6b146
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: c29baf3cdda998a2ab78c84f3311b84d37086bcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152110"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477427"
 ---
 # <a name="train-clustering-model"></a>クラスタリング モデルのトレーニング
 
@@ -43,9 +43,9 @@ ms.locfileid: "77152110"
 
     このオプションの選択を解除すると、クラスターの割り当てだけが出力されます。 
 
-7. パイプラインを実行するか、**Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールをクリックして **[選択した項目を実行]** を選択します。  
+7. パイプラインを送信するか、**Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールをクリックして **[選択した項目を実行]** を選択します。  
   
-### <a name="results"></a>[結果]
+### <a name="results"></a>結果
 
 トレーニングの完了後、次の作業を行います。
 

@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 093f4b11d10396199e9fac1e22fd82197f3a5e79
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598189"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232303"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -81,6 +81,9 @@ ms.locfileid: "77598189"
   **Azure Files に追加してほしい機能があります。追加できますか。**  
     Azure Files チームでは、サービスに関するあらゆるフィードバックをお待ちしています。 [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) で機能のリクエストにご投票ください。 多くの新しい機能を皆様に喜んでいただけることを楽しみにしています。
 
+  **Azure Files ではファイルのロックがサポートされますか?**  
+    はい、Azure Files では、SMB/Windows 形式のファイル ロックを完全にサポートしています。詳しくは、[こちら](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks)をご覧ください。 
+    
 ## <a name="azure-file-sync"></a>Azure File Sync
 
 * <a id="afs-region-availability"></a>
@@ -179,12 +182,12 @@ ms.locfileid: "77598189"
 * <a id="ad-support-rest-apis"></a>
 **ディレクトリまたはファイルの NTFS ACL の取得、設定、またはコピーをサポートする REST API はありますか。**
 
-    はい、[2019-02-02](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-02-02) (またはそれ以降) の REST API を使用する際は、ディレクトリまたはファイルの NTFS ACL を取得、設定、またはコピーする REST API がサポートされます。
+    はい、[2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (またはそれ以降) の REST API を使用する場合は、ディレクトリまたはファイルの NTFS ACL を取得、設定、またはコピーする REST API がサポートされます。
 
 * <a id="ad-vm-subscription"></a>
 **異なるサブスクリプションの VM から Azure AD 資格情報を使用して Azure Files にアクセスすることはできますか。**
 
-    ファイル共有のデプロイ元であるサブスクリプションが、VM のドメイン参加先である Azure AD Domain Services デプロイと同じ Azure AD テナントに関連付けられている場合は、同じ Azure AD 資格情報を使用して Azure Files にアクセスできます。 制限は、サブスクリプションにではなく、関連付けられている Azure AD テナントに課せられます。    
+    ファイル共有のデプロイ元であるサブスクリプションが、VM のドメイン参加先である Azure AD Domain Services デプロイと同じ Azure AD テナントに関連付けられている場合は、同じ Azure AD 資格情報を使用して Azure Files にアクセスできます。 制限は、サブスクリプションにではなく、関連付けられている Azure AD テナントに課せられます。
     
 * <a id="ad-support-subscription"></a>
 **ファイル共有が関連付けられているプライマリ テナントとは異なる Azure AD テナントを使用して、Azure Files の Azure AD DS 認証または AD 認証のいずれかを有効にすることはできますか?**
@@ -211,6 +214,11 @@ ms.locfileid: "77598189"
 
     はい。Azure File Sync によって管理されるファイル共有で Azure AD DS または AD 認証を有効にすることができます。ローカル ファイル サーバー上のディレクトリまたはファイルの NTFS ACL への変更は、Azure Files に階層化され、その逆も行われます。
 
+* <a id="ad-aad-smb-files"></a>
+**自分のストレージ アカウントと AD ドメイン情報に対して AD 認証が有効になっているかどうかを確認するにはどうすればよいですか?**
+
+    [こちら](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account)に記載されている手順を参照して、ご自身のストレージ アカウントに対して Azure Files AD 認証が有効になっているかどうかを検証し、AD ドメイン情報を取得することができます。
+    
 * <a id="encryption-at-rest"></a>
 **Azure ファイル共有に保存時の暗号化を確保するには、どうすればよいですか。**  
 

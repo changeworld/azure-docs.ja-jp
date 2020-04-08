@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 10821639fb26af935326bda0bff7895105da675c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 79a2ccae31fac31d8d10bb643c35a41a3d7cb5d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919959"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456728"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>ブースト デシジョン ツリー回帰モジュール
 
@@ -56,7 +56,7 @@ ms.locfileid: "77919959"
   
     -   **Single Parameter (単一パラメーター)** : モデルの構成方法を決めている場合はこのオプションを選択し、特定の値のセットを引数として渡します。 
      
-    -   **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターはわからないが、パラメーター スイープを実行したい場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。    
+    -   **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからず、パラメーター スイープを実行する場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。    
    
   
 3. **[Maximum number of leaves per tree]\(ツリーあたりの最大リーフ数\)** :ツリーに作成できる終端ノード (リーフ) の最大数を指定します。  
@@ -84,9 +84,9 @@ ms.locfileid: "77919959"
   
     
 
-10. パイプラインを実行します。  
+10. パイプラインを送信します。  
   
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 トレーニングの完了後:
 

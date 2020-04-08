@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 9378f2cc62172043dbcaf13e88e9df4b6e61df9b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 2f6d1e20db64cb0c2a64771ea26b971b22031fd9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769950"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529992"
 ---
 # <a name="azure-database-for-mariadb-management-stored-procedures"></a>Azure Database for MariaDB の管理ストアド プロシージャ
 
@@ -43,6 +43,6 @@ Azure Database for MariaDB では、以下のストアド プロシージャが�
 |*mysql.az_kill_query*|processlist_id|該当なし|[`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で現在実行されているステートメントを終了します。 接続自体をアクティブのままにします。|
 |*mysql.az_load_timezone*|該当なし|該当なし|タイム ゾーン テーブルを読み込み、パラメーター `time_zone` を名前付きの値に設定できるようにします (例 "US/Pacific")。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [データイン レプリケーション](howto-data-in-replication.md) を設定する方法について確認する
 - [タイム ゾーン テーブル](howto-server-parameters.md#working-with-the-time-zone-parameter) を使用する方法について確認する

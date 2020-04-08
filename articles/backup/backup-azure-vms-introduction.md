@@ -3,16 +3,22 @@ title: Azure VM バックアップについて
 description: この記事では、Azure Backup サービスを使用して Azure 仮想マシンをバックアップする方法と、ベスト プラクティスに従う方法について説明します。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f4b36f57362607a13c09896cd7109596aba0a852
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597254"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79415980"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM バックアップの概要
 
 この記事では、[Azure Backup サービス](backup-introduction-to-azure-backup.md)によって Azure 仮想マシン (VM) がどのようにバックアップされるかについて説明します。
+
+Azure Backup では、VM 上のデータが誤って破壊されることを防ぐために、独立して分離されたバックアップを提供しています。 バックアップは、復旧ポイントの管理機能をビルトインで備えた Recovery Services コンテナーに格納されます。 構成とスケーリングは単純で、バックアップは最適化され、必要に応じて簡単に復元することができます。
+
+バックアップ プロセスの一環として、[スナップショットが取得](#snapshot-creation)され、運用環境のワークロードに影響を与えることなく、データが Recovery Services コンテナーに転送されます。 スナップショットは、[こちら](#snapshot-consistency)で説明されているように、さまざまなレベルの一貫性を提供します。
+
+また Azure Backup には、[SQL Server](backup-azure-sql-database.md) や [SAP HANA](sap-hana-db-about.md) のようなデータベース ワークロードに特化したワークロード対応のサービスがあり、15 分間の RPO (目標復旧時点) を提供し、個々のデータベースのバックアップと復元を可能にします。
 
 ## <a name="backup-process"></a>バックアップ プロセス
 
@@ -20,8 +26,8 @@ Azure Backup によって Azure VM のバックアップが行われる方法を
 
 1. バックアップの対象として選択されている Azure VM に対して、Azure Backup はユーザーが指定したバックアップ スケジュールに従ってバックアップ ジョブを開始します。
 1. 最初のバックアップ時に、バックアップ拡張機能が VM にインストールされます (VM が実行されている場合)。
-    - Windows VM の場合、_VMSnapshot_ 拡張機能がインストールされます。
-    - Linux VM の場合、_VMSnapshotLinux_ 拡張機能がインストールされます。
+    - Windows VM の場合、[VMSnapshot 拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows)がインストールされます。
+    - Linux VM の場合、[VMSnapshotLinux](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-linux) 拡張機能がインストールされます。
 1. 実行されている Windows VM については、Backup は Windows ボリューム シャドウ コピー サービス (VSS) と連携して VM のアプリ整合性スナップショットを取得します。
     - 既定では、Backup によって完全 VSS バックアップが取得されます。
     - Backup はアプリ整合性スナップショットを取得できない場合、基になるストレージのファイル整合性スナップショットを取得します (VM の停止中はアプリケーションの書き込みは行われないため)。
@@ -66,7 +72,7 @@ Azure Backup では、バックアップ スケジュールに従ってスナッ
   - 事前スクリプトと事後スクリプトが正常に実行されると、Azure Backup は復旧ポイントをアプリケーション整合性としてマークします。 ただし、カスタム スクリプトを使用したときのアプリケーション整合性の最終的な責任はユーザーが担います。
   - スクリプトの構成方法に関する[詳細](backup-azure-linux-app-consistent.md)を確認してください。
 
-### <a name="snapshot-consistency"></a>スナップショットの整合性
+## <a name="snapshot-consistency"></a>スナップショットの整合性
 
 次の表では、スナップショットの整合性の種類について説明します。
 

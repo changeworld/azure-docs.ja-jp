@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2017
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa7b5c82f0b057e2eb029b9cc632d8da02206678
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fd6794bafc3c209032f32626e8c46b51769d05e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108389"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481230"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項
 
@@ -81,15 +81,11 @@ Azure AD アプリケーション プロキシはリバース プロキシであ
 
 Azure AD アプリケーション プロキシによって発行されたアプリケーションのセキュリティを強化するために、Web クローラー ロボットによるアプリケーションのインデックス作成およびアーカイブ操作はブロックされます。 Web クローラー ロボットが発行されたアプリのロボット設定を取得しようとするたびに、アプリケーション プロキシでは、`User-agent: * Disallow: /` が含まれる robots.txt ファイルによって応答します。
 
-### <a name="ddos-prevention"></a>DDOS 防止
+#### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection サービス
 
-アプリケーション プロキシを使用して公開されたアプリケーションは、分散型サービス拒否 (DDOS) 攻撃から保護されます。
+アプリケーション プロキシを使用して公開されたアプリケーションは、分散型サービス拒否 (DDoS) 攻撃から保護されます。 **Azure DDoS Protection** は、Azure リソースをサービス拒否攻撃から保護するために、Azure プラットフォームで提供されるサービスです。 **Basic** サービス レベルは自動的に有効になります。このサービス レベルでは、一般的なネットワーク レベルの攻撃に対する監視と、リアルタイムな軽減措置が提供されます。 **Standard** レベルでは、Azure Virtual Network リソースに特化してチューニングされた追加の軽減機能が提供されます。 詳細については、「[Azure DDoS Protection Standard の概要](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)」を参照してください。
 
-アプリケーション プロキシ サービスは、アプリケーションとネットワークに到達しようとするトラフィック量を監視します。 アプリケーションへのリモート アクセスを要求するデバイスの数が急増すると、Microsoft はネットワークへのアクセスを調整します。 
-
-Microsoft は、個々のアプリケーションとサブスクリプション全体のトラフィック パターンを監視しています。 1 つのアプリケーションが通常より多い要求を受信すると、そのアプリケーションへのアクセス要求はしばらくの間拒否されます。 サブスクリプション全体で通常より多い要求を受け取った場合は、どのアプリへのアクセスの要求も拒否されます。 この予防措置により、リモート アクセス要求によってアプリケーション サーバーが過負荷になることがなくなり、オンプレミス ユーザーはアプリへのアクセスを維持できます。 
-
-## <a name="under-the-hood"></a>コネクタの性能
+## <a name="under-the-hood"></a>しくみ
 
 Azure AD アプリケーション プロキシは、以下の 2 つで構成されています。
 
@@ -103,7 +99,7 @@ Azure AD アプリケーション プロキシは、以下の 2 つで構成さ�
 * 公開されたアプリケーションにユーザーがアクセスする。
 
 >[!NOTE]
->すべての通信は SSL 経由で発生し、常にコネクタで生成されて、アプリケーション プロキシ サービスに送られます。 このサービスは送信専用です。
+>すべての通信は TLS 経由で発生し、常にコネクタで生成されて、アプリケーション プロキシ サービスに送られます。 このサービスは送信専用です。
 
 コネクタはクライアント証明書を使用して、ほぼすべての呼び出しに対してアプリケーション プロキシ サービスを認証します。 このプロセスの唯一の例外は、クライアント証明書が確立される最初のセットアップ手順です。
 
@@ -182,7 +178,7 @@ Azure AD を使用して事前認証を使用するようにアプリを構成�
 アプリケーションの何らかの処理がここで発生する場合があります。 アプリケーションのヘッダーまたは URL を変換するようにアプリケーション プロキシを構成した場合、その処理は、この手順の中で必要に応じて実行されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure AD アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項](application-proxy-network-topology.md)
 

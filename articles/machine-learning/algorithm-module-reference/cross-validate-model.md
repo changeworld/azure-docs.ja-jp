@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 6dd8246d5751609e2f20ee9d5e519529752940f7
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 7550bb7c6bbf7602245f9a9f1ac006ce693b36a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137525"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477648"
 ---
 # <a name="cross-validate-model"></a>モデルのクロス検証
 
@@ -72,11 +72,11 @@ ms.locfileid: "77137525"
 
 5. 同じデータに対する連続した実行の間でクロス検証の結果を繰り返すことができるようにするには、 **[Random seed]\(ランダム シード\)** パラメーターの値を設定します。  
 
-6. パイプラインを実行します。
+6. パイプラインを送信します。
 
 7. レポートの説明については、「[結果](#results)」セクションを参照してください。
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 すべての反復が完了すると、モデルのクロス検証によってデータセット全体のスコアが作成されます。 また、モデルの品質評価に使用できるパフォーマンス メトリックも作成されます。
 

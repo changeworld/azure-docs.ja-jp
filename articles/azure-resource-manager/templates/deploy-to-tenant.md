@@ -2,13 +2,13 @@
 title: リソースをテナントにデプロイする
 description: Azure Resource Manager テンプレートでテナントのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: 64090f1a0bac4b2b5f18d8dec14be0c3b051ac17
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.date: 03/16/2020
+ms.openlocfilehash: fcdfc5b1c4333a0d7eeec80a09ad85579a1f8b77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78968877"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460264"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>テナント レベルでリソースを作成する
 
@@ -65,10 +65,20 @@ Azure Active Directory の全体管理者には、ロールを割り当てるア
 
 テナントのデプロイ用のコマンドは、リソース グループのデプロイ用のコマンドとは異なります。
 
+Azure CLI の場合は、[az deployment tenant create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create) を使用します。
+
+```azurecli-interactive
+az deployment tenant create \
+  --name demoTenantDeployment \
+  --location WestUS \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+```
+
 Azure PowerShell の場合は [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment) を使用します。
 
 ```azurepowershell-interactive
 New-AzTenantDeployment `
+  -Name demoTenantDeployment `
   -Location "West US" `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
 ```

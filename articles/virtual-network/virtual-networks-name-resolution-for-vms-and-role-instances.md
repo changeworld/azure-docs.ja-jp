@@ -10,31 +10,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/25/2019
+ms.date: 3/2/2020
 ms.author: rohink
-ms.openlocfilehash: fac6c29d5371c536c20eca58d90ee5d54d7e90d1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 20a5c4befaa30383c54ac9536a3fd26dce3db4d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357731"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059986"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
 Azure を使用して IaaS、PaaS、ハイブリッド ソリューションをホストする方法によっては、仮想マシン (VM) と仮想ネットワーク内に配置されたその他のリソースが相互に通信できるようにする必要があります。 IP アドレスを使用して通信を行うこともできますが、簡単に記憶できて変更されない名前を使用する方が、はるかに簡単です。 
 
-仮想ネットワーク内に配置されたリソースがドメイン名を内部 IP アドレスに解決する必要がある場合、次の 2 つの方法のいずれかを使用できます。
+仮想ネットワーク内に配置されたリソースがドメイン名を内部 IP アドレスに解決する必要がある場合、次の 3 つの方法のいずれかを使用できます。
 
+* [Azure DNS プライベート ゾーン](../dns/private-dns-overview.md)
 * [Azure で提供される名前解決](#azure-provided-name-resolution)
 * [独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server) (Azure で提供される DNS サーバーにクエリを転送する可能性がある)
 
 どちらの名前解決方法を使用するかは、リソースが互いに通信するために必要な方法によって決まります。 次の表では、シナリオと対応する名前解決の方法を示します。
 
 > [!NOTE]
-> シナリオによっては、Azure DNS プライベート ゾーンの使用をお勧めします。 詳しくは、「[プライベート ドメインに Azure DNS を使用する](../dns/private-dns-overview.md)」をご覧ください。
->
+> Azure DNS プライベート ゾーンは推奨のソリューションです。これにより、DNS ゾーンとレコードを柔軟に管理できるようになります。 詳しくは、「[プライベート ドメインに Azure DNS を使用する](../dns/private-dns-overview.md)」をご覧ください。
 
-| **シナリオ** | **ソリューション** | **サフィックス** |
+> [!NOTE]
+> Azure 提供の DNS を使用する場合は、適切な DNS サフィックスが仮想マシンに自動的に適用されます。 それ以外のオプションを選択する場合は、完全修飾ドメイン名 (FQDN) を使用するか、適切な DNS サフィックスを仮想マシンに手動で適用する必要があります。
+
+| **シナリオ** | **ソリューション** | **DNS サフィックス** |
 | --- | --- | --- |
 | 同じ仮想ネットワーク内に配置された VM 間、または同じクラウド サービス内の Azure クラウド サービスのロール インスタンス間での名前解決。 | [Azure DNS プライベート ゾーン](../dns/private-dns-overview.md)または [Azure で提供される名前解決](#azure-provided-name-resolution) |ホスト名または FQDN |
 | 異なる仮想ネットワーク内の VM 間または異なるクラウドサービスのロール インスタンス間での名前解決。 |[Azure DNS プライベート ゾーン](../dns/private-dns-overview.md)、または Azure で解決するために仮想ネットワーク間でクエリを転送する、ユーザーが管理する DNS サーバー (DNS プロキシ)。 「[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)」を参照してください。 |FQDN のみ |
@@ -43,19 +46,20 @@ Azure を使用して IaaS、PaaS、ハイブリッド ソリューションを�
 | ある仮想ネットワーク内の App Service Web Apps から異なる仮想ネットワーク内の VM への名前解決。 |Azure で解決するために仮想ネットワーク間でクエリを転送する、ユーザーが管理する DNS サーバー (DNS プロキシ)。 「[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)」を参照してください。 |FQDN のみ |
 | Azure 内の VM またはロール インスタンスからのオンプレミスのコンピューターとサービスの名前解決。 |ユーザーが管理する DNS サーバー (オンプレミスのドメイン コントローラー、ローカルの読み取り専用ドメイン コントローラー、ゾーン転送を使用して同期する DNS セカンダリなど)。 「[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)」を参照してください。 |FQDN のみ |
 | オンプレミスのコンピューターからの Azure のホスト名の解決。 |対応する仮想ネットワーク内のユーザーが管理する DNS プロキシ サーバーにクエリを転送し、プロキシ サーバーが解決するために Azure にクエリを転送します。 「[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)」を参照してください。 |FQDN のみ |
-| 内部 IP 用の逆引き DNS。 |[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)。 |適用なし |
+| 内部 IP 用の逆引き DNS。 |[Azure DNS プライベート ゾーン](../dns/private-dns-overview.md)、[Azure によって提供される名前解決](#azure-provided-name-resolution)、または[お客様所有の DNS サーバーを使用した名前解決](#name-resolution-that-uses-your-own-dns-server)。 |適用なし |
 | 仮想ネットワークではなく、異なるクラウド サービスに配置された VM またはロール インスタンス間での名前解決。 |適用不可。 異なるクラウド サービス内にある VM とロール インスタンス間の接続は、仮想ネットワークの外側ではサポートされません。 |適用なし|
 
 ## <a name="azure-provided-name-resolution"></a>Azure で提供される名前解決
 
-Azure では、パブリック DNS 名の解決と共に、同じ仮想ネットワークまたはクラウド サービス内に存在する VM とロール インスタンス用に内部の名前解決が提供されます。 クラウド サービス内の VM とインスタンスは、同じ DNS サフィックスを共有するため、ホスト名のみで十分です。 ただし、クラシック デプロイ モデルを使用して展開された仮想ネットワークでは、クラウド サービスが異なると DNS サフィックスも異なります。 このような状況では、異なるクラウド サービス間で名前を解決するために FQDN が必要になります。 Azure Resource Manager デプロイ モデルを使用して展開された仮想ネットワークでは、DNS サフィックスは仮想ネットワーク間で一貫性があるため、FQDN は必要ありません。 DNS 名は、VM とネットワーク インターフェイスの両方に割り当てることができます。 Azure 提供の名前解決ではどのような構成も必要ありませんが、前の表で詳しく説明したように、すべてのデプロイ シナリオに適しているわけではありません。
+Azure によって提供される名前解決では、基本的な権限を持つ DNS 機能のみが提供されます。 このオプションを使用した場合、DNS ゾーン名とレコードが Azure によって自動的に管理され、DNS ゾーン名や DNS レコードのライフサイクルを制御することはできなくなります。 仮想ネットワークに対応したフル機能の DNS ソリューションが必要な場合は、[Azure DNS プライベート ゾーン](../dns/private-dns-overview.md)か、[お客様が管理する DNS サーバー](#name-resolution-that-uses-your-own-dns-server)を使用する必要があります。
+
+Azure では、パブリック DNS 名の解決と共に、同じ仮想ネットワークまたはクラウド サービス内に存在する VM とロール インスタンス用に内部の名前解決が提供されます。 クラウド サービス内の VM とインスタンスは、同じ DNS サフィックスを共有するため、ホスト名のみで十分です。 ただし、クラシック デプロイ モデルを使用して展開された仮想ネットワークでは、クラウド サービスが異なると DNS サフィックスも異なります。 このような状況では、異なるクラウド サービス間で名前を解決するために FQDN が必要になります。 Azure Resource Manager デプロイ モデルを使用して展開された仮想ネットワークでは、DNS サフィックスは仮想ネットワーク内のすべての仮想マシン間で一貫性があるため、FQDN は必要ありません。 DNS 名は、VM とネットワーク インターフェイスの両方に割り当てることができます。 Azure 提供の名前解決ではどのような構成も必要ありませんが、前の表で詳しく説明したように、すべてのデプロイ シナリオに適しているわけではありません。
 
 > [!NOTE]
 > クラウド サービスの Web ロールと Worker ロールを使用した場合、Azure Service Management REST API を使用して、ロール インスタンスの内部 IP アドレスにアクセスすることもできます。 詳細については、「[サービス管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/ee460799.aspx)」を参照してください。 アドレスは、ロール名とインスタンス数に基づきます。 
 >
->
 
-### <a name="features"></a>機能
+### <a name="features"></a>特徴
 
 Azure で提供される名前解決の機能を次に示します。
 * 使いやすさ。 構成は必要ありません。
@@ -69,12 +73,25 @@ Azure で提供される名前解決の機能を次に示します。
 
 Azure で提供される名前解決を使用する場合の考慮事項を次に示します。
 * Azure によって作成される DNS サフィックスは変更できません。
+* DNS 参照のスコープは仮想ネットワークです。 ある仮想ネットワークに対して作成された DNS 名を、他の仮想ネットワークから解決することはできません。
 * 独自のレコードを手動で登録することはできません。
 * WINS と NetBIOS はサポートされません Windows エクスプローラーに VM を表示することはできません。
 * ホスト名は DNS 互換である必要があります。 名前に使用できる文字は 0-9、a-z、および "-" のみであり、最初または最後の文字として "-" は使用できません。
 * DNS クエリ トラフィックは VM ごとに調整されます。 調整は、ほとんどのアプリケーションに影響がありません。 要求の調整が発生した場合は、クライアント側のキャッシュが有効になっていることを確認します。 詳細については、「[DNS クライアントの構成](#dns-client-configuration)」を参照してください。
 * 最初の 180 のクラウド サービス内の VM だけが、クラシック デプロイ モデルの各仮想ネットワークに対して登録されます。 この制限は、Azure Resource Manager の仮想ネットワークには適用されません。
 * Azure DNS IP アドレスは 168.63.129.16 です。 これは静的な IP アドレスであり、変更されません。
+
+### <a name="reverse-dns-considerations"></a>逆引き DNS の考慮事項
+逆引き DNS は、ARM ベースのすべての仮想ネットワークでサポートされています。 逆引き DNS クエリ (PTR クエリ) は、仮想マシンの IP アドレスを仮想マシンの FQDN にマップするために発行できます。
+* 仮想マシンの IP アドレスに対するすべての PTR クエリは、\[vmname\].internal.cloudapp.net という形式の FQDN を返します
+* \[vmname\].internal.cloudapp.net 形式の FQDN に対する前方参照は、仮想マシンに割り当てられた IP アドレスへと解決されます。
+* 仮想ネットワークが、[Azure DNS プライベート ゾーン](../dns/private-dns-overview.md)に登録仮想ネットワークとしてリンクされている場合、逆引き DNS クエリでは 2 つのレコードが返されます。 1 つのレコードは、\[vmname\].[priatednszonename] という形式になり、もう 1 つは、\[vmname\].internal.cloudapp.net という形式になります
+* 逆引き DNS 参照は、他の仮想ネットワークとピアリングされている場合でも、特定の仮想ネットワークにスコープ設定されます。 ピアリングされた仮想ネットワークにある仮想マシンの IP アドレスに対する逆引き DNS クエリ (PTR クエリ) は、NXDOMAIN を返します。
+
+> [!NOTE]
+> 複数の仮想ネットワークを対象に逆引き DNS 参照を使用したい場合は、逆引き参照ゾーン (in-addr.arpa) の [Azure DNS プライベート ゾーン](../dns/private-dns-overview.md)を作成して、それを複数の仮想ネットワークにリンクすることができます。 ただし、仮想マシンの逆引き DNS レコードを手動で管理する必要があります。
+>
+
 
 ## <a name="dns-client-configuration"></a>DNS クライアントの構成
 

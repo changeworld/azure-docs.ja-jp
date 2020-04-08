@@ -2,13 +2,13 @@
 title: テンプレートの構文と式
 description: Azure Resource Manager テンプレートの宣言型 JSON 構文について説明します。
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 7bca3125f80225d2180734f483194a63e39d9cf5
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 03/17/2020
+ms.openlocfilehash: 172838fa24709eb60fbcb6a68277f44bbd42f01e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207402"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460111"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構文と式
 
@@ -69,6 +69,56 @@ Azure Resource Manager には、テンプレートで使用できる[関数](tem
 "tags": {
     "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
 },
+```
+
+パラメーター値を渡す場合、エスケープ文字の使用は、パラメーター値が指定されている場所によって異なります。 テンプレートに既定値を設定する場合は、左角かっこを追加する必要があります。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "demoParam1":{
+            "type": "string",
+            "defaultValue": "[[test value]"
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "exampleOutput": {
+            "type": "string",
+            "value": "[parameters('demoParam1')]"
+        }
+    }
+}
+```
+
+既定値を使用する場合、テンプレートから `[test value]` が返されます。
+
+ただし、コマンド ラインを使用してパラメーター値を渡すと、文字は文字どおりに解釈されます。 次のものを使用して、前述のテンプレートをデプロイします。
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[[test value]"
+```
+
+`[[test value]` が返されます。 代わりに以下を使用します。
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[test value]"
+```
+
+パラメーター ファイルから値を渡すときも、同じ書式設定が適用されます。 文字は文字どおりに解釈されます。 前述のテンプレートと共に使用すると、次のパラメーター ファイルによって `[test value]` が返されます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "demoParam1": {
+            "value": "[test value]"
+        }
+   }
+}
 ```
 
 ## <a name="null-values"></a>Null 値

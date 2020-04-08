@@ -1,22 +1,22 @@
 ---
 title: カスタマー マネージド Transparent Data Encryption (TDE)
-description: SQL Database と Data Warehouse の Transparent Data Encryption (TDE) で Azure Key Vault を使用した Bring Your Own Key (BYOK) がサポートされます。 BYOK 対応 TDE の概要、利点、しくみ、考慮事項、および推奨事項。
+description: SQL Database と Azure Synapse の Transparent Data Encryption (TDE) で Azure Key Vault を使用した Bring Your Own Key (BYOK) がサポートされます。 BYOK 対応 TDE の概要、利点、しくみ、考慮事項、および推奨事項。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019, azure-synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 02/12/2020
-ms.openlocfilehash: 8e91bb9223f3e6ccd4c76614d75db8591dbed045
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/18/2020
+ms.openlocfilehash: 462326fb16663a6f25ff4b51ea11791201086fd6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201520"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528730"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 
@@ -24,7 +24,7 @@ ms.locfileid: "77201520"
 
 このシナリオでは、TDE 保護機能と呼ばれるデータベース暗号化キー (DEK) の暗号化に使用されるキーは、顧客が所有し、顧客が管理する [Azure Key Vault (AKV)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) (クラウドベースの外部キー管理システム) に格納されている、カスタマー マネージド非対称キーです。 Key Vault は、FIPS 140-2 Level 2 認定のハードウェア セキュリティ モジュール (HSM) をオプションで使用できる、RSA 暗号化キー向けの、可用性が高くスケーラブルでセキュリティで保護されたストレージです。 格納されているキーに直接アクセスすることはできませんが、キーを使用して暗号化/復号化のサービスを認証されたエンティティに提供します。 キーは、キー コンテナーによって生成、インポート、または[オンプレミスの HSM デバイスからキー コンテナーに転送](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)することができます。
 
-Azure SQL Database と Azure SQL Data Warehouse の場合、TDE 保護機能は論理サーバー レベルで設定され、そのサーバーに関連付けられているすべての暗号化されたデータベースによって継承されます。 Azure SQL Managed Instance の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンス上のすべての暗号化されたデータベースによって継承されます。 *サーバー*という用語は、別途明記されていない限り、このドキュメントでは SQL Database 論理サーバーとマネージド インスタンスの両方を指します。
+Azure SQL Database と Azure Synapse の場合、TDE 保護機能は論理サーバー レベルで設定され、そのサーバーに関連付けられているすべての暗号化されたデータベースによって継承されます。 Azure SQL Managed Instance の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンス上のすべての暗号化されたデータベースによって継承されます。 *サーバー*という用語は、別途明記されていない限り、このドキュメントでは SQL Database 論理サーバーとマネージド インスタンスの両方を指します。
 
 > [!IMPORTANT]
 > サービス マネージド TDE を使用していて、カスタマー マネージド TDE の使用を開始する場合は、切り替え処理中はデータが暗号化されたままとなり、データベース ファイルのダウンタイムが生じたり再暗号化が行われたりすることはありません。 サービス マネージド キーからカスタマー マネージド キーへの切り替えに必要なのは、高速のオンライン操作である DEK の再暗号化だけです。
@@ -73,7 +73,7 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 
 - キー コンテナーと SQL Database/マネージド インスタンスは、同じ Azure Active Directory テナントに属している必要があります。 キー コンテナーとサーバーのテナント間の対話はサポートされていません。 後でリソースを移動するには、AKV を使用して TDE を再構成する必要があります。 リソースの移動の詳細については、[こちら](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)をご覧ください。
 
-- キー (またはキー コンテナー) を誤って削除するデータ損失から保護するには、キー コンテナーで[論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)機能が有効になっている必要があります。 論理的に削除されたリソースは、顧客が復旧または削除しない限り、90 日間保持されます。 *復旧*と*消去*アクションには、キー コンテナーのアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は、既定ではオフになっており、[PowerShell](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell#enabling-soft-delete) または [CLI](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli#enabling-soft-delete)を使用して有効にすることができます。 Azure portal で有効にすることはできません。  
+- キー (またはキー コンテナー) を誤って削除するデータ損失から保護するには、キー コンテナーで[論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)機能が有効になっている必要があります。 論理的に削除されたリソースは、顧客が復旧または削除しない限り、90 日間保持されます。 *復旧*と*消去*アクションには、キー コンテナーのアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は、既定ではオフになっており、[PowerShell](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell#enabling-soft-delete) または [CLI](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli#enabling-soft-delete) を使用して有効にすることができます。 Azure portal で有効にすることはできません。  
 
 - Azure Active Directory (Azure AD) ID を使用して、SQL Database サーバーまたはマネージド インスタンスにキー コンテナーへのアクセス権 (get、wrapKey、unwrapKey) を付与します。 Azure portal を使用すると、Azure AD ID が自動的に作成されます。 PowerShell または CLI を使用する場合は、Azure AD ID を明示的に作成し、完了を確認する必要があります。 PowerShell を使用するときの詳細な手順については、[BYOK 対応 TDE の構成](transparent-data-encryption-byok-azure-sql-configure.md)と [Managed Instance 用 BYOK 対応 TDE の構成](https://aka.ms/sqlmibyoktdepowershell)に関する記事を参照してください。
 
@@ -99,7 +99,7 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 
 - すべての暗号化キーの監査およびレポートを有効にします。キー コンテナーで提供されるログは、他のセキュリティ情報およびイベント管理ツールに簡単に挿入できます。 Operations Management Suite [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) は、既に統合されているサービスの一例です。
 
-- 暗号化されたデータベースの高可用性を確保するため、各サーバーを異なるリージョンに存在する 2 つのキー コンテナーとリンクします。 TDE 保護機能と同じリージョン内のキー コンテナーのキーのみをマークします。 システムが使用します
+- 暗号化されたデータベースの高可用性を確保するため、各サーバーを異なるリージョンに存在する 2 つのキー コンテナーとリンクします。 TDE 保護機能と同じリージョン内のキー コンテナーのキーのみをマークします。 同じリージョン内のキーコンテナーに影響を与える障害が発生した場合には、リモート リージョンのキー コンテナーに自動的に切り替えられます。
 
 ### <a name="recommendations-when-configuring-tde-protector"></a>TDE 保護機能を構成する際の推奨事項
 - TDE 保護機能のコピーを安全な場所に保管するか、エスクロー サービスにエスクローします。
@@ -163,7 +163,7 @@ Key Vault の TDE 保護機能で暗号化されたバックアップを復元�
 
 これを軽減するには、ターゲット SQL Database 論理サーバーに対して [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) コマンドレットを実行するか、ターゲット マネージド インスタンスに対して [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) を実行して、使用可能なキーの一覧を返し、不足しているキーを識別します。 すべてのバックアップを復元できるようにするには、復元のターゲット サーバーが必要なすべてのキーにアクセスできることを確認します。 これらのキーを TDE 保護機能としてマークする必要はありません。
 
-SQL Database のバックアップの回復の詳細については、[Azure SQL データベースの復旧](sql-database-recovery-using-backups.md)に関する記事をご覧ください。 SQL Data Warehouse のバックアップの回復の詳細については、[Azure SQL Data Warehouse の復元](../sql-data-warehouse/backup-and-restore.md)に関する記事をご覧ください。 マネージド インスタンスを使用した SQL Server のネイティブ バックアップ/復元については、「[クイックスタート:データベースをマネージド インスタンスに復元する](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore)」を参照してください。
+SQL Database のバックアップの回復の詳細については、[Azure SQL データベースの復旧](sql-database-recovery-using-backups.md)に関する記事をご覧ください。 SQL プールのバックアップの回復の詳細については、[SQL プールの復旧](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)に関する記事をご覧ください。 マネージド インスタンスを使用した SQL Server のネイティブ バックアップ/復元については、「[クイックスタート:データベースをマネージド インスタンスに復元する](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore)」を参照してください。
 
 ログ ファイルに関するその他の考慮事項:TDE 保護機能が交換され、データベースが新しい TDE 保護機能を使用している場合でも、バックアップ ログ ファイルは元の TDE 保護機能で暗号化されたままになっています。  復元時に、データベースを復元するには両方のキーが必要になります。  サービス マネージド TDE を使用するようにデータベースが変更された場合でも、Azure Key Vault に格納されている TDE 保護機能がログ ファイルで使用されている場合は、復元時にこのキーが必要になります。
 

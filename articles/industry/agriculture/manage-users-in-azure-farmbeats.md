@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
-ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ccc29422c6abf1120d13c05d10125efd0871ca6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475697"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502070"
 ---
 # <a name="manage-users"></a>ユーザーの管理
 
@@ -26,11 +26,11 @@ Azure FarmBeats には、Azure Active Directory (Azure AD) インスタンスの
 Azure FarmBeats では、認証、アクセス制御、およびロールのために Azure AD を使用します。 Azure AD テナントのユーザーを Azure FarmBeats のユーザーとして追加できます。
 
 > [!NOTE]
-> 追加しようとしているユーザーが Azure AD テナント内に存在しない場合は、「Azure AD ユーザーの追加」のセクションの手順に従って設定を完了してください。
+> ユーザーが Azure AD テナント ユーザーでない場合は、 **[Azure AD ユーザーの追加]** セクションの手順に従って、セットアップを完了してください。
 
 Azure FarmBeats では、2 種類のユーザー ロールがサポートされています。
 
- - **管理者**: Azure FarmBeats データ ハブ API へのフル アクセス。 このロールのユーザーは、すべての Azure FarmBeats データ ハブ オブジェクトにクエリを実行したり、すべての操作を FarmBeats Accelerator から実行したりできます。
+ - **管理者**: Azure FarmBeats データ ハブ API への完全なアクセス権。 このロールのユーザーは、すべての Azure FarmBeats データ ハブ オブジェクトにクエリを実行したり、すべての操作を FarmBeats Accelerator から実行したりできます。
  - **読み取り専用**: FarmBeats データ ハブ API への読み取り専用アクセス。 ユーザーは、データ ハブ API、Accelerator ダッシュボード、およびマップを表示できます。 読み取り専用アクセス権を持つユーザーは、マップの生成、デバイスの関連付け、ファームの作成などの操作を実行できません。
 
 ## <a name="add-users-to-azure-farmbeats"></a>Azure FarmBeats にユーザーを追加する
@@ -63,11 +63,11 @@ Azure FarmBeats システムからユーザーを削除するには:
 ## <a name="add-azure-ad-users"></a>Azure AD ユーザーの追加
 
 > [!NOTE]
-> Azure FarmBeats ユーザーをアプリケーションやロールに割り当てるには、そのユーザーが Azure AD テナントに存在している必要があります。 Azure FarmBeats に追加する対象のユーザーが Azure AD テナントにまだ存在していない場合は、このセクションの手順に従ってください。 ユーザーが Azure AD テナントに存在する場合は、これらの手順をスキップできます。
+> Azure FarmBeats ユーザーをアプリケーションやロールに割り当てるには、そのユーザーが Azure AD テナントに存在している必要があります。 ユーザーが Azure AD テナントに存在していない場合は、このセクションの手順に従ってください。 ユーザーが既に Azure AD テナントに存在している場合は、手順をスキップしてください。
 
 Azure AD にユーザーを追加するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. 右上で自分のアカウントを選択し、FarmBeats に関連付けられている Azure AD テナントに切り替えます。
 3. **[Azure Active Directory]**  >  **[ユーザー]** を選択します。
 
@@ -78,7 +78,7 @@ Azure AD にユーザーを追加するには、次の手順に従います。
     ![[すべてのユーザー] ペイン](./media/create-farms-in-azure-farmbeats/manage-users-3.png)
 
 5. 新しいユーザーの名前を選択し、そのユーザーの必須フィールドに入力します。
-6. **作成** を選択します。
+6. **［作成］** を選択します
 
 Azure AD ユーザーの管理の詳細については、[Azure AD でのユーザーの追加または削除](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory/)に関するページを参照してください。
 

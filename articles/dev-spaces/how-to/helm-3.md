@@ -5,12 +5,12 @@ ms.date: 02/28/2020
 ms.topic: conceptual
 description: Helm 3 を使用するように Dev Spaces クラスターを構成する方法について説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 9e3f3ff90d36215c386bf1d8b8ec1edd54ebfb6a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: dbccb2618fd5a27805261d60e7891d920e0bc372
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78202024"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454297"
 ---
 # <a name="configure-your-azure-dev-spaces-cluster-to-use-helm-3-preview"></a>Helm 3 を使用するように Azure Dev Spaces クラスターを構成する (プレビュー)
 
@@ -66,7 +66,7 @@ az provider register --namespace Microsoft.DevSpaces
 
 ## <a name="create-your-cluster"></a>クラスターの作成
 
-このプレビュー機能があるリージョンに新しい AKS クラスターを作成します。 以下のコマンドを実行すると、*米国中南部*リージョンに *MyResourceGroup* という名前のリソース グループと *MyAKS* という名前の新しい AKS クラスターが作成されます。
+このプレビュー機能があるリージョンに新しい AKS クラスターを作成します。 以下のコマンドを実行すると、*MyResourceGroup* という名前のリソース グループと *MyAKS* という名前の新しい AKS クラスターが作成されます。
 
 ```azure-cli
 az group create --name MyResourceGroup --location eastus

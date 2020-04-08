@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21ceacf27f92781b40a856b0c0a4d627d41a0738
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 13a5fc216abc890c19ce3a2d75335431fe2a6799
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028567"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528644"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパススルー認証に移行する
 
@@ -76,7 +76,7 @@ Azure AD Connect を更新するには、「[Azure AD Connect:旧バージョン
 2. **[追加のタスク]** ページで **[現在の構成を表示する]** を選んでから、 **[次へ]** を選択します。<br />
  
    ![[追加のタスク] ページの [現在の構成を表示する] オプションのスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
-3. **[ソリューションのレビュー]** ページで、 **[Active Directory フェデレーション サービス (AD FS)]** までスクロールします。<br />
+3. **[追加のタスク] > [フェデレーションの管理]** で、 **[Active Directory フェデレーション サービス (AD FS)]** までスクロールします。<br />
 
    * このセクションに AD FS 構成が表示される場合は、AD FS が最初に Azure AD Connect を使用して構成されたと見なすことができます。 Azure AD Connect の **[ユーザー サインインの変更]** オプションを使用して、ドメインをフェデレーション ID からマネージド ID に変換できます。 このプロセスの詳細については、「**オプション A: Azure AD Connect を使用してパススルー認証を構成する**」セクションを参照してください。
    * AD FS が現在の設定の一覧に表示されていない場合は、PowerShell を使用して、ドメインをフェデレーション ID からマネージド ID に手動で変換する必要があります。 このプロセスの詳細については、次のセクションを参照してください。「**オプション B:Azure AD Connect と PowerShell を使用してフェデレーションからパススルー認証に切り替える**」セクションはスキップします。

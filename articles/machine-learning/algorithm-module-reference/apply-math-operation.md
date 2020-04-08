@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: b136f408bbc4fbf13bba902f76f7d33ce6b2ba96
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2b4d6939aa1db4b8321c792898ed421c0d16cc99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314574"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456745"
 ---
 # <a name="apply-math-operation"></a>算術演算の適用
 
-この記事では Azure Machine Learning デザイナーのモジュールについて説明します。
+この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
 
 Apply Math Operation を使用して、入力データセットの数値列に適用される計算を作成します。 
 
@@ -86,9 +86,9 @@ Apply Math Operation を使用して、入力データセットの数値列に�
     - **Inplace**。 入力として使用される列の値が、新しい計算値に置き換えられます。 
     - **ResultOnly**。 算術演算の結果を含む単一の列が返されます。
   
-1.  パイプラインを実行します。  
+1.  パイプラインを送信します。  
   
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 **Append** または **ResultOnly** のオプションを使用して結果を生成する場合、返されるデータセットの列見出しには、演算と、使用された列が示されます。 たとえば、**Equals** 演算子を使用して 2 つの列を比較した場合、結果は次のようになります。  
   
@@ -251,7 +251,7 @@ y = x * 2<sup>t</sup> の値を求め、2 を底とする引数の指数を返�
 
 除算と減算に使用する列の選択順序は、直感に反しているように思えるかもしれませんが、結果をわかりやすくするために、列見出しには、演算名と、列が使用された順序が示されます。
 
-操作|Num1|Num2|結果列|結果の値|
+Operation|Num1|Num2|結果列|結果の値|
 ----|----|----|----|----
 |加算|1|5|Add(Num2_Num1)| 4|
 |乗算|1|5|Multiple(Num2_Num1)|5|

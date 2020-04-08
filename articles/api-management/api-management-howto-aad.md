@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: df640f11e8a0e8af22c96a662a602e0de508715c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 6102b1e1d6ddbac01033b9cecfeba96a7eb33777
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985052"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473542"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
@@ -34,7 +34,7 @@ ms.locfileid: "76985052"
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Azure AD を使用して開発者アカウントを承認する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 
-2. 選択 ![矢印](./media/api-management-howto-aad/arrow.png)。
+2. Select ![矢印](./media/api-management-howto-aad/arrow.png)。
 3. 検索ボックスに、「**api**」と入力します。
 4. **[API Management サービス]** を選択します。
 5. お使いの API Management サービス インスタンスを選択します。
@@ -84,12 +84,12 @@ ms.locfileid: "76985052"
 
 Azure AD テナント内のユーザーのアクセスを有効にした後、API Management に Azure AD グループを追加できます。 その結果、Azure AD グループを使用して製品の可視性を制御できます。
 
-外部 Azure AD グループを APIM に追加するには、先に前のセクションを完了しておく必要があります。 また、登録したアプリケーションには、次の手順に従って、`Directory.ReadAll` のアクセス許可で Azure Active Directory Graph API へのアクセスを許可する必要があります。 
+外部 Azure AD グループを APIM に追加するには、先に前のセクションを完了しておく必要があります。 また、登録したアプリケーションには、次の手順に従って、`Directory.Read.All` のアクセス許可で Microsoft Graph API へのアクセスを許可する必要があります。 
 
-1. 前のセクションで作成したアプリの登録に戻ります
-2. **[API のアクセス許可]** タブをクリックし、 **[+Add a permission]\(+アクセス許可の追加\)** ボタンをクリックします。 
-3. **[Request API Permissions]\(API のアクセス許可を要求する\)** ウィンドウで、 **[Microsoft API]** タブを選択し、一番下までスクロールして、[Supported Legacy APIs] (サポートされているレガシ API)セクションの下にある **[Azure Active Directory Graph]** タイルを見つけてクリックします。 次に、 **[APPLICATION Permissions]\(アプリケーションのアクセス許可\)** ボタンをクリックし、**Directory.ReadAll** アクセス許可を選択してから、一番下にあるボタンを使用してそのアクセス許可を追加します。 
-4. **[Grant admin consent for {tenantname}]\({テナント名} に対する管理者の同意を与える\)** ボタンをクリックして、このディレクトリ内のすべてのユーザーに対するアクセスを許可します。 
+1. 前のセクションで作成したアプリの登録に戻ります。
+2. **[API のアクセス許可]** を選択し、 **[アクセス許可の追加]** をクリックします。 
+3. **[API アクセス許可の要求]** ペインで、 **[Microsoft API]** タブを選択し、 **[Microsoft Graph]** タイルを選択します。 **[アプリケーションのアクセス許可]** を選択し、 **[ディレクトリ]** を探して、 **[Directory.Read.All]** アクセス許可を選択します。 
+4. ペインの下部にある **[アクセス許可の追加]** をクリックし、 **[Grant admin consent for {tenantname}]\({テナント名} に対する管理者の同意を与える\)** をクリックして、このディレクトリ内のすべてのユーザーに対するアクセスを許可します。 
 
 これで、外部の Azure AD グループを、API Management インスタンスの **[グループ]** タブから追加できるようになります。
 
@@ -103,7 +103,7 @@ Azure AD テナント内のユーザーのアクセスを有効にした後、AP
  
 これで、構成された Azure AD インスタンスのユーザーが開発者ポータルにサインインできるようになります。 これらのユーザーは、可視性があるすべてのグループを表示し、サブスクライブすることができます。
 
-## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> 開発者ポータル - Azure AD アカウント認証の追加
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> 開発者ポータル - Azure AD アカウント認証の追加
 
 開発者ポータルでは、AAD によるサインインは、 **[サインイン] ボタン:OAuth** ウィジェットを利用して行うことができます。 このウィジェットは、既定の開発者ポータル コンテンツのサインイン ページに既に含まれています。
 
@@ -153,7 +153,6 @@ Azure AD テナント内のユーザーのアクセスを有効にした後、AP
 
 [https://oauth.net/2/]: https://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Accessing the Graph API]: https://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 
 [Prerequisites]: #prerequisites
 [Configure an OAuth 2.0 authorization server in API Management]: #step1

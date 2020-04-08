@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 3b3a0b00ee6e1e170023584c2e643a5802166428
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 0542106f70e96b6c2f63e8ca03d2532de191d365
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79087472"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477172"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>航空宇宙の業務における予測メンテナンスのためのソリューション テンプレートに関する技術ガイド
 
@@ -83,7 +83,7 @@ Azure Event Hub は汎用的で、データを CSV または JSON 形式でハ�
 
 このドキュメントでは、データを取り込む方法について説明しませんが、Event Hub API を使用して、イベントやデータを Azure Event Hub に簡単に送信できます。
 
-### <a name="azure-stream-analytics-1"></a>Azure Stream Analytics
+### <a name="azure-stream-analytics"></a><a name="azure-stream-analytics-1"></a>Azure Stream Analytics
 Azure Stream Analytics リソースを使用して、データ ストリームから読み取り、任意の数のソースにデータを出力することによって、ほぼリアルタイムで分析を行います。
 
 航空宇宙ソリューション テンプレートの予測メンテナンスの場合、Azure Stream Analytics クエリは、それぞれ Azure Event Hub サービスからのイベントを使用し、4 つの異なる場所に出力する 4 つのサブ クエリから構成されます。 これらの出力は、3 つの Power BI データセットと 1 つの Azure Storage の場所から構成されます。
@@ -105,7 +105,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 2 番目の Stream Analytics ジョブ **maintenancesa02asablob** のクエリは、すべての [Event Hub](https://azure.microsoft.com/services/event-hubs/) イベントを [Azure Storage](https://azure.microsoft.com/services/storage/) に出力するだけです。完全なイベント情報が記憶域にストリームされるため、データ形式に関係なく変更を必要としません。
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
-[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) サービスは、データの移動や処理を調整します。 航空宇宙ソリューション テンプレートの予測メンテナンスでは、さまざまなテクノロジを使用してデータを移動し、処理する 3 つの[パイプライン](../../data-factory/concepts-pipelines-activities.md)からデータ ファクトリが構成されます。  ソリューションのデプロイによって作成されたソリューション テンプレート図の下部にあるデータ ファクトリ ノードを開くことで、データ ファクトリにアクセスします。 データセットの下のエラーは、データ ジェネレーターが起動する前にデータ ファクトリがデプロイされていることが原因です。 これらのエラーは無視でき、データ ファクトリの機能が妨げられることはありません
+[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) サービスは、データの移動や処理を調整します。 航空宇宙ソリューション テンプレートの予測メンテナンスでは、さまざまなテクノロジを使用してデータを移動し、処理する 3 つの[パイプライン](../../data-factory/concepts-pipelines-activities.md)からデータ ファクトリが構成されます。  ソリューションのデプロイによって作成されたソリューション テンプレート図の下部にあるデータ ファクトリ ノードを開くことで、データ ファクトリにアクセスします。 データセットの下のエラーは、データ ジェネレーターが起動する前にデータ ファクトリがデプロイされていることが原因です。 これらのエラーは無視でき、データ ファクトリの機能が妨げられることはありません。
 
 ![データ ファクトリ データセット エラー](./media/predictive-maintenance-technical-guide/data-factory-dataset-error.png)
 
@@ -193,7 +193,8 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
      <br/>
    * データの更新をスケジュールするには、 **[PredictiveMaintenanceAerospace]** データセットの上にマウス ポインターを移動し、![省略記号アイコン](./media/predictive-maintenance-technical-guide/icon-elipsis.png)をクリックして、 **[更新のスケジュール設定]** を選択します。
      <br/>
-     **注:** 警告メッセージが表示された場合は、 **[資格情報の編集]** をクリックし、データベース資格情報が、手順 1. で説明したものと同じかどうかを確認します。
+     > [!NOTE]
+     > 警告メッセージが表示された場合は、 **[資格情報の編集]** をクリックし、データベース資格情報が、手順 1. で説明したものと同じかどうかを確認します。
      <br/>
      ![更新のスケジュール設定](./media/predictive-maintenance-technical-guide/schedule-refresh.png)
      <br/>

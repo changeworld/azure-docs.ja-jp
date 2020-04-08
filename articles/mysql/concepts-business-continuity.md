@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 3f82dfd5e289b09761dbdbdc5af4da76d7c961d4
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: af0069adc741cfc802c37c90c0c7ec3c3ba74bb2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765360"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537229"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>Azure Database for MySQL でのビジネス継続性を理解する
 
@@ -48,7 +48,7 @@ Azure Database for MySQL で提供されるビジネス継続性機能には、�
 > [!IMPORTANT]
 > geo リストアは、geo 冗長バックアップ ストレージでサーバーをプロビジョニングした場合にのみ可能です。 既存のサーバーに対してローカル冗長を geo 冗長バックアップに切り替える場合は、既存のサーバーの mysqldump を使用してダンプを取得し、geo 冗長バックアップで構成された新しく作成したサーバーに復元する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Database for MySQL での自動バックアップ](concepts-backup.md)の詳細を確認する。
 - [Azure portal](howto-restore-server-portal.md) または [Azure CLI](howto-restore-server-cli.md) を使用して復元する方法を確認する。

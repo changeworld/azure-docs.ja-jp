@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b29dbd7a034123b17b34b1c0fd4c8649e30810bd
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 272188b50fe59435031a4a2fb9c252f3f358bb6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128162"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535733"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する
 
@@ -57,11 +57,11 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 5. Azure Cloud Shell が読み込まれたら、次の 2 つのコマンドレットを実行します。
 
-   ```powershell
+   ```azurecli
    az account set --subscription <subscriptionID>
    ```
 
-   ```powershell
+   ```azurecli
    az provider register --namespace Microsoft.NetApp --wait
    ```
 
@@ -73,7 +73,7 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 7. 検索結果で **[Azure NetApp Files]** を選択し、 **[作成]** を選択します。
 
 8. **[追加]** ボタンを選びます。
-9. **[New NetApp account]\(新しい NetApp アカウント\)** ブレードが開いたら、次の値を入力します。
+9. **[New NetApp account]\(新しい NetApp アカウント\)** タブが開いたら、次の値を入力します。
 
     - **[名前]** には、NetApp アカウントの名前を入力します。
     - **[サブスクリプション]** では、ボックスの一覧から、手順 4 で設定したストレージ アカウントのサブスクリプションを選択します。
@@ -92,7 +92,7 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 1. Azure NetApp Files のメニューを開いて、新しく作成したアカウントを選択します。
 2. アカウント メニューで、[ストレージ サービス] の下にある **[容量プール]** を選択します。
 3. **[プールの追加]** を選択します。
-4. **[New capacity pool]\(新しい容量プール\)** ブレードが開いたら、次の値を入力します。
+4. **[New capacity pool]\(新しい容量プール\)** タブが開いたら、次の値を入力します。
 
     - **[名前]** には、新しい容量プールの名前を入力します。
     - **[サービス レベル]** では、ボックスの一覧から希望する値を選択します。 ほとんどの環境では、 **[Premium]** が推奨されます。
@@ -127,7 +127,7 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 1. **[ボリューム]** 、 **[ボリュームの追加]** の順にクリックします。
 
-2. **[ボリュームの作成]** ブレードが開いたら、次の値を入力します。
+2. **[ボリュームの作成]** タブが開いたら、次の値を入力します。
 
     - **[ボリューム名]** には、新しいボリュームの名前を入力します。
     - **[容量プール]** では、ボックスの一覧から、先ほど作成した容量プールを選択します。

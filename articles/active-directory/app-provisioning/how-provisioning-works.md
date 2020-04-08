@@ -15,18 +15,18 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 892cdeea20780c90ce325e8be9b7b91fee0d9fad
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 555fb39836054be05102f4c28167d72016805639
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522528"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481502"
 ---
 # <a name="how-provisioning-works"></a>プロビジョニングのしくみ
 
 自動プロビジョニングとは、ユーザーがアクセスする必要のあるクラウド アプリケーションのユーザー ID とロールを作成することです。 自動プロビジョニングには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれます。 デプロイを開始する前に、この記事を参照して Azure AD プロビジョニングのしくみを学習し、構成に関する推奨事項を確認することができます。 
 
-**Azure AD プロビジョニング サービス**では、アプリケーション ベンダーから提供される System for Cross-Domain Identity Management (SCIM) 2.0 ユーザー管理 API エンドポイントに接続することによって、SaaS アプリや他のシステムにユーザーがプロビジョニングされます。 Azure AD では、この SCIM エンドポイントを使用して、プログラムによってユーザーが作成、更新、削除されます。 また、一部の限られたアプリケーションについては、ID に関連したその他のオブジェクト (グループ、ロールなど) をプロビジョニング サービスで作成、更新、削除することができます。 Azure AD とアプリケーションの間のプロビジョニングに使用されるチャネルは、HTTPS SSL 暗号化を使用して暗号化されます。
+**Azure AD プロビジョニング サービス**では、アプリケーション ベンダーから提供される System for Cross-Domain Identity Management (SCIM) 2.0 ユーザー管理 API エンドポイントに接続することによって、SaaS アプリや他のシステムにユーザーがプロビジョニングされます。 Azure AD では、この SCIM エンドポイントを使用して、プログラムによってユーザーが作成、更新、削除されます。 また、一部の限られたアプリケーションについては、ID に関連したその他のオブジェクト (グループ、ロールなど) をプロビジョニング サービスで作成、更新、削除することができます。 Azure AD とアプリケーションの間のプロビジョニングに使用されるチャネルは、HTTPS TLS 暗号化を使用して暗号化されます。
 
 
 ![Azure AD プロビジョニング サービス](./media/how-provisioning-works/provisioning0.PNG)

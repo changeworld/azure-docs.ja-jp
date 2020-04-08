@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70cdb4b42e835a9bfa03f4551ba25088ef8c5226
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: ecd49b340810f92727f0fc98f84031c8cbf68179
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942848"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481179"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -38,13 +38,13 @@ ms.locfileid: "78942848"
 
 1. **Azure AD**:`Restrict-Access-To-Tenants: <permitted tenant list>` が存在する場合、Azure AD は、許可されているテナントのセキュリティ トークンのみを発行します。
 
-2. **オンプレミスのプロキシ サーバー インフラストラクチャ**: このインフラストラクチャは、Secure Sockets Layer (SSL) 検査に対応したプロキシ デバイスです。 許可されているテナントのリストを含むヘッダーを Azure AD 宛てのトラフィックに挿入するようにプロキシを構成する必要があります。
+2. **オンプレミスのプロキシ サーバー インフラストラクチャ**: このインフラストラクチャは、トランスポート層セキュリティ (TLS) 検査に対応したプロキシ デバイスです。 許可されているテナントのリストを含むヘッダーを Azure AD 宛てのトラフィックに挿入するようにプロキシを構成する必要があります。
 
 3. **クライアント ソフトウェア**: テナント制限をサポートするには、プロキシ インフラストラクチャがトラフィックをインターセプトできるように、クライアント ソフトウェアはトークンを直接 Azure AD に要求する必要があります。 先進認証 (OAuth 2.0 など) を使用する Office クライアントと同様に、ブラウザー ベースの Office 365 アプリケーションは現在、テナント制限をサポートしています。
 
 4. **先進認証**: テナント制限を使用し、許可されていないすべてのテナントへのアクセスをブロックするには、クラウド サービスは先進認証を使用する必要があります。 既定で先進認証プロトコルを使用するように Office 365 クラウド サービスを構成する必要があります。 Office 365 による最新の認証のサポートに関する最新情報については、「[Updated Office 365 modern authentication (Office 365 の最新の認証の更新)](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」をご覧ください。
 
-次の図は、おおまかなトラフィック フローを示しています。 テナント制限では、SSL 検査は Office 365 クラウド サービスではなく、Azure AD へのトラフィック上でのみ必要です。 Azure AD への認証のためのトラフィック量は一般に、Exchange Online や SharePoint Online などの SaaS アプリケーションへのトラフィック量よりはるかに少ないため、この区別が重要です。
+次の図は、おおまかなトラフィック フローを示しています。 テナント制限では、TLS 検査は Office 365 クラウド サービスではなく、Azure AD へのトラフィック上でのみ必要です。 Azure AD への認証のためのトラフィック量は一般に、Exchange Online や SharePoint Online などの SaaS アプリケーションへのトラフィック量よりはるかに少ないため、この区別が重要です。
 
 ![テナント制限のトラフィック フロー - 図](./media/tenant-restrictions/traffic-flow.png)
 
@@ -62,9 +62,9 @@ ms.locfileid: "78942848"
 
 #### <a name="prerequisites"></a>前提条件
 
-- プロキシは、SSL インターセプト、HTTP ヘッダーの挿入、FQDN/URL を使用した送信先のフィルター処理を実行できる必要があります。
+- プロキシは、TLS インターセプト、HTTP ヘッダーの挿入、FQDN/URL を使用した送信先のフィルター処理を実行できる必要があります。
 
-- クライアントは、SSL 通信でプロキシによって提示される証明書チェーンを信頼する必要があります。 たとえば、内部[公開キー インフラストラクチャ (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) からの証明書が使用されている場合は、内部発行のルート証明機関証明書を信頼する必要があります。
+- クライアントは、TLS 通信でプロキシによって提示される証明書チェーンを信頼する必要があります。 たとえば、内部[公開キー インフラストラクチャ (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) からの証明書が使用されている場合は、内部発行のルート証明機関証明書を信頼する必要があります。
 
 - この機能は Office 365 サブスクリプションに含まれていますが、テナント制限を使用して他の SaaS アプリへのアクセスを制御する場合は、Azure AD Premium 1 ライセンスが必要です。
 

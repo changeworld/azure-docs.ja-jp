@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 5c9af862ca2df3d812384c0f4ab660730aece872
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 25cef95e2d01012506148f03be45104e455e1fcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433556"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530276"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET セッション状態プロバイダー
 
@@ -125,6 +125,11 @@ web.config の標準の InProc セッション状態プロバイダー セクシ
 * Azure Cache for Redis セッション状態プロバイダーなどの分散型メモリ内セッション状態プロバイダー: このプロバイダーを使用すると、両方の長所を活用できます。 Web アプリで、単純かつ高速で、スケーラブルなセッション状態プロバイダーを使うことができます。 このプロバイダーではセッション状態がキャッシュに格納されるため、一時的なネットワーク障害など、分散型メモリ内キャッシュとの通信時に関するすべての要素をアプリで考慮する必要があります。 キャッシュの使用に関するベスト プラクティスについては、Microsoft のパターンとプラクティスの「[Azure Cloud Application Design and Implementation Guidance (Azure クラウド アプリケーションの設計と実装のガイダンス)](https://github.com/mspnp/azure-guidance)」の「[キャッシュに関するガイダンス](../best-practices-caching.md)」を参照してください。
 
 セッション状態とその他のベスト プラクティスの詳細については、 [Web 開発に関するベスト プラクティス (Azure を使用した実際のクラウド アプリケーションの構築)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)に関するページを参照してください。
+
+## <a name="third-party-session-state-providers"></a>サードパーティのセッション状態プロバイダー
+
+* [NCache](https://www.alachisoft.com/ncache/session-index.html)
+* [Apache ignite](https://apacheignite-net.readme.io/docs/aspnet-session-state-caching)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a24a557cb436f18252abd88a4c82f15004f4390
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 5e828fd9c2561007c332db67bfd0b20dda9b845f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522052"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454535"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Azure Active Directory でのアプリケーションに対するユーザー プロビジョニングとプロビジョニング解除を自動化する
 
@@ -73,7 +73,7 @@ Azure AD は、一般的な多くの SaaS アプリや人事管理システム�
 
 これらの課題に対処するため、SCIM 仕様では、ユーザーのアプリへの移動、アプリからの移動、アプリ内での移動に対し、共通のユーザー スキーマが提供されています。 SCIM は、プロビジョニングに対する事実上の標準になりつつあり、SAML や OpenID Connect などのフェデレーション標準と組み合わせて使用すると、エンドツーエンドの標準ベースのアクセス管理用ソリューションが管理者に提供されます。
 
-アプリケーションに対するユーザーとグループのプロビジョニングおよびプロビジョニング解除を自動化するための SCIM の使用について詳しくは、「[SCIM エンドポイントの構築とユーザー プロビジョニングの構成](use-scim-to-provision-users-and-groups.md)」をご覧ください。
+アプリケーションに対するユーザーとグループのプロビジョニングおよびプロビジョニング解除を自動化するための SCIM エンドポイントの開発について詳しくは、「[SCIM エンドポイントの構築とユーザー プロビジョニングの構成](use-scim-to-provision-users-and-groups.md)」をご覧ください。 ギャラリー内の事前に統合されたアプリケーション (Slack、Azure Databricks、Snowflake など) については、開発者向けドキュメントをスキップし、[こちら](../saas-apps/tutorial-list.md)のチュートリアルを使用してください。
 
 ## <a name="manual-vs-automatic-provisioning"></a>手動プロビジョニングと自動プロビジョニングの比較
 

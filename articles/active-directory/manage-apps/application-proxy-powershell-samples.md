@@ -12,12 +12,12 @@ ms.date: 12/05/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25097f8b72c7c8dde742701ce576c1b0e2fbabd2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 476bdfdd2c0b81d86900cee18024cc261ee80a07
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475281"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481264"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシのための Azure AD PowerShell の例
 
@@ -45,6 +45,6 @@ ms.locfileid: "75475281"
 | [ワイルドカードによる公開を使用しているすべてのアプリケーション プロキシ アプリを取得する](scripts/powershell-get-all-wildcard-apps.md) | ワイルドカードによる公開を使用しているすべてのアプリケーション プロキシ アプリを一覧表示します。 |
 |**カスタム ドメイン構成**||
 | [カスタム ドメインを使用しているすべてのアプリケーション プロキシ アプリと証明書情報を取得する](scripts/powershell-get-all-custom-domains-and-certs.md) | カスタム ドメインを使用しているすべてのアプリケーション プロキシ アプリと、カスタム ドメインに関連付けられている証明書情報を一覧表示します。 |
-| [証明書をアップロードせずに公開されたすべての Azure AD プロキシ アプリケーション アプリを取得する](scripts/powershell-get-all-custom-domain-no-cert.md) | カスタム ドメインを使用しているが、有効な SSL 証明書がアップロードされていないすべてのアプリケーション プロキシ アプリを一覧表示します。 |
+| [証明書をアップロードせずに公開されたすべての Azure AD プロキシ アプリケーション アプリを取得する](scripts/powershell-get-all-custom-domain-no-cert.md) | カスタム ドメインを使用しているが、有効な TLS/SSL 証明書がアップロードされていないすべてのアプリケーション プロキシ アプリを一覧表示します。 |
 | [同一の証明書を使用して公開されたすべての Azure AD プロキシ アプリケーション アプリを取得する](scripts/powershell-get-custom-domain-identical-cert.md) | 同一の証明書を使用して公開されたすべての Azure AD プロキシ アプリケーション アプリを一覧表示します。 |
 | [同じ証明書を使用して公開されたすべての Azure AD プロキシ アプリケーション アプリを取得して置き換える](scripts/powershell-get-custom-domain-replace-cert.md) | 同じ証明書を使用して公開された Azure AD プロキシ アプリケーション アプリを対象に、証明書を一括で置き換えることができます。 |

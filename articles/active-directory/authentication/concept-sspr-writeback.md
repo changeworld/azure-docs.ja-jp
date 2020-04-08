@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa66299753ab11dcad280361cb5fb6f0c31ef242
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7fe58ae95c8d9c6b93c7e92e093541af009781ce
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368162"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454433"
 ---
 # <a name="what-is-password-writeback"></a>パスワード ライトバックとは
 
@@ -106,7 +106,7 @@ ms.locfileid: "77368162"
    * Service Bus Relay が作成されると、強力な非対称キーが作成され、ネットワーク経由でパスワードが渡されるときに暗号化に使用されます。 このキーは、クラウド内の会社のシークレット ストアのみに存在し、厳重にロックダウンされ、ディレクトリ内の他のパスワードと同様に監査されます。
 * **業界標準のトランスポート層セキュリティ (TLS)**
    1. クラウド内でパスワードのリセットや変更操作が行われる場合は、プレーンテキスト パスワードが公開キーを使用して暗号化されます。
-   1. 暗号化されたパスワードが HTTPS メッセージに配置され、Microsoft の SSL 証明書を使って暗号化されたチャネルを介して Service Bus Relay に送信されます。
+   1. 暗号化されたパスワードが HTTPS メッセージに配置され、Microsoft の TLS/SSL 証明書を使って暗号化されたチャネルを介して Service Bus Relay に送信されます。
    1. Service Bus にメッセージが到着すると、オンプレミスのエージェントが起動され、以前に生成された強力なパスワードを使用して Service Bus に認証します。
    1. オンプレミスのエージェントは、暗号化されたメッセージを取得し、秘密キーを使用して復号化します。
    1. オンプレミスのエージェントは、AD DS SetPassword API を使用して、パスワードの設定を試行します。 この手順に従うと、クラウドで Active Directory のオンプレミスのパスワード ポリシー (複雑さ、年齢、履歴、フィルターなど) を適用できます。

@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 6507c2a2d1100d480c879c73861c02e477d38416
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 192e46fd7f86b6053eaf658fa65e3c6cdfa3a4e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026134"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528610"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -28,6 +28,9 @@ RBAC では、ロールの割り当てを使用して、"*セキュリティ プ
 通常、それらの Azure リソースは、最上位のリソースに制約されます (例: Azure ストレージ アカウント)。 Azure Storage およびその結果の Azure Data Lake Storage Gen2 の場合、このメカニズムは、コンテナー (ファイル システム) のリソースに拡張されています。
 
 お使いのストレージ アカウントのスコープでセキュリティ プリンシパルにロールを割り当てる方法については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
+
+> [!NOTE]
+> ゲスト ユーザーがロールの割り当てを作成することはできません。
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>ファイルおよびディレクトリ レベルのアクセス制御リストでのロール割り当ての影響
 
@@ -50,9 +53,13 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 
 セキュリティ プリンシパルをファイルおよびディレクトリに対するアクセス レベルと関連付けることができます。 これらの関連付けは、"*アクセス制御リスト (ACL)* " でキャプチャされます。 ストレージ アカウント内の各ファイルおよびディレクトリは、アクセス制御リストを持っています。
 
+> [!NOTE]
+> ACL は、同じテナント内のセキュリティ プリンシパルにのみ適用されます。 ゲスト ユーザーをアクセス レベルに関連付けることはできません。  
+
 ストレージ アカウント レベルでセキュリティ プリンシパルにロールを割り当てた場合、アクセス制御リストを使って、そのセキュリティ プリンシパルに、特定のファイルおよびディレクトリに対する昇格されたアクセス権を付与することができます。
 
 アクセス制御リストを使って、ロール割り当てによって許可されるレベルより低いアクセスのレベルを提供することはできません。 たとえば、[ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)ロールをセキュリティ プリンシパルに割り当てた場合、アクセス制御リストを使って、そのセキュリティ プリンシパルによるディレクトリへの書き込みを禁止することはできません。
+
 
 ### <a name="set-file-and-directory-level-permissions-by-using-access-control-lists"></a>アクセス制御リストを使ってファイルおよびディレクトリ レベルのアクセス許可を設定する
 
@@ -175,7 +182,7 @@ POSIX ACL では、すべてのユーザーが*プライマリ グループ*に�
 
 次の擬似コードは、ストレージ アカウントのアクセス確認アルゴリズムを示しています。
 
-```
+```console
 def access_check( user, desired_perms, path ) : 
   # access_check returns true if user has the desired permissions on the path, false otherwise
   # user is the identity that wants to perform an operation on path
@@ -254,7 +261,7 @@ Azure Data Lake Storage Gen2 で umask の値が使用されると、実際上�
 
 次の疑似コードは、子項目に ACL を作成するときに、unmask がどのように適用されるかを示しています。
 
-```
+```console
 def set_default_acls_for_new_child(parent, child):
     child.acls = []
     for entry in parent.acls :
@@ -316,10 +323,11 @@ ACL で割り当て済みのプリンシパルとして常に Azure AD セキュ
 
 アプリ登録に対応するサービス プリンシパルの OID を取得するには、`az ad sp show` コマンドを使用し、 パラメーターとしてアプリケーション ID を指定します。 アプリ ID が 18218b12-1895-43e9-ad80-6e8fc1ea88ce のアプリ登録に対応するサービス プリンシパルの OID を取得する例を次に示します。 Azure CLI で、次のコマンドを実行します。
 
+```azurecli
+az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 ```
-$ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
-<<OID will be displayed>>
-```
+
+OID が表示されます。
 
 サービス プリンシパルの正しい OID を取得したら、Storage Explorer で **[アクセスの管理]** ページに移動して OID を追加し、その OID に対する適切なアクセス許可を割り当てます。 その後、必ず **[保存]** を選択してください。
 
@@ -340,6 +348,6 @@ ACL は継承されません。 ただし、親ディレクトリの下に作成
 * [Ubuntu での POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [ACL using access control lists on Linux (Linux でのアクセス制御リストを使用した ACL)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Azure Data Lake Storage Gen2 の概要](../blobs/data-lake-storage-introduction.md)

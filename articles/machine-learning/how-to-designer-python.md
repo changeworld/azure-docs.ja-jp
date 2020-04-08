@@ -9,12 +9,12 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.openlocfilehash: b0b0bb5eefde9e744b1f30109d60ded91d3b44e8
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: a2bd9845cd29c7d139e2042f39b4697847639207
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228660"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455793"
 ---
 # <a name="execute-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでの Python コードの実行
 
@@ -78,7 +78,7 @@ ms.locfileid: "78228660"
 
     戻り値は、Pandas データフレームである必要があります。 最大 2 つのデータフレームをモジュールの出力として返すことができます。
     
-1. パイプラインを実行します。
+1. パイプラインを送信します。
 
 これで、新しい特徴 **Dollars/HP** を含むデータセットができました。これは、車のレコメンダーのトレーニングに役立ちます。 これは、特徴抽出と次元削減の一例です。 
 

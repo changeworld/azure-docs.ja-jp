@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a869f4fa82999192f75f2c114720151bae55680
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 7a215e2bb7d9d1cf9013414037383590456296cd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298430"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480897"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスに承認されたクライアント アプリを要求する
 
@@ -28,6 +28,9 @@ ms.locfileid: "78298430"
 - [シナリオ 2: Exchange Online と SharePoint Online で、承認済みクライアント アプリの使用を必須にする](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app)
 
 条件付きアクセスでは、これは "承認済みクライアント アプリの使用を必須にする" 機能と呼ばれます。 承認されたクライアント アプリの一覧は、[承認されたクライアント アプリの要件](concept-conditional-access-grant.md#require-approved-client-app)に関するセクションを参照してください。
+
+> [!NOTE]
+> iOS および Android デバイス用の承認済みクライアント アプリを要求するには、まずそれらのデバイスを Azure AD に登録する必要があります。
 
 ## <a name="scenario-1-office-365-apps-require-an-approved-client-app"></a>シナリオ 1:Office 365 アプリで、承認済みクライアント アプリの使用を必須にする
 

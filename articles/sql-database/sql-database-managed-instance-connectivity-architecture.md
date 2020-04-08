@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-ms.date: 04/16/2019
-ms.openlocfilehash: 1b5a48a686a238d724680e806daaed431107ec72
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/17/2020
+ms.openlocfilehash: f30ccd498b79c36c8892ae38a3e26d169249621a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894818"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481101"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database マネージド インスタンス用の接続アーキテクチャ
 
@@ -87,15 +87,16 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 サービス支援サブネット構成ではユーザーがデータ トラフィックを完全に制御 (TDS) しますが、Managed Instance では SLA を満たすために、管理トラフィックが中断されないようにします。
 
+サービス支援サブネット構成は、仮想ネットワーク [サブネット委任](../virtual-network/subnet-delegation-overview.md)機能の上に構築されます。これにより、ネットワーク構成を自動管理し、サービス エンドポイントを有効にすることができます。 サービス エンドポイントを使用することで、バックアップ/監査ログを保持するストレージ アカウントの仮想ネットワーク ファイアウォール規則を構成することができます。
+
 ### <a name="network-requirements"></a>ネットワークの要件 
 
 マネージド インスタンスは、仮想ネットワーク内の専用サブネットにデプロイします。 サブネットには、次の特性が必要です。
 
 - **専用サブネット:** マネージド インスタンスのサブネットには自身に関連付けられている他のクラウド サービスを含めることはできず、ゲートウェイ サブネットになることもできません。 サブネットには、マネージド インスタンス以外のリソースを含めることはできず、後でサブネットに他の種類のリソースを追加することもできません。
 - **[サブネットの委任]:** マネージド インスタンスのサブネットは `Microsoft.Sql/managedInstances` リソースプロバイダーに委任する必要があります。
-- **ネットワーク セキュリティ グループ (NSG):** マネージド インスタンスのサブネットに NSG を関連付ける必要があります。 マネージド インスタンスがリダイレクト接続用に構成されている場合は、NSG を使用してポート 1433 およびポート 11000-11999 上のトラフィックをフィルター処理することで、マネージド インスタンスのデータ エンドポイントへのアクセスを制御できます。 サービスは、管理トラフィックが中断されないようにするために必要な[規則](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)を自動的に追加します。
-- **ユーザー定義ルート (UDR) テーブル:** マネージド インスタンスのサブネットに UDR テーブルを関連付ける必要があります。 オンプレミスのプライベート IP 範囲が宛先として含まれるトラフィックを、仮想ネットワーク ゲートウェイまたは仮想ネットワーク アプライアンス (NVA) 経由でルーティングするルート テーブルにエントリを追加することもできます。 サービスは、管理トラフィックが中断されないようにするために必要な[エントリ](#user-defined-routes-with-service-aided-subnet-configuration)を自動的に追加します。
-- **[サービス エンドポイント]:** サービス エンドポイントを使用して、バックアップ/監査ログを保持するストレージ アカウントの仮想ネットワーク ルールを構成することができます。
+- **ネットワーク セキュリティ グループ (NSG):** マネージド インスタンスのサブネットに NSG を関連付ける必要があります。 マネージド インスタンスがリダイレクト接続用に構成されている場合は、NSG を使用してポート 1433 およびポート 11000-11999 上のトラフィックをフィルター処理することで、マネージド インスタンスのデータ エンドポイントへのアクセスを制御できます。 サービスは、管理トラフィックが中断されないようにするために必要な[規則](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)を自動的にプロビジョニングし、最新に維持します。
+- **ユーザー定義ルート (UDR) テーブル:** マネージド インスタンスのサブネットに UDR テーブルを関連付ける必要があります。 オンプレミスのプライベート IP 範囲が宛先として含まれるトラフィックを、仮想ネットワーク ゲートウェイまたは仮想ネットワーク アプライアンス (NVA) 経由でルーティングするルート テーブルにエントリを追加することもできます。 サービスは、管理トラフィックが中断されないようにするために必要な[エントリ](#user-defined-routes-with-service-aided-subnet-configuration)を自動的にプロビジョニングし、最新に維持します。
 - **十分な IP アドレス**: マネージド インスタンス サブネットには、少なくとも 16 個の IP アドレスが必要です。 推奨される最小値は、32 個の IP アドレスです。 詳細については、[マネージド インスタンス用のサブネットのサイズの決定](sql-database-managed-instance-determine-size-vnet-subnet.md)に関する記事を参照してください。 [マネージド インスタンスのネットワーク要件](#network-requirements)を満たすように[既存のネットワーク](sql-database-managed-instance-configure-vnet-subnet.md)を構成し、そのネットワークにマネージド インスタンスをデプロイできます。 それ以外の場合は、[新しいネットワークとサブネット](sql-database-managed-instance-create-vnet-subnet.md)を作成します。
 
 > [!IMPORTANT]
@@ -103,53 +104,55 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>サービス支援サブネット構成を使用した必須の受信セキュリティ規則 
 
-| Name       |Port                        |Protocol|source           |宛先|アクション|
+| 名前       |Port                        |Protocol|source           |宛先|アクション|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |Allow |
 |            |9000、9003                  |TCP     |CorpNetSaw       |MI SUBNET  |Allow |
-|            |9000、9003                  |TCP     |65.55.188.0/24、167.220.0.0/16、131.107.0.0/16、94.245.87.0/24|MI SUBNET  |Allow |
+|            |9000、9003                  |TCP     |CorpnetPublic    |MI SUBNET  |Allow |
 |mi_subnet   |Any                         |Any     |MI SUBNET        |MI SUBNET  |Allow |
 |health_probe|Any                         |Any     |AzureLoadBalancer|MI SUBNET  |Allow |
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>サービス支援サブネット構成を使用した必須の送信セキュリティ規則 
 
-| Name       |Port          |Protocol|source           |宛先|アクション|
+| 名前       |Port          |Protocol|source           |宛先|アクション|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
 |mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>サービス支援サブネット構成を使用したユーザー定義ルート 
 
-|Name|アドレス プレフィックス|次ホップ|
+|名前|アドレス プレフィックス|次ホップ|
 |----|--------------|-------|
 |subnet-to-vnetlocal|MI SUBNET|仮想ネットワーク|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|インターネット|
 |mi-13-104-14-nexthop-internet|13.104.0.0/14|インターネット|
+|mi-20-33-16-nexthop-internet|20.33.0.0/16|インターネット|
 |mi-20-34-15-nexthop-internet|20.34.0.0/15|インターネット|
 |mi-20-36-14-nexthop-internet|20.36.0.0/14|インターネット|
 |mi-20-40-13-nexthop-internet|20.40.0.0/13|インターネット|
+|mi-20-48-12-nexthop-internet|20.48.0.0/12|インターネット|
+|mi-20-64-10-nexthop-internet|20.64.0.0/10|インターネット|
 |mi-20-128-16-nexthop-internet|20.128.0.0/16|インターネット|
+|mi-20-135-16-nexthop-internet|20.135.0.0/16|インターネット|
+|mi-20-136-16-nexthop-internet|20.136.0.0/16|インターネット|
 |mi-20-140-15-nexthop-internet|20.140.0.0/15|インターネット|
+|mi-20-143-16-nexthop-internet|20.143.0.0/16|インターネット|
 |mi-20-144-14-nexthop-internet|20.144.0.0/14|インターネット|
 |mi-20-150-15-nexthop-internet|20.150.0.0/15|インターネット|
 |mi-20-160-12-nexthop-internet|20.160.0.0/12|インターネット|
 |mi-20-176-14-nexthop-internet|20.176.0.0/14|インターネット|
 |mi-20-180-14-nexthop-internet|20.180.0.0/14|インターネット|
 |mi-20-184-13-nexthop-internet|20.184.0.0/13|インターネット|
+|mi-20-192-10-nexthop-internet|20.192.0.0/10|インターネット|
 |mi-40-64-10-nexthop-internet|40.64.0.0/10|インターネット|
 |mi-51-4-15-nexthop-internet|51.4.0.0/15|インターネット|
 |mi-51-8-16-nexthop-internet|51.8.0.0/16|インターネット|
 |mi-51-10-15-nexthop-internet|51.10.0.0/15|インターネット|
-|mi-51-12-15-nexthop-internet|51.12.0.0/15|インターネット|
 |mi-51-18-16-nexthop-internet|51.18.0.0/16|インターネット|
 |mi-51-51-16-nexthop-internet|51.51.0.0/16|インターネット|
 |mi-51-53-16-nexthop-internet|51.53.0.0/16|インターネット|
 |mi-51-103-16-nexthop-internet|51.103.0.0/16|インターネット|
 |mi-51-104-15-nexthop-internet|51.104.0.0/15|インターネット|
-|mi-51-107-16-nexthop-internet|51.107.0.0/16|インターネット|
-|mi-51-116-16-nexthop-internet|51.116.0.0/16|インターネット|
-|mi-51-120-16-nexthop-internet|51.120.0.0/16|インターネット|
-|mi-51-124-16-nexthop-internet|51.124.0.0/16|インターネット|
 |mi-51-132-16-nexthop-internet|51.132.0.0/16|インターネット|
 |mi-51-136-15-nexthop-internet|51.136.0.0/15|インターネット|
 |mi-51-138-16-nexthop-internet|51.138.0.0/16|インターネット|
@@ -187,6 +190,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 |mi-111-221-16-20-nexthop-internet|111.221.16.0/20|インターネット|
 |mi-111-221-64-18-nexthop-internet|111.221.64.0/18|インターネット|
 |mi-129-75-16-nexthop-internet|129.75.0.0/16|インターネット|
+|mi-131-107-16-nexthop-internet|131.107.0.0/16|インターネット|
 |mi-131-253-1-24-nexthop-internet|131.253.1.0/24|インターネット|
 |mi-131-253-3-24-nexthop-internet|131.253.3.0/24|インターネット|
 |mi-131-253-5-24-nexthop-internet|131.253.5.0/24|インターネット|
@@ -220,6 +224,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 |mi-157-54-15-nexthop-internet|157.54.0.0/15|インターネット|
 |mi-157-56-14-nexthop-internet|157.56.0.0/14|インターネット|
 |mi-157-60-16-nexthop-internet|157.60.0.0/16|インターネット|
+|mi-167-105-16-nexthop-internet|167.105.0.0/16|インターネット|
 |mi-167-220-16-nexthop-internet|167.220.0.0/16|インターネット|
 |mi-168-61-16-nexthop-internet|168.61.0.0/16|インターネット|
 |mi-168-62-15-nexthop-internet|168.62.0.0/15|インターネット|
@@ -228,8 +233,6 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 |mi-192-48-225-24-nexthop-internet|192.48.225.0/24|インターネット|
 |mi-192-84-159-24-nexthop-internet|192.84.159.0/24|インターネット|
 |mi-192-84-160-23-nexthop-internet|192.84.160.0/23|インターネット|
-|mi-192-100-102-24-nexthop-internet|192.100.102.0/24|インターネット|
-|mi-192-100-103-24-nexthop-internet|192.100.103.0/24|インターネット|
 |mi-192-197-157-24-nexthop-internet|192.197.157.0/24|インターネット|
 |mi-193-149-64-19-nexthop-internet|193.149.64.0/19|インターネット|
 |mi-193-221-113-24-nexthop-internet|193.221.113.0/24|インターネット|
@@ -275,13 +278,34 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 |mi-213-199-128-18-nexthop-internet|213.199.128.0/18|インターネット|
 |mi-216-32-180-22-nexthop-internet|216.32.180.0/22|インターネット|
 |mi-216-220-208-20-nexthop-internet|216.220.208.0/20|インターネット|
+|mi-23-96-13-nexthop-internet|23.96.0.0/13|インターネット|
+|mi-42-159-16-nexthop-internet|42.159.0.0/16|インターネット|
+|mi-51-13-17-nexthop-internet|51.13.0.0/17|インターネット|
+|mi-51-107-16-nexthop-internet|51.107.0.0/16|インターネット|
+|mi-51-116-16-nexthop-internet|51.116.0.0/16|インターネット|
+|mi-51-120-16-nexthop-internet|51.120.0.0/16|インターネット|
+|mi-51-120-128-17-nexthop-internet|51.120.128.0/17|インターネット|
+|mi-51-124-16-nexthop-internet|51.124.0.0/16|インターネット|
+|mi-102-37-18-nexthop-internet|102.37.0.0/18|インターネット|
+|mi-102-133-16-nexthop-internet|102.133.0.0/16|インターネット|
+|mi-199-30-16-20-nexthop-internet|199.30.16.0/20|インターネット|
+|mi-204-79-180-24-nexthop-internet|204.79.180.0/24|インターネット|
 ||||
 
-\* MI SUBNET は、10.x.x.x/y 形式のサブネットの IP アドレス範囲を参照します。 この情報は、Azure portal のサブネット プロパティで見つけることができます。
+\* MI SUBNET は、x.x.x.x/y 形式のサブネットの IP アドレス範囲を参照します。 この情報は、Azure portal のサブネット プロパティで見つけることができます。
 
 また、オンプレミスのプライベート IP 範囲が宛先として含まれるトラフィックを、仮想ネットワーク ゲートウェイまたは仮想ネットワーク アプライアンス (NVA) 経由でルーティングするルート テーブルにエントリを追加することもできます。
 
 仮想ネットワークにカスタム DNS が含まれる場合、カスタム DNS サーバーはパブリック DNS レコードを解決できる必要があります。 Azure AD Authentication などの追加機能を使用するには、追加の FQDN 解決が必要になる可能性があります。 詳細については、[カスタム DNS の設定](sql-database-managed-instance-custom-dns.md)に関する記事を参照してください。
+
+### <a name="networking-constraints"></a>ネットワークの制約
+
+**TLS 1.2 は送信接続に適用されます**:2020 年 1 月、Microsoft はすべての Azure サービスのサービス内トラフィックに TLS 1.2 を適用しました。 その結果、Azure SQL Database マネージド インスタンスについては、SQL Server へのレプリケーションとリンク サーバー接続に使用される送信接続に対して、TLS 1.2 が適用されることとなりました。 Managed Instance で 2016 より前のバージョンの SQL Server を使用している場合は、[TLS 1.2 固有の更新プログラム](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) が適用されていることを確認してください。
+
+現在、Managed Instance では、次の仮想ネットワーク機能はサポートされていません。
+- **Microsoft ピアリング**:Managed Instance が存在する仮想ネットワークと直接または推移的にピアリングされた Express Route 回線で [Microsoft ピアリング](../expressroute/expressroute-faqs.md#microsoft-peering)を有効にすると、仮想ネットワーク内の Managed Instance コンポーネント間のトラフィック フローと、それに依存するサービスに影響が及び、可用性の問題が発生します。 Microsoft ピアリングが既に有効になっている仮想ネットワークへの Managed Instance デプロイは、失敗することが予想されます。
+- **グローバル仮想ネットワーク ピアリング**:Azure リージョン間での[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)接続は、[ドキュメントに記載されているロード バランサーの制約](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)により、Managed Instance では機能しません。
+- **AzurePlatformDNS**:AzurePlatformDNS [サービス タグ](../virtual-network/service-tags-overview.md)を使用してプラットフォーム DNS 解決をブロックすると、Managed Instance をレンダリングできなくなります。 Managed Instance では、エンジン内部での DNS 解決にユーザー定義の DNS を使用することがサポートされていますが、プラットフォームの操作については、プラットフォーム DNS への依存性が存在します。
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>[非推奨] サービス支援サブネット構成を使用しないネットワーク要件
 
@@ -298,7 +322,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="mandatory-inbound-security-rules"></a>必須の受信セキュリティ規則
 
-| Name       |Port                        |Protocol|source           |宛先|アクション|
+| 名前       |Port                        |Protocol|source           |宛先|アクション|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000、9003、1438、1440、1452|TCP     |Any              |MI SUBNET  |Allow |
 |mi_subnet   |Any                         |Any     |MI SUBNET        |MI SUBNET  |Allow |
@@ -306,7 +330,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="mandatory-outbound-security-rules"></a>必須の送信セキュリティ規則
 
-| Name       |Port          |Protocol|source           |宛先|アクション|
+| 名前       |Port          |Protocol|source           |宛先|アクション|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
 |mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |
@@ -314,27 +338,66 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 > [!IMPORTANT]
 > ポート 9000、9003、1438、1440、1452 に対するインバウンド規則が 1 つだけあり、ポート 443、12000 に対するアウトバウンド規則が 1 つあることを確認します。 インバウンド規則とアウトバウンド規則がポートごとに別々に構成されていると、Azure Resource Manager デプロイによる Managed Instance のプロビジョニングは失敗します。 これらのポートが別々の規則に含まれている場合、デプロイはエラー コード `VnetSubnetConflictWithIntendedPolicy` で失敗します
 
-\* MI SUBNET は、10.x.x.x/y 形式のサブネットの IP アドレス範囲を参照します。 この情報は、Azure portal のサブネット プロパティで見つけることができます。
+\* MI SUBNET は、x.x.x.x/y 形式のサブネットの IP アドレス範囲を参照します。 この情報は、Azure portal のサブネット プロパティで見つけることができます。
 
 > [!IMPORTANT]
 > 必須の受信セキュリティ規則では、ポート 9000、9003、1438、1440、および 1452 で "_任意_" のソースからのトラフィックを許可しますが、これらのポートは組み込みのファイアウォールによって保護されています。 詳細については、[管理エンドポイントのアドレスの確認](sql-database-managed-instance-find-management-endpoint-ip-address.md)に関する記事を参照してください。
+
 > [!NOTE]
 > マネージド インスタンスでトランザクション レプリケーションを使用しているときに、いずれかのインスタンス データベースをパブリッシャーまたはディストリビューターとして使用した場合、サブネットのセキュリティ規則でポート 445 (TCP 送信) を開きます。 このポートは、Azure ファイル共有へのアクセスを許可します。
 
 ### <a name="user-defined-routes"></a>ユーザー定義のルート
 
-|Name|アドレス プレフィックス|次ホップ|
+|名前|アドレス プレフィックス|次ホップ|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI SUBNET|仮想ネットワーク|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|インターネット|
-|mi-13-96-13-nexthop-internet|13.96.0.0/13|インターネット|
 |mi-13-104-14-nexthop-internet|13.104.0.0/14|インターネット|
-|mi-20-8-nexthop-internet|20.0.0.0/8|インターネット|
-|mi-23-96-13-nexthop-internet|23.96.0.0/13|インターネット|
+|mi-20-33-16-nexthop-internet|20.33.0.0/16|インターネット|
+|mi-20-34-15-nexthop-internet|20.34.0.0/15|インターネット|
+|mi-20-36-14-nexthop-internet|20.36.0.0/14|インターネット|
+|mi-20-40-13-nexthop-internet|20.40.0.0/13|インターネット|
+|mi-20-48-12-nexthop-internet|20.48.0.0/12|インターネット|
+|mi-20-64-10-nexthop-internet|20.64.0.0/10|インターネット|
+|mi-20-128-16-nexthop-internet|20.128.0.0/16|インターネット|
+|mi-20-135-16-nexthop-internet|20.135.0.0/16|インターネット|
+|mi-20-136-16-nexthop-internet|20.136.0.0/16|インターネット|
+|mi-20-140-15-nexthop-internet|20.140.0.0/15|インターネット|
+|mi-20-143-16-nexthop-internet|20.143.0.0/16|インターネット|
+|mi-20-144-14-nexthop-internet|20.144.0.0/14|インターネット|
+|mi-20-150-15-nexthop-internet|20.150.0.0/15|インターネット|
+|mi-20-160-12-nexthop-internet|20.160.0.0/12|インターネット|
+|mi-20-176-14-nexthop-internet|20.176.0.0/14|インターネット|
+|mi-20-180-14-nexthop-internet|20.180.0.0/14|インターネット|
+|mi-20-184-13-nexthop-internet|20.184.0.0/13|インターネット|
+|mi-20-192-10-nexthop-internet|20.192.0.0/10|インターネット|
 |mi-40-64-10-nexthop-internet|40.64.0.0/10|インターネット|
-|mi-42-159-16-nexthop-internet|42.159.0.0/16|インターネット|
-|mi-51-8-nexthop-internet|51.0.0.0/8|インターネット|
-|mi-52-8-nexthop-internet|52.0.0.0/8|インターネット|
+|mi-51-4-15-nexthop-internet|51.4.0.0/15|インターネット|
+|mi-51-8-16-nexthop-internet|51.8.0.0/16|インターネット|
+|mi-51-10-15-nexthop-internet|51.10.0.0/15|インターネット|
+|mi-51-18-16-nexthop-internet|51.18.0.0/16|インターネット|
+|mi-51-51-16-nexthop-internet|51.51.0.0/16|インターネット|
+|mi-51-53-16-nexthop-internet|51.53.0.0/16|インターネット|
+|mi-51-103-16-nexthop-internet|51.103.0.0/16|インターネット|
+|mi-51-104-15-nexthop-internet|51.104.0.0/15|インターネット|
+|mi-51-132-16-nexthop-internet|51.132.0.0/16|インターネット|
+|mi-51-136-15-nexthop-internet|51.136.0.0/15|インターネット|
+|mi-51-138-16-nexthop-internet|51.138.0.0/16|インターネット|
+|mi-51-140-14-nexthop-internet|51.140.0.0/14|インターネット|
+|mi-51-144-15-nexthop-internet|51.144.0.0/15|インターネット|
+|mi-52-96-12-nexthop-internet|52.96.0.0/12|インターネット|
+|mi-52-112-14-nexthop-internet|52.112.0.0/14|インターネット|
+|mi-52-125-16-nexthop-internet|52.125.0.0/16|インターネット|
+|mi-52-126-15-nexthop-internet|52.126.0.0/15|インターネット|
+|mi-52-130-15-nexthop-internet|52.130.0.0/15|インターネット|
+|mi-52-132-14-nexthop-internet|52.132.0.0/14|インターネット|
+|mi-52-136-13-nexthop-internet|52.136.0.0/13|インターネット|
+|mi-52-145-16-nexthop-internet|52.145.0.0/16|インターネット|
+|mi-52-146-15-nexthop-internet|52.146.0.0/15|インターネット|
+|mi-52-148-14-nexthop-internet|52.148.0.0/14|インターネット|
+|mi-52-152-13-nexthop-internet|52.152.0.0/13|インターネット|
+|mi-52-160-11-nexthop-internet|52.160.0.0/11|インターネット|
+|mi-52-224-11-nexthop-internet|52.224.0.0/11|インターネット|
 |mi-64-4-18-nexthop-internet|64.4.0.0/18|インターネット|
 |mi-65-52-14-nexthop-internet|65.52.0.0/14|インターネット|
 |mi-66-119-144-20-nexthop-internet|66.119.144.0/20|インターネット|
@@ -343,7 +406,9 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 |mi-91-190-216-21-nexthop-internet|91.190.216.0/21|インターネット|
 |mi-94-245-64-18-nexthop-internet|94.245.64.0/18|インターネット|
 |mi-103-9-8-22-nexthop-internet|103.9.8.0/22|インターネット|
-|mi-103-25-156-22-nexthop-internet|103.25.156.0/22|インターネット|
+|mi-103-25-156-24-nexthop-internet|103.25.156.0/24|インターネット|
+|mi-103-25-157-24-nexthop-internet|103.25.157.0/24|インターネット|
+|mi-103-25-158-23-nexthop-internet|103.25.158.0/23|インターネット|
 |mi-103-36-96-22-nexthop-internet|103.36.96.0/22|インターネット|
 |mi-103-255-140-22-nexthop-internet|103.255.140.0/22|インターネット|
 |mi-104-40-13-nexthop-internet|104.40.0.0/13|インターネット|
@@ -352,7 +417,23 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 |mi-111-221-16-20-nexthop-internet|111.221.16.0/20|インターネット|
 |mi-111-221-64-18-nexthop-internet|111.221.64.0/18|インターネット|
 |mi-129-75-16-nexthop-internet|129.75.0.0/16|インターネット|
-|mi-131-253-16-nexthop-internet|131.253.0.0/16|インターネット|
+|mi-131-107-16-nexthop-internet|131.107.0.0/16|インターネット|
+|mi-131-253-1-24-nexthop-internet|131.253.1.0/24|インターネット|
+|mi-131-253-3-24-nexthop-internet|131.253.3.0/24|インターネット|
+|mi-131-253-5-24-nexthop-internet|131.253.5.0/24|インターネット|
+|mi-131-253-6-24-nexthop-internet|131.253.6.0/24|インターネット|
+|mi-131-253-8-24-nexthop-internet|131.253.8.0/24|インターネット|
+|mi-131-253-12-22-nexthop-internet|131.253.12.0/22|インターネット|
+|mi-131-253-16-23-nexthop-internet|131.253.16.0/23|インターネット|
+|mi-131-253-18-24-nexthop-internet|131.253.18.0/24|インターネット|
+|mi-131-253-21-24-nexthop-internet|131.253.21.0/24|インターネット|
+|mi-131-253-22-23-nexthop-internet|131.253.22.0/23|インターネット|
+|mi-131-253-24-21-nexthop-internet|131.253.24.0/21|インターネット|
+|mi-131-253-32-20-nexthop-internet|131.253.32.0/20|インターネット|
+|mi-131-253-61-24-nexthop-internet|131.253.61.0/24|インターネット|
+|mi-131-253-62-23-nexthop-internet|131.253.62.0/23|インターネット|
+|mi-131-253-64-18-nexthop-internet|131.253.64.0/18|インターネット|
+|mi-131-253-128-17-nexthop-internet|131.253.128.0/17|インターネット|
 |mi-132-245-16-nexthop-internet|132.245.0.0/16|インターネット|
 |mi-134-170-16-nexthop-internet|134.170.0.0/16|インターネット|
 |mi-134-177-16-nexthop-internet|134.177.0.0/16|インターネット|
@@ -370,6 +451,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 |mi-157-54-15-nexthop-internet|157.54.0.0/15|インターネット|
 |mi-157-56-14-nexthop-internet|157.56.0.0/14|インターネット|
 |mi-157-60-16-nexthop-internet|157.60.0.0/16|インターネット|
+|mi-167-105-16-nexthop-internet|167.105.0.0/16|インターネット|
 |mi-167-220-16-nexthop-internet|167.220.0.0/16|インターネット|
 |mi-168-61-16-nexthop-internet|168.61.0.0/16|インターネット|
 |mi-168-62-15-nexthop-internet|168.62.0.0/15|インターネット|
@@ -378,8 +460,6 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 |mi-192-48-225-24-nexthop-internet|192.48.225.0/24|インターネット|
 |mi-192-84-159-24-nexthop-internet|192.84.159.0/24|インターネット|
 |mi-192-84-160-23-nexthop-internet|192.84.160.0/23|インターネット|
-|mi-192-100-102-24-nexthop-internet|192.100.102.0/24|インターネット|
-|mi-192-100-103-24-nexthop-internet|192.100.103.0/24|インターネット|
 |mi-192-197-157-24-nexthop-internet|192.197.157.0/24|インターネット|
 |mi-193-149-64-19-nexthop-internet|193.149.64.0/19|インターネット|
 |mi-193-221-113-24-nexthop-internet|193.221.113.0/24|インターネット|
@@ -425,6 +505,18 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 |mi-213-199-128-18-nexthop-internet|213.199.128.0/18|インターネット|
 |mi-216-32-180-22-nexthop-internet|216.32.180.0/22|インターネット|
 |mi-216-220-208-20-nexthop-internet|216.220.208.0/20|インターネット|
+|mi-23-96-13-nexthop-internet|23.96.0.0/13|インターネット|
+|mi-42-159-16-nexthop-internet|42.159.0.0/16|インターネット|
+|mi-51-13-17-nexthop-internet|51.13.0.0/17|インターネット|
+|mi-51-107-16-nexthop-internet|51.107.0.0/16|インターネット|
+|mi-51-116-16-nexthop-internet|51.116.0.0/16|インターネット|
+|mi-51-120-16-nexthop-internet|51.120.0.0/16|インターネット|
+|mi-51-120-128-17-nexthop-internet|51.120.128.0/17|インターネット|
+|mi-51-124-16-nexthop-internet|51.124.0.0/16|インターネット|
+|mi-102-37-18-nexthop-internet|102.37.0.0/18|インターネット|
+|mi-102-133-16-nexthop-internet|102.133.0.0/16|インターネット|
+|mi-199-30-16-20-nexthop-internet|199.30.16.0/20|インターネット|
+|mi-204-79-180-24-nexthop-internet|204.79.180.0/24|インターネット|
 ||||
 
 ## <a name="next-steps"></a>次のステップ

@@ -3,12 +3,12 @@ title: プライベート リンクを設定する
 description: コンテナー レジストリにプライベート エンドポイントを設定し、ローカル仮想ネットワークでプライベート リンクを有効にする
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: b7dcf2d1eb1a77ea8b9660318ed2a7d4ec183b42
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: de8228d84497e71f24dba3dd4e6162cb6735a8c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128384"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498919"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Azure コンテナー レジストリ用に Azure Private Link を構成する 
 
@@ -28,7 +28,14 @@ Azure 仮想ネットワーク上のクライアントが[プライベート リ
 ## <a name="prerequisites"></a>前提条件
 
 * この記事の Azure CLI の手順を使用する場合は、Azure CLI バージョン 2.2.0 以降をお勧めします。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。 または、[Azure Cloud Shell](../cloud-shell/quickstart.md) で実行します。
-* コンテナー レジストリがまだない場合は、1 つ作成し (Premium レベルが必要)、Docker Hub から `hello-world` などのサンプル イメージをプッシュします。 たとえば、[Azure portal][quickstart-portal] または [Azure CLI][quickstart-cli] を使用してレジストリを作成します。 
+* コンテナー レジストリがまだない場合は、1 つ作成し (Premium レベルが必要)、Docker Hub から `hello-world` などのサンプル イメージをプッシュします。 たとえば、[Azure portal][quickstart-portal] または [Azure CLI][quickstart-cli] を使用してレジストリを作成します。
+* 別の Azure サブスクリプションのプライベート リンクを使用してレジストリ アクセスを構成する場合、そのサブスクリプションで Azure Container Registry のリソース プロバイダーを登録する必要があります。 次に例を示します。
+
+  ```azurecli
+  az account set --subscription <Name or ID of subscription of private link>
+
+  az provider register --namespace Microsoft.ContainerRegistry
+  ``` 
 
 この記事の Azure CLI 例では、次の環境変数を使用します。 ご利用の環境に適した値に置き換えてください。 すべての例は、Bash シェル用に書式設定されています。
 
@@ -259,7 +266,7 @@ az network private-dns record-set a add-record \
 1. **[+ プライベート エンドポイント]** を選択します。
 1. **[基本]** タブで、次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -271,7 +278,7 @@ az network private-dns record-set a add-record \
 5. **リソース** を選択します。
 6. 次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     |接続方法  | **[マイ ディレクトリ内の Azure リソースに接続します]** を選択します。|
     | サブスクリプション| サブスクリプションを選択します。 |
@@ -282,7 +289,7 @@ az network private-dns record-set a add-record \
 7. **構成** を選択します。
 8. 次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     |**ネットワーク**| |
     | 仮想ネットワーク| *myDockerVMVNET* など、仮想マシンがデプロイされている仮想ネットワークを選択します。 |
@@ -402,10 +409,10 @@ az group delete --name $resourceGroup
 [az-network-vnet-list]: /cli/azure/network/vnet/#az-network-vnet-list
 [az-network-private-endpoint-create]: /cli/azure/network/private-endpoint#az-network-private-endpoint-create
 [az-network-private-endpoint-show]: /cli/azure/network/private-endpoint#az-network-private-endpoint-show
-[az-network-private-dns-zone-create]: /cli/azure/network/private-dns-zone/create#az-network-private-dns-zone-create
-[az-network-private-dns-link-vnet-create]: /cli/azure/network/private-dns-link/vnet#az-network-private-dns-link-vnet-create
-[az-network-private-dns-record-set-a-create]: /cli/azure/network/private-dns-record/set/a#az-network-private-dns-record-set-a-create
-[az-network-private-dns-record-set-a-add-record]: /cli/azure/network/private-dns-record/set/a#az-network-private-dns-record-set-a-add-record
+[az-network-private-dns-zone-create]: /cli/azure/network/private-dns/zone#az-network-private-dns-zone-create
+[az-network-private-dns-link-vnet-create]: /cli/azure/network/private-dns/link/vnet#az-network-private-dns-link-vnet-create
+[az-network-private-dns-record-set-a-create]: /cli/azure/network/private-dns/record-set/a#az-network-private-dns-record-set-a-create
+[az-network-private-dns-record-set-a-add-record]: /cli/azure/network/private-dns/record-set/a#az-network-private-dns-record-set-a-add-record
 [az-resource-show]: /cli/azure/resource#az-resource-show
 [quickstart-portal]: container-registry-get-started-portal.md
 [quickstart-cli]: container-registry-get-started-azure-cli.md

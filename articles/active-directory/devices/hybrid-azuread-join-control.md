@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6bb57a60b2ed3b39bf83154d3afea88071efbac
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: f43db805ccbb7d4e546c51bbe39350f4bbba2efb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672420"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049989"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の検証を制御する
 
@@ -43,7 +43,7 @@ AD で SCP オブジェクトを変更するには、Active Directory サービ�
 1. **ADSI Edit** デスクトップ アプリケーションは、エンタープライズ管理者として、管理ワークステーションまたはドメイン コントローラーから起動します。
 1. ドメインの**構成名前付けコンテキスト**に接続します。
 1. **CN=Configuration,DC=contoso,DC=com** > **CN=Services** > **CN=Device Registration Configuration** を参照します
-1. **CN=Device Registration Configuration** の下のリーフ オブジェクトを右クリックして、 **[プロパティ]** を選択します
+1. リーフ オブジェクト **CN=62a0ff2e-97b9-4513-943f-0d221bd30080** を右クリックし、 **[プロパティ]** を選択します
    1. **[属性エディター]** ウィンドウから**キーワード**を選択し、 **[編集]** をクリックします
    1. **azureADId** と **azureADName** の値を選択し (一度に 1 つずつ)、 **[削除]** をクリックします
 1. **[ADSI エディター]** を閉じます

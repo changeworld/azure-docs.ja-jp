@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 3141795ed9ccfdabc9fd462a1cd09a74690f9c5b
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0a9728e05aee27e74054a77e2c9be7dc08968207
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137917"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455861"
 ---
 # <a name="train-model-module"></a>モデルのトレーニング モジュール
 
@@ -62,9 +62,9 @@ ms.locfileid: "77137917"
     > [!TIP] 
     > 列セレクターの使い方のヒントについては、「[Select Columns in Dataset (データセットの列を選択する)](./select-columns-in-dataset.md)」の記事を参照してください。 **[WITH RULES]\(規則を使用\)** オプションと **[名前別]** オプションの使い方についてのヒントといくつかの一般的なシナリオが取り上げられています。
   
-5.  パイプラインを実行します。 データの量が多いと、この処理にしばらく時間がかかる場合があります。
+5.  パイプラインを送信します。 データの量が多いと、この処理にしばらく時間がかかる場合があります。
 
-## <a name="bkmk_results"></a> 結果
+## <a name="results"></a><a name="bkmk_results"></a> 結果
 
 モデルのトレーニング後、次の作業を行います。
 

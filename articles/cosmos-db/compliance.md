@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB のコンプライアンス認
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: a41d95a5ab0665698676d0f17333e2f5c7f467eb
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5a35ec10d7d9bc60bbbf28ee85c83c838108050b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872205"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527369"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB のコンプライアンス 
 
@@ -44,6 +44,7 @@ Azure Cosmos DB は、その認証範囲を拡大し続けています。 現時
 | ISO 27017:2015 | | | |
 | ISO 27018:2014 | | | |
 | ISO 9001:2015 | | | |
+| ISO 27701:2019| | | |
 | SOC 1、2、3 | | | |
 
 これらのコンプライアンス認証とそれらのメリットの詳細については、「[Overview of Microsoft Azure compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)」(Microsoft Azure のコンプライアンスの概要) ページをご覧ください。
@@ -63,7 +64,7 @@ Azure Cosmos DB は、その認証範囲を拡大し続けています。 現時
 | SOC 1、2、3 | | |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure のコンプライアンス認証の詳細については、以下の記事を参照してください。
 

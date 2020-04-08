@@ -1,17 +1,17 @@
 ---
-title: Azure テナントにまたがる Log Analytics ワークスペースに Azure アクティビティ ログを収集する | Microsoft Docs
+title: Azure Monitor でのテナント間 Azure アクティビティ ログ
 description: Event Hubs と Logic Apps を使用して Azure アクティビティ ログからデータを収集し、それを別のテナント内の Azure Monitor の Log Analytics ワークスペースに送信します。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: 52bf8b955ef4dc9cfae7fd74fbad0df744609196
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d2f794365e15768dbf47647f2d9a8d08d5e8ba3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669269"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055739"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Azure Active Directory テナントにまたがる Azure Monitor に Azure アクティビティ ログを収集する (レガシ)
 
@@ -299,7 +299,7 @@ Event Hub からの出力には、レコードの配列を持つ JSON ペイロ�
 
     ![データ送信アクションの構成](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |設定        | Value           | 説明  |
+   |設定        | 値           | 説明  |
    |---------------|---------------------------|--------------|
    |[JSON Request body]\(JSON 要求本文\)  | **Compose** アクションの**出力** | Compose アクションの本文からレコードを取得します。 |
    | [カスタム ログの名前] | AzureActivity | インポートされたデータを保持するために Log Analytics ワークスペース内に作成するカスタム ログ テーブルの名前。 |

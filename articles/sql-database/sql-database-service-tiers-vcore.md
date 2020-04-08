@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 9b156193035d87472c462bae37e405e0317d8402
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 5fd69dcd30292630862887ab5434764ba377b396
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650301"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481084"
 ---
 # <a name="vcore-model-overview"></a>仮想コア モデルの概要
 
@@ -81,13 +81,15 @@ Gen4/Gen5 が利用可能なリージョンについては、[Gen4/Gen5 の可�
 - ワークロードによっては、Fsv2 シリーズは Gen5 よりも仮想コアあたりの CPU パフォーマンスを向上させることができます。72 vCore サイズでは、Gen5 の 80 仮想コアと比較して、より高い CPU パフォーマンスを実現し、コストを削減できます。 
 - Fsv2 を使用すると、他のハードウェアよりも仮想コアあたりのメモリと tempdb が少なくなります。そのため、これらの制限の影響を受けるワークロードでは、Gen5 または M シリーズを代わりに検討する必要があります。  
 
-Fsv2 シリーズが利用可能なリージョンについては、[Fsv2 シリーズの可用性](#fsv2-series)に関するセクションを参照してください。
+Fsv2 シリーズは、General Purpose レベルでのみサポートされています。  Fsv2 シリーズが利用可能なリージョンについては、[Fsv2 シリーズの可用性](#fsv2-series)に関するセクションを参照してください。
 
 
 ### <a name="m-seriespreview"></a>M シリーズ (プレビュー)
 
 - M シリーズは、Gen5 で提供されるよりも多くのメモリと高いコンピューティング制限を要求するワークロードのためのメモリ最適化のハードウェア オプションです。
 - M シリーズでは、仮想コアあたり 29 GB と 128 個の仮想コアを提供し、Gen5 に比べて、メモリ制限が 8 倍の 4 TB 近くまで増加します。
+
+M シリーズは Business Critical レベルでのみサポートされており、ゾーン冗長はサポートされていません。
 
 サブスクリプションとリージョンで M シリーズ ハードウェアを有効にするには、サポート リクエストが開かれている必要があります。 サブスクリプションの種類は、従量課金制やマイクロソフト エンタープライズ契約 (EA) を含む有料のオファーである必要があります。  サポート リクエストが承認されると、M シリーズの選択とプロビジョニングのエクスペリエンスは、他のハードウェアの世代と同じパターンに従います。 M シリーズが利用可能なリージョンについては、[M シリーズの可用性](#m-series)に関するセクションを参照してください。
 
@@ -98,10 +100,11 @@ Fsv2 シリーズが利用可能なリージョンについては、[Fsv2 シリ
 |ハードウェアの世代  |Compute  |メモリ  |
 |:---------|:---------|:---------|
 |Gen4     |- Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサ<br>- 最大 24 個の仮想コアをプロビジョニング (1 仮想コア = 1 物理コア)  |- 仮想コアあたり 7 GB<br>- 最大 168 GB のプロビジョニング|
-|第 5 世代     |**プロビジョニング済みコンピューティング**<br>- Intel E5-2673 v4 (Broadwell) 2.3 GHz および Intel SP-8160 (Skylake) プロセッサ<br>- 最大 80 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)<br><br>**サーバーレス コンピューティング**<br>- Intel E5-2673 v4 (Broadwell) 2.3 GHz および Intel SP-8160 (Skylake) プロセッサ<br>- 最大 16 個の仮想コアを自動スケール (1 仮想コア = 1 ハイパースレッド)|**プロビジョニング済みコンピューティング**<br>- 仮想コアあたり 5.1 GB<br>- 最大 408 GB をプロビジョニング<br><br>**サーバーレス コンピューティング**<br>- 仮想コアあたり最大 24 GB を自動スケール<br>- 最大 48 GB を自動スケール|
+|第 5 世代     |**プロビジョニング済みコンピューティング**<br>- Intel E5-2673 v4 (Broadwell) 2.3 GHz および Intel SP-8160 (Skylake)* プロセッサ<br>- 最大 80 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)<br><br>**サーバーレス コンピューティング**<br>- Intel E5-2673 v4 (Broadwell) 2.3 GHz および Intel SP-8160 (Skylake)* プロセッサ<br>- 最大 16 個の仮想コアを自動スケール (1 仮想コア = 1 ハイパースレッド)|**プロビジョニング済みコンピューティング**<br>- 仮想コアあたり 5.1 GB<br>- 最大 408 GB をプロビジョニング<br><br>**サーバーレス コンピューティング**<br>- 仮想コアあたり最大 24 GB を自動スケール<br>- 最大 48 GB を自動スケール|
 |Fsv2 シリーズ     |- Intel Xeon Platinum 8168 (SkyLake) プロセッサ<br>- すべての主要なターボ クロック速度 (3.4 GHz) と、最大 1 コアのターボ クロック速度 (3.7 GHz) を実現します。<br>- 最大 72 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)|- 仮想コアあたり 1.9 GB<br>- 136 GB をプロビジョニング|
 |M シリーズ     |- Intel Xeon E7-8890 v3 2.5 GHz プロセッサ<br>- 128 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)|- 仮想コアあたり 29 GB<br>- 3.7 TB をプロビジョニング|
 
+\* [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 動的管理ビューでは、Intel SP-8160 (Skylake) プロセッサを使用する Gen5 データベースのハードウェアの世代が Gen6 として表示されます。 すべての Gen5 データベースのリソース制限は、プロセッサの種類 (Broadwell または Skylake) に関係なく同じです。
 
 リソース制限の詳細については、[単一データベースに対するリソース制限 (仮想コア)](sql-database-vcore-resource-limits-single-databases.md) に関するページ、または[エラスティック プールに対するリソース制限 (仮想コア)](sql-database-vcore-resource-limits-elastic-pools.md) に関するページを参照してください。
 
@@ -174,7 +177,7 @@ az sql mi update -g mygroup -n myinstance --family Gen5
 
 ### <a name="hardware-availability"></a>ハードウェアの可用性
 
-#### <a name="gen4gen5-1"></a>Gen4/Gen5
+#### <a name="gen4gen5"></a><a name="gen4gen5-1"></a>Gen4/Gen5
 
 Gen4 ハードウェアは[段階的に廃止中](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)であり、新しいデプロイでは利用できなくなりました。 すべての新しいデータベースを Gen5 ハードウェアにデプロイする必要があります。
 

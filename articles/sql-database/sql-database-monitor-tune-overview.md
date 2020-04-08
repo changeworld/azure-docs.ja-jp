@@ -1,6 +1,6 @@
 ---
 title: 監視とパフォーマンスのチューニング
-description: 評価と改善を通じて Azure SQL Database のパフォーマンスをチューニングするためのヒントを紹介します。
+description: Azure SQL Database での監視とパフォーマンス チューニングの機能および手法の概要。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,249 +10,99 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: e77af00dc3352af3265da90685e58b34c96bee81
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/10/2020
+ms.openlocfilehash: 837d88665c1fdffe902c9c478e5d6dc65a2e402a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232471"
 ---
-# <a name="monitoring-and-performance-tuning"></a>監視とパフォーマンスのチューニング
+# <a name="monitoring-and-performance-tuning-in-azure-sql-database"></a>Azure SQL Database の監視とパフォーマンス チューニング
 
-Azure SQL Database には、簡単に使用状況を監視し、リソース (CPU、メモリ、I/O など) を追加または削除し、潜在的な問題のトラブルシューティングを行い、データベースのパフォーマンス向上を可能にする推奨を行うためのツールと方法が用意されています。 Azure SQL Database の機能を使用すると、データベースの問題を自動的に修正できます。 
+Azure SQL Database 内のデータベースのパフォーマンスを監視するには、まず、特定のサービス レベルとパフォーマンス レベルの選択時に選択したデータベース パフォーマンスのレベルを基準にして、ワークロードで使用される CPU および IO リソースを監視します。 これを実現するために、Azure SQL Database では、Azure portal 内で表示できる、または次のいずれかの SQL 管理ツールを使用して表示できるリソース メトリックを出力します:[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) または [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)。
 
-自動チューニングを使用すると、データベースをワークロードに合わせて調整し、パフォーマンスを自動的に最適化することができます。 ただし、トラブルシューティングが必要になる場合がある個別の問題がいくつかあります。 この記事では、パフォーマンスの問題のトラブルシューティングに使用できるいくつかのベスト プラクティスとツールについて説明します。
+単一データベースとプールされたデータベースの場合、Azure SQL Database には、パフォーマンスを向上させるために、インテリジェントなパフォーマンス チューニングの推奨設定と自動チューニング オプションを提供するデータベース アドバイザーが多数用意されています。 また、Query Performance Insight では、単一データベースとプールされたデータベースの CPU と IO の使用率が最も高いクエリについての詳細が表示されます。
 
-データベースが問題なく実行されるようにするには、次のことを行う必要があります。
-- [データベースのパフォーマンスの監視](#monitor-database-performance)を行って、データベースに割り当てられているリソースでワークロードを処理できることを確認します。 データベースがリソース制限に達している場合は、次のことを検討してください。
-   - リソース消費量が上位のクエリを特定して最適化する。
-   - [サービス レベルをアップグレードする](https://docs.microsoft.com/azure/sql-database/sql-database-scale-resources)ことで、さらにリソースを追加する。
-- [パフォーマンスの問題のトラブルシューティング](#troubleshoot-performance-problems)を行って、潜在的な問題が発生した原因を特定し、問題の根本原因を特定します。 根本原因を特定したら、問題を解決するための手順を実行します。
+Azure SQL Database では、データベースやソリューションのパフォーマンスのトラブルシューティングを行い、これらを最大化するのに役立つ、人工知能によって支えられる追加の監視およびチューニング機能が提供されます。 使用と分析 (具体的には [SQL Analytics](../azure-monitor/insights/azure-sql.md) を使用) のために、複数の宛先のいずれかに対してこれらの [Intelligent Insights](sql-database-intelligent-insights.md) およびその他の SQL Database リソース ログとメトリックの[ストリーミング エクスポート](sql-database-metrics-diag-logging.md)を構成することを選択できます。 Azure SQL Analytics は、1 つのビューですべての Azure SQL データベースのパフォーマンスを、複数のサブスクリプションにわたって大規模に監視するための先進のクラウド監視ソリューションです。 エクスポートできるログとメトリックの一覧については、[エクスポートの診断テレメトリ](sql-database-metrics-diag-logging.md#diagnostic-telemetry-for-export-for-azure-sql-database)に関するページをご覧ください
 
-## <a name="monitor-database-performance"></a>データベース パフォーマンスの監視
+最後に、SQL には、[SQL Server クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)および[動的管理ビュー (DMV)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) を備えた独自の監視機能と診断機能が用意されています。 さまざまなパフォーマンスの問題を監視するスクリプトについては、[DMV を使用した監視](sql-database-monitoring-with-dmvs.md)に関する記事をご覧ください。
 
-Azure での SQL データベースのパフォーマンスの監視は、選択したデータベース パフォーマンスのレベルに対して使用されるリソースを監視することから始めます。 以下のリソースを監視します。
- - **CPU 使用率**:データベースが長時間にわたって 100% の CPU 使用率に達しているかどうかを確認します。 CPU 使用率が高い場合は、最も多くのコンピューティング能力を使用するクエリを特定し、調整する必要があることを示している可能性があります。 CPU 使用率が高いことは、データベースまたはインスタンスを上位のサービス レベルにアップグレードする必要があることを示している可能性もあります。 
- - **待機統計**:クエリが待機している時間を調べるには、[sys.dm_os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) を使用します。 クエリの待機は、リソース、キュー待機、または外部待機で発生する場合があります。 
- - **IO 使用率**:データベースが、基盤となるストレージの IO 制限に達しているかどうかを確認します。
- - **メモリ使用量**:データベースまたはインスタンスで使用可能なメモリの量は仮想コアの数に比例します。 メモリがワークロードに対して十分であることを確認します。 ページの予測保持期間は、ページがメモリから削除されるまでの時間を示すことができるパラメーターの 1 つです。
+## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Azure portal の監視およびチューニング機能
 
-Azure SQL Database サービスには、潜在的なパフォーマンスの問題をトラブルシューティングして修正するのに役立つツールとリソースが含まれています。 [パフォーマンス チューニングの推奨事項](sql-database-advisor.md)を確認することで、リソースを変更することなくクエリのパフォーマンスを改善および最適化する機会を見極めることができます。 
+Azure portal では、Azure SQL Database により、すべてのデプロイの種類向けのリソース メトリックの監視が提供されます。 また、単一データベースとプールされたデータベースについては、データベース アドバイザーと Query Performance Insight によってクエリ チューニングの推奨設定とクエリ パフォーマンスの分析情報が提供されます。 最後に、Azure portal では、論理サーバーと、その単一およびプールされたデータベースに対して自動化を有効にすることができます。
 
-インデックスの不足や、最適化が不完全なクエリは、データベース パフォーマンスが低下する一般的な原因です。 チューニングの推奨事項を適用すると、ワークロードのパフォーマンスを向上させることができます。 識別されたすべての推奨事項を適用することで、Azure SQL データベースで[クエリのパフォーマンスを自動的に最適化](sql-database-automatic-tuning.md)することもできます。 次に、推奨事項によってデータベースのパフォーマンスが向上していることを確認します。
+### <a name="sql-database-resource-monitoring"></a>SQL Database のリソース監視
 
-> [!NOTE]
-> インデックスは、単一データベースとエラスティック プールでのみ使用できます。 インデックスはマネージド インスタンスでは使用できません。
+Azure portal 内の **[メトリック]** ビューで、次のリソース メトリックをすばやく監視できます。
 
-データベースのパフォーマンスを監視およびトラブルシューティングするには、次のオプションから選択します。
+- **DTU の使用状況**
 
-- [Azure portal](https://portal.azure.com) で、 **[SQL データベース]** を選択し、データベースを選択します。 **[監視]** グラフで、最大使用率に近づいているリソースを探します。 DTU 消費は、既定で表示されます。 **[編集]** を選択して、表示される時間の範囲と値を変更します。
-- SQL Server Management Studio などのツールには、[パフォーマンス ダッシュボード](https://docs.microsoft.com/sql/relational-databases/performance/performance-dashboard)などの多くの有用なレポートが用意されています。 これらのレポートを使用して、リソース使用量を監視し、リソース消費量が上位のクエリを特定します。 [クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store#Regressed)を使用すると、パフォーマンスが低下したクエリを識別できます。
-- [Azure portal](https://portal.azure.com) で、[Query Performance Insight](sql-database-query-performance.md) を使用して、リソースの大半を使用しているクエリを特定します。 この機能は、単一データベースとエラスティック プールでのみ使用できます。
-- [SQL Database Advisor](sql-database-advisor-portal.md) を使用して、インデックスの作成と削除、クエリのパラメーター化、およびスキーマの問題の修正に役立つ推奨事項を表示します。 この機能は、単一データベースとエラスティック プールでのみ使用できます。
-- [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) を使用して、データベースのパフォーマンスを自動的に監視します。 パフォーマンスの問題が検出されると、診断ログが生成されます。 ログには、問題の詳細と根本原因分析 (RCA) が記載されています。 可能な場合は、パフォーマンス改善の推奨事項が提供されます。
-- [自動チューニングを有効にします](sql-database-automatic-tuning-enable.md)。これにより、Azure SQL データベースでは、パフォーマンスの問題を自動的に修正できるようになります。
-- [動的管理ビュー (DMV)](sql-database-monitoring-with-dmvs.md)、[拡張イベント](sql-database-xevent-db-diff-from-svr.md)、および[クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を使用すると、パフォーマンスの問題のより詳細なトラブルシューティングに役立ちます。
+  データベースまたはエラスティック プールが長時間にわたって 100% の DTU 使用率に達しているかどうかを確認します。 DTU 使用率が高い場合は、より多くの CPU または IO リソースがワークロードに必要になる可能性があることを示しています。 最適化が必要なクエリを示している場合もあります。
+- **CPU 使用率**
 
-> [!TIP]
-> パフォーマンスの問題を特定したら、[パフォーマンスのガイダンス](sql-database-performance-guidance.md)に関する記事を確認して、Azure SQL Database のパフォーマンスを向上させる手法を見つけます。
+  データベース、エラスティック プール、またはマネージド インスタンスが長時間にわたって 100% の CPU 使用率に達しているかどうかを確認します。 CPU 使用率が高い場合は、より多くの CPU または IO リソースがワークロードに必要になる可能性があることを示しています。 最適化が必要なクエリを示している場合もあります。
+- **IO 使用率**
 
-## <a name="troubleshoot-performance-problems"></a>パフォーマンスの問題をトラブルシューティングする
+  データベース、エラスティック プール、またはマネージド インスタンスが、基盤となるストレージの IO 制限に達しているかどうかを確認します。 IO 使用率が高い場合は、より多くの CPU または IO リソースがワークロードに必要になる可能性があることを示しています。 最適化が必要なクエリを示している場合もあります。
 
-パフォーマンスの問題を診断および解決するには、まず各アクティブなクエリの状態、および各ワークロードの状態に関連するパフォーマンスの問題の原因となる条件を確認します。 Azure SQL Database のパフォーマンスを向上させるためには、アプリケーションからのアクティブな各クエリ要求は実行状態か待機状態のいずれかであることを理解する必要があります。 Azure SQL Database のパフォーマンスの問題をトラブルシューティングする際は、次の図を念頭に置いてください。
+  ![リソース メトリック](./media/sql-database-monitor-tune-overview/resource-metrics.png)
 
-![ワークロードの状態](./media/sql-database-monitor-tune-overview/workload-states.png)
+### <a name="database-advisors"></a>データベース アドバイザー
+' Azure SQL Database には、単一データベースとプールされたデータベースのパフォーマンス チューニングに関する推奨設定を提供する[データベース アドバイザー](sql-database-advisor.md)が含まれています。 これらの推奨設定は、Azure portal と [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseadvisor) を使用して入手できます。 また、これらのチューニング推奨設定を SQL Database で自動的に実装できるように、[自動チューニング](sql-database-automatic-tuning.md)を有効にすることもできます。
 
-ワークロードのパフォーマンスの問題は、CPU 競合 (*実行に関連する*条件) または何かを待機している個々のクエリ (*待機に関連する*条件) が原因である可能性があります。
+### <a name="query-performance-insight"></a>Query Performance Insight
 
-実行に関連する問題の原因として、次のことが考えられます。
-- **コンパイルの問題**:SQL クエリ オプティマイザーでは、古い統計や、処理される行数または必要なメモリの不正確な推定のために、最適ではないプランが生成される場合があります。 クエリが以前はもっと速く実行されたこと、または他のインスタンス (マネージド インスタンスまたは SQL Server インスタンス) では速く実行されたことがわかっている場合は、実際の実行プランと比較し、違う点を確認します。 より適切なプランを取得するためには、クエリ ヒントを適用したり、統計やインデックスをリビルドしたりしてみてください。 Azure SQL Database で自動プラン修正を有効にして、これらの問題を自動的に軽減します。
-- **実行の問題**:クエリ プランが最適な場合は、ログ書き込みスループットなど、データベースのリソース制限に達していることが考えられます。 または、リビルドの必要があるフラグメント化されたインデックスが使用されている可能性があります。 同一のリソースを必要とする多数の同時実行クエリでも、実行の問題が発生する可能性があります。 *待機に関連する*問題は、通常は実行の問題に関連しています。これは、効率的に実行されていないクエリが何らかのリソースを待機している可能性があるためです。
+[Query Performance Insight](sql-database-query-performance.md) では、単一データベースとプールされたデータベースに対して実行するクエリのうち、最も負荷が高いものと実行時間が長いもののパフォーマンスが Azure portal に示されます。
 
-待機に関連する問題の原因として、次のことが考えられます。
-- **ブロック**:あるクエリがデータベースのオブジェクトに対するロックを保持している間に、他のクエリが同じオブジェクトにアクセスしようとしています。 ブロックしているクエリは、DMV や監視ツールを使って識別できます。
-- **IO の問題**:ページがデータ ファイルまたはログ ファイルに書き込まれるのをクエリが待機している可能性があります。 この場合は、DMV で `INSTANCE_LOG_RATE_GOVERNOR`、`WRITE_LOG`、または `PAGEIOLATCH_*` の待機統計を確認します。
-- **TempDB の問題**:ワークロードで一時テーブルが使用されていたり、プランで TempDB 溢れが発生したりしている場合、クエリには TempDB のスループットに問題がある可能性があります。 
-- **メモリ関連の問題**:ワークロードに十分なメモリがない場合、ページの予測保持期間が低下するか、クエリが取得するメモリが必要なメモリよりも少なくなる可能性があります。 場合によっては、クエリ オプティマイザーの組み込みインテリジェンスによってメモリ関連の問題は修正されます。
- 
-以降のセクションでは、いくつかの種類の問題を特定してトラブルシューティングする方法について説明します。
+## <a name="generate-intelligent-assessments-of-performance-issues"></a>パフォーマンスの問題のインテリジェントな評価を生成する
 
-## <a name="performance-problems-related-to-running"></a>実行に関連するパフォーマンスの問題
+Azure SQL Database [Intelligent Insights](sql-database-intelligent-insights.md) では、組み込まれているインテリジェンスを使って、人工知能によりデータベースの使用状況が継続的に監視され、パフォーマンス低下の原因となる破壊的なイベントが検出されます。 Intelligent Insights では、クエリ実行の待機時間、エラー、またはタイムアウトに基づいて、Azure SQL Database 内のデータベースのパフォーマンスの問題が自動的に検出されます。 検出されると、詳細な分析が実行され、[問題のインテリジェントな評価](sql-database-intelligent-insights-troubleshoot-performance.md)を含むリソース ログ (通称 SQLInsights) が生成されます。 このアセスメントは、データベース パフォーマンスの問題の根本原因分析と、可能な場合にはパフォーマンス向上に関する推奨事項で構成されます。
 
-一般的なガイドラインとして、CPU 使用率が常に 80% 以上である場合、パフォーマンスの問題は実行に関連しています。 実行に関連する問題は、CPU リソースの不足によって発生する場合があります。 または、次のいずれかの条件に関連している可能性があります。
+Intelligent Insights は、Azure の組み込みインテリジェンスの固有の機能であり、次の価値を提供します。
 
-- 実行中のクエリが多すぎる
-- コンパイル中のクエリが多すぎる
-- 1 つ以上の実行クエリが最適でないクエリ プランを使用している
+- プロアクティブな監視
+- カスタマイズされたパフォーマンスの洞察
+- データベースのパフォーマンス低下の早期検出
+- 検出された問題の根本原因分析
+- パフォーマンス向上に関する推奨事項
+- 数十万のデータベースのスケールアウト機能
+- DevOps リソースと総保有コストに対する良い影響
 
-実行に関連するパフォーマンスの問題を見つけた場合、目標は 1 つまたは複数の方法を使用して正確な問題を識別することです。 これらの方法は、実行に関連する問題を識別するための最も一般的な方法です。
+## <a name="enable-the-streaming-export-of-metrics-and-resource-logs"></a>メトリックとリソース ログのストリーミング エクスポートを有効にする
 
-- [Azure portal](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal) を使用して CPU 使用率 (%) を監視します。
-- 次の [DMV](sql-database-monitoring-with-dmvs.md) を使用します。
+Intelligent Insights リソース ログを含む複数の宛先のいずれかに対する[診断テレメトリのストリーミング エクスポート](sql-database-metrics-diag-logging.md)を有効にし、構成できます。 この追加の診断テレメトリを使用してパフォーマンスの問題を特定し、解決するには、[SQL Analytics](../azure-monitor/insights/azure-sql.md) およびその他の機能を使用します。
 
-  - [sys.dm_db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV は、SQL データベースの CPU、I/O、およびメモリ使用量を返します。 データベースにアクティビティがない場合でも、15 秒の間隔ごとに 1 つの行が存在します。 履歴データは 1 時間保持されます。
-  - [sys.resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV は、Azure SQL Database の CPU 使用率とストレージ データを返します。 データは 5 分間隔で収集され、集計されます。
+診断設定を構成して、単一データベース、プールされたデータベース、エラスティック プール、マネージド インスタンス、インスタンス データベースのメトリックおよびリソース ログを次のいずれかの Azure リソースにストリーム配信できます。
 
-> [!IMPORTANT]
-> sys.dm_db_resource_stats および sys.resource_stats DMV を使用した T-SQL クエリの CPU 使用率問題のトラブルシューティングを行うには、[CPU パフォーマンスの問題の識別](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues)に関するページを参照してください。
+### <a name="log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペース
 
-### <a name="ParamSniffing"></a> PSP の問題があるクエリ
+[Azure Monitor の Log Analytics ワークスペース](../azure-monitor/platform/resource-logs-collect-workspace.md)にメトリックおよびリソース ログをストリーム配信できます。 ここでストリーム配信されたデータは、[SQL Analytics](../azure-monitor/insights/azure-sql.md) で使用できます。これは、パフォーマンス レポート、アラート、軽減策の推奨事項を含むデータベースのインテリジェントな監視機能を提供する、クラウドのみの監視ソリューションです。 Log Analytics ワークスペースにストリーム配信されたデータは、収集された他の監視データと組み合わせて分析できます。また、アラートや視覚化などの他の Azure Monitor 機能を利用することもできます。
 
-パラメーター依存プラン (PSP) の問題が発生するのは、クエリ オプティマイザーが特定のパラメーター値 (または値のセット) に対してのみ最適なクエリ実行プランを生成し、キャッシュされたプランが連続実行で使用されるパラメーター値に対して最適ではない場合です。 最適ではないプランでは、クエリ パフォーマンスの問題が発生し、ワークロード全体のスループットが低下する可能性があります。 
+### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-パラメーター スニッフィングとクエリ処理の詳細については、「[クエリ処理アーキテクチャ ガイド](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing)」を参照してください。
+メトリックとリソース ログは、[Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) にストリーム配信できます。 診断テレメトリをイベント ハブにストリーム配信して、次の機能を提供します。
 
-いくつかの回避策を使用して、PSP の問題を軽減できます。 それぞれの回避策には、関連するトレードオフと欠点があります。
+- **サード パーティ製のロギングおよびテレメトリ システムにログをストリーム配信する**
 
-- 各クエリ実行で [RECOMPILE](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用します。 この回避策では、プランの品質の向上と引き換えに、コンパイル時間が長くなって CPU 使用率が増加します。 高スループットを必要とするワークロードでは、`RECOMPILE` オプションを使用できないことがよくあります。
-- [OPTION (OPTIMIZE FOR…)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、実際のパラメーター値を、可能性のあるほとんどのパラメーター値に対して十分良好なプランを生成する一般的なパラメーター値でオーバーライドします。 このオプションを使用するには、最適なパラメーター値および関連するプランの特性をよく理解している必要があります。
-- [OPTION (OPTIMIZE FOR UNKNOWN)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、実際のパラメーター値をオーバーライドし、代わりに密度ベクトルの平均を使用します。 また、受け取ったパラメーター値をローカル変数に取り込み、述語内ではパラメーター自体を使用する代わりにローカル変数を使用することによって、これを行うこともできます。 この修正では、平均密度は "*十分によい*" ものでなければなりません。
-- [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、パラメーター スニッフィング全体を無効にします。
-- [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを使用して、キャッシュ内の再コンパイルが行われないようにします。 この回避策では、"十分によい" 一般的なプランがキャッシュ内に既にあることを前提としています。 よいプランが破棄されて新しい悪いプランがコンパイルされる可能性を減らすため、統計の自動更新を無効にすることもできます。
-- クエリを書き直してクエリ テキストにヒントを追加することによって [USE PLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) クエリ ヒントを明示的に使用することで、プランを強制します。 または、クエリ ストアを使用するか、[自動チューニング](sql-database-automatic-tuning.md)を有効にして、特定のプランを設定します。
-- 1 つのプロシージャを、それぞれが条件付きロジックと関連するパラメーター値に基づいて使用できる入れ子になったプロシージャのセットに置き換えます。
-- 静的なプロシージャ定義の代わりに、動的文字列の実行を作成します。
+  すべてのメトリックとリソース ログを 1 つのイベント ハブにストリーム配信して、ログ データをサード パーティの SIEM またはログ分析ツールにパイプします。
+- **カスタムのテレメトリおよびログ プラットフォームを構築する**
 
-PSP 問題の解決方法について詳しくは、これらのブログ記事をご覧ください。
+  高い拡張性の公開サブスクライブを特長とするイベント ハブを使用することで、メトリックとリソース ログをカスタム テレメトリ プラットフォームに柔軟に取り込むことができます。 詳細については、「[Azure Event Hubs でのグローバル スケール テレメトリ プラットフォームの設計とサイズ変更](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)」を参照してください。
+- **データを Power BI にストリーム配信してサービスの正常性を表示する**
 
-- 「[パラメーターのスニッフィング](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)」
-- 「[パラメーター化クエリに対する Conor、動的 SQL、プロシージャ、プランの品質の比較](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)」
-- 「[SQL Server での SQL クエリの最適化技法:パラメーター スニッフィング](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)」
+  Event Hubs、Stream Analytics、Power BI を使用して、診断データを Azure サービスのほぼリアルタイムの分析情報に転換します。 このソリューションの詳細については、「[Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-power-bi-dashboard)」を参照してください。
 
-### <a name="compile-activity-caused-by-improper-parameterization"></a>不適切なパラメーター化によって発生するコンパイル アクティビティ
+### <a name="azure-storage"></a>Azure Storage
 
-クエリにリテラルがある場合は、データベース エンジンで自動的にステートメントがパラメーター化されるか、またはユーザーが明示的にステートメントをパラメーター化してコンパイルの数を減らします。 使用するパターンが同じでもリテラル値が異なるクエリのコンパイル回数が多いと、CPU の使用率が高くなる可能性があります。 同様に、ユーザーが継続的にリテラルを含むクエリを部分的にだけパラメーター化した場合、データベース エンジンではクエリはそれ以上パラメーター化されません。  
+メトリックとリソース ログを [Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md) にストリーム配信します。 Azure ストレージを使用して、前述の 2 つのストリーミング オプションの何分の 1 かのわずかなコストで、膨大な量の診断テレメトリをアーカイブできます。
 
-部分的にパラメーター化されたクエリの例を次に示します。
+## <a name="use-extended-events-in-the-sql-database-engine"></a>SQL データベース エンジンの拡張イベントを使用する
 
-```sql
-SELECT * 
-FROM t1 JOIN t2 ON t1.c1 = t2.c1
-WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
-```
+さらに、SQL の[拡張イベント](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)を使用して、高度な監視とトラブルシューティングを追加で行うことができます。 拡張イベントのアーキテクチャを使用すると、ユーザーは、パフォーマンスの問題のトラブルシューティングや特定に必要なデータを過不足なく収集できます。 SQL Database の拡張イベントの使用の詳細については、「[SQL Database の拡張イベント](sql-database-xevent-db-diff-from-svr.md)」を参照してください。
 
-この例では、`t1.c1` は `@p1` を受け取りますが、`t2.c2` は引き続きリテラルとして GUID を受け取ります。 この場合、`c2` の値を変更すると、クエリは異なるクエリとして扱われて、新しいコンパイルが発生します。 この例でコンパイルを減らすためには、GUID もパラメーター化します。
+## <a name="next-steps"></a>次のステップ
 
-次のクエリでは、クエリ ハッシュ別にクエリの数を示して、クエリが適切にパラメーター化されているか判断します。
-
-```sql
-SELECT  TOP 10  
-  q.query_hash
-  , count (distinct p.query_id ) AS number_of_distinct_query_ids
-  , min(qt.query_sql_text) AS sampled_query_text
-FROM sys.query_store_query_text AS qt
-  JOIN sys.query_store_query AS q
-     ON qt.query_text_id = q.query_text_id
-  JOIN sys.query_store_plan AS p 
-     ON q.query_id = p.query_id
-  JOIN sys.query_store_runtime_stats AS rs 
-     ON rs.plan_id = p.plan_id
-  JOIN sys.query_store_runtime_stats_interval AS rsi
-     ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
-WHERE
-  rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
-  AND query_parameterization_type_desc IN ('User', 'None')
-GROUP BY q.query_hash
-ORDER BY count (distinct p.query_id) DESC
-```
-
-### <a name="factors-that-affect-query-plan-changes"></a>クエリ プランの変更に影響する要因
-
-クエリ実行プランが再コンパイルされると、元々キャッシュされていたプランとは異なるクエリ プランが生成される可能性があります。 元の既存のプランが自動的に再コンパイルされるのには、次のようなさまざまな理由があります。
-- スキーマの変更がクエリによって参照された。
-- テーブルのデータ変更がクエリによって参照された。 
-- クエリ コンテキストのオプションが変更された。
-
-コンパイルされたプランは、次のようなさまざまな理由でキャッシュから取り出される場合があります。
-
-- インスタンスの再起動。
-- データベース スコープ構成の変更。
-- メモリ不足。
-- キャッシュをクリアする明示的な要求。
-
-RECOMPILE ヒントを使用した場合、プランはキャッシュされません。
-
-再コンパイル (またはキャッシュの削除後に新たにコンパイル) を実行しても、元々あったものと同じクエリ実行プランが生成される可能性があります。 プランが以前のプランまたは元のプランから変更された場合、次のような説明が考えられます。
-
-- **物理的設計の変更**:たとえば、新しく作成されたインデックスは、クエリの要件により効果的に対応します。 この新しいインデックスは、クエリ実行の最初のバージョン用に元々選択されていたデータ構造を使用するよりも、この新しいインデックスを使用した方がより最適であるとクエリ オプティマイザーが判断した場合、新しいコンパイルで使用される可能性があります。  参照されているオブジェクトに物理的変更が行われた場合、コンパイル時に新しいプランが選択されることがあります。
-
-- **サーバー リソースの違い**:あるシステムのプランが別のシステムのプランと異なる場合、利用可能なプロセッサの数などのリソースの可用性が、生成されるプランに影響を与える可能性があります。  たとえば、1 つのシステムでプロセッサの数が多い場合は、並列プランが選択される可能性があります。 
-
-- **異なる統計**:参照されているオブジェクトに関連する統計情報が変更されていたり、元のシステムの統計と実質的に異なる場合があります。  統計が変更され再コンパイルが発生すると、クエリ オプティマイザーは、変更された時点からの統計を使用します。 変更された統計のデータの分布と頻度は、元のコンパイルのものとは異なる可能性があります。  これらの変更は、カーディナリティ推定を作成するために使用されます。 (*カーディナリティ推定*は、論理クエリ ツリーを経由してフローすると予想される行数です。)カーディナリティ推定が変更されると、異なる物理演算子、および関連する操作順序の選択が必要になる場合があります。  統計に対する変更が小さくても、クエリ実行プランが変更される可能性があります。
-
-- **データベースの互換性レベルまたはカーディナリティ推定機能のバージョンが変更された**:データベースの互換性レベルの変更により、新しい戦略や機能が有効になり、それによって、異なるクエリ実行プランが作成される可能性があります。  データベースの互換性レベルのほかに、無効または有効になったトレース フラグ 4199 またはデータベース スコープ構成 QUERY_OPTIMIZER_HOTFIXES の変更された状態が、コンパイル時のクエリ実行プランの選択に影響する可能性があります。  トレース フラグ 9481 (レガシ CE を強制) と 2312 (既定の CE を強制) もプランに影響を与えます。 
-
-### <a name="resolve-problem-queries-or-provide-more-resources"></a>問題のあるクエリを解決するか、または提供するリソースを増やす
-
-問題を識別したら、問題が発生しているクエリを調整するか、または CPU の要件を吸収するために SQL データベースの容量を増やすようにコンピューティング サイズまたはサービス レベルをアップグレードすることができます。 
-
-詳細については、「[Azure SQL Database で単一データベースのリソースをスケーリングする](sql-database-single-database-scale.md)」および「[Azure SQL Database でエラスティック プールのリソースをスケーリングする](sql-database-elastic-pool-scale.md)」を参照してください。 マネージド インスタンスのスケーリングについては、「[サービス レベルのリソース制限](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)」を参照してください。
-
-### <a name="performance-problems-caused-by-increased-workload-volume"></a>ワークロード ボリュームの増加が原因で発生したパフォーマンスの問題
-
-アプリケーション トラフィックおよびワークロード ボリュームの増加が原因で、CPU 使用率が増加することがあります。 しかし、この問題を正しく診断するには注意が必要です。 CPU の使用率が高い問題が発生した場合は、これらの質問に答えて、増加の原因がワークロード ボリュームの変化であるかどうかを判断します。
-
-- アプリケーションからのクエリが、CPU の使用率が高い問題の原因ですか?
-- CPU 消費量上位の識別可能なクエリについて:
-
-   - 同じクエリに複数の実行プランが関連していましたか? そうである場合、それはなぜですか?
-   - 同じ実行プランを持つクエリの場合、実行時間は一貫していましたか? 実行回数は増加しましたか? その場合、ワークロードの増加がパフォーマンスの問題の原因になっている可能性があります。
-
-まとめると、クエリ実行プランの実行方法は異ならなかったが、実行回数と共に CPU 使用率が増加した場合、パフォーマンスの問題はワークロードの増加に関連する可能性があります。
-
-CPU の問題を引き起こしているワークロード ボリュームの変化を特定することは、必ずしも容易ではありません。 次の点を考慮します。 
-
-- **リソースの使用状況の変化**:たとえば、長時間にわたり CPU 使用率が 80% に増加したようなシナリオを検討します。  ワークロードのボリュームの変化を意味するのは、CPU 使用率だけではありません。 クエリ実行プランの回帰や、データの分布の変化も、アプリケーションがまったく同じワークロードを実行しているのにリソースの使用量が増える原因になる可能性があります。
-
-- **新しいクエリの発生**:アプリケーションでは、異なるタイミングで新しいクエリのセットが発生する可能性があります。
-
-- **要求数の増加または減少**:このシナリオは、ワークロードの最も明白な尺度です。 クエリの数は、リソース使用率の増加に常に対応しているとは限りません。 それでもこのメトリックは、他の要因が変更されていないとすると、やはり重要なシグナルです。
-
-## <a name="waiting-related-performance-problems"></a>待機に関連するパフォーマンスの問題 
-
-パフォーマンスの問題が、高い CPU 使用率にも実行にも関係していないことが確実である場合、問題は待機に関係しています。 つまり、CPU が他の何らかのリソースを待機しているために CPU リソースが効率的に使用されていません。 この場合、CPU リソースが何を待機しているかを識別してください。 
-
-これらの方法は、通常、待機の種類の上位カテゴリを表示するために使用されます。
-
-- [クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を使用して、一定期間の各クエリの待機統計を検索します。 クエリ ストアでは、待機の種類は待機カテゴリに結合されます。 待機カテゴリから待機の種類へのマッピングは、[sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table) にあります。
-- [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) を使用して、操作中に実行されたスレッドによって発生したすべての待機に関する情報を返します。 この集計ビューを使用して、Azure SQL Database のほか、特定のクエリやバッチに関するパフォーマンスの問題を診断できます。
-- [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) を使用して、何らかのリソースを待機しているタスクのキューに関する情報を返します。
-
-CPU の使用率が高いシナリオでは、次の場合にクエリ ストアと待機の統計に CPU 使用率が反映されない可能性があります。
-
-- CPU 消費量の高いクエリがまだ実行中である。
-- フェールオーバーが発生したときに、CPU 消費量の高いクエリが実行されていた。
-
-クエリ ストアと待機の統計を追跡する DMV は、正常に完了したクエリとタイムアウトしたクエリのみの結果を表示します。 ステートメントが終了するまで、現在実行中のステートメントのデータは表示されません。 動的管理ビュー [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) を使用して、現在実行中のクエリとそれに関連するワーカーの時間を追跡します。
-
-この記事の冒頭付近にあるグラフには、最も一般的な待機は以下であることが示されています。
-
-- ロック (ブロック)
-- I/O
-- TempDB に関連する競合
-- メモリ許可待機
-
-> [!IMPORTANT]
-> DMV を使用して待機に関連する問題のトラブルシューティングを行う T-SQL クエリのセットについては、以下を参照してください。
->
-> - [I/O パフォーマンスの問題を識別する](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
-> - [メモリ許可待機を識別する](sql-database-monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)
-> - [TigerToolbox 待機およびラッチ](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
-> - [TigerToolbox usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
-
-## <a name="improve-database-performance-with-more-resources"></a>より多くのリソースを使用してデータベースのパフォーマンスを改善する
-
-データベースのパフォーマンス改善につながるすぐに実施可能な方法がない場合は、Azure SQL Database で使用できるリソースの量を変更することができます。 単一データベースの [DTU サービス レベル](sql-database-service-tiers-dtu.md)を変更して、より多くのリソースを割り当てます。 または、任意の時点でエラスティック プールの eDTU を増やします。 あるいは、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用している場合は、サービス レベルを変更するか、データベースへの割り当てリソースを増やします。
-
-単一データベースの場合は、[サービス レベルまたはコンピューティング リソースの変更](sql-database-single-database-scale.md)をオンデマンドで行うことで、データベースのパフォーマンスを改善できます。 複数のデータベースの場合は、リソースを自動的にスケーリングするための [エラスティック プール](sql-database-elastic-pool-guidance.md) の使用を検討してください。
-
-## <a name="tune-and-refactor-application-or-database-code"></a>アプリケーションまたはデータベース コードをチューニングおよびリファクタリングする
-
-データベースのためのアプリケーション コードの最適化、インデックスの変更、プランの強制的な適用、データベースをワークロードに手動で適合させるためのヒントの活用が可能です。 コードの手動チューニングおよび書き直しについて詳しくは、[パフォーマンス チューニング ガイダンス](sql-database-performance-guidance.md)に関する記事を参照してください。
-
-## <a name="next-steps"></a>次の手順
-
-- Azure SQL Database で自動チューニングを有効にし、自動チューニング機能でワークロードを完全に管理できるようにするには、[自動チューニングの有効化](sql-database-automatic-tuning-enable.md)に関する記事を参照してください。
-- 手動チューニングを使用するには、[Azure portal でのチューニングに関する推奨事項](sql-database-advisor-portal.md)に関する記事を参照してください。 クエリのパフォーマンスを改善する推奨事項を手動で適用します。
-- [Azure SQL Database のサービス レベル](sql-database-performance-guidance.md)を変更して、データベースで使用可能なリソースを変更します。
+- 単一データベースとプールされたデータベースのインテリジェント パフォーマンスに関する推奨事項の詳細については、「[データベース アドバイザーのパフォーマンスに関する推奨事項](sql-database-advisor.md)」を参照してください。
+- パフォーマンスの問題の自動診断および根本原因分析を含むデータベース パフォーマンスの自動監視については、[Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) に関するページを参照してください。
+'''''''''

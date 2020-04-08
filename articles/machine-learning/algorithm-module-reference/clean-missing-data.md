@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 5851b294e52fdcc03dbf3b889ff32898a823f655
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 14c3bc968da9d398fbc14eda74378047cf28277b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137569"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477699"
 ---
 # <a name="clean-missing-data-module"></a>Clean Missing Data (見つからないデータの消去) モジュール
 
@@ -110,9 +110,9 @@ ms.locfileid: "77137569"
   
 7. **[Generate missing value indicator column]\(欠損値インジケーター列を生成\)** :列の値が欠損値の消去の条件を満たしているかどうかについて、いくつかのインジケーターを出力する場合は、このオプションを選択します。 このオプションは、新しい消去操作を設定し、設計どおりに動作させる場合に特に便利です。
   
-8. パイプラインを実行します。
+8. パイプラインを送信します。
 
-### <a name="results"></a>[結果]
+### <a name="results"></a>結果
 
 モジュールにより、次の 2 つの出力が返されます。  
 
@@ -138,7 +138,7 @@ ms.locfileid: "77137569"
 
     ただし、数値列のサブセットに変換を作成する場合、 この変換を列の型が混在するデータセットに適用することができ、エラーが発生することはありません。これは、欠損値が一致する数値列でのみ変更されたからです。
 
-6.  パイプラインを実行します。  
+6.  パイプラインを送信します。  
 
 ## <a name="next-steps"></a>次のステップ
 
