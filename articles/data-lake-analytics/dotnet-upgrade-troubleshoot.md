@@ -1,6 +1,6 @@
 ---
-title: .NET 4.7.2 アップグレードによる Azure Data Lake Analytics の U-SQL ジョブのエラーをトラブルシューティングする方法
-description: .NET 4.7.2 へのアップグレードによる U-SQL ジョブのエラーをトラブルシューティングします。
+title: .NET Framework 4.7.2 アップグレードによる Azure Data Lake Analytics の U-SQL ジョブのエラーをトラブルシューティングする方法
+description: .NET Framework 4.7.2 へのアップグレードによる U-SQL ジョブのエラーをトラブルシューティングします。
 services: data-lake-analytics
 author: guyhay
 ms.author: guyhay
@@ -9,12 +9,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: 2be2f50558fef41659c9a3313871b17961f6ad6d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873235"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79213576"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics が .NET Framework v4.7.2 にアップグレード中
 
@@ -22,12 +22,12 @@ Azure Data Lake Analytics の既定のランタイムが、.NET Framework v4.5.2
 
 この .NET Framework 4.5.2 からバージョン 4.7.2 へのアップグレードでは、U-SQL ランタイム (既定のランタイム) にデプロイされる .NET Framework は常に 4.7.2 になります。 .NET Framework バージョンに関して、サイド バイ サイドのオプションはありません。
 
-この .NET 4.7.2 へのアップグレードが完了すると、システムのマネージド コードはバージョン 4.7.2 として実行されます。U-SQL カスタム アセンブリなどのユーザーが指定したライブラリは、アセンブリが生成されたバージョンに適した下位互換性モードで実行されます。
+この .NET Framework 4.7.2 へのアップグレードが完了すると、システムのマネージド コードはバージョン 4.7.2 として実行されます。U-SQL カスタム アセンブリなどのユーザーが指定したライブラリは、アセンブリが生成されたバージョンに適した下位互換性モードで実行されます。
 
 - アセンブリ DLL がバージョン 4.5.2 に対して生成される場合、デプロイされたフレームワークではそれらは 4.5.2 ライブラリとして扱われ、4.5.2 セマンティクスが提供されます (いくつかの例外を含む)。
 - .NET Framework 4.7.2 を対象とする場合、バージョン 4.7.2 の機能を使用する U-SQL カスタム アセンブリを使用できるようになりました。
 
-この .NET 4.7.2 へのアップグレードにより、.NET カスタム アセンブリを使用する U-SQL ジョブに破壊的変更が加えられる可能性があります。 次の手順を使用して下位互換性の問題を確認することをお勧めします。
+この .NET Framework 4.7.2 へのアップグレードにより、.NET カスタム アセンブリを使用する U-SQL ジョブに破壊的変更が加えられる可能性があります。 次の手順を使用して下位互換性の問題を確認することをお勧めします。
 
 ## <a name="how-to-check-for-backwards-compatibility-issues"></a>下位互換性の問題を確認する方法
 
@@ -65,7 +65,7 @@ U-SQL カスタム アセンブリの .NET コードに対して .NET 互換性�
   - 推奨アクション:TaskFactory.FromAsync によって true が正しく返されることを確認する
 
 - DataObject.GetData によってデータが UTF-8 として取得されるようになった
-  - .NET Framework 4 を対象とするアプリ、または .NET Framework 4.5.1 以前のバージョンで実行されるアプリでは、DataObject.GetData によって HTML 形式のデータが ASCII 文字列として取得されます。 その結果、非 ASCII 文字 (ASCII コードが 0x7F よりも大きい文字) は、2 つのランダムな文字で表されます。.NET Framework 4.5 以降を対象とし、.NET Framework 4.5.2 で実行されるアプリでは、`DataObject.GetData` によって HTML 形式のデータが UTF-8 として取得されます。この場合、0x7F よりも大きい文字が正しく表されます。
+  - .NET Framework 4 を対象とするアプリ、または .NET Framework 4.5.1 以前のバージョンで実行されるアプリでは、DataObject.GetData によって HTML 形式のデータが ASCII 文字列として取得されます。 その結果、非 ASCII 文字 (ASCII コードが 0x7F よりも大きい文字) は、2 つのランダムな文字で表されます.NET Framework 4.5 以降を対象とし、.NET Framework 4.5.2 で実行されるアプリでは、`DataObject.GetData` によって HTML 形式のデータが UTF-8 として取得されますこの場合、0x7F よりも大きい文字が正しく表されます。
   - 影響を受けるライブラリ:Glo
   - 推奨アクション:取得されたデータが必要な形式であることを確認する
 
