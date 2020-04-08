@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/26/2020
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 69c0c13c7027707cdadb2f1f1de9cc1655c9c625
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621909"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231255"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure Firewall ルール処理ロジック
 Azure Firewall では、NAT 規則、ネットワーク ルール、およびアプリケーション ルールを構成できます。 これらのルールは、ルールの種類に応じて処理されます。 
@@ -32,7 +32,7 @@ Azure Firewall では、NAT 規則、ネットワーク ルール、およびア
 
 インバウンド インターネット接続を有効にするには、宛先ネットワーク アドレス変換 (DNAT) を「[チュートリアル:Azure portal で Azure Firewall DNAT を使用して受信トラフィックをフィルター処理する](tutorial-firewall-dnat.md)」の説明に従って構成します。 NAT 規則は、ネットワーク ルールよりも優先的に適用されます。 一致が見つかると、変換されたトラフィックを許可する暗黙的な対応するネットワーク ルールが追加されます。 この動作は、変換されたトラフィックに一致する拒否ルールを使用してネットワーク ルール コレクションを明示的に追加することで、オーバーライドすることができます。
 
-アプリケーション ルールは、インバウンド接続には適用されません。 したがって、インバウンド HTTP/S トラフィックをフィルター処理する場合は、Web アプリケーション ファイアウォール (WAF) を使用する必要があります。 詳細については、「[Azure Web アプリケーション ファイアウォールとは](../web-application-firewall/overview.md)」を参照してください
+アプリケーション ルールは、受信接続には適用されません。 したがって、インバウンド HTTP/S トラフィックをフィルター処理する場合は、Web アプリケーション ファイアウォール (WAF) を使用する必要があります。 詳細については、「[Azure Web アプリケーション ファイアウォールとは](../web-application-firewall/overview.md)」を参照してください
 
 ## <a name="examples"></a>例
 
@@ -90,6 +90,10 @@ Azure Firewall では、NAT 規則、ネットワーク ルール、およびア
 **結果**
 
 優先順位の高いネットワーク ルール コレクションによってブロックされるため、SSH 接続は拒否されます。 この時点で、ルールの処理が停止します。
+
+## <a name="rule-changes"></a>ルールの変更
+
+以前に許可されたトラフィックを拒否するようにルールを変更すると、関連する既存のセッションがすべて削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

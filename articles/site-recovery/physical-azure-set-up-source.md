@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: 902c14211e91a1500c6b50cd790b347e337c4f70
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67589052"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229131"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを設定する
 
@@ -22,9 +22,9 @@ ms.locfileid: "67589052"
 ## <a name="prerequisites"></a>前提条件
 
 この記事では、次のものが既にあることを前提としています。
-- Recovery Services コンテナー ([Azure Portal](https://portal.azure.com "Azure Portal") 内)。
+- [Azure portal](https://portal.azure.com "Azure portal") 内の Recovery Services コンテナー。
 - 構成サーバーをインストールするための物理コンピューター。
-- 構成サーバーをインストールしているコンピューターで TLS 1.0 を無効にした場合は、TLS 1.2 が有効になっていることを確認し、(強力な暗号化を有効にした) コンピューターに .NET Framework バージョン 4.6 以降がインストールされていることを確認します。 [詳細情報](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1)。
+- 構成サーバーをインストールしているコンピューターで TLS 1.0 を無効にした場合は、TLS 1.2 が有効になっていることを確認し、(強力な暗号化を有効にした) コンピューターに .NET Framework バージョン 4.6 以降がインストールされていることを確認します。 [詳細については、こちらを参照してください](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1)。
 
 ### <a name="configuration-server-minimum-requirements"></a>構成サーバーの最小要件
 次の表は、構成サーバーに最低限必要なハードウェア、ソフトウェア、およびネットワークの要件を示したものです。
@@ -63,7 +63,7 @@ ms.locfileid: "67589052"
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> 構成サーバーはコマンドラインを使用してインストールすることもできます。 [詳細情報](physical-manage-configuration-server.md#install-from-the-command-line)。
+> 構成サーバーはコマンドラインを使用してインストールすることもできます。 [詳細については、こちらを参照してください](physical-manage-configuration-server.md#install-from-the-command-line)。
 
 
 ## <a name="common-issues"></a>一般的な問題
@@ -71,6 +71,6 @@ ms.locfileid: "67589052"
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のステップでは、Azure で[ターゲット環境をセットアップ](physical-azure-set-up-target.md)します。

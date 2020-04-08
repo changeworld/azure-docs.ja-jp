@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a49c69b0f96add61501d9e2c5fc00ba564eba2a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4b1ccde2f1f92237978ab4e68acaa26393bbb9d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422537"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230323"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理でアクセス パッケージへのアクセスを要求する
 
@@ -35,7 +35,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 **事前に必要なロール:** 要求元
 
-1. 操作する、プロジェクトまたはビジネス マネージャーからのメールまたはメッセージを見つけます。 メールには、アクセスする必要があるアクセス パッケージへのリンクが含まれているはずです。 リンクは `myaccess` で始まり、ディレクトリ ヒントを含み、アクセス パッケージ ID で終了します。
+1. 操作する、プロジェクトまたはビジネス マネージャーからのメールまたはメッセージを見つけます。 メールには、アクセスする必要があるアクセス パッケージへのリンクが含まれているはずです。 リンクは `myaccess` で始まり、ディレクトリ ヒントを含み、アクセス パッケージ ID で終了します。  (米国政府の場合、代わりにドメインが `https://myaccess.microsoft.us` になることがあります。)
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

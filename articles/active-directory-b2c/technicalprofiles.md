@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d4dbe5a62e69f4c30d55fa1318ca79c06640a10f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5196615b6b935e4d37565298be03ad315163d132
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78186745"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231111"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -101,7 +101,7 @@ ms.locfileid: "78186745"
 | SubjectNamingInfo | 0:1 | サブジェクト名が要求とは別に指定されているトークンのサブジェクト名の生成を制御します。 たとえば、OAuth または SAML です。  |
 | IncludeInSso | 0:1 |  この技術プロファイルを使用する場合、セッションにシングル サインオン (SSO) 動作を適用するか、明示的な対話が必要です。 この要素は、検証技術プロファイル内で使用される SelfAsserted プロファイルでのみ有効です。 指定できる値は `true`(既定値) または`false`です。 |
 | IncludeClaimsFromTechnicalProfile | 0:1 | この技術プロファイルに対するすべての入力要求と出力要求の追加元となる、技術プロファイルの識別子。 参照先の技術プロファイルは、同じポリシー ファイルで定義する必要があります。 |
-| IncludeTechnicalProfile |0:1 | この技術プロファイルに対するすべてのデータの追加元となる、技術プロファイルの識別子。 参照先の技術プロファイルは、同じポリシー ファイル内に存在する必要があります。 |
+| IncludeTechnicalProfile |0:1 | この技術プロファイルに対するすべてのデータの追加元となる、技術プロファイルの識別子。 |
 | UseTechnicalProfileForSessionManagement | 0:1 | セッション管理に使用される別の技術プロファイル。 |
 |EnabledForUserJourneys| 0:1 |ユーザー体験で技術プロファイルを実行するかどうかを制御します。  |
 
@@ -286,7 +286,7 @@ ms.locfileid: "78186745"
 
 | 属性 | Required | Description |
 | --------- | -------- | ----------- |
-| ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
+| ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで既に定義済みの技術プロファイルの識別子。 |
 
 ## <a name="usetechnicalprofileforsessionmanagement"></a>UseTechnicalProfileForSessionManagement
 

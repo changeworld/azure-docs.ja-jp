@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 236ae017832d5d613d0bf9fc948d16a7218d2269
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: e7a64776cba00a6840af70cecad5bf9c02b3f38e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621942"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227315"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>コンテナーとデータベースのスループットのプロビジョニング
 
@@ -63,7 +63,8 @@ Azure Cosmos データベースにスループットを設定することで、�
 共有スループット データベース内のコンテナーは、そのデータベースに割り当てられたスループット (RU/秒) を共有します。 データベースには、最大 4 つのコンテナーを最小の 400 RU/秒で含めることができます。 最初の 4 つの後の新しい各コンテナーには、少なくとも追加の 100 RU/秒が必要です。 たとえば、8 つのコンテナーを持つ共有スループット データベースがある場合、データベースの最小 RU/秒は 800 RU/秒になります。
 
 > [!NOTE]
-> 共有スループット データベースでは、データベースには最大 25 個のコンテナーを含めることができます。 共有スループット データベースに既に 25 個を超えるコンテナーがある場合、コンテナー数が 25 未満になるまで、追加のコンテナーを作成することはできません。
+> 2020 年 2 月に、共有スループット データベースに最大 25 個のコンテナーを含めることを可能にする変更が導入されました。これにより、コンテナー全体のスループットの共有が向上しています。 最初の 25 個のコンテナーの後は、[専用スループットでプロビジョニング](#set-throughput-on-a-database-and-a-container)されている場合に限り、さらにコンテナーを追加できます。これは、データベースの共有スループットとは異なります。<br>
+Azure Cosmos DB アカウントに 25 個以上のコンテナーを持つ共有スループット データベースが既に含まれている場合、そのアカウントおよび同じ Azure サブスクリプション内の他のすべてのアカウントは、この変更から除外されます。 フィードバックや質問がある場合は、[製品サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。 
 
 ワークロードでデータベース内のすべてのコレクションを削除および再作成する必要がある場合は、空のデータベースを削除し、コレクションの作成前に新しいデータベースを再作成することをお勧めします。 次の図は、物理パーティションで、データベース内のさまざまなコンテナーに属する 1 つ以上の論理パーティションをホストできる方法を示しています。
 
@@ -86,11 +87,11 @@ Azure Cosmos データベースにスループットを設定することで、�
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>データベースまたはコンテナーのスループットを更新する
 
-Azure Cosmos コンテナーまたはデータベースを作成した後に、プロビジョニング済みのスループットを更新できます。 データベースまたはコンテナーで構成できる最大のプロビジョニング済みスループットに制限はありません。 最小のプロビジョニング済みスループットは、次の要因によって異なります。 
+Azure Cosmos コンテナーまたはデータベースを作成した後に、プロビジョニング済みのスループットを更新できます。 データベースまたはコンテナーで構成できる最大のプロビジョニング済みスループットに制限はありません。 [最小のプロビジョニング済みスループット](concepts-limits.md#storage-and-throughput)は、次の要因によって異なります。 
 
 * これまでコンテナーに格納された最大データ サイズ
 * これまでコンテナーにプロビジョニングした最大スループット
-* これまで共有スループットでデータベースに作成した Azure Cosmos コンテナーの最大数。 
+* 共有スループットを使ってデータベース内に用意された Azure Cosmos コンテナーの現在の数。 
 
 コンテナーまたはデータベースの最小スループットは、SDK を使用してプログラムで取得するか、Azure portal でその値を表示することができます。 .NET SDK を使用する場合、[DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) メソッドで、プロビジョニング済みスループット値をスケールできます。 Java SDK を使用する場合、[RequestOptions.setOfferThroughput](sql-api-java-samples.md#offer-examples) メソッドを使用して、プロビジョニング済みスループット値をスケールできます。 
 

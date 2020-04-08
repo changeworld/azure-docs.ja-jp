@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 35046d33a85eaed913454f188f2a4526715526a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168782"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218162"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) 用のカスタム R モジュールを定義する
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 このトピックでは、カスタム R Studio (クラシック) を作成してデプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 また、モジュールを定義するファイルを作成する方法と、Machine Learning ワークスペースにデプロイするためにモジュールを登録する方法も示します。 カスタム モジュールの定義で使用する要素および属性についてさらに詳しく説明します。 補助機能と補助ファイルおよび複数の出力を使用する方法についても説明します。 
 
@@ -200,7 +202,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     </Ports> 
 
 
-"CustomAddRows.R" に示されている正しい順序でオブジェクトのリストを返します。
+"CustomAddRows.R" 内のリストの正しい順序で、オブジェクトのリストを返します。
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -333,11 +335,11 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 カスタム モジュールの ZIP ファイル内に配置されたファイルはすべて、実行時に使用できるようなります。 ディレクトリ構造がある場合は保持されます。 つまり、ファイル ソーシングは、ローカルと Azure Machine Learning Studio (クラシック) の実行で同じ動作を行います。 
 
 > [!NOTE]
-> すべてのファイルが "src" ディレクトリに展開されることに注意してください。これにより、すべてのパスに "src/" プレフィックスが含まれます。
+> すべてのファイルが "src" ディレクトリに展開されることに注意してください。これにより、すべてのパスに必ず "src/" プレフィックスが含まれます。
 > 
 > 
 
-たとえば、CustomAddRows に出力する前に、データセットから NA を含む行を削除し、重複する行も削除したい場合に、これを実行する R 関数が RemoveDupNARows.R ファイルに既に作成されているとします。
+たとえば、CustomAddRows に出力する前に、データセットから NA を含む行を削除すると共に、重複する行も削除したい場合に、それを実行する R 関数が RemoveDupNARows.R ファイルに既に作成されているとします。
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -359,7 +361,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
         return (dataset)
     }
 
-次に、"CustomAddRows.R"、"CustomAddRows.xml"、"RemoveDupNARows.R" を含む zip ファイルをカスタム R モジュールとしてアップロードします。
+次に、'CustomAddRows.R'、'CustomAddRows.xml'、および 'RemoveDupNARows.R' を含む zip ファイルをカスタム R モジュールとしてアップロードします。
 
 ## <a name="execution-environment"></a>実行環境
 R スクリプトの実行環境では、 **Execute R Script** モジュールと同じバージョンの R を使用し、同じ既定のパッケージを使用できます。 他の R パッケージをカスタム モジュールの zip パッケージに追加して、そのパッケージをカスタム モジュールに追加することもできます。 こうしたパッケージを、独自の R 環境の場合と同じように読み込むだけです。 

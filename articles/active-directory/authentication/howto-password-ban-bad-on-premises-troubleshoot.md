@@ -1,6 +1,6 @@
 ---
-title: パスワード保護のトラブルシューティング - Azure Active Directory
-description: Azure AD パスワード保護の一般的なトラブルシューティングについて説明します
+title: オンプレミスの Azure AD パスワード保護をトラブルシューティングする
+description: オンプレミスの Active Directory Domain Services 環境での Azure AD パスワード保護をトラブルシューティングする方法について説明します
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd609eb1f289c0a104bddaa08a60e7dc6202acee
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847662"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230907"
 ---
-# <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD パスワード保護のトラブルシューティング
+# <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>トラブルシューティング:オンプレミスの Azure AD パスワード保護
 
 Azure AD パスワード保護をデプロイした後、トラブルシューティングを必要とする場合があります。 この記事では、いくつかの一般的なトラブルシューティング手順を理解しやすいように詳しく説明しています。
 
@@ -82,9 +82,9 @@ Azure AD パスワード保護には、Microsoft キー配布サービスによ�
 
 1. DC エージェントがポリシーをダウンロードできないか、既存のポリシーの暗号化を解除できません。 上記のトピックで考えられる原因を確認してください。
 
-1. パスワード ポリシーの適用モードがまだ [監査] に設定されています。 この構成が有効な場合は、Azure AD パスワード保護ポータルを使用してそのモードを [強制] に再構成します。 「[パスワード保護を有効にする](howto-password-ban-bad-on-premises-operations.md#enable-password-protection)」を参照してください。
+1. パスワード ポリシーの適用モードがまだ [監査] に設定されています。 この構成が有効な場合は、Azure AD パスワード保護ポータルを使用してそのモードを [強制] に再構成します。 詳細については、「[操作のモード](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)」を参照してください。
 
-1. パスワード ポリシーが無効にされています。 この構成が有効な場合は、Azure AD パスワード保護ポータルを使用してそのモードを [有効] に再構成します。 「[パスワード保護を有効にする](howto-password-ban-bad-on-premises-operations.md#enable-password-protection)」を参照してください。
+1. パスワード ポリシーが無効にされています。 この構成が有効な場合は、Azure AD パスワード保護ポータルを使用してそのモードを [有効] に再構成します。 詳細については、「[操作のモード](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)」を参照してください。
 
 1. DC エージェント ソフトウェアがドメイン内のすべてのドメイン コントローラーにはインストールされていません。 このような状況では、パスワードの変更操作中にリモートの Windows クライアントが特定のドメイン コントローラーを確実にターゲットにするようにすることは困難です。 DC エージェント ソフトウェアがインストールされている特定の DC を正常にターゲットにしていたと思われる場合は、DC エージェント管理イベント ログを再度確認することで確認できます。結果に関係なく、パスワードの検証結果を文書化するイベントが少なくとも 1 つあります。 パスワードが変更されたユーザーのイベントがない場合、パスワード変更は別のドメイン コントローラーで処理された可能性があります。
 
@@ -189,13 +189,13 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 
 Azure AD パスワード保護プロキシ ソフトウェアでは、どのバージョンでも期間が制限されません。 Microsoft では、DC エージェントとプロキシ エージェントのどちらも、最新バージョンがリリースされたらすぐ、そのバージョンにアップグレードすることもお勧めします。 上記の DC エージェントの例と同様に、`Get-AzureADPasswordProtectionProxy` コマンドレットを使用して、アップグレードが必要なプロキシ エージェントを見つけることができます。
 
-具体的なアップグレード手順の詳細については、[DC エージェントのアップグレード](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent)および[プロキシ エージェントのアップグレード](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent)に関する項目を参照してください。
+具体的なアップグレード手順の詳細については、[DC エージェントのアップグレード](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent)および[プロキシ サービスのアップグレード](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service)に関する記事を参照してください。
 
 ## <a name="emergency-remediation"></a>緊急時の修復
 
 DC エージェント サービスが問題の原因である状況が発生した場合、DC エージェント サービスは直ちにシャットダウンされる可能性があります。 DC エージェントのパスワード フィルター dll が実行中ではないサービスをまだ呼び出そうとすると、警告イベント (10012、10013) がログに記録されますが、その間にすべての受信パスワードが承認されます。 DC エージェント サービスは、必要に応じて Windows サービス コントロール マネージャーを使用してスタートアップの種類を "無効" に構成することもできます。
 
-また、Azure AD パスワード保護ポータルで有効モードを [いいえ] に設定することで修復する方法もあります。 更新されたポリシーがダウンロードされたら、各 DC エージェント サービスが休止モードに入り、すべてパスワードが現状のままで受け入れられます。 詳細については、「[強制モード](howto-password-ban-bad-on-premises-operations.md#enforce-mode)」を参照してください。
+また、Azure AD パスワード保護ポータルで有効モードを [いいえ] に設定することで修復する方法もあります。 更新されたポリシーがダウンロードされたら、各 DC エージェント サービスが休止モードに入り、すべてパスワードが現状のままで受け入れられます。 詳細については、「[操作のモード](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)」を参照してください。
 
 ## <a name="removal"></a>削除
 
@@ -247,7 +247,7 @@ Azure AD パスワード保護ソフトウェアをアンインストールし�
 
    sysvol 共有が既定以外の場所に設定されている場合は、別のパスになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure AD パスワード保護についてよく寄せられる質問](howto-password-ban-bad-on-premises-faq.md)
 

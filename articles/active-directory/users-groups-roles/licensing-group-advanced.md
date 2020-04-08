@@ -16,11 +16,11 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74025958"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231719"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
@@ -28,7 +28,7 @@ ms.locfileid: "74025958"
 
 ## <a name="usage-location"></a>利用場所
 
-一部の Microsoft サービスは、すべての場所で利用できないことがあります。 ライセンスをユーザーに割り当てる前に、管理者はユーザーの **[利用場所]** プロパティを指定しておく必要があります。 [Azure Portal](https://portal.azure.com) の **[ユーザー]** &gt; **[プロファイル]** &gt; **[設定]** で利用場所を指定できます。
+Microsoft サービスの中には、すべての場所では利用できないものもあります。 ライセンスをユーザーに割り当てる前に、管理者はユーザーの **[利用場所]** プロパティを指定しておく必要があります。 [Azure portal](https://portal.azure.com) の **[ユーザー]** &gt; **[プロファイル]** &gt; **[設定]** で利用場所を指定できます。
 
 グループ ライセンスの割り当ての際、利用場所が指定されていないユーザーは、ディレクトリの場所を継承します。 複数の場所にユーザーがいる場合、そのことをユーザー リソースに正しく反映させてから、ライセンスが付与されたグループにユーザーを追加するようにしてください。
 
@@ -219,7 +219,7 @@ PowerShell または Graph API でグループを削除しようとした場合�
 
   この種の制限の回避策として、Azure AD の 使用可能なシート数を解放するために、 **[グループ]** ブレードに移動し、 **[再処理]** ボタンをクリックします。 このコマンドにより、そのグループ内のすべてのユーザーが処理され、可能であればエラー状態が解決されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 グループベースのライセンスを通じたライセンス管理の他のシナリオについては、以下をご覧ください
 

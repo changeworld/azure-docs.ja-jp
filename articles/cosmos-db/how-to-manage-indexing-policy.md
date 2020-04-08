@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 171542c89b900eb8bf282156c79303a1deb5a5f7
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 58a1ee13afa76b152723cb71d4037f9c31cc8d4e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506241"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227347"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 
@@ -19,7 +19,7 @@ Azure Cosmos DB では、コンテナーごとに定義された[インデック
 
 ## <a name="indexing-policy-examples"></a>インデックス作成ポリシーの例
 
-JSON 形式で示されたインデックス作成ポリシーの例をいくつか紹介します。Azure portal では、これらがこの形式で公開されます。 同じパラメーターは、Azure CLI のほか、任意の SDK で設定することができます。
+[JSON 形式](index-policy.md#include-exclude-paths)で示されたインデックス作成ポリシーの例をいくつか紹介します。これは、Azure portal 上に公開される際の方法です。 同じパラメーターは、Azure CLI のほか、任意の SDK で設定することができます。
 
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>一部のプロパティ パスを選択的に除外するオプトアウト ポリシー
 
@@ -153,7 +153,7 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
     ],
     "excludedPaths": [
         {
-            "path": "/\"_etag\"/?"
+            "path": "/_etag/?"
         }
     ],
     "spatialIndexes": [

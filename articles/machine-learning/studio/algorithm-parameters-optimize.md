@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 33705d0c9f2f405be733fd21c88cb83e96aec781
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 04148b482cb07665f43df5bd86a77175cbbaf08b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168962"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218261"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でアルゴリズムを最適化するためのパラメーターを選択する
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 このトピックでは、Azure Machine Learning Studio (クラシック) でアルゴリズムに適したハイパーパラメーター セットを選択する方法について説明します。 ほとんどの機械学習アルゴリズムに、設定が必要なパラメーターがあります。 モデルをトレーニングするときは、これらのパラメーターに値を提供する必要があります。 トレーニングしたモデルの有効性は、選んだモデル パラメーターによって決まります。 パラメーターの最適なセットを見つけるプロセスのことを、*モデルの選択*といいます。
 
@@ -41,7 +43,7 @@ ms.locfileid: "77168962"
 
 ![2 クラスのブースト デシジョン ツリー、1 つのパラメーター](./media/algorithm-parameters-optimize/fig2.png)
 
- 別の方法として、 **[範囲ビルダーを使用]** で生成されるグリッドの最大ポイントと最小ポイント、および生成するポイントの合計数を定義できます。 既定では、パラメーターの値は線形スケールで生成されます。 しかし、 **[対数スケール]** チェック ボックスをオンにすると、値が対数スケールで生成されます (つまり、隣接するポイントの差ではなく比率が一定になります)。 整数パラメーターの場合、ハイフンを使って範囲を定義できます。 たとえば、"1-10" は 1 ～ 10 (1 と 10 を含む) のすべての整数を意味するパラメーターのセットになります。 混合モードもサポートされています。 たとえば、パラメーター セット "1-10, 20, 50" は、整数 1 ～ 10、20、50 を含みます。
+ 別の方法として、 **[範囲ビルダーを使用]** で生成されるグリッドの最大ポイントと最小ポイント、および生成するポイントの合計数を定義できます。 既定では、パラメーターの値は線形スケールで生成されます。 しかし、 **[対数スケール]** チェック ボックスをオンにすると、値が対数スケールで生成されます (つまり、隣接するポイントの差ではなく比率が一定になります)。 整数パラメーターの場合、ハイフンを使って範囲を定義できます。 たとえば、"1-10" は 1 から10 (1 と 10 を含む) のすべての整数によってパラメーター セットが形成されることを意味します。 混合モードもサポートされています。 たとえば、パラメーター セット "1-10, 20, 50" は、整数 1 から 10、20、および 50 を含みます。
 
 ![2 クラスのブースト デシジョン ツリー、パラメーター範囲](./media/algorithm-parameters-optimize/fig3.png)
 

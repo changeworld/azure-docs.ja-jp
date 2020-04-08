@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f7fbc82c08d89d73d671a49fb31b9d3cca01c721
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6962a264787bd8a55b6f6a2ebdb6eeb615c33d5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195517"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218409"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>キー ローテーションと監査で Azure Key Vault を設定する
 
@@ -23,21 +23,16 @@ ms.locfileid: "78195517"
 
 キー コンテナーを作成したら、以後はそのキー コンテナーを使用してキーとシークレットを保存できます。 アプリケーションでキーやシークレットを保持する必要がなくなり、必要に応じてコンテナーから要求することができます。 キー コンテナーを使用してアプリケーションの動作に影響を与えずにキーとシークレットを更新できるため、キーとシークレットを管理する可能性の幅が広がります。
 
->[!IMPORTANT]
-> この記事の例は、説明のためにのみ示されています。 運用環境での使用は意図していません。 
+この記事では、スケジュールされたストレージ アカウント キーのローテーションを実装し、キー コンテナーの監査ログを監視し、予期しない要求が行われた場合にアラートを生成する方法について説明します。 
 
-この記事で説明する内容は次のとおりです。
+まず、選択したいずれかの方法を使用して、キー コンテナーを作成する必要があります。
 
-- Azure Key Vault を使用してシークレットを保存する例。 この記事で保存するシークレットは、アプリケーションによってアクセスされる Azure ストレージ アカウント キーです。 
-- そのストレージ アカウント キーのスケジュールされたローテーションを実装する方法。
-- キー コンテナー監査ログを監視し、予期しない要求が行われたときにアラートを生成する方法。
+- [Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う](quick-create-cli.md)
+- [Azure PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う](quick-create-powershell.md)
+- [Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う](quick-create-portal.md)
 
-> [!NOTE]
-> この記事では、使用するキー コンテナーの初期設定の詳細は説明しません。 この情報については、「[Azure Key Vault とは](key-vault-overview.md)」を参照してください。 クロスプラットフォーム コマンド ライン インターフェイスの手順については、「[Manage Key Vault using Azure CLI (Azure CLI を使用して Key Vault を管理する)](key-vault-manage-with-cli2.md)」を参照してください。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="set-up-key-vault"></a>Key Vault の設定
+## <a name="store-a-secret"></a>シークレットを保存する
 
 アプリケーションが Key Vault からシークレットを取得できるようにするには、最初にシークレットを作成し、それをコンテナーにアップロードする必要があります。
 

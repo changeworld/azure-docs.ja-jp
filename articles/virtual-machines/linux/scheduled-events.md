@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: f03dbb783fe1374fe138f251d813b3333ed9e025
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: dbea68f5699f26b866d2e22c960c0359bcb3479b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613841"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231999"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM の Scheduled Events
 
@@ -46,7 +46,7 @@ Windows のスケジュールされたイベントの詳細については、[Wi
 スケジュールされたイベントは、次のユース ケースでイベントを提供します。
 
 - [プラットフォームで開始されるメンテナンス](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (例: VM の再起動、ライブ マイグレーション、ホストの更新を保持するメモリ)
-- ハードウェアの機能低下
+- 仮想マシンは、じきに故障することが予測されている[劣化したホスト ハードウェア](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)で実行されています。
 - ユーザーが開始するメンテナンス (たとえば、ユーザーによる再起動や VM の再デプロイ)
 - [スポット VM](spot-vms.md) および[スポット スケール セット](../../virtual-machine-scale-sets/use-spot.md) インスタンスの削除。
 
@@ -54,7 +54,7 @@ Windows のスケジュールされたイベントの詳細については、[Wi
 
   Metadata Service では、VM 内部からアクセスできる REST エンドポイントを使用した VM の実行に関する情報が公開されます。 情報は、VM の外部に公開されないように、ルーティング不可能な IP 経由で提供されます。
 
-### <a name="scope"></a>スコープ
+### <a name="scope"></a>Scope
 スケジュールされたイベントの配信先は次のとおりです。
 
 - スタンドアロンの仮想マシン。
@@ -67,18 +67,19 @@ Windows のスケジュールされたイベントの詳細については、[Wi
 ### <a name="endpoint-discovery"></a>エンドポイントの検出
 VNET が有効な VM の場合は、静的でルーティング不可能な IP アドレス `169.254.169.254` から Metadata Service を利用できます。 スケジュールされたイベントの最新バージョンのフル エンドポイントは次のとおりです。 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
 
 VM が仮想ネットワーク内で作成されていない場合 (クラウド サービスと従来の VM の既定のケース)、使用する IP アドレスを検出する追加のロジックが必要となります。 [ホスト エンドポイントの検出](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)方法の詳細については、このサンプルを参照してください。
 
 ### <a name="version-and-region-availability"></a>利用可能なバージョンとリージョン
-スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2017-11-01` です。
+スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2019-01-01` です。
 
 | Version | リリースの種類 | リージョン | リリース ノート | 
 | - | - | - | - | 
+| 2019-01-01 | 一般公開 | All | <li> 仮想マシン スケール セットの EventType "Terminate" のサポートが追加されました |
 | 2017-11-01 | 一般公開 | All | <li> スポット VM 削除の EventType 「Preempt」のサポートを追加する<br> | 
 | 2017-08-01 | 一般公開 | All | <li> IaaS VM のリソース名から先頭のアンダースコアを削除<br><li>すべての要求にメタデータ ヘッダー要件を適用 | 
-| 2017-03-01 | プレビュー | All | <li>最初のリリース
+| 2017-03-01 | プレビュー | All | <li>最初のリリース |
 
 
 > [!NOTE] 
@@ -104,7 +105,7 @@ VM を再起動すると、型 `Reboot` のイベントがスケジュールさ�
 
 #### <a name="bash"></a>Bash
 ```
-curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
 ```
 
 応答には、スケジュールされたイベントの配列が含まれています。 空の配列は、現在スケジュールされているイベントがないことを意味します。
@@ -115,7 +116,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
     "Events": [
         {
             "EventId": {eventID},
-            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt",
+            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt" | "Terminate",
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
@@ -129,7 +130,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 |プロパティ  |  説明 |
 | - | - |
 | EventId | このイベントのグローバル一意識別子。 <br><br> 例: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | このイベントによって発生する影響。 <br><br> 値: <br><ul><li> `Freeze`:仮想マシンは数秒間の一時停止がスケジュールされています。 CPU とネットワーク接続が中断する場合がありますが、メモリや開いているファイルへの影響はありません。<li>`Reboot`:Virtual Machine は再起動がスケジュールされています (非永続メモリは失われます)。 <li>`Redeploy`:Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 <li>`Preempt`:スポット仮想マシンが削除されています（一時ディスクは失われています）。|
+| EventType | このイベントによって発生する影響。 <br><br> 値: <br><ul><li> `Freeze`:仮想マシンは数秒間の一時停止がスケジュールされています。 CPU とネットワーク接続が中断する場合がありますが、メモリや開いているファイルへの影響はありません。<li>`Reboot`:Virtual Machine は再起動がスケジュールされています (非永続メモリは失われます)。 <li>`Redeploy`:Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 <li>`Preempt`:スポット仮想マシンが削除されています（一時ディスクは失われています）。 <li> `Terminate`:仮想マシンは削除がスケジュールされています。 |
 | ResourceType | このイベントが影響を与えるリソースの種類。 <br><br> 値: <ul><li>`VirtualMachine`|
 | リソース| このイベントが影響を与えるリソースの一覧。 これには最大 1 つの[更新ドメイン](manage-availability.md)のマシンが含まれることが保証されますが、更新ドメインの一部のマシンは含まれない場合があります。 <br><br> 例: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | このイベントの状態。 <br><br> 値: <ul><li>`Scheduled`:このイベントは、`NotBefore` プロパティに指定された時間が経過した後で開始するようにスケジュールされています。<li>`Started`:このイベントは開始されています。</ul> `Completed` や類似の状態が提供されることはありません。 イベントが完了すると、イベントは返されなくなります。
@@ -144,6 +145,10 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | 再起動 | 約 15 分 |
 | Redeploy | 10 分 |
 | Preempt | 30 秒 |
+| Terminate | [ユーザーが構成可能](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications):5 から 15 分 |
+
+> [!NOTE] 
+> Azure では、劣化したハードウェアに起因するホストの故障を予測が可能になり、移行をスケジュールすることでサービスの中断を軽減しようとすることがあります。 影響を受ける仮想マシンには、スケジュールされているイベントと `NotBefore` が届きます。これは通常、2、3 日先になります。 実際の時間は、予測された故障のリスク評価によって異なります。 Azure では、可能であれば、7 日前に通知を行いますが、実際の時間はさまざまであり、ハードウェアが今にも故障する可能性が高い場合、7 日より短くなることがあります。 システムによって開始される移行の前にハードウェアで障害が発生した場合に備えて、サービスのリスクを最小限に抑えるために、できるだけ早く仮想マシンをご自身で再デプロイすることをお勧めします。
 
 ### <a name="start-an-event"></a>イベントの開始 
 
@@ -162,7 +167,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 
 #### <a name="bash-sample"></a>Bash のサンプル
 ```
-curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
+curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
 ```
 
 > [!NOTE] 
@@ -179,7 +184,7 @@ import json
 import socket
 import urllib2
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01"
 this_host = socket.gethostname()
 
 

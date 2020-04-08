@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 25b8aa9b5e80720e9543dafce7970404a62b7d1f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 1a57173311278c5e3e0304aeb12d4d6999379eb5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132638"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230643"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Xamarin アプリケーションで Microsoft Authenticator または Intune ポータル サイトを使用する
 
@@ -75,12 +75,12 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
     }
     
     else if (!AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url))
-    {               
-         return false;                
+    {                
+         return false;                  
     }
     
     return true;     
-}           
+}            
 ```
 
 このメソッドは、アプリケーションが起動されるたびに呼び出されます。 これは、ブローカーからの応答を処理し、MSAL.NET によって開始される認証プロセスを完了する機会として使用されます。
@@ -96,20 +96,20 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 1. `AcquireTokenInteractive` の呼び出しで `.WithParentActivityOrWindow(App.RootViewController)` を使用し、使用するオブジェクト ウィンドウへの参照を渡します。
 
     `App.cs`:
-    
+
     ```csharp
        public static object RootViewController { get; set; }
     ```
-    
+
     `AppDelegate.cs`:
-    
+
     ```csharp
        LoadApplication(new App());
        App.RootViewController = new UIViewController();
     ```
-    
+
     `AcquireToken` の呼び出しの場合:
-    
+
     ```csharp
     result = await app.AcquireTokenInteractive(scopes)
                  .WithParentActivityOrWindow(App.RootViewController)
@@ -117,7 +117,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
     ```
 
 ### <a name="step-5-register-a-url-scheme"></a>手順 5:URL スキームを登録する
-MSAL.NET は、URL を使用してブローカーを呼び出し、ブローカーの応答をアプリに返します。 ラウンド トリップを終了するには、`Info.plist` ファイルにアプリの URL スキームを登録します。
+MSAL.NET は、URL を使用してブローカーを呼び出し、ブローカーの応答をアプリに返します。 ラウンド トリップを完了するには、`Info.plist` ファイルにアプリの URL スキームを登録します。
 
 `CFBundleURLSchemes` の名前には、プレフィックスとして `msauth.` を含める必要があります。 プレフィックスに `CFBundleURLName` を続けます。 
 
@@ -143,11 +143,12 @@ URL スキームでは、`BundleId` によってアプリが一意に識別さ�
 ```
 
 ### <a name="step-6-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>手順 6:LSApplicationQueriesSchemes セクションにブローカー識別子を追加する
+
 MSAL では、`–canOpenURL:` を使用してブローカーがデバイスにインストールされているかどうかを確認します。 iOS 9 では、アプリケーションが照会できるスキームが Apple によってロックされています。 
 
 次の例のように、`Info.plist` ファイルの `LSApplicationQueriesSchemes` セクションに `msauthv2` を追加します。
 
-```XML 
+```XML
 <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>msauthv2</string>
@@ -156,16 +157,19 @@ MSAL では、`–canOpenURL:` を使用してブローカーがデバイスに�
 ```
 
 ### <a name="step-7-register-your-redirect-uri-in-the-application-portal"></a>手順 7:アプリケーション ポータルでリダイレクト URI を登録する
+
 ブローカーを使用する場合、リダイレクト URI には追加の要件があります。 リダイレクト URI は次の形式にする _必要_ があります。
+
 ```csharp
 $"msauth.{BundleId}://auth"
 ```
 
-次に例を示します。 
+次に例を示します。
 
 ```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; 
 ```
+
 リダイレクト URI が `Info.plist` ファイルに含まれている `CFBundleURLSchemes` の名前と一致することに注意してください。
 
 ### <a name="step-8-make-sure-the-redirect-uri-is-registered-with-your-app"></a>手順 8:リダイレクト URI がアプリに登録されていることを確認する
@@ -198,9 +202,108 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 ## <a name="brokered-authentication-for-android"></a>Android のブローカー認証
 
-MSAL.NET は、Xamarin.iOS プラットフォームのみをサポートしています。 Xamarin.Android プラットフォームのブローカーはまだサポートされていません。
+### <a name="step-1-enable-broker-support"></a>手順 1:ブローカーのサポートを有効にする
 
-MSAL Android ネイティブ ライブラリは、既にブローカー認証をサポートしています。 詳細については、「[Android のブローカー認証](brokered-auth.md)」を参照してください。
+ブローカーのサポートは、PublicClientApplication ベースごとに有効になります。 既定では無効になっています。 `PublicClientApplicationBuilder` によって `IPublicClientApplication` を作成する場合は、`WithBroker()` パラメーター (既定では true に設定) を使用します。
+
+```CSharp
+var app = PublicClientApplicationBuilder
+                .Create(ClientId)
+                .WithBroker()
+                .WithRedirectUri(redirectUriOnAndroid) //(see step 4 below)
+                .Build();
+```
+
+### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>手順 2:コールバックを処理するように AppDelegate を更新する
+
+MSAL.NET によってブローカーが呼び出されると、次に、ブローカーは OnActivityResult() メソッドを使用してアプリケーションにコールバックします。 MSAL ではブローカーからの応答を待機するので、アプリケーションでは MSAL.NET に結果をルーティングする必要があります。
+これを実現するには、次に示すように OnActivityResult () メソッドをオーバーライドして、結果を `SetAuthenticationContinuationEventArgs(int requestCode, Result resultCode, Intent data)` にルーティングします
+
+```CSharp
+protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+{
+   base.OnActivityResult(requestCode, resultCode, data);
+   AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(requestCode, resultCode, data);
+}
+```
+
+このメソッドは、ブローカー アプリケーションが起動されるたびに呼び出され、ブローカーからの応答を処理して MSAL.NET によって開始された認証プロセスを完了するために使用されます。
+
+### <a name="step-3-set-an-activity"></a>手順 3:アクティビティを設定する
+
+ブローカー認証が機能するためには、MSAL 上でブローカーからの応答を送受信できるように、アクティビティを設定する必要があります。
+
+これを行うには、アクティビティ (通常は MainActivity) を親オブジェクトとして `WithParentActivityOrWindow(object parent)` に提供する必要があります。 
+
+**例:**
+
+AcquireToken の呼び出しで、次のように記述します。
+
+```CSharp
+result = await app.AcquireTokenInteractive(scopes)
+             .WithParentActivityOrWindow((Activity)context))
+             .ExecuteAsync();
+```
+
+### <a name="step-4-register-your-redirecturi-in-the-application-portal"></a>手順 4:アプリケーション ポータルで RedirectUri を登録する
+
+MSAL では URL を使用してブローカーを呼び出して、アプリに戻ります。 ラウンド トリップを完了するには、アプリの URL スキームを登録する必要があります。 このリダイレクト URI は、Azure AD アプリ登録ポータル上でアプリケーションの有効なリダイレクト URI として登録されている必要があります。
+
+
+アプリケーションに必要なリダイレクト URI は、APK の署名に使用される証明書に依存します。
+
+```
+Example: msauth://com.microsoft.xforms.testApp/hgbUYHVBYUTvuvT&Y6tr554365466=
+```
+
+URI の最後の部分である `hgbUYHVBYUTvuvT&Y6tr554365466=` は、APK での署名に使用されるシグネチャであり、base64 でエンコードされています。
+ただし、Visual Studio を使用したアプリケーションの開発フェーズ期間中に、特定の証明書の APK に署名しないままコードをデバッグすると、デバッグの目的のために Visual Studio によって APK への署名が自動的に行われ、APK にはビルドされているコンピューターに固有のシグネチャが付与されます。 このため、異なるコンピューター上でアプリをビルドするたびに、MSAL による認証を行うために、アプリケーションのコード内および Azure portal 上のアプリケーションの登録にあるリダイレクト URI を更新する必要が生じます。 
+
+デバッグしているときに、指定されたリダイレクト URI が正しくないことを示す MSAL 例外 (ログ メッセージ) が発生する場合があります。 デバッグを行っている現在のコンピューターで**使用していなければならないリダイレクト URI も、この例外によって提示されます**。 当面の間は、このリダイレクト URI を使用して開発を続けることができます。
+
+コードの最終処理を行う準備ができたら、APK に署名する際の証明書のシグネチャを使用するように、コード内と Azure portal 上のアプリケーションの登録にあるリダイレクト URI を確実に更新します。
+
+実際には、チームの各メンバーに対するリダイレクト URI と、実稼働環境での署名済みバージョンの APK に対するリダイレクト URI を登録する必要があることを意味します。
+
+このシグネチャは、MSAL によって行われる方法と同じように、ご自身で計算することもできます。 
+
+```CSharp
+   private string GetRedirectUriForBroker()
+   {
+      string packageName = Application.Context.PackageName;
+      string signatureDigest = this.GetCurrentSignatureForPackage(packageName);
+      if (!string.IsNullOrEmpty(signatureDigest))
+      {
+            return string.Format(CultureInfo.InvariantCulture, "{0}://{1}/{2}", RedirectUriScheme,
+               packageName.ToLowerInvariant(), signatureDigest);
+      }
+
+      return string.Empty;
+   }
+
+   private string GetCurrentSignatureForPackage(string packageName)
+   {
+            PackageInfo info = Application.Context.PackageManager.GetPackageInfo(packageName,
+               PackageInfoFlags.Signatures);
+            if (info != null && info.Signatures != null && info.Signatures.Count > 0)
+            {
+               // First available signature. Applications can be signed with multiple signatures.
+               // The order of Signatures is not guaranteed.
+               Signature signature = info.Signatures[0];
+               MessageDigest md = MessageDigest.GetInstance("SHA");
+               md.Update(signature.ToByteArray());
+               return Convert.ToBase64String(md.Digest(), Base64FormattingOptions.None);
+               // Server side needs to register all other tags. ADAL will
+               // send one of them.
+            }
+   }
+```
+
+また、次のコマンドによって keytool を使用して、ご自身のパッケージ用のシグネチャを取得することもできます。
+
+Windows の場合: `keytool.exe -list -v -keystore "%LocalAppData%\Xamarin\Mono for Android\debug.keystore" -alias androiddebugkey -storepass android -keypass android`
+
+Mac の場合: `keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64`
 
 ## <a name="next-steps"></a>次のステップ
 
