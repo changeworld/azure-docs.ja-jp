@@ -2,19 +2,19 @@
 title: Azure Kubernetes Service (AKS)
 summary: AKS を使用すると、運用開始準備の整った Kubernetes クラスターを Azure に短時間でデプロイすることができます。 これらのクイックスタート、チュートリアル、サンプルを使用して、AKS の使用方法を確認してください。
 metadata:
-  title: Azure Kubernetes Service (AKS)
+  title: Azure Kubernetes Service (AKS) のドキュメント
   description: AKS を使用すると、運用開始準備の整った Kubernetes クラスターを Azure に短時間でデプロイすることができます。 これらのクイックスタート、チュートリアル、サンプルを使用して、AKS の使用方法を確認してください。
   ms.service: container-service
   ms.topic: landing-page
   author: laurenhughes
   ms.author: lahugh
   ms.date: 03/25/2020
-  ms.openlocfilehash: 7482eb14fb6bcb80bc8f8b9d06057287cb862a27
-  ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+  ms.openlocfilehash: 4829b95fb62a33406248f503e646238e116cb413
+  ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/27/2020
-  ms.locfileid: "80335983"
+  ms.lasthandoff: 04/07/2020
+  ms.locfileid: "80803281"
 landingContent:
 - title: Azure Kubernetes Service (AKS) について
   linkLists:

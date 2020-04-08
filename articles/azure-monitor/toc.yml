@@ -220,6 +220,8 @@
               href: app/api-custom-events-metrics.md
             - name: ASP.NET に関するトラブルシューティング
               href: app/asp-net-troubleshoot-no-data.md
+            - name: Application Insights の削除
+              href: app/remove-application-insights.md
         - name: コード不要の監視
           items:
             - name: Azure VM とスケール セット
