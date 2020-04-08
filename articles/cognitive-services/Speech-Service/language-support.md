@@ -230,31 +230,31 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | 簡体中国語      | `zh-Hans`     |
 | 中国語 (繁体字)     | `zh-Hant`     |
 | Croatian                | `hr`          |
-| Czech                   | `cs`          |
-| Danish                  | `da`          |
+| チェコ語                   | `cs`          |
+| デンマーク語                  | `da`          |
 | Dutch                   | `nl`          |
-| English                 | `en`          |
+| 英語                 | `en`          |
 | Estonian                | `et`          |
 | フィジー語                  | `fj`          |
 | フィリピン語                | `fil`         |
-| Finnish                 | `fi`          |
-| French                  | `fr`          |
-| German                  | `de`          |
-| Greek                   | `el`          |
+| フィンランド語                 | `fi`          |
+| フランス語                  | `fr`          |
+| ドイツ語                  | `de`          |
+| ギリシャ語                   | `el`          |
 | ハイチ・クレオール語          | `ht`          |
 | ヘブライ語                  | `he`          |
 | ヒンディー語                   | `hi`          |
 | ミャオ語               | `mww`         |
-| Hungarian               | `hu`          |
+| ハンガリー語               | `hu`          |
 | インドネシア語              | `id`          |
 | アイルランド語                   | `ga`          |
 | Italian                 | `it`          |
-| Japanese                | `ja`          |
+| 日本語                | `ja`          |
 | カンナダ語                 | `kn`          |
 | スワヒリ語               | `sw`          |
 | クリンゴン語                 | `tlh`         |
 | クリンゴン語 (plqaD)         | `tlh-Qaak`    |
-| Korean                  | `ko`          |
+| 韓国語                  | `ko`          |
 | Latvian                 | `lv`          |
 | Lithuanian              | `lt`          |
 | マダガスカル語                | `mg`          |
@@ -263,13 +263,13 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | マルタ語                 | `mt`          |
 | ノルウェー語               | `nb`          |
 | ペルシャ語                 | `fa`          |
-| Polish                  | `pl`          |
+| ポーランド語                  | `pl`          |
 | ポルトガル語 (ブラジル)     | `pt-br`       |
 | ポルトガル語 (ポルトガル)   | `pt-pt`       |
 | パンジャーブ語                 | `pa`          |
 | オトミ語         | `otq`         |
-| Romanian                | `ro`          |
-| Russian                 | `ru`          |
+| ルーマニア語                | `ro`          |
+| ロシア語                 | `ru`          |
 | サモア語                  | `sm`          |
 | セルビア語 (キリル)      | `sr-Cyrl`     |
 | セルビア語 (ラテン)         | `sr-Latn`     |
@@ -282,7 +282,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | テルグ語                  | `te`          |
 | Thai                    | `th`          |
 | トンガ語                  | `to`          |
-| Turkish                 | `tr`          |
+| トルコ語                 | `tr`          |
 | ウクライナ語               | `uk`          |
 | ウルドゥ語                    | `ur`          |
 | ベトナム語              | `vi`          |
