@@ -1,21 +1,21 @@
 ---
-title: Azure Database for PostgreSQL 用の Private Link - 単一サーバー (プレビュー)
+title: Private Link - Azure Database for PostgreSQL - 単一サーバー
 description: Azure Database for PostgreSQL の単一サーバーにおいて、Private Link がどのように機能するかについて説明します。
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: e3667a60a326838b490f9082fd55bdc92d038cf9
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/10/2020
+ms.openlocfilehash: 4216abdf8cc8aae00e3ba0c57961c4b8b7403672
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75899191"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371683"
 ---
-# <a name="private-link-for-azure-database-for-postgresql-single-server-preview"></a>Azure Database for PostgreSQL 用の Private Link - 単一サーバー (プレビュー)
+# <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 用の Private Link - 単一サーバー
 
-Private Link を使用すると、プライベート エンドポイントを経由して Azure 内のさまざまな PaaS サービスに接続できます。 Azure Private Link は基本的に、プライベート仮想ネットワーク (VNet) 内に Azure サービスを提供します。 PaaS リソースには、VNet 内のその他のリソースと同様に、プライベート IP アドレスを使用してアクセスできます。
+Private Link を使用すると、Azure Database for PostgreSQL - 単一サーバーのプライベート エンドポイントを作成できるため、プライベート Virtual Network (VNet) 内で Azure サービスを利用できます。 プライベート エンドポイントでは、VNet 内の他のリソースと同様に、データベース サーバーへの接続に使用できるプライベート IP が公開されます。
 
 Private Link 機能をサポートしている PaaS サービスの一覧については、Private Link の[ドキュメント](https://docs.microsoft.com/azure/private-link/index)を参照してください。 プライベート エンドポイントは、特定の [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) およびサブネット内のプライベート IP アドレスです。
 
@@ -39,7 +39,7 @@ Azure Database for PostgreSQL の単一サーバーにおけるデータの流�
 
 この設定が終了すると、Azure VM は米国西部リージョンにある Azure Database for PostgreSQL の単一サーバーにのみ接続できます。 ただし、接続は 1 つの Azure Database for PostgreSQL 単一サーバーに限定されません。 VM は、サブスクリプションに含まれていないデータベースも含め、米国西部リージョン内の任意の Azure Database for PostgreSQL の単一サーバーに引き続き接続できます。 上記のシナリオでは、データの流出が特定のリージョンに限定されていますが、完全には除外されていません。</br>
 
-Private Link を使用することで、NSG のようなネットワーク アクセス制御を設定して、プライベート エンドポイントへのアクセスを制限できるようになりました。 その後、個々の Azure PaaS リソースが特定のプライベート エンドポイントにマップされます。 悪意のある内部関係者は、マップされた PaaS リソース (Azure Database for PostgreSQL の単一サーバーなど) にしかアクセスできず、その他のリソースにはアクセスできません。
+Private Link を使用することで、NSG のようなネットワーク アクセス制御を設定してプライベート エンドポイントへのアクセスを制限できるようになりました。 その後、個々の Azure PaaS リソースが特定のプライベート エンドポイントにマップされます。 悪意のある内部関係者は、マップされた PaaS リソース (Azure Database for PostgreSQL の単一サーバーなど) にしかアクセスできず、その他のリソースにはアクセスできません。
 
 ## <a name="on-premises-connectivity-over-private-peering"></a>プライベート ピアリングを介したオンプレミス接続
 
@@ -51,16 +51,13 @@ Private Link を使用すると、[Express Route](https://azure.microsoft.com/se
 
 ### <a name="creation-process"></a>作成プロセス
 
-Private Link を有効にするには、プライベート エンドポイントが必要です。 次の操作方法ガイドを使用して、これを行うことができます。
+Private Link を有効にするには、プライベート エンドポイントが必要です。 これは、次の操作方法ガイドを使用して行えます。
 
 * [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal)
 * [CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>承認プロセス
-ネットワーク管理者がプライベート エンドポイント (PE) を作成すると、PostgreSQL 管理者は Azure Database for PostgreSQL へのプライベート エンドポイント接続 (PEC) を管理できます。
-
-> [!NOTE]
-> 現時点では、Azure Database for PostgreSQL の単一サーバーでは、プライベート エンドポイントの自動承認のみをサポートしています。
+ネットワーク管理者がプライベート エンドポイント (PE) を作成すると、PostgreSQL 管理者は Azure Database for PostgreSQL へのプライベート エンドポイント接続 (PEC) を管理できます。 ネットワーク管理者と DBA の職務の分離は、Azure Database for PostgreSQL 接続の管理に役立ちます。 
 
 * Azure portal 上で Azure Database for PostgreSQL サーバー リソースに移動します。 
     * 左側のペインで、プライベート エンドポイント接続を選択します
@@ -109,6 +106,19 @@ Private Link とファイアウォール規則を組み合わせて使用する�
 * パブリック トラフィックまたはサービス エンドポイントを構成し、プライベート エンドポイントを作成する場合、さまざまな種類の受信トラフィックが、対応する種類のファイアウォール規則によって承認されます。
 
 * パブリック トラフィックまたはサービス エンドポイントを構成せずにプライベート エンドポイントを作成する場合、Azure Database for PostgreSQL の単一サーバーにはプライベート エンドポイントからのみアクセスできます。 パブリック トラフィックまたはサービス エンドポイントを構成しない場合、すべての承認済みプライベート エンドポイントが拒否または削除されると、どのトラフィックも Azure Database for PostgreSQL の単一サーバーにアクセスできません。
+
+## <a name="deny-public-access-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL の単一サーバーのパブリック アクセスを拒否する
+
+Azure Database for PostgreSQL の単一サーバーにアクセスする方法をプライベート エンドポイントのみに依存する場合、データベース サーバーで **[Deny Public Network Access]\(パブリック ネットワーク アクセスの拒否\)** 構成を設定し、すべてのパブリック エンドポイント設定 ([ファイアウォール規則](concepts-firewall-rules.md)や [VNet サービス エンドポイント](concepts-data-access-and-security-vnet.md)) を無効にできます。 
+
+この設定が *[はい]* に設定されている場合、Azure Database for PostgreSQL にはプライベート エンドポイント経由の接続のみが許可されます。 この設定が *[いいえ]* に設定されている場合、ファイアウォール設定または VNet サービス エンドポイント設定に基づいてクライアントは Azure Database for PostgreSQL に接続できます。 また、プライベート ネットワーク アクセスの値が設定されると、お客様は既存のファイアウォール規則や VNet サービス エンドポイント規則を追加も更新もできなくなります。
+
+> [!Note]
+> この機能は、Azure Database for PostgreSQL - 単一サーバーで "General Purpose" および "メモリ最適化" 価格レベルがサポートされる、すべての Azure リージョンで利用できます。
+>
+> この設定は、Azure Database for PostgreSQL 単一サーバーの SSL 構成と TLS 構成に何の影響も与えません。
+
+Azure portal から Azure Database for PostgreSQL 単一サーバーの **[Deny Public Network Access]\(パブリック ネットワーク アクセスの拒否\)** を設定する方法については、[パブリック ネットワーク アクセスの拒否を構成する](howto-deny-public-network-access.md)方法に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

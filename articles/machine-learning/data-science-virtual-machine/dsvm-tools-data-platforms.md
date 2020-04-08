@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: bfae8147c348c76fa0e406fec283144ebc26e86b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cd787881957d78f179107e46b2650de4618c7724
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615330"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282326"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine でサポートされているデータ プラットフォーム
 
@@ -28,7 +28,7 @@ DSVM でサポートされているデータ プラットフォーム ツール�
 | | |
 | ------------- | ------------- |
 | 紹介   | ローカルのリレーショナル データベース インスタンス      |
-| サポートされている DSVM エディション      | Windows: SQL Server 2017、Windows 2019 (プレビュー): SQL Server 2019      |
+| サポートされている DSVM エディション      | Windows 2016: SQL Server 2017、Windows 2019: SQL Server 2019      |
 | 標準的な使用      | 比較的小さなデータセットを使用したローカルでの迅速開発 <br/> In-Database R の実行   |
 | サンプルへのリンク      |    New York City データセットの小さなサンプルが、次の SQL データベースに読み込まれます。<br/>  `nyctaxi` <br/> Microsoft Machine Learning Server およびデータベース内の分析を示す Jupyter サンプルは次の場所にあります。<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
 | DSVM 上の関連ツール       | SQL Server Management Studio <br/> ODBC および JDBC ドライバー<br/> pyodbc、RODBC<br />Apache Drill      |

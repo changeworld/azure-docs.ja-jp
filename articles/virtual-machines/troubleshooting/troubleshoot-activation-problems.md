@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: a1c2049d7355ab946dbf426ec71f7f6178b8f153
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 5c84588290ce769b556002469b6a11c6950bb878
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819107"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476554"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング
 
@@ -46,9 +46,9 @@ Azure Windows VM をライセンス認証しようとすると、次の例のよ
 ## <a name="solution"></a>解決策
 
 >[!NOTE]
->サイト間 VPN と強制トンネリングを使用している場合は、「[Use Azure custom routes to enable KMS activation with forced tunneling (強制トンネリングで KMS ライセンス認証を有効にするために Azure カスタム ルートを使用する)](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)」を参照してください。 
+>サイト間 VPN と強制トンネリングを使用している場合は、「[Use Azure custom routes to enable KMS activation with forced tunneling (強制トンネリングで KMS ライセンス認証を有効にするために Azure カスタム ルートを使用する)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling)」を参照してください。 
 >
->ExpressRoute を使用していて、既定のルートを公開している場合は、「[Azure VM may fail to activate over ExpressRoute (Azure VM が ExpressRoute 経由でのライセンス認証に失敗する場合がある)](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx)」を参照してください。
+>ExpressRoute を使用していて、既定のルートが公開されている場合は、「[ExpressRoute 回路に接続された仮想ネットワークへのインターネット接続をブロックできますか?](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)」を参照してください。
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>手順 1: 適切な KMS クライアント セットアップ キーを構成する
 
@@ -102,7 +102,9 @@ Azure Windows VM をライセンス認証しようとすると、次の例のよ
   
     また、1688 ポートを持つ KMS エンドポイントへの送信ネットワーク トラフィックは、VM 内のファイアウォールによってブロックされません。
 
-5. kms.core.windows.net への接続が成功したことを確認した後、管理者特権の Windows PowerShell プロンプトで次のコマンドを実行します。 このコマンドは、ライセンス認証を複数回試行します。
+5. [[Network Watcher - 次ホップ]](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) を使用して、対象の VM から、宛先 IP 23.102.135.246 (kms.core.windows.net) またはリージョンに適用される適切な KMS エンドポイントの IP アドレスへの、次ホップの種類が**インターネット**であることを確認します。  結果が VirtualAppliance または VirtualNetworkGateway の場合、既定のルートが存在する可能性があります。  ネットワーク管理者に連絡し、協力して適切な措置を決定してください。  このソリューションが組織のポリシーと一致している場合は、[カスタム ルート](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation)である可能性があります。
+
+6. kms.core.windows.net への接続が成功したことを確認した後、管理者特権の Windows PowerShell プロンプトで次のコマンドを実行します。 このコマンドは、ライセンス認証を複数回試行します。
 
     ```powershell
     1..12 | ForEach-Object { Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato" ; start-sleep 5 }
@@ -112,12 +114,12 @@ Azure Windows VM をライセンス認証しようとすると、次の例のよ
     
     **Windows(R), ServerDatacenter Edition (12345678-1234-1234-1234-12345678) のライセンス認証を行っています …  製品は正常にライセンス認証されました。**
 
-## <a name="faq"></a>FAQ 
+## <a name="faq"></a>よく寄せられる質問 
 
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>Azure Marketplace から Windows Server 2016 を作成しました。 Windows Server 2016 をライセンス認証するために KMS キーを構成する必要はありますか? 
 
  
-No. Azure Marketplace のイメージでは、適切な KMS クライアント セットアップ キーが既に構成されています。 
+いいえ。 Azure Marketplace のイメージでは、適切な KMS クライアント セットアップ キーが既に構成されています。 
 
 ### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>Windows ライセンス認証は、VM が Azure Hybrid Use Benefit (HUB) を使用しているかどうかにかかわらず、同じように動作しますか? 
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 239bfb4f5a0e9115c113bb2d5ddbc931f41c0f3d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: c881b2b9743766e4d35e6cb05f6f3469803850bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599809"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062121"
 ---
 # <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>仮想マシンおよび仮想マシン スケール セット向けの Azure Disk Encryption
 
@@ -28,7 +28,8 @@ Azure Disk Encryption は、Linux と Windows 両方の仮想マシンに加え�
 - [Linux VM での Azure Disk Encryption シナリオ](../../virtual-machines/linux/disk-encryption-linux.md)
 - [Azure CLI を使用して Linux VM を作成、暗号化する](../../virtual-machines/linux/disk-encryption-cli-quickstart.md)
 - [Azure PowerShell を使用して Linux VM を作成、暗号化する](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
-- [Azure portal を使用して Linux VM を作成、暗号化する](../../virtual-machines/linux/disk-encryption-portal-quickstart.md)
+- [Azure portal を使用した Linux VM の作成と暗号化](../../virtual-machines/linux/disk-encryption-portal-quickstart.md)
+- [Linux の Azure Disk Encryption 拡張機能スキーマ](../../virtual-machines/extensions/azure-disk-enc-linux.md)
 - [Azure Disk Encryption 用のキー コンテナーの作成と構成](../../virtual-machines/linux/disk-encryption-key-vault.md)
 - [Azure Disk Encryption のサンプル スクリプト](../../virtual-machines/linux/disk-encryption-sample-scripts.md)
 - [Azure Disk Encryption のトラブルシューティング](../../virtual-machines/linux/disk-encryption-troubleshooting.md)
@@ -50,7 +51,8 @@ Azure Disk Encryption は、Linux と Windows 両方の仮想マシンに加え�
 - [Windows VM での Azure Disk Encryption シナリオ](../../virtual-machines/windows/disk-encryption-windows.md)
 - [Azure CLI を使用して Windows VM を作成、暗号化する](../../virtual-machines/windows/disk-encryption-cli-quickstart.md)
 - [Azure PowerShell を使用して Windows VM を作成、暗号化する](../../virtual-machines/windows/disk-encryption-powershell-quickstart.md)
-- [Azure portal を使用して Windows VM を作成、暗号化する](../../virtual-machines/windows/disk-encryption-portal-quickstart.md)
+- [Azure portal を使用した Windows 仮想マシンの作成と暗号化](../../virtual-machines/windows/disk-encryption-portal-quickstart.md)
+- [Windows の Azure Disk Encryption 拡張機能スキーマ](../../virtual-machines/extensions/azure-disk-enc-windows.md)
 - [Azure Disk Encryption 用のキー コンテナーの作成と構成](../../virtual-machines/windows/disk-encryption-key-vault.md)
 - [Azure Disk Encryption のサンプル スクリプト](../../virtual-machines/windows/disk-encryption-sample-scripts.md)
 - [Azure Disk Encryption のトラブルシューティング](../../virtual-machines/windows/disk-encryption-troubleshooting.md)
@@ -73,7 +75,7 @@ Azure Disk Encryption は、Linux と Windows 両方の仮想マシンに加え�
 - [Azure Disk Encryption のキー コンテナーを作成して構成する](../../virtual-machine-scale-sets/disk-encryption-key-vault.md)
 - [Azure Disk Encryption を仮想マシン スケール セットの拡張機能のシーケンス処理と共に使用する](../../virtual-machine-scale-sets/disk-encryption-extension-sequencing.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure 暗号化の概要](encryption-overview.md)
 - [保存データの暗号化](encryption-atrest.md)

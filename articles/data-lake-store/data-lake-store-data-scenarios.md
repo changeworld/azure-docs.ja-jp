@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 0b16154edbda4bedfd4e9b680ba4311e7a235212
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8f9b66bf9a301888f2371fb1c58a4845c2232b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60879039"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536158"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Data Lake Storage Gen1 を使用してビッグ データの要件に対応する
 
@@ -38,7 +38,7 @@ ms.locfileid: "60879039"
 ### <a name="ad-hoc-data"></a>アドホック データ
 これは、ビッグ データ アプリケーションのプロトタイプ作成に使用される小規模なデータ セットを表します。 アドホック データの取り込み方法は、データ ソースに応じてさまざまです。
 
-| データ ソース | 取り込みに使用するツール |
+| Data Source | 取り込みに使用するツール |
 | --- | --- |
 | ローカル コンピューター |<ul> <li>[Azure Portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[Data Lake Tools for Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure Storage BLOB |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy ツール](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight クラスター上で実行されている DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
@@ -98,7 +98,7 @@ Web サーバー ログ データをアップロードする場合、または�
 ## <a name="process-data-stored-in-data-lake-storage-gen1"></a>Data Lake Storage Gen1 に格納されているデータを処理する
 Data Lake Storage Gen1 でデータが利用できるようになったら、サポートされているビッグ データ アプリケーションを使用して、そのデータの分析を実行できます。 現在、Data Lake Storage Gen1 に格納されたデータに対してデータ分析ジョブを実行する場合は、Azure HDInsight と Azure Data Lake Analytics を使用できます。
 
-![Data Lake Storage Gen1 のデータを分析する](./media/data-lake-store-data-scenarios/analyze-data.png "Data Lake Storage Gen1 のデータを分析する")
+![Data Lake Storage Gen1 のデータを分析する](./media/data-lake-store-data-scenarios/analyze-data.png "Data Lake Storage Gen1 でのデータの分析")
 
 次の例を参考にしてください。
 
@@ -111,7 +111,7 @@ Data Lake Storage Gen1 でデータが利用できるようになったら、サ
 * 既存のデータ処理パイプラインとのインターフェイスとなる他のリポジトリにデータを移動する。 たとえば、Data Lake Storage Gen1 から Azure SQL Database またはオンプレミスの SQL Server にデータを移動できます。
 * アプリケーション プロトタイプの作成中に IDE 環境で処理するために、ローカル コンピューターにデータをダウンロードする。
 
-![Data Lake Storage Gen1 からデータを出力する](./media/data-lake-store-data-scenarios/egress-data.png "Data Lake Storage Gen1 からデータを出力する")
+![Data Lake Storage Gen1 からデータを送信する](./media/data-lake-store-data-scenarios/egress-data.png "Data Lake Storage Gen1 からデータを送信する")
 
 このような場合、次のオプションのいずれかを使用できます。
 
@@ -131,4 +131,4 @@ Data Lake Storage Gen1 でデータが利用できるようになったら、サ
 ![Data Lake Storage Gen1 のデータを視覚化する](./media/data-lake-store-data-scenarios/visualize-data.png "Data Lake Storage Gen1 のデータを視覚化する")
 
 * まず、[Azure Data Factory を使って、Data Lake Storage Gen1 から Azure SQL Data Warehouse にデータを移動](../data-factory/copy-activity-overview.md)することができます。
-* その後、 [Power BI を Azure SQL Data Warehouse と統合](../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) して、データを視覚的に表現することができます。
+* その後、 [Power BI を Azure SQL Data Warehouse と統合](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) して、データを視覚的に表現することができます。

@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace 向けの VHD からの VM のデプロイ
 description: Azure にデプロイされた VHD からの VM を登録する方法について説明します。
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: evansma
-ms.openlocfilehash: 797c258c963d0daec32a8f9ac7c4e0665dc465d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 5263d24c411ef8de4187c2fd750013374d779f04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813415"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277941"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>VHD からの VM のデプロイ
 
@@ -63,10 +62,10 @@ Azure PowerShell と Azure CLI をまだインストールしていない場合�
    | パブリック IP の DNS 名      | パブリック IP DNS 名。 DNS 名は VM のもので、プランがデプロイされると、Azure portal でこれを定義します。  |
    | 管理ユーザー名             | 新しい VM の管理者アカウントのユーザー名                                  |
    | 管理パスワード              | 新しい VM の管理者アカウントのパスワード                                  |
-   | [OS Type]\(OS の種類\)                     | VM オペレーティング システム: `Windows` \| `Linux`                                    |
+   | OS の種類                     | VM オペレーティング システム: `Windows` \| `Linux`                                    |
    | サブスクリプション ID             | 選択したサブスクリプションの識別子                                      |
-   | Location                    | デプロイの地理的な場所                                        |
-   | VM サイズ                     | [Azure VM サイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)、例`Standard_A2` |
+   | 場所                    | デプロイの地理的な場所                                        |
+   | [VM サイズ]                     | [Azure VM サイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)、例`Standard_A2` |
    | パブリック IP アドレス名      | パブリック IP アドレスの名前                                               |
    | VM 名                     | 新しい VM の名前                                                           |
    | 仮想ネットワーク名        | VM で使用する仮想ネットワークの名前                                   |
@@ -92,7 +91,7 @@ Azure はデプロイを開始します。これにより、指定のストレ�
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、ご自分のソリューション用の[ユーザー VM イメージを作成](cpp-create-user-image.md)します。
 

@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/26/2020
+ms.date: 03/19/2020
 ms.author: mimart
-ms.openlocfilehash: 053349996e15dbc0f58f062ffa966d0d894f5e0d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189024"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80116952"
 ---
 ## <a name="use-custom-page-content"></a>カスタム ページ コンテンツを使用する
 
@@ -72,6 +72,7 @@ Azure AD B2C では、[クロス オリジン リソース共有 (CORS)](https:/
   - Internet Explorer 8 と 9 (サポートに制限あり)
   - Google Chrome 42.0 以降
   - Mozilla Firefox 38.0 以降
+  - iOS および macOS 用 Safari、バージョン 12 以降
 - セキュリティの制限により、Azure AD B2C では `frame`、`iframe`、`form` HTML 要素はサポートされません。
 
 ## <a name="custom-page-content-walkthrough"></a>カスタム ページ コンテンツのチュートリアル
@@ -133,7 +134,7 @@ Blob ストレージ内にパブリック コンテナーを作成するには�
 
 1. 左側のメニューの **[Blob service]** で **[BLOB]** を選択します。
 1. **[+ コンテナー]** を選択します。
-1. **[名前]** に「*root*」と入力します。 ここには任意の名前 (*wingtiptoys* など) を指定できますが、この例ではわかりやすくするために *root* を使用します。
+1. **[名前]** に「*root*」と入力します。 名前には任意の名前 (*contoso* など) を指定できますが、この例ではわかりやすくするために *root* を使用します。
 1. **[パブリック アクセス レベル]** で **[BLOB]** を選択し、 **[OK]** を選択します。
 1. **[root]** を選択して、新しいコンテナーを開きます。
 
@@ -164,6 +165,9 @@ Blob ストレージ内にパブリック コンテナーを作成するには�
 
 準備が整ったことを検証するには、次の手順を実行します。
 
-1. [www.test-cors.org](https://www.test-cors.org/) に移動し、URL を **[リモート URL]** ボックスに貼り付けます。
+1. CORS の構成手順を繰り返します。 **[許可されたオリジン]** には、「`https://www.test-cors.org`」を入力します。
+1. [www.test-cors.org](https://www.test-cors.org/) に移動します。 
+1. **[リモート URL]** ボックスに HTML ファイルの URL を貼り付けます。 たとえば、`https://your-account.blob.core.windows.net/azure-ad-b2c/unified.html` のように指定します。
 1. **[要求の送信]** を選択します。
+    結果は `XHR status: 200` となるはずです。 
     エラーが発生した場合は、CORS の設定が正しいことを確認します。 場合によっては、ブラウザーのキャッシュをクリアするか、Ctrl + Shift + P キーを押してプライベート ブラウズ セッションを開く必要もあります。

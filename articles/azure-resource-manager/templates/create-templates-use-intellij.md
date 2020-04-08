@@ -4,16 +4,16 @@ description: IntelliJ IDEA を使用して最初の Azure Resource Manager テ�
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1046c942e6bec4ded332027b7856110238b8f2d7
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: a5015a018f905b4353afd6bf25a48a2d942b3b97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680615"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153354"
 ---
-# <a name="create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>IntelliJ IDEA を使用した Azure Resource Manager テンプレートの作成とデプロイ
+# <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>IntelliJ IDEA を使用して ARM テンプレートを作成およびデプロイする
 
-IntelliJ IDEA を使用して Resource Manager テンプレートを Azure にデプロイする方法と、IDE から直接テンプレートを編集および更新するプロセスについて説明します。 Resource Manager テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、[テンプレートのデプロイの概要](overview.md)に関するページを参照してください。
+IntelliJ IDEA を使用して Azure Resource Manager (ARM) テンプレートを Azure にデプロイする方法と、IDE から直接テンプレートを編集および更新するプロセスについて説明します。 ARM テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、[テンプレートのデプロイの概要](overview.md)に関するページを参照してください。
 
 ![Resource Manager テンプレート ポータルの図](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="deploy-a-quickstart-template"></a>クイックスタート テンプレートをデプロイする
 
-ゼロからテンプレートを作成するのではなく、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)からテンプレートを開きます。 Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。 この記事で使用されるテンプレートは、[Create a standard storage account](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/) という名前です。 これにより、Azure Storage アカウント リソースが定義されます。
+ゼロからテンプレートを作成するのではなく、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)からテンプレートを開きます。 Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 この記事で使用されるテンプレートは、[Create a standard storage account](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/) という名前です。 これにより、Azure Storage アカウント リソースが定義されます。
 
 1. [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) と [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) を右クリックして、お使いのローカル コンピューターに保存します。
 

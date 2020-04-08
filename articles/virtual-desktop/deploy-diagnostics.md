@@ -5,17 +5,22 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9392855f98dbee2badbe87bb4a0bf11bf2fc073e
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 4eb63fe4bd8f8a8b0961aa6a7fccb8de9b7c2f16
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128015"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80123404"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>診断ツールをデプロイする
+
+>[!IMPORTANT]
+>サービスの需要が増加したため、2020 年 3 月 16 日より、ユーザーエクスペリエンスに影響を与える診断クエリを一時的に無効にしました。 このツールはこれらのクエリに依存して機能するため、動作が停止します。 診断クエリを再度利用できるようになったときに、この記事を更新します。
+>
+>それまでは、継続的な監視のために [Log Analytics を使用](diagnostics-log-analytics.md)することを強くお勧めします。
 
 Windows Virtual Desktop の診断ツールでは、次のことを行うことができます。
 

@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 03/12/2020
 ms.author: kgremban
-ms.openlocfilehash: e3f55f9be28a8b53f012e111e43ba1f495b1d585
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 80ce962ac6977fcce2455c8e2ef29af448a44075
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186479"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133153"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Windows に Azure IoT Edge ランタイムをインストールする
 
@@ -39,15 +39,18 @@ IoT Edge の最新バージョンの内容については、[Azure IoT Edge リ�
 
 ### <a name="supported-windows-versions"></a>サポートされている Windows バージョン
 
-開発およびテストのシナリオでは、コンテナー機能をサポートする任意のバージョンの Windows 10 または Windows Server 2019 (ビルド 17763) に、Azure IoT Edge と Windows コンテナーをインストールできます。 運用シナリオ向けに現在サポートされているオペレーティング システムについては、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください。
+Windows 用の IoT Edge には Windows バージョン 1809、ビルド 17763 が必要です。これは、最新の [Windows の長期サポートのビルド](https://docs.microsoft.com/windows/release-information/)です。 Windows SKU のサポートについては、運用シナリオまたは開発およびテストのシナリオのどちらに対して準備しているかに基づいて、サポート対象を確認してください。
 
-IoT Core デバイスには、IoT Core (IoT Edge ランタイムをサポートするための Windows コンテナー オプション機能) が含まれている必要があります。 [リモート PowerShell セッション](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)で次のコマンドを使用して、お使いのデバイスで Windows コンテナーがサポートされていることを確認します。
+* **運用**: 運用シナリオ向けに現在サポートされているオペレーティング システムに関する最新の情報については、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください。
+* **開発とテスト**:開発およびテストのシナリオでは、コンテナー機能をサポートする任意のバージョンの Windows 10 または Windows Server 2019 に、Azure IoT Edge と Windows コンテナーをインストールできます。
+
+IoT Core デバイスには、IoT Edge ランタイムをサポートするための IoT Core Windows コンテナー オプション機能が含まれている必要があります。 [リモート PowerShell セッション](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)で次のコマンドを使用して、お使いのデバイスで Windows コンテナーがサポートされていることを確認します。
 
 ```powershell
 Get-Service vmcompute
 ```
 
-サービスが存在する場合は、正常な応答が返され、サービスの状態が**実行中**として表示されます。 vmcompute サービスが見つからない場合、お使いのデバイスは IoT Edge の要件を満たしていません。 この機能のサポートについて、ハードウェア プロバイダーにお問い合わせください。
+サービスが存在する場合は、正常な応答が返され、サービスの状態が**実行中**として表示されます。 `vmcompute` サービスが見つからない場合、お使いのデバイスは IoT Edge の要件を満たしていません。 この機能のサポートについて、ハードウェア プロバイダーにお問い合わせください。
 
 ### <a name="prepare-for-a-container-engine"></a>コンテナー エンジンを準備する
 
@@ -123,6 +126,7 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
 この 2 番目のオプションでは、IoT Hub Device Provisioning Service を使用してデバイスをプロビジョニングします。 使用する[構成証明メカニズム](../iot-dps/concepts-security.md#attestation-mechanism)に固有にその他の情報と共に、Device Provisioning Service インスタンスからの**スコープ ID** を指定します。
 
 * [Windows 上で、仮想 TPM を使用するシミュレートされた IoT Edge デバイスを作成し、プロビジョニングする](how-to-auto-provision-simulated-device-windows.md)
+* [X.509 証明書を使用してシミュレートされた IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-x509-certs.md)
 * [対称キーの構成証明を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-symmetric-keys.md)
 
 デバイスを自動でインストールおよびプロビジョニングするとき、追加のパラメーターを使用して、インストールを次のように変更できます。
@@ -228,6 +232,18 @@ Uninstall-IoTEdge コマンドは、Windows IoT Core では動作しません。
 
 アンインストール オプションの詳細については、`Get-Help Uninstall-IoTEdge -full` コマンドを使用してください。
 
+## <a name="verify-installation-script"></a>インストール スクリプトを確認する
+
+この記事に記載されているインストール コマンドでは、`aka.ms/iotedge-win` からのインストール スクリプトを要求するために、Invoke-WebRequest コマンドレットを使用します。 このリンクは、最新の [IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)からの `IoTEdgeSecurityDaemon.ps1` スクリプトを指しています。 また、このスクリプト、または特定のリリースのスクリプトのバージョンをダウンロードして、IoT Edge デバイスでインストール コマンドを実行することもできます。
+
+指定されたスクリプトは、セキュリティを強化するために署名されています。 署名を確認するには、スクリプトをデバイスにダウンロードし、次の PowerShell コマンドを実行します。
+
+```powershell
+Get-AuthenticodeSignature "C:\<path>\IotEdgeSecurityDaemon.ps1"
+```
+
+署名が検証されている場合、出力状態は**有効**になります。
+
 ## <a name="all-installation-parameters"></a>すべてのインストール パラメーター
 
 前のセクションでは、パラメーターを使用してインストール スクリプトを変更する方法の例を用いた一般的なインストール シナリオについて紹介しました。 このセクションでは、IoT Edge のインストール、更新、アンインストールに使用される一般的なパラメーターの参照テーブルを提供します。
@@ -252,10 +268,12 @@ Initialize-IoTEdge コマンドは、デバイスの接続文字列と運用の�
 | --------- | --------------- | -------- |
 | **手動** | なし | **スイッチ パラメーター**。 プロビジョニングの種類を指定しない場合、既定値は手動です。<br><br>デバイスをプロビジョニングするためのデバイス接続文字列を手動で指定することを宣言します |
 | **Dps** | なし | **スイッチ パラメーター**。 プロビジョニングの種類を指定しない場合、既定値は手動です。<br><br>Device Provisioning Service (DPS) 経由でプロビジョニングするために、DPS のスコープ ID とデバイスの登録 ID を指定することを宣言します。  |
-| **DeviceConnectionString** | 単一引用符で囲まれた、IoT Hub に登録されている IoT Edge デバイスからの接続文字列 | 手動インストールで**必須**です。 スクリプト パラメーターに接続文字列を指定しなかった場合は、インストール中にこれを指定するよう促されます。 |
-| **ScopeId** | IoT Hub に関連付けられた Device Provisioning Service のインスタンスからのスコープ ID。 | DPS インストールで**必須**です。 スクリプト パラメーターにスコープ ID を指定しなかった場合、インストール中にこれを指定するよう促されます。 |
-| **RegistrationId** | デバイスによって生成された登録 ID | TPM または対称キー構成証明を使用している場合、DPS インストールで**必須**です。 |
-| **SymmetricKey** | DPS の使用時に IoT Edge デバイス ID をプロビジョニングするために使用される対称キー | 対称キー構成証明を使用している場合、DPS インストールで**必須**です。 |
+| **DeviceConnectionString** | 単一引用符で囲まれた、IoT Hub に登録されている IoT Edge デバイスからの接続文字列 | 手動プロビジョニングの場合は**必須**です。 スクリプト パラメーターに接続文字列を指定しなかった場合は、これを指定するよう促されます。 |
+| **ScopeId** | IoT Hub に関連付けられた Device Provisioning Service のインスタンスからのスコープ ID。 | DPS プロビジョニングの場合は**必須**です。 スクリプト パラメーターにスコープ ID を指定しなかった場合、これを指定するよう促されます。 |
+| **RegistrationId** | デバイスによって生成された登録 ID | DPS プロビジョニングの場合、TPM または対称キー構成証明を使用している場合は**必須**です。 X.509 証明書の構成証明を使用している場合は**省略可能**です。 |
+| **X509IdentityCertificate** | デバイス上の X.509 デバイス ID 証明書への URI パス。 | DPS プロビジョニングの場合、X.509 証明書の構成証明を使用している場合は**必須**です。 |
+| **X509IdentityPrivateKey** | デバイス上の X.509 デバイス ID 証明書キーへの URI パス。 | DPS プロビジョニングの場合、X.509 証明書の構成証明を使用している場合は**必須**です。 |
+| **SymmetricKey** | DPS の使用時に IoT Edge デバイス ID をプロビジョニングするために使用される対称キー | DPS プロビジョニングの場合、対称キー構成証明を使用している場合は**必須**です。 |
 | **ContainerOs** | **Windows** または **Linux** | コンテナーのオペレーティング システムを指定しない場合は、Windows が既定値です。<br><br>Windows コンテナーの場合、IoT Edge ではインストールに含まれる moby コンテナー エンジンが使用されます。 Linux コンテナーの場合、インストールを開始する前にコンテナー エンジンをインストールする必要があります。 |
 | **InvokeWebRequestParameters** | パラメーターと値のハッシュ テーブル | インストール中には、いくつかの Web 要求が行われます。 それらの Web 要求のパラメーターを設定するにはこのフィールドを使用します。 このパラメーターは、プロキシ サーバーの資格情報を構成するために使用すると便利です。 詳細については、「[IoT Edge デバイスを構成してプロキシ サーバー経由で通信する](how-to-configure-proxy-support.md)」を参照してください。 |
 | **AgentImage** | IoT Edge エージェント イメージの URI | 既定では、新しい IoT Edge のインストールでは、IoT Edge エージェント イメージの最新のローリング タグを使用します。 イメージ バージョンについて特定のタグを設定したり、独自のエージェント イメージを提供したりするには、このパラメーターを使用します。 詳細については、[IoT Edge タグ](how-to-update-iot-edge.md#understand-iot-edge-tags)に関する記事を参照してください。 |

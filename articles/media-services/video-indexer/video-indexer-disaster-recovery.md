@@ -1,6 +1,7 @@
 ---
-title: Video Indexer の事業継続とディザスター リカバリー - Azure
-description: 地域のデータセンターの停止や障害が発生した場合に、セカンダリ Video Indexer アカウントにフェールオーバーする方法について説明します。
+title: Video Indexer のフェールオーバーとディザスター リカバリー
+titleSuffix: Azure Media Services
+description: 地域のデータセンターの障害や災害が発生した場合に、セカンダリ Video Indexer アカウントにフェールオーバーする方法について説明します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,20 +14,20 @@ ms.topic: article
 ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 2f54c340226a9ea78643df8e0a984c8ed8475c94
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 17c21900448fcb6d0a40fe5407f3b8bd62f9e3e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513577"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499606"
 ---
-# <a name="handle-video-indexer-business-continuity-and-disaster-recovery"></a>Video Indexer の事業継続とディザスター リカバリーを処理する
+# <a name="video-indexer-failover-and-disaster-recovery"></a>Video Indexer のフェールオーバーとディザスター リカバリー
 
-Azure Media Services Video Indexer では、地域のデータセンターの停止や障害が発生した場合、サービスの即時フェールオーバーは提供されません。 この記事では、アプリケーションの最適な可用性と、災害が発生した場合の復旧時間の最小化を実現できるように、フェールオーバー用に環境を構成する方法について説明します。
+Azure Media Services Video Indexer では、地域のデータセンターの停止や障害が発生した場合、サービスの即時フェールオーバーは提供されません。 この記事では、アプリの最適な可用性と、災害が発生した場合の復旧時間の最小化を確実にするため、フェールオーバー用に環境を構成する方法について説明します。
 
 リージョン ペアの間で事業継続とディザスター リカバリー (BCDR) を構成して、Azure の分離と可用性のポリシーを活用することをお勧めします。 詳細については、「[Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)」をご覧ください。
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプション。 Azure サブスクリプションがまだない場合は、[Azure 無料試用版](https://azure.microsoft.com/free/)にサインアップしてください。
 
@@ -34,7 +35,7 @@ Azure サブスクリプション。 Azure サブスクリプションがまだ�
 
 BCDR を実装するには、冗長性を扱うために 2 つの Video Indexer アカウントが必要です。
 
-1. Azure に接続された 2 つの Video Indexer アカウントを作成します ([アカウントの作成](connect-to-azure.md)に関する記事を参照)。 1 つはプライマリ リージョン用で、もう 1 つはペアになっている Azure リージョン用です。 
+1. Azure に接続された 2 つの Video Indexer アカウントを作成します ([Video Indexer アカウントの作成](connect-to-azure.md)に関する記事を参照)。 1 つはプライマリ リージョン用、もう 1 つはペアになっている Azure リージョン用にアカウント用に作成します。
 1. プライマリ リージョンで障害が発生した場合は、セカンダリ アカウントを使用してインデックス作成に切り替えます。
 
 > [!TIP]

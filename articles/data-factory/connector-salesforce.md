@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/01/2019
-ms.openlocfilehash: 89ce253806b4a39b393c74ea96ddc2523d338d84
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/24/2020
+ms.openlocfilehash: 7d380f34f849eac835abbd295cd1e2d8c17daaef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926249"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153857"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする
 
@@ -33,7 +33,6 @@ ms.locfileid: "74926249"
 - [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
 
-
 Salesforce から、サポートされている任意のシンク データ ストアにデータをコピーできます。 サポートされている任意のソース データ ストアから Salesforce にデータをコピーすることもできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表を参照してください。
 
 具体的には、この Salesforce コネクタは以下をサポートします。
@@ -41,7 +40,7 @@ Salesforce から、サポートされている任意のシンク データ ス�
 - Salesforce Developer、Professional、Enterprise、または Unlimited エディション。
 - Salesforce 運用環境、サンドボックス、およびカスタム ドメインをコピー先またはコピー元とするデータのコピー。
 
-Salesforce コネクタは、データのコピー元として [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm)、データのコピー先として [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) を使用して、Salesforce REST/Bulk API 上に構築されます。
+Salesforce コネクタは、Salesforce の REST または Bulk API 上に構築されます。 既定では、コネクタによって、Salesforce からデータをコピーするには [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) が、Salesforce にデータをコピーするには [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) が使用されます。 また、リンクされたサービスで [`apiVersion` プロパティ](#linked-service-properties) を使用して、データの読み取りまたは書き込みに使用する API バージョンを明示的に設定することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,7 +55,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 
 また、どちらのシナリオでも、"REQUEST_LIMIT_EXCEEDED" エラー メッセージが表示されることがあります。 詳細については、[Salesforce Developer の制限](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)に関する資料の「API Request Limits」(API 要求の制限) をご覧ください。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -72,7 +71,8 @@ Salesforce のリンクされたサービスでは、次のプロパティがサ
 | environmentUrl | Salesforce インスタンスの URL を指定します。 <br> 既定値は `"https://login.salesforce.com"` です。 <br> - サンドボックスからデータをコピーするには、`"https://test.salesforce.com"` を指定します。 <br> - カスタム ドメインからデータをコピーするには、`"https://[domain].my.salesforce.com"`のように指定します。 |いいえ |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい |
 | password |ユーザー アカウントのパスワードを指定します。<br/><br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
-| securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、[セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。<br/><br/>このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
+| securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 <br/><br/>セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 セキュリティ トークンをスキップできるのは、Salesforce で[信頼済み IP アドレスの一覧](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm)に Integration Runtime の IP を追加した場合のみです。 Azure IR を使用する場合は、「[Azure Integration Runtime の IP アドレス](azure-integration-runtime-ip-addresses.md)」を参照してください。<br/><br/>セキュリティ トークンの取得およびリセット方法については、[セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)に関する記事を参照してください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |いいえ |
+| apiVersion | `48.0` など、使用する Salesforce の REST または Bulk API バージョンを指定します。 既定では、コネクタによって、Salesforce からデータをコピーするには [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) が、Salesforce にデータをコピーするには [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) が使用されます。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合は「いいえ」、シンクの場合は「はい」 (ソースにリンクされたサービスに統合ランタイムがない場合) |
 
 >[!IMPORTANT]
@@ -286,7 +286,7 @@ Salesforce にデータをコピーするには、コピー アクティビテ�
 
 ### <a name="retrieve-data-from-a-salesforce-report"></a>Salesforce レポートからデータを取得する
 
-クエリを `{call "<report name>"}` と指定することで、Salesforce レポートからデータを取得できます。 例: `"query": "{call \"TestReport\"}"`。
+クエリを `{call "<report name>"}` と指定することで、Salesforce レポートからデータを取得できます。 たとえば `"query": "{call \"TestReport\"}"` です。
 
 ### <a name="retrieve-deleted-records-from-the-salesforce-recycle-bin"></a>Salesforce のごみ箱から削除済みレコードを取得する
 
@@ -307,7 +307,7 @@ Salesforce からデータをコピーするときは、SOQL クエリまたは 
 
 ### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>DateTime 列で where 句を使用してデータを取得する
 
-SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式の違いに注意してください。 例:
+SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式の違いに注意してください。 次に例を示します。
 
 * **SOQL サンプル**: `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL の例**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
@@ -340,12 +340,12 @@ Salesforce からデータをコピーするとき、次の Salesforce のデー
 | Text Area (Long) |String |
 | Text Area (Rich) |String |
 | Text (Encrypted) |String |
-| URL |string |
+| URL |String |
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

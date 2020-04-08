@@ -7,16 +7,16 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: 516e327cca1aa6a691a1d932c5f48c9108d818b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 158bfe30bf48ee420be8efb9ff32fff0e555d9e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510188"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475826"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Azure Front Door での Web アプリケーション ファイアウォールのカスタム規則
 
-Front Door サービスで Azure Web アプリケーション ファイアウォール (WAF) を使用すると、ユーザーが定義した条件に基づいて Web アプリケーションへのアクセスを制御することができます。 カスタム WAF 規則は、優先順位番号、規則の種類、一致条件、およびアクションで構成されます。 カスタム規則には、一致規則とレート制限規則の 2 種類があります。 一致規則では一連の一致条件に基づいてアクセスが制御されるのに対し、レート制限規則では一致条件と着信要求のレートに基づいてアクセスが制御されます。 カスタム規則を無効にして評価されないようにできますが、その場合でも構成は維持されます。 
+Front Door で Azure Web アプリケーション ファイアウォール (WAF) を使用すると、ユーザーが定義した条件に基づいて Web アプリケーションへのアクセスを制御することができます。 カスタム WAF 規則は、優先順位番号、規則の種類、一致条件、およびアクションで構成されます。 カスタム規則には、一致規則とレート制限規則の 2 種類があります。 一致規則では一連の一致条件に基づいてアクセスが制御されるのに対し、レート制限規則では一致条件と着信要求のレートに基づいてアクセスが制御されます。 カスタム規則を無効にして評価されないようにできますが、その場合でも構成は維持されます。 
 
 ## <a name="priority-match-conditions-and-action-types"></a>優先順位、一致条件、アクションの種類
 
@@ -176,7 +176,7 @@ Front Door サービスで Azure Web アプリケーション ファイアウォ
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure PowerShell を使用して Web アプリケーション ファイアウォール ポリシーを構成する](waf-front-door-custom-rules-powershell.md) 
 - [Front Door を使った Web アプリケーション ファイアウォール](afds-overview.md)について学習します
 - [フロント ドアの作成](../../frontdoor/quickstart-create-front-door.md)方法について学習します。

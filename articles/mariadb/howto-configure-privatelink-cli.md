@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MariaDB (プレビュー) 用のプライベート リンクの CLI のセットアップ方法
+title: Private Link - Azure CLI - Azure Database for MariaDB
 description: Azure CLI から Azure Database for MariaDB 用のプライベート リンクを構成する方法について説明します
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: b2d9fb9d4dc8268c0be45f8a6f24759a7be58427
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c28c5494c1cff2c198a94ea6b92003ae74ee2c8e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561801"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371802"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>CLI を使用して Azure Database for MariaDB (プレビュー) 用のプライベート リンクを作成および管理する
+# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>CLI を使用して Azure Database for MariaDB 用の Private Link を作成および管理する
 
 プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 この記事では、Azure CLI を使用して Azure仮想ネットワーク内に VM を作成し、Azure プライベート エンドポイントを含む Azure Database for MariaDB サーバーを作成する方法について説明します。
 
@@ -168,7 +168,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 4. **[新しい接続]** で、この情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 接続名| ご自身で選んだ接続の名前を選択します。|
     | hostname | *mydemoserver.privatelink.mariadb.database.azure.com* を選択します |

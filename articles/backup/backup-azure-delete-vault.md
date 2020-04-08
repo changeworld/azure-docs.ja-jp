@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services コンテナーを削除する
 description: この記事では、依存関係を削除してから、Microsoft Azure Backup Recovery Services (MARS) コンテナーを削除する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 9ac9d0fd6411b512b319d02c94e86fa792243e0a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f33f52048729b50015ba86db71118b9a21e1a2fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251432"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500390"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services コンテナーを削除する
 
@@ -31,6 +31,8 @@ ms.locfileid: "78251432"
 - バックアップ項目が論理的に削除された状態になっている場合は、以下の警告メッセージが表示されるので、完全に削除されるまで待つ必要があります。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)を参照してください。
 
    ![コンテナーの削除エラー。](./media/backup-azure-delete-vault/error-message-soft-delete.png)
+
+- ストレージ アカウントが登録されているコンテナーを削除することはできません。 アカウントの登録を解除する方法については、「[ストレージアカウントの登録を解除する](manage-afs-backup.md#unregister-a-storage-account)」を参照してください。
   
 コンテナーを削除するには、ご使用のセットアップに対応するシナリオを選択し、推奨される手順に従います。
 
@@ -40,7 +42,7 @@ Azure をバックアップ先とする Azure Backup エージェントを使用
 Azure への MABS (Microsoft Azure Backup Server) または DPM (System Center Data Protection Manager) を使用して保護されたオンプレミスのマシンがある | 「[MABS 管理コンソールからバックアップ アイテムを削除する](#delete-backup-items-from-the-mabs-management-console)」の手順を実行します
 保護されたアイテムがクラウドにある (例: laaS 仮想マシンまたは Azure Files の共有など)  | 「[クラウド内の保護されたアイテムを削除する](#delete-protected-items-in-the-cloud)」の手順を実行します
 保護されたアイテムがオンプレミスとクラウドの両方にある | 次のすべてのセクションの手順を次の順番で実行します。 <br> 1.[クラウド内の保護されたアイテムを削除する](#delete-protected-items-in-the-cloud)<br> 2.[MARS 管理コンソールからバックアップ アイテムを削除する](#delete-backup-items-from-the-mars-management-console) <br> 3.[MABS 管理コンソールからバックアップ アイテムを削除する](#delete-backup-items-from-the-mabs-management-console)
-保護されたアイテムはオンプレミスまたはクラウドのどちらにもないが、コンテナーの削除エラーが引き続き発生している | 「[Azure Resource Manager を使用して Recovery Services コンテナーを削除する](#delete-the-recovery-services-vault-by-using-azure-resource-manager)」の手順を実行します
+保護されたアイテムはオンプレミスまたはクラウドのどちらにもないが、コンテナーの削除エラーが引き続き発生している | 「[Azure Resource Manager を使用して Recovery Services コンテナーを削除する](#delete-the-recovery-services-vault-by-using-azure-resource-manager)」の手順を実行します <br><br> コンテナーに登録されているストレージ アカウントが確実にないようにします。 アカウントの登録を解除する方法については、「[ストレージアカウントの登録を解除する](manage-afs-backup.md#unregister-a-storage-account)」を参照してください。
 
 ## <a name="delete-protected-items-in-the-cloud"></a>クラウド内の保護されたアイテムを削除する
 

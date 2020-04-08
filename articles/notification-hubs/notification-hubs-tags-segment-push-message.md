@@ -16,12 +16,12 @@ ms.date: 12/09/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: b1162e6070deba7f645298b59ffeb1898eb030a8
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2432ac41645e373ea3a87ff7e69ef02a4e30c81d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545774"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062311"
 ---
 # <a name="routing-and-tag-expressions"></a>ルーティングとタグ式
 
@@ -67,7 +67,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 ![友人にタグを付ける](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags2.png)
 
-この例で、Alice は Beatles の近況に関心があり、Bob は Wailers の近況に関心があります。 Bob は Charlie のコメントにも関心があり、Charlie は Wailers に関心があります。 Beatles に関する Charlie のコメントについて通知が送信されると、Notification Hubs はこれを Alice と Bob の両方に送信します。
+この例で、Alice は Beatles の近況に関心があり、Bob は Wailers の近況に関心があります。 Bob は Charlie のコメントにも関心があり、Charlie は Wailers に関心があります。 Beatles に関する Charlie のコメントについて通知が送信されると、Notification Hubs によりこれが Alice と Bob の両方に送信されます。
 
 タグ (たとえば、"`band_Beatles`" や "`follows_Charlie`" など) 内では複数の関心をエンコードできますが、タグは単純な文字列であり、値を持つプロパティではありません。 登録は、特定のタグの有無のみを照合します。
 
@@ -96,7 +96,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 ![タグ式](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
-タグ式では、`AND` (`&&`)、`OR` (`||`)、`NOT` (`!`) などの一般的なブール演算子がサポートされており、かっこを含めることもできます。 `OR` 演算子のみを使用するタグ式は 20 個のタグを参照できます。それ以外の場合、タグ式は 6 個のタグに制限されます。
+タグ式では、`AND` (`&&`)、`OR` (`||`)、`NOT` (`!`) などの一般的なブール演算子がサポートされており、かっこを含めることもできます。 `OR` 演算子のみを使用するタグ式では、20 個のタグを参照できます。`AND` 演算子を使用し `OR` 演算子を使用しない式では、10 個のタグを参照できます。それ以外の場合、タグ式は 6 個のタグに制限されます。
 
 SDK でタグ式を使用して通知を送信する例を次に示します。
 

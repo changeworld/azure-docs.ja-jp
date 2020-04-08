@@ -3,8 +3,8 @@ title: Azure CDN におけるファイル圧縮のトラブルシューティン
 description: Azure CDN のファイル圧縮に関する問題のトラブルシューティングを行います。
 services: cdn
 documentationcenter: ''
-author: zhangmanling
-manager: erikre
+author: sohamnc
+manager: danielgi
 editor: ''
 ms.assetid: a6624e65-1a77-4486-b473-8d720ce28f8b
 ms.service: azure-cdn
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5195dc3c47d2a4377147b2ef49b23bab6b3fee77
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: aff2dadee365fcdc7e14070714aa1d2cbba901ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593318"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476425"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN ファイルの圧縮のトラブルシューティング
 この記事では、 [CDN ファイルの圧縮](cdn-improve-performance.md)に関する問題のトラブルシューティングについて説明します。
@@ -42,6 +42,7 @@ ms.locfileid: "67593318"
 * 要求されたコンテンツが圧縮の対象ではありません。
 * 要求されたファイルの種類の圧縮が有効になっていません。
 * HTTP 要求に、有効な圧縮の種類を要求するヘッダーが含まれていません。
+* 配信元からチャンク コンテンツが送信されています。
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 > [!TIP]
@@ -81,7 +82,7 @@ ms.locfileid: "67593318"
 > 
 > 
 
-[Azure Portal](https://portal.azure.com) でエンドポイントに移動し、 **[管理]** ボタンをクリックします。  補助ポータルが開きます。  **[HTTP Large (HTTP ラージ)]** タブ、 **[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。  **[圧縮]** をクリックします。 
+[Azure Portal](https://portal.azure.com) でエンドポイントに移動し、 **[管理]** ボタンをクリックします。  補助ポータルが開きます。  **[HTTP ラージ]** タブ、 **[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。  **[圧縮]** をクリックします。 
 
 * 圧縮が有効になっていることを確認します。
 * **[ファイルの種類]** 一覧に MIME の種類のコンマ区切り一覧 (スペースなし) が含まれていることを確認します。

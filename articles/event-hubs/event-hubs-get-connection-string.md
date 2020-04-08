@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 744151a1ce8cde630e26c17ccf06569ebd0efb61
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 77a768f907ad989a457ee498f26ad0f6e004f786
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771004"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231303"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Event Hubs の接続文字列の取得
 
@@ -55,7 +55,7 @@ Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-以下に示すように、[Get-AzEventHubNamespaceKey](/powershell/module/az.eventhub/get-azeventhubkey) を使用して、指定するポリシー/ルール名の接続文字列を取得することができます。
+以下に示すように、[Get-AzEventHubKey](/powershell/module/az.eventhub/get-azeventhubkey)を使用して、指定するポリシーまたはルール名の接続文字列を取得することができます。
 
 ```azurepowershell-interactive
 Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey

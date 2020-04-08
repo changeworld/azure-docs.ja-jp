@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c6b7e3da6cb6fd87e3b43d6f310e3b76f8fc4d30
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: c414087270558e21340e50114c0563ff7e50064c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526095"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282309"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上の機械学習ツールとデータ サイエンス ツール
 Azure Data Science Virtual Machine (DSVM) には、Python、R、Julia などの一般的な言語で使用できる、機械学習のための豊富な一連のツールやライブラリが備わっています。
@@ -108,7 +108,7 @@ DSVM には、DSVM 用の Anaconda Python ディストリビューションの�
 |    |           |
 | ------------- | ------------- |
 | 紹介   | ビッグ データに対するオープン ソースの SQL クエリ エンジン    |
-| サポートされている DSVM バージョン      | Windows 2019 (プレビュー)、Linux  |
+| サポートされている DSVM バージョン      | Windows 2019、Linux  |
 | DSVM での構成とインストール方法      |  埋め込みモードのみで `/dsvm/tools/drill*` にインストールされます   |
 | 標準的な使用      |  抽出、変換、読み込み (ETL) を必要としない、インプレース データ探索用。 CSV、JSON、リレーショナル テーブル、および Hadoop などのさまざまなデータ ソースとフォーマットのクエリ。     |
 | 使用と実行方法      | デスクトップ ショートカット  <br/> [10 分で Drill を使ってみる](https://drill.apache.org/docs/drill-in-10-minutes/)  |

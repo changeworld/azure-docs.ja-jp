@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: 697f7267437f750bbb751239001145cb1c8af000
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 61ae0ef92fe522a2a038a6076a5e0c0a10ee47b6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806832"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060700"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Azure シリアル コンソール内での一般的なエラー
 Azure シリアル コンソール内には、一連の既知のエラーがあります。 これらのエラーとその対応策の一覧を次に示します。
 
 ## <a name="common-errors"></a>一般的なエラー
 
-Error                             |   対応策
+エラー                             |   対応策
 :---------------------------------|:--------------------------------------------|
 "Azure シリアル コンソールでは、ブート診断を有効にする必要があります。 仮想マシンのブート診断を構成するには、ここをクリックしてください。" | VM または仮想マシン スケール セットで[ブート診断](boot-diagnostics.md)が有効になっていることを確認します。 仮想マシン スケール セットでシリアル コンソールを使用している場合は、インスタンスが最新モデルであることを確認してください。
 "Azure シリアル コンソールでは、仮想マシンが実行されている必要があります。 上の [開始] ボタンを使用して、仮想マシンを起動してください。"  | シリアル コンソールにアクセスするには、VM または仮想マシン スケール セット インスタンスが起動済み状態になっている必要があります (VM を停止または再割り当てしてはいけません)。 VM または仮想マシン スケール セット インスタンスが実行されていることを確認して、もう一度やり直してください。
@@ -40,8 +40,8 @@ Unable to determine the resource group for the boot diagnostics storage account 
 Provisioning for this VM has not yet succeeded. (この VM のプロビジョニングはまだ成功していません。) Please ensure the VM is fully deployed and retry the serial console connection. (VM が完全にデプロイされていることを確認して、シリアル コンソール接続をもう一度お試しください。) | VM または仮想マシン スケール セットがまだプロビジョニング中である可能性があります。 しばらく待って、もう一度お試しください。
 Web ソケットが閉じているか、開けませんでした。 | `*.console.azure.com` にファイアウォール アクセスを追加することが必要になる場合があります。 より詳細であるが時間がかかるアプローチとしては、[Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのファイアウォール アクセスを許可するというものがありますが、この IP 範囲はかなり定期的に変化します。
 シリアル コンソールが、階層型名前空間を持つ Azure Data Lake Storage Gen2 を使用するストレージ アカウントで機能しません。 | これは階層型名前空間の既知の問題です。 緩和するには、Azure Data Lake Storage Gen2 を使用して VM のブート診断ストレージ アカウントを作成しないようにします。 このオプションは、ストレージ アカウントの作成時にのみ設定できます。 この問題を緩和するには、Azure Data Lake Storage Gen2 を有効にせずに別個のブート診断ストレージ アカウントを作成しなければならない場合があります。
+VM へのシリアル コンソール接続でエラーが発生しました:'Forbidden'(SubscriptionNotEnabled) - Subscription name undefined, id \<subscription id> is in non-Enabled state undefined ('Forbidden'(SubscriptionNotEnabled) - サブスクリプション名が未定義です、ID \<subscription id> は、有効ではない状態で未定義です) | この問題は、ユーザーが Cloud Shell ストレージ アカウントを作成したサブスクリプションが無効になっている場合に発生することがあります。 軽減するには、Cloud Shell を起動し、[必要な手順を行い](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#unmount-clouddrive-1)、現在のサブスクリプションの Cloud Shell にバックアップしたストレージ アカウントを再プロビジョニングします。
 
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Linux VM 用 Azure シリアル コンソール](./serial-console-linux.md)についての詳細を参照する
 * [Windows VM 用 Azure シリアル コンソール](./serial-console-windows.md)についての詳細を参照する

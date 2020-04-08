@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 2bca4521184fa42002e6649a90bb9101fded595c
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d84340730391abd7dba4d13202503d37941c09b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658442"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500424"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service のアプリの監視
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) には、[Azure portal](https://portal.azure.com) の Web アプリ、モバイル、および API アプリに対する組み込みの監視機能が用意されています。
 
-Azure portal では、アプリや App Service プランの*クォータ*と*メトリック*を確認したり、ベースのメトリックである*アラート*と*自動スケーリング*を設定したりできます。
+Azure portal では、アプリや App Service プランの "*クォータ*" と "*メトリック*" を確認したり、"*アラート*" および "*自動スケーリング*" ルール ベースのメトリックを設定したりすることができます。
 
 ## <a name="understand-quotas"></a>クォータを理解する
 
@@ -61,13 +61,17 @@ Free アプリまたは Shared アプリのクォータは、次のようにな�
 > **ファイル システムの使用量**は、グローバルにロールアウトされている新しいメトリックです。プライベート プレビューのホワイトリストに登録されていない場合、データは表示されません。
 > 
 
+> [!IMPORTANT]
+> **平均応答時間**は、メトリック集計との混同を避けるために非推奨です。 代わりに**応答時間**を使用してください。
+
 メトリックを利用すると、アプリまたは App Service プランの動作に関する情報が得られます。
 
 アプリについて利用できるメトリックには、次のものがあります。
 
 | メトリック | 説明 |
 | --- | --- |
-| **平均応答時間** | アプリが要求に応答するのに要した平均時間 (秒単位)。 |
+| **応答時間** | アプリが要求に応答するのに要した時間 (秒単位)。 |
+| **平均応答時間 (非推奨)** | アプリが要求に応答するのに要した平均時間 (秒単位)。 |
 | **平均メモリ ワーキング セット** | アプリで使用された平均メモリ量 (メガバイト (MiB))。 |
 | **接続** | サンドボックス内に存在するバインドされたソケットの数 (w3wp.exe とその子プロセス)。  バインドされたソケットは、bind()/connect() API の呼び出しによって作成され、対象のソケットが CloseHandle()/closesocket() で閉じられるまで残っています。 |
 | **CPU 時間** | アプリで消費された CPU の量 (秒)。 このメトリックについて詳しくは、「[CPU 時間と CPU の割合](#cpu-time-vs-cpu-percentage)」をご覧ください。 |

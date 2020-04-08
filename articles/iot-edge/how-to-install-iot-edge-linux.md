@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 02/21/2020
 ms.author: kgremban
-ms.openlocfilehash: af53dea76670be500e7be20063487e3e4a2177b6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: fb86ee9ce956917f8da44146e58a4775e0ba639f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548732"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535903"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする
 
@@ -179,21 +179,12 @@ sudo nano /etc/iotedge/config.yaml
 
 ファイルのプロビジョニング構成を見つけ、**Manual provisioning configuration** (手動プロビジョニングの構成) セクションをコメント解除します。 **device_connection_string** の値を IoT Edge デバイスからの接続文字列で更新します。 他のプロビジョニング セクションがすべてコメント アウトされていることを確認します。**provisioning:** の行に先行する空白文字がなく、入れ子になった項目が 2 つの空白でインデントされていることを確認します。
 
-   ```yaml
-   # Manual provisioning configuration
-   provisioning:
-     source: "manual"
-     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-  
-   # DPS TPM provisioning configuration
-   # provisioning:
-   #   source: "dps"
-   #   global_endpoint: "https://global.azure-devices-provisioning.net"
-   #   scope_id: "{scope_id}"
-   #   attestation:
-   #     method: "tpm"
-   #     registration_id: "{registration_id}"
-   ```
+```yml
+# Manual provisioning configuration
+provisioning:
+  source: "manual"
+  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+```
 
 クリップボードの内容を Nano に貼り付けるには、`Shift+Right Click` キーまたは `Shift+Insert` キーを押します。
 
@@ -209,7 +200,13 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>オプション 2:自動プロビジョニング
 
-デバイスを自動的にプロビジョニングするには、[Device Provisioning Service を設定し、デバイス登録 ID を取得](how-to-auto-provision-simulated-device-linux.md)します。 自動プロビジョニングを使用する場合、IoT Edge によってサポートされる構成証明メカニズムは多数ありますが、ハードウェア要件も選択に影響します。 たとえば、Raspberry Pi デバイスには、既定でトラステッド プラットフォーム モジュール (TPM) チップが搭載されていません。
+IoT Edge デバイスは、[Azure IoT Hub Device Provisioning Service (DPS)](../iot-dps/index.yml) を使用して自動的にプロビジョニングできます。 現在 IoT Edge では、自動プロビジョニングに 2 つの構成証明メカニズムをサポートしていますが、お使いのハードウェアの要件によってはご自分の選択が制限される場合があります。 たとえば、Raspberry Pi デバイスには、既定でトラステッド プラットフォーム モジュール (TPM) チップが搭載されていません。 詳細については、次の記事を参照してください。
+
+* [Linux 仮想マシン上で、仮想 TPM を使用する IoT Edge デバイスを作成し、プロビジョニングする](how-to-auto-provision-simulated-device-linux.md)
+* [X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-x509-certs.md)
+* [対称キーの構成証明を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-symmetric-keys.md)
+
+これらの記事では、DPS で登録を設定し、構成証明用の適切な証明書またはキーを生成する手順について説明しています。 プロビジョニング情報は、選択した構成証明メカニズムに関係なく、お使いの IoT Edge デバイスの IoT Edge 構成ファイルに追加されます。
 
 構成ファイルを開きます。
 
@@ -217,29 +214,53 @@ sudo systemctl restart iotedge
 sudo nano /etc/iotedge/config.yaml
 ```
 
-ファイルのプロビジョニング構成を見つけ、構成証明メカニズムに適したセクションをコメント解除します。 たとえば、TPM 構成証明を使用する場合は、**scope_id** と **registration_id** の値をそれぞれ、IoT Hub Device Provisioning Service と TPM を搭載した IoT Edge デバイスの値で更新します。 **provisioning:** の行に先行する空白文字がなく、入れ子になった項目が 2 つの空白でインデントされていることを確認します。
+ファイルのプロビジョニング構成を見つけ、構成証明メカニズムに適したセクションをコメント解除します。 他のプロビジョニング セクションがすべてコメント アウトされていることを確認します。**provisioning:** の行の先頭には空白文字を入れず、入れ子の項目には 2 つの空白でインデントする必要があります。 **scope_id** の値は、お使いの IoT Hub Device Provisioning Service インスタンスの値で更新し、構成証明のフィールドには適切な値を指定します。
 
-   ```yaml
-   # Manual provisioning configuration
-   # provisioning:
-   #   source: "manual"
-   #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-  
-   # DPS TPM provisioning configuration
-   provisioning:
-     source: "dps"
-     global_endpoint: "https://global.azure-devices-provisioning.net"
-     scope_id: "{scope_id}"
-     attestation:
-       method: "tpm"
-       registration_id: "{registration_id}"
-   ```
+TPM の構成証明:
+
+```yml
+# DPS TPM provisioning configuration
+provisioning:
+  source: "dps"
+  global_endpoint: "https://global.azure-devices-provisioning.net"
+  scope_id: "<SCOPE_ID>"
+  attestation:
+    method: "tpm"
+    registration_id: "<REGISTRATION_ID>"
+```
+
+X.509 の構成証明:
+
+```yml
+# DPS X.509 provisioning configuration
+provisioning:
+  source: "dps"
+  global_endpoint: "https://global.azure-devices-provisioning.net"
+  scope_id: "<SCOPE_ID>"
+  attestation:
+    method: "x509"
+#   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+    identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+    identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+```
+
+対称キーの構成証明:
+
+```yml
+# DPS symmetric key provisioning configuration
+provisioning:
+  source: "dps"
+  global_endpoint: "https://global.azure-devices-provisioning.net"
+  scope_id: "<SCOPE_ID>"
+  attestation:
+    method: "symmetric_key"
+    registration_id: "<REGISTRATION_ID>"
+    symmetric_key: "<SYMMETRIC_KEY>"
+```
 
 クリップボードの内容を Nano に貼り付けるには、`Shift+Right Click` キーまたは `Shift+Insert` キーを押します。
 
-ファイルを保存して閉じます。
-
-   `CTRL + X`、`Y`、`Enter`
+ファイルを保存して閉じます。 `CTRL + X`、`Y`、`Enter`
 
 構成ファイルにプロビジョニング情報を入力した後、デーモンを再起動します。
 
@@ -297,7 +318,7 @@ sudo iotedge list
    ./check-config.sh
    ```
 
-このコマンドにより、Moby ランタイムで使用されるカーネルの機能の状態が含まれた詳細な出力が提供されます。 カーネルと Moby ランタイムの完全な互換性を確保するには、`Generally Necessary` と `Network Drivers` の下のすべての項目が有効になっていることを確認します。  欠けている機能を特定したら、カーネルをソースから再構築し、カーネルの適切な .config に含める関連モジュールを選択することで、それらを有効にします。同様に、defconfig や menuconfig などのカーネル構成ジェネレーターを使用している場合は、それぞれの機能を見つけて有効にし、カーネルを適宜再構築します。  新たに変更されたカーネルを展開したら、check-config スクリプトをもう一度実行して、必要なすべての機能が正常に有効になっていることを確認します。
+このコマンドにより、Moby ランタイムで使用されるカーネルの機能の状態が含まれた詳細な出力が提供されます。 カーネルと Moby ランタイムの完全な互換性を確保するには、`Generally Necessary` と `Network Drivers` の下のすべての項目が有効になっていることを確認します。  欠けている機能を特定したら、カーネルをソースから再構築し、カーネルの適切な .config に含める関連モジュールを選択することで、それらを有効にします。同様に、`defconfig` や `menuconfig` などのカーネル構成ジェネレーターを使用している場合は、それぞれの機能を見つけて有効にし、ご自分のカーネルを適宜再構築します。  新たに変更されたカーネルを展開したら、check-config スクリプトをもう一度実行して、必要なすべての機能が正常に有効になっていることを確認します。
 
 ## <a name="uninstall-iot-edge"></a>IoT Edge をアンインストールする
 

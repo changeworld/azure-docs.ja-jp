@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.date: 03/10/2020
+ms.openlocfilehash: 84846e642fa102045b89eb12dbc85b0995867a3e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023142"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061590"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL Database で単一データベースのリソースをスケーリングする
 
@@ -77,7 +77,7 @@ ms.locfileid: "77023142"
 
 PowerShell コマンド プロンプトで `$resourceGroupName`、`$serverName`、および `$databaseName` を設定した後、次のコマンドを実行します。
 
-```powershell
+```azurecli
 $operationName = (az sql db op list --resource-group $resourceGroupName --server $serverName --database $databaseName --query "[?state=='InProgress'].name" --out tsv)
 if (-not [string]::IsNullOrEmpty($operationName)) {
     (az sql db op cancel --resource-group $resourceGroupName --server $serverName --database $databaseName --name $operationName)
@@ -106,10 +106,11 @@ else {
 
 ### <a name="vcore-based-purchasing-model"></a>仮想コアベースの購入モデル
 
-- 1 GB の増分を使用して最大サイズの上限に達するまでストレージをプロビジョニングすることができます。 構成可能な最小データ ストレージは 5 GB です
-- 単一データベースのストレージは、[Azure Portal](https://portal.azure.com)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使って最大サイズを増減することでプロビジョニングできます。
-- SQL Database は自動的に追加ストレージの 30% をログ ファイルに割り当て、TempDB の仮想コアごとに 32 GB を割り当てますが、384 GB を超えることはありません。 TempDB は、すべてのサービス レベルの接続されている SSD にあります。
-- 単一データベースのストレージの料金は、データ ストレージとログ ストレージの容量の合計にサービス レベルのストレージ単価を掛けて計算します。 TempDB のコストは仮想コア価格に含まれています。 追加ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
+- ストレージは、データ ストレージの最大サイズの上限に達するまで、1 GB ずつ増分しプロビジョニングできます。 構成可能な最小データ ストレージは 1 GB です。 リソース制限のドキュメント ページにて、[単一データベース](sql-database-vcore-resource-limits-single-databases.md)および[エラスティック プール](sql-database-vcore-resource-limits-elastic-pools.md)の各サービス目標におけるデータ ストレージの最大サイズの制限をご確認ください。
+- 単一データベースのストレージは、[Azure portal](https://portal.azure.com)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使って最大サイズを増減してプロビジョニングできます。 バイトで指定する最大サイズの値は、1 GB (1073741824 バイト) の倍数である必要があります。
+- データベースのデータ ファイルに格納できるデータ量は、データ ストレージに構成されている最大サイズによって制限されます。 SQL Database では、この記憶域のほかに 30% のストレージを、トランザクション ログで使用するために自動的に割り当てます。
+- SQL Database では、`tempdb` データベースの仮想コアごとに 32 GB が自動的に割り当てられます。 `tempdb` は、すべてのサービス レベルのローカル SSD ストレージにあります。
+- 単一データベースまたはエラスティック プールのストレージ料金は、データ ストレージとトランザクション ログ ストレージの容量の合計にサービス レベルのストレージ ユニットを掛けて計算します。 `tempdb` のコストは価格に含まれています。 ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 
 > [!IMPORTANT]
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。

@@ -2,20 +2,20 @@
 title: Raspberry Pi のクラウド上の Azure IoT Hub への接続 (Node.js)
 description: このチュートリアルでは、Raspberry Pi を使用して Azure クラウド プラットフォームにデータを送信するために、Raspberry Pi を設定し、Azure IoT Hub に接続する方法について学習します。
 author: wesmc7777
-manager: philmea
+manager: eliotgra
 keywords: azure iot raspberry pi, raspberry pi iot hub, raspberry pi でクラウドにデータを送信する raspberry pi からクラウドへ
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: wesmc
-ms.openlocfilehash: 5780477be71988653e89379ae17e9009337bbc0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c32ae73f065aa5cd1d0dabec421d354684fbb3c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457104"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371505"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi の Azure IoT Hub への接続 (Node.js)
 
@@ -202,13 +202,13 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 3. サンプル アプリケーションを複製します。
 
    ```bash
-   git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
+   git clone https://github.com/Azure-Samples/azure-iot-samples-node.git
    ```
 
 4. サンプルのすべてのパッケージをインストールします。 このインストールには、Azure IoT device SDK、BME280 センサー ライブラリ、および Wiring Pi ライブラリが含まれています。
 
    ```bash
-   cd iot-hub-node-raspberrypi-client-app
+   cd azure-iot-samples-node/iot-hub/Tutorials/RaspberryPiApp
    npm install
    ```
 
@@ -256,6 +256,6 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 ## <a name="next-steps"></a>次のステップ
 
-サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。
+サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信しました。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
