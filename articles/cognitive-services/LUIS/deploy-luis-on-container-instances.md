@@ -3,19 +3,19 @@ title: Azure Container インスタンスで LUIS コンテナーをデプロイ
 titleSuffix: Azure Cognitive Services
 description: LUIS コンテナーを Azure Container インスタンスにデプロイし、Web ブラウザーでテストします。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.author: dapine
-ms.openlocfilehash: 30fd19634f6054b8b636dabcb4ef83b118554468
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.author: aahi
+ms.openlocfilehash: 08af17106846a0f5f7a0ccc2b01da1b2e15c1143
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75689431"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879212"
 ---
 # <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>Language Understanding (LUIS) コンテナーを Azure Container インスタンスにデプロイする
 
@@ -24,6 +24,8 @@ Cognitive Services [LUIS](luis-container-howto.md) コンテナーを Azure [Con
 [!INCLUDE [Prerequisites](../containers/includes/container-prerequisites.md)]
 
 [!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
+
+[!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 

@@ -453,6 +453,12 @@
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: オンボード用の API
               href: ./partner-center-portal/azure-app-apis.md
+        - name: コンサルティング サービス
+          items:
+            - name: 前提条件
+              href: ./partner-center-portal/consulting-service-prerequisites.md
+            - name: コンサルティング サービス オファーの作成
+              href: ./partner-center-portal/create-consulting-service-offer.md
         - name: Dynamics 365 のオファー
           items:
             - name: Dynamics 365 for Customer Engagement & PowerApps オファーの作成
@@ -461,6 +467,22 @@
               href: ./partner-center-portal/create-new-operations-offer.md
             - name: Dynamics 365 Business Central オファーの作成
               href: ./partner-center-portal/create-new-business-central-offer.md
+        - name: IoT Edge モジュール オファー
+          items:
+            - name: IoT Edge モジュールの技術資産の準備
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
+            - name: IoT Edge モジュール オファーの作成
+              href: ./partner-center-portal/azure-iot-edge-module-creation.md
+        - name: 管理サービス オファー
+          items:
+            - name: 管理サービス オファーの作成
+              href: ./partner-center-portal/create-new-managed-service-offer.md
+        - name: Power BI アプリ オファー
+          items:
+            - name: 発行の概要
+              href: ./partner-center-portal/create-power-bi-app-overview.md
+            - name: Power BI アプリ オファーの作成
+              href: ./partner-center-portal/create-power-bi-app-offer.md
         - name: SaaS オファー
           items:
             - name: SaaS オファー作成のチェックリスト

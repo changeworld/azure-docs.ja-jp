@@ -4,16 +4,16 @@ description: デプロイ マニフェストを使ってデプロイするモジ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 05/28/2019
+ms.date: 03/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8eb24fe878638853cd8519c08045552a91f0c190
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233291"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545624"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge にモジュールをデプロイしてルートを確立する方法について説明します。
 
@@ -252,6 +252,9 @@ IoT Edge ハブでは、`storeAndForwardConfiguration.timeToLiveSecs`IoT Edge �
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
+            "env": {
+              "tempLimit": {"value": "100"}
+            },
             "settings": {
               "image": "myacr.azurecr.io/filtermodule:latest",
               "createOptions": "{}"

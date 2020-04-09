@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: f193580ca03d4b1805f3c044658a34f468f3f44f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 43fc32e910c51e8b70e15aa49584a18e5b703fca
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346560"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631604"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>メンテナンス スケジュールを使用してサービスの更新とメンテナンスを管理する
 
-このメンテナンス スケジュール機能は、Service Health 計画メンテナンス通知、リソース ヘルス チェック モニター、Azure Synapse Analytics 内の Synapse SQL プール (データ ウェアハウス) のメンテナンス スケジューリング サービスを統合します。 
+このメンテナンス スケジュール機能は、Service Health 計画メンテナンス通知、リソース ヘルス チェック モニター、Azure Synapse Analytics 内の Synapse SQL プール (データ ウェアハウス) のメンテナンス スケジューリング サービスを統合します。
 
 メンテナンス スケジューリングは、新機能、アップグレード、および修正プログラムを受信するのに都合のよい時間枠を選択するために使用してください。 プライマリおよびセカンダリ メンテナンス ウィンドウを 7 日の期間内で選択する必要があり、各ウィンドウは別の曜日範囲内にある必要があります。
 
@@ -48,52 +48,55 @@ Service Health 通知とリソース ヘルス チェック モニターとの�
 
 選択したリージョンでメンテナンス スケジューリングが利用できない場合でも、メンテナンス スケジュールはいつでも表示および編集できます。 ご利用のリージョンでメンテナンス スケジューリングが利用可能になると、特定されたスケジュールはすぐにお使いの Synapse SQL プールでアクティブになります。
 
-## <a name="view-a-maintenance-schedule"></a>メンテナンス スケジュールを表示する 
+## <a name="view-a-maintenance-schedule"></a>メンテナンス スケジュールを表示する
 
 既定では、新しく作成されるすべてのデータ ウェアハウス インスタンスに対し、デプロイの間に、8 時間のプライマリおよびセカンダリ メンテナンス ウィンドウが適用されます。 上記の通り、ウィンドウはデプロイが完了するとすぐに変更できます。 指定されているメンテナンス ウィンドウの範囲外では、事前に通知することなく、メンテナンスは行われません。
 
 Synapse SQL プールに適用されたメンテナンス スケジュールを表示するには、次の手順のようにします。
 
-1.    [Azure portal](https://portal.azure.com/) にサインインする
-2.    表示する Synapse SQL プールを選択します。 
-3.    選択した Synapse SQL プールが、[概要] ブレードで開きます データ ウェアハウスに適用されているメンテナンス スケジュールが、 **[Maintenance schedule]\(メンテナンス スケジュール\)** の下に表示されます。
+1. [Azure portal](https://portal.azure.com/) にサインインする
+2. 表示する Synapse SQL プールを選択します。
+3. 選択した Synapse SQL プールが、[概要] ブレードで開きます データ ウェアハウスに適用されているメンテナンス スケジュールが、 **[Maintenance schedule]\(メンテナンス スケジュール\)** の下に表示されます。
 
 ![[概要] ブレード](./media/maintenance-scheduling/clear-overview-blade.PNG)
 
-## <a name="change-a-maintenance-schedule"></a>メンテナンス スケジュールの変更 
+## <a name="change-a-maintenance-schedule"></a>メンテナンス スケジュールの変更
 
-メンテナンス スケジュールをいつでも更新または、変更できます。 選択したインスタンスのアクティブなメンテナンス サイクルが経過している間、設定は保存されています。 指定した次のメンテナンス期間になると、設定がアクティブになります。 アクティブなメンテナンス イベント中にデータウェアハウスを監視する方法について[さらに理解する](../../service-health/resource-health-overview.md)。 
+メンテナンス スケジュールをいつでも更新または、変更できます。 選択したインスタンスのアクティブなメンテナンス サイクルが経過している間、設定は保存されています。 指定した次のメンテナンス期間になると、設定がアクティブになります。 アクティブなメンテナンス イベント中にデータウェアハウスを監視する方法について[さらに理解する](../../service-health/resource-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ## <a name="identifying-the-primary-and-secondary-windows"></a>プライマリ ウィンドウとセカンダリ ウィンドウの指定
 
 プライマリ ウィンドウとセカンダリ ウィンドウは別の曜日範囲にする必要があります。 たとえば、プライマリ ウィンドウを火曜日から木曜日にしたら、土曜日から日曜日をセカンダリ ウィンドウにします。
 
 Synapse SQL プールに対するメンテナンス スケジュールを変更するには、次の手順のようにします。
-1.    [Azure portal](https://portal.azure.com/) にサインインする
-2.    更新する Synapse SQL プールを選択します。 [概要] ブレードで、ページが開きます。 
-3.    [概要] ブレードの **[Maintenance Schedule]\(メンテナンス スケジュール\)** 概要リンクを選択して、メンテナンス スケジュール設定用のページを開きます。 または、左側にあるリソース メニューの **[Maintenance Schedule]\(メンテナンス スケジュール\)** オプションを選択します。  
+
+1. [Azure portal](https://portal.azure.com/) にサインインする
+2. 更新する Synapse SQL プールを選択します。 [概要] ブレードで、ページが開きます。
+[概要] ブレードの **[Maintenance Schedule]\(メンテナンス スケジュール\)** 概要リンクを選択して、メンテナンス スケジュール設定用のページを開きます。 または、左側にあるリソース メニューの **[Maintenance Schedule]\(メンテナンス スケジュール\)** オプションを選択します。
 
     ![概要ブレードのオプション](./media/maintenance-scheduling/maintenance-change-option.png)
 
-4. ページ上部のオプションを使用して、プライマリ メンテナンス ウィンドウの優先日の範囲を指定できます。 この選択は、平日または週末にプライマリ  ウィンドウが発生するかどうかを決定します。 選択した値に応じて、ドロップダウンの値が更新されます。 プレビュー中、一部のリージョンでは、利用可能な **[Day]\(日\)** オプションのフルセットがまだサポートされていない可能性があります。
+3. ページ上部のオプションを使用して、プライマリ メンテナンス ウィンドウの優先日の範囲を指定できます。 この選択は、平日または週末にプライマリ  ウィンドウが発生するかどうかを決定します。 選択した値に応じて、ドロップダウンの値が更新されます。
+プレビュー中、一部のリージョンでは、利用可能な **[Day]\(日\)** オプションのフルセットがまだサポートされていない可能性があります。
 
    ![メンテナンスの設定ブレード](./media/maintenance-scheduling/maintenance-settings-page.png)
 
-5. ドロップダウン リスト ボックスを使用して、優先されるプライマリとセカンダリのメンテナンス ウィンドウを選択します。
+4. ドロップダウン リスト ボックスを使用して、優先されるプライマリとセカンダリのメンテナンス ウィンドウを選択します。
    - **[日]** : 選択したウィンドウでメンテナンスを実行する優先日。
    - **[開始時刻]** : メンテナンス ウィンドウに対する優先開始時刻。
    - **[時間枠]** : 時間枠の優先時間数。
 
-   ブレードの下部にある **[スケジュールの概要]** 領域が、選択した値に基づいて更新されます。 
+   ブレードの下部にある **[スケジュールの概要]** 領域が、選択した値に基づいて更新されます。
   
-6. **[保存]** を選択します。 新しいスケジュールがアクティブになったことを確認するメッセージが表示されます。 
+5. **[保存]** を選択します。 新しいスケジュールがアクティブになったことを確認するメッセージが表示されます。
 
-   メンテナンス スケジュールがサポートされていないリージョンにスケジュールを保存すると、次のメッセージが表示されます。 "Your settings are saved and become active when the feature becomes available in your selected region." (設定は保存されており、選択したリージョンで機能が使用可能になるとアクティブになります。)    
+   メンテナンス スケジュールがサポートされていないリージョンにスケジュールを保存すると、次のメッセージが表示されます。 "Your settings are saved and become active when the feature becomes available in your selected region." (設定は保存されており、選択したリージョンで機能が使用可能になるとアクティブになります。)
 
    ![リージョンの可用性に関するメッセージ](./media/maintenance-scheduling/maintenance-not-active-toast.png)
 
 ## <a name="next-steps"></a>次のステップ
-- Azure Monitor を使用してアラートを作成、表示、管理する方法について[詳しく知る](../../azure-monitor/platform/alerts-metric.md)。
-- ログ アラート ルール用の Webhook アクションについて[詳しく知る](../..//azure-monitor/platform/alerts-log-webhook.md)。
-- アクション グループの作成と管理について[詳しく知る](../..//azure-monitor/platform/action-groups.md)。
-- Azure Service Health について[詳しく知る](../../service-health/service-health-overview.md)。
+
+- Azure Monitor を使用してアラートを作成、表示、管理する方法について[詳しく知る](../../azure-monitor/platform/alerts-metric.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+- ログ アラート ルール用の Webhook アクションについて[詳しく知る](../..//azure-monitor/platform/alerts-log-webhook.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+- アクション グループの作成と管理について[詳しく知る](../..//azure-monitor/platform/action-groups.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+- Azure Service Health について[詳しく知る](../../service-health/service-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b25409c63806e203bd841b0373543b7cc2b96d9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4877b136f197f226f142f5ad5eb4035c63c07d7a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79212940"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887012"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Azure portal を使用して Azure Data Box Edge の共有を管理する
 
@@ -29,11 +29,11 @@ ms.locfileid: "79212940"
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
+>
 > * 共有の追加
 > * 共有を削除する
 > * 共有の更新
 > * ストレージ キーの同期
-
 
 ## <a name="add-a-share"></a>共有の追加
 
@@ -57,14 +57,14 @@ ms.locfileid: "79212940"
    > Azure Stack Edge または Data Box Gateway デバイスで Azure Storage アカウントをご使用の場合、その Azure Storage アカウントで不変ポリシーが有効になっていないことを確認してください。 詳細については、「[BLOB ストレージの不変ポリシーを設定および管理する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)」を参照してください。
 
 6. この手順は、SMB 共有と NFS 共有のどちらを作成するかに応じて変わります。
-    - **SMB 共有を作成する場合** - **[すべての権限を持つローカル ユーザー]** フィールドで、 **[新規作成]** または **[既存のものを使用]** を選択します。 新しいローカル ユーザーを作成する場合は、**ユーザー名**、**パスワード**を指定し、パスワードの確認を入力します。 これで、ローカル ユーザーにアクセス許可が割り当てられます。 ここで割り当てたアクセス許可は、ファイル エクスプローラーを使用して変更できます。
+   - **SMB 共有を作成する場合** - **[すべての権限を持つローカル ユーザー]** フィールドで、 **[新規作成]** または **[既存のものを使用]** を選択します。 新しいローカル ユーザーを作成する場合は、**ユーザー名**、**パスワード**を指定し、パスワードの確認を入力します。 これで、ローカル ユーザーにアクセス許可が割り当てられます。 ここで割り当てたアクセス許可は、ファイル エクスプローラーを使用して変更できます。
 
-        ![SMB 共有を追加する](media/data-box-edge-manage-shares/add-smb-share.png)
+      ![SMB 共有を追加する](media/data-box-edge-manage-shares/add-smb-share.png)
 
         この共有データに対して [読み取り操作のみを許可する] をオンにすると、読み取り専用ユーザーを指定することができます。
-    - **NFS 共有を作成する場合** - 共有へのアクセスが**許可されたクライアントの IP アドレス**を指定する必要があります。
+   - **NFS 共有を作成する場合** - 共有へのアクセスが**許可されたクライアントの IP アドレス**を指定する必要があります。
 
-        ![NFS 共有を追加する](media/data-box-edge-manage-shares/add-nfs-share.png)
+      ![NFS 共有を追加する](media/data-box-edge-manage-shares/add-nfs-share.png)
 
 7. Edge コンピューティング モジュールから共有に簡単にアクセスするには、ローカル マウント ポイントを使用します。 **[Edge コンピューティングで共有を使用する]** を選択すると、共有が作成された後、自動的にマウントされます。 このオプションが選択されている場合、Edge モジュールでもローカル マウント ポイントでコンピューティングを使用できます。
 
@@ -74,7 +74,7 @@ ms.locfileid: "79212940"
 
 1. Azure portal で Data Box Edge リソースに移動し、 **[ゲートウェイ]、[共有]** の順に移動します。 コマンド バーの **+ [共有の追加]** を選択します。
 
-    ![[共有の追加] を選択する](media/data-box-edge-manage-shares/add-local-share-1.png)
+   ![[共有の追加] を選択する](media/data-box-edge-manage-shares/add-local-share-1.png)
 
 2. **[共有の追加]** で共有設定を指定します。 共有の一意の名前を指定します。
     
@@ -90,40 +90,39 @@ ms.locfileid: "79212940"
 
 7. **［作成］** を選択します 
 
-    ![ローカル共有の作成](media/data-box-edge-manage-shares/add-local-share-2.png)
+   ![ローカル共有の作成](media/data-box-edge-manage-shares/add-local-share-2.png)
 
     共有の作成が進行中であることが通知されます。 指定した設定で共有を作成すると、 **[共有]** ブレードは更新され、新しい共有が反映されます。
 
-    ![[共有] ブレードの更新の表示](media/data-box-edge-manage-shares/add-local-share-3.png)
+   ![[共有] ブレードの更新の表示](media/data-box-edge-manage-shares/add-local-share-3.png)
     
     共有を選択すると、この共有の Edge コンピューティング モジュールのローカル マウント ポイントが表示されます。
 
-    ![ローカル共有の詳細の表示](media/data-box-edge-manage-shares/add-local-share-4.png)
+   ![ローカル共有の詳細の表示](media/data-box-edge-manage-shares/add-local-share-4.png)
 
 ## <a name="mount-a-share"></a>共有のマウント
 
 Data Box Edge デバイス上でコンピューティングを構成する前に共有を作成した場合、その共有をマウントする必要があります。 共有をマウントするには、次の手順を行います。
 
-
 1. Azure portal で Data Box Edge リソースに移動し、 **[ゲートウェイ]、[共有]** の順に移動します。 共有の一覧からマウントする共有を選択します。 **[コンピューティングに使用]** 列で、選択した共有の状態に**無効**と表示されます。
 
-    ![共有を選択する](media/data-box-edge-manage-shares/select-share-mount.png)
+   ![共有を選択する](media/data-box-edge-manage-shares/select-share-mount.png)
 
 2. **[マウント]** を選択します。
 
-    ![[マウント] の選択](media/data-box-edge-manage-shares/select-mount.png)
+   ![[マウント] の選択](media/data-box-edge-manage-shares/select-mount.png)
 
 3. 確認を求められたら、 **[はい]** を選択します。 これにより、共有がマウントされます。
 
-    ![マウントを確認する](media/data-box-edge-manage-shares/confirm-mount.png)
+   ![マウントを確認する](media/data-box-edge-manage-shares/confirm-mount.png)
 
 4. 共有がマウントされたら、共有の一覧に移動します。 **[コンピューティングに使用]** 列の共有の状態が**有効**と表示されていることを確認できます。
 
-    ![マウントされた共有](media/data-box-edge-manage-shares/share-mounted.png)
+   ![マウントされた共有](media/data-box-edge-manage-shares/share-mounted.png)
 
 5. もう一度共有を選択し、共有に使用するローカル マウント ポイントを表示します。 Edge コンピューティング モジュールでは、共有にこのローカル マウント ポイントを使用します。
 
-    ![共有用のローカル マウント ポイント](media/data-box-edge-manage-shares/share-mountpoint.png)
+   ![共有用のローカル マウント ポイント](media/data-box-edge-manage-shares/share-mountpoint.png)
 
 ## <a name="unmount-a-share"></a>共有のマウントの解除
 
@@ -131,19 +130,19 @@ Data Box Edge デバイス上でコンピューティングを構成する前に
 
 1. Azure portal で Data Box Edge リソースに移動し、 **[ゲートウェイ]、[共有]** の順に移動します。
 
-    ![共有を選択する](media/data-box-edge-manage-shares/select-share-unmount.png)
+   ![共有を選択する](media/data-box-edge-manage-shares/select-share-unmount.png)
 
 2. 共有の一覧で、マウントを解除する共有を選択します。 マウントを解除する共有がどのモジュールからも使用されていないことを確認する必要があります。 共有がモジュールによって使用されている場合、該当するモジュールで問題が発生します。 **[マウント解除]** を選択します。
 
-    ![[マウント解除] を選択する](media/data-box-edge-manage-shares/select-unmount.png)
+   ![[マウント解除] を選択する](media/data-box-edge-manage-shares/select-unmount.png)
 
 3. 確認を求められたら、 **[はい]** を選択します。 これにより、共有のマウントが解除されます。
 
-    ![マウント解除を確認する](media/data-box-edge-manage-shares/confirm-unmount.png)
+   ![マウント解除を確認する](media/data-box-edge-manage-shares/confirm-unmount.png)
 
 4. 共有のマウントが解除されたら、共有の一覧に移動します。 **[コンピューティングに使用]** 列の共有の状態に**無効**と表示されることを確認できます。
 
-    ![マウントが解除された共有](media/data-box-edge-manage-shares/share-unmounted.png)
+   ![マウントが解除された共有](media/data-box-edge-manage-shares/share-unmounted.png)
 
 ## <a name="delete-a-share"></a>共有を削除する
 
@@ -151,49 +150,48 @@ Data Box Edge デバイス上でコンピューティングを構成する前に
 
 1. 共有の一覧で、削除したい共有を選択してクリックします。
 
-    ![共有を選択する](media/data-box-edge-manage-shares/delete-share-1.png)
+   ![共有を選択する](media/data-box-edge-manage-shares/delete-share-1.png)
 
 2. **[削除]** をクリックします。
 
-    ![[削除] をクリック](media/data-box-edge-manage-shares/delete-share-2.png)
+   ![[削除] をクリック](media/data-box-edge-manage-shares/delete-share-2.png)
 
 3. 確認を求められたら、 **[はい]** をクリックします。
 
-    ![削除の確定](media/data-box-edge-manage-shares/delete-share-3.png)
+   ![削除の確定](media/data-box-edge-manage-shares/delete-share-3.png)
 
 共有の一覧が更新され、削除が反映されます。
-
 
 ## <a name="refresh-shares"></a>共有の更新
 
 更新機能を使用すると、共有の内容を更新できます。 共有を更新すると、前回の更新後にクラウドに追加された BLOB とファイルを含むすべての Azure オブジェクトを見つけるために、検索が開始されます。 追加ファイルがダウンロードされ、デバイス上の共有の内容が更新されます。
 
 > [!IMPORTANT]
+>
 > - ローカル共有は更新できません。
 > - アクセス許可とアクセス制御リスト (ACL) は、更新操作の間で保持されません。 
 
 共有を更新するには、Azure portal で次の手順を実行します。
 
-1.   Azure portal で **[共有]** に移動します。 更新したい共有を選択してクリックします。
+1. Azure portal で **[共有]** に移動します。 更新したい共有を選択してクリックします。
 
-    ![共有を選択する](media/data-box-edge-manage-shares/refresh-share-1.png)
+   ![共有を選択する](media/data-box-edge-manage-shares/refresh-share-1.png)
 
-2.   **[最新の情報に更新]** をクリックします。 
+2. **[最新の情報に更新]** をクリックします。
 
-    ![[最新の情報に更新] をクリックする](media/data-box-edge-manage-shares/refresh-share-2.png)
+   ![[最新の情報に更新] をクリックする](media/data-box-edge-manage-shares/refresh-share-2.png)
  
-3.   確認を求められたら、 **[はい]** をクリックします。 オンプレミスの共有の内容を更新するジョブが開始されます。
+3. 確認を求められたら、 **[はい]** をクリックします。 オンプレミスの共有の内容を更新するジョブが開始されます。
 
-    ![更新を確認する](media/data-box-edge-manage-shares/refresh-share-3.png)
- 
-4.   更新の進行中は、コンテキスト メニューで更新オプションが淡色表示になります。 更新ジョブの状態を表示するには、ジョブの通知をクリックします。
+   ![更新を確認する](media/data-box-edge-manage-shares/refresh-share-3.png)
 
-5.   更新の時間は、Azure コンテナー内のファイルの数と、デバイス上のファイルの数によって異なります。 更新が正常に完了すると、共有のタイムスタンプが更新されます。 更新が部分的に失敗しても、操作は成功したと見なされ、タイムスタンプが更新されます。 更新エラー ログも更新されます。
+4. 更新の進行中は、コンテキスト メニューで更新オプションが淡色表示になります。 更新ジョブの状態を表示するには、ジョブの通知をクリックします。
 
-    ![更新されたタイムスタンプ](media/data-box-edge-manage-shares/refresh-share-4.png)
+5. 更新の時間は、Azure コンテナー内のファイルの数と、デバイス上のファイルの数によって異なります。 更新が正常に完了すると、共有のタイムスタンプが更新されます。 更新が部分的に失敗しても、操作は成功したと見なされ、タイムスタンプが更新されます。 更新エラー ログも更新されます。
+
+   ![更新されたタイムスタンプ](media/data-box-edge-manage-shares/refresh-share-4.png)
  
 失敗がある場合は、アラートが発生します。 アラートには、問題を解決するための推奨事項と原因が詳しく記載されています。 アラートには、更新または削除が失敗したファイルなど、失敗の完全なまとめが記載されているファイルへのリンクもあります。
-
 
 ## <a name="sync-storage-keys"></a>ストレージ キーの同期
 
@@ -213,7 +211,6 @@ Data Box Edge デバイス上でコンピューティングを構成する前に
 
 >[!NOTE]
 > 指定のストレージ アカウントに対してこれを実行しなければならないのは 1 回だけです。 同じストレージ アカウントに関連付けられているすべての共有に対して、この操作を繰り返す必要はありません。
-
 
 ## <a name="next-steps"></a>次のステップ
 

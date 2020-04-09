@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136536"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582475"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory でパスワードレス認証のデプロイを計画する
 
@@ -59,7 +59,7 @@ Microsoft のパスワードレス認証方法では、さまざまなシナリ�
 | **Web アプリのサインイン**: <br> モバイル デバイスまたは Windows 以外のデバイスから | **はい** | **いいえ** | **いいえ** |
 | **コンピューターでのサインイン**: <br> Windows 以外のコンピューター | **いいえ** | **いいえ** | **いいえ** |
 
-ご自分の組織に最適な方法を選択する詳細については、「[パスワードレスの方法を決定する](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#deciding-a-passwordless-method)」を参照してください。
+ご自分の組織に最適な方法を選択する詳細については、「[パスワードレスの方法を決定する](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#choose-a-passwordless-method)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -132,7 +132,7 @@ Microsoft では、伝達方法の原案として役立つ Azure Multi-Factor Au
 
 Microsoft Authenticator アプリは Google Play または Apple App Store から無償でダウンロードできます。 Microsoft Authenticator アプリのダウンロードの詳細については、[こちら](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)を参照してください。 ユーザーに Microsoft Authenticator アプリをダウンロードしてもらい、 指示に従って電話によるサインインを有効にしてもらいます。 
 
-これにより任意の iOS や Android フォンが、強力なパスワードレスの資格情報に変わります。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証または PIN を使用することで、任意のプラットフォームまたはブラウザーにサインインします。 Microsoft Authenticator アプリのしくみについて詳しくは、[こちら](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in)を参照してください。 
+これにより任意の iOS や Android フォンが、強力なパスワードレスの資格情報に変わります。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証または PIN を使用することで、任意のプラットフォームまたはブラウザーにサインインします。 Microsoft Authenticator アプリのしくみについて詳しくは、[こちら](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#microsoft-authenticator-app)を参照してください。
 
 ![Authenticator アプリを使用したサインイン](./media/howto-authentication-passwordless-deployment/passwordless-dp-sign-in.png)
 

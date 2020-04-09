@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ec32990513d9199c4aaccf1bcfcbf76f348f877b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d224bd9e9e7b1f8fc9eb45d85e78811d8642fc78
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867496"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519557"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Azure portal を使用して、BLOB およびキュー データへのアクセスのための RBAC ロールを割り当てる
 
@@ -23,13 +23,13 @@ Azure Active Directory (Azure AD) では、[ロールベースのアクセス制
 
 RBAC ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 アクセスのスコープは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいは個別のコンテナーまたはキューのレベルで指定できます。 Azure AD セキュリティ プリンシパルは、Azure リソースのユーザー、グループ、アプリケーション サービス プリンシパル、または[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の場合があります。
 
-この記事では、Azure portal を使用して RBAC ロールを割り当てる方法を説明します。 Azure portal には、RBAC ロールの割り当てとストレージ リソースへのアクセスを管理するためのシンプルなインターフェイスがあります。 また、Azure コマンドライン ツールまたは Azure Storage 管理 API を使用して、BLOB とキューのリソースに RBAC ロールを割り当てることもできます。 ストレージ リソースの RBAC ロールに関する詳細については、「[Azure Active Directory を利用して Azure BLOB およびキューへのアクセスを認証する](storage-auth-aad.md)」を参照してください。 
+この記事では、Azure portal を使用して RBAC ロールを割り当てる方法を説明します。 Azure portal には、RBAC ロールの割り当てとストレージ リソースへのアクセスを管理するためのシンプルなインターフェイスがあります。 また、Azure コマンドライン ツールまたは Azure Storage 管理 API を使用して、BLOB とキューのリソースに RBAC ロールを割り当てることもできます。 ストレージ リソースの RBAC ロールに関する詳細については、「[Azure Active Directory を利用して Azure BLOB およびキューへのアクセスを認証する](storage-auth-aad.md)」を参照してください。
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>BLOB とキューの RBAC ロール
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>リソースのスコープを決定する 
+## <a name="determine-resource-scope"></a>リソースのスコープを決定する
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
@@ -52,11 +52,11 @@ RBAC ロールが Azure AD セキュリティ プリンシパルに割り当て�
 
 セキュリティ プリンシパルにロールを割り当てる前に、付与するアクセス許可のスコープを必ず検討してください。 適切なスコープの決定については、「[リソースのスコープを決定する](#determine-resource-scope)」セクションを参照してください。
 
-ここに示す手順では、コンテナーに対してスコープが指定されたロールを割り当てます。しかし、同じ手順に従って、キューに対してスコープが指定されたロールを割り当てることができます。 
+ここに示す手順では、コンテナーに対してスコープが指定されたロールを割り当てます。しかし、同じ手順に従って、キューに対してスコープが指定されたロールを割り当てることができます。
 
 1. [Azure portal](https://portal.azure.com) でお使いのストレージ アカウントに移動し、そのアカウントの **[概要]** を表示します。
-1. [サービス] で **[BLOB]** を選択します。 
-1. 割り当てるロールの対象にするコンテナーを見つけて、コンテナーの設定を表示します。 
+1. [サービス] で **[BLOB]** を選択します。
+1. 割り当てるロールの対象にするコンテナーを見つけて、コンテナーの設定を表示します。
 1. **[アクセス制御 (IAM)]** を選択して、コンテナーのアクセス制御設定を表示します。 **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
 
     ![コンテナーのアクセス制御設定を示すスクリーンショット](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)

@@ -3,18 +3,18 @@ title: Azure Kubernetes Service クラスター リソースの作成
 titleSuffix: Azure Cognitive Services
 description: Azure Kubernetes Service (AKS) リソースを作成する方法について説明します。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/21/2019
-ms.author: dapine
-ms.openlocfilehash: 4e3102912e88ef904fed3e680f8cdd23242b1f17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: d01245a76c5210a1843307b543f98d4f1d59d2cc
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74383497"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877836"
 ---
 ## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Azure Kubernetes Service クラスター リソースの作成
 

@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1a77a366ee8e06b2d8c47eb3b47eeaf9ae809598
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 644ea1c00af7e71ff56852298fff18e5293c137b
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76028285"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585574"
 ---
 # <a name="configuration-data-at-scale"></a>スケーリング対応の構成データ
 
@@ -45,7 +45,7 @@ Datum は、他の構成管理プラットフォームからの優れたアイ�
 その後、サーバーまたはサーバー ロールの 1 つのビューに各ファイルの[情報を統合する](https://github.com/gaelcolas/Datum#datum-tree)ことによって構成データ ファイルを生成するためのコマンドレットが提供されます。
 
 データ ファイルが生成されたら、それらを [DSC 構成スクリプト](/powershell/scripting/dsc/configurations/write-compile-apply-configuration)と共に使用して MOF ファイルを生成し、[その MOF ファイルを Azure Automation にアップロードする](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)ことができます。
-次に、[オンプレミス](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)または [Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) のいずれかからサーバーを登録して、構成をプルします。
+次に、[オンプレミス](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)または [Azure](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) のいずれかからサーバーを登録して、構成をプルします。
 
 Datum を試すには、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/datum/)にアクセスし、ソリューションをダウンロードするか、[Project Site] をクリックして[ドキュメント](https://github.com/gaelcolas/Datum#2-getting-started--concepts)を参照してください。
 

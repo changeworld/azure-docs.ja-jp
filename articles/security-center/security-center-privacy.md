@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 6edea1d0de53e2dc9f764de26209dc1f3110556e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75978617"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585970"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Azure Security Center でのユーザー データの管理
 この記事では、Azure Security Center でユーザー データを管理する方法について説明します。 ユーザー データの管理には、データへのアクセス、削除、またはエクスポート機能が含まれます。
@@ -98,6 +98,3 @@ Security Center のユーザーは、自分の[セキュリティ連絡先デー
 
 ## <a name="auditing-and-reporting"></a>監査とレポート
 セキュリティ連絡先、Just In Time、およびアラートの更新の監査ログは、[Azure の活動ログ](../azure-monitor/platform/platform-logs-overview.md)で管理されます。
-
-## <a name="next-steps"></a>次のステップ
-ユーザー データの管理の詳細については、「[Manage user data found in an Azure Security Center investigation (Azure Security Center 調査で検出されたユーザー データの管理)](security-center-investigation-user-data.md)」を参照してください。

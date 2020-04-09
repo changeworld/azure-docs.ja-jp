@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9184808b71cce03882022fd37967fe421e64062
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71104962"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548980"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -223,7 +223,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 `apis` フォルダーには、サービス インスタンス内の各 API のフォルダーがあります。API のフォルダーには次の項目が含まれます。
 
 * `apis\<api name>\configuration.json` - これは API の構成で、バックエンド サービス URL と操作に関する情報が含まれています。 この情報は、[特定の API の取得](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get)を `export=true` 形式で `application/json` を指定して呼び出した場合に返される情報と同じです。
-* `apis\<api name>\api.description.html` - これは API の説明で、`description`API エンティティ[の ](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property) プロパティに対応します。
+* `apis\<api name>\api.description.html` - これは API の説明で、`description`API エンティティ[の ](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty) プロパティに対応します。
 * `apis\<api name>\operations\` - このフォルダーには、API での操作に対応する `<operation name>.description.html` ファイルが含まれています。 各ファイルには、API での 1 つの操作の説明が含まれています。この操作は、REST API の`description`操作エンティティ[の ](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) プロパティに対応します。
 
 ### <a name="groups-folder"></a>groups フォルダー

@@ -8,15 +8,15 @@ ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 09/27/2019
+ms.topic: troubleshooting
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 76dc964b7fe7f5e8acfcfb03b2e89bebb2caa176
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ff12ce5fec8fcc49fa21ef5f3009fc2283300c4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613386"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654819"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>既存の Azure AD Domain Services のマネージド ドメインでのディレクトリの不一致エラーを解決する
 

@@ -11,17 +11,19 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c868d8c159bca0c8462acde48225dc45003cf84e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351003"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632675"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse Analytics のメモリと同時実行の制限
+
 Azure Synapse Analytics のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を表示します。  
 
 ## <a name="data-warehouse-capacity-settings"></a>データ ウェアハウスの容量設定
+
 次の表は、さまざまなパフォーマンス レベルでのデータ ウェアハウスの最大容量を示しています。 パフォーマンス レベルを変更するには、[コンピューティングのスケーリング (ポータル)](quickstart-scale-compute-portal.md) に関するページを参照してください。
 
 ### <a name="service-levels"></a>サービス レベル
@@ -50,7 +52,8 @@ Azure Synapse Analytics のさまざまなパフォーマンス レベルとリ�
 最大のサービス レベルは DW30000c で、60 のコンピューティング ノードと、コンピューティング ノードごとに 1 つの配布です。 たとえば、DW30000c の 600 TB のデータ ウェアハウスは、コンピューティング ノードあたり約 10 TB を処理します。
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>ワークロード グループの同時実行の最大値
-[ワークロード グループ](sql-data-warehouse-workload-isolation.md)が導入され、コンカレンシー スロットの概念は適用されなくなりました。  要求ごとのリソースはパーセント単位で割り当てられ、ワークロード グループの定義で指定されます。  ただし、コンカレンシー スロットを削除したとしても、サービス レベルに基づいてクエリごとに必要なリソースの最小量があります。  次の表では、サービス レベル全体のクエリごとに必要なリソースの最小量と、実現可能な関連するコンカレンシー数を定義しています。 
+
+[ワークロード グループ](sql-data-warehouse-workload-isolation.md)が導入され、コンカレンシー スロットの概念は適用されなくなりました。  要求ごとのリソースはパーセント単位で割り当てられ、ワークロード グループの定義で指定されます。  ただし、コンカレンシー スロットを削除したとしても、サービス レベルに基づいてクエリごとに必要なリソースの最小量があります。  次の表では、サービス レベル全体のクエリごとに必要なリソースの最小量と、実現可能な関連するコンカレンシー数を定義しています。
 
 |サービス レベル|同時クエリの最大数|REQUEST_MIN_RESOURCE_GRANT_PERCENT でサポートされる最小量 (%)|
 |---|---|---|
@@ -73,7 +76,8 @@ Azure Synapse Analytics のさまざまなパフォーマンス レベルとリ�
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>リソース クラスのコンカレンシーの最大値
-各クエリに効率的に実行するために十分なリソースを確保するために、Azure Synapse の SQL Analytics では、各クエリに同時実行スロットを割り当てることで、リソースの使用率が追跡されます。 システムは、重要度とコンカレンシー スロットに基づいて、クエリをキューに入れます。 十分な数のコンカレンシー スロットが利用できるようになるまで、クエリはキュー内で待機します。 [重要度](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance)とコンカレンシー スロットによって、CPU の優先順位付けも決定されます。 詳細については、[ワークロードの分析](analyze-your-workload.md)に関するページを参照してください。
+
+各クエリに効率的に実行するために十分なリソースを確保するために、Azure Synapse の SQL Analytics では、各クエリに同時実行スロットを割り当てることで、リソースの使用率が追跡されます。 システムは、重要度とコンカレンシー スロットに基づいて、クエリをキューに入れます。 十分な数のコンカレンシー スロットが利用できるようになるまで、クエリはキュー内で待機します。 [重要度](sql-data-warehouse-workload-importance.md)とコンカレンシー スロットによって、CPU の優先順位付けも決定されます。 詳細については、[ワークロードの分析](analyze-your-workload.md)に関するページを参照してください。
 
 **静的リソース クラス**
 
@@ -121,11 +125,11 @@ Azure Synapse Analytics のさまざまなパフォーマンス レベルとリ�
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-
-クエリの実行を開始するのに十分な数のコンカレンシー スロットが空いていない場合、クエリはキューに入れられ、重要度に基づいて実行されます。  重要度が同じ場合、クエリは先入れ先出しで実行されます。  クエリが完了してクエリおよびスロットの数が制限値を下回ると、キューに入れられていたクエリは解放されます。 
+クエリの実行を開始するのに十分な数のコンカレンシー スロットが空いていない場合、クエリはキューに入れられ、重要度に基づいて実行されます。  重要度が同じ場合、クエリは先入れ先出しで実行されます。  クエリが完了してクエリおよびスロットの数が制限値を下回ると、キューに入れられていたクエリは解放されます。
 
 ## <a name="next-steps"></a>次のステップ
 
 ワークロードをさらに最適化するためにリソース クラスを活用する方法の詳細については、次の記事を参照してください。
+
 * [ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)
 * [ワークロードの解析](analyze-your-workload.md)
