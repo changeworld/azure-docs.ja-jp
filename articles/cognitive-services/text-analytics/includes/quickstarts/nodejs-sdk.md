@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: a0616a8a2cc401b6b4c42c9882c14da2f123c6df
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 0cfe651a91cc16e7d4b58af67dac29fe5106a48c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79481876"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80986766"
 ---
 <a name="HOLTop"></a>
 
@@ -61,7 +61,7 @@ npm init
 `@azure/ai-text-analytics` NPM パッケージをインストールします。
 
 ```console
-npm install --save @azure/ai-text-analytics
+npm install --save @azure/ai-text-analytics@1.0.0-preview.3
 ```
 
 > [!TIP]

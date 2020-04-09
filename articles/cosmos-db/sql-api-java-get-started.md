@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: a046f97dccdcc4a9cb9fe180447c1ff9a316f0df
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9f4757bca79476a1e59f5f18a94753c1ea06cf9c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720804"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985220"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL チュートリアル: SQL API Java コンソール アプリケーションの作成
 
@@ -50,7 +50,7 @@ Azure Cosmos DB Java SDK 用 SQL API の NoSQL チュートリアルへようこ
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Git](https://git-scm.com/downloads)。
-* [Java Development Kit (JDK) 7 以降](https://aka.ms/azure-jdks)。
+* [Java Development Kit (JDK) 7 以降](/java/azure/jdk/?view=azure-java-stable)。
 * [Maven](https://maven.apache.org/download.cgi)。
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>手順 1: Azure Cosmos DB アカウントを作成する

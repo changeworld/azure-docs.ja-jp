@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 9d335bcf6daf0b38e7a68ca2d40894dd64c93e40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af17f9c2ef7eea5eb531327d4df13d5885a49b7e
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442155"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985594"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB Bulk Executor ライブラリの概要
  
@@ -51,4 +51,4 @@ Bulk Executor ライブラリは、コレクションに割り当てられてい
 * [.NET](bulk-executor-dot-net.md) と [Java](bulk-executor-java.md) で Bulk Executor ライブラリを使用するサンプル アプリケーションを試して、さらに詳しく学習します。  
 * [.NET](sql-api-sdk-bulk-executor-dot-net.md) と [Java](sql-api-sdk-bulk-executor-java.md) の Bulk Executor SDK 情報とリリース ノートを確認してください。
 * Bulk Executor ライブラリは Cosmos DB Spark コネクタに統合されています。詳細については、[Azure Cosmos DB Spark コネクタ](spark-connector.md)に関する記事をご覧ください。  
-* Bulk Executor ライブラリは、データをコピーするために Azure Data Factory の [Azure Cosmos DB コネクタ](https://aka.ms/bulkexecutor-adf-v2)の新しいバージョンにも統合されています。
+* Bulk Executor ライブラリは、データをコピーするために Azure Data Factory の [Azure Cosmos DB コネクタ](../data-factory/connector-azure-cosmos-db.md)の新しいバージョンにも統合されています。

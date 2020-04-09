@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 921e22e637782ffd744af1a28e6bd43e7dd53c67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066089"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80986780"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows クライアント
 
@@ -130,7 +130,7 @@ ms.locfileid: "80066089"
 5. .pfx から秘密キーと base64 サムプリントを抽出します。 これには複数の方法があります。 1 つの方法として、コンピューター上で OpenSSL を使用します。
 
     ```
-    openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
+    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
    *profileinfo.txt* ファイルには、CA およびクライアント証明書の秘密キーとサムプリントが含まれています。 必ず、クライアント証明書のサムプリントを使用してください。
 
@@ -161,7 +161,7 @@ ms.locfileid: "80066089"
 11. コマンド ラインを使用して接続するには、以下のコマンドを入力します。
   
     ```
-    sudo openvpn –-config <name and path of your VPN profile file>&
+    sudo openvpn --config <name and path of your VPN profile file>&
     ```
 12. GUI を使用して接続するには、システム設定に移動します。
 13. **+** をクリックして新しい VPN 接続を追加します。

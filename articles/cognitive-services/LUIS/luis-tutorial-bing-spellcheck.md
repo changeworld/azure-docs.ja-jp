@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 51b0d02443df872a7fae13116ea77b13d05055fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1e43cfc55611c432652055db2ac8411d835608b
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74225464"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396825"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Bing Spell Check を使用した単語のスペルミスの修正
 
@@ -71,7 +71,7 @@ There are two places in LUIS to use the key. The first is in the [test panel](lu
 
 エンドポイント URL には、適切に渡す必要がある値が複数含まれます。 Bing Spell Check API v7 キーは、その 1 つに過ぎません。 **spellCheck** パラメーターを true に設定し、**bing-spell-check-subscription-key** の値をキーの値に設定する必要があります。
 
-`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription-key={luisKey}&spellCheck=**true**&bing-spell-check-subscription-key=**{bingKey}**&verbose=true&timezoneOffset=0&q={utterance}`
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appID}?subscription-key={luisKey}&spellCheck=true&bing-spell-check-subscription-key={bingKey}&verbose=true&timezoneOffset=0&q={utterance}`
 
 ## <a name="send-misspelled-utterance-to-luis"></a>LUIS への発話のスペルミスの送信
 1. Web ブラウザーで、上記の文字列をコピーして、`region`、`appId`、`luisKey`、および `bingKey` をご自身の値に置き換えます。 エンドポイント リージョンが公開[リージョン](luis-reference-regions.md)と異なる場合は、必ずエンドポイント リージョンを使用します。

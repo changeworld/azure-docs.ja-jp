@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 40f7de4b4feb2b312705238abd30402edb635ea9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8fbd2065ceae1aadf1dc57c78adb21b7c2848297
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720894"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985560"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>チュートリアル:Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
 
@@ -37,7 +37,7 @@ Azure Cosmos DB は、モバイル アプリ開発者向けの次の主要な機
 * 高速スループット。 Azure Cosmos DB では、ドキュメントを読み書きするのにわずか数ミリ秒しかかかりません。 開発者は必要なスループットを指定でき、Azure Cosmos DB はすべての単一リージョンのアカウントに緩やかな整合性で 99.999% の可用性 SLA を提供し、全ての複数リージョンのデータベース アカウントに 99.99% の 読み取り可用性を提供します。
 * 無限のスケール。 お使いの Azure Cosmos のコンテナーは、[お使いのアプリの規模の拡大に合わせて拡大](partition-data.md)します。 小さいデータ サイズと 1 秒あたり数百件の要求のスループットから開始できます。 コレクションまたはデータベースは、ペタバイトのデータと 1 秒あたり数億件の要求という任意の大きさのスループットに拡張できます。
 * グローバルに分散。 モバイル アプリ ユーザーは外に出かけ、世界中を飛び回ることもよくあります。 Azure Cosmos DB は、[グローバル分散データベース](distribute-data-globally.md)です。 ユーザーがデータにアクセスするには、地図をクリックします。
-* 組み込みの豊富な承認機能。 Azure Cosmos DB では、複雑なカスタムの承認コードを作成せずに、[ユーザーごとのデータ](https://aka.ms/documentdb-xamarin-todouser)やマルチ ユーザー共有データのような一般的なパターンを簡単に実装できます。
+* 組み込みの豊富な承認機能。 Azure Cosmos DB では、複雑なカスタムの承認コードを作成せずに、[ユーザーごとのデータ](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems)やマルチ ユーザー共有データのような一般的なパターンを簡単に実装できます。
 * 地理空間クエリ。 現在、多くのモバイル アプリが地理的な場所に応じたエクスペリエンスを提供しています。 [地理空間型](geospatial.md)のファーストクラスのサポートにより、Azure Cosmos DB は、これらのエクスペリエンスの作成を簡単に実現可能なものにしています。
 * バイナリの添付ファイル。 アプリ データには、バイナリ BLOB が含まれていることがよくあります。 添付ファイルがネイティブでサポートされているため、Azure Cosmos DB をアプリ データのワンストップ ショップとして簡単に使用できます。
 
@@ -83,7 +83,7 @@ To-Do List アプリをマルチ ユーザーの To-Do List アプリに変更�
 
   4. Facebook を使用してリソース トークン ブローカーに対して認証するようにアプリを変更し、サインインした Facebook ユーザーのリソース トークンを要求します。 これで、UserItems コレクション内のデータにアクセスできます。  
 
-このパターンの完全なコード サンプルについては、[GitHub のリソース トークン ブローカー](https://aka.ms/documentdb-xamarin-todouser)に関するページを参照してください。 次の図には、このソリューションを示しています。
+このパターンの完全なコード サンプルについては、[GitHub のリソース トークン ブローカー](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems)に関するページを参照してください。 次の図には、このソリューションを示しています。
 
 ![Azure Cosmos DB ユーザーおよびアクセス許可のブローカー](media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png)
 

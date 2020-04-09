@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: d065439839ba5db479305ae81c61892cb5cf5e70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bbd2e3376f1da3fdf5b10d654a331ce258be5cf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929450"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422100"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 
@@ -324,7 +324,7 @@ Dynamics にデータをコピーするために、コピー アクティビテ�
 | ignoreNullValues | 書き込み操作時に入力データ (キー フィールドを除く) からの null 値を無視するかどうかを示します。<br/>使用可能な値: **true** および **false**。<br>- **True**:upsert または更新操作を行うときに、対象オブジェクト内のデータが変更されないようにします。 挿入操作を実行するときに、定義済みの既定値を挿入します。<br/>- **False**:upsert または更新操作を行うときに、対象オブジェクト内のデータを NULL に更新します。 挿入操作を実行するときに、NULL 値を挿入します。 | いいえ (既定値は false) |
 
 >[!NOTE]
->Dynamics シンクでのシンク "**writeBatchSize**" とコピー アクティビティ " **[parallelCopies](copy-activity-performance.md#parallel-copy)** " の既定値は、どちらも 10 です。 そのため、100 個のレコードが Dynamics に同時に送信されます。
+>Dynamics シンクでのシンク "**writeBatchSize**" とコピー アクティビティ " **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** " の既定値は、どちらも 10 です。 そのため、100 個のレコードが Dynamics に同時に送信されます。
 
 Dynamics 365 オンラインでは、[1 組織あたりの同時バッチ呼び出し数が 2](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations) という制限があります。 この制限を超えた場合、最初の要求が実行される前に "サーバー ビジー" 状態が発生します。 "writeBatchSize" を 10 以下に保つと、このような同時呼び出しの制限が回避されます。
 

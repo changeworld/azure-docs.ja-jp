@@ -2,15 +2,15 @@
 title: 複数のリソース インスタンスの作成
 description: Azure Resource Manager テンプレートを作成して、複数の Azure リソース インスタンスを作成する方法を説明します。
 author: mumian
-ms.date: 03/04/2019
+ms.date: 04/08/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9ed14ce1af6421accccface1b66119057d1c5a30
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 70c86c82cb28bf767da50cca20f7c1d052d4bf01
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239290"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982542"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用した複数のリソース インスタンスの作成
 
@@ -64,7 +64,7 @@ Visual Studio Code で、次の 4 つの変更を行います。
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storageAccountType": {
@@ -91,18 +91,18 @@ Visual Studio Code で、次の 4 つの変更を行います。
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-04-01",
       "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-      "apiVersion": "2018-02-01",
       "location": "[parameters('location')]",
       "sku": {
         "name": "[parameters('storageAccountType')]"
       },
-      "kind": "Storage",
-      "properties": {},
+      "kind": "StorageV2",
       "copy": {
         "name": "storagecopy",
         "count": 3
-      }
+      },
+      "properties": {}
     }
   ]
 }
@@ -119,16 +119,19 @@ Visual Studio Code で、次の 4 つの変更を行います。
 3 つのストレージ アカウントをすべて一覧表示するには、--name パラメータを省略します。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
-echo "Enter the Resource Group name:" &&
-read resourceGroupName &&
+echo "Enter a project name that is used to generate resource group name:" &&
+read projectName &&
+resourceGroupName="${projectName}rg" &&
 az storage account list --resource-group $resourceGroupName
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
+$projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
+$resourceGroupName = "${projectName}rg"
 Get-AzStorageAccount -ResourceGroupName $resourceGroupName
 ```
 

@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 3660ece7add8f279292340aae9ab445b682fe045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452084"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984539"
 ---
 # <a name="introduction-to-auto-scaling"></a>自動スケーリングの概要
 自動スケーリングは Service Fabric の追加機能であり、サービスによって報告される負荷またはリソースの使用量に基づいて、サービスを動的にスケーリングする機能です。 自動スケーリングは優れた柔軟性を提供し、必要に応じてサービスのインスタンスまたはパーティションを追加でプロビジョニングできます。 自動スケーリングは、プロセス全体が自動化された透過的なものであり、サービスのポリシーを設定した後は、サービス レベルの手動でのスケーリング操作は必要ありません。 自動スケーリングは、サービスの作成時に有効にできます。または、サービスを更新することでいつでも有効にできます。
@@ -136,6 +136,9 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 
 ### <a name="using-application-manifest"></a>アプリケーション マニフェストの使用
 ``` xml
+<NamedPartition>
+    <Partition Name="0" />
+</NamedPartition>
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>

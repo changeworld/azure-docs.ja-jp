@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: a04ca3768ade6058c59393591c252bc4347a3663
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: c2690ad7cc4dcaa295bfb08b8c0396438ada0807
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234463"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437538"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor での監視ソリューション
 監視ソリューションでは、Azure のサービスを利用して、特定のアプリケーションまたはサービスの操作に対する詳細な分析情報が提供されます。 この記事では、Azure の監視ソリューションの簡単な概要と、監視ソリューションの使用とインストールの詳細について説明します。
@@ -83,11 +83,7 @@ Microsoft およびパートナーの監視ソリューションは、[Azure Mar
 * ソリューションに Automation アカウントが必要な場合は、Log Analytics ワークスペースと Automation アカウントを互いにリンクさせる必要があります。 1 つの Automation アカウントにリンクできる Log Analytics ワークスペースは 1 つのみであり、同様に 1 つの Log Analytics ワークスペースにリンクできる Automation アカウントは 1 つのみです。
 * Log Analytics ワークスペースと Automation アカウントをリンクさせるには、これらのリソース グループとリージョンが同じである必要があります。 例外として、米国東部リージョンのワークスペースと米国東部 2 の Automation アカウントはリンク可能です。
 
-### <a name="create-a-link-between-a-log-analytics-workspace-and-automation-account"></a>Log Analytics ワークスペースと Automation アカウント間のリンクを作成する
-Log Analytics ワークスペースと Automation アカウントを指定する方法は、ソリューションのインストール方法によって異なります。
-
-* Azure Marketplace からソリューションをインストールする場合は、ワークスペースと Automation アカウントが求められます。 まだリンクされていない場合は、これらの間にリンクが作成されます。
-* Azure Marketplace 外部のソリューションについては、ソリューションのインストール前に Log Analytics ワークスペースと Automation アカウントをリンクさせる必要があります。 これを行うには、Azure Marketplace で任意のソリューションを選んでから、Log Analytics ワークスペースと Automation アカウントを選びます。 Log Analytics ワークスペースと Automation アカウントを選ぶとすぐにリンクが作成されるため、実際にソリューションをインストールする必要はありません。 リンクが作成されると、すべてのソリューションで選んだ Log Analytics ワークスペースと Automation アカウントを使えるようになります。
+Azure Marketplace からソリューションをインストールする場合は、ワークスペースと Automation アカウントが求められます。 まだリンクされていない場合は、これらの間にリンクが作成されます。
 
 ### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>Log Analytics ワークスペースと Automation アカウント間のリンクを検証する
 Log Analytics ワークスペースと Automation アカウント間のリンクは、次の方法で確認できます。

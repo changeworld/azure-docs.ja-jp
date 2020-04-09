@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442164"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982705"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Graph Bulk Executor .NET ライブラリを使って Azure Cosmos DB Gremlin API の一括操作を実行する
 
 このチュートリアルでは、Azure CosmosDB の Bulk Executor .NET ライブラリを使って、Azure Cosmos DB Gremlin API コンテナーにグラフ オブジェクトをインポートし、更新する手順を紹介しています。 この手順では、[Bulk Executor ライブラリ](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview)の Graph クラスを利用してプログラムから Vertex オブジェクトと Edge オブジェクトを作成し、1 回のネットワーク要求につき複数それらを挿入します。 この動作を Bulk Executor ライブラリで構成することにより、データベース リソースとローカル メモリ リソースの両方を最大限に活用することができます。
 
-Gremlin クエリをデータベースに送信した場合は、コマンドが 1 つずつ評価されて実行されますが、それとは対照的に Bulk Executor ライブラリでは、オブジェクトをローカルで作成して検証するよう要求されます。 オブジェクトの作成後、グラフ オブジェクトを順次データベース サービスに送信することができます。 この手法を用いることでデータ インジェストの速度を最大 100 倍に高めることができることから、初期データ移行や定期的なデータ移動の操作に最適な手段となっています。 詳細については、[Azure Cosmos DB Graph Bulk Executor サンプル アプリケーション](https://aka.ms/graph-bulkexecutor-sample)の GitHub ページを参照してください。
+Gremlin クエリをデータベースに送信した場合は、コマンドが 1 つずつ評価されて実行されますが、それとは対照的に Bulk Executor ライブラリでは、オブジェクトをローカルで作成して検証するよう要求されます。 オブジェクトの作成後、グラフ オブジェクトを順次データベース サービスに送信することができます。 この手法を用いることでデータ インジェストの速度を最大 100 倍に高めることができることから、初期データ移行や定期的なデータ移動の操作に最適な手段となっています。 詳細については、[Azure Cosmos DB Graph Bulk Executor サンプル アプリケーション](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started)の GitHub ページを参照してください。
 
 ## <a name="bulk-operations-with-graph-data"></a>グラフ データの一括操作
 
@@ -120,7 +120,7 @@ e.AddProperty("customProperty", "value");
 * Git 詳細については、[Git のダウンロード ページ](https://git-scm.com/downloads)を参照してください。
 
 ### <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
-このチュートリアルでは、GitHub にホストされている [Azure Cosmos DB Graph Bulk Executor サンプル](https://aka.ms/graph-bulkexecutor-sample)を使って基本的な手順を説明します。 このアプリケーションは、頂点オブジェクトとエッジ オブジェクトをランダムに生成した後、指定したグラフ データベース アカウントに一括挿入を実行を実行する .NET ソリューションとなっています。 アプリケーションを取得するために、以下の `git clone` コマンドを実行してください。
+このチュートリアルでは、GitHub にホストされている [Azure Cosmos DB Graph Bulk Executor サンプル](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started)を使って基本的な手順を説明します。 このアプリケーションは、頂点オブジェクトとエッジ オブジェクトをランダムに生成した後、指定したグラフ データベース アカウントに一括挿入を実行を実行する .NET ソリューションとなっています。 アプリケーションを取得するために、以下の `git clone` コマンドを実行してください。
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started.git

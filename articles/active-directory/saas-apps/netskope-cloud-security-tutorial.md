@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dec8f8065114b89dfa7bcaceee3f26855953dde2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3c38900d4ded3d2ee08245674bda90d96226c1eb
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74081710"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396574"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>チュートリアル:Netskope Administrator Console と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -82,7 +82,7 @@ Netskope Administrator Console に対する Azure AD SSO を構成してテス�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`Netskope_<OrgKey>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`<OrgKey>` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<tenant_host_name>/saml/acs` のパターンを使用して URL を入力します
 

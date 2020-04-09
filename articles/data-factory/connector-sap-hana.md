@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
-ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1a3ff32956e8a8530684ba7f300f06d0c032227
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231595"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421130"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用して SAP HANA からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -188,7 +188,7 @@ SAP HANA からデータをコピーするために、コピー アクティビ�
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**SapHanaSource** | はい |
 | query | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | はい |
-| partitionOptions | SAP HANA からのデータの取り込みに使用されるデータ パーティション分割オプションを指定します。 詳細については、「[SAP HANA からの並列コピー](#parallel-copy-from-sap-hana)」セクションを参照してください。<br>指定できる値は、 **None**  (既定値)、 **PhysicalPartitionsOfTable**、**SapHanaDynamicRange** です。 詳細については、「[SAP HANA からの並列コピー](#parallel-copy-from-sap-hana)」セクションを参照してください。 `PhysicalPartitionsOfTable` は、クエリではなく、テーブルからデータをコピーする場合にのみ使用できます。 <br>パーティション オプションが有効になっている (つまり、`None` ではない) 場合、SAP HANA から同時にデータを読み込む並列処理の次数は、コピー アクティビティの [`parallelCopies`](copy-activity-performance.md#parallel-copy) の設定によって制御されます。 | False |
+| partitionOptions | SAP HANA からのデータの取り込みに使用されるデータ パーティション分割オプションを指定します。 詳細については、「[SAP HANA からの並列コピー](#parallel-copy-from-sap-hana)」セクションを参照してください。<br>指定できる値は、 **None**  (既定値)、 **PhysicalPartitionsOfTable**、**SapHanaDynamicRange** です。 詳細については、「[SAP HANA からの並列コピー](#parallel-copy-from-sap-hana)」セクションを参照してください。 `PhysicalPartitionsOfTable` は、クエリではなく、テーブルからデータをコピーする場合にのみ使用できます。 <br>パーティション オプションが有効になっている (つまり、`None` ではない) 場合、SAP HANA から同時にデータを読み込む並列処理の次数は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) の設定によって制御されます。 | False |
 | partitionSettings | データ パーティション分割の設定のグループを指定します。<br>パーティション オプションが `SapHanaDynamicRange` である場合に適用されます。 | False |
 | partitionColumnName | 並列コピーのパーティションによって使用されるソース列の名前を指定します。 指定されない場合は、テーブルのインデックスまたは主キーが自動検出され、パーティション列として使用されます。<br>パーティション オプションが  `SapHanaDynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で  `?AdfHanaDynamicRangePartitionCondition` をフックします。 「[SAP HANA からの並列コピー](#parallel-copy-from-sap-hana)」セクションにある例を参照してください。 | はい (`SapHanaDynamicRange` パーティションを使用する場合)。 |
 | packetSize | データを複数のブロックに分割するためのネットワーク パケット サイズ (KB 単位) を指定します。 大量のデータをコピーする場合、パケット サイズを大きくすると、ほとんどの場合、SAP HANA からの読み取り速度が向上する可能性があります。 パケット サイズを調整する場合は、パフォーマンス テストを行うことをお勧めします。 | いいえ。<br>既定値は 2,048 (2 MB)です。 |
@@ -233,7 +233,7 @@ Data Factory の SAP HANA コネクタは、SAP HANA からデータを並列で
 
 ![パーティションのオプションのスクリーンショット](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
 
-パーティション分割されたコピーを有効にすると、Data Factory によって SAP HANA ソースに対する並列クエリが実行され、パーティションごとにデータが取得されます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、Data Factory では、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリでは、SAP HANA からデータの一部を取得します。
+パーティション分割されたコピーを有効にすると、Data Factory によって SAP HANA ソースに対する並列クエリが実行され、パーティションごとにデータが取得されます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、Data Factory では、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリでは、SAP HANA からデータの一部を取得します。
 
 特に、SAP HANA から大量のデータを取り込む場合は、データのパーティション分割を使用した並列コピーを有効にすることをお勧めします。 さまざまなシナリオの推奨構成を以下に示します。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) ことをお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
 

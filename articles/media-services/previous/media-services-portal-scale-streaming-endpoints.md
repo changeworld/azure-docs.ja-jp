@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 23eb51428dcf4961febfb592bf957bb8beeeda57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40820170bae275f090c5f898387698fc562e59ae
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61463118"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985543"
 ---
 # <a name="scale-streaming-endpoints-with-the-azure-portal"></a>Azure ポータルを使用したストリーミング エンドポイントのスケール設定
 ## <a name="overview"></a>概要
@@ -33,7 +33,7 @@ ms.locfileid: "61463118"
  
 このトピックでは、ストリーミング エンドポイントを拡大縮小する方法を示します。
 
-料金設定の詳細については、「 [Azure 料金早見表](https://go.microsoft.com/fwlink/?LinkId=275107)」を参照してください。
+料金設定の詳細については、「 [Azure 料金早見表](https://azure.microsoft.com/pricing/details/media-services/)」を参照してください。
 
 ## <a name="scale-streaming-endpoints"></a>ストリーミング エンドポイントのスケール設定
 

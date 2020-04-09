@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 963b86852a7df557ad7179e444e7c3a2692f57d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a14f4d548053fb7aaf6f450176fdc49bc7b119bf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531454"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421032"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>コピー アクティビティのパフォーマンスのトラブルシューティング
 
@@ -88,7 +88,7 @@ ms.locfileid: "79531454"
 
   - コピー ソースとシンク パターンを確認します。 
 
-    - コピー パターンが 4 つを超えるデータ統合ユニット (DIU) をサポートしている場合、詳細については[このセクション](copy-activity-performance.md#data-integration-units) を参照してください。通常、DIU を増やしてパフォーマンスを向上させることができます。 
+    - コピー パターンが 4 つを超えるデータ統合ユニット (DIU) をサポートしている場合、詳細については[このセクション](copy-activity-performance-features.md#data-integration-units) を参照してください。通常、DIU を増やしてパフォーマンスを向上させることができます。 
 
     - それ以外の場合は、単一の大きなデータ セットをいくつかの小さいデータ セットに分割し、それらのコピー ジョブをデータの各部分の処理と同時に実行することを検討してください。 これは、Lookup/GetMetadata + ForEach + Copy を使用して行うことができます。 詳細については、「[複数のコンテナーからのファイルのコピー](solution-template-copy-files-multiple-containers.md)」、「[Amazon S3 から ADLS Gen2 にデータを移行する](solution-template-migration-s3-azure.md)」、または「一般例として[管理テーブル ソリューションテンプレートを使用して一括コピーする](solution-template-bulk-copy-with-control-table.md)」を参照してください。
 
@@ -102,7 +102,7 @@ ms.locfileid: "79531454"
 
   - コピー ソースとシンク パターンを確認します。 
 
-    - コピー パターンが 4 つを超えるデータ統合ユニット (DIU) をサポートしている場合、詳細については[このセクション](copy-activity-performance.md#data-integration-units) を参照してください。通常、DIU を増やしてパフォーマンスを向上させることができます。 
+    - コピー パターンが 4 つを超えるデータ統合ユニット (DIU) をサポートしている場合、詳細については[このセクション](copy-activity-performance-features.md#data-integration-units) を参照してください。通常、DIU を増やしてパフォーマンスを向上させることができます。 
 
     - それ以外の場合は、 [並列コピー](copy-activity-performance-features.md) を段階的に調整します。並列コピーの数が多すぎると、パフォーマンスが低下する可能性があることに注意してください。
 

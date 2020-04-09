@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 30696c5dcb3353ea468aa78dbc107dae4d292edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dfc6793bba473c4046863937baa292dde7bf421
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334440"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478693"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Azure Maps Mobility Service のデータ構造
 
@@ -31,13 +31,13 @@ Mobility Service データは、サポートされている都市圏によって
 
 ## <a name="stop-ids"></a>停留所 ID
 
-輸送機関の停留所は、[General Transit Feed Specification (GTFS)](https://gtfs.org/) ID と Azure Maps の停留所 ID の 2 種類の ID で参照できます。 GTFS ID は stopKey と呼ばれ、Azure Maps の停留所 ID は stopID と呼ばれます。 輸送機関の停留所を頻繁に参照する場合は、Azure Maps の停留所 ID を使用することをお勧めします。 stopID はより静的なものであり、物理的な停留所が存在する限り同じままです。 GTFS の停留所 ID は、より頻繁に更新されます。 たとえば、GTFS の停留所 ID は、GTFS プロバイダーの要求ごとに更新されることも、新しい GTFS のバージョンがリリースされたときに更新されることもあります。 物理的な停留所が変更されていなくても、GTFS の停留所 ID は変更される可能性があります。
+輸送機関の停留所は、[General Transit Feed Specification (GTFS)](http://gtfs.org/) ID と Azure Maps の停留所 ID の 2 種類の ID で参照できます。 GTFS ID は stopKey と呼ばれ、Azure Maps の停留所 ID は stopID と呼ばれます。 輸送機関の停留所を頻繁に参照する場合は、Azure Maps の停留所 ID を使用することをお勧めします。 stopID はより静的なものであり、物理的な停留所が存在する限り同じままです。 GTFS の停留所 ID は、より頻繁に更新されます。 たとえば、GTFS の停留所 ID は、GTFS プロバイダーの要求ごとに更新されることも、新しい GTFS のバージョンがリリースされたときに更新されることもあります。 物理的な停留所が変更されていなくても、GTFS の停留所 ID は変更される可能性があります。
 
 始めに、[Get Nearby Transit API](https://aka.ms/AzureMapsMobilityNearbyTransit) を使用して近くの輸送機関の停留所を要求できます。
 
 ## <a name="line-groups-and-lines"></a>路線グループと路線
 
-Mobility Service では、路線と路線グループに並列データ モデルを使用しています。 このモデルは、[GTFS](https://gtfs.org/) ルートから継承された変更と、乗車データをより適切に処理するために使用されます。
+Mobility Service では、路線と路線グループに並列データ モデルを使用しています。 このモデルは、[GTFS](http://gtfs.org/) ルートから継承された変更と、乗車データをより適切に処理するために使用されます。
 
 
 ### <a name="line-groups"></a>路線グループ

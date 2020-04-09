@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: bharathb
-ms.openlocfilehash: 9111193bb441487b9e3c49bc9ee1a296d49f8a31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34698a215477abdd7d68c3dfe050657ecf049690
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72882387"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984897"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>オンプレミスまたはクラウドのデータを Azure Cosmos DB に移行するためのオプション
 
@@ -38,7 +38,7 @@ ms.locfileid: "72882387"
 |オフライン|[Azure Cosmos DB Spark コネクタ](https://docs.microsoft.com/azure/cosmos-db/spark-connector)|&bull; Azure Cosmos DB Bulk Executor ライブラリを使用します <br/>&bull; 大規模なデータセットに適しています <br/>&bull; カスタム Spark セットアップが必要です <br/>&bull; Spark ではスキーマの不整合に注意を要し、移行中、問題になることがあります |
 |オフライン|[カスタム ツールと Cosmos DB Bulk Executor ライブラリ](https://docs.microsoft.com/azure/cosmos-db/migrate-cosmosdb-data)|&bull; 移行の回復性を向上させるチェックポイント機能や配信不能機能を提供します <br/>&bull; 非常に大規模なデータセット (10 TB 以上) に適しています  <br/>&bull; App Service として実行するこのツールのカスタム セットアップが必要になります |
 |オンライン|[Cosmos DB Functions + ChangeFeed API](https://docs.microsoft.com/azure/cosmos-db/change-feed-functions)|&bull; セットアップが簡単 <br/>&bull; 移行元が Azure Cosmos DB コンテナーの場合にのみ動作します <br/>&bull; 大規模なデータセットには適していません <br/>&bull; 移行元コンテナーからの削除をキャプチャすることはありません |
-|オンライン|[ChangeFeed を利用したカスタム移行サービス](https://aka.ms/CosmosDBMigrationSample)|&bull; 進捗状況を追跡します <br/>&bull; 移行元が Azure Cosmos DB コンテナーの場合にのみ動作します <br/>&bull; 大規模なデータセットでも機能します <br/>&bull; ChangeFeed プロセッサをホストする目的で App Service を設定することがユーザーに求められます <br/>&bull; 移行元コンテナーからの削除をキャプチャすることはありません|
+|オンライン|[ChangeFeed を利用したカスタム移行サービス](https://github.com/nomiero/CosmosDBLiveETLSample)|&bull; 進捗状況を追跡します <br/>&bull; 移行元が Azure Cosmos DB コンテナーの場合にのみ動作します <br/>&bull; 大規模なデータセットでも機能します <br/>&bull; ChangeFeed プロセッサをホストする目的で App Service を設定することがユーザーに求められます <br/>&bull; 移行元コンテナーからの削除をキャプチャすることはありません|
 |オンライン|[Striim](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-sql-api-migrate-data-striim)|&bull; Oracle、DB2、SQL Server などのさまざまなソースで動作します <br/>&bull; ETL パイプラインの構築が簡単で、監視用のダッシュボードを提供します <br/>&bull; 大規模なデータセットをサポートします <br/>&bull; これはサードパーティ製のツールであるため、マーケットプレースから購入し、ユーザーの環境にインストールする必要があります|
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Azure Cosmos DB Mongo API
