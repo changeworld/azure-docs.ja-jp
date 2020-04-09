@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 3115c65c7027f5624b7b60b9be702ee4192d8cb6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 857a4da0b24d600ecc572933af578e2e8faf501a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464451"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366321"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -155,7 +155,7 @@ Windows の自動更新では、複数のクラスター ノードが同時に�
 
 ニーズに合わせて POA の動作を構成することができます。 アプリケーションを作成または更新するときにアプリケーション パラメーターを渡して、既定値をオーバーライドします。 `Start-ServiceFabricApplicationUpgrade` または `New-ServiceFabricApplication` コマンドレットに `ApplicationParameter` を指定することで、アプリケーション パラメーターを指定できます。
 
-| パラメーター        | 種類                          | 詳細 |
+| パラメーター        | Type                          | 詳細 |
 |:-|-|-|
 |MaxResultsToCache    |Long                              | キャッシュする必要がある Windows Update の結果の最大数。 <br><br>既定値は 3000 で、以下が前提となります。 <br> &nbsp;&nbsp;- ノード数が 20 である。 <br> &nbsp;&nbsp;- 月あたりのノードの更新数が 5 である。 <br> &nbsp;&nbsp;- 操作あたりの結果の数を 10 にできる。 <br> &nbsp;&nbsp;- 過去 3 か月の結果を格納する必要がある。 |
 |TaskApprovalPolicy   |列挙型 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy は、コーディネーター サービスが、Service Fabric クラスター ノードに Windows Update をインストールする際に使用するポリシーを示しています。<br><br>使用できる値は、次のとおりです。 <br>*NodeWise*:Windows 更新プログラムは、一度に 1 つのノードにインストールされます。 <br> *UpgradeDomainWise*:Windows 更新プログラムは、一度に 1 つの更新ドメインにインストールされます (最大で、更新ドメインに属するすべてのノードに Windows 更新プログラムを適用できます)。<br><br> [FAQ](#frequently-asked-questions) に関するセクションを参照してください。これは、クラスターに最適なポリシーを決定するのに役立ちます。
@@ -432,6 +432,10 @@ A:結果の JSON を照会し、すべてのノードの更新サイクルに入
 **Q:POA でノードに修正プログラムを適用するときに、そのノードを無効にする必要があるのはなぜですか?**
 
 A:POA では、ノード上で実行されているすべての Service Fabric サービスを停止または再割り当てする、*再起動*の意図でノードを無効にします。 POA ではこれを行って、アプリケーションで新規および古い DLL を組み合わせて使用することにならないようにします。したがって、ノードを無効にせずに修正プログラムを適用することはお勧めできません。
+
+**Q:POA を使用して更新できるノードの最大数はどれだけですか?**
+
+A:POA では、Service Fabric Repair Manager を使用して、更新のためのノードの修復タスクを作成します。 ただし、一度に存在できる修復タスクは 250 個だけです。 現在、POA では各ノードの修復タスクを同時に作成するため、クラスター内の 250 ノードしか更新できません。 
 
 ## <a name="disclaimers"></a>免責事項
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60194944"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Azure Stream Analytics を使用した Azure Storage Blob から Azure Data Lake Storage Gen1 へのデータ ストリーム
@@ -38,7 +38,7 @@ ms.locfileid: "60194944"
 
 2. 左側のウィンドウで、 **[Stream Analytics ジョブ]** をクリックし、 **[追加]** をクリックします。
 
-    ![Stream Analytics ジョブの作成](./media/data-lake-store-stream-analytics/create.job.png "Stream Analytics ジョブの作成")
+    ![Stream Analytics ジョブの作成](./media/data-lake-store-stream-analytics/create.job.png "Stream Analytics のジョブの作成")
 
     > [!NOTE]
     > ストレージ アカウントと同じリージョンにジョブを作成していることを確認してください。そうでない場合、リージョン間でのデータ転送で追加料金が発生します。
@@ -48,11 +48,11 @@ ms.locfileid: "60194944"
 
 1. Stream Analytics ジョブのページを開き、左側のウィンドウで **[入力]** タブをクリックし、 **[追加]** をクリックします。
 
-    ![ジョブへの入力の追加](./media/data-lake-store-stream-analytics/create.input.1.png "ジョブへの入力の追加")
+    ![ジョブへの入力の追加](./media/data-lake-store-stream-analytics/create.input.1.png "入力をジョブに追加")
 
 2. **[新しい入力]** ブレードで、次の値を指定します。
 
-    ![ジョブへの入力の追加](./media/data-lake-store-stream-analytics/create.input.2.png "ジョブへの入力の追加")
+    ![ジョブへの入力の追加](./media/data-lake-store-stream-analytics/create.input.2.png "入力をジョブに追加")
 
    * **[入力のエイリアス]** で、このジョブ入力の一意の名前を入力します。
    * **[ソースの種類]** で、 **[データ ストリーム]** を選択します。
@@ -71,18 +71,18 @@ ms.locfileid: "60194944"
 
 1. Stream Analytics ジョブのページを開き、 **[出力]** タブをクリックしてから **[追加]** をクリックし、 **[Data Lake Storage Gen1]** を選択します。
 
-    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.1.png "ジョブへの出力の追加")
+    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.1.png "出力をジョブに追加")
 
 2. **[新しい出力]** ブレードで、次の値を指定します。
 
-    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.2.png "ジョブへの出力の追加")
+    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.2.png "出力をジョブに追加")
 
     * **[出力のエイリアス]** で、このジョブ出力の一意名を入力します。 クエリの出力をこの Data Lake Storage Gen1 アカウントに出力するためにクエリで使用されるわかりやすい名前です。
     * Data Lake Storage Gen1 アカウントへのアクセスを承認することを求められます。 **[承認]** をクリックします。
 
 3. **[新しい出力]** ブレードで、引き続き次の値を指定します。
 
-    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.3.png "ジョブへの出力の追加")
+    ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.3.png "出力をジョブに追加")
 
    * **[アカウント名]** で、ジョブ出力の送信先として作成済みの Data Lake Storage Gen1 アカウントを選択します。
    * **[パス プレフィックスのパターン]** で、指定した Data Lake Storage Gen1 アカウント内にファイルを書き込むために使用するファイル パスを入力します。
@@ -98,7 +98,7 @@ ms.locfileid: "60194944"
 
 1. Stream Analytics ジョブを実行するには、 **[クエリ]** タブからクエリを実行する必要があります。このチュートリアルでは、次の画面キャプチャに示すように、プレースホルダーをジョブの入力および出力エイリアスで置き換えて、サンプル クエリを実行することができます。
 
-    ![クエリの実行](./media/data-lake-store-stream-analytics/run.query.png "クエリの実行")
+    ![クエリの実行](./media/data-lake-store-stream-analytics/run.query.png "Run query")
 
 2. 画面上部の **保存** をクリックした後、**概要** タブで **開始** をクリックします。 ダイアログ ボックスで **[ユーザー設定時刻]** を選択し、現在の日付と時刻を設定します。
 

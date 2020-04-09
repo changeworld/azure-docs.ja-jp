@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 04/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 7affd408ce2471f34a8362ba32101b639aafc514
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: c4e7566eeb28bc5709acd60ced9fcdffb7e8a725
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586609"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668002"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -70,11 +70,62 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
 
 * Azure NetApp Files の委任されたサブネットは、すべてのローカルおよびリモート ドメイン コントローラーを含め、ドメイン内のすべての Active Directory Domain Services (ADDS) ドメイン コントローラーに接続できる必要があります。 そうでない場合、サービスの中断が発生する可能性があります。  
 
-    Azure NetApp Files の委任されたサブネット経由で到達できないドメイン コントローラーがある場合は、Active Directory 接続の作成中に Active Directory サイトを指定できます。  Azure NetApp Files は、Azure NetApp Files の委任されたサブネットのアドレス空間が存在するサイト内のドメイン コントローラーとのみ通信する必要があります。
+    Azure NetApp Files の委任されたサブネットで到達できないドメイン コントローラーがある場合は、Active Directory 接続の作成中に Active Directory サイトを指定できます。  Azure NetApp Files は、Azure NetApp Files の委任されたサブネットのアドレス空間が存在するサイト内のドメイン コントローラーとのみ通信する必要があります。
 
     AD サイトとサービスに関する「[サイト トポロジの設計](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)」を参照してください。 
     
+<!--
+* Azure NetApp Files supports DES, Kerberos AES 128, and Kerberos AES 256 encryption types (from the least secure to the most secure). The user credentials used to join Active Directory must have the highest corresponding account option enabled that matches the capabilities enabled for your Active Directory.   
+
+    For example, if your Active Directory has only the AES-128 capability, you must enable the AES-128 account option for the user credentials. If your Active Directory has the AES-256 capability, you must enable the AES-256 account option (which also supports AES-128). If your Active Directory does not have any Kerberos encryption capability, Azure NetApp Files uses DES by default.  
+
+    You can enable the account options in the properties of the Active Directory Users and Computers MMC console:   
+
+    ![Active Directory Users and Computers MMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
+-->
+
 その他の AD 情報については、Azure NetApp Files の「[SMB に関する FAQ](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)」を参照してください。 
+
+## <a name="decide-which-domain-services-to-use"></a>使用するドメイン サービスを決定する 
+
+Azure NetApp Files では、AD 接続用に [Active Directory Domain Services](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (ADDS) と Azure Active Directory Domain Services (AADDS) の両方がサポートされています。  AD 接続を作成する前に、ADDS と AADDS のどちらを使用するかを決定する必要があります。  
+
+詳しくは、「[自己管理型の Active Directory Domain Services、Azure Active Directory、およびマネージド Azure Active Directory Domain Services の比較](https://docs.microsoft.com/azure/active-directory-domain-services/compare-identity-solutions)」を参照してください。 
+
+### <a name="active-directory-domain-services"></a>Active Directory Domain Services
+
+Azure NetApp Files では、 [[Active Directory サイトとサービス]](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) の任意のスコープを使用できます。 このオプションを使用すると、[Azure NetApp Files によってアクセス可能な](azure-netapp-files-network-topologies.md) Active Directory Domain Services (ADDS) ドメイン コントローラーに対する読み取りと書き込みが可能になります。 また、指定された [Active Directory サイトとサービス] サイトに存在しないドメイン コントローラーとサービスが通信できなくなります。 
+
+ADDS の使用時にサイト名を確認するには、Active Directory Domain Services を担当する組織内の管理グループに問い合わせてください。 次の例は、サイト名が表示されている [Active Directory サイトとサービス] プラグインを示しています。 
+
+![Active Directory サイトとサービス](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-and-services.png)
+
+Azure NetApp Files の AD 接続を構成するときに、 **[AD サイト名]** フィールドのスコープにサイト名を指定します。
+
+### <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 
+
+Azure Active Directory Domain Services (AADDS) の構成とガイダンスについては、「[Azure AD Domain Services のドキュメント](https://docs.microsoft.com/azure/active-directory-domain-services/)」を参照してください。
+
+Azure NetApp Files では、以下の追加の考慮事項が適用されます。 
+
+* AADDS がデプロイされている VNet またはサブネットが、Azure NetApp Files デプロイと同じ Azure リージョンにあることを確認してください。
+* Azure NetApp Files がデプロイされているリージョンで別の VNet を使用する場合は、2 つの VNet 間のピアリングを作成する必要があります。
+* Azure NetApp Files では、`user` と `resource forest` の種類がサポートされています。
+* 同期の種類では、`All` または `Scoped` を選択できます。   
+    `Scoped` を選択した場合、SMB 共有にアクセスするための正しい Azure AD グループが選択されていることを確認してください。  不明な場合は、`All` の同期の種類を使用できます。
+* Enterprise または Premium SKU を使用する必要があります。 Standard SKU はサポートされていません。
+
+Active Directory 接続を作成する場合は、次のような AADDS の詳細を確認してください。
+
+* AADDS メニューで **プライマリ DNS**、**セカンダリ DNS**、**AD DNS ドメイン名**の情報を確認できます。  
+DNS サーバーでは、Active Directory 接続を構成する際に 2 つの IP アドレスが使用されます。 
+* **組織単位パス**は `OU=AADDC Computers` です。  
+この設定は、 **[NetApp アカウント]** の下の **[Active Directory 接続]** で構成されます。
+
+  ![組織単位パス](../media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
+
+* **[ユーザー名]** 資格情報には、Azure AD グループの **Azure AD DC 管理者**のメンバーである任意のユーザーを設定できます。
+
 
 ## <a name="create-an-active-directory-connection"></a>Active Directory 接続を作成する
 
@@ -82,7 +133,9 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
 
     ![Active Directory 接続](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
 
-2. [Active Directory に参加します] ウィンドウで、次の情報を指定します。
+2. [Active Directory に参加します] ウィンドウで、使用するドメイン サービスに基づいて、次の情報を指定します。  
+
+    使用するドメイン サービスに固有の情報については、「[使用するドメイン サービスを決定する](#decide-which-domain-services-to-use)」を参照してください。 
 
     * **プライマリ DNS**  
         これは、Active Directory ドメイン参加と SMB 認証操作に必要な DNS です。 
@@ -151,7 +204,7 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
         ボリュームで使用するサブネットを指定します。  
         指定するサブネットは Azure NetApp Files に委任されている必要があります。 
         
-        サブネットを委任していない場合は、[Create a Volume]\(ボリュームの作成) ページで **[新規作成]** をクリックできます。 次に、[サブネットの作成] ページでサブネットの情報を指定し、 **[Microsoft.NetApp/volumes]** を選択してサブネットを Azure NetApp Files に委任します。 各 VNet で、1 つのサブネットだけを Azure NetApp Files に委任できます。   
+        サブネットを委任していない場合は、[ボリュームの作成] ページで **[新規作成]** をクリックできます。 次に、[サブネットの作成] ページでサブネットの情報を指定し、 **[Microsoft.NetApp/volumes]** を選択してサブネットを Azure NetApp Files に委任します。 各 VNet で、1 つのサブネットだけを Azure NetApp Files に委任できます。   
  
         ![ボリュームを作成する](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     

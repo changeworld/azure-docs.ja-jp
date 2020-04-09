@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 50552b87fad9d8f58ff8c48dc03463d4c901bf99
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/30/2020
+ms.openlocfilehash: 59b8753007c3b9130c397dda30c571580cbb5326
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775947"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411085"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Azure Database for MySQL でパフォーマンスのチューニングとデータベースのメンテナンスに sys_schema を使用する方法
 
@@ -29,7 +29,7 @@ sys_schema には 52 個のビューがあり、各ビューには次のいず�
 - ユーザー:消費され、ユーザーごとにグループ化されたリソース。 ファイル I/O、接続、メモリなどです。
 - wait: ホストまたはユーザーごとにグループ化された待機イベント。
 
-次に、sys_schema の一般的な使用パターンについて説明します。 まず、使用パターンを**パフォーマンスのチューニング**と**データベース メンテナンス**の 2 つのカテゴリにグループ化します。
+では、sys_schema の一般的な使用パターンをいくつか見てみましょう。 まず、使用パターンを**パフォーマンスのチューニング**と**データベース メンテナンス**の 2 つのカテゴリにグループ化します。
 
 ## <a name="performance-tuning"></a>パフォーマンスのチューニング
 
@@ -55,11 +55,14 @@ Azure Database for MySQL ではストレージに応じて IO が増減するの
 
 ![ステートメントごとの概要](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
 
-この例の Azure Database for MySQL は、クエリ ログを 44579 回フラッシュするのに 53 分かかっています。 長い時間と多くの IO です。 Azure Portal で低速のクエリ ログを無効にするか、低速のクエリ ログの頻度を減らすことにより、このアクティビティを削減できます。
+この例の Azure Database for MySQL は、クエリ ログを 44579 回フラッシュするのに 53 分かかっています。 それは、長い時間と多数の IO です。 Azure Portal で低速のクエリ ログを無効にするか、低速のクエリ ログの頻度を減らすことにより、このアクティビティを削減できます。
 
 ## <a name="database-maintenance"></a>データベース メンテナンス
 
 ### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
+
+[!IMPORTANT]
+> このビューにクエリを実行すると、パフォーマンスに影響する場合があります。 このトラブルシューティングは、ピーク時以外の営業時間に実行することをお勧めします。
 
 InnoDB バッファー プールはメモリ内に存在し、DBMS とストレージの間の主なキャッシュ メカニズムです。 InnoDB バッファー プールのサイズはパフォーマンス レベルに関連付けられており、別の製品 SKU を選ばない限り変更できません。 オペレーティング システムのメモリと同様に、古いページはスワップ アウトされて新しいデータのための領域が確保されます。 InnoDB バッファー プールのメモリを最も多く消費しているテーブルを調べるには、*sys.innodb_buffer_stats_by_table* ビューのクエリを行います。
 
@@ -79,5 +82,5 @@ InnoDB バッファー プールはメモリ内に存在し、DBMS とストレ�
 
 まとめると、sys_schema はパフォーマンスのチューニングとデータベースのメンテナンスの両方に対して優れたツールです。 お使いの Azure Database for MySQL でこの機能を活用してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 最も気になる質問への回答を探したり、新しい質問/回答を投稿したりするには、[MSDN フォーラム](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql) をご覧ください。

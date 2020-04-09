@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 3e25f55d82ba146f9076e38faf1e399c5228d947
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 9fbf55fbe16d958bf10541894159dade26668bef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080389"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336725"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -53,7 +53,7 @@ ms.locfileid: "79080389"
 
 ## <a name="unabletoconnecttoserver"></a>"UnableToConnectToServer"
 
-この接続エラーを受け取る場合、vCenter Server <*サーバー名*>.com:9443 に接続できない可能性があります。 エラーの詳細では、 https://<*サーバー名*>.com:9443/sdk でリッスンしているエンドポイントで、メッセージを受け入れることができるものがないことが示されています。
+この接続エラーを受け取る場合、vCenter Server <*サーバー名*>.com:9443 に接続できない可能性があります。 エラーの詳細では、`https://\*servername*.com:9443/sdk` でリッスンしているエンドポイントで、メッセージを受け入れることができるものがないことが示されています。
 
 - 最新バージョンのアプライアンスを実行しているかどうかを確認します。 そうでない場合は、アプライアンスを[最新バージョン](https://docs.microsoft.com/azure/migrate/concepts-collector)にアップグレードします。
 - 最新バージョンでも引き続き問題が発生する場合は、指定された vCenter Server 名をアプライアンスで解決できないか、または指定されたポートが間違っている可能性があります。 ポートが指定されていない場合、コレクターでは既定でポート番号 443 への接続が試みられます。
@@ -120,7 +120,7 @@ ms.locfileid: "79080389"
 これがうまくいかず、VMware サーバーを検出している場合は、次を実行してください。
 
 - 指定した vCenter アカウントに、少なくとも 1 つの VM にアクセスできるアクセス許可が正しく設定されていることを確認してください。
-- vCenter アカウントに VM フォルダー レベルでアクセス権が付与されている場合、Azure Migrate は VMware VM を検出できません。 検出のスコープ設定についての[詳細をご覧ください](tutorial-assess-vmware.md#set-the-scope-of-discovery)。
+- vCenter アカウントに VM フォルダー レベルでアクセス権が付与されている場合、Azure Migrate は VMware VM を検出できません。 検出のスコープ設定についての[詳細をご覧ください](set-discovery-scope.md)。
 
 ## <a name="vm-data-not-in-portal"></a>VM データがポータルにない
 

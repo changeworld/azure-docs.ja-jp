@@ -14,16 +14,16 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f690d23ac4d8c452d731c2f6fd4ae67dc281639
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 20ec1d1909a53a9de29e12be33957acfd1643698
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805518"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128821"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでのライセンスの割り当てと削除
 
-多くの Azure Active Directory (Azure AD) サービスでは、ユーザーまたはグループ (および関連するメンバー) ごとにそのサービスのライセンスを付与する必要があります。 アクティブなライセンスを持つユーザーのみが、該当するライセンスされている Azure AD サービスにアクセスおよび使用できるようになります。
+多くの Azure Active Directory (Azure AD) サービスでは、ユーザーまたはグループ (および関連するメンバー) ごとにそのサービスのライセンスを付与する必要があります。 アクティブなライセンスを持つユーザーのみが、該当するライセンスされている Azure AD サービスにアクセスおよび使用できるようになります。 ライセンスはテナントごとに適用され、他のテナントには転送されません。 
 
 ## <a name="available-license-plans"></a>使用可能なライセンス プラン
 
@@ -136,8 +136,11 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 1. **[ライセンスを削除する]** を選択します。
 
     ![[ライセンスを削除する] が強調表示されている [ライセンスされているグループ] ページ](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+    
+    > [!NOTE]
+    > Azure AD と同期しているオンプレミスのユーザー アカウントが同期の対象外になった場合、または同期が削除された場合、ユーザーは Azure AD で論理的に削除されます。 この場合、ユーザーに直接、またはグループ ベースのライセンスを介して割り当てられたライセンスは、**削除済み**ではなく**保留中**としてマークされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ライセンスを割り当てた後、次のプロセスを実行できます。
 
@@ -147,4 +150,4 @@ Azure AD サービスには、次のようないくつかのライセンス プ�
 
 - [Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題](../users-groups-roles/licensing-group-advanced.md)
 
-- [ユーザー プロファイル情報の追加または変更](active-directory-users-profile-azure-portal.md)
+- [プロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)

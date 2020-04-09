@@ -3,12 +3,12 @@ title: Azure VM 上のバックアップされた SAP HANA データベースを
 description: この記事では、Azure 仮想マシン上で実行されている SAP HANA データベースを管理および監視するための一般的なタスクについて説明します。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: a9462f8608fc5ae35255ac321a0742b3f1834fde
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89fd7f23163d301817e767771257d9bc6f4ed526
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390623"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480064"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>バックアップされた SAP HANA データベースを管理および監視する
 
@@ -32,7 +32,7 @@ Azure Backup では、手動でトリガーされたすべてのジョブが Azu
 
 アラートは、SAP HANA データベースのバックアップを監視するための簡単な手段です。 アラートは、バックアップによって生成される多数のイベントに惑わされることなく、最も関心があるイベントに焦点を絞るために役立ちます。 Azure Backup ではアラートを設定することができ、それを次のように監視できます。
 
-* [Azure portal](https://portal.azure.com/) にサインインする
+* [Azure portal](https://portal.azure.com/) にサインインします。
 * コンテナー ダッシュボードで、 **[バックアップ アラート]** を選択します。
 
   ![コンテナー ダッシュボードの [バックアップ アラート]](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -57,7 +57,7 @@ Azure Backup では現在、アラートを電子メール経由で送信でき�
 
 Azure Backup では、サポートされる管理操作が豊富なため、バックアップされた SAP HANA データベースの管理が簡単になります。 以降のセクションでは、これらの操作について詳細に説明します。
 
-### <a name="run-an-ad-hoc-backup"></a>アドホック バックアップの実行
+### <a name="run-an-on-demand-backup"></a>オンデマンド バックアップを実行する
 
 バックアップは、ポリシー スケジュールに従って実行されます。 次のように、バックアップ オンデマンを実行できます。
 
@@ -65,6 +65,16 @@ Azure Backup では、サポートされる管理操作が豊富なため、バ�
 2. **[バックアップ項目]** で、SAP HANA データベースを実行している VM を選択し、 **[今すぐバックアップ]** をクリックします。
 3. **[今すぐバックアップ]** で、カレンダー コントロールを使用して復旧ポイントを保持する最終日を選択します。 次に、 **[OK]** をクリックします
 4. ポータルの通知を監視します。 コンテナー ダッシュボードの **[バックアップ ジョブ]**  >  **[進行中]** でジョブの進行状況を監視できます。 データベースのサイズによっては、最初のバックアップの作成に時間がかかる場合があります。
+
+### <a name="hana-native-client-integration"></a>HANA ネイティブ クライアントの統合
+
+すべての HANA ネイティブ クライアントからトリガーされたオンデマンドの完全バックアップが、 **[バックアップ項目]** ページに完全バックアップとして表示されるようになりました。
+
+![最後に実行されたバックアップ](./media/sap-hana-db-manage/last-backups.png)
+
+これらのアドホックの完全バックアップは、復元のための復元ポイント一覧にも表示されます。
+
+![復元ポイントの一覧](./media/sap-hana-db-manage/list-restore-points.png)
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Azure Backup が有効になっているデータベースで SAP HANA ネイティブ クライアント バックアップを実行する
 
@@ -112,6 +122,37 @@ SAP HANA バックアップ項目のための、基になるポリシーを変�
 > 保持期間の変更は、新しい復旧ポイントだけでなく古い復旧ポイントすべてにもさかのぼって適用されます。
 >
 > SAP HANA データベースには増分バックアップ ポリシーを使用できません。 増分バックアップは現在、これらのデータベースではサポートされていません。
+
+### <a name="modify-policy"></a>ポリシーの変更
+
+バックアップの種類、頻度、保有期間の範囲を変更するには、ポリシーを変更します。
+
+>[!NOTE]
+>保有期間の変更は、新しい復旧ポイントだけでなく、すべての古いものにもさかのぼって適用されます。
+
+1. コンテナーのダッシュボードで、 **[管理] > [バックアップ ポリシー]** に移動し、編集するポリシーを選択します。
+
+   ![編集するポリシーを選択する](./media/sap-hana-db-manage/manage-backup-policies.png)
+
+1. **[変更]** を選択します。
+
+   ![[変更] を選択する](./media/sap-hana-db-manage/modify-policy.png)
+
+1. バックアップの種類の頻度を選択します。
+
+   ![バックアップの頻度を選択する](./media/sap-hana-db-manage/choose-frequency.png)
+
+ポリシーの変更は、関連するすべてのバックアップ項目に影響し、対応する**保護の構成**ジョブをトリガーします。
+
+### <a name="inconsistent-policy"></a>不整合なポリシー
+
+場合によっては、ポリシーの変更操作によって、一部のバックアップ項目に**不整合な**ポリシーのバージョンができてしまうことがあります。 これは、ポリシーの変更操作がトリガーされた後に、対応する**保護の構成**ジョブがバックアップ項目に対して失敗した場合に発生します。 バックアップ項目のビューには、次のように表示されます。
+
+![不整合なポリシー](./media/sap-hana-db-manage/inconsistent-policy.png)
+
+次のように、1 回のクリックで、影響を受けるすべての項目のポリシー バージョンを修正できます。
+
+![ポリシーのバージョンを修正する](./media/sap-hana-db-manage/fix-policy-version.png)
 
 ### <a name="stop-protection-for-an-sap-hana-database"></a>SAP HANA データベースの保護を停止する
 
@@ -167,7 +208,7 @@ SAP HANA データベースの保護を再開するには:
 
 [アップグレードの後に SID がまだ変更されていない](backup-azure-sap-hana-database-troubleshoot.md#upgrading-without-an-sid-change) SAP HANA データベースのバックアップを続行する方法について学習してください。
 
-### <a name="unregister-an-sap-hana-database"></a>SAP HANA データベースを登録解除する
+### <a name="unregister-an-sap-hana-instance"></a>SAP HANA インスタンスを登録解除する
 
 SAP HANA インスタンスの登録解除は、保護を無効にした後、コンテナーを削除する前に行います。
 
@@ -184,6 +225,12 @@ SAP HANA インスタンスの登録解除は、保護を無効にした後、�
 * 保護されたインスタンスを右クリックし、 **[登録解除]** を選択します。
 
    ![[登録解除] を選択する](./media/sap-hana-db-manage/unregister.png)
+
+### <a name="re-register-extension-on-the-sap-hana-server-vm"></a>SAP HANA サーバー VM の拡張機能を再登録する
+
+VM のワークロード拡張機能が何らかの理由で影響を受けることがあります。 そのような場合、VM 上でトリガーされるすべての操作が失敗するようになります。 そこで、場合によっては、VM で拡張を再登録する必要があります。 再登録操作によって、操作を続行させるために、VM にワークロード バックアップ拡張機能が再インストールされます。
+
+このオプションは注意して使用してください。既に正常な拡張機能がある VM でこの操作がトリガーされると、拡張機能が再起動されます。 それにより、進行中のジョブがすべて失敗することがあります。 再登録操作をトリガーする前に、[こちらの兆候](backup-azure-sap-hana-database-troubleshoot.md#re-registration-failures)がないか確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

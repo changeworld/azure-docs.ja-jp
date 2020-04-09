@@ -3,12 +3,12 @@ title: 新しい Azure Application Insights リソースの作成 | Microsoft Do
 description: 新しいライブ アプリケーションを対象にした Application Insights 監視を手動でセットアップします。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 090c983dcca101557f8dec479d1267275d24908b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: c1b3a6920723ad59b714cce4bd69e1b95fe1995f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672040"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132422"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 
@@ -24,7 +24,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![左上隅にある + 記号をクリックします。 開発者ツールを選択し、Application Insights を選択する](./media/create-new-resource/new-app-insights.png)
 
-   | 設定        |  Value           | 説明  |
+   | 設定        |  値           | 説明  |
    | ------------- |:-------------|:-----|
    | **名前**      | 一意の値 | 監視しているアプリを識別する名前。 |
    | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループまたは既存のリソース グループの名前。 |
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="copy-the-instrumentation-key"></a>インストルメンテーション キーのコピー
 
-インストルメンテーション キーにより、利用統計情報と関連付けるリソースが識別されます。 インストルメンテーション キーをコピーしてアプリケーションのコードに追加する必要があります。
+インストルメンテーション キーにより、利用統計情報と関連付けるリソースが識別されます。 インストルメンテーション キーをコピーして、アプリケーションのコードに追加する必要があります。
 
 ![インストルメンテーション キーをクリックしてコピーする](./media/create-new-resource/instrumentation-key.png)
 
@@ -69,7 +69,7 @@ New-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Locat
 ```powershell
 New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location eastus
 ```
-#### <a name="results"></a>[結果]
+#### <a name="results"></a>結果
 
 ```powershell
 Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/microsoft.insights/components/test1027
@@ -121,7 +121,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location westus2 --kind web -g demoRg --application-type web
 ```
 
-#### <a name="results"></a>[結果]
+#### <a name="results"></a>結果
 
 ```azurecli
 az monitor app-insights component create --app demoApp --location eastus --kind web -g demoApp  --application-type web

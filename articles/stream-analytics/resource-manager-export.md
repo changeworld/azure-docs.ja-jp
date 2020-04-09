@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 52ea7b45d0dcdb3ae16b8212557ba6ab3344ff15
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78968937"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Azure Stream Analytics ジョブの Azure Resource Manager テンプレートをエクスポートする
@@ -38,7 +38,7 @@ Visual Studio Code を使用した Stream Analytics ジョブの管理の詳細�
 
    ![Visual Studio Code の Transformation.asaql ファイル](./media/resource-manager-export/transformation-asaql.png)
 
-1. *Transformation.asaql* ファイルを右クリックし、メニューから **[ASA: Compile Script]\(ASA: スクリプトのコンパイル\)** を選択します。
+1. *Transformation.asaql* ファイルを右クリックし、メニューから **[ASA:Compile Script]\(ASA: スクリプトのコンパイル\)** を選択します。
 
 1. Stream Analytics ジョブのワークスペースに **[Deploy]** フォルダーが表示されることに注意してください。
 

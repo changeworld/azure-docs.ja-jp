@@ -4,12 +4,12 @@ description: Azure portal、Azure Resource Manager テンプレート、およ�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 9791ebaadeb1ee724692a9e1a0d61aff5cbae6a3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: bfbe2bc3ae3edf9285d3ec006ab0451f070cabd6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668487"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132406"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 
@@ -127,7 +127,7 @@ Azure portal を使用して、アクティビティ ログ アラート ルー�
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
-Azure Resource Manager テンプレートを使用してアクティビティ ログ アラートを作成するには、`microsoft.insights/activityLogAlerts` 型のリソースを作成します。 次に、関連するすべてのプロパティを入力します。 アクティビティ ログ アラートを作成するテンプレートを以下に示します。
+Azure Resource Manager テンプレートを使用してアクティビティ ログ アラート ルールを作成するには、`microsoft.insights/activityLogAlerts` 型のリソースを作成します。 次に、関連するすべてのプロパティを入力します。 アクティビティ ログ アラート ルールを作成するテンプレートを以下に示します。
 
 ```json
 {
@@ -195,6 +195,39 @@ Azure Resource Manager テンプレートを使用してアクティビティ �
 }
 ```
 前述のサンプル JSON は、このチュートリアルの目的で、たとえば sampleActivityLogAlert.json として保存でき、[Azure portal で Azure Resource Manager](../../azure-resource-manager/templates/deploy-portal.md) を使用してデプロイできます。
+
+次のフィールドは、Azure Resource Manager テンプレートで条件フィールドに対して使用できるオプションです。"Resource Health"、"Advisor"、および "Service Health" には、特別なフィールドに対して追加のプロパティ フィールドがあることに注意してください。 
+1. resourceId:アラートを生成する必要があるアクティビティ ログ イベントの影響を受けるリソースのリソース ID。
+2. category:アクティビティ ログ イベントのカテゴリ。 次に例を示します。Administrative、ServiceHealth、ResourceHealth、Autoscale、Security、Recommendation、Policy。
+3. caller:アクティビティ ログ イベントの操作を実行したユーザーのメール アドレスまたは Azure Active Directory 識別子。
+4. level:アラートを生成する必要があるアクティビティ ログ イベントのアクティビティのレベル。 次に例を示します。Critical、Error、Warning、Informational、Verbose。
+5. operationName:アクティビティ ログ イベントの操作の名前。 次に例を示します。Microsoft.Resources/deployments/write
+6. resourceGroup:アクティビティ ログ イベントの影響を受けるリソースのリソース グループの名前。
+7. resourceProvider:[Azure リソース プロバイダーと種類の説明](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fazure-resource-manager%2Fmanagement%2Fresource-providers-and-types&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C90b7c2308c0647c0347908d7c9a2918d%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637199572373543634&sdata=4RjpTkO5jsdOgPdt%2F%2FDOlYjIFE2%2B%2BuoHq5%2F7lHpCwQw%3D&reserved=0)。 リソース プロバイダーを Azure サービスにマップされるリストについては、「[Resource providers for Azure services](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fazure-resource-manager%2Fmanagement%2Fazure-services-resource-providers&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C90b7c2308c0647c0347908d7c9a2918d%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637199572373553639&sdata=0ZgJPK7BYuJsRifBKFytqphMOxMrkfkEwDqgVH1g8lw%3D&reserved=0)」 (Azure サービスのリソースプロバイダー) を参照してください。
+8. status:アクティビティ イベントの操作の状態を説明する文字列。 次に例を示します。Started、In Progress、Succeeded、Failed、Active、Resolved
+9. subStatus:通常は対応する REST 呼び出しの HTTP 状態コードですが、サブステータスを示す他の文字列が含まれる場合もあります。   次に例を示します。OK (HTTP 状態コード: 200)、作成済み (HTTP 状態コード:201)、受理 (HTTP 状態コード:202)、コンテンツなし (HTTP 状態コード:204)、無効な要求 (HTTP 状態コード:400)、見つかりません (HTTP 状態コード:404)、競合 (HTTP 状態コード:409)、内部サーバー エラー (HTTP 状態コード:500)、サービス利用不可 (HTTP 状態コード:503)、Gateway Timeout (HTTP 状態コード: 504)。
+10. resourceType:イベントの影響を受けたリソースの種類。 次に例を示します。Microsoft.Resources/deployments
+
+次に例を示します。
+
+```json
+"condition": {
+          "allOf": [
+            {
+              "field": "category",
+              "equals": "Administrative"
+            },
+            {
+              "field": "resourceType",
+              "equals": "Microsoft.Resources/deployments"
+            }
+          ]
+        }
+
+```
+アクティビティ ログのフィールドの詳細については、[こちら](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fazure-monitor%2Fplatform%2Factivity-log-schema&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C90b7c2308c0647c0347908d7c9a2918d%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637199572373563632&sdata=6QXLswwZgUHFXCuF%2FgOSowLzA8iOALVgvL3GMVhkYJY%3D&reserved=0)を参照してください。
+
+
 
 > [!NOTE]
 > 新しいアクティビティ ログ アラート ルールがアクティブになるまで最大 5 分かかる場合があります。

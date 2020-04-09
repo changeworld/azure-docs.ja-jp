@@ -2,13 +2,13 @@
 title: Application Insights からのテレメトリの連続エクスポート | Microsoft Docs
 description: 診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。
 ms.topic: conceptual
-ms.date: 07/25/2019
-ms.openlocfilehash: 33158919980514b70c3b0e438691427a34eed834
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/25/2020
+ms.openlocfilehash: f6afe42e483ab7ad5810169fc301946c75308c29
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663915"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298281"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  
@@ -34,7 +34,7 @@ ms.locfileid: "77663915"
 
 * [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
 
-## <a name="setup"></a>連続エクスポートを作成する
+## <a name="create-a-continuous-export"></a><a name="setup"></a>連続エクスポートを作成する
 
 1. アプリの Application Insights リソースで、左側の [構成] の下の [連続エクスポート] を開き、 **[追加]** を選択します。
 
@@ -53,6 +53,18 @@ ms.locfileid: "77663915"
 
 ストレージにデータが表示されるまで、約 1 時間の遅延が発生する可能性があります。
 
+最初のエクスポートが完了すると、Azure BLOB ストレージ コンテナーに次のような構造が表示されます。(これは収集するデータに応じて異なります。)
+
+|名前 | 説明 |
+|:----|:------|
+| [可用性](export-data-model.md#availability) | [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)をレポートします。  |
+| [Event](export-data-model.md#events) | [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)によって生成されたカスタム イベント。 
+| [例外](export-data-model.md#exceptions) |サーバーおよびブラウザーの [例外](../../azure-monitor/app/asp-net-exceptions.md) をレポートします。
+| [Messages (メッセージ)](export-data-model.md#trace-messages) | [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) および[ログ アダプター](../../azure-monitor/app/asp-net-trace-logs.md)によって送信されます。
+| [Metrics](export-data-model.md#metrics) | メトリック API 呼び出しによって生成されます。
+| [PerformanceCounters](export-data-model.md) | Application Insights によって収集されたパフォーマンス カウンター。
+| [要求数](export-data-model.md#requests)| [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)によって送信されます。 標準モジュールはこれを使用して、サーバーで測定されたサーバー応答時間をレポートします。| 
+
 ### <a name="to-edit-continuous-export"></a>連続エクスポートを編集するには
 
 [連続エクスポート] をクリックし、編集するストレージ アカウントを選択します。
@@ -66,7 +78,7 @@ ms.locfileid: "77663915"
 ### <a name="cant-add-or-change-an-export"></a>エクスポートを追加または変更できない
 * エクスポートを追加または変更するには、所有者、共同作成者、または Application Insights 共同作成者のアクセス権が必要になります。 [ロールの詳細については、こちらを参照してください][roles]。
 
-## <a name="analyze"></a> 取得されるイベント
+## <a name="what-events-do-you-get"></a><a name="analyze"></a> 取得されるイベント
 エクスポートされたデータは、お客様のアプリケーションから受け取った未加工のテレメトリですが、クライアントの IP アドレスから計算された位置データが追加されます。
 
 [サンプリング](../../azure-monitor/app/sampling.md) によって破棄されたデータは、エクスポートされるデータに含まれません。
@@ -80,7 +92,7 @@ ms.locfileid: "77663915"
 >
 >
 
-## <a name="get"></a> データの確認
+## <a name="inspect-the-data"></a><a name="get"></a> データの確認
 ポータルでストレージを直接検査することができます。 一番左のメニューで [ホーム] をクリックし、上部の [Azure サービス] で **[ストレージ アカウント]** を選択し、ストレージ アカウント名を選択します。概要ページの [サービス] で **[BLOB]** を選択し、最後にコンテナー名を選択します。
 
 Visual Studio で Azure ストレージを検査するには、 **[表示]** 、 **[Cloud Explorer]** の順に開きます (このメニュー コマンドがない場合は、Azure SDK をインストールする必要があります。 **[新しいプロジェクト]** ダイアログを開き、[Visual C#]、[クラウド] の順に展開して、 **[Microsoft Azure SDK for .NET の取得]** を選択します)。
@@ -97,10 +109,10 @@ BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナ�
 
 Where
 
-* `blobCreationTimeUtc` は、BLOB が内部ステージング ストレージで作成された日時です。
+* `blobCreationTimeUtc` は、BLOB が内部ステージング ストレージで作成された日時です
 * `blobDeliveryTimeUtc` は、BLOB がエクスポート先のストレージにコピーされた日時です。
 
-## <a name="format"></a> データ形式
+## <a name="data-format"></a><a name="format"></a> データ形式
 * それぞれの Blob は、"\n" で区切られた複数の行を含むテキスト ファイルです。 約 30 秒の間に処理されたテレメトリが含まれています。
 * 各行は、要求やページ表示などのテレメトリ データ ポイントを表します。
 * それぞれの行は、書式設定されていない JSON ドキュメントです。 詳細を確認する場合は、Visual Studio でファイルを開き、[編集]、[詳細]、[フォーマット ファイル] の順に選択します。
@@ -137,7 +149,7 @@ Where
 
 大規模なコード サンプルについては、「[worker ロールの使用][exportasa]」をご覧ください。
 
-## <a name="delete"></a>古いデータの削除
+## <a name="delete-your-old-data"></a><a name="delete"></a>古いデータの削除
 ストレージ容量の管理と古いデータの削除は、必要に応じて自分で行う必要があります。
 
 ## <a name="if-you-regenerate-your-storage-key"></a>ストレージ キーを再生成する場合

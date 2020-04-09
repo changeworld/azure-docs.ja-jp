@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 332f612e1ffe57fc4edd90b1fe4c6a5ea5a2904a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 3eef7476a729c7b83290b9d8d86ba06524bed72b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649177"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297097"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>ソース データベースへの接続時の DMS エラーのトラブルシューティング
 
@@ -74,7 +74,7 @@ ms.locfileid: "77649177"
 | **エラー 53** -1 - SQL 接続できませんでした。 SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。 インスタンス名が正しいことと、SQL Server がリモート接続を許可するように構成されていることを確認してください。 (プロバイダー:名前付きパイプ プロバイダー、エラー:40 - SQL Server への接続を開けませんでした | このエラーは、サービスでソース サーバーに接続できない場合に発生します。 問題に対処する場合は、この表の下の注釈にリストされているトラブルシューティングのドキュメントを参照してから、もう一度試してください。 |
 | **エラー 18456** - ログインできませんでした。 ユーザー '{user}' はログインできませんでした | このエラーは、指定された T-SQL 資格情報を使用して、サービスをソース データベースに接続できない場合に発生します。 問題に対処するには、入力された資格情報を確認します。 また、「[MSSQLSERVER_18456](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017)」、あるいはこの表の下の注釈にリストされているトラブルシューティングのドキュメントを参照し、もう一度試すことができます。 |
 | **エラー 87** - 接続文字列が無効です。 SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。 インスタンス名が正しいことと、SQL Server がリモート接続を許可するように構成されていることを確認してください。 (プロバイダー:SQL Network Interfaces、エラー:25 - 接続文字列が無効です) | このエラーは、接続文字列が無効であるため、サービスをソース サーバーに接続できない場合に発生します。 問題に対処するには、指定された接続文字列を確認します。 問題が解決しない場合は、この表の下の注釈にリストされているトラブルシューティングのドキュメントを参照してから、もう一度試してください。 |
-| **エラー - サーバー証明書は信頼されていません。** サーバーとの接続は正常に確立されましたが、ログイン プロセスでエラーが発生しました。 (プロバイダー:SSL プロバイダー、エラー:0 - この証明書チェーンは、信頼されていない機関によって発行されました。) | このエラーは、使用された証明書が信頼されていない場合に発生します。 問題に対処するには、信頼できない証明書を見つけてから、サーバーに対してそれを有効にする必要があります。 また、接続中に信頼証明書のオプションを選択することもできます。 使用する証明書についてよく理解しており、それを信頼している場合にのみ、このアクションを実行します。 <br> 自己署名証明書を使用して暗号化されている SSL 接続のセキュリティは強力ではありません - 中間者攻撃の影響を受けやすくなります。 運用環境や、インターネットに接続されているサーバーでは、自己署名証明書を使用する SSL に依存しないでください。 <br> 詳細については、「[Microsoft SQL Server DB インスタンスでの SSL の使用](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.Concepts.General.SSL.Using.html)」または[チュートリアル:DMS を使用した Azure への RDS SQL Server の移行](https://docs.microsoft.com/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online#prerequisites)に関するページを参照してください。 |
+| **エラー - サーバー証明書は信頼されていません。** サーバーとの接続は正常に確立されましたが、ログイン プロセスでエラーが発生しました。 (プロバイダー:SSL プロバイダー、エラー:0 - この証明書チェーンは、信頼されていない機関によって発行されました。) | このエラーは、使用された証明書が信頼されていない場合に発生します。 問題に対処するには、信頼できない証明書を見つけてから、サーバーに対してそれを有効にする必要があります。 また、接続中に信頼証明書のオプションを選択することもできます。 使用する証明書についてよく理解しており、それを信頼している場合にのみ、このアクションを実行します。 <br> 自己署名証明書を使用して暗号化されている TLS 接続のセキュリティは強力ではなく、中間者攻撃の影響を受けやすくなります。 運用環境や、インターネットに接続されているサーバーでは、自己署名証明書を使用する TLS に依存しないでください。 <br> 詳細については、「[Microsoft SQL Server DB インスタンスでの SSL の使用](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.Concepts.General.SSL.Using.html)」または[チュートリアル:DMS を使用した Azure への RDS SQL Server の移行](https://docs.microsoft.com/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online#prerequisites)に関するページを参照してください。 |
 | **エラー 300** - ユーザーには必要なアクセス許可がありません。 VIEW SERVER STATE 権限がオブジェクト '{server}' で拒否されました (データベース '{database}') | このエラーは、ユーザーに移行を行う権限がない場合に発生します。 問題に対処する場合は、[GRANT (サーバーの権限) - Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql?view=sql-server-2017) に関するページ、または[チュートリアル:DMS を使用した Azure への RDS SQL Server の移行](https://docs.microsoft.com/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online#prerequisites)に関するページを参照し、詳細を確認してください。 |
 
 > [!NOTE]

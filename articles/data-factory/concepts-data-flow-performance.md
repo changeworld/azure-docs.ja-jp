@@ -6,19 +6,22 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 02/24/2020
-ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/11/2020
+ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587585"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409839"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
 Azure Data Factory の Mapping Data Flow には、大規模なデータ変換の設計、デプロイ、および調整するためのコード不要のインターフェイスが用意されています。 マッピング データ フローに慣れていない場合は、[マッピング データ フローの概要](concepts-data-flow-overview.md)に関するページを参照してください。
 
 ADF UX から Data Flow の設計およびテストをする場合は、クラスターのウォーム アップを待機することなく、リアルタイムでデータ フローを実行するように、必ずデバッグ モードをオンにします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
+
+このビデオでは、データ フローを使用してデータを変換するサンプルのタイミングをいくつか紹介します。
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rNxM]
 
 ## <a name="monitoring-data-flow-performance"></a>データ フローのパフォーマンスを監視する
 
@@ -59,11 +62,14 @@ Integration Runtime の作成方法の詳細については、「[Azure Data Fac
 
 ![ソース パーツ](media/data-flow/sourcepart3.png "ソース パーツ")
 
+> [!NOTE]
+> ソースのパーティション数を選択するのに役立つ指針として、Azure Integration Runtime に設定したコア数に 5 を掛けるという方法があります。 たとえば、ADLS フォルダー内の一連のファイルを変換し、32 コアの Azure IR を使用する場合、対象とするパーティションの数は 32 x 5 = 160 パーティションになります。
+
 ### <a name="source-batch-size-input-and-isolation-level"></a>ソース バッチ サイズ、入力、および分離レベル
 
 ソース変換の **[ソース オプション]** の下の次の設定がパフォーマンスに影響する可能性があります。
 
-* バッチ サイズは、行単位ではなくメモリにセットでデータを格納するように ADF に指示します。 バッチ サイズは省略可能な設定で、適切にサイズを設定しないと、計算ノード上のリソースが不足する場合があります。
+* バッチ サイズによって、行単位ではなく Spark メモリにセットでデータを格納するように ADF に指示します。 バッチ サイズは省略可能な設定で、適切にサイズを設定しないと、計算ノード上のリソースが不足する場合があります。 このプロパティを設定しない場合、Spark キャッシュ バッチの既定値が使用されます。
 * クエリを設定すると、Data Flow に到達する前にソースで行をフィルター処理してから、処理することができます。 これにより、初期データの取得がより高速になります。 クエリを使用する場合は、READ UNCOMMITTED など、省略可能なクエリ ヒントを Azure SQL DB に追加することができます。
 * [コミットされていないものを読み取り] は、ソース変換に関するより高速なクエリ結果を提供します。
 
@@ -71,9 +77,9 @@ Integration Runtime の作成方法の詳細については、「[Azure Data Fac
 
 ### <a name="sink-batch-size"></a>シンクのバッチ サイズ
 
-データ フローの行単位の処理を回避するには、Azure SQL DB と Azure SQL DW のシンクの [設定] タブで **[バッチ サイズ]** を設定します。 バッチ サイズが設定されると、ADF では指定されたサイズに基づいて、データベースの書き込みがバッチで処理されます。
+データ フローの行単位の処理を回避するには、Azure SQL DB と Azure SQL DW のシンクの [設定] タブで **[バッチ サイズ]** を設定します。 バッチ サイズが設定されると、ADF では指定されたサイズに基づいて、データベースの書き込みがバッチで処理されます。 このプロパティを設定しない場合、Spark キャッシュ バッチの既定値が使用されます。
 
-![シンク](media/data-flow/sink4.png "シンク")
+![Sink](media/data-flow/sink4.png "シンク")
 
 ### <a name="partitioning-on-sink"></a>シンクでのパーティション分割
 
@@ -100,7 +106,7 @@ DW への行単位の挿入を回避するには、シンク設定で **[Enable 
 
 変換ごとに、データ ファクトリで使用するパーティション構成を [最適化] タブで設定できます。最初に、既定のパーティション分割と最適化を維持してファイル ベースのシンクをテストすることが、適切な実施方法です。
 
-* 小さいファイルの場合は、 *[単一パーティション]* を選択すると、小さいファイルをパーティション分割するように Spark に要求するよりも効果的で速い場合があります。
+* 小さいファイルの場合は、パーティションを少なく選択した方が、小さいファイルをパーティション分割するように Spark に要求するよりも効果的で速い場合があります。
 * ソース データに関する十分な情報がない場合は、 *[ラウンド ロビン]* パーティション分割を選択して、パーティションの数を設定します。
 * データに適切なハッシュ キーになる列が含まれている場合は、 *[ハッシュ パーティション分割]* を選択します。
 

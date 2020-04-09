@@ -3,12 +3,12 @@ title: SAP HANA データベースのバックアップ エラーのトラブル
 description: Azure Backup を使用して SAP HANA データベースをバックアップするときに発生する可能性のある一般的なエラーをトラブルシューティングする方法について説明します。
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 04f9bafba0ca490b33a0daf3c3725e57d81bcc7e
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 6520f106011b632da2725f456aeb278c7748ddc9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664600"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79459312"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure での SAP HANA データベースのバックアップをトラブルシューティングする
 
@@ -16,9 +16,16 @@ ms.locfileid: "75664600"
 
 ## <a name="prerequisites-and-permissions"></a>前提条件とアクセス許可
 
-バックアップを構成する前に、「[前提条件](tutorial-backup-sap-hana-db.md#prerequisites)」および「[アクセス許可の設定](tutorial-backup-sap-hana-db.md#setting-up-permissions)」のセクションを参照してください。
+バックアップを構成する前に、「[前提条件](tutorial-backup-sap-hana-db.md#prerequisites)」セクションと[事前登録スクリプトの内容](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)に関するセクションを参照してください。
 
 ## <a name="common-user-errors"></a>一般的なユーザー エラー
+
+### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
+
+| **エラー メッセージ**      | <span style="font-weight:normal">Azure Backup には、バックアップを実行するために必須のロール特権がありません</span>    |
+| ---------------------- | ------------------------------------------------------------ |
+| **考えられる原因**    | ロールが上書きされている可能性があります。                          |
+| **推奨される操作** | この問題を解決するには、 **[Discover DB]\(DB の検出\)** ウィンドウからスクリプトを実行するか、[ここ](https://aka.ms/scriptforpermsonhana)からダウンロードします。 または、"SAP_INTERNAL_HANA_SUPPORT" ロールをワークロード バックアップ ユーザー (AZUREWLBACKUPHANAUSER) に追加します。 |
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
@@ -117,6 +124,26 @@ SID の変更が生じない OS や SAP HANA へのアップグレードは、�
 - [事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を再実行します。 通常、アップグレード プロセスで必要なロールが削除されます。 事前登録スクリプトを実行すると、必要なすべてのロールを確認できます。
 - データベースの[保護を再開](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database)します
 
+## <a name="re-registration-failures"></a>再登録エラー
+
+再登録操作をトリガーする前に、次の兆候が 1 つ以上ないか確認してください。
+
+- VM ですべての操作 (バックアップ、復元、バックアップの構成など) が次のいずれかのエラー コードで失敗している。**WorkloadExtensionNotReachable、UserErrorWorkloadExtensionNotInstalled、WorkloadExtensionNotPresent、WorkloadExtensionDidntDequeueMsg**。
+- バックアップ項目の **[バックアップ状態]** 領域に **[到達できません]** が表示されている場合は、同じ状態になる可能性のある他のすべての原因を除外します。
+
+  - VM でバックアップ関連の操作を実行する権限がない
+  - VM がシャットダウンされているため、バックアップが実行できない
+  - ネットワークの問題
+
+これらの兆候は、次の 1 つ以上の理由によって発生する可能性があります。
+
+- 拡張機能がポータルから削除またはアンインストールされた。
+- VM がインプレース ディスク復元を使用して時間内に復元された。
+- VM が長期間シャットダウンされたため、その拡張機能構成の期限が切れた。
+- VM が削除され、削除された VM と同じ名前で同じリソース グループに別の VM が作成された。
+
+前のシナリオにおいて、VM で再登録操作をトリガーすることをお勧めします。
+
 ## <a name="next-steps"></a>次のステップ
 
-- Azure VM 上の SAP HANA データベースのバックアップに関する[よく寄せられる質問](https://docs.microsoft.com/azure/backup/sap-hana-faq-backup-azure-vm)を確認する
+- Azure VM 上の SAP HANA データベースのバックアップに関する[よく寄せられる質問](https://docs.microsoft.com/azure/backup/sap-hana-faq-backup-azure-vm)を確認する。

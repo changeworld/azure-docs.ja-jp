@@ -4,7 +4,6 @@ description: ADAL SDK の機能を使用して、複数のアプリケーショ�
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
@@ -15,12 +14,13 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 00ec2d328265e8d301b9f54b9a6a2013072f1ed4
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ROBOTS: NOINDEX
+ms.openlocfilehash: 082cbb931c9dae60b39f9ee5323337bf051fb56d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190281"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154782"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>方法:iOS で ADAL を使用してクロスアプリ SSO を有効にする
 
@@ -309,7 +309,7 @@ ID プラットフォームは、URL を使用してブローカーを起動し�
 
 #### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>手順 4:ご利用のアプリに構成パラメーターを追加する
 
-ADAL は、ブローカーがデバイスにインストールされているかどうかを確認するために、–canOpenURL: を使用します。 iOS 9 では、アプリケーションがクエリを行うことができるスキーマが Apple によってロックダウンされました。 "msauth" を `info.plist file`の LSApplicationQueriesSchemes セクションに追加する必要があります。
+ADAL は、ブローカーがデバイスにインストールされているかどうかを確認するために、–canOpenURL: を使用します。 iOS 9 では、アプリケーションがクエリを行うことができるスキーマが Apple によってロックダウンされました。 "msauth" を `info.plist file` の LSApplicationQueriesSchemes セクションに追加する必要があります。
 
 ```
     <key>LSApplicationQueriesSchemes</key>

@@ -3,18 +3,17 @@ title: Azure Key Vault 開発者ガイド
 description: 開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内で暗号化キーを管理できます。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 331e3d5855e4ea1fc18a3b638741f6297a7a27d8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a8cb0ea9fb3c6e8388271c4274baf4ecc7282cda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184674"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247233"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -23,7 +22,7 @@ Key Vault を使用すると、アプリケーション内から機密情報に�
 - 自分でコードを記述しなくても、キーとシークレットが保護され、アプリケーションから簡単に使用できます。
 - 顧客自身にキーを所有して管理してもらうことができるため、主要なソフトウェア機能の提供に集中できます。 この方法では、アプリケーションが顧客のテナント キーとシークレットに対して義務や潜在的責任を負うことはありません。
 - アプリケーションで署名と暗号化にキーを使用しながら、キー管理をアプリケーションの外部で行うことができます。これにより、ソリューションは地理的に分散したアプリを対象とすることができます。
-- Key Vault の 2016 年 9 月のリリース以降、アプリケーションで Key Vault の証明書を管理できるようになりました。 詳細については、「[About keys, secrets, and certificates (キー、シークレット、証明書について)](/rest/api/keyvault/about-keys--secrets-and-certificates)」を参照してください。
+- Key Vault 証明書を管理します。 詳細については、「[About keys, secrets, and certificates (キー、シークレット、証明書について)](about-keys-secrets-and-certificates.md)」を参照してください。
 
 Azure Key Vault の全般的な情報については、「 [Azure Key Vault とは](key-vault-overview.md)」を参照してください。
 
@@ -39,9 +38,14 @@ Azure リソースのマネージド ID の詳細については、[マネージ
 
 キー コンテナーでキー、シークレット、または証明書を使用する前に、次の記事に従って、CLI、PowerShell、Resource Manager テンプレートまたは REST でキーを作成し、管理します。
 
-- [CLI を使用した Key Vault の管理](key-vault-manage-with-cli2.md)
-- [PowerShell を使用した Key Vault の作成と管理](key-vault-overview.md)
-- [Azure Resource Manager テンプレートを使用した Key Vault の作成とシークレットの追加](../azure-resource-manager/resource-manager-template-keyvault.md)
+- [CLI を使用した Key Vault の管理](quick-create-cli.md)
+- [PowerShell を使用した Key Vault の作成と管理](quick-create-powershell.md)
+- [Azure ポートを使用した Key Vault の作成と管理](quick-create-portal.md)
+- [Python を使用した Key Vault の作成と管理](quick-create-python.md)
+- [Java を使用した Key Vault の作成と管理](quick-create-java.md)
+- [Node.js を使用した Key Vault の作成と管理](quick-create-node.md)
+- [.NET (v4 SDK) を使用した Key Vault の作成と管理](quick-create-net.md)
+- [Azure Resource Manager テンプレートを使用した Key Vault の作成とシークレットの追加](quick-create-template.md)
 - [REST を使用した Key Vault の作成と管理](/rest/api/keyvault/)
 
 
@@ -59,7 +63,7 @@ Azure リソースのマネージド ID の詳細については、[マネージ
 
 #### <a name="net"></a>.NET
 
-[Key Vault の .NET API リファレンス](/dotnet/api/microsoft.azure.keyvault)。
+[Key Vault の .NET API リファレンス](/dotnet/api/overview/azure/key-vault?view=azure-dotnet)。
 
 .NET SDK の 2.x バージョンの詳細については、[リリース ノート](key-vault-dotnet2api-release-notes.md)をご覧ください。
 
@@ -71,24 +75,19 @@ Azure リソースのマネージド ID の詳細については、[マネージ
 
 Node.js では、キー コンテナー管理 API とキー コンテナー オブジェクト API は別々になっています。 次の概要の記事から、両方にアクセスすることができます。 
 
-[Node.js 用 Azure Key Vault モジュール](/nodejs/api/overview/azure/key-vault)
+[Node.js 用 Azure Key Vault モジュール](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
-[Python 用 Azure Key Vault ライブラリ](/python/api/overview/azure/key-vault)
+[Python 用 Azure Key Vault ライブラリ](/python/api/overview/azure/key-vault?view=azure-python)
 
-#### <a name="azure-cli-2"></a>Azure CLI 2
+#### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI for Key Vault](/cli/azure/keyvault)
+[Azure CLI for Key Vault](/cli/azure/keyvault?view=azure-cli-latest)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 
-[Azure PowerShell for Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
-
-### <a name="quickstart-guides"></a>クイックスタート ガイド
-
-- [Key Vault の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
-- [Node.js を使用した Key Vault の概要](https://github.com/Azure-Samples/key-vault-node-getting-started)
+[Azure PowerShell for Key Vault](/powershell/module/az.keyvault/?view=azps-3.6.1#key_vault)
 
 ### <a name="code-examples"></a>コード例
 

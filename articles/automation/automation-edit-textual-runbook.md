@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c00ab8a5e0d307d89ae483db55bdb0b1258ae6a4
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3bbfe26f336a25ee85f2223226d6eb513ae21736
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246404"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632154"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Azure Automation でのテキスト形式の Runbook の編集
 
@@ -22,7 +22,7 @@ Azure Automation のテキスト エディターを使用して、[PowerShell Ru
 
 このテキスト エディターには、コマンドレット、資産、および子 Runbook のコードを Runbook に挿入するための機能が含まれます。 コードを自分で入力する代わりに、使用可能なリソースの一覧から選択すると、エディターによって適切なコードが Runbook に挿入されます。
 
-Azure Automation の各 Runbook には、ドラフトと発行の 2 つのバージョンがあります。 Runbook のドラフト バージョンを編集し、実行できるように発行します。 発行されたバージョンを編集することはできません。 詳細については、「[Publish a runbook (Runbook の発行)](manage-runbooks.md#publish-a-runbook)」をご覧ください。
+Azure Automation の各 Runbook には、ドラフトと発行の 2 つのバージョンがあります。 Runbook のドラフト バージョンを編集し、実行できるように発行します。 発行されたバージョンを編集することはできません。 詳細については、「[Publish a runbook (Runbook の発行)](manage-runbooks.md#publishing-a-runbook)」をご覧ください。
 
 この記事では、このエディターのさまざまな機能を実行する詳細な手順を説明します。 これらは、[グラフィカル runbook](automation-runbook-types.md#graphical-runbooks)には適用されません。 これらの Runbook を使用する場合は、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
 
@@ -59,7 +59,7 @@ Azure Automation の各 Runbook には、ドラフトと発行の 2 つのバー
 
 ### <a name="insert-an-asset-into-a-runbook"></a>資産を Runbook に挿入する
 
-1. テキスト エディターのキャンバスで、子 Runbook のコードを配置する場所にカーソルを置きます。
+1. テキスト エディターのキャンバス コントロールで、子 Runbook のコードを配置する場所にカーソルを置きます。
 2. ライブラリ コントロールで **[アセット]** ノードを展開します。
 3. 必要な資産の種類のノードを展開します。
 4. 挿入する資産名を右クリックして、 **[キャンバスに追加]** を選択します。 [変数資産](automation-variables.md)の場合、変数を取得するのか設定するのかに応じて、 **["変数の取得" をキャンバスに追加する]** または **["変数の設定" をキャンバスに追加する]** を選択します。
@@ -67,7 +67,7 @@ Azure Automation の各 Runbook には、ドラフトと発行の 2 つのバー
 
 ## <a name="editing-an-azure-automation-runbook-using-windows-powershell"></a>Windows PowerShell を使用した Azure Automation の Runbook の編集
 
-Windows PowerShell を使用して Runbook を編集するには、任意のエディターを使用して、Runbook を ".ps1" ファイルに保存します。 [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) コマンドレットを使用して、Runbook の内容を取得できます。 [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) コマンドレットを使用して、既存のドラフト Runbook を、変更済みのものに置き換えることができます。
+Windows PowerShell を使用して Runbook を編集するには、任意のエディターを使用して、Runbook を " **.ps1**" ファイルに保存します。 [Export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) コマンドレットを使用して、Runbook の内容を取得できます。 [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) コマンドレットを使用して、既存のドラフト Runbook を、変更済みのものに置き換えることができます。
 
 ### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>Windows PowerShell を使用して Runbook の内容を取得する
 
@@ -84,7 +84,7 @@ Export-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automation
 
 ### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>Windows PowerShell を使用して Runbook の内容を変更する
 
-次のサンプル コマンドでは、Runbook の既存の内容を、スクリプト ファイルの内容に置き換える方法を示します。 これは、「[Windows PowerShell でスクリプト ファイルから Runbook をインポートするには](manage-runbooks.md#import-a-runbook)」と同じサンプル プロシージャです。
+次のサンプル コマンドでは、Runbook の既存の内容を、スクリプト ファイルの内容に置き換える方法を示します。 これは、「[Windows PowerShell でスクリプト ファイルから Runbook をインポートするには](manage-runbooks.md#importing-a-runbook)」と同じサンプル プロシージャです。
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"

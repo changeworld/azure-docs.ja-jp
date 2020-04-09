@@ -2,16 +2,16 @@
 title: Java と IntelliJ を使用して Azure 関数を作成する
 description: Java と IntelliJ を使用して、単純な HTTP によってトリガーしたサーバーレス アプリを Azure で作成し公開する方法について説明します。
 author: jeffhollan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 46044d4c6dd65944291aff157229be0abc60d3d7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 05074696ca2cc9d425269561523beb11eb18c4f3
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913244"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756449"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Java と IntelliJ を使用して初めての Azure 関数を作成する
 
@@ -46,8 +46,8 @@ Java および IntelliJ で関数を開発するには、次のソフトウェ�
 1. **[Add Archetype]** (アーキタイプの追加) ウィンドウで、次のように各フィールドに入力します。
     - _GroupId_: com.microsoft.azure
     - _ArtifactId_: azure-functions-archetype
-    - _バージョン_:最新バージョン **1.22** を[中央リポジトリで使用します](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![IntelliJ IDEA でアーキタイプから Maven プロジェクトを作成します](media/functions-create-first-java-intellij/functions-create-intellij.png)  
+    - _バージョン_:[中央リポジトリ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    の最新バージョンを確認し、これを使用します。![IntelliJ IDEA でアーキタイプから Maven プロジェクトを作成](media/functions-create-first-java-intellij/functions-create-intellij.png)  
 1. **[OK]** を選択し、 **[次へ]** を選択します。
 1. 現在のプロジェクトの詳細を入力し、 **[完了]** を選択します。
 

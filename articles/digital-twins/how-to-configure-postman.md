@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 377639d7a88478308709743ab842db71028686ed
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ffcfb4f6ec5f6c654d0b243af85034ab575e0d88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023312"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297171"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure Digital Twins 用に Postman を構成する方法
 
@@ -29,7 +29,7 @@ ms.locfileid: "77023312"
 
 [Postman](https://www.getpostman.com/) は、便利なデスクトップとプラグイン ベースの GUI に重要な HTTP 要求機能を配置する REST テスト ツールです。
 
-ソリューション開発者は、Postman クライアントを使用して、HTTP 要求の種類 (*POST*、*GET*、*UPDATE*、*PATCH*、*DELETE*)、呼び出す API エンドポイント、SSL の使用を指定できます。 また、Postman では、HTTP 要求ヘッダー、パラメーター、フォーム データ、本文の追加もサポートされています。
+ソリューション開発者は、Postman クライアントを使用して、HTTP 要求の種類 (*POST*、*GET*、*UPDATE*、*PATCH*、*DELETE*)、呼び出す API エンドポイント、TLS の使用を指定できます。 また、Postman では、HTTP 要求ヘッダー、パラメーター、フォーム データ、本文の追加もサポートされています。
 
 ## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>OAuth 2.0 の暗黙的な許可フローを使用するように Azure Active Directory を構成する
 
@@ -55,7 +55,7 @@ Postman をセットアップし、Azure Active Directory トークンを取得�
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Name  | 置換後の文字列 | 例 |
+    | 名前  | 置換後の文字列 | 例 |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | テナントまたは組織の名前。 Azure Active Directory アプリ登録の英数字の**テナント ID** の代わりに、わかりやすい名前を使用します。 | `microsoft` |
 
@@ -63,7 +63,7 @@ Postman をセットアップし、Azure Active Directory トークンを取得�
 
 1. GET 要求を作成します。 **[承認]** タブを選択し、[OAuth 2.0] を選択して **[Get New Access Token]\(新しいアクセス トークンの取得\)** を選択します。
 
-    | フィールド  | Value |
+    | フィールド  | 値 |
     |---------|---------|
     | 付与タイプ | `Implicit` |
     | コールバック URL | `https://www.getpostman.com/oauth2/callback` |

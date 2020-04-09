@@ -3,12 +3,12 @@ title: Azure Functions のストレージに関する考慮事項
 description: Azure Functions のストレージ要件と、格納済みデータの暗号化について説明します。
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f094996ca44ec36d46330e54eac56b28794ef22e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 48ff2dedd997cccb76b13acdadc895504f656ea3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358175"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984165"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions のストレージに関する考慮事項
 
@@ -29,7 +29,7 @@ Azure Functions では、関数アプリ インスタンスを作成するとき
 
 関数アプリを作成するときは、BLOB、キュー、テーブル ストレージをサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 これは、Functions ではトリガーの管理や関数実行のログ記録などの操作に Azure Storage を使用しているためです。 一部のストレージ アカウントでは、キューとテーブルがサポートされません。 これらのアカウントには、BLOB 専用のストレージ アカウント、Azure Premium Storage、ZRS レプリケーションを使用する汎用ストレージ アカウントが含まれます。 これらのサポートされていないアカウントは、関数アプリの作成時に [ストレージ アカウント] ブレードから除外されます。
 
-ストレージ アカウントの種類の詳細については、「[Azure Storage サービスの概要](../storage/common/storage-introduction.md#azure-storage-services)」を参照してください。 
+ストレージ アカウントの種類の詳細については、「[Azure Storage サービスの概要](../storage/common/storage-introduction.md#core-storage-services)」を参照してください。 
 
 お使いの関数アプリで既存のストレージ アカウントを使用することは可能ですが、必ずこれらの要件を満たしている必要があります。 関数アプリの作成フローの一部として作成されたストレージ アカウントでは、これらのストレージ アカウント要件を満たしていることが保証されます。  
 
@@ -56,6 +56,25 @@ Azure Functions では、関数アプリ インスタンスを作成するとき
 Azure Storage は、保存されているストレージ アカウント内のすべてのデータを暗号化します。 詳細については、「[保存データ向け Azure ストレージの暗号化](../storage/common/storage-service-encryption.md)」をご覧ください。
 
 規定では、データは Microsoft のマネージド キーで暗号化されます。 暗号化キーをさらに制御するために、BLOB とファイル データの暗号化に使用する目的で、顧客が管理するキーを提供できます。 Functions からストレージ アカウントにアクセスできるように、これらのキーは Azure Key Vault 内に置かれている必要があります。 詳細については、「[Azure portal を使用して Azure Key Vault での顧客管理キーを構成する](../storage/common/storage-encryption-keys-portal.md)」を参照してください。  
+
+## <a name="mount-file-shares-linux"></a>ファイル共有をマウントする (Linux)
+
+既存の Azure Files 共有を Linux 関数アプリにマウントすることができます。 Linux 関数アプリに共有をマウントすることにより、既存の機械学習モデルや、関数内のその他のデータを活用できます。 既存の共有を Linux 関数アプリにマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) コマンドを使用できます。 
+
+このコマンドで、`share-name` は既存の Azure Files 共有の名前で、`custom-id` は、関数アプリにマウントされたときに共有を一意に定義する任意の文字列にすることができます。 また、`mount-path` は、関数アプリで共有にアクセスするためのパスです。 `mount-path` は、`/dir-name` の形式にする必要があり、`/home` で開始することはできません。
+
+完全な例については、[Python 関数アプリの作成と Azure Files 共有のマウント](scripts/functions-cli-mount-files-storage-linux.md)に関する記事にあるスクリプトを参照してください。 
+
+現時点では、`AzureFiles` の `storage-type` のみがサポートされています。 指定された関数アプリにマウントできるのは 5 つの共有のみです。 ファイル共有をマウントすると、コールド スタートの時間が少なくとも 200 ミリ秒から 300 ミリ秒長くなる可能性があり、ストレージ アカウントが別のリージョンにある場合はさらに長くなる可能性があります。
+
+マウントされた共有は、指定された `mount-path` の関数コードで使用できます。 たとえば、`mount-path` が `/path/to/mount` の場合、次の Python の例に示すように、ファイル システム API でターゲット ディレクトリにアクセスできます。
+
+```python
+import os
+...
+
+files_in_share = os.listdir("/path/to/mount")
+```
 
 ## <a name="next-steps"></a>次のステップ
 

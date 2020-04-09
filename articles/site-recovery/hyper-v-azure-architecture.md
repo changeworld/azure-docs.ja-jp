@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082661"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V から Azure へのディザスター リカバリー アーキテクチャ
@@ -36,7 +36,7 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 
 **Hyper-V から Azure へのアーキテクチャ (VMM なし)**
 
-![アーキテクチャ](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
+![Architecture](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>アーキテクチャのコンポーネント - Hyper-V (VMM あり)
@@ -53,7 +53,7 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 
 **Hyper-V から Azure へのアーキテクチャ (VMM あり)**
 
-![コンポーネント](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
+![Components](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
 
 
@@ -140,7 +140,7 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 
 Hyper-V から Azure へのレプリケーションの使用を開始するには、[このチュートリアル](tutorial-prepare-azure.md)に従ってください。

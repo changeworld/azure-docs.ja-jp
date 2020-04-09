@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3c028a97c2fb554b13035026025437d5331104c2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 7ca4df620739b2ab55b8ba986031cc48fe87f1fa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669711"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294912"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Application Insights スマート検出ルールを管理する
 
@@ -28,8 +28,6 @@ Application Insights のスマート検出ルールは、[Azure Resource Manager
 
 Azure Resource Manager を使用してルールの設定を構成できるように、スマート検出ルールの構成は、Application Insights リソース内で **ProactiveDetectionConfigs** という名前の内部リソースとして使用できるようになりました。
 柔軟性を最大化するために、各スマート検出ルールを一意の通知設定で構成できます。
-
-## 
 
 ## <a name="examples"></a>例
 
@@ -131,6 +129,27 @@ Application Insights リソース名を置換し、関連するスマート検�
 
 ```
 
+
+## <a name="smart-detection-rule-names"></a>スマート検出ルール名
+
+Azure Resource Manager テンプレートで使用する必要がある、ポータルに表示されるスマート検出ルール名とその内部名の表を次に示します。
+
+> [!NOTE]
+> _プレビュー_ としてマークされているスマート検出ルールでは、メール通知がサポートされません。 そのため、これらのルールに対して _有効な_ プロパティのみを設定できます。 
+
+| Azure portal ルール名 | 内部名
+|:---|:---|
+| ページの読み込み速度が遅い | slowpageloadtime |
+| サーバーの応答速度が遅い | slowserverresponsetime |
+| 依存関係の期間が長い | longdependencyduration |
+| サーバー応答速度の低下 | degradationinserverresponsetime |
+| 依存関係の期間の減少 | degradationindependencyduration |
+| トレースの重大度の比率の低下 (プレビュー) | extension_traceseveritydetector |
+| 例外数の異常な上昇 (プレビュー) | extension_exceptionchangeextension |
+| Potential memory leak detected (潜在的なメモリ リークの検出) (プレビュー) | extension_memoryleakextension |
+| Potential security issue detected (潜在的なセキュリティの問題の検出) (プレビュー) | extension_securityextensionspackage |
+| 日次データ ボリュームの異常な上昇 (プレビュー) | extension_billingdatavolumedailyspikeextension |
+
 ### <a name="failure-anomalies-alert-rule"></a>失敗の異常の警告ルール
 
 この Azure Resource Manager テンプレートでは、重大度が 2 の失敗の異常警告ルールの構成について示しています。 この新しいバージョンのエラーの異常のアラート ルールは、新しい Azure のアラート プラットフォームの一部であり、[従来のアラートの回収プロセス](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)の一環として廃止される従来のバージョンに置き換わります。
@@ -167,27 +186,7 @@ Application Insights リソース名を置換し、関連するスマート検�
 ```
 
 > [!NOTE]
-> この Azure Resource Manager テンプレートは、失敗の異常の警告ルールに固有のものであり、この記事で説明されている他の従来のスマート検出ルールとは異なります。
-
-## <a name="smart-detection-rule-names"></a>スマート検出ルール名
-
-Azure Resource Manager テンプレートで使用する必要がある、ポータルに表示されるスマート検出ルール名とその内部名の表を次に示します。
-
-> [!NOTE]
-> _プレビュー_ としてマークされているスマート検出ルールでは、メール通知がサポートされません。 そのため、これらのルールに対して _有効な_ プロパティのみを設定できます。 
-
-| Azure portal ルール名 | 内部名
-|:---|:---|
-| ページの読み込み速度が遅い | slowpageloadtime |
-| サーバーの応答速度が遅い | slowserverresponsetime |
-| 依存関係の期間が長い | longdependencyduration |
-| サーバー応答速度の低下 | degradationinserverresponsetime |
-| 依存関係の期間の減少 | degradationindependencyduration |
-| トレースの重大度の比率の低下 (プレビュー) | extension_traceseveritydetector |
-| 例外数の異常な上昇 (プレビュー) | extension_exceptionchangeextension |
-| Potential memory leak detected (潜在的なメモリ リークの検出) (プレビュー) | extension_memoryleakextension |
-| Potential security issue detected (潜在的なセキュリティの問題の検出) (プレビュー) | extension_securityextensionspackage |
-| 日次データ ボリュームの異常な上昇 (プレビュー) | extension_billingdatavolumedailyspikeextension |
+> この Azure Resource Manager テンプレートは、失敗の異常の警告ルールに固有のものであり、この記事で説明されている他の従来のスマート検出ルールとは異なります。 失敗の異常を手動で管理したい場合は、Azure Monitor アラートで行います。他のすべてのスマート検出ルールは、UI の [スマート検出] ウィンドウで管理されます。
 
 ## <a name="next-steps"></a>次の手順
 

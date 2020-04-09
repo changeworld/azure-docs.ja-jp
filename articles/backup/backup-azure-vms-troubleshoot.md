@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンのバックアップと�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 1b82d43a58a25dc1c475180a4780106220e1ceeb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 15e4b4c8850798fd2386cd2874b6ab58a18d5406
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597322"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79297392"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -24,7 +24,7 @@ ms.locfileid: "77597322"
 * VM エージェント (WA エージェント) が[最新バージョン](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)であることを確認します。
 * Windows または Linux の VM OS バージョンがサポートされていることを確認します。「[Azure VM バックアップのサポート マトリックス](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas)」を参照してください。
 * 別のバックアップ サービスが実行されていないことを確認します。
-  * スナップショット拡張機能の問題が確実に起こらないようにするには、[拡張機能をアンインストールして強制的に再読み込みしてから、バックアップを再試行してください](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load)。
+  * スナップショット拡張機能の問題が確実に起こらないようにするには、[拡張機能をアンインストールして強制的に再読み込みしてから、バックアップを再試行してください](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout)。
 * VM がインターネットに接続されていることを確認します。
   * 別のバックアップ サービスが実行されていないことを確認します。
 * `Services.msc` から、**Windows Azure ゲスト エージェント** サービスが**実行中**であることを確認します。 **Windows Azure ゲスト エージェント** サービスが見つからない場合は、[Recovery Services コンテナーの Azure VM をバックアップする](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)方法の記事を参照してインストールします。
@@ -125,7 +125,7 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
    * 読み取りアクセス許可
 2. **発行先**がクラシック デプロイ モデルまたは **Windows Azure CRP Certificate Generator** であるすべての証明書を削除します。
 
-   * [ローカル コンピューターのコンソールで証明書を開きます](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx)。
+   * [ローカル コンピューターのコンソールで証明書を開きます](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)。
    * **[個人]**  >  **[証明書]** で、**発行先**がクラシック デプロイ モデルまたは **Windows Azure CRP Certificate Generator** であるすべての証明書を削除します。
 3. VM バックアップ ジョブをトリガーします。
 
@@ -190,7 +190,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 | VM エージェントが仮想マシンに存在しません: <br>前提条件と VM エージェントをインストールします。 その後、操作を再開します。 |VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法については、[こちら](#vm-agent)を参照してください。 |
 | **エラー コード**:ExtensionSnapshotFailedNoSecureNetwork <br/> **エラー メッセージ**:セキュリティで保護されたネットワーク通信チャネルを作成できないため、スナップショット操作が失敗しました。 | <ol><li> 管理者特権モードで **regedit.exe** を実行してレジストリ エディターを開きます。 <li> お使いのシステムに存在する .NET Framework のすべてのバージョンを識別します。 それらは、レジストリ キーの階層 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** の下にあります。 <li> レジストリ キー内に存在する各 .NET Framework に対して、次のキーを追加します。 <br> **SchUseStrongCrypto"=dword:00000001**。 </ol>|
 | **エラー コード**:ExtensionVCRedistInstallationFailure <br/> **エラー メッセージ**:Visual Studio 2012 用の Visual C++ 再頒布可能パッケージをインストールできないため、スナップショット操作が失敗しました。 | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion に移動し、vcredist2013_x64 をインストールします。<br/>このサービスのインストールを許可するレジストリ キーの値が正しい値に設定されていることを確認します。 つまり、**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** の **Start** 値を **4** ではなく **3** に設定します。 <br><br>インストールに関する問題が解消されない場合は、管理者特権でコマンド プロンプトから **MSIEXEC /UNREGISTER** と **MSIEXEC /REGISTER** を続けて実行して、インストール サービスを再起動します。  |
-
+| **エラー コード**:UserErrorRequestDisallowedByPolicy <BR> **エラー メッセージ**:VM に無効なポリシーが構成されており、スナップショット操作が妨げられています。 | [環境内のタグを管理する](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags) Azure Policy がある場合は、ポリシーを [Deny 効果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny)から [Modify 効果](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)に変更することを検討するか、[Azure Backup で要求される名前付けスキーマ](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)に従って手動でリソース グループを作成してください。
 ## <a name="jobs"></a>ジョブ
 
 | エラーの詳細 | 回避策 |
@@ -200,7 +200,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 | ジョブは実行中ではないため、Backup で取り消すことができません: <br>取り消しは実行中のジョブに対してのみサポートされています。 実行中のジョブを取り消してみてください。 |このエラーは一時的な状態が原因で発生します。 しばらく待ってから、取り消し操作をやり直してください。 |
 | Backup でジョブを取り消すことができませんでした: <br>ジョブが完了するまでお待ちください。 |なし |
 
-## <a name="restore"></a>[復元]
+## <a name="restore"></a>復元
 
 | エラーの詳細 | 回避策 |
 | --- | --- |

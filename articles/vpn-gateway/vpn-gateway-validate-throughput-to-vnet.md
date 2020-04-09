@@ -4,17 +4,18 @@ description: このドキュメントの目的は、ユーザーがオンプレ�
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
+manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: a88e339e82484c2ec1cd2276f6218fa718b990f9
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860488"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631782"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>仮想ネットワークへの VPN スループットを検証する方法
 
@@ -107,7 +108,7 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
 
    次の画面は、この例の出力を示しています。
 
-   ![Output](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
+   ![出力](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
 
 1. (省略可能) テスト結果を保持するためには、次のコマンドを実行します。
 
@@ -218,7 +219,7 @@ Make インストールは高速です
 > VM と Gateway 間でのスループット テスト中に中間ホップ (仮想アプライアンスなど) がないことを確認します。
 > 上記の iPERF/NTTTCP テストの結果が (全体的なスループットに関して) 良くない場合は、次の記事を参照して、問題の考えられる根本原因の背後にある主な要因を理解してください: https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
 
-特に、これらのテスト中にクライアントとサーバーから同時に収集されたパケット キャプチャ トレース (Wireshark/ネットワーク モニター) の分析は、良くないパフォーマンスの評価に役立ちます。 これらのトレースには、パケット損失、長い待ち時間、MTU サイズ、 断片化、TCP 0 ウィンドウ、誤順序フラグメントなどを含めることができます。
+特に、これらのテスト中にクライアントとサーバーから同時に収集されたパケット キャプチャ トレース (Wireshark/ネットワーク モニター) の分析は、良くないパフォーマンスの評価に役立ちます。 これらのトレースに、パケット損失、長い待ち時間、MTU サイズ、 断片化、TCP 0 ウィンドウ、誤順序のフラグメントなどが含まれる可能性があります。
 
 ## <a name="address-slow-file-copy-issues"></a>低速ファイル コピーの問題の対処
 

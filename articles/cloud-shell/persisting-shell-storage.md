@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d4d59642f638e7b1221c35a4bb281923571d5066
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598750"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297599"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Azure Cloud Shell でファイルを永続化する
 Cloud Shell では Azure File ストレージを使用してセッション間でファイルを維持します。 Cloud Shell の初回起動時に、セッション間でファイルを維持するために新しいまたは既存のファイル共有を関連付けることを求められます。
@@ -97,7 +97,8 @@ Cloud Shell は、次の両方の方法を使用してファイルを永続化�
 
 ### <a name="use-the-clouddrive-command"></a>`clouddrive` コマンドを使用する
 Cloud Shell では、`clouddrive` というコマンドを実行できます。このコマンドを使うと、Cloud Shell にマウントされているファイル共有を手動で更新できます。
-!["clouddrive" コマンドを実行する](media/persisting-shell-storage/clouddrive-h.png)
+
+!["clouddrive" コマンドの実行](media/persisting-shell-storage/clouddrive-h.png)
 
 ### <a name="list-clouddrive"></a>`clouddrive` の一覧取得
 `clouddrive` としてマウントされているファイル共有を検出するには、`df` コマンドを実行します。 

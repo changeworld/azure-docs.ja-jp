@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor for VMs (プレビュー) での監視を無効にする | Microsoft Docs
+title: Azure Monitor for VMs での監視を無効にする
 description: この記事では、Azure Monitor for VMs で仮想マシンの監視を停止する方法について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/05/2018
-ms.openlocfilehash: fb4347e610920380792a17bb620e6d97a7d72505
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/12/2020
+ms.openlocfilehash: 80473aa494b8fbcea5e43870b7717cd3472dd7d1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669507"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480523"
 ---
-# <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) で VM の監視を無効にする
+# <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms"></a>Azure Monitor for VMs での VM の監視を無効にする
 
 仮想マシン (VM) の監視を有効にした後、後から Azure Monitor for VMs での監視を無効にすることを選択できます。 この記事では、1 つまたは複数の VM の監視を無効にする方法を示します。  
 
@@ -23,7 +23,7 @@ Azure Monitor for VMs はそのエクスペリエンスを実現するために�
 
 * Log Analytics ワークスペース。VM および他のソースからの監視データを保管します。
 * ワークスペースで構成されているパフォーマンス カウンターのコレクション。 このコレクションは、ワークスペースに接続しているすべての VM での監視構成を更新します。
-* `InfrastructureInsights` および `ServiceMap`。これらは、ワークスペースで構成されている監視ソリューションです。 これらのコレクションは、ワークスペースに接続しているすべての VM での監視構成を更新します。
+* `VMInsights`。これは、ワークスペースで構成されている監視ソリューションです。 このソリューションは、ワークスペースに接続しているすべての VM での監視構成を更新します。
 * `MicrosoftMonitoringAgent` および `DependencyAgent`。AzureVM の拡張機能です。 これらの拡張機能はデータを収集してワークスペースに送信します。
 
 VM の監視を無効にする準備をするときは、これらの考慮事項に留意してください。
@@ -32,24 +32,17 @@ VM の監視を無効にする準備をするときは、これらの考慮事�
 * 他の監視ソリューションや、他のソースからのデータ収集をサポートする既存の Log Analytics ワークスペースを選択した場合は、ソリューション コンポーネントをワークスペースから削除できます。ワークスペースが中断したり影響を受けることもありません。  
 
 >[!NOTE]
-> ソリューション コンポーネントをワークスペースから削除した後で、引き続き正常性状態を Azure VM から見ることができます。たとえばパフォーマンス データやマップ データは、ポータルでそれぞれのビューに移動すると見ることができます。 データは最終的に、 **[パフォーマンス]** ビューと **[マップ]** ビューに表示されなくなります。 ただし、 **[Health]\(正常性\)** ビューには引き続き、VM の正常性状態が表示されます。 選択した Azure VM から **[今すぐ試す]** オプションを選択して、監視を後で再度有効にすることができます。  
+> ワークスペースからソリューション コンポーネントを削除した後に、Azure VM のパフォーマンスとマップのデータが引き続き表示される場合があります。 データは最終的に、 **[パフォーマンス]** ビューと **[マップ]** ビューに表示されなくなります。 選択した Azure VM から **[Enable]\(有効にする\)** オプションが選択可能になります。これにより、将来、監視を再び有効にすることができます。  
 
 ## <a name="remove-azure-monitor-for-vms-completely"></a>Azure Monitor for VMs を完全に削除する
 
-まだ Log Analytics ワークスペースが必要な場合は、次の手順に従って Azure Monitor for VMs を完全に削除してください。 `InfrastructureInsights` および `ServiceMap` ソリューションをワークスペースから削除します。  
-
->[!NOTE]
->Azure Monitor for VMs を有効にする前に Service Map 監視ソリューションを使用していて、このソリューションにまだ依存している場合は、このソリューションを削除しないでください (次の説明の最後の手順は実行しないでください)。  
->
+まだ Log Analytics ワークスペースが必要な場合は、次の手順に従って Azure Monitor for VMs を完全に削除してください。 `VMInsights` ソリューションをワークスペースから削除します。  
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて一覧から候補が絞り込まれます。 **[Log Analytics]** を選択します。
 3. Log Analytics ワークスペースの一覧で、Azure Monitor for VMs を有効化するときに選択したワークスペースを選択します。
 4. 左側で、 **[ソリューション]** を選択します。  
-5. ソリューションの一覧で、**InfrastructureInsights(ワークスペース名)** を選択します。 ソリューションの **[概要]** ページで、 **[削除]** を選択します。 確認メッセージが表示されたら、 **[はい]** を選択します。  
-6. ソリューションの一覧で、**ServiceMap(ワークスペース名)** を選択します。 ソリューションの **[概要]** ページで、 **[削除]** を選択します。 確認メッセージが表示されたら、 **[はい]** を選択します。  
-
-Azure Monitor for VMs を有効にする前に、ワークスペースで Windows ベースまたは Linux ベースの VM の[パフォーマンス カウンターを収集](vminsights-enable-overview.md#performance-counters-enabled)していなかった場合は、Windows 用と Linux 用の[規則を無効にして](../platform/data-sources-performance-counters.md#configuring-performance-counters)ください。
+5. ソリューションの一覧から、 **[VMInsights(ワークスペース名)]** を選択します。 ソリューションの **[概要]** ページで、 **[削除]** を選択します。 確認メッセージが表示されたら、 **[はい]** を選択します。
 
 ## <a name="disable-monitoring-and-keep-the-workspace"></a>監視を無効にしてワークスペースを保持する  
 

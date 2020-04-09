@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 243530b4badb9b19d288a91f247eefbcf622fb87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 9d057a4be02d8d93d3ef02ee3153baebe9146ff1
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536413"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632705"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB のサーバー パラメーターを構成する方法
 
@@ -37,7 +37,7 @@ Azure Database for MariaDB では、いくつかのサーバー パラメータ�
 
 InnoDB バッファー プールと最大接続数は構成できず、[価格レベル](concepts-pricing-tiers.md)に関連付けられています。
 
-|**Pricing Tier**| **仮想コア数**|**InnoDB バッファー プール (MB)**|
+|**価格レベル**| **仮想コア数**|**InnoDB バッファー プール (MB)**|
 |---|---|---|
 |Basic| 1| 1024|
 |Basic| 2| 2560|
@@ -68,10 +68,10 @@ InnoDB バッファー プールと最大接続数は構成できず、[価格�
 
 ### <a name="populating-the-time-zone-tables"></a>タイム ゾーン テーブルに入力する
 
-サーバーのタイム ゾーン テーブルには、MySQL コマンド ラインや MySQL Workbench などのツールから `az_load_timezone` ストアド プロシージャを呼び出すことでデータを入力できます。
+サーバーのタイム ゾーン テーブルには、MySQL コマンド ラインや MySQL Workbench などのツールから `mysql.az_load_timezone` ストアド プロシージャを呼び出すことでデータを入力できます。
 
 > [!NOTE]
-> MySQL Workbench から `az_load_timezone` コマンドを実行するとき、場合によっては、`SET SQL_SAFE_UPDATES=0;` を利用し、最初にセーフ アップデート モードをオフにする必要があります。
+> MySQL Workbench から `mysql.az_load_timezone` コマンドを実行するとき、場合によっては、`SET SQL_SAFE_UPDATES=0;` を利用し、最初にセーフ アップデート モードをオフにする必要があります。
 
 ```sql
 CALL mysql.az_load_timezone();

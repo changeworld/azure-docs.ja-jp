@@ -1,19 +1,19 @@
 ---
 title: 空間データの読み取りと書き込み | Microsoft Azure Maps
 description: Azure Maps Web SDK によって提供される、空間 IO モジュールを使用してデータの読み取りと書き込みを行う方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 03/01/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 458b307cf1158c467100e032e3f789462e8fdcca
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4c47335689401ebce98224992c74c3396821a1dd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370354"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334153"
 ---
 # <a name="read-and-write-spatial-data"></a>空間データの読み取りと書き込み
 
@@ -28,7 +28,7 @@ ms.locfileid: "78370354"
 | KML               | ✓  |  ✓  |
 | KMZ               | ✓  |  ✓  |
 | 空間 CSV       | ✓  |  ✓  |
-| Well Known Text   | ✓  |  ✓  |
+| Well-Known Text   | ✓  |  ✓  |
 
 以降のセクションでは、空間 IO モジュールを使用して、空間データの読み取りと書き込みを行うためのさまざまなツールの概要を説明します。
 
@@ -52,7 +52,7 @@ read 関数の結果は `SpatialDataSet` オブジェクトです。 このオ�
 
 ## <a name="examples-of-reading-spatial-data"></a>空間データの読み取りの例
 
-次のコードは、単純な空間データ セットを読み取り、`SimpleDataLayer` クラスを使用してマップ上にそれをレンダリングする方法を示しています。 このコードでは、URL で指し示される GPX ファイルが使用されます。
+次のコードは、空間データ セットを読み取り、`SimpleDataLayer` クラスを使用してマップ上にそれをレンダリングする方法を示しています。 このコードでは、URL で指し示される GPX ファイルが使用されます。
 
 <br/>
 
@@ -66,17 +66,13 @@ read 関数の結果は `SpatialDataSet` オブジェクトです。 このオ�
 <iframe height='500' scrolling='no' title='マップに KML を読み込む' src='//codepen.io/azuremaps/embed/XWbgwxX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/XWbgwxX/'>マップに KML を読み込む</a>」を参照してください。
 </iframe>
 
-必要に応じて、CORS が有効になっていない可能性のあるクロス ドメイン アセットにアクセスするためのプロキシ サービスを提供することができます。 次のコード スニペットは、プロキシ サービスを提供できることを示しています。
+必要に応じて、CORS が有効になっていない可能性のあるクロス ドメイン アセットにアクセスするためのプロキシ サービスを提供することができます。 read 関数は、最初に CORS を使用して別のドメイン上のファイルにアクセスしようとします。 別のドメイン上のいずれかのリソースへの CORS を使用したアクセスが最初に失敗した後、プロキシ サービスが提供されている場合に限り、追加のファイルを要求します。 read 関数は、提供されたプロキシ URL の末尾にファイル URL を追加します。 次のコード スニペットは、read 関数にプロキシ サービスを渡す方法を示しています。
 
 ```javascript
-
-//Set the location of your proxyServiceUrl file 
-var proxyServiceUrl = window.location.origin + '/CorsEnabledProxyService.ashx?url=';
-
-//Read a KML file from a URL or pass in a raw KML string.
-atlas.io.read('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1717245/2007SanDiegoCountyFires.kml', {
+//Read a file from a URL or pass in a raw data as a string.
+atlas.io.read('https://nonCorsDomain.example.com/mySuperCoolData.xml', {
     //Provide a proxy service
-    proxyService: proxyServiceUrl
+    proxyService: window.location.origin + '/YourCorsEnabledProxyService.ashx?url='
 }).then(async r => {
     if (r) {
         // Some code goes here . . .
@@ -85,7 +81,7 @@ atlas.io.read('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1717245/2007SanDiego
 
 ```
 
-次の最後のデモでは、区切りファイルを読み取り、それをマップにレンダリングする方法を示しています。 このケースでは、コードで空間データ列を含む CSV ファイルが使用されています。
+次のデモでは、区切りファイルを読み取り、それをマップにレンダリングする方法を示しています。 このケースでは、コードで空間データ列を含む CSV ファイルが使用されています。
 
 <br/>
 
@@ -115,46 +111,37 @@ atlas.io.read('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1717245/2007SanDiego
 必要に応じて、CORS が有効になっていない可能性のあるクロス ドメイン アセットにアクセスするためのプロキシ サービスを提供することができます。 次のコード スニペットは、プロキシ サービスを組み込むことができることを示しています。
 
 ```javascript
-
-//Set the location of your proxyServiceUrl file 
-var proxyServiceUrl = window.location.origin + '/CorsEnabledProxyService.ashx?url=';
-
-function readData(data, fileName) {
-    loadingIcon.style.display = '';
-    fileCount++;
-    //Attempt to parse the file and add the shapes to the map.
-    atlas.io.read(data, {
-        //Provide a proxy service
-        proxyService: proxyServiceUrl
-    }).then(
-        //Success
-        function(r) {
-            //some code goes here ...
-        }
-    );
-}
+atlas.io.read(data, {
+    //Provide a proxy service
+    proxyService: window.location.origin + '/YourCorsEnabledProxyService.ashx?url='
+}).then(
+    //Success
+    function(r) {
+        //some code goes here ...
+    }
+);
 ```
 
-## <a name="read-and-write-well-known-text-wkt"></a>Well Known Text (WKT) の読み取りと書き込み
+## <a name="read-and-write-well-known-text-wkt"></a>Well-Known Text (WKT) の読み取りと書き込み
 
-[Well known Text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (WKT) は、空間ジオメトリをテキストとして表現するための Open Geospatial Consortium (OGC) 標準です。 多くの地理空間システムでは、PostGIS プラグインを使用した Azure SQL や Azure PostgreSQL などの WKT がサポートされています。 ほとんどの OGC 標準と同様に、座標は "x y" 規則に合わせて "経度 緯度" として書式設定されます。 例として、WKT 形式を使用すると、経度 -110 と緯度 45 のポイントは、`POINT(-110 45)` として書き込むことができます。
+[Well-Known Text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (WKT) は、空間ジオメトリをテキストとして表現するための Open Geospatial Consortium (OGC) 標準です。 多くの地理空間システムでは、PostGIS プラグインを使用した Azure SQL や Azure PostgreSQL などの WKT がサポートされています。 ほとんどの OGC 標準と同様に、座標は "x y" 規則に合わせて "経度 緯度" として書式設定されます。 例として、WKT 形式を使用すると、経度 -110 と緯度 45 のポイントは、`POINT(-110 45)` として書き込むことができます。
 
 Well Known Text は、`atlas.io.ogc.WKT.read` 関数を使用して読み取ることができ、`atlas.io.ogc.WKT.write` 関数を使用して書き込むことができます。
 
-## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Well Known Text (WKT) の読み取りと書き込みの例
+## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Well-Known Text (WKT) の読み取りと書き込みの例
 
 次のコードは、Well Known Text 文字列 `POINT(-122.34009 47.60995)` を読み取り、それをバブル レイヤーを使用してマップ上にレンダリングする方法を示しています。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Well Known Text の読み取り' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/XWbabLd/'>Well Known Text の読み取り</a>」を参照してください。
+<iframe height='500' scrolling='no' title='Well-Known Text の読み取り' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/XWbabLd/'>Well-Known Text の読み取り</a>」を参照してください。
 </iframe>
 
 次のコードは、Well Known Text の読み取りと書き込みを行ったり来たりしてデモを行えます。
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Well Known Text の読み取りと書き込み' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/JjdyYav/'>Well Known Text の読み取りと書き込み</a>」を参照してください。
+<iframe height='700' scrolling='no' title='Well-Known Text の読み取りと書き込み' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/JjdyYav/'>Well-Known Text の読み取りと書き込み</a>」を参照してください。
 </iframe>
 
 ## <a name="read-and-write-gml"></a>GML の読み取りと書き込み

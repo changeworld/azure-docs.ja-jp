@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: fd044d4f32aefc00e1b04f7060e0fc0dc74fd6c7
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882358"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411671"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Azure Storage Explorer を使ってデータを操作する
 
@@ -106,7 +106,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 #### <a name="create-a-database"></a>データベースを作成する 
 -   Azure Cosmos DB アカウントを右クリックし、 **[データベースの作成]** を選択し、データベース名を入力し、**Enter** キーを押します。
        
-    ![データベースを作成する](./media/storage-explorer/create-database.png) 
+    ![データベースの作成](./media/storage-explorer/create-database.png) 
 
 #### <a name="delete-a-database"></a>データベースの削除
 - データベースを右クリックし、 **[データベースの削除]** をクリックし、ポップアップ ウィンドウで **[はい]** をクリックします。 データベース ノードが削除され、Azure Cosmos DB アカウントが自動的に更新されます。
@@ -158,7 +158,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 1. 新しい頂点を作成するには、左側のウィンドウから **Graph** を開き、 **[New Vertex]\(新しい頂点\)** をクリックして内容を編集し、 **[OK]** をクリックします。    
 2. 既存の頂点を変更するには、右側のウィンドウにあるペン アイコンをクリックします。   
 
-    ![Graph](./media/storage-explorer/vertex.png)
+    ![グラフ](./media/storage-explorer/vertex.png)
 
 #### <a name="delete-a-graph"></a>グラフの削除
 - 頂点を削除するには、頂点の名前の近くにあるごみ箱アイコンをクリックします。
@@ -215,15 +215,15 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
 + *透過型プロキシ* の内側にいる。この場合、(IT 部門などの) 他のユーザーが、HTTPS トラフィックを遮断してその暗号化を解除し、自己署名証明書を使ってそれを暗号化しています。
 
-+ 受信した HTTPS メッセージに自己署名 SSL 証明書を挿入するソフトウェアが実行されている (ウイルス対策ソフトウェアなど)。
++ 受信した HTTPS メッセージに自己署名 TLS/SSL 証明書を挿入するソフトウェア (ウイルス対策ソフトウェアなど) が実行されている。
 
 これらのいずれかの "自己署名証明書" を検出した場合、Storage Explorer は受信した HTTPS メッセージが改ざんされているかどうかを識別できなくなります。 ただし、自己署名証明書のコピーがある場合は、Storage Explorer にそのコピーを信頼させることができます。 証明書の挿入元がわからない場合、次の手順を実行して自分で確認できます。
 
-1. Open SSL をインストールします。
+1. OpenSSL のインストール
      - [Windows](https://slproweb.com/products/Win32OpenSSL.html) (簡易バージョンでかまいません)
      - Mac と Linux:オペレーティング システムに付属
-2. Open SSL を実行します。
-    - Windows:インストール ディレクトリ、 **/bin/** の順に移動して、**openssl.exe** をダブルクリックします。
+2. OpenSSL を実行します。
+    - Windows: インストール ディレクトリ、 **/bin/** の順に移動して、**openssl.exe** をダブルクリックします。
     - Mac と Linux: ターミナルで **openssl** を実行します。
 3. `s_client -showcerts -connect microsoft.com:443` を実行します
 4. 自己署名証明書を検索します。 どれが自己署名かわからない場合は、証明書の発行先 ("s:") と証明書の発行者 ("i:") が同じものを検索します。
@@ -302,7 +302,7 @@ ASE で HTTP/HTTPS プロキシを構成する際に、左側のツリーで Azu
 
 どの解決策も機能しない場合、問題を修正するために、問題の詳細を記載したメールを Azure Cosmos DB 開発ツール チーム ([cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)) にお送りください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 次のビデオを見て、Azure Storage Explorer を使用して Azure Cosmos DB を利用する方法を確認します。[Use Azure Cosmos DB in Azure Storage Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be) (Azure Storage Explorer で Azure Cosmos DB を使用する)。
 * Storage Explorer と他のサービスへの接続の詳細については、[Storage Explorer の概要](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)に関するページをご覧ください。

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 7023651b09abc8c3124c7bf71608018d5cb72e25
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 4b265bb574895e4728ad93ee25c9dad0da226ea4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162008"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240299"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics でのリアルタイム Twitter 感情分析
 
@@ -39,7 +39,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 
 * Twitter フィードを読み取る TwitterClientCore アプリケーション。 このアプリケーションを入手するには、[TwitterClientCore](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore) をダウンロードしてください。
 
-* [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x) をインストールします。
+* [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x) バージョン 2.1.0 をインストールします。
 
 ## <a name="create-an-event-hub-for-streaming-input"></a>入力をストリームするためのイベント ハブの作成
 
@@ -60,7 +60,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 
 6. 新しいイベント ハブに *socialtwitter-eh* という名前を指定します。 別の名前を使用してもかまいません。 その場合、名前を書き留めておきます。後でこの名前が必要になります。 イベント ハブの他のオプションを設定する必要はありません。
  
-7. **作成** を選択します。
+7. **［作成］** を選択します
 
 ### <a name="grant-access-to-the-event-hub"></a>イベント ハブへのアクセスを許可する
 
@@ -75,7 +75,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 
 3.  [アクセス ポリシー] ページで、 **[+ 追加]** を選択します。 次に、 **[ポリシー名]** に *socialtwitter-access* と入力し、 **[管理]** チェックボックスをオンにします。
  
-4.  **作成** を選択します。
+4.  **［作成］** を選択します
 
 5.  ポリシーがデプロイされたら、共有アクセス ポリシーの一覧からそのポリシーを選択します。
 
@@ -94,12 +94,6 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
    > [!NOTE]
    > セキュリティのため、この例では接続文字列の一部が削除されています。
 
-8.  テキスト エディターで、接続文字列から `EntityPath` のペアを削除します (前にあるセミコロンも忘れずに削除してください)。 作業が完了すると、接続文字列は次のようになります。
-   
-   ```
-   Endpoint=sb://EVENTHUBS-NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=
-   ```
-
 ## <a name="configure-and-start-the-twitter-client-application"></a>Twitter クライアント アプリケーションの構成および開始
 
 クライアント アプリケーションは、Twitter からツイート イベントを直接取得します。 そのために、クライアント アプリケーションには Twitter ストリーミング API を呼び出すためのアクセス許可が必要です。 このアクセス許可を構成するために、Twitter でアプリケーションを作成し、一意の資格情報 (OAuth トークンなど) を生成します。 次に、API 呼び出しを行うときにこれらの資格情報を使用するようにクライアント アプリケーションを構成します。 
@@ -110,7 +104,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 > [!NOTE]
 > Twitter でアプリケーションを作成し、キー、シークレット、トークンを取得するための正確なプロセスが変更されている場合があります。 以下の手順が Twitter サイトで表示される内容と一致しない場合は、Twitter の開発者向けドキュメントを参照してください。
 
-1. Web ブラウザーで [Twitter の開発者用ページ](https://developer.twitter.com/en/apps)に移動して、 **[Create an app]\(アプリの作成\)** を選択します。 Twitter 開発者アカウントを申請する必要があるというメッセージが表示される場合があります。 お気軽にお申し込みください。申請が承認されると、確認メールを受け取ります。 開発者アカウントの承認には、数日かかることがあります。
+1. Web ブラウザーで [Twitter の開発者用ページ](https://developer.twitter.com/en/apps)に移動して、開発者アカウントを作成し、 **[Create an app]\(アプリの作成\)** を選択します。 Twitter 開発者アカウントを申請する必要があるというメッセージが表示される場合があります。 お気軽にお申し込みください。申請が承認されると、確認メールを受け取ります。 開発者アカウントの承認には、数日かかることがあります。
 
    ![Twitter アプリケーションの詳細](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Twitter アプリケーションの詳細")
 
@@ -139,7 +133,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
    * `oauth_consumer_secret` を Twitter のコンシューマー シークレット (API シークレット) に設定します。
    * `oauth_token` を Twitter のアクセス トークンに設定します。
    * `oauth_token_secret` を Twitter のアクセス トークン シークレットに設定します。
-   * `EventHubNameConnectionString` を接続文字列に設定します。 `EntityPath` のキーと値のペアを削除した接続文字列を使用していることを確認してください。
+   * `EventHubNameConnectionString` を接続文字列に設定します。
    * `EventHubName` をイベント ハブ名 (つまり、エンティティ パスの値) に設定します。
 
 3. コマンド ラインを開き、TwitterClientCore アプリが配置されているディレクトリに移動します。 コマンド `dotnet build` を使用してプロジェクトをビルドします。 次にコマンド `dotnet run` を使用してアプリを実行します。 アプリによりツイートがイベント ハブに送信されます。
@@ -154,7 +148,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 
     最適なパフォーマンスを実現し、リージョン間でのデータ転送の料金がかからないように、ジョブとイベント ハブを同じリージョンに配置することをお勧めします。
 
-3. **作成** を選択します。 デプロイが完了したら、ジョブに移動します。
+3. **［作成］** を選択します デプロイが完了したら、ジョブに移動します。
 
 ## <a name="specify-the-job-input"></a>ジョブの入力の指定
 

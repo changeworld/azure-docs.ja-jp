@@ -1,58 +1,114 @@
 ---
-title: Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する | Microsoft Docs
+title: Azure Monitor での Azure アクティビティ ログの収集と分析
 description: Azure Monitor のログに Azure アクティビティ ログを収集し、監視ソリューションを使用して、すべての Azure サブスクリプションにわたって Azure アクティビティ ログの分析や検索ができます。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/30/2019
-ms.openlocfilehash: 044f974d83eba098820639e67412110329d5ad7d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/24/2020
+ms.openlocfilehash: 4265f6050b237cb40afeddfc228ade9be06be039
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668980"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396765"
 ---
-# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する
+# <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>Azure Monitor での Azure アクティビティ ログの収集と分析
+[Azure アクティビティ ログ](platform-logs-overview.md)は、Azure で発生したサブスクリプションレベルのイベントの分析情報を提供する[プラットフォーム ログ](platform-logs-overview.md)です。 Azure portal でアクティビティ ログを表示できますが、Log Analytics ワークスペースに送信して Azure Monitor の追加機能を有効にするように構成する必要があります。 この記事では、この構成を実行する方法と、アクティビティ ログを Azure Storage およびイベント ハブに送信する方法について説明します。
 
-> [!WARNING]
-> リソース ログの収集方法と同様に、診断設定を使用してアクティビティ ログを Log Analytics ワークスペースに収集できるようになりました。 「[Collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor (Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する)](diagnostic-settings-legacy.md)」を参照してください。
+Log Analytics ワークスペースでアクティビティ ログを接続すると、次のような利点があります。
 
-[Azure アクティビティ ログ](platform-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 この記事では、アクティビティ ログを Log Analytics ワークスペースに収集する方法と、このデータを分析するためのログ クエリおよびビューを提供する Activity Log Analytics [監視ソリューション](../insights/solutions.md)の使用方法について説明します。 
-
-アクティビティ ログを Log Analytics ワークスペースに接続すると、次のような利点があります。
-
-- 複数の Azure サブスクリプションのアクティビティ ログを 1 つの場所に統合して分析できるようにします。
-- アクティビティ ログのエントリを 90 日を超えて保存します。
+- Log Analytics ワークスペースに格納されているアクティビティ ログ データのデータ インジェストまたはデータ保持の料金は発生しません。
 - アクティビティ ログ データを、Azure Monitor によって収集されたその他の監視データと関連付けます。
-- [ログ クエリ](../log-query/log-query-overview.md)を使用して複雑な分析を実行し、アクティビティ ログのエントリから詳細な分析情報を得ます。
+- ログ クエリを使用して複雑な分析を実行し、アクティビティ ログのエントリから詳細な分析情報を得ます。
+- アクティビティ エントリでログ アラートを使用すると、より複雑なアラート ロジックを使用できます。
+- アクティビティ ログのエントリを 90 日を超えて保存します。
+- 複数の Azure サブスクリプションおよびテナントのログ エントリを 1 つの場所に統合して、まとめて分析できるようにします。
 
-## <a name="connect-to-log-analytics-workspace"></a>Log Analytics ワークスペースに接続する
-1 つのワークスペースを、同じ Azure テナント内の複数のサブスクリプションのアクティビティ ログに接続できます。 複数のテナントをまたいだ収集については、「[Azure アクティビティ ログを異なる Azure Active Directory テナント内のサブスクリプションにまたがる Log Analytics ワークスペースに収集する](activity-log-collect-tenants.md)」を参照してください。
 
-> [!IMPORTANT]
-> Microsoft.OperationalInsights と Microsoft.OperationsManagement リソース プロバイダーがサブスクリプションに登録されていない場合、次の手順でエラーが発生することがあります。 これらのプロバイダーの登録については、「[Azure リソース プロバイダーと種類](../../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください。
 
-アクティビティ ログを Log Analytics ワークスペースに接続するには、次の手順を使用します。
+## <a name="collecting-activity-log"></a>アクティビティ ログの収集
+アクティビティログは、[Azure portal で表示する](activity-log-view.md)ために自動的に収集されます。 これを Log Analytics ワークスペースで収集したり、Azure Storage またはイベント ハブに送信したりするには、[診断設定](diagnostic-settings.md)を作成します。 これは、リソース ログによって使用される同じ方法で、すべての[プラットフォーム ログ](platform-logs-overview.md)で一貫させます。  
+
+アクティビティ ログの診断設定を作成するには、Azure Monitor の **[アクティビティ ログ]** メニューから **[診断設定]** を選択します。 設定の作成の詳細については、「[Azure でログとメトリックを収集するための診断設定を作成する](diagnostic-settings.md)」を参照してください。 フィルター処理できるカテゴリの説明については、「[アクティビティログのカテゴリ](activity-log-view.md#categories-in-the-activity-log)」を参照してください。 何らかのレガシ設定がある場合は、診断設定を作成する前にそれらを無効にしてください。 両方を有効にすると、重複するデータが生成される可能性があります。
+
+![診断設定](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+
+> [!NOTE]
+> 現時点では、Azure portal と Resource Manager テンプレートを使用して、サブスクリプション レベルの診断設定のみを作成できます。 
+
+
+## <a name="legacy-settings"></a>レガシ設定 
+診断設定はさまざまな宛先にアクティビティ ログを送信するために推奨される方法ですが、診断設定で置き換えるように選択しないと、レガシの方法が引き続き機能します。 診断設定には、レガシの方法よりも次のような利点があるため、構成を更新することをお勧めします。
+
+- すべてのプラットフォーム ログを収集するための一貫した方法。
+- 複数のサブスクリプションとテナントにわたってアクティビティ ログを収集する。
+- コレクションをフィルター処理して特定のカテゴリのログのみを収集する。
+- すべてのアクティビティ ログ カテゴリを収集する。 一部のカテゴリは、従来の方法を使用して収集されません。
+- ログ インジェストの待機時間が短縮される。 前の方法では約 15 分の待機時間がありましたが、診断設定では約 1 分しか追加されません。
+
+
+
+### <a name="log-profiles"></a>ログ プロファイル
+ログ プロファイルは、Azure Storage またはイベント ハブにアクティビティ ログを送信するためのレガシの方法です。 ログ プロファイルを引き続き使用する場合、または診断設定への移行の準備としてそれを無効にする場合は、次の手順に従います。
+
+1. Azure portal の **[Azure Monitor]** メニューで、 **[アクティビティ ログ]** を選択します。
+3. **[診断設定]** をクリックします。
+
+   ![診断設定](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+4. 従来のエクスペリエンスについては、紫色のバナーをクリックします。
+
+    ![従来のエクスペリエンス](media/diagnostic-settings-subscription/legacy-experience.png)
+
+### <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
+アクティビティ ログを Log Analytics ワークスペースに収集するレガシの方法は、ワークスペース構成でログを接続することです。 
 
 1. Azure portal の **[Log Analytics ワークスペース]** メニューから、アクティビティ ログを収集するためのワークスペースを選択します。
 1. ワークスペースのメニューの **[ワークスペースのデータ ソース]** セクションで、 **[Azure アクティビティ ログ]** を選択します。
 1. 接続するサブスクリプションをクリックします。
 
-    ![Workspaces](media/activity-log-export/workspaces.png)
+    ![Workspaces](media/activity-log-collect/workspaces.png)
 
 1. **[接続]** をクリックして、選択したワークスペースにサブスクリプションのアクティビティ ログを接続します。 サブスクリプションが既に別のワークスペースに接続されている場合、最初に **[切断]** をクリックして切断します。
 
-    ![ワークスペースを接続する](media/activity-log-export/connect-workspace.png)
+    ![ワークスペースを接続する](media/activity-log-collect/connect-workspace.png)
 
-## <a name="analyze-in-log-analytics-workspace"></a>Log Analytics ワークスペースで分析する
-アクティビティ ログを Log Analytics ワークスペースに接続すると、ワークスペースにあり、[ログ クエリ](../log-query/log-query-overview.md)で取得できる **AzureActivity** という名前のテーブルにエントリが書き込まれるようになります。 このテーブルの構造は[ログ エントリのカテゴリ](activity-log-view.md#categories-in-the-activity-log)によって異なります。 各カテゴリの説明については、「[Azure アクティビティ ログのイベント スキーマ](activity-log-schema.md)」を参照してください。
+
+この設定を無効にするには、同じ手順を実行し、 **[切断]** をクリックして、ワークスペースからサブスクリプションを削除します。
+
+
+## <a name="analyze-activity-log-in-log-analytics-workspace"></a>Log Analytics ワークスペースでのアクティビティ ログの分析
+アクティビティ ログを Log Analytics ワークスペースに接続すると、ワークスペースにあり、[ログ クエリ](../log-query/log-query-overview.md)で取得できる *AzureActivity* という名前のテーブルにエントリが書き込まれるようになります。 このテーブルの構造は[ログ エントリのカテゴリ](activity-log-view.md#categories-in-the-activity-log)によって異なります。 各カテゴリの説明については、「[Azure アクティビティ ログのイベント スキーマ](activity-log-schema.md)」を参照してください。
+
+
+### <a name="data-structure-changes"></a>データ構造の変更
+診断設定では、アクティビティ ログを収集するために使われていたレガシの方法と同じデータを収集しますが、*AzureActivity* テーブルの構造にいくらかの変更が加えられています。
+
+次の表の列は、更新されたスキーマで非推奨とされています。 これらは、*AzureActivity* にまだ存在しますが、データを持ちません。 これらの列の代わりとなるものは新しいものではありませんが、非推奨の列と同じデータが格納されています。 それらは形式が異なるため、それらを使用するログ クエリの変更が必要になる場合があります。 
+
+| 非推奨の列 | 置換列 |
+|:---|:---|
+| ActivityStatus    | ActivityStatusValue    |
+| ActivitySubstatus | ActivitySubstatusValue |
+| OperationName     | OperationNameValue     |
+| ResourceProvider  | ResourceProviderValue  |
+
+> [!IMPORTANT]
+> 場合によっては、これらの列の値がすべて大文字になることがあります。 これらの列を含むクエリがある場合は、[=~ 演算子](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)を使用して、大文字と小文字を区別しない比較を実行する必要があります。
+
+更新されたスキーマの *AzureActivity* には、次の列が追加されています。
+
+- Authorization_d
+- Claims_d
+- Properties_d
+
 
 ## <a name="activity-logs-analytics-monitoring-solution"></a>Activity Logs Analytics 監視ソリューション
-Azure Log Analytics 監視ソリューションには、Log Analytics ワークスペースのアクティビティ ログ レコードを分析するための、複数のログ クエリとビューが含まれています。
+Azure Log Analytics 監視ソリューションは、間もなく非推奨となり、Log Analytics ワークスペースで更新されたスキーマを使用するブックに置き換えられます。 このソリューションは、既に有効にしている場合に引き続き使用できますが、レガシの設定を使用してアクティビティ ログを収集している場合にのみ使用できます。 
 
-### <a name="install-the-solution"></a>ソリューションをインストールする
-**Activity Log Analytics** ソリューションをインストールするには、「[監視ソリューションをインストール](../insights/solutions.md#install-a-monitoring-solution)」するの手順を使用します。 追加の構成は必要ありません。
+
 
 ### <a name="use-the-solution"></a>ソリューションの使用
 監視ソリューションには Azure portal の **[Monitor]\(監視\)** メニューからアクセスします。 **[Insights]\(インサイト\)** セクションで **[More]\(詳細\)** を選択して、ソリューション タイルのある **[概要]** ページを開きます。 **[Azure アクティビティ ログ]** タイルには、ワークスペース内の **AzureActivity** レコードの数が表示されます。
@@ -64,12 +120,96 @@ Azure Log Analytics 監視ソリューションには、Log Analytics ワーク�
 
 ![Azure のアクティビティ ログのダッシュボード](media/collect-activity-logs/activity-log-dash.png)
 
-| 視覚化パーツ | 説明 |
-| --- | --- |
-| [Azure Activity Log Entries] \(Azure のアクティビティ ログ エントリ) | 選択した日付範囲の Azure アクティビティ ログ エントリ レコード合計上位の棒グラフが表示され、アクティビティの呼び出し元上位 10 個のリストも表示されます。 棒グラフをクリックすると、`AzureActivity` のログ検索が実行されます。 呼び出し元の項目をクリックするとログ検索が実行され、その項目のアクティビティ ログ エントリがすべて返されます。 |
-| [Activity Logs by Status] \(状態ごとのアクティビティ ログ) | 選択した日付範囲の Azure アクティビティ ログ状態のドーナツ グラフと、上位 10 件の状態レコードの一覧を表示します。 `AzureActivity | summarize AggregatedValue = count() by ActivityStatus` のログ クエリを実行するには、グラフをクリックします。 状態の項目をクリックするとログ検索が実行され、その状態レコードのアクティビティ ログ エントリがすべて返されます。 |
-| [Activity Logs by Resource] \(リソースごとのアクティビティ ログ) | アクティビティ ログのあるリソースの合計数が表示され、上位 10 個のリソースと各リソースのレコード カウントも表示されます。 合計領域をクリックすると、`AzureActivity | summarize AggregatedValue = count() by Resource` のログ検索が実行され、ソリューションで使用可能なすべての Azure リソースが表示されます。 リソースをクリックするとログ クエリが実行され、そのリソースのアクティビティ レコードがすべて返されます。 |
-| [Activity Logs by Resource Provider] \(リソース プロバイダーごとのアクティビティ ログ) | アクティビティ ログを生成するリソース プロバイダーの合計数が表示され、上位 10 個も表示されます。 合計領域をクリックすると、`AzureActivity | summarize AggregatedValue = count() by ResourceProvider` のログ クエリが実行され、Azure のリソース プロバイダーがすべて表示されます。 リソース プロバイダーをクリックするとログ クエリが実行され、プロバイダーのアクティビティ レコードがすべて返されます。 |
+
+### <a name="enable-the-solution-for-new-subscriptions"></a>新しいサブスクリプションでソリューションを有効にする
+間もなく、Azure portal を使用して、アクティビティ ログ分析ソリューションをサブスクリプションに追加できなくなります。 それは Resource Manager テンプレートで、次の手順に従って追加できます。 
+
+1. 次の json を *ActivityLogTemplate*.json というファイルにコピーします。
+
+    ```json
+    {
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "String",
+            "defaultValue": "my-workspace",
+            "metadata": {
+              "description": "Specifies the name of the workspace."
+            }
+        },
+        "location": {
+            "type": "String",
+            "allowedValues": [
+              "east us",
+              "west us",
+              "australia central",
+              "west europe"
+            ],
+            "defaultValue": "australia central",
+            "metadata": {
+              "description": "Specifies the location in which to create the workspace."
+            }
+        }
+      },
+        "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "name": "[parameters('workspaceName')]",
+            "apiVersion": "2015-11-01-preview",
+            "location": "[parameters('location')]",
+            "properties": {
+                "features": {
+                    "searchVersion": 2
+                }
+            }
+        },
+        {
+            "type": "Microsoft.OperationsManagement/solutions",
+            "apiVersion": "2015-11-01-preview",
+            "name": "[concat('AzureActivity(', parameters('workspaceName'),')')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName'))]"
+            ],
+            "plan": {
+                "name": "[concat('AzureActivity(', parameters('workspaceName'),')')]",
+                "promotionCode": "",
+                "product": "OMSGallery/AzureActivity",
+                "publisher": "Microsoft"
+            },
+            "properties": {
+                "workspaceResourceId": "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName'))]",
+                "containedResources": [
+                    "[concat(resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName')), '/views/AzureActivity(',parameters('workspaceName'))]"
+                ]
+            }
+        },
+        {
+          "type": "Microsoft.OperationalInsights/workspaces/datasources",
+          "kind": "AzureActivityLog",
+          "name": "[concat(parameters('workspaceName'), '/', subscription().subscriptionId)]",
+          "apiVersion": "2015-11-01-preview",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+              "[parameters('WorkspaceName')]"
+          ],
+          "properties": {
+              "linkedResourceId": "[concat(subscription().Id, '/providers/microsoft.insights/eventTypes/management')]"
+          }
+        }
+      ]
+    }    
+    ```
+
+2. 次の PowerShell コマンドを使用して、テンプレートをデプロイします。
+
+    ```PowerShell
+    Connect-AzAccount
+    Select-AzSubscription <SubscriptionName>
+    New-AzResourceGroupDeployment -Name activitysolution -ResourceGroupName <ResourceGroup> -TemplateFile <Path to template file>
+    ```
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Web アプリケーション ファイアウォール - よく寄せられる質問
-description: この記事では、Azure Front Door Service の Web アプリケーション ファイアウォールに関してよく寄せられる質問の回答を示します
+description: この記事では、Azure Front Door の Web アプリケーション ファイアウォールに関してよく寄せられる質問の回答を示します
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2019
 ms.author: victorh
-ms.openlocfilehash: 263f929fa010450fcfb35b8db74f94cd6fd7dc84
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c40210f3a6f0fb10be1f20deef87b2acfa076a4c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511620"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460638"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Azure Front Door Service の Azure Web アプリケーション ファイアウォールに関してよく寄せられる質問
 
@@ -23,15 +23,15 @@ ms.locfileid: "73511620"
 
 Azure WAF は Web アプリケーション ファイアウォールです。SQL インジェクション、クロスサイト スクリプティング、その他の Web エクスプロイトなどの一般的な脅威から Web アプリケーションを保護するのに役立ちます。 Web アプリケーションへのアクセスを制御するために、カスタム ルールとマネージド ルールの組み合わせからなる WAF ポリシーを定義できます。
 
-Azure WAF ポリシーは、Application Gateway または Azure Front Door Service でホストされている Web アプリケーションに適用できます。
+Azure WAF ポリシーは、Application Gateway または Azure Front Door でホストされている Web アプリケーションに適用できます。
 
-## <a name="what-is-waf-on-azure-front-door-service"></a>Azure Front Door Service の WAF とは何ですか? 
+## <a name="what-is-waf-on-azure-front-door"></a>Azure Front Door の WAF とは何ですか? 
 
 Azure Front Door は、高度にスケーラブルでグローバルに分散したアプリケーションおよびコンテンツ配信ネットワークです。 Azure WAF を Front Door と統合すると、サービス拒否攻撃や標的型アプリケーション攻撃がユーザーの仮想ネットワークに侵入する前に攻撃元に近い Azure ネットワーク エッジで阻止し、パフォーマンスを犠牲にすることなく保護を提供できます。
 
 ## <a name="does-azure-waf-support-https"></a>Azure WAF では HTTPS がサポートされますか?
 
-Front Door Service では SSL オフロードが提供されます。 WAF はネイティブに Front Door と統合され、暗号化解除された後にその要求を検査できます。
+Front Door では SSL オフロードが提供されます。 WAF はネイティブに Front Door と統合され、暗号化解除された後にその要求を検査できます。
 
 ## <a name="does-azure-waf-support-ipv6"></a>Azure WAF では IPv6 がサポートされますか?
 
@@ -47,7 +47,7 @@ WAF のポリシーをグローバルにデプロイするには、通常約 5 �
 
 ## <a name="can-waf-policies-be-different-for-different-regions"></a>WAF のポリシーはリージョンごとに異なるものにできますか?
 
-WAF は、Front Door Service と統合されると、グローバルなリソースになります。 同じ構成がすべての Front Door の場所に適用されます。
+WAF は、Front Door と統合されると、グローバルなリソースになります。 同じ構成がすべての Front Door の場所に適用されます。
  
 ## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>バックエンドへのアクセスを Front Door からのみに制限するにはどうすればよいですか?
 
@@ -74,7 +74,7 @@ Azure のネットワーク エッジにグローバルに分散された Azure 
 
 しかし、同じクライアントからの要求が、レート制限のカウンターをまだ更新していない別の Front Door サーバーにたどりつく可能性があります。 たとえば、クライアントは要求ごとに新しい接続を開く可能性があり、しきい値が低いとします。 この場合、新しい Front Door サーバーへの最初の要求は、レート制限のチェックを通過します。 通常、レート制限のしきい値は、任意のクライアント IP アドレスからのサービス拒否攻撃に対して防御するために高く設定されます。 しきい値が非常に低い場合は、しきい値を超える追加の要求が通知されることがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Web アプリケーション ファイアウォール](../overview.md)について学習します。
 - [Azure Front Door](../../frontdoor/front-door-overview.md) の詳細を確認します。

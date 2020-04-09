@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 2c074cbd99620a482b18cbe2dfcce8f987d78bd5
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 5b3d6d0561d7d6d6b23cb4f579b0988850da9771
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619212"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80056861"
 ---
 # <a name="import-or-export-configuration-data"></a>構成データのインポートまたはエクスポート
 
 Azure App Configuration はデータのインポート操作とエクスポート操作をサポートします。 これらの操作を使用して、構成データを一括処理し、お使いの App Configuration ストアとコード プロジェクト間でデータを交換することができます。 たとえば、1 つの App Configuration ストアをテスト用に、もう 1 つの App Configuration を実稼働用に設定することができます。 それらの間でアプリケーション設定をコピーできるので、データを 2 回入力する必要がなくなります。
 
-この記事では、App Configuration でデータをインポートおよびエクスポートするためのガイドを提供します。
+この記事では、App Configuration でデータをインポートおよびエクスポートするためのガイドを提供します。 GitHub リポジトリとの継続的な同期を設定する場合は、[GitHub Actions](https://aka.ms/azconfig-gha1) に関する記事を参照してください。
 
 ## <a name="import-data"></a>データのインポート
 

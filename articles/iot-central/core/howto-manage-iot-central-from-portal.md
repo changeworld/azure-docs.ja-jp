@@ -6,14 +6,14 @@ ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/11/2020
-ms.topic: conceptual
+ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 27517c375265b552d2e1dec4d8c167d1bc86549d
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: e7efda8efa27044168386e3ebbc557bf7fb74e8c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137685"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157927"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal で IoT Central を管理する
 
@@ -41,8 +41,7 @@ ms.locfileid: "77137685"
 
 ![IoT Central フォームを作成する](media/howto-manage-iot-central-from-portal/image6a.png)
 
-"**場所**" は、アプリケーションを作成する[地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 現在、Azure IoT Central は、**米国**、**オーストラリア**、**アジア太平洋**、または**ヨーロッパ**で使用できます。  いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
-
+"**場所**" は、アプリケーションを作成する[地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 Azure IoT Central は、現在、**オーストラリア**、**アジア太平洋**、**ヨーロッパ**、**米国**、**英国**、および**日本**で使用できます。 いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
 
 すべてのフィールドに値を入力したら、 **[作成]** を選択します。
 

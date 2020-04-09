@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6393c1eeaaa72d653704fcc52442bfb326dc2cdd
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6ef5952b6413563b2c2e16ff2218f709b414fb84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472334"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297805"
 ---
-#   <a name="entity-recognition-cognitive-skill"></a>エンティティ認識の認知スキル
+#    <a name="entity-recognition-cognitive-skill"></a>エンティティ認識の認知スキル
 
 **エンティティ認識**スキルによってテキストからさまざまな種類のエンティティが抽出されます。 このスキルでは、Cognitive Services の [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) によって提供される機械学習モデルが使用されます。
 
@@ -38,7 +38,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 | パラメーター名     | 説明 |
 |--------------------|-------------|
 | categories    | 抽出する必要があるカテゴリの配列。  可能なカテゴリの型は、`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"` です。 カテゴリが指定されていない場合、すべての型が返されます。|
-|defaultLanguageCode |  入力テキストの言語コード。 次の言語がサポートされます。`ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans` すべての言語ですべてのエンティティ カテゴリがサポートされているわけではありません。以下の注意事項を参照してください。|
+|defaultLanguageCode |    入力テキストの言語コード。 次の言語がサポートされます。`ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans` すべての言語ですべてのエンティティ カテゴリがサポートされているわけではありません。以下の注意事項を参照してください。|
 |minimumPrecision | 0 から 1 の値。 (`namedEntities` 出力の) 信頼度スコアがこの値よりも小さい場合は、エンティティは返されません。 既定値は 0 です。 |
 |includeTypelessEntities | 現在のカテゴリに当てはまらない既知のエンティティを認識するには、`true` に設定します。 認識されたエンティティは、`entities` 複合出力フィールドに返されます。 たとえば、"Windows 10" は既知のエンティティ (製品) ですが、"製品" はサポートされているカテゴリではないため、このエンティティはエンティティ出力フィールドに含まれます。 既定値は `false` です |
 
@@ -47,7 +47,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 | 入力名      | 説明                   |
 |---------------|-------------------------------|
-| languageCode  | 省略可能。 既定値は `"en"` です。  |
+| languageCode    | 省略可能。 既定値は `"en"` です。  |
 | text          | 分析するテキスト。          |
 
 ## <a name="skill-outputs"></a>スキルの出力
@@ -55,9 +55,9 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 > [!NOTE]
 > 言語によっては、一部のエンティティ カテゴリがサポートされていません。 `"Person"`、`"Location"`、および `"Organization"` エンティティ カテゴリの種類は、上記の言語のすべてでサポートされています。 `"Quantity"`、`"Datetime"`、`"URL"`、および `"Email"` の種類の抽出をサポートするのは、_de_、_en_、_es_、_fr_、および _zh-hans_ のみです。 詳細については、「[Text Analytics API の言語と地域のサポート](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support)」を参照してください。  
 
-| 出力名     | 説明                   |
+| 出力名      | 説明                   |
 |---------------|-------------------------------|
-| persons      | 各文字列が人物の名前を表す文字列の配列。 |
+| persons       | 各文字列が人物の名前を表す文字列の配列。 |
 | locations  | 各文字列が場所を表す文字列の配列。 |
 | organizations  | 各文字列が組織を表す文字列の配列。 |
 | quantities  | 各文字列が数量を表す文字列の配列。 |
@@ -67,7 +67,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 | namedEntities | 次のフィールドが含まれる複合型の配列。 <ul><li>category</li> <li>value (実際のエンティティ名)</li><li>offset (テキスト内で見つかった場所)</li><li>confidence (値が高いほど、実際のエンティティに近づきます)</li></ul> |
 | entities | 複合型の配列。テキストから抽出されたエンティティに関する豊富な情報と次のフィールドが含まれます。 <ul><li> name (実際のエンティティ名。 これは "正規化" フォームです)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (エンティティの Wikipedia ページのリンク)</li><li>bingId</li><li>type (認識されたエンティティのカテゴリ)</li><li>subType (特定のカテゴリのみで利用可能。エンティティ型がより詳しく表示されます)</li><li> matches (次を含む複合コレクション)<ul><li>text (エンティティの未加工テキスト)</li><li>offset (それが見つかった場所)</li><li>length (未加工エンティティ テキストの長さ)</li></ul></li></ul> |
 
-##  <a name="sample-definition"></a>定義例
+##    <a name="sample-definition"></a>定義例
 
 ```json
   {
@@ -97,7 +97,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
     ]
   }
 ```
-##  <a name="sample-input"></a>サンプル入力
+##    <a name="sample-input"></a>サンプル入力
 
 ```json
 {
@@ -114,7 +114,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 }
 ```
 
-##  <a name="sample-output"></a>サンプル出力
+##    <a name="sample-output"></a>サンプル出力
 
 ```json
 {
@@ -187,6 +187,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 }
 ```
 
+このスキルの出力のエンティティに対して返されるオフセットは、[Text Analytics API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) から直接返されることに注意してください。つまり、これらを使用して元の文字列にインデックスを作成する場合は、正しい内容を抽出するために .NET の [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) クラスを使用する必要があります。  [詳細については、こちらで確認できます。](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
 
 ## <a name="error-cases"></a>エラーになる場合
 ドキュメントの言語コードがサポートされていない場合、エラーが返され、エンティティは抽出されません。

@@ -5,24 +5,21 @@ services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 90e42ff9-43b0-4b4f-a222-51df847b2a8d
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ec9d58c517cca354b00af25e1f0204460f2851bb
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: eaa3844bfbbef8cb71dbe8691cab894c921ce00a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163384"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154510"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて
 
@@ -51,7 +48,7 @@ JavaScript ベースのアプローチを最大限に活用するアプリケー
 * クロス オリジン呼び出しをしなくても、トークンを確実に取得できます。トークンが返されるリダイレクト URI の登録が必須であるため、トークンが置換されないことが保証されます。
 * JavaScript アプリケーションは、ドメインの制限なしに、対象とする Web API の数だけ、必要な数のアクセス トークンを取得できます。
 * セッションやローカル ストレージなどの HTML5 機能ではトークンのキャッシュと有効期間管理にフル コントロールを許可しますが、Cookie の管理はアプリにとって非透過的です。
-* アクセス トークンはクロスサイト リクエスト フォージェリ (CSRF) 攻撃をあまり受けません。
+* アクセス トークンはクロスサイト リクエスト フォージェリ (CSRF) 攻撃をあまり受けません
 
 暗黙的な許可フローでは、主にセキュリティ上の理由から、更新トークンを発行しません。 更新トークンはアクセス トークンほどスコープが狭義ではないため、多くの権限を付与すると、リークされた場合のダメージが大きくなります。暗黙的フローでは、トークンは URL の形式で配信されるため、傍受されるリスクが認証コード付与よりも高くなります。
 

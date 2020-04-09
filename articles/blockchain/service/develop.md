@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Service の開発の概要
 description: Azure Blockchain Service でのソリューションの開発の概要です。
-ms.date: 11/22/2019
+ms.date: 03/26/2020
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: 3748a1ca473d817f536ba7c912d2485ffc14de2d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 4a98e5ea025894303bc5c77bba0c6154a08315f2
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455878"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348379"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Azure Blockchain Service の開発の概要
 
@@ -22,6 +22,8 @@ Azure Blockchain Service では、コンソーシアム ブロックチェーン
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
 Azure Blockchain Development Kit Visual Studio Code 拡張機能を使用して、コンソーシアム メンバーに接続できます。 コンソーシアムに接続したら、スマート コントラクトをコンパイル、ビルドし、Azure Blockchain Service コンソーシアム メンバーにデプロイできます。
+
+高度なエンタープライズ ブロックチェーン ソリューションを開発するには、さまざまなブロックチェーン ネットワークに接続し、スマート コントラクトのライフサイクルを管理するための開発フレームワークが必要です。 ほとんどのプロジェクトで、少なくとも 2 つのブロックチェーン ノードとやり取りします。 開発者は開発中、ローカルのブロックチェーンを使用します。 アプリケーションのテストまたはリリースの準備ができたら、開発者はブロックチェーン ネットワークにデプロイします。 たとえば、メイン パブリック Ethereum ネットワークや Azure Blockchain Service などです。 Visual Studio Code の Azure Blockchain Development Kit for Ethereum 拡張機能では、Truffle を使用します。 Truffle は、Ethereum ブロックチェーンで分散アプリケーションを記述、コンパイル、デプロイ、テストするための人気のあるブロックチェーン開発フレームワークです。 Truffle は、スマート コントラクトの開発と従来の Web 開発をシームレスに統合するフレームワークと考えることもできます。
 
 詳細については、「[クイック スタート: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を完了します。
 
@@ -36,14 +38,6 @@ MetaMask は、ブラウザー ベースのウォレット (リモート クラ�
 Geth は、Go で実装された完全な Ethereum ノードを実行するためのコマンド ライン インターフェイスです。 フル ノードを実行する必要はありませんが、Azure Blockchain Service とやり取りするための JavaScript API が公開される JavaScript ランタイム環境を提供する、対話型コンソールを起動できます。
 
 詳細については、「[クイック スタート: Geth を使用して Azure Blockchain Service のトランザクション ノードに接続する](connect-geth.md)」を参照してください。
-
-## <a name="development-framework-configuration"></a>開発フレームワークの構成
-
-高度なエンタープライズ ブロックチェーン ソリューションを開発するには、さまざまなブロックチェーン ネットワークに接続し、スマート コントラクトのライフサイクルを管理するための開発フレームワークが必要です。
-
-Truffle は、Ethereum ブロックチェーンで分散アプリケーションを記述、コンパイル、デプロイ、テストするための人気のあるブロックチェーン開発フレームワークです。 Truffle は、スマート コントラクトの開発と従来の Web 開発をシームレスに統合するフレームワークと考えることもできます。
-
-ほとんどのプロジェクトで、少なくとも 2 つのブロックチェーン ノードとやり取りします。 開発者は開発中、ローカルのブロックチェーンを使用します。 アプリケーションのテストまたはリリースの準備ができたら、開発者はブロックチェーン ネットワークにデプロイします。 たとえば、メイン パブリック Ethereum ネットワークや Azure Blockchain Service などです。 Truffle を使用すると、各ネットワークのスマート コントラクトをコンパイルしてデプロイし、最終的なアプリケーションのデプロイを簡略化できます。 詳細については、「[クイック スタート: Use Truffle to connect to a an Azure Blockchain Service network (Truffle を使用して Azure Blockchain Service ネットワークに接続する)](connect-truffle.md)」をご覧ください。
 
 ## <a name="ethereum-quorum-private-transactions"></a>Ethereum Quorum のプライベート トランザクション
 
@@ -67,7 +61,7 @@ Blockchain Data Manager と Azure Cosmos DB を利用し、独自のブロック
 
 エンタープライズ シナリオでのブロックチェーンの使用が増えており、ボトルネックとシステムの非効率性を回避するには、1 秒あたりのトランザクション数 (TPS) の速度が重要です。 分散型ブロックチェーン内では、高いトランザクション レートを維持するのが難しい場合があります。 正確な TPS の測定は、サーバー スレッド、トランザクション キューのサイズ、ネットワーク待機時間、セキュリティなどのさまざまな要因によって影響を受ける可能性があります。 開発中に TPS の速度を測定する必要がある場合は、オープンソース ツールの [ChainHammer](https://github.com/drandreaskrueger/chainhammer) がよく使用されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Blockchain Development Kit for Ethereum を使用して Azure Blockchain Service 上のコンソーシアムに接続するクイックスタートをお試しください。
 

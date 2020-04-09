@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 93e5ee9b46fb3387b70dd5092f72efcaa8a2bc19
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4bf85a8e38a3cfc46fe4dbaf86639899e7267178
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223069"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676606"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>チュートリアル:ハイブリッド環境の Azure Active Directory Domain Services でパスワード同期を有効にする
 
@@ -68,7 +68,7 @@ Azure AD Connect がインストールされ、Azure AD と同期するよう構
 
     このスクリーンショットの例では、次のコネクタが使用されています。
 
-    * Azure AD コネクタの名前は *aaddscontoso.onmicrosoft.com - AAD* です
+    * Azure AD コネクタの名前は *contoso.onmicrosoft.com - AAD* です
     * オンプレミスの AD DS コネクタの名前は *onprem.contoso.com* です
 
 1. Azure AD Connect がインストールされているコンピューターに、次の PowerShell スクリプトをコピーして貼り付けます。 このスクリプトにより、従来のパスワード ハッシュを含む完全なパスワード同期がトリガーされます。 前の手順のコネクタ名を使用して、`$azureadConnector` および `$adConnector` 変数を更新します。

@@ -1,28 +1,25 @@
 ---
-title: ファイルと ACL 用の Azure Data Lake Storage Gen2 Python SDK (プレビュー)
+title: ファイルと ACL 用の Azure Data Lake Storage Gen2 Python SDK
 description: Python を使用して、階層型名前空間 (HNS) が有効なストレージ アカウントでディレクトリ、ファイル、ディレクトリのアクセス制御リスト (ACL) を管理します。
 author: normesta
 ms.service: storage
-ms.date: 11/24/2019
+ms.date: 03/20/2020
 ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: cb2e1c16c1419d9925bd837bb4e12119f08d56c4
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: a00713df2cdda626a76cc648826f7e56df214232
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119535"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668720"
 ---
-# <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Python を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する (プレビュー)
+# <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Python を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
 この記事では、Python を使用して、階層型名前空間 (HNS) が有効なストレージ アカウントでディレクトリ、ファイル、アクセス許可を作成および管理する方法について説明します。 
 
-> [!IMPORTANT]
-> Python 向けの Azure Data Lake Storage クライアント ライブラリのサポートは、現在パブリック プレビュー段階です。
-
-[パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-file-datalake/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [API リファレンス](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html) | [Gen1 から Gen2 へのマッピング](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [フィードバックを送る](https://github.com/Azure/azure-sdk-for-python/issues)
+[パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-file-datalake/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [API リファレンス](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html) | [Gen1 から Gen2 へのマッピング](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [フィードバックを送る](https://github.com/Azure/azure-sdk-for-python/issues)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,13 +40,19 @@ pip install azure-storage-file-datalake --pre
 ```python
 import os, uuid, sys
 from azure.storage.filedatalake import DataLakeServiceClient
+from azure.core._match_conditions import MatchConditions
+from azure.storage.filedatalake._models import ContentSettings
 ```
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する
 
-この記事のスニペットを使用するには、ストレージ アカウントを表す **DataLakeServiceClient** インスタンスを作成する必要があります。 最も簡単な方法は、アカウント キーを使用することです。 
+この記事のスニペットを使用するには、ストレージ アカウントを表す **DataLakeServiceClient** インスタンスを作成する必要があります。 
 
-この例では、アカウント キーを使用して、ストレージアカウントを表す **DataLakeServiceClient** インスタンスを作成します。 
+### <a name="connect-by-using-an-account-key"></a>アカウント キーを使用して接続する
+
+これはアカウントに接続する最も簡単な方法です。 
+
+この例では、アカウント キーを使用して **DataLakeServiceClient** インスタンスを作成します。
 
 ```python
 try:  
@@ -65,6 +68,30 @@ except Exception as e:
 - `storage_account_name` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
 - `storage_account_key` プレースホルダーの値は、実際のストレージ アカウントのアクセス キーに置き換えます。
+
+### <a name="connect-by-using-azure-active-directory-ad"></a>Azure Active Directory (AD) を使用して接続する
+
+[Python 用 Azure ID クライアント ライブラリ](https://pypi.org/project/azure-identity/)を使用して、Azure AD でアプリケーションを認証できます。
+
+この例では、クライアント ID、クライアント シークレット、およびテナント ID を使用して **DataLakeServiceClient** インスタンスを作成します。  これらの値を取得するには、「[クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する](../common/storage-auth-aad-app.md)」を参照してください。
+
+```python
+def initialize_storage_account_ad(storage_account_name, client_id, client_secret, tenant_id):
+    
+    try:  
+        global service_client
+
+        credential = ClientSecretCredential(tenant_id, client_id, client_secret)
+
+        service_client = DataLakeServiceClient(account_url="{}://{}.dfs.core.windows.net".format(
+            "https", storage_account_name), credential=credential)
+    
+    except Exception as e:
+        print(e)
+```
+
+> [!NOTE]
+> その他の例については、[Python 用 Azure ID クライアント ライブラリ](https://pypi.org/project/azure-identity/)のドキュメントを参照してください。
 
 ## <a name="create-a-file-system"></a>ファイル システムを作成する
 
@@ -195,6 +222,33 @@ def upload_file_to_directory():
       print(e) 
 ```
 
+> [!TIP]
+> ファイル サイズが大きい場合は、コードで **DataLakeFileClient.append_data** メソッドを複数回呼び出す必要があります。 代わりに **DataLakeFileClient.upload_data** メソッドを使用することを検討してください。 この方法により、1 回の呼び出しでファイル全体をアップロードできます。 
+
+## <a name="upload-a-large-file-to-a-directory"></a>大きなファイルをディレクトリにアップロードする
+
+**DataLakeFileClient.upload_data** メソッドを使用して大きなファイルをアップロードします。**DataLakeFileClient.append_data** メソッドを複数回呼び出す必要はありません。
+
+```python
+def upload_file_to_directory_bulk():
+    try:
+
+        file_system_client = service_client.get_file_system_client(file_system="my-file-system")
+
+        directory_client = file_system_client.get_directory_client("my-directory")
+        
+        file_client = directory_client.get_file_client("uploaded-file.txt")
+
+        local_file = open("C:\\file-to-upload.txt",'r')
+
+        file_contents = local_file.read()
+
+        file_client.upload_data(file_contents, overwrite=True)
+
+    except Exception as e:
+      print(e) 
+```
+
 ## <a name="manage-file-permissions"></a>ファイルのアクセス許可を管理する
 
 **DataLakeFileClient.get_access_control** メソッドを呼び出してファイルのアクセス制御リスト (ACL) を取得し、**DataLakeFileClient.set_access_control** メソッドを呼び出して ACL を設定します。
@@ -244,7 +298,9 @@ def download_file_from_directory():
 
         file_client = directory_client.get_file_client("uploaded-file.txt")
 
-        downloaded_bytes = file_client.read_file()
+        download = file_client.download_file()
+
+        downloaded_bytes = download.readall()
 
         local_file.write(downloaded_bytes)
 
@@ -274,7 +330,7 @@ def list_directory_contents():
      print(e) 
 ```
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [API リファレンス ドキュメント](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
 * [パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-file-datalake/)

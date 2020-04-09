@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: a233a9deb58a7c1abc87a622a4f1f2581ee2e477
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2dbbe6bcd4957a108cc3eae4d41816b130cf8f07
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62125799"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633864"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array でボリュームを管理する
 
@@ -34,7 +34,7 @@ StorSimple デバイス マネージャー サービスは Azure Portal の拡�
 StorSimple ボリュームは、次のいずれかです。
 
 * **ローカル固定**: このボリュームのデータは常にアレイに保持され、クラウドにあふれることはありません。
-* **階層化**: このボリュームのデータはクラウドにあふれる場合があります。 階層化ボリュームを作成した場合、領域の約 10% はローカル層にプロビジョニングされ、90% はクラウドにプロビジョニングされます。 たとえば、1 TB ボリュームをプロビジョニングした場合、データが階層化されるとき、100 GB はローカル領域に格納され、900 GB はクラウドに使用されます。 つまり、デバイスのすべてのローカル領域が不足すると、階層化ボリュームをプロビジョニングすることはできません (ローカル層に必要な 10% が利用できないため)。
+* **階層化**: これらのボリュームのデータは、クラウドにあふれる場合があります。 階層化ボリュームを作成した場合、領域の約 10% はローカル層にプロビジョニングされ、90% はクラウドにプロビジョニングされます。 たとえば、1 TB ボリュームをプロビジョニングした場合、データが階層化されるとき、100 GB はローカル領域に格納され、900 GB はクラウドに使用されます。 つまり、デバイスのすべてのローカル領域が不足すると、階層化ボリュームをプロビジョニングすることはできません (ローカル層に必要な 10% が利用できないため)。
 
 ### <a name="provisioned-capacity"></a>プロビジョニング容量
 ボリュームの種類ごとの最大プロビジョニング容量については、次の表を参照してください。
@@ -44,7 +44,7 @@ StorSimple ボリュームは、次のいずれかです。
 | 階層化ボリュームの最小サイズ                            | 500 GB        |
 | 階層化ボリュームの最大サイズ                            | 5 TB          |
 | ローカル固定ボリュームの最小サイズ                    | 50 GB         |
-| ローカル固定ボリュームの最大サイズ                    | 500 GB        |
+| ローカル固定ボリュームの最大サイズ                    | 200 GB        |
 
 ## <a name="the-volumes-blade"></a>ボリューム ブレード
 StorSimple サービスの概要ブレードの **[ボリューム]** メニューには、指定された StorSimple アレイのストレージ ボリュームの一覧が表示され、そのボリュームを管理することができます。

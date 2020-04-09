@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 28ab6ca9b87bb00cbb7b5e329b7ff08972ba370a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a0dbd92533703a56f1ec2478fab8944656129247
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979133"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295501"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs でラボにアーティファクト リポジトリを追加する
 DevTest Labs では、VM の作成時または VM が作成された後に VM に追加されるアーティファクトを指定できます。 このアーティファクトには、VM にインストールするツールやアプリケーションがあります。 アーティファクトは、GitHub または Azure DevOps リポジトリから読み込まれた JSON ファイルで定義されます。
@@ -46,7 +46,7 @@ DevTest Labs によって維持されている[パブリック アーティフ�
 10. GitHub を閉じます。   
 
 ### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Azure Repos のクローン URL と個人用アクセス トークンの取得
-1. チーム コレクションのホーム ページ (たとえば、 https://contoso-web-team.visualstudio.com) ) に移動し、プロジェクトを選択します。
+1. チーム コレクションのホーム ページ (たとえば、`https://contoso-web-team.visualstudio.com`) に移動し、プロジェクトを選択します。
 2. プロジェクトのホーム ページで、 **[コード]** を選択します。
 3. クローン URL を表示するには、プロジェクト **[Code (コード)]** ページで、 **[Clone (クローン)]** を選択します。
 4. URL を保存します。 後でこの URL を使用します。
@@ -65,7 +65,7 @@ DevTest Labs によって維持されている[パブリック アーティフ�
 ## <a name="use-azure-portal"></a>Azure Portal の使用
 このセクションでは、Azure Portal でラボにアーティファクト リポジトリを追加する手順を示します。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、サービスの一覧で **[DevTest Labs]** を選択します。
 3. ラボの一覧でラボを選択します。
 4. 左側のメニューで **[構成とポリシー]** を選択します。
@@ -370,7 +370,7 @@ if ($ArtifactRepositoryName -eq $null){
 
 ### <a name="powershell-commands-used-in-the-script"></a>このスクリプトで使用される PowerShell コマンド
 
-| PowerShell コマンド | メモ |
+| PowerShell コマンド | Notes |
 | ------------------ | ----- |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | このコマンドは、ラボに関する詳細 (場所など) を取得するために使用されます。 |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | アーティファクト リポジトリを追加するための特定のコマンドは存在しません。 一般的な [New-AzResource](/powershell/module/az.resources/new-azresource) コマンドレットがこのジョブを実行します。 このコマンドレットには、作成するリソースの種類を認識するために **ResourceId** または **ResourceName** と **ResourceType** のペアのどちらかが必要です。 このサンプル スクリプトでは、リソース名とリソースの種類のペアを使用します。 <br/><br/>ラボと同じ場所および同じリソース グループにアーティファクト リポジトリ ソースを作成していることに注意してください。|

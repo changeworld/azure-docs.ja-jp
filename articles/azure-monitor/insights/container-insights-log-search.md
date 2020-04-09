@@ -2,13 +2,13 @@
 title: Azure Monitor for containers からログを照会する方法 |Microsoft Docs
 description: Azure Monitor for containers は、メトリックとログ データを収集します。この記事では、レコードについて説明し、サンプル クエリを紹介します。
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: dcd1656673e549b583de26bca897d0055f389d0a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/26/2020
+ms.openlocfilehash: ff7cbff708b794847d8be69ca8f829e622d7c7ab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404533"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333469"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Azure Monitor for containers からログを照会する方法
 
@@ -28,15 +28,11 @@ Azure Monitor for containers では、コンテナー ホストおよびコン�
 | Kubernetes クラスター内のノード部分のインベントリ | `KubeNodeInventory` | TimeGenerated, Computer, ClusterName, ClusterId, LastTransitionTimeReady, Labels, Status, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
 | Kubernetes イベント | `KubeEvents` | TimeGenerated, Computer, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, Message,  SourceSystem | 
 | Kubernetes クラスター内のサービス | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
-| Kubernetes クラスターのノード部分のパフォーマンス メトリック | Perf &#124; where ObjectName == “K8SNode” | Computer、ObjectName、CounterName &#40;cpuAllocatableBytes、memoryAllocatableBytes、cpuCapacityNanoCores、memoryCapacityBytes、memoryRssBytes、cpuUsageNanoCores、memoryWorkingsetBytes、restartTimeEpoch&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
-| Kubernetes クラスターのコンテナー部分のパフォーマンス メトリック | Perf &#124; where ObjectName == “K8SContainer” | CounterName &#40;cpuRequestNanoCores、memoryRequestBytes、cpuLimitNanoCores、memoryWorkingSetBytes、restartTimeEpoch、cpuUsageNanoCores、memoryRssBytes&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
+| Kubernetes クラスターのノード部分のパフォーマンス メトリック | Perf &#124; where ObjectName == "K8SNode" | Computer、ObjectName、CounterName &#40;cpuAllocatableBytes、memoryAllocatableBytes、cpuCapacityNanoCores、memoryCapacityBytes、memoryRssBytes、cpuUsageNanoCores、memoryWorkingsetBytes、restartTimeEpoch&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
+| Kubernetes クラスターのコンテナー部分のパフォーマンス メトリック | Perf &#124; where ObjectName == "K8SContainer" | CounterName &#40;cpuRequestNanoCores、memoryRequestBytes、cpuLimitNanoCores、memoryWorkingSetBytes、restartTimeEpoch、cpuUsageNanoCores、memoryRssBytes&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
 | カスタム メトリック |`InsightsMetrics` | Computer、Name、Namespace、Origin、SourceSystem、Tags<sup>1</sup>、TimeGenerated、Type、Va、_ResourceId | 
 
 <sup>1</sup>*Tags* プロパティは、対応するメトリックの[複数のディメンション](../platform/data-platform-metrics.md#multi-dimensional-metrics)を表します。 `InsightsMetrics` テーブルに収集して格納されているメトリックの詳細とレコードのプロパティの説明については、[InsightsMetrics の概要](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)に関するページを参照してください。
-
->[!NOTE]
->現時点では、Prometheus のサポートはパブリック プレビューの機能です。
->
 
 ## <a name="search-logs-to-analyze-data"></a>データを分析するためのログの検索
 
@@ -44,7 +40,7 @@ Azure Monitor ログを使用することにより、傾向の特定、ボトル
 
 **[分析で表示する]** ドロップダウン リストからプレビュー ウィンドウの **[Kubernetes イベント ログの表示]** または **[コンテナー ログの表示]** オプションを選択することにより、ワークスペース内のデータの分析を対話式に実行できます。 **[ログ検索]** ページは、元の Azure portal ページの右側に表示されます。
 
-![Log Analytics でデータを解析する](./media/container-insights-analyze/container-health-log-search-example.png)   
+![Log Analytics でデータを解析する](./media/container-insights-analyze/container-health-log-search-example.png)
 
 ワークスペースに転送されるコンテナー ログ出力は、STDOUT および STDERR です。 Azure Monitor では、Azure マネージド Kubernetes (AKS) が監視され、大量のデータが生成されるため、現時点では Kube システムのデータは収集されません。 
 

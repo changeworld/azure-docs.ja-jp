@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 11/14/2019
+ms.date: 4/2/2020
 ms.author: swmachan
-ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: fcbaabac0961f1269a929fb4a56f81ac282bae29
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123039"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619159"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
@@ -44,7 +44,7 @@ Microsoft Translator Text API への要求は、ほとんどの場合、その�
 |説明|Azure 地域|ベース URL|
 |:--|:--|:--|
 |Azure|グローバル (リージョンなし)|   api.cognitive.microsofttranslator.com|
-|Azure|米国|   api-nam.cognitive.microsofttranslator.com|
+|Azure|United States|   api-nam.cognitive.microsofttranslator.com|
 |Azure|ヨーロッパ|  api-eur.cognitive.microsofttranslator.com|
 |Azure|アジア太平洋|    api-apc.cognitive.microsofttranslator.com|
 
@@ -54,21 +54,78 @@ Azure Cognitive Services の Translator Text API または [Cognitive Services �
 
 お客様のサブスクリプションの認証に使用できるヘッダーは 3 つあります。 次の表は、それぞれの使用方法を示しています。
 
-|headers|説明|
+|ヘッダー|説明|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|*秘密鍵を渡そうとしている場合は、Cognitive Services サブスクリプションで使用します*。<br/>値は、Translator Text API に対するユーザーのサブスクリプションの Azure 秘密鍵です。|
-|Authorization|*認証トークンを渡そうとしている場合は、Cognitive Services サブスクリプションで使用します。*<br/>値はベアラー トークンで、`Bearer <token>` となります。|
-|Ocp-Apim-Subscription-Region|*マルチサービスの秘密鍵を渡す場合は、Cognitive Services マルチサービス サブスクリプションで使用します。*<br/>値は、マルチサービス サブスクリプションのリージョンです。 マルチサービス サブスクリプションを使用しない場合、この値は省略できます。|
+|承認|*認証トークンを渡そうとしている場合は、Cognitive Services サブスクリプションで使用します。*<br/>値はベアラー トークンで、`Bearer <token>` となります。|
+|Ocp-Apim-Subscription-Region|"*Cognitive Services マルチサービスとリージョン トランスレータ― リソースと共に使用します。* "<br/>値は、マルチサービスまたはリージョン トランスレーター リソースのリージョンです。 グローバル トランスレーター リソースを使用する場合、この値は省略可能です。|
 
 ###  <a name="secret-key"></a>秘密鍵
 1 つ目の方法は、`Ocp-Apim-Subscription-Key` ヘッダーを使用した認証です。 `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` ヘッダーをお客様の要求に追加します。
 
-### <a name="authorization-token"></a>承認トークン
+#### <a name="authenticating-with-a-global-resource"></a>グローバル リソースを使用した認証
+
+[グローバル トランスレーター リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)を使用する場合は、Translator API を呼び出すために 1 つのヘッダーを含める必要があります。
+
+|ヘッダー|説明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 値は、Translator Text API に対するユーザーのサブスクリプションの Azure 秘密鍵です。|
+
+グローバル トランスレーター リソースを使用する Translator API を呼び出す要求の例を次に示します。
+
+```curl
+// Pass secret key using headers
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-regional-resource"></a>リージョン リソースを使用した認証
+
+[リージョン トラスレーター リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)を使用する場合。
+Translator API を呼び出すために必要なヘッダーが 2 つあります。
+
+|ヘッダー|説明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 値は、Translator Text API に対するユーザーのサブスクリプションの Azure 秘密鍵です。|
+|Ocp-Apim-Subscription-Region| 値は、トランスレータ― リソースのリージョンです。 |
+
+リージョン トランスレーター リソースを使用する Translator API を呼び出す要求の例を次に示します。
+
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
+
+#### <a name="authenticating-with-a-multi-service-resource"></a>マルチサービス リソースを使用した認証
+
+Cognitive Service のマルチサービス リソースを使用する場合。 この場合、単一の秘密鍵を使用して複数のサービスの要求を認証することができます。 
+
+マルチサービスの秘密鍵を使用するときは、2 つの認証ヘッダーをお客様の要求に含める必要があります。 Translator API を呼び出すために必要なヘッダーが 2 つあります。
+
+|ヘッダー|説明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 値は、マルチサービス リソースの Azure 秘密鍵です。|
+|Ocp-Apim-Subscription-Region| 値は、マルチサービス リソースのリージョンです。 |
+
+マルチサービスの Text API サブスクリプションではリージョンが必須です。 マルチサービスのサブスクリプション キーを使用する場合、選択したリージョンでのみテキスト翻訳を使用でき、Azure portal を通してマルチサービスのサブスクリプションにサインアップしたときに選択したリージョンと同じにする必要があります。
+
+使用可能なリージョンは、`australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centralus`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`francecentral`、`japaneast`、`japanwest`、`koreacentral`、`northcentralus`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus`、`westus2`、`southafricanorth` です。
+
+クエリ文字列のパラメーター `Subscription-Key` で秘密鍵を渡す場合、クエリ パラメーター `Subscription-Region` でリージョンを指定する必要があります。
+
+### <a name="authenticating-with-an-access-token"></a>アクセス トークンを使用した認証
 または、お客様の秘密鍵をアクセス トークンと交換する方法もあります。 このトークンをそれぞれの要求に `Authorization` ヘッダーとして含めます。 承認トークンを取得するには、次の URL に `POST` 要求を送信します。
 
-| 環境     | 承認サービスの URL                                |
+| リソースの種類     | 承認サービスの URL                                |
 |-----------------|-----------------------------------------------------------|
-| Azure           | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| グローバル          | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
+| リージョンまたはマルチサービス | `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
 指定の秘密鍵でトークンを取得する要求の例を次に示します。
 
@@ -88,24 +145,31 @@ Authorization: Bearer <Base64-access_token>
 
 認証トークンは 10 分間有効です。 Translator API に対して複数の呼び出しを行う場合は、このトークンを再利用する必要があります。 ただし、プログラムで、長時間にわたって Translator API に要求を行う場合は、一定間隔 (例えば、8 分ごと) でプログラムから新しいアクセス トークンを要求する必要があります。
 
-### <a name="multi-service-subscription"></a>マルチサービスのサブスクリプション
+## <a name="virtual-network-support"></a>仮想ネットワークのサポート
 
-最後の認証オプションは、Cognitive Services のマルチサービス サブスクリプションを使用する方法です。 この場合、単一の秘密鍵を使用して複数のサービスの要求を認証することができます。 
+限られたリージョン (`WestUS2`、`EastUS`、`SouthCentralUS`、`WestUS`、`Central US EUAP`、`global`) で Virtual Network の機能を使用してトランスレータ― サービスを利用できるようになりました。 Virtual Network を有効にするには、「[Azure Cognitive Services 仮想ネットワークを構成する](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)」を参照してください。 
 
-マルチサービスの秘密鍵を使用するときは、2 つの認証ヘッダーをお客様の要求に含める必要があります。 1 つ目で秘密鍵を渡し、2 つ目でお客様のサブスクリプションに関連付けられているリージョンを指定します。 
-* `Ocp-Apim-Subscription-Key`
-* `Ocp-Apim-Subscription-Region`
+この機能を有効にした後、カスタム エンドポイントを使用して Translator API を呼び出す必要があります。 グローバル トランスレーター エンドポイント ("api.cognitive.microsofttranslator.com") は使用できず、アクセス トークンで認証することはできません。
 
-マルチサービスの Text API サブスクリプションではリージョンが必須です。 マルチサービスのサブスクリプション キーを使用する場合、選択したリージョンでのみテキスト翻訳を使用でき、Azure portal を通してマルチサービスのサブスクリプションにサインアップしたときに選択したリージョンと同じにする必要があります。
+[トランスレータ― リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)を作成した後、カスタム エンドポイントを見つけることができます。
 
-使用可能なリージョンは、`australiaeast`、`brazilsouth`、`canadacentral`、`centralindia`、`centralus`、`centraluseuap`、`eastasia`、`eastus`、`eastus2`、`francecentral`、`japaneast`、`japanwest`、`koreacentral`、`northcentralus`、`northeurope`、`southcentralus`、`southeastasia`、`uksouth`、`westcentralus`、`westeurope`、`westus`、`westus2`、`southafricanorth` です。
+|ヘッダー|説明|
+|:-----|:----|
+|Ocp-Apim-Subscription-Key| 値は、Translator Text API に対するユーザーのサブスクリプションの Azure 秘密鍵です。|
+|Ocp-Apim-Subscription-Region| 値は、トランスレータ― リソースのリージョンです。 リソースが `global` の場合、この値は省略可能です。|
 
-クエリ文字列のパラメーター `Subscription-Key` で秘密鍵を渡す場合、クエリ パラメーター `Subscription-Region` でリージョンを指定する必要があります。
+カスタム エンドポイントを使用する Translator API を呼び出す要求の例を次に示します。
 
-ベアラー トークンを使用する場合は、リージョンのエンドポイント (`https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`) からトークンを取得する必要があります。
+```curl
+// Pass secret key and region using headers
+curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translator/text/v3.0/translate?api-version=3.0&to=es" \
+     -H "Ocp-Apim-Subscription-Key:<your-key>" \
+     -H "Ocp-Apim-Subscription-Region:<your-region>" \
+     -H "Content-Type: application/json" \
+     -d "[{'Text':'Hello, what is your name?'}]"
+```
 
-
-## <a name="errors"></a>Errors
+## <a name="errors"></a>エラー
 
 標準的なエラー応答は、`error` という名前の名前/値ペアを含む JSON オブジェクトです。 値は、以下のプロパティを含む JSON オブジェクトでもあります。
 

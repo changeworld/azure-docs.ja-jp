@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 7ce4b9dda853e63e427757317abc2f7c878ba3a4
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: be4b780161003470622cb367d78138cfeffe341b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253161"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454334"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-edge"></a>Azure Data Box Edge のアクセス、電源、接続モードを管理する
 
@@ -57,18 +57,18 @@ Data Box Edge デバイスへのアクセスは、デバイスのパスワード
 
 ## <a name="manage-resource-access"></a>リソース アクセスの管理
 
-Data Box Edge/Data Box Gateway、IoT Hub、および Azure Storage リソースを作成するには、リソース グループ レベルで共同作成者以上のアクセス許可が必要です。 対応するリソース プロバイダーも登録する必要があります。 アクティブ化キーと資格情報が関係する操作には、Azure Active Directory Graph API へのアクセス許可も必要です。 これらについては以降のセクションで説明します。
+Data Box Edge/Data Box Gateway、IoT Hub、および Azure Storage リソースを作成するには、リソース グループ レベルで共同作成者以上のアクセス許可が必要です。 対応するリソース プロバイダーも登録する必要があります。 アクティブ化キーと資格情報が関係する操作には、Microsoft Graph API へのアクセス許可も必要です。 これらについては以降のセクションで説明します。
 
-### <a name="manage-microsoft-azure-active-directory-graph-api-permissions"></a>Microsoft Azure Active Directory Graph API のアクセス許可の管理
+### <a name="manage-microsoft-graph-api-permissions"></a>Microsoft Graph API のアクセス許可の管理
 
-Data Box Edge デバイスのアクティブ化キーを生成するとき、または資格情報が必要な何らかの操作を実行するときは、Azure Active Directory Graph API へのアクセス許可が必要です。 資格情報が必要な操作には、次のものがあります。
+Data Box Edge デバイスのアクティブ化キーを生成するとき、または資格情報が必要な何らかの操作を実行するときは、Microsoft Graph API のアクセス許可が必要です。 資格情報が必要な操作には、次のものがあります。
 
 -  ストレージ アカウントが関連付けられた共有の作成。
 -  デバイス上の共有にアクセスできるユーザーの作成。
 
 `Read all directory objects` を実行できる必要があるため、Active Directory テナントに対する `User` アクセス権が必要です。 Guest ユーザーは `Read all directory objects` を実行するアクセス許可がないため、使用できません。 ゲストである場合は、アクティブ化キーの生成、Data Box Edge デバイス上の共有の作成、ユーザーの作成、Edge コンピューティング ロールの構成、デバイス パスワードのリセットなどの操作はすべて失敗します。
 
-Azure Active Directory Graph API へのアクセス権をユーザーに付与する方法の詳細については、「[管理者、ユーザー、ゲスト ユーザーの既定アクセス](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)」を参照してください。
+Microsoft Graph API へのアクセスをユーザーに提供する方法の詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://docs.microsoft.com/graph/permissions-reference)」を参照してください。
 
 ### <a name="register-resource-providers"></a>リソース プロバイダーを登録する
 
@@ -132,6 +132,6 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 > [!NOTE]
 > 物理デバイスをシャット ダウンした場合、デバイスの電源を入れるには、電源ボタンを押す必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [共有を管理する](data-box-edge-manage-shares.md)方法を確認します。

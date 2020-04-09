@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226451"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408485"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -52,7 +52,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 - ログ - このサービスは、プラットフォームのログとメトリックを Azure Monitor ログに収集できる診断設定をサポートしています。
 - 分析情報 - サービスで使用可能な分析情報があり、サービスに対するカスタマイズされた監視エクスペリエンスを提供します。
 
-| サービス | メトリック | ログ | 分析情報 | メモ |
+| サービス | メトリック | ログ | 分析情報 | Notes |
 |:---|:---|:---|:---|:---|
 |Active Directory | いいえ | はい | [はい](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | いいえ | いいえ | いいえ |  |
@@ -198,7 +198,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |:---|:---|
 | [Active Directory 正常性チェック](insights/ad-assessment.md) | Active Directory 環境のリスクと正常性を評価します。 |
 | [Active Directory Replication Status](insights/ad-replication-status.md) | レプリケーションの失敗について Active Directory 環境を定期的に監視します。 |
-| [Activity Log Analytics](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | 定義済みのログ クエリおよびビューを使用して、アクティビティ ログのエントリを分析します。 |
+| [Activity Log Analytics](platform/activity-log-view.md#azure-portal) | アクティビティ ログ エントリを表示します。 |
 | [DNS Analytics (プレビュー)](insights/dns-analytics.md) | Windows DNS の分析ログと監査ログおよび他の関連データを DNS サーバーから収集して分析し、関連付けます。 |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 複数のデプロイにわたって Cloud Foundry システムの正常性とパフォーマンスのメトリックを収集、表示、および分析します。 |
 | [Containers](insights/containers.md) | Docker と Windows のコンテナー ホストを表示および管理します。 |
@@ -217,9 +217,9 @@ Insights は、特定のアプリケーションやサービスを監視する�
 ## <a name="resources-outside-of-azure"></a>Azure 外部のリソース
 Azure Monitor は、次の表に示す方法を使用して、Azure 外部のリソースからデータを収集できます。
 
-| リソース | 方法 |
+| リソース | Method |
 |:---|:---|
-| [アプリケーション] | Application Insights を使用して、Azure 外部の Web アプリケーションを監視します。 「[Application Insights とは何か?](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)」を参照してください。 |
+| アプリケーション | Application Insights を使用して、Azure 外部の Web アプリケーションを監視します。 「[Application Insights とは何か?](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)」を参照してください。 |
 | 仮想マシン | Log Analytics エージェントを使用して、他のクラウド環境やオンプレミスにある仮想マシンのゲスト オペレーティング システムからデータを収集します。 「[Log Analytics エージェントを使用してログ データを収集する](platform/log-analytics-agent.md)」を参照してください。 |
 | REST API クライアント | 別の API を使用して、任意の REST API クライアントから Azure Monitor ログとメトリックにデータを書き込むことができます。 ログについては、「[HTTP データ コレクター API を使用して Azure Monitor にログ データを送信する](platform/data-collector-api.md)」を参照し、メトリックについては、「[REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する](platform/metrics-store-custom-rest-api.md)」を参照してください。 |
 

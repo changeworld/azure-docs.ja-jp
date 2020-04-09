@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ee3b5bd3278412949074b77f9d1c53d63a467280
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 403ca480bcf0743d81e375c122c888db96bbf543
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189397"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408711"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーに関する開発者向けのメモ
 
@@ -59,68 +59,82 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 
 カスタム ポリシー/Identity Experience Framework 機能は、継続的かつ迅速に開発されています。 次の表は、機能およびコンポーネントの可用性のインデックスです。
 
-### <a name="identity-providers-tokens-protocols"></a>ID プロバイダー、トークン、プロトコル
+
+### <a name="protocols-and-authorization-flows"></a>プロトコルと承認フロー
 
 | 機能 | 開発 | プレビュー | GA | Notes |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| IDP-OpenIDConnect |  |  | X | 例: Google+。  |
-| IDP-OAUTH2 |  |  | X | 例: Facebook。  |
-| IDP-OAUTH1 (twitter) |  | X |  | 例: Twitter。 |
-| IDP-OAUTH1 (例: twitter) |  |  |  | サポートされていません |
-| IDP-SAML |  |   | X | 例: Salesforce、ADFS。 |
-| IDP-WSFED | X |  |  |  |
-| 証明書利用者 OAUTH1 |  |  |  | サポートされていません。 |
-| 証明書利用者 OAUTH2 |  |  | X |  |
-| 証明書利用者 OIDC |  |  | X |  |
-| 証明書利用者 SAML |  |X  |  |  |
-| 証明書利用者 WSFED | X |  |  |  |
-| 基本認証と証明書認証を使用した REST API |  |  | X | 例: Azure Logic Apps。 |
+| [OAuth2 承認コード](authorization-code-flow.md) |  |  | X |  |
+| PKCE を使用した OAuth2 承認コード |  |  | X | モバイル アプリケーションのみ  |
+| [OAuth2 暗黙的フロー](implicit-flow-single-page-application.md) |  |  | X |  |
+| [OAuth2 リソース所有者のパスワード資格情報](ropc-custom.md) |  | X |  |  |
+| [OIDC Connect](openid-connect.md) |  |  | X |  |
+| [SAML2](connect-with-saml-service-providers.md)  |  |X  |  | POST とリダイレクトのバインディング。 |
+| OAuth1 |  |  |  | サポートされていません。 |
+| WSFED | X |  |  |  |
+
+### <a name="identify-providers-federation"></a>プロバイダーのフェデレーションを識別する 
+
+| 機能 | 開発 | プレビュー | GA | Notes |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | 例: Google+。  |
+| [OAuth2](oauth2-technical-profile.md) |  |  | X | 例: Facebook。  |
+| [OAuth1](oauth1-technical-profile.md) |  | X |  | 例: Twitter。 |
+| [SAML2](saml-technical-profile.md) |  |   | X | 例: Salesforce、ADFS。 |
+| WSFED| X |  |  |  |
+
+
+### <a name="rest-api-integration"></a>REST API 統合
+
+| 機能 | 開発 | プレビュー | GA | Notes |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| [基本認証を使用した REST API](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
+| [クライアント証明書認証を使用した REST API](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
+| [OAuth2 ベアラー認証を使用した REST API](secure-rest-api.md#oauth2-bearer-authentication) |  | X |  |  |
 
 ### <a name="component-support"></a>コンポーネントのサポート
 
 | 機能 | 開発 | プレビュー | GA | Notes |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Azure Multi Factor Authentication |  |  | X |  |
-| ローカル ディレクトリとしての Azure Active Directory |  |  | X |  |
-| 電子メール検証のための Azure Email サブシステム |  |  | X |  |
-| 複数言語のサポート|  |  | X |  |
-| 述語の検証 |  |  | X | 例: パスワードの複雑さ。 |
-| サード パーティの電子メール サービス プロバイダーの使用 |  |X  |  |  |
+| [電話要素認証](phone-factor-technical-profile.md) |  |  | X |  |
+| [Azure MFA 認証](multi-factor-auth-technical-profile.md) |  | X |  |  |
+| [ワンタイム パスワード](one-time-password-technical-profile.md) |  | X |  |  |
+| ローカル ディレクトリとしての [Azure Active Directory](active-directory-technical-profile.md) |  |  | X |  |
+| 電子メール検証のための Azure 電子メール サブシステム |  |  | X |  |
+| [サード パーティの電子メール サービス プロバイダー](custom-email.md) |  |X  |  |  |
+| [複数言語のサポート](localization.md)|  |  | X |  |
+| [述語の検証](predicates.md) |  |  | X | 例: パスワードの複雑さ。 |
+| [表示コントロール](display-controls.md) |  |X  |  |  |
 
-### <a name="content-definition"></a>コンテンツ定義
+
+### <a name="page-layout-versions"></a>ページ レイアウト バージョン
 
 | 機能 | 開発 | プレビュー | GA | Notes |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| エラー ページ、api.error |  |  | X |  |
-| IDP の選択ページ、api.idpselections |  |  | X |  |
-| サインアップのための IDP の選択、api.idpselections.signup |  |  | X |  |
-| パスワードを忘れた場合、api.localaccountpasswordreset |  |  | X |  |
-| ローカル アカウントのサインイン、api.localaccountsignin |  |  | X |  |
-| ローカル アカウントのサインアップ、api.localaccountsignup |  |  | X |  |
-| MFA ページ、api.phonefactor |  |  | X |  |
-| セルフアサートされたソーシャル アカウントのサインアップ、api.selfasserted |  |  | X |  |
-| セルフアサートされたプロファイルの更新、api.selfasserted.profileupdate |  |  | X |  |
-| 統合されたサインアップまたはサインイン ページ、api.signuporsignin、パラメーター "disableSignup" を使用 |  |  | X |  |
-| JavaScript/ページ レイアウト |  | X |  |  |
+| [2.0.0](page-layout.md#200) |  | X |  |  |
+| [1.2.0](page-layout.md#120) |  | X |  |  |
+| [1.1.0](page-layout.md#110) |  |  | X |  |
+| [1.0.0](page-layout.md#100) |  |  | X |  |
+| [JavaScript のサポート](javascript-samples.md) |  | X |  |  |
 
 ### <a name="app-ief-integration"></a>アプリケーションと IEF の統合
 
 | 機能 | 開発 | プレビュー | GA | Notes |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| クエリ文字列パラメーター domain_hint |  |  | X | 要求として使用可能、IDP に渡すことができる。 |
-| クエリ文字列パラメーター login_hint |  |  | X | 要求として使用可能、IDP に渡すことができる。 |
-| client_assertion で JSON を UserJourney に挿入する | X |  |  | 非推奨となる予定。 |
-| id_token_hint として JSON を UserJourney に挿入する |  | X |  | JSON を渡す順方向の転送方法。 |
-| IDP TOKEN をアプリケーションに渡す |  | X |  | 例: Facebook からアプリへ。 |
+| クエリ文字列パラメーター `domain_hint` |  |  | X | 要求として使用可能、IDP に渡すことができる。 |
+| クエリ文字列パラメーター `login_hint` |  |  | X | 要求として使用可能、IDP に渡すことができる。 |
+| `client_assertion` を使用して JSON をユーザー体験に挿入 | X |  |  | 非推奨となる予定。 |
+| `id_token_hint` として JSON をユーザー体験に挿入 |  | X |  | JSON を渡す順方向の転送方法。 |
+| [ID プロバイダー トークンをアプリケーションに渡す](idp-pass-through-custom.md) |  | X |  | 例: Facebook からアプリへ。 |
 
 ### <a name="session-management"></a>セッションの管理
 
 | 機能 | 開発 | プレビュー | GA | Notes |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| SSO セッション プロバイダー |  |  | X |  |
-| 外部ログイン セッション プロバイダー |  |  | X |  |
-| SAML SSO セッション プロバイダー |  |  | X |  |
-| 既定の SSO セッション プロバイダー |  |  | X |  |
+| [既定の SSO セッション プロバイダー](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
+| [外部ログイン セッション プロバイダー](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
+| [SAML SSO セッション プロバイダー](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
+
 
 ### <a name="security"></a>Security
 
@@ -128,16 +142,19 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 |-------- | :-----------: | :-------: | :--: | ----- |
 | ポリシー キー - 生成、手動、アップロード |  |  | X |  |
 | ポリシー キー - RSA/証明書、シークレット |  |  | X |  |
-| ポリシーのアップロード |  |  | X |  |
+
 
 ### <a name="developer-interface"></a>開発者向けインターフェイス
 
 | 機能 | 開発 | プレビュー | GA | Notes |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Portal - IEF UX |  |  | X |  |
-| Application Insights の UserJourney ログ |  | X |  | 開発中のトラブルシューティングに使用される。  |
-| Application Insights イベント ログ (オーケストレーション手順を介して) |  | X |  | 運用環境内でユーザー フローを監視するために使用される。 |
+| ポリシーのアップロード |  |  | X |  |
+| [Application Insights のユーザー体験ログ](troubleshoot-with-application-insights.md) |  | X |  | 開発中のトラブルシューティングに使用される。  |
+| [Application Insights のイベント ログ](application-insights-technical-profile.md) |  | X |  | 運用環境内でユーザー フローを監視するために使用される。 |
+
 
 ## <a name="next-steps"></a>次のステップ
 
-[カスタム ポリシーについて、およびユーザー フローとの違い](custom-policy-overview.md)について学習します。
+- [Azure AD B2C に使用可能な Microsoft Graph 操作](microsoft-graph-operations.md)を確認します
+- [カスタム ポリシーについて、およびユーザー フローとの違い](custom-policy-overview.md)について学習します。

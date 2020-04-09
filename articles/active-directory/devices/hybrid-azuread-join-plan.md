@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76d3be0fc00465c35dbc79a258b57db962969cc8
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 152ff52ce52b573d7f24cbb2fafc944b1794f6d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672325"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80129253"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -57,6 +57,7 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 
 - Windows 10
 - Windows Server 2016
+  - **注**:Azure 国内クラウドのお客様にはバージョン 1809 が必要です
 - Windows Server 2019
 
 Windows デスクトップ オペレーティング システムを実行しているデバイスの場合、サポートされているバージョンについてはこの記事「[Windows 10 リリース情報](/windows/release-information/)」を参照してください。 ベスト プラクティスとして、Microsoft は Windows 10 の最新バージョンにアップグレードすることをお勧めします。
@@ -92,7 +93,7 @@ Windows デスクトップ オペレーティング システムを実行して�
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>Azure AD 登録状態のデバイスの処理
 Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](overview.md#getting-devices-in-azure-ad)である場合、デバイスは、Hybrid Azure AD 参加済みでかつ Azure AD に登録済みの二重状態になる可能性があります。 このシナリオに自動的に対処するには、(KB4489894 が適用された) Windows 10 1803 以上にアップグレードすることをお勧めします。 1803 より前のリリースでは、Hybrid Azure AD 参加を有効にする前に、Azure AD の登録済み状態を手動で削除する必要があります。 1803 以降のリリースでは、この二重状態を回避するために次の変更が行われています。
 
-- "<i>デバイスが Hybrid Azure AD 参加済みになった後</i>"、既存の Azure AD 登録済み状態は自動的に削除されます。
+- "<i>デバイスが Hybrid Azure AD 参加済みになり、同じユーザーがログインした後</i>"、ユーザーの既存の Azure AD 登録済み状態は自動的に削除されます。 たとえば、ユーザー A がデバイスに Azure AD 登録済み状態を持っている場合は、ユーザー A がデバイスにログインしたときにのみ、ユーザー A の二重状態はクリーンアップされます。 同じデバイスに複数のユーザーがいる場合、それらのユーザーがログインすると、二重状態は個別にクリーンアップされます。
 - レジストリ キー HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001 を追加することで、ドメイン参加済みデバイスが Azure AD 登録済みになることを防ぐことができます。
 - Windows 10 1803 では、Windows Hello for Business が構成されている場合、ユーザーは、二重状態のクリーンアップ後に Windows Hello for Business を再設定する必要があります。この問題は KB4512509 で解決されています
 
@@ -102,7 +103,9 @@ Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azur
 ### <a name="additional-considerations"></a>その他の注意点
 - 環境で仮想デスクトップ インフラストラクチャ (VDI) を使用する場合は、「[デバイス ID とデスクトップ仮想化](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)」を参照してください。
 
-- Hybrid Azure AD 参加は、FIPS に準拠している TPM 2.0 でサポートされており、TPM 1.2 ではサポートされていません。 FIPS に準拠している TPM 1.2 がデバイスにある場合は、Hybrid Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。 Windows 10 1903 リリース以降、TPM 1.2 はハイブリッド Azure AD 結合では使用されず、それらの TPM を含むデバイスは TPM を持っていないものと見なされます。
+- Hybrid Azure AD 参加は、FIPS に準拠している TPM 2.0 でサポートされており、TPM 1.2 ではサポートされていません。 FIPS に準拠している TPM 1.2 がデバイスにある場合は、Hybrid Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。 
+
+- Windows 10 1903 リリース以降、TPM 1.2 はハイブリッド Azure AD 結合では使用されず、それらの TPM を含むデバイスは TPM を持っていないものと見なされます。
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の制御された検証を確認する
 
@@ -145,12 +148,15 @@ Hybrid Azure AD 参加は、UPN がルーティング可能かどうかに応じ
 - [フェデレーション環境用のハイブリッド Azure Active Directory 参加を構成する](hybrid-azuread-join-federated-domains.md)
 - [マネージド環境用のハイブリッド Azure Active Directory 参加を構成する](hybrid-azuread-join-managed-domains.md)
 
-## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加でのオンプレミス AD UPN サポートを確認する
+## <a name="review-on-premises-ad-users-upn-support-for-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加でのオンプレミス AD ユーザー UPN サポートを確認する
 
-ときには、オンプレミスの AD UPN が Azure AD UPN と異なる場合があります。 このような場合、Windows 10 の Hybrid Azure AD 参加では、[認証方法](/azure/security/fundamentals/choose-ad-authn)、ドメインの種類、および Windows 10 のバージョンに基づいて、オンプレミスの AD UPN のサポートが提供されます。 環境内に存在できるオンプレミスの AD UPN は 2 種類あります。
+ときには、オンプレミスの AD ユーザー UPN が Azure AD UPN と異なる場合があります。 このような場合、Windows 10 の Hybrid Azure AD 参加では、[認証方法](/azure/security/fundamentals/choose-ad-authn)、ドメインの種類、および Windows 10 のバージョンに基づいて、オンプレミスの AD UPN のサポートが提供されます。 環境内に存在できるオンプレミスの AD UPN は 2 種類あります。
 
-- ルーティング可能な UPN:ルーティング可能な UPN には、ドメイン レジストラーに登録されている有効な確認済みドメインがあります。 たとえば、contoso.com が Azure AD 内のプライマリ ドメインの場合、contoso.org は、Contoso 社によって所有され、[Azure AD で確認](/azure/active-directory/fundamentals/add-custom-domain)されているオンプレミスの AD 内のプライマリ ドメインです。
-- ルーティング不可能な UPN:ルーティング不可能な UPN には、確認済みドメインはありません。 組織のプライベート ネットワーク内でのみ適用されます。 たとえば、contoso.com が Azure AD 内のプライマリ ドメインの場合、contoso.local はオンプレミスの AD 内のプライマリ ドメインですが、インターネットで確認可能なドメインではなく、Contoso 社のネットワーク内でのみ使用されます。
+- ルーティング可能なユーザーの UPN: ルーティング可能な UPN には、ドメイン レジストラーに登録されている有効な確認済みドメインがあります。 たとえば、contoso.com が Azure AD 内のプライマリ ドメインの場合、contoso.org は、Contoso 社によって所有され、[Azure AD で確認](/azure/active-directory/fundamentals/add-custom-domain)されているオンプレミスの AD 内のプライマリ ドメインです。
+- ルーティング不可能なユーザーの UPN: ルーティング不可能な UPN には、確認済みドメインはありません。 組織のプライベート ネットワーク内でのみ適用されます。 たとえば、contoso.com が Azure AD 内のプライマリ ドメインの場合、contoso.local はオンプレミスの AD 内のプライマリ ドメインですが、インターネットで確認可能なドメインではなく、Contoso 社のネットワーク内でのみ使用されます。
+
+> [!NOTE]
+> このセクションの情報は、オンプレミスのユーザー UPN に対してのみ適用されます。 オンプレミスのコンピューター ドメイン サフィックスには適用されません (例: computer1.contoso.local)。
 
 次の表は、Windows 10 の Hybrid Azure AD 参加における、これらのオンプレミスの AD UPN のサポートに関する詳細を示しています
 

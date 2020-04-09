@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: d3008e2e2d720b67fcf0846c27d2fed1ef7db307
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1635589b282dc33f6a1e9c2552dc8a73c67b9004
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035507"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294743"
 ---
 # <a name="post-deployment-tasks"></a>デプロイ後タスク
 
@@ -39,9 +39,9 @@ OpenShift クラスターをデプロイした後に、追加の項目を構成�
 以下の手順では、Azure CLI を使用してアプリの登録を作成し、GUI (Portal) を使用してアクセス許可を設定します。 アプリの登録を作成するには、次の 5 つの情報が必要です。
 
 - 表示名:アプリの登録名 (例: OCPAzureAD)
-- ホーム ページ:OpenShift コンソール URL (例: https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- 識別子 URI:OpenShift コンソール URL (例: https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- 応答 URL:マスター パブリック URL とアプリの登録名 (例: https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
+- ホーム ページ:OpenShift コンソール URL (例: `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
+- 識別子 URI:OpenShift コンソール URL (例: `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
+- 応答 URL:マスター パブリック URL とアプリの登録名 (例: `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`)
 - Password (パスワード):強力なパスワードを使用
 
 次の例では、上記の情報を使用してアプリの登録を作成します。
@@ -90,7 +90,7 @@ Azure Portal で次の操作を行います。
 
    ![[アプリの登録] のアクセス](media/openshift-post-deployment/app-registration-access.png)
 
-8. **[完了]** を選択します。
+8. **[Done]** を選択します。
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>Azure AD 認証用に OpenShift を構成する
 
@@ -176,7 +176,7 @@ OpenShift Container Platform Marketplace オファーでは、クラスターの
 
 ### <a name="azure-cloud-provider-in-use"></a>使用中の Azure クラウド プロバイダー
 
-デプロイ時に指定された資格情報を使用し、(使用しているテンプレートとブランチに応じて) 踏み台ノードまたは最初のマスター ノードに SSH を実行します。 次のコマンドを発行します。
+デプロイ時に指定された資格情報を使用し、(使用しているテンプレートとブランチに応じて) 踏み台ノードまたは最初のマスター ノードに SSH を実行します。 次のコマンドを実行します。
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -206,6 +206,6 @@ OpenShift に OSBA をインストールするには、こちらの手順に従�
 > [!NOTE]
 > OpenShift プロジェクト テンプレートのセクションの手順のみを実行し、インストールのセクション全体は実行しないでください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [OpenShift Container Platform の概要](https://docs.openshift.com)

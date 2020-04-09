@@ -7,16 +7,16 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: fd5308574e84ab6d2e30b9352254683b2d1d6fdd
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: c0521f384a333c3054397fb0ec7c2ab907e54f67
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78403566"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411749"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>お客様が管理するキー ディスクの暗号化
 
-Azure HDInsight では、HDInsight クラスター仮想マシンに接続されたマネージド ディスクとリソース ディスク上のデータに対するカスタマー マネージド キーの暗号化をサポートしています。 この機能を使用すると、Azure Key Vault を使用して、HDInsight クラスター上の保存データをセキュリティで保護する暗号化キーを管理できます。 
+Azure HDInsight では、HDInsight クラスター仮想マシンに接続されたマネージド ディスクとリソース ディスク上のデータに対するカスタマー マネージド キーの暗号化をサポートしています。 この機能を使用すると、Azure Key Vault を使用して、HDInsight クラスター上の保存データをセキュリティで保護する暗号化キーを管理できます。
 
 HDInsight のマネージド ディスクはすべて、Azure Storage Service Encryption (SSE) で保護されます。 既定では、これらのディスク上のデータは、Microsoft が管理するキーを使用して暗号化されます。 HDInsight でカスタマー マネージド キーを有効にする場合は、Azure Key Vault を使用してそれらのキーを使用および管理するための HDInsight の暗号化キーを指定します。
 
@@ -146,6 +146,42 @@ az hdinsight rotate-disk-encryption-key \
 --name MyCluster \
 --resource-group MyResourceGroup
 ```
+
+## <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
+
+Resource Manager テンプレートの使用によってカスタマー マネージド キーを使用するには、以下のように変更してテンプレートを更新します。
+
+1. **azuredeploy.json** ファイルで、次のプロパティを "resources" オブジェクトに追加します。
+
+    ```json
+       "diskEncryptionProperties":
+         {
+                 "vaultUri": "[parameters('diskEncryptionVaultUri')]",
+                  "keyName": "[parameters('diskEncryptionKeyName')]",
+                  "keyVersion": "[parameters('diskEncryptionKeyVersion')]",
+                   "msiResourceId": "[parameters('diskEncryptionMsiResourceId')]"
+         }
+
+1. In the **azuredeploy.parameters.json** file, add the following parameters. You can get the values of these parameters from the Key Vault URI and the managed Identity. For example, if you have the following URI and identity values,
+    * Sample key vault URI: https://<KeyVault_Name>.vault.azure.net/keys/clusterkey/<Cluster_Key_Value>
+    * Sample user-assigned managed identity: "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>
+
+    The parameters in the **azuredeploy.parameters.json** file are:
+
+    ```json
+   "diskEncryptionVaultUri": {
+            "value": "https://<KeyVault_Name>.vault.azure.net"
+        },
+        "diskEncryptionKeyName": {
+            "value": "clusterkey"
+        },
+        "diskEncryptionKeyVersion": {
+            "value": "<Cluster_Key_Value>"
+        },
+        "diskEncryptionMsiResourceId": {
+            "value": "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>"
+        }
+    ```
 
 ## <a name="faq-for-customer-managed-key-encryption"></a>カスタマー マネージド キーの暗号化に関するよくあるご質問
 

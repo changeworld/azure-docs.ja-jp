@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70d0246debc532260d287104bacea2f15c1b94d2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 58d61df932da06e32bb4c8f21a3a296b185f02d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277292"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80299004"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスにリモート接続する
 
@@ -203,11 +203,11 @@ HTTPS セッションを使用するリモート接続のホスト コンピュ�
 
 ### <a name="connect-to-the-device-from-the-remote-host"></a>リモート ホストからデバイスに接続する
 
-Windows PowerShell と SSL を使用して、リモート ホストまたはクライアントからデバイスの SSAdmin セッションに移行します。 この SSAdmin セッションは、デバイスの[シリアル コンソール](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) メニューのオプション 1 に対応します。
+Windows PowerShell と TLS を使用して、リモート ホストまたはクライアントからデバイス上の SSAdmin セッションに移動します。 この SSAdmin セッションは、デバイスの[シリアル コンソール](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) メニューのオプション 1 に対応します。
 
 Windows PowerShell のリモート接続元にするコンピューターで次の手順を実行します。
 
-#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-ssl"></a>Windows PowerShell と SSL を使用してデバイスの SSAdmin セッションに移行するには
+#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-tls"></a>Windows PowerShell と TLS を使用してデバイス上の SSAdmin セッションに移動するには
 1. Windows PowerShell セッションを管理者として開始します。 Windows 10 クライアントを使用している場合、Windows リモート管理サービスは、既定で手動に設定されています。 サービスを起動するには、次を入力してください。
 
     `Start-Service WinRM`
@@ -232,9 +232,9 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
 5. 型:
    
      `Enter-PSSession $session`
-6. 数分間待機する必要があります。その後、HTTPS 経由の SSL でデバイスに接続されます。 デバイスに接続されたことを示すメッセージが表示されます。
+6. 数分待つ必要があります。その後、HTTPS over TLS 経由でデバイスに接続されます。 デバイスに接続されたことを示すメッセージが表示されます。
    
-    ![HTTPS と SSL を使用した PowerShell リモート処理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
+    ![HTTPS と TLS を使用した PowerShell リモート処理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
 ## <a name="next-steps"></a>次のステップ
 

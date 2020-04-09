@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 04/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 7637d18017f5bdc76c8a271198a88f21a59a6aac
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: ac660b20d519e49e832e979603f763fa672757a5
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604982"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637402"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -36,15 +36,18 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 |  容量プールあたりのボリュームの数     |    500   |    はい     |
 |  ボリュームあたりのスナップショット数       |    255     |    いいえ        |
 |  Azure Virtual Network あたりの Azure NetApp Files (Microsoft.NetApp/volumes) に委任されたサブネットの数    |   1   |    いいえ    |
-|  Azure NetApp Files を使用した VNet (直ちにピアリングされた VNet を含む) で使用されている IP の数   |    1000   |    はい   |
+|  Azure NetApp Files を使用した VNet (直ちにピアリングされた VNet を含む) で使用されている IP の数   |    1000   |    いいえ   |
 |  単一の容量プールの最小サイズ   |  4 TiB     |    いいえ  |
 |  単一の容量プールの最大サイズ    |  500 TiB   |   いいえ   |
 |  単一のボリュームの最小サイズ    |    100 GiB    |    いいえ    |
 |  単一のボリュームの最大サイズ     |    100 TiB    |    いいえ    |
-|  ボリュームあたりのファイルの最大数 ([maxfiles](#maxfiles))     |    1 億    |    はい    |    
 |  1 つのファイルの最大サイズ     |    16 TiB    |    いいえ    |    
+|  1 つのディレクトリの最大サイズ      |    320 MB    |    いいえ    |    
+|  ボリュームあたりのファイルの最大数 ([maxfiles](#maxfiles))     |    1 億    |    はい    |    
 
-## maxfiles の制限 <a name="maxfiles"></a> 
+詳細については、「[容量管理に関する FAQ](azure-netapp-files-faqs.md#capacity-management-faqs)」を参照してください。
+
+## <a name="maxfiles-limits"></a>maxfiles の制限 <a name="maxfiles"></a> 
 
 Azure NetApp Files ボリュームには、*maxfiles* という制限があります。 maxfiles の制限は、ボリュームに格納できるファイルの数です。 Azure NetApp Files ボリュームの maxfiles の制限には、ボリュームのサイズ (クォータ) に基づいてインデックスが作成されます。 ボリュームの maxfiles の制限は、プロビジョニングされたボリュームサイズの TiB ごとに 2000 万ファイルの割合で増減されます。 
 
@@ -60,7 +63,7 @@ Azure NetApp Files ボリュームには、*maxfiles* という制限があり�
 
 任意のボリューム サイズに対し、[サポート リクエスト](#limit_increase)を開始し、1 億より大きい値に maxfiles 制限を増やすことができます。
 
-## 上限の引き上げを要求する<a name="limit_increase"></a> 
+## <a name="request-limit-increase"></a>上限の引き上げを要求する<a name="limit_increase"></a> 
 
 上記の表から調整可能な上限を引き上げるように、Azure サポート要求を作成できます。 
 

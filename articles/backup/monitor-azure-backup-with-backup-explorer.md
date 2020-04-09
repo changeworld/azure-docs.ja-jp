@@ -4,12 +4,12 @@ description: この記事では、バックアップ エクスプローラーを
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: b65f68e33b53dff341ee72f6b9e9f42e344c49b1
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: fa30a061dfe0d9f7721bd2405280f8a01bea87fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149577"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131802"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>バックアップ エクスプローラーを使用してバックアップを監視する
 
@@ -26,6 +26,7 @@ ms.locfileid: "77149577"
 > [!NOTE]
 > * バックアップ エクスプローラーは、現在、Azure 仮想マシン (VM) データに対してのみ使用できます。
 > * バックアップ エクスプローラーは、過去 7 日間 (最大) のバックアップに関する情報を表示するための運用ダッシュボードとして使用することを目的としています。
+> * バックアップ エクスプローラーは、各国のクラウドでは現在サポートされていません。
 > * 現在、バックアップ エクスプローラー テンプレートのカスタマイズはサポートされていません。 
 > * Azure Resource Graph データにカスタム オートメーションを記述することはお勧めしません。
 

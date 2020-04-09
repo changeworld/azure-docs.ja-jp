@@ -1,17 +1,17 @@
 ---
-title: Azure Monitor for VMs のブックを使用した対話型レポートの作成 | Microsoft Docs
+title: Azure Monitor for VMs のブックを使用した対話型レポートの作成
 description: Azure Monitor for VMs 用の定義済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポートの作成を簡単にします。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/15/2019
-ms.openlocfilehash: 7ec24f1eca0b2cf1d5ea2c171573f7c5e47319af
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/12/2020
+ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670680"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480455"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Azure Monitor for VMs のブックを使用した対話型レポートの作成
 
@@ -24,7 +24,7 @@ Workbooks は次のようなシナリオで便利です。
 * VM のサイズ変更実験の結果を、チームの他のメンバーと共有します。 実験の目標をテキストで説明した後に、その実験の評価に使用される使用状況メトリックと 分析クエリ、および各メトリックが目標を上回ったかまたは下回ったかどうかを明確に提示します。
 * 停止が VM の使用に及ぼす影響を報告し、データ、テキスト説明、および次の手順についての話し合いを組み合わせて将来の停止を防止します。
 
-Azure Monitor for VMs には、作業を始めるときに利用できる複数のブックが含まれます。次の表はそれらをまとめたものです。
+次の表に、Azure Monitor for VMs に含まれるブックをまとめます。これらを利用して、作業を始めることができます。
 
 | Workbooks | 説明 | Scope |
 |----------|-------------|-------|
@@ -40,7 +40,7 @@ Azure Monitor for VMs には、作業を始めるときに利用できる複数�
 | パフォーマンス | 有効にされているすべての Log Analytics パフォーマンス カウンターを利用して、パフォーマンス ビューのカスタマイズ可能なバージョンを提供します。 | 単一の VM | 
 | 接続 | VM からの受信接続および VM への送信接続に関する詳細なビューを提供します。 | 単一の VM |
  
-## <a name="starting-with-a-template-or-saved-workbook"></a>テンプレートまたは保存済みブックから始める
+## <a name="creating-a-new-workbook"></a>新しいブックを作成する
 
 ブックは、個別に編集可能なグラフ、テーブル、テキスト、入力コントロールで構成される複数のセクションで構成されます。 ブックをより深く理解するため、テンプレートを開いて、カスタム ブックの作成について説明しましょう。 
 
@@ -50,25 +50,21 @@ Azure Monitor for VMs には、作業を始めるときに利用できる複数�
 
 3. 一覧から VM を選択します。
 
-4. [VM] ページの **[監視]** セクションで、 **[Insights (プレビュー)]** を選択します。
+4. [VM] ページの **[監視]** セクションで、 **[Insights]** を選択します。
 
-5. VM 分析情報ページで、 **[パフォーマンス]** または **[マップ]** タブを選択し、ページのリンクから **[View Workbooks]\(ブックの表示\)** を選択します。 
-
-    ![ブックへのナビゲーションのスクリーンショット](media/vminsights-workbooks/workbook-option-01.png)
-
-6. ドロップダウン リストの下部にある **[ギャラリーに移動]** を選択します。
+5. VM 分析情報ページで、 **[パフォーマンス]** または **[マップ]** タブを選択し、ページのリンクから **[View Workbooks]\(ブックの表示\)** を選択します。 ドロップダウン リストの **[ギャラリーに移動]** を選択します。
 
     ![ブックのドロップダウン リストのスクリーンショット](media/vminsights-workbooks/workbook-dropdown-gallery-01.png)
 
     作業を開始する際に役立つ多数の作成済みブックが含まれたブック ギャラリーが起動します。
 
-7. ここでは、 **[クイック スタート]** という見出しの下にある **[既定のテンプレート]** から始めます。
+7. **[New]\(新規\)** を選択して、新しいブックを作成します。
 
     ![ブック ギャラリーのスクリーンショット](media/vminsights-workbooks/workbook-gallery-01.png)
 
 ## <a name="editing-workbook-sections"></a>ブックのセクションの編集
 
-ブックには、**編集モード**と**閲覧モード**の 2 つのモードがあります。 既定のテンプレート ブックを最初に起動したときは、**編集モード**でブックが開きます。 このモードでは、他の方法では非表示になるステップやパラメーターも含め、ブックのすべてのコンテンツが表示されます。 **閲覧モード**では、簡素化されたレポート スタイルのビューが表示されます。 閲覧モードでは、レポートの作成時に生じた複雑さを排除できます。変更が必要な場合は、数回クリックするだけで元になるメカニズムを表示できます。
+ブックには、**編集モード**と**閲覧モード**の 2 つのモードがあります。 新しいブックを最初に起動したときは、**編集モード**でブックが開きます。 このモードでは、他の方法では非表示になるステップやパラメーターも含め、ブックのすべてのコンテンツが表示されます。 **閲覧モード**では、簡素化されたレポート スタイルのビューが表示されます。 閲覧モードでは、レポートの作成時に生じた複雑さを排除できます。変更が必要な場合は、数回クリックするだけで元になるメカニズムを表示できます。
 
 ![Azure Monitor for VMs ブックのセクションの編集コントロール](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 

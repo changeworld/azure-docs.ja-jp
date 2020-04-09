@@ -10,29 +10,29 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
-ms.openlocfilehash: c950fbedde19e3b7708d3640487d413fcac7787f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360992"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214715"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Azure Cloud Services のロールに .NET をインストールする
 この記事では、Azure ゲスト OS に付属するバージョンとは異なるバージョンの .NET Framework をインストールする方法について説明します。 ゲスト OS にインストールした .NET を使用して、クラウド サービスの Web ロールおよび worker ロールを構成できます。
 
-たとえば、.NET 4.6 のどのリリースも付属していないゲスト OS ファミリ 4 に .NET 4.6.2 をインストールすることができます (ゲスト OS ファミリ 5 には .NET 4.6 が付属しています)。Azure ゲスト OS のリリース版の最新情報については、[Azure ゲスト OS リリースに関するニュース](cloud-services-guestos-update-matrix.md)を参照してください。 
+たとえば、.NET Framework 4.6 のどのリリースも付属していないゲスト OS ファミリ 4 に .NET Framework 4.6.2 をインストールすることができます (ゲスト OS ファミリ 5 には .NET Framework 4.6 が付属しています)。Azure ゲスト OS のリリース版の最新情報については、[Azure ゲスト OS リリースに関するニュース](cloud-services-guestos-update-matrix.md)を参照してください。 
 
 >[!IMPORTANT]
->Azure SDK 2.9 には、ゲスト OS ファミリ 4 以前への .NET 4.6 のデプロイに制限があります。 この制限に対する修正は、[Microsoft Docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) サイトで公開されています。
+>Azure SDK 2.9 には、ゲスト OS ファミリ 4 以前への .NET Framework 4.6 のデプロイに制限があります。 この制限に対する修正は、[Microsoft Docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) サイトで公開されています。
 
 Web ロールと worker ロールに .NET をインストールするには、.NET Web インストーラーをクラウド サービス プロジェクトに含めます。 このインストーラーをロールのスタートアップ タスクの一部として起動します。 
 
 ## <a name="add-the-net-installer-to-your-project"></a>プロジェクトに .NET インストーラーを追加する
 .NET Framework の Web インストーラーをダウンロードするには、次のうち、インストールするバージョンを選択します。
 
-* [.NET 4.8 Web インストーラー](https://dotnet.microsoft.com/download/thank-you/net48)
-* [.NET 4.7.2 Web インストーラー](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [.NET 4.6.2 Web インストーラー](https://www.microsoft.com/download/details.aspx?id=53345)
+* [.NET Framework 4.8 の Web インストーラー](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET Framework 4.7.2 の Web インストーラー](https://go.microsoft.com/fwlink/?LinkId=863262)
+* [.NET Framework 4.6.2 の Web インストーラー](https://www.microsoft.com/download/details.aspx?id=53345)
 
 *Web* ロールのインストールを追加するには、次の操作を実行します。
   1. **ソリューション エクスプローラー**で、該当するクラウド サービス プロジェクトの **[ロール]** の下の *Web* ロールを右クリックし、 **[追加]**  >  **[新しいフォルダー]** の順に選択します。 **bin** という名前のフォルダーを作成します。
@@ -44,7 +44,7 @@ Web ロールと worker ロールに .NET をインストールするには、.N
 この方法でロールの Content フォルダーに追加したファイルは、クラウド サービス パッケージに自動的に追加されます。 その後、ファイルは、仮想マシン上の一貫性のある場所にデプロイされます。 クラウド サービス内の各 Web ロールおよび worker ロールについて、すべてのロールがインストーラーのコピーを保持するように、このプロセスを繰り返します。
 
 > [!NOTE]
-> ご自分のアプリケーションが .NET 4.6 を対象としている場合でも、クラウド サービス ロールに .NET 4.6.2 をインストールする必要があります。 ゲスト OS には、サポート技術情報の[更新プログラム 3098779](https://support.microsoft.com/kb/3098779) および[更新プログラム 3097997](https://support.microsoft.com/kb/3097997) が含まれています。 サポート技術情報の更新プログラムの上に .NET 4.6 がインストールされると、.NET アプリケーションを実行したときに、問題が発生する可能性があります。 この問題を回避するために、.NET バージョン 4.6 ではなく、.NET 4.6.2 をインストールしてください。 詳しくは、[サポート技術情報の記事 3118750](https://support.microsoft.com/kb/3118750) および [4340191](https://support.microsoft.com/kb/4340191) をご覧ください。
+> ご自分のアプリケーションが .NET Framework 4.6 を対象としている場合でも、クラウド サービス ロールに .NET Framework 4.6.2 をインストールする必要があります。 ゲスト OS には、サポート技術情報の[更新プログラム 3098779](https://support.microsoft.com/kb/3098779) および[更新プログラム 3097997](https://support.microsoft.com/kb/3097997) が含まれています。 サポート技術情報の更新プログラムの上に .NET Framework 4.6 がインストールされると、.NET アプリケーションを実行したときに、問題が発生する可能性があります。 この問題を回避するために、.NET Framework 4.6 ではなく、バージョン 4.6.2 をインストールしてください。 詳しくは、[サポート技術情報の記事 3118750](https://support.microsoft.com/kb/3118750) および [4340191](https://support.microsoft.com/kb/4340191) をご覧ください。
 > 
 > 
 
@@ -82,7 +82,7 @@ Web ロールと worker ロールに .NET をインストールするには、.N
 
 2. **install.cmd** という名前のファイルを作成し、このファイルに次のインストール スクリプトを追加します。
 
-   このスクリプトにより、指定されたバージョンの .NET Framework が既にマシンにインストールされているかどうかがレジストリに照会することで確認されます。 対象の .NET バージョンがインストールされていない場合、.NET Web インストーラーが起動します。 問題のトラブルシューティングを実行するために、スクリプトがすべてのアクティビティを **InstallLogs** ローカル ストレージに保存された startuptasklog-(その時点の日時).txt ファイルに記録します。
+   このスクリプトにより、指定されたバージョンの .NET Framework が既にマシンにインストールされているかどうかがレジストリに照会することで確認されます。 対象の .NET Framework バージョンがインストールされていない場合、.NET Framework Web インストーラーが開かれます。 問題のトラブルシューティングを実行するために、スクリプトがすべてのアクティビティを **InstallLogs** ローカル ストレージに保存された startuptasklog-(その時点の日時).txt ファイルに記録します。
    
    > [!IMPORTANT]
    > install.cmd ファイルは、Windows のメモ帳などの基本的なテキスト エディターを使用して作成してください。 Visual Studio を使用してテキスト ファイルを作成し、拡張子を .cmd に変更すると、ファイルに UTF-8 バイト オーダー マークが含まれる可能性があります。 このマークが含まれていると、スクリプトの最初の行を実行するときにエラーが発生します。 このエラーを避けるために、スクリプトの最初の行を REM ステートメントにしてください。このステートメントにより、バイト オーダーの処理をスキップできます。 

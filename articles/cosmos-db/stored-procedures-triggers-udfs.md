@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 706f52a6cda2bbcb0e5ca1cfe9372600fa6709d0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 23a14e7590eca6f63c92acdf6336ffaef8b54381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441237"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065892"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>ストアド プロシージャ、トリガー、およびユーザー定義関数
 
@@ -55,7 +55,7 @@ Azure Cosmos DB では、JavaScript ランタイムはデータベース エン�
 
 ### <a name="scope-of-a-transaction"></a>トランザクションのスコープ
 
-ストアド プロシージャが Azure Cosmos コンテナーと関連付けられている場合、ストアド プロシージャは論理パーティション キーのトランザクション スコープで実行されます。 各ストアド プロシージャの実行には、トランザクションのスコープに対応した論理パーティション キー値を含める必要があります。 詳細については、[Azure Cosmos DB でのパーティション分割](partition-data.md)に関する記事を参照してください。
+ストアド プロシージャは Azure Cosmos コンテナーに関連付けられており、ストアド プロシージャの実行は論理パーティション キーにスコープが設定されています。 ストアド プロシージャには、トランザクションのスコープの論理パーティションが定義されている論理パーティション キー値を、実行時に含める必要があります。 詳細については、[Azure Cosmos DB でのパーティション分割](partition-data.md)に関する記事を参照してください。
 
 ### <a name="commit-and-rollback"></a>コミットとロールバック
 
@@ -88,11 +88,11 @@ Azure Cosmos DB には、Azure Cosmos 項目に対して操作を実行するこ
 > [!NOTE]
 > 登録されたトリガーは、対応する操作 (作成/削除/置換/更新) が発生しても自動的には実行されません。 これらの操作を実行するときに明示的に呼び出す必要があります。 詳細については、[トリガーの実行方法](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)に関する記事を参照してください。
 
-## <a id="udfs"></a>ユーザー定義関数
+## <a name="user-defined-functions"></a><a id="udfs"></a>ユーザー定義関数
 
 ユーザー定義関数 (UDF) は、SQL API クエリ言語の構文を拡張してカスタム ビジネス ロジックを簡単に実装するために使用します。 これらは、クエリ内でのみ呼び出すことができます。 UDF は、コンテキスト オブジェクトにアクセスできず、計算のみの JavaScript として使用する必要があります。 したがって、UDF はセカンダリ レプリカで実行できます。 例については、「[ユーザー定義関数を記述する方法](how-to-write-stored-procedures-triggers-udfs.md#udfs)」の記事を参照してください。
 
-## <a id="jsqueryapi"></a>JavaScript 統合言語クエリ API
+## <a name="javascript-language-integrated-query-api"></a><a id="jsqueryapi"></a>JavaScript 統合言語クエリ API
 
 SQL API クエリ構文でクエリを発行するほか、[サーバー側の SDK](https://azure.github.io/azure-cosmosdb-js-server) では、SQL の知識がなくても、JavaScript インターフェイスを使用してクエリを実行できます。 JavaScript クエリ API では、述語関数を一連の関数呼び出しに渡すことでクエリをプログラミングできます。 クエリは JavaScript ランタイムで解析され、Azure Cosmos DB 内で効率的に実行されます。 JavaScript クエリ API サポートの詳細については、[JavaScript 言語統合クエリ API の操作](javascript-query-api.md)に関する記事を参照してください。 たとえば、[Javascript クエリ API を使用してストアド プロシージャおよびトリガーを記述する方法](how-to-write-javascript-query-api.md)に関する記事を参照してください。
 

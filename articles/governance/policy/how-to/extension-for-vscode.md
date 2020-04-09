@@ -1,14 +1,14 @@
 ---
 title: Visual Studio Code 用の Azure Policy 拡張機能
 description: Visual Studio Code 用の Azure Policy 拡張機能を使用して Resource Manager エイリアスを検索する方法について説明します。
-ms.date: 11/04/2019
+ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 48ef098cf970b5128185c40c92f8bb02ad8d9698
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873116"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231223"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code 用の Azure Policy 拡張機能を使用する
 
@@ -23,7 +23,7 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順を実行するには、次のものが必要です。
+この記事の手順を完了するには、次の項目が必要です。
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 - [Visual Studio Code](https://code.visualstudio.com)。
@@ -82,7 +82,7 @@ Visual Studio Code 用の Azure Policy 拡張機能は、Visual Studio Code で�
 
    - コマンド パレット: 
 
-     メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure Policy: Select Subscriptions**」と入力します。
+     メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Select Subscriptions**」と入力します。
 
    - ウィンドウのフッター
 
@@ -153,7 +153,7 @@ Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り�
 
 メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Policy のサンプル](../samples/index.md)を確認します。
 - 「[Azure Policy の定義の構造](../concepts/definition-structure.md)」を確認します。

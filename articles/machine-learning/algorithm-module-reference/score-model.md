@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 56d8cad05a42da8de680ade487dddee9a97aab3a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138172"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80364182"
 ---
 # <a name="score-model-module"></a>スコア モデル モジュール
 
@@ -30,15 +30,15 @@ ms.locfileid: "77138172"
 
     データは、使用するトレーニング済みモデルの種類と互換性のある形式でなければなりません。 また、一般に、入力データセットのスキーマはモデルのトレーニングに使用されたデータのスキーマと一致している必要があります。
 
-3. パイプラインを実行します。
+3. パイプラインを送信します。
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 [モデルのスコア付け](./score-model.md)を使用してスコアのセットを生成したら、次の操作を実行します。
 
-+ モデルの精度 (パフォーマンス) を評価するために使用される一連のメトリックを生成するために、  スコア付けされたデータセットを[モデルの評価](./evaluate-model.md)に接続できます。 
++ モデルの精度 (パフォーマンス) を評価するために使用される一連のメトリックを生成するには、スコア付けされたデータセットを[モデルの評価](./evaluate-model.md)に接続できます。 
 + モジュールを右クリックして **[Visualize]\(視覚化\)** を選択し、結果のサンプルを表示します。
-+ データセットに結果を保存します。
+<!-- + To Save the results to a dataset. -->
 
 スコア (予測値) は、モデルと入力データに応じて、さまざまな形式になります。
 
@@ -48,7 +48,7 @@ ms.locfileid: "77138172"
 
 ## <a name="publish-scores-as-a-web-service"></a>Web サービスとしてスコアを公開する
 
-スコア付けの一般的な用途は、予測 Web サービスの一部として出力を返すことです。 詳細については、Azure Machine Learning でのパイプラインに基づいた Web サービスの作成方法に関する次のチュートリアルを参照してください。
+スコア付けの一般的な用途は、予測 Web サービスの一部として出力を返すことです。 詳細については、Azure Machine Learning デザイナーでのパイプラインに基づいたリアルタイム エンドポイントのデプロイ方法に関する[このチュートリアル](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: ec210fcdf521413438edd256cc3ee988b67f293f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c79f6bd63fa5d8d8c6b22ff271d8ca513a94fd64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168658"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218074"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) で Python Machine Learning スクリプトを実行する
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Python は、多くのデータ サイエンティストにとって貴重なツールです。 これは、データの探索、特徴の抽出、モデルのトレーニングと検証、デプロイなど、一般的な機械学習ワークフローのすべての段階で使用されます。
 
@@ -65,13 +67,13 @@ Studio データセットは Panda DataFrames と同じではありません。 
 
 **Python 関数内のすべての入力データ フレームには必ず、0 から、行の数から 1 を引いた数までの範囲の、64 ビットの数値インデックスがあります*
 
-## <a id="import-modules"></a>既存の Python スクリプト モジュールをインポートする
+## <a name="importing-existing-python-script-modules"></a><a id="import-modules"></a>既存の Python スクリプト モジュールをインポートする
 
 Python の実行に使用されるバックエンドは、広く使用されている科学的な Python ディストリビューションである [Anaconda](https://www.anaconda.com/distribution/) に基づいています。 データ中心のワークロードで最もよく使用される Python パッケージが 200 個近く付属しています。 Studio (クラシック) は、外部ライブラリのインストールと管理のための Pip や Conda などのパッケージ管理システムの使用を、現時点ではサポートしていません。  追加のライブラリを組み込む必要がある場合は、ガイドとして次のシナリオを使用してください。
 
 一般的な使用例は、既存の Python スクリプトを Studio (クラシック) の実験に組み込むことです。 [Python スクリプトの実行][execute-python-script]モジュールは、3 番目の入力ポートでの Python モジュールを含む zip ファイルを受け取ります。 このファイルは実行時に実行フレームワークによって解凍され、その内容が Python インタープリターのライブラリ パスに追加されます。 `azureml_main` エントリ ポイント関数がこれらのモジュールを直接インポートできます。 
 
-たとえば、単純な “Hello, World” 関数を含む Hello.py ファイルについて考えてみます。
+たとえば、単純な "Hello, World" 関数を含む Hello.py ファイルについて考えてみます。
 
 ![Hello.py ファイル内のユーザー定義関数](./media/execute-python-scripts/figure4.png)
 
@@ -122,7 +124,7 @@ block_blob_service = BlockBlobService(account_name='account_name', account_key='
 1. Python 式を Python インタープリターに送信する
 1. 式と評価結果の両方を含むテーブルを返す。
 
-## <a id="visualizations"></a>視覚化の操作
+## <a name="working-with-visualizations"></a><a id="visualizations"></a>視覚化の操作
 
 MatplotLib を使用して作成されたプロットは、[Python スクリプトの実行][execute-python-script]によって返されます。 ただし、R を使用している場合、プロットは自動的にリダイレクトされません。このため、ユーザーはすべてのプロットを PNG ファイルに明示的に保存する必要があります。
 
@@ -153,7 +155,7 @@ Studio (クラシック) にインストールされた Anaconda 環境には、
 
 ![スコアによって特徴を順位付ける関数](./media/execute-python-scripts/figure8.png)
 
-次の実験では、Azure Machine Learning Studio (クラシック) の "ピマ インディアン糖尿病" データセットにおける特徴の重要度スコアを計算して返します。
+次の実験では、Azure Machine Learning Studio (classic) の "ピマ インディアン糖尿病" データセットにおける特徴の重要度スコアを計算して返します。
 
 ![Python を使用したピマ インディアン糖尿病の特徴の順位付けの実験](./media/execute-python-scripts/figure9a.png)
 

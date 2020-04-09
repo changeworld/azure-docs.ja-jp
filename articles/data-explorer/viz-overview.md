@@ -8,12 +8,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 32ccc5ad236c87d3609798a8432db14ee440d067
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7b1c7825beb769b610d661cb9644fc3f3919d548
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064565"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79139064"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>Azure Data Explorer でのデータの視覚化 
 
@@ -42,6 +42,10 @@ Azure Data Explorer には、[組み込みのネイティブ Excel コネクタ]
 ## <a name="grafana"></a>Grafana
 
 [Grafana](https://grafana.com) には、Azure Data Explorer のデータを視覚化できる Azure Data Explorer プラグインがあります。 [Grafana のデータ ソースとして Azure Data Explorer を設定し、データを視覚化します](/azure/data-explorer/grafana)。 
+
+## <a name="kibana"></a>Kibana
+
+Azure Data Explorer は、オープン ソース コネクタである K2Bridge を使用して [Kibana ([Discover] ページ)](https://www.elastic.co/guide/en/kibana/6.8/discover.html) に接続する機能を提供します。 [Kibana のデータ ソースとして Azure Data Explorer を設定し、データを視覚化します](/azure/data-explorer/k2bridge)。
 
 ## <a name="odbc-connector"></a>ODBC コネクタ
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Machine Learning のデータ
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning がどのようにデータとの間でやり取りを行い、それが機械学習の実験全体でどのように利用されるかについて説明します。
+description: Azure Machine Learning がお使いのデータにどのように安全にアクセスし、そのデータを機械学習タスクに使用するかを説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,46 +9,52 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 12/09/2019
-ms.openlocfilehash: 4149e90e07bbcd03a0df41060b42b8902b89e774
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 03/20/2020
+ms.openlocfilehash: 982c9c9eadec4403c8116430e1e25092de99f1d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535739"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128490"
 ---
 # <a name="data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセス
 
-この記事では、機械学習タスクのための Azure Machine Learning のデータ管理および統合ソリューションについて説明します。 この記事では、[Azure ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)および [Azure ストレージ サービス](https://docs.microsoft.com/azure/storage/common/storage-introduction) を既に作成していることを前提としています。
+Azure Machine Learning を使用すると、クラウド内のデータに簡単に接続できます。  基になるストレージ サービスに抽象レイヤーが用意されているため、ストレージの種類に固有のコードを記述しなくても、データに安全にアクセスし、操作することができます。 Azure Machine Learning には、次のデータ機能も用意されています。
 
-ストレージでデータを使用する準備ができたら、次のことをお勧めします。
+*    データ系列のバージョン管理と追跡
+*    データのラベル付け 
+*    データの誤差の監視
+*    Pandas および Spark DataFrames による相互運用性
 
-1. Azure Machine Learning データストアを作成します。
-2. そのデータストアから、Azure Machine Learning データセットを作成します。 
-3. 以下のどちらかの方法で、そのデータセットを機械学習の実験で使用します。 
-    1. モデル トレーニングのために実験のコンピューティング ターゲットにマウントします。
+## <a name="data-workflow"></a>データ ワークフロー
+
+クラウドベースのストレージ ソリューションでデータを使用できる場合は、次のデータ配信ワークフローをお勧めします。 このワークフローでは、Azure のクラウドベースのストレージ サービスに [Azure ストレージアカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)とデータがあることを前提としています。 
+
+1. 接続情報をご自身の Azure ストレージに格納するための [Azure Machine Learning データストア](#datastores)を作成します。
+
+2. そのデータストアから [Azure Machine Learning データセット](#datasets)を作成し、基になるお使いのストレージにある特定のファイルを指すように指定します。 
+
+3. そのデータセットを機械学習の実験で使用するには、以下のいずれかを実行します
+    1. モデル トレーニングのために実験のコンピューティング先にマウントします。
 
         **OR** 
 
-    1. 自動機械学習 (自動 ML) 実験の実行、機械学習パイプライン、および [Azure Machine Learning デザイナー](concept-designer.md)などの Azure Machine Learning ソリューションで直接使用します。
-4. データ ドリフトを検出するために、モデルの出力データセット用のデータセット モニターを作成します。 
+    1. 自動機械学習 (自動 ML) 実験の実行、機械学習パイプライン、または [Azure Machine Learning デザイナー](concept-designer.md)などの Azure Machine Learning ソリューションで直接使用します。
+
+4. データ ドリフトを検出するために、モデルの出力データセット用の[データセット モニター](#data-drift)を作成します。 
+
 5. データ ドリフトが検出された場合は、入力データセットを更新し、それに応じてモデルを再トレーニングします。
 
-次の図は、この推奨データ アクセス ワークフローの視覚的なデモンストレーションを示しています。
+次の図は、この推奨ワークフローの視覚的なデモンストレーションを示しています。
 
 ![データの概念図](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="access-data-in-storage"></a>ストレージ内のデータへのアクセス
+## <a name="datastores"></a>データストア
 
-ストレージ アカウントのデータにアクセスするために、Azure Machine Learning はデータストアとデータセットを提供しています。 データストアは、Azure Storage に格納されている自分のデータに安全に接続するにはどうすればよいかという疑問を解決します。 データストアは、ストレージ サービスに対して抽象化のレイヤーを提供します。 これにより、接続情報はデータストアに保持され、スクリプトには公開されないため、ストレージのセキュリティおよびストレージへの容易なアクセスを促進します。 
+Azure Machine Learning データストアには、Azure ストレージ サービスへの接続情報が安全に保持されるため、ご自身のスクリプトでそのコードを書く必要はありません。 ストレージ アカウントに簡単に接続し、下位の Azure ストレージ サービスのデータにアクセスするために、[データストアを登録および作成します](how-to-access-data.md)。 
 
-データセットは、データストア内の特定のデータ ファイルを取得するにはどうすればよいかという疑問を解決します。 データセットは、機械学習の実験に使用したい、下位ストレージ内の特定のファイルを指します。 データストアとデータセットを組み合わせて使用することで、機械学習タスクのための安全でスケーラブルな、かつ再現可能なデータ配信ワークフローを実現できます。
+データストアとして登録可能な、Azure 内でサポートされているクラウドベースのストレージ サービスは次のとおりです。
 
-### <a name="datastores"></a>データストア
-
-Azure Machine Learning データストアは、Azure ストレージ サービスに対するストレージの抽象化です。 Azure ストレージ アカウントに簡単に接続し、下位の Azure ストレージ サービスのデータにアクセスするために、[データストア を登録および作成します](how-to-access-data.md)。
-
-データストアとして登録可能な、サポートされている Azure storage サービスは次のとおりです。
 + Azure BLOB コンテナー
 + Azure ファイル共有
 + Azure Data Lake
@@ -58,44 +64,34 @@ Azure Machine Learning データストアは、Azure ストレージ サービ�
 + Databricks ファイル システム
 + Azure Database for MySQL
 
-### <a name="datasets"></a>データセット
+## <a name="datasets"></a>データセット
 
-データストア内のデータと交信し、機械学習タスク用の使用可能なオブジェクトとしてデータをパッケージ化するために、[Azure Machine Learning データセットを作成します](how-to-create-register-datasets.md)。 データ インジェストが複雑になることなく、さまざまな実験でデータセットを共有して再利用できるように、データセットをワークスペースに登録します。
+Azure Machine Learning データセットは、ストレージ サービス内のデータを指定する参照です。 データのコピーではないため、追加のストレージ コストは発生しません。 ストレージ内のデータを操作するには、お使いのデータを、機械学習タスク用の使用可能なオブジェクトとしてパッケージ化するために、[データセットを作成](how-to-create-register-datasets.md)します。 データ インジェストが複雑になることなく、さまざまな実験でデータセットを共有して再利用できるように、データセットをワークスペースに登録します。
 
-データセットは、ローカル ファイル、パブリック URL、[Azure Open Datasets](#open)、またはデータストア内の特定のファイルから作成できます。 イン メモリの pandas データ フレームからデータセットを作成するには、csv などのローカル ファイルにデータを書き込み、そのファイルからデータセットを作成します。 データセットはデータのコピーではありませんが、ストレージ サービス内のデータを指す参照なので、追加のストレージ コストは発生しません。 
+データセットは、ローカル ファイル、パブリック URL、[Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/)、または Azure ストレージ サービスから、データストアを介して作成できます。 イン メモリの pandas データ フレームからデータセットを作成するには、parquet などのローカル ファイルにデータを書き込み、そのファイルからデータセットを作成します。  
 
-次の図は、Azure ストレージ サービスがない場合に、ローカル ファイル、パブリック URL、または Azure オープン データセットからデータセットを直接作成できることを示しています。 そうすることでデータセットが、実験の [Azure Machine Learning ワークスペース](concept-workspace.md)で自動的に作成された既定のデータストアに接続されます。
+2 種類のデータセットがサポートされています。 
++ [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) は、指定されたファイルまたはファイルのリストを解析して、データを表形式で表します。 TabularDataset を Pandas または Spark DataFrame に読み込んで、さらに操作とクレンジングを行うことができます。 TabularDatasets を作成できるデータ形式の完全な一覧については、[TabularDatasetFactory クラス](https://aka.ms/tabulardataset-api-reference)に関するページをご覧ください。
 
-![データの概念図](./media/concept-data/dataset-workflow.svg)
++ [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) は、データストアまたはパブリック URL 内の 1 つまたは複数のファイルを参照します。 コンピューティング先に、FileDatasets によって参照されている[ファイルをダウンロードまたはマウント](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target)できます。
 
 追加のデータセット機能については、次のドキュメントを参照してください。
 
 + データセット系列に[バージョンをつけて追跡する](how-to-version-track-datasets.md)。
-+ [データセットを監視](how-to-monitor-datasets.md)して、データ ドリフトの検出に役立てる。
-+  2 種類のデータセットについては、次のドキュメントを参照してください。
-    + [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) は、指定されたファイルまたはファイルのリストを解析して、データを表形式で表します。 これにより、データを Pandas または Spark データフレームに具体化して、さらに操作とクレンジングを行うことができます。 TabularDataset を作成できるファイルの完全な一覧については、[TabularDatasetFactory クラス](https://aka.ms/tabulardataset-api-reference)を参照してください。
-
-    + [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) は、データストアまたはパブリック URL 内の 1 つまたは複数のファイルを参照します。 この方法では、選択したファイルを FileDataset オブジェクトとして、コンピューティング ターゲットにダウンロードしたりマウントしたりすることができます。
++ [データセットを監視](how-to-monitor-datasets.md)して、データ ドリフトの検出に役立てる。    
 
 ## <a name="work-with-your-data"></a>データを処理する
 
 データセットを使用すると、Azure Machine Learning 機能とのシームレスな統合を通じて、数多くの機械学習タスクを実行できます。 
 
-+ [機械学習モデルをトレーニングします](how-to-train-with-datasets.md)。
-+ データセットを次で使用します 
-     + [自動 ML の実験](how-to-create-portal-experiments.md)
-     + [デザイナー](tutorial-designer-automobile-price-train-score.md#import-data) 
-+ [機械学習パイプライン](how-to-create-your-first-pipeline.md)でのバッチ推論によるスコアリングのためのデータセットにアクセスします。
 + [データのラベル付けプロジェクト](#label)を作成します。
++ 機械学習モデルをトレーニングします。
+     + [自動 ML の実験](how-to-use-automated-ml-for-ml-models.md)
+     + [デザイナー](tutorial-designer-automobile-price-train-score.md#import-data)
+     + [ノートブック](how-to-train-with-datasets.md)
+     + [Azure Machine Learning パイプライン](how-to-create-your-first-pipeline.md)
++ [機械学習パイプライ](how-to-create-your-first-pipeline.md)ンでの[バッチ推論](how-to-use-parallel-run-step.md)によるスコアリングのためのデータセットにアクセスします。
 + [データ ドリフト](#drift)の検出のためのデータセット モニターを設定します。
-
-<a name="open"></a>
-
-## <a name="azure-open-datasets"></a>Azure Open Datasets
-
-[Azure オープン データセット](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets)は選別されたパブリック データセットであり、機械学習ソリューションにシナリオ固有の機能を追加してモデルの精度を上げるために使用できます。 オープン データセットは Microsoft Azure のクラウドにあり、Azure Machine Learning に統合されています。 API を介してデータセットにアクセスすることもでき、Power BI や Azure Data Factory などの他の製品内でも使用できます。
-
-Azure オープン データセットには、機械学習モデルのトレーニングと予測ソリューションのエンリッチメントに役立つ天気、国勢調査、祝日、公共の安全、場所に関するパブリック ドメイン データが含まれます。 Azure オープン データセット上でパブリック データセットを共有することもできます。
 
 <a name="label"></a>
 
@@ -105,17 +101,18 @@ Azure オープン データセットには、機械学習モデルのトレー�
 
 Azure Machine Learning を使用すると、ラベル付けプロジェクトの作成、管理、監視を一元的に行うことができます。 ラベル付けプロジェクトは、データ、ラベル、チーム メンバーの間の調整に役立ち、ラベル付けタスクをより効率的に管理できるようになります。 現在サポートされているタスクは、複数ラベルまたは多クラスでの画像分類と、境界ボックスを使用したオブジェクト識別です。
 
-+ [データラベル付けプロジェクト](how-to-create-labeling-projects.md)を作成し、機械学習の実験で使用するためのデータセットを出力します。
+[データラベル付けプロジェクト](how-to-create-labeling-projects.md)を作成し、機械学習の実験で使用するためのデータセットを出力します。
 
 <a name="drift"></a>
 
 ## <a name="data-drift"></a>データ ドリフト
 
 機械学習においてデータの誤差とは、モデルのパフォーマンスの低下につながるモデルの入力データの変更のことです。 これはモデルの精度が時間の経過と共に低下する主な理由の 1 つであるため、データ ドリフトの監視はモデルのパフォーマンスに関する問題の検出に役立ちます。
+
 データセット内の新しいデータに対するデータ ドリフトを検出してアラートを生成する方法の詳細については、[データセット モニターの作成](how-to-monitor-datasets.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ 
 
-+ Azure Machine Learning Studio または Python SDK でデータセットを作成するには、[これらの手順に従ってください](how-to-create-register-datasets.md)。
++ [こちらの手順を使用](how-to-create-register-datasets.md)して、Azure Machine Learning Studio に、または Python SDK でデータセットを作成します。
 + [サンプル ノートブック](https://aka.ms/dataset-tutorial)を使用して、データセットのトレーニング例を試してみてください。
 + データ ドリフトの例については、こちらの[データ ドリフトのチュートリアル](https://aka.ms/datadrift-notebook)を参照してください。

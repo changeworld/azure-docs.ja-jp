@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: 2a5d1178bd6dbd6f7cfdd2ec2af17b78836a38d7
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: d1c0652844556b545cf0617032d21b80dd67d198
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096732"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479843"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor で使用する監視データのソース
 Azure Monitor は、[ログ](data-platform-logs.md)と[メトリック](data-platform-metrics.md)を含む[一般的な監視データ プラットフォーム](data-platform.md)をベースにしています。 このプラットフォームにデータを収集すれば、Azure Monitor にある共通のツール一式を使用して、複数のリソースからのデータをまとめて分析することができます。 特定のシナリオに対応するために監視データは他の場所に送信されることがあるほか、一部のリソースについては、他の場所に書き込まれた後で、ログやメトリックに収集されることもあります。
@@ -135,12 +135,11 @@ Windows 仮想マシンまたは Linux 仮想マシンを包括的に監視お�
 
 
 ### <a name="azure-monitor-for-vms"></a>VM に対する Azure Monitor 
-[Azure Monitor for VMs](../insights/vminsights-overview.md) は、仮想マシン用にカスタマイズされた監視エクスペリエンスを備え、サービスの状態や VM の正常性など、Azure Monitor の主要機能を超える機能が用意されています。 Windows 仮想マシンおよび Linux 仮想マシンには Dependency Agent が必要となります。これが Log Analytics エージェントと統合されて、仮想マシン上で実行されているプロセスや外部プロセスの依存関係について検出されたデータを収集します。
+[Azure Monitor for VMs](../insights/vminsights-overview.md) は、Azure Monitor の主要機能を超える機能を提供して、仮想マシンに対するカスタマイズされた監視エクスペリエンスを提供します。 Windows 仮想マシンおよび Linux 仮想マシンには Dependency Agent が必要となります。これが Log Analytics エージェントと統合されて、仮想マシン上で実行されているプロセスや外部プロセスの依存関係について検出されたデータを収集します。
 
 | 宛先 | 説明 | リファレンス |
 |:---|:---|:---|
 | Azure Monitor ログ | プロセスや依存関係についてのデータをエージェントに格納します。 | [Azure Monitor for VMs (プレビュー) のマップを使用してアプリケーション コンポーネントを把握する](../insights/vminsights-maps.md) |
-| VM ストレージ | Azure Monitor for VMs は、Log Analytics エージェントを使用して、ヘルス状態情報をカスタムの場所に格納します。 これは、[Azure Resource Health REST API](/rest/api/resourcehealth/) のほか、Azure portal の Azure Monitor for VMs からのみ利用することができます。 | [Azure 仮想マシンの正常性を把握する](../insights/vminsights-health.md)<br>[Azure Resource Health REST API](https://docs.microsoft.com/rest/api/resourcehealth/) |
 
 
 

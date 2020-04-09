@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: e4fbeef06ae49ffe24f84b1a12dbcdfe0a5f1fec
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 62623bcadb35f21117ddc2601195e34598c2dff5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278567"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298773"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -44,7 +44,7 @@ Azure Spring Cloud サービス インスタンスあたりのアプリ イン�
 
 セキュリティとプライバシーは、Azure や Azure Spring Cloud のお客様にとっての最優先事項です。 Azure では、アプリケーション データ、ログ、または構成を確実に暗号化することにより、お客様だけがこれらのすべてのデータにアクセスできるようにしています。 Azure Spring Cloud のサービス インスタンスはすべて、相互に分離されています。
 
-Azure Spring Cloud には、SSL と証明書の包括的な管理機能が用意されています。
+Azure Spring Cloud には、TLS/SSL と証明書の包括的な管理機能が用意されています。
 
 OpenJDK と Spring Cloud のランタイムに重要なセキュリティ パッチがあるときは、可能な限り早期に Azure Spring Cloud に適用されます。
 

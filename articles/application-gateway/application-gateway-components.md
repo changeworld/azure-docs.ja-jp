@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 799ed0e877bb3bddb3f179cdb3d6df6fca57e4d5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 90b3c3fd18bc9211c731ccf16dd646a64a4a1116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301354"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133090"
 ---
 # <a name="application-gateway-components"></a>アプリケーション ゲートウェイのコンポーネント
 
@@ -55,7 +55,7 @@ V1 SKU は、静的または動的な内部 IP アドレスと動的パブリッ
 - リスナー構成で HTTP プロトコルか HTTPS プロトコルを指定します。
 - [WebSockets プロトコルと HTTP/2 プロトコル](features.md#websocket-and-http2-traffic)のサポートはネイティブで提供されます。[WebSocket サポート](application-gateway-websocket.md)は既定で有効になっています。 ユーザーが構成可能な、WebSocket のサポートを選択的に有効または無効にするための設定はありません。 WebSocket は HTTP リスナーと HTTPS リスナーの両方で使用します。
 
-HTTPS リスナーは SSL 終了に使用します。 HTTPS リスナーは暗号化と解読の作業負荷をアプリケーション ゲートウェイにまかせるため、Web サーバーはオーバーヘッドの負担から解放されます。
+HTTPS リスナーは TLS 終端に使用します。 HTTPS リスナーは暗号化と解読の作業負荷をアプリケーション ゲートウェイにまかせるため、Web サーバーはオーバーヘッドの負担から解放されます。
 
 ### <a name="custom-error-pages"></a>カスタム エラー ページ
 
@@ -111,7 +111,7 @@ Application Gateway は[示されている順序](configuration-overview.md#orde
 
 アプリケーション ゲートウェイは、このコンポーネントに詳細があるポート番号、プロトコル、その他の設定を使用し、(HTTP 設定が含まれる要求ルーティング規則に指定されている) バックエンド サーバーにトラフィックをルーティングします。
 
-アプリケーション ゲートウェイとバックエンド サーバーの間でトラフィックが暗号化されるかどうか (エンドツーエンドの SSL が与えられるかどうか) は、HTTP 設定で使用されているポートやプロトコルによって決定されます。
+アプリケーション ゲートウェイとバックエンド サーバーの間でトラフィックが暗号化されるかどうか (エンドツーエンドの TLS が提供されるかどうか) は、HTTP 設定で使用されているポートやプロトコルによって決定されます。
 
 このコンポーネントは次の目的にも使用されます。
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 838145f8573e11deff8566c932a9c73c6f59f03b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: d6a63b6276c07b1fe6487b97f5c7fc255b6d3411
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561662"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335798"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Application Gateway イングレス コントローラーとは
 Application Gateway イングレス コントローラー (AGIC) は Kubernetes アプリケーションであり、これにより、[Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) のお客様が、Azure のネイティブ [Application Gateway](https://azure.microsoft.com/services/application-gateway/) L7 ロード バランサーを活用してクラウド ソフトウェアをインターネットに公開できるようにします。 AGIC では、ホストされている Kubernetes クラスターを監視し、Application Gateway を継続的に更新して、選択されたサービスがインターネットに公開されるようにします。
@@ -31,8 +31,8 @@ AGIC に加えて Application Gateway を使用すると、TLS ポリシーと W
 AGIC は、サービスおよびデプロイ/ポッドと共に、Kubernetes の[イングレス リソース](https://kubernetes.io/docs/user-guide/ingress/)を使用して構成されます。 Azure のネイティブ Application Gateway L7 ロード バランサーを活用したさまざまな機能が用意されています。 以下にいくつか例を挙げます。
   - URL ルーティング
   - Cookie ベースのアフィニティ
-  - SSL ターミネーション
-  - エンドツーエンド SSL
+  - TLS 終了
+  - エンドツーエンド TLS
   - パブリック、プライベート、ハイブリッド Web サイトのサポート
   - Web アプリケーション ファイアウォールを統合
 

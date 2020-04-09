@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 701e42caba5325df34bdbb2381389708b9b5a03f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198856"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479561"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats をインストールする
 
@@ -124,11 +124,11 @@ PowerShell 環境を使用して、Cloud Shell インスタンスで次の手順
 
 4. このスクリプトでは、次の 3 つの入力を求められます。
 
-    - FarmBeats Web サイト名:これは FarmBeats Web アプリケーションの一意の URL プレフィックスです。 プレフィックスが既に取得されている場合、スクリプトはエラーを表示します。インストールが完了すると、お使いの FarmBeats のデプロイは https://\<FarmBeats-website-name>.azurewebsites.net からアクセスできるようになります。また、swagger API は、 https://\<FarmBeats-website-name>-api.azurewebsites.net にあります。
+    - **FarmBeats Web サイト名**:これは FarmBeats Web アプリケーションの一意の URL プレフィックスです。 プレフィックスが既に取得されている場合、スクリプトはエラーを表示します。インストールが完了すると、お使いの FarmBeats のデプロイは https://\<FarmBeats-website-name>.azurewebsites.net からアクセスできるようになります。また、swagger API は、 https://\<FarmBeats-website-name>-api.azurewebsites.net にあります。
 
-    - Azure ログイン ID:FarmBeats の管理者として追加するユーザーに Azure ログイン ID を入力します。 その後、このユーザーは、FarmBeats Web アプリケーションへのアクセス権を他のユーザーに付与することができます。 ログイン ID は、通常、john.doe@domain.comの形式となります。 Azure UPN もサポートされています。
+    - **Azure ログイン ID**:FarmBeats の管理者として追加するユーザーに Azure ログイン ID を入力します。 その後、このユーザーは、FarmBeats Web アプリケーションへのアクセス権を他のユーザーに付与することができます。 ログイン ID は、通常、john.doe@domain.comの形式となります。 Azure UPN もサポートされています。
 
-    - Subscription ID (サブスクリプション ID):これは、Azure FarmBeats をインストールするサブスクリプションの ID です。
+    - **サブスクリプション ID**:これは、Azure FarmBeats をインストールするサブスクリプションの ID です。
 
 5. 実行時間は約 2 分です。この AAD スクリプトでは、画面上と、同じディレクトリ内の json ファイルに値が出力されます。 他のユーザーがスクリプトを実行していた場合は、その出力を共有するよう依頼してください。
 
@@ -152,7 +152,7 @@ Azure FarmBeats の設定を使用すると、欧州宇宙機関の [Sentinel-2]
 
 2. ポータルで Azure Marketplace にアクセスし、Marketplace で **Azure FarmBeats** を検索します。
 
-3. Azure FarmBeats の概要が表示された新しいウィンドウが開きます。 **作成** を選択します。
+3. Azure FarmBeats の概要が表示された新しいウィンドウが開きます。 **［作成］** を選択します
 
 4. 新しいウィンドウが開きます。 Azure FarmBeats をインストールする適切なサブスクリプション、リソース グループ、および場所を選択して、サインアップ プロセスを完了します。
 

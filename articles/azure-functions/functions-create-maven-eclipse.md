@@ -2,16 +2,16 @@
 title: Java と Eclipse を使用して Azure 関数アプリを作成する
 description: Java と Eclipse を使用して、単純な HTTP によってトリガーしたサーバーレス アプリを Azure Functions に公開するためのハウツー ガイド。
 author: jeffhollan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d2d353e6ccd7dad7be302a5f40c65012f32deba7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 42e9ed7c080c9274fad7eda8e4c8af3631ed41f5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227117"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756488"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Java と Eclipse を使用して初めての関数を作成する 
 
@@ -42,8 +42,8 @@ Azure Functions を実行およびデバッグするためのローカル環境�
 1. **[Add Archetype]\(Archetype の追加\)** を選択し、[azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) のエントリを追加します。
     - [Archetype Group ID]\(Archetype グループ ID\): com.microsoft.azure
     - [Archetype Artifact ID]\(Archetype アーティファクト ID\): azure-functions-archetype
-    - バージョン:[中央のリポジトリ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)から最新バージョンの **1.22** を使用します 
-    ![Eclipse Maven の作成](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
+    - バージョン:[中央のリポジトリ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    ![Eclipse Maven create](media/functions-create-first-java-eclipse/functions-create-eclipse.png)で最新バージョンを調べて、そのバージョンを使用します  
 1. **[OK]** をクリックし、 **[次へ]** をクリックします。  `resourceGroup`、`appName`、`appRegion` を含むすべてのフィールドに値を入力し (**fabrikam-function-20170920120101928** とは異なる appName を使用してください)、最後に **[完了]** をクリックします。
     ![Eclipse Maven の作成 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
@@ -90,7 +90,7 @@ az login
 [INFO] ------------------------------------------------------------------------
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 「[Azure Functions Java developer guide](functions-reference-java.md)」(Azure Functions Java 開発者ガイド) で、Java 関数の開発の詳細について確認します。
 - `azure-functions:add` Maven ターゲットを使って、異なるトリガーの新しい関数をプロジェクトに追加します。

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
-ms.openlocfilehash: be6fd633f026c98e8f75467dc8661e695e121721
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b0def12582dd3795e1b17334406e28d77c3c5656
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841269"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477444"
 ---
 # <a name="summarize-data"></a>データの集計
 
@@ -40,9 +40,9 @@ Summarize Data (データの要約) モジュールを使用して、入力テ�
 
 1. 追加のパラメーターは必要ありません。 既定では、モジュールは入力として指定されたすべての列を分析し、列内の値の型に応じて、「[結果](#results)」セクションで説明されているように、関連する統計のセットを出力します。
 
-1. パイプラインを実行します。
+1. パイプラインを送信します。
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 モジュールからのレポートには、次の統計情報を含めることができます。 
 

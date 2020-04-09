@@ -3,12 +3,12 @@ title: カスタムのイベントとメトリックのための Application Ins
 description: デバイスまたはデスクトップ アプリケーション、Web ページ、またはサービスに数行のコードを追加して、使用状況の追跡や問題の診断を行います。
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 74736966013581296483d1444f4ab2b8a35bbd98
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 06bd8bd0958afd26e1256a010b08c908c59aaf7d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666498"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585882"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -31,7 +31,7 @@ ms.locfileid: "77666498"
 
 これらのテレメトリの呼び出しのほとんどに [プロパティとメトリックをアタッチ](#properties) できます。
 
-## <a name="prep"></a>開始する前に
+## <a name="before-you-start"></a><a name="prep"></a>開始する前に
 
 Application Insights SDK の参照がまだない場合:
 
@@ -58,11 +58,14 @@ Application Insights SDK の参照がまだない場合:
 
 [ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) アプリと [.NET/.NET Core 向けの非 HTTP/ワーカー](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) アプリの場合、それぞれのドキュメントに説明されているとおり、依存関係インジェクション コンテナーから `TelemetryClient` のインスタンスを取得することが推奨されます。
 
+AzureFunctions v2 + または Azure WebJobs v3 + を使用する場合は、このドキュメント (https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher ) に従ってください。
+
 *C#*
 
 ```csharp
 private TelemetryClient telemetry = new TelemetryClient();
 ```
+このメソッドが現在不使用のメッセージであることがわかっている場合は、[microsoft/ApplicationInsights-dotnet # 1152](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1152) にアクセスして詳細を確認してください。
 
 *Visual Basic*
 
@@ -775,7 +778,7 @@ appInsights.setAuthenticatedUserContext(validatedId, accountId);
 
 また、特定のユーザー名とアカウントを持つクライアント データ ポイントを[検索する](../../azure-monitor/app/diagnostic-search.md)こともできます。
 
-## <a name="properties"></a>プロパティを使用したデータのフィルタリング、検索、セグメント化
+## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>プロパティを使用したデータのフィルタリング、検索、セグメント化
 
 プロパティと測定値をイベント (およびメトリック、ページ ビュー、その他のテレメトリ データ) に結び付けることができます。
 
@@ -906,7 +909,7 @@ requests
 * customDimensions または customMeasurements JSON から値を抽出する場合、これは動的な型を持つため、`tostring` または `todouble` にキャストする必要があります。
 * [サンプリング](../../azure-monitor/app/sampling.md)の可能性について考慮するには、`count()` ではなく、`sum(itemCount)` を使用する必要があります。
 
-## <a name="timed"></a> タイミング イベント
+## <a name="timing-events"></a><a name="timed"></a> タイミング イベント
 
 アクションの実行にかかる時間をグラフで示す必要が生じることがあります。 たとえば、ユーザーがゲームで選択肢について考える時間について調べるとします。 測定パラメーターを使用することでこの調査を行うことができます。
 
@@ -949,7 +952,7 @@ properties.put("signalSource", currentSignalSource.getName());
 telemetry.trackEvent("SignalProcessed", properties, metrics);
 ```
 
-## <a name="defaults"></a>カスタム テレメトリの既定のプロパティ
+## <a name="default-properties-for-custom-telemetry"></a><a name="defaults"></a>カスタム テレメトリの既定のプロパティ
 
 記述するカスタム イベントのいくつかに既定のプロパティ値を設定する必要がある場合、TelemetryClient インスタンスで設定できます。 既定値は、そのクライアントから送信されたすべてのテレメトリ項目に追加されます。
 
@@ -1055,7 +1058,7 @@ applicationInsights.setup()
 
 初期化後にこれらのコレクターを無効にするには、構成オブジェクト `applicationInsights.Configuration.setAutoCollectRequests(false)` を使用します。
 
-## <a name="debug"></a>開発者モード
+## <a name="developer-mode"></a><a name="debug"></a>開発者モード
 
 デバッグ中、結果をすぐに確認できるように、テレメトリをパイプラインから送信すると便利です。 テレメトリで問題を追跡する際に役立つ付加的なメッセージも取得できます。 アプリケーションの速度を低下させる可能性があるため、本稼働ではオフにしてください。
 
@@ -1082,7 +1085,7 @@ applicationInsights.setup("ikey")
 applicationInsights.defaultClient.config.maxBatchSize = 0;
 ```
 
-## <a name="ikey"></a> 選択したカスタム テレメトリにインストルメンテーション キーを設定する
+## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a> 選択したカスタム テレメトリにインストルメンテーション キーを設定する
 
 *C#*
 
@@ -1092,7 +1095,7 @@ telemetry.InstrumentationKey = "---my key---";
 // ...
 ```
 
-## <a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
 開発、テスト、運用の各環境のテレメトリが混じらないようにするために、環境に応じて[個別の Application Insights リソースを作成](../../azure-monitor/app/create-new-resource.md )し、それぞれのキーを変更できます。
 
@@ -1198,7 +1201,7 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
     はい、[データ アクセス API](https://dev.applicationinsights.io/) があります。 データを抽出する別の方法としては、[Analytics から Power BI へのエクスポート](../../azure-monitor/app/export-power-bi.md )や[連続エクスポート](../../azure-monitor/app/export-telemetry.md)などがあります。
 
-## <a name="next"></a>次のステップ
+## <a name="next-steps"></a><a name="next"></a>次のステップ
 
 * [イベントおよびログを検索する](../../azure-monitor/app/diagnostic-search.md)
 * [トラブルシューティング](../../azure-monitor/app/troubleshoot-faq.md)

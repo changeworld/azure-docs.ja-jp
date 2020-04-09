@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900372"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>デバイス ID とデスクトップ仮想化
@@ -58,9 +58,9 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 |   | マネージド | 最新の Windows | 永続的 | いいえ |
 |   |   |   | 非永続的 | いいえ |
 
-\* **フェデレーション** ID インフラストラクチャ環境は、AD FS やその他のサードパーティ IDP などの ID プロバイダーを備えた環境を表します。
+\***フェデレーション** ID インフラストラクチャ環境は、AD FS やその他のサードパーティ IDP などの ID プロバイダーを備えた環境を表します。
 
-\*\* **マネージド** ID インフラストラクチャ環境は、[パスワード ハッシュ同期 (PHS)](../hybrid/whatis-phs.md) または [パススルー認証 (PTA)](../hybrid/how-to-connect-pta.md) のいずれかを[シームレス シングル サインオン](../hybrid/how-to-connect-sso.md)と共に指定して Azure AD が ID プロバイダーとしてデプロイされている環境を表します。
+\*\***マネージド** ID インフラストラクチャ環境は、[パスワード ハッシュ同期 (PHS)](../hybrid/whatis-phs.md) または [パススルー認証 (PTA)](../hybrid/how-to-connect-pta.md) のいずれかを[シームレス シングル サインオン](../hybrid/how-to-connect-sso.md)と共に指定して Azure AD が ID プロバイダーとしてデプロイされている環境を表します。
 
 \*\*\* **最新の Windows** デバイスは、Windows 10、Windows Server 2016、および Windows Server 2019 を表します。
 
@@ -85,6 +85,6 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 - [古いデバイスの管理](manage-stale-devices.md)のプロセスを定義して実装します。
    - 非永続的 Hybrid Azure AD 参加済みデバイスを識別する方法を用意したら、これらのデバイスのクリーンアップをより積極的に実行して、ディレクトリが多くの古いデバイスで使用されないようにすることができます。
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [フェデレーション環境用のハイブリッド Azure Active Directory 参加を構成する](hybrid-azuread-join-federated-domains.md)

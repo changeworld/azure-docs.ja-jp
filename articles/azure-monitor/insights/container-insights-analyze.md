@@ -2,13 +2,13 @@
 title: Azure Monitor for containers での Kubernetes の監視 | Microsoft Docs
 description: この記事では、Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを表示および分析する方法について説明します。
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: f57f8982b2aa045156e6f48316610137260d6597
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.date: 03/26/2020
+ms.openlocfilehash: 227fe70512536790d179797394b6fba22e7eb50e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75731018"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298369"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する
 
@@ -24,7 +24,7 @@ Azure Monitor for containers を使用して Windows Server クラスターを�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure portal](https://portal.azure.com) にサインインする 
+[Azure portal](https://portal.azure.com) にサインインします。 
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Azure Monitor の複数クラスター ビュー
 
@@ -191,7 +191,7 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 | 列 | 説明 | 
 |--------|-------------|
-| Name | ホストの名前。 |
+| 名前 | ホストの名前。 |
 | Status | ノードの状態の Kubernetes ビュー。 |
 | Min&nbsp;% ((%) 最小)、Avg&nbsp;% ((%) 平均)、(%)&nbsp;50、(%)&nbsp;90、(%)&nbsp;95、Max&nbsp;% ((%) 最大)  | 選択した期間中の、パーセンタイルに基づいたノードの平均率。 |
 | 最小、平均、50、90、95、最大 | 選択した期間中の、パーセンタイルに基づいたノードの実際の平均値。 平均値は、ノードに設定されている CPU とメモリの制限から測定されます。 ポッドとコンテナーの場合は、ホストによってレポートされた平均値です。 |
@@ -199,6 +199,20 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 | Uptime | ノードが起動または再起動されてから経過した時間を示します。 |
 | コントローラー | コンテナーとポッド限定。 どのコントローラーに存在しているかが示されます。 コントローラーにないポッドもあるため、一部は **N/A** と表示される可能性があります。 | 
 | Trend Min&nbsp;% (傾向 (%) 最小)、Avg&nbsp;% (傾向 (%) 平均)、50th&nbsp;% (傾向 (%) 50)、90th&nbsp;% (傾向 (%) 90)、95th&nbsp;% (傾向 (%) 95)、Max&nbsp;% (傾向 (%) 最大) | 棒グラフの傾向は、コントローラーの平均パーセンタイル メトリック率を表しています。 |
+
+**[他のプロセス]** という名前のノードを展開した後、ワークロードに気付くこともあります。 これはノード上で実行されるコンテナー化されていないプロセスを表し、次のものが含まれます。
+
+* 自己管理型またはマネージド Kubernetes のコンテナー化されていないプロセス
+
+* コンテナーの実行時プロセス  
+
+* kubelet  
+
+* ノードで実行されているシステム プロセス
+
+* ノード ハードウェアまたは VM 上で実行されている Kubernetes 以外の他のワークロード
+
+次の方法で計算されます。*cAdvisor からの使用量* - *コンテナー化されたプロセスからの合計使用量*。  
 
 セレクターで、 **[コントローラー]** を選択します。
 
@@ -220,7 +234,7 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 | 列 | 説明 | 
 |--------|-------------|
-| Name | コントローラーの名前。|
+| 名前 | コントローラーの名前。|
 | Status | *[OK]* 、 *[終了]* 、 *[失敗]* 、 *[停止]* 、 *[一時停止]* など、実行完了後のコンテナーのロールアップ状態。 コンテナーが実行されているのに状態が正しく表示されない、またはエージェントによって状態が認識されず、30 分を超えても応答しない場合は、 *[不明]* 状態になります。 状態アイコンのその他の詳細については、次の表を参照してください。|
 | Min&nbsp;% ((%) 最小)、Avg&nbsp;% ((%) 平均)、(%)&nbsp;50、(%)&nbsp;90、(%)&nbsp;95、Max&nbsp;% ((%) 最大)| 各エンティティの選択されたメトリックとパーセンタイルの平均率のロールアップ平均。 |
 | 最小、平均、50、90、95、最大  | 選択されたパーセンタイルのコンテナーの平均 CPU ミリコアまたはメモリ パフォーマンスのロールアップ。 平均値は、ポッドに設定されている CPU/メモリ制限から測定されます。 |
@@ -257,7 +271,7 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 | 列 | 説明 | 
 |--------|-------------|
-| Name | コントローラーの名前。|
+| 名前 | コントローラーの名前。|
 | Status | 存在する場合、コンテナーの状態です。 状態アイコンのその他の詳細については、次の表を参照してください。|
 | Min&nbsp;% ((%) 最小)、Avg&nbsp;% ((%) 平均)、(%)&nbsp;50、(%)&nbsp;90、(%)&nbsp;95、Max&nbsp;% ((%) 最大) | 各エンティティの選択されたメトリックとパーセンタイルの平均率のロールアップ。 |
 | 最小、平均、50、90、95、最大 | 選択されたパーセンタイルのコンテナーの平均 CPU ミリコアまたはメモリ パフォーマンスのロールアップ。 平均値は、ポッドに設定されている CPU/メモリ制限から測定されます。 |

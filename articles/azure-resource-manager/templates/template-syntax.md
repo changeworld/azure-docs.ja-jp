@@ -2,19 +2,19 @@
 title: テンプレートの構造と構文
 description: 宣言型 JSON 構文を使用した Azure Resource Manager テンプレートの構造とプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 08c688da3e812a4a67070c926cf11512bfc60667
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.date: 03/16/2020
+ms.openlocfilehash: 4e8334e4ddfaee52c5d1aa68fb8689fcde0a6cbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622895"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79459992"
 ---
-# <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
+# <a name="understand-the-structure-and-syntax-of-arm-templates"></a>ARM テンプレートの構造と構文について
 
-この記事では、Azure Resource Manager テンプレートの構造について説明します。 テンプレートの各種セクションとそこで使用できるプロパティを紹介しています。
+この記事では、Azure Resource Manager (ARM) テンプレートの構造について説明します。 テンプレートの各種セクションとそこで使用できるプロパティを紹介しています。
 
-この記事は、Resource Manager テンプレートにある程度慣れているユーザー向けです。 テンプレートの構造に関する詳細情報を提供します。 テンプレートの作成手順について説明したチュートリアルについては、「[チュートリアル:初めての Azure Resource Manager テンプレートを作成およびデプロイする](template-tutorial-create-first-template.md)」を参照してください。
+この記事は、ARM テンプレートにある程度慣れているユーザー向けです。 テンプレートの構造に関する詳細情報を提供します。 テンプレートの作成手順について説明したチュートリアルについては、「[チュートリアル:初めての Azure Resource Manager テンプレートを作成およびデプロイする](template-tutorial-create-first-template.md)」を参照してください。
 
 ## <a name="template-format"></a>テンプレートの形式
 
@@ -22,7 +22,7 @@ ms.locfileid: "77622895"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "",
   "apiProfile": "",
   "parameters": {  },
@@ -33,9 +33,9 @@ ms.locfileid: "77622895"
 }
 ```
 
-| 要素名 | Required | 説明 |
+| 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
-| $schema |はい |テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。<br><br> リソース グループ デプロイの場合、次を使用します。`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>サブスクリプション デプロイの場合、次を使用します。`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
+| $schema |はい |テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。 使用するバージョン番号は、デプロイのスコープと JSON エディターによって異なります。<br><br>[VS Code を Azure Resource Manager ツール拡張機能](use-vs-code-to-create-template.md)と共に使用している場合は、リソース グループのデプロイの最新バージョンを使用します。<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>他のエディター (Visual Studio を含む) では、このスキーマを処理できない場合があります。 そうしたエディターの場合、次を使用します。<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>サブスクリプション デプロイの場合、次を使用します。<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>管理グループのデプロイの場合、次を使用します。<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>テナントのデプロイの場合、次を使用します。<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
 | contentVersion |はい |テンプレートのバージョン (1.0.0.0 など)。 この要素には任意の値を指定できます。 この値を使用し、テンプレートの大きな変更を記述します。 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。 |
 | apiProfile |いいえ | リソースの種類に対する API のバージョンのコレクションとして機能する API バージョン。 この値を使用すると、テンプレートのリソースごとに API バージョンを指定しなくて済みます。 API プロファイルのバージョンを指定し、リソースの種類の API バージョンを指定しないと、Resource Manager では、プロファイルでそのリソースの種類に対して定義されている API バージョンが使用されます。<br><br>API プロファイル プロパティは、Azure Stack やグローバルな Azure など、さまざまな環境にテンプレートをデプロイする場合に特に便利です。 API プロファイルのバージョンを使用し、両方の環境でサポートされているバージョンがテンプレートで自動的に使用されるようにします。 現在の API プロファイルのバージョンおよびリソース プロファイルで定義されている API バージョンの一覧については、「[API Profile (API プロファイル)](https://github.com/Azure/azure-rest-api-specs/tree/master/profile)」をご覧ください。<br><br>詳しくは、「[API プロファイルを使用してバージョンを追跡する](templates-cloud-consistency.md#track-versions-using-api-profiles)」をご覧ください。 |
 | [parameters](#parameters) |いいえ |リソースのデプロイをカスタマイズするのにはデプロイを実行すると、提供されている値です。 |
@@ -69,7 +69,7 @@ ms.locfileid: "77622895"
 }
 ```
 
-| 要素名 | Required | 説明 |
+| 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | parameter-name |はい |パラメーターの名前。 有効な JavaScript 識別子で指定する必要があります。 |
 | type |はい |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 「[データの種類](#data-types)」を参照してください。 |
@@ -164,7 +164,7 @@ ms.locfileid: "77622895"
 ],
 ```
 
-| 要素名 | Required | 説明 |
+| 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | namespace |はい |カスタム関数の名前空間。 テンプレート関数との名前の競合を回避するために使用します。 |
 | function-name |はい |カスタム関数の名前。 関数を呼び出すときに、関数名と名前空間を組み合わせます。 たとえば、uniqueName という名前の関数を名前空間 contoso で呼び出すには、`"[contoso.uniqueName()]"` を使用します。 |
@@ -235,7 +235,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
 ]
 ```
 
-| 要素名 | Required | 説明 |
+| 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | condition | いいえ | このデプロイの間にリソースがプロビジョニングされるかどうかを示すブール値。 `true` の場合、デプロイ時にリソースが作成されます。 `false` の場合、このデプロイでは、リソースはスキップされます。 [条件](conditional-resource-deployment.md)をご覧ください。 |
 | type |はい |リソースの種類。 この値は、リソース プロバイダーの名前空間と、リソースの種類の組み合わせです (例: **Microsoft.Storage/storageAccounts**)。 使用可能な値を確認するには、[テンプレートのリファレンス](/azure/templates/)に関する記事をご覧ください。 子リソースの場合、type の形式は、親リソース内に入れ子にされているか、親リソースの外側で定義されているかによって変わります。 [子リソースの名前と種類の設定](child-resource-name-type.md)に関する記事を参照してください。 |
@@ -272,7 +272,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
 }
 ```
 
-| 要素名 | Required | 説明 |
+| 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | output-name |はい |出力値の名前。 有効な JavaScript 識別子で指定する必要があります。 |
 | condition |いいえ | この出力値が返されたかどうかを示すブール値。 `true` の場合、値はデプロイの出力に含まれています。 `false` の場合、このデプロイでは、出力値はスキップされます。 指定しない場合、既定値は `true` です。 |
@@ -317,7 +317,7 @@ Visual Studio Code では、[Azure Resource Manager ツール拡張機能](use-v
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "metadata": {
     "comments": "This template was developed for demonstration purposes.",

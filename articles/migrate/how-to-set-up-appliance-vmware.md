@@ -2,29 +2,26 @@
 title: VMware 向け Azure Migrate アプライアンスを設定する
 description: Azure Migrate アプライアンスを設定して VMware VM を評価し移行する方法について説明します。
 ms.topic: article
-ms.date: 11/18/2019
-ms.openlocfilehash: e331d45d3e87f8007642675a0349839e7494958c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/23/2020
+ms.openlocfilehash: 7a7d0007d2824abc781411f9529f9fa4ac89e55c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598155"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336788"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM のアプライアンスを設定する
 
-この記事では、Azure Migrate Server Assessment ツールで VMware VM を評価する場合、または Azure Migrate Server Migration ツールを使用してエージェントレス移行で VMware VM を Azure に移行する場合に Azure Migrate アプライアンスを設定する方法について説明します。
+この記事では、[Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) ツールによる評価のため、および [Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) ツールを使用したエージェントレス移行のために、Azure Migrate アプライアンスを設定する方法について説明します。
 
-VMware VM アプライアンスは、次の操作を行うために Azure Migrate Server Assessment/Migration によって使用される軽量アプライアンスです。
+[Azure Migrate アプライアンス](migrate-appliance.md) は、エージェントレス移行時にオンプレミスの VMware VM の検出、VM のメタデータ/パフォーマンス データの Azure への送信、VMware VM のレプリケーションを行うために、Azure Migrate:Server Assessment および Server Migration によって使用される軽量のアプライアンスです。
 
-- オンプレミスの VMware VM を検出します。
-- 検出された VM のメタデータとパフォーマンス データを Azure Migrate Server Assessment/Migration に送信します。
-
-Azure Migrate アプライアンスに関する[詳細を確認](migrate-appliance.md)します。
+ダウンロードした OVA テンプレートを使用するか、または PowerShell インストール スクリプトを使用して、VMware VM 評価用に Azure Migrate アプライアンスを設定できます。 この記事では、OVA テンプレートを使用してアプライアンスを設定する方法について説明します。 スクリプトを使用してアプライアンスを設定する場合は、[この記事](deploy-appliance-script.md)の手順に従ってください。
 
 
-## <a name="appliance-deployment-steps"></a>アプライアンスのデプロイ手順
+## <a name="appliance-deployment-ova"></a>アプライアンスのデプロイ (OVA)
 
-アプライアンスを設定するには、次のようにします。
+OVA テンプレートを使用してアプライアンスを設定するには:
 - OVA テンプレート ファイルをダウンロードし、それを vCenter Server にインポートします。
 - アプライアンスを作成し、それが Azure Migrate Server Assessment に接続できることを確認します。
 - アプライアンスを初めて構成し、Azure Migrate プロジェクトに登録します。
@@ -72,7 +69,7 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 
 ## <a name="configure-the-appliance"></a>アプライアンスを構成する
 
-アプライアンスを初めて設定します。
+アプライアンスを初めて設定します。 OVA テンプレートの代わりにスクリプトを使用してアプライアンスをデプロイする場合、この手順の最初の 2 つの操作は必要ありません。
 
 1. vSphere Client コンソールで、[VM] を右クリックして **[Open Console]\(コンソールを開く\)** を選択します。
 2. アプライアンスの言語、タイム ゾーン、パスワードを指定します。
@@ -109,7 +106,7 @@ VM の構成データとパフォーマンス データを検出するには、�
 
 ### <a name="specify-vcenter-server-details"></a>vCenter Server の詳細を指定する
 1. **[vCenter Server の詳細を指定する]** で、vCenter Server の名前 (FQDN) または IP アドレスを指定します。 既定のポートをそのまま使用することも、vCenter Server でリッスンするカスタム ポートを指定することもできます。
-2. **[ユーザー名]** と **[パスワード]** で、アプライアンスで vCenter Server の VM の検出に使用される読み取り専用の資格情報を指定します。 必要に応じて、vCenter アカウントへのアクセスを制限することで、検出のスコープを絞り込むことができます。検出のスコープ設定について詳しくは、[こちら](tutorial-assess-vmware.md#set-the-scope-of-discovery)をご覧ください。
+2. **[ユーザー名]** と **[パスワード]** で、アプライアンスで vCenter Server の VM の検出に使用される読み取り専用の資格情報を指定します。 vCenter アカウントへのアクセスを制限することで、検出のスコープを指定できます。 [詳細については、こちらを参照してください](set-discovery-scope.md)。
 3. **[接続の検証]** をクリックし、アプライアンスが vCenter Server に接続できることを確認します。
 
 ### <a name="specify-vm-credentials"></a>VM の資格情報を指定する

@@ -4,12 +4,12 @@ description: Azure Monitor のパートナーと、そのパートナーとの�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 40ba4c4f0a90d5bca03afea67302a5dbb77de027
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 33ab913c64b651db9e75d4791ecb631ed7e081a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659460"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298390"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -49,7 +49,7 @@ Azure Monitor のアラートで JIRA チケットを作成できます。
 
 ![Circonus のロゴ](./media/partners/circonus.png)
 
-Circonus は、オンプレミスまたは SaaS デプロイメント用に構築された、マイクロサービスの監視と分析のプラットフォームです。 完全に自動化できる API 中心プラットフォームは、監視対象のシステムよりもスケーラビリティが高く信頼性に優れています。 Circonus は、DevOps の要件を満たすように開発されており、パーセンタイルベースのアラート、グラフ、ダッシュボード、機械学習インテリジェンスを提供して、ビジネスの最適化を実現します。 Circonus は、Microsoft Azure クラウド リソースとそのアプリケーションをリアルタイムで監視します。 Circonus を使用すると、リソースとアプリケーションについて測定する変数のメトリックを収集および追跡できます。 Circonus では、Azure のリソース使用率、アプリケーション パフォーマンス、操作の正常性を、システム全体で把握できます。
+Circonus はマシン データ インテリジェンスのエキスパートであり、かつてないビジネスの洞察と価値を実現するために、数十億のメトリック ストリームをリアルタイムで処理できる唯一のマシン データ インテリジェンス プラットフォームを提供しています。 Circonus を使用して、Microsoft Azure のセットアップに関連する主要なメトリックを収集、追跡、および視覚化します。 Azure のリソース使用率、アプリケーション パフォーマンス、操作の正常性を、システム全体で把握します。
 
 [ドキュメントを確認する。][circonus-doc]
 
@@ -115,7 +115,7 @@ InfluxDB の開発元である InfluxData は、DevOps と IoT アプリケー�
 
 ![Logic Monitor のロゴ](./media/partners/logicmonitor.png)
 
-LogicMonitor® は、複雑な IT インフラストラクチャ向けの SaaS ベースのパフォーマンス監視プラットフォームです。 LogicMonitor は、何千ものテクノロジに対応しているので、インフラストラクチャとアプリケーションのパフォーマンスを細かく把握できます。 LM Cloud の包括的な Azure 監視機能を使用すると、Azure クラウド、オンプレミス、およびハイブリッド クラウド リソースのパフォーマンスをすべて 1 つのプラットフォームから相互に関連付けることができます。 自動化リソース検出、組み込みの監視テンプレート、事前構成されたアラートのしきい値、カスタマイズ可能なダッシュボードを利用することで、IT 業務の成功に必要なスピード、柔軟性、可視性を実現できます。
+LogicMonitor&reg; は、複雑な IT インフラストラクチャ向けの SaaS ベースのパフォーマンス監視プラットフォームです。 LogicMonitor は、何千ものテクノロジに対応しているので、インフラストラクチャとアプリケーションのパフォーマンスを細かく把握できます。 LM Cloud の包括的な Azure 監視機能を使用すると、Azure クラウド、オンプレミス、およびハイブリッド クラウド リソースのパフォーマンスをすべて 1 つのプラットフォームから相互に関連付けることができます。 自動化リソース検出、組み込みの監視テンプレート、事前構成されたアラートのしきい値、カスタマイズ可能なダッシュボードを利用することで、IT 業務の成功に必要なスピード、柔軟性、可視性を実現できます。
 
 [ドキュメントを確認する。][logicmonitor-doc]
 
@@ -205,6 +205,14 @@ Serverless360 は、Azure のサーバーレス コンポーネントを操作�
 
 [詳細情報。][serverless360-doc]
 
+## <a name="servicenow"></a>ServiceNow
+
+![ServiceNow のロゴ](./media/partners/servicenow.png)
+
+NOW AIOps プラットフォームを使用してインシデントと MTTR を削減することで、ノイズの除去、優先順位付け、ML を使用した根本原因検出の特定、ITX ワークフローによる修復を行っています。  Azure からの Iaas/PaaS/FaaS サービスの現在の状態を把握し、タグからサービス マップを構築して、ビジネス影響分析のためのアプリケーション サービス コンテキストを構築します。    
+
+[詳細情報。](https://www.servicenow.com/solutions/aiops.html)
+
 ## <a name="signalfx"></a>SignalFx
 
 ![SignalFX のロゴ](./media/partners/signalfx.png)
@@ -214,6 +222,7 @@ SignalFx は、データドリブン DevOps 向けリアルタイム オペレ�
 [ドキュメントを確認する。][signalfx-doc]
 
 ## <a name="signl4"></a>SIGNL4
+
 ![SIGNL4 のロゴ](./media/partners/signl4.png)
 
 SIGNL4 は運用チーム向けのモバイル アラート アプリです。プッシュ、テキスト、音声通話などを使用して、どこからでも適切なタイミングで適切な相手に Azure Monitor の重要なアラートをルーティングできる最速のアプリです。 SIGNL4 は、チームの待機業務とシフトを管理し、アラートの配信と所有権を追跡し、必要に応じてエスカレートします。 チーム全体の完全な透明性が提供されます。 SIGNL4 のとても簡単な REST Web フックを使用すると、どのような Azure サービスでもすぐに接続できます。 SIGNL4 を使用すると、電子メール通知と手動アラートに対する応答が最大 10 倍速くなります。
@@ -232,6 +241,14 @@ Splunk 向けの Azure Monitor アドオンは、[こちら](https://splunkbase.
 
 [ドキュメントを確認する。][splunk-doc]
 
+## <a name="squaredup"></a>SquaredUp 
+
+![SquaredUp のロゴ](./media/partners/squaredup.png)
+
+SquaredUp for Azure により、Azure アプリケーションを素晴らしく簡単に視覚化します。 リアルタイムの対話型ダッシュボードが提供されます。 サブスクリプション、リソース グループ、タグ、および個々のリソースにドリルダウンして、CPU、最も多くの着信接続、Application Insights 応答時間、合計コスト、および正常性状態の概要などのメトリックを表示し、ドリルスルーしてアラート、Log Analytics イベント、詳細なメトリックなどの関連データを表示したり、ServiceNow、Dynatrace、PagerDuty、Ping Dom などの使用している他のツールから関連データを表示したりできます。  独自のダッシュボードをカスタマイズしたり、公開したり、個人と、またはイントラネット ページで共有したりできます。 
+
+[詳細情報。](https://squaredup.com/)
+
 ## <a name="sumo-logic"></a>Sumo Logic
 
 ![Sumo Logic のロゴ](./media/partners/SumoLogic.png)
@@ -249,6 +266,7 @@ Turbonomic は、パフォーマンス、コスト、コンプライアンスを
 [詳細情報。][turbonomic-doc]
 
 ## <a name="next-steps"></a>次のステップ
+
 - [Azure Monitor の詳細情報](../../azure-monitor/overview.md)
 - [REST API を使用してメトリックにアクセスする](rest-api-walkthrough.md)
 - [アクティビティ ログを Microsoft 以外のサービスにストリーミングする](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)

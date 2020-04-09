@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 569eb31c6cbe8b95773d52f6e1325801fbabf86f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 227dfaff211eb60c5c2b25b5c76ecc82b6ce3edc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773546"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240797"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor での Azure Service Bus メトリック
 
@@ -87,6 +87,13 @@ Azure Monitor のメトリックとアラートは、アラート単位で課金
 | 配信不能メッセージ| キュー/トピック内の配信不能メッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/>ディメンション:EntityName |
 | スケジュール設定されたメッセージ| キュー/トピック内のスケジュール済みメッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average  <br/> ディメンション:EntityName |
 
+> [!NOTE]
+> 次のメトリックの値は特定の時点の値です。 その時点の直後に使用された受信メッセージは、これらのメトリックに反映されない場合があります。 
+> - メッセージ
+> - アクティブなメッセージ 
+> - 配信不能メッセージ 
+> - スケジュール設定されたメッセージ 
+
 ## <a name="connection-metrics"></a>接続のメトリック
 
 | メトリックの名前 | 説明 |
@@ -97,6 +104,10 @@ Azure Monitor のメトリックとアラートは、アラート単位で課金
 
 > [!NOTE] 
 > 次のメトリックは**プレミアム**層でのみ使用可能です。 
+> 
+> Premium レベルの名前空間の停止を監視するための重要なメトリックは次のとおりです。**名前空間ごとの CPU 使用率**と**名前空間 1 つあたりのメモリ サイズ**。 Azure Monitor を使用して、これらのメトリックの[アラートを設定](../azure-monitor/platform/alerts-metric.md)します。
+> 
+> 監視できるもう 1 つのメトリックは、**スロットルされた要求**です。 これは、名前空間がメモリ、CPU、およびブローカー接続の制限内にある限り、問題にはなりません。 詳細については、「[Azure Service Bus Premium レベルでのスロットル](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier)」を参照してください。
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
@@ -120,7 +131,7 @@ Azure Service Bus は、Azure Monitor でのメトリックの次のディメン
     1. **[リソースの種類でフィルター]** フィールドで **[Service Bus 名前空間]** を選択します。 
     2. **[サブスクリプション別でフィルター]** フィールドでサブスクリプションを選択します。
     3. 一覧から **[Service Bus 名前空間]** を選択します。 
-    4. **[完了]** を選択します。 
+    4. **[Done]** を選択します。 
     
         ![名前空間の選択](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. **[条件の追加]** を選択し、 **[シグナル ロジックの構成]** ページで次のアクションを実行します。
@@ -131,7 +142,7 @@ Azure Service Bus は、Azure Monitor でのメトリックの次のディメン
     1. **[条件]** で **[より大きい]** を選択します。
     2. **[時間の集計]** で **[合計]** を選択します。 
     3. **[しきい値]** に「**5**」を入力します。 
-    4. **[完了]** を選択します。    
+    4. **[Done]** を選択します。    
 
         ![条件の指定](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
 1. **[ルールの作成]** ページで、 **[アラートの詳細を定義します]** を展開し、次のアクションを実行します。

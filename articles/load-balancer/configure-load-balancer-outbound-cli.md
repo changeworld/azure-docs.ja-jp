@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: allensu
 ms.openlocfilehash: 7230b0c2b80137b068bbeacf43ab2133491a69b0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74225466"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する
@@ -171,7 +171,7 @@ az network lb outbound-rule create \
 
 この時点で、[az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) を使用して、各 NIC リソースの IP 構成を更新することで、バックエンド プール *bepoolinbound* __および__ *bepooloutbound* に VM を追加できるようになります。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、ロード バランサー、およびすべての関連リソースを削除できます。
 
@@ -179,7 +179,7 @@ az network lb outbound-rule create \
   az group delete --name myresourcegroupoutbound
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Standard Load Balancer の作成、ロード バランサーの受信トラフィック規則の構成、バックエンド プール内の VM の正常性プローブの構成を行いました。 Azure Load Balancer についてさらに学習するには、Azure Load Balancer のチュートリアルに進みます。
 
 > [!div class="nextstepaction"]

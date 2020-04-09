@@ -1,23 +1,23 @@
 ---
 title: サポートされているデータ形式の詳細 | Microsoft Azure Maps
 description: 空間 IO モジュールで区切られた空間データを解析する方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: fff801731c3c3a94b4039a8c65ad8ccaab7cc725
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 3353620f1751e939a04543115fe704555fb3bc21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402748"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334092"
 ---
 # <a name="supported-data-format-details"></a>サポートされるデータ形式の詳細
 
-この記事では、すべての XML タグと Well Known Text の geometry 型の読み取りおよび書き込みのサポートについて詳しく説明します。 空間 IO モジュールで区切られた空間データを解析する方法についても詳しく説明します。
+この記事では、すべての XML タグと Well-Known Text の geometry 型の読み取りおよび書き込みのサポートについて詳しく説明します。 区切られた空間データを空間 IO モジュールで解析する方法についても詳しく説明します。
 
 ## <a name="supported-xml-namespaces"></a>サポートされている XML 名前空間
 
@@ -170,7 +170,7 @@ ms.locfileid: "78402748"
 | `georss:where`           | はい     | はい   |                                                                                                |
 | `geourl:latitude`        | はい     | no    | `georss:point` として書き込まれます。                                                                   |
 | `geourl:longitude`       | はい     | no    | `georss:point` として書き込まれます。                                                                   |
-| `position`               | はい     | no    | 一部の XML フィードでは、georss:where タグでラップするのではなく、位置タグを使用して GML をラップします。 このタグを読み取りますが、georss:where タグを使用して書き込みます。 |
+| `position`               | はい     | no    | 一部の XML フィードでは、`georss:where` タグでラップするのではなく、位置タグを使用して GML をラップします。 このタグを読み取りますが、`georss:where` タグを使用して書き込みます。 |
 | `rss`                    | はい     | no    | GeoRSS は ATOM 形式で記述されています。                                                                 |
 | `rss:author`             | はい     | 部分的 | `atom:author` として書き込まれます。                                                                 |
 | `rss:category`           | はい     | 部分的 | `atom:category` として書き込まれます。                                                               |
@@ -304,7 +304,7 @@ ms.locfileid: "78402748"
 - MultiPoint が個々のウェイポイントに分割されます。
 - Polygon と MultiPolygon がトラックとして書き込まれます。 
   
-## <a name="supported-well-known-text-geometry-types"></a>サポートされている Well Known Text の geometry 型
+## <a name="supported-well-known-text-geometry-types"></a>サポートされている Well-Known Text の geometry 型
 
 | geometry 型 | Read | Write |
 |--------------|:----:|:-----:|
@@ -343,7 +343,7 @@ ms.locfileid: "78402748"
 
 ## <a name="delimited-spatial-data-support"></a>区切られた空間データのサポート
 
-コンマ区切り値 (CSV) ファイルなどの区切られた空間データには、多くの場合、空間データを含む列があります。 たとえば、緯度と経度の情報を含む列がある場合があります。 Well Known Text 形式では、空間ジオメトリ データを含む列が存在する可能性があります。
+コンマ区切り値 (CSV) ファイルなどの区切られた空間データには、多くの場合、空間データを含む列があります。 たとえば、緯度と経度の情報を含む列がある場合があります。 Well-Known Text 形式では、空間ジオメトリ データを含む列が存在する可能性があります。
 
 ### <a name="spatial-data-column-detection"></a>空間データ列の検出
 
@@ -385,7 +385,7 @@ ms.locfileid: "78402748"
 
 #### <a name="geography"></a>[地理的な場所]
 
-データの最初の行は、Well Known Text 形式の文字列のためにスキャンされます。 
+データの最初の行は、Well-Known Text 形式の文字列のためにスキャンされます。 
 
 ### <a name="delimited-data-column-types"></a>区切られたデータ列の型
 
@@ -423,7 +423,7 @@ ms.locfileid: "78402748"
 - edm.string
 - varchar
 - text
-- case 'string
+- string
 
 ヘッダーから型情報を抽出できず、読み取り時に動的な入力オプションが有効になっている場合は、各セルが個別に分析され、キャストに最適なデータ型が特定されます。
 
