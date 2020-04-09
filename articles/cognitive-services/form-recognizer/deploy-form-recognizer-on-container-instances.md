@@ -3,19 +3,19 @@ title: Azure Container Instances で Form Recognizer コンテナーを実行す
 titleSuffix: Azure Cognitive Services
 description: Form Recognizer コンテナーを Azure Container Instance にデプロイし、Web ブラウザーでテストします。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.author: dapine
-ms.openlocfilehash: 9a3456eb4d30aa8d163488f558b571dd97c73bf4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: acba4d9fab784181fda5728c30831c8c1838b91f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77605124"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879532"
 ---
 # <a name="deploy-the-form-recognizer-container-to-azure-container-instances"></a>Azure Container Instances に Form Recognizer コンテナーをデプロイする
 

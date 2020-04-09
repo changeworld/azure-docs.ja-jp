@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c8ef6a87e839e6d8dfb296e7b24f3d0d95843d1c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 97551ac63066f7064c16a001d9ce1f6bc31465ec
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78675475"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586584"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>クイック スタート:C# プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする (プレビュー)
 
@@ -30,7 +30,7 @@ Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.micros
 
 次の図は、この例でデバイスローカルおよびサービスローカルのプロキシ アプリケーションで、SSH クライアントと SSH デーモン プロセスの間のエンドツーエンド接続を可能にする設定を示しています。 ここでは、デーモンがデバイスローカルのプロキシ アプリケーションと同じデバイス上で実行されていると仮定します。
 
-![ローカルのプロキシ アプリケーションの設定](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
+![ローカルのプロキシ アプリケーションの設定](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.png)
 
 1. サービスローカルのプロキシ アプリケーションが IoT ハブに接続し、ターゲット デバイスへのデバイス ストリームを開始します。
 
@@ -45,7 +45,7 @@ Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.micros
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 

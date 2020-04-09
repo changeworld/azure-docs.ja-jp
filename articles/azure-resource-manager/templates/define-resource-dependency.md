@@ -3,14 +3,14 @@ title: リソースにデプロイ順序を設定する
 description: デプロイ時にリソースが正しい順序でデプロイされるように、あるリソースが別のリソースに依存するように設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: ffd6d6c65a1cbe9578b5f9162d29f3238e27ea71
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: f11f79df875492a568a76f494dfffb4a163f64cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207691"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153286"
 ---
-# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのリソース デプロイ順序の定義
+# <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM テンプレートでのリソース デプロイ順序の定義
 
 リソースをデプロイするときに、デプロイ前に他のリソースが存在することを確認する必要がある場合があります。 たとえば、SQL データベースをデプロイする前に SQL サーバーが必要です。 このリレーションシップは、一方のリソースがもう一方のリソースに依存しているとマークすることで定義します。 依存関係を定義するには、**dependsOn** 要素または **reference** 関数を使用します。
 
