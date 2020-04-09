@@ -1,0 +1,66 @@
+### YamlMime:Landing
+title: Azure Remote Rendering のドキュメント
+summary: Azure Remote Rendering (ARR) は、非常に複雑な 3D モデルを HoloLens 2 などのデバイスにリアルタイムでレンダリングできるようにするサービスです。 ARR は現在、パブリック プレビュー段階にあります。
+metadata:
+  title: Azure Remote Rendering のドキュメント
+  description: Azure Remote Rendering (ARR) サービスを使用して、非常に複雑な 3D モデルをリモートでリアルタイムにレンダリングし、その結果を HoloLens 2 などのデバイスに表示する方法について説明します。
+  ms.service: azure-remote-rendering
+  ms.topic: landing-page
+  author: florianborn71
+  ms.author: flborn
+  ms.date: 03/26/2020
+  ms.openlocfilehash: a257b294c105ca153a57afe90db95a1bd1b753e8
+  ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/06/2020
+  ms.locfileid: "80678316"
+landingContent:
+- title: Azure Remote Rendering について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Remote Rendering とは
+      url: overview/about.md
+    - text: システム要件
+      url: overview/system-requirements.md
+    - text: Azure Remote Rendering アカウントを作成する
+      url: how-tos/create-an-account.md
+- title: Azure Remote Rendering の使用を開始するための主要な概念を学習する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 認証を構成する。
+      url: how-tos/authentication.md
+    - text: Remote Rendering のセッション
+      url: concepts/sessions.md
+    - text: エンティティ
+      url: concepts/entities.md
+    - text: Components
+      url: concepts/components.md
+    - text: モデル
+      url: concepts/models.md
+    - text: モデルの変換
+      url: how-tos/conversion/model-conversion.md
+- title: 初めてのモデルの変換とレンダリング
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Unity によるモデルのレンダリング
+      url: quickstarts/render-model.md
+    - text: Unity のサンプルを HoloLens にデプロイする
+      url: quickstarts/deploy-to-hololens.md
+    - text: Unity のサンプルをデスクトップにデプロイする
+      url: quickstarts/deploy-to-desktop.md
+    - text: モデルをレンダリング用に変換する
+      url: quickstarts/convert-model.md
+- title: Unity で独自のアプリを作成する方法を学習する
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Unity プロジェクトをゼロから設定する
+      url: tutorials/unity/project-setup.md
+    - text: Unity でリモート エンティティを操作する
+      url: tutorials/unity/working-with-remote-entities.md
+    - text: 環境と素材を変更する
+      url: tutorials/unity/changing-environment-and-materials.md

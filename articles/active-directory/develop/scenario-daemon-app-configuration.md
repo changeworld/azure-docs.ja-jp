@@ -2,25 +2,21 @@
 title: Web API を呼び出すデーモン アプリを構成する - Microsoft ID プラットフォーム | Azure
 description: Web API を呼び出すデーモン アプリケーション用のコードを構成する (アプリ構成) 方法について説明します
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fc441ef64f98ace04b7b847c03d575215656f9db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb2cc90e586f71bb7c90efd62ba3705cd9223bc5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77611842"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885499"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデーモン アプリ - コードの構成
 

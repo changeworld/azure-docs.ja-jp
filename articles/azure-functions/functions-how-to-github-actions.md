@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: cshoe
-ms.openlocfilehash: dd74fd5c38e5a8800d2092afc1db1b412b126861
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77649910"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878206"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub Actions を使用した継続的デリバリー
 
@@ -75,7 +75,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Node 10.x
@@ -90,7 +90,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Python 3.6
@@ -105,7 +105,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Dotnet 2.2.300
@@ -120,7 +120,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Java 1.8.x

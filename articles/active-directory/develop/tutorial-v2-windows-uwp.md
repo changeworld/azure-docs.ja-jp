@@ -2,25 +2,21 @@
 title: Microsoft ID プラットフォーム UWP の概要 | Azure
 description: ユニバーサル Windows プラットフォーム アプリケーション (UWP) で、Microsoft ID プラットフォーム エンドポイントによるアクセス トークンを必要とする API を呼び出す方法。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6e7ee1b03dda30bea15a837b6daf6469e00e46d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129889"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886400"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す
 

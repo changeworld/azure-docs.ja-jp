@@ -2,15 +2,15 @@
 title: キュー メッセージでトリガーされる Azure 関数の作成
 description: Azure Functions を使用して、Azure Storage キューに送信されたメッセージによって呼び出されるサーバーレスの関数を作成します。
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 3d4cfc40f1849ecd2745b1d662973c7f64a0a60c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 98f0290aad9971bdb0c0b265d96e96d8ac34b99d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75769253"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756525"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Azure Queue Storage によってトリガーされる関数の作成
 

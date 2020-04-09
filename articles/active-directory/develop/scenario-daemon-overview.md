@@ -2,25 +2,21 @@
 title: Web API を呼び出すデスクトップ アプリをビルドする - Microsoft ID プラットフォーム | Azure
 description: Web API を呼び出すデーモン アプリをビルドする方法について学習します
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5718a23e5669de6ba16354a718d72b68d14bbf49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df06c4c55941f4424d6b90d2846af17bf055b2e4
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78894553"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885465"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>シナリオ:Web API を呼び出すデーモン アプリケーション
 

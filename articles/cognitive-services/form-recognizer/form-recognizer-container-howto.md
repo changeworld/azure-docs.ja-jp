@@ -2,19 +2,19 @@
 title: Form Recognizer 向けコンテナーのインストールと実行
 titleSuffix: Azure Cognitive Services
 description: この記事では、Azure Cognitive Services Form Recognizer コンテナーを使用し、フォームおよびテーブル データを解析する方法について説明します。
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.author: dapine
-ms.openlocfilehash: c8ce4b913548429ff83e0b8aa3cb65455fc9b4c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 8cfa9114c5a5e57882cb84b604c1cf71be9acc52
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474698"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878342"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Form Recognizer コンテナーのインストールと実行 (プレビュー)
 

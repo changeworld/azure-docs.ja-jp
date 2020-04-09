@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: e65681aefc047ba540d4ad0d91ef6e4d2af5f3ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190263"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804573"
 ---
 # <a name="clustering-point-data"></a>ポイント データのクラスタリング
 
@@ -62,7 +62,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="基本的なバブル レイヤー クラスタリング" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="基本的なバブル レイヤー クラスタリング" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Azure Maps による<a href='https://codepen.io/azuremaps/pen/qvzRZY/'>基本的なバブル レイヤー クラスタリング</a>の Pen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) を <a href='https://codepen.io'>CodePen</a> で表示する。
 </iframe>
 
@@ -74,7 +74,7 @@ Azure Maps による<a href='https://codepen.io/azuremaps/pen/qvzRZY/'>基本的
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="クラスター化されたシンボル レイヤー" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="クラスター化されたシンボル レイヤー" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Azure Maps による<a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>クラスター化されたシンボル レイヤー</a>の Pen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) を <a href='https://codepen.io'>CodePen</a> で表示する。
 </iframe>
 
@@ -84,7 +84,7 @@ Azure Maps による<a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>クラス
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="クラスター加重ヒート マップ" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="クラスター加重ヒート マップ" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Azure Maps による<a href='https://codepen.io/azuremaps/pen/VRJrgO/'>クラスター加重ヒート マップ</a> の Pen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) を <a href='https://codepen.io'>CodePen</a> で表示する。
 </iframe>
 
@@ -103,7 +103,7 @@ Azure Maps による<a href='https://codepen.io/azuremaps/pen/VRJrgO/'>クラス
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Azure Maps による <a href='https://codepen.io/azuremaps/pen/moZWeV/'>Cluster getClusterExpansionZoom</a> の Pen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) を <a href='https://codepen.io'>CodePen</a> で表示する。
 </iframe>
 
@@ -113,7 +113,7 @@ Azure Maps による <a href='https://codepen.io/azuremaps/pen/moZWeV/'>Cluster 
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="クラスター領域の凸包" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+ <iframe height="500" style="width: 100%;" scrolling="no" title="クラスター領域の凸包" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Azure Maps による<a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>クラスター領域の凸包</a>の Pen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) を <a href='https://codepen.io'>CodePen</a> で表示する。
 </iframe>
 
@@ -123,7 +123,7 @@ Azure Maps による<a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>クラス
 
 次の例では集計式が使用されています。 このコードでは、クラスター内の各データ ポイントのエンティティ型プロパティに基づいて、カウントを計算します。 ユーザーがクラスターをクリックすると、クラスターに関する追加情報を示すポップアップが表示されます。
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="クラスター集計" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="クラスター集計" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Azure Maps (<a href='https://codepen.io/azuremaps/pen/jgYyRL/'></a><a href='https://codepen.io/azuremaps'>) による@azuremapsクラスター集計</a>の Pen を <a href='https://codepen.io'>CodePen</a> で表示する。
 </iframe>
 

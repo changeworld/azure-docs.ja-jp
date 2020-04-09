@@ -2,24 +2,21 @@
 title: Web API を呼び出すトークンを取得する (シングルページ アプリ) - Microsoft ID プラットフォーム | Azure
 description: シングルページ アプリケーション (API を呼び出すトークンを取得する) を構築する方法を説明します
 services: active-directory
-documentationcenter: dev-center-name
 author: negoe
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160068"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882320"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>シングルページ アプリケーション：API を呼び出すトークンを取得する
 
@@ -76,20 +73,40 @@ MSAL Angular ラッパーを使用すると、自動的にアクセス トーク
 API のスコープは、`protectedResourceMap` 構成オプションで指定できます。 `MsalInterceptor` は、トークンを自動的に取得するときにこれらのスコープを要求します。
 
 ```javascript
-//In app.module.ts
+// app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
-                protectedResourceMap: {"https://graph.microsoft.com/v1.0/me", ["user.read", "mail.send"]}
-            })]
-         })
-
-providers: [ ProductService, {
-        provide: HTTP_INTERCEPTORS,
-        useClass: MsalInterceptor,
-        multi: true
+  declarations: [
+    // ...
+  ],
+  imports: [
+    // ...
+    MsalModule.forRoot({
+      auth: {
+        clientId: 'Enter_the_Application_Id_Here',
+      }
+    },
+    {
+      popUp: !isIE,
+      consentScopes: [
+        'user.read',
+        'openid',
+        'profile',
+      ],
+      protectedResourceMap: [
+        ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+      ]
+    })
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
     }
-   ],
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 サイレント トークン取得の成功と失敗については、MSAL Angular からコールバックが提供され、それはサブスクライブすることができます。 サブスクライブ解除を忘れずに行うことも重要です。
@@ -103,7 +120,7 @@ providers: [ ProductService, {
 
 ngOnDestroy() {
    this.broadcastService.getMSALSubject().next(1);
-   if(this.subscription) {
+   if (this.subscription) {
      this.subscription.unsubscribe();
    }
  }
@@ -149,16 +166,16 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 - アプリケーションのトークンに省略可能な要求を含める。
 - Azure AD からトークンで返される特定の要求の動作を変更する。
-- アプリケーションのカスタムの要求を追加してアクセスする。 
+- アプリケーションのカスタムの要求を追加してアクセスする。
 
 `IdToken` で省略可能な要求を要請するには、`AuthenticationParameters.ts` クラスの `claimsRequest` フィールドに文字列化された要求オブジェクトを送信します。
 
 ```javascript
-"optionalClaims":  
+"optionalClaims":
    {
       "idToken": [
             {
-                  "name": "auth_time", 
+                  "name": "auth_time",
                   "essential": true
              }
       ],

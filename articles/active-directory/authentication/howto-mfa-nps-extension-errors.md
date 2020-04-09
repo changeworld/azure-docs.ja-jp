@@ -4,19 +4,19 @@ description: Azure Multi-Factor Authentication の NPS 拡張機能の問題を�
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3462ada0864d2d8321b1936e94f947c55c754879
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 330363a78aa9b642f4794cee40bbf040d3484b4b
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294497"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653711"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する
 

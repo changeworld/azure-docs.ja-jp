@@ -11,26 +11,28 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 14058a91ee21bd792f9be1a64d554092c4f5aedd
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: ae751cc5b8e3ab67f3e65757724d0ebae1c45e02
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351505"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745255"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE) の概要
+
 > [!div class="op_single_selector"]
+>
 > * [セキュリティの概要](sql-data-warehouse-overview-manage-security.md)
 > * [認証](sql-data-warehouse-authentication.md)
 > * [暗号化 (ポータル)](sql-data-warehouse-encryption-tde.md)
 > * [暗号化 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
-> 
-> 
 
 ## <a name="required-permissions"></a>必要なアクセス許可
+
 Transparent Data Encryption (TDE) を有効にするには、管理者か dbmanager ロールのメンバーである必要があります。
 
 ## <a name="enabling-encryption"></a>暗号化の有効化
+
 TDE を有効にするには、次の手順に従います。
 
 1. 管理者のログインまたは master データベースの *dbmanager* ロールのメンバーであるログインを使用して、データベースをホストしているサーバーの **master** データベースに接続します
@@ -41,6 +43,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
 ## <a name="disabling-encryption"></a>暗号化の無効化
+
 TDE を無効にするには、次の手順に従います。
 
 1. 管理者のログインまたは master データベースの *dbmanager* ロールのメンバーであるログインを使用して、 **master** データベースに接続します
@@ -52,10 +55,9 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 
 > [!NOTE]
 > TDE 設定を変更する前に、一時停止した SQL プールを再開する必要があります。
-> 
-> 
 
 ## <a name="verifying-encryption"></a>暗号化の検証
+
 暗号化の状態を確認するには、次の手順を実行します。
 
 1. 管理者のログインまたは master データベースの *dbmanager* ロールのメンバーであるログインを使用して、 **master** データベースまたはインスタンス データベースに接続します
@@ -72,14 +74,6 @@ FROM
 結果が ```1``` の場合はデータベースが暗号化されていることを示し、```0``` の場合は暗号化されていないことを示します。
 
 ## <a name="encryption-dmvs"></a>暗号化の DMV
-* [sys.databases][sys.databases] 
-* [sys.dm_pdw_nodes_database_encryption_keys][sys.dm_pdw_nodes_database_encryption_keys]
 
-<!--Anchors-->
-[Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
-[sys.databases]: https://msdn.microsoft.com/library/ms178534.aspx  
-[sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx  
-
-<!--Image references-->
-
-<!--Link references-->
+* [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [sys.dm_pdw_nodes_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

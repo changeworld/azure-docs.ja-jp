@@ -5,7 +5,6 @@ description: この記事では、アプリケーションを認証するため�
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
@@ -14,12 +13,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 26030c12d98d796ceb1f66f198aede6e40eebd94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5587d0bf2c6cdeb2a6ad5e7dc3a078097c48c7ea
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399027"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884564"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報
 

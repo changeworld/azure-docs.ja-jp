@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: e074d7d74c0c5f020cb8086124634b25012927db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33db9a8d86e02db2076cdb85170d466697930b96
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77201984"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633891"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions における Azure Blob Storage の入力バインド
 
@@ -154,6 +154,7 @@ module.exports = function(context) {
     {
       "name": "inputblob",
       "type": "blob",
+      "dataType": "binary",
       "path": "samples-workitems/{queueTrigger}",
       "connection": "MyStorageConnectionAppSetting",
       "direction": "in"

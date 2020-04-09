@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5f0432cafee07dbed071d24aa8c24ee9b2176967
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d2e2fdb181b553d330368b043b75159e211dd0d2
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350173"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745134"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Azure Synapse Analytics を使用して削除された SQL プールを復元する
 
@@ -30,25 +30,25 @@ ms.locfileid: "80350173"
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>削除されたデータ ウェアハウスを PowerShell を使用して復元する
 
-削除された SQL プールを復元するには、[Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) コマンドレットを使用します。 対応する論理サーバーも削除されている場合、そのデータ ウェアハウスは復元できません。
+削除された SQL プールを復元するには、[Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) コマンドレットを使用します。 対応する論理サーバーも削除されている場合、そのデータ ウェアハウスは復元できません。
 
-1. 開始する前に、必ず [Azure PowerShell をインストール](https://docs.microsoft.com/powershell/azure/overview)してください。
+1. 開始する前に、必ず [Azure PowerShell をインストール](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)してください。
 2. PowerShell を開きます。
 3. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
 4. 復元対象の削除されたデータ ウェアハウスを含むサブスクリプションを選択します。
 5. 特定の削除済みデータ ウェアハウスを取得します。
 6. 削除されたデータ ウェアハウスを復元する
     1. 削除された SQL Data Warehouse を別の論理サーバーに復元するには、他の論理サーバー名を指定していることを確認します。  この論理サーバーは、別のリソース グループとリージョン内に存在していても指定できます。
-    1. 別のサブスクリプションに復元するには、[[移動]](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#use-the-portal) ボタンを使用して、論理サーバーを別のサブスクリプションに移動します。
-1. 復元されたデータ ウェアハウスがオンラインになっていることを確認します。
-1. 復元が完了したら、「[復旧後のデータベースの構成](../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)」の手順に従って、復旧されたデータ ウェアハウスを構成できます。
+    1. 別のサブスクリプションに復元するには、[[移動]](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal) ボタンを使用して、論理サーバーを別のサブスクリプションに移動します。
+7. 復元されたデータ ウェアハウスがオンラインになっていることを確認します。
+8. 復元が完了したら、「[復旧後のデータベースの構成](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)」の手順に従って、復旧されたデータ ウェアハウスを構成できます。
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
 #$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different logical server.
-#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>" 
+#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
 
@@ -86,5 +86,6 @@ $RestoredDatabase.status
     ![データベース名を指定する](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>次の手順
+
 - [既存の SQL プールを復元する](sql-data-warehouse-restore-active-paused-dw.md)
 - [geo バックアップ SQL プールからの復元](sql-data-warehouse-restore-from-geo-backup.md)

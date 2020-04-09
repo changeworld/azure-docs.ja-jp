@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 635b65d16ae9a59816506023d323243f043ce7da
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6fa8bd42eb067124ab6ea1db77e2f3d6fba79638
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350391"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745214"
 ---
 # <a name="restore-an-existing-sql-pool"></a>既存の SQL プールを復元する
 
@@ -28,12 +28,12 @@ ms.locfileid: "80350391"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-1. 必ず [Azure PowerShell をインストール](https://docs.microsoft.com/powershell/azure/overview)してください。
+1. 必ず [Azure PowerShell をインストール](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)してください。
 2. 復元する既存の復元ポイントがあること。 新しい復元を作成する場合は、「[the tutorial to create a new user-defined restore point](sql-data-warehouse-restore-points.md)」 (新しいユーザー定義の復元ポイントを作成するチュートリアル) を参照してください。
 
 ## <a name="restore-an-existing-sql-pool-through-powershell"></a>PowerShell を使用して既存の SQL プールを復元する
 
-復元ポイントから既存の SQL プールを復元するには、[Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) PowerShell コマンドレットを使用します。
+復元ポイントから既存の SQL プールを復元するには、[Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell コマンドレットを使用します。
 
 1. PowerShell を開きます。
 
@@ -45,13 +45,13 @@ ms.locfileid: "80350391"
 
 5. RestorePointCreationDate を使用して、目的の復元ポイントを選択します。
 
-6. [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) PowerShell コマンドレットを使用して、目的の復元ポイントに SQL プールを復元します。
+6. [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell コマンドレットを使用して、目的の復元ポイントに SQL プールを復元します。
         1. SQL プールを別の論理サーバーに復元するには、必ず他の論理サーバー名を指定します。  この論理サーバーは、別のリソース グループとリージョン内に存在していても指定できます。
         2. 別のサブスクリプションに復元するには、[移動] ボタンを使用して、論理サーバーを別のサブスクリプションに移動します。
 
 7. 復元された SQL プールがオンラインになっていることを確認します。
 
-8. 復元が完了したら、[復旧後のデータベースの構成](../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)の手順に従って、復旧された SQL プールを構成できます。
+8. 復元が完了したら、[復旧後のデータベースの構成](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)の手順に従って、復旧された SQL プールを構成できます。
 
 ```Powershell
 
@@ -100,7 +100,6 @@ $RestoredDatabase.status
     ![自動復元ポイント](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
 ## <a name="next-steps"></a>次の手順
+
 - [削除された SQL プールを復元する](sql-data-warehouse-restore-deleted-dw.md)
 - [geo バックアップ SQL プールからの復元](sql-data-warehouse-restore-from-geo-backup.md)
-
- 

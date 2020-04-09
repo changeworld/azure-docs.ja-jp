@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6ecf3bb5999296b2f5f8f5c25616fac8e0278cda
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4f45ac40e7df865bdb4722d086325096c377cd59
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132523"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877544"
 ---
 # <a name="entity-functions"></a>エンティティ関数
 
@@ -231,7 +231,7 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    const stateResponse = await context.df.readEntityState(entityId);
+    const stateResponse = await client.readEntityState(entityId);
     return stateResponse.entityState;
 };
 ```

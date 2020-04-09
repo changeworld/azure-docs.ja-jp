@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: c83e56a47f4b212a5612cb9e6965ce8e73228dcb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3f4f1f5e163dfed9f356aed538d934d0e4258790
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74892891"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618880"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>チュートリアル - Azure Key Vault を使用して BLOB を暗号化および復号化する
 
@@ -129,7 +129,8 @@ Main() メソッド内に、次のコードを追加します。
 // This is standard code to interact with Blob storage.
 StorageCredentials creds = new StorageCredentials(
     CloudConfigurationManager.GetSetting("accountName"),
-    CloudConfigurationManager.GetSetting("accountKey");
+    CloudConfigurationManager.GetSetting("accountKey")
+);
 CloudStorageAccount account = new CloudStorageAccount(creds, useHttps: true);
 CloudBlobClient client = account.CreateCloudBlobClient();
 CloudBlobContainer contain = client.GetContainerReference(CloudConfigurationManager.GetSetting("container"));

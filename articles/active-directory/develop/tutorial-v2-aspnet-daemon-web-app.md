@@ -2,26 +2,21 @@
 title: Microsoft ID プラットフォーム エンドポイントを使用してマルチテナント デーモンを作成する
 description: このチュートリアルでは、Azure Active Directory によって保護されている ASP.NET Web API を Windows デスクトップ (WPF) アプリケーションから呼び出す方法について説明します。 WPF クライアントは、ユーザーを認証し、アクセ ストークンを要求して、Web API を呼び出します。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 635b12cc2ffc4d318eaaa74fffc17e4ce4d58c0b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a4d7030f7a58a6252c6e596fc2c248163694a1e8
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129949"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880875"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>チュートリアル:Microsoft ID プラットフォーム エンドポイントを使用してマルチテナント デーモンを作成する
 

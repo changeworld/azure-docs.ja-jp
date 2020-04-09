@@ -21,8 +21,10 @@
   items:
     - name: 接続する
       items:
-        - name: デバイスの接続
-          href: tutorial-connect-device.md
+        - name: デバイスの接続 (Node.js)
+          href: tutorial-connect-device-nodejs.md
+        - name: デバイスの接続 (Python)
+          href: tutorial-connect-device-python.md
         - name: プラグ アンド プレイ (プレビュー) デバイスの接続
           href: tutorial-connect-pnp-device.md
         - name: ゲートウェイ デバイス テンプレートの作成

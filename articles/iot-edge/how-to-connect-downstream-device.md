@@ -8,12 +8,12 @@ ms.date: 12/08/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6ddda38d887cdfe30b449847e2f625ba17f33898
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff9415ca20b859468528b56d27355430c4fc5a0f
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76510806"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652066"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -182,7 +182,7 @@ Windows ホストで OpenSSL または別の TLS ライブラリを使用して�
 
 このセクションでは、Azure IoT Python デバイス クライアントを IoT Edge ゲートウェイに接続するサンプル アプリケーションを示します。
 
-1. **send_message** のサンプルを [Python 用 Azure IoT device SDK のサンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios)から入手します。
+1. **send_message** のサンプルを [Python 用 Azure IoT device SDK のサンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)から入手します。
 2. IoT Edge コンテナーまたはデバッグ シナリオで実行していること、`EdgeHubConnectionString` 環境変数と `EdgeModuleCACertificateFile` 環境変数が設定されていることを確認します。
 3. お使いのデバイス上でサンプルを実行する方法を示す手順については、SDK ドキュメントを参照してください。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 40c279a4beee9fbebe2de7f272fe51d9039f071c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668708"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637520"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux コンピューターを Azure Monitor に接続する
 
@@ -22,7 +22,7 @@ Linux 用の Log Analytics エージェントは、次のいずれかの方法�
 * エージェントを[手動でダウンロードしてインストール](#install-the-agent-manually)します。 この方法は、Linux コンピューターがインターネットにアクセスできず、[Log Analytics ゲートウェイ](gateway.md)経由で Azure Monitor または Azure Automation と通信することになる場合に必要です。 
 * GitHub でホストされている[ラッパー スクリプトを使用して Linux 用エージェントをインストール](#install-the-agent-using-wrapper-script)します。 これは、コンピューターがインターネットに直接またはプロキシサーバー経由で接続している場合に、エージェントをインストールおよびアップグレードするための推奨される方法です。
 
-サポートされている構成を確認するには、[サポートされている Linux オペレーティング システム](log-analytics-agent.md#supported-linux-operating-systems)と[ネットワーク ファイアウォールの構成](log-analytics-agent.md#network-firewall-requirements)に関するページをご覧ください。
+サポートされている構成を確認するには、[サポートされている Linux オペレーティング システム](log-analytics-agent.md#supported-linux-operating-systems)と[ネットワーク ファイアウォールの構成](log-analytics-agent.md#network-requirements)に関するページをご覧ください。
 
 >[!NOTE]
 >Linux 用 Log Analytics エージェントは、複数の Log Analytics ワークスペースにレポートするように構成することはできません。 System Center Operations Manager 管理グループと Log Analytics ワークスペースの両方に同時にレポートするように構成することも、個別にレポートするように構成することもできます。

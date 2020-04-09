@@ -2,26 +2,21 @@
 title: シングルページ アプリのサインインとサインアウト - Microsoft ID プラットフォーム | Azure
 description: シングルページ アプリケーション (サインイン) を構築する方法を学習する
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: eb75aa53051e7e3c424ffe131cda61324fe86b1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e809def048c95b6688a13ac99783615eb045d11
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77159966"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885191"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>シングルページ アプリケーション：サインインとサインアウト
 
@@ -68,26 +63,50 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 MSAL Angular ラッパーを使用すると、ルート定義に `MsalGuard` を追加するだけで、ご利用のアプリケーション内の特定のルートを保護することができます。 このガードにより、そのルートにアクセスすると、サインインのためのメソッドが呼び出されます。
 
 ```javascript
-// In app.routes.ts
-{ path: 'product', component: ProductComponent, canActivate : [MsalGuard],
-    children: [
-      { path: 'detail/:id', component: ProductDetailComponent  }
+// In app-routing.module.ts
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { ProfileComponent } from './profile/profile.component';
+import { MsalGuard } from '@azure/msal-angular';
+import { HomeComponent } from './home/home.component';
+
+const routes: Routes = [
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [
+      MsalGuard
     ]
-   },
-  { path: 'myProfile' ,component: MsGraphComponent, canActivate : [MsalGuard] },
+  },
+  {
+    path: '',
+    component: HomeComponent
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes, { useHash: false })],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
 ```
 
 ポップアップ ウィンドウ エクスペリエンスの場合は、`popUp` 構成オプションを有効にします。 次のように同意を必要とするスコープを渡すこともできます。
 
 ```javascript
-//In app.module.ts
+// In app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
-                popUp: true,
-                consentScopes: ["https://graph.microsoft.com/User.ReadWrite"]
-            })]
-         })
+    imports: [
+        MsalModule.forRoot({
+            auth: {
+                clientId: 'your_app_id',
+            }
+        }, {
+            popUp: true,
+            consentScopes: ["https://graph.microsoft.com/User.ReadWrite"]
+        })
+    ]
+})
 ```
 ---
 
@@ -130,9 +149,8 @@ MSAL ライブラリには、`logout` メソッドが用意されています。
 
 ```javascript
 const config = {
-
     auth: {
-        clientID: 'your_app_id',
+        clientId: 'your_app_id',
         redirectUri: "your_app_redirect_uri", //defaults to application start page
         postLogoutRedirectUri: "your_app_logout_redirect_uri"
     }
@@ -148,11 +166,15 @@ userAgentApplication.logout();
 ```javascript
 //In app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
+    imports: [
+        MsalModule.forRoot({
+            auth: {
+                clientId: 'your_app_id',
                 postLogoutRedirectUri: "your_app_logout_redirect_uri"
-            })]
-         })
+            }
+        })
+    ]
+})
 
 // In app.component.ts
 this.authService.logout();

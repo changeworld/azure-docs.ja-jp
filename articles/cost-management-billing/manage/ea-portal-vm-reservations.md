@@ -3,16 +3,16 @@ title: Azure EA VM 予約インスタンス
 description: この記事では、VM 予約インスタンスに対する Azure 予約が、エンタープライズ登録にかかる金額の節約にどのように役立つかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: ac5c4ec91bf6c9df58fd4b40286f0be7efefa6ea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cfd3693825d34561ad08154882247c159a40b3e8
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78272172"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586187"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス
 

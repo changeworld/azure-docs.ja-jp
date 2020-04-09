@@ -2,27 +2,22 @@
 title: Microsoft ID プラットフォームと SAML ベアラー アサーション フロー | Azure
 description: SAML ベアラー アサーション フローを使用して、ユーザーに資格情報の入力を求めずに Microsoft Graph からデータをフェッチする方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: umeshbarapatre
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 16f30473ded5f1de5dc94c1cff9da96165b1a01c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cd79b1f9e4cd3afadee250da0c184c0c5b8ac07
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76700211"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886179"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 SAML ベアラー アサーション フロー
 OAuth 2.0 SAML ベアラー アサーション フローでは、クライアントが既存の信頼関係を使用する必要があるときに、SAML アサーションを使用して OAuth アクセス トークンを要求することができます。 SAML アサーションに適用される署名は、承認されたアプリの認証を提供します。 SAML アサーションは、ID プロバイダーによって発行され、サービス プロバイダーによって使用される XML セキュリティ トークンです。 サービス プロバイダーは、セキュリティ関連の目的でアサーションの対象を識別するために、そのコンテンツに依存します。

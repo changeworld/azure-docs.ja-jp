@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f508cac23d997b7595fcc7a4606608aa2dc15fc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8023c0927c05d3952bd9f3a51e99e85154552fd
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128221"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656371"
 ---
 # <a name="connect-with-the-web-client"></a>Web クライアントに接続する
 
@@ -45,4 +45,4 @@ Web クライアントを利用すると、時間のかかるインストール 
 
 ## <a name="next-steps"></a>次のステップ
 
-Web クライアントの使用方法の詳細については、「[Web クライアントの概要](https://go.microsoft.com/fwlink/?linkid=2120256)」を参照してください。
+Web クライアントの使用方法の詳細については、「[Web クライアントの概要](/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client)」を参照してください。

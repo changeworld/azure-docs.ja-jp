@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4390ed39c86e041d3fbd776415f0ffbe71f605bd
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7e0980a9142dc966916d5a4df898ea53b0ddeae5
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350161"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745080"
 ---
 # <a name="geo-restore-for-sql-pool"></a>SQL プールの geo リストア
 
@@ -30,20 +30,20 @@ ms.locfileid: "80350161"
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>PowerShell を使用して Azure 地理的リージョンから復元する
 
-Geo バックアップから復元するには、[Get-AzSqlDatabaseGeoBackup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasegeobackup) および [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) コマンドレットを使用します。
+Geo バックアップから復元するには、[Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) および [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) コマンドレットを使用します。
 
 > [!NOTE]
 > Gen2 への geo リストアを行うことができます。 そのためには、省略可能なパラメーターとして Gen2 の ServiceObjectiveName (例: DW1000**c**) を指定します。
 >
 
-1. 開始する前に、必ず [Azure PowerShell をインストール](https://docs.microsoft.com/powershell/azure/overview)してください。
+1. 開始する前に、必ず [Azure PowerShell をインストール](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)してください。
 2. PowerShell を開きます。
-2. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
-3. 復元するデータ ウェアハウスを含むサブスクリプションを選択します。
-4. 復旧するデータ ウェアハウスを取得します。
-5. データ ウェアハウスの復旧要求を作成します。
-6. geo リストアされたデータ ウェアハウスの状態を確認します。
-7. 復元が完了した後にデータ ウェアハウスを構成する方法については、「[復旧後のデータベースの構成]( ../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)」を参照してください。
+3. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
+4. 復元するデータ ウェアハウスを含むサブスクリプションを選択します。
+5. 復旧するデータ ウェアハウスを取得します。
+6. データ ウェアハウスの復旧要求を作成します。
+7. geo リストアされたデータ ウェアハウスの状態を確認します。
+8. 復元が完了した後にデータ ウェアハウスを構成する方法については、「[復旧後のデータベースの構成]( ../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)」を参照してください。
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
@@ -77,24 +77,25 @@ $GeoRestoredDatabase.status
 次の手順に従って、geo バックアップから SQL プールを復元します。
 
 1. [Azure portal](https://portal.azure.com/) アカウントにサインインします。
-1. **[+ リソースの作成]** をクリックします。 
+2. **[+ リソースの作成]** をクリックします。
 
-![新しい DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
+   ![新しい DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
 3. **[データベース]** をクリックしてから、**Azure Synapse Analytics (旧称 SQL DW)** をクリックします。
 
-![新しい DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
+   ![新しい DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
 
 4. **[基本]** タブで要求された情報を入力し、 **[次へ: 追加設定]** を選択します。
 
-![基本](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+   ![基本](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
 5. **[既存のデータを使用します]** パラメーターで、 **[バックアップ]** を選択し、スクロール ダウン オプションから適切なバックアップを選択します。 **[Review + Create]\(レビュー + 作成\)** をクリックします。
- 
-![バックアップ (backup)](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
+
+   ![バックアップ (backup)](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 
 6. データ ウェアハウスが復元されたら、 **[状態]** がオンラインになっていることを確認します。
 
 ## <a name="next-steps"></a>次の手順
+
 - [既存の SQL プールを復元する](sql-data-warehouse-restore-active-paused-dw.md)
 - [削除された SQL プールを復元する](sql-data-warehouse-restore-deleted-dw.md)

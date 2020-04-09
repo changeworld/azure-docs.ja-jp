@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 6804834dab81b0774dd29b1ede836492d0dfea4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5db99a9d500b05fa6886dce2f29087920f8a1790
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78383861"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658517"
 ---
 ユニバーサル Windows プラットフォーム (UWP) 開発用の Visual Studio プロジェクトを作成するためには、Visual Studio 開発オプションの設定、プロジェクトの作成、ターゲット アーキテクチャの選択、オーディオ キャプチャの設定、Speech SDK のインストールが必要となります。
 
@@ -104,4 +104,4 @@ ms.locfileid: "78383861"
 
 1. **[変更のプレビュー]** ダイアログ ボックスで **[OK]** を選択します。
 
-1. **[ライセンスへの同意]** ダイアログ ボックスでライセンスを確認し、 **[同意する]** を選択します。 パッケージのインストールが開始されます。インストールが完了すると、"`Successfully installed 'Microsoft.CognitiveServices.Speech 1.10.0' to helloworld`" と同様のメッセージが **[出力]** ウィンドウに表示されます。
+1. **[ライセンスへの同意]** ダイアログ ボックスでライセンスを確認し、 **[同意する]** を選択します。 パッケージのインストールが開始されます。インストールが完了すると、"`Successfully installed 'Microsoft.CognitiveServices.Speech 1.11.0' to helloworld`" と同様のメッセージが **[出力]** ウィンドウに表示されます。

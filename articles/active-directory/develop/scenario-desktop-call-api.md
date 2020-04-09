@@ -2,24 +2,21 @@
 title: デスクトップ アプリから Web API を呼び出す - Microsoft ID プラットフォーム | Azure
 description: Web API を呼び出すデスクトップ アプリを構築する方法について説明します
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2b3d9fdc163d0661670f3d0cf6e6a276c8b691bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702166"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882966"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Web API を呼び出すデスクトップ アプリ:Web API を呼び出す
 
