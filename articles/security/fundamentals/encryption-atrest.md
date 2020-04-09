@@ -3,7 +3,7 @@ title: Microsoft Azure Data Encryption-at-Rest | Microsoft Docs
 description: この記事では、Microsoft Azure の保存データの暗号化の概要、全体的な機能、および一般的な考慮事項について説明します。
 services: security
 documentationcenter: na
-author: barclayn
+author: msmbaldwin
 manager: barbkess
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/07/2020
-ms.author: barclayn
-ms.openlocfilehash: 682f0b66f7632bce16ae134e71ea27c4df976f43
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 03/23/2020
+ms.author: mbaldwin
+ms.openlocfilehash: 42b83963dc4996a7347d57be712451086fa79b26
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087103"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548625"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -49,9 +49,9 @@ Microsoft Azure には、会社のセキュリティとコンプライアンス�
 
 Encryption at Rest は、データをディスク上で確実に暗号化することで、暗号化されていないデータに攻撃者がアクセスできないよう設計されています。 攻撃者は、暗号化されたデータを含むハード ドライブを入手しても、暗号化キーがないと、データを読み取るためには暗号化を破る必要があります。 この攻撃は、ハード ドライブの暗号化されていないデータにアクセスするよりも大幅に複雑で、多くのリソースを消費します。 このため、保存時に暗号化することは、多くの組織の高優先度要件として強く推奨されます。
 
-保存時の暗号化は、組織のデータ ガバナンスとコンプライアンス活動の要件にもなります。 HIPAA、PCI、FedRAMP などの業界および政府規制には、データ保護と暗号化要件について、具体的な保護対策が規定されています。 保存時の暗号化は、いくつかの規制では、規制に準拠するための必須対策と規定されています。
+保存時の暗号化は、組織のデータ ガバナンスとコンプライアンス活動の要件にもなります。 HIPAA、PCI、FedRAMP などの業界および政府規制には、データ保護と暗号化要件について、具体的な保護対策が規定されています。 保存時の暗号化は、いくつかの規制では、規制に準拠するための必須対策と規定されています。 FIPS 140-2 の検証に対する Microsoft のアプローチについて詳しくは、「[連邦情報処理規格 (FIPS) 文書 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2)」を参照してください。 
 
-コンプライアンスと規制の要件に対応することに加えて、保存時の暗号化によって、多層防御の保護が提供されます。 Microsoft Azure では、サービス、アプリケーション、およびデータのために、準拠しているプラットフォームを提供します。 また、包括的な設備と物理的セキュリティ、データ アクセスの制御、および監査を提供します。 ただし、他のセキュリティ対策の 1 つが失敗した場合に "一部が重複する" セキュリティ対策を提供することが重要であり、保存時の暗号化は、そのようなセキュリティ対策となります
+コンプライアンスと規制の要件に対応することに加えて、保存時の暗号化によって、多層防御の保護が提供されます。 Microsoft Azure では、サービス、アプリケーション、およびデータのために、準拠しているプラットフォームを提供します。 また、包括的な設備と物理的セキュリティ、データ アクセスの制御、および監査を提供します。 ただし、他のセキュリティ対策の 1 つが失敗した場合に "一部が重複する" セキュリティ対策を提供することが重要であり、保存時の暗号化は、そのようなセキュリティ対策となります。
 
 Microsoft は、クラウド サービス全体にわたって保存時の暗号化オプションを提供し、お客様が暗号化キーとキーの使用ログを管理できるようにすることに注力しています。 Microsoft はさらに、既定でお客様の保存データがすべて暗号化されるよう取り組んでいます。
 
@@ -287,7 +287,7 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | 仮想マシン スケール セット        | はい                | はい、RSA 2048 ビット  | -                  |
 | SAP HANA                         | はい                | はい、RSA 2048 ビット  | -                  |
 | App Service                      | はい                | はい                | -                  |
-| Automation                       | はい                | はい                | -                  |
+| オートメーション                       | はい                | はい                | -                  |
 | Azure portal                     | はい                | はい                | -                  |
 | Logic Apps                       | はい                | はい                | -                  |
 | Azure Managed Applications       | はい                | はい                | -                  |
@@ -299,7 +299,7 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | Azure SQL Database for MariaDB   | はい                | -                  | -                  |
 | Azure SQL Database for MySQL     | はい                | はい                | -                  |
 | Azure SQL Database for PostgreSQL | はい               | はい                | -                  |
-| Azure Synapse Analytics          | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure Synapse Analytics          | はい                | はい、RSA 2048 ビット  | -                  |
 | SQL Server Stretch Database      | はい                | はい、RSA 2048 ビット  | はい                |
 | Table Storage                    | はい                | はい                | はい                |
 | Azure Cosmos DB                  | はい                | はい                | -                  |
@@ -307,7 +307,7 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps                     | はい                | -                  | はい                |
 | Azure Repos                      | はい                | -                  | はい                |
-| **[ID]**                     |                    |                    |                    |
+| **ID**                     |                    |                    |                    |
 | Azure Active Directory           | はい                | -                  | -                  |
 | Azure Active Directory Domain Services | はい          | はい、RSA 2048 ビット  | -                  |
 | **統合**                  |                    |                    |                    |

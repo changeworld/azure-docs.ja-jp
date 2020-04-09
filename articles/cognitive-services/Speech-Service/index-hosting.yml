@@ -7,35 +7,34 @@ metadata:
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/23/2020
   ms.author: dapine
-  ms.openlocfilehash: ead45759891d4b2a41a380c88cf32f4e504b6e2c
-  ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+  ms.openlocfilehash: c342b797dfe21fe4ffbd1bb9bc112e9726cdec42
+  ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/28/2020
-  ms.locfileid: "77920877"
+  ms.lasthandoff: 04/01/2020
+  ms.locfileid: "80529470"
 landingContent:
-- title: はじめに
+- title: ホスティングについて
   linkLists:
   - linkListType: concept
     links:
-    - text: 音声サービス コンテナー
+    - text: Speech コンテナーをインストールおよび実行する
       url: speech-container-howto.md
-    - text: Kubernetes と音声サービス コンテナー
+    - text: Speech コンテナーと Kubernetes および Helm
       url: speech-container-howto-on-premises.md
-    - text: Azure Container Instances 上の音声サービス コンテナー
+    - text: Azure Container Instances 上の Speech コンテナー
       url: deploy-speech-on-container-instances.md
-- title: ステップバイステップ ガイド
+- title: 作成して構成する
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Azure Speech リソースを作成する
       url: get-started.md#new-resource
-    - text: コンテナーを構成する
+    - text: Speech コンテナーを構成する
       url: speech-container-configuration.md
 - title: リファレンス
   linkLists:
@@ -45,3 +44,5 @@ landingContent:
       url: regions.md
     - text: ソブリン クラウド
       url: sovereign-clouds.md
+    - text: コンテナーの FAQ
+      url: speech-container-faq.md

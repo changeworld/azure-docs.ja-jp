@@ -5,15 +5,15 @@ services: active-directory
 author: msaburnley
 ms.service: active-directory
 ms.topic: include
-ms.date: 11/11/2019
+ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd716be397d9ef6b9d6132cd4470f653f3cea0f
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77193083"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655929"
 ---
 ## <a name="for-users-in-your-directory"></a>ディレクトリ内のユーザーの場合
 
@@ -153,7 +153,7 @@ ms.locfileid: "77193083"
 
     理由は、要求者と他の承認者に表示されます。
 
-### <a name="2-stage-approval-preview"></a>2 段階の承認 (プレビュー)
+### <a name="2-stage-approval"></a>2 段階の承認
 
 2 段階の承認を選択した場合は、2 番目の承認者を追加する必要があります。
 

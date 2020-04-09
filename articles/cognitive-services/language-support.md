@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 48cb1ca1427ece0ee30a124b20d3918f1ace47eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4944fd36359f35ff516aa149b357a7cda042fdae
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78274148"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477049"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure Cognitive Services の自然言語のサポート
 
@@ -30,15 +30,15 @@ Azure Cognitive Services では、見る、聞く、話す、そして、ユー�
 
 * [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/faq)
 * [Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)
-
+* [Ink Recognizer](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/language-support)
 ## <a name="speech"></a>音声
 
 * [カスタム音声](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/customspeech-how-to-topics/cognitive-services-custom-speech-change-locale)
-* [音声サービス: 音声テキスト変換](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#speech-to-text)
+* [Speech Service:音声テキスト変換](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#speech-to-text)
 * [音声サービス: Text-to-Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#text-to-speech)
-* [音声サービス: 音声翻訳](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#speech-translation)
+* [Speech Service:音声翻訳](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#speech-translation)
 
-## <a name="language"></a>言語
+## <a name="language"></a>Language
 
 * [Bing Spell Check](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages)
 * [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages)
@@ -59,7 +59,7 @@ Azure Cognitive Services では、見る、聞く、話す、そして、ユー�
 
 * [Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/text-moderation-api-languages)
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Cognitive Services とは](welcome.md)
 * [アカウントの作成](cognitive-services-apis-create-account.md)
