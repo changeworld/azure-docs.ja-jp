@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 02/04/2020
 ms.custom: seodec18
-ms.openlocfilehash: 35b330f27ba87aa18ce2c2f275a7b19fdae3cb65
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 209df97169c71d910677ffdb2e2b12593882445b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024417"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80152590"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Time Series Insights 環境の問題を診断して解決する
 
@@ -99,6 +99,22 @@ Time Series Insights エクスプローラーにデータが表示されるの�
 1. SKU 容量を最大許容値 (この場合は 10) に増やします。 容量を増やすと、受信プロセスが開始しより短い時間で追いつくようになります。 なお、容量の増加分には料金が発生します。 どれくらいの時間で追いつくかを視覚化するために、[Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)の可用性グラフを表示できます。
 
 2. ラグが解消したら、SKU 容量は通常の受信レートまで低下します。
+
+## <a name="problem-data-was-showing-previously-but-is-no-longer-showing"></a>問題: 以前に表示されていたデータが、表示されなくなった
+
+TSI はデータを取り込みなくなったのに、イベントは今でも Iot Hub またはイベントハブでストリーミングされている
+
+### <a name="cause-a-your-hub-access-key-was-regenerated-and-your-environment-needs-updating"></a>原因 A: ハブ アクセス キーが再生成されて、環境の更新が必要となっている
+
+この問題は、イベント ソースの作成時に提供されたキーが有効ではなくなったときに発生します。 テレメトリはハブに表示されますが、Time Series Insights にイングレス受信メッセージが表示されません。 キーが再生成されたかどうか不明な場合は、Event Hubs のアクティビティ ログで、"名前空間の承認規則の作成または更新" を検索するか、IoT hub の "IotHub リソースの作成または更新" を検索します。
+
+新しいキーで Time Series Insights 環境を更新するには、Azure portal でお使いのハブ リソースを開き、新しいキーをコピーします。 TSI リソースに移動して、[イベント ソース] をクリックします。 
+
+   [![キーを更新します。](media/diagnose-and-solve-problems/update-hub-key-step-1.png)](media/diagnose-and-solve-problems/update-hub-key-step-1.png#lightbox)
+
+インジェストが停止した原因となったイベント ソースを選択し、新しいキーを貼り付けて、[保存] をクリックします。
+
+   [![キーを更新します。](media/diagnose-and-solve-problems/update-hub-key-step-2.png)](media/diagnose-and-solve-problems/update-hub-key-step-2.png#lightbox)
 
 ## <a name="problem-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>問題: イベント ソースのタイムスタンプ プロパティ名設定が機能しない
 

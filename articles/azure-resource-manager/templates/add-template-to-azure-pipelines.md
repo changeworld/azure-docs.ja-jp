@@ -3,16 +3,16 @@ title: Azure Pipelines とテンプレートを使用した CI/CD
 description: Visual Studio で Azure リソース グループのデプロイ プロジェクトを使用して Resource Manager テンプレートをデプロイし、Azure Pipelines での継続的インテグレーションを設定する方法を説明します。
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 6f5d4846d32b4880ccd3fbd82f062f57948ac15a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7617bf47595fce7baa533b0f7cc94a1803ddd349
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474457"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153456"
 ---
-# <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Azure Pipelines を使用した Resource Manager テンプレートの統合
+# <a name="integrate-arm-templates-with-azure-pipelines"></a>Azure Pipelines を使用した ARM テンプレートの統合
 
-Visual Studio には、テンプレートを作成し、それを Azure サブスクリプションにデプロイするための Azure リソース グループ プロジェクトが用意されています。 このプロジェクトは、継続的インテグレーションと継続的デプロイ (CI/CD) のために Azure Pipelines と統合できます。
+Visual Studio には、Azure Resource Manager テンプレートを作成し、それを Azure サブスクリプションにデプロイするための Azure リソース グループ プロジェクトが用意されています。 このプロジェクトは、継続的インテグレーションと継続的デプロイ (CI/CD) のために Azure Pipelines と統合できます。
 
 Azure Pipelines を使用してテンプレートをデプロイする方法は 2 つあります。
 
@@ -261,4 +261,4 @@ ContainerName: '<container-name>'
 
 ## <a name="next-steps"></a>次のステップ
 
-Resource Manager テンプレートで Azure Pipelines を使用するステップ バイ ステップのプロセスについては、「[チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション](template-tutorial-use-azure-pipelines.md)」を参照してください。
+ARM テンプレートで Azure Pipelines を使用するステップ バイ ステップのプロセスについては、「[チュートリアル:Azure Pipelines を使用した ARM テンプレートの継続的インテグレーション](template-tutorial-use-azure-pipelines.md)」を参照してください。

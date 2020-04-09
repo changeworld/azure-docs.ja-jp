@@ -3,12 +3,12 @@ title: Azure Application Insights を使用して Node.js サービスを監視�
 description: Application Insights を使用して Node.js サービスのパフォーマンスを監視して問題を診断します。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 38336e3faf3764233dd94bffbfb24421e054496a
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670017"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411576"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
 
@@ -16,7 +16,7 @@ ms.locfileid: "77670017"
 
 監視データを受信、保存、探索するためには、ご使用のコードに SDK を追加し、対応する Application Insights リソースを Azure で設定します。 そのリソースに対して SDK からデータが送信され、詳細な分析と探索が行えるようになります。
 
-Node.js SDK では、受信と発信 HTTP 要求、例外のほか、システムのいくつかのメトリックを自動的に監視できます。 さらに、バージョン 0.20 以降の SDK では、MongoDB、MySQL、Redis など、一般的なサードパーティ製パッケージを監視することもできます。 受信 HTTP 要求に関連するすべてのイベントは、トラブルシューティングを迅速に行えるように関連付けられます。
+Node.js SDK では、受信と発信 HTTP 要求、例外のほか、システムのいくつかのメトリックを自動的に監視できます。 さらに、バージョン 0.20 以降の SDK では、MongoDB、MySQL、Redis など、一般的な[サードパーティ製パッケージ](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)を監視することもできます。 受信 HTTP 要求に関連するすべてのイベントは、トラブルシューティングを迅速に行えるように関連付けられます。
 
 TelemetryClient API を使用して手動でインストルメント化すれば、ご使用のアプリとシステムのその他の側面も監視できます。 TelemetryClient API については、この記事の後半でさらに詳しく説明します。
 
@@ -32,7 +32,7 @@ TelemetryClient API を使用して手動でインストルメント化すれば
 [add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
 
 
-### <a name="resource"></a>Application Insights リソースを設定する
+### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Application Insights リソースを設定する
 
 
 1. [Azure portal][portal] にサインインします。
@@ -40,7 +40,7 @@ TelemetryClient API を使用して手動でインストルメント化すれば
 
 3. リソース作成ページの **[アプリケーションの種類]** ボックスで **[Node.js アプリケーション]** を選択します。 アプリの種類によって、作成される既定のダッシュボードとレポートが決まります (どの Application Insights リソースでも、あらゆる言語およびプラットフォームからデータを収集できます)。
 
-### <a name="sdk"></a> Node.js SDK の設定
+### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> Node.js SDK の設定
 
 アプリでデータを収集できるように、アプリに SDK を追加します。 
 
@@ -70,7 +70,7 @@ TelemetryClient API を使用して手動でインストルメント化すれば
 
    `appInsights.defaultClient.config.disableAppInsights = true` を設定すると、テレメトリを送信することなく SDK を試すことができます。
 
-### <a name="monitor"></a> アプリを監視する
+### <a name="monitor-your-app"></a><a name="monitor"></a> アプリを監視する
 
 SDK は、Node.js ランタイムおよび一般的なサードパーティ モジュールに関するテレメトリを自動的に収集します。 アプリケーションを使用して、そうしたデータを生成します。
 

@@ -5,23 +5,21 @@ services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ryanwi
-ms.reviewer: saeeda, jmprieur, andret
+ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 93e487063944801129090d6b9952143b8df887da
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9cf5a9c81ca1d7a42a5a8e342dee55f335656c3e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163328"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154425"
 ---
 # <a name="web-api"></a>Web API
 
@@ -45,14 +43,14 @@ Web API アプリケーションは、Web API からリソースを取得する�
 1. ユーザーは、Web アプリケーションで Azure AD にサインインします (詳細については、**Web アプリ**に関するセクションを参照してください)。
 1. Web アプリケーションは、Web API に対して認証し、目的のリソースを取得できるように、アクセス トークンを取得する必要があります。 Web アプリケーションは、資格情報、アプリケーション ID、Web API のアプリケーション ID の URI を提供して、Azure AD のトークン エンドポイントに要求を送信します。
 1. Azure AD がアプリケーションを認証し、Web API の呼び出しに使用する JWT アクセス トークンを返します。
-1. Web アプリケーションは、返された JWT アクセス トークンを HTTPS 経由で使用して、Web API への要求の承認ヘッダーに、"Bearer" を指定した JWT 文字列を追加します。 その後、Web API が JWT を検証します。検証が正常に行われると、目的のリソースが返されます。
+1. Web アプリケーションでは、HTTPS 経由で返された JWT アクセス トークンを使用して、Web API への要求の Authorization ヘッダーに、"Bearer" を指定した JWT 文字列を追加します。 その後、Web API が JWT を検証します。検証が正常に行われると、目的のリソースが返されます。
 
 ### <a name="delegated-user-identity-with-openid-connect"></a>委任ユーザー ID と OpenID Connect
 
 1. ユーザーが Azure AD を使用して Web アプリケーションにサインインしています (前述の「Web ブラウザー対 Web アプリケーション」セクションを参照)。 Web アプリケーションのユーザーは、Web アプリケーションがユーザーに代わって Web API を呼び出すことを許可することにまだ同意していない場合、これに同意する必要があります。 アプリケーションが必要なアクセス許可を表示します。そのいずれかが管理者レベルのアクセス許可の場合、ディレクトリ内の通常のユーザーが同意することはできません。 シングル テナント アプリケーションには、必要なアクセス許可が既にあると考えられるので、この同意プロセスはマルチテナント アプリケーションにのみ適用されます。 ユーザーがサインインしたときに、Web アプリケーションは、ユーザーに関する情報が含まれた ID トークンと、認証コードを受信しています。
 1. Azure AD によって発行された認証コードを使用して、Web アプリケーションは、認証コード、クライアント アプリケーションの詳細 (アプリケーション ID とリダイレクト URI)、目的のリソース (Web API のアプリケーション ID の URI) を要求に含めて Azure AD のトークン エンドポイントに送信します。
 1. 認証コードおよび Web アプリケーションと Web API に関する情報が Azure AD によって検証されます。 検証が正常に行われると、Azure AD は JWT アクセス トークンと JWT 更新トークンの 2 つのトークンを返します。
-1. Web アプリケーションは、返された JWT アクセス トークンを HTTPS 経由で使用して、Web API への要求の承認ヘッダーに、"Bearer" を指定した JWT 文字列を追加します。 その後、Web API が JWT を検証します。検証が正常に行われると、目的のリソースが返されます。
+1. Web アプリケーションでは、HTTPS 経由で返された JWT アクセス トークンを使用して、Web API への要求の Authorization ヘッダーに、"Bearer" を指定した JWT 文字列を追加します。 その後、Web API が JWT を検証します。検証が正常に行われると、目的のリソースが返されます。
 
 ### <a name="delegated-user-identity-with-oauth-20-authorization-code-grant"></a>委任ユーザー ID と OAuth 2.0 承認コードの付与
 
@@ -62,7 +60,7 @@ Web API アプリケーションは、Web API からリソースを取得する�
 1. ユーザーが同意したら、Web アプリケーションは、アクセス トークンを取得するために必要な認証コードを受信します。
 1. Azure AD によって発行された認証コードを使用して、Web アプリケーションは、認証コード、クライアント アプリケーションの詳細 (アプリケーション ID とリダイレクト URI)、目的のリソース (Web API のアプリケーション ID の URI) を要求に含めて Azure AD のトークン エンドポイントに送信します。
 1. 認証コードおよび Web アプリケーションと Web API に関する情報が Azure AD によって検証されます。 検証が正常に行われると、Azure AD は JWT アクセス トークンと JWT 更新トークンの 2 つのトークンを返します。
-1. Web アプリケーションは、返された JWT アクセス トークンを HTTPS 経由で使用して、Web API への要求の承認ヘッダーに、"Bearer" を指定した JWT 文字列を追加します。 その後、Web API が JWT を検証します。検証が正常に行われると、目的のリソースが返されます。
+1. Web アプリケーションでは、HTTPS 経由で返された JWT アクセス トークンを使用して、Web API への要求の Authorization ヘッダーに、"Bearer" を指定した JWT 文字列を追加します。 その後、Web API が JWT を検証します。検証が正常に行われると、目的のリソースが返されます。
 
 ## <a name="code-samples"></a>コード サンプル
 

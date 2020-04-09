@@ -9,20 +9,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/24/2020
 ms.author: jingwang
-ms.openlocfilehash: 056909f5fd5838e5ae50fb84bd3535029d862acf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b73cd73a18d286f221c7be2c624719e1d23d7c06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475989"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153830"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティを使用してメタデータと ACL を保持する
 
 次のシナリオでは、Azure Data Factory のコピー アクティビティを使用してソースからシンクにデータをコピーするときに、メタデータと ACL を一緒に保持することもできます。
 
-## <a name="preserve-metadata"></a> Lake 移行用にメタデータを保持する
+## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a> Lake 移行用にメタデータを保持する
 
 [Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) など、ある Data Lake から別の Data Lake にデータを移行するときに、データと共にファイルのメタデータを保持することもできます。
 
@@ -40,7 +40,7 @@ ms.locfileid: "75475989"
 ```json
 "activities":[
     {
-        "name": "CopyFromGen1ToGen2",
+        "name": "CopyAndPreserveMetadata",
         "type": "Copy",
         "typeProperties": {
             "source": {
@@ -76,9 +76,9 @@ ms.locfileid: "75475989"
 ]
 ```
 
-## <a name="preserve-acls"></a> Data Lake Storage Gen1 から Gen2 に ACL を保持する
+## <a name="preserve-acls-from-data-lake-storage-gen1gen2-to-gen2"></a><a name="preserve-acls"></a> Data Lake Storage Gen1/Gen2 から Gen2 に ACL を保持する
 
-Azure Data Lake Storage Gen1 から Gen2 にアップグレードするときに、データ ファイルと共に POSIX アクセス制御リスト (ACL) を保持することもできます。 アクセス制御の詳細については、「[Azure Data Lake Storage Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md)」および「[Azure Data Lake Storage Gen2 のアクセス制御](../storage/blobs/data-lake-storage-access-control.md)」をご覧ください。
+Azure Data Lake Storage Gen1 から Gen2 にアップグレードするときに、または ADLS Gen2 間でデータをコピーするときに、データ ファイルと共に POSIX アクセス制御リスト (ACL) を保持することもできます。 アクセス制御の詳細については、「[Azure Data Lake Storage Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md)」および「[Azure Data Lake Storage Gen2 のアクセス制御](../storage/blobs/data-lake-storage-access-control.md)」をご覧ください。
 
 コピー アクティビティでは、データのコピー中に次の種類の ACL を保持できます。 1 つ以上の種類を選択できます。
 
@@ -89,21 +89,21 @@ Azure Data Lake Storage Gen1 から Gen2 にアップグレードするときに
 フォルダーからのコピーを指定すると、指定したフォルダーとその下にあるファイルおよびディレクトリの ACL が、Data Factory によってレプリケートされます (`recursive` が true に設定されている場合)。 1 つのファイルからのコピーを指定すると、そのファイルの ACL がコピーされます。
 
 >[!NOTE]
->ADF を使用して Data Lake Storage Gen1 から Gen2 に ACL を保持すると、Gen2 に対応するフォルダーまたはファイルの既存の ACL が上書きされます。
+>ADF を使用して Data Lake Storage Gen1/Gen2 から Gen2 に ACL を保持すると、シンク Gen2 に対応するフォルダーまたはファイルの既存の ACL が上書きされます。
 
 >[!IMPORTANT]
 >ACL を保持する場合は、Data Factory がシンク Data Lake Storage Gen2 アカウントに対して処理を実行できる十分なアクセス許可を付与してください。 たとえば、アカウント キー認証を使用するか、サービス プリンシパルまたはマネージド ID にストレージ BLOB データ所有者ロールを割り当てます。
 
-バイナリ形式またはバイナリ コピー オプションを使用してソースを Data Lake Storage Gen1 として構成し、バイナリ形式またはバイナリ コピー オプションを使用してシンクを Data Lake Storage Gen2 として構成すると、[データのコピー] ツールの **[設定]** ページまたはアクティビティ作成のための **[アクティビティのコピー]**  >  **[設定]** タブに、 **[保持]** オプションが表示されます。
+バイナリ形式またはバイナリ コピー オプションを使用してソースを Data Lake Storage Gen1/Gen2 として構成し、バイナリ形式またはバイナリ コピー オプションを使用してシンクを Data Lake Storage Gen2 として構成すると、[データのコピー] ツールの **[設定]** ページまたはアクティビティ作成のための **[アクティビティのコピー]**  >  **[設定]** タブに、 **[保持]** オプションが表示されます。
 
-![Data Lake Storage Gen1 から Gen2 に ACL を保持](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
+![Data Lake Storage Gen1/Gen2 から Gen2 に ACL を保持](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
 
 コピー アクティビティの JSON 構成の例を次に示します (`preserve` を参照)。 
 
 ```json
 "activities":[
     {
-        "name": "CopyFromGen1ToGen2",
+        "name": "CopyAndPreserveACLs",
         "type": "Copy",
         "typeProperties": {
             "source": {
@@ -127,7 +127,7 @@ Azure Data Lake Storage Gen1 から Gen2 にアップグレードするときに
         },
         "inputs": [
             {
-                "referenceName": "<Binary dataset name for Azure Data Lake Storage Gen1 source>",
+                "referenceName": "<Binary dataset name for Azure Data Lake Storage Gen1/Gen2 source>",
                 "type": "DatasetReference"
             }
         ],

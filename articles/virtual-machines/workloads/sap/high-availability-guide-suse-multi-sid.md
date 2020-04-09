@@ -13,20 +13,22 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/06/2020
+ms.date: 03/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 3e9634b9121cb0ecbcfb01f6ad58984d90ec28e5
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 793851780e1154b6b6a21c88ea8cae063a277790
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927246"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80350056"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
+
+[anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
 [1944799]:https://launchpad.support.sap.com/#/notes/1944799
@@ -84,12 +86,12 @@ ms.locfileid: "78927246"
 * [SUSE SAP HA ベスト プラクティス ガイド][suse-ha-guide]: このガイドには、オンプレミスで Netweaver HA と SAP HANA System Replication を設定するために必要なすべての情報が記載されています。 一般的なベースラインとしてこのガイドを使用してください。 このガイドには詳細な情報が提供されています。
 * [SUSE High Availability Extension 12 SP3 リリース ノート][suse-ha-12sp3-relnotes]
 * [SLES 12 および SLES 15 用 SUSE マルチ SID クラスター ガイド](https://documentation.suse.com/sbp/all/html/SBP-SAP-MULTI-SID/index.html)
-
+* [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]
 ## <a name="overview"></a>概要
 
 クラスターに参加している仮想マシンは、フェールオーバーが発生したときのために、すべてのリソースを実行できるサイズになっている必要があります。 マルチ SID 高可用性クラスターでは、各 SAP SID は、相互に独立してフェールオーバーできます。  SBD フェンスを使用している場合は、複数のクラスター間で SBD デバイスを共有できます。  
 
-高可用性を実現するには、SAP NetWeaver に高可用性の NFS 共有が必要です。 この例では、SAP NFS 共有が次のどちらかであることを前提としています。共有は高可用性の [NFS ファイル サーバー](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)でホストされており、複数の SAP システムで使用できます。 または、共有は [Azure NetApp ファイル NFS ボリューム](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)にデプロイされています。  
+高可用性を実現するには、SAP NetWeaver に高可用性の NFS 共有が必要です。 この例では、SAP NFS 共有が次のどちらかであることを前提としています。共有は高可用性の [NFS ファイル サーバー](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)でホストされており、複数の SAP システムで使用できます。 または、[Azure NetApp Files NFS ボリューム](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)に共有がデプロイされます。  
 
 ![SAP NetWeaver の高可用性の概要](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
@@ -109,8 +111,6 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
   * NW1 の IP アドレス: 10.3.1.14
   * NW2 の IP アドレス: 10.3.1.16
   * NW3 の IP アドレス: 10.3.1.13
-* バックエンドの構成
-  * (A)SCS/ERS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
 * プローブ ポート
   * ポート 620<strong>&lt;nr&gt;</strong>。したがって、NW1、NW2、NW3 のプローブ ポートの場合は、620**00**、620**10**、620**20**
 * 負荷分散規則 - 
@@ -131,8 +131,6 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
   * NW1 の IP アドレス: 10.3.1.15
   * NW2 10.3.1.17 の IP アドレス
   * NW3 10.3.1.19 の IP アドレス
-* バックエンドの構成
-  * (A)SCS/ERS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
 * プローブ ポート
   * ポート 621<strong>&lt;nr&gt;</strong>。したがって、NW1、NW2、N# のプローブ ポートの場合は、621**02**、621**12**、621**22**
 * 負荷分散規則 - インスタンス (つまり、NW1/ERS、NW2/ERS、NW3/ERS) ごとに 1 つ作成します。
@@ -143,6 +141,9 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
     * 5<strong>&lt;nr&gt;</strong>13 TCP
     * 5<strong>&lt;nr&gt;</strong>14 TCP
     * 5<strong>&lt;nr&gt;</strong>16 TCP
+
+* バックエンドの構成
+  * (A)SCS/ERS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
 
 
 > [!Note]
