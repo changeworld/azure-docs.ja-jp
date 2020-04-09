@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: sutalasi
-ms.openlocfilehash: aeab1960b065538635fdd63c43d779287f8cd9ee
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 58348c9aed14a5cc9126be780fe01817274a0b47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759825"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283261"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM ディザスター リカバリーのネットワークについて
 
@@ -46,23 +46,27 @@ ms.locfileid: "76759825"
 送信接続を制御するために URL ベースのファイアウォール プロキシを使用している場合、以下の Site Recovery の URL を許可してください。
 
 
-**[URL]** | **詳細**  
+**URL** | **詳細**
 --- | ---
 *.blob.core.windows.net | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。 お使いの VM のすべてのキャッシュ ストレージ アカウントを把握している場合、*.blob.core.windows.net の代わりに、特定のストレージ アカウントの URL (例: cache1.blob.core.windows.net および cache2.blob.core.windows.net) へのアクセスを許可することができます。
 login.microsoftonline.com | Site Recovery サービス URL に対する承認と認証に必要です。
 *.hypervrecoverymanager.windowsazure.com | VM から Site Recovery サービス通信を実行できるようにするために必要です。
 *.servicebus.windows.net | VM から Site Recovery の監視および診断データを書き込むことができるようにするために必要です。
+*.vault.azure.net | ADE が有効な仮想マシンのレプリケーションをポータルを介して有効にするためのアクセスを許可します
+*.automation.ext.azure.com | レプリケートされる項目に対してモビリティ エージェントの自動アップグレードをポータルを介して有効にすることを許可します
 
-## <a name="outbound-connectivity-for-ip-address-ranges"></a>IP アドレス範囲に対する送信接続
+## <a name="outbound-connectivity-using-service-tags"></a>サービスタグを使用した送信接続
 
 NSG を使用して送信接続を制御している場合は、次のサービス タグを許可する必要があります。
 
-- ソース リージョンのストレージ アカウントに対応するすべての IP アドレス範囲
+- ソース リージョンのストレージ アカウントの場合:
     - ソース リージョンに対して[ストレージ サービス タグ](../virtual-network/security-overview.md#service-tags)に基づく NSG ルールを作成します。
     - VM からキャッシュ ストレージ アカウントにデータを書き込むことができるように、これらのアドレスを許可します。
 - AAD に対応するすべての IP アドレスへのアクセスを許可するには、[Azure Active Directory (AAD) サービス タグ](../virtual-network/security-overview.md#service-tags) ベースの NSG ルールを作成します。
 - EventsHub サービス タグ ベースの NSG ルールをターゲット リージョンに対して作成し、Site Recovery 監視へのアクセスを許可します。
 - 任意のリージョンでの Site Recovery サービスへのアクセスを許可するために、AzureSiteRecovery サービス タグ ベースの NSG ルールを作成します。
+- AzureKeyVault サービス タグ ベースの NSG ルールを作成します。 これは、ADE が有効になっている仮想マシンのレプリケーションを、ポータルを介して有効にする場合にのみ必要です。
+- GuestAndHybridManagement サービス タグ ベースの NSG ルールを作成します。 これは、レプリケートされる項目に対してモビリティ エージェントの自動アップグレードをポータルを介して有効にする場合にのみ必要です。
 - 必要な NSG ルールをテスト NSG に作成し、問題がないことを確認してから、運用環境の NSG にルールを作成することをお勧めします。
 
 ## <a name="example-nsg-configuration"></a>NSG 構成の例
@@ -70,7 +74,7 @@ NSG を使用して送信接続を制御している場合は、次のサービ�
 この例は、レプリケートする VM に対して NSG ルールを構成する方法を示しています。
 
 - NSG ルールを使用して送信接続を制御している場合は、必要なすべての IP アドレス範囲のポート 443 に対して "HTTPS 送信を許可" ルールを使用します。
-- この例では、VM ソースの場所は "米国東部" で、ターゲットの場所は "米国中央部" であると仮定します。
+- この例では、VM ソースの場所は "米国東部" で、ターゲットの場所は "米国中部" であると仮定します。
 
 ### <a name="nsg-rules---east-us"></a>NSG ルール - 米国東部
 
@@ -86,7 +90,7 @@ NSG を使用して送信接続を制御している場合は、次のサービ�
 
 4. NSG 上の "AzureSiteRecovery" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。 これにより、任意のリージョンの Site Recovery Service にアクセスできます。
 
-### <a name="nsg-rules---central-us"></a>NSG ルール - 米国中央部
+### <a name="nsg-rules---central-us"></a>NSG ルール - 米国中部
 
 フェールオーバー後にターゲット リージョンからソース リージョンへのレプリケーションが有効になるようにするには、次のルールが必要です。
 

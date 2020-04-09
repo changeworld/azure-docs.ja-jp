@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232991"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398177"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング先とは 
 
@@ -48,12 +48,14 @@ Azure Machine Learning では、異なるコンピューティング リソー�
 
 マネージド コンピューティング リソースは、Azure Machine Learning によって作成され、管理されます。 このコンピューティングは、機械学習ワークロード向けに最適化されています。 Azure Machine Learning コンピューティング クラスターと[コンピューティング インスタンス](concept-compute-instance.md)だけがマネージド コンピューティングです。 今後、他のマネージド コンピューティング リソースが追加される予定です。
 
-Azure Machine Learning コンピューティング インスタンス (プレビュー) またはコンピューティング クラスターは次の場所で作成できます。
+Azure Machine Learning コンピューティング インスタンス (プレビュー) またはコンピューティング クラスターは次の場所から作成できます。
+* Azure Machine Learning Studio
+* Azure portal
+* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) と [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) クラス
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* Resource Manager テンプレート
 
-| | Azure Machine Learning Studio | Azure portal | SDK | Resource Manager テンプレート | CLI |
-|---| ----- | ----- | ----- | ----- | ----- |
-| コンピューティング インスタンス | はい | はい | はい | はい |  |
-| コンピューティング クラスター | はい | はい | はい | はい | はい |
+また、[Azure CLI 用の機械学習拡張機能](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training)を使用してコンピューティング クラスターを作成することもできます。
 
 作成されると、これらのコンピューティング リソースは、他の種類のコンピューティング ターゲットとは異なり、自動的にワークスペースの一部になります。
 

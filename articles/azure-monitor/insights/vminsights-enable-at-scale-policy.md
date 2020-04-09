@@ -1,21 +1,21 @@
 ---
-title: Azure Policy を使用して Azure Monitor for VMs を有効にする | Microsoft Docs
+title: Azure Policy を使用して Azure Monitor for VMs を有効にする
 description: この記事では、Azure Policy を使用して、複数の Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を有効にする方法について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/15/2019
-ms.openlocfilehash: 267072b06d936822eae7e7257d62566a020471bb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/12/2020
+ms.openlocfilehash: 7069f2cc96b8876f5514acfa4ba49274b61be46f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656230"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282938"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Azure Policy を使用して Azure Monitor for VMs (プレビュー) を有効にする
+# <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure Policy を使用して Azure Monitor for VMs を有効にする
 
-この記事では、Azure Policy を使用して、Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs (プレビュー) を有効にする方法について説明します。 このプロセスの最後には、Log Analytics エージェントと依存関係エージェントの有効化が正常に構成され、準拠していない仮想マシンが識別されています。
+この記事では、Azure Policy を使用して、Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を有効にする方法について説明します。 このプロセスの最後には、Log Analytics エージェントと依存関係エージェントの有効化が正常に構成され、準拠していない仮想マシンが識別されています。
 
 すべての Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を検出、管理、および有効化するには、Azure Policy または Azure PowerShell のどちらかを使用できます。 Azure Policy は、新しくプロビジョニングされた VM の一貫性のあるコンプライアンスと自動的な有効化が保証されるようにサブスクリプションを効果的に制御するポリシー定義を管理できるため、これが推奨される方法です。 これらのポリシー定義は、次のことを行います。
 
@@ -23,17 +23,26 @@ ms.locfileid: "77656230"
 * コンプライアンスの結果を報告します。
 * 準拠していない VM を修復します。
 
-Azure PowerShell または Azure Resource Manager テンプレートを使用してこれらのタスクを実行することに関心がある場合は、[Azure PowerShell または Azure Resource Manager テンプレートを使用して Azure Monitor for VMs (プレビュー) を有効にする](vminsights-enable-at-scale-powershell.md)に関する記事をご覧ください。
+Azure PowerShell または Azure Resource Manager テンプレートを使用してこれらのタスクを実行することに関心がある場合は、[Azure PowerShell または Azure Resource Manager テンプレートを使用して Azure Monitor for VMs を有効にする方法](vminsights-enable-at-scale-powershell.md)に関する記事をご覧ください。
+
+## <a name="prerequisites"></a>前提条件
+ポリシーを使用して Azure VM および仮想マシン スケール セットを Azure Monitor for VMs にオンボードする前に、監視データの格納に使用するワークスペースで VMInsights ソリューションを有効にする必要があります。 このタスクを完了するには、Azure Monitor の **[Get started]\(使用の開始\)** ページで **[Other onboarding options]\(その他のオンボード オプション\)** タブを使用します。 **[Configure a workspace]\(ワークスペースの構成\)** を選択すると、構成するワークスペースを選択するよう求められます。
+
+![ワークスペースの構成](media/vminsights-enable-at-scale-policy/configure-workspace.png)
+
+また、 **[Enable using policy]\(ポリシーを使用して有効にする\)** を選択してワークスペースを構成してから、 **[ワークスペースの構成]** ツールバー ボタンを選択することもできます。  これにより、選択したワークスペースに VMInsights ソリューションがインストールされます。このソリューションにより、ポリシーを使用して有効にした VM および仮想マシン スケール セットによって送信された監視データを、ワークスペースで格納できるようになります。 
+
+![ポリシーを使用して有効にする](media/vminsights-enable-at-scale-policy/enable-using-policy.png)
 
 ## <a name="manage-policy-coverage-feature-overview"></a>[Manage Policy Coverage] (ポリシー対象範囲の管理) 機能の概要
 
-当初、Azure Monitor for VMs のポリシー定義を管理およびデプロイするための Azure Policy によるエクスペリエンスは Azure Policy からのみ実行されました。 ポリシー対象範囲の管理の機能を使用すると、前に説明したポリシー定義を含む **[Azure Monitor for VMs の有効化]** イニシアチブを大規模に検出、管理、および有効化することがより単純かつ簡単になります。 この新機能には、Azure Monitor for VMs の **[Get started]\(開始する\)** タブからアクセスできます。 **[ポリシー対象範囲の管理]** を選択して、 **[Azure Monitor for VMs Policy Coverage]\(Azure Monitor for VMs のポリシー対象範囲\)** ページを開きます。
+[Azure Monitor for VMs Policy Coverage]\(Azure Monitor for VMs のポリシー対象範囲\) を使用すると、前に説明したポリシー定義を含む **[Azure Monitor for VMs の有効化]** イニシアチブを大規模に検出、管理、および有効化することが容易になります。 この機能にアクセスするには、Azure Monitor for VMs の **[Get started]\(使用の開始\)** タブで **[Other onboarding options]\(その他のオンボード オプション\)** を選択します。 **[ポリシー対象範囲の管理]** を選択して、 **[Azure Monitor for VMs Policy Coverage]\(Azure Monitor for VMs のポリシー対象範囲\)** ページを開きます。
 
 ![Azure Monitor for VMs の [Get Started] (開始する) タブ](./media/vminsights-enable-at-scale-policy/get-started-page.png)
 
 ここで、管理グループとサブスクリプションにわたるイニシアチブの対象範囲の確認および管理を行うことができます。 管理グループおよびサブスクリプションそれぞれに存在する VM の数と、それらのコンプライアンスの状態を把握することができます。
 
-![Azure Monitor for VMs の [Policy Coverage] (ポリシー対象範囲) ページ](./media/vminsights-enable-at-scale-policy/manage-policy-page-01.png)
+![Azure Monitor for VMs の [Policy Coverage] (ポリシー対象範囲) ページ](media/vminsights-enable-at-scale-policy/manage-policy-page-01.png)
 
 この情報は、中心的な 1 つの場所から Azure Monitor for VMs のためのガバナンス シナリオを計画して実行するために役立ちます。 Azure Policy では、ポリシーまたはイニシアチブがスコープに割り当てられているときのコンプライアンス ビューが提供されるのに対して、この新しいページを使用すると、ポリシーまたはイニシアチブが割り当てられていない場所を検出し、所定の場所に割り当てることができます。 割り当て、表示、編集などのすべてのアクションが Azure Policy に直接リダイレクトされます。 **[Azure Monitor for VMs Policy Coverage]\(Azure Monitor for VMs のポリシー対象範囲\)** ページは、 **[Azure Monitor for VMs の有効化]** イニシアチブのみに対して拡張および統合されたエクスペリエンスです。
 
@@ -42,7 +51,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 - Service Map ソリューションをインストールします。
 - パフォーマンス グラフ、ワークブック、およびカスタム ログ クエリとアラートによって使用されるオペレーティング システムのパフォーマンス カウンターを有効にします。
 
-![Azure Monitor for VMs のワークスペースの構成](./media/vminsights-enable-at-scale-policy/manage-policy-page-02.png)
+![Azure Monitor for VMs のワークスペースの構成](media/vminsights-enable-at-scale-policy/manage-policy-page-02.png)
 
 このオプションは、どのポリシー アクションにも関連していません。 これは、Azure Monitor for VMs を有効にするために必要な[前提条件](vminsights-enable-overview.md)を満たす簡単な方法を提供するために利用できます。  
 
@@ -50,7 +59,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 次の表は、ポリシー対象範囲の ページに表示される情報の内訳とその解釈方法を示しています。
 
-| Function | 説明 | 
+| 機能 | 説明 | 
 |----------|-------------| 
 | **スコープ** | 現在保有しているか、または管理グループ階層を通してドリル ダウンする機能を使用してアクセスする権限を継承した管理グループおよびサブスクリプション。|
 | **ロール** | スコープに対するロール。閲覧者、所有者、共同作成者のいずれかの可能性があります。 場合によっては、サブスクリプションにはアクセスできるが、それが属する管理グループにアクセスできないことを示すために空白で表示されることがあります。 他の列の情報は、ロールに応じて異なります。 ロールは、ユーザーが表示できるデータや、ポリシーまたはイニシアチブ (所有者) の割り当てまたは編集、コンプライアンスの表示に関してユーザーが実行できるアクションを決定する上で重要です。 |
@@ -78,13 +87,13 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 |名前 |説明 |Type |
 |-----|------------|-----|
-|\[プレビュー\]:Azure Monitor for VMs の有効化 |指定されたスコープ (管理グループ、サブスクリプション、またはリソース グループ) 内の仮想マシン に対して Azure Monitor を有効にします。 Log Analytics ワークスペースをパラメーターとして受け取ります。 |イニシアティブ |
-|\[プレビュー\]:依存関係エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、VM を非準拠として報告します。 |ポリシー |
-|\[プレビュー\]:Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、VM を非準拠として報告します。 |ポリシー |
-|\[プレビュー\]:Linux VM への依存関係エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、依存関係エージェントがインストールされていない場合は、Linux VM にこのエージェントをデプロイします。 |ポリシー |
-|\[プレビュー\]:Windows VM への依存関係エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、依存関係エージェントがインストールされていない場合は、Windows VM にこのエージェントをデプロイします。 |ポリシー |
-|\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Log Analytics エージェントがインストールされていない場合は、Linux VM にこのエージェントをデプロイします。 |ポリシー |
-|\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Log Analytics エージェントがインストールされていない場合は、Windows VM にこのエージェントをデプロイします。 |ポリシー |
+|Azure Monitor for VMs の有効化 |指定されたスコープ (管理グループ、サブスクリプション、またはリソース グループ) 内の仮想マシン に対して Azure Monitor を有効にします。 Log Analytics ワークスペースをパラメーターとして受け取ります。 |イニシアティブ |
+|依存関係エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、VM を非準拠として報告します。 |ポリシー |
+|Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、VM を非準拠として報告します。 |ポリシー |
+|Linux VM への依存関係エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、依存関係エージェントがインストールされていない場合は、Linux VM にこのエージェントをデプロイします。 |ポリシー |
+|Windows VM への依存関係エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、依存関係エージェントがインストールされていない場合は、Windows VM にこのエージェントをデプロイします。 |ポリシー |
+|Linux VM への Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Log Analytics エージェントがインストールされていない場合は、Linux VM にこのエージェントをデプロイします。 |ポリシー |
+|Windows VM への Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Log Analytics エージェントがインストールされていない場合は、Windows VM にこのエージェントをデプロイします。 |ポリシー |
 
 ### <a name="policies-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのポリシー
 
@@ -92,19 +101,19 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 |名前 |説明 |Type |
 |-----|------------|-----|
-|\[プレビュー\]:仮想マシン スケール セットに対して Azure Monitor を有効にする |指定されたスコープ (管理グループ、サブスクリプション、またはリソース グループ) 内の仮想マシン スケール セットに対して Azure Monitor を有効にします。 Log Analytics ワークスペースをパラメーターとして受け取ります。 注:スケール セットのアップグレード ポリシーが [手動] に設定されている場合は、そのセット内のすべての VM でアップグレードを呼び出して、それらの VM に拡張機能を適用します。 CLI では、これは `az vmss update-instances` です。 |イニシアティブ |
-|\[プレビュー\]:仮想マシン スケール セットにおける依存関係エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、仮想マシン スケール セットを非準拠として報告します。 |ポリシー |
-|\[プレビュー\]:仮想マシン スケール セットにおける Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、仮想マシン スケール セットを非準拠として報告します。 |ポリシー |
-|\[プレビュー\]:Linux 仮想マシン スケール セット用の依存関係エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Linux 仮想マシン スケール セット用の依存関係エージェントがインストールされていない場合は、このエージェントをデプロイします。 |ポリシー |
-|\[プレビュー\]:Windows 仮想マシン スケール セット用の依存関係エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Windows 仮想マシン スケール セット用の依存関係エージェントがインストールされていない場合は、このエージェントをデプロイします。 |ポリシー |
-|\[プレビュー\]:Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Linux 仮想マシン スケール セット用の Log Analytics エージェントがインストールされていない場合は、このエージェントをデプロイします。 |ポリシー |
-|\[プレビュー\]:Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Windows 仮想マシン スケール セット用の Log Analytics エージェントがインストールされていない場合は、このエージェントをデプロイします。 |ポリシー |
+|仮想マシン スケール セットに対して Azure Monitor を有効にする |指定されたスコープ (管理グループ、サブスクリプション、またはリソース グループ) 内の仮想マシン スケール セットに対して Azure Monitor を有効にします。 Log Analytics ワークスペースをパラメーターとして受け取ります。 注:スケール セットのアップグレード ポリシーが [手動] に設定されている場合は、そのセット内のすべての VM でアップグレードを呼び出して、それらの VM に拡張機能を適用します。 CLI では、これは `az vmss update-instances` です。 |イニシアティブ |
+|仮想マシン スケール セットにおける依存関係エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、仮想マシン スケール セットを非準拠として報告します。 |ポリシー |
+|仮想マシン スケール セットにおける Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、仮想マシン スケール セットを非準拠として報告します。 |ポリシー |
+|Linux 仮想マシン スケール セット用の依存関係エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Linux 仮想マシン スケール セット用の依存関係エージェントがインストールされていない場合は、このエージェントをデプロイします。 |ポリシー |
+|Windows 仮想マシン スケール セット用の依存関係エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Windows 仮想マシン スケール セット用の依存関係エージェントがインストールされていない場合は、このエージェントをデプロイします。 |ポリシー |
+|Linux 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Linux 仮想マシン スケール セット用の Log Analytics エージェントがインストールされていない場合は、このエージェントをデプロイします。 |ポリシー |
+|Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Windows 仮想マシン スケール セット用の Log Analytics エージェントがインストールされていない場合は、このエージェントをデプロイします。 |ポリシー |
 
 ここではスタンドアロン ポリシー (イニシアティブには含まれません) について説明します。
 
 |名前 |説明 |Type |
 |-----|------------|-----|
-|\[プレビュー\]:VM の Log Analytics ワークスペースの監査 - 不一致の報告 |ポリシーまたはイニシアチブの割り当てで指定された Log Analytics ワークスペースに VM がロギングされていない場合は、それらの VM を非準拠として報告します。 |ポリシー |
+|VM の Log Analytics ワークスペースの監査 - 不一致の報告 |ポリシーまたはイニシアチブの割り当てで指定された Log Analytics ワークスペースに VM がロギングされていない場合は、それらの VM を非準拠として報告します。 |ポリシー |
 
 ### <a name="assign-the-azure-monitor-initiative"></a>Azure Monitor のイニシアティブを割り当てる
 
@@ -116,7 +125,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 2. Azure portal で、 **[モニター]** を選択します。 
 
-3. **[分析情報]** セクションの **[Virtual Machines (プレビュー)]** を選択します。
+3. **[分析情報]** セクションで、 **[仮想マシン]** を選択します。
  
 4. **[Get started]\(使用の開始\)** タブを選択します。このページで、 **[ポリシー対象範囲の管理]** を選択します。
 
@@ -175,19 +184,19 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 * Log Analytics エージェントも依存関係エージェントデプロイされていない。  
     このシナリオは、既存の VM を含むスコープでよくみられます。 これを緩和するには、非準拠ポリシーで[修復タスクを作成する](../../governance/policy/how-to/remediate-resources.md)ことにより、必要なエージェントをデプロイします。  
-    - \[プレビュー\]:Linux VM への依存関係エージェントのデプロイ
-    - \[プレビュー\]:Windows VM への依存関係エージェントのデプロイ
-    - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
-    - \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
+    - Linux VM への依存関係エージェントのデプロイ
+    - Windows VM への依存関係エージェントのデプロイ
+    - Linux VM への Log Analytics エージェントのデプロイ
+    - Windows VM への Log Analytics エージェントのデプロイ
 
 * VM イメージ (OS) が、ポリシー定義で識別されない。  
     デプロイ ポリシーの基準には、よく知られている Azure VM イメージからデプロイされた VM のみが含まれます。 VM の OS がサポートされているかどうか、ドキュメントで確認します。 サポートされていない場合は、デプロイ ポリシーを複製し、イメージが準拠するようにそれを更新または変更します。  
-    - \[プレビュー\]:依存関係エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
-    - \[プレビュー\]:Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
+    - 依存関係エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
+    - Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS)
 
 * VM が、指定された Log Analytics ワークスペースにログインしていない。  
     イニシアティブ スコープ内の一部の VM が、ポリシー割り当てで指定されているもの以外の Log Analytics ワークスペースにログインしている可能性があります。 このポリシーは、非準拠のワークスペースに報告を行っている VM を識別するための手段となります。  
-    - \[プレビュー\]:VM の Log Analytics ワークスペースの監査 - 不一致の報告
+    - VM の Log Analytics ワークスペースの監査 - 不一致の報告
 
 ## <a name="edit-an-initiative-assignment"></a>イニシアチブの割り当てを編集する
 

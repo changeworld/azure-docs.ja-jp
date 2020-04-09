@@ -1,30 +1,30 @@
 ---
 title: Open Geospatial Consortium (OGC) のマップ レイヤーを追加する | Microsoft Azure Maps
 description: マップに OGC マップ レイヤーをオーバーレイする方法と、OgcMapLayer クラスのさまざまなオプションを使用する方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c41ee293c853572ec9e1f9dd3edf001c805924d3
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402780"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334298"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Open Geospatial Consortium (OGC) のマップ レイヤーを追加する
 
-`atlas.layer.OgcMapLayer` クラスを使用すると、Web Mapping Service (WMS) の画像や Web Mapping Tile Service (WMTS) の画像をマップにオーバーレイすることができます。 WMS は、ジオリファレンスされたマップ画像をインターネット経由で提供する OGC によって開発された標準プロトコルです。 画像のジオリファレンスとは、画像を地理的な場所と関連付けるプロセスです。 WMTS も OGC によって開発された標準プロトコルです。 これは、事前レンダリングされ、ジオリファレンスされたマップ タイルを提供するように設計されています。
+`atlas.layer.OgcMapLayer` クラスを使用すると、Web Map Service (WMS) の画像や Web Map Tile Service (WMTS) の画像をマップにオーバーレイすることができます。 WMS は、ジオリファレンスされたマップ画像をインターネット経由で提供する OGC によって開発された標準プロトコルです。 画像のジオリファレンスとは、画像を地理的な場所と関連付けるプロセスです。 WMTS も OGC によって開発された標準プロトコルです。 これは、事前レンダリングされ、ジオリファレンスされたマップ タイルを提供するように設計されています。
 
-以下のセクションでは、`OgcMapLayer` クラスでサポートされている Web Mapping Service の機能の概要を説明します。
+以下のセクションでは、`OgcMapLayer` クラスでサポートされている Web Map Service の機能の概要を説明します。
 
-**Web Mapping Service (WMS)**
+**Web Map Service (WMS)**
 
 - サポート対象のバージョン: `1.0.0`、`1.1.0`、`1.1.1`、および `1.3.0`
-- このサービスでは、`EPSG:3857` のプロジェクション システムをサポートしている必要があります。または、サービスで再投影を処理できる必要があります。
+- このサービスでは、`EPSG:3857` のプロジェクション システムをサポートしているか、または再投影を処理する必要があります。
 - GetFeatureInfo では、サービスで `EPSG:4326` がサポートされるか、再投影が処理される必要があります。 
 - サポートされている操作:
 
@@ -34,7 +34,7 @@ ms.locfileid: "78402780"
     | GetMap | 指定された領域のマップ イメージを取得します |
     | GetFeatureInfo | 機能の基になるデータを含む `feature_info` を取得します |
 
-**Web Mapping Tile Service (WMTS)**
+**Web Map Tile Service (WMTS)**
 
 - サポート対象のバージョン: `1.0.0`
 - タイルは、`TileWidth == TileHeight` を満たす正方形である必要があります。

@@ -1,5 +1,5 @@
 ---
-title: 同じ StorSimple 8000 デバイスに対するフェールオーバーとディザスター リカバリー
+title: チュートリアル - StorSimple 物理デバイスを同じデバイスにフェールオーバーする
 description: StorSimple デバイスを同じデバイスにフェールオーバーする方法について説明します。
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: c8fe2d7ec7649f47f6cb9c8ae2c83f19c15691b6
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: dde01f9b91ff5a04ddb3fcc8d5f0c535278b0539
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471807"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398071"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>StorSimple 物理デバイスを同じデバイスにフェールオーバーする
 

@@ -11,12 +11,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: c7459c4dc700f034feafbf133b831a52b9233d11
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: df7db30e987c408ff158acfc468010948c821b8d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020167"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397531"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI テンプレートとファイル転送を使用する
 
@@ -28,7 +28,7 @@ Azure CLI で JSON テンプレート ファイルを作成および使用して
 
 Azure CLI の拡張機能を使用すると、開発者以外のユーザーが Batch をエンド ツー エンドで使用できます。 CLI コマンドのみで、プールの作成、入力データのアップロード、ジョブと関連するタスクの作成、結果の出力データのダウンロードを行うことができます。 コードを追加する必要はありません。 CLI コマンドを直接実行するか、スクリプトに統合します。
 
-JSON ファイル用の [Azure CLI での既存の Batch サポート](batch-cli-get-started.md#json-files-for-resource-creation)に基づく Batch テンプレートで、プール、ジョブ、タスクなどのアイテムを作成するときのプロパティ値を指定します。 Batch テンプレートは、次の機能を追加します。
+JSON ファイル用の [Azure CLI](batch-cli-get-started.md#json-files-for-resource-creation) での既存の Batch サポートに基づく Batch テンプレートで、プール、ジョブ、タスクなどのアイテムを作成するときのプロパティ値を指定します。 Batch テンプレートは、次の機能を追加します。
 
 -   パラメーターを定義できます。 テンプレートを使用するときに、アイテムを作成するためのパラメーター値だけを指定します。アイテムの他のプロパティ値は、テンプレートの本文で指定されます。 Batch と Batch によって実行されるアプリケーションの知識があるユーザーは、プール、ジョブ、タスクのプロパティ値を指定してテンプレートを作成できます。 Batch やアプリケーションの知識が乏しいユーザーは、定義済みのパラメーターの値を指定するだけで済みます。
 
@@ -68,7 +68,7 @@ Azure Batch テンプレートは、機能と構文が Azure Resource Manager �
 
 -   **パラメーター**
 
-    -   本文セクションでプロパティ値を指定し、テンプレートを使用するときに指定する必要があるパラメーター値だけを含めることができます。 たとえば、プールの完全な定義を本文に配置し、プール ID の 1 つのパラメーターだけを定義します。これにより、プールを作成するために指定する必要があるのはプール ID 文字列だけになります。
+    -   本文セクションでプロパティ値を指定し、テンプレートを使用するときに指定する必要があるパラメーター値だけを含めることができます。 たとえば、プールの完全な定義を本文に配置し、`poolId` の 1 つのパラメーターだけを定義します。これにより、プールを作成するために指定する必要があるのはプール ID 文字列だけになります。
         
     -   テンプレートの本文は、Batch と Batch によって実行されるアプリケーションの知識があるユーザーが作成できます。テンプレートを使用するときは、作成者が定義したパラメーターの値だけを指定する必要があります。 そのため、Batch やアプリケーションの深い知識のないユーザーがテンプレートを使用できます。
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 818c053c22cfa47cac0f4f6a19349cf239d3cdec
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 73747b8331054cdc3bfa1f4073ccf2cdb62ab326
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368593"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283244"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>プライマリ リージョンに対してフェールオーバーされた Azure VM を再保護する
 
@@ -89,6 +89,10 @@ ms.locfileid: "77368593"
 |---|---|
 |ソース リージョンには 1 TB の Standard ディスクを使った 1 つの VM がある。<br/>127 GB のデータのみが使用され、残りのディスクは空である。<br/>ディスクの種類は 60 MiB/秒スループットの Standard。<br/>フェールオーバー後にデータは変更されない。| おおよその時間:45 分から 1.5 時間。<br/>再保護中、Site Recovery によってデータ全体のチェックサムが生成される。これには 127 GB/45 MB 秒、およそ 45 分かかる。<br/>Site Recovery で自動スケールを行うために、およそ 20 から 30 分のオーバーヘッド時間が必要。<br/>エグレスの課金なし。 |
 |ソース リージョンには 1 TB の Standard ディスクを使った 1 つの VM がある。<br/>127 GB のデータのみが使用され、残りのディスクは空である。<br/>ディスクの種類は 60 MiB/秒スループットの Standard。<br/>フェールオーバー後に 45 GB のデータが変更される。| おおよその時間:1 時間から 2 時間。<br/>再保護中、Site Recovery によってデータ全体のチェックサムが生成される。これには 127 GB/45 MB 秒、およそ 45 分かかる。<br/>45 GB の変更を適用する転送時間は 45 GB/45 MB/秒、およそ 17 分。<br/>エグレスの課金は 45 GB のデータ変更が対象、チェックサムではない。 |
+
+プライマリ リージョンにフェールバックした後に VM が再保護された場合 (つまり、VM がプライマリ リージョンから DR リージョンに再保護された場合)、ターゲット VM および関連 NIC は削除されます。
+
+VM が DR リージョンからプライマリ リージョンに再保護された場合、以前のプライマリ VM および関連 NIC は削除されません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,15 +1,15 @@
 ---
 title: Azure Monitor でのメトリック アラートの機能
 description: メトリック アラートの用途と、Azure Monitor での機能の概要を理解します。
-ms.date: 12/5/2019
+ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 2f1734d30136be904aedf7d880922ba052130ec7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664731"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397972"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -122,15 +122,28 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートによるスケールの監視
 
-ここまでは、単一の Azure リソースに関連する 1 つ以上のメトリックの時系列を監視するために、単一のメトリック アラートを使用する方法について説明しました。 1 つのアラート ルールを多数のリソースに適用する場合はよくあります。 また、Azure Monitor では、同じ Azure リージョンに存在するリソースに対して、メトリック警告ルールが 1 つの (同じ種類の) 複数のリソースの監視をサポートしています。 現在、この機能は Azure パブリック クラウド内でのみサポートされており、仮想マシン、SQL サーバー データベース、SQL エラスティック プール、および Databox エッジ デバイス専用です。 また、この機能はプラットフォーム メトリックでのみ使用でき、カスタム メトリックではサポートされていません。
+ここまでは、単一の Azure リソースに関連する 1 つ以上のメトリックの時系列を監視するために、単一のメトリック アラートを使用する方法について説明しました。 1 つのアラート ルールを多数のリソースに適用する場合はよくあります。 また、Azure Monitor では、同じ Azure リージョンに存在するリソースに対して、メトリック警告ルールが 1 つの (同じ種類の) 複数のリソースの監視をサポートしています。 
 
-1 つのメトリック警告ルールで監視の範囲を指定するには、次の 3 つの方法があります。
+この機能は現在、次の Azure クラウドにおける次のサービスのプラットフォーム メトリック (カスタム メトリックではありません) でサポートされています。
 
-- サブスクリプション内の 1 つの Azure リージョン内の仮想マシンのリストとして
+| サービス | パブリック Azure | Government | 中国 |
+|:--------|:--------|:--------|:--------|
+| 仮想マシン  | **はい** | いいえ | いいえ |
+| SQL Server データベース | **はい** | **はい** | いいえ |
+| SQL Server エラスティック プール | **はい** | **はい** | いいえ |
+| Data Box Edge のデバイス | **はい** | **はい** | いいえ |
+
+1 つのメトリック警告ルールで監視の範囲を指定するには、次の 3 つの方法があります。 たとえば、仮想マシンではスコープを次のように指定できます。  
+
+- サブスクリプション内の 1 つの Azure リージョン内の仮想マシンのリスト
 - サブスクリプション内の 1 つまたは複数のリソース グループ内の (1 つの Azure リージョン内の) すべての仮想マシン
 - 1 つのサブスクリプション内の (1 つの Azure リージョン内の) すべての仮想マシン
 
 複数のリソースを監視するメトリックのアラート ルールを作成する方法は、単一のリソースを監視する[他のメトリック アラートを作成する](alerts-metric.md)場合と同じです。 唯一の違いは、監視対象にするリソースをすべて選択する点です。 このようなルールは [Azure Resource Manager テンプレート](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)を使って作成することもできます。 監視対象のリソースごとに個別の通知が届きます。
+
+> [!NOTE]
+>
+> 複数のリソースを監視するメトリック アラート ルールの場合、許可される条件は 1 つだけです。
 
 ## <a name="typical-latency"></a>一般的な待機時間
 

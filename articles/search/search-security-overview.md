@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/25/2020
+ms.openlocfilehash: 6de6f23fe9564b28a5d436ac00999dbb3e9183e1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978597"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548961"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure Cognitive Search のセキュリティとデータ プライバシー
 
@@ -52,13 +52,15 @@ Azure Cognitive Search は次の標準について認定され、[2018 年 6 月
 + [削除を防止するサブスクリプション レベルまたはリソース レベルのロック](../azure-resource-manager/management/lock-resources.md)
 + [情報および管理操作に対するアクセスをコントロールするロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md)
 
-ロールベースのアクセス制御 (RBAC) はすべての Azure サービスでサポートされており、すべてのサービスで一貫してアクセスのレベルを設定できます。 たとえば、機微なデータ (管理者キーなど) の表示は所有者ロールと共同作成者ロールに制限されるのに対し、サービスの状態はすべてのロールのメンバーが表示できます。 RBAC には所有者、共同作成者、閲覧者のロールがあります。 既定では、すべてのサービス管理者が、所有者ロールのメンバーです。
+ロールベースのアクセス制御 (RBAC) はすべての Azure サービスでサポートされており、すべてのサービスで一貫してアクセスのレベルを設定できます。 たとえば、機密データ (管理者キーなど) の表示は所有者ロールと共同作成者ロールに制限されます。 ただし、サービスの状態はすべてのロールのメンバーが表示できます。 RBAC には所有者、共同作成者、閲覧者のロールがあります。 既定では、すべてのサービス管理者が、所有者ロールのメンバーです。
 
 <a name="service-access-and-authentication"></a>
 
-## <a name="service-access-and-authentication"></a>サービス アクセスと認証
+## <a name="endpoint-access"></a>エンドポイント アクセス
 
-Azure Cognitive Search は Azure プラットフォームのセキュリティ保護機能を継承しますが、独自のキーベースの認証も提供しています。 API キーは、ランダムに生成された数字と文字から成る文字列です。 キーの種類 (管理者またはクエリ) によって、アクセスのレベルが決まります。 有効なキーの送信は、要求が信頼されたエンティティのものであることの証明と見なされます。 
+### <a name="public-access"></a>パブリック アクセス権
+
+Azure Cognitive Search は Azure プラットフォームのセキュリティ保護機能を継承し、独自のキーベースの認証を提供します。 API キーは、ランダムに生成された数字と文字から成る文字列です。 キーの種類 (管理者またはクエリ) によって、アクセスのレベルが決まります。 有効なキーの送信は、要求が信頼されたエンティティのものであることの証明と見なされます。 
 
 検索サービスへのアクセスには 2 つのレベルがあり、次の 2 種類のキーによって有効になります。
 
@@ -71,6 +73,16 @@ Azure Cognitive Search は Azure プラットフォームのセキュリティ�
 
 要求ごとに認証が必要です。この各要求は必須のキー、操作、およびオブジェクトで構成されています。 2 つのアクセス許可レベル (完全または読み取り専用) とコンテキスト (インデックスでのクエリ操作など) を組み合わせれば、サービス操作に対して全範囲のセキュリティを実現できます。 キーの詳細については、[API キーの作成と管理](search-security-api-keys.md)に関するページを参照してください。
 
+### <a name="restricted-access"></a>制限付きアクセス
+
+サービスを一般公開しているとき、そのサービスの使用を制限する場合、管理 REST API バージョン:2020-03-13、[IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) の IP 制限ルールを使用できます。 IpRule では、検索サービスへのアクセスを付与する IP アドレスを個別に、あるいは範囲で特定することで、サービスへのアクセスを制限できます。 
+
+### <a name="private-access"></a>プライベート アクセス
+
+Azure Cognitive Search の [プライベートエンドポイント](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) は、仮想ネットワーク上のクライアントが[プライベート リンク](https://docs.microsoft.com/azure/private-link/private-link-overview)を介して、検索インデックス内のデータに安全にアクセスできるようにします。 プライベート エンドポイントは、検索サービスのために仮想ネットワークのアドレス空間の IP アドレスを使用します。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。
+
+[Azure 仮想ネットワーク (VNet)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) によって、オンプレミス ネットワークやインターネットを利用したリソース間の安全な通信が可能になります。 
+
 ## <a name="index-access"></a>インデックへのアクセス
 
 Azure Cognitive Search では、個別のインデックスはセキュリティ保護可能なオブジェクトでありません。 その代わり、インデックスへのアクセスは操作のコンテキストと共にサービス層 (読み取りまたは書き込みアクセス) で決定されます。
@@ -81,11 +93,13 @@ Azure Cognitive Search では、個別のインデックスはセキュリティ
 
 インデックス レベルでセキュリティ境界が必要なマルチテナントのソリューションでは、通常、そのソリューションに顧客がインデックス分離を処理するための中間層が含まれています。 マルチテナントのユース ケースの詳細については、[マルチテナント SaaS アプリケーションと Azure Cognitive Search の設計パターン](search-modeling-multitenant-saas-applications.md)に関する記事を参照してください。
 
-## <a name="admin-access"></a>管理者アクセス
+## <a name="authentication"></a>認証
+
+### <a name="admin-access"></a>管理者アクセス
 
 [ロールベースのアクセス (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) によって、サービスとそのコンテンツに対するコントロールにアクセスできるかどうかが決まります。 Azure Cognitive Search サービスの所有者または共同作成者であれば、ポータルまたは PowerShell **Az.Search** モジュールを使用して、サービス上のオブジェクトを作成、更新、または削除できます。 [Azure Cognitive Search 管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) を使用することもできます。
 
-## <a name="user-access"></a>ユーザー アクセス
+### <a name="user-access"></a>ユーザー アクセス
 
 既定では、インデックスへのユーザー アクセスは、クエリ要求のアクセス キーによって決まります。 ほとんどの開発者は、クライアント側の検索要求に対して "[*クエリ キー*](search-security-api-keys.md)" を作成して割り当てます。 クエリ キーは、インデックス内のすべてのコンテンツに対する読み取りアクセスを付与します。
 
@@ -100,7 +114,7 @@ Azure Cognitive Search では、個別のインデックスはセキュリティ
 
 次の表では、Azure Cognitive Search で許可される操作のほか、特定の操作へのアクセスを有効にするキーについてまとめています。
 
-| 操作 | アクセス許可 |
+| Operation | アクセス許可 |
 |-----------|-------------------------|
 | サービスの作成 | Azure サブスクリプション所有者|
 | サービスのスケーリング | 管理者キー、リソースに対する RBAC 所有者または RBAC 共同作成者  |
@@ -118,7 +132,7 @@ Azure Cognitive Search では、個別のインデックスはセキュリティ
 > [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
 
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [.NET の作業開始 (管理者キーを使用したインデックスの作成のデモンストレーション)](search-create-index-dotnet.md)
 + [REST の作業開始 (管理者キーを使用したインデックスの作成のデモンストレーション)](search-create-index-rest-api.md)

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 96f71306c060a6a533a3ab1c0c54b49d74e5cd82
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298390"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294387"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Visual Studio を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
 
@@ -65,7 +65,7 @@ Visual Studio 2017 バージョン 15.5 以降でも引き続き、クラウド 
 
 この推奨は、Visual Studio 2017 バージョン 15.5 以降とクラウド サービス VM の通信方法が変わったことに起因します。 発行ウィザードからリモート デスクトップを有効にすると、以前のバージョンの Visual Studio は、"RDP プラグイン" と呼ばれている機能を利用して VM と通信します。 Visual Studio 2017 バージョン 15.5 以降では、代わりに安全性と柔軟性が向上した "RDP 拡張" を使用して通信します。 これは、Azure Portal と PowerShell でリモート デスクトップを有効にする場合にも RDP 拡張が使用されることに伴う変更です。
 
-Visual Studio と RDP 拡張が通信するとき、SSL でプレーンテキスト パスワードが送信されます。 ただし、プロジェクトの構成ファイルは暗号化されたパスワードのみを格納します。元々暗号化に使用されたローカル証明書でのみ、プレーンテキストに復号できます。
+Visual Studio と RDP 拡張が通信するとき、TLS を介してプレーンテキスト パスワードが送信されます。 ただし、プロジェクトの構成ファイルは暗号化されたパスワードのみを格納します。元々暗号化に使用されたローカル証明書でのみ、プレーンテキストに復号できます。
 
 毎回同じ開発コンピューターからクラウド サービス プロジェクトを配置する場合、ローカル証明書が利用できます。 この場合も、発行ウィザードの **[すべてのロールに対してリモート デスクトップを有効にする]** オプションを使用できます。
 
@@ -86,7 +86,7 @@ Visual Studio 2017 バージョン 15.5 以降がビルド エージェントに
 
 Azure DevOps Services の RDP 拡張を使用するには、ビルド パイプラインに次の詳細を含めます。
 
-1. RDP プラグインではなく RDP 拡張と配置が連動するように、MSBuild 引数に `/p:ForceRDPExtensionOverPlugin=true` を追加します。 例:
+1. RDP プラグインではなく RDP 拡張と配置が連動するように、MSBuild 引数に `/p:ForceRDPExtensionOverPlugin=true` を追加します。 次に例を示します。
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None

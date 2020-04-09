@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 868a0238092786d0999a6a41de71d30011bbef7a
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7e16eabc4f9572591eabd37b93258fcd783cce7e
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72246036"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80351143"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>fstab エラーによる Linux VM の起動に関する問題のトラブルシューティング
 
@@ -36,7 +36,7 @@ Secure Shell (SSH) 接続を使用して Azure Linux 仮想マシン (VM) に接
 [[1;33mDEPEND[0m] Dependency failed for /data.
 [[1;33mDEPEND[0m] Dependency failed for Local File Systems.
 …
-Welcome to emergency mode! After logging in, type “journalctl -xb” to viewsystem logs, “systemctl reboot” to reboot, “systemctl default” to try again to boot into default mode.
+Welcome to emergency mode! After logging in, type "journalctl -xb" to viewsystem logs, "systemctl reboot" to reboot, "systemctl default" to try again to boot into default mode.
 Give root password for maintenance
 (or type Control-D to continue)
 ```
@@ -47,9 +47,9 @@ Give root password for maintenance
 Checking file systems…
 fsck from util-linux 2.19.1
 Checking all file systems.
-/dev/sdc1: nonexistent device (“nofail” fstab option may be used to skip this device)
-/dev/sdd1: nonexistent device (“nofail” fstab option may be used to skip this device)
-/dev/sde1: nonexistent device (“nofail” fstab option may be used to skip this device)
+/dev/sdc1: nonexistent device ("nofail" fstab option may be used to skip this device)
+/dev/sdd1: nonexistent device ("nofail" fstab option may be used to skip this device)
+/dev/sde1: nonexistent device ("nofail" fstab option may be used to skip this device)
 
 [/sbin/fsck.ext3 (1) — /CODE] sck.ext3 -a /dev/sdc1
 fsck.ext3: No such file or directory while trying to open /dev/sdc1
@@ -67,14 +67,14 @@ e2fsck -b 8193 <device>
 [/sbin/fsck.ext3 (1) — /DATATEMP] fsck.ext3 -a /dev/sde1 fsck.ext3: No such file or directory while trying to open /dev/sde1
 ```
 
-### <a name="example-3-a-vm-cannot-start-because-of-an-fstab-misconfiguration-or-because-the-disk-is-no-longer-attached"></a>例 3:fstab の構成が間違っているため、またはディスクが未接続状態になったため、VM を起動できません
+### <a name="example-3-a-vm-cannot-start-because-of-an-fstab-misconfiguration-or-because-the-disk-is-no-longer-attached"></a>例 3: fstab の構成が間違っているため、またはディスクが未接続状態になったため、VM を起動できません
 
 ```
 The disk drive for /var/lib/mysql is not ready yet or not present.
 Continue to wait, or Press S to skip mounting or M for manual recovery
 ```
 
-### <a name="example-4-a-serial-log-entry-shows-an-incorrect-uuid"></a>例 4:シリアル ログ エントリに正しくない UUID が表示されています
+### <a name="example-4-a-serial-log-entry-shows-an-incorrect-uuid"></a>例 4: シリアル ログ エントリに正しくない UUID が表示されています
 
 ```
 Checking filesystems
@@ -90,7 +90,7 @@ fsck.ext4: Unable to resolve UUID="<UUID>"
 *** when you leave the shell.
 *** Warning — SELinux is active
 *** Disabling security enforcement for system recovery.
-*** Run ‘setenforce 1’ to reenable.
+*** Run 'setenforce 1' to reenable.
 type=1404 audit(1428047455.949:4): enforcing=0 old_enforcing=1 auid=<AUID> ses=4294967295
 Give root password for maintenance
 (or type Control-D to continue)
@@ -98,11 +98,47 @@ Give root password for maintenance
 
 この問題は、ファイル システム テーブル (fstab) 構文が正しくない場合、または "/etc/fstab" ファイル内のエントリにマップされた必須のデータ ディスクが VM に接続されていない場合に発生することがあります。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 この問題を解決するには、Azure Virtual Machines のシリアル コンソールを使用して、緊急モードで VM を起動します。 次に、ツールを使用して、ファイル システムを修復します。 ご利用の VM 上でシリアル コンソールが有効になっていない場合は、「[VM をオフライン修復する](#repair-the-vm-offline)」セクションに進んでください。
 
 ## <a name="use-the-serial-console"></a>シリアル コンソールの使用
+
+### <a name="using-single-user-mode"></a>シングル ユーザー モードを使用する
+
+1. [シリアル コンソール](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)に接続します。
+2. シリアル コンソールを使用してシングル ユーザー モード[シングル ユーザー モード](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)にします
+3. VM が起動されてシングル ユーザー モードになります。 任意のテキスト エディターを使用して fstab ファイルを開きます。 
+
+   ```
+   # nano /etc/fstab
+   ```
+
+4. 一覧されたファイル システムを確認します。 fstab ファイル内の各行は、VM の起動時にマウントされるファイル システムを示しています。 fstab ファイルの構文の詳細については、man fstab コマンドを実行してください。 起動エラーのトラブルシューティングを行うには、各行をレビューして、その構造と内容の両方が正しいことを確認してください。
+
+   > [!Note]
+   > * 各行のフィールドは、タブまたはスペースによって区切られます。 空白行は無視されます。 先頭文字がシャープ記号 (#) になっている行はコメントです。 コメント行は fstab ファイル内に残しておくことができますが、処理されません。 よくわからない fstab 行については、削除するのでなく、コメント化することをお勧めします。
+   > * VM を復旧して起動する場合、ファイル システムのパーティションは、必須のパーティションのみとする必要があります。 VM では、コメント化された追加のパーティションに関するアプリケーション エラーが発生する可能性があります。 ただし、追加のパーティションを使用せずに VM を起動する必要があります。 コメント行をいずれも後でコメント解除できます。
+   > * ファイル システム パーティションの UUID を使用して、データ ディスクを Azure VM にマウントすることをお勧めします。 たとえば、``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"`` コマンドを実行します。
+   > * ファイル システムの UUID を確認するには、blkid コマンドを実行します。 構文の詳細については、man blkid コマンドを実行してください。
+   > * nofail オプションを使用すると、ファイル システムが壊れている場合または起動時にファイル システムが存在しない場合でも、VM を確実に起動できます。 VM を起動するのに必要のないパーティションでエラーが発生した後も起動が続行されるようにするために、fstab ファイル内の nofail オプションを使用することをお勧めします。
+
+5. fstab ファイル内の正しくない行または不要な行をいずれも変更またはコメント アウトして、VM が正常に起動できるようにします。
+
+6. 変更内容を fstab ファイルに保存します。
+
+7. 次のコマンドを使用して VM を再起動します。
+   
+   ```
+   # reboot -f
+   ```
+> [!Note]
+   > また、"Ctrl + x" コマンドを使用して VM を再起動することもできます。
+
+
+8. エントリのコメント化または修正が成功した場合、ポータル内に bash プロンプトが表示されます。 VM に接続できるかどうかを確認します。
+
+### <a name="using-root-password"></a>ルート パスワードを使用する
 
 1. [シリアル コンソール](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)に接続します。
 2. ローカル ユーザーとパスワードを使用してシステムにサインインします。
@@ -156,7 +192,7 @@ Give root password for maintenance
 
 2. システム ディスクをデータ ディスクとして復旧 VM にマウントしたら、変更を加える前に fstab ファイルをバックアップしてから、次の手順に従って fstab ファイルを修正します。
 
-3.  ディスクがマウントされなかったことを示すエラーを探します。 次の例では、もはや存在しないディスクにシステムが接続しようとしました。
+3.    ディスクがマウントされなかったことを示すエラーを探します。 次の例では、もはや存在しないディスクにシステムが接続しようとしました。
 
     ```
     [DEPEND] Dependency failed for /datadisk1.
@@ -202,7 +238,7 @@ Give root password for maintenance
     * VM を再起動する前に、fstab の変更をテストします。 これを行うには、コマンド ``$ sudo mount -a`` を使用します。
     * 将来の回復シナリオで使用できるように、修正した fstab ファイルの追加のコピーを作成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure CLI 2.0 で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
 * [Azure portal で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)

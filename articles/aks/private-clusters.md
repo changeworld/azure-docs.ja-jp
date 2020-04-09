@@ -4,100 +4,23 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 0a05bd15fff97d4f0020f6ce82ee90a2fe995edf
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 87f52c5a749b531e5b0656e0b30ff0fe9c1a57bf
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944199"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398039"
 ---
-# <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>プライベート Azure Kubernetes Service クラスターを作成する (プレビュー)
+# <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
 プライベートクラスターにおいては、コントロールプレーンまたは API サーバーは「[プライベートインターネット向けの RFC1918 アドレス割り当て](https://tools.ietf.org/html/rfc1918)」で定義される内部 IP アドレスを持っています。 プライベート クラスターを使用することで、API サーバーとノード プールの間のネットワーク トラフィックがプライベート ネットワークにのみ保持されるようにすることができます。
 
 コントロールプレーンまたは API サーバーは、Azure Kubernetes Service (AKS) マネージドの Azure サブスクリプションの中にあります。 カスタマーのクラスターまたはノードプールは、カスタマーのサブスクリプションの中にあります。 サーバーとクラスターまたはノードプールは、API サーバー仮想ネットワーク内の [Azure Private Link サービス][private-link-service] と、カスタマーの AKS クラスターのサブネットで公開されているプライベート エンドポイントを介して相互に通信できます。
 
-> [!IMPORTANT]
-> AKS のプレビュー機能はセルフサービスであり、オプトイン ベースでオファーされます。 プレビューは、「*現状のまま*」、 「*利用可能な限度で*」提供されており、サービス レベル契約 (SLA) および限定保証からは除外されています。 AKS プレビューは、*ベストエフォート* ベースでカスタマー サポートによって部分的にカバーされます。 したがって、これらのフィーチャーはプロダクション環境での使用を目的としたものではありません。 詳細については、次のサポート記事を参照してください。
->
-> * [AKS のサポート ポリシー](support-policies.md)
-> * [Azure サポートに関する FAQ](faq.md)
-
 ## <a name="prerequisites"></a>前提条件
 
-* Azure CLI バージョン 2.0.77 以降、および Azure CLI AKS Preview 拡張機能バージョン 0.4.18
+* Azure CLI バージョン 2.2.0 以降
 
-## <a name="currently-supported-regions"></a>現在サポートされているリージョン
-
-* オーストラリア東部
-* オーストラリア南東部
-* ブラジル南部
-* カナダ中部
-* カナダ東部
-* 米国中部
-* 東アジア
-* 米国東部
-* 米国東部 2
-* 米国東部 2 EUAP
-* フランス中部
-* ドイツ北部
-* 東日本
-* 西日本
-* 韓国中部
-* 韓国南部
-* 米国中北部
-* 北ヨーロッパ
-* 北ヨーロッパ
-* 米国中南部
-* 英国南部
-* 西ヨーロッパ
-* 米国西部
-* 米国西部 2
-* 米国東部 2
-
-## <a name="currently-supported-availability-zones"></a>現在サポートされている Availability Zones
-
-* 米国中部
-* 米国東部
-* 米国東部 2
-* フランス中部
-* 東日本
-* 北ヨーロッパ
-* 東南アジア
-* 英国南部
-* 西ヨーロッパ
-* 米国西部 2
-
-## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>最新の Azure CLI AKS Preview 拡張機能をインストールする
-
-プライベートクラスターを使用するには、Azure CLI AKS Preview 拡張機能バージョン 0.4.18 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して Azure CLI AKS Preview 拡張機能をインストールした上で、次の [az extension update][az-extension-update] コマンドを使用して、利用可能な更新プログラムがあるかどうかを確認します。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-> [!CAUTION]
-> サブスクリプションで機能を登録する場合、現時点ではその機能を登録解除することはできません。 一部のプレビュー機能を有効にすると、その後はサブスクリプションで作成されたすべての AKS クラスターに対して既定の設定を使用できます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
-
-```azurecli-interactive
-az feature register --name AKSPrivateLinkPreview --namespace Microsoft.ContainerService
-```
-
-登録状態が「*登録済み*」と表示されるまでに数分かかることがあります。 登録状態を確認するには、次の [az feature list][az-feature-list] コマンドを使用します。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSPrivateLinkPreview')].{Name:name,State:properties.state}"
-```
-
-状態が登録されたら、次の [az provider register][az-provider-register] コマンドを使用して *Microsoft.ContainerService* リソース プロバイダーの登録を最新の情報に更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-az provider register --namespace Microsoft.Network
-```
 ## <a name="create-a-private-aks-cluster"></a>プライベート AKS クラスターを作成する
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
@@ -158,9 +81,22 @@ AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方
 8. **[追加]** を選択して VM の仮想ネットワークを追加し、次にピアリングを作成します。  
 9. VM のある仮想ネットワークに移動して **[ピアリング]** を選択、AKS 仮想ネットワークを選択し、次にピアリングを作成します。 AKS 仮想ネットワークのアドレス範囲と VM の仮想ネットワークが競合している場合、ピアリングは失敗します。 詳細については、「[仮想ネットワーク ピアリング][virtual-network-peering]」を参照してください。
 
+## <a name="hub-and-spoke-with-custom-dns"></a>カスタム DNS を使用したハブとスポーク
+
+[ハブとスポークのアーキテクチャ](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)は、Azure でネットワークをデプロイするためによく使用されます。 これらのデプロイの多くでは、オンプレミスと Azure ベースの DNS 解決が可能となるよう、スポーク VNet の DNS 設定は中央の DNS フォワーダーを参照するように構成されます。 このようなネットワーク環境に AKS クラスターをデプロイする場合、いくつかの特別な考慮事項を考慮する必要があります。
+
+![プライベート クラスターのハブとスポーク](media/private-clusters/aks-private-hub-spoke.png)
+
+1. 既定では、プライベート クラスターがプロビジョニングされると、プライベート エンドポイント (1) とプライベート DNS ゾーン (2) がクラスター マネージド リソース グループに作成されます。 クラスターによりプライベート ゾーンの A レコードが使用され、API サーバーとの通信のためにプライベート エンドポイントの IP が解決されます。
+
+2. プライベート DNS ゾーンは、クラスター ノードが接続されている VNet にのみリンクされます (3)。 つまり、プライベート エンドポイントは、そのリンクされた VNet 内のホストによってのみ解決できます。 VNet にカスタム DNS が一切構成されていないシナリオ (既定) では、これは問題なく機能します。リンクされているためにプライベート DNS ゾーン内のレコードを解決できる DNS の 168.63.129.16 が、ホストにより指定されるためです。
+
+3. クラスターを含む VNet にカスタム DNS 設定があるシナリオでは (4)、プライベート DNS ゾーンがカスタム DNS リゾルバーを含む VNet にリンクされていない限り (5)、クラスターのデプロイは失敗します。 このリンクは、クラスターのプロビジョニング中にプライベート ゾーンを作成した後に手動で、または Azure Policy やその他のイベントベースのデプロイ メカニズム (Azure Event Grid や Azure Functions など) を使用したゾーンの作成の検出時に自動で作成することができます。
+
 ## <a name="dependencies"></a>依存関係  
+
 * Private Link サービスは、Standard Azure Load Balancer でのみサポートされています。 Basic Azure Load Balancer はサポートされていません。  
-* カスタム DNS サーバーを使用するには、この IP 168.63.129.16 に転送する DNS を備えた AD サーバーをデプロイします。
+* カスタム DNS サーバーを使用するには、カスタム DNS サーバーにアップストリーム DNS サーバーとして Azure DNS IP 168.63.129.16 を追加します。
 
 ## <a name="limitations"></a>制限事項 
 * 承認済み IP 範囲は、プライベート API サーバー エンドポイントには適用できません。パブリック API サーバーにのみ適用されます
@@ -173,7 +109,6 @@ AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方
 * 既存の AKS クラスターからプライベートクラスターへの変換はサポートされていません
 * カスタマーのサブネット内でプライベート エンドポイントを削除または変更すると、クラスターが機能しなくなります。 
 * コンテナー用 Azure Monitor の Live Data は現在サポートされていません。
-* *独自の DNS の使用*は現在サポートされていません。
 
 
 <!-- LINKS - internal -->
@@ -181,7 +116,7 @@ AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: /private-link/private-link-service-overview
+[private-link-service]: /azure/private-link/private-link-service-overview
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
