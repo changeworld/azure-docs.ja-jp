@@ -68,55 +68,55 @@ Azure Cognitive Search では、Lucene によって提供される 35 個のア�
 |アルメニア語||hy.lucene|  
 |ベンガル語|bn.microsoft||  
 |バスク語||eu.lucene|  
-|Bulgarian|bg.microsoft|bg.lucene|  
+|ブルガリア語|bg.microsoft|bg.lucene|  
 |カタロニア語|ca.microsoft|ca.lucene|  
 |簡体中国語|zh-Hans.microsoft|zh-Hans.lucene|  
 |中国語 (繁体字)|zh-Hant.microsoft|zh-Hant.lucene|  
-|Croatian|hr.microsoft||  
-|Czech|cs.microsoft|cs.lucene|  
-|Danish|da.microsoft|da.lucene|  
-|Dutch|nl.microsoft|nl.lucene|  
-|English|en.microsoft|en.lucene|  
-|Estonian|et.microsoft||  
-|Finnish|fi.microsoft|fi.lucene|  
-|French|fr.microsoft|fr.lucene|  
+|クロアチア語|hr.microsoft||  
+|チェコ語|cs.microsoft|cs.lucene|  
+|デンマーク語|da.microsoft|da.lucene|  
+|オランダ語|nl.microsoft|nl.lucene|  
+|英語|en.microsoft|en.lucene|  
+|エストニア語|et.microsoft||  
+|フィンランド語|fi.microsoft|fi.lucene|  
+|フランス語|fr.microsoft|fr.lucene|  
 |ガリシア語||gl.lucene|  
-|German|de.microsoft|de.lucene|  
-|Greek|el.microsoft|el.lucene|  
+|ドイツ語|de.microsoft|de.lucene|  
+|ギリシャ語|el.microsoft|el.lucene|  
 |グジャラート語|gu.microsoft||  
 |ヘブライ語|he.microsoft||  
 |ヒンディー語|hi.microsoft|hi.lucene|  
-|Hungarian|hu.microsoft|hu.lucene|  
+|ハンガリー語|hu.microsoft|hu.lucene|  
 |アイスランド語|is.microsoft||  
 |インドネシア語|id.microsoft|id.lucene|  
 |アイルランド語||ga.lucene|  
-|Italian|it.microsoft|it.lucene|  
-|Japanese|ja.microsoft|ja.lucene|  
+|イタリア語|it.microsoft|it.lucene|  
+|日本語|ja.microsoft|ja.lucene|  
 |カンナダ語|kn.microsoft||  
-|Korean|ko.microsoft|ko.lucene|  
-|Latvian|lv.microsoft|lv.lucene|  
-|Lithuanian|lt.microsoft||  
+|韓国語|ko.microsoft|ko.lucene|  
+|ラトビア語|lv.microsoft|lv.lucene|  
+|リトアニア語|lt.microsoft||  
 |マラヤーラム語|ml.microsoft||  
 |マレー語 (ラテン)|ms.microsoft||  
 |マラーティー語|mr.microsoft||  
 |ノルウェー語|nb.microsoft|no.lucene|  
 |ペルシャ語||fa.lucene|  
-|Polish|pl.microsoft|pl.lucene|  
+|ポーランド語|pl.microsoft|pl.lucene|  
 |ポルトガル語 (ブラジル)|pt-Br.microsoft|pt-Br.lucene|  
 |ポルトガル語 (ポルトガル)|pt-Pt.microsoft|pt-Pt.lucene|  
 |パンジャーブ語|pa.microsoft||  
-|Romanian|ro.microsoft|ro.lucene|  
-|Russian|ru.microsoft|ru.lucene|  
+|ルーマニア語|ro.microsoft|ro.lucene|  
+|ロシア語|ru.microsoft|ru.lucene|  
 |セルビア語 (キリル)|sr-cyrillic.microsoft||  
 |セルビア語 (ラテン)|sr-latin.microsoft||  
-|Slovak|sk.microsoft||  
-|Slovenian|sl.microsoft||  
-|Spanish|es.microsoft|es.lucene|  
-|Swedish|sv.microsoft|sv.lucene|  
+|スロバキア語|sk.microsoft||  
+|スロベニア語|sl.microsoft||  
+|スペイン語|es.microsoft|es.lucene|  
+|スウェーデン語|sv.microsoft|sv.lucene|  
 |タミル語|ta.microsoft||  
 |テルグ語|te.microsoft||  
-|Thai|th.microsoft|th.lucene|  
-|Turkish|tr.microsoft|tr.lucene|  
+|タイ語|th.microsoft|th.lucene|  
+|トルコ語|tr.microsoft|tr.lucene|  
 |ウクライナ語|uk.microsoft||  
 |ウルドゥ語|ur.microsoft||  
 |ベトナム語|vi.microsoft||  
