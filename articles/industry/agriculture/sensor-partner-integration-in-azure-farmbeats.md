@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 3431576acbb01a0cc3a5f372460b28be05bf7ce7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132828"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437477"
 ---
 # <a name="sensor-partner-integration"></a>センサー パートナーの統合
 
 この記事では、Azure FarmBeats **Translator** コンポーネントについて説明します。これを使うと、センサー パートナーとの統合が可能になります。
 
-このコンポーネントを使用すると、パートナーは FarmBeats データ ハブ API を使用して FarmBeats を統合し、お客様のデバイス データとテレメトリを FarmBeats データ ハブに送信することができます。 データは、FarmBeats で使用できるようになると FarmBeats Accelerator を使用して視覚化され、データ融合や機械学習/人工知能モデルの構築に使用できるようになります。
+このコンポーネントを使用すると、パートナーは FarmBeats Datahub API を使用して FarmBeats を統合し、お客様のデバイス データとテレメトリを FarmBeats Datahub に送信することができます。 データは、FarmBeats で使用できるようになると FarmBeats Accelerator を使用して視覚化され、データ融合や機械学習/人工知能モデルの構築に使用できるようになります。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -42,7 +42,7 @@ FarmBeats のセンサー データ統合機能は、REST API 経由で公開さ
 
 **API の開発**
 
-API には、Swagger の技術ドキュメントが用意されています。 API とそれに対応する要求または応答の詳細については、[Swagger](https://aka.ms/FarmBeatsDatahubSwagger) に関するページを参照してください。
+API には、Swagger の技術ドキュメントが用意されています。 API とそれに対応する要求または応答の詳細については、[Swagger](https://aka.ms/FarmBeatsSwagger) に関するページを参照してください。
 
 **認証**
 
@@ -50,7 +50,7 @@ FarmBeats では、Microsoft Azure Active Directory 認証が使用されます�
 
 詳細については、「 [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)」を参照してください。
 
-FarmBeats データ ハブではベアラー認証を使用します。これには、次の資格情報が必要になります。
+FarmBeats Datahub ではベアラー認証が使用され、次の資格情報が必要です。
    - クライアント ID
    - クライアント シークレット
    - テナント ID
@@ -85,14 +85,14 @@ access_token = token_response.get('accessToken') 
 
 **HTTP 要求ヘッダー**
 
-FarmBeats データ ハブへの API 呼び出しを行うときに指定する必要がある、最も一般的な要求ヘッダーを次に示します。
+FarmBeats Datahub への API 呼び出しを行うときに指定する必要がある、最も一般的な要求ヘッダーを次に示します。
 
 
 **ヘッダー** | **説明と例**
 --- | ---
-Content-Type | 要求の形式 (Content-Type: application/<format>)。 FarmBeats データ ハブ API の場合、形式は JSON です。 Content-Type, application/json
+Content-Type | 要求の形式 (Content-Type: application/<format>)。 FarmBeats Datahub API の場合、形式は JSON です。 Content-Type, application/json
 承認 | API 呼び出しを行うために必要なアクセス トークンを指定します。 Authorization:Bearer <Access-Token>
-Accept | 応答形式。 FarmBeats データ ハブ API の場合、形式は JSON です。 Accept: application/json
+Accept | 応答形式。 FarmBeats Datahub API の場合、形式は JSON です。 Accept: application/json
 
 **API 要求**
 
@@ -119,7 +119,7 @@ JSON は、任意のデータ構造をシンプルなテキストで表現する
 
 ## <a name="metadata-specifications"></a>メタデータの仕様
 
-FarmBeats データ ハブには、デバイス パートナーがデバイスやセンサーのメタデータを作成して管理できるようにする次の API が用意されています。
+FarmBeats Datahub の次の API を使用することで、デバイス パートナーは、デバイスまたはセンサーのメタデータを作成して管理できます。
 
 - /**DeviceModel**:DeviceModel は、デバイスのメタデータ (製造元など) およびデバイスの種類 (ゲートウェイまたはノード) に対応します。
 - /**Device**:Device は、ファームに存在する物理デバイスに対応します。
@@ -132,16 +132,16 @@ FarmBeats データ ハブには、デバイス パートナーがデバイス�
   Manufacturer  | 製造元の名前 |
   ProductCode  | デバイスの製品コード、モデル名、またはモデル番号。 例: EnviroMonitor#6800。 |
   Port  | ポートの名前と種類 (デジタルまたはアナログ)。  |
-  Name  | リソースを識別する名前 たとえば、モデル名または製品名。 |
+  名前  | リソースを識別する名前 たとえば、モデル名または製品名。 |
   説明  | そのモデルについてのわかりやすい説明を入力します。 |
   Properties  | 製造元から提供されるその他のプロパティ。 |
   **[デバイス]** |  |
   DeviceModelId  |関連付けられているデバイス モデルの ID |
   HardwareId   |デバイスの一意の ID (MAC アドレスなど)。  |
   ReportingInterval |レポートの間隔 (秒)。 |
-  Location    |デバイスの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。 |
+  場所    |デバイスの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。 |
   ParentDeviceId | このデバイスが接続されている親デバイスの ID。 たとえば、ノードがゲートウェイに接続されている場合、ノードのゲートウェイは parentDeviceID です。 |
-  Name  | リソースを識別するための名前。 デバイス パートナーは、デバイス パートナー側のデバイス名と一致する名前を送信する必要があります。 デバイス パートナー側のデバイス名がユーザー定義である場合、同じユーザー定義名を FarmBeats に反映させる必要があります。  |
+  名前  | リソースを識別するための名前。 デバイス パートナーは、デバイス パートナー側のデバイス名と一致する名前を送信する必要があります。 デバイス パートナー側のデバイス名がユーザー定義である場合、同じユーザー定義名を FarmBeats に反映させる必要があります。  |
   説明  | わかりやすい説明を入力します。  |
   Properties  |製造元から提供されるその他のプロパティ。  |
   **SensorModel** |  |
@@ -155,16 +155,16 @@ FarmBeats データ ハブには、デバイス パートナーがデバイス�
   SensorMeasures > AggregationType  | none、average、maximum、minimum、または StandardDeviation のいずれか。
   SensorMeasures > Depth  | センサーの深さ (センチメートル単位)。 たとえば、地面より 10 cm 下の湿度。
   SensorMeasures > Description  | そのメジャーについてのわかりやすい説明を入力します。
-  Name  | リソースを識別する名前 たとえば、モデル名または製品名。
+  名前  | リソースを識別する名前 たとえば、モデル名または製品名。
   説明  | そのモデルについてのわかりやすい説明を入力します。
   Properties  | 製造元から提供されるその他のプロパティ。
   **センサー**  |  |
   HardwareId  | 製造元によって設定された、センサーの一意の ID。
   SensorModelId  | 関連付けられているセンサー モデルの ID。
-  Location  | センサーの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。
+  場所  | センサーの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。
   Port > Name  |センサーが接続されている、デバイス上のポートの名前と種類。 これは、デバイス モデルで定義されているのと同じ名前にする必要があります。
   deviceId  | センサーが接続されているデバイスの ID。
-  Name  | リソースを識別するための名前。 たとえば、センサー名または製品名と、モデル番号または製品コード。
+  名前  | リソースを識別するための名前。 たとえば、センサー名または製品名と、モデル番号または製品コード。
   説明  | わかりやすい説明を入力します。
   Properties  | 製造元から提供されるその他のプロパティ。
 
@@ -188,7 +188,7 @@ Translator には、FarmBeats のユーザー投稿リンクからインスト�
 
 ### <a name="add-new-types-and-units"></a>種類と単位を追加する
 
-FarmBeats は、センサーのメジャーの種類や単位の新規追加をサポートしています。 /ExtendedType API の詳細については、[Swagger](https://aka.ms/FarmBeatsDatahubSwagger) に関するページを参照してください。
+FarmBeats は、センサーのメジャーの種類や単位の新規追加をサポートしています。 /ExtendedType API の詳細については、[Swagger](https://aka.ms/FarmBeatsSwagger) に関するページを参照してください。
 
 ## <a name="telemetry-specifications"></a>テレメトリの仕様
 
@@ -304,7 +304,7 @@ write_client.stop()
 
 ## <a name="unlink-farmbeats"></a>FarmBeats のリンク解除
 
-デバイス パートナーは、お客様が既存の FarmBeats 統合のリンクを解除可能にすることができます。 FarmBeats のリンクを解除しても、FarmBeats データ ハブで作成されたデバイスやセンサーのメタデータは削除されません。 リンクを解除すると次のことが行われます。
+デバイス パートナーは、お客様が既存の FarmBeats 統合のリンクを解除可能にすることができます。 FarmBeats のリンクを解除しても、FarmBeats Datahub で作成されたデバイスやセンサーのメタデータは削除されません。 リンクを解除すると次のことが行われます。
 
    - テレメトリ フローが停止されます。
    - デバイス パートナーにおいて統合資格情報が削除または消去されます。
