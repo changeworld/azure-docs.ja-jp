@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56a3478f1c0dbc05eba07a5109f5bb6ba89b79d0
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 85f2ab6f8c3e5edda027e44eeda13a3279a88321
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079878"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473678"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ - | Microsoft Docs
 
@@ -24,9 +24,12 @@ ms.locfileid: "79079878"
 
 この記事では、Azure Active Directory B2C (Azure AD B2C) でのサインアップ体験時に新しい属性を収集します。 ユーザーの city (市区町村) を取得し、それをドロップダウンとして構成し、それを指定することが必須かどうかを定義します。
 
+> [!NOTE]
+> このサンプルでは、組み込みの要求の "city" を使用します。 代わりに、サポートされている [Azure AD B2C 組み込み属性](user-profile-attributes.md)のいずれか、またはカスタム属性を選択することもできます。 カスタム属性を使用するには、[ポリシーでカスタム属性を有効にします](custom-policy-custom-attributes.md)。 別の組み込みまたはカスタム属性を使用するには、選択した属性で "city" を置き換えます。たとえば、組み込み属性 *jobTitle* や、*extension_loyaltyId* のようなカスタム属性を使用できます。  
+
 ユーザーからの初期データは、サインアップまたはサインインのユーザー体験を使用して収集できます。 追加の要求は、後でプロファイル編集のユーザー体験を使用して収集できます。 Azure AD B2C が対話形式でユーザーから直接情報を収集するときはいつでも、Identity Experience Framework は[セルフアサート技術プロファイル](self-asserted-technical-profile.md)を使用します。 このサンプルでは、以下を実行します。
 
-1. "city" 要求を定義します。
+1. "city" 要求を定義します。 
 1. ユーザーに city を尋ねます。
 1. Azure AD B2C ディレクトリのユーザー プロファイルに city を保持します。
 1. サインインのたびに、Azure AD B2C ディレクトリから city 要求を読み取ります。
@@ -45,7 +48,7 @@ ms.locfileid: "79079878"
 - **UserHelpText** - 必要なものをユーザーが理解するために役立ちます。
 - [UserInputType](claimsschema.md#userinputtype) - テキスト ボックス、ラジオ選択、ドロップダウン リスト、または複数選択などの入力コントロールの種類。
 
-ポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>です。
+ポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。
 
 1. [BuildingBlocks](buildingblocks.md) 要素を検索します。 要素が存在しない場合は追加します。
 1. [ClaimsSchema](claimsschema.md) 要素を見つけます。 要素が存在しない場合は追加します。
@@ -169,7 +172,7 @@ ms.locfileid: "79079878"
 
 ## <a name="include-a-claim-in-the-token"></a>トークンに要求を含める 
 
-city 要求を証明書利用者アプリケーションに返すには、出力要求を <em>`SocialAndLocalAccounts/` **`SignUpOrSignIn.xml`** </em> ファイルに追加します。 ユーザー体験が成功した後、出力要求がトークンに追加され、アプリケーションに送信されます。 証明書利用者セクション内の技術プロファイル要素を変更して、city を出力要求として追加します。
+city 要求を証明書利用者アプリケーションに返すには、出力要求を <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> ファイルに追加します。 ユーザー体験が成功した後、出力要求がトークンに追加され、アプリケーションに送信されます。 証明書利用者セクション内の技術プロファイル要素を変更して、city を出力要求として追加します。
  
 ```xml
 <RelyingParty>

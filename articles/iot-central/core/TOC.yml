@@ -12,7 +12,7 @@
     - name: 1. 新しいアプリケーションを作成する
       href: quick-deploy-iot-central.md
     - name: 2. シミュレートされたデバイスの追加
-      href: quick-create-pnp-device.md
+      href: quick-create-simulated-device.md
     - name: 3. 規則とアクションを構成する
       href: quick-configure-rules.md
     - name: 4. デバイスを監視する

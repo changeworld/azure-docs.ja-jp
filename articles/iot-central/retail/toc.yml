@@ -3,45 +3,45 @@
 - name: 概要
   items:
     - name: Azure IoT Central を使用した小売ソリューションの構築
-      href: overview-iot-central-retail-pnp.md
+      href: overview-iot-central-retail.md
 - name: チュートリアル
   items:
     - name: ストア内の分析チェックアウト
       items:
         - name: 1 - 小売アプリケーションを作成する
-          href: tutorial-in-store-analytics-create-app-pnp.md
+          href: tutorial-in-store-analytics-create-app.md
         - name: 2 - オペレーター ダッシュボードをカスタマイズする
-          href: tutorial-in-store-analytics-customize-dashboard-pnp.md
+          href: tutorial-in-store-analytics-customize-dashboard.md
         - name: 3 - データをエクスポートして分析情報を視覚化する
-          href: tutorial-in-store-analytics-export-data-visualize-insights-pnp.md
+          href: tutorial-in-store-analytics-export-data-visualize-insights.md
     - name: スマート在庫管理
       items:
         - name: スマート在庫管理アプリケーションを作成する
-          href: tutorial-iot-central-smart-inventory-management-pnp.md
+          href: tutorial-iot-central-smart-inventory-management.md
     - name: コネクテッド ロジスティクス
       items:
         - name: コネクテッド ロジスティクス アプリケーションを作成する
-          href: tutorial-iot-central-connected-logistics-pnp.md
+          href: tutorial-iot-central-connected-logistics.md
     - name: デジタル流通センター
       items:
         - name: デジタル流通センター アプリケーションを作成する
-          href: tutorial-iot-central-digital-distribution-center-pnp.md
+          href: tutorial-iot-central-digital-distribution-center.md
     - name: マイクロフルフィルメント センター
       items:
         - name: マイクロフルフィルメント センター アプリケーションを作成する
-          href: tutorial-micro-fulfillment-center-pnp.md
+          href: tutorial-micro-fulfillment-center.md
 - name: 概念
   items:
     - name: コネクテッド ロジスティクス アプリ テンプレートのアーキテクチャ
-      href: architecture-connected-logistics-pnp.md
+      href: architecture-connected-logistics.md
     - name: デジタル流通センター アプリ テンプレートのアーキテクチャ
-      href: architecture-digital-distribution-center-pnp.md
+      href: architecture-digital-distribution-center.md
     - name: スマート在庫管理アプリ テンプレートのアーキテクチャ
-      href: architecture-smart-inventory-management-pnp.md
+      href: architecture-smart-inventory-management.md
     - name: ストア分析のアーキテクチャ
       href: store-analytics-architecture.md
     - name: マイクロフルフィルメント センター アプリ テンプレートのアーキテクチャ
-      href: architecture-micro-fulfillment-center-pnp.md
+      href: architecture-micro-fulfillment-center.md
     - name: 接続
       href: ../core/concepts-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: アプリケーション テンプレートとは
@@ -127,7 +127,7 @@
         - name: IoT ソリューション アクセラレータ
           href: /azure/iot-accelerators
         - name: IoT プラグ アンド プレイ
-          href: /azure/iot-pnp
+          href: /azure/iot
         - name: Azure Maps
           href: /azure/azure-maps
         - name: Time Series Insights
