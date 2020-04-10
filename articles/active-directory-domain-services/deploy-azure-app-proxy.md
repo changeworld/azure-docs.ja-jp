@@ -8,15 +8,15 @@ ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 11/6/2019
+ms.topic: how-to
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: c6e4e6a45fbbeab64184d8ae4b0684ba055d7735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1dc5216f758c2dda263e2f61b043dbde5f76604
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613974"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655499"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services マネージド ドメイン内の内部アプリケーションに安全にアクセスするために Azure AD アプリケーション プロキシをデプロイする
 
@@ -25,8 +25,6 @@ Azure AD Domain Services (Azure AD DS) を使用して、オンプレミスで�
 Azure AD アプリケーション プロキシを使用したことがなく、詳細を確認したい場合は、[内部アプリケーションに安全なリモート アクセスを提供する方法](../active-directory/manage-apps/application-proxy.md)に関する記事を参照してください。
 
 この記事では、Azure AD アプリケーション プロキシ コネクタを作成および構成して、Azure AD DS マネージド ドメイン内のアプリケーションへの安全なアクセスを提供する方法について説明します。
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -55,7 +53,7 @@ Azure AD アプリケーション プロキシ コネクタ用の VM を作成�
 
 次の手順を実行して、Azure AD アプリケーション プロキシ コネクタをダウンロードします。 ダウンロードしたセットアップ ファイルは、次のセクションでアプリケーション プロキシ VM にコピーします。
 
-1. Azure AD で[エンタープライズ管理者](https://portal.azure.com)のアクセス許可を持っているユーザー アカウントを使用して *Azure portal* にサインインします。
+1. Azure AD で*エンタープライズ管理者*のアクセス許可を持っているユーザー アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 1. ポータルの上部で **[Azure Active Directory]** を検索して選択し、次に **[エンタープライズ アプリケーション]** を選択します。
 1. 左側のメニューから **[アプリケーション プロキシ]** を選択します。 最初のコネクタを作成してアプリケーション プロキシを有効にするには、**コネクタをダウンロードする**ためのリンクを選択します。
 1. ダウンロード ページでライセンス条項とプライバシー アグリーメントに同意し、 **[使用条件に同意してダウンロードする]** を選択します。

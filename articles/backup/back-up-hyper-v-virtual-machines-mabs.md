@@ -3,12 +3,12 @@ title: MABS で Hyper-V 仮想マシンをバックアップする
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用した仮想マシンのバックアップと回復の手順について説明します。
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255059"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420414"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Server を使用して Hyper-V 仮想マシンをバックアップする
 
@@ -99,83 +99,6 @@ MABS で Hyper-V 仮想マシンをバックアップするための前提条件
 9. **[整合性チェック オプション]** ページで、整合性チェックを自動化する方法を選択します。 レプリカ データに不整合が生じた場合にのみ、またはスケジュールに従ってチェックを実行することができます。 自動整合性チェックを構成しない場合は、保護グループを右クリックし、 **[整合性チェックの実行]** を選択することで手動チェックをいつでも実行できます。
 
     保護グループを作成した後、選択した方法に従ってデータの最初のレプリケーションが行われます。 最初のレプリケーション後、各バックアップは保護グループの設定に従って実行されます。 バックアップ データを回復する必要がある場合は、次の点に注意します。
-
-## <a name="back-up-virtual-machines-configured-for-live-migration"></a>ライブ マイグレーション用に構成された仮想マシンをバックアップする
-
-仮想マシンがライブ マイグレーションに関係している場合、MABS 保護エージェントが Hyper-V ホストにインストールされている限り、MABS で引き続き仮想マシンが保護されます。 MABS で仮想マシンが保護される方法は、関係するライブ マイグレーションの種類によって異なります。
-
-**クラスター内でのライブ マイグレーション** - 仮想マシンがクラスター内で移行されると、MABS によって移行が検出され、ユーザー操作なしで新しいクラスター ノードから仮想マシンがバックアップされます。 ストレージの場所は変更されないため、MABS では高速完全バックアップが継続されます。
-
-**クラスター外でのライブ マイグレーション** - 仮想マシンがスタンドアロン サーバー間、異なるクラスター間、またはスタンドアロン サーバーとクラスター間で移行される場合、MABS によって移行が検出され、ユーザー操作なしで仮想マシンがバックアップされます。
-
-### <a name="requirements-for-maintaining-protection"></a>保護を維持するための要件
-
-ライブ マイグレーション中に保護を維持するための要件を次に示します。
-
-- 仮想マシンの Hyper-V ホストは、System Center 2012 SP1 以降を実行している VMM サーバー上の System Center VMM クラウドに配置する必要があります。
-
-- MABS 保護エージェントはすべての Hyper-V ホストにインストールする必要があります。
-
-- MABS サーバーは VMM サーバーに接続する必要があります。 VMM クラウド内のすべての Hyper-V ホスト サーバーも MABS サーバーに接続する必要があります。 これで MABS は VMM サーバーと通信できるようになり、仮想マシンが現在実行されている Hyper-V ホスト サーバーを確認し、その Hyper-V サーバーから新しいバックアップを作成することができます。 Hyper-V サーバーへの接続を確立できない場合、MABS 保護エージェントにアクセスできないというメッセージでバックアップは失敗します。
-
-- すべての MABS サーバー、VMM サーバー、および Hyper-V ホスト サーバーは同じドメインに属している必要があります。
-
-### <a name="details-about-live-migration"></a>ライブ マイグレーションに関する詳細
-
-ライブ マイグレーション中のバックアップについては、次の点に注意します。
-
-- ライブ マイグレーションによってストレージが転送される場合、MABS によって仮想マシンの完全な整合性チェックが実行され、高速完全バックアップが続行されます。 ストレージのライブ マイグレーションが発生すると、Hyper-V では仮想ハード ディスク (VHD) または VHDX が再編成されます。その結果、MABS バックアップ データのサイズが一時的に急上昇します。
-
-- 仮想マシン ホストで自動マウントをオンにして仮想保護を有効にし、TCP Chimney Offload を無効にします。
-
-- MABS では、DPM-VMM ヘルパー サービスをホストするための既定のポートとしてポート 6070 が使用されます。 レジストリを変更するには:
-
-    1. **HKLM\Software\Microsoft\Microsoft Data Protection Manager\Configuration** に移動します。
-    2. 次の 32 ビットの DWORD 値を作成します。DpmVmmHelperServicePort。また、レジストリ キーの一部として新しいポート番号を書き込みます。
-    3. ```<Install directory>\Azure Backup Server\DPM\DPM\VmmHelperService\VmmHelperServiceHost.exe.config``` を開き、ポート番号を 6070 から新しいポートに変更します。 例: ```<add baseAddress="net.tcp://localhost:6080/VmmHelperService/" />```
-    4. DPM-VMM ヘルパー サービスを再起動し、DPM サービスを再起動します。
-
-### <a name="set-up-protection-for-live-migration"></a>ライブ マイグレーション用の保護を設定する
-
-ライブ マイグレーション用の保護を設定するには:
-
-1. MABS サーバーとそのストレージを設定し、VMM クラウド内のすべての Hyper-V ホスト サーバーまたはクラスター ノードに MABS 保護エージェントをインストールします。 クラスターで SMB ストレージを使用している場合は、すべてのクラスター ノードに MABS 保護エージェントをインストールします。
-
-2. MABS が VMM サーバーと通信できるように、VMM コンソールをクライアント コンポーネントとして MABS サーバーにインストールします。 コンソールは、VMM サーバー上で実行されているものと同じバージョンである必要があります。
-
-3. VMM 管理サーバー上で、読み取り専用の管理者アカウントとして MABSMachineName$ アカウントを割り当てます。
-
-4. `Set-DPMGlobalProperty` PowerShell コマンドレットを使用して、すべての Hyper-V ホスト サーバーをすべての MABS サーバーに接続します。 このコマンドレットは複数の MABS サーバー名を受け取ります。 `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>` の形式で入力します。 詳細については、「[Set-DPMGlobalProperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019)」を参照してください。
-
-5. VMM クラウド内の Hyper-V ホスト上で実行されているすべての仮想マシンが VMM で検出されたら、保護グループを設定し、保護する仮想マシンを追加します。 仮想マシンのモビリティ シナリオで保護するには、保護グループ レベルで自動整合性チェックを有効にする必要があります。
-
-6. 設定が構成された後、仮想マシンをあるクラスターから別のクラスターに移行すると、すべてのバックアップは想定どおりに続行されます。 ライブ マイグレーションが有効なことは次のように確認できます。
-
-   1. DPM-VMM ヘルパー サービスが実行されていることを確認します。 そうでない場合は開始します。
-
-   2. Microsoft SQL Server Management Studio を開き、MABS データベース (DPMDB) をホストするインスタンスに接続します。 DPMDB で、`SELECT TOP 1000 [PropertyName] ,[PropertyValue] FROM[DPMDB].[dbo].[tbl_DLS_GlobalSetting]` のクエリを実行します。
-
-      このクエリには `KnownVMMServer` というプロパティが含まれています。 この値は、`Set-DPMGlobalProperty` コマンドレットで指定した値と同じである必要があります。
-
-   3. 次のクエリを実行して、特定の仮想マシンの `PhysicalPathXML` 内の *VMMIdentifier* パラメーターを検証します。 `VMName` は仮想マシンの名前に置き換えてください。
-
-      ```sql
-      select cast(PhysicalPath as XML) from tbl_IM_ProtectedObject where DataSourceId in (select datasourceid from tbl_IM_DataSource   where DataSourceName like '%<VMName>%')
-      ```
-
-   4. このクエリから返される .xml ファイルを開き、*VMMIdentifier* フィールドに値があることを確認します。
-
-### <a name="run-manual-migration"></a>手動移行を実行する
-
-前のセクションの手順を完了し、MABS Summary Manager ジョブが完了すると、移行は有効になります。 既定では、このジョブは午前 0 時に開始され、毎朝実行されます。 手動移行を実行する場合は、すべてが想定どおりに機能していることを確認するために、以下を実行します。
-
-1. SQL Server Management Studio を開き、MABS データベースをホストするインスタンスに接続します。
-
-2. クエリ `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0` を実行します。 このクエリで **ScheduleID** が返されます。 次の手順で使用するので、この ID をメモします。
-
-3. SQL Server Management Studio で **[SQL Server エージェント]** を展開し、次に **[ジョブ]** を展開します。 メモした **[ScheduleID]** を右クリックし、 **[ステップでジョブを開始]** を選択します。
-
-ジョブの実行時はバックアップのパフォーマンスが影響を受けます。 展開のサイズとスケールによって、ジョブの完了までにかかる時間が決まります。
 
 ## <a name="back-up-replica-virtual-machines"></a>レプリカ仮想マシンをバックアップする
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 09/19/2019
+ms.date: 04/04/2020
 ms.author: yulili
-ms.openlocfilehash: 230b4abb9a740e830392a92369477c7dc44f60ee
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 916626111c76a5d4b380a1225897a1eef719541b
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78926058"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671480"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,7 +23,7 @@ ms.locfileid: "78926058"
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=android)
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
 
 ## <a name="create-user-interface"></a>ユーザー インターフェイスを作成する
 

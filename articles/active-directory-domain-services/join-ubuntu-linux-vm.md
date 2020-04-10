@@ -8,15 +8,15 @@ ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: bc5371ccbd3ba66117d5c613090b70ce7f07d51e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95373ab8ff78c5bcb856e6d7e6d67d8525cd3f7e
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78298843"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655129"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Ubuntu Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる
 

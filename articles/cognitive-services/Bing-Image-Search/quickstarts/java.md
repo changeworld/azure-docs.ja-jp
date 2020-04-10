@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Java を使用して Bing Image Search REST API を呼び出す
+title: クイック スタート:Bing Image Search REST API と Java を使用してイメージを検索する
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Java を使って Bing Image Search REST API にイメージ検索要求を送信し、JSON 応答を受信します。
 services: cognitive-services
@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c1e339643613db188819e7eb8853cad8a48ea47f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 979bd034b2f4d3665de64fe8ffdb33efc7a370cb
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74928135"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478570"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>クイック スタート:Azure コグニティブ サービスである Bing Image Search API で画像を検索する 
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f884f4c0ea3a610f28a8fdbb34b081f0b0a64d08
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908855"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666947"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -78,6 +78,7 @@ NPS サーバーは、ポート 80 および 443 を使って次の URL と通�
 
 - https:\//adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
+- https:\//credentials.azure.com
 
 さらに、[指定された PowerShell スクリプトを使用してアダプターの設定](#run-the-powershell-script)を行うには、次の URL への接続が必要です。
 
@@ -200,7 +201,7 @@ Azure Government クラウドを使用しているお客様については、各
 1. NPS サーバーで**レジストリ エディター**を開きます。
 1. `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa` に移動します。 次のキーの値を設定します。
 
-    | レジストリ キー       | Value |
+    | レジストリ キー       | 値 |
     |--------------------|-----------------------------------|
     | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
     | STS_URL            | https://login.microsoftonline.us/ |
@@ -238,7 +239,7 @@ NPS 拡張機能を使用して RADIUS クライアントに対して MFA を有
 
 MFA に登録されていないユーザーがいる場合は、そのユーザーが認証しようとしたときの動作を決める必要があります。 レジストリ パス *HKLM\Software\Microsoft\AzureMFA* にあるレジストリ設定 *REQUIRE_USER_MATCH* を使用して、この機能の動作を制御します。 この設定の構成オプションは 1 つだけです。
 
-| Key | Value | Default |
+| Key | 値 | Default |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE または FALSE | 未設定 (TRUE に相当) |
 
@@ -250,9 +251,9 @@ MFA に登録されていないユーザーがいる場合は、そのユーザ�
 
 ### <a name="nps-extension-health-check-script"></a>NPS 拡張機能の正常性チェック スクリプト
 
-次のスクリプトは、NPS 拡張機能のトラブルシューティングを行うときに、基本的な正常性チェックの手順を実行するために、TechNet ギャラリーから入手できます。
+次のスクリプトは、NPS 拡張機能のトラブルシューティングを行うときに、基本的な正常性チェックの手順を実行するために使用できます。
 
-[MFA_NPS_Troubleshooter.ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
+[MFA_NPS_Troubleshooter.ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -303,7 +304,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 1. NPS サーバーを再起動します。
 2. クライアント証明書が正常にインストールされていることを確認します。
 3. 証明書が Azure AD のテナントに関連付けられていることを確認します。
-4. 拡張機能を実行しているサーバーから https://login.microsoftonline.com/ にアクセスできることを確認します。
+4. 拡張機能を実行しているサーバーから `https://login.microsoftonline.com/` にアクセスできることを確認します。
 
 ---
 
@@ -334,6 +335,8 @@ NPS 拡張機能を実行しているサーバーから https://adnotifications.
 その他のトラブルシューティングのガイダンスと可能なソリューションについては、「[Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](howto-mfa-nps-extension-errors.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
+
+- [Windows Server のネットワーク ポリシー サーバーの概要と構成](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
 
 - ログインに別の ID を設定するか、「[Advanced configuration options for the NPS extension for Multi-Factor Authentication](howto-mfa-nps-extension-advanced.md)」 (Multi-Factor Authentication の NPS 拡張機能の高度な構成オプション) の 2 段階認証を実行しない IP の例外リストを設定する
 

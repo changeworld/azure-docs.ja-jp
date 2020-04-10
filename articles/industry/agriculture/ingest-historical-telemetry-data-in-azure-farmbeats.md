@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0d220d1d88d9d761d9f0eba6187abefb372681be
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e0a5e89f256b562ce5f702e9ff1388cb4d021bf5
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131894"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437690"
 ---
 # <a name="ingest-historical-telemetry-data"></a>過去のテレメトリ データの取り込み
 
@@ -20,14 +20,13 @@ ms.locfileid: "77131894"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事を読み進める前に、FarmBeats がインストールされていること、また、IoT デバイスから履歴データが収集されていることを確認してください。
-次の手順で説明するように、パートナー アクセスを有効にする必要もあります。
+この記事を読み進める前に、確実に FarmBeats がインストールされていて、IoT デバイスから履歴データが収集されているようにします。 次の手順で説明するように、パートナー アクセスを有効にする必要もあります。
 
 ## <a name="enable-partner-access"></a>パートナー アクセスを有効にする
 
 Azure FarmBeats インスタンスへのパートナー統合を有効にする必要があります。 この手順では、デバイス パートナーとして Azure FarmBeats インスタンスにアクセスできるクライアントを作成し、以降の手順で必要となる以下の値を指定します。
 
-- API エンドポイント:これはデータハブの URL です (たとえば、 https://\<datahub>.azurewebsites.net)。
+- API エンドポイント:これはデータハブの URL です (たとえば、 https://\<datahub>.azurewebsites.net)
 - テナント ID
 - クライアント ID
 - クライアント シークレット
@@ -35,44 +34,60 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
 次の手順に従います。
 
->[!NOTE]
+> [!NOTE]
 > 次の手順を実行するには、管理者である必要があります。
 
-1. [zip ファイル](https://aka.ms/farmbeatspartnerscriptv2)をダウンロードし、ローカル ドライブに展開します。 ZIP ファイル内には 1 つのファイルがあります。
-2. https://portal.azure.com/ にサインインし、[Azure Active Directory]、[アプリの登録] の順に進みます。
+1. https://portal.azure.com/ にサインインします。
 
-3. FarmBeats デプロイの一部として作成された [アプリの登録] をクリックします。 それは、FarmBeats Datahub と同じ名前になります。
+2. **FarmBeats バージョン 1.2.7 以降を使用している場合は、手順 a、b、c をスキップし、手順 3 に進みます。** 。 FarmBeats のバージョンを確認するには、FarmBeats UI の右上隅にある**設定**アイコンを選択します。
 
-4. [API の公開] をクリックし、[クライアント アプリケーションの追加] をクリックし、「**04b07795-8ddb-461a-bbee-02f9e1bf7b46**」と入力し、[Authorize Scope]\(スコープの承認\) をオンにします。 これにより、Azure CLI (Cloud Shell) にアクセスして、次の手順を実行することができます。
+      a.  **[Azure Active Directory]**  >  **[アプリの登録]** の順に進みます。
 
-5. Cloud Shell を開きます。 このオプションは、Azure portal の右上隅にあるツール バーで使用できます。
+      b. FarmBeats デプロイの一部として作成された **[アプリの登録]** をクリックします。 それは、FarmBeats データ ハブと同じ名前になります。
+
+      c. **[API の公開]** を選択し、 **[クライアント アプリケーションの追加]** を選択し、「**04b07795-8ddb-461a-bbee-02f9e1bf7b46**」と入力し、 **[Authorize Scope]\(スコープの承認\)** をオンにします。 これにより、Azure CLI (Cloud Shell) にアクセスして、次の手順を実行することができます。
+
+3. Cloud Shell を開きます。 このオプションは、Azure portal の右上隅にあるツール バーで使用できます。
 
     ![Azure portal のツール バー](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-6. 環境が **[PowerShell]** に設定されていることを確認します。 既定では、[Bash] に設定されています。
+4. 環境が **[PowerShell]** に設定されていることを確認します。 既定では、[Bash] に設定されています。
 
     ![PowerShell ツール バーの設定](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-7. 手順 1 のファイルを Cloud Shell インスタンスでアップロードします。
+5. ホーム ディレクトリに移動します。
 
-    ![ツール バーの [アップロード] ボタン](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+    ```azurepowershell-interactive 
+    cd  
+    ```
 
-8. ファイルがアップロードされたディレクトリに移動します。 既定では、ファイルはユーザー名の下のホーム ディレクトリにアップロードされます。
+6. 次のコマンドを実行します。 これにより、スクリプトがホーム ディレクトリにダウンロードされます。
 
-9. 次のスクリプトを実行します。 このスクリプトは、[Azure Active Directory] の [概要] ページから取得できるテナント ID を要求します。
+    ```azurepowershell-interactive 
 
-    ```azurepowershell-interactive 
+    wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
+
+    ```
+
+7. 次のスクリプトを実行します。 このスクリプトは、 **[Azure Active Directory]**  >  **[概要]** ページから取得できるテナント ID を要求します。
+
+    ```azurepowershell-interactive 
 
     ./generatePartnerCredentials.ps1   
 
     ```
 
-10. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。
+8. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。
+
+
 ## <a name="create-device-or-sensor-metadata"></a>デバイスまたはセンサーのメタデータを作成する
 
- 必要な資格情報が得られたので、デバイスとセンサーを定義できます。 これを行うには、FarmBeats API を呼び出してメタデータを作成します。 前のセクションで作成したクライアント アプリとして API を呼び出す必要があることに注意してください。
+ 必要な資格情報が得られたので、デバイスとセンサーを定義できます。 これを行うには、FarmBeats API を呼び出してメタデータを作成します。 前のセクションで作成したクライアント アプリとして API を呼び出す必要があります。
 
- FarmBeats Datahub には、デバイスまたはセンサーのメタデータの作成と管理を可能にする次の API が用意されています。 パートナーとして、メタデータには読み取り、作成、更新のためのアクセスしかできないことに注意してください。**削除はパートナーによって許可されていません。**
+ FarmBeats Datahub には、デバイスまたはセンサーのメタデータの作成と管理を可能にする次の API が用意されています。
+
+ > [!NOTE]
+ > パートナーは、メタデータの読み取り、作成、更新のみを行うことができます。**削除オプションは、パートナーに制限されます。**
 
 - /**DeviceModel**:DeviceModel は、デバイスのメタデータ (製造元など) およびデバイスの種類 (ゲートウェイまたはノードのいずれか) に対応します。
 - /**Device**:Device は、ファームに存在する物理デバイスに対応します。
@@ -86,16 +101,16 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 |          Manufacturer            |         製造元の名前    |
 |  ProductCode                    |  デバイスの製品コード、モデル名、またはモデル番号。 例: EnviroMonitor#6800。  |
 |            Port          |     ポートの名前と種類 (デジタルまたはアナログ)。
-|     Name                 |  リソースを識別するための名前。 たとえば、モデル名または製品名。
+|     名前                 |  リソースを識別するための名前。 たとえば、モデル名または製品名。
       説明     | そのモデルについてのわかりやすい説明を入力します。
 |    Properties          |    製造元から提供されるその他のプロパティ。   |
 |    **[デバイス]**             |                      |
 |   DeviceModelId     |     関連付けられているデバイス モデルの ID  |
 |  HardwareId          | MAC アドレスなど、デバイスの一意の ID。
 |  ReportingInterval        |   レポートの間隔 (秒)。
-|  Location            |  デバイスの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。   
+|  場所            |  デバイスの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。   
 |ParentDeviceId       |    このデバイスが接続されている親デバイスの ID。 たとえば、ゲートウェイに接続されているノードがあります。 ノードは parentDeviceId というゲートウェイを備えています。  |
-|    Name            | リソースを識別するための名前。 デバイス パートナーは、パートナー側のデバイス名と一致する名前を送信する必要があります。 パートナー デバイス名がユーザー定義である場合、同じユーザー定義名を FarmBeats に反映させる必要があります。|
+|    名前            | リソースを識別するための名前。 デバイス パートナーは、パートナー側のデバイス名と一致する名前を送信する必要があります。 パートナー デバイス名がユーザー定義である場合、同じユーザー定義名を FarmBeats に反映させる必要があります。|
 |     説明       |      わかりやすい説明を入力します。 |
 |     Properties    |  製造元から提供されるその他のプロパティ。
 |     **SensorModel**        |          |
@@ -107,18 +122,18 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 |    SensorMeasures > Type    |センサーのテレメトリ データの測定の種類。 システムで定義された種類は、AmbientTemperature、CO2、Depth、ElectricalConductivity、LeafWetness、Length、LiquidLevel、Nitrate、O2、PH、Phosphate、PointInTime、Potassium、Pressure、RainGauge、RelativeHumidity、Salinity、SoilMoisture、SoilTemperature、SolarRadiation、State、TimeDuration、UVRadiation、UVIndex、Volume、WindDirection、WindRun、WindSpeed、Evapotranspiration、PAR です。 さらに追加するには、/ExtendedType API を参照してください。|
 |        SensorMeasures > Unit              | センサーのテレメトリ データの単位。 システムで定義された単位は、NoUnit、Celsius、Fahrenheit、Kelvin、Rankine、Pascal、Mercury、PSI、MilliMeter、CentiMeter、Meter、Inch、Feet、Mile、KiloMeter、MilesPerHour、MilesPerSecond、KMPerHour、KMPerSecond、MetersPerHour、MetersPerSecond、Degree、WattsPerSquareMeter、KiloWattsPerSquareMeter、MilliWattsPerSquareCentiMeter、MilliJoulesPerSquareCentiMeter、VolumetricWaterContent、Percentage、PartsPerMillion、MicroMol、MicroMolesPerLiter、SiemensPerSquareMeterPerMole、MilliSiemensPerCentiMeter、Centibar、DeciSiemensPerMeter、KiloPascal、VolumetricIonContent、Liter、MilliLiter、Seconds、UnixTimestamp、MicroMolPerMeterSquaredPerSecond、InchesPerHour です。さらに追加する場合は、/ExtendedType API を参照してください。|
 |    SensorMeasures > AggregationType    |  値は、none、average、maximum、minimum、または StandardDeviation を指定できます。  |
-|          Name            | リソースを識別する名前。 たとえば、モデル名または製品名。  |
-|    説明        | そのモデルについてのわかりやすい説明を入力します。  |
-|   Properties       |  製造元から提供されるその他のプロパティ。  |
+|          名前            | リソースを識別する名前。 たとえば、モデル名または製品名。  |
+|    説明        | そのモデルについてのわかりやすい説明を入力します。|
+|   Properties       |  製造元から提供されるその他のプロパティ。|
 |    **センサー**      |          |
-| HardwareId          |   製造元によって設定された、センサーの一意の ID。 |
-|  SensorModelId     |    関連付けられているセンサー モデルの ID。   |
-| Location          |  センサーの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。|
-|   Port > Name        |  センサーが接続されている、デバイス上のポートの名前と種類。 これは、デバイス モデルで定義されているのと同じ名前にする必要があります。 |
-|    DeviceID  |    センサーが接続されているデバイスの ID。     |
-| Name            |   リソースを識別する名前 たとえば、センサー名または製品名と、モデル番号または製品コード。|
-|    説明      | わかりやすい説明を入力します。 |
-|    Properties        |製造元から提供されるその他のプロパティ。 |
+| HardwareId          |   製造元によって設定された、センサーの一意の ID。|
+|  SensorModelId     |    関連付けられているセンサー モデルの ID。|
+| 場所          |  センサーの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。|
+|   Port > Name        |  センサーが接続されている、デバイス上のポートの名前と種類。 これは、デバイス モデルで定義されているのと同じ名前にする必要があります。|
+|    DeviceID  |    センサーが接続されているデバイスの ID。 |
+| 名前            |   リソースを識別する名前 たとえば、センサー名または製品名と、モデル番号または製品コード。|
+|    説明      | わかりやすい説明を入力します。|
+|    Properties        |製造元から提供されるその他のプロパティ。|
 
 オブジェクトの詳細については、[Swagger](https://aka.ms/FarmBeatsDatahubSwagger) を参照してください。
 
@@ -160,7 +175,6 @@ token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLI
 #Should get an access token here 
 access_token = token_response.get('accessToken') 
 ```
-
 
 **HTTP 要求ヘッダー**
 
@@ -274,6 +288,7 @@ SensorModel
   }
 }
 ```
+
 次の要求の例を使うと、デバイスを作成できます。 この要求では、要求本体にペイロードとして JSON を入力しています。
 
 ```bash
@@ -282,6 +297,22 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
 \"reportingInterval\": 900,  \"name\": \"Device123\",  
 \"description\": \"Test Device 123\"}" *
+```
+
+Python のサンプル コードを次に示します。 このサンプルで使用されるアクセス トークンは、認証時に受信するものと同じです。
+
+```python
+import requests
+import json
+
+# Got access token - Calling the Device Model API
+
+headers = {
+    "Authorization": "Bearer " + access_token,
+    "Content-Type" : "application/json"
+    }
+payload = '{"type" : "Node", "productCode" : "TestCode", "ports": [{"name": "port1","type": "Analog"}], "name" : "DummyDevice"}'
+response = requests.post(ENDPOINT + "/DeviceModel", data=payload, headers=headers)
 ```
 
 > [!NOTE]
@@ -392,8 +423,10 @@ write_client.stop()
 
 **是正措置**:
 
-1. パートナー登録を確実に正しく完了させます。これを確認するには、ご利用の Datahub Swagger にアクセスし、/Partner API に移動し、Get を実行して、パートナーが登録されているかどうかを確認します。 そうなっていない場合は、[こちらの手順](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)に従って、パートナーを追加してください。
+1. 適切なパートナー登録を確実に行ってください。これを確かめるには、ご利用の Datahub Swagger にアクセスし、/Partner API に移動し、Get を実行して、パートナーが登録されているかどうかを確認します。 そうなっていない場合は、[こちらのステップ](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)に従って、パートナーを追加してください。
+
 2. 確実に、パートナー クライアントの資格情報を使用して、メタデータ (DeviceModel、Device、SensorModel、Sensor) を作成します。
+
 3. 次に示すような正しいテレメトリ メッセージ形式を確実に使用します。
 
 ```json
@@ -418,7 +451,6 @@ write_client.stop()
  ]
 }
 ```
-
 
 ## <a name="next-steps"></a>次のステップ
 

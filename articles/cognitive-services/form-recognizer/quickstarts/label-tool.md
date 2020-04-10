@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 301b68d0dfaeef6d5cfdd4d7a5a504794ac877f4
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 0cfe58ab0d161019d5f53d9135c65db7beff2bb4
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205826"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397993"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング
 
@@ -35,6 +35,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="set-up-the-sample-labeling-tool"></a>サンプル ラベル付けツールを設定する
 
 サンプル ラベル付けツールを実行するには、Docker エンジンを使用します。 次の手順に従って、Docker コンテナーを設定します。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。
+
+> [!TIP]
+> GitHub のオープンソース プロジェクトの OCR Form Labeling Tool を使用することもできます。 このツールは、React + Redux を使用してビルドされ、TypeScript で記述された Web アプリケーションです。 詳細については、または投稿に関しては、[OCR Form Labeling Tool](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application) に関するページを参照してください。
+
 1. まず、ホスト コンピューターに Docker をインストールします。 このガイドでは、ローカル コンピューターをホストとして使用する方法について説明します。 Azure で Docker ホスティング サービスを使用する場合は、「[サンプルのラベル付けツールのデプロイ](../deploy-label-tool.md)」攻略ガイドを参照してください。 
 
    ホスト コンピューターは、次のハードウェア要件を満たしている必要があります。
@@ -185,6 +189,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 プロジェクトを再開する場合は、まず、同じ Blob Storage コンテナーへの接続を作成する必要があります。 これを行うには、前述の手順を繰り返します。 次に、アプリケーション設定ページ (歯車アイコン) に移動し、プロジェクトのセキュリティ トークンがそこにあるかどうかを確認します。 ない場合は、新しいセキュリティ トークンを追加し、前の手順で保存したトークン名とキーをコピーします。 その後、[設定の保存] をクリックします。 
 
 ### <a name="resume-a-project"></a>プロジェクトを再開する
+
 最後に、メイン ページ (家のアイコン) に移動し、[Open Cloud Project]\(クラウド プロジェクトを開く\) をクリックします。 その後、Blob Storage 接続を選択し、プロジェクトの *.vott* ファイルを選択します。 これにはセキュリティ トークンが含まれているため、アプリケーションによってプロジェクトの設定がすべて読み込まれます。
 
 ## <a name="next-steps"></a>次のステップ

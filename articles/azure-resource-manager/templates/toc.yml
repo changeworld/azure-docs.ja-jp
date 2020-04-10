@@ -83,9 +83,9 @@
         - name: 3 - パイプラインを作成する
           displayName: Devop
           href: deployment-tutorial-pipeline.md
-    - name: 詳細設定
+    - name: 高度なテンプレート
       items:
-        - name: テンプレート リファレンスの利用
+        - name: テンプレート リファレンスの使用
           href: template-tutorial-use-template-reference.md
         - name: 複数のインスタンスの作成
           displayName: 'iteration,copy'
@@ -101,23 +101,21 @@
         - name: Key Vault の統合
           displayName: secrets
           href: template-tutorial-use-key-vault.md
-        - name: リンク済みテンプレートの作成
-          href: template-tutorial-create-linked-templates.md
         - name: VM 拡張機能のデプロイ
           displayName: virtual machine extensions
           href: template-tutorial-deploy-vm-extensions.md
         - name: SQL 拡張機能のデプロイ
           href: template-tutorial-deploy-sql-extensions-bacpac.md
-        - name: アーティファクトのセキュリティ保護
-          href: template-tutorial-secure-artifacts.md
+        - name: テンプレートのデプロイに関するトラブルシューティング
+          href: template-tutorial-troubleshoot.md
+    - name: Deployment Manager
+      items:
         - name: 安全なデプロイ プラクティスの使用
           displayName: adm
           href: deployment-manager-tutorial.md
         - name: Deployment Manager の正常性チェックの使用
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-        - name: テンプレートのデプロイに関するトラブルシューティング
-          href: template-tutorial-troubleshoot.md
 - name: サンプル
   items:
     - name: Azure のクイック スタート テンプレート
@@ -293,6 +291,8 @@
           href: template-functions-array.md
         - name: 比較関数
           href: template-functions-comparison.md
+        - name: データ関数
+          href: template-functions-date.md
         - name: デプロイ関数
           href: template-functions-deployment.md
         - name: 論理関数

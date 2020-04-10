@@ -26,10 +26,8 @@
           href: quickstarts/ruby.md
     - name: クライアント ライブラリ
       items:
-        - name: 'C#'
-          href: quickstarts/csharp-sdk.md
-        - name: Go
-          href: quickstarts/go-sdk.md
+        - name: Bing Autosuggest クライアント ライブラリ
+          href: ./quickstarts/client-libraries.md
 - name: チュートリアル
   items:
     - name: 単一ページの Web アプリ

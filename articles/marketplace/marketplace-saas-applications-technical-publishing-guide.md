@@ -8,16 +8,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: 2c1cb755b62812336a306994f6820573130815e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288361"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544277"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS アプリケーションのオファー発行ガイド
 
-SaaS アプリケーションは、"お問い合わせ"、"今すぐ試す"、"今すぐ入手する" の 3 つの行動喚起を使用して、マーケットプレースに公開できます。 このガイドでは、これら 3 つのオプションとそれぞれの要件について説明します。 
+SaaS アプリケーションは、3 つの行動喚起"お問い合わせ"、"今すぐ試す"、"今すぐ入手する" を使用して、マーケットプレースに公開できます。 このガイドでは、これら 3 つのオプションとそれぞれの要件について説明します。 
 
 ## <a name="offer-overview"></a>オファーの概要  
 
@@ -25,8 +25,8 @@ SaaS アプリケーションは、両方の Azure ネットショップで入�
 
 | ネットショップのオプション | 一覧 | 試用版/取引 |  
 | --- | --- | --- |  
-| AppSource | あり (お問い合わせ) | あり (PowerBI/Dynamics) |
-| Azure Marketplace | いいえ | あり (SaaS アプリ) |   
+| AppSource | はい | はい |
+| Azure Marketplace | いいえ | はい |   
 
 **リスト:** リストの発行オプションは、お問い合わせのオファー タイプから構成され、試用版レベルまたは取引レベルの参加を実現できない場合に使用されます。 この方法の利点は、市場にソリューションのあるパブリッシャーはすぐに取引に転換し、ビジネスを向上できるリードの受け取りを始められることです。  
 **試用版/取引:** 顧客はソリューションを直接購入するか、試用版を要求することができます。 試用版エクスペリエンスを提供することで、顧客に提供されるエンゲージメント レベルが高くなり、顧客は購入前にソリューションを調べることができます。 試用版エクスペリエンスでは、ネットショップでのプロモーションの機会が多くなり、顧客エンゲージメントからより多くの有望なリードを期待できます。 試用は、少なくとも試用期間中は無料サポートを含む必要があります。  
@@ -88,7 +88,7 @@ SaaS アプリケーションの技術面の要件はシンプルです。 パ�
 * [Active Directory に重点を置いた Microsoft Azure ビデオ](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
 無料の Azure Active Directory トレーニングは以下で利用できます。  
-* [IT プロ向けの Microsoft Azure コンテンツ シリーズ: Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
+* [IT プロ向けの Microsoft Azure コンテンツ シリーズ:Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 さらに、Azure Active Directory は、サービス更新プログラムを確認するサイトを提供しています   
 * [Azure AD サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory)

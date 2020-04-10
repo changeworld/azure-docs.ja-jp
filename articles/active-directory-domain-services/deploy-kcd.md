@@ -8,15 +8,15 @@ ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 11/26/2019
+ms.topic: how-to
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 216fdeca9893f4e290474512617f13382d22890f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07aa9ade25d1d986833b6da2f3907d07b752b662
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614015"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655438"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services で Kerberos の制約付き委任 (KCD) を構成する
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 21efb16cf519d4bcad520af1c7d8818f36a77218
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70fa66a96291e0c2a638bf69bdce7da531d32bb7
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234411"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637464"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows コンピューターを Azure Monitor に接続する
 
@@ -32,7 +32,7 @@ Azure Monitor を使用して、ローカル データ センターやその他�
 
 複数のワークスペースに報告するようにエージェントを構成する必要がある場合、この構成は初期設定時には実行できません。「[ワークスペースの追加または削除](agent-manage.md#adding-or-removing-a-workspace)」で説明されているように、後からコントロール パネルまたは PowerShell から更新することでのみ実行できます。  
 
-サポートされている構成を確認するには、「[サポートされている Windows オペレーティング システム](log-analytics-agent.md#supported-windows-operating-systems)」と「[ネットワーク ファイアウォールの構成](log-analytics-agent.md#network-firewall-requirements)」をご覧ください。
+サポートされている構成を確認するには、「[サポートされている Windows オペレーティング システム](log-analytics-agent.md#supported-windows-operating-systems)」と「[ネットワーク ファイアウォールの構成](log-analytics-agent.md#network-requirements)」をご覧ください。
 
 ## <a name="obtain-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
 Windows 用 Log Analytics エージェントをインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、各インストール方法を通じたセットアップ時に、エージェントを適切に構成し、そのエージェントが Azure の商用クラウドや米国政府機関向けクラウド内にある Azure Monitor と正常に通信できるようにするために必要です。 
@@ -50,7 +50,7 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 >Windows Server 2008 SP2 x64 を実行している VM を、TLS 1.2 を使用するように構成する場合は、以下の手順を行う前に、次の [SHA-2 コード署名サポート更新プログラム](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update)をインストールする必要があります。 
 >
 
-1. **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols** のレジストリのサブキーを見つけます。
+1. 次のレジストリ キーを探します:**HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. TLS 1.2 用に **Protocols** の下に **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2** のサブキーを作成します。
 3. 前に作成した TLS 1.2 プロトコル バージョンのサブキーの下に **Client** サブキーを作成します。 たとえば、**HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client** です。
 4. **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client** の下に次の DWORD 値を作成します。
@@ -60,9 +60,9 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 
 既定では無効になっている暗号化がセキュリティで保護されるように、.NET Framework 4.6 以降を構成します。 [強力な暗号化](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto)では、TLS 1.2 などのようなよりセキュリティの高いプロトコルを使用し、安全ではないプロトコルをブロックします。 
 
-1. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319** のレジストリのサブキーを見つけます。  
+1. 次のレジストリ キーを探します:**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319**。  
 2. このサブキーの下に、DWORD 値 **SchUseStrongCrypto** を値 **1** で作成します。  
-3. **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319** のレジストリのサブキーを見つけます。  
+3. 次のレジストリ キーを探します:**HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319**。  
 4. このサブキーの下に、DWORD 値 **SchUseStrongCrypto** を値 **1** で作成します。 
 5. 設定を有効にするためにシステムを再起動します。 
 
@@ -92,7 +92,7 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 
 次の表は、エージェントのセットアップ (Automation DSC を使用してデプロイする場合を含む) でサポートされる、特定パラメーターを示したものです。
 
-|MMA 固有のオプション                   |メモ         |
+|MMA 固有のオプション                   |Notes         |
 |---------------------------------------|--------------|
 | NOAPM=1                               | 省略可能なパラメーター。 .NET アプリケーション パフォーマンス監視なしでエージェントをインストールします。|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = ワークスペースに報告するようにエージェントを構成します                |
@@ -131,49 +131,49 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 >[!NOTE]
 >この手順とサンプル スクリプトでは、Windows コンピューターに既にデプロイされているエージェントのアップグレードはサポートされていません。
 
-32 ビット バージョンと 64 ビット バージョンのエージェント パッケージには、それぞれ異なる製品コードがあり、リリースされる新バージョンにも、それぞれ一意の値が指定されます。  製品コードは、アプリケーションや製品の主要な識別情報となる GUID であり、Windows インストーラーの **ProductCode** プロパティによって表されます。  `ProductId`MMAgent.ps1**スクリプトの** 値は、32 ビットまたは 64 ビットのエージェント インストーラー パッケージの製品コードと一致する必要があります。
+32 ビット バージョンと 64 ビット バージョンのエージェント パッケージには、それぞれ異なる製品コードがあり、リリースされる新バージョンにも、それぞれ一意の値が指定されます。  製品コードは、アプリケーションや製品の主要な識別情報となる GUID であり、Windows インストーラーの **ProductCode** プロパティによって表されます。  **MMAgent.ps1** スクリプトの `ProductId` 値は、32 ビットまたは 64 ビットのエージェント インストーラー パッケージの製品コードと一致する必要があります。
 
 製品コードをエージェント インストール パッケージから直接取得するには、Windows ソフトウェア開発キットのコンポーネントである [Windows SDK Components for Windows Installer Developers (Windows インストーラー開発者向け Windows SDK コンポーネント)](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) に含まれている、Orca.exe を使用するか、Microsoft Valuable Professional (MVP) によって記述された[サンプル スクリプト](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)に従った、PowerShell を使用できます。  どちらの方法でも、まず、MMASetup インストール パッケージから **MOMagent.msi** ファイルを抽出する必要があります。  これについては、前のセクション「[コマンド ラインを使用してエージェントをインストールする](#install-the-agent-using-the-command-line)」の最初の手順で説明しています。  
 
 1. [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) から Azure Automation に xPSDesiredStateConfiguration DSC モジュールをインポートします。  
-2.  *OPSINSIGHTS_WS_ID* と *OPSINSIGHTS_WS_KEY* に対して Azure Automation 変数アセットを作成します。 *OPSINSIGHTS_WS_ID* を Log Analytics ワークスペース ID に設定し、*OPSINSIGHTS_WS_KEY* をワークスペースの主キーに設定します。
-3.  スクリプトをコピーし、MMAgent.ps1 として保存します。
+2.    *OPSINSIGHTS_WS_ID* と *OPSINSIGHTS_WS_KEY* に対して Azure Automation 変数アセットを作成します。 *OPSINSIGHTS_WS_ID* を Log Analytics ワークスペース ID に設定し、*OPSINSIGHTS_WS_KEY* をワークスペースの主キーに設定します。
+3.    スクリプトをコピーし、MMAgent.ps1 として保存します。
 
-    ```powershell
-    Configuration MMAgent
-    {
-        $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
-        $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
-        $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
+```powershell
+Configuration MMAgent
+{
+    $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
+    $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
+    $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
 
-        Import-DscResource -ModuleName xPSDesiredStateConfiguration
-        Import-DscResource -ModuleName PSDesiredStateConfiguration
+    Import-DscResource -ModuleName xPSDesiredStateConfiguration
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
 
-        Node OMSnode {
-            Service OIService
-            {
-                Name = "HealthService"
-                State = "Running"
-                DependsOn = "[Package]OI"
-            }
+    Node OMSnode {
+        Service OIService
+        {
+            Name = "HealthService"
+            State = "Running"
+            DependsOn = "[Package]OI"
+        }
 
-            xRemoteFile OIPackage {
-                Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
-                DestinationPath = $OIPackageLocalPath
-            }
+        xRemoteFile OIPackage {
+            Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
+            DestinationPath = $OIPackageLocalPath
+        }
 
-            Package OI {
-                Ensure = "Present"
-                Path  = $OIPackageLocalPath
-                Name = "Microsoft Monitoring Agent"
-                ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
-                Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
-                DependsOn = "[xRemoteFile]OIPackage"
-            }
+        Package OI {
+            Ensure = "Present"
+            Path  = $OIPackageLocalPath
+            Name = "Microsoft Monitoring Agent"
+            ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
+            Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
+            DependsOn = "[xRemoteFile]OIPackage"
         }
     }
+}
 
-    ```
+```
 
 4. スクリプトの `ProductId` 値を更新します。先ほど提示した方法を使用して最新バージョンのエージェント インストール パッケージから抽出した製品コードに置き換えてください。 
 5. Automation アカウントに [MMAgent.ps1 構成スクリプトをインポート](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation)します。 
@@ -183,7 +183,7 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 
 エージェントのインストールが完了した後、エージェントが正常に接続され、レポートが送信されていることを確認するには、次の 2 つの方法があります。  
 
-**[コントロール パネル]** 内のコンピューターから、 **[Microsoft Monitoring Agent]** という項目を見つけます。  これを選択すると、 **[Azure Log Analytics]** タブに、**Microsoft Monitoring Agent が Microsoft Operations Management Suite サービスに正常に接続している**ことを示すメッセージが表示されます。<br><br> ![Log Analytics への MMA 接続の状態](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+**[コントロール パネル]** 内のコンピューターから、 **[Microsoft Monitoring Agent]** という項目を見つけます。  これを選択すると、 **[Azure Log Analytics]** タブに、次のことを示すメッセージがエージェントによって表示されます。"**Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました。** "<br><br> ![Log Analytics への MMA 接続の状態](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 また、Azure portal で簡単なログ クエリを実行することもできます。  
 

@@ -4,19 +4,19 @@ description: クラウドで Azure MFA および AD FS を開始する方法に�
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00200436784eca970f736c4a7f2afebd652c9577
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e5949fdce9d591a9c02c5c6c4fb2f1dde94c45d2
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76155215"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654015"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
 
@@ -64,7 +64,7 @@ ms.locfileid: "76155215"
    ![要求規則の追加](./media/howto-mfa-adfs/trustedip2.png)
 5. 変換要求規則追加ウィザードで、ドロップダウンから **[入力方向の要求をパス スルーまたはフィルター処理]** を選択し、 **[次へ]** をクリックします。
    ![変換要求規則の追加ウィザード](./media/howto-mfa-adfs/trustedip3.png)
-6. [要求規則名] の横にあるボックスに、規則の名前を入力します。 例: InsideCorpNet。
+6. [要求規則名] の横にあるボックスに、規則の名前を入力します。 次に例を示します。InsideCorpNet。
 7. [入力方向の要求の種類] の横にあるドロップダウンから、 **[企業ネットワーク内]** を選択します。
    ![企業ネットワーク内要求の追加](./media/howto-mfa-adfs/trustedip4.png)
 8. **[完了]** をクリックします。
@@ -85,7 +85,7 @@ ms.locfileid: "76155215"
 
 これで要求が準備できたので、信頼できる IP を構成できます。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]**  >  **[ネームド ロケーション]** を選択します。
 3. **[条件付きアクセス - ネームド ロケーション]** ブレードから **[MFA の信頼できる IP の構成]** を選択します。
 
@@ -94,4 +94,4 @@ ms.locfileid: "76155215"
 4. [サービス設定] ページの **[信頼できる IP]** で、 **[イントラネット内のフェデレーション ユーザーからのリクエストの場合、多要素認証をスキップする]** を選択します。  
 5. **[Save]** をクリックします。
 
-これで終了です。 この時点で、Office 365 のフェデレーション ユーザーは、企業のイントラネットの外部から要求を送信するときに、MFA のみを使用するだけですみます。
+これで完了です。 この時点で、Office 365 のフェデレーション ユーザーは、企業のイントラネットの外部から要求を送信するときに、MFA のみを使用するだけですみます。
