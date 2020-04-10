@@ -204,7 +204,7 @@ Azure AD B2C では、以下の言語がサポートされています。 ユー
 | Language              | 言語コード | ユーザー フロー         | MFA 通知  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
 | アラビア語                | ar            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| ブルガリア語             | bg            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| ブルガリア語 | bg | ![いいえ](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | ベンガル語                | bn            | ![はい](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
 | カタロニア語               | ca            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | チェコ語                 | cs            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
@@ -213,7 +213,7 @@ Azure AD B2C では、以下の言語がサポートされています。 ユー
 | ギリシャ語                 | el            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | 英語               | en            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | スペイン語               | es            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| エストニア語              | et            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| エストニア語 | et | ![いいえ](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | バスク語                | eu            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | フィンランド語               | fi            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | フランス語                | fr            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
@@ -229,8 +229,8 @@ Azure AD B2C では、以下の言語がサポートされています。 ユー
 | カザフ語                | kk            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | カンナダ語               | kn            | ![はい](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
 | 韓国語                | ko            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| リトアニア語            | lt            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| ラトビア語               | lv            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| リトアニア語 | lt | ![いいえ](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| ラトビア語 | lv | ![いいえ](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | マラヤーラム語             | ml            | ![はい](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
 | マラーティー語               | mr            | ![はい](./media/user-flow-language-customization/yes.png) | ![no](./media/user-flow-language-customization/no.png) |
 | マレー語                 | ms            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
@@ -244,7 +244,7 @@ Azure AD B2C では、以下の言語がサポートされています。 ユー
 | ルーマニア語              | ro            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | ロシア語               | ru            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | スロバキア語                | sk            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
-| スロベニア語             | sl            | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
+| スロベニア語 | sl | ![いいえ](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | セルビア語 - キリル    | sr-cryl-cs    | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | セルビア語 - ラテン       | sr-latn-cs    | ![no](./media/user-flow-language-customization/no.png) | ![はい](./media/user-flow-language-customization/yes.png) |
 | スウェーデン語               | sv            | ![はい](./media/user-flow-language-customization/yes.png) | ![はい](./media/user-flow-language-customization/yes.png) |
