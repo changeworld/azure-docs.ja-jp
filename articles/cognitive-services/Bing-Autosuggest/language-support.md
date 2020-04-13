@@ -21,7 +21,7 @@ ms.locfileid: "60547338"
 
 Bing Autosuggest API でサポートされている言語を次に示します。
 
-| 言語    | 言語コード |
+| Language    | 言語コード |
 |:----------- |:-------------:|
 | アラビア語      | `ar`          |
 | 中国語 (中華人民共和国)     | `zh-CN`          |
@@ -64,7 +64,7 @@ Bing Autosuggest API でサポートされている言語を次に示します�
 | スウェーデン語     | `sv`          |
 | トルコ語     | `tr`          |
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Azure Cognitive Services のドキュメント ページ](https://docs.microsoft.com/azure/cognitive-services/)
 - [Azure Cognitive Services の製品ページ](https://azure.microsoft.com/services/cognitive-services/)

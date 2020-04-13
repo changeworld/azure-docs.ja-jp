@@ -234,7 +234,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | デンマーク語                  | `da`          |
 | オランダ語                   | `nl`          |
 | 英語                 | `en`          |
-| Estonian                | `et`          |
+| エストニア語                | `et`          |
 | フィジー語                  | `fj`          |
 | フィリピン語                | `fil`         |
 | フィンランド語                 | `fi`          |
@@ -255,8 +255,8 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | クリンゴン語                 | `tlh`         |
 | クリンゴン語 (plqaD)         | `tlh-Qaak`    |
 | 韓国語                  | `ko`          |
-| Latvian                 | `lv`          |
-| Lithuanian              | `lt`          |
+| ラトビア語                 | `lv`          |
+| リトアニア語              | `lt`          |
 | マダガスカル語                | `mg`          |
 | マレー語                   | `ms`          |
 | マラヤーラム語               | `ml`          |
@@ -275,7 +275,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | セルビア語 (ラテン)         | `sr-Latn`     |
 | スロバキア語                  | `sk`          |
 | スロベニア語               | `sl`          |
-| Spanish                 | `es`          |
+| スペイン語                 | `es`          |
 | スウェーデン語                 | `sv`          |
 | タヒチ語                | `ty`          |
 | タミル語                   | `ta`          |
