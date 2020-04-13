@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: 19dc9f25cc7355eb540b68f009a77b1ca1e5fb86
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 7fb87380047d046a580d1ad62b1d7107a94bb297
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614895"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239885"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines のデプロイ
 
@@ -28,18 +28,18 @@ ms.locfileid: "77614895"
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
-[1031096]: https://launchpad.support.sap.com/#/notes/1031096
+[1031096]:https://launchpad.support.sap.com/#/notes/1031096
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
-[1409604]: https://launchpad.support.sap.com/#/notes/1409604
+[1409604]:https://launchpad.support.sap.com/#/notes/1409604
 [1558958]:https://launchpad.support.sap.com/#/notes/1558958
 [1585981]:https://launchpad.support.sap.com/#/notes/1585981
 [1588316]:https://launchpad.support.sap.com/#/notes/1588316
 [1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]: https://launchpad.support.sap.com/#/notes/1597355
+[1597355]:https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
-[1619720]: https://launchpad.support.sap.com/#/notes/1619720
+[1619720]:https://launchpad.support.sap.com/#/notes/1619720
 [1619726]:https://launchpad.support.sap.com/#/notes/1619726
 [1619967]:https://launchpad.support.sap.com/#/notes/1619967
 [1750510]:https://launchpad.support.sap.com/#/notes/1750510
@@ -53,22 +53,22 @@ ms.locfileid: "77614895"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
 [2039619]:https://launchpad.support.sap.com/#/notes/2039619
-[2069760]: https://launchpad.support.sap.com/#/notes/2069760
+[2069760]:https://launchpad.support.sap.com/#/notes/2069760
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
 [2367194]:https://launchpad.support.sap.com/#/notes/2367194
 
 [azure-cli]:../../../cli-install-nodejs.md
@@ -236,7 +236,7 @@ ms.locfileid: "77614895"
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/network-overview.md
-[sap-pam]: https://support.sap.com/pam (SAP 製品の可用性マトリックス)
+[sap-pam]:https://support.sap.com/pam (SAP 製品の可用性マトリックス)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image-md%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
@@ -363,7 +363,7 @@ Azure Resource Manager では、リソース グループを使用して Azure �
 
 ## <a name="resources"></a>リソース
 
-### <a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP リソース
+### <a name="sap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>SAP リソース
 
 SAP ソフトウェア デプロイをセットアップするときには、次の SAP リソースが必要です。
 
@@ -388,7 +388,7 @@ SAP ソフトウェア デプロイをセットアップするときには、次
 * [Azure PowerShell][azure-ps] の一部である SAP 固有の PowerShell コマンドレット。
 * [Azure CLI][azure-cli] の一部である SAP 固有の Azure CLI コマンド。
 
-### <a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>Windows リソース
+### <a name="windows-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>Windows リソース
 
 Microsoft の次の記事では、Azure 上の SAP デプロイについて説明しています。
 
@@ -396,11 +396,11 @@ Microsoft の次の記事では、Azure 上の SAP デプロイについて説�
 * [SAP NetWeaver のための Azure Virtual Machines のデプロイ (この記事)][deployment-guide]
 * [SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
 
-## <a name="b3253ee3-d63b-4d74-a49b-185e76c4088e"></a>Azure VM での SAP ソフトウェアのデプロイ シナリオ
+## <a name="deployment-scenarios-for-sap-software-on-azure-vms"></a><a name="b3253ee3-d63b-4d74-a49b-185e76c4088e"></a>Azure VM での SAP ソフトウェアのデプロイ シナリオ
 
 VM および関連付けられているディスクを Azure にデプロイする方法が複数用意されています。 選択したデプロイの種類によって、デプロイする VM を準備する手順が異なる場合があるため、デプロイ方法の違いを理解しておくことが重要です。
 
-### <a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>シナリオ 1:SAP 用 Azure Marketplace から VM をデプロイする
+### <a name="scenario-1-deploying-a-vm-from-the-azure-marketplace-for-sap"></a><a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>シナリオ 1:SAP 用 Azure Marketplace から VM をデプロイする
 
 Azure Marketplace で Microsoft またはサード パーティが提供するイメージを使用して VM をデプロイできます。 Marketplace には、Windows Server とさまざまな Linux ディストリビューションの標準 OS イメージが用意されています。 Microsoft SQL Server などのデータベース管理システム (DBMS) SKU を含むイメージをデプロイすることもできます。 DBMS SKU を含むイメージの使用方法の詳細については、「[Azure Virtual Machines 上の SAP NetWeaver – DBMS デプロイ ガイド][dbms-guide]」をご覧ください。
 
@@ -416,7 +416,7 @@ Azure Marketplace のイメージを使用して新しい仮想マシンを作�
 1.  **[コンピューティング]** を選択し、デプロイするオペレーティング システムの種類 (Windows Server 2012 R2、SUSE Linux Enterprise Server 12 (SLES 12)、Red Hat Enterprise Linux 7.2 (RHEL 7.2)、Oracle Linux 7.2 など) を選びます。 既定のリスト ビューには、サポートされているオペレーティング システムがすべて表示されるわけではありません。 完全な一覧を表示するには、 **[すべて表示]** を選択します。 SAP ソフトウェア デプロイのサポートされているオペレーティング システムの詳細については、SAP Note [1928533] を参照してください。
 1.  次のページで使用条件を確認します。
 1.  **[デプロイ モデルの選択]** で **[Resource Manager]** を選択します。
-1.  **作成** を選択します。
+1.  **［作成］** を選択します
 
 ウィザードの指示に従って、必要なすべてのリソース (ネットワーク インターフェイスやストレージ アカウントなど) だけでなく、仮想マシンを作成するために必要なパラメーターも設定します。 次のようなパラメーターがあります。
 
@@ -429,7 +429,7 @@ Azure Marketplace のイメージを使用して新しい仮想マシンを作�
    * **[場所]** :新しい仮想マシンをデプロイする場所。 仮想マシンをオンプレミス ネットワークに接続する場合は、Azure をオンプレミス ネットワークに接続する仮想ネットワークの場所を必ず選択します。 詳しくは、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide]」の「[Microsoft Azure のネットワーク][planning-guide-microsoft-azure-networking]」をご覧ください。
 1. **Size**:
 
-     サポートされている VM の種類の一覧については、SAP Note [1928533] を参照してください。 Azure Premium Storage を使用する場合は、適切な VM の種類を選択してください。 Premium Storage ではすべての VM の種類はサポートしていません。 詳細については、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide]」の「ストレージ: Microsoft Azure Storage とデータ ディスク][planning-guide-storage-microsoft-azure-storage-and-data-disks]」および「[Azure Premium Storage][planning-guide-azure-premium-storage]」を参照してください。
+     サポートされている VM の種類の一覧については、SAP Note [1928533] を参照してください。 Azure Premium Storage を使用する場合は、適切な VM の種類を選択してください。 Premium Storage ではすべての VM の種類はサポートしていません。 詳細については、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide][」の「ストレージ: Microsoft Azure Storage とデータ ディスク][planning-guide-storage-microsoft-azure-storage-and-data-disks]」および「[Azure Premium Storage][planning-guide-azure-premium-storage]」を参照してください。
 
 1. **設定**:
    * **Storage**
@@ -514,7 +514,7 @@ Azure Marketplace のイメージを使用すると、Azure VM エージェン�
 
 Azure デプロイが Azure サイト間 VPN 接続または ExpressRoute 経由でオンプレミスの Active Directory または DNS インスタンスに接続されている場合 (「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide]」では、これを "*クロスプレミス*" と呼んでいます)、VM がオンプレミス ドメインに参加している必要があります。 この作業に関する考慮事項の詳細については、「[オンプレミス ドメインへの VM の参加 (Windows のみ)][deployment-guide-4.3]」をご覧ください。
 
-#### <a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>VM 拡張機能を構成する
+#### <a name="configure-vm-extension"></a><a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>VM 拡張機能を構成する
 
 SAP で現在の環境がサポートされるように、「[Azure Extension for SAP を構成する][deployment-guide-4.5]」の説明に従って、Azure Extension for SAP を設定します。 「[SAP リソース][deployment-guide-2.2]」で示されているリソースの一覧で、SAP の前提条件と、SAP カーネルおよび SAP Host Agent の必要最小バージョンを確認してください。
 
@@ -528,7 +528,7 @@ VM を作成してデプロイしたら、必要なソフトウェア コンポ�
 
 Azure に VM をデプロイしたら、オンプレミス環境の場合と同じガイドラインとツールに従って VM に SAP ソフトウェアをインストールします。 Azure VM に SAP ソフトウェアをインストールする場合、SAP と Microsoft では、SAP インストール メディアを Azure VHD または Managed Disks にアップロードして保存するか、必要なすべての SAP インストール メディアを格納したファイル サーバーとして機能する Azure VM を作成することを推奨しています。
 
-### <a name="54a1fc6d-24fd-4feb-9c57-ac588a55dff2"></a>シナリオ 2:SAP のカスタム イメージを使用して VM をデプロイする
+### <a name="scenario-2-deploying-a-vm-with-a-custom-image-for-sap"></a><a name="54a1fc6d-24fd-4feb-9c57-ac588a55dff2"></a>シナリオ 2:SAP のカスタム イメージを使用して VM をデプロイする
 
 オペレーティング システムまたは DBMS のバージョンによってパッチ要件がそれぞれ異なるため、Azure Marketplace で提供されるイメージがニーズに合わない場合があります。 このような場合、後で再度デプロイできるように、独自の OS/DBMS の VM イメージを使用して VM を作成できます。
 プライベート イメージを作成する手順は、Windows と Linux で異なります。
@@ -569,7 +569,7 @@ Azure に VM をデプロイしたら、オンプレミス環境の場合と同�
    * **[場所]** :新しい仮想マシンをデプロイする場所。 仮想マシンをオンプレミス ネットワークに接続する場合は、Azure をオンプレミス ネットワークに接続する仮想ネットワークの場所を必ず選択します。 詳しくは、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide]」の「[Microsoft Azure のネットワーク][planning-guide-microsoft-azure-networking]」をご覧ください。
 1. **Size**:
 
-     サポートされている VM の種類の一覧については、SAP Note [1928533] を参照してください。 Azure Premium Storage を使用する場合は、適切な VM の種類を選択してください。 Premium Storage ではすべての VM の種類はサポートしていません。 詳細については、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide]」の「ストレージ: Microsoft Azure Storage とデータ ディスク][planning-guide-storage-microsoft-azure-storage-and-data-disks]」および「[Azure Premium Storage][planning-guide-azure-premium-storage]」を参照してください。
+     サポートされている VM の種類の一覧については、SAP Note [1928533] を参照してください。 Azure Premium Storage を使用する場合は、適切な VM の種類を選択してください。 Premium Storage ではすべての VM の種類はサポートしていません。 詳細については、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide][」の「ストレージ: Microsoft Azure Storage とデータ ディスク][planning-guide-storage-microsoft-azure-storage-and-data-disks]」および「[Azure Premium Storage][planning-guide-azure-premium-storage]」を参照してください。
 
 1. **設定**:
    * **Storage**
@@ -665,7 +665,7 @@ SAP で現在の環境がサポートされるように、「[Azure Extension fo
 「[SAP Host Agent のためのエンド ツー エンド データ収集に関するチェックとトラブルシューティング][deployment-guide-troubleshooting-chapter]」の説明に従って、SAP 用 VM 拡張機能が動作しているかどうかをチェックします。
 
 
-### <a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>シナリオ 3:SAP を含む汎用化されていない Azure VHD を使用してオンプレミス VM を移動する
+### <a name="scenario-3-moving-an-on-premises-vm-by-using-a-non-generalized-azure-vhd-with-sap"></a><a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>シナリオ 3:SAP を含む汎用化されていない Azure VHD を使用してオンプレミス VM を移動する
 
 このシナリオでは、特定の SAP システムをオンプレミス環境から Azure に移行します。 これを行うには、OS、SAP バイナリ、最終的な DBMS バイナリを格納している VHD と、DBMS のデータ ファイルとログ ファイルを格納している VHD を Azure にアップロードします。 「[シナリオ 2: SAP のカスタム イメージを使用して VM をデプロイする][deployment-guide-3.3]」で説明されたシナリオとは異なり、この場合は、ホスト名、SAP SID、および SAP ユーザー アカウントがオンプレミスの環境で構成されたため、これらを Azure VM に保持します。 OS を汎用化する必要はありません。 ほとんどの場合、このシナリオは、SAP ランドスケープの一部がオンプレミスで実行され、一部が Azure で実行されるクロスプレミス シナリオに適用されます。
 
@@ -769,7 +769,7 @@ SAP で現在の環境がサポートされるように、「[Azure Extension fo
 
 このセクションでは、構成およびデプロイ プロセスで個々の作業を実行する手順について詳しく説明します。
 
-### <a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>Azure PowerShell コマンドレットのデプロイ
+### <a name="deploy-azure-powershell-cmdlets"></a><a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>Azure PowerShell コマンドレットのデプロイ
 
 1. [Microsoft Azure のダウンロード](https://azure.microsoft.com/downloads/) ページに移動します。
 1. **[コマンドライン ツール]** で、 **[PowerShell]** の **[Windows のインストール]** をクリックします。
@@ -785,9 +785,11 @@ SAP で現在の環境がサポートされるように、「[Azure Extension fo
 PowerShell コマンドレットの更新プログラムがあるかどうかをこまめに確認してください。通常は毎月更新されます。 更新プログラムの有無を確認する最も簡単な方法は、手順 5. でインストール ページが表示されるまでのインストール手順を実行することです。 手順 5. で表示されるページには、コマンドレットのリリース日とリリース番号が記載されています。 SAP Note [1928533] または [2015553] に特に記載されていない限り、最新バージョンの Azure PowerShell コマンドレットを使用することをお勧めします。
 
 コンピューターにインストールされている Azure PowerShell コマンドレットのバージョンを確認するには、次の PowerShell コマンドを実行します。
+
 ```powershell
 (Get-Module Az.Compute).Version
 ```
+
 結果は次のようになります。
 
 ![Azure PowerShell コマンドレットのバージョン チェックの結果][deployment-guide-figure-600]
@@ -798,7 +800,7 @@ PowerShell コマンドレットの更新プログラムがあるかどうかを
 ![Azure PowerShell コマンドレットの最新バージョンがインストールされていることを示す Azure PowerShell コマンドレットのインストール ページ][deployment-guide-figure-700]
 <a name="figure-7"></a>
 
-### <a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>Azure CLI のデプロイ
+### <a name="deploy-azure-cli"></a><a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>Azure CLI のデプロイ
 
 1. [Microsoft Azure のダウンロード](https://azure.microsoft.com/downloads/) ページに移動します。
 1. **[コマンドライン ツール]** の **[Azure コマンド ライン インターフェイス]** で、使用しているオペレーティング システムの**インストール** リンクをクリックします。
@@ -814,7 +816,8 @@ PowerShell コマンドレットの更新プログラムがあるかどうかを
 Azure CLI の更新プログラムがあるかどうかをこまめに確認してください。通常は毎月更新されます。 更新プログラムの有無を確認する最も簡単な方法は、手順 5. でインストール ページが表示されるまでのインストール手順を実行することです。
 
 コンピューターにインストールされている Azure CLI のバージョンを確認するには、次のコマンドを実行します。
-```
+
+```console
 azure --version
 ```
 
@@ -823,19 +826,19 @@ azure --version
 ![Azure CLI のバージョン チェックの結果][deployment-guide-figure-760]
 <a name="0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda"></a>
 
-### <a name="31d9ecd6-b136-4c73-b61e-da4a29bbc9cc"></a>オンプレミス ドメインへの VM の参加 (Windows のみ)
+### <a name="join-a-vm-to-an-on-premises-domain-windows-only"></a><a name="31d9ecd6-b136-4c73-b61e-da4a29bbc9cc"></a>オンプレミス ドメインへの VM の参加 (Windows のみ)
 
 オンプレミスの Active Directory と DNS が Azure に拡張されるクロスプレミス シナリオで SAP VM をデプロイする場合、VM がオンプレミス ドメインに参加している必要があります。 オンプレミス ドメインに VM を参加させるための詳細な手順と、オンプレミス ドメインのメンバーになるために必要な追加ソフトウェアは、お客様によって異なります。 通常、オンプレミス ドメインに VM を参加させるには、マルウェア対策ソフトウェアや、バックアップまたは監視ソフトウェアなどの追加ソフトウェアをインストールする必要があります。
 
 このシナリオでは、VM が環境内のドメインに参加したときにインターネット プロキシ設定が適用されている場合に、ゲスト VM の Windows ローカル システム アカウント (S-1-5-18) にも同じプロキシ設定が適用されていることを確認する必要があります。 最も簡単な方法は、ドメイン内のシステムに適用されるドメイン グループ ポリシーを使用してプロキシを適用することです。
 
-### <a name="c7cbb0dc-52a4-49db-8e03-83e7edc2927d"></a>Azure VM エージェントのダウンロード、インストール、有効化
+### <a name="download-install-and-enable-the-azure-vm-agent"></a><a name="c7cbb0dc-52a4-49db-8e03-83e7edc2927d"></a>Azure VM エージェントのダウンロード、インストール、有効化
 
 汎用化されていない OS イメージ (Windows System Preparation (sysprep ) ツールで作成されていないイメージなど) からデプロイされた仮想マシンの場合、Azure VM エージェントを手動でダウンロードしてインストールし、有効にする必要があります。
 
 Azure Marketplace から VM をデプロイした場合には、この手順は不要です。 Azure Marketplace のイメージには、Azure VM エージェントが既に含まれています。
 
-#### <a name="b2db5c9a-a076-42c6-9835-16945868e866"></a>Windows
+#### <a name="windows"></a><a name="b2db5c9a-a076-42c6-9835-16945868e866"></a>Windows
 
 1. Azure VM エージェントのダウンロード:
    1.  [Azure VM エージェント インストーラー パッケージ](https://go.microsoft.com/fwlink/?LinkId=394789)をダウンロードします。
@@ -849,25 +852,25 @@ Azure Marketplace から VM をデプロイした場合には、この手順は�
 
 Azure VM エージェントを更新する際にユーザーの操作は不要です。 VM エージェントは自動的に更新され、VM の再起動を必要としません。
 
-#### <a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Linux
+#### <a name="linux"></a><a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Linux
 
 次のコマンドを使用して、Linux の VM エージェントをインストールします。
 
 * **SUSE Linux Enterprise Server (SLES)**
 
-  ```
+  ```console
   sudo zypper install WALinuxAgent
   ```
 
 * **Red Hat Enterprise Linux (RHEL) または Oracle Linux**
 
-  ```
+  ```console
   sudo yum install WALinuxAgent
   ```
 
 エージェントが既にインストールされている場合、Azure Linux エージェントを更新するには、[VM 上の Azure Linux エージェントを GitHub で最新バージョンに更新する方法][virtual-machines-linux-update-agent]に関する記事に記載されている手順を実行します。
 
-### <a name="baccae00-6f79-4307-ade4-40292ce4e02d"></a>プロキシの構成
+### <a name="configure-the-proxy"></a><a name="baccae00-6f79-4307-ade4-40292ce4e02d"></a>プロキシの構成
 
 プロキシを構成する手順は、Windows と Linux で異なります。
 
@@ -891,18 +894,22 @@ Microsoft Azure ゲスト エージェントの構成ファイル (\\etc\\waagen
 次のパラメーターを設定します。
 
 1. **HTTP プロキシ ホスト**。 たとえば、**proxy.corp.local** に設定します。
-   ```
+
+   ```console
    HttpProxy.Host=<proxy host>
 
    ```
+
 1. **HTTP プロキシ ポート**。 たとえば、**80** に設定します。
-   ```
+
+   ```console
    HttpProxy.Port=<port of the proxy host>
 
    ```
+
 1. エージェントを再起動します。
 
-   ```
+   ```console
    sudo service waagent restart
    ```
 
@@ -925,13 +932,13 @@ Microsoft Azure ゲスト エージェントの構成ファイル (\\etc\\waagen
 
 ユーザー定義ルートの詳細については、[ユーザー定義ルートと IP 転送][virtual-networks-udr-overview]に関する記事をご覧ください。
 
-### <a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Azure Extension for SAP を構成する
+### <a name="configure-the-azure-extension-for-sap"></a><a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Azure Extension for SAP を構成する
 
 [Azure 上の SAP 用 VM のデプロイ シナリオ][deployment-guide-3]に関するセクションの説明に従って VM を準備すると、Azure VM エージェントが仮想マシンにインストールされます。 次に、Azure グローバル データセンターの Azure 拡張リポジトリで入手できる Azure Extension for SAP をデプロイします。 詳しくは、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide-9.1]」をご覧ください。
 
 PowerShell または Azure CLI を使用して、Azure Extension for SAP のインストールと構成を行うことができます。 Windows コンピューターを使用して Windows VM または Linux VM に拡張機能をインストールする場合は、[Azure PowerShell][deployment-guide-4.5.1] に関するセクションをご覧ください。 Linux デスクトップを使用して Linux VM に拡張機能をインストールする場合は、[Azure CLI][deployment-guide-4.5.2] に関するセクションをご覧ください。
 
-#### <a name="987cf279-d713-4b4c-8143-6b11589bb9d4"></a>Linux VM および Windows VM の Azure PowerShell
+#### <a name="azure-powershell-for-linux-and-windows-vms"></a><a name="987cf279-d713-4b4c-8143-6b11589bb9d4"></a>Linux VM および Windows VM の Azure PowerShell
 
 PowerShell を使用して Azure Extension for SAP をインストールするには:
 
@@ -964,26 +971,26 @@ PowerShell を使用して Azure Extension for SAP をインストールする�
 * Azure VM Extension for SAP のすべての手順が正常に実行されたこと、および Azure インフラストラクチャから必要なデータが提供されていることを確認するには、「[Azure Extension for SAP の適合性チェック][deployment-guide-5.1]」の説明に従って、Azure Extension for SAP の適合性チェックを実行します。
 * Azure Diagnostics が関連データを収集するまで 15 ～ 30 分待ちます。
 
-#### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Linux VM 向け Azure CLI
+#### <a name="azure-cli-for-linux-vms"></a><a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Linux VM 向け Azure CLI
 
 Azure CLI を使用して Azure Extension for SAP をインストールするには:
 
    1. 「[Azure クラシック CLI のインストール][azure-cli]」の説明に従って、Azure クラシック CLI をインストールします。
    1. Azure アカウントでサインインします。
 
-      ```
+      ```console
       azure login
       ```
 
    1. Azure Resource Manager モードに切り替えます。
 
-      ```
+      ```console
       azure config mode arm
       ```
 
    1. Azure Extension for SAP を有効にします。
 
-      ```
+      ```console
       azure vm enable-aem <resource-group-name> <vm-name>
       ```
 
@@ -992,43 +999,44 @@ Azure CLI を使用して Azure Extension for SAP をインストールするに
    1. 「[Azure CLI 2.0 のインストール][azure-cli-2]」の説明に従って、Azure CLI 2.0 をインストールします。
    1. Azure アカウントでサインインします。
 
-      ```
+      ```azurecli
       az login
       ```
 
    1. Azure CLI AEM Extension をインストールします。
   
-      ```
+      ```azurecli
       az extension add --name aem
       ```
   
    1. 次のように、拡張機能をインストールします。
   
-      ```
+      ```azurecli
       az vm aem set -g <resource-group-name> -n <vm name>
       ```
 
 1. Azure Extension for SAP が Azure Linux VM 上で有効になっていることを確認します。 \\var\\lib\\AzureEnhancedMonitor\\PerfCounters ファイルが存在するかどうかを確認します。 存在する場合は、コマンド プロンプトで次のコマンドを実行して、Azure Extension for SAP によって収集された情報を表示します。
 
-   ```
+   ```console
    cat /var/lib/AzureEnhancedMonitor/PerfCounters
    ```
 
    出力は次のようになります。
-   ```
+
+   ```output
    ...
    2;cpu;Current Hw Frequency;;0;2194.659;MHz;60;1444036656;saplnxmon;
    2;cpu;Max Hw Frequency;;0;2194.659;MHz;0;1444036656;saplnxmon;
    ...
    ```
 
-## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>SAP Host Agent のためのエンド ツー エンド データ収集に関するチェックとトラブルシューティング
+## <a name="checks-and-troubleshooting-for-end-to-end-data-collection-for-sap-host-agent"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>SAP Host Agent のためのエンド ツー エンド データ収集に関するチェックとトラブルシューティング
 
 Azure VM をデプロイし、関連する Azure Extension for SAP を設定した後は、拡張機能のすべてのコンポーネントが意図したとおりに機能していることを確認します。
 
 「[Azure Extension for SAP の適合性チェック][deployment-guide-5.1]」の説明に従って、Azure Extension for SAP の適合性チェックを実行します。 適合性チェックのすべての結果が良好であり、関連するすべてのパフォーマンス カウンターで OK と示されていれば、Azure Extension for SAP は正常に設定されています。 この場合、「[SAP リソース][deployment-guide-2.2]」に示されている SAP Note に記載された SAP Host Agent のインストールに進むことができます。 適合性チェックの結果に、カウンターが見つからないことが示されている場合は、「[Azure Extension for SAP の構成の正常性チェック][deployment-guide-5.2]」の説明に従って、Azure Extension for SAP の正常性チェックを実行します。 トラブルシューティングのオプションについて詳しくは、「[Azure Extension for SAP のトラブルシューティング][deployment-guide-5.3]」をご覧ください。
 
-### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Azure Extension for SAP の適合性チェック
+### <a name="readiness-check-for-the-azure-extension-for-sap"></a><a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Azure Extension for SAP の適合性チェック
 
 このチェックでは、SAP アプリケーション内で表示されるすべてのパフォーマンス メトリックが、基になる Azure Extension for SAP によって提供されていることを確認します。
 
@@ -1127,12 +1135,13 @@ SAP NetWeaver ABAP アプリケーション サーバーが既にインストー
 
 上記のチェックのいずれかが失敗した場合、拡張機能を再デプロイする方法の詳細については、「[Azure Extension for SAP のトラブルシューティング][deployment-guide-5.3]」をご覧ください。
 
-### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Azure Extension for SAP の構成の正常性チェック
+### <a name="health-check-for-the-azure-extension-for-sap-configuration"></a><a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Azure Extension for SAP の構成の正常性チェック
 
 一部のインフラストラクチャ データが、「[Azure Extension for SAP の適合性チェック][deployment-guide-5.1]」で説明したテストで示されているように正しく提供されない場合は、`Test-AzVMAEMExtension` コマンドレットを実行して、Azure インフラストラクチャと Azure Extension for SAP が正しく構成されているかどうかを確認します。
 
 1. 「[Azure PowerShell コマンドレットのデプロイ][deployment-guide-4.1]」で説明したように、Azure PowerShell コマンドレットの最新バージョンがインストールされていることを確認します。
 1. 次の PowerShell コマンドレットを実行します。 使用可能な環境のリストを表示するには、`Get-AzEnvironment` コマンドレットを実行します。 グローバル Azure を使う場合は、**AzureCloud** 環境を選びます。 中国で Azure を使用する場合は、**AzureChinaCloud** を選択します。
+
    ```powershell
    $env = Get-AzEnvironment -Name <name of the environment>
    Connect-AzAccount -Environment $env
@@ -1154,7 +1163,7 @@ SAP NetWeaver ABAP アプリケーション サーバーが既にインストー
 > Azure Standard Managed Disks を使用している場合、警告が発生する可能性があります。 テストから "OK" が返る代わりに、警告が表示されます。 これは正常な動作であり、このディスク タイプの場合は意図されたものです。 「[Azure Extension for SAP のトラブルシューティング][deployment-guide-5.3]」も参照してください
 > 
 
-### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Azure Extension for SAP のトラブルシューティング
+### <a name="troubleshooting-azure-extension-for-sap"></a><a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Azure Extension for SAP のトラブルシューティング
 
 #### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure パフォーマンス カウンターまったく表示されない
 

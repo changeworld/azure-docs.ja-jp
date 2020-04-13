@@ -3,8 +3,8 @@ title: チュートリアル:オンラインで Oracle を Azure Database for Po
 titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用して、オンプレミスまたは仮想マシンの Oracle から Azure Database for PostgreSQL にオンライン移行を実行する方法を説明します。
 services: dms
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
-ms.openlocfilehash: 14db95adccf5118321bc763cbe599e19febc7eac
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255574"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>チュートリアル:DMS を使用して Oracle を Azure Database for PostgreSQL にオンラインで移行する (プレビュー)
@@ -174,7 +174,7 @@ Oracle から Azure Database for PostgreSQL への移行に必要な作業の評
 
 ほとんどのお客様は、評価レポートのレビューと自動および手動の変換作業の検討にかなりの時間を費やします。
 
-ora2pg を構成して実行し、評価レポートを作成する方法については、『[Oracle to Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)』 (Oracle から Azure Database for PostgreSQL への移行手順) の「**Premigration: Assessment**」(移行前: 評価) セクションを参照してください。 サンプルの ora2pg 評価レポートは、[ここ](https://ora2pg.darold.net/report.html)で参照できます。
+ora2pg を構成して実行し、評価レポートを作成する方法については、『[Oracle to Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)』 (Oracle から Azure Database for PostgreSQL への移行手順) **の「Premigration: Assessment**」(移行前: 評価) セクションを参照してください。 サンプルの ora2pg 評価レポートは、[ここ](https://ora2pg.darold.net/report.html)で参照できます。
 
 ## <a name="export-the-oracle-schema"></a>Oracle スキーマのエクスポート
 
@@ -192,7 +192,7 @@ psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d 
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
 ```
 
-スキーマ変換用に ora2pg を構成して実行する方法については、『[Oracle to Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)』 (Oracle から Azure Database for PostgreSQL への移行手順) の「**Migration: Schema and data**」(移行: スキーマとデータ) セクションを参照してください。
+スキーマ変換用に ora2pg を構成して実行する方法については、『[Oracle to Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)』 (Oracle から Azure Database for PostgreSQL への移行手順) の **「Migration: Schema and data**」(移行: スキーマとデータ) セクションを参照してください。
 
 ## <a name="set-up-the-schema-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL でのスキーマの設定
 
