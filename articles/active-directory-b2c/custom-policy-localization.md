@@ -10,24 +10,24 @@ ms.topic: reference
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1401cbe1920c7c6df804aadbba1751612ba9cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be12bce8fa29076621bec35228838a4ebdd97433
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126798"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545868"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをローカライズする
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使うと、顧客のニーズに応じて、さまざまな言語に対応することができます。 Microsoft では 36 の言語の翻訳が提供されていますが、どの言語についてもユーザーが自分で翻訳を提供できます。 1 つの言語でのみページが提供されている場合でも、ページ上の任意のテキストをカスタマイズできます。 
+Azure Active Directory B2C (Azure AD B2C) の言語のカスタマイズを使うと、顧客のニーズに応じて、さまざまな言語に対応することができます。 Microsoft では [36 の言語](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)の翻訳が提供されていますが、どの言語についてもユーザーが自分で翻訳を提供できます。 1 つの言語でのみページが提供されている場合でも、ページ上の任意のテキストをカスタマイズできます。 
 
 この記事では、ユーザー体験に関するポリシーで複数のロケールや言語をサポートする方法について説明します。 ローカライズには、3 つのステップ (サポートされている言語の明示的な一覧の設定、言語固有の文字列とコレクションの指定、およびページの[コンテンツ定義](contentdefinitions.md)の編集) が必要です。 
 
 ## <a name="set-up-the-list-of-supported-languages"></a>サポートされる言語の一覧を設定する
 
-お使いのポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>です。
+お使いのポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。
 
 1. [BuildingBlocks](buildingblocks.md) 要素を検索します。 要素が存在しない場合は追加します。
 1. `Localization` 要素を、サポートされている言語である英語 (既定) とスペイン語を指定して追加します。  
