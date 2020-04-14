@@ -214,6 +214,8 @@
       items:
         - name: 音声翻訳とは何か
           href: speech-translation.md
+        - name: 音声翻訳の基本
+          href: speech-translation-basics.md
     - name: クイック スタート
       items:
         - name: 音声テキスト変換の翻訳

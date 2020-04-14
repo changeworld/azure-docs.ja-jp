@@ -1,25 +1,25 @@
 ---
 title: 外部メタデータ ストアの使用 - Azure HDInsight
-description: Azure HDInsight クラスターでの外部メタデータ ストアの使用と、ベスト プラクティス。
+description: Azure HDInsight クラスターで外部メタデータ ストアを使用します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: edb2d256d3e5d98c52dbdff1162e0e030ebe2be3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/03/2020
+ms.openlocfilehash: 0cadf3930008868fe223e6e1024a2d14d17d8131
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233527"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657115"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight での外部メタデータ ストアの使用
 
-HDInsight では、キー メタデータ ソリューションと管理データベースを外部データストアに配置することで、データとメタデータを制御できます。 この機能は現在、[Apache Hive metastore](#custom-metastore)、[Apache Oozie metastore](#apache-oozie-metastore) および [Apache Ambari データベース](#custom-ambari-db)で使用できます。
+HDInsight を使用すると、外部データ ストアを使用してデータとメタデータを制御できます。 この機能は、[Apache Hive メタストア](#custom-metastore)、[Apache Oozie メタストア](#apache-oozie-metastore)、および [Apache Ambari データベース](#custom-ambari-db)で使用できます。
 
-HDInsight の Apache Hive metastore は、Apache Hadoop アーキテクチャの不可欠な部分です。 metastore は、Apache Spark、Interactive Query (LLAP)、Presto、Apache Pig などの他のビッグ データ アクセス ツールで使用できる主要スキーマ リポジトリです。 HDInsight は、Azure SQL Database を Hive metastore として使用します。
+HDInsight の Apache Hive metastore は、Apache Hadoop アーキテクチャの不可欠な部分です。 メタストアは、中央のスキーマ リポジトリです。 メタストアは、Apache Spark、Interactive Query (LLAP)、Presto、Apache Pig などの他のビッグ データ アクセス ツールから使用されます。 HDInsight は、Azure SQL Database を Hive metastore として使用します。
 
 ![HDInsight Hive メタデータ ストアのアーキテクチャ](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
 
@@ -39,7 +39,7 @@ HDInsight クラスター用の metastore をセットアップできる方法�
 * 既定の metastore は、他のクラスターと共有できません。
 
 * 既定の metastore では、5 DTU (データベース トランザクション ユニット) の制限がある基本的な Azure SQL DB が使用されます。
-この既定の metastore は、通常は、複数のクラスターを必要とせず、クラスターのライフ サイクルを超えてメタデータを保持する必要がない、比較的単純なワークロードで使用されます。
+この既定のメタストアは、通常、比較的単純なワークロードに使用されます。 複数のクラスターを必要とせず、クラスターのライフサイクルを超えてメタデータを保持する必要がないワークロード。
 
 ## <a name="custom-metastore"></a>カスタム metastore
 
@@ -61,11 +61,9 @@ HDInsight では、カスタム metastore もサポートします。運用ク�
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>カスタム metastore 用の Azure SQL Database を作成および構成する
 
-HDInsight クラスター用のカスタム Hive metastore を設定する前に、Azure SQL Database を作成するか、既存のものを用意する必要があります。  詳細については、「[クイック スタート: Azure SQL DB での単一データベースの作成](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)に関する記事を参照してください。
+HDInsight クラスター用のカスタム Hive メタストアを設定する前に、Azure SQL Database を作成するか、既存のものを用意します。  詳細については、「[クイック スタート: Azure SQL DB での単一データベースの作成](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)に関する記事を参照してください。
 
-HDInsight クラスターが接続された Azure SQL Database にアクセスできるようにするには、Azure のサービスとリソースがサーバーにアクセスできるように Azure SQL Database ファイアウォール規則を構成します。
-
-このオプションを Azure portal で有効にするには、**サーバー ファイアウォールの設定]** [ をクリックし、Azure SQL Database サーバーまたはデータベースについての ] **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する** の下にある **[ON]** をクリックします。 詳細については、「[IP ファイアウォール規則の作成および管理](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)」を参照してください。
+Azure SQL Database のファイアウォール規則を構成して、Azure サービスとリソースがサーバーにアクセスできるようにします。 Azure portal で **[サーバー ファイアウォールの設定]** を選択して、このオプションを有効にします。 次に、Azure SQL Database サーバーまたはデータベースの **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** の下にある **[オン]** を選択します。 詳細については、「[IP ファイアウォール規則の作成および管理](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)」を参照してください。
 
 ![[サーバー ファイアウォールの設定] ボタン](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
@@ -73,13 +71,11 @@ HDInsight クラスターが接続された Azure SQL Database にアクセス�
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>クラスターの作成時にカスタム metastore を選択する
 
-クラスターの作成中に、以前に作成した Azure SQL Database をクラスターとしてポイントするか、クラスターの作成後に SQL Database を構成できます。 このオプションは、Azure Portal からの新しい Hadoop、Spark、または対話型 Hive クラスターの作成中に **[ストレージ] > [メタストアの設定]** で指定されます。
+いつでもクラスターを以前に作成した Azure SQL Database にポイントできます。 ポータルを使用したクラスターの作成の場合、オプションは **[ストレージ] > [metastore の設定]** から指定します。
 
 ![Azure Portal の HDInsight Hive メタデータ ストア](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
 
-## <a name="hive-metastore-best-practices"></a>Hive metastore のベスト プラクティス
-
-いくつかの一般的な HDInsight Hive metastore のベスト プラクティスを次に示します。
+## <a name="hive-metastore-guidelines"></a>Hive メタストアのガイドライン
 
 * 可能な限り、カスタム metastore を使用します。これにより、コンピューティング リソース (実行中のクラスター) とメタデータ (metastore に格納されます) を分離できます。
 
@@ -89,19 +85,19 @@ HDInsight クラスターが接続された Azure SQL Database にアクセス�
 
 * カスタム metastore を定期的にバックアップします。 Azure SQL Database ではバックアップが自動的に生成されますが、バックアップのリテンション期間は異なります。 詳しくは、「[SQL Database 自動バックアップについての詳細情報](../sql-database/sql-database-automated-backups.md)」をご覧ください。
 
-* パフォーマンスを最高にして、ネットワーク エグレスの課金を最小にするには、metastore と HDInsight クラスターを同じリージョンで検索します。
+* メタストアと HDInsight クラスターを同じリージョンで保持します。 この構成を使用すると、最高のパフォーマンスと最低のネットワーク エグレス料金を実現できます。
 
-* Azure portal や Azure Monitor ログなどの Azure SQL Database 監視ツールを使用して、metastore のパフォーマンスと可用性を監視します。
+* Azure SQL Database 監視ツールまたは Azure Monitor ログを使用して、メタストアのパフォーマンスと可用性を監視します。
 
-* 既存のカスタム metastore データベースに対して、より高いバージョンの Azure HDInsight が新しく作成された場合、システムは metastore のスキーマをアップグレードします。バックアップからデータベースを復元しないかぎり、これを元に戻すことはできません。
+* Azure HDInsight の新しい上位バージョンが既存のカスタム メタストア データベースに対して作成されると、システムによってメタストアのスキーマはアップグレードされます。 バックアップからデータベースを復元しないと、アップグレードを元に戻すことはできません。
 
 * 複数のクラスター間で metastore を共有する場合は、すべてのクラスターの HDInsight を確実に同じバージョンにします。 異なるバージョンの Hive は、異なる metastore データベース スキーマを使用します。 たとえば、バージョン 2.1 の Hive クラスターと 3.1 の Hive クラスターで metastore を共有することはできません。
 
-* HDInsight 4.0 では、Spark と Hive は、SparkSQL または Hive テーブルへのアクセスに、独立したカタログを使用します。 Spark によって作成されたテーブルは、Spark カタログ内に存在します。 Hive によって作成されたテーブルは、Hive カタログ内に存在します。 これは、Hive と Spark が共通のカタログを共有する HDInsight 3.6 とは異なります。 HDInsight 4.0 での Hive と Spark の統合は、Hive Warehouse Connector (HWC) に依存します。 HWC は、Spark と Hive 間の橋として動作します。 [Hive Warehouse Connector について学習](../hdinsight/interactive-query/apache-hive-warehouse-connector.md)します。
+* HDInsight 4.0 では、Spark と Hive は、SparkSQL または Hive テーブルへのアクセスに、独立したカタログを使用します。 Spark によって作成されたテーブルは、Spark カタログ内に存在します。 Hive によって作成されたテーブルは、Hive カタログ内に存在します。 この動作は、Hive と Spark が共通のカタログを共有する HDInsight 3.6 とは異なります。 HDInsight 4.0 での Hive と Spark の統合は、Hive Warehouse Connector (HWC) に依存します。 HWC は、Spark と Hive 間の橋として動作します。 [Hive Warehouse Connector について学習](../hdinsight/interactive-query/apache-hive-warehouse-connector.md)します。
 
 ## <a name="apache-oozie-metastore"></a>Apache Oozie metastore
 
-Apache Oozie は、Hadoop ジョブを管理するワークフロー調整システムです。  Oozie は、Apache MapReduce、Pig、Hive、その他の Hadoop ジョブをサポートします。  Oozie では、metastore を使用して、現在のワークフローと完了したワークフローの詳細情報を格納します。 Oozie の使用時にパフォーマンスを向上させるために、カスタム metastore として Azure SQL Database を使用できます。 metastore は、クラスター削除後の Oozie ジョブ データへのアクセスを提供することもできます。
+Apache Oozie は、Hadoop ジョブを管理するワークフロー調整システムです。 Oozie は、Apache MapReduce、Pig、Hive、その他の Hadoop ジョブをサポートします。  Oozie では、メタストアを使用してワークフローの詳細が格納されます。 Oozie の使用時にパフォーマンスを向上させるために、カスタム metastore として Azure SQL Database を使用できます。 メタストアを使用すると、クラスターを削除した後、Oozie ジョブ データにアクセスできます。
 
 Azure SQL Database を使用する Oozie metastore の作成手順については、[ワークフローでの Apache Oozie の使用](hdinsight-use-oozie-linux-mac.md)に関する記事を参照してください。
 

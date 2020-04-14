@@ -2,18 +2,17 @@
 title: Azure ExpressRoute テンプレート:ExpressRoute 回線の作成
 description: ExpressRoute 回線を作成、プロビジョニング、削除、およびプロビジョニング解除します。
 services: expressroute
-author: cherylmc
+author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 11/13/2019
-ms.author: cherylmc
-ms.reviewer: ganesr
-ms.openlocfilehash: 78da84a462566cca1a2800174849159ace8dd6dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: ac2fb2f884feb0fbe6fbb1731ebe7c8bdad5114b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75981150"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616527"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ExpressRoute 回線を作成する
 
@@ -64,7 +63,7 @@ Azure PowerShell を使用して、Azure Resource Manager テンプレートを�
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **SKU 層** によって、ExpressRoute 回線が [Local](expressroute-faqs.md#expressroute-local)、Standard、[Premium](expressroute-faqs.md#expressroute-premium) のどれであるかが決まります。 "*Local*"、"*Standard*" または "*Premium*" を指定できます。
+   * **SKU レベル**によって、ExpressRoute 回線が [Local](expressroute-faqs.md#expressroute-local)、Standard、[Premium](expressroute-faqs.md#expressroute-premium) のどれであるかが決まります。 *Local*、*Standard、または *Premium* を指定できます。
    * **SKU ファミリ**によって、課金の種類が決まります。 従量制課金データ プランの場合は *Metereddata*、無制限データ プランの場合は *Unlimiteddata* を指定できます。 課金の種類は *Metereddata* から *Unlimiteddata* に変更できますが、*Unlimiteddata* から *Metereddata* に変更することはできません。 "*Local*" 回線は "*Unlimiteddata*" のみです。
    * **ピアリングの場所**とは、Microsoft とピアリングしている物理的な場所です。
 

@@ -4,12 +4,12 @@ description: Azure Active Directory 対応の Azure Kubernetes Service (AKS) ク
 services: container-service
 ms.topic: article
 ms.date: 02/02/2019
-ms.openlocfilehash: 0476acadf5af3a3e2c470fe6c08ebbd355653e22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de57a46f92fab2486aa7722daf8745a01be1f4f6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596591"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617597"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -116,9 +116,9 @@ AKS クラスターに対して Azure AD 認証を提供するため、2 つの 
     c. リダイレクト URI の種類で **[Web]** を選択し、 *https://aksazureadclient* のような形式の URI 値を入力します。
 
     >[!NOTE]
-    >コンテナー用 Azure Monitor をサポートするために新しい RBAC 対応クラスターを作成する場合は、次の 2 つのリダイレクト URL を **Web** アプリケーションの種類としてこの一覧に追加します。 最初のベース URL の値は `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`、2番目のベース URL の値は `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` にする必要があります。
+    >コンテナー用 Azure Monitor をサポートするために新しい RBAC 対応クラスターを作成する場合は、次の 2 つのリダイレクト URL を **Web** アプリケーションの種類としてこの一覧に追加します。 最初のベース URL の値は `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`、2 番目のベース URL の値は `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` にする必要があります。
     >
-    >この機能を Azure 中国で使用する場合は、最初のベース URL の値を `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` にし、2 番目のベース URL の値を `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` にする必要があります。
+    >この機能を Azure China で使用する場合は、最初のベース URL の値を `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` にし、2 番目のベース URL の値を `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` にする必要があります。
     >
     >詳細については、コンテナー用 Azure Monitor での「[ライブ データ (プレビュー) 機能を設定する方法](../azure-monitor/insights/container-insights-livedata-setup.md)」、および「[AD 統合認証の構成](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)」セクションに記載されている認証の構成手順を参照してください。
 
