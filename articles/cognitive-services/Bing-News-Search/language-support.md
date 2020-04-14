@@ -38,7 +38,7 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |スイス|German|de-CH|
 |ドイツ|German|de-DE|
 |オーストラリア|English|en-AU|
-|カナダ|English|en-CA|
+|カナダ|英語|en-CA|
 |イギリス|English|en-GB|
 |インドネシア|English|en-ID|
 |アイルランド|English|en-IE|
@@ -47,7 +47,7 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |ニュージーランド|English|en-NZ|
 |フィリピン共和国|English|en-PH|
 |シンガポール|English|en-SG|
-|アメリカ|English|ja-JP|
+|アメリカ|英語|en-US|
 |English|全般|en-WW|
 |English|全般|en-XA|
 |南アフリカ|English|en-ZA|
@@ -55,11 +55,11 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |チリ|Spanish|es-CL|
 |スペイン|Spanish|es-ES|
 |メキシコ|Spanish|es-MX|
-|アメリカ|Spanish|es-US|
+|アメリカ|スペイン語|es-US|
 |Spanish|全般|es-XL|
 |フィンランド|Finnish|fi-FI|  
 |フランス|French|fr-BE|
-|カナダ|French|fr-CA|
+|カナダ|フランス語|fr-CA|
 |ベルギー|Dutch|nl-BE|
 |スイス|French|fr-CH|
 |フランス|French|fr-FR|  
@@ -86,13 +86,13 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |ドイツ|German|de-DE|
 |オーストラリア|English|en-AU|
 |イギリス|English|en-GB|
-|アメリカ|English|ja-JP|
+|アメリカ|英語|en-US|
 |English|全般|en-WW|
 |チリ|Spanish|es-CL|
 |メキシコ|Spanish|es-MX|
-|アメリカ|Spanish|es-US|
+|アメリカ|スペイン語|es-US|
 |フィンランド|Finnish|fi-FI|  
-|カナダ|French|fr-CA|
+|カナダ|フランス語|fr-CA|
 |フランス|French|fr-FR|  
 |イタリア|Italian|it-IT|
 |ブラジル|Portuguese|pt-BR|
@@ -108,11 +108,11 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |ドイツ|German|de-DE|
 |オーストラリア|English|en-AU|
 |イギリス|English|en-GB|
-|アメリカ|English|ja-JP|
-|カナダ|English|en-CA|
+|アメリカ|英語|en-US|
+|カナダ|英語|en-CA|
 |インド|English|en-IN|
 |フランス|French|fr-FR|
-|カナダ|French|fr-CA|
+|カナダ|フランス語|fr-CA|
 |ブラジル|Portuguese|pt-BR|
 |中華人民共和国|中国語|zh-CN|
 
