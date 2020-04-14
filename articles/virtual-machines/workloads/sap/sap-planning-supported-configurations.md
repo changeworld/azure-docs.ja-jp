@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 28a9de63bb04a95fc2e655b05727963feaa3ec40
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 564c648a550b41017ffc684ca19ff03612fc63d3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599600"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79137630"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ
 Azure での SAP NetWeaver、Business One、`Hybris`、または S/4HANA システム アーキテクチャの設計により、さまざまなアーキテクチャやツールで、スケーラブルで、効率性、可用性に優れたデプロイを実現するためのさまざまな機会が提供されます。 使用されているオペレーティング システムまたは DBMS によっては、制限があります。 また、オンプレミスでサポートされているすべてのシナリオが、Azure でも同じようにサポートされているわけではありません。 このドキュメントでは、サポートされていない非高可用性構成と高可用性構成、および Azure VM だけを使用するアーキテクチャについて説明します。 [HANA Large Instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) でサポートされているシナリオについては、「[HANA L インスタンスのサポートされるシナリオ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)」をご覧ください。 
@@ -66,7 +66,8 @@ Azure でサポートされているすべての OS/DBMS の組み合わせに�
 - Windows 上の SQL Server
 - IBM DB2。 詳細については、「[複数インスタンス (Linux、UNIX)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html)」を参照してください
 - Oracle。 詳細については、[SAP サポート ノート #1778431](https://launchpad.support.sap.com/#/notes/1778431) および関連する SAP ノートを参照してください
-- SAP HANA。1 つの VM で複数のインスタンス (このデプロイ方法は SAP では MCOS と呼ばれます) がサポートされます。 詳細については、SAP の記事「[Multiple SAP HANA Systems on One Host (MCOS)](https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/en-US/b2751fd43bec41a9a14e01913f1edf18.html)」(1 つのホスト上の複数の SAP HANA システム (MCOS)) を参照してください
+- SAP HANA。1 つの VM で複数のインスタンス (このデプロイ方法は SAP では MCOS と呼ばれます) がサポートされます。 詳細については、1 つのホスト上の複数の SAP HANA システム (MCOS) に関する SAP の記事 (https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
+- /b2751fd43bec41a9a14e01913f1edf18.html) を参照してください。
 
 1 つのホスト上で複数のデータベース インスタンスを実行する場合は、異なるインスタンスがリソースに対して競合しないようにして、VM の物理リソースの制限を超えないようにする必要があります。 これは特に、VM を共有するインスタンスの 1 つが割り当てることのできる量に上限を設ける必要があるメモリの場合に大事です。 また、異なるデータベース インスタンスで利用できる CPU リソースにも当てはまります。 前述のすべての DBMS には、インスタンス レベルでメモリ割り当てと CPU リソースを制限できる構成があります。
 このような構成を Azure VM でサポートするには、異なるインスタンスによって管理されるデータベースのデータ ファイルとログおよび再実行ログ ファイルに使用されるディスクまたはボリュームを分離することが期待されます。 つまり、異なる DBMS インスタンスによって管理されるデータベースのデータ ファイルまたはログ ファイルと再実行ログ ファイルで、同じディスクまたはボリュームが共有されないようにします。 
@@ -121,6 +122,8 @@ Azure VM では、次の高可用性構成が DBMS レベルでサポートさ�
 
 > [!IMPORTANT]
 > 上で説明したシナリオのいずれでも、1 つの VM で複数の DBMS インスタンスの構成はサポートされていません。 各ケースでは、VM ごとにデプロイできるデータベース インスタンスは 1 つだけで、説明されている高可用性の方法で保護することができます。 Windows または Pacemaker の同じフェールオーバー クラスターで複数の DBMS インスタンスを保護することは、現時点ではサポートされて**いません**。 また、Oracle Data Guard は、VM デプロイごとに 1 つのインスタンスのケースに対してのみサポートされます。 
+
+さまざまなデータベース システムで、1 つの DBMS インスタンスで複数のデータベースをホストできます。 SAP HANA の場合と同様に、複数のデータベースを複数のデータベース コンテナー (MDC) でホストできます。 これらのマルチデータベース構成が 1 つのフェールオーバー クラスター リソース内で動作している場合、これらの構成はサポートされます。 サポートされない構成は、複数のクラスター リソースが必要になる場合です。 1 つの SQL Server インスタンスの下に複数の SQL Server 可用性グループを定義する構成の場合です。
 
 
 ![DBMS の HA 構成](./media/sap-planning-supported-configurations/database-high-availability-configuration.png)

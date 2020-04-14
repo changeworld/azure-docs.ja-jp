@@ -1,81 +1,93 @@
 ---
 title: Azure Service Fabric アプリケーション リソース モデル
-description: この記事では、Azure Resource Manager を使用した Azure Service Fabric アプリケーションの管理の概要を説明します
+description: この記事では、Azure Resource Manager を使用した Azure Service Fabric アプリケーションの管理の概要を説明します。
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 44073967730d95e803f57d504aa9d8c529250a8d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 69c10b0e9d3b7c29122c8432ab1e4bc06d3a3120
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751192"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481118"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric アプリケーション リソース モデル
 
-Azure Resource Manager を使用して、Service Fabric クラスターに Service Fabric アプリケーションをデプロイすることをお勧めします。 この方法を使用すると、アプリケーションとサービスを JSON で記述し、クラスターと同じ Resource Manager テンプレートにデプロイすることができます。 PowerShell または Azure CLI を使用してアプリケーションをデプロイおよび管理する場合とは異なり、クラスターの準備が整うまで待つ必要はありません。 アプリケーションの登録、プロビジョニング、デプロイのプロセスを、すべて 1 ステップで実行できます。 これは、クラスターでアプリケーションのライフサイクルを管理するためのベスト プラクティスです。 詳細については、「[ベスト プラクティス: コードとしてのインフラストラクチャ](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)」を参照してください。
+Azure Service Fabric アプリケーションを Service Fabric クラスターにデプロイするには、複数の選択肢があります。 Azure Resource Manager を使用することをお勧めします。 Resource Manager を使用すると、アプリケーションとサービスを JSON で記述し、クラスターと同じ Resource Manager テンプレートにデプロイすることができます。 PowerShell や Azure CLI を使ってアプリケーションをデプロイして管理する場合と違い、Resource Manager を使用する場合は、クラスターの準備が整うまで待つ必要はありません。アプリケーションの登録、プロビジョニング、およびデプロイをすべて 1 回の手順で実行できます。 クラスターでアプリケーションのライフ サイクルを管理するには、Resource Manager を使用するのが最良の方法です。 詳細については、「[ベスト プラクティス:コードとしてのインフラストラクチャ](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)」を参照してください。
 
-該当する場合は、アプリケーションを Resource Manager のリソースとして管理することで次のメリットが得られます。
+Resource Manager でアプリケーションをリソースとして管理すると、次のような分野での改善に役立ちます。
 
-* 監査証跡:Resource Manager はすべての操作を監査し、詳細な*アクティビティ ログ* を保存します。このログは、アプリケーションとクラスターに加えられたすべての変更を追跡するのに役立ちます。
+* 監査証跡:Resource Manager は、すべての操作を監査し、詳細なアクティビティ ログを保持します。 アクティビティ ログは、アプリケーションとクラスターに対して行われたすべての変更を追跡するのに役立ちます。
 * ロールベースのアクセス制御:同じ Resource Manager テンプレートを使用して、クラスターと、そのクラスターにデプロイされたアプリケーションへのアクセスを管理できます。
-* Azure Resource Manager (Azure portal 経由) を使用して、クラスターと重要なアプリケーションのデプロイをすべて 1 か所で管理できます。
-
-## <a name="service-fabric-application-life-cycle-with-azure-resource-manager"></a>Azure Resource Manager を使用した Service Fabric アプリケーションのライフ サイクル
+* 管理効率: Resource Manager を使用すると、クラスターと重要なアプリケーションのデプロイをすべて 1 か所 (Azure portal) で管理できます。
 
 このドキュメントでは、以下の方法について説明します。
 
 > [!div class="checklist"]
 >
-> * Azure Resource Manager を使用したアプリケーション リソースのデプロイ
-> * Azure Resource Manager を使用したアプリケーション リソースのアップグレード
-> * アプリケーション リソースの削除
+> * Resource Manager を使用したアプリケーション リソースのデプロイ。
+> * Resource Manager を使用したアプリケーション リソースのアップグレード。
+> * アプリケーション リソースの削除。
 
-## <a name="deploy-application-resources-using-azure-resource-manager"></a>Azure Resource Manager を使用したアプリケーション リソースのデプロイ
+## <a name="deploy-application-resources"></a>アプリケーション リソースのデプロイ
 
-Azure Resource Manager アプリケーション リソースモデルを使用してアプリケーションとそのサービスをデプロイするには、アプリケーション コードをパッケージ化し、パッケージをアップロードしてから、Azure Resource Manager テンプレートでアプリケーション リソースとしてパッケージの場所を参照する必要があります。 詳細については、[アプリケーションのパッケージ化](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg)に関する項目を参照してください。
+Resource Manager アプリケーション リソース モデルを使用してアプリケーションとそのサービスをデプロイする手順の概要は次のとおりです。
+1. アプリケーション コードをパッケージ化します。
+1. パッケージをアップロードします。
+1. Resource Manager テンプレート内のパッケージの場所をアプリケーション リソースとして参照します。 
 
-次に、Azure Resource Manager テンプレートを作成し、アプリケーションの詳細でパラメーター ファイルを更新して、Service Fabric クラスターにデプロイします。 [こちら](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)のサンプルを参照してください。
+詳細については、[アプリケーションのパッケージ化](service-fabric-package-apps.md#create-an-sfpkg)に関する項目を参照してください。
+
+次に、Resource Manager テンプレートを作成し、アプリケーションの詳細情報でパラメーター ファイルを更新し、そのテンプレートを Service Fabric クラスターにデプロイします。 [サンプルを参照してください](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)。
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-Resource Manager テンプレートからアプリケーションをデプロイするには、アプリケーション イメージをステージングするためのストレージ アカウントが必要です。 既存のストレージ アカウントを再利用するか、新しいストレージ アカウントを作成してアプリケーションをステージングすることができます。 既存のストレージ アカウントを使用する場合は、このステップを省略できます。 
+Resource Manager テンプレートからアプリケーションをデプロイするには、ストレージ アカウントが必要です。 ストレージ アカウントは、アプリケーション イメージをステージングするために使用されます。 
+
+既存のストレージ アカウントを再利用することも、アプリケーションをステージングするための新しいストレージ アカウントを作成することもできます。 既存のストレージ アカウントを使用する場合は、この手順を省略できます。 
 
 ![ストレージ アカウントの作成][CreateStorageAccount]
 
-### <a name="configure-storage-account"></a>ストレージ アカウントの構成
+### <a name="configure-your-storage-account"></a>ストレージ アカウントの構成
 
-ストレージ アカウントが作成されたら、アプリケーションをステージングできる BLOB コンテナーを作成する必要があります。 Azure portal で、アプリケーションを格納するストレージ アカウントに移動します。 **[BLOB]** ブレードを選択し、 **[コンテナーの追加]** ボタンをクリックします。 クラスター内のリソースは、パブリック アクセス レベルをプライベートに設定することで、セキュリティで保護することができます。 アクセスは次のさまざまな方法で付与できます。
+ストレージ アカウントが作成されたら、アプリケーションをステージングできる BLOB コンテナーを作成します。 Azure portal で、アプリケーションを格納する Azure Storage アカウントに移動します。 **[BLOB]**  >  **[コンテナーの追加]** の順に選択します。 
 
-* [Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../storage/common/storage-auth-aad-app.md)
-* [Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](../storage/common/storage-auth-aad-rbac-portal.md)
-* [共有アクセス署名 (SAS) を使用したアクセスの委任](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature
-)
+クラスター内のリソースは、パブリック アクセス レベルを **[プライベート]** に設定することで、セキュリティで保護することができます。 アクセス権は、次の複数の方法で付与できます。
 
- この例では、引き続き BLOB の匿名読み取りアクセスを使用します。
+* [Azure Active Directory](../storage/common/storage-auth-aad-app.md) を使用して BLOB とキューへのアクセスを承認する。
+* [Azure portal で RBAC](../storage/common/storage-auth-aad-rbac-portal.md) を使用して Azure BLOB とキューのデータへのアクセスを付与する。
+* [Shared Access Signature](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature) を使用してアクセスを委任する。
+
+次のスクリーンショットの例では、BLOB の匿名読み取りアクセスを使用しています。
 
 ![BLOB の作成][CreateBlob]
 
-### <a name="stage-application-in-a-storage-account"></a>ストレージ アカウントでアプリケーションをステージングする
+### <a name="stage-the-application-in-your-storage-account"></a>ストレージ アカウントでアプリケーションをステージングする
 
-アプリケーションをデプロイする前に、アプリケーションを BLOB ストレージにステージングする必要があります。 このチュートリアルではアプリケーション パッケージを手動で作成しますが、この手順は自動化できます。  詳細については、[アプリケーションのパッケージ化](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg)に関する項目を参照してください。 以下の手順では、[Voting サンプル アプリケーション](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart)を使用します。
+アプリケーションをデプロイするには、事前に BLOB ストレージにアプリケーションをステージングする必要があります。 このチュートリアルでは、アプリケーション パッケージを手動で作成します。 この手順は自動化できることに注意してください。 詳細については、[アプリケーションのパッケージ化](service-fabric-package-apps.md#create-an-sfpkg)に関する記事を参照してください。 
 
-1. Visual Studio で Voting プロジェクトを右クリックし、パッケージを選択します。
-![アプリケーションのパッケージ化][PackageApplication]  
-2. 作成したばかりの **.\service-fabric-dotnet-quickstart\Voting\pkg\Debug** ディレクトリを開き、**Voting.zip** という名前のファイルに内容を zip 圧縮します。このとき、ApplicationManifest.xml を zip ファイルのルートに配置します。  
-![アプリケーションの圧縮][ZipApplication]  
-3. ファイルの拡張子を .zip から **.sfpkg** に変更します。
-4. Azure portal で、ストレージ アカウントの **apps** コンテナーで **[アップロード]** をクリックして **Voting.sfpkg** をアップロードします。  
-![アプリ パッケージのアップロード][UploadAppPkg]
+このチュートリアルでは、[Voting サンプル アプリケーション](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart)を使用します。
 
-これで、アプリケーションがステージングされました。 以上で、Azure Resource Manager テンプレートを作成してアプリケーションをデプロイする準備が整いました。
+1. Visual Studio で **[Voting]** プロジェクトを右クリックし、 **[Package]\(パッケージ\)** を選択します。
 
-### <a name="create-the-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの作成
+   ![アプリケーションのパッケージ化][PackageApplication]  
+1. *.\service-fabric-dotnet-quickstart\Voting\pkg\Debug* ディレクトリに移動します。 内容を zip 形式で *Voting.zip* という名前のファイルに圧縮します。 *ApplicationManifest.xml* ファイルが zip ファイルのルートにあります。
 
-サンプル アプリケーションには、アプリケーションのデプロイに使用できる [Azure Resource Manager テンプレート](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)が含まれています。 テンプレート ファイルの名前は **UserApp.json** と **UserApp.Parameters.json** です。
+   ![アプリケーションの zip 圧縮][ZipApplication]  
+1. ファイルの名前を変更し、拡張子を .zip から *.sfpkg* に変更します。
+
+1. Azure portal で、お使いのストレージ アカウントの **apps** コンテナーで **[アップロード]** を選択して **Voting.sfpkg** をアップロードします。 
+
+   ![アプリ パッケージのアップロード][UploadAppPkg]
+
+これで、アプリケーションがステージングされ、Resource Manager テンプレートを作成してアプリケーションをデプロイできるようになりました。
+
+### <a name="create-the-resource-manager-template"></a>Resource Manager テンプレートの作成
+
+サンプル アプリケーションには、アプリケーションのデプロイに使用できる [Azure Resource Manager テンプレート](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)が含まれています。 テンプレート ファイルの名前は、*UserApp.json* と *UserApp.Parameters.json* です。
 
 > [!NOTE]
-> **UserApp.Parameters.json** ファイルを、クラスターの名前で更新する必要があります。
+> *UserApp.Parameters.json* ファイルを、クラスターの名前で更新する必要があります。
 >
 >
 
@@ -83,11 +95,11 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | デプロイ先クラスターの名前 | sf-cluster123                                                |                                                              |
 | application            | アプリケーションの名前                 | Voting                                                       |
-| applicationTypeName    | アプリケーションの種類名           | VotingType                                                   | ApplicationManifest.xml の内容と一致する必要があります                 |
-| applicationTypeVersion | アプリケーションの種類のバージョン         | 1.0.0                                                        | ApplicationManifest.xml の内容と一致する必要があります                 |
+| applicationTypeName    | アプリケーションの種類名           | VotingType                                                   | ApplicationManifest.xml と一致する必要があります                 |
+| applicationTypeVersion | アプリケーションの種類のバージョン         | 1.0.0                                                        | ApplicationManifest.xml と一致する必要があります                 |
 | serviceName            | サービスの名前         | Voting~VotingWeb                                             | ApplicationName~ServiceType の形式にする必要があります            |
-| serviceTypeName        | サービスの種類名                | VotingWeb                                                    | ServiceManifest.xml の内容と一致する必要があります                 |
-| appPackageUrl          | アプリケーションの BLOB ストレージ URL     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | BLOB ストレージ内のアプリケーション パッケージの URL (これを設定する手順は以下で説明します) |
+| serviceTypeName        | サービスの種類名                | VotingWeb                                                    | ServiceManifest.xml と一致する必要があります                 |
+| appPackageUrl          | アプリケーションの BLOB ストレージ URL     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | BLOB ストレージ内のアプリケーション パッケージの URL (URL を設定する手順については、この記事の後半で説明します) |
 
 ```json
 {
@@ -118,17 +130,17 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 
 ### <a name="deploy-the-application"></a>アプリケーションの配置
 
-アプリケーションをデプロイするには、New-AzResourceGroupDeployment を実行して、クラスターを含むリソース グループにデプロイします。
+**New-AzResourceGroupDeployment** コマンドレットを実行して、クラスターを含むリソース グループにアプリケーションをデプロイします。
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParameterFile ".\UserApp.Parameters.json" -TemplateFile ".\UserApp.json" -Verbose
 ```
 
-## <a name="upgrade-service-fabric-application-using-azure-resource-manager"></a>Azure Resource Manager を使用した Service Fabric アプリケーションのアップグレード
+## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>Resource Manager を使用した Service Fabric アプリケーションのアップグレード
 
-以下の理由により、Service Fabric クラスターに既にデプロイされているアプリケーションがアップグレードされます。
+次のいずれかの理由により、Service Fabric クラスターに既にデプロイされているアプリケーションをアップグレードする場合があります。
 
-1. 新しいサービスがアプリケーションに追加されます。 service-manifest.xml および application-manifest.xml ファイルにサービス定義を追加する必要があります。 次に、アプリケーションの新しいバージョンを反映するために、[UserApp.parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json) でアプリケーションの種類のバージョンを 1.0.0 から 1.0.1 に更新する必要があります。
+* 新しいサービスがアプリケーションに追加されます。 サービス定義は、サービスがアプリケーションに追加されるときに *service-manifest.xml* と *application-manifest.xml* ファイルに追加する必要があります。 アプリケーションの新しいバージョンを反映するために、[UserApp.parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json) でアプリケーションの種類のバージョンを 1.0.0 から 1.0.1 に変更する必要もあります。
 
     ```json
     "applicationTypeVersion": {
@@ -142,7 +154,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
     }
     ```
 
-2. 既存のサービスの新しいバージョンがアプリケーションに追加されます。 これは、アプリケーション コードの変更と、アプリの種類のバージョンと名前の更新を伴います。
+* 既存のサービスの新しいバージョンがアプリケーションに追加されます。 例としては、アプリケーション コードの変更や、アプリの種類のバージョンと名前の更新などがあります。 このアップグレードでは、次のように UserApp.Parameters.json を更新します。
 
     ```json
      "applicationTypeVersion": {
@@ -152,15 +164,15 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 ## <a name="delete-application-resources"></a>アプリケーション リソースの削除
 
-Azure Resource Manager のアプリケーション リソース モデルを使用してデプロイされたアプリケーションは、以下の手順を使用してクラスターから削除できます。
+Resource Manager でアプリケーション リソース モデルを使用してデプロイされたアプリケーションを削除するには、次のようにします。
 
-1) [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) を使用してアプリケーションのリソース ID を取得します。
+1. [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) コマンドレットを使用して、アプリケーションのリソース ID を取得します。
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-2) [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) を使用してアプリケーション リソースを削除します。
+1. [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) コマンドレットを使用して、アプリケーション リソースを削除します。
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
@@ -170,13 +182,11 @@ Azure Resource Manager のアプリケーション リソース モデルを使�
 
 アプリケーション リソース モデルに関する情報を入手します。
 
-* [Service Fabric のアプリケーションのモデル化](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model)
-* [Service Fabric のアプリケーション マニフェストとサービス マニフェスト](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-and-service-manifests)
+* [Service Fabric のアプリケーションのモデル化](service-fabric-application-model.md)
+* [Service Fabric のアプリケーション マニフェストとサービス マニフェスト](service-fabric-application-and-service-manifests.md)
+* [ベスト プラクティス:コードとしてのインフラストラクチャ](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
+* [アプリケーションとサービスを Azure リソースとして管理する](service-fabric-best-practices-infrastructure-as-code.md)
 
-## <a name="see-also"></a>参照
-
-* [ベスト プラクティス](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
-* [アプリケーションとサービスを Azure リソースとして管理する](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 
 <!--Image references-->
 [CreateStorageAccount]: ./media/service-fabric-application-model/create-storage-account.png

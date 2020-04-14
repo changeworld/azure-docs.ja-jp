@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 2f7eafc6fc1533bd837fae60dd3b9673f6f97aa8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 15e10d34120ab5475f241235bbebeb0c7689ca14
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913023"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371222"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Azure PowerShell で Key Vault 証明書を使用して SSL 終焉を構成する
 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> SSL 終了が正しく機能するには、-EnableSoftDelete フラグを使用する必要があります。
+> SSL 終了が正しく機能するには、-EnableSoftDelete フラグを使用する必要があります。 [ポータルからの Key Vault の論理的な削除](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior)を構成している場合、保持期間は 90 日 (既定値) で維持する必要があります。 Application Gateway では、まだ異なる保有期間をサポートしていません。 
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 14f9d698f36fd26563677ef5b3cb82fc8ecf3a4c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: dc78f105d353a9a17af4b33dfc806eed91e7c6dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588962"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063215"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ネットワーク MSP パートナーについて
 
@@ -24,7 +24,7 @@ Azure ネットワーク MSP は、クラウドおよびハイブリッド ネ�
 
 お客様は、MSP のマネージド サービス オファーを、Azure Marketplace で購入することも、MSP から直接購入することもできます。 MSP は、[Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/) を使用して、お客様のサブスクリプションとリソース グループに Azure のネットワーク リソースをデプロイおよび管理できます。
 
-## <a name="msp"></a>Azure ネットワーク MSP パートナーによる Azure Marketplace のオファー
+## <a name="azure-marketplace-offers-by-azure-networking-msp-partners"></a><a name="msp"></a>Azure ネットワーク MSP パートナーによる Azure Marketplace のオファー
 
 Azure ネットワーク MSP パートナーによって提供されるマネージド クラウド ネットワーク サービスの詳細については、このセクションのリンクを使用してください。 お客様のクラウド ネットワーク サービス パートナーが下のセクションに記載されていない場合は、プロバイダーから Microsoft に問い合わせるようお伝えください。 パートナーは ManagedVirtualWAN@microsoft.com にメールを送信して Microsoft に問い合わせることができます。 
 
@@ -50,13 +50,13 @@ Azure ネットワーク MSP パートナーによって提供されるマネー
 |[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure 正常性チェック: 5 日の評価](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 日間の実装](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis Managed ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet を利用する Vandis Managed VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview)。[Palo Alto Networks を利用する Vandis Managed VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-次の Azure Networking MSP パートナーからの新しいマネージド セキュリティ サービスとマネージド MEC サービスを含む Azure Marketplace オファーがロードマップにあります。[Amdocs](https://www.amdocs.com/)、[CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html)、[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)、[InterCloud](https://intercloud.com/partners/microsoft-azure/)、[KINX](https://www.kinx.net/service/cloud/?lang=en)、[Megaport](https://www.megaport.com/services/microsoft-expressroute/)、[OmniClouds](https://omniclouds.com/services/)、[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)、[Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)、[Federated Wireless](https://www.federatedwireless.com/caas/)
+次の Azure Networking MSP パートナーからの新しいマネージド セキュリティ サービスとマネージド MEC サービスを含む Azure Marketplace オファーがロードマップにあります。[Amdocs](https://www.amdocs.com/)、[AXESDN](https://www.axesdn.com/en/azure-msp.html)、[CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html)、[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)、[InterCloud](https://intercloud.com/partners/microsoft-azure/)、[KINX](https://www.kinx.net/service/cloud/?lang=en)、[Megaport](https://www.megaport.com/services/microsoft-expressroute/)、[OmniClouds](https://omniclouds.com/services/)、[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)、[Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)、[Federated Wireless](https://www.federatedwireless.com/caas/)
 
-## <a name="expressroute"></a>ExpressRoute パートナー
+## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute パートナー
 
 パートナーの詳細については、[ExpressRoute パートナーと提供地域](../expressroute/expressroute-locations-providers.md)に関する記事をご覧ください。
 
-## <a name="vwan"></a>Virtual WAN パートナー
+## <a name="virtual-wan-partners"></a><a name="vwan"></a>Virtual WAN パートナー
 
 パートナーの詳細については、[Virtual WAN パートナーとプロバイダー](../virtual-wan/virtual-wan-locations-partners.md)に関する記事をご覧ください。
 

@@ -1,26 +1,18 @@
 ---
-title: Linux を実行する仮想マシンでのソフトウェア RAID の構成
+title: Linux VM でのソフトウェア RAID の構成
 description: mdadm を使用して Azure 内の Linux で RAID を構成する方法について説明します。
-services: virtual-machines-linux
-documentationcenter: na
 author: rickstercdn
-manager: gwallace
-editor: tysonn
-tag: azure-service-management,azure-resource-manager
-ms.assetid: f3cb2786-bda6-4d2c-9aaf-2db80f490feb
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: f59e4b9ee85803ab5635e72b3607e82e958d9696
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 122abda51b907491b322908c3c2c689bc1723e87
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534196"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226787"
 ---
 # <a name="configure-software-raid-on-linux"></a>Linux でのソフトウェア RAID の構成
 一般的なシナリオは、Azure 内の Linux 仮想マシンでソフトウェア RAID を使用して、複数のデータ ディスクを 1 つの RAID デバイスとしてアタッチすることです。 このシナリオを使用すると通常、1 つのみのディスクを使用するシナリオよりもパフォーマンスとスループットが向上します。

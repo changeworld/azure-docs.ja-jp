@@ -3,12 +3,12 @@ title: Azure Resource Health の概要
 description: Azure Resource Health の概要
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7a1dfe5e93d0e19aeb343d113a24ed882a5b3f69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356790"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159253"
 ---
 # <a name="resource-health-overview"></a>Resource Health の概要
  
@@ -38,7 +38,7 @@ Azure Resource Health は、Azure のリソースに影響を及ぼしている�
 
 #### <a name="platform-events"></a>プラットフォームのイベント
 
-プラットフォームのイベントは、Azure インフラストラクチャの複数のコンポーネントによってトリガーされます。 これには、スケジュールされたアクション (計画的なメンテナンスなど) と、予期しないインシデント (計画されていないホストの再起動など) の両方が含まれます。
+プラットフォームのイベントは、Azure インフラストラクチャの複数のコンポーネントによってトリガーされます。 これには、スケジュールされたアクション (計画的なメンテナンスなど) と、予期しないインシデント (計画されていないホストの再起動や、指定の期間後に障害が発生すると予測される機能が低下したホスト ハードウェアなど) の両方が含まれます。
 
 Resource Health は、イベントと復旧プロセスについてさらに詳細な情報を提供します。 また、ユーザーは、有効なサポート契約がない場合でも、Microsoft サポートに問い合わせることができます。
 
@@ -76,7 +76,7 @@ Resource Health は、イベントと復旧プロセスについてさらに詳�
 
 ## <a name="history-information"></a>履歴情報
 
-Resource Health の **[Health history]\(正常性の履歴\)** セクションで、14 日間の履歴にアクセスできます。
+Resource Health の **[正常性の履歴]** セクションで、最大 30 日間の履歴にアクセスできます。
 
 ![過去 2 週間の Resource Health イベントの一覧](./media/resource-health-overview/history-blade.png)
 

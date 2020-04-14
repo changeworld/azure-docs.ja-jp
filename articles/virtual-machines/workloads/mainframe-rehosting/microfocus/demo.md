@@ -3,21 +3,24 @@ title: Azure Virtual Machines で Micro Focus Enterprise Developer 4.0 用の Mi
 description: Micro Focus Enterprise Server と Enterprise Developer の使用方法を学習するために、Azure Virtual Machines (VM) で Micro Focus BankDemo アプリケーションを実行します。
 author: sread
 ms.author: sread
-ms.date: 04/02/2019
+ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621334"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411066"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure で Micro Focus Enterprise Developer 4.0 用の Micro Focus CICS BankDemo を設定する
 
 Micro Focus Enterprise Server 4.0 と Enterprise Developer 4.0 を Azure 上で設定する際には、IBM z/OS ワークロードのデプロイをテストできます。 この記事では、CICS BankDemo (Enterprise Developer に付属しているサンプル アプリケーション) の設定方法について説明します。
 
 CICS とは、Customer Information Control System (顧客情報管理システム) の略です。これは、多くのオンライン メインフレーム アプリケーションで使用されているトランザクション プラットフォームです。 BankDemo アプリケーションは、Enterprise Server と Enterprise Developer の動作を学習したり、グリーンスクリーン端末を備えた実際のアプリケーションの管理方法やデプロイ方法を学習するのに最適です。
+
+> [!NOTE]
+> 近日対応予定:Azure VM での [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) のセットアップの手順。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -239,7 +242,7 @@ BankDemo アプリケーションにアクセスする TN3270 セッション用
 
 7. **[Name]\(名前)** に、「**TN3270**」と入力します。 **[Port]\(ポート)** には、「**9024**」と入力します ESDEMO アプリケーションでポート 9230 が使用されるので、別のポートを使用する必要があります。
 
-8. ファイルを保存するには、 **[Save]\(保存)** アイコンをクリックするか、 **[File]\(ファイル\)** \> **[Save]\(保存)** を選択します。
+8. ファイルを保存するには、 **[保存]** アイコンをクリックするか、 **[ファイル]** \> **[保存]** の順に選択します。
 
 9. リスナーを起動するには、 **[Start Listener]\(リスナーの起動\)** アイコンをクリックするか、 **[Options]\(オプション\)** \> **[Start Listener]\(リスナーの起動\)** を選択します。
 
@@ -267,7 +270,7 @@ BankDemo アプリケーションにアクセスする TN3270 セッション用
 
 お疲れさまでした。 これで、Micro Focus Enterprise Server を使用して CICS アプリケーションを Azure で実行できました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure の Docker コンテナーで Enterprise Server を実行する](run-enterprise-server-container.md)
 - [メインフレーム移行 - Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)

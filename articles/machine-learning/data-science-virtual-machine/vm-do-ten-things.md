@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 147f43148c0f804adf70f1a792ba1b8a772fdae4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8da8cd7110cd17d0aadd52cce1263c7c0fcfdf5c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294487"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632165"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows データ サイエンス仮想マシンでできる 10 のこと
 
@@ -803,16 +803,6 @@ pd.read_sql(queryString, connection)
 ```
 
 ![テーブルのデータの上位の行](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
-
-#### <a name="read-data-from-hdi-by-using-azure-machine-learning-studio-classic-reader-module"></a>Azure Machine Learning Studio (クラシック) のリーダー モジュールを使用して HDI からデータを読み取る
-
-Azure Machine Learning Studio (クラシック) のリーダー モジュールを使用して、Hadoop クラスター内のデータベースにアクセスすることもできます。 ご利用の HDI クラスターと Azure ストレージ アカウントの資格情報を追加すると、HDI クラスター内のデータベースを使用して機械学習モデルを構築できるようになります。
-
-![リーダー モジュールのプロパティ](./media/vm-do-ten-things/AML_Reader_Hive.PNG)
-
-さらに、スコア付けされたデータセットを表示できます。
-
-![スコア付けされたデータセットを表示する](./media/vm-do-ten-things/AML_Model_Results.PNG)
 
 ### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL Data Warehouse とデータベース
 Azure SQL Data Warehouse は、エンタープライズ規模の SQL Server エクスペリエンスを備えた、サービスとしてのエラスティック データ ウェアハウスです。

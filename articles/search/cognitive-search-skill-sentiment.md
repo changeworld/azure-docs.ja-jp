@@ -110,13 +110,13 @@ Microsoft.Skills.Text.SentimentSkill
 }
 ```
 
-## <a name="notes"></a>メモ
+## <a name="notes"></a>Notes
 空の場合は、これらのレコードに対してセンチメント スコアは返されません。
 
 ## <a name="error-cases"></a>エラーになる場合
 言語がサポートされていない場合、エラーが生成され、センチメント スコアは返されません。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

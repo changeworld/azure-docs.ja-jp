@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: e84a6c93ad8757b302670af202f9d4b407f3ef57
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 9beb6dbbba1c5855b8bfa97fc02f50aa59225d78
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945312"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474852"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
 
@@ -64,7 +64,7 @@ HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を�
 POST 要求では以下を使用します。
 
 * 必須の [URI パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* セキュリティを確保するために必須の[ヘッダー プロパティ](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer) (`Authorization`)
+* セキュリティを確保するために必須のヘッダー プロパティ (`Authorization`)
 * 必須の[本文プロパティ](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)
 
 GenerateAnswer の URL は次の形式になります。
@@ -146,8 +146,6 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。
 
-サポート ボットに、このコードを使用した[サンプル](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418)があります。
-
 ## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Node.js のボットで QnA Maker を使用する
 
 Bot Framework では、[getAnswer API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-) を使用して QnA Maker のプロパティへのアクセスを提供します。
@@ -165,8 +163,6 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 ```
 
 以前の JSON では、30% のスコアまたはしきい値のスコア以上の回答のみが要求されました。
-
-サポート ボットに、このコードを使用した[サンプル](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36)があります。
 
 <a name="metadata-example"></a>
 

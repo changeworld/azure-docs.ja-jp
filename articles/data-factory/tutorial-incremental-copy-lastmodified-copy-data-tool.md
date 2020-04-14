@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 1/24/2019
-ms.openlocfilehash: 291a991542f9d535d2450dfd465196b755c623ac
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 3/18/2020
+ms.openlocfilehash: 743f9dd8f7998178a75d716f4da22efee2b3bc79
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982636"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131030"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>データのコピー ツールを使用し LastModifiedDate に基づいて新しいファイルおよび変更されたファイルを増分コピーする
 
@@ -72,15 +72,11 @@ ms.locfileid: "75982636"
 
 5. **[バージョン]** で、 **[V2]** を選択します。
 6. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他の場所やリージョンに存在していてもかまいません。
-7. **[ダッシュボードにピン留めする]** をオンにします。
-8. **作成** を選択します。
-9. ダッシュボードの **[Deploying Data Factory]\(データ ファクトリをデプロイしています\)** タイルで、処理の状態を確認します。
-
-    ![[Deploying Data Factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-copy-data-tool/deploying-data-factory.png)
-10. 作成が完了すると、 **[Data Factory]** ホーム ページが表示されます。
+8. **［作成］** を選択します
+9. 作成が完了すると、 **[Data Factory]** ホーム ページが表示されます。
+10. 別のタブで Azure Data Factory ユーザー インターフェイス (UI) を開くには、 **[Author & Monitor]\(作成と監視\)** タイルを選択します。
 
     ![データ ファクトリのホーム ページ](./media/doc-common-process/data-factory-home-page.png)
-11. 別のタブで Azure Data Factory ユーザー インターフェイス (UI) を開くには、 **[Author & Monitor]\(作成と監視\)** タイルを選択します。
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>データのコピー ツールを使用してパイプラインを作成する
 
@@ -108,15 +104,11 @@ ms.locfileid: "75982636"
 
     a. **[+ 新しい接続の作成]** を選択してして、接続を追加します。
 
-    ![[ソース データ ストア] ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page.png)
-
     b. ギャラリーから **[Azure Blob Storage]** を選択し、 **[続行]** を選択します。
 
     ![[ソース データ ストア] ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png)
 
-    c. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、 **[ストレージ アカウント名]** ボックスの一覧からストレージ アカウントを選択し、 **[完了]** をクリックします。
-
-    ![[ソース データ ストア] ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-linkedservice.png)
+    c. **[New Linked Service(Azure Blob Storage)]\(新しいリンクされたサービス (Azure Blob Storage)\)** ページで、 **[ストレージ アカウント名]** ボックスの一覧からお使いのストレージ アカウントを選択します。 接続をテストし、 **[作成]** を選択します。
 
     d. 新しく作成したリンクされたサービスを選択して、 **[次へ]** を選択します。
 
@@ -130,15 +122,11 @@ ms.locfileid: "75982636"
 
     b. **[File loading behavior]\(ファイル読み込み動作\)** で、 **[Incremental load: LastModifiedDate]\(増分読み込み: LastModifiedDate\)** を選択します。
 
-    ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-loading-behavior.png)
-
     c. **[Binary copy]\(バイナリ コピー\)** をオンにして、 **[次へ]** を選択します。
 
      ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
 
-5. **[Destination data store]\(コピー先データ ストア\)** ページで **[AzureBlobStorage]** を選択します。 これは、コピー元データ ストアと同じストレージ アカウントです。 **[次へ]** を選択します。
-
-    ![[Destination data store]\(コピー先データ ストア\) ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/destination-data-store-page-select-linkedservice.png)
+5. **[Destination data store]\(コピー先データ ストア\)** ページで、作成した **AzureBlobStorage** を選択します。 これは、コピー元データ ストアと同じストレージ アカウントです。 **[次へ]** を選択します。
 
 6. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、次の手順を実行します。
 
@@ -148,11 +136,7 @@ ms.locfileid: "75982636"
 
     b. **[次へ]** を選択します。
 
-     ![出力ファイルまたはフォルダーの選択](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/click-next-after-output-folder.png)
-
 7. **[設定]** ページで **[次へ]** を選択します。
-
-    ![[設定] ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/settings-page.png)
 
 8. **[Summary]\(概要\)** ページで設定を確認し、 **[次へ]** を選択します。
 
@@ -162,11 +146,11 @@ ms.locfileid: "75982636"
 
     ![[Deployment]\(デプロイ\) ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/deployment-page.png)
 
-10. 左側の **[監視]** タブが自動的に選択されたことがわかります。 **[アクション]** 列には、アクティビティの実行の詳細を表示するリンクとパイプラインを再実行するリンクが表示されます。 **[更新]** を選択して一覧を更新し、 **[Actions]\(アクション\)** 列で **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。
+10. 左側の **[監視]** タブが自動的に選択されたことがわかります。 アプリケーションの **[監視]** タブに切り替えます。パイプラインの状態が表示されます。 **[最新の情報に更新]** を選択して、一覧を更新します。 **[パイプライン名]** の下にあるリンクをクリックして、アクティビティの実行の詳細を表示するか、パイプラインを再実行します。 
 
     ![一覧を更新し、[View Activity Runs]\(アクティビティの実行の表示\) を選択します](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
 
-11. パイプラインにはアクティビティ (コピー アクティビティ) が 1 つしかないため、エントリが 1 つだけ表示されます。 コピー操作の詳細を確認するために、 **[アクション]** 列にある **[詳細]** リンク (眼鏡アイコン) を選択します。
+11. パイプラインにはアクティビティ (コピー アクティビティ) が 1 つしかないため、エントリが 1 つだけ表示されます。 コピー操作の詳細を確認するには、 **[ACTIVITY NAME]\(アクティビティ名\)** 列の **[詳細]** リンク (眼鏡アイコン) を選択します。 プロパティの詳細については、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。 
 
     ![パイプラインにコピー アクティビティがあります](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png)
 
@@ -178,13 +162,11 @@ ms.locfileid: "75982636"
 
     ![File1.txt を作成して source コンテナーにアップロードします](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
 
-13. **[Pipeline Runs]\(パイプライン実行\)** ビューに戻るために、 **[All Pipelines Runs]\(すべてのパイプライン実行\)** を選択し、同じパイプラインが再び自動的にトリガーされるまで待ちます。  
+13. **[Pipeline Runs]\(パイプライン実行\)** ビューに戻るために、 **[All pipeline runs]\(すべてのパイプライン実行\)** を選択し、同じパイプラインが再び自動的にトリガーされるまで待ちます。  
 
     ![[All Pipelines Runs]\(すべてのパイプライン実行\) を選択します](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
 
-14. 2 回目のパイプライン実行が表示されたら、その実行に対して **[View Activity Run]\(アクティビティの実行の表示\)** を選択します。 1 回目のパイプライン実行の場合と同じように詳細を確認します。  
-
-    ![[View Activity Run]\(アクティビティの実行の表示\) を選択して詳細を確認します](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs5.png)
+14. 2 番目のパイプラインの実行が完了したら、前述と同じ手順に従って、アクティビティの実行の詳細を確認します。  
 
     BLOB ストレージ アカウントの **source** コンテナーから **destination** コンテナーに 1 つのファイル (file1.txt) がコピーされたことが表示されます。
 
@@ -193,8 +175,6 @@ ms.locfileid: "75982636"
 15. 空のテキスト ファイルをもう 1 つ作成し、**file2.txt** という名前を付けます。 このテキスト ファイルを BLOB ストレージ アカウントの **source** コンテナーにアップロードします。
 
 16. 2 つ目のテキスト ファイルに対して手順 13 と 14 を繰り返します。 次のパイプライン実行では、ストレージ アカウントの **source** コンテナーから **destination** コンテナーに新しいファイル (file2.txt) だけがコピーされたことがわかります。  
-
-    ![File2.txt が source コンテナーから destination コンテナーにコピーされました](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs7.png)
 
     この状況は、[Azure Storage Explorer](https://storageexplorer.com/) を使用してファイルをスキャンする方法でも確認できます。
 

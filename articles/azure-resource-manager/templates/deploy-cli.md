@@ -2,17 +2,19 @@
 title: Azure CLI とテンプレートを使用してリソースをデプロイする
 description: Azure Resource Manager と Azure CLI を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
 ms.topic: conceptual
-ms.date: 10/09/2019
-ms.openlocfilehash: 64f60a6e15a0c51e5ee506340c064804f7588693
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.date: 03/25/2020
+ms.openlocfilehash: 241b84bc7b8c0b213e74cd7ee5f3d7668fe0d808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250658"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282649"
 ---
-# <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ
+# <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM テンプレートと Azure CLI でリソースをデプロイする
 
-この記事では、Azure CLI と Resource Manager テンプレートを使用して、Azure にリソースをデプロイする方法について説明します。 Azure ソリューションのデプロイと管理の概念について詳しくない場合、「[テンプレートのデプロイの概要](overview.md)」をご覧ください。
+この記事では、Azure CLI と Azure Resource Manager (ARM) テンプレートを使用して、Azure にリソースをデプロイする方法について説明します。 Azure ソリューションのデプロイと管理の概念について詳しくない場合、「[テンプレートのデプロイの概要](overview.md)」をご覧ください。
+
+デプロイ コマンドは Azure CLI バージョン 2.2.0 で変更されました。 この記事の例では、Azure CLI バージョン 2.2.0 以降が必要です。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -20,23 +22,39 @@ Azure CLI がインストールされていない場合は、[Cloud Shell](#depl
 
 ## <a name="deployment-scope"></a>デプロイのスコープ
 
-Azure サブスクリプション、またはサブスクリプション内のリソース グループのいずれかを、デプロイの対象として指定できます。 多くの場合、リソース グループをデプロイの対象にします。 サブスクリプション デプロイを使用するのは、サブスクリプション全体にポリシーとロールの割り当てを適用するときです。 また、リソース グループを作成し、それにリソースをデプロイする場合も、サブスクリプション デプロイを使用します。 使用するコマンドは、デプロイのスコープに応じて異なります。
+リソース グループ、サブスクリプション、管理グループ、またはテナントをデプロイのターゲットにすることができます。 多くの場合、リソース グループをデプロイの対象にします。 より大きなスコープでポリシーとロールの割り当てを適用するには、サブスクリプション、管理グループ、またはテナントのデプロイを使用します。 サブスクリプションにデプロイする際には、リソース グループを作成してそこにリソースをデプロイすることができます。
 
-**リソース グループ**にデプロイするには、[az group deployment create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) を使用します。
+使用するコマンドは、デプロイのスコープに応じて異なります。
 
-```azurecli
-az group deployment create --resource-group <resource-group-name> --template-file <path-to-template>
+**リソース グループ**にデプロイするには、[az deployment group create](/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-create) を使用します。
+
+```azurecli-interactive
+az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
 ```
 
-**サブスクリプション**にデプロイするには、[az deployment create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create) を使用します。
+**サブスクリプション**にデプロイするには、[az deployment sub create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create) を使用します。
 
-```azurecli
-az deployment create --location <location> --template-file <path-to-template>
+```azurecli-interactive
+az deployment sub create --location <location> --template-file <path-to-template>
 ```
 
 サブスクリプション レベルでのデプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
 
-現在、管理グループのデプロイは、REST API を介してのみサポートされています。 管理グループ レベルでのデプロイの詳細については、「[管理グループ レベルでリソースを作成する](deploy-to-management-group.md)」を参照してください。
+**管理グループ**にデプロイするには、[az deployment mg create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create) を使用します。
+
+```azurecli-interactive
+az deployment mg create --location <location> --template-file <path-to-template>
+```
+
+管理グループ レベルでのデプロイの詳細については、「[管理グループ レベルでリソースを作成する](deploy-to-management-group.md)」を参照してください。
+
+**テナント**にデプロイするには、[az deployment tenant create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create) を使用します。
+
+```azurecli-interactive
+az deployment tenant create --location <location> --template-file <path-to-template>
+```
+
+テナント レベルでのデプロイの詳細については、「[テナント レベルでリソースを作成する](deploy-to-tenant.md)」を参照してください。
 
 この記事の例では、リソース グループ デプロイを使用します。
 
@@ -54,7 +72,7 @@ az deployment create --location <location> --template-file <path-to-template>
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
   --template-file storage.json \
@@ -69,13 +87,13 @@ az group deployment create \
 
 ## <a name="deploy-remote-template"></a>リモート テンプレートのデプロイ
 
-Resource Manager テンプレートは、ローカル コンピューターに格納する代わりに、外部の場所に格納することもできます。 ソース管理リポジトリ (GitHub など) にテンプレートを格納できます。 または、組織内の共有アクセス用の Azure ストレージ アカウントに格納することができます。
+ARM テンプレートをローカル コンピューターに格納する代わりに、外部の場所に格納することもできます。 ソース管理リポジトリ (GitHub など) にテンプレートを格納できます。 または、組織内の共有アクセス用の Azure ストレージ アカウントに格納することができます。
 
 外部テンプレートをデプロイするには、**template-uri** パラメーターを使用します。 この例の URI を使用して、GitHub のサンプル テンプレートをデプロイします。
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
   --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
@@ -90,7 +108,7 @@ Cloud Shell で次のコマンドを使用します。
 
 ```azurecli-interactive
 az group create --name examplegroup --location "South Central US"
-az group deployment create --resource-group examplegroup \
+az deployment group create --resource-group examplegroup \
   --template-uri <copied URL> \
   --parameters storageAccountType=Standard_GRS
 ```
@@ -103,8 +121,8 @@ az group deployment create --resource-group examplegroup \
 
 インライン パラメーターを渡すには、`parameters` に値を指定します。 たとえば、Bash シェルで文字列と配列をテンプレートに渡すには、以下を使用します。
 
-```azurecli
-az group deployment create \
+```azurecli-interactive
+az deployment group create \
   --resource-group testgroup \
   --template-file demotemplate.json \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
@@ -114,8 +132,8 @@ Windows コマンド プロンプト (CMD) または PowerShell で Azure CLI �
 
 ファイルの内容を取得し、その内容をインライン パラメーターとして提供することもできます。
 
-```azurecli
-az group deployment create \
+```azurecli-interactive
+az deployment group create \
   --resource-group testgroup \
   --template-file demotemplate.json \
   --parameters exampleString=@stringContent.txt exampleArray=@arrayContent.json
@@ -141,7 +159,7 @@ arrayContent.json 形式は次のようになります。
 ローカル パラメーター ファイルを渡すには、`@` を使用して storage.parameters.json という名前のローカル ファイルを指定します。
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
   --template-file storage.json \
@@ -172,10 +190,10 @@ az group deployment create \
 
 ## <a name="test-a-template-deployment"></a>テンプレートのデプロイをテストする
 
-リソースを実際にデプロイすることなく、テンプレートとパラメーターの値をテストするには、[az group deployment validate](/cli/azure/group/deployment#az-group-deployment-validate) を使用します。
+リソースを実際にデプロイすることなく、テンプレートとパラメーターの値をテストするには、[az deployment group validate](/cli/azure/group/deployment) を使用します。
 
 ```azurecli-interactive
-az group deployment validate \
+az deployment group validate \
   --resource-group ExampleGroup \
   --template-file storage.json \
   --parameters @storage.parameters.json

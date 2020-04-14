@@ -4,12 +4,12 @@ description: Azure Functions を使用して、Azure SQL Database に接続し�
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 3dafe275dcd5eb172e744f1d163b33ebb0bac7cc
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2e3f53943d45e90b8aff8e386ce8d0e28670673f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972236"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79366813"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
 
@@ -29,7 +29,7 @@ C# 関数を初めて使用する場合は、[Azure Functions C# 開発者向け
 
 「[Azure Portal で Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」を完了したときに作成したデータベースの接続文字列を取得する必要があります。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. 左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページで目的のデータベースをクリックします。
 
@@ -43,7 +43,7 @@ Function App は、Azure での関数の実行をホストします。 セキュ
 
 以前アプリを Azure に発行している必要があります。 まだ行っていない場合は、[[Publish your function app to Azure]](functions-develop-vs.md#publish-to-azure)\(関数アプリを Azure に発行) します。
 
-1. ソリューション エクスプ ローラーで関数アプリ プロジェクトを右クリックし、 **[Publish]** \(発行)  >  **[Manage application settings...]** \(アプリケーション設定の管理...) を選択します。 **[設定の追加]** を選択し、 **[新しいアプリ設定名]** で型 `sqldb_connection` を選択して **[OK]** を選択します。
+1. ソリューション エクスプローラーで関数アプリ プロジェクトを右クリックし、 **[Publish]** \(発行)  >  **[Edit Azure App Service settings]** \(Azure App Service の設定を編集する) を選択します。 **[設定の追加]** を選択し、 **[新しいアプリ設定名]** で型 `sqldb_connection` を選択して **[OK]** を選択します。
 
     ![関数アプリのアプリケーション設定。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
@@ -122,7 +122,7 @@ SqlClient ライブラリを含む NuGet パッケージを追加する必要が
 
 [この関数を発行する](functions-develop-vs.md#publish-to-azure)予定がある場合は、`TimerTrigger` 属性を 15 秒ごとよりも適切な [cron スケジュール](functions-bindings-timer.md#ncrontab-expressions)に変更してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、使用方法を学習します。 Logic Apps で Functions を使用して、その他のサービスと統合します。
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 10e6ed556abe8f8c438e5436fbb93c1b70b85d2b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 579767a0d535605a2316c35bd413a75474b5a3de
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445160"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409997"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用して読み取りをグローバルに配布する方法について説明します
 
@@ -86,7 +86,7 @@ MongoDB プロトコルには、クライアントが使用できる以下の読
 一般的なシナリオに基づいて、次の設定を使用することをお勧めします。
 
 1. **待ち時間の短い読み取り**が必要な場合は、**NEAREST** 読み取り設定モードを使用します。 この設定では、読み取り操作で、最も近い使用可能リージョンが利用されます。 最も近いリージョンが WRITE リージョンである場合、これらの操作はそのリージョンを対象にすることに注意してください。
-2. **高可用性と読み取りの Geo 分散**が必要な場合 (待ち時間は制約でない場合) は、**SECONDARY PREFERRED** 読み取り設定モードを使用します。 この設定では、読み取り操作で、使用可能な READ リージョンが利用されます。 使用可能な READ リージョンがない場合、要求は WRITE リージョンに送られます。
+2. **高可用性と読み取りの geo ディストリビューション**が必要な (待ち時間が制約でない) 場合は、**PRIMARY PREFERRED** または **SECONDARY PREFERRED** 読み取り設定モードを使用します。 この設定では、読み取り操作がそれぞれ、使用可能な WRITE または READ リージョンに転送されます。 そのリージョンを使用できない場合は、読み取り設定の動作に従って、要求は次の使用可能なリージョンに転送されます。
 
 サンプル アプリケーションの次のスニペットは、NodeJS で NEAREST 読み取り設定を構成する方法を示しています。
 

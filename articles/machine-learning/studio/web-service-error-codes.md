@@ -12,14 +12,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 15e73740f5d932d0fa4cfb9a56c9fe7b155555cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9e25f2fbc10eb07cc71f2a7bd34247c0191f61b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468161"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79217774"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (クラシック) REST API のエラー コード
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
  
 Azure Machine Learning Studio (クラシック) の Web サービスの操作で、次のエラー コードが返されることがあります。
  
@@ -51,7 +53,7 @@ Azure Machine Learning Studio (クラシック) の Web サービスの操作で
 | InvalidBlobExtension | Blob の参照: {0} のファイル拡張子が無効か、見つかりません。 この出力の種類でサポートされているファイル拡張子は "{1}" です。 |
 | InvalidInputNames | 要求で指定されたサービスの入力名が無効です: {0}。 入力データを正しいサービスの入力にマップしてから、やり直してください。 |
 | InvalidOutputOverrideName | 出力のオーバーライドの名前が無効です: {0}。 サービスには、この名前の出力ノードがありません。 オーバーライドする正しい出力ノード名を渡してください (大文字と小文字が区別されます)。 |
-| InvalidQueryParameter | クエリ パラメーター '{0}' が無効です。 {1} |
+| InvalidQueryParameter | クエリ パラメーター '{0}' が無効です。 [https://github.com/mysqljs/mysql/]({1}) |
 | MissingInputBlobInformation | Azure Storage BLOB の情報が不足しています。 有効な接続文字列と相対パスまたは URI を指定してから、やり直してください。 |
 | MissingJobId | ジョブ ID が指定されていません。 初めてジョブを送信すると、ジョブ ID が返されます。 ジョブ ID が正しいことを確認してから、やり直してください。 |
 | MissingKeys | キーが指定されていないか、プライマリ キーとセカンダリ キーのいずれかが指定されていません。 |
@@ -209,7 +211,7 @@ Web サービス パッケージが無効です。 指定された Web サービ
  
 ## <a name="internalerrorsystemlowonmemory-http-status-code-500"></a>InternalErrorSystemLowOnMemory (HTTP 状態コード 500)
  
-実行中に内部エラーが発生しました。 システム メモリが不足しています。 もう一度実行してください。
+実行中に内部エラーが発生しました。 システム メモリが不足しています。 再試行してください。
  
  
 ## <a name="modelpackageformaterror-http-status-code-500"></a>ModelPackageFormatError (HTTP 状態コード 500)

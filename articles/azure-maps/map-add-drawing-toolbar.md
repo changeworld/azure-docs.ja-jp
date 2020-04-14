@@ -1,19 +1,19 @@
 ---
 title: マップに描画ツール バーを追加する | Microsoft Azure Maps
 description: Azure Maps Web SDK を使用してマップに描画ツールバーを追加する方法
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cb0f70bc42c9ac0f7026c910593950516f027a88
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bebf1ddfbca3aec5a551193609381cf3510bc3ac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209751"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334496"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>描画ツールのツールバーをマップに追加する
 
@@ -23,7 +23,7 @@ ms.locfileid: "77209751"
 
 次のコードでは、描画マネージャーのインスタンスが作成され、ツールバーがマップ上に表示されます。
 
-```Javascript
+```javascript
 //Create an instance of the drawing manager and display the drawing toolbar.
 drawingManager = new atlas.drawing.DrawingManager(map, {
         toolbar: new atlas.control.DrawingToolbar({
@@ -46,7 +46,7 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 
 次のコードでは、描画マネージャーのインスタンスが作成され、多角形描画ツールだけを含むツールバーがマップ上に表示されます。 
 
-```Javascript
+```javascript
 //Create an instance of the drawing manager and display the drawing toolbar with polygon drawing tool.
 drawingManager = new atlas.drawing.DrawingManager(map, {
         toolbar: new atlas.control.DrawingToolbar({
@@ -68,25 +68,53 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 
 ## <a name="change-drawing-rendering-style"></a>描画のレンダリング スタイルの変更
 
-次のコードでは、描画マネージャーからレンダリング レイヤーを取得し、それらのオプションを変更することで、描画のレンダリング スタイルを変更します。 この場合、ポイントは青いマーカー アイコンで描画されます。 線は、赤色の 4 ピクセル幅になります。 多角形は、緑色で塗りつぶされ、枠線がオレンジ色になります。
+描画される図形のスタイルは、`drawingManager.getLayers()` 関数を使用し、個々のレイヤーのオプションを設定することによって、描画マネージャーの基になるレイヤーを取得することによりカスタマイズできます。 図形の編集時に座標に表示されるドラッグ ハンドルは HTML マーカーです。 ドラッグ ハンドルのスタイルは、描画マネージャーの `dragHandleStyle` オプションおよび `secondaryDragHandleStyle` オプションに HTML マーカー オプションを渡すことによってカスタマイズできます。  
 
-```Javascript
+次のコードでは、描画マネージャーからレンダリング レイヤーを取得し、それらのオプションを変更することで、描画のレンダリング スタイルを変更します。 この場合、ポイントは青いマーカー アイコンで描画されます。 線は、赤色の 4 ピクセル幅になります。 多角形は、緑色で塗りつぶされ、枠線がオレンジ色になります。 次に、ドラッグ ハンドルのスタイルが四角形のアイコンに変更されます。 
+
+```javascript
+//Get rendering layers of drawing manager.
 var layers = drawingManager.getLayers();
-    layers.pointLayer.setOptions({
-        iconOptions: {
-            image: 'marker-blue'
-        }
-    });
-    layers.lineLayer.setOptions({
-        strokeColor: 'red',
-        strokeWidth: 4
-    });
-    layers.polygonLayer.setOptions({
-        fillColor: 'green'
-    });
-    layers.polygonOutlineLayer.setOptions({
-        strokeColor: 'orange'
-    });
+
+//Change the icon rendered for points.
+layers.pointLayer.setOptions({
+    iconOptions: {
+        image: 'marker-blue'
+    }
+});
+
+//Change the color and width of lines.
+layers.lineLayer.setOptions({
+    strokeColor: 'red',
+    strokeWidth: 4
+});
+
+//Change fill color of polygons.
+layers.polygonLayer.setOptions({
+    fillColor: 'green'
+});
+
+//Change the color of polygon outlines.
+layers.polygonOutlineLayer.setOptions({
+    strokeColor: 'orange'
+});
+
+//Update the style of the drag handles that appear when editting.
+drawingManager.setOptions({
+    //Primary drag handle that represents coordinates in the shape.
+    dragHandleStyle: {
+        anchor: 'center',
+        htmlContent: '<svg width="15" height="15" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer"><rect x="0" y="0" width="15" height="15" style="stroke:black;fill:white;stroke-width:4px;"/></svg>',
+        draggable: true
+    },
+
+    //Secondary drag hanle that represents mid-point coordinates that users can grab to add new cooridnates in the middle of segments.
+    secondaryDragHandleStyle: {
+        anchor: 'center',
+        htmlContent: '<svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer"><rect x="0" y="0" width="10" height="10" style="stroke:white;fill:black;stroke-width:4px;"/></svg>',
+        draggable: true
+    }
+});  
 ```
 
 上記の機能の完全な実行コード サンプルを以下に示します。

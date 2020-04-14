@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 04df30c2a97e865d23999df26768b38cb38be607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0f67e0d72ee5710a42b6de744ddae98e20220a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68855551"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437130"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Azure Data Lake Storage Gen2 の URI を使用する
 
@@ -27,23 +27,23 @@ Data Lake Storage Gen2 の URI 構文は、Data Lake Storage Gen2 を既定の�
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **スキーム識別子**: `abfs` プロトコルがスキーム識別子として使用されます。 接続時に Secure Socket Layer (SSL) を使用するかどうかを選択できます。 Secure Socket Layer を介して接続する場合は、`abfss` を使用します。
+1. **スキーム識別子**:`abfs` プロトコルがスキーム識別子として使用されます。 接続時にトランスポート層セキュリティ (TLS) 接続 (以前は Secure Sockets Layer (SSL) として知られていました) を使用するかどうかを選択できます。 TLS 接続を使用して接続する場合は、`abfss` を使用します。
 
-2. **ファイル システム**: ファイルとフォルダーを保持する親ロケーションです。 これは、Azure Storage Blob サービスのコンテナーと同じです。
+2. **ファイル システム**:ファイルとフォルダーを保持する親ロケーションです。 これは、Azure Storage Blob サービスのコンテナーと同じです。
 
-3. **アカウント名**: 作成時にストレージ アカウントに付与された名前です。
+3. **アカウント名**:作成時にストレージ アカウントに付与された名前です。
 
-4. **パス**: ディレクトリ構造をスラッシュ (`/`) で区切って表現したものです。
+4. **パス**:スラッシュ (`/`) で区切って表現したディレクトリ構造です。
 
-5. **ファイル名**: 個々のファイルの名前です。 このパラメーターは、ディレクトリをアドレス指定する場合は省略可能です。
+5. **ファイル名**:個々のファイルの名前です。 このパラメーターは、ディレクトリをアドレス指定する場合は省略可能です。
 
 ただし、アカウント作成時、アドレス指定するアカウントが既定のファイル システムとして設定された場合、簡潔な URI 構文は次のようになります。
 
 <pre>/&lt;path&gt;<sup>1</sup>/&lt;file_name&gt;<sup>2</sup></pre>
 
-1. **パス**: ディレクトリ構造をスラッシュ (`/`) で区切って表現したものです。
+1. **パス**:スラッシュ (`/`) で区切って表現したディレクトリ構造です。
 
-2. **ファイル名**: 個々のファイルの名前です。
+2. **ファイル名**:個々のファイルの名前です。
 
 
 ## <a name="next-steps"></a>次のステップ

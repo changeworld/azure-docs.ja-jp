@@ -14,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7c93538982b7fd7bb2f5ac25027ed92cc6ccbfa3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: faaff9e9ad5982efac6409f2284158a3d0711331
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357851"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548402"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure での SQL Server 2008 および SQL Server 2008 R2 のサポート延長
 
@@ -66,7 +66,7 @@ SQL Server には、回復を保証するために、アプリ整合性のある
 
 Azure VM 上の EOS SQL Server のディザスター リカバリー ソリューションは次のとおりです。
 
-- **SQL Server のバックアップ**:Azure Backup を使用して、ランサムウェアや偶発的な削除や破損から EOS SQL サーバーを保護できます。 このソリューションは、現在、EOS SQL Server に対するプレビュー段階であり、Windows 2008 R2 SP1 上で実行される SQL Server 2008 と 2008 R2 がサポートされます。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support)を参照してください。
+- **SQL Server のバックアップ**:Azure Backup を使用して、15 分の RPO と特定の時点への復旧で、ランサムウェアや偶発的な削除や破損から EOS SQL Server 2008 および 2008 R2 を保護できます。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/backup/sql-support-matrix#scenario-support)を参照してください。
 - **ログ配布**:継続的な復元によって別のゾーンまたは Azure リージョンにログ配布のレプリカを作成して、RTO を短縮することができます。 ログ配布は、お客様が手動で構成する必要があります。
 - **Azure Site Recovery**:Azure Site Recovery のレプリケーションによって、ゾーンとリージョン間で VM をレプリケートできます。 SQL Server には、障害の発生時に回復を保証するために、アプリ整合性スナップショットが必要です。 Azure Site Recovery は、EOS SQL Server のディザスター リカバリーで最小 1 時間の RPO と、2 時間 (+ SQL Server の復旧時間) の RTO を実現します。
 

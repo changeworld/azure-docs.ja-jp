@@ -4,12 +4,12 @@ description: System Center 2012 R2 DPM を使用して Exchange サーバーを 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 389713767409ff49c6fc83a4d6e8dc3c87272fc9
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b45efa0623edbec47b8ae12d3a97b1e032626530
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614367"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396416"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
 
@@ -49,7 +49,7 @@ Exchange サーバーに DPM 保護エージェントをインストールする
 4. 保護する Exchange サーバー データベースを選択し、 **[次へ]** をクリックします。
 
    > [!NOTE]
-   > Exchange 2013 を保護する場合は、「 [Exchange 2013 の前提条件](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))」を確認してください。
+   > Exchange 2013 を保護する場合は、「 [Exchange 2013 の前提条件](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)」を確認してください。
    >
    >
 
@@ -76,7 +76,7 @@ Exchange サーバーに DPM 保護エージェントをインストールする
 9. **[コピー バックアップ]** 用のデータベースを選択し、 **[次へ]** をクリックします。
 
    > [!NOTE]
-   > データベースの少なくとも 1 つの DAG コピーに対して “完全バックアップ” が選択されていない場合、ログは切り捨てられません。
+   > データベースの少なくとも 1 つの DAG コピーに対して "完全バックアップ" が選択されていない場合、ログは切り捨てられません。
    >
    >
 10. **[短期的なバックアップ]** の目標を構成し、 **[次へ]** をクリックします。

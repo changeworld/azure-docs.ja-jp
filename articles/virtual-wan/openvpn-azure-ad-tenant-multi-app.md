@@ -5,28 +5,28 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 03/19/2020
 ms.author: alzam
-ms.openlocfilehash: 4e667dcccd612873e8633c375bc3ce611e11c962
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: af5ff5817ee9ae7e6d7432fe281ecb440bf25b9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485950"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060712"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Azure Active Directory テナントを作成する
 
-VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証を使用できます。 ただし、Open VPN プロトコルを使用する場合は、Azure Active Directory 認証を使用することもできます。 一連のユーザーがそれぞれ異なる VPN ゲートウェイに接続できるようにしたい場合、複数のアプリを AD に登録し、それらを異なる VPN ゲートウェイにリンクさせる方法が考えられます。
+VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証を使用できます。 ただし、Open VPN プロトコルを使用する場合は、Azure Active Directory 認証を使用することもできます。 異なるユーザーグループがそれぞれ異なるゲートウェイに接続できるようにするには、複数のアプリを AD に登録し、それらを異なる ゲートウェイにリンクさせます。
 
 この記事では、P2S OpenVPN 認証用の Azure AD テナントを設定し、さまざまなユーザーとグループに異なるアクセスを許可するように、複数のアプリを作成して Azure AD に登録する方法について説明します。
 
 > [!NOTE]
-> Azure AD 認証は、OpenVPN® プロトコル接続でのみサポートされています。
+> Azure AD 認証は、OpenVPN&reg; プロトコル接続でのみサポートされています。
 >
 
 [!INCLUDE [create](../../includes/openvpn-azure-ad-tenant-multi-app.md)]
 
-## <a name="site"></a>6.新しい P2S 構成を作成する
+## <a name="6-create-a-new-p2s-configuration"></a><a name="site"></a>6.新しい P2S 構成を作成する
 
 P2S 構成には、リモート クライアントを接続するためのパラメーターが定義されています。
 
@@ -45,9 +45,9 @@ P2S 構成には、リモート クライアントを接続するためのパラ
    ```
 
    > [!NOTE]
-   > 上記のコマンドでは、Azure VPN クライアントのアプリケーション ID を使用しないでください。それにより、すべてのユーザーに VPN ゲートウェイへのアクセス権が付与されます。 登録したアプリケーションの ID を使用します。
+   > 上記のコマンドでは、Azure VPN クライアントのアプリケーション ID を使用しないでください。これにより、すべてのユーザーにゲートウェイへのアクセス権が付与されます。 登録したアプリケーションの ID を使用します。
 
-## <a name="hub"></a>7.ハブの割り当てを編集する
+## <a name="7-edit-hub-assignment"></a><a name="hub"></a>7.ハブの割り当てを編集する
 
 1. 仮想 WAN の下にある **[ハブ]** ブレードに移動します。
 
@@ -67,7 +67,7 @@ P2S 構成には、リモート クライアントを接続するためのパラ
 
 7. この操作は、完了するまで最大 30 分かかることがあります。
 
-## <a name="device"></a>8.VPN プロファイルをダウンロードする
+## <a name="8-download-vpn-profile"></a><a name="device"></a>8.VPN プロファイルをダウンロードする
 
 VPN プロファイルを使用してクライアントを構成します。
 
@@ -90,14 +90,14 @@ VPN プロファイルを使用してクライアントを構成します。
 接続するには、Azure VPN Client (プレビュー) をダウンロードし、前の手順でダウンロードした VPN クライアント プロファイルを、VNet に接続する各コンピューターでインポートします。
 
 > [!NOTE]
-> Azure AD 認証は、OpenVPN® プロトコル接続でのみサポートされています。
+> Azure AD 認証は、OpenVPN&reg; プロトコル接続でのみサポートされています。
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>Azure VPN Client をダウンロードするには
 
 この[リンク](https://go.microsoft.com/fwlink/?linkid=2117554)を使用して、Azure VPN Client をダウンロードします。
 
-#### <a name="import"></a>クライアント プロファイルをインポートするには
+#### <a name="to-import-a-client-profile"></a><a name="import"></a>クライアント プロファイルをインポートするには
 
 1. ページ上で、 **[インポート]** を選択します。
 
@@ -119,7 +119,7 @@ VPN プロファイルを使用してクライアントを構成します。
 
     ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
 
-#### <a name="delete"></a>クライアント プロファイルを削除するには
+#### <a name="to-delete-a-client-profile"></a><a name="delete"></a>クライアント プロファイルを削除するには
 
 1. 削除するクライアント プロファイルの横にある省略記号 (...) を選択します。 **[削除]** を選択します。
 
@@ -129,7 +129,7 @@ VPN プロファイルを使用してクライアントを構成します。
 
     ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
-#### <a name="diagnose"></a>接続の問題を診断するには
+#### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>接続の問題を診断するには
 
 1. 接続の問題を診断するには、**診断**ツールを使用します。 診断する VPN 接続の横にある省略記号 (...) を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
 
@@ -147,21 +147,15 @@ VPN プロファイルを使用してクライアントを構成します。
 
     ![診断](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose4.jpg)
 
-## <a name="viewwan"></a>10.仮想 WAN を表示する
+## <a name="10-view-your-virtual-wan"></a><a name="viewwan"></a>10.仮想 WAN を表示する
 
 1. 仮想 WAN に移動します。
 
-2. [概要] ページのマップ上の各ポイントは、ハブを表します。 任意のポイントにカーソルを置くと、ハブの正常性の概要が表示されます。
+2. [概要] ページのマップ上の各ポイントは、ハブを表します。
 
 3. ハブと接続のセクションでは、ハブの状態、サイト、リージョン、VPN 接続の状態、および入出力バイト数を表示できます。
 
-## <a name="viewhealth"></a>11.リソースの正常性を表示する
-
-1. WAN に移動します。
-
-2. WAN のページの **[サポート + トラブルシューティング]** セクションで、 **[正常性]** をクリックしてリソースを表示します。
-
-## <a name="cleanup"></a>リソースをクリーンアップする
+## <a name="clean-up-resources"></a><a name="cleanup"></a>リソースをクリーンアップする
 
 これらのリソースが不要になったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
 

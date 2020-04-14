@@ -6,17 +6,21 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: c683cfeadcc13e5112a4687e18db9338d3574cd3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b33aeeee03fa57d87a60fd4c1904d5e4a86dd004
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459587"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067086"
 ---
-# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic-preview"></a>Azure Stream Analytics と Azure Machine Learning Studio (クラシック) を使用して感情分析を実行する (プレビュー)
+# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics と Azure Machine Learning Studio (classic) を使用した感情分析の実行
+
 この記事では、Azure Machine Learning Studio (クラシック) を統合する単純な Azure Stream Analytics ジョブをすばやくセットアップする方法について説明します。 ここでは、Cortana Intelligence ギャラリーの Machine Learning 感情分析モデルを利用して、ストリーミング テキスト データを分析し、リアルタイムでセンチメント スコアを決定します。 Cortana Intelligence Suite を使用すると、感情分析モデルを構築する複雑な作業を心配することなくこのタスクを実行できます。
+
+> [!TIP]
+> パフォーマンスと信頼性を向上させるために、Azure Machine Learning Studio (classic) UDF の代わりに [Azure Machine Learning UDF](machine-learning-udf.md) を使用することを強くお勧めします。
 
 この記事で学ぶ内容は、次のようなシナリオに適用できます。
 

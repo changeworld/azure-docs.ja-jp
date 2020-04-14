@@ -12,16 +12,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 3932c22ff003a343e4c32aee117a7ddea922fbdb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0d50ddbbeeaed48c14d07c42588efcbb20bb7d79
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820740"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411151"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは
 
-Azure SQL Database は、マネージド サービスとして提供される汎用リレーショナル データベースです。 これを使用すると、Azure のアプリケーションとソリューションに対して高可用性と高パフォーマンスのデータ ストレージ層を作成できます。 SQL Database を使用することで、グラフ、JSON、空間、XML などのリレーショナル データと[非リレーショナル構造](sql-database-multi-model-features.md)の両方を処理できるようになるため、さまざまな最新のクラウド アプリケーションに適しています。
+Azure SQL Database は、フルマネージド PaaS (サービスとしてのプラットフォーム) データべース エンジンであり、アップグレード、修正プログラムの適用、監視などのデータベース管理機能の大半をユーザーの介入なしで処理します。 Azure SQL Database は、安定した最新バージョンの SQL Server データベース エンジンとパッチ適用済み OS 上で常に実行され、99.99% の可用性があります。 Azure SQL Database に組み込まれている PaaS 機能により、ビジネスにとって重要なドメイン固有のデータベース管理や最適化アクティビティに焦点を絞ることができます。
+
+Azure SQL Database を使用すると、Azure のアプリケーションやソリューションのための高可用性かつ高パフォーマンスのデータ ストレージ層を作成できます。 SQL Database を使用することで、グラフ、JSON、空間、XML などのリレーショナル データと[非リレーショナル構造](sql-database-multi-model-features.md)の両方を処理できるようになるため、さまざまな最新のクラウド アプリケーションに適しています。
 
 これは、[Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)の最新の安定したバージョンに基づいています。 [高パフォーマンスのメモリ内テクノロジ](sql-database-in-memory.md)や[インテリジェントなクエリ処理](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json)など、高度なクエリ処理機能を使用できます。 実際、SQL Server の最新機能のリリースは SQL Database から始まり、その後 SQL Server 自体に対してリリースされます。 修正プログラムの適用やアップグレードのオーバーヘッドなしで SQL Server の最新の機能を取得して、数百万のデータベースでテストすることができます。 
 
@@ -68,7 +70,7 @@ SQL Database には、次の購入モデルが用意されています。
 Azure SQL Database には、さまざまな種類のアプリケーション向けに設計された 3 つのサービス レベルが用意されています。
 - 一般的なワークロード向けに設計された、[General Purpose/Standard](sql-database-service-tier-general-purpose.md) サービス レベル。 予算重視のバランスの取れたコンピューティングおよびストレージ オプションが提供されます。
 - トランザクション レートが高く、待ち時間 I/O が最低の OLTP アプリケーション向けに設計された、[Business Critical/Premium](sql-database-service-tier-business-critical.md) サービス レベル。 複数の分離されたレプリカを使用して、障害に対する最も高い回復力を提供します。
-- 非常に大規模な OLTP データベース、および柔軟性の高いストレージの自動スケーリングとコンピューティングのスケーリングの機能向けに設計された、[Hyperscale](sql-database-service-tier-hyperscale.md) サービス レベル。 
+- 非常に大規模な OLTP データベースや、流動的にストレージを自動スケーリングしたり、コンピューティングをスケーリングしたりする機能向けに設計された、[Hyperscale](sql-database-service-tier-hyperscale.md) サービス レベル。    
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>リソース使用率を最大化するためのエラスティック プール
 
@@ -76,7 +78,7 @@ Azure SQL Database には、さまざまな種類のアプリケーション向�
 
    ![Basic、Standard、および Premium エディションのエラスティック プールを示す図](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-エラスティック プールを使用すると、リソースの需要が変動しても、データベース パフォーマンスの調整に気を配る必要がなくなります。 プールされたデータベースは、必要に応じて、エラスティック プールのパフォーマンス リソースを使用します。 しかし、プールされたデータベースの使用は、プールの上限を超えることはありません。したがって、個々のデータベースの使用状況が予測できなくても、コストが予測可能なことに変わりはありません。
+エラスティック プールを使用すると、リソースの需要が変動しても、データベース パフォーマンスの調整に集中する必要はありません。 プールされたデータベースは、必要に応じて、エラスティック プールのパフォーマンス リソースを使用します。 プールされたデータベースが使用しても、プールの制限を超えることはないため、個々のデータベース使用率が予測できない場合でも、コストは引き続き予測可能です。
 
 [プールに対してデータベースの追加および削除を行う](sql-database-elastic-pool-manage-portal.md)ことで、完全に設定予算内で、アプリケーションを数個のデータベースから何千ものデータベースに及ぶ範囲でスケーリングすることができます。 また、プール内のデータベースが使用できるリソースの下限と上限を制御して、プール内のいずれかのデータベースがプールのすべてのリソースを使用してしまわないようにしたり、すべてのプールされたデータベースに最小限のリソースが確保されるようにしたりすることもできます。 エラスティック プールを使用するサービスとしてのソフトウェア (SaaS) アプリケーションの設計パターンの詳細については、「[SQL Database を使用したマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
 
@@ -95,9 +97,9 @@ Azure SQL Database には、ワークロードの特性に関する詳細な分�
  - 最新バージョンの SQL Server データベース エンジンによって提供される組み込みの監視機能。 これによりリアルタイムのパフォーマンスに関する分析情報を得ることができます。 
  - 多数のデータベース インスタンスの監視とトラブルシューティングを可能にする、Azure によって提供される PaaS 監視機能。
 
-[クエリ ストア](sql-database-operate-query-store.md)は、組み込みの SQL Server 監視機能です。これはクエリのパフォーマンスをリアルタイムで記録して、潜在的なパフォーマンスの問題と上位のリソース コンシューマーを特定できるようにします。 自動チューニングとレコメンデーションでは、低下したパフォーマンスと欠落または重複したインデックスがあるクエリに関するアドバイスが提供されます。 SQL Database で自動チューニングを使用すると、問題を解決できるスクリプトを手動で適用したり、SQL Database に修正プログラムを適用させたりすることができます。 また、SQL Database では、修正プログラムによって何らかのベネフィットが得られるかどうかをテストおよび検証し、結果に応じて変更を保持するか、元に戻すことができます。 クエリ ストアと自動チューニング機能に加えて、標準の [DMV と XEvent](sql-database-monitoring-with-dmvs.md) を使用して、ワークロードのパフォーマンスを監視することができます。
+[クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)は、組み込みの SQL Server 監視機能です。これはクエリのパフォーマンスをリアルタイムで記録して、潜在的なパフォーマンスの問題と上位のリソース コンシューマーを特定できるようにします。 自動チューニングとレコメンデーションでは、低下したパフォーマンスと欠落または重複したインデックスがあるクエリに関するアドバイスが提供されます。 SQL Database で自動チューニングを使用すると、問題を解決できるスクリプトを手動で適用したり、SQL Database に修正プログラムを適用させたりすることができます。 また、SQL Database では、修正プログラムによって何らかのベネフィットが得られるかどうかをテストおよび検証し、結果に応じて変更を保持するか、元に戻すことができます。 クエリ ストアと自動チューニング機能に加えて、標準の [DMV と XEvent](sql-database-monitoring-with-dmvs.md) を使用して、ワークロードのパフォーマンスを監視することができます。
 
-Azure には、パフォーマンス評価と組み合わせた[組み込みのパフォーマンス監視](sql-database-performance.md)と[アラート](sql-database-insights-alerts-portal.md)のツールが用意されています。これにより、何千ものデータベースの状態を監視できます。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 さらに、SQL Database では、監視を容易にするための[メトリックと診断ログを出力](sql-database-metrics-diag-logging.md)することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
+Azure には、パフォーマンス評価と組み合わせた[組み込みのパフォーマンス監視](sql-database-performance-guidance.md)と[アラート](sql-database-insights-alerts-portal.md)のツールが用意されています。これにより、何千ものデータベースの状態を監視できます。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 さらに、SQL Database では、監視を容易にするための[メトリックと診断ログを出力](sql-database-metrics-diag-logging.md)することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
 
 - **Azure Storage**:大量の利用統計情報を低価格でアーカイブします。
 - **Azure Event Hubs**:SQL Database の利用統計情報を、カスタム監視ソリューションまたはホット パイプラインと統合します。
@@ -107,17 +109,17 @@ Azure には、パフォーマンス評価と組み合わせた[組み込みの�
 
 ## <a name="availability-capabilities"></a>可用性に関する機能
 
-従来の SQL Server 環境では、通常、少なくとも 2 台のマシンがローカルに設定されています。 これらのマシンには、1 台のマシンまたはコンポーネントの障害から保護するために、同期的に保持されるデータの完全なコピーが保持されます。 この環境では、高可用性が提供されますが、データ センターが破壊されるような自然災害からは保護されません。
+Azure SQL Database を使用すると、中断している間も企業は業務を続行できます。 従来の SQL Server 環境では、通常、少なくとも 2 台のマシンがローカルに設定されています。 これらのマシンには、1 台のマシンまたはコンポーネントの障害から保護するために、同期的に保持されるデータの完全なコピーが保持されます。 この環境では、高可用性が提供されますが、データ センターが破壊されるような自然災害からは保護されません。
 
 ディザスター リカバリーでは、壊滅的なイベントは地理的に十分に局所的であり、データのコピーが保持されている別のマシンまたはマシンのセットから遠く離れているものと想定されています。 SQL Server では、非同期モードで実行されている Always On 可用性グループを使用して、この機能を実現できます。 通常、ユーザーはトランザクションをコミットする前に遠く離れたところでレプリケーションが発生するのを待ちたくはないので、計画外のフェールオーバーを行うときはデータ損失の可能性があることを意味します。
 
-Premium および Business Critical のサービス レベルのデータベースでは、既に、可用性グループの同期に[よく似たことが行われて](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)います。 低いサービス レベルのデータベースでは、[異なりますが同等のメカニズム](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)を使用するストレージによって、冗長性が提供されます。 組み込みのロジックは、1 台のマシンの障害から保護するのに役立ちます。 アクティブ geo レプリケーション機能では、リージョン全体が破壊される災害から保護することができます。
+Premium および Business Critical サービス レベルのデータベースでは既に、可用性グループの同期と[同様の何かが行われて](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)います。 低いサービス レベルのデータベースでは、[異なりますが同等のメカニズム](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)を使用するストレージによって、冗長性が提供されます。 組み込みのロジックは、1 台のマシンの障害から保護するのに役立ちます。 アクティブ geo レプリケーション機能では、リージョン全体が破壊される災害から保護することができます。
 
 Azure Availability Zones は、1 つのリージョン内の 1 つのデータセンター ビルでの障害に対する保護を試みます。 これはビルの電源やネットワークの損失からの保護に役立ちます。 SQL Database では、可用性ゾーン (実質的には異なる建物) ごとに異なるレプリカを配置します。
 
 実際、Microsoft が管理するデータセンターのグローバル ネットワークによって強化された、Azure のサービス レベル アグリーメント [(SLA)](https://azure.microsoft.com/support/legal/sla/) は、アプリの 24 時間 365 日の継続的な稼働に役立ちます。 すべてのデータベースは Azure プラットフォームによって完全に管理され、データ損失ゼロおよび高いデータ可用性 (%) が保証されます。 基になるハードウェア、ソフトウェア、ネットワークの障害リスクへの対応や、パッチの適用、バックアップ、レプリケーション、障害検出、バグ修正、フェールオーバー、データベースのアップグレードなど、各種メンテナンス タスクは、Azure によって自動的に処理されます。 Standard の可用性は、計算レイヤーとストレージ レイヤーを分離することで得られます。 Premium の可用性は、計算とストレージを単一ノードに統合してパフォーマンスを確保し、そのうえで、Always On 可用性グループのようなテクノロジを実装することによって得られます。 Azure SQL Database の高可用性機能の詳細については、[SQL Database の可用性](sql-database-high-availability.md)に関するページをご覧ください。 
 
-さらに、SQL Database には、組み込みの[ビジネス継続性とグローバルなスケーラビリティ](sql-database-business-continuity.md)の機能が用意されています。 チェックの内容は次のとおりです
+さらに、SQL Database には、組み込みの[ビジネス継続性とグローバルなスケーラビリティ](sql-database-business-continuity.md)の機能が用意されています。 これには以下が含まれます。
 
 - [自動バックアップ](sql-database-automated-backups.md):
 
@@ -146,7 +148,7 @@ SQL Database は、監視する必要があるクエリの詳細な洞察を提�
 
 ただし、データベースを常に監視することは厄介で面倒なタスクであり、多数のデータベースを処理する場合は特にそうなります。 [Intelligent Insights](sql-database-intelligent-insights.md) は、SQL Database のパフォーマンスを大規模に自動的に監視することで、ユーザーに代わってこのジョブを実行します。 パフォーマンス低下の問題を通知し、各問題の根本原因を特定し、可能であればパフォーマンスの向上に関する推奨事項を提供します。
 
-膨大な数のデータベースを管理することは、SQL Database と Azure が提供するすべての使用可能なツールとレポートを使用しても、効率的に実行するのは不可能な場合があります。 データベースの監視とチューニングを手動で行う代わりに、[自動チューニング](sql-database-automatic-tuning.md)を使用して、監視とチューニング アクションの一部を SQL Database に委任することも検討できます。 SQL Database は、推奨事項を自動的に適用し、テストを行い、パフォーマンスが確実に向上し続けるように、各チューニング アクションを検証します。 このように、SQL Database は、制御された安全な方法で、ワークロードに自動的に適応します。 自動チューニングは、データベースのパフォーマンスを注意深く監視し、すべてのチューニング アクションの実行前と実行後のパフォーマンスを比較します。 パフォーマンスが向上していない場合は、チューニング アクションが取り消されます。
+膨大な数のデータベースを管理することは、SQL Database と Azure が提供するすべての使用可能なツールとレポートを使用しても、効率的に実行するのは不可能な場合があります。 データベースの監視とチューニングを手動で行う代わりに、[自動チューニング](sql-database-automatic-tuning.md)を使用して、監視とチューニング アクションの一部を SQL Database に委任することも検討できます。 SQL Database は、推奨事項を自動的に適用し、テストを行い、パフォーマンスが確実に向上し続けるように、各チューニング アクションを検証します。 このように、SQL Database は、制御された安全な方法で、ワークロードに自動的に適応します。 自動チューニングは、データベースのパフォーマンスを注意深く監視し、すべてのチューニング アクションの実行前と実行後のパフォーマンスを比較します。 パフォーマンスが向上しない場合、チューニング アクションは元に戻されます。
 
 SQL Database 上で [SaaS マルチテナント アプリ](sql-database-design-patterns-multi-tenancy-saas-applications.md)を実行する Microsoft のパートナーの多くは、パフォーマンスの自動チューニングを信頼して、アプリケーションが常に安定した予測可能なパフォーマンスで実行されるようにしています。 パートナーにとって、この機能は、真夜中にパフォーマンス上の問題が発生するリスクを大幅に軽減するものです。 さらに、顧客ベースの一部では、SQL Server も使用しているため、SQL Database が提示するのと同じインデックスに関する推奨事項を使用して、SQL Server を使用している顧客を支援しています。
 
@@ -157,7 +159,7 @@ SQL Database 上で [SaaS マルチテナント アプリ](sql-database-design-p
 
 ### <a name="adaptive-query-processing"></a>アダプティブ クエリ処理
 
-複数ステートメントのテーブル値関数のインターリーブ実行、バッチ モードのメモリ許可のフィードバック、バッチ モードの適応型結合などの[アダプティブ クエリ処理](/sql/relational-databases/performance/intelligent-query-processing)を使用できます。 これらのクエリの適応処理機能には類似の "学習して適応する" 手法が適用されています。この手法は、解決困難なクエリの最適化問題に関連するパフォーマンス問題にさらに深く取り組むために役立っています。
+複数ステートメントのテーブル値関数のインターリーブ実行、バッチ モードのメモリ許可のフィードバック、バッチ モードの適応型結合などの[アダプティブ クエリ処理](/sql/relational-databases/performance/intelligent-query-processing)を使用できます。 これらの各アダプティブ クエリ処理機能には、従来から解決困難なクエリの最適化問題に関連したパフォーマンスの問題にさらに対処するために役立つ、同様の "学習して適応する" 手法が適用されます。
 
 ## <a name="advanced-security-and-compliance"></a>高度なセキュリティとコンプライアンス
 
@@ -221,7 +223,7 @@ SQL Database の現在のバージョンは V12 です。 バージョン V11 �
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>いつ修正プログラムの適用によるダウンタイムを発生させるかを制御できますか?
 
-No. 修正プログラムの適用の影響は、アプリに[再試行ロジックを採用](sql-database-develop-overview.md#resiliency)していれば、通常は顕著なものではありません。 詳細については、「[Azure SQL Database での Azure メンテナンス イベントの計画](sql-database-planned-maintenance.md)」を参照してください。
+いいえ。 修正プログラムの適用の影響は、アプリに[再試行ロジックを採用](sql-database-develop-overview.md#resiliency)していれば、通常は顕著なものではありません。 詳細については、「[Azure SQL Database での Azure メンテナンス イベントの計画](sql-database-planned-maintenance.md)」を参照してください。
 
 ### <a name="azure-hybrid-benefit-questions"></a>Azure ハイブリッド特典に関する質問
 
@@ -256,7 +258,7 @@ SQL Database のお客様には、SQL Server 向け Azure ハイブリッド特�
 - [フィードバック](https://aka.ms/sqlfeedback):バグの報告や機能要求
 - [Reddit](https://www.reddit.com/r/SQLServer/):SQL Server についての意見交換
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 単一データベースとエラスティック プールに関するコストの比較と計算については、[価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
 - すぐに始めるには、次のクイックスタートをご覧ください。

@@ -16,14 +16,14 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 618be4bc2d7669879daa927d5c4392b1097d29af
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a775963f1b0fa19cd687c839f527f4a078c76864
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774883"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80126992"
 ---
-# <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の iOS デバイスにプッシュ通知を送信する
+# <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の iOS デバイスにプッシュ通知を送信する
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 

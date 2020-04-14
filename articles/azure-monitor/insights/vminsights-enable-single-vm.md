@@ -1,21 +1,21 @@
 ---
-title: 評価のために Azure Monitor for VMs (プレビュー) を有効にする | Microsoft Docs
+title: Azure portal で Azure Monitor for VMs を有効にする
 description: 1 つの Azure 仮想マシン上または仮想マシン スケール セット上で Azure Monitor for VMs を評価する方法について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/14/2019
-ms.openlocfilehash: 3b79eaeed420426fe79b2b6caf19ba1d1be61939
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/12/2020
+ms.openlocfilehash: 45bc8f16a547d4a95820f9dcd02132844b3be83c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664613"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480710"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>評価のために Azure Monitor for VMs (プレビュー) を有効にする
+# <a name="enable-azure-monitor-for-vms-in-the-azure-portal"></a>Azure portal で Azure Monitor for VMs を有効にする
 
-少数の Azure 仮想マシン (VM) 上または 1 つの VM または仮想マシンのスケール セット上で、Azure Monitor for VMs (プレビュー) を評価できます。 監視を有効にする最も簡単で直接的な方法は Azure portal からです。 目標は、VM を監視し、パフォーマンスや可用性の問題を発見することです。 
+この記事では、Azure portal を使用して、少数の Azure Virtual Machines (VM) で Azure Monitor for VMs を有効にする方法について説明します。 目標は、VM を監視し、パフォーマンスや可用性の問題を発見することです。 
 
 始める前に、[前提条件](vminsights-enable-overview.md)を読み、サブスクリプションとリソースが要件を満たしていることを確認します。  
 
@@ -28,11 +28,9 @@ Azure VM の監視を有効にするには:
 
 1. 一覧から VM を選択します。
 
-1. [VM] ページの **[監視]** セクションで、 **[Insights (プレビュー)]** を選択します。
+1. [VM] ページの **[監視]** セクションで、 **[Insights]\(分析情報\)** 、次に **[Enable]\(有効にする\)** を選択します。
 
-1. **[Insights (プレビュー)]** ページで、 **[今すぐ試す]** を選択します。
-
-    ![VM に対して Azure Monitor for VMs を有効にする](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
+    ![VM に対して Azure Monitor for VMs を有効にする](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
 1. **[Azure Monitor Insights Onboarding]\(Azure Monitor Insights の配布準備\)** ページで、同じサブスクリプションに既存の Log Analytics ワークスペースがある場合は、ドロップダウン リストでそれを選択します。  
 
@@ -41,9 +39,9 @@ Azure VM の監視を有効にするには:
     >[!NOTE]
     >VM からの監視データを格納するための新しい Log Analytics ワークスペースを作成するには、[Log Analytics ワークスペースの作成](../../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。 Log Analytics ワークスペースは、[サポートされているリージョン](vminsights-enable-overview.md#log-analytics)のいずれかに属している必要があります。
 
-監視を有効にした後、VM の正常性メトリックが表示されるまでに 10 分ほどかかることがあります。
+6. 構成が実行されているときに、ステータス メッセージを受け取ります。
 
-![Azure Monitor for VMs の監視デプロイ プロセスを有効にする](./media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+    ![Azure Monitor for VMs の監視デプロイ プロセスを有効にする](media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="enable-monitoring-for-a-single-virtual-machine-scale-set"></a>1 つの仮想マシン スケール セットの監視を有効にする
 
@@ -55,23 +53,23 @@ Azure 仮想マシン スケール セットの監視を有効にするには:
 
 3. 一覧から仮想マシン スケール セットを選択します。
 
-4. [仮想マシン スケール セット] ページの **[監視]** セクションで、 **[インサイト (プレビュー)]** を選択します。
+4. [仮想マシン スケール セット] ページの **[監視]** セクションで、 **[Insights]\(分析情報\)** 、次に **[Enable]\(有効にする\)** を選択します。
 
-5. **[インサイト (プレビュー)]** ページで、使用する既存の Log Analytics ワークスペースがある場合は、ドロップダウン リストでそれを選択します。
+5. **[Insights]\(分析情報\)** ページで、既存の Log Analytics ワークスペースを使用する場合は、それをドロップダウン リストから選択します。
 
     このリストでは、サブスクリプションで VM がデプロイされている既定のワークスペースと場所が事前に選択されています。 
 
-    ![仮想マシン スケール セットに対して Azure Monitor for VMs を有効にする](./media/vminsights-enable-single-vm/enable-vminsights-vmss-portal.png)
+    ![仮想マシン スケール セットに対して Azure Monitor for VMs を有効にする](media/vminsights-enable-single-vm/enable-vminsights-vmss-portal.png)
 
     >[!NOTE]
     >仮想マシン スケール セットからの監視データを格納するための新しい Log Analytics ワークスペースを作成するには、[Log Analytics ワークスペースの作成](../learn/quick-create-workspace.md)に関するページを参照してください。 Log Analytics ワークスペースは、[サポートされているリージョン](vminsights-enable-overview.md#log-analytics)のいずれかに属している必要があります。
 
-監視を有効にした後、スケール セットの監視データが表示されるまでに10 分ほどかかることがあります。
+6. 構成が実行されているときに、ステータス メッセージを受け取ります。
 
->[!NOTE]
->スケール セットに手動アップグレード モデルを使用している場合は、インスタンスをアップグレードして設定を完了します。 **[インスタンス]** ページの **[設定]** セクションからアップグレードを開始できます。
-
-![Azure Monitor for VMs の監視デプロイ プロセスを有効にする](./media/vminsights-enable-single-vm/onboard-vminsights-vmss-portal-status-01.png)
+    >[!NOTE]
+    >スケール セットに手動アップグレード モデルを使用している場合は、インスタンスをアップグレードして設定を完了します。 **[インスタンス]** ページの **[設定]** セクションからアップグレードを開始できます。
+    
+    ![Azure Monitor for VMs の監視デプロイ プロセスを有効にする](media/vminsights-enable-single-vm/onboard-vminsights-vmss-portal-status.png)
 
 VM または仮想マシン スケール セットの監視が有効になったので、Azure Monitor for VMs での分析に監視情報を使用できます。 
 

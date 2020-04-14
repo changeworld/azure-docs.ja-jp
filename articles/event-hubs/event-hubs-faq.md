@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 3b46c574ea47622ec97e70c0d2f2cdc3aa54ec0d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: d2d74a90d6712089cff681381e11b1caec9d469d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706390"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283669"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -109,7 +109,7 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 Event Hubs は、既存の Apache Kafka ベースのアプリケーションが使用できる Kafka エンドポイントを提供します。 構成変更が、PaaS Kafka エクスペリエンスを得るために必要なすべてのことです。 これにより、独自の Kafka クラスターを実行するための代替手段が提供されます。 Event Hubs は Apache Kafka 1.0 以降のクライアント バージョンをサポートし、既存の Kafka アプリケーション、ツール、およびフレームワークと連携して動作します。 詳細については、[Kafka リポジトリ用の Event Hubs](https://github.com/Azure/azure-event-hubs-for-kafka) に関するページを参照してください。
 
 ### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>既存のアプリケーションが Event Hubs に接続するにはどのような構成変更を行う必要がありますか。
-Kafka 対応 Event Hub に接続するには、Kafka クライアントの構成を更新する必要があります。 これは、Event Hubs 名前空間を作成し、[接続文字列](event-hubs-get-connection-string.md)を取得することによって実行されます。 Event Hubs の FQDN を指すように bootstrap.servers を変更し、ポートを 9093 に変更します。 以下に示す正しい認証を使用して、sasl.jaas.config を更新して、Kafka クライアントを Kafka 対応 Event Hubs エンドポイント（取得した接続文字列）に転送します。
+イベント ハブに接続するには、Kafka クライアントの構成を更新する必要があります。 これは、Event Hubs 名前空間を作成し、[接続文字列](event-hubs-get-connection-string.md)を取得することによって実行されます。 Event Hubs の FQDN を指すように bootstrap.servers を変更し、ポートを 9093 に変更します。 以下に示す正しい認証を使用し、sasl.jaas.config を更新して、Kafka クライアントを Event Hubs エンドポイント (取得した接続文字列) に転送します。
 
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 
@@ -119,8 +119,8 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 
 注:sasl.jaas.config がフレームワークでサポートされる構成ではない場合、SASL のユーザー名とパスワードを設定に使用される構成を見つけ、代わりにそれらを使用します。 ユーザー名を $ConnectionString に、パスワードを Event Hubs の接続文字列に設定します。
 
-### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Kafka 対応 Event Hubs のメッセージ/イベント サイズはどれくらいですか。
-Kafka 対応 Event Hubs に許可されている最大メッセージ サイズは 1 MB です。
+### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Event Hubs のメッセージ/イベント サイズはどれくらいですか。
+Event Hubs に許可されている最大メッセージ サイズは 1 MB です。
 
 ## <a name="throughput-units"></a>スループット ユニット
 
@@ -252,7 +252,7 @@ Event Hubs のテクニカル サポートは、 [コミュニティ フォー�
 
 SLA の詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/) 」ページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Event Hubs の詳細については、次のリンク先を参照してください:
 

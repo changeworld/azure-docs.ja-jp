@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: damaerte
 ms.openlocfilehash: bbf6c1f3049265961559ea34c8b748b2b4d263b6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60614305"
 ---
 # <a name="embed-azure-cloud-shell"></a>Azure Cloud Shell の埋め込み
@@ -27,11 +27,11 @@ Cloud Shell を埋め込むことで、開発者やコンテンツ作成者は�
 
 標準サイズのボタン
 
-[![標準の起動ボタン](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
+[![標準サイズの起動](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
 
 大きいサイズのボタン
 
-[![大きい起動ボタン](https://shell.azure.com/images/launchcloudshell@2x.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
+[![大きいサイズの起動](https://shell.azure.com/images/launchcloudshell@2x.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
 
 ## <a name="how-to"></a>操作方法
 
@@ -56,6 +56,6 @@ URL を拡張して、特定のシェル エクスペリエンスを設定しま
 |Bash                       |[shell.azure.com/bash](https://shell.azure.com/bash)       |
 |PowerShell                 |[shell.azure.com/powershell](https://shell.azure.com/powershell) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Cloud Shell の Bash のクイックスタート](quickstart.md)<br>
 [Cloud Shell の PowerShell のクイックスタート](quickstart-powershell.md)

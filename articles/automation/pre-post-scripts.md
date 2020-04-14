@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 35fba966fcdb6d1c5cd7c531bb22c9c78ae16ff3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbf7f2945ad6a94c51cfd0c7db1e8c85d739c6ed
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75417794"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631614"
 ---
 # <a name="manage-pre-and-post-scripts"></a>事前および事後スクリプトを管理する
 
@@ -18,7 +18,7 @@ ms.locfileid: "75417794"
 
 ## <a name="runbook-requirements"></a>Runbook の要件
 
-Runbook が事前または事後スクリプトとして使用されるようにするには、その Runbook を Automation アカウントにインポートして発行する必要があります。 このプロセスの詳細については、「[Runbook を発行する](manage-runbooks.md#publish-a-runbook)」を参照してください。
+Runbook が事前または事後スクリプトとして使用されるようにするには、その Runbook を Automation アカウントにインポートして発行する必要があります。 このプロセスの詳細については、「[Runbook を発行する](manage-runbooks.md#publishing-a-runbook)」を参照してください。
 
 ## <a name="using-a-pre-script-or-post-script"></a>事前スクリプトまたは事後スクリプトを使用する
 

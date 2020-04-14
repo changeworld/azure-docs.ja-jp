@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 83164a615cacc067e5f1ea6a1dd6ce0f0fd9d540
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adba282a96f9d250569e090e186859c04e89ebda
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298848"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981547"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -183,8 +183,8 @@ New-AzStorageAccount `
 
 1. *[状態]* で、 **[オン]** を選択します。
 2. **[フロー ログ バージョン]** で、 *[バージョン 2]* を選択します。 バージョン 2 には、フローセッションの統計 (バイトおよびパケット) が含まれます。
-3. フロー ログを保存する既存のストレージ アカウントを選択します。 データを無期限に保存する場合は、値を *0* に設定します。 ストレージ アカウントに対して Azure Storage の料金が発生します。 ストレージの [Data Lake Storage Gen2 Hierarchical Namespace Enabled]\(Data Lake Storage Gen2 の階層型名前空間の有効化\) が確実に true には設定されていないようにします。
-4. **[リテンション期間]** を、データを保存する日数に設定します。
+3. フロー ログを保存する既存のストレージ アカウントを選択します。 ストレージの [Data Lake Storage Gen2 Hierarchical Namespace Enabled]\(Data Lake Storage Gen2 の階層型名前空間の有効化\) が確実に true には設定されていないようにします。
+4. **[リテンション期間]** を、データを保存する日数に設定します。 データを無期限に保存する場合は、値を *0* に設定します。 ストレージ アカウントに対して Azure Storage の料金が発生します。 
 5. *[Traffic Analytics Status]\(Traffic Analytics の状態\)* で、 **[オン]** を選択します。
 6. 処理間隔を選択します。 選択内容に基づいて、フロー ログがストレージ アカウントから収集され、Traffic Analytics によって処理されます。 処理間隔は、1 時間ごとまたは 10 分ごとを選択できます。 
 7. 既存の Log Analytics (OMS) ワークスペースを選択するか、 **[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、[サポートされているリージョン](#supported-regions-log-analytics-workspaces)のいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。

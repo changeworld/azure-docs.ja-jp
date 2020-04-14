@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.subservice: alerts
-ms.openlocfilehash: 9f61c62bc4960cb8e5bff31f84bd73a14240b613
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6b21f228858954292e7a3bc5561d5e86fcfaaf41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250712"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055176"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Monitor でのログのメトリック アラートの作成
 
@@ -42,7 +42,7 @@ Azure Monitor では、[クラシック アラート](../../azure-monitor/platfo
  メトリック アラートでは、ディメンションを使用するメトリックのアラートがサポートされています。 ディメンションを使用すると、メトリックを適切なレベルにフィルター処理できます。 サポートされているソリューションでの、Log Analytics ワークスペースのログでサポートされているメトリックの一覧については、[こちら](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)をご覧ください。
 
 > [!NOTE]
-> [Azure Monitor のメトリック](../../azure-monitor/platform/metrics-charts.md)を使用して Log Analytics ワークスペースから抽出するためにサポートされているメトリックを表示するには、そのメトリックに対してログのメトリック アラートを作成する必要があります。 ログのメトリック アラートで選択されたディメンションは、Azure Monitor のメトリックを使用して探索する場合にのみ表示されます。
+> [Azure Monitor のメトリック](../../azure-monitor/platform/metrics-charts.md)を使用して Log Analytics ワークスペースから抽出されたサポート対象のメトリックを表示するには、その特定のメトリックに対してログのメトリック アラートを作成する必要があります。 ログのメトリック アラートで選択されたディメンションは、Azure Monitor のメトリックを使用して探索する場合にのみ表示されます。
 
 ## <a name="creating-metric-alert-for-log-analytics"></a>Log Analytics のメトリック アラートの作成
 

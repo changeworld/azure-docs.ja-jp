@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/04/2019
-ms.openlocfilehash: 84098901d58e2087c7ece77049e445bb5c76f2a9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/24/2020
+ms.openlocfilehash: b905c75e920577e46017caeb456f8237421086b2
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923792"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421203"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory を使用するオープン ハブを介して SAP Business Warehouse からデータをコピーする
 
@@ -90,7 +90,7 @@ ADF SAP BW オープン ハブ コネクタでは、次の 2 つの省略可能�
 
 - SAP オープン ハブ宛先の種類は、[Technical Key] (テクニカル キー) オプションをオンにして、**データベース テーブル**として作成します。  また、必須ではありませんが、[Deleting Data from Table] (テーブルからデータを削除する) はオンにしないままにすることをお勧めします。 DTP を利用して (直接実行するか、既存のプロセス チェーンに統合する)、選択したソース オブジェクト (キューブなど) のデータをオープン ハブ宛先テーブルに取り込みます。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 > [!TIP]
 >
@@ -189,7 +189,7 @@ SAP BW Open Hub からデータをコピーするために、コピー アクテ
 >[!TIP]
 >オープン ハブ テーブルには、1 つの要求 ID によって生成されたデータのみが含まれています。たとえば、常に完全な読み込みを行い、テーブル内の既存のデータを上書きする場合や、DTP はテストのために 1 回のみ実行する場合は、データを外へコピーするため、忘れずに "excludeLastRequest" オプションをオフにします。
 
-データ読み込みを高速化するために、コピー アクティビティに [`parallelCopies`](copy-activity-performance.md#parallel-copy) を設定して、SAP BW オープン ハブから並行してデータを読み込むことができます。 たとえば、`parallelCopies` を 4 に設定すると、Data Factory では同時に 4 つの RFC 呼び出しが実行され、各 RFC 呼び出しは、DTP 要求 ID とパッケージ ID でパーティション分割された SAP BW オープン ハブ テーブルからデータの一部を取得します。 これは、一意の DTP 要求 ID + パッケージ ID の数値が `parallelCopies` の値よりも大きい場合に適用されます。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) こともお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
+データ読み込みを高速化するために、コピー アクティビティに [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) を設定して、SAP BW オープン ハブから並行してデータを読み込むことができます。 たとえば、`parallelCopies` を 4 に設定すると、Data Factory では同時に 4 つの RFC 呼び出しが実行され、各 RFC 呼び出しは、DTP 要求 ID とパッケージ ID でパーティション分割された SAP BW オープン ハブ テーブルからデータの一部を取得します。 これは、一意の DTP 要求 ID + パッケージ ID の数値が `parallelCopies` の値よりも大きい場合に適用されます。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) こともお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
 
 **例:**
 
@@ -230,19 +230,24 @@ SAP BW オープン ハブからデータをコピーするときには、以下
 
 | SAP ABAP の型 | Data Factory の中間データ型 |
 |:--- |:--- |
-| C (String) | string |
+| C (String) | String |
 | I (integer) | Int32 |
 | F (Float) | Double |
-| D (Date) | string |
-| T (Time) | string |
+| D (Date) | String |
+| T (Time) | String |
 | P (BCD Packed、Currency、Decimal、Qty) | Decimal |
-| N (Numc) | string |
-| X (Binary および Raw) | string |
+| N (Numc) | String |
+| X (Binary および Raw) | String |
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
+## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 
-## <a name="next-steps"></a>次の手順
+**現象:** SAP BW on HANA を実行しているとき、ADF コピー アクティビティ (100万行) を使用してもデータのサブセットしかコピーされない場合、考えられる原因は、DTP で [SAP HANA Execution]\(SAP HANA 実行\) オプションを有効にしていることです。この場合、ADF ではデータの最初のバッチだけを取得できます。
+
+**解決策:** DTP で [SAP HANA Execution]\(SAP HANA 実行\) オプションを無効にして、データを再処理してから、コピー アクティビティをもう一度実行してみてください。
+
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 02/24/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: fdda35d3a617a30169748f4f6b42c8726e7e3512
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 01d69bffcf2c17abceba8ba2e0893360bead8b12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920690"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477223"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーを使用してバッチ予測を実行する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -43,13 +43,13 @@ SDK を使用してバッチ スコアリング サービスを設定する方�
 
 1. 予測の作成に使用するモデルをトレーニングするトレーニング パイプラインを選択します。
 
-1. パイプラインを**実行**します。
+1. パイプラインを**送信**します。
 
-    ![パイプラインを実行する](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
+    ![パイプラインを送信する](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
 
 トレーニング パイプラインを実行したので、バッチ推論パイプラインを作成できます。
 
-1. **[実行]** の横にある新しい **[Create inference pipeline]\(推論パイプラインの作成\)** ドロップダウンを選択します。
+1. **[送信]** の横にある新しい **[Create inference pipeline]\(推論パイプラインの作成\)** ドロップダウンを選択します。
 
 1. **[Batch inference pipeline]\(バッチ推論パイプライン\)** を選択します。
 
@@ -110,13 +110,13 @@ SDK を使用してバッチ スコアリング サービスを設定する方�
 
     パイプライン詳細ページには、パイプラインの詳細な実行履歴と接続文字列情報が表示されます。 
     
-1. **[実行]** を選択して、パイプラインの手動実行を作成します。
+1. **[送信]** を選択し、パイプラインの手動実行を作成します。
 
     ![パイプラインの詳細](./media/how-to-run-batch-predictions-designer/submit-manual-run.png)
     
 1. 別のデータセットを使用するようにパラメーターを変更します。
     
-1. **[実行]** を選択してパイプラインを実行します。
+1. **[送信]** を選択し、パイプラインを実行します。
 
 ### <a name="use-the-rest-endpoint"></a>REST エンドポイントを使用する
 
@@ -145,3 +145,4 @@ REST 呼び出しを行うには、OAuth 2.0 ベアラー型認証ヘッダー�
 ## <a name="next-steps"></a>次のステップ
 
 デザイナー [チュートリアル](tutorial-designer-automobile-price-train-score.md)に従い、回帰モデルをトレーニングし、デプロイします。
+''

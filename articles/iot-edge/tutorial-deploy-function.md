@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1f4b3387375b52b28600590a099884277f3de63e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f909ca12ce080fc5d1241bcc649c041361e405a7
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78943031"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421179"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>チュートリアル:Azure 関数を IoT Edge モジュールとして展開する
 
@@ -31,9 +31,6 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
 
 ![図 - チュートリアルのアーキテクチャ: 関数モジュールのステージとデプロイ](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
-
->[!NOTE]
->Azure IoT Edge 上の Azure Function モジュールは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)段階にあります。
 
 このチュートリアルで作成する Azure 関数は、デバイスによって生成される温度データをフィルター処理します。 この関数は、指定されたしきい値を温度が上回っているときにのみ、上流の Azure IoT Hub にメッセージを送信します。
 
@@ -68,7 +65,7 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
 
 3. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットに表示されるメッセージに従って、ソリューションを作成します。
 
-   | フィールド | Value |
+   | フィールド | 値 |
    | ----- | ----- |
    | フォルダーの選択 | VS Code によってソリューション ファイルが作成される、開発マシン上の場所を選択します。 |
    | Provide a solution name (ソリューション名の指定) | **FunctionSolution** のように、ソリューションのわかりやすい名前を入力するか、既定値をそのまま使用します。 |

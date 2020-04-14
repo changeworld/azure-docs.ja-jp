@@ -3,18 +3,18 @@ title: 感情分析 Kubernetes の構成とデプロイの手順
 titleSuffix: Azure Cognitive Services
 description: 感情分析 Kubernetes の構成とデプロイの手順
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/21/2019
-ms.author: dapine
-ms.openlocfilehash: 2a99f85cf861c0c36ffac136cdf1f792b40719b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: b43299974034f55b57b86191b3556c3d5c2ee83b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78262561"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877837"
 ---
 ### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>感情分析コンテナーを AKS クラスターにデプロイする
 

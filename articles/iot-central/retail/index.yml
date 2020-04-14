@@ -10,33 +10,33 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 70d7924f1a7767db393faccf98d3a9250de049ec
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 14dbe360942f4645b08d161130216412c9c427f9
+  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77621423"
+  ms.lasthandoff: 04/09/2020
+  ms.locfileid: "80998775"
 landingContent:
 - title: 小売ソリューションを構築する
   linkLists:
   - linkListType: get-started
     links:
     - text: Azure IoT Central の小売ソリューション
-      url: overview-iot-central-retail-pnp.md
+      url: overview-iot-central-retail.md
   - linkListType: tutorial
     links:
     - text: 1 - 小売アプリケーションを作成する
-      url: tutorial-in-store-analytics-create-app-pnp.md
+      url: tutorial-in-store-analytics-create-app.md
     - text: 2 - オペレーター ダッシュボードをカスタマイズする
-      url: tutorial-in-store-analytics-customize-dashboard-pnp.md
+      url: tutorial-in-store-analytics-customize-dashboard.md
     - text: 3 - データをエクスポートして分析情報を視覚化する
-      url: tutorial-in-store-analytics-export-data-visualize-insights-pnp.md
+      url: tutorial-in-store-analytics-export-data-visualize-insights.md
     - text: スマート在庫管理アプリケーションを作成する
-      url: tutorial-iot-central-smart-inventory-management-pnp.md
+      url: tutorial-iot-central-smart-inventory-management.md
     - text: コネクテッド ロジスティクス アプリケーションを作成する
-      url: tutorial-iot-central-connected-logistics-pnp.md
+      url: tutorial-iot-central-connected-logistics.md
     - text: デジタル流通センター アプリケーションを作成する
-      url: tutorial-iot-central-digital-distribution-center-pnp.md
+      url: tutorial-iot-central-digital-distribution-center.md
   - linkListType: how-to-guide
     links:
     - text: Rigado Cascade 500 を接続する

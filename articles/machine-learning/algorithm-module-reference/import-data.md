@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 8b1e4c60e6054141e71d2509fe34c7ca9baf9ca6
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d124fdc15bd34743b237985a66cc35625f5d9a4b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598461"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456201"
 ---
 # <a name="import-data-module"></a>データのインポート モジュール
 
@@ -65,7 +65,7 @@ ms.locfileid: "77598461"
     オンにした場合は、モジュールが再び実行されて出力が再生成されます。 このため、ストレージ内の基になるデータが更新されたときにこのオプションを選択すると、最新のデータを取得するのに役立ちます。
 
 
-1. パイプラインを実行します。
+1. パイプラインを送信します。
 
     データのインポートによりデザイナーにデータが読み込まれるとき、列に含まれる値 (数値またはカテゴリ) に基づいて各列のデータ型が推測されます。
 
@@ -73,7 +73,7 @@ ms.locfileid: "77598461"
 
     データに既存の列ヘッダーがない場合、「col1, col2,…, coln*」の形式で新しい列に名前が付けられます。
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 インポートが完了したら、出力されたデータセットをクリックし、 **[Visualize]\(視覚化\)** を選択し、データが正常にインポートされたかどうかを確認します。
 

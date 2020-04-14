@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: a3583a5efd120733ce7f6b71a7594b5636593f99
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795996"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335823"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Application Gateway イングレス コントローラーの注釈 
 
@@ -27,13 +27,13 @@ Kubernetes イングレス リソースには、任意のキー/値のペアを�
 | 注釈キー | 値の型 | Default value | 使用できる値
 | -- | -- | -- | -- |
 | [appgw.ingress.kubernetes.io/backend-path-prefix](#backend-path-prefix) | `string` | `nil` | |
-| [appgw.ingress.kubernetes.io/ssl-redirect](#ssl-redirect) | `bool` | `false` | |
+| [appgw.ingress.kubernetes.io/ssl-redirect](#tls-redirect) | `bool` | `false` | |
 | [appgw.ingress.kubernetes.io/connection-draining](#connection-draining) | `bool` | `false` | |
 | [appgw.ingress.kubernetes.io/connection-draining-timeout](#connection-draining) | `int32` (秒) | `30` | |
 | [appgw.ingress.kubernetes.io/cookie-based-affinity](#cookie-based-affinity) | `bool` | `false` | |
 | [appgw.ingress.kubernetes.io/request-timeout](#request-timeout) | `int32` (秒) | `30` | |
 | [appgw.ingress.kubernetes.io/use-private-ip](#use-private-ip) | `bool` | `false` | |
-| [appgw.ingress.kubernetes.io/backend-protocol](#backend-protocol) | `string` | `http` | `http`、`https` |
+| [appgw.ingress.kubernetes.io/backend-protocol](#backend-protocol) | `string` | `http` | `http`, `https` |
 
 ## <a name="backend-path-prefix"></a>バックエンド パス プレフィックス
 
@@ -70,7 +70,7 @@ spec:
 > [!NOTE] 
 > 上記の例では、1 つの規則のみを定義しています。 ただし、注釈はイングレス リソース全体に適用可能なため、ユーザーが複数の規則を定義した場合、指定されたパスのそれぞれに対してバックエンド パス プレフィックスが設定されます。 したがって、(同じサービスに対するものであっても) パス プレフィックスが異なっている別々の規則が必要な場合、ユーザーは別々のイングレス リソースを定義する必要があります。
 
-## <a name="ssl-redirect"></a>SSL リダイレクト
+## <a name="tls-redirect"></a>TLS リダイレクト
 
 対応する HTTPS に HTTP URL を自動的にリダイレクトするように Application Gateway を[構成できます](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview)。 この注釈が存在し、TLS が正しく構成されている場合、Kubernetes イングレス コントローラーは、[リダイレクト構成を持つルーティング規則](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration)を作成し、変更を Application Gateway に適用します。 作成されるリダイレクトは HTTP `301 Moved Permanently` になります。
 

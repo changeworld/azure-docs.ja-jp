@@ -4,12 +4,12 @@ description: Application Insights の使用を開始します。 オンプレミ
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: e398f23559729580ae4ad8b6507c2f09328052b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234591"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985067"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web アプリケーションのパフォーマンスを監視する
 
@@ -26,8 +26,7 @@ Application Insights は、Java と ASP.NET の Web アプリケーションと�
 * [ASP.NET Web アプリ](../../azure-monitor/app/asp-net.md)
   * [例外の監視を追加する](../../azure-monitor/app/asp-net-exceptions.md)
   * [依存関係の監視を追加する](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE Web アプリ](../../azure-monitor/app/java-get-started.md)
-  * [依存関係の監視を追加する](../../azure-monitor/app/java-agent.md)
+* [Java EE Web アプリ](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>パフォーマンス メトリックの監視
 [Azure ポータル](https://portal.azure.com)で、アプリケーション用に設定した Application Insights リソースを参照します。 概要ブレードに、基本的なパフォーマンス データが表示されます。

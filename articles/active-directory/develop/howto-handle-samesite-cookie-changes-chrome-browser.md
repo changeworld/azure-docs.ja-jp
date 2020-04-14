@@ -3,7 +3,6 @@ title: Chrome ブラウザーにおける SameSite Cookie の変更を処理す�
 titleSuffix: Microsoft identity platform
 description: Chrome ブラウザーにおける SameSite Cookie の変更の処理について説明します。
 services: active-directory
-documentationcenter: ''
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
@@ -14,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 056b787bbbcde6ba7f9510043deabdcf85ac7467
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e414e5cb7ad9097eb815240f83d9f529f839b6b4
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050522"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884003"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Chrome ブラウザーにおける SameSite Cookie の変更の処理
 

@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 3/18/2020
-ms.openlocfilehash: 0a41dfbdbfb1a0f588c1a334aefeb4fb5043e813
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b5f1cbf2f822f350b1eeba032199676651364d84
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80067958"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983825"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Azure Database for MySQL で Java を使用してデータに接続してクエリを実行する
 
@@ -62,18 +62,6 @@ public class CreateTableInsertRows {
         String database = "quickstartdb";
         String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
-
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.mariadb.jdbc");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("MariaDB JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("MariaDB JDBC driver detected in library path.");
 
         Connection connection = null;
 
@@ -166,18 +154,6 @@ public class ReadTable {
         String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.mariadb.jdbc");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("MariaDB JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("MariaDB JDBC driver detected in library path.");
-
         Connection connection = null;
 
         // Initialize connection object
@@ -253,18 +229,6 @@ public class UpdateTable {
         String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.mariadb.jdbc");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("MariaDB JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("MariaDB JDBC driver detected in library path.");
-
         Connection connection = null;
 
         // Initialize connection object
@@ -335,18 +299,6 @@ public class DeleteTable {
         String database = "quickstartdb";
         String user = "myadmin@mydemoserver";
         String password = "<server_admin_password>";
-        
-        // check that the driver is installed
-        try
-        {
-            Class.forName("org.mariadb.jdbc");
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new ClassNotFoundException("MariaDB JDBC driver NOT detected in library path.", e);
-        }
-
-        System.out.println("MariaDB JDBC driver detected in library path.");
 
         Connection connection = null;
 

@@ -1,46 +1,40 @@
 ---
 title: AppSource でソフトウェアを購入する方法 | Azure Marketplace
 description: AppSource でソフトウェアを購入するための手順 | Azure Marketplace。
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 70e51d7c05e93e7d5f4451fa383023605a02af99
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.date: 03/20/2020
+ms.openlocfilehash: bc19246354bebd1ba2a827e7718cbad95b896e14
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933492"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284978"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Microsoft AppSource でソフトウェアを購入する方法
 
 Microsoft [AppSource](https://appsource.microsoft.com/) では、お客様が Microsoft パートナーから提供される SaaS アプリケーションに登録できるようになりました。 お客様は、認定された Web アプリケーションをストアで探し、Microsoft の管理センターを使用して料金、アップグレード、ダウングレード、および取り消しをまとめて管理できます。 この記事では、ストアでアプリを購入する方法を説明します。
 
+AppSource では、無料版、試用版、有料サブスクリプションなど、さまざまなアプリの中から選択できます。 この記事では、AppSource を使って有料サブスクリプションを購入する方法について説明します。
+
 ## <a name="requirements"></a>必要条件
 
 SaaS のオファーを購入するには、以下のものが必要です。
 
-- 職場または学校のアカウント。
+- 職場または学校のアカウント。 職場または学校アカウントを持っていない場合は、購入プロセスで "無料アカウントにサインアップ" のリンクに従ってください。
+
+- オファーを購入する国や地域で有効なクレジット カード。
 
     > [!Note]
-    > 職場または学校のアカウントを持っていない場合は、職場または学校のアカウントの追加先となる Azure Active Directory テナントを作成する必要があります。 詳しくは、「[クイック スタート: Azure Active Directory で新しいテナントを作成する](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)」を参照してください。
-
-- 有効なクレジット カード。
-
-    > [!Note]
-    > クレジット カードは、お客様がオファーを購入する国または地域のものである必要があります。 別の国を選択する場合は、ページの下部の [請求先の国/地域の変更] を選択します。
+    > クレジット カードの請求先の国は、Azure Active Directory インスタンスの場所にロックされている場合があります。
 
 ## <a name="steps-for-making-purchases-on-appsource"></a>AppSource での購入の手順
 
 1. [AppSource](https://appsource.microsoft.com/) で請求先の国または地域を選択します。
 1. 購入するアプリケーションを探します。
-
-    > [!Note]
-    > AppSource では、無料版、試用版、有料サブスクリプションなど、さまざまなアプリの中から選択できます。 この記事では、AppSource を使って有料サブスクリプションを購入する方法について説明します。
-
 1. **[今すぐ入手する]** を選択します。
 1. 以下のように、プランを選択します。
 

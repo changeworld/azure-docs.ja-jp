@@ -3,12 +3,12 @@ title: 正常性チェックのエラー リファレンス
 description: Azure Container Registry で az acr check-health 診断コマンドを実行することによって検出された問題のエラー コードと考えられる解決策
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: a921d17ad7d01b134f5bfa33a1d9a768d3ea94df
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 971b28b2bf8d9ac22cec0efe979837886762cf17
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455035"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289143"
 ---
 # <a name="health-check-error-reference"></a>正常性チェックのエラー リファレンス
 
@@ -98,7 +98,11 @@ ms.locfileid: "74455035"
 
 *考えられる解決策*: スペルが正しいこと、およびレジストリが存在することを確認します。ユーザーがレジストリに対する適切なアクセス許可を持っていること、およびレジストリと CLI 環境のクラウドが一致していることを確認します。Azure CLI を最新バージョンに更新します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="notary_version_error"></a>NOTARY_VERSION_ERROR
+
+このエラーは、現在インストールされている Docker と Notary のバージョンと CLI の間に互換性がないことを意味します。 Docker インストールの Notary クライアントを手動で置換することで notary.exe のバージョンを 0.6.0 より前にダウングレードし、この問題が解決されるかどうかをお試しください。
+
+## <a name="next-steps"></a>次のステップ
 
 レジストリの正常性チェックのオプションについては、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」をご覧ください。
 

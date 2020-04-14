@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/10/2019
-ms.openlocfilehash: d861a4355158dfe18ac3aa40a7f98dc11ebda90b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/24/2020
+ms.openlocfilehash: 92421125ecb5f4336922c6e6b4508fcdaf92be6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930255"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246400"
 ---
 # <a name="data-flow-script-dfs"></a>データ フロー スクリプト (DFS)
 
@@ -138,6 +138,40 @@ derive1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="script-snippets"></a>スクリプト スニペット
+
+### <a name="aggregated-summary-stats"></a>集計要約統計量
+「SummaryStats」という名前のデータフローに集計変換を追加し、スクリプト内の集計関数に次のコードを貼り付けて、既存の SummaryStats を置き換えます。 これにより、データ プロファイルの概要の統計情報の汎用パターンが提供されます。
+
+```
+aggregate(each(match(true()), $$+'_NotNull' = countIf(!isNull($$)), $$ + '_Null' = countIf(isNull($$))),
+        each(match(type=='double'||type=='integer'||type=='short'||type=='decimal'), $$+'_stddev' = round(stddev($$),2), $$ + '_min' = min ($$), $$ + '_max' = max($$), $$ + '_average' = round(avg($$),2), $$ + '_variance' = round(variance($$),2)),
+        each(match(type=='string'), $$+'_maxLength' = max(length($$)))) ~> SummaryStats
+```
+次のサンプルを使用して、一意の数とデータ内の個別行の数をカウントすることもできます。 次の例は、ValueDistAgg という集計変換を使用してデータ フローに貼り付けることができます。 この例では、「title」という名前の列を使用します。 値のカウントを取得するために使用するデータの文字列型の列に、「title」を必ず置き換えてください。
+
+```
+aggregate(groupBy(title),
+    countunique = count()) ~> ValueDistAgg
+ValueDistAgg aggregate(numofunique = countIf(countunique==1),
+        numofdistinct = countDistinct(title)) ~> UniqDist
+```
+
+### <a name="include-all-columns-in-an-aggregate"></a>集計にすべての列を含める
+これは、集計を構築するときに、出力メタデータの残りの列を保持する方法を示す一般的な集計パターンです。 この例では、```first()``` 関数を使用して、名前が「movie」ではないすべての列の最初の値を選択します。 これを使用するには、DistinctRows という名前の集計変換を作成し、これをスクリプト内で既存の DistinctRows 集計スクリプトの先頭に貼り付けます。
+
+```
+aggregate(groupBy(movie),
+    each(match(name!='movie'), $$ = first($$))) ~> DistinctRows
+```
+
+### <a name="create-row-hash-fingerprint"></a>行ハッシュ フィンガープリントの作成 
+データ フロー スクリプトでこのコードを使用して、3 つの列の ```sha1``` ハッシュを生成する ```DWhash``` という名前の新しい派生列を作成します。
+
+```
+derive(DWhash = sha1(Name,ProductNumber,Color))
+```
+
+## <a name="next-steps"></a>次のステップ
 
 データ フローの詳細については、まず[データ フロー概要に関する記事](concepts-data-flow-overview.md)を参照してください。

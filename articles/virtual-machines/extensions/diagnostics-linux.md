@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: d9375d09219d2655bd9947c0953557f4a1bf8f3c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 7a7c1af1193ba391550438229a22c4a8c116e6be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199616"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289177"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -61,7 +61,7 @@ Linux Diagnostic Extension は、Microsoft Azure で実行中の Linux VM の正
 
 実行前に、最初のセクションに変数の正しい値を入力します。
 
-```bash
+```azurecli
 # Set your Azure VM diagnostic variables correctly below
 my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 my_linux_vm=<your_azure_linux_vm_name>
@@ -89,11 +89,11 @@ my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accoun
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
-サンプル構成の URL と内容は変更される可能性があります。 ポータル設定の JSON ファイルのコピーをダウンロードし、必要に応じてカスタマイズします。 作成するテンプレートやオートメーションは、その都度 URL をダウンロードするのではなく、独自のコピーを使用する必要があります。
+これらの例でダウンロードしたサンプル構成では、一連の標準データが収集され、それらがテーブル ストレージに送信されます。 サンプル構成の URL と内容は変更される可能性があります。 ほとんどの場合、毎回その URL をダウンロードするのではなく、ポータル設定 JSON ファイルのコピーをダウンロードし、ニーズに合わせてカスタマイズし、自分で作るテンプレートやオートメーションでは独自のバージョンの構成ファイルを使用するようにします。
 
 #### <a name="powershell-sample"></a>PowerShell のサンプル
 
-```Powershell
+```powershell
 $storageAccountName = "yourStorageAccountName"
 $storageAccountResourceGroup = "yourStorageAccountResourceGroupName"
 $vmName = "yourVMName"
@@ -155,7 +155,7 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 }
 ```
 
-名前 | Value
+名前 | 値
 ---- | -----
 storageAccountName | 拡張機能によってデータが書き込まれるストレージ アカウントの名前。
 storageAccountEndPoint | (省略可能) ストレージ アカウントが存在するクラウドを識別するエンドポイント。 この設定がない場合、LAD の既定値は Azure パブリック クラウド `https://core.windows.net` になります。 Azure Germany、Azure Government、Azure China でストレージ アカウントを使用するには、この値を適切に設定します。
@@ -193,7 +193,7 @@ Resource Manager テンプレート内の SAS トークンを取得するには�
 
 この省略可能なセクションでは、拡張機能が収集した情報を送信する追加の宛先を定義します。 "シンク" 配列には、追加のデータ シンクごとのオブジェクトが含まれています。 "Type" 属性は、オブジェクトの他の属性を決定します。
 
-要素 | Value
+要素 | 値
 ------- | -----
 name | このシンクを拡張機能構成の他の場所で参照するために使用される文字列。
 type | 定義されているシンクの型。 この型のインスタンス内のその他の値 (存在する場合) を決定します。
@@ -221,7 +221,7 @@ Linux Diagnostic Extension のバージョン 3.0 では、EventHub と JsonBlob
 
 2018 年 1 月 1 日の深夜 0 時 (UTC) までに SAS を作成した場合、 sasURL 値は次のようになります。
 
-```url
+```https
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
@@ -255,7 +255,7 @@ JsonBlob シンクに転送されたデータは、Azure ストレージ内の B
 }
 ```
 
-要素 | Value
+要素 | 値
 ------- | -----
 StorageAccount | 拡張機能によってデータが書き込まれるストレージ アカウントの名前。 [保護された設定](#protected-settings)で指定されている名前と同じにする必要があります。
 mdsdHttpProxy | (省略可能) [保護された設定](#protected-settings)での場合と同じです。 プライベート値が設定されている場合、パブリック値はこれにオーバーライドされます。 [保護された設定](#protected-settings)に、パスワードなどの秘密を含むプロキシ設定を配置します。
@@ -278,7 +278,7 @@ mdsdHttpProxy | (省略可能) [保護された設定](#protected-settings)で�
 
 この省略可能な構造体は、Azure Metrics サービスおよび他のデータ シンクに配信するためのメトリックとログの収集を制御します。 `performanceCounters` または `syslogEvents` のどちらか、またはその両方を指定する必要があります。 `metrics` 構造体を指定する必要があります。
 
-要素 | Value
+要素 | 値
 ------- | -----
 eventVolume | (省略可能) ストレージ テーブル内で作成されるパーティションの数を制御します。 `"Large"`、`"Medium"`、`"Small"` のいずれかである必要があります。 指定しない場合は、既定値の `"Medium"` が使用されます。
 sampleRateInSeconds | (省略可能) 生の (未集計) メトリックを収集する既定の間隔。 サポートされている最小サンプル レートは 15 秒です。 指定しない場合は、既定値の `15` が使用されます。
@@ -295,7 +295,7 @@ sampleRateInSeconds | (省略可能) 生の (未集計) メトリックを収集
 }
 ```
 
-要素 | Value
+要素 | 値
 ------- | -----
 resourceId | VM または VM が所属する仮想マシン スケール セットの Azure Resource Manager リソース ID。 この設定は、JsonBlob シンクが構成で使用されている場合にも指定する必要があります。
 scheduledTransferPeriod | 集計メトリックが計算され、Azure Metrics に転送される頻度。これは、IS 8601 の時間間隔として表されます。 最小の転送間隔は 60 秒、つまり、PT1M です。 少なくとも 1 つの scheduledTransferPeriod を指定する必要があります。
@@ -335,7 +335,7 @@ performanceCounters セクションで指定されたメトリックのサンプ
 * 最後に収集された値
 * 集計を計算するために使用された生のサンプルの数
 
-要素 | Value
+要素 | 値
 ------- | -----
 sinks | (省略可能) LAD が集計したメトリック結果を送信するシンクの名前をコンマで区切ったリスト。 集計されたすべてのメトリックは、一覧表示された各シンクに発行されます。 [sinksConfig](#sinksconfig) を参照してください。 例: `"EHsink1, myjsonsink"`.
 type | メトリックの実際のプロバイダーを識別します。
@@ -381,7 +381,7 @@ LAD でも Azure ポータル でも、counterSpecifier の値がいずれかの
 
 syslogEventConfiguration コレクションには、対象の syslog ファシリティごとに 1 つのエントリがあります。 特定のファシリティで minSeverity が "NONE" の場合、またはそのファシリティが要素にまったく表示されない場合、そのファシリティからのイベントはキャプチャされません。
 
-要素 | Value
+要素 | 値
 ------- | -----
 sinks | 個々のログ イベントの発行先となるシンクの名前をコンマで区切ったリスト。 syslogEventConfiguration の制限に一致するすべてのログ イベントが一覧表示されている各シンクに発行されます。 例:"EHforsyslog"
 facilityName | syslog ファシリティ名 ("LOG\_USER" や "LOG\_LOCAL0" など)。 完全なリストについては、[syslog man ページ](http://man7.org/linux/man-pages/man3/syslog.3.html)の「facility」セクションを参照してください。
@@ -410,7 +410,7 @@ minSeverity | Syslog の重大度レベル ("LOG\_ERR" や "LOG\_INFO" など)�
 ]
 ```
 
-要素 | Value
+要素 | 値
 ------- | -----
 namespace | (省略可能) クエリが実行される OMI 名前空間。 指定されていない場合、既定値は "root/scx" で、[System Center クロスプラットフォーム プロバイダー](https://github.com/Microsoft/SCXcore)によって実装されます。
 query | 実行される OMI クエリ。
@@ -434,7 +434,7 @@ sinks | (省略可能) メトリック結果の生のサンプルが発行され
 ]
 ```
 
-要素 | Value
+要素 | 値
 ------- | -----
 file | 監視され、キャプチャされるログ ファイルの完全なパス名。 パス名は単一のファイルを指定する必要があります。ディレクトリを指定したり、ワイルドカードを含めたりすることはできません。
 table | (省略可能) 指定されたストレージ アカウント (保護された構成で指定) の Azure ストレージ テーブル。file の "末尾" から新しい行が書き込まれます。

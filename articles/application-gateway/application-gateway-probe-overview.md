@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: c5a53167c6a4ca6c886b858a1608eaa173185bd8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505898"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335857"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway による正常性監視の概要
 
@@ -59,12 +59,12 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ### <a name="default-health-probe-settings"></a>既定の正常性プローブの設定
 
-| プローブのプロパティ | Value | 説明 |
+| プローブのプロパティ | 値 | 説明 |
 | --- | --- | --- |
 | プローブの URL |http://127.0.0.1:\<port\>/ |URL パス |
 | Interval |30 |次の正常性プローブが送信されるまでの秒数です。|
 | タイムアウト |30 |アプリケーション ゲートウェイがプローブの応答を待機する秒数です。これを超えると、プローブは異常としてマークされます。 プローブが正常として返された場合は、対応するバックエンドがすぐに正常としてマークされます。|
-| 異常のしきい値 |3 |通常の正常性プローブで障害が発生した場合に送信するプローブの数を制御します。 これらの追加的な正常性プローブは、バックエンドの正常性をすばやく確認するために、プローブの期間を待つことなく立て続けに送信されます。 プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
+| 異常のしきい値 |3 |通常の正常性プローブで障害が発生した場合に送信するプローブの数を制御します。 これらの追加的な正常性プローブは、バックエンドの正常性をすばやく確認するために、プローブの期間を待つことなく立て続けに送信されます。 この動作は v1 SKU のみです。 v2 SKU の場合、正常性プローブはその期間を待ちます。 プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
 
 > [!NOTE]
 > ポートはバックエンドの HTTP 設定と同じポートです。

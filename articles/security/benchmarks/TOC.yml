@@ -40,6 +40,8 @@
       href: ../../container-registry/security-baseline.md
     - name: Cosmos DB のセキュリティ ベースライン
       href: ../../cosmos-db/security-baseline.md
+    - name: Event Hubs のセキュリティ ベースライン
+      href: ../../event-hubs/security-baseline.md
     - name: HDInsight のセキュリティ ベースライン
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault のセキュリティ ベースライン

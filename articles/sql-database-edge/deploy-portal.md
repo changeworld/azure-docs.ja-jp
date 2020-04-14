@@ -1,7 +1,7 @@
 ---
 title: Azure portal を使用した Azure SQL Database Edge プレビューのデプロイ | Microsoft Docs
 description: Azure portal を使用して Azure SQL Database Edge をデプロイする方法について説明します
-keywords: SQL Database Edge のデプロイ
+keywords: sql database edge のデプロイ
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.topic: conceptual
@@ -9,21 +9,21 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 9da756b702c994d69aae42ecef0e2da4d44eed39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9da922de38d820864b3f83de80fe64eb3ac792e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510672"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246723"
 ---
 # <a name="deploy-azure-sql-database-edge-preview"></a>Azure SQL Database Edge プレビューのデプロイ
 
-Azure SQL Database Edge プレビューは、IoT および Azure IoT Edge のデプロイ向けに最適化されたリレーショナル データベース エンジンです。 IoT アプリケーションとソリューション用の高パフォーマンスのデータ ストレージおよび処理レイヤーを作成する機能を提供します。 このクイックスタートでは、Azure portal を使用して Azure IoT Edge を介して Azure SQL Database Edge モジュールの作成を開始する方法を示します。
+Azure SQL Database Edge プレビューは、IoT および Azure IoT Edge のデプロイ向けに最適化されたリレーショナル データベース エンジンです。 これは、IoT のアプリケーションおよびソリューションに向けて、パフォーマンスの高いデータ ストレージと処理レイヤーを作成する機能を提供します。 このクイックスタートでは、Azure portal を使用して Azure IoT Edge を介して Azure SQL Database Edge モジュールの作成を開始する方法を示します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
-* [Azure Portal](https://portal.azure.com/) にサインインします。
+* [Azure portal](https://portal.azure.com/) にサインインします。
 * [こちらで](https://azure.microsoft.com/services/sql-database-edge/#contact)要求を送信して、サブスクリプションを SQL Database Edge のデプロイに対して有効にします。
 * [Azure IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)を作成します。
 * [Azure portal からIoT Edge デバイス](../iot-edge/how-to-register-device-portal.md)を登録します。
@@ -48,7 +48,7 @@ Azure Marketplace は、アプリケーションとサービスのオンライ�
 
    |**フィールド**  |**説明**  |
    |---------|---------|
-   |Subscription  |  IoT Hub が作成された Azure サブスクリプション |
+   |サブスクリプション  |  IoT Hub が作成された Azure サブスクリプション |
    |IoT Hub   |  IoT Edge デバイスが登録され、その後 [デバイスへのデプロイ] オプションを選択する IoT Hub の名前|
    |IoT Edge デバイス名  |  SQL Database Edge がデプロイされる IoT Edge デバイスの名前 |
 
@@ -66,7 +66,7 @@ Azure Marketplace は、アプリケーションとサービスのオンライ�
    > [!NOTE]
    > モジュールの **[イメージ のURI]** または **ACCEPT_EULA** の設定は変更および更新しないでください。
 
-6. **[IoT Edge のカスタム モジュール]** ウィンドウで、 **[ホスト ポート]** のコンテナー作成オプションの必要な値と、マウントポイントの **[ターゲット]** を更新します。 マウントポイントのターゲットは、ホスト IoT Edge デバイス上の SQL データベース ファイルが格納される場所です。
+6. **[IoT Edge のカスタム モジュール]** ウィンドウで、 **[ホスト ポート]** のコンテナー作成オプションの必要な値を更新します。 複数の SQL DB Edge モジュールをデプロイする必要がある場合は、必ずマウントオプションを更新して、永続的なボリュームの新しいソースとターゲットのペアを作成してください。 マウントとボリュームの詳細については、docker ドキュメントの「[ボリュームの使用](https://docs.docker.com/storage/volumes/)」を参照してください。 
 
    ```json
        {

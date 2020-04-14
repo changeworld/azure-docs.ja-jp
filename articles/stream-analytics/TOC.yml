@@ -39,6 +39,8 @@
       href: streaming-technologies.md
     - name: ジョブ開発ツールの選択
       href: feature-comparison.md
+    - name: ローカルでの開発
+      href: develop-locally.md
     - name: ジョブの入力の種類
       items:
         - name: 入力の概要
@@ -59,14 +61,18 @@
           href: stream-analytics-sql-output-perf.md
         - name: BLOB のカスタム パス パターン
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
-    - name: ユーザー定義関数
+    - name: 関数を使用したクエリの拡張
       items:
-        - name: Machine Learning UDF
-          href: machine-learning-udf.md
-        - name: 'C# UDF'
-          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: 関数の概要
+          href: functions-overview.md
         - name: JavaScript UDF
           href: stream-analytics-javascript-user-defined-functions.md
+        - name: JavaScript UDA
+          href: stream-analytics-javascript-user-defined-aggregates.md
+        - name: 'C# UDF'
+          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: Machine Learning UDF
+          href: machine-learning-udf.md
     - name: Stream Analytics のジョブを最適化する
       items:
         - name: ストリーミング ユニットの理解と調整
@@ -138,8 +144,6 @@
           href: stream-analytics-edge.md
         - name: 料金所のセンサー データの分析
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
-        - name: JavaScript UDA の実行
-          href: stream-analytics-javascript-user-defined-aggregates.md
         - name: 高頻度取引
           href: stream-analytics-high-frequency-trading.md
         - name: IoT ストリーミング データを処理する

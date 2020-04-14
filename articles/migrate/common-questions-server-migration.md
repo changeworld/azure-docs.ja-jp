@@ -3,12 +3,12 @@ title: Azure Migrate Server Migration の FAQ
 description: Azure Migrate Server Migration を使用したマシンの移行についてよく寄せられる質問の回答を示します。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 4d3638e930b4e12a29df4ab189ffb24ab248582b
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 507cc8088bf54b1a4f4483673ec5332efcdd36c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78939204"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127802"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server Migration:一般的な質問
 
@@ -74,6 +74,14 @@ vCenter Server 5.5 および vSphere ESXi ホスト バージョン 5.5 以上�
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>エージェントレスの移行を使用して、一度にレプリケートできる VM の数はいくつですか?
 
 現在、お客様は vCenter Server のインスタンスごとに 100 台の VM を同時に移行できます。 10 台の VM のバッチで移行します。
+
+## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>エージェントレス VMware レプリケーションに対する Azure Migrate アプライアンスの使用においてレプリケーションを調整するにはどうすればよいですか?  
+
+NetQosPolicy を使用して調整できます。 次に例を示します。
+
+NetQosPolicy で使用する AppNamePrefix は "GatewayWindowsService.exe" です。 Azure Migrate アプライアンスで次のようなポリシーを作成することによって、アプライアンスからのレプリケーション トラフィックを調整できます:
+ 
+New-NetQosPolicy -Name "ThrottleReplication" -AppPathNameMatchCondition "GatewayWindowsService.exe" -ThrottleRateActionBitsPerSecond 1MB
 
 ## <a name="when-do-i-migrate-machines-as-physical-servers"></a>マシンを物理サーバーとして Azure に移行するのはいつですか?
 

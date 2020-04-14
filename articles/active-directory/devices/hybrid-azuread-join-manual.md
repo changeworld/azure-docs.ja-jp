@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 878960738830dbe2f94b977e98215a681c4a79d2
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222949"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802554"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>チュートリアル:ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する
 
@@ -85,7 +85,7 @@ Windows 10 1803 以降では、フェデレーション ドメイン内のデバ
 | サービス接続ポイントの構成 | ![○][1] | ![○][1] | ![○][1] |
 | 要求の発行の設定 |     | ![○][1] | ![○][1] |
 | 非 Windows 10 デバイスの有効化 |       |        | ![○][1] |
-| 参加済みデバイスの確認 | ![○][1] | ![○][1] | [確認事項][1] |
+| 参加済みデバイスの確認 | ![○][1] | ![○][1] | ![○][1] |
 
 ## <a name="configure-a-service-connection-point"></a>サービス接続ポイントの構成
 

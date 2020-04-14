@@ -2,13 +2,13 @@
 title: コンテナー イメージのインポート
 description: Azure API を使用することで、Docker コマンドを実行することなく、Azure コンテナー レジストリにコンテナー イメージをインポートします。
 ms.topic: article
-ms.date: 02/06/2019
-ms.openlocfilehash: e649447d7b9280dbebef1ae332c1f25910f5a516
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 03/16/2020
+ms.openlocfilehash: caf7a47ac8f7ff0e72d2e049a7013542d274a225
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456306"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051921"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>コンテナー レジストリにコンテナー イメージをインポートする
 
@@ -31,7 +31,7 @@ Azure コンテナー レジストリにイメージをインポートするや�
 コンテナー イメージをインポートするには、Azure CLI を Azure Cloud Shell またはローカルで実行する必要があります (バージョン 2.0.55 以降を推奨します)。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 > [!NOTE]
-> 複数の Azure リージョンに同じコンテナー イメージを配布する必要がある場合、Azure Container Registry では [geo レプリケーション](container-registry-geo-replication.md)もサポートされます。 レジストリの geo レプリケーション (Premium SKU が必要) を行うと、1 つのレジストリに含まれる同一のイメージとタグ名を、複数のリージョンで使用できます。
+> 複数の Azure リージョンに同じコンテナー イメージを配布する必要がある場合、Azure Container Registry では [geo レプリケーション](container-registry-geo-replication.md)もサポートされます。 レジストリの geo レプリケーション (Premium サービス レベルが必要) を行うと、1 つのレジストリに含まれる同一のイメージとタグ名を、複数のリージョンで使用できます。
 >
 
 ## <a name="prerequisites"></a>前提条件
@@ -47,19 +47,27 @@ Azure コンテナー レジストリにイメージをインポートするに�
 たとえば、[az acr import][az-acr-import] コマンドを使用して、Docker Hub から *myregistry* というレジストリに、マルチ アーキテクチャの `hello-world:latest` イメージをインポートすることができます。 `hello-world` は Docker Hub からの公式イメージなので、このイメージは既定の `library` リポジトリにあります。 `--source` イメージのパラメーターには、リポジトリ名と、必要に応じてタグの値を指定します (タグではなく、マニフェスト ダイジェストでイメージを識別することもできます。これにより、特定のバージョンのイメージが使用されることを保証できます)。
  
 ```azurecli
-az acr import --name myregistry --source docker.io/library/hello-world:latest --image hello-world:latest
+az acr import \
+  --name myregistry \
+  --source docker.io/library/hello-world:latest \
+  --image hello-world:latest
 ```
 
 `az acr repository show-manifests` コマンドを実行することで、このイメージに複数のマニフェストが関連付けられていることを確認できます。
 
 ```azurecli
-az acr repository show-manifests --name myregistry --repository hello-world
+az acr repository show-manifests \
+  --name myregistry \
+  --repository hello-world
 ```
 
 次の例では、Docker Hub の `tensorflow` リポジトリからパブリック イメージをインポートします。
 
 ```azurecli
-az acr import --name myregistry --source docker.io/tensorflow/tensorflow:latest-gpu --image tensorflow:latest-gpu
+az acr import \
+  --name myregistry \
+  --source docker.io/tensorflow/tensorflow:latest-gpu \
+  --image tensorflow:latest-gpu
 ```
 
 ### <a name="import-from-microsoft-container-registry"></a>Microsoft Container Registry からインポートする
@@ -67,7 +75,10 @@ az acr import --name myregistry --source docker.io/tensorflow/tensorflow:latest-
 たとえば、Microsoft Container Registry 内の `windows` リポジトリから最新の Windows Server Core イメージをインポートすることができます。
 
 ```azurecli
-az acr import --name myregistry --source mcr.microsoft.com/windows/servercore:latest --image servercore:latest
+az acr import \
+--name myregistry \
+--source mcr.microsoft.com/windows/servercore:latest \
+--image servercore:latest
 ```
 
 ## <a name="import-from-another-azure-container-registry"></a>別の Azure コンテナー レジストリからインポートする
@@ -83,21 +94,30 @@ az acr import --name myregistry --source mcr.microsoft.com/windows/servercore:la
 たとえば、ソース レジストリ *mysourceregistry* にある `aci-helloworld:latest` イメージを、同じ Azure サブスクリプション内の *myregistry* にインポートできます。
 
 ```azurecli
-az acr import --name myregistry --source mysourceregistry.azurecr.io/aci-helloworld:latest --image hello-world:latest
+az acr import \
+  --name myregistry \
+  --source mysourceregistry.azurecr.io/aci-helloworld:latest \
+  --image aci-helloworld:latest
 ```
 
 次の例では、タグではなくマニフェスト ダイジェスト (`sha256:...` として表される SHA-256 ハッシュ) によってイメージをインポートしています。
 
 ```azurecli
-az acr import --name myregistry --source mysourceregistry.azurecr.io/aci-helloworld@sha256:123456abcdefg 
+az acr import \
+  --name myregistry \
+  --source mysourceregistry.azurecr.io/aci-helloworld@sha256:123456abcdefg 
 ```
 
 ### <a name="import-from-a-registry-in-a-different-subscription"></a>別のサブスクリプション内のレジストリからインポートする
 
-次の例では、 *mysourceregistry* が、同じ Active Directory テナント内の *myregistry* とは別のサブスクリプション内にあります。 ソース レジストリのリソース ID は、`--registry` パラメーターを使用して指定しています。 なお、`--source` パラメーター名では、ソース リポジトリとイメージ名だけを指定しています (レジストリ ログイン サーバー名は指定していません)。
- 
+次の例では、 *mysourceregistry* が、同じ Active Directory テナント内の *myregistry* とは別のサブスクリプション内にあります。 ソース レジストリのリソース ID は、`--registry` パラメーターを使用して指定しています。 `--source` パラメーターには、レジストリ ログイン サーバー名ではなく、ソース リポジトリとタグのみを指定することに注意してください。
+
 ```azurecli
-az acr import --name myregistry --source sourcerepo/aci-helloworld:latest --image aci-hello-world:latest --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
+az acr import \
+  --name myregistry \
+  --source samples/aci-helloworld:latest \
+  --image aci-hello-world:latest \
+  --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
 ### <a name="import-from-a-registry-using-service-principal-credentials"></a>サービス プリンシパル資格情報を使用してレジストリからインポートする
@@ -105,7 +125,12 @@ az acr import --name myregistry --source sourcerepo/aci-helloworld:latest --imag
 Active Directory アクセス許可を使用してアクセスすることができないレジストリからインポートするには、サービス プリンシパル資格情報を使用できます (該当する場合)。 ソース レジストリへの ACRPull アクセス許可を持つ Active Directory [サービス プリンシパル](container-registry-auth-service-principal.md)の appID とパスワードを指定します。 サービス プリンシパルは、イメージをレジストリにインポートする必要のある無人のシステム (ビルド システムなど) で使用できます。
 
 ```azurecli
-az acr import --name myregistry --source sourceregistry.azurecr.io/sourcerepo/sourceimage:tag --image targetimage:tag --username <SP_App_ID> –-password <SP_Passwd>
+az acr import \
+  --name myregistry \
+  --source sourceregistry.azurecr.io/sourcerrepo:tag \
+  --image targetimage:tag \
+  --username <SP_App_ID> \
+  –-password <SP_Passwd>
 ```
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>Azure 以外のプライベート コンテナー レジストリからインポートする
@@ -113,10 +138,15 @@ az acr import --name myregistry --source sourceregistry.azurecr.io/sourcerepo/so
 プライベート レジストリからイメージをインポートするには、レジストリへのプル アクセスを有効にする資格情報を指定します。 たとえば、次のようにして、プライベート Docker レジストリからイメージをプルします。 
 
 ```azurecli
-az acr import --name myregistry --source docker.io/sourcerepo/sourceimage:tag --image sourceimage:tag --username <username> --password <password>
+az acr import \
+  --name myregistry \
+  --source docker.io/sourcerepo/sourceimage:tag \
+  --image sourceimage:tag \
+  --username <username> \
+  --password <password>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、パブリック レジストリや別のプライベート レジストリから Azure コンテナー レジストリにコンテナー イメージをインポートする方法について説明しました。 追加のイメージ インポート オプションについては、[az acr import][az-acr-import] コマンドのリファレンスをご覧ください。 
 

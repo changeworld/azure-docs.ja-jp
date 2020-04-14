@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/23/2020
-ms.openlocfilehash: 169cc3f6a195a7339ab33eb9f00d9937451a93e0
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.date: 03/26/2020
+ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620444"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637768"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -61,10 +61,6 @@ Azure Monitor では、さまざまなソースからのデータが[ログ](pla
 ### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>Azure Monitor によって収集されたデータにアクセスするにはどうすればよいですか?
 分析情報とソリューションにより、Azure Monitor に格納されているデータを操作するためのカスタム エクスペリエンスが提供されます。 Kusto クエリ言語 (KQL) で記述たログ クエリを使用して、ログ データを直接操作できます。 Azure portal では、Log Analytics を使用してクエリを記述して実行し、対話形式でデータを分析できます。 Azure portal では、メトリックス エクスプローラーを使用してメトリックを分析します。 [Azure Monitor でログ データを分析する](log-query/log-query-overview.md)方法に関するページ、および「[Azure メトリックス エクスプローラーの概要](platform/metrics-getting-started.md)」のページをご覧ください。
 
-
-
-
-
 ## <a name="solutions-and-insights"></a>ソリューションと分析情報
 
 ### <a name="what-is-an-insight-in-azure-monitor"></a>Azure Monitor での分析情報とはどのようなものですか?
@@ -76,11 +72,6 @@ Azure portal で分析情報を表示するには、 **[モニター]** メニ�
 監視ソリューションは、Azure Monitor の機能に基づいて特定のアプリケーションまたはサービスを監視するためのロジックのパッケージ化されたセットです。 Azure Monitor のログ データが収集され、Azure portal の一般的なエクスペリエンスを使用して、分析のためのログ クエリとビューが提供されます。 「[Azure Monitor での監視ソリューション](insights/solutions.md)」をご覧ください。
 
 Azure portal でソリューションを表示するには、 **[モニター]** メニューの **[分析情報]** セクションで **[詳細]** をクリックします。 **[追加]** をクリックして、ワークスペースに新しいソリューションを追加します。
-
-
-
-
-
 
 ## <a name="logs"></a>ログ
 
@@ -106,9 +97,6 @@ Azure Monitor によって収集されたすべてのログ データは、Log A
 ### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>VM から Log Analytics を開くときに、アクセス権なしというエラー メッセージが表示されるのはなぜですか? 
 VM ログを表示するには、VM ログを格納するワークスペースに対する読み取りアクセス許可が付与される必要があります。 このような場合、管理者が Azure でのアクセス許可を付与する必要があります。
 
-
-
-
 ## <a name="alerts"></a>警告
 
 ### <a name="what-is-an-alert-in-azure-monitor"></a>Azure Monitor でのアラートとはどのようなものですか?
@@ -130,8 +118,7 @@ VM ログを表示するには、VM ログを格納するワークスペース�
 ### <a name="what-is-an-action-rule"></a>アクション ルールとはどのようなものですか?
 アクション ルールを使用すると、特定の条件に一致する一連のアラートの動作を変更できます。 これにより、メンテナンス期間中にアラート アクションを無効にする、といった要件を実行できます。 また、アラート ルールにアラートを直接適用するのではなく、一連のアラートにアクション グループを適用することもできます。 [アクション ルール](platform/alerts-action-rules.md)に関するページをご覧ください。
 
-
-## <a name="agents"></a>[エージェント]
+## <a name="agents"></a>エージェント
 
 ### <a name="does-azure-monitor-require-an-agent"></a>Azure Monitor ではエージェントは必要ですか?
 エージェントは、仮想マシン内のオペレーティング システムおよびワークロードからデータを収集するためにのみ必要です。 仮想マシンは、Azure、別のクラウド環境、またはオンプレミスのどこに存在していてもかまいません。 「[Azure Monitor エージェントの概要](platform/agents-overview.md)」をご覧ください。
@@ -190,15 +177,14 @@ WireData
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Azure Monitor エージェントにはファイアウォールに関するどのような要件がありますか?
-ファイアウォールの要件について詳しくは、「[ネットワーク ファイアウォールの要件](platform/log-analytics-agent.md#network-firewall-requirements)」をご覧ください。
+ファイアウォールの要件について詳しくは、「[ネットワーク ファイアウォールの要件](platform/log-analytics-agent.md#network-requirements)」をご覧ください。
 
 
 ## <a name="visualizations"></a>視覚化
 
-### <a name="why-cant-i-cant-see-view-designer"></a>ビュー デザイナーを表示できないのはなぜですか?
+### <a name="why-cant-i-see-view-designer"></a>ビュー デザイナーを表示できないのはなぜですか?
 
 ビュー デザイナーは、 Log Analytics ワークスペース内で共同作成者以上のアクセス許可が割り当てられているユーザーのみが使用できます。
-
 
 ## <a name="application-insights"></a>Application Insights
 
@@ -245,7 +231,7 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 * Application Insights リソースで **[使用量と推定コスト] ページ**を開きます。 最近の利用状況のグラフが表示されます。 必要に応じて、データ量の上限を設定できます。
 * [Azure の [課金] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)を開き、リソース全体での請求額を確認します。
 
-### <a name="q14"></a>Application Insights によってどのような変更がプロジェクトに加えられますか?
+### <a name="what-does-application-insights-modify-in-my-project"></a><a name="q14"></a>Application Insights によってどのような変更がプロジェクトに加えられますか?
 詳細は、プロジェクトの種類によって異なります。 Web アプリケーションの場合:
 
 * 次のファイルがプロジェクトに追加されます。
@@ -266,7 +252,7 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 ### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>以前のバージョンの SDK からアップグレードする方法。
 お使いのアプリケーションに適切な SDK については、「 [リリース ノート](app/release-notes.md) 」をご覧ください。
 
-### <a name="update"></a>自分のプロジェクトがデータを送信する Azure のリソースを変更するにはどうすればいいですか?
+### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>自分のプロジェクトがデータを送信する Azure のリソースを変更するにはどうすればいいですか?
 ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、 **[Application Insights の更新]** を選択します。 Azure の既存または新規のリソースにデータを送信できます。 更新ウィザードでは、サーバー SDK のデータの送信先を決定する、ApplicationInsights.config のインストルメンテーション キーを変更します。 [すべて更新] を選択解除している場合を除き、Web ページ内のキーが表示される場所でもキーが変更されます。
 
 ### <a name="what-is-status-monitor"></a>Status Monitor とは何ですか?
@@ -324,7 +310,7 @@ Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [Ge
 [Power BI を使用する](app/export-power-bi.md )と、要求テレメトリを地図上に表示できます。
 
 
-### <a name="data"></a>ポータルでのデータ保持期間はどのくらいですか? セキュリティで保護されていますか?
+### <a name="how-long-is-data-retained-in-the-portal-is-it-secure"></a><a name="data"></a>ポータルでのデータ保持期間はどのくらいですか? セキュリティで保護されていますか?
 [データの保持とプライバシー][data]に関するページをご覧ください。
 
 ### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>サーバーまたはデバイスが Azure との接続を失った場合、Application insights のテレメトリはどうなりますか?
@@ -350,7 +336,7 @@ geo ロケーション属性の検索後、クライアント Web アドレス�
 * クライアント データとサーバー データに 2 つの独立したインストルメンテーション キー (別々の Application Insights リソース) を使用します。 または
 * サーバーで実行するためのプロキシを記述し、Web クライアントからそのプロキシを介してデータを送信します。
 
-### <a name="post"></a>診断検索で POST データを表示する方法を教えてください。
+### <a name="how-do-i-see-post-data-in-diagnostic-search"></a><a name="post"></a>診断検索で POST データを表示する方法を教えてください。
 POST データは自動ではログに記録されませんが、TrackTrace 呼び出しを使用してメッセージ パラメーターにデータを格納できます。 文字列プロパティの制限よりもサイズ制限は大きいですが、フィルター処理には使用できません。
 
 ### <a name="should-i-use-single-or-multiple-application-insights-resources"></a>Application Insights リソースは、単一リソースと複数リソースのどちらを使用すべきですか?
@@ -372,7 +358,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 * 1 人の実在するユーザーが、複数の異なるブラウザーや、プライベート/シークレット ブラウズ、または複数のコンピューターでサイトを利用した場合、それらは複数のユーザーとしてカウントされます。
 * 複数のコンピューターやブラウザー間でログイン済みのユーザーを識別するには、[setAuthenticatedUserContext()](app/api-custom-events-metrics.md#authenticated-users) の呼び出しを追加します。
 
-### <a name="q17"></a> Application Insights の機能をすべて有効にしているでしょうか?
+### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> Application Insights の機能をすべて有効にしているでしょうか?
 | 表示内容 | 表示方法 | 用途 |
 | --- | --- | --- |
 | 可用性グラフ |[Web テスト](app/monitor-web-app-availability.md) |Web アプリが稼働しているか確認する |
@@ -395,7 +381,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 ```
 
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>オートメーション
 
 #### <a name="configuring-application-insights"></a>Application Insights の構成
 
@@ -511,10 +497,33 @@ Application Insights のほとんどのデータは、待ち時間が 5 分未�
 [windows]: app/app-insights-windows-get-started.md
 
 
-
 ## <a name="azure-monitor-for-containers"></a>コンテナーに対する Azure Monitor
 
 この Microsoft FAQ では、コンテナーの Azure Monitor についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
+
+### <a name="what-does-other-processes-represent-under-the-node-view"></a>ノード ビューで *[その他のプロセス]* は何を表していますか?
+
+**[その他のプロセス]** は、ノードのリソース使用率が高い根本原因を明確に理解するために役立ちます。 これによって、コンテナー化されたプロセスとコンテナー化されていないプロセスで使用率を区別できます。
+
+これらの **[その他のプロセス]** とは何ですか? 
+
+これらは、ノードで実行されるコンテナー化されていないプロセスです。  
+
+これはどのようにして計算しますか?
+
+**その他のプロセス** = *CAdvisor からの合計使用量* - *コンテナー化されたプロセスからの使用量*
+
+**[その他のプロセス]** には、次のものが含まれます。
+
+- 自己管理型またはマネージド Kubernetes のコンテナー化されていないプロセス 
+
+- コンテナーの実行時プロセス  
+
+- kubelet  
+
+- ノードで実行されているシステム プロセス 
+
+- ノード ハードウェアまたは VM 上で実行されている Kubernetes 以外の他のワークロード 
 
 ### <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>ContainerLog テーブルのクエリを実行したとき、Image プロパティと Name プロパティの値が出力されません。
 
@@ -607,7 +616,7 @@ console.log(json.stringify({
 このデータは、クエリを実行すると、Azure Monitor のログに次の例のように表示されます。
 
 ```
-LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will not break this into multiple lines", "and you will receive":"all of them in log analytics", "as one": "log entry"}
+LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will not break this into multiple lines", "and you will receive":"all of them in log analytics", "as one": "log entry"}
 
 ```
 
@@ -625,76 +634,33 @@ AKS クラスターに対して Azure Monitor for containers を有効にした�
 
 Azure、Azure US Government、および Azure China 21Vianet クラウドでコンテナー化されたエージェントに必要なプロキシとファイアウォールの構成情報については、「[ネットワーク ファイアウォールの要件](insights/container-insights-onboard.md#network-firewall-requirements)」をご覧ください。
 
-## <a name="azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー)
+## <a name="azure-monitor-for-vms"></a>VM に対する Azure Monitor
 この Microsoft FAQ では、Azure Monitor for VMs についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>既存のワークスペースにオンボードすることはできますか?
 仮想マシンが Log Analytics ワークスペースに既に接続されている場合、ワークスペースが[こちら](insights/vminsights-enable-overview.md#prerequisites)に記載されたサポートされているリージョンのいずれかにあれば、VM 用 Azure Monitor にオンボードするときにそのワークスペースを引き続き使用できます。
 
-オンボード時に、ワークスペースのパフォーマンス カウンターが構成され、Azure Monitor for VMs で表示および分析するために、ワークスペースにデータを報告するすべての VM で この情報の収集が開始されます。  これにより、選択したワークスペースに接続されているすべての VM のパフォーマンス データを確認できます。  正常性機能とマップ機能は、オンボードの対象として指定した VM に対してのみ有効になります。
-
-どのパフォーマンス カウンターが有効化されるかについて詳しい情報は、[有効化の概要](insights/vminsights-enable-overview.md#performance-counters-enabled)に関する記事をご覧ください。
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>新しいワークスペースにオンボードすることはできますか? 
 現在、VM が既存の Log Analytics ワークスペースに接続されていない場合は、データを保存するために新しいワークスペースを作成する必要があります。 Azure portal を使用して Azure Monitor for VMs で単一の Azure VM を構成すると、新しい既定のワークスペースが自動的に作成されます。
 
-スクリプト ベースのメソッドを使用する場合、これらの手順は「[Enable Azure Monitor for VMs (preview) using Azure PowerShell or Resource Manager template (Azure PowerShell または Resource Manager テンプレートを使用して Azure Monitor for VMs (プレビュー) を有効化する)](insights/vminsights-enable-at-scale-powershell.md)」の記事に説明されています。 
+スクリプト ベースのメソッドを使用する場合、これらの手順は、[Azure PowerShell または Resource Manager テンプレートを使用した Azure Monitor for VMs の有効化](insights/vminsights-enable-at-scale-powershell.md)に関する記事で説明されています。 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>VM が既に既存のワークスペースに報告している場合はどうすればよいですか?
 仮想マシンから既にデータを収集している場合、既存の Log Analytics ワークスペースにデータを報告するように仮想マシンを構成済みである可能性があります。  そのワークスペースがサポートされているリージョンのいずれかにあれば、その既存のワークスペースに対して Azure Monitor for VMs を有効にすることができます。  既に使用しているワークスペースがサポートされているリージョンにない場合、現時点では Azure Monitor for VMs にオンボードすることはできません。  Microsoft では、その他のリージョンのサポートに積極的に取り組んでいます。
 
->[!NOTE]
->Azure Monitor for VMs へのオンボードを選択したかどうかに関係なく、ワークスペースのパフォーマンス カウンターが構成されます。これらは、ワークスペースに報告するすべての VM に影響を及ぼします。 ワークスペースのパフォーマンス カウンターの構成の詳細については、こちらの[ドキュメント](platform/data-sources-performance-counters.md)をご覧ください。 Azure Monitor for VMs 用に構成されるカウンターについては、[Azure Monitor for VMs の有効化](insights/vminsights-enable-overview.md#performance-counters-enabled)に関する記事を参照してください。  
 
 ### <a name="why-did-my-vm-fail-to-onboard"></a>VM のオンボードに失敗したのはなぜですか?
 Azure portal から Azure VM をオンボードすると、次の手順が実行されます。
 
 * 既定の Log Analytics ワークスペースが作成されます (該当するオプションが選択されている場合)。
-* 選択したワークスペースのパフォーマンス カウンターが構成されます。 この手順が失敗すると、一部のパフォーマンス グラフやテーブルに、オンボードした VM のデータが表示されません。 これを修正するには、[こちら](insights/vminsights-enable-at-scale-powershell.md#enable-performance-counters)に記載された PowerShell スクリプトを実行します。
 * Log Analytics エージェントが必要と判断されると、VM 拡張機能を使用して Azure VM にインストールされます。  
-* Azure Monitor for VMs Map Dependency エージェントが必要と判断されると、拡張機能を使用して Azure VM にインストールされます。  
-* 必要に応じて、正常性機能をサポートする Azure Monitor コンポーネントが構成され、正常性データを報告するように VM が構成されます。
+* Azure Monitor for VMs Map Dependency エージェントが必要と判断されると、拡張機能を使用して Azure VM にインストールされます。 
 
-オンボード プロセス中、上記の各手順で状態がチェックされ、ポータルで通知の状態が返されます。 ワークスペースとエージェントのインストールの構成には、通常 5 から 10 分かかります。 監視データと正常性データがポータルに表示されるまでに、さらに 5 から 10 分かかります。  
+オンボード プロセス中、上記の各手順で状態がチェックされ、ポータルで通知の状態が返されます。 ワークスペースとエージェントのインストールの構成には、通常 5 から 10 分かかります。 監視データがポータルに表示されるまでに、さらに 5 から 10 分かかります。  
 
 オンボードを開始したときに、VM をオンボードする必要があることを示すメッセージが表示された場合は、VM がプロセスを完了するまでに最大 30 分かかります。 
 
-### <a name="i-only-enabled-azure-monitor-for-vms-why-do-i-see-all-my-vms-monitored-by-the-health-feature"></a>Azure Monitor for VMs のみを有効にしましたが、正常性機能によってすべての VM が監視されているのはなぜですか。
-正常性機能は、Log Analytics ワークスペースに接続されているすべての VM に対して有効にされます。これは、アクションが単一の VM に対して開始される場合にも当てはまります。
-
-### <a name="can-i-modify-the-schedule-for-when-health-criteria-evaluates-a-condition"></a>正常性基準で条件を評価するスケジュールを変更できますか。
-いいえ。このリリースでは、正常性基準となる期間と頻度を変更できません。 
-
-### <a name="can-i-disable-health-criteria-for-a-condition-i-dont-need-to-monitor"></a>監視する必要がない条件に対して、正常性基準を無効にできますか。
-正常性基準は、このリリースでは無効にできません。
-
-### <a name="are-the-health-alert-severities-configurable"></a>正常性アラートの重大度は構成できますか。  
-正常性アラートの重大度を変更することはできません。有効または無効にのみ変更できます。 また、一部のアラートの重大度は、正常性基準の状態に基づいて更新されます。 
-
-### <a name="if-i-reconfigure-the-settings-of-a-particular-health-criteria-can-it-be-scoped-to-a-specific-instance"></a>特定の正常性基準の設定を再構成した場合、それを特定のインスタンスだけに適用できますか。  
-正常性基準インスタンスの設定を変更すると、Azure VM 上の同じ種類の正常性基準インスタンスすべてが変更されます。 たとえば、論理ディスク C: に対応する空きディスク領域の正常性基準インスタンスのしきい値を変更すると、このしきい値は、同じ VM において検出および監視されている他の論理ディスクすべてに適用されます。
-
-### <a name="does-the-health-feature-monitor-logical-processors-and-cores"></a>正常性機能は論理プロセッサとコアを監視しますか。
-いいえ。個々のプロセッサおよび論理プロセッサ レベルの正常性基準は、Windows に対しては含まれていません。既定では、Azure VM で使用可能な論理 CPU の合計数に基づいて CPU 負荷を効果的に評価するために、CPU 使用率の合計だけが監視されます。 
-
-### <a name="are-all-health-criteria-thresholds-configurable"></a>正常性基準のすべてのしきい値を構成できますか。  
-Windows VM を対象とする正常性基準のしきい値は変更できません。これらの正常性状態は、"*実行中*" または "*使用可能*" に設定されているためです。 [Workload Monitor API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) から正常性状態に対してクエリを実行すると、以下に該当する場合、サービスまたはエンティティに対して、**LessThan** または **GreaterThan** の *comparisonOperator* 値と、"*しきい*" 値 **4** が表示されます。
-   - DNS クライアント サービスの正常性 – サービスが実行されていない。 
-   - DHCP クライアント サービスの正常性 – サービスが実行されていない。 
-   - RPC サービスの正常性 – サービスが実行されていない。 
-   - Windows ファイアウォール サービスの正常性 – サービスが実行されていない。
-   - Windows イベント ログ サービスの正常性 – サービスが実行されていない。 
-   - サーバー サービスの正常性 – サービスが実行されていない。 
-   - Windows リモート管理サービスの正常性 – サービスが実行されていない。 
-   - ファイル システム エラーまたは破損 – 論理ディスクが使用できない。
-
-次の Linux の正常性基準のしきい値は変更できません。これらの正常性状態は、既に *true* に設定されているためです。 Workload Monitoring API からエンティティに対するクエリが実行されると、コンテキストに応じて、正常性状態には、値 **LessThan** を使用した *comparisonOperator* と "*しきい*" 値 **1** が表示されます。
-   - 論理ディスクの状態 – 論理ディスクがオンライン/使用可能でない
-   - ディスクの状態 – ディスクがオンライン/使用可能でない
-   - ネットワーク アダプターの状態 - ネットワーク アダプターが無効
-
-### <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>正常性機能に含まれているアラートを変更する方法はありますか。
-各正常性基準に対して定義されているアラート ルールは、Azure portal には表示されません。 [Workload Monitor API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) でのみ、正常性アラート ルールを有効または無効にすることができます。 また、正常性アラート用の [Azure Monitor アクション グループ](platform/action-groups.md)を Azure portal 内で割り当てることはできません。 正常性アラートが発生するたびにトリガーされるアクション グループを構成するには、通知設定 API を使用する必要があります。 現在、VM に対して発生したすべての*正常性アラート*によって同じアクション グループがトリガーされるように、VM に対してアクション グループを割り当てることができます。 従来の Azure アラートとは異なり、正常性アラート ルールごとに個別のアクション グループが存在するという概念はありません。 さらに、正常性アラートがトリガーされたときに、電子メールまたは SMS 通知を提供するように構成されたアクション グループのみがサポートされます。 
 
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>パフォーマンス グラフに VM のデータが表示されません
 パフォーマンス グラフは、*InsightsMetrics* テーブルに格納されているデータを使用するように更新されました。  これらのグラフのデータを表示するには、新しい VM Insights ソリューションを使用するようにアップグレードする必要があります。  追加情報については、[一般提供についての FAQ](insights/vminsights-ga-release-faq.md) に関する記事を参照してください。
@@ -746,7 +712,7 @@ Azure VM の概要ページには、ゲスト VM でのアクティビティの�
 ### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Log Analytics の無料プランを利用している場合、機能の制限はありますか?
 *無料*の価格レベルを使った Log Analytics ワークスペースで Azure Monitor を構成した場合、Azure Monitor for VMs Map 機能では、ワークスペースに接続できるマシンが 5 つに制限されます。 無料のワークスペースに VM が 5 つ接続されている場合、いずれかの VM を切断した後に新しい VM を接続すると、新しい VM は監視されず、マップ ページにも反映されません。  
 
-この条件下では、VM を開いて左側のウィンドウから **[Insights (プレビュー)]** を選択すると、機能が既に VM にインストール済みであっても、 **[今すぐ試す]** オプションが表示されます。  ただし、その VM が Azure Monitor for VMs にオンボードされていない場合には、オプションは表示されません。 
+この条件下では、VM を開いて左側のウィンドウから **[Insights]\(インサイト\)** を選択すると、機能が既に VM にインストール済みであっても、 **[今すぐ試す]** オプションが表示されます。  ただし、その VM が Azure Monitor for VMs にオンボードされていない場合には、オプションは表示されません。 
 
 
 ## <a name="next-steps"></a>次のステップ

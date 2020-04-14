@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ce51c6415389ee52cf0371dfbddb98cb48747b05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e06fcdbac097e85c039e34274c61cb51ee06bcd6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430463"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478327"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ASE を作成する
 
@@ -36,9 +36,9 @@ ASE の作成を自動化するには、次の手順に従います。
 
 1. テンプレートを使用して ASE を作成します。 外部 ASE を作成する場合は、この手順で終了です。 ILB ASE を作成する場合は、追加の手順が必要になります。
 
-2. ILB ASE を作成したら、ILB ASE ドメインに一致する SSL 証明書がアップロードされます。
+2. ILB ASE を作成したら、ILB ASE ドメインに一致する TLS/SSL 証明書がアップロードされます。
 
-3. アップロードされた SSL 証明書は、"既定の" SSL 証明書として ILB ASE に割り当てられます。  この証明書は、ILB ASE 上のアプリが、ASE に割り当てられた共通ルート ドメイン (たとえば、 https://someapp.mycustomrootdomain.com) を使用する場合に、そのアプリの SSL トラフィックで使用されます。
+3. アップロードされた TLS/SSL 証明書は、"既定の" TLS/SSL 証明書として ILB ASE に割り当てられます。  この証明書は、ILB ASE 上のアプリが ASE に割り当てられた共通ルート ドメイン (`https://someapp.mycustomrootdomain.com` など) を使用する場合に、そのアプリへの TLS/SSL トラフィックに使用されます。
 
 
 ## <a name="create-the-ase"></a>ASE を作成する
@@ -61,17 +61,17 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 ASE の作成には 1 時間ほどかかります。 続いて、ポータルの、デプロイをトリガーしたサブスクリプションの ASE の一覧に、作成した ASE が表示されます。
 
-## <a name="upload-and-configure-the-default-ssl-certificate"></a>"既定の" SSL 証明書をアップロードして構成する
-SSL 証明書は、アプリへの SSL 接続を確立するために使用する "既定の" SSL 証明書として ASE に関連付ける必要があります。 ASE の既定の DNS サフィックスが *internal-contoso.com* である場合、 https://some-random-app.internal-contoso.com への接続には * *.internal-contoso.com* に対して有効な SSL 証明書が必要です。 
+## <a name="upload-and-configure-the-default-tlsssl-certificate"></a>"既定の" TLS/SSL 証明書をアップロードして構成する
+TLS/SSL 証明書は、アプリへの TLS/SSL 接続を確立するために使用する "既定の" TLS/SSL 証明書として ASE に関連付ける必要があります。 ASE の既定の DNS サフィックスが *internal-contoso.com* である場合、`https://some-random-app.internal-contoso.com` への接続には * *.internal-contoso.com* に対して有効な TLS/SSL 証明書が必要です。 
 
-内部証明機関を利用する、外部の発行者から証明書を購入する、自己署名証明書を使用する、のいずれかの手段で有効な SSL 証明書を取得します。 どのようなソースから SSL 証明書を取得した場合でも、以下の証明書属性を適切に構成する必要があります。
+内部証明機関を利用する、外部の発行者から証明書を購入する、自己署名証明書を使用する、のいずれかの手段で有効な TLS/SSL 証明書を取得します。 どのようなソースから TLS/SSL 証明書を取得した場合でも、以下の証明書属性を適切に構成する必要があります。
 
 * **Subject**:この属性は、* *.your-root-domain-here.com* に設定する必要があります。
-* **Subject Alternative Name**:この属性には、* *.your-root-domain-here.com* と * *.scm.your-root-domain-here.com* の両方が含まれている必要があります。 各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続で、*your-app-name.scm.your-root-domain-here.com* 形式のアドレスが使用されます。
+* **Subject Alternative Name**:この属性には、* *.your-root-domain-here.com* と * *.scm.your-root-domain-here.com* の両方が含まれている必要があります。 各アプリに関連付けられた SCM/Kudu サイトへの TLS 接続で、*your-app-name.scm.your-root-domain-here.com* 形式のアドレスが使用されます。
 
-有効な SSL 証明書を取得した後は、さらに 2 つの準備手順を実行する必要があります。 SSL 証明書を .pfx ファイルとして変換、保存します。 .pfx ファイルには、すべての中間証明書とルート証明書を忘れずに含めてください。 パスワードで保護してください。
+有効な TLS/SSL 証明書を取得した後、さらに 2 つの準備手順を実行する必要があります。 TLS/SSL 証明書を .pfx ファイルとして変換/保存します。 .pfx ファイルには、すべての中間証明書とルート証明書を忘れずに含めてください。 パスワードで保護してください。
 
-.pfx ファイルは base64 文字列に変換する必要がありますが、これは SSL 証明書が Resource Manager テンプレートを使用してアップロードされるためです。 Resource Manager テンプレートはテキスト ファイルであるため、.pfx ファイルを base64 文字列に変換する必要があります。 この方法で、テンプレートのパラメーターとして含めることができます。
+.pfx ファイルは base64 文字列に変換する必要がありますが、これは TLS/SSL 証明書が Resource Manager テンプレートを使用してアップロードされるためです。 Resource Manager テンプレートはテキスト ファイルであるため、.pfx ファイルを base64 文字列に変換する必要があります。 この方法で、テンプレートのパラメーターとして含めることができます。
 
 以下の PowerShell コード スニペットを使用して、次のことを行います。
 
@@ -96,7 +96,7 @@ $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 $fileContentEncoded | set-content ($fileName + ".b64")
 ```
 
-SSL 証明書が正常に生成され、base64 でエンコードされた文字列に変換されたら、GitHub にある、[既定の SSL 証明書を構成する][quickstartconfiguressl]ための Resource Manager テンプレートのサンプルを使用します。 
+TLS/SSL 証明書が正常に生成され、base64 でエンコードされた文字列に変換されたら、GitHub にある、[既定の SSL 証明書を構成する][quickstartconfiguressl]ための Resource Manager テンプレートのサンプルを使用します。 
 
 *azuredeploy.parameters.json* ファイル内の各パラメーターを以下に示します。
 
@@ -105,7 +105,7 @@ SSL 証明書が正常に生成され、base64 でエンコードされた文字
 * *pfxBlobString*:based64 でエンコードされた .pfx ファイルの文字列表現。 前述のコード スニペットを使用し、"exportedcert.pfx.b64" に含まれる文字列をコピーします。 *pfxBlobString* 属性の値として貼り付けます。
 * *password*:pfx ファイルの保護に使用されるパスワード。
 * *certificateThumbprint*:証明書のサムプリント。 この値 (前述のコード スニペットにある *$certificate.Thumbprint* など) を PowerShell から取得した場合、値はそのまま使用できます。 この値を Windows 証明書のダイアログ ボックスからコピーした場合は、忘れずに余分なスペースを削除してください。 *certificateThumbprint* は、AF3143EB61D43F6727842115BB7F17BBCECAECAE のようになります。
-* *certificateName*:証明書の識別に使用される、独自に選択したわかりやすい文字列識別子。 この名前は、SSL 証明書を表す *Microsoft.Web/certificates* エンティティで、一意の Resource Manager 識別子の一部として使用されます。 この名前は、サフィックス \_yourASENameHere_InternalLoadBalancingASE で終わる*必要があります*。 このサフィックスは、ILB が有効な ASE を保護するためにこの証明書が使用されることを示す標識として、Azure Portal で使用されます。
+* *certificateName*:証明書の識別に使用される、独自に選択したわかりやすい文字列識別子。 この名前は、TLS/SSL 証明書を表す *Microsoft.Web/certificates* エンティティで、一意の Resource Manager 識別子の一部として使用されます。 この名前は、サフィックス \_yourASENameHere_InternalLoadBalancingASE で終わる*必要があります*。 このサフィックスは、ILB が有効な ASE を保護するためにこの証明書が使用されることを示す標識として、Azure Portal で使用されます。
 
 一部省略した *azuredeploy.parameters.json* の例を次に示します。
 
@@ -136,7 +136,7 @@ SSL 証明書が正常に生成され、base64 でエンコードされた文字
 }
 ```
 
-*azuredeploy.parameters.json* ファイルに入力した後で、PowerShell コード スニペットを使用して、既定の SSL 証明書を構成します。 ファイル パスは、コンピューター上の Resource Manager テンプレート ファイルの場所に一致するように変更してください。 Resource Manager のデプロイ名とリソース グループ名に独自の値を指定することも忘れずに行ってください。
+*azuredeploy.parameters.json* ファイルに入力した後、PowerShell コード スニペットを使用して、既定の TLS/SSL 証明書を構成します。 ファイル パスは、コンピューター上の Resource Manager テンプレート ファイルの場所に一致するように変更してください。 Resource Manager のデプロイ名とリソース グループ名に独自の値を指定することも忘れずに行ってください。
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -147,9 +147,9 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 変更を適用するには ASE フロントエンドあたり約 40 分かかります。 たとえば、2 つのフロントエンドを使用する既定サイズの ASE では、テンプレートが完了するまでに約 1 時間 20 分かかります。 テンプレートの実行中に、ASE をスケーリングすることはできません。  
 
-テンプレートが完了したら、ILB ASE 上のアプリは、HTTPS 経由でアクセスできます。 接続は、既定の SSL 証明書を使用して保護されます。 既定の SSL 証明書は、ILB ASE 上のアプリが、アプリケーション名と既定のホスト名の組み合わせを使用してアドレス指定された場合に使用されます。 たとえば、 https://mycustomapp.internal-contoso.com の場合、* *.internal-contoso.com* の既定の SSL 証明書が使用されます。
+テンプレートが完了したら、ILB ASE 上のアプリは、HTTPS 経由でアクセスできます。 接続は、既定の TLS/SSL 証明書を使用して保護されます。 既定の TLS/SSL 証明書は、アプリケーション名と既定のホスト名の組み合わせを使用して ILB ASE 上のアプリが指定された場合に使用されます。 たとえば、`https://mycustomapp.internal-contoso.com` の場合、* *.internal-contoso.com* の既定の TLS/SSL 証明書が使用されます。
 
-ただし、パブリックのマルチテナント サービスで実行されるアプリの場合と同じように、開発者は個々のアプリのカスタム ホスト名を構成できます。 個々のアプリに一意の SNI SSL 証明書バインドを構成することもできます。
+ただし、パブリックのマルチテナント サービスで実行されるアプリの場合と同じように、開発者は個々のアプリのカスタム ホスト名を構成できます。 個々のアプリに一意の SNI TLS/SSL 証明書バインドを構成することもできます。
 
 ## <a name="app-service-environment-v1"></a>App Service Environment v1 ##
 App Service Environment には、ASEv1 と ASEv2 です。 前述の情報は ASEv2 に基づいていました。 このセクションでは、ASEv1 と ASEv2 の違いについて説明します。

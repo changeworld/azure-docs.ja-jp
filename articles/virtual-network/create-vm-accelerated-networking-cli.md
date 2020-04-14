@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: eb44163922e318d17d675143ca2d6a3a1fa4ed75
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 05f8430efa31b39d49025fb8456108da229d3d71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793328"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239825"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLI で、高速ネットワークを使用する Linux 仮想マシンを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "74793328"
 * **ジッターの削減:** 仮想スイッチの処理は、適用するポリシーの量と、処理を行う CPU のワークロードによって異なります。 ハードウェアへのポリシーの適用をオフロードすると、パケットが直接 VM に配信され、ホストと VM 間の通信とソフトウェアによる干渉やコンテキスト スイッチがなくなるため、そのばらつきはなくなります。
 * **CPU 使用率の削減:** ホストの仮想スイッチをバイパスすることによって、ネットワーク トラフィックを処理するための CPU 使用率を削減できます。
 
-## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 Azure ギャラリーでは次のディストリビューションが既定でサポートされています。 
 * **Ubuntu 14.04 (linux-azure カーネルを含む)**
 * **Ubuntu 16.04 以降** 
@@ -80,7 +80,7 @@ removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 ## <a name="portal-creation"></a>ポータルの作成
 この記事では、高速ネットワークを使用した仮想マシンを、Azure CLI を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure Portal を使って作成することもできます](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 ポータルで仮想マシンを作成するときは、 **[仮想マシンの作成]** ブレードで **[ネットワーク]** タブを選択します。このタブには、 **[高速ネットワーク]** のオプションがあります。  [サポートされるオペレーティングシステム](#supported-operating-systems)と [VM サイズ](#supported-vm-instances)を選択している場合、このオプションは自動的に [オン] になります。  そうでない場合は、高速ネットワークに対して [オフ] オプションが選択され、有効にならない理由がユーザーに示されます。   
 
-* *注:* ポータルからは、サポートされているオペレーティング システムのみを有効にできます。  カスタム イメージを使用しているときに、そのイメージで高速ネットワークがサポートされている場合は、CLI または Powershell を使用して VM を作成してください。 
+* *注:* ポータルからは、サポートされているオペレーティング システムのみを有効にできます。  カスタム イメージを使用しているときに、そのイメージで高速ネットワークがサポートされている場合は、CLI または PowerShell を使用して VM を作成してください。 
 
 仮想マシンが作成されたら、「[高速ネットワークが有効になっていることを確認する](#confirm-that-accelerated-networking-is-enabled)」の手順に従って、高速ネットワークが有効であることを確認できます。
 
@@ -177,7 +177,7 @@ az vm create \
 
 VM が作成されると、次のサンプル出力のような出力が返されます。 **publicIpAddress** を書き留めておきます。 このアドレスは、後の手順で VM にアクセスするために使われます。
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -202,13 +202,13 @@ Bash シェルから `uname -r` を入力し、カーネル バージョンが�
 
 * **Ubuntu 16.04**: 4.11.0-1013
 * **SLES SP3**: 4.4.92-6.18
-* **RHEL**: 7.4.2017120423
+* **RHEL**:7.4.2017120423
 * **CentOS**: 7.4.20171206
 
 
 `lspci` コマンドを使用して、Mellanox VF デバイスが VM に公開されていることを確認します。 次の出力のような出力が返されます。
 
-```bash
+```output
 0000:00:00.0 Host bridge: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX Host bridge (AGP disabled) (rev 03)
 0000:00:07.0 ISA bridge: Intel Corporation 82371AB/EB/MB PIIX4 ISA (rev 01)
 0000:00:07.1 IDE interface: Intel Corporation 82371AB/EB/MB PIIX4 IDE (rev 01)
@@ -219,7 +219,7 @@ Bash シェルから `uname -r` を入力し、カーネル バージョンが�
 
 `ethtool -S eth0 | grep vf_` コマンドを使用して、VF (仮想関数) のアクティビティを確認します。 次のサンプル出力と似た出力を受け取った場合、高速ネットワークは有効で、動作しています。
 
-```bash
+```output
 vf_rx_packets: 992956
 vf_rx_bytes: 2749784180
 vf_tx_packets: 2656684

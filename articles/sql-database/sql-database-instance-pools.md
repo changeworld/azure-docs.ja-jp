@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0938fbe94cb0d1e6dae3dcb84950a11f90dd9db8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228619"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878155"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>SQL Database インスタンス プール (プレビュー) とは
 
@@ -59,7 +59,7 @@ ms.locfileid: "79228619"
 
 ## <a name="architecture-of-instance-pools"></a>インスタンス プールのアーキテクチャ
 
-インスタンス プールは、通常のマネージド インスタンス ("*単一インスタンス*") と同様のアーキテクチャを備えています。  [Azure 仮想ネットワーク (VNet) 内のデプロイ](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) をサポートし、お客様に分離とセキュリティを提供するため、インスタンス プールでは [仮想クラスター](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)にも依存しています。 仮想クラスターは、お客様の仮想ネットワーク サブネット内にデプロイされている分離された仮想マシンの専用セットを表します。
+インスタンス プールは、通常のマネージド インスタンス ("*単一インスタンス*") と同様のアーキテクチャを備えています。  [Azure 仮想ネットワーク (VNet) 内のデプロイ](../virtual-network/virtual-network-for-azure-services.md) をサポートし、お客様に分離とセキュリティを提供するため、インスタンス プールでは [仮想クラスター](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)にも依存しています。 仮想クラスターは、お客様の仮想ネットワーク サブネット内にデプロイされている分離された仮想マシンの専用セットを表します。
 
 2 つのデプロイ モデルの主な違いは、インスタンス プールは同じ仮想マシン ノード上で複数の SQL Server プロセスをデプロイでき、[Windows ジョブ オブジェクト](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)を使用して管理されるリソースであるのに対し、単一スタンスは仮想マシン ノード上に常に 1 つだけです。
 

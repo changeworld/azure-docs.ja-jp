@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7933e2608ae0b59a6dce89169f4bb1faba0aa25e
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 1ab2b7860e8a75da5f8acef2fc4fa54d4b73a30d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934143"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80256965"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure VM で Azure Cognitive Search インデクサーから SQL Server への接続を構成する
 
@@ -39,13 +39,13 @@ Azure Cognitive Search には、パブリック インターネット接続経�
    * regedit で、レジストリ キー `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate` に移動します。
      
      `[MSSQL13.MSSQLSERVER]` の部分は、バージョンとインスタンス名によって異なります。 
-   * **証明書**キーの値を、VM にインポートした SSL 証明書の**拇印**に設定します。
+   * **証明書**キーの値を、VM にインポートした TLS/SSL 証明書の**拇印**に設定します。
      
      拇印を取得する方法は複数ありますが、いくつかの方法は他の方法よりも優れています。 MMC の **証明書** スナップインからコピーする場合は、 [このサポート記事で説明されているように](https://support.microsoft.com/kb/2023869/)非表示の先頭文字を含めてしまい、その結果、接続を試みたときにエラーが発生する可能性があります。 この問題を修正するための回避策はいくつかあります。 最も簡単な方法は、regedit のキー値フィールドで Backspace キーを押してから拇印の最初の文字を再入力して、先頭文字を削除することです。 また、別のツールを使用して拇印をコピーすることもできます。
 
 3. サービス アカウントにアクセス許可を付与します。 
    
-    SQL Server サービス アカウントに SSL 証明書の秘密キーに関する適切なアクセス許可が付与されていることを確認します。 この手順を見過ごすと、SQL Server は起動されません。 このタスクには**証明書**スナップインまたは **CertUtils** を使用できます。
+    SQL Server サービス アカウントに TLS/SSL 証明書の秘密キーに関する適切なアクセス許可が付与されていることを確認します。 この手順を見過ごすと、SQL Server は起動されません。 このタスクには**証明書**スナップインまたは **CertUtils** を使用できます。
     
 4. SQL Server サービスを再起動します。
 

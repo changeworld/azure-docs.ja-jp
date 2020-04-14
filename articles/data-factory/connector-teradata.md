@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 5a41d5653de0d8a9f674009904756892ac343609
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1e1d7cc4bb7762d3ebd29e349467f3e33c0887f9
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356292"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421218"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata Vantage からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -41,17 +41,11 @@ Teradata Vantage から、サポートされている任意のシンク デー�
 - **基本**認証または **Windows** 認証を使用したデータのコピー。
 - Teradata ソースからの並列コピー。 詳細については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。
 
-> [!NOTE]
->
-> セルフホステッド統合ランタイム v3.18 のリリースの後、Azure Data Factory で Teradata コネクタのアップグレードが行われました。 以前の Teradata コネクタを使用している既存のワークロードは、引き続きサポートされます。 ただし、新しいワークロードには、新しいものを使用することをお勧めします。 新しいパスには、リンクされたサービス、データセット、およびコピー ソースの別のセットが必要であることに注意してください。 構成の詳細については、以降の各セクションを参照してください。
-
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-この統合ランタイムには、バージョン3.18 以降、組み込みの Teradata ドライバーが用意されています。 ドライバーを手動でインストールする必要はありません。 このドライバーでは、セルフホステッド統合ランタイム マシンに "Visual C++ 再頒布可能パッケージ 2012 Update 4" が必要です。 まだインストールしていない場合は、[こちら](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)からダウンロードしてください。
-
-セルフホステッド統合ランタイムのバージョンが 3.18 より前の場合は、統合ランタイム マシンに [.NET Data Provider for Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) バージョン 14 以降をインストールしてください。 
+セルフホステッド統合ランタイムを使用している場合は、バージョン 3.18 以降、組み込みの Teradata ドライバーが用意されていることに注意してください。 ドライバーを手動でインストールする必要はありません。 このドライバーでは、セルフホステッド統合ランタイム マシンに "Visual C++ 再頒布可能パッケージ 2012 Update 4" が必要です。 まだインストールしていない場合は、[こちら](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)からダウンロードしてください。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -69,7 +63,7 @@ Teradata のリンクされたサービスでは、次のプロパティがサ�
 | connectionString | Teradata インスタンスに接続するために必要な情報を指定します。 以下のサンプルを参照してください。<br/>パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 | はい |
 | username | Teradata に接続するユーザー名を指定します。 Windows 認証の使用時に適用されます。 | いいえ |
 | password | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)ことも選択できます。 <br>Windows 認証の使用時、または基本認証で Key Vault のパスワードを参照するときに適用されます。 | いいえ |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |はい |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 接続文字列には他にも、ケースに応じてさまざまな接続プロパティを設定できます。それらのプロパティを次に示します。
 
@@ -208,7 +202,7 @@ Teradata からデータをコピーするために、コピー アクティビ�
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは `TeradataSource` に設定する必要があります。 | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば `"SELECT * FROM MyTable"` です。<br>パーティション分割された読み込みを有効にするときは、クエリ内で対応する組み込みのパーティション パラメーターをすべてフックする必要があります。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ (データセットのテーブルが指定されている場合) |
-| partitionOptions | Teradata からのデータの読み込みに使用されるデータ パーティション分割オプションを指定します。 <br>指定できる値は、**None** (既定値)、**Hash**、**DynamicRange** です。<br>パーティション オプションが有効になっている場合 (つまり、`None` ではない場合)、Teradata から同時にデータを読み込む並列処理の次数は、コピー アクティビティの [`parallelCopies`](copy-activity-performance.md#parallel-copy) の設定によって制御されます。 | いいえ |
+| partitionOptions | Teradata からのデータの読み込みに使用されるデータ パーティション分割オプションを指定します。 <br>指定できる値は、**None** (既定値)、**Hash**、**DynamicRange** です。<br>パーティション オプションが有効になっている場合 (つまり、`None` ではない場合)、Teradata から同時にデータを読み込む並列処理の次数は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) の設定によって制御されます。 | いいえ |
 | partitionSettings | データ パーティション分割の設定のグループを指定します。 <br>パーティション オプションが `None` でない場合に適用されます。 | いいえ |
 | partitionColumnName | 並列コピーの範囲パーティションまたはハッシュ パーティションで使用されるソース列の名前を指定します。 指定されていない場合は、テーブルのプライマリ インデックスが自動検出され、パーティション列として使用されます。 <br>パーティション オプションが `Hash` または `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfHashPartitionCondition` または `?AdfRangePartitionColumnName` をフックします。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ |
 | partitionUpperBound | データをコピーするパーティション列の最大値。 <br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfRangePartitionUpbound` をフックします。 例については、「[Teradata からの並列コピー](#parallel-copy-from-teradata)」セクションを参照してください。 | いいえ |
@@ -256,7 +250,7 @@ Data Factory の Teradata コネクタは、Teradata からデータを並列で
 
 ![パーティションのオプションのスクリーンショット](./media/connector-teradata/connector-teradata-partition-options.png)
 
-パーティション分割されたコピーを有効にすると、Data Factory によって Teradata ソースに対する並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、Data Factory では、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリでは、Teradata からデータの一部が取得されます。
+パーティション分割されたコピーを有効にすると、Data Factory によって Teradata ソースに対する並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、Data Factory では、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリでは、Teradata からデータの一部が取得されます。
 
 特に、Teradata から大量のデータを読み込む場合は、データのパーティション分割を使用した並列コピーを有効にすることをお勧めします。 さまざまなシナリオの推奨構成を以下に示します。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) ことをお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
 
@@ -310,7 +304,7 @@ Teradata からデータをコピーするときには、次のマッピング�
 | Decimal |Decimal |
 | Double |Double |
 | Graphic |サポートされていません。 ソース クエリで明示的なキャストを適用します。 |
-| 整数 |Int32 |
+| Integer |Int32 |
 | Interval Day |サポートされていません。 ソース クエリで明示的なキャストを適用します。 |
 | Interval Day To Hour |サポートされていません。 ソース クエリで明示的なキャストを適用します。 |
 | Interval Day To Minute |サポートされていません。 ソース クエリで明示的なキャストを適用します。 |

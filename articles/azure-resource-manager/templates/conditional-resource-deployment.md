@@ -3,16 +3,16 @@ title: テンプレートを使用した条件付きデプロイ
 description: Azure Resource Manager テンプレート内のリソースを条件付きでデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 83aa22ba57e0111d060665778922437723481c69
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: f170710118c0e3de6f3643b6216ed55b83b5c7df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207793"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153422"
 ---
-# <a name="conditional-deployment-in-resource-manager-templates"></a>Resource Manager テンプレートでの条件付きデプロイ
+# <a name="conditional-deployment-in-arm-templates"></a>ARM テンプレートでの条件付きデプロイ
 
-オプションでテンプレート内のリソースをデプロイする必要があることがあります。 リソースをデプロイするかどうかを指定するには、`condition` 要素を使用します。 この要素の値は、true または false に解決されます。 値が true の場合、リソースが作成されます。 値が false の場合、リソースは作成されません。 この要素の値は、リソース全体にのみ適用できます。
+場合によっては、Azure Resource Manager (ARM) テンプレートでリソースをデプロイすることが必要となります。 リソースをデプロイするかどうかを指定するには、`condition` 要素を使用します。 この要素の値は、true または false に解決されます。 値が true の場合、リソースが作成されます。 値が false の場合、リソースは作成されません。 この要素の値は、リソース全体にのみ適用できます。
 
 ## <a name="new-or-existing-resource"></a>新規または既存のリソース
 
@@ -87,5 +87,5 @@ ms.locfileid: "77207793"
 
 ## <a name="next-steps"></a>次のステップ
 
-* テンプレート作成に関する推奨事項については、「[Azure Resource Manager テンプレートのベスト プラクティス](template-best-practices.md)」を参照してください。
-* 複数のインスタンスのリソースを作成する方法については、「[Azure Resource Manager テンプレートのリソースのイテレーション](copy-resources.md)」を参照してください。
+* テンプレートの作成に関するレコメンデーションについては、「[ARM テンプレートのベストプラクティス](template-best-practices.md)」を参照してください。
+* リソースから複数のインスタンスを作成するには、「[ARM テンプレートでのリソースのイテレーション](copy-resources.md)」を参照してください。

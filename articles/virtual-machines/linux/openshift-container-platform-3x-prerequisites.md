@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: b2b34a6fdf96613c5bc372e585598fabbe43d53d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8767a6ee6218223280ea6219e22540c53d1e89be
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066603"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409119"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Azure に OpenShift Container Platform 3.11 をデプロイする一般的な前提条件 | Microsoft Docs
 
@@ -143,15 +143,15 @@ az ad sp create-for-rbac --name openshiftsp \
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Resource Manager テンプレートにのみ適用される前提条件
 
-SSH 秘密キー (**sshPrivateKey**)、Azure AD クライアント シークレット (**aadClientSecret**)、OpenShift 管理パスワード (**openshiftPassword**)、および Red Hat Subscription Manager パスワード、またはアクティブ化キー (**rhsmPasswordOrActivationKey**) 用のシークレットを作成する必要があります。  さらに、カスタム SSL 証明書が使用される場合は、6 つのシークレット (**routingcafile**、**routingcertfile**、**routingkeyfile**、**mastercafile**、**mastercertfile**、および **masterkeyfile**) を追加で作成する必要があります。  これらのパラメーターの詳細を説明します。
+SSH 秘密キー (**sshPrivateKey**)、Azure AD クライアント シークレット (**aadClientSecret**)、OpenShift 管理パスワード (**openshiftPassword**)、および Red Hat Subscription Manager パスワード、またはアクティブ化キー (**rhsmPasswordOrActivationKey**) 用のシークレットを作成する必要があります。  さらに、カスタム TLS/SSL 証明書が使用される場合は、6 つのシークレット (**routingcafile**、**routingcertfile**、**routingkeyfile**、**mastercafile**、**mastercertfile**、および **masterkeyfile**) を追加で作成する必要があります。  これらのパラメーターの詳細を説明します。
 
 テンプレートでは特定のシークレット名が参照されるため、前述の太字で示されている名前を使用する**必要があります** (大文字小文字の区別があります)。
 
 ### <a name="custom-certificates"></a>カスタム証明書
 
-既定では、テンプレートでは、OpenShift Web コンソールとルーティング ドメイン用の自己署名証明書を使用して OpenShift クラスターがデプロイされます。 カスタム SSL 証明書を使用する場合は、'routingCertType' を 'custom' に、'masterCertType' を 'custom' に設定します。  証明書用の .pem 形式の CA ファイル、証明書ファイル、およびキー ファイルが必要です。  片方でカスタム証明書を使用できますが、他方では使用できません。
+既定では、テンプレートでは、OpenShift Web コンソールとルーティング ドメイン用の自己署名証明書を使用して OpenShift クラスターがデプロイされます。 カスタム TLS/SSL 証明書を使用する場合は、'routingCertType' を 'custom' に、'masterCertType' を 'custom' に設定します。  証明書用の .pem 形式の CA ファイル、証明書ファイル、およびキー ファイルが必要です。  片方でカスタム証明書を使用できますが、他方では使用できません。
 
-Key Vault のシークレットにこれらのファイルを格納する必要があります。  秘密キーに使用するのと同じ Key Vault を使用します。  シークレット名用の 6 つの入力を追加で要求する代わりに、各 SSL 証明書ファイル用のシークレット名を使用するようにテンプレートがハードコーディングされます。  次の表の情報を使用して、証明書データを格納してください。
+Key Vault のシークレットにこれらのファイルを格納する必要があります。  秘密キーに使用するのと同じ Key Vault を使用します。  シークレット名用の 6 つの入力を追加で要求する代わりに、各 TLS/SSL 証明書ファイル用のシークレット名を使用するようにテンプレートがハードコーディングされます。  次の表の情報を使用して、証明書データを格納してください。
 
 | [Secret Name]\(シークレット名\)      | 証明書ファイル   |
 |------------------|--------------------|

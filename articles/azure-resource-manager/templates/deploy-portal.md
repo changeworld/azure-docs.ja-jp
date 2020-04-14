@@ -3,23 +3,23 @@ title: Azure portal を使用してリソースをデプロイする
 description: Azure portal と Azure Resource Manager を使用して、サブスクリプション内のリソース グループにリソースをデプロイします。
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 32c807b4881bc59b6bec0d26ab3664abdb200628
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: ea2faf810b3a5d1b8fa46575201022a501cc7d58
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357095"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153439"
 ---
-# <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ
+# <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>ARM テンプレートと Azure portal でリソースをデプロイする
 
-[Azure portal](https://portal.azure.com) と [Azure Resource Manager](overview.md) を使用して Azure リソースをデプロイする方法について説明します。 リソース管理の詳細については、「[Manage Azure resources by using the Azure portal (Azure portal を使用した Azure リソースの管理)](../management/manage-resources-portal.md)」を参照してください。
+[Azure portal](https://portal.azure.com) と [Azure Resource Manager (ARM) のテンプレート](overview.md) を使用して、Azure にリソースをデプロイする方法について説明します。 リソース管理の詳細については、「[Manage Azure resources by using the Azure portal (Azure portal を使用した Azure リソースの管理)](../management/manage-resources-portal.md)」を参照してください。
 
 Azure portal を使用して Azure リソースをデプロイするには、通常、次の 2 つの手順が必要です。
 
 - リソース グループを作成します。
 - リソースをリソース グループにデプロイします。
 
-さらに、Azure Resource Manager テンプレートをデプロイして Azure リソースを作成することもできます。
+さらに、ARM テンプレートをデプロイして Azure リソースを作成することもできます。
 
 このトピックでは、両方の方法を説明します。
 
@@ -73,7 +73,7 @@ Azure portal を使用して Azure リソースをデプロイするには、通
 
 ## <a name="deploy-resources-from-custom-template"></a>カスタム テンプレートからリソースをデプロイする
 
-デプロイを実行するが、Marketplace 内のテンプレートを使用しない場合は、ソリューションのインフラストラクチャを定義するカスタマイズされたテンプレートを作成できます。 テンプレートの作成の詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」をご覧ください。
+デプロイを実行するが、Marketplace 内のテンプレートを使用しない場合は、ソリューションのインフラストラクチャを定義するカスタマイズされたテンプレートを作成できます。 テンプレート作成の詳細については、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
 
 > [!NOTE]
 > ポータル インターフェイスは、[Key Vault からのシークレット](key-vault-parameter.md)の参照をサポートしません。 代わりに、[PowerShell](deploy-powershell.md) または [Azure CLI](deploy-cli.md) を使用して、テンプレートをローカルにデプロイするか、外部 URI からデプロイします。
@@ -126,5 +126,5 @@ Azure portal を使用して Azure リソースをデプロイするには、通
 
 - 監査ログの表示については、「 [Resource Manager の監査操作](../management/view-activity-logs.md)」を参照してください。
 - デプロイ エラーをトラブルシューティングするには、「[デプロイ操作の表示](deployment-history.md)」を参照してください。
-- デプロイまたはリソース グループからテンプレートをエクスポートするには、[Azure Resource Manager テンプレートのエクスポート](export-template-portal.md)に関する記事を参照してください。
+- デプロイまたはリソース グループからテンプレートをエクスポートするには、「[ARM テンプレートのエクスポート](export-template-portal.md)」を参照してください。
 - 複数のリージョン間で、サービスを安全にロール アウトするには、[Azure デプロイ マネージャー](deployment-manager-overview.md)を参照してください。

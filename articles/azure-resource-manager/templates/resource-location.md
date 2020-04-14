@@ -3,29 +3,29 @@ title: テンプレート リソースの場所
 description: Azure Resource Manager テンプレートでリソースの場所を設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 24d278df8f71fecfaec4f0fa3a84172bf1db942b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: a8324dac1232eecd5624e5f1dc0e6656295c0a10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122408"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156431"
 ---
-# <a name="set-resource-location-in-resource-manager-template"></a>Resource Manager テンプレートでリソースの場所を設定する
+# <a name="set-resource-location-in-arm-template"></a>ARM テンプレートでリソースの場所を設定する
 
-テンプレートをデプロイするときに、各リソースの場所を指定する必要があります。 場所は、リソース グループの場所と同じ場所である必要はありません。
+Azure Resource Manager (ARM) テンプレートをデプロイするときに、各リソースの場所を指定する必要があります。 場所は、リソース グループの場所と同じ場所である必要はありません。
 
 ## <a name="get-available-locations"></a>利用可能な場所を取得する
 
 場所ごとに、異なるリソースの種類がサポートされます。 リソースの種類にサポートされている場所を取得するには、Azure PowerShell または Azure CLI を使用します。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes `
   | Where-Object ResourceTypeName -eq batchAccounts).Locations
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az provider show \
@@ -96,4 +96,4 @@ az provider show \
 ## <a name="next-steps"></a>次のステップ
 
 * テンプレート関数の完全一覧が必要な場合、「 [Azure リソース マネージャーのテンプレートの関数](template-functions.md)」を参照してください。
-* テンプレート ファイルの詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+* テンプレート ファイルの詳細については、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。

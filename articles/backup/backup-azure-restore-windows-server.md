@@ -4,12 +4,12 @@ description: この記事では、Microsoft Azure Recovery Services (MARS) エ�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: e12596b496483b872f76ccd610fd70710327b586
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 25ca8eecaeb615f071340188a23fae7978ddb75c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450021"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409815"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデルを使用してファイルを Windows に復元する
 
@@ -144,4 +144,6 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
 
 ## <a name="next-steps"></a>次のステップ
 
-ファイルとフォルダーを回復したので、 [バックアップを管理](backup-azure-manage-windows-server.md)できます。
+* ファイルとフォルダーを回復したので、 [バックアップを管理](backup-azure-manage-windows-server.md)できます。
+
+* [ファイルとフォルダーのバックアップに関する一般的な質問](backup-azure-file-folder-backup-faq.md)を確認する。

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 04/03/2020
 ms.author: b-juche
-ms.openlocfilehash: aaa7e5e65ced2a9899bef5a811ee74be42a8548f
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: aebc669a90511e48ddd2a7876553948c04b97710
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048808"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667826"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -60,7 +60,7 @@ Azure NetApp Files のすべてのボリュームは、FIPS 140-2 標準を使�
 
 Azure NetApp Files のキー管理は、サービスによって処理されます。 ボリュームごとに一意の XTS-AES-256 データ暗号化キーが生成されます。 すべてのボリューム キーは、暗号化キーの階層を使用して暗号化され、保護されます。 これらの暗号化キーは決して表示されず、また、暗号化されていない形式でレポートされることもありません。 ボリュームが削除されると暗号化キーは直ちに削除されます。
 
-現時点では、ユーザーが管理するキー (Bring Your Own Key) はサポートされていません。
+Azure Dedicated HSM を使用した ユーザー マネージド キー (Bring Your Own Keys) のサポートは、制御ベースで、米国東部、米国西部 2、および米国中南部の各リージョンで利用できます。  **anffeedback@microsoft.com** にアクセスを要求することもできます。 容量が利用可能になると、要求が承認されます。
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>NFS エクスポート ポリシー規則を、Azure NetApp Files サービスのマウント ターゲットへのアクセスを制御するように構成できますか?
 
@@ -113,11 +113,7 @@ DF で報告されるボリューム サイズは、Azure NetApp Files ボリュ
 
 ### <a name="what-nfs-version-does-azure-netapp-files-support"></a>Azure NetApp Files でサポートされている NFS のバージョンを何ですか?
 
-Azure NetApp Files では、NFSv3 および NFSv4.1 がサポートされています。 いずれかの NFS バージョンを使用してボリュームを作成できます。 
-
-> [!IMPORTANT] 
-> NFSv4.1 機能にアクセスするには、ホワイトリストへの登録が必要です。  ホワイトリストへの登録を申請するには、申請を <anffeedback@microsoft.com> に送信してください。 
-
+Azure NetApp Files では、NFSv3 および NFSv4.1 がサポートされています。 いずれかの NFS バージョンを使用して[ボリュームを作成](azure-netapp-files-create-volumes.md)できます。 
 
 ### <a name="how-do-i-enable-root-squashing"></a>ルート スカッシュを有効にするにはどうすればよいですか?
 
@@ -149,6 +145,18 @@ Azure NetApp Files では、Windows Server 2008r2SP1-2019 バージョンの Act
 
 SMB クライアントで報告されるボリューム サイズは、Azure NetApp Files ボリュームを拡張できる最大サイズです。 SMB クライアントに表示される Azure NetApp Files ボリュームのサイズは、クォータやボリュームのサイズを反映するものではありません。 API Azure NetApp Files ボリュームのサイズまたはクォータは、Azure portal または API を使用して取得できます。
 
+<!--
+### Does Azure NetApp Files support Kerberos encryption?
+
+Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption for traffic between the service and the targeted Active Directory domain controllers. See [Create an SMB volume for Azure NetApp Files](azure-netapp-files-create-volumes-smb.md) for requirements. 
+-->
+
+<!--
+### Does Azure NetApp Files support LDAP signing? 
+
+Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
+--> 
+
 ## <a name="capacity-management-faqs"></a>容量管理に関する FAQ
 
 ### <a name="how-do-i-monitor-usage-for-capacity-pool-and-volume-of-azure-netapp-files"></a>Azure NetApp Files の容量プールとボリュームの使用状況を監視するには、どうすればよいですか? 
@@ -158,6 +166,26 @@ Azure NetApp Files には、容量プールとボリュームの使用状況の�
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Azure NetApp Files は Azure Storage Explorer を使用して管理できますか?
 
 いいえ。 Azure NetApp Files は、Azure Storage Explorer ではサポートされていません。
+
+### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>ディレクトリがサイズ制限に近づいているかどうかを確認するにはどうすればよいですか?
+
+クライアントから `stat` コマンドを使用することで、ディレクトリがサイズ上限 (320 MB) に近づいているかどうかを確認できます。
+
+320 MB のディレクトリの場合、ブロック数は 655360、各ブロック サイズは 512 バイトです  (つまり、320 x 1024 x 1024/512)。  
+
+例 :
+
+    [makam@cycrh6rtp07 ~]$ stat bin
+    File: 'bin'
+    Size: 4096            Blocks: 8          IO Block: 65536  directory
+
+    [makam@cycrh6rtp07 ~]$ stat tmp
+    File: 'tmp'
+    Size: 12288           Blocks: 24         IO Block: 65536  directory
+ 
+    [makam@cycrh6rtp07 ~]$ stat tmp1
+    File: 'tmp1'
+    Size: 4096            Blocks: 8          IO Block: 65536  directory
 
 ## <a name="data-migration-and-protection-faqs"></a>データの移行と保護に関する FAQ
 

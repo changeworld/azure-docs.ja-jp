@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 3/5/2020
 ms.subservice: alerts
-ms.openlocfilehash: 9585e74170d21ad899224462b6e41e7e9bb75727
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: c036fa3708d718d6199d27989e60b11015a1227e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664816"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585849"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートでサポートされるリソース
 
@@ -60,6 +60,8 @@ Azure Monitor が[新しいタイプのメトリック アラート](../../azure
 |Microsoft.KeyVault/vaults| いいえ |いいえ |[資格情報コンテナー](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/workflows |該当なし | いいえ |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft.MachineLearningServices/workspaces|はい| いいえ | [Machine Learning](../../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
+|Microsoft.NetApp/netAppAccounts/capacityPools |はい| いいえ | [Azure NetApp 容量プール](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
+|Microsoft.NetApp/netAppAccounts/capacityPools/volumes |はい| いいえ | [Azure NetApp ボリューム](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
 |Microsoft.Network/applicationGateways|該当なし| いいえ |  |
 |Microsoft.Network/dnsZones | 該当なし| いいえ | [DNS Zones](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
 |Microsoft.Network/expressRouteCircuits | 該当なし | いいえ |[Express Route 回線](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
@@ -75,12 +77,14 @@ Azure Monitor が[新しいタイプのメトリック アラート](../../azure
 |Microsoft.PowerBIDedicated/capacities | 該当なし | いいえ | [Capacities](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
 |Microsoft.Search/searchServices |該当なし|いいえ | [検索サービス](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/namespaces |はい| いいえ |[Service Bus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
-|Microsoft.Sql/servers/elasticPools |   いいえ | はい |
+|Microsoft.Sql/servers/elasticPools |    いいえ | はい |
 |Microsoft.Sql/servers/databases    | いいえ | はい |
 |Microsoft.Storage/storageAccounts |はい | いいえ | [ストレージ アカウント](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services | はい| いいえ | [Blob service](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices)、[ファイル サービス](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices)、[Queue サービス](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)、および [Table service](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs |該当なし| いいえ | [Stream Analytics](../../azure-monitor/platform/metrics-supported.md#microsoftstreamanalyticsstreamingjobs)|
 |Microsoft.Microsoft.VMWareCloudSimple/virtualMachines |はい|いいえ |[CloudSimple 仮想マシン](../../azure-monitor/platform/metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines)|
+|Microsoft.Web/hostingEnvironments/multiRolePools | はい | いいえ | [App Service Environment マルチロール プール](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
+|Microsoft.Web/hostingEnvironments/workerPools | はい | いいえ | [App Service Environment ワーカー プール](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
 |Microsoft.Web/serverfarms | はい | いいえ | [App Service プラン](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)|
 |Microsoft.Web/sites | はい | いいえ | [App Services](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-excluding-functions) と [Functions](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-functions)|
 |Microsoft.Web/sites/slots | はい | いいえ | [App Service スロット](../../azure-monitor/platform/metrics-supported.md#microsoftwebsitesslots)|

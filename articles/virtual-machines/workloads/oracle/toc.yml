@@ -4,7 +4,7 @@
       href: oracle-overview.md
     - name: Azure VM 上のソリューション
       href: oracle-vm-solutions.md
-    - name: OCI を使用したソリューション - プレビュー
+    - name: OCI を使用したソリューション
       href: oracle-oci-overview.md
 - name: クイックスタート
   items:
@@ -32,7 +32,7 @@
       href: oracle-disaster-recovery.md
 - name: 操作方法ガイド
   items:
-    - name: Azure と OCI の相互接続 - プレビュー
+    - name: Azure と OCI の相互接続
       href: configure-azure-oci-networking.md
 - name: リソース
   items:

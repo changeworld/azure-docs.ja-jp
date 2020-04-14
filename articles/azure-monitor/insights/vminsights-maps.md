@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor for VMs (プレビュー) を使用してアプリの依存関係を表示する
+title: Azure Monitor for VMs を使用してアプリの依存関係を表示する
 description: マップは、Azure Monitor for VMs の機能です。 Windows および Linux システム上のアプリケーション コンポーネントが自動的に検出されて、サービス間の通信がマップされます。 この記事では、さまざまなシナリオでマップ機能を使用する方法について詳しく説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/15/2019
-ms.openlocfilehash: cbdcd5cc8fa9475febd338f94f8b6fe1cb2fe406
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/20/2020
+ms.openlocfilehash: acb96984a49e4ad8535f87a41da11b3b63ae207b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670748"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283856"
 ---
-# <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Azure Monitor for VMs (プレビュー) のマップ機能を使用してアプリケーション コンポーネントを把握する
+# <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Azure Monitor for VMs のマップ機能を使用してアプリケーション コンポーネントを把握する
 Azure Monitor for VMs では、Azure またはお客様の環境で実行する Windows および Linux 仮想マシン (VM) で検出されたアプリケーション コンポーネントを確認できます。 VM を確認する方法は 2 つあります。 VM から直接マップを表示するか、または Azure Monitor から、VM グループのコンポーネントを表すマップを表示します。 この記事は、これら 2 つの表示方法とマップ機能の使用方法を理解するうえで役立ちます。 
 
 Azure Monitor for VMs の構成については、[Azure Monitor for VMs の有効化](vminsights-enable-overview.md)に関する記事をご覧ください。
@@ -88,7 +88,7 @@ Azure アラートとアラート ルールの作成の詳細については、�
 VM から直接 Azure Monitor for VMs にアクセスするには:
 
 1. Azure Portal で、 **[仮想マシン]** を選択します。 
-2. 一覧から VM を選択します。 **[監視]** セクションで **[Insights (プレビュー)]** を選択します。  
+2. 一覧から VM を選択します。 **[監視]** セクションで、 **[分析情報]** を選択します。  
 3. **[マップ]** タブを選択します。
 
 マップでは、指定された時間範囲でアクティブなネットワーク接続を持つ、実行中のプロセス グループとプロセスを検出することによって、VM の依存関係が視覚化されます。  
@@ -102,7 +102,7 @@ VM から直接 Azure Monitor for VMs にアクセスするには:
 仮想マシン スケール セットから Azure Monitor for VMs に直接アクセスするには:
 
 1. Azure portal 上で、 **[仮想マシン スケール セット]** を選択します。
-2. 一覧から VM を選択します。 次に、 **[監視]** セクションで **[Insights (プレビュー)]** を選択します。  
+2. 一覧から VM を選択します。 次に、 **[監視]** セクションで **[分析情報]** を選択します。  
 3. **[マップ]** タブを選択します。
 
 マップでは、スケール セット内のすべてのインスタンスが、グループ ノードとして、グループの依存関係とともに視覚化されます。 展開されたノードには、スケール セットのインスタンスが一覧表示されます。 これらのインスタンスは一度に 10 個をスクロールできます。 
@@ -114,14 +114,14 @@ VM から直接 Azure Monitor for VMs にアクセスするには:
 ![直接 VM マップの概要](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->仮想マシン スケール セットの **[インスタンス]** ビューから、特定のインスタンスのマップにアクセスすることもできます。 **[設定]** セクションで **[インスタンス]**  >  **[Insights (プレビュー)]** に移動します。
+>仮想マシン スケール セットの **[インスタンス]** ビューから、特定のインスタンスのマップにアクセスすることもできます。 **[設定]** セクションで、 **[インスタンス]**  >  **[分析情報]** に移動します。
 
 ## <a name="view-a-map-from-azure-monitor"></a>Azure Monitor からマップを表示する
 
 Azure Monitor では、マップ機能で VM とその依存関係の全体像を確認できます。 Azure Monitor でマップ機能にアクセスするには:
 
 1. Azure portal で、 **[モニター]** を選択します。 
-2. **[分析情報]** セクションで **[Virtual Machines (プレビュー)]** を選択します。
+2. **[分析情報]** セクションで、 **[仮想マシン]** を選択します。
 3. **[マップ]** タブを選択します。
 
    ![Azure Monitor の複数 VM の概要マップ](./media/vminsights-maps/map-multivm-azure-monitor-01.png)

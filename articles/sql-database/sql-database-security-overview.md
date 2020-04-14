@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 4aa45cc1e8b79186d3ddd5d2b2964addb3929b1a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2a4c6dd3dd6f1bb2f15e31226086c73fb8e63521
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978570"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124830"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database のセキュリティ機能の概要
 
@@ -56,7 +56,7 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 
 - **Azure Active Directory 認証**:
 
-    Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を使用して [Azure SQL Database](sql-database-technical-overview.md) と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証では、管理者は、データベース ユーザーの ID とアクセス許可を他の Microsoft サービスと共に一元管理できます。 これにはパスワード ストレージの最小化が含まれます。また、これにより一元化されたパスワードのローテーション ポリシーが有効になります。
+    Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を使用して [Azure SQL Database](sql-database-technical-overview.md) と [SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証では、管理者は、データベース ユーザーの ID とアクセス許可を他の Microsoft サービスと共に一元管理できます。 これにはパスワード ストレージの最小化が含まれます。また、これにより一元化されたパスワードのローテーション ポリシーが有効になります。
 
      SQL Database で Azure AD 認証を使用するには、**Active Directory 管理者**と呼ばれるサーバー管理者を作成する必要があります。 詳細については、[Azure Active Directory 認証を使用した SQL Database への接続](sql-database-aad-authentication.md)に関するページを参照してください。 Azure AD 認証では、マネージド アカウントとフェデレーション アカウントの両方がサポートされます。 フェデレーション アカウントでは、Azure AD とフェデレーションされた顧客ドメインの Windows ユーザーとグループがサポートされます。
 
@@ -152,6 +152,6 @@ SQL Database 動的データ マスクは、特権のないユーザーに対し
 
 ## <a name="next-steps"></a>次のステップ
 
-- SQL Database でのアクセス制御機能の使用については、[アクセス制御](sql-database-control-access.md)に関するページを参照してください。
+- SQL Database でのログイン、ユーザー アカウント、データベース ロール、およびアクセス許可の使用については、[ログインとユーザー アカウントの管理](sql-database-manage-logins.md)に関するページをご覧ください。
 - データベース監査については、[SQL Database の監査に関する記事](sql-database-auditing.md)をご覧ください。
 - 脅威の検出については、「[SQL Database Threat Detection](sql-database-threat-detection.md)」(SQL Database の脅威の検出) をご覧ください。

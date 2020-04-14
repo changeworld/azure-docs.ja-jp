@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca3df9e68e1d7e82675a6765f0320d42599a63da
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 35d4d44f0b9f1b210f38a034575b589c7211d55c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943634"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246672"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Azure SQL Database 用の Azure セキュリティ ベースライン
 
@@ -238,20 +238,19 @@ https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
 さらに、Azure SQL 診断テレメトリを、複数のサブスクリプションにわたって大規模に Azure SQL データベース、エラスティック プール、マネージド インスタンスのパフォーマンスを監視するクラウド ソリューションである Azure SQL Analytics にストリーミングできます。 これは、Azure SQL Database のパフォーマンス メトリックの収集および視覚化に役立ち、パフォーマンスのトラブルシューティング用インテリジェンスが組み込まれています。
 
-
 Azure SQL Database の監査を設定する方法:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
 
-Azure Monitor でプラットフォーム ログとメトリックを収集する方法:
+Azure Monitor を使用してメトリックおよびリソース ログを収集する方法:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging
 
 
 診断を Azure SQL Analytics にストリーミングする方法:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging#stream-diagnostic-telemetry-into-sql-analytics
+https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging#configure-the-streaming-export-of-diagnostic-telemetry
 
 **Azure Security Center の監視**: はい
 
@@ -787,7 +786,7 @@ https://docs.microsoft.com/azure/security-center/security-center-vulnerability-a
 
 Azure Security Center で脆弱性評価レポートをエクスポートする方法:
 
-https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#implementing-vulnerability-assessment
+https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#implement-vulnerability-assessment
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1272,7 +1271,7 @@ Azure Security Center のセキュリティ アラート: https://docs.microsoft
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス**:定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
+**ガイダンス**: 定期的にシステムのインシデント対応機能をテストする演習を実施します。 弱点やギャップを特定し、必要に応じて計画を見直します。
 
 
 

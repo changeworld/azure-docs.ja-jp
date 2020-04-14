@@ -3,13 +3,15 @@ title: Azure Migrate Server Migration を使用して Hyper-V VM を Azure に�
 description: Azure Migrate Server Migration を使用してオンプレミスの Hyper-V VM を Azure に移行する方法について説明します。
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.custom: MVC
-ms.openlocfilehash: e1b670db3399857278c646d3793e8ec946d385b0
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.custom:
+- MVC
+- fasttrack-edit
+ms.openlocfilehash: b5d37da7ea0c53a7e8cbb5b579d529dd4a799fed
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943298"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422697"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure に移行する 
 
@@ -50,7 +52,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Azure Migrate Server Migration ツールを追加する
 
-2 番目のチュートリアルに従って Hyper-V VM を評価していない場合は、[次の手順に従って](how-to-add-tool-first-time.md) Azure Migrate プロジェクトを設定し、Azure Migrate Server Migration ツールをプロジェクトに追加する必要があります。
+2 番目のチュートリアルに従って Hyper-V VM を評価していない場合は、[次の手順に従って](how-to-add-tool-first-time.md) Azure Migrate プロジェクトを設定し、Azure Migrate Server Assessment ツールをそのプロジェクトに追加する必要があります。
 
 2 番目のチュートリアルに従って、Azure Migrate プロジェクトが既にある場合は、次のように Azure Migrate: Server Migration ツールを追加します。
 
@@ -67,10 +69,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスを設定する
 
-Azure Migrate Server Migration では、軽量の Hyper-V VM アプライアンスが実行されます。
+Azure Migrate Server Migration により、Hyper-V ホストまたはクラスター ノードでソフトウェア エージェントが実行され、データが調整されて Azure Migrate にレプリケートされます。移行に専用のアプライアンスは必要ありません。
 
-- このアプライアンスによって VM の検出が実行され、VM のメタデータとパフォーマンス データが Azure Migrate Server Migration に送信されます。
-- アプライアンスは、Azure Migrate: Server Assessment ツールでも、Hyper-V VM を Azure に移行するために使用されます。
+- Azure Migrate: Server Assessment アプライアンスでは、VM の検出が実行されて、VM のメタデータとパフォーマンス データが Azure Migrate Server Migration に送信されます。
+- 移行のオーケストレーションとデータのレプリケーションは、Microsoft Azure Site Recovery プロバイダーと Microsoft Azure Recovery Service エージェントによって処理されます。
 
 アプライアンスを設定するには:
 - 2 番目のチュートリアルに従って Hyper-V VM を評価した場合は、そのチュートリアルの間に既にアプライアンスを設定してあるため、繰り返す必要はありません。

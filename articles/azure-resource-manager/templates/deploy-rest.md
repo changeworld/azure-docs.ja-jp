@@ -3,16 +3,16 @@ title: REST API とテンプレートを使用してリソースをデプロイ�
 description: Azure Resource Manager と Resource Manager REST API を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: fc386f51073c256fd083a04bbed39316784827b1
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 9cdb7b668e5170917b41ef49639bd9a17e538766
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152512"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153235"
 ---
-# <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Resource Manager テンプレートと Resource Manager REST API を使用したリソースのデプロイ
+# <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>ARM テンプレートと Resource Manager REST API を使用してリソースをデプロイする
 
-この記事では、Resource Manager REST API と Resource Manager テンプレートを使用して Azure にリソースをデプロイする方法について説明します。
+この記事では、Resource Manager REST API と Azure Resource Manager (ARM) テンプレートを使用して Azure にリソースをデプロイする方法について説明します。
 
 テンプレートは要求本文またはファイルへのリンクに含めることができます。 ファイルを使用する場合は、ローカル ファイルまたは URI を通じてアクセスできる外部ファイルを使用できます。 テンプレートがストレージ アカウントにある場合は、テンプレートへのアクセスを制限し、デプロイ時に Shared Access Signature (SAS) トークンを設定できます。
 
@@ -192,5 +192,5 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 - エラーが発生したときに正常なデプロイにロールバックするには、「[エラー発生時に正常なデプロイにロールバックする](rollback-on-error.md)」を参照してください。
 - リソース グループに存在するが、テンプレートで定義されていないリソースの処理方法を指定するには、「[Azure Resource Manager のデプロイ モード](deployment-modes.md)」を参照してください。
 - 非同期 REST 操作の処理の詳細については、「[Track asynchronous Azure operations (非同期の Azure 操作の追跡)](../management/async-operations.md)」を参照してください。
-- テンプレートの詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+- テンプレートの詳細については、「[ARM テンプレートの構造と構文について](template-syntax.md)」を参照してください。
 

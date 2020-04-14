@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: ad912eb0b26354d40a654a1c8782dfcb960235e5
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73847520"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Azure Cognitive Search .NET SDK バージョン 10 へのアップグレード
@@ -154,7 +154,7 @@ var skillset = new Skillset()
 > [!NOTE]
 > これらの便利な詳細情報が可能な限り含まれるよう、エラーと警告の構成に着手しました。 これらの詳細がすべてのエラーと警告で必ず表示されるように作業を進めています。しかし、この作業は進行中であるため、これらの追加情報が設定されていない場合もあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Shaper スキルに対する変更によって影響を受ける可能性が最も高いのは、新規または既存のコードです。 次の手順として、入力構造を示すこの例を見直してください。[Shaper スキルの JSON 定義の例](cognitive-search-skill-shaper.md)
 - [AI エンリッチメントの概要](cognitive-search-concept-intro.md)に関するページを参照してください。

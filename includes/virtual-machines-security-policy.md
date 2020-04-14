@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 53c9dea83fc6d413d7e82194696ffedabcc8cf7b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 14a6703b3e256d33ab3b18e1821587cc3eb293db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71830122"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79382002"
 ---
-実行するアプリケーションの仮想マシン (VM) は常に安全な状態に保つ必要があります。 VM の安全を確保する手段としては、Azure のサービスや機能を通じて、VM へのアクセスやデータのストレージにセキュリティを確保する方法が挙げられます。 この記事では、VM とアプリケーションのセキュリティを維持するうえで役に立つ情報を提供します。
+実行するアプリケーションの仮想マシン (VM) は、常に安全な状態に保つ必要があります。 VM の安全を確保する手段としては、Azure のサービスや機能を通じて、VM へのアクセスやデータのストレージにセキュリティを確保する方法が挙げられます。 この記事では、VM とアプリケーションのセキュリティを維持するうえで役に立つ情報を提供します。
 
 ## <a name="antimalware"></a>マルウェア対策
 
@@ -21,9 +21,23 @@ ms.locfileid: "71830122"
 
 [Azure Security Center](../articles/security-center/security-center-intro.md) は、VM に対する脅威の防御、検出、対応を可能にする機能です。 Security Center は、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
-Security Center の Just-In-Time アクセスは、VM のデプロイ全体に適用できるため、Azure VM へのインバウンド トラフィックをロックダウンし、VM への接続が必要な場合は簡単にアクセスできるようにしつつ、攻撃に対する露出を減らすことができます。 Just-In-Time が有効で、ユーザー要求が VM にアクセスする場合、ユーザーが VM に対してどのアクセス許可を持っているかが Security Center によって確認されます。 ユーザーが適切なアクセス許可を持っている場合は要求が承認され、Security Center では、選択したポートへのインバウンド トラフィックを制限時間内だけで許可するように、ネットワーク セキュリティ グループ (NSG) が自動的に構成されます。 指定された時間が経過すると、Security Center により NSG が以前の状態に復元されます。 
+Security Center の Just-In-Time アクセスは、VM のデプロイ全体に適用できます。これによって Azure VM へのインバウンド トラフィックをロックダウンし、VM への接続が必要な場合は簡単にアクセスできるようにしつつ、攻撃に対する露出を減らすことができます。 Just-In-Time が有効で、ユーザー要求が VM にアクセスする場合、ユーザーが VM に対してどのアクセス許可を持っているかが Security Center によって確認されます。 ユーザーが適切なアクセス許可を持っている場合は要求が承認され、Security Center では、選択したポートへのインバウンド トラフィックを制限時間内だけで許可するように、ネットワーク セキュリティ グループ (NSG) が自動的に構成されます。 指定された時間が経過すると、Security Center により NSG が以前の状態に復元されます。 
 
 ## <a name="encryption"></a>暗号化
+
+マネージド ディスクには、2つの暗号化方式が用意されています。 ひとつは、Azure Disk Encryption と呼ばれる OS レベルでの暗号化、そしてもうひとつは、サーバー側で暗号化を行うプラットフォーム レベルでの暗号化です。
+
+### <a name="server-side-encryption"></a>サーバー側暗号化
+
+Azure マネージド ディスクは、データをクラウドに永続化するときに、既定で自動的にデータを暗号化します。 サーバー側の暗号化によってデータが保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 Azure マネージド ディスク内のデータは、利用できる最も強力なブロック暗号の 1 つである 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使って透過的に暗号化され、FIPS 140-2 に準拠しています。
+
+暗号化はマネージド ディスクのパフォーマンスに影響しません。 暗号化に追加コストはかかりません。
+
+プラットフォーム マネージド キーを利用してお使いのマネージド ディスクを暗号化することも、お使いの独自のキーを使用して暗号化を管理することもできます。 独自のキーを使用して暗号化を管理する場合は、マネージド ディスク内のすべてのデータの暗号化と暗号化解除に使用する*カスタマー マネージド キー*を指定できます。 
+
+サーバー側の暗号化の詳細については、[Windows](../articles/virtual-machines/windows/disk-encryption.md) または [Linux](../articles/virtual-machines/linux/disk-encryption.md) の記事を参照してください。
+
+### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 仮想マシン ([Windows VM](../articles/virtual-machines/windows/encrypt-disks.md) および [Linux VM](../articles/virtual-machines/linux/disk-encryption-overview.md)) のセキュリティとコンプライアンスを強化するために、Azure の仮想ディスクを暗号化できます。 Windows VM の仮想ディスクは、BitLocker を使って保存時に暗号化されます。 Linux VM の仮想ディスクは、dm-crypt を使って暗号化します。 
 
@@ -52,5 +66,5 @@ VM に接続するときは、公開キー暗号化を使用して、より安�
 [ロールベースのアクセス制御 (RBAC)](../articles/role-based-access-control/overview.md) を使用すると、チーム内で職務を分離し、職務に必要なアクセス許可のみを VM のユーザーに付与することができます。 すべてのユーザーに VM への無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 VM のアクセス制御は、[Azure Portal](../articles/role-based-access-control/role-assignments-portal.md) で構成できるほか、[Azure CLI](https://docs.microsoft.com/cli/azure/role) または [Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md) を使って構成することもできます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure Security Center を使って [Linux](../articles/security/fundamentals/overview.md) または [Windows](../articles/virtual-machines/windows/tutorial-azure-security.md) の仮想マシンのセキュリティを監視する手順を参照します。

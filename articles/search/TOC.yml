@@ -114,12 +114,6 @@
               href: index-add-language-analyzers.md
             - name: カスタム アナライザーの追加
               href: index-add-custom-analyzers.md
-        - name: 先行入力
-          items:
-            - name: suggester の作成
-              href: index-add-suggesters.md
-            - name: 入力候補またはオートコンプリートの追加
-              href: search-autocomplete-tutorial.md
         - name: シノニム
           items:
             - name: シノニムの追加
@@ -230,6 +224,14 @@
           href: search-query-lucene-examples.md
         - name: 部分的な語句と特殊文字
           href: search-query-partial-matching.md
+        - name: あいまい検索
+          href: search-query-fuzzy.md
+        - name: '"入力と並行した検索" のオートコンプリート'
+          items:
+            - name: suggester の作成
+              href: index-add-suggesters.md
+            - name: 入力候補またはオートコンプリートの追加
+              href: search-autocomplete-tutorial.md
         - name: Power Apps からのクエリ
           href: search-howto-powerapps.md
         - name: 構文リファレンス

@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 03e22c4c179850e5140015c0abc2d89f16d4b624
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4745d675086f1b07bf7fccf17c14c76e4b18fba2
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76774542"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478075"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>クイック スタート:Python で Service Bus のトピックとサブスクリプションを使用する
 
@@ -35,7 +35,7 @@ ms.locfileid: "76774542"
 ## <a name="prerequisites"></a>前提条件
 - Azure サブスクリプション。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
 - 「[クイック スタート:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」の手順に従って作成された Service Bus 名前空間。 このクイックスタートで後ほど使用するために、 **[共有アクセス ポリシー]** 画面から、名前空間名、共有アクセス キー名、および主キーの値をコピーします。 
-- [Azure Python SDK][Azure Python package] パッケージがインストールされた Python 3.4 x 以上。 詳しくは、[Python インストール ガイド](/azure/python/python-sdk-azure-install)に関する記事をご覧ください。
+- [Azure Python SDK][Azure Python package] パッケージがインストールされた Python 3.4 x 以上。 詳しくは、[Python インストール ガイド](/azure/developer/python/azure-sdk-install)に関する記事をご覧ください。
 
 ## <a name="create-a-servicebusservice-object"></a>ServiceBusService オブジェクトを作成する
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 4b2b388fb736997010a6cbbdf93b23b77c7ef3a3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: cc4e267c6912b8938db1ba5497a27f9c0026bd79
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603974"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887335"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Just-In-Time アクセスを使用して管理ポートをセキュリティで保護する
 
@@ -36,7 +36,7 @@ VM で JIT ポリシーを構成するには、3 つの方法があります。
 
 Security Center から JIT ポリシーを構成し、JIT のポリシーを使用して VM へのアクセスを要求できます。
 
-### Security Center で VM の JIT アクセスを構成する <a name="jit-asc"></a>
+### <a name="configure-jit-access-on-a-vm-in-security-center"></a>Security Center で VM の JIT アクセスを構成する <a name="jit-asc"></a>
 
 1. **[Security Center]** ダッシュボードを開きます。
 
@@ -139,7 +139,7 @@ VM の既存の Just-In-Time ポリシーを編集するには:
 
 
 
-## Azure VM のページから JIT アクセスを構成する <a name="jit-vm"></a>
+## <a name="configure-jit-access-from-an-azure-vms-page"></a>Azure VM のページから JIT アクセスを構成する <a name="jit-vm"></a>
 
 作業を容易にするため、Security Center の VM のページ内から直接 JIT を使用して VM に接続できます。
 
@@ -177,7 +177,7 @@ Azure portal では、VM に接続しようとすると、Azure は、Just-In-Ti
 
   アクセスを要求するには、次の既定のパラメーターを使用します。
 
-  - **接続元 IP アドレス**:"任意" (*) (変更できません)
+  - **接続元 IP アドレス**:’任意’ (*) (変更できません)
   - **時間範囲**:3 時間 (変更できません) <!--Isn't this set in the policy-->
   - **[ポート番号]** : Windows では RDP ポート 3389/Linux ではポート 22 (変更可能)
 
@@ -188,7 +188,7 @@ Azure portal では、VM に接続しようとすると、Azure は、Just-In-Ti
 
   ![JIT プロンプト](./media/security-center-just-in-time/jit-prompt.png)
 
-## VM でプログラムから JIT ポリシーを構成する <a name="jit-program"></a>
+## <a name="configure-a-jit-policy-on-a-vm-programmatically"></a>VM でプログラムから JIT ポリシーを構成する <a name="jit-program"></a>
 
 REST API および PowerShell から Just-In-Time を設定し使用できます。
 
@@ -202,33 +202,22 @@ PowerShell による Just-In-Time VM アクセス ソリューションを使用
 
 次の例では、特定の VM 上で Just-In-Time VM アクセス ポリシーを設定し、以下のように設定します。
 
-1.  ポート 22 と 3389 を閉じます。
+1.    ポート 22 と 3389 を閉じます。
 
-2.  承認された要求ごとに開けるように、それぞれ最大 3 時間の時間枠を設定します。
-3.  アクセス権を要求するユーザーがソース IP アドレスを制御できるようにし、承認された Just-In-Time アクセス要求時に正常なセッションを確立できるようにします。
+2.    承認された要求ごとに開けるように、それぞれ最大 3 時間の時間枠を設定します。
+3.    アクセス権を要求するユーザーがソース IP アドレスを制御できるようにし、承認された Just-In-Time アクセス要求時に正常なセッションを確立できるようにします。
 
 これを実現するには、PowerShell で以下を実行します。
 
-1.  VM に対する Just-In-Time VM アクセス ポリシーを保持する変数を割り当てます。
+1.    VM に対する Just-In-Time VM アクセス ポリシーを保持する変数を割り当てます。
 
-        $JitPolicy = (@{
-         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
-        ports=(@{
-             number=22;
-             protocol="*";
-             allowedSourceAddressPrefix=@("*");
-             maxRequestAccessDuration="PT3H"},
-             @{
-             number=3389;
-             protocol="*";
-             allowedSourceAddressPrefix=@("*");
-             maxRequestAccessDuration="PT3H"})})
+        $JitPolicy = (@{    id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"   ports=(@{        number=22;        protocol="\*";        allowedSourceAddressPrefix=@("\*");        maxRequestAccessDuration="PT3H"},        @{        number=3389;        protocol="\*";        allowedSourceAddressPrefix=@("\*");        maxRequestAccessDuration="PT3H"})})
 
-2.  VM の Just-In-Time VM アクセス ポリシーを配列に挿入します。
+2.    VM の Just-In-Time VM アクセス ポリシーを配列に挿入します。
     
         $JitPolicyArr=@($JitPolicy)
 
-3.  選択した VM で Just-In-Time VM アクセス ポリシーを構成します。
+3.    選択した VM で Just-In-Time VM アクセス ポリシーを構成します。
     
         Set-AzJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
@@ -237,18 +226,13 @@ PowerShell による Just-In-Time VM アクセス ソリューションを使用
 次の例では、特定の IP アドレスおよび特定の期間にポート 22 を開くことを要求する、特定の VM への Just-In-Time VM アクセス要求が示されています。
 
 PowerShell で以下を実行します。
-1.  VM 要求アクセス プロパティを構成します。
+1.    VM 要求アクセス プロパティを構成します。
 
-        $JitPolicyVm1 = (@{
-          id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
-        ports=(@{
-           number=22;
-           endTimeUtc="2018-09-17T17:00:00.3658798Z";
-           allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
-2.  配列内に VM アクセス要求パラメーターを挿入します。
+        $JitPolicyVm1 = (@{     id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"   ports=(@{      number=22;      endTimeUtc="2018-09-17T17:00:00.3658798Z";      allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
+2.    配列内に VM アクセス要求パラメーターを挿入します。
 
         $JitPolicyArr=@($JitPolicyVm1)
-3.  要求アクセスを送信します (手順 1 で取得したリソース ID を使用)。
+3.    要求アクセスを送信します (手順 1 で取得したリソース ID を使用)。
 
         Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
 
@@ -271,6 +255,7 @@ JIT ポリシーを更新するたびに、クリーンアップ ツールが自
 
 セキュリティ センターの詳細については、次を参照してください。
 
+- Microsoft Learn モジュール「[Azure Security Center を使用して、ブルート フォースおよびマルウェア攻撃からサーバーと VM を保護する](https://docs.microsoft.com/learn/modules/secure-vms-with-azure-security-center/)」
 - [セキュリティ ポリシーの設定](tutorial-security-policy.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。
 - [セキュリティに関する推奨事項の管理](security-center-recommendations.md) -- 推奨事項に従って Azure リソースを保護する方法について説明します。
 - [セキュリティ正常性の監視](security-center-monitoring.md) -- Azure リソースの正常性を監視する方法について説明します。

@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/15/2020
+ms.date: 03/25/2020
 ms.author: cherylmc
-ms.openlocfilehash: cd2562974a689ecbca0d7016d3d970895ea211d9
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 6482040f0d50f08f04ea87384a99af556f694075
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79081762"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478800"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -37,7 +37,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 
 地理的リージョン内の少なくとも 1 つの ExpressRoute の場所に接続している場合は、その地理的リージョン内のすべてのリージョンの Azure サービスにアクセスできます。
 
-## <a name="locations"></a>地理的リージョン内の Azure リージョンと ExpressRoute の場所の対応。
+## <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a><a name="locations"></a>地理的リージョン内の Azure リージョンと ExpressRoute の場所の対応。
 次の表は、地理的リージョン、ExpressRoute の場所、Azure リージョンをまとめたものです。
 
 | **地理的リージョン** | **Azure リージョン** | **ExpressRoute の場所** |
@@ -67,7 +67,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 
 標準の ExpressRoute SKU では、地理的リージョン間の接続はサポートされていません。 グローバル接続に対応するには、ExpressRoute Premium アドオンを有効にする必要があります。 国内のクラウド環境には接続できません。 国内のクラウド環境に接続する必要がある場合、接続プロバイダーにご相談ください。
 
-## <a name="partners"></a>ExpressRoute 接続プロバイダー
+## <a name="expressroute-connectivity-providers"></a><a name="partners"></a>ExpressRoute 接続プロバイダー
 
 次の表に、サービス プロバイダー別の場所を示します。 場所別の使用可能なプロバイダーを確認する場合は、[場所別のサービス プロバイダー](expressroute-locations-providers.md)に関するページを参照してください。
 
@@ -78,10 +78,11 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | --- | --- | --- | --- |
 | **[AARNet](https://www.aarnet.edu.au/network-and-services/connectivity-services/azure-expressroute)** |サポートされています |サポートされています |メルボルン、シドニー |
 | **[Airtel](https://www.airtel.in/business/#/)** | サポートされています | サポートされています | チェンナイ 2、ムンバイ 2 |
-| **[AIS](http://business.ais.co.th/solution/microsoft-azure.html?category=cloud)** | サポートされています | サポートされています | バンコク |
+| **[AIS](https://business.ais.co.th/solution/en/azure-expressroute.html)** | サポートされています | サポートされています | バンコク |
 | **[Aryaka Networks](https://www.aryaka.com/)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、香港特別行政区、サンパウロ、シアトル、シリコン バレー、シンガポール、東京、ワシントン DC |
 | **[Ascenty Data Centers](https://www.ascenty.com/en/cloud/microsoft-express-route)** |サポートされています |サポートされています |サンパウロ |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、ロンドン、シリコン バレー、シンガポール、シドニー、東京、トロント、ワシントン DC |
+| **[アット東京](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | サポートされています | サポートされています | 東京 2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | サポートされています | サポートされています | 東京 |
 | **[BCX](https://www.bcx.co.za/solutions)** |サポートされています |サポートされています |ケープタウン|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |サポートされています |サポートされています |モントリオール、トロント、ケベック シティ |
@@ -97,7 +98,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、シカゴ、ダブリン、フランクフルト、ロンドン、ロンドン 2、ニューポート、ニューヨーク、大阪、パリ、シリコン バレー、シリコン バレー 2、シンガポール 2、東京、ワシントン DC |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |サポートされています |サポートされています |シカゴ、シリコン バレー、ワシントン DC |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |サポートされています |サポートされています |シカゴ、デンバー、ロサンゼルス、ニューヨーク、シリコン バレー、シリコン バレー 2、ワシントン DC、ワシントン DC2 |
-| **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/directcloud/find-a-cloud-service/detail/microsoft-azure)** | サポートされています |サポートされています |アムステルダム 2、フランクフルト、マルセイユ|
+| **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/cloud-exchange/find-a-cloud-service/detail/microsoft-azure)** | サポートされています |サポートされています |アムステルダム 2、フランクフルト、マルセイユ|
 | **[Devoli](https://devoli.com/expressroute)** | サポートされています |サポートされています | オークランド、メルボルン、シドニー |
 | **du datamena** |サポートされています |サポートされています | ドバイ 2 |
 | **eir** |サポートされています |サポートされています |ダブリン|
@@ -240,7 +241,7 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 | **[Altice Business](https://golightpath.com/transport)** |Equinix |ニューヨーク、ワシントン DC |
 | **[アルテリア・ネットワークス株式会社](https://www.arteria-net.com/business/service/cloud/sca/)** |Equinix |東京 |
 | **[Axtel](https://alestra.mx/landing/expressrouteazure/)** |Equinix |ダラス|
-| **[Beanfield Metroconnect](https://www.beanfield.com/cloud-exchange/)** |Megaport |Toronto|
+| **[Beanfield Metroconnect](https://www.beanfield.com/business/cloud-exchange)** |Megaport |Toronto|
 | **[Bezeq International Ltd.](https://www.bezeqint.net/english)** | euNetworks | London |
 | **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | アムステルダム、フランクフルト、ロンドン、シンガポール、ワシントン DC |
 | **[株式会社ブロードバンドタワー](https://www.bbtower.co.jp/product-service/data-center/network/dcconnect-for-azure/)** | Equinix | 東京 |
@@ -263,7 +264,7 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 | **[Gulf Bridge International](https://www.gbiinc.com/microsoft-azure-expressroute/)** | Equinix | アムステルダム |
 | **[HSO](https://www.hso.co.uk/products/cloud-direct)** |Equinix | ロンドン、スラウ |
 | **[IVedha Inc](http://www.ivedha.com/cloud/manage-azure-cloud/express-route-4/)**| Equinix | Toronto |
-| **[Kaalam Telecom Bahrain B.S.C](http://www.kalaam-telecom.com/en/inbusiness/expressroute.html)**| Level 3 Communications |アムステルダム |
+| **[Kaalam Telecom Bahrain B.S.C](http://www.kalaam-telecom.com/azure/)**| Level 3 Communications |アムステルダム |
 | **LGA Telecom** |Equinix |シンガポール|
 | **[Macroview Telecom](http://www.macroview.com/en/scripts/catitem.php?catid=solution&sectionid=expressroute)** |Equinix |香港特別行政区 
 | **[Macquarie Telecom Group](https://macquariegovernment.com/secure-cloud/secure-cloud-exchange/)** | Megaport | シドニー |
@@ -335,7 +336,7 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 | **[Altogee](https://altogee.be/diensten/express-route/)** | ヨーロッパ |
 | **[Avanade Inc.](https://www.avanade.com/)** | アジア、ヨーロッパ、北米、南アメリカ |
 | **[Bright Skies GmbH](https://bskies.io/expressroute)** | ヨーロッパ
-| **[Ensyst](https://www.ensyst.com.au)** | Asia
+| **[Ensyst](https://www.ensyst.com.au)** | アジア
 | **[Equinix Professional Services](https://www.equinix.com/services/consulting/)** | 北米 |
 | **[FlexManage](https://www.flexmanage.com/cloud)** | 北米 |
 | **[Lightstream](https://www.lightstream.tech/partners/microsoft-azure/)** | 北米 |
@@ -344,7 +345,7 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 | **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | ヨーロッパ (ドイツ) |
 | **[Nelite](https://www.exakis-nelite.com/offres/)** | ヨーロッパ |
 | **[New Signature](https://newsignature.com/technologies/express-route/)** | ヨーロッパ |
-| **[OneAs1a](https://www.oneas1a.com/connectivity.html)** | Asia |
+| **[OneAs1a](https://www.oneas1a.com/connectivity.html)** | アジア |
 | **[Orange Networks](https://orange-networks.com/blog/88-azureexpressroute)** | ヨーロッパ |
 | **[Perficient](https://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | 北米 |
 | **[Presidio](https://info.presidio.com/microsoft-azure-expressroute)** | 北米 |

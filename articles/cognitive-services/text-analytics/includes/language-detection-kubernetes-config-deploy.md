@@ -3,18 +3,18 @@ title: 言語検出 Kubernetes の構成とデプロイの手順
 titleSuffix: Azure Cognitive Services
 description: 言語検出 Kubernetes の構成とデプロイの手順
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/21/2019
-ms.author: dapine
-ms.openlocfilehash: addb044d82429a4471e7ecd302351dd7b7eada84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: dc344bd6e4927d39b72ba9af3ae2eeb61d9cec95
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78262070"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877834"
 ---
 ### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>言語検出コンテナーを AKS クラスターにデプロイする
 

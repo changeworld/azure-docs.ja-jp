@@ -4,12 +4,12 @@ description: Azure Site Recovery で VM/物理サーバーを Azure にフェー
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: 514f1d6631a70301589943ddb7920ca3c9c46062
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 99a197e8f5ebac8a3b0be1b567ee41b43a2c4476
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609223"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471270"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>オンプレミスから Azure へのフェールオーバーを実行する
 
@@ -17,7 +17,7 @@ ms.locfileid: "75609223"
 
 ## <a name="before-you-start"></a>開始する前に
 
-- ディザスター リカバリーのフェールオーバー プロセスについて[学習](failover-failback-overview.md)します。
+- ディザスター リカバリーのフェールオーバー プロセスについて[学習](failover-failback-overview.md)してください。
 - 複数のマシンをフェールオーバーする場合は、復旧計画でマシンをまとめる方法について[学習](recovery-plan-overview.md)します。
 - 完全なフェールオーバーを実行する前に、[ディザスター リカバリー訓練](site-recovery-test-failover-to-azure.md)を実行して、すべてが想定どおりに機能することを確認してください。
 
@@ -30,7 +30,7 @@ ms.locfileid: "75609223"
 
 フェールオーバー後に RDP/SSH を使用して Azure VM に接続する場合、フェールオーバーの前にオンプレミスで行う必要がある事項がいくつかあります。
 
-**フェールオーバー後** | **Location** | **アクション**
+**フェールオーバー後** | **場所** | **アクション**
 --- | --- | ---
 **Windows で実行中の Azure VM** | フェールオーバー前のオンプレミスのコンピューター | インターネット経由で Azure VM にアクセスするには、RDP を有効にし、TCP と UDP の規則が **[パブリック]** に追加されていることを確認し、 **[Windows ファイアウォール]**  >  **[許可されたアプリ]** のすべてのプロファイルで RDP が許可されていることを確認します。<br/><br/> サイト間接続で Azure VM にアクセスするには、コンピューターで RDP を有効にし、 **[Windows ファイアウォール]**  ->  **[許可されたアプリおよび機能]** の **[ドメイン] と [プライベート]** ネットワークで RDP が許可されていることを確認します。<br/><br/> <br/><br/> 静的な固定ルートと WinHTTP プロキシを削除します。 オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細については、こちらを参照してください](https://support.microsoft.com/kb/3031135)。<br/><br/> フェールオーバーを開始する際は、実行待ちの Windows Update が VM にないことを確認してください。 フェールオーバーの実行時に Windows Update が開始された場合、更新が完了するまで VM にログインできなくなります。
 **Linux で実行中の Azure VM** | フェールオーバー前のオンプレミスのコンピューター | VM 上の Secure Shell サービスがシステム起動時に自動的に開始されるよう設定されていることを確認します。<br/><br/> ファイアウォール規則で SSH 接続が許可されていることを確認します。
@@ -114,7 +114,7 @@ Hyper-V VM の計画されたフェールオーバーを実行できます。
 - 復旧計画への Azure Automation Runbook の追加について[学習](site-recovery-runbook-automation.md)してください。
 
 
-## <a name="configure-settings-after-failover"></a>フェールオーバー後に設定を構成する
+## <a name="configure-settings-after-failover"></a>フェールオーバーの後に設定を構成する
 
 ### <a name="retain-drive-letters-after-failover"></a>フェールオーバー後のドライブ文字の保持
 
@@ -124,7 +124,7 @@ Site Recovery では、ドライブ文字の保持が処理されます。 VM �
 
 フェールオーバー後に作成された Azure VM に RDP または SSH を使用して接続する場合は、表にまとめられている要件に従います。
 
-**[フェールオーバー]** | **Location** | **アクション**
+**[フェールオーバー]** | **場所** | **アクション**
 --- | --- | ---
 **Windows で実行中の Azure VM** | フェールオーバー後に Azure VM で |  VM の[パブリック IP アドレスを追加](https://aka.ms/addpublicip)します。<br/><br/> フェールオーバーされる VM (およびその接続先となる Azure サブネット) は、そのネットワーク セキュリティ グループの規則で、RDP ポートへの受信接続を許可する必要があります。<br/><br/> **[ブート診断]** をオンにして、VM のスクリーンショットを確認します。<br/><br/> 接続できない場合は、VM が実行中であることを確認したうえで、[トラブルシューティングのヒント](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を確認してください。
 **Linux で実行中の Azure VM** | フェールオーバー後に Azure VM で | フェールオーバーされた VM (および接続先の Azure サブネット) のネットワーク セキュリティ グループの規則で、SSH ポートへの着信接続を許可する必要があります。<br/><br/> VM の[パブリック IP アドレスを追加](https://aka.ms/addpublicip)します。<br/><br/> VM のスクリーンショットを得るために、 **[ブート診断]** をオンにします。<br/><br/>

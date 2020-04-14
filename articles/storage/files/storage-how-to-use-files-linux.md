@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0ef9609cded29c94260d027212abbf0c62f8653c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 72264755d5f0379f0ffb07852f48885126a36898
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772110"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411602"
 ---
 # <a name="use-azure-files-with-linux"></a>Linux で Azure Files を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、[SMB カーネル クライアント](https://wiki.samba.org/index.php/LinuxCIFS)を使用して Linux ディストリビューションにマウントできます。 この記事では、Azure ファイル共有を `mount` コマンドを使用してオンデマンドでマウントするか、`/etc/fstab` にエントリを作成することで起動時にマウントするという 2 つの方法について説明します。
@@ -194,10 +194,57 @@ Azure ファイル共有の使用を完了したら、`sudo umount $mntPath` を
     > [!Note]  
     > 上記の mount コマンドは、SMB 3.0 でマウントされます。 Linux ディストリビューションで暗号化を使用した SMB 3.0 をサポートしていない場合、または SMB 2.1 のみをサポートしている場合は、ストレージ アカウントと同じリージョン内の Azure VM からのみマウントできます。 暗号化を使用した SMB 3.0 をサポートしていない Linux ディストリビューションで Azure ファイル共有をマウントするには、[ストレージ アカウントの転送中の暗号化を無効にする](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)必要があります。
 
+### <a name="using-autofs-to-automatically-mount-the-azure-file-shares"></a>autofs を使用した Azure ファイル共有の自動マウント
+
+1. **autofs パッケージがインストールされていることを確認します。**  
+
+    autofs パッケージは、任意の Linux ディストリビューションのパッケージ マネージャーを使用してインストールできます。 
+
+    **Ubuntu** と **Debian ベースの**ディストリビューションでは、`apt` パッケージ マネージャーを使用します。
+    ```bash
+    sudo apt update
+    sudo apt install autofs
+    ```
+    **Fedora**、**Red Hat Enterprise Linux 8+** 、および **CentOS 8+** では、`dnf` パッケージ マネージャーを使用します。
+    ```bash
+    sudo dnf install autofs
+    ```
+    以前のバージョンの **Red Hat Enterprise Linux** と **CentOS** では、`yum` パッケージ マネージャーを使用します。
+    ```bash
+    sudo yum install autofs 
+    ```
+    **openSUSE** では、`zypper` パッケージ マネージャーを使用します。
+    ```bash
+    sudo zypper install autofs
+    ```
+2. **共有のマウント ポイントを作成します。**
+   ```bash
+    sudo mkdir /fileshares
+    ```
+3. **新しいカスタム autofs 構成ファイルを作成します。**
+    ```bash
+    sudo vi /etc/auto.fileshares
+    ```
+4. **/etc/auto.fileshares に次のエントリを追加します。**
+   ```bash
+   echo "$fileShareName -fstype=cifs,credentials=$smbCredentialFile :$smbPath"" > /etc/auto.fileshares
+   ```
+5. **/etc/auto.master に次のエントリを追加します。**
+   ```bash
+   /fileshares /etc/auto.fileshares --timeout=60
+   ```
+6. **autofs を再起動します。**
+    ```bash
+    sudo systemctl restart autofs
+    ```
+7.  **共有のために指定されたフォルダーにアクセスします。**
+    ```bash
+    cd /fileshares/$filesharename
+    ```
 ## <a name="securing-linux"></a>Linux のセキュリティ保護
 Linux で Azure ファイル共有をマウントするには、ポート 445 がアクセス可能な状態になっている必要があります。 ポート 445 は、SMB 1 に固有のセキュリティ リスクから、多くの組織でブロックされています。 SMB 1 は、数多くの Linux ディストリビューションに備わっているレガシ ファイル システム プロトコルで、CIFS (Common Internet File System) と呼ばれることもあります。 SMB 1 は、旧式で効率が悪く、また何よりもセキュリティに不安があるプロトコルです。 さいわいなことに、Azure Files は SMB 1 をサポートしておらず、Linux カーネル バージョン 4.18 以降では、Linux で SMB 1 を無効にすることができます。 運用環境で SMB ファイル共有を使用する前に、Linux クライアント上で SMB 1 を無効にすることを常に[強くお勧めします](https://aka.ms/stopusingsmb1)。
 
-Linux カーネル 4.18 以降、レガシの理由から `cifs` と呼ばれる SMB カーネル モジュールでは、`disable_legacy_dialects` と呼ばれる新しいモジュール パラメーター (各種外部ドキュメントでは "*parm*" と呼ばれることが多い) を公開しています。 Linux カーネル 4.18 で導入されましたが、一部のベンダーでは、サポート対象の旧カーネルにこの変更を移植しています。 便宜のため、次の表では、よく知られた Linux ディストリビューションでこのモジュール パラメーターを使用できるかどうかについて詳しく示しています。
+Linux カーネル 4.18 以降、レガシへの対応のために `cifs` と呼ばれる SMB カーネル モジュールは、`disable_legacy_dialects` と呼ばれる新しいモジュール パラメーター (多くの場合、各種の外部ドキュメントでは *parm* と呼ばれます) を公開しています。 Linux カーネル 4.18 で導入されましたが、一部のベンダーでは、サポート対象の旧カーネルにこの変更を移植しています。 便宜のため、次の表では、よく知られた Linux ディストリビューションでこのモジュール パラメーターを使用できるかどうかについて詳しく示しています。
 
 | Distribution | SMB 1 を無効にできる |
 |--------------|-------------------|
@@ -226,7 +273,7 @@ sudo modinfo -p cifs | grep disable_legacy_dialects
 
 このコマンドを実行すると、次のメッセージが出力されます。
 
-```Output
+```output
 disable_legacy_dialects: To improve security it may be helpful to restrict the ability to override the default dialects (SMB2.1, SMB3 and SMB3.02) on mount with old dialects (CIFS/SMB1 and SMB2) since vers=1.0 (CIFS/SMB1) and vers=2.0 are weaker and less secure. Default: n/N/0 (bool)
 ```
 
@@ -276,7 +323,7 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 ## <a name="feedback"></a>フィードバック
 Linux ユーザーからのご意見をお待ちしています。
 
-Azure Files for Linux ユーザーのグループによって、File Storage を Linux で評価および導入するときにフィードバックを共有できるフォーラムが提供されています。 [Azure Files Linux Users](mailto:azurefileslinuxusers@microsoft.com) にメールを送信して、ユーザー グループに参加してください。
+Azure Files for Linux ユーザーのグループによって、File Storage を Linux で評価および導入するときにフィードバックを共有できるフォーラムが提供されています。 [Azure Files Linux Users](mailto:azurefiles@microsoft.com) にメールを送信して、ユーザー グループに参加してください。
 
 ## <a name="next-steps"></a>次のステップ
 Azure Files の詳細については、次のリンクをご覧ください。

@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/24/2018
 ms.topic: conceptual
-ms.openlocfilehash: 16b6a0cf3e43b172667f55b1ac95e8a278769f9d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: a5a1cad3179063f75a5d9a19567624180b5793a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246397"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367263"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>最初の PowerShell Workflow Runbook
 
@@ -36,7 +36,7 @@ ms.locfileid: "78246397"
 
 ## <a name="step-1---create-new-runbook"></a>手順 1 - 新しい Runbook を作成する
 
-最初に、"**Hello World**" というテキストを出力する簡単な Runbook を作成します。
+最初に、`Hello World` というテキストを出力する簡単な Runbook を作成します。
 
 1. Azure ポータルで、Automation アカウントを開きます。
 
@@ -45,14 +45,14 @@ ms.locfileid: "78246397"
 1. **[プロセス オートメーション]** の **[Runbook]** を選択し、Runbook の一覧を開きます。
 1. **[Runbook の作成]** を選択して、新しい Runbook を作成します。
 1. Runbook に **MyFirstRunbook-Workflow**という名前を付けます。
-1. ここでは、[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) を作成します。 そのため、 **[Runbook の種類]** で、 **[PowerShell ワークフロー]** を選びます。
+1. ここでは、[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) を作成します。 **[Runbook の種類]** で、 **[PowerShell ワークフロー]** を選びます。
 1. **[作成]** をクリックして Runbook を作成し、テキスト エディターを開きます。
 
 ## <a name="step-2---add-code-to-the-runbook"></a>手順 2 - コードを Runbook に追加する
 
 Runbook に直接コードを入力するか、ライブラリ コントロールからコマンドレット、Runbook、資産を選択し、関連するパラメーターを使って Runbook に追加できます。 このチュートリアルでは、Runbook に直接コードを入力します。
 
-1. Runbook はこの時点で空です (必要な **Workflow** キーワード、Runbook の名前、ワークフロー全体を囲む中かっこ以外)。
+1. Runbook はこの時点で空です (必要な `Workflow` キーワード、Runbook の名前、ワークフロー全体を囲む中かっこ以外)。
 
    ```powershell-interactive
    Workflow MyFirstRunbook-Workflow
@@ -79,9 +79,9 @@ Runbook を発行して運用環境で使用できるようにする前に、テ
 1. **[開始]** をクリックしてテストを開始し、有効になっているオプションのみをテストします。
 1. [Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態がペインに表示されることに注意してください。
 
-   ジョブの最初の状態は **キュー済み**であり、クラウドで runbook worker が使用可能になるのをジョブが待機していることを示します。 worker がジョブを要求すると、状態は **開始中** になります。 最後に、Runbook の実行が実際に開始されると、状態は **実行中** になります。
+   ジョブの最初の状態は `Queued` であり、クラウドで runbook worker が使用可能になるのをジョブが待機していることを示しています。 worker がジョブを要求すると、状態は `Starting` になります。 最後に、Runbook の実行が実際に開始されると、状態は `Running` になります。
 
-1. Runbook ジョブが完了すると、[テスト] ウィンドウにその出力が表示されます。 この場合は、"**Hello World**" です。
+1. Runbook ジョブが完了すると、[テスト] ウィンドウにその出力が表示されます。 ここでは、`Hello World` が表示されます。
 
    ![Hello World](media/automation-first-runbook-textual/test-output-hello-world.png)
 
@@ -107,13 +107,13 @@ Runbook を発行して運用環境で使用できるようにする前に、テ
 
    ![ジョブの概要](media/automation-first-runbook-textual/job-pane-status-blade-jobsummary.png)
 
-1. Runbook の状態が **[完了]** になったら、 **[出力]** をクリックします。 [出力] ページが開き、 **Hello World** メッセージが表示されます。
+1. Runbook の状態が `Completed` になったら、 **[出力]** をクリックします。 [出力] ページが開き、`Hello World` メッセージが表示されます。
 
    ![ジョブの概要](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)
 
 1. [出力] ページを閉じます。
 
-1. **[すべてのログ]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。 出力ストリームには **Hello World** のみが表示されます。 Runbook で詳細ストリームやエラー ストリームに書き込まれている場合は、[ストリーム] ペインで Runbook ジョブの他のストリームも表示できることに注意してください。
+1. **[すべてのログ]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。 出力ストリームには `Hello World` のみが表示されます。 Runbook で詳細ストリームやエラー ストリームに書き込まれている場合は、[ストリーム] ペインで Runbook ジョブの他のストリームも表示できることに注意してください。
 
    ![ジョブの概要](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
 
@@ -126,10 +126,10 @@ Runbook を発行して運用環境で使用できるようにする前に、テ
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>手順 5 - Azure リソースを管理するための認証を追加する
 
-Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。 Azure リソースを管理させることにします。 サブスクリプションの資格情報を使用して認証を行わないかぎり、これを行うことはできません。 認証では、**Connect-AzAccount** コマンドレットが使用されます。
+Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。 Azure リソースを管理させることにします。 サブスクリプションの資格情報を使用して認証を行わないかぎり、これを行うことはできません。 認証では、`Connect-AzAccount` コマンドレットを使用します。
 
 >[!NOTE]
->PowerShell Runbook の場合、**Add-AzAccount** と **Add-AzureRMAccount** は **Connect-AzAccount** の別名です。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
+>PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は `Connect-AzAccount` の別名です。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。
 
 1. **MyFirstRunbook-Workflow** ページに移動し、 **編集**をクリックして、テキスト エディターを開きます。
 2. `Write-Output` 行を削除します。
@@ -154,7 +154,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>手順 6 - 仮想マシンを開始するコードを追加する
 
-これで、Runbook で Azure サブスクリプションに対する認証が行われ、リソースを管理できるようになります。 仮想マシンを起動するコマンドを追加してみましょう。 Azure サブスクリプション内の任意の VM を選択し、ここではその名前を Runbook にハードコーディングします。 複数のサブスクリプションにわたってリソースを管理しようとしている場合は、*AzContext* パラメーターを [Get-AzContext](/powershell/module/az.accounts/get-azcontext) コマンドレットと共に使用する必要があります。
+これで、Runbook で Azure サブスクリプションに対する認証が行われ、リソースを管理できるようになります。 仮想マシンを起動するコマンドを追加してみましょう。 Azure サブスクリプション内の任意の VM を選択し、ここではその名前を Runbook にハードコーディングします。 複数のサブスクリプションにわたってリソースを管理しようとしている場合は、`AzContext` パラメーターを [Get-AzContext](/powershell/module/az.accounts/get-azcontext) コマンドレットと共に使用する必要があります。
 
 1. 次に示すように、[Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0
 ) コマンドレットの呼び出しを入力することにより、起動する VM の名前とリソース グループ名を指定します。 
@@ -181,7 +181,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 Runbook では現在、Runbook にハードコードされている VM を起動しています。 Runbook の開始時に VM を指定できるとより便利です。 その機能を提供するための入力パラメーターを Runbook に追加してみましょう。
 
-1. *VMName* と *ResourceGroupName* の値を Runbook に追加し、次の例に示すように、**Start-AzVM** コマンドレットで関連する変数を使用します。
+1. `VMName` と `ResourceGroupName` パラメーターの変数を Runbook に追加し、次に示す変数を `Start-AzVM` コマンドレットと共に使用します。
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow

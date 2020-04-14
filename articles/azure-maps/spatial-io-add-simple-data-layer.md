@@ -1,19 +1,19 @@
 ---
 title: シンプルなデータ レイヤーの追加 | Microsoft Azure Maps
 description: Azure Maps Web SDK によって提供される、空間 IO モジュールを使用してシンプルなデータ レイヤーを追加する方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 02/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3fa54e3227496c11fcafc2f42e980daa5c716365
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8862c33b7660b8130f692dc4beea89a7b6b5f5ad
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370378"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804488"
 ---
 # <a name="add-a-simple-data-layer"></a>シンプルなデータ レイヤーの追加
 
@@ -22,6 +22,64 @@ ms.locfileid: "78370378"
 `SimpleDataLayer` には、フィーチャーのスタイル設定に加えて、ポップアップ テンプレートを使用した組み込みのポップアップ フィーチャーも用意されています。 フィーチャーがクリックされると、ポップアップが表示されます。 必要に応じて、既定のポップアップ フィーチャーを無効にすることができます。 このレイヤーでは、クラスター化されたデータもサポートされます。 クラスターがクリックされると、マップでそのクラスターが拡大され、個々のポイントとサブクラスターに展開されます。
 
 `SimpleDataLayer` クラスは、多くの geometry 型とフィーチャーに適用される多くのスタイルを持つ大規模なデータ セットで使用されることを想定しています。 このクラスを使用すると、スタイル式を含む 6 つのレイヤーのオーバーヘッドが追加されます。 そのため、コア レンダリング レイヤーを使用する方が効率的な場合もあります。 たとえば、コア レイヤーを使用して、フィーチャーに 2 つの geometry 型といくつかのスタイルをレンダリングする場合などです。
+
+## <a name="use-a-simple-data-layer"></a>シンプルなデータ レイヤーを使用する
+
+`SimpleDataLayer` クラスは、他のレンダリング レイヤーを使用する場合と同じように使用されます。 次のコードは、マップ内でのシンプルなデータ レイヤーの使用方法を示しています。
+
+```javascript
+//Create a data source and add it to the map.
+var datasource = new atlas.source.DataSource();
+map.sources.add(datasource);
+
+//Add a simple data layer for rendering data.
+var layer = new atlas.layer.SimpleDataLayer(datasource);
+map.layers.add(layer);
+```
+
+データ ソースにフィーチャーを追加します。 すると、シンプルなデータ レイヤーによって、フィーチャーの最適なレンダリング方法が割り出されます。 個々のフィーチャーのスタイルは、フィーチャーでプロパティとして設定できます。 次のコードは、`color` プロパティが `red` に設定された GeoJSON ポイント フィーチャーを示しています。 
+
+```json
+{
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0, 0]
+    },
+    "properties": {
+        "color": "red"
+    }
+}
+```
+
+次のコードは、シンプルなデータ レイヤーを使用して上記のポイント フィーチャーをレンダリングします。 
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="シンプルなデータ レイヤーの使用" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> <a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>シンプルなデータ レイヤーの使用</a>」を参照してください。
+</iframe>
+
+シンプルなデータ レイヤーの真の力は、次のような場合に発揮されます。
+
+- データ ソースに複数の異なる種類のフィーチャーがある場合、または
+- データ セット内のフィーチャーに複数のスタイル プロパティが個別に設定されている場合、または
+- データ セットに含まれているものが正確にわからない場合
+
+たとえば、XML データ フィードを解析する場合、フィーチャーの正確なスタイルと geometry 型がわからないことがあります。 次のサンプルは、KML ファイルのフィーチャーをレンダリングすることによって、シンプルなデータ レイヤーの能力を示します。 また、シンプルなデータ レイヤー クラスで提供されているさまざまなオプションのデモも行えます。
+
+<br/>
+
+<iframe height="700" style="width: 100%;" scrolling="no" title="シンプルなデータ レイヤー オプション" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> <a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>シンプルなデータ レイヤー オプション</a>」を参照してください。
+</iframe>
+
+
+> [!NOTE]
+> このシンプルなデータ層では、[ポップアップ テンプレート](map-add-popup.md#add-popup-templates-to-the-map) クラスを使用して、KML バルーンまたは機能プロパティがテーブルとして表示されます。 既定では、ポップアップでレンダリングされるすべてのコンテンツは、iframe 内にセキュリティ機能としてサンドボックス化されます。 ただし、次のような制限があります。
+>
+> - すべてのスクリプト、フォーム、ポインター ロック、上部ナビゲーションの機能は無効になります。 リンクは、クリックすると新しいタブで開くことができます。 
+> - iframe の `srcdoc` パラメーターをサポートしていない古いブラウザーでは、少量のコンテンツのレンダリングに制限されます。
+> 
+> ポップアップに読み込まれるデータを信頼しており、潜在的に、ポップアップに読み込まれるこれらのスクリプトがアプリケーションにアクセスできるようにしたい場合は、ポップアップ テンプレートの `sandboxContent` オプションを false に設定することによって、これを無効にすることができます。 
 
 ## <a name="default-supported-style-properties"></a>既定でサポートされているスタイル プロパティ
 
@@ -32,8 +90,6 @@ Azure Maps と GitHub スタイルのプロパティは、サポートされて�
 あまり一般的でないスタイルのプロパティに閲覧者が遭遇した場合、最も近い Azure Maps スタイルのプロパティに変換されます。 また、シンプルなデータ レイヤーの `getLayers` 関数を使用し、任意のレイヤーのオプションを更新することで、既定のスタイル式をオーバーライドできます。
 
 次のセクションでは、シンプルなデータ レイヤーでサポートされている既定のスタイル プロパティについて詳しく説明します。 サポートされているプロパティ名の順序は、プロパティの優先順位でもあります。 同じレイヤー オプションに 2 つのスタイル プロパティが定義されている場合、リスト内の最初のプロパティの方が優先順位が高くなります。
-
-## <a name="simple-data-layer-options"></a>シンプルなデータ レイヤー オプション
 
 ### <a name="bubble-layer-style-properties"></a>バブル レイヤーのスタイル プロパティ
 
@@ -113,56 +169,6 @@ Azure Maps と GitHub スタイルのプロパティは、サポートされて�
 | `base` | `base` | `0` |
 | `fillColor` | `fillColor`, `fill` | `'#1E90FF'` |
 | `height` | `height` | `0` |
-
-## <a name="use-a-simple-data-layer"></a>シンプルなデータ レイヤーを使用する
-
-`SimpleDataLayer` クラスは、他のレンダリング レイヤーを使用する場合と同じように使用されます。 次のコードは、マップ内でのシンプルなデータ レイヤーの使用方法を示しています。
-
-```javascript
-//Create a data source and add it to the map.
-var datasource = new atlas.source.DataSource();
-map.sources.add(datasource);
-
-//Add a simple data layer for rendering data.
-var layer = new atlas.layer.SimpleDataLayer(datasource);
-map.layers.add(layer);
-```
-
-データ ソースにフィーチャーを追加します。 すると、シンプルなデータ レイヤーによって、フィーチャーの最適なレンダリング方法が割り出されます。 個々のフィーチャーのスタイルは、フィーチャーでプロパティとして設定できます。 次のコードは、`color` プロパティが `red` に設定された GeoJSON ポイント フィーチャーを示しています。 
-
-```json
-{
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": [0, 0]
-    },
-    "properties": {
-        "color": "red"
-    }
-}
-```
-
-次のコードは、シンプルなデータ レイヤーを使用して上記のポイント フィーチャーをレンダリングします。 
-
-<br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="シンプルなデータ レイヤーの使用" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true"> <a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>シンプルなデータ レイヤーの使用</a>」を参照してください。
-</iframe>
-
-シンプルなデータ レイヤーの真の力は、次のような場合に発揮されます。
-
-- データ ソースに複数の異なる種類のフィーチャーがある場合、または
-- データ セット内のフィーチャーに複数のスタイル プロパティが個別に設定されている場合、または
-- データ セットに含まれているものが正確にわからない場合
-
-たとえば、XML データ フィードを解析する場合、フィーチャーの正確なスタイルと geometry 型がわからないことがあります。 次のサンプルは、KML ファイルのフィーチャーをレンダリングすることによって、シンプルなデータ レイヤーの能力を示します。 また、シンプルなデータ レイヤー クラスで提供されているさまざまなオプションのデモも行えます。
-
-<br/>
-
-<iframe height="700" style="width: 100%;" scrolling="no" title="シンプルなデータ レイヤー オプション" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> <a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>シンプルなデータ レイヤー オプション</a>」を参照してください。
-</iframe>
-
 
 ## <a name="next-steps"></a>次のステップ
 

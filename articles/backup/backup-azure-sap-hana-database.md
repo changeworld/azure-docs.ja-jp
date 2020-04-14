@@ -3,12 +3,12 @@ title: Azure Backup を使用して Azure に SAP HANA データベースをバ�
 description: この記事では、Azure Backup サービスを使用して SAP HANA データベースを Azure 仮想マシンにバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: dd4c6fc0e018f3fc8f2a2029ef8a90cdc305e2c2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: deedd4d2553b3b06f76f698fdb2425a8d3878d23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765527"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226111"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Azure VM での SAP HANA データベースのバックアップ
 
@@ -30,7 +30,7 @@ SAP HANA データベースは、低い回復ポイントの目標値 (RPO) と�
 
 ## <a name="prerequisites"></a>前提条件
 
-バックアップ用にデータベースを設定するには、「[前提条件](tutorial-backup-sap-hana-db.md#prerequisites)」と「[アクセス許可の設定](tutorial-backup-sap-hana-db.md#setting-up-permissions)」のセクションを参照してください。
+バックアップ用にデータベースを設定するには、「[前提条件](tutorial-backup-sap-hana-db.md#prerequisites)」と「[事前登録スクリプトで実行される処理](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)」のセクションを参照してください。
 
 ### <a name="set-up-network-connectivity"></a>ネットワーク接続を設定する
 
@@ -89,22 +89,9 @@ NSG サービス タグを使用する | 範囲の変更が自動的にマージ
 Azure Firewall の FQDN タグを使用する | 必要な FQDN が自動的に管理されるため管理しやすい | Azure Firewall でのみ使用可能
 HTTP プロキシを使用する | 許可するストレージ URL をプロキシで詳細に制御可能 <br/><br/> VM に対するインターネット アクセスを単一の場所で実現 <br/><br/> Azure の IP アドレスの変更の影響を受けない | プロキシ ソフトウェアで VM を実行するための追加のコストが発生する
 
-## <a name="onboard-to-the-public-preview"></a>パブリック プレビューにオンボードする
+#### <a name="private-endpoints"></a>プライベート エンドポイント
 
-以下のように、パブリック プレビューにオンボードします。
-
-* ポータルで、[この記事に従って](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal)、Recovery Services サービス プロバイダーにご利用のサブスクリプション ID を登録します。
-* PowerShell の "Az" モジュールでは、このコマンドレットを実行します。 "登録済み" として完了するはずです。
-
-    ```powershell
-    Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-* PowerShell で "AzureRM" モジュールを使用している場合は、このコマンドレットを実行します。 "登録済み" として完了するはずです。
-
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-    
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

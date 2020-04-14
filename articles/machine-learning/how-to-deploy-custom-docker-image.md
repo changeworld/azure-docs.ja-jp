@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/05/2020
-ms.openlocfilehash: 24ca37f5610589ae675a47a1dd966871b3004800
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.date: 03/16/2020
+ms.openlocfilehash: 1f11d6667c22990b3cba2079959bec6f413d5951
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851261"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80296921"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>カスタム Docker ベース イメージを使用してモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -95,6 +95,8 @@ Azure Machine Learning を使用してモデルのトレーニングまたはデ
     ```
 
     プロンプトに従ってサブスクリプションの認証を受けます。
+
+    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
 2. 次のコマンドを使用して、ワークスペースのコンテナー レジストリを一覧表示します。 `<myworkspace>` は、ご利用の Azure Machine Learning ワークスペース名に置き換えます。 `<resourcegroup>` は、ワークスペースが含まれている Azure リソース グループに置き換えます。
 
@@ -277,18 +279,49 @@ Python 環境のカスタマイズの詳細については、[トレーニング
 > [!IMPORTANT]
 > 現在、Machine Learning CLI では、Azure Container Registry のイメージを、ご自分のワークスペースまたは一般公開されているリポジトリに使用できます。 スタンドアロンのプライベート レジストリからのイメージは使用できません。
 
-Machine Learning CLI を使用してモデルをデプロイするときは、カスタム イメージを参照する推論構成ファイルを用意します。 次の JSON ドキュメントは、パブリック コンテナー レジストリ内のイメージを参照する方法を示しています。
+Machine Learning CLI を使用してモデルをデプロイする前に、カスタム イメージを使用する[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)を作成します。 次に、環境を参照する推論構成ファイルを作成します。 推論構成ファイルで直接環境を定義することもできます。 次の JSON ドキュメントは、パブリック コンテナー レジストリ内のイメージを参照する方法を示しています。 この例では、環境をインラインで定義しています。
 
 ```json
 {
-   "entryScript": "score.py",
-   "runtime": "python",
-   "condaFile": "infenv.yml",
-   "extraDockerfileSteps": null,
-   "sourceDirectory": null,
-   "enableGpu": false,
-   "baseImage": "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda",
-   "baseImageRegistry": "mcr.microsoft.com"
+    "entryScript": "score.py",
+    "environment": {
+        "docker": {
+            "arguments": [],
+            "baseDockerfile": null,
+            "baseImage": "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda",
+            "enabled": false,
+            "sharedVolumes": true,
+            "shmSize": null
+        },
+        "environmentVariables": {
+            "EXAMPLE_ENV_VAR": "EXAMPLE_VALUE"
+        },
+        "name": "my-deploy-env",
+        "python": {
+            "baseCondaEnvironment": null,
+            "condaDependencies": {
+                "channels": [
+                    "conda-forge"
+                ],
+                "dependencies": [
+                    "python=3.6.2",
+                    {
+                        "pip": [
+                            "azureml-defaults",
+                            "azureml-telemetry",
+                            "scikit-learn",
+                            "inference-schema[numpy-support]"
+                        ]
+                    }
+                ],
+                "name": "project_environment"
+            },
+            "condaDependenciesFile": null,
+            "interpreterPath": "python",
+            "userManagedDependencies": false
+        },
+        "version": "1"
+    }
 }
 ```
 

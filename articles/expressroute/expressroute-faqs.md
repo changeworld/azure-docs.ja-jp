@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 845c53ec970777901ae8d1c0abf5032ac705d3e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770987"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231299"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -51,6 +51,14 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 ### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングで VNet はどのようにアドバタイズされますか?
 
 ExpressRoute ゲートウェイでは、Azure VNet の "*アドレス空間*" がアドバタイズされます。サブネット レベルで含めたり除外したりすることはできません。 アドバタイズされるのは、常に VNet アドレス空間です。 また、VNet ピアリングが使用され、ピアリングされた VNet で [リモート ゲートウェイを使用する] が有効な場合、ピアリングされた VNet のアドレス空間もアドバタイズされます。
+
+### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングで VNet からオンプレミスにアドバタイズできるプレフィックスの数はどのくらいですか?
+
+1 つの ExpressRoute 接続で、またはゲートウェイ転送を使用する VNet ピアリングによって、最大 200 のプレフィクスがアドバタイズされます。 たとえば、ExpressRoute 回線に接続された 1 つの VNet に 199 個のアドレス空間がある場合、それらのプレフィックスの 199 個すべてがオンプレミスにアドバタイズされます。 または、"リモート ゲートウェイを許可する" オプションを使用して、1 つのアドレス空間と 150 個のスポーク VNet が有効になったゲートウェイ転送を許可するように VNet が有効になっている場合は、ゲートウェイでデプロイされた VNet は 151 個のプレフィックスをオンプレミスにアドバタイズします。
+
+### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>ExpressRoute 接続のプレフィックス制限を超えるとどうなりますか?
+
+ExpressRoute 回線とゲートウェイ (および該当する場合、ゲートウェイ転送を使用するピアリングされた Vnet) との間の接続が停止します。 これは、プレフィックスの制限を超えなくなると、再確立されます。  
 
 ### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>オンプレミス ネットワークからのルートをフィルター処理できますか?
 
@@ -164,7 +172,7 @@ Microsoft ピアリングを使用して Azure のパブリック サービス (
 
 BGP パスの選択と一般的なルーター構成に関する追加情報については、[こちら](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings)を参照してください。 
 
-### <a name="onep2plink"></a>クラウド エクスチェンジで併置しておらず、サービス プロバイダーがポイント ツー ポイント接続を提供している場合は、オンプレミス ネットワークと Microsoft 間の物理接続を 2 つ注文する必要がありますか。
+### <a name="if-im-not-co-located-at-a-cloud-exchange-and-my-service-provider-offers-point-to-point-connection-do-i-need-to-order-two-physical-connections-between-my-on-premises-network-and-microsoft"></a><a name="onep2plink"></a>クラウド エクスチェンジで併置しておらず、サービス プロバイダーがポイント ツー ポイント接続を提供している場合は、オンプレミス ネットワークと Microsoft 間の物理接続を 2 つ注文する必要がありますか。
 
 サービス プロバイダーが物理接続経由で 2 つのイーサネット仮想回線を確立できる場合は、必要な物理接続は 1 つだけです。 物理接続 (光ファイバーなど) は、レイヤー 1 (L1) デバイスで終端します (図を参照)。 2 つのイーサネット仮想回線は、異なる VLAN ID (プライマリ回線とセカンダリ回線の VLAN ID) でタグ付けされます。 これらの VLAN ID は、外部 802.1Q イーサネット ヘッダーに含まれます。 内部 802.1Q イーサネット ヘッダー (ここでは示されていません) は、特定の [ExpressRoute ルーティング ドメイン](expressroute-circuit-peerings.md)にマップされます。
 
@@ -293,7 +301,7 @@ ExpressRoute Premium は、次の機能のコレクションです。
     *  Microsoft ピアリングで、他の地理的リージョンのプレフィックスがアドバタイズされ、たとえばシリコン バレーの回線から西ヨーロッパの SQL Azure に接続できるようになります。
 
 
-### <a name="limits"></a>ExpressRoute プレミアムを有効にした場合、ExpressRoute 回線で有効にできる VNet と ExpressRoute Global Reach の接続数はいくつですか。
+### <a name="how-many-vnets-and-expressroute-global-reach-connections-can-i-enable-on-an-expressroute-circuit-if-i-enabled-expressroute-premium"></a><a name="limits"></a>ExpressRoute プレミアムを有効にした場合、ExpressRoute 回線で有効にできる VNet と ExpressRoute Global Reach の接続数はいくつですか。
 
 次の表に、ExpressRoute の上限と、ExpressRoute 回線ごとの VNet と ExpressRoute Global Reach の数を示します。
 
@@ -399,10 +407,10 @@ Office 365 サービスでは、Premium アドオンを有効にする必要が�
 
 * 2017 年 8 月 1 日以降に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。 既定ではプレフィックスは表示されません。
 
-## <a name="expressRouteDirect"></a>ExpressRoute Direct
+## <a name="expressroute-direct"></a><a name="expressRouteDirect"></a>ExpressRoute Direct
 
 [!INCLUDE [ExpressRoute Direct](../../includes/expressroute-direct-faq-include.md)]
 
-## <a name="globalreach"></a>Global Reach
+## <a name="global-reach"></a><a name="globalreach"></a>Global Reach
 
 [!INCLUDE [Global Reach](../../includes/expressroute-global-reach-faq-include.md)]

@@ -1,0 +1,110 @@
+---
+title: Azure portal を使用して、Import/Export サービス用にカスタマー マネージド キーを構成する
+description: Azure portal を使用して、Azure Import/Export サービス用に、Azure Key Vault でカスタマー マネージド キーを構成する方法について学びます。 カスタマー マネージド キーを使用すると、アクセス制御の作成、ローテーション、無効化、および取り消しを行うことができます。
+services: storage
+author: alkohli
+ms.service: storage
+ms.topic: how-to
+ms.date: 03/12/2020
+ms.author: alkohli
+ms.subservice: common
+ms.openlocfilehash: a7077b5e94800d93833f259fefd0cd4c168ec867
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811447"
+---
+# <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Azure Key Vault でカスタマー マネージド キーを Import/Export サービスのために使用する
+
+Azure Import/Export では暗号化キーを使用して、ドライブのロックに使用される BitLocker キーが保護されます。 既定では、BitLocker キーは Microsoft マネージド キーで暗号化されます。 暗号化キーをさらに制御するために、カスタマー マネージド キーを提供することもできます。
+
+カスタマー マネージド キーは、Azure Key Vault で作成して格納する必要があります。 Azure Key Vault の詳細については、「 [What is Azure Key Vault? (Azure Key Vault とは)](../../key-vault/key-vault-overview.md)
+
+この記事では、[Azure portal](https://portal.azure.com/) の Import/Export サービスで、カスタマー マネージド キーを使用する方法について説明します。
+
+## <a name="prerequisites"></a>前提条件
+
+開始する前に次の点を確認します。
+
+1. 次の手順に従って、インポート ジョブまたはエクスポート ジョブを作成しました。
+
+    - [BLOB のインポート ジョブを作成する](storage-import-export-data-to-blobs.md)
+    - [ファイルのインポート ジョブを作成する](storage-import-export-data-to-files.md)
+    - [BLOB のエクスポート ジョブを作成する](storage-import-export-data-from-blobs.md)
+
+2. BitLocker キーを保護するために使用できるキーを含む既存の Azure Key Vault があります。 Azure portal を使ってキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/quick-create-portal.md)」をご覧ください。
+
+    - 既存の Key Vault には、**論理的な削除**や**消去保護**が設定されています。 これらのプロパティは、既定では有効になっていません。 これらのプロパティを有効にするには、次のいずれかの記事の「**論理的な削除を有効にする**」および「**消去保護を有効にする**」を参照してください。
+
+        - [PowerShell で Key Vault の論理的な削除を使用する方法](../../key-vault/key-vault-soft-delete-powershell.md)
+        - [CLI で Key Vault の論理的な削除を使用する方法](../../key-vault/key-vault-soft-delete-cli.md)
+    - 既存のキー コンテナーには、2048 サイズ以上の RSA キーが必要です。 キーの詳細については、「[Azure Key Vault のキー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)」の「**Key Vault のキー**」を参照してください。
+    - キー コンテナーは、データのストレージ アカウントと同じリージョンに存在する必要があります。  
+    - 既存の Azure Key Vault がない場合は、次のセクションで説明するように、インラインで作成することもできます。
+
+## <a name="enable-keys"></a>キーを有効にする
+
+Import/Export サービス用のカスタマー マネージド キーの構成は省略できます。 既定では、Import/Export サービスでは、Microsoft マネージド キーを使用して BitLocker キーが保護されます。 Azure portal でカスタマー マネージド キーを有効にするには、次の手順のようにします。
+
+1. インポート ジョブの **[概要]** ブレードに移動します。
+2. 右側のウィンドウで、 **[Choose how your BitLocker keys are encrypted]\(BitLocker キーの暗号化方法を選択します\)** を選択します。
+
+    ![暗号化オプションを選択する](./media/storage-import-export-encryption-key-portal/encryption-key-1.png)
+
+3. **[暗号化]** ブレードで、デバイスの BitLocker キーを表示およびコピーできます。 **[暗号化の種類]** で、BitLocker キーを保護する方法を選択できます。 既定では、Microsoft マネージド キーが使用されます。
+
+    ![BitLocker キーを表示する](./media/storage-import-export-encryption-key-portal/encryption-key-2.png)
+
+4. カスタマー マネージド キーを指定するオプションがあります。 カスタマー マネージド キーを選択してから、**キー コンテナーとキーを選択します**。
+
+    ![カスタマー マネージド キーを選択する](./media/storage-import-export-encryption-key-portal/encryption-key-3.png)
+
+5. **[Azure Key Vault からのキーの選択]** ブレードで、サブスクリプションが自動的に設定されます。 **[キー コンテナー]** で、ドロップダウン リストから既存のキー コンテナーを選択できます。
+
+    ![Azure Key Vault を選択または作成する](./media/storage-import-export-encryption-key-portal/encryption-key-4.png)
+
+6. **[新規作成]** を選択して、新しいキー コンテナーを作成することもできます。 **[キー コンテナーの作成]** ブレードで、リソース グループとキー コンテナーの名前を入力します。 その他のすべての既定値をそのまま使用します。 **[確認および作成]** を選択します。
+
+    ![新しい Azure Key Vault を作成する](./media/storage-import-export-encryption-key-portal/encryption-key-5.png)
+
+7. キー コンテナーに関連付けられている情報を確認し、 **[作成]** を選択します。 キー コンテナーの作成が完了するまで数分待ちます。
+
+    ![Azure Key Vault を作成する](./media/storage-import-export-encryption-key-portal/encryption-key-6.png)
+
+8. **[Azure Key Vault からのキーの選択]** ブレードで、既存のキー コンテナー内のキーを選択できます。
+
+9. 新しいキー コンテナーを作成した場合は、 **[新規作成]** を選択してキーを作成します。 RSA キーのサイズは 2048 以上にすることができます。
+
+    ![Azure Key Vault で新しいキーを作成する](./media/storage-import-export-encryption-key-portal/encryption-key-7.png)
+
+    キー コンテナーを作成するときに論理的な削除と消去保護が有効になっていない場合は、キー コンテナーが更新され、論理的な削除と消去保護が有効になります。
+
+10. キーの名前を指定し、他の既定値をそのまま使用して、 **[作成]** を選択します。
+
+    ![新しいキーを作成する](./media/storage-import-export-encryption-key-portal/encryption-key-8.png)
+
+11. **[バージョン]** を選択し、 **[選択]** を選択します。 キー コンテナー内にキーが作成されたことが通知されます。
+
+    ![キー コンテナーで作成された新しいキー](./media/storage-import-export-encryption-key-portal/encryption-key-9.png)
+
+**[暗号化]** ブレードで、ご自分のカスタマー マネージド キーに対してキー コンテナーとキーが選択されていることを確認できます。
+
+## <a name="disable-keys"></a>キーを無効にする
+
+インポート/エクスポート ジョブのどの段階でも、Microsoft マネージド キーを無効にして、カスタマー マネージド キーに移動することは可能です。 ただし、カスタマー マネージド キーは、作成後に無効にすることはできません。
+
+## <a name="troubleshoot-customer-managed-key-errors"></a>カスタマー マネージド キーのエラーをトラブルシューティングする
+
+カスタマー マネージド キーに関連するエラーが発生した場合は、次の表を使用してトラブルシューティングを行ってください。
+
+| エラー コード     |詳細     | 回復可能かどうか    |
+|----------------|------------|-----------------|
+| CmkErrorAccessRevoked | カスタマー マネージド キーを適用しましたが、キーへのアクセスが現在失効しています。 詳細については、[キー アクセスを有効にする方法](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)に関する記事を参照してください。                                                      | 回復可能。次のことを確認してください。 <ol><li>キー コンテナーのアクセス ポリシーに引き続き MSI が含まれている。</li><li>アクセス ポリシーで、Get、Wrap、Unwrap へのアクセス許可が指定されている。</li><li>キー コンテナーがファイアウォールの内側の VNet にある場合は、 **[信頼された Microsoft サービスを許可]** が有効になっているかどうかを確認します。</li></ol>                                                                                            |
+| CmkErrorDisabled      | カスタマー マネージド キーを適用しましたが、キーが無効になっています。 詳細については、[キーを有効にする方法](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate)に関する記事を参照してください。                                                                             | 回復可能 (キー バージョンを有効にした場合)。     |
+| CmkErrorNotFound      | カスタマー マネージド キーを適用しましたが、キーが見つかりません。 <br>キーが削除され、保有期間後に消去した場合は、キーを回復することはできません。 キーをバックアップした場合は、キーを復元してこの問題を解決することができます。 | 回復不可。キーは削除されており、保有期間後に消去されています。 <br>回復可能 (顧客がキーをバックアップして復元している場合のみ)。  |
+| CmkErrorVaultNotFound | カスタマー マネージド キーを適用しましたが、キーに関連付けられているキー コンテナーが見つかりません。<br>キー コンテナーを削除した場合、カスタマー マネージド キーを回復することはできません。  キー コンテナーを別のテナントに移行した場合は、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix)」を参照してください。 |   回復不可 (顧客がキー コンテナーを削除した場合)。<br> 回復可能。キー コンテナーでテナントの移行が行われた場合は、次のいずれかの処理を行います。 <ol><li>キー コンテナーを古いテナントに戻します。</li><li>Identity = None を設定してから、Identity = SystemAssigned に戻します。これにより、ID が削除されてから再作成されます。</li></ol>|
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: 1244fe64d0c23782fdae7a0f92415bada4bef55a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: bf90120157bf64bd62a3b5ec9d8a6b2c6260e024
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907186"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398292"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>アプリケーションの複数のインスタンス間でパーティション負荷のバランスを取る
-イベント処理アプリケーションをスケーリングするには、アプリケーションのインスタンスを複数実行し、それらのインスタンス間で負荷のバランスを取ります。 以前のバージョンでは、[EventProcessorHost](event-hubs-event-processor-host.md) を使用することで、プログラムの複数のインスタンス間での負荷と、受信時のチェックポイント イベントのバランスを取ることができました。 新しいバージョン (5.0 以降) では **EventProcessorClient** (.NET および Java) または **EventHubConsumerClient** (Python および JavaScript) を使用して、同じ処理を実行できます。 開発モデルは、イベントを使用することでより簡単になります。 イベント ハンドラーを登録することによって、目的のイベントをサブスクライブします。
+イベント処理アプリケーションをスケーリングするには、アプリケーションのインスタンスを複数実行し、それらのインスタンス間で負荷のバランスを取ります。 以前のバージョンでは、[EventProcessorHost](event-hubs-event-processor-host.md) を使用することで、プログラムの複数のインスタンス間での負荷と、受信時のチェックポイントイ ベントのバランスを取ることができました。 新しいバージョン (5.0 以降) では **EventProcessorClient** (.NET および Java) または **EventHubConsumerClient** (Python および JavaScript) を使用して、同じ処理を実行できます。 開発モデルは、イベントを使用することでより簡単に作成できます。 イベント ハンドラーを登録することによって、目的のイベントをサブスクライブします。
 
 この記事では、複数のインスタンスを使用してイベント ハブからイベントを読み取り、イベント プロセッサ クライアントの機能について詳しく説明するためのサンプル シナリオについて説明します。これによって、一度に複数のパーティションからイベントを受信し、同じイベント ハブとコンシューマー グループを使用する他のコンシューマーと負荷のバランスを取ることができます。
 
@@ -67,7 +67,7 @@ ms.locfileid: "76907186"
 |                                    |                | :                  |                                      |              |                     |
 | mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | 844bd8fb-1f3a-4580-984d-6324f9e208af | 15           | 2020-01-15T01:22:00 |
 
-各イベント プロセッサ インスタンスは、パーティションの所有権を取得し、最後に認識された[チェックポイント](# Checkpointing)からパーティションの処理を開始します。 プロセッサで障害が発生した場合 (VM がシャットダウンした場合)、他のインスタンスは最終更新時刻を確認することによってこれを検出します。 他のインスタンスは、アクティブでないインスタンスによって以前に所有されていたパーティションの所有権を取得しようとします。チェックポイント ストアによって、確実に 1 つのインスタンスだけがパーティションの所有権の要求に成功します。 そのため、特定の時点で、1 つのパーティションからイベントを受け取るプロセッサは最大で 1 つです。
+各イベント プロセッサ インスタンスは、パーティションの所有権を取得し、最後に認識された[チェックポイント](# Checkpointing)からパーティションの処理を開始します。 プロセッサで障害が発生した場合 (VM がシャットダウンした場合)、他のインスタンスは最終更新時刻を確認するこによってこれを検出します。 他のインスタンスは、アクティブでないインスタンスによって以前に所有されていたパーティションの所有権を取得しようとします。チェックポイント ストアによって、確実に 1 つのインスタンスだけがパーティションの所有権の要求に成功します。 そのため、特定の時点で、1 つのパーティションからイベントを受け取るプロセッサは最大で 1 つです。
 
 ## <a name="receive-messages"></a>メッセージを受信する
 
@@ -81,7 +81,14 @@ ms.locfileid: "76907186"
 
 イベント プロセッサがパーティションから切断されると、別のインスタンスが、そのコンシューマー グループ内のそのパーティションの最後のプロセッサによって以前にコミットされたチェックポイントからパーティションの処理を再開できます。 プロセッサは接続の際に、このオフセットをイベント ハブに渡して、読み取りを開始する場所を指定します。 このように、チェックポイント処理を使用することで、ダウンストリーム アプリケーションごとにイベントに "完了" のマークを付けると共に、イベント プロセッサがダウンしたときに回復性をもたらすことができます。 このチェックポイント処理で、より小さなオフセットを指定すると、古いデータに戻ることができます。 
 
-イベントを処理済みとしてマークするためにチェックポイントが実行されると、イベントのオフセットとシーケンス番号を含むエントリがチェックポイント ストア内に追加されるか、更新されます。 ユーザーは、チェックポイントを更新する頻度を決定する必要があります。 正常に処理された各イベントの後に更新すると、基になっているチェックポイント ストアへの書き込み操作がトリガーされるため、パフォーマンスとコストへの影響が生じる可能性があります。 すべての単一イベントをチェックポイント処理することは、キューに格納されたメッセージング パターンを暗示しています。その場合は、イベント ハブよりも Service Bus キューの方がより適切なオプションになる可能性があります。 Event Hubs の背後にあるのは、"1 回以上" 大規模な配信を受ける、という考え方です。 ダウンストリームのシステムにべき等性を持たせることで、同じイベントが複数回受信される結果になるエラーまたは再起動から容易に復旧できます。
+イベントを処理済みとしてマークするためにチェックポイントが実行されると、チェックポイント ストア内のエントリが、イベントのオフセットとシーケンス番号で追加または更新されます。 ユーザーは、チェックポイントを更新する頻度を決定する必要があります。 正常に処理された各イベントの後に更新すると、基になっているチェックポイント ストアへの書き込み操作がトリガーされるため、パフォーマンスとコストへの影響が生じる可能性があります。 すべての単一イベントをチェックポイント処理することは、キューに格納されたメッセージング パターンを暗示しています。その場合は、イベント ハブよりも Service Bus キューの方がより適切なオプションになる可能性があります。 Event Hubs の背後にあるのは、"1 回以上" 大規模な配信を受ける、という考え方です。 ダウンストリームのシステムにべき等性を持たせることで、同じイベントが複数回受信される結果になるエラーまたは再起動から容易に復旧できます。
+
+> [!NOTE]
+> Azure で一般公開されているものとは異なるバージョンの Storage Blob SDK をサポートする環境で、チェックポイント ストアとして Azure Blob Storage を使用している場合は、コードを使用して、Storage Service API バージョンをその環境でサポートされている特定のバージョンに変更する必要があります。 たとえば、[Azure Stack Hub バージョン 2002 上で Event Hubs](https://docs.microsoft.com/azure-stack/user/event-hubs-overview) を実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、コードを使用して、対象にする Storage Service API のバージョンを 2017-11-09 にする必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub の次のサンプルを参照してください。 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs) 
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) または [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
 
 ## <a name="thread-safety-and-processor-instances"></a>スレッドの安全性とプロセッサのインスタンス
 

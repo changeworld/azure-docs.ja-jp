@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: fd21117219ea3db6946e7a1b889d92702af65b58
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75649207"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398474"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Azure カスタム リソース プロバイダーの概要
 
@@ -57,7 +57,7 @@ Azure カスタム リソース プロバイダーは、Azure とエンドポイ
 ---|---|---
 name | *はい* | エンドポイント定義の名前。 Azure では、この名前は '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}' の下にあるその API によって公開されます。
 routingType | *いいえ* | **エンドポイント**で契約の種類を決定します。 指定しないと、既定で "Proxy" になります。
-エンドポイント (endpoint) | *はい* | 要求をルーティングするエンドポイント。 これにより、応答と要求の副作用がすべて処理されます。
+endpoint | *はい* | 要求をルーティングするエンドポイント。 これにより、応答と要求の副作用がすべて処理されます。
 
 ### <a name="building-custom-resources"></a>カスタム リソースを構築する
 
@@ -124,7 +124,7 @@ Azure カスタム リソース プロバイダーの開発に関する質問が
 
 この記事では、カスタム プロバイダーについて学習しました。 次の記事にアクセスしてカスタム プロバイダーを作成しましょう。
 
-- [クイック スタート:Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
+- [クイック スタート: Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
 - [チュートリアル:Azure でカスタム アクションとカスタム リソースを作成する](./tutorial-get-started-with-custom-providers.md)
 - [方法: カスタム アクションを Azure REST API に追加する](./custom-providers-action-endpoint-how-to.md)
 - [方法: カスタム リソースを Azure REST API に追加する](./custom-providers-resources-endpoint-how-to.md)

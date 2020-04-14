@@ -3,7 +3,7 @@ title: エンタイトルメント管理のトラブルシューティング - A
 description: Azure Active Directory エンタイトルメント管理をトラブルシューティングする際に確認しておくべき事項について説明します。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 10/26/2019
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c38e1a61827da547bb39a699a0e92043e63466c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422487"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128470"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理のトラブルシューティング
 
@@ -48,6 +48,10 @@ ms.locfileid: "75422487"
 * チームのメンバーを削除すると、Office 365 グループからも削除されます。 チームのチャット機能から削除されるタイミングは遅れる場合があります。 詳細については、「[グループ メンバーシップ](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)」を参照してください。
 
 * ディレクトリが複数地域用に構成されていないことを確認してください。 エンタイトルメント管理では現在、SharePoint Online の複数地域の場所はサポートされません。 SharePoint Online サイトをエンタイトルメント管理で統制するためには、既定の地域の場所にサイトが存在する必要があります。 詳細については、「[OneDrive および SharePoint Online の複数地域機能](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)」を参照してください。
+
+## <a name="access-packages"></a>アクセス パッケージ
+
+* アクセス パッケージまたはポリシーを削除しようとしたときに、アクティブな割り当てがあることを示すエラー メッセージが表示されるのに、割り当てがあるユーザーが表示されない場合は、最近削除されたユーザーに、割り当てがあるかどうかを確認してください。 ユーザーが削除されてから 30 日間は、ユーザー アカウントを復元できます。   
 
 ## <a name="external-users"></a>外部ユーザー
 
@@ -129,7 +133,7 @@ ms.locfileid: "75422487"
 
 * 複数のポリシーが該当する場合、自動的に選択されるポリシー (要求元に表示されるポリシー) は、次の優先順位ロジックに基づいて決定されます。
 
-    | ポリシーの優先度 | スコープ |
+    | ポリシーの優先度 | Scope |
     | --- | --- |
     | P1 | ディレクトリ内の特定のユーザーとグループ、または接続されている特定の組織 |
     | P2 | ディレクトリ内のすべてのメンバー (ゲストを除く) |

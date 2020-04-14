@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 3b2f6b2bb1dc5f9e16c537f78b5a456ee4984e80
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ba788518951e72c1701d99decf46350e8665dbae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916729"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455810"
 ---
 # <a name="two-class-support-vector-machine-module"></a>2 クラス サポート ベクター マシン モジュール
 
@@ -68,9 +68,9 @@ ms.locfileid: "77916729"
   
     -   **[Create trainer mode]\(トレーナー モードの作成\)** を **[Single Parameter]\(単一パラメーター\)** に設定した場合は、[モデルのトレーニング](train-model.md) モジュールを使用します。
   
-10. パイプラインを実行します。
+10. パイプラインを送信します。
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 トレーニングの完了後:
 

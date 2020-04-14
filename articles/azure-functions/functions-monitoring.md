@@ -4,12 +4,12 @@ description: Azure Application Insights を Azure Functions とともに使用�
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 08da17f1ef023676aa0c499cf4e7e1bb9687f1c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356047"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257855"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -17,7 +17,7 @@ ms.locfileid: "78356047"
 
 Application Insights を使用することをお勧めします。これにより、ログ、パフォーマンス、およびエラー データが収集されます。 また、パフォーマンスの異常が自動的に検出されるほか、問題の診断や、関数がどのように使用されているかの理解に役立つ強力な分析ツールも含まれています。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 ローカル関数アプリ プロジェクトの開発中に Application Insights を使用することもできます。 詳細については、「[Application Insights とは何か](../azure-monitor/app/app-insights-overview.md)」を参照してください。
 
-必要な Application Insights インストルメンテーションは Azure Functions に組み込まれているため、必要になるのは、関数アプリを Application Insights リソースに接続するための有効なインストルメンテーション キーだけです。
+必要な Application Insights インストルメンテーションは Azure Functions に組み込まれているため、必要になるのは、関数アプリを Application Insights リソースに接続するための有効なインストルメンテーション キーだけです。 インストルメンテーション キーは、関数アプリのリソースが Azure で作成されるときに、アプリケーションの設定に追加する必要があります。 関数アプリにまだこのキーがない場合は、[手動で設定](#enable-application-insights-integration)できます。  
 
 ## <a name="application-insights-pricing-and-limits"></a>Application Insights の価格と制限
 
@@ -25,58 +25,26 @@ Function App との Application Insights 統合は無料でお試しいただく
 
 関数アプリで使用できる Application Insights 機能の完全な一覧については、「[Azure Functions でサポートされる Application Insights の機能」 ](../azure-monitor/app/azure-functions-supported-features.md)を参照してください。
 
-## <a name="enable-application-insights-integration"></a>Application Insights との統合を有効にする
-
-関数アプリでデータを Application Insights に送信するには、Application Insights リソースのインストルメンテーション キーについて知っておく必要があります。 キーは、**APPINSIGHTS_INSTRUMENTATIONKEY** という名前のアプリ設定に指定されている必要があります。
-
-### <a name="new-function-app-in-the-portal"></a>ポータルでの新しい関数アプリ
-
-[Azure Portal で関数アプリを作成](functions-create-first-azure-function.md)すると、Application Insights 統合が既定で有効になります。 Application Insights リソースは関数アプリと同じ名前を持ち、同じリージョンまたは最も近いリージョンのどちらかで作成されます。
-
-作成されている Application Insights リソースを確認するには、それを選択して **[Application Insights]** ウィンドウを展開します。 **[新しいリソース名]** を変更するか、またはデータを格納する [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)内の別の **[場所]** を選択することができます。
-
-![関数アプリの作成時に Application Insights を有効にする](media/functions-monitoring/enable-ai-new-function-app.png)
-
-**[作成]** を選択すると、関数アプリと共に Application Insights リソースが作成され、アプリケーション設定の `APPINSIGHTS_INSTRUMENTATIONKEY` が設定されます。 これで、すべて準備ができました。
-
-<a id="manually-connect-an-app-insights-resource"></a>
-### <a name="add-to-an-existing-function-app"></a>既存の関数アプリに追加する 
-
-[Azure CLI](functions-create-first-azure-function-azure-cli.md)、[Visual Studio](functions-create-your-first-function-visual-studio.md)、または [Visual Studio Code](functions-create-first-function-vs-code.md) を使用して関数アプリを作成する場合は、Application Insights リソースを作成する必要があります。 その後、関数アプリのアプリケーション設定として、そのリソースからインストルメンテーション キーを追加できます。
-
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-初期バージョンの関数では組み込みの監視を使用していましたが、これは推奨されなくなりました。 このような関数アプリで Application Insights 統合を有効にする場合は、[組み込みログも無効にする](#disable-built-in-logging)必要があります。  
-
 ## <a name="view-telemetry-in-monitor-tab"></a>[監視] タブにテレメトリを表示する
 
 [Application Insights 統合が有効になっている](#enable-application-insights-integration)場合は、 **[監視]** タブでテレメトリ データを表示できます。
 
-1. 関数アプリのページで、Application Insights が構成されてから少なくとも 1 回実行された関数を選択します。 その後、 **[監視]** タブを選択します。
-
-   ![[監視] タブを選択する](media/functions-monitoring/monitor-tab.png)
-
-1. 関数呼び出しの一覧が表示されるまで、 **[更新]** を一定間隔で選択します。
-
-   テレメトリ クライアントではサーバーに送信するデータをバッチ処理するため、一覧が表示されるには最大で 5 分かかる場合があります。 (この遅延は、[Live Metrics Stream](../azure-monitor/app/live-stream.md) には適用されません。 このサービスは、ページの読み込み時に Functions ホストに接続するため、ログがページに直接ストリーム配信されます)。
+1. 関数アプリのページで、Application Insights が構成されてから少なくとも 1 回実行された関数を選択します。 その後、 **[監視]** タブを選択します。関数呼び出しの一覧が表示されるまで、 **[更新]** を一定間隔で選択します。
 
    ![呼び出しリスト](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
-1. 特定の関数呼び出しのログを表示するには、その呼び出しの **[日付]** 列のリンクを選択します。
+    > [!NOTE]
+    > テレメトリ クライアントではサーバーに送信するデータをバッチ処理するため、一覧が表示されるには最大で 5 分かかる場合があります。 この遅延は、[Live Metrics Stream](../azure-monitor/app/live-stream.md) には適用されません。 このサービスは、ページの読み込み時に Functions ホストに接続するため、ログがページに直接ストリーム配信されます。
 
-   ![呼び出しの詳細のリンク](media/functions-monitoring/invocation-details-link-ai.png)
-
-   その呼び出しのログ出力は、新しいページに表示されます。
+1. 特定の関数呼び出しのログを表示するには、その呼び出しの **[日付 (UTC)]** 列のリンクを選択します。 その呼び出しのログ出力は、新しいページに表示されます。
 
    ![呼び出しの詳細](media/functions-monitoring/invocation-details-ai.png)
 
-両方のページに、データを取得する Application Insights Analytics クエリへの **[Application Insights で実行する]** リンクがあることがわかります。
+1. **[Application Insights で実行する]** リンクを選択して、Azure Log で Azure Monitor ログ データを取得するクエリのソースを表示します。サブスクリプションで初めてAzure Log Analytics を使用する場合は、有効にするように求められます。
 
-![Application Insights で実行する](media/functions-monitoring/run-in-ai.png)
+1. そのリンクを選択し、Log Analytics を有効にするオプションを選択します。 次のクエリが表示されます。 クエリの結果が過去 30 日間 (`where timestamp > ago(30d)`) に制限されていることがわかります。 さらに、結果には 20 行以下しか表示されません (`take 20`)。 一方、関数の呼び出し詳細の一覧には、過去 30 日間のデータが無制限で表示されます。
 
-次のクエリが表示されます。 クエリの結果が過去 30 日間 (`where timestamp > ago(30d)`) に制限されていることがわかります。 さらに、結果には 20 行以下しか表示されません (`take 20`)。 一方、関数の呼び出し詳細の一覧には、過去 30 日間のデータが無制限で表示されます。
-
-![Application Insights Analytics 呼び出しの一覧](media/functions-monitoring/ai-analytics-invocation-list.png)
+   ![Application Insights Analytics 呼び出しの一覧](media/functions-monitoring/ai-analytics-invocation-list.png)
 
 詳細については、後述の「[テレメトリをクエリする](#query-telemetry-data)」を参照してください。
 
@@ -92,30 +60,29 @@ Application Insights の使用方法については、「[Application Insights �
 
 Application Insights の次の領域は、関数の動作、パフォーマンス、およびエラーを評価するときに役立ちます。
 
-| タブ | 説明 |
+| 調査 | 説明 |
 | ---- | ----------- |
 | **[障害](../azure-monitor/app/asp-net-exceptions.md)** |  関数の失敗やサーバーの例外に基づいてグラフやアラートを作成します。 **[操作名]** は関数名です。 依存関係に関するカスタム テレメトリを実装している場合を除き、依存関係のエラーは表示されません。 |
-| **[パフォーマンス](../azure-monitor/app/performance-counters.md)** | パフォーマンスの問題を分析します。 |
-| **サーバー** | サーバーごとのリソース使用率とスループットを表示します。 このデータは、関数が原因で基本リソースの処理が遅延している場合のデバッグで役立つことがあります。 サーバーは、**クラウド ロール インスタンス**と呼ばれます。 |
+| **[パフォーマンス](../azure-monitor/app/performance-counters.md)** | **クラウド ロール インスタンス**あたりのリソース使用率とスループットを表示して、パフォーマンスの問題を分析します。 このデータは、関数が原因で基本リソースの処理が遅延している場合のデバッグで役立つことがあります。 |
 | **[メトリック](../azure-monitor/app/metrics-explorer.md)** | メトリックに基づいたグラフやアラートを作成します。 メトリックには、関数呼び出しの数、実行時間、成功率が含まれます。 |
-| **[ライブ メトリック ストリーム](../azure-monitor/app/live-stream.md)** | 作成されたメトリック データをほぼリアルタイムに表示します。 |
+| **[ライブ メトリック    ](../azure-monitor/app/live-stream.md)** | 作成されたメトリック データをほぼリアルタイムに表示します。 |
 
 ## <a name="query-telemetry-data"></a>テレメトリをクエリする
 
-[Application Insights Analytics](../azure-monitor/app/analytics.md) では、データベース内のテーブルの形式ですべてのテレメトリ データにアクセスできます。 Analytics では、データを抽出、操作、視覚化するためのクエリ言語が用意されています。
+[Application Insights Analytics](../azure-monitor/app/analytics.md) では、データベース内のテーブルの形式ですべてのテレメトリ データにアクセスできます。 Analytics では、データを抽出、操作、視覚化するためのクエリ言語が用意されています。 
 
-![Analytics を選択する](media/functions-monitoring/select-analytics.png)
+**[ログ]** を選択して、ログに記録されたイベントを探索または照会します。
 
 ![分析の例](media/functions-monitoring/analytics-traces.png)
 
 以下は、直近 30 分間の worker あたりの要求数の分布を示すクエリの例です。
 
-```
+<pre>
 requests
 | where timestamp > ago(30m) 
 | summarize count() by cloud_RoleInstance, bin(timestamp, 1m)
 | render timechart
-```
+</pre>
 
 使用可能なテーブルは、左側の **[スキーマ]** タブに表示されます。 次のテーブルで、関数呼び出しによって生成されたデータを確認できます。
 
@@ -132,10 +99,10 @@ requests
 
 各テーブルでは、関数固有のデータの一部が `customDimensions` フィールドに保存されます。  たとえば、次のクエリでは、ログ レベルが `Error` のすべてのトレースが取得されます。
 
-```
+<pre>
 traces 
 | where customDimensions.LogLevel == "Error"
-```
+</pre>
 
 ランタイムにより、`customDimensions.LogLevel` フィールドと `customDimensions.Category` フィールドが提供されます。 関数コードで記述したログにフィールドを追加できます。 この記事の後半にある「[構造化ログ](#structured-logging)」をご覧ください。
 
@@ -145,11 +112,20 @@ Application Insights はカスタム構成なしで使用できます。 既定�
 
 ### <a name="categories"></a>Categories
 
-Azure Functions のロガーでは、すべてのログに*カテゴリ*があります。 カテゴリは、ランタイム コードや関数コードのどの部分にログが記述されているかを示します。 
+Azure Functions のロガーでは、すべてのログに*カテゴリ*があります。 カテゴリは、ランタイム コードや関数コードのどの部分にログが記述されているかを示します。 以下のチャートは、ランタイムが作成するログの主なカテゴリについて説明します。 
+
+| カテゴリ | 説明 |
+| ----- | ----- | 
+| Host.Results | これらのログは、Application Insights では **requests** として示されます。 それらは、関数の成功または失敗を示します。 これらすべてのログは `Information` レベルで書き込まれます。 `Warning` 以上でフィルターすると、このデータは表示されなくなります。 |
+| Host.Aggregator | これらのログには、[構成可能な](#configure-the-aggregator)期間の関数呼び出しの回数と平均回数が記録されます。 既定の期間は、30 秒か 1,000 回のどちらか早い方です。 ログは、Application Insights の **customMetrics** テーブルで利用できます。 例としては、実行回数、成功率、時間などがあります。 これらすべてのログは `Information` レベルで書き込まれます。 `Warning` 以上でフィルターすると、このデータは表示されなくなります。 |
+
+これら以外のカテゴリのログはすべて、Application Insights の **traces** テーブルで利用できます。
+
+`Host` で始まるカテゴリのすべてのログは、Functions ランタイムによって書き込まれます。 **Function started** と **Function completed** のログのカテゴリは `Host.Executor` となります。 正常に実行された場合、これらのログは `Information` レベルとなります。 例外は `Error` レベルで記録されます。 ランタイムでは、`Warning` レベルのログも作成されます。たとえば、"queue messages sent to the poison queue" などです。
 
 Functions のランタイムでは、先頭が "Host" のカテゴリを持つログが作成されます。 バージョン 1.x では、`function started`、`function executed`、および `function completed` のログのカテゴリは `Host.Executor` になります。 バージョン 2.x 以降、これらのログのカテゴリは `Function.<YOUR_FUNCTION_NAME>` になります。
 
-関数コードでログを作成する場合、Functions ランタイムのバージョン 1.x でのカテゴリは `Function` になります。 バージョン 2.x では、カテゴリは `Function.<YOUR_FUNCTION_NAME>.User` になります。
+関数コードでログを作成する場合、カテゴリは `Function.<YOUR_FUNCTION_NAME>.User` になり、どのログ レベルにもできます。 Functions ランタイムのバージョン 1.x では、カテゴリは `Function` です。
 
 ### <a name="log-levels"></a>ログ レベル
 
@@ -250,36 +226,6 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 ```
 
 あるカテゴリのすべてのログを抑制するには、ログ レベル `None` を使用します。 そのカテゴリのログは書き込まれず、その上のログ レベルはありません。
-
-次のセクションでは、ランタイムが作成するログの主なカテゴリについて説明します。 
-
-### <a name="category-hostresults"></a>カテゴリ Host.Results
-
-これらのログは、Application Insights では "requests" として示されます。 それらは、関数の成功または失敗を示します。
-
-![要求回数グラフ](media/functions-monitoring/requests-chart.png)
-
-これらすべてのログは `Information` レベルで書き込まれます。 `Warning` 以上でフィルターすると、このデータは表示されなくなります。
-
-### <a name="category-hostaggregator"></a>カテゴリ Host.Aggregator
-
-これらのログには、[構成可能な](#configure-the-aggregator)期間の関数呼び出しの回数と平均回数が記録されます。 既定の期間は、30 秒か 1,000 回のどちらか早い方です。 
-
-ログは、Application Insights の **customMetrics** テーブルで利用できます。 例としては、実行回数、成功率、時間などがあります。
-
-![customMetrics クエリ](media/functions-monitoring/custom-metrics-query.png)
-
-これらすべてのログは `Information` レベルで書き込まれます。 `Warning` 以上でフィルターすると、このデータは表示されなくなります。
-
-### <a name="other-categories"></a>その他のカテゴリ
-
-すでに示されているカテゴリ以外のカテゴリのすべてのログは、Application Insights の **traces** テーブルで利用できます。
-
-![traces クエリ](media/functions-monitoring/analytics-traces.png)
-
-`Host` で始まるカテゴリのすべてのログは、Functions ランタイムによって書き込まれます。 "Function started" と "Function completed" のログのカテゴリは `Host.Executor` となります。 正常に実行された場合、これらのログは `Information` レベルとなります。 例外は `Error` レベルで記録されます。 ランタイムでは、`Warning` レベルのログも作成されます。たとえば、"queue messages sent to the poison queue" などです。
-
-ご使用の関数コードが書き込んだログのカテゴリは `Function` となり、どのログ レベルにもできます。
 
 ## <a name="configure-the-aggregator"></a>アグリゲーターを構成する
 
@@ -406,7 +352,25 @@ Application Insights 用 Node.js SDK を使用して `trackMetric` を呼び出�
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>C# 関数でカスタム テレメトリをログに記録する
 
-[Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) NuGet パッケージを使用して、カスタム テレメトリ データを Application Insights に送信できます。 次の C# の例では、[カスタム テレメトリ API](../azure-monitor/app/api-custom-events-metrics.md) を使用します。 この例は .NET クラス ライブラリ用ですが、Application Insights のコードは C# スクリプト用と同じです。
+ご自身の関数からカスタム テレメトリ データを Application Insights に送信するときに使用できる、Application Insights SDK の Functions 固有のバージョンがあります。[Microsoft.Azure.WebJobs.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). コマンド プロンプトから次のコマンドを使用して、このパッケージをインストールします。
+
+# <a name="command"></a>[コマンド](#tab/cmd)
+
+```cmd
+dotnet add package Microsoft.Azure.WebJobs.Logging.ApplicationInsights --version <VERSION>
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <VERSION>
+```
+
+---
+
+このコマンドでは、`<VERSION>` を、このパッケージのバージョンに置き換えます。このバージョンでは、インストールされている [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/) バージョンがサポートされます。 
+
+次の C# の例では、[カスタム テレメトリ API](../azure-monitor/app/api-custom-events-metrics.md) を使用します。 この例は .NET クラス ライブラリ用ですが、Application Insights のコードは C# スクリプト用と同じです。
 
 ### <a name="version-2x-and-later"></a>バージョン 2.x 以降
 
@@ -414,15 +378,17 @@ Application Insights 用 Node.js SDK を使用して `trackMetric` を呼び出�
 
 ```cs
 using System;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.DataContracts;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using System.Linq;
 
 namespace functionapp0915
 {
@@ -477,6 +443,8 @@ namespace functionapp0915
     }
 }
 ```
+
+[GetMetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) は、現在推奨されているメトリック作成 API です。
 
 ### <a name="version-1x"></a>バージョン 1.x
 
@@ -595,6 +563,29 @@ Functions v2 により、HTTP 要求、ServiceBus、EventHub、SQL の依存関�
 依存関係を表示するようにカスタム コードを記述することができます。 たとえば、[C# カスタム テレメトリ セクション](#log-custom-telemetry-in-c-functions)にあるサンプル コードを参照してください。 このサンプル コードでは、次のイメージのような Application Insights の*アプリケーション マップ*が作成されます。
 
 ![アプリケーション マップ](./media/functions-monitoring/app-map.png)
+
+## <a name="enable-application-insights-integration"></a>Application Insights との統合を有効にする
+
+関数アプリでデータを Application Insights に送信するには、Application Insights リソースのインストルメンテーション キーについて知っておく必要があります。 キーは、**APPINSIGHTS_INSTRUMENTATIONKEY** という名前のアプリ設定に指定されている必要があります。
+
+[Azure portal](functions-create-first-azure-function.md) で、または [Azure Functions Core Tools](functions-create-first-azure-function-azure-cli.md) を使用してコマンド ラインから、あるいは [Visual Studio Code](functions-create-first-function-vs-code.md) を使用して関数アプリを作成すると、Application Insights 統合が既定で有効になります。 Application Insights リソースは関数アプリと同じ名前を持ち、同じリージョンまたは最も近いリージョンのどちらかで作成されます。
+
+### <a name="new-function-app-in-the-portal"></a>ポータルでの新しい関数アプリ
+
+作成されている Application Insights リソースを確認するには、それを選択して **[Application Insights]** ウィンドウを展開します。 **[新しいリソース名]** を変更するか、またはデータを格納する [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)内の別の **[場所]** を選択することができます。
+
+![関数アプリの作成時に Application Insights を有効にする](media/functions-monitoring/enable-ai-new-function-app.png)
+
+**[作成]** を選択すると、関数アプリと共に Application Insights リソースが作成され、アプリケーション設定の `APPINSIGHTS_INSTRUMENTATIONKEY` が設定されます。 これで、すべて準備ができました。
+
+<a id="manually-connect-an-app-insights-resource"></a>
+### <a name="add-to-an-existing-function-app"></a>既存の関数アプリに追加する 
+
+[Visual Studio](functions-create-your-first-function-visual-studio.md) を使用して関数アプリを作成する場合は、Application Insights リソースを作成する必要があります。 その後、関数アプリのアプリケーション設定として、そのリソースからインストルメンテーション キーを追加できます。
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+初期バージョンの関数では組み込みの監視を使用していましたが、これは推奨されなくなりました。 このような関数アプリで Application Insights 統合を有効にする場合は、[組み込みログも無効にする](#disable-built-in-logging)必要があります。  
 
 ## <a name="report-issues"></a>レポートに関する問題
 

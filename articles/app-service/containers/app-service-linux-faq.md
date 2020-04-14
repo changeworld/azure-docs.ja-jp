@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 2413601db629fda62976b75e349b0340749dc6fa
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: f0a8b1758571a9473402d11a4d5141a11f76504d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944084"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80245822"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -56,7 +56,7 @@ App Service on Linux のリリースでは、機能の追加とプラットフ�
 
 **SDK または Azure Resource Manager テンプレートから Linux App Service プランを作成するにはどうすればよいですか。**
 
-アプリ サービスの**予約済み**フィールドを *true* に設定する必要があります。
+アプリ サービスの**予約済み**フィールドを *true* に設定します。
 
 ## <a name="continuous-integration-and-deployment"></a>継続的インテグレーションとデプロイ
 
@@ -173,11 +173,19 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 - ポート 80 または 8080 を定義する最初のコンテナー
 - 上記のいずれにも当てはまらない場合、ファイルで定義されている最初のコンテナーがアクセス可能 (公開) になります
 
+
+## <a name="web-sockets"></a>Web ソケット
+
+Web Sockets は Linux アプリでサポートされています。
+
+> [!IMPORTANT]
+> Web Sockets は、Free App Service プランの Linux アプリでは現在サポートされていません。 この制限の解消に取り組んでおり、Free App Service プランで最大 5 個の Web ソケット接続をサポートする計画を立てています。
+
 ## <a name="pricing-and-sla"></a>料金と SLA
 
 **一般的にサービスが利用できる現在の料金を教えてください。**
 
-アプリの実行時間に対して、通常の Azure App Service の料金が課金されます。
+料金は SKU とリージョンによって異なりますが、料金ページで詳細を確認できます。「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/linux/)」を参照してください。
 
 ## <a name="other-questions"></a>その他の質問
 

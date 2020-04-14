@@ -23,7 +23,7 @@ ms.locfileid: "67721743"
 
 ## <a name="supported-languages"></a>サポートされている言語
 
-| 言語                                   | 言語コード   |
+| Language                                   | 言語コード   |
 |:-------------------------------------------|:---------------:|
 | アフリカーンス語                                  |    `af-ZA`      |
 | アルバニア語                                   |     `sq-AL`     |
@@ -89,7 +89,7 @@ ms.locfileid: "67721743"
 | コサ語                                      |     `xh-ZA`     |
 | ズールー語                                       |     `zu-ZA`     |
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [Ink Recognizer API とは](overview.md)
 * [Ink Recognizer API にデジタル インク ストロークを送信する](concepts/send-ink-data.md)

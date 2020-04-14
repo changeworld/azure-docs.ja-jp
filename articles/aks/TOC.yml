@@ -140,10 +140,14 @@
           href: cluster-autoscaler.md
         - name: Availability Zones を使用する
           href: availability-zones.md
-        - name: 複数のノード プールを使用する
-          href: use-multiple-node-pools.md
-        - name: スポット ノード プールの使用 (プレビュー)
-          href: spot-node-pool.md
+        - name: ノード プールの使用
+          items:
+            - name: 複数のノード プールを使用する
+              href: use-multiple-node-pools.md
+            - name: スポット ノード プールの使用 (プレビュー)
+              href: spot-node-pool.md
+            - name: システム ノード プールの使用
+              href: use-system-pools.md
         - name: Terraform を使用した AKS のデプロイ
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true

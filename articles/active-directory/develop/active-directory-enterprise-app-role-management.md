@@ -5,7 +5,6 @@ description: Azure Active Directory でエンタープライズ アプリケー�
 services: active-directory
 author: jeevansd
 manager: CelesteDG
-ms.assetid: eb2b3741-3cde-45c8-b639-a636f3df3b74
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
@@ -13,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: a70abd1cddb866037926bbbc881682d50599366b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8db27819b7eef6cdf05ea3f6645ae930ebc4ef58
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76699259"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884751"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 

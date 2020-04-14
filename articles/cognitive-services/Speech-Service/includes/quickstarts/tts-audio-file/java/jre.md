@@ -2,20 +2,20 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/06/2019
+ms.date: 04/04/2020
 ms.author: erhopf
-ms.openlocfilehash: c8de61d88417a19680b606be5e06583c36c94fbc
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 818a7abe6799846470ba60871ba01ea0ced80382
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925189"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671339"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
@@ -123,7 +123,7 @@ F11 キーを押すか、 **[Run]**  >  **[Debug]** の順に選択します。
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Custom Voice を作成する](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [カスタム音声サンプルを録音する](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

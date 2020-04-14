@@ -1,6 +1,6 @@
 ---
-title: Azure portal、Azure PowerShell、または Azure CLI を使用した Azure RBAC でのロールの定義の一覧表示 | Microsoft Docs
-description: Azure portal、Azure PowerShell、または Azure CLI を使用して、Azure RBAC の組み込みロールとカスタム ロールを一覧表示する方法について説明します。
+title: Azure portal、Azure PowerShell、Azure CLI または REST API を使用して、Azure RBAC のロールの定義を一覧表示する | Microsoft Docs
+description: Azure portal、Azure PowerShell、Azure CLI または REST API を使用して、Azure RBAC のビルトイン ロールとカスタム ロールを一覧表示する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 839393d7535de530a27752f77e311c87c75825d9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: aa888eedc81ceb3188f801e273c70722207bf512
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74709867"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062982"
 ---
 # <a name="list-role-definitions-in-azure-rbac"></a>Azure AD のロールの定義の一覧表示
 
@@ -27,7 +27,7 @@ ms.locfileid: "74709867"
 
 Azure Active Directory の管理者ロールを一覧表示するには、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 
 ### <a name="list-all-roles"></a>すべてのロールを一覧表示する
 
@@ -312,7 +312,67 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="rest-api"></a>REST API
+
+### <a name="list-role-definitions"></a>ロール定義の一覧表示
+
+ロールの定義を一覧表示するには、[ロールの定義 - 一覧](/rest/api/authorization/roledefinitions/list) REST API を使用します。 結果を絞り込むには、スコープと任意のフィルターを指定します。
+
+1. 次の要求から開始します。
+
+    ```http
+    GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?$filter={$filter}&api-version=2015-07-01
+    ```
+
+1. URI 中で、 *{scope}* をロールの定義を一覧表示するスコープに置換します。
+
+    > [!div class="mx-tableFixed"]
+    > | Scope | Type |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
+    > | `subscriptions/{subscriptionId1}` | サブスクリプション |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | リソース |
+
+    前の例で、microsoft.web は App Service インスタンスを参照するリソース プロバイダーです。 同様に、他の任意のリソース プロバイダーを使用してスコープを指定できます。 詳細については、「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」およびサポートされている「[Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)」を参照してください。  
+     
+1. *{filter}* を、ロールの定義リストをフィルターするために適用する条件に置換します。
+
+    > [!div class="mx-tableFixed"]
+    > | Assert | 説明 |
+    > | --- | --- |
+    > | `$filter=atScopeAndBelow()` | 指定されたスコープとすべてのサブ スコープのロールの定義を一覧表示します。 |
+    > | `$filter=type+eq+'{type}'` | 指定されたタイプのロール定義を一覧表示します。 ロールのタイプは、`CustomRole` または `BuiltInRole` です。 |
+
+### <a name="list-a-role-definition"></a>ロール定義を一覧表示する
+
+特定のロールの詳細を一覧表示するには、[ロールの定義 - 取得](/rest/api/authorization/roledefinitions/get)または[ロールの定義 - ID で取得](/rest/api/authorization/roledefinitions/getbyid) REST API を使用します。
+
+1. 次の要求から開始します。
+
+    ```http
+    GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
+    ```
+
+    ディレクトリ レベルのロールの定義では、次の要求を使用できます。
+
+    ```http
+    GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
+    ```
+
+1. URI 内で、 *{scope}* をロールの定義を一覧表示するスコープに置換します。
+
+    > [!div class="mx-tableFixed"]
+    > | Scope | Type |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理グループ |
+    > | `subscriptions/{subscriptionId1}` | サブスクリプション |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | リソース |
+     
+1. *{roleDefinitionId}* を、ロールの定義の識別子に置き換えます。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure リソースの組み込みロール](built-in-roles.md)
 - [Azure リソースのカスタム ロール](custom-roles.md)

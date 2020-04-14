@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
-ms.author: cherylmc
-ms.openlocfilehash: 2c37dadeb669fb88f858b5487379828a8dddec6c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 03/26/2020
+ms.author: osamaz
+ms.openlocfilehash: 5304aefaf3ad70bb552b4b0d1b26fcce9867c9c0
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076661"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397743"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>ルーティングをセットアップして管理するためのルーター構成のサンプル
 このページでは、ExpressRoute を使用する場合の、Cisco IOS-XE と Juniper MX シリーズ ルーターのインターフェイスとルーティング構成のサンプルを示します。 これらはガイダンスとしてのみ使用することを目的としたサンプルであり、現状のまま使用することはできません。 ベンダーと協力して、ネットワークに適した構成を考えてください。 
@@ -91,6 +91,25 @@ ms.locfileid: "74076661"
     !
     route-map <MS_Prefixes_Inbound> permit 10
      match ip address prefix-list <MS_Prefixes>
+    !
+
+### <a name="5-configuring-bfd"></a>5.BFD の構成
+
+BFD は 2 か所で構成します。 1 つはインターフェイス レベルで、もう 1 つは BGP レベルです。 次の例は、QinQ インターフェイス用です。 
+
+    interface GigabitEthernet<Interface_Number>.<Number>
+     bfd interval 300 min_rx 300 multiplier 3
+     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+     ip address <IPv4_Address><Subnet_Mask>
+    
+    router bgp <Customer_ASN>
+     bgp log-neighbor-changes
+     neighbor <IP#2_used_by_Azure> remote-as 12076
+     !        
+     address-family ipv4
+      neighbor <IP#2_used_by_Azure> activate
+      neighbor <IP#2_used_by_Azure> fall-over bfd
+     exit-address-family
     !
 
 
@@ -173,7 +192,7 @@ ms.locfileid: "74076661"
     }
 
 
-### <a name="4-route-maps"></a>4.ルート マップ
+### <a name="4-route-policies"></a>4.ルーティング ポリシー
 ネットワークに伝播されるプレフィックスは、ルート マップとプレフィックス リストを使用してフィルタリングできます。 このタスクは、以下のサンプルで実現できます。 適切なプレフィックス リストが設定されていることを確認してください。
 
     policy-options {
@@ -203,6 +222,24 @@ ms.locfileid: "74076661"
         }                                   
     }
 
+### <a name="4-configuring-bfd"></a>4.BFD の構成
+BFD は、プロトコル BGP のセクションでのみ構成します。
+
+    protocols {
+        bgp { 
+            group <Group_Name> { 
+                peer-as 12076;              
+                neighbor <IP#2_used_by_Azure>;
+                bfd-liveness-detection {
+                       minimum-interval 3000;
+                       multiplier 3;
+                }
+            }                               
+        }                                   
+    }
+
 ## <a name="next-steps"></a>次の手順
 詳細については、 [ExpressRoute の FAQ](expressroute-faqs.md) を参照してください。
+
+
 

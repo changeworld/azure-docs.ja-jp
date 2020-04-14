@@ -3,22 +3,22 @@ title: SAS トークンを使用してテンプレートを安全にデプロイ
 description: Azure Resource Manager テンプレートを使用して、SAS トークンで保護されているリソースを Azure にデプロイします。 Azure PowerShell と Azure CLI を表示します。
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: d30e685c35f33b6fc5d3872b9287e45190ad5713
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476309"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156397"
 ---
-# <a name="deploy-private-resource-manager-template-with-sas-token"></a>SAS トークンを使用したプライベート Resource Manager テンプレートのデプロイ
+# <a name="deploy-private-arm-template-with-sas-token"></a>SAS トークンを使用してプライベート ARM テンプレートをデプロイする
 
-お使いのテンプレートがストレージ アカウントに配置されている場合、それが公開されないようにテンプレートへのアクセスを制限できます。 セキュリティで保護されたテンプレートにアクセスするには、そのテンプレート用に SAS (Shared Access Signature) トークンを作成し、デプロイ時にそのトークンを提供します。 この記事では、Azure PowerShell または Azure CLI を使用して SAS トークンでテンプレートをデプロイする方法について説明します。
+Azure Resource Manager (ARM) テンプレートがストレージ アカウントに配置されている場合、それが公開されないようにテンプレートへのアクセスを制限できます。 セキュリティで保護されたテンプレートにアクセスするには、そのテンプレート用に SAS (Shared Access Signature) トークンを作成し、デプロイ時にそのトークンを提供します。 この記事では、Azure PowerShell または Azure CLI を使用して SAS トークンでテンプレートをデプロイする方法について説明します。
 
 ## <a name="create-storage-account-with-secured-container"></a>セキュリティで保護されたコンテナーでのストレージ アカウントの作成
 
 次のスクリプトでは、パブリック アクセスがオフになっているストレージ アカウントとコンテナーを作成できます。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -37,7 +37,7 @@ New-AzStorageContainer `
   -Permission Off
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create \
@@ -65,7 +65,7 @@ az storage container create \
 
 これで、お使いのテンプレートをストレージ アカウントにアップロードする準備ができました。 使用するテンプレートへのパスを指定します。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzStorageBlobContent `
@@ -73,7 +73,7 @@ Set-AzStorageBlobContent `
   -File c:\Templates\azuredeploy.json
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az storage blob upload \
@@ -93,7 +93,7 @@ az storage blob upload \
 > テンプレートを含む BLOB は、アカウントの所有者のみがアクセスできます。 ただし、BLOB の SAS トークンを作成すると、その URI を持つ誰もが BLOB にアクセスできるようになります。 もし別のユーザーが URI を傍受した場合、そのユーザーは、テンプレートにアクセスできます。 SAS トークンはお使いのテンプレートへのアクセスを制限する有効な方法ですが、パスワードのような機密データをテンプレートに直接含めないでください。
 >
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 # get the URI with the SAS token
@@ -109,7 +109,7 @@ New-AzResourceGroupDeployment `
   -TemplateUri $templateuri
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -129,7 +129,7 @@ url=$(az storage blob url \
     --name azuredeploy.json \
     --output tsv \
     --connection-string $connection)
-az group deployment create \
+az deployment group create \
   --resource-group ExampleGroup \
   --template-uri $url?$token
 ```
@@ -140,5 +140,5 @@ az group deployment create \
 
 
 ## <a name="next-steps"></a>次のステップ
-* テンプレートのデプロイ方法については、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。
+* テンプレートのデプロイ方法については、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。
 * テンプレートのパラメーターの定義については、 [テンプレートの作成](template-syntax.md#parameters)に関する記事を参照してください。

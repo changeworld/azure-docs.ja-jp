@@ -7,24 +7,24 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 381aad5d0a56362d9966ed54b931a8478f2f6bf2
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500599"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410503"
 ---
 # <a name="about-point-to-site-vpn"></a>ポイント対サイト VPN について
 
 ポイント対サイト (P2S) VPN ゲートウェイ接続では、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 P2S 接続は、クライアント コンピューターから接続を開始することによって確立されます。 このソリューションは、在宅勤務者が自宅や会議室など、遠隔地から Azure VNet に接続する場合に便利です。 P2S VPN は、VNet への接続を必要とするクライアントが数台である場合に、S2S VPN の代わりに使用するソリューションとしても便利です。 この記事は、Resource Manager デプロイ モデルに適用されます。
 
-## <a name="protocol"></a>P2S で使用されるプロトコル
+## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S で使用されるプロトコル
 
 ポイント対サイト VPN では、次のいずれかのプロトコルを使用できます。
 
-* SSL/TLS ベースの VPN プロトコルである **OpenVPN® プロトコル**。 SSL VPN ソリューションはファイアウォールを通過できます。これは、ほとんどのファイアウォールで開かれている TCP ポート 443 アウトバウンドが SSL で使用されるためです。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Windows、Linux、および Mac デバイス (OSX バージョン 10.13 以上) から接続する際に使用できます。
+* SSL/TLS ベースの VPN プロトコルである **OpenVPN® プロトコル**。 ほとんどのファイアウォールは、TLS で使用されるアウトバウンド TCP ポート 443 を開いているため、TLS VPN ソリューションはファイアウォールを通過できます。 OpenVPN は、Android、iOS (バージョン 11.0 以上)、Windows、Linux、および Mac デバイス (OSX バージョン 10.13 以上) から接続する際に使用できます。
 
-* Secure Socket トンネリング プロトコル (SSTP)。これは、SSL ベースの独自の VPN プロトコルです。 SSL VPN ソリューションはファイアウォールを通過できます。これは、ほとんどのファイアウォールで開かれている TCP ポート 443 アウトバウンドが SSL で使用されるためです。 SSTP は、Windows デバイスでのみサポートされます。 Azure では、SSTP を備えたすべてのバージョンの Windows (Windows 7 以降) がサポートされています。
+* Secure Socket トンネリング プロトコル (SSTP)。これは、TLS ベースの独自の VPN プロトコルです。 ほとんどのファイアウォールは、TLS で使用されるアウトバウンド TCP ポート 443 を開いているため、TLS VPN ソリューションはファイアウォールを通過できます。 SSTP は、Windows デバイスでのみサポートされます。 Azure では、SSTP を備えたすべてのバージョンの Windows (Windows 7 以降) がサポートされています。
 
 * IKEv2 VPN。これは、標準ベースの IPsec VPN ソリューションです。 IKEv2 VPN は、Mac デバイス (OSX バージョン 10.11 以上) から接続する際に使用できます。
 
@@ -33,7 +33,7 @@ ms.locfileid: "77500599"
 >P2S 用 IKEv2 および OpenVPN は、Resource Manager デプロイ モデルでのみ使用できます。 これらは、クラシック デプロイ モデルでは使用できません。
 >
 
-## <a name="authentication"></a>P2S VPN クライアントの認証方法
+## <a name="how-are-p2s-vpn-clients-authenticated"></a><a name="authentication"></a>P2S VPN クライアントの認証方法
 
 Azure が P2S VPN 接続を受け入れる前に、ユーザーはまず認証を受ける必要があります。 Azure では、接続するユーザーを認証するメカニズムが 2 つ用意されています。
 
@@ -87,7 +87,7 @@ zip ファイルでは、Azure 側のいくつかの重要な設定の値も指�
 >[!INCLUDE [TLS version changes](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="gwsku"></a>P2S VPN がサポートされるゲートウェイ SKU の種類
+## <a name="which-gateway-skus-support-p2s-vpn"></a><a name="gwsku"></a>P2S VPN がサポートされるゲートウェイ SKU の種類
 
 [!INCLUDE [aggregate throughput sku](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -97,7 +97,7 @@ zip ファイルでは、Azure 側のいくつかの重要な設定の値も指�
 >Basic SKU では、IKEv2 と RADIUS 認証はサポートされません。
 >
 
-## <a name="IKE/IPsec policies"></a>P2S 用に VPN ゲートウェイではどの IKE/IPsec ポリシーが構成されていますか。
+## <a name="what-ikeipsec-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="IKE/IPsec policies"></a>P2S 用に VPN ゲートウェイではどの IKE/IPsec ポリシーが構成されていますか。
 
 
 **IKEv2**
@@ -138,7 +138,7 @@ zip ファイルでは、Azure 側のいくつかの重要な設定の値も指�
 | AES256    | SHA256 | GROUP_ECP256 |
 | AES256    | SHA1 | GROUP_NONE |
 
-## <a name="TLS policies"></a>P2S 用に VPN ゲートウェイではどの TLS ポリシーが構成されていますか。
+## <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>P2S 用に VPN ゲートウェイではどの TLS ポリシーが構成されていますか。
 **TLS**
 
 |**ポリシー** |
@@ -156,7 +156,7 @@ zip ファイルでは、Azure 側のいくつかの重要な設定の値も指�
 |TLS_RSA_WITH_AES_128_CBC_SHA256 |
 |TLS_RSA_WITH_AES_256_CBC_SHA256 |
 
-## <a name="configure"></a>P2S 接続の構成方法
+## <a name="how-do-i-configure-a-p2s-connection"></a><a name="configure"></a>P2S 接続の構成方法
 
 P2S 構成で必要な手順には、特有のものが非常に多くあります。 次の記事では、P2S 構成の詳細な手順と、VPN クライアント デバイスの構成方法のリンクをご紹介します。
 
@@ -170,11 +170,11 @@ P2S 構成で必要な手順には、特有のものが非常に多くありま�
 
 手順については、以下の [FAQ](#removeconfig) を参照してください。
  
-## <a name="faqcert"></a>ネイティブ Azure 証明書認証に関する FAQ
+## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>ネイティブ Azure 証明書認証に関する FAQ
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="faqradius"></a>RADIUS 認証に関する FAQ
+## <a name="faq-for-radius-authentication"></a><a name="faqradius"></a>RADIUS 認証に関する FAQ
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 

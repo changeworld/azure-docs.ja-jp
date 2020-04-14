@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 1778ba543e070bbffbbc8579b280373d834492fd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 417ef716c391126982809574fc16f6681115cac3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920801"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477410"
 ---
 # <a name="train-svd-recommender"></a>SVD レコメンダーのトレーニング
 
@@ -68,7 +68,7 @@ Azure Machine Learning デザイナーの **Movie Ratings** (映画の評価) �
 
     学習率は、各イテレーションのステップのサイズを決定します。 ステップ サイズが大きすぎると、最適解から離れていってしまう可能性があります。 ステップ サイズが小さすぎると、トレーニングで最適解を見つけ出すまでの時間が長くなります。 
   
-5.  パイプラインを実行します。  
+5.  パイプラインを送信します。  
 
 
 ## <a name="next-steps"></a>次のステップ

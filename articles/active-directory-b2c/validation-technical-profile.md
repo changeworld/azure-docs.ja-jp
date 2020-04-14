@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 65a2eab05e7c475431602d9c2d3fc44b59bbc8f7
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1eaf159149bb353b1cf0474aad5bc233decddc5c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78185728"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481570"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーで検証技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-検証技術プロファイルは、[Azure Active Directory](active-directory-technical-profile.md) や [REST API](restful-technical-profile.md) などの、あらゆるプロトコルの通常の技術プロファイルです。 検証技術プロファイルでは、出力要求を返すか、または次のデータによって HTTP 409 エラー メッセージ (競合応答状態コード) を返します。
+検証技術プロファイルは、[Azure Active Directory](active-directory-technical-profile.md) や [REST API](restful-technical-profile.md) などの、あらゆるプロトコルの通常の技術プロファイルです。 検証技術プロファイルでは、出力要求を返すか、または次のデータによって 4xx HTTP 状態コードを返します。 詳細については、「[エラー メッセージを返す](restful-technical-profile.md#returning-error-message)」を参照してください。
 
 ```JSON
 {
@@ -32,11 +32,11 @@ ms.locfileid: "78185728"
 }
 ```
 
-検証技術プロファイルから返された要求は、要求バッグに追加されます。 これらの要求は、その次の検証技術プロファイルで使用できます。
+検証技術プロファイルの出力要求の範囲は、検証技術プロファイルを呼び出す[セルフアサート技術プロファイル](self-asserted-technical-profile.md)と、その検証技術プロファイルに限定されます。 次のオーケストレーションの手順で出力要求を使用する場合は、検証技術プロファイルを呼び出すセルフアサート技術プロファイルに出力要求を追加します。
 
 検証技術プロファイルは、**ValidationTechnicalProfiles** 要素内に出現する順序で実行されます。 検証技術プロファイルでは、検証技術プロファイルでエラーが発生したか、または成功した場合に、後続の検証技術プロファイルの実行を続行するかどうかを構成できます。
 
-検証技術プロファイルは、**ValidationTechnicalProfile** 要素で定義されている前提条件に基づいて、条件付きで実行できます。 たとえば、特定の要求が存在するかどうか、要求が特定の値と等しいかどうかなどを確認できます。
+検証技術プロファイルは、**ValidationTechnicalProfile** 要素で定義されている前提条件に基づいて、条件付きで実行できます。 たとえば、特定の要求が存在するかどうか、要求が指定の値と等しいかどうかなどを確認できます。
 
 セルフアサート技術プロファイルでは、その出力要求の一部またはすべてを検証するために使用する検証技術プロファイルを定義できます。 参照先の技術プロファイルのすべての入力要求は、参照元の検証技術プロファイルの出力要求に表示する必要があります。
 
@@ -76,7 +76,7 @@ ms.locfileid: "78185728"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| Value | 1:n | チェックで使用されるデータ。 このチェックの種類が `ClaimsExist` の場合、このフィールドではクエリ対象の ClaimTypeReferenceId が指定されます。 チェックの種類が `ClaimEquals` の場合、このフィールドではクエリ対象の ClaimTypeReferenceId が指定されます。 一方、別の値要素には、チェック対象の値が含まれています。|
+| 値 | 1:n | チェックで使用されるデータ。 このチェックの種類が `ClaimsExist` の場合、このフィールドではクエリ対象の ClaimTypeReferenceId が指定されます。 チェックの種類が `ClaimEquals` の場合、このフィールドではクエリ対象の ClaimTypeReferenceId が指定されます。 一方、別の値要素には、チェック対象の値が含まれています。|
 | アクション | 1:1 | オーケストレーション手順内の前提条件チェックが true の場合に実行する必要があるアクション。 **Action** の値は `SkipThisValidationTechnicalProfile` に設定されます。 関連付けられている検証技術プロファイルを実行しないことを指定します。 |
 
 ### <a name="example"></a>例

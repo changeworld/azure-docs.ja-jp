@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 7913cb888e1799efae0f3ecdf3391d19736cc273
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: f06c4304be67fbc2f3116375dae33b10228723a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970146"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239872"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux イメージの概要
 
@@ -45,22 +45,22 @@ az vm image list --publisher RedHat --all
 
 Azure の VM イメージは、発行元、プラン、SKU、バージョンごとに整理されます。 発行元:プラン:SKU:バージョンの組み合わせはイメージ URN であり、使用されるイメージを一意に識別します。
 
-たとえば、`RedHat:RHEL:7-LVM:7.6.2018103108` は、2018 年 10 月 31 日に構築された、RHEL 7.6 の LVM パーティション分割されたイメージを表します。
+たとえば、`RedHat:RHEL:8-LVM:8.1.20200318` は、2020 年 3 月 18 日にビルドされた、RHEL 8.1 LVM パーティション分割イメージを表します。
 
-RHEL 7.6 VM を作成する方法の例を以下に示します。
+RHEL 8.1 VM を作成する方法の例を以下に示します。
 
 ```azurecli-interactive
-az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-LVM:7.6.2018103108 --no-wait
+az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:8.1.20200318 --no-wait
 ```
 
 ### <a name="the-latest-moniker"></a>"最新" のモニカー
 
 Azure REST API では、特定のバージョンではなく、バージョンで "最新" のモニカーを使用できます。 "最新" のものを使用することで、特定の発行元、プラン、SKU で利用可能な最新のイメージがプロビジョニングされます。
 
-たとえば、`RedHat:RHEL:7-LVM:latest` は、利用可能な最新の RHEL 7 ファミリの LVM パーティション分割されたイメージを表します。
+たとえば、`RedHat:RHEL:8-LVM:latest` は、利用可能な最新の RHEL 8 ファミリの LVM パーティション分割イメージを表します。
 
 ```azurecli-interactive
-az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-LVM:latest --no-wait
+az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:latest --no-wait
 ```
 
 >[!NOTE]
@@ -104,8 +104,8 @@ RHEL 7.x イメージの場合、いくつかの異なる種類のイメージ�
 
 |Publisher | プラン | SKU 値 | Version | 詳細
 |----------|-------|------------|---------|--------
-|RedHat | RHEL | 8 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191023) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割された RHEL 8.0 イメージです。
-|RedHat | RHEL | 8-gen2 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191024) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割された Hyper-V 第 2 世代 RHEL 8.0 イメージです。 Azure の第 2 世代 VM の詳細については、「[Azure での第 2 世代 VM のサポート](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)」を参照してください。
+|RedHat | RHEL | 8 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191023) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割 RHEL 8 イメージです。
+|RedHat | RHEL | 8-gen2 | RHEL マイナー バージョンと発行日の連結された値 (例: 8.0.20191024) | これらのイメージは、標準の Red Hat リポジトリに接続されている、LVM パーティション分割 Hyper-V 第 2 世代 RHEL 8 イメージです。 Azure の第 2 世代 VM の詳細については、「[Azure での第 2 世代 VM のサポート](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)」を参照してください。
 
 ## <a name="rhel-longer-support-add-ons"></a>RHEL 長期サポート アドオン
 

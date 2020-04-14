@@ -1,6 +1,6 @@
 ---
 title: group by オプションの使用
-description: ソリューション開発のための Azure SQL Data Warehouse での Group By オプションの実装に関するヒント。
+description: Synapse SQL プールでの GROUP BY オプションの実装に関するヒント。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,30 +11,31 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f77445e80e701053b7fbfa1aa559248cf505353c
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 25e6770fb38d13591186754bc5e6a7641083a899
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350527"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633508"
 ---
-# <a name="group-by-options-in-sql-data-warehouse"></a>SQL Data Warehouse の Group By オプション
-ソリューション開発のための Azure SQL Data Warehouse での Group By オプションの実装に関するヒント。
+# <a name="group-by-options-in-synapse-sql-pool"></a>Synapse SQL プールの GROUP BY オプション
+
+この記事では、SQL プールで GROUP BY オプションを実装するためのヒントを紹介します。
 
 ## <a name="what-does-group-by-do"></a>GROUP BY で行われる操作
 
-[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL 句は、行のサマリー セットにデータを集計します。 GROUP BY には、SQL Data Warehouse ではサポートされていないオプションがいくつかあります。 サポートされないオプションには、対処法があります。
-
-オプションは次のとおりです。
+[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 句は、行のサマリー セットにデータを集計します。 GROUP BY には、SQL プールではサポートされないオプションがいくつかあります。 これらのオプションには、次の回避策があります。
 
 * GROUP BY with ROLLUP
 * GROUPING SETS
 * GROUP BY with CUBE
 
 ## <a name="rollup-and-grouping-sets-options"></a>Rollup および Grouping Sets オプション
-ここで最も簡単な選択肢は、UNION ALL を使用して、明示的な構文に頼る代わりに、ロールアップを実行します。 結果はまったく同じです。
+
+ここで最も簡単な選択肢は、明示的な構文に頼るのではなく、UNION ALL を使用してロールアップを実行することです。 結果はまったく同じです。
 
 次の例では、ROLLUP オプションと共に GROUP BY ステートメントを使用しています。
+
 ```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
@@ -84,11 +85,12 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 GROUPING SETS を置き換えるには、サンプルの原則が適用されます。 表示する集計レベルの UNION ALL セクションを作成するだけでかまいません。
 
 ## <a name="cube-options"></a>Cube オプション
-UNION ALL アプローチを使用して、GROUP BY WITH CUBE を作成することができます。 問題は、コードがすぐに複雑で扱いにくくなることです。 これを防ぐために、次のより高度なアプローチを使用することができます。
 
-上記の例を使用してみましょう。
+UNION ALL アプローチを使用して、GROUP BY WITH CUBE を作成することができます。 問題は、コードがすぐに複雑で扱いにくくなることです。 この問題を軽減するために、次のより高度なアプローチを使用することができます。
 
-まず、作成したい集計のすべてのレベルを定義する 'cube' を定義します。 2 つの派生テーブルに CROSS JOIN と書き込むことが重要です。 これによって、すべてのレベルが生成されます。 コードの残りの部分は、書式設定用です。
+前の例を使用すると、最初の手順は、作成したい集計のすべてのレベルを定義する 'cube' を定義することです。
+
+2 つの派生テーブルの CROSS JOIN によってすべてのレベルが生成されるため、それをメモしておいてください。 コードの残りの部分は、書式設定用です。
 
 ```sql
 CREATE TABLE #Cube
@@ -119,7 +121,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-CTAS の結果を次に示します。
+CTAS の結果を次の図に示します。
 
 ![Cube によるグループ化](./media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
@@ -146,7 +148,7 @@ WITH
 ;
 ```
 
-3 番目に、集計を実行する列のキューブをループします。 クエリが、#Cube 一時テーブルで行ごとに 1 回実行され、#Results 一時テーブルに結果が格納されます。
+3 番目に、集計を実行する列のキューブをループします。 #Cube 一時テーブルのすべての行に対して、クエリが 1 回実行されます。 T#Results 一時テーブルに結果が格納されます。
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -170,7 +172,7 @@ BEGIN
 END
 ```
 
-最後に、#Results 一時テーブルから簡単に読み取ることによって結果を戻すことができます。
+最後に、#Results 一時テーブルから読み取ることで、結果を戻すことができます。
 
 ```sql
 SELECT *
@@ -182,5 +184,5 @@ ORDER BY 1,2,3
 コードをセクションに分割し、ループ構造を生成することによって、コードの管理と保守が容易になります。
 
 ## <a name="next-steps"></a>次のステップ
-開発についてのその他のヒントは、[開発の概要](sql-data-warehouse-overview-develop.md)に関するページをご覧ください。
 
+開発についてのその他のヒントは、[開発の概要](sql-data-warehouse-overview-develop.md)に関するページをご覧ください。

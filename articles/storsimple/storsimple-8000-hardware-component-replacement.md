@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60321833"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのハードウェア コンポーネントの交換
@@ -34,10 +34,10 @@ ms.locfileid: "60321833"
 ### <a name="safety-icon-conventions"></a>安全性アイコンの表記規則
 次の表で、これらのチュートリアルで使用される安全性アイコンについて説明します。 デバイスのコンポーネントを取り外して交換する手順を進めるときに、これらの安全性アイコンに細心の注意を払ってください。
 
-| アイコン | Text | 追加情報 |
+| アイコン | Text | 関連情報 |
 |:--- |:--- |:--- |
-| ![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png) |**危険!** |回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。 この記号の文字は、最も重大な状況の場合にのみ使用されます。 |
-| ![警告のアイコン](./media/storsimple-hardware-component-replacement/Warning.png) |**警告!** |回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。 |
+| ![警告アイコン](./media/storsimple-hardware-component-replacement/Warning.png) |**危険!** |回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。 この記号の文字は、最も重大な状況の場合にのみ使用されます。 |
+| ![警告アイコン](./media/storsimple-hardware-component-replacement/Warning.png) |**警告!** |回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。 |
 | ![注意アイコン](./media/storsimple-hardware-component-replacement/Caution.png) |**注意!** |回避しなければ、軽度または中程度の負傷を招く可能性のある危険な状況を示します。 |
 | ![Notice icon](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**注意事項:** |重要だが、危険に関連するものではない情報を示します。 |
 | ![Electrical shock icon](./media/storsimple-hardware-component-replacement/Electric.png) |**感電の危険** |電圧が高いことを示します。 |
@@ -51,12 +51,12 @@ ms.locfileid: "60321833"
 
 コンポーネントを交換する前に、次の情報を考慮してください。
 
-![Warning Icon](./media/storsimple-hardware-component-replacement/Warning.png) ![Electrical Shock Icon](./media/storsimple-hardware-component-replacement/Electric.png) **警告!**
+![警告アイコン](./media/storsimple-hardware-component-replacement/Warning.png) ![感電のアイコン](./media/storsimple-hardware-component-replacement/Electric.png) **警告!**
 
 * StorSimple デバイスのコンポーネントに触るときは、静電気除去マットまたは帯電防止マットを使用して、身体の静電気を逃がしてください。
 * 回路に触れないでください。 回路が露出してる可能性があるコンポーネントに触るときは、用意されているハンドルとガイドを使用してください。
 
-![Warning Icon](./media/storsimple-hardware-component-replacement/Warning.png) ![Notice Icon](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **注意事項:**
+![警告アイコン](./media/storsimple-hardware-component-replacement/Warning.png) ![通告アイコン](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **通告:**
 
 モジュールを交換するときは、 **エンクロージャの後部に空のベイを絶対に残さないでください**。 問題のある部分を取り外す前に、交換用モジュールまたは空のモジュールを用意してください。
 
@@ -65,7 +65,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 デバイスの主なハードウェア コンポーネントを次の表にまとめて示します。 **交換手順** の欄に示されているリンクをクリックすると、関連付けられているチュートリアルに移動します。
 
-| コンポーネント | 台数 | プラグイン モジュール? | 交換手順 |
+| Components | 台数 | プラグイン モジュール? | 交換手順 |
 |:--- |:--- |:--- |:--- |
 | シャーシ |1 |いいえ |[StorSimple デバイスのシャーシを交換する](storsimple-8000-chassis-replacement.md) |
 | プライマリ コントローラー |2 |はい |[StorSimple デバイスのコントローラー モジュールを交換する](storsimple-8000-controller-replacement.md) |
@@ -77,7 +77,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 主エンクロージャと EBOD エンクロージャは、I/O モジュールが異なります。 また、PCM のワット数が異なります。 主エンクロージャの PCM は 764 W です。これに対し、EBOD エンクロージャの PCM は 580 W です。主エンクロージャの PCM には、バックアップ バッテリ モジュールも含まれます。
 
-| コンポーネント | 台数 | プラグイン モジュール? | 交換手順 |
+| Components | 台数 | プラグイン モジュール? | 交換手順 |
 |:--- |:--- |:--- |:--- |
 | シャーシ |1 |いいえ |[StorSimple デバイスのシャーシを交換する](storsimple-8000-chassis-replacement.md) |
 | EBOD コントローラー |2 |はい |[StorSimple デバイスの EBOD コントローラーを交換する](storsimple-8000-ebod-controller-replacement.md) |
@@ -134,6 +134,6 @@ StorSimple デバイスでは、次の現場交換可能ユニット (FRU) を�
 
 これらの交換ユニットの注文については、 [Microsoft サポートにお問い合わせください](storsimple-8000-contact-microsoft-support.md) 。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 StorSimple のハードウェア コンポーネントを交換する前に、すべての [安全に関する情報](storsimple-safety.md) を確認します。
 

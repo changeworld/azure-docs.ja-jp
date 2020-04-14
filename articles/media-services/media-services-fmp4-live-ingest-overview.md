@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 507afad294e8233ea4de4130795f29925870fcdf
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74888055"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services の Fragmented MP4 ライブ インジェスト仕様 
@@ -83,7 +83,7 @@ Media Services 用 ISO Fragmented MP4 ベースのライブ インジェスト�
 
 オーディオ – 128 kbps
 
-### <a name="option-1-all-tracks-in-one-stream"></a>オプション 1:すべてのトラックを 1 つのストリームに配置する
+### <a name="option-1-all-tracks-in-one-stream"></a>オプション 1: すべてのトラックを 1 つのストリームに配置する
 このオプションでは、1 つのエンコーダーですべてのオーディオ トラックとビデオ トラックを生成し、1 つの Fragmented MP4 ビットストリームにバンドルします。 Fragmented MP4 ビットストリームは、その後、1 つの HTTP POST 接続を経由して送信されます。 この例では、このライブ プレゼンテーションには 1 つのストリームだけがあります。
 
 ![1 ストリームのトラック][image2]
@@ -93,7 +93,7 @@ Media Services 用 ISO Fragmented MP4 ベースのライブ インジェスト�
 
 ![個別ストリームのトラック][image3]
 
-### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>オプション 3: オーディオ トラックを最も低いビットレートのビデオ トラックにバンドルして 1 つのストリームに配置する
+### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>オプション 3:オーディオ トラックを最も低いビットレートのビデオ トラックにバンドルして 1 つのストリームに配置する
 このオプションでは、顧客は最も低いビットレートのビデオ トラックとオーディオ トラックを 1 つの Fragment MP4 ビットストリームにバンドルし、その他の 2 つのビデオ トラックは個別のストリームとして残しています。 
 
 ![オーディオ トラックとビデオ トラックのストリーム][image4]

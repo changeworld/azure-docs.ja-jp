@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f2019f8538b6997d8fe802a1e90069e88274eb0c
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 55b00af9afeafb2a3fa7992cc457819dc1dcb2b2
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349118"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631285"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (旧称 SQL DW) のチート シート
 
-このチート シートは、Azure Synapse ソリューションを構築するための役立つヒントとベスト プラクティスを提供します。 
+このチート シートは、Azure Synapse ソリューションを構築するための役立つヒントとベスト プラクティスを提供します。
 
 次の図は、データ ウェアハウスを設計するプロセスを示しています。
 
@@ -28,6 +28,7 @@ ms.locfileid: "80349118"
 ## <a name="queries-and-operations-across-tables"></a>複数のテーブルを対象とするクエリおよび操作
 
 データ ウェアハウスで実行する主要な操作とクエリが事前にわかっている場合は、それらの操作に合わせてデータ ウェアハウス アーキテクチャを優先度付けすることができます。 こうしたクエリや操作には次が含まれる可能性があります。
+
 * 1 つまたは 2 つのファクト テーブルをディメンション テーブルと結合し、結合されたテーブルをフィルター処理して、結果をデータ マートに追加する。
 * ファクト テーブルに対して大きな更新または小さな更新を行う。
 * テーブルにデータのみを追加する。
@@ -36,7 +37,7 @@ ms.locfileid: "80349118"
 
 ## <a name="data-migration"></a>データ移行
 
-まず、データを [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md) または Azure Blob Storage に読み込みます。 次に、PolyBase を使用してデータをステージング テーブルに読み込みます。 次の構成を使用します。
+まず、データを [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) または Azure Blob Storage に読み込みます。 次に、PolyBase を使用してデータをステージング テーブルに読み込みます。 次の構成を使用します。
 
 | デザイン | 推奨 |
 |:--- |:--- |
@@ -45,7 +46,7 @@ ms.locfileid: "80349118"
 | パーティション分割 | なし |
 | リソース クラス | largerc または xlargerc |
 
-[データ移行](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/)、[データ読み込み](design-elt-data-loading.md)、および[抽出、読み込み、および変換 (ELT) プロセス](design-elt-data-loading.md)の詳細を参照してください。 
+[データ移行](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/)、[データ読み込み](design-elt-data-loading.md)、および[抽出、読み込み、および変換 (ELT) プロセス](design-elt-data-loading.md)の詳細を参照してください。
 
 ## <a name="distributed-or-replicated-tables"></a>分散テーブルまたはレプリケート テーブル
 
@@ -58,12 +59,13 @@ ms.locfileid: "80349118"
 | ハッシュ インデックス | * ファクト テーブル<br></br>* 大きいディメンション テーブル |* ディストリビューション キーを更新できない |
 
 **ヒント:**
+
 * 最初はラウンド ロビンを使いますが、大規模な並列アーキテクチャを活用するにはハッシュ ディストリビューション方法を目指します。
 * 共通ハッシュ キーが同じデータ形式であることを確認します。
 * 分散には varchar 形式を使わないようにします。
 * 頻繁に結合操作が行われるファクト テーブルに対する共通ハッシュ キーを持つディメンション テーブルは、ハッシュが分散される可能性があります。
-* データの偏りを分析するには、 *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql)* を使います。
-* クエリの背後で行われているデータ移動を分析し、ブロードキャストおよびシャッフル操作にかかる時間を監視するには、 *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)* を使います。 これはディストリビューション方法の検討に役立ちます。
+* データの偏りを分析するには、 *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* を使います。
+* クエリの背後で行われているデータ移動を分析し、ブロードキャストおよびシャッフル操作にかかる時間を監視するには、 *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* を使います。 これはディストリビューション方法の検討に役立ちます。
 
 詳しくは、[レプリケート テーブル](design-guidance-for-replicated-tables.md)および[分散テーブル](sql-data-warehouse-tables-distribute.md)に関するページをご覧ください。
 
@@ -78,7 +80,8 @@ ms.locfileid: "80349118"
 | クラスター化列ストア インデックス (CCI) (既定) | * 大規模なテーブル (1 億行以上) | * レプリケート テーブルで使われます<br></br>* 大量のテーブル更新操作を行います<br></br>* テーブルを過剰にパーティション分割しています。行グループは異なるディストリビューション ノードおよびパーティションにはまたがりません |
 
 **ヒント:**
-* クラスター化インデックスに加えて、フィルターで使用頻度の高い列に非クラスター化インデックスを追加することが必要な場合があります。 
+
+* クラスター化インデックスに加えて、フィルターで使用頻度の高い列に非クラスター化インデックスを追加することが必要な場合があります。
 * CCI を含むテーブルでのメモリの管理方法に注意する必要があります。 データを読み込むときに、大きいリソース クラスによってユーザー (またはクエリ) にメリットがあるようにします。 トリミングによって多くの小さい圧縮された行グループが作成されないようにします。
 * Gen2 では、パフォーマンスを最大にするため、CCI テーブルはコンピューティング ノードにローカルにキャッシュされます。
 * CCI では、行グループの圧縮が不十分であるためにパフォーマンスが低下することがあります。 これが発生した場合は、CCI を再構築または再編成します。 圧縮された行グループあたり 10 万行以上が必要です。 理想は行グループあたり 100 万行です。
@@ -88,6 +91,7 @@ ms.locfileid: "80349118"
 詳しくは、[インデックス](sql-data-warehouse-tables-index.md)に関するページをご覧ください。
 
 ## <a name="partitioning"></a>パーティション分割
+
 大きなファクト テーブル (10 億行以上) がある場合、テーブルをパーティション分割することがあります。 ほとんどの場合、パーティション キーは日付に基づく必要があります。 パーティション分割しすぎないように注意してください (特に、クラスター化列ストア インデックスの場合)。
 
 ELT を必要とするステージング テーブルでは、パーティション分割によるメリットがあります。 データのライフサイクル管理が容易になります。
@@ -104,26 +108,26 @@ ELT を必要とするステージング テーブルでは、パーティショ
 履歴データ内の大きなバッチを更新する場合、テーブルに保持したいデータは、INSERT、UPDATE、DELETE を使用する代わりに、[CTAS](sql-data-warehouse-develop-ctas.md) を使用して書き込むことを検討してください。
 
 ## <a name="maintain-statistics"></a>統計を管理する
- 自動統計が一般公開されるまで、統計の手動のメンテナンスが必要です。 データに*大幅な*変更が発生したときに統計を更新することが重要です。 これにより、クエリ プランを最適化できます。 すべての統計の管理に時間がかかりすぎる場合は、統計を作成する列を限定します。 
+
+ 自動統計が一般公開されるまで、統計の手動のメンテナンスが必要です。 データに*大幅な*変更が発生したときに統計を更新することが重要です。 これにより、クエリ プランを最適化できます。 すべての統計の管理に時間がかかりすぎる場合は、統計を作成する列を限定します。
 
 更新の頻度を定義することもできます。 たとえば、毎日新しい値が追加される可能性がある日付列を更新する場合があります。 結合に含まれる列、WHERE 句で使われている列、および GROUP BY に含まれている列に関する統計を作成すると、最も大きなメリットが得られます。
 
 詳しくは、[統計](sql-data-warehouse-tables-statistics.md)に関するページをご覧ください。
 
 ## <a name="resource-class"></a>リソース クラス
+
 リソース グループは、クエリにメモリを割り当てるための方法として使用されます。 クエリまたは読み込みの速度を向上させるために、より多くのメモリが必要な場合は、さらに高いリソース クラスを割り当てる必要があります。 その一方で、使うリソース クラスを大きくするとコンカレンシーに影響があります。 すべてのユーザーを大きいリソース クラスに移行する前に、そのことを考慮する必要があります。
 
 クエリに時間がかかりすぎる場合は、ユーザーが大きいリソース クラスで実行していないことを確認します。 大きいリソース クラスは、多くのコンカレンシー スロットを消費します。 それにより、他のクエリが待機する可能性があります。
 
-最後に、Gen2 の [SQL プール](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)を使用して、各リソース クラスが Gen1 の 2.5 倍のメモリを取得します。
+最後に、Gen2 の [SQL プール](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)を使用して、各リソース クラスが Gen1 の 2.5 倍のメモリを取得します。
 
 詳しくは、[リソース クラスとコンカレンシー](resource-classes-for-workload-management.md)の操作方法に関するページをご覧ください。
 
 ## <a name="lower-your-cost"></a>コストの削減
-Azure Synapse の重要な機能は、[コンピューティング リソースを管理する](sql-data-warehouse-manage-compute-overview.md)能力です。 使用していない SQL プールは一時停止できます。それにより、コンピューティング リソースの課金が停止されます。 パフォーマンスのニーズに合わせてリソースを拡大縮小することができます。 一時停止するには、[Azure Portal](../../synapse-analytics/sql-data-warehouse/pause-and-resume-compute-portal.md) または [PowerShell](../../synapse-analytics/sql-data-warehouse/pause-and-resume-compute-powershell.md) を使用します。 拡大縮小するには、[Azure Portal](quickstart-scale-compute-portal.md)、[Powershell](quickstart-scale-compute-powershell.md)、[T-SQL](quickstart-scale-compute-tsql.md)、または [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) を使用します。
 
-
-Azure Synapse の重要な機能は、[コンピューティング リソースを管理する](sql-data-warehouse-manage-compute-overview.md)能力です。 使用していない SQL プールは一時停止できます。それにより、コンピューティング リソースの課金が停止されます。 パフォーマンスのニーズに合わせてリソースを拡大縮小することができます。 一時停止するには、[Azure Portal](../../sql-data-warehouse/pause-and-resume-compute-portal.md) または [PowerShell](../../sql-data-warehouse/pause-and-resume-compute-powershell.md) を使用します。 拡大縮小するには、[Azure Portal](quickstart-scale-compute-portal.md)、[Powershell](quickstart-scale-compute-powershell.md)、[T-SQL](quickstart-scale-compute-tsql.md)、または [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) を使用します。
+Azure Synapse の重要な機能は、[コンピューティング リソースを管理する](sql-data-warehouse-manage-compute-overview.md)能力です。 使用していない SQL プールは一時停止できます。それにより、コンピューティング リソースの課金が停止されます。 パフォーマンスのニーズに合わせてリソースを拡大縮小することができます。 一時停止するには、[Azure Portal](pause-and-resume-compute-portal.md) または [PowerShell](pause-and-resume-compute-powershell.md) を使用します。 拡大縮小するには、[Azure Portal](quickstart-scale-compute-portal.md)、[Powershell](quickstart-scale-compute-powershell.md)、[T-SQL](quickstart-scale-compute-tsql.md)、または [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) を使用します。
 
 Azure Functions では自動スケールを利用できます。
 

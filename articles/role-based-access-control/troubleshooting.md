@@ -1,6 +1,6 @@
 ---
-title: Azure リソースの RBAC のトラブルシューティング | Microsoft Docs
-description: Azure リソースのロールベースのアクセス制御 (RBAC) に関する問題を解決します。
+title: Azure RBAC のトラブルシューティング
+description: Azure ロールベースのアクセス制御 (Azure RBAC) に関する問題を解決します。
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -11,43 +11,72 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 09d5b7a126a1b8832bfe40e2e25dd4000d5d9155
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980988"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548282"
 ---
-# <a name="troubleshoot-rbac-for-azure-resources"></a>Azure リソースの RBAC のトラブルシューティング
+# <a name="troubleshoot-azure-rbac"></a>Azure RBAC のトラブルシューティング
 
-この記事では、Azure portal でロールを使用するときに予想されることをユーザーが理解し、アクセスの問題を解決できるように、Azure リソースのロールベースのアクセス制御 (RBAC) に関する一般的な質問に回答します。
+この記事では、ロールを使用するときに予想されることをユーザーが理解し、アクセスの問題を解決できるように、Azure ロールベースのアクセス制御 (Azure RBAC) に関する一般的な質問にいくつか回答します。
 
-## <a name="problems-with-rbac-role-assignments"></a>RBAC ロールの割り当てに関する問題
+## <a name="azure-role-assignments-limit"></a>Azure でのロールの割り当て制限
+
+Azure では、サブスクリプションあたり最大 **2,000** 個のロールの割り当てをサポートしています。 エラー メッセージ "ロールの割り当てはこれ以上作成できません (コード: RoleAssignmentLimitExceeded)" が、ロールを割り当てようとすると発生する場合は、サブスクリプションのロールの割り当て数を減らしてみます。
+
+> [!NOTE]
+> **2,000** のサブスクリプション当たりのロール割り当ての制限は固定されており、増やすことはできません。
+
+この制限に近づいている場合は、次の方法でロールの割り当ての数を減らすことができます。
+
+- ユーザーをグループに追加し、ロールをユーザーではなくグループに割り当てます。 
+- 複数の組み込みロールをカスタム ロールと結合します。 
+- サブスクリプションまたは管理グループなど、上位のスコープで共通のロールの割り当てを行います。
+- Azure AD Premium P2 を使用している場合は、ロールを永続的に割り当てるのではなく、[Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) で割り当てます。 
+- 追加のサブスクリプションを追加します。 
+
+ロールの割り当ての数を取得するには、Azure portal の [アクセス制御 (IAM) ページのグラフを](role-assignments-list-portal.md#list-number-of-role-assignments)を表示します。 また、次の Azure PowerShell コマンドを使用することもできます。
+
+```azurepowershell
+$scope = "/subscriptions/<subscriptionId>"
+$ras = Get-AzRoleAssignment -Scope $scope | Where-Object {$_.scope.StartsWith($scope)}
+$ras.Count
+```
+
+## <a name="problems-with-azure-role-assignments"></a>Azure のロールの割り当てに関する問題
 
 - **[追加]**  >  **[ロール割り当ての追加]** オプションが無効になっているため、または "オブジェクト ID のクライアントは、アクションの実行を承認されていません" というアクセス許可エラーが発生するために、Azure portal の **[アクセス制御 (IAM)]** でロールの割り当てを追加できない場合は、ロールを割り当てようとしているスコープで `Microsoft.Authorization/roleAssignments/write` のアクセス許可を持っている[所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)などのロールを割り当てられているユーザーで、現在サインインしていることを確認してください。
-- エラー メッセージ "ロールの割り当てはこれ以上作成できません (コード: RoleAssignmentLimitExceeded)" が、ロールを割り当てようとすると発生する場合は、代わりにロールをグループに割り当てて、ロールの割り当て数を減らしてみます。 Azure では、サブスクリプションあたり最大 **2,000** 個のロールの割り当てをサポートしています。 このロール割り当ての制限は固定されており、増やすことはできません。
 
 ## <a name="problems-with-custom-roles"></a>カスタム ロールに関する問題
 
-- カスタム ロールを作成する方法の手順が必要な場合は、[Azure PowerShell](tutorial-custom-role-powershell.md) または [Azure CLI](tutorial-custom-role-cli.md) を使用するカスタム ロールのチュートリアルをご覧ください。
+- カスタム ロールを作成する手順が必要な場合は、[Azure portal](custom-roles-portal.md) (現在はプレビュー段階)、[Azure PowerShell](tutorial-custom-role-powershell.md)、[Azure CLI](tutorial-custom-role-cli.md) を使用して、カスタム ロールのチュートリアルを参照してください。
 - 既存のカスタム ロールを更新できない場合は、現在サインインしているユーザーに `Microsoft.Authorization/roleDefinition/write` アクセス許可を持つロール ([所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)など) が割り当てられていることを確認します。
 - カスタム ロールを削除することができず、エラー メッセージ "ロールを参照している既存のロールの割り当てがあります (コード: RoleDefinitionHasAssignments)" が表示される場合は、カスタム ロールを使用しているロールの割り当てがまだ存在します。 それらのロール割り当てを削除してから、もう一度カスタム ロールを削除してみてください。
-- エラー メッセージ "ロールの定義の制限を超えました。 ロールの定義をこれ以上作成することはできません (コード: RoleDefinitionLimitExceeded)" が、新しいカスタム ロールを作成しようとすると表示される場合は、使用されていないすべてのカスタム ロールを削除します。 Azure では、テナントあたり最大 **5,000** 個のカスタム ロールをサポートします (Azure Government、Azure Germany、Azure China 21Vianet などの特殊なクラウドの場合、カスタム ロールの上限は 2,000 個です)。
-- カスタム ロールを更新しようとすると、"このクライアントには、範囲 '/subscriptions/{subscriptionid}' に対してアクション 'Microsoft.Authorization/roleDefinitions/write' を実行する権限がありますが、リンクされているサブスクリプションが見つかりません" のようなエラーが発生する場合は、テナントで 1 つまたは[複数の割り当て可能な範囲](role-definitions.md#assignablescopes)が削除さているかどうかを確認してください。 スコープが削除された場合は、現時点で使用可能なセルフ サービス ソリューションがないため、サポート チケットを作成します。
+- エラー メッセージ "ロールの定義の制限を超えました。 ロールの定義をこれ以上作成することはできません (コード: RoleDefinitionLimitExceeded)" が、新しいカスタム ロールを作成しようとすると表示される場合は、使用されていないすべてのカスタム ロールを削除します。 Azure では、ディレクトリあたり最大 **5,000** 個のカスタム ロールがサポートされます。 (Azure Germany と Azure China 21Vianet の場合、制限は 2,000 カスタム ロールです)。
+- カスタム ロールを更新しようとすると、"このクライアントには、範囲 '/subscriptions/{subscriptionid}' に対してアクション 'Microsoft.Authorization/roleDefinitions/write' を実行する権限がありますが、リンクされているサブスクリプションが見つかりません" のようなエラーが発生する場合は、ディレクトリで 1 つまたは複数の[割り当て可能なスコープ](role-definitions.md#assignablescopes)が削除されているかどうかを確認してください。 スコープが削除された場合は、現時点で使用可能なセルフ サービス ソリューションがないため、サポート チケットを作成します。
 
-## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>サブスクリプションがテナントをまたいで移動される際に RBAC を復旧します
+## <a name="custom-roles-and-management-groups"></a>カスタム ロールと管理グループ
 
-- サブスクリプションを別の Azure AD テナントに譲渡する方法の手順が必要な場合は、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../cost-management-billing/manage/billing-subscription-transfer.md)」を参照してください。
-- 別の Azure AD テナントにサブスクリプションを譲渡する場合、すべてのロールの割り当てがソース Azure AD テナントから完全に削除され、ターゲット Azure AD テナントに移行されることはありません。 ターゲット テナントでロールの割り当てを再作成する必要があります。 また、Azure リソースのマネージド ID を手動で再作成する必要もあります。 詳細については、[マネージド ID に関する FAQ と既知の問題](../active-directory/managed-identities-azure-resources/known-issues.md)に関するページを参照してください。
-- Azure AD グローバル管理者であり、テナント間で移動された後のサブスクリプションにアクセスできない場合は、 **[Azure リソースのアクセス管理]** トグルを使用して、一時的に[アクセス権を昇格](elevate-access-global-admin.md)させて、サブスクリプションにアクセスします。
+- カスタム ロールの `AssignableScopes` に定義できる管理グループは 1 つだけです。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
+- `DataActions` が含まれるカスタム ロールを管理グループのスコープで割り当てることはできません。
+- ロールの定義の割り当て可能なスコープに管理グループが存在するかどうかは、Azure Resource Manager では確認されません。
+- カスタム ロールと管理グループについて詳しくは、「[Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)」をご覧ください。
+
+## <a name="transferring-a-subscription-to-a-different-directory"></a>サブスクリプションを別のディレクトリに譲渡する
+
+- サブスクリプションを別の Azure AD ディレクトリに譲渡する方法の手順が必要な場合は、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../cost-management-billing/manage/billing-subscription-transfer.md)」を参照してください。
+- 別の Azure AD ディレクトリにサブスクリプションを譲渡する場合、すべてのロールの割り当てがソース Azure AD ディレクトリから**完全**に削除され、ターゲット Azure AD ディレクトリに移行されることはありません。 ターゲット ディレクトリでロールの割り当てを再作成する必要があります。 また、Azure リソースのマネージド ID を手動で再作成する必要もあります。 詳細については、[マネージド ID に関する FAQ と既知の問題](../active-directory/managed-identities-azure-resources/known-issues.md)に関するページを参照してください。
+- Azure AD グローバル管理者であり、ディレクトリ間で譲渡された後のサブスクリプションにアクセスできない場合は、 **[Azure リソースのアクセス管理]** トグルを使用して、一時的に[アクセス権を昇格](elevate-access-global-admin.md)させて、サブスクリプションにアクセスします。
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>サービス管理者または共同管理者に関する問題
 
-- サービス管理者または共同管理者に問題が発生した場合は、「[Add or change Azure subscription administrators](../cost-management-billing/manage/add-change-subscription-administrator.md)」(Azure サブスクリプション管理者を追加または変更する) および「[Classic subscription administrator roles, Azure RBAC roles, and Azure AD administrator roles](rbac-and-directory-admin-roles.md)」(クラシック サブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール) を参照してください。
+- サービス管理者または共同管理者に問題が発生した場合は、「[Azure サブスクリプション管理者を追加または変更する](../cost-management-billing/manage/add-change-subscription-administrator.md)」および「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](rbac-and-directory-admin-roles.md)」を参照してください。
 
 ## <a name="access-denied-or-permission-errors"></a>アクセス拒否またはアクセス許可エラー
 
@@ -62,7 +91,7 @@ ms.locfileid: "75980988"
 
 Azure PowerShell を使用してこのロールの割り当てを一覧表示すると、空の `DisplayName` および `ObjectType` が "不明" に設定されています。 たとえば、[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) では、次のようなロールの割り当てが返されます。
 
-```azurepowershell
+```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
 Scope              : /subscriptions/11111111-1111-1111-1111-111111111111
 DisplayName        :
@@ -76,7 +105,7 @@ CanDelegate        : False
 
 同様に、Azure CLI を使用してこのロールの割り当てを一覧表示すると、空の `principalName` が表示されます。 たとえば、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) では、次のようなロールの割り当てが返されます。
 
-```azurecli
+```
 {
     "canDelegate": null,
     "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222",
@@ -94,7 +123,7 @@ CanDelegate        : False
 
 PowerShell では、オブジェクト ID とロール定義名を使ってロールの割り当てを削除しようとし、複数のロールの割り当てがパラメーターに一致する場合、次のエラー メッセージを受け取ります。"The provided information does not map to a role assignment" (指定された情報は、ロールの割り当てにマップされていません)。 エラー メッセージの例を次に示します。
 
-```Example
+```
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
 
 Remove-AzRoleAssignment : The provided information does not map to a role assignment.
@@ -107,13 +136,15 @@ At line:1 char:1
 
 このエラー メッセージを受け取る場合は、`-Scope` パラメーターまたは `-ResourceGroupName` パラメーターも指定するようにしてください。
 
-```Example
+```
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor" - Scope /subscriptions/11111111-1111-1111-1111-111111111111
 ```
 
-## <a name="rbac-changes-are-not-being-detected"></a>RBAC の変更が検出されない
+## <a name="role-assignment-changes-are-not-being-detected"></a>ロールの割り当ての変更が検出されない
 
-Azure Resource Manager は、パフォーマンスを高めるために構成やデータをキャッシュすることがあります。 ロールの割り当てを作成または削除した場合、その変更が有効となるまでに最大 30 分かかる場合があります。 Azure portal、Azure PowerShell、Azure CLI のいずれかを使用している場合は、一度サインアウトしてからサインインすることで、ロールの割り当てを強制的に最新の情報に更新し、その変更を有効にすることができます。 REST API 呼び出しでロールの割り当てを変更する場合は、アクセス トークンを更新することによって、最新の情報への更新を強制することができます。
+Azure Resource Manager は、パフォーマンスを高めるために構成やデータをキャッシュすることがあります。 ロールの割り当てを追加または削除する場合、変更が適用されるまでに最大で 30 分かかることがあります。 Azure portal、Azure PowerShell、Azure CLI のいずれかを使用している場合は、一度サインアウトしてからサインインすることで、ロールの割り当てを強制的に最新の情報に更新し、その変更を有効にすることができます。 REST API 呼び出しでロールの割り当てを変更する場合は、アクセス トークンを更新することによって、最新の情報への更新を強制することができます。
+
+管理グループのスコープでロールの割り当てを追加または削除し、ロールに `DataActions` がある場合、データ プレーンへのアクセスが数時間更新されない可能性があります。 これは、管理グループのスコープとデータ プレーンにのみ適用されます。
 
 ## <a name="web-app-features-that-require-write-access"></a>書き込みアクセス権限を必要とする Web アプリ機能
 
@@ -148,7 +179,7 @@ Azure Resource Manager は、パフォーマンスを高めるために構成や
 
 以下の項目には、Web サイトが含まれる**リソース グループ**全体に対する**書き込み**アクセス権が必要です。  
 
-* SSL 証明書とバインド (SSL 証明書は同じリソース グループや地理的な場所にあるサイト間で共有できるため)  
+* TLS/SSL 証明書とバインド (TLS/SSL 証明書は同じリソース グループや地理的な場所にあるサイト間で共有できるため)  
 * アラート ルール  
 * 自動スケールの設定  
 * Application Insights コンポーネント  
@@ -188,4 +219,3 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 - [ゲスト ユーザーのトラブルシューティング](role-assignments-external-users.md#troubleshoot)
 - [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)
 - [Azure リソースに対する RBAC の変更のアクティビティ ログを表示する](change-history-report.md)
-

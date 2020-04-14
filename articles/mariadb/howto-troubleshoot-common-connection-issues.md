@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 613de96ee58d37e6270266852e513e53857a441a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: d134bcd0c5f9bfde0fdb095122d54848873174be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765734"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536362"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Azure Database for MariaDB への接続に関する問題のトラブルシューティング
 
@@ -56,6 +56,6 @@ ms.locfileid: "74765734"
 3. 接続文字列およびその他の接続設定を確認します。 「[Azure Database for MariaDB にアプリケーションを接続する方法](howto-connection-string.md)」を参照してください。
 4. ダッシュ ボードでサービスの正常性を確認します。 リージョンで停止が起きていると考えられる場合は、新しいリージョンに復旧する手順について「[Azure Database for MariaDB でのビジネス継続性の概要](concepts-business-continuity.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Database for MariaDB の一時的な接続エラーに対処する](concepts-connectivity.md)

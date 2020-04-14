@@ -2,13 +2,13 @@
 title: Azure Application Insights における依存関係の追跡 | Microsoft Docs
 description: オンプレミスまたは Microsoft Azure Web アプリケーションからの依存関係呼び出しを Application Insights で監視します。
 ms.topic: conceptual
-ms.date: 06/25/2019
-ms.openlocfilehash: 8fb1550a3f1d4b3336384139b049b60e23e648d7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/26/2020
+ms.openlocfilehash: 1d4e8d1a0482257c92f47a00bd440e786c09c7aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666243"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292120"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
@@ -34,12 +34,14 @@ ms.locfileid: "77666243"
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>コンソール アプリで自動依存関係追跡を設定する
 
-.NET/.NET Core コンソール アプリから依存関係を自動的に追跡するには、NuGet パッケージ `Microsoft.ApplicationInsights.DependencyCollector` をインストールし、次のように `DependencyTrackingTelemetryModule` を初期化します。
+.NET コンソール アプリから依存関係を自動的に追跡するには、NuGet パッケージ `Microsoft.ApplicationInsights.DependencyCollector` をインストールし、次のように `DependencyTrackingTelemetryModule` を初期化します。
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
     depModule.Initialize(TelemetryConfiguration.Active);
 ```
+
+.NET Core コンソールアプリの場合、TelemetryConfiguration.Active は古い形式です。 [worker サービスに関するドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)および [ASP.NET Core の監視に関するドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)に記載のガイダンスを参照してください。
 
 ### <a name="how-automatic-dependency-monitoring-works"></a>自動依存関係監視のしくみは?
 
@@ -109,7 +111,7 @@ ASP.NET アプリケーションの場合、インストルメンテーション
 * 低速または失敗した要求からクリックしていき、依存関係呼び出しを確認します。
 * 依存関係データのクエリを実行するには、[Analytics](#logs-analytics) を使用できます。
 
-## <a name="diagnosis"></a> 低速なリクエストの診断
+## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a> 低速なリクエストの診断
 
 各要求イベントは、依存関係呼び出し、例外、およびアプリでの要求の処理中に追跡されるその他のイベントに関連しています。 そのため、いくつかのリクエストが正しく実行されない場合は、それが依存関係からの応答が遅いためかどうかを調べることができます。
 

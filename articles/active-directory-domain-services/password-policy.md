@@ -8,15 +8,15 @@ ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: article
-ms.date: 01/21/2020
+ms.topic: how-to
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b14fed07c9bd9b5fcb6a5489719481902351fc0d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613197"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654877"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>マネージド ドメインに関するパスワードとアカウントのロックアウト ポリシー
 
@@ -45,6 +45,11 @@ Azure Active Directory Domain Services (Azure AD DS) でユーザーのセキュ
 ## <a name="default-password-policy-settings"></a>規定のパスワード ポリシー設定
 
 細かい設定が可能なパスワード ポリシー (FGPP) を使用すると、パスワードおよびアカウント ロックアウトのポリシーに対して、ドメイン内の異なるユーザーに特定の制限を適用できます。 たとえば、特権アカウントをセキュリティで保護するには、通常の権限のないアカウントよりも厳しいアカウント ロックアウト設定を適用します。 Azure AD DS マネージド ドメイン内に複数の FGPP を作成し、適用するユーザーの優先順位を指定できます。
+
+パスワード ポリシーと Active Directory 管理センターの使用方法の詳細については、次の記事を参照してください。
+
+* [細かい設定が可能なパスワード ポリシーの概要](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
+* [AD 管理センターを使用して細かい設定が可能なパスワード ポリシーを構成する](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
 
 ポリシーは、Azure AD DS マネージド ドメイン内のグループの関連付けを通じて配布されます。すべての変更が、次回のユーザーのサインイン時に適用されます。 ポリシーを変更しても、既にロックアウトされているユーザー アカウントのロックが解除されることはありません。
 
@@ -105,20 +110,20 @@ Azure でアプリケーションを構築して実行するときに、カス�
     * パスワードの複雑さ、年齢、有効期限などの設定は、Azure AD DS マネージド ドメインで手動で作成したユーザーに対してのみ適用されます。
     * アカウント ロックアウトの設定はすべてのユーザーに適用されますが、マネージド ドメイン内でのみ有効になり、Azure AD 自体では有効になりません。
 
-    ![カスタムの細かい設定が可能なパスワード ポリシーを作成する](./media/how-to/custom-fgpp.png)
+    ![カスタムの細かい設定が可能なパスワード ポリシーを作成する](./media/password-policy/custom-fgpp.png)
 
 1. **[誤って削除されないように保護する]** をオフにします。 このオプションをオンにすると、FGPP を保存できません。
 1. **[直接の適用先]** セクションで、 **[追加]** ボタンを選択します。 **[ユーザーまたはグループの選択]** ダイアログで、 **[場所]** ボタンを選択します。
 
-    ![パスワード ポリシーを適用するユーザーとグループを選択する](./media/how-to/fgpp-applies-to.png)
+    ![パスワード ポリシーを適用するユーザーとグループを選択する](./media/password-policy/fgpp-applies-to.png)
 
 1. パスワード ポリシーはグループにのみ適用できます。 **[場所]** ダイアログで、ドメイン名 (*aaddscontoso.com* など) を展開し、**AADDC Users** などの OU を選択します。 適用するユーザーのグループを含むカスタム OU がある場合は、その OU を選択します。
 
-    ![グループが属する OU を選択する](./media/how-to/fgpp-container.png)
+    ![グループが属する OU を選択する](./media/password-policy/fgpp-container.png)
 
 1. ポリシーを適用するグループの名前を入力し、 **[名前の確認]** を選択して、グループが存在することを確認します。
 
-    ![FGPP を適用するグループを検索して選択する](./media/how-to/fgpp-apply-group.png)
+    ![FGPP を適用するグループを検索して選択する](./media/password-policy/fgpp-apply-group.png)
 
 1. 選択したグループの名前が **[直接の適用先]** セクションに表示されたら、 **[OK]** を選択してカスタム パスワード ポリシーを保存します。
 

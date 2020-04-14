@@ -1,26 +1,23 @@
 ---
-title: Azure Data Lake Storage Gen2 でファイルと ACL に JavaScript を使用する (プレビュー)
+title: Azure Data Lake Storage Gen2 でファイルと ACL に JavaScript を使用する
 description: JavaScript 用の Azure Storage Data Lake クライアント ライブラリを使用して、階層型名前空間 (HNS) が有効になっているストレージ アカウントで、ディレクトリとファイル、およびディレクトリのアクセス制御リスト (ACL) を管理します。
 author: normesta
 ms.service: storage
-ms.date: 12/18/2019
+ms.date: 03/20/2020
 ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 8fd63adc76422b7fd9978e626208aa90593f8604
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 04d0d23bdbdaeda6a4823c900badb3133ba9eeae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77154770"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061551"
 ---
-# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>JavaScript を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する (プレビュー)
+# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>JavaScript を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
 この記事では、階層型名前空間 (HNS) が有効になっているストレージ アカウントで、JavaScript を使用してディレクトリ、ファイル、アクセス許可を作成および管理する方法を示します。 
-
-> [!IMPORTANT]
-> この記事で紹介している JavaScript ライブラリは現在、パブリック プレビュー段階です。
 
 [パッケージ (ノード パッケージ マネージャー)](https://www.npmjs.com/package/@azure/storage-file-datalake) | [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples) | [フィードバックを送る](https://github.com/Azure/azure-sdk-for-java/issues)
 
@@ -47,9 +44,13 @@ const AzureStorageDataLake = require("@azure/storage-file-datalake");
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する 
 
-この記事のスニペットを使用するには、ストレージ アカウントを表す **DataLakeServiceClient** インスタンスを作成する必要があります。 最も簡単な方法は、アカウント キーを使用することです。 
+この記事のスニペットを使用するには、ストレージ アカウントを表す **DataLakeServiceClient** インスタンスを作成する必要があります。 
 
-この例では、アカウント キーを使用して **DataLakeServiceClient** のインスタンスを作成します。
+### <a name="connect-by-using-an-account-key"></a>アカウント キーを使用して接続する
+
+これは最も簡単にアカウントに接続する方法です。 
+
+この例では、アカウント キーを使用して **DataLakeServiceClient** インスタンスを作成します。
 
 ```javascript
 
@@ -66,7 +67,28 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 
 ```
 > [!NOTE]
-> この承認方法は、Node.js アプリケーションに対してのみ機能します。 ブラウザーでコードを実行する予定の場合、Azure Active Directory (AD) を使用して承認できます。 その実行方法については、[JavaScript 用の Azure Storage ファイル Data Lake クライアント ライブラリ](https://www.npmjs.com/package/@azure/storage-file-datalake)の Readme ファイルを参照してください。 
+> この承認方法は、Node.js アプリケーションに対してのみ機能します。 ブラウザーでコードを実行する予定の場合、Azure Active Directory (AD) を使用して承認できます。 
+
+### <a name="connect-by-using-azure-active-directory-ad"></a>Azure Active Directory (AD) を使用して接続する
+
+[JS 用 Azure ID クライアント ライブラリ](https://www.npmjs.com/package/@azure/identity) を使用して、Azure AD でアプリケーションを認証できます。
+
+この例では、クライアント ID、クライアント シークレット、およびテナント ID を使用して **DataLakeServiceClient** インスタンスを作成します。  これらの値を取得するには、「[クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する](../common/storage-auth-aad-app.md)」を参照してください。
+
+```javascript
+function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantID) {
+
+  const credential = new ClientSecretCredential(tenantID, clientID, clientSecret);
+  
+  const datalakeServiceClient = new DataLakeServiceClient(
+      `https://${accountName}.dfs.core.windows.net`, credential);
+
+  return datalakeServiceClient;             
+}
+```
+
+> [!NOTE]
+> その他の例については、[JS 用 Azure ID クライアント ライブラリ](https://www.npmjs.com/package/@azure/identity)のドキュメントを参照してください。
 
 ## <a name="create-a-file-system"></a>ファイル システムを作成する
 
@@ -336,7 +358,7 @@ async function ListFilesInDirectory(fileSystemClient) {
 }
 ```
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 * [パッケージ (ノード パッケージ マネージャー)](https://www.npmjs.com/package/@azure/storage-file-datalake)
 * [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)

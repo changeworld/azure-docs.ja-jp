@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72248580"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>ストレージ アカウント キーの代わりに SAS を使用してワークフローを Microsoft Genomics に送信する 
@@ -66,7 +66,7 @@ SDK を使用せずに SAS を作成するには、SAS の認証に必要なす�
 ## <a name="add-the-sas-to-the-configtxt-file"></a>SAS を config.txt ファイルに追加する
 SAS クエリ文字列を使用して Microsoft Genomics サービスを介してワークフローを実行するには、config.txt ファイルを編集して config.txt ファイルからキーを削除します。 次に、図のように、(`?` で始まる) SAS クエリ文字列を出力コンテナー名に追加します。 
 
-![Genomics SAS の構成](./media/quickstart-input-sas/genomics-sas-config.png "Genomics SAS の構成")
+![Genomics SAS 構成](./media/quickstart-input-sas/genomics-sas-config.png "Genomics SAS 構成")
 
 Microsoft Genomics Python クライアントを使用し、次のコマンドで、各入力 BLOB 名に対応する SAS クエリ文字列を付加してワークフローを送信します。
 
@@ -85,5 +85,5 @@ msgen submit -f [full path to your config file] -b1 [name of your first paired e
 msgen submit -f [full path to your config file] 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、アカウント キーの代わりに SAS トークンを使用して、`msgen` Python クライアントを介して Microsoft Genomics サービスにワークフローを送信しました。 ワークフローの送信と Microsoft Genomics サービスで使用できるその他のコマンド関連の詳細情報については、[FAQ](frequently-asked-questions-genomics.md) に関するページを参照してください。 

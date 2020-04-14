@@ -3,19 +3,19 @@ title: Speech コンテナーをインストールする
 titleSuffix: Azure Cognitive Services
 description: 音声アンブレラ helm チャートの構成オプションについて説明します。
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 06/26/2019
-ms.author: dapine
-ms.openlocfilehash: ed64412ccf9d192506fafe546b1ccee7941aa43a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 0257f3af44cc85d0a3656472db224ae5a7e19161
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73523297"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874351"
 ---
 ### <a name="speech-umbrella-chart"></a>音声 (アンブレラ チャート)
 

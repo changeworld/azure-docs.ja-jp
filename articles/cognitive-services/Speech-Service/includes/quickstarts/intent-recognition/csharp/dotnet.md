@@ -2,22 +2,22 @@
 author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/27/2020
+ms.date: 04/04/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 4f8fe92a0a36bae2d5e7595bee7bf71fcd926da9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5e6e2c7686c61fa03639566b2b37dc0fb8dbc924
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925132"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671176"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、以下の操作を行います。
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet" target="_blank">実際の開発環境に対応した Speech SDK をインストールし、空のサンプル プロジェクトを作成します<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp" target="_blank">実際の開発環境に対応した Speech SDK をインストールし、空のサンプル プロジェクトを作成します<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>意図認識用の LUIS アプリを作成する
 
@@ -45,7 +45,7 @@ ms.locfileid: "78925132"
 このコードを `RecognizeIntentAsync()` メソッドに挿入します。 次の値を必ず更新してください。
 
 * `"YourLanguageUnderstandingSubscriptionKey"` を LUIS 予測キーで置き換えます。
-* `"YourLanguageUnderstandingServiceRegion"` を LUIS の場所で置き換えます。 **リージョン**の[リージョン識別子](https://aka.ms/speech/sdkregion)を使用してください。
+* `"YourLanguageUnderstandingServiceRegion"` を LUIS の場所で置き換えます。 [リージョン](https://aka.ms/speech/sdkregion)の**リージョン識別子**を使用してください。
 
 >[!TIP]
 > これらの値を見つける方法については、「[意図認識用の LUIS アプリを作成する](#create-a-luis-app-for-intent-recognition)」を参照してください。

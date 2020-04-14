@@ -2,17 +2,17 @@
 title: サブスクリプションにリソースをデプロイする
 description: Azure Resource Manager テンプレートでリソース グループを作成する方法について説明します。 Azure サブスクリプション スコープでリソースをデプロイする方法も示します。
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 50db0b4d46ff4e367411829aa75fa017a168372f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 03/23/2020
+ms.openlocfilehash: 65cc220d32d1e1149b7026fc438f5e34262511dd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207657"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131952"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>サブスクリプション レベルでリソース グループとリソースを作成する
 
-通常、Azure リソースは Azure サブスクリプションのリソース グループにデプロイします。 ただし、サブスクリプション レベルでリソースを作成することもできます。 サブスクリプション レベルのデプロイを使用して、リソース グループの作成や[ロールベースのアクセス制御](../../role-based-access-control/overview.md)の割り当てなど、そのレベルで意味のあるアクションを実行します。
+Azure サブスクリプションでのリソース管理を簡単にするには、サブスクリプション全体の[ポリシー](../../governance/policy/overview.md)または[ロールベースのアクセス制御](../../role-based-access-control/overview.md)を定義して割り当てることができます。 サブスクリプション レベルのテンプレートを使用して、宣言によってポリシーを適用し、サブスクリプションでロールを割り当てます。 リソース グループを作成してリソースをデプロイすることもできます。
 
 サブスクリプション レベルでテンプレートをデプロイするには、Azure CLI、PowerShell、または REST API を使用します。 Azure portal は、サブスクリプション レベルでのデプロイをサポートしていません。
 
@@ -20,14 +20,20 @@ ms.locfileid: "77207657"
 
 サブスクリプション レベルでは、次のリソースの種類をデプロイできます。
 
-* [deployments](/azure/templates/microsoft.resources/deployments)
+* [budgets](/azure/templates/microsoft.consumption/budgets)
+* [デプロイ](/azure/templates/microsoft.resources/deployments) - リソース グループにデプロイする入れ子になったテンプレートの場合。
+* [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
+* [remediations](/azure/templates/microsoft.policyinsights/remediations)
 * [resourceGroups](/azure/templates/microsoft.resources/resourcegroups)
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
+* [scopeAssignments](/azure/templates/microsoft.managednetwork/scopeassignments)
+* [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
+* [tags](/azure/templates/microsoft.resources/tags)
 
 ### <a name="schema"></a>スキーマ
 
@@ -39,34 +45,33 @@ ms.locfileid: "77207657"
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
 ```
 
-パラメーター ファイルの場合は、次を使用します。
+パラメーター ファイルのスキーマはすべてのデプロイ範囲で同じです。 パラメーター ファイルの場合は、次を使用します。
 
 ```json
-https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>デプロイ コマンド
 
 サブスクリプション レベルのデプロイ用のコマンドは、リソース グループのデプロイ用のコマンドと異なります。
 
-Azure CLI の場合は、[az deployment create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create) を使用します。 次の例では、リソース グループを作成するテンプレートがデプロイされます。
+Azure CLI の場合は、[az deployment sub create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create) を使用します。 次の例では、リソース グループを作成するテンプレートがデプロイされます。
 
 ```azurecli-interactive
-az deployment create \
-  --name demoDeployment \
+az deployment sub create \
+  --name demoSubDeployment \
   --location centralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json" \
   --parameters rgName=demoResourceGroup rgLocation=centralus
 ```
 
-
-PowerShell デプロイ コマンドについては、[New-AzDeployment](/powershell/module/az.resources/new-azdeployment) を使用します。 次の例では、リソース グループを作成するテンプレートがデプロイされます。
+PowerShell デプロイ コマンドには、[New-AzDeployment](/powershell/module/az.resources/new-azdeployment) または **New-AzSubscriptionDeployment** を使用します。 次の例では、リソース グループを作成するテンプレートがデプロイされます。
 
 ```azurepowershell-interactive
-New-AzDeployment `
-  -Name demoDeployment `
+New-AzSubscriptionDeployment `
+  -Name demoSubDeployment `
   -Location centralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json" `
   -rgName demoResourceGroup `
   -rgLocation centralus
 ```
@@ -87,12 +92,12 @@ REST API の場合は、[デプロイ - サブスクリプション スコープ
 
 * [resourceGroup ()](template-functions-resource.md#resourcegroup) 関数は、サポートされて**いません**。
 * [reference()](template-functions-resource.md#reference) および [list()](template-functions-resource.md#list) 関数がサポートされています。
-* [resourceId()](template-functions-resource.md#resourceid) 関数は、サポートされています。 これを使用して、サブスクリプション レベルのデプロイで使用されているリソースのリソース ID を取得します。 リソース グループ パラメーターに値を指定しないでください。
+* [subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid) 関数を使用して、サブスクリプション レベルでデプロイされるリソースのリソース ID を取得します。
 
   たとえば、ポリシー定義のリソース ID を取得するには、次を使用します。
   
   ```json
-  resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
+  subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
   ```
   
   返されるリソース ID の形式は次のとおりです。
@@ -100,8 +105,6 @@ REST API の場合は、[デプロイ - サブスクリプション スコープ
   ```json
   /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```
-
-  または、[subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid) 関数を使用して、サブスクリプション レベルのリソースのリソース ID を取得します。
 
 ## <a name="create-resource-groups"></a>リソース グループを作成する
 
@@ -228,8 +231,8 @@ Azure Resource Manager テンプレートでリソース グループを作成�
               "location": "[parameters('rgLocation')]",
               "sku": {
                 "name": "Standard_LRS"
-              }
-              "kind": "StorageV2",
+              },
+              "kind": "StorageV2"
             }
           ],
           "outputs": {}
@@ -285,10 +288,10 @@ Azure CLI を使ってこのテンプレートをデプロイするには、次�
 # Built-in policy that accepts parameters
 definition=$(az policy definition list --query "[?displayName=='Allowed locations'].id" --output tsv)
 
-az deployment create \
+az deployment sub create \
   --name demoDeployment \
   --location centralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json" \
   --parameters policyDefinitionID=$definition policyName=setLocation policyParameters="{'listOfAllowedLocations': {'value': ['westus']} }"
 ```
 
@@ -300,10 +303,10 @@ $definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName 
 $locations = @("westus", "westus2")
 $policyParams =@{listOfAllowedLocations = @{ value = $locations}}
 
-New-AzDeployment `
+New-AzSubscriptionDeployment `
   -Name policyassign `
   -Location centralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json" `
   -policyDefinitionID $definition.PolicyDefinitionId `
   -policyName setLocation `
   -policyParameters $policyParams
@@ -357,30 +360,29 @@ New-AzDeployment `
 サブスクリプションでポリシー定義を作成し、サブスクリプションに割り当てるには、次の CLI コマンドを使用します。
 
 ```azurecli
-az deployment create \
+az deployment sub create \
   --name demoDeployment \
   --location centralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
 ```
 
 PowerShell を使用してこのテンプレートをデプロイするには、以下を使用します。
 
 ```azurepowershell
-New-AzDeployment `
+New-AzSubscriptionDeployment `
   -Name definePolicy `
   -Location centralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
 ```
 
 ## <a name="template-samples"></a>テンプレートのサンプル
 
-* リソース グループを作成してロックし、アクセス許可を付与します。 [こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)を参照してください。
-* リソース グループ、ポリシー、およびポリシーの割り当てを作成します。  [こちら](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json)を参照してください。
+* [リソース グループを作成してロックし、アクセス許可を付与します](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)。
+* [リソース グループ、ポリシー、およびポリシーの割り当てを作成します](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json)。
 
 ## <a name="next-steps"></a>次のステップ
 
 * ロールの割り当てについては、「[RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-template.md)」をご覧ください。
 * Azure Security Center のワークスペースの設定をデプロイする例については、[deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) のページを参照してください。
 * サンプル テンプレートは [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments) に掲載されています。
-* Azure リソース マネージャーのテンプレートの作成の詳細については、 [テンプレートの作成](template-syntax.md)に関するページを参照してください。
-* テンプレートで使用可能な関数の一覧については、 [テンプレートの関数](template-functions.md)に関するページを参照してください。
+* [管理グループ レベル](deploy-to-management-group.md)と[テナント レベル](deploy-to-tenant.md)でテンプレートをデプロイすることもできます。

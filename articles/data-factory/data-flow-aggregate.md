@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/15/2019
-ms.openlocfilehash: 74b96bf2cac0de7c57e496c637f2e3ef549eb61f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/24/2020
+ms.openlocfilehash: e4b076d96cad280c4da6c2424f056c2216c47602
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930455"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408866"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>マッピング データ フローの集計変換 
 
@@ -45,6 +45,16 @@ ms.locfileid: "74930455"
 
 * その追加の列を含めるには、`last()` や `first()` などの集計関数を使用します。
 * [自己結合パターン](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)を使用して、列を出力ストリームに再結合します。
+
+## <a name="removing-duplicate-rows"></a>重複した行の削除
+
+集計変換の一般的な使用方法は、ソース データ内の重複したエントリを削除または特定することです。 このプロセスは重複除去と呼ばれます。 グループ化キーのセットに基づいて、選択したヒューリスティックを使用して、どの重複行を保持するかを決定します。 一般的なヒューリスティックは、`first()`、`last()`、`max()`、および `min()` です。 グループ化列を除くすべての列にルールを適用するには、[列パターン](concepts-data-flow-column-pattern.md)を使用します。
+
+![Deduplication (重複除去)](media/data-flow/agg-dedupe.png "重複除去")
+
+上の例では、列 `ProductID` および `Name` がグループ化に使用されています。 これらの 2 つの列の 2 つの行に同じ値がある場合、それらは重複していると見なされます。 この集計変換では、一致した最初の行の値が保持され、それ以外の値はすべて削除されます。 列パターン構文を使用すると、名前が `ProductID` および `Name` ではないすべての列が既存の列名にマップされ、最初に一致した行の値が指定されます。 出力スキーマは、入力スキーマと同じです。
+
+データ検証のシナリオでは、`count()` 関数を使用して、存在している重複の数をカウントできます。
 
 ## <a name="data-flow-script"></a>データ フローのスクリプト
 
@@ -86,6 +96,15 @@ MoviesYear aggregate(
             ) ~> AvgComedyRatingByYear
 ```
 
-## <a name="next-steps"></a>次の手順
+![集計データ フロー スクリプト](media/data-flow/aggdfs1.png "集計データ フロー スクリプト")
+
+```MoviesYear```:年とタイトルの列を定義する派生列 ```AvgComedyRatingByYear```: 年別にグループ化されたコメディの平均評価の集計変換 ```avgrating```: 集計値を保持するために作成される新しい列の名前
+
+```
+MoviesYear aggregate(groupBy(year),
+    avgrating = avg(toInteger(Rating))) ~> AvgComedyRatingByYear
+```
+
+## <a name="next-steps"></a>次のステップ
 
 * [ウィンドウ変換](data-flow-window.md)を使用してウィンドウベースの集計を定義する

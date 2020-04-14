@@ -1,15 +1,15 @@
 ---
-title: Azure Portal から関数アプリを作成する
+title: Azure Portal から Function App を作成する
 description: ポータルから Azure の新しい関数アプリを作成します。
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 086a543e75d083094d4dfa789e71afaba5da6d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 001b4e4f0ea7fbacd232b2a87abfe353f34919bd
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368759"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985016"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Azure Portal から Function App を作成する
 
@@ -36,7 +36,7 @@ Azure Functions には、次の 3 つの異なるサービス プランが用意
 >[!NOTE]
 >従量課金ホスティング プランを使用する場合、関数コード ファイルおよびバインディング構成ファイルは、メイン ストレージ アカウントの Azure File Storage に保存されます。 メイン ストレージ アカウントを削除すると、このコンテンツは削除され、復元できません。
 
-ストレージ アカウントの種類の詳細については、「[Azure Storage サービスの概要](../storage/common/storage-introduction.md#azure-storage-services)」を参照してください。 
+ストレージ アカウントの種類の詳細については、「[Azure Storage サービスの概要](../storage/common/storage-introduction.md#core-storage-services)」を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

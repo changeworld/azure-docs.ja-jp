@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/22/2019
+ms.date: 03/12/2020
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 47488403a10a6b955e15b0048d455cc17016f009
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 7da20a0bf87b33f05ea7f1d457157c5b7ee2ec7b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526248"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631527"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -42,8 +42,10 @@ ms.locfileid: "77526248"
 
 | タグ | 目的 | 受信または送信で使用できるか | リージョン別か | Azure Firewall と共に使用できるか |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **ActionGroup** | アクション グループ。 | 受信 | いいえ | いいえ |
 | **ApiManagement** | Azure API Management 専用デプロイのための管理トラフィック。 <br/><br/>*注:* このタグは、リージョンごとのコントロール プレーンの Azure API Management サービス エンドポイントを表します。 これにより、顧客は API Management サービス上で構成された API、操作、ポリシー、NamedValues に対する管理操作を実行できるようになります。  | 受信 | はい | はい |
 | **ApplicationInsightsAvailability** | Application Insights の可用性。 | 受信 | いいえ | いいえ |
+| **AppConfiguration** | App Configuration。 | 送信 | いいえ | いいえ |
 | **AppService**    | Azure App Service。 このタグは、Web アプリのフロントエンドに対する送信セキュリティ規則で推奨されます。 | 送信 | はい | はい |
 | **AppServiceManagement** | App Service Environment 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **AzureActiveDirectory** | Azure Active Directory。 | 送信 | いいえ | はい |
@@ -52,29 +54,34 @@ ms.locfileid: "77526248"
 | **AzureBackup** |Azure Backup。<br/><br/>*注:* このタグは、**Storage** タグと **AzureActiveDirectory** タグに依存します。 | 送信 | いいえ | はい |
 | **AzureBotService** | Azure Bot Service。 | 送信 | いいえ | いいえ |
 | **AzureCloud** | すべての[データセンター パブリック IP アドレス](https://www.microsoft.com/download/details.aspx?id=56519)。 | 送信 | はい | はい |
-| **AzureCognitiveSearch** | Azure Cognitive Search。 <br/><br/>このタグまたはこのタグによってカバーされる IP アドレスは、データ ソースへのセキュリティで保護されたアクセスをインデクサーに付与するために使用できます。 詳細については、[インデクサーの接続に関するドキュメント](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors)を参照してください。 | 受信 | いいえ | いいえ |
+| **AzureCognitiveSearch** | Azure Cognitive Search。 <br/><br/>このタグまたはこのタグによってカバーされる IP アドレスは、データ ソースへのセキュリティで保護されたアクセスをインデクサーに付与するために使用できます。 詳細については、[インデクサーの接続に関するドキュメント](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors)を参照してください。 <br/><br/> *注*:検索サービスの IP アドレスは、このサービス タグの IP 範囲の一覧に含まれておらず、またデータ ソースの IP ファイアウォール**にも追加される必要があります**。 | 受信 | いいえ | いいえ |
 | **AzureConnectors** | プローブ/バックエンド接続用の Azure Logic Apps コネクタ。 | 受信 | はい | はい |
 | **AzureContainerRegistry** | Azure Container Registry。 | 送信 | はい | はい |
 | **AzureCosmosDB** | Azure Cosmos DB。 | 送信 | はい | はい |
 | **AzureDatabricks** | Azure Databricks。 | 両方 | いいえ | いいえ |
 | **AzureDataExplorerManagement** | Azure Data Explorer 管理。 | 受信 | いいえ | いいえ |
-| **AzureDataLake** | Azure Data Lake。 | 送信 | いいえ | はい |
+| **AzureDataLake** | Azure Data Lake Storage Gen1。 | 送信 | いいえ | はい |
+| **AzureDevSpaces** | Azure Dev Spaces。 | 送信 | いいえ | いいえ |
 | **AzureEventGrid** | Azure Event Grid。 <br/><br/>*注:* このタグは、米国中南部、米国東部、米国東部 2、米国西部 2、および米国中部の Azure Event Grid エンドポイントのみを対象としています。 | 両方 | いいえ | いいえ |
-| **AzureFrontDoor** | Azure Front Door。 | 両方 | いいえ | いいえ |
-| **AzureInformationProtection** | Azure Information Protection。<br/><br/>*注:* このタグは、**AzureActiveDirectory** タグと **AzureFrontDoor.Frontend** タグに依存します。 次の IP もホワイトリストに登録してください (この依存関係は間もなく削除予定です)。13.107.6.181 & 13.107.9.181. | 送信 | いいえ | いいえ |
+| **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door。 | 両方 | いいえ | いいえ |
+| **AzureInformationProtection** | Azure Information Protection。<br/><br/>*注:* このタグは、**AzureActiveDirectory**、**AzureFrontDoor.Frontend**、および **AzureFrontDoor.FirstParty** タグに依存します。 | 送信 | いいえ | いいえ |
 | **AzureIoTHub** | Azure IoT Hub。 | 送信 | いいえ | いいえ |
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注:* このタグは、**AzureActiveDirectory** タグに依存します。 | 送信 | はい | はい |
 | **AzureLoadBalancer** | Azure インフラストラクチャのロード バランサー。 このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](security-overview.md#azure-platform-considerations) (168.63.129.16) に変換されます。 これには、Azure Load Balancer リソースへのトラフィックは含まれません。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。 | 両方 | いいえ | いいえ |
 | **AzureMachineLearning** | Azure Machine Learning | 両方 | いいえ | はい |
 | **AzureMonitor** | Log Analytics、Application Insights、AzMon、およびカスタム メトリック (GiG エンドポイント)。<br/><br/>*注:* Log Analytics では、このタグは **Storage** タグに依存します。 | 送信 | いいえ | はい |
+| **AzureOpenDatasets** | Azure Open Datasets。<br/><br/>*注:* このタグは、**AzureFrontDoor.Frontend** および **Storage** タグに依存します。 | 送信 | いいえ | いいえ |
 | **AzurePlatformDNS** | 基本インフラストラクチャ (既定) の DNS サービス。<br/><br>このタグを使用すると、既定の DNS を無効にすることができます。 このタグを使用する場合は注意が必要です。 「[Azure プラットフォームに関する考慮事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)」を参照することをお勧めします。 また、このタグを使用する前にテストを実行することをお勧めします。 | 送信 | いいえ | いいえ |
 | **AzurePlatformIMDS** | Azure Instance Metadata Service (IMDS)。これは基本的なインフラストラクチャ サービスです。<br/><br/>このタグを使用すると、既定の IMDS を無効にすることができます。 このタグを使用する場合は注意が必要です。 「[Azure プラットフォームに関する考慮事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)」を参照することをお勧めします。 また、このタグを使用する前にテストを実行することをお勧めします。 | 送信 | いいえ | いいえ |
 | **AzurePlatformLKM** | Windows のライセンスまたはキー管理サービス。<br/><br/>このタグを使用すると、ライセンスの既定値を無効にすることができます。 このタグを使用する場合は注意が必要です。 「[Azure プラットフォームに関する考慮事項](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)」を参照することをお勧めします。  また、このタグを使用する前にテストを実行することをお勧めします。 | 送信 | いいえ | いいえ |
 | **AzureResourceManager** | Azure Resource Manager。 | 送信 | いいえ | いいえ |
-| **AzureSiteRecovery** | Azure Site Recovery。<br/><br/>*注:* このタグは、**Storage** タグ、**AzureActiveDirectory**タグ、および **EventHub** タグに依存します。 | 送信 | いいえ | いいえ |
+| **AzureSignalR** | Azure SignalR。 | 送信 | いいえ | いいえ |
+| **AzureSiteRecovery** | Azure Site Recovery。<br/><br/>*注:* このタグは、**AzureActiveDirectory**、**AzureKeyVault**、**EventHub**、**GuestAndHybridManagement**、および **Storage** タグに依存します。 | 送信 | いいえ | いいえ |
 | **AzureTrafficManager** | Azure Traffic Manager プローブ IP アドレス。<br/><br/>Traffic Manager プローブ IP アドレスについて詳しくは、「[Traffic Manager についてよく寄せられる質問 (FAQ)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)」をご覧ください。 | 受信 | いいえ | はい |  
 | **BatchNodeManagement** | Azure Batch 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
-| **CognitiveServicesManagement** | Azure Cognitive Services のトラフィックのアドレス範囲。 | 送信 | いいえ | いいえ |
+| **CognitiveServicesManagement** | Azure Cognitive Services のトラフィックのアドレス範囲。 | 両方 | いいえ | いいえ |
+| **DataFactory**  | Azure Data Factory | 両方 | いいえ | いいえ |
+| **DataFactoryManagement** | Azure Data Factory の管理トラフィック。 | 送信 | いいえ | いいえ |
 | **Dynamics365ForMarketingEmail** | Dynamics 365 のマーケティング電子メール サービスのアドレス範囲。 | 送信 | はい | いいえ |
 | **ElasticAFD** | エラスティック Azure Front Door。 | 両方 | いいえ | いいえ |
 | **EventHub** | Azure Event Hubs。 | 送信 | はい | はい |
@@ -82,13 +89,18 @@ ms.locfileid: "77526248"
 | **GuestAndHybridManagement** | Azure Automation とゲスト構成。 | 送信 | いいえ | はい |
 | **HDInsight** | Azure HDInsight。 | 受信 | はい | いいえ |
 | **Internet** | パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間。<br/><br/>このアドレス範囲には、[Azure によって所有されているパブリック IP アドレス空間](https://www.microsoft.com/download/details.aspx?id=41653)が含まれています。 | 両方 | いいえ | いいえ |
+| **LogicApps** | Logic Apps。 | 両方 | いいえ | いいえ |
+| **LogicAppsManagement** | Logic Apps の管理トラフィック。 | 受信 | いいえ | いいえ |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 送信 | いいえ | いいえ |
-| **MicrosoftContainerRegistry** | Microsoft コンテナー イメージ用のコンテナー レジストリ。 <br/><br/>*注:* 次の IP もホワイトリストに登録してください (この依存関係は間もなく削除予定です): 204.79.197.219。 | 送信 | はい | はい |
+| **MicrosoftContainerRegistry** | Microsoft コンテナー イメージ用のコンテナー レジストリ。 <br/><br/>*注:* このタグは **AzureFrontDoor.FirstParty** タグに依存します。 | 送信 | はい | はい |
+| **PowerQueryOnline** | Power Query Online。 | 両方 | いいえ | いいえ |
 | **ServiceBus** | Premium サービス レベルを使用する Azure Service Bus トラフィック。 | 送信 | はい | はい |
 | **ServiceFabric** | Azure Service Fabric。<br/><br/>*注:* このタグは、リージョンごとのコントロール プレーンの Service Fabric サービス エンドポイントを表します。 これにより、顧客は VNET から Service Fabric クラスターに対する管理操作を実行できるようになります (エンドポイントの例: https://westus.servicefabric.azure.com) | 両方 | いいえ | いいえ |
-| **Sql** | Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、および Azure SQL Data Warehouse。<br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 | 送信 | はい | はい |
+| **Sql** | Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、および Azure SQL Data Warehouse。<br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 このタグは、SQL マネージド インスタンスには適用されません。 | 送信 | はい | はい |
 | **SqlManagement** | SQL 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **Storage** | Azure Storage です。 <br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。 | 送信 | はい | はい |
+| **StorageSyncService** | ストレージ同期サービス。 | 両方 | いいえ | いいえ |
+| **WindowsVirtualDesktop** | Windows Virtual Desktop。 | 両方 | いいえ | いいえ |
 | **VirtualNetwork** | 仮想ネットワーク アドレス空間 (仮想ネットワークに対して定義されているすべての IP アドレスの範囲)、すべての接続されたオンプレミスのアドレス空間、[ピアリング](virtual-network-peering-overview.md)された仮想ネットワーク、[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)に接続された仮想ネットワーク、[ホストの仮想 IP アドレス](security-overview.md#azure-platform-considerations)、および[ユーザーが定義したルート](virtual-networks-udr-overview.md)で使用されるアドレス プレフィックス。 このタグには、既定のルートも含まれる場合もあります。 | 両方 | いいえ | いいえ |
 
 >[!NOTE]

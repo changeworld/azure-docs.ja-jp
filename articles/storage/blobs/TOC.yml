@@ -4,6 +4,8 @@
   items:
     - name: Azure Blob Storage とは
       href: storage-blobs-overview.md
+    - name: コア ストレージ サービスの比較
+      href: ../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   expanded: true
 - name: BLOB ストレージ
   items:

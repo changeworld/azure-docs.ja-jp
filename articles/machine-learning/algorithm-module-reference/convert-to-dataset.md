@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: dc3630f4b832a9b15217e8f5cdc03830f15ee2a7
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546760"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456592"
 ---
 # <a name="convert-to-dataset"></a>データセットへの変換
 
@@ -51,9 +51,9 @@ ms.locfileid: "76546760"
     **ReplaceValues** 操作は、完全一致にのみ適用されることに注意してください。 たとえば、`obs.` や `obsolete` といった文字列は影響を受けません。  
  
   
-5.  パイプラインを実行します。  
+5.  パイプラインを送信します。  
 
-## <a name="results"></a>[結果]
+## <a name="results"></a>結果
 
 +  結果のデータセットを新しい名前で保存するには、モジュールの右パネルにある **[出力]** タブの下の **[データセットの登録]** アイコンを選択します。  
   

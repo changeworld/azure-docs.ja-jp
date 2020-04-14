@@ -7,20 +7,18 @@ author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f78c64fc0ba25dc3310b24e873dbae266ea2f281
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93d07ab1740da68298478ae2dcc2ab46d8d8362e
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050316"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884020"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL の例外とエラーを処理する
 

@@ -6,30 +6,26 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 0af5e4b92b52b4ecfc4e0e302b5d2a7701297908
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 3d250ef1aba979be04a44acaf31a3d685f162e37
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656196"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283890"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor for VMs の一般提供 (GA) についてよく寄せられる質問
-
-この GA リリースに関する FAQ では、GA リリースの準備中に Azure Monitor for VMs で発生している変更について説明します。 
+この一般提供に関する FAQ では、GA に向けた準備の過程で 2019 年第 4 四半期から 2020 年第 1 四半期までの間に行われた変更について説明しています。
 
 ## <a name="updates-for-azure-monitor-for-vms"></a>Azure Monitor for VMs 用の更新プログラム
+GA の発表に先立ち、Azure Monitor for VMs の新しいバージョンが 2020 年 1 月にリリースされました。 Azure Monitor for VMs を有効にしたお客様は、GA バージョンを自動的に受信しますが、2019 年第 4 四半期以前のバージョンの Azure Monitor for VMs を使用している既存のお客様はアップグレードするように求められます。 この FAQ では、複数のワークスペースとの間で大規模なデプロイを行っている場合に、アップグレードを広範囲に実行するためのガイダンスを提供します。
 
-新しいバージョンの Azure Monitor for VMs がリリースされました。 Azure Monitors for VMs を有効にしたお客様は、新しいバージョンを自動的に受信しますが、既に Azure Monitor for VMs を使用している既存のお客様はアップグレードするように求められます。 この FAQ とドキュメントでは、複数のワークスペースとの間で大規模なデプロイを行っている場合に、アップグレードを広範囲に実行するためのガイダンスを提供します。
 
 このアップグレードを使用すると、Azure Monitor for VMs のパフォーマンス データは、[コンテナーの Azure Monitor](container-insights-overview.md) と同じ *InsightsMetrics* テーブルに格納されるため、2 つのデータ セットのクエリを簡単に実行することができます。 また、以前に使用したテーブルには格納できなかったより多様なデータ セットを格納することもできます。 
 
 パフォーマンス ビューでは、*InsightsMetrics* テーブルに格納しているデータが使用されています。  ワークスペースで最新の VMInsights ソリューションを使用するようにアップグレードしていない場合は、グラフに情報が表示されなくなります。  次に示すように、 **[Get Started]\(開始\)** ページからアップグレードすることができます。
 
-Microsoft では、既存のお客様にアップグレードをお願いすることで、お客様のワークフローの中断が生じることを認識しています。これが、GA の後ではなく、パブリック プレビュー中の今、アップグレードをお願いする理由です。
-
 
 ## <a name="what-is-changing"></a>何が変わるのですか?
-
 VMInsights という名前の新しいソリューションがリリースされました。これには、データ収集のための追加機能と、ご利用の Log Analytics ワークスペースにこのデータを格納するための新しい場所が含まれています。 
 
 以前は、ワークスペースで ServiceMap ソリューションを有効にし、Log Analytics ワークスペースでパフォーマンス　カウンターを設定して、*Perf* テーブルにデータを送信していました。 この新しいソリューションでは、コンテナーの Azure Monitor によっても使用される *InsightsMetrics* という名前のテーブルにデータが送信されます。 このテーブル スキーマを使用すると、*Perf* テーブル形式と互換性のない追加のメトリックとサービス データ セットを格納できます。
@@ -48,9 +44,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>VMInsights ソリューションをインストールした場合、自分のワークスペース内のパフォーマンス カウンターには何が必要ですか?
 
-Azure Monitor for VMs を有効にする現在のメソッドでは、ご利用のワークスペースでパフォーマンス カウンターを使用します。 新しいメソッドでは、このデータを `InsightsMetrics` という名前の新しいテーブルに格納します。
-
-`InsightsMetrics` テーブル内のデータを使用するようにユーザー インターフェイスを更新しましたら、ドキュメントを更新し、Azure portal でのバナーの表示など、複数のチャネルを使用してこのお知らせを伝えます。 その時点で、これらの[パフォーマンス カウンター](vminsights-enable-overview.md#performance-counters-enabled)を使用する必要がなくなった場合は、ご利用のワークスペースで無効にすることができます。 
+Azure Monitor for VMs を有効にする以前のメソッドでは、ご利用のワークスペースでパフォーマンス カウンターを使用していました。 現在のバージョンでは、このデータは `InsightsMetrics` という名前のテーブルに格納されます。 これらのパフォーマンス カウンターを使用する必要がなくなった場合は、ご利用のワークスペースで無効にすることができます。 
 
 >[!NOTE]
 >`Perf` テーブル内にこれらのカウンターを参照するアラート ルールがある場合は、`InsightsMetrics` テーブルに格納された新しいデータを参照するようにそれらのルールを更新する必要があります。 このテーブルを参照する使用可能なログ クエリの例については、Microsoft のドキュメントを参照してください。
@@ -93,10 +87,6 @@ Microsoft が収集するマシン レベルのパフォーマンス データ�
 ## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Service Map または VMInsights ソリューションのいずれかを削除した場合、自分のデータは削除されますか?
 
 いいえ、2 つのソリューションでは、`VMComputer` (以前の ServiceMapComputer_CL)、`VMProcess` (以前の ServiceMapProcess_CL)、`VMConnection`、`VMBoundPort` に格納されているマップ データ セットを共有しています。 ソリューションのいずれかを削除すると、これらのデータ セットでは、データを使用するソリューションが配置されたままで、Log Analytics ワークスペースに保持されていることがわかります。 ご利用のワークスペースからデータを削除する場合は、ワークスペースから両方のソリューションを削除する必要があります。
-
-## <a name="when-will-this-update-be-released"></a>この更新プログラムはいつリリースされますか?
-
-Azure Monitor for VMs の更新プログラムは、2020 年 1 月上旬にリリースされる予定です。 1 月のリリース日に近づくにつれて、ここに更新情報が投稿されます。また、Azure Monitor を開くと、Azure portal に通知が表示されます。
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>正常性機能は、制限付きのパブリック プレビュー段階にあります。
 

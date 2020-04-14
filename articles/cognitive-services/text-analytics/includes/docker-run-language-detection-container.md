@@ -3,18 +3,18 @@ title: docker run コマンドのコンテナー実行の例
 titleSuffix: Azure Cognitive Services
 description: 言語検出コンテナー用の docker run コマンド
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/12/2019
-ms.author: dapine
-ms.openlocfilehash: d2818336de2b3d4d810932cefb21edd95b8cf733
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 1f6bfbf3a15f17c3cfd0487cdd0bbb535ffc31ae
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "70966656"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877048"
 ---
 "*言語検出*" コンテナーを実行するには、次の `docker run` コマンドを実行します。
 

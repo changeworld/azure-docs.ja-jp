@@ -2,24 +2,21 @@
 title: ユーザーをサインインまたはサインアウトさせる Web アプリを作成する - Microsoft ID プラットフォーム | Azure
 description: ユーザーをサインインまたはサインアウトさせる Web アプリを作成する方法について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: cbec6c5644690f6d7e522294a37c8ea5e2d49e30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 317ca55adb9f680dc93343a185395abad08889da
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76701520"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881317"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>ユーザーをサインインさせる Web アプリ:サインインとサインアウト
 

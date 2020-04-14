@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 95e220102cba290664a32cb6bbebef881ae4ffde
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544941"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159491"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
 
@@ -287,6 +287,14 @@ Linux カーネルの再接続に関するこの問題は、以下の変更の�
 ハード マウントを指定することによって、この問題を回避することができます。 ハード マウントでは、接続が確立されるか、明示的に中断されるまで、クライアントが強制的に待機させられます。 この機能を使用することで、ネットワーク タイムアウトによるエラーを防ぐことができます。 ただし、この回避策では、待機が無期限に続く可能性があります。 必要に応じて、接続を停止できるように準備しておいてください。
 
 最新バージョンのカーネルにアップグレードできない場合は、Azure ファイル共有にファイルを保持し、30 秒以下の間隔で書き込みを実行することによって、この問題を回避できます。 これは、ファイルの作成日/変更日が書き換えられるような書き込み操作である必要があります。 そうでない場合、キャッシュされた結果が取得され、操作によって再接続がトリガーされない可能性があります。
+
+## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-30"></a>SMB 3.0 を使用して Azure ファイル共有をマウントするときの、"CIFS VFS: error -22 on ioctl to get interface list" (CIFS VFS: インターフェイス リストを取得するための ioctl でのエラー -22)
+
+### <a name="cause"></a>原因
+このエラーは、Azure Files では[現在 SMB マルチチャネルがサポートされていない](https://docs.microsoft.com/rest/api/storageservices/features-not-supported-by-the-azure-file-service)ために、ログに記録されます。
+
+### <a name="solution"></a>解決策
+このエラーは無視してかまいません。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

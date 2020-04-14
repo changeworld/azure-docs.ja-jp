@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60931706"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>SendGrid を使用して Node.js から電子メールを送信する方法
@@ -72,7 +72,7 @@ var email = new sendgrid.Email({
 });
 ```
 
-また、html プロパティを設定することによって、HTML メッセージをサポートするクライアント向けに H|TML メッセージを指定することもできます。 例:
+また、html プロパティを設定することによって、HTML メッセージをサポートするクライアント向けに H|TML メッセージを指定することもできます。 次に例を示します。
 
 ```javascript
 html: This is a sample <b>HTML<b> email message.
@@ -80,7 +80,7 @@ html: This is a sample <b>HTML<b> email message.
 
 text プロパティと html プロパティの両方を設定することで、HTML メッセージをサポートできないクライアントに対しては、テキスト コンテンツへの正常なフォールバックを提供できます。
 
-Email 機能でサポートされるすべてのプロパティについて詳しくは、「[sendgrid-nodejs][sendgrid-nodejs]」をご覧ください。
+Email 機能でサポートされるすべてのプロパティの詳細については、「[sendgrid-nodejs][sendgrid-nodejs]」を参照してください。
 
 ## <a name="how-to-send-an-email"></a>方法:電子メールを送信する
 
@@ -96,7 +96,7 @@ sendgrid.send(email, function(err, json){
 ```
 
 > [!NOTE]
-> 前の例では、電子メール オブジェクトとコールバック関数の受け渡しを示していますが、電子メールのプロパティを直接指定することによって、send 関数を直接呼び出すこともできます。 例:  
+> 前の例では、電子メール オブジェクトとコールバック関数の受け渡しを示していますが、電子メールのプロパティを直接指定することによって、send 関数を直接呼び出すこともできます。 次に例を示します。  
 > 
 > ```javascript
 > sendgrid.send({
@@ -137,7 +137,7 @@ sendgrid.send({
 
 ## <a name="how-to-use-filters-to-enable-footers-and-tracking"></a>方法:フィルターを使用してフッターと追跡を有効にする
 
-SendGrid では、*フィルター* を使用することでその他の電子メール機能も利用できます。 その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。 すべてのフィルターの一覧については、[フィルター設定][Filter Settings]に関するページを参照してください。
+SendGrid では、*フィルター* を使用することでその他の電子メール機能も利用できます。 その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。 すべてのフィルターの一覧については、 [フィルター設定][Filter Settings]に関するページを参照してください。
 
 フィルターは、**フィルター**のプロパティを使用してメッセージに適用できます。
 各フィルターは、フィルター固有の設定を格納したハッシュで指定します。
@@ -201,11 +201,11 @@ email.addFilter('footer', 'enable', 1);
 email.addFilter('footer', 'text/html', '<strong>boo</strong>');
 ```
 
-詳しくは、「[sendgrid-nodejs][sendgrid-nodejs]」をご覧ください。
+詳細については、「[sendgrid-nodejs][sendgrid-nodejs]」を参照してください。
 
 ## <a name="how-to-use-additional-sendgrid-services"></a>方法:その他の SendGrid サービスを使用する
 
-SendGrid の Web ベース API を使用して、Azure アプリケーションからその他の SendGrid 機能を利用することができます。 詳細については、[SendGrid API に関するドキュメント][SendGrid API documentation]を参照してください。
+SendGrid の Web ベース API を使用して、Azure アプリケーションからその他の SendGrid 機能を利用することができます。 詳細については、 [SendGrid API に関するドキュメント][SendGrid API documentation]を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

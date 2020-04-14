@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 11/07/2019
+ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: eb1d8609a39dc1a18c25d3d01e182db067c01ff6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: efa5e6d576f7bd2965353ce3493fda2e06567180
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75469708"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80659350"
 ---
 **ターゲット環境を選択してください**
 

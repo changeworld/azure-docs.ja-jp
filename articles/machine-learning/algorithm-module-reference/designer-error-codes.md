@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/03/2019
-ms.openlocfilehash: ea132578a08b9f0002084374838c615a01fa820f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: cda499b81a61a5b78ca86a96372640e368f90357
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425801"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80364197"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>デザイナーの例外とエラー コード (プレビュー)
 
@@ -39,6 +39,9 @@ ms.locfileid: "77425801"
 |Column with name or index "{column_id}" not found. (名前またはインデックス "{column_id}" の列が見つかりません。)|
 |Column with name or index "{column_id}" does not exist in "{arg_name_missing_column}". (名前またはインデックス "{column_id}" の列が "{arg_name_missing_column}" に存在しません。)|
 |Column with name or index "{column_id}" does not exist in "{arg_name_missing_column}", but exists in "{arg_name_has_column}". (名前またはインデックス "{column_id}" の列は "{arg_name_missing_column}" には存在せず、"{arg_name_has_column}" に存在します。)|
+|Columns with name or index "{column_names}" not found. (名前またはインデックス "{column_names}" の列が見つかりません。)|
+|Columns with name or index "{column_names}" does not exist in "{arg_name_missing_column}". (名前またはインデックス "{column_names}" の列が "{arg_name_missing_column}" に存在しません。)|
+|Columns with name or index "{column_names}" does not exist in "{arg_name_missing_column}", but exists in "{arg_name_has_column}". (名前またはインデックス "{column_names}" の列は "{arg_name_missing_column}" には存在せず、"{arg_name_has_column}" に存在します。)|
 
 
 ## <a name="error-0002"></a>エラー 0002  
@@ -373,6 +376,7 @@ BLOB への完全なパスを指定した場合は、パスが "**コンテナ�
 |{dataset1} and {dataset2} should be consistent columnwise. ({dataset1} と {dataset2} には、列方向で一貫性がある必要があります。)|
 |{dataset1} contains invalid data, {reason}. ({dataset1} に無効なデータが含まれています {reason}。)|
 |{dataset1} contains {invalid_data_category}. ({dataset1} に {invalid_data_category} が含まれています。) {troubleshoot_hint}|
+|{dataset1} is not valid, {reason}. ({dataset1} は無効です。{reason}。) {troubleshoot_hint}|
 
 
 ## <a name="error-0019"></a>エラー 0019  
@@ -1248,6 +1252,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 |{data_name} contains invalid data for training. ({data_name} には、トレーニング用の無効なデータが含まれます。)|
 |{data_name} contains invalid data for training. ({data_name} には、トレーニング用の無効なデータが含まれます。) Learner type: {learner_type}. (学習器の種類: {learner_type}。)|
 |{data_name} contains invalid data for training. ({data_name} には、トレーニング用の無効なデータが含まれます。) Learner type: {learner_type}. (学習器の種類: {learner_type}。) Reason: {reason}. (理由: {reason}。)|
+|Failed to apply "{action_name}" action on training data {data_name}. ("{action_name}" アクションをトレーニング データ {data_name} に適用できませんでした。) Reason: {reason}. (理由: {reason}。)|
 
 
 ## <a name="error-0084"></a>エラー 0084  
@@ -1394,7 +1399,8 @@ Exception occurs when label column is missing or has insufficient number of labe
 
  列の選択にラベル列を含めても認識されない場合は、[メタデータの編集](edit-metadata.md)モジュールを使って、それをラベル列としてマークします。
 
-  <!--Use the [Summarize Data](summarize-data.md) module to generate a report that shows how many values are missing in each column. -->その後、[見つからないデータのクリーンアップ](clean-missing-data.md) モジュールを使って、ラベル列に欠損値のある行を削除できます。 
+  <!--Use the [Summarize Data](summarize-data.md) module to generate a report that shows how many values are missing in each column. -->
+  その後、[見つからないデータのクリーンアップ](clean-missing-data.md) モジュールを使って、ラベル列に欠損値のある行を削除できます。 
 
  入力データセットを調べて、有効なデータが含まれること、および操作の要件を満たすために十分な行があることを確認します。 多くのアルゴリズムでは、最低限の行数のデータが必要とされていながら、データには数行またはヘッダーしか含まれない場合、エラー メッセージが生成されます。
 
@@ -1455,8 +1461,8 @@ Exception occurs when label column is missing or has insufficient number of labe
 
 |例外メッセージ|
 |------------------------|
-|Column names are not string. (列名が文字列ではありません。)|
-|Column names: {column_names} are not string. (列名: {column_names} は文字列ではありません。)|
+|データフレーム列名は文字列型である必要があります。 Column names are not string. (列名が文字列ではありません。)|
+|データフレーム列名は文字列型である必要があります。 Column names {column_names} are not string. (列名 {column_names} は文字列ではありません。)|
 
 
 ## <a name="error-0156"></a>エラー 0156  
@@ -1475,6 +1481,15 @@ Exception occurs when label column is missing or has insufficient number of labe
 |------------------------|
 |Datastore information is invalid. (データストア情報が無効です。)|
 |Datastore information is invalid. (データストア情報が無効です。) Failed to get AzureML datastore '{datastore_name}' in workspace '{workspace_name}'. (ワークスペース '{workspace_name}' 内の AzureML データストア '{datastore_name}' を取得できませんでした。)|
+
+
+## <a name="error-0158"></a>エラー 0158
+ 変換ディレクトリが無効な場合にスローされます。
+
+|例外メッセージ|
+|------------------------------------------------------------|
+|Given TransformationDirectory is invalid. (指定された TransformationDirectory は無効です。)|
+|TransformationDirectory "{arg_name}" is invalid. (TransformationDirectory "{arg_name}" は無効です。) Reason: {reason}. (理由: {reason}。) Please rerun training experiment which generates the Transform file. (変換ファイルを生成するトレーニング実験を再実行してください。) If training experiment was deleted, please recreate and save the Transform file. (トレーニング実験が削除された場合は、変換ファイルを再作成して保存してください。)|
 
 
 ## <a name="error-1000"></a>エラー 1000  

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e2e3c7763a13c8850554b079a426ed4172b74d28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb173bcbf7cd163dca16c211d45018e0fe056edd
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599628"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666847"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Files に対する Azure Active Directory Domain Services 認証を有効にする
 
@@ -61,16 +61,16 @@ SMB を使用した Azure ファイル共有への Azure AD DS 認証を有効�
 
 次に、以下の手順を実行して、Azure AD 資格情報を使用して Azure Files のリソースへのアクセス許可を付与します。
 
-- 関連付けられた Azure AD DS デプロイにストレージ アカウントを登録するため、SMB を使用した、ストレージ アカウントの Azure AD DS 認証を有効にします。
-- Azure AD の ID (ユーザー、グループ、またはサービス プリンシパル) に、共有のアクセス許可を割り当てます。
-- SMB を使用したディレクトリおよびファイルへの NTFS アクセス許可を構成します。
-- ドメインに参加している VM から Azure ファイル共有をマウントします。
+1. 関連付けられた Azure AD DS デプロイにストレージ アカウントを登録するため、SMB を使用した、ストレージ アカウントの Azure AD DS 認証を有効にします。
+2. Azure AD の ID (ユーザー、グループ、またはサービス プリンシパル) に、共有のアクセス許可を割り当てます。
+3. SMB を使用したディレクトリおよびファイルへの NTFS アクセス許可を構成します。
+4. ドメインに参加している VM から Azure ファイル共有をマウントします。
 
 次の図は、SMB を使用して Azure Files への Azure AD DS 認証を有効にするためのエンドツーエンドのワークフローを示しています。
 
 ![SMB を使用した Azure Files への Azure AD ワークフローを示す図](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>アカウントへの Azure AD DS 認証を有効にする
+## <a name="1-enable-azure-ad-ds-authentication-for-your-account"></a>1.アカウントへの Azure AD DS 認証を有効にする
 
 Azure Files への SMB 経由の Azure AD DS 認証を有効にするには、Azure portal、Azure PowerShell、または Azure CLI を使用して、ストレージ アカウントでプロパティを設定できます。 このプロパティを設定すると、関連付けられている Azure AD DS のデプロイにより、ストレージ アカウントが暗黙的に "ドメイン参加" します。 その後、ストレージ アカウント内のすべての新規および既存のファイル共有に対する、SMB を使用した Azure AD DS 認証が有効になります。
 
@@ -135,7 +135,7 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 
 [!INCLUDE [storage-files-aad-permissions-and-mounting](../../../includes/storage-files-aad-permissions-and-mounting.md)]
 
-これで、SMB を使用した Azure AD DS 認証が有効になり、Azure ファイル共有へのアクセスを提供するカスタム ロールが Azure AD の ID に割り当てられました。 ファイル共有へのアクセスを他のユーザーに許可する場合は、ID を使用するための[アクセス許可の割り当て](#assign-access-permissions-to-an-identity)に関する指示と、「[SMB 経由の NTFS アクセス許可を構成する](#configure-ntfs-permissions-over-smb)」のセクションの手順に従ってください。
+これで、SMB を使用した Azure AD DS 認証が有効になり、Azure ファイル共有へのアクセスを提供するカスタム ロールが Azure AD の ID に割り当てられました。 ファイル共有へのアクセスを他のユーザーに許可する場合は、ID を使用するための[アクセス許可の割り当て](#2-assign-access-permissions-to-an-identity)に関する指示と、「[SMB 経由の NTFS アクセス許可を構成する](#3-configure-ntfs-permissions-over-smb)」のセクションの手順に従ってください。
 
 ## <a name="next-steps"></a>次のステップ
 

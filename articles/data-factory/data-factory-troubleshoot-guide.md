@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 2ae0f3033b88b3229d3dbef35c8bc9a32510c00e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e284060893e00ed7459edd0d1a03075c813dc5b2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972338"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065394"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory のトラブルシューティング
 
@@ -387,7 +387,7 @@ ms.locfileid: "74972338"
 
 
 
-## <a name="common"></a>一般
+## <a name="common"></a>共通
 
 ### <a name="error-code--2103"></a>エラー コード:2103
 
@@ -471,7 +471,7 @@ ms.locfileid: "74972338"
 
 
 
-## <a name="custom"></a>カスタム
+## <a name="custom"></a>Custom
 
 次の表は、Azure Batch に当てはまります。
       
@@ -1020,7 +1020,7 @@ Fiddler を使用して監視対象 Web アプリケーションの HTTP セッ�
 
    ![Fiddler オプション](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
-1. お使いのアプリケーションで SSL 証明書が使用されている場合は、Fiddler の証明書をデバイスに追加します。 **[Tools]\(ツール\)**  >  **[Fiddler Options]\(Fiddler オプション\)**  >  **[HTTPS]**  >  **[Actions]\(アクション\)**  >  **[Export Root Certificate to Desktop]\(ルート証明書をデスクトップにエクスポート\)** に移動します。
+1. お使いのアプリケーションで TLS/SSL 証明書が使用されている場合は、Fiddler の証明書をデバイスに追加します。 **[Tools]\(ツール\)**  >  **[Fiddler Options]\(Fiddler オプション\)**  >  **[HTTPS]**  >  **[Actions]\(アクション\)**  >  **[Export Root Certificate to Desktop]\(ルート証明書をデスクトップにエクスポート\)** に移動します。
 
 1. **[File]\(ファイル\)**  >  **[Capture Traffic]\(トラフィックのキャプチャ\)** に移動して、キャプチャをオフにします。 または **F12** キーを押します。
 
@@ -1042,7 +1042,7 @@ Fiddler を使用して監視対象 Web アプリケーションの HTTP セッ�
 
 詳細については、「[Fiddler の基本](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングのその他のヘルプについては、次のリソースを参照してください。
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8d65217a109a851275d3ba9205024f32bd182d4f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 42596ba5470c6062efba4fd1050c1c9745b76e80
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187318"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637324"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C ユーザー アカウントを管理する
 
@@ -64,6 +64,28 @@ Microsoft Graph API では、ローカル ID とフェデレーション ID の�
 |signInType|string| お使いのディレクトリ内のユーザー サインインの種類を指定します。 ローカル アカウントの場合: `emailAddress`、`emailAddress1`、`emailAddress2`、`emailAddress3`、`userName`、または他の任意の種類。 ソーシャル アカウントは `federated` に設定する必要があります。|
 |発行者|string|ID の発行者を指定します。 ローカル アカウント (**signInType** が `federated` でない) の場合、このプロパティは、ローカル B2C テナントの既定のドメイン名 (`contoso.onmicrosoft.com` など) になります。 ソーシャル ID (**signInType** が `federated`) の場合、値は発行者の名前 (`facebook.com` など) になります。|
 |issuerAssignedId|string|発行者がユーザーに割り当てる一意識別子を指定します。 **issuer** と **issuerAssignedId** の組み合わせは、テナント内で一意である必要があります。 ローカル アカウントの場合、**signInType** が `emailAddress` または `userName` に設定されているときは、ユーザーのサインイン名を表します。<br>**signInType** が次のように設定されている場合: <ul><li>`emailAddress` (または、`emailAddress1` のように `emailAddress` で始まる)。**issuerAssignedId** は有効なメール アドレスである必要があります</li><li>`userName` (または、その他の値)。**issuerAssignedId** は、[メール アドレスの有効なローカル部分](https://tools.ietf.org/html/rfc3696#section-3)である必要があります</li><li>`federated`。**issuerAssignedId** は、フェデレーション アカウントの一意識別子を表します</li></ul>|
+
+次の **Identities** プロパティ。サインイン名を含むローカル アカウント ID、サインインとしての電子メール アドレス、およびソーシャル ID が含まれます。 
+
+ ```JSON
+ "identities": [
+     {
+       "signInType": "userName",
+       "issuer": "contoso.onmicrosoft.com",
+       "issuerAssignedId": "johnsmith"
+     },
+     {
+       "signInType": "emailAddress",
+       "issuer": "contoso.onmicrosoft.com",
+       "issuerAssignedId": "jsmith@yahoo.com"
+     },
+     {
+       "signInType": "federated",
+       "issuer": "facebook.com",
+       "issuerAssignedId": "5eecb0cd"
+     }
+   ]
+ ```
 
 フェデレーション ID の場合、ID プロバイダーによっては、**issuerAssignedId** は、アプリケーションごとの特定のユーザーまたは開発アカウントの一意の値です。 ソーシャル プロバイダーまたは同じ開発アカウント内の別のアプリケーションによって割り当てられたのと同じアプリケーション ID で Azure AD B2C ポリシーを構成します。
 
@@ -121,15 +143,15 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
     ```
 1. `dotnet` コマンドを使用してアプリケーションを実行します。
 
-```console
-dotnet bin/Debug/netcoreapp3.0/b2c-ms-graph.dll
-```
+    ```console
+    dotnet bin/Debug/netcoreapp3.0/b2c-ms-graph.dll
+    ```
 
 アプリケーションで、実行可能なコマンドの一覧が表示されます。 たとえば、すべてのユーザーの取得、単一ユーザーの取得、ユーザーの削除、ユーザーのパスワードの更新、一括インポートなどです。
 
 ### <a name="code-discussion"></a>コードの説明
 
-このサンプル コードでは、Microsoft Graph にアクセスする高品質かつ効率的で回復性があるアプリケーションを簡単に構築できるように設計されている、[Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) を使用します。 そのため、Microsoft Graph API を直接呼び出す必要はありません。
+このサンプル コードでは、Microsoft Graph にアクセスする高品質かつ効率的で回復性があるアプリケーションを簡単に構築できるように設計されている、[Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) を使用します。
 
 Microsoft Graph API への要求には、認証のためのアクセス トークンが必要になります。 このソリューションでは、Microsoft Graph SDK で使用する Microsoft Authentication Library (MSAL) の認証シナリオベースのラッパーを提供する、 [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet パッケージを使用します。
 

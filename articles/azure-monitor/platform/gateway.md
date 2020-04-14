@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 6c5325a21ffa74f5679a74b991f1c814eadc64ff
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a92e96a835f24ac54fa55b05086a35b9a91d609e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672295"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298346"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する
 
@@ -70,19 +70,19 @@ Log Analytics ゲートウェイは、次の言語で利用できます。
 
 - 簡体中国語
 - 繁体中国語
-- Czech
-- Dutch
-- English
-- French
-- German
-- Hungarian
-- Italian
-- Japanese
-- Korean
-- Polish
+- チェコ語
+- オランダ語
+- 英語
+- フランス語
+- ドイツ語
+- ハンガリー語
+- イタリア語
+- 日本語
+- 韓国語
+- ポーランド語
 - ポルトガル語 (ブラジル)
 - ポルトガル語 (ポルトガル)
-- Russian
+- ロシア語
 - スペイン語 (インターナショナル)
 
 ### <a name="supported-encryption-protocols"></a>サポート対象の暗号化プロトコル
@@ -330,9 +330,9 @@ Update Management ソリューションが 1 つまたは複数の VM で有効�
 | **コマンドレット** | **パラメーター** | **説明** | **例** |
 | --- | --- | --- | --- |  
 | `Get-OMSGatewayConfig` |Key |サービスの構成を取得します |`Get-OMSGatewayConfig` |  
-| `Set-OMSGatewayConfig` |キー (必須) <br> Value |サービスの構成を変更します |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
+| `Set-OMSGatewayConfig` |キー (必須) <br> 値 |サービスの構成を変更します |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |リレー (アップストリーム) プロキシのアドレスを取得します |`Get-OMSGatewayRelayProxy` |  
-| `Set-OMSGatewayRelayProxy` |Address<br> ユーザー名<br> Password |リレー (アップストリーム) プロキシのアドレス (および資格情報) を設定します |1.リレー プロキシと資格情報を設定します。<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2.認証を必要としないリレー プロキシを設定します。`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3.リレー プロキシ設定をクリアします。<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
+| `Set-OMSGatewayRelayProxy` |Address<br> ユーザー名<br> パスワード (セキュリティで保護された文字列) |リレー (アップストリーム) プロキシのアドレス (および資格情報) を設定します |1.リレー プロキシと資格情報を設定します。<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2.認証を必要としないリレー プロキシを設定します。`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3.リレー プロキシ設定をクリアします。<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
 | `Get-OMSGatewayAllowedHost` | |現在許可されているホストを取得します (ローカルに構成されている許可ホストだけであり、自動的にダウンロードされた許可ホストは含みません) |`Get-OMSGatewayAllowedHost` | 
 | `Add-OMSGatewayAllowedHost` |ホスト (必須) |許可リストにホストを追加します |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
 | `Remove-OMSGatewayAllowedHost` |ホスト (必須) |許可リストからホストを削除します |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  

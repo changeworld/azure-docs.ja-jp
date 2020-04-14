@@ -1,26 +1,20 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: commercial marketplace
 documentationcenter: partner-center-commercial-marketplace
 author: qianw211
-manager: evansma
-editor: ''
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 08/13/2019
-ms.author: v-qiwe
+ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: 831e3330126d82795cece128c28cb96b7199d69a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f2446a924ceed37c51779efc9d9e94c0252a2067
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825585"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80321746"
 ---
 **[体験版]** タブでは、デモ (つまり "体験版") を設定して、顧客が購入をコミットする前にオファーを試せるようにすることができます。 詳細については、記事「[体験版とは](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)」を参照してください。 オファーの体験版を提供する必要がなくなった場合は、 **[Offer setup]\(オファーの設定\)** ページに戻り、 **[Enable test drive]\(体験版を有効にする\)** をオフにします。
 
@@ -56,9 +50,9 @@ Microsoft は、この種類の体験版を使用してサービスのプロビ�
 
 - **体験版の期間** (必須): 時間数を定義して、体験版がアクティブな状態であり続ける期間の長さを入力します。 この時間が経過すると、セッションが終了し、ライセンスが消費されなくなります。 オファーの複雑さに応じて、2 時間から 24 時間までの値にすることをお勧めします。 この期間は、整数の時間でのみ設定できます (例: "2" 時間。"1.5" は無効)。  ユーザーは、時間を使い切った後に体験版にもう一度アクセスしたい場合、新しいセッションを要求できます。
 
-- **インスタンス URL** (必須): 顧客が体験版を開始する URL。 通常、インストールされたサンプル データを使用してアプリを実行する Dynamics 365 インスタンスの URL です (例: https://testdrive.crm.dynamics.com) 。
+- **インスタンス URL** (必須): 顧客が体験版を開始する URL。 通常、インストールされたサンプル データを使用してアプリを実行する Dynamics 365 インスタンスの URL です (例: `https://testdrive.crm.dynamics.com`)。
 
-- **Instance Web API URL (インスタンスの Web API URL)** (必須): 自分の Microsoft 365 アカウントにログインして、 **[設定]** \&gt; 、 **[カスタマイズ]** 、 **[開発者リソース]** \&gt; 、 **[インスタンスの Web API] ([サービスのルート URL])** に移動することによって、自分の Dynamics 365 インスタンスの Web API URL を取得し、そこにある URL (例: https://testdrive.crm.dynamics.com/api/data/v9.0) をコピーします。
+- **Instance Web API URL (インスタンスの Web API URL)** (必須): お使いの Microsoft 365 アカウントにログインし、 **[設定]** \&gt; **[カスタマイズ]** \&gt; **[開発者リソース]** \&gt; **[インスタンスの Web API] ([サービスのルート URL])** の順に移動することでお使いの Dynamics 365 インスタンスの Web API URL を取得し、その URL (例: `https://testdrive.crm.dynamics.com/api/data/v9.0`) をここにコピーします。
 
 - **ロール名** (必須): Dynamics 365 のカスタム体験版で自分が定義したセキュリティ ロールの名前を入力します。 これは、体験版の使用中にユーザーに割り当てられます (例: test-drive-role)。
 

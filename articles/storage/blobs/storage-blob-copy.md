@@ -8,16 +8,16 @@ ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 9b3dba0041b38d9d59a10eaf80592bab91f65b98
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 9ffa69980f020580376aea447f40ac615f26cf03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599909"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79135889"
 ---
 # <a name="copy-a-blob-with-net"></a>.NET を使用して BLOB をコピーする
 
-この記事では、Azure Storage アカウントを使用して BLOB をコピーする方法について説明します。 また、非同期のコピー操作を中止する方法も示します。 コード例では [.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage/client)を使用します。
+この記事では、Azure Storage アカウントを使用して BLOB をコピーする方法について説明します。 また、非同期のコピー操作を中止する方法も示します。 コード例では [.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage?view=azure-dotnet)を使用します。
 
 ## <a name="about-copying-blobs"></a>BLOB のコピーについて
 
@@ -129,7 +129,7 @@ if (destBlob.CopyState.Status == CopyStatus.Pending)
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のトピックでは、Azure REST API を使用した BLOB のコピーと、進行中のコピー操作の中止に関する情報を示しています。
 

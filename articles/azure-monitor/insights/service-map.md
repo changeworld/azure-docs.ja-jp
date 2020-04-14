@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: c177589bea76770f8f72dd3267b856b00d57699c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: f2f3e84462307f43ffe432fe878476d979f489f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663625"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480914"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 
@@ -26,7 +26,7 @@ Service Map は自動的に Windows および Linux のシステム上のアプ�
 * Windows コンピューターまたは Linux サーバーにインストールされている Dependency Agent。
 
 >[!NOTE]
->Service Map を既にデプロイ済みの場合は、VM 用 Azure Monitor でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM 用 Azure Monitor の概要](../../azure-monitor/insights/vminsights-overview.md)に関するページを参照してください。 Service Map ソリューションと Azure Monitor for VMs マップ機能の違いについては、次の [FAQ](../faq.md#azure-monitor-for-vms-preview) を参照してください。
+>Service Map を既にデプロイ済みの場合は、VM 用 Azure Monitor でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM 用 Azure Monitor の概要](../../azure-monitor/insights/vminsights-overview.md)に関するページを参照してください。 Service Map ソリューションと Azure Monitor for VMs マップ機能の違いについては、次の [FAQ](../faq.md#azure-monitor-for-vms) を参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -63,7 +63,7 @@ Service Map は、システム更新評価の使用を強化します。他の�
 
 ## <a name="mapping-overview"></a>マッピングの概要
 
-サービス マップ エージェントは、それらがインストールされているサーバー上のすべての TCP 接続プロセスに関する情報に加え、各プロセスの受信および送信接続の詳細も収集します。
+Service Map エージェントは、それらがインストールされているサーバー上のすべての TCP 接続プロセスに関する情報に加え、各プロセスの受信および送信接続の詳細も収集します。
 
 左側のウィンドウの一覧から、Service Map エージェントがインストールされているマシンまたはグループを選択し、指定の時間範囲でその依存関係を視覚化できます。 マシンの依存関係マップは、特定のマシンに焦点を当て、そのマシンの直接 TCP クライアントまたはサーバーであるすべてのマシンを表示します。  マシン グループのマップでは、一連のサーバーとその依存関係が示されます。
 
@@ -108,7 +108,7 @@ Service Map は、システム更新評価の使用を強化します。他の�
 
 ### <a name="viewing-a-group"></a>グループの表示
 
-グループを作成した後、[グループ] タブを選択すると、そのグループが表示されます。
+グループを作成した後、[グループ] タブを選択すると、それらが表示されます。
 
 ![[グループ] タブ](media/service-map/machine-groups-tab.png)
 
@@ -219,7 +219,7 @@ Service Map マップを見ている間、マシンとプロセスを選択し�
 
 ![[Process Properties]\(プロセスのプロパティ\) ウィンドウ](media/service-map/process-properties.png)
 
-**[Process Summary]\(プロセスの概要\)** ウィンドウでは、接続しているポート、受信と送信の接続、失敗した接続を含む、そのプロセスの接続に関する追加情報が示されます。
+**[プロセスの概要]** ウィンドウでは、バインドされているポート、受信と送信の接続、失敗した接続を含む、そのプロセスの接続に関する追加情報が示されます。
 
 ![[Process Summary]\(プロセスの概要\) ウィンドウ](media/service-map/process-summary.png)
 

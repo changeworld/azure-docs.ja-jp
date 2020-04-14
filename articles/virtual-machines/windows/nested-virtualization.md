@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 16f5bed5a2342bb1d120d0d3dc853e0bc44376dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d127d3f9e66b7d2d40aa420e2116fee17d996514
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033117"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437307"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
@@ -26,7 +26,7 @@ ms.locfileid: "74033117"
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>入れ子対応の Azure VM を作成する
 
-新しい Windows Server 2016 Azure VM を作成します。  たとえば、すべての v3 仮想マシンは入れ子になった仮想化をサポートしています。 入れ子をサポートしている仮想マシンのサイズの完全な一覧については、「[Azure コンピューティング ユニット (ACU)](acu.md)」をご覧ください。
+新しい Windows Server 2016 Azure VM を作成します。 入れ子をサポートしている仮想マシンのサイズの完全な一覧については、「[Azure コンピューティング ユニット (ACU)](acu.md)」をご覧ください。
 
 必ずゲスト仮想マシンの要求をサポートするのに十分な大きさの VM サイズを選択してください。 この例では、D3_v3 サイズの Azure VM を使用しています。 
 
@@ -52,9 +52,9 @@ Dv3 または Ev3 シリーズの仮想マシンのリージョン別提供状�
 この設定は手動で構成するか、用意されている PowerShell スクリプトを使って自動で構成できます。
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>オプション 1: PowerShell スクリプトを使用して、入れ子になった仮想化を構成する
-Windows Server 2016 ホストの入れ子になった仮想化を有効にする PowerShell スクリプトは [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) でご利用いただけます。 スクリプトは、前提条件をチェックし、Azure VM で入れ子になった仮想化を構成します。 構成を完了するには、Azure VM を再起動する必要があります。 このスクリプトは他の環境で動作する可能性はありますが、保証されません。 Azure のブログ記事と、Azure で実行されている入れ子になった仮想化のライブ ビデオ デモをご確認ください [https://login.microsoftonline.com/consumers/](https://aka.ms/AzureNVblog )
+Windows Server 2016 ホストの入れ子になった仮想化を有効にする PowerShell スクリプトは [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) でご利用いただけます。 スクリプトは、前提条件をチェックし、Azure VM で入れ子になった仮想化を構成します。 構成を完了するには、Azure VM を再起動する必要があります。 このスクリプトは他の環境で動作する可能性はありますが、保証されません。 Azure のブログ記事と、Azure で実行されている入れ子になった仮想化のライブ ビデオ デモをご確認ください https://aka.ms/AzureNVblog
 
-### <a name="option-2-configure-nested-virtualization-manually"></a>オプション 2: 入れ子になった仮想化を手動で構成する
+### <a name="option-2-configure-nested-virtualization-manually"></a>オプション 2:入れ子になった仮想化を手動で構成する
 
 1. Azure VM で、PowerShell を管理者として開きます。 
 
@@ -165,7 +165,7 @@ IP アドレスをゲスト仮想マシンに割り当てるには、ゲスト�
   
 6. ウィザードが完了するまで、すべて既定値のままにして **[次へ]** をクリックし、 **[完了]** をクリックします。
     
-### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>オプション 2: ゲスト仮想マシンで静的 IP アドレスを手動で設定する
+### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>オプション 2:ゲスト仮想マシンに静的 IP アドレスを手動で設定する
 IP アドレスがゲスト仮想マシンに動的に割り当てられるように DHCP を構成しなかった場合は、次の手順を実行して静的 IP アドレスを設定します。
 
 1. Azure VM で、PowerShell を管理者として開きます。

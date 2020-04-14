@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 67dedfce4be81fdf686918a310b89cf463ed389a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dc9c55c7caf2f78d66d8873e2da8ed7efdbdcec9
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79457255"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411633"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>クイック スタート:.NET 用 Azure Key Vault クライアント ライブラリ (SDK v3)
 
@@ -153,13 +153,26 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 アプリを作成して実行する前に、`setx` コマンドを使用して、`akvClientId`、`akvClientSecret`、`akvTenantId`、`akvSubscriptionId` の各環境変数を、先ほど書き留めた値に設定します。
 
+**Windows**
+
 ```console
-setx akvClientId <your-clientID>
+setx akvClientId "<your-clientID>"
+setx akvClientSecret "<your-clientSecret>"
+```
 
-setx akvClientSecret <your-clientSecret>
-````
+**Linux**
 
-`setx` を呼び出すたびに、"成功: 指定した値は保存されました。" という応答が返されます。
+```bash
+export akvClientId = "<your-clientID>"
+export akvClientSecret = "<your-clientSecret>"
+```
+
+**MacOS**
+
+```bash
+export akvClientId = "<your-clientID>"
+export akvClientSecret = "<your-clientSecret>"
+```
 
 これらの環境変数をコード内の文字列に代入した後、それらを [KeyVaultClient クラス](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)に渡してアプリケーションを認証します。
 

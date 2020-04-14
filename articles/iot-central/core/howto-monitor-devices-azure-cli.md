@@ -3,17 +3,17 @@ title: Azure IoT Central エクスプローラーを使用してデバイスの�
 description: IoT Central エクスプローラー CLI を使用して、デバイスのメッセージを監視し、デバイス ツインの変更を観察します。
 author: viv-liu
 ms.author: viviali
-ms.date: 12/18/2019
-ms.topic: conceptual
+ms.date: 03/27/2020
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 6af6f01449f2f43e6799ef6d7821b9d71b24e603
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 09209c21fe1b2b115c1ba6d6e00fcd0ee59a9393
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252346"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365427"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Azure CLI を使用してデバイスの接続性を監視する
 
@@ -32,19 +32,19 @@ Azure CLI IoT 拡張機能を使用して、デバイスから IoT Central に�
 
 インストールするには、コマンド ラインから次のコマンドを実行します。
 
-```cmd/sh
+```azurecli
 az extension add --name azure-iot
 ```
 
 次を実行して拡張機能のバージョンを確認します。
 
-```cmd/sh
+```azurecli
 az --version
 ```
 
 azure-iot 拡張機能が 0.8.1 以上になっているはずです。 そうでない場合は次を実行します。
 
-```cmd/sh
+```azurecli
 az extension update --name azure-iot
 ```
 
@@ -56,24 +56,24 @@ az extension update --name azure-iot
 
 まず、Azure CLI にサインインします。 
 
-```cmd/sh
+```azurecli
 az login
 ```
 
 ### <a name="get-the-application-id-of-your-iot-central-app"></a>IoT Central アプリのアプリケーション ID を取得する
-**[Administration/Application Settings]\(管理/アプリケーション設定\)** で**アプリケーション ID** をコピーします。 これは後の手順で使用します。
+**[Administration/Application Settings]\(管理/アプリケーション設定\)** で**アプリケーション ID** をコピーします。 この値は、後の手順で使用します。
 
 ### <a name="monitor-messages"></a>メッセージの監視
-デバイスから IoT Central アプリに送信されているメッセージを監視します。 これにはすべてのヘッダーと注釈が含まれます。
+デバイスから IoT Central アプリに送信されているメッセージを監視します。 出力には、すべてのヘッダーと注釈が含まれます。
 
-```cmd/sh
+```azurecli
 az iot central app monitor-events --app-id <app-id> --properties all
 ```
 
 ### <a name="view-device-properties"></a>デバイスのプロパティを表示する
 特定のデバイスを対象に、現在の読み取りおよび読み取り/書き込みのデバイス プロパティを表示します。
 
-```cmd/sh
+```azurecli
 az iot central device-twin show --app-id <app-id> --device-id <device-id>
 ```
 

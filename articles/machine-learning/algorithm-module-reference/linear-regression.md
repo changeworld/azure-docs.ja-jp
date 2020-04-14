@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: cd634c41a1d6e3d9846e8299dd281b52beb77130
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 602553637e21b17aa4f9bc7402753af024c697c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912791"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477563"
 ---
 # <a name="linear-regression-module"></a>Linear Regression (線形回帰) モジュール
 この記事では Azure Machine Learning デザイナー (プレビュー) 内のモジュールについて説明します。
@@ -82,7 +82,7 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
 7. [Train Model (モデルのトレーニング)](./train-model.md) モジュールを自分のパイプラインに追加して、ラベル付けされたデータセットに接続します。
 
-8. パイプラインを実行します。
+8. パイプラインを送信します。
 
 ### <a name="results-for-ordinary-least-squares-model"></a>通常の最小二乗法モデルの結果
 
@@ -104,7 +104,7 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
     + **Single Parameter (単一パラメーター)** : 線形回帰ネットワークの構成方法が既にわかっている場合は、特定の値のセットを引数として渡すことができます。
     
-    + **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわかっておらず、パラメーター スイープを実行したい場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。  
+    + **[Parameter Range]\(パラメーター範囲\)** : 最適なパラメーターがわからず、パラメーター スイープを実行する場合は、このオプションを選択します。 反復する値の範囲を選択します。[モデルのハイパーパラメーターの調整](tune-model-hyperparameters.md)では、指定した設定の可能なすべての組み合わせに対して反復処理を行い、最適な結果を生成するハイパーパラメーターを決定します。  
 
    
 4. **[Learning rate]\(学習速度\)** では、確率勾配降下オプティマイザーに初期学習速度を指定します。
@@ -131,7 +131,7 @@ Azure Machine Learning では、線形回帰に加えて、さまざまな回帰
 
     統合パラメーターの一括処理を使用していない場合、[Train Model (モデルのトレーニング)](train-model.md) モジュールを使用します。
 
-13. パイプラインを実行します。
+13. パイプラインを送信します。
 
 ### <a name="results-for-online-gradient-descent"></a>オンライン勾配降下の結果
 

@@ -2,18 +2,18 @@
 title: コンテナーの要件と推奨事項
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/20/2019
-ms.author: dapine
-ms.openlocfilehash: 2fa97a3a18741f506e10e5e4d61da286db3f744c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: c62044582cb488a5ef2d20b3f407c0865b3994ba
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73481754"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877978"
 ---
 > [!NOTE]
 > 要件と推奨事項は、29 行におよぶ合計 803 文字のビジネス レターのスキャン画像 (8 MB) を使用した、1 秒あたり 1 つの要求というベンチマークに基づいています。

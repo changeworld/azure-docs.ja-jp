@@ -1,28 +1,23 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7cfa6e9810057493cc3007eec7fd1668a70c727e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d56964b7415e4ca5903950cd46c02b3c27f62d5e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77179091"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547406"
 ---
 スポット VM を使うと、非常に低コストで未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャはスポット VM を削除します。 したがって、スポット VM は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
 
 利用可能な容量は、サイズ、リージョン、時刻などによって異なります。 スポット VM を展開すると、利用可能な容量がある場合は Azure は VM を割り当てますが、このような VM には SLA はありません。 スポット VM は、高可用性の保証を提供しません。 Azure インフラストラクチャは、Azure の容量が必要になった時点で、30 秒前通知の後スポット VM が削除されます。 
 
-> [!IMPORTANT]
-> スポット インスタンスは現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンは運用環境のワークロードにはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
->
 
 ## <a name="eviction-policy"></a>削除ポリシー
 

@@ -15,14 +15,14 @@
 - name: チュートリアル
   expanded: true
   items:
-    - name: Studio とデザイナー
+    - name: スタジオ
       items:
-        - name: デザイナー (ドラッグ アンド ドロップ)
+        - name: デザイナー (ドラッグアンドドロップ)
           items:
-            - name: 'デザイナー: 1. 回帰モデルをトレーニングする'
+            - name: 1. 回帰モデルをトレーニングする
               displayName: studio
               href: tutorial-designer-automobile-price-train-score.md
-            - name: 'デザイナー: 2. そのモデルをデプロイする'
+            - name: 2. そのモデルをデプロイする
               displayName: studio
               href: tutorial-designer-automobile-price-deploy.md
         - name: 自動化された ML (UI)
@@ -30,9 +30,12 @@
             - name: 自動 ML の実験を作成する
               displayName: 'automl, automated, auto ml, portal, ui'
               href: tutorial-first-experiment-automated-ml.md
-            - name: 自動 ML を使用した需要予測 (自転車シェア データ)
+            - name: 需要予測 (自転車シェア データ)
               displayName: 'automl, automated, auto ml, portal, ui'
               href: tutorial-automated-ml-forecast.md
+        - name: 画像データへのラベル付け
+          displayName: 'tag, tagging, images'
+          href: tutorial-labeling.md
     - name: Python SDK
       items:
         - name: 初めての ML 実験を作成する
@@ -78,14 +81,14 @@
     - name: Jupyter Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Azure Open Datasets
-      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
     - name: デザイナーのデータセット
       href: sample-designer-datasets.md
+    - name: デザイナーのサンプル パイプライン
+      href: samples-designer.md
     - name: エンドツーエンドの MLOps の例
       href: 'https://github.com/microsoft/MLOps'
-    - name: デザイナー パイプライン
-      href: samples-designer.md
+    - name: Open Datasets (パブリック)
+      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: 概念
   items:
     - name: ワークスペース
@@ -115,10 +118,10 @@
       href: /azure/machine-learning/algorithm-cheat-sheet
     - name: アルゴリズムの選択方法
       href: /azure/machine-learning/how-to-select-algorithms
-    - name: 自動化された機械学習
+    - name: 自動化された ML
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
-    - name: ML の落とし穴の管理
+    - name: オーバーフィットと偏ったデータ
       displayName: 'automl, auto ml, risks'
       href: concept-manage-ml-pitfalls.md
     - name: コンピューティング インスタンス
@@ -351,6 +354,8 @@
       items:
         - name: ML パイプラインを作成する (Python)
           href: how-to-create-your-first-pipeline.md
+        - name: ML パイプラインのステップ間でのデータの移動 (Python)
+          href: how-to-move-data-in-out-of-pipelines.md
         - name: パイプラインのスケジュールを設定する (Python)
           href: how-to-schedule-pipelines.md
         - name: パイプラインをトリガーする

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: memildin
-ms.openlocfilehash: 72f16463c7dfcd3d76db2d99e1805b0159261a55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5550f8feb2b93537bdcc508aa0da062681fe9aab
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603704"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673860"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>Security Center により監視される Azure セキュリティ ポリシー
 
@@ -23,7 +23,7 @@ ms.locfileid: "77603704"
 
 Security Center によって監視される組み込みのポリシーの詳細については、次の表を参照してください。
 
-[!INCLUDE [azure-policy-samples-policies-security-center](../../includes/azure-policy-samples-policies-security-center.md)]
+[!INCLUDE [azure-policy-samples-init-asc](../../includes/azure-policy-samples-init-asc.md)]
 
 ## <a name="built-in-policy-initiatives"></a>組み込みのポリシー イニシアチブ
 

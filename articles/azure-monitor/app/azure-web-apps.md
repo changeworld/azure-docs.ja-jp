@@ -3,12 +3,12 @@ title: Azure App Services のパフォーマンスを監視する | Microsoft Do
 description: Azure App Services のアプリケーション パフォーマンスの監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 03d332af182f8f40ede634fbd563f7b064751f32
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d2134e059a446c18108e8dd16bcc74504b42b15a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655804"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437184"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -28,7 +28,7 @@ Azure App Services がホストするアプリケーションについてアプ�
 
     * このアプローチはカスタマイズできる部分がはるかに多いのですが、[Application Insights SDK NuGet パッケージへの依存関係を追加](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)する必要があります。 また、この方法では、最新バージョンのパッケージへの更新を自分で管理する必要があります。
 
-    * エージェントベースの監視の既定ではキャプチャされないイベント/依存関係を追跡するためにカスタム API 呼び出しを行う必要がある場合は、この方法を使用する必要があります。 詳細については、[カスタムのイベントとメトリックのための API に関する記事](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics)を参照してください。
+    * エージェントベースの監視の既定ではキャプチャされないイベント/依存関係を追跡するためにカスタム API 呼び出しを行う必要がある場合は、この方法を使用する必要があります。 詳細については、[カスタムのイベントとメトリックのための API に関する記事](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics)を参照してください。 これは、現在、Linux ベースのワークロードで唯一サポートされているオプションでもあります。
 
 > [!NOTE]
 > エージェント ベースの監視と手動の SDK ベースのインストルメンテーションの両方が検出された場合は、手動のインストルメンテーション設定のみが受け付けられます。 これは、重複したデータが送信されないようにするためです。 この詳細については、以下の「[トラブルシューティング](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)」セクションを参照してください。
@@ -164,7 +164,7 @@ Application Insights を使用したテレメトリの収集を有効にする�
 
 ### <a name="application-settings-definitions"></a>アプリケーション設定の定義
 
-|アプリ設定の名前 |  定義 | Value |
+|アプリ設定の名前 |  定義 | 値 |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | メインの拡張機能で、実行時の監視を制御します。 | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  既定モードのみ、最適なパフォーマンスを保証するため重要な機能が有効になります。 | `default` または `recommended`。 |
@@ -394,6 +394,10 @@ APPINSIGHTS_JAVASCRIPT_ENABLED=true を使用する場合 (この場合、コン
 これは、APPINSIGHTS_JAVASCRIPT_ENABLED アプリケーション設定が true に設定されており、同時に content-encoding が存在することが原因です。 このシナリオはまだサポートされていません。 回避策は、アプリケーション設定から APPINSIGHTS_JAVASCRIPT_ENABLED を削除することです。 残念ながら、これは、クライアント/ブラウザー側の JavaScript インストルメンテーションがまだ必要な場合、Web ペーでは手動の SDK 参照が必要であることを意味します。 JavaScript SDK での手動のインストルメンテーションに関する[手順](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup)に従ってください。
 
 Application Insights エージェント/拡張機能の最新情報については、[リリース ノート](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)のページを参照してください。
+
+### <a name="php-and-wordpress-are-not-supported"></a>PHP および WordPress はサポートされていない
+
+PHP および WordPress サイトはサポートされていません。 現時点では、これらのワークロードをサーバー側で監視するために正式にサポートされている SDK/エージェントはありません。 ただし、クライアント側の JavaScript を Web ページに追加することで PHP または WordPress サイトでクライアント側のトランザクションを手動でインストルメント化するのは、[JavaScript SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript) を使用することで実行できます。 
 
 ## <a name="next-steps"></a>次のステップ
 * [実行中のアプリに対してプロファイラーを実行](../app/profiler.md)します。

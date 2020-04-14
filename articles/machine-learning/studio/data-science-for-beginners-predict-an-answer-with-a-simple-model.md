@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: 6ad9c7912eee6c3f5ec55b9cd7ab340bc79c9db7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73837770"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>単純なモデルで回答を予測する
-## <a name="video-4-data-science-for-beginners-series"></a>ビデオ 4:初心者向けデータ サイエンス シリーズ
+## <a name="video-4-data-science-for-beginners-series"></a>ビデオ 4: 初心者向けデータ サイエンス シリーズ
 初心者向けデータ サイエン ビデオ 4 では、単純な回帰モデルを作成してダイヤモンドの価格を予測する方法について説明します。 ターゲット データを使用して回帰モデルを引き出します。
 
 このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
@@ -33,11 +33,11 @@ ms.locfileid: "73837770"
 
 * ビデオ 1: [データ サイエンスが回答する 5 つの質問](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
 * ビデオ 2: [データ サイエンス用のデータの準備はお済みですか?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
-* ビデオ 3:[データで回答できる質問をする](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
-* ビデオ 4:単純なモデルで回答を予測する
-* ビデオ 5:[他のユーザーの成果物をコピーしてデータ サイエンスを実行する](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
+* ビデオ 3: [データで回答できる質問をする](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
+* ビデオ 4: 単純なモデルで回答を予測する
+* ビデオ 5: [他のユーザーの成果物をコピーしてデータ サイエンスを実行する](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
-## <a name="transcript-predict-an-answer-with-a-simple-model"></a>トランスクリプト:単純なモデルで回答を予測する
+## <a name="transcript-predict-an-answer-with-a-simple-model"></a>トランスクリプト: 単純なモデルで回答を予測する
 "初心者向けデータ サイエンス" シリーズの 4 番目のビデオへようこそ。 ここでは、単純なモデルを作成して予測を行います。
 
 *"モデル"* とは、データについての単純化されたストーリーです。 何が言いたいかを説明します。
@@ -126,6 +126,6 @@ ms.locfileid: "73837770"
 
 Microsoft Azure Machine Learning Studio (クラシック) の "初心者向けデータ サイエンス" の他のビデオもご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio (クラシック) で最初のデータ サイエンス実験を試行する](create-experiment.md)
 * [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/preview/overview-what-is-azure-ml)

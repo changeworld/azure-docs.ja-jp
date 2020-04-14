@@ -3,12 +3,12 @@ title: Azure Application Insights による既定の SDK エンドポイント�
 description: Azure Government などのリージョンの既定の Azure Monitor Application Insights SDK エンドポイントを変更します。
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 3aa18a6b96458533c3dc53f3f420ed264b298a3e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b4ab05c7ee815b385ffb2d1ff9e621063d744dd7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671989"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298319"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>既定のエンドポイントをオーバーライドする Application Insights
 
@@ -187,11 +187,15 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 </script>
 ```
 
+### <a name="python"></a>Python
+
+opencensus-python SDK のインジェスト エンドポイントの変更に関するガイダンスについては、[opencensus-python リポジトリ](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py)を参照してください。
+
 ## <a name="regions-that-require-endpoint-modification"></a>エンドポイントの変更が必要なリージョン
 
 現在、エンドポイントの変更が必要なリージョンは [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) と [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) のみです。
 
-|リージョン |  エンドポイント名 | Value |
+|リージョン |  エンドポイント名 | 値 |
 |-----------------|:------------|:-------------|
 | Azure 中国 | テレメトリ チャネル | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure 中国 | QuickPulse (Live Metrics) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -203,7 +207,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 現在、一般的に `api.applicationinsights.io' によってアクセスされる [Application Insights REST API](https://dev.applicationinsights.io/
 ) をお使いの場合、お客様のリージョンのローカルのエンドポイントを使用する必要があります。
 
-|リージョン |  エンドポイント名 | Value |
+|リージョン |  エンドポイント名 | 値 |
 |-----------------|:------------|:-------------|
 | Azure 中国 | REST API | `api.applicationinsights.azure.cn` |
 | Azure Government | REST API | `api.applicationinsights.us`|

@@ -18,13 +18,13 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "78248848"
 ---
-# <a name="what-are-security-defaults"></a>セキュリティ デフォルトとは
+# <a name="what-are-security-defaults"></a>セキュリティの既定値群とは
 
 ID 関連の一般的な攻撃がますます広まる中で、セキュリティの管理に困難をきたす場合があります。 このような攻撃として、パスワード スプレー、リプレイ、フィッシングなどがあります。
 
-Azure Active Directory (Azure AD) のセキュリティ既定値は、セキュリティの実現をいっそう容易にし、組織を保護するために役立ちます。 セキュリティ既定値には、一般的な攻撃に対して事前に構成されたセキュリティ設定が含まれています。 
+Azure Active Directory (Azure AD) のセキュリティ既定値は、セキュリティの実現をいっそう容易にし、組織を保護するために役立ちます。 セキュリティの既定値群には、一般的な攻撃に対して事前に構成されたセキュリティ設定が含まれています。 
 
-Microsoft では、誰もがセキュリティ既定値を利用できるようにしています。 目標は、すべての組織が追加の費用なしで基本レベルのセキュリティを確実に有効にできるようにすることです。 セキュリティ既定値は、Azure portal で有効にします。
+Microsoft は、誰もがセキュリティの既定値群を利用できるよう努めています。 目標は、すべての組織が追加の費用なしで基本レベルのセキュリティを確実に有効にできるようにすることです。 セキュリティの既定値群は、Azure portal で有効にします。
 
 ![セキュリティ デフォルトを有効にするためのトグルがある Azure portal のスクリーンショット](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
  
@@ -37,7 +37,7 @@ Microsoft では、誰もがセキュリティ既定値を利用できるよう�
 
 テナント内のすべてのユーザーは、Azure Multi-Factor Authentication サービスのフォームを使用して多要素認証 (MFA) に登録する必要があります。 ユーザーは 14 日以内に Microsoft Authenticator アプリを使用して Multi-Factor Authentication に登録する必要があります。 14 日が経過すると、ユーザーは Multi-Factor Authentication への登録が完了するまでサインインできなくなります。
 
-セキュリティ デフォルトを有効にした直後の 14 日以内に出勤またはログインしない場合があることは理解しています。 ユーザー全員に Multi-Factor Authentication の登録のための十分な時間を与えられるように、14 日の期間はユーザーごとに固有です。 14 日の期間は、セキュリティ デフォルトが有効になった後、それぞれのユーザーの対話型サインインが最初に成功した時点から始まります。
+セキュリティの既定値群を有効にした直後の 14 日以内に、一部のユーザーが出勤またはログインしない場合があることは理解しています。 ユーザー全員に Multi-Factor Authentication の登録のための十分な時間を与えられるように、14 日の期間はユーザーごとに固有です。 14 日の期間は、セキュリティの既定値群が有効になった後、それぞれのユーザーの対話型サインインが最初に成功した時点から始まります。
 
 ## <a name="multi-factor-authentication-enforcement"></a>Multi-Factor Authentication の強制
 
@@ -77,7 +77,7 @@ Microsoft では、誰もがセキュリティ既定値を利用できるよう�
 テナントでセキュリティ デフォルトが有効になった後は、古いプロトコルによるすべての認証要求がブロックされます。 セキュリティ既定値は、Exchange Active Sync 基本認証をブロックします。
 
 > [!WARNING]
-> セキュリティ既定値を有効にする前に、管理者が古い認証プロトコルを使用していないことを確認してください。 詳細については、[レガシ認証から移行する方法](concept-fundamentals-block-legacy-authentication.md)に関するページを参照してください。
+> セキュリティの既定値群を有効にする前に、管理者が古い認証プロトコルを使用していないことを確認してください。 詳細については、[レガシ認証から移行する方法](concept-fundamentals-block-legacy-authentication.md)に関するページを参照してください。
 
 ### <a name="protecting-privileged-actions"></a>特権アクションの保護
 
@@ -91,7 +91,7 @@ Azure Resource Manager を使用してご自身のサービスを管理する操
 
 Azure Resource Manager にアクセスして構成を更新しようとするユーザーの ID を検証することが重要です。 アクセスを許可する前に、追加の認証を要求して ID を検証します。
 
-テナントでセキュリティ デフォルトを有効にすると、Azure portal、Azure PowerShell、または Azure CLI にアクセスしようとしているユーザーがいずれも、追加の認証を完了しなければならなくなります。 このポリシーは、Azure Resource Manager にアクセスしようとしているユーザーであれば、管理者であるかユーザーであるかに関係なく全員に適用されます。 
+テナントでセキュリティの既定値群を有効にすると、Azure portal、Azure PowerShell、または Azure CLI にアクセスしようとしているユーザーがいずれも、追加の認証を完了しなければならなくなります。 このポリシーは、Azure Resource Manager にアクセスしようとしているユーザーであれば、管理者であるかユーザーであるかに関係なく全員に適用されます。 
 
 ユーザーが Multi-Factor Authentication に登録していない場合、そのユーザーが操作を続行するには、Microsoft Authenticator アプリを使用してユーザー登録を行う必要があります。 Multi-Factor Authentication に登録するための 14 日の期間は提供されません。
 
@@ -99,17 +99,17 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 > 2017 年より前の Exchange Online テナントでは、先進認証が既定で無効になっています。 これらのテナントを通じて認証を行うときにログイン ループの可能性を回避するために、[先進認証を有効にする](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)必要があります。
 
 > [!NOTE]
-> Azure AD Connect の同期アカウントはセキュリティ既定値から除外されるため、Multi-Factor Authentication の登録または実行を求められることはありません。 組織は、このアカウントを他の目的で使用しないでください。
+> Azure AD Connect の同期アカウントはセキュリティの既定値群から除外されるため、Multi-Factor Authentication の登録または実行を求められることはありません。 組織は、このアカウントを他の目的で使用しないでください。
 
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 
-テナントに対するセキュリティ既定値のデプロイに関連したその他の考慮事項を次に示します。
+テナントに対するセキュリティの既定値群のデプロイに関連したその他の考慮事項を次に示します。
 
 ### <a name="authentication-methods"></a>認証方法
 
-セキュリティ既定値を使用すると、**通知を使用する Microsoft Authenticator アプリのみを使用して**、Azure Multi-Factor Authentication の登録と使用を行うことができます。 条件付きアクセスでは、管理者が有効にする任意の認証方法を使用できます。
+セキュリティの既定値群を使用すると、**通知を使用する Microsoft Authenticator アプリのみを使用して**、Azure Multi-Factor Authentication の登録と使用を行うことができます。 条件付きアクセスでは、管理者が有効にする任意の認証方法を使用できます。
 
-|   | セキュリティの既定値 | 条件付きアクセス |
+|   | セキュリティの既定値群 | 条件付きアクセス |
 | --- | --- | --- |
 | モバイル アプリでの通知 | X | X |
 | モバイル アプリからの確認コードまたはハードウェア トークン |   | X |
@@ -121,7 +121,7 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 
 ### <a name="conditional-access"></a>条件付きアクセス
 
-条件付きアクセスを使用して、セキュリティ既定値に似たポリシーを構成できますが、厳密にはセキュリティ既定値では利用できないユーザーの除外も含まれます。 条件付きアクセスを使用しており、環境で条件付きアクセス ポリシーを有効にしている場合、セキュリティ既定値は使用できません。 条件付きアクセスが利用できるライセンスを持っていても、環境で条件付きアクセス ポリシーが有効になっていない場合には、条件付きアクセス ポリシーを有効にしない限り、セキュリティ既定値を使用できます。 Azure AD ライセンスの詳細については、[Azure AD の価格に関するページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+条件付きアクセスを使用して、セキュリティの既定値群に似たポリシーを構成できますが、厳密にはセキュリティの既定値群では利用できないユーザーの除外も含まれます。 条件付きアクセスを使用しており、環境で条件付きアクセス ポリシーを有効にしている場合、セキュリティの既定値群は使用できません。 条件付きアクセスが利用できるライセンスを持っていても、環境で条件付きアクセス ポリシーが有効になっていない場合には、条件付きアクセス ポリシーを有効にしない限り、セキュリティの既定値群を使用できます。 Azure AD ライセンスの詳細については、[Azure AD の価格に関するページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
 ![セキュリティ既定値と条件付きアクセスは併用不可であるという警告メッセージ](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 
@@ -133,28 +133,28 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 - [すべてのユーザーに対して MFA を必須にする](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
 - [Azure MFA への登録を必須とする](../identity-protection/howto-identity-protection-configure-mfa-policy.md) - Azure AD Identity Protection が必要です
 
-## <a name="enabling-security-defaults"></a>セキュリティ デフォルトの有効化
+## <a name="enabling-security-defaults"></a>セキュリティの既定値群の有効化
 
-ディレクトリでセキュリティ デフォルトを有効にするには、次のようにします。
+ディレクトリでセキュリティの既定値群を有効にするには、次のようにします。
 
 1. セキュリティ管理者、条件付きアクセス管理者、またはグローバル管理者として、 [Azure portal](https://portal.azure.com)  にサインインします。
 1.  **[Azure Active Directory]**  > **[プロパティ]** の順に移動します。
-1. **[セキュリティの既定値の管理]** を選択します。
-1. **[Enable security defaults]\(セキュリティ デフォルトを有効にする\)** トグルを **[はい]** に設定します。
+1. **[セキュリティの既定値群の管理]** を選択します。
+1. **[セキュリティの既定値群の有効化]** トグルを **[はい]** に設定します。
 1. **[保存]** を選択します。
 
-## <a name="disabling-security-defaults"></a>セキュリティの既定値を無効にする
+## <a name="disabling-security-defaults"></a>セキュリティの既定値群を無効にする
 
-セキュリティの既定値を置き換える条件付きアクセス ポリシーを実装する組織では、セキュリティの既定値を無効にする必要があります。 
+セキュリティの既定値群を置き換える条件付きアクセス ポリシーを実装する組織では、セキュリティの既定値群を無効にする必要があります。 
 
 ![条件付きアクセス ポリシーを有効にするためにセキュリティの既定値を無効にする警告メッセージ](./media/concept-fundamentals-security-defaults/security-defaults-disable-before-conditional-access.png)
 
-ディレクトリでセキュリティの既定値を無効にするには、次のようにします。
+ディレクトリでセキュリティの既定値群を無効にするには、次のようにします。
 
 1. セキュリティ管理者、条件付きアクセス管理者、またはグローバル管理者として、 [Azure portal](https://portal.azure.com)  にサインインします。
 1.  **[Azure Active Directory]**  > **[プロパティ]** の順に移動します。
-1. **[セキュリティの既定値の管理]** を選択します。
-1. **[セキュリティの既定値の有効化]** トグルを **[いいえ]** に設定します。
+1. **[セキュリティの既定値群の管理]** を選択します。
+1. **[セキュリティの既定値群の有効化]** トグルを **[いいえ]** に設定します。
 1. **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
