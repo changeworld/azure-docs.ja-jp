@@ -1,26 +1,26 @@
 ---
 title: 共同販売の州コード | Azure Marketplace
-description: オファーの [共同販売] ページに連絡先情報を指定するときに、これらの州/都道府県コードを使用します。
+description: オファーの [共同販売] ページに連絡先情報を指定するときに、これらの州コードを使用します。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: f87014a599afd6d1c56d175b92d4da1ea49d9470
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277041"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619352"
 ---
-# <a name="co-sell-state-codes"></a>共同販売の州コード
+# <a name="co-sell-state-and-province-codes"></a>共同販売の州コード
 
 該当する場合は、次のコードを使用して、[オファーの [共同販売] ページに連絡先情報を指定する](commercial-marketplace-co-sell.md#contacts)ときに [State/Province]\(州/都道府県\) 情報を入力します。
 
-## <a name="stateprovince-table"></a>州/都道府県一覧
+## <a name="us-states-and-territories"></a>米国の州と準州
 
-|   州/都道府県名               |   コード    |
+|   州と準州の名前          |   コード    |
 |-------------------------------------|-----------|
 | アラバマ                             | US-AL     |
 | アラスカ                              | US-AK     |
@@ -78,7 +78,40 @@ ms.locfileid: "80277041"
 | 北マリアナ諸島            | US-MP     |
 | プエルトリコ                         | US-PR     |
 | 合衆国領有小離島 | US-UM    |
-|アメリカ領ヴァージン諸島                 | US-VI     |
+| アメリカ領ヴァージン諸島                 | US-VI    |
+
+## <a name="canadian-provinces-and-territories"></a>カナダの州と準州
+
+|   州と準州の名前       |   コード    |
+|-------------------------------------|-----------|
+| Alberta                             |  CA-AB    |
+| British Columbia                    |  CA-BC    |
+| マニトバ                            |  CA-MB    |
+| ニュー ブランズウィック                       |  CA-NB    |
+| ニューファンドランド・ラブラドール           |  CA-NL    |
+| ノバ スコシア                         |  CA-NS    |
+| オンタリオ                             |  CA-ON    |
+| プリンス エドワード島                |  CA-PE    |
+| ケベック                              |  CA-QC    |
+| サスカチュワン                        |  CA-SK    |
+| ノースウエスト準州               |  CA-NT    |
+| ヌナブト                             |  CA-NU    |
+| ユーコン                               |  CA-YT    |
+
+
+## <a name="australian-states-and-territories"></a>オーストラリアの州と準州
+
+|   州と準州の名前          |   コード    |
+|-------------------------------------|-----------|
+| ニュー サウス ウェールズ州                     |  AU-NSW   |
+| クイーンズランド                          |  AU-QLD   |
+| 南オーストラリア                     |  AU-SA    |
+| タスマニア                            |  AU-TAS   |
+| ビクトリア州                            |  AU-VIC   |
+| 西オーストラリア                   |  AU-WA    |
+| オーストラリア首都特別地域        |  AU-ACT   |
+| 北部特別地域                  |  AU-NT    |
+
 
 ## <a name="next-steps"></a>次のステップ
 
