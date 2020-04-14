@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: dapine
-  ms.openlocfilehash: 43bd0afd1f3d40c144003b2c2cadfdcb885989a9
-  ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+  ms.openlocfilehash: ea3090a518721c7b85880675b943726217067fbe
+  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80991315"
+  ms.lasthandoff: 04/13/2020
+  ms.locfileid: "81259046"
 highlightedContent:
   items:
   - title: 音声サービスとは
@@ -51,7 +51,7 @@ conceptualContent:
       url: index-speech-to-text.yml
   - title: テキスト読み上げ
     links:
-    - itemType: quickstart
+    - itemType: how-to-guide
       text: 音声合成の基本
       url: text-to-speech-basics.md
     - itemType: quickstart
@@ -65,15 +65,15 @@ conceptualContent:
       url: index-text-to-speech.yml
   - title: 音声翻訳
     links:
+    - itemType: how-to-guide
+      text: 音声翻訳の基本
+      url: speech-translation-basics.md
     - itemType: quickstart
       text: 音声テキスト変換の翻訳
       url: quickstarts/translate-speech-to-text.md
     - itemType: quickstart
       text: 音声を複数のターゲット言語に翻訳する
       url: quickstarts/translate-speech-to-text-multiple-languages.md
-    - itemType: quickstart
-      text: 音声間翻訳
-      url: quickstarts/translate-speech-to-speech.md
     footerLink:
       text: 詳細情報
       url: index-speech-translation.yml

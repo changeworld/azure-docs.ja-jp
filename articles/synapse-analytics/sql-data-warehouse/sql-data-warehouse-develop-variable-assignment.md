@@ -1,6 +1,6 @@
 ---
 title: 変数の代入
-description: ソリューション開発のための、Azure SQL Data Warehouse での T-SQL 変数の代入に関するヒント。
+description: この記事では、T-SQL 変数を SQL プールに割り当てる際の重要なヒントについて説明します。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0adcd9bdf92b7ec649b7d91ca0e655fc006b3549
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2dcf706ea59657abc2718a69e59191604dc2849d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351658"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633415"
 ---
-# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での変数の代入
+# <a name="assign-variables-in-synapse-sql-pool"></a>Synapse SQL プールに変数を割り当てる
 
-ソリューション開発のための、Azure SQL Data Warehouse での T-SQL 変数の代入に関するヒント。
+この記事では、T-SQL 変数を SQL プールに割り当てる際の重要なヒントについて説明します。
 
-## <a name="setting-variables-with-declare"></a>DECLARE を使用した変数の設定
+## <a name="set-variables-with-declare"></a>DECLARE を使用して変数を設定する
 
-SQL Data Warehouse の変数は、`DECLARE` ステートメントまたは `SET` ステートメントを使用して設定します。 DECLARE を使用した変数の初期化は、SQL Data Warehouse で変数値を設定する最も柔軟性の高い方法の 1 つです。
+SQL プールの変数は、`DECLARE` ステートメントまたは `SET` ステートメントを使用して設定します。 DECLARE を使用した変数の初期化は、SQL プールで変数値を設定する最も柔軟性の高い方法の 1 つです。
 
 ```sql
 DECLARE @v  int = 0
@@ -39,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-同じ DECLARE ステートメントで変数を初期化し、使用することはできません。 要点を示すために、次の例では、同じ DECLARE ステートメントで  **を初期化し、使用しています。このようなステートメントは使用**できません@p1。 次の例は、エラーが発生します。
+同じ DECLARE ステートメントで変数を初期化して使用することはできません。 要点を示すために、次の例では、同じ DECLARE ステートメントで @p1 を初期化し、使用しています。このようなステートメントは使用**できません**。 そのため、次の例ではエラーが発生します。
 
 ```sql
 DECLARE @p1 int = 0
@@ -47,7 +47,7 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a>SET を使用した値の設定
+## <a name="set-values-with-set"></a>SET を使用して値を設定する
 
 SET は、1 つの変数を設定する際によく使用されるメソッドです。
 
@@ -64,7 +64,7 @@ SET を使用して設定できる変数は、一度に 1 つに限られます�
 
 ## <a name="limitations"></a>制限事項
 
-UPDATE は変数代入には使用できません。
+変数代入で UPDATE は使用できません。
 
 ## <a name="next-steps"></a>次のステップ
 

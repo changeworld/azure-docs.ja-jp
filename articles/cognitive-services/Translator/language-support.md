@@ -52,22 +52,22 @@ Translator Text API では、テキスト対テキストの翻訳について、
 |簡体中国語|    `zh-Hans`|ニューラル|
 |中国語 (繁体字)|   `zh-Hant`       |ニューラル|
 |Croatian|  `hr`    |ニューラル|
-|Czech| `cs`    |   ニューラル|
+|チェコ語| `cs`    |   ニューラル|
 |Danish|    `da`        |ニューラル|
 |Dutch| `nl`|   ニューラル|
 |English|   `en`    |   ニューラル|
 |Estonian|  `et`    |   ニューラル|
 |フィジー語|    `fj`    |   統計|
 |フィリピン語|  `fil`   |   統計|
-|Finnish|   `fi`    |   ニューラル|
+|フィンランド語|   `fi`    |   ニューラル|
 |French|    `fr`    |   ニューラル|
-|German|    `de`    |   ニューラル|
+|ドイツ語|    `de`    |   ニューラル|
 |Greek| `el`    |   ニューラル|
 |ハイチ・クレオール語|    `ht`        |統計|
 |ヘブライ語 |`he`   |ニューラル
 |ヒンディー語| `hi`    |   ニューラル|
 |ミャオ語| `mww`   |   統計|
-|Hungarian| `hu`    |   ニューラル|
+|ハンガリー語| `hu`    |   ニューラル|
 |アイスランド語| `is`    |   ニューラル|
 |インドネシア語|    `id`    |   統計|
 |アイルランド語 | `ga`| ニューラル
@@ -92,21 +92,21 @@ Translator Text API では、テキスト対テキストの翻訳について、
 |ポルトガル語 (ポルトガル)| `pt-pt` | ニューラル
 |パンジャーブ語|`pa`|ニューラル
 |オトミ語|   `otq`   |   統計|
-|Romanian|  `ro`    |   ニューラル|
-|Russian|   `ru`    |   ニューラル|
+|ルーマニア語|  `ro`    |   ニューラル|
+|ロシア語|   `ru`    |   ニューラル|
 |サモア語|    `sm`    |   統計|
 |セルビア語 (キリル)|    `sr-Cyrl`|  統計|
 |セルビア語 (ラテン)|   `sr-Latn`       |統計|
 |Slovak|    `sk`    |   ニューラル|
-|Slovenian| `sl`    |   ニューラル|
-|Spanish|   `es`    |   ニューラル|
-|Swedish|   `sv`    |ニューラル|
+|スロベニア語| `sl`    |   ニューラル|
+|スペイン語|   `es`    |   ニューラル|
+|スウェーデン語|   `sv`    |ニューラル|
 |タヒチ語|  `ty`    |統計|
 |タミル語| `ta`    |   ニューラル|
 |テルグ語|    `te`    |   ニューラル|
-|Thai|  `th`    |   ニューラル|
+|タイ語|  `th`    |   ニューラル|
 |トンガ語|    `to`    |   統計|
-|Turkish|   `tr`        |ニューラル|
+|トルコ語|   `tr`        |ニューラル|
 |ウクライナ語| `uk`    |   ニューラル|
 |ウルドゥ語|  `ur`    |   統計|
 |ベトナム語|    `vi`    |   ニューラル|
@@ -141,7 +141,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 | セルビア語 (ラテン) | `sr-Latn` | ラテン語 `Latn` | --> | キリル語 `Cyrl`|
 | タミル語 | `ta` | タミール語 `Taml` | --> | ラテン語 `Latn` |
 | テルグ語 | `te` | テルグ語 `Telu` | --> | ラテン語 `Latn` |
-| Thai | `th` | タイ語 `Thai` | --> | ラテン語 `Latn` |
+| タイ語 | `th` | タイ語 `Thai` | --> | ラテン語 `Latn` |
 
 ## <a name="dictionary"></a>Dictionary
 
@@ -157,19 +157,19 @@ Translator Text API では、テキスト対テキストの翻訳について、
 | カタロニア語      | `ca`          |
 | 簡体中国語      | `zh-Hans`          |
 | Croatian      | `hr`          |
-| Czech      | `cs`          |
+| チェコ語      | `cs`          |
 | Danish      | `da`          |
 | Dutch      | `nl`          |
 | Estonian      | `et`          |
-| Finnish      | `fi`          |
+| フィンランド語      | `fi`          |
 | French      | `fr`          |
-| German      | `de`          |
+| ドイツ語      | `de`          |
 | Greek      | `el`          |
 | ハイチ・クレオール語      | `ht`          |
 | ヘブライ語      | `he`          |
 | ヒンディー語      | `hi`          |
 | ミャオ語      | `mww`          |
-| Hungarian      | `hu`          |
+| ハンガリー語      | `hu`          |
 | アイスランド語    | `is`  |
 | インドネシア語      | `id`          |
 | Italian      | `it`          |
@@ -185,16 +185,16 @@ Translator Text API では、テキスト対テキストの翻訳について、
 | ペルシャ語      | `fa`          |
 | Polish      | `pl`          |
 | ポルトガル語 (ブラジル)     | `pt-br`          |
-| Romanian      | `ro`          |
-| Russian      | `ru`          |
+| ルーマニア語      | `ro`          |
+| ロシア語      | `ru`          |
 | セルビア語 (ラテン)      | `sr-Latn`          |
 | Slovak     | `sk`          |
-| Slovenian      | `sl`          |
-| Spanish      | `es`          |
-| Swedish      | `sv`          |
+| スロベニア語      | `sl`          |
+| スペイン語      | `es`          |
+| スウェーデン語      | `sv`          |
 | タミル語      | `ta`          |
-| Thai      | `th`          |
-| Turkish      | `tr`          |
+| タイ語      | `th`          |
+| トルコ語      | `tr`          |
 | ウクライナ語      | `uk`          |
 | ウルドゥ語      | `ur`          |
 | ベトナム語      | `vi`          |
@@ -224,18 +224,18 @@ Languages メソッドを使用して、Translator Text API v3.0 でサポート
 | 簡体中国語      | `zh-Hans`          |
 |中国語 (繁体字)|   `zh-Hant`   |
 | Croatian      | `hr`          |
-| Czech      | `cs`          |
+| チェコ語      | `cs`          |
 | Danish      | `da`          |
 | Dutch      | `nl`          |
 | English    | `en`     |
 | Estonian      | `et`          |
-| Finnish      | `fi`          |
+| フィンランド語      | `fi`          |
 | French      | `fr`          |
-| German      | `de`          |
+| ドイツ語      | `de`          |
 | Greek      | `el`          |
 | ヘブライ語      | `he`          |
 | ヒンディー語      | `hi`          |
-| Hungarian      | `hu`          |
+| ハンガリー語      | `hu`          |
 | アイスランド語 | `is` |
 | インドネシア語|   `id`    |
 | アイルランド語 | `ga`  |
@@ -251,16 +251,16 @@ Languages メソッドを使用して、Translator Text API v3.0 でサポート
 | ペルシャ語      | `fa`          |
 | Polish      | `pl`          |
 | ポルトガル語 (ブラジル) | `pt-br` |
-| Romanian      | `ro`          |
-| Russian      | `ru`          |
+| ルーマニア語      | `ro`          |
+| ロシア語      | `ru`          |
 | サモア語|   `sm`    |
 | セルビア語 (ラテン)      | `sr-Latn`          |
 | Slovak     | `sk`          |
-| Slovenian      | `sl`          |
-| Spanish      | `es`          |
-| Swedish      | `sv`          |
-| Thai      | `th`          |
-| Turkish      | `tr`          |
+| スロベニア語      | `sl`          |
+| スペイン語      | `es`          |
+| スウェーデン語      | `sv`          |
+| タイ語      | `th`          |
+| トルコ語      | `tr`          |
 | ウクライナ語      | `uk`          |
 | ベトナム語      | `vi`          |
 | ウェールズ語 | `cy` |

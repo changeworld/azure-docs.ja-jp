@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/13/2020
+ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8d68d2e83bba055e92b99ee9294daf6f2395d8dc
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b8073240bdda38757a5e4feee66c9f54746966c4
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206304"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632040"
 ---
 ### <a name="portal"></a>ポータル
 
@@ -21,7 +21,7 @@ ms.locfileid: "77206304"
 
 #### <a name="setting-up-your-azure-key-vault"></a>Azure Key Vault の設定
 
-1. [Azure portal](https://portal.azure.com/) にサインインして、Key Vault を検索します。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 1. **[キー コンテナー]** を検索して選択します。
 
     [ ![sse-key-vault-portal-search.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
@@ -30,7 +30,7 @@ ms.locfileid: "77206304"
     > デプロイを成功させるには、Azure キー コンテナー、ディスク暗号化セット、VM、ディスク、スナップショットがすべて同じリージョンとサブスクリプションに存在している必要があります。
 
 1. **[+ 追加]** を選択して、新しいキー コンテナーを作成します。
-1. 新しいリソース グループを作成する
+1. 新しいリソース グループを作成します。
 1. キー コンテナー名を入力し、リージョンを選択して、価格レベルを選択します。
 1. **[確認および作成]** を選択し、選択内容を確認してから、 **[作成]** を選択します。
 
@@ -38,21 +38,19 @@ ms.locfileid: "77206304"
 
 1. キー コンテナーのデプロイが完了したら、それを選択します。
 1. **[設定]** で **[キー]** を選択します。
-1. **[生成/インポート]** を選択します。
+1. **[Generate/Import]\(生成/インポート\)** を選択します。
 
     ![Key Vault のリソース設定ペインのスクリーンショット。 設定内で [生成/インポート] ボタンが表示されています。](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
-1. **[キーの種類]** は **[RSA]** 、 **[RSA キー サイズ]** は **[2080]** に設定されているので、どちらもそのままにしておきます。
+1. **[キーの種類]** は **[RSA]** 、 **[RSA キー サイズ]** は **[2048]** に設定されているので、どちらもそのままにしておきます。
 1. 必要に応じて残りの選択項目を入力したら、 **[作成]** を選択します。
 
     ![[生成/インポート] ボタンを選択すると表示される [Create a key]\(キーを作成します\) ブレードのスクリーンショット](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
 
 #### <a name="setting-up-your-disk-encryption-set"></a>ディスク暗号化セットを設定する
 
-ディスク暗号化セットを作成して構成するには、次のリンクを使用する必要があります: https://aka.ms/diskencryptionsets 。 ディスク暗号化セットの作成は、グローバル Azure portal ではまだ利用できません。
-
-1. [ディスク暗号化セットのリンク](https://aka.ms/diskencryptionsets)を開きます。
-1. **[+追加]** を選択します。
+1. **ディスク暗号化セット**を検索して選択します。
+1. **[ディスク暗号化セット]** ブレードで、 **[+ 追加]** を選択します。
 
     ![ディスク暗号化ポータルのメイン画面のスクリーンショット。 [追加] ボタンが強調表示されています](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
 
@@ -77,7 +75,6 @@ ms.locfileid: "77206304"
 キー コンテナーとディスク暗号化セットの作成と設定が完了したので、暗号化を使用して VM をデプロイできます。
 VM のデプロイ プロセスは標準的なデプロイ プロセスと似ています。唯一の違いは、VM を他のリソースと同じリージョンにデプロイしたうえで、カスタマー マネージド キーを使用する必要があることです。
 
-1. [ディスク暗号化セットのリンク](https://aka.ms/diskencryptionsets)を開きます。
 1. 「**Virtual Machines**」で検索し、 **[+ 追加]** を選択して、VM を作成します。
 1. **[基本]** タブで、ディスク暗号化セットおよび Azure Key Vault と同じリージョンを選択します。
 1. **[基本]** タブで、必要に応じてその他の値を入力します。
@@ -92,12 +89,9 @@ VM のデプロイ プロセスは標準的なデプロイ プロセスと似て
 
 #### <a name="enable-on-an-existing-disk"></a>既存のディスクで有効にする
 
-既存のディスク上でディスク暗号化を管理および構成するには、次のリンクを使用する必要があります: https://aka.ms/diskencryptionsets 。 カスタマー マネージド キーを既存のディスク上で有効にする機能は、グローバル Azure portal ではまだ使用できません。
-
 > [!CAUTION]
 > VM にアタッチされているすべてのディスクでディスク暗号化を有効にするには、VM を停止する必要があります。
-
-1. [ディスク暗号化セットのリンク](https://aka.ms/diskencryptionsets)を開きます。
+    
 1. 使用しているディスク暗号化セットのいずれかと同じリージョンにある VM に移動します。
 1. VM を開き、 **[停止]** を選択します。
 

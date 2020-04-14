@@ -120,7 +120,7 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 テキストが空の場合、警告が生成されます。
 テキストが 50,000 文字を超えると、最初の 50,000 文字のみが分析され、警告が発行されます。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 5809307ff8e047ebc6120cb5ebf36590f2a2a51a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81f8577592f1d53627bc09a2f9ace8c060ad4660
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444018"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668862"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
 
@@ -53,7 +53,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
     * **バージョン**: **[V2]** を選択します。
     * **[場所]** :データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 
 
-3. **作成** を選択します。
+3. **［作成］** を選択します
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。 
    
    ![データ ファクトリのホーム ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/data-factory-home-page.png)
@@ -137,7 +137,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
-Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 からへのアップグレードの評価の概要については、「[ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする](../storage/blobs/data-lake-storage-upgrade.md)」をご覧ください。 後続のセクションでは、データ ファクトリを使用して Data Lake Storage Gen1 から Data Lake Storage Gen2 にデータをアップグレードする際のベスト プラクティスについて紹介しています。
+Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 からへのアップグレードの評価の概要については、「[ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)」をご覧ください。 後続のセクションでは、データ ファクトリを使用して Data Lake Storage Gen1 から Data Lake Storage Gen2 にデータをアップグレードする際のベスト プラクティスについて紹介しています。
 
 ### <a name="data-partition-for-historical-data-copy"></a>履歴データ コピーの場合のデータ パーティション
 
@@ -146,7 +146,7 @@ Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 からへのア
 
 概念実証を使用し、エンドツーエンド ソリューションを検証し、環境のコピー スループットをテストします。 概念実証の主要な手順: 
 
-1. Data Lake Storage Gen1 から Data Lake Storage Gen2 に数 TB のデータをコピーする 1 回のコピー アクティビティでデータ ファクトリ パイプラインを作成し、コピー パフォーマンスのベースラインを取得します。 最初は[データ統合ユニット (DIU)](copy-activity-performance.md#data-integration-units) を 128 にします。 
+1. Data Lake Storage Gen1 から Data Lake Storage Gen2 に数 TB のデータをコピーする 1 回のコピー アクティビティでデータ ファクトリ パイプラインを作成し、コピー パフォーマンスのベースラインを取得します。 最初は[データ統合ユニット (DIU)](copy-activity-performance-features.md#data-integration-units) を 128 にします。 
 2. ステップ 1 で取得したコピー スループットに基づいて、データ移行全体に必要な推定時間を計算します。 
 3. (省略可能) 制御テーブルを作成し、移行するファイルをパーティションに分割するファイル フィルターを定義します。 ファイルをパーティションに分割する方法は次のとおりです。 
 
@@ -163,7 +163,7 @@ Data Lake Storage Gen1 からデータを読み取り、Data Lake Storage Gen2 �
 
 ### <a name="preserve-acls-from-data-lake-storage-gen1"></a>Data Lake Storage Gen1 の ACL を保持する
 
-Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードするときに、ACL をデータ ファイルと共にレプリケートする必要がある場合は、「[Data Lake Storage Gen1 の ACL を保持する](connector-azure-data-lake-storage.md#preserve-acls-from-data-lake-storage-gen1)」をご覧ください。 
+Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードするときに、ACL をデータ ファイルと共にレプリケートする必要がある場合は、「[Data Lake Storage Gen1 の ACL を保持する](connector-azure-data-lake-storage.md#preserve-acls)」をご覧ください。 
 
 ### <a name="incremental-copy"></a>増分コピー 
 

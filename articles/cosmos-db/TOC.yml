@@ -1037,6 +1037,8 @@
           href: monitor-cosmos-db.md
         - name: サーバー側の待機時間を監視する
           href: monitor-server-side-latency.md
+        - name: 要求ユニットの使用状況を監視する
+          href: monitor-request-unit-usage.md
         - name: 診断ログを使用して監視する
           href: cosmosdb-monitor-resource-logs.md
         - name: コントロール プレーン ログの監査

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: cfd4c113391f2ead238f5288c255b599e91b7e3a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4517f85fae278bd8bc15a9586d9dc0202e7dfe56
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201460"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475233"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 
@@ -44,7 +44,7 @@ Stream Analytics からの Azure Data Lake Storage 出力は現在、Azure China
 | イベントのシリアル化の形式 | 出力データのシリアル化形式です。 JSON、CSV、Avro がサポートされています。|
 | エンコード | CSV または JSON 形式を使用する場合は、エンコードを指定する必要があります。 現時点でサポートされているエンコード形式は UTF-8 だけです。|
 | 区切り記号 | CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV データをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。|
-| Format | JSON のシリアル化のみに適用されます。 **[改行区切り]** を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 **[配列]** を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、改行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。|
+| Format | JSON のシリアル化のみに適用されます。 **[改行区切り]** を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 **[改行区切り]** を選択した場合、JSON は一度に 1 オブジェクトずつ読み取られます。 コンテンツ全体は、それ自体では有効な JSON になりません。  **[配列]** を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、改行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。|
 | 認証モード | [マネージド ID](stream-analytics-managed-identities-adls.md) またはユーザー トークンを使用して、Data Lake Storage アカウントへのアクセスを承認できます。 アクセス権を付与した後は、ユーザー アカウントのパスワードを変更するか、このジョブの Data Lake Storage 出力を削除するか、または Stream Analytics ジョブを削除することによってアクセスを取り消すことができます。 |
 
 ## <a name="sql-database"></a>SQL Database
@@ -88,7 +88,7 @@ Azure Blob Storage を使用すると、大量の非構造化データをクラ�
 |最大時間 (Parquet のみ)|バッチあたりの最大待機時間。 この時間が経過すると、最小行数の要件が満たされていなくても、バッチは出力に書き込まれます。 現在の既定値は 1 分であり、最大許容値は 2 時間です。 BLOB 出力にパス パターンの頻度がある場合は、待機時間をパーティションの時間の範囲より長くすることはできません。|
 | エンコード    | CSV または JSON 形式を使用する場合は、エンコードを指定する必要があります。 現時点でサポートされているエンコード形式は UTF-8 だけです。 |
 | 区切り記号   | CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV データをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
-| Format      | JSON のシリアル化のみに適用されます。 **[改行区切り]** を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 **[配列]** を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、改行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。 |
+| Format      | JSON のシリアル化のみに適用されます。 **[改行区切り]** を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 **[改行区切り]** を選択した場合、JSON は一度に 1 オブジェクトずつ読み取られます。 コンテンツ全体は、それ自体では有効な JSON になりません。 **[配列]** を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、改行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。 |
 
 出力として Blob Storage を使用しているときに、BLOB に新しいファイルが作成されるのは、次の場合です。
 
@@ -118,7 +118,7 @@ Azure Blob Storage を使用すると、大量の非構造化データをクラ�
 | イベントのシリアル化の形式 | 出力データのシリアル化形式です。 JSON、CSV、Avro がサポートされています。 |
 | エンコード | CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。 |
 | 区切り記号 | CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
-| Format | JSON のシリアル化のみに適用されます。 **[改行区切り]** を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 **[配列]** を指定すると、JSON オブジェクトの配列として出力が書式設定されます。  |
+| Format | JSON のシリアル化のみに適用されます。 **[改行区切り]** を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 **[改行区切り]** を選択した場合、JSON は一度に 1 オブジェクトずつ読み取られます。 コンテンツ全体は、それ自体では有効な JSON になりません。 **[配列]** を指定すると、JSON オブジェクトの配列として出力が書式設定されます。  |
 | プロパティ列 | 省略可能。 ペイロードではなく、送信メッセージのユーザー プロパティとして関連付ける必要があるコンマ区切りの列です。 この機能の詳細は、「[出力用のカスタム メタデータ プロパティ](#custom-metadata-properties-for-output)」セクションにあります。 |
 
 ## <a name="power-bi"></a>Power BI
@@ -187,8 +187,8 @@ Datetime | String | String |  Datetime | String
 | ストレージ アカウント キー |ストレージ アカウントに関連付けられているアクセス キー。 |
 | テーブル名 |テーブルの名前。 テーブルが存在しない場合は、テーブルが作成されます。 |
 | パーティション キー |パーティション キーが含まれる出力列の名前です。 パーティション キーは、エンティティのプライマリ キーの最初の部分を形成する、テーブル内のパーティションの一意識別子です。 最大サイズが 1 KB の文字列値です。 |
-| 行キー |行キーが含まれる出力列の名前です。 行キーは、パーティション内のエンティティの一意識別子です。 エンティティのプライマリ キーの 2 番目の部分を形成します。 行キーは、最大サイズが 1 KB の文字列値です。 |
-| バッチ サイズ |バッチ操作のレコードの数です。 ほとんどのジョブは既定値 (100) で十分です。 この設定の変更について詳しくは、[テーブル バッチ操作の仕様](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation)に関するページを参照してください。 |
+| 行キー |行キーが含まれる出力列の名前です。 行キーは、パーティション内のエンティティの一意識別子です。 これにより、エンティティのプライマリ キーの 2 番目の部分が形成されます。 行キーは、最大サイズが 1 KB の文字列値です。 |
+| バッチ サイズ |バッチ操作のレコードの数です。 ほとんどのジョブは既定値 (100) で十分です。 この設定の変更について詳しくは、[テーブル バッチ操作の仕様](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation)に関するページを参照してください。 |
 
 ## <a name="service-bus-queues"></a>Service Bus キュー
 
@@ -208,7 +208,7 @@ Datetime | String | String |  Datetime | String
 | イベントのシリアル化の形式 |出力データのシリアル化形式です。 JSON、CSV、Avro がサポートされています。 |
 | エンコード |CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。 |
 | 区切り記号 |CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
-| Format |JSON 型のみに適用されます。 **[改行区切り]** を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 **[配列]** を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 |
+| Format |JSON 型のみに適用されます。 **[改行区切り]** を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 **[改行区切り]** を選択した場合、JSON は一度に 1 オブジェクトずつ読み取られます。 コンテンツ全体は、それ自体では有効な JSON になりません。 **[配列]** を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 |
 | プロパティ列 | 省略可能。 ペイロードではなく、送信メッセージのユーザー プロパティとして関連付ける必要があるコンマ区切りの列です。 この機能の詳細は、「[出力用のカスタム メタデータ プロパティ](#custom-metadata-properties-for-output)」セクションにあります。 |
 | システム プロパティ列 | 省略可能。 ペイロードではなく送信メッセージに添付する必要がある、システムプロパティと対応する列名のキーと値のペア。 この機能の詳細については、「[Service Bus キューとトピックの出力に関するシステム プロパティ](#system-properties-for-service-bus-queue-and-topic-outputs)」を参照してください。  |
 
@@ -266,14 +266,14 @@ Azure Stream Analytics では、HTTP トリガーを使用して Azure Functions
 | プロパティ名 | 説明 |
 | --- | --- |
 | 関数アプリ |Azure Functions アプリの名前です。 |
-| Function |ご自分の Azure Functions アプリ内にある関数の名前です。 |
+| 機能 |ご自分の Azure Functions アプリ内にある関数の名前です。 |
 | Key |別のサブスクリプションの Azure 関数を使用するには、ご自分の関数にアクセスするためのキーを指定します。 |
 | 最大バッチ サイズ |ご自分の Azure 関数に送信される各出力バッチの最大サイズを設定できるプロパティです。 入力の単位はバイトです。 既定値は 262,144 バイト (256 KB) です。 |
 | 最大バッチ カウント  |Azure Functions に送信される各バッチのイベントの最大数を指定できるプロパティです。 既定値は 100 です。 |
 
 Azure Stream Analytics は、正常に処理されたバッチに対して Functions アプリから HTTP ステータス 200 を想定しています。
 
-Azure Stream Analytics は、Azure 関数から 413 ("http の要求したエンティティが大きすぎる") 例外を受け取ると、Azure Functions に送信するバッチのサイズを縮小します。 Azure 関数コードで、この例外を使用して、Azure Stream Analytics がサイズの大きいバッチを送信しないようにします。 また、関数で使用する最大バッチ カウントおよび最大バッチ サイズの値が Stream Analytics ポータルに入力した値と矛盾しないことを確認します。
+Azure Stream Analytics は、Azure 関数から 413 ("http の要求したエンティティが大きすぎる") 例外を受け取ると、Azure Functions に送信するバッチのサイズを縮小します。 Azure 関数コードで、この例外を使用して、Azure Stream Analytics がサイズの大きすぎるバッチを送信しないようにします。 また、関数で使用する最大バッチ カウントおよび最大バッチ サイズの値が Stream Analytics ポータルに入力した値と矛盾しないことを確認します。
 
 > [!NOTE]
 > テスト接続中、Stream Analytics から Azure Functions に空のバッチが送信され、この 2 つの間の接続が機能するかどうかがテストされます。 テスト接続に合格するように、Functions アプリで空のバッチ要求が処理されるようにします。
@@ -318,7 +318,7 @@ Azure Stream Analytics は、Azure 関数から 413 ("http の要求したエン
 
 これにより、`column1` の値を持つ Service Bus キューメッセージに `MessageId` が設定され、PartitionKey が `column2` の値で設定されます。
 
-## <a name="partitioning"></a>[パーティション分割]
+## <a name="partitioning"></a>パーティション分割
 
 次の表は、出力の種類ごとにパーティションのサポートと出力ライターの数をまとめた一覧です。
 
@@ -342,18 +342,18 @@ Azure Stream Analytics では、イベントを処理して出力に書き込む
 
 次の表では、出力のバッチ処理に関するいくつかの考慮事項について説明します。
 
-| 出力の種類 | 最大メッセージ サイズ | バッチ サイズの最適化 |
+| 出力の種類 |    最大メッセージ サイズ | バッチ サイズの最適化 |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | 「[Data Lake Store の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits)」を参照してください。 | 書き込み操作ごとに最大 4 MB を使用します。 |
 | Azure SQL データベース | 最大バッチ カウントを使用して構成できます。 既定では、1 つの一括挿入あたり最大で 10,000 行、最小で 100 行です。<br />[Azure SQL の制限](../sql-database/sql-database-resource-limits.md)に関する記事を参照してください。 |  すべてのバッチは、最初に最大バッチ カウントを使用して一括挿入されます。 バッチは、SQL の再試行可能なエラーに基づいて (最小バッチ カウントに達するまで) 半分に分割されます。 |
 | Azure BLOB ストレージ | [Azure Storage の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)に関するセクションを参照してください。 | BLOB の最大ブロック サイズは 4 MB です。<br />BLOB の最大ブロック数は 50,000 です。 |
-| Azure Event Hubs  | メッセージあたり 256 KB または 1 MB です。 <br />[Event Hubs の制限](../event-hubs/event-hubs-quotas.md)に関する記事を参照してください。 |  入出力のパーティション分割が揃っていない場合、各イベントは個別に `EventData` に格納され、最大メッセージ サイズまでのバッチで送信されます。 これは、[カスタム メタデータ プロパティ](#custom-metadata-properties-for-output)が使用されている場合にも発生します。 <br /><br />  入出力のパーティション分割が揃っている場合、複数のイベントが最大メッセージ サイズまで 1 つの `EventData` インスタンスに格納され、送信されます。 |
+| Azure Event Hubs    | メッセージあたり 256 KB または 1 MB です。 <br />[Event Hubs の制限](../event-hubs/event-hubs-quotas.md)に関する記事を参照してください。 |    入出力のパーティション分割が揃っていない場合、各イベントは個別に `EventData` に格納され、最大メッセージ サイズまでのバッチで送信されます。 これは、[カスタム メタデータ プロパティ](#custom-metadata-properties-for-output)が使用されている場合にも発生します。 <br /><br />  入出力のパーティション分割が揃っている場合、複数のイベントが最大メッセージ サイズまで 1 つの `EventData` インスタンスに格納され、送信されます。    |
 | Power BI | 「[Power BI REST API の制限事項](https://msdn.microsoft.com/library/dn950053.aspx)」を参照してください。 |
 | Azure Table Storage | [Azure Storage の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)に関するセクションを参照してください。 | 既定では、1 つのトランザクションあたり 100 個のエンティティです。 必要に応じて、より小さい値を構成できます。 |
-| Azure Service Bus キュー   | Standard レベルではメッセージあたり 256 KB、Premium レベルでは 1 MB。<br /> [Service Bus の制限](../service-bus-messaging/service-bus-quotas.md)に関する記事を参照してください。 | メッセージごとに 1 つのイベントを使用します。 |
+| Azure Service Bus キュー    | Standard レベルではメッセージあたり 256 KB、Premium レベルでは 1 MB。<br /> [Service Bus の制限](../service-bus-messaging/service-bus-quotas.md)に関する記事を参照してください。 | メッセージごとに 1 つのイベントを使用します。 |
 | Azure Service Bus トピック | Standard レベルではメッセージあたり 256 KB、Premium レベルでは 1 MB。<br /> [Service Bus の制限](../service-bus-messaging/service-bus-quotas.md)に関する記事を参照してください。 | メッセージごとに 1 つのイベントを使用します。 |
-| Azure Cosmos DB   | 「[Azure Cosmos DB の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits)」を参照してください。 | バッチ サイズと書き込みの頻度は、Azure Cosmos DB の応答に基づいて動的に調整されます。 <br /> Stream Analytics からの事前に定義された制限はありません。 |
-| Azure Functions   | | 既定のバッチ サイズは 262,144 バイト (256 KB) です。 <br /> バッチごとの既定のイベント数は 100 です。 <br /> バッチ サイズは構成可能で、Stream Analytics の[出力オプション](#azure-functions)で増減させることができます。
+| Azure Cosmos DB    | 「[Azure Cosmos DB の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits)」を参照してください。 | バッチ サイズと書き込みの頻度は、Azure Cosmos DB の応答に基づいて動的に調整されます。 <br /> Stream Analytics からの事前に定義された制限はありません。 |
+| Azure Functions    | | 既定のバッチ サイズは 262,144 バイト (256 KB) です。 <br /> バッチごとの既定のイベント数は 100 です。 <br /> バッチ サイズは構成可能で、Stream Analytics の[出力オプション](#azure-functions)で増減させることができます。
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
