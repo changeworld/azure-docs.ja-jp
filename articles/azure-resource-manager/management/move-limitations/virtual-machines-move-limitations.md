@@ -2,13 +2,13 @@
 title: 新しいサブスクリプションまたはリソース グループへ Azure VM を移動する
 description: Azure Resource Manager を使用して、新しいリソース グループまたはサブスクリプションに仮想マシンを移動します。
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.openlocfilehash: 97c49f90dab2aafd89de322e57ad44ff1fc9d367
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: df34268b7741f76621c290e9979cf24d828ddc09
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75474917"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478670"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>仮想マシンの移動に関するガイダンス
 
@@ -27,18 +27,40 @@ ms.locfileid: "75474917"
 
 ## <a name="virtual-machines-with-azure-backup"></a>Azure Backup を利用した仮想マシン
 
-Azure Backup で構成された仮想マシンを移動するには、次の対処法を使用します。
+Azure Backup で構成された仮想マシンを移動するには、その復元ポイントをコンテナーから削除する必要があります。
+
+仮想マシンに対して[論理的な削除](../../../backup/backup-azure-security-feature-cloud.md)が有効になっている場合は、その復元ポイントが保持されている間は仮想マシンを移動することはできません。 [論理的な削除を無効にする](../../../backup/backup-azure-security-feature-cloud.md#disabling-soft-delete)か、復元ポイントの削除後、14 日間経過するまで待ってください。
+
+### <a name="portal"></a>ポータル
+
+1. バックアップ用に構成されている仮想マシンを選択します。
+
+1. 左側のウィンドウで、 **[バックアップ]** を選択します。
+
+1. **[バックアップの停止]** を選択する
+
+1. **[バックアップ データの削除]** を選択します。
+
+1. 削除が完了した後に、コンテナーと仮想マシンをターゲット サブスクリプションに移動できます。 移動した後、バックアップを続行できます。
+
+### <a name="powershell"></a>PowerShell
 
 * 仮想マシンの場所を探します。
 * 名前付けパターン `AzureBackupRG_<location of your VM>_1` (たとえば、AzureBackupRG_westus2_1) を持つリソース グループを探します
-* Azure portal の場合、「非表示の型」を確認します
 * PowerShell の場合、`Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1`コマンドレットを使用します
+* 名前付けパターン `AzureBackup_<name of your VM that you're trying to move>_###########` を持つタイプ `Microsoft.Compute/restorePointCollections` のリソースを探します
+* このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
+
+### <a name="azure-cli"></a>Azure CLI
+
+* 仮想マシンの場所を探します。
+* 名前付けパターン `AzureBackupRG_<location of your VM>_1` (たとえば、AzureBackupRG_westus2_1) を持つリソース グループを探します
 * CLI の場合、`az resource list -g AzureBackupRG_<location of your VM>_1`を使用します
 * 名前付けパターン `AzureBackup_<name of your VM that you're trying to move>_###########` を持つタイプ `Microsoft.Compute/restorePointCollections` のリソースを探します
 * このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
-* 削除が完了した後に、コンテナーと仮想マシンをターゲット サブスクリプションに移動できます。 移動した後は、データの損失なしでバックアップを続行できます。
-* バックアップのための Recovery Service コンテナーの移動については、「[Recovery Services の制限事項](../../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-リソースの移動のコマンドについては、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../move-resource-group-and-subscription.md)」を参照してください。
+* リソースの移動のコマンドについては、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../move-resource-group-and-subscription.md)」を参照してください。
+
+* バックアップのための Recovery Service コンテナーの移動については、「[Recovery Services の制限事項](../../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)」を参照してください。

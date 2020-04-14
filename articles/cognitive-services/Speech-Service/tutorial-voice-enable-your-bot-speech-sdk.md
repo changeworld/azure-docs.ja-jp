@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: dapine
-ms.openlocfilehash: 9112c7070708f3b97d79c1978a9b7204721c3194
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3c2d74eb7e46d9909d87a7ccadadd6129a3d48d8
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616628"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397890"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>チュートリアル:Speech SDK を使用して音声でボットを有効にする
 
@@ -46,7 +46,7 @@ ms.locfileid: "77616628"
 > * 新しい Azure リソースを作成する
 > * エコー ボットのサンプルを構築、テストして Azure App Service にデプロイする
 > * ボットを Direct Line Speech チャネルに登録する
-> * Direct Line Speech クライアントを構築して実行し、エコー ボットと対話する
+> * Windows 音声アシスタント クライアントを構築して実行し、エコー ボットと対話する
 > * カスタム キーワードのアクティブ化を追加する
 > * 認識および発声された音声の言語を変更する方法を学習する
 
@@ -104,7 +104,7 @@ Speech リソースを作成するには、以下の手順に従います。
 
 この時点で、リソース グループ (**SpeechEchoBotTutorial-ResourceGroup**) に Speech リソースがあることを確認します。
 
-| 名前 | Type  | Location |
+| 名前 | Type  | 場所 |
 |------|-------|----------|
 | SpeechEchoBotTutorial-Speech | Cognitive Services | 米国西部 |
 
@@ -125,7 +125,7 @@ Speech リソースを作成するには、以下の手順に従います。
 
 この時点で、リソース グループ (**SpeechEchoBotTutorial-ResourceGroup**) に 2 つのリソースがあることを確認します。
 
-| 名前 | Type  | Location |
+| 名前 | Type  | 場所 |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service プラン | 米国西部 |
 | SpeechEchoBotTutorial-Speech | Cognitive Services | 米国西部 |
@@ -207,7 +207,7 @@ Speech リソースを作成するには、以下の手順に従います。
 1. 既定のブラウザーが開き、次の内容を含むページが表示されます:"Your bot is ready! (ボットの準備ができました)"。
 1. この時点で、Azure portal 上でリソース グループ **SpeechEchoBotTutorial-ResourceGroup** をチェックし、次の 3 つのリソースがあることを確認します。
 
-| 名前 | Type  | Location |
+| 名前 | Type  | 場所 |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | 米国西部 |
 | SpeechEchoBotTutorial-AppServicePlan | App Service プラン | 米国西部 |
@@ -248,7 +248,7 @@ Web ソケットを使用してボットと Direct Line Speech チャネルが�
 
 この時点で、Azure portal 内のリソース グループ **SpeechEchoBotTutorial-ResourceGroup** を確認します。 4 つのリソースが表示されているはずです。
 
-| 名前 | Type  | Location |
+| 名前 | Type  | 場所 |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | 米国西部 |
 | SpeechEchoBotTutorial-AppServicePlan | App Service プラン | 米国西部 |
@@ -276,21 +276,21 @@ Web ソケットを使用してボットと Direct Line Speech チャネルが�
 > [!TIP]
 > 詳細については、「[ボットを Direct Line Speech に接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)」をご覧ください。 このページには、追加情報と既知の問題が記載されています。
 
-## <a name="build-the-direct-line-speech-client"></a>Direct Line Speech クライアントを構築する
+## <a name="build-the-windows-voice-assistant-client"></a>Windows 音声アシスタント クライアントを構築する
 
-この手順では、Direct Line Speech クライアントを構築します。 クライアントは、C# で作成された Windows Presentation Foundation (WPF) アプリであり、[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) を使用して、Direct Line Speech チャネルを使用したボットとの通信を管理します。 これを使用して、カスタム クライアント アプリを作成する前にボットと対話し、テストします。
+この手順では、Windows 音声アシスタント クライアントを構築します。 クライアントは、C# で作成された Windows Presentation Foundation (WPF) アプリであり、[Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) を使用して、Direct Line Speech チャネルを使用したボットとの通信を管理します。 これを使用して、カスタム クライアント アプリを作成する前にボットと対話し、テストします。
 
-Direct Line Speech クライアントには、ボットへの接続の構成、テキストでの会話の表示、JSON 形式での Bot-Framework アクティビティの表示、およびアダプティブカードの表示を行える単純な UI が用意されています。 カスタム キーワードの使用もサポートされます。 このクライアントを使用して、ボットとの対話を行い、音声応答を受信します。
+Windows 音声アシスタント クライアントには、ボットへの接続の構成、テキストでの会話の表示、JSON 形式での Bot-Framework アクティビティの表示、およびアダプティブカードの表示を行える単純な UI が用意されています。 カスタム キーワードの使用もサポートされます。 このクライアントを使用して、ボットとの対話を行い、音声応答を受信します。
 
 先に進む前に、マイクとスピーカーが有効で動作していることを確認してください。
 
-1. [Direct Line Speech クライアント](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/README.md)の GitHub リポジトリに移動します。
+1. [Windows 音声アシスタント クライアント](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/README.md)の GitHub リポジトリに移動します。
 2. 説明されている手順に従って、リポジトリを複製し、プロジェクトをビルドし、クライアントを構成して、クライアントを起動します。
 3. **[再接続]** をクリックし、"**Press the mic button, or type to start talking to your bot**" (マイク ボタンを押すか、入力してボットとの対話を開始します) というメッセージが表示されることを確認します。
 4. これをテストしてみましょう。マイク ボタンをクリックし、英語でいくつかの単語を話します。 話すと、認識されたテキストが表示されます。 話し終わると、ボットは認識した単語を "エコー" に続けて独自の声で読み上げて応答します。
 5. テキストを使用してボットと通信することもできます。 下部のバーにテキストを入力するだけです。 
 
-### <a name="troubleshooting-errors-in-direct-line-speech-client"></a>Direct Line Speech クライアント内で発生したエラーのトラブルシューティング
+### <a name="troubleshooting-errors-in-windows-voice-assistant-client"></a>Windows 音声アシスタント クライアントでのエラーのトラブルシューティング
 
 メイン アプリ ウィンドウにエラー メッセージが表示された場合は、この表を使用してエラーを特定し、トラブルシューティングを行います。
 
@@ -305,7 +305,7 @@ Direct Line Speech クライアントには、ボットへの接続の構成、�
 
 ### <a name="view-bot-activities"></a>ボット アクティビティの表示
 
-すべてのボットでは、**アクティビティ** メッセージが送受信されます。 Direct Line Speech クライアントの **[アクティビティ ログ]** ウィンドウには、クライアントがボットから受信した各アクティビティのタイムスタンプ付きログが表示されます。 [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) メソッドを使用して、クライアントからボットに送信されたアクティビティを確認することもできます。 ログ項目を選択すると、関連付けられているアクティビティの詳細が JSON として表示されます。
+すべてのボットでは、**アクティビティ** メッセージが送受信されます。 Windows 音声アシスタント クライアントの **[Activity Log]\(アクティビティ ログ\)** ウィンドウには、クライアントがボットから受信した各アクティビティのタイムスタンプ付きログが表示されます。 [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) メソッドを使用して、クライアントからボットに送信されたアクティビティを確認することもできます。 ログ項目を選択すると、関連付けられているアクティビティの詳細が JSON として表示されます。
 
 クライアントで受信されたアクティビティの json のサンプルを次に示します。
 
@@ -336,7 +336,7 @@ Direct Line Speech クライアントには、ボットへの接続の構成、�
     },
     "replyToId":"67c823b4-4c7a-4828-9d6e-0b84fd052869",
     "serviceUrl":"urn:botframework:websocket:directlinespeech",
-    "speak":"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'><voice name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Echo: Hello and welcome.</voice></speak>",
+    "speak":"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'><voice name='Microsoft Server Speech Text to Speech Voice (en-US, AriaRUS)'>Echo: Hello and welcome.</voice></speak>",
     "text":"Echo: Hello and welcome.",
     "timestamp":"2019-07-19T20:03:51.1939097Z",
     "type":"message"
@@ -347,7 +347,7 @@ JSON 出力で返される内容について詳しくは、[アクティビテ�
 
 ### <a name="view-client-source-code-for-calls-to-the-speech-sdk"></a>Speech SDK に対する呼び出しのクライアント ソース コードの表示
 
-Direct Line Speech クライアントでは、Speech SDK を含む NuGet パッケージ [Microsoft.CognitiveServices.Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) が使用されます。 サンプル コードの確認を開始するのに適した場所は、次の 2 つの Speech SDK オブジェクトを作成する、ファイル [`DLSpeechClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/MainWindow.xaml.cs) 内の InitSpeechConnector() メソッドです。
+Windows 音声アシスタント クライアントでは、Speech SDK を含む NuGet パッケージ [Microsoft.CognitiveServices.Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) が使用されます。 サンプル コードの確認を開始するのに適した場所は、次の 2 つの Speech SDK オブジェクトを作成する、ファイル [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) 内の InitSpeechConnector() メソッドです。
 - [`DialogServiceConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig) -構成設定 (たとえば、Speech のサブスクリプション キーやキーのリージョン) 用
 - [`DialogServiceConnector`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.-ctor) - 認識された音声とボットの応答を処理するためのチャネル接続イベントとクライアント サブスクリプション イベントの管理用。
 
@@ -360,11 +360,11 @@ Speech SDK では、カスタム キーワードのアクティブ化がサポ�
 
 キーワードの検出はクライアント アプリ上で行われます。 キーワードを使用している場合、キーワードが検出された場合にのみ、オーディオが Direct Line Speech チャネルにストリーミングされます。 Direct Line Speech チャネルには、"*キーワード検証 (KWV)* " と呼ばれるコンポーネントが含まれています。これにより、クラウド内でより複雑な処理が実行されて、選択したキーワードがオーディオ ストリームの先頭にあることが確認されます。 キー ワードの検証に成功すると、チャネルがボットと通信します。
 
-これらの手順に従って、キーワード モデルを作成し、このモデルを使用するように Direct Line Speech クライアントを構成して、最後にボットを使用してテストします。
+これらの手順に従って、キーワード モデルを作成し、このモデルを使用するように Windows 音声アシスタント クライアントを構成して、最後にボットを使用してテストします。
 
 1. これらの手順に従い、[Speech Service を使用してキーワードを作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)します。
 2. 前の手順でダウンロードしたモデル ファイルを解凍します。 これには、キーワードに由来する名前が付けられています。 `kws.table` という名前のファイルを探しています。
-3. Direct Line Speech クライアント内で、 **[設定]** メニューを見つけます (右上にある歯車アイコンを探します)。 **[Model file path]\(モデル ファイルのパス\)** を特定して、手順 2. の `kws.table` ファイルの完全なパス名を入力します。
+3. Windows 音声アシスタント クライアント内で、 **[Settings]\(設定\)** メニューを見つけます (右上にある歯車アイコンを探します)。 **[Model file path]\(モデル ファイルのパス\)** を特定して、手順 2. の `kws.table` ファイルの完全なパス名を入力します。
 4. **[有効]** というラベルの付いたボックスをオンにしてください。 チェック ボックスの横に、次のメッセージが表示されます:"Will listen for the keyword upon next connection" (次の接続時にキーワードをリッスンする)。 間違ったファイルまたは無効なパスを指定した場合は、エラー メッセージが表示されます。
 5. Speech **サブスクリプション キー**、**サブスクリプション キーのリージョン**を入力し、 **[OK]** をクリックして **[設定]** メニューを閉じます。
 6. **[再接続]** をクリックします。 次のようなメッセージが表示されます:"New conversation started - type, press the microphone button, or say the keyword" (新しい会話が開始しました - 入力するか、マイク ボタンを押すか、キーワードを話してください)。 これで、アプリは継続的にリッスンします。
@@ -378,10 +378,10 @@ Speech SDK では、カスタム キーワードのアクティブ化がサポ�
 
 ### <a name="view-the-source-code-that-enables-keyword"></a>キーワードを有効にするソース コードの表示
 
-Direct Line Speech Client のソース コード内で、これらのファイルを調べて、キーワード検出を有効にするために使用されているコードを確認します。
+Windows 音声アシスタント クライアントのソース コード内で、これらのファイルを調べて、キーワード検出を有効にするために使用されているコードを確認します。
 
-1. [`DLSpeechClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/Models.cs) には、ディスク上のローカル ファイルからモデルをインスタンス化するために使用される Speech SDK メソッド [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) の呼び出しが含まれています。
-1. [`DLSpeechClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/MainWindow.xaml.cs) には、継続的なキーワード検出をアクティブにする Speech SDK メソッド [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) の呼び出しが含まれています。
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) には、ディスク上のローカル ファイルからモデルをインスタンス化するために使用される Speech SDK メソッド [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-) の呼び出しが含まれています。
+1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) には、継続的なキーワード検出をアクティブにする Speech SDK メソッド [`DialogServiceConnector.StartKeywordRecognitionAsync()`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) の呼び出しが含まれています。
 
 ## <a name="optional-change-the-language-and-bot-voice"></a>(省略可能) 言語とボットの音声を変更する
 
@@ -391,7 +391,7 @@ Direct Line Speech Client のソース コード内で、これらのファイ�
 
 [音声テキスト変換](language-support.md#speech-to-text)テーブルに記載されている言語のいずれかを選択できます。 次の例では、言語をドイツ語に変更します。
 
-1. Direct Line Speech クライアント アプリを開き、[設定] ボタン (右上の歯車アイコン) をクリックして、[言語] フィールドに「`de-de`」と入力します (これは[音声テキスト変換](language-support.md#speech-to-text)テーブルに記載されているロケール値です)。 これにより、認識される音声言語が設定され、既定値 `en-us` がオーバーライドされます。 また、ボットでの応答に既定のドイツ語の音声を使用するように Direct Line Speech チャネルに指示します。
+1. Windows 音声アシスタント クライアント アプリを開き、設定ボタン (右上の歯車アイコン) をクリックして、[Language]\(言語\) フィールドに「`de-de`」と入力します (これは[音声テキスト変換](language-support.md#speech-to-text)テーブルに記載されているロケール値です)。 これにより、認識される音声言語が設定され、既定値 `en-us` がオーバーライドされます。 また、ボットでの応答に既定のドイツ語の音声を使用するように Direct Line Speech チャネルに指示します。
 2. [設定] ページを閉じ、[再接続] ボタンをクリックして、エコー ボットへの新しい接続を確立します。
 3. [マイク] ボタンをクリックし、ドイツ語の語句を言います。 認識されたテキストが表示され、エコー ボットが既定のドイツ語の音声で応答します。
 
@@ -424,8 +424,8 @@ Direct Line Speech Client のソース コード内で、これらのファイ�
 1. [ソリューション エクスプローラー] ウィンドウで、 **[EchoBot]** プロジェクトを右クリックし、 **[発行]** を選択します。
 2. 以前のデプロイ構成は、既定値として既に読み込まれています。 **[EchoBot20190805125647 - Web 配置]** の横にある **[発行]** をクリックします。
 3. "**正常に発行されました**" というメッセージが Visual Studio の出力ウィンドウに表示され、"Your bot is ready! (ボットの準備ができました)" というメッセージが表示された Web ページが開きます。
-4. Direct Line Speech クライアント アプリを開き、[設定] ボタン (右上の歯車アイコン) をクリックして、[言語] フィールドにまだ「`de-de`」が入力されていることを確認します。
-5. 「[Direct Line Speech クライアントを構築する](#build-the-direct-line-speech-client)」の手順に従って、新しくデプロイされたボットに再接続し、新しい言語で話し、新しい音声を使用してその言語でのボットの応答を聞きます。
+4. Windows 音声アシスタント クライアント アプリを開き、設定ボタン (右上の歯車アイコン) をクリックして、[Language]\(言語\) フィールドにまだ「`de-de`」が入力されていることを確認します。
+5. 「[Windows 音声アシスタント クライアントを構築する](#build-the-windows-voice-assistant-client)」の手順に従って、新しくデプロイされたボットに再接続し、新しい言語で話し、新しい音声を使用してその言語でのボットの応答を聞きます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -445,7 +445,7 @@ Direct Line Speech Client のソース コード内で、これらのファイ�
 * ボットの応答時間を向上させるために、[近くの Azure リージョン](https://azure.microsoft.com/global-infrastructure/locations/)にデプロイする
 * [高品質なニューラル TTS 音声をサポートする Azure リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)にデプロイする
 * Direct Line Speech チャネルに関連付けられている価格:
-  * [Bot Service pricing (Bot Service の価格)](https://azure.microsoft.com/pricing/details/bot-service/)
+  * [Bot Service pricing](https://azure.microsoft.com/pricing/details/bot-service/)
   * [Speech サービス](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * 独自の音声対応ボットの構築とデプロイ:
   * [Bot-Framework ボット](https://dev.botframework.com/)を構築します。 [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)に登録し、[音声用にボットをカスタマイズ](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)します

@@ -2,29 +2,27 @@
 title: Hyper-V 向け Azure Migrate アプライアンスを設定する
 description: Azure Migrate アプライアンスを設定して Hyper-V VM を評価し移行する方法について説明します。
 ms.topic: article
-ms.date: 11/19/2019
-ms.openlocfilehash: 8199525a118ffca2cfc03734283eb26facba8483
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/23/2020
+ms.openlocfilehash: 80db2c1d4f5482604ca1507174b127c150f76044
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598342"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336805"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Hyper-V VM のアプライアンスを設定する
 
-この記事では、Azure Migrate Server Assessment ツールで Hyper-V VM を評価する場合、または Azure Migrate Server Migration ツールを使用して VMware VM を Azure に移行する場合に Azure Migrate アプライアンスを設定する方法について説明します。
+この記事では、[Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) ツールによる Hyper-V VM の評価のために、Azure Migrate アプライアンスを設定する方法について説明します。
 
-Hyper-V VM アプライアンスは、次の操作を行うために Azure Migrate Server Assessment/Migration によって使用される軽量アプライアンスです。
+[Azure Migrate アプライアンス](migrate-appliance.md)は、Azure Migrate:Server Assessment/Migration によって、オンプレミス Hyper-V VM を検出し、VM メタデータ/パフォーマンス データを Azure に送信するために使用される軽量アプライアンスです。
 
-- オンプレミスの Hyper-V VM を検出します。
-- 検出された VM のメタデータとパフォーマンス データを Azure Migrate Server Assessment/Migration に送信します。
-
-Azure Migrate アプライアンスに関する[詳細を確認](migrate-appliance.md)します。
+ダウンロードした VHD テンプレートを使用するか、PowerShell インストール スクリプトを使用して、Hyper-V VM の評価のための Azure Migrate アプライアンスを設定できます。 この記事では、VHD テンプレートを使用して、アプライアンスを設定する方法について説明します。 スクリプトを使用してアプライアンスを設定する場合は、[この記事](deploy-appliance-script.md)の手順に従ってください。
 
 
-## <a name="appliance-deployment-steps"></a>アプライアンスのデプロイ手順
+## <a name="appliance-deployment-vhd"></a>アプライアンスのデプロイ (VHD)
 
-アプライアンスを設定するには、次のようにします。
+VHD テンプレートを使用してアプライアンスを設定するには:
+
 - Azure portal から圧縮された Hyper-V VHD をダウンロードします。
 - アプライアンスを作成し、それが Azure Migrate Server Assessment に接続できることを確認します。
 - アプライアンスを初めて構成し、Azure Migrate プロジェクトに登録します。
@@ -79,7 +77,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
 ## <a name="configure-the-appliance"></a>アプライアンスを構成する
 
-アプライアンスを初めて設定します。
+アプライアンスを初めて設定します。 VHD でなく、スクリプトを使用してアプライアンスをデプロイする場合、この手順の最初の 2 つの操作は必要ありません。
 
 1. Hyper-V マネージャーの **[仮想マシン]** で、VM を右クリックして **[接続]** を選択します。
 2. アプライアンスの言語、タイム ゾーン、パスワードを指定します。

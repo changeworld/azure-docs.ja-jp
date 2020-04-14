@@ -1,5 +1,5 @@
 ---
-title: StorSimple 8000 シリーズ デバイスの概要の使用 | Microsoft Docs
+title: StorSimple デバイス マネージャー サービスでデバイスの概要を使用する
 description: StorSimple デバイス マネージャー サービスのデバイスの概要と、ストレージ メトリックと接続されているイニシエーターを表示してシリアル番号と IQN を確認する方法について説明します。
 services: storsimple
 documentationcenter: NA
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 1d88af2c0739c30b2562bad7660015b890e8159c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7801cdc6573799330e5173db82dead8d4f2cd83f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578320"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398241"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービスでデバイスの概要を使用する
 
@@ -93,7 +93,7 @@ StorSimple デバイス ブレードには、StorSimple デバイスを管理す
     ![使用状況グラフをクリックする](./media/storsimple-8000-device-dashboard/device-summary13.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple Manager サービスの概要ブレード](storsimple-8000-service-dashboard.md)を参照します。
-* [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)を参照します。
+* [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細
 

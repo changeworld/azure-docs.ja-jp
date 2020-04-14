@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8fa8ca50a8d8cae7543c6aacb84fa57bc2f9c3a4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: add2d515e4f8e8c56a98a7292e137e601332d10c
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945215"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410877"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 用の Key Vault 仮想マシン拡張機能
 
@@ -27,6 +27,11 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
 - Ubuntu-1804
 - Debian-9
 - Suse-15 
+
+### <a name="supported-certificate-content-types"></a>サポートされている証明書の内容の種類
+
+- PKCS #12
+- PEM
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 

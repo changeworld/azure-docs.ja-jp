@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/02/2017
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f365a8325fc027d8770287208f91d164166fcbc
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: da318840426d1c0b94eab06b89ff3152df9d26fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024332"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331090"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>ハイブリッド ID で必要なポートとプロトコル
 次のドキュメントは、ハイブリッド ID ソリューションを実装するために必要なポートとプロトコルに関するテクニカル リファレンスです。 次の図を使用して、対応する表を参照してください。
@@ -38,7 +38,7 @@ ms.locfileid: "77024332"
 | MS-RPC |135 (TCP) |Azure AD Connect ウィザードを AD フォレストにバインドするときの初期構成中に使用され、パスワードの同期中にも使用されます。 |
 | LDAP |389 (TCP/UDP) |AD からのデータのインポートに使用されます。 データは Kerberos の署名およびシールによって暗号化されます。 |
 | SMB | 445 (TCP) |AD フォレストにコンピューター アカウントを作成するためにシームレス SSO によって使用されます。 |
-| LDAP/SSL |636 (TCP/UDP) |AD からのデータのインポートに使用されます。 データ転送は署名されて暗号化されます。 SSL を使用する場合にのみ使用されます。 |
+| LDAP/SSL |636 (TCP/UDP) |AD からのデータのインポートに使用されます。 データ転送は署名されて暗号化されます。 TLS を使用している場合にのみ使用されます。 |
 | RPC |49152 から 65535 (ランダムな高い数値の RPC ポート)(TCP) |Azure AD Connect を AD フォレストにバインドするときの初期構成中と、パスワードの同期中に使用されます。 詳細については、[KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017)、[KB224196](https://support.microsoft.com/kb/224196) を参照してください。 |
 |WinRM  | 5985 (TCP) |Azure AD Connect ウィザードで gMSA を使用して AD FS をインストールする場合にのみ使用します|
 |AD DS Web サービス | 9389 (TCP) |Azure AD Connect ウィザードで gMSA を使用して AD FS をインストールする場合にのみ使用します |
@@ -48,17 +48,17 @@ ms.locfileid: "77024332"
 
 | Protocol | Port | 説明 |
 | --- | --- | --- |
-| HTTP |80 (TCP) |SSL 証明書を検証するための CRL (証明書失効リスト) をダウンロードするために使用されます。 |
+| HTTP |80 (TCP) |TLS/SSL 証明書を検証するための CRL (証明書失効リスト) をダウンロードするために使用されます。 |
 | HTTPS |443(TCP) |Azure AD と同期するために使用されます。 |
 
-ファイアウォールで開く必要のある URL と IP アドレスの一覧については、「 [Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」を参照してください。
+ファイアウォールで開く必要のある URL と IP アドレスの一覧については、「[Office 365 の URL と IP アドレスの範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」および [Azure AD Connect の接続性のトラブルシューティング](tshoot-connect-connectivity.md#troubleshoot-connectivity-issues-in-the-installation-wizard)に関するページを参照してください。
 
 ## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>表 3 - Azure AD Connect と AD FS フェデレーション サーバー/WAP
 この表は、Azure AD Connect サーバーと AD FS フェデレーション/WAP サーバー間の通信に必要なポートとプロトコルについて説明しています。  
 
 | Protocol | Port | 説明 |
 | --- | --- | --- |
-| HTTP |80 (TCP) |SSL 証明書を検証するための CRL (証明書失効リスト) をダウンロードするために使用されます。 |
+| HTTP |80 (TCP) |TLS/SSL 証明書を検証するための CRL (証明書失効リスト) をダウンロードするために使用されます。 |
 | HTTPS |443(TCP) |Azure AD と同期するために使用されます。 |
 | WinRM |5985 |WinRM リスナー |
 

@@ -1,5 +1,5 @@
 ---
-title: StorSimple Virtual Array 更新プログラムのリリース ノート | Microsoft Docs
+title: StorSimple Virtual Array Update 0.2 & 0.1 のリリース ノート
 description: Update 0.2 および Update 0.1 を実行する StorSimple Virtual Array の未解決の重大な問題と解決方法について説明します。
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
-ms.openlocfilehash: aad60024187ca180c002f119f4b975e8f69796e5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 95386f36340aca470769c920e40bbb70e09d34fc
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60629290"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397883"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array Update 0.2 および 0.1 のリリース ノート
 ## <a name="overview"></a>概要
@@ -54,7 +54,7 @@ Update 0.1 には、次のバグ修正と機能強化が含まれています。
 ## <a name="issues-fixed-in-the-update-01"></a>Update 0.1 で修正された問題
 次の表に、このリリースで修正された問題の概要を示します。
 
-| 番号 | 機能 | 問題 |
+| いいえ。 | 機能 | 問題 |
 | --- | --- | --- |
 | 1 |VMDK |VMware の一部のバージョンでは、OS ディスクがスパースであると見なされ、アラートが発生し、通常の操作が中断されていました。 この問題は今回のリリースで修正されました。 |
 | 2 |iSCSI サーバー |前回のリリースでは、ユーザーは、StorSimple 仮想デバイスの有効なネットワーク インターフェイスごとにゲートウェイを 1 つ指定する必要がありました。 今回のリリースでこの操作は変更され、有効なネットワーク インターフェイスすべてに対して少なくとも 1 つのゲートウェイを構成するようになりました。 |
@@ -65,7 +65,7 @@ Update 0.1 には、次のバグ修正と機能強化が含まれています。
 ## <a name="known-issues-in-the-update-01"></a>Update 0.1 の既知の問題
 次の表では、StorSimple Virtual Array の既知の問題の概要と、以前のリリースのリリース ノートに記載されていた問題を説明します。 **リリース ノートに記載されている問題には、アスタリスクが付いています。この一覧にあるほとんどすべての問題は、StorSimple Virtual Array の GA リリースから受け継がれています。**
 
-| No. | 機能 | 問題 | 対応策/コメント |
+| いいえ。 | 機能 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
 | **1.** |更新プログラム |プレビュー リリースで作成された仮想デバイスは、サポートされている一般提供版に更新することはできません。 |これらの仮想デバイスは、障害復旧 (DR) ワークフローを使用して一般提供リリースにフェールオーバーする必要があります。 |
 | **2.** |プロビジョニング済みのデータ ディスク |特定の指定されたサイズのデータ ディスクをプロビジョニングし、対応する StorSimple 仮想デバイスを作成した後は、データ ディスクを拡張または縮小することはできません。 これを行おうとすると、デバイスのローカル層のすべてのデータが失われます。 | |

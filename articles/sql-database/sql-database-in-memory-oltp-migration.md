@@ -4,26 +4,24 @@ description: インメモリ OLTP を導入して、既存の SQL Database の�
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: 0f10936867c101c07cc8d29d68dc45021bfad1b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 653ed75341d5d56ecbe06cb59f0efafa1e68aa0f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810302"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067281"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>インメモリ OLTP を使用した SQL Database のアプリケーション パフォーマンスの向上
 
 [インメモリ OLTP](sql-database-in-memory.md) は、[Premium および Business Critical レベル](sql-database-service-tiers-vcore.md)のデータベースで、価格レベルを上げることなくトランザクション処理、データ インジェスト、一時的なデータ シナリオのパフォーマンスを向上させるために使用できます。 
 
 > [!NOTE] 
-> 「[Quorum doubles key database’s workload while lowering DTU by 70% with SQL Database (クォーラムが SQL Database で DTU の 70% を削減しながら主要なデータベースのワークロードを 2 倍にする)](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)」方法について
+> [Quorum 社が SQL Database を使用して DTU を 70% 下げながら、主要なデータベースのワークロードを 2 倍にした](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)方法を学習します
 
 
 既存のデータベースでインメモリ OLTP を採用するには、以下の手順に従います。

@@ -225,7 +225,7 @@
     - name: ブループリントの配置の順序をシーケンス処理
       displayName: customize
       href: ./concepts/sequencing-order.md
-    - name: Blueprints でのリソースのロック
+    - name: Azure Blueprints でのリソース ロック
       displayName: 'mode, state, read only, edit, denyAssignments'
       href: ./concepts/resource-locking.md
 - name: 操作方法ガイド
@@ -244,7 +244,7 @@
       href: ./how-to/configure-for-blueprint-operator.md
     - name: ブループリントをコードとして管理する (コミュニティ)
       href: 'https://github.com/Azure/azure-blueprints/blob/master/README.md'
-- name: '[トラブルシューティング]'
+- name: トラブルシューティング
   displayName: 'errors, violation'
   href: ./troubleshoot/general.md
 - name: リファレンス

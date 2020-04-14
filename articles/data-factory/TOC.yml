@@ -392,7 +392,7 @@
       items:
         - name: コピー アクティビティを使用したデータのコピー
           href: copy-activity-overview.md
-        - name: コピー アクティビティを監視する
+        - name: コピー アクティビティの監視
           href: copy-activity-monitoring.md
         - name: 削除アクティビティを使用したファイルの削除
           href: delete-activity.md
@@ -503,7 +503,7 @@
           href: data-flow-filter.md
         - name: フラット化
           href: data-flow-flatten.md
-        - name: 結合
+        - name: Join
           href: data-flow-join.md
         - name: 参照
           href: data-flow-lookup.md
@@ -511,7 +511,7 @@
           href: data-flow-new-branch.md
         - name: ピボット
           href: data-flow-pivot.md
-        - name: 選択
+        - name: Select
           href: data-flow-select.md
         - name: シンク
           href: data-flow-sink.md
@@ -607,6 +607,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: Elastic Database ジョブで SSISDB のログをクリーンアップする
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: SSMS を使用した SSIS ジョブの移行
+          href: how-to-migrate-ssis-job-ssms.md
     - name: トリガーの作成
       items:
         - name: イベントベースのトリガーの作成

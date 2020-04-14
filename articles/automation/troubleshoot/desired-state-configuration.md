@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dcd0371d275c3a46fe9bf07c96516a2d0820abb7
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 9f33dc9528d5f7043dda2c6fad207a9a51347a2b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430535"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631492"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Azure Automation Desired State Configuration (DSC) の問題をトラブルシューティングする
 
@@ -48,11 +48,11 @@ xDscDiagnostics の使用方法については、「[xDscDiagnostics を使用�
 
 ### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3.ノードと Automation ワークスペースに必要なモジュールがあることを確認する
 
-DSC は、ノード上にインストールされているモジュールに依存します。 Azure Automation State Configuration を使うときは、「[モジュールをインポートする](../shared-resources/modules.md#import-modules)」に示された手順に従って、必要なモジュールを Automation アカウントにインポートします。 構成が特定のバージョンのモジュールに依存することもあります。 詳細については、[モジュールのトラブルシューティング](shared-resources.md#modules)に関するページを参照してください。
+DSC は、ノード上にインストールされているモジュールに依存します。 Azure Automation State Configuration を使うときは、「[モジュールをインポートする](../shared-resources/modules.md#importing-modules)」に示された手順に従って、必要なモジュールを Automation アカウントにインポートします。 構成が特定のバージョンのモジュールに依存することもあります。 詳細については、[モジュールのトラブルシューティング](shared-resources.md#modules)に関するページを参照してください。
 
 ## <a name="common-errors-when-working-with-dsc"></a>DSC の使用時に発生する一般的なエラー
 
-### <a name="unsupported-characters"></a>シナリオ:特殊文字を含む構成を、ポータルから削除できません。
+### <a name="scenario-a-configuration-with-special-characters-cannot-be-deleted-from-the-portal"></a><a name="unsupported-characters"></a>シナリオ:特殊文字を含む構成を、ポータルから削除できません。
 
 #### <a name="issue"></a>問題
 
@@ -66,13 +66,13 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 このエラーは、一時的な問題であり、解決される予定です。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 * "Remove-AzAutomationDscConfiguration" Az コマンドレットを使用して、構成を削除します。
 * このコマンドレットのドキュメントは、まだ更新されていません。  それまでは、AzureRM モジュールのドキュメントを参照してください。
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
 
-### <a name="failed-to-register-agent"></a>シナリオ:Dsc エージェントの登録に失敗しました
+### <a name="scenario-failed-to-register-dsc-agent"></a><a name="failed-to-register-agent"></a>シナリオ:Dsc エージェントの登録に失敗しました
 
 #### <a name="issue"></a>問題
 
@@ -93,11 +93,11 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 このエラーは、通常、ファイアウォール、プロキシ サーバーの背後にあるマシン、またはその他のネットワーク エラーが原因で発生します。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 マシンが Azure Automation DSC の適切なエンドポイントへのアクセス権を持つことを確認し、もう一度やり直してください。 必要なポートとアドレスの一覧については、[ネットワークの計画](../automation-dsc-overview.md#network-planning)に関する記事を参照してください
 
-### <a name="a-nameunauthorizedascenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>シナリオ:状態レポートが応答コード "承認されていません" を返す
+### <a name="a-nameunauthorizedscenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>シナリオ:状態レポートが応答コード "承認されていません" を返す
 
 #### <a name="issue"></a>問題
 
@@ -113,9 +113,9 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>原因
 
-この問題は、証明書が正しくないまたは期限切れになっていることが原因で発生します。  詳細については、「[証明書の有効期限と再登録](../automation-dsc-onboarding.md#certificate-expiration-and-re-registration)」を参照してください。
+この問題は、証明書が正しくないまたは期限切れになっていることが原因で発生します。  詳細については、「[証明書の有効期限と再登録](../automation-dsc-onboarding.md#re-registering-a-node)」を参照してください。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 次の手順に従って、失敗した DSC ノードを再登録します。
 
@@ -159,7 +159,7 @@ If (($certs.Count) -gt 0)
 4. 失敗したノードを選択します。
 5. [接続] をクリックして、必要なオプションを選択します。
 
-### <a name="failed-not-found"></a>シナリオ:ノードが失敗状態になり、「見つかりません」というエラーが表示される
+### <a name="scenario-node-is-in-failed-status-with-a-not-found-error"></a><a name="failed-not-found"></a>シナリオ:ノードが失敗状態になり、「見つかりません」というエラーが表示される
 
 #### <a name="issue"></a>問題
 
@@ -173,7 +173,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 通常、このエラーは、ノードがノード構成の名前 (ABC.WebServer など) ではなく構成名 (ABC など) に割り当てられている場合に発生します。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 * ノードに "構成名" ではなく、"ノード構成名" が割り当てられていることを確認してください。
 * ノード構成は、Azure ポータルまたは PowerShell コマンドレットを使用してノードに割り当てることができます。
@@ -181,7 +181,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
   * Azure Portal を使用してノードにノード構成を割り当てるには、 **[DSC ノード]** ページを開き、ノードを選択し、 **[ノード構成の割り当て]** ボタンをクリックします。
   * PowerShell コマンドレットを使用してノードにノード構成を割り当てるには、**Set-AzureRmAutomationDscNode** コマンドレットを使用します。
 
-### <a name="no-mof-files"></a>シナリオ:構成のコンパイルを実行しても、ノード構成 (MOF ファイル) が生成されなかった
+### <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-is-compiled"></a><a name="no-mof-files"></a>シナリオ:構成のコンパイルを実行しても、ノード構成 (MOF ファイル) が生成されなかった
 
 #### <a name="issue"></a>問題
 
@@ -195,14 +195,14 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 DSC 構成の **Node** キーワードに続く式の評価結果が `$null` の場合、ノード構成は生成されません。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 次の解決策のいずれでもこの問題は解決されます。
 
 * 構成定義内の **Node** キーワードに続く式の評価結果が $null になっていないことを確認します。
 * 構成のコンパイル時に ConfigurationData を渡す場合は、 [ConfigurationData](../automation-dsc-compile.md)から、構成に必要な期待値を渡すようにしてください。
 
-### <a name="dsc-in-progress"></a>シナリオ:DSC ノードのレポートが "処理中" の状態で停止する
+### <a name="scenario-the-dsc-node-report-becomes-stuck-in-progress-state"></a><a name="dsc-in-progress"></a>シナリオ:DSC ノードのレポートが "処理中" の状態で停止する
 
 #### <a name="issue"></a>問題
 
@@ -216,11 +216,11 @@ No instance found with given property values
 
 WMF のバージョンをアップグレードした結果、WMI が破損しています。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 この問題を解決するには、「[Desired State Configuration (DSC) の既知の問題と制限事項](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)」の記事にある手順に従ってください。
 
-### <a name="issue-using-credential"></a>シナリオ:DSC 構成で資格情報が使用できない
+### <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a><a name="issue-using-credential"></a>シナリオ:DSC 構成で資格情報が使用できない
 
 #### <a name="issue"></a>問題
 
@@ -234,11 +234,11 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 構成に資格情報を使用したが、ノード構成ごとに **PSDscAllowPlainTextPassword** を true に設定するための適切な **ConfigurationData** を指定していませんでした。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 * 上記の構成の各ノード構成について **PSDscAllowPlainTextPassword** を true に設定するために、適切な **ConfigurationData** を渡してください。 詳細については、「[Azure Automation State Configuration での DSC 構成のコンパイル](../automation-dsc-compile.md)」を参照してください。
 
-### <a name="failure-processing-extension"></a>シナリオ:DSC 拡張機能からのオンボード、"エラーの処理拡張機能" のエラー
+### <a name="scenario-onboarding-from-dsc-extension-failure-processing-extension-error"></a><a name="failure-processing-extension"></a>シナリオ:DSC 拡張機能からのオンボード、"エラーの処理拡張機能" のエラー
 
 #### <a name="issue"></a>問題
 
@@ -252,12 +252,12 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 通常、このエラーは、サービスに存在しないノード構成名がノードに割り当てられたときに発生します。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 * ノードに割り当てるノード構成名が、サービスに存在するものと正確に一致していることを確認します。
 * ノード構成名を含めないようにすることもできます。この場合、ノードはオンボードされますが、ノード構成は割り当てられません。
 
-### <a name="cross-subscription"></a>シナリオ:PowerShell を使ってノードを登録すると "1 つ以上のエラーが発生しました" というエラーが返される
+### <a name="scenario-registering-a-node-with-powershell-returns-the-error-one-or-more-errors-occurred"></a><a name="cross-subscription"></a>シナリオ:PowerShell を使ってノードを登録すると "1 つ以上のエラーが発生しました" というエラーが返される
 
 #### <a name="issue"></a>問題
 
@@ -271,16 +271,16 @@ One or more errors occurred.
 
 Automation アカウント以外の別のサブスクリプションにあるノードを登録しようとすると、このエラーが発生します。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 別のクラウド内またはオンプレミス上にあるかのように、クロスサブスクリプション ノードを扱います。
 
 以下の手順に従って、ノードを登録します。
 
-* Windows - [オンプレミス、または Azure/AWS 以外のクラウド内の物理/仮想 Windows マシン](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)。
-* Linux - [オンプレミス、または Azure 以外のクラウド内の物理/仮想 Linux マシン](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)。
+* Windows - [オンプレミス、または Azure/AWS 以外のクラウド内の物理/仮想 Windows マシン](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)。
+* Linux - [オンプレミス、または Azure 以外のクラウド内の物理/仮想 Linux マシン](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)。
 
-### <a name="agent-has-a-problem"></a>シナリオ:エラー メッセージ - "プロビジョニングに失敗しました"
+### <a name="scenario-error-message---provisioning-failed"></a><a name="agent-has-a-problem"></a>シナリオ:エラー メッセージ - "プロビジョニングに失敗しました"
 
 #### <a name="issue"></a>問題
 
@@ -294,13 +294,13 @@ Provisioning has failed
 
 ノードおよび Azure 間に接続の問題がある場合、このメッセージが表示されます。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 ノードがプライベート仮想ネットワーク内にあるのか、または他の Azure への接続の問題を抱えているかを判断します。
 
 詳細については、「[ソリューションをオンボードする際のエラーをトラブルシューティングする](onboarding.md)」を参照してください。
 
-### <a name="failure-linux-temp-noexec"></a>シナリオ:Linux で構成を適用するときに、一般的なエラーで障害が発生する
+### <a name="scenario-applying-a-configuration-in-linux-a-failure-occurs-with-a-general-error"></a><a name="failure-linux-temp-noexec"></a>シナリオ:Linux で構成を適用するときに、一般的なエラーで障害が発生する
 
 #### <a name="issue"></a>問題
 
@@ -314,11 +314,11 @@ This event indicates that failure happens when LCM is processing the configurati
 
 `/tmp` の場所が `noexec` に設定されている場合、現在のバージョンの DSC では構成が適用されないことが、顧客によって特定されています。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 * `/tmp` の場所から、`noexec` オプションを削除します。
 
-### <a name="compilation-node-name-overlap"></a>シナリオ:重複するノード構成名のために不正なリリースになる可能性
+### <a name="scenario-node-configuration-names-that-overlap-could-result-in-bad-release"></a><a name="compilation-node-name-overlap"></a>シナリオ:重複するノード構成名のために不正なリリースになる可能性
 
 #### <a name="issue"></a>問題
 
@@ -330,9 +330,23 @@ This event indicates that failure happens when LCM is processing the configurati
 
 コンパイル サービスに既知の問題があります。
 
-#### <a name="resolution"></a>解決策
+#### <a name="resolution"></a>解像度
 
 最善の回避策としては、ローカルで、または CI/CD パイプラインでコンパイルを行い、サービスに MOF ファイルを直接アップロードします。  サービス内でコンパイルを行うことが必須である場合、最善の回避策として次に推奨されるのは、名前が重複しないように、コンパイル ジョブを分割することです。
+
+### <a name="scenario-gateway-timeout-error-on-dsc-configuration-upload"></a><a name="gateway-timeout"></a>シナリオ:DSC 構成のアップロードでゲートウェイ タイムアウト エラーが発生した
+
+#### <a name="issue"></a>問題
+
+DSC 構成をアップロードするときに、`GatewayTimeout` エラーが発生します。 
+
+#### <a name="cause"></a>原因
+
+コンパイルに長い時間がかかる DSC 構成では、このエラーが発生する可能性があります。
+
+#### <a name="resolution"></a>解像度
+
+任意の `Import-DscResource` 呼び出しに対して `ModuleName` パラメーターを明示的に含めることで、DSC 構成をより速く解析することができます。 詳細については、「[Import-DSCResource の使用](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

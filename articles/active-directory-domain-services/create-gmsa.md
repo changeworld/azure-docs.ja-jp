@@ -8,15 +8,15 @@ ms.assetid: e6faeddd-ef9e-4e23-84d6-c9b3f7d16567
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 11/26/2019
+ms.topic: how-to
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 58749e4518f6fa73c8641ce38483c101576047aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5955f52cda73630f371a46f83ac0fb9a252b80e3
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614081"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655481"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Azure AD Domain Services でグループの管理されたサービス アカウント (gMSA) を作成する
 

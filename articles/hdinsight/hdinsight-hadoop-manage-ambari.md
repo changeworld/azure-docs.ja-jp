@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: d8cb8bfa32db958b6dfdda0df23429669ce2a439
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: bf780897317d41c7da85140f64313546cf5c31d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063800"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064690"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -23,7 +23,7 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 
 このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。
 
-## <a id="whatis"></a>Apache Ambari とは
+## <a name="what-is-apache-ambari"></a><a id="whatis"></a>Apache Ambari とは
 
 [Apache Ambari](https://ambari.apache.org) は使いやすい Web UI を提供することにより、Hadoop の管理を簡略化します。 Ambari を使って、Hadoop クラスターを管理および監視できます。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
 
@@ -87,6 +87,8 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 ![Apache Ambari のアラート通知の作成](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
 最後に、 __[Actions]__ メニューの __[Manage Alert Settings]__ を選択すると、通知の送信前にアラートが発生する回数を設定できます。 この設定は、一時的なエラーの通知を防ぐために使用できます。
+
+無料の [SendGrid アカウント](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email)を使用したアラート通知のチュートリアルについては、「[Azure HDInsight で Apache Ambari のメール通知を構成する](./apache-ambari-email.md)」を参照してください。
 
 ### <a name="cluster"></a>クラスター
 
@@ -164,7 +166,7 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
     |Decommission|クラスターからホストを削除します。 **HDInsight クラスターではこの操作は使用しないでください。**|
     |Recommission|以前に使用停止したホストをクラスターに追加します。 **HDInsight クラスターではこの操作は使用しないでください。**|
 
-### <a id="service"></a>サービス
+### <a name="services"></a><a id="service"></a>サービス
 
 **[Dashboard]** または **[Services]** ページでサービスの一覧の下部にある **[Actions]** ボタンを使用して、すべてのサービスを停止し、開始します。
 

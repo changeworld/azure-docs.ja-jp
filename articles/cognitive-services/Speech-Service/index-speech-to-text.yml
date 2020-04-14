@@ -1,30 +1,33 @@
 ### YamlMime:Landing
 title: 音声テキスト変換のドキュメント
-summary: Speech Service の音声変換 (音声認識とも呼ばれる) を使用すると、オーディオ ストリームをテキストにリアルタイムで文字起こしできます。
+summary: Speech Service の音声変換 (音声認識とも呼ばれる) を使用すると、オーディオ ストリームからテキストへの文字起こしをリアルタイムで一括して行うことができます。
 metadata:
   title: 音声テキスト変換のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/19/2020
   ms.author: dapine
-  ms.openlocfilehash: 7e42f33b0821372c4df4106e3f10fe6981c9d023
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: dd42fd57d8daa00d5507405a0d5e3145b335de84
+  ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943383"
+  ms.lasthandoff: 03/30/2020
+  ms.locfileid: "80397776"
 landingContent:
-- title: はじめに
+- title: 音声テキスト変換について
   linkLists:
   - linkListType: overview
     links:
-    - text: 音声変換の概要
+    - text: リアルタイムの音声テキスト変換とは
       url: speech-to-text.md
+    - text: 一括音声テキスト変換
+      url: batch-transcription.md
+    - text: 音声認識の基礎
+      url: speech-to-text-basics.md
   - linkListType: quickstart
     links:
     - text: マイク入力を使用して音声を認識する
@@ -33,47 +36,37 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: Blob Storage に格納された音声を認識する
       url: quickstarts/from-blob.md
-- title: ステップバイステップ ガイド
+- title: 音声テキスト変換を使用して開発する
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 音声認識のソース言語を変更する
-      url: how-to-specify-source-language.md
     - text: 音声認識モードを選択する
       url: how-to-choose-recognition-mode.md
-    - text: フレーズ リストを使用して精度を向上させる
-      url: how-to-phrase-lists.md
-    - text: テナント モデルを使用して精度を向上させる
-      url: tutorial-tenant-model.md
+    - text: 音声認識のソース言語を変更する
+      url: how-to-specify-source-language.md
     - text: Custom Speech を使用して精度を向上させる
       url: how-to-custom-speech.md
-    - text: 特定のマイク入力デバイスを選択する
-      url: how-to-select-audio-input-devices.md
-    - text: 自動ソース言語検出を使用する
-      url: how-to-automatic-language-detection.md
     - text: 圧縮音声入力形式を使用する
       url: how-to-use-codec-compressed-audio-input-streams.md
+  - linkListType: tutorial
+    links:
+    - text: テナント モデルを使用して精度を向上させる
+      url: tutorial-tenant-model.md
   - linkListType: concept
     links:
-    - text: Custom Speech データを準備する
-      url: how-to-custom-speech-test-data.md
-    - text: Custom Speech データを検査する
-      url: how-to-custom-speech-inspect-data.md
-    - text: カスタム音声の正確性を評価する
-      url: how-to-custom-speech-evaluate-data.md
-    - text: カスタム モデルをトレーニングする
+    - text: Custom Speech 用のテスト データを準備する
+      url: how-to-custom-speech-test-and-train.md
+    - text: Custom Speech 用のモデルをトレーニングする
       url: how-to-custom-speech-train-model.md
-    - text: カスタム モデルをデプロイする
-      url: how-to-custom-speech-deploy-model.md
     - text: ヒューマン ラベル付け文字起こしを作成する
       url: how-to-custom-speech-human-labeled-transcriptions.md
-- title: リファレンス
+- title: References
   linkLists:
   - linkListType: reference
     links:
     - text: 言語のサポート
       url: language-support.md#speech-to-text
-    - text: 価格
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
     - text: 音声テキスト変換のよくあるご質問
       url: faq-stt.md
+    - text: 音声テキスト変換の価格
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: fac9cba28f90f3642de660ed7d070b165c06bb2e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: d46e2a9820ec0c45d197f135428f1ace712b2fb8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303258"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125136"
 ---
 # <a name="container-security-in-security-center"></a>Security Center のコンテナーのセキュリティ
 
@@ -54,7 +54,7 @@ VM のセキュリティ問題を調査している場合、Security Center に�
 >[!NOTE]
 > これらの CIS ベンチマーク チェックは、AKS マネージド インスタンスまたは Databricks マネージド VM では実行されません。
 
-### <a name="continuous-monitoring-of-your-kubernetes-clusters-preview"></a>Kubernetes クラスターの継続的な監視 (プレビュー)
+### <a name="continuous-monitoring-of-your-kubernetes-clusters"></a>Kubernetes クラスターの継続的な監視
 Security Center は Azure Kubernetes Service (AKS) と連携して機能します。これは、コンテナー化されたアプリケーションを開発、デプロイ、および管理するための Microsoft のマネージド コンテナー オーケストレーション サービスです。
 
 AKS には、クラスターのセキュリティ体制をセキュリティで制御し、把握する機能があります。 Security Center では、次の機能を使用します。
@@ -67,7 +67,7 @@ AKS には、クラスターのセキュリティ体制をセキュリティで�
 
 Security Center は、コンテナー化された環境に対するリアルタイムの脅威検出機能を備えており、不審なアクティビティに対してはアラートが生成されます。 ユーザーは、この情報を使用して、迅速にセキュリティの問題を修復し、コンテナーのセキュリティを強化することができます。
 
-脅威は、ホストおよび AKS クラスター レベルで検出されます。 詳細については、[Azure コンテナーに対する脅威の検出](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)に関する記事を参照してください。
+脅威は、ホストおよび AKS クラスター レベルで検出されます。 詳細については、[Azure コンテナーに対する脅威の検出](threat-protection.md#azure-containers)に関する記事を参照してください。
 
 
 ## <a name="container-security-faq"></a>コンテナー セキュリティに関してよく寄せられる質問

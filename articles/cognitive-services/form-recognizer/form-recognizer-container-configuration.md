@@ -2,19 +2,19 @@
 title: Form Recognizer 向けコンテナーの構成方法
 titleSuffix: Azure Cognitive Services
 description: Form Recognizer コンテナーを構成してフォームとテーブルのデータを解析する方法を学習します。
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: dapine
-ms.openlocfilehash: 5439ec0c0aab5b8c127b651147e4b25d27c58390
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: bc48c0ba23e73adec312adfeeb1fcd57dba6ceec
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75379625"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879158"
 ---
 # <a name="configure-form-recognizer-containers"></a>Form Recognizer コンテナーの構成
 
@@ -52,7 +52,7 @@ Form Recognizer コンテナーのランタイム環境は、`docker run` コマ
 |--|------|-----------|-------------|
 |はい| `Billing` | String | 課金エンドポイント URI。 課金 URI の取得の詳細については、「[必須パラメーターの収集](form-recognizer-container-howto.md#gathering-required-parameters)」を参照してください。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)」を参照してください。 |
 
-## <a name="eula-setting"></a>Eula の設定
+## <a name="eula-setting"></a>Eula 設定
 
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 

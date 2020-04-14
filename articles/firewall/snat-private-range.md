@@ -5,18 +5,18 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 03/20/2020
 ms.author: victorh
-ms.openlocfilehash: b190d07ceadea43ca572f5eb5be3eeeafa616971
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: ed8cef00b7de67458c607373c724a3717f14a7cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444832"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064803"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Firewall の SNAT プライベート IP アドレス範囲
 
-宛先 IP アドレスが [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) に従ったプライベート IP アドレス範囲内にある場合、Azure Firewall では SNAT は行われません。 
+宛先 IP アドレスが [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) に従ったプライベート IP アドレス範囲内にある場合、Azure Firewall では、ネットワーク規則を使用した SNAT は行われません。 アプリケーション ルールは、宛先 IP アドレスに関係なく、[透過プロキシ](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy)を使用して常に適用されます。
 
 組織でプライベート ネットワークに対してパブリック IP アドレス範囲を使用している場合、Azure Firewall は、SNAT を使用して、トラフィックのアドレスを AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスに変換します。 ただし、パブリック IP アドレス範囲の SNAT が**行われない**ように、Azure Firewall を構成することができます。
 
@@ -41,7 +41,7 @@ Azure PowerShell を使って、ファイアウォールで SNAT が行われな
 
 ```azurepowershell
 $azfw = Get-AzFirewall -ResourceGroupName "Firewall Resource Group name"
-$azfw.PrivateRange = @(“IANAPrivateRanges”,“IPRange1”, “IPRange2”)
+$azfw.PrivateRange = @("IANAPrivateRanges","IPRange1", "IPRange2")
 Set-AzFirewall -AzureFirewall $azfw
 ```
 

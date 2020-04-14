@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4cf572b09f1e44faca002528fd00fe5be0b51bc5
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: a72b5b50daaae33336de9caab5202c2bf42f5c15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933027"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051614"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -337,7 +337,7 @@ SAML テスト アプリケーションを使用するこのチュートリア�
 通常、次の一部またはすべてが必要です。
 
 * **メタデータ**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **発行者**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name`
+* **発行者**: メタデータ ファイルの entityID を使用します
 * **ログイン Url/SAML エンドポイント/SAML Url**:メタデータ ファイル内の値を確認します
 * **Certificate**: これは *B2C_1A_SamlIdpCert* ですが、秘密キーはありません。 証明書の公開キーを取得するには、次のようにします。
 
@@ -354,7 +354,7 @@ SAML テスト アプリケーションを使用するこのチュートリア�
 * ポリシー名を更新します (例 *B2C_1A_signup_signin_saml*)
 * 発行者 URI を指定します: `https://contoso.onmicrosoft.com/app-name`
 
-**[ログイン]** を選択すると、エンド ユーザーのサインイン画面が表示されます。 サインインすると、サンプル アプリケーションに SAML アサーションが発行されます。
+**[ログイン]** を選択すると、ユーザーのサインイン画面が表示されます。 サインインすると、サンプル アプリケーションに SAML アサーションが発行されます。
 
 ## <a name="sample-policy"></a>サンプル ポリシー
 
@@ -375,7 +375,8 @@ SAML テスト アプリでテストに使用できる完全なサンプル ポ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[SAML プロトコルの詳細については、OASIS の Web サイト](https://www.oasis-open.org/)を参照してください。
+- [SAML プロトコルの詳細については、OASIS の Web サイト](https://www.oasis-open.org/)を参照してください。
+- [Azure AD B2C GitHub コミュニティ リポジトリ](https://github.com/azure-ad-b2c/saml-sp-tester)から SAML テスト Web アプリを取得します。
 
 <!-- LINKS - External -->
 [samltest]: https://aka.ms/samltestapp

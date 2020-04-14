@@ -1,23 +1,23 @@
 ---
-title: ハイブリッド環境での Azure Monitor (プレビュー) の有効化 |Microsoft Docs
+title: ハイブリッド環境での Azure Monitor の有効化 |Microsoft Docs
 description: この記事では、1 つまたは複数の仮想マシンを含むハイブリッド クラウド環境において、Azure Monitor for VMs を有効にする方法について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: bd44eebf8aceaf7fe32cf8cf1b1152db32acb344
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669626"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480744"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>ハイブリッド環境での Azure Monitor for VMs (プレビュー) の有効化
+# <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>ハイブリッド環境での Azure Monitor for VMs の有効化
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-この記事では、お使いのデータセンターまたは他のクラウド環境でホストされている仮想マシンまたは物理コンピューターに対して、Azure Monitor for VMs (プレビュー) を有効にする方法について説明します。 このプロセスの最後に、ご利用の環境にある仮想マシンの監視が正常に開始され、何らかのパフォーマンスや可用性の問題が発生しているかどうかを確認できるようになります。
+この記事では、お使いのデータセンターまたは他のクラウド環境でホストされている仮想マシンまたは物理コンピューターに対して、Azure Monitor for VMs を有効にする方法について説明します。 このプロセスの最後に、ご利用の環境にある仮想マシンの監視が正常に開始され、何らかのパフォーマンスや可用性の問題が発生しているかどうかを確認できるようになります。
 
 開始する前に、必ず[前提条件](vminsights-enable-overview.md)を確認し、ご利用のサブスクリプションおよびリソースが要件を満たしていることを確認してください。 [Log Analytics Linux および Windows エージェント](../../log-analytics/log-analytics-agent-overview.md)の要件とデプロイ方法を確認します。
 
@@ -111,7 +111,7 @@ sudo sh InstallDependencyAgent-Linux64.bin -s
 Desired State Configuration (DSC) を使用して Dependency Agent をデプロイするには、xPSDesiredStateConfiguration モジュールと次に示すコード例を使用できます。
 
 ```powershell
-configuration ServiceMap {
+configuration VMInsights {
 
     Import-DscResource -ModuleName xPSDesiredStateConfiguration
 
@@ -184,7 +184,7 @@ Azure CLI を使用するには、まず、ローカルに CLI をインスト�
                     {
                         "apiVersion": "2015-11-01-preview",
                         "location": "[parameters('WorkspaceLocation')]",
-                        "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                        "name": "[concat('VMInsights', '(', parameters('WorkspaceName'),')')]",
                         "type": "Microsoft.OperationsManagement/solutions",
                         "dependsOn": [
                             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
@@ -194,9 +194,9 @@ Azure CLI を使用するには、まず、ローカルに CLI をインスト�
                         },
 
                         "plan": {
-                            "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                            "name": "[concat('VMInsights', '(', parameters('WorkspaceName'),')')]",
                             "publisher": "Microsoft",
-                            "product": "[Concat('OMSGallery/', 'ServiceMap')]",
+                            "product": "[Concat('OMSGallery/', 'VMInsights')]",
                             "promotionCode": ""
                         }
                     }

@@ -1,23 +1,23 @@
 ---
 title: バックエンド サーバーを許可するために必要な証明書
 titleSuffix: Azure Application Gateway
-description: この記事では、SSL 証明書を、Azure Application Gateway でバックエンド インスタンスを許可するために必要な認証証明書と信頼されたルート証明書に変換する方法について説明します。
+description: この記事では、TLS/SSL 証明書を、Azure Application Gateway でバックエンド インスタンスを許可するために必要な認証証明書と信頼されたルート証明書に変換する方法の例を示します
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 48944c513bd075e3859503fdadc4001261dc8c4a
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 20f588639c54b0a8b7cd304f33b5a9d633a73be6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048168"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133046"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway でバックエンドを許可する証明書を作成する
 
-エンド ツー エンド SSL を実行するために、Application Gateway では、認証証明書または信頼されたルート証明書をアップロードしてバックエンド インスタンスを許可する必要があります。 証明書を許可するために、v1 SKU の場合は認証証明書が必要ですが、v2 SKU の場合は信頼されたルート証明書が必要です。
+エンド ツー エンド TLS を実行するために、Application Gateway では、認証証明書または信頼されたルート証明書をアップロードしてバックエンド インスタンスを許可する必要があります。 証明書を許可するために、v1 SKU の場合は認証証明書が必要ですが、v2 SKU の場合は信頼されたルート証明書が必要です。
 
 この記事では、次のことについて説明します。
 
@@ -28,13 +28,13 @@ ms.locfileid: "74048168"
 
 ## <a name="prerequisites"></a>前提条件
 
-Application Gateway に対してバックエンド インスタンスを許可するために必要な認証証明書または信頼されたルート証明書を生成するには、既存のバックエンド証明書が必要です。 バックエンド証明書は、SSL 証明書と同じにすることも、セキュリティを強化するために別のものにすることもできます。 Application Gateway では、SSL 証明書を作成または購入するためのメカニズムは提供されません。 テストの目的で自己署名証明書を作成できますが、運用環境ワークロードでは使用しないでください。 
+Application Gateway に対してバックエンド インスタンスを許可するために必要な認証証明書または信頼されたルート証明書を生成するには、既存のバックエンド証明書が必要です。 バックエンド証明書は、TLS/SSL 証明書と同じにすることも、セキュリティを強化するために別のものにすることもできます。 Application Gateway では、TLS/SSL 証明書を作成または購入するためのメカニズムは提供されません。 テストの目的で自己署名証明書を作成できますが、運用環境ワークロードでは使用しないでください。 
 
 ## <a name="export-authentication-certificate-for-v1-sku"></a>認証証明書をエクスポートする (v1 SKU の場合)
 
-認証証明書は、Application Gateway v1 SKU でバックエンド インスタンスを許可するために必要です。 認証証明書は、Base-64 エンコード X.509(.CER) 形式のバックエンド サーバー証明書の公開キーです。 この例では、バックエンド証明書として SSL 証明書を使用し、認証証明書として使用するためにその公開キーをエクスポートします。 また、この例では、Windows 証明書マネージャー ツールを使用して必要な証明書をエクスポートします。 ご都合に応じて他の任意のツールを使用できます。
+認証証明書は、Application Gateway v1 SKU でバックエンド インスタンスを許可するために必要です。 認証証明書は、Base-64 エンコード X.509(.CER) 形式のバックエンド サーバー証明書の公開キーです。 この例では、バックエンド証明書に TLS/SSL 証明書を使用し、認証証明書として使用するためにその公開キーをエクスポートします。 また、この例では、Windows 証明書マネージャー ツールを使用して必要な証明書をエクスポートします。 ご都合に応じて他の任意のツールを使用できます。
 
-SSL 証明書から公開キー .cer ファイルをエクスポートします (秘密キーではありません)。 次の手順で、証明書のために Base-64 エンコード X.509(.CER) 形式の .cer ファイルをエクスポートします。
+TLS/SSL 証明書から公開キー .cer ファイルをエクスポートします (秘密キーではありません)。 次の手順で、証明書のために Base-64 エンコード X.509(.CER) 形式の .cer ファイルをエクスポートします。
 
 1. 証明書から .cer ファイルを取得するには、 **[ユーザー証明書の管理]** を開きます。 証明書を探して右クリックします (通常は Current User\Personal\Certificates にあります)。 **[すべてのタスク]** 、 **[エクスポート]** の順にクリックします。 **証明書のエクスポート ウィザード**が開きます。 Current User\Personal\Certificates に証明書が見つからない場合は、誤って "Certificates - Current User" ではなく "Certificates - Local Computer" を開いている可能性があります。 PowerShell を使用して現在のユーザー スコープで証明書マネージャーを開きたい場合は、コンソール ウィンドウで「*certmgr*」と入力します。
 
@@ -74,7 +74,7 @@ SSL 証明書から公開キー .cer ファイルをエクスポートします 
 
 ## <a name="export-trusted-root-certificate-for-v2-sku"></a>信頼されたルート証明書をエクスポートする (V2 SKU の場合)
 
-信頼されたルート証明書は、Application Gateway v2 SKU でバックエンド インスタンスをホワイトリスト登録するために必要です。 このルート証明書は､バックエンド サーバー証明書からの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 この例では、バックエンド証明書の SSL 証明書を使用し、その公開キーをエクスポートし、base64 エンコード形式の公開キーから信頼された CA のルート証明書をエクスポートして、信頼されたルート証明書を取得します。 中間証明書は、サーバー証明書とバンドルして、バックエンド サーバーにインストールする必要があります。
+信頼されたルート証明書は、Application Gateway v2 SKU でバックエンド インスタンスをホワイトリスト登録するために必要です。 このルート証明書は､バックエンド サーバー証明書からの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 この例では、バックエンド証明書に TLS/SSL 証明書を使用し、その公開キーをエクスポートし、base64 エンコード形式の公開キーから信頼された CA のルート証明書をエクスポートして、信頼されたルート証明書を取得します。 中間証明書は、サーバー証明書とバンドルして、バックエンド サーバーにインストールする必要があります。
 
 次の手順で、証明書のための .cer ファイルをエクスポートします。
 
@@ -104,7 +104,7 @@ SSL 証明書から公開キー .cer ファイルをエクスポートします 
 
 6. この時点で、バックエンド証明書からルート証明書の詳細を抽出しました。 **証明書のエクスポート ウィザード**が表示されます。 ここで、前述の「**バックエンド証明書から認証証明書をエクスポートする (v1 SKU の場合)** 」セクションの手順 2 - 9 に従って、Base-64 エンコード X.509(.CER) 形式の信頼されたルート証明書をエクスポートします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Base-64 エンコード X.509(.CER) 形式の認証証明書/信頼されたルート証明書を入手しました。 これを Application Gateway に追加して、エンド ツー エンド SSL 暗号化に対してバックエンド サーバーをホワイトリスト登録できます。 [エンド ツー エンド SSL 暗号化の構成方法](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)に関するページをご覧ください。
+Base-64 エンコード X.509(.CER) 形式の認証証明書/信頼されたルート証明書を入手しました。 これをアプリケーション ゲートウェイに追加して、エンド ツー エンド TLS 暗号化に対してバックエンド サーバーをホワイトリストに登録できます。 [Application Gateway での PowerShell を使用したエンド ツー エンド TLS の構成](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)に関する記事を参照してください。
 

@@ -3,18 +3,18 @@ title: Cognitive Services コンテナー イメージ タグ
 titleSuffix: Azure Cognitive Services
 description: すべての Cognitive Service コンテナー イメージ タグの包括的一覧
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 03/09/2020
-ms.author: dapine
-ms.openlocfilehash: eed2223dbfeee307b552cdd010530f27c379f5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 786fde90e1bcf47e08857c26235a27862c5b3d75
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218605"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878767"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure Cognitive Services コンテナー イメージ タグ
 

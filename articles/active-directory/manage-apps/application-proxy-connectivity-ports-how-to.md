@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2b676508c73ff0233526f19b865bb9e4f7b80f12
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275543"
 ---
 # <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションに必要なファイアウォール ポートを開く方法
@@ -37,7 +37,7 @@ ms.locfileid: "74275543"
 
 -   コネクタをインストールしたサーバーからブラウザーでツールを開く。
 
--   コネクタに適用されるプロキシまたはファイアウォールが、このページにも適用されるようにする。 これを設定するため、Internet Explorer で、 **[設定]**  -&gt; **[インターネット オプション]**  -&gt; **[接続]**  -&gt; **[LAN の設定]** の順に移動します。 このページに、[LAN にプロキシ サーバーを使用する] フィールドがあります。 このボックスをオンにし、[アドレス] フィールドにプロキシ アドレスを入力します。
+-   コネクタに適用されるプロキシまたはファイアウォールが、このページにも適用されるようにする。 これを行うには、Internet Explorer で、 **[設定]**  -&gt; **[インターネット オプション]**  -&gt; **[接続]**  -&gt; **[LAN の設定]** の順に移動します。 このページに、[LAN にプロキシ サーバーを使用する] フィールドがあります。 このボックスをオンにし、[アドレス] フィールドにプロキシ アドレスを入力します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-connectors.md)

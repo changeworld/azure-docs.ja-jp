@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
 ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74122694"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Managed Cache Service から Azure Cache for Redis への移行
@@ -72,7 +72,7 @@ Microsoft Azure Cache for Redis は以下のレベルでご利用いただけま
 ### <a name="remove-the-managed-cache-service-configuration"></a>Managed Cache Service の構成を削除する
 Azure Cache for Redis 用にクライアント アプリケーションを構成するには、その前に、Managed Cache Service の NuGet パッケージをアンインストールすることによって、既存の Managed Cache Service の構成とアセンブリ参照を削除する必要があります。
 
-Managed Cache Service の NuGet パッケージをアンインストールするには、**ソリューション エクスプローラー**でクライアント プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 **[インストール済みのパッケージ]** ノードを選択し、[Search installed packages (インストール済みパッケージの検索)] ボックスに「**WindowsAzure.Caching**」と入力します。 **[Windows** **Azure Cache**] (または、NuGet パッケージのバージョンによっては **[Windows** **Azure Caching]** ) を選択し、 **[アンインストール]** をクリックして、 **[閉じる]** をクリックします。
+Managed Cache Service の NuGet パッケージをアンインストールするには、**ソリューション エクスプローラー**でクライアント プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。 **[インストール済みのパッケージ]** ノードを選択し、[Search installed packages (インストール済みパッケージの検索)] ボックスに「**WindowsAzure.Caching**」と入力します。 [**Windows** **Azure Cache**] (または NuGet パッケージのバージョンに応じて [**Windows** **Azure Caching**]) を選択し、 **[アンインストール]** をクリックして、 **[閉じる]** をクリックします。
 
 ![Azure Managed Cache Service NuGet パッケージのアンインストール](./media/cache-migrate-to-redis/IC757666.jpg)
 
@@ -180,6 +180,6 @@ Azure Cache for Redis はプリミティブ データ型に加え、.NET オブ�
 ## <a name="migrate-aspnet-session-state-and-output-caching-to-azure-cache-for-redis"></a>ASP.NET のセッション状態と出力キャッシュを Azure Cache for Redis に移行する
 Azure Cache for Redis には、ASP.NET セッション状態とページ出力キャッシュの両方に対するプロバイダーがあります。 これらのプロバイダーの Managed Cache Service バージョンを使用するアプリケーションを移行するには、まず web.config から既存のセクションを削除した後、Azure Cache for Redis バージョンのプロバイダーを構成します。 Azure Cache for Redis の ASP.NET プロバイダーの使用方法については、「[ASP.NET Session State Provider for Azure Cache for Redis](cache-aspnet-session-state-provider.md)」(Azure Cache for Redis の ASP.NET セッション状態プロバイダー) および「[ASP.NET Output Cache Provider for Azure Cache for Redis](cache-aspnet-output-cache-provider.md)」(Azure Cache for Redis の ASP.NET 出力キャッシュ プロバイダー) を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Cache for Redis ドキュメント](https://azure.microsoft.com/documentation/services/cache/)のチュートリアル、サンプル、ビデオ、およびその他をご確認ください。
 

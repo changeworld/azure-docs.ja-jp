@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: 7781f35fe7c17e4a0f307f559945caf648b23f6a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75431703"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Azure PowerShell コマンドレットを使用した Stream Analytics ジョブの監視および管理
@@ -222,9 +222,9 @@ Stream Analytics ジョブ内に新しい入力を作成したり、指定した
 
 入力の名前は .json ファイルまたはコマンド ラインで指定できます。 その両方で名前を指定する場合は、コマンド ラインで指定する名前をファイル内の名前と同じものにする必要があります。
 
-既に存在する入力を指定し、�Force パラメーターを指定しない場合は、コマンドレットから既存の入力を置き換えるかどうかたずねられます。
+既に存在する入力を指定し、-Force パラメーターを指定しない場合は、コマンドレットから既存の入力を置き換えるかどうかたずねられます。
 
-�Force パラメーターを指定し、既存の入力名を指定した場合は、入力が確認なしで置き換えられます。
+-Force パラメーターを指定し、既存の入力名を指定した場合は、入力が確認なしで置き換えられます。
 
 JSON ファイルの構造と内容に関する詳細については、[Stream Analytics 管理 REST API リファレンス ライブラリ][stream.analytics.rest.api.reference]の[入力の作成 (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-input] に関するセクションを参照してください。
 
@@ -281,9 +281,9 @@ Microsoft Azure に新しい Stream Analytics ジョブを作成したり、指�
 
 ジョブの名前は .json ファイルまたはコマンド ラインで指定できます。 その両方で名前を指定する場合は、コマンド ラインで指定する名前をファイル内の名前と同じものにする必要があります。
 
-既に存在するジョブ名を指定し、�Force パラメーターを指定しない場合は、コマンドレットから既存のジョブを置き換えるかどうかたずねられます。
+既に存在するジョブ名を指定し、-Force パラメーターを指定しない場合は、コマンドレットから既存のジョブを置き換えるかどうかたずねられます。
 
-�Force パラメーターを指定し、既存のジョブ名を指定した場合は、ジョブ定義が確認なしで置き換えられます。
+-Force パラメーターを指定し、既存のジョブ名を指定した場合は、ジョブ定義が確認なしで置き換えられます。
 
 JSON ファイルの構造と内容に関する詳細については、[Stream Analytics 管理 REST API リファレンス ライブラリ][stream.analytics.rest.api.reference]の [Stream Analytics ジョブの作成][msdn-rest-api-create-stream-analytics-job]に関するセクションを参照してください。
 
@@ -324,9 +324,9 @@ Stream Analytics ジョブ内に新しい出力を作成したり、既存の出
 
 出力の名前は .json ファイルまたはコマンド ラインで指定できます。 その両方で名前を指定する場合は、コマンド ラインで指定する名前をファイル内の名前と同じものにする必要があります。
 
-既に存在する出力を指定し、�Force パラメーターを指定しない場合は、コマンドレットから既存の出力を置き換えるかどうかたずねられます。
+既に存在する出力を指定し、-Force パラメーターを指定しない場合は、コマンドレットから既存の出力を置き換えるかどうかたずねられます。
 
-�Force パラメーターを指定し、既存の出力名を指定した場合は、出力が確認なしで置き換えられます。
+-Force パラメーターを指定し、既存の出力名を指定した場合は、出力が確認なしで置き換えられます。
 
 JSON ファイルの構造と内容に関する詳細については、[Stream Analytics 管理 REST API リファレンス ライブラリ][stream.analytics.rest.api.reference]の[出力の作成 (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-output] に関するセクションを参照してください。
 
@@ -367,9 +367,9 @@ Stream Analytics ジョブ内に新しい変換を作成したり、既存の変
 
 変換の名前は .json ファイルまたはコマンド ラインで指定できます。 その両方で名前を指定する場合は、コマンド ラインで指定する名前をファイル内の名前と同じものにする必要があります。
 
-既に存在する変換を指定し、�Force パラメーターを指定しない場合は、コマンドレットから既存の変換を置き換えるかどうかたずねられます。
+既に存在する変換を指定し、-Force パラメーターを指定しない場合は、コマンドレットから既存の変換を置き換えるかどうかたずねられます。
 
-�Force パラメーターを指定し、既存の変換名を指定した場合は、変換が確認なしで置き換えられます。
+-Force パラメーターを指定し、既存の変換名を指定した場合は、変換が確認なしで置き換えられます。
 
 JSON ファイルの構造と内容に関する詳細については、[Stream Analytics 管理 REST API リファレンス ライブラリ][stream.analytics.rest.api.reference]の[変換の作成 (Azure Stream Analytics)][msdn-rest-api-create-stream-analytics-transformation] に関するセクションを参照してください。
 
@@ -407,7 +407,7 @@ New-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-C
 
 ### <a name="remove-azurestreamanalyticsinput--remove-azstreamanalyticsinput"></a>Remove-AzureStreamAnalyticsInput | Remove-AzStreamAnalyticsInput
 Microsoft Azure 内の Stream Analytics ジョブの特定の入力を非同期的に削除します。  
-�Force パラメーターを指定した場合は、入力が確認なしで削除されます。
+-Force パラメーターを指定した場合は、入力が確認なしで削除されます。
 
 **例 1**
 
@@ -427,7 +427,7 @@ Remove-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central
 
 ### <a name="remove-azurestreamanalyticsjob--remove-azstreamanalyticsjob"></a>Remove-AzureStreamAnalyticsJob | Remove-AzStreamAnalyticsJob
 Microsoft Azure 内の特定の Stream Analytics ジョブを非同期的に削除します。  
-�Force パラメーターを指定した場合は、ジョブが確認なしで削除されます。
+-Force パラメーターを指定した場合は、ジョブが確認なしで削除されます。
 
 **例 1**
 
@@ -447,7 +447,7 @@ Remove-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-U
 
 ### <a name="remove-azurestreamanalyticsoutput--remove-azstreamanalyticsoutput"></a>Remove-AzureStreamAnalyticsOutput | Remove-AzStreamAnalyticsOutput
 Microsoft Azure 内の Stream Analytics ジョブの特定の出力を非同期的に削除します。  
-�Force パラメーターを指定した場合は、出力が確認なしで削除されます。
+-Force パラメーターを指定した場合は、出力が確認なしで削除されます。
 
 **例 1**
 

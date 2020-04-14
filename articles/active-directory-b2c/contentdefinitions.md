@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b55199ec2684ab7b95ce4e4988b19814c27b2cc3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 074a0a39090e22a29f778fc1c99060848c6bfd99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189584"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051492"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -70,7 +70,7 @@ ms.locfileid: "78189584"
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | コンテンツ定義用の HTML5 ページの URL を含む文字列。 |
-| RecoveryUri | 1:1 | コンテンツ定義に関連するエラーを表示するための HTML ページの URL を含む文字列。 |
+| RecoveryUri | 1:1 | コンテンツ定義に関連するエラーを表示するための HTML ページの URL を含む文字列。 現在使用されていません。値は `~/common/default_page_error.html` にする必要があります。 |
 | DataUri | 1:1 | ステップに対して呼び出すユーザー エクスペリエンスを提供する、HTML ファイルの相対 URL を含む文字列。 |
 | Metadata | 0:1 | コンテンツ定義によって利用されるメタデータを含む、キー/値ペアのコレクション。 |
 | LocalizedResourcesReferences | 0:1 | ローカライズされたリソース参照のコレクション。 この要素を使用して、ユーザー インターフェイスと要求属性のローカライズをカスタマイズします。 |

@@ -8,22 +8,25 @@ ms.author: edprice
 manager: edprice
 editor: edprice
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 03/30/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: a5426c3cd7552b24739f9a20e01d5a4b42bd383c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 5b3fa5faccf17df17bc4f7cc2d8b023b868fdbe1
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834576"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411191"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Azure で Micro Focus Enterprise Server 4.0 および Enterprise Developer 4.0 をインストールする
 
 この記事では、Azure で [Micro Focus Enterprise Server 4.0](https://www.microfocus.com/documentation/enterprise-developer/es30/) と [Micro Focus Enterprise Developer 4.0](https://www.microfocus.com/documentation/enterprise-developer/ed_30/) を設定する方法について説明します。
 
 Azure 上の一般的なワークロードは、開発およびテスト環境です。 このシナリオは、非常にコスト効率が高く、デプロイや解体が容易なため、一般的です。 Enterprise Server により、Micro Focus は、使用可能な最大のメインフレーム リホスト プラットフォームの 1 つを作成しました。 Windows または Linux 仮想マシン (VM) のどちらかを使用して、Azure 上のより安価な x86 プラットフォームで z/OS ワークロードを実行できます。
+
+> [!NOTE]
+> 近日対応予定:Azure VM での [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) のセットアップの手順。
 
 この設定では、Microsoft SQL Server 2017 が既にインストールされた、Azure Marketplace の Windows Server 2016 のイメージを実行している Azure VM を使用します。 この設定は Azure Stack にも適用されます。
 
@@ -35,7 +38,7 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-- Micro Focus ソフトウェアおよび有効なライセンス (または評価版ライセンス)。 Micro Focus の既存の顧客である場合は、Micro Focus の担当者に問い合わせてください。 そうでない場合は、[試用版を要求](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/)してください。
+- Micro Focus ソフトウェアおよび有効なライセンス (または試用版ライセンス)。 Micro Focus の既存の顧客である場合は、Micro Focus の担当者に問い合わせてください。 そうでない場合は、[試用版を要求](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/)してください。
 
 - [Enterprise Server と Enterprise Developer](https://www.microfocus.com/documentation/enterprise-developer/#") のドキュメントを入手します。
 
@@ -84,11 +87,11 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 1. Micro Focus のライセンス管理を起動します。
 
-2. **[スタート]** \> **[Micro Focus License Manager]\(Micro Focus ライセンス マネージャー\)** \> **[License Administration]\(ライセンス管理\)** の順にクリックし、 **[Install]\(インストール\)** タブをクリックします。アップロードするライセンス形式の種類 (ライセンス ファイルまたは 16 文字のライセンス コード) を選択します。 たとえば、ファイルの場合は、 **[License file]\(ライセンス ファイル\)** で、前に VM にアップロードされた **mflic** ファイルを参照し、 **[Install Licenses]\(ライセンスのインストール\)** を選択します。
+2. **[スタート]** \> **[Micro Focus License Manager]\(Micro Focus ライセンス マネージャー\)** \> **[License Administration]\(ライセンス管理\)** の順にクリックし、 **[インストール]** タブをクリックします。アップロードするライセンス形式の種類 (ライセンス ファイルまたは 16 文字のライセンス コード) を選択します。 たとえば、ファイルの場合は、 **[License file]\(ライセンス ファイル\)** で、前に VM にアップロードされた **mflic** ファイルを参照し、 **[Install Licenses]\(ライセンスのインストール\)** を選択します。
 
      ![Micro Focus の [License Administration]\(ライセンス管理\) ダイアログ ボックス](media/03-enterprise-server.png)
 
-3. Enterprise Server が読み込まれることを確認します。 URL  <http://localhost:86/>  を使用して、ブラウザーから [Enterprise Server Administration] (Enterprise Server の管理) サイトを起動してみてください。 [Enterprise Server Administration] (Enterprise Server の管理) ページが次のように表示されます。
+3. Enterprise Server が読み込まれることを確認します。 URL  <http://localhost:86/>  を使用して、ブラウザーから [Enterprise Server Administration] (Enterprise Server の管理) サイトを起動してみてください。 [Enterprise Server Administration]\(Enterprise Server の管理\) ページが次のように表示されます。
 
      ![[Enterprise Server Administration]\(Enterprise Server の管理\) ページ](media/04-enterprise-admin.png)
 
@@ -112,7 +115,7 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
      ![設定成功のメッセージ](media/05-enterprise-server.png)
 
-6. Enterprise Server の場合と同様に Micro Focus ライセンス マネージャーを起動します。 **[スタート]** \> **[Micro Focus License Manager]\(Micro Focus ライセンス マネージャー\)** \> **[License Administration]\(ライセンス管理\)** を選択し、 **[Install]\(インストール\)** タブをクリックします。
+6. Enterprise Server の場合と同様に Micro Focus ライセンス マネージャーを起動します。 **[スタート]** \> **[Micro Focus License Manager]\(Micro Focus ライセンス マネージャー\)** \> **[License Administration]\(ライセンス管理\)** を選択し、 **[インストール]** タブをクリックします。
 
 7. アップロードするライセンス形式の種類 (ライセンス ファイルまたは 16 文字のライセンス コード) を選択します。 たとえば、ファイルの場合は、 **[License file]\(ライセンス ファイル\)** で、前に VM にアップロードされた **mflic** ファイルを参照し、 **[Install Licenses]\(ライセンスのインストール\)** を選択します。
 
@@ -120,7 +123,7 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 Enterprise Developer が読み込まれたら、Azure への Micro Focus 開発およびテスト環境のデプロイは完了しました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [銀行デモ アプリケーションを設定する](./demo.md)
 - [Docker コンテナーで Enterprise Server を実行する](./run-enterprise-server-container.md)

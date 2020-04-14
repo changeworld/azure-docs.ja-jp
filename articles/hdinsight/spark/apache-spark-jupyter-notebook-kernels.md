@@ -6,19 +6,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/27/2019
-ms.openlocfilehash: 44089ea4b997e06cb7654fc6665a1a9a59ae2658
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 03/20/2020
+ms.openlocfilehash: a04b8fee31ffa5280bc8ad0fca35495bb87e0e8a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494128"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064464"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Apache Spark クラスター上の Jupyter Notebook のカーネル
 
-HDInsight Spark クラスターは、アプリケーションをテストするために [Apache Spark](https://spark.apache.org/) 上の Jupyter Notebook で使用できるカーネルを提供します。 カーネルは、コードを実行し、解釈するプログラムです。 次の 3 つのカーネルがあります。
+HDInsight Spark クラスターは、アプリケーションをテストするために [Apache Spark](./apache-spark-overview.md) 上の Jupyter Notebook で使用できるカーネルを提供します。 カーネルは、コードを実行し、解釈するプログラムです。 次の 3 つのカーネルがあります。
 
 - **PySpark** - Python2 で記述されたアプリケーション用。
 - **PySpark3** - Python3 で記述されたアプリケーション用。
@@ -58,7 +58,7 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
   - **sc** : Spark コンテキスト用
   - **sqlContext** : Hive コンテキスト用
 
-    そのため、コンテキストを設定するための次のようなステートメントを実行する必要はありません。
+    そのため、コンテキストを設定するための次のようなステートメントを実行する必要は**ありません**。
 
          sc = SparkContext('yarn-client')
          sqlContext = HiveContext(sc)
@@ -77,7 +77,7 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |sqlContext に対して Hive クエリを実行します。 `-o` パラメーターが渡される場合、クエリの結果は、 [Pandas](https://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化されます。 |
    | local |`%%local`<br>`a=1` |後続行のすべてのコードがローカルで実行されます。 使用しているカーネルに関係なく、コードは有効な Python2 コードである必要があります。 したがって、Notebook の作成時に **PySpark3** または **Spark** カーネルを選択している場合でも、`%%local` マジックをセルで使用する場合、そのセルには、有効な Python2 コードのみが含まれている必要があります。 |
    | logs |`%%logs` |現在の Livy セッションのログを出力します。 |
-   | 削除 |`%%delete -f -s <session number>` |現在 Livy エンドポイントの特定のセッションを削除します。 カーネル自体が開始したセッションを削除することはできません。 |
+   | delete |`%%delete -f -s <session number>` |現在 Livy エンドポイントの特定のセッションを削除します。 カーネル自体が開始したセッションを削除することはできません。 |
    | cleanup |`%%cleanup -f` |このノートブックのセッションを含む、現在 Livy エンドポイントのすべてのセッションを削除します。 強制フラグ -f は必須です。 |
 
    > [!NOTE]  
@@ -92,8 +92,8 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
 | パラメーター | 例 | 説明 |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |クエリの結果を [Pandas](https://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化するには、このパラメーターを使用します。 データ フレーム変数の名前は、指定した変数の名前です。 |
-| パラメーター |`-q` |セルの視覚化をオフにするには、これを使用します。 セルのコンテンツを自動的に視覚化せず、単にデータ フレームとしてキャプチャする場合は、`-q -o <VARIABLE>` を使用します。 (たとえば、`CREATE TABLE` ステートメントのような、SQL クエリを実行するために) 結果をキャプチャせずに視覚化をオフにする必要がある場合、`-o` 引数を指定せずに `-q` を使用します。 |
-| -m |`-m <METHOD>` |ここで **METHOD** は **take** または **sample** です (既定値は **take**)。 メソッドが **take**の場合、カーネルによって、MAXROWS (この表で後述) で指定された結果のデータ セットの先頭から要素が取得されます。 メソッドが **sample** の場合、カーネルによって、この表の次に説明する `-r` パラメーターに従って、データ セットの要素がランダムにサンプリングされます。 |
+| -Q |`-q` |セルの視覚化をオフにするには、これを使用します。 セルのコンテンツを自動的に視覚化せず、単にデータ フレームとしてキャプチャする場合は、`-q -o <VARIABLE>` を使用します。 (たとえば、`CREATE TABLE` ステートメントのような、SQL クエリを実行するために) 結果をキャプチャせずに視覚化をオフにする必要がある場合、`-o` 引数を指定せずに `-q` を使用します。 |
+| -M |`-m <METHOD>` |ここで **METHOD** は **take** または **sample** です (既定値は **take**)。 メソッドが **take**の場合、カーネルによって、MAXROWS (この表で後述) で指定された結果のデータ セットの先頭から要素が取得されます。 メソッドが **sample** の場合、カーネルによって、この表の次に説明する `-r` パラメーターに従って、データ セットの要素がランダムにサンプリングされます。 |
 | -r |`-r <FRACTION>` |ここで **FRACTION** は、0.0 ～ 1.0 の浮動小数点数です。 SQL クエリのサンプル メソッドが `sample` の場合、カーネルは、結果セットの指定された割合の要素をランダムにサンプリングします。 たとえば、`-m sample -r 0.01` 引数を使用して SQL クエリを実行した場合、結果の行の 1% がランダムにサンプリングされます。 |
 | -n |`-n <MAXROWS>` |**MAXROWS** は整数値です。 カーネルによって、出力行の数が **MAXROWS** に制限されます。 **MAXROWS** が **-1** などの負数の場合は、結果セット内の行数は制限されません。 |
 
@@ -124,7 +124,7 @@ Notebook がストレージ アカウントに保存される方法は、[Apache
 
     hdfs dfs -ls /HdiNotebooks                            # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
     hdfs dfs –copyToLocal /HdiNotebooks                   # Download the contents of the HdiNotebooks folder
-    hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
+    hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it's visible from Jupyter
 
 クラスターの既定のストレージ アカウントが Azure Storage か Azure Data Lake Storage かに関わらず、ノートブックはクラスターのヘッド ノード `/var/lib/jupyter` にも保存されます。
 
@@ -136,9 +136,9 @@ Spark HDInsight クラスター上の Jupyter Notebook は、Google Chrome で�
 
 新しいカーネルは進化の過程にあり、時間の経過と共に成熟するでしょう。 カーネルが改良されるにつれて、API も変更される可能性があります。 これらの新しいカーネルに関するフィードバックを、ぜひお寄せください。 これらのカーネルの最終リリースの設計に役立ちます。 ご意見やフィードバックは、この記事の下部にある **フィードバック**のセクションからお寄せください。
 
-## <a name="seealso"></a>関連項目
+## <a name="see-also"></a>関連項目
 
-- [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
+- [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
 

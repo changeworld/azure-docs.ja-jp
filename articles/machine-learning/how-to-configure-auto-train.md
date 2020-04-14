@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6f49529b0599f36ae4a26939bbbe171a45a1a53a
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127185"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618535"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -82,6 +82,7 @@ automl_config = AutoMLConfig(task = "classification")
 次のコード例は、これらの形式でデータを格納する方法を示しています。
 
 * TabularDataset
+
   ```python
   from azureml.core.dataset import Dataset
   from azureml.opendatasets import Diabetes
@@ -93,14 +94,14 @@ automl_config = AutoMLConfig(task = "classification")
 
 * Pandas データフレーム
 
-    ```python
-    import pandas as pd
-    from sklearn.model_selection import train_test_split
+  ```python
+  import pandas as pd
+  from sklearn.model_selection import train_test_split
 
-    df = pd.read_csv("your-local-file.csv")
-    train_data, test_data = train_test_split(df, test_size=0.1, random_state=42)
-    label = "label-col-name"
-    ```
+  df = pd.read_csv("your-local-file.csv")
+  train_data, test_data = train_test_split(df, test_size=0.1, random_state=42)
+  label = "label-col-name"
+  ```
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>リモート コンピューティング上で実行している実験にデータをフェッチする
 
@@ -130,51 +131,51 @@ automl_config = AutoMLConfig(task = "classification")
 ## <a name="compute-to-run-experiment"></a>実験を実行するために計算する
 
 次に、モデルをトレーニングする場所を決定します。 自動機械学習のトレーニング実験は、次のコンピューティング オプションで実行できます。
-*    ローカル デスクトップやラップトップなどのローカル コンピューター – 一般に、データセットが小さく、まだ探索ステージにいる場合。
-*    クラウド上のリモート マシン – [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) は、Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできるようにするマネージド サービスです。
+* ローカル デスクトップやラップトップなどのローカル コンピューター – 一般に、データセットが小さく、まだ探索ステージにいる場合。
+* クラウド上のリモート マシン – [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) は、Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできるようにするマネージド サービスです。
 
-    ローカルとリモートのコンピューティング先を使用したノートブックの例については、こちらの [GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)をご覧ください。
+  ローカルとリモートのコンピューティング先を使用したノートブックの例については、こちらの [GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)をご覧ください。
 
-*   Azure サブスクリプション内の Azure Databricks クラスター。 詳細については、[自動 ML のための Azure Databricks クラスターの構成](how-to-configure-environment.md#azure-databricks)に関する記事を参照してください
+* Azure サブスクリプション内の Azure Databricks クラスター。 詳細については、[自動 ML のための Azure Databricks クラスターの構成](how-to-configure-environment.md#azure-databricks)に関する記事を参照してください
 
-    Azure Databricks でのノートブックの例については、こちらの [GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)をご覧ください。
+  Azure Databricks でのノートブックの例については、こちらの [GitHub サイト](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-databricks/automl)をご覧ください。
 
 <a name='configure-experiment'></a>
 
 ## <a name="configure-your-experiment-settings"></a>実験の設定を構成する
 
-自動機械学習の実験を構成するために使用できるオプションがいくつかあります。 これらのパラメーターは、`AutoMLConfig` オブジェクトをインスタンス化することによって設定します。 パラメーターの完全な一覧については、「[AutoMLConfig クラス](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)」をご覧ください。
+自動機械学習の実験を構成するために使用できるオプションがいくつかあります。 これらのパラメーターは、`AutoMLConfig` オブジェクトをインスタンス化することによって設定します。 パラメーターの完全な一覧については、「[AutoMLConfig クラス](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)」をご覧ください。
 
 次に例をいくつか示します。
 
-1.    プライマリ メトリックとして重み付けされた AUC を使用する分類の実験。実験のタイムアウトの分数は 30 分間、クロス検証フォールドは 2 つに設定されます。
+1. プライマリ メトリックとして重み付けされた AUC を使用する分類の実験。実験のタイムアウトの分数は 30 分間、クロス検証フォールドは 2 つに設定されます。
 
-    ```python
-    automl_classifier=AutoMLConfig(
-        task='classification',
-        primary_metric='AUC_weighted',
-        experiment_timeout_minutes=30,
-        blacklist_models=['XGBoostClassifier'],
-        training_data=train_data,
-        label_column_name=label,
-        n_cross_validations=2)
-    ```
-2.    次の例は、60 分後、クロス検証フォールドが 5 つで終了するように設定された回帰実験です。
+   ```python
+       automl_classifier=AutoMLConfig(
+       task='classification',
+       primary_metric='AUC_weighted',
+       experiment_timeout_minutes=30,
+       blacklist_models=['XGBoostClassifier'],
+       training_data=train_data,
+       label_column_name=label,
+       n_cross_validations=2)
+   ```
+2. 次の例は、60 分後、クロス検証フォールドが 5 つで終了するように設定された回帰実験です。
 
-    ```python
-    automl_regressor = AutoMLConfig(
-        task='regression',
-        experiment_timeout_minutes=60,
-        whitelist_models=['kNN regressor'],
-        primary_metric='r2_score',
-        training_data=train_data,
-        label_column_name=label,
-        n_cross_validations=5)
-    ```
+   ```python
+      automl_regressor = AutoMLConfig(
+      task='regression',
+      experiment_timeout_minutes=60,
+      whitelist_models=['KNN'],
+      primary_metric='r2_score',
+      training_data=train_data,
+      label_column_name=label,
+      n_cross_validations=5)
+   ```
 
 3 つの異なる `task` パラメーター値 (3 つ目の task-type は `forecasting` であり、`regression` タスクと類似のアルゴリズム プールを使用します) によって、適用するモデルの一覧が決まります。 使用可能なモデルを包含または除外してさらにイテレーションを変更するには、`whitelist` または `blacklist` パラメーターを使用します。 サポートされているモデルの一覧については、 ([分類](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification)、[予測](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)、[回帰](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)用の) [SupportedModels クラス](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels)を参照してください。
 
-自動化された ML の検証サービスでは、実験のタイムアウト エラーを回避するために、`experiment_timeout_minutes` を 15 分以上のタイムアウトに設定する必要があります。
+実験のタイムアウト エラーを回避するため、自動化された ML の検証サービスで、`experiment_timeout_minutes` を 15 分以上に設定する必要があります (行と列を掛けたサイズが 1000 万を超える場合は 60 分)。
 
 ### <a name="primary-metric"></a>主要メトリック
 主要メトリックによって、モデルのトレーニング中に最適化のために使用されるメトリックが決まります。 選択できるメトリックは、選択したタスクの種類によって決まります。次の表に、各タスクの種類に有効な主要メトリックを示します。
@@ -242,7 +243,7 @@ automl_config = AutoMLConfig(task = 'forecasting',
                              **time_series_settings)
 ```
 
-### <a name="ensemble"></a> アンサンブル構成
+### <a name="ensemble-configuration"></a><a name="ensemble"></a> アンサンブル構成
 
 アンサンブル モデルは既定で有効になっており、自動化された機械学習の実行での最終実行イテレーションとして表示されます。 現在サポートされているアンサンブル法は、投票とスタッキングです。 投票は加重平均を使用したソフト投票として実装され、スタッキング実装は 2 層の実装を使用します。ここでは、第 1 層は投票アンサンブルと同じモデルを持ち、第 2 層のモデルは、第 1 層からのモデルの最適な組み合わせを見つけるために使用されます。 ONNX モデルを使用している場合、**または**モデルの説明を有効にしている場合、スタッキングは無効になり、投票だけが使用されます。
 

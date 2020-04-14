@@ -1,30 +1,19 @@
 ---
-title: Azure CLI を使用し、Azure で Linux VM のイメージをキャプチャする
+title: Azure CLI を使用して Linux VM のイメージをキャプチャする
 description: Azure CLI を使用し、Azure VM のイメージをキャプチャし、一括デプロイに利用します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: ed7d45fb9148bd441a3798c48be8b25e1da2b8c1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 77f6244651551763f5460432655d66267775a256
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036916"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226831"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のイメージを作成する方法
-
-<!-- generalize, image - extended version of the tutorial-->
 
 仮想マシン (VM) のコピーを複数作成し、Azure で使用するには、VM または OS VHD のイメージをキャプチャします。 デプロイ用のイメージを作成するには、個人のアカウント情報を削除する必要があります。 次の手順で既存の VM のプロビジョニングと割り当てを解除し、イメージを作成します。 このイメージを使用して、サブスクリプション内の任意のリソース グループに VM を作成できます。
 
@@ -141,7 +130,7 @@ az vm show \
    --show-details
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ソース VM イメージから複数の VM を作成できます。 イメージを変更するには: 
 
 - イメージから VM を作成します。

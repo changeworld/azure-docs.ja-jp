@@ -8,17 +8,22 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: bb78536326885e043279de1ff77e6e8efcd95193
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 2f10c7378ae7681b14df6e96b6a6f1adac832d1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037150"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80287817"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Azure プライベート エンドポイントを使用して非公開で Web アプリに接続する (プレビュー)
 
 Azure プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これを使用して非公開で Web アプリに接続することができます。
 このクイックスタートでは、プライベート エンドポイントを使用して Web アプリをデプロイし、仮想マシンからこの Web アプリに接続する方法について説明します。
+
+詳細については、[Azure Web アプリでのプライベート エンドポイントの使用][privatenedpointwebapp]に関するページを参照してください。
+
+> [!Note]
+>このプレビューは、PremiumV2 の Windows および Linux の Web アプリすべてに対して、米国東部と米国西部 2 のリージョンでご利用いただけます。 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -36,15 +41,18 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[仮想ネットワークの作成]** の [基本] タブで次の情報を入力または選択します。
 
- ![[仮想ネットワークの作成]][1]
+   > [!div class="mx-imgBorder"]
+   > ![仮想ネットワークの作成][1]
 
 1. **[次へ: IP アドレス>]** をクリックし、次の情報を入力または選択します。
 
-![IP アドレスの構成][2]
+   > [!div class="mx-imgBorder"]
+   >![IP アドレスの構成][2]
 
 1. サブネット セクションで **[+ サブネットの追加]** をクリックし、次の情報を入力して、 **[追加]** クリックします
 
-![サブネットの追加][3]
+   > [!div class="mx-imgBorder"]
+   >![サブネットの追加][3]
 
 1. **[確認と作成]** をクリックします
 
@@ -56,15 +64,17 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. [仮想マシンの作成 - 基本] に次の情報を入力または選択します。
 
-![仮想マシンの基本 ][4]
+   > [!div class="mx-imgBorder"]
+   >![仮想マシンの基本][4]
 
 1. **[次へ: ディスク]** を選択します
 
-既定の設定のままにします。
+   既定の設定のままにします。
 
 1. **[次へ: ネットワーク]** を選択し、次の情報を選択します。
 
-![ネットワーク ][5]
+   > [!div class="mx-imgBorder"]
+   >![ネットワーク][5]
 
 1. **[確認と作成]** をクリックします
 
@@ -75,7 +85,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 このセクションでは、プライベート エンドポイントを使用してプライベート Web アプリを作成します。
 
 > [!Note]
->プライベート エンドポイント機能は、Premium V2 でのみ使用できます。外部 ASE SKU を使用して分離されています
+>プライベート エンドポイント機能は、Premium V2 SKU でのみ使用できます。
 
 ### <a name="web-app"></a>Web アプリ
 
@@ -83,7 +93,8 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. [Web アプリの作成 - 基本] で、次の情報を入力または選択します。
 
-![Web アプリの基本 ][6]
+   > [!div class="mx-imgBorder"]
+   >![Web アプリの基本][6]
 
 1. **[確認と作成]** を選択します
 
@@ -93,31 +104,37 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. Web アプリのプロパティで **[設定]**  >  **[ネットワーク]** を選択し、 **[Configure your private endpoint connections]\(プライベート エンドポイント接続の構成\)** をクリックします
 
-![Web アプリのネットワーク][7]
+   > [!div class="mx-imgBorder"]
+   >![Web アプリのネットワーク][7]
 
 1. ウィザードで **[+ 追加]** クリックします
 
-![Web アプリのプライベート エンドポイント][8]
+   > [!div class="mx-imgBorder"]
+   >![Web アプリのプライベート エンドポイント][8]
 
-1. サブスクリプション、Vnet、およびサブネットの情報を入力し、 **[OK]** をクリックします
+1. サブスクリプション、VNet、およびサブネットの情報を入力し、 **[OK]** をクリックします
 
-![Web アプリのネットワーク][9]
+   > [!div class="mx-imgBorder"]
+   >![Web アプリのネットワーク][9]
 
 1. プライベート エンドポイントの作成を確認します
 
-![確認][10]
-![プライベート エンドポイントの最後のビュー][11]
+   > [!div class="mx-imgBorder"]
+   >![確認][10]
+   >![プライベート エンドポイントの最後のビュー][11]
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
 
 1. ポータルの検索バーに、「**myVm**」と入力します
 1. **[接続]** ボタンを選択します。 [接続] ボタンを選択すると [仮想マシンに接続する] が開くので、 **[RDP]** を選択します
 
-![[RDP] ボタン][12]
+   > [!div class="mx-imgBorder"]
+   >![[RDP] ボタン][12]
 
 1. **[RDP ファイルのダウンロード]** をクリックすると、Azure によってリモート デスクトップ プロトコル (.rdp) ファイルが作成され、コンピューターにダウンロードされます
 
-![RDP ファイルのダウンロード][13]
+   > [!div class="mx-imgBorder"]
+   >![RDP ファイルのダウンロード][13]
 
 1. ダウンロードされた .rdp ファイルを開きます。
 
@@ -139,38 +156,45 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. プライベート エンドポイントのプライベート IP を取得します。検索バーに「**プライベート リンク**」と入力し、[プライベート リンク] を選択します
 
-![Private Link][14]
+   > [!div class="mx-imgBorder"]
+   >![Private Link][14]
 
 1. プライベート リンク センターで、 **[プライベート エンドポイント]** を選択し、すべてのプライベート エンドポイントを一覧表示します
 
-![プライベート リンク センター][15]
+   > [!div class="mx-imgBorder"]
+   >![プライベート リンク センター][15]
 
 1. Web アプリとサブネットへのプライベート エンドポイント リンクを選択します
 
-![プライベート エンドポイントのプロパティ][16]
+   > [!div class="mx-imgBorder"]
+   >![プライベート エンドポイントのプロパティ][16]
 
 1. プライベート エンドポイントのプライベート IP と Web アプリの FQDN (この例では webappdemope.azurewebsites.net 10.10.2.4) をコピーします
 
-1. myVM で、パブリック IP を使用して Web アプリにアクセスできないことを確認します。 ブラウザーを開き、Web アプリ名をコピーすると、403 アクセス不可エラー ページが表示されます
+1. myVM で、パブリック IP を使用して Web アプリにアクセスできないことを確認します。 ブラウザーを開き、Web アプリ名を貼り付けると、403 アクセス不可エラー ページが表示されます
 
-![Forbidden][17]
+   > [!div class="mx-imgBorder"]
+   >![Forbidden][17]
 
-> [!Note]
+> [!Important]
 > この機能はプレビュー段階なので、DNS エントリを手動で管理する必要があります。
 
 1. ホスト エントリを作成し、ファイル エクスプローラーを開き、hosts ファイルを見つけます
 
-![hosts ファイル][18]
+   > [!div class="mx-imgBorder"]
+   >![hosts ファイル][18]
 
 1. メモ帳で hosts ファイルを編集し、プライベート IP アドレスと Web アプリのパブリック名を含むエントリを追加します
 
-![hosts の内容][19]
+   > [!div class="mx-imgBorder"]
+   >![hosts の内容][19]
 
 1. ファイルを保存します。
 
 1. ブラウザーを開き、Web アプリの URL を入力します
 
-![PE が表示された Web サイト][20]
+   > [!div class="mx-imgBorder"]
+   >![PE が表示された Web サイト][20]
 
 1. プライベート エンドポイント経由で Web アプリにアクセスしています
 
@@ -209,4 +233,5 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 [20]: ./media/create-private-endpoint-webapp-portal/webappwithpe.png
 
 <!--Links-->
+[privatenedpointwebapp]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
 [privateendpoint]: https://docs.microsoft.com/azure/private-link/private-endpoint-overview

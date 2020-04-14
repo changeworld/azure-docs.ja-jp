@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f31c5583671ed3441e1a3f0f53c8518e550080a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: f38b0895b0d6eddcf63c082d3df205f4d9de9d50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77580731"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297059"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal 内で Azure Machine Learning ワークスペースを作成および管理する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -45,12 +45,13 @@ ms.locfileid: "77580731"
    ワークスペース名 |ワークスペースを識別する一意の名前を入力します。 この例では、**docs-ws** を使用します。 名前は、リソース グループ全体で一意である必要があります。 覚えやすく、他のユーザーが作成したワークスペースと区別しやすい名前を使用します。 ワークスペース名では、大文字と小文字は区別されません。
    サブスクリプション |使用する Azure サブスクリプションを選択します。
    Resource group | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力して新しいリソース グループを作成します。 リソース グループは、Azure ソリューションの関連するリソースを保持します。 この例では、**docs-aml** を使用します。 
-   Location | ユーザーとデータ リソースに最も近い場所を選択し、ワークスペースを作成します。
+   場所 | ユーザーとデータ リソースに最も近い場所を選択し、ワークスペースを作成します。
    ワークスペースのエディション | **[Basic]** または **[Enterprise]** を選択します。  このワークスペース エディションによって、アクセスでき、価格設定の対象となる機能が決まります。 詳細については、[Basic および Enterprise Edition のオファリング](overview-what-is-azure-ml.md#sku)に関するページを参照してください。 
 
     ![ワークスペースを構成する](./media/how-to-manage-workspace/select-edition.png)
 
-1. ワークスペースの構成が完了したら、 **[作成]** を選択します。 
+1. ワークスペースの構成が完了したら、 **[確認および作成]** を選択します。
+2. 設定を確認し、追加の変更または訂正があれば実行します。 設定に問題がなければ **[作成]** を選択します。
 
    > [!Warning] 
    > クラウドへのワークスペースの作成には数分かかる場合があります。
@@ -69,7 +70,7 @@ ms.locfileid: "77580731"
    
    このファイルは、Python スクリプトまたは Jupyter Notebook を含むディレクトリ構造内に置きます。 それは、同じディレクトリ内、 *.azureml* という名前のサブディレクトリ内、または親ディレクトリ内に置くことができます。 コンピューティング インスタンスを作成するとき、このファイルは VM 上の正しいディレクトリに自動的に追加されます。
 
-## <a name="upgrade"></a>Enterprise Edition へのアップグレード
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Enterprise Edition へのアップグレード
 
 Basic Edition から Enterprise Edition にワークスペースをアップグレードすることで、ローコード エクスペリエンスや強化されたセキュリティ機能などの拡張機能を利用できます。
 
@@ -87,7 +88,7 @@ Basic Edition から Enterprise Edition にワークスペースをアップグ�
 > [!IMPORTANT]
 > Enterprise Edition ワークスペースを Basic Edition ワークスペースにダウングレードすることはできません。 
 
-## <a name="view"></a>ワークスペースの検索
+## <a name="find-a-workspace"></a><a name="view"></a>ワークスペースの検索
 
 1. 上部の検索フィールドに「**Machine Learning**」と入力します。  
 

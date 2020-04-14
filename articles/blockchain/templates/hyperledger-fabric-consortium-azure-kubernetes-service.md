@@ -4,12 +4,12 @@ description: Azure Kubernetes Service に Hyperledger Fabric コンソーシア�
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 5aed420295fd17cf4e7b26c86e8b84c4687e6545
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 2312c002e5c2e0b813f8acbdc3e3bff597f204d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029913"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476442"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上の Hyperledger Fabric コンソーシアム
 
@@ -78,7 +78,7 @@ HLF ネットワーク コンポーネントのデプロイを始めるには、
     ![Hyperledger Fabric on Azure Kubernetes Service テンプレート](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
 
 5. 次の詳細を入力します。
-    - **組織名**:さまざまなデータ プレーン操作に必要な Fabric 組織の名前。
+    - **組織名**:さまざまなデータ プレーン操作に必要な Fabric 組織の名前。 組織名は、デプロイごとに一意である必要があります。 
     - **[Fabric network component]\(Fabric ネットワーク コンポーネント\)** : セットアップするブロックチェーン ネットワーク コンポーネントに基づいて、Ordering Service またはピア ノードを選択します。
     - **[Number of nodes]\(ノード数\)** - 次の2種類のノードがあります。
         - Ordering Service - ネットワークにフォールト トレランスを提供するノードの数を選択します。 サポートされている orderer ノードの数は、3、5、7 のみです。

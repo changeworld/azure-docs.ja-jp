@@ -1,19 +1,19 @@
 ---
-title: Azure Maps Search Service を使用して効率よく検索する | Microsoft Azure Maps
-description: Microsoft Azure Maps を使って Search Service のベスト プラクティスを適用する方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+title: Azure Maps Search Service のベスト プラクティス | Microsoft Azure Maps
+description: Microsoft Azure Maps から Search Service を使用する場合のベスト プラクティスを適用する方法について説明します。
+author: philmea
+ms.author: philmea
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 82e0339e02fa2fb27e7b2ca24f65934e3ce4fe23
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 8d62d7d278323baa0ae49b9e12f46468efb067a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209802"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335315"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure Maps Search Service のベスト プラクティス
 
@@ -69,12 +69,12 @@ Azure Maps Search Service を使って住所の全部または一部を検索す
 
 * `idxSet`パラメータを使用して、結果タイプの正確なセットに優先順位を付けます。 結果の正確なセットに優先順位を付けるには、コンマで区切られたインデックスのリストを送信します。 リストでは、アイテムの順序は関係ありません。 Azure Maps は以下のインデックスをサポートしています。
 
-    * `Addr` - **住所範囲**:道路の始点と終点から補間された住所ポイント。 これらの地点は、住所範囲として表されます。
-    * `Geo` - **地域**: 土地の行政区画です。 たとえば、地域は国、州、市などとなります。
-    * `PAD` - **ポイントアドレス**:街路の名前と番号を含む住所です。 ポイントアドレスはインデックスにあります。 例は*Soquel Dr 2501*です。 ポイントアドレスは、住所に利用できる最高レベルの精度を提供します。  
-    * `POI` - **目的地**:注目に値する、または興味深いと思われるマップ上のポイントです。 [Search Address API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)では POI は返されません。  
-    * `Str` - **街路**: マップ上の街路です。
-    * `XStr` - **交差点**:2 本の街路が交差するジャンクションまたはその場所です。
+* `Addr` - **住所範囲**:道路の始点と終点から補間された住所ポイント。 これらの地点は、住所範囲として表されます。
+* `Geo` - **地域**: 土地の行政区画です。 たとえば、地域は国、州、市などとなります。
+* `PAD` - **ポイントアドレス**:街路の名前と番号を含む住所です。 ポイントアドレスはインデックスにあります。 例は*Soquel Dr 2501*です。 ポイントアドレスは、住所に利用できる最高レベルの精度を提供します。  
+* `POI` - **目的地**:注目に値する、または興味深いと思われるマップ上のポイントです。 [Search Address API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)では POI は返されません。  
+* `Str` - **街路**: マップ上の街路です。
+* `XStr` - **交差点**:2 本の街路が交差するジャンクションまたはその場所です。
 
 
 #### <a name="usage-examples"></a>使用例
@@ -114,7 +114,6 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
                 "municipality": "Redmond",
                 "country": "United States",
                 "countryCodeISO3": "USA",
-                },
                 "countrySubdivisionName": "Washington"
             },
             "position": "47.639454,-122.130455",
@@ -490,7 +489,6 @@ POI 検索では、POI 結果を名前で要求できます。 たとえば、�
 要求では、コンマで区切られたブランド名のリストを送信できます。 リストを使用して`brandSet`パラメータを設定し、結果を特定のブランドに限定します。 リストでは、アイテムの順序は関係ありません。 複数のブランドリストを提供する場合、返される結果は少なくとも1つのリストに属している必要があります。
 
 ブランド検索を調べるために、[POI カテゴリー検索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)要求を作成しましょう。 次の例では、ワシントン州レドモンドにある Microsoft キャンパス近くでガソリンスタンドを探しています。 応答には、返された各 POI のブランド情報が表示されます。
-
 
 #### <a name="sample-query"></a>サンプル クエリ
 
@@ -969,5 +967,10 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Maps Search Service の要求を作成する方法](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)を学習します。
-* Azure Maps [Search Service API のドキュメント](https://docs.microsoft.com/rest/api/maps/search)を確認します。 
+詳細については、次を参照してください。
+
+> [!div class="nextstepaction"]
+> [Azure Maps Search Service の要求を作成する方法](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+
+> [!div class="nextstepaction"]
+> [Search Service API ドキュメント](https://docs.microsoft.com/rest/api/maps/search)

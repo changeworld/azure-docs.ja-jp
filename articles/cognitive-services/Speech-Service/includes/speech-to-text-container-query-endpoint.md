@@ -4,14 +4,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 01/21/2020
-ms.author: dapine
-ms.openlocfilehash: 9b4317064196c4ea3d761fd1a0bd43a764054fe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: c029165a4994e5e3f73399fb00a1775b67128e44
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77563311"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879024"
 ---
 ### <a name="speech-to-text-or-custom-speech-to-text"></a>音声変換またはカスタム音声変換
 

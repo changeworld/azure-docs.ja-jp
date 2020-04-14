@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: a6c7639cb4988eb13dfaa1c151085cda6e53b5d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4ca76f4be9d00e185f8774fc33296d1af1aeece
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68611358"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585499"
 ---
 # <a name="remediate-non-compliant-dsc-servers"></a>準拠していない DSC サーバーを修復する
 
@@ -40,7 +40,7 @@ Update-DscConfiguration -Wait -Verbose
 同様の機能は、Linux サーバーでは現在使用できません。
 唯一のオプションは、登録プロセスを繰り返すことです。
 Azure ノードの場合、ドリフト補正は、ポータルから、または Az Automation コマンドレットを使用して行うことができます。
-このプロセスの詳細は、「[Azure Automation State Configuration による管理のためのマシンのオンボード](/azure/automation/automation-dsc-onboarding#azure-portal)」のページに記載されています。
+このプロセスの詳細は、「[Azure Automation State Configuration による管理のためのマシンのオンボード](/azure/automation/automation-dsc-onboarding#onboard-a-vm-using-azure-portal)」のページに記載されています。
 ハイブリッド ノードの場合は、含まれている Python スクリプトを使用して、ドリフト補正を行うことができます。
 [Linux リポジトリ用の PowerShell DSC](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer) のドキュメントを参照してください。
 

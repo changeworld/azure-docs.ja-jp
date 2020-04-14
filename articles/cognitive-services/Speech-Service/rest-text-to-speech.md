@@ -3,19 +3,19 @@ title: Text to Speech API リファレンス (REST) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Text to Speech REST API の使用方法について説明します。 この記事では、認可のオプションとクエリのオプション、さらに要求を構築する方法と応答を受信する方法について説明します。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.author: erhopf
-ms.openlocfilehash: ab0891653f449b13f50dc43b196cf16a2f71370e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 03/23/2020
+ms.author: dapine
+ms.openlocfilehash: 977c6ec9aa1cd6a8b8a545d123c5308bb8c51651
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975824"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409024"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
@@ -48,7 +48,7 @@ Text to Speech REST API ではニューラルと標準のテキスト読み上�
 | カナダ中部 | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 米国中部 | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 東アジア | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 米国東部 | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 米国東部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | フランス中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | インド中部 | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -99,35 +99,44 @@ Authorization: Bearer [Base64 access_token]
         "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
         "ShortName": "ar-EG-Hoda",
         "Gender": "Female",
-        "Locale": "ar-EG"
+        "Locale": "ar-EG",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
         "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
         "ShortName": "ar-SA-Naayf",
         "Gender": "Male",
-        "Locale": "ar-SA"
+        "Locale": "ar-SA",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
         "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
         "ShortName": "bg-BG-Ivan",
         "Gender": "Male",
-        "Locale": "bg-BG"
+        "Locale": "bg-BG",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
         "Name": "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)",
         "ShortName": "ca-ES-HerenaRUS",
         "Gender": "Female",
-        "Locale": "ca-ES"
+        "Locale": "ca-ES",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)",
-        "ShortName": "cs-CZ-Jakub",
-        "Gender": "Male",
-        "Locale": "cs-CZ"
+        "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)",
+        "ShortName": "zh-CN-XiaoxiaoNeural",
+        "Gender": "Female",
+        "Locale": "zh-CN",
+        "SampleRateHertz": "24000",
+        "VoiceType": "Neural"
     },
 
     ...
-
 ]
 ```
 
@@ -137,11 +146,11 @@ Authorization: Bearer [Base64 access_token]
 
 | HTTP 状態コード | 説明 | 考えられる理由 |
 |------------------|-------------|-----------------|
-| 200 | OK | 要求は成功しました。 |
+| 200 | [OK] | 要求は成功しました。 |
 | 400 | 正しくない要求 | 必須パラメーターが指定されていない、空、または null です。 または、必須またはオプションのパラメーターに渡された値が無効です。 よくある問題はヘッダーが長すぎることです。 |
 | 401 | 権限がありません | 要求が承認されていません。 サブスクリプション キーまたはトークンが有効であり、正しいリージョンにあることを確認してください。 |
 | 429 | 要求が多すぎます | 使用中のサブスクリプションで許可されている要求のクォータまたは速度を超えています。 |
-| 502 | 無効なゲートウェイ | ネットワークまたはサーバー側の問題です。 無効なヘッダーを示す場合もあります。 |
+| 502 | 無効なゲートウェイ    | ネットワークまたはサーバー側の問題です。 無効なヘッダーを示す場合もあります。 |
 
 
 ## <a name="convert-text-to-speech"></a>テキストを音声に変換する
@@ -163,7 +172,7 @@ Authorization: Bearer [Base64 access_token]
 | `Authorization` | 単語 `Bearer` が前に付いた認証トークン。 詳細については、[認証](#authentication)に関するページをご覧ください。 | 必須 |
 | `Content-Type` | 指定したテキストのコンテンツ タイプを指定します。 指定できる値は `application/ssml+xml` です。 | 必須 |
 | `X-Microsoft-OutputFormat` | オーディオ出力形式を指定します。 指定できる値の全一覧については、[オーディオ出力](#audio-outputs)に関するセクションを参照してください。 | 必須 |
-| `User-Agent` | アプリケーションの名前。 指定する値は 255 文字未満にする必要があります。 | 必須 |
+| `User-Agent` | アプリケーション名です。 指定する値は 255 文字未満にする必要があります。 | 必須 |
 
 ### <a name="audio-outputs"></a>オーディオ出力
 
@@ -187,11 +196,11 @@ Authorization: Bearer [Base64 access_token]
 各 `POST` 要求の本文は[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) として送信されます。 SSML では、テキスト読み上げサービスによって返される合成音声の声と言語を選択できます。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。
 
 > [!NOTE]
-> カスタムの音声を使用する場合は、プレーン テキスト (ASCII または UTF-8) として要求の本文を送信できます。
+> カスタム音声を使用する場合は、プレーン テキスト (ASCII または UTF-8) として要求の本文を送信できます。
 
 ### <a name="sample-request"></a>要求のサンプル
 
-この HTTP 要求は、SSML を使用して音声と言語を指定します。 1,000 文字を超える本文は許可されません。
+この HTTP 要求は、SSML を使用して音声と言語を指定します。 本文が長すぎて、生成されるオーディオが 10 分を超える場合は、10 分に切り捨てられます。 つまり、オーディオの長さが 10 分を超えることはできません。
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
@@ -203,7 +212,7 @@ Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='en-US-JessaRUS'>
+    name='en-US-AriaRUS'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
@@ -212,7 +221,7 @@ Authorization: Bearer [Base64 access_token]
 
 * [.NET Core、C#](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
 * [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python)
-* [Node.JS](quickstart-nodejs-text-to-speech.md)
+* [Node.js](quickstart-nodejs-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>HTTP 状態コード
 
@@ -220,18 +229,18 @@ Authorization: Bearer [Base64 access_token]
 
 | HTTP 状態コード | 説明 | 考えられる理由 |
 |------------------|-------------|-----------------|
-| 200 | OK | 要求は成功しました。応答本文はオーディオ ファイルです。 |
+| 200 | [OK] | 要求は成功しました。応答本文はオーディオ ファイルです。 |
 | 400 | 正しくない要求 | 必須パラメーターが指定されていない、空、または null です。 または、必須またはオプションのパラメーターに渡された値が無効です。 よくある問題はヘッダーが長すぎることです。 |
 | 401 | 権限がありません | 要求が承認されていません。 サブスクリプション キーまたはトークンが有効であり、正しいリージョンにあることを確認してください。 |
 | 413 | 要求のエンティティが大きすぎます | SSML 入力が 1024 文字を超えています |
 | 415 | サポートされていないメディアの種類です | 間違った `Content-Type` が提供された可能性があります。 `Content-Type` は `application/ssml+xml` に設定する必要があります。 |
 | 429 | 要求が多すぎます | 使用中のサブスクリプションで許可されている要求のクォータまたは速度を超えています。 |
-| 502 | 無効なゲートウェイ | ネットワークまたはサーバー側の問題です。 無効なヘッダーを示す場合もあります。 |
+| 502 | 無効なゲートウェイ    | ネットワークまたはサーバー側の問題です。 無効なヘッダーを示す場合もあります。 |
 
 HTTP ステータスが `200 OK` の場合、応答の本文には要求された形式のオーディオ ファイルが含まれています。 このファイルは、転送と同時に再生することも、バッファーまたはファイルに保存することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-- [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
-- [言語モデルをカスタマイズする](how-to-customize-language-model.md)
+- [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services)
+- [長い形式の音声の非同期合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [カスタム音声の概要](how-to-custom-voice.md)

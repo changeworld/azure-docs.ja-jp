@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 4f89fb07fbbff3beee66f80675bb5c3a32136807
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d828103bef8e57f5d0cdfe6c243c52e2d0526663
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458763"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257548"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>スループット向上のために Azure Stream Analytics ジョブをスケーリングする
 この記事では、Stream Analytics クエリをチューニングして、Streaming Analytics ジョブのスループットを向上させる方法について説明します。 次のガイドを使用して、高い負荷を処理し、より多くのシステム リソース (より多くの帯域幅、より多くの CPU リソース、より多くのメモリなど) を利用するようにジョブをスケーリングできます。
@@ -23,7 +23,7 @@ ms.locfileid: "75458763"
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>ケース 1 - 複数の入力パーティションでクエリが本質的に完全並列化可能な場合
 入力のパーティション間でクエリが本質的に完全並列化可能な場合は、次の手順に従うことができます。
 1.  **PARTITION BY** キーワードを使用して、クエリを驚異的並列として作成します。 詳しくは、[このページ](stream-analytics-parallelization.md)の驚異並列ジョブのセクションをご覧ください。
-2.  クエリで使用される出力の種類に応じて、一部の出力は並列化できない可能性や、驚異的並列とするためにさらに構成が必要な場合があります。 たとえば、SQL、SQL DW、PowerBI の出力は並列化できません。 出力は、出力シンクに送信する前に常にマージされます。 BLOB、Table、ADLS、Service Bus、Azure 関数は自動的に並列化されます。 CosmosDB とイベント ハブでは、PartitionKey 構成を **PARTITION BY** フィールド (通常は PartitionId) と一致するように設定する必要があります。 イベント ハブの場合は、パーティション間でのクロスオーバーを回避するために、すべての入力とすべての出力でパーティション数が一致することにも注意してください。 
+2.  クエリで使用される出力の種類に応じて、一部の出力は並列化できない可能性や、驚異的並列とするためにさらに構成が必要な場合があります。 たとえば、PowerBI の出力は並列化できません。 出力は、出力シンクに送信する前に常にマージされます。 BLOB、Table、ADLS、Service Bus、Azure 関数は自動的に並列化されます。 SQL および SQL DW の出力には、並列化のオプションがあります。 イベント ハブでは、PartitionKey 構成を **PARTITION BY** フィールド (通常は PartitionId) と一致するように設定する必要があります。 イベント ハブの場合は、パーティション間でのクロスオーバーを回避するために、すべての入力とすべての出力でパーティション数が一致することにも注意してください。 
 3.  **6 SU** (1 つのコンピューティング ノードの全容量) でクエリを実行して達成可能な最大スループットを測定し、**GROUP BY** を使用する場合は、ジョブで処理できるグループ数 (カーディナリティ) を測定します。 ジョブがシステム リソース制限に達した場合の一般的な症状は次のとおりです。
     - SU % 使用率のメトリックが 80% を超えている。 これは、メモリ使用率が高いことを示します。 このメトリックの増加に影響する要因については、[こちら](stream-analytics-streaming-unit-consumption.md)をご覧ください。 
     -   出力タイムスタンプが実時間よりも遅れている。 クエリ ロジックによっては、出力タイムスタンプに、実時間からの論理オフセットがある場合があります。 ただし、それらはほぼ同じ速度で進行します。 出力タイムスタンプの遅れが徐々に増加している場合は、システムが過負荷になっていることを示しています。 ダウンストリーム出力のシンク調整、または高 CPU 使用率の結果である可能性があります。 現時点では CPU 使用率のメトリックを提供していないため、2 つを区別するのは困難な可能性があります。

@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 275b3bd25f931b73e8a378433899ef9ade4d47c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6d257198fcae54b1214d77f6b905d876d2687f5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76028279"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585529"
 ---
 # <a name="configuration-based-on-stig"></a>STIG に基づく構成
 
@@ -37,7 +37,7 @@ ms.locfileid: "76028279"
 PowerSTIG では、設定の全範囲を 1 つの大きなファイルで処理するのではなく、構成の各領域に対応する[複合リソース](https://github.com/microsoft/powerstig#powerstigdsc)を提供することによって、この問題に取り組んでいます。
 
 構成が生成されたら、それらを [DSC 構成スクリプト](/powershell/scripting/dsc/configurations/configurations)を使用して MOF ファイルを生成し、[その MOF ファイルを Azure Automation にアップロードする](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)ことができます。
-次に、[オンプレミス](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)または [Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) のいずれかからサーバーを登録して、構成をプルします。
+次に、[オンプレミス](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)または [Azure](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) のいずれかからサーバーを登録して、構成をプルします。
 
 PowerSTIG を試すには、[PowerShell ギャラリー](https://www.powershellgallery.com)にアクセスし、ソリューションをダウンロードするか、[Project Site]\(プロジェクト サイト\) をクリックして[ドキュメント](https://github.com/microsoft/powerstig)を参照してください。
 

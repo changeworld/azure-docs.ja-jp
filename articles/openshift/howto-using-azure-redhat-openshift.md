@@ -1,18 +1,18 @@
 ---
 title: Azure Red Hat OpenShift 4.3 クラスターを作成する | Microsoft Docs
-description: Azure Red Hat OpenShift 3.11 を使用してクラスターを作成する
+description: Azure Red Hat OpenShift 4.3 でクラスターを作成する
 author: lamek
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: aro、openshift、az aro、red hat、cli
-ms.openlocfilehash: 3c336a1fbfb9f991ff824e8deafe84f3d899771d
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 423f09c135da51b8401c1933a4a271d0becd2c8f
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082831"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349428"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Azure Red Hat OpenShift 4.3 クラスターの作成、アクセス、管理
 
@@ -56,7 +56,7 @@ Azure Red Hat OpenShift 4.3 クラスターを作成するには、次のもの�
 2. 次のコマンドを実行して、`az aro` 拡張機能をインストールします。
 
    ```console
-   az extension add --source https://arosvc.blob.core.windows.net/az-preview/aro-0.1.0-py2.py3-none-any.whl
+   az extension add -n aro --index https://az.aroapp.io/preview
    ```
 
 3. ARO 拡張が登録されていることを確認します。
@@ -79,7 +79,15 @@ Azure Red Hat OpenShift 4.3 クラスターを作成するには、次のもの�
    LOCATION=eastus        #the location of your cluster
    RESOURCEGROUP="v4-$LOCATION"    #the name of the resource group where you want to create your cluster
    CLUSTER=cluster        #the name of your cluster
+   PULL_SECRET="<optional-pull-secret>"
    ```
+   >[!NOTE]
+   > オプションのプル シークレットを使用すると、クラスターは追加のコンテンツと共に Red Hat コンテナー レジストリにアクセスできます。
+   >
+   > https://cloud.redhat.com/openshift/install/azure/installer-provisioned に移動し、 *[プル シークレットのコピー]* をクリックして、プルシークレットにアクセスします。
+   >
+   > Red Hat アカウントにログインするか、お使いのビジネス メールアドレスを使用して新しい Red Hat アカウントを作成し、使用条件に同意する必要があります。
+ 
 
 2. 自分のクラスターのリソース グループを作成します。
 
@@ -132,7 +140,8 @@ az aro create \
   -n "$CLUSTER" \
   --vnet vnet \
   --master-subnet "$CLUSTER-master" \
-  --worker-subnet "$CLUSTER-worker"
+  --worker-subnet "$CLUSTER-worker" \
+  --pull-secret "$PULL_SECRET"
 ```
 
 >[!NOTE]

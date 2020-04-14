@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 08/27/2019
+ms.date: 04/04/2020
 ms.author: yinhew
-ms.openlocfilehash: b615ba8085650e9aa686fb4a229d9752c4f6e2ce
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: de3a81a66275b4f58ef0427c410046f2694471b1
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78924849"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671807"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,7 +23,7 @@ ms.locfileid: "78924849"
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 

@@ -1,7 +1,7 @@
 ---
-title: Video Indexer API を使用して言語モデルをカスタマイズする - Azure
+title: Video Indexer API で言語モデルをカスタマイズする
 titlesuffix: Azure Media Services
-description: この記事では、Video Indexer API を使用して言語モデルをカスタマイズする方法を示します。
+description: Video Indexer API を使用して言語モデルをカスタマイズする方法について説明します。
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: anzaman
-ms.openlocfilehash: 01ea4d9ef943183f09baa86b729ec69344d4309e
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 19067bbbaf93c9abc9a9220b09dd482ce9115655
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049044"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127978"
 ---
-# <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Video Indexer API を使用して言語モデルをカスタマイズする
+# <a name="customize-a-language-model-with-the-video-indexer-api"></a>Video Indexer API を使用して言語モデルをカスタマイズする
 
-Video Indexer では、カスタム言語モデルを作成し、適応テキストをアップロードすることで音声認識をカスタマイズすることができます。適応テキストとは、エンジンを適応させたいボキャブラリがあるドメインから取得したテキストのことです。 モデルをトレーニングすると、適応テキスト内に含まれる新しい単語が認識されるようになります。 
+Video Indexer では、カスタム言語モデルを作成し、適応テキストをアップロードすることで音声認識をカスタマイズすることができます。適応テキストとは、エンジンを適応させたいボキャブラリがあるドメインから取得したテキストのことです。 モデルをトレーニングすると、適応テキスト内に含まれる新しい単語が認識されるようになります。
 
 カスタム言語モデルの詳細な概要とベスト プラクティスについては、「[Customize a Language model with Video Indexer](customize-language-model-overview.md)」(Video Indexer を使って言語モデルをカスタマイズする) をご覧ください。
 
@@ -32,10 +32,10 @@ Video Indexer では、カスタム言語モデルを作成し、適応テキス
 > [!NOTE]
 > いずれの場合も、モデル用の対応ファイルでモデルをトレーニングし、ファイルのコンテンツを学習させる必要があります。 言語のトレーニング方法については、次のセクションで説明します。
 
-言語モデルに追加するファイルをアップロードするには、上記の必須パラメーターの値を指定するだけでなく、フォーム データを使用して本文内のファイルをアップロードする必要があります。 この作業を実行する 2 つの方法があります。 
+言語モデルに追加するファイルをアップロードするには、上記の必須パラメーターの値を指定するだけでなく、FormData を使用して本文内のファイルをアップロードする必要があります。 このタスクを行うには 2 つの方法があります。
 
-1. キーをファイル名にし、値を txt ファイルにする
-2. キーをファイル名にし、値を txt ファイルの URL にする
+* キーをファイル名にし、値を txt ファイルにします。
+* キーをファイル名にし、値を txt ファイルの URL にします。
 
 ### <a name="response"></a>Response
 
@@ -70,10 +70,10 @@ Video Indexer では、カスタム言語モデルを作成し、適応テキス
 
 ## <a name="train-a-language-model"></a>言語モデルのトレーニング
 
-[言語モデルのトレーニング](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) API により、言語モデルにアップロードされ、その言語モデル内で有効化されたファイルのコンテンツを使用して、指定されたアカウント内のカスタム言語モデルがトレーニングされます。 
+[言語モデルのトレーニング](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) API により、言語モデルにアップロードされ、その言語モデル内で有効化されたファイルのコンテンツを使用して、指定されたアカウント内のカスタム言語モデルがトレーニングされます。
 
 > [!NOTE]
-> 最初に、言語モデルを作成し、そのファイルをアップロードする必要があります。 ファイルのアップロードは、言語モデルの作成時に行うか、言語モデルを更新して実行することができます。 
+> 最初に、言語モデルを作成し、そのファイルをアップロードする必要があります。 ファイルのアップロードは、言語モデルの作成時に行うか、言語モデルを更新して実行することができます。
 
 ### <a name="response"></a>Response
 
@@ -105,11 +105,11 @@ Video Indexer では、カスタム言語モデルを作成し、適応テキス
 }
 ```
 
-返された **id** は、言語モデルを区別するために使用される一意の ID です。一方、**languageModelId** は、[インデックスを作成するビデオのアップロード](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API と、[ビデオのインデックスの再作成](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API の両方に使用されます (Video Indexer のアップロード/インデックスの再作成 API では **linguisticModelId** とも呼ばれます)。
+返された `id` は、言語モデルを区別するために使用される一意の ID です。一方、`languageModelId` は、[インデックスを作成するビデオのアップロード](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API と、[ビデオのインデックスの再作成](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API の両方に使用されます (Video Indexer のアップロード/インデックスの再作成 API では `linguisticModelId` とも呼ばれます)。
 
 ## <a name="delete-a-language-model"></a>言語モデルの削除
 
-[言語モデルの削除](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) API により、指定されたアカウントからカスタム言語モデルが削除されます。 削除された言語モデルを使用していたビデオでは、ユーザーがビデオのインデックスを再作成するまで、同じインデックスが保持されます。 ビデオのインデックスを再作成すると、ビデオに新しい言語モデルを割り当てることができます。 それ以外の場合は、Video Indexer により、既定のモデルを使用してビデオのインデックスが再作成されます。
+[言語モデルの削除](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) API により、指定されたアカウントからカスタム言語モデルが削除されます。 削除された言語モデルを使用していたすべてのビデオでは、ユーザーがビデオのインデックスを再作成するまで同じインデックスが保持されます。 ビデオのインデックスを再作成すると、ビデオに新しい言語モデルを割り当てることができます。 それ以外の場合、Video Indexer では既定のモデルを使用して、ビデオのインデックスが再作成されます。
 
 ### <a name="response"></a>Response
 
@@ -122,11 +122,10 @@ Video Indexer では、カスタム言語モデルを作成し、適応テキス
 > [!NOTE]
 > あらかじめ言語モデルを作成しておく必要があります。 この呼び出しは、モデルの配下にあるすべてのファイルを有効または無効にしたり、言語モデルの名前を更新したり、言語モデルに追加するファイルをアップロードしたりするために使用できます。
 
-言語モデルに追加するファイルをアップロードするには、上記の必須パラメーターの値を指定するだけでなく、フォーム データを使用して本文内のファイルをアップロードする必要があります。 この作業を実行する 2 つの方法があります。 
+言語モデルに追加するファイルをアップロードするには、上記の必須パラメーターの値を指定するだけでなく、FormData を使用して本文内のファイルをアップロードする必要があります。 このタスクを行うには 2 つの方法があります。
 
-1. キーをファイル名にし、値を txt ファイルにする
-2. キーをファイル名にし、値を txt ファイルの URL にする
-
+* キーをファイル名にし、値を txt ファイルにします。
+* キーをファイル名にし、値を txt ファイルの URL にします。
 
 ### <a name="response"></a>Response
 
@@ -158,11 +157,11 @@ Video Indexer では、カスタム言語モデルを作成し、適応テキス
 }
 ```
 
-応答で返されたファイルの **id** を使用して、ファイルのコンテンツをダウンロードします。
+応答で返されたファイルの `id` を使用して、ファイルのコンテンツをダウンロードします。
 
 ## <a name="update-a-file-from-a-language-model"></a>言語モデル内のファイルを更新する
 
-[ファイルの更新](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)を使用すると、指定されたアカウント内のカスタム言語モデルに含まれるファイルの名前を更新したり、状態を**有効**にしたりすることができます。
+[ファイルの更新](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)を使用すると、指定されたアカウント内のカスタム言語モデルに含まれるファイルの名前を更新したり、状態を `enable` にしたりすることができます。
 
 ### <a name="response"></a>Response
 
@@ -177,11 +176,12 @@ Video Indexer では、カスタム言語モデルを作成し、適応テキス
   "creationTime": "2018-04-27T20:10:10.5233333"
 }
 ```
-応答で返されたファイルの **id** を使用して、ファイルのコンテンツをダウンロードします。
+
+応答で返されたファイルの `id` を使用して、ファイルのコンテンツをダウンロードします。
 
 ## <a name="get-a-specific-language-model"></a>特定の言語モデルを取得する
 
-[取得](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) API を使用すると、指定されたアカウント内の指定された言語モデルに関する情報が返されます (言語や、言語モデルに含まれるファイルなど)。 
+[取得](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) API を使用すると、指定されたアカウント内の指定された言語モデルに関する情報が返されます (言語や、言語モデルに含まれるファイルなど)。
 
 ### <a name="response"></a>Response
 
@@ -213,7 +213,7 @@ Video Indexer では、カスタム言語モデルを作成し、適応テキス
 }
 ```
 
-応答で返されたファイルの **id** を使用して、ファイルのコンテンツをダウンロードします。
+応答で返されたファイルの `id` を使用して、ファイルのコンテンツをダウンロードします。
 
 ## <a name="get-all-the-language-models"></a>すべての言語モデルを取得する
 
@@ -261,7 +261,7 @@ Video Indexer では、カスタム言語モデルを作成し、適応テキス
 
 ## <a name="delete-a-file-from-a-language-model"></a>言語モデルからファイルを削除する
 
-[削除](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) API を使用すると、指定されたアカウント内の指定された言語モデルから、指定されたファイルが削除されます。 
+[削除](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) API を使用すると、指定されたアカウント内の指定された言語モデルから、指定されたファイルが削除されます。
 
 ### <a name="response"></a>Response
 
@@ -273,7 +273,7 @@ Video Indexer では、カスタム言語モデルを作成し、適応テキス
 
 ### <a name="response"></a>Response
 
-応答では、ファイルのコンテンツとメタデータが、次のような JSON 形式で返されます。
+応答では、ファイルのコンテンツとメタデータが、次の例のような JSON 形式で返されます。
 
 ```json
 {
@@ -295,7 +295,7 @@ Video Indexer では、カスタム言語モデルを作成し、適応テキス
 
 ### <a name="response"></a>Response
 
-応答では、ファイルのコンテンツを含んだテキスト ファイルが JSON 形式でダウンロードされます。 
+応答では、ファイルのコンテンツを含んだテキスト ファイルが JSON 形式でダウンロードされます。
 
 ## <a name="next-steps"></a>次のステップ
 

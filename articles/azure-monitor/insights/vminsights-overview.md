@@ -1,23 +1,21 @@
 ---
-title: Azure Monitor for VMs (プレビュー) とは? | Microsoft Docs
+title: VM 用 Azure Monitor とは?
 description: アプリケーション コンポーネントとその依存関係を自動的に検出およびマッピングするだけでなく、AzureVM の正常性とパフォーマンスを監視する機能を持つ Azure Monitor for VMs の概要。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/14/2019
-ms.openlocfilehash: 1dcce3ab9f975fcf5910c382df3489d5d4ed425a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/11/2020
+ms.openlocfilehash: 6f65ba96f768a4b88aa13c073cc66920b8c5e049
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670667"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480489"
 ---
-# <a name="what-is-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) とは?
+# <a name="what-is-azure-monitor-for-vms"></a>VM 用 Azure Monitor とは?
 
-Azure Monitor for VMs では、ご利用の Azure 仮想マシン (VM) および仮想マシン スケール セットの大規模な監視が行われます。 これにより、ご利用の Windows VM および Linux VM のプロセスや、その他のリソースおよび外部プロセスとの依存関係を監視することにより、それらの VM のパフォーマンスおよび正常性が分析されます。 
-
-この場合は、オンプレミスまたは別のクラウド プロバイダーでホストされている VM について、パフォーマンスおよびアプリケーションの依存関係の監視もサポートされています。 次の主な機能によって、詳細な分析情報が提供されます。
+Azure Monitor for VMs では、ご利用の Azure 仮想マシン (VM) および仮想マシン スケール セットの大規模な監視が行われます。 これにより、ご利用の Windows VM および Linux VM のプロセスや、その他のリソースおよび外部プロセスとの依存関係を監視することにより、それらの VM のパフォーマンスおよび正常性が分析されます。 この場合は、オンプレミスまたは別のクラウド プロバイダーでホストされている VM について、パフォーマンスおよびアプリケーションの依存関係の監視もサポートされています。 次の主な機能によって、詳細な分析情報が提供されます。
 
 - **事前に定義された、傾向を示すパフォーマンス グラフ**:ゲスト VM オペレーティング システムから主要なパフォーマンス メトリックが表示されます。
 
@@ -27,13 +25,11 @@ Azure Monitor for VMs では、ご利用の Azure 仮想マシン (VM) および
 >最近、Microsoft では、パブリック プレビューのお客様からのフィードバックに基づいて正常性機能に対して行っている[変更を発表](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
 )しました。 実施する変更の数を考慮して、新しいお客様への正常性機能の提供を停止する予定です。 既存のお客様は、引き続き正常性機能を使用できます。 詳細については、[一般提供の FAQ](vminsights-ga-release-faq.md) に関するページを参照してください。  
 
-Azure Monitor ログとの統合により、強力な集計とフィルター処理が実現されています。さらに、時間の経過に伴うデータの傾向を分析することができます。 そうした包括的なワークロード監視は、Azure Monitor または Service Map 単独では実現できません。  
+Azure Monitor ログとの統合により、強力な集計とフィルター処理が実現し、Azure Monitor for VMs で時間の経過に伴うデータの傾向を分析できるようになります。 1 つの VM 内のこのデータをその仮想マシンから直接表示するか、または Azure Monitor を使用して複数の VM の集計ビューを提供できます。ここで、そのビューは Azure リソース コンテキストまたはワークスペース コンテキスト モードをサポートします。 詳細については、[アクセス モードの概要](../platform/design-logs-deployment.md#access-mode)に関するページを参照してください。
 
-1 つの VM 内のこのデータをその仮想マシンから直接表示するか、または Azure Monitor を使用して複数の VM の集計ビューを提供できます。ここで、そのビューは Azure リソース コンテキストまたはワークスペース コンテキスト モードをサポートします。 詳細については、[アクセス モードの概要](../platform/design-logs-deployment.md#access-mode)に関するページを参照してください。
+![Azure portal での仮想マシン分析情報のパースペクティブ](media/vminsights-overview/vminsights-azmon-directvm.png)
 
-![Azure portal での仮想マシン分析情報のパースペクティブ](./media/vminsights-overview/vminsights-azmon-directvm.png)
-
-Azure Monitor for VMs を使用すると、重要なアプリケーションのパフォーマンスおよび可用性を予測することができます。 これは、パフォーマンスのボトルネックやネットワークに関する問題を識別します。 Azure Monitor for VMs はまた、問題が他の依存関係に関連しているかどうかの把握にも役立ちます。  
+Azure Monitor for VMs を使用すると、重要なアプリケーションのパフォーマンスおよび可用性を予測することができます。 パフォーマンスのボトルネックやネットワークの問題を特定し、問題が他の依存関係に関連しているかどうかを把握するのにも役立ちます。  
 
 ## <a name="data-usage"></a>データ利用状況
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: de2b40ea0339b564b97d17601415d1071bdc6a6e
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: ec9eeb0c35d96ee777771260686178faa536e909
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367918"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877305"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -49,13 +49,9 @@ Azure AD アプリケーション プロキシを使用するには、Azure AD P
 
 推薦事項に関しては、「[アプリケーション プロキシ コネクタとアプリケーションの高可用性と負荷分散](application-proxy-high-availability-load-balancing.md)」を参照してください。
 
-### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>コネクタ サーバーとバックエンド アプリケーション サーバーの間に転送プロキシ デバイスを配置できますか。
+### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>コネクタ サーバーから Azure へのトラフィックに対する TLS 終了 (TLS/HTTPS 検査またはアクセラレーション) はサポートされていますか。
 
-いいえ、このシナリオはサポートされていません。 Azure への送信トラフィックに転送プロキシを使用するよう構成できるのは、コネクタと更新サービスのみです。 「[既存のオンプレミス プロキシ サーバーと連携する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)」を参照してください。
-
-### <a name="is-ssl-termination-sslhttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>コネクタ サーバーから Azure へのトラフィックに対する SSL 終了 (SSL/HTTPS 検査またはアクセラレーション) はサポートされていますか。
-
-アプリケーション プロキシ コネクタは、Azure に対して証明書ベースの認証を実行します。 SSL 終了 (SSL/HTTPS 検査またはアクセラレーション) は、この認証方法を中断するため、サポートされていません。 コネクタから Azure へのトラフィックは、SSL 終了を実行しているデバイスをすべてバイパスする必要があります。  
+アプリケーション プロキシ コネクタは、Azure に対して証明書ベースの認証を実行します。 TLS 終了 (TLS/HTTPS 検査またはアクセラレーション) は、この認証方法を中断するため、サポートされていません。 コネクタから Azure へのトラフィックは、TLS 終了を実行しているデバイスをすべてバイパスする必要があります。  
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>コネクタを Azure AD アプリケーション プロキシに登録するための専用アカウントを作成する必要がありますか。
 
@@ -113,7 +109,7 @@ PrincipalsAllowedToDelegateToAccount メソッドは、コネクタ サーバー
 
 「[Azure AD アプリケーション プロキシを使用したリモート デスクトップの公開](application-proxy-integrate-with-remote-desktop-services.md)」を参照してください。
 
-### <a name="can-i-use-kerberos-constrained-delegation-in-the-remote-desktop-gateway-publishing-scenario"></a>リモート デスクトップ ゲートウェイの公開シナリオで Kerberos の制約付き委任は使用できますか。
+### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>リモート デスクトップ ゲートウェイの公開シナリオで Kerberos の制約付き委任 (シングル サインオン - Windows 統合認証) は使用できますか。
 
 いいえ、このシナリオはサポートされていません。  
 
@@ -121,7 +117,7 @@ PrincipalsAllowedToDelegateToAccount メソッドは、コネクタ サーバー
 
 はい、そうです。 事前認証のシナリオでは ActiveX コントロールが必要ですが、サード パーティのブラウザーではサポートされていません。
 
-### <a name="is-the-remote-desktop-web-client-supported"></a>リモート デスクトップ Web クライアントはサポートされていますか。
+### <a name="is-the-remote-desktop-web-client-html5-supported"></a>リモート デスクトップ Web クライアント (HTML5) はサポートされていますか。
 
 いいえ、このシナリオは現在サポートされていません。 この機能に関する最新情報については、[UserVoice](https://aka.ms/aadapuservoice) フィードバック フォーラムをフォローしてください。
 
@@ -135,6 +131,10 @@ PrincipalsAllowedToDelegateToAccount メソッドは、コネクタ サーバー
 
 「[Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](application-proxy-integrate-with-sharepoint-server.md)」を参照してください。
 
+### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>SharePoint モバイル アプリ (iOS/Android) を使用して、公開された SharePoint サーバーにアクセスできますか。
+
+[SharePoint モバイルアプリ](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises)では、現在、Azure Active Directory 事前認証はサポートされていません。
+
 ## <a name="active-directory-federation-services-ad-fs-publishing"></a>Active Directory フェデレーション サービス (AD FS) の公開 
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>Azure AD アプリケーション プロキシを AD FS プロキシ (Web アプリケーション プロキシなど) として使用できますか。
@@ -147,7 +147,7 @@ PrincipalsAllowedToDelegateToAccount メソッドは、コネクタ サーバー
 
 現在、WebSocket プロトコルのサポートはパブリック プレビュー段階であり、他のアプリケーションでは機能しない可能性があります。 一部のお客様は、他のアプリケーションと WebSocket プロトコルを組み合わせることで成功した事例もあります。 このようなシナリオをテストする場合は、ぜひ結果についてご報告ください。 フィードバックについては、aadapfeedback@microsoft.comまでご連絡ください。
 
-Windows Admin Center (WAC) または Remote Desktop Web クライアントの機能 (イベント ログ、Powershell、リモート デスクトップ サービス) は現在、Azure AD アプリケーション プロキシ経由では動作しません。
+Windows Admin Center (WAC) または Remote Desktop Web クライアント (HTML5) の機能 (イベント ログ、PowerShell、リモート デスクトップ サービス) は現在、Azure AD アプリケーション プロキシ経由では動作しません。
 
 ## <a name="link-translation"></a>リンク変換
 

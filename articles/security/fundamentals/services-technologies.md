@@ -3,7 +3,7 @@ title: Azure セキュリティ サービスおよびテクノロジ | Microsoft
 description: この記事では、Azure セキュリティ サービスとテクノロジを精選した一覧を示します。
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: a5a7f60a-97e2-49b4-a8c5-7c010ff27ef8
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
-ms.author: barclayn
-ms.openlocfilehash: 741e6b9cad20645fdfc085623fd9492a12ac1dfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726557"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549202"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure で利用できるセキュリティ サービスとテクノロジ
 

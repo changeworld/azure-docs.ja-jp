@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: b3278615b90fe2ef539456c3f00eb877918aa9c2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: edd607c4d708df9fcfd3cbd5fdb71f0a7652d6c0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78248371"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330904"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
@@ -155,7 +155,7 @@ Azure AD アプリケーション プロキシを構成して実装するには�
 
 **シングル サインオンの設定**:一部の SSO 設定には、設定に時間がかかる固有の依存関係があるため、依存関係を事前に対処しておくことで、変更制御の遅延を回避します。 これには、Kerberos 制約付き委任 (KCD) を使用し、時間のかかる他のアクティビティを処理して SSO を実行する、ドメイン参加コネクタ ホストが含まれます。 たとえば、ヘッダーベース SSO が必要な場合には、PING アクセス インスタンスを設定します。
 
-**コネクタ ホストとターゲット アプリケーションの間の SSL**:セキュリティは非常に重要であるため、コネクタ ホストとターゲット アプリケーション間の TLS は常に使用する必要があります。 Web アプリケーションでフォームベース認証 (FBA) が構成されている場合は、ユーザー資格情報が効率よくクリア テキストで送信されるため特に当てはまります。
+**コネクタ ホストとターゲット アプリケーションの間の TLS**:セキュリティは非常に重要であるため、コネクタ ホストとターゲット アプリケーション間の TLS は常に使用する必要があります。 Web アプリケーションでフォームベース認証 (FBA) が構成されている場合は、ユーザー資格情報が効率よくクリア テキストで送信されるため特に当てはまります。
 
 **段階的な実装と手順ごとのテスト** 以下の指示に従い、アプリケーションの発行後に基本的な機能テストを実施して、すべてのユーザーとビジネスの要件が満たされていることを確認します。
 

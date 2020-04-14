@@ -1,16 +1,16 @@
 ---
 title: さまざまなネットワーク トポロジで Azure Dev Spaces 用のネットワークを構成する
 services: azure-dev-spaces
-ms.date: 01/10/2020
+ms.date: 03/17/2020
 ms.topic: conceptual
 description: Azure Kubernetes Services で Azure Dev Spaces を実行するためのネットワーク要件について説明します。
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、コンテナー、CNI、kubenet、SDN、ネットワーク
-ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 82d046aa36fe9caf6337aa7f58ca0db525062283
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044982"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240569"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>さまざまなネットワーク トポロジで Azure Dev Spaces 用のネットワークを構成する
 
@@ -51,7 +51,7 @@ Azure Dev Spaces では、デバッグのために、クラスター上の開発
 
 ### <a name="ingress-only-network-traffic-requirements"></a>イングレスのみのネットワーク トラフィックの要件
 
-Azure Dev Spaces は、名前空間にまたがるポッド間のルーティングを提供します。 たとえば、Azure Dev Spaces が有効になっている名前空間には、親と子の名前空間にまたがるポッド間でネットワーク トラフィックをルーティングできる親/子の関係を割り当てることができます。 この機能が動作するようにするには、ネットワーク トラフィックがルーティングされる名前空間 (親/子の名前空間など) の間のトラフィックを許可するネットワーク ポリシーを追加します。 また、イングレス コントローラーが *azds* 名前空間にデプロイされている場合、そのイングレス コントローラーは、Azure Dev Spaces によって別の名前空間内にインストルメント化されたポッドと通信することも必要です。 このイングレス コントローラーが正しく機能するには、*azds* 名前空間から、インストルメント化されたポッドが実行されている名前空間へのネットワーク トラフィックを許可する必要があります。
+Azure Dev Spaces は、名前空間にまたがるポッド間のルーティングを提供します。 たとえば、Azure Dev Spaces が有効になっている名前空間には、親と子の名前空間にまたがるポッド間でネットワーク トラフィックをルーティングできる親/子の関係を割り当てることができます。 また、Azure Dev Spaces は、独自の FQDN を使用してサービス エンドポイントを公開します。 サービスを公開するさまざまなやり方を構成する方法と、名前空間レベルのルーティングへのその影響についてには、「[さまざまなエンドポイント オプションの使用][endpoint-options]」を参照してください。
 
 ## <a name="using-azure-cni"></a>Azure CNI の使用
 
@@ -64,6 +64,23 @@ AKS クラスターでは、クラスターにアクセスする IP アドレス
 ## <a name="using-aks-private-clusters"></a>AKS プライベート クラスターの使用
 
 現時点では、[AKS プライベート クラスター][aks-private-clusters]で Azure Dev Spaces はサポートされていません。
+
+## <a name="using-different-endpoint-options"></a>さまざまなエンドポイント オプションの使用
+
+Azure Dev Spaces には、AKS で実行されているサービスのエンドポイントを公開するためのオプションがあります。 クラスターで Azure Dev Spaces を有効にするときに、クラスターのエンドポイントの種類を構成するための次のオプションがあります。
+
+* "*パブリック*" エンドポイント (既定値) では、パブリック IP アドレスを持つイングレス コントローラーがデプロイされます。 パブリック IP アドレスはクラスターの DNS に登録されるため、URL を使用してサービスにパブリック アクセスできるようになります。 この URL は `azds list-uris` を使用して表示できます。
+* "*プライベート*" エンドポイントでは、プライベート IP アドレスを持つイングレス コントローラーがデプロイされます。 プライベート IP アドレスを使用すると、クラスターのロード バランサーには、そのクラスターの仮想ネットワーク内からのみアクセスできます。 ロード バランサーのプライベート IP アドレスはクラスターの DNS に登録されるため、クラスターの仮想ネットワーク内のサービスに URL を使用してアクセスできます。 この URL は `azds list-uris` を使用して表示できます。
+* エンドポイント オプションに *none* を設定すると、イングレス コントローラーはデプロイされません。 イングレス コントローラーがデプロイされていない場合、[Azure Dev Spaces のルーティング機能][dev-spaces-routing]は機能しません。 必要に応じて、[traefik][traefik-ingress] または [NGINX][nginx-ingress] を使用して独自のイングレス コントローラー ソリューションを実装できます。これにより、ルーティング機能を再び機能させることができます。
+
+エンドポイント オプションを構成するには、クラスターで Azure Dev Spaces を有効にするときに *-e* または *--endpoint* を使用します。 次に例を示します。
+
+> [!NOTE]
+> エンドポイント オプションを使用するには、Azure CLI バージョン 2.2.0 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+
+```azurecli
+az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
+```
 
 ## <a name="client-requirements"></a>クライアントの要件
 
@@ -86,7 +103,10 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 [aks-network-policies]: ../aks/use-network-policies.md
 [aks-private-clusters]: ../aks/private-clusters.md
 [auth-range-section]: #using-api-server-authorized-ip-ranges
+[azure-cli-install]: /cli/azure/install-azure-cli
 [dev-spaces-ip-auth-range-regions]: https://github.com/Azure/dev-spaces/tree/master/public-ips
+[dev-spaces-routing]: how-dev-spaces-works-routing.md
+[endpoint-options]: #using-different-endpoint-options
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md
 [team-quickstart]: quickstart-team-development.md

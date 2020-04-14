@@ -12,12 +12,12 @@ metadata:
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 10/03/2019
-  ms.openlocfilehash: 498c507c6a72020e30f1e96a23a58017ca14280a
-  ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+  ms.openlocfilehash: 16855697c61bb4b919d4f7dcaa752d3a17f6dbef
+  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/03/2020
-  ms.locfileid: "80632484"
+  ms.lasthandoff: 04/09/2020
+  ms.locfileid: "80998830"
 landingContent:
 - title: Azure Synapse Analytics について
   linkLists:
@@ -32,7 +32,7 @@ landingContent:
     - text: ヒントとベスト プラクティス
       url: cheat-sheet.md
     - text: 参照アーキテクチャ
-      url: /azure/architecture/reference-architectures/data/enterprise-bi-synapse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+      url: https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/data/enterprise-bi-synapse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
 - title: 作業の開始
   linkLists:
   - linkListType: deploy
@@ -41,6 +41,10 @@ landingContent:
       url: create-data-warehouse-portal.md
 - title: データの読み込み
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: COPY ステートメントを使用した高速なデータ インジェスト
+      url: quickstart-bulk-load-copy-tsql.md
   - linkListType: concept
     links:
     - text: データの読み込み戦略を設計する

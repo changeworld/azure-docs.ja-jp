@@ -113,6 +113,8 @@
       items:
         - name: テキスト読み上げの概要
           href: text-to-speech.md
+        - name: テキスト読み上げの基本
+          href: text-to-speech-basics.md
     - name: クイック スタート
       items:
         - name: スピーカーに音声を合成する
@@ -212,6 +214,8 @@
       items:
         - name: 音声翻訳とは何か
           href: speech-translation.md
+        - name: 音声翻訳の基本
+          href: speech-translation-basics.md
     - name: クイック スタート
       items:
         - name: 音声テキスト変換の翻訳
@@ -545,6 +549,8 @@
       href: sovereign-clouds.md
     - name: 料金と制限
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 暗号化

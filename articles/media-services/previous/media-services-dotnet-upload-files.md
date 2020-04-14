@@ -1,6 +1,6 @@
 ---
 title: .NET を使用した Media Services アカウントへのファイルのアップロード | Microsoft Docs
-description: 資産を作成し、アップロードすることによって、Media Services にメディア コンテンツを取得する方法について説明します。
+description: アセットを作成し、アップロードすることによって、Media Services にメディア コンテンツを取得する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 03b9995eab503ac1fcd4615882419dde31d4f8bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64869481"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>.NET を使用した Media Services アカウントへのファイルのアップロード 
@@ -28,7 +28,7 @@ ms.locfileid: "64869481"
 
 Media Services で、デジタル ファイルをアセットにアップロードし (取り込み) ます。 **Asset** エンティティには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (各ファイルのメタデータを含む) を追加できます。ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 
-資産内のこれらのファイルを **資産ファイル**といいます。 **AssetFile** インスタンスと実際のメディア ファイルは、別々の 2 つのオブジェクトです。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
+アセット内のこれらのファイルを **アセットファイル**といいます。 **AssetFile** インスタンスと実際のメディア ファイルは、別々の 2 つのオブジェクトです。 AssetFile インスタンスには、メディア ファイルに関するメタデータが含まれており、メディア ファイルには実際のメディア コンテンツが含まれています。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -167,7 +167,7 @@ Media Services で、デジタル ファイルをアセットにアップロー�
 * NumberOfConcurrentTransfers を既定値の 2 から、たとえば 5 のようなより大きな値に増やしてください。 このプロパティの設定は、 **CloudMediaContext**のすべてのインスタンスに影響を与えます。 
 * ParallelTransferThreadCount は、既定値の 10 のままにしてください。
 
-## <a id="ingest_in_bulk"></a>Media Services .NET SDK を使用したアセットの一括取り込み
+## <a name="ingesting-assets-in-bulk-using-media-services-net-sdk"></a><a id="ingest_in_bulk"></a>Media Services .NET SDK を使用したアセットの一括取り込み
 サイズの大きい資産ファイルのアップロードは、資産の作成時に、ボトルネックになることがあります。 資産を一括して取り込む "一括取り込み" の場合、アップロード プロセスから資産の作成を切り離すことが必要です。 一括取り込みを行うには、資産とその関連ファイルを記述するマニフェスト (IngestManifest) を作成します。 その後で、お好みのアップロード方法で、マニフェストの BLOB コンテナーに、関連ファイルをアップロードします。 マニフェストに関連付けられている BLOB コンテナーは、Microsoft Azure Media Services によって監視されます。 ファイルが BLOB コンテナーにアップロードされると、Microsoft Azure Media Services は、マニフェスト (IngestManifestAsset) の資産の構成に基づいてア資産の作成を完了させます。
 
 新しい IngestManifest を作成するには、CloudMediaContext の IngestManifests コレクションで公開されている Create メソッドを呼び出します。 このメソッドでは、指定したマニフェスト名で、新しい IngestManifest が作成されます。
@@ -299,7 +299,7 @@ IngestManifestAsset は、資産を、一括取り込みのための一括 Inges
     var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、アップロードした資産をエンコードできます。 詳細については、 [資産のエンコード](media-services-portal-encode.md)に関するページをご覧ください。
 

@@ -7,15 +7,15 @@ ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 2694a5f250b746748a1b42ac4d211aa28ef1ebad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f0d8f73b47b1110e8e05365013bbf07fd94eb6ca
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613692"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655074"
 ---
 # <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services マネージド ドメインで DNS を管理する
 
@@ -49,8 +49,8 @@ Azure AD DS に DNS レコードを作成して変更するには、DNS サー�
 
 1. 管理 VM にサインインします。 Azure portal を使用した接続方法については、「[Windows Server VM に接続する][connect-windows-server-vm]」を参照してください。
 1. VM にサインインしたときに**サーバー マネージャー**が既定で開かない場合は、 **[スタート]** メニューを選択し、 **[サーバー マネージャー]** を選択します。
-1. *[サーバー マネージャー]* ウィンドウの **[ダッシュボード]** ウィンドウで **[役割と機能の追加]** を選択します。
-1. **[役割と機能の追加]** ウィザードの *[開始する前に]* ページで **[次へ]** を選択します。
+1. **[サーバー マネージャー]** ウィンドウの *[ダッシュボード]* ウィンドウで **[役割と機能の追加]** を選択します。
+1. *[役割と機能の追加]* ウィザードの **[開始する前に]** ページで **[次へ]** を選択します。
 1. *[インストールの種類]* で、 **[役割ベースまたは機能ベースのインストール]** オプションが選択された状態にして **[次へ]** を選択します。
 1. **[サーバーの選択]** ページで、サーバー プールから現在の VM (例: *myvm.aaddscontoso.com*) を選択し、 **[次へ]** を選択します。
 1. **[サーバーの役割]** ページで、 **[次へ]** をクリックします。

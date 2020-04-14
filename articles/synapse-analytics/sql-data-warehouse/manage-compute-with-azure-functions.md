@@ -11,18 +11,18 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e0317b3a3e7ab13a78a5d1fe3672d664030436ab
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346648"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631957"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL プールで Azure Functions を使用してコンピューティング リソースを管理します
 
 このチュートリアルでは、Azure Synapse Analytics で Azure Functions を使用し、SQL プールのコンピューティング リソースを管理します。
 
-Azure Function App を SQL プールと組み合わせて使用するためには、ご利用の SQL プール インスタンスと同じサブスクリプションに、共同作成者のアクセス権を持った[サービス プリンシパル アカウント](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)を作成する必要があります。 
+Azure Function App を SQL プールと組み合わせて使用するためには、ご利用の SQL プール インスタンスと同じサブスクリプションに、共同作成者のアクセス権を持った[サービス プリンシパル アカウント](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を作成する必要があります。
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用してタイマーベースのスケーリングを展開する
 
@@ -32,7 +32,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 - SQL プール インスタンスが存在する論理サーバーの名前
 - SQL プール インスタンスの名前
 - Azure Active Directory のテナント ID (ディレクトリ ID)
-- サブスクリプション ID 
+- サブスクリプション ID
 - サービス プリンシパルのアプリケーション ID
 - サービス プリンシパルのシークレット キー
 
@@ -46,7 +46,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 ## <a name="change-the-compute-level"></a>コンピューティング レベルを変更する
 
-1. ご利用の Function App サービスに移動します。 テンプレートを既定値のままデプロイした場合、このサービスの名前は *DWOperations* になります。 Function App を開くと、Function App サービスに 5 つの関数がデプロイされていることがわかります。 
+1. ご利用の Function App サービスに移動します。 テンプレートを既定値のままデプロイした場合、このサービスの名前は *DWOperations* になります。 Function App を開くと、Function App サービスに 5 つの関数がデプロイされていることがわかります。
 
    ![テンプレートでデプロイされる関数](./media/manage-compute-with-azure-functions/five-functions.png)
 
@@ -54,23 +54,23 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
    ![関数の統合を選択](./media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. この時点で表示される値は、 *%ScaleDownTime%* と *%ScaleUpTime%* のどちらかです。 これらの値は、スケジュールが [[アプリケーション設定]](../../azure-functions/functions-how-to-use-azure-function-app-settings.md) に定義された値に基づいていることを示します。 差し当たり、この値は無視してかまいません。以降の手順に基づき、必要な時刻に合わせてスケジュールを変更してください。
+3. この時点で表示される値は、 *%ScaleDownTime%* と *%ScaleUpTime%* のどちらかです。 これらの値は、スケジュールが [[アプリケーション設定]](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) に定義された値に基づいていることを示します。 差し当たり、この値は無視してかまいません。以降の手順に基づき、必要な時刻に合わせてスケジュールを変更してください。
 
-4. SQL Data Warehouse のスケールアップ頻度を表す時刻 (CRON 式) をスケジュール領域に追加します。 
+4. SQL Data Warehouse のスケールアップ頻度を表す時刻 (CRON 式) をスケジュール領域に追加します。
 
    ![関数のスケジュールを変更](./media/manage-compute-with-azure-functions/change-schedule.png)
 
-   `schedule` の値は、次の 6 個のフィールドが含まれる [CRON 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)です。 
+   `schedule` の値は、次の 6 個のフィールドが含まれる [CRON 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)です。
+
    ```json
    {second} {minute} {hour} {day} {month} {day-of-week}
    ```
 
-   たとえば、「*0 30 9 * * 1-5*」と入力した場合、毎平日の午前 9 時 30 分に実行されます。 詳細については、Azure Functions の[スケジュールの例](../../azure-functions/functions-bindings-timer.md#example)を参照してください。
-
+   たとえば、「*0 30 9 * * 1-5*」と入力した場合、毎平日の午前 9 時 30 分に実行されます。 詳細については、Azure Functions の[スケジュールの例](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example)を参照してください。
 
 ## <a name="change-the-time-of-the-scale-operation"></a>スケール操作の時間を変更する
 
-1. ご利用の Function App サービスに移動します。 テンプレートを既定値のままデプロイした場合、このサービスの名前は *DWOperations* になります。 Function App を開くと、Function App サービスに 5 つの関数がデプロイされていることがわかります。 
+1. ご利用の Function App サービスに移動します。 テンプレートを既定値のままデプロイした場合、このサービスの名前は *DWOperations* になります。 Function App を開くと、Function App サービスに 5 つの関数がデプロイされていることがわかります。
 
 2. 変更の対象がスケールアップのコンピューティング値であるかスケールダウンのコンピューティング値であるかに応じて、 *[DWScaleDownTrigger]* または *[DWScaleUpTrigger]* を選択します。 関数を選択すると、ウィンドウに *index.js* ファイルが表示されます。
 
@@ -78,7 +78,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
 3. *ServiceLevelObjective* の値を目的のレベルに変更し、保存ボタンをクリックします。 この値は、[統合] セクションで定義されたスケジュールに基づいてデータ ウェアハウス インスタンスをスケーリングする際の目標となるコンピューティング レベルです。
 
-## <a name="use-pause-or-resume-instead-of-scale"></a>スケールではなく一時停止または再開を使用する 
+## <a name="use-pause-or-resume-instead-of-scale"></a>スケールではなく一時停止または再開を使用する
 
 現在、既定で有効になっている関数は *DWScaleDownTrigger* と *DWScaleUpTrigger* です。 それらの代わりに一時停止と再開の機能を使用する場合は、*DWPauseTrigger* または *DWResumeTrigger* を有効にしてください。
 
@@ -86,15 +86,12 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 
    ![[関数] ウィンドウ](./media/manage-compute-with-azure-functions/functions-pane.png)
 
-
-
 2. 有効にするトリガーに対応するスライド式のトグル ボタンをクリックします。
 
 3. それぞれのトリガーの *[統合]* タブに移動して、そのスケジュールを変更します。
 
    > [!NOTE]
    > スケーリング トリガーと一時停止/再開トリガーの機能上の違いは、キューに送信されるメッセージです。 詳細については、「[新しいトリガー関数を追加する](manage-compute-with-azure-functions.md#add-a-new-trigger-function)」を参照してください。
-
 
 ## <a name="add-a-new-trigger-function"></a>新しいトリガー関数を追加する
 
@@ -136,12 +133,11 @@ Azure Function App を SQL プールと組み合わせて使用するために�
    }
    ```
 
-
 ## <a name="complex-scheduling"></a>複雑なスケジュール
 
 このセクションでは、一時停止、再開、スケーリングの各機能に対して、より複雑なスケジュールを設定する方法を簡単に紹介します。
 
-### <a name="example-1"></a>例 1:
+### <a name="example-1"></a>例 1
 
 毎日午前 8 時に DW600 にスケールアップし、午後 8 時に DW200 にスケールダウンします。
 
@@ -150,7 +146,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
 | Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
 
-### <a name="example-2"></a>例 2: 
+### <a name="example-2"></a>例 2
 
 毎日午前 8 時に DW1000 にスケールアップし、午後 4 時に DW600 にスケールダウンします。さらに、午後 10 時に DW200 にスケールダウンします。
 
@@ -160,7 +156,7 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 | Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
 | Function3 | 0 0 22 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
 
-### <a name="example-3"></a>例 3: 
+### <a name="example-3"></a>例 3
 
 平日の午前 8 時に DW1000 にスケールアップし、午後 4 時に 1 回 DW600 にスケールダウンします。 金曜日の午後 11 時に一時停止し、月曜朝の午前 7 時に再開します。
 
@@ -171,11 +167,8 @@ Azure Function App を SQL プールと組み合わせて使用するために�
 | Function3 | 0 0 23 * * 5   | `var operation = {"operationType": "PauseDw"}` |
 | Function4 | 0 0 7 * * 0    | `var operation = {"operationType": "ResumeDw"}` |
 
-
-
 ## <a name="next-steps"></a>次のステップ
 
-Azure Functions を[タイマーでトリガーする方法](../../azure-functions/functions-create-scheduled-function.md)について確認します。
+Azure Functions を[タイマーでトリガーする方法](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)について確認します。
 
 SQL プールの[サンプル リポジトリ](https://github.com/Microsoft/sql-data-warehouse-samples)を確認します。
-

@@ -1,7 +1,7 @@
 ---
-title: Azure Portal で Video Indexer アカウントを作成する
+title: Azure に接続された Video Indexer アカウントを作成する
 titleSuffix: Azure Media Services
-description: この記事では、Azure Portal で Video Indexer アカウントを作成する方法について説明します。
+description: Azure に接続された Video Indexer アカウントを作成する方法について説明します。
 services: media-services
 author: Juliako
 manager: femila
@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: 1f40f16ddbe5231dd754ad97b54e414c6ce9b9e7
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 7ec8004fa0a54265962e79320c02287b2fcf814a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78328831"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499921"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを作成する
 
-Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、Azure サブスクリプションと Azure Media Services アカウントに接続する Video Indexer アカウントを作成します。 Media アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
+Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer を使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、Azure サブスクリプションと Azure Media Services アカウントに接続する Video Indexer アカウントを作成します。 Media アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。
 
 この記事では、Azure サブスクリプションと Azure Media Services アカウントにリンクされた Video Indexer アカウントを作成する方法について説明します。 このトピックでは、自動 (既定) フローを使用して Azure に接続する手順について説明します。 また、手動で Azure に接続する方法 (上級) についても説明します。
 
@@ -29,33 +29,35 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
     Azure サブスクリプションがまだない場合は、[Azure 無料試用版](https://azure.microsoft.com/free/)にサインアップしてください。
 
-* Azure Active Directory (AD) ドメイン。
+* Azure Active Directory (Azure AD) ドメイン。
 
-    Azure AD ドメインがない場合は、Azure サブスクリプションを使用して作成してください。 詳細については、「[Azure Active Directory のカスタム ドメイン名の管理](../../active-directory/users-groups-roles/domains-manage.md)」を参照してください。
+    Azure AD ドメインがない場合は、Azure サブスクリプションを使用して作成してください。 詳細については、[Azure AD のカスタム ドメイン名の管理](../../active-directory/users-groups-roles/domains-manage.md)に関する記事を参照してください。
 
 * **アプリケーション管理者**のロールを持つ、Azure AD ドメイン内のユーザー。 このメンバーは、Video Indexer アカウントを Azure に接続するときに使用します。
 
-    このユーザーは、outlook.com、live.com、hotmail.com などの個人用アカウントではなく、職場または学校アカウントを持つ Azure AD ユーザーである必要があります。
+    このユーザーは、職場または学校アカウントを持つ Azure AD ユーザーである必要があります。 個人アカウント (outlook.com、live.com、hotmail.com など) は使用しないでください。
 
     ![すべての AAD ユーザー](./media/create-account/all-aad-users.png)
 
 ### <a name="additional-prerequisites-for-automatic-flow"></a>自動フローのその他の前提条件
 
-Azure AD ドメインのユーザーとメンバー。 このメンバーは、Video Indexer アカウントを Azure に接続するときに使用します。
+* Azure AD ドメインのユーザーとメンバー。
 
-このユーザーは、**所有者**ロール、または**共同作成者**ロールと**ユーザー アクセス管理者**ロールの両方が割り当てられた Azure サブスクリプションのメンバーである必要があります。 1 人のユーザーが 2 つのロールを持つ場合は 2 回追加できます。 共同作成者ロールで 1 回、ユーザー アクセス管理者ロールで 1 回です。
+    このメンバーは、Video Indexer アカウントを Azure に接続するときに使用します。
 
-![アクセスの制御](./media/create-account/access-control-iam.png)
+    このユーザーは、**所有者**ロール、または**共同作成者**ロールと**ユーザー アクセス管理者**ロールの両方が割り当てられた Azure サブスクリプションのメンバーである必要があります。 1 人のユーザーが 2 つのロールを持つ場合は 2 回追加できます。 共同作成者ロールで 1 回、ユーザー アクセス管理者ロールで 1 回です。
+
+    ![アクセスの制御](./media/create-account/access-control-iam.png)
 
 ### <a name="additional-prerequisites-for-manual-flow"></a>手動フローのその他の前提条件
 
-Azure portal を使用して EventGrid リソース プロバイダーを登録します。
+* Azure portal を使用して EventGrid リソース プロバイダーを登録します。
 
-[Azure portal](https://portal.azure.com/) で **[サブスクリプション]** 、[subscription]、 **[ResourceProviders]** に移動します。 
+    [Azure portal](https://portal.azure.com/) で **[サブスクリプション]** 、[subscription]、 **[ResourceProviders]** に移動します。
 
-**Microsoft.Media** と **Microsoft.EventGrid** を探します。 "登録済み" 状態でない場合は、 **[登録]** をクリックします。 登録には数分かかります。
+    **Microsoft.Media** と **Microsoft.EventGrid** を探します。 "登録済み" 状態でない場合は、 **[登録]** をクリックします。 登録には数分かかります。
 
-![EventGrid](./media/create-account/event-grid.png)
+    ![EventGrid](./media/create-account/event-grid.png)
 
 ## <a name="connect-to-azure"></a>Azure に接続する
 
@@ -64,9 +66,9 @@ Azure portal を使用して EventGrid リソース プロバイダーを登録�
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web サイトに移動してサインインします。
 
-2. **[アカウントの新規作成]** ボタンをクリックします。
+2. **[アカウントの新規作成]** ボタンを選択します。
 
-    ![Azure への接続](./media/create-account/connect-to-azure.png)
+    ![新規 Video Indexer アカウントを作成する](./media/create-account/connect-to-azure.png)
 
 3. サブスクリプション一覧が表示されたら、使用するサブスクリプションを選択します。
 
@@ -80,15 +82,15 @@ Azure portal を使用して EventGrid リソース プロバイダーを登録�
         新しい Azure Storage アカウントを含め、新しいアカウントが Azure のサブスクリプションに作成されます。 新しい Media Services アカウントには、1 つのストリーミング エンドポイントと 10 個の S3 予約ユニットという既定の初期構成があります。
     * 既存の Media Services アカウントを使用するには、 **[既存のリソースの使用]** を選択します。 アカウント一覧からアカウントを選択します。
 
-        Media Services アカウントのリージョンは Video Indexer アカウントと同じである必要があります。 
+        Media Services アカウントのリージョンは Video Indexer アカウントと同じである必要があります。
 
         > [!NOTE]
         > インデックス作成時間を最小限に抑え、スループットを低くするために、Media Services アカウントの[予約ユニット](../previous/media-services-scale-media-processing-overview.md )の種類と数を **10 個の S3 予約ユニット**に調整することを強くお勧めします。 [ポータルを使用して予約ユニットを変更する方法](../previous/media-services-portal-scale-media-processing.md)に関する記事を参照してください。
 
-    * 接続を手動で構成するには、 **[手動構成に切り替える]** リンクをクリックします。
+    * 接続を手動で構成するには、 **[手動構成に切り替える]** リンクを選択します。
 
         詳細については、後述する「[Azure に手動で接続する](#connect-to-azure-manually-advanced-option) (上級者向けオプション)」を参照してください。
-6. 完了したら、 **[接続]** を選択します。 この操作が完了するまでに数分かかる場合があります。 
+6. 完了したら、 **[接続]** を選択します。 この操作が完了するまでに数分かかる場合があります。
 
     Azure への接続が完了すると、新しい Video Indexer アカウントがアカウント一覧に表示されます。
 
@@ -101,7 +103,7 @@ Azure portal を使用して EventGrid リソース プロバイダーを登録�
 Azure への接続に失敗する場合は、手動で接続して問題の解決を試みることができます。
 
 > [!NOTE]
-> Video Indexer アカウント、それと接続している Media Services アカウント、同じ Media Services アカウントに接続されている Azure ストレージ アカウントの 3 つのアカウントは、同じリージョン内に置くことを強くお勧めします。
+> Video Indexer アカウント、それと接続している Media Services アカウント、同じ Media Services アカウントに接続されている Azure Storage アカウントの 3 つのアカウントは、同じリージョン内に置くことを強くお勧めします。
 
 ### <a name="create-and-configure-a-media-services-account"></a>Media Services アカウントの作成と構成
 
@@ -115,13 +117,13 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
     > Media Services リソースとアカウント名を書き留めてください。 次のセクションの手順で必要になります。
 
 2. 作成した Media Services アカウントの[予約ユニット](../previous/media-services-scale-media-processing-overview.md )の種類と数を **10 個の S3 予約ユニット**に調整します。 [ポータルを使用して予約ユニットを変更する方法](../previous/media-services-portal-scale-media-processing.md)に関する記事を参照してください。
-3. Video Indexer Web アプリケーションでビデオを再生するには、新しい Media Services アカウントの既定の**ストリーミング エンドポイント**を起動しておく必要があります。
+3. Video Indexer Web アプリでビデオを再生するには、新しい Media Services アカウントの既定の**ストリーミング エンドポイント**を起動しておく必要があります。
 
-    新しい Media Services アカウントで **[ストリーミング エンドポイント]** をクリックします。 ストリーミング エンドポイントを選択し、[開始] を押します。
+    新しい Media Services アカウントで **[ストリーミング エンドポイント]** を選択します。 次に、ストリーミング エンドポイントを選択し、[開始] を押します。
 
     ![新しい AMS アカウント](./media/create-account/create-ams-account2.png)
 
-4. Video Indexer が Media Services API を使用して認証するには、AD アプリケーションを作成する必要があります。 次に、「[Azure ポータルで Azure AD 認証を開始する](../previous/media-services-portal-get-started-with-aad.md)」で説明されている Azure AD 認証プロセスについて、手順を追って説明します。
+4. Video Indexer が Media Services API を使用して認証するには、AD アプリを作成する必要があります。 次に、「[Azure ポータルで Azure AD 認証を開始する](../previous/media-services-portal-get-started-with-aad.md)」で説明されている Azure AD 認証プロセスについて、手順を追って説明します。
 
     1. 新しい Media Services アカウントで **[API アクセス]** をクリックします。
     2. [サービス プリンシパルの認証方法](../previous/media-services-portal-get-started-with-aad.md)を選択します。
@@ -142,9 +144,9 @@ Azure への接続に失敗する場合は、手動で接続して問題の解�
 
 |設定|説明|
 |---|---|
-|Video Indexer アカウントのリージョン|Video Indexer アカウントのリージョンの名前。 パフォーマンスの向上とコストの削減を実現するために、Azure Media Services リソースと Azure ストレージ アカウントがあるリージョンの名前を指定するよう強くお勧めします。 |
-|Azure Active Directory (AAD) テナント|Azure AD テナントの名前 (例: "contoso.onmicrosoft.com")。 テナント情報は Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。 **[ドメイン]** の右側に名前が表示されます。|
-|サブスクリプション ID|この接続を作成先にする Azure サブスクリプション。 サブスクリプション ID は Azure portal から取得できます。 左側のウィンドウで **[すべてのサービス]** をクリックし、「サブスクリプション」と検索します。 **[サブスクリプション]** を選択して、サブスクリプションの一覧から目的の ID を選択します。|
+|Video Indexer アカウントのリージョン|Video Indexer アカウントのリージョンの名前。 パフォーマンスの向上とコストの削減を実現するために、Azure Media Services リソースと Azure Storage アカウントがあるリージョンの名前を指定するよう強くお勧めします。 |
+|Azure AD テナント|Azure AD テナントの名前 (例: "contoso.onmicrosoft.com")。 テナント情報は Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。 **[ドメイン]** の右側に名前が表示されます。|
+|サブスクリプション ID|この接続を作成先にする Azure サブスクリプション。 サブスクリプション ID は Azure portal から取得できます。 左側のウィンドウで **[すべてのサービス]** を選択し、「サブスクリプション」と検索します。 **[サブスクリプション]** を選択して、サブスクリプションの一覧から目的の ID を選択します。|
 |Azure Media Services のリソース グループ名|Media Services アカウントを作成したリソース グループの名前。|
 |Media Services リソース名|前のセクションで作成した Azure Media Services アカウントの名前。|
 |アプリケーション ID|前のセクションで作成した (指定した Media Services アカウントのアクセス許可を持つ) Azure AD アプリケーション ID。|
@@ -167,7 +169,7 @@ Azure Media Services に関する次の考慮事項が適用されます。
 
     ![Media Services ストリーミング エンドポイント](./media/create-account/ams-streaming-endpoint.png)
 
-    ストリーミング エンドポイントの起動には時間がかかります。 そのため、アカウントを Azure に接続してから Video Indexer Web アプリケーションでビデオをストリーミングして視聴できるようになるまでに数分かかることがあります。
+    ストリーミング エンドポイントの起動には時間がかかります。 そのため、アカウントを Azure に接続してから Video Indexer Web アプリでビデオをストリーミングして視聴できるようになるまでに数分かかることがあります。
 
 * 既存の Media Services アカウントに接続した場合、Video Indexer で既定のストリーミング エンドポイントの構成は変更されません。 実行中の**ストリーミング エンドポイント**がない場合、この Media Services アカウントから、または Video Indexer でビデオを視聴できません。
 
@@ -176,5 +178,3 @@ Azure Media Services に関する次の考慮事項が適用されます。
 試用アカウント、Azure に接続されている Video Indexer アカウント、またその両方とプログラムでやり取りするには、[API の使用](video-indexer-use-apis.md)に関するページの手順を参照してください。
 
 Azure への接続時に使用したものと同じ Azure AD ユーザーを使用する必要があります。
-
-

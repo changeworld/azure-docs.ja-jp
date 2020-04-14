@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functions 拡張機能で人による�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0c16ef092c30a94cd04b55c91d3643ac29b82be0
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562107"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335757"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions での人による操作 - 電話確認サンプル
 
@@ -36,7 +36,7 @@ ms.locfileid: "77562107"
 この記事では、サンプル アプリで使われている次の関数について説明します。
 
 * `E4_SmsPhoneVerification`:タイムアウトや再試行の管理など、電話確認処理を実行する[オーケストレーター関数](durable-functions-bindings.md#orchestration-trigger)。
-* `E4_SendSmsChallenge`:テキスト メッセージを介してコードを送信する[オーケストレーター関数](durable-functions-bindings.md#activity-trigger)。
+* `E4_SendSmsChallenge`:テキスト メッセージを介してコードを送信する[アクティビティ関数](durable-functions-bindings.md#activity-trigger)。
 
 ### <a name="e4_smsphoneverification-orchestrator-function"></a>E4_SmsPhoneVerification オーケストレーター関数
 
@@ -83,7 +83,7 @@ ms.locfileid: "77562107"
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=72-89)]
 
 > [!NOTE]
-> サンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget パッケージをインストールする必要があります。
+> サンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet パッケージをインストールする必要があります。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

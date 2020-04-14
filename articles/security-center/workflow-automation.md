@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center のワークフローの自動化 (プレビュー) | Microsoft Docs
+title: Azure Security Center のワークフローの自動化 | Microsoft Docs
 description: Azure Security Center でワークフローを作成して自動化する方法について説明します。
 services: security-center
 author: memildin
@@ -8,21 +8,21 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 57351ccf0c6155a1a3532ec9e6481a724e3219aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d947cf41e13abdea9a2fd29f8a740d0c101dc6f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462448"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397911"
 ---
-# <a name="workflow-automation-preview"></a>ワークフローの自動化 (プレビュー)
+# <a name="workflow-automation"></a>ワークフローの自動化
 
 すべてのセキュリティ プログラムには、インシデント対応のための複数のワークフローが含まれています。 これらのプロセスには、直接の利害関係者への通知、変更管理プロセスの開始、および特定の修復手順の適用が含まれます。 これらのプロシージャの手順をできるだけ多く自動化することがセキュリティの専門家によって推奨されています。 自動化によってオーバーヘッドが削減されます。 また、迅速かつ一貫した方法で、定義済みの要件に従ってプロセスの手順が実行されるようにすることで、セキュリティを向上させることもできます。
 
-この記事では、Azure Security Center のワークフローの自動化機能 (プレビュー) について説明します。 このプレビュー機能は、セキュリティ アラートと推奨事項が出されたときにロジック アプリをトリガーできます。 たとえば、アラートが発生したときに Security Center から特定のユーザーに電子メールが送信されるようにすることができます。 また、[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) を使用してロジック アプリを作成する方法についても説明します。
+この記事では、Azure Security Center のワークフローの自動化機能について説明します。 この機能では、セキュリティ アラートと推奨事項が出されたときにロジック アプリをトリガーできます。 たとえば、アラートが発生したときに Security Center から特定のユーザーに電子メールが送信されるようにすることができます。 また、[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) を使用してロジック アプリを作成する方法についても説明します。
 
 > [!NOTE]
-> サイドバーでプレイブック (プレビュー) ビューを以前に使用していた場合は、新しいワークフローの自動化 (プレビュー) のページに、拡張された機能と共に同じ機能が表示されます。
+> サイドバーでプレイブック (プレビュー) ビューを以前に使用していた場合は、新しいワークフローの自動化のページに、拡張された機能と共に同じ機能が表示されます。
 
 
 ## <a name="requirements"></a>必要条件
@@ -38,7 +38,7 @@ ms.locfileid: "75462448"
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>ロジック アプリを作成し、自動的に実行するタイミングを定義する 
 
-1. Security Center のサイドバーで、 **[Workflow automation (Preview)]\(ワークフローの自動化 (プレビュー)\)** を選択します。
+1. Security Center のサイドバーで、 **[ワークフローの自動化]** を選択します。
 
     [![ワークフローの自動化の一覧](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
 
@@ -64,8 +64,11 @@ ms.locfileid: "75462448"
 
     ロジック アプリ デザイナーでは、Security Center コネクタからの次のトリガーがサポートされています。
 
-    * **When an Azure Security Center Recommendation is created or triggered (プレビュー)** (Azure Security Center の推奨事項が作成またはトリガーされたとき)
-    * **When an Azure Security Center Alert is created or triggered (プレビュー)** (Azure Security Center のアラートが作成またはトリガーされたとき)
+    * **When an Azure Security Center Recommendation is created or triggered** (Azure Security Center の推奨事項が作成またはトリガーされたとき)
+    * **When an Azure Security Center Alert is created or triggered** (Azure Security Center のアラートが作成またはトリガーされたとき) 
+    
+    > [!TIP]
+    > トリガーをカスタマイズして、対象となる重大度レベルのアラートのみが関連付けられるようにすることができます。
     
     > [!NOTE]
     > レガシー トリガーの [When a response to an Azure Security Center alert is triggered]\(Azure Security Center アラートへの応答がトリガーされるとき\) を使用している場合、ロジック アプリはワークフローの自動化機能によって起動されません。 代わりに、前述のいずれかのトリガーを使用してください。 
@@ -81,9 +84,9 @@ ms.locfileid: "75462448"
 
 ## <a name="manually-trigger-a-logic-app"></a>ロジック アプリを手動でトリガーする
 
-セキュリティの推奨事項を表示しているときに、ロジック アプリを手動で実行することもできます。
+セキュリティ アラートまたは[クイック修復のレコメンデーション](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#quick-fix-remediation)を提供する任意の推奨事項を表示しているときに、ロジック アプリを手動で実行することもできます。
 
-ロジック アプリを手動で実行するには、推奨事項を開き、[Trigger Logic App (Preview)]\(ロジック アプリのトリガー (プレビュー)\) をクリックします。
+ロジック アプリを手動で実行するには、アラートまたはクイック修復のレコメンデーションをサポートする推奨事項を開き、 **[Trigger Logic App]\(ロジック アプリのトリガー\)** をクリックします。
 
 [![ロジック アプリを手動でトリガーする](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
@@ -93,10 +96,11 @@ ms.locfileid: "75462448"
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、ロジック アプリの作成、Security Center での手動実行、およびそれらの実行の自動化について学習しました。 
+この記事では、ロジック アプリの作成、Security Center での実行の自動化、および手動実行について学習しました。 
 
-その他の関連資料については、次の記事を参照してください。 
+その他の関連資料については、以下を参照してください。 
 
+- [ワークフローの自動化を使用してセキュリティ対応を自動化する方法に関する Microsoft Learn モジュール](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Azure Security Center でのセキュリティに関する推奨事項](security-center-recommendations.md)
 - [Security alerts in Azure Security Center](security-center-alerts-overview.md)
 - [Azure Logic Apps の概要](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)

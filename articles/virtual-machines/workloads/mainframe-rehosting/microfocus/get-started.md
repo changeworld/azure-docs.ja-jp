@@ -3,15 +3,15 @@ title: Azure における Micro Focus 開発/テスト環境 | Microsoft Docs
 description: Azure 仮想マシン (VM) 上で Micro Focus ソリューションを使用して、IBM z/OS メインフレーム ワークロードをリホストします。
 author: njray
 ms.author: sread
-ms.date: 04/02/2019
+ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: d83b4c89d0f37e2217974d6d1ed32ac73d8fa4df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 62d3f7cc75a887605cdd3c19ac2e45990e541d5e
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60498901"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410988"
 ---
 # <a name="micro-focus-devtest-environments-on-azure"></a>Azure における Micro Focus 開発/テスト環境
 
@@ -21,7 +21,10 @@ Micro Focus は、実践的なメインフレーム移行とリホスト ツー�
 
 Micro Focus では、既存の COBOL と PL/I の業務アプリケーションを Azure に拡張する開発リホストとテスト リホストのソリューションを提供しています。
 
-**次のステップ**
+> [!NOTE]
+> 近日対応予定:Azure VM での [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) のセットアップの手順。
+
+**次の手順**
 
 - [Azure で Micro Focus Enterprise Server 4.0 および Enterprise Developer 4.0 をインストールする](./set-up-micro-focus-azure.md)
 - [Azure で Micro Focus Enterprise Developer 4.0 用の Micro Focus CICS BankDemo を設定する](./demo.md)

@@ -2,27 +2,22 @@
 title: Microsoft ID プラットフォームの OAuth 2.0 クライアント資格情報フロー | Azure
 description: Microsoft ID プラットフォームで導入された OAuth 2.0 認証プロトコルを利用して、Web アプリケーションを構築します。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 9b7cfbd7-f89f-4e33-aff2-414edd584b07
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4bf6d777662ad1ba4843d6e650dfd3a6a357822f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a03f8cb412b6d6ae95165331ae836bdfde5d670d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230511"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886298"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー
 

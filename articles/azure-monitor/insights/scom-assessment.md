@@ -1,17 +1,17 @@
 ---
-title: Azure Log Analytics で System Center Operations Manager 環境を最適化する | Microsoft Docs
+title: Azure Monitor を使用して System Center Operations Manager を評価する
 description: System Center Operations Manager Health Check ソリューションを使用すると、環境のリスクと正常性を定期的に評価できます。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: c8add2acb8f263c54f6014699f792380d256d9b0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663472"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055423"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Health Check (プレビュー) ソリューションを使用して環境を最適化する
 

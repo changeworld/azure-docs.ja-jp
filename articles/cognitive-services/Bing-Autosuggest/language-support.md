@@ -21,13 +21,13 @@ ms.locfileid: "60547338"
 
 Bing Autosuggest API でサポートされている言語を次に示します。
 
-| 言語    | 言語コード |
+| Language    | 言語コード |
 |:----------- |:-------------:|
 | アラビア語      | `ar`          |
 | 中国語 (中華人民共和国)     | `zh-CN`          |
 | 中国語 (香港特別行政区)    | `zh-HK`          |
 | 中国語 (台湾)     | `zh-TW`          |
-| Danish      | `da`          |
+| デンマーク語      | `da`          |
 | オランダ語 (ベルギー)       | `nl-BE`          |
 | オランダ語 (オランダ)      | `nl-NL`          |
 | 英語 (オーストラリア)    | `en-AU`          |
@@ -38,9 +38,9 @@ Bing Autosuggest API でサポートされている言語を次に示します�
 | 英語 (ニュージーランド)    | `en-NZ`          |
 | 英語 (フィリピン)     | `en-PH`          |
 | 英語 (南アフリカ)    | `en-ZA`          |
-| ウェールズ語 (イギリス)    | `en-GB`          |
+| 英語 (イギリス)    | `en-GB`          |
 | 英語 (米国)    | `en-US`          |
-| Finnish     | `fi`          |
+| フィンランド語     | `fi`          |
 | フランス語 (ベルギー)     | `fr-BE`          |
 | フランス語 (カナダ)     | `fr-CA`          |
 | フランス語 (フランス)     | `fr-FR`          |
@@ -48,23 +48,23 @@ Bing Autosuggest API でサポートされている言語を次に示します�
 | ドイツ語 (オーストリア)      | `de-AT`          |
 | ドイツ語 (ドイツ)      | `de-DE`          |
 | ドイツ語 (スイス)      | `de-CH`          |
-| Italian     | `it`          |
-| Japanese    | `ja`          |
-| Korean      | `ko`          |
+| イタリア語     | `it`          |
+| 日本語    | `ja`          |
+| 韓国語      | `ko`          |
 | ノルウェー語   | `no`          |
-| Polish      | `pl`          |
+| ポーランド語      | `pl`          |
 | ポルトガル語 (ブラジル)   | `pt-BR`|
 | ポルトガル語 (ポルトガル) | `pt-PT`|
-| Russian     | `ru`          |
+| ロシア語     | `ru`          |
 | スペイン語 (アルゼンチン)    | `es-AR`          |
 | スペイン語 (チリ)     | `es-CL`          |
 | スペイン語 (メキシコ)    | `es-MX`          |
 | スペイン語 (スペイン)    | `es-ES`          |
 | スペイン語 (米国)    | `es-US`          |
-| Swedish     | `sv`          |
-| Turkish     | `tr`          |
+| スウェーデン語     | `sv`          |
+| トルコ語     | `tr`          |
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Azure Cognitive Services のドキュメント ページ](https://docs.microsoft.com/azure/cognitive-services/)
 - [Azure Cognitive Services の製品ページ](https://azure.microsoft.com/services/cognitive-services/)

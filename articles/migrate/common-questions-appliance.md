@@ -3,12 +3,12 @@ title: Azure Migrate アプライアンスの FAQ
 description: Azure Migrate アプライアンスに関する一般的な質問の回答を示します。
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 3d0844b980ac418c5c334c2535c40dc5f3caeb16
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78939299"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437611"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate アプライアンス:一般的な質問
 
@@ -55,8 +55,8 @@ Azure Migrate アプライアンスのネットワーク接続要件の詳細に
 
 Azure Migrate アプライアンスが VM 上で収集するデータの詳細については、次の記事を参照してください。
 
-- **VMware VM**: [パフォーマンス データ](migrate-appliance.md#collected-performance-data-vmware) と [メタデータ](migrate-appliance.md#collected-metadata-vmware)
-- **Hyper-V VM**: [パフォーマンス データ](migrate-appliance.md#collected-performance-data-hyper-v) と [メタデータ](migrate-appliance.md#collected-metadata-hyper-v)
+- **VMware VM**:収集データを[レビュー](migrate-appliance.md#collected-data---vmware)します。 [
+- **Hyper-V VM**:収集データを[レビュー](migrate-appliance.md#collected-data---hyper-v)します。
 
 ## <a name="how-is-data-stored"></a>データをどのように格納するか
 
@@ -94,6 +94,9 @@ Azure Migrate に送信されるデータの量は、複数のパラメーター
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Migrate のプロジェクトは複数のアプライアンスを持つことができますか。
 1 つのプロジェクトに複数のアプライアンスをアタッチすることができます。 ただし、1 つのアプライアンスは、1 つの Azure Migrate リソースにのみ関連付けることができます。 
+
+## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure Migrate アプライアンス/レプリケーション アプライアンスは同じ vCenter に接続できますか。
+はい。 Azure Migrate アプライアンス (評価とエージェントレスの VMware 移行に使用) とレプリケーション アプライアンス (VMware VM のエージェントベースの移行に使用) の両方を、同じ vCenter サーバーに追加できます。
 
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>1 つのアプライアンスで検出できる VM またはサーバーの数を教えてください

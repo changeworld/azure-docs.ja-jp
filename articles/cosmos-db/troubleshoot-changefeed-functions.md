@@ -3,16 +3,16 @@ title: Cosmos DB 用 Azure Functions トリガーを使用するときの問題�
 description: Cosmos DB 用 Azure Functions トリガーを使用するときの一般的な問題、回避策、診断手順です
 author: ealsur
 ms.service: cosmos-db
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f382406d164aa7378631753c2cfc85bc69003a4f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605078"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79365510"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB 用 Azure Functions トリガーを使用するときの問題の診断とトラブルシューティングを行う
 
@@ -52,6 +52,10 @@ Azure Function が次のエラー メッセージで失敗する: "Either the so
 
 以前のバージョンの Azure Cosmos DB 拡張機能では、[共有スループット データベース](./set-throughput.md#set-throughput-on-a-database)内で作成されたリース コンテナーの使用はサポートされていませんでした。 この問題を解決するには、[Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) 拡張機能を最新バージョンに更新します。
 
+### <a name="azure-function-fails-to-start-with-partitionkey-must-be-supplied-for-this-operation"></a>Azure 関数は、"PartitionKey must be supplied for this operation" (この操作には PartitionKey を指定する必要があります) で開始できません。
+
+このエラーは、古い[拡張機能の依存関係](#dependencies)を持つパーティション分割されたリース コレクションが現在使用されていることを示しています。 利用可能な最新バージョンにアップグレードしてください。 現在 Azure Functions V1 で実行している場合は、Azure Functions V2 にアップグレードする必要があります。
+
 ### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Azure 関数の開始が、"The lease collection, if partitioned, must have partition key equal to id" (リース コレクションがパーティション分割されている場合は、パーティション キーと ID が同じである必要があります) で失敗する
 
 このエラーは、現在のリース コンテナーがパーティション分割されているのに、パーティション キーのパスが `/id` ではないことを意味します。 この問題を解決するには、パーティション キーを `/id` としてリース コンテナーを作り直す必要があります。
@@ -70,6 +74,13 @@ Azure portal を使用していて、トリガーを使用する Azure 関数を
 3. お使いの Azure Cosmos コンテナーが、[レート制限されている](./request-units.md)可能性があります。
 4. トリガーの `PreferredLocations` 属性を使用して Azure リージョンのコンマ区切りリストを指定し、ユーザー設定の優先接続順序を定義することができます。
 
+### <a name="some-changes-are-repeated-in-my-trigger"></a>一部の変更がトリガーで繰り返される
+
+"変更" の概念は、ドキュメントに対する 1 つの操作です。 同じドキュメントに対して複数のイベントが受信される最も一般的なシナリオは、次のとおりです。
+* アカウントで、最終的な整合性が使用されている。 変更フィードを最終的な整合性レベルで使用している場合は、後続の変更フィードの読み取り操作の間に重複するイベントが発生する可能性があります (1 つの読み取り操作の最後のイベントが、次の操作の最初のものとして表示されます)。
+* ドキュメントが更新されている。 変更フィードには、同じドキュメントに対して複数の操作を含めることができます。そのドキュメントが更新を受信している場合は、複数のイベント (更新ごとに 1 つ) を取得できます。 同じドキュメントに対する異なる操作を区別する簡単な方法の 1 つは、[各変更の `_lsn` プロパティ](change-feed.md#change-feed-and-_etag-_lsn-or-_ts)を追跡することです。 それらが一致しない場合、これらは同じドキュメントに対する異なる変更です。
+* `id` のみでドキュメントを識別する場合、ドキュメントの一意の識別子は `id` とそのパーティション キーであることに注意してください (同じ `id` を持つが、異なるパーティション キーを持つ 2 つのドキュメントが存在する可能性があります)。
+
 ### <a name="some-changes-are-missing-in-my-trigger"></a>一部の変更がトリガーで失われる
 
 Azure Cosmos コンテナーで発生した変更の一部が、Azure 関数によって取得されない場合は、最初に行う必要のある調査手順があります。
@@ -85,18 +96,18 @@ Azure 関数では、多くの場合、受け取った変更の処理が行わ�
 
 一部の変更がトリガーによってまったく受信されない場合、最もよくあるシナリオは、**別の Azure 関数が実行されている**ことです。 **まったく同じ構成** (監視対象コンテナーとリース コンテナーが同じ) を持つ別の Azure 関数が、Azure にデプロイされているか、または開発者のコンピューター上でローカルに実行されていて、この Azure 関数により、自分の Azure 関数で処理されるはずの変更のサブセットが盗まれている可能性があります。
 
-さらに、実行している Azure 関数アプリ インスタンスの数がわかっている場合は、そのシナリオを検証できます。 リース コンテナーを調べて、その中のリース項目の数を数えた場合、`Owner` プロパティの異なる値の数は、関数アプリのインスタンスの数と等しくなっている必要があります。 既知の Azure 関数アプリ インスタンスの数より Owner の数の方が多い場合、余分な所有者が変更を "盗んでいる" ことを意味します。
+さらに、実行している Azure 関数アプリ インスタンスの数がわかっている場合は、そのシナリオを検証できます。 リース コンテナーを調べて、その中のリース項目の数を数えた場合、`Owner` プロパティの異なる値の数は、関数アプリのインスタンスの数と等しくなっている必要があります。 既知の Azure 関数アプリ インスタンスの数より所有者の数が多い場合、余分な所有者が変更を "盗んでいる" ことを意味します。
 
-このような状況を回避する簡単な方法は、`LeaseCollectionPrefix/leaseCollectionPrefix` を新しい/別の値で関数に適用するか、または新しいリース コンテナーでテストします。
+このような状況を回避する簡単な方法は、`LeaseCollectionPrefix/leaseCollectionPrefix` を新規または別の値で関数に適用するか、または新しいリース コンテナーでテストします。
 
-### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>再起動してコンテナーにあるすべての項目を最初から再処理する必要がある 
+### <a name="need-to-restart-and-reprocess-all-the-items-in-my-container-from-the-beginning"></a>再起動してコンテナーにあるすべての項目を最初から再処理する必要がある 
 コンテナーにあるすべての項目を最初から再処理するには、次の手順を実行します。
 1. 現在実行中の場合は、Azure 関数を停止します。 
 1. リース コレクション内のドキュメントを削除します (または、空になるようにリース コレクションを削除して再作成します)。
 1. 関数内の [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) CosmosDBTrigger 属性を true に設定します。 
 1. Azure 関数を再起動します。 これですべての変更が最初から読み取られ、処理されるようになります。 
 
-[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) を true に設定すると、現在の時刻ではなく、コレクションの履歴の最初から変更の読み取りを開始するように、Azure 関数が指示されます。 これは、リースがまだ作成されていないとき (つまり、リース コレクションにドキュメントがあるとき) にのみ機能します。 既に作成されているリースがある場合は、このプロパティを true に設定しても影響はありません。このシナリオでは、関数を停止して再起動すると、リース コレクションで定義されている最後のチェックポイントから読み取りが開始されます。 最初から再処理するには、上記の手順1 から 4 に従います。  
+[StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) を true に設定すると、現在の時刻ではなく、コレクションの履歴の最初から変更の読み取りを開始するように、Azure 関数が指示されます。 これは、リースがまだ作成されていないとき (つまり、リース コレクションにドキュメントがあるとき) にのみ機能します。 既に作成されているリースがある場合は、このプロパティを true に設定しても影響はありません。このシナリオでは、関数を停止して再起動すると、リース コレクションで定義されている最後のチェックポイントから読み取りが開始されます。 最初から再処理するには、上記の手順 1 から 4 に従います。  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>バインディングを実行するには、IReadOnlyList\<Document> または JArray を使用する必要があります。
 

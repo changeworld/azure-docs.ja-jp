@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 15c75d4add9615df6c42aa6121557659e54354d0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 56a0cb66f5b54c817067970ab369d7ca471a1696
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666788"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132347"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Kubernetes でホストされるアプリケーションに対するゼロ インストルメンテーション アプリケーション監視
 
@@ -59,7 +59,7 @@ kubectl label namespace <my-app-namespace> istio-injection=enabled
 ```
 
 > [!NOTE]
-> サービス メッシュによってデータはワイヤからリフトオフされるので、暗号化されたトラフィックをインターセプトすることはできません。 クラスターから出ないトラフィックの場合は、暗号化されていないプロトコル (HTTP など) を使用します。 暗号化する必要がある外部トラフィックの場合は、イングレス コントローラーで [SSL 終了を設定する](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls)ことを検討します。
+> サービス メッシュによってデータはワイヤからリフトオフされるので、暗号化されたトラフィックをインターセプトすることはできません。 クラスターから出ないトラフィックの場合は、暗号化されていないプロトコル (HTTP など) を使用します。 暗号化する必要がある外部トラフィックの場合は、イングレス コントローラーで [TLS 終了を設定する](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls)ことを検討します。
 
 サービス メッシュの外部で実行されているアプリケーションには影響ありません。
 

@@ -1,14 +1,14 @@
 ---
 title: 大規模なデータ セットを処理する
 description: Azure Resource Graph の操作中に大きなデータ セット内のレコードを取得、書式設定、ページング、およびスキップする方法について説明します。
-ms.date: 10/18/2019
+ms.date: 03/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2c6aca0c468630cee79222bc77bdc20dc9d95b19
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: be15a6234935627ca748276e6330c50c3ee5a775
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304003"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064743"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -63,7 +63,7 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 処理のために、または結果セットが返されるレコード数の最大許容値 _1000_ を超えるために、結果セットを小さなレコード セットに分割する必要がある場合は、ページングを使用します。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) の **QueryResponse** では、結果セットが分割されていることを示す値として、**resultTruncated** と **$skipToken** が提供されています。
 **resultTruncated** はブール値で、応答で返されていない追加のレコードがあるかどうかをコンシューマーに通知します。 この状態は、**count** プロパティが **totalRecords** プロパティより小さい場合も示されます。 **totalRecords** では、クエリに一致したレコード数が定義されています。
 
-**resultTruncated** が **true** のときは、応答で **$skipToken** プロパティが設定されます。 この値は、クエリに一致した次のレコード セットを取得するために、同じクエリ値とサブスクリプション値で使用されます。
+ ページングが無効になっているか、`id` 列がないためにページングを使用できない場合、または使用可能なリソースがクエリで要求されている量に満たない場合、**resultTruncated** は **true** です。 **resultTruncated** が **true** のときは、 **$skipToken** プロパティは設定されません。
 
 次の例では、Azure CLI および Azure PowerShell で、最初の 3000 個のレコードを**スキップ**し、これらのスキップされたレコードの後の**最初の** 1000 個のレコードを返す方法を示します。
 
@@ -164,7 +164,7 @@ request = QueryRequest(query="Resources | limit 1", subscriptions=subs_list, opt
 response = client.resources(request)
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [初歩的なクエリ](../samples/starter.md)で使用されている言語を確認します。
 - [高度なクエリ](../samples/advanced.md)で高度な使用方法を確認します。

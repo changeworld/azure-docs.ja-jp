@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: e8266e5750a14542e7f115e021daa40b2b0bf8f6
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: fb982324b66c5ac0d2db00eb906ed850827bc72e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79130078"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79533285"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage を Gen1 から Gen2 に移行する
 
@@ -47,9 +47,9 @@ Gen2 に移行するには、次の方法が推奨されます。
 
 3. [既知の問題](data-lake-storage-known-issues.md)の一覧を確認して、機能のギャップを評価します。
 
-4. Gen2 では、[診断ログ](../common/storage-analytics-logging.md)、[アクセス レベル](storage-blob-storage-tiers.md)、[Blob Storage ライフサイクル管理ポリシー](storage-lifecycle-management-concepts.md)などの Blob Storage の機能がサポートされています。 これらの機能を使用することに興味がある場合は [現在のサポート レベル](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-multi-protocol-access?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-feature-support)を確認してください。
+4. Gen2 では、[診断ログ](../common/storage-analytics-logging.md)、[アクセス レベル](storage-blob-storage-tiers.md)、[Blob Storage ライフサイクル管理ポリシー](storage-lifecycle-management-concepts.md)などの Blob Storage の機能がサポートされています。 これらの機能を使用することに興味がある場合は [現在のサポート レベル](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-supported-blob-storage-features)を確認してください。
 
-5. [Azure エコシステムのサポート](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-multi-protocol-access?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-ecosystem-support) の現状を確認し、ソリューションが依存するすべてのサービスが Gen2 でサポートされていることを確認します。
+5. [Azure エコシステムのサポート](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-multi-protocol-access) の現状を確認し、ソリューションが依存するすべてのサービスが Gen2 でサポートされていることを確認します。
 
 ### <a name="step-2-prepare-to-migrate"></a>手順 2:移行を準備する
 
@@ -99,9 +99,9 @@ Gen2 でアプリケーションとワークロードが安定していること
 |geo 冗長| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage)、[ZRS](../common/storage-redundancy.md#zone-redundant-storage)、[GRS](../common/storage-redundancy.md#geo-redundant-storage)、[RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
 |認証|[AAD マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)<br>[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)<br>[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)<br>[共有アクセス キー](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
 |承認|管理 - [RBAC](../../role-based-access-control/overview.md)<br>データ – [ACL](data-lake-storage-access-control.md)|管理 – [RBAC](../../role-based-access-control/overview.md)<br>データ - [ACL](data-lake-storage-access-control.md)、[RBAC](../../role-based-access-control/overview.md) |
-|暗号化 – 保存データ|サーバー側 – [サービス マネージド](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#microsoft-managed-keys) キーまたは[カスタマー マネージド](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault) キー|サーバー側 – [サービス マネージド](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#microsoft-managed-keys) キーまたは[カスタマー マネージド](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault) キー|
+|暗号化 – 保存データ|サーバー側 - [Microsoft マネージド](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)または[カスタマー マネージド](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) キー|サーバー側 - [Microsoft マネージド](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)または[カスタマー マネージド](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) キー|
 |VNET のサポート|[VNET 統合](../../data-lake-store/data-lake-store-network-security.md)|[サービス エンドポイント](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、[プライベート エンドポイント (パブリック プレビュー)](../common/storage-private-endpoints.md)|
-|開発者エクスペリエンス|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md)、[.NET](../../data-lake-store/data-lake-store-data-operations-net-sdk.md)、[Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md)、[Python](../../data-lake-store/data-lake-store-data-operations-python.md)、[PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)、[Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|[REST](https://review.docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2)、[.NET](/data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、[Python](data-lake-storage-directory-file-acl-python.md)、[JavaScript](data-lake-storage-directory-file-acl-javascript.md)、[PowerShell](data-lake-storage-directory-file-acl-powershell.md)、[Azure CLI](data-lake-storage-directory-file-acl-cli.md) (パブリック プレビュー)|
+|開発者エクスペリエンス|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md)、[.NET](../../data-lake-store/data-lake-store-data-operations-net-sdk.md)、[Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md)、[Python](../../data-lake-store/data-lake-store-data-operations-python.md)、[PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)、[Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|[REST](/rest/api/storageservices/data-lake-storage-gen2)、[.NET](data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、[Python](data-lake-storage-directory-file-acl-python.md)、[JavaScript](data-lake-storage-directory-file-acl-javascript.md)、[PowerShell](data-lake-storage-directory-file-acl-powershell.md)、[Azure CLI](data-lake-storage-directory-file-acl-cli.md) (パブリック プレビュー)|
 |診断ログ|クラシック ログ<br>[Azure Monitor 統合](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[クラシック ログ](../common/storage-analytics-logging.md) (パブリック プレビュー)<br>Azure Monitor 統合 – タイムライン未定|
 |エコシステム|[HDInsight (3.6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)、[Azure Databricks (3.1 以降)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html)、[SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store)、[ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3.6、4.0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)、[Azure Databricks (5.1 以降)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2)、[SQL DW](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)、[ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
@@ -132,7 +132,8 @@ Gen2 でアプリケーションとワークロードが安定していること
 
 4. Gen1 の使用を停止します。
 
-![リフト アンド シフト パターン](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
+> [!div class="mx-imgBorder"]
+> ![リフト アンド シフト パターン](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
 
 #### <a name="considerations-for-using-the-lift-and-shift-pattern"></a>リフト アンド シフト パターンを使用する場合の考慮事項
 
@@ -152,7 +153,8 @@ Gen2 でアプリケーションとワークロードが安定していること
 
 4. Gen1 の使用を停止します。
 
-![増分コピー パターン](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
+> [!div class="mx-imgBorder"]
+> ![増分コピー パターン](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
 
 #### <a name="considerations-for-using-the-incremental-copy-pattern"></a>増分コピー パターンを使用する場合の考慮事項:
 
@@ -172,7 +174,8 @@ Gen2 でアプリケーションとワークロードが安定していること
 
 4. Gen1 へのすべての書き込みを停止し、Gen1 の使用を停止します。
 
-![デュアル パイプライン パターン](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
+> [!div class="mx-imgBorder"]
+> ![デュアル パイプライン パターン](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
 
 #### <a name="considerations-for-using-the-dual-pipeline-pattern"></a>デュアル パイプライン パターンを使用する場合の考慮事項:
 
@@ -190,7 +193,8 @@ Gen2 でアプリケーションとワークロードが安定していること
 
 4. Gen1 の使用を停止します。
 
-![双方向パターン](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
+> [!div class="mx-imgBorder"]
+> ![双方向パターン](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)
 
 #### <a name="considerations-for-using-the-bi-directional-sync-pattern"></a>双方向同期パターンを使用する場合の考慮事項:
 

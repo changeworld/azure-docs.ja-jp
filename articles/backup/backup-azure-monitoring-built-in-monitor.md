@@ -4,12 +4,12 @@ description: この記事では、Azure portal を使用した Azure Backup ワ�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: ea5102a95a9bef17f25219e00dec4654bf7f06d6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: de5a82f5ad1d8113b27c07484f2f08f4cf97c759
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172877"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294934"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 
@@ -27,13 +27,13 @@ Azure Backup では、Azure Backup で保護されているワークロード用
 
 - Azure VM バックアップ
 - Azure ファイルのバックアップ
-- SQL などの Azure ワークロードのバックアップ
+- SQL や SAP HANA などの Azure ワークロードのバックアップ
 - Azure Backup エージェント (MAB)
 
 System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (MABS) からのジョブは表示されません。
 
 > [!NOTE]
-> Azure VM 内の SQL のバックアップなどの Azure ワークロードには、膨大な数のバックアップ ジョブがあります。 たとえば、ログ バックアップは 15 分ごとに実行できます。 そのため、このようなデータベース ワークロードについては、ユーザーがトリガーした操作のみが表示されます。 スケジュールされたバックアップ操作は表示されません。
+> Azure VM 内の SQL や SAP HANA のバックアップなどの Azure ワークロードには、膨大な数のバックアップ ジョブがあります。 たとえば、ログ バックアップは 15 分ごとに実行できます。 そのため、このようなデータベース ワークロードについては、ユーザーがトリガーした操作のみが表示されます。 スケジュールされたバックアップ操作は表示されません。
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>Recovery Services コンテナーでのバックアップ アラート
 
@@ -47,25 +47,30 @@ System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (
 - Azure Backup エージェント (MAB) のバックアップの成功 (警告あり)
 - 保護の停止 (データの保持を含む)/保護の停止 (データの削除を含む)
 
-### <a name="exceptions-when-an-alert-is-not-raised"></a>アラートが生成されない例外
-
-失敗時にアラートが生成されない次のいくつかの例外があります。
-
-- ユーザーが実行中のジョブを明示的に取り消しました
-- 別のバックアップ ジョブが処理中であるため、ジョブが失敗しました (前のジョブが完了するまで待つしかないため、行うことができる操作はありません)
-- バックアップの Azure VM が存在しなくなっているため、VM バックアップ ジョブが失敗します
-
-上記の例外は、これらの操作 (主にユーザーがトリガーするもの) の結果がポータル/PS/CLI クライアントで即時に表示されるという理解に基づいて設計されています。 したがって、ユーザーはすぐにこれに気付くことから、通知は必要ありません。
-
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>ここには、次の Azure Backup ソリューションからのアラートが表示されます。
 
 - Azure VM バックアップ
 - Azure ファイルのバックアップ
-- SQL などの Azure ワークロードのバックアップ
+- SQL、SAP HANA などの Azure ワークロードのバックアップ
 - Azure Backup エージェント (MAB)
 
 > [!NOTE]
 > System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (MABS) からのアラートは表示されません。
+
+### <a name="consolidated-alerts"></a>統合されたアラート
+
+SQL や SAP HANA などの Azure ワークロード バックアップ ソリューションでは、ログ バックアップを非常に頻繁に (ポリシーに従って 15 分ごとに) 生成できます。 そのため、ログ バックアップ エラーも頻繁に発生する可能性があります (最大 15 分間隔)。 このシナリオで、エラーが発生するたびにアラートが発生した場合、エンド ユーザーの気が滅入ってしまいます。 そのため、最初の発生時にはアラートが送信され、それ以降のエラーが同じ根本原因である場合、それ以降のアラートは生成されません。 最初のアラートは、エラー数で更新されます。 しかし、アラートがユーザーによって非アクティブにされている場合は、次の発生時に別の電子メールがトリガーされ、これがその発生に対する最初のアラートとして扱われます。 このようにして Azure Backup は、SQL と SAP HANA のバックアップに対してアラートの統合を実行します。
+
+### <a name="exceptions-when-an-alert-is-not-raised"></a>アラートが生成されない例外
+
+失敗時にアラートが生成されない次のいくつかの例外があります。 これらは次のとおりです。
+
+- ユーザーが実行中のジョブを明示的に取り消しました
+- 別のバックアップ ジョブが処理中であるため、ジョブが失敗しました (前のジョブが完了するまで待つしかないため、行うことができる操作はありません)
+- バックアップの Azure VM が存在しなくなっているため、VM バックアップ ジョブが失敗します
+- [統合されたアラート](#consolidated-alerts)
+
+上記の例外は、これらの操作 (主にユーザーがトリガーするもの) の結果がポータル/PS/CLI クライアントで即時に表示されるという理解に基づいて設計されています。 そのため、ユーザーはすぐにこれに気付くことから、通知は必要ありません。
 
 ### <a name="alert-types"></a>アラートの種類
 
@@ -84,9 +89,6 @@ System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (
 
 ![RS コンテナーの組み込みのメール通知](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
 
-> [!NOTE]
-> SQL バックアップのアラートは統合され、最初に発生したときにのみ電子メールが送信されます。 しかし、アラートがユーザーによって非アクティブにされている場合、次の発生時に別の電子メールがトリガーされます。
-
 通知が構成されている場合、ウェルカム メールまたは導入時のメールを受け取ります。 これは、アラートの生成時に、Azure Backup がこれらのアドレスにメールを送信できるかどうかを確認するものです。<br>
 
 頻度が 1 時間ごとのダイジェストに設定されており、アラートが生成されて 1 時間以内にこれが解決された場合は、次の 1 時間ごとのダイジェストにこのアラートは含まれません。
@@ -102,6 +104,6 @@ System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (
 
 ![RS コンテナーのアラートの非アクティブ化](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Monitor Azure backup workloads using Azure Monitor (Azure Monitor を使用した Azure Backup ワークロードの監視)](backup-azure-monitoring-use-azuremonitor.md)

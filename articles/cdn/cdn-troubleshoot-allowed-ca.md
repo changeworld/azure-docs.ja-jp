@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 7b71611d43bc2d4de4c3e609462906c44fba0443
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81d2209c4b76db685e5a8d2625c84469d5c3dc43
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919976"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985849"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Azure CDN でカスタム HTTPS を有効にするために許可された認証機関
 
-Azure Content Delivery Network (CDN) カスタム ドメイン用の[独自の証明書を使用して HTTPS 機能を有効にする](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates)場合は、特定の証明書の要件を満たす必要があります。 **Azure CDN Standard from Microsoft** プロファイルでは、次の一覧にある承認されたいずれかの証明機関 (CA) の証明書が必要です。 未承認の CA からの証明書、または自己署名証明書が使用されている場合、要求は拒否されます。 **Azure CDN Standard from Verizon** プロファイルと **Azure CDN Premium from Verizon** プロファイルは、すべての有効な CA からの任意の有効な証明書を受け入れます。
+Azure Content Delivery Network (CDN) カスタム ドメイン用の[独自の証明書を使用して HTTPS 機能を有効にする](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates)場合は、特定の証明書の要件を満たす必要があります。 **Azure CDN Standard from Microsoft** プロファイルでは、次の一覧にある承認されたいずれかの証明機関 (CA) の証明書が必要です。 未承認の CA からの証明書、または自己署名証明書が使用されている場合、要求は拒否されます。 **Azure CDN Standard from Verizon** プロファイルと **Azure CDN Premium from Verizon** プロファイルは、すべての有効な CA からの任意の有効な証明書を受け入れます。
 
 > [!NOTE]
 > 独自の証明書を使用してカスタム ドメイン HTTPS 機能を有効にするオプションは、*Azure CDN Standard from Akamai* プロファイルでは利用 "**できません**"。 

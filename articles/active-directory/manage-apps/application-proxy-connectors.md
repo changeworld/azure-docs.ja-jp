@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c2036bf9995725e4bbef44e4c039f8336eb81a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: b097ce3781a77a8c5e8a94b9c2bf0977f3efcfd9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997039"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481332"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -118,7 +118,7 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 
 アプリケーション プロキシ サービスではスケールについてユーザーが気にする必要はありませんが、コネクタに関してはスケールが重要な要因になります。 ピーク時のトラフィックを処理するには十分なコネクタが必要です。 コネクタはステートレスであるため、ユーザー数やセッション数の影響を受けません。 その代わりに、要求数やペイロード サイズに反応します。 標準的な Web トラフィックの場合、平均的なコンピューターでは 1 秒間に数千件の要求を処理されます。 具体的な容量は、実際のコンピューターの特性によって異なります。
 
-コネクタのパフォーマンスは、CPU とネットワークの制約を受けます。 SSL による暗号化と暗号化解除には CPU のパフォーマンスが必要であり、Azure でアプリケーションとオンライン サービスへの高速接続を実現するにはネットワークが重要です。
+コネクタのパフォーマンスは、CPU とネットワークの制約を受けます。 TLS による暗号化と暗号化解除には CPU のパフォーマンスが必要であり、Azure でアプリケーションとオンライン サービスへの高速接続を実現するにはネットワークが重要です。
 
 これに対し、コネクタにとってメモリはあまり重要ではありません。 処理の大半はオンライン サービスによって行われ、すべての認証されていないトラフィックが処理されます。 クラウドでできることはすべてクラウドで実行しています。
 
@@ -160,7 +160,7 @@ Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
 
-## <a name="under-the-hood"></a>コネクタの性能
+## <a name="under-the-hood"></a>しくみ
 
 コネクタは Windows Server の Web アプリケーション プロキシをベースとしているため、Windows イベント ログや
 
@@ -178,7 +178,7 @@ Windows パフォーマンス カウンターなど、同じ管理ツールの�
 
  ![例:Azure AD サービスのローカルを示す [サービス] ウィンドウ](./media/application-proxy-connectors/aad-connector-services.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する](application-proxy-connector-groups.md)
 - [既存のオンプレミス プロキシ サーバーと連携する](application-proxy-configure-connectors-with-proxy-servers.md)

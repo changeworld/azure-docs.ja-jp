@@ -4,12 +4,12 @@ description: JavaScript を使用して関数を開発する方法について�
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 345df8e1ea88caa6f8dbe941245c1f989c3e81c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357951"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234963"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -363,6 +363,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 | _headers_ | 応答ヘッダーを格納するオブジェクト。             |
 | _isRaw_   | 応答の書式設定をスキップすることを示します。    |
 | _status_  | 応答の HTTP 状態コード。                     |
+| _cookies_ | 応答に設定される HTTP Cookie オブジェクトの配列。 HTTP Cookie オブジェクトには、`name`、`value`、およびその他の Cookie プロパティ (`maxAge` や `sameSite` など) があります。 |
 
 ### <a name="accessing-the-request-and-response"></a>要求と応答へのアクセス 
 

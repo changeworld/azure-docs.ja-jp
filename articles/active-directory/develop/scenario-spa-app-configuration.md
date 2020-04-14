@@ -2,24 +2,21 @@
 title: シングルページ アプリを構成する - Microsoft ID プラットフォーム | Azure
 description: シングルページ アプリケーション (アプリのコード構成) を構築する方法について説明します
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f1e0bf44515aab18019b19b4f0a6f84183e5aac3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f159105046231ba5fb4e458cdd70d930a411a920
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160085"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882337"
 ---
 # <a name="single-page-application-code-configuration"></a>シングルページ アプリケーション：コード構成
 
@@ -27,12 +24,12 @@ ms.locfileid: "77160085"
 
 ## <a name="msal-libraries-that-support-implicit-flow"></a>暗黙的なフローをサポートする MSAL ライブラリ
 
-Microsoft ID プラットフォームは、次の Microsoft Authentication Library (MSAL) ライブラリを提供し、業界で推奨されているセキュリティ プラクティスを使用して暗黙的なフローをサポートします。  
+Microsoft ID プラットフォームは、次の Microsoft Authentication Library (MSAL) ライブラリを提供し、業界で推奨されているセキュリティ プラクティスを使用して暗黙的なフローをサポートします。
 
 | MSAL ライブラリ | 説明 |
 |--------------|--------------|
 | ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | JavaScript または SPA フレームワーク (Angular、Vue.js、React.js) を使用して構築されたクライアント側 Web アプリで使用するためのプレーンな JavaScript ライブラリ |
-| ![MSAL Angular](media/sample-v2-code/logo_angular.png) <br/> [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Angular フレームワークで構築されたシングル ページ アプリでの使用を簡素化するためのコア MSAL.js ライブラリのラッパー。 このライブラリはプレビュー段階であり、特定の Angular バージョンおよびブラウザーにおいて[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues?q=is%3Aopen+is%3Aissue+label%3Aangular)があります。 |
+| ![MSAL Angular](media/sample-v2-code/logo_angular.png) <br/> [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Angular フレームワークで構築されたシングル ページ アプリでの使用を簡素化するためのコア MSAL.js ライブラリのラッパー。 |
 
 ## <a name="application-code-configuration"></a>アプリケーションのコード構成
 
@@ -58,16 +55,20 @@ const userAgentApplication = new UserAgentApplication(config);
 # <a name="angular"></a>[Angular](#tab/angular)
 
 ```javascript
-//In app.module.ts
+// App.module.ts
 import { MsalModule } from '@azure/msal-angular';
 
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id'
-            })]
-         })
+    imports: [
+        MsalModule.forRoot({
+            auth: {
+                clientId: 'your_app_id'
+            }
+        })
+    ]
+})
 
-  export class AppModule { }
+export class AppModule { }
 ```
 
 ---

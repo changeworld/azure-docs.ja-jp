@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/11/2020
-ms.topic: conceptual
+ms.date: 03/27/2020
+ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: c44b7cd045547d01d1a31f949a42087e78e88b21
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: df24a2dc6e9bd058a2f8b1355b8760653ed3128a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198839"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365521"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Azure CLI から IoT Central を管理する
 
@@ -31,6 +31,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!TIP]
 > CLI コマンドを別の Azure サブスクリプションで実行する必要がある場合は、「[アクティブなサブスクリプションを変更する](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription)」を参照してください。
+
+## <a name="install-the-extension"></a>拡張機能をインストールする
+
+この記事のコマンドは、**azure-iot** CLI 拡張機能の一部です。 次のコマンドを実行して拡張機能をインストールします。
+
+```azurecli-interactive
+az extension add --name azure-iot
+```
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 
@@ -56,9 +64,9 @@ az iotcentral app create \
 | パラメーター         | 説明 |
 | ----------------- | ----------- |
 | resource-group    | そのアプリケーションを含むリソース グループ。 サブスクリプションにこのリソース グループが既に存在している必要があります。 |
-| location          | このコマンドでは既定で、リソース グループの場所が使用されます。 現時点では、IoT Central アプリケーションは、**オーストラリア**、**アジア太平洋**、**ヨーロッパ**、または**米国**の地域で作成できます。 |
+| location          | このコマンドでは既定で、リソース グループの場所が使用されます。 現時点では、IoT Central アプリケーションは、**オーストラリア**、**アジア太平洋**、**ヨーロッパ**、または**米国**、**イギリス**、**日本**の地域で作成できます。 |
 | name              | Azure portal 内のアプリケーションの名前。 |
-| subdomain         | アプリケーションの URL のサブドメイン。 この例では、アプリケーションの URL は https://mysubdomain.azureiotcentral.com です。 |
+| subdomain         | アプリケーションの URL のサブドメイン。 この例では、アプリケーションの URL は `https://mysubdomain.azureiotcentral.com` です。 |
 | sku               | 現在、**ST1** または **ST2** のいずれかを使用できます。 「[Azure IoT Central の価格](https://azure.microsoft.com/pricing/details/iot-central/)」を参照してください。 |
 | template          | 使用するアプリケーション テンプレート。 詳細については、後の表を参照してください。 |
 | display-name      | UI に表示されるアプリケーションの名前。 |

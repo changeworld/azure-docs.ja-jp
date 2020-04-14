@@ -480,6 +480,8 @@
       items:
         - name: 変更フィードの概要
           href: change-feed.md
+        - name: 変更フィードの設計パターン
+          href: change-feed-design-patterns.md
         - name: 変更フィードの読み取り
           href: read-change-feed.md
         - name: 変更フィード プロセッサ
@@ -597,6 +599,8 @@
           items:
             - name: エラスティック スケール
               href: manage-scale-cassandra.md
+            - name: セカンダリ インデックス
+              href: cassandra-secondary-index.md
         - name: 操作方法ガイド
           items:
             - name: Change Feed
@@ -1012,12 +1016,12 @@
           href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: クロス オリジン リソース共有 (CORS) の構成
           href: how-to-configure-cross-origin-resource-sharing.md
-        - name: マネージド ID を使用してキーをセキュリティで保護する
+        - name: マネージド ID を使用してデータにアクセスする
           href: managed-identity-based-authentication.md
           displayName: 'msi, managed service identity, aad, azure active directory, identity'
-        - name: Azure AD による証明書ベースの認証
+        - name: 証明書を使用してデータにアクセスする
           href: certificate-based-authentication.md
-        - name: Key Vault を使用してキーをセキュリティで保護する
+        - name: Azure Key Vault を使用してデータにアクセスする
           href: access-secrets-from-keyvault.md
         - name: ユーザー アクセスをデータ操作のみに制限する
           href: how-to-restrict-user-data.md
@@ -1031,6 +1035,10 @@
       items:
         - name: Cosmos DB を監視する
           href: monitor-cosmos-db.md
+        - name: サーバー側の待機時間を監視する
+          href: monitor-server-side-latency.md
+        - name: 要求ユニットの使用状況を監視する
+          href: monitor-request-unit-usage.md
         - name: 診断ログを使用して監視する
           href: cosmosdb-monitor-resource-logs.md
         - name: コントロール プレーン ログの監査
@@ -1153,7 +1161,7 @@
     - name: クエリ チート シート
       href: query-cheat-sheet.md
     - name: SQL のプレイグラウンド
-      href: 'https://aka.ms/cosmos-db-playground'
+      href: 'https://www.documentdb.com/sql/demo'
     - name: よく寄せられる質問
       href: faq.md
     - name: ホワイトペーパー

@@ -213,6 +213,8 @@
     - name: トラブルシューティング
       items:
         - name: トラブルシューティング ガイド
+          href: service-bus-troubleshooting-guide.md
+        - name: メッセージングの例外
           href: service-bus-messaging-exceptions.md
         - name: Resource Manager の例外
           href: service-bus-resource-manager-exceptions.md

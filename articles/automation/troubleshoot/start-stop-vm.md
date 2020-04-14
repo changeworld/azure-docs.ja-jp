@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73a9680cc570179c47b527a4844488da69193cb3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78851388"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586096"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Start/Stop VMs during off-hours ソリューションのトラブルシューティング
 
@@ -137,7 +137,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 
 問題の考えられる解決策または参照する場所については、次の一覧を確認してください。
 
-* Start/Stop VMs during off-hours ソリューションの[順序指定のシナリオ](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags)を使用する場合は、起動または停止する各 VM に適切なタグが指定されていることを確認する必要があります。 起動する VM には `sequencestart` タグ、停止する VM には `sequencestop` タグが指定されていることを確認してください。 どちらのタグにも正の整数値を指定する必要があります。 次の例に示すようなクエリを使用して、すべての VM をタグとその値と共に検索することができます。
+* Start/Stop VMs during off-hours ソリューションの[順序指定のシナリオ](../automation-solution-vm-management.md)を使用する場合は、起動または停止する各 VM に適切なタグが指定されていることを確認する必要があります。 起動する VM には `sequencestart` タグ、停止する VM には `sequencestop` タグが指定されていることを確認してください。 どちらのタグにも正の整数値を指定する必要があります。 次の例に示すようなクエリを使用して、すべての VM をタグとその値と共に検索することができます。
 
   ```powershell-interactive
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
@@ -187,7 +187,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 2. 起動または停止する VM のリソース グループが、状況に応じて `External_Start_ResourceGroupNames` 変数または`External_Stop_ResourceGroupNames` 変数に指定されていることを確認します。
 3. 変更内容をテストします。そのためには、WHATIF パラメーターを True に設定して `SequencedStartStop_Parent` Runbook を実行し、変更内容をプレビューします。
 
-ソリューションを使用して VM を順番に起動/停止する方法の詳細および追加の手順については、[VM を順番に起動/停止する](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags)方法に関するページを参照してください。
+ソリューションを使用して VM を順番に起動/停止する方法の詳細および追加の手順については、[VM を順番に起動/停止する](../automation-solution-vm-management.md)方法に関するページを参照してください。
 
 ## <a name="scenario-startstop-vm-job-fails-with-403-forbidden-status"></a><a name="403"></a>シナリオ:VM の起動/停止ジョブが "403 許可されていません" 状態で失敗する
 

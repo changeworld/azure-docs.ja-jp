@@ -154,6 +154,14 @@ groups:
     title: Java
   - id: programming-language-python
     title: Python
+- id: programming-languages-set-fifteen
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Go
 - id: cogsvcs-text-analytics-features
   title: Text Analytics の機能
   prompt: Text Analytics の機能オファリングの選択
@@ -261,9 +269,9 @@ groups:
   - id: programming-language-more
     title: その他の言語
 metadata:
-  ms.openlocfilehash: cce47581ca1fdc0a017f7d8c89b5fac812529c78
-  ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+  ms.openlocfilehash: 122de10a24f5b4b1de1415079ffcb5b14dfa55df
+  ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/06/2020
-  ms.locfileid: "80672509"
+  ms.lasthandoff: 04/08/2020
+  ms.locfileid: "80886808"

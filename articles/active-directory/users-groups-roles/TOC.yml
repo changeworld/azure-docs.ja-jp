@@ -124,6 +124,8 @@
               href: groups-create-rule.md
             - name: 動的グループの規則の構文
               href: groups-dynamic-membership.md
+            - name: メンバーシップの規則を検証する
+              href: groups-dynamic-rule-validation.md
             - name: グループ メンバーシップの種類の変更
               href: groups-change-type.md
     - name: ライセンスを割り当てる
@@ -190,7 +192,7 @@
           href: linkedin-integration.md
         - name: LinkedIn データの共有
           href: linkedin-user-consent.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: Azure AD のサポートを受ける
           href: /azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto?context=azure/active-directory/users-groups-roles/context/ugr-context

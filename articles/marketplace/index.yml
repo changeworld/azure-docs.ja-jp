@@ -1,23 +1,23 @@
 ### YamlMime:Landing
-title: Microsoft 商用マーケット プレースへようこそ
-summary: スタートアップ企業や大企業が世界中のお客様にソリューションとしてアプリケーションとサービスを提供できるオンライン マーケットプレース、Microsoft 商用マーケット プレースについて説明します。
+title: コマーシャル マーケットプレースにようこそ
+summary: あらゆる規模の企業が世界中の顧客にソリューションを提供できるようにするためのアプリケーションやサービスのオンライン マーケットプレースである、コマーシャル マーケットプレースについて説明します。
 metadata:
-  title: Microsoft 商用マーケット プレースへようこそ
-  description: スタートアップ企業や大企業が世界中のお客様にソリューションとしてアプリケーションとサービスを提供できるオンライン マーケットプレース、Microsoft 商用マーケット プレースについて説明します。
+  title: コマーシャル マーケットプレースにようこそ
+  description: あらゆる規模の企業が世界中の顧客にソリューションを提供できるようにするためのアプリケーションやサービスのオンライン マーケットプレースである、コマーシャル マーケットプレースについて説明します。
   ms.service: marketplace
   ms.subservice: partnercenter-marketplace-publisher
   ms.topic: landing-page
   author: MaggiePucciEvans
   ms.author: evansma
-  ms.date: 03/04/2020
-  ms.openlocfilehash: 3dced8953c09520b96a9aa24cf7b5db1022de6ce
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/02/2020
+  ms.openlocfilehash: 6351a18cf2e56152adfc0ad8433ee40cec4e9d9c
+  ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78927598"
+  ms.lasthandoff: 04/06/2020
+  ms.locfileid: "80756318"
 landingContent:
-- title: Microsoft 商用マーケットプレースでの作業
+- title: コマーシャル マーケットプレースでの作業
   linkLists:
   - linkListType: get-started
     links:
@@ -25,44 +25,52 @@ landingContent:
       url: ./partner-center-portal/create-account.md
     - text: 公開オプションを選定する
       url: ./determine-your-listing-type.md
+    - text: ポリシーと利用規約
+      url: ./policies-terms.md
     - text: Microsoft 商用マーケットプレースに関する FAQ
       url: ./marketplace-faq-publisher-guide.md
     - text: リリース ノート
       url: https://aka.ms/publicmarketplaceroadmap
-    - text: ポリシーと利用規約
-      url: ./policies-terms.md
 - title: 一般的なシナリオとタスク
   linkLists:
   - linkListType: overview
     links:
-    - text: マーケティングのベスト プラクティス
-      url: ./gtm-marketing-best-practices.md
-    - text: オファーの掲載のベスト プラクティス
-      url: ./gtm-offer-listing-best-practices.md
     - text: SaaS アプリケーションのオファー発行ガイド
       url: ./marketplace-saas-applications-technical-publishing-guide.md
+    - text: マーケティングのベスト プラクティス
+      url: ./gtm-marketing-best-practices.md
+    - text: クラウド ソリューション プロバイダー
+      url: ./cloud-solution-providers.md
+    - text: オファーの掲載のベスト プラクティス
+      url: ./gtm-offer-listing-best-practices.md
   - linkListType: get-started
     links:
+    - text: マーケットプレース オファーからの潜在顧客
+      url: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
+    - text: パートナー センターの [共同販売] オプション
+      url: ./partner-center-portal/commercial-marketplace-co-sell.md
+    - text: 共同販売のパートナー エンゲージメント
+      url: ./marketplace-co-sell.md
+    - text: Microsoft AppSource と Office 内でソリューションを使用できるようにする
+      url: https://docs.microsoft.com/office/dev/store/submit-to-appsource-via-partner-center
     - text: Azure Marketplace と AppSource コミュニティ フォーラムに参加する
       url: https://aka.ms/MarketplaceCommunity
     - text: ウェビナーに参加して話を聞くため、または後からオンデマンドで視聴するために登録を行う
       url: https://aka.ms/allwebinars
-    - text: Microsoft AppSource と Office 内でソリューションを使用できるようにする
-      url: https://docs.microsoft.com/office/dev/store/submit-to-appsource-via-partner-center
 - title: オファーと顧客のデータを分析する
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: '[Summary]\(概要\) ダッシュボード'
       url: ./partner-center-portal/summary-dashboard.md
-    - text: '[注文] ダッシュボード'
-      url: ./partner-center-portal/orders-dashboard.md
-    - text: 顧客ダッシュボード
-      url: ./partner-center-portal/customer-dashboard.md
-    - text: '[使用状況] ダッシュボード'
-      url: ./partner-center-portal/usage-dashboard.md
     - text: '[Marketplace の分析情報] ダッシュボード'
       url: ./partner-center-portal/insights-dashboard.md
+    - text: '[使用状況] ダッシュボード'
+      url: ./partner-center-portal/usage-dashboard.md
+    - text: 顧客ダッシュボード
+      url: ./partner-center-portal/customer-dashboard.md
+    - text: '[注文] ダッシュボード'
+      url: ./partner-center-portal/orders-dashboard.md
     - text: '[ダウンロード] ダッシュボード'
       url: ./partner-center-portal/downloads-dashboard.md
     - text: '[評価とレビュー] ダッシュボード'
@@ -71,61 +79,61 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure アプリケーション プラン
-      url: ./partner-center-portal/create-new-azure-apps-offer.md
-    - text: Dynamics 365 for Customer Engagement と PowerApps のオファー
-      url: ./partner-center-portal/create-new-customer-engagement-offer.md
-    - text: Dynamics 365 for Operations のオファー
-      url: ./partner-center-portal/create-new-operations-offer.md
-    - text: Dynamics 365 Business Central のオファー
-      url: ./partner-center-portal/create-new-business-central-offer.md
     - text: SaaS オファー
       url: ./partner-center-portal/create-new-saas-offer.md
     - text: 仮想マシンのオファー
       url: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
+    - text: Azure アプリケーション プラン
+      url: ./partner-center-portal/create-new-azure-apps-offer.md
+    - text: Dynamics 365 for Customer Engagement と PowerApps のオファー
+      url: ./partner-center-portal/create-new-customer-engagement-offer.md
+    - text: Dynamics 365 Business Central のオファー
+      url: ./partner-center-portal/create-new-business-central-offer.md
+    - text: Dynamics 365 for Operations のオファー
+      url: ./partner-center-portal/create-new-operations-offer.md
     - text: その他の種類のオファー
       url: ./cloud-partner-portal/cpp-marketplace-offers.md
 - title: 支払いの受け取り
   linkLists:
   - linkListType: concept
     links:
-    - text: 支払いアカウントと税フォームを設定する
-      url: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
-    - text: 商用マーケットプレースの課金
-      url: ./partner-center-portal/billing-details.md
-    - text: 支払いのしきい値、方法、期間
-      url: ./partner-center-portal/payment-thresholds-methods-timeframes.md
     - text: 支払いレポート
       url: ./partner-center-portal/payout-summary.md
+    - text: 支払いのしきい値、方法、期間
+      url: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+    - text: 支払いアカウントと税フォームを設定する
+      url: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
     - text: 税の詳細
       url: ./partner-center-portal/tax-details-paid-transactions.md
+    - text: 商用マーケットプレースの課金
+      url: ./partner-center-portal/billing-details.md
 - title: API リファレンス
   linkLists:
   - linkListType: reference
     links:
-    - text: API 前提条件
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
     - text: SaaS Fulfillment API
       url: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
-    - text: Cloud パートナー ポータルの API リファレンス
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
     - text: Marketplace の測定サービス API
       url: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-    - text: オファーを作成または変更する
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
+    - text: Cloud パートナー ポータルの API リファレンス
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
+    - text: API 前提条件
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
     - text: オファーを取得する
       url: .//cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
-    - text: 公開
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
+    - text: オファーを作成または変更する
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
     - text: 仮想マシン プランの価格
       url: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
+    - text: 公開
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
 - title: サポートを受ける
   linkLists:
   - linkListType: get-started
     links:
     - text: サポート オプション
       url: ./partner-center-portal/support.md
-    - text: 利用可能な地域と通貨
-      url: ./marketplace-geo-availability-currencies.md
     - text: 認証エラーのトラブルシューティング
       url: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
+    - text: 利用可能な地域と通貨
+      url: ./marketplace-geo-availability-currencies.md

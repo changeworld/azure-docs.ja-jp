@@ -1,29 +1,29 @@
 ---
 title: Azure Cosmos DB Emulator 証明書をエクスポートする
-description: Windows 証明書ストアを使用しない言語とランタイムで開発を行う場合、SSL 証明書をエクスポートして管理する必要があります。 この記事では詳しい手順について説明します。
+description: Windows 証明書ストアを使用しない言語とランタイムで開発する場合は、TLS/SSL 証明書をエクスポートして管理する必要があります。 この記事では詳しい手順について説明します。
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: a398c10511fdd3891a2c429f0ef46869dcc48922
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: b4283ea7d500ca038d9f1cade89c772880ece199
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244446"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409060"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java、Python、および Node.js で使用する Azure Cosmos DB Emulator 証明書のエクスポート
 
 [**Emulator をダウンロードする**](https://aka.ms/cosmosdb-emulator)
 
-Azure Cosmos DB Emulator では、SSL 接続の使用など、Azure Cosmos DB サービスを開発用にエミュレートするローカル環境を使用できます。 この記事では、独自の[証明書ストア](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)を使用する Java、[ソケット ラッパー](https://docs.python.org/2/library/ssl.html)を使用する Python、[tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback) を使用する Node.js など、Windows 証明書ストアと統合されていない言語とランタイムで使用するために、SSL 証明書をエクスポートする方法について説明します。 このエミュレーターの詳細については、「[開発とテストでの Azure Cosmos DB Emulator の使用](./local-emulator.md)」をご覧ください。
+Azure Cosmos DB Emulator には、開発の目的で Azure Cosmos DB サービスをエミュレートするローカル環境 (TLS 接続の使用を含む) が用意されています。 この記事では、独自の[証明書ストア](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)を使用する Java、[ソケット ラッパー](https://docs.python.org/2/library/ssl.html)を使用する Python、[tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback) を使用する Node.js など、Windows 証明書ストアと統合されていない言語とランタイムで使用するために TLS/SSL 証明書をエクスポートする方法について説明します。 このエミュレーターの詳細については、「[開発とテストでの Azure Cosmos DB Emulator の使用](./local-emulator.md)」をご覧ください。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
 > * 証明書のローテーション
-> * SSL 証明書のエクスポート
+> * TLS/SSL 証明書のエクスポート
 > * Java、Python、および Node.js の証明書を使用する方法の学習
 
 ## <a name="certification-rotation"></a>証明書のローテーション
@@ -34,7 +34,7 @@ Azure Cosmos DB ローカル エミュレーターの証明書は、エミュレ
 
 ![Azure Cosmos DB ローカル エミュレーターの [データのリセット]](./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png)
 
-## <a name="how-to-export-the-azure-cosmos-db-ssl-certificate"></a>Azure Cosmos DB SSL 証明書をエクスポートする方法
+## <a name="how-to-export-the-azure-cosmos-db-tlsssl-certificate"></a>Azure Cosmos DB TLS/SSL 証明書をエクスポートする方法
 
 1. certlm.msc を実行して Windows 証明書マネージャーを起動します。次に、Personal フォルダー、Certificates フォルダーの順に移動して、**DocumentDbEmulatorCertificate** というフレンドリ名の証明書を開きます。
 
@@ -74,23 +74,23 @@ Java クライアントが使用される Java アプリケーションまたは
 
 X.509 証明書を既定の Java 証明書ストアにインポートする場合は、「[証明書を Java CA 証明書ストアに追加する方法](https://docs.microsoft.com/azure/java-add-certificate-ca-store)」の手順に従ってください。 keytool を実行する際には %JAVA_HOME% ディレクトリで作業することに注意してください。
 
-"CosmosDBEmulatorCertificate" SSL 証明書をインストールしたら、アプリケーションは、Azure Cosmos DB ローカル エミュレーターに接続してそれを使用できるようになります。 依然として問題がある場合は、記事「[Debugging SSL/TLS Connections (SSL/TLS 接続のデバッグ)](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html)」に従ってください。 多くの場合、証明書が %JAVA_HOME%/jre/lib/security/cacerts ストアにインストールされていません。 たとえば、複数のバージョンの Java をインストールしてある場合、更新したストアとは異なる cacerts ストアがアプリケーションによって使用されている可能性があります。
+"CosmosDBEmulatorCertificate" TLS/SSL 証明書がインストールされると、アプリケーションはローカルの Azure Cosmos DB Emulator に接続し、それを使用できるようになります。 依然として問題がある場合は、記事「[Debugging SSL/TLS Connections (SSL/TLS 接続のデバッグ)](https://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html)」に従ってください。 多くの場合、証明書が %JAVA_HOME%/jre/lib/security/cacerts ストアにインストールされていません。 たとえば、複数のバージョンの Java をインストールしてある場合、更新したストアとは異なる cacerts ストアがアプリケーションによって使用されている可能性があります。
 
 ## <a name="how-to-use-the-certificate-in-python"></a>Python で証明書を使用する方法
 
-[Python SDK (バージョン 2.0.0 以降)](sql-api-sdk-python.md) for SQL API の場合、既定ではローカル エミュレーターに接続する際に SSL 証明書を使用しません。 SSL 検証を使用したい場合は、[Python ソケット ラッパー](https://docs.python.org/2/library/ssl.html)に関するドキュメントの例に従ってください。
+既定では、SQL API 用の [Python SDK (バージョン 2.0.0 以降)](sql-api-sdk-python.md) は、ローカル エミュレーターに接続するときに TLS/SSL 証明書を使用しようとしません。 ただし、TLS 検証を使用したい場合は、[Python ソケット ラッパー](https://docs.python.org/2/library/ssl.html) のドキュメントの例に従うことができます。
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>Node.js で証明書を使用する方法
 
-[Node.js SDK (バージョン 1.10.1 以降)](sql-api-sdk-node.md) for SQL API の場合、既定ではローカル エミュレーターに接続する際に SSL 証明書を使用しません。 SSL 検証を使用する場合は、[Node.js のドキュメント](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)の例に従ってください。
+既定では、SQL API 用の [Node.js SDK (バージョン 1.10.1 以降)](sql-api-sdk-node.md) は、ローカル エミュレーターに接続するときに TLS/SSL 証明書を使用しようとしません。 ただし、TLS 検証を使用したい場合は、[Node.js のドキュメント](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)の例に従うことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次の手順を行いました。
 
 > [!div class="checklist"]
 > * 証明書のローテーション
-> * SSL 証明書のエクスポート
+> * TLS/SSL 証明書のエクスポート
 > * Java、Python、および Node.js の証明書を使用する方法の学習
 
 これで、概念セクションに進み、Azure Cosmos DB の詳細について学習できるようになりました。 

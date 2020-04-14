@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: ee8dec821e8cbb4657323c167a463b94b7935ab1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 223544f7ceddce6bc2071d561da1cff1c0d4b53b
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623428"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420153"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 
@@ -126,7 +126,7 @@ keytool -importcert -alias bc2025ca -file bc2025.crt
 
 # Install the Cassandra libraries in order to get CQLSH:
 echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
-curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install cassandra
 
@@ -145,6 +145,8 @@ Azure Cosmos DB は、Cassandra API アカウントで以下のデータベー�
 
 * CREATE KEYSPACE (このコマンドのレプリケーション設定は無視されます)
 * CREATE TABLE 
+* CREATE INDEX (インデックス名の指定なし、完全に固定されたインデックスはまだサポートされていません)
+* ALLOW FILTERING
 * ALTER TABLE 
 * USE 
 * INSERT 

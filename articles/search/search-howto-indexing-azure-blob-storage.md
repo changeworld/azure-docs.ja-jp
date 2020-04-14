@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5df1198e6681431738f886eb7c3ad549936eab1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020626"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067640"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Azure Blob Storage 内ドキュメントのインデックスを Azure Cognitive Search で作成する方法
 
@@ -289,16 +289,59 @@ BLOB の解析中またはインデックスへのドキュメントの追加中
     }
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>インデックスの増分作成と削除の検出
+
 スケジュールに従って実行するように BLOB のインデクサーを設定すると、その BLOB の `LastModified` タイムスタンプから判断された変更済みの BLOB のみインデックスが再構築されます。
 
 > [!NOTE]
 > 変更検出ポリシーを独自に指定する必要はありません。インデックスの増分作成は自動的に有効になります。
 
-ドキュメントの削除をサポートするには、"論理削除" 方式を使用してください。 BLOB を完全に削除すると、対応するドキュメントが Search インデックスから削除されません。 代わりに、次の手順を実行します。  
+ドキュメントの削除をサポートするには、"論理削除" 方式を使用してください。 BLOB を完全に削除すると、対応するドキュメントが Search インデックスから削除されません。
 
-1. 独自のメタデータ プロパティを BLOB に追加して、これが論理的に削除されていることを Azure Cognitive Search に示します
-2. データ ソースで論理削除の検出ポリシーを構成します
-3. インデクサーが BLOB を処理したら (インデクサーの状態 API によって示されます)、BLOB を物理的に削除できます
+論理的な削除方法を実装するには、2 つの方法があります。 以下では両方を説明します。
+
+### <a name="native-blob-soft-delete-preview"></a>ネイティブ BLOB の論理的な削除 (プレビュー)
+
+> [!IMPORTANT]
+> ネイティブ BLOB の論理的な削除のサポートはプレビュー段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 [REST API バージョン 2019-05-06-Preview](https://docs.microsoft.com/azure/search/search-api-preview) でこの機能を提供します。 現時点では、ポータルと .NET SDK によるサポートはありません。
+
+> [!NOTE]
+> ネイティブ BLOB の論理的な削除ポリシーを使用する場合、インデックス内のドキュメントのドキュメント キーは BLOB プロパティまたは BLOB メタデータである必要があります。
+
+この方法では、Azure Blob Storage によって提供される[ネイティブ BLOB の論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)機能を使用します。 ストレージ アカウントでネイティブ BLOB の論理的な削除が有効になっていて、データソースにネイティブの論理的な削除ポリシーが設定されており、論理的に削除された状態に遷移した BLOB がインデクサーによって検出された場合、そのドキュメントはインデクサーによってインデックスから削除されます。 Azure Data Lake Storage Gen2 から BLOB のインデックスを作成する場合、ネイティブ BLOB の論理的な削除ポリシーはサポートされていません。
+
+次の手順に従います。
+1. [Azure Blob Storage に対してネイティブの論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)を有効にします。 保持ポリシーは、インデクサー間隔スケジュールよりも大幅に高い値に設定することをお勧めします。 このようにすると、インデクサーの実行で問題が発生した場合、またはインデックスを作成するドキュメントの数が多い場合に、インデクサーが論理的に削除された BLOB を最終的に処理するのに十分な時間があります。 Azure Cognitive Search インデクサーでは、論理的に削除された状態の BLOB を処理する場合にのみ、インデックスからドキュメントが削除されます。
+1. データ ソースでネイティブ BLOB の論理的な削除の検出ポリシーを構成します。 次に例を示します。 この機能はプレビュー段階であるため、プレビュー REST API を使用する必要があります。
+1. インデクサーを実行するか、またはスケジュールに基づいて実行するようにインデクサーを設定します。 インデクサーが実行されて BLOB が処理されると、ドキュメントはインデックスから削除されます。
+
+    ```
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06-Preview
+    Content-Type: application/json
+    api-key: [admin key]
+    {
+        "name" : "blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "my-container", "query" : null },
+        "dataDeletionDetectionPolicy" : {
+            "@odata.type" :"#Microsoft.Azure.Search.NativeBlobSoftDeleteDeletionDetectionPolicy"
+        }
+    }
+    ```
+
+#### <a name="reindexing-undeleted-blobs"></a>削除が取り消された BLOB のインデックス再作成
+
+ストレージ アカウントでネイティブの論理的な削除を有効にして Azure Blob Storage から BLOB を削除すると、BLOB は論理的に削除された状態に移行し、保持期間内にその BLOB の削除を取り消すことができます。 Azure Cognitive Search データ ソースにネイティブ BLOB の論理的な削除ポリシーがあり、論理的に削除された BLOB をインデクサーが処理すると、そのドキュメントはインデックスから削除されます。 その BLOB が後で削除を取り消されない場合、インデクサーで常にその BLOB のインデックスが再作成されるとは限りません。 これは、インデクサーでは BLOB の `LastModified` タイムスタンプに基づいて、インデックスを作成する BLOB が決定されるためです。 論理的に削除された BLOB の削除が取り消されたとき、`LastModified` タイムスタンプは更新されないため、インデクサーで、削除が取り消された BLOB より新しい `LastModified` タイムスタンプを持つ BLOB が既に処理されている場合、削除が取り消された BLOB のインデックス再作成は行われません。 削除が取り消された BLOB のインデックス再作成が確実に行われるようにするには、BLOB の `LastModified` タイムスタンプを更新する必要があります。 これを行う 1 つの方法は、その BLOB のメタデータを保存することです。 メタデータを変更する必要はありませんが、メタデータを保存すると BLOB の `LastModified` タイムスタンプが更新され、インデクサーでこの BLOB のインデックス再作成が必要であることが認識されます。
+
+### <a name="soft-delete-using-custom-metadata"></a>カスタム メタデータを使用した論理的な削除
+
+この方法では、BLOB のメタデータを使用して、ドキュメントを検索インデックスから削除するタイミングを指定します。
+
+次の手順に従います。
+
+1. カスタム メタデータのキーと値のペアを BLOB に追加して、これが論理的に削除されていることを Azure Cognitive Search に示します。
+1. データ ソースで論理的な削除の列の検出ポリシーを構成します。 次に例を示します。
+1. インデクサーによって BLOB が処理され、インデックスからドキュメントが削除されると、Azure Blob Storage の BLOB を削除できます。
 
 たとえば、次のポリシーでは、BLOB のメタデータ プロパティ `IsDeleted` の値が `true` のときに、その BLOB が削除されるものと見なされます。
 
@@ -310,13 +353,17 @@ BLOB の解析中またはインデックスへのドキュメントの追加中
         "name" : "blob-datasource",
         "type" : "azureblob",
         "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : "my-folder" },
+        "container" : { "name" : "my-container", "query" : null },
         "dataDeletionDetectionPolicy" : {
             "@odata.type" :"#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",     
             "softDeleteColumnName" : "IsDeleted",
             "softDeleteMarkerValue" : "true"
         }
-    }   
+    }
+
+#### <a name="reindexing-undeleted-blobs"></a>削除が取り消された BLOB のインデックス再作成
+
+データ ソースで論理的な削除の列の検出ポリシーを設定してから、マーカー値を使用してカスタム メタデータを BLOB に追加した後、インデクサーを実行すると、インデクサーによりそのドキュメントがインデックスから削除されます。 そのドキュメントのインデックスを再作成する場合は、単にその BLOB の論理的な削除のメタデータ値を変更して、インデクサーを再実行します。
 
 ## <a name="indexing-large-datasets"></a>大規模なデータセットのインデックス作成
 

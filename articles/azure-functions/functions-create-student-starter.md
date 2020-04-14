@@ -3,15 +3,15 @@ title: Azure for Students Starter を使用して関数を作成する
 description: Azure for Student Starter サブスクリプション内から Azure 関数を作成する方法について説明します
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 author: alexkarcher-msft
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 189a0bc80ab2894b2888b496b3beb45249d859f6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c7dd88bf0ead558a0c4951baf38543566d805caa
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75921128"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756458"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Azure for Students Starter を使用して関数を作成する
 

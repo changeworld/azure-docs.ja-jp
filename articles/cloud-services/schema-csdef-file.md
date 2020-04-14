@@ -1,5 +1,6 @@
 ---
 title: Azure Cloud Services 定義スキーマ (.csdef ファイル) | Microsoft Docs
+description: サービス定義 (.csdef) ファイルは、サービスの利用可能なロール、エンドポイント、および構成値を含む、アプリケーションのサービス モデルを定義します。
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -8,12 +9,12 @@ ms.topic: reference
 caps.latest.revision: 42
 author: tgore03
 ms.author: tagore
-ms.openlocfilehash: 11660fe4f76cad9577b66e72893670dd1b9b559d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dadb50bd0663f47e6a1bf3d58b5187c8b466964d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449068"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528372"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure Cloud Services 定義スキーマ (.csdef ファイル)
 サービス定義ファイルは、アプリケーションのサービス モデルを定義します。 このファイルには、クラウド サービスで使用できるロールの定義が含まれ、サービス エンドポイントの指定やサービスの構成設定の確立を行います。 構成設定の値は、[クラウド サービス (クラシック) 構成スキーマ](/previous-versions/azure/reference/ee758710(v=azure.100))に関するページの説明に従って、サービス構成ファイルで設定されます。
@@ -57,7 +58,7 @@ ms.locfileid: "75449068"
 - [WorkerRole スキーマ](schema-csdef-workerrole.md)
 - [NetworkTrafficRules スキーマ](schema-csdef-networktrafficrules.md)
 
-##  <a name="ServiceDefinition"></a> ServiceDefinition 要素
+##  <a name="servicedefinition-element"></a><a name="ServiceDefinition"></a> ServiceDefinition 要素
 `ServiceDefinition` 要素は、サービス定義ファイルの最上位の要素です。
 
 以下の表に、`ServiceDefinition` 要素の属性を示します。

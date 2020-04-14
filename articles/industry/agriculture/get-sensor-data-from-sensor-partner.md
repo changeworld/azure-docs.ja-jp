@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 9364c344c58d17f9f6e6404dd8aa850af032cee9
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138369"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398226"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>センサー パートナーからセンサー データを取得する
 
@@ -37,35 +37,44 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
  - クライアント シークレット
  - EventHub 接続文字列
 
-上記の情報を生成するには、次の手順を行います (これらの手順は Azure で実行する必要があるため、FarmBeats がデプロイされている Azure サブスクリプションにアクセスする必要があることに注意してください)。
+上述の情報を生成するには、次の手順に従います。
 
-1. [zip ファイル](https://aka.ms/farmbeatspartnerscriptv2)をダウンロードし、ローカル ドライブに展開します。 ZIP ファイル内には 1 つのファイルがあります。
+> [!NOTE]
+> FarmBeats がデプロイされている Azure サブスクリプションにアクセスするためには、これらの手順は Azure で完了する必要があります。
 
-2. https://portal.azure.com/ にサインインします。
+1. https://portal.azure.com/ にサインインします。
 
-3. **FarmBeats バージョン 1.2.7 以降を使用している場合は、手順 3a、3b、3c をスキップし、手順 4 に進みます。** 。 FarmBeats のバージョンを確認するには、FarmBeats UI の右上にある設定アイコンをクリックします。
+2. **FarmBeats バージョン 1.2.7 以降を使用している場合は、手順 a、b、c をスキップし、手順 3 に進みます。** 。 FarmBeats のバージョンを確認するには、FarmBeats UI の右上隅にある**設定**アイコンを選択します。
 
-3a. [Azure Active Directory] > [アプリの登録] に移動します
+      a.  **[Azure Active Directory]**  >  **[アプリの登録]** の順に進みます。
 
-3b. FarmBeats デプロイの一部として作成された [アプリの登録] をクリックします。 それは、FarmBeats データ ハブと同じ名前になります。
+      b. FarmBeats デプロイの一部として作成された **[アプリの登録]** を選択します。 それは、FarmBeats データ ハブと同じ名前になります。
 
-3c. [API の公開] をクリックし、[クライアント アプリケーションの追加] をクリックし、「**04b07795-8ddb-461a-bbee-02f9e1bf7b46**」と入力し、[Authorize Scope]\(スコープの承認\) をオンにします。 これにより、Azure CLI (Cloud Shell) にアクセスして、次の手順を実行することができます。
+      c. **[API の公開]** を選択し、 **[クライアント アプリケーションの追加]** を選択し、「**04b07795-8ddb-461a-bbee-02f9e1bf7b46**」と入力し、 **[Authorize Scope]\(スコープの承認\)** をオンにします。 これにより、Azure CLI (Cloud Shell) にアクセスして、次の手順を実行することができます。
 
-4. Cloud Shell を開きます。 このオプションは、Azure portal の右上隅にあるツール バーで使用できます。
+3. Cloud Shell を開きます。 このオプションは、Azure portal の右上隅にあるツール バーで使用できます。
 
     ![Azure portal のツール バー](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-5. 環境が **[PowerShell]** に設定されていることを確認します。 既定では、[Bash] に設定されています。
+4. 環境が **[PowerShell]** に設定されていることを確認します。 既定では、[Bash] に設定されています。
 
     ![PowerShell ツール バーの設定](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-6. 手順 1 のファイルを Cloud Shell インスタンスでアップロードします。
+5. ホーム ディレクトリに移動します。
 
-    ![ツール バーの [アップロード] ボタン](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+    ```azurepowershell-interactive 
+    cd  
+    ```
 
-7. ファイルがアップロードされたディレクトリに移動します。 既定では、ファイルはユーザー名の下のホーム ディレクトリにアップロードされます。
+6. 次のコマンドを実行します。 これにより、スクリプトがホーム ディレクトリにダウンロードされます。
 
-8. 次のスクリプトを実行します。 このスクリプトは、[Azure Active Directory] の [概要] ページから取得できるテナント ID を要求します。
+    ```azurepowershell-interactive 
+
+    wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
+
+    ```
+
+7. 次のスクリプトを実行します。 このスクリプトは、 **[Azure Active Directory]**  >  **[概要]** ページから取得できるテナント ID を要求します。
 
     ```azurepowershell-interactive 
 
@@ -73,7 +82,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
     ```
 
-9. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。
+8. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列**の値をキャプチャします。
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>生成された資格情報を使用してデバイス データを統合する
 
@@ -83,12 +92,16 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
  - クライアント ID
  - クライアント シークレット
  - テナント ID
- 
-これをご自分のデバイス パートナーに提供することで、FarmBeats をリンクすることができます。 デバイス パートナー ポータルにアクセスして同じことを行うこともできます。 たとえば、Davis Instruments からのデバイスを使用している場合は、次に示すページに進みます。
 
-[Davis Instruments](https://weatherlink.github.io/azure-farmbeats/setup)
+これをご自分のデバイス パートナーに提供することで、FarmBeats をリンクすることができます。 デバイス パートナー ポータルにアクセスして同じことを行うこともできます。 たとえば、Davis Instruments、Teralytic、または Pessl Instruments (Metos.at) のデバイスを使用している場合、次に示す対応するページにアクセスします。
 
- デバイス プロバイダーは、正常に統合されたことを確認します。 確認後、Azure FarmBeats 上にすべてのデバイスとセンサーを表示できます。
+1. [Davis Instruments](https://weatherlink.github.io/azure-farmbeats/setup)
+
+2. [Teralytic](https://app.teralytic.com/)
+
+3. [Pessl Instruments](https://ng.fieldclimate.com/user-api-services)
+
+デバイス プロバイダーは、正常に統合されたことを確認します。 確認後、Azure FarmBeats 上にすべてのデバイスとセンサーを表示できます。
 
 ## <a name="view-devices-and-sensors"></a>デバイスとセンサーの表示
 
@@ -135,6 +148,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
     ![[デバイスの関連付け] ウィンドウ](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
 
 6. 各デバイスを異なるファームに関連付けるには、 **[ファームに割り当て]** 列のドロップダウン矢印を選択し、デバイス行ごとにファームを選択します。
+
 7. **[割り当て]** を選択して、デバイスの割り当てを完了します。
 
 ### <a name="visualize-sensor-data"></a>センサー データの視覚化

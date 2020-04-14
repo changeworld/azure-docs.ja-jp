@@ -3,12 +3,12 @@ title: Azure ファイル共有のバックアップについて
 description: Recovery Services コンテナーに Azure ファイル共有をバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 0e17b05a3febaa673fb29d45c2bcef25e2996df8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: fd5bb51b2c7b5c09e9d859b69c3094eb50c205b5
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385717"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396275"
 ---
 # <a name="about-azure-file-share-backup"></a>Azure ファイル共有のバックアップについて
 
@@ -43,6 +43,15 @@ Azure ファイル共有のバックアップは、クラウド内のデータ�
 6. Azure ファイル共有の内容 (個々のファイルまたは完全な共有) は、ソース ファイル共有にあるスナップショットから復元できます。 操作がトリガーされるとメタデータ ストアからスナップショットの URL が取得され、データが一覧表示されて、ソース スナップショットから、選択したターゲット ファイル共有に転送されます。
 
 7. バックアップと復元ジョブの監視データが Azure Backup 監視サービスにプッシュされます。 これにより、1 つのダッシュボードでファイル共有のクラウド バックアップを監視することができます。 それに加え、バックアップの正常性に影響がある場合のアラートや電子メール通知を構成することもできます。 電子メールは、Azure 電子メール サービスを介して送信されます。
+
+## <a name="backup-costs"></a>バックアップのコスト
+
+Azure Files 共有のバックアップはスナップショットベースのソリューションであり、スナップショットに関して発生するストレージ料金は、 Azure Files 使用量に応じて課金されます。その詳細は、[こちら](https://azure.microsoft.com/pricing/details/storage/files/)に記載されています。
+
+ただし、バックアップソリューションを活用するための保護されたインスタンスの料金は、「[Azure Files のバックアップ](https://azure.microsoft.com/pricing/details/backup/)」のセクションに記載された価格モデルに基づいています。 現時点では、実際の価格は米国中西部のみを対象に更新されています。 その他のリージョンについては、同じ価格モデルを使用して、地域状況に応じた正確な価格更新がまもなく行われる予定です。
+
+>[!NOTE]
+>プレビュー期間中には "保護されたインスタンスの料金" は課金さされません。[こちら](https://azure.microsoft.com/pricing/details/storage/files/)に記載された価格に従って、スナップショットのみを対象に課金されます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 24ff081d40d5cd3adf771511ca0b52d66c287b63
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 1e559309b8e8d9768ca2f79dabfb01ec6086a961
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272636"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348713"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
@@ -25,7 +25,7 @@ Azure Monitor は、[ログ](data-platform-logs.md) データを Log Analytics �
 
 ## <a name="configure-access-control-mode"></a>アクセス制御モードを構成する
 
-Azure portal から、あるいは Azure PowerShell を利用し、ワークスペース上で構成されたアクセス制御モードを表示できます。  この設定は、サポートされている次のいずれかの方法で変更できます。
+Azure portal から、または Azure PowerShell を利用し、ワークスペース上で構成された[アクセス制御モード](design-logs-deployment.md)を表示できます。  この設定は、サポートされている次のいずれかの方法で変更できます。
 
 * Azure portal
 

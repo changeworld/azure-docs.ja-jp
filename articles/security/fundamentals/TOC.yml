@@ -85,9 +85,9 @@
     - name: データベースのセキュリティ
       items:
         - name: 概要
-          href: database-security-overview.md
+          href: ../../sql-database/sql-database-security-overview.md
         - name: ベスト プラクティス
-          href: database-best-practices.md
+          href: ../../sql-database/sql-database-security-best-practice.md
         - name: セキュリティ チェックリスト
           href: database-security-checklist.md
     - name: Storage のセキュリティ ガイド
@@ -115,6 +115,8 @@
       href: log-audit.md
     - name: セキュリティの管理と監視
       href: management-monitoring-overview.md
+    - name: リモート管理を強化する
+      href: management.md
     - name: 運用上のセキュリティ
       items:
         - name: 概要

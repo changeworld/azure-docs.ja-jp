@@ -1,17 +1,17 @@
 ---
-title: Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースの作成と構成を行う | Microsoft Docs
+title: Log Analytics ワークスペース用の Azure Resource Manager テンプレート
 description: Azure Resource Manager テンプレートを使用して、Log Analytics ワークスペースの作成と構成を実行できます。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 1b084b8cbf87817a4ff12fdb56f44b740a6d6a12
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 60f85a30815bc1bace409b50af6332bb6622d7ca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658899"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477989"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する
 
@@ -48,6 +48,9 @@ ms.locfileid: "77658899"
 
 次の例では、あなたのローカル コンピューターからのテンプレートを使用してワークスペースを作成します。 JSON テンプレートは、新しいワークスペースの名前と場所のみを必要とするように構成されています。 これは、[アクセス制御モード](design-logs-deployment.md#access-control-mode)、価格レベル、リテンション期間、容量予約レベルなど、その他のワークスペースパラメーターに指定された値を使用します。
 
+> [!WARNING]
+> 次のテンプレートを使用して、Log Analytics ワークスペースを作成し、データ収集を構成します。 これにより、課金設定が変更される可能性があります。 Azure 環境で適用する前に、「[Azure Monitor ログで使用量とコストを管理する](manage-cost-storage.md)」を確認して、Log Analytics ワークスペースで収集されたデータの課金について理解してください。
+
 容量予約の場合は、 SKU `CapacityReservation` と、プロパティ `capacityReservationLevel` 向けの GB 値を指定して、取り込みデータ用に選択されている容量予約を定義します。 次の一覧は、それを構成するときにサポートされる値とビヘイビアーの詳細を示しています。
 
 - いったん予約制限を設定すると、その後 31 日間は別の SKU に変更することはできません。
@@ -75,7 +78,7 @@ ms.locfileid: "77658899"
               "description": "Specifies the name of the workspace."
             }
         },
-      "pricingTier": {
+      "sku": {
         "type": "string",
         "allowedValues": [
           "pergb2018",
@@ -131,7 +134,7 @@ ms.locfileid: "77658899"
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-          "name": "[parameters('pricingTier')]"
+                    "name": "[parameters('sku')]"
                 },
                 "retentionInDays": 120,
                 "features": {
@@ -145,15 +148,15 @@ ms.locfileid: "77658899"
     }
     ```
 
-> [情報] 容量予約の設定については、次のプロパティを「sku」の下で使用します。
+   >[!NOTE]
+   >容量予約の設定については、次のプロパティを「sku」の下で使用します。
+   >* "name":"CapacityReservation",
+   >* "capacityReservationLevel":100
 
->   "name":"CapacityReservation",
+2. 要件に合わせてテンプレートを編集します。 パラメーターをインライン値として渡す代わりに、[Resource Manager パラメーター ファイル](../../azure-resource-manager/templates/parameter-files.md)を作成することを検討してください。 どのプロパティと値がサポートされているかを調べるには、[Microsoft.OperationalInsights/workspaces テンプレート](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)のリファレンスを参照してください。 
 
->   "capacityReservationLevel":100
-
-
-2. 要件に合わせてテンプレートを編集します。 どのプロパティと値がサポートされているかを調べるには、[Microsoft.OperationalInsights/workspaces テンプレート](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)のリファレンスを参照してください。 
 3. このファイルを **deploylaworkspacetemplate.json** としてローカル フォルダーに保存します。
+
 4. これでこのテンプレートをデプロイする準備が整いました。 PowerShell またはコマンド ラインのいずれかを使用して、コマンドの一部としてワークスペースの名前と場所を指定して、ワークスペースを作成します。 ワークスペース名は、すべての Azure サブスクリプションでグローバルに一意である必要があります。
 
    * PowerShell の場合は、テンプレートがあるフォルダーから以下のコマンドを使用します。
@@ -176,7 +179,7 @@ ms.locfileid: "77658899"
 次のサンプル テンプレートは、以下のタスクの実行方法を示しています。
 
 1. ソリューションをワークスペースに追加する
-2. 保存された検索の作成
+2. 保存された検索を作成します。 デプロイによって保存された検索が誤ってオーバーライドされないようにするには、"savedSearches" リソースに eTag プロパティを追加して、保存された検索のべき等性をオーバーライドして維持する必要があります。
 3. コンピューター グループの作成
 4. Windows エージェントがインストールされているコンピューターでの IIS ログのコレクションの有効化
 5. Linux コンピューターからの Logical Disk パフォーマンス カウンター (% Used Inodes、Free Megabytes、% Used Space、Disk Transfers/sec、Disk Reads/sec、Disk Writes/sec) の収集
@@ -197,7 +200,7 @@ ms.locfileid: "77658899"
         "description": "Workspace name"
       }
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "allowedValues": [
         "PerGB2018",
@@ -306,7 +309,7 @@ ms.locfileid: "77658899"
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('sku')]"
         }
       },
       "resources": [
@@ -318,11 +321,11 @@ ms.locfileid: "77658899"
             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
           ],
           "properties": {
-            "Category": "VMSS",
-            "ETag": "*",
-            "DisplayName": "VMSS Instance Count",
-            "Query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
-            "Version": 1
+            "category": "VMSS",
+            "eTag": "*",
+            "displayName": "VMSS Instance Count",
+            "query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
+            "version": 1
           }
         },
         {
@@ -605,7 +608,7 @@ ms.locfileid: "77658899"
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').customerId]"
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').sku.name]"
     },

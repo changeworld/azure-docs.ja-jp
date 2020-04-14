@@ -1,23 +1,23 @@
 ---
-title: チュートリアル - Azure Toolkit for IntelliJ:Spark アプリ - HDInsight
-description: チュートリアル - Azure Toolkit for IntelliJ を使用して Scala で記述された Spark アプリケーションを開発し、HDInsight Spark クラスターに送信します。
+title: Azure Toolkit for IntelliJ:Spark アプリ - HDInsight
+description: Azure Toolkit for IntelliJ を使用して Scala で記述された Spark アプリケーションを開発し、HDInsight Spark クラスターに送信します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 2631a0906a0f0886bdc106f1afef99860a6fe00b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d80f4cb12c79519818f6eccb2bb565bac472b471
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223589"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397695"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>チュートリアル:Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
+# <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
-このチュートリアルでは、IntelliJ IDE 用の **Azure Toolkit** プラグインを使用して Azure HDInsight 上の Apache Spark アプリケーションを開発する方法について説明します。 [Azure HDInsight](../hdinsight-overview.md) は、Hadoop、Apache Spark、Apache Hive、Apache Kafka といったオープンソースのフレームワークをクラウドで使用できるオープンソースのマネージド分析サービスです。
+この記事では、IntelliJ IDE 用の **Azure Toolkit** プラグインを使用して Azure HDInsight 上の Apache Spark アプリケーションを開発する方法について説明します。 [Azure HDInsight](../hdinsight-overview.md) は、Hadoop、Apache Spark、Apache Hive、Apache Kafka といったオープンソースのフレームワークをクラウドで使用できるオープンソースのマネージド分析サービスです。
 
 **Azure Toolkit** プラグインには、次のような使い方があります。
 
@@ -25,7 +25,7 @@ ms.locfileid: "79223589"
 * Azure HDInsight Spark クラスター リソースにアクセスする。
 * Scala Spark アプリケーションをローカルで開発して実行する。
 
-このチュートリアルでは、以下の内容を学習します。
+この記事では、次のことについて説明します。
 > [!div class="checklist"]
 > * Azure Toolkit for IntelliJ プラグインを使用する
 > * Apache Spark アプリケーションを開発する
@@ -35,7 +35,7 @@ ms.locfileid: "79223589"
 
 * HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 
-* [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。  このチュートリアルでは、Java バージョン 8.0.202 を使用します。
+* [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。  この記事では、Java バージョン 8.0.202 を使用します。
 
 * IntelliJ IDEA。 この記事では、[IntelliJ IDEA Community Version 2018.3.4](https://www.jetbrains.com/idea/download/) を使用します。
 
@@ -77,7 +77,7 @@ Scala プラグインをインストールするには、次の手順を実行�
 
     |  プロパティ   | 説明   |  
     | ----- | ----- |  
-    |プロジェクト名| 名前を入力します。  このチュートリアルでは `myApp` を使用します。|  
+    |プロジェクト名| 名前を入力します。  この記事では、`myApp` を使用します。|  
     |Project&nbsp;location (プロジェクトの場所)| プロジェクトを保存する任意の場所を入力します。|
     |Project SDK (プロジェクト SDK)| IDEA を初めて使用するとき、これは空白の場合があります。  **[New]\(新規作成\)** を選択し、自分の JDK に移動します。|
     |Spark バージョン|作成ウィザードにより、Spark SDK と Scala SDK の適切なバージョンが統合されます。 Spark クラスターのバージョンが 2.0 より前の場合は、 **[Spark 1.x]** を選択します。 それ以外の場合は、 **[Spark2.x]** を選択します。 この例では、**Spark 2.3.0 (Scala 2.11.8)** を使用します。|
@@ -188,7 +188,7 @@ Apache Ambari マネージド ユーザー名を使用して、HDInsight クラ�
 
     * **HDInsight クラスター**  
   
-        |プロパティ |Value |
+        |プロパティ |値 |
         |----|----|
         |リンクのリソースの種類|ドロップダウン リストから **[HDInsight クラスター]** を選択します。|
         |クラスター名/URL| クラスター名を入力します。|
@@ -200,7 +200,7 @@ Apache Ambari マネージド ユーザー名を使用して、HDInsight クラ�
 
     * **Livy サービス**  
   
-        |プロパティ |Value |
+        |プロパティ |値 |
         |----|----|
         |リンクのリソースの種類|ドロップダウン リストから **[Livy Service]\(Livy サービス\)** を選択します。|
         |Livy エンドポイント| Livy エンドポイントを入力します|
@@ -232,7 +232,7 @@ Scala アプリケーションを作成した後に、クラスターに送信�
 
 3. **[構成の編集]** ウィンドウで、次の値を指定して **[OK]** を選択します。
 
-    |プロパティ |Value |
+    |プロパティ |値 |
     |----|----|
     |Spark クラスター (Linux のみ)|アプリケーションを実行する HDInsight Spark クラスターを選択します。|
     |送信するアーティファクトの選択|既定の設定のままにします。|
@@ -317,7 +317,7 @@ WINUTILS.EXE の前提条件を満たしていることを確認します。
 
 4. 次の値を指定し、 **[OK]** を選択します。
 
-    |プロパティ |Value |
+    |プロパティ |値 |
     |----|----|
     |ジョブのメイン クラス|既定値は、選択したファイルのメイン クラスです。 クラスを変更するには、省略記号 ( **...** ) をクリックし、別のクラスを選択します。|
     |環境変数|HADOOP_HOME の値が正しいことを確認します。|
@@ -349,7 +349,7 @@ WINUTILS.EXE の前提条件を満たしていることを確認します。
 
 4. 次の値を指定し、 **[OK]** を選択します。
 
-    |プロパティ |Value |
+    |プロパティ |値 |
     |----|----|
     |Spark クラスター (Linux のみ)|アプリケーションを実行する HDInsight Spark クラスターを選択します。|
     |メイン クラス名|既定値は、選択したファイルのメイン クラスです。 クラスを変更するには、省略記号 ( **...** ) をクリックし、別のクラスを選択します。|
@@ -472,7 +472,7 @@ IntelliJ IDEA で作成した既存の Spark Scala アプリケーションを�
 
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 
-1. 表示される HDInsight クラスターの一覧で、このチュートリアル用に作成したクラスターの横にある **[...]** を選択します。
+1. 表示される HDInsight クラスターの一覧で、この記事用に作成したクラスターの横にある **[...]** を選択します。
 
 1. **[削除]** を選択します。 **[はい]** を選択します。
 
@@ -480,7 +480,7 @@ IntelliJ IDEA で作成した既存の Spark Scala アプリケーションを�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Toolkit for IntelliJ プラグインを使用して [Scala](https://www.scala-lang.org/) で記述された Apache Spark アプリケーションを開発してから、それを IntelliJ 統合開発環境 (IDE) から直接 HDInsight Spark クラスターに送信する方法を学習しました。 次の記事に進んで、Apache Spark に登録したデータを Power BI などの BI 分析ツールに取り込む方法を確認してください。
+この記事では、Azure Toolkit for IntelliJ プラグインを使用して [Scala](https://www.scala-lang.org/) で記述された Apache Spark アプリケーションを開発してから、それを IntelliJ 統合開発環境 (IDE) から直接 HDInsight Spark クラスターに送信する方法を学習しました。 次の記事に進んで、Apache Spark に登録したデータを Power BI などの BI 分析ツールに取り込む方法を確認してください。
 
 > [!div class="nextstepaction"]
 > [Power BI を使用して Apache Spark データを分析する](apache-spark-use-bi-tools.md)

@@ -1,18 +1,16 @@
 ---
 title: JavaScript Web アプリのための Azure Application Insights
 description: ページ ビューとセッション数、Web クライアントのデータ、シングル ページ アプリケーション (SPA) を取得し、使用パターンを追跡します。 JavaScript Web ページの例外とパフォーマンスの問題を検出します。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: c98feda62b7e5de5551b02d6189a1142ca8c5f88
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 5414a70180a82be8253dace7d800c90c1ae6a9bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276776"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234731"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -53,17 +51,17 @@ appInsights.trackPageView(); // Manually call trackPageView to establish the cur
 
 ```html
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("addTelemetryInitializer"),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),t.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(n){var o={config:n,initialize:!0},t=document,e=window,i="script";setTimeout(function(){var e=t.createElement(i);e.src=n.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",t.getElementsByTagName(i)[0].parentNode.appendChild(e)});try{o.cookie=t.cookie}catch(e){}function a(n){o[n]=function(){var e=arguments;o.queue.push(function(){o[n].apply(o,e)})}}o.queue=[],o.version=2;for(var s=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];s.length;)a("track"+s.pop());var r="Track",c=r+"Page";a("start"+c),a("stop"+c);var u=r+"Event";if(a("start"+u),a("stop"+u),a("addTelemetryInitializer"),a("setAuthenticatedUserContext"),a("clearAuthenticatedUserContext"),a("flush"),o.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===n.disableExceptionTracking||n.extensionConfig&&n.extensionConfig.ApplicationInsightsAnalytics&&!0===n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){a("_"+(s="onerror"));var p=e[s];e[s]=function(e,n,t,i,a){var r=p&&p(e,n,t,i,a);return!0!==r&&o["_"+s]({message:e,url:n,lineNumber:t,columnNumber:i,error:a}),r},n.autoExceptionInstrumented=!0}return o}(
 {
   instrumentationKey:"INSTRUMENTATION_KEY"
 }
-);window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+);(window[aiName]=aisdk).queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
 </script>
 ```
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>テレメトリを Azure portal に送信する
 
-既定では Application Insights JavaScript SDK は、アプリケーションの正常性や基になるユーザー エクスペリエンスを判別するのに役立つ多くのテレメトリ項目を自動収集します。 チェックの内容は次のとおりです
+既定では Application Insights JavaScript SDK は、アプリケーションの正常性や基になるユーザー エクスペリエンスを判別するのに役立つ多くのテレメトリ項目を自動収集します。 これには以下が含まれます。
 
 - アプリでの**キャッチされない例外** (以下の情報が含まれる)
     - スタック トレース
@@ -97,10 +95,11 @@ appInsights.trackTrace({message: 'This message will use a telemetry initializer'
 appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this is executed
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
+
 ## <a name="configuration"></a>構成
 ほとんどの構成フィールドは、既定値を false にできるように指定されています。 `instrumentationKey`以外のすべてのフィールドは省略可能です。
 
-| Name | Default | 説明 |
+| 名前 | Default | 説明 |
 |------|---------|-------------|
 | instrumentationKey | null | **必須**<br>Azure portal で入手したインストルメンテーション キー |
 | accountId | null | 省略可能なアカウント ID (アプリによってユーザーがアカウントにグループ化される場合)。 スペース、コンマ、セミコロン、等号、または縦棒は使用できません。 |
@@ -157,7 +156,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ## <a name="explore-browserclient-side-data"></a>ブラウザー/クライアント側データの参照
 
-ブラウザー/クライアント側データを表示するには、 **[メトリック]** に移動して、興味がある個別のメトリックを追加します。 
+ブラウザー/クライアント側データを表示するには、 **[メトリック]** に移動して、興味がある個別のメトリックを追加します。
 
 ![](./media/javascript/page-view-load-time.png)
 
@@ -167,7 +166,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ![](./media/javascript/browser.png)
 
-### <a name="performance"></a>パフォーマンス 
+### <a name="performance"></a>パフォーマンス
 
 ![](./media/javascript/performance-operations.png)
 
@@ -175,7 +174,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ![](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>Analytics 
+### <a name="analytics"></a>Analytics
 
 JavaScript SDK によって収集されたテレメトリに対してクエリを実行するには、 **[ログに表示 (Analytics)]** ボタンを選択します。 `client_Type == "Browser"`の `where` ステートメントを追加すると、JavaScript SDK のデータのみが表示され、他の SDK によって収集されるサーバー側のテレメトリがすべて除外されます。
  
@@ -196,7 +195,14 @@ dataset
 
 ### <a name="source-map-support"></a>ソース マップのサポート
 
-例外テレメトリのミニファイされたコール スタックは、Azure portal でアンミニファイすることができます。 [例外の詳細] パネルの既存の統合はすべて、新たにアンミニファイされるコール スタックに対して動作します。 アンミニファイするためのソース マップのドラッグ アンド ドロップでは、既存および将来のすべての JS SDK (+Node.JS) がサポートされるため、SDK バージョンをアップグレードする必要はありません。 アンミニファイされたコール スタックを表示するには、次の手順に従います。
+例外テレメトリのミニファイされたコール スタックは、Azure portal でアンミニファイすることができます。 [例外の詳細] パネルの既存の統合はすべて、新たにアンミニファイされるコール スタックに対して動作します。
+
+#### <a name="link-to-blob-storage-account"></a>Azure BLOB ストレージ アカウントにリンクする
+
+Application Insights リソースを独自の Azure Blob Storage コンテナーに リンクして、コール スタックを自動的にアンミニファイすることができます。 開始するには、[ソース マップの自動サポート](./source-map-support.md)に関する記事を参照してください。
+
+### <a name="drag-and-drop"></a>ドラッグ アンド ドロップ
+
 1. Azure portal で例外テレメトリ項目を選択し、[エンド ツー エンド トランザクションの詳細] を表示します。
 2. このコール スタックにどのソース マップが対応しているかを識別します。 ソース マップは、スタック フレームのソース ファイルと同じ名前であることが必要です。接尾辞は `.map` です。
 3. ソース マップを Azure portal のコール スタックにドラッグ アンド ドロップします。![](https://i.imgur.com/Efue9nU.gif)
@@ -213,13 +219,15 @@ npm i --save @microsoft/applicationinsights-web-basic
 
 実行できる例については、[Application Insights JavaScript SDK サンプル](https://github.com/topics/applicationinsights-js-demo)を参照してください。
 
-## <a name="upgrading-from-the-old-version-of-application-insights"></a>以前のバージョンの Application Insights からアップグレードする
+## <a name="upgrading-from-the-old-version-of-application-insights"></a>以前のバージョンの Application Insights からのアップグレード
 
 SDK V2 バージョンでの破壊的変更:
-- API 署名の向上のため、trackPageView や trackException など一部の API 呼び出しが更新されています。 IE8 以前のバージョンのブラウザーでの実行はサポートされません。
+- API 署名の向上のため、trackPageView や trackException などの一部の API 呼び出しが更新されています。 Internet Explorer 8 以前のバージョンのブラウザーでの実行はサポートされません。
 - データ スキーマの更新により、テレメトリ エンベロープのフィールド名と構造が変更されています。
 - `context.operation` が `context.telemetryTrace` に移動されました。 一部のフィールドも変更されました (`operation.id` --> `telemetryTrace.traceID`)。
-  - 現在のページビュー ID (SPA アプリなど) を手動で更新する場合、`appInsights.properties.context.telemetryTrace.traceID = Util.newId()` を使用して実行できます。
+  - (たとえば、SPA アプリで) 現在のページビュー ID を手動で更新するには、`appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` を使用します。
+    > [!NOTE]
+    > トレース ID を一意に保つには、以前に `Util.newId()` を使用した場所で今度は `Util.generateW3CId()` を使用します。 両方とも、最終的には操作 ID になります。
 
 現在の Application Insights PRODUCTION SDK (1.0.20) を使用しており、新しい SDK がランタイムで動作するかどうかを確認する場合は、現在の SDK 読み込みシナリオに応じて URL を更新します。
 
@@ -260,7 +268,7 @@ Chrome 最新バージョン ✔ |  Firefox 最新バージョン ✔ | IE 9+ & 
 
 Application Insights JavaScript SDK はオープンソースです。ソース コードを表示したり、プロジェクトに参加したりするには、[GitHub の公式リポジトリ](https://github.com/Microsoft/ApplicationInsights-JS)にアクセスしてください。
 
-## <a name="next"></a> 次のステップ
+## <a name="next-steps"></a><a name="next"></a> 次のステップ
 * [利用状況を追跡する](usage-overview.md)
 * [カスタム イベントとメトリックス](api-custom-events-metrics.md)
 * [ビルド - 測定 - 学習](usage-overview.md)

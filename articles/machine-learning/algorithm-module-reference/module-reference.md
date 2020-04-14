@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 02/22/2020
-ms.openlocfilehash: 334cf69db70e8a1e0c2994c492f15ff44505af0d
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: c24c7ce1d47a4734d79d7e17e9fb4b3a2d4d70e0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673373"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064141"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス (プレビュー)
 
@@ -24,7 +24,7 @@ ms.locfileid: "78673373"
 
 アルゴリズムの選択の詳細については、以下を参照してください。 
 * [アルゴリズムの選択方法](../how-to-select-algorithms.md)
-* [Azure Machine Learning アルゴリズム チート シート](../algorithm-cheat-sheet.md)
+* [Azure Machine Learning アルゴリズム チート シート](../../synapse-analytics/sql-data-warehouse/cheat-sheet.md)
 
 > [!TIP]
 > デザイナー内のパイプラインでは、特定のモジュールに関する情報を取得できます。 モジュールを選択し、 **[Quick Help]\(クイック ヘルプ\)** ウィンドウの **[more help]\(さらにヘルプを見る\)** リンクを選択します。
@@ -55,8 +55,9 @@ ms.locfileid: "78673373"
 | モデルのスコアリングと評価 | トレーニング済みモデルの正確性を測定します。 | [変換の適用](apply-transformation.md) <br/> [クラスターへのデータの割り当て](assign-data-to-clusters.md) <br/> [モデルのクロス検証](cross-validate-model.md) <br/> [モデルの評価](evaluate-model.md) <br/> [モデルのスコア付け](score-model.md) |
 | Python 言語 | コードを記述し、それをモジュール内に埋め込んで、Python をパイプラインと統合します。 | [Python モデルの作成](create-python-model.md) <br/> [Python スクリプトの実行](execute-python-script.md) |
 | R 言語 | コードを記述し、それをモジュール内に埋め込んで、R をパイプラインと統合します。 | [R スクリプトの実行](execute-r-script.md) |
-| Text Analytics | 構造化テキストと非構造化テキストの両方を操作するための特別な計算ツールを提供します。 | [テキストからの N Gram 特徴抽出](extract-n-gram-features-from-text.md) <br/> [特徴ハッシュ](feature-hashing.md) <br/> [テキストの前処理](preprocess-text.md) |
+| Text Analytics | 構造化テキストと非構造化テキストの両方を操作するための特別な計算ツールを提供します。 | [テキストからの N Gram 特徴抽出](extract-n-gram-features-from-text.md) <br/> [特徴ハッシュ](feature-hashing.md) <br/> [テキストの前処理](preprocess-text.md) <br/> [Latent Dirichlet Allocation](latent-dirichlet-allocation.md) |
 | 推奨 | 推奨モデルを構築します。 | [レコメンダーの評価](evaluate-recommender.md) <br/> [SVD レコメンダーのスコア付け](score-svd-recommender.md) <br/> [SVD レコメンダーのトレーニング](train-SVD-recommender.md) |
+| 異常検出 | 異常検出モデルを構築します。 | [PCA ベースの異常検出](pca-based-anomaly-detection.md) <br/> [異常検出モデルのトレーニング](train-anomaly-detection-model.md) |
 
 
 ## <a name="error-messages"></a>エラー メッセージ

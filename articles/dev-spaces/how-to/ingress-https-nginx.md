@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces をカスタム NGINX イングレス コントローラーを使用するように構成し、そのイングレス コントローラーを使用して HTTPS を構成する方法を説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 9c3598ea39dd7b48c622126a9adbaa75d4c9d934
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 0fe9fec263b72ac06839b58fdc5b0142a724718c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622415"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155449"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>カスタム NGINX イングレス コントローラーの使用と HTTPS の構成
 
@@ -23,20 +23,20 @@ ms.locfileid: "77622415"
 * [Azure Dev Spaces が有効になっている Azure Kubernetes Service (AKS) クラスター][qs-cli]。
 * [kubectl][kubectl] がインストールされていること。
 * [Helm 3 がインストールされていること][helm-installed]。
-* [カスタム ドメイン][custom-domain]の [DNS ゾーン][dns-zone]が、お使いの AKS クラスターと同じリソース グループにあること。
+* [DNS ゾーン][dns-zone]を持つ[カスタム ドメイン][custom-domain]。  この記事では、カスタム ドメインと DNS ゾーンが AKS クラスターと同じリソース グループに含まれていることを前提としていますが、別のリソース グループにあるカスタム ドメインと DNS ゾーンを使用することもできます。
 
 ## <a name="configure-a-custom-nginx-ingress-controller"></a>カスタム NGINX イングレス コントローラーの構成
 
 Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使ってクラスターに接続します。 Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials][az-aks-get-credentials] コマンドを使用します。 このコマンドは、資格情報をダウンロードし、それを使用するように Kubernetes CLI を構成します。
 
-```azurecli-interactive
+```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKS
 ```
 
 クラスターへの接続を確認するには、クラスター ノードの一覧を返す [kubectl get][kubectl-get] コマンドを使用します。
 
 ```console
-$ kubectl get nodes
+kubectl get nodes
 NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
@@ -79,7 +79,7 @@ nginx-nginx-ingress-controller        LoadBalancer   10.0.19.39     MY_EXTERNAL_
 
 *A* レコードを、[az network dns record-set a add-record][az-network-dns-record-set-a-add-record] を使用し、NGINX サービスの外部 IP アドレスが使用された DNS ゾーンに追加します。
 
-```console
+```azurecli
 az network dns record-set a add-record \
     --resource-group myResourceGroup \
     --zone-name MY_CUSTOM_DOMAIN \
@@ -155,7 +155,7 @@ http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 `azds list-uris` コマンドからパブリック URL を開いて、*bikesharingweb* サービスに移動します。 上記の例では、*bikesharingweb* サービスのパブリック URL は `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` です。
 
 > [!NOTE]
-> *bikesharingweb* サービスではなくエラー ページが表示される場合は、*kubernetes.io/ingress.class* 注釈と、*values.yaml* ファイル内のホストの**両方**を更新したことを確認してください。
+> *bikesharingweb* サービスではなくエラー ページが表示される場合は、*values.yaml* ファイル内で *kubernetes.io/ingress.class* 注釈とホストの**両方**を更新したことを確認してください。
 
 `azds space select` コマンドを使用すると、*dev* の下に子空間を作成し、子開発空間にアクセスするための URL を列挙できます。
 
@@ -249,7 +249,7 @@ gateway:
 `helm` を使用してサンプル アプリケーションをアップグレードします。
 
 ```console
-helm upgrade bikesharing . --namespace dev --atomic
+helm upgrade bikesharingsampleapp . --namespace dev --atomic
 ```
 
 *dev/azureuser1* 子空間のサンプル アプリケーションに移動し、HTTPS を使用するようにリダイレクトされていることを確認します。 ページが読み込まれ、ブラウザーにいくつかエラーが表示されていることも確認します。 ブラウザー コンソールを開くと、HTTP リソースを読み込もうとしている HTTPS ページにエラーが関連していることが表示されます。 次に例を示します。
@@ -288,7 +288,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUS
 ...
 ```
 
-[BikeSharingWeb/pages/helpers.js][helpers-js] の *getApiHostAsync* メソッドで HTTPS が使用されるように更新します。
+[BikeSharingWeb/lib/helpers.js][helpers-js] の *getApiHostAsync* メソッドで HTTPS が使用されるように更新します。
 
 ```javascript
 ...
@@ -335,7 +335,7 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 [cert-manager]: https://cert-manager.io/
 [helm-installed]: https://helm.sh/docs/intro/install/
 [helm-stable-repo]: https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository
-[helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/pages/helpers.js#L7
+[helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/lib/helpers.js#L7
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [letsencrypt-staging-issuer]: https://cert-manager.io/docs/configuration/acme/#creating-a-basic-acme-issuer

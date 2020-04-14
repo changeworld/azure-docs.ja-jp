@@ -2,19 +2,18 @@
 title: Marketplace ‎商用トランザクションの機能と考慮事項 | Azure
 description: この記事では、オファーの種類ごとに、販売の価格、課金、請求、支払いに関する考慮事項について説明します。
 services: Azure, Marketplace, Compute, Storage, Networking, Transact Offer Type
-author: yijenj
-manager: nuno costa
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/29/2018
-ms.author: pabutler
-ms.openlocfilehash: 969f2f6b2e25d9eb804349eccbed66e17b7fbb87
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: de93a3c48e0b0aceb447e54e11190f487d1aa2d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427170"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279829"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>商用マーケットプレース トランザクションの機能と考慮事項
 
@@ -130,7 +129,7 @@ Microsoft は、顧客が公開元のソフトウェアを注文し、ライセ�
 **SaaS アプリ サブスクリプション**
 
 このオプションは、Microsoft 経由で販売するように構成する必要があり、月単位または年単位で定額またはユーザーごとに価格を設定できます。
-• SaaS オファーに対して Microsoft 経由で販売するオプションを有効にした場合、コスト構造は次のようになります。
+*    SaaS オファーに対して Microsoft 経由で販売するオプションを有効にした場合、コスト構造は次のようになります。
 
 |ライセンス コスト       | 1 か月あたり $100.00  |
 |--------------|---------|

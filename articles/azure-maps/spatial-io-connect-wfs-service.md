@@ -1,23 +1,23 @@
 ---
 title: Web Feature Service (WFS) サービスに接続する | Microsoft Azure Maps
 description: WFS サービスに接続し、Azure Maps Web SDK と空間 IO モジュールを使用して WFS サービスにクエリを実行する方法について説明します。
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 18ac583837c7cb8b2dabbfa6f7d7210c8afe3fcb
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 8b511395eb61e8845aaa11e5ca7a490dc461424d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402756"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334201"
 ---
 # <a name="connect-to-a-wfs-service"></a>WFS サービスへの接続
 
-Web Feature Service (WFS) は、Open Geospatial Consortium (OGC) によって定義されている、標準化された API を持つ空間データに対してクエリを実行するための Web サービスです。 空間 IO モジュールで `WfsClient` クラスを使用すると、開発者は WFS サービスに接続し、サービスからデータにクエリを実行できます。
+Web Feature Service (WFS) とは空間データに対してクエリを実行するための Web サービスであり、Open Geospatial Consortium (OGC) によって定義されている、標準化された API を備えています。 空間 IO モジュールで `WfsClient` クラスを使用すると、開発者は WFS サービスに接続し、サービスからデータにクエリを実行できます。
 
 `WfsClient` クラスでは、次のフィーチャーがサポートされています。
 
@@ -94,32 +94,14 @@ WFS 標準の仕様では、OGC フィルターが使用されます。 次の�
 <iframe height='700' style='width: 100%;' scrolling='no' title= 'WFS サービス エクスプローラー' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> で Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS サービス エクスプローラー</a>」を参照してください。
 </iframe>
 
-また、プロキシ サービスを使用して、CORS が有効になっていないドメインでホストされているリソースを読み込むこともできます。 まず、プロキシ サービスの URL を保持する変数を定義し、WFS クライアントに `proxyService` オプションを設定します。 ユーザーに対してプロキシ サービス オプションをレンダリングするには、UI にユーザー入力を追加します。 入力がクリックされたときに、サービス URL を読み込みます。 次のスニペットは、プロキシ サービスの使用方法を示しています。
+非 CORS 対応のエンドポイントでホストされている WFS サービスにアクセスするには、次に示すように、WFS クライアントの `proxyService` オプションに CORS 対応のプロキシ サービスを渡します。 
 
 ```JavaScript
-
-//A variable to hold the URL of the proxy service
-var proxyServiceUrl = window.location.origin + 'CorsEnabledProxyService.ashx?url=';
-
 //Create the WFS client to access the service and use the proxy service settings
 client = new atlas.io.ogc.WfsClient({
     url: url,
-    proxyService: (document.getElementById('useProxyService').checked) ? proxyServiceUrl : null
+    proxyService: window.location.origin + '/YourCorsEnabledProxyService.ashx?url='
 });
-
-function proxyOptionChanged() {
-    if (currentServiceUrl) {
-        loadClient(currentServiceUrl);
-    }
-}
-
-```
-
-次の HTML コード スニペットは、上記の JavaScript コードに対応しています。
-
-```html
-<!-- use the proxy service -->
-<input id="useProxyService" type="checkbox" onclick="proxyOptionChanged()"/>
 ```
 
 ## <a name="next-steps"></a>次のステップ

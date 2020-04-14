@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/29/2020
-ms.openlocfilehash: 091ca4d632d89405d85c66e264aff9867979fcd4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 03/20/2020
+ms.openlocfilehash: e5a96d2eb67937ce4eeaa1999d8168e7f5d3d926
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905234"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80130181"
 ---
 # <a name="release-notes"></a>リリース ノート
 
@@ -68,35 +68,12 @@ HDInsight は引き続き、クラスターの信頼性とパフォーマンス�
 
 ## <a name="known-issues"></a>既知の問題
 
-2020 年 1 月 29 日の時点で、アクティブな問題が発生しており、Jupyter ノートブックを使用しようとするとエラーが表示される場合があります。 この問題を修正するには、以下の手順を使用してください。 最新の情報が必要な場合、または追加の質問をする場合は、こちらの [MSDN の投稿](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight)や、こちらの [StackOverflow の投稿](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103)もご覧いただけます。 この問題が修正された場合は、このページも更新されます。
+2020 年 3 月 18 日の時点で、西ヨーロッパまたは北ヨーロッパの一部の Azure HDInsight のお客様は、これらのリージョン内で HDInsight クラスターを作成またはスケーリングするときにエラー通知を受け取りました。 この問題に関連するエラーには次のものがあります。
 
-**エラー**
+- Internal server error occurred while processing the request. Please retry the request or contact support. (要求を処理しているときに内部サーバー エラーが発生しました。要求を再試行するか、サポートに連絡してください。)
+- 少なくとも 1 つのリソースのデプロイ操作に失敗しました。 詳細については、デプロイ操作の一覧を表示してください。 使用状況の詳細については、 https://aka.ms/DeployOperations を参照してください
+- ユーザーの SubscriptionId '\<サブスクリプション ID\>' には、リソース '\<クラスター名>' を作成するためのコアが残っていません。 必須: \<X\>、利用可能な数:0。
 
-* ValueError:Cannot convert notebook to v5 because that version doesn't exist (ValueError: ノートブックを v5 に変換できません。このバージョンが存在しないためです)
-* "Error loading notebook An unknown error occurred while loading this notebook." (ノートブックの読み込み中のエラー。このノートブックの読み込み中に不明なエラーが発生しました。) "This version can load notebook formats v4 or earlier." (このバージョンでは、v4 以前のノートブック形式を読み込むことができます。)
+エンジニアはこの問題を認識しており、積極的に調査しています。
 
-**原因** 
-
-クラスター上の _version.py ファイルが 4.4.x.## ではなく 5.x.x に更新されました。または Ambari を再起動する必要があります。
-
-**ソリューション**
-
-新しい Jupyter ノートブックを作成していて、上記のいずれかのエラーを受け取った場合は、次の手順を実行して問題を修正してください。
-
-1. Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net` にアクセスして Ambari を開きます。ここで、CLUSTERNAME はクラスターの名前です。
-1. Ambari の左側のメニューで **[Jupyter]** をクリックし、 **[Service Actions]\(サービス アクション\)** で **[Stop]\(停止\)** をクリックします。
-1. Jupyter サービスが実行されているクラスター ヘッドノードに SSH 接続します。
-1. sudo モードでファイル /usr/bin/anaconda/lib/python2.7/site-packages/nbformat/_version.py を開きます。
-1. version_info の値を確認します
-1. version_info の値が以下のように設定されている場合: 
-
-    version_info = (5, 0, 3)
-
-    このエントリを以下のように変更します。 
-    
-    version_info = (4, 4, 0)
-
-    ファイルを保存します。 
-
-    version_info が既に (4, 4, 0) に設定されている場合は、Ambari のみを再起動する必要があるため、次の手順に進みます。追加の変更は必要ありません。
-1. Ambari に戻り、 **[Service Actions]\(サービス アクション\)** で **[Restart All]\(すべて再起動\)** をクリックします。
+さらにヘルプが必要な場合は、[サポート リクエスト](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)を作成してください。

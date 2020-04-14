@@ -23,7 +23,7 @@ Bing Spell Check API では次の言語がサポートされています (`spell
 
 `en-US` 以外の言語を使用するには、`mkt` を設定し、`Accept-Language` または `setLang` を設定する必要があることに注意してください (「[Spell Check API v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)」(Spell Check API v7 リファレンス) を参照)。
 
-| 言語    | 言語コード |
+| Language    | 言語コード |
 |:----------- |:-------------:|
 | アラビア語      | `ar`          |
 | 中国語 (中華人民共和国)     | `zh-CN`          |
@@ -66,7 +66,7 @@ Bing Spell Check API では次の言語がサポートされています (`spell
 | スウェーデン語     | `sv`          |
 | トルコ語     | `tr`          |
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [Cognitive Services のドキュメント ページ](https://docs.microsoft.com/azure/cognitive-services/)
 - [Cognitive Services の製品ページ](https://azure.microsoft.com/services/cognitive-services/)

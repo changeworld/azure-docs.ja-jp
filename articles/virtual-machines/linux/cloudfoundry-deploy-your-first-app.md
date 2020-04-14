@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 45ae8979a2617d4f380e417e3f0910182ebe145e
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 793a8f291be4fcca6fad19d486849253dddc089f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970073"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294787"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする
 
@@ -27,7 +27,7 @@ Azure に Cloud Foundry 環境を作成する方法はいくつかあります�
 - Cloud Foundry 環境のデプロイを調整する VM である [BOSH](https://bosh.io) ディレクターをセットアップすることで、[オープン ソースの Cloud Foundry パッケージを直接デプロイする][oss-cf-bosh]。
 
 > [!IMPORTANT] 
-> PCF を Azure Marketplace からデプロイする場合は、Pivotal Apps Manager にアクセスするために必要な SYSTEMDOMAINURL と管理者の資格情報をメモに取ります。両方ともマーケットプレースのデプロイ ガイドで説明されています。 それらはこのチュートリアルを完了するために必要です。 マーケットプレースのデプロイでは、SYSTEMDOMAINURL の形式は https://system.*ip-address*.cf.pcfazure.com です。
+> PCF を Azure Marketplace からデプロイする場合は、Pivotal Apps Manager にアクセスするために必要な SYSTEMDOMAINURL と管理者の資格情報をメモに取ります。両方ともマーケットプレースのデプロイ ガイドで説明されています。 それらはこのチュートリアルを完了するために必要です。 マーケットプレースのデプロイでは、SYSTEMDOMAINURL は `https://system.*ip-address*.cf.pcfazure.com` の形式をしています。
 
 ## <a name="connect-to-the-cloud-controller"></a>Cloud Controller に接続する
 

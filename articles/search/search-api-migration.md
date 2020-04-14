@@ -66,7 +66,7 @@ API バージョン 2019-05-06 および 2019-05-06 プレビュー以降、デ�
 
 * API 応答で認識できないプロパティが返されるとコードが失敗する。 既定では、アプリケーションは、認識できないプロパティを無視する必要があります。
 
-* コードが API 要求を保持し、新しい API バージョンへの再送信を試行する。 たとえば、この状況は、アプリケーションが Search API から返される継続トークンを保持する場合に発生する可能性があります (詳細については、`@search.nextPageParameters`Search API リファレンス[のページの ](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) を参照してください)。
+* コードが API 要求を保持し、新しい API バージョンへの再送信を試行する。 たとえば、この状況は、アプリケーションが Search API から返される継続トークンを保持する場合に発生する可能性があります (詳細については、[Search API リファレンス](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)のページの `@search.nextPageParameters` を参照してください)。
 
 このような状況のいずれかが当てはまる場合は、それに応じてコードを変更する必要があります。 それ以外の場合は、バージョン 2019-05-06 の[新機能](#WhatsNew)の使用を開始するのでない限り、変更する必要はありません。
 

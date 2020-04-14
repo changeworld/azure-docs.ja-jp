@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 8b63233aa2b20862e4654c89f1a6dd5d00c78940
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: abff2f16d9559f015417711820a993badd636f7c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096078"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133074"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway のメトリック
 
@@ -34,7 +34,7 @@ Application Gateway には、要求と応答に関連するいくつかのタイ
 
   バックエンド アプリケーションとの接続を確立するために費やされた時間です。 
 
-  これには、新しい接続を確立するためにバックエンド サーバーの TCP スタックが要した時間だけでなく、ネットワーク待機時間も含まれます。 SSL の場合、これにはハンドシェイクに費やされた時間も含まれます。 
+  これには、新しい接続を確立するためにバックエンド サーバーの TCP スタックが要した時間だけでなく、ネットワーク待機時間も含まれます。 TLS の場合、これにはハンドシェイクに費やされた時間も含まれます。 
 
 - **バックエンド先頭バイト応答時間**
 

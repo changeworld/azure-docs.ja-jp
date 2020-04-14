@@ -1,16 +1,16 @@
 ---
-title: セキュリティ
+title: Security
 description: App Service でアプリをセキュリティで保護する方法と、アプリを脅威からさらに保護する方法について説明します。
 keywords: azure app service, web アプリ, モバイル アプリ, api アプリ, 関数アプリ, セキュリティ, セキュア, セキュリティ保護, コンプライアンス, 準拠, 証明書, https, ftps, tls, 信頼, 暗号化, 暗号化する, 暗号化済み, ip の制限, 認証, 認可, authn, autho, msi, マネージド サービス ID, マネージド ID, シークレット, 秘密, パッチ処理, パッチ, バージョン, 分離, ネットワークの分離, ddos, mitm
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 28394689048e730aa0c84e3bf807ef3afb898b1e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: e28935f73511e5ad973929517658cc626b5a6ea2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688555"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475376"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service のセキュリティ
 
@@ -65,7 +65,7 @@ App Service の認証および承認は、Azure Active Directory、Microsoft ア
 バックエンド サービスに対して認証する場合、App Service には必要に応じて 2 つの異なるメカニズムが用意されています。
 
 - **サービス ID** - アプリ自体の ID を使用してリモート リソースにサインインします。 App Service を使用すると、[マネージド ID](overview-managed-identity.md) を簡単に作成できます。この ID は、[Azure SQL Database](/azure/sql-database/)、[Azure Key Vault](/azure/key-vault/) などの他のサービスで認証するために使用できます。 この方法のエンドツーエンドのチュートリアルについては、「[マネージド ID を使用した App Service からの Secure Azure SQL Database 接続のセキュリティ保護](app-service-web-tutorial-connect-msi.md)」を参照してください。
-- **代理 (OBO)** - ユーザーの代理でリモート リソースへの委任されたアクセスを行います。 Azure Active Directory を認証プロバイダーとして使用すると、App Service アプリは、App Service で [Azure Active Directory Graph API](../active-directory/develop/active-directory-graph-api.md) やリモート API アプリなどのリモート サービスに対して代理サインインを実行できます。 この方法のエンドツーエンドのチュートリアルについては、「[Linux 用 Azure App Service でユーザーをエンドツーエンドで認証および承認する](app-service-web-tutorial-auth-aad.md)」を参照してください。
+- **代理 (OBO)** - ユーザーの代理でリモート リソースへの委任されたアクセスを行います。 Azure Active Directory を認証プロバイダーとして使用すると、App Service アプリは、[Microsoft Graph API](../active-directory/develop/microsoft-graph-intro.md) や App Service のリモート API アプリなどのリモート サービスへの委任されたサインインを実行できます。 この方法のエンドツーエンドのチュートリアルについては、「[Linux 用 Azure App Service でユーザーをエンドツーエンドで認証および承認する](app-service-web-tutorial-auth-aad.md)」を参照してください。
 
 ## <a name="connectivity-to-remote-resources"></a>リモート リソースへの接続性
 

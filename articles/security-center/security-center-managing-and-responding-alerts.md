@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/27/2019
+ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 834a097eb77cc7de2d0a3643bf1499ff7517ddb0
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 8e44ce594375deeac47f037515d96c57d15c8359
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912275"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398403"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Azure Security Center でのセキュリティ アラートの管理と対応
 
 このトピックでは、リソースを保護するために、受信したアラートを表示および処理する方法について説明します。 
 
-* さまざまな種類のアラートについては、「[セキュリティ アラートの種類](security-center-alerts-overview.md#security-alert-types)」をご覧ください。
-* Security Center によってアラートが生成される方法の概要については、「[Azure Security Center での脅威の検出と対応](security-center-alerts-overview.md#detect-threats)」をご覧ください。
+* さまざまな種類のアラートについては、「[セキュリティ アラートの種類](alerts-reference.md)」をご覧ください。
+* Security Center によってアラートが生成される方法の概要については、「[Azure Security Center での脅威の検出と対応](security-center-alerts-overview.md)」をご覧ください。
 
 > [!NOTE]
 > 高度な検出を有効にするには、Azure Security Center Standard にアップグレードしてください。 無料試用版が提供されています。 アップグレードするには、 [[セキュリティ ポリシー]](tutorial-security-policy.md)の [価格レベル] を選択してください。 詳細については、「[Azure Security Center pricing (Azure Security Center の料金)](security-center-pricing.md)」を参照してください。
@@ -69,27 +69,10 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 
     場合によっては、セキュリティ アラートを軽減するために、他の Azure コントロールやサービスを使用して、推奨される修復を実装することが必要になる場合があります。 
 
-    次のトピックでは、リソースの種類に応じてさまざまなアラートを説明します。
-    
-    * [IaaS Windows マシンのアラート](threat-protection.md#windows-machines)
-    * [IaaS Linux マシンのアラート](threat-protection.md#linux-machines)
-    * [Azure App Service のアラート](threat-protection.md#app-services)
-    * [Azure コンテナーのアラート](threat-protection.md#azure-containers)
-    * [SQL Database および SQL Data Warehouse のアラート](threat-protection.md#data-sql)
-    * [Azure Storage のアラート](threat-protection.md#azure-storage)
-    * [Cosmos DB のアラート](threat-protection.md#cosmos-db)
-
-    次のトピックでは、Security Center が、Azure にデプロイされたリソースに追加の保護レイヤーを適用するために、Azure インフラストラクチャとの統合から収集したさまざまなテレメトリを活用する方法について説明します。
-    
-    * [Azure 管理レイヤー (Azure Resource Manager) のアラート (プレビュー)](threat-protection.md#management-layer)
-    * [Azure Key Vault のアラート (プレビュー)](threat-protection.md#azure-keyvault)
-    * [Azure ネットワーク レイヤーのアラート](threat-protection.md#network-layer)
-    * [その他のサービスからのアラート](threat-protection.md#alerts-other)    
-
 ## <a name="see-also"></a>関連項目
 
 このドキュメントでは、セキュリティ センターでのセキュリティ ポリシーの構成方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
 
+- [Azure Security Center のアラート機能を使用して脅威を監視したり、それらの脅威に対応したりする方法に関する Microsoft Learn モジュール](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 * [Azure Security Center のセキュリティ アラート](security-center-alerts-overview.md)。
 * [セキュリティ インシデントの処理](security-center-incident.md)
-* [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)

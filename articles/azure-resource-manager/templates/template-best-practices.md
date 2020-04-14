@@ -3,16 +3,16 @@ title: テンプレートのベスト プラクティス
 description: Azure Resource Manager テンプレートを作成するための推奨されるアプローチについて説明します。 テンプレートを使用する場合の一般的な問題を回避するための推奨事項を示します。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: f623255a64404f0e041173fd29488ded24cd03b3
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207487"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156414"
 ---
-# <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager テンプレートのベスト プラクティス
+# <a name="arm-template-best-practices"></a>ARM テンプレートのベスト プラクティス
 
-この記事では、ご自身の Resource Manager テンプレートを作成する方法に関する推奨事項について説明します。 これらの推奨事項は、テンプレートを使用したソリューションのデプロイに関する一般的な問題を回避するうえで役立ちます。
+この記事では、ご自身の Azure Resource Manager (ARM) テンプレートを作成する方法に関する推奨事項について説明します。 これらの推奨事項は、ARM テンプレートを使用したソリューションのデプロイに関する一般的な問題を回避するうえで役立ちます。
 
 Azure サブスクリプションを管理する方法に関する推奨事項については、「[Azure エンタープライズ スキャフォールディング:規範的なサブスクリプション ガバナンス](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)」を参照してください。
 
@@ -279,5 +279,5 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Resource Manager テンプレート ファイルの構造の詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
-* すべての Azure クラウド環境で動作するテンプレートを作成する方法に関する推奨事項については、「[クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](templates-cloud-consistency.md)」を参照してください。
+* テンプレート ファイルの構造については、「[ARM テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
+* すべての Azure クラウド環境で動作するテンプレートを作成する方法に関する推奨事項については、[クラウドの一貫性のための ARM テンプレートの開発](templates-cloud-consistency.md)に関するページをご覧ください。

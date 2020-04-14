@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/10/2020
-ms.openlocfilehash: a3eafc28dc6d0f44a1f1019cb3393259aa2a698a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 82c3454ad4c8db3a9b19084f5b6ece988cc86b9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920350"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455980"
 ---
 # <a name="score-svd-recommender"></a>Score SVD Recommender
 
@@ -53,7 +53,7 @@ SVD レコメンダー アルゴリズムの詳細については、リサーチ
 
    データセットの 3 列目に、ユーザーと項目のペア (1 列目と 2 列目) に対する評価を含めることもできます。 もっとも、この 3 列目は予測に際して無視されます。
 
-4. パイプラインを実行します。
+4. パイプラインを送信します。
 
 ### <a name="results-for-rating-predictions"></a>評価予測の結果 
 
@@ -99,7 +99,7 @@ SVD レコメンダー アルゴリズムの詳細については、リサーチ
 
     このフィルターを適用するには、元のトレーニング データセットを入力ポートに接続します。
 
-8. パイプラインを実行します。
+8. パイプラインを送信します。
 
 ### <a name="results-of-item-recommendation"></a>項目のレコメンデーション結果
 

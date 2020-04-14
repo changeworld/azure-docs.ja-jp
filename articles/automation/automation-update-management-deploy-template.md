@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/27/2020
-ms.openlocfilehash: a8b382663b56d7481da876979e33194fb0ac533d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.date: 03/30/2020
+ms.openlocfilehash: e69f3d7350d0da9f364983eae0935532b576bd76
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921754"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411472"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Update Management ソリューションをオンボードする
 
@@ -56,6 +56,7 @@ JSON テンプレートでは、環境で標準構成として使用される可
 
 * sku - 既定値は、2018 年 4 月の価格モデルでリリースされた新しい 1 GB あたりの価格レベル
 * data retention - 既定値は 30 日
+* capacity reservation - 既定値は 100 GB
 
 >[!WARNING]
 >新しい 2018 年 4 月の価格モデルを選択したサブスクリプションで Log Analytics ワークスペースを作成または構成する場合、有効な Log Analytics 価格レベルは **PerGB2018** のみです。
@@ -79,7 +80,7 @@ JSON テンプレートでは、環境で標準構成として使用される可
                 "description": "Workspace name"
             }
         },
-        "pricingTier": {
+        "sku": {
             "type": "string",
             "allowedValues": [
                 "pergb2018",
@@ -168,7 +169,8 @@ JSON テンプレートでは、環境で標準構成として使用される可
             "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
-                "sku": { 
+                "sku": {
+                    "Name": "[parameters('sku')]",
                     "name": "CapacityReservation",
                     "capacityReservationLevel": 100
                 },
@@ -231,7 +233,7 @@ JSON テンプレートでは、環境で標準構成として使用される可
     }
     ```
 
-2. 要件に合わせてテンプレートを編集します。
+2. 要件に合わせてテンプレートを編集します。 パラメーターをインライン値として渡す代わりに、[Resource Manager パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)を作成することを検討してください。
 
 3. このファイルを deployUMSolutiontemplate.json としてローカル フォルダーに保存します。
 

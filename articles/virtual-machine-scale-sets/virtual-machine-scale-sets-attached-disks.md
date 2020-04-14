@@ -1,19 +1,19 @@
 ---
 title: Azure 仮想マシン スケール セットの接続されたデータ ディスク
 description: 特定のユース ケースの概要を通して、接続されたデータ ディスクを仮想マシン スケール セットで使用する方法について説明します。
-author: mayanknayar
+author: avirishuv
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 4/25/2017
-ms.author: manayar
-ms.openlocfilehash: c7fd4d89fcc66fb4110029be45ad94e21faea0e0
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.author: avverma
+ms.openlocfilehash: 6e39a8ffb24b0cca720890e3d00a55d1e58fadc2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278169"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80123372"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure 仮想マシン スケール セットと接続されたデータ ディスク
 [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) では、使用できるストレージを拡張するために、データ ディスクをアタッチした VM インスタンスがサポートされています。 新たに作成するスケール セットや既存のスケール セットにデータ ディスクをアタッチすることができます。
@@ -86,12 +86,12 @@ Linux クラスターでデータ ディスクを自動的に準備するには�
 
 
 ## <a name="adding-pre-populated-data-disks-to-an-existing-scale-set"></a>データ投入済みディスクを既存のスケール セットに追加する
-スケール セット モデルで指定されているデータ ディスクは常に空です。 ただし、スケール セット内の特定の VM に、既存のデータ ディスクを接続することができます。 この機能はプレビュー段階であり、[GitHub](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk) に例があります。 スケール セット内のすべての VM にデータを反映したい場合は、データ ディスクを複製してスケール セット内の各 VM にそれを接続すること、データを含むカスタム イメージを作成してこのカスタム イメージからスケール セットをプロビジョニングすること、または Azure Files や同様のデータ ストレージ オファーを使用することができます。
+スケール セット モデルで指定されているデータ ディスクは常に空です。 ただし、スケール セット内の特定の VM に、既存のデータ ディスクを接続することができます。 スケール セット内のすべての VM にデータを伝達したい場合は、データ ディスクを複製してスケール セット内の各 VM にそれを接続するか、データを含むカスタム イメージを作成してこのカスタム イメージからスケール セットをプロビジョニングする、または、 Azure Files や同様のデータ ストレージ オファーを使用することができます。
 
 
 ## <a name="additional-notes"></a>その他のメモ
 Azure マネージド ディスクと、スケール セットに接続されたデータ ディスクのサポートは、Microsoft.Compute API のバージョン [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/compute/resource-manager/Microsoft.Compute/preview/2016-04-30-preview/compute.json) 以降で使用できます。
 
-スケール セット内の接続されたデータ ディスクに対する Azure Portal でのサポートは、最初は制限されています。 要件に応じて、Azure テンプレート、CLI、PowerShell、SDK、および REST API を使用して、接続されたディスクを管理できます。
+スケール セット内の接続されたデータ ディスクに対する Microsoft Azure Portal でのサポートは限定的です。 要件に応じて、Azure テンプレート、CLI、PowerShell、SDK、および REST API を使用して、接続されたディスクを管理できます。
 
 

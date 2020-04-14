@@ -2,15 +2,15 @@
 title: Azure Portal で初めての関数を作成する
 description: Azure Portal を使用して、サーバーレス実行のための最初の Azure 関数を作成する方法について説明します。
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
-ms.topic: quickstart
-ms.date: 03/06/2020
+ms.topic: how-to
+ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: e7bb5e7b387c3ab1140a3fe475911bd0e428e2a5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a96d2ede80b4c57e7b85048379a4bfb66cacfd52
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057059"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754854"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 

@@ -3,12 +3,12 @@ title: MARS エージェントを使用したサポート マトリックス
 description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを実行しているコンピューターをバックアップする場合の Azure Backup のサポートを要約しています。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582638"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226051"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
 
@@ -43,8 +43,8 @@ MARS エージェントを使用してデータをバックアップする場合
 
 **Cache** | **詳細**
 --- | ---
-Size |  キャッシュ フォルダー内の空き領域は、バックアップ データのサイズ全体の少なくとも 5 ～ 10% である必要があります。
-Location | キャッシュ フォルダーは、バックアップされるコンピューターにローカルに格納されており、かつオンラインである必要があります。 キャッシュ フォルダーがネットワーク共有、リムーバブル メディア、またはオフライン ボリュームに存在していてはいけません。
+サイズ |  キャッシュ フォルダー内の空き領域は、バックアップ データのサイズ全体の少なくとも 5 ～ 10% である必要があります。
+場所 | キャッシュ フォルダーは、バックアップされるコンピューターにローカルに格納されており、かつオンラインである必要があります。 キャッシュ フォルダーがネットワーク共有、リムーバブル メディア、またはオフライン ボリュームに存在していてはいけません。
 Folder | 重複除去されたボリューム上でキャッシュ フォルダーを暗号化しないでください。同様に、圧縮されたフォルダー、スパース フォルダー、または再解析ポイントを含むフォルダー内で暗号化しないでください。
 場所の変更 | キャッシュの場所は、バックアップ エンジンを停止し (`net stop bengine`)、キャッシュ フォルダーを新しいドライブにコピーすることによって変更できます。 (新しいドライブに十分な領域があることを確認してください。)その後、**HKLM\SOFTWARE\Microsoft\Windows Azure Backup** にある 2 つのレジストリ エントリ (**Config/ScratchLocation** と **Config/CloudBackupProvider/ScratchLocation**) を新しい場所に更新し、エンジンを再起動します。
 
@@ -97,7 +97,7 @@ Microsoft ピアリングを使用して、次のサービスまたはリージ�
 帯域幅の制御 | サポートされています。 MARS エージェントで、 **[プロパティの変更]** を使用して帯域幅を調整します。
 Network throttling | Windows Server 2008 R2、Windows Server 2008 SP2、または Windows 7 を実行しているバックアップ済みのコンピューターでは使用できません。
 
-## <a name="support-for-direct-backups"></a>直接バックアップのサポート
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 >[!NOTE]
 > MARS エージェントは、Windows Server Core SKU をサポートしていません。
@@ -114,7 +114,6 @@ MARS エージェントを使用すると、次のように実行されている
 Windows 10 (Enterprise、Pro、Home) | はい | いいえ |  ソフトウェア/モジュールの要件に対応するサーバーのバージョンをご確認ください
 Windows 8.1 (Enterprise、Pro)| はい |いいえ | ソフトウェア/モジュールの要件に対応するサーバーのバージョンをご確認ください
 Windows 8 (Enterprise、Pro) | はい | いいえ | ソフトウェア/モジュールの要件に対応するサーバーのバージョンをご確認ください
-Windows 7 (Ultimate、Enterprise、Pro、Home Premium/Basic、Starter) | はい | いいえ | ソフトウェア/モジュールの要件に対応するサーバーのバージョンをご確認ください
 Windows Server 2016 (Standard、Datacenter、Essentials) | はい | はい | - .NET 4.5 <br> - Windows PowerShell <br> - 互換性のある最新の Microsoft VC++ 再頒布可能パッケージ <br> - Microsoft 管理コンソール (MMC) 3.0
 Windows Server 2012 R2 (Standard、Datacenter、Foundation、Essentials) | はい | はい | - .NET 4.5 <br> - Windows PowerShell <br> - 互換性のある最新の Microsoft VC++ 再頒布可能パッケージ <br> - Microsoft 管理コンソール (MMC) 3.0
 Windows Server 2012 (Standard、Datacenter、Foundation) | はい | はい |- .NET 4.5 <br> \- Windows PowerShell <br> - 互換性のある最新の Microsoft VC++ 再頒布可能パッケージ <br> - Microsoft 管理コンソール (MMC) 3.0 <br> - 展開イメージのサービスと管理 (DISM.exe)
@@ -122,6 +121,20 @@ Windows Storage Server 2016/2012 R2/2012 (Standard、Workgroup) | はい | い�
 Windows Server 2019 (Standard、Datacenter、Essentials) | はい | はい | - .NET 4.5 <br> - Windows PowerShell <br> - 互換性のある最新の Microsoft VC++ 再頒布可能パッケージ <br> - Microsoft 管理コンソール (MMC) 3.0
 
 詳細については、「[サポートされている MABS および DPM オペレーティング システム](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)」を参照してください。
+
+### <a name="operating-systems-at-end-of-support"></a>サポート終了のオペレーティング システム
+
+次のオペレーティング システムはサポートが終了しました。保護された状態を継続するために、オペレーティング システムをアップグレードすることを強くお勧めします。
+
+既存のコミットメントによってオペレーティング システムをアップグレードできない場合は、Windows Server を Azure VM に移行し、Azure VM バックアップを利用して、保護された状態を継続することを検討してください。 Windows Server の移行の詳細については、[こちらの移行に関するページ](https://azure.microsoft.com/migration/windows-server/)を参照してください。
+
+オペレーティング システムをアップグレードしたり、Azure に移行したりすることができないオンプレミスまたはホストされた環境の場合は、保護およびサポートされた状態を継続するために、マシンに対する拡張セキュリティ更新プログラムをアクティブにしてください。 拡張セキュリティ更新プログラムの対象となるのは、特定のエディションのみであること注意してください。 詳細については、[FAQ ページ](https://www.microsoft.com/cloud-platform/extended-security-updates)を参照してください。
+
+| **オペレーティング システム**                                       | **ファイル/フォルダー** | **システム状態** | **ソフトウェア/モジュールの要件**                           |
+| ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
+| Windows 7 (Ultimate、Enterprise、Pro、Home Premium/Basic、Starter) | はい               | いいえ                 | ソフトウェア/モジュールの要件に対応するサーバーのバージョンをご確認ください |
+| Windows Server 2008 R2 (Standard、Enterprise、Datacenter、Foundation) | はい               | はい                | - .NET 3.5、.NET 4.5 <br>  - Windows PowerShell <br>  - 互換性のある Microsoft VC++ 再頒布可能パッケージ <br>  - Microsoft 管理コンソール (MMC) 3.0 <br>  - 展開イメージのサービスと管理 (DISM.exe) |
+| Windows Server 2008 SP2 (Standard、Datacenter、Foundation)  | はい               | いいえ                 | - .NET 3.5、.NET 4.5 <br>  - Windows PowerShell <br>  - 互換性のある Microsoft VC++ 再頒布可能パッケージ <br>  - Microsoft 管理コンソール (MMC) 3.0 <br>  - 展開イメージのサービスと管理 (DISM.exe) <br>  - Virtual Server 2005 base + KB KB948515 |
 
 ## <a name="backup-limits"></a>Backup の制限
 
@@ -145,7 +158,7 @@ Windows 7| 1,700 GB
 
 **Type** | **サポート**
 --- | ---
-Encrypted| サポートされています。
+暗号化<sup>*</sup>| サポートされています。
 Compressed | サポートされています。
 スパース | サポートされています。
 圧縮 + スパース |サポートされています。
@@ -156,6 +169,8 @@ Compressed | サポートされています。
 スパース ストリーム| サポートされていません。 スキップされます。
 OneDrive (同期されるファイルはスパース ストリーム)| サポートされていません。
 DFS レプリケーションが有効になっているフォルダー | サポートされていません。
+
+\* MARS エージェントが、暗号化されたファイルにアクセスするために必要な証明書にアクセスできることを確認してください。 アクセスできないファイルはスキップされます。
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>バックアップ用にサポートされるドライブまたはボリューム
 

@@ -5,10 +5,10 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
 ms.openlocfilehash: b1d9e59109f5ace25abb9840b48e44ff03d394e7
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255906"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Azure App Service 向けの Linux ASP.NET Core アプリを構成する
@@ -59,7 +59,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ビルドの自動化をカスタマイズするためのその他の環境変数については、「[Oryx の構成](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)」を参照してください。
 
-Linux 上で App Service によって ASP.NET Core アプリが実行およびビルドされる方法に関する詳細については、[Oryx ドキュメントの .NET Core アプリの検出およびビルド方法](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md)に関するページを参照してください。
+Linux 上で App Service によって ASP.NET Core アプリが実行およびビルドされる方法に関する詳細については、[Oryx ドキュメントの.NET Core アプリの検出およびビルド方法](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md)に関するページを参照してください。
 
 ## <a name="access-environment-variables"></a>環境変数へのアクセス
 

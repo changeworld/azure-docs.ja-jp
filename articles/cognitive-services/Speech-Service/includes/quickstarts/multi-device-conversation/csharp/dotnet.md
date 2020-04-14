@@ -5,14 +5,14 @@ manager: cpoulain
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 01/15/2020
+ms.date: 04/04/2020
 ms.author: ralphe
-ms.openlocfilehash: c6291a714083df8954d5162ad38d31b2e3caee76
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 92fc7aeec87015a9ddbe4e52f870334582e28c14
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925341"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671145"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -20,7 +20,7 @@ ms.locfileid: "78925341"
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
@@ -294,7 +294,7 @@ ms.locfileid: "78925341"
     }
     ```
 
-2. `CreateConversationAsync();` 関数内の `public static async Task Main(string[] args)` を次のように置き換えます。
+2. `public static async Task Main(string[] args)` 関数内の `CreateConversationAsync();` を次のように置き換えます。
 
     ```csharp
     // Set this to the conversation you want to join

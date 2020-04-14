@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 99fed1d2b1246e4c099f275708f694e5d7ea2f22
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 7d3bcc32dc8f1412a5adbc175a5f8618628bce83
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190819"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547888"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
@@ -49,7 +49,7 @@ Azure Site Recovery で保護されるすべてのインスタンスは、保護
 はい。 Site Recovery では、Azure Disk Encryption が有効になっている VM のディザスター リカバリーがサポートされています。 レプリケーションを有効にすると、Azure では、必要なすべてのディスク暗号化キーとシークレットがユーザー コンテキストでソース リージョンからターゲット リージョンにコピーされます。 自分に適切なアクセス許可がない場合、セキュリティ管理者がスクリプトを利用し、キーとシークレットをコピーできます。
 
 - Site Recovery では、Windows を実行している Azure VM の Azure Disk Encryption がサポートされています。
-- Site Recovery では、Azure Disk Encryption バージョン 0.1 がサポートされています。これには Azure Active Directory (Azure AD) を必要とするスキーマがあります。 Site Recovery では、Azure AD を必要としないバージョン 1.1 もサポートされています。 [Azure ディスク暗号化の拡張機能スキーマについてはこちらをご覧ください](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata)。
+- Site Recovery では、Azure Disk Encryption バージョン 0.1 がサポートされています。これには Azure Active Directory (Azure AD) を必要とするスキーマがあります。 Site Recovery では、Azure AD を必要としないバージョン 1.1 もサポートされています。 [Azure ディスク暗号化の拡張機能スキーマの詳細を確認してください](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema)。
   - Azure Disk Encryption バージョン 1.1 については、Windows VM と共にマネージド ディスクを使用する必要があります。
   - 暗号化された VM のレプリケーションの有効化について、[詳細を確認します](azure-to-azure-how-to-enable-replication-ade-vms.md)。
 
@@ -73,7 +73,7 @@ Azure Site Recovery で保護されるすべてのインスタンスは、保護
 
 - 追加されたディスクの保護を有効にすると、初回のレプリケーション後に警告は表示されなくなります。
 - ディスクのレプリケートを有効にしない場合、この警告を無視できます。
-- ディスクが追加され、レプリケーションが有効になっている VM をフェールオーバーする場合、レプリケーション ポイントがあります。 レプリケーション ポイントによって、回復できるディスクが示されます。 
+- ディスクが追加され、レプリケーションが有効になっている VM をフェールオーバーする場合、レプリケーション ポイントがあります。 レプリケーション ポイントによって、回復できるディスクが示されます。
 
 たとえば、ある VM にディスクが 1 つあるとき、新しいディスクを追加するとします。 ディスクを追加するより前にレプリケーション ポイントが作成されていた可能性があります。 このレプリケーション ポイントからは、それが "2 ディスク中 1" から構成されていることが示されます。
 
@@ -93,7 +93,7 @@ Site Recovery を使用することで、同じ地理クラスター内の 2 つ
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Site Recovery にはインターネット接続が必要ですか?
 
-いいえ、Site Recovery にはインターネット接続は必要ありません。 ただし、「[Azure VM ディザスター リカバリーのネットワークについて](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)」で説明されているように、Site Recovery の URL と IP 範囲にアクセスする必要があります。
+いいえ、Site Recovery にはインターネット接続は必要ありません。 ただし、「[Azure VM ディザスター リカバリーのネットワークについて](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)」で説明されているように、Site Recovery の URL と IP 範囲にアクセスする必要があります。
 
 ### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>階層ごとにリソース グループが分かれているアプリケーションをレプリケートできますか?
 
@@ -193,6 +193,10 @@ Site Recovery には **マルチ VM 整合性**オプションがあります。
 
 マルチ VM 整合性では CPU が集中的に消費されるので、これを有効にすると、ワークロードのパフォーマンスに影響する場合があります。 複数のマシンが同じワークロードを実行しているとき、複数のマシン間に整合性を持たせる必要がある場合にのみ、マルチ VM 整合性を使用してください。 たとえば、2 個の SQL Server インスタンスと 2 個の Web サーバーがアプリケーション内にある場合、SQL Server インスタンスに対してのみマルチ VM 整合性を有効にする必要があります。
 
+### <a name="can-you-add-an-already-replicating-vm-to-a-replication-group"></a>既にレプリケートしている VM をレプリケーション グループに追加できますか?
+
+レプリケーションを有効にしている間、新しいレプリケーション グループに VM を追加することができます。 また、レプリケーションを有効にしている間、既存のレプリケーション グループに VM を追加することもできます。 ただし、既にレプリケートしている VM は新しいレプリケーション グループにも、既存のレプリケーション グループにも追加することはできません。
+
 ## <a name="failover"></a>[フェールオーバー]
 
 ### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Azure VM のターゲット リージョンでは、容量はどのように確保されますか?
@@ -207,7 +211,7 @@ Site Recovery には **マルチ VM 整合性**オプションがあります。
 
 運用アプリケーションのパブリック IP アドレスは、フェールオーバー後に保持できません。
 
-フェールオーバー プロセスの一環としてワークロードを起動するとき、Azure パブリック IP リソースをワークロードに割り当てる必要があります。 Azure パブリック IP リソースは、ターゲット リージョンで使用できる必要があります。 Azure パブリック IP リソースは手動で割り当てるか、復旧計画で自動化できます。 「[フェールオーバー後にパブリック IP アドレスを設定する](concepts-public-ip-address-with-site-recovery.md#public-ip-address-assignment-using-recovery-plan)」方法を参照してください。  
+フェールオーバー プロセスの一環としてワークロードを起動するとき、Azure パブリック IP リソースをワークロードに割り当てる必要があります。 Azure パブリック IP リソースは、ターゲット リージョンで使用できる必要があります。 Azure パブリック IP リソースは手動で割り当てるか、復旧計画で自動化できます。 「[フェールオーバー後にパブリック IP アドレスを設定する](concepts-public-ip-address-with-site-recovery.md#public-ip-address-assignment-using-recovery-plan)」方法を参照してください。
 
 ### <a name="can-i-keep-a-private-ip-address-during-a-failover"></a>フェールオーバー中、プライベート IP アドレスを保持できますか?
 
@@ -281,7 +285,7 @@ Site Recovery での復旧計画は、VM のフェールオーバーの復旧を
 
 再保護後のフェールオーバーには、プライマリ リージョンからセカンダリ リージョンにフェールオーバーするときと大体同じ時間がかかります。
 
-## <a name="capacity"></a>容量
+## <a name="capacity"></a><a name="capacity"></a>容量
 
 ### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Azure VM のターゲット リージョンでは、容量はどのように確保されますか?
 
@@ -295,7 +299,7 @@ Site Recovery での復旧計画は、VM のフェールオーバーの復旧を
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Site Recovery サービスにレプリケーション データが送信されますか。
 
-いいえ、Site Recovery はレプリケートされたデータをインターセプトすることも、VM 上の実行内容に関するどのような情報を保持することもありません。 レプリケーションとフェールオーバーを調整するために必要なメタデータのみが、Site Recovery サービスに送信されます。  
+いいえ、Site Recovery はレプリケートされたデータをインターセプトすることも、VM 上の実行内容に関するどのような情報を保持することもありません。 レプリケーションとフェールオーバーを調整するために必要なメタデータのみが、Site Recovery サービスに送信されます。
 
 Site Recovery は ISO 27001:2013、27018、HIPAA、DPA 認定です。 このサービスは現在、SOC2 と FedRAMP JAB の評価を判定されている最中です。
 

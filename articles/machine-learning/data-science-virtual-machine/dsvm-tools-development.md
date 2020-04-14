@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: bc1f40760c1602d81da042bf6909e44a540d35de
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: c48cf6a7a82e90d3c9d8dc4c35e37dfb944af99f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612157"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282683"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine の開発ツール
 
@@ -26,7 +26,7 @@ Data Science Virtual Machine (DSVM) には、生産性の高い統合開発環�
 |    |           |
 | ------------- | ------------- |
 | 紹介   | 汎用 IDE      |
-| サポートされている DSVM バージョン      | Windows: Visual Studio 2017、Windows 2019 (プレビュー):Visual Studio 2019      |
+| サポートされている DSVM バージョン      | Windows: Visual Studio 2017、Windows 2019:Visual Studio 2019      |
 | 標準的な使用      | ソフトウェア開発    |
 | DSVM での構成とインストール方法      | データ サイエンス ワークロード (Python および R ツール)、Azure ワークロード (Hadoop、Data Lake)、Node.js、SQL Server ツール、[Azure Machine Learning for Visual Studio Code](https://github.com/Microsoft/vs-tools-for-ai)    |
 | 使用と実行方法      | デスクトップ ショートカット (`C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe`)。 デスクトップ アイコンまたは **[スタート]** メニューを使用して Visual Studio をグラフィカルに開きます。 プログラムを探し (Windows ロゴ キーを押しながら S キーを押します)、 **[Visual Studio]** を探します。 そこから、C#、Python、R、Node.js などの言語でプロジェクトを作成できます。   |
@@ -81,7 +81,7 @@ Data Science Virtual Machine (DSVM) には、生産性の高い統合開発環�
 |    |           |
 | ------------- | ------------- |
 | 紹介   | Python 言語用のクライアント IDE    |
-| サポートされている DSVM バージョン      | Windows 2019 (プレビュー)、Linux      |
+| サポートされている DSVM バージョン      | Windows 2019、Linux      |
 | 標準的な使用      |  Python 開発     |
 | 使用と実行方法      | Windows のデスクトップ ショートカット (`C:\Program Files\tk`)。 Linux のデスクトップ ショートカット (`/usr/bin/pycharm`)      |
 | DSVM 上の関連ツール      |   Visual Studio、Visual Studio Code、RStudio      |

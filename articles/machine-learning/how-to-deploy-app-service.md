@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 2a3e1f1997857ab9812fe87d5ec68b71e280e6ce
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 3e6cfde20d9f4d56af836e06b0c9a84010dea47b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122544"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282819"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service に機械学習モデルをデプロイする (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Azure Machine Learning を使用すると、トレーニング済みの機械学
 
 * セキュリティ強化を目的とした[高度な認証](/azure/app-service/configure-authentication-provider-aad)。 認証方法には、Azure Active Directory と多要素認証の両方が含まれます。
 * 再デプロイ不要の[自動スケーリング](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)。
-* クライアントとサービスの間のセキュリティで保護された通信のための [SSL サポート](/azure/app-service/configure-ssl-certificate-in-code)。
+* クライアントとサービスの間のセキュリティで保護された通信のための [TLS サポート](/azure/app-service/configure-ssl-certificate-in-code)。
 
 Azure App Service によって提供される機能の詳細については、[App Service の概要](/azure/app-service/overview)を参照してください。
 
@@ -271,6 +271,6 @@ print(response.json())
 
 * [App Service on Linux](/azure/app-service/containers/) のドキュメントで Web アプリを構成する方法を確認します。
 * 「[Azure での自動スケールの使用](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)」でスケールの詳細を確認します。
-* [Azure App Service で SSL 証明書を使用します](/azure/app-service/configure-ssl-certificate-in-code)。
+* [Azure App Service で TLS/SSL 証明書を使用します](/azure/app-service/configure-ssl-certificate-in-code)。
 * [Azure Active Directory サインインを使用するように App Service アプリを構成します](/azure/app-service/configure-authentication-provider-aad)。
 * [Web サービスとしてデプロイされた ML モデルを使用する](how-to-consume-web-service.md)

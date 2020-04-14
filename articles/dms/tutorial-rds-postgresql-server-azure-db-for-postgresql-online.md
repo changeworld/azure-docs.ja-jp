@@ -3,8 +3,8 @@ title: チュートリアル:RDS PostgreSQL を Azure Database for PostgreSQL �
 titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service を使用して、RDS PostgreSQL から Azure Database for PostgreSQL にオンライン移行を実行する方法を説明します。
 services: dms
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/17/2020
-ms.openlocfilehash: 33d39be071591071d88bb5a95c3cfcbb458d85a8
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 12aa11aa5064b3a0a2ff18f88161f44f37208aec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255705"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240688"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>チュートリアル:DMS を使用してオンラインで RDS PostgreSQL を Azure DB for PostgreSQL に移行する
 
@@ -34,7 +34,7 @@ Azure Database Migration Service を使用して、RDS PostgreSQL インスタ�
 > * 一括移行を実行する。
 
 > [!NOTE]
-> Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。 詳しくは、Azure Database Migration Service の[価格](https://azure.microsoft.com/pricing/details/database-migration/)に関するページをご覧ください。
+> Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。 詳しくは、Azure Database Migration Service の[価格](https://azure.microsoft.com/pricing/details/database-migration/)に関するページをご覧ください。 移行プロセス中のデータの盗難を防ぐために、ディスクは暗号化します。
 
 > [!IMPORTANT]
 > 最適な移行エクスペリエンスのために、ターゲット データベースと同じ Azure リージョンに Azure Database Migration Service のインスタンスを作成することをお勧めします。 リージョンや地域をまたいでデータを移動する場合、移行プロセスが遅くなり、エラーが発生する可能性があります。

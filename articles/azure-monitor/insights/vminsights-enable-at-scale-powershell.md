@@ -1,35 +1,29 @@
 ---
-title: PowerShell またはテンプレートを使用して Azure Monitor for VMs (クラシック) を有効にする
+title: PowerShell またはテンプレートを使用して Azure Monitor for VMs を有効にする
 description: この記事では、Azure PowerShell または Azure Resource Manager テンプレートを使用して、1 つ以上の Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を有効にする方法について説明します。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: e28a5dce4dda677ef4e5eb0ed08c42ec1f03c308
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 75d5203e7c475a44b6a00dbf9286f43114b7b54f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251435"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480846"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Azure PowerShell または Resource Manager テンプレートを使用して Azure Monitor for VMs (プレビュー) を有効にする
+# <a name="enable-azure-monitor-for-vms-using-azure-powershell-or-resource-manager-templates"></a>Azure PowerShell または Resource Manager テンプレートを使用して Azure Monitor for VMs を有効にする
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-この記事では、Azure PowerShell または Azure Resource Manager テンプレートを使用して、Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs (プレビュー) を有効にする方法について説明します。 このプロセスを完了すると、すべての仮想マシンの監視を正常に開始し、パフォーマンスや可用性の問題が発生していないかどうかを確認できるようになります。
+この記事では、Azure PowerShell または Azure Resource Manager テンプレートを使用して、Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を有効にする方法について説明します。 このプロセスを完了すると、すべての仮想マシンの監視を正常に開始し、パフォーマンスや可用性の問題が発生していないかどうかを確認できるようになります。
 
 ## <a name="set-up-a-log-analytics-workspace"></a>Log Analytics ワークスペースを設定する
 
 Log Analytics ワークスペースがない場合は、作成する必要があります。 構成する手順を続行する前に、「[前提条件](vminsights-enable-overview.md#log-analytics)」のセクションで提案されている方法を確認してください。 次に、Azure Resource Manager テンプレート メソッドを使用して、Azure Monitor for VMs のデプロイを完了できます。
 
-### <a name="enable-performance-counters"></a>パフォーマンス カウンターを有効にする
-
-ソリューションによって参照されている Log Analytics ワークスペースが、ソリューションで必要なパフォーマンス カウンターを収集するようにまだ構成されていない場合は、カウンターを有効にする必要があります。 次の 2 つの方法のいずれかでこれを行うことができます。
-* 「[Log Analytics での Windows および Linux のパフォーマンス データ ソース](../../azure-monitor/platform/data-sources-performance-counters.md)」の説明に従って、手動で行います
-* [Azure PowerShell ギャラリー](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)で入手できる PowerShell スクリプトをダウンロードして実行します
-
-### <a name="install-the-servicemap-solution"></a>ServiceMap ソリューションをインストールする
+### <a name="install-the-vminsights-solution"></a>VMInsights ソリューションをインストールする
 
 この方法には、Log Analytics ワークスペースでソリューション コンポーネントを有効にするための構成を指定する JSON テンプレートが含まれています。
 
@@ -63,7 +57,7 @@ Azure CLI を使用するには、まず、ローカルに CLI をインスト�
                     {
                         "apiVersion": "2015-11-01-preview",
                         "location": "[parameters('WorkspaceLocation')]",
-                        "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                        "name": "[concat('VMInsights', '(', parameters('WorkspaceName'),')')]",
                         "type": "Microsoft.OperationsManagement/solutions",
                         "dependsOn": [
                             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
@@ -73,9 +67,9 @@ Azure CLI を使用するには、まず、ローカルに CLI をインスト�
                         },
 
                         "plan": {
-                            "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                            "name": "[concat('VMInsights', '(', parameters('WorkspaceName'),')')]",
                             "publisher": "Microsoft",
-                            "product": "[Concat('OMSGallery/', 'ServiceMap')]",
+                            "product": "[Concat('OMSGallery/', 'VMInsights')]",
                             "promotionCode": ""
                         }
                     }

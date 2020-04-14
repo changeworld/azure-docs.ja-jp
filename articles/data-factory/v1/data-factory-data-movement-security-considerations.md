@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 467ba9f36dbcd44c5b8d87ee2f20d178d62d9732
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1f19d258531e5368238cba72c986aede3f4a64ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930809"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80130837"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 
@@ -61,9 +61,9 @@ Azure Data Factory では、データ ストアの資格情報を保護するた
 一部のデータ ストアは、保存データの暗号化をサポートしています。 そうしたデータ ストアに対してはデータ暗号化メカニズムを有効にすることをお勧めします。 
 
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。 この動作はクライアントに対して透過的です。 詳細については、「[SQL Data Warehouse でのデータベース保護](../../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)」をご覧ください。
+Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。 この動作はクライアントに対して透過的です。 詳細については、「[SQL Data Warehouse でのデータベース保護](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)」をご覧ください。
 
-#### <a name="azure-sql-database"></a>Azure SQL Database
+#### <a name="azure-sql-database"></a>Azure SQL データベース
 Azure SQL Database では、Transparent Data Encryption (TDE) もサポートしています。TDE を使用すると、データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。アプリケーションを変更する必要はありません。 この動作はクライアントに対して透過的です。 詳細については、「[Azure SQL Database での Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)」をご覧ください。 
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
@@ -190,7 +190,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 **質問:** ゲートウェイの証明書の要件は何ですか?
 **回答:** 現行のゲートウェイには、資格情報マネージャー アプリケーションがデータ ストアの資格情報を安全に設定するために使用する証明書が必要です。 この証明書は、ゲートウェイの設定によって作成および構成された自己署名証明書です。 代わりに独自の TLS または SSL 証明書を使用できます。 詳細については、「[ClickOnce 資格情報マネージャー アプリケーション](#click-once-credentials-manager-app)」セクションを参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 コピー アクティビティのパフォーマンスについては、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
  

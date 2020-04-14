@@ -22,8 +22,6 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: コマンド ライン
           href: functions-create-first-azure-function-azure-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-create-first-java-maven.md
     - name: ストレージへの接続
       items:
         - name: Visual Studio Code
@@ -32,8 +30,6 @@
           href: functions-add-output-binding-storage-queue-vs.md
         - name: コマンド ライン
           href: functions-add-output-binding-storage-queue-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-add-output-binding-storage-queue-java.md
 - name: チュートリアル
   items:
     - name: Functions と Logic Apps
@@ -175,10 +171,16 @@
                   href: create-visual-studio.md
                 - name: Visual Studio Code
                   href: create-visual-studio-code.md
+                - name: Gradle を使用した Java
+                  href: functions-create-first-java-gradle.md
                 - name: Eclipse を使用した Java
                   href: functions-create-maven-eclipse.md
                 - name: IntelliJ IDEA を使用した Java
                   href: functions-create-maven-intellij.md
+                - name: Maven を使用した Kotlin
+                  href: functions-create-first-kotlin-maven.md
+                - name: IntelliJ を使用した Kotlin
+                  href: functions-create-maven-kotlin-intellij.md
                 - name: Linux App Service プラン
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux 従量課金プラン
@@ -205,6 +207,8 @@
               href: add-output-binding-storage-queue-vs-code.md
             - name: ストレージ - Visual Studio
               href: add-output-binding-storage-queue-vs.md
+            - name: ストレージ - Java
+              href: functions-add-output-binding-storage-queue-java.md
         - name: デバッグおよびテスト
           items:
             - name: テスト関数

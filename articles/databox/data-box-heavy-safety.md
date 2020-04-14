@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
 ms.openlocfilehash: b7562ab6c7ec9c6234ed3fbb867361307b80a638
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67673065"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Azure Data Box Heavy を安全にインストールして操作する
 
 この記事には、Azure Data Box Heavy の安全性に関する情報が含まれます。
 
-![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png)
+![警告アイコン](./media/data-box-heavy-safety/warning-icon.png)
 ![安全上の注意の確認を促すアイコン](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) **最初にすべての指示を確認してください**
 
 Azure Data Box Heavy を使用する前に、この記事の安全性に関する情報をすべてお読みください。 指示に従わないと、火災、感電、その他の負傷、または資産の破損が発生する可能性があります。
@@ -30,8 +30,8 @@ Data Box を設定および実行しているときに従うべき安全に関�
 | アイコン | 説明 |
 |:--- |:--- |
 | ![危険のアイコン](./media/data-box-heavy-safety/warning-icon.png) **危険!** |回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。 この記号の文字は、最も重大な状況の場合にのみ使用されます。 |
-| ![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png) **警告!** |回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。 |
-| ![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png) **注意!** |回避しなければ、軽度または中程度の負傷を招く可能性のある危険な状況を示します。 |
+| ![警告アイコン](./media/data-box-heavy-safety/warning-icon.png) **警告!** |回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。 |
+| ![警告アイコン](./media/data-box-heavy-safety/warning-icon.png) **注意!** |回避しなければ、軽度または中程度の負傷を招く可能性のある危険な状況を示します。 |
 | ![通告のアイコン](./media/data-box-heavy-safety/notice-icon.png) **通告:** |重要だが、危険に関連するものではない情報を示します。 |
 | ![感電のアイコン](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **感電の危険あり** |高電圧。 |
 | ![ヘビー ウェイト アイコン](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **ヘビー ウェイト** | |
@@ -43,23 +43,23 @@ Data Box を設定および実行しているときに従うべき安全に関�
 
 ## <a name="handling-precautions"></a>使用上の注意事項
 
-![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png) **警告!**
+![警告アイコン](./media/data-box-heavy-safety/warning-icon.png) **警告!**
 
 * クレートの移動や取り扱いには、適切な機器 (たとえば、ハンドリフト) および保護具 (たとえば、手袋) を使用する必要があります。
 * けがや物的損害を回避するために、機器を取り外す前に、付属のボルトを使用してクレートにランプを固定する必要があります。
 
-![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png) ![転倒の危険性のアイコン](./media/data-box-heavy-safety/tip-hazard-icon.png) **転倒の危険性**
+![警告アイコン](./media/data-box-heavy-safety/warning-icon.png) ![転倒の危険性のアイコン](./media/data-box-heavy-safety/tip-hazard-icon.png) **転倒の危険性**
 
 * 転倒や破損を回避するために、機器を平らで固く安定した場所に置いてください。
 * 機器を検査、電源投入、および運用する前に、キャスターがロックされていることを確認してください。
 
-![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png) ![感電のアイコン](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png)![ユーザーによる保守不可能な部品アイコン](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **注意!** 
+![警告アイコン](./media/data-box-heavy-safety/warning-icon.png) ![感電のアイコン](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png)![ユーザーによる保守不可能な部品アイコン](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **注意!** 
 
 * "*受け取った状態*" のデバイスで損傷を検査してください。 デバイスの筐体が損傷している場合は、[Microsoft サポート](data-box-disk-contact-microsoft-support.md)に連絡して代わりの製品を受け取ってください。 デバイスを操作しようとしないでください。 
 * デバイスには、不正操作防止用のねじが付いています。 デバイスが正常に動作していないと思われる場合は、[Microsoft サポート](data-box-disk-contact-microsoft-support.md)に連絡して代わりの製品を受け取ってください。 デバイスを修理しようとしないでください。 
 * デバイスには、ユーザーでは修理できない部品が含まれています。 危険な電圧、電流、エネルギー レベルが内部に存在します。 開かないでください。 修理のために Microsoft にデバイスを返却してください。
 
-![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png) ![ヘビー ウェイト アイコン](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **警告!** 
+![警告アイコン](./media/data-box-heavy-safety/warning-icon.png) ![ヘビー ウェイト アイコン](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **警告!** 
 
 * 完全に構成された筐体の重量は 326 kg (719 lbs) になります。1 人で持ち上げようとしないでください。
 * 適切な機械的補助なしで機器を持ち上げようとしないでください。 この重量を持ち上げようとすると、大きなけがをする可能性があるので注意してください。
@@ -67,11 +67,11 @@ Data Box を設定および実行しているときに従うべき安全に関�
 * 機器を移動する場合や持ち上げる場合は、機械的補助やその他の適切な補助を使用してください。
 
 
-![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png) ![過重量による転倒の危険性のアイコン](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) ![転倒の危険性のアイコン](./media/data-box-heavy-safety/tip-hazard-icon.png)![ヘビー ウェイト アイコン](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **警告!**
+![警告アイコン](./media/data-box-heavy-safety/warning-icon.png) ![過重量による転倒の危険性のアイコン](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) ![転倒の危険性のアイコン](./media/data-box-heavy-safety/tip-hazard-icon.png)![ヘビー ウェイト アイコン](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **警告!**
 * Data Box Heavy はテーブルや作業台として使用しないでください。 荷重をかけることは、それがどのような荷重であっても危険であり、けがをすることや物的損害が発生することがあります。
 * ラック マウント型の機器をシェルフまたは作業スペースとして使用してはいけません。 Data Box Heavy はラック マウント型機器の上に置かないでください。 延長されたラック マウント型ユニットに荷重をかけると、どのような種類であっても、けが、死亡、製品の破損を引き起こす可能性のある転倒の危険が発生します。
 
-![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png) **警告!**
+![警告アイコン](./media/data-box-heavy-safety/warning-icon.png) **警告!**
 
 * このシステムは一般的なオフィス環境で運用されるように設計されています。 次のような場所を選択してください。
 
@@ -88,7 +88,7 @@ Data Box を設定および実行しているときに従うべき安全に関�
 
 ## <a name="electrical-precautions"></a>電気に関する注意事項
 
-![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png) ![感電のアイコン](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **警告!**
+![警告アイコン](./media/data-box-heavy-safety/warning-icon.png) ![感電のアイコン](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **警告!**
 
 * 電源コードには安全な接地を行ってください。 AC 電源ケーブルには、3 線接地プラグ (接地ピンを持つプラグ) が付いています。 このプラグは、接地されている AC コンセントにのみ適合します。 接地ピンを無意味にしないでください。
 * 電源コードのプラグが主な切断装置である場合、壁コンセントがデバイスの近くにあり、簡単に使用できることを確認してください。
@@ -109,11 +109,11 @@ Data Box を設定および実行しているときに従うべき安全に関�
     - 電源コードの電気定格は、製品に記されている電流定格の電気定格よりも大きくなければなりません。
     - 電源コードには、コンセントに適合する安全な接地ピンやプラグが備わっている必要があります。
 
-![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png) ![感電のアイコン](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) ![複数の電源のアイコン](./media/data-box-heavy-safety/multiple-power-sources-icon.png) **警告!**
+![警告アイコン](./media/data-box-heavy-safety/warning-icon.png) ![感電のアイコン](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) ![複数の電源のアイコン](./media/data-box-heavy-safety/multiple-power-sources-icon.png) **警告!**
 
 * すべての AC 電源コードを抜いて、機器から AC 電源を完全に取り外します。
 
-![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png) **注意!**
+![警告アイコン](./media/data-box-heavy-safety/warning-icon.png) **注意!**
 
 * このデバイスには、コイン電池バッテリが含まれています。 デバイスを修理しようとしないでください。 このデバイスのバッテリをユーザーは保守できません。 
 * **サービス担当者のみ**:バッテリを不適切なタイプに交換すると爆発する危険があります。 指示に従って使用済みバッテリを廃棄します。
@@ -156,7 +156,7 @@ Microsoft から明示的な承認を受けずにデバイスを変更すると�
 - このデバイスは有害な干渉の原因にならない。
 - このデバイスは、デバイスの望ましくない動作を引き起こす可能性のある干渉を含む、受信した任意の干渉を受け入れる必要がある。
 
-![カナダ](./media/data-box-heavy-safety/canada.png)
+![Canada](./media/data-box-heavy-safety/canada.png)
 
 CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
 米国:(800) 426-9400 カナダ:(800) 933-4750
@@ -165,7 +165,7 @@ CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 980
 
 EU 適合宣言のコピーを[要求](mailto:CSI_Compliance@microsoft.com)します。
 
-![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png) **警告!** 
+![警告アイコン](./media/data-box-heavy-safety/warning-icon.png) **警告!** 
 
 これは、クラス A 製品です。 国内環境では、この製品は無線干渉を起こす可能性があり、その場合はユーザーが適切な対策を講じることが必要な場合があります。
 
@@ -191,7 +191,7 @@ Microsoft Ireland Sandyford Ind Est Dublin D18 KX32 IRL 電話番号: +353 1 295
 
 これらの安全上の注意を確認した後、デバイスのセットアップと配線を行うことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ケーブルを使用して Data Box Heavy を接続する](data-box-heavy-deploy-set-up.md)
 

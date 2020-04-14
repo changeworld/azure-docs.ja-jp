@@ -1,28 +1,25 @@
 ---
-title: ファイルと ACL 用の Azure Data Lake Storage Gen2 Java SDK (プレビュー)
+title: ファイル と ACL 用の Azure Data Lake Storage Gen2 Java SDK
 description: Java 用 Azure Storage ライブラリを使用して、階層型名前空間 (HNS) が有効になっているストレージ アカウントで、ディレクトリとファイル、およびディレクトリのアクセス制御リスト (ACL) を管理します。
 author: normesta
 ms.service: storage
-ms.date: 11/24/2019
+ms.date: 03/20/2020
 ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 0f9489cd702eab6038689f6ac710c32427665093
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 45870dd7d3035b6b49340fd6e8016794088e775a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031120"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061555"
 ---
-# <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Java を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する (プレビュー)
+# <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Java を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
 この記事では、階層型名前空間 (HNS) が有効になっているストレージ アカウントで、Java を使用してディレクトリ、ファイル、アクセス許可を作成および管理する方法を示します。 
 
-> [!IMPORTANT]
-> この記事で紹介している Java ライブラリは現在、パブリック プレビュー段階です。
-
-[パッケージ (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API リファレンス](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html) | [Gen1 から Gen2 へのマッピング](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [フィードバックを送る](https://github.com/Azure/azure-sdk-for-java/issues)
+[パッケージ (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API リファレンス](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html) | [Gen1 から Gen2 へのマッピング](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [フィードバックを送る](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,9 +31,12 @@ ms.locfileid: "77031120"
 
 開始するには、[こちらのページ](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)にアクセスして、最新バージョンの Java ライブラリを検索します。 次に、お使いのテキスト エディターで *pom.xml* ファイルを開きます。 該当のバージョンを参照する依存関係要素を追加します。
 
+Azure Active Directory (AD) を使用してクライアント アプリケーションを認証したい場合には、Azure Secret Client Library に依存関係を追加します。 「[プロジェクトに Secret Client Library パッケージを追加する](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project) 」を参照してください。
+
 次に、以下の import ステートメントをコード ファイルに追加します。
 
 ```java
+import com.azure.core.credential.TokenCredential;
 import com.azure.storage.common.StorageSharedKeyCredential;
 import com.azure.storage.file.datalake.DataLakeDirectoryClient;
 import com.azure.storage.file.datalake.DataLakeFileClient;
@@ -53,9 +53,13 @@ import com.azure.storage.file.datalake.models.RolePermissions;
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する 
 
-この記事のスニペットを使用するには、ストレージ アカウントを表す **DataLakeServiceClient** インスタンスを作成する必要があります。 最も簡単な方法は、アカウント キーを使用することです。 
+この記事のスニペットを使用するには、ストレージ アカウントを表す **DataLakeServiceClient** インスタンスを作成する必要があります。 
 
-この例では、アカウント キーを使用して **DataLakeServiceClient** のインスタンスを作成します。
+### <a name="connect-by-using-an-account-key"></a>アカウント キーを使用して接続する
+
+これはアカウントに接続する最も簡単な方法です。 
+
+この例では、アカウント キーを使用して **DataLakeServiceClient** インスタンスを作成します。
 
 ```java
 
@@ -72,8 +76,35 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 
     return builder.buildClient();
 }      
-
 ```
+
+### <a name="connect-by-using-azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD) を使用して接続する
+
+[Java 用 Azure ID クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)を使用して、Azure AD でアプリケーションを認証できます。
+
+この例では、クライアント ID、クライアント シークレット、およびテナント ID を使用して、**DataLakeServiceClient** インスタンスを作成します。  これらの値を取得するには、「[クライアント アプリケーションからの要求を承認するために Azure AD からトークンの取得する](../common/storage-auth-aad-app.md)」を参照してください。
+
+```java
+static public DataLakeServiceClient GetDataLakeServiceClient
+    (String accountName, String clientId, String ClientSecret, String tenantID){
+
+    String endpoint = "https://" + accountName + ".dfs.core.windows.net";
+        
+    ClientSecretCredential clientSecretCredential = new ClientSecretCredentialBuilder()
+    .clientId(clientId)
+    .clientSecret(ClientSecret)
+    .tenantId(tenantID)
+    .build();
+           
+    DataLakeServiceClientBuilder builder = new DataLakeServiceClientBuilder();
+    return builder.credential(clientSecretCredential).endpoint(endpoint).buildClient();
+ } 
+```
+
+> [!NOTE]
+> その他の例については、「[Java 用 Azure ID クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)」のドキュメントを参照してください。
+
+
 ## <a name="create-a-file-system"></a>ファイル システムを作成する
 
 ファイル システムは、ファイルのコンテナーとして機能します。 これは、**DataLakeServiceClient.createFileSystem** メソッドを呼び出すことで作成できます。
@@ -121,7 +152,8 @@ static public DataLakeDirectoryClient
     DataLakeDirectoryClient directoryClient =
         fileSystemClient.getDirectoryClient("my-directory/my-subdirectory");
 
-    return directoryClient.rename("my-directory/my-subdirectory-renamed");
+    return directoryClient.rename(
+        fileSystemClient.getFileSystemName(),"my-subdirectory-renamed");
 }
 ```
 
@@ -134,7 +166,8 @@ static public DataLakeDirectoryClient MoveDirectory
     DataLakeDirectoryClient directoryClient =
         fileSystemClient.getDirectoryClient("my-directory/my-subdirectory-renamed");
 
-    return directoryClient.rename("my-directory-2/my-subdirectory-renamed");                
+    return directoryClient.rename(
+        fileSystemClient.getFileSystemName(),"my-directory-2/my-subdirectory-renamed");                
 }
 ```
 
@@ -174,11 +207,20 @@ static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient
        
     System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
              
-    PathPermissions permissions = new PathPermissions()
-
-      .group(new RolePermissions().execute(true).read(true))
-      .owner(new RolePermissions().execute(true).read(true).write(true))
-      .other(new RolePermissions().read(true));
+    RolePermissions groupPermission = new RolePermissions();
+    groupPermission.setExecutePermission(true).setReadPermission(true);
+  
+    RolePermissions ownerPermission = new RolePermissions();
+    ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
+  
+    RolePermissions otherPermission = new RolePermissions();
+    otherPermission.setReadPermission(true);
+  
+    PathPermissions permissions = new PathPermissions();
+  
+    permissions.setGroup(groupPermission);
+    permissions.setOwner(ownerPermission);
+    permissions.setOther(otherPermission);
 
     directoryClient.setPermissions(permissions, null, null);
 
@@ -217,6 +259,31 @@ static public void UploadFile(DataLakeFileSystemClient fileSystemClient)
 }
 ```
 
+> [!TIP]
+> ファイルサイズが大きい場合は、コードで **DataLakeFileClient.append** メソッドを複数回呼び出す必要があります。 代わりに、**DataLakeFileClient.uploadFromFile** メソッドの使用を検討してください。 この方法により、1 回の呼び出しでファイル全体をアップロードできます。 
+>
+> 次のセクションの例を参照してください。
+
+## <a name="upload-a-large-file-to-a-directory"></a>大きなファイルをディレクトリにアップロードする
+
+**DataLakeFileClient.append** メソッドを複数回呼び出すことなく、大きなファイルをアップロードするには、**DataLakeFileClient.uploadFromFile** メソッドを使用します。
+
+```java
+static public void UploadFileBulk(DataLakeFileSystemClient fileSystemClient) 
+    throws FileNotFoundException{
+        
+    DataLakeDirectoryClient directoryClient =
+        fileSystemClient.getDirectoryClient("my-directory");
+
+    DataLakeFileClient fileClient = directoryClient.getFileClient("uploaded-file.txt");
+
+    fileClient.uploadFromFile("C:\\mytestfile.txt");
+
+    }
+
+```
+
+
 ## <a name="manage-a-file-acl"></a>ファイル ACL を管理する
 
 この例では、`upload-file.txt` という名前のファイルの ACL を取得して設定します。 この例では、所有ユーザーには読み取り、書き込み、実行のアクセス許可を付与し、所有グループには読み取りと実行のアクセス許可のみを付与し、他のすべてのユーザーには読み取りアクセスを付与します。
@@ -240,11 +307,20 @@ static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
      
     System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
            
-    PathPermissions permissions = new PathPermissions()
+    RolePermissions groupPermission = new RolePermissions();
+    groupPermission.setExecutePermission(true).setReadPermission(true);
 
-        .group(new RolePermissions().execute(true).read(true))
-        .owner(new RolePermissions().execute(true).read(true).write(true))
-        .other(new RolePermissions().read(false));
+    RolePermissions ownerPermission = new RolePermissions();
+    ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
+
+    RolePermissions otherPermission = new RolePermissions();
+    otherPermission.setReadPermission(true);
+
+    PathPermissions permissions = new PathPermissions();
+
+    permissions.setGroup(groupPermission);
+    permissions.setOwner(ownerPermission);
+    permissions.setOther(otherPermission);
 
     fileClient.setPermissions(permissions, null, null);
 
@@ -314,10 +390,10 @@ static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClien
 }
 ```
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
-* [API リファレンス ドキュメント](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html)
-* [パッケージ (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake/12.0.0-preview.6/jar)
+* [API リファレンス ドキュメント](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html)
+* [パッケージ (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)
 * [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
 * [Gen1 から Gen2 へのマッピング](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 * [既知の問題](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 5e155758d19b45d977fcd087bff0ceb85898f8f8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772004"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548298"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure のネットワーク セキュリティのベスト プラクティス
 この記事では、お使いのネットワーク セキュリティを強化するための Azure のベスト プラクティスについて説明します。 このベスト プラクティスは、Azure のネットワークに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
@@ -122,7 +122,7 @@ Azure ネットワーク セキュリティ アプライアンスを使用する
 
 前述のゼロ トラスト概念に基づいて、高いセキュリティが求められるすべてのデプロイでは、境界ネットワークを使用して、Azure リソースに対するネットワーク セキュリティとアクセス制御のレベル強化を検討することをお勧めします。 Azure またはサードパーティのソリューションを使用して、自分の資産とインターネットの間に追加のセキュリティ層を用意できます。
 
-- Azure のネイティブ コントロール。 [Azure Firewall](/azure/firewall/overview) と [Application Gateway の Web アプリケーション ファイアウォール](/azure/application-gateway/overview#web-application-firewall)では、サービスとしての完全にステートフルなファイアウォール、組み込みの高可用性、制限のないクラウドのスケーラビリティ、FQDN のフィルター処理、OWASP コア ルールのサポート、およびシンプルなセットアップと構成がある基本的なセキュリティが提供されます。
+- Azure のネイティブ コントロール。 [Azure Firewall](/azure/firewall/overview) と [Application Gateway の Web アプリケーション ファイアウォール](../../application-gateway/features.md#web-application-firewall)では、サービスとしての完全にステートフルなファイアウォール、組み込みの高可用性、制限のないクラウドのスケーラビリティ、FQDN のフィルター処理、OWASP コア ルールのサポート、およびシンプルなセットアップと構成がある基本的なセキュリティが提供されます。
 - サード パーティ製品。 [Azure Marketplace](https://azuremarketplace.microsoft.com/) で、次世代ファイアウォール (NGFW) や、使い慣れたセキュリティ ツールや高度に強化されたレベルのネットワーク セキュリティを提供する他のサード パーティ製品を検索してください。 構成が複雑になる可能性がありますが、サードパーティ製品で、既存の機能とスキルセットを使用できる可能性があります。
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>専用 WAN リンクを使用してインターネットへの露出を避ける
@@ -153,12 +153,12 @@ ExpressRoute 接続の場所は、ファイアウォールの容量、スケー�
 - セキュリティで保護された接続のみが受け入れられるため、サーバーへの暗号化されていない通信は受け入れられない。
 - 実行時間の長い同じ TCP 接続で複数の HTTP 要求を、異なるバックエンド サーバーにルーティングまたは負荷分散する必要がある。
 
-**負荷分散オプション**:HTTP Web トラフィック ロード バランサーである、[Azure Application Gateway](/azure/application-gateway/application-gateway-introduction) を使用します。 Application Gateway では、ゲートウェイでのエンド ツー エンド SSL 暗号化と [SSL 終了](/azure/application-gateway/application-gateway-introduction)がサポートされています。 そのため、Web サーバーを、暗号化と暗号化解除のオーバーヘッドと、バックエンド サーバーへの暗号化されていないトラフィック フローから解放することができます。
+**負荷分散オプション**:HTTP Web トラフィック ロード バランサーである、[Azure Application Gateway](/azure/application-gateway/application-gateway-introduction) を使用します。 Application Gateway では、ゲートウェイでのエンド ツー エンド TLS 暗号化と [TLS 終了](/azure/application-gateway/application-gateway-introduction)がサポートされています。 そのため、Web サーバーを、暗号化と暗号化解除のオーバーヘッドと、バックエンド サーバーへの暗号化されていないトラフィック フローから解放することができます。
 
 **シナリオ**:Azure 仮想ネットワークに配置されたサーバー間で、インターネットからの着信接続の負荷分散を行う必要があります。 これは次のような場合のシナリオです。
 
 - インターネットからの着信要求を受け入れるステートレス アプリケーションがある。
-- スティッキー セッションや SSL オフロードを必要としない。 スティッキー セッションは、サーバー アフィニティを実現するために、アプリケーション負荷分散で使用される手法です。
+- スティッキー セッションや TLS オフロードを必要としない。 スティッキー セッションは、サーバー アフィニティを実現するために、アプリケーション負荷分散で使用される手法です。
 
 **負荷分散オプション**:Azure portal を使用して、[外部ロード バランサーを作成](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)します。これにより、複数の VM 全体に着信要求を分散し、より高いレベルの可用性を提供することができます。
 

@@ -7,16 +7,22 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c5040721705b90a981f1f8a45a3a2eb70eefde05
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c609f2a3843481442e97061739a806de60a680b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772145"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367569"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT ハブの IP アドレス
 
-IoT ハブ パブリック エンドポイントの IP アドレス プレフィックスは、_AzureIoTHub_ [サービス タグ](../virtual-network/service-tags-overview.md)で定期的に発行されます。 これらの IP アドレス プレフィックスを使用して、さまざまなネットワーク分離の目標を実装するために、IoT Hub とデバイスまたはネットワーク資産間の接続を制御することができます。
+IoT ハブ パブリック エンドポイントの IP アドレス プレフィックスは、_AzureIoTHub_ [サービス タグ](../virtual-network/service-tags-overview.md)で定期的に発行されます。
+
+> [!NOTE]
+> オンプレミス ネットワーク内にデプロイされているデバイスの場合、Azure IoT Hub は、プライベート エンドポイントとの VNET 接続の統合をサポートします。 詳細については、[IoT Hub による VNET のサポート](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints)に関する記事を参照してください。
+
+
+これらの IP アドレス プレフィックスを使用して、さまざまなネットワーク分離の目標を実装するために、IoT Hub とデバイスまたはネットワーク資産間の接続を制御することができます。
 
 | 目標 | 該当するシナリオ | アプローチ |
 |------|-----------|----------|

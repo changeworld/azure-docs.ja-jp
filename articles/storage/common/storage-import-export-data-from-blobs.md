@@ -5,17 +5,18 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8ce1e7d58ba69d9f36d3b37c1e48bfeebc5d8d65
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a5afa6439caa6b7c1572447e3b212f3357bf296a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978553"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282513"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage からデータをエクスポートする
+
 この記事では、Azure Import/Export サービスを使用して大量のデータを Azure Blob Storage から安全にエクスポートする手順について説明します。 このサービスを利用するには、Azure データセンターに空のドライブを送付する必要があります。 このサービスでは、ストレージ アカウントからドライブにデータをエクスポートし、ドライブを返送します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -27,18 +28,18 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 - Azure Storage アカウントが少なくとも 1 つある。 [Import/Export サービスでサポートしているストレージ アカウントとストレージの種類](storage-import-export-requirements.md)の一覧を参照してください。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-account-create.md)」を参照してください。
 - 十分な数の[サポートされている種類](storage-import-export-requirements.md#supported-disks)のディスクがある。
 - FedEx または DHL のアカウントを用意します。 FedEx または DHL 以外の運送業者を使用する場合、`adbops@microsoft.com` から Azure Data Box Operations チームまでお問い合わせください。
-    - アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
-    - エクスポート ジョブの追跡番号を生成します。
-    - すべてのジョブに個別の追跡番号が必要です。 同じ追跡番号を持つ複数のジョブはサポートされていません。
-    - 運送業者アカウントがいない場合、次に移動します。
-        - [FedEX アカウントを作成するか](https://www.fedex.com/en-us/create-account.html)、または
-        - [DHL アカウントを作成します](http://www.dhl-usa.com/en/express/shipping/open_account.html)。
+  - アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
+  - エクスポート ジョブの追跡番号を生成します。
+  - すべてのジョブに個別の追跡番号が必要です。 同じ追跡番号を持つ複数のジョブはサポートされていません。
+  - 運送業者アカウントがいない場合、次に移動します。
+    - [FedEX アカウントを作成するか](https://www.fedex.com/en-us/create-account.html)、または
+    - [DHL アカウントを作成します](http://www.dhl-usa.com/en/express/shipping/open_account.html)。
 
 ## <a name="step-1-create-an-export-job"></a>手順 1:エクスポート ジョブの作成
 
 以下の手順を実行して、Azure portal でエクスポート ジョブを作成します。
 
-1. [https://portal.azure.com/ ](https://portal.azure.com/) にログオンします。
+1. https://portal.azure.com/ にログオンします。
 2. **[すべてのサービス] > [ストレージ] > [インポート/エクスポート ジョブ]** の順に移動します。
 
     ![インポート/エクスポートへの移動](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -58,7 +59,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 
         ![基本](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
 
-3. **[ジョブの詳細]** で次の操作を実行します。
+5. **[ジョブの詳細]** で次の操作を実行します。
 
     - エクスポートするデータが存在するストレージ アカウントを選択します。 所在地に近いストレージ アカウントを使用します。
     - 配送場所は、選んだストレージ アカウントのリージョンに基づいて自動的に入力されます。
@@ -80,8 +81,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
    > [!NOTE]
    > データ コピー時にエクスポートする BLOB が使用中の場合、Azure Import/Export サービスは BLOB のスナップショットを作成し、スナップショットをコピーします。
 
-
-4. **[差出人住所の詳細]** で次の操作を実行します。
+6. **[差出人住所の詳細]** で次の操作を実行します。
 
     - ドロップダウン リストから運送業者を選択します。 FedEx または DHL 以外の運送業者を使用する場合は、ドロップダウンから既存のオプションを選びます。 `adbops@microsoft.com` で Azure Data Box Operations チームに使用する予定の運送業者に関する情報を連絡してください。
     - その運送業者で作成した有効な運送業者アカウント番号を入力します。 Microsoft は、エクスポート ジョブの完了後、このアカウントを使ってドライブを返送します。
@@ -90,7 +90,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
         > [!TIP]
         > 1 人のユーザーの電子メール アドレスを指定する代わりに、グループ メール アドレスを提供します。 これにより、管理者が離れる場合でも、通知を受信します。
 
-5. **[概要]** で次の操作を実行します。
+7. **[概要]** で次の操作を実行します。
 
     - ジョブの詳細を確認します。
     - ジョブ名と、Azure にディスクを送付するために使用する Azure データセンターの送付先住所をメモします。
@@ -99,6 +99,8 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
         > ディスクは常に、Azure Portal に示されているデータ センターに送付します。 誤って別のデータ センターにディスクが発送された場合、ジョブは処理されません。
 
     - **[OK]** をクリックして、エクスポート ジョブの作成を完了します。
+
+<!--## (Optional) Step 2: -->
 
 ## <a name="step-2-ship-the-drives"></a>手順 2:ドライブを送付する
 
@@ -110,19 +112,28 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-
 ## <a name="step-4-receive-the-disks"></a>手順 4:ディスクを受け取る
+
 ダッシュボードでジョブの完了が報告されると、ディスクが返送され、ポータルで配送の追跡番号を利用できるようになります。
 
 1. エクスポートされたデータが保存されたドライブを受け取ったら、BitLocker キーを取得してドライブのロックを解除する必要があります。 Azure portal でエクスポート ジョブに移動します。 **[インポート/エクスポート]** タブをクリックします。
-2. リストからエクスポート ジョブを選択してクリックします。 **BitLocker キー**に移動し、キーをコピーします。
+2. リストからエクスポート ジョブを選択してクリックします。 **[暗号化]** に移動し、キーをコピーします。
 
-   ![エクスポート ジョブの BitLocker キーの表示](./media/storage-import-export-service/export-job-bitlocker-keys.png)
+   ![エクスポート ジョブの BitLocker キーの表示](./media/storage-import-export-service/export-job-bitlocker-keys-02.png)
 
 3. BitLocker キーを使用してディスクのロックを解除します。
 
-これでエクスポートは完了です。 この時点でジョブを削除するか、90 日後に自動的に削除することができます。
+これでエクスポートは完了です。
 
+## <a name="step-5-unlock-the-disks"></a>手順 5:ディスクのロックを解除する
+
+WAImportExport ツールのバージョン 1.4.0.300 を使用している場合は、次のコマンドを使用してドライブのロックを解除します。
+
+    `WAImportExport Unlock /externalKey:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+
+以前のバージョンのツールを使用している場合は、BitLocker ダイアログボックスを使用してドライブのロックを解除します。
+
+この時点で、ジョブを削除するか、そのままにしておくことができます。 ジョブは、90 日後に自動的に削除されます。
 
 ## <a name="check-the-number-of-drives"></a>ドライブ数を確認する
 
@@ -157,8 +168,8 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 
 次の例は `PreviewExport` コマンドを示しています。  
 
-```  
-WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB    
+```powershell
+    WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB
 ```  
 
 エクスポート BLOB 一覧ファイルには、次のように BLOB 名や BLOB のプレフィックスが含まれる場合があります。  
@@ -176,7 +187,7 @@ Azure Import/Export ツールでは、エクスポートするすべての BLOB 
 
 情報ログを省略した出力の例を次に示します。  
 
-```  
+```powershell
 Number of unique blob paths/prefixes:   3  
 Number of duplicate blob paths/prefixes:        0  
 Number of nonexistent blob paths/prefixes:      1  
@@ -187,7 +198,7 @@ Number of blobs that cannot be exported:        2
 Number of drives needed:        3  
         Drive #1:       blobs = 1, occupied space = 454.74 GB  
         Drive #2:       blobs = 3, occupied space = 441.37 GB  
-        Drive #3:       blobs = 2, occupied space = 131.28 GB    
+        Drive #3:       blobs = 2, occupied space = 131.28 GB
 ```
 
 ## <a name="examples-of-valid-blob-paths"></a>有効な BLOB パスの例
@@ -206,5 +217,5 @@ Number of drives needed:        3
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ジョブとドライブの状態の表示](storage-import-export-view-drive-status.md)
-* [Import/Export の要件の確認](storage-import-export-requirements.md)
+- [ジョブとドライブの状態の表示](storage-import-export-view-drive-status.md)
+- [Import/Export の要件の確認](storage-import-export-requirements.md)

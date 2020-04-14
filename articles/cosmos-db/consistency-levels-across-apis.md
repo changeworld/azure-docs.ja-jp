@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 819929fb157444ae53df113c0318dd18146156c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ef7d032d37105549ff7b05f85b953cd420954602
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442020"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131469"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>整合性レベルと Azure Cosmos DB API
 
@@ -22,11 +22,11 @@ SQL API、Gremlin API、および Table API を使用する場合、Azure Cosmos
 
 Casandra API または Azure Cosmos DB の Mongo DB 用 API を使用すると、Apache Cassandra と MongoDB がそれぞれ提供しているものよりも強い整合性と耐久性が保証された、整合性レベルの完全なセットがアプリケーションで取得されます。 このドキュメントでは、Apache Cassandra と MongoDB の整合性レベルに対応する Azure Cosmos DB の整合性レベルを示します。
 
-## <a id="cassandra-mapping"></a>Apache Cassandra と Azure Cosmos DB の間の整合性レベルのマッピング
+## <a name="mapping-between-apache-cassandra-and-azure-cosmos-db-consistency-levels"></a><a id="cassandra-mapping"></a>Apache Cassandra と Azure Cosmos DB の間の整合性レベルのマッピング
 
 Apache Cassandra は、Azure Cosmos DB とは異なり、整合性の保証がネイティブで正確に定義されていません。  代わりに Apache Cassandra には、高可用性、整合性および待機時間とのトレードオフを可能にする、書き込みの整合性レベルと読み取りの整合性レベルがあります。 Azure Cosmos DB の Cassandra API を使用する場合: 
 
-* Apache Cassandra の書き込み整合性レベルは、お使いの Azure Cosmos アカウントに構成された既定の整合性レベルにマップされます。 
+* Apache Cassandra の書き込み整合性レベルは、お使いの Azure Cosmos アカウントに構成された既定の整合性レベルにマップされます。 書き込み操作 (CL) の整合性は、要求ごとに変更することはできません。
 
 * Azure Cosmos DB は、Cassandra クライアント ドライバーによって指定された読み取り整合性レベルを、読み取り要求に動的に構成された Azure Cosmos DB 整合性レベルの 1 つに動的にマップします。 
 
@@ -34,7 +34,7 @@ Apache Cassandra は、Azure Cosmos DB とは異なり、整合性の保証が�
 
 [![Cassandra の整合性モデル マッピング](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
 
-## <a id="mongo-mapping"></a>MongoDB と Azure Cosmos DB の間の整合性レベルのマッピング
+## <a name="mapping-between-mongodb-and-azure-cosmos-db-consistency-levels"></a><a id="mongo-mapping"></a>MongoDB と Azure Cosmos DB の間の整合性レベルのマッピング
 
 ネイティブ MongoDB は、Azure Cosmos DB とは異なり、整合性の保証がネイティブに正確に定義されていません。 代わりに、ネイティブ MongoDB では、必要な整合性レベルを実現するためにプライマリまたはセカンダリ レプリカのいずれかを読み取り操作の対象とする、書き込み保証、読み込み保証、isMaster ディレクティブの整合性保証を設定することをユーザーに許可しています。 
 
@@ -44,7 +44,7 @@ MongoDB で Azure Cosmos DB の API を使用する場合:
 
 * 書き込み保証は、お使いの Azure Cosmos アカウントに構成された既定の整合性レベルにマップされます。
  
-* Azure Cosmos DB は、MongoDB クライアント ドライバーによって指定された読み込み保証を、読み取り要求に動的に構成された Azure Cosmos DB 整合性レベルの 1 つに動的にマップします。 
+* Azure Cosmos DB は、MongoDB クライアント ドライバーによって指定された読み込み保証を、読み取り要求に動的に構成された Azure Cosmos DB 整合性レベルの 1 つに動的にマップします。  
 
 * お使いの Azure Cosmos アカウントに関連付けられた特定のリージョンを最初の書き込み可能なリージョンとすることによって "Master" と注釈を付けることができます。 
 

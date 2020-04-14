@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 3cf4f2314c7de2b2f7d581faeea88fe3c3177e81
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0547f254a64cecc7072ee9ff79eb50204b34bc17
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975059"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548862"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>カスタム ルート CA を使用して Azure Application Gateway の自己署名証明書を生成する
 
 Application Gateway v2 SKU では、バックエンド サーバーを許可するために、信頼されたルート証明書の使用を導入しています。 これにより、v1 SKU で必要だった認証証明書が不要になります。 この "*ルート証明書*" は、バックエンド証明書サーバーからの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 サーバー証明書を発行したルート証明機関 (CA) が識別され、サーバー証明書が SSL 通信に使用されます。
 
-Application Gateway はよく知られている CA (GoDaddy や DigiCert など) によって署名されている Web サイトの証明書を既定で信頼します。 その場合は、ルート証明書を明示的にアップロードする必要はありません。 詳細については、「[Application Gateway での SSL ターミネーションとエンド ツー エンド SSL の概要](ssl-overview.md)」を参照してください。 ただし、開発/テスト環境を所有していて、検証済みの CA 署名証明書を購入したくない場合は、独自のカスタム CA を作成し、それを使用して自己署名証明書を作成することができます。 
+Application Gateway は、よく知られている CA (GoDaddy や DigiCert など) によって署名されている Web サイトの証明書を既定で信頼します。 その場合は、ルート証明書を明示的にアップロードする必要はありません。 詳細については、「[Application Gateway での SSL ターミネーションとエンド ツー エンド SSL の概要](ssl-overview.md)」を参照してください。 ただし、開発/テスト環境を所有していて、検証済みの CA 署名証明書を購入したくない場合は、独自のカスタム CA を作成し、それを使用して自己署名証明書を作成することができます。 
 
 > [!NOTE]
 > 自己署名証明書は、既定では信頼されないため、管理が困難になる可能性があります。 また、強力でない可能性のある旧式のハッシュや暗号スイートが使用される場合もあります。 セキュリティを強化するには、よく知られている証明機関によって署名された証明書を購入してください。
@@ -127,7 +127,7 @@ CSR は、証明書を要求するときに CA に与えられる公開キーで
 
 ## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>Web サーバーの SSL 設定で証明書を構成する
 
-Web サーバーで fabrikam.crt ファイルと fabrikam.key ファイルを使用して SSL を構成します。 Web サーバーで 2 つのファイルを受け取ることができない場合は、OpenSSL コマンドを使用して、単一の .pem ファイルまたは .pfx ファイルに結合することができます。
+Web サーバーで fabrikam.crt ファイルと fabrikam.key ファイルを使用して SSL を構成します。 Web サーバーで 2 つのファイルを受け取ることができない場合は、OpenSSL コマンドを使用して、単一の .pem または .pfx ファイルに結合することができます。
 
 ### <a name="iis"></a>IIS
 
@@ -179,7 +179,7 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 Application Gateway に証明書をアップロードするには、.crt 証明書を Base-64 エンコード形式の .cer にエクスポートする必要があります。 .crt には既に Base-64 エンコード形式の公開キーが含まれているため、ファイル拡張子の名前を .crt から .cer に変更するだけです。 
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 信頼されたルート証明書を portal からアップロードするには、 **[HTTP 設定]** を選択し、 **[HTTPS]** プロトコルを選択します。
 
@@ -230,9 +230,9 @@ $probe = Get-AzApplicationGatewayProbeConfig `
   -Name testprobe `
   -ApplicationGateway $gw
 
-## Add the configuration to the HTTP Setting and don’t forget to set the “hostname” field
+## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server’s certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that SSL handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -262,14 +262,15 @@ Add-AzApplicationGatewayRequestRoutingRule `
 
 Set-AzApplicationGateway -ApplicationGateway $gw 
 ```
+
 ### <a name="verify-the-application-gateway-backend-health"></a>アプリケーション ゲートウェイのバックエンドの正常性を確認する
 
 1. アプリケーションゲートウェイの **[バックエンド正常性]** ビューをクリックして、プローブが正常であるかどうかを確認します。
-1.  HTTPS プローブの状態が**正常**であることがわかるはずです。
+1. HTTPS プローブの状態が**正常**であることがわかるはずです。
 
-    ![HTTPS プローブ](media/self-signed-certificates/https-probe.png)
+![HTTPS プローブ](media/self-signed-certificates/https-probe.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Application Gateway の SSL/TLS の詳細については、「[Application Gateway での SSL ターミネーションとエンド ツー エンド SSL の概要](ssl-overview.md)」を参照してください。
 

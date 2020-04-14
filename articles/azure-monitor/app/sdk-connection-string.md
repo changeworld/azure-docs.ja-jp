@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: ad56f1f15936bc3f3f1ac75396352206f68e7a61
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671479"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410610"
 ---
 # <a name="connection-strings"></a>Connection strings
 
@@ -148,7 +148,7 @@ ms.locfileid: "77671479"
 
 接続文字列は、次の SDK バージョンでサポートされています。
 - .NET および .NET Core v2.12.0
-- Java v2.5.1
+- Java v2.5.1 および Java 3.0
 - Javascript v2.3.0
 - NodeJS v1.5.0
 - Python v1.0.0
@@ -161,7 +161,7 @@ ms.locfileid: "77671479"
 
 - 接続文字列: `APPLICATIONINSIGHTS_CONNECTION_STRING`
 
-### <a name="net-sdk-example"></a>.Net SDK の例
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 TelemetryConfiguration.ConnectionString: https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
@@ -194,10 +194,10 @@ NetCore config.json:
 ```
 
 
-### <a name="java-sdk-example"></a>Java SDK の例
+# <a name="java"></a>[Java](#tab/java)
 
 
-Java の明示的な設定:
+Java (v2.5.x) の明示的な設定:
 ```java
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
@@ -210,7 +210,7 @@ ApplicationInsights.xml
 </ApplicationInsights>
 ```
 
-### <a name="javascript-sdk-example"></a>Javascript SDK の例
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 重要:Javascript では、環境変数の使用はサポートされていません。
 
@@ -239,7 +239,7 @@ appInsights.loadAppInsights();
 appInsights.trackPageView();
 ```
 
-### <a name="node-sdk-example"></a>Node SDK の例
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -247,7 +247,7 @@ appInsights.setup("InstrumentationKey=00000000-0000-0000-0000-000000000000;");
 appInsights.start();
 ```
 
-### <a name="python-sdk-example"></a>Python SDK の例
+# <a name="python"></a>[Python](#tab/python)
 
 ユーザーが環境変数を設定することをお勧めします。
 
@@ -276,4 +276,4 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
-* [Python (プレビュー)](../../azure-monitor/app/opencensus-python.md)
+* [Python](../../azure-monitor/app/opencensus-python.md)

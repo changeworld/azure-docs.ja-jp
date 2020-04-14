@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965731"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232243"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure での StorSimple Cloud Appliance のデプロイと管理 (Update 3 以降)
 
@@ -64,7 +64,7 @@ StorSimple Cloud Appliance と StorSimple 物理デバイスの主な相違点�
 
 |  | 物理デバイス | クラウド アプライアンス |
 | --- | --- | --- |
-| **Location** |データ センター内に存在します。 |Azure で実行されます。 |
+| **場所** |データ センター内に存在します。 |Azure で実行されます。 |
 | **ネットワーク インターフェイス** |6 つのネットワーク インターフェイスがあります (DATA 0 から DATA 5)。 |ネットワーク インターフェイスは 1 つのみです (DATA 0)。 |
 | **登録** |初期構成手順の中で登録を行います。 |登録は別の作業です。 |
 | **サービス データ暗号化キー** |物理デバイスで再生成し、新しいキーでクラウド アプライアンスを更新します。 |クラウド アプライアンスから再生成することはできません。 |
@@ -276,6 +276,6 @@ DR の前提条件:
 5. `nslookup` が失敗する場合は、インターネット接続エラーが原因でクラウド アプライアンスが StorSimple デバイス マネージャー サービスに登録できていません。
 6. クラウド アプライアンスが "_windows.net_" などの Azure サイトにアクセスできるように、必要な変更を仮想ネットワークに加えます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [StorSimple デバイス マネージャー サービスを使用してクラウド アプライアンスを管理する](storsimple-8000-manager-service-administration.md)方法を確認します。
 * [バックアップ セットから StorSimple ボリュームを復元する](storsimple-8000-restore-from-backup-set-u2.md)方法について理解します。

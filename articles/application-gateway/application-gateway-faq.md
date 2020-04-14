@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/31/2019
+ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: f2f2e02cdb5698d7569e5be177d54ca4dcb0ae02
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086541"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544504"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -66,6 +66,8 @@ Application Gateway は、お客様の仮想ネットワーク専用のデプロ
 
 エンドポイントとしてパブリック IP アドレスを使用している場合には、パブリック IP アドレス リソースで IP と DNS の情報を確認できます。 このほか、ポータル内にあるアプリケーション ゲートウェイの概要ページで確認することもできます。 内部 IP アドレスを使用している場合は、概要ページで情報を確認できます。
 
+v2 SKU の場合は、パブリック IP リソースを開き、 **[構成]** を選択します。 DNS 名を構成するには、 **[DNS 名ラベル (オプション)]** フィールドを使用できます。
+
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>キープアライブ タイムアウトと TCP アイドル タイムアウトの設定はどのようになっていますか?
 
 *キープアライブ タイムアウト*では、固定接続が再利用されるか、または閉じられる前に、クライアントによってその接続上で別の HTTP 要求が送信されるまでの Application Gateway の待機時間が制御されます。 *TCP アイドル タイムアウト*では、アクティビティがない場合に TCP 接続が開いた状態になる時間の長さが制御されます。 
@@ -94,6 +96,10 @@ Application Gateway V1 SKU では、アプリケーション ゲートウェイ�
 
 1 つのサブネットで Standard_v2 と Standard の両方の Application Gateway を混在させることはできません。
 
+### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>Application Gateway v2 はユーザー定義ルート (UDR) をサポートしていますか?
+
+はい。ただし、特定のシナリオのみです。 詳細については、「[アプリケーション ゲートウェイ構成の概要](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)」を参照してください。
+
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Application Gateway は x-forwarded-for ヘッダーをサポートしますか?
 
 はい。 「[要求への変更](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request)」を参照してください。
@@ -106,7 +112,15 @@ v2 SKU を使用するデプロイのほとんどは、プロビジョニング�
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Application Gateway で Exchange Server をバックエンドとして使用することはできますか?
 
-いいえ。 Application Gateway は SMTP、IMAP、POP3 などの電子メール プロトコルをサポートしていません。 
+いいえ。 Application Gateway は SMTP、IMAP、POP3 などの電子メール プロトコルをサポートしていません。
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>v1 SKU から v2 SKU への移行に使用できるガイダンスはありますか。
+
+はい。 詳しくは、「[Migrate Azure Application Gateway and Web Application Firewall from v1 to v2 (Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する)](migrate-v1-v2.md)」をご覧ください。
+
+### <a name="will-the-application-gateway-v1-sku-continue-to-be-supported"></a>Application Gateway v1 SKU は引き続きサポートされますか?
+
+はい。 Application Gateway v1 SKU は引き続きサポートされます。 ただし、その SKU で行われた機能の更新を利用するために、v2 に移行することを強くお勧めします。 詳細については、「[自動スケーリングとゾーン冗長 Application Gateway v2](application-gateway-autoscaling-zone-redundant.md)」を参照してください。
 
 ## <a name="performance"></a>パフォーマンス
 
@@ -130,7 +144,7 @@ Traffic Manager を使用すると、異なるデータ センターにある複
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Application Gateway は接続のドレインに対応していますか?
 
-はい。 中断を発生させることなくバックエンド プール内のメンバーを変更するように接続のドレインを設定できます。 詳細については、[Application Gateway の「接続のドレイン」セクション](overview.md#connection-draining)を参照してください。
+はい。 中断を発生させることなくバックエンド プール内のメンバーを変更するように接続のドレインを設定できます。 詳細については、[Application Gateway の「接続のドレイン」セクション](features.md#connection-draining)を参照してください。
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>インスタンスを中断せずにサイズを中から大に変更できますか?
 
@@ -197,10 +211,6 @@ Application Gateway 上でマルチサイトを構成した場合には、[ホ�
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>パブリック側のリスナーとプライベート側のリスナーの両方に同じポートを使用することはできますか?
 
 いいえ。
-
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>v1 SKU から v2 SKU への移行に使用できるガイダンスはありますか。
-
-はい。 詳しくは、「[Migrate Azure Application Gateway and Web Application Firewall from v1 to v2 (Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する)](migrate-v1-v2.md)」をご覧ください。
 
 ### <a name="does-application-gateway-support-ipv6"></a>Application Gateway は IPv6 をサポートしていますか?
 
@@ -324,10 +334,6 @@ WAF で現在サポートされているのは、CRS [2.2.9](../web-application-
 
 はい。 アプリケーション ゲートウェイをデプロイしてある仮想ネットワーク上で、DDos 保護を有効にすることができます。 この設定によって、アプリケーション ゲートウェイの仮想 IP (VIP) も Azure DDoS Protection サービスによる保護の対象になります。
 
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>v1 SKU から v2 SKU への移行に使用できるガイダンスはありますか。
-
-はい。 詳しくは、「[Migrate Azure Application Gateway and Web Application Firewall from v1 to v2 (Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する)](migrate-v1-v2.md)」をご覧ください。
-
 ## <a name="configuration---ingress-controller-for-aks"></a>構成 - AKS のイングレス コントローラー
 
 ### <a name="what-is-an-ingress-controller"></a>イングレス コントローラーとは何ですか?
@@ -347,11 +353,11 @@ Application Gateway のイングレス コントローラーを使用すると�
 
 Application Gateway では、次の 3 つのログを利用できます。 
 
-* **ApplicationGatewayAccessLog**:このアクセス ログには、アプリケーション ゲートウェイ フロントエンドに送信された要求がそれぞれ記録されます。 データには、呼び出し元の IP、要求された URL、応答の待ち時間、リターン コード、入出力バイトが含まれます。アクセス ログの収集間隔は 300 秒ごとです。 アプリケーション ゲートウェイ 1 つごとに 1 つのレコードが含まれます。
+* **ApplicationGatewayAccessLog**:このアクセス ログには、アプリケーション ゲートウェイ フロントエンドに送信された要求がそれぞれ記録されます。 データには、呼び出し元の IP、要求された URL、応答の待ち時間、リターン コード、入出力バイトが含まれます。アプリケーション ゲートウェイ 1 つごとに 1 つのレコードが含まれます。
 * **ApplicationGatewayPerformanceLog**:このパフォーマンス ログには、各アプリケーション ゲートウェイのパフォーマンスが記録されます。 情報には、バイト単位のスループット、処理された要求の総数、失敗した要求の数、正常および異常なバックエンド インスタンスの数などが含まれます。
 * **ApplicationGatewayFirewallLog**:このファイアウォール ログには、WAF を構成してあるアプリケーション ゲートウェイについて、検出モードまたは防止モードを通じてログが作成された要求が記録されます。
 
-詳細については、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)」を参照してください。
+すべてのログが 60 秒ごとに収集されます。 詳細については、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)」を参照してください。
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>バックエンド プールのメンバーが正常かどうかを確認するにはどうすればよいですか?
 
@@ -388,7 +394,7 @@ PowerShell コマンドレット `Get-AzApplicationGatewayBackendHealth` とポ�
 
 ### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>プライベート フロントエンド IP アドレスのみで Application Gateway V2 を使用するにはどうすればよいですか?
 
-現在、Application Gateway V2 はプライベート IP モードのみをサポートしていません。 次の組み合わせをサポートしています。
+Application Gateway V2 は現在、プライベート IP モードのみをサポートしていません。 次の組み合わせをサポートしています。
 * プライベート IP とパブリック IP
 * パブリック IP のみ
 
@@ -399,16 +405,18 @@ PowerShell コマンドレット `Get-AzApplicationGatewayBackendHealth` とポ�
     
     a. [ソース] には **GatewayManager** サービス タグ、[宛先] には **[すべて]** 、[宛先のポート] には **65200-65535** を指定してトラフィックを許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、証明書の認証によって保護 (ロック ダウン) されます。 ゲートウェイ ユーザー管理者を含む外部エンティティは、適切な証明書が配置されていないと、このようなエンドポイントに対する変更を開始できません。
     
-    b. [ソース] には **AzureLoadBalancer** サービスタグ、[宛先] と [宛先のポート] には **[すべて]** を指定してトラフィックを許可します。
+    b. ソースに **AzureLoadBalancer** サービス タグが付いており、宛先ポートが **[すべて]** のトラフィックを許可します。
     
-    c. [ソース] には **Internet** サービス タグ、[宛先] と [宛先のポート] には **[すべて]** を指定して受信トラフィックを拒否します。 この規則には、受信規則で*最小の優先順位*を指定します。
+    c. ソースに **Internet** サービス タグが付いており、宛先ポートが **[すべて]** のすべての受信トラフィックを拒否します。 この規則には、受信規則で*最小の優先順位*を指定します。
     
-    d. プライベート IP アドレスへのアクセスがブロックされないように、VirtualNetwork の受信を許可するなどの既定の規則をそのまま使用します。
+    d. プライベート IP アドレスでのアクセスがブロックされないように、VirtualNetwork の受信の許可などの既定の規則を保持します。
     
-    e. 送信インターネット接続はブロックできません。 そうしないと、ログ記録やメトリックなどの問題が発生します。
+    e. 送信インターネット接続はブロックできません。 そうしないと、ログ記録やメトリックなどで問題が発生します。
 
 プライベート IP のみのアクセスの NSG 構成の例:![プライベート IP アクセスのみの Application Gateway V2 NSG 構成](./media/application-gateway-faq/appgw-privip-nsg.png)
 
+### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway アフィニティ Cookie は SameSite 属性をサポートしていますか?
+はい。[Chromium ブラウザー](https://www.chromium.org/Home) [v80 の更新](https://chromiumdash.appspot.com/schedule) で、SameSite 属性のない HTTP Cookie を SameSite=Lax として扱うことが必須になりました。 これは、サードパーティのコンテキストでは、Application Gateway アフィニティ Cookie がブラウザーによって送信されないことを意味します。 このシナリオをサポートするために、Application Gateway では、既存の *ApplicationGatewayAffinity* Cookie に加えて、*ApplicationGatewayAffinityCORS* という別の同一の Cookie が挿入されます。  これらの Cookie は似ていますが、*ApplicationGatewayAffinityCORS* Cookie には、次の 2 つの属性が追加されています。*SameSite=None; Secure* です。 これらの属性は、クロスオリジン要求でも固定セッションを維持します。 詳細については、「[Cookie ベースのアフィニティ](configuration-overview.md#cookie-based-affinity)」セクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

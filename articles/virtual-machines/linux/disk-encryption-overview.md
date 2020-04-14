@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff1b37c3053ffa91dcb432cd97a7dd6fd71dad1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d058ff5f9863642f73725db3472c942161447f25
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226839"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548435"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption 
 
@@ -32,7 +32,7 @@ Azure Disk Encryption は、データを保護して、組織のセキュリテ�
 
 ## <a name="supported-vms-and-operating-systems"></a>サポートされている VM とオペレーティング システム
 
-### <a name="supported-vm-sizes"></a>サポートされる VM のサイズ
+### <a name="supported-vms"></a>サポート対象の VM
 
 Linux VM は、[さまざまなサイズ](sizes.md)で利用できます。 Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) または次の最小メモリ要件を満たしていない仮想マシンでは利用できません。
 
@@ -44,7 +44,9 @@ Linux VM は、[さまざまなサイズ](sizes.md)で利用できます。 Azur
 
 Linux 仮想マシンの OS ディスクの暗号化プロセスが完了すると、より少ないメモリで VM を実行するように構成できます。 
 
-Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。 
+Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
+
+Azure Disk Encryption は、[Generation 2 VM](generation-2.md#generation-1-vs-generation-2-capabilities) と [Lsv2 シリーズ VM](../lsv2-series.md) では使用できません。 例外の詳細については、「[Azure Disk Encryption:サポートされていないシナリオ](disk-encryption-linux.md#unsupported-scenarios)」を参照してください。
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 

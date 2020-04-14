@@ -16,10 +16,10 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60280486"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>チュートリアル:Concur を構成し、自動ユーザー プロビジョニングに対応させる
@@ -79,11 +79,11 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
 
 2. **[管理]** メニューの **[Web サービス]** をクリックします。
    
-    ![Concur tenant](./media/concur-provisioning-tutorial/IC721729.png "Concur tenant")
+    ![Concur テナント](./media/concur-provisioning-tutorial/IC721729.png "Concur テナント")
 
 3. 左側の **[Web サービス]** ウィンドウで、 **[パートナー アプリケーションの有効化]** を選択します。
    
-    ![Enable Partner Application](./media/concur-provisioning-tutorial/ic721730.png "Enable Partner Application")
+    ![パートナー アプリケーションの有効化](./media/concur-provisioning-tutorial/ic721730.png "[パートナー アプリケーションの有効化]")
 
 4. **[アプリケーションを有効にする]** ボックスの一覧で **[Azure Active Directory]** を選択し、 **[有効にする]** をクリックします。
    
@@ -91,7 +91,7 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
 
 5. **[はい]** をクリックして、 **[アクションの確認]** ダイアログを閉じます。
    
-    ![Confirm Action](./media/concur-provisioning-tutorial/ic721732.png "Confirm Action")
+    ![アクションの確認](./media/concur-provisioning-tutorial/ic721732.png "[アクションの確認]")
 
 6. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
@@ -119,7 +119,7 @@ Concur コンサルタントまたはクライアント管理者は、Web サー
 
 17. **[保存]** をクリックします。
 
-テスト アカウントを作成できるようになりました。 ここで 20 分間待機し、アカウントが Concur に同期されたことを確認します。
+これでテスト アカウントを作成できるようになりました。 ここで 20 分間待機し、アカウントが Concur に同期されたことを確認します。
 
 ## <a name="additional-resources"></a>その他のリソース
 

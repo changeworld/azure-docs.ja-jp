@@ -50,6 +50,8 @@
   items:
     - name: Reports
       items:
+        - name: Azure AD での非アクティブなユーザー アカウントの管理
+          href: howto-manage-inactive-user-accounts.md
         - name: アクティビティ レポートの検出
           href: howto-find-activity-reports.md
         - name: ユーザーのサインイン エラーのトラブルシューティング
@@ -74,7 +76,7 @@
           href: howto-integrate-activity-logs-with-splunk.md
         - name: アクティビティ ログと SumoLogic の統合
           href: howto-integrate-activity-logs-with-sumologic.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: 見つからない監査データ
           href: troubleshoot-missing-audit-data.md

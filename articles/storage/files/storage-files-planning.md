@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b5bf5cc5c44226236f39a6e32c33ebe346e36eeb
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 76a96d36387f55889b65f16ea1ca6ec07359c377
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78941051"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502439"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
@@ -88,7 +88,7 @@ Azure ストレージ アカウントでの転送中の暗号化を無効にす�
     - Standard ファイル共有は、ローカル冗長、ゾーン冗長、geo 冗長 (GRS)、および geo ゾーン冗長 (GZRS) ストレージで使用できます。
 - **ファイル共有の最大サイズ**
     - Premium ファイル共有の場合、追加作業なしで最大 100 TiB のプロビジョニングが可能です。
-    - 既定では、Standard ファイル共有は最大 5 TiB にのみまたがることができますが、"*大きいファイルの共有*" ストレージ アカウント機能フラグを選択することで、共有の制限を 100 TiB に増やすことができます。 ローカル冗長ストレージ アカウントまたはゾーン冗長ストレージ アカウントの場合、Standard ファイル共有は最大 100 TiB にのみまたがることができます。 増加の詳細については、後述のトピックを参照してください  
+    - 既定では、Standard ファイル共有は最大 5 TiB にのみまたがることができますが、"*大きいファイルの共有*" ストレージ アカウント機能フラグを選択することで、共有の制限を 100 TiB に増やすことができます。 ローカル冗長ストレージ アカウントまたはゾーン冗長ストレージ アカウントの場合、Standard ファイル共有は最大 100 TiB にのみまたがることができます。 ファイル共有サイズの増加の詳細については、「[大きなファイル共有の有効化と作成](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share)」を参照してください。
 - **リージョン別の提供状況**
     - Premium ファイル共有はすべてのリージョンで使用できるわけではありません。ゾーン冗長サポートは、リージョンの小さなサブセットで利用できます。 ご自分のリージョンで現在 Premium ファイル共有を使用できるかどうかを見つけるには、Azure の [[リージョン別の利用可能な製品]](https://azure.microsoft.com/global-infrastructure/services/?products=storage) ページを参照してください。 ZRS がサポートされるリージョンを確認する場合は、[リージョン別の Azure 可用性ゾーンのサポート](../../availability-zones/az-overview.md#services-support-by-region)に関する記事を参照してください。 この[アンケート](https://aka.ms/pfsfeedback)にご記入ください。新しいリージョンと機能に優先順位を付けるために役立ちます。
     - Standard ファイル共有は、すべての Azure リージョンで使用できます。

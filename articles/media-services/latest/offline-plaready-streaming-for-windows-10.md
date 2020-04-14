@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: ceb6de6556968385d88ac799c11bdb6393072864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 151aadadb5674f7f144d42b1f9d5115501ed381d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513118"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887233"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Media Services v3 を使用した Windows 10 用のオフラインの PlayReady ストリーミング
 
@@ -121,10 +121,6 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 * プログレッシブ ダウンロードのために、コンテンツを Azure Media Services または Azure Storage にホストできます。
 * PlayReady ライセンス配信は、Azure Media Services または他の場所から行えます。
 * 準備されたスムーズ ストリーミング コンテンツは、引き続き DASH からオンライン ストリーミングに使用することも、PlayReady を使用して DRM としてスムーズ ストリーミングに使用することもできます。
-
-## <a name="additional-notes"></a>その他のメモ
-
-* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

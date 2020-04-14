@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c4ff3ebf6239f9b62409ff0885f23115711e33cb
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 3b000776c04550e1deb883039d94deeb735061ce
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77584543"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985883"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -57,13 +57,13 @@ App Service プランでは、お客様が管理している専用のインフ�
 
 従量課金プランで実行しているときのコストを見積もる方法の詳細については、[従量課金プランのコストの概要](functions-consumption-costs.md)に関するページを参照してください。
 
-## <a name="premium-plan"></a>Premium プラン
+## <a name="premium-plan"></a><a name="premium-plan"></a>Premium プラン
 
 Premium プランを使用すると、従量課金プランと同じように、Azure Functions ホストのインスタンスが、受信イベントの数に基づいて追加および削除されます。  Premium プランは次の機能をサポートします。
 
 * コールド スタートを回避するために常にウォーム状態のインスタンス
 * VNet の接続
-* 無制限の実行期間
+* 無制限の実行期間 (60 分保証)
 * Premium インスタンス サイズ (1 コア、2 コア、4 コアのインスタンス)
 * 予測可能な料金
 * 複数の関数アプリを含むプランでの高密度アプリ割り当て
@@ -82,7 +82,7 @@ Premium プランの課金は、実行や消費されたメモリごとの課金
 
 Premium プランで JavaScript 関数を実行する場合は、vCPU の少ないインスタンスを選ぶ必要があります。 詳しくは、[シングルコア Premium プランの選択](functions-reference-node.md#considerations-for-javascript-functions)に関する記事をご覧ください。  
 
-## <a name="app-service-plan"></a>専用 (App Service) プラン
+## <a name="dedicated-app-service-plan"></a><a name="app-service-plan"></a>専用 (App Service) プラン
 
 関数アプリは、他の App Service アプリ (Basic、Standard、Premium、Isolated SKU) と同じ専用 VM 上でも実行できます。
 
@@ -98,7 +98,7 @@ App Service プランでは、VM インスタンスを追加して、手動で�
 App Service プランで JavaScript 関数を実行する場合は、CPUの少ないプランを選択してください。 詳細については、[シングルコア App Service プランの選択](functions-reference-node.md#choose-single-vcpu-app-service-plans)に関するページをご覧ください。 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-### <a name="always-on"></a> 常にオン
+### <a name="always-on"></a><a name="always-on"></a> 常にオン
 
 App Service プランを実行する場合、関数アプリが正常に実行されるように、**常時接続** 設定を有効にする必要があります。 App Service プランでは、関数のランタイムは非アクティブな状態が数分続くとアイドル状態となるため、関数を "起こす" ことができるのは HTTP トリガーのみとなります。 常時接続は App Service プランでのみ使用可能です。 従量課金プランでは、関数アプリはプラットフォームにより自動的にアクティブ化されます。
 
@@ -132,7 +132,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
-ストレージ アカウントの種類の詳細については、[Azure Storage サービスの概要](../storage/common/storage-introduction.md#azure-storage-services)に関する記事をご覧ください。
+ストレージ アカウントの種類の詳細については、[Azure Storage サービスの概要](../storage/common/storage-introduction.md#core-storage-services)に関する記事をご覧ください。
 
 ## <a name="how-the-consumption-and-premium-plans-work"></a>従量課金プランと Premium プランのしくみ
 
@@ -153,12 +153,10 @@ Azure Functions のスケールの単位は関数アプリです。 関数アプ
 スケーリングはさまざまな要因によって異なる可能性があり、選択したトリガーと言語に基づいて異なる方法でスケールします。 スケーリング動作には、注意が必要な複雑な作業がいくつかあります。
 
 * 1 つの関数アプリがスケールアウトされるのは、最大 200 インスタンスまでのみとなります。 1 つのインスタンスで一度に複数のメッセージや要求を処理できるので、同時実行の数に上限は設定されていません。
-* HTTP トリガーの場合、新しいインスタンスは、1 秒ごとに最大 1 回しか割り当てられません。
-* 非 HTTP トリガーの場合、新しいインスタンスは、30 秒ごとに最大 1 回しか割り当てられません。
-
-次の記事に記載されているように、トリガーごとにスケーリングの上限が異なる場合もあります。
-
-* [イベント ハブ](functions-bindings-event-hubs-trigger.md#scaling)
+* HTTP トリガーの場合、新しいインスタンスは最大で 1 秒間に 1 回割り当てられます。
+* HTTP 以外のトリガーの場合、新しいインスタンスは最大で 30 秒ごとに 1 回割り当てられます。 [Premium プラン](#premium-plan)で実行しているときは、スケーリングが速くなります。
+* Service Bus トリガーの場合、最も効率的なスケーリングを行うためには、リソースに対して "_管理_" 権限を使用します。 "_リッスン_" 権限では、スケーリングの決定を通知するためにキューの長さを使用できないため、スケーリングが正確ではありません。 Service Bus アクセス ポリシーで権限を設定する方法の詳細については、「[共有アクセス承認ポリシー](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies)」を参照してください。
+* イベント ハブのトリガーについては、リファレンス記事の[スケーリングのガイダンス](functions-bindings-event-hubs-trigger.md#scaling)を参照してください。 
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>スケーラブルなアプリのベスト プラクティスとパターン
 

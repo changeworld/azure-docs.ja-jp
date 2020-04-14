@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 8629d07830622770c3b30dacdd1fabc8417d7f52
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454419"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224891"
 ---
 # <a name="access-and-customize-developer-portal"></a>開発者ポータルへのアクセスとそのカスタマイズ
 
@@ -111,7 +111,7 @@ ms.locfileid: "74454419"
 
 > [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
 
-## <a name="publish"> </a>ポータルを発行する
+## <a name="publish-the-portal"></a><a name="publish"> </a>ポータルを発行する
 
 ポータルとその最新の変更を訪問者が利用できるようにするには、発行する必要があります。
 
@@ -126,7 +126,11 @@ ms.locfileid: "74454419"
 
 ポータルを発行した後は、管理パネルと同じ URL (`https://contoso-api.developer.azure-api.net` など) でアクセスできます。 それを外部の訪問者として別のブラウザー セッション (シークレット ブラウズ モードまたはプライベート ブラウズ モード) で表示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="apply-the-cors-policy-on-apis"></a>API に CORS ポリシーを適用する
+
+ポータルの訪問者が組み込みの対話型コンソールを使用して API をテストできるようにするには、API で CORS (クロスオリジン リソース共有) を有効にする必要があります。 詳細については、[こちらのドキュメントの記事](api-management-howto-developer-portal.md#cors)を参照してください。
+
+## <a name="next-steps"></a>次のステップ
 
 開発者ポータルの詳細については、次を参照してください。
 

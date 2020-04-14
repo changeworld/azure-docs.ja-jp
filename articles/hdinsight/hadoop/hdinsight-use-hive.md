@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: 20fdafc3077d1017c17d1055596dab150dffec72
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: f7dc7b520cba2bbf2351d93795a1a26b3b5124be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206641"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471355"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL
 
 [Apache Hive](https://hive.apache.org/) は、Apache Hadoop 用のデータ ウェアハウス システムです。 Hive を使用すると、データの集計、クエリ、および分析を行うことができます。 Hive クエリは、SQL に似たクエリ言語である HiveQL で記述します。
 
-Hive では、大規模な構造化データに構造を投影することができます。 構造を定義したら、HiveQL を使用することで、Java や MapReduce の知識がなくてもそのデータを照会できます。
+Hive では、大規模な非構造化データに構造を投影することができます。 構造を定義したら、HiveQL を使用することで、Java や MapReduce の知識がなくてもそのデータを照会できます。
 
 HDInsight には、特定のワークロード用に調整されたいくつかのクラスター タイプがあります。 Hive クエリには、次のクラスター タイプが最も一般的に使用されます。
 
@@ -137,7 +137,7 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 |CREATE EXTERNAL TABLE|新しい**外部**テーブルを Hive に作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に、元の形式で残されます。|
 |ROW FORMAT|データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。|
 |STORED AS TEXTFILE LOCATION|データの格納先 (`example/data` ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。 データは 1 つのファイルに格納することも、ディレクトリ内の複数のファイルに分散することもできます。|
-|SELECT|列 **t4**に値**[ERROR]** が含まれているすべての行の数を選択します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。|
+|SELECT|列 **t4** に値 **[ERROR]** が含まれているすべての行の数を選択します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。|
 |INPUT__FILE__NAME LIKE '%.log'|Hive によって、ディレクトリ内のすべてのファイルにスキーマの適用が試みられます。 このケースでは、ディレクトリにスキーマに一致しないファイルが含まれています。 結果にガベージ データが含まれないように、このステートメントを使用して、.log で終わるファイルのデータのみを返す必要があることを Hive に指示します。|
 
 > [!NOTE]  
@@ -168,7 +168,7 @@ SELECT t1, t2, t3, t4, t5, t6, t7
 |---|---|
 |CREATE TABLE IF NOT EXISTS|テーブルが存在しない場合は作成します。 **EXTERNAL** キーワードが使用されていないため、このステートメントは内部テーブルを作成します。 このテーブルは Hive データ ウェアハウスに格納され、完全に Hive によって管理されます。|
 |STORED AS ORC|Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。|
-|INSERT OVERWRITE ...SELECT|**[ERROR] **を含む **log4jLogs** テーブルの行を選択し、** errorLogs** テーブルにそのデータを挿入します。|
+|INSERT OVERWRITE ...SELECT|**ERROR]** を含む **log4jLogs** テーブルの行を選択し、**errorLogs** テーブルにそのデータを挿入します。|
 
 > [!NOTE]  
 > 外部テーブルとは異なり、内部デーブルを削除すると、基盤となるデータも削除されます。

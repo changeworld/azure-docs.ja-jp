@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 02277d2da2e431ac1cefdd9b018af4c25f7d5a9a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189839"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396080"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの要求リゾルバーについて
 
@@ -72,10 +72,12 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](custom-pol
 | {OIDC:LoginHint} |  `login_hint` クエリ文字列パラメーター。 | someone@contoso.com |
 | {OIDC:MaxAge} | `max_age`。 | 該当なし |
 | {OIDC:Nonce} |`Nonce` クエリ文字列パラメーター。 | defaultNonce |
+| {OIDC:Password}| [リソース所有者のパスワード資格情報フロー](ropc-custom.md) ユーザーのパスワード。| パスワード 1| 
 | {OIDC:Prompt} | `prompt` クエリ文字列パラメーター。 | ログイン (login) |
-| {OIDC:Resource} |`resource` クエリ文字列パラメーター。 | 該当なし |
-| {OIDC:scope} |`scope` クエリ文字列パラメーター。 | openid |
 | {OIDC:RedirectUri} |`redirect_uri` クエリ文字列パラメーター。 | https://jwt.ms |
+| {OIDC:Resource} |`resource` クエリ文字列パラメーター。 | 該当なし |
+| {OIDC:Scope} |`scope` クエリ文字列パラメーター。 | openid |
+| {OIDC:Username}| [リソース所有者のパスワード資格情報フロー](ropc-custom.md) ユーザーのユーザー名。| emily@contoso.com| 
 
 ### <a name="context"></a>Context
 
@@ -94,7 +96,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 
 | 要求 | 説明 | 例 |
 | ----- | ----------------------- | --------|
-| {OAUTH-KV:campaignId} | クエリ文字列パラメーター。 | hawaii |
+| {OAUTH-KV:campaignId} | クエリ文字列パラメーター。 | ハワイ |
 | {OAUTH-KV:app_session} | クエリ文字列パラメーター。 | A3C5R |
 | {OAUTH-KV:loyalty_number} | クエリ文字列パラメーター。 | 1234 |
 | {OAUTH-KV:任意のカスタム クエリ文字列} | クエリ文字列パラメーター。 | 該当なし |
@@ -112,7 +114,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 | ----- | ----------- | --------|
 | {SAML:AuthnContextClassReferences} | SAML 要求からの `AuthnContextClassRef` 要素の値。 | urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport |
 | {SAML:NameIdPolicyFormat} | SAML 要求の `NameIDPolicy` 要素からの `Format` 属性。 | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
-| {SAML:Issuer} |  SAML 要求の SAML `Issuer` 要素の値。| https://contoso.com |
+| {SAML:Issuer} |  SAML 要求の SAML `Issuer` 要素の値。| `https://contoso.com` |
 | {SAML:AllowCreate} | SAML 要求の `NameIDPolicy` 要素からの `AllowCreate` 属性値。 | True |
 | {SAML:ForceAuthn} | SAML 要求の `AuthnRequest` 要素からの `ForceAuthN` 属性値。 | True |
 | {SAML:ProviderName} | SAML 要求の `AuthnRequest` 要素からの `ProviderName` 属性値。| Contoso.com |
@@ -143,7 +145,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 
 ### <a name="restful-technical-profile"></a>RESTful 技術プロファイル
 
-[RESTful](restful-technical-profile.md) 技術プロファイルでは、ユーザーの言語、ポリシー名、スコープ、クライアント ID を送信したいことがあります これらの要求に基づいて、REST API はカスタム ビジネス ロジックを実行し、必要な場合は、ローカライズされたエラー メッセージを発生させることができます。
+[RESTful](restful-technical-profile.md) 技術プロファイルでは、ユーザーの言語、ポリシー名、スコープ、クライアント ID を送信したいことがあります これらの要求に基づいて、REST API はカスタム ビジネス ロジックを実行できます。また必要に応じて、ローカライズされたエラー メッセージを発生させることができます。
 
 このシナリオを使用する RESTful 技術プロファイルの例を次に示します。
 
@@ -160,7 +162,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:Scope}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
@@ -173,9 +175,9 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 
 ### <a name="dynamic-ui-customization"></a>動的 UI のカスタマイズ
 
-Azure AD B2C を使用すると、HTML コンテンツ定義エンドポイントにクエリ文字列パラメーターを渡して、ページの内容を動的にレンダリングできます。 たとえば、これを利用すると Web またはモバイル アプリケーションから渡すカスタム パラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。 詳しくは、[Azure Active Directory B2C でのカスタム ポリシーを使用した UI の動的な構成](custom-policy-ui-customization.md)に関するページをご覧ください。 言語パラメーターに基づいて HTML ページをローカライズしたり、クライアント ID に基づいて内容を変更したりすることもできます。
+Azure AD B2C を使用すると、HTML コンテンツ定義エンドポイントにクエリ文字列パラメーターを渡して、ページの内容を動的にレンダリングできます。 たとえば、この機能を利用すると、 Web またはモバイル アプリケーションから渡すカスタム パラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更することができます。 詳しくは、[Azure Active Directory B2C でのカスタム ポリシーを使用した UI の動的な構成](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)に関するページをご覧ください。 言語パラメーターに基づいて HTML ページをローカライズしたり、クライアント ID に基づいて内容を変更したりすることもできます。
 
-次の例では、名前が **campaignId** で値が `hawaii` のクエリ文字列パラメーター、**language** コード `en-US`、およびクライアント ID を表す **app** を渡しています。
+次の例では、名前が **campaignId** で値が `Hawaii` のクエリ文字列パラメーター、**language** コード `en-US`、およびクライアント ID を表す **app** を渡しています。
 
 ```XML
 <UserJourneyBehaviors>

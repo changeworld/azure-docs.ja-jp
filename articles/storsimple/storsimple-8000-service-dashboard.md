@@ -1,5 +1,5 @@
 ---
-title: StorSimple 8000 シリーズ デバイスの概要の使用 | Microsoft Docs
+title: StorSimple 8000 シリーズ デバイスのサービスの概要ブレードを使用する
 description: StorSimple サービスの概要ブレードと、そのブレードを使用して StorSimple ソリューションの状態を監視する方法について説明します。
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: c174f6ce0fb3d40af953be205a7bfcca60fbfeec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 14c37227a7e8598ee6f8f3adc62acd69dd274475
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60633141"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396502"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのサービスの概要ブレードを使用する
 
@@ -64,7 +64,7 @@ StorSimple のサービスの概要ブレードには、StorSimple デバイス 
 
 * **使用状況**グラフでは、デバイスの関連メトリックを確認できます。 ここでは、すべてのデバイスで使用されているプライマリ ストレージと、デバイスによって使用されている過去 7 日間 (既定) のクラウド ストレージの使用状況を確認できます。 
 
-    ![[使用量] タイル](./media/storsimple-8000-service-dashboard/service-summary7.png) 
+    ![使用状況タイル](./media/storsimple-8000-service-dashboard/service-summary7.png) 
 
     別のタイム スケールを選択するには、グラフの右上隅にある **[編集]** オプションを使用します。
 
@@ -85,7 +85,7 @@ StorSimple のサービスの概要ブレードには、StorSimple デバイス 
 StorSimple デバイス マネージャー内で実行されるさまざまな操作を表示するには、StorSimple サービスの概要ブレードの左側にある **[アクティビティ ログ]** リンクをクリックします。 これにより **[アクティビティ ログ]** ブレードが表示され、最近実行された操作の概要を確認できます。
 
 ![アクティビティ ログ](./media/storsimple-8000-service-dashboard/activity-logs1.png)
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)
 

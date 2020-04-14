@@ -1,17 +1,17 @@
 ---
-title: Azure Log Analytics の Network Performance Monitor ソリューションのパフォーマンス監視機能 | Microsoft Docs
+title: Network Performance Monitor のパフォーマンス モニター
 description: Network Performance Monitor のパフォーマンス モニター機能を使うと、ネットワーク内のさまざまなポイントでネットワーク接続を監視できます。 クラウド展開やオンプレミスの場所、複数のデータ センターやブランチ オフィス、ミッション クリティカルな多層アプリケーション/マイクロ サービスを監視できます。
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: dfbc4ea8e168ced95a4239dd100cf7277e0adf7b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 126cca9d3606b378e59e4f4e1c5b52d985d19d94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654530"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055686"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor ソリューション:パフォーマンスの監視
 

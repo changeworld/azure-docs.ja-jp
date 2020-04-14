@@ -38,7 +38,7 @@
     - name: Azure の委任されたリソース管理に顧客をオンボードする
       displayName: resource management
       href: ./how-to/onboard-customer.md
-    - name: Azure Marketplace にマネージド サービス オファーを公開する
+    - name: Azure Marketplace へのマネージド サービス オファーの公開
       displayName: 'managed services offer, azure marketplace, publish, marketplace'
       href: ./how-to/publish-managed-services-offers.md
     - name: 顧客を表示し、管理する

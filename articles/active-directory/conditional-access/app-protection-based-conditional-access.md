@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9859c884f6a1e22a1ac2bd21106ef51ead23fa41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b282962cc713487b8ee5113b02b8533a1538fff
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080076"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631895"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用して、クラウド アプリへのアクセスにアプリ保護ポリシーと承認済みクライアント アプリの使用を必須にする
 
@@ -59,7 +59,7 @@ ms.locfileid: "79080076"
 1. **[アクセス制御]**  >  **[付与]** で、次のオプションを選択します。
    - **承認済みクライアント アプリを必須にする**
    - **アプリの保護ポリシーが必要 (プレビュー)**
-   - **選択したコントロールのいずれかが必要です**
+   - **選択したコントロールすべてが必要です**
 1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
 1. **[作成]** を選択し、ポリシーを作成して有効にします。
 

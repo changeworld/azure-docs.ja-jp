@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/30/2020
 ms.author: akjosh
-ms.openlocfilehash: a0b5f45ba993033a9f56ee6b078193677b1c5aad
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 85977819d30ddc8745eb9231242eb1990222676c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191811"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530990"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows 用の Log Analytics 仮想マシン拡張機能
 
@@ -36,6 +36,7 @@ Azure Monitor ログでは、クラウドとオンプレミスの資産全体に
 
 | Log Analytics Windows Agent バンドルのバージョン | Log Analytics Windows VM 拡張機能のバージョン | リリース日 | リリース ノート |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>SHA-2 コード署名サポートを追加</li><li>VM 拡張機能のインストールと管理を改善</li><li>Azure Arc for Servers 統合のバグを解決</li><li>カスタマー サポート用の組み込みのトラブルシューティング ツールを追加</li><li>追加の Azure Government リージョンのサポートを追加</li> |
 | 10.20.18018 | 1.0.18018 | 2019 年 10 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li></ul> |
 | 10.20.18011 | 1.0.18011 | 2019 年 7 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li><li> MaxExpressionDepth を 10000 に引き上げ </li></ul> |
 | 10.20.18001 | 1.0.18001 | 2019 年 6 月 | <ul><li> 軽微なバグの修正と安定性の改善 </li><li> プロキシ接続時に既定の資格情報を無効にする機能を追加 (WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH のサポート) </li></ul>|
@@ -46,6 +47,7 @@ Azure Monitor ログでは、クラウドとオンプレミスの資産全体に
 | 8.0.11081 | 1.0.11081 | 2017 年 11 月 | | 
 | 8.0.11072 | 1.0.11072 | 2017 年 9 月 | |
 | 8.0.11049 | 1.0.11049 | 2017 年 2 月 | |
+
 
 ### <a name="azure-security-center"></a>Azure Security Center
 

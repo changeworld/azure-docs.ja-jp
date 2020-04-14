@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 60ba0a7723861d6e642a23418dda6a1daa57f14e
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523494"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348788"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure App Configuration の FAQ
 
@@ -59,13 +59,15 @@ App Service と App Configuration の間で設定をインポート/エクスポ
 
 ストアごとのレベルで App Configuration にアクセスできるユーザーを制御します。 異なるアクセス許可を必要とする環境ごとに、個別のストアを使用してください。 セキュリティ分離上、このアプローチが最も優れています。
 
+環境間でセキュリティ分離が必要ない場合は、ラベルを使用して構成値を区別できます。 「[ラベルを使用して異なる環境に対する異なる構成を有効にする](./howto-labels-aspnet-core.md)」に、完全な例が挙げられています。
+
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>App Configuration のおすすめの使い方を教えてください。
 
 [ベスト プラクティス](./howto-best-practices.md)を参照してください。
 
 ## <a name="how-much-does-app-configuration-cost"></a>App Configuration にはどのぐらいのコストがかかりますか?
 
-次の 2 つの価格レベルがあります。 
+次の 2 つの価格レベルがあります。
 
 - Free レベル
 - Standard レベル
@@ -96,6 +98,25 @@ App Configuration のどちらのレベルにも、構成設定、機能フラ�
 いつでも Free レベルから Standard レベルにアップグレードすることができます。
 
 ストアを Standard レベルから Free レベルにダウングレードすることはできません。 Free レベルで新しいストアを作成してから、[そのストアに構成データをインポート](howto-import-export-data.md)することができます。
+
+## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>App Configuration に対する要求の数に制限はありますか?
+
+Free レベルの構成ストアでは、1 日あたりの要求数が 1000 件に制限されています。 Standard レベルの構成ストアでは、要求レートが 1 時間あたり 2 万要求を超えると、一時的な調整が発生する場合があります。
+
+ストアの上限に達すると、期間が終了するまでに行われたすべての要求に対して HTTP 状態コード 429 が返されます。 応答の `retry-after-ms` ヘッダーは、要求を再試行するまでの推奨される待機時間 (ミリ秒) を示します。
+
+アプリケーションで HTTP 状態コード 429 の応答が定期的に発生する場合は、行われる要求の数を減らすために、アプリケーションを再設計することを検討してください。 詳細については、「[App Configuration に対する要求を減らす](./howto-best-practices.md#reduce-requests-made-to-app-configuration)」を参照してください
+
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>アプリケーションで HTTP 状態コード 429 応答を受信します。 なぜですか?
+
+HTTP 状態コード 429 応答は、次のような状況で返されます。
+
+* Free レベルのストアの 1 日あたりの要求上限を超えている。
+* Standard レベルのストアに対する要求レートが高いための一時的な調整。
+* 過剰な帯域幅の使用。
+* ストレージの見積もりを超えたときにキーを作成または変更しようとしている。
+
+要求が失敗した具体的な理由について、429 応答の本文を確認します。
 
 ## <a name="how-can-i-receive-announcements-on-new-releases-and-other-information-related-to-app-configuration"></a>App Configuration に関する新しいリリースやその他の情報についてのお知らせを受け取るにはどうすればよいですか?
 

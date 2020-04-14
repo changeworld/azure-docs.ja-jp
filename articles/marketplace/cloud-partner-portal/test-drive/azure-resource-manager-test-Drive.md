@@ -1,20 +1,18 @@
 ---
 title: Azure Resource Manager 体験版 | Azure Marketplace
 description: Azure Resource Manager を使用して Markeplace 体験版を作成します
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Patrick .Butler
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 8b2a24b6f2d7df92f1c8ea1b22432471aa432011
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.author: dsindona
+ms.openlocfilehash: 6125aa010d8676518b84f866343b01f95246160f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644904"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275936"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
@@ -90,7 +88,7 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 | **password**    | secure string    | 新しいランダムなパスワード | Lp!ACS\^2kh     |
 | **session id**   | string          | 一意の体験版 ID (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
-#### <a name="username"></a>username
+#### <a name="baseuri"></a>baseuri
 
 体験版はこのパラメーターをデプロイ パッケージの**ベース URI** で初期化するので、このパラメーターを使用して、パッケージに含まれるすべてのファイルの URI を作成できます。
 
@@ -141,7 +139,7 @@ Azure Resource Manager 体験版の作成に関する最も重要な部分は、
 
 ソリューションではランダムなユーザー名または固定のユーザー名を使用できます。
 
-#### <a name="password"></a>パスワード
+#### <a name="password"></a>password
 
 体験版では、このパラメーターは新しいランダムなパスワードで初期化されます。
 

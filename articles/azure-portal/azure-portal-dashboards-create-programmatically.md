@@ -11,28 +11,28 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/29/2020
+ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 414427c722b3531c994bb99dbd5d1332c5253dfd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5329a7b21aff7ecffc7153c7aa74ddb93bce75cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900965"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132040"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>プログラムによる Azure ダッシュボードの作成
 
-このドキュメントでは、Azure ダッシュボードをプログラムで作成し、公開する手順について説明します。 ドキュメント全体で、次のダッシュボードを参照します。
+この記事では、Azure ダッシュボードをプログラムで作成し、公開する手順について説明します。 ドキュメント全体で、次のダッシュボードを参照します。
 
 ![サンプルのダッシュボード](./media/azure-portal-dashboards-create-programmatically/sample-dashboard.png)
 
 ## <a name="overview"></a>概要
 
-[Azure portal](https://portal.azure.com)内の共有ダッシュボードは、仮想マシンやストレージ アカウントと同様に[リソース](../azure-resource-manager/management/overview.md)です。 [Azure Resource Manager REST API](/rest/api/)、[Azure CLI](/cli/azure)、[Azure PowerShell コマンド](/powershell/azure/get-started-azureps)を使用して、プログラムによってリソースを管理できます。  
+[Azure portal](https://portal.azure.com)内の共有ダッシュボードは、仮想マシンやストレージ アカウントと同様に[リソース](../azure-resource-manager/management/overview.md)です。 [Azure Resource Manager REST API](/rest/api/)、[Azure CLI](/cli/azure)、[Azure PowerShell コマンド](/powershell/azure/get-started-azureps)を使用して、プログラムによってリソースを管理できます。
 
 多くの機能がこれらの API でビルドされ、リソース管理を容易にします。 これらの API とツールを使用することにより、リソースの作成、一覧表示、取得、変更、および削除を実行できます。 ダッシュボードはリソースであるため、使用する API やツールを任意に選択できます。
 
-どちらのツールを使用する場合でも、ダッシュボードオブジェクトの JSON 表現を構築する必要があります。 このオブジェクトには、ダッシュボード上のタイルに関する情報が含まれています。 これには、サイズ、位置、バインドされているリソースとユーザーによるカスタマイズ設定が含まれます。
+どちらのツールを使用する場合でも、プログラムでダッシュボードを作成するには、ダッシュボード オブジェクトの JSON 表現を構築します。 このオブジェクトには、ダッシュボード上のタイルに関する情報が含まれています。 これには、サイズ、位置、バインドされているリソースとユーザーによるカスタマイズ設定が含まれます。
 
 この JSON ドキュメントを構築する最も実用的な方法は、Azure portal を使用することです。 タイルを対話的に追加して配置することができます。 次に、JSON をエクスポートして、スクリプト、プログラム、およびデプロイツールで後で使用できるテンプレートを結果から作成します。
 
@@ -52,7 +52,7 @@ ms.locfileid: "76900965"
 
 ## <a name="share-the-dashboard"></a>ダッシュボードの共有
 
-ダッシュボードを希望の設定に設定したら、ダッシュボードを公開 (**共有**コマンドを使用して) し、リソース エクスプローラーを使用して JSON をフェッチします。
+ダッシュボードを構成した後の次のステップは、 **[共有]** コマンドを使用してダッシュボードを発行することです。
 
 ![ダッシュボードの共有](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
@@ -62,13 +62,9 @@ ms.locfileid: "76900965"
 
 ## <a name="fetch-the-json-representation-of-the-dashboard"></a>ダッシュボードの JSON 表現をフェッチします。
 
-公開はわずか数秒で完了します。  完了したら、[リソース エクスプローラー](https://portal.azure.com/#blade/HubsExtension/ArmExplorerBlade)から JSON をフェッチします。
+公開はわずか数秒で完了します。 完了したら、次に、 **[ダウンロード]** コマンドを使用して JSON をフェッチします。
 
-![リソース エクスプローラーからの参照](./media/azure-portal-dashboards-create-programmatically/search-resource-explorer.png)
-
-リソース エクスプローラーから、選択したサブスクリプションとリソース グループに移動します。 次に、新たに公開されたダッシュボード リソースを選択して JSON を表示します。
-
-![リソース エクスプローラーでの JSON の表示](./media/azure-portal-dashboards-create-programmatically/resource-explorer-json-detail.png)
+![JSON 表現をダウンロードする](./media/azure-portal-dashboards-create-programmatically/download-command.png)
 
 ## <a name="create-a-template-from-the-json"></a>JSON からテンプレートを作成する
 
@@ -127,9 +123,6 @@ JSON テンプレートの上部で、次のように必要なテンプレート
 
     ... rest of template omitted ...
 ```
-
-このドキュメントの最後に、完全な作業用テンプレートがあります。
-
 テンプレートを構成したら、次のいずれかの方法を使用してデプロイします。
 
 * [REST API](/rest/api/resources/deployments)
@@ -137,9 +130,9 @@ JSON テンプレートの上部で、次のように必要なテンプレート
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [Azure portal でのテンプレートのデプロイページ](https://portal.azure.com/#create/Microsoft.Template)
 
-ここでは、2 つのバージョンのサンプル ダッシュボード JSON があります。 1 つ目は、既にリソースにバインドされている、ポータルからエクスポートされたバージョンです。 2 番目は、プログラムで任意の仮想マシンにバインドし、Azure Resource Manager を使用してデプロイできるテンプレートバージョンです。
+次に、2 つのバージョンのサンプル ダッシュボード JSON があります。 1 つ目は、既にリソースにバインドされている、ポータルからエクスポートされたバージョンです。 2 番目は、プログラムで任意の仮想マシンにバインドし、Azure Resource Manager を使用してデプロイできるテンプレートバージョンです。
 
-## <a name="json-representation-of-our-example-dashboard-before-templating"></a>テンプレートを作成する前のサンプルダッシュボードの JSON 表現
+### <a name="json-representation-of-our-example-dashboard-before-templating"></a>テンプレートを作成する前のサンプルダッシュボードの JSON 表現
 
 この例は、この記事を読んだ後に何を期待できるかを示しています。 指示は、すでにデプロイされているダッシュボードの JSON 表現をエクスポートしました。 このダッシュボードが特定の Azure 仮想マシンを指していることを示すハードコードされたリソース識別子です。
 
@@ -663,6 +656,6 @@ JSON テンプレートの上部で、次のように必要なテンプレート
         }
     ]
 }
-
-
 ```
+
+パラメーター化されたテンプレートを使用してダッシュボードをデプロイする例を確認したので、[Azure Resource Manager REST API](/rest/api/)、[Azure CLI](/cli/azure)、または [Azure PowerShell コマンド](/powershell/azure/get-started-azureps)を使用して、テンプレートをデプロイしてみることができます。

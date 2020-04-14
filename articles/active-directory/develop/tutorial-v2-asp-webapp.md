@@ -3,25 +3,21 @@ title: Microsoft ID プラットフォームへのサインインを ASP.NET Web
 titleSuffix: Microsoft identity platform
 description: 従来の Web ブラウザーベースのアプリケーションと OpenID Connect 標準を使用して、ASP.NET ソリューション上で Microsoft のサインインを実装します
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e33f52d5c1f9c06a5acbae5c66b051ca82ef14c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 017cc886b3d47a97a29f45979cb49215de31ae0a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79126633"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880977"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリに Microsoft へのサインインを追加する
 

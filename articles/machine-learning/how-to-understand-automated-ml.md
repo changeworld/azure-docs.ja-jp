@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: 69cf79f8258f85f2fb5e787f91aa843837d0a3a1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: c5f12da3606361b504d4581916d9645fa3cd24f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534695"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237003"
 ---
 # <a name="understand-automated-machine-learning-results"></a>自動化機械学習の結果の概要
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "75534695"
 * SDK を使用するか Azure Machine Learning Studio (プレビュー) で、自動機械学習の実行用の実験を作成します。
 
     * SDK を使用し、[分類モデル](how-to-auto-train-remote.md)または[回帰モデル](tutorial-auto-train-models.md)を作成する
-    * [Azure Machine Learning Studio](how-to-create-portal-experiments.md) を使用して、適切なデータをアップロードすることで分類または回帰モデルを作成します。
+    * [Azure Machine Learning Studio](how-to-use-automated-ml-for-ml-models.md) を使用して、適切なデータをアップロードすることで分類または回帰モデルを作成します。
 
 ## <a name="view-the-run"></a>実行を確認する
 
@@ -60,11 +60,11 @@ ms.locfileid: "75534695"
 
 `RunDetails`[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用した場合も、実行中に同じ結果が表示されます。
 
-## <a name="classification"></a> 分類の結果
+## <a name="classification-results"></a><a name="classification"></a> 分類の結果
 
 Azure Machine Learning の自動機械学習機能を使用して構築するすべての分類モデルについて、次のようなメトリックとグラフを使用できます
 
-+ [メトリック](#classification-metrics)
++ [Metrics](#classification-metrics)
 + [混同行列](#confusion-matrix)
 + [精度/再現率グラフ](#precision-recall-chart)
 + [受信者操作特性 (ROC)](#roc)
@@ -205,16 +205,16 @@ Azure Machine Learning で自動的に作成されたモデルのリフトとベ
 ##### <a name="example-2-an-over-confident-model"></a>例 2:過剰信頼モデル
 ![過剰信頼モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
-## <a name="regression"></a> 回帰結果
+## <a name="regression-results"></a><a name="regression"></a> 回帰結果
 
 Azure Machine Learning の自動機械学習機能を使用して構築するすべての回帰モデルについて、次のようなメトリックとグラフを使用できます
 
-+ [メトリック](#reg-metrics)
++ [Metrics](#reg-metrics)
 + [予測とTrue](#pvt)
 + [残差のヒストグラム](#histo)
 
 
-### <a name="reg-metrics"></a> 回帰メトリック
+### <a name="regression-metrics"></a><a name="reg-metrics"></a> 回帰メトリック
 
 回帰タスクまたは予測タスクの実行イテレーションごとに、次のメトリックが保存されます。
 
@@ -232,7 +232,7 @@ normalized_root_mean_squared_error|正規化された平均平方二乗誤差は
 root_mean_squared_log_error|対数平均平方二乗誤差は、予期される対数二乗誤差の平方根です|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|なし|
 normalized_root_mean_squared_log_error|正規化された対数平均平方二乗誤差は、データの範囲で除算した対数平均平方二乗誤差です|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|データの範囲で除算します|
 
-### <a name="pvt"></a> 予測とtrue グラフ
+### <a name="predicted-vs-true-chart"></a><a name="pvt"></a> 予測とtrue グラフ
 #### <a name="what-is-a-predicted-vs-true-chart"></a>予測 VS とは何ですか。true グラフ？
 予測とTrue では、回帰問題に対する予測値とそれに相関する True 値の間の関係が示されます。 このグラフを使用してモデルのパフォーマンスを測定できます。予測値が y=x の線に近いほど、予測モデルの精度が高いことを示します。
 
@@ -248,7 +248,7 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 
 
 
-### <a name="histo"></a>残差グラフのヒストグラム
+### <a name="histogram-of-residuals-chart"></a><a name="histo"></a>残差グラフのヒストグラム
 #### <a name="what-is-a-residuals-chart"></a>残差グラフとは何ですか？
 残差は、観察された y から予測された y を引いた値を表します。 低バイアスでの許容誤差を示すため、残差のヒストグラムは 0 を中心とするベル曲線として成形する必要があります。 
 #### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>自動 ML は、残渣チャートで何をしますか？
@@ -262,7 +262,7 @@ normalized_root_mean_squared_log_error|正規化された対数平均平方二�
 ##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>例 2:エラーがより均等に配分される回帰モデル
 ![エラーがより均等に配分される回帰モデル](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
-## <a name="explain-model"></a> モデルの解釈可能性と機能の重要性
+## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> モデルの解釈可能性と機能の重要性
 自動 ML は、実行に対する機械学習の解釈可能性ダッシュボードを提供します。
 解釈可能性機能の有効化の詳細については、自動 ML 実験で解釈可能性を有効にする[方法](how-to-machine-learning-interpretability-automl.md)を参照してください。
 

@@ -6,12 +6,12 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 4438084a9471bf816b371b7e663856205f87f8ba
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 6f200e9649a00bfe890d46f86e62404f1a7e844f
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461421"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366284"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Windows アプリにプッシュ通知を追加する
 
@@ -23,13 +23,13 @@ ms.locfileid: "77461421"
 
 ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージを追加する必要があります。 詳細については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
-## <a name="configure-hub"></a>通知ハブを構成する
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>通知ハブを構成する
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="register-your-app-for-push-notifications"></a>アプリケーションをプッシュ通知に登録する
 
-Microsoft Store にアプリを送信した後、サーバープロジェクトを [Windows Notification Services (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) と統合してプッシュを送信するように構成する必要があります。
+アプリを Microsoft Store に送信した後、[Windows Push Notification Services (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) と統合してプッシュを送信するようにサーバー プロジェクトを構成する必要があります。
 
 1. Visual Studio ソリューション エクスプローラーで、UWP アプリ プロジェクトを右クリックし、 **[ストア]**  >  **[アプリケーションをストアと関連付ける]** の順にクリックします。
 
@@ -51,11 +51,11 @@ Microsoft Store にアプリを送信した後、サーバープロジェクト�
 
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-## <a id="update-service"></a>プッシュ通知を送信するようにサーバーを更新する
+## <a name="update-the-server-to-send-push-notifications"></a><a id="update-service"></a>プッシュ通知を送信するようにサーバーを更新する
 
 バックエンド プロジェクトの種類 (&mdash;[.NET バックエンド](#dotnet)または [Node.js バックエンド](#nodejs)のいずれか) に一致する以下の手順を使用します。
 
-### <a name="dotnet"></a>.NET バックエンド プロジェクト
+### <a name="net-backend-project"></a><a name="dotnet"></a>.NET バックエンド プロジェクト
 
 1. Visual Studio で、サーバー プロジェクトを右クリックして **[NuGet パッケージの管理]** をクリックし、Microsoft.Azure.NotificationHubs を検索して、 **[インストール]** をクリックします。 これにより、Notification Hubs のクライアント ライブラリがインストールされます。
 2. **Controllers**を展開し、TodoItemController.cs を開いて、次の using ステートメントを追加します。
@@ -106,7 +106,7 @@ Microsoft Store にアプリを送信した後、サーバープロジェクト�
 
 4. サーバー プロジェクトを発行します。
 
-### <a name="nodejs"></a>Node.js バックエンド プロジェクト
+### <a name="nodejs-backend-project"></a><a name="nodejs"></a>Node.js バックエンド プロジェクト
 1. バックエンド プロジェクトを設定します。
 2. todoitem.js ファイル内の既存のコードを次のコードに置き換えます。
 
@@ -156,7 +156,7 @@ Microsoft Store にアプリを送信した後、サーバープロジェクト�
 
 3. ローカル コンピューターでファイルを編集するときは、サーバー プロジェクトを再発行します。
 
-## <a id="update-app"></a>アプリケーションにプッシュ通知を追加する
+## <a name="add-push-notifications-to-your-app"></a><a id="update-app"></a>アプリケーションにプッシュ通知を追加する
 次に、アプリは起動時にプッシュ通知に登録する必要があります。 認証を既に有効にしている場合は、プッシュ通知を登録する前にユーザーがサインインしていることを確認します。
 
 1. **App.xaml.cs** プロジェクト ファイルを開き、次の `using` ステートメントを追加します。
@@ -197,11 +197,11 @@ Microsoft Store にアプリを送信した後、サーバープロジェクト�
 
 4. UWP アプリ プロジェクトをリビルドします。 これで、アプリケーションがトースト通知を受信する準備が整いました。
 
-## <a id="test"></a>アプリケーションでプッシュ通知をテストする
+## <a name="test-push-notifications-in-your-app"></a><a id="test"></a>アプリケーションでプッシュ通知をテストする
 
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 
-## <a id="more"></a>次のステップ
+## <a name="next-steps"></a><a id="more"></a>次のステップ
 
 プッシュ通知についてさらに学習します。
 

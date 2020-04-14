@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 03/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab129315f398061eaa427f05f3bd4b1cabff0dc3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 35f8172d418cb9926ba0be2de945ff559fba14cf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77046767"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583106"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Box の統合
 
@@ -87,6 +87,8 @@ Box に対する Azure AD SSO を構成してテストするには、次の構�
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.account.box.com`
 
     b. **[識別子 (エンティティ ID)]** ボックスに、`box.net` という URL を入力します。
+
+    c. **[応答 URL]** ボックスに、`https://sso.services.box.net/sp/ACS.saml2` という URL を入力します。
 
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 値を取得するには、[Box クライアント サポート チーム](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

@@ -1,24 +1,19 @@
 ---
-title: Azure に移行する VMware VM を Azure Migrate Server Assessment を使用して評価する
-description: Azure に移行するオンプレミスの VMware VM を Azure Migrate を使用して評価する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Azure への移行のために VMware VM を評価する
+description: Azure Migrate Server Assessment を使用して Azure に移行するためにオンプレミスの VMware VM を評価する方法について説明します。
 ms.topic: tutorial
-ms.date: 11/19/2019
-ms.author: hamusa
-ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/23/2019
+ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223289"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548740"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Azure Migrate Server Assessment を使用して VMware VM を評価する
 
-この記事では、Azure Migrate の Server Assessment ツールを使用して、オンプレミスの VMware 仮想マシン (VM) を評価する方法について説明します。
+この記事では、[Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) ツールを使用して、オンプレミスの VMware 仮想マシン (VM) を評価する方法について説明します。
 
-[Azure Migrate](migrate-services-overview.md) では、アプリ、インフラストラクチャ、およびワークロードを検出、評価、および Microsoft Azure に移行するために役立つツールのハブが提供されます。 このハブには、Azure Migrate ツールと、Microsoft パートナーからの独立系ソフトウェア ベンダー (ISV) のオファリングが含まれています。
 
 これはシリーズの 2 番目のチュートリアルであり、VMware VM を評価して Azure に移行する方法を示しています。 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -35,17 +30,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-このシリーズの[最初のチュートリアルを完了します](tutorial-prepare-vmware.md)。 そうしないと、このチュートリアルの手順はうまくいきません。
-
-最初のチュートリアルでは、以下のことを行ったはずです。
-
-- Azure Migrate の [Azure アクセス許可を設定](tutorial-prepare-vmware.md#prepare-azure)する。
-- 評価用に [VMware を準備する](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment)。
-   - VMware の設定を[確認](migrate-support-matrix-vmware.md#vmware-requirements)する。
-   - OVA テンプレートを使用して VMware VM を作成するためのアクセス許可を VMware で設定する。
-   - [VM 検出用のアカウント](migrate-support-matrix-vmware.md#vmware-requirements)を設定する。 
-   - [必要なポート](migrate-support-matrix-vmware.md#port-access)を使用できるようにする。
-   - Azure へのアクセスに[必要な URL](migrate-replication-appliance.md#url-access) に注意する。
+- このシリーズの[最初のチュートリアルを完了します](tutorial-prepare-vmware.md)。 そうしないと、このチュートリアルの手順はうまくいきません。
+- 最初のチュートリアルでは、以下のことを行ったはずです。
+    - Azure Migrate と連携するように [Azure を準備](tutorial-prepare-vmware.md#prepare-azure)します。
+    - [評価のために VMware を準備](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment)します。 これには、VMware の設定の確認、Azure Migrate が vCenter Server にアクセスするために使用できるアカウントの設定などが含まれています。
+    - VMware の評価用の Azure Migrate アプライアンスをデプロイするために必要なものを[確認](tutorial-prepare-vmware.md#verify-appliance-settings-for-assessment)します。
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate プロジェクトを設定する
 
@@ -74,17 +63,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[ツールの確認と追加]** で設定を確認し、 **[ツールの追加]** を選択します。
 1. Azure Migrate プロジェクトがデプロイされるまで数分待ちます。 プロジェクトのページが表示されます。 プロジェクトが表示されない場合は、Azure Migrate ダッシュボードの **[サーバー]** からアクセスできます。
 
-## <a name="set-up-the-appliance-vm"></a>アプライアンスの VM を設定する
+## <a name="set-up-the-azure-migrate-appliance"></a>Azure Migrate アプライアンスを設定する
 
-Azure Migrate Server Assessment では、軽量の VMware VM アプライアンスが実行されます。 このアプライアンスを使うと、VM の検出を実行し、VM のメタデータとパフォーマンス データを収集できます。
+Azure Migrate:Server Assessment では、軽量の Azure Migrate アプライアンスが使用されます。 このアプライアンスは VM の検出を実行し、VM のメタデータとパフォーマンス データを Azure Migrate に送信します。
+- アプライアンスは、ダウンロードした OVA テンプレートを使用して VMware VM 上に設定できます。 または、PowerShell インストーラー スクリプトを使用して、VM 上または物理マシン上にアプライアンスを設定することもできます。
+- このチュートリアルでは、OVA テンプレートを使用します。 スクリプトを使用してアプライアンスを設定する場合は、[この記事](deploy-appliance-script.md)を参照してください。
 
-アプライアンスを設定するには、次の手順を実行します。
+アプライアンスの作成後、Azure Migrate:Server Assessment に接続できることを確認し、最初の構成を行い、Azure Migrate プロジェクトに登録します。
 
-- OVA テンプレート ファイルをダウンロードし、それを vCenter Server にインポートします。
-- アプライアンスを作成し、それが Azure Migrate Server Assessment に接続できることを確認します。
-- アプライアンスを初めて構成し、Azure Migrate プロジェクトに登録します。
 
-1 つの Azure Migrate プロジェクトに対して、複数のアプライアンスを設定できます。 Server Assessment では、すべてのアプライアンスで最大 35,000 の VM の検出がサポートされています。 アプライアンスあたり最大で 10,000 のサーバーを検出できます。
 
 ### <a name="download-the-ova-template"></a>OVA テンプレートをダウンロードする
 
@@ -134,7 +121,10 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 ### <a name="configure-the-appliance"></a>アプライアンスを構成する
 
-次の手順に従って、アプライアンスを設定します。
+アプライアンスを初めて設定します。
+
+> [!NOTE]
+> ダウンロードした OVA でなく、[PowerShell スクリプト](deploy-appliance-script.md)を使用してアプライアンスを設定する場合、この手順の最初の 2 つの操作は必要ありません。
 
 1. vSphere クライアント コンソールで、VM を右クリックし、 **[コンソールを開く]** を選択します。
 1. アプライアンスの言語、タイム ゾーン、パスワードを指定します。
@@ -164,77 +154,30 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 1. アプライアンスの名前を指定します。 名前は、14 文字以下の英数字にする必要があります。
 1. **[登録]** を選択します。
 
+
 ## <a name="start-continuous-discovery"></a>継続的な検出を開始する
 
 VM の構成データとパフォーマンス データを検出するには、アプライアンスを vCenter Server に接続する必要があります。
 
 ### <a name="specify-vcenter-server-details"></a>vCenter Server の詳細を指定する
 1. **[vCenter Server の詳細を指定する]** で、vCenter Server インスタンスの名前 (FQDN) または IP アドレスを指定します。 既定のポートをそのまま使用することも、vCenter Server でリッスンするカスタム ポートを指定することもできます。
-1. vCenter Server インスタンス上の VM を検出するためにアプライアンスが使用する vCenter Server アカウントの資格情報を **[ユーザー名]** と **[パスワード]** に指定します。 
+2. vCenter Server インスタンス上の VM を検出するためにアプライアンスが使用する vCenter Server アカウントの資格情報を **[ユーザー名]** と **[パスワード]** に指定します。 
 
-   [検出に必要なアクセス許可](migrate-support-matrix-vmware.md#vmware-requirements)がアカウントにあることを確認します。 vCenter アカウントへのアクセスを制限することで、[検出のスコープを指定](tutorial-assess-vmware.md#set-the-scope-of-discovery)できます。
-1. **[接続の検証]** を選択し、アプライアンスが vCenter Server に接続できることを確認します。
+    - [前のチュートリアル](tutorial-prepare-vmware.md#set-up-an-account-for-assessment)で、必要なアクセス許可を持つアカウントを設定してある必要があります。
+    - 検出を特定の VMware オブジェクト (vCenter Server データセンター、クラスター、クラスターのフォルダー、ホスト、ホストのフォルダー、または個々の VM) にスコーピングする場合、Azure Migrate によって使用されるアカウントを制限するには、[この記事](set-discovery-scope.md)の手順を参照してください。
 
-### <a name="specify-vm-credentials"></a>VM の資格情報を指定する
-アプリケーション、ロール、機能を検出し、VM 間の依存関係を視覚化するには、VMware VM にアクセスできる VM 資格情報を指定できます。 Windows VM 用に資格情報を 1 つ、Linux VM 用に資格情報を 1 つ追加できます。 必要なアクセス許可の[詳細を参照](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)してください。
+3. **[接続の検証]** を選択し、アプライアンスが vCenter Server に接続できることを確認します。
+4. **[VM でのアプリケーションと依存関係の検出]** で、必要に応じて **[資格情報の追加]** をクリックし、資格情報が関連するオペレーティング システムと、資格情報のユーザー名およびパスワードを指定します。 **[追加]** をクリックします。
 
-> [!NOTE]
-> この入力は省略可能ですが、アプリケーションの検出とエージェントレスの依存関係の視覚化を有効にする場合は必要です。
+    - [アプリケーション検出機能](how-to-discover-applications.md)または[エージェントレスの依存関係の分析機能](how-to-create-group-machine-dependencies-agentless.md)のために使用するアカウントを作成した場合は、必要に応じて、ここで資格情報を追加します。
+    - これらの機能を使用していない場合は、この設定を省略できます。
+    - [アプリ検出](migrate-support-matrix-vmware.md#application-discovery)または[エージェントレス分析](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)に必要な資格情報を確認してください。
 
-1. **[VM でのアプリケーションと依存関係の検出]** で、 **[資格情報の追加]** を選択します。
-1. **[オペレーティング システム]** を選択します。
-1. 資格情報のフレンドリ名を指定します。
-1. **[ユーザー名]** と **[パスワード]** に、その VM に対するゲスト アクセス権を少なくとも持っているアカウントを指定します。
-1. **[追加]** を選択します。
+5. VM の検出を開始するには、 **[保存して検出を開始]** を選択します。
 
-vCenter Server インスタンスと VM の資格情報 (省略可能) を指定したら、 **[保存して検出を開始]** を選択して、オンプレミス環境の検出を開始します。
-
-検出された VM のメタデータがポータルに表示されるまでに、約 15 分かかります。 インストールされているアプリケーション、ロール、および機能の検出には時間がかかります。 検出対象の VM 数によって期間は変わります。 500 台の VM がある場合、アプリケーション インベントリが Azure Migrate ポータルに表示されるまでに約 1 時間かかります。
-
-### <a name="set-the-scope-of-discovery"></a>検出のスコープを設定する
-
-検出に使用する vCenter アカウントのアクセスを制限することで、検出のスコープを設定できます。 vCenter Server のデータセンター、クラスター、クラスターのフォルダー、ホスト、ホストのフォルダー、または個々の VM に、スコープを設定できます。
-
-スコープを設定するには、次の手順を実行します。
-
-#### <a name="1-create-a-vcenter-user-account"></a>1.vCenter ユーザー アカウントを作成する
-1.  vCenter Server 管理者として vSphere Web クライアントにログインします。
-1.  **[管理]**  >  **[SSO users and Groups]\(SSO ユーザーとグループ\)** を選択し、 **[ユーザー]** タブを選択します。
-1.  **[新しいユーザー]** アイコンを選択します。
-1.  必要な情報を入力して新しいユーザーを作成し、 **[OK]** を選択します。
-
-#### <a name="2-define-a-new-role-with-required-permission"></a>2.必要なアクセス許可を持つ新しいロールを定義する
-この手順は、エージェントレス サーバーの移行に必要です。
-1.  vCenter Server 管理者として vSphere Web クライアントにログインします。
-1.  **[Administration]\(管理\)**  >  **[Role Manager]\(ロール マネージャー\)** に移動します。
-1.  ドロップダウン メニューから vCenter Server インスタンスを選択します。
-1.  **[ロールの作成]** を選択します。
-1.  新しいロールの名前 (<em>Azure_Migrate</em> など) を入力します。
-1.  新しく定義されたロールに[アクセス許可](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)を割り当てます。
-1.  **[OK]** を選択します。
-
-#### <a name="3-assign-permissions-on-vcenter-objects"></a>3.vCenter オブジェクトに対するアクセス許可を割り当てる
-
-vCenter のインベントリ オブジェクトに対するアクセス許可を、ロールが割り当てられた vCenter ユーザー アカウントに割り当てるには、2 つの方法があります。
-
-サーバー評価に関しては、検出対象の VM がホストされるすべての親オブジェクトの**読み取り専用**ロールを vCenter ユーザー アカウントに適用する必要があります。 データセンター以下の階層内にあるすべての親オブジェクト (クラスターのホスト、ホストのフォルダー、クラスター、フォルダー) が含まれます。 階層内の子オブジェクトには、これらのアクセス許可が反映されます。
-
-Server Migration の場合と同様に、移行する VM がホストされているすべての親オブジェクトに対して[アクセス許可](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)を持つユーザー定義ロールを vCenter ユーザー アカウントに適用する必要があります。 このロールには、<em>Azure_Migrate</em> と名前を付けることができます。
-
-![アクセス許可の割り当て](./media/tutorial-assess-vmware/assign-perms.png)
-
-もう 1 つのアプローチとして、ユーザー アカウントとロールをデータセンター レベルで割り当て、それらを子オブジェクトに伝達する方法もあります。 そのうえで、検出も移行もしたくないすべてのオブジェクト (VM など) に関して、**アクセスなし**ロールをアカウントに与えます。 
-
-この代替の構成は煩雑です。 親から継承されたアクセス権がすべての新しい子オブジェクトにも自動的に付与されるので、予期しないアクセス制御が行われる恐れがあります。 そのため、最初の方法を使用することをお勧めします。
-
-> [!NOTE]
-> 現時点では、vCenter アカウントが vCenter VM フォルダー レベルでアクセス権を付与されている場合、Server Assessment で VM を検出することはできません。 VM フォルダーによって検出のスコープを指定する場合は、次の手順を使用します。 これにより、vCenter アカウントが VM レベルで割り当てられた読み取り専用アクセス権を持つようになります。
->
-> 1. 検出のスコープを設定する VM フォルダー内のすべての VM に対して、読み取り専用アクセス許可を割り当てます。
-> 1. VM がホストされているすべての親オブジェクトに、読み取り専用アクセス権を付与します。 データセンター以下の階層内にあるすべての親オブジェクト (ホスト、ホストのフォルダー、クラスター、クラスターのフォルダー) が含まれます。 すべての子オブジェクトに権限を広める必要はありません。
-> 1. 検出に資格情報を使用します。**コレクション スコープ**にはデータセンターを選択します。 ロールベースのアクセス制御を設定すると、対応する vCenter ユーザーがテナント固有の VM のみにアクセスできるようになります。
->
-> ホストとクラスターのフォルダーはサポートされていることに注意してください。
+検出は次のように行われます。
+- 検出された VM のメタデータがポータルに表示されるまでに、約 15 分かかります。
+- インストールされているアプリケーション、ロール、および機能の検出には時間がかかります。 検出対象の VM 数によって期間は変わります。 500 台の VM がある場合、アプリケーション インベントリが Azure Migrate ポータルに表示されるまでに約 1 時間かかります。
 
 ### <a name="verify-vms-in-the-portal"></a>ポータル内での VM の特定
 

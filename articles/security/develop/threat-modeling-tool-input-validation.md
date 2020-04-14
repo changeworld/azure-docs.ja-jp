@@ -16,27 +16,27 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: f443bf3111d2ab97874bdc62ec1370d17e2fc406
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68728058"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>セキュリティ フレーム:入力の検証 | 軽減策 
-| 製品/サービス | 記事 |
+| 製品/サービス | [アーティクル] |
 | --------------- | ------- |
 | **Web アプリケーション** | <ul><li>[信頼できないスタイル シートを使用したすべての変換の XSLT スクリプトを無効にする](#disable-xslt)</li><li>[ユーザーが制御可能なコンテンツが含まれている可能性のある各ページで自動 MIME スニッフィングを必ずオプトアウトする](#out-sniffing)</li><li>[XML エンティティの解決を強化するか無効にする](#xml-resolution)</li><li>[http.sys を使用するアプリケーションで URL 正規化の検証を実行する](#app-verification)</li><li>[ユーザーからのファイルを受け入れるときは必ず適切な制御を行う](#controls-users)</li><li>[Web アプリケーションでデータ アクセスにタイプ セーフなパラメーターが使用されていることを確認する](#typesafe)</li><li>[個別のモデル バインド クラスまたはバインド フィルター リストを使用して MVC の一括割り当ての脆弱性を防ぐ](#binding-mvc)</li><li>[レンダリングの前に信頼できない Web 出力をエンコードする](#rendering)</li><li>[モデルのすべての文字列型プロパティで入力の検証とフィルター処理を実行する](#typemodel)</li><li>[すべての文字を受け入れるフォーム フィールド (リッチ テキスト エディターなど) にはサニタイズを適用する必要がある](#richtext)</li><li>[エンコードが組み込まれていないシンクに DOM 要素を割り当てない](#inbuilt-encode)</li><li>[アプリケーション内のすべてのリダイレクトが閉じられているか、安全に実行されていることを確認する](#redirect-safe)</li><li>[コントローラーのメソッドが受け入れるすべての文字列型パラメーターで入力の検証を実装する](#string-method)</li><li>[正しくない正規表現に起因する DoS を防ぐために正規表現の処理の上限タイムアウトを設定する](#dos-expression)</li><li>[Razor ビューで Html.Raw を使用しない](#html-razor)</li></ul> | 
-| **データベース** | <ul><li>[ストアド プロシージャで動的クエリを使用しない](#stored-proc)</li></ul> |
+| **[データベース]** | <ul><li>[ストアド プロシージャで動的クエリを使用しない](#stored-proc)</li></ul> |
 | **Web API** | <ul><li>[Web API のメソッドでモデルの検証を必ず実行する](#validation-api)</li><li>[Web API のメソッドが受け入れるすべての文字列型パラメーターで入力の検証を実装する](#string-api)</li><li>[Web API でデータ アクセスにタイプ セーフなパラメーターが使用されていることを確認する](#typesafe-api)</li></ul> | 
 | **Azure Document DB** | <ul><li>[Azure Cosmos DB のパラメーター化 SQL クエリを使用する](#sql-docdb)</li></ul> | 
 | **WCF** | <ul><li>[WCF - スキーマ バインドを使用した入力の検証](#schema-binding)</li><li>[WCF - パラメーター インスペクターを使用した入力の検証](#parameters)</li></ul> |
 
-## <a id="disable-xslt"></a>信頼できないスタイル シートを使用したすべての変換の XSLT スクリプトを無効にする
+## <a name="disable-xslt-scripting-for-all-transforms-using-untrusted-style-sheets"></a><a id="disable-xslt"></a>信頼できないスタイル シートを使用したすべての変換の XSLT スクリプトを無効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [XSLT のセキュリティ](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx)[XsltSettings.EnableScript プロパティ](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
@@ -63,12 +63,12 @@ MSXML 5 以前を使用している場合、XSLT スクリプトは既定で有�
 doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables XSLT scripting.
 ```
 
-## <a id="out-sniffing"></a>ユーザーが制御可能なコンテンツが含まれている可能性のある各ページで自動 MIME スニッフィングを必ずオプトアウトする
+## <a name="ensure-that-each-page-that-could-contain-user-controllable-content-opts-out-of-automatic-mime-sniffing"></a><a id="out-sniffing"></a>ユーザーが制御可能なコンテンツが含まれている可能性のある各ページで自動 MIME スニッフィングを必ずオプトアウトする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [IE8 のセキュリティ パート V: 包括的な保護](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)  |
@@ -132,12 +132,12 @@ public class XContentTypeOptionsModule : IHttpModule
 this.Response.Headers[""X-Content-Type-Options""] = ""nosniff""; 
 ``` 
 
-## <a id="xml-resolution"></a>XML エンティティの解決を強化するか無効にする
+## <a name="harden-or-disable-xml-entity-resolution"></a><a id="xml-resolution"></a>XML エンティティの解決を強化するか無効にする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [XML エンティティの展開](https://capec.mitre.org/data/definitions/197.html)、[XML サービス拒否攻撃と防御策](https://msdn.microsoft.com/magazine/ee335713.aspx)、[MSXML のセキュリティの概要](https://msdn.microsoft.com/library/ms754611(v=VS.85).aspx)、[MSXML コードをセキュリティで保護するためのベスト プラクティス](https://msdn.microsoft.com/library/ms759188(VS.85).aspx)、[NSXMLParserDelegate プロトコル リファレンス](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html)、[外部参照の解決](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
@@ -183,7 +183,7 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ```
 
 ### <a name="example"></a>例
-インライン エンティティを解決する必要があり、外部エンティティは解決する必要がない場合は、XmlReaderSettings.XmlResolver プロパティを null に設定します。 例: 
+インライン エンティティを解決する必要があり、外部エンティティは解決する必要がない場合は、XmlReaderSettings.XmlResolver プロパティを null に設定します。 次に例を示します。 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -194,23 +194,23 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ```
 MSXML6 では、ProhibitDTD は既定で true (DTD 処理の無効化) に設定されています。 Apple OSX/iOS コードでは、NSXMLParser と libXML2 の 2 つの XML パーサーを使用できます。 
 
-## <a id="app-verification"></a>http.sys を使用するアプリケーションで URL 正規化の検証を実行する
+## <a name="applications-utilizing-httpsys-perform-url-canonicalization-verification"></a><a id="app-verification"></a>http.sys を使用するアプリケーションで URL 正規化の検証を実行する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
 | **手順** | <p>http.sys を使用するアプリケーションは、次のガイドラインに従う必要があります。</p><ul><li>URL の長さを 16,384 文字以下 (ASCII または Unicode) に制限します。 これは、インターネット インフォメーション サービス (IIS) 6 の既定の設定に基づく URL の絶対最大長です。 可能であれば、Web サイトでこれよりも短い長さにすることを目指します。</li><li>.NET Framework の標準のファイル I/O クラス (FileStream など) では、.NET FX の正規化規則を利用するので、これらのクラスを使用します。</li><li>既知のファイル名の許可リストを明示的に作成します。</li><li>UrlScan の拒否を適用しない既知のファイルの種類 (exe、bat、cmd、com、htw、ida、idq、htr、idc、shtm[l]、stm、printer、ini、pol、dat の各ファイル) を明示的に拒否します。</li><li>次の例外をキャッチします。<ul><li>System.ArgumentException (デバイス名)</li><li>System.NotSupportedException (データ ストリーム)</li><li>System.IO.FileNotFoundException (エスケープされた無効なファイル名)</li><li>System.IO.DirectoryNotFoundException (エスケープされた無効なディレクトリ)</li></ul></li><li>Win32 ファイル I/O API は*呼び出さない*でください。 無効な URL では、ユーザーに 400 エラーを適切に返し、実際のエラーをログに記録します。</li></ul>|
 
-## <a id="controls-users"></a>ユーザーからのファイルを受け入れるときは必ず適切な制御を行う
+## <a name="ensure-appropriate-controls-are-in-place-when-accepting-files-from-users"></a><a id="controls-users"></a>ユーザーからのファイルを受け入れるときは必ず適切な制御を行う
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [無制限のファイル アップロード](https://www.owasp.org/index.php/Unrestricted_File_Upload)、[ファイル シグネチャ テーブル](https://www.garykessler.net/library/file_sigs.html) |
@@ -321,12 +321,12 @@ MSXML6 では、ProhibitDTD は既定で true (DTD 処理の無効化) に設定
         }
 ```
 
-## <a id="typesafe"></a>Web アプリケーションでデータ アクセスにタイプ セーフなパラメーターが使用されていることを確認する
+## <a name="ensure-that-type-safe-parameters-are-used-in-web-application-for-data-access"></a><a id="typesafe"></a>Web アプリケーションでデータ アクセスにタイプ セーフなパラメーターが使用されていることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -351,23 +351,23 @@ myCommand.Fill(userDataset);
 ```
 前のコード例では、入力値が 11 文字を超えることはできません。 データがパラメーターで定義された型または長さに一致しない場合、SqlParameter クラスは例外をスローします。 
 
-## <a id="binding-mvc"></a>個別のモデル バインド クラスまたはバインド フィルター リストを使用して MVC の一括割り当ての脆弱性を防ぐ
+## <a name="use-separate-model-binding-classes-or-binding-filter-lists-to-prevent-mvc-mass-assignment-vulnerability"></a><a id="binding-mvc"></a>個別のモデル バインド クラスまたはバインド フィルター リストを使用して MVC の一括割り当ての脆弱性を防ぐ
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | MVC5、MVC6 |
 | **属性**              | 該当なし  |
 | **参照**              | [メタデータ属性](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute)、[公開キーのセキュリティの脆弱性と軽減策](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation)、[ASP.NET MVC の一括割り当ての完全ガイド](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx)、[ MVC を使用した EF の概要](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
 | **手順** | <ul><li>**オーバーポスティングの脆弱性を調べる必要があるのはどのような場合ですか? -** オーバーポスティングの脆弱性はユーザー入力からモデル クラスをバインドするあらゆる場所で発生する可能性があります。 MVC のようなフレームワークでは、Plain Old CLR Object (POCO) などのカスタム .NET クラスでユーザー データを表すことができます。 MVC では、要求から取得したデータが自動的にモデル クラスに設定されるので、ユーザー入力を処理する際の便利な表現が提供されます。 これらのクラスにユーザーが設定できないプロパティが含まれていると、アプリケーションはオーバーポスティング攻撃に対して脆弱になる可能性があります。オーバーポスティング攻撃では、アプリケーションが意図していなかったデータをユーザーが制御できるようになります。 MVC のモデル バインドと同様に、Entity Framework のようなオブジェクト/リレーショナル マッパーなどのデータ アクセス テクノロジも、多くの場合、POCO オブジェクトを使用したデータベース データの表現をサポートしています。 これらのデータ モデル クラスでは、データベース データを処理するときに、MVC がユーザー入力を処理するときと同様の利便性を提供します。 MVC とデータベースはどちらも POCO オブジェクトなどの類似するモデルをサポートしているため、両方の目的に同じクラスを再利用しやすいように思われます。 この方法では関心の分離を維持できません。これは、意図しないプロパティがモデル バインドに公開され、オーバーポスティング攻撃が可能になる一般的な領域の 1 つです。</li><li>**フィルター処理されていないデータベース モデル クラスを MVC アクションのパラメーターとして使用しないようにする必要があるのはなぜですか? -** MVC のモデル バインドはそのクラスのあらゆるものをバインドするからです。 データがビューに表示されなくても、悪意のあるユーザーはそのデータが含まれた HTTP 要求を送信できます。アクションによって、データベース クラスがユーザー入力を受け入れる必要があるデータ構造であることが伝えられるため、MVC はデータをバインドします。</li><li>**モデル バインドに使用する構造に注意する必要があるのはなぜですか? -** ASP.NET MVC のモデル バインドを非常に多くのモデルで使用すると、アプリケーションがオーバーポスティング攻撃にさらされます。 オーバーポスティングにより、攻撃者は開発者が意図していた範囲を超えてアプリケーション データを変更できるようになる可能性があります (商品の価格やアカウントのセキュリティ特権のオーバーライドなど)。 アプリケーションでは、アクション固有のバインド モデル (または明確な許容プロパティ フィルター リスト) を使用して、モデル バインドによって許可する信頼できない入力に関する明示的なコントラクトを提供する必要があります。</li><li>**個々のバインド モデルは複製コードを使用するのですか? -** いいえ。関心の分離の問題です。 アクション メソッドでデータベース モデルを再利用した場合、HTTP 要求でそのクラスのあらゆるプロパティ (またはサブプロパティ) をユーザーが設定できることになります。 これが望ましくない場合は、ユーザー入力から取得できるデータを MVC に示すフィルター リストまたは別のクラス構造が必要です。</li><li>**ユーザー入力用の個別のバインド モデルがある場合、すべてのデータ注釈属性を複製する必要がありますか? -** その必要はありません。 データベース モデル クラスの MetadataTypeAttribute を使用して、モデル バインド クラスのメタデータにリンクできます。 MetadataTypeAttribute が参照する型は、参照元の型のサブセットである必要があります (プロパティが減る可能性はありますが、増えることはありません)。</li><li>**ユーザー入力モデルとデータベース モデル間でデータを移動するのが面倒です。リフレクションを使用してすべてのプロパティをコピーすることはできますか? -** はい。 バインド モデルで表示されるのは、ユーザー入力でも安全であると開発者が判断したプロパティだけです。 リフレクションを使用して、この 2 つのモデル間で共通して存在するすべてのプロパティをコピーすることを妨げるセキュリティ上の理由はありません。</li><li>**[Bind(Exclude ="â€¦")] はどうですか。個別のバインド モデルを用意する代わりに、これを使用することはできますか? -** この方法はお勧めしません。 [Bind(Exclude ="â€¦")] を使用することは、すべての新しいプロパティが既定でバインド可能になることを意味します。 新しいプロパティが追加されたときに、設計が既定でセキュリティ保護されるのではなく、セキュリティを維持するために忘れずに実行する必要がある余分な手順が発生します。 開発者によっては、プロパティが追加されるたびにこのリストを確認するのはリスクが伴います。</li><li>**[Bind(Include ="â€¦")] は編集操作で使用できますか。 -** いいえ。 [Bind(Include ="â€¦")] は挿入スタイルの操作 (新しいデータの追加) にのみ適しています。 更新スタイルの操作 (既存のデータの変更) の場合、別の方法を使用します。たとえば、個別のバインド モデルを使用するか、許容されるプロパティの明示的なリストを UpdateModel または TryUpdateModel に渡します。 編集操作に [Bind(Include ="â€¦")] 属性を追加することは、MVC がオブジェクト インスタンスを作成し、リストされたプロパティのみを設定して、その他すべてのプロパティをデフォルト値のままにすることを意味します。 データが永続化されている場合は、既存のエンティティが完全に置き換えられ、省略されたプロパティの値が既定値にリセットされます。 たとえば、編集操作で [Bind(Include ="â€¦")] 属性から IsAdmin が省略された場合、このアクションによって名前が編集されたすべてのユーザーが IsAdmin = false にリセットされます (編集されたすべてのユーザーが管理者でなくなります)。 特定のプロパティが更新されないようにする場合は、前述の方法のいずれかを使用します。 MVC ツールのバージョンによっては、編集アクションで [Bind(Include ="â€¦")] を使用してコントローラー クラスを生成し、そのリストからプロパティを削除することがオーバーポスティング攻撃の防止になることを意味します。 ただし、前述のように、この方法は意図したとおりに機能するわけではなく、省略されたプロパティのデータが既定値にリセットされます。</li><li>**作成操作において、別個のバインド モデルを使用するのではなく、[Bind(Include ="â€¦")] を使用するうえでの注意事項はありますか。 -** はい。 第 1 に、この方法は、オーバーポスティングのすべての脆弱性を軽減するために 2 つの方法を維持する必要がある編集シナリオには適していません。 第 2 に、別個のバインド モデルは、ユーザー入力に使用されるシェイプと永続化に使用されるシェイプの間の関心を分離します。これは [Bind(Include ="â€¦")] では行われません。 第 3 に、[Bind(Include ="â€¦")] は最上位レベルのプロパティのみを処理できます。つまり、属性のサブプロパティの部分 ("Details.Name" など) のみを許可することはできません。 最後に、おそらく最も重要な点ですが、[Bind(Include ="â€¦")] を使用すると、モデル バインドにそのクラスが使用されるときはいつでも手順が追加されることを覚えておく必要があります。 新しいアクション メソッドが直接データ クラスにバインドされ、[Bind(Include ="â€¦")] 属性を含めることを忘れた場合、オーバーポスティング攻撃に対して脆弱になるため、[Bind(Include ="â€¦")] を使用するアプローチは既定で安全性が若干劣ります。 [Bind(Include ="â€¦")] を使用する場合は、データ クラスがアクション メソッドのパラメーターとして出現するときは必ず指定してください。</li><li>**作成操作において、モデル クラス自体に [Bind(Include ="â€¦")] 属性を配置するとどうなりますか。この方法なら、各アクション メソッドにこの属性を忘れずに配置する必要はなくなるのではありませんか? -** この方法は場合によっては有効です。 そのモデルの型自体に [Bind(Include ="â€¦")] を (このクラスを使用するアクション パラメーターの代わりに) 使用すると、すべてのアクション メソッドに [Bind(Include ="â€¦")] 属性に含めることを覚えておく必要がなくなります。 モデル バインドのために、この属性をクラスで直接使用すると、そのクラスのセキュリティが実質的に強化されます。 ただし、この方法では、モデル クラスごとに使用できるモデル バインド構造は 1 つだけになります。 あるアクション メソッドでフィールドのモデル バインドを許可する必要があり (ユーザー ロールを更新する管理者専用のアクションなど)、その他のアクションではそのフィールドのモデル バインドを防ぐ必要がある場合、この方法は機能しません。 各クラスにはモデル バインド シェイプを 1 つのみ指定できます。つまり、別のアクションで別のモデル バインド シェイプが必要な場合、アクション メソッドに別個のモデル バインド クラスまたは別個の [Bind(Include ="â€¦")] 属性を使用してそれら別個のシェイプを表現する必要があります。</li><li>**バインド モデルとはなんですか?ビュー モデルと同じものですか? -** これらは 2 つの関連する概念です。 バインド モデルという用語は、アクションのパラメーター リストで使用されるモデル クラスを指します (MVC のモデル バインドからアクション メソッドに渡される構造)。 ビュー モデルという用語は、アクション メソッドからビューに渡されるモデル クラスを指します。 アクション メソッドからビューにデータを渡す一般的な方法は、ビュー固有のモデルを使用することです。 多くの場合は、この構造はモデル バインドにも適しており、ビュー モデルという用語を使用して、両方の場所で使用される同じモデルを指すことができます。 正確に言うと、この手順では、一括割り当てのために重要となる、アクションに渡される構造に重点を置いて、バインド モデルについて具体的に伝えます。</li></ul>| 
 
-## <a id="rendering"></a>レンダリングの前に信頼できない Web 出力をエンコードする
+## <a name="encode-untrusted-web-output-prior-to-rendering"></a><a id="rendering"></a>レンダリングの前に信頼できない Web 出力をエンコードする
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、Web フォーム、MVC5、MVC6 |
 | **属性**              | 該当なし  |
 | **参照**              | [ASP.NET でクロスサイト スクリプトを防止する方法](https://msdn.microsoft.com/library/ms998274.aspx)、[クロスサイト スクリプト](https://cwe.mitre.org/data/definitions/79.html)、[XSS (クロスサイト スクリプト) 防止チート シート](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) |
@@ -387,34 +387,34 @@ myCommand.Fill(userDataset);
 * Encoder.LdapEncode 
 ```
 
-## <a id="typemodel"></a>モデルのすべての文字列型プロパティで入力の検証とフィルター処理を実行する
+## <a name="perform-input-validation-and-filtering-on-all-string-type-model-properties"></a><a id="typemodel"></a>モデルのすべての文字列型プロパティで入力の検証とフィルター処理を実行する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、MVC5、MVC6 |
 | **属性**              | 該当なし  |
 | **参照**              | [検証の追加](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation)、[MVC アプリケーションでのモデル データの検証](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC アプリケーションの基本原則](https://msdn.microsoft.com/magazine/dd942822.aspx) |
 | **手順** | <p>悪意のあるユーザー入力からアプリケーションを確実に保護するには、アプリケーションで入力パラメーターが使用される前に、すべての入力パラメーターを検証する必要があります。 サーバー側でホワイトリスト方式の正規表現の検証を使用して入力値を検証します。 サニタイズされていないユーザー入力やパラメーターがメソッドに渡されると、コード インジェクションの脆弱性が発生する可能性があります。</p><p>Web アプリケーションの場合、エントリ ポイントにフォーム フィールド、クエリ文字列、Cookie、HTTP ヘッダー、Web サービス パラメーターが含まれている可能性もあります。</p><p>モデル バインド時に、次の入力検証チェックを実行する必要があります。</p><ul><li>許容される文字と最大許容長を受け入れるために、モデルのプロパティに注釈として RegularExpression を設定する必要があります。</li><li>コントローラーのメソッドで ModelState の有効性チェックを実行します。</li></ul>|
 
-## <a id="richtext"></a>すべての文字を受け入れるフォーム フィールド (リッチ テキスト エディターなど) にはサニタイズを適用する必要がある
+## <a name="sanitization-should-be-applied-on-form-fields-that-accept-all-characters-eg-rich-text-editor"></a><a id="richtext"></a>すべての文字を受け入れるフォーム フィールド (リッチ テキスト エディターなど) にはサニタイズを適用する必要がある
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [安全でない入力のエンコード](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3)、[HTML サニタイザー](https://github.com/mganss/HtmlSanitizer) |
 | **手順** | <p>使用するすべての静的マークアップ タグを特定します。 一般的な方法は、書式設定を安全な HTML 要素 (`<b>` (太字) や `<i>` (斜体) など) に制限することです。</p><p>データを書き込む前に HTML エンコードします。 これにより、スクリプトは実行可能コードとしてではなく、テキストとして処理されるので、悪意のあるスクリプトが安全になります。</p><ol><li>ValidateRequest="false" 属性を \@ Page ディレクティブに追加して、ASP.NET 要求の検証を無効にします。</li><li>HtmlEncode メソッドを使用して文字列入力をエンコードします。</li><li>StringBuilder を使用し、Replace メソッドを呼び出して、許可する HTML 要素のエンコードを選択的に削除します。</li></ol><p>参照のページインにより、`ValidateRequest="false"` が設定され、ASP.NET 要求の検証が無効になります。 入力が HTML エンコードされ、`<b>` と `<i>` が選択的に許可されます。別の方法として、HTML サニタイズ用 .NET ライブラリを使用することもできます。</p><p>HtmlSanitizer は、XSS 攻撃につながる可能性のある構造から HTML フラグメントや HTML ドキュメントを取り除くための .NET ライブラリです。 HtmlSanitizer では、AngleSharp を使用して HTML と CSS の解析、操作、レンダリングを実行します。 HtmlSanitizer は NuGet パッケージとしてインストールできます。ユーザー入力は、サーバー側で適切な HTML または CSS サニタイズ メソッドを使用して渡すことができます (該当する場合)。 セキュリティ制御としてのサニタイズは、あくまで最後の手段と考える必要があることに注意してください。</p><p>入力の検証と出力エンコードの方が優れたセキュリティ制御と見なされます。</p> |
 
-## <a id="inbuilt-encode"></a>エンコードが組み込まれていないシンクに DOM 要素を割り当てない
+## <a name="do-not-assign-dom-elements-to-sinks-that-do-not-have-inbuilt-encoding"></a><a id="inbuilt-encode"></a>エンコードが組み込まれていないシンクに DOM 要素を割り当てない
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -431,34 +431,34 @@ $('body').append(resHTML);
 ```
 `innerHtml` は使用しないでください。代わりに `innerText` を使用します。 同様に、`$("#elm").html()` ではなく、`$("#elm").text()` を使用します。 
 
-## <a id="redirect-safe"></a>アプリケーション内のすべてのリダイレクトが閉じられているか、安全に実行されていることを確認する
+## <a name="validate-all-redirects-within-the-application-are-closed-or-done-safely"></a><a id="redirect-safe"></a>アプリケーション内のすべてのリダイレクトが閉じられているか、安全に実行されていることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [OAuth 2.0 承認フレームワーク - オープン リダイレクター](https://tools.ietf.org/html/rfc6749#section-10.15) |
 | **手順** | <p>ユーザーが指定した場所へのリダイレクトを必要とするアプリケーション設計では、使用可能なリダイレクト ターゲットを、サイトまたはドメインの定義済みの "セーフ" リストに制限する必要があります。 アプリケーション内のすべてのリダイレクトが閉じられているか、安全である必要があります。</p><p>これを行うには、次の手順を実行します。</p><ul><li>すべてのリダイレクトを特定します。</li><li>リダイレクトごとに適切な軽減策を実装します。 適切な軽減策として、リダイレクトのホワイトリストやユーザーの確認などがあります。 オープン リダイレクトの脆弱性が存在する Web サイトやサービスで Facebook/OAuth/OpenID ID プロバイダーを使用している場合、攻撃者がユーザーのログオン トークンを窃取し、そのユーザーを偽装する可能性があります。 これは OAuth 使用時の固有のリスクであり、RFC 6749「The OAuth 2.0 Authorization Framework (OAuth 2.0 承認フレームワーク)」のセクション 10.15 「Open Redirectors (オープン リダイレクター)」に記載されています。同様に、オープン リダイレクトを使用したスピア フィッシング攻撃によってユーザーの資格情報が侵害されるおそれがあります。</li></ul>|
 
-## <a id="string-method"></a>コントローラーのメソッドが受け入れるすべての文字列型パラメーターで入力の検証を実装する
+## <a name="implement-input-validation-on-all-string-type-parameters-accepted-by-controller-methods"></a><a id="string-method"></a>コントローラーのメソッドが受け入れるすべての文字列型パラメーターで入力の検証を実装する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、MVC5、MVC6 |
 | **属性**              | 該当なし  |
 | **参照**              | [MVC アプリケーションでのモデル データの検証](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC アプリケーションの基本原則](https://msdn.microsoft.com/magazine/dd942822.aspx) |
 | **手順** | 引数としてプリミティブ データ型だけを受け入れ、モデルは受け入れないメソッドでは、正規表現を使用した入力の検証を実行する必要があります。 この場合、有効な regex パターンで Regex.IsMatch を使用します。 入力が指定した正規表現と一致しない場合は、制御を進めないようにし、検証エラーに関する適切な警告を表示する必要があります。| 
 
-## <a id="dos-expression"></a>正しくない正規表現に起因する DoS を防ぐために正規表現の処理の上限タイムアウトを設定する
+## <a name="set-upper-limit-timeout-for-regular-expression-processing-to-prevent-dos-due-to-bad-regular-expressions"></a><a id="dos-expression"></a>正しくない正規表現に起因する DoS を防ぐために正規表現の処理の上限タイムアウトを設定する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、Web フォーム、MVC5、MVC6  |
 | **属性**              | 該当なし  |
 | **参照**              | [DefaultRegexMatchTimeout プロパティ](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
@@ -471,12 +471,12 @@ $('body').append(resHTML);
 <httpRuntime targetFramework="4.5" defaultRegexMatchTimeout="00:00:05" />
 ```
 
-## <a id="html-razor"></a>Razor ビューで Html.Raw を使用しない
+## <a name="avoid-using-htmlraw-in-razor-views"></a><a id="html-razor"></a>Razor ビューで Html.Raw を使用しない
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Web Application | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | Web アプリケーション | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | MVC5、MVC6 |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -496,12 +496,12 @@ $('body').append(resHTML);
 ```
 マークアップを表示する必要がある場合を除き、`Html.Raw()` は使用しないでください。 このメソッドでは、出力エンコードは暗黙的に実行されません。 他の ASP.NET ヘルパー (`@Html.DisplayFor()` など) を使用してください。 
 
-## <a id="stored-proc"></a>ストアド プロシージャで動的クエリを使用しない
+## <a name="do-not-use-dynamic-queries-in-stored-procedures"></a><a id="stored-proc"></a>ストアド プロシージャで動的クエリを使用しない
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Database | 
-| **SDL フェーズ**               | 構築 |  
+| **コンポーネント**               | データベース | 
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -556,12 +556,12 @@ AS
        END
 ```
 
-## <a id="validation-api"></a>Web API のメソッドでモデルの検証を必ず実行する
+## <a name="ensure-that-model-validation-is-done-on-web-api-methods"></a><a id="validation-api"></a>Web API のメソッドでモデルの検証を必ず実行する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Web API | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | MVC5、MVC6 |
 | **属性**              | 該当なし  |
 | **参照**              | [ASP.NET Web API でのモデルの検証](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
@@ -613,23 +613,23 @@ namespace MyApi.Controllers
 }
 ```
 
-## <a id="string-api"></a>Web API のメソッドが受け入れるすべての文字列型パラメーターで入力の検証を実装する
+## <a name="implement-input-validation-on-all-string-type-parameters-accepted-by-web-api-methods"></a><a id="string-api"></a>Web API のメソッドが受け入れるすべての文字列型パラメーターで入力の検証を実装する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Web API | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、MVC 5、MVC 6 |
 | **属性**              | 該当なし  |
 | **参照**              | [MVC アプリケーションでのモデル データの検証](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC アプリケーションの基本原則](https://msdn.microsoft.com/magazine/dd942822.aspx) |
 | **手順** | 引数としてプリミティブ データ型だけを受け入れ、モデルは受け入れないメソッドでは、正規表現を使用した入力の検証を実行する必要があります。 この場合、有効な regex パターンで Regex.IsMatch を使用します。 入力が指定した正規表現と一致しない場合は、制御を進めないようにし、検証エラーに関する適切な警告を表示する必要があります。|
 
-## <a id="typesafe-api"></a>Web API でデータ アクセスにタイプ セーフなパラメーターが使用されていることを確認する
+## <a name="ensure-that-type-safe-parameters-are-used-in-web-api-for-data-access"></a><a id="typesafe-api"></a>Web API でデータ アクセスにタイプ セーフなパラメーターが使用されていることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Web API | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
@@ -654,34 +654,34 @@ myCommand.Fill(userDataset);
 ```
 前のコード例では、入力値が 11 文字を超えることはできません。 データがパラメーターで定義された型または長さに一致しない場合、SqlParameter クラスは例外をスローします。 
 
-## <a id="sql-docdb"></a>Cosmos DB のパラメーター化 SQL クエリを使用する
+## <a name="use-parameterized-sql-queries-for-cosmos-db"></a><a id="sql-docdb"></a>Cosmos DB のパラメーター化 SQL クエリを使用する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | Azure Document DB | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Cosmos DB の SQL パラメーター化の発表](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
 | **手順** | Azure Cosmos DB でサポートされているのは読み取り専用クエリだけですが、ユーザー入力と連結してクエリが作成される場合は、SQL インジェクションが可能になります。 ユーザーは、悪意のある SQL クエリを作成することで、同じコレクション内の本来はアクセスできないデータにアクセスできるようになる可能性があります。 クエリがユーザー入力に基づいて作成される場合は、パラメーター化 SQL クエリを使用します。 |
 
-## <a id="schema-binding"></a>WCF - スキーマ バインドを使用した入力の検証
+## <a name="wcf-input-validation-through-schema-binding"></a><a id="schema-binding"></a>WCF - スキーマ バインドを使用した入力の検証
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | WCF | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし  |
 | **参照**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
 | **手順** | <p>検証が行われていない場合、さまざまな種類のインジェクション攻撃が発生します。</p><p>メッセージの検証は、WCF アプリケーションの保護における防御手段の 1 つとなります。 このアプローチでは、悪意のあるクライアントによる攻撃から WCF サービス操作を保護するために、スキーマを使用してメッセージを検証します。 また、悪意のあるサービスによる攻撃からクライアントを保護するために、クライアントが受信したすべてのメッセージを検証します。 メッセージの検証により、操作でメッセージ コントラクトまたはデータ コントラクトが使用されているときに、メッセージを検証することが可能になります。これは、パラメーターの検証では実現できません。 メッセージの検証では、スキーマ内で検証ロジックを作成できるので、柔軟性が向上し、開発時間が短縮されます。 データ表現の標準を作成することで、組織内のさまざまなアプリケーションでスキーマを再利用できます。 さらに、メッセージの検証により、ビジネス ロジックを表すコントラクトを含む複雑なデータ型を使用する操作を保護することもできます。</p><p>メッセージの検証を実行するには、まず、サービスの操作とそれらの操作で使用されるデータ型を表すスキーマを作成します。 その後、サービスとの間で送受信されるメッセージを検証するために、カスタム クライアント メッセージ インスペクターとカスタム ディスパッチャー メッセージ インスペクターを実装した .NET クラスを作成します。 次に、クライアントとサービスの両方でメッセージの検証を有効にするカスタム エンドポイント動作を実装します。 最後に、サービスまたはクライアントの構成ファイル内で拡張されたカスタム エンドポイント動作を公開できるようにするためのカスタム構成要素をクラスに実装します。</p>|
 
-## <a id="parameters"></a>WCF - パラメーター インスペクターを使用した入力の検証
+## <a name="wcf--input-validation-through-parameter-inspectors"></a><a id="parameters"></a>WCF - パラメーター インスペクターを使用した入力の検証
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
 | **コンポーネント**               | WCF | 
-| **SDL フェーズ**               | 構築 |  
+| **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし  |
 | **参照**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |

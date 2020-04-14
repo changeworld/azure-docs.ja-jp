@@ -1,14 +1,14 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-ms.date: 11/04/2019
+ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 502c8a87c4e915ebd1fd764915daa9c89a307097
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 0330cb5c732921efda3627dec92e486657097d82
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78354954"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422454"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -334,7 +334,7 @@ AuditIfNotExists と同様に、DeployIfNotExists ポリシー定義は条件が
 DeployIfNotExists は、リソースプロバイダーでリソースの作成または更新要求が処理され、成功を示す状態コードが返されてから約 15 分後に実行されます。 関連するリソースがない場合、または **ExistenceCondition** によって定義されたリソースが true と評価されない場合、テンプレートのデプロイが発生します。
 デプロイの時間は、テンプレートに含まれるリソースの複雑さによって異なります。
 
-評価サイクル中は、リソースを照合する DeployIfNotExists 効果があるポリシー定義は非準拠としてマークされ、リソースに対するアクションは実行されません。
+評価サイクル中は、リソースを照合する DeployIfNotExists 効果があるポリシー定義は非準拠としてマークされ、リソースに対するアクションは実行されません。 準拠していない既存のリソースは、[修復タスク](../how-to/remediate-resources.md)で修復できます。
 
 ### <a name="deployifnotexists-properties"></a>DeployIfNotExists のプロパティ
 
@@ -453,7 +453,7 @@ EnforceOPAConstraint 効果の **details** プロパティには、Gatekeeper v3
 - **values** [オプション]
   - 制約に渡すすべてのパラメーターと値を定義します。 それぞれの値は、制約テンプレート CRD に含まれている必要があります。
 
-### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy の例
+### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint の例
 
 例:AKS エンジンでコンテナーの CPU とメモリのリソース上限を設定する、Gatekeeper v3 の受付制御ルールです。
 

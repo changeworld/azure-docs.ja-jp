@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 11/04/2019
-ms.openlocfilehash: 9cbfc17e7412b4d30f082354996721ee7b5d6d5b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 03/24/2020
+ms.openlocfilehash: d5c48b6036065f6182912c21c144cab80fc3cfbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510644"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246706"
 ---
 # <a name="what-is-azure-sql-database-edge-preview"></a>Azure SQL Database Edge プレビューとは
 
@@ -34,9 +34,8 @@ SQL Database Edge は、3 つの異なるエディションまたはソフトウ
 
    |**プラン**  |**説明**  |
    |---------|---------|
-   |開発者  |  開発専用の SKU で、下記の Standard SKU で適用されるのと同じ調整制限があります |
-   |Standard   |  Standard プランでは、SQL Database Edge コンテナーに対して、最大 4 つの CPU と最大 32 GB のメモリがサポートされます。 |
-   |Premium    |  Premium SKU では、SQL Database Edge コンテナーに対して、最大 8 つの CPU と最大 64 GB のメモリがサポートされます。 |
+   |Azure SQL Database Edge Developer  |  開発専用 SKU です。各 SQL Database Edge コンテナーは、最大で 4 コアおよび 32 GB メモリに制限されます  |
+   |Azure SQL Database Edge    |  運用 SKU です。各 SQL Database Edge コンテナーは、最大で 8 コアおよび 64 GB メモリに制限されます。 |
 
 ## <a name="pricing-and-availability"></a>価格と可用性
 
@@ -66,10 +65,10 @@ Azure SQL Database Edge は、アプリケーションの開発と管理をよ�
 - [Visual Studio Code](https://code.visualstudio.com/docs): Windows、macOS、Linux 向けの無料でダウンロードできるオープンソースのコード エディターです。 Microsoft SQL Server、Azure SQL Database、および Azure SQL Data Warehouse のデータを照会するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)を含む拡張機能をサポートします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 価格と可用性に関連する詳細については、[Azure SQL Database Edge](https://azure.microsoft.com/services/sql-database-edge/) に関するページを参照してください。
 - お使いのサブスクリプションに対して Azure SQL Database Edge を有効にするように要求します。
-- 使用を開始するには、以下の記事を参照してください。
+- 使用を開始するには、以下を参照してください。
   - [Azure portal を介して SQL Database Edge をデプロイする](deploy-portal.md)
   - [SQL Database Edge を使用した機械学習と人工知能](onnx-overview.md)
