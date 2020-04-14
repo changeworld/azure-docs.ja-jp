@@ -118,4 +118,4 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 |トルコ|トルコ語|tr-TR|
 |イギリス|英語|en-GB|
 |アメリカ|英語|en-US|
-|アメリカ|Spanish|es-US|
+|アメリカ|スペイン語|es-US|
