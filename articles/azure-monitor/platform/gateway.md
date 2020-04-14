@@ -70,19 +70,19 @@ Log Analytics ゲートウェイは、次の言語で利用できます。
 
 - 簡体中国語
 - 繁体中国語
-- Czech
-- Dutch
-- English
-- French
-- German
-- Hungarian
-- Italian
-- Japanese
-- Korean
-- Polish
+- チェコ語
+- オランダ語
+- 英語
+- フランス語
+- ドイツ語
+- ハンガリー語
+- イタリア語
+- 日本語
+- 韓国語
+- ポーランド語
 - ポルトガル語 (ブラジル)
 - ポルトガル語 (ポルトガル)
-- Russian
+- ロシア語
 - スペイン語 (インターナショナル)
 
 ### <a name="supported-encryption-protocols"></a>サポート対象の暗号化プロトコル
