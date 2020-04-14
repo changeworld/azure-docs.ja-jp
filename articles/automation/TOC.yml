@@ -262,7 +262,7 @@
           href: /powershell/scripting/dsc/overview/overview
     - name: クイックスタート
       items:
-        - name: 作業の開始
+        - name: 開始するには
           href: automation-dsc-getting-started.md
           displayName: DSC
         - name: マシンの構成の管理
@@ -278,9 +278,6 @@
         - name: 目的の状態へのサーバーの構成と状態の構成での誤差の管理
           href: tutorial-configure-servers-desired-state.md
           displayName: 'DSC, compliance'
-        - name: 管理のためのマシンのオンボード
-          href: automation-dsc-onboarding.md
-          displayName: 'DSC, state configuration'
         - name: DSC 構成のコンパイル
           href: automation-dsc-compile.md
           displayName: 'state configuration, composite resources, configurationData'
@@ -289,7 +286,7 @@
           displayName: 'state configuration, DSC, remediate'
         - name: 複合リソースを使用した DSC 構成の作成
           href: compose-configurationwithcompositeresources.md
-        - name: Chocolatey を使用した継続的なデプロイ
+        - name: Chocolatey を使用した継続的デプロイの指定
           href: automation-dsc-cd-chocolatey.md
           displayName: 'dsc, state configuration'
         - name: Azure Monitor ログに状態の構成のレポート データを転送する
@@ -297,12 +294,12 @@
           displayName: DSC
     - name: トラブルシューティング
       items:
-        - name: オンボード
+        - name: オンボーディングのトラブルシューティング
           href: troubleshoot/onboarding.md
           displayName: troubleshoot
         - name: State Configuration (DSC) のトラブルシューティング
           href: troubleshoot/desired-state-configuration.md
-          displayName: 'Desired State Configuration, troubleshoot'
+          displayName: 'state configuration, DSC, troubleshoot'
     - name: リファレンス
       items:
         - name: コミュニティ ソリューション

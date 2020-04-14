@@ -145,8 +145,6 @@
               href: service-fabric-containers-overview.md
             - name: Docker Compose (プレビュー)
               href: service-fabric-docker-compose.md
-            - name: リソース管理
-              href: service-fabric-resource-governance.md
         - name: Reliable Service
           items:
             - name: Reliable Services の概要
@@ -193,6 +191,8 @@
               href: service-fabric-reliable-actors-notes-on-actor-type-serialization.md
         - name: ゲスト実行可能ファイル
           href: service-fabric-guest-executables-introduction.md
+        - name: リソース管理
+          href: service-fabric-resource-governance.md
     - name: アプリケーションとサービス
       items:
         - name: アプリケーション モデル
@@ -408,8 +408,6 @@
           items:
             - name: Docker Compose (プレビュー)
               href: service-fabric-docker-compose.md
-            - name: コンテナーとサービスのリソース ガバナンス
-              href: service-fabric-resource-governance.md
             - name: ボリュームとログ ドライバー
               href: service-fabric-containers-volume-logging-drivers.md
             - name: コンテナー ログの表示

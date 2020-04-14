@@ -9,16 +9,19 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 55e6bbc338c1ac6f9ef935b4a3a05c32f2b5e9f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 225221635f978e3d70cec4ce7e9d78d6b100b4fd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72755225"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618768"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault を使用して Azure Cosmos キーをセキュリティ保護する 
 
-アプリケーションで Azure Cosmos DB を使用すると、アプリケーションの構成ファイル内のエンドポイントとキーを使用して、データベース、コレクション、ドキュメントにアクセスできます。  ただし、キーと URLをアプリケーション コードに直接入力するのは安全ではありません。すべてのユーザーがクリア テキスト形式で入手できるためです。 セキュリティで保護されたメカニズムを通してエンドポイントとキーを提供する必要があります。 ここで Azure Key Vault が、アプリケーション シークレットを安全に格納および管理する際に役立ちます。
+>[!IMPORTANT]
+> Azure Cosmos DB キーにアクセスするために推奨されるソリューションは、[システムによって割り当てられたマネージド ID](managed-identity-based-authentication.md) を使用することです。 サービスでマネージド ID を利用できない場合は、[証明書ベースのソリューション](certificate-based-authentication.md)を使用します。 マネージド ID ソリューションと証明書ベースのソリューションのどちらもニーズを満たしていない場合は、次のキー コンテナー ソリューションを使用してください。
+
+アプリケーションで Azure Cosmos DB を使用すると、アプリの構成ファイル内のエンドポイントとキーを使用して、データベース、コレクション、ドキュメントにアクセスできます。  ただし、キーと URL をアプリケーション コードに直接入力するのは安全ではありません。理由は、すべてのユーザーがクリア テキスト形式でそれらを入手できるためです。 セキュリティで保護されたメカニズムを通してエンドポイントとキーを提供する必要があります。 ここで Azure Key Vault が、アプリケーション シークレットを安全に格納および管理する際に役立ちます。
 
 Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るためには、次の手順が必要です。
 
@@ -30,11 +33,11 @@ Azure Cosmos DB アクセス キーを Key Vault に格納して読み取るた�
 
 ## <a name="create-a-key-vault"></a>Key Vault の作成
 
-1. [Azure portal](https://portal.azure.com/) にサインインします。  
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。  
 2. **[リソースの作成] > [セキュリティ] > [Key Vault]** を選択します。  
 3. **[キー コンテナーの作成]** セクションで、次の情報を入力します。  
    * **[名前]:** Key Vault の一意の名前を指定します。  
-   * **[サブスクリプション]** : 使用するサブスクリプションを選択します。  
+   * **サブスクリプション:** 使用するサブスクリプションを選択します。  
    * **[リソース グループ]** で、 **[新規作成]** を選択し、リソース グループ名を入力します。  
    * [場所] プルダウン メニューで、場所を選択します。  
    * 他のオプションは既定値のままにしておきます。  

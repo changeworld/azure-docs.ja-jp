@@ -5,12 +5,12 @@ author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236631"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617106"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>リバース プロキシを使用したセキュリティで保護されたサービスへの接続
 
@@ -77,7 +77,7 @@ Service Fabric でリバース プロキシを構成するには、「[Setup rev
 
    サービス共通名と発行者のサムプリントの一覧を指定するには、以下に示すように **fabricSettings** の下に [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) セクションを追加します。 **parameters** 配列には、証明書共通名と発行者のサムプリントの複数のペアを追加できます。 
 
-   エンドポイントのリバース プロキシが接続し、共通名と発行者のサムプリントがここで指定された値のいずれかと一致する証明書が提示されると、SSL チャネルが確立されます。 
+   エンドポイントのリバース プロキシで接続され、共通名と発行者のサムプリントがここで指定された値のいずれかと一致する証明書が提示されると、TLS チャネルが確立されます。
    証明書の詳細と一致しなかった場合は、リバース プロキシでクライアントの要求が失敗し、502 (無効なゲートウェイ) の状態コードが表示されます。 また HTTP ステータス行に "Invalid SSL Certificate" (無効な SSL 証明書) の語句が含まれます。 
 
    ```json
@@ -143,7 +143,7 @@ Service Fabric でリバース プロキシを構成するには、「[Setup rev
    }
    ```
 
-   サーバー証明書のサムプリントがこの構成エントリに一覧表示されている場合、リバース プロキシは SSL 接続に成功します。 それ以外の場合は接続が終了し、クライアントの要求が失敗して 502 (無効なゲートウェイ) のエラーが表示されます。 また HTTP ステータス行に "Invalid SSL Certificate" (無効な SSL 証明書) の語句が含まれます。
+   サーバー証明書のサムプリントがこの構成エントリに表示されている場合、リバース プロキシの TLS 接続は成功します。 それ以外の場合は接続が終了し、クライアントの要求が失敗して 502 (無効なゲートウェイ) のエラーが表示されます。 また HTTP ステータス行に "Invalid SSL Certificate" (無効な SSL 証明書) の語句が含まれます。
 
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>サービスが、セキュリティで保護されたエンドポイントとセキュリティで保護されていないエンドポイントを公開した場合のエンドポイント選択のロジック
 Service Fabric では、1 つのサービスに複数のエンドポイントを構成できます。 詳しくは、「[サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)」をご覧ください。
@@ -173,12 +173,12 @@ Service Fabric では、1 つのサービスに複数のエンドポイントを
 > リバース プロキシが **SecureOnlyMode** で動作しているときに、クライアントによって HTTP (セキュリティ保護なし) エンドポイントに該当する **ListenerName** が指定された場合、リバース プロキシは、404 (見つかりません) HTTP 状態コードで要求をエラーにします。
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>リバース プロキシ経由でのクライアント証明書認証の設定
-リバース プロキシで SSL の終了が発生すると、クライアント証明書のすべてのデータが失われます。 サービスがクライアント証明書の認証を実行するようにするには、[**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) セクションに **ForwardClientCertificate** を指定します。
+リバース プロキシで TLS の終了が発生すると、クライアント証明書のすべてのデータが失われます。 サービスがクライアント証明書の認証を実行するようにするには、[**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) セクションに **ForwardClientCertificate** を指定します。
 
-1. **ForwardClientCertificate** を **false** に設定すると、リバース プロキシは、クライアントとの SSL ハンドシェイク時にクライアント証明書を要求しません。
+1. **ForwardClientCertificate** を **false** に設定すると、リバース プロキシのクライアントとの TLS ハンドシェイク時にクライアント証明書は要求されません。
 これは既定の動作です。
 
-2. **ForwardClientCertificate** を **true** に設定すると、リバース プロキシは、クライアントとの SSL ハンドシェイク時にクライアント証明書を要求します。
+2. **ForwardClientCertificate** を **true** に設定すると、リバース プロキシのクライアントとの TLS ハンドシェイク時にクライアント証明書が要求されます。
 **X-Client-Certificate** という名前のカスタム HTTP ヘッダーに、クライアント証明書のデータが転送されます。 ヘッダーの値は、クライアント証明書のデータが Base64 でエンコードされた PEM 形式の文字列です。 サービスで証明書のデータが調査された後に、要求が成功または失敗し、該当する状態コードが表示されます。
 クライアントが証明書を提示しない場合、リバース プロキシは空のヘッダーを転送し、サービスによって処理されます。
 

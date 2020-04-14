@@ -31,12 +31,10 @@
           href: create-data-warehouse-portal.md
         - name: PowerShell
           href: create-data-warehouse-powershell.md
-    - name: 一時停止と再開
+    - name: データの読み込み
       items:
-        - name: ポータル
-          href: pause-and-resume-compute-portal.md
-        - name: PowerShell
-          href: pause-and-resume-compute-powershell.md
+        - name: COPY ステートメント
+          href: quickstart-bulk-load-copy-tsql.md
     - name: スケール
       items:
         - name: ポータル
@@ -55,6 +53,12 @@
           items:
             - name: T-SQL
               href: quickstart-configure-workload-isolation-tsql.md
+    - name: 一時停止と再開
+      items:
+        - name: ポータル
+          href: pause-and-resume-compute-portal.md
+        - name: PowerShell
+          href: pause-and-resume-compute-powershell.md
 - name: 概念
   items:
     - name: Security

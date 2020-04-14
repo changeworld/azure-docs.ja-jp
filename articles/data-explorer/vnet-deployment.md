@@ -7,14 +7,14 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 5a2731e26ba4f371177cf2ae649f0695f27e6304
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: b0530ddada68cc9d07753a3b8ab30bff642e26dd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096757"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618656"
 ---
-# <a name="deploy-azure-data-explorer-into-your-virtual-network"></a>Azure Data Explorer を仮想ネットワークにデプロイする
+# <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Azure Data Explorer クラスターを仮想ネットワークにデプロイする
 
 この記事では、Azure Data Explorer クラスターをカスタム Azure Virtual Network にデプロイするときに存在するリソースについて説明します。 この情報は、Virtual Network (VNet) のサブネットにクラスターをデプロイする際に役立ちます。 Azure Virtual Network の詳細については、「[Azure Virtual Network とは](/azure/virtual-network/virtual-networks-overview)」をご覧ください。
 
@@ -106,7 +106,7 @@ Azure Data Explorer クラスターをサブネットにデプロイすると、
 | BrazilSouth | 191.233.25.183 |
 | カナダ中部 | 40.82.188.208 |
 | カナダ東部 | 40.80.255.12 |
-| インド中部 | 40.81.249.251 |
+| インド中部 | 40.81.249.251, 104.211.98.159 |
 | 米国中部 | 40.67.188.68 |
 | 米国中部 EUAP | 40.89.56.69 |
 | 東アジア | 20.189.74.103 |
@@ -125,12 +125,12 @@ Azure Data Explorer クラスターをサブネットにデプロイすると、
 | 南アフリカ西部 | 102.133.0.97 |
 | 米国中南部 | 20.45.3.60 |
 | 東南アジア | 40.119.203.252 |
-| インド南部 | 40.81.72.110 |
+| インド南部 | 40.81.72.110, 104.211.224.189 |
 | 英国南部 | 40.81.154.254 |
 | 英国西部 | 40.81.122.39 |
 | 米国中西部 | 52.159.55.120 |
 | 西ヨーロッパ | 51.145.176.215 |
-| インド西部 | 40.81.88.112 |
+| インド西部 | 40.81.88.112, 104.211.160.120 |
 | 米国西部 | 13.64.38.225 |
 | 米国西部 2 | 40.90.219.23 |
 
@@ -171,7 +171,7 @@ Azure Data Explorer クラスターをサブネットにデプロイすると、
 | 西ヨーロッパ | 23.97.212.5 |
 | インド西部 | 23.99.5.162 |
 | 米国西部 | 23.99.5.162 |
-| 米国西部 2 | 23.99.5.162 |    
+| 米国西部 2 | 23.99.5.162, 104.210.32.14 |    
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Monitor 構成エンドポイント アドレス
 
@@ -260,149 +260,3 @@ crl3.digicert.com:80
 Azure Data Explorer クラスターを仮想ネットワークにデプロイするには、「[Azure Data Explorer クラスターを VNet にデプロイする](https://azure.microsoft.com/resources/templates/101-kusto-vnet/)」の Azure Resource Manager テンプレートを使用します。
 
 このテンプレートは、クラスター、仮想ネットワーク、サブネット、ネットワーク セキュリティ グループ、およびパブリック IP アドレスを作成します。
-
-## <a name="troubleshooting"></a>トラブルシューティング
-
-このセクションでは、[Virtual Network](/azure/virtual-network/virtual-networks-overview) にデプロイされているクラスターの接続、操作、およびクラスター作成に関する問題をトラブルシューティングする方法を学習します。
-
-### <a name="access-issues"></a>アクセスの問題
-
-パブリック (cluster.region.kusto.windows.net) またはプライベート (private-cluster.region.kusto.windows.net) エンドポイントを使用してクラスターにアクセスしているときに問題が発生し、それが仮想ネットワークの設定に関するものと思われる場合は、次の手順を行って、その問題をトラブルシューティングします。
-
-#### <a name="check-tcp-connectivity"></a>TCP 接続を確認する
-
-最初の手順には、Windows または Linux OS を使用した TCP 接続の確認が含まれます。
-
-# <a name="windows"></a>[Windows](#tab/windows)
-
-   1. クラスターに接続しているマシンに、[TCping](https://www.elifulkerson.com/projects/tcping.php) をダウンロードします。
-   2. 次のコマンドを使用して、ソース マシンからターゲットに ping を実行します。
-
-    ```cmd
-     C:\> tcping -t yourcluster.kusto.windows.net 443 
-    
-     ** Pinging continuously.  Press control-c to stop **
-    
-     Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
-     ```
-
-# <a name="linux"></a>[Linux](#tab/linux)
-
-   1. クラスターに接続しているマシンに、*netcat* をインストールします
-
-    ```bash
-    $ apt-get install netcat
-     ```
-
-   2. 次のコマンドを使用して、ソース マシンからターゲットに ping を実行します。
-
-     ```bash
-     $ netcat -z -v yourcluster.kusto.windows.net 443
-    
-     Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
-     ```
----
-
-テストが成功しなかった場合は、次の手順に進みます。 テストが成功した場合、問題は TCP 接続の問題によるものではありません。 [操作の問題](#cluster-creation-and-operations-issues)に関する説明に移動し、さらにトラブルシューティングを行います。
-
-#### <a name="check-the-network-security-group-nsg"></a>ネットワーク セキュリティ グループ (NSG) を確認する
-
-   クラスターのサブネットに接続されている[ネットワーク セキュリティ グループ](/azure/virtual-network/security-overview) (NSG) に、ポート 443 のクライアント マシンの IP からのアクセスを許可する受信規則があることを確認します。
-
-#### <a name="check-route-table"></a>ルート テーブルを確認する
-
-   クラスターのサブネットで、ファイアウォールに対して強制トンネリングが設定されている場合 (既定のルート '0.0.0.0/0' を含む[ルート テーブル](/azure/virtual-network/virtual-networks-udr-overview)を持つサブネット)、マシンの IP アドレスに、[次ホップの種類](/azure/virtual-network/virtual-networks-udr-overview)が VirtualNetwork または Internet になっているルートがあることを確認します。 これは、非対称ルートの問題を防ぐために必要です。
-
-### <a name="ingestion-issues"></a>インジェストの問題
-
-インジェストの問題が発生しており、それが仮想ネットワークの設定に関するものと思われる場合は、次の手順を行います。
-
-#### <a name="check-ingestion-health"></a>インジェストの正常性を確認する
-
-    Check that the [cluster ingestion metrics](/azure/data-explorer/using-metrics#ingestion-health-and-performance-metrics) indicate a healthy state.
-
-#### <a name="check-security-rules-on-data-source-resources"></a>データ ソース リソースのセキュリティ規則を確認する
-
-データ ソースから処理されたイベントがなかったことがメトリックで示されている場合 ( *[処理されたイベント]* (Event または IoT Hub の場合) メトリック) は、ファイアウォール規則またはサービス エンドポイントで、クラスターのサブネットからのアクセスがデータ ソース リソース (Event Hub または Storage) で許可されていることを確認します。
-
-#### <a name="check-security-rules-configured-on-clusters-subnet"></a>クラスターのサブネットに構成されているセキュリティ規則を確認する
-
-クラスターのサブネットに NSG、UDR、およびファイアウォール規則が正しく構成されていることを確認します。 さらに、すべての依存エンドポイントのネットワーク接続をテストします。 
-
-### <a name="cluster-creation-and-operations-issues"></a>クラスターの作成と操作の問題
-
-クラスターの作成または操作の問題が発生しており、それが仮想ネットワークのセットアップに関するものと思われる場合は、これらの手順に従って問題のトラブルシューティングを行います。
-
-#### <a name="diagnose-the-virtual-network-with-the-rest-api"></a>REST API を使用して仮想ネットワークを診断する
-
-[ARMClient](https://chocolatey.org/packages/ARMClient) は、PowerShell を使用して REST API を呼び出すために使用されます。 
-
-1. ARMClient でログインする
-
-   ```powerShell
-   armclient login
-   ```
-
-1. 診断操作を呼び出します
-
-    ```powershell
-    $subscriptionId = '<subscription id>'
-    $clusterName = '<name of cluster>'
-    $resourceGroupName = '<resource group name>'
-    $apiversion = '2019-11-09'
-    
-    armclient post "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Kusto/clusters/$clusterName/diagnoseVirtualNetwork?api-version=$apiversion" -verbose
-    ```
-
-1. 応答を確認します
-
-    ```powershell
-    HTTP/1.1 202 Accepted
-    ...
-    Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
-    ...
-    ```
-
-1. 操作の完了を待ちます
-
-    ```powershell
-    armclient get https://management.azure.com/subscriptions/$subscriptionId/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
-    
-    {
-      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
-      "name": "{operation-name}",
-      "status": "[Running/Failed/Completed]",
-      "startTime": "{start-time}",
-      "endTime": "{end-time}",
-      "properties": {...}
-    }
-    ```
-    
-   *status* プロパティに *Completed* と表示されるまで待ちます。その後、*properties* フィールドには次のように表示されるはずです。
-
-    ```powershell
-    {
-      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
-      "name": "{operation-name}",
-      "status": "Completed",
-      "startTime": "{start-time}",
-      "endTime": "{end-time}",
-      "properties": {
-        "Findings": [...]
-      }
-    }
-    ```
-
-*Findings* プロパティに空の結果が表示された場合は、すべてのネットワーク テストが成功し、接続が切断されていないことを意味します。 次のようなエラーが表示された場合: *送信依存関係 '{dependencyName}:{port}' が満たされていない可能性があります (送信)* 、クラスターは依存サービス エンドポイントに到達できません。 次の手順に進んでトラブルシューティングを行います。
-
-#### <a name="check-network-security-group-nsg"></a>ネットワーク セキュリティ グループ (NSG) を確認する
-
-「[VNet デプロイの依存関係](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment)」の手順に従って、[ネットワーク セキュリティ グループ](/azure/virtual-network/security-overview)が適切に構成されていることを確認します
-
-#### <a name="check-route-table"></a>ルート テーブルを確認する
-
-クラスターのサブネットで、ファイアウォールに対して強制トンネリングが設定されている場合 (既定のルート '0.0.0.0/0' を含む[ルート テーブル](/azure/virtual-network/virtual-networks-udr-overview)を持つサブネット)、[管理 IP アドレス](#azure-data-explorer-management-ip-addresses)および[正常性監視 IP アドレス](#health-monitoring-addresses)に、[次ホップの種類](/azure/virtual-network/virtual-networks-udr-overview##next-hop-types-across-azure-tools)が *Internet* のルートがあり、[ソース アドレスのプレフィックス](/azure/virtual-network/virtual-networks-udr-overview#how-azure-selects-a-route)が *'management-ip/32'* および *'health-monitoring-ip/32'* になっていることを確認します。 これは、非対称ルートの問題を防ぐために必要です。
-
-#### <a name="check-firewall-rules"></a>ファイアウォール規則を確認する
-
-ファイアウォールにサブネットの送信トラフィックを強制的にトンネリングする場合は、「[ファイアウォールを使用した送信トラフィックのセキュリティ保護](/azure/data-explorer/vnet-deployment#securing-outbound-traffic-with-firewall)」の説明に従って、すべての依存関係の FQDN (たとえば、 *.blob.core.windows.net*) がファイアウォール構成で許可されていることを確認してください。

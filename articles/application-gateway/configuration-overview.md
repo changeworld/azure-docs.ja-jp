@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/15/2019
+ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485082"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632190"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -20,7 +20,7 @@ Azure Application Gateway は、さまざまなシナリオに合わせて多様
 
 ![Application Gateway コンポーネントのフロー チャート](./media/configuration-overview/configuration-overview1.png)
 
-この画像は、3 つのリスナーがあるアプリケーションを示しています。 最初の 2 つのリスナーは、それぞれ `http://acme.com/*` と `http://fabrikam.com/*` のマルチサイト リスナーです。 いずれもポート 80 でリッスンします。 3 つ目は、エンド ツー エンド Secure Sockets Layer (SSL) 終端を持つ基本リスナーです。
+この画像は、3 つのリスナーがあるアプリケーションを示しています。 最初の 2 つのリスナーは、それぞれ `http://acme.com/*` と `http://fabrikam.com/*` のマルチサイト リスナーです。 いずれもポート 80 でリッスンします。 3 つ目は、エンド ツー エンド トランスポート層セキュリティ (TLS) ターミネーション (以前は Secure Sockets Layer (SSL) ターミネーションと呼ばれていた) を持つ基本リスナーです。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -69,21 +69,62 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>アプリケーション ゲートウェイ サブネットでサポートされるユーザー定義ルート
 
-v1 SKU の場合、ユーザー定義ルート (UDR) は、エンド ツー エンドの要求/応答の通信を変えない限り、Application Gateway サブネットでサポートされます。 たとえば、パケットの検査のためにファイアウォール アプライアンスを指すように Application Gateway サブネットの UDR を設定できます。 ただし、検査後にパケットが目的の宛先に到達できることを確認する必要があります。 これに失敗すると、不適切な正常性プローブやトラフィック ルーティング動作が発生する場合があります。 これには仮想ネットワークの Azure ExpressRoute や VPN ゲートウェイによってプロパゲートされる学習済みのルートまたは既定の 0.0.0.0/0 ルートが含まれます。
+> [!IMPORTANT]
+> Application Gateway サブネット上で UDR を使用すると、[バックエンドの正常性ビュー](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)に正常性状態が**不明**と表示される場合があります。 また、Application Gateway ログとメトリックの生成が失敗する場合があります。 バックエンドの正常性、ログ、およびメトリックを表示できるように、Application Gateway サブネット上で UDR を使用しないことをお勧めします。
 
-v2 SKU の場合、Application Gateway サブネット上の UDR はサポートされません。 詳細については、[Azure Application Gateway v2 SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku) をご覧ください。
+- **v1**
 
-> [!NOTE]
-> 現時点では、UDR は v2 SKU ではサポートされていません。
+   v1 SKU の場合、ユーザー定義ルート (UDR) は、エンド ツー エンドの要求/応答の通信を変えない限り、Application Gateway サブネットでサポートされます。 たとえば、パケットの検査のためにファイアウォール アプライアンスを指すように Application Gateway サブネットの UDR を設定できます。 ただし、検査後にパケットが目的の宛先に到達できることを確認する必要があります。 これに失敗すると、不適切な正常性プローブやトラフィック ルーティング動作が発生する場合があります。 これには仮想ネットワークの Azure ExpressRoute や VPN ゲートウェイによってプロパゲートされる学習済みのルートまたは既定の 0.0.0.0/0 ルートが含まれます。
 
-> [!NOTE]
-> Application Gateway サブネット上で UDR を使用すると、[バックエンドの正常性ビュー](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)に正常性状態が "不明" と表示される場合があります。 また、Application Gateway ログとメトリックの生成が失敗する場合があります。 バックエンドの正常性、ログ、およびメトリックを表示できるように、Application Gateway サブネット上で UDR を使用しないことをお勧めします。
+- **v2**
+
+   v2 SKU の場合、サポートされるシナリオとサポートされないシナリオがあります。
+
+   **v2 でサポートされるシナリオ**
+   > [!WARNING]
+   > ルート テーブルの構成が正しくないと Application Gateway v2 で非対称ルーティングが発生する可能性があります。 すべての管理/コントロール プレーン トラフィックが、仮想アプライアンス経由ではなく、インターネットに直接送信されることを確認します。 ログ記録とメトリックも影響を受ける可能性があります。
+
+
+  **シナリオ 1**: Application Gateway サブネットへの Border Gateway Protocol (BGP) ルート伝達を無効にする UDR
+
+   既定のゲートウェイ ルート (0.0.0.0/0) は、Application Gateway 仮想ネットワークに関連付けられている ExpressRoute または VPN ゲートウェイ経由でアドバタイズされる場合があります。 これにより、管理プレーン トラフィックが中断され、インターネットへの直接パスが必要になります。 このようなシナリオでは、UDR を使用して、BGP ルート伝達を無効にすることができます。 
+
+   BGP ルート伝達を無効にするには、次の手順に従います。
+
+   1. Azure でルート テーブル リソースを作成します。
+   2. **仮想ネットワーク ゲートウェイのルート伝達**パラメーターを無効にします。 
+   3. ルート テーブルを適切なサブネットに関連付けます。 
+
+   このシナリオで UDR を有効にすると、既存のセットアップが中断されないはずです。
+
+  **シナリオ 2**: 0.0.0.0/0 をインターネットに送信する UDR
+
+   0\.0.0.0/0 トラフィックをインターネットに直接送信する UDR を作成できます。 
+
+  **シナリオ 3**:Azure Kubernetes Service kubenet の UDR
+
+  Azure Kubernetes Service (AKS) と Application Gateway Ingress Controller (AGIC) で kubenet を使用している場合は、ポッドに送信されたトラフィックが正しいノードにルーティングされるように、ルート テーブルを設定する必要があります。 これは、Azure CNI を使用する場合は必要ありません。 
+
+   kubenet が機能するようにルート テーブルを設定するには、次の手順に従います。
+
+  1. Azure でルート テーブル リソースを作成します。 
+  2. 作成されたら、 **[ルート]** ページにアクセスします。 
+  3. 新しいルートを追加します。
+     - アドレス プレフィックスは、AKS でアクセスするポッドの IP 範囲にする必要があります。 
+     - 次ホップの種類は **[仮想アプライアンス]** にする必要があります。 
+     - 次ホップ アドレスは、アドレス プレフィックス フィールドで定義されている IP 範囲内のポッドをホストしているノードの IP アドレスにする必要があります。 
+    
+  **v2 でサポートされないシナリオ**
+
+  **シナリオ 1**: 仮想アプライアンスの UDR
+
+  v2 では、仮想アプライアンス、ハブ/スポーク仮想ネットワーク、またはオンプレミス (強制トンネリング) を介して 0.0.0.0/0 をリダイレクトする必要があるシナリオはサポートされません。
 
 ## <a name="front-end-ip"></a>フロントエンド IP
 
 アプリケーション ゲートウェイは、パブリック IP アドレス、プライベート IP アドレス、またはその両方を持つように構成できます。 パブリック IP が必要となるのは、インターネットに接続している仮想 IP (VIP) を介してインターネット上でクライアントがアクセスする必要があるバックエンドをホストするときです。 
 
-パブリック IP は、インターネットに公開されない内部エンドポイントには必要ありません。 これは、"*内部ロード バランサー*" (ILB) エンドポイントまたはプライベート フロントエンド IP と呼ばれます。 アプリケーション ゲートウェイ ILB は、インターネットに接続されていない内部の基幹業務アプリケーションで便利です。 また、インターネットに接続されていないセキュリティの境界にある多階層アプリケーション内のサービスや階層に役立ちますが、ラウンド ロビンの負荷分散、セッションの持続性、または SSL ターミネーションが必要です。
+パブリック IP は、インターネットに公開されない内部エンドポイントには必要ありません。 これは、"*内部ロード バランサー*" (ILB) エンドポイントまたはプライベート フロントエンド IP と呼ばれます。 アプリケーション ゲートウェイ ILB は、インターネットに接続されていない内部の基幹業務アプリケーションで便利です。 また、インターネットに接続されていないセキュリティの境界にある多階層アプリケーション内のサービスや階層に役立ちますが、ラウンド ロビンの負荷分散、セッションの持続性、または TLS ターミネーションが必要です。
 
 1 つのパブリック IP アドレスまたは 1 つのプライベート IP アドレスしかサポートされません。 アプリケーション ゲートウェイを作成するときにフロントエンド IP を選択します。
 
@@ -127,13 +168,14 @@ HTTP または HTTPS を選択します。
 
 - HTTP を選択すると、クライアントとアプリケーション ゲートウェイ間のトラフィックは暗号化されません。
 
-- [SSL 終端](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination)または[エンド ツー エンド SSL 暗号化](https://docs.microsoft.com/azure/application-gateway/ssl-overview)が必要な場合は、HTTPS を選択します。 クライアントとアプリケーション ゲートウェイ間のトラフィックは暗号化されます。 また、SSL 接続はアプリケーション ゲートウェイで終端します。 エンド ツー エンドの SSL 暗号化が必要な場合は、HTTPS を選択して**バックエンド HTTP** 設定を構成する必要があります。 これにより、トラフィックがアプリケーション ゲートウェイからバックエンドに送られるときに再暗号化されます。
+- [TLS ターミネーション](features.md#secure-sockets-layer-ssltls-termination)または[エンド ツー エンドの TLS 暗号化](https://docs.microsoft.com/azure/application-gateway/ssl-overview)が必要な場合は、HTTPS を選択します。 クライアントとアプリケーション ゲートウェイ間のトラフィックは暗号化されます。 また、TLS 接続はアプリケーション ゲートウェイで終了します。 エンド ツー エンドの TLS 暗号化が必要な場合は、HTTPS を選択して**バックエンド HTTP** 設定を構成する必要があります。 これにより、トラフィックがアプリケーション ゲートウェイからバックエンドに送られるときに再暗号化されます。
 
-SSL 終端とエンド ツー エンド SSL 暗号化を構成するには、リスナーに証明書を追加して、アプリケーション ゲートウェイが対称キーを派生できるようにする必要があります。 これは SSL プロトコル仕様によって規定されています。 対称キーは、ゲートウェイに送信されたトラフィックの暗号化と暗号化の解除に使用されます。 ゲートウェイ証明書は、Personal Information Exchange (PFX) 形式である必要があります。 この形式を使用すると、ゲートウェイがトラフィックの暗号化と復号化に使用する秘密キーをエクスポートできます。
+
+TLS ターミネーションとエンド ツー エンド TLS 暗号化を構成するには、リスナーに証明書を追加して、アプリケーション ゲートウェイが対称キーを派生できるようにする必要があります。 これは TLS プロトコル仕様によって規定されています。 対称キーは、ゲートウェイに送信されたトラフィックの暗号化と暗号化の解除に使用されます。 ゲートウェイ証明書は、Personal Information Exchange (PFX) 形式である必要があります。 この形式を使用すると、ゲートウェイがトラフィックの暗号化と復号化に使用する秘密キーをエクスポートできます。
 
 #### <a name="supported-certificates"></a>サポートされている証明書
 
-[SSL 終了でサポートされる証明書](https://docs.microsoft.com/azure/application-gateway/ssl-overview#certificates-supported-for-ssl-termination)に関するページをご覧ください。
+[TLS ターミネーションでサポートされる証明書](https://docs.microsoft.com/azure/application-gateway/ssl-overview#certificates-supported-for-ssl-termination)に関するページをご覧ください。
 
 ### <a name="additional-protocol-support"></a>その他のプロトコルのサポート
 
@@ -161,11 +203,11 @@ WebSocket のサポートは既定で有効です。 ユーザーが有効また
 
 グローバル カスタム エラー ページを構成する方法については、[Azure PowerShell の構成](https://docs.microsoft.com/azure/application-gateway/custom-error#azure-powershell-configuration)に関するページを参照してください。
 
-### <a name="ssl-policy"></a>SSL ポリシー
+### <a name="tls-policy"></a>TLS ポリシー
 
-SSL 証明書の管理を一元化し、バックエンド サーバー ファームの暗号化と復号化のオーバーヘッドを減らすことができます。 一元化された SSL の処理によって、お客様のセキュリティ要件に適したサーバーで中心的な役割を担う SSL ポリシーを指定することもできます。 "*既定*"、"*定義済み*"、または "*カスタム*" の SSL ポリシーを選択できます。
+TLS/SSL 証明書の管理を一元化し、バックエンド サーバー ファームの暗号化と復号化のオーバーヘッドを減らすことができます。 一元化された TLS の処理によって、お客様のセキュリティ要件に適したサーバーで中心的な役割を担う TLS ポリシーを指定することもできます。 *既定*、*定義済み*、または*カスタム*の TLS ポリシーを選択できます。
 
-SSL プロトコルのバージョンを管理する SSL ポリシーを構成します。 TLS1.0、TLS1.1、および TLS1.2 の TLS ハンドシェイクに最小プロトコル バージョンを使用するようにアプリケーション ゲートウェイを構成できます。 SSL 2.0 および 3.0 は既定で無効なため、構成できません。 詳細については、「[Application Gateway の SSL ポリシーの概要](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview)」を参照してください。
+TLS プロトコルのバージョンを管理する TLS ポリシーを構成します。 TLS1.0、TLS1.1、および TLS1.2 の TLS ハンドシェイクに最小プロトコル バージョンを使用するようにアプリケーション ゲートウェイを構成できます。 SSL 2.0 および 3.0 は既定で無効なため、構成できません。 詳細については、「[Application Gateway の TLS ポリシーの概要](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview)」を参照してください。
 
 リスナーを作成したら、要求ルーティング規則に関連付ける必要があります。 その規則で、リスナー上で受信された要求がバック エンドにルーティングされる方法が決まります。
 
@@ -256,14 +298,14 @@ Azure Application Gateway では、ユーザー セッションを維持する�
 
 この機能は、ユーザー セッションを同じサーバー上に維持する必要があり、ユーザー セッションのセッション状態がサーバー上にローカル保存される場合に便利です。 アプリケーションが Cookie ベースのアフィニティを処理できない場合は、この機能を使用できません。 使用するには、クライアントが Cookie をサポートしている必要があります。
 
-**2020 年 2 月 17 日**以降、[Chromium](https://www.chromium.org/Home) [v80 の更新](https://chromiumdash.appspot.com/schedule) では、SameSite 属性のない HTTP Cookie を SameSite=Lax として扱うことが必須になっています。 CORS (クロス オリジン リソース共有) 要求のケースで、Cookie をサードパーティのコンテキストで送信する必要がある場合は、"SameSite=None; Secure" 属性を使用する必要があり、HTTPS 経由でのみ送信する必要があります。 それ以外の場合、HTTP のみのシナリオでは、ブラウザーはサードパーティのコンテキストで Cookie を送信しません。 Chrome のこの更新の目的は、セキュリティを強化し、クロスサイト リクエスト フォージェリ (CSRF) 攻撃を回避することです。 
+[Chromium ブラウザー](https://www.chromium.org/Home) [v80 の更新](https://chromiumdash.appspot.com/schedule)では、[SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7) 属性のない HTTP Cookie を SameSite=Lax として扱うことが必須になりました。 CORS (クロス オリジン リソース共有) 要求のケースで、Cookie をサードパーティのコンテキストで送信する必要がある場合は、*SameSite=None; Secure* 属性を使用する必要があり、HTTPS 経由でのみ送信する必要があります。 それ以外の場合、HTTP のみのシナリオでは、ブラウザーはサードパーティのコンテキストで Cookie を送信しません。 Chrome のこの更新の目的は、セキュリティを強化し、クロスサイト リクエスト フォージェリ (CSRF) 攻撃を回避することです。 
 
-この変更をサポートするために、Application Gateway (すべての SKU の種類) は、既存の **ApplicationGatewayAffinity** Cookie に加えて、**ApplicationGatewayAffinityCORS** という名前の類似の別の Cookie を挿入します。この Cookie は似ていますが、 **"SameSite=None; Secure"** という 2 つの別の属性が追加されているため、クロス オリジン要求の場合でもスティッキー セッションを維持することができます。
+この変更をサポートするために、2020 年 2 月 17 日以降、Application Gateway (すべての SKU タイプ) は、既存の *ApplicationGatewayAffinity* Cookie に加えて、*ApplicationGatewayAffinityCORS* と呼ばれる別の Cookie を挿入します。 *ApplicationGatewayAffinityCORS* Cookie には、クロス オリジン要求に対してもスティッキー セッションが維持されるように、2 つの属性が追加されています ( *"SameSite = None; Secure"* )。
 
-既定のアフィニティ Cookie 名は **ApplicationGatewayAffinity** であり、ユーザーがこれを変更できることに注意してください。 カスタムのアフィニティ Cookie 名を使用している場合は、**CustomCookieNameCORS** などのように、CORS をサフィックスとして別の Cookie が追加されます。
+既定のアフィニティ Cookie 名は *ApplicationGatewayAffinity* であり、変更することができます。 カスタムのアフィニティ Cookie 名を使用している場合、サフィックスとして CORS を付加した状態で、追加の Cookie が追加されます。 たとえば、*CustomCookieNameCORS* です。
 
 > [!NOTE]
-> 属性 **SameSite=None** が設定されている場合は、Cookie に **Secure** フラグも含まれていること、および Cookie を **HTTPS** 経由で送信することが必須です。 そのため、CORS 経由のセッション アフィニティが必要な場合は、ワークロードを HTTPS に移行する必要があります。 Application Gateway での SSL オフロードとエンドツーエンド SSL のドキュメントについては、[概要](ssl-overview.md)、[SSL オフロードの構成方法](create-ssl-portal.md)、[エンドツーエンド SSLの構成方法](end-to-end-ssl-portal.md)に関するページを参照してください。
+> 属性 *SameSite=None* が設定されている場合は、Cookie に *Secure* フラグも含まれていて、HTTPS 経由で送信される必要があります。  CORS 経由のセッション アフィニティが必要な場合は、ワークロードを HTTPS に移行する必要があります。 Application Gateway での TLS オフロードとエンドツーエンド TLS のドキュメントについては、[概要](ssl-overview.md)に関するページ、[Azure portal を使用して TLS ターミネーションでアプリケーション ゲートウェイを構成する](create-ssl-portal.md)方法に関するページ、「[ポータルで Application Gateway を使用してエンド ツー エンド TLS を構成する](end-to-end-ssl-portal.md)」を参照してください。
 
 ### <a name="connection-draining"></a>接続のドレイン
 
@@ -273,7 +315,7 @@ Azure Application Gateway では、ユーザー セッションを維持する�
 
 Application Gateway では、要求のバックエンド サーバーへのルーティングに対して HTTP と HTTPS の両方がサポートされます。 HTTP を選択した場合、バックエンド サーバーへのトラフィックは暗号化されません。 暗号化されていない通信を許容できない場合は、HTTPS を選択してください。
 
-リスナーで HTTPS と組み合わせたこの設定は、[エンド ツー エンド SSL](ssl-overview.md) をサポートします。 これによって、機密データを暗号化して安全にバックエンドに送信することができます。 エンド ツー エンド SSL が有効になったバックエンド プール内の各バックエンド サーバーは、セキュリティで保護された通信を許可するように証明書で構成する必要があります。
+リスナーで HTTPS と組み合わせたこの設定は、[エンド ツー エンド TLS](ssl-overview.md) をサポートします。 これによって、機密データを暗号化して安全にバックエンドに送信することができます。 エンド ツー エンド TLS が有効になったバックエンド プール内の各バックエンド サーバーは、セキュリティで保護された通信を許可するように証明書で構成する必要があります。
 
 ### <a name="port"></a>Port
 
@@ -317,7 +359,7 @@ Application Gateway では、要求のバックエンド サーバーへのル�
 > [!NOTE]
 > 対応する HTTP 設定が明示的にリスナーに関連付けられていない限り、カスタム プローブはバックエンド プールの正常性を監視しません。
 
-### <a id="pick"/></a>バックエンド アドレスからホスト名を選択する
+### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>バックエンド アドレスからホスト名を選択する
 
 この機能によって、要求の *host* ヘッダーが、バックエンド プールのホスト名に動的に設定されます。 これには IP アドレスまたは FQDN が使用されます。
 
@@ -336,11 +378,11 @@ Application Gateway では、要求のバックエンド サーバーへのル�
 
 この機能によって、アプリケーション ゲートウェイの着信要求の *host* ヘッダーが、指定するホスト名に置き換えられます。
 
-たとえば、*www.contoso.com* が **[ホスト名]** 設定に指定されている場合、元の要求 * https://appgw.eastus.cloudapp.azure.com/path1 は、バックエンド サーバーに転送されるときに、* https://www.contoso.com/path1 に変更されます。
+たとえば、*www.contoso.com* が **[ホスト名]** 設定に指定されている場合、元の要求 *`https://appgw.eastus.cloudapp.azure.com/path1` は、バックエンド サーバーに転送されるときに、*`https://www.contoso.com/path1` に変更されます。
 
 ## <a name="back-end-pool"></a>バックエンド プール
 
-バックエンド プールには、4 種類のバックエンド メンバー (特定の仮想マシン、仮想マシン スケール セット、IP アドレス/FQDN、または App Service) を指定できます。 各バックエンド プールには、同じ種類の複数のメンバーを指定できます。 同じバックエンド プール内で異なる種類のメンバーの指定はサポートされていません。
+バックエンド プールには、4 種類のバックエンド メンバー (特定の仮想マシン、仮想マシン スケール セット、IP アドレス/FQDN、または App Service) を指定できます。 
 
 バックエンド プールを作成した後で、それを 1 つ以上の要求ルーティング規則に関連付ける必要があります。 アプリケーション ゲートウェイ上の各バックエンド プールに対して正常性プローブを構成する必要もあります。 要求のルーティング規則の条件が満たされると、アプリケーション ゲートウェイは、トラフィックを対応するバックエンド プール内の正常なサーバー (正常性プローブによって判別) に転送します。
 

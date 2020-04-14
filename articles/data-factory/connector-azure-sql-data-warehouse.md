@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: f009b438cb0dc227289d65604d89c11fd382b675
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/25/2020
+ms.openlocfilehash: 822a981b84919670aa476567625cdf914206eaa8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892974"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422177"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics (旧称: Azure SQL Data Warehouse) のデータをコピーして変換する 
 
@@ -60,7 +60,7 @@ Azure Synapse Analytics のリンクされたサービスでは、次のプロ�
 
 | プロパティ            | 説明                                                  | 必須                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 型                | type プロパティは **AzureSqlDW** に設定する必要があります。             | はい                                                          |
+| type                | type プロパティは **AzureSqlDW** に設定する必要があります。             | はい                                                          |
 | connectionString    | **connectionString** プロパティには、Azure Synapse Analytics インスタンスに接続するために必要な情報を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 パスワード/サービス プリンシパル キーを Azure Key Vault に格納して、それが SQL 認証の場合は接続文字列から `password` 構成をプルすることもできます。 詳しくは、表の下の JSON の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事をご覧ください。 | はい                                                          |
 | servicePrincipalId  | アプリケーションのクライアント ID を取得します。                         | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
@@ -173,7 +173,7 @@ Azure Synapse Analytics のリンクされたサービスでは、次のプロ�
 }
 ```
 
-### <a name="managed-identity"></a> Azure リソースのマネージド ID 認証
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure リソースのマネージド ID 認証
 
 データ ファクトリは、特定のファクトリを表す [Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 このマネージド ID を Azure Synapse Analytics の認証に使用できます。 指定されたファクトリは、この ID を使用してデータ ウェアハウスにアクセスし、データを双方向にコピーできます。
 
@@ -221,9 +221,9 @@ Azure Synapse Analytics データセットでは、次のプロパティがサ�
 
 | プロパティ  | 説明                                                  | 必須                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| 型      | データセットの **type** プロパティは、**AzureSqlDWTable** を設定する必要があります。 | はい                         |
+| type      | データセットの **type** プロパティは、**AzureSqlDWTable** を設定する必要があります。 | はい                         |
 | schema | スキーマの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
-| テーブル | テーブル/ビューの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
+| table | テーブル/ビューの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
 | tableName | スキーマがあるテーブル/ビューの名前。 このプロパティは下位互換性のためにサポートされています。 新しいワークロードでは、`schema` と `table` を使用します。 | ソースの場合はいいえ、シンクの場合ははい |
 
 #### <a name="dataset-properties-example"></a>データセットのプロパティの例
@@ -257,10 +257,11 @@ Azure Synapse Analytics からデータをコピーするには、コピー ア�
 
 | プロパティ                     | 説明                                                  | 必須 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| 型                         | コピー アクティビティのソースの **type** プロパティは **SqlDWSource** に設定する必要があります。 | はい      |
+| type                         | コピー アクティビティのソースの **type** プロパティは **SqlDWSource** に設定する必要があります。 | はい      |
 | sqlReaderQuery               | カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. | いいえ       |
 | sqlReaderStoredProcedureName | ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 | いいえ       |
 | storedProcedureParameters    | ストアド プロシージャのパラメーター。<br/>使用可能な値は、名前または値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ       |
+| isolationLevel | SQL ソースのトランザクション ロック動作を指定します。 使用できる値は、次のとおりです。**ReadCommitted** (既定値)、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 詳細については[こちらのドキュメント](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)をご覧ください。 | いいえ |
 
 **例: SQL クエリの使用**
 
@@ -349,7 +350,7 @@ END
 GO
 ```
 
-### <a name="azure-sql-data-warehouse-as-sink"></a>シンクとしての Azure Synapse Analytics
+### <a name="azure-synapse-analytics-as-sink"></a><a name="azure-sql-data-warehouse-as-sink"></a>シンクとしての Azure Synapse Analytics
 
 Azure Data Factory では、SQL Data Warehouse にデータを読み込む 3 つの方法がサポートされています。
 
@@ -365,7 +366,7 @@ Azure SQL Data Warehouse にデータをコピーする場合は、コピー ア
 
 | プロパティ          | 説明                                                  | 必須                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| 型              | コピー アクティビティのシンクの **type** プロパティは、**SqlDWSink** に設定する必要があります。 | はい                                           |
+| type              | コピー アクティビティのシンクの **type** プロパティは、**SqlDWSink** に設定する必要があります。 | はい                                           |
 | allowPolyBase     | SQL Data Warehouse にデータを読み込む際に PolyBase を使用するかどうかを示します。 `allowCopyCommand` と `allowPolyBase` の両方を true に設定することはできません。 <br/><br/>制約と詳細については、「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 」をご覧ください。<br/><br/>使用可能な値: **True**、および **False** (既定値)。 | いいえ。<br/>PolyBase を使用する場合に適用します。     |
 | polyBaseSettings  | `allowPolybase` プロパティが **true** に設定されているときに指定できるプロパティのグループ。 | いいえ。<br/>PolyBase を使用する場合に適用します。 |
 | allowCopyCommand | SQL Data Warehouse にデータを読み込む際に、[COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (プレビュー) を使用するかどうかを示します。 `allowCopyCommand` と `allowPolyBase` の両方を true に設定することはできません。 <br/><br/>制約と詳細については、「[COPY ステートメントを使用して Azure SQL Data Warehouse にデータを読み込む](#use-copy-statement)」をご覧ください。<br/><br/>使用可能な値: **True**、および **False** (既定値)。 | いいえ。<br>COPY を使用する場合に適用します。 |
@@ -443,7 +444,7 @@ SQL Data Warehouse の PolyBase では、Azure Blob、Azure Data Lake Storage Ge
 
 3. ソースがフォルダーの場合は、コピー アクティビティの `recursive` を true に設定する必要があります。
 
-4. `wildcardFolderPath`、`wildcardFilename`、`modifiedDateTimeStart`、および `modifiedDateTimeEnd` が指定されていない。
+4. `wildcardFolderPath`、`wildcardFilename`、`modifiedDateTimeStart`、`modifiedDateTimeEnd`、および `additionalColumns` が指定されていない。
 
 >[!NOTE]
 >ソースがフォルダーの場合、PolyBase ではフォルダーとそのすべてのサブフォルダーからファイルが取得され、ファイル名の先頭に下線 (_) またはピリオド (.) が付いているファイルからはデータが取得されないことに注意してください。詳細については、[LOCATION 引数に関するこちらのドキュメント](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2)を参照してください。
@@ -484,7 +485,7 @@ SQL Data Warehouse の PolyBase では、Azure Blob、Azure Data Lake Storage Ge
 
 ### <a name="staged-copy-by-using-polybase"></a>PolyBase を使用したステージング コピー
 
-ソース データが PolyBase とネイティブに互換性がない場合は、中間ステージング Azure Blob Storage インスタンスを介したデータのコピーを有効にします (Azure Premium Storage は使用できません)。 この場合、Azure Data Factory によって、PolyBase のデータ形式要件を満たすようにデータが自動的に変換されます。 その後、PolyBase が呼び出されて、SQL Data Warehouse にデータが読み込まれます。 最後に、BLOB ストレージから一時データをクリーンアップします。 ステージング Azure BLOB ストレージ インスタンス経由でのデータのコピーについて詳しくは、「[ステージング コピー](copy-activity-performance.md#staged-copy)」をご覧ください。
+ソース データが PolyBase とネイティブに互換性がない場合は、中間ステージング Azure Blob Storage インスタンスを介したデータのコピーを有効にします (Azure Premium Storage は使用できません)。 この場合、Azure Data Factory によって、PolyBase のデータ形式要件を満たすようにデータが自動的に変換されます。 その後、PolyBase が呼び出されて、SQL Data Warehouse にデータが読み込まれます。 最後に、BLOB ストレージから一時データをクリーンアップします。 ステージング Azure BLOB ストレージ インスタンス経由でのデータのコピーについて詳しくは、「[ステージング コピー](copy-activity-performance-features.md#staged-copy)」をご覧ください。
 
 この機能を使うには、中間 BLOB ストレージを含む Azure Storage アカウントを参照する [Azure Blob Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)を作成します。 その後、次のコードで示すように、コピー アクティビティの `enableStaging` プロパティと `stagingSettings` プロパティを指定します。
 
@@ -530,15 +531,15 @@ SQL Data Warehouse の PolyBase では、Azure Blob、Azure Data Lake Storage Ge
 
 ### <a name="best-practices-for-using-polybase"></a>PolyBase の使用に関するベスト プラクティス
 
-以下のセクションでは、[Azure Synapse Analytics のベスト プラクティス](../sql-data-warehouse/sql-data-warehouse-best-practices.md)に関する記事に記載されているもの以外のベスト プラクティスについて説明します。
+以下のセクションでは、[Azure Synapse Analytics のベスト プラクティス](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)に関する記事に記載されているもの以外のベスト プラクティスについて説明します。
 
 #### <a name="required-database-permission"></a>必要なデータベース アクセス許可
 
-PolyBase を使うには、データを SQL Data Warehouse に読み込むユーザーが、ターゲット データベースでの ["CONTROL" アクセス許可](https://msdn.microsoft.com/library/ms191291.aspx)を持っている必要があります。 これを実現する方法の 1 つは、ユーザーを **db_owner** ロールのメンバーとして追加することです。 方法については、[SQL Data Warehouse の概要](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)に関するページをご覧ください。
+PolyBase を使うには、データを SQL Data Warehouse に読み込むユーザーが、ターゲット データベースでの ["CONTROL" アクセス許可](https://msdn.microsoft.com/library/ms191291.aspx)を持っている必要があります。 これを実現する方法の 1 つは、ユーザーを **db_owner** ロールのメンバーとして追加することです。 方法については、[SQL Data Warehouse の概要](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)に関するページをご覧ください。
 
 #### <a name="row-size-and-data-type-limits"></a>行のサイズとデータ型の制限
 
-PolyBase の読み込みは、1 MB 未満の行に制限されます。 VARCHR(MAX)、NVARCHAR(MAX)、VARBINARY(MAX) への読み込みには使用できません。 詳しくは、[SQL Data Warehouse サービスの容量制限](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)に関するページをご覧ください。
+PolyBase の読み込みは、1 MB 未満の行に制限されます。 VARCHR(MAX)、NVARCHAR(MAX)、VARBINARY(MAX) への読み込みには使用できません。 詳しくは、[SQL Data Warehouse サービスの容量制限](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md#loads)に関するページをご覧ください。
 
 ソース データに 1 MB を超える行がある場合は、ソース テーブルを複数の小さいテーブルに垂直分割できます。 各行の最大サイズが制限を超えないことを確認します。 その後、これらの小さいテーブルは、PolyBase を使用して Azure Synapse Analytics に読み込み、マージすることができます。
 
@@ -588,7 +589,7 @@ All columns of the table must be specified in the INSERT BULK statement.
 
 null 値は、特殊な形式の既定値です。 列が null 許容の場合、その列に対する BLOB 内の入力データが空になる可能性があります。 ただし、入力データセットから欠落することはできません。 PolyBase では、Azure Synapse Analytics の欠損値に対して null を挿入します。
 
-## <a name="use-copy-statement"></a>COPY ステートメントを使用して Azure SQL Data Warehouse にデータを読み込む (プレビュー)
+## <a name="use-copy-statement-to-load-data-into-azure-sql-data-warehouse-preview"></a><a name="use-copy-statement"></a>COPY ステートメントを使用して Azure SQL Data Warehouse にデータを読み込む (プレビュー)
 
 SQL Data Warehouse の [COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (プレビュー) では、**Azure Blob および Azure Data Lake Storage Gen2** からのデータの読み込みが直接サポートされています。 ソース データがこのセクションで説明する条件を満たしている場合は、ADF で COPY ステートメントを使用して、Azure SQL Data Warehouse にデータを読み込むことができます。 Azure Data Factory によって設定が確認され、条件が満たされない場合は、コピー アクティビティの実行が失敗します。
 
@@ -612,7 +613,7 @@ COPY ステートメントを使用する場合、次の構成がサポートさ
 2. 形式設定は次のとおりです。
 
    1. **Parquet** の場合: `compression` が**圧縮なし**、**Snappy**、または **GZip**である。
-   2. **ORC** の場合: `compression` が**圧縮なし**、**zlib**、または **Snappy**である。
+   2. **ORC** の場合: `compression` が **圧縮なし**、 **```zlib```** 、または **Snappy** である。
    3. **区切りテキスト**の場合:
       1. `rowDelimiter` が**単一の文字**または " **\r\n**" として明示的に設定されており、既定値がサポートされていない。
       2. `nullValue` が既定値のままか、**空の文字列** ("") に設定されている。
@@ -623,7 +624,7 @@ COPY ステートメントを使用する場合、次の構成がサポートさ
 
 3. ソースがフォルダーの場合は、コピー アクティビティの `recursive` を true に設定する必要があります。
 
-4. `wildcardFolderPath`、`wildcardFilename`、`modifiedDateTimeStart`、および `modifiedDateTimeEnd` が指定されていない。
+4. `wildcardFolderPath`、`wildcardFilename`、`modifiedDateTimeStart`、`modifiedDateTimeEnd`、および `additionalColumns` が指定されていない。
 
 コピー アクティビティの `allowCopyCommand` では、次の COPY ステートメント設定がサポートされています。
 
@@ -704,7 +705,7 @@ Azure Synapse Analytics に固有の設定は、ソース変換の **[Source Opt
 
 * SQL の例: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Batch size**: 大量データを読み取りにまとめるバッチ サイズを入力します。
+**Batch size**: 大量データを読み取りにまとめるバッチ サイズを入力します。 データ フローでは、ADF はこの設定を使用して Spark の列キャッシュを設定します。 これは、空白のままである場合は Spark の既定値を使用するオプション フィールドです。
 
 **Isolation Level**: マッピング データ フローでの SQL ソースの既定値は [コミットされていないものを読み取り] です。 ここで分離レベルを次のいずれかの値に変更できます。
 * コミットされたものを読み取り
@@ -722,9 +723,9 @@ Azure Synapse Analytics に固有の設定は、シンク変換の **[設定]** 
 **[Update method]\(更新方法\)** : 対象となるデータベースに対して許可される操作を指定します。 既定では、挿入のみが許可されます。 行を更新、アップサート、または削除するには、それらのアクションに対して行をタグ付けするために行の変更変換が必要になります。 更新、アップサート、削除の場合、1 つまたは複数のキー列を設定して、変更する行を決定する必要があります。
 
 **[Table action]\(テーブル アクション\):** 書き込み前に変換先テーブルのすべての行を再作成するか削除するかを指定します。
-* [なし]: テーブルに対してアクションは実行されません。
-* [再作成]: テーブルが削除され、再作成されます。 新しいテーブルを動的に作成する場合に必要です。
-* [切り詰め]: ターゲット テーブルのすべての行が削除されます。
+* [なし]:テーブルに対してアクションは実行されません。
+* [再作成]:テーブルが削除され、再作成されます。 新しいテーブルを動的に作成する場合に必要です。
+* [切り詰め]:ターゲット テーブルのすべての行が削除されます。
 
 **[Enable staging]\(ステージングの有効化\):** Azure Synapse Analytics に書き込むときに、[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15) を使用するかどうかを指定します。
 
@@ -739,7 +740,7 @@ Azure Synapse Analytics に固有の設定は、シンク変換の **[設定]** 
 Azure Synapse Analytics との間でデータをコピーする場合、Azure Synapse Analytics のデータ型から Azure Data Factory の中間データ型への次のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
 >[!TIP]
->SQL DW でサポートされているデータ型と、サポートされていないデータ型への対処法については、[Azure Synapse Analytics のテーブルのデータ型](../sql-data-warehouse/sql-data-warehouse-tables-data-types.md)に関する記事をご覧ください。
+>SQL DW でサポートされているデータ型と、サポートされていないデータ型への対処法については、[Azure Synapse Analytics のテーブルのデータ型](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md)に関する記事をご覧ください。
 
 | Azure Synapse Analytics のデータ型    | Data Factory の中間データ型 |
 | :------------------------------------ | :----------------------------- |

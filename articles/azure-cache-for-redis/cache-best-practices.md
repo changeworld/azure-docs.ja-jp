@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 71056fd04069b861b37a595b1a4f2a8bba4a01ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75689974"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478610"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Cache for Redis のベスト プラクティス 
 次のベスト プラクティスに従うことにより、Azure Cache for Redis インスタンスを使用するときのパフォーマンスとコスト効率を最大限にできます。
@@ -67,7 +67,7 @@ Redis サーバー インスタンス内でのメモリ使用量に関連した�
 エラー条件の下でコードがどのように動作するかをテストしたい場合は、[再起動機能](cache-administration.md#reboot)を使用することを検討してください。 再起動により、接続の中断がアプリケーションにどのような影響を及ぼすかを確認できます。
 
 ## <a name="performance-testing"></a>パフォーマンス テスト
- * 独自のパフォーマンス テストを作成する前に、 **`redis-benchmark.exe` の使用から開始して**、考えられるスループット/待機時間の感触をつかんでください。  Redis ベンチマークのドキュメントは、[こちらにあります](https://redis.io/topics/benchmarks)。  Redis のベンチマークでは SSL はサポートされないため、テストを行う前に、[ポータルで非 SSL ポートを有効にする](cache-configure.md#access-ports)必要があります。  [redis-benchmark.exe の Windows 互換バージョンはこちらにあります](https://github.com/MSOpenTech/redis/releases)。
+ * 独自のパフォーマンス テストを作成する前に、 **`redis-benchmark.exe` の使用から開始して**、考えられるスループット/待機時間の感触をつかんでください。  Redis ベンチマークのドキュメントは、[こちらにあります](https://redis.io/topics/benchmarks)。  Redis のベンチマークでは TLS はサポートされないため、テストを行う前に、[ポータルで TLS 以外のポートを有効にする](cache-configure.md#access-ports)必要があります。  [redis-benchmark.exe の Windows 互換バージョンはこちらにあります](https://github.com/MSOpenTech/redis/releases)。
  * テストに使用するクライアント VM は、Redis Cache インスタンスと**同じリージョン内**にある必要があります。
  * **Dv2 VM シリーズ**はハードウェアが強力であり、最良の結果が得られるため、クライアントにはこれらを使用することをお勧めします。
  * 使用するクライアント VM が、テストするキャッシュと **少なくとも同等のコンピューティングと帯域幅*を持っていることを確認してください。 

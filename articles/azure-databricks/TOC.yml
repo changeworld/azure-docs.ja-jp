@@ -1007,6 +1007,40 @@
         - name: セキュリティの概要
           href: /azure/databricks/security/index
           maintainContext: true
+        - name: アクセス制御
+          items:
+            - name: アクセス制御の概要
+              href: /azure/databricks/security/access-control/index
+              maintainContext: true
+            - name: ワークスペースのアクセス制御
+              href: /azure/databricks/security/access-control/workspace-acl
+              maintainContext: true
+            - name: クラスターのアクセス制御
+              href: /azure/databricks/security/access-control/cluster-acl
+              maintainContext: true
+            - name: プールのアクセス制御
+              href: /azure/databricks/security/access-control/pool-acl
+              maintainContext: true
+            - name: ジョブのアクセス制御
+              href: /azure/databricks/security/access-control/job-acl
+              maintainContext: true
+            - name: テーブルのアクセス制御
+              items:
+                - name: テーブルのアクセス制御の概要
+                  href: /azure/databricks/security/access-control/table-acls/index
+                  maintainContext: true
+                - name: クラスターのテーブル アクセス制御を有効にする
+                  href: /azure/databricks/security/access-control/table-acls/table-acl
+                  maintainContext: true
+                - name: データ オブジェクトの特権
+                  href: /azure/databricks/security/access-control/table-acls/object-privileges
+                  maintainContext: true
+            - name: シークレットのアクセス制御
+              href: /azure/databricks/security/access-control/secret-acl
+              maintainContext: true
+        - name: Azure Active Directory の資格情報を使用して Azure Data Lake Storage に認証する
+          href: /azure/databricks/security/credential-passthrough/adls-passthrough
+          maintainContext: true
         - name: シークレット
           items:
             - name: シークレットを使ってデータを安全に保つ
@@ -1018,9 +1052,6 @@
             - name: シークレット
               href: /azure/databricks/security/secrets/secrets
               maintainContext: true
-            - name: シークレットのアクセス制御
-              href: /azure/databricks/security/secrets/secret-acl
-              maintainContext: true
             - name: シークレットの編集
               href: /azure/databricks/security/secrets/redaction
               maintainContext: true
@@ -1028,11 +1059,11 @@
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
         - name: クラスター ワーカー ノード間のトラフィックを暗号化する
-          href: /azure/databricks/security/encrypt-otw
+          href: /azure/databricks/security/encryption/encrypt-otw
         - name: ノートブック用に顧客が管理するキーを有効にする
-          href: /azure/databricks/security/customer-managed-key-notebook
+          href: /azure/databricks/security/keys/customer-managed-key-notebook
         - name: DBFS 用に顧客が管理するキーを有効にする
-          href: /azure/databricks/security/customer-managed-keys-dbfs
+          href: /azure/databricks/security/keys/customer-managed-keys-dbfs
     - name: 管理
       items:
         - name: 管理の概要
@@ -1080,28 +1111,20 @@
             - name: アクセス制御の概要
               href: /azure/databricks/administration-guide/access-control/index
               maintainContext: true
-            - name: クラスターのアクセス制御
+            - name: ワークスペースのアクセス制御を有効にする
+              href: /azure/databricks/administration-guide/access-control/workspace-acl
+              maintainContext: true
+            - name: クラスターのアクセス制御を有効にする
               href: /azure/databricks/administration-guide/access-control/cluster-acl
               maintainContext: true
-            - name: プールのアクセス制御
+            - name: プールのアクセス制御を有効にする
               href: /azure/databricks/administration-guide/access-control/pool-acl
               maintainContext: true
-            - name: ジョブのアクセス制御
+            - name: ジョブのアクセス制御を有効にする
               href: /azure/databricks/administration-guide/access-control/jobs-acl
               maintainContext: true
-            - name: テーブルのアクセス制御
-              items:
-                - name: テーブルのアクセス制御の概要
-                  href: /azure/databricks/administration-guide/access-control/table-acls/index
-                  maintainContext: true
-                - name: テーブルのアクセス制御を有効にする
-                  href: /azure/databricks/administration-guide/access-control/table-acls/table-acl
-                  maintainContext: true
-                - name: データ オブジェクトに対する特権の設定
-                  href: /azure/databricks/administration-guide/access-control/table-acls/object-privileges
-                  maintainContext: true
-            - name: ワークスペースのアクセス制御
-              href: /azure/databricks/administration-guide/access-control/workspace-acl
+            - name: テーブルのアクセス制御を有効にする
+              href: /azure/databricks/administration-guide/access-control/table-acl
               maintainContext: true
             - name: トークンベースの認証を有効にする
               href: /azure/databricks/administration-guide/access-control/tokens
@@ -1688,6 +1711,9 @@
           items:
             - name: プラットフォームのリリース ノート
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2020 年 4 月
+              href: /azure/databricks/release-notes/product/2020/april
               maintainContext: true
             - name: 2020 年 3 月
               href: /azure/databricks/release-notes/product/2020/march

@@ -1,6 +1,6 @@
 ---
 title: CREATE TABLE AS SELECT (CTAS)
-description: ソリューションを開発するための SQL Analytics の CREATE TABLE AS SELECT (CTAS) ステートメントの説明と例。
+description: ソリューションを開発するための Synapse SQL の CREATE TABLE AS SELECT (CTAS) ステートメントの説明と例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: bb9ff52bd7d2e4cfd1a1df4d780a4c369380284f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8e1b75dfc6a979956ff4a2868027bb769bf7c4ed
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350597"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633547"
 ---
-# <a name="create-table-as-select-ctas-in-sql-analytics"></a>SQL Analytics の CREATE TABLE AS SELECT (CTAS)
+# <a name="create-table-as-select-ctas"></a>CREATE TABLE AS SELECT (CTAS)
 
-この記事では、ソリューションを開発するための SQL Analytics の CREATE TABLE AS SELECT (CTAS) T-SQL ステートメントについて説明します。 この記事には、コード例も記載されています。
+この記事では、ソリューションを開発するための Synapse SQL の CREATE TABLE AS SELECT (CTAS) T-SQL ステートメントについて説明します。 この記事には、コード例も記載されています。
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) (CTAS) ステートメントは、利用可能な最重要 T-SQL 機能のうちの 1 つです。 CTAS は、SELECT ステートメントの出力に基づいて新しいテーブルを作成する並列操作です。 CTAS は、単一のコマンドでデータを作成し、テーブルに挿入する最も簡単ですばやい方法です。
+[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) ステートメントは、利用可能な最重要 T-SQL 機能のうちの 1 つです。 CTAS は、SELECT ステートメントの出力に基づいて新しいテーブルを作成する並列操作です。 CTAS は、単一のコマンドでデータを作成し、テーブルに挿入する最も簡単ですばやい方法です。
 
 ## <a name="selectinto-vs-ctas"></a>SELECT...INTO と CTAS
 
-CTAS は、[SELECT...INTO](/sql/t-sql/queries/select-into-clause-transact-sql) ステートメントの、よりカスタマイズ可能なバージョンです。
+CTAS は、[SELECT...INTO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントの、よりカスタマイズ可能なバージョンです。
 
 SELECT...INTO の簡単な例を次に示します。
 
@@ -123,7 +123,7 @@ DROP TABLE FactInternetSales_old;
 
 ## <a name="use-ctas-to-work-around-unsupported-features"></a>CTAS を使用したサポートされていない機能の回避
 
-CTAS を使用して、下記のサポートされていない多くの機能を回避することもできます。 この方法は、多くの場合、コードが準拠するだけでなく、SQL Analytics 上でより高速に実行されるため、有益です。 このパフォーマンスは、完全並列化設計の結果となります。 シナリオには以下が含まれます。
+CTAS を使用して、下記のサポートされていない多くの機能を回避することもできます。 この方法は、コードが準拠するだけでなく、Synapse SQL 上でしばしばより高速に実行されるため、多くの場合有益であることがわかっています。 このパフォーマンスは、完全並列化設計の結果となります。 シナリオには以下が含まれます。
 
 * ANSI JOINS を使用した UPDATE
 * ANSI JOIN を使用した DELETE
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-SQL Analytics では、`UPDATE` ステートメントの `FROM` 句での ANSI JOIN がサポートされていないため、前の例を変更しないで使用することはできません。
+Synapse SQL では、`UPDATE` ステートメントの `FROM` 句での ANSI JOIN がサポートされていないため、前の例を変更しないで使用することはできません。
 
 CTAS と暗黙的結合を組み合わせて使用することで、前の例を置き換えることができます。
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>DELETE ステートメントの代わりに使用する ANSI JOIN
 
-CTAS を使用するのが、データを削除する最適な方法である場合があります。特に、ANSI JOIN 構文が使用される `DELETE` ステートメントの場合です。 これは、SQL Analytics が `DELETE` ステートメントの `FROM` 句での ANSI の結合をサポートしていないためです。 データを削除するのではなく、保持したいデータを選択します。
+CTAS を使用するのが、データを削除する最適な方法である場合があります。特に、ANSI JOIN 構文が使用される `DELETE` ステートメントの場合です。 これは、Synapse SQL では `DELETE` ステートメントの `FROM` 句で ANSI JOIN はサポートされないためです。 データを削除するのではなく、保持したいデータを選択します。
 
 以下は、変換された `DELETE` ステートメントの例です。
 
@@ -404,7 +404,7 @@ SELECT
 , [product]
 , [store]
 , [quantity]
-, [price]   
+, [price]
 , ISNULL(CAST([quantity]*[price] AS MONEY),0) AS [amount]
 FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
@@ -412,9 +412,8 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 CTAS では、型の一貫性と null 値の許容プロパティを保持することが、エンジニアリング上のベスト プラクティスだということがわかります。 計算の整合性を維持するのに役立つほか、パーティションの切り替えも確実に実行できます。
 
-CTAS は、SQL Analytics で最も重要なステートメントの 1 つです。 よく理解しておいてください。 [CTAS のドキュメント](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)を参照してください。
+CTAS は、Synapse SQL で最も重要なステートメントの 1 つです。 よく理解しておいてください。 [CTAS のドキュメント](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 開発に関するその他のヒントについては、 [開発の概要](sql-data-warehouse-overview-develop.md)に関するページをご覧ください。
-

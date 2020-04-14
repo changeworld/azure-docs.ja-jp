@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: bf83155e971061f22e5f5fc33d216b58621c9249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f1a56fa6ea38acd8061180407eb47fe416b61e9
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462651"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631714"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>チュートリアル:SQL Database マネージド インスタンスをフェールオーバー グループに追加する
 
@@ -756,7 +756,7 @@ Azure portal を使用して、プライマリ マネージド インスタン�
     | --- | --- |
     | **サブスクリプション** |  プライマリ マネージド インスタンスがあるサブスクリプション。 |
     | **名前** | 仮想ネットワーク ゲートウェイの名前 (`primary-mi-gateway` など)。 | 
-    | **リージョン** | セカンダリ マネージド インスタンスがあるリージョン。 |
+    | **リージョン** | プライマリ マネージド インスタンスがあるリージョン。 |
     | **ゲートウェイの種類** | **[VPN]** を選択します。 |
     | **VPN の種類** | **[ルート ベース]** を選択します |
     | **SKU**| 既定値の `VpnGw1` のままにします。 |
