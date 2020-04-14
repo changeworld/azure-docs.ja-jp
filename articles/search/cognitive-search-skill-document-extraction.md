@@ -149,4 +149,4 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [Cognitive Search シナリオで画像から情報を処理および抽出する方法](cognitive-search-concept-image-scenarios.md)
++ [AI エンリッチメントのシナリオで画像の情報を処理し、抽出する方法](cognitive-search-concept-image-scenarios.md)
