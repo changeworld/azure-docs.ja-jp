@@ -1,26 +1,28 @@
 ---
 title: Twitter 認証を構成する
-description: App Services アプリ用の ID プロバイダーとして Twitter 認証を構成する方法について説明します。
+description: App Services アプリまたは Azure Functions アプリ用の ID プロバイダーとして Twitter 認証を構成する方法について説明します。
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.topic: article
 ms.date: 02/28/2020
-ms.custom: seodec18
-ms.openlocfilehash: 794f671b36b5aeb9f19cf5d80e488500cedb1098
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: 11c913b12b4dcb7d2a5ffa532064b347b82904ef
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207143"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519905"
 ---
-# <a name="configure-your-app-service-app-to-use-twitter-login"></a>Twitter ログインを使用するように App Service アプリを構成する
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-twitter-login"></a>Twitter ログインを使用するように App Service アプリまたは Azure Functions アプリを構成する
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-この記事では、認証プロバイダーとして Twitter を使用するように Azure App Services を構成する方法を示します。
+この記事では、認証プロバイダーとして Twitter を使用するように Azure App Service または Azure Functions を構成する方法を示します。
 
 この記事の手順を完了するには、電子メール アドレスと電話番号を検証済みの Twitter アカウントが必要になります。 新しい Twitter アカウントを作成するには、[twitter.com] にアクセスしてください。
 
-## <a name="register"> </a>Twitter にアプリケーションを登録する
+## <a name="register-your-application-with-twitter"></a><a name="register"> </a>Twitter にアプリケーションを登録する
 
 1. [Azure portal] にサインインし、お使いのアプリケーションに移動します。 **[URL]** をコピーします。 これは Twitter アプリの構成で使用します。
 1. [Twitter Developers] の Web サイトに移動し、Twitter アカウント資格情報でサインインし、 **[Create an app]\(アプリの作成\)** を選択します。
@@ -35,7 +37,7 @@ ms.locfileid: "78207143"
    > [!NOTE]
    > API シークレット キーは重要なセキュリティ資格情報です。 このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。
 
-## <a name="secrets"> </a>アプリケーションに Twitter 情報を追加する
+## <a name="add-twitter-information-to-your-application"></a><a name="secrets"> </a>アプリケーションに Twitter 情報を追加する
 
 1. [Azure portal] で自分のアプリケーションに移動します。
 1. **[設定]** 、 **[認証/承認]** の順に選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
@@ -56,7 +58,7 @@ ms.locfileid: "78207143"
 
 これで、アプリケーションで認証に Twitter を使用する準備ができました。
 
-## <a name="related-content"> </a>次の手順
+## <a name="next-steps"></a><a name="related-content"> </a>次の手順
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 

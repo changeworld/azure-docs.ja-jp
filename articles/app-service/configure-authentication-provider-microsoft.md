@@ -1,27 +1,29 @@
 ---
 title: Microsoft 認証を構成する
-description: App Services アプリ用の ID プロバイダーとして Microsoft アカウント認証を構成する方法について説明します。
+description: App Services アプリまたは Azure Functions アプリ用の ID プロバイダーとして、Microsoft アカウント認証を構成する方法について説明します。
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
-ms.custom: seodec18
-ms.openlocfilehash: 95c603d4a10eb0e4d0817e20755c0f9b36baa96f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: a78208ba592f86400e9b06b15d8a76923dda736f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842335"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519895"
 ---
-# <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Microsoft アカウント ログインを使用するように App Service アプリを構成する
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>Microsoft アカウント ログインを使用するように App Service アプリまたは Azure Functions アプリを構成する
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-このトピックでは、AAD を使用して個人用の Microsoft アカウント ログインをサポートするように Azure App Service を構成する方法を示します。
+このトピックでは、AAD を使用して個人用の Microsoft アカウント ログインをサポートするように Azure App Service または Azure Functions を構成する方法を示します。
 
 > [!NOTE]
 > 個人用の Microsoft アカウントと組織アカウントの両方で AAD ID プロバイダーが使用されます。 現時点では、両方の種類のログインをサポートするように、この ID プロバイダーを構成することはできません。
 
-## <a name="register-microsoft-account"></a>Microsoft アカウントにアプリを登録する
+## <a name="register-your-app-with-microsoft-account"></a><a name="register-microsoft-account"></a>Microsoft アカウントにアプリを登録する
 
 1. Azure portal で [ **[アプリの登録]** ](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) に移動します。 必要であれば、Microsoft アカウントを使ってサインインします。
 1. **[New registration]\(新規登録\)** を選択し、アプリケーション名を入力します。
@@ -36,7 +38,7 @@ ms.locfileid: "76842335"
     > [!IMPORTANT]
     > クライアント シークレット値 (パスワード) は、重要なセキュリティ資格情報です。 このパスワードを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
-## <a name="secrets"></a>Microsoft アカウントの情報を App Service アプリケーションに追加する
+## <a name="add-microsoft-account-information-to-your-app-service-application"></a><a name="secrets"></a>Microsoft アカウントの情報を App Service アプリケーションに追加する
 
 1. [Azure portal] で自分のアプリケーションに移動します。
 1. **[設定]** 、 **[認証/承認]** の順に選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
@@ -54,7 +56,7 @@ ms.locfileid: "76842335"
 
 これで、アプリケーションで認証に Microsoft アカウントを使用する準備ができました。
 
-## <a name="related-content"> </a>次の手順
+## <a name="next-steps"></a><a name="related-content"> </a>次の手順
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
