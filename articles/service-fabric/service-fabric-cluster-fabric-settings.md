@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: f42cfd1b41ab463c3c3042987b5d0a0b3b00f67e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3eb558c7d0745ada43696fd4189a7ac663867849
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986191"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80753985"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -29,7 +29,7 @@ ms.locfileid: "76986191"
 |BodyChunkSize |uint、既定値は 16384 |動的| 本文の読み取りに使用するチャンクのサイズをバイト単位で指定します。 |
 |CrlCheckingFlag|uint、既定値は 0x40000000 |動的| アプリケーション/サービス証明書チェーン検証のフラグ。例: CRL checking 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY。0 に設定すると、CRL チェックが無効になります。サポートされている値の一覧については、CertGetCertificateChain に関するページ (https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx ) の「dwFlags」を参照してください  |
 |DefaultHttpRequestTimeout |時間 (秒単位)、 既定値は 120 です |動的|timespan を秒単位で指定します。  HTTP アプリケーション ゲートウェイで処理される HTTP 要求の既定の要求タイムアウトを指定します。 |
-|ForwardClientCertificate|ブール値、既定値は FALSE|動的|false に設定すると、リバース プロキシはクライアント証明書を要求しません。true に設定すると、リバース プロキシは SSL ハンドシェイク中にクライアント証明書を要求し、base64 でエンコードされた PEM 書式設定文字列を X-Client-Certificate というヘッダーのサービスに転送します。サービスは、証明書データを検査した後、適切な状態コードで要求に失敗する可能性があります。 この状況で、クライアントが証明書を提示しない場合、リバース プロキシは空のヘッダーを転送し、サービスによって処理されます。 リバース プロキシは透明なレイヤーとして機能します。 詳細については、[クライアント証明書の認証の設定](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy)に関する記事を参照してください。 |
+|ForwardClientCertificate|ブール値、既定値は FALSE|動的|false に設定すると、リバース プロキシはクライアント証明書を要求しません。true に設定すると、リバース プロキシは TLS ハンドシェイク中にクライアント証明書を要求し、base64 でエンコードされた PEM 書式設定文字列を X-Client-Certificate というヘッダーのサービスに転送します。サービスは、証明書データを検査した後、適切な状態コードで要求に失敗する可能性があります。 この状況で、クライアントが証明書を提示しない場合、リバース プロキシは空のヘッダーを転送し、サービスによって処理されます。 リバース プロキシは透明なレイヤーとして機能します。 詳細については、[クライアント証明書の認証の設定](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy)に関する記事を参照してください。 |
 |GatewayAuthCredentialType |string、既定値は "None" |静的| HTTP アプリケーション ゲートウェイ エンドポイントで使用するセキュリティ資格情報の種類を示します。有効な値は None/X509 です。 |
 |GatewayX509CertificateFindType |string、既定値は "FindByThumbprint" |動的| GatewayX509CertificateStoreName で指定されたストア内での証明書の検索方法を示します。サポートされる値:FindByThumbprint、FindBySubjectName。 |
 |GatewayX509CertificateFindValue | string、既定値は "" |動的| HTTP アプリケーション ゲートウェイの証明書の検索に使用する検索フィルター値。 この証明書は HTTPS エンドポイントで構成されます。サービスで必要な場合は、この証明書を使用してアプリケーションの ID を検証することもできます。 FindValue が最初に検索され、これが存在しない場合は、FindValueSecondary が検索されます。 |
@@ -55,9 +55,9 @@ ms.locfileid: "76986191"
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int、既定値は 0|静的|BackupRestoreService の MinReplicaSetSize |
-|PlacementConstraints|string、既定値は ""|静的|  BackupRestore サービスの PlacementConstraints |
+|PlacementConstraints|string、既定値は ""|静的|    BackupRestore サービスの PlacementConstraints |
 |SecretEncryptionCertThumbprint|string、既定値は ""|動的|シークレット暗号化 X509 証明書の拇印 |
-|SecretEncryptionCertX509StoreName|string、既定値は "My"|   動的|    これは、バックアップ復元サービスで使用されるストアの資格情報を暗号化または暗号化解除に使用される、X.509 証明書ストアの資格情報名を暗号化したり暗号化解除したりするために使用する証明書を示します。 |
+|SecretEncryptionCertX509StoreName|string、既定値は "My"|    動的|    これは、バックアップ復元サービスで使用されるストアの資格情報を暗号化または暗号化解除に使用される、X.509 証明書ストアの資格情報名を暗号化したり暗号化解除したりするために使用する証明書を示します。 |
 |TargetReplicaSetSize|int、既定値は 0|静的| BackupRestoreService の TargetReplicaSetSize |
 
 ## <a name="clustermanager"></a>ClusterManager
@@ -147,7 +147,7 @@ ms.locfileid: "76986191"
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int、既定値は 0|静的|EventStore サービスの MinReplicaSetSize |
-|PlacementConstraints|string、既定値は ""|静的|  EventStore サービスの PlacementConstraints |
+|PlacementConstraints|string、既定値は ""|静的|    EventStore サービスの PlacementConstraints |
 |TargetReplicaSetSize|int、既定値は 0|静的| EventStore サービスの TargetReplicaSetSize |
 
 ## <a name="fabricclient"></a>FabricClient
@@ -270,7 +270,7 @@ ms.locfileid: "76986191"
 |CommonNameNtlmPasswordSecret|SecureString、既定値は Common::SecureString("")| 静的|NTLM 認証を使用するときに、生成された同じパスワードに対するシードとして使用するパスワード シークレット |
 |DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |TimeSpan、既定値は Common::TimeSpan::FromMinutes(5)|動的|timespan を秒単位で指定します。 ディスクの空き容量がもう少しでなくなりそうなときに正常性イベントを報告することを目的としてディスク容量をチェックする間隔。 |
 |DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |TimeSpan、既定値は Common::TimeSpan::FromMinutes(15)|動的|timespan を秒単位で指定します。 ディスク上に十分な空き容量がある場合に正常性イベントを報告することを目的としてディスク容量をチェックする間隔。 |
-|EnableImageStoreHealthReporting |ブール値、既定値は TRUE |静的|ファイル ストア サービスからその正常性が報告される必要があるかどうかを決定するための構成。 |
+|EnableImageStoreHealthReporting |ブール値、既定値は TRUE    |静的|ファイル ストア サービスからその正常性が報告される必要があるかどうかを決定するための構成。 |
 |FreeDiskSpaceNotificationSizeInKB|int64、既定値は 25\*1024 |動的|下回ると正常性に関する警告が発生する可能性がある空きディスク領域のサイズ。 この構成の最小値と FreeDiskSpaceNotificationThresholdPercentage 構成を使用して、正常性に関する警告を送信するかどうかが決定されます。 |
 |FreeDiskSpaceNotificationThresholdPercentage|double、既定値は 0.02 |動的|下回ると正常性に関する警告が発生する可能性がある空きディスク領域のパーセンテージ。 この構成の最小値と FreeDiskSpaceNotificationInMB 構成を使用して、正常性に関する警告を送信するかどうかが決定されます。 |
 |GenerateV1CommonNameAccount| ブール値、既定値は TRUE|静的|ユーザー名 V1 生成アルゴリズムを使用したアカウントを生成するかどうかを指定します。 Service Fabric バージョン 6.1 以降では、常に v2 生成を使用したアカウントが作成されます。 V1 アカウントは、V2 生成をサポートしていないバージョン (6.1 以前) からのアップグレード (またはそれらのバージョンへのアップグレード) に必要となります。|
@@ -556,16 +556,20 @@ ms.locfileid: "76986191"
 |PlacementSearchTimeout | 時間 (秒単位)、既定値は 0.5 |動的| timespan を秒単位で指定します。 サービスを配置するときに、結果を返すまでに最長でこの時間の間、検索します。 |
 |PLBRefreshGap | 時間 (秒単位)、既定値は 1 |動的| timespan を秒単位で指定します。 PLB が状態を再度更新するまでに必要な最小経過時間を定義します。 |
 |PreferredLocationConstraintPriority | int、既定値は 2| 動的|優先される場所の制約の優先順位を指定します:0:ハード、1:ソフト、2:最適化、負の値:Ignore |
+|PreferredPrimaryDomainsConstraintPriority| int、既定値は 1 | 動的| 優先されるプライマリ ドメインの制約の優先順位を指定します:0:ハード、1:ソフト、負の値:Ignore |
 |PreferUpgradedUDs|ブール値、既定値は FALSE|動的|既にアップグレードされている UD への移動を優先するロジックをオンまたはオフにします。 SF 7.0 以降では、このパラメーターの既定値は TRUE から FALSE に変更されています。|
 |PreventTransientOvercommit | ブール値、既定値は false | 動的|開始された移動によって解放されるリソースを PLB が即座に利用するかどうかを指定します。 既定では、PLB は同じノード上で移動を開始できるので、一時的なオーバーコミットが発生する可能性があります。 このパラメーターを true に設定すると、このようなオーバーコミットを防ぐことができ、オンデマンドのデフラグ (placementWithMove) が無効になります。 |
 |ScaleoutCountConstraintPriority | int、既定値は 0 |動的| スケールアウト数の制約の優先順位を指定します:0:ハード、1:ソフト、負の値:無視。 |
+|SubclusteringEnabled|ブール値、既定値は FALSE | 動的 |分散の標準偏差の計算時にサブクラスタリングを確認する |
+|SubclusteringReportingPolicy| int、既定値は 1 |動的|サブクラスタリング構造の正常性レポートを送信するかどうか、およびその方法について定義します:0:レポートしない; 1:警告; 2:[OK] |
 |SwapPrimaryThrottlingAssociatedMetric | string、既定値は ""|静的| この調整に関連付けられたメトリックの名前。 |
 |SwapPrimaryThrottlingEnabled | ブール値、既定値は false|動的| スワップ プライマリ調整を有効にするかどうかを指定します。 |
 |SwapPrimaryThrottlingGlobalMaxValue | int、既定値は 0 |動的| グローバルに使用できるスワップ プライマリ レプリカの最大数。 |
 |TraceCRMReasons |ブール値、既定値は true |動的|CRM が発行した、操作イベント チャネルへの移動の理由をトレースするかどうかを指定します。 |
 |UpgradeDomainConstraintPriority | int、既定値は 1| 動的|アップグレード ドメインの制約の優先順位を指定します:0:ハード、1:ソフト、負の値:無視。 |
 |UseMoveCostReports | ブール値、既定値は false | 動的|よりバランスの取れた配置を実現するために多数の移動が発生する可能性のある、スコア付け関数のコスト要素を無視するよう LB に指示します。 |
-|UseSeparateSecondaryLoad | ブール値、既定値は true | 動的|別のセカンダリ負荷を使用するかどうかを指定します。 |
+|UseSeparateSecondaryLoad | ブール値、既定値は true | 動的|セカンダリ レプリカに個別の負荷を使用する必要があるかどうかを決定する設定。 |
+|UseSeparateSecondaryMoveCost | ブール値、既定値は false | 動的|セカンダリ レプリカに個別の移動コストを使用するかどうかを決定する設定。 |
 |ValidatePlacementConstraint | ブール値、既定値は true |動的| サービスの ServiceDescription が更新されたときに、サービスの PlacementConstraint 式を検証するかどうかを指定します。 |
 |ValidatePrimaryPlacementConstraintOnPromote| ブール値、既定値は TRUE |動的|フェイルオーバー時にプライマリ設定について、サービスの PlacementConstraint 式が評価されるかどうかを指定します。 |
 |VerboseHealthReportLimit | int、既定値は 20 | 動的|レプリカが未配置の状態になった回数がここで定義した回数に達すると、正常性の警告が報告されます (詳細な正常性レポートが有効になっている場合)。 |
@@ -671,7 +675,8 @@ ms.locfileid: "76986191"
 |DisableFirewallRuleForDomainProfile| ブール値、既定値は TRUE |静的| ドメイン プロファイルに対して、ファイアウォール規則を有効にするべきではないかどうかを示します |
 |DisableFirewallRuleForPrivateProfile| ブール値、既定値は TRUE |静的| プライベート プロファイルに対して、ファイアウォール規則を有効にするべきではないかどうかを示します | 
 |DisableFirewallRuleForPublicProfile| ブール値、既定値は TRUE | 静的|パブリック プロファイルに対して、ファイアウォール規則を有効にするべきではないかどうかを示します |
-| EnforceLinuxMinTlsVersion | ブール値、既定値は FALSE | 動的 | true に設定した場合、TLS バージョン 1.2 以降のみがサポートされます。  false の場合、それよりも前の TLS バージョンをサポートします。 Linux のみに適用されます |
+| EnforceLinuxMinTlsVersion | ブール値、既定値は FALSE | 静的 | true に設定した場合、TLS バージョン 1.2 以降のみがサポートされます。  false の場合、それよりも前の TLS バージョンをサポートします。 Linux のみに適用されます |
+| EnforcePrevalidationOnSecurityChanges | ブール値、既定値は FALSE| 動的 | セキュリティ設定の変更を検出したときのクラスター アップグレード動作を制御するフラグ。 "True" に設定した場合、クラスター アップグレードでは、プレゼンテーション ルールのいずれかに一致する証明書の少なくとも 1 つが、対応する検証ルールに合格することを確認する試みを行います。 事前検証は、任意のノードに新しい設定が適用される前に実行されますが、アップグレードの開始時には、クラスター マネージャー サービスのプライマリ レプリカをホストしているノードでのみ実行されます。 既定値は現在 ' false ' に設定されています。リリース 7.1 以降では、新しい Azure Service Fabric クラスターの設定は ' true ' に設定されます。|
 |FabricHostSpn| string、既定値は "" |静的| ファブリックが 1 人のドメイン ユーザー (gMSA/ドメイン ユーザー アカウント) として実行され、FabricHost がマシン アカウントで実行されているときの、FabricHost のサービス プリンシパル名。 これは FabricHost の IPC リスナーの SPN です。FabricHost がマシン アカウントで実行されているため、既定では空のままです |
 |IgnoreCrlOfflineError|ブール値、既定値は FALSE|動的|サーバー側が受信クライアント証明書を確認するとき、CRL オフライン エラーを無視するかどうか |
 |IgnoreSvrCrlOfflineError|ブール値、既定値は TRUE|動的|クライアント側が受信サーバー証明書を確認するとき、CRL オフライン エラーを無視するかどうか。既定値は true です。 失効したサーバー証明書で攻撃するには DNS を侵害する必要があります。これは、失効したクライアント証明書による攻撃よりも困難です。 |
@@ -680,6 +685,7 @@ ms.locfileid: "76986191"
 |SettingsX509StoreName| string、既定値は "MY"| 動的|ファブリックで構成の保護に使用される X509 証明書ストア |
 |UseClusterCertForIpcServerTlsSecurity|ブール値、既定値は FALSE|静的|IPC Server TLS トランスポート ユニットをセキュリティで保護するためにクラスター証明書を使用するかどうか |
 |X509Folder|string、既定値は /var/lib/waagent|静的|X509 証明書と秘密キーがあるフォルダー |
+|TLS1_2_CipherList| string| 静的|空でない文字列に設定されている場合は、TLS 1.2 以下でサポートされている暗号の一覧を上書きします。 サポートされている暗号の一覧と TLS 1.2 の強力な暗号の一覧形式の例を取得するには、「openssl-ciphers」のドキュメントを参照してください:"ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256"。Linux にのみ適用されます。 |
 
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
 

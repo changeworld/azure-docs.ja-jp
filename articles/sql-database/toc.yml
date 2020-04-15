@@ -708,6 +708,8 @@
               href: sql-database-managed-instance-configure-vm.md
             - name: Point-to-site connection
               href: sql-database-managed-instance-configure-p2s.md
+            - name: 長期のバックアップ リテンション期間
+              href: sql-database-managed-instance-long-term-backup-retention-configure.md
         - name: データの読み込み
           items:
             - name: データベース バックアップの復元

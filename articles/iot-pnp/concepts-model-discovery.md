@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 66da0321930ac38217a336380c9889963a433e67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94e5e6fb826528aab1a358d44cb51bfcd6219032
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75531362"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673593"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>IoT プラグ アンド プレイ プレビュー モデル検出を IoT ソリューションに実装する
 
@@ -46,7 +46,7 @@ IoT プラグ アンド プレイ デバイスがデバイス プロビジョニ
 
 ソリューションに事前に接続するデバイスの機能モデルとインターフェイスが用意されています。 次の手順を実行して、ソリューションを準備します。
 
-1. ソリューションが読み取ることができる場所に、Azure のインターフェイス JSON ファイルを格納します。
+1. インターフェイスの JSON ファイルは、ソリューションから読み取ることができる[モデル リポジトリ](./howto-manage-models.md)に格納します。
 1. 期待される IoT プラグ アンド プレイ機能モデルとインターフェイスに基づいて、IoT ソリューションにロジックを記述します。
 1. ソリューションで使用される IoT ハブからの通知をサブスクライブします。
 

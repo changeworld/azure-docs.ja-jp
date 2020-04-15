@@ -1,11 +1,11 @@
-- name: Azure Marketplace と AppSource のドキュメント
+- name: コマーシャル マーケットプレースのドキュメント
   href: index.yml
   items:
-    - name: Azure Marketplace および AppSource のロードマップ
+    - name: コマーシャル マーケットプレースのロードマップ
       href: ./marketplace-roadmap.md
-    - name: Azure Marketplace のポリシーと利用規約
+    - name: 商業マーケットプレースのポリシーと利用規約
       href: ./policies-terms.md
-    - name: Azure Marketplace と AppSource の概要とメリット
+    - name: コマーシャル マーケットプレースの概要とメリット
       href: ./marketplace-publishers-guide.md
       items:
         - name: 1 つのマーケットプレース、2 つのネットショップ
@@ -15,7 +15,7 @@
           items:
             - name: リードの管理
               href: ./lead-management-for-cloud-marketplace.md
-            - name: Azure Marketplace における取引
+            - name: コマーシャル マーケットプレースでの取引
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
             - name: プライベート オファー
               href: ./private-offers.md
@@ -66,7 +66,7 @@
               href: ./preferred-solutions.md
             - name: 統合されたソリューション
               href: ./integrated-solutions.md
-        - name: Azure Marketplace および AppSource のサポート
+        - name: コマーシャル マーケットプレースに対するサポート
           href: ./support-azure-marketplace.md
           items:
             - name: Marketplace に関する FAQ
@@ -78,6 +78,8 @@
   items:
     - name: クラウド パートナー ポータルのパートナー センターへの移行
       href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
+    - name: 移行に関する FAQ
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-faq.md
     - name: ポータル ツアー
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -427,12 +429,10 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: サポートの利用
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
-- name: パートナー センターの Commercial Marketplace ポータル
+- name: パートナー センターのコマーシャル マーケットプレース
   items:
-    - name: 概要
-      items:
-        - name: Commercial Marketplace とは
-          href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: コマーシャル マーケットプレースの概要
+      href: ./partner-center-portal/commercial-marketplace-overview.md
     - name: アカウント管理
       items:
         - name: 新しいパートナー センター アカウントを作成する
@@ -453,6 +453,30 @@
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: オンボード用の API
               href: ./partner-center-portal/azure-app-apis.md
+        - name: Azure Container オファー
+          items:
+            - name: 技術資産を準備する
+              href: ./partner-center-portal/create-azure-container-technical-assets.md
+            - name: Azure Container オファーを作成する
+              href: ./partner-center-portal/create-azure-container-offer.md
+        - name: 仮想マシン オファー
+          items:
+            - name: Azure 仮想マシン オファーを作成する
+              href: ./partner-center-portal/azure-vm-create-offer.md
+            - name: Azure VM 技術資産を作成する
+              items:
+                - name: Azure VM 技術資産を作成する
+                  href: ./partner-center-portal/create-azure-vm-technical-asset.md
+                - name: Azure VM 技術資産に関する FAQ
+                  href: ./partner-center-portal/common-issues-during-vhd-creation.md
+                - name: Azure VM イメージを認定する
+                  href: ./partner-center-portal/azure-vm-image-certification.md
+                - name: SAS URI
+                  items:
+                    - name: SAS URI の取得
+                      href: ./partner-center-portal/get-sas-uri.md
+                    - name: SAS URI に関する FAQ
+                      href: ./partner-center-portal/common-sas-uri-issues.md
         - name: コンサルティング サービス
           items:
             - name: 前提条件
@@ -539,7 +563,7 @@
       href: ./partner-center-portal/support.md
     - name: パートナー センターの分析
       items:
-        - name: 商業マーケットプレースの分析
+        - name: コマーシャル マーケットプレースの分析
           href: ./partner-center-portal/analytics.md
         - name: '[Summary]\(概要\) ダッシュボード'
           href: ./partner-center-portal/summary-dashboard.md
