@@ -17,7 +17,11 @@
 - name: 概念
   items:
     - name: リモート作業
-      href: work-remotely-support.md
+      items:
+        - name: リモートでの作業のサポート
+          href: ../networking/working-remotely-support.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: リモート ユーザー向けのハイブリッド接続
+          href: work-remotely-support.md
     - name: 接続モデル
       href: expressroute-connectivity-models.md
     - name: 回線とピアリング

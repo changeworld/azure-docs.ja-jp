@@ -3,12 +3,12 @@ title: クラウド ワークロードの保護に役立つセキュリティ機
 description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 20cf322dec0827c00b15a62bf4f7695fc4ed0992
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bd7c86e18114513a264a0f9252589533fb7ff2d3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705498"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668736"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup を使用したクラウド ワークロードを保護するためのセキュリティ機能
 
@@ -34,7 +34,7 @@ VM の論理的な削除によって、ご利用の VM のバックアップが�
 
 ### <a name="supported-regions"></a>サポートされているリージョン
 
-現在、論理的な削除は、米国中西部、東アジア、カナダ中部、カナダ東部、フランス中部、フランス南部、韓国中部、韓国南部、英国南部、英国西部、オーストラリア東部、オーストラリア南東部、北ヨーロッパ、米国西部、米国西部 2、米国中部、東南アジア、米国中北部、米国中南部、東日本、西日本、インド南部、インド中部、インド西部、米国東部 2、スイス北部、スイス西部など、すべての国のリージョンでサポートされています。
+現在、論理的な削除は、米国中西部、東アジア、カナダ中部、カナダ東部、フランス中部、フランス南部、韓国中部、韓国南部、英国南部、英国西部、オーストラリア東部、オーストラリア南東部、北ヨーロッパ、米国西部、米国西部 2、米国中部、東南アジア、米国中北部、米国中南部、東日本、西日本、インド南部、インド中部、インド西部、米国東部 2、スイス北部、スイス西部、ノルウェー西部、ノルウェー東部など、すべての国のリージョンでサポートされています。
 
 ### <a name="soft-delete-for-vms-using-azure-portal"></a>Azure portal を使用した VM の論理的な削除
 
@@ -124,7 +124,7 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
 ```
 
-バックアップ項目の "DeleteState" が "NotDeleted" に戻ります。 しかし、保護は引き続き停止状態にあります。 保護を再び有効にするには、[バックアップを再開する](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items)必要があります。
+バックアップ項目の "DeleteState" が "NotDeleted" に戻ります。 しかし、保護は引き続き停止状態にあります。 [バックアップを再開](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items)して、保護を再び有効にします。
 
 ### <a name="soft-delete-for-vms-using-rest-api"></a>REST API を使用した VM の論理的な削除
 
@@ -133,7 +133,7 @@ AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM
 
 ## <a name="disabling-soft-delete"></a>論理的な削除の無効化
 
-論理的な削除は、偶発的または悪意のある削除からバックアップ データを保護するために、新しく作成されたコンテナーでは既定で有効になっています。  この機能を無効にすることは推奨されません。 論理的な削除を無効にすることを検討する必要があるのは、保護された項目を新しいコンテナーに移動することを計画していて、削除と再保護の前に (テスト環境などで) 必要な 14 日間待機できない場合のみです。バックアップ管理者のみがこの機能を無効にできます。 この機能を無効にした場合、保護された項目を削除すると、復元する機能はなく、すべてがすぐに削除されます。 この機能を無効にする前に、論理的に削除された状態のバックアップ データは、論理的に削除された状態のままになります。 これらをすぐに完全に削除する場合、完全に削除されるように、削除を取り消してからもう一度削除する必要があります。
+論理的な削除は、偶発的または悪意のある削除からバックアップ データを保護するために、新しく作成されたコンテナーでは既定で有効になっています。  この機能を無効にすることは推奨されません。 論理的な削除を無効にすることを検討する必要があるのは、保護された項目を新しいコンテナーに移動することを計画していて、削除と再保護の前に (テスト環境などで) 必要な 14 日間待機できない場合のみです。この機能を無効にできるのは、コンテナーの所有者だけです。 この機能を無効にした場合、保護された項目を今後削除すると、復元する機能はなく、すべてがすぐに削除されます。 この機能を無効にする前に、論理的に削除された状態で存在するバックアップ データは、14 日間論理的に削除された状態のままになります。 これらをすぐに完全に削除する場合、完全に削除されるように、削除を取り消してからもう一度削除する必要があります。
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Azure portal を使用した論理的な削除を無効にする
 
@@ -178,24 +178,23 @@ REST API を使用して論理的な削除機能を無効にする方法につ�
 1. [論理的な削除を無効にする](#disabling-soft-delete)には、この手順に従います。
 2. Azure portal で、お使いのコンテナーにアクセスし、**バックアップ項目**にアクセスして論理的に削除された VM を選択します。
 
-![論理的に削除された VM の選択](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+   ![論理的に削除された VM の選択](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
 3. **[削除の取り消し]** オプションを選択します。
 
-![[削除の取り消し] の選択](./media/backup-azure-security-feature-cloud/choose-undelete.png)
-
+   ![[削除の取り消し] の選択](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
 4. ウィンドウが表示されます。 **[削除の取り消し]** を選択します。
 
-![[削除の取り消し] の選択](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+   ![[削除の取り消し] の選択](./media/backup-azure-security-feature-cloud/undelete-vm.png)
 
 5. バックアップ データを完全に削除するには、 **[バックアップ データの削除]** を選択します。
 
-![[バックアップ データの削除] の選択](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![[バックアップ データの削除] の選択](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
 
 6. バックアップ項目の名前を入力して、復旧ポイントを削除してもよいことを確認します。
 
-![バックアップ項目の名前の入力](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![バックアップ項目の名前の入力](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
 
 7. 項目のバックアップ データを削除するには、 **[削除]** を選択します。 バックアップ データが削除されたことを示す通知メッセージが表示されます。
 
@@ -246,28 +245,34 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ## <a name="encryption"></a>暗号化
 
-### <a name="encryption-of-backup-data-using-microsoft-managed-keys"></a>Microsoft マネージド キーを使用したバックアップ データの暗号化
+クラウドに保存されているバックアップ データは、Azure Storage 暗号化を使用して自動的に暗号化されます。これは、セキュリティとコンプライアンスのコミットメントを満たすのに役立ちます。 この保存データは、利用可能な最強のブロック暗号の 1 つである 256 ビット AES 暗号化を使って暗号化され、FIPS 140-2 に準拠しています。
 
-バックアップ データは、Azure Storage 暗号化を使用して自動的に暗号化されます。 暗号化によりお使いのデータが保護され、組織のセキュリティとコンプライアンスのコミットメントを満たすのに役立ちます。 データは、利用可能な最強のブロック暗号の 1 つである 256 ビット AES 暗号化を使って透過的に暗号化および暗号化が解除され、FIPS 140-2 に準拠しています。 Azure Storage 暗号化は、Windows での BitLocker 暗号化に似ています。
-
-Azure 内では、Azure ストレージとコンテナー間を転送中のデータは HTTPS によって保護されます。 このデータは、Azure バックボーン ネットワークにとどまります。
+保存データの暗号化に加えて、転送中のすべてのバックアップ データが HTTPS 経由で転送されます。 これは、Azure バックボーン ネットワークにとどまります。
 
 詳細については、「[保存データ向け Azure ストレージの暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)」をご覧ください。 暗号化に関する質問の回答については、[Azure Backup の FAQ](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) のページを参照してください。
 
+### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>プラットフォーム マネージド キーを使用したバックアップ データの暗号化
+
+既定では、すべてのデータが、プラットフォーム マネージド キーを使用して暗号化されます。 この暗号化は、ユーザー側から明示的なアクションを実行しなくても有効になり、Recovery Services コンテナーにバックアップ中のすべてのワークロードに適用されます。
+
 ### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
 
-Azure Virtual Machines のバックアップ時に Azure Key Vault に格納されているご自分の暗号化キーを使用して、Recovery Services コンテナー内のご自分のバックアップ データを暗号化することもできます。
+Azure Virtual Machines のバックアップ時に、ご自身で所有および管理しているキーを使って、データを暗号化できるようになりました。 Azure Backup を使用すると、自分のバックアップの暗号化に、Azure Key Vault に格納されているご自身の RSA キーを使用でききます。 バックアップの暗号化に使用される暗号化キーは、ソースに使用されているものと異なることがあります。 データは、AES 256 ベースのデータ暗号化キー (DEK) を使用して保護され、このキーは、ご自身のキーを使用して保護されます。 これにより、データとキーを完全に制御できます。 暗号化を許可するには、Recovery Services コンテナーに、Azure Key Vault の暗号化キーへのアクセスが許可されている必要があります。 キーの無効化とアクセスの取り消しは、必要に応じていつでも可能です。 ただし、コンテナーに対する項目の保護を試みるには、事前にキーを使って暗号化を有効にしておく必要があります。
 
 >[!NOTE]
->この機能は現在先行使用できます。 カスタマー マネージド キーを使用してご自分のバックアップ データを暗号化することを希望する場合は、[このアンケート](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u)にご記入ください。 この機能は、Azure Backup サービスが承認した場合に使用できることに注意してください。
+>この機能の利用は、現在、制限されています。 カスタマー マネージド キーを使用して、ご自身のバックアップ データを暗号化することをご希望の方は、[こちらのアンケート](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u)にご記入のうえ、メール (AskAzureBackupTeam@microsoft.com) でお送りください。 この機能は、Azure Backup サービスが承認した場合に使用できることに注意してください。
 
-### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>カスタマー マネージド キー使用して暗号化されたマネージド ディスク VM のバックアップ
+### <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>カスタマー マネージド キー使用して暗号化されたマネージド ディスク VM のバックアップ
 
-Azure Backup では、カスタマー マネージド キーを使用して暗号化されたディスクを含む Azure Virtual Machines をバックアップすることができます。 詳細については、[カスタマー マネージド キーを使用したマネージド ディスクの暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)に関するセクションを参照してください。
+Azure Backup を使用すると、サーバー側の暗号化にキーを使用する Azure VM をバックアップすることもできます。 ディスクの暗号化に使用されるキーは Azure Key Vault に格納され、ご自身で管理します。 カスタマー マネージド キーを使用したサーバー側の暗号化 (SSE) は、Azure Disk Encryption (ADE) とは異なります。ADE は BitLocker (Windows の場合) および DM-Crypt (Linux の場合) を利用してゲスト内暗号化を実行する一方で、SSE はストレージ サービス内のデータを暗号化して、VM の任意の OS またはイメージを使用できるようにするからです。 詳細については、[カスタマー マネージド キーを使用したマネージド ディスクの暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)に関するセクションをご覧ください。
 
-### <a name="backup-of-encrypted-vms"></a>暗号化された VM のバックアップ
+### <a name="backup-of-vms-encrypted-using-ade"></a>ADE を使用して暗号化された VM のバックアップ
 
-Azure Backup サービスを使用して、暗号化されたディスクを含む Windows または Linux の Azure 仮想マシン (VM) をバックアップして復元することができます。 手順については、[暗号化された仮想マシンの Azure Backup でのバックアップおよび復元](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)に関するページをご覧ください。
+Azure Backup を使用すると、Azure Disk Encryption を使って暗号化された OS またはデータ ディスクを含む Azure 仮想マシンをバックアップすることもできます。 ADE は、Windows VM の場合は BitLocker を、Linux VM の場合は DM-Crypt 機能を使用して、ゲスト内暗号化を実行します。 詳細については、[Azure Backup での暗号化された仮想マシンのバックアップと復元](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)に関するページをご覧ください。
+
+## <a name="private-endpoints"></a>プライベート エンドポイント
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ## <a name="other-security-features"></a>その他のセキュリティ機能
 
@@ -315,7 +320,7 @@ Recovery Services コンテナー内に論理的に削除された状態のバ�
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>PowerShell または CLI で論理的な削除操作を実行できますか?
 
-論理的な削除操作は [PowerShell](#soft-delete-for-vms-using-azure-powershell) で実行できますか。 現在のところ、CLI はサポートされていません。
+論理的な削除操作は [PowerShell](#soft-delete-for-vms-using-azure-powershell) で実行できます。 現在のところ、CLI はサポートされていません。
 
 #### <a name="is-soft-delete-supported-for-other-cloud-workloads-like-sql-server-in-azure-vms-and-sap-hana-in-azure-vms"></a>他のクラウド ワークロード (Azure VM での SQL Server や Azure VM での SAP HANA など) では、論理的な削除はサポートされていますか?
 

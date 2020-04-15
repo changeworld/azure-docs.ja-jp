@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236751"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435626"
 ---
 # <a name="protect-your-machines-and-applications"></a>マシンとアプリケーションを保護する
 Azure Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
@@ -85,9 +85,9 @@ Azure Security Center によって潜在的なセキュリティの脆弱性が�
 
 
 ### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>仮想マシン スケール セット
-Security Center は、スケール セットがあるかどうかを自動的に検出し、それらに Microsoft Monitoring Agent をインストールすることを推奨します。
+Security Center では、スケール セットがあるかどうかの検出を自動的に行い、それらに Log Analytics エージェントをインストールすることを推奨しています。
 
-Microsoft Monitoring Agent をインストールするには 
+Log Analytics エージェントをインストールするには: 
 
 1. 推奨事項 **[仮想マシン スケール セットに監視エージェントをインストールする]** を選択します。 監視されていないスケール セットの一覧が表示されます。
 
@@ -95,7 +95,7 @@ Microsoft Monitoring Agent をインストールするには
 
    ![MMS のインストール](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-新しいスケール セットを設定して自動的に Microsoft Monitoring Agent をインストールするには:
+新しいスケール セットを設定して自動的に Log Analytics エージェントをインストールするには:
 1. Azure Policy に移動して、 **[定義]** をクリックします。
 
 1. **Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ** ポリシーを検索してクリックします。
@@ -104,7 +104,7 @@ Microsoft Monitoring Agent をインストールするには
 
 1. **[スコープ]** と **[Log Analytics ワークスペース]** を設定して **[割り当て]** をクリックします。
 
-既存のスケール セットをすべて設定して Microsoft Monitoring Agent をインストールする場合は、Azure Policy で、 **[修復]** に移動し、既存のポリシーを既存のスケール セットに適用します。
+Log Analytics エージェントをインストールするように既存のスケール セットをすべて設定する場合は、Azure Policy 上で **[修復]** に移動し、既存のポリシーを既存のスケール セットに適用します。
 
 
 
@@ -195,7 +195,7 @@ Docker を実行している VM のいずれかをクリックすると、詳細
 
 Security Center は、Docker 構成をスキャンし、評価されたすべての失敗したルールの一覧を提供することによって、構成の誤りに対する可視性を提供します。 これらの問題を迅速に解決して時間を節約するのに役立つガイドラインが Security Center から提供されます。 Security Center は、Docker 構成を継続的に評価し、それらの最新の状態をユーザーに提供します。
 
-![[コンテナー] タブ](./media/security-center-container-recommendations/container-cis-benchmark.png)
+![[コンテナー] タブ](./media/security-center-virtual-machine-recommendations/container-cis-benchmark.png)
 
 
 ## <a name="next-steps"></a>次のステップ

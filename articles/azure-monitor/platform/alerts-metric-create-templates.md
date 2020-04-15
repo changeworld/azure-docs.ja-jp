@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
-ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664838"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677001"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 
@@ -563,7 +563,7 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>複数の条件を監視する静的なしきい値メトリック アラートのテンプレート
 
-新しいメトリック アラートは､多次元メトリックでのアラートをサポートするばかりでなく､複数の基準もサポートしています｡ 次のテンプレートを使用して､多次元メトリックに高度なメトリック アラート ルールを作成し､複数の条件を指定することができます｡
+新しいメトリック アラートは、多次元メトリックに対するアラートをサポートし、さらに複数の条件 (アラート ルールごとに最大 5 つの条件) の定義をサポートします。 次のテンプレートを使用して､多次元メトリックに高度なメトリック アラート ルールを作成し､複数の条件を指定することができます｡
 
 複数の条件を含む警告ルールでディメンションを使用する場合は、次の制約に注意してください。
 - 各条件内では、ディメンションごとに 1 つの値のみを選択できます。
@@ -1518,6 +1518,10 @@ az group deployment create \
 - 1 つまたは複数のリソース グループ内の (1 つの Azure リージョン内の) すべての仮想マシンの監視。
 - 1 つのサブスクリプション内の (1 つの Azure リージョン内の) すべての仮想マシンの監視。
 - 1 つのサブスクリプション内の (1 つの Azure リージョン内の)、一覧に含まれる仮想マシンの監視。
+
+> [!NOTE]
+>
+> 複数のリソースを監視するメトリック アラート ルールの場合、許可される条件は 1 つだけです。
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>1 つまたは複数のリソース グループ内のすべての仮想マシンの静的しきい値アラート
 

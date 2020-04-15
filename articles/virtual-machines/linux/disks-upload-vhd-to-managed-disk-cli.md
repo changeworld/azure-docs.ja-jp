@@ -1,74 +1,76 @@
 ---
-title: Azure CLI を使用して VHD をアップロードする
-description: Azure CLI を使用して、直接アップロードによって Azure マネージド ディスクに vhd をアップロードし、リージョン間でマネージド ディスクをコピーする方法を説明します。
+title: VHD を Azure にアップロードするか、リージョン間でディスクをコピーする - Azure CLI
+description: Azure CLI を使用して、直接アップロードによって Azure マネージド ディスクに VHD をアップロードし、リージョン間でマネージド ディスクをコピーする方法を説明します。
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 09/20/2019
+ms.date: 03/27/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 2a5bfec08546d6cf00b1e04017b3879db8f016ee
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 6813206aebe67e4e6d2afd0d9c78d03f0c20c952
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970337"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420963"
 ---
-# <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Azure CLI を使用して Azure に VHD をアップロードする
+# <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure CLI
 
-この記事では、ご利用のローカル コンピューターから Azure マネージド ディスクに vhd をアップロードする方法について説明します。 以前は、データをストレージ アカウントにステージングし、そのストレージ アカウントを管理するなど、より複雑なプロセスを実行する必要がありました。 現在では、vhd をアップロードするためにストレージ アカウントを管理したり、データをステージングしたりする必要はなくなりました。 代わりに、空のマネージド ディスクを作成し、それに vhd を直接アップロードします。 これにより、オンプレミスの VM を Azure にアップロードする操作が簡単になり、最大 32 TiB の vhd を大きなマネージド ディスクに直接アップロードできます。
-
-Azure の IaaS VM 向けにバックアップ ソリューションを提供している場合は、直接アップロードを使用して顧客のバックアップをマネージド ディスクに復元することをお勧めします。 Azure の外部のマシンから VHD をアップロードする場合、速度はご利用のローカル帯域幅によって異なります。 Azure VM を使用している場合、ご利用の帯域幅は標準 HDD と同じになります。
-
-現在、直接アップロードは、Standard HDD、Standard SSD、および Premium SSD マネージド ディスクでサポートされています。 Ultra SSD ではまだサポートされていません。
+[!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 - 最新[バージョンの AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy) をダウンロードします。
 - [Azure CLI のインストール](/cli/azure/install-azure-cli)を実行します。
-- ローカルに保存された VHD ファイル
-- オンプレミスから VHD をアップロードする場合:ローカルに保存され、[Azure 用に準備された](../windows/prepare-for-upload-vhd-image.md) vhd。
+- オンプレミスから VHD をアップロードする場合: ローカルに保存され、[Azure 用に準備された](../windows/prepare-for-upload-vhd-image.md)固定サイズの VHD。
 - または、コピー操作を実行する場合は、Azure のマネージド ディスク。
 
-## <a name="create-an-empty-managed-disk"></a>空のマネージド ディスクを作成する
+## <a name="getting-started"></a>作業の開始
 
-ご利用の vhd を Azure にアップロードするには、このアップロード プロセス用に構成された空のマネージド ディスクを作成する必要があります。 作成する前に、それらのディスクについて把握しておく必要がある追加情報があります。
+GUI を使用してディスクをアップロードする場合は、Azure Storage Explorer を使用して行うことができます。 詳細については、次を参照してください。[Azure Storage Explorer を使用して Azure マネージド ディスクを管理する](disks-use-storage-explorer-managed-disks.md)
+
+ご利用の VHD を Azure にアップロードするには、このアップロード プロセス用に構成された空のマネージド ディスクを作成する必要があります。 作成する前に、それらのディスクについて把握しておく必要がある追加情報があります。
 
 この種類のマネージド ディスクには、2 つの固有の状態があります。
 
 - ReadToUpload。ディスクはアップロードを受け取る準備ができていますが、[Secure Access Signature](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) が生成されていないことを意味します。
 - ActiveUpload。ディスクはアップロードを受け取る準備ができており、SAS が生成済みであることを意味します。
 
-これらのいずれかの状態にある間は、実際のディスクの種類に関係なく、マネージド ディスクには [Standard HDD 料金](https://azure.microsoft.com/pricing/details/managed-disks/)が課金されます。 たとえば、P10 は S10 として課金されます。 これは、`revoke-access` がマネージド ディスク上で呼び出される (ディスクを VM にアタッチするために必要な処理) まで当てはまります。
+> [!NOTE]
+> これらのいずれかの状態にある間は、実際のディスクの種類に関係なく、マネージド ディスクには [Standard HDD 料金](https://azure.microsoft.com/pricing/details/managed-disks/)が課金されます。 たとえば、P10 は S10 として課金されます。 これは、`revoke-access` がマネージド ディスク上で呼び出される (ディスクを VM にアタッチするために必要な処理) まで当てはまります。
 
-アップロード用に空の標準 HDD を作成するには、アップロードする vhd のファイル サイズ (バイト単位) が必要です。 これを取得するには、`wc -c <yourFileName>.vhd` または `ls -al <yourFileName>.vhd` を使用できます。 この値は、 **--upload-size-bytes** パラメーターを指定するときに使用します。
+## <a name="create-an-empty-managed-disk"></a>空のマネージド ディスクを作成する
+
+アップロード用に空の標準 HDD を作成するには、事前に、アップロードする VHD のファイル サイズ (バイト単位) が必要です。 これを取得するには、`wc -c <yourFileName>.vhd` または `ls -al <yourFileName>.vhd` を使用できます。 この値は、 **--upload-size-bytes** パラメーターを指定するときに使用します。
 
 アップロード用の空の標準 HDD を作成するには、[disk create](/cli/azure/disk#az-disk-create) コマンドレットに、 **--for-upload** パラメーターと **--upload-size-bytes** パラメーターの両方を指定します。
 
-```bash
-az disk create -n mydiskname -g resourcegroupname -l westus2 --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
+`<yourdiskname>`、`<yourresourcegroupname>`、`<yourregion>` をご自身で選んだ値に置き換えます。 `--upload-size-bytes` パラメーターには例の値 `34359738880` が含まれており、それを適切な値に置き換えます。
+
+```azurecli
+az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
 ```
 
-Premium SSD または Standard SSD のいずれかをアップロードする場合は、**standard_lrs** を **premium_LRS** または **standardssd_lrs** のいずれかに置き換えます。 Ultra SSD はまだサポートされていません。
+Premium SSD または Standard SSD のいずれかをアップロードする場合は、**standard_lrs** を **premium_LRS** または **standardssd_lrs** のいずれかに置き換えます。 現時点では、Ultra ディスクはサポートされていません。
 
-これで、アップロード プロセス用に構成された空のマネージド ディスクが作成されました。 vhd をそのディスクにアップロードするには、書き込み可能な SAS をアップロード先とし参照できるように、用意する必要があります。
+アップロード プロセス用に構成された空のマネージド ディスクを作成したので、そこに VHD をアップロードすることができます。 VHD をそのディスクにアップロードするには、書き込み可能な SAS をアップロード先として参照できるように用意する必要があります。
 
-空のマネージド ディスクの書き込み可能な SAS を生成するには、次のコマンドを使用します。
+空のマネージド ディスクの書き込み可能な SAS を生成するには、`<yourdiskname>` と `<yourresourcegroupname>` を置き換えてから、次のコマンドを使用します。
 
-```bash
-az disk grant-access -n mydiskname -g resourcegroupname --access-level Write --duration-in-seconds 86400
+```azurecli
+az disk grant-access -n <yourdiskname> -g <yourresourcegroupname> --access-level Write --duration-in-seconds 86400
 ```
 
 戻り値のサンプル:
 
-```
+```output
 {
   "accessSas": "https://md-impexp-t0rdsfgsdfg4.blob.core.windows.net/w2c3mj0ksfgl/abcd?sv=2017-04-17&sr=b&si=600a9281-d39e-4cc3-91d2-923c4a696537&sig=xXaT6mFgf139ycT87CADyFxb%2BnPXBElYirYRlbnJZbs%3D"
 }
 ```
 
-## <a name="upload-vhd"></a>vhd をアップロードする
+## <a name="upload-a-vhd"></a>VHD のアップロード
 
 空のマネージド ディスク用の SAS が用意できたので、それを使用して、マネージド ディスクをアップロード コマンドのアップロード先として設定できます。
 
@@ -80,12 +82,12 @@ AzCopy v10 を使用して、生成した SAS URI を指定してローカルの
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
 
-アップロード中に SAS の有効期限が切れ、まだ `revoke-access` を呼び出していない場合は、再度 `grant-access` を使用して新しい SAS を取得し、アップロードを続行できます。
-
 アップロードが完了し、ディスクにこれ以上データを書き込む必要がなくなったら、SAS を無効にします。 SAS を無効にすると、マネージド ディスクの状態が変わり、そのディスクを VM にアタッチできるようになります。
 
-```bash
-az disk revoke-access -n mydiskname -g resourcegroupname
+`<yourdiskname>` と `<yourresourcegroupname>` を置き換えたうえで、次のコマンドを使ってディスクを使用可能にします。
+
+```azurecli
+az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
 ```
 
 ## <a name="copy-a-managed-disk"></a>マネージド ディスクをコピーする
@@ -99,7 +101,7 @@ az disk revoke-access -n mydiskname -g resourcegroupname
 
 `<sourceResourceGroupHere>`、`<sourceDiskNameHere>`、`<targetDiskNameHere>`、`<targetResourceGroupHere>`、`<yourTargetLocationHere>` (場所の値の例: uswest2) を実際の値に置き換えたら、次のスクリプトを実行してマネージド ディスクをコピーします。
 
-```bash
+```azurecli
 sourceDiskName = <sourceDiskNameHere>
 sourceRG = <sourceResourceGroupHere>
 targetDiskName = <targetDiskNameHere>
@@ -123,5 +125,5 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 ## <a name="next-steps"></a>次のステップ
 
-これでマネージド ディスクに vhd が正常にアップロードされたので、ディスクを[既存の VM にデータ ディスク](add-disk.md)として接続するか、[ディスクを OS ディスクとして VM に接続](upload-vhd.md#create-the-vm)して、新しい VM を作成することができます。 
+これでマネージド ディスクに VHD が正常にアップロードされたので、ディスクを[既存の VM にデータ ディスク](add-disk.md)として接続するか、[ディスクを OS ディスクとして VM に接続](upload-vhd.md#create-the-vm)して、新しい VM を作成することができます。 
 

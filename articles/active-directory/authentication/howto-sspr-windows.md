@@ -4,19 +4,19 @@ description: Windows のログオン画面で「パスワードを忘れた場�
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d4f08161daf1d9c1a4431d9e3fba3ca741d88b16
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77370076"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743348"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>方法:Windows のログイン画面からパスワードをリセットできるようにする
 
@@ -43,7 +43,7 @@ Windows 7、8、8.1、および 10 を実行中のコンピューターでは、
 - 次の具体的な 3 つの設定を組み合わせると、この機能が動作しなくなる可能性があります。
     - 対話型ログオン:CTRL + ALT + DEL を必要としない = Disabled
     - DisableLockScreenAppNotifications = 1 または Enabled
-    - IsContentDeliveryPolicyEnforced = 1 または True
+    - Windows SKU が Home または Professional エディションではない
 
 ## <a name="windows-10-password-reset"></a>Windows 10 でのパスワードのリセット
 
@@ -141,8 +141,8 @@ Azure AD 監査ログには、パスワードのリセットが発生した IP �
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- 詳細ログ記録を有効にするには、`REG_DWORD: “EnableLogging”` を作成し、それを 1 に設定します。
-- 詳細ログ記録を無効にするには、`REG_DWORD: “EnableLogging”` を 0 に変更します。
+- 詳細ログ記録を有効にするには、`REG_DWORD: "EnableLogging"` を作成し、それを 1 に設定します。
+- 詳細ログ記録を無効にするには、`REG_DWORD: "EnableLogging"` を 0 に変更します。
 
 ## <a name="what-do-users-see"></a>ユーザーに表示される画面
 

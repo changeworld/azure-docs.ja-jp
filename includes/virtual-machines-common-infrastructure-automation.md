@@ -4,19 +4,19 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2eb503b58f1679d138b6a1dd9304896be098ad6
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77608743"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419177"
 ---
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
 
 - VM の構成を自動化する
-    - ツールには、[Ansible](#ansible)、[Chef](#chef)、[Puppet](#puppet) があります。
+    - ツールには、[Ansible](#ansible)、[Chef](#chef)、[Puppet](#puppet)、および [Azure Resource Manager テンプレート](#azure-resource-manager-template)が含まれます。
     - VM のカスタマイズに特化したツールには、Linux VM 用の[cloud-init](#cloud-init)、[PowerShell Desired State Configuration (DSC)](#powershell-dsc)、すべての Azure VM に使用できる [Azure カスタム スクリプト拡張機能](#azure-custom-script-extension)があります。
- 
+
 - インフラストラクチャの管理を自動化する
     - ツールには、カスタム VM イメージの作成を自動化するための [Packer](#packer) や、インフラストラクチャの構築プロセスを自動化するための [Terraform](#terraform) があります。
     - [Azure Automation](#azure-automation) は、Azure とオンプレミス インフラストラクチャでアクションを実行できます。
@@ -56,7 +56,8 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 
 cloud-init はディストリビューション全体でも有効です。 たとえば、パッケージをインストールするときに **apt-get install** や **yum install** は使用しません。 代わりに、cloud-init ではインストールするパッケージの一覧をユーザーが定義できます。 cloud-init によって、選択したディストリビューションに対してネイティブのパッケージ管理ツールが自動的に使用されます。
 
-Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージでは、cloud-init のデプロイと構成が、VM および仮想マシン スケール セット とシームレスに動作するようになります。 Azure の cloud-init について詳しくは、次のページをご覧ください。
+Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージでは、cloud-init のデプロイと構成が、VM および仮想マシン スケール セット とシームレスに動作するようになります。
+Azure の cloud-init について詳しくは、次のページをご覧ください。
 
 - [Azure での Linux 仮想マシンに対する cloud-init のサポート](../articles/virtual-machines/linux/using-cloud-init.md)
 - [cloud-init を使用した VM 構成の自動化に関するチュートリアル](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md)
@@ -75,7 +76,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 
 ## <a name="azure-custom-script-extension"></a>Azure カスタム スクリプト拡張機能
-[Linux](../articles/virtual-machines/linux/extensions-customscript.md) または [Windows](../articles/virtual-machines/windows/extensions-customscript.md) 用の Azure カスタム スクリプト拡張機能は、Azure VM でスクリプトをダウンロードして実行します。 拡張機能は、VM を作成するときや、VM の使用中にいつでも使用できます。 
+[Linux](../articles/virtual-machines/linux/extensions-customscript.md) または [Windows](../articles/virtual-machines/windows/extensions-customscript.md) 用の Azure カスタム スクリプト拡張機能は、Azure VM でスクリプトをダウンロードして実行します。 拡張機能は、VM を作成するときや、VM の使用中にいつでも使用できます。
 
 スクリプトは、Azure Storage または GitHub リポジトリなどの公開されている場所からダウンロードできます。 カスタム スクリプト拡張機能を使用すると、ソース VM で実行されるスクリプトを任意の言語で作成できます。 これらのスクリプトを使用して、アプリケーションをインストールしたり、必要に応じて VM を構成したりすることができます。 資格情報をセキュリティで保護するために、パスワードなどの機密情報を保護された構成に格納することができます。 これらの資格情報は、VM 内でのみ復号化されます。
 
@@ -130,6 +131,17 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 - [Jenkins、GitHub、および Docker を使用して、Azure 内の Linux VM に開発インフラストラクチャを作成する](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md)。
 
+
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
+[Azure Resource Manager](../articles/azure-resource-manager/templates/overview.md) は、Azure のデプロイおよび管理サービスです。 Azure サブスクリプション内のリソースを作成、更新、および削除できる管理レイヤーを提供します。 アクセス制御、ロック、タグなどの管理機能を使用して、デプロイ後にリソースを保護および整理します。
+
+具体的には、次の方法を学習します。
+
+- [Resource Manager テンプレートを使用してスポット VM をデプロイする](../articles/virtual-machines/linux/spot-template.md)。
+- [C# と Resource Manager テンプレートを使用して Azure 仮想マシンをデプロイする](../articles/virtual-machines/windows/csharp-template.md)。
+- [Resource Manager テンプレートから Windows 仮想マシンを作成する](../articles/virtual-machines/windows/ps-template.md)。
+- [VM のテンプレートをダウンロードする](../articles/virtual-machines/windows/download-template.md)。
+- [Azure Image Builder テンプレートを作成する](../articles/virtual-machines/linux/image-builder-json.md)。
 
 ## <a name="next-steps"></a>次のステップ
 Azure でインフラストラクチャ自動化ツールを使用する方法はたくさんあります。 ニーズや環境に最適なソリューションを自由に使用できます。 Azure に組み込まれているいくつかのツールを使用したり、試したりするには、[Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) または [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) VM のカスタマイズを自動化する方法を参照してください。

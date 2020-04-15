@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/27/2019
+ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: fa73cb690fafb67f75abafab1b0dd27ffa0b8e32
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 3fe13dcb35e6985d160f52b7ee3f9da4accd7806
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210501"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756671"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,18 +57,20 @@ Web サービスとして Azure クラウドに、または Azure IoT Edge デ�
 
    CLI を使用するときは、`-w` パラメーターまたは `--workspace-name` パラメーターを使用して、コマンドのワークスペースを指定します。
 
-+ **VS コードを使用する**
++ **Visual Studio Code の使用**
 
-   VS コードを使用する場合は、グラフィカル インターフェイスを使用してワークスペースを選択します。 詳しくは、VS Code 拡張機能のドキュメントの「[モデルを展開して管理する](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)」をご覧ください。
+   Visual Studio Code を使用する場合は、グラフィカル インターフェイスを使用してワークスペースを選択します。 詳しくは、Visual Studio Code 拡張機能のドキュメントの「[モデルを展開して管理する](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)」をご覧ください。
 
-## <a id="registermodel"></a> モデルを登録する
+## <a name="register-your-model"></a><a id="registermodel"></a> モデルを登録する
 
 登録済みモデルは、モデルを構成する 1 つまたは複数のファイルの論理コンテナーです。 たとえば、複数のファイルに格納されているモデルがある場合は、ワークスペースに単一モデルとしてそれらを登録できます。 ファイルの登録後は、その登録済みモデルをダウンロードするかデプロイし、登録されたすべてのファイルを受信できます。
 
 > [!TIP]
-> モデルを登録するときは、(トレーニングの実行から) クラウドの場所またはローカル ディレクトリのパスを指定します。 このパスは、登録プロセスの一部としてアップロードするファイルを見つけるためだけのものです。 エントリ スクリプトで使用されるパスと一致する必要はありません。 詳細については、「[エントリ スクリプトでモデル ファイルを検索する](#locate-model-files-in-your-entry-script)」を参照してください。
+> モデルを登録するときは、(トレーニングの実行から) クラウドの場所またはローカル ディレクトリのパスを指定します。 このパスは、登録プロセスの一部としてアップロードするファイルを見つけるためだけのものです。 エントリ スクリプトで使用されるパスと一致する必要はありません。 詳細については、「[エントリ スクリプトでモデル ファイルを検索する](#load-model-files-in-your-entry-script)」を参照してください。
 
-機械学習モデルをご使用の Azure Machine Learning ワークスペースに登録します。 これらのモデルは、Azure Machine Learning から取得することも、どこか他の場所から取得することもできます。 次の例では、モデルを登録する方法を示します。
+機械学習モデルをご使用の Azure Machine Learning ワークスペースに登録します。 これらのモデルは、Azure Machine Learning から取得することも、どこか他の場所から取得することもできます。 モデルを登録するときに、必要に応じてモデルに関するメタデータを提供できます。 その後、モデル登録に適用する `tags` および `properties` 辞書を使用して、モデルをフィルター処理できます。
+
+次の例では、モデルを登録する方法を示します。
 
 ### <a name="register-a-model-from-an-experiment-run"></a>実験の実行からモデルを登録する
 
@@ -84,7 +86,9 @@ Web サービスとして Azure クラウドに、または Azure IoT Edge デ�
   + `azureml.core.Run` オブジェクトからモデルを登録する
  
     ```python
-    model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
+    model = run.register_model(model_name='sklearn_mnist',
+                               tags={'area': 'mnist'},
+                               model_path='outputs/sklearn_mnist_model.pkl')
     print(model.name, model.id, model.version, sep='\t')
     ```
 
@@ -94,7 +98,8 @@ Web サービスとして Azure クラウドに、または Azure IoT Edge デ�
 
     ```python
         description = 'My AutoML Model'
-        model = run.register_model(description = description)
+        model = run.register_model(description = description,
+                                   tags={'area': 'mnist'})
 
         print(run.model_id)
     ```
@@ -106,16 +111,16 @@ Web サービスとして Azure クラウドに、または Azure IoT Edge デ�
 + **CLI を使用する**
 
   ```azurecli-interactive
-  az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --run-id myrunid
+  az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --run-id myrunid --tag area=mnist
   ```
 
   [!INCLUDE [install extension](../../includes/machine-learning-service-install-extension.md)]
 
   `--asset-path` パラメーターは、クラウドでのモデルの場所を示します。 この例では、1 つのファイルへのパスが使用されます。 モデルの登録に複数のファイルを含めるには、`--asset-path` を、それらのファイルが含まれているフォルダーのパスに設定します。
 
-+ **VS コードを使用する**
++ **Visual Studio Code の使用**
 
-  [VS コード](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)拡張機能を使用して、任意のモデル ファイルまたはフォルダーを使用してモデルを登録します。
+  [Visual Studio Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) 拡張機能を使用して、任意のモデル ファイルまたはフォルダーを使用してモデルを登録します。
 
 ### <a name="register-a-model-from-a-local-file"></a>ローカル ファイルからモデルを登録する
 
@@ -159,41 +164,57 @@ Azure Machine Learning 以外でトレーニングされたモデルの使用の
 
 <a name="target"></a>
 
-## <a name="choose-a-compute-target"></a>コンピューティング ターゲットを選択する
-
-次のコンピューティング ターゲット、またはコンピューティング リソースを使用して、Web サービスのデプロイをホストできます。
-
-[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
-
 ## <a name="single-versus-multi-model-endpoints"></a>シングルモデルエンドポイントとマルチモデルエンドポイント
 Azure ML は、1つのエンドポイントの背後に シングルまたはマルチモデルのデプロイをサポートしています。
 
 マルチモデルエンドポイントは、共有コンテナーを使用して複数モデルをホストします。 これにより、オーバーヘッドコストを削減し、使用率を向上させ、複数のモジュールをアンサンブルとしてチェーンすることができます。 デプロイ スクリプトで指定したモデルはマウントされ、サービスを提供するコンテナーのディスクで使用できるようになります。必要に応じてメモリに読み込んで、スコアリング時に要求されている特定のモデルに基づいてスコア付けすることができます。
 
-1つのコンテナー化されたエンドポイントの背後にある複数モデルの使用方法を示す E2E の例としては、[こちらの例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model)を参照してください。
+1 つのコンテナー化されたエンドポイントの背後にある複数モデルの使用方法を示す E2E の例としては、[こちらの例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model)を参照してください。
 
-## <a name="prepare-deployment-artifacts"></a>デプロイの成果物を準備する
+## <a name="prepare-to-deploy"></a>デプロイを準備する
 
-モデルをデプロイするには、以下が必要です。
+モデルをサービスとしてデプロイするには、次のコンポーネントが必要です。
 
-* **エントリ スクリプトとソース コードの依存関係**。 このスクリプトは、要求を受け入れ、モデルを使用してその要求にスコアを付け、その結果を返します。
+* **推論環境を定義します**。 この環境は、推論用モデルを実行するために必要な依存関係をカプセル化します。
+* **スコアリング コードを定義します**。 このスクリプトは、要求を受け入れ、モデルを使用してその要求にスコアを付け、その結果を返します。
+* **推論構成を定義します**。 推論構成では、サービスとしてのモデルを実行するために必要な環境構成、エントリ スクリプト、およびその他のコンポーネントを指定します。
 
-    > [!IMPORTANT]
-    > * エントリ スクリプトは、モデルに固有のものです。 このスクリプトでは、受信要求データの形式、モデルで想定されるデータの形式、およびクライアントに返されるデータの形式が認識されている必要があります。
-    >
-    >   要求データがモデルで使用できない形式である場合、スクリプトで受け入れ可能な形式に変換できます。 また、応答をクライアントに返す前に変換することもできます。
-    >
-    > * Web サービスと IoT Edge のデプロイは、ワークスペースのデータストアおよびデータ セットにアクセスできません。 デプロイしたサービスが、デプロイの外部に格納されているデータ (Azure Storage アカウントのデータなど) にアクセスする必要がある場合、関連する SDK を使用してカスタム コード ソリューションを開発する必要があります。 たとえば、[Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) です。
-    >
-    >   シナリオに適したもう 1 つの方法として[バッチ予測](how-to-use-parallel-run-step.md)があります。これにより、スコアリング時にデータストアにアクセスできます。
+必要なコンポーネントを用意したら、に、モデルをデプロイした結果として作成されるサービスをプロファイルして、CPU とメモリの要件を把握できます。
 
-* **推論環境**。 そのモデルを実行するために必要とされるインストール済みパッケージの依存関係を含む基本イメージ。
+### <a name="1-define-inference-environment"></a>1.推論環境の定義
 
-* デプロイされたモデルをホストするコンピューティング先の**デプロイ構成**。 この構成には、モデルの実行に必要なメモリと CPU の要件などが記述されます。
+推論構成では、モデルを含む Web サービスを設定する方法を示します。 これは後でモデルをデプロイするときに使用されます。
 
-これらの項目は、*推論構成*と*デプロイ構成*にカプセル化されます。 推論構成では、エントリ スクリプトとその他の依存関係が参照されます。 これらの構成は、SDK を使用してデプロイを実行するときにプログラムによって定義します。 これらは、CLI を使用するときに JSON ファイルで定義します。
+推論構成は Azure Machine Learning 環境を使用して、デプロイに必要なソフトウェアの依存関係を定義します。 環境では、トレーニングとデプロイに必要なソフトウェアの依存関係を作成、管理、再利用することができます。 カスタム依存関係ファイルから環境を作成するか、またはキュレートされた Azure Machine Learning 環境のいずれかを使用できます。 次の YAML は、推論のための Conda 依存関係ファイルの例です。 バージョン 1.0.45 以上では、pip の依存関係として、azureml-defaults を指定する必要があることに注意してください。これは、モデルを Web サービスとしてホストするために必要な機能が含まれているためです。 また、自動スキーマ生成を使用する場合、エントリ スクリプトでは `inference-schema` パッケージをインポートする必要もあります。
 
-### <a id="script"></a> 1.エントリ スクリプトと依存関係を定義する
+```YAML
+name: project_environment
+dependencies:
+  - python=3.6.2
+  - scikit-learn=0.20.0
+  - pip:
+      # You must list azureml-defaults as a pip dependency
+    - azureml-defaults>=1.0.45
+    - inference-schema[numpy-support]
+```
+
+> [!IMPORTANT]
+> 依存関係が Conda と pip (PyPi から) の両方で利用できる場合、Conda パッケージには通常、インストールの信頼性を高めるビルド済みのバイナリが付属しているため、Conda バージョンを使用することをお勧めします。
+>
+> 詳細については、「[Conda と Pip について](https://www.anaconda.com/understanding-conda-and-pip/)」を参照してください。
+>
+> 依存関係が Conda を介して使用可能かどうかを確認するには、`conda search <package-name>` コマンドを使用するか、[https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) および [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo) でパッケージ インデックスを使用します。
+
+依存関係ファイルを使用して環境オブジェクトを作成して、後で使用するためにワークスペースに保存することができます。
+
+```python
+from azureml.core.environment import Environment
+myenv = Environment.from_conda_specification(name = 'myenv',
+                                             file_path = 'path-to-conda-specification-file'
+myenv.register(workspace=ws)
+```
+
+### <a name="2-define-scoring-code"></a><a id="script"></a> 2.スコアリング コードの定義
 
 エントリ スクリプトは、デプロイされた Web サービスに送信されたデータを受け取り、それをモデルに渡します。 次に、モデルから返された応答を受け取り、それをクライアントに返します。 *このスクリプトはこのモデルに固有のものです*。 そのため、モデルが受け入れ、返すデータを認識する必要があります。
 
@@ -203,7 +224,7 @@ Azure ML は、1つのエンドポイントの背後に シングルまたはマ
 
 * `run(input_data)`:この関数では、モデルを使用して、入力データに基づいて値が予測されます。 実行の入力と出力は、通常、JSON を使用してシリアル化およびシリアル化解除が実行されます。 また、未加工のバイナリ データも使用できます。 モデルに送信する前、またはクライアントに返す前のデータを変換できます。
 
-#### <a name="locate-model-files-in-your-entry-script"></a>エントリ スクリプトでモデル ファイルを検索する
+#### <a name="load-model-files-in-your-entry-script"></a>エントリ スクリプトでモデル ファイルを読み込む
 
 エントリ スクリプトでモデルを検索するには、次の 2 つの方法があります。
 * `AZUREML_MODEL_DIR`:モデルの場所へのパスを含む環境変数。
@@ -245,18 +266,7 @@ model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 
 
 モデルを登録する場合は名前を指定します。 この名前は、モデルがローカルにデプロイされるか、またはサービスのデプロイ時に配置されるときの場所に対応します。
 
-> [!IMPORTANT]
-> 自動機械学習を使用してモデルをトレーニングした場合、モデル名として `model_id` 値が使用されます。 自動機械学習でトレーニングされたモデルを登録してデプロイする例については、GitHub の「[Azure/MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)」を参照してください。
-
-下の例では (`sklearn_mnist` という名前で登録された) `sklearn_mnist_model.pkl` という名前の単一のファイルのパスが返されます。
-
-```python
-model_path = Model.get_model_path('sklearn_mnist')
-```
-
-<a id="schema"></a>
-
-#### <a name="optional-automatic-schema-generation"></a>(省略可能) スキーマの自動生成
+#### <a name="optional-define-model-web-service-schema"></a>(オプション) モデルの Web サービスのスキーマを定義する
 
 Web サービスのスキーマを自動生成するには、定義された型オブジェクトのいずれかのコンストラクターに入力や出力のサンプルを指定します。 型とサンプルはスキーマを自動作成するために使用されます。 その後、Azure Machine Learning によって、デプロイ中に、Web サービスの [OpenAPI](https://swagger.io/docs/specification/about/) (Swagger) 仕様が作成されます。
 
@@ -267,33 +277,7 @@ Web サービスのスキーマを自動生成するには、定義された型�
 * `pyspark`
 * 標準的な Python オブジェクト
 
-スキーマ生成を使用するには、Conda 環境ファイルに `inference-schema` パッケージを追加します。 このパッケージの詳細については、[https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema) を参照してください。
-
-##### <a name="example-dependencies-file"></a>依存関係ファイルの例
-
-次の YAML は、推論のための Conda 依存関係ファイルの例です。 バージョン 1.0.45 以上では、pip の依存関係として、azureml-defaults を指定する必要があります。これは、モデルを Web サービスとしてホストするために必要な機能が含まれているためです。
-
-```YAML
-name: project_environment
-dependencies:
-  - python=3.6.2
-  - scikit-learn=0.20.0
-  - pip:
-      # You must list azureml-defaults as a pip dependency
-    - azureml-defaults>=1.0.45
-    - inference-schema[numpy-support]
-```
-
-> [!IMPORTANT]
-> 依存関係が Conda と pip (PyPi から) の両方で利用できる場合、Conda パッケージには通常、インストールの信頼性を高めるビルド済みのバイナリが付属しているため、Conda バージョンを使用することをお勧めします。
->
-> 詳細については、「[Conda と Pip について](https://www.anaconda.com/understanding-conda-and-pip/)」を参照してください。
->
-> 依存関係が Conda を介して使用可能かどうかを確認するには、`conda search <package-name>` コマンドを使用するか、[https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) および [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo) でパッケージ インデックスを使用します。
-
-自動スキーマ生成を使用する場合、エントリ スクリプトで `inference-schema` パッケージをインポートする必要があります。
-
-変数 `input_sample` と `output_sample` で入力と出力のサンプル形式を定義します。これは Web サービスの要求と応答の形式を表します。 これらのサンプルを、`run()` 関数の入力と出力の関数デコレーターで使用します。 下の scikit-learn の例では、スキーマ生成が使用されています。
+スキーマ生成を使用するには、オープンソースの `inference-schema` パッケージを依存関係ファイルに含めます。 このパッケージの詳細については、[https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema) を参照してください。 変数 `input_sample` と `output_sample` で入力と出力のサンプル形式を定義します。これは Web サービスの要求と応答の形式を表します。 これらのサンプルを、`run()` 関数の入力と出力の関数デコレーターで使用します。 下の scikit-learn の例では、スキーマ生成が使用されています。
 
 ##### <a name="example-entry-script"></a>エントリ スクリプトの例
 
@@ -392,117 +376,24 @@ def run(data):
 * [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
 * [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
 * [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
+* [AutoML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)
 * [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
+* [Binary Data](#binary)
+* [CORS](#cors)
 
-<a id="binary"></a>
-
-#### <a name="binary-data"></a>Binary Data
-
-モデルがバイナリ データ (画像など) を受け入れる場合は、デプロイで使用される `score.py` ファイルを生の HTTP 要求を受け入れるように変更する必要があります。 生データを受け入れるには、エントリ スクリプトで `AMLRequest` クラスを使用して、`@rawhttp` デコレーターを `run()` 関数に追加します。
-
-バイナリ データを受け付ける `score.py` の例を次に示します。
-
-```python
-from azureml.contrib.services.aml_request import AMLRequest, rawhttp
-from azureml.contrib.services.aml_response import AMLResponse
-
-
-def init():
-    print("This is init()")
-
-
-@rawhttp
-def run(request):
-    print("This is run()")
-    print("Request: [{0}]".format(request))
-    if request.method == 'GET':
-        # For this example, just return the URL for GETs.
-        respBody = str.encode(request.full_path)
-        return AMLResponse(respBody, 200)
-    elif request.method == 'POST':
-        reqBody = request.get_data(False)
-        # For a real-world solution, you would load the data from reqBody
-        # and send it to the model. Then return the response.
-
-        # For demonstration purposes, this example just returns the posted data as the response.
-        return AMLResponse(reqBody, 200)
-    else:
-        return AMLResponse("bad request", 500)
-```
-
-> [!IMPORTANT]
-> `AMLRequest` クラスは `azureml.contrib` 名前空間にあります。 この名前空間内のエンティティは、このサービスが改善されるに従って頻繁に変更されます。 この名前空間内のものはすべて、Microsoft によって完全にはサポートされていないプレビューとして見なす必要があります。
->
-> これをローカルの開発環境でテストする必要がある場合は、次のコマンドを使用して、コンポーネントをインストールできます。
->
-> ```shell
-> pip install azureml-contrib-services
-> ```
-
-<a id="cors"></a>
-
-#### <a name="cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS)
-
-クロスオリジン リソース共有を使用すると、Web ページ上のリソースを他のドメインから要求することができます。 CORS は、クライアント要求で送信され、サービス応答で返される HTTP ヘッダーを使用して機能します。 CORS と有効なヘッダーについて詳しくは、Wikipedia の[クロスオリジン リソース共有](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)に関する説明を参照してください。
-
-CORS をサポートするようにモデル デプロイを構成するには、エントリ スクリプトで `AMLResponse` クラスを使用します。 このクラスを使用すると、応答オブジェクトにヘッダーを設定できます。
-
-次の例では、エントリ スクリプトから応答に対して `Access-Control-Allow-Origin` ヘッダーを設定しています。
-
-```python
-from azureml.contrib.services.aml_response import AMLResponse
-
-def init():
-    print("This is init()")
-
-def run(request):
-    print("This is run()")
-    print("Request: [{0}]".format(request))
-    if request.method == 'GET':
-        # For this example, just return the URL for GETs.
-        respBody = str.encode(request.full_path)
-        return AMLResponse(respBody, 200)
-    elif request.method == 'POST':
-        reqBody = request.get_data(False)
-        # For a real-world solution, you would load the data from reqBody
-        # and send it to the model. Then return the response.
-
-        # For demonstration purposes, this example
-        # adds a header and returns the request body.
-        resp = AMLResponse(reqBody, 200)
-        resp.headers['Access-Control-Allow-Origin'] = "http://www.example.com"
-        return resp
-    else:
-        return AMLResponse("bad request", 500)
-```
-
-> [!IMPORTANT]
-> `AMLResponse` クラスは `azureml.contrib` 名前空間にあります。 この名前空間内のエンティティは、このサービスが改善されるに従って頻繁に変更されます。 この名前空間内のものはすべて、Microsoft によって完全にはサポートされていないプレビューとして見なす必要があります。
->
-> これをローカルの開発環境でテストする必要がある場合は、次のコマンドを使用して、コンポーネントをインストールできます。
->
-> ```shell
-> pip install azureml-contrib-services
-> ```
-
-### <a name="2-define-your-inference-environment"></a>2.推論環境を定義する
-
-推論構成では、予測するモデルを構成する方法が説明されます。 この構成は、エントリ スクリプトの一部ではありません。 これは、エントリ スクリプトを参照し、デプロイに必要なすべてのリソースを検索するために使用されます。 これは後でモデルをデプロイするときに使用されます。
-
-推論構成は Azure Machine Learning 環境を使用して、デプロイに必要なソフトウェアの依存関係を定義します。 環境では、トレーニングとデプロイに必要なソフトウェアの依存関係を作成、管理、再利用することができます。 次の例で、ワークスペースから環境を読み込み、推論構成でそれを使用する方法を示します。
+### <a name="3-define-inference-configuration"></a><a id="script"></a> 3.推論構成を定義する
+    
+次の例で、ワークスペースから環境を読み込み、推論構成でそれを使用する方法を示します。
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.model import InferenceConfig
 
-myenv = Environment.get(workspace=ws, name="myenv", version="1")
-inference_config = InferenceConfig(entry_script="x/y/score.py",
+
+myenv = Environment.get(workspace=ws, name='myenv', version='1')
+inference_config = InferenceConfig(entry_script='path-to-score.py',
                                    environment=myenv)
 ```
-
-環境の詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関する記事を参照してください。
-
-環境を使用せずに、依存関係を直接指定することもできます。 次の例では、Conda ファイルからソフトウェアの依存関係を読み込む推論構成を作成する方法を示します。
 
 環境の詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関する記事を参照してください。
 
@@ -510,7 +401,7 @@ inference_config = InferenceConfig(entry_script="x/y/score.py",
 
 推論構成を利用したカスタム Docker イメージの使用については、[カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)に関するページを参照してください。
 
-### <a name="cli-example-of-inferenceconfig"></a>InferenceConfig の CLI の例
+#### <a name="cli-example-of-inferenceconfig"></a>InferenceConfig の CLI の例
 
 [!INCLUDE [inference config](../../includes/machine-learning-service-inference-config.md)]
 
@@ -528,7 +419,105 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 推論構成を利用したカスタム Docker イメージの使用については、[カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)に関するページを参照してください。
 
-### <a name="3-define-your-deployment-configuration"></a>3.デプロイ構成を定義する
+### <a name="4-optional-profile-your-model-to-determine-resource-utilization"></a><a id="profilemodel"></a> 4.(オプション) モデルをプロファイルしてリソース使用状況を判断する
+
+モデルを登録して、そのデプロイに必要な他のコンポーネントを準備したら、デプロイされたサービスで必要とされる CPU とメモリを決定できます。 モデルを実行して CPU 使用率、メモリ使用率、応答の待機時間などの情報を返す、サービスのプロファイル テストを行います。 また、リソースの使用状況に基づいて CPU とメモリに関する推奨事項も提示されます。
+
+モデルをプロファイリングするには、以下が必要になります。
+* 登録済みのモデル。
+* エントリ スクリプトと推論環境の定義に基づく推論構成。
+* 単一列の表形式のデータセット。各行には、サンプルの要求データを表す文字列が含まれています。
+
+> [!IMPORTANT]
+> 現時点では、要求データが文字列であることを期待するサービスのプロファイリングのみがサポートされています。たとえば、文字列のシリアル化された JSON、テキスト、文字列のシリアル化された画像などです。データセット (文字列) の各行の内容は、HTTP 要求の本文に置かれ、スコアリングのためにモデルをカプセル化するサービスに送信されます。
+
+以下に、入力データセットを作成して、受信する要求データにシリアル化された JSON が含まれていることを想定するサービスをプロファイルできる方法の例を示します。 ここでは、要求データの内容が同じである 100 個のインスタンスに基づくデータセットを作成しました。 実際のシナリオでは、モデル リソースの使用状況/動作が入力に依存している場合は特に、さまざまな入力を含むより規模の大きいデータセットを使用することをお勧めします。
+
+```python
+import json
+from azureml.core import Datastore
+from azureml.core.dataset import Dataset
+from azureml.data import dataset_type_definitions
+
+input_json = {'data': [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                       [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+# create a string that can be utf-8 encoded and
+# put in the body of the request
+serialized_input_json = json.dumps(input_json)
+dataset_content = []
+for i in range(100):
+    dataset_content.append(serialized_input_json)
+dataset_content = '\n'.join(dataset_content)
+file_name = 'sample_request_data.txt'
+f = open(file_name, 'w')
+f.write(dataset_content)
+f.close()
+
+# upload the txt file created above to the Datastore and create a dataset from it
+data_store = Datastore.get_default(ws)
+data_store.upload_files(['./' + file_name], target_path='sample_request_data')
+datastore_path = [(data_store, 'sample_request_data' +'/' + file_name)]
+sample_request_data = Dataset.Tabular.from_delimited_files(
+    datastore_path, separator='\n',
+    infer_column_types=True,
+    header=dataset_type_definitions.PromoteHeadersBehavior.NO_HEADERS)
+sample_request_data = sample_request_data.register(workspace=ws,
+                                                   name='sample_request_data',
+                                                   create_new_version=True)
+```
+
+サンプル要求データを含むデータセットを準備したら、推論構成を作成します。 推論構成は、score.py と環境定義に基づきます。 次の例に、推論構成を作成してプロファイリングを実行する方法を示します。
+
+```python
+from azureml.core.model import InferenceConfig, Model
+from azureml.core.dataset import Dataset
+
+
+model = Model(ws, id=model_id)
+inference_config = InferenceConfig(entry_script='path-to-score.py',
+                                   environment=myenv)
+input_dataset = Dataset.get_by_name(workspace=ws, name='sample_request_data')
+profile = Model.profile(ws,
+            'unique_name',
+            [model],
+            inference_config,
+            input_dataset=input_dataset)
+
+profile.wait_for_completion(True)
+
+# see the result
+details = profile.get_details()
+```
+
+次のコマンドでは、CLI を使用してモデルをプロファイルする方法を示します。
+
+```azurecli-interactive
+az ml model profile -g <resource-group-name> -w <workspace-name> --inference-config-file <path-to-inf-config.json> -m <model-id> --idi <input-dataset-id> -n <unique-name>
+```
+
+> [!TIP]
+> プロファイリングによって返された情報を保持するには、モデルのタグまたはプロパティを使用します。 タグまたはプロパティを使用すると、データがモデルと共にモデル レジストリに格納されます。 次の例は、`requestedCpu` および `requestedMemoryInGb` 情報を含む新しいタグを追加する方法を示しています。
+>
+> ```python
+> model.add_tags({'requestedCpu': details['requestedCpu'],
+>                 'requestedMemoryInGb': details['requestedMemoryInGb']})
+> ```
+>
+> ```azurecli-interactive
+> az ml model profile -g <resource-group-name> -w <workspace-name> --i <model-id> --add-tag requestedCpu=1 --add-tag requestedMemoryInGb=0.5
+> ```
+
+## <a name="deploy-to-target"></a>ターゲットにデプロイする
+
+デプロイでは、推論構成のデプロイ構成を使用して、モデルをデプロイします。 デプロイ プロセスは、コンピューティング ターゲットに関係なく類似しています。 AKS へのデプロイは、AKS クラスターへの参照を指定する必要があるため、少し異なります。
+
+### <a name="choose-a-compute-target"></a>コンピューティング ターゲットを選択する
+
+次のコンピューティング ターゲット、またはコンピューティング リソースを使用して、Web サービスのデプロイをホストできます。
+
+[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+### <a name="define-your-deployment-configuration"></a>デプロイ構成を定義する
 
 モデルをデプロイする前にデプロイ構成を定義する必要があります。 *デプロイ構成は、Web サービスがホストされるコンピューティング ターゲットに固有となります*。 たとえば、モデルをローカルでデプロイするときに、サービスが要求を受け入れるポートを指定する必要があります。 デプロイ構成は、エントリ スクリプトの一部ではありません。 これは、モデルとエントリ スクリプトをホストするコンピューティング先の特性を定義するために使用されます。
 
@@ -548,15 +537,11 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-## <a name="deploy-to-target"></a>ターゲットにデプロイする
+### <a name="securing-deployments-with-tls"></a>TLS を使用したデプロイのセキュリティ保護
 
-デプロイでは、推論構成のデプロイ構成を使用して、モデルをデプロイします。 デプロイ プロセスは、コンピューティング ターゲットに関係なく類似しています。 AKS へのデプロイは、AKS クラスターへの参照を指定する必要があるため、少し異なります。
+Web サービスのデプロイをセキュリティで保護する方法の詳細については、「[TLS を有効にしてデプロイする](how-to-secure-web-service.md#enable)」を参照してください。
 
-### <a name="securing-deployments-with-ssl"></a>SSL を使用したデプロイのセキュリティ保護
-
-Web サービスのデプロイをセキュリティで保護する方法の詳細については、[SSL を使用した Web サービスのセキュリティ保護](how-to-secure-web-service.md#enable)に関する記事を参照してください。
-
-### <a id="local"></a> ローカル デプロイ
+### <a name="local-deployment"></a><a id="local"></a> ローカル デプロイ
 
 モデルをローカルにデプロイするには、お使いのローカル コンピューターに Docker がインストールされている必要があります。
 
@@ -599,15 +584,15 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 | 失敗 | エラーまたはクラッシュが発生したため、サービスをデプロイできませんでした。 | はい |
 | Healthy | サービスは正常であり、エンドポイントを使用できます。 | はい |
 
-### <a id="notebookvm"></a> コンピューティング インスタンス Web サービス (開発/テスト)
+### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a> コンピューティング インスタンス Web サービス (開発/テスト)
 
 [Azure Machine Learning コンピューティング インスタンスへのモデルのデプロイ](how-to-deploy-local-container-notebook-vm.md)に関する記事を参照してください。
 
-### <a id="aci"></a> Azure Container Instances (開発/テスト)
+### <a name="azure-container-instances-devtest"></a><a id="aci"></a> Azure Container Instances (開発/テスト)
 
 [Azure Container Instances へのデプロイ](how-to-deploy-azure-container-instance.md)に関する記事を参照してください。
 
-### <a id="aks"></a>Azure Kubernetes Service (開発/テストおよび運用)
+### <a name="azure-kubernetes-service-devtest-and-production"></a><a id="aks"></a>Azure Kubernetes Service (開発/テストおよび運用)
 
 [Azure Kubernetes Service へのデプロイ](how-to-deploy-azure-kubernetes-service.md)に関する記事を参照してください。
 
@@ -797,16 +782,16 @@ print(response.json())
 
 仕様からクライアント ライブラリを作成できるユーティリティについては、[swagger-codegen](https://github.com/swagger-api/swagger-codegen) を参照してください。
 
-### <a id="azuremlcompute"></a> バッチ推論
+### <a name="batch-inference"></a><a id="azuremlcompute"></a> バッチ推論
 Azure Machine Learning のコンピューティング先は、Azure Machine Learning によって作成され、管理されます。 これは Azure Machine Learning パイプラインからのバッチ予測に使用できます。
 
 Azure Machine Learning コンピューティングを使用したバッチ推論のチュートリアルについては、[バッチ予測を実行する方法](tutorial-pipeline-batch-scoring-classification.md)に関するページを参照してください。
 
-### <a id="iotedge"></a> IoT Edge の推論
+### <a name="iot-edge-inference"></a><a id="iotedge"></a> IoT Edge の推論
 エッジにデプロイするためのサポートは現在、プレビューの段階にあります。 詳細については、[IoT Edge モジュールとしての Azure Machine Learning のデプロイ](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning)に関する記事を参照してください。
 
 
-## <a id="update"></a> Web サービスを更新する
+## <a name="update-web-services"></a><a id="update"></a> Web サービスを更新する
 
 [!INCLUDE [aml-update-web-service](../../includes/machine-learning-update-web-service.md)]
 
@@ -897,6 +882,8 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
+Pytorch を使用している場合は、[モデルを PyTorch から ONNX にエクスポートする](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)と、変換および制限に関する詳細が得られます。 
+
 ### <a name="scikit-learn-models"></a>Scikit-learn モデル
 
 コードなしのモデル デプロイは、全種類の組み込み Scikit-learn モデルでサポートされています。
@@ -918,6 +905,24 @@ model = Model.register(workspace=ws,
                        
 service_name = 'my-sklearn-service'
 service = Model.deploy(ws, service_name, [model])
+```
+
+注:predict_proba をサポートするモデルは、既定でそのメソッドを使用します。 これをオーバーライドして predict を使用するには、次のように POST の本文を変更します。
+```python
+import json
+
+
+input_payload = json.dumps({
+    'data': [
+        [ 0.03807591,  0.05068012,  0.06169621, 0.02187235, -0.0442235,
+         -0.03482076, -0.04340085, -0.00259226, 0.01990842, -0.01764613]
+    ],
+    'method': 'predict'  # If you have a classification model, the default behavior is to run 'predict_proba'.
+})
+
+output = service.run(input_payload)
+
+print(output)
 ```
 
 注:事前構築済みの sklearn 推論コンテナーには次の依存関係が含まれています。
@@ -964,7 +969,7 @@ package.wait_for_creation(show_output=True)
 
 ```text
 REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
-myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43GB
+myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43 GB
 ```
 
 このイメージに基づいてローカル コンテナーを開始するには、次のコマンドを使用して、シェルまたはコマンド ラインから名前付きコンテナーを開始します。 `<imageid>` 値を、`docker images` コマンドから返されたイメージ ID に置き換えます。
@@ -1011,8 +1016,8 @@ print("Password:", acr.password)
 
 ```text
 REPOSITORY      TAG                 IMAGE ID            CREATED             SIZE
-<none>          <none>              2d5ee0bf3b3b        49 seconds ago      1.43GB
-myimage         latest              739f22498d64        3 minutes ago       1.43GB
+<none>          <none>              2d5ee0bf3b3b        49 seconds ago      1.43 GB
+myimage         latest              739f22498d64        3 minutes ago       1.43 GB
 ```
 
 このイメージに基づいて新しいコンテナーを開始するには、次のコマンドを使用します。
@@ -1069,12 +1074,122 @@ docker kill mycontainer
 
 詳細については、[WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) と [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--) のドキュメントを参照してください。
 
+<a id="advanced-entry-script"></a>
+## <a name="advanced-entry-script-authoring"></a>高度なエントリ スクリプトの作成
+
+<a id="binary"></a>
+
+### <a name="binary-data"></a>Binary Data
+
+モデルがバイナリ データ (画像など) を受け入れる場合は、デプロイで使用される `score.py` ファイルを生の HTTP 要求を受け入れるように変更する必要があります。 生データを受け入れるには、エントリ スクリプトで `AMLRequest` クラスを使用して、`@rawhttp` デコレーターを `run()` 関数に追加します。
+
+バイナリ データを受け付ける `score.py` の例を次に示します。
+
+```python
+from azureml.contrib.services.aml_request import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+
+def init():
+    print("This is init()")
+
+
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        # For this example, just return the URL for GETs.
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        # For a real-world solution, you would load the data from reqBody
+        # and send it to the model. Then return the response.
+
+        # For demonstration purposes, this example just returns the posted data as the response.
+        return AMLResponse(reqBody, 200)
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> `AMLRequest` クラスは `azureml.contrib` 名前空間にあります。 この名前空間内のエンティティは、このサービスが改善されるに従って頻繁に変更されます。 この名前空間内のものはすべて、Microsoft によって完全にはサポートされていないプレビューとして見なす必要があります。
+>
+> これをローカルの開発環境でテストする必要がある場合は、次のコマンドを使用して、コンポーネントをインストールできます。
+>
+> ```shell
+> pip install azureml-contrib-services
+> ```
+
+`AMLRequest` クラスからは、score.py の未加工の投稿データにのみアクセスできます。クライアント側コンポーネントはありません。 クライアントからは、通常どおりにデータを投稿します。 たとえば、次の Python コードを使用すると、イメージ ファイルを読み取り、データを投稿することができます。
+
+```python
+import requests
+# Load image data
+data = open('example.jpg', 'rb').read()
+# Post raw data to scoring URI
+res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/octet-stream'})
+```
+
+<a id="cors"></a>
+
+### <a name="cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS)
+
+クロスオリジン リソース共有を使用すると、Web ページ上のリソースを他のドメインから要求することができます。 CORS は、クライアント要求で送信され、サービス応答で返される HTTP ヘッダーを使用して機能します。 CORS と有効なヘッダーについて詳しくは、Wikipedia の[クロスオリジン リソース共有](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)に関する説明を参照してください。
+
+CORS をサポートするようにモデル デプロイを構成するには、エントリ スクリプトで `AMLResponse` クラスを使用します。 このクラスを使用すると、応答オブジェクトにヘッダーを設定できます。
+
+次の例では、エントリ スクリプトから応答に対して `Access-Control-Allow-Origin` ヘッダーを設定しています。
+
+```python
+from azureml.contrib.services.aml_response import AMLResponse
+
+def init():
+    print("This is init()")
+
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        # For this example, just return the URL for GETs.
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        # For a real-world solution, you would load the data from reqBody
+        # and send it to the model. Then return the response.
+
+        # For demonstration purposes, this example
+        # adds a header and returns the request body.
+        resp = AMLResponse(reqBody, 200)
+        resp.headers['Access-Control-Allow-Origin'] = "http://www.example.com"
+        return resp
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> `AMLResponse` クラスは `azureml.contrib` 名前空間にあります。 この名前空間内のエンティティは、このサービスが改善されるに従って頻繁に変更されます。 この名前空間内のものはすべて、Microsoft によって完全にはサポートされていないプレビューとして見なす必要があります。
+>
+> これをローカルの開発環境でテストする必要がある場合は、次のコマンドを使用して、コンポーネントをインストールできます。
+>
+> ```shell
+> pip install azureml-contrib-services
+> ```
+
+
+> [!WARNING]
+> Azure Machine Learning では、スコア付けサービスを実行しているコンテナーに POST 要求と GET 要求のみがルーティングされます。 これにより、ブラウザーではプレフライト CORS 要求に対して OPTIONS 要求が使用されるため、エラーが発生する可能性があります。
+> 
+
 ## <a name="next-steps"></a>次のステップ
 
 * [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
 * [デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)
-* [SSL を使用して Azure Machine Learning Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
+* [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する](how-to-consume-web-service.md)
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)
 * [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)
+* [モデル デプロイのイベント アラートおよびトリガーを作成する](how-to-use-event-grid.md)
 

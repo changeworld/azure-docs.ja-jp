@@ -63,6 +63,8 @@
               href: add-users-administrator.md
             - name: インフォメーション ワーカーによる B2B ユーザーの追加
               href: add-users-information-worker.md
+            - name: B2B への内部ユーザーの招待
+              href: invite-internal-users.md
             - name: Google のフェデレーション
               href: google-federation.md
             - name: ワンタイム パスコード認証

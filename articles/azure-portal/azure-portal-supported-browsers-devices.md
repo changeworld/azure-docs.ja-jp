@@ -15,16 +15,18 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 792864022cb7c1b2b4b43a4980d86e32b213525c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63bfb7c92e77c4059a46a83b76b3818fcb6d63be
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75640106"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754193"
 ---
 # <a name="supported-devices"></a>サポートされているデバイス
 
-[Azure portal](https://portal.azure.com) は Web ベースのコンソールで、最新のすべてのデスクトップおよびタブレット デバイスのブラウザーで動作します。 モバイル デバイスから Azure リソースを管理する必要がある場合は、[Azure mobile app](https://azure.microsoft.com/features/azure-portal/mobile-app/) をお試しください。 iOS と Android でご利用可能です。
+[Azure portal](https://portal.azure.com) は Web ベースのコンソールで、最新のすべてのデスクトップおよびタブレット デバイスのブラウザーで動作します。 ポータルを使用するには、ブラウザーで JavaScript が有効になっている必要があります。
+
+モバイル デバイスから Azure リソースを管理する必要がある場合は、[Azure mobile app](https://azure.microsoft.com/features/azure-portal/mobile-app/) をお試しください。 iOS と Android でご利用可能です。
 
 ## <a name="recommended-browsers"></a>推奨されるブラウザー
 

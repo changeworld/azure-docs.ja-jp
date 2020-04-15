@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1046c11e064e69ed0ddb18c77bf5935ba60fb5aa
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461285"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803299"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>アプリケーション プロキシ を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン
 
@@ -58,7 +58,7 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
 
 オンプレミスのアプリケーションに SSO を提供する前に、アプリケーション プロキシを有効にして、コネクタをインストールする必要があります。 オンプレミス環境を準備する方法、コネクタをインストールして登録する方法、コネクタをテストする方法については、チュートリアル「[Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)」をご覧ください。 次に、これらの手順に従って、アプリケーション プロキシを使用して新しいアプリケーションを発行します。 以下に記載されていないその他の設定については、チュートリアルの「[オンプレミス アプリを Azure AD に追加する](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)」セクションをご覧ください。
 
-1. Azure portal 内でアプリケーションを開いたまま、 **[アプリケーション プロキシ]** を選択します。 アプリケーションの **[内部 URL]** を指定します。 カスタム ドメインを使用している場合は、アプリケーションの SSL 証明書もアップロードする必要があります。 
+1. Azure portal 内でアプリケーションを開いたまま、 **[アプリケーション プロキシ]** を選択します。 アプリケーションの **[内部 URL]** を指定します。 カスタム ドメインを使用している場合は、アプリケーションの TLS/SSL 証明書もアップロードする必要があります。 
    > [!NOTE]
    > ベスト プラクティスとして、最適化されたユーザー エクスペリエンスのため、可能な限り、カスタム ドメインを使用します。 詳しくは、「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](application-proxy-configure-custom-domain.md)」をご覧ください。
 
@@ -74,14 +74,14 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
 
 2. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の見出しに移動し、その **[編集]** アイコン (鉛筆の形) を選択します。 アプリケーション プロキシ内で構成した**外部 URL** が、 **[識別子]** 、 **[応答 URL]** 、 **[ログアウト URL]** の各フィールドに入力されていることを確認します。 これらの URL は、アプリケーション プロキシが正常に動作するために必要です。 
 
-3. アプリケーション プロキシによってドメインに到達できるように、前に構成した**応答 URL** を編集します。 たとえば、**外部 URL** が `https://contosotravel-f128.msappproxy.net` で、元の**応答 URL** が `https://contosotravel.com/acs` の場合、元の**応答 URL** を `https://contosotravel-f128.msappproxy.net/acs` に更新する必要があります。 
+3. 以前に構成した **[応答 URL]** を編集して、そのドメインがアプリケーション プロキシ経由でインターネットに到達できるようにします。 たとえば、**外部 URL** が `https://contosotravel-f128.msappproxy.net` で、元の**応答 URL** が `https://contosotravel.com/acs` の場合、元の**応答 URL** を `https://contosotravel-f128.msappproxy.net/acs` に更新する必要があります。
 
     ![基本的な SAML 構成データを入力する](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
 
 4. 更新された**応答 URL** の横にあるチェックボックスをオンにして、既定値としてマークします。
 
-   * 必須の**応答 URL** が既に表示されている場合は、この**応答 URL** を既定値としてマークし、以前に構成した**応答 URL** を削除します。
+   * 必須の **[応答 URL]** を既定としてマークした後、以前に構成した内部 URL を使用する **[応答 URL]** を削除することもできます。
 
    * SP によって開始されたフローの場合、バックエンド アプリケーションで認証トークンを受け取るための適切な**応答 URL** または Assertion Consumer Service URL が指定されていることを確認します。
 

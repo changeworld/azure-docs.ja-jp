@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/29/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: b90910614bcd86a54198b1a0961a3378427ea87e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a751fa193c8dd530707f790af0292d536a6f47d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73164153"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420461"
 ---
-# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure-preview"></a>Azure 内で IPv6 を使用して仮想マシン スケール セットをデプロイする (プレビュー)
+# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>Azure 内で IPv6 を使用して仮想マシン スケール セットをデプロイする
 
-この記事では、Azure 仮想ネットワーク内でデュアル スタック (IPv4 + IPv6) 仮想マシン スケール セットをデュアル スタック外部ロード バランサーと共にデプロイする方法を示します。 IPv6 対応の仮想マシン スケール セットを作成するプロセスは、[こちら](ipv6-configure-standard-load-balancer-template-json.md)で説明している個々の VM の作成プロセスとほぼ同じです。 個々の VM について説明したものと同様の手順に従って作業を開始します。
-1.  IPv4 および IPv6 パブリック IP を作成します。
-2.  デュアル スタック ロード バランサーを作成します。  
-3.  ネットワーク セキュリティ グループ (NSG) のルールを作成します。  
+この記事では、Azure 仮想ネットワーク内でデュアル スタック (IPv4 + IPv6) 仮想マシン スケール セットをデュアル スタック外部ロード バランサーと共にデプロイする方法を示します。 IPv6 対応の仮想マシン スケール セットを作成するプロセスは、[こちら](ipv6-configure-standard-load-balancer-template-json.md)で説明している個々の VM の作成プロセスとほぼ同じです。 個々の VM についての説明と同様の手順に従って、作業を開始します。
+1.    IPv4 および IPv6 パブリック IP を作成します。
+2.    デュアル スタック ロード バランサーを作成します。  
+3.    ネットワーク セキュリティ グループ (NSG) のルールを作成します。  
 
 個々の VM とは異なる手順は、仮想マシン スケール セット リソース (networkProfile/networkInterfaceConfigurations) を使用するネットワーク インターフェイス (NIC) 構成の作成だけです。 JSON 構造体は、個々の VM で使用される Microsoft.Network/networkInterfaces オブジェクトのものと同様ですが、次の例に示すように、 **"primary": true** 属性を使用した NIC と IPv4 IpConfiguration のプライマリ インターフェイスとしての設定が追加されています。
 

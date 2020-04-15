@@ -29,13 +29,17 @@
       href: manage-farms-in-azure-farmbeats.md
     - name: センサー データの取得
       href: get-sensor-data-from-sensor-partner.md
+    - name: 気象データの取得
+      href: get-weather-data-from-weather-partner.md
     - name: マップの生成
       href: generate-maps-in-azure-farmbeats.md
     - name: ルールの構成とアラートの管理
       href: configure-rules-alerts-in-azure-farmbeats.md
     - name: ドローンの画像を取得する
       href: get-drone-imagery-in-azure-farmbeats.md
-- name: '[トラブルシューティング]'
+    - name: 障害復旧
+      href: disaster-recovery-for-farmbeats.md
+- name: トラブルシューティング
   items:
     - name: Azure FarmBeats のトラブルシューティング
       href: troubleshoot-azure-farmbeats.md

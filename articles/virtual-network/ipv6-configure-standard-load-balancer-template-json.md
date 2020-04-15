@@ -1,5 +1,5 @@
 ---
-title: IPv6 デュアル タスク アプリケーション - リソース マネージャーのテンプレート (プレビュー) を Azure 仮想ネットワークで展開します。
+title: Azure 仮想ネットワークでの IPv6 デュアル スタック アプリケーションのデプロイ - Resource Manger テンプレート
 titlesuffix: Azure Virtual Network
 description: この記事では、Azure Resource Manager VM テンプレートを使用して Azure 仮想ネットワークで、Standard Load Balancer と共に IPv6 デュアル スタック アプリケーションをデプロイする方法を示します。
 services: virtual-network
@@ -10,16 +10,16 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 8f2c6bc7fb7ab0939da20932fd531c158549ce7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f9531b5d1decfd462a82b9d389c5af519591c83
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70012845"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420640"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>Azure 仮想ネットワーク内に IPv6 デュアル スタック アプリケーションをデプロイする - テンプレート (プレビュー)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template"></a>Azure 仮想ネットワークでの IPv6 デュアル スタック アプリケーションのデプロイ - テンプレート
 
 この記事では、適用する Azure Resource Manager VM テンプレートの一部と共にIPv6 構成タスクのリストを示します。 この記事で説明されているテンプレートを使用して、Azure で Standard Load Balancer を使用してデュアル スタック (IPv4 と IPv6) アプリケーションをデプロイします。これには、IPv4 と IPv6 のサブネットを持つデュアル スタック仮想ネットワーク、デュアル (IPv4 と IPv6) のフロントエンド構成を持つ Standard Load Balancer、デュアル IP 構成、ネットワーク セキュリティ グループ、およびパブリック IP を持つ NIC の仮想マシンが含まれます。 
 

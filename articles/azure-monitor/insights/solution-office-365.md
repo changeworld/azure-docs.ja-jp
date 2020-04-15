@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/08/2019
-ms.openlocfilehash: 0018ae55ab74e691577a34a397c15355587e0fac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 5aa025fb366634e796abfb2eb9c0035d9b87dc3c
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663261"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437040"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -20,7 +20,7 @@ ms.locfileid: "77663261"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>ソリューションの更新
-> このソリューションは、[Azure Sentinel](../../sentinel/overview.md) の [Office 365](../../sentinel/connect-office-365.md) 一般公開ソリューション、および [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に置き換えられました。 これらのソリューションにより、以前の Azure Monitor Office 365 ソリューションの更新バージョンが提供され、構成操作が向上しました。 2020 年 4 月 30 日までは、既存のソリューションを引き続きご利用いただけます。
+> このソリューションは、[Azure Sentinel](../../sentinel/overview.md) の [Office 365](../../sentinel/connect-office-365.md) 一般公開ソリューション、および [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に置き換えられました。 これらのソリューションにより、以前の Azure Monitor Office 365 ソリューションの更新バージョンが提供され、構成操作が向上しました。 2020 年 7 月 30 日までは、既存のソリューションを引き続きご利用いただけます。
 > 
 > Azure Sentinel は、ログを取り込み、検出、調査、検出、機械学習による分析情報を含む追加の SIEM 機能を提供するクラウド ネイティブのセキュリティ情報およびイベント管理ソリューションです。 Azure Sentinel を使用することで、Office 365 SharePoint アクティビティと Exchange 管理ログの取り込みが提供されるようになりました。
 > 
@@ -53,7 +53,7 @@ ms.locfileid: "77663261"
 > | where TimeGenerated >= ago(1d) 
 > | where OfficeWorkload == "AzureActiveDirectory"                      
 > | where Operation == 'UserLoginFailed'
-> | summarize count() by UserId 
+> | summarize count() by UserId    
 > ```
 > 
 > ```Kusto
@@ -82,10 +82,10 @@ ms.locfileid: "77663261"
 > ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>Q:Azure AD ログを接続するために Azure Sentinel は必要ですか。
 > [Azure AD ログと Azure Monitor の統合](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)を構成できます。これは、Azure Sentinel ソリューションに関連付けられていません。 Azure Sentinel は、ネイティブ コネクタと、すぐに使用できる Azure AD ログ用のコンテンツを提供します。 詳細については、組み込みのセキュリティ指向のコンテンツに関する次の質問を参照してください。
 >
-> ###   <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>Q:Azure Sentinel と Azure Monitor から Azure AD ログを接続する場合の違いは何ですか。
+> ###    <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>Q:Azure Sentinel と Azure Monitor から Azure AD ログを接続する場合の違いは何ですか。
 > Azure Sentinel と Azure Monitor は、同じ [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に基づいて Azure AD ログに接続します。 Azure Sentinel では、同じデータを接続し、監視情報をワンクリック提供するでネイティブ コネクタが使用できます。
 >
-> ###   <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>Q:新しい Azure AD レポートおよび監視テーブルに移動する場合は、どのように変更する必要がありますか。
+> ###    <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>Q:新しい Azure AD レポートおよび監視テーブルに移動する場合は、どのように変更する必要がありますか。
 > 警告、ダッシュボード、および Office 365 Azure AD データを使用して作成したコンテンツを含む Azure AD データを使用するすべてのクエリを、新しいテーブルを使用して再作成する必要があります。
 >
 > Azure Sentinel と Azure AD には、Azure AD レポートおよび監視ソリューションに移行するときに使用できる組み込みコンテンツが用意されています。 詳細については、組み込みのセキュリティ指向のコンテンツに関する次の質問、および 「[Azure Active Directory レポートに Azure Monitor ブックを使用する方法](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md)」を参照してください。 
@@ -103,7 +103,7 @@ ms.locfileid: "77663261"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>Q:Azure Sentinel は、ソリューションの一部として追加のコネクタを提供しますか。
 > はい。[Azure Sentinel データ ソースの接続](../../sentinel/connect-data-sources.md)に関する記事を参照してください。
 > 
-> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>Q:4 月 30 日には何が行われるのですか。 事前にオフボードする必要はありますか。
+> ###    <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>Q:4 月 30 日には何が行われるのですか。 事前にオフボードする必要はありますか。
 > 
 > - **Office365** ソリューションからデータを受信することができなくなります。 このソリューションは Marketplace で使用できなくなります
 > - Azure Sentinel のお客様については、Log Analytics ワークスペース ソリューション **Office365** が Azure Sentinel **SecurityInsights** ソリューションに含まれるようになります。
@@ -315,7 +315,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | ActorContextId | アクターが所属する組織の GUID。 |
 | ActorIpAddress | アクターの IP アドレス。IPv4 または IPv6 アドレスの形式。 |
 | InterSystemsId | Office 365 サービス内のコンポーネント間でアクションを追跡する GUID。 |
-| IntraSystemId |   アクションを追跡するために Azure Active Directory によって生成される GUID。 |
+| IntraSystemId |     アクションを追跡するために Azure Active Directory によって生成される GUID。 |
 | SupportTicketId | "代理操作" の状況におけるアクションのカスタマー サポート チケット ID。 |
 | TargetContextId | ターゲットのユーザーが所属する組織の GUID。 |
 
@@ -330,7 +330,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | ElevationApprovedTime | 昇格が承認されたときのタイムスタンプ。 |
 | ElevationApprover | Microsoft マネージャーの名前。 |
 | ElevationDuration | 昇格がアクティブだった期間。 |
-| ElevationRequestId |  昇格要求の一意識別子。 |
+| ElevationRequestId |     昇格要求の一意識別子。 |
 | ElevationRole | 昇格が要求されたロール。 |
 | ElevationTime | 昇格の開始時刻。 |
 | Start_Time | コマンドレット実行の開始時刻。 |
@@ -344,8 +344,8 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
-| ExternalAccess |  組織内のユーザー、Microsoft のデータセンター担当者またはデータセンター サービス アカウント、委任された管理者のいずれによってコマンドレットが実行されたかを指定します。 False の値は、組織内の人物によってコマンドレットが実行されたことを示します。 True の値は、データセンター担当者、データセンター サービス アカウント、または委任管理者によってコマンドレットが実行されたことを示します。 |
-| ModifiedObjectResolvedName |  コマンドレットによって変更されたオブジェクトのユーザー フレンドリ名。 コマンドレットがオブジェクトを変更する場合にのみ記録されます。 |
+| ExternalAccess |     組織内のユーザー、Microsoft のデータセンター担当者またはデータセンター サービス アカウント、委任された管理者のいずれによってコマンドレットが実行されたかを指定します。 False の値は、組織内の人物によってコマンドレットが実行されたことを示します。 True の値は、データセンター担当者、データセンター サービス アカウント、または委任管理者によってコマンドレットが実行されたことを示します。 |
+| ModifiedObjectResolvedName |     コマンドレットによって変更されたオブジェクトのユーザー フレンドリ名。 コマンドレットがオブジェクトを変更する場合にのみ記録されます。 |
 | OrganizationName | テナントの名前。 |
 | OriginatingServer | コマンドレットの実行元だったサーバーの名前。 |
 | パラメーター | Operations プロパティで識別されるコマンドレットと共に使用されたすべてのパラメーターの名前と値。 |
@@ -366,7 +366,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | ClientVersion | 電子メール クライアントのバージョン。 |
 | InternalLogonType | 内部使用のために予約されています。 |
 | Logon_Type | メールボックスにアクセスし、記録された操作を実行したユーザーの種類を示します。 |
-| LogonUserDisplayName |    操作を実行したユーザーのユーザー フレンドリ名。 |
+| LogonUserDisplayName |     操作を実行したユーザーのユーザー フレンドリ名。 |
 | LogonUserSid | 操作を実行したユーザーの SID。 |
 | MailboxGuid | アクセスされたメールボックスの Exchange GUID。 |
 | MailboxOwnerMasterAccountSid | メールボックス所有者アカウントのマスター アカウント SID。 |
@@ -419,7 +419,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | EventSource | SharePoint で発生したイベントを識別します。 値は SharePoint または ObjectModel です。 |
 | ItemType | アクセスまたは変更されたオブジェクトの種類。 オブジェクトの種類の詳細については、ItemType の表を参照してください。 |
 | MachineDomainInfo | デバイス同期操作に関する情報。 この情報は、要求に存在する場合にのみ報告されます。 |
-| MachineId |   デバイス同期操作に関する情報。 この情報は、要求に存在する場合にのみ報告されます。 |
+| MachineId |     デバイス同期操作に関する情報。 この情報は、要求に存在する場合にのみ報告されます。 |
 | Site_ | ユーザーがアクセスするファイルまたはフォルダーがあるサイトの GUID。 |
 | Source_Name | 監査対象の操作をトリガーしたエンティティ。 値は SharePoint または ObjectModel です。 |
 | UserAgent | ユーザーのクライアントまたはブラウザーに関する情報。 この情報は、クライアントまたはブラウザーによって提供されます。 |
@@ -434,7 +434,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
 | CustomEvent | カスタム イベントに関する省略可能文字列。 |
-| Event_Data |  カスタム イベントに関する省略可能ペイロード。 |
+| Event_Data |     カスタム イベントに関する省略可能ペイロード。 |
 | ModifiedProperties | サイトまたはサイト コレクション管理者グループのメンバーとしてユーザーを追加するなどの管理者イベントに含まれるプロパティ。 プロパティには、変更されたプロパティの名前 (サイト管理者グループなど)、変更されたプロパティの新しい値 (サイト管理者として追加されたユーザーなど)、変更されたオブジェクトの以前の値が含まれます。 |
 
 
@@ -452,9 +452,9 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | SharingType | リソースの共有相手だったユーザーに割り当てられていた共有アクセス許可の種類。 このユーザーは UserSharedWith パラメーターによって識別されます。 |
 | Site_Url | ユーザーがアクセスするファイルまたはフォルダーがあるサイトの URL。 |
 | SourceFileExtension | ユーザーがアクセスしたファイルのファイル拡張子。 アクセスしたオブジェクトがフォルダーの場合、このプロパティは空です。 |
-| SourceFileName |  ユーザーがアクセスしたファイルまたはフォルダーの名前。 |
+| SourceFileName |     ユーザーがアクセスしたファイルまたはフォルダーの名前。 |
 | SourceRelativeUrl | ユーザーがアクセスするファイルが含まれているフォルダーの URL。 SiteURL、SourceRelativeURL、および SourceFileName パラメーターの値の組み合わせは、(ユーザーがアクセスするファイルの完全パス名である) ObjectID プロパティの値と同じです。 |
-| UserSharedWith |  リソースの共有相手だったユーザー。 |
+| UserSharedWith |     リソースの共有相手だったユーザー。 |
 
 
 

@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: 1f0e6694e596dc60264dfe0789a2f80090e0da3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aed0bcb79dedf057c5943cea9f4b4399b2f630cb
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232595"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677463"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL Database 向け Advanced Data Security
 
@@ -26,7 +26,7 @@ Advanced Data Security は、高度な SQL セキュリティ機能のための�
 
 Advanced Data Security (ADS) により、データの探索と分類、脆弱性の評価、Advanced Threat Protection などの高度な SQL セキュリティ機能のセットが提供されます。
 
-- [データの検出と分類](sql-database-data-discovery-and-classification.md)では、Azure SQL Database に組み込まれる、データベースの機微なデータの検出、分類、ラベル付け、および保護を行う機能が用意されます。 データベースの分類の状態を把握し、データベース内やその境界を越えて機密データへのアクセスを追跡するために使用できます。
+- [データの検出と分類](sql-database-data-discovery-and-classification.md)には、データベース内の機密データの検出、分類、ラベル付け、レポートを行うための Azure SQL Database に組み込まれた機能が用意されています。 データベースの分類の状態を把握し、データベース内やその境界を越えて機密データへのアクセスを追跡するために使用できます。
 - [脆弱性評価](sql-vulnerability-assessment.md)では、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 セキュリティの状態を表示することができ、セキュリティの問題を解決して、データベースのセキュリティを強化するために実行可能な手順が含まれます。
 - [Advanced Threat Protection](sql-database-threat-detection-overview.md) では、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。 データベースでの不審なアクティビティを継続的に監視し、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンが見つかるとすぐにセキュリティ通知を提供します。 Advanced Threat Protection アラートでは、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が提供されます。
 
@@ -77,4 +77,4 @@ ADS の設定を表示および管理するには、ご使用の SQL Database �
 - [データの検出と分類](sql-database-data-discovery-and-classification.md)についてさらに詳しく学習する 
 - [脆弱性評価](sql-vulnerability-assessment.md)についてさらに詳しく学習する 
 - [Advanced Threat Protection](sql-database-threat-detection.md) についてさらに詳しく学習する
-- [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について学習します。
+- [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について参照してください

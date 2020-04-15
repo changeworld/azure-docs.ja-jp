@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 9cbd8b178bfd2edcf99e3bba9b0d967aebcb5cc2
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: f05780610a2a6033b069721b143aca5e5efa6c35
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688773"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804522"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して ILB ASE を作成する方法
 
@@ -28,8 +28,8 @@ App Service Environment は、パブリック VIP の代わりに仮想ネット
 ILB ASE の自動作成は、次に示す 3 つの手順で実行されます。
 
 1. まず、パブリック VIP の代わりに内部ロード バランサーのアドレスを使用し、仮想ネットワーク内にベース ASE が作成されます。  この手順には、ルート ドメイン名を ILB ASE に割り当てる操作も含まれます。
-2. ILB ASE の作成が完了すると、SSL 証明書がアップロードされます。  
-3. アップロードされた SSL 証明書は、"既定の" SSL 証明書として ILB ASE に明示的に割り当てられます。  この SSL 証明書は、ASE に割り当てられた共通ルート ドメインを使用してアプリがアドレス指定された場合 (https://someapp.mycustomrootcomain.com) など) に、ILB ASE 上のアプリへの SSL トラフィックに使用されます。
+2. ILB ASE の作成が完了すると、TLS/SSL 証明書がアップロードされます。  
+3. アップロードされた TLS/SSL 証明書は、"既定の" TLS/SSL 証明書として ILB ASE に明示的に割り当てられます。  この TLS/SSL 証明書は、ILB ASE 上のアプリが ASE に割り当てられた共通ルート ドメイン (`https://someapp.mycustomrootcomain.com` など) を使用してアドレス指定されている場合に、そのアプリへの TLS トラフィックに使用されます。
 
 ## <a name="creating-the-base-ilb-ase"></a>ベース ILB ASE の作成
 Azure Resource Manager テンプレートの例と、それに関連するパラメーター ファイルは、[こちら][quickstartilbasecreate]から GitHub で入手できます。
@@ -49,17 +49,17 @@ ILB ASE に関して *azuredeploy.parameters.json* ファイルへの入力が�
 
 Azure Resource Manager テンプレートを送信した後、ILB ASE が作成されるまでには数時間かかります。  作成が完了すると、ポータル UX で、デプロイを開始したサブスクリプションの App Service Environment の一覧に ILB ASE が表示されます。
 
-## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>"既定の" SSL 証明書のアップロードと構成
-ILB ASE を作成したら、SSL 証明書を、アプリへの SSL 接続を確立するために使用する "既定の" SSL証明書として ASE に関連付ける必要があります。  ここでも架空の Contoso Corporation の例で考えると、ASE の既定の DNS サフィックスが *internal-contoso.com* である場合、 *https://some-random-app.internal-contoso.com* への接続には * *.internal-contoso.com* に対して有効な SSL 証明書が必要です。 
+## <a name="uploading-and-configuring-the-default-tlsssl-certificate"></a>"既定の" TLS/SSL 証明書のアップロードと構成
+ILB ASE を作成したら、TLS/SSL 証明書を、アプリへの TLS/SSL 接続を確立するために使用する "既定の" TLS/SSL証明書として ASE に関連付ける必要があります。  ここでも架空の Contoso Corporation の例で考えると、ASE の既定の DNS サフィックスが *internal-contoso.com* である場合、 *https://some-random-app.internal-contoso.com* への接続には * *.internal-contoso.com* に対して有効な TLS/SSL 証明書が必要です。 
 
-有効な SSL 証明書を取得するには、内部 CA を利用する、外部の発行元から証明書を購入する、自己署名証明書を使用するなどの方法があります。  どのようなソースから SSL 証明書を取得した場合でも、以下の証明書属性を適切に構成する必要があります。
+有効な TLS/SSL 証明書を取得するには、内部 CA を利用する、外部の発行元から証明書を購入する、自己署名証明書を使用するなどの方法があります。  どのようなソースから TLS/SSL 証明書を取得した場合でも、以下の証明書属性を適切に構成する必要があります。
 
 * *Subject*:この属性は、* *.your-root-domain-here.com* に設定する必要があります
-* *Subject Alternative Name*:この属性には、* *.your-root-domain-here.com* と * *.scm.your-root-domain-here.com* の両方が含まれている必要があります。  2 つ目のエントリが必要な理由は、各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続が、 *your-app-name.scm.your-root-domain-here.com*形式のアドレスを使用して確立されるためです。
+* *Subject Alternative Name*:この属性には、* *.your-root-domain-here.com* と * *.scm.your-root-domain-here.com* の両方が含まれている必要があります。  2 つ目のエントリが必要な理由は、各アプリに関連付けられた SCM/Kudu サイトへの TLS 接続が、*your-app-name.scm.your-root-domain-here.com* 形式のアドレスを使用して確立されるためです。
 
-有効な SSL 証明書を取得した後は、さらに 2 つの準備手順を実行する必要があります。  SSL 証明書は、.pfx ファイルに変換して保存する必要があります。  .pfx ファイルには、中間証明書とルート証明書をすべて含める必要があり、さらにパスワードで保護する必要もあるという点に注意してください。
+有効な TLS/SSL 証明書を取得した後、さらに 2 つの準備手順を実行する必要があります。  TLS/SSL 証明書は、.pfx ファイルに変換して保存する必要があります。  .pfx ファイルには、中間証明書とルート証明書をすべて含める必要があり、さらにパスワードで保護する必要もあるという点に注意してください。
 
-その後、.pfx ファイルは base64 文字列に変換する必要がありますが、これは SSL 証明書が Azure Resource Manager テンプレートを使用してアップロードされるためです。  Azure Resource Manager テンプレートはテキスト ファイルであるため、パラメーターとしてテンプレートに含めることができるように、.pfx ファイルを base64 文字列に変換する必要があります。
+その後、.pfx ファイルは base64 文字列に変換する必要がありますが、これは TLS/SSL 証明書が Azure Resource Manager テンプレートを使用してアップロードされるためです。  Azure Resource Manager テンプレートはテキスト ファイルであるため、パラメーターとしてテンプレートに含めることができるように、.pfx ファイルを base64 文字列に変換する必要があります。
 
 以下の Powershell コード スニペットには、自己署名証明書を生成して、その証明書を .pfx ファイルとしてエクスポートし、.pfx ファイルを base64 でエンコードされた文字列に変換してから、それを別のファイルに保存する例を示します。  base64 エンコード用の PowerShell コードは、[PowerShell スクリプトのブログ][examplebase64encoding]に記載されているコードを基にしています。
 
@@ -75,16 +75,16 @@ ILB ASE を作成したら、SSL 証明書を、アプリへの SSL 接続を確
     $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
     $fileContentEncoded | set-content ($fileName + ".b64")
 
-SSL 証明書が正常に生成され、base64 でエンコードされた文字列に変換されたら、GitHub にある、[既定の SSL 証明書を構成する][configuringDefaultSSLCertificate]ためのサンプルの Azure Resource Manager テンプレートを使用できます。
+TLS/SSL 証明書が正常に生成され、base64 でエンコードされた文字列に変換されたら、GitHub にある、[既定の TLS/SSL 証明書を構成する][configuringDefaultSSLCertificate]ためのサンプルの Azure Resource Manager テンプレートを使用できます。
 
 *azuredeploy.parameters.json* ファイル内の各パラメーターを以下に示します。
 
 * *appServiceEnvironmentName*:構成対象の ILB ASE の名前。
-* *existingAseLocation*:ILB ASE のデプロイ先の Azure リージョンを含むテキスト文字列。  例: "South Central US"。
+* *existingAseLocation*:ILB ASE のデプロイ先の Azure リージョンを含むテキスト文字列。  次に例を示します。"South Central US"。
 * *pfxBlobString*:based64 でエンコードされた .pfx ファイルの文字列表現。  前述したコード スニペットを使用すると、"exportedcert.pfx.b64" 内に含まれる文字列をコピーし、 *pfxBlobString* 属性の値として貼り付けることになります。
 * *password*:pfx ファイルの保護に使用されるパスワード。
 * *certificateThumbprint*:証明書のサムプリント。  この値を Powershell (前述のコード スニペットにある *$certificate.Thumbprint* など) から取得した場合、値はそのまま使用できます。  ただし、この値を Windows 証明書のダイアログからコピーした場合は、忘れずに余分なスペースを削除してください。  *certificateThumbprint* は、AF3143EB61D43F6727842115BB7F17BBCECAECAE のようになります
-* *certificateName*:証明書の識別に使用される、独自に選択したわかりやすい文字列識別子。  この名前は、SSL 証明書を表す *Microsoft.Web/certificates* エンティティに固有の Azure Resource Manager 識別子の一部として使用されます。  この名前は、サフィックス "\_yourASENameHere_InternalLoadBalancingASE" で終わる**必要があります**。  このサフィックスは、ILB が有効な ASE を保護するためにこの証明書が使用されることを示すインジケーターとして、ポータルによって使用されます。
+* *certificateName*:証明書の識別に使用される、独自に選択したわかりやすい文字列識別子。  この名前は、TLS/SSL 証明書を表す *Microsoft.Web/certificates* エンティティに固有の Azure Resource Manager 識別子の一部として使用されます。  この名前は、サフィックス "\_yourASENameHere_InternalLoadBalancingASE" で終わる**必要があります**。  このサフィックスは、ILB が有効な ASE を保護するためにこの証明書が使用されることを示すインジケーターとして、ポータルによって使用されます。
 
 一部省略した *azuredeploy.parameters.json* の例を次に示します。
 
@@ -113,7 +113,7 @@ SSL 証明書が正常に生成され、base64 でエンコードされた文字
          }
     }
 
-*azuredeploy.parameters.json* ファイルへの入力が完了したら、以下の PowerShell コード スニペットを使用して既定の SSL 証明書を構成することができます。  ファイル パス ("PATH" 部分) は、コンピューター上の Azure Resource Manager テンプレート ファイルの場所に一致するように変更してください。  また、Azure Resource Manager のデプロイ名とリソース グループ名に独自の値を指定することも忘れずに行ってください。
+*azuredeploy.parameters.json* ファイルへの入力が完了したら、以下の PowerShell コード スニペットを使用して既定の TLS/SSL 証明書を構成することができます。  ファイル パス ("PATH" 部分) は、コンピューター上の Azure Resource Manager テンプレート ファイルの場所に一致するように変更してください。  また、Azure Resource Manager のデプロイ名とリソース グループ名に独自の値を指定することも忘れずに行ってください。
 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
@@ -122,11 +122,11 @@ SSL 証明書が正常に生成され、base64 でエンコードされた文字
 
 Azure Resource Manager テンプレートを送信した後、変更が適用されるまでには、ASE フロントエンドあたり約 40 分かかります。  たとえば、2 つのフロントエンドを使用する既定サイズの ASE では、テンプレートが完了するまで約 1 時間 20 分かかります。  テンプレートの実行中に、ASE をスケーリングすることはできません。  
 
-テンプレートが完了すると、ILB ASE 上のアプリに HTTPS 経由でアクセスできるようになり、接続は既定の SSL 証明書を使用して保護されます。  既定の SSL 証明書は、ILB ASE 上のアプリが、アプリケーション名と既定のホスト名の組み合わせを使用してアドレス指定された場合に使用されます。  たとえば、 *https://mycustomapp.internal-contoso.com* の場合、* *.internal-contoso.com* の既定の SSL 証明書が使用されます。
+テンプレートが完了すると、ILB ASE 上のアプリに HTTPS 経由でアクセスできるようになり、接続は既定の TLS/SSL 証明書を使用して保護されます。  既定の TLS/SSL 証明書は、ILB ASE 上のアプリが、アプリケーション名と既定のホスト名の組み合わせを使用してアドレス指定された場合に使用されます。  たとえば、 *https://mycustomapp.internal-contoso.com* の場合、* *.internal-contoso.com* の既定の TLS/SSL 証明書が使用されます。
 
-ただし、パブリック マルチテナント サービスで実行されているアプリと同様に、開発者が個々のアプリに対してカスタム ホスト名を設定し、各アプリに固有の SNI SSL 証明書バインドを構成することもできます。  
+ただし、パブリック マルチテナント サービスで実行されているアプリと同様に、開発者が個々のアプリに対してカスタム ホスト名を設定し、各アプリに固有の SNI TLS/SSL 証明書バインドを構成することもできます。  
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 App Service 環境の使用を開始するには、「 [App Service 環境の概要](app-service-app-service-environment-intro.md)
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]

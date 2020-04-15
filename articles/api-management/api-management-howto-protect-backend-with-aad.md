@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190361"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804369"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する
 
@@ -137,7 +137,7 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
 
 1. **v1** エンドポイントを使用する場合は、**resource** という名前の本文パラメーターを追加します。 このパラメーターの値には、バックエンド アプリの**アプリケーション ID** を使用します。 
 
-1. **v2** エンドポイントを使用する場合は、 **[既定のスコープ]** フィールドでバックエンド アプリ用に作成したスコープを使用します。
+1. **v2** エンドポイントを使用する場合は、 **[既定のスコープ]** フィールドでバックエンド アプリ用に作成したスコープを使用します。 また、必ず [アプリケーション マニフェスト](/azure/active-directory/develop/reference-app-manifest)で [`accessTokenAcceptedVersion`](/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) プロパティの値を `2` に設定します。
 
 1. 次に、クライアントの資格情報を指定します。 これらはクライアントアプリの資格情報です。
 
@@ -147,7 +147,7 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
 
 1. クライアント シークレットの直後には、承認コード付与タイプの **redirect_url** があります。 この URL をメモします。
 
-1. **作成** を選択します。
+1. **［作成］** を選択します
 
 1. クライアント アプリに戻り、 **[認証]** を選択します。
 
@@ -191,11 +191,11 @@ OAuth 2.0 承認サーバーを設定したので、Developer Console で Azure 
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>要求を事前承認する JWT 検証ポリシーを構成する
 
-この時点でユーザーが Developer Console から電話をかけようとすると、ユーザーにはログインが求められます。 Developer Console は、ユーザーに代わってアクセス トークンを取得し、API に対して行う要求にトークンを含めます。
+この時点でユーザーが Developer Console から API を呼び出そうとすると、ユーザーにはログインが求められます。 Developer Console は、ユーザーに代わってアクセス トークンを取得し、API に対して行う要求にトークンを含めます。
 
 ただし、誰かがトークンを使用せず、または無効なトークンを使用して API を呼び出すとどうなるでしょうか。 たとえば、API を `Authorization` ヘッダーなしで呼び出してみても、呼び出しは処理されます。 理由は、API Management がこの時点でアクセス トークンを検証していないためです。 `Authorization` ヘッダーはバックエンド API に渡されます。
 
-[JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、各受信要求のアクセス トークンを検証することで API Management で要求を事前承認できます。 要求に有効なトークンがない場合、API Management はその要求をブロックします。 たとえば、以下のポリシーを `<inbound>` の `Echo API` ポリシー セクションに追加します。 これは、アクセス トークンの受信者要求をチェックし、トークンが有効でない場合にエラー メッセージを返します。 ポリシーの構成方法については、[ポリシーの設定と編集](set-edit-policies.md)に関する記事をご覧ください。
+[JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、各受信要求のアクセス トークンを検証することで API Management で要求を事前承認できます。 要求に有効なトークンがない場合、API Management はその要求をブロックします。 たとえば、以下のポリシーを `Echo API` の `<inbound>` ポリシー セクションに追加します。 これは、アクセス トークンの受信者要求をチェックし、トークンが有効でない場合にエラー メッセージを返します。 ポリシーの構成方法については、[ポリシーの設定と編集](set-edit-policies.md)に関する記事をご覧ください。
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

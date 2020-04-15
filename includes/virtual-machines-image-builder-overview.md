@@ -5,12 +5,12 @@ ms.date: 01/23/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: ec1b77118f94501363d950d72a65a67ece79ff77
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 658910dc4291375c7b2ab22e88c599b970b885af
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748769"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80419131"
 ---
 組織で標準化された仮想マシン (VM) イメージを使用すると、クラウドに移行し、デプロイの一貫性を保つことができます。 通常、イメージには、事前に定義されたセキュリティと構成設定と、必要なソフトウェアが含まれています。 独自のイメージング パイプラインを設定するには、時間、インフラストラクチャ、設定が必要ですが、Azure VM Image Builder を使用すると、イメージを説明する単純な構成を用意し、それをサービスに送信するだけで、イメージが構築され、配布されます。
  
@@ -26,20 +26,22 @@ Azure VM Image Builder (Azure Image Builder) を使用すると、Windows また
 
 - 優れたベースライン イメージの作成。最低限のセキュリティと企業の構成を含み、各部門がニーズに合わせてさらにカスタマイズできます。
 - 既存のイメージへの修正プログラム適用。Image Builder では既存のカスタム イメージに継続的に修正プログラムを適用できます。
+- Image Builder を既存の仮想ネットワークに接続します。それにより、既存の構成サーバー (DSC、Chef、Puppet など)、ファイル共有、またはその他のルーティング可能なサーバー/サービスに接続できます。
 - Azure 共有イメージ ギャラリーとの統合。イメージをグローバルに配布、バージョン管理、およびスケールすることができます。また、イメージ管理システムを利用できます。
 - 既存のイメージ ビルド パイプラインとの統合。パイプラインから Image Builder を呼び出すか、単純な Preview Image Builder Azure DevOps Task を使用するだけです。
 - 既存のイメージ カスタマイズ パイプラインを Azure に移行します。 既存のスクリプト、コマンド、およびプロセスを使用してイメージをカスタマイズします。
-- Red Hat のサブスクリプション持ち込みのサポートを使用します。 対象となる未使用の Red Hat サブスクリプションで使用するための Red Hat Enterprise イメージを作成します。
 - VHD 形式でのイメージの作成。
  
 
 ## <a name="regions"></a>リージョン
 Azure Image Builder Service は、これらのリージョンでプレビューできるようになる予定です。 イメージは、これらのリージョン以外に配布できます。
-- East US
+- 米国東部
 - 米国東部 2
 - 米国中西部
 - 米国西部
 - 米国西部 2
+- 北ヨーロッパ
+- 西ヨーロッパ
 
 ## <a name="os-support"></a>OS のサポート
 AIB は Azure Marketplace のベース OS イメージをサポートします。
@@ -49,16 +51,11 @@ AIB は Azure Marketplace のベース OS イメージをサポートします�
 - CentOS 7.6、7.7
 - SLES 12 SP4
 - SLES 15、SLES 15 SP1
-- Windows 10 RS5 Enterprise/Professional/Enterprise for Virtual Desktop (EVD) 
+- Windows 10 RS5 Enterprise/Enterprise マルチセッション/Professional
 - Windows 2016
 - Windows 2019
 
-AIB では、以下のソースとして RHEL ISO がサポートされます。
-- RHEL 7.3
-- RHEL 7.4
-- RHEL 7.5
-
-RHEL 7.6 ISO はサポートされていませんが、テスト中です。
+RHEL ISO のサポートは非推奨となっています。詳細については、テンプレートのドキュメントを参照してください。
 
 ## <a name="how-it-works"></a>しくみ
 

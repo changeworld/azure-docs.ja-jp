@@ -10,12 +10,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/04/2019
   ms.author: robreed
-  ms.openlocfilehash: 2ff0b9a194faf4d5a6b9e5181c52dc135208bdee
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: e80cdec365a14caee5c74900e1c21f7349165e66
+  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73508552"
+  ms.lasthandoff: 04/13/2020
+  ms.locfileid: "81261280"
 landingContent:
 - title: Azure Arc の概要
   linkLists:
@@ -31,7 +31,9 @@ landingContent:
       url: ./servers/overview.md
   - linkListType: quickstart
     links:
-    - text: サーバー向け Azure Arc を使用してマシンを Azure に接続する - ポータル
-      url: ./servers/quickstart-onboard-portal.md
-    - text: サーバー向け Azure Arc を使用してマシンを Azure に接続する - PowerShell
-      url: ./servers/quickstart-onboard-portal.md
+    - text: Azure portal から Azure Arc へのマシンの接続
+      url: ./servers/onboard-portal.md
+    - text: サービス プリンシパルを使用したマシンの大規模な接続
+      url: ./servers/onboard-service-principal.md
+    - text: PowerShell DSC を使用してマシンを Azure に接続する
+      url: ./servers/onboard-dsc.md

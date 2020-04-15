@@ -1,22 +1,20 @@
 - name: Azure Arc のドキュメント
   href: index.yml
 - name: 概要
-  expanded: true
   items:
     - name: サーバー向け Azure Arc とは
       href: ./servers/overview.md
-- name: Azure Arc への接続
-  expanded: true
+- name: 操作方法ガイド
   items:
-    - name: Azure portal から Azure Arc へのマシンの接続
-      href: ./servers/onboard-portal.md
-    - name: サービス プリンシパルを使用したマシンの大規模な接続
-      href: ./servers/onboard-service-principal.md
-    - name: PowerShell DSC を使用してマシンを Azure Arc に接続する
-      href: ./servers/onboard-dsc.md
-- name: エージェントの管理
-  href: ./servers/manage-agent.md
-- name: リファレンス
-  items:
-    - name: Azure Connected Machine Agent CLI インターフェイス
-      href: ./servers/azcmagent-reference.md
+    - name: Azure Arc への接続
+      items:
+        - name: Azure portal から Azure Arc へのマシンの接続
+          href: ./servers/onboard-portal.md
+        - name: サービス プリンシパルを使用したマシンの大規模な接続
+          href: ./servers/onboard-service-principal.md
+        - name: PowerShell DSC を使用してマシンを Azure Arc に接続する
+          href: ./servers/onboard-dsc.md
+    - name: 管理する
+      items:
+        - name: エージェントの管理
+          href: ./servers/manage-agent.md

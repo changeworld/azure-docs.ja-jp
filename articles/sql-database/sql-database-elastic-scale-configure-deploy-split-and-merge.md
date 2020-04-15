@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 50dbca0b3a761b72134eaa6cfed57e231be4ef13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6f61de23ab4b637cfb5b8ee365ddea9764bf515
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421036"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810193"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>split-merge サービスをデプロイして、シャード化されたデータベース間でデータを移動する
 
@@ -63,7 +63,7 @@ split-merge ツールを使用すると、シャード化されたデータベ�
 
       `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<userId>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-1. ElasticScaleMetadata 設定の *SplitMergeWeb* ロールと **SplitMergeWorker** ロールの両方のセクションに **.cscfg** ファイルの接続文字列を入力します。
+1. ElasticScaleMetadata 設定の **SplitMergeWeb** ロールと **SplitMergeWorker** ロールの両方のセクションに *.cscfg* ファイルの接続文字列を入力します。
 
 1. **SplitMergeWorker** ロールの場合は、**WorkerRoleSynchronizationStorageAccountConnectionString** 設定として Azure Storage への有効な接続文字列を入力します。
 
@@ -150,7 +150,7 @@ Web ロール:
 
 ## <a name="troubleshoot-the-deployment"></a>デプロイのトラブルシューティング
 
-Web ロールのオンライン化に失敗した場合は、セキュリティの構成に問題があると考えられます。 SSL が前の説明どおりに構成されていることをご確認ください。
+Web ロールのオンライン化に失敗した場合は、セキュリティの構成に問題があると考えられます。 TLS/SSL が前の説明どおりに構成されていることをご確認ください。
 
 worker ロールのオンライン化に失敗した場合に最も考えられるのは、先に作成した状態データベースへの接続に問題があることです。
 
@@ -254,7 +254,7 @@ Split-Merge サービスの Web エンドポイントを決定します。 こ�
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. *ExecuteSampleSplitMerge.ps1* スクリプトを実行して、分割操作を実行 (データの半分を最初のシャードから 2 番目のシャードに移動) し、次にマージ操作を実行 (データを最初のシャードに戻すために移動) します。 SSL が構成済みで、http エンドポイントが無効のままになっている場合は、代わりに https:// のエンドポイントを使用します。
+5. *ExecuteSampleSplitMerge.ps1* スクリプトを実行して、分割操作を実行 (データの半分を最初のシャードから 2 番目のシャードに移動) し、次にマージ操作を実行 (データを最初のシャードに戻すために移動) します。 TLS が構成済みで、http エンドポイントが無効のままになっている場合は、代わりに https:// のエンドポイントを使用します。
 
    サンプルのコマンド ライン:
 
@@ -333,7 +333,7 @@ Split-Merge サービスはターゲット データベース (またはデー�
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-このエラーは、SSL 証明書が正しく構成されていないことを意味しています。 「Web ブラウザーを使って接続する」のセクションの手順に従ってください。
+このエラーは、TLS/SSL 証明書が正しく構成されていないことを意味しています。 「Web ブラウザーを使って接続する」のセクションの手順に従ってください。
 
 要求を送信できない場合、次の内容が表示される可能性があります。
 
