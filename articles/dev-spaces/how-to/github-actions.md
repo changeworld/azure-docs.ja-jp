@@ -1,21 +1,21 @@
 ---
 title: GitHub のアクションと Azure Kubernetes Service (プレビュー)
 services: azure-dev-spaces
-ms.date: 02/04/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 description: GitHub アクションと Azure Dev Spaces を使用して、Azure Kubernetes Service で直接プル要求からの変更を確認およびテストする
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, GitHub アクション, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252373"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637940"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub のアクションと Azure Kubernetes Service (プレビュー)
 
-Azure Dev Spaces は、プル要求がリポジトリのメイン ブランチに結合される前に、プル要求からの変更を AKS で直接テストできる GitHub のアクションを使用してワークフローを提供しています。 実行中のアプリケーションを用意してプル要求の変更を確認することで、開発者とチーム メンバーの両方の信頼度を高めることができます。 この実行中のアプリケーションは、製品マネージャーやデザイナーなどのチーム メンバーが、開発の初期段階の間にレビュー プロセスの一部となることにも貢献できます。
+Azure Dev Spaces は、プル要求がリポジトリのメイン ブランチに結合される前に、プル要求からの変更を AKS で直接テストできる GitHub Actions を使用してワークフローを提供します。 実行中のアプリケーションを用意してプル要求の変更を確認することで、開発者とチーム メンバーの両方の信頼度を高めることができます。 この実行中のアプリケーションは、製品マネージャーやデザイナーなどのチーム メンバーが、開発の初期段階の間にレビュー プロセスの一部となることにも貢献できます。
 
 このガイドでは、以下の方法について説明します。
 
@@ -101,6 +101,11 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 > これらのシークレットはすべて GitHub アクションによって使用され、[.github/workflows/bikes.yml][github-action-yaml] 内で構成されます。
 
 PR をマージした後にマスター スペースを更新する場合は、必要に応じて *GATEWAY_HOST* シークレットを追加します。その形式は *<MASTER_SPACE>.gateway.<HOST_SUFFIX>* で、この例では *dev.gateway.fedcab0987.eus.azds.io* となります。 変更をフォークのマスター ブランチにマージすると、別のアクションが実行され、マスター開発空間でアプリケーション全体がリビルドされ、実行されます。 この例では、マスター空間は *dev* です。 このアクションは [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] 内で構成されています。
+
+また、PR の変更が孫スペースで実行されるようにする場合は、*MASTER_SPACE* および *HOST* シークレットを更新します。 たとえば、アプリケーションが *dev* で実行されており、*dev/azureuser1* の子スペースがある場合、PR が *dev/azureuser1* の子空間で実行されるようにするには次の操作を行います。
+
+* *MASTER_SPACE* を、親スペースとして必要な子スペースに更新します。この例では、*azureuser1* です。
+* *HOST* を *<GRANDPARENT_SPACE>.<APP_NAME>.<HOST_SUFFIX>* に更新します。この例では、*dev.bikesharingweb.fedcab0987.eus.azds.io* です。
 
 ## <a name="create-a-new-branch-for-code-changes"></a>コード変更用の新しいブランチを作成する
 
