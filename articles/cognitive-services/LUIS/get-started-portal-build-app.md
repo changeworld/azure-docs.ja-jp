@@ -27,10 +27,10 @@ ms.locfileid: "80244616"
 
    |設定名| 値 | 目的|
    |--|--|--|
-   |名前|`myEnglishApp`|LUIS アプリの一意の名前<br>required|
-   |カルチャ|**英語**|ユーザーの発話の言語、**en-us**<br>required|
-   |説明 (省略可能)|`App made with LUIS Portal`|アプリの説明<br>省略可能|
-   |予測リソース (省略可能) |-  |選択しないでください。 作成と 1,000 件の予測エンドポイント要求に無料で使用できるスターター キーが LUIS から提供されます。 |
+   |Name|`myEnglishApp`|LUIS アプリの一意の名前<br>required|
+   |Culture|**英語**|ユーザーの発話の言語、**en-us**<br>required|
+   |Description (省略可能)|`App made with LUIS Portal`|アプリの説明<br>省略可能|
+   |Prediction resource (省略可能) |-  |選択しないでください。 作成と 1,000 件の予測エンドポイント要求に無料で使用できるスターター キーが LUIS から提供されます。 |
 
    ![新しいアプリ設定を入力する](./media/get-started-portal-build-app/create-new-app-settings.png)
 
@@ -50,11 +50,11 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 意図を作成するには、次の手順を実行します。
 
-1. アプリの作成が完了すると、 **[ビルド]** セクションに **[意図]** ページが表示されます。 **［作成］** を選択します
+1. アプリの作成が完了すると、 **[Build]** セクションに **[Intents]** ページが表示されます。 **[Create]** を選択します
 
    [![[作成] を選択して新しい意図を作成する](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. 意図の名前として `FindForm` を入力し、 **[完了]** を選択します。
+1. 意図の名前として `FindForm` を入力し、 **[Done]** を選択します。
 
 ## <a name="add-an-example-utterance"></a>発話の例を追加する
 
