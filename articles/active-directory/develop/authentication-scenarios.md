@@ -4,7 +4,6 @@ description: Microsoft ID プラットフォーム (v2.0) の認証の基本に�
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -13,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 6e14284b5d653af01631d56acf954f9c2a1f10ab
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: e78f822a88b093992f065a509c2250e6a5c0dec2
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194997"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885567"
 ---
 # <a name="authentication-basics"></a>認証の基本
 
@@ -76,6 +75,23 @@ Microsoft ID プラットフォームでは、Identity as a Service を提供す
 トークンが有効な時間は限られています。 通常、STS では、アプリケーションまたは保護されたリソースにアクセスするためのアクセス トークンと、アクセス トークンの有効期限が近づいたときにアクセス トークンを更新するために使用する更新トークンの 2 つのトークンが提供されます。
 
 アクセス トークンは、`Authorization` ヘッダーのベアラー トークンとして Web API に渡されます。 アプリでは、STS に更新トークンを提供できます。アプリへのユーザー アクセスが取り消されていない場合、新しいアクセス トークンと新しい更新トークンが返されます。 ユーザーが退職する場合、この方法を使用して対処します。 ユーザーが承認されなくなると、STS で更新トークンを受け取っても、有効なアクセス トークンは新たに発行されません。
+
+### <a name="how-each-flow-emits-tokens-and-codes"></a>各フローがトークンとコードを生成する方法
+
+クライアントの構築方法に応じて、Azure AD でサポートされている認証フローの 1 つ (または複数) を使用できます。 これらのフローでは、さまざまなトークン (id_tokens、更新トークン、アクセス トークン) と承認コードを生成し、異なるトークンを使用して動作させるようにすることができます。 このグラフで概要を示します。
+
+|Flow | 必要 | id_token | アクセス トークン | 更新トークン | 承認コード | 
+|-----|----------|----------|--------------|---------------|--------------------|
+|[承認コード フロー](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[暗黙的なフロー](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
+|[ハイブリッド OIDC フロー](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[更新トークンの使用](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | 更新トークン | x | x | x| |
+|[On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md) | アクセス トークン| x| x| x| |
+|[クライアントの資格情報](v2-oauth2-client-creds-grant-flow.md) | | | x (アプリのみ)| | |
+
+暗黙的モードで発行されたトークンには、URL を介してブラウザーに返されるために長さの制限があります (`response_mode` は `query` または `fragment`)。  一部のブラウザーでは、ブラウザーのバーに入力できる URL のサイズに制限があり、長すぎると失敗します。  したがって、これらのトークンには `groups` または `wids` 要求がありません。 
+
+基本の説明は以上です。以降では、ID アプリ モデルと API、Azure AD でのプロビジョニングのしくみ、および Azure AD がサポートする一般的なシナリオに関する詳細情報へのリンクの理解について説明します。
 
 ## <a name="application-model"></a>アプリケーション モデル
 

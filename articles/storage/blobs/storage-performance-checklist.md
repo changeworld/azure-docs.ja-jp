@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228379"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473940"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト
 
@@ -267,7 +267,7 @@ BLOB をすばやくアップロードするには、まず、1 つの BLOB を�
 1 つの大きな BLOB をすばやくアップロードするために、クライアント アプリケーションでは、個々の BLOB とストレージ アカウント全体のスケーラビリティ ターゲットに注意して、そのブロックまたはページを並列でアップロードできます。 Azure Storage クライアント ライブラリでは、並列でのアップロードがサポートされています。 たとえば、次のプロパティを使用して、.NET または Java で許可される同時要求の数を指定できます。 サポートされているその他の言語のクライアント ライブラリにおいて、同様のオプションが提供されています。
 
 - .NET の場合は、[BlobRequestOptions.ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount) プロパティを設定します。
-- Java/Android の場合は、[BlobRequestOptions.setConcurrentRequestCount(final Integer concurrentRequestCount)](/java/api/com.microsoft.azure.storage.blob._blob_request_options.setconcurrentrequestcount) メソッドを呼び出します。
+- Java/Android の場合は、[BlobRequestOptions.setConcurrentRequestCount(final Integer concurrentRequestCount)](/java/api/com.microsoft.azure.storage.blob.blobrequestoptions.setconcurrentrequestcount) メソッドを呼び出します。
 
 ### <a name="upload-many-blobs-quickly"></a>多数の BLOB をすばやくアップロードする
 

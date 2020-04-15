@@ -5,19 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 0dbbc9b09d5d4770296223db9dc909c17f574fe8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/30/2020
+ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767026"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422465"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのデータイン レプリケーションの構成
 
 この記事では、マスター サーバーとレプリカ サーバーを構成することによって、Azure Database for MariaDB でデータイン レプリケーションをセットアップする方法について説明します。 この記事は、MariaDB サーバーと MariaDB データベースに関して、ある程度の使用経験があることを前提としています。
 
 データイン レプリケーションでは、Azure Database for MariaDB サービスでレプリカを作成するために、オンプレミス、仮想マシン (VM)、またはクラウド データベース サービスのマスター MariaDB サーバーからデータが同期されます。
+
+この記事の手順を実行する前に、データイン レプリケーションの[制限事項と要件](concepts-data-in-replication.md#limitations-and-considerations)を確認してください。
 
 > [!NOTE]
 > マスター サーバーがバージョン 10.2 以降の場合、[グローバル トランザクション ID](https://mariadb.com/kb/en/library/gtid/) を使用してデータイン レプリケーションをセットアップすることをお勧めします。
@@ -36,11 +38,21 @@ ms.locfileid: "74767026"
     
     レプリカ サーバーにマスター サーバーのユーザー アカウントはレプリケートされません。 レプリカ サーバーへのアクセス権をユーザーに付与するには、新しく作成した Azure Database for MariaDB サーバーですべてのアカウントとそれらに対応する権限を手動で作成する必要があります。
 
+3. マスター サーバーの IP アドレスをレプリカのファイアウォール規則に追加します。 
+
+   [Azure portal](howto-manage-firewall-portal.md) または [Azure CLI](howto-manage-firewall-cli.md) を使用してファイアウォール規則を更新します。
+
 ## <a name="configure-the-master-server"></a>マスター サーバーを構成する
 
 次の手順では、オンプレミス、VM、またはクラウド データベース サービスでホストされる MariaDB サーバーをデータイン レプリケーション用に準備し、構成します。 MariaDB サーバーは、データイン レプリケーションにおけるマスターになります。
 
-1. バイナリ ログを有効にします。
+1. 続行する前に、[マスター サーバーの要件](concepts-data-in-replication.md#requirements)を確認してください。 
+
+   たとえば、マスター サーバーでポート 3306 での受信トラフィックと送信トラフィックの両方が許可されていて、マスター サーバーに**パブリック IP アドレス**があるか、DNS にパブリックにアクセス可能であるか、または完全修飾ドメイン名 (FQDN) があるかのいずれかであることを確認してください。 
+   
+   別のマシンでホストされている MySQL のコマンド ラインや、Azure portal で使用可能な [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) などのツールから接続を試行することで、マスター サーバーへの接続性をテストします。
+
+2. バイナリ ログを有効にします。
     
     マスターでバイナリ ログが有効になっているかどうか確認するために、次のコマンドを入力します。
 
@@ -52,7 +64,7 @@ ms.locfileid: "74767026"
 
    `log_bin` で値 `OFF` が返された場合、**my.cnf** ファイルを編集して、`log_bin=ON` によってバイナリ ログを有効にします。 変更を有効にするためにサーバーを再起動します。
 
-2. マスター サーバーの設定を構成します。
+3. マスター サーバーの設定を構成します。
 
     データイン レプリケーションでは、マスター サーバーとレプリカ サーバーとの間でパラメーター `lower_case_table_names` を一致させる必要があります。 Azure Database for MariaDB では、`lower_case_table_names` パラメーターは既定では `1` に設定されています。
 
@@ -60,7 +72,7 @@ ms.locfileid: "74767026"
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-3. 新しいレプリケーション ロールを作成し、権限をセットアップします。
+4. 新しいレプリケーション ロールを作成し、権限をセットアップします。
 
    レプリケーションの権限を持つように構成されたユーザー アカウントをマスター サーバーに作成します。 SQL コマンドまたは MySQL Workbench を使用してアカウントを作成できます。 SSL を使用してレプリケートを行う場合は、ユーザー アカウントの作成時にこれを指定する必要があります。
    
@@ -105,7 +117,7 @@ ms.locfileid: "74767026"
    ![[Replication Slave]\(レプリケーション スレーブ\)](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. マスター サーバーを読み取り専用モードに設定します。
+5. マスター サーバーを読み取り専用モードに設定します。
 
    データベースをダンプする前に、サーバーを読み取り専用モードにする必要があります。 読み取り専用モードの間、マスターは書き込みトランザクションを処理できません。 ビジネスに影響が出ないようにするために、ピーク時以外の時間帯に読み取り専用期間をスケジュールしてください。
 
@@ -114,7 +126,7 @@ ms.locfileid: "74767026"
    SET GLOBAL read_only = ON;
    ```
 
-5. 現在のバイナリ ログ ファイルの名前とオフセットを取得します。
+6. 現在のバイナリ ログ ファイルの名前とオフセットを取得します。
 
    現在のバイナリ ログ ファイルの名前とオフセットを調べるために、コマンド [`show master status`](https://mariadb.com/kb/en/library/show-master-status/) を実行します。
     
@@ -127,7 +139,7 @@ ms.locfileid: "74767026"
 
    バイナリ ファイルの名前は、この後の手順で使用するためメモしてください。
    
-6. GTID 位置 (オプション、GTID を使用したレプリケーションに必要) を取得します。
+7. GTID 位置 (オプション、GTID を使用したレプリケーションに必要) を取得します。
 
    関数 [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) を実行して、対応する binlog ファイルの名前とオフセットの GTID 位置を取得します。
   
@@ -188,7 +200,7 @@ ms.locfileid: "74767026"
     
     *master_ssl_ca パラメーターを変数として渡すことをお勧めします。 詳細については、次の例を参照してください。
 
-   **例**
+   **使用例**
 
    - SSL を使用したレプリケーション
 
@@ -196,7 +208,7 @@ ms.locfileid: "74767026"
 
        ```sql
        SET @cert = '-----BEGIN CERTIFICATE-----
-       PLACE YOUR PUBLIC KEY CERTIFICATE’S CONTEXT HERE
+       PLACE YOUR PUBLIC KEY CERTIFICATE\'S CONTEXT HERE
        -----END CERTIFICATE-----'
        ```
 
@@ -263,5 +275,5 @@ CALL mysql.az_replication_remove_master;
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Database for MariaDB の[データイン レプリケーション](concepts-data-in-replication.md)について確認します。

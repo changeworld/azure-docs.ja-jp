@@ -3,12 +3,12 @@ title: ナレッジ ベースを管理する - QnA Maker
 description: QnA Maker を使うと、ナレッジ ベースの設定とコンテンツにアクセスできるようになり、ナレッジ ベースを管理できます。
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 57839125011016daed5f0b3d441a83e8db488198
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80071074"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756806"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>ナレッジ ベースを作成して設定を管理する
 
@@ -107,5 +107,5 @@ QnA Maker を使うと、ナレッジ ベースの設定とデータ ソース�
 
 リソース内のすべてのナレッジ ベースの[言語の管理](language-knowledge-base.md)について学習します。
 
-* QnA セットを編集する
+* QnA ペアの編集
 * QnA Maker によって使用される Azure リソースを管理する

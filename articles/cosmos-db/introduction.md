@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 2a09d5af013e804f33327855fb7b9f2104bc225c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6292c3c2d928581d0564fe457342ea7b1e17111c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79215250"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983026"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
 現在のアプリケーションには、優れた応答性と、常時接続が求められます。 待機時間の短縮と高可用性を実現するには、これらのアプリケーションのインスタンスをそのユーザーの近くにあるデータ センターにデプロイする必要があります。 アプリケーションには、ピーク時の使用量の大きな変化に即応し、増え続けるデータを格納し、ミリ秒単位でユーザーがこうしたデータを利用できるようにすることが求められます。
 
-Azure Cosmos DB は、Microsoft によってグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB では、ボタンを 1 つクリックするだけで、世界中の Azure リージョンをいくつでもまたいでスループットとストレージをエラスティックかつ個別にスケーリングできます。 スループットとストレージをエラスティックにスケーリングし、次のような好みの API を使用して、数ミリ秒 (1 桁) の高速データ アクセスを利用できます。SQL、MongoDB、Cassandra、Tables、Gremlin など。 Cosmos DB では、スループット、待ち時間、可用性、および整合性の保証について包括的な[サービス レベル アグリーメント](https://aka.ms/acdbsla) (SLA) が提供されています。この点は、他のどのデータベース サービスにもないメリットです。
+Azure Cosmos DB は、Microsoft によってグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB では、ボタンを 1 つクリックするだけで、世界中の Azure リージョンをいくつでもまたいでスループットとストレージをエラスティックかつ個別にスケーリングできます。 スループットとストレージをエラスティックにスケーリングし、次のような好みの API を使用して、数ミリ秒 (1 桁) の高速データ アクセスを利用できます。SQL、MongoDB、Cassandra、Tables、Gremlin など。 Cosmos DB では、スループット、待ち時間、可用性、および整合性の保証について包括的な[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) (SLA) が提供されています。この点は、他のどのデータベース サービスにもないメリットです。
 
 Azure サブスクリプション、課金、契約がなくても [Azure Cosmos DB を無料でお試し](https://azure.microsoft.com/try/cosmosdb/)いただけます。または、[Azure Cosmos DB Free レベル](optimize-dev-test.md#azure-cosmos-db-free-tier)を使用してアカウントを取得し、最初の 400 RU/秒と 5 GB のストレージを無料でご利用いただけます。
 
@@ -48,7 +48,7 @@ Cosmos DB を使用すると、応答性に優れた世界規模のアプリケ�
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>明確に定義された複数の整合性の選択肢
 
-Cosmos DB でグローバルに分散されたアプリケーションを構築する際に、極端な[整合性、可用性、待ち時間、スループットのトレードオフ](consistency-levels-tradeoffs.md)を行う必要がなくなりました。 Cosmos DB のマルチマスター レプリケーション プロトコルは、"*強固*"、"*有界整合性制約*"、"*セッション*"、"*一貫性のあるプレフィックス*"、"*最終*" という [5 つの明確な整合性の選択肢](consistency-levels.md) -  を提供するよう慎重に設計されており、グローバル分散アプリケーションでも、待ち時間が短く可用性に優れた直感的なプログラミング モデルを実現できます。
+Cosmos DB でグローバルに分散されたアプリケーションを構築する際に、極端な[整合性、可用性、待ち時間、スループットのトレードオフ](consistency-levels-tradeoffs.md)を行う必要がなくなりました。 Cosmos DB のマルチマスター レプリケーション プロトコルは、"*強固*"、"*有界整合性制約*"、"*セッション*"、"*一貫性のあるプレフィックス*"、"*最終的*" という [5 つの明確な整合性の選択肢](consistency-levels.md) -  を提供するよう慎重に設計されており、グローバル分散アプリケーションでも、待ち時間が短く可用性に優れた直感的なプログラミング モデルを実現できます。
 
 ### <a name="no-schema-or-index-management"></a>スキーマやインデックスの管理が不要
 

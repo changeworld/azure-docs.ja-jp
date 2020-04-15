@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77149934"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985441"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>チュートリアル:Azure パブリック IP アドレスを参照するエイリアス レコードを構成する 
 
@@ -20,8 +20,8 @@ ms.locfileid: "77149934"
 
 > [!div class="checklist"]
 > * ネットワーク インフラストラクチャを作成する。
-> * Web サーバー仮想マシンを作成する。
-> * エイリアス レコードを作成する。
+> * パブリック IP を使用して Web サーバー仮想マシンを作成する。
+> * パブリック IP を指すエイリアス レコードを作成する。
 > * エイリアス レコードをテストする。
 
 
@@ -48,7 +48,7 @@ Azure DNS 内でドメインをホストする手順については、「[チュ
 4. **[設定]** で、**VNet-Server** 仮想ネットワークと **SN-Web** サブネットを選択します。 パブリック受信ポートでは、 **[HTTP]**  >  **[HTTPS]**  >  **[RDP (3389)]** を選択し、 **[OK]** を選択します。
 5. **[概要]** ページで、 **[作成]** を選択します。
 
-この手順は、完了するまでに数分かかります。
+この手順は、完了するまでに数分かかります。 仮想マシンには、Web-01-ip という基本的な動的パブリック IP を持つ NIC が接続されます。 このパブリック IP は、仮想マシンが再起動されるたびに変わります。
 
 ### <a name="install-iis"></a>IIS のインストール
 

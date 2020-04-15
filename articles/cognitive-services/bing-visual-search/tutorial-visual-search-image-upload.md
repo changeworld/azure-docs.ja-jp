@@ -1,21 +1,21 @@
 ---
-title: 'チュートリアル: 画像をアップロードする方法 - Bing Visual Search'
+title: チュートリアル:Bing Visual Search を使用して画像をアップロードする方法
 titleSuffix: Azure Cognitive Services
-description: Bing に画像をアップロードしてその画像の分析情報を取得してから、応答を解析および表示するプロセスを解説します。
+description: 画像を Bing にアップロードして、その画像に関する分析情報を取得し、応答を表示する方法について説明します。
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 11/29/2019
+ms.date: 03/31/2020
 ms.author: scottwhi
-ms.openlocfilehash: 84a8219221525400a9d3241c2f183d24344c2f6a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ecd1ab5e613bb326b65f6aa50f3f85172bc334ac
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689176"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477936"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>チュートリアル:Bing Visual Search API に画像をアップロードする
 
@@ -770,7 +770,7 @@ function addDivContent(div, tag, json) {
         </style>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 >[!div class="nextstepaction"]
 > [チュートリアル:ImageInsightsToken を使用して以前の検索から似た画像を見つける](./tutorial-visual-search-insights-token.md)

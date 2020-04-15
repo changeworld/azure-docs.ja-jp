@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a27487fa69888b02883c3d9a2151887f41afc45
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189380"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803162"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で "サインインしたままにする (KMSI)" を有効にする
 
@@ -36,7 +36,7 @@ Azure Active Directory B2C (Azure AD B2C) ディレクトリにローカル ア�
 
 KMSI を有効にするには、コンテンツ定義の `DataUri` 要素を[ページ識別子](contentdefinitions.md#datauri) `unifiedssp` に設定し、[ページ バージョン](page-layout.md)を *1.1.0* 以上に設定します。
 
-1. ポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>です。 この拡張ファイルは、カスタム ポリシー スターター パックに含まれているポリシー ファイルの 1 つであり、[カスタム ポリシーの概要](custom-policy-get-started.md)に関するページの前提条件の中で、取得済みになっている必要があります。
+1. ポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。 この拡張ファイルは、カスタム ポリシー スターター パックに含まれているポリシー ファイルの 1 つであり、[カスタム ポリシーの概要](custom-policy-get-started.md)に関するページの前提条件の中で、取得済みになっている必要があります。
 1. **BuildingBlocks** 要素を検索します。 要素が存在しない場合は追加します。
 1. **ContentDefinitions** 要素をポリシーの **BuildingBlocks** 要素に追加します。
 
@@ -52,9 +52,27 @@ KMSI を有効にするには、コンテンツ定義の `DataUri` 要素を[ペ
     </BuildingBlocks>
     ```
 
+## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>メタデータをセルフアサート技術プロファイルに追加する
+
+サインアップおよびサインイン ページに KMSI チェック ボックスを追加するには、`setting.enableRememberMe` メタデータを [true] に設定します。 拡張ファイルで SelfAsserted-LocalAccountSignin-Email 技術プロファイルを上書きします。
+
+1. ClaimsProviders 要素を見つけます。 要素が存在しない場合は追加します。
+1. ClaimsProviders 要素に次のクレーム プロバイダーを追加します。
+
+```XML
+<ClaimsProvider>
+  <DisplayName>Local Account</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+      <Metadata>
+        <Item Key="setting.enableRememberMe">True</Item>
+      </Metadata>
+    </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+```
+
 1. 拡張ファイルを保存します。
-
-
 
 ## <a name="configure-a-relying-party-file"></a>証明書利用者ファイルを設定する
 
@@ -107,7 +125,15 @@ KMSI を有効にするには、コンテンツ定義の `DataUri` 要素を[ペ
 </RelyingParty>
 ```
 
-4. 変更内容を保存し、ファイルをアップロードします。
-5. アップロードしたカスタムのポリシーをテストするには、Azure portal でポリシー ページに移動し、 **[今すぐ実行]** を選択します。
+## <a name="test-your-policy"></a>ポリシーのテスト
 
-[こちら](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in)でサンプル ポリシーを見つけることができます。
+1. 変更内容を保存し、ファイルをアップロードします。
+1. アップロードしたカスタムのポリシーをテストするには、Azure portal でポリシー ページに移動し、 **[今すぐ実行]** を選択します。
+1. **ユーザー名**と**パスワード**を入力し、 **[Keep me signed in]\(サインインしたままにする\)** を選択して **[sign-in]\(サインイン\)** をクリックします。
+1. Azure Portal に戻ります。 ポリシー ページに移動し、 **[コピー]** を選択してサインイン URL をコピーします。
+1. ブラウザーのアドレス バーで、`&prompt=login` クエリ文字列パラメーターを削除します。これにより、ユーザーはその要求に対して資格情報を入力するように強制されます。
+1. ブラウザーで、 **[Go]\(移動\)** をクリックします。 Azure AD B2C は、再度のサインインを求めることなくアクセス トークンを発行するようになります。 
+
+## <a name="next-steps"></a>次のステップ
+
+サンプル ポリシーは[こちら](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in)で確認できます。

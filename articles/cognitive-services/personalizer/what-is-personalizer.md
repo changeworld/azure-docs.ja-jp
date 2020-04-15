@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 850ab0ee89ee167886d8747a0c721bb643529e14
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ac6d72cbb69796851e58098138d51bb0988be4ec
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80052061"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520971"
 ---
 # <a name="what-is-personalizer"></a>Personalizer とは
 
@@ -59,7 +59,7 @@ Personalizer は、次の組み合わせに基づいて "_報酬アクション 
 
 Personalizer の **Rank** [API](https://go.microsoft.com/fwlink/?linkid=2092082) は、コンテンツを提示する "_たびに_" リアルタイムで呼び出されます。 これは**イベント**と呼ばれ、"_イベント ID_" で表されます。
 
-Personalizer の **Reward** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) は、リアルタイムで呼び出すことも、実際のインフラストラクチャに合わせて時間差で呼び出すこともできます。 報酬スコアは、ビジネス ニーズに基づいて決めます。 これは、適切な場合は 1、不適切な場合は 0 というように 1 つの値になる場合があるほか、ビジネス目標や指標を考慮して作成したアルゴリズムによって生成される場合もあります。
+Personalizer の **Reward** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) は、リアルタイムで呼び出すことも、実際のインフラストラクチャに合わせて時間差で呼び出すこともできます。 報酬スコアは、ビジネス ニーズに基づいて決めます。 報酬スコアは 0 と 1 の間です。 これは、適切な場合は 1、不適切な場合は 0 というように 1 つの値になる場合があるほか、ビジネス目標や指標を考慮して作成したアルゴリズムによって生成される場合もあります。
 
 ## <a name="personalizer-content-requirements"></a>Personalizer のコンテンツ要件
 

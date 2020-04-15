@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e14b669aadeec4c6a7245be8940051ec604059b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79409560"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879430"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>ラベル付けプロジェクトで画像にタグを付ける
 
-プロジェクト管理者によって Azure Machine Learning で[ラベル付けプロジェクトが作成](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)されたら、ラベル付けツールを使用してすぐに Machine Learning プロジェクト用のデータを準備できます。 この記事では、次の内容について説明します。
+プロジェクト管理者によって Azure Machine Learning で[ラベル付けプロジェクトが作成](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)されたら、ラベル付けツール (パブリック プレビュー) を使用してすぐに Machine Learning プロジェクト用のデータを準備できます。 この記事では、次の内容について説明します。
 
 > [!div class="checklist"]
 > * ラベル付けプロジェクトにアクセスする方法
@@ -45,7 +45,9 @@ ms.locfileid: "79409560"
 
 すべての画像のラベル付けタスクでは、プロジェクト管理者が指定したセットから適切なタグを 1 つまたは複数選択します。 キーボードの数字キーを使用して、最初の 9 個のタグを選択できます。  
 
-画像分類タスクでは、複数の画像を同時に表示することもできます。 画像領域の上にあるアイコンを使用して、レイアウトを選択します。 表示されているすべての画像を同時に選択するには、 **[すべて選択]** を使用します。 個々の画像を選択するには、画像の右上隅にある円形の選択ボタンを使用します。 タグを適用する画像を少なくとも 1 つ選択する必要があります。 複数の画像を選択すると、選択したすべての画像に選択したタグが適用されます。
+画像分類タスクでは、複数の画像を同時に表示することもできます。 画像領域の上にあるアイコンを使用して、レイアウトを選択します。 
+
+表示されているすべての画像を同時に選択するには、 **[すべて選択]** を使用します。 個々の画像を選択するには、画像の右上隅にある円形の選択ボタンを使用します。 タグを適用する画像を少なくとも 1 つ選択する必要があります。 複数の画像を選択すると、選択したすべての画像に選択したタグが適用されます。
 
 ここでは、2 x 2 レイアウトを選択済みで、"Mammal" (哺乳類) というタグを熊とシャチの画像に適用しようとしています。 サメの画像には既に "Cartilaginous fish" (軟骨魚類) というタグが付けられており、イグアナにはまだタグが付けられていません。
 

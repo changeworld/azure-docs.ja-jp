@@ -5,13 +5,13 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: 92fa35fbe8e5eef4dbdc8b6c47a9055affd449a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/03/2020
+ms.openlocfilehash: 174279e4bd241ee9b336fc1ce7e0af389d2297a3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273184"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666997"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure Cosmos DB で日付を扱う
 
@@ -21,7 +21,9 @@ Azure Cosmos DB は、ネイティブの [JSON](https://www.json.org) データ 
 
 ## <a name="storing-datetimes"></a>DateTimes の格納
 
-Azure Cosmos DB は、string、number、boolean、null、array、object などの JSON 型をサポートしています。 DateTime 型は直接サポートされません。 現在、Azure Cosmos DB では、日付のローカリゼーションはサポートされません。 そのため、DateTimes を文字列として格納する必要があります。 Azure Cosmos DB の DateTime 文字列に推奨される形式は、ISO 8601 UTC 標準に準拠した `YYYY-MM-DDThh:mm:ss.sssZ` です。 Azure Cosmos DB のすべての日付を UTC として格納することをお勧めします。 日付文字列をこの形式に変換すると、日付を辞書式で並べ替えることができます。 UTC 以外の日付が格納されている場合は、クライアント側でロジックを処理する必要があります。 現地の DateTime を UTC に変換するには、オフセットが JSON のプロパティとして認識および格納されている必要があります。また、クライアントでオフセットを使用して UTC の DateTime 値を計算できます。
+Azure Cosmos DB は、string、number、boolean、null、array、object などの JSON 型をサポートしています。 DateTime 型は直接サポートされません。 現在、Azure Cosmos DB では、日付のローカリゼーションはサポートされません。 そのため、DateTimes を文字列として格納する必要があります。 Azure Cosmos DB の DateTime 文字列に推奨される形式は、ISO 8601 UTC 標準に準拠した `YYYY-MM-DDThh:mm:ss.fffffffZ` です。 Azure Cosmos DB のすべての日付を UTC として格納することをお勧めします。 日付文字列をこの形式に変換すると、日付を辞書式で並べ替えることができます。 UTC 以外の日付が格納されている場合は、クライアント側でロジックを処理する必要があります。 現地の DateTime を UTC に変換するには、オフセットが JSON のプロパティとして認識および格納されている必要があります。また、クライアントでオフセットを使用して UTC の DateTime 値を計算できます。
+
+DateTime 文字列をフィルターとして使用する範囲クエリは、DateTime 文字列がすべて UTC にあり、長さが同じ場合にのみサポートされます。 Azure Cosmos DB では、[GetCurrentDateTime](sql-query-getcurrentdatetime.md) システム関数は、`YYYY-MM-DDThh:mm:ss.fffffffZ` の形式で現在の UTC 日時 ISO 8601 文字列値を返します。
 
 ほとんどのアプリケーションは、次に示す理由から、DateTime の既定の文字列表現を使用できます。
 
@@ -30,7 +32,7 @@ Azure Cosmos DB は、string、number、boolean、null、array、object など�
 * JSON に格納されている日付を人間が判読できます。
 * この方法では、高速クエリ パフォーマンスのために Azure Cosmos DB のインデックスを利用できます。
 
-たとえば、次のスニペットは、.NET SDK を使用して 2 つの DateTime プロパティ (`Order` と `ShipDate`) を含む`OrderDate` オブジェクトをドキュメントとして格納します。
+たとえば、次のスニペットは、.NET SDK を使用して 2 つの DateTime プロパティ (`ShipDate` と `OrderDate`) を含む`Order` オブジェクトをドキュメントとして格納します。
 
 ```csharp
     public class Order
@@ -47,7 +49,7 @@ Azure Cosmos DB は、string、number、boolean、null、array、object など�
         {
             Id = "09152014101",
             OrderDate = DateTime.UtcNow.AddDays(-30),
-            ShipDate = DateTime.UtcNow.AddDays(-14), 
+            ShipDate = DateTime.UtcNow.AddDays(-14),
             Total = 113.39
         });
 ```
@@ -76,7 +78,7 @@ SQL .NET SDK は、LINQ 経由で Azure Cosmos DB に格納されたデータの
 次の SQL ステートメントに変換され、Azure Cosmos DB で実行されます。
 
 ```sql
-    SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
+    SELECT * FROM root WHERE (root["ShipDate"] >= "2014-09-30T23:14:25.7251173Z")
 ```
 
 Azure Cosmos DB の SQL クエリ言語と LINQ プロバイダーについては、[LINQ での Cosmos DB のクエリ](sql-query-linq-to-sql.md)に関する記事を参照してください。

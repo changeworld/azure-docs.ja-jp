@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: b1f75a5f7a97907bf5b8bb460ff2df420d053f9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e764e6a474b9843d43f9e8af9cf3b6a8ddf37189
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386801"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811648"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure クラウド サービスのカスタム ドメイン名の構成
 クラウド サービスを作成するときに、Azure は **cloudapp.net**のサブドメインにそのアプリを割り当てます。 たとえば、クラウド サービスの名前が "contoso" の場合、ユーザーは `http://contoso.cloudapp.net` のような URL でアプリケーションにアクセスできます。 また Azure によって仮想 IP アドレスも割り当てられます。
@@ -30,7 +30,7 @@ CNAME レコードと A レコードについてすでに理解している場�
 <p/>
 
 > [!TIP]
-> より速く進める --新しい Azure の使用 [チュートリアル ガイド](https://support.microsoft.com/kb/2990804)!  Azure Cloud Services  または Azure Websites を使用したカスタム ドメイン名の関連付けおよび通信 (SSL) のセキュリティ保護がすばやく行えます。
+> より速く進める --新しい Azure の使用 [チュートリアル ガイド](https://support.microsoft.com/kb/2990804)!  Azure Cloud Services または Azure Websites を使用したカスタム ドメイン名の関連付けおよび通信 (TLS) のセキュリティ保護がすばやく行えます。
 > 
 > 
 
@@ -128,7 +128,7 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 * [CDN コンテンツをカスタム ドメインにマッピングする方法](../cdn/cdn-map-content-to-custom-domain.md)
 * [クラウド サービスの一般的な構成](cloud-services-how-to-configure-portal.md)
 * 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy-portal.md)
-* [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
+* [TLS または SSL 証明書](cloud-services-configure-ssl-certificate-portal.md)を構成します。
 
 [Expose Your Application on a Custom Domain]: #access-app
 [Add a CNAME Record for Your Custom Domain]: #add-cname

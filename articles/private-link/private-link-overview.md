@@ -8,21 +8,15 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 710c5a780841135344d92e93a02f97963b36b09e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 1bef4e5f4129ddc8300d61d609392ce0b07b74b8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921392"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656247"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Private Link とは 
-Azure Private Link を使用すると、次のような Azure PaaS サービスにアクセスできます。
- 
- - **Azure ストレージ**
- - **Azure Cosmos DB**
- - **Azure SQL Database**
-
-Private Link では、ホストされている顧客やパートナーのサービスに対し、仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)を介してアクセスできます。
+Azure Private Link を使用すると、お使いの仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有の、またはパートナー サービスにアクセスできます。
 
 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを通ります。 パブリック インターネットにサービスを公開する必要はありません。 お使いの仮想ネットワークに独自の[プライベート リンク サービス](private-link-service-overview.md)を作成して顧客に提供することができます。 Azure Private Link を使用した設定と消費は、Azure PaaS サービス、顧客所有サービス、共有パートナー サービス間で一貫しています。
 
@@ -48,16 +42,27 @@ Azure Private Link には次のような利点があります。
 
 |シナリオ  |サポートされているサービス  |対応リージョン | Status  |
 |:---------|:-------------------|:-----------------|:--------|
-|顧客所有サービス用の Private Link|Standard Azure Load Balancer の背後にある Private Link サービス | すべてのパブリック リージョン  | GA <br/> [詳細情報](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
-|Azure PaaS サービス用の Private Link   | Azure Storage        |  すべてのパブリック リージョン      | プレビュー <br/> [詳細情報](/azure/storage/common/storage-private-endpoints)  |
-|  | Azure Data Lake Storage Gen2        |  すべてのパブリック リージョン      | プレビュー <br/> [詳細情報](/azure/storage/common/storage-private-endpoints)  |
-|  |  Azure SQL データベース         | すべてのパブリック リージョン      |   プレビュー <br/> [詳細情報](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
-||Azure SQL Data Warehouse| すべてのパブリック リージョン |プレビュー <br/> [詳細情報](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-||Azure Cosmos DB| 米国中西部、米国西部、米国中北部 |プレビュー <br/> [詳細情報](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
-|  |  Azure Database for PostgreSQL - 単一サーバー         | すべてのパブリック リージョン      |   プレビュー <br/> [詳細情報](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
-|  |  Azure Database for MySQL         | すべてのパブリック リージョン      |   プレビュー <br/> [詳細情報](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
-|  |  Azure Database for MariaDB         | すべてのパブリック リージョン      |   プレビュー <br/> [詳細情報](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
-|  |  Azure Key Vault         | すべてのパブリック リージョン      |   プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
+|顧客所有サービス用の Private Link |Standard Azure Load Balancer の背後にある Private Link サービス | すべてのパブリック リージョン  | GA <br/> [詳細情報](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+|Azure PaaS サービス用の Private Link   | Azure Storage        |  すべてのパブリック リージョン      | GA <br/> [詳細情報](/azure/storage/common/storage-private-endpoints)  |
+|  | Azure Data Lake Storage Gen2        |  すべてのパブリック リージョン      | GA <br/> [詳細情報](/azure/storage/common/storage-private-endpoints)  |
+|  |  Azure SQL データベース         | すべてのパブリック リージョン      |   GA <br/> [詳細情報](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
+|  |Azure Synapse Analytics (SQL Data Warehouse)| すべてのパブリック リージョン |GA <br/> [詳細情報](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
+|  |Azure Cosmos DB|  すべてのパブリック リージョン |GA <br/> [詳細情報](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  |  Azure Database for PostgreSQL - 単一サーバー         | すべてのパブリック リージョン      |   GA <br/> [詳細情報](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  |  Azure Database for MySQL         | すべてのパブリック リージョン      |   GA <br/> [詳細情報](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
+|  |  Azure Database for MariaDB         | すべてのパブリック リージョン      |   GA <br/> [詳細情報](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
+|  |  Azure Key Vault         | すべてのパブリック リージョン      |   GA   <br/> [詳細情報](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
+|  |Azure Kubernetes Service - Kubernetes API | すべてのパブリック リージョン      |   GA   <br/> [詳細情報](https://docs.microsoft.com/azure/aks/private-clusters)   |
+|  |Azure Search | 米国東部、米国西部 2、米国中南部 |   プレビュー    |
+|  |Azure Container Registry | すべてのパブリック リージョン      |   プレビュー   |
+|  |Azure App Configuration | すべてのパブリック リージョン      |   プレビュー   |
+|  |Azure Backup | 米国東部、米国西部 2、米国中南部     |   プレビュー   |
+|  |Azure Event Hub | すべてのパブリック リージョン      |   プレビュー    |
+|  |Azure Service Bus | すべてのパブリック リージョン      |   プレビュー   |
+|  |Azure Relay | すべてのパブリック リージョン      |   プレビュー   |
+|  |Azure Event Grid| 米国東部、米国西部 2、米国中南部      |   プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/event-grid/network-security)   |
+|  |Azure Web Apps | 米国東部、米国西部 2、米国中南部      |   プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|  |Azure Machine Learning | 米国東部、米国西部 2、米国中南部      |   プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 
 最新情報については、[Azure 仮想ネットワークの更新情報ページ](https://azure.microsoft.com/updates/?product=virtual-network)をご覧ください。
 

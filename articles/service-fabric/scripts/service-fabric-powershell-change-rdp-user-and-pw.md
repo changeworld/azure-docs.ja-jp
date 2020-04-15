@@ -1,5 +1,5 @@
 ---
-title: PowerShell で RDP のユーザー名とパスワードを更新する
+title: PowerShell で RDP ユーザー名とパスワードを更新する
 description: Azure PowerShell スクリプトのサンプル - 特定のノード型のすべての Service Fabric クラスター ノードの RDP ユーザー名とパスワードを更新します。
 services: service-fabric
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 0cf9f8362d3fa683084aef840cf35cd9a843608a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b7f229162ed745408121d898f5af516d22a0c039
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614810"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984931"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>クラスター内の VM の管理者のユーザー名とパスワードを更新します。
 
@@ -35,13 +35,17 @@ Service Fabric クラスター内の各[ノード型](../service-fabric-cluster-
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは次のコマンドを使用します。表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトでは以下のコマンドを使用します。表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | クラスター ノード型 (仮想マシン スケール セット) のプロパティの取得   |
 | [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension)| 仮想マシン スケール セットに拡張機能を追加します。|
 | [Update-AzVmss](/powershell/module/az.compute/update-azvmss)|仮想マシン スケール セットの状態を、ローカル VMSS オブジェクトの状態に更新します。|
+
+## <a name="duration"></a>Duration
+
+たとえば、5 つのノードを持つ 1 つのノードの種類の場合、ユーザー名やパスワードの変更に 45 分から 60 分間かかります。 
 
 ## <a name="next-steps"></a>次のステップ
 

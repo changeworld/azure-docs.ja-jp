@@ -3,12 +3,12 @@ title: ナレッジ ベースの設計 - QnA Maker
 description: QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペアと、各 QnA セットに関連付けられている省略可能なメタデータで構成されます。
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: cb71de0f6a3e372d8c1c1fede67ba0c0354532ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d24434d1343f4174cfbfeb3a30c36737b213168
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76844322"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756794"
 ---
 # <a name="question-and-answer-set-concepts"></a>質問と回答セットの概念
 
@@ -33,7 +33,7 @@ ms.locfileid: "76844322"
 
 ## <a name="editorially-add-to-knowledge-base"></a>編集という形でナレッジ ベースに追加する
 
-ナレッジ ベースの内容とする既存のコンテンツがない場合は、QnA Maker ポータルで編集という形で QnA セットを追加することができます。 ナレッジ ベースの更新方法については、[こちら](../How-To/edit-knowledge-base.md)を参照してください。
+ナレッジ ベースの内容にする既存のコンテンツがない場合は、QnA Maker ポータルで編集という形で QnA ペアを追加することができます。 ナレッジ ベースの更新方法については、[こちら](../How-To/edit-knowledge-base.md)を参照してください。
 
 ## <a name="editing-your-knowledge-base-locally"></a>ナレッジ ベースのローカルな編集
 

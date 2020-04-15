@@ -3,12 +3,12 @@ title: データ ソースからのインポート - QnA Maker
 description: QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペアと、各 QnA セットに関連付けられている省略可能なメタデータで構成されます。
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: e7772b2c76dfb92ced4d2c0d4b8dae97a59d1b83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f648e15be803159dadb3f8bd047b2f46885eec91
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79457823"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804284"
 ---
 # <a name="importing-from-data-sources"></a>データ ソースからのインポート
 
@@ -56,7 +56,7 @@ ms.locfileid: "79457823"
 
 ## <a name="export-as-example"></a>例としてエクスポートする
 
-`.tsv` ファイルで QnA セットを表す方法がわからない場合:
+`.tsv` ファイルで QnA ペアを表す方法が不明な場合:
 * この [GitHub からダウンロードできるサンプル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)を使用します
 * または、QnA Maker ポータルでセットを作成し、保存してから、セットを表す方法の例としてナレッジ ベースをエクスポートします。
 

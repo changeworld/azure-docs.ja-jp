@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 842c7c81e3bf9615eb56d50ee2d6fce794845b6e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: cbbdf724b9d7fe4948553e7526410b994f491b49
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960691"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435255"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center-preview"></a>Azure Security Center と Windows Admin Center (プレビュー) の統合
+# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Azure Security Center と Windows Admin Center の統合
 
 Windows Admin Center は、Windows サーバーの管理ツールです。 システム管理者は、この 1 つの場所から、最もよく使う管理ツールの大部分にアクセスできます。 Windows Admin Center 内で、オンプレミス サーバーを Azure Security Center に直接オンボードできます。 その後、Windows Admin Center のエクスペリエンス内で直接、セキュリティに関する推奨事項とアラートの概要を確認できます。
 
@@ -48,7 +48,7 @@ Windows Admin Center は、Windows サーバーの管理ツールです。 シ�
     * サーバーに、レポート先のワークスペースと、関連付けられているサブスクリプションがあること。
     * ワークスペースで、Security Center の Standard レベルの Log Analytics ソリューションが有効になっていること。 このソリューションにより、このワークスペースをレポート先とする "*すべて*" のサーバーと仮想マシンに Security Center の Standard レベルの機能が提供されます。
     * サブスクリプションで、仮想マシンに対して Security Center の Standard レベルの価格設定が有効になっていること。
-    * Microsoft Monitoring Agent (MMA) がサーバーにインストールされ、選択したワークスペースがレポート先として構成されていること。 サーバーのレポート先として別のワークスペースが既に構成されている場合は、新しく選択したワークスペースもレポート先に追加されます。
+    * Log Analytics エージェントはサーバーにインストールされ、特定のワークスペースをレポートするよう構成されます。 サーバーのレポート先として別のワークスペースが既に構成されている場合は、新しく選択したワークスペースもレポート先に追加されます。
 
     > [!NOTE]
     > オンボーディング後、推奨事項が表示されるまでにしばらく時間がかかる場合があります。 実際、サーバーの稼働状況によっては、アラートを "*まったく*" 受信しないこともあります。 テスト アラートを生成してアラートが正常に機能していることをテストするには、[アラートの検証手順](security-center-alert-validation.md)の指示に従います。
@@ -58,7 +58,7 @@ Windows Admin Center は、Windows サーバーの管理ツールです。 シ�
 
 オンボードが完了すると、Windows Admin Center の Azure Security Center 領域で直接アラートと推奨事項を確認できます。 推奨事項またはアラートをクリックすると、それが Azure portal に表示されます。 そこでは、追加の情報と、問題を修復する方法も確認できます。
 
-[![Windows Admin Center に表示される Security Center の推奨事項とアラート](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png)](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png#lightbox)
+[![Windows Admin Center に表示される Security Center のレコメンデーションとアラート](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png)](media/windows-admin-center-integration/asc-recommendations-and-alerts-in-wac.png#lightbox)
 
 ## <a name="viewing-security-recommendations-and-alerts-for-windows-admin-center-managed-servers-in-security-center"></a>Windows Admin Center で管理されているサーバーのセキュリティに関する推奨事項とアラートを Security Center で確認する
 Azure Security Center から:

@@ -1,19 +1,19 @@
 ---
-title: テンプレート リファレンスの利用
+title: テンプレート リファレンスの使用
 description: Azure Resource Manager テンプレート リファレンスを利用してテンプレートを作成します。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b742982121a20a2b057eba4211584b0386dde411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b713d508a5e28291778d3727c15e12972eea3a77
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80373178"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878505"
 ---
-# <a name="tutorial-utilize-the-arm-template-reference"></a>チュートリアル:ARM テンプレート リファレンスを利用する
+# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>チュートリアル:Resource Manager テンプレート リファレンスを利用する
 
 テンプレート スキーマ情報を見つける方法のほか、その情報を使用して Azure Resource Manager (ARM) テンプレートを作成する方法について説明します。
 
@@ -65,9 +65,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     * **resources**: リソース グループ内でデプロイまたは更新されるリソースの種類を指定します。
     * **outputs**: デプロイ後に返される値を指定します。
 
-1. **resources** を展開します。 `Microsoft.Storage/storageAccounts` リソースが定義されています。
+1. **resources** を展開します。 `Microsoft.Storage/storageAccounts` リソースが定義されています。 SKU 名ではパラメーター値を使用します。  パラメーター名は **storageAccountType** です。
 
     ![Resource Manager テンプレートのストレージ アカウント定義](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
+
+1. **parameters** を展開して、**storageAccountType** がどのように定義されているかを確認します。 このパラメーターには、4 つの許容値が含まれています。 他の許容値が見つかったら、パラメーター定義を修正してください。
+
+    ![Resource Manager テンプレートのストレージ アカウント リソース SKU](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
 ## <a name="find-the-template-reference"></a>テンプレート リファレンスの検索
 
@@ -84,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Resource Manager テンプレート リファレンスのストレージ アカウントの種類とバージョン](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
-1. リソースの種類として最新バージョンの **storageAccount** を選択します。  この記事の執筆時点での最新バージョンは **2019-06-01** です。
+1. リソースの種類として最新バージョンの **storageAccount** を選択します。 この記事の執筆時点での最新バージョンは **2019-06-01** です。 このバージョンがテンプレートのストレージ アカウント リソースに使用されているバージョンと一致していることを確認してください。 API バージョンを更新する場合は、リソース定義がテンプレート リファレンスと一致していることを確認してください。
 
 1. このページには、リソースの種類としての storageAccount の詳細が一覧表示されます。  たとえば、指定できる **Sku** オブジェクトの値が一覧表示されます。 先ほど開いたクイックスタート テンプレートに列挙されている SKU の他にも SKU は存在します。 クイックスタート テンプレートをカスタマイズすれば、使用可能なストレージの種類をすべて追加することができます。
 
@@ -98,7 +102,21 @@ Visual Studio Code から、次のスクリーンショットに示したスト�
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-デプロイ手順については、Visual Studio Code のクイック スタートの「[テンプレートのデプロイ](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)」セクションを参照してください。 テンプレートをデプロイするときは、**storageAccountType** パラメーターに、新しく追加する値を指定します (**Premium_ZRS** など)。 元のクイックスタート テンプレートを使用した場合、**Premium_ZRS** という値は許可されないため、デプロイに失敗します。
+デプロイ手順については、Visual Studio Code のクイック スタートの「[テンプレートのデプロイ](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)」セクションを参照してください。 テンプレートをデプロイするときは、**storageAccountType** パラメーターに、新しく追加する値を指定します (**Premium_ZRS** など)。 元のクイックスタート テンプレートを使用した場合、**Premium_ZRS** という値は許可されないため、デプロイに失敗します。  パラメーター値を渡すには、次のスイッチをデプロイ コマンドに追加します。
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli
+--parameters storageAccountType='Premium_ZRS'
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+-storageAccountType "Premium_ZRS"
+```
+
+---
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12a83c6381d3f068eecc2dda4838b981a8b59ab7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c3015ea26d81505c4f058846dbcb3b7858f79267
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135781"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520054"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Netvision Compas の統合
 
@@ -69,7 +69,7 @@ Netvision Compas で Azure AD SSO を構成してテストするには、次の�
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Netvision Compas の SSO の構成](#configure-netvision-compas-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[Netvision Compas のテスト ユーザーの作成](#create-netvision-compas-test-user)** - Netvision Compas で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+    1. **[Netvision Compas のテスト ユーザーの構成](#configure-netvision-compas-test-user)** - Netvision Compas で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -95,13 +95,11 @@ Netvision Compas で Azure AD SSO を構成してテストするには、次の�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Netvision Compas クライアント サポート チーム](mailto:contact@net.vision)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を見つけて **[ダウンロード]** を選択し、メタデータ ファイルをダウンロードしてコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/certificatebase64.png)
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-1. **[Netvision Compas のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -135,17 +133,58 @@ Netvision Compas で Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-netvision-compas-sso"></a>Netvision Compas の SSO の構成
 
-**Netvision Compas** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Netvision Compas サポート チーム](mailto:contact@net.vision)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+このセクションでは、**Netvision Compas** の SAML SSO を有効にします。
+1. 管理者アカウントを使用して **Netvision Compas** にログインし、管理領域にアクセスします。
 
-### <a name="create-netvision-compas-test-user"></a>Netvision Compas のテスト ユーザーの作成
+    ![管理領域](media/netvision-compas-tutorial/admin.png)
 
-このセクションでは、Netvision Compas で B.Simon というユーザーを作成します。 [Netvision Compas サポート チーム](mailto:contact@net.vision)と連携し、Netvision Compas プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+1. **[Syetem]\(システム\)** 領域を見つけて、 **[Identity Providers]\(ID プロバイダー\)** を選択します。
+
+    ![IDP の管理](media/netvision-compas-tutorial/admin-idps.png)
+
+1. Azure AD を新しい IDP として登録するには、**追加**アクションを選択します。
+
+    ![IDP の追加](media/netvision-compas-tutorial/idps-add.png)
+
+1. **[Provider type]\(プロバイダーの種類\)** で **[SAML]** を選択します。
+1. **[Display name]\(表示名\)** と **[Description]\(説明\)** フィールドに、わかりやすい値を入力します。
+1. **Netvision Compas** ユーザーを IDP に割り当てるには、 **[Available users]\(使用可能なユーザー\)** 一覧から選択し、 **[Add selected]\(選択項目の追加\)** ボタンを選択します。 プロビジョニングの手順に従って、ユーザーを IDP に割り当てることもできます。
+1. **[Metadata]\(メタデータ\)** SAML オプションでは、 **[Choose File]\(ファイルの選択\)** ボタンをクリックし、前にコンピューターに保存したメタデータ ファイルを選択します。
+1. **[保存]** をクリックします。
+
+    ![IDP の編集](media/netvision-compas-tutorial/idp-edit.png)
+
+
+### <a name="configure-netvision-compas-test-user"></a>Netvision Compas のテスト ユーザーの構成
+
+このセクションでは、SSO に Azure AD を使用するように **Netvision Compas** の既存のユーザーを構成します。
+1. 自社で定義している **Netvision Compas** ユーザー プロビジョニング手順に従います。または、既存のユーザー アカウントを編集します。
+1. ユーザーのプロファイルを定義するときに、ユーザーの **[Email (Personal)]\(メール (個人用)\)** アドレスが Azure AD ユーザー名の username@companydomain.extension と一致するようにします。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+
+    ![[Edit user]](media/netvision-compas-tutorial/user-config.png)
+
+シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、Azure AD のシングル サインオン構成をテストします。
+
+### <a name="using-the-access-panel-idp-initiated"></a>アクセス パネルを使用する (IDP 開始)
 
 アクセス パネル上で [Netvision Compas] タイルをクリックすると、SSO を設定した Netvision Compas に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+
+### <a name="directly-accessing-netvision-compas-sp-initiated"></a>Netvision Compas に直接アクセスする (SP 開始)
+
+1. **Netvision Compas** URL にアクセスします。 たとえば、「 `https://tenant.compas.cloud` 」のように入力します。
+1. **Netvision Compas** ユーザー名を入力し、 **[Next]\(次へ\)** を選択します。
+
+    ![ログイン ユーザー](media/netvision-compas-tutorial/login-user.png)
+
+1. **(省略可能)** ユーザーが **Netvision Compas** 内の複数の IDP を割り当てられている場合は、使用可能な IDP の一覧が表示されます。 **Netvision Compas** で前に構成した Azure AD IDP を選択します。
+
+    ![ログインの選択](media/netvision-compas-tutorial/login-choose.png)
+
+1. 認証を実行するために Azure AD にリダイレクトされます。 正常に認証されると、SSO を設定した **Netvision Compas** に自動的にサインインします。
 
 ## <a name="additional-resources"></a>その他のリソース
 

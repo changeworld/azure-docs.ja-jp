@@ -1,19 +1,19 @@
 ---
-title: SSL 証明書の追加と管理
+title: TLS/SSL 証明書を追加および管理する
 description: Azure App Service での無料の証明書の作成、App Service 証明書のインポート、Key Vault 証明書のインポート、App Service 証明書の購入について説明します。
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4edf710e575bbb26fb0e247e59ff5c796f16226e
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223919"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810590"
 ---
-# <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service で SSL 証明書を追加する
+# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service で TLS/SSL 証明書を追加する
 
 [Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。 この記事では、App Service にプライベート証明書またはパブリック証明書を作成、アップロード、またはインポートする方法について説明します。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "79223919"
 * 少なくとも 2048 ビット長の秘密キーが含まれている
 * 証明書チェーン内のすべての中間証明書が含まれている
 
-SSL バインドでカスタム ドメインをセキュリティで保護する場合、証明書には次の追加の要件があります。
+TLS バインドでカスタム ドメインをセキュリティで保護する場合、証明書には次の追加の要件があります。
 
 * サーバー認証用の[拡張鍵使用](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Extensions_informing_a_specific_usage_of_a_certificate)が含まれている (OID = 1.3.6.1.5.5.7.3.1)
 * 信頼された証明機関によって署名されている
@@ -59,7 +59,7 @@ SSL バインドでカスタム ドメインをセキュリティで保護する
 
 ## <a name="create-a-free-certificate-preview"></a>無料の証明書を作成する (プレビュー)
 
-無料 App Service マネージド証明書は、App Service でカスタム DNS 名をセキュリティで保護するためのターンキー ソリューションです。 これは、App Service によって管理され、自動的に更新される、完全に機能する SSL 証明書です。 無料の証明書には以下の制限が伴います。
+無料 App Service マネージド証明書は、App Service でカスタム DNS 名をセキュリティで保護するためのターンキー ソリューションです。 これは、App Service によって管理され、自動的に更新される、完全に機能する TLS/SSL 証明書です。 無料の証明書には以下の制限が伴います。
 
 - ワイルドカード証明書はサポートされません。
 - ネイキッド ドメインはサポートされていません。
@@ -237,7 +237,7 @@ Azure Key Vault を使用して証明書を管理している場合は、[要件
 
 ### <a name="export-certificate-to-pfx"></a>PFX への証明書のエクスポート
 
-結合した SSL 証明書を、証明書の要求と一緒に生成された秘密キーと共にエクスポートします。
+結合した TLS/SSL 証明書を、証明書の要求と一緒に生成された秘密キーと共にエクスポートします。
 
 証明書の要求の生成に OpenSSL を使用した場合、秘密キー ファイルは作成されています。 証明書を PFX にエクスポートするには、次のコマンドを実行します。 プレースホルダーの _&lt;private-key-file>_ と _&lt;merged-certificate-file>_ をそれぞれ、秘密キーのパスとマージされた証明書ファイルに変更します。
 
@@ -245,7 +245,7 @@ Azure Key Vault を使用して証明書を管理している場合は、[要件
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
 ```
 
-メッセージが表示されたら、エクスポートのパスワードを定義します。 このパスワードは、後で SSL 証明書を App Service にアップロードするときに使用します。
+メッセージが表示されたら、エクスポートのパスワードを定義します。 このパスワードは、後で TLS/SSL 証明書を App Service にアップロードするときに使用します。
 
 IIS または _Certreq.exe_ を使用して証明書の要求を生成した場合は、ローカル コンピューターに証明書をインストールした後で[証明書を PFX にエクスポート](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx)します。
 
@@ -363,16 +363,16 @@ App Service 証明書の削除は最終的なものであり、元に戻すこ�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>その他のリソース
 
-* [SSL バインディングを使用してカスタム DNS 名のセキュリティを確保する](configure-ssl-bindings.md)
+* [Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)
 * [HTTPS の適用](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 の適用](configure-ssl-bindings.md#enforce-tls-versions)
-* [アプリケーション コードに SSL 証明書を使用する](configure-ssl-certificate-in-code.md)
+* [Azure App Service のご自分のコードから TLS/SSL 証明書を使用する](configure-ssl-certificate-in-code.md)
 * [FAQ:App Service 証明書](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

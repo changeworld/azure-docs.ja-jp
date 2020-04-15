@@ -4,12 +4,12 @@ description: このチュートリアルでは、PowerShell を使用して Wind
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75551726"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756044"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>チュートリアル:Azure 仮想ネットワークに Windows を実行する Service Fabric クラスターをデプロイする
 
@@ -156,7 +156,7 @@ ms.locfileid: "75551726"
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Azure Active Directory クライアント認証の設定
 Azure でホストされているパブリック ネットワークにデプロイされた Service Fabric クラスターの場合、クライアントとノードの間の相互認証は次のようにすることを推奨します。
 * クライアント ID には Azure Active Directory を使用する。
-* サーバー ID および HTTP 通信の SSL 暗号化には証明書を使用する。
+* サーバー ID および HTTP 通信の TLS 暗号化には証明書を使用する。
 
 Service Fabric クラスターのクライアントを認証するための Azure Active Directory (Azure AD) の設定は、[クラスターを作成する](#createvaultandcert)前に行う必要があります。 Azure AD は組織 (テナントと呼ばれます) を有効にしてアプリケーションに対するユーザー アクセスを管理します。 
 

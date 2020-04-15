@@ -1,34 +1,43 @@
 ---
-title: バッチ文字起こしの使用方法 - 音声サービス
+title: バッチ文字起こしとは - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: バッチ文字起こしは、Azure BLOB などのストレージにある大量の音声を文字起こしする場合に理想的です。 専用の REST API を使用すると、Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしを受け取ることができます。
 services: cognitive-services
-author: PanosPeriorellis
+author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.author: panosper
-ms.openlocfilehash: 6d5ec5f798617d03072ec5931b0d1d3623df3d42
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.date: 03/18/2020
+ms.author: wolfma
+ms.openlocfilehash: 1f88df186526c2f9903337bb3331940be0989c3d
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500013"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892463"
 ---
-# <a name="how-to-use-batch-transcription"></a>バッチ文字起こしの使用方法
+# <a name="what-is-batch-transcription"></a>バッチ文字起こしとは
 
-バッチ文字起こしは、ストレージ内の大量のオーディオを文字起こしする場合に最適です。 専用の REST API を使用すると、Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしの結果を受け取ることができます。
+バッチ文字起こしは、ストレージ内の大量のオーディオを文字起こしできる一連の REST API 操作です。 Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしの結果を受け取ることができます。
 
-API によって、音声からテキストへの非同期文字起こしと他の機能が提供されます。 REST API を使用すると、以下を行うためのメソッドを公開できます。
+音声からテキストへの非同期の文字起こしは、その機能の 1 つにすぎません。 バッチ文字起こし REST API を使用すると、次のメソッドを呼び出すことができます。
 
-- バッチ処理要求を作成する
-- 状態を照会する
-- 文字起こしの結果をダウンロードする
-- サービスから文字起こしの情報を削除する
 
-詳細な API は、[Swagger のドキュメント](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)の見出し `Custom Speech transcriptions` の下にあります。
+
+|    バッチ文字起こし操作                                             |    Method    |    REST API の呼び出し                                   |
+|------------------------------------------------------------------------------|--------------|----------------------------------------------------|
+|    新しい文字起こしを作成する。                                              |    POST      |    api/speechtotext/v2.0/transcriptions            |
+|    認証されたサブスクリプションに対する文字起こしのリストを取得する。    |    GET       |    api/speechtotext/v2.0/transcriptions            |
+|    オフライン文字起こしでサポートされているロケールの一覧を取得する。              |    GET       |    api/speechtotext/v2.0/transcriptions/locales    |
+|    ID によって示された文字起こしの変更可能な詳細を更新する。    |    PATCH     |    api/speechtotext/v2.0/transcriptions/{id}       |
+|    指定した文字起こしタスクを削除する。                                 |    DELETE    |    api/speechtotext/v2.0/transcriptions/{id}       |
+|    指定した ID によって示される文字起こしを取得する。                        |    GET       |    api/speechtotext/v2.0/transcriptions/{id}       |
+
+
+
+
+詳細な API を確認してテストできます。API は、[Swagger ドキュメント](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)の「`Custom Speech transcriptions`」という見出しの下にあります。
 
 バッチ文字起こしジョブは、ベスト エフォート ベースでスケジュールされます。 現時点では、ジョブがいつ実行状態になるかについて予測できません。 通常のシステム負荷では、この処理は数分以内に行われます。 いったん実行状態になると、実際の文字起こしはリアルタイムのオーディオより速く処理されます。
 
@@ -53,11 +62,11 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
 
 Batch 文字起こし API では、次の形式がサポートされています。
 
-| Format | コーデック | Bitrate | サンプル レート |
-|--------|-------|---------|-------------|
-| WAV | PCM 0 | 16 ビット | 8 kHz または 16 kHz、モノラルまたはステレオ |
-| MP3 | PCM 0 | 16 ビット | 8 kHz または 16 kHz、モノラルまたはステレオ |
-| OGG | OPUS | 16 ビット | 8 kHz または 16 kHz、モノラルまたはステレオ |
+| Format | コーデック | Bitrate | サンプル レート                     |
+|--------|-------|---------|---------------------------------|
+| WAV    | PCM 0   | 16 ビット  | 8 kHz または 16 kHz、モノラルまたはステレオ |
+| MP3    | PCM 0   | 16 ビット  | 8 kHz または 16 kHz、モノラルまたはステレオ |
+| OGG    | OPUS  | 16 ビット  | 8 kHz または 16 kHz、モノラルまたはステレオ |
 
 ステレオ オーディオ ストリームの場合、文字起こし中に左チャンネルと右チャンネルが分離されます。 各チャネルに対して、JSON 結果ファイルが作成されます。 発話ごとに生成されるタイムスタンプにより、開発者は時間順の最終文字起こしを作成できます。
 
@@ -120,7 +129,7 @@ Batch 文字起こし API では、次の形式がサポートされています
       `AddSentiment`
    :::column-end:::
    :::column span="2":::
-      センチメントを発話に追加するかどうかを指定します。 指定できる値は、発話ごとのセンチメントを有効にする `true` と、それを無効にする `false` (既定値) です。
+      発話に感情分析を適用する必要があるかどうかを指定します。 指定できる値は、有効にする `true` と、無効にする `false` (既定値) です。 詳細については、「[感情分析](#sentiment-analysis)」を参照してください。
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -147,7 +156,7 @@ Batch 文字起こしでは、オーディオの読み取りや、文字起こ�
 
 ```json
 {
-  "AudioFileResults":[ 
+  "AudioFileResults":[
     {
       "AudioFileName": "Channel.0.wav | Channel.1.wav"      'maximum of 2 channels supported'
       "AudioFileUrl": null                                  'always null'
@@ -209,12 +218,41 @@ Batch 文字起こしでは、オーディオの読み取りや、文字起こ�
 
 結果には、次の形式が含まれます。
 
-|Form|コンテンツ|
-|-|-|
-|`Lexical`|実際に認識された単語。
-|`ITN`|認識されたテキストの逆テキスト正規化形式。 略語 ("doctor smith" から "dr smith")、電話番号、およびその他の変換が適用されます。
-|`MaskedITN`|不適切表現のマスキングを適用した ITN 形式。
-|`Display`|認識されたテキストの表示形式。 これには、追加された句読点と大文字化が含まれます。
+:::row:::
+   :::column span="1":::
+      **形式**
+   :::column-end:::
+   :::column span="2":::
+      **コンテンツ**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Lexical`
+   :::column-end:::
+   :::column span="2":::
+      実際に認識された単語。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ITN`
+   :::column-end:::
+   :::column span="2":::
+      認識されたテキストの逆テキスト正規化形式。 略語 ("doctor smith" から "dr smith")、電話番号、およびその他の変換が適用されます。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `MaskedITN`
+   :::column-end:::
+   :::column span="2":::
+      不適切表現のマスキングを適用した ITN 形式。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Display`
+   :::column-end:::
+   :::column span="2":::
+      認識されたテキストの表示形式。 追加された句読点と大文字化が含まれます。
+:::row-end:::
 
 ## <a name="speaker-separation-diarization"></a>話者の分離 (ダイアライゼーション)
 
@@ -250,7 +288,11 @@ Batch 文字起こしでは、オーディオの読み取りや、文字起こ�
 - ネガティブ通話がポジティブな方向に向かったときに何が良かったのか特定する
 - 製品やサービスについて、お客様が何を気に入り、何を好まないかを特定する
 
-センチメントは、語彙形式に基づいてオーディオ セグメントごとにスコア付けされます。 そのオーディオ セグメント内のテキスト全体が、センチメントの計算に使用されます。 文字起こし全体に対して集計センチメントは計算されません。
+センチメントは、語彙形式に基づいてオーディオ セグメントごとにスコア付けされます。 そのオーディオ セグメント内のテキスト全体が、センチメントの計算に使用されます。 文字起こし全体に対して集計センチメントは計算されません。 現在、感情分析は英語でのみ使用できます。
+
+> [!NOTE]
+> その代わり、Microsoft Text Analytics API を使用することをお勧めします。 キー フレーズの抽出、自動言語検出などのセンチメント分析以外の高度な機能が用意されています。 情報とサンプルについては、「[Text Analytics のドキュメント](https://azure.microsoft.com/services/cognitive-services/text-analytics/)」を参照してください。
+>
 
 JSON の出力サンプルは、次のようになります。
 
@@ -319,4 +361,4 @@ JSON の出力サンプルは、次のようになります。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+- [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)

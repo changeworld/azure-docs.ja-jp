@@ -2,25 +2,22 @@
 title: MSAL Android での共有デバイス モードの使用 | Azure
 description: Android デバイスを共有モードで実行できるように準備し、現場作業員向けアプリを実行する方法について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: bf7e6bb22ce89d6be3f79efad1f1a3679e8780e7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b2f74d2d441007f195abd38ca26ca7fa73605318
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77086068"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886434"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>チュートリアル:Android アプリケーションで共有デバイス モードを使用する
 
@@ -96,9 +93,9 @@ MSAL 構成ファイルで `"account_mode":"SINGLE"` を設定した場合、返
 ```java
 private ISingleAccountPublicClientApplication mSingleAccountApp;
 
-/*Configure your sample app and save state for this activity*/ 
+/*Configure your sample app and save state for this activity*/
 PublicClientApplication.create(this.getApplicationCOntext(),
-  R.raw.auth_config, 
+  R.raw.auth_config,
   new PublicClientApplication.ApplicationCreatedListener(){
   @Override
   public void onCreated(IPublicClientApplication application){
@@ -109,12 +106,12 @@ PublicClientApplication.create(this.getApplicationCOntext(),
   public void onError(MsalException exception{
   /*Fail to initialize PublicClientApplication */
   }
-});  
+});
 ```
 
 ### <a name="detect-single-vs-multiple-account-mode"></a>アカウント モードが単一か複数かを検出する
 
-共有デバイス上で現場従業員のみが使用するアプリを作成している場合は、単一アカウント モードのみをサポートするようにアプリを作成することをお勧めします。 これには、医療記録アプリ、請求書アプリ、大部分の基幹業務アプリなど、タスクに重点を置いたほとんどのアプリケーションが含まれます。 これにより、SDK に多くの機能を含める必要がなくなるため、開発が簡単になります。
+共有デバイス上で現場従業員のみが使用するアプリを作成している場合は、単一アカウント モードのみをサポートするようにアプリを作成することをお勧めします。 これには、医療記録アプリ、請求書アプリ、大部分の基幹業務アプリなどの、タスクに重点を置いたほとんどのアプリケーションが含まれます。 これにより、SDK の多くの機能に対応する必要がなくなるため、開発が簡単になります。
 
 お客様のアプリが複数アカウントと共有デバイス モードをサポートしている場合は、次に示すように、種類のチェックを実行し、適切なインターフェイスにキャストする必要があります。
 
@@ -134,7 +131,7 @@ private IPublicClientApplication mApplication;
 
 `loadAccount` メソッドでは、サインインしているユーザーのアカウントを取得します。 `onAccountChanged` メソッドでは、サインインしているユーザーが変更されたかどうかを特定し、その場合はクリーンアップします。
 
-```java 
+```java
 private void loadAccount()
 {
   mSingleAccountApp.getCurrentAccountAsync(new ISingleAccountPublicClientApplication.CurrentAccountCallback()
@@ -157,12 +154,12 @@ private void loadAccount()
         updateSingedOutUI();
       }
     }
-    @Override 
-    public void onError(@NonNull Exception exception) 
+    @Override
+    public void onError(@NonNull Exception exception)
     {
     }
   }
-}  
+}
 ```
 
 ### <a name="globally-sign-in-a-user"></a>ユーザーをグローバルにサインインさせる
@@ -233,7 +230,7 @@ Authenticator アプリを起動し、メイン アカウント ページに移�
 ![Authenticator のアカウントの追加画面](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
 
  右側のメニュー バーを使用して、 **[設定]** ペインに移動します。 **[職場または学校アカウント]** の下にある **[デバイスの登録]** を選択します。
- 
+
  ![Authenticator のアカウントの追加画面](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
 
  このボタンをクリックすると、デバイスの連絡先へのアクセスを承認するよう求められます。 これは、デバイスで Android のアカウントが統合されているためです。 **[許可]** を選択します。
@@ -266,4 +263,4 @@ Authenticator アプリを起動し、メイン アカウント ページに移�
 
 ## <a name="next-steps"></a>次のステップ
 
-共有モードの詳細については、「[Android デバイスの共有デバイス モード](shared-device-mode.md)」を参照してください
+共有モードの詳細については、「[Android デバイスの共有デバイス モード](msal-android-shared-devices.md)」を参照してください

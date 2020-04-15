@@ -5,77 +5,53 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/31/2020
 ms.author: banders
-ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0635c21ee30a40344281f31c8f9aedf9d74a1284
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199247"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633844"
 ---
-# <a name="view-azure-reservations-in-the-azure-portal"></a>Azure portal に Azure の予約を表示する
+# <a name="view-azure-reservations"></a>Azure の予約を表示する
 
-Azure に対する予約を表示する方法は、ご利用のサブスクリプションの種類とアクセス許可に応じて 2 つあります。
+購入した予約は、Azure portal で表示して管理することができます。   
 
-## <a name="view-purchased-reservations"></a>購入した予約を表示する
+## <a name="permissions-to-view-a-reservation"></a>予約を表示するためのアクセス許可
 
-既定では、予約を購入すると、お客様とアカウント管理者は予約を表示できます。 お客様とアカウント管理者は、予約注文および予約に対する所有者ロールを自動的に取得します。 その他のユーザーが予約を表示できるようにするには、予約注文または予約に対してそのユーザーを**所有者**または**閲覧者**として追加する必要があります。
+予約を表示または管理するには、その閲覧者または所有者のアクセス許可が必要です。 既定では、予約を購入したユーザーとアカウント管理者には、予約注文と予約とに対する所有者ロールが自動的に割り当てられます。 その他のユーザーが予約を表示できるようにするには、予約注文または予約に対してそのユーザーを**所有者**または**閲覧者**として追加する必要があります。 予約の請求用サブスクリプションにユーザーを追加しても、それらのユーザーが自動的に予約に追加されるわけではありません。 
 
 詳細については、「[予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)」を参照してください。
 
+## <a name="view-reservation-and-utilization-in-azure-portal"></a>Azure portal で予約と使用率を表示する
+
 所有者または閲覧者として予約を表示するには
 
-1. [Azure portal](https://portal.azure.com) にサインインする
-2. **予約**を検索します。
-    ![Azure portal の検索を表示しているスクリーンショット](./media/view-reservations/portal-reservation-search.png)  
-3. 一覧には、ご自分が所有者または閲覧者ロールになっている予約がすべて表示されます。 各予約には、最新の既知の使用率のパーセンテージが示されます。  
-    ![予約の一覧を表示した例](./media/view-reservations/view-reservations.png)
-4. 1 つの予約を選択して、過去 5 日間の使用率の傾向を確認します。  
-    ![予約の使用率の傾向を表示した例](./media/view-reservations/reservation-utilization.png)
-5. Reserved Instance 使用量 API と [Microsoft Azure Consumption Insights Power BI コンテンツ パック](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)を使用して、[予約の使用率](/power-bi/service-connect-to-azure-consumption-insights)を取得することもできます。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+2. [[予約]](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) に移動します。
+3. 一覧には、ご自分が所有者または閲覧者ロールになっている予約がすべて表示されます。 各予約には、最新の既知の使用率のパーセンテージが示されます。
+4. 使用率をクリックすると、使用率の履歴と詳細が表示されます。 詳細については、以下のビデオをご覧ください。
+   > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4sYwk] 
 
-予約の範囲を変更する必要がある場合は、予約を分割するか、予約を管理できるユーザーを変更します。[Azure の予約の管理](manage-reserved-vm-instance.md)に関するページを参照してください。
+## <a name="get-reservations-and-utilization-using-apis-powershell-cli"></a>API、PowerShell、CLI を使用して予約と使用率を取得する
 
-## <a name="view-reservation-transactions-for-enterprise-enrollments"></a>エンタープライズ登録に対する予約トランザクションを表示する
+予約の全一覧は、次のリソースを使用して取得します。
+- [API: 予約注文 - 一覧](/rest/api/reserved-vm-instances/reservationorder/list)
+- [PowerShell: 予約注文 - 一覧](/powershell/module/azurerm.reservations/get-azurermreservationorder)
+- [CLI: 予約注文 - 一覧](/cli/azure/reservations/reservation-order#az-reservations-reservation-order-list)
 
- エンタープライズ登録を先導するパートナーがいる場合は、EA ポータルの **[レポート]** に移動することで予約を表示します。 その他のエンタープライズ登録の場合は、EA ポータルおよび Azure portal で予約を表示できます。 予約トランザクションを表示するには、EA 管理者である必要があります。
+Reserved Instance 使用量 API を使用して、[予約の使用率](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)を取得することもできます。 
 
-Azure portal で予約トランザクションを表示するには
+## <a name="see-reservations-and-utilization-in-power-bi"></a>Power BI で予約と使用率を確認する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
-1. "**コスト管理 + 請求**" を検索します。
-
-    ![Azure portal の検索を表示するスクリーンショット](./media/view-reservations/portal-cm-billing-search.png)
-
-1. **[予約トランザクション]** を選択します。
-1. 結果をフィルター処理するには、 **[期間]** 、 **[種類]** または **[説明]** を選択します。
-1. **[適用]** を選択します。
-
-    ![予約トランザクションの結果を示すスクリーンショット](./media/view-reservations/portal-billing-reservation-transaction-results.png)
-
-API を使用してデータを取得するには、「[Get Reserved Instance transaction charges for enterprise customers](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges)」 (エンタープライズ顧客向けの予約インスタンス トランザクションを取得する) を参照してください。
+Power BI ユーザーには、次の 2 とおりの方法があります。
+- コンテンツパック: [Consumption Insights Power BI コンテンツ パック](/power-bi/desktop-connect-azure-cost-management)で、予約の購入と使用率のデータを入手できます。 このコンテンツ パックを使用して、目的のレポートを作成します。 
+- コスト管理アプリ: 事前に作成されたレポートを [Cost Management アプリ](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)を使用して入手できます。このレポートをさらにカスタマイズすることもできます。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure の予約の詳細については、次の記事を参照してください。
-
-- [Azure の予約とは](save-compute-costs-reservations.md)
-- [Azure の予約の管理](manage-reserved-vm-instance.md)
-
-サービス プランの購入:
-
-- [Cosmos DB 予約容量の前払い](../../cosmos-db/cosmos-db-reserved-capacity.md)
-- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../../sql-database/sql-database-reserved-capacity.md)
-- [Azure Reserved VM Instances による仮想マシンの前払い](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-
-ソフトウェア プランの購入:
-
-- [Azure の予約からの Red Hat ソフトウェア プランの前払い](../../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [Azure の予約からの SUSE ソフトウェア プランの前払い](../../virtual-machines/linux/prepay-suse-software-charges.md)
-
-使用状況の把握:
-
+- [Azure の予約を管理する](manage-reserved-vm-instance.md)。
 - [従量課金制サブスクリプションの予約使用量について](understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](understand-reserved-instance-usage-ea.md)
 - [CSP サブスクリプションの予約の使用状況について](https://docs.microsoft.com/partner-center/azure-reservations)

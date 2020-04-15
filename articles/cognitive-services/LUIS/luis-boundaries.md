@@ -1,22 +1,14 @@
 ---
 title: 制限 - LUIS
-titleSuffix: Azure Cognitive Services
 description: この記事では、Azure Cognitive Services Language Understanding (LUIS) の既知の制限を示します。 LUIS には、複数の境界領域があります。 モデル境界は LUIS で意図、エンティティ、および機能を制御します。 キーの種類に基づくクォータ制限。 キーボードの組み合わせは LUIS Web サイトを制御します。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/07/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 4aa69cb0fd36fe5bf4ea2928022aea602b8830d6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218837"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618866"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS モデルとキーの境界
 LUIS には、複数の境界領域があります。 1 つは[モデル境界](#model-boundaries)で、これにより LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の境界領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。
@@ -40,7 +32,7 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 | [プレビュー - 動的なリスト エンティティ](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|クエリ予測エンドポイント要求あたり最大 1K のうちの 2 つのリスト|
 | [パターン](luis-concept-patterns.md)|アプリケーションあたり 500 パターン。<br>パターンの最大文字数: 400 文字。<br>パターンあたり 3 Pattern.any エンティティ<br>パターン内の入れ子になった省略可能なテキストの最大数: 2|
 | [Pattern.any](./luis-concept-entity-types.md)|アプリケーションあたり 100、パターンあたり 3 Pattern.any エンティティ |
-| [フレーズ リスト][phrase-list]|500 個のフレーズ リスト。 交換不可能なフレーズ リストの最大フレーズ数は 5,000 です。 交換可能なフレーズ リストの最大フレーズ数は 50,000 です。 アプリケーションごとの合計フレーズの最大数は、500,000 フレーズです。|
+| [フレーズ リスト][phrase-list]|500 個のフレーズ リスト。 モデルは機能制限となっているため、10 個のグローバル語句の一覧が表示されます。 交換不可能なフレーズ リストの最大フレーズ数は 5,000 です。 交換可能なフレーズ リストの最大フレーズ数は 50,000 です。 アプリケーションごとの合計フレーズの最大数は、500,000 フレーズです。|
 | [事前構築済みのエンティティ](./luis-prebuilt-entities.md) | 制限なし|
 | [正規表現エンティティ](./luis-concept-entity-types.md)|20 エンティティ<br>最大文字数: 500 文字/ 正規表現エンティティ パターンあたり|
 | [ロール](luis-concept-roles.md)|アプリケーションあたり 300 の役割。 エンティティあたりの 10 の役割|
@@ -77,26 +69,41 @@ LUIS アプリでは、次のものが一意である必要があります。
 |インテント、エンティティ、およびロールの名前|`:`<br>`$` <br> `&`|
 |バージョン名|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
-## <a name="key-usage"></a>キー使用法
+## <a name="resource-usage-and-limits"></a>リソース使用量と上限
 
-Language Understand には、作成用に 1 つの種類と、予測エンドポイントに対するクエリの実行用に 1 つの種類という、個別のキーがあります。 キーの種類の違いの詳細については、「[LUIS のオーサリング キーとクエリ予測エンドポイント キー](luis-concept-keys.md)」を参照してください。
+Language Understand には、作成用に 1 つの種類と、予測エンドポイントに対するクエリの実行用に 1 つの種類という、個別のリソースがあります。 キーの種類の違いの詳細については、「[LUIS のオーサリング キーとクエリ予測エンドポイント キー](luis-concept-keys.md)」を参照してください。
 
 <a name="key-limits"></a>
 
-## <a name="resource-key-limits"></a>リソースキーの制限
+### <a name="authoring-resource-limits"></a>作成リソースの制限
 
-リソース キーでは、オーサリングとエンドポイントで制限が異なります。 LUIS 予測クエリ エンドポイント キーは、エンドポイント クエリに対してのみ有効です。
+Azure portal 内のリソースをフィルター処理する場合は、_kind_、`LUIS.Authoring` を使用します。 LUIS には Azure 作成リソースごとに 500 アプリケーションという制限があります。
 
-* Azure オーサリング リソースごとに 500 アプリケーション
+|リソースの作成|TPS の作成|
+|--|--|
+|スターター|100 万/月、5/秒|
+|F0 - Free レベル |100 万/月、5/秒|
 
-|Key|Authoring|エンドポイント|目的|
-|--|--|--|--|
-|スターター|100 万/月、5/秒|1,000/月、5/秒|ご自身の LUIS アプリの作成|
-|F0 - Free レベル |100 万/月、5/秒|10,000/月、5/秒|ご自身の LUIS エンドポイントへのクエリの実行|
-|S0 - Basic レベル|-|50/秒|ご自身の LUIS エンドポイントへのクエリの実行|
-|S0 - Standard レベル|-|50/秒|ご自身の LUIS エンドポイントへのクエリの実行|
-|[感情分析の統合](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|キー フレーズ データ抽出を含むセンチメント情報は、他の Azure リソースを必要とせずに追加できます。 |
-|[音声統合](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|単位原価あたり 1,000 エンドポイント要求|音声発話をテキスト発話に変換して、LUIS 結果を返す|
+* TPS = Transactions per second (1 秒あたりのトランザクション数)
+
+価格に関して詳しくは、[こちら][pricing]をご覧ください。
+
+### <a name="query-prediction-resource-limits"></a>クエリ予測リソース限度
+
+Azure portal 内のリソースをフィルター処理する場合は、_kind_、`LUIS` を使用します。ランタイムで使用される LUIS クエリ予測エンドポイント リソースは、エンドポイント クエリに対してのみ有効です。
+
+|クエリ予測リソース|クエリ TPS|
+|--|--|
+|F0 - Free レベル |10,000/月、5/秒|
+|S0 - Standard レベル|50/秒|
+
+### <a name="sentiment-analysis"></a>センチメント分析
+
+センチメント情報を提供する[センチメント分析統合](luis-how-to-publish-app.md#enable-sentiment-analysis)が提供され、別の Azure リソースは必要ありません。
+
+### <a name="speech-integration"></a>音声統合
+
+[音声統合](../speech-service/how-to-recognize-intents-from-speech-csharp.md)では、ユニット コスト当たり 1,000 のエンドポイント要求を提供します。
 
 価格に関して詳しくは、[こちら][pricing]をご覧ください。
 

@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 25c0fe549dfc850a53b06f79f348a87cba3b70a1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f067bae55c38fc783c12bf9d0bc6fbcdf881e4e4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77109931"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756690"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>クイック スタート:QnA Maker ポータルで質問と回答を追加する
 
@@ -27,7 +27,7 @@ ms.locfileid: "77109931"
 |1 番|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2 番|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
-QnA セットにメタデータが追加されると、クライアント アプリケーションでは次のことを実行できます。
+QnA ペアにメタデータが追加されると、クライアント アプリケーションでは次のことを実行できます。
 
 * 特定のメタデータとのみ一致する回答を要求します。
 * すべての回答を受け取ったうえで、それぞれのメタデータに応じた後処理を回答に対して行います。
@@ -45,7 +45,7 @@ QnA セットにメタデータが追加されると、クライアント アプ
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>言い回しを変えて質問を追加する
 
-最新のナレッジ ベースには、QnA Maker のトラブルシューティングに関する QnA セットが含まれています。 これらのセットは、作成プロセスでナレッジ ベースに URL を追加したときに作成されました。
+最新のナレッジ ベースには、QnA Maker のトラブルシューティングに関する QnA ペアが含まれています。 これらのセットは、作成プロセスでナレッジ ベースに URL を追加したときに作成されました。
 
 この URL をインポートした時点では、1 つの回答について質問が 1 つしか作成されていませんでした。 この手順では、別の質問を追加します。
 
@@ -82,7 +82,7 @@ QnA セットにメタデータが追加されると、クライアント アプ
 
 1. **[オプションの表示]** を選択し、 **[メタデータの表示]** を選択します。
 
-1. 追加した QnA セットについて、 **[Add metadata tags]\(メタデータ タグの追加\)** を選択し、`service` という名前と `search` という値を追加します。 `service:search` のようになります。
+1. 追加した QnA ペアについて、 **[Add metadata tags]\(メタデータ タグの追加\)** を選択し、`service` という名前と `search` という値を追加します。 `service:search` のようになります。
 
 1. `link_in_answer` という名前と `false` という値で別のメタデータ タグを追加します。 `link_in_answer:false` のようになります。
 

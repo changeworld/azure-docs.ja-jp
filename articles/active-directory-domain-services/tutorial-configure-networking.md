@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 26122278ad74fb1d383ca7a900810b6060ee78f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: af284e4c10487123c8c2a2105a25a2285ae0aa99
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73172666"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474366"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>チュートリアル:Azure Active Directory Domain Services インスタンス用の仮想ネットワークを構成する
 
@@ -72,18 +72,18 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 VM およびアプリケーション ワークロード用に仮想ネットワーク サブネットを作成するには、次の手順を実行します。
 
 1. Azure portal で、Azure AD DS マネージド ドメインのリソース グループを選択します (*myResourceGroup* など)。 リソースの一覧から、既定の仮想ネットワークを選択します (*aadds-vnet* など)。
-1. 仮想ネットワーク ウィンドウの左側のメニューで、 **[アドレス空間]** を選択します。 この仮想ネットワークは、既定のサブネットで使用される単一のアドレス空間 *10.0.1.0/24* で作成されています。
+1. 仮想ネットワーク ウィンドウの左側のメニューで、 **[アドレス空間]** を選択します。 この仮想ネットワークは、既定のサブネットで使用される単一のアドレス空間 *10.0.2.0/24* で作成されています。
 
     この仮想ネットワークにさらに IP アドレス範囲を追加します。 このアドレス範囲のサイズと実際に使用する IP アドレス範囲は、既にデプロイされている他のネットワーク リソースによって異なります。 この IP アドレス範囲は、Azure またはオンプレミスの環境における既存のアドレス範囲と重複することはできません。 サブネットにデプロイする予定の VM の数に対して十分な大きさの IP アドレス範囲を設定するようにしてください。
 
-    次の例では、追加の IP アドレス範囲 *10.0.2.0/24* が追加されています。 準備ができたら、 **[保存]** を選択します。
+    次の例では、追加の IP アドレス範囲 *10.0.3.0/24* が追加されています。 準備ができたら、 **[保存]** を選択します。
 
     ![Azure portal で追加の仮想ネットワーク IP アドレス範囲を追加する](./media/tutorial-configure-networking/add-vnet-address-range.png)
 
 1. 次に、仮想ネットワーク ウィンドウの左側のメニューで、 **[サブネット]** を選択し、 **[+ サブネット]** を選択してサブネットを追加します。
 1. サブネットの名前を入力します (*workloads* など)。 前の手順で仮想ネットワーク用に構成された IP アドレス範囲のサブセットを使用する場合は、必要に応じて**アドレス範囲**を更新します。 ここでは、ネットワーク セキュリティ グループ、ルート テーブル、サービス エンドポイントなどのオプションの既定値をそのまま使用します。
 
-    次の例では、IP アドレス範囲 *10.0.2.0/24* を使用する *workloads* という名前のサブネットが作成されます。
+    次の例では、IP アドレス範囲 *10.0.3.0/24* を使用する *workloads* という名前のサブネットが作成されます。
 
     ![Azure portal で追加の仮想ネットワーク サブネットを追加する](./media/tutorial-configure-networking/add-vnet-subnet.png)
 
@@ -130,7 +130,7 @@ Azure 仮想ネットワーク ピアリングを使用すると、仮想プラ�
 
 1. Azure portal で、ピアリングされた仮想ネットワークのリソース グループを選択します (*myResourceGroup* など)。 リソースの一覧から、ピアリングされた仮想ネットワークを選択します (*myVnet* など)。
 1. 仮想ネットワーク ウィンドウの左側のメニューで、 **[DNS サーバー]** を選択します。
-1. 既定では、仮想ネットワークは、Azure で提供される組み込みの DNS サーバーを使用します。 **カスタム** DNS サーバーの使用を選択します。 Azure AD DS ドメイン コントローラーの IP アドレスを入力します。通常は *10.0.1.4* と *10.0.1.5* です。 ポータルの Azure AD DS マネージド ドメインの **[概要]** ウィンドウで、これらの IP アドレスを確認してください。
+1. 既定では、仮想ネットワークは、Azure で提供される組み込みの DNS サーバーを使用します。 **カスタム** DNS サーバーの使用を選択します。 Azure AD DS ドメイン コントローラーの IP アドレスを入力します。通常は *10.0.2.4* と *10.0.2.5* です。 ポータルの Azure AD DS マネージド ドメインの **[概要]** ウィンドウで、これらの IP アドレスを確認してください。
 
     ![Azure AD DS ドメイン コントローラーを使用するよう仮想ネットワークの DNS サーバーを構成する](./media/tutorial-configure-networking/custom-dns.png)
 

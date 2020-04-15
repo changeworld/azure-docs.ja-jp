@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Service の概要
 description: Azure Blockchain Service の概要です
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 821bac0da13209e5126f5bab109aa0895ade840a
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79205065"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529153"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 
@@ -19,7 +19,7 @@ Azure Blockchain Service は完全に管理された台帳サービスであり�
 * 組み込みのコンソーシアム管理
 * 使い慣れた開発ツールによるスマート コントラクトの開発
 
-Azure Blockchain Service は、複数の台帳プロトコルをサポートするように設計されています。 現時点では、[IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) コンセンサス メカニズムを使用して、Ethereum [Quorum](https://www.goquorum.com/) 台帳がサポートされています。
+Azure Blockchain Service は、複数の台帳プロトコルをサポートするように設計されています。 現時点では、[Istanbul Byzantine Fault Tolerance (IBFT)](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) コンセンサス メカニズムを使用して、Ethereum [Quorum](https://www.goquorum.com/) 台帳がサポートされています。
 
 これらの機能は、ほとんど管理を必要とせず、いずれも追加費用なしで利用することができます。 仮想マシンとインフラストラクチャの管理への時間とリソースの割り当てではなく、アプリの開発とビジネス ロジックに集中できます。 さらに、オープンソースのツールとプラットフォームを自由に選んでアプリケーションの開発を続けることができるので、新しいスキルを身に付けなくてもソリューションを提供できます。
 
@@ -33,7 +33,7 @@ Azure Blockchain Service には、次の 2 つのサービス レベルが用意
 
 ![価格レベル](./media/overview/pricing-tiers.png)
 
-2 つの検証ノードの提供に加えて、*Standard* レベルではトランザクション ノードおよび検証ノードごとに 2 つの "*仮想コア*" が提供されます。一方、Basic レベルでは仮想コア 1 つの構成が提供されます。  トランザクション ノードおよび検証ノードごとに 2 つの仮想コアを提供することにより、1 つの仮想コアを Quorum 台帳専用に使用し、残り 1 つの仮想コアを他のインフラストラクチャ関連のサービスに使用することができ、運用環境のブロックチェーン ワークロードに最適なパフォーマンスを保証できます。 価格について詳しくは、「[Azure Blockchain Service の価格](https://azure.microsoft.com/pricing/details/blockchain-service)」をご覧ください。
+2 つの検証ノードの提供に加えて、*Standard* レベルではトランザクション ノードおよび検証ノードごとに 2 つの "*仮想コア*" が提供されます。一方、*Basic* レベルでは仮想コア 1 つの構成が提供されます。  トランザクション ノードおよび検証ノードごとに 2 つの仮想コアを提供することにより、1 つの仮想コアを Quorum 台帳専用に使用し、残り 1 つの仮想コアを他のインフラストラクチャ関連のサービスに使用することができ、運用環境のブロックチェーン ワークロードに最適なパフォーマンスを保証できます。 価格について詳しくは、「[Azure Blockchain Service の価格](https://azure.microsoft.com/pricing/details/blockchain-service)」をご覧ください。
 
 ### <a name="security-and-maintenance"></a>セキュリティとメンテナンス
 

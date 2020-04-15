@@ -2,34 +2,42 @@
 title: LUIS リソースの作成
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/23/2019
-ms.author: dapine
-ms.openlocfilehash: a765ac27936da9da5a2f41464c17491e3561f44b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.author: aahi
+ms.openlocfilehash: ebfe7e80577b163218a7bc501fa4e3e9b206fd62
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73465937"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879210"
 ---
-## <a name="create-a-luis-resource"></a>LUIS リソースの作成
+<a name="create-luis-resources"></a>
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. [**Language Understanding** の作成](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)をクリックします
+## <a name="create-luis-resources-in-azure-portal"></a>Azure portal で LUIS リソースを作成する
+
+1. [このリンク](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)を使用して、Azure portal で LUIS リソースの作成を開始します。
+
 1. すべての必須設定を入力します。
 
-    |設定|値|
+    |名前|目的|
     |--|--|
-    |Name|任意の名前 (2 から 64 文字)|
-    |サブスクリプション|適切なサブスクリプションを選択します|
-    |Location|近くにある任意の使用可能な場所を選択します|
-    |価格レベル|`F0` -最小限の価格レベル|
-    |リソース グループ|使用可能なリソース グループを選択します|
+    |サブスクリプション名| リソースに対して課金されるサブスクリプション。|
+    |Resource group| 選択または作成するカスタム リソース グループ名。 リソース グループを使用すると、アクセスと管理のために Azure リソースをグループ化できます。|
+    |名前| 選択したカスタム名。作成および予測エンドポイント クエリのカスタム サブドメインとして使用されます。|
+    |オーサリングの場所|モデルに関連付けられている領域。|
+    |オーサリングの価格レベル|価格レベルによって、1 秒および 1 か月あたりの最大トランザクション数が決まります。|
+    |ランタイムの場所|発行される予測エンドポイント ランタイムに関連付けられているリージョン。|
+    |ランタイム価格レベル|価格レベルによって、1 秒および 1 か月あたりの最大トランザクション数が決まります。|
 
-1. **[作成]** をクリックして、リソースが作成されるまで待ちます。 作成後、リソース ページに移動します。
-1. 構成済み `endpoint` と API キーを収集します。[必要なパラメーターの収集](#gathering-required-parameters)に関するトピックをご覧ください。
+    > [!div class="mx-imgBorder"]
+    > [![Language Understanding リソースを作成する](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png)](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png#lightbox)
 
-[!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
+1. **[確認と作成]** をクリックして、リソースが作成されるまで待ちます。
+1. 両方のリソースが作成されたら、引き続き Azure portal で新しい作成リソースを選択します。次に、 **[クイックスタート]** を選択して、プログラムで作成するための作成**エンドポイント URL** と**キー**を取得します。
+
+> [!TIP]
+> リソースを使用するには、LUIS ポータルで[リソースを割り当て](../luis-how-to-azure-subscription.md#assign-an-authoring-resource-in-the-luis-portal-for-all-apps)ます。

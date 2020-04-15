@@ -1,21 +1,15 @@
 ---
-title: クイック スタート:Python 用 Speech SDK のプラットフォームのセットアップ - Speech Service
-titleSuffix: Azure Cognitive Services
-description: Speech サービス SDK を使用して Python 用にプラットフォームを設定するには、このガイドを使用します。
-services: cognitive-services
-author: markamos
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/09/2019
-ms.author: erhopf
-ms.openlocfilehash: 458a6940ce214ef1931a2cc9ee95f2cb5ca16779
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/04/2020
+ms.author: dapine
+ms.openlocfilehash: 327000173b4c5c378f60c76eb1a24bd155901671
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925528"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666906"
 ---
 このガイドでは、Python 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 このパッケージ名の使用を自分で開始する場合は、`pip install azure-cognitiveservices-speech` を実行します。
 
@@ -26,7 +20,7 @@ ms.locfileid: "78925528"
 - 以下のオペレーティング システム用の Python Speech SDK パッケージを入手できます。
   - Windows: x64 および x86
   - Mac: macOS X バージョン 10.12 以降
-  - Linux: x64 上の Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8
+  - Linux: x64 上の Ubuntu 16.04 または 18.04、Debian 9、RHEL 7 または 8、CentOS 7 または 8
 
 ## <a name="prerequisites"></a>前提条件
 

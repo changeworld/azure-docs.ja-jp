@@ -2,19 +2,19 @@
 title: チュートリアル - テンプレートに出力を追加する
 description: Azure Resource Manager テンプレートに出力を追加して構文を単純化します。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 381f9f54a95b6d457aa65c7e8ef6abe49fe9eeea
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2ee1a2c7037bde68b7858b57a03c78bd2016ff1c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765748"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743554"
 ---
-# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートに出力を追加する
+# <a name="tutorial-add-outputs-to-your-arm-template"></a>チュートリアル:ARM テンプレートに出力を追加する
 
-このチュートリアルでは、テンプレートから値を返す方法について説明します。 デプロイされたリソースから得られる値が必要なときは出力を使用します。 このチュートリアルの所要時間は **7 分**です。
+このチュートリアルでは、Azure Resource Manager (ARM) テンプレートから値を返す方法について説明します。 デプロイされたリソースから得られる値が必要なときは出力を使用します。 このチュートリアルの所要時間は **7 分**です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,7 +52,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -63,10 +63,12 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+このデプロイ コマンドを実行するには、[最新バージョン](/cli/azure/install-azure-cli)の Azure CLI が必要です。
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addoutputs \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -75,7 +77,7 @@ az group deployment create \
 
 ---
 
-デプロイ コマンドの出力には、次のようなオブジェクトが表示されます。
+デプロイ コマンドの出力では、出力が JSON 形式の場合にのみ、次の例のようなオブジェクトが表示されます。
 
 ```json
 {
@@ -87,6 +89,9 @@ az group deployment create \
     "file": "https://storeluktbfkpjjrkm.file.core.windows.net/"
 }
 ```
+
+> [!NOTE]
+> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
 
 ## <a name="review-your-work"></a>作業を振り返る
 

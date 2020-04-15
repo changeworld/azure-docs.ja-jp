@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 4b34d4208d8686cdac3f8164d2cf7efb2d881346
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 50fc8b9cefe88a80f3f954ce363139b6a4a38589
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79409900"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548382"
 ---
 # <a name="what-is-virtual-network-nat"></a>Virtual Network NAT とは
 
@@ -40,11 +40,11 @@ Virtual Network NAT (ネットワーク アドレス変換) は、仮想ネッ�
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>アウトバウンド専用の静的 IP アドレス
 
-NAT では、アウトバウンド接続をサブネットごとに定義できます。  同じ仮想ネットワーク内にある複数のサブネットに対し、それぞれ異なる NAT を割り当てることができます。 サブネットの構成は、使用する [NAT ゲートウェイ リソース](./nat-gateway-resource.md)を指定することで行います。 UDP と TCP のアウトバウンド フローには、それがどの仮想マシン インスタンスから送信されたものであれ、すべて NAT が使用されます。 
+NAT では、アウトバウンド接続をサブネットごとに定義できます。  同じ仮想ネットワーク内にある複数のサブネットに対し、それぞれ異なる NAT を割り当てることができます。 サブネットの構成は、使用する NAT ゲートウェイ リソースを指定することで行います。 UDP と TCP のアウトバウンド フローには、それがどの仮想マシン インスタンスから送信されたものであれ、すべて NAT が使用されます。 
 
-NAT は、Standard SKU の[パブリック IP アドレス リソース](./virtual-network-ip-addresses-overview-arm.md#standard)と[パブリック IP プレフィックス リソース](./public-ip-address-prefix.md)のどちらか、またはその両方を組み合わせたものと共に利用することができます。  パブリック IP プレフィックスを直接使用できるほか、複数の NAT ゲートウェイ リソースにプレフィックスのパブリック IP アドレスを割り振ることもできます。 すべてのトラフィックは、NAT によって、プレフィックスの IP アドレス範囲に調整されます。  デプロイの IP ホワイトリスト登録を容易に行うことが可能です。
+NAT は、Standard SKU のパブリック IP アドレス リソースとパブリック IP プレフィックス リソースのどちらか、またはその両方を組み合わせたものと共に利用することができます。  パブリック IP プレフィックスを直接使用できるほか、複数の NAT ゲートウェイ リソースにプレフィックスのパブリック IP アドレスを割り振ることもできます。 すべてのトラフィックは、NAT によって、プレフィックスの IP アドレス範囲に調整されます。  デプロイの IP ホワイトリスト登録を容易に行うことが可能です。
 
-サブネットのすべてのアウトバウンド トラフィックは NAT によって自動的に処理され、ユーザーによる構成は不要です。  ユーザー定義ルートは必要ありません。 NAT は他の[アウトバウンド シナリオ](../load-balancer/load-balancer-outbound-connections.md)よりも優先され、サブネットの既定のインターネット宛先に取って代わります。
+サブネットのすべてのアウトバウンド トラフィックは NAT によって自動的に処理され、ユーザーによる構成は不要です。  ユーザー定義ルートは必要ありません。 NAT は他のアウトバウンド シナリオよりも優先され、サブネットの既定のインターネット宛先に取って代わります。
 
 ## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>スケーリングを目的とした、複数の IP アドレスによるオンデマンド SNAT
 
@@ -60,9 +60,9 @@ NAT を使用すると、仮想ネットワークからインターネットへ�
 
 NAT は、次の Standard SKU リソースと共に利用することができます。
 
-- [Load Balancer](../load-balancer/load-balancer-overview.md)
-- [パブリック IP アドレス](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- [パブリック IP プレフィックス](../virtual-network/public-ip-address-prefix.md)
+- Load Balancer
+- パブリック IP アドレス
+- パブリック IP プレフィックス
 
 これらのリソースを NAT と組み合わせることで、サブネットへのインバウンド インターネット接続が可能となります。 サブネットからのアウトバウンド インターネット接続はすべて NAT から提供されます。
 

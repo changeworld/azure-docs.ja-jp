@@ -1,41 +1,44 @@
 ---
-title: チュートリアル:シングルページ アプリから ASP.NET Core Web API へのアクセスを許可する
+title: チュートリアル:Azure AD B2C を使用して Node.js Web API を保護し、シングルページ アプリケーション (SPA) へのアクセスを許可する
 titleSuffix: Azure AD B2C
-description: このチュートリアルでは、Active Directory B2C を使用して .NET Core Web API を保護し、その API をシングルページの Node.js アプリケーションから呼び出す方法について説明します。
+description: このチュートリアルでは、Active Directory B2C を使用して Node.js Web API を保護し、シングルページ アプリケーションから呼び出す方法について説明します。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: mimart
-ms.date: 07/24/2019
+ms.date: 04/04/2020
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: f6f9ff7bb0d504ecc163f6ce1f87477b1ea9c2d1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 50524159186987b7a30015c878fa3fac949afc79
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78186146"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875687"
 ---
-# <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してシングルページ アプリケーションから ASP.NET Core Web API へのアクセスを許可する
+# <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>チュートリアル:Azure AD B2C を使用して、シングルページ アプリケーションから Node.js Web API へのアクセスを保護および許可する
 
-このチュートリアルでは、Azure Active Directory B2C (Azure AD B2C) で保護された ASP.NET Core Web API リソースをシングルページ アプリケーションから呼び出す方法について説明します。
+このチュートリアルでは、Azure Active Directory B2C (Azure AD B2C) で保護された Node.js Web API をシングルページ アプリケーションから呼び出す方法について説明します。
 
-このチュートリアルでは、以下の内容を学習します。
+2 部構成のシリーズの 2 番目の部分であるこのチュートリアルでは、次の作業を行います。
 
 > [!div class="checklist"]
-> * Web API アプリケーションを追加する
+> * Azure AD B2C テナントに Web API アプリケーション登録を作成する
 > * Web API のスコープを構成する
 > * Web API に対するアクセス許可を付与する
-> * アプリケーションを使用するようにサンプルを構成する
+> * テナントで動作するように Web API コード サンプルを変更する
+
+このシリーズの[最初のチュートリアル](tutorial-single-page-app.md)では、コード サンプルをダウンロードし、Azure AD B2C テナントのユーザー フローでユーザーのサインインを行うように変更しました。
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[チュートリアル: Azure Active Directory B2C を使用してシングルページ アプリケーションで認証を有効にする](tutorial-single-page-app.md)」の手順を完了し、前提条件を満たしていること。
-* Visual Studio 2019 以降または Visual Studio Code
-* .NET Core 2.2 以降
-* Node.js
+* 「[チュートリアル: Azure AD B2C を使用してシングルページ アプリケーションで認証を有効にする](tutorial-single-page-app.md)」の手順を完了し、前提条件を満たしていること。
+* [Visual Studio Code](https://code.visualstudio.com/) または別のコード エディター
+* [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="add-a-web-api-application"></a>Web API アプリケーションを追加する
 
@@ -57,135 +60,109 @@ ms.locfileid: "78186146"
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-シングルページ Web アプリケーションが登録されて、保護された Web API を呼び出すことができるようになります。 ユーザーは、シングルページ アプリケーションを使用するために Azure AD B2C で認証を行います。 シングルページ アプリは、保護された Web API にアクセスするために、Azure AD B2C から承認付与を取得します。
+これで、シングルページ Web アプリケーションに、指定されたスコープの、保護された Web API へのアクセス許可が付与されました。 ユーザーは、シングルページ アプリケーションを使用するために Azure AD B2C で認証を行います。 シングルページ アプリは、承認許可フローを使用して、Azure AD B2C から返されたアクセス トークンを使って、保護された Web API に アクセスします。
 
 ## <a name="configure-the-sample"></a>サンプルの構成
 
-Web API を登録し、スコープを定義したので、Azure AD B2C テナントを使用するように Web API コードを構成します。 このチュートリアルでは、GitHub からダウンロードしたサンプル .NET Core Web アプリケーションを構成します。
+Web API を登録し、スコープを定義したので、Azure AD B2C テナントで動作するように Web API コードを構成します。 このチュートリアルでは、GitHub からダウンロードするサンプル Node.js Web API を構成します。
 
-[\*.zip アーカイブをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip)するか、GitHub からサンプルの Web API プロジェクトを複製します。
+[\*.zip アーカイブをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip)するか、GitHub からサンプルの Web API プロジェクトを複製します。 また、GitHub で [Azure-Samples/active-directory-b2c-javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) プロジェクトを直接参照することもできます。
 
 ```console
-git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi.git
+git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
 ```
 
 ### <a name="configure-the-web-api"></a>Web API を構成する
 
-1. Visual Studio または Visual Studio Code で <em>B2C-WebApi/**appsettings.json**</em> ファイルを開きます。
-1. 実際のテナント名、Web API アプリケーションのアプリケーション ID、サインアップ ポリシーまたはサインイン ポリシーの名前、前に定義したスコープを反映するように `AzureAdB2C` ブロックを変更します。 ブロックは次の例のようになります (`Tenant` と `ClientId` には適切な値が入力されます)。
+1. コード エディターで *config.js* ファイルを開きます。
+1. 変数の値を変更して、前に作成したアプリケーション登録のものを反映させます。 また、前提条件の一部として作成したユーザー フローを使用して、`policyName` を更新します。 たとえば、*B2C_1_signupsignin1* などです。
 
-    ```json
-    "AzureAdB2C": {
-      "Tenant": "<your-tenant-name>.onmicrosoft.com",
-      "ClientId": "<webapi-application-ID>",
-      "Policy": "B2C_1_signupsignin1",
-
-      "ScopeRead": "demo.read",
-      "ScopeWrite": "demo.write"
-    },
+    ```javascript
+    const clientID = "<your-webapi-application-ID>"; // Application (client) ID
+    const b2cDomainHost = "<your-tenant-name>.b2clogin.com";
+    const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (a GUID)
+    const policyName = "B2C_1_signupsignin1";
     ```
 
 #### <a name="enable-cors"></a>CORS を有効にする
 
-自分のシングルページ アプリケーションに ASP.NET Core Web API の呼び出しを許可するには、Web API で [CORS](https://docs.microsoft.com/aspnet/core/security/cors) を有効にする必要があります。
+シングルページ アプリケーションに Node.js Web API の呼び出しを許可するには、Web API で [CORS](https://expressjs.com/en/resources/middleware/cors.html) を有効にする必要があります。 実稼働アプリケーションでは、どのドメインが要求を行っているかに注意する必要がありますが、このチュートリアルでは、すべてのドメインからの要求を許可します。
 
-1. *Startup.cs* の `ConfigureServices()` メソッドに CORS を追加します。
+CORS を有効にするには、次のミドルウェアを使用します。 このチュートリアルの Node.js Web API コード サンプルでは、*index.js* ファイルに既に追加されています。
 
-    ```csharp
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddCors();
-    ```
-
-1. また、`ConfigureServices()` メソッド内で、`jwtOptions.Authority` の値を次のトークン発行者 URI に設定します。
-
-    `<your-tenant-name>` は実際の B2C テナントの名前に置き換えます。
-
-    ```csharp
-    jwtOptions.Authority = $"https://<your-tenant-name>.b2clogin.com/{Configuration["AzureAdB2C:Tenant"]}/{Configuration["AzureAdB2C:Policy"]}/v2.0";
-    ```
-
-1. `Configure()` メソッド内で、CORS を構成します。
-
-    ```csharp
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-    {
-        app.UseCors(builder =>
-            builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
-    ```
-
-1. (Visual Studio のみ) ソリューション エクスプローラー内の **[プロパティ]** で、*launchSettings.json* ファイルを開き、次に `iisExpress` ブロックを見つけます。
-1. (Visual Studio のみ) 前の手順で *webapi1* アプリケーションを登録したときに指定したポート番号で `applicationURL` の値を更新します。 次に例を示します。
-
-    ```json
-    "iisExpress": {
-      "applicationUrl": "http://localhost:5000/",
-      "sslPort": 0
-    }
-    ```
+```javascript
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+```
 
 ### <a name="configure-the-single-page-application"></a>シングルページ アプリケーションを構成する
 
-このシリーズの[前のチュートリアル](tutorial-single-page-app.md)のシングルページ アプリケーション (SPA) では、ユーザーのサインアップとサインインに Azure AD B2C を使用し、デモ テナントである *frabrikamb2c* によって保護されている ASP.NET Core Web API を呼び出しています。
+このシリーズの[前のチュートリアル](tutorial-single-page-app.md)のシングルページ アプリケーション (SPA) は、ユーザーのサインアップとサインインに Azure AD B2C を使用し、既定で、*frabrikamb2c* デモ テナントによって保護されている Node.js Web API を呼び出します。
 
-このセクションでは、"*自分の*" Azure AD B2C テナントによって保護され、自分のローカル コンピューターで実行する ASP.NET Core Web API を呼び出すようにシングルページ アプリケーションを更新します。
+このセクションでは、"*自分の*" Azure AD B2C テナントによって保護されている (そして、自分のローカル マシンで実行する) Node.js Web API を呼び出すようにシングルページ Web アプリケーションを更新します。
 
 SPA 内の設定を変更するには:
 
-1. 前のチュートリアルでダウンロードまたは複製した [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa] プロジェクト内にある *index.html* ファイルを開きます。
+1. 前のチュートリアルでダウンロードまたは複製した [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa] プロジェクトで、*JavaScriptSPA* フォルダー内の *apiConfig.js* ファイルを開きます。
 1. 先ほど作成した *demo.read* スコープの URI と Web API の URL を使用してサンプルを構成します。
-    1. `appConfig` 定義内で、`b2cScopes` 値を、スコープの完全な URI (前に記録した**スコープ**値) に置き換えます。
-    1. `webApi` 値をリダイレクト URI に変更します。この URI は、前の手順で Web API アプリケーションを登録したときに追加しました。
+    1. `apiConfig` 定義で、`b2cScopes` 値を、*demo.read* スコープの完全な URI (前に記録した**スコープ**値) に置き換えます。
+    1. `webApi` 値のドメインを、前の手順で Web API アプリケーションを登録したときに追加したリダイレクト URI に変更します。
 
-    `appConfig` の定義は次のコード ブロックのようになります (`<your-tenant-name>` にはテナント名が入力されます)。
+    API には `/hello` エンドポイントでアクセス可能なため、URI の */hello* はそのままにします。
+
+    `apiConfig` の定義は次のコード ブロックのようになります。ただし、`<your-tenant-name>` の場所には B2C テナントの名前が入ります。
 
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
-    var appConfig = {
+    const apiConfig = {
       b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/api/demo.read"],
-      webApi: "http://localhost:5000/"
+      webApi: "http://localhost:5000/hello" // '/hello' should remain in the URI
     };
     ```
 
 ## <a name="run-the-spa-and-web-api"></a>SPA と Web API を実行する
 
-最後に、ローカル コンピューターで ASP.NET Core Web API と Node.js シングルページ アプリケーションの両方を実行します。 次に、シングルページ アプリケーションにサインインし、ボタンを押して、保護されている API に対する要求を開始します。
+これで、シングルページ アプリケーションの API へのスコープ付きアクセスをテストする準備ができました。 ローカル マシンで Node.js Web API とサンプル JavaScript シングルページ アプリケーションの両方を実行します。 次に、シングルページ アプリケーションにサインインし、 **[Call API]\(API の呼び出し\)** ボタンを選択して、保護されている API に対する要求を開始します。
 
-このチュートリアルでは両方のアプリケーションをローカルで実行しますが、サインアップとサインインをセキュリティで保護し、保護された Web API へのアクセスを許可するために、Azure AD B2C を使用します。
+このチュートリアルでは、両方のアプリケーションはローカルで実行されていますが、それらは、Azure AD B2C を使用して、セキュリティで保護されたサインアップ/サインインを実行し、保護された Web API へのアクセスを許可するように構成されています。
 
-### <a name="run-the-aspnet-core-web-api"></a>ASP.NET Core Web API を実行する
+### <a name="run-the-nodejs-web-api"></a>Node.js Web API を実行する
 
-Visual Studio で、**F5** キーを押して *B2C-WebAPI.sln* ソリューションを構築およびデバッグします。 プロジェクトが起動すると、既定のブラウザーに、Web API を要求に使用できることを示す Web ページが表示されます。
-
-Visual Studio ではなく `dotnet` CLI を使用する場合:
-
-1. コンソール ウィンドウを開き、 *\*.csproj* ファイルを含むディレクトリに変更します。 次に例を示します。
-
-    `cd active-directory-b2c-dotnetcore-webapi/B2C-WebApi`
-
-1. `dotnet run` を実行することで、Web API をビルドおよび実行します。
-
-    API が稼働しているときは、次のような出力が表示されます (このチュートリアルでは、`NETSDK1059` の警告は無視しても問題ありません)。
+1. コンソール ウィンドウを開き、Node.js Web API サンプルを含むディレクトリに移動します。 次に例を示します。
 
     ```console
-    $ dotnet run
-    Hosting environment: Production
-    Content root path: /home/user/active-directory-b2c-dotnetcore-webapi/B2C-WebApi
-    Now listening on: http://localhost:5000
-    Application started. Press Ctrl+C to shut down.
+    cd active-directory-b2c-javascript-nodejs-webapi
     ```
-
-### <a name="run-the-single-page-app"></a>シングルページ アプリを実行する
-
-1. コンソール ウィンドウを開き、Node.js サンプルを含むディレクトリに変更します。 次に例を示します。
-
-    `cd active-directory-b2c-javascript-msal-singlepageapp`
 
 1. 次のコマンドを実行します。
 
     ```console
     npm install && npm update
-    node server.js
+    node index.js
+    ```
+
+    コンソール ウィンドウには、アプリケーションがホストされている場所のポート番号が表示されます。
+
+    ```console
+    Listening on port 5000...
+    ```
+
+### <a name="run-the-single-page-app"></a>シングルページ アプリを実行する
+
+1. 別のコンソール ウィンドウを開き、JavaScript SPA サンプルを含むディレクトリに移動します。 次に例を示します。
+
+    ```console
+    cd active-directory-b2c-javascript-msal-singlepageapp
+    ```
+
+1. 次のコマンドを実行します。
+
+    ```console
+    npm install && npm update
+    npm start
     ```
 
     コンソール ウィンドウには、アプリケーションがホストされている場所のポート番号が表示されます。
@@ -195,23 +172,23 @@ Visual Studio ではなく `dotnet` CLI を使用する場合:
     ```
 
 1. アプリケーションを表示するには、ブラウザーで `http://localhost:6420` に移動します。
-1. [前のチュートリアル](tutorial-single-page-app.md)で使用したメール アドレスとパスワードを使用してサインインします。 ログインが成功すると、`User 'Your Username' logged-in` というメッセージが表示されます。
-1. **[Call Web API]\(Web API の呼び出し\)** ボタンを選択します。 SPA は Azure AD B2C から承認付与を取得し、保護された Web API にアクセスして、そのインデックス ページの内容を表示します。
 
-    ```Output
-    Web APi returned:
-    "<html>\r\n<head>\r\n  <title>Azure AD B2C API Sample</title>\r\n ...
-    ```
+    ![ブラウザーに表示されたシングルページ アプリケーションのサンプル アプリ](./media/tutorial-single-page-app-webapi/tutorial-01-sample-app-browser.png)
+
+1. [前のチュートリアル](tutorial-single-page-app.md)で使用したメール アドレスとパスワードを使用してサインインします。 ログインが成功すると、`User 'Your Username' logged-in` というメッセージが表示されます。
+1. **[Call API]** ボタンを選択します。 SPA は Azure AD B2C から承認許可を取得し、保護された Web API にアクセスして、ログインしているユーザーの名前を表示します。
+
+    ![API によって返されるユーザー名の JSON 結果を示す、ブラウザーのシングルページ アプリケーション](./media/tutorial-single-page-app-webapi/tutorial-02-call-api.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、以下の内容を学習しました。
+このチュートリアルでは、次のことを行いました。
 
 > [!div class="checklist"]
-> * Web API アプリケーションを追加する
-> * Web API のスコープを構成する
-> * Web API に対するアクセス許可を付与する
-> * アプリケーションを使用するようにサンプルを構成する
+> * Azure AD B2C テナントに Web API アプリケーション登録を作成しました
+> * Web API のスコープを構成しました
+> * Web API に対するアクセス許可を付与しました
+> * テナントで動作するように Web API コード サンプルを変更しました
 
 これで、SPA が保護された Web API に対してリソースを要求したことを確認できました。次は、これらの種類のアプリケーションが相互にまたは Azure AD B2C との間でどのように作用するかについて、理解を深めます。
 

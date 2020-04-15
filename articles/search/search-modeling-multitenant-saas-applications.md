@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113274"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549023"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>マルチテナント SaaS アプリケーションと Azure Cognitive Search の設計パターン
 マルチテナント アプリケーションとは、他のテナントのデータを表示したり共有したりできない多数のテナントに同じサービスと機能を提供するアプリケーションです。 このドキュメントでは、Azure Cognitive Search を使用して構築されたマルチテナント アプリケーションのテナント分離戦略について説明します。
@@ -51,7 +51,7 @@ Azure Cognitive Search の S3 価格レベルには、マルチテナント シ�
 
 S3 HD では、パーティションを使ってインデックスをスケールアウトするのではなく、1 つのサービスでより多くのインデックスをホストすることで、1 つの Search サービスで小さな多数のインデックスをまとめて管理できます。
 
-具体的には、S3 サービスで使用できるインデックス数は 1 ～ 200 個で、最大 14 億のドキュメントをまとめてホストできます。 一方、S3 HD では、インデックスあたりのドキュメント数は最大でも 100 万ドキュメントにすぎませんが、パーティションあたり 1,000 個 (サービスあたり 3000 個) のインデックスを処理できるため、パーティションあたりの合計ドキュメント数は 2 億 (サービスあたり 6 億) になります。
+S3 サービスは、固定数のインデックス (最大 200) をホストするように設計されており、サービスに新しいパーティションが追加されたら、各インデックスのサイズを水平方向に拡張できます。 S3 HD サービスにパーティションを追加すると、サービスでホストできるインデックスの最大数が増えます。 個々の S3HD インデックスの理想的な最大サイズは約 50 から 80 GB ですが、システムによって設けられた各インデックスに対するハード サイズ制限はありません。
 
 ## <a name="considerations-for-multitenant-applications"></a>マルチテナント アプリケーションに関する考慮事項
 マルチテナント アプリケーションでは、さまざまなテナント間である程度のプライバシーを維持しながら、各テナントにリソースを効果的に分配する必要があります。 このようなアプリケーションのアーキテクチャを設計するときには、考慮事項がいくつかあります。

@@ -10,136 +10,86 @@ ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/20/2019
+ms.date: 03/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 978111596330d7d6b324c1ecc07fd424c7fd47b7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b08253104eeb61f6bb09fde507473d235a996494
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427006"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422668"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用した、Service Bus の名前空間とキューの作成
 
 この記事では、Service Bus の名前空間とその名前空間内のキューを作成する Azure Resource Manager テンプレートを使用する方法を示します。 この記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを指定する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」を参照してください。
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-完全なテンプレートについては、GitHub にある [Service Bus の名前空間とキューのテンプレート][Service Bus namespace and queue template] を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+
+## <a name="prerequisites"></a>前提条件
+
+なし
+
+## <a name="create-a-service-bus-namespace-and-a-queue"></a>Service Bus の名前空間とキューを作成する
+
+### <a name="review-the-template"></a>テンプレートを確認する
+
+このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue)からのものです。
+
+:::code language="json" source="~/quickstart-templates/201-servicebus-create-queue/azuredeploy.json" range="1-75" highlight="31-63":::
+
+このテンプレートに定義されているリソースは次のとおりです。
+
+- [**Microsoft.ServiceBus/namespaces**](/azure/templates/microsoft.servicebus/namespaces)
+- [**Microsoft.ServiceBus/namespaces/queues**](/azure/templates/microsoft.servicebus/namespaces/queues)
 
 > [!NOTE]
 > 次の Azure Resource Manager テンプレートは、ダウンロードしてデプロイすることができます。
-> 
+>
 > * [キューと承認規則を含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-auth-rule.md)
 > * [トピックとサブスクリプションを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
 > * [Service Bus 名前空間の作成](service-bus-resource-manager-namespace.md)
 > * [トピック、サブスクリプション、ルールを含んだ Service Bus の名前空間を作成する](service-bus-resource-manager-namespace-topic-with-rule.md)
-> 
-> 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][Azure Quickstart Templates]」ギャラリーで "**Service Bus**" を検索してください。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+その他のテンプレートについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular)」をご覧ください。
 
-## <a name="what-will-you-deploy"></a>デプロイの対象
+### <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 このテンプレートでは、キューを含んだ Service Bus 名前空間をデプロイします。
 
 [Service Bus キュー](service-bus-queues-topics-subscriptions.md#queues)では、コンシューマーが競合している場合のメッセージ配信に先入れ先出し法 (FIFO) を使用します。
 
-デプロイメントを自動的に実行するには、次のボタンをクリックします。
+デプロイメントを自動的に実行するには、次のボタンをクリックします。後で簡単にクリーンアップできるよう、デプロイ用に新しいリソース グループを作成してください。
 
 [![Azure へのデプロイ](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
 
-## <a name="parameters"></a>パラメーター
+## <a name="verify-the-deployment"></a>デプロイを検証する
 
-Azure リソース マネージャーを使用して、テンプレートのデプロイ時に値を指定するパラメーターを定義します。 テンプレートには、すべてのパラメーター値を含む `Parameters` という名前のセクションがあります。 これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。 常に同じ値に対してはパラメーターを定義しないでください。 テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
+1. 上部にある **[通知]** を選択して、デプロイの状態を確認します。 デプロイが正常に完了するまで待ちます。 次に、通知メッセージの **[リソース グループに移動]** を選択して、Service Bus 名前空間を含んだリソース グループのページに移動します。 
 
-このテンプレートでは、次のパラメーターを定義します。
+    ![デプロイからの通知](./media/service-bus-resource-manager-namespace-queue/notification.png)
+2. Service Bus 名前空間がリソースの一覧に表示されていることを確認します。 
 
-### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-作成する Service Bus 名前空間の名前。
+    ![リソース グループ - 名前空間](./media/service-bus-resource-manager-namespace-queue/resource-group-namespace.png)
+3. 一覧から名前空間を選択して、 **[Service Bus 名前空間]** ページを表示します。 
 
-```json
-"serviceBusNamespaceName": {
-"type": "string",
-"metadata": { 
-    "description": "Name of the Service Bus namespace" 
-    }
-}
-```
+## <a name="cleanup-resources"></a>リソースをクリーンアップする
 
-### <a name="servicebusqueuename"></a>serviceBusQueueName
-Service Bus 名前空間に作成するキューの名前。
+1. Azure portal で、自分のリソース グループの **[リソース グループ]** ページに移動します。
+2. ツール バーから **[リソース グループの削除]** を選びます。 
+3. リソース グループの名前を入力し、 **[削除]** を選択します。 
 
-```json
-"serviceBusQueueName": {
-"type": "string"
-}
-```
-
-### <a name="servicebusapiversion"></a>serviceBusApiVersion
-テンプレートの Service Bus API バージョン。
-
-```json
-"serviceBusApiVersion": { 
-       "type": "string", 
-       "defaultValue": "2017-04-01", 
-       "metadata": { 
-           "description": "Service Bus ApiVersion used by the template" 
-       }
-```
-
-## <a name="resources-to-deploy"></a>デプロイ対象のリソース
-**Messaging**タイプの標準的な Service Bus 名前空間を作成し、キューを追加します。
-
-```json
-{
-    "resources": [{
-        "apiVersion": "2017-04-01",
-        "name": "[parameters('serviceBusNamespaceName')]",
-        "type": "Microsoft.ServiceBus/namespaces",
-        "location": "[parameters('location')]",
-        "sku": {
-            "name": "Standard"
-        },
-        "properties": {},
-        "resources": [{
-            "apiVersion": "[variables('sbVersion')]",
-            "name": "[parameters('serviceBusQueueName')]",
-            "type": "Queues",
-            "dependsOn": [
-                "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
-            ],
-            "properties": {
-                "path": "[parameters('serviceBusQueueName')]"
-            }
-        }]
-    }]
-}
-```
-
-JSON の構文とプロパティについては、[namespaces](/azure/templates/microsoft.servicebus/namespaces) と [queues](/azure/templates/microsoft.servicebus/namespaces/queues) のページを参照してください。
-
-## <a name="commands-to-run-deployment"></a>デプロイを実行するコマンド
-[!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
-
-## <a name="powershell"></a>PowerShell
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
-```
-
-## <a name="azure-cli"></a>Azure CLI
-
-```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
-```
+    ![リソース グループ - 削除](./media/service-bus-resource-manager-namespace-queue/resource-group-delete.png)
 
 ## <a name="next-steps"></a>次のステップ
-名前空間/キューの承認規則を作成する方法を説明している次のトピックを参照してください。[Service Bus の名前空間とキューに使用する承認規則を Azure Resource Manager テンプレートで作成する](service-bus-resource-manager-namespace-auth-rule.md)
+
+名前空間/キューの承認規則を作成する方法を説明している次のトピックを参照してください。
+
+[Service Bus の名前空間とキューに使用する承認規則を Azure Resource Manager テンプレートで作成する](service-bus-resource-manager-namespace-auth-rule.md)
 
 次の記事を参照して、これらのリソースの管理方法を確認してください。
 

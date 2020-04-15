@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 14b3292a08e9bb0a60710053cd0b7ffc9d0db115
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1bd5248e0a6a6c7c569c85e8c1af3e30f8b7f9e4
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223079"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474250"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>チュートリアル:Azure Active Directory Domain Services インスタンスを作成して構成する
 
@@ -104,8 +104,8 @@ Azure portal の *[基本]* ウィンドウのフィールドに必要事項を�
 
 Azure AD DS のマネージド ドメインをすばやく作成するには、 **[確認および作成]** を選択して、追加となる既定の構成オプションをそのまま使用します。 この作成オプションを選択した場合は、次の既定値が構成されます。
 
-* IP アドレス範囲 *10.0.1.0/24* を使用する *aadds-vnet* という名前の仮想ネットワークを作成します。
-* IP アドレス範囲 *10.0.1.0/24* を使用して、*aadds-subnet* という名前のサブネットを作成します。
+* IP アドレス範囲 *10.0.2.0/24* を使用する *aadds-vnet* という名前の仮想ネットワークを作成します。
+* IP アドレス範囲 *10.0.2.0/24* を使用して、*aadds-subnet* という名前のサブネットを作成します。
 * Azure AD の "*すべて*" のユーザーを Azure AD DS のマネージド ドメインに同期させます。
 
 **[確認および作成]** を選択して、これらの既定の構成オプションをそのまま使用します。
@@ -136,7 +136,7 @@ Azure AD DS のデプロイに成功したら、接続された他の VM やア�
 
 1. マネージド ドメインの **[概要]** タブに、**必要な構成手順**がいくつか表示されます。 最初の構成手順は、仮想ネットワークの DNS サーバー設定を更新することです。 DNS 設定が正しく構成されると、この手順は表示されなくなります。
 
-    列挙されているアドレスは、仮想ネットワークで使用するためのドメイン コントローラーです。 この例では、*10.0.1.4* と *10.0.1.5* がそれらのアドレスに該当します。 これらの IP アドレスは、後から **[プロパティ]** タブで確認できます。
+    列挙されているアドレスは、仮想ネットワークで使用するためのドメイン コントローラーです。 この例では、*10.0.2.4* と *10.0.2.5* がそれらのアドレスに該当します。 これらの IP アドレスは、後から **[プロパティ]** タブで確認できます。
 
     ![Azure AD Domain Services の IP アドレスを使用して仮想ネットワークの DNS 設定を構成する](./media/tutorial-create-instance/configure-dns.png)
 

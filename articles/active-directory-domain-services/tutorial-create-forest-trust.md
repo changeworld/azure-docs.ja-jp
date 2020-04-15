@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 11/19/2019
+ms.topic: tutorial
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a76f72d3f01ab9253c452e49dde171280fe481d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77612522"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654410"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>チュートリアル:Azure Active Directory Domain Services (プレビュー) で、オンプレミスのドメインへの送信フォレストの信頼を作成する
 
@@ -59,7 +59,7 @@ Azure AD DS でフォレストの信頼を構成する前に、Azure とオン�
 
 * プライベート IP アドレスを使用します。 動的 IP アドレスの割り当てを使用した DHCP に依存しないでください。
 * 仮想ネットワークのピアリングとルーティングが Azure とオンプレミスの間で正常に通信できるように、IP アドレス空間の重複を回避してください。
-* Azure 仮想ネットワークには、サイト間 (S2S) VPN 接続または ExpressRoute 接続を構成するためのゲートウェイ サブネットが必要です。
+* Azure 仮想ネットワークには、[Azure のサイト間 (S2S) VPN][vpn-gateway] または [ExpressRoute][expressroute] 接続を構成するためのゲートウェイ サブネットが必要です。
 * シナリオをサポートするのに十分な IP アドレスを使用してサブネットを作成します。
 * Azure AD DS に独自のサブネットがあることを確認し、この仮想ネットワーク サブネットはアプリケーション VM およびサービスと共有しないでください。
 * ピアリングされた仮想ネットワークは推移的ではありません。
@@ -74,7 +74,7 @@ Azure AD DS でフォレストの信頼を構成する前に、Azure とオン�
 1. **[スタート] | [管理ツール] | [DNS]** の順に選択します。
 1. *myAD01* などの DNS サーバーを右クリックし、 **[プロパティ]** を選択します。
 1. **[フォワーダー]** 、 **[編集]** の順に選択して、他のフォワーダーを追加します。
-1. *10.0.1.4* や *10.0.1.5* などの、Azure AD DS マネージド ドメインの IP アドレスを追加します。
+1. *10.0.2.4* や *10.0.2.5* などの、Azure AD DS マネージド ドメインの IP アドレスを追加します。
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>オンプレミス ドメインに受信フォレストの信頼を作成する
 
@@ -85,10 +85,6 @@ Azure AD DS でフォレストの信頼を構成する前に、Azure とオン�
 1. **[スタート] | [管理ツール] | [Active Directory Active Directory ドメインと信頼関係]** の順に選択します。
 1. *onprem.contoso.com* などのドメインを右クリックし、 **[プロパティ]** を選択します。
 1. **[信頼]** タブ、 **[新しい信頼]** の順に選択します。
-
-   > [!NOTE]
-   > **[信頼]** メニュー オプションが表示されない場合は、 **[プロパティ]** で *フォレストの種類* を確認してください。 信頼を作成できるのは、*リソース* フォレストだけです。 フォレストの種類が*ユーザー*場合、信頼を作成することはできません。 現在、Azure AD DS マネージド ドメインのフォレストの種類を変更する方法はありません。 マネージド ドメインを削除し、リソース フォレストとして作成し直す必要があります。
-
 1. Azure AD DS ドメイン名に対して名前 (*aaddscontoso.com* など) を入力してから、 **[次へ]** を選択します
 1. **フォレストの信頼**を作成するオプションを選択して、**一方向: 受信**の信頼を作成します。
 1. **[This domain only]\(このドメインのみ\)** に信頼を作成することを選択します。 次の手順では、Azure portal で Azure AD DS マネージド ドメインに対する信頼を作成します。
@@ -104,12 +100,16 @@ Azure portal で Azure AD DS マネージド ドメインに対する送信の�
 
 1. Azure portal で **Azure AD Domain Services** を検索して選択し、次にご利用のマネージド ドメイン (*aaddscontoso.com* など) を選択します
 1. Azure AD DS マネージド ドメインの左側にあるメニューで、 **[信頼]** を選択してから、 **[+ 追加]** を選択して信頼を追加します。
+
+   > [!NOTE]
+   > **[信頼]** メニュー オプションが表示されない場合は、 **[プロパティ]** で *フォレストの種類* を確認してください。 信頼を作成できるのは、*リソース* フォレストだけです。 フォレストの種類が*ユーザー*場合、信頼を作成することはできません。 現在、Azure AD DS マネージド ドメインのフォレストの種類を変更する方法はありません。 マネージド ドメインを削除し、リソース フォレストとして作成し直す必要があります。
+
 1. ご利用の信頼を識別する表示名を入力し、次にオンプレミスの信頼されたフォレストの DNS 名 (*onprem.contoso.com* など) を入力します。
 1. 前のセクションでオンプレミスの AD DS ドメインに対して受信フォレストの信頼を構成したときに使用したのと同じ信頼パスワードを指定します。
-1. オンプレミスの AD DS ドメインに少なくとも 2 つの DNS サーバー (*10.0.2.4* や *10.0.2.5* など) を指定します。
+1. オンプレミスの AD DS ドメインに少なくとも 2 つの DNS サーバーを指定します (*10.1.1.4* や *10.1.1.5* など)。
 1. 準備ができたら、送信フォレストの信頼を**保存**します
 
-    [Azure portal で送信フォレストの信頼を作成する](./media/create-forest-trust/portal-create-outbound-trust.png)
+    ![Azure portal で送信フォレストの信頼を作成する](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
 
 ## <a name="validate-resource-authentication"></a>リソース認証を検証する
 
@@ -126,18 +126,14 @@ Azure portal で Azure AD DS マネージド ドメインに対する送信の�
 
 Windows Server 仮想マシンを Azure AD DS リソース ドメインに参加させる必要があります。 この仮想マシンを使用して、オンプレミスのユーザーが仮想マシン上で認証されることをテストします。
 
-1. リモート デスクトップと Azure AD DS 管理者の資格情報を使用して、Azure AD DS リソース フォレストに参加している Windows Server VM に接続します。 ネットワーク レベル認証 (NLA) エラーが発生した場合は、使用したユーザー アカウントがドメイン ユーザー アカウントではないことを確認します。
-
-    > [!NOTE]
-    > Azure AD Domain Services に参加しているご利用の VM に安全に接続するには、サポートされている Azure リージョンで [Azure Bastion ホスト サービス](https://docs.microsoft.com/azure/bastion/bastion-overview)を使用できます。
-
+1. [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) と Azure AD DS 管理者の資格情報を使用して、Azure AD DS リソース フォレストに参加している Windows Server VM に接続します。
 1. コマンド プロンプトを開き、`whoami` コマンドを使用して、現在認証されているユーザーの識別名を表示します。
 
     ```console
     whoami /fqdn
     ```
 
-1. `runas` コマンドを使用して、オンプレミスのドメインからのユーザーとして認証を受けます。 次のコマンドで、`userUpn@trusteddomain.com` を、信頼されているオンプレミス ドメインからのユーザーの UPN に置き換えます。 コマンドを実行すると、ユーザーのパスワードの入力を求められます。
+1. `runas` コマンドを使用して、オンプレミスのドメインからのユーザーとして認証を受けます。 次のコマンドで、`userUpn@trusteddomain.com` を、信頼されているオンプレミス ドメインからのユーザーの UPN に置き換えます。 このコマンドでは、ユーザーのパスワードの入力を求められます。
 
     ```console
     Runas /u:userUpn@trusteddomain.com cmd.exe
@@ -152,10 +148,7 @@ Azure AD DS リソース フォレストに参加している Windows Server VM 
 
 #### <a name="enable-file-and-printer-sharing"></a>ファイルとプリンターの共有を有効にする
 
-1. リモート デスクトップと Azure AD DS 管理者の資格情報を使用して、Azure AD DS リソース フォレストに参加している Windows Server VM に接続します。 ネットワーク レベル認証 (NLA) エラーが発生した場合は、使用したユーザー アカウントがドメイン ユーザー アカウントではないことを確認します。
-
-    > [!NOTE]
-    > Azure AD Domain Services に参加しているご利用の VM に安全に接続するには、サポートされている Azure リージョンで [Azure Bastion ホスト サービス](https://docs.microsoft.com/azure/bastion/bastion-overview)を使用できます。
+1. [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) と Azure AD DS 管理者の資格情報を使用して、Azure AD DS リソース フォレストに参加している Windows Server VM に接続します。
 
 1. **[Windows の設定]** を開き、 **[ネットワークと共有センター]** を検索して選択します。
 1. **[共有の詳細設定の変更]** のオプションを選択します。
@@ -221,3 +214,5 @@ Azure AD DS 内のフォレストの種類に関する概念的な詳細につ�
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
 [howto-change-sku]: change-sku.md
+[vpn-gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+[expressroute]: ../expressroute/expressroute-introduction.md

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: sngun
-ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e57029e53365fbf99054e2d926296ccca3360663
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77558930"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983604"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 |**SDK への協力**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**開始するには**|[Java SDK の開始](sql-api-java-get-started.md)|
 |**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-java-application.md)|
-|**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)|
+|**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>リリース ノート
 
@@ -131,7 +131,7 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 
 ### <a name="1150"></a><a name="1.15.0"/>1.15.0
 * JSON シリアル化のパフォーマンスが向上しました。
-* この SDK バージョンでは、 https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
+* この SDK バージョンには [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) の最新バージョンが必要です。
 
 ### <a name="1140"></a><a name="1.14.0"/>1.14.0
 * Microsoft フレンド ライブラリの内部変更。

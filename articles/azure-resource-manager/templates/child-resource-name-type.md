@@ -3,18 +3,18 @@ title: テンプレート内の子リソース
 description: Azure Resource Manager テンプレートで子リソースの名前と種類を設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 6de2b476fe19a057a62e4a54963dd8fde0d11579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a69829e674925982c618807f49433a033d8c5f9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77207895"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743842"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>子リソースの名前と種類の設定
 
 子リソースとは、別のリソースのコンテキスト内でのみ存在するリソースのことです。 たとえば[仮想マシン拡張機能](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions)は、[仮想マシン](/azure/templates/microsoft.compute/2019-03-01/virtualmachines)なしでは存在できません。 この拡張機能リソースが仮想マシンの子です。
 
-Resource Manager テンプレートでは、親リソースの内側または外側に子リソースを指定できます。 次の例は、親リソースの resources プロパティ内に追加された子リソースを示しています。
+Resource Manager テンプレートでは、親リソースの内側または外側で子リソースを指定できます。 次の例は、親リソースの resources プロパティ内に追加された子リソースを示しています。
 
 ```json
 "resources": [

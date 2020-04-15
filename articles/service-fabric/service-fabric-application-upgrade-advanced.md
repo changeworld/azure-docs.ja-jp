@@ -3,12 +3,12 @@ title: アプリケーションのアップグレードに関する高度なト�
 description: この記事では、Service Fabric アプリケーションのアップグレードに関連する高度なトピックについて説明します。
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 09f3fdf1f26a13c6722eb039e132256f33be38ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 182ab6dc1663e160561b8941ebf3a36b5af3d950
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845436"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422807"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric アプリケーションのアップグレード:高度なトピック
 
@@ -20,9 +20,9 @@ ms.locfileid: "76845436"
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>ステートレス サービスの計画的なダウンタイム中に接続がドロップされないようにする (プレビュー)
 
-アプリケーションまたはクラスターのアップグレードやノードの非アクティブ化など、ステートレス インスタンスの計画的なダウンタイムの場合、公開されたエンドポイントがダウンした後にドロップされるため、接続が削除される可能性があります。
+アプリケーションやクラスターのアップグレードまたはノードの非アクティブ化など、ステートレス インスタンスの計画的なダウンタイムの場合、インスタンスがダウンして接続が強制的に終了された後、公開されたエンドポイントが削除されるため、接続がドロップされる可能性があります。
 
-これを回避するには、サービス構成にレプリカの "*インスタンス終了の延期期間*" を追加して、*RequestDrain* (プレビュー) 機能を構成します。 これにより、ステートレス インスタンスによってアドバタイズされたエンドポイントは、インスタンスを閉じるために延期期間タイマーが開始される "*前に*" 削除されます。 この延期期間により、インスタンスが実際に停止する前に、既存の要求を適切にドレインすることができます。 クライアントにはコールバック関数でエンドポイントの変更が通知されるため、エンドポイントを再解決し、停止するインスタンスへの新しい要求の送信を回避できます。
+これを回避するには、*RequestDrain* (プレビュー) 機能を構成します。サービス構成に*インスタンスの終了遅延期間*を追加して、クラスター内で他のサービスからの要求受信中にドレインを許可し、リバース プロキシを使用するか、エンドポイントを更新するための通知モデルで解決 API を使用してください。 これにより、ステートレス インスタンスによってアドバタイズされたエンドポイントは、インスタンス終了に先立つ延期期間の開始*前*に削除されます。 この延期期間により、インスタンスが実際に停止する前に、既存の要求を適切にドレインすることができます。 クライアントには、延期期間開始時点でコールバック関数によってエンドポイントの変更が通知されるため、エンドポイントを解決し、停止するインスタンスへの新しい要求の送信を回避できます。
 
 ### <a name="service-configuration"></a>サービス構成
 
@@ -50,24 +50,8 @@ ms.locfileid: "76845436"
 
 ### <a name="client-configuration"></a>クライアントの構成
 
-エンドポイントが変更されたときに通知を受け取るには、クライアントで次のようにコールバック (`ServiceManager_ServiceNotificationFilterMatched`) を登録します。 
-
-```csharp
-    var filterDescription = new ServiceNotificationFilterDescription
-    {
-        Name = new Uri(serviceName),
-        MatchNamePrefix = true
-    };
-    fbClient.ServiceManager.ServiceNotificationFilterMatched += ServiceManager_ServiceNotificationFilterMatched;
-    await fbClient.ServiceManager.RegisterServiceNotificationFilterAsync(filterDescription);
-
-private static void ServiceManager_ServiceNotificationFilterMatched(object sender, EventArgs e)
-{
-      // Resolve service to get a new endpoint list
-}
-```
-
-変更通知は、エンドポイントが変更されたことを示しており、クライアントでは、エンドポイントを再解決する必要があります。また、アドバタイズされなくなったエンドポイントはすぐに停止するため、使用しないようにします。
+エンドポイントが変更されたときに通知を受け取るには、クライアントはコールバックを登録する必要があります ([ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription) を参照)。
+変更通知は、エンドポイントが変更されたことを示しており、クライアントでは、エンドポイントを再び解決する必要があります。また、アドバタイズされなくなったエンドポイントはすぐに停止するため、使用しないようにします。
 
 ### <a name="optional-upgrade-overrides"></a>省略可能なアップグレードのオーバーライド
 
@@ -80,6 +64,16 @@ Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManife
 ```
 
 延期期間は、呼び出されたアップグレード インスタンスにのみ適用されます。それ以外の場合、個々のサービスの延期期間構成は変更されません。 たとえば、これを利用すると、事前に構成されたアップグレードの延期期間をスキップするために `0` の延期期間を指定できます。
+
+> [!NOTE]
+> 要求をドレインする設定は、Azure ロード バランサーからの要求では受け入れられません。 呼び出しサービスがクレーム ベースの解決を使用する場合、この設定は無視されます。
+>
+>
+
+> [!NOTE]
+> この機能は、前述のように Update-ServiceFabricService コマンドレットを使用すると、既存のサービスで構成できます (クラスター コードのバージョンが 7.1.XXX 以上の場合)。
+>
+>
 
 ## <a name="manual-upgrade-mode"></a>手動アップグレード モード
 

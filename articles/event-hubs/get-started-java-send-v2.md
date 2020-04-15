@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 44f57f52be512924e228d6488a786d117c6444e7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 29101d0277ff0fb392917f722bcaec3b7e5983b5
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79370595"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478255"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Java を使用して Azure Event Hubs との間でイベントを送受信する (azure-messaging-eventhubs)
 このクイックスタートでは、**azure-messaging-eventhubs** Java パッケージを使用して、イベント ハブとの間でイベントを送受信する方法について説明します。
@@ -23,7 +23,7 @@ ms.locfileid: "79370595"
 
 
 ## <a name="prerequisites"></a>前提条件
-Azure Event Hubs を初めて使用する場合は、このクイックスタートを行う前に[イベント ハブの概要](event-hubs-about.md)を参照してください。 
+Azure Event Hubs を初めて使用する場合は、このクイックスタートを行う前に [Event Hubs の概要](event-hubs-about.md)を参照してください。 
 
 このクイック スタートを完了するには、次の前提条件を用意しておく必要があります。
 
@@ -36,7 +36,7 @@ Azure Event Hubs を初めて使用する場合は、このクイックスター
 
 ### <a name="add-reference-to-azure-event-hubs-library"></a>Azure Event Hubs ライブラリへの参照を追加する
 
-[Maven Central Repository](https://search.maven.org/search?q=a:azure-messaging-eventhubs) の Maven プロジェクトで Event Hub 用の Java クライアント ライブラリを使用できます。 Maven プロジェクト ファイル内で次の依存関係宣言を使用して、このライブラリを参照できます。
+Event Hubs 用の Java クライアント ライブラリは、[Maven Central Repository](https://search.maven.org/search?q=a:azure-messaging-eventhubs) にあります。 Maven プロジェクト ファイル内で次の依存関係宣言を使用して、このライブラリを参照できます。
 
 ```xml
 <dependency>
@@ -139,6 +139,9 @@ public class Sender {
 
 ## <a name="receive-events"></a>受信イベント
 このチュートリアルのコードは [GitHub の EventProcessorClient サンプル](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/EventProcessorClientSample.java)に基づくものであり、完全に動作するアプリケーションを表示する場合に確認することができます。
+
+> [!NOTE]
+> Azure Stack Hub 上で実行する場合、そのプラットフォームでサポートされる Storage Blob SDK のバージョンは、Azure で一般的に利用できるバージョンと異なります。 たとえば、[Azure Stack Hub バージョン 2002 上で](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、このセクションの手順に従うことに加え、Storage Service API バージョン 2017-11-09 を対象にするコードを追加する必要があります。 特定の Storage API バージョンを対象にする方法の例については、[GitHub のサンプル](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)を参照してください。 Azure Stack Hub でサポートされる Azure Storage サービスのバージョンについて詳しくは、「[Azure Stack Hub のストレージ: 違いと考慮事項](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)」をご覧ください。
 
 ### <a name="create-a-java-project"></a>Java プロジェクトを作成する
 

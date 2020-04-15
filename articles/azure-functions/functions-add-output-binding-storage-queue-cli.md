@@ -4,12 +4,12 @@ description: コマンド ライン プロジェクトに出力バインディ�
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 9181caf516d5c2003cfe99b125d2921732cbbb9d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f9d9573523083b6355f423b7b3db94b795d8657f
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79473389"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673372"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>コマンド ライン ツールを使用して Azure Functions を Azure Storage に接続する
 
@@ -19,84 +19,24 @@ ms.locfileid: "79473389"
 
 開始する前に、「[クイックスタート:コマンド ラインから Azure Functions プロジェクトを作成する](functions-create-first-azure-function-azure-cli.md)」という記事を終える必要があります。 その記事の最後でリソースをクリーンアップした場合は、もう一度手順に従って Azure で関数アプリと関連リソースを再作成してください。
 
-## <a name="retrieve-the-azure-storage-connection-string"></a>Azure Storage の接続文字列を取得する
-
-前のクイックスタートで Azure に関数アプリを作成したときに、ストレージ アカウントも作成しました。 このアカウントの接続文字列は、Azure のアプリ設定に安全に格納されています。 関数をローカルで実行するときは、*local.settings.json* ファイルに設定をダウンロードすることにより、その接続を使用して同じアカウントのストレージ キューへの書き込みを行うことができます。 
-
-1. プロジェクトのルートから、次のコマンドを実行します。`<APP_NAME>` は、前のクイックスタートの関数アプリ名に置き換えてください。 このコマンドを実行すると、ファイル内の既存の値はすべて上書きされます。
-
-    ```
-    func azure functionapp fetch-app-settings <APP_NAME>
-    ```
-    
-1. *local.settings.json* を開き、`AzureWebJobsStorage` という名前の値を検索します。それがストレージ アカウントの接続文字列です。 `AzureWebJobsStorage` という名前と接続文字列は、この記事の他のセクションで使用します。
-
-> [!IMPORTANT]
-> *local.settings.json* には、Azure からダウンロードされたシークレットが含まれているため、このファイルは必ずソース管理から除外してください。 ローカル関数プロジェクトで作成される *.gitignore* ファイルからは、このファイルが既定で除外されます。
+[!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
 [!INCLUDE [functions-register-storage-binding-extension-csharp](../../includes/functions-register-storage-binding-extension-csharp.md)]
 
-## <a name="add-an-output-binding-definition-to-the-function"></a>出力バインディングの定義を関数に追加する
-
-関数に割り当てることができるトリガーは 1 つだけですが、入力と出力のバインディングは複数割り当てることができます。これらを使用すると、カスタム統合コードを記述しなくても、他の Azure サービスやリソースに接続できます。 
-
-::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-関数フォルダーの *function.json* ファイルでそれらのバインディングを宣言します。 前のクイックスタートの *HttpExample* フォルダーにある *function.json* ファイルでは、`bindings` コレクション内に 2 つのバインディングが含まれています。  
-::: zone-end
-
-::: zone pivot="programming-language-javascript,programming-language-typescript"  
-:::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/function.json" range="2-18":::  
-::: zone-end
-
-::: zone pivot="programming-language-python"  
-:::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json" range="2-18":::  
-::: zone-end
-
-::: zone pivot="programming-language-powershell"  
-:::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/function.json" range="2-18":::
-::: zone-end  
-
-::: zone pivot="programming-language-python,programming-language-javascript, programming-language-powershell, programming-language-typescript"  
-それぞれのバインディングには、少なくとも型、方向、名前があります。 上の例の 1 つ目のバインディングは、型が `httpTrigger` で、方向が `in` になっています。 `in` 方向の場合、トリガーによって呼び出された関数に送信される入力パラメーターの名前が `name` で指定されます。  
-::: zone-end
-
-::: zone pivot="programming-language-javascript,programming-language-typescript"  
-コレクションの 2 つ目のバインディングの名前は `res` です。 この `http` バインディングは、HTTP 応答の書き込みに使用される出力バインディング (`out`) です。 
-
-この関数から Azure Storage キューに書き込みを行うには、次のコードで示すように、`queue` 型の `out` バインディングを `msg` という名前で追加します。
-
-:::code language="json" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
-::: zone-end  
-
-::: zone pivot="programming-language-python"  
-コレクションの 2 つ目のバインディングは、型が `http` で方向が `out` です。この場合、このバインディングは入力パラメーターを渡すものではなく、関数の戻り値を使用するものであることが、`$return` という特殊な `name` からわかります。
-
-この関数から Azure Storage キューに書き込みを行うには、次のコードで示すように、`queue` 型の `out` バインディングを `msg` という名前で追加します。
-
-:::code language="json" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
-::: zone-end  
-
-::: zone pivot="programming-language-powershell"  
-コレクションの 2 つ目のバインディングの名前は `res` です。 この `http` バインディングは、HTTP 応答の書き込みに使用される出力バインディング (`out`) です。 
-
-この関数から Azure Storage キューに書き込みを行うには、次のコードで示すように、`queue` 型の `out` バインディングを `msg` という名前で追加します。
-
-:::code language="json" source="~/functions-docs-powershell/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
-::: zone-end  
-
-::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-このケースでは、`msg` が出力引数として関数に与えられています。 型 `queue` では、`queueName` にキューの名前を指定し、(*local.settings.json* から得られる) Azure Storage 接続の "*名前*" を `connection` に指定する必要もあります。 
-::: zone-end  
+[!INCLUDE [functions-add-output-binding-cli](../../includes/functions-add-output-binding-cli.md)]
 
 ::: zone pivot="programming-language-csharp"  
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]  
 ::: zone-end  
+::: zone pivot="programming-language-java" 
+[!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
+::: zone-end   
 
 バインディングの詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」と[キューの出力の構成](functions-bindings-storage-queue-output.md#configuration)に関する記事を参照してください。
 
 ## <a name="add-code-to-use-the-output-binding"></a>出力バインディングを使用するコードを追加する
 
-キュー バインディングを *function.json* に指定したら、`msg` 出力パラメーターを受け取ってキューにメッセージを書き込むよう関数を更新することができます。
+キュー バインディングが定義されたら、`msg` 出力パラメーターを受け取ってメッセージをキューに書き込むように関数を更新することができます。
 
 ::: zone pivot="programming-language-python"     
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
@@ -118,6 +58,12 @@ ms.locfileid: "79473389"
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 ::: zone-end 
 
+::: zone pivot="programming-language-java"
+[!INCLUDE [functions-add-output-binding-java-code](../../includes/functions-add-output-binding-java-code.md)]
+
+[!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
+::: zone-end
+
 認証、キューの参照の取得、データの書き込みのためのコードを記述する必要が "*ない*" 点に注目してください。 これらの統合タスクはすべて、Azure Functions ランタイムとキュー出力バインディングで処理され、手間がかかりません。
 
 [!INCLUDE [functions-run-function-test-local-cli](../../includes/functions-run-function-test-local-cli.md)]
@@ -126,72 +72,30 @@ ms.locfileid: "79473389"
 
 ## <a name="view-the-message-in-the-azure-storage-queue"></a>Azure Storage キューのメッセージを確認する
 
-キューは、[Azure portal](../storage/queues/storage-quickstart-queues-portal.md) または [Microsoft Azure Storage Explorer](https://storageexplorer.com/) で確認できます。 次の手順に従って、Azure CLI でキューを確認することもできます。
-
-1. 関数プロジェクトの *local.setting.json* ファイルを開き、接続文字列の値をコピーします。 ターミナルまたはコマンド ウィンドウで、次のコマンドを実行して、`AZURE_STORAGE_CONNECTION_STRING` という名前の環境変数を作成し、`<MY_CONNECTION_STRING>` の代わりに実際の接続文字列を貼り付けます。 (この環境変数を作成すれば、`--connection-string` 引数を使用して接続文字列を後続の各コマンドに指定する必要はありません。)
-
-    # <a name="bash"></a>[bash](#tab/bash)
-    
-    ```bash
-    AZURE_STORAGE_CONNECTION_STRING="<MY_CONNECTION_STRING>"
-    ```
-    
-    # <a name="powershell"></a>[PowerShell](#tab/powershell)
-    
-    ```powershell
-    $env:AZURE_STORAGE_CONNECTION_STRING = "<MY_CONNECTION_STRING>"
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/cmd)
-    
-    ```azurecli
-    set AZURE_STORAGE_CONNECTION_STRING="<MY_CONNECTION_STRING>"
-    ```
-    
-    ---
-    
-1. (省略可) [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) コマンドを使用して、ご利用のアカウント内のストレージ キューを表示します。 このコマンドからの出力には、`outqueue` という名前のキューが含まれています。これはこのキューに対する最初のメッセージを関数が書き込んだときに作成されたものです。
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-
-1. [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) コマンドを使用して、このキューからメッセージ (先ほど関数をテストするときに使用した名) を読み取ります。 このコマンドは、キューから最初のメッセージを読み取って削除します。 
-
-    # <a name="bash"></a>[bash](#tab/bash)
-    
-    ```bash
-    echo `echo $(az storage message get --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
-    ```
-    
-    # <a name="powershell"></a>[PowerShell](#tab/powershell)
-    
-    ```powershell
-    [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message get --queue-name outqueue -o tsv --query '[].{Message:content}')))
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/cmd)
-    
-    ```azurecli
-    az storage message get --queue-name outqueue -o tsv --query [].{Message:content} > %TEMP%out.b64 && certutil -decode -f %TEMP%out.b64 %TEMP%out.txt > NUL && type %TEMP%out.txt && del %TEMP%out.b64 %TEMP%out.txt /q
-    ```
-
-    このスクリプトは、certutil を使用して、ローカルの一時ファイルから Base64 でエンコードされたメッセージのコレクションをデコードします。 出力が存在しない場合、エラーが発生しているといけないので、スクリプトから `> NUL` を削除して、certutil 出力の抑制を解除してみてください。 
-    
-    ---
-    
-    メッセージ本文は [base64 でエンコード](functions-bindings-storage-queue-trigger.md#encoding)された状態で保存されるため、表示するメッセージをあらかじめデコードしておく必要があります。 `az storage message get` を実行すると、メッセージがキューから削除されます。 `outqueue` にメッセージが 1 つしかない場合、このコマンドを 2 回目に実行したときにメッセージは取得されず、代わりにエラーが返されます。
+[!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
 
 ## <a name="redeploy-the-project-to-azure"></a>Azure にプロジェクトを再デプロイする
 
 関数から Azure Storage キューにメッセージが書き込まれたことをローカルで確認したので、プロジェクトを再デプロイして、Azure 上で実行するようにエンドポイントを更新することができます。
 
-1. *LocalFunctionsProj* フォルダーで [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) コマンドを使用してプロジェクトを再デプロイし、`<APP_NAME>` を自分のアプリの名前に置き換えます。
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp" 
+*LocalFunctionsProj* フォルダーで [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) コマンドを使用してプロジェクトを再デプロイし、`<APP_NAME>` を自分のアプリの名前に置き換えます。
 
-    ```
-    func azure functionapp publish <APP_NAME>
-    ```
-    
+```
+func azure functionapp publish <APP_NAME>
+```
+::: zone-end  
+
+::: zone pivot="programming-language-java" 
+
+ローカル プロジェクト フォルダーで、次の Maven コマンドを使用してプロジェクトを再発行します。
+```
+mvn azure-functions:deploy
+```
+::: zone-end
+
+## <a name="verify-in-azure"></a>Azure で確認する
+
 1. 前のクイックスタートと同様、ブラウザーまたは CURL を使用して、再デプロイした関数をテストします。
 
     # <a name="browser"></a>[ブラウザー](#tab/browser)

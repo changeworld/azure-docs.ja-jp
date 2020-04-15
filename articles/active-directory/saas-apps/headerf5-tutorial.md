@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ad6b7150a43a286a4bec39a0482e08f50d95c06
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 352f52a2a6d84d352bb46e09f104efde303307f5
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77048060"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478052"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合
 
@@ -281,7 +281,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
 ## <a name="advanced-configuration"></a>高度な構成
 
-このセクションは、ガイド付き構成を使用できない場合や他のパラメーターを追加または変更したい場合に使用するためのものです。 アプリケーション ホスト名の SSL 証明書が必要になります。
+このセクションは、ガイド付き構成を使用できない場合や他のパラメーターを追加または変更したい場合に使用するためのものです。 アプリケーション ホスト名の TLS/SSL 証明書が必要になります。
 
 1. **[System]\(システム\) > [Certificate Management]\(証明書の管理\) > [Traffic Certificate Management]\(トラフィック証明書管理\) > [SSL Certificate List]\(SSL 証明書リスト\)** の順に移動します。 右隅の **[Import]\(インポート\)** を選択します。 **[Import Type]\(インポートの種類\)** は **[PKCS 12(IIS)]** になります。 **キー名** (この後の構成で参照されます) を指定し、PFX ファイルを指定します。 PFX の**パスワード**を指定します。 **[インポート]** をクリックします。
 
@@ -298,7 +298,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
  
     ![F5 (ヘッダー ベース) の構成](./media/headerf5-tutorial/configure18.png)
 
-1. この場合、HeaderApp2 を HTTPS として外部に公開します。 **[how should the BIG-IP system handle SSL Traffic?]\(BIG-IP システムで SSL トラフィックを処理する方法\)** では、 **[Terminate SSL from Client, Plaintext to servers (SSL Offload)]\(クライアントからの SSL を終了し、サーバーにプレーンテキストを送信する(SSL オフロード)\)** を指定します。 [Which SSL certificate do you want to use?]\(使用する SSL 証明書\) と **[Which SSL private key do you want to use?]\(使用する SSL 秘密キー\)** で、証明書とキーを指定します。 **[What IP Address do you want to use for the Virtual Server?]\(仮想サーバーに使用する IP アドレス\)** で、仮想サーバーの IP を指定します。 
+1. この場合、HeaderApp2 を HTTPS として外部に公開します。 **[how should the BIG-IP system handle SSL Traffic?]\(BIG-IP システムで SSL トラフィックを処理する方法\)** では、 **[Terminate SSL from Client, Plaintext to servers (SSL Offload)]\(クライアントからの SSL を終了し、サーバーにプレーンテキストを送信する(SSL オフロード)\)** を指定します。 **[Which SSL certificate do you want to use?]\(使用する SSL 証明書\)** と **[Which SSL private key do you want to use?]\(使用する SSL 秘密キー\)** で、証明書とキーを指定します。 **[What IP Address do you want to use for the Virtual Server?]\(仮想サーバーに使用する IP アドレス\)** で、仮想サーバーの IP を指定します。 
 
     * **その他の詳細を指定してください**
 

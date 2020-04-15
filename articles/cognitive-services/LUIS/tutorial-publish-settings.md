@@ -1,22 +1,14 @@
 ---
 title: チュートリアル:発行設定 - LUIS
-titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、予測の改善を目的として発行設定に変更を加えます。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/13/2019
-ms.author: diberry
-ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 19913d16ecb1457ad4edb93ea34e4b96a590aca0
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75890382"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545770"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>チュートリアル:感情分析を発行設定として追加する
 
@@ -67,11 +59,11 @@ ms.locfileid: "75890382"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. アドレスの URL の末尾に移動し、次の発話を入力します。
+1. アドレス バーの URL の末尾に移動して、_YOUR_QUERY_HERE_ を次のように置き換えます。
 
     `Deliver 2 of the best cheese pizzas ever!!!`
 
-    最後の querystring パラメーターは `query` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、感情分析が抽出された `OrderPizza` 意図を返す必要があります。
+    この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、感情分析が抽出された `OrderPizza` 意図を返す必要があります。
 
     ```json
     {
@@ -122,9 +114,7 @@ ms.locfileid: "75890382"
 
     感情分析はポジティブで、スコアは 86% です。
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>関連情報
 

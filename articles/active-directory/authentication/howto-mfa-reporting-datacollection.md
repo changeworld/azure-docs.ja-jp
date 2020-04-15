@@ -4,19 +4,19 @@ description: Azure Multi-Factor Authentication によるユーザーの認証に
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848291"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653630"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication によるユーザー データの収集
 
@@ -56,7 +56,7 @@ MFA Server、NPS 拡張機能、および Windows Server 2016 Azure MFA AD FS �
 - 予備の電話番号の呼び出し結果
 - 全体の認証
 - 全体の結果
-- [結果]
+- 結果
 - 認証済み
 - 結果
 - 発信 IP アドレス
@@ -98,7 +98,7 @@ MFA Server、NPS 拡張機能、および Windows Server 2016 Azure MFA AD FS �
 - アカウントのロックアウト
 - 不正アクセスのアラート
 - ブロックされなかった不正アクセス アラート
-- 言語
+- Language
 
 バイパス (レポートに使用):
 
@@ -138,9 +138,9 @@ MFA Server バージョン 8.0 以降では、管理者は、次の手順に従�
 - MFA Server にログインし、 **[ユーザー]** タブに移動します。目的のユーザーを選択し、 **[編集]** ボタンをクリックします。 (Alt + PrtScn キーを押して) 各タブのスクリーンショットを取ると、ユーザーに現在の MFA 設定を提供できます。
 - MFA Server のコマンド ラインから次のコマンドを実行して、JSON 形式のファイルを生成します (インストールに合わせてパスを変更してください)。`C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>`
 - 管理者は、Web サービス SDK の GetUserGdpr 操作をオプションとして使用して、特定のユーザー用に収集されたすべての MFA クラウド サービス情報をエクスポートしたり、より大きなレポート ソリューションに組み込んだりすることもできます。
-- `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` とすべてのバックアップ内で "\<username> " を検索して (検索に引用符を含めます)、追加または変更されたユーザー レコードのすべてのインスタンスを検索します。
-   - これらのレコードは、MFA Server UX の [Logging]\(ログの記録\) セクションの [ログ ファイル] タブで **[ユーザー変更をログ ファイルに記録する]** チェックボックスをオフにすることによって制限できます (ただし、削除することはできません)。
-   - syslog が構成されていて、MFA Server UX の [Logging]\(ログの記録\) セクションの [Syslog] タブで **[ユーザー変更をログ ファイルに記録する]** チェックボックスがオンになっている場合は、代わりに syslog からログ エントリを収集できます。
+- `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` とすべてのバックアップ内で "\<ユーザー名>" を検索して (検索に引用符を含めます)、追加または変更されたユーザー レコードのすべてのインスタンスを検索します。
+   - これらのレコードは、MFA Server UX の [ログ ファイル] タブの [ログ記録] セクションで **[ユーザー変更をログ ファイルに記録する]** チェック ボックスをオフにすることによって制限できます (ただし、削除することはできません)。
+   - Syslog が構成されていて、MFA Server UX の [Syslog] タブの [ログ記録] セクションで **[ユーザー変更をログ ファイルに記録する]** チェック ボックスがオンになっている場合は、代わりに Syslog からログ エントリを収集できます。
 - MultiFactorAuthSvc.log と認証試行に関連する他の MFA Server ログ ファイル内のユーザー名の他の出現箇所は運用データと見なされ、MultiFactorAuthGdpr.exe エクスポートまたは Web サービス SDK の GetUserGdpr を使用して提供される情報と重複していると見なされます。
 
 ## <a name="delete-data-from-mfa-server"></a>MFA Server からのデータの削除

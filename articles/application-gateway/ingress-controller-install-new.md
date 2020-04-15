@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 30b5f6593d2d2ca17ad600a55f9dc7e2a379f0f0
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795926"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585896"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>新しい Application Gateway を使用して Application Gateway イングレス コントローラー (AGIC) をインストールする方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "73795926"
 
 ## <a name="required-command-line-tools"></a>必須のコマンド ライン ツール
 
-次のすべてのコマンド ライン操作に対して [Azure Cloud Shell](https://shell.azure.com/) を使用することをお勧めします。 shell.azure.com から、または次のリンクをクリックして、シェルを起動します。
+次のすべてのコマンドライン操作に対して [Azure Cloud Shell](https://shell.azure.com/) を使用することをお勧めします。 shell.azure.com から、または次のリンクをクリックして、シェルを起動します。
 
 [![埋め込みの起動](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
 
@@ -28,7 +28,7 @@ ms.locfileid: "73795926"
 
 ![ポータルの起動](./media/application-gateway-ingress-controller-install-new/portal-launch-icon.png)
 
-[Azure Cloud Shell](https://shell.azure.com/) には、必要なすべてのツールが既に含まれています。 別の環境を使用する場合は、次のコマンド ライン ツールがインストールされていることを確認してください。
+[Azure Cloud Shell](https://shell.azure.com/) には、必要なすべてのツールが既に含まれています。 別の環境を使用する場合は、次のコマンドライン ツールがインストールされていることを確認してください。
 
 * `az` - Azure CLI: [インストール手順](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * `kubectl` - Kubernetes コマンド ライン ツール: [インストール手順](https://kubernetes.io/docs/tasks/tools/install-kubectl)
@@ -41,7 +41,7 @@ ms.locfileid: "73795926"
 次の手順に従って、Azure Active Directory (AAD) [サービス プリンシパル オブジェクト](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)を作成します。 `appId`、`password`、`objectId` の値を記録してください。これらは次の手順で使用します。
 
 1. AD サービス プリンシパルを作成します ([RBAC の詳細をご覧ください](https://docs.microsoft.com/azure/role-based-access-control/overview))。
-    ```bash
+    ```azurecli
     az ad sp create-for-rbac --skip-assignment -o json > auth.json
     appId=$(jq -r ".appId" auth.json)
     password=$(jq -r ".password" auth.json)
@@ -50,7 +50,7 @@ ms.locfileid: "73795926"
 
 
 1. 前のコマンドの出力の `appId` を使用して、新しいサービス プリンシパルの `objectId` を取得します。
-    ```bash
+    ```azurecli
     objectId=$(az ad sp show --id $appId --query "objectId" -o tsv)
     ```
     このコマンドの出力は `objectId` です。これは、以下の Azure Resource Manager テンプレートで使用されます
@@ -83,7 +83,7 @@ ms.locfileid: "73795926"
     ```
 
 1. `az cli` を使用して Azure Resource Manager テンプレートをデプロイします。 これには最大 5 分かかることがあります。
-    ```bash
+    ```azurecli
     resourceGroupName="MyResourceGroup"
     location="westus2"
     deploymentName="ingress-appgw"
@@ -100,7 +100,7 @@ ms.locfileid: "73795926"
     ```
 
 1. デプロイが完了したら、`deployment-outputs.json` という名前のファイルにデプロイ出力をダウンロードします。
-    ```bash
+    ```azurecli
     az group deployment show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
     ```
 
@@ -112,7 +112,7 @@ ms.locfileid: "73795926"
 次の手順では、新しい Kubernetes クラスターへの接続に使用する [kubectl](https://kubectl.docs.kubernetes.io/) コマンドを設定する必要があります。 [Cloud Shell](https://shell.azure.com/) には `kubectl` が既にインストールされています。 `az` CLI を使用して、Kubernetes の資格情報を取得します。
 
 新しくデプロイされた AKS の資格情報を取得します ([詳細はこちら](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster))。
-```bash
+```azurecli
 # use the deployment-outputs.json created after deployment to get the cluster name and resource group name
 aksClusterName=$(jq -r ".aksClusterName.value" deployment-outputs.json)
 resourceGroupName=$(jq -r ".resourceGroupName.value" deployment-outputs.json)
@@ -133,15 +133,15 @@ AAD ポッド ID をクラスターにインストールするには、次のよ
 
    - "*RBAC が有効*" の AKS クラスター
 
-    ```bash
-    kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
-    ```
+     ```bash
+     kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
+     ```
 
    - "*RBAC が無効*" の AKS クラスター
 
-    ```bash
-    kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
-    ```
+     ```bash
+     kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
+     ```
 
 ### <a name="install-helm"></a>Helm のインストール
 [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) は、Kubernetes 用のパッケージ マネージャーです。 これを利用して `application-gateway-kubernetes-ingress` パッケージをインストールします。
@@ -263,8 +263,8 @@ AAD ポッド ID をクラスターにインストールするには、次のよ
 
 
    > [!NOTE]
-   > `identityResourceID` と `identityClientID` は、「[ID を作成する](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-new.md#create-an-identity)」 の手順で作成された値であり、次のコマンドを使用してもう一度取得できます。
-   > ```bash
+   > `identityResourceID` と `identityClientID` は、「[コンポーネントのデプロイ](ingress-controller-install-new.md#deploy-components)」手順で作成された値であり、次のコマンドを使用すると再び取得できます。
+   > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```
    > 上記のコマンドの `<resource-group>` は、Application Gateway のリソース グループです。 `<identity-name>` は、作成された ID の名前です。 特定のサブスクリプションのすべての ID は、`az identity list` を使用して一覧表示できます。

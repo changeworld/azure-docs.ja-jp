@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/22/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: d2495605cccf658b15e812fd85fd65671e84d15b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5925e3374634dd4db4bdc6855949dc3880d8de7c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76544278"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655526"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自己管理型の Active Directory Domain Services、Azure Active Directory、およびマネージド Azure Active Directory Domain Services の比較
 
@@ -25,12 +25,16 @@ Active Directory ベースのこの 3 つの ID ソリューションは、共�
 
 * **Active Directory Domain Services (AD DS)** - ID と認証、コンピューター オブジェクトの管理、グループ ポリシー、信頼などの主要な機能が提供されるエンタープライズ対応のライトウェイト ディレクトリ アクセス プロトコル (LDAP) サーバー。
     * AD DS は、オンプレミスの IT 環境を使用する多くの組織で中心的なコンポーネントであり、主要なユーザー アカウント認証機能とコンピューター管理機能が提供されます。
+    * 詳細については、[Windows Server ドキュメントの Active Directory Domain Services の概要][overview-adds]に関するページを参照してください。
 * **Azure Active Directory (Azure AD)** - Office 365、Azure portal、SaaS アプリケーションなどのリソースに対して、ユーザー アカウント サービスと認証サービスが提供されるクラウドベースの ID およびモバイル デバイス管理。
     * Azure AD をオンプレミスの AD DS 環境と同期させて、クラウドでネイティブに機能する単一の ID をユーザーに提供できます。
+    * Azure AD の詳細については、「[Azure Active Directory とは][whatis-azuread]」を参照してください。
 * **Azure Active Directory Domain Services (Azure AD DS)** - 完全に互換性のある従来の AD DS 機能のサブセット (ドメイン参加、グループ ポリシー、LDAP、Kerberos 認証、NTLM 認証など) を使用してマネージド ドメイン サービスが提供されます。
     * Azure AD DS は Azure AD と統合され、それ自体でオンプレミスの AD DS 環境と同期することができます。 この機能により、ID の一元管理のユース ケースを、リフト アンド シフト戦略の一部として Azure で実行される従来の Web アプリケーションに拡張することができます。
 
 この概要記事では、組織のニーズに応じて、これらの ID ソリューションを連携させる場合と個別に使用する場合を比較対比します。
+
+使用を開始するには、[Azure portal を使用して Azure AD DS マネージド ドメインを作成][tutorial-create]します。
 
 ## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS と自己管理型 AD DS
 
@@ -118,3 +122,5 @@ Azure AD DS の使用を開始するには、[Microsoft Azure portal を使用�
 [manage-gpos]: manage-group-policy.md
 [tutorial-ldaps]: tutorial-configure-ldaps.md
 [tutorial-create]: tutorial-create-instance.md
+[whatis-azuread]: ../active-directory/fundamentals/active-directory-whatis.md
+[overview-adds]: /windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview

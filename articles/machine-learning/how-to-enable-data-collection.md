@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c481a2e12d83e865025cd90e59e0eba572ad9a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75771395"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475426"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
 
@@ -105,7 +105,7 @@ ms.locfileid: "75771395"
     prediction_dc.collect(result) #this call is saving our input data into Azure Blob
     ```
 
-1. AKS にサービスをデプロイしても、データ コレクションは自動的には *true* に設定 "**されません**"。 次の例のように、構成ファイルを更新してください。
+1. AKS にサービスをデプロイしても、データ コレクションは自動的には **true** に設定 "*されません*"。 次の例のように、構成ファイルを更新してください。
 
     ```python
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True)
@@ -129,11 +129,7 @@ ms.locfileid: "75771395"
 
    ![サービスを編集する](././media/how-to-enable-data-collection/EditService.PNG)
 
-1. **[詳細設定]** で、 **[モデルのデータ コレクションを有効にする]** をオンにします。
-
-    [![データ コレクションをオンにする](./media/how-to-enable-data-collection/CheckDataCollection.png)](././media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
-
-   **[AppInsights 診断を有効にする]** をオンにしてサービスの正常性を追跡することもできます。
+1. **[詳細設定]** で **[Enable Application Insights diagnostics and data collection]\(Application Insights の診断とデータ収集を有効にする\)** をオンにします。
 
 1. **[更新]** を選択して変更を適用します。
 
@@ -151,9 +147,7 @@ ms.locfileid: "75771395"
 
    [![[編集] オプションを選択する](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-1. **[詳細設定]** で、 **[モデルのデータ コレクションを有効にする]** をオフにします。
-
-    [![データ コレクションのチェック ボックスをオフにする](./media/how-to-enable-data-collection/UncheckDataCollection.png)](././media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+1. **[詳細設定]** で **[Enable Application Insights diagnostics and data collection]\(Application Insights の診断とデータ収集を有効にする\)** をオフにします。
 
 1. **[更新]** をクリックして変更を適用します。
 

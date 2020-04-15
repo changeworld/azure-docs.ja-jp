@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3f0d624605f617a8e5ab914c49c4c94a40ebdcc6
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73664281"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435780"
 ---
-# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始
+# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイック スタート:Azure サブスクリプションでの Security Center Standard の利用開始
 Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 Free レベルでは Azure リソースのみの制限付きセキュリティが提供されますが、Standard レベルではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
-この記事では、セキュリティを強化するために Standard レベルにアップグレードし、仮想マシンに Microsoft Monitoring Agent をインストールしてセキュリティの脆弱性と脅威を監視します。
+この記事では、セキュリティを強化するために Standard レベルにアップグレードし、仮想マシンに Log Analytics エージェントをインストールしてセキュリティの脆弱性と脅威を監視します。
 
 ## <a name="prerequisites"></a>前提条件
 セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
@@ -47,7 +47,7 @@ Security Center を初めて起動してから数分以内に、以下の項目�
 - Azure サブスクリプションのセキュリティを向上させる方法についての**推奨事項**。 **[推奨事項]** タイルをクリックすると優先順位が付けられた一覧が起動します。
 - Security Center によって現在評価されている **[計算とアプリ]** 、 **[ネットワーク]** 、 **[データのセキュリティ]** 、 **[ID およびアクセス]** の各リソースとそれぞれのセキュリティ対策のインベントリ。
 
-Security Center をフルに活用するには、次の手順に従って Standard レベルにアップグレードし、Microsoft Monitoring Agent をインストールする必要があります。
+Security Center をフルに活用するには、次の手順に従って Standard レベルにアップグレードし、Log Analytics エージェントをインストールする必要があります。
 
 ## <a name="upgrade-to-the-standard-tier"></a>Standard レベルにアップグレードする
 Security Center のクイックスタートおよびチュートリアルの目的上、Standard レベルにアップグレードする必要があります。 Security Center Standard には無料試用版があります。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。 
@@ -66,11 +66,11 @@ Security Center のクイックスタートおよびチュートリアルの目�
   ![セキュリティのアラート][9]
 
 ## <a name="automate-data-collection"></a>自動データ収集
-Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure VM と非 Azure コンピューターからデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 既定では、Security Center によって新しいワークスペースが作成されます。
+Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure VM と非 Azure コンピューターからデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 既定では、Security Center によって新しいワークスペースが作成されます。
 
-自動プロビジョニングを有効にすると、Security Center は、サポートされているすべての Azure VM と新しく作成される VM に Microsoft Monitoring Agent をインストールします。 自動プロビジョニングを強くお勧めします。
+自動プロビジョニングを有効にすると、Security Center は、サポートされているすべての Azure VM と新しく作成される VM に Log Analytics エージェントをインストールします。 自動プロビジョニングを強くお勧めします。
 
-Microsoft Monitoring Agent の自動プロビジョニングを有効にするには、次の手順に従います。
+Log Analytics エージェントの自動プロビジョニングを有効にするには、次の手順に従います。
 
 1. Security Center メイン メニューの **[Pricing & settings]\(価格と設定\)** を選択します。
 2. サブスクリプションの行で、設定を変更したいサブスクリプションをクリックします。
@@ -99,14 +99,14 @@ Azure VM のこの新たな洞察により、Security Center は、システム�
 4. **[保存]** を選択します。
 
 >[!NOTE]
-> 自動プロビジョニングを無効しても、Microsoft Monitoring Agent がプロビジョニングされている Azure VM からエージェントは削除されません。 自動プロビジョニングを無効にすると、リソースのセキュリティの監視が制限されます。
+> 自動プロビジョニングを無効にしても、Log Analytics エージェントがプロビジョニングされている Azure VM からそのエージェントは削除されません。 自動プロビジョニングを無効にすると、リソースのセキュリティの監視が制限されます。
 >
 
 ## <a name="next-steps"></a>次のステップ
-このクイック スタートでは、Standard レベルにアップグレードし、ハイブリッド クラウド ワークロード全体での統合セキュリティの管理と脅威保護のために Microsoft Monitoring Agent をプロビジョニングしました。 Security Center の詳しい使用方法を学習するには、オンプレミスおよび他のクラウドの Windows コンピューターのオンボードに関するクイックスタートに進みます。
+このクイックスタートでは、Standard レベルにアップグレードし、ハイブリッド クラウド ワークロード全体での統合セキュリティの管理と脅威保護のために Log Analytics エージェントをプロビジョニングしました。 Security Center の詳しい使用方法を学習するには、オンプレミスおよび他のクラウドの Windows コンピューターのオンボードに関するクイックスタートに進みます。
 
 > [!div class="nextstepaction"]
-> [クイックスタート: Windows コンピューターでの Azure Security Center の利用開始](quick-onboard-windows-computer.md)
+> [クイック スタート: Windows コンピューターでの Azure Security Center の利用開始](quick-onboard-windows-computer.md)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

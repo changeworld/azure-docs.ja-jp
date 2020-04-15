@@ -3,12 +3,12 @@ title: Azure Backup Server を使用して VMware VM をバックアップする
 description: この記事では、Azure Backup Server を使用し、VMware vCenter/ESXi サーバー上で実行している VMware VM をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 951016d393b095b0329ff18861421402e0e18a1a
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233931"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529497"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする
 
@@ -130,41 +130,52 @@ Azure Backup Server では、v-Center Server/ESXi ホストへのアクセス許
 
 ### <a name="role-permissions"></a>ロールのアクセス許可
 
-| **vCenter 6.5 以上のユーザー アカウントの権限**        | **vCenter 6.0 ユーザー アカウントの権限**               | **vCenter 5.5 ユーザー アカウントの権限** |
-| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------- |
-| Datastore.AllocateSpace                                      |                                                           |                                             |
-| [データストア].[データストアの参照]                                   | Datastore.AllocateSpace                                   | Network.Assign                              |
-| [データストア].[低レベルのファイル操作]                          | [グローバル].[カスタム属性の管理]                           | Datastore.AllocateSpace                     |
-| [データストア クラスタ].[データストア クラスタの設定]             | [グローバル].[カスタム属性の設定]                               | VirtualMachine.Config.ChangeTracking        |
-| [グローバル].[メソッドを無効にする]                                       | [ホスト].[ローカル操作].[仮想マシンの作成]              | VirtualMachine.State.RemoveSnapshot         |
-| [グローバル].[メソッドを有効にする]                                        | ネットワーク。 ネットワークの割り当て                                   | VirtualMachine.State.CreateSnapshot         |
-| [グローバル].[ライセンス]                                              | [リソース]. リソース プールへの仮想マシンの割り当て         | VirtualMachine.Provisioning.DiskRandomRead  |
-| [グローバル].[ログ イベント]                                             | [仮想マシン].[設定].[新規ディスクの追加]                | VirtualMachine.Interact.PowerOff            |
-| [グローバル].[カスタム属性の管理]                              | [仮想マシン].[設定].[詳細]                    | VirtualMachine.Inventory.Create             |
-| [グローバル].[カスタム属性の設定]                                  | [仮想マシン].[設定].[ディスク変更の追跡]        | VirtualMachine.Config.AddNewDisk            |
-| [ネットワーク].[ネットワークの割り当て]                                       | [仮想マシン].[設定].[ホストの USB デバイス]             | VirtualMachine.Config.HostUSBDevice         |
-| [リソース]. リソース プールへの仮想マシンの割り当て            | [仮想マシン].[設定].[所有していないファイルのクエリ]         | VirtualMachine.Config.AdvancedConfig        |
-| [仮想マシン].[設定].[新規ディスクの追加]                   | [仮想マシン].[設定].[スワップファイルの配置]          | VirtualMachine.Config.SwapPlacement         |
-| [仮想マシン].[設定].[詳細]                       | [仮想マシン].[相互作用].[パワーオフ]                     | Global.ManageCustomFields                   |
-| [仮想マシン].[設定].[ディスク変更の追跡]           | [仮想マシン].[インベントリ]. 新規作成                     |                                             |
-| [仮想マシン].[設定].[ディスクのリース]                     | [仮想マシン].[プロビジョニング].[ディスク アクセスの許可]            |                                             |
-| [仮想マシン].[設定].[仮想ディスクの拡張]            | [仮想マシン].[プロビジョニング]. 読み取り専用ディスク アクセスの許可 |                                             |
-| [仮想マシン].[ゲスト操作].[ゲスト操作の変更] | [仮想マシン].[スナップショット管理].[スナップショットの作成]       |                                             |
-| [仮想マシン].[ゲスト操作].[ゲスト操作のプログラム実行] | [仮想マシン].[スナップショット管理].[スナップショットの削除]       |                                             |
-| [仮想マシン].[ゲスト操作].[ゲスト操作のクエリ]     |                                                           |                                             |
-| [仮想マシン].[相互作用].[デバイス接続]              |                                                           |                                             |
-| [仮想マシン].[相互作用].[VIX API によるゲスト オペレーティング システム管理] |                                                           |                                             |
-| [仮想マシン].[インベントリ].[登録]                          |                                                           |                                             |
-| [仮想マシン].[インベントリ].[削除]                            |                                                           |                                             |
-| [仮想マシン].[プロビジョニング].[ディスク アクセスの許可]              |                                                           |                                             |
-| [仮想マシン].[プロビジョニング].[読み取り専用ディスク アクセスの許可]    |                                                           |                                             |
-| [仮想マシン].[プロビジョニング].[仮想マシンのダウンロードの許可] |                                                           |                                             |
-| [仮想マシン].[スナップショット管理]. スナップショットの作成        |                                                           |                                             |
-| [仮想マシン].[スナップショット管理].[スナップショットの削除]         |                                                           |                                             |
-| [仮想マシン].[スナップショット管理].[現在のスナップショットまで戻る]      |                                                           |                                             |
-| [vApp].[仮想マシンの追加]                                     |                                                           |                                             |
-| [vApp].[リソース プールの割り当て]                                    |                                                           |                                             |
-| [vApp].[登録解除]                                              |                                                           |                                             |
+| **vCenter 6.7 ユーザー アカウントの権限**              | **vCenter 6.5 ユーザー アカウントの権限**             |
+| --------------------------------------------------------- | -------------------------------------------------------- |
+| Datastore.Allocate Space                                  | Datastore.Allocate Space                                 |
+| Global.Log Event                                          | Global.Log Event                                         |
+| Global.Manage Custom Attributes                           | Global.Manage Custom Attributes                          |
+| Network.Assign                                            | Network.Assign                                           |
+| [リソース]. リソース プールへの仮想マシンの割り当て        | [リソース]. リソース プールへの仮想マシンの割り当て       |
+| VirtualMachine.Configuration.AddNewDisk                   | VirtualMachine.Configuration.AddNewDisk                  |
+| VirtualMachine.Configuration. デバイスの追加または削除       | VirtualMachine.Configuration. デバイスの追加または削除      |
+| VirtualMachine.Configuration.Advanced                     | VirtualMachine.Configuration.Advanced                    |
+| VirtualMachine.Configuration.Toggle Disk  Change Tracking | VirtualMachine.Configuration.Disk  Change Tracking       |
+| VirtualMachine.Configuration.Configure Host  USB Device   | VirtualMachine.Configuration.Host USB  Device            |
+| VirtualMachine.Configuration.Query  Unowned Files         | VirtualMachine.Configuration.Query  Unowned Files        |
+| VirtualMachine.Configuration.Change  Swapfile Placement   | VirtualMachine.Configuration.Swapfile  Placement         |
+| VirtualMachine.Interaction.Power Off                      | VirtualMachine.Interaction.Power Off                     |
+| VirtualMachine.Inventory.Create New                       | VirtualMachine.Inventory.Create New                      |
+| VirtualMachine.Provisioning.Allow  Disk Access            | VirtualMachine.Provisioning.Allow  Disk Access           |
+| VirtualMachine.Provisioning.Allow  File Access            | VirtualMachine.Provisioning.Allow  File Access           |
+| VirtualMachine.Provisioning.Allow  Read-only Disk Access  | VirtualMachine.Provisioning.Allow  Read-only Disk Access |
+| VirtualMachine.Snapshot  Management.Create Snapshot       | VirtualMachine.Snapshot  Management.Create Snapshot      |
+| VirtualMachine.Snapshot  Management.Remove Snapshot       | VirtualMachine.Snapshot  Management.Remove Snapshot      |
+
+<br>
+
+| **vCenter 6.0 ユーザー アカウントの権限**                | **vCenter 5.5 ユーザー アカウントの権限** |
+| ---------------------------------------------------------- | ------------------------------------------- |
+| Datastore.AllocateSpace                                    | Network.Assign                              |
+| Global.Manage custom attributes                           | Datastore.AllocateSpace                     |
+| Global.Set custom attribute                               | VirtualMachine.Config.ChangeTracking        |
+| Host.Local  operations.Create virtual machine              | VirtualMachine.State.RemoveSnapshot         |
+| ネットワーク。  ネットワークの割り当て                                   | VirtualMachine.State.CreateSnapshot         |
+| [リソース].  リソース プールへの仮想マシンの割り当て         | VirtualMachine.Provisioning.DiskRandomRead  |
+| Virtual  machine.Configuration.Add new disk                | VirtualMachine.Interact.PowerOff            |
+| Virtual  machine.Configuration.Advanced                    | VirtualMachine.Inventory.Create             |
+| Virtual  machine.Configuration.Disk change tracking        | VirtualMachine.Config.AddNewDisk            |
+| Virtual  machine.Configuration.Host USB device             | VirtualMachine.Config.HostUSBDevice         |
+| Virtual  machine.Configuration.Query unowned files         | VirtualMachine.Config.AdvancedConfig        |
+| Virtual  machine.Configuration.Swapfile placement          | VirtualMachine.Config.SwapPlacement         |
+| Virtual  machine.Interaction.Power Off                     | Global.ManageCustomFields                   |
+| Virtual  machine.Inventory. 新規作成                     |                                             |
+| Virtual  machine.Provisioning.Allow disk access            |                                             |
+| Virtual  machine.Provisioning. 読み取り専用ディスク アクセスの許可 |                                             |
+| Virtual  machine.Snapshot management.Create snapshot       |                                             |
+| Virtual  machine.Snapshot management.Remove Snapshot       |                                             |
+
+
 
 ## <a name="create-a-vmware-account"></a>VMware アカウントを作成する
 

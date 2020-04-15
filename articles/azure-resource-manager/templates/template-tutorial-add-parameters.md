@@ -2,19 +2,19 @@
 title: チュートリアル - テンプレートにパラメーターを追加する
 description: Azure Resource Manager テンプレートにパラメーターを追加して、そのテンプレートを再利用できるようにします。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 89101a96f4fc228e2d5c45d67e10b52ac5d8aa11
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: de7ec961672db2f3120e00f1a42b33f71e7ab092
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773199"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437827"
 ---
-# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートにパラメーターを追加する
+# <a name="tutorial-add-parameters-to-your-arm-template"></a>チュートリアル:ARM テンプレートにパラメーターを追加する
 
-[前のチュートリアル](template-tutorial-add-resource.md)では、ストレージ アカウントをテンプレートに追加し、そのテンプレートをデプロイする方法について説明しました。 このチュートリアルでは、パラメーターを追加することによってテンプレートを改良する方法について説明します。 このチュートリアルの所要時間は約 **14 分**です。
+[前のチュートリアル](template-tutorial-add-resource.md)では、ストレージ アカウントをテンプレートに追加し、そのテンプレートをデプロイする方法について説明しました。 このチュートリアルでは、パラメーターを追加することによって Azure Resource Manager (ARM) テンプレートを改良する方法について説明します。 このチュートリアルの所要時間は約 **14 分**です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -54,10 +54,12 @@ New-AzResourceGroupDeployment `
   -storageName "{your-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+このデプロイ コマンドを実行するには、[最新バージョン](/cli/azure/install-azure-cli)の Azure CLI が必要です。
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addnameparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -88,7 +90,7 @@ az group deployment create \
 
 これで再デプロイする準備は整いました。 既定の SKU は **Standard_LRS** に設定されているため、そのパラメーターの値を指定する必要はありません。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -98,10 +100,10 @@ New-AzResourceGroupDeployment `
   -storageName "{your-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addskuparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -110,24 +112,27 @@ az group deployment create \
 
 ---
 
+> [!NOTE]
+> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
+
 テンプレートの柔軟性を確認するために、再度デプロイしてみましょう。 今回は、SKU パラメーターを **Standard_GRS** に設定します。 新しい名前を渡して異なるストレージ アカウントを作成することも、同じ名前を使用して既存のストレージ アカウントを更新することもできます。 どちらの方法でもうまくいきます。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
-  -Name usedefaultsku `
+  -Name usenondefaultsku `
   -ResourceGroupName myResourceGroup `
   -TemplateFile $templateFile `
   -storageName "{your-unique-name}" `
   -storageSKU Standard_GRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
-  --name usedefaultsku \
+az deployment group create \
+  --name usenondefaultsku \
   --resource-group myResourceGroup \
   --template-file $templateFile \
   --parameters storageSKU=Standard_GRS storageName={your-unique-name}
@@ -137,7 +142,7 @@ az group deployment create \
 
 最後にもう 1 つテストを実施します。指定できる値のいずれにも該当しない SKU を渡したらどうなるかを見てみましょう。 ここでは、**basic** が SKU の 1 つであるとテンプレートのユーザーが思い込んでいる状況を想定してテストします。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -148,10 +153,10 @@ New-AzResourceGroupDeployment `
   -storageSKU basic
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name testskuparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \

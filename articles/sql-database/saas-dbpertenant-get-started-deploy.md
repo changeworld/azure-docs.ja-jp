@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 31f712f80ee2492e4bbaec99bd093d46f9d04e6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3182daa4ebf3becc824b600d1e487e12b875b275
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73824007"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529654"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナント単位データベース パターンを使用するマルチテナント SaaS アプリケーションをデプロイして操作する
 
@@ -128,7 +128,7 @@ Wingtip アプリケーションでは、 [*Azure Traffic Manager*](../traffic-
 
     | URL の部分        | 説明       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | Wingtip アプリのイベントの部分。<br /><br /> *-dpt* によって、Wingtip Tickets の "*テナント単位データベース*" の実装が他の実装と区別されます。 たとえば、テナントごとの "*単一*" アプリ ( *-sa*) の実装や "*マルチテナント データベース*" ( *-mt*) の実装です。 |
+    | events.wingtip-dpt | Wingtip アプリのイベントの部分。<br /><br /> *-dpt* によって、Wingtip Tickets の "*テナント単位データベース*" の実装が他の実装と区別されます。 たとえば、テナントごとの "*単一*" アプリ ( *-sa*) の実装や "*マルチテナント データベース*" ( *-mt*) の実装です。 |
     | . *&lt;ユーザー&gt;* | この例では *af1*。 |
     | .trafficmanager.net/ | Traffic Manager、ベース URL。 |
     | fabrikamjazzclub | Fabrikam Jazz Club という名前のテナントを識別します。 |

@@ -1,22 +1,14 @@
 ---
 title: ユーザーの発話をレビューする - LUIS
-titleSuffix: Azure Cognitive Services
 description: アクティブ ラーニングによって、エンドポイント発話の意図とエンティティが正しいことをレビューします。 LUIS が確証を持てないエンドポイント発話が LUIS によって選択されます。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: diberry
-ms.openlocfilehash: 375d4b4e7c3fcafbdfde1ff447bedc3e16aff2f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 8d267fc441dc2cbf7f8ae3746486d5e7be55f135
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218785"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546851"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>エンドポイント発話のレビューによるアクティブ ラーニング実現の概念
 アクティブ ラーニングは、3 つの予測精度の改善戦略の 1 つで、最も簡単に実装できます。 アクティブ ラーニングによって、エンドポイント発話の意図とエンティティが正しいことをレビューします。 LUIS が確証を持てないエンドポイント発話が LUIS によって選択されます。
@@ -30,6 +22,8 @@ ms.locfileid: "79218785"
 ## <a name="single-pool-for-utterances-per-app"></a>アプリごとの発話のための 1 つのプール
 **[エンドポイントの発話の確認]** 一覧は、バージョンによって変化しません。 どのバージョンの発話をアクティブに編集しているか、またはどのバージョンのアプリがエンドポイントで発行されたかには関係なく、確認すべき発話のプールが 1 つあります。
 
+[REST API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9) ではバージョン名が必要で、アプリケーション内になくてはなりませんが、その検証以外に使われることはありません。 レビュー発話はアプリケーション全体に適用されます。 1 つの_バージョン_から発話を削除すると、すべてのバージョンが影響を受けます。
+
 ## <a name="where-are-the-utterances-from"></a>発話の取得元
 エンドポイント発話は、アプリケーションの HTTP エンドポイントのエンド ユーザーのクエリから取得されます。 お使いのアプリが公開されていない場合や、まだヒットがない場合、レビュー対象の発話はありません。 特定の意図またはエンティティについて、エンドポイントでヒットがない場合は、それを含む、レビュー対象の発話がありません。
 
@@ -41,7 +35,7 @@ ms.locfileid: "79218785"
 
 ## <a name="enable-active-learning"></a>アクティブ ラーニングを有効にする
 
-アクティブ ラーニングを有効にするには、ユーザー クエリをログに記録する必要があります。 そのためには、[ という querystring パラメーターと値を指定し、](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)エンドポイント クエリ`log=true`を呼び出します。
+アクティブ ラーニングを有効にするには、ユーザー クエリをログに記録する必要があります。 そのためには、`log=true` という querystring パラメーターと値を指定し、[エンドポイント クエリ](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)を呼び出します。
 
 ## <a name="next-steps"></a>次のステップ
 

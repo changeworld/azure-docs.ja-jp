@@ -2,19 +2,19 @@
 title: クイック スタート:REST API を使用して Python で検索インデックスを作成する
 titleSuffix: Azure Cognitive Search
 description: Python、Jupyter Notebook、Azure Cognitive Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
-author: tchristiani
+author: HeidiSteen
 manager: nitinme
-ms.author: terrychr
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 02/10/2020
-ms.openlocfilehash: 93fb9ec735de1abf89eb217d0f4096fcfc0afe94
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/01/2020
+ms.openlocfilehash: fd87dbe125e84c171cc35a2b242879c44bc50fd9
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78227099"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585923"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>クイック スタート:Jupyter Notebook を使用して Python で Azure Cognitive Search インデックスを作成する
 
@@ -197,7 +197,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
         "@search.action": "upload",
         "HotelId": "3",
         "HotelName": "Triple Landscape Hotel",
-        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
         "Description_fr": "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
         "Category": "Resort and Spa",
         "Tags": [ "air conditioning", "bar", "continental breakfast" ],
@@ -256,45 +256,59 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
    ```python
    searchstring = '&search=*&$count=true'
-   ```
 
-1. 新しいセルで、以下の例を指定して、"hotels" と "wifi" の用語を検索します。 $select を追加して、検索結果に含めるフィールドを指定します。
-
-   ```python
-   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
-   ```
-
-1. 別のセルで、要求を作成します。 この GET 要求では hotels-quickstart インデックスのドキュメント コレクションがターゲットとされ、前の手順で指定したクエリが添付されます。
-
-   ```python
    url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
    response  = requests.get(url, headers=headers, json=searchstring)
    query = response.json()
    pprint(query)
    ```
 
-1. 各手順を行います。 結果は次の出力のようになります。 
+1. 新しいセルで、以下の例を指定して、"hotels" と "wifi" の用語を検索します。 $select を追加して、検索結果に含めるフィールドを指定します。
+
+   ```python
+   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)   
+   ```
+
+   結果は次の出力のようになります。 
 
     ![インデックスの検索](media/search-get-started-python/search-index.png "インデックスを検索する")
 
-1. 構文について大まかに把握するため、その他のクエリ例をいくつか試してください。 `searchstring` を次の例に置き換えてから、検索要求を再実行することができます。 
-
-   フィルターを適用します。 
+1. 次に、評価が 4 を超えるホテルのみを選択する $filter 式を適用します。 
 
    ```python
    searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)     
    ```
 
-   上位の 2 つの結果を取得します。
+1. 既定では、検索エンジンから返されるドキュメントは上位 50 件ですが、top と skip を使用して、改ページを追加したり、それぞれの結果に表示するドキュメント数を選んだりすることができます。 このクエリは、結果セットごとに 2 つのドキュメントを返します。
 
    ```python
-   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)
    ```
 
-    特定のフィールドで並べ替えます。
+1. 最後の例では、$orderby を使用して結果を都市で並べ替えます。 この例には、Address コレクションからのフィールドが含まれます。
 
    ```python
-   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)
    ```
 
 ## <a name="clean-up"></a>クリーンアップ

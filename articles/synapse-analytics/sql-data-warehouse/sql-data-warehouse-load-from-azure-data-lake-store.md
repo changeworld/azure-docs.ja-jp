@@ -1,31 +1,32 @@
 ---
 title: 'チュートリアル: Azure Data Lake Storage からデータを読み込む'
-description: PolyBase 外部テーブルを使用して、SQL 分析用に Azure Data Lake Storage からデータを読み込みます。
+description: PolyBase 外部テーブルを使用して、Synapse SQL 用に Azure Data Lake Storage からデータを読み込みます。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 03/04/2020
+ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b9e28f41b251ea526044bf88dc3e79c0374fe369
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: aeaa95090dc40c6e161f0c336c43032a50e5aad0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350362"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983570"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>SQL 分析用に Azure Data Lake Storage からデータを読み込む
-このガイドでは、PolyBase 外部テーブルを使用して Azure Data Lake Storage からデータを読み込む方法について説明します。 Data Lake Storage の格納データに対してアドホック クエリを実行できますが、パフォーマンスを最適化するにはデータをインポートすることをお勧めします。 
+
+このガイドでは、PolyBase 外部テーブルを使用して Azure Data Lake Storage からデータを読み込む方法について説明します。 Data Lake Storage の格納データに対してアドホック クエリを実行できますが、パフォーマンスを最適化するにはデータをインポートすることをお勧めします。
 
 > [!NOTE]  
-> 読み込みの代替手段は、[COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)です (現在、パブリック プレビュー段階)。  COPY ステートメントを使用すると、柔軟性が最大化されます。 COPY ステートメントに関するご意見やご感想は、配布リストの sqldwcopypreview@service.microsoft.com までメールでお寄せください。
+> 読み込みの代替手段は、[COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)です (現在、パブリック プレビュー段階)。  COPY ステートメントを使用すると、柔軟性が最大化されます。 COPY ステートメントに関するご意見やご感想は、配布リストの sqldwcopypreview@service.microsoft.com までメールでお寄せください。
 >
 > [!div class="checklist"]
-
+>
 > * Data Lake Storage から読み込む必要のあるデータベース オブジェクトを作成する。
 > * Data Lake Storage ディレクトリに接続する。
 > * データ ウェアハウスにデータを読み込む。
@@ -33,19 +34,21 @@ ms.locfileid: "80350362"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="before-you-begin"></a>開始する前に
-このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) をダウンロードしてインストールします。
+
+このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) をダウンロードしてインストールします。
 
 このチュートリアルを実行するには、次のものが必要です。
 
 * SQL プール。 [SQL プールの作成とデータのクエリ](create-data-warehouse-portal.md)に関するページをご覧ください。
-* Data Lake Storage アカウント。 [Azure Data Lake Storage の使用開始](../../data-lake-store/data-lake-store-get-started-portal.md)に関する記事を参照してください。 このストレージ アカウントでは、次のいずれかの資格情報を構成または指定して読み込む必要があります。ストレージ アカウントに対する適切な RBAC ロールを持つストレージ アカウント キー、Azure Directory アプリケーション ユーザー、または AAD ユーザー。 
+* Data Lake Storage アカウント。 [Azure Data Lake Storage の使用開始](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関する記事を参照してください。 このストレージ アカウントでは、次のいずれかの資格情報を構成または指定して読み込む必要があります。ストレージ アカウントに対する適切な RBAC ロールを持つストレージ アカウント キー、Azure Directory アプリケーション ユーザー、または AAD ユーザー。
 
-##  <a name="create-a-credential"></a>資格情報の作成
-AAD パススルーを使用して認証する場合は、このセクションを省略し、「外部データ ソースを作成する」に進むことができます。 AAD パススルーを使用する場合は、データベース スコープ資格情報を作成または指定する必要はありませんが、AAD ユーザーがストレージ アカウントに対する適切な RBAC ロール (ストレージ BLOB データ閲覧者、共同作成者、または所有者ロール) を持っていることを確認してください。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260)で説明しています。 
+## <a name="create-a-credential"></a>資格情報の作成
+
+AAD パススルーを使用して認証する場合は、このセクションを省略し、「外部データ ソースを作成する」に進むことができます。 AAD パススルーを使用する場合は、データベース スコープ資格情報を作成または指定する必要はありませんが、AAD ユーザーがストレージ アカウントに対する適切な RBAC ロール (ストレージ BLOB データ閲覧者、共同作成者、または所有者ロール) を持っていることを確認してください。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260)で説明しています。
 
 Data Lake Storage アカウントにアクセスするには、資格情報シークレットを暗号化するためのデータベース マスター キーを作成する必要があります。 その後、データベース スコープ資格情報を作成して、シークレットを格納します。 サービス プリンシパル (Azure Directory アプリケーション ユーザー) を使用して認証する場合、データベース スコープ資格情報には AAD 内で設定されたサービス プリンシパル資格情報が格納されます。 データベース スコープ資格情報を使用して、Gen2 のストレージ アカウント キーを格納することもできます。
 
-サービス プリンシパルを使用して Data Lake Store に接続するには、**最初に** Azure Active Directory Application を作成し、アクセス キーを作成して、そのアプリケーションに Data Lake Storage アカウントへのアクセス許可を付与する必要があります。 手順については、[Active Directory を使用した Azure Data Lake Storage に対する認証](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md)に関するページをご覧ください。
+サービス プリンシパルを使用して Data Lake Store に接続するには、**最初に** Azure Active Directory Application を作成し、アクセス キーを作成して、そのアプリケーションに Data Lake Storage アカウントへのアクセス許可を付与する必要があります。 手順については、[Active Directory を使用した Azure Data Lake Storage に対する認証](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページをご覧ください。
 
 コントロール レベルのアクセス許可を持つユーザーを使用して SQL プールにログインし、データベースに対して次の SQL ステートメントを実行します。
 
@@ -53,7 +56,7 @@ Data Lake Storage アカウントにアクセスするには、資格情報シ�
 -- A: Create a Database Master Key.
 -- Only necessary if one does not already exist.
 -- Required to encrypt the credential secret in the next step.
--- For more information on Master Key: https://msdn.microsoft.com/library/ms174382.aspx?f=255&MSPPError=-2147217396
+-- For more information on Master Key: https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
 
 CREATE MASTER KEY;
 
@@ -61,7 +64,7 @@ CREATE MASTER KEY;
 -- B (for service principal authentication): Create a database scoped credential
 -- IDENTITY: Pass the client id and OAuth 2.0 Token Endpoint taken from your Azure Active Directory Application
 -- SECRET: Provide your AAD Application Service Principal key.
--- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/library/mt270260.aspx
+-- For more information on Create Database Scoped Credential: https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
 
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
@@ -89,7 +92,8 @@ WITH
 ```
 
 ## <a name="create-the-external-data-source"></a>外部データ ソースを作成する
-データの場所を格納するには、この [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) コマンドを使用します。 AAD パススルーを使用して認証する場合、CREDENTIAL パラメーターは必要ありません。 
+
+データの場所を格納するには、この [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) コマンドを使用します。 AAD パススルーを使用して認証する場合、CREDENTIAL パラメーターは必要ありません。 サービス エンドポイントに対するマネージド ID を使用して認証を行っている場合は、こちらの[ドキュメント](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#azure-sql-data-warehouse-polybase)に従って、外部データ ソースを設定します。 
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -118,8 +122,9 @@ WITH (
 ```
 
 ## <a name="configure-data-format"></a>データ形式の構成
+
 Data Lake Storage からデータをインポートするには、外部ファイル形式を指定する必要があります。 このオブジェクトでは、Data Lake Storage にファイルを書き込む方法が定義されます。
-完全な一覧については、[CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql) に関する T-SQL のドキュメントをご覧ください。
+完全な一覧については、[CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) に関する T-SQL のドキュメントをご覧ください。
 
 ```sql
 -- D: Create an external file format
@@ -140,6 +145,7 @@ WITH
 ```
 
 ## <a name="create-the-external-tables"></a>外部テーブルを作成する
+
 データ ソースとファイル形式を指定したら、外部テーブルを作成できます。 外部テーブルは、外部データを処理する方法を示したものです。 場所のパラメーターは、ファイルまたはディレクトリを指定できます。 ディレクトリを指定すると、そのディレクトリ内のすべてのファイルが読み込まれます。
 
 ```sql
@@ -169,6 +175,7 @@ WITH
 ```
 
 ## <a name="external-table-considerations"></a>外部テーブルに関する考慮事項
+
 外部テーブルを作成するのは簡単ですが、いくつかの点について説明しておく必要があります。
 
 外部テーブルは厳密に型指定されます。 これは、取り込むデータの各行がテーブルのスキーマ定義を満たす必要があることを意味します。
@@ -176,10 +183,11 @@ WITH
 
 REJECT_TYPE および REJECT_VALUE オプションでは､最終のテーブルに存在する必要がある行数またはデータの割合を定義することができます｡ 読み込み中に値が定義した数または割合に達すると、読み込み操作が失敗します。 行が拒否される最も一般的な原因は、スキーマ定義との不一致です。 たとえば、ファイルに含まれるデータが文字列の場合に、列に int 型のスキーマが指定されていると、すべての行の読み込みが失敗します。
 
-Data Lake Storage Gen1 は、ロール ベースのアクセス制御 (RBAC) を使って、データへのアクセスを制御します。 つまり、サービス プリンシパルは、Location パラメーターで定義されているディレクトリと、最終的なディレクトリとファイルの子に対する、読み取りアクセス許可を持っている必要があります。 これにより、PolyBase は認証を行って、そのデータを読み込むことができます。 
+Data Lake Storage Gen1 は、ロール ベースのアクセス制御 (RBAC) を使って、データへのアクセスを制御します。 つまり、サービス プリンシパルは、Location パラメーターで定義されているディレクトリと、最終的なディレクトリとファイルの子に対する、読み取りアクセス許可を持っている必要があります。 これにより、PolyBase は認証を行って、そのデータを読み込むことができます。
 
 ## <a name="load-the-data"></a>データを読み込む
-Data Lake Storage からデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) ステートメントを使用します。 
+
+Data Lake Storage からデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントを使用します。
 
 CTAS により新しいテーブルが作成され、select ステートメントの結果が設定されます。 CTAS では、select ステートメントの結果と同じ列とデータ型が保持されるように、新しいテーブルが定義されます。 外部テーブルからすべての列を選択すると、新しいテーブルは、外部テーブルの列とデータ型のレプリカになります。
 
@@ -194,8 +202,8 @@ SELECT * FROM [dbo].[DimProduct_external]
 OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 ```
 
-
 ## <a name="optimize-columnstore-compression"></a>列ストア圧縮の最適化
+
 既定では、テーブルはクラスター化列ストア インデックスとして定義されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これにはさまざまな理由があります。 詳しくは、[列ストア インデックスの管理](sql-data-warehouse-tables-index.md)に関するページをご覧ください。
 
 読み込み後のクエリのパフォーマンスと列ストア圧縮を最適化するには、列ストア インデックスですべての行が強制的に圧縮されるようにテーブルを再構築します。
@@ -207,6 +215,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 ```
 
 ## <a name="optimize-statistics"></a>統計の最適化
+
 読み込みの直後に単一列の統計を作成することをお勧めします。 統計には選択肢がいくつかあります。 たとえば、すべての列に対して単一列の統計を作成する場合は、すべての統計の再構築に時間がかかる場合があります。 クエリ述語に含まれない列があることがわかっている場合は、その列に対する統計の作成はスキップできます。
 
 すべてのテーブルのすべての列で単一列の統計を作成する場合は、[統計に関する記事](sql-data-warehouse-tables-statistics.md)のストアド プロシージャのコード サンプル `prc_sqldw_create_stats` を使うことができます。
@@ -214,10 +223,12 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 次の例は、統計の作成の出発点として適しています。 これによりディメンション テーブルの各列と、ファクト テーブルの各結合列に、単一列の統計が作成されます。 他のファクト テーブルの列には、後で単一列または複数列の統計をいつでも追加できます。
 
 ## <a name="achievement-unlocked"></a>結果
+
 データがデータ ウェアハウスに正常に読み込まれました。 すばらしい結果です。
 
-## <a name="next-steps"></a>次のステップ 
-このチュートリアルでは、外部テーブルを作成して Data Lake Storage Gen1 の格納データの構造を定義した後、PolyBase の CREATE TABLE AS SELECT ステートメントを使って、データ ウェアハウスにデータを読み込みました。 
+## <a name="next-steps"></a>次のステップ
+
+このチュートリアルでは、外部テーブルを作成して Data Lake Storage Gen1 の格納データの構造を定義した後、PolyBase の CREATE TABLE AS SELECT ステートメントを使って、データ ウェアハウスにデータを読み込みました。
 
 以下のことを行いました。
 > [!div class="checklist"]

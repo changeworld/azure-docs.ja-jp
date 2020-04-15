@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3ccb9c7aff6eb59c4883bc3218e205fb7877e86e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77526818"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618365"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>チュートリアル:Azure Time Series Insights プレビューの環境を設定する
 
@@ -30,7 +30,6 @@ ms.locfileid: "77526818"
 > * ソリューション アクセラレータのサンプルを実行して、Azure Time Series Insights プレビュー環境にデータをストリーム配信する。
 > * データの基本的な分析を実行する。
 > * 時系列モデルの種類と階層を定義して、インスタンスに関連付ける。
-> * Power BI コネクタを使用し、Power BI 内でデータを視覚化する。
 
 >[!TIP]
 > [IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com/Accelerators)によって、カスタム IoT ソリューションの開発を高速化するために使用できる、エンタープライズ レベルのあらかじめ構成されたソリューションが提供されます。
@@ -359,3 +358,8 @@ Azure Time Series Insights のストレージ構成について読む。
 
 > [!div class="nextstepaction"]
 > [Azure Time Series Insights プレビューのデータ モデリング](./time-series-insights-update-tsm.md)
+
+Power BI への環境の接続について詳細を確認する。
+
+> [!div class="nextstepaction"]
+> [Power BI の Time Series Insights からのデータを視覚化する](./how-to-connect-power-bi.md)

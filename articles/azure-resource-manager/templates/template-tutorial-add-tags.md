@@ -2,19 +2,19 @@
 title: チュートリアル - テンプレートのリソースにタグを追加する
 description: Azure Resource Manager テンプレートでデプロイするリソースにタグを追加します。 タグを使用すると、リソースを論理的に整理できます。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d7853d388b9159328a515818697ba9ddd5b95637
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 3e0deb53e57cd29cbfce4c37f2d6c6729f15bebd
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773194"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411702"
 ---
-# <a name="tutorial-add-tags-in-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートにタグを追加する
+# <a name="tutorial-add-tags-in-your-arm-template"></a>チュートリアル:ARM テンプレートにタグを追加する
 
-このチュートリアルでは、テンプレートのリソースにタグを追加する方法について説明します。 [タグ](../management/tag-resources.md)は、リソースを論理的に整理するために役立ちます。 タグ値はコスト レポートに表示されます。 このチュートリアルの所要時間は **8 分**です。
+このチュートリアルでは、Azure Resource Manager (ARM) テンプレートでリソースにタグを追加する方法について説明します。 [タグ](../management/tag-resources.md)は、リソースを論理的に整理するために役立ちます。 タグ値はコスト レポートに表示されます。 このチュートリアルの所要時間は **8 分**です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -56,10 +56,12 @@ New-AzResourceGroupDeployment `
   -webAppName demoapp
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+このデプロイ コマンドを実行するには、[最新バージョン](/cli/azure/install-azure-cli)の Azure CLI が必要です。
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addtags \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -67,6 +69,9 @@ az group deployment create \
 ```
 
 ---
+
+> [!NOTE]
+> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
 
 ## <a name="verify-deployment"></a>デプロイの確認
 

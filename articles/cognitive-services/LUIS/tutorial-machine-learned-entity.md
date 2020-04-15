@@ -1,22 +1,14 @@
 ---
 title: 'チュートリアル: 機械学習エンティティを使用して構造化データを抽出する - LUIS'
-titleSuffix: Azure Cognitive Services
 description: 機械学習エンティティを使用して発話から構造化データを抽出します。 抽出精度を上げるために、サブコンポーネントとその記述子および制約を追加します。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: e1709a5e86c8fed8d7f724ad1b105bd02df9fa56
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 52bf2fb0b9f37e0c731a46c0aaf8b6c5e7f0e911
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75381768"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545849"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>チュートリアル:Language Understanding (LUIS) で機械学習エンティティを使用して、ユーザーの発話から構造化データを抽出する
 
@@ -44,13 +36,13 @@ ms.locfileid: "75381768"
 
 このチュートリアルでは、機械学習エンティティを追加して発話からデータを抽出します。
 
-エンティティの目的は、抽出するデータを定義することです。 たとえば、データの名前、型 (可能な場合)、あいまいなデータの解決方法、データを構成する正確なテキストなどを指定します。
+このエンティティは、発話内から抽出するデータを定義します。 たとえば、データの名前、型 (可能な場合)、あいまいなデータの解決方法、データを構成する正確なテキストなどを指定します。
 
-エンティティを定義するには、エンティティを作成した後、発話の例でそのエンティティを表すテキストにラベルを付ける必要があります。 このラベル付けされた例から、LUIS はエンティティの内容と、それが発話のどこに存在するかを学習します。
+エンティティを定義するには、エンティティを作成した後、すべての意図における発話の例でそのエンティティを表すテキストにラベルを付ける必要があります。 このラベル付けされた例から、LUIS はエンティティの内容と、それが発話のどこに存在するかを学習します。
 
 ## <a name="entity-decomposability-is-important"></a>エンティティの分解可能性が重要
 
-エンティティの分解可能性は、意図の予測とデータの抽出の両方にとって重要です。
+エンティティの分解可能性は、そのエンティティを使用した意図の予測とデータの抽出の両方にとって重要です。
 
 まずは機械学習エンティティから開始します。これは、データ抽出の先頭かつ最上位のエンティティです。 次に、このエンティティを、クライアント アプリケーションによって必要とされるパーツに分解します。
 
@@ -92,7 +84,7 @@ ms.locfileid: "75381768"
     ![エンティティに構造を追加する](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
 1. **[Create a machine learned entity]\(機械学習エンティティの作成\)** ボックスで、 **[Structure]\(構造\)** ボックスに `Size` を追加し、Enter キーを押します。
-1. **記述子**を追加するには、 **[Descriptors for Size]\(Size の記述子\)** 領域で `+` を選択し、 **[Create new phrase list]\(新しい語句一覧の作成\)** を選択します。
+1. **記述子**を追加するには、 **[Descriptors]\(記述子\)** 領域で `+` を選択し、 **[Create new phrase list]\(新しい語句一覧の作成\)** を選択します。
 
 1. **[Create new phrase list descriptor]\(新しい語句一覧の記述子の作成\)** ボックスに名前 `SizeDescriptor` を入力し、値 `small`、`medium`、`large` を入力します。 **[Suggestions]\(候補\)** ボックスに候補が表示されたら、`extra large` と `xl` を選択します。 **[完了]** を選択すると、新しい語句一覧が作成されます。
 
@@ -108,7 +100,7 @@ ms.locfileid: "75381768"
 
     ![発話内のテキストに Size エンティティのラベルを付けます。](media/tutorial-machine-learned-entity/mark-and-create-size-entity.png)
 
-    テキストに下線が付いているのは、明示的にテキストにラベルを付けたためにラベルと予測が一致しているからです。
+    テキストに下線が付いているのは、"_明示的_" にテキストにラベルを付けたためにラベルと予測が一致しているからです。
 
 1. 残りの発話で、Size エンティティと共に `Order` エンティティのラベルを付けます。 角かっこ内のテキストは、ラベル付けされた `Order` エンティティと、その内の `Size` エンティティを示しています。
 
@@ -132,7 +124,7 @@ ms.locfileid: "75381768"
     |--|
     |`pickup XL meat lovers pizza`|
 
-    全体の最上位エンティティである `Order` と共に、`Size` サブコンポーネントも点線でラベル付けされています。 これは正常な予測です。
+    全体の最上位エンティティである `Order` と共に、`Size` サブコンポーネントも点線でラベル付けされています。
 
     ![エンティティを使用して予測された新しい発話の例](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
 
@@ -160,20 +152,20 @@ ms.locfileid: "75381768"
 
 ## <a name="create-subcomponent-entity-with-constraint-to-help-extract-data"></a>データ抽出に役立つ制約付きサブコンポーネント エンティティを作成する
 
-`Order` エンティティには、注文内のアイテムの数を決定する `Quantity` サブコンポーネントが必要です。 クライアント アプリケーションが抽出されたデータをすぐに使用できるように、Quantity は数に制限する必要があります。
+`Order` エンティティには、注文内のアイテムの数を決定する `Quantity` サブコンポーネントが必要です。 クライアント アプリケーションが抽出されたデータをすぐに名前で使用できるように、Quantity は数に制限する必要があります。
 
 制約は、完全一致 (リスト エンティティなど) か正規表現 (正規表現エンティティや事前構築済みのエンティティなど) のいずれかを使用し、テキスト一致として適用されます。
 
 制約を使用すると、その制約に一致するテキストのみが抽出されます。
 
 1. **[エンティティ]** を選択し、`Order` エンティティを選択します。
-1. **[+ コンポーネントの追加]** を選択して名前 `Quantity` を入力し、Enter キーを押して新しいエンティティをアプリに追加します。
-1. 処理が完了したことが通知されたら、`Quantity` サブコンポーネントを選択し、制約の鉛筆アイコンを選択します。
+1. **[+ コンポーネントの追加]** を選択して名前 `Quantity` を入力し、Enter キーを押して新しいサブコンポーネントを `Order` エンティティに追加します。
+1. 正常完了の通知が表示されたら、 **[Advanced Options]\(詳細オプション\)** で制約の鉛筆アイコンを選択します。
 1. ドロップダウン リストで、事前構築済みの数を選択します。
 
     ![事前構築済みの数を制約として使用して Quantity エンティティを作成します。](media/tutorial-machine-learned-entity/create-constraint-from-prebuilt-number.png)
 
-    `Quantity` エンティティは、事前に構築された数のエンティティに一致するテキストが見つかった場合にのみ適用されます。
+    `Quantity` エンティティは、事前に構築された数のエンティティにテキストが一致した場合に適用されます。
 
     制約付きのエンティティが作成されますが、発話の例にはまだ適用されていません。
 
@@ -192,7 +184,7 @@ ms.locfileid: "75381768"
 
 ## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>アプリをトレーニングしてエンティティの変更をアプリに適用する
 
-**[トレーニング]** を選択し、これらの新しい発話を使用してアプリをトレーニングします。
+**[トレーニング]** を選択し、これらの新しい発話を使用してアプリをトレーニングします。 トレーニング後、`Order` コンポーネントの `Quantity` サブコンポーネントが正しく予測されます。 この正しい予測は実線で示されます。
 
 ![アプリをトレーニングした後、発話の例を確認します。](media/tutorial-machine-learned-entity/trained-example-utterances.png)
 
@@ -213,7 +205,7 @@ ms.locfileid: "75381768"
 
     サイズが正しく識別されました。 `OrderPizza` 意図の発話の例に `medium` サイズの例はありませんが、medium を含む `SizeDescriptor` 語句リストの記述子が使用されている点に注意してください。
 
-    数量は正しく予測されていません。 これを修正するには、数量を示す単語を使用した発話の例をさらに追加し、その単語に `Quantity` エンティティのラベルを付けます。
+    数量は正しく予測されていません。 これは、LUIS での予測からサイズが返されなかった場合の既定のサイズを 1 とすることにより、クライアント アプリケーションで修正できます。
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>アプリを発行して HTTP エンドポイントからアクセスする
 
@@ -223,7 +215,7 @@ ms.locfileid: "75381768"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. アドレスの URL の末尾に移動し、対話型のテスト パネルに入力したものと同じクエリを入力します。
+1. アドレス バーで URL の末尾に移動し、_YOUR_QUERY_HERE_ を、対話型テスト パネルで入力したクエリに置き換えます。
 
     `deliver a medium veggie pizza`
 

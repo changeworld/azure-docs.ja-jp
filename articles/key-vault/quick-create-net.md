@@ -3,16 +3,16 @@ title: クイックスタート -  .NET 用 Azure Key Vault クライアント �
 description: .NET クライアント ライブラリ (v4) を使用して Azure キー コンテナーからシークレットを作成、取得、および削除する方法について説明します
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 05/20/2019
+ms.date: 03/12/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 584fe94a54facf1489382a6052bbff6b44649358
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a94717c7bed3ba25a4682896053672fe100dc43a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79457238"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398377"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>クイック スタート:.NET 用 Azure Key Vault クライアント ライブラリ (SDK v4)
 
@@ -40,7 +40,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 
 ### <a name="create-new-net-console-app"></a>新しい .NET コンソール アプリを作成する
 
-コンソール ウィンドウで、`dotnet new` コマンドを使用し、`akv-dotnet` という名前で新しい .NET コンソール アプリを作成します。
+コンソール ウィンドウで、`dotnet new` コマンドを使用し、`key-vault-console-app` という名前で新しい .NET コンソール アプリを作成します。
 
 ```console
 dotnet new console -n key-vault-console-app
@@ -65,13 +65,13 @@ Build succeeded.
 コンソール ウィンドウから、.NET 用 Azure Key Vault クライアント ライブラリをインストールします。
 
 ```console
-dotnet add package Azure.Security.KeyVault.Secrets --version 4.0.0
+dotnet add package Azure.Security.KeyVault.Secrets
 ```
 
 このクイックスタートでは、次のパッケージもインストールする必要があります。
 
 ```console
-dotnet add package Azure.Identity --version 1.0.0
+dotnet add package Azure.Identity
 ```
 
 ### <a name="create-a-resource-group-and-key-vault"></a>リソース グループとキー コンテナーを作成する
@@ -85,6 +85,12 @@ dotnet add package Azure.Identity --version 1.0.0
 az group create --name "myResourceGroup" -l "EastUS"
 
 az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
+```
+
+```azurepowershell
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
+
+New-AzKeyVault -Name <your-unique-keyvault-name> -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
 ### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
@@ -113,14 +119,39 @@ az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 }
 ```
 
+Azure PowerShell の [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) コマンドを使用してサービス プリンシパルを作成します。
+
+```azurepowershell
+# Create a new service principal
+$spn = New-AzADServicePrincipal -DisplayName "http://mySP"
+
+# Get the tenant ID and subscription ID of the service principal
+$tenantId = (Get-AzContext).Tenant.Id
+$subscriptionId = (Get-AzContext).Subscription.Id
+
+# Get the client ID
+$clientId = $spn.ApplicationId
+
+# Get the client Secret
+$bstr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($spn.Secret)
+$clientSecret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
+```
+
+Azure PowerShell でのサービス プリンシパルの詳細については、「[Azure PowerShell で Azure サービス プリンシパルを作成する](/powershell/azure/create-azure-service-principal-azureps)」を参照してください。
+
 次の手順で使用するため、clientId、clientSecret、および tenantId を記録しておきます。
+
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>サービス プリンシパルにキー コンテナーへのアクセス権を付与する
 
 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドに clientId を渡すことでご利用のサービス プリンシパルにアクセス許可を付与するアクセス ポリシーをご利用のキー コンテナー用に作成します。 キーとシークレットの両方に対する get、list、set の各アクセス許可をサービス プリンシパルに付与します。
 
 ```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions list get set delete purge
+```
+
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -VaultName <your-unique-keyvault-name> -ServicePrincipalName <clientId-of-your-service-principal> -PermissionsToSecrets list,get,set,delete,purge
 ```
 
 #### <a name="set-environmental-variables"></a>環境変数の設定
@@ -140,6 +171,16 @@ setx KEY_VAULT_NAME <your-key-vault-name>
 ````
 
 `setx` を呼び出すたびに、"成功: 指定した値は保存されました。" という応答が返されます。
+
+```shell
+AZURE_CLIENT_ID=<your-clientID>
+
+AZURE_CLIENT_SECRET=<your-clientSecret>
+
+AZURE_TENANT_ID=<your-tenantId>
+
+KEY_VAULT_NAME=<your-key-vault-name>
+```
 
 ## <a name="object-model"></a>オブジェクト モデル
 
@@ -173,6 +214,10 @@ setx KEY_VAULT_NAME <your-key-vault-name>
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
+```azurepowershell
+(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
+```
+
 ### <a name="retrieve-a-secret"></a>シークレットを取得する
 
 先ほど設定した値は、[client.GetSecret メソッド](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)を使用して取得できます。
@@ -191,6 +236,10 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
+```
+
+```azurepowershell
+(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
 ```
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

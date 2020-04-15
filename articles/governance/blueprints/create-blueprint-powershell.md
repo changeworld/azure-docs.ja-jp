@@ -3,12 +3,12 @@ title: クイック スタート:PowerShell を使用してブループリント
 description: このクイックスタートでは、Azure Blueprints と PowerShell を使用して、成果物を作成、定義、デプロイします。
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 8b418fa2b5244c42b8597bbbe7ed4773133d03a8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 53fcf53bdcc3b5fcd1c6ec07a7d8ab45b39955b6
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75436633"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676587"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>クイック スタート:PowerShell で Azure Blueprint を定義して割り当てる
 
@@ -377,7 +377,7 @@ PowerShell を使用してブループリントを発行した後は、それを
      **ユーザー割り当てマネージド ID** は、ブループリントを割り当てるユーザーにアクセス許可があれば、どのサブスクリプションおよびどのリソース グループに属していてもかまいません。
 
      > [!IMPORTANT]
-     > ブループリントでは、ユーザー割り当てマネージド ID が管理されません。 ユーザーが各自で十分なロールとアクセス許可を割り当てる必要があります。そうしないと、ブループリントの割り当てに失敗します。
+     > Azure Blueprints は、ユーザー割り当てのマネージド ID を管理しません。 ユーザーが各自で十分なロールとアクセス許可を割り当てる必要があります。そうしないと、ブループリントの割り当てに失敗します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

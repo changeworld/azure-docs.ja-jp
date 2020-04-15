@@ -3,12 +3,12 @@ title: サービス構成 - QnA Maker
 description: リソースを構成する方法と場所について理解します。
 ms.topic: reference
 ms.date: 02/21/2020
-ms.openlocfilehash: 8ef6fecbfeb119d0c68ec5bc3bbc90ec449dbb7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3be32d1778604121c2acac88415cbfbc4bdbca3d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651805"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804262"
 ---
 # <a name="service-configuration"></a>サービス構成
 
@@ -27,8 +27,8 @@ QnA Maker は、App Service を使用して、[generateAnswer API](https://docs.
 
 |リソース|設定|
 |--|--|
-|AzureSearchAdminKey|Cognitive Search - QnA セット ストレージおよび 1 位のランカーで使用されます|
-|AzureSearchName|Cognitive Search - QnA セット ストレージおよび 1 位のランカーで使用されます|
+|AzureSearchAdminKey|Cognitive Search - QnA ペア ストレージおよび 1 位のランカーで使用されます|
+|AzureSearchName|Cognitive Search - QnA ペア ストレージおよび 1 位のランカーで使用されます|
 |DefaultAnswer|一致が見つからない場合の回答のテキスト|
 |UserAppInsightsAppId|チャット ログとテレメトリ|
 |UserAppInsightsKey|チャット ログとテレメトリ|

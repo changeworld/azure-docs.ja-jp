@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 10/16/2019
+ms.date: 04/04/2020
 ms.author: mimart
-ms.openlocfilehash: 71a6654acd436c27bd2370646dede81778113860
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ee63c1c0913baf3700d77e6fba1582fe7027ead7
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78186145"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875685"
 ---
 #### <a name="applications"></a>[アプリケーション](#tab/applications/)
 
@@ -28,8 +28,8 @@ ms.locfileid: "78186145"
 1. **[自分の API]** タブを選択します。
 1. Web アプリケーションにアクセスを許可する API を選択します。 たとえば、*webapi1* とします。
 1. **[アクセス許可]** で、 **[デモ]** を展開し、前に定義したスコープを選択します。 *demo.read* や *demo.write* などです。
-1. **[アクセス許可の追加]** を選択します. 指示に従って、数分待ってから次の手順に進みます。
+1. **[アクセス許可の追加]** を選択します.
 1. **[<テナント名> に管理者の同意を与えます]** を選択します。
-1. 現在サインインしているお使いの管理者アカウントを選択するか、少なくとも*クラウド アプリケーション管理者* ロールが割り当てられているお使いの Azure AD B2C テナントのアカウントでサインインします。
-1. **[Accept]\(承認\)** を選択します。
-1. **[更新]** を選択し、両方のスコープの **[状態]** に、"... に付与されました" が表示されていることを確認します。 アクセス許可が反映されるまでに数分かかる場合があります。
+1. アカウントを選択するよう求めるメッセージが表示されたら、現在サインインしている管理者アカウントを選択するか、少なくとも "*クラウド アプリケーション管理者*" ロールが割り当てられている Azure AD B2C テナントのアカウントでサインインします。
+1. **[はい]** を選択します。
+1. **[更新]** を選択し、両方のスコープの **[状態]** に、"... に付与されました" が表示されていることを確認します。

@@ -3,12 +3,12 @@ title: 他のアプリケーションとの統合 - QnA Maker
 description: QnA Maker は、チャット ボットなどのクライアント アプリケーションや、Language Understanding (LUIS) などの他の自然言語処理サービスに統合されます。
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1edbfb6badfb73ce08a99709da0f8bfb61b7dc3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300521"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804190"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>クライアント アプリケーション用にナレッジ ベースを設計する
 
@@ -24,7 +24,7 @@ QnA Maker は、[Microsoft Bot Framework](https://dev.botframework.com/) など�
 
 ## <a name="providing-multi-turn-conversations"></a>複数ターン会話の提供
 
-ボット クライアントによって、ナレッジ ベースから選択された最適な回答が提供され、回答が複数ターンの QnA セットの一部である場合は、フォローアップ プロンプトを表示できます。 ナレッジ ベースに複数ターンの質問と回答のセットを追加する[方法](../how-to/multiturn-conversation.md)について学習します。
+ボット クライアントによって、ナレッジ ベースから選択された最適な回答が提供され、回答が複数ターンの QnA ペアの一部である場合は、フォローアップ プロンプトを表示できます。 ナレッジ ベースに複数ターンの質問と回答のセットを追加する[方法](../how-to/multiturn-conversation.md)について学習します。
 
 ## <a name="natural-language-processing"></a>自然言語処理
 

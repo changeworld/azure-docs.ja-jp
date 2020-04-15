@@ -5,15 +5,15 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 673c20355e9ad4abf2c8318b3eb2ebbcc36ed8fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ac3ee8d44d68f5c7929c2f93f1a1182c7f6083b
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128235"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891256"
 ---
 # <a name="connect-with-the-macos-client"></a>macOS クライアントに接続する
 
@@ -31,11 +31,11 @@ ms.locfileid: "79128235"
 
 フィードをサブスクライブするには:
 
-1. サービスに接続して自分のリソースを取得するには、メイン ページで **[フィードの追加]** を選択します。
+1. サービスに接続して自分のリソースを取得するには、メイン ページで **[ワークスペースの追加]** を選択します。
 2. フィード URL を入力します。 URL またはメール アドレスを指定できます。
    - URL を使用する場合は、管理者によって付与されたものを使用します。 通常、URL は <https://rdweb.wvd.microsoft.com> です。
    - 電子メールを使用するには、メール アドレスを入力します。 これにより、メール アドレスに関連付けられている URL を検索するようにクライアントに指示されます (管理者がそのようにサーバーを構成した場合)。
-3. **[サブスクライブ]** を選択します。
+3. **[追加]** を選択します。
 4. メッセージが表示されたら、自分のユーザー アカウントでサインインします。
 
 サインインすると、使用可能なリソースの一覧が表示されます。

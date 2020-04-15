@@ -8,12 +8,12 @@ ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: 3314d00651fc5e0473d84710803671f2ad45f005
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2f96208ff3f9664d82bfc1d9ddf9bc5b9aec37c3
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474528"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879090"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>Azure Cost Management と Billing の概要
 
@@ -67,7 +67,7 @@ Azure を使用するためにサインアップすると、課金アカウン�
 ## <a name="understand-azure-cost-management"></a>Azure Cost Management の概念
 コスト管理とは、ビジネスに関連するコストを効率的に計画して制御するプロセスです。 通常、コストの管理タスクは、財務、管理、およびアプリのチームが実行します。 Azure Cost Management と Billing は、組織がコストを考慮して計画を立てるときに役立ちます。 また、コストを効果的に分析して、クラウド支出を最適化する措置を取ることもできます。 組織としてコスト管理にアプローチする方法の詳細については、「[Azure Cost Management のベスト プラクティス](./costs/cost-mgt-best-practices.md)」記事を参照してください。
 
-Azure Cost Management で Azure のコストを削減する方法の概要については、[Azure Cost Management の概要ビデオ](https://www.youtube.com/watch?v=el4yN5cHsJ0)をご覧ください。
+Azure Cost Management で Azure のコストを削減する方法の概要については、[Azure Cost Management の概要ビデオ](https://www.youtube.com/watch?v=el4yN5cHsJ0)をご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
 
 >[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
@@ -93,7 +93,7 @@ Cost Management は、コスト分析、予算、推奨事項、コスト管理�
 
 [Cloudyn](./cloudyn/overview.md) は Cost Management に関連した Azure サービスで、2020 年末までに非推奨化されます。 既にある Cloudyn の機能は、可能な限り直接 Azure portal に統合されています。 現在、新しいユーザーはオンボードされていませんが、完全に非推奨化されるまで製品サポートは継続されます。
  
-ビジネス ニーズに基づいて、Azure Cost Management または Cloudyn をどのようなときに使用すべきかについて詳しくは、[Azure Cost Management と Cloudyn のビデオ](https://www.youtube.com/watch?v=15DzKPMBRxM)をご覧ください。
+ビジネス ニーズに基づいて、Azure Cost Management または Cloudyn をどのようなときに使用すべきかについて詳しくは、[Azure Cost Management と Cloudyn のビデオ](https://www.youtube.com/watch?v=15DzKPMBRxM)をご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
  
 >[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 

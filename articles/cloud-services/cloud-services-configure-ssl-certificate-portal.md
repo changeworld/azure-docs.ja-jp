@@ -1,6 +1,6 @@
 ---
-title: クラウド サービス向けの SSL の構成 | Microsoft Docs
-description: Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。 これらの例では、Azure ポータルを使用します。
+title: クラウド サービス向けに TLS を構成する | Microsoft Docs
+description: Web ロールの HTTPS エンドポイントを指定する方法および TLS/SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。 これらの例では、Azure ポータルを使用します。
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -8,16 +8,16 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
-ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d397279ac7e5949398d695db615d9a003ab7acd
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233827"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811687"
 ---
-# <a name="configuring-ssl-for-an-application-in-azure"></a>Azure でアプリケーションの SSL を構成する
+# <a name="configuring-tls-for-an-application-in-azure"></a>Azure でアプリケーション用に TLS を構成する
 
-Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。 この一般的なタスクでは、Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
+以前は Secure Socket Layer (SSL) 暗号化と呼ばれていたトランスポート層セキュリティ (TLS) は、インターネットを介して送信されるデータをセキュリティで保護するために最もよく使用される方法です。 この一般的なタスクでは、Web ロールの HTTPS エンドポイントを指定する方法および TLS/SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
 
 > [!NOTE]
 > このタスクの手順は、Azure Cloud Services に適用されます。App Services については、[こちら](../app-service/configure-ssl-bindings.md)をご覧ください。
@@ -27,14 +27,14 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 クラウド サービスを作成していない場合は、まず [こちら](cloud-services-how-to-create-deploy-portal.md) を参照してください。
 
-## <a name="step-1-get-an-ssl-certificate"></a>手順 1. SSL 証明書を取得する
-アプリケーションの SSL を構成するには、最初に、セキュリティ保護のための証明書を発行する信頼されたサード パーティである、証明機関 (CA) によって署名された SSL 証明書を取得する必要があります。 まだ SSL 証明書がない場合は、SSL 証明書を販売する会社から取得する必要があります。
+## <a name="step-1-get-a-tlsssl-certificate"></a>手順 1:TLS/SSL 証明書を取得する
+アプリケーション用に TLS を構成するには、最初に、セキュリティ保護のための証明書を発行する信頼されたサード パーティである、証明機関 (CA) によって署名された TLS/SSL 証明書を取得する必要があります。 まだ SSL 証明書がない場合は、TLS/SSL 証明書を販売する会社から取得する必要があります。
 
-証明書は、Azure における SSL 証明書の次の要件を満たす必要があります。
+証明書は、Azure における TLS/SSL 証明書の次の要件を満たす必要があります。
 
 * 証明書は秘密キーを含む必要があります。
 * 証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
-* 証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。 証明機関 (CA) から cloudapp.net ドメインの SSL 証明書を取得することはできません。 サービスにアクセスするときに使用するカスタム ドメイン名を取得する必要があります。 CA に証明書を要求するときは、証明書の件名がアプリケーションにアクセスするために使用するカスタム ドメイン名と一致している必要があります。 たとえば、カスタム ドメイン名が **contoso.com** の場合は、* **.contoso.com** または **www\.contoso.com** の証明書を CA に要求します。
+* 証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。 証明機関 (CA) から cloudapp.net ドメインの TLS/SSL 証明書を取得することはできません。 サービスにアクセスするときに使用するカスタム ドメイン名を取得する必要があります。 CA に証明書を要求するときは、証明書の件名がアプリケーションにアクセスするために使用するカスタム ドメイン名と一致している必要があります。 たとえば、カスタム ドメイン名が **contoso.com** の場合は、* **.contoso.com** または **www\.contoso.com** の証明書を CA に要求します。
 * 証明書では、2048 ビット以上の暗号化を使用する必要があります。
 
 テスト目的で、自己署名証明書を [作成して](cloud-services-certs-create.md) 使用できます。 自己署名証明書は CA を通じて認証されないため、cloudapp.net ドメインを Web サイト URL として使用できます。 たとえば、次のタスクでは自己署名証明書を使用しますが、証明書で使用される共通名 (CN) は **sslexample.cloudapp.net** です。
@@ -43,7 +43,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 <a name="modify"> </a>
 
-## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>ステップ 2: サービス定義ファイルとサービス構成ファイルを変更する
+## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>手順 2:サービス定義ファイルとサービス構成ファイルを変更する
 アプリケーションは、証明書を使用するように構成する必要があります。また、HTTPS エンドポイントを追加する必要があります。 その結果として、サービス定義ファイルおよびサービス構成ファイルを更新する必要があります。
 
 1. お使いの開発環境で、サービス定義ファイル (CSDEF) を開き、**WebRole** セクション内に  **Certificates** セクションを追加し、証明書 (および中間証明書) に関する次の情報を含めます。
@@ -132,7 +132,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 サービス定義ファイルとサービス構成ファイルが更新されたので、Azure にアップロードするためにデプロイメントをパッケージ化します。 **cspack** を使用している場合は、 **/generateConfigurationFile** フラグを使用しないでください。このフラグは、先ほど挿入した証明書情報を上書きしてしまいます。
 
-## <a name="step-3-upload-a-certificate"></a>ステップ 3: 証明書のアップロード
+## <a name="step-3-upload-a-certificate"></a>手順 3:証明書のアップロード
 Azure Portal に接続して...
 
 1. Portal の **[すべてのリソース]** セクションで、対象のクラウド サービスを選択します。
@@ -149,7 +149,7 @@ Azure Portal に接続して...
 
 4. **ファイル**、**パスワード**を提供し、データ入力領域の下部にある **[アップロード]** をクリックします。
 
-## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>ステップ 4: HTTPS を使用してロール インスタンスに接続する
+## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>手順 4:HTTPS を使用してロール インスタンスに接続する
 Azure でデプロイメントを実行できるようになったため、HTTPS を使用して接続できます。
 
 1. **[サイトの URL]** をクリックして、Web ブラウザーを開きます。
@@ -166,7 +166,7 @@ Azure でデプロイメントを実行できるようになったため、HTTPS
    ![サイトのプレビュー](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > 運用環境のデプロイメントではなくステージング環境のデプロイメントに SSL を使用する場合は、最初に、ステージング環境のデプロイメントに使用されている URL を確認する必要があります。 クラウド サービスをデプロイした後、ステージング環境の URL は、形式  **の**デプロイ ID`https://deployment-id.cloudapp.net/` GUID によって決定されます。  
+   > 運用環境のデプロイメントではなくステージング環境のデプロイメントに TLS を使用する場合は、最初に、ステージング環境のデプロイメントに使用されている URL を確認する必要があります。 クラウド サービスをデプロイした後、ステージング環境の URL は、形式 `https://deployment-id.cloudapp.net/` の**デプロイ ID** GUID によって決定されます。  
    >
    > GUID ベースの URL と同じ共通名 (CN) で証明書を作成します (たとえば **328187776e774ceda8fc57609d404462.cloudapp.net**)。 ポータルを使用して、この証明書をステージングされたクラウド サービスに追加します。 次に、証明書情報を CSDEF ファイルと CSCFG ファイルに追加し、アプリケーションを再パッケージ化し、新しいパッケージを使用するようにステージング デプロイを更新します。
    >

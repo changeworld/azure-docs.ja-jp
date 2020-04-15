@@ -3,12 +3,12 @@ title: クイック スタート:REST API を使用してブループリント�
 description: このクイックスタートでは、Azure Blueprints と REST API を使用して、成果物を作成、定義、デプロイします。
 ms.date: 02/26/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 93c9aef9efd826b88da59cdb77dedfb10fb11262
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290370"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676582"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>クイック スタート:REST API で Azure Blueprint を定義して割り当てる
 
@@ -25,7 +25,7 @@ ms.locfileid: "79290370"
 
 REST API に慣れていない場合は、最初に「[Azure REST API Reference](/rest/api/azure/)」(Azure REST API リファレンス) を読んで、REST API の基本を理解してください (具体的には要求 URI と要求の本文)。 この記事では、これらの概念を使用して Azure Blueprint を操作する方法を説明しており、それらの実践的な知識を前提としています。 [ARMClient](https://github.com/projectkudu/ARMClient) などのツールは認可を自動的に処理できるので、初めての方にお勧めします。
 
-Blueprints の仕様については、[Azure Blueprints REST API](/rest/api/blueprints/) に関するページを参照してください。
+Azure Blueprints の仕様については、[Azure Blueprints REST API](/rest/api/blueprints/) に関するページを参照してください。
 
 ### <a name="rest-api-and-powershell"></a>REST API と PowerShell
 
@@ -406,7 +406,7 @@ REST API を使用してブループリントを発行した後は、それを�
      **ユーザー割り当てマネージド ID** は、ブループリントを割り当てるユーザーにアクセス許可があれば、どのサブスクリプションおよびどのリソース グループに属していてもかまいません。
 
      > [!IMPORTANT]
-     > ブループリントでは、ユーザー割り当てマネージド ID が管理されません。 ユーザーが各自で十分なロールとアクセス許可を割り当てる必要があります。そうしないと、ブループリントの割り当てに失敗します。
+     > Azure Blueprints は、ユーザー割り当てのマネージド ID を管理しません。 ユーザーが各自で十分なロールとアクセス許可を割り当てる必要があります。そうしないと、ブループリントの割り当てに失敗します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

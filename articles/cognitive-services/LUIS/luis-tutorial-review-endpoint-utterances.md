@@ -1,22 +1,15 @@
 ---
 title: チュートリアル:エンドポイントの発話の確認 - LUIS
-titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、LUIS HTTP エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 いくつかの発話についての意図を確認したり、その他の発話のエンティティを確認したりすることが必要な場合もあります。
 services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76843975"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548723"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>チュートリアル:エンドポイントの発話を確認して不確かな予測を修正する
 このチュートリアルでは、LUIS HTTPS エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 LUIS の定期メンテナンスの通常の部分としてエンドポイントの発話を確認する必要があります。
@@ -46,15 +39,11 @@ ms.locfileid: "76843975"
 
 1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true)をダウンロードして保存します。
 
-1. [プレビューの LUIS ポータル](https://preview.luis.ai)で、新しいアプリに .json ファイルをインポートします。
+[!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-1. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `review` という名前を付けます。
+## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>アプリをトレーニングしてエンティティの変更をアプリに適用する
 
-    > [!TIP]
-    > アプリを変更する前に、新しいバージョンにクローンすることをお勧めします。 あるバージョンが完成したら、そのバージョンを (.json または .lu ファイル) としてエクスポートし、お使いのソース管理システムにファイルをチェックインします。
-
-
-1. アプリをトレーニングするには、 **[トレーニング]** を選択します。
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>アプリを発行して HTTP エンドポイントからアクセスする
 
@@ -66,7 +55,7 @@ ms.locfileid: "76843975"
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. エンドポイントを使用して次の発話を追加します。
+1. アドレス バーの URL の末尾に移動して、_YOUR_QUERY_HERE_ を以下の表の発話に置き換えます。 それぞれの発話について、発話を送信してその結果を取得します。 次に、末尾の発話を次の発話に置き換えます。
 
     |エンドポイントの発話|対応する意図|
     |--|--|
@@ -110,9 +99,9 @@ ms.locfileid: "76843975"
 
 発話の例を正しく対応付けることによってアプリの予測精度が向上したことを確認するために、修正した発話に近い発話を試してみましょう。
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. アドレスの URL の末尾に移動し、「`Are there any natural language processing jobs in my department right now?`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。
+1. アドレス バーの URL の末尾に移動して、_YOUR_QUERY_HERE_ を `Are there any natural language processing jobs in my department right now?` に置き換えます。
 
    ```json
     {

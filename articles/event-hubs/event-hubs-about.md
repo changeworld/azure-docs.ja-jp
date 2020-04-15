@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9b3af6a6cee4375a110c894b6b72655605ad077d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45276ab59f1a3dabea42b904ff54bd37326fdeca
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372252"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398107"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs - ビッグ データのストリーミング プラットフォームとなるイベント インジェスト サービス
 Azure Event Hubs は、ビッグ データのストリーミング プラットフォームとなるイベント インジェスト サービスです。 1 秒間に何百万ものイベントを受信して処理することができます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。
@@ -49,7 +49,7 @@ Event Hubs は構成または管理のオーバーヘッドがほとんどない
 
 ストリームの取り込み、バッファー、格納、処理をリアルタイムで行い、アクションにつながる分析情報を取得します。 Event Hubs は[パーティション分割されたコンシューマー モデル](event-hubs-scalability.md#partitions)を使用して、複数のアプリケーションがストリームを同時に処理し、処理の速度を制御できるようにします。
 
-長期保有またはマイクロ バッチ処理のために、ほぼリアルタイムでデータを [Azure Blob Storage](event-hubs-capture-overview.md) または [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/blobs/)[ に](https://azure.microsoft.com/services/data-lake-store/)キャプチャ します。 この動作は、リアルタイム分析の派生に使用するものと同じストリームで実現できます。 イベント データをキャプチャするための設定に時間はかかりません。 実行に伴う管理コストは生じず、また、Event Hubs の [スループット単位](event-hubs-scalability.md#throughput-units)に応じて自動的にスケーリングされます。 Event Hubs を使用することで、ユーザーはデータ キャプチャではなくデータ処理に専念できます。
+長期保有またはマイクロ バッチ処理のために、ほぼリアルタイムでデータを [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) または [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)  に[キャプチャ](event-hubs-capture-overview.md)します。 この動作は、リアルタイム分析の派生に使用するものと同じストリームで実現できます。 イベント データをキャプチャするための設定に時間はかかりません。 実行に伴う管理コストは生じず、また、Event Hubs の [スループット単位](event-hubs-scalability.md#throughput-units)に応じて自動的にスケーリングされます。 Event Hubs を使用することで、ユーザーはデータ キャプチャではなくデータ処理に専念できます。
 
 また、Azure Event Hubs は サーバーレス アーキテクチャ用の [Azure Functions](/azure/azure-functions/) と統合します。
 
@@ -61,7 +61,7 @@ Event Hubs では、メガバイト単位のデータ ストリームで開始�
 
 [Apache Kafka エコシステム向けの Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) により、[Apache Kafka (1.0 以降)](https://kafka.apache.org/) のクライアントとアプリケーションは Event Hubs と通信できます。 独自に Kafka クラスターをセットアップ、構成、管理する必要はありません。
 
-さまざまな[言語 (.NET、Java、Python、Go、JavaScript)](https://github.com/Azure/azure-event-hubs) で使用可能な広範なエコシステムにより、Event Hubs からのストリームの処理を簡単に開始できます。 サポートされているすべてのクライアント言語が、低レベルの統合を提供します。 また、このエコシステムを通じて、Azure Stream Analytics や Azure Functions などの Azure サービスとシームレスに統合し、サーバーレスのアーキテクチャを構築することができます。
+さまざまな言語 ([.NET](https://github.com/Azure/azure-sdk-for-net/)、[Java](https://github.com/Azure/azure-sdk-for-java/)、[Python](https://github.com/Azure/azure-sdk-for-python/)、[JavaScript](https://github.com/Azure/azure-sdk-for-js/)) で使用可能な広範なエコシステムにより、Event Hubs からのストリームの処理を簡単に開始できます。 サポートされているすべてのクライアント言語が、低レベルの統合を提供します。 また、このエコシステムを通じて、Azure Stream Analytics や Azure Functions などの Azure サービスとシームレスに統合し、サーバーレスのアーキテクチャを構築することができます。
 
 ## <a name="key-architecture-components"></a>主なアーキテクチャ コンポーネント
 Event Hubs には次の[主要コンポーネント](event-hubs-features.md)が含まれます。
@@ -75,6 +75,13 @@ Event Hubs には次の[主要コンポーネント](event-hubs-features.md)が�
 次の図は、Event Hubs ストリーム処理のアーキテクチャを示しています。
 
 ![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
+
+## <a name="event-hubs-on-azure-stack-hub"></a>Azure Stack Hub 上の Event Hubs
+Azure Stack Hub 上の Event Hubs を使用すると、ハイブリッド クラウド シナリオを実現できます。 オンプレミスと Azure クラウドの両方の処理で、ストリーミングやイベントベースのソリューションがサポートされます。 ハイブリッド (接続型) シナリオであれ非接続型のシナリオであれ、大規模なイベント処理またはストリーム処理に対応したソリューションを実現できます。 シナリオは Event Hubs クラスターによってのみ制限され、その点は、必要に応じてプロビジョニングすることができます。 
+
+(Azure Stack Hub 上および Azure 上の) Event Hubs エディションには、高度な機能パリティが実現されています。 ここでいうパリティとは、SDK、サンプル、PowerShell、CLI、ポータルからいずれも同様のエクスペリエンスが得られ、違いがほとんどないということです。 
+
+パブリック プレビュー期間中は、Stack 上の Event Hubs は無料です。 詳細については、「[Azure Stack Hub 上の Event Hubs の概要](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

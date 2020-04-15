@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8c3f5dae62aef6c8e8ec1eeaeb712ebff67397c9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: cca5680d307874a565dec47f643bf9320192c270
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77566184"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656098"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-javascript"></a>クイック スタート:Computer Vision 2.0 および 2.1 の REST API と JavaScript を使用して、印刷されたテキストと手書きテキストを抽出する
 
@@ -45,7 +45,7 @@ Computer Vision 2.0 および 2.1 に比べ、Computer Vision 3.0 パブリッ�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
 
-Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。 次に、キーとサービス エンドポイント文字列用に、それぞれ `COMPUTER_VISION_SUBSCRIPTION_KEY` と `COMPUTER_VISION_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。 サブスクリプション キーとエンドポイント URL を一時的な場所に保存します。
 
 ## <a name="create-and-run-the-sample"></a>サンプルの作成と実行
 
@@ -53,12 +53,12 @@ Computer Vision のサブスクリプション キーが必要です。 無料�
 
 このサンプルを作成して実行するには、次の手順を実行します。
 
-1. テキスト エディターに次のコードをコピーします。
+1. _get-text.html_ という名前のファイルを作成し、テキスト エディターで開き、次のコードをコピーします。
 1. 必要に応じて、テキストを抽出したい別の画像の URL で、`inputImage` コントロールの `value` 属性の値を置き換えます。
-1. `.html` 拡張子のファイルとして、コードを保存します。 たとえば、「 `get-text.html` 」のように入力します。
 1. ブラウザー ウィンドウを開きます。
 1. ブラウザーで、ブラウザー ウィンドウにファイルをドラッグ アンド ドロップします。
-1. ブラウザーに Web ページが表示されたら、 **[Read image]\(画像の読み取り\)** ボタンをクリックします。
+1. Web ページがブラウザーに表示されたら、サブスクリプション キーとエンドポイント URL を適切な入力ボックスに貼り付けます。
+1. **[Read image]\(画像の読み取り\)** ボタンを選択します。
 
 ```html
 <!DOCTYPE html>
@@ -75,9 +75,8 @@ Computer Vision のサブスクリプション キーが必要です。 無料�
         // *** Update or verify the following values. ***
         // **********************************************
 
-        let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
-        let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
-        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+        var subscriptionKey = document.getElementById("subscriptionKey").value;
+        var endpoint = document.getElementById("endpointUrl").value;
         
         var uriBase = endpoint + "vision/v2.1/read/core/asyncBatchAnalyze";
 
@@ -170,6 +169,13 @@ Computer Vision のサブスクリプション キーが必要です。 無料�
 <h1>Read text from image:</h1>
 Enter the URL to an image of text, then click
 the <strong>Read image</strong> button.
+<br><br>
+Subscription key: 
+<input type="text" name="subscriptionKey" id="subscriptionKey"
+    value="" /> 
+Endpoint URL:
+<input type="text" name="endpointUrl" id="endpointUrl"
+    value="" />
 <br><br>
 Image to read:
 <input type="text" name="inputImage" id="inputImage"

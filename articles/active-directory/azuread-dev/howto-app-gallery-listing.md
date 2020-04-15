@@ -4,7 +4,6 @@ description: シングル サインオンをサポートするアプリケーシ
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.topic: conceptual
@@ -12,13 +11,14 @@ ms.workload: identity
 ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 99c7d7fccf674fe8cda9d1f64cdf303f1e7764fd
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.custom: aaddev
+ROBOTS: NOINDEX
+ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163612"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666938"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
@@ -49,9 +49,9 @@ ms.locfileid: "77163612"
 
 ## <a name="submit-the-request-in-the-portal"></a>ポータルで要求を送信する
 
-アプリケーションの統合が Azure AD で動作することをテストした後は、[アプリケーション ネットワーク ポータル](https://microsoft.sharepoint.com/teams/apponboarding/Apps)へのアクセスを求める要求を送信します。 Office 365 アカウントがある場合は、それを使ってこのポータルにサインインします。 ない場合は、自分の Microsoft アカウント (Outlook、Hotmail など) を使ってサインインします。
+Azure ADでアプリケーションの統合が作動するのをテストした後、[Microsoftアプリケーションネットワークポータル](https://microsoft.sharepoint.com/teams/apponboarding/Apps)へのアクセス要求を送信してください。
 
-サインイン後に次のページが表示された場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。 要求の送信に使用する電子メール アカウントを指定します。 Azure AD チームにより、アカウントが Microsoft アプリケーション ネットワーク ポータルに追加されます。
+サインイン後に次のページが表示された場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。 要求の送信に使用する電子メール アカウントを指定します。 [name@yourbusiness.com](mailto:name@yourbusiness.com)などの会社の電子メールアドレスをお勧めします。 Azure AD チームにより、アカウントが Microsoft アプリケーション ネットワーク ポータルに追加されます。
 
 ![SharePoint ポータルでのアクセス要求メッセージ](./media/howto-app-gallery-listing/errorimage.png)
 

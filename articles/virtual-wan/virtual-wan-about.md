@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 927c09f61ce0847c72cefb51935116070e956861
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290190"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743111"
 ---
 # <a name="about-azure-virtual-wan"></a>Azure Virtual WAN の概要
 
-Azure Virtual WAN は、Azure への、または Azure 経由での、最適化および自動化されたブランチ接続を提供するネットワーク サービスです。 Azure リージョンは、ブランチの接続先として選択できるハブとして機能します。 Azure バックボーンを利用してブランチを接続し、ブランチから VNet への接続を利用することもできます。 Azure Virtual WAN VPN による接続の自動化をサポートするパートナーの一覧があります。 詳細については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
+Azure Virtual WAN は、ネットワーク、セキュリティ、ルーティングのさまざまな機能をまとめて、1 つの運用インターフェイスを提供するネットワーク サービスです。 これらの機能には、ブランチ接続 (SD-WAN や VPN CPE などの Virtual WAN パートナー デバイスからの接続自動化経由)、サイト間 VPN 接続、リモート ユーザー VPN (ポイント対サイト) 接続、プライベート (ExpressRoute) 接続、クラウド内接続 (仮想ネットワークの推移的な接続)、VPN ExpressRoute 相互接続、ルーティング、Azure ファイアウォール、プライベート接続のための暗号化などが含まれます。Virtual WAN の利用を開始するために、これらのすべてのユース ケースを用意する必要はありません。 単純に 1 つのユース ケースだけで始めて、発展に応じてネットワークを調整することができます。 Virtual WAN アーキテクチャは、ブランチ (VPN または SD-WAN デバイス)、ユーザー (Azure VPN、OpenVPN、または IKEv2 クライアント)、ExpressRoute 回線、および仮想ネットワーク向けにスケールとパフォーマンスが組み込まれたハブ アンド スポーク アーキテクチャです。 これにより、[グローバル トランジット ネットワーク アーキテクチャ](virtual-wan-global-transit-network-architecture.md)が可能になります。つまり、クラウドでホストされたネットワーク "ハブ" によって、さまざまな種類の "スポーク" に分散されている可能性があるエンドポイント間の推移的な接続が可能になります。
 
-Azure Virtual WAN は、サイト間 VPN、ユーザー VPN (ポイント対サイト)、ExpressRoute など、多数の Azure クラウド接続サービスを、1 つの操作インターフェイスにまとめたものです。 Azure VNet への接続は、仮想ネットワーク接続を使用して確立されます。 これにより、[グローバル トランジット ネットワーク アーキテクチャ](virtual-wan-global-transit-network-architecture.md)が可能になります。これは、クラウドでホストされたネットワーク "ハブ" によって、さまざまな種類の "スポーク" に分散されている可能性があるエンドポイント間の推移的な接続が可能になる、従来のハブ アンド スポーク接続モデルが基になっています。
+Azure リージョンは、接続先として選択できるハブとして機能します。 Standard Virtual WAN ではすべてのハブがフル メッシュで接続されるため、ユーザーは Any-to-Any (任意のスポーク) 接続に Microsoft バックボーンを簡単に使用できます。 SD-WAN または VPN デバイスとのスポーク接続の場合、ユーザーは Azure Virtual WAN 内で手動で設定するか、Virtual WAN CPE (SD-WAN または VPN) パートナー ソリューションを使用して Azure への接続を設定することができます。 Azure Virtual WAN での接続の自動化 (デバイス情報を Azure にエクスポートし、Azure 構成をダウンロードして接続を確立する機能) をサポートするパートナーの一覧が提供されています。 詳細については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。 
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwan1.png)
 

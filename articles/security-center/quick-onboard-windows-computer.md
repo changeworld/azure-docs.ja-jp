@@ -1,6 +1,6 @@
 ---
 title: Windows コンピューターでの Azure Security Center の利用開始
-description: このクイック スタートでは、Windows コンピューターで Microsoft Monitoring Agent をプロビジョニングする方法を示します。
+description: このクイックスタートでは、Windows コンピューターで Log Analytics エージェントをプロビジョニングする方法を示します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 417d8379d019a9ef0da41638cba4a1f9cb7b8bc2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2840b6636c2b511ab57a8bae8adf411f4d8a27d2
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73686502"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435923"
 ---
-# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>クイックスタート: Windows コンピューターでの Azure Security Center の利用開始
-Azure サブスクリプションの利用を開始した後で、Microsoft Monitoring Agent をプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されているリソースに対して Security Center を有効にできます。
+# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>クイック スタート:Windows コンピューターでの Azure Security Center の利用開始
+Azure サブスクリプションの利用を開始した後で、Log Analytics エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されているリソースに対して Security Center を有効にできます。
 
-このクイック スタートでは、Windows コンピューターに Microsoft Monitoring Agent をインストールする方法を示します。
+このクイックスタートでは、Windows コンピューターに Log Analytics エージェントをインストールする方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
@@ -72,7 +72,7 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 9. **[インストールの準備完了]** ページで、設定内容を確認し、 **[インストール]** を選択します。
 10. **[構成は正常に終了しました]** ページで **[完了]** を選択します
 
-完了すると、**コントロール パネル**に **Microsoft Monitoring Agent** が表示されます。 構成を検証して、エージェントが接続されていることを確認できます。
+完了すると、**コントロール パネル**に **Log Analytics エージェント**が表示されます。 構成を検証して、エージェントが接続されていることを確認できます。
 
 エージェントのインストールと構成について詳しくは、[Windows コンピューターの接続](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)に関するページをご覧ください。
 
@@ -93,13 +93,13 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 
 1. **[コントロール パネル]** を開きます。
 2. **[プログラムと機能]** を開きます。
-3. **[プログラムと機能]** で、 **[Microsoft Monitoring Agent]** をクリックし、 **[アンインストール]** をクリックします。
+3. **[プログラムと機能]** で、 **[Log Analytics エージェント]** を選択し、 **[アンインストール]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
-このクイック スタートでは、Windows コンピューターで Microsoft Monitoring Agent をプロビジョニングしました。 Security Center の使用方法について学習するには、セキュリティ ポリシーの構成とリソースのセキュリティの評価に関するチュートリアルに進んでください。
+このクイックスタートでは、Windows コンピューターで Log Analytics エージェントをプロビジョニングしました。 Security Center の使用方法について学習するには、セキュリティ ポリシーの構成とリソースのセキュリティの評価に関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: セキュリティ ポリシーの定義と評価](tutorial-security-policy.md)
+> [チュートリアル:セキュリティ ポリシーの定義と評価](tutorial-security-policy.md)
 
 <!--Image references-->
 [2]: ./media/quick-onboard-windows-computer/overview.png

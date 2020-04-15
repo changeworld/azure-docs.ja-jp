@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e3cf302437c3e4954ac977ac3f4ff6b2021a760
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4887b4359451ca5ce85042b4de42d5376bf4a730
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72330503"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667764"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボのスケジュールを作成して管理する 
 スケジュールを使用すると、ラボの VM が指定した時刻に自動的に起動およびシャットダウンされるように、クラスルーム ラボを構成できます。 1 回限りのスケジュールや定期的なスケジュールを定義することができます。 クラスルーム ラボのスケジュールを作成および管理する手順を以下に示します。 
@@ -28,6 +28,12 @@ ms.locfileid: "72330503"
 
 ## <a name="set-a-schedule-for-the-lab"></a>ラボのスケジュールを設定する
 ラボ内の VM が特定の時刻に自動的に起動または停止されるように、ラボ用にスケジュール化されたイベントを作成します。 前に指定したユーザー クォータは、このスケジュールされた時間以外に各ユーザーに割り当てられる追加時間です。 
+
+> [!NOTE]
+> 作業を開始する前に、スケジュールがラボ仮想マシンに与える影響を説明します。 
+>- テンプレート仮想マシンはスケジュールに含まれていません。 
+>- 割り当てられた仮想マシンのみが起動します。 つまり、エンドユーザー (受講生) が要求していないマシンは、スケジュールされた時間に起動しません。 
+>- 仮想マシンはすべて（ユーザーがいるかどうかに関わらず）、ラボのスケジュールに基づいて停止されます。 
 
 1. **[スケジュール]** ページに切り替えて、ツール バーの **[Add scheduled event]\(スケジュール化されたイベントの追加\)** を選択します。 
 

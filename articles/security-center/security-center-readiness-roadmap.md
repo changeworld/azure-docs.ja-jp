@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 4603240a76ec72223b88853c63ed11152707201c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d74ea2b967112a794cda204cbbfcac707e1d7c4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76281293"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879464"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center の対応準備ロードマップ
 このドキュメントでは、Azure Security Center の導入を支援する対応準備ロードマップについて取り上げます。
@@ -37,16 +37,14 @@ Security Center の基本的な事柄については、次のリソースを参�
 * [脅威の回避、検出、対応に関して Security Center が備えている機能の概要](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
 
 ## <a name="planning-and-operations"></a>計画と運用
+
 Security Center を最大限に活用するには、安全な運用、監視、ガバナンス、インシデント対応のニーズを満たすために、組織内のさまざまな個人やチームがこのサービスをどのように使用するのかを把握することが重要です。
 
 計画と運用のプロセスでは、次の資料が参考になります。
 
-
 [アーティクル]
 * [Azure Security Center 計画および運用ガイド](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 
-ビデオ
-* [Security Center を使用したハイブリッド クラウド ワークロードの保護](https://mva.microsoft.com/training-courses/hybrid-cloud-workload-protection-with-azure-security-center-18173?l=X4WqTA3jE_1106218965)
 
 ### <a name="onboarding-computers-to-security-center"></a>Security Center へのコンピューターのオンボーディング
 Security Center では、Security Center Standard に対応していない Azure サブスクリプションまたはワークスペースが自動的に検出されます。 これには、Security Center Free を使用する Azure サブスクリプションと、セキュリティ ソリューションが有効になっていないワークスペースが含まれます。
@@ -71,7 +69,7 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 * [Azure Security Center での Azure SQL サービスとデータの保護](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
 
-ビデオ   
+ビデオ    
 * [Mitigating Security Issues using Azure Security Center (Azure Security Center を使用してセキュリティの問題を緩和する)](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)
 
 ### <a name="security-center-for-incident-response"></a>Security Center によるインシデント対応
@@ -79,7 +77,7 @@ Security Center は、真の脅威を検出し、偽陽性を減らすために�
 
 インシデント対応プロセスへの具体的な Security Center の導入方法については、次の資料が参考になります。
 
-ビデオ  
+ビデオ    
 * [Azure Security Center in Incident Response (Azure Security Center でのインシデント対応)](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Security-Center-in-Incident-Response)
 * [Respond quickly to threats with next-generation security operation, and investigation (次世代のセキュリティ運用と調査を通じて脅威にすばやく対応する)](https://youtu.be/e8iFCz5RM4g)
 
@@ -93,7 +91,7 @@ Azure VM は、Security Center にある高度なクラウド防御機能を有�
 
 これらの Security Center 機能の使い方については、次の資料を参照してください。
 
-ビデオ  
+ビデオ    
 * [Azure Security Center - Just-in-Time VM アクセス](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center - アダプティブ アプリケーション制御](https://youtu.be/wWWekI1Y9ck)
 
@@ -105,7 +103,7 @@ Azure VM は、Security Center にある高度なクラウド防御機能を有�
 
 * [Security Center ハンズオン ラボ](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=78871abf-6f35-4aa0-840f-d801f5cdbd72)
 * [Security Center の Web アプリケーション ファイアウォール (WAF) 推奨プレイブック](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
-* [Azure Security Center Playbook: Security Alerts (Azure Security Center プレイブック: セキュリティ アラート)](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
+* [Azure Security Center プレイブック:セキュリティのアラート](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
 ## <a name="additional-resources"></a>その他のリソース
 * [Security Center のドキュメント ページ](https://docs.microsoft.com/azure/security-center/)

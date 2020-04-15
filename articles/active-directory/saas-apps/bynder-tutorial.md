@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 456fc2a736b3213a14e5704f89a808c120c45b33
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1848610250e696807acef118384f43d2a51442ca
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158661"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984488"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>チュートリアル:Bynder と Azure Active Directory の統合
 
@@ -84,13 +84,25 @@ Bynder に対する Azure AD SSO を構成してテストするには、次の�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`https://<company name>.getbynder.com` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。
+    
+    既定のドメインの場合:  `https://<company name>.getbynder.com`
+    
+    カスタム ドメインの場合:  `https;//<subdomain>.<domain>.com`
 
-    b. **[応答 URL]** ボックスに、`https://<company name>.getbynder.com/sso/SAML/authenticate/` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    
+     既定のドメインの場合:  `https://<company name>.getbynder.com/sso/SAML/authenticate/`
+    
+    カスタム ドメインの場合:  `https://<subdomain>.<domain>.com/sso/SAML/authenticate/`
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、`https://<company name>.getbynder.com/login/` という形式で URL を入力します。
+    **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
+    
+     既定のドメインの場合:  `https://<company name>.getbynder.com/login/`
+    
+     カスタム ドメインの場合:  ` https://<subdomain>.<domain>.com/login/`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 この値を取得するには、[Bynder クライアント サポート チーム](https://www.bynder.com/en/support/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

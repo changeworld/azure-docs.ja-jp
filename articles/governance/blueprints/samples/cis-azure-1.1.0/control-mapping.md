@@ -3,12 +3,12 @@ title: CIS Microsoft Azure Foundations Benchmark ブループリント サンプ
 description: CIS Microsoft Azure Foundations Benchmark ブループリント サンプルと Azure Policy の推奨事項のマッピング。
 ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74707423"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656962"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark ブループリント サンプルの推奨事項のマッピング
 
@@ -245,7 +245,7 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4.11 MySQL データベース サーバーで [SSL 接続を強制する] が [有効] に設定されていることを確認する
 
-このブループリントでは、MySQL データベース サーバーで SSL 接続が強制的に適用されることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+このブループリントでは、MySQL データベース サーバーで TLS/SSL 接続が強制的に適用されることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
 - MySQL データベース サーバーで [SSL 接続を強制する] が有効でなければならない
 
@@ -257,7 +257,7 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4.13 PostgreSQL データベース サーバーで [SSL 接続を強制する] が [有効] に設定されていることを確認する
 
-このブループリントでは、PostgreSQL データベース サーバーで SSL 接続が強制的に適用されることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+このブループリントでは、PostgreSQL データベース サーバーで TLS/SSL 接続が強制的に適用されることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
 - PostgreSQL データベース サーバーで [SSL 接続を強制する] が有効でなければならない
 

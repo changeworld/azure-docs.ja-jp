@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 967d391d4ac9a9704688dce9636d9a71b2002549
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290200"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879362"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 
@@ -76,6 +76,15 @@ Azure では、既定で、サブネット、接続されている仮想ネッ�
 
 - **ルート テーブル**:サブネットごとにトラフィックのルーティング先を制御するルートを含む、カスタム ルート テーブルを作成できます。 [ルート テーブル](virtual-networks-udr-overview.md#user-defined)の詳細を確認してください。
 - **ボーダー ゲートウェイ プロトコル (BGP) のルート**:Azure VPN ゲートウェイまたは ExpressRoute 接続を使用して仮想ネットワークをオンプレミス ネットワークに接続する場合、オンプレミス BGP ルートを仮想ネットワークに伝達できます。 [Azure VPN ゲートウェイ](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) と [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#dynamic-route-exchange) で BGP を使用する方法の詳細を確認してください。
+
+## <a name="virtual-network-integration-for-azure-services"></a>Azure サービスの仮想ネットワーク統合
+
+Azure 仮想ネットワークに Azure サービスを統合すると、仮想ネットワーク内の仮想マシンまたはコンピューティング リソースからサービスにプライベート アクセスできるようになります。
+次のオプションを使用して、仮想ネットワークで Azure サービスを統合することができます。
+- [サービスの専用インスタンス](virtual-network-for-azure-services.md)を仮想ネットワークにデプロイする。 サービスは、仮想ネットワーク内で、また、オンプレミス ネットワークからプライベート アクセスできます。
+- [プライベート リンク](../private-link/private-link-overview.md)を使用して、仮想ネットワークとオンプレミス ネットワークからサービスの特定のインスタンスにプライベートでアクセスします。
+- [サービス エンドポイント](virtual-network-service-endpoints-overview.md)を介して仮想ネットワークをサービスに拡張することによって、パブリック エンドポイントを使用してサービスにアクセスすることもできます。 サービス エンドポイントを使用することで、仮想ネットワークに対してサービス リソースをセキュリティで保護することができます。
+ 
 
 ## <a name="azure-vnet-limits"></a>Azure VNet の制限
 

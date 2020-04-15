@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 3e0c56ed669ecda5a130dcf9df103bc8a19faf06
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3334a19b1ba0e3949ab2670c5d2f70d3bcd02fe8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057428"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983912"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>強制トンネリングを使用した App Service Environment の構成
 
@@ -60,7 +60,7 @@ Azure Virtual Network が ExpressRoute を使って構成されていても ASE 
 BGP ルートを無視するように ASE サブネットを構成するには
 
 * まだない場合は、UDR を作成して ASE サブネットに割り当てます。
-* Azure portal で、ASE サブネットに割り当てられているルート テーブルの UI を開きます。  [構成] を選択します。  [BGP ルート伝達] を [無効] に設定します。  [保存] をクリックします。 オフにすることについては、「[ルート テーブルの作成][routetable]」をご覧ください。
+* Azure portal で、ASE サブネットに割り当てられているルート テーブルの UI を開きます。  [構成] を選択します。  [仮想ネットワーク ゲートウェイのルート伝達] を [無効] に設定します。  [保存] をクリックします。 オフにすることについては、「[ルート テーブルの作成][routetable]」をご覧ください。
 
 すべての BGP ルートを無視するように ASE サブネットを構成すると、以後、アプリはオンプレミスにアクセスできなくなります。 アプリからオンプレミスのリソースにアクセスできるようにするには、ASE サブネットに割り当てられている UDR を編集し、オンプレミスのアドレス範囲へのルートを追加します。 次のホップの種類は、仮想ネットワーク ゲートウェイに設定する必要があります。 
 

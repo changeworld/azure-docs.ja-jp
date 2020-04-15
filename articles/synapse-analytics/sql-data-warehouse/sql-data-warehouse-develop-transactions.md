@@ -1,6 +1,6 @@
 ---
-title: トランザクションの使用
-description: ソリューション開発のための、Azure SQL Data Warehouse でのトランザクションの実装に関するヒント。
+title: Synapse SQL プールでのトランザクションの使用
+description: この記事には、Synapse SQL プールでトランザクションを実装し、ソリューションを開発するためのヒントが記載されています。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,36 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a14201131eac5ce1efc4020c9ce0f40a80cac8a3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d9578653ff8074fee8336df447caf119f79febe0
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351566"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745259"
 ---
-# <a name="using-transactions-in-sql-data-warehouse"></a>SQL Data Warehouse でのトランザクションの使用
-ソリューション開発のための、Azure SQL Data Warehouse でのトランザクションの実装に関するヒント。
+# <a name="use-transactions-in-synapse-sql-pool"></a>Synapse SQL プールでのトランザクションの使用
+
+この記事には、SQL プールでトランザクションを実装し、ソリューションを開発するためのヒントが記載されています。
 
 ## <a name="what-to-expect"></a>ウィザードの内容
-予想される通り、SQL Data Warehouse では、トランザクションは、データ ウェアハウスのワークロードの一部としてサポートされます。 ただし、SQL Data Warehouse のパフォーマンスを大規模に維持できるように、SQL Server と比べて一部の機能が制限されています。 この記事では、相違点について説明し、その他の制限事項を示します。 
+
+予想される通り、SQL プールは、データ ウェアハウスのワークロードの一部としてトランザクションをサポートします。 ただし、SQL プールを大規模に維持できるように、SQL Server と比べて一部の機能が制限されています。 この記事ではその差について説明します。
 
 ## <a name="transaction-isolation-levels"></a>トランザクション分離レベル
-SQL Data Warehouse では、ACID トランザクションを実装しています。 トランザクションサポートの分離レベルは、既定では READ UNCOMMITTED になります。  これは READ COMMITTED SNAPSHOT ISOLATION に変更できます。それには、マスター データベースに接続する際にユーザー データベースの READ_COMMITTED_SNAPSHOT データベース オプションをオンにします。  有効になると、このデータベース内のすべてのトランザクションが READ COMMITTED SNAPSHOT ISOLATION の下で実行され、セッション レベルで READ UNCOMMITTED を設定しても受け入れられません。 詳細については、「[ALTER DATABASE の SET オプション (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)」を確認してください。
+
+SQL プールは、ACID トランザクションを実装します。 トランザクションサポートの分離レベルは、既定では READ UNCOMMITTED になります。  これは READ COMMITTED SNAPSHOT ISOLATION に変更できます。それには、マスター データベースに接続する際にユーザー データベースの READ_COMMITTED_SNAPSHOT データベース オプションをオンにします。  
+
+有効になると、このデータベース内のすべてのトランザクションが READ COMMITTED SNAPSHOT ISOLATION の下で実行され、セッション レベルで READ UNCOMMITTED を設定しても受け入れられません。 詳細については、「[ALTER DATABASE の SET オプション (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を確認してください。
 
 ## <a name="transaction-size"></a>トランザクション サイズ
-1 回のデータ変更トランザクションには規模の面で制限があります。 この制限は、ディストリビューションごとに適用されます。 このため、割り当ての合計を算出するには、制限とディストリビューション数を掛ける必要があります。 トランザクションの最大行数の近似値を求めるには、ディストリビューション上限を各列の合計サイズで割ります。 列の長さが異なる場合、最大サイズではなく列の平均長を利用することを検討してください。
 
-下の表では、次のような想定が行われています。
+1 回のデータ変更トランザクションには規模の面で制限があります。 この制限は、ディストリビューションごとに適用されます。 このため、割り当ての合計を算出するには、制限とディストリビューション数を掛ける必要があります。
 
-* データは均等に分散されました 
+トランザクションの最大行数の近似値を求めるには、ディストリビューション上限を各列の合計サイズで割ります。 列の長さが異なる場合、最大サイズではなく列の平均長を利用することを検討してください。
+
+下の表では、2 つの想定が行われています。
+
+* データは均等に分散されました
 * 行の平均長は 250 バイトです
 
 ## <a name="gen2"></a>Gen2
@@ -73,23 +81,24 @@ SQL Data Warehouse では、ACID トランザクションを実装していま�
 | DW3000 |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
 | DW6000 |45 |60 |2,700 |180,000,000 |10,800,000,000 |
 
-トランザクション サイズ制限は、トランザクションあたりまたは操作あたりで適用されます。 すべての同時実行トランザクションにまたいで適用されることはありません。 そのため、このデータ量をログに書き込むことが各トランザクションに許可されます。 
+トランザクション サイズ制限は、トランザクションあたりまたは操作あたりで適用されます。 すべての同時実行トランザクションにまたいで適用されることはありません。 そのため、このデータ量をログに書き込むことが各トランザクションに許可されます。
 
 ログに書き込まれるデータ量を最適化および最小化する方法については、[トランザクションのベスト プラクティス](sql-data-warehouse-develop-best-practices-transactions.md)に関する記事をご覧ください。
 
 > [!WARNING]
 > 最大トランザクション サイズは、HASH または ROUND_ROBIN で分散し、データが均等に分散されたテーブルでのみ達成できます。 トランザクションによりデータが書き込まれ、分散が傾斜する場合、最大トランザクション サイズに到達する前に上限に到達する可能性があります。
 > <!--REPLICATED_TABLE-->
-> 
-> 
 
 ## <a name="transaction-state"></a>トランザクションの状態
-SQL Data Warehouse では、XACT_STATE() 関数の値 -2 を使用して、失敗したトランザクションを報告します。 この値は、トランザクションが失敗し、ロールバックのためにのみマークされていることを意味します。
+
+SQL プールでは、XACT_STATE() 関数を使い、値 -2 を使用して、失敗したトランザクションを報告します。 この値は、トランザクションが失敗し、ロールバックのためにのみマークされていることを意味します。
 
 > [!NOTE]
-> 失敗したトランザクションを示すために XACT_STATE 関数の -2 を使用するのは、SQL Server とは異なる動作です。 SQL Server では、コミットできないトランザクションを表すために値 -1 を使用します。 SQL Server では、コミット不可としてマークしなくても、トランザクション内で一部のエラーを許容できます。 たとえば、`SELECT 1/0` はエラーになりますが、トランザクションが強制的にコミット不可状態になることはありません。 また、SQL Server では、コミットできないトランザクションでの読み取りも許可されます。 ただし、SQL Data Warehouse では、これを行うことはできません。 SQL Data Warehouse のトランザクションの内部でエラーが発生した場合、自動的に -2 状態が入力されます。このため、ステートメントがロールバックされるまで、SELECT ステートメントをそれ以上実行することができなくなります。 したがって、コードを変更する必要がある場合は、アプリケーション コードを調べて、XACT_STATE() を使用しているかどうかを確認することが重要です。
-> 
-> 
+> 失敗したトランザクションを示すために XACT_STATE 関数の -2 を使用するのは、SQL Server とは異なる動作です。 SQL Server では、コミットできないトランザクションを表すために値 -1 を使用します。 SQL Server では、コミット不可としてマークしなくても、トランザクション内で一部のエラーを許容できます。 たとえば、`SELECT 1/0` はエラーになりますが、トランザクションが強制的にコミット不可状態になることはありません。
+
+また、SQL Server では、コミットできないトランザクションでの読み取りも許可されます。 ただし、SQL プールではこれを実行できません。 SQL プールのトランザクションでエラーが発生した場合は、-2 状態が自動的に入力され、ステートメントがロールバックされるま select ステートメントをそれ以上実行できなくなります。
+
+このため、コードを変更する必要がある場合は、アプリケーション コードを調べて、XACT_STATE() を使用しているかどうかを確認することが重要です。
 
 たとえば、SQL Server では、次のようなトランザクションを目にすることがあります。
 
@@ -131,11 +140,11 @@ SELECT @xact_state AS TransactionState;
 
 上記のコードでは、次のようなエラー メッセージが発生します。
 
-メッセージ 111233、レベル 16、状態 1、ライン 1 111233; 111233; 現在のトランザクションは中止され、保留中の変更はすべてロールバックされています。 原因: rollback-only 状態のトランザクションが、DDL、DML、または SELECT ステートメントの前に明示的にロールバックされませんでした。
+メッセージ 111233、レベル 16、状態 1、ライン 1 111233; 111233; 現在のトランザクションは中止され、保留中の変更はすべてロールバックされています。 この問題の原因は、rollback-only 状態のトランザクションが、DDL、DML、または SELECT ステートメントの前に明示的にロールバックされていないことです。
 
 ERROR_* 関数の出力は得られません。
 
-SQL Data Warehouse では、コードを少し変更する必要があります。
+SQL プールでは、コードを少し変更する必要があります。
 
 ```sql
 SET NOCOUNT ON;
@@ -177,17 +186,22 @@ SELECT @xact_state AS TransactionState;
 変更点をまとめると、CATCH ブロック内でエラー情報の読み取り前にトランザクションの ROLLBACK が発生するようになりました。
 
 ## <a name="error_line-function"></a>Error_Line() 関数
-SQL Data Warehouse では、ERROR_LINE() 関数を実装およびサポートしていないことにも注意してください。 この関数がコードに含まれている場合は、SQL Data Warehouse に準拠するために削除する必要があります。 代わりに、コードでクエリ ラベルを使用して同等の機能を実装します。 詳しくは、[ラベル](sql-data-warehouse-develop-label.md)に関する記事をご覧ください。
+
+SQL プールでは、ERROR_LINE() 関数を実装またはサポートしていないことにも注意してください。 この関数がコードに含まれている場合は、SQL プールに準拠するために削除する必要があります。
+
+代わりに、コードでクエリ ラベルを使用して同等の機能を実装します。 詳しくは、[ラベル](sql-data-warehouse-develop-label.md)に関する記事をご覧ください。
 
 ## <a name="using-throw-and-raiserror"></a>THROW と RAISERROR の使用
-THROW は、SQL Data Warehouse で例外を発生させるための最新の実装ですが、RAISERROR もサポートされています。 ただし、注意が必要な相違点がいくつかあります。
+
+THROW は、SQL プールで例外を発生させるための最新の実装ですが、RAISERROR もサポートされています。 ただし、注意が必要な相違点がいくつかあります。
 
 * THROW では、ユーザー定義のエラー メッセージの番号として、100,000 ～ 150,000 の範囲の番号を指定することはできません。
 * RAISERROR のエラー メッセージは 50,000 に固定されています。
 * sys.messages の使用はサポートされていません。
 
 ## <a name="limitations"></a>制限事項
-SQL Data Warehouse には、トランザクションに関連する他の制限事項があります。
+
+SQL プールには、トランザクションに関する他の制限事項がいくつかあります。
 
 制限事項は次のとおりです。
 
@@ -199,5 +213,5 @@ SQL Data Warehouse には、トランザクションに関連する他の制限�
 * ユーザー定義トランザクション内では CREATE TABLE のような DDL はサポートされません。
 
 ## <a name="next-steps"></a>次のステップ
-トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](sql-data-warehouse-develop-best-practices-transactions.md)に関する記事をご覧ください。 SQL Data Warehouse のその他のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス](sql-data-warehouse-best-practices.md)に関する記事をご覧ください。
 
+トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](sql-data-warehouse-develop-best-practices-transactions.md)に関する記事をご覧ください。 他の SQL プールのベスト プラクティスの詳細については、「[SQL プールのベスト プラクティス](sql-data-warehouse-best-practices.md)」を参照してください。

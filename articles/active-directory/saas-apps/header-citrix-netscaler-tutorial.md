@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87f1c884edf6841b65495cd31ed4c7d6e63aedd9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 07ea6824975d0cb3f4b909db41188c490bbba6d2
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977929"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477945"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>チュートリアル:Azure Active Directory シングル サインオンと Citrix NetScaler の統合 (ヘッダーベースの認証)
 
@@ -244,7 +244,7 @@ Azure portal を使用して Azure AD SSO を有効にするには、これら�
 
 ### <a name="bind-the-certificate"></a>証明書をバインドする
 
-このサービスを SSL として公開するには、サーバー証明書をバインドしてから自分のアプリケーションをテストします。
+このサービスを TLS として公開するには、サーバー証明書をバインドしてから自分のアプリケーションをテストします。
 
 1. **[Certificate]\(証明書\)** で、 **[No Server Certificate]\(サーバー証明書なし\)** を選択します。
 

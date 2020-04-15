@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 04e10b9c5410d15d3509829af7502c9a93c7267d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee8f67a41d339e6e5f65548867c5458739857d50
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281631"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981258"
 ---
 # <a name="update-a-power-bi-app-offer"></a>Power BI アプリ オファーの更新
+
+>[!Important]
+>2020 年 4 月 13 日以降、Power BI アプリ オファーの管理のパートナー センターへの移行を開始します。 移行後は、パートナー センターでオファーを作成および管理します。 移行されたオファーを管理するには、[Power BI アプリの作成の概要](https://aka.ms/AzureCreatePBIServiceApp)に関するページの手順に従ってください。
 
 この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)で Microsoft Power BI アプリ オファーを更新し、オファーを再発行する方法について説明します。 オファーを更新する一般的な理由は次のとおりです。
 

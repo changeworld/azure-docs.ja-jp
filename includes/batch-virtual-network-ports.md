@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 03/04/2020
+ms.date: 04/03/2020
 ms.author: labrenne
 ms.custom: include file
-ms.openlocfilehash: e9460108499ca76d1b149b61cebe3d3081bf6544
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc08dcded6418208751edbffcb5d263db059ec01
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086268"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657472"
 ---
 ### <a name="general-requirements"></a>一般的な要件
 
@@ -75,6 +75,9 @@ ms.locfileid: "79086268"
 | --- | --- | --- | --- | --- | --- | --- |
 | 該当なし | `BatchNodeManagement` [サービス タグ](../articles/virtual-network/security-overview.md#service-tags) (リージョン バリアントを使用している場合は、Batch アカウントと同じリージョン) | * | Any | 29876 から 29877 | TCP | Allow |
 | Linux マルチインスタンス タスクのためにコンピューティング ノードまたはコンピューティング ノード サブネット (あるいは両方) にリモート アクセスするためのユーザー ソース IP (必要な場合) | 該当なし | * | Any | 3389 (Windows)、22 (Linux) | TCP | Allow |
+
+> [!WARNING]
+> Batch サービスの IP アドレスは、時間の経過と共に変化することがあります。 そのため、NSG 規則には `BatchNodeManagement` サービス タグ (またはリージョン バリアント) を使用することを強くお勧めします。 直接 Batch サービスの IP アドレスを使用して NSG 規則を設定することはお勧めしません。
 
 **アウトバウンド セキュリティ規則**
 

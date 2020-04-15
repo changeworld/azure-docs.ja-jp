@@ -3,16 +3,16 @@ title: Azure EA Portal のアクセスのトラブルシューティング
 description: この記事では、Azure Enterprise Agreement (EA) に関して Azure EA Portal で発生する可能性のある一般的な問題について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3bf1c10e28ef9e3e4008968c9dbaef576bccdb5f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: ee8363a76db93f0c2bd4734151e3d250de5402fc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411546"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586196"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Azure EA Portal のアクセスのトラブルシューティング
 
@@ -122,7 +122,7 @@ EA 登録には複数の EA 管理者を含めることができます。別の 
  1. Azure EA Portal へのアクセス権が職場または学校アカウントあるいは Microsoft Live ID として追加されているかどうかを確認します。 職場のアカウントを使用する場合は、職場のメール アドレスとパスワードを入力してください。 Microsoft Live ID を使用する場合は、Microsoft Live ID のメール アドレスとパスワードを入力してください。 Microsoft Live ID のパスワードを忘れた場合は、[https://account.live.com/password/reset](https://account.live.com/password/reset) でパスワードをリセットしてください。
  1. プライベート ブラウザーを使用してサインインすることをお勧めします。これにより、以前のセッションや既存のセッションの Cookie やキャッシュが保持されなくなります。 キャッシュをクリアし、プライベート ブラウズ モードまたは Incognito ウィンドウを使用して [https://ea.azure.com](https://ea.azure.com) を開きます。
  1. Microsoft アカウントの使用時に無効なユーザー エラーが発生する場合は、複数の Microsoft アカウントがあり、サインインしようとしているアカウントがプライマリ エイリアスではないことが原因である可能性があります。 プライマリ エイリアスを確認するには、account.live.com にアクセスします。
-    - [Your Info] (あなたの情報) > [Manage your sign-in email or phone number] (サインイン用のメール アドレスまたは電話番号を管理) に移動します。
+    - [Your Info]\(あなたの情報\) > [Manage your sign-in email or phone number]\(サインイン用のメール アドレスまたは電話番号を管理\) に移動します。
     - 画面の指示に従って連絡用メール アドレスを確認し、機密情報にアクセスするためのコードを取得します。
     - セキュリティ コードを入力します。
     - 2 段階認証を後で設定する場合は、[後で設定する] を選択します。

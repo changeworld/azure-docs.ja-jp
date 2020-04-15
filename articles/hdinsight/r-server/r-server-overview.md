@@ -1,33 +1,33 @@
 ---
 title: Azure HDInsight での ML Services の概要
 description: HDInsight 上の ML Services を使用してビッグ データ分析用のアプリケーションを作成する方法について説明します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 02/10/2020
-ms.openlocfilehash: a77771880da962298f6e80782e5f3e251f5f4641
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: hdinsightactive
+ms.date: 04/03/2020
+ms.openlocfilehash: 5bf405840de54c4e2399ee73e723201acca9e6bc
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77122371"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657034"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight での ML Services とは
 
-Azure で HDInsight クラスターを作成するときのデプロイ オプションとして Microsoft Machine Learning Server を選択できるようになりました。 このオプションを提供するクラスターの種類は、**ML Services** と呼ばれます。 この機能により、データ サイエンティスト、統計学者、R プログラマは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。
+Azure で HDInsight クラスターを作成するときのデプロイ オプションとして Microsoft Machine Learning Server を選択できるようになりました。 このオプションを提供するクラスターの種類は、**ML Services** と呼ばれます。 この機能により、HDInsight での柔軟で分散型の分析方法にオンデマンドでアクセスできます。
 
-HDInsight の ML Services は、Azure Blob Storage または Data Lake Storage に読み込まれた事実上すべてのサイズのデータセットで R ベースの分析を行うための最新の機能を備えています。 ML Services クラスターはオープン ソース R を基盤としているため、自ら構築する R ベースのアプリケーションで 8,000 を超えるオープン ソース R パッケージを活用できます。 また、ScaleR (Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。
+HDInsight の ML Services は、ほぼすべてのサイズのデータセットで R ベースの分析を行うための最新の機能を備えています。 データセットは、Azure BLOB または Data Lake ストレージのいずれかに読み込むことができます。 R ベースのアプリケーションは、8000 個以上のオープンソースの R パッケージを使用できます。 また、ScaleR (Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。
 
-クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。 エッジ ノードでは、エッジ ノード サーバーのコア間で、ScaleR の並列化された分散関数を実行できます。 また、ScaleR の Hadoop Map Reduce または Apache Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
+エッジ ノードは、クラスターに接続して R スクリプトを実行するのに便利な場所です。 エッジ ノードでは、サーバーのコア間で、ScaleR の並列化された分散関数を実行できます。 また、ScaleR の Hadoop Map Reduce を使用して、クラスターのノード間でそれらを実行することもできます。 Apache Spark のコンピューティング コンテキストも使用できます。
 
-分析によって得られたモデルや予測は、ダウンロードしてオンプレミスで使用できます。 また、[Azure Machine Learning Studio (classic)](https://studio.azureml.net) などの [Web サービス](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)を使用して、Azure の別の場所で運用化することもできます。
+分析によって得られたモデルや予測は、ダウンロードしてオンプレミスで使用できます。 また、Azure 内の他の場所で運用化することもできます。 具体的には、[Azure Machine Learning Studio (classic)](https://studio.azureml.net)、および [Web サービス](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)を使用します。
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight での ML Services の概要
 
-Azure HDInsight に ML Services クラスターを作成するには、Azure portal を使って HDInsight クラスターを作成するときに、**ML Services** クラスター タイプを選びます。 この ML Services クラスター タイプは、クラスターのデータ ノード上の ML Server と、ML Services ベースの分析用のランディング ゾーンとしてのエッジ ノードを組み込みます。 クラスターの作成方法のチュートリアルについては、[Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
+HDInsight で ML Services クラスターを作成するには、**ML Services** クラスターの種類を選択します。 ML Services クラスターの種類には、データ ノード上の ML Server と、エッジ ノードが含まれます。 エッジ ノードは、ML Services ベースの分析のランディング ゾーンとして機能します。 クラスターの作成方法のチュートリアルについては、[Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
 
 ## <a name="why-choose-ml-services-in-hdinsight"></a>HDInsight で ML Services を選ぶ理由
 
@@ -35,15 +35,15 @@ HDInsight における ML Services のメリットは次のとおりです。
 
 ### <a name="ai-innovation-from-microsoft-and-open-source"></a>Microsoft およびオープン ソースからの AI 革新
 
-  ML Services には、物理メモリより大きいサイズのデータを処理でき、分散方式のさまざまなプラットフォームで実行できる、[RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler)、[revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)、[microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) などの、拡張性が高い分散アルゴリズムのセットが含まれています。 製品に付属する Microsoft のカスタム [R パッケージ](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference)と [Python パッケージ](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference)のコレクションの詳細をご覧ください。
+  ML Services には、[RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler)、[revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)、[microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) など、高い適応性を持つ分散型のアルゴリズム セットが含まれます。 これらのアルゴリズムは、物理メモリより大きいサイズのデータ サイズに対応しています。 また、分散された方法で、さまざまなプラットフォームで実行することができます。 製品に付属する Microsoft のカスタム [R パッケージ](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference)と [Python パッケージ](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference)のコレクションの詳細をご覧ください。
   
-  ML Services は、単一のエンタープライズ レベルのプラットフォームで、Microsoft の新技術とオープン ソース コミュニティの技術 (R、Python、AI ツールキット) を統合します。 R または Python のすべてのオープン ソース機械学習パッケージが、Microsoft 独自の革新技術とサイド バイ サイドで動作できます。
+  ML Services は、Microsoft の革新技術とオープンソース コミュニティの貢献 (R、Python、AI ツールキット) を橋渡しします。 それは、すべて 1 つのエンタープライズ レベルのプラットフォーム上で行われます。 R または Python のすべてのオープン ソース機械学習パッケージが、Microsoft 独自の革新技術とサイド バイ サイドで動作できます。
 
 ### <a name="simple-secure-and-high-scale-operationalization-and-administration"></a>簡単で、安全性が高く、高スケールの運用化と管理
 
-  従来のパラダイムと環境に依存する企業は、運用化に多くの時間と労力を費やすことになります。 その結果、モデルの変換時間、有効で最新に維持するためのイテレーション、規制の承認、運用化によるアクセス許可の管理などのコストと遅延が増えます。
+  従来のパラダイムと環境に依存する企業は、運用化に多くの時間と労力を費やすことになります。 その結果、モデルの変換時間、それらを有効で最新状態にしておくためのイテレーション、規制の承認、アクセス許可の管理などのコストと遅延が増加します。
 
-  ML Services は、エンタープライズ グレードの[運用化](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)を提供します。機械学習モデルが完成した時点から、数回クリックするだけで Web サービス API が生成されます。 これらの [Web サービス](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)はクラウドのサーバー グリッドでホストされ、基幹業務アプリケーションと統合できます。 弾力性のあるグリッドに展開できるので、バッチとリアルタイム スコアリングの両方について、ビジネスのニーズに合わせてシームレスに拡張できます。 方法については、[HDInsight での ML Services の運用化](r-server-operationalize.md)に関する記事をご覧ください。
+  ML Services は、エンタープライズ レベルの[運用化](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)を提供します。 機械学習モデルが完成した後は、わずか数クリックで Web サービス API が生成されます。 これらの [Web サービス](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)はクラウドのサーバー グリッドでホストされ、基幹業務アプリケーションと統合できます。 弾力性のあるグリッドに展開できるので、バッチとリアルタイム スコアリングの両方について、ビジネスのニーズに合わせてシームレスに拡張できます。 方法については、[HDInsight での ML Services の運用化](r-server-operationalize.md)に関する記事をご覧ください。
 
 <!---
 * **Deep ecosystem engagements to deliver customer success with optimal total cost of ownership**
@@ -60,28 +60,27 @@ HDInsight の ML Services には次の機能が含まれます。
 
 | 機能カテゴリ | 説明 |
 |------------------|-------------|
-| R 対応 | [R パッケージ](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference): R で記述されたソリューション用であり、スクリプト実行用の R とランタイムのインフラストラクチャのオープン ソース ディストリビューションを含みます。 |
-| Python 対応 | [Python モジュール](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference): Python で記述されたソリューション用であり、スクリプト実行用の Python とランタイムのインフラストラクチャのオープン ソース ディストリビューションを含みます。
+| R 対応 | [R パッケージ](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference): R で記述されたソリューション用であり、R のオープンソース ディストリビューションと、スクリプト実行用のランタイム インフラストラクチャを含みます。 |
+| Python 対応 | [Python モジュール](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference): Python で記述されたソリューション用であり、Python のオープン ソース ディストリビューションと、スクリプト実行用のランタイム インフラストラクチャを含みます。
 | [事前トレーニング済みモデル](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | ビジュアル分析とテキストのセンチメント分析に対応し、ユーザーが提供するデータをスコア付けできる状態になっています。 |
 | [展開と使用](r-server-operationalize.md) | サーバーを運用化し、Web サービスとしてソリューションを展開します。 |
 | [リモート実行](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | クライアント ワークステーションからネットワーク上の ML Services でリモート セッションを開始します。 |
 
-
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>HDInsight 上の ML Services 向けのデータ ストレージ オプション
 
-HDInsight クラスターの HDFS ファイル システムの既定のストレージを、Azure ストレージ アカウントまたは Azure Data Lake Storage と関連付けることができます。 この関連付けにより、分析中にクラスター ストレージにアップロードされるデータがどのようなものであっても確実に永続化され、クラスターが削除された後であってもデータを利用できます。 選択したストレージ オプションへのデータ転送を担うさまざまなツールが用意されています。これには、ストレージ アカウントのポータル ベースのアップロード機能や [AzCopy](../../storage/common/storage-use-azcopy.md) ユーティリティなどがあります。
+HDFS ファイル システムの既定のストレージには、Azure Storage アカウントまたは Azure Data Lake Storage を指定できます。 分析中にクラスター ストレージにアップロードされたデータは永続的になります。 このデータは、クラスターの削除後も使用できます。 ストレージへのデータ転送は、さまざまなツールで処理できます。 このツールには、ストレージ アカウントのポータルベースのアップロード機能と [AzCopy](../../storage/common/storage-use-azcopy.md) ユーティリティが含まれます。
 
-選択したプライマリ ストレージにかかわらず、クラスター プロビジョニング プロセス中に追加の BLOB および Data Lake Store へのアクセスを有効にすることができます。  複数のストレージ アカウントの使用について詳しくは、[HDInsight の ML Services 向けの Azure Storage オプション](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage)に関する記事をご覧ください。
+クラスターの作成中に、追加の BLOB および Data Lake Store へのアクセスを有効にできます。 使用しているプライマリ ストレージ オプションによって制限されることはありません。  複数のストレージ アカウントの使用について詳しくは、[HDInsight の ML Services 向けの Azure Storage オプション](./r-server-storage.md)に関する記事をご覧ください。
 
-エッジ ノードで使用するストレージ オプションとして、 [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) を使用することもできます。 Azure Files では、Azure Storage で作成されたファイル共有を Linux ファイル システムにマウントできます。 HDInsight クラスターの ML Services を対象としたこれらのデータ ストレージ オプションについて詳しくは、[HDInsight の ML Services 向けの Azure Storage オプション](r-server-storage.md)に関する記事をご覧ください。
+エッジ ノードで使用するストレージ オプションとして、 [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) を使用することもできます。 Azure Files により、Azure Storage で作成されたファイル共有を Linux ファイル システムで有効にできます。 詳細については、[HDInsight の ML Services 向けの Azure Storage オプション](r-server-storage.md)に関する記事を参照してください。
 
 ## <a name="access-ml-services-edge-node"></a>ML Services エッジ ノードにアクセスする
 
-ブラウザーを使用して、エッジ ノードの Microsoft ML Server に接続することができます。 これは、クラスターの作成時に既定でインストールされます。  クラスター エッジ ノードには、コマンドラインから SSH/PuTTY を使用して R コンソールにアクセスすることによって接続することもできます。
+ブラウザーまたは SSH/PuTTY を使用して、エッジ ノードの Microsoft ML Server に接続できます。 R コンソールは、クラスターの作成時に既定でインストールされます。  
 
 ## <a name="develop-and-run-r-scripts"></a>R スクリプトの開発と実行
 
-ユーザーが作成して実行する R スクリプトでは、ScaleR ライブラリの並列化された分散ルーチンに加え、8,000 以上のオープン ソース R パッケージを使用できます。 一般に、エッジ ノードの ML Services で実行されるスクリプトは、そのノードの R インタープリター内で実行されます。 コンピューティング コンテキストが Hadoop Map Reduce (RxHadoopMR) または Spark (RxSpark) に設定された ScaleR 関数を呼び出す必要のあるステップは例外です。 この場合、関数は参照先データに関連付けられたクラスターのデータ (タスク) ノード間に分散した形で実行されます。 各種コンピューティング コンテキスト オプションの詳細については、[HDInsight の ML Services の計算コンテキストのオプション](r-server-compute-contexts.md)に関する記事をご覧ください。
+R スクリプトでは、8000 個以上のオープンソース R パッケージのいずれも使用できます。 また、ScaleR ライブラリの並列化および分散化されたルーチンも使用できます。 エッジ ノード上で実行されるスクリプトは、そのノードの R インタープリター内で実行されます。 Map Reduce (RxHadoopMR) または Spark (RxSpark) のコンピューティング コンテキストで ScaleR 関数を呼び出すステップを除きます。 この関数は、データに関連付けられているデータ ノード全体で、分散された方法で実行されます。 コンテキスト オプションの詳細については、「[HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)」をご覧ください。
 
 ## <a name="operationalize-a-model"></a>モデルの運用化
 
@@ -89,17 +88,15 @@ HDInsight クラスターの HDFS ファイル システムの既定のストレ
 
 ### <a name="score-in-hdinsight"></a>HDInsight でのスコア付け
 
-HDInsight でスコア付けを行うには、モデルを呼び出して、ストレージ アカウントに読み込んだ新しいデータ ファイルについて予測を行う R 関数を作成します。 その後、予測をストレージ アカウントに保存します。 このルーチンは、クラスターのエッジ ノードでオンデマンドで実行することも、スケジュールされたジョブを使用して実行することもできます。
+HDInsight でスコア付けを行うには、R 関数を記述します。 この関数は、モデルを呼び出して、ストレージ アカウントに読み込んだ新しいデータ ファイルについて予測を行います。 その後、予測をストレージ アカウントに保存します。 このルーチンは、クラスターのエッジ ノードでオンデマンドで実行することも、スケジュールされたジョブを使用して実行することもできます。
 
 ### <a name="score-in-azure-machine-learning-aml"></a>Azure Machine Learning (AML) でのスコア付け
 
-Azure Machine Learning を使ってスコア付けを行うには、[AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) と呼ばれるオープン ソースの Azure Machine Learning R パッケージを使って、モデルを Azure Web サービスとして発行します。 便宜上、このパッケージはエッジ ノードにあらかじめインストールされています。 次に、Azure Machine Learning の機能を使って Web サービスのユーザー インターフェイスを作成し、スコア付けが必要なときに Web サービスを呼び出します。
-
-この方法を選んだ場合、ScaleR モデル オブジェクトを、Web サービスで使う同等のオープン ソース モデル オブジェクトに変換する必要があります。 この変換には、ScaleR 強制型変換関数 (アンサンブルベースのモデルの `as.randomForest()` など) を使用できます。
+Azure Machine Learning を使ってスコア付けを行うには、[AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) と呼ばれるオープン ソースの Azure Machine Learning R パッケージを使って、モデルを Azure Web サービスとして発行します。 便宜上、このパッケージはエッジ ノードにあらかじめインストールされています。 次に、Azure Machine Learning の機能を使って Web サービスのユーザー インターフェイスを作成し、スコア付けが必要なときに Web サービスを呼び出します。 次に、ScaleR モデル オブジェクトを、Web サービスで使う同等のオープンソース モデル オブジェクトに変換します。 この変換には、ScaleR 強制型変換関数 (アンサンブルベースのモデルの `as.randomForest()` など) を使用できます。
 
 ### <a name="score-on-premises"></a>オンプレミスのスコア付け
 
-モデルの作成後にオンプレミスのスコア付けを行うには、R でモデルをシリアル化し、モデルをダウンロードして逆シリアル化してから、新しいデータのスコア付けに使用します。 新しいデータのスコア付けは、「[HDInsight でのスコア付け](#score-in-hdinsight)」で前述した方法を使用するか、[Web サービス](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)を使用して実行できます。
+モデルの作成後にオンプレミスのスコア付けを行うには、R でモデルをシリアル化し、ダウンロードし、逆シリアル化してから、新しいデータのスコア付けに使用します。 新しいデータのスコア付けは、「[HDInsight でのスコア付け](#score-in-hdinsight)」で前述した方法を使用するか、[Web サービス](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)を使用して実行できます。
 
 ## <a name="maintain-the-cluster"></a>クラスターの管理
 
@@ -107,43 +104,43 @@ Azure Machine Learning を使ってスコア付けを行うには、[AzureML](ht
 
 使用する R パッケージのほとんどは、R スクリプトのほとんどの手順が実行されるエッジ ノードに配置する必要があります。 エッジ ノードに追加の R パッケージをインストールするには、R の `install.packages()` メソッドを使用します。
 
-クラスターで ScaleR ライブラリのルーチンを使用するだけであれば、通常はデータ ノードに追加の R パッケージをインストールする必要はありません。 ただし、データ ノードで **rxExec** または **RxDataStep** 実行の使用をサポートするために、追加のパッケージが必要になる場合があります。
+ScaleR ライブラリ ルーチンを使用しているだけの場合は、通常、追加の R パッケージは必要ありません。 データ ノードで **rxExec** または **RxDataStep** を実行するには、追加のパッケージが必要になる場合があります。
 
-このような場合、クラスターの作成後にスクリプト アクションを使って追加のパッケージをインストールできます。 詳しくは、[HDInsight クラスターでの ML Services の管理](r-server-hdinsight-manage.md)に関する記事をご覧ください。
+追加のパッケージは、クラスターの作成後にスクリプト アクションを使ってインストールできます。 詳しくは、[HDInsight クラスターでの ML Services の管理](r-server-hdinsight-manage.md)に関する記事をご覧ください。
 
 ### <a name="change-apache-hadoop-mapreduce-memory-settings"></a>Apache Hadoop MapReduce のメモリ設定の変更
 
-クラスターに変更を加えることで、MapReduce ジョブの実行時に ML Services で使用可能なメモリ容量を変更できます。 クラスターを変更するには、クラスターの Azure ポータル ブレードで使用できる Apache Ambari UI を使用します。 クラスターの Ambari UI にアクセスする手順については、「 [Ambari Web UI を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari.md)」をご覧ください。
+ML Services で使用可能なメモリは、MapReduce ジョブを実行しているときに変更できます。 クラスターを変更するには、クラスターに Apache Ambari UI を使用します。 Ambari UI の説明については、「[Ambari Web UI を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari.md)」をご覧ください。
 
-次のように、**RxHadoopMR** の呼び出しで Hadoop スイッチを使って、ML Services で使用可能なメモリ容量を変更することもできます。
+ML Services で使用できるメモリは、**RxHadoopMR** への呼び出しで Hadoop スイッチを使用して変更できます。
 
     hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
 
 ### <a name="scale-your-cluster"></a>クラスターのスケーリング
 
-HDInsight 上の既存の ML Services クラスターは、ポータルを使ってスケールアップまたはスケールダウンできます。 スケールアップにより、大規模な処理タスクに必要な追加容量が得られます。また、クラスターがアイドル状態のときに、クラスターを縮小することもできます。 クラスターのスケーリングの手順については、[HDInsight クラスターの管理](../hdinsight-administer-use-portal-linux.md)に関する記事をご覧ください。
+HDInsight 上の既存の ML Services クラスターは、ポータルを使ってスケールアップまたはスケールダウンできます。 スケール アップすることで、より大きな処理タスク用に追加の容量を取得できます。 アイドル状態のときはクラスターをスケール バックできます。 クラスターのスケーリングの手順については、[HDInsight クラスターの管理](../hdinsight-administer-use-portal-linux.md)に関する記事をご覧ください。
 
 ### <a name="maintain-the-system"></a>システムのメンテナンス
 
-OS 修正プログラムや他の更新プログラムを適用するために、HDInsight クラスターの基になる Linux VM で時間外にメンテナンスが実施されます。 通常、メンテナンスは毎週月曜日と木曜日の午前 3 時 30 分 (VM のローカル時刻に基づく) に実施されます。 更新は、4 分の 1 以上のクラスターに同時に影響を与えないような方法で実行されます。
+OS のメンテナンスは、HDInsight クラスター内の基礎となる Linux VM で時間外に行われます。 通常、メンテナンスは毎週月曜日と木曜日の午前 3 時 30 分 (VM のローカル時刻) に実施されます。 更新プログラムの影響を同時に受けるのは、クラスターの 4 分の 1 以下になります。
 
-ヘッド ノードが冗長化されており、すべてのデータ ノードが影響を受けるわけではないため、この期間に実行中のジョブは速度が低下する場合がありますが、 ただし、完了するまで引き続き実行する必要があります。 クラスターの再構築を必要とする致命的な障害が発生しない限り、カスタム ソフトウェアやローカル データはメンテナンス イベントで保持されます。
+メンテナンス中は、ジョブの実行速度が低下することがあります。 ただし、完了するまで引き続き実行する必要があります。 クラスターの再構築を必要とする致命的な障害が発生しない限り、カスタム ソフトウェアやローカル データはメンテナンス イベントが発生しても保持されます。
 
 ## <a name="ide-options-for-ml-services-on-hdinsight"></a>HDInsight 上の ML Services 向けの IDE オプション
 
-HDInsight クラスターの Linux エッジ ノードは、R ベースの分析のランディング ゾーンです。 HDInsight の最新バージョンには、ブラウザー ベースの IDE としてエッジ ノードへの RStudio Server の既定のインストールが備わっています。 R スクリプトの開発と実行に IDE として RStudio Server を使用すると、単に R コンソールを使用した場合よりも生産性を大幅に高めることができます。
+HDInsight クラスターの Linux エッジ ノードは、R ベースの分析のランディング ゾーンです。 HDInsight の最新バージョンには、エッジ ノードに RStudio Server のブラウザーベースの IDE が提供されています。 RStudio Server は、開発および実行用の R コンソールよりも生産性が高くなります。
 
-さらに、デスクトップ IDE をインストールし、リモートの MapReduce または Spark コンピューティング コンテキストを使ってクラスターにアクセスできます。 そのようなオプションとしては、Microsoft の [R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS)、RStudio、Walware の Eclipse ベースの [StatET](http://www.walware.de/goto/statet) が挙げられます。
+デスクトップ IDE は、リモート MapReduce または Spark コンピューティング コンテキストを介してクラスターにアクセスできます。 次のオプションがあります。Microsoft の [R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS)、RStudio、Walware の Eclipse ベースの [StatET](http://www.walware.de/goto/statet)。
 
-さらに、SSH または PuTTY 経由で接続した後、単に Linux コマンド プロンプトで「**R**」と入力して、エッジ ノードの R コンソールにアクセスすることもできます。 コンソール インターフェイスを使用しているときは、別のウィンドウで R スクリプト開発用のテキスト エディターを実行し、必要に応じてスクリプトのセクションを切り取って R コンソールに貼り付けると利便性が向上します。
+コマンド プロンプトに **R** と入力して、エッジ ノードの R コンソールにアクセスします。 コンソールのインターフェイスを使用しているときは、テキスト エディターで R スクリプトを開発すると便利です。 次に、必要に応じてスクリプトのセクションを切り取って R コンソールに貼り付けます。
 
 ## <a name="pricing"></a>価格
 
-ML Services HDInsight クラスターに関する価格は、他の HDInsight クラスター タイプの価格と同様に体系化されています。 料金は、ネーム、データ、エッジの各ノードの基になる VM のサイズに基づきますが、コア時間の割増分が加算されます。 詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」をご覧ください。
+ML Services の HDInsight クラスターに関する価格は、他の HDInsight クラスターの種類と同様に体系化されています。 それらは、名前、データ、およびエッジの各ノードでの基になる VM のサイズ設定に基づきます。 コア時間の割増し分も同様です。 詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-HDInsight クラスターで ML Services を使用する方法の詳細については、次のトピックを参照してください。
+HDInsight クラスターで ML Services を使用する方法の詳細については、次の記事を参照してください。
 
 * [RStudio Server を使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行する](machine-learning-services-quickstart-job-rstudio.md)
 * [HDInsight 上の ML サービス クラスター向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)

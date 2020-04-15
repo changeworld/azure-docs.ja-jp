@@ -3,12 +3,12 @@ title: 修復できるポリシーをデプロイする
 description: Azure の委任されたリソース管理に顧客をオンボードする方法について説明します。これにより、自分のテナントからそれらのリソースにアクセスして管理できるようになります。
 ms.date: 10/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: c06ed4ea597808aee18d4a848bcfea7152b9cf8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b625e9e3c96866cfbc655a55b770c9ac07a626bd
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233059"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985169"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>委任されたサブスクリプション内で修復が可能なポリシーをデプロイする
 
@@ -40,7 +40,7 @@ Azure の委任されたリソースの管理に顧客をオンボードする�
 
 上で説明したとおりに必要なアクセス許可を設定してユーザーを作成したら、そのユーザーが顧客テナント内に修復タスクを使ったポリシーをデプロイできるようになります。
 
-たとえば、こちらの[サンプル](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring)にあるように、顧客テナント内にある Azure Key Vault リソースを対象とした診断を有効にしたい場合を考えてみましょう。 (上で説明したとおり) 管理主体となるテナント内で適切なアクセス許可の設定を済ませたユーザーが、このシナリオを実現するために [Azure Resource Manager テンプレート](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json)をデプロイします。
+たとえば、こちらの[サンプル](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)にあるように、顧客テナント内にある Azure Key Vault リソースを対象とした診断を有効にしたい場合を考えてみましょう。 (上で説明したとおり) 管理主体となるテナント内で適切なアクセス許可の設定を済ませたユーザーが、このシナリオを実現するために [Azure Resource Manager テンプレート](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json)をデプロイします。
 
 現時点では、委任されたサブスクリプションと一緒に使用するポリシーの割り当てを作成する操作に Azure portal ではなく、API を使用する必要があります。 その際、**apiVersion** は新しい **delegatedManagedIdentityResourceId** プロパティが含まれる **2019-04-01-preview** に設定する必要があります。 このプロパティを使用すると、(Azure の委任されたリソース管理にオンボードしたサブスクリプションまたはリソース グループに) 顧客テナント内のマネージド ID を含めることができるようになります。
 
@@ -62,7 +62,7 @@ Azure の委任されたリソースの管理に顧客をオンボードする�
 ```
 
 > [!TIP]
-> 委任されたサブスクリプションに (modify の効果を使って) タグを追加または削除するポリシーのデプロイ方法は、[別のよく似たサンプル](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-add-or-replace-tag)でも確認できます。
+> 委任されたサブスクリプションに (modify の効果を使って) タグを追加または削除するポリシーのデプロイ方法は、[別のよく似たサンプル](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag)でも確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 

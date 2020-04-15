@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: 0ee35f4f0b4bd8c46a0445e2905ae3b50d11f721
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471651"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879124"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door とは
 Azure Front Door では、高可用性のために最大限のパフォーマンスと即時グローバル フェールオーバーを最適化することで、Web トラフィックのグローバル ルーティングを定義、管理、監視することができます。 Front Door を使用すると、グローバル (複数リージョン) のコンシューマーや企業のアプリケーションを、Azure を使用して世界中のユーザーに発信する、堅牢で高性能なパーソナライズされた最新のアプリケーション、API、およびコンテンツに変換することができます。
@@ -51,12 +51,12 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 ## <a name="session-affinity"></a>セッション アフィニティ
 Cookie ベースのセッション アフィニティ機能は、同じアプリケーション バックエンド上にユーザー セッションを保持する場合に便利です。 Front Door で管理される Cookie を使用することで、ユーザー セッションからの後続のトラフィックは、処理のために同じアプリケーション バックエンドに送信されます。 この機能は、ユーザー セッションのためにセッションの状態をバックエンド上でローカルに保存する場合に重要です。
 
-## <a name="secure-sockets-layer-ssl-termination"></a>Secure Sockets Layer (SSL) ターミネーション
-Front Door は、エッジでの SSL 終了をサポートています。つまり、個々のユーザーは、アプリケーション バックエンドとの長距離接続を介して確立するのではなく、Front Door 環境との SSL 接続を設定することができます。 さらに、Front Door は、Front Door 環境とバックエンドの間の HTTP 接続と HTTPS 接続の両方をサポートしています。 そのため、エンド ツー エンドの SSL 暗号化を設定することもできますも。 たとえば、アプリケーションのワークロードのための Front Door が、ウォーム接続の再利用が原因で、アクティブなサービスに対する要求を 1 分間で 5000 以上受信する場合は、アプリケーション バックエンドとの接続は約 500 しか確立されないため、バックエンドからの大きな負荷が削減されます。
+## <a name="tls-termination"></a>TLS 終了
+Front Door は、エッジでの TLS 終了をサポートしています。つまり、個々のユーザーは、アプリケーション バックエンドとの長距離接続を介して確立するのではなく、Front Door 環境との TLS 接続を設定することができます。 さらに、Front Door は、Front Door 環境とバックエンドの間の HTTP 接続と HTTPS 接続の両方をサポートしています。 そのため、エンド ツー エンドの TLS 暗号化を設定することもできます。 たとえば、アプリケーションのワークロードのための Front Door が、ウォーム接続の再利用が原因で、アクティブなサービスに対する要求を 1 分間で 5000 以上受信する場合は、アプリケーション バックエンドとの接続は約 500 しか確立されないため、バックエンドからの大きな負荷が削減されます。
 
 ## <a name="custom-domains-and-certificate-management"></a>カスタム ドメインと証明書の管理
 Front Door を使用してコンテンツを配信するときに独自のドメイン名を Front Door URL に表示するには、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。
-Front Door はカスタム ドメイン名でも HTTPS をサポートしています。 この機能は、Front Door で管理されるトラフィックの証明書を選択するか、独自のカスタム SSL 証明書をアップロードすることで使用します。
+Front Door はカスタム ドメイン名でも HTTPS をサポートしています。 この機能を使用するには、トラフィックに対して Front Door で管理されている証明書を選択するか、独自のカスタム TLS/SSL 証明書をアップロードします。
 
 ## <a name="application-layer-security"></a>アプリケーション層のセキュリティ
 Azure Front Door を使用すると、アクセス制御のためのカスタムの Web アプリケーション ファイアウォール (WAF) 規則を作成して、クライアント IP アドレス、国番号、http パラメーターに基づいて HTTP/HTTPS ワークロードを不正使用から保護することができます。 さらに、Front Door では、悪意のあるボット トラフィックと戦うためにレート制限ルールを作成することもできます。 Web アプリケーション ファイアウォールの詳細については、「[Azure Web アプリケーション ファイアウォールとは](../web-application-firewall/overview.md)」を参照してください。

@@ -9,15 +9,15 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: d01d749300c6ad07e498c75c9487b554810e68cd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 868c7e3956f20837b3774c0958842a7835579a04
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79454076"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607516"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル:Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -213,7 +213,7 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
     | **リソース** | お使いの BLOB ストレージ アカウント | 作成した Blob Storage アカウントを選びます。 |
     | **イベントの種類** | Blob created (作成された BLOB) | **[Blob created]\(作成された BLOB\)** 以外のすべての種類をオフにします。 `Microsoft.Storage.BlobCreated` のイベントの種類のみが関数に渡されます。 |
     | **[エンドポイントの種類]** | 自動生成 | **Azure Function** としてあらかじめ定義されています。 |
-    | **エンドポイント** | 自動生成 | 自動的に生成されるエンドポイントの URL を使います。 |
+    | **エンドポイント** | 自動生成 | 関数の名前です。 この場合は、**Thumbnail** です。 |
 
 4. **[フィルター]** タブに切り替えて、次のアクションを実行します。
     1. **[サブジェクト フィルタリングを有効にする]** オプションを選択します。

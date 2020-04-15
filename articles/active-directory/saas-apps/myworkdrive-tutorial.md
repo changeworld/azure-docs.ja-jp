@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 60fdd9b0a8fb272da885df97e39804a98e48de67
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74074080"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478870"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>チュートリアル:MyWorkDrive と Azure Active Directory の統合
 
@@ -92,7 +92,7 @@ MyWorkDrive で Azure AD SSO を構成してテストするには、次の構成
     > 
     > サインオン URL: `https://yourserver.yourdomain.com/Account/Login-saml`
     > 
-    > これらの値に対して独自のホスト名と SSL 証明書を設定する方法がわからない場合は、[MyWorkDrive サポート チーム](mailto:support@myworkdrive.com)にお問い合わせください。
+    > これらの値に対して独自のホスト名と TLS/SSL 証明書を設定する方法がわからない場合は、[MyWorkDrive サポート チーム](mailto:support@myworkdrive.com)にお問い合わせください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をクリップボードにコピーします。
 

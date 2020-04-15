@@ -4,19 +4,19 @@ description: Android デバイスでソリューションに証明書ベース�
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9f38c160a72b6c414cdde7d29e4056a4068cdc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e0427398d05cbe9f76249ec8f7c25568d566d5d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848818"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654375"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android での Azure Active Directory の証明書ベースの認証
 
@@ -66,7 +66,7 @@ Azure Active Directory は、ADFS トークン (またはその他の SAML ト�
 
 詳細については、「[AD FS サインイン ページのカスタマイズ](https://technet.microsoft.com/library/dn280950.aspx)」を参照してください。
 
-(先進認証が有効になった) 一部の Office アプリは、要求で *prompt=login* を Azure AD に送信します。 既定では、Azure AD は ADFS への要求内の '*prompt=login*' を '*wauth=usernamepassworduri*' (ADFS に U/P 認証を実行するよう依頼する)、および '*wfresh=0*' (ADFS に SSO 状態を無視し、新しい認証を実行するよう依頼する) として変換します。 これらのアプリに対して証明書ベースの認証を有効にするには、既定の Azure AD の動作を変更する必要があります。 フェデレーション ドメイン設定内の '*PromptLoginBehavior*' を *[無効]* に設定します。
+(先進認証が有効にされている) 一部の Office アプリでは、要求で "*prompt=login*" が Azure AD に送信されます。 既定では、Azure AD によって、ADFS への要求内の "*prompt=login*" が、"*wauth=usernamepassworduri*" (ADFS に U/P 認証を実行するよう依頼する) および "*wfresh=0*" (ADFS に SSO 状態を無視し、新しい認証を実行するよう依頼する) として変換されます。 これらのアプリに対して証明書ベースの認証を有効にするには、既定の Azure AD の動作を変更する必要があります。 フェデレーション ドメインの設定で "*PromptLoginBehavior*" を "*Disabled*" に設定します。
 このタスクを実行するには、[MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) コマンドレットを使用します。
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`

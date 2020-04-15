@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222369"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546063"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
 
@@ -28,7 +28,7 @@ ms.locfileid: "79222369"
 > [!div class="checklist"]
 > * 自分のワークスペースを接続し、実験を作成する
 > * データを読み込み、scikit-learn モデルをトレーニングする
-> * ポータルでトレーニング結果を表示する
+> * Studio でトレーニング結果を表示する
 > * 最高のモデルを取得する
 
 ## <a name="prerequisites"></a>前提条件
@@ -124,32 +124,33 @@ for alpha in alphas:
 
 1. `alphas` 配列内の各アルファ ハイパーパラメーター値に対して、実験内に新しい実行が作成されます。 アルファ値は、各実行を区別するためにログに記録されます。
 1. 各実行では、リッジ モデルがインスタンス化、トレーニング、および使用されて、予測が実行されます。 実際の値と予測された値に対して平均平方二乗誤差が計算され、実行に記録されます。 この時点で、実行には、アルファ値と rmse の精度の両方についてアタッチされたメタデータが含まれています。
-1. 次に、各実行のモデルがシリアル化され、実行にアップロードされます。 これにより、ポータルで実行からモデル ファイルをダウンロードすることができます。
+1. 次に、各実行のモデルがシリアル化され、実行にアップロードされます。 これにより、Studio で実行からモデル ファイルをダウンロードすることができます。
 1. 実行は、各繰り返しの終わりに `run.complete()` を呼び出すことによって完了します。
 
-トレーニングが完了したら、`experiment` 変数を呼び出して、ポータル内の実験へのリンクを取得します。
+トレーニングが完了したら、`experiment` 変数を呼び出して、Studio 内の実験へのリンクを取得します。
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>名前</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td>Azure portal へのリンク</td><td>ドキュメントへのリンク</td></tr></table>
+<table style="width:100%"><tr><th>名前</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td>Azure Machine Learning Studio へのリンク</td><td>ドキュメントへのリンク</td></tr></table>
 
-## <a name="view-training-results-in-portal"></a>ポータルでトレーニング結果を表示する
+## <a name="view-training-results-in-studio"></a>Studio でトレーニング結果を表示する
 
-**Azure portal へのリンク**に従うと、メインの実験ページに移動します。 ここには、実験の個別の実行がすべて表示されます。 カスタムでログに記録された値 (この場合、`alpha_value` と `rmse`) は、各実行のフィールドになるほか、実験ページの上部にあるグラフとタイルで使用可能になります。 ログに記録されたメトリックをグラフまたはタイルに追加するには、その上にマウス ポインターを移動し、編集ボタンをクリックして、カスタムでログに記録されたメトリックを見つけます。
+**Azure Machine Learning Studio へのリンク**に従うと、メインの実験ページに移動します。 ここには、実験の個別の実行がすべて表示されます。 カスタムでログに記録された値 (この場合、`alpha_value` と `rmse`) は、各実行のフィールドになるほか、実験ページの上部にあるグラフとタイルで使用可能になります。 ログに記録されたメトリックをグラフまたはタイルに追加するには、その上にマウス ポインターを移動し、編集ボタンをクリックして、カスタムでログに記録されたメトリックを見つけます。
 
 数百件および数千件を超える個別の実行を伴う大きな規模でモデルをトレーニングする場合、自分がトレーニングしたすべてのモデル (具体的には、それらがどのようにトレーニングされたか、そして時間の経過と共に一意のメトリックがどのように変化したか) をこのページで簡単に確認できます。
 
-![ポータルのメインの実験ページ](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Studio のメインの実験ページ。":::
 
-`RUN NUMBER` 列の実行番号のリンクをクリックすると、個々の実行のページに移動します。 既定の **[詳細]** タブには、各実行の詳細情報が表示されます。 **[出力]** タブに移動すると、各トレーニングの繰り返し中に実行にアップロードされたモデルの `.pkl` ファイルが表示されます。 ここでは、モデル ファイルをダウンロードすることができます。手動で再トレーニングする必要はありません。
 
-![ポータルの実行の [詳細] ページ](./media/tutorial-1st-experiment-sdk-train/model-download.png)
+`RUN NUMBER` 列の実行番号リンクを選択すると、個々の実行のページが表示されます。 既定の **[詳細]** タブには、各実行の詳細情報が表示されます。 **[出力 + ログ]** タブに移動すると、各トレーニングの繰り返し中に実行にアップロードされたモデルの `.pkl` ファイルが表示されます。 ここでは、モデル ファイルをダウンロードすることができます。手動で再トレーニングする必要はありません。
+
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Studio の実行の詳細ページ。":::
 
 ## <a name="get-the-best-model"></a>最適なモデルを取得する
 
-モデル ファイルは、ポータルで実験からダウンロードできるだけでなく、プログラムによってダウンロードすることもできます。 次のコードでは、実験内の各実行を繰り返し、ログに記録された実行メトリックと実行詳細 (run_id を含む) の両方にアクセスします。 ここでは、最適な実行 (この場合は、平均平方二乗誤差が最小の実行) を追跡します。
+モデル ファイルは、Studio で実験からダウンロードできるだけでなく、プログラムによってダウンロードすることもできます。 次のコードでは、実験内の各実行を繰り返し、ログに記録された実行メトリックと実行詳細 (run_id を含む) の両方にアクセスします。 ここでは、最適な実行 (この場合は、平均平方二乗誤差が最小の実行) を追跡します。
 
 ```python
 minimum_rmse_runid = None
@@ -214,7 +215,7 @@ Azure Machine Learning の他のチュートリアルを実行する予定の場
 > [!div class="checklist"]
 > * 自分のワークスペースを接続し、実験を作成しました
 > * データを読み込み、scikit-learn モデルをトレーニングしました
-> * ポータルでトレーニング結果を表示し、モデルを取得しました
+> * Studio でトレーニング結果を表示し、モデルを取得しました
 
 Azure Machine Learning を使って[モデルをデプロイ](tutorial-deploy-models-with-aml.md)してください。
 [自動化された機械学習](tutorial-auto-train-models.md)の実験を開発する方法について学習します。

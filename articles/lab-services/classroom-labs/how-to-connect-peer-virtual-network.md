@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: 5e013011f81542aa279ba9276a6a1aac01eb9e41
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 224526efc2152e0b788c5cbc7f3bd60bb3363c1a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443196"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545711"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Azure Lab Services でラボのネットワークとピア仮想ネットワークを接続する 
 この記事では、ラボのネットワークと別のネットワークのピアリングに関する情報を提供します。 
@@ -33,8 +33,13 @@ ms.locfileid: "77443196"
 
 特定のオンプレミスのネットワークは [ExpressRoute](../../expressroute/expressroute-introduction.md) または [Virtual Network ゲートウェイ](../../vpn-gateway/vpn-gateway-about-vpngateways.md)のどちらかを使用して Azure Virtual Network に接続しています。 これらのサービスは、Azure Lab Services の外部で設定する必要があります。 ExpressRoute を使用してオンプレミスネットワークを Azure に接続する方法の詳細については、[ExpressRoute の概要](../../expressroute/expressroute-introduction.md)を参照してください。 Virtual Network ゲートウェイを使用してオンプレミスと接続するには、ゲートウェイ、指定された仮想ネットワーク、ラボのアカウントがすべて同じリージョンにある必要があります。
 
+> [!NOTE]
+> ラボ アカウントとピアリングされる予定の Azure Virtual Network の作成時には、クラスルーム ラボが作成される場所に、仮想ネットワークのリージョンがどのように影響するかを理解しておくことが重要です。  詳細については、管理者ガイドの[リージョンや場所](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations)に関するセクションを参照してください。
+
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>ラボ アカウントの作成時に構成する
 新しいラボ アカウントの作成中に、**詳細** タブの **[仮想ネットワークのピアリング]** ドロップダウン リストに表示される既存の仮想ネットワークを選択することができます。選択した仮想ネットワークが、そのラボ アカウントによって作成されたラボに接続 (ピアリング) されます。 この変更を行った後に作成されるラボのすべての仮想マシンが、ピアリングされた仮想ネットワーク上のリソースにアクセスできます。 
+
+ラボの仮想マシンの**アドレス範囲**を提供するためのプロビジョニングもあります。 アドレス範囲が指定されている場合は、ラボ アカウントにあるラボ内のすべての仮想マシンがそのアドレス範囲内に作成されます。 アドレス範囲は CIDR 表記 (例: 10.20.0.0/20) で、既存のアドレス範囲と重複することはできません。 アドレス範囲を指定する場合は、ラボで作成される仮想マシンの数を考慮し、それに対応するアドレス範囲を指定することが重要です。 特定の範囲について、対応できるラボの数が表示されます。
 
 ![ピアリングする VNet を選択する](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 
@@ -60,4 +65,4 @@ ms.locfileid: "77443196"
 - [ラボに共有イメージ ギャラリーをアタッチする](how-to-attach-detach-shared-image-gallery.md)
 - [ユーザーをラボ所有者として追加する](how-to-add-user-lab-owner.md)
 - [ラボのファイアウォール設定の表示](how-to-configure-firewall-settings.md)
-- [ラボのその他設定を構成する](how-to-configure-lab-accounts.md)
+- [ラボのその他の設定を構成する](how-to-configure-lab-accounts.md)

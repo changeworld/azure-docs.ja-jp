@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/03/2020
 ms.author: dacoulte
-ms.openlocfilehash: 7e9dc5e5a7e1c3e485aee47384065a7b2df61eb2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 014ad120a12b836ae05f96b42a96ee7ae5e3d2f9
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79381561"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758769"
 ---
 |名前 |説明 |効果 |Version |GitHub |
 |---|---|---|---|---|
@@ -56,6 +56,6 @@ ms.locfileid: "79381561"
 |[Windows VM 用の Log Analytics エージェントのデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0868462e-646c-4fe3-9ced-a733534b6a2c) |定義された一覧に VM イメージ (OS) があり、エージェントがインストールされていない場合は、Windows VM に Log Analytics エージェントをデプロイします。 OS イメージの一覧は、サポートの更新に伴って更新されます。 |deployIfNotExists |1.0.1 |[リンク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsExtension_Windows_VM_Deploy.json)
 |[ネットワーク トラフィック データ収集エージェントを、Linux 仮想マシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F04c4380f-3fae-46e8-96c9-30193528f602) |Security Center は、Microsoft Monitoring Dependency Agent を使用して Azure 仮想マシンからネットワーク トラフィック データを収集し、高度なネットワーク保護機能 (ネットワーク マップでのトラフィックの視覚化、ネットワークのセキュリティ強化に関する推奨事項、具体的なネットワークの脅威など) を有効にします。 |AuditIfNotExists、Disabled |1.0.0-preview |[リンク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ASC_Dependency_Agent_Audit_Linux.json)
 |[ネットワーク トラフィック データ収集エージェントを、Windows 仮想マシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2f2ee1de-44aa-4762-b6bd-0893fc3f306d) |Security Center は、Microsoft Monitoring Dependency Agent を使用して Azure 仮想マシンからネットワーク トラフィック データを収集し、高度なネットワーク保護機能 (ネットワーク マップでのトラフィックの視覚化、ネットワークのセキュリティ強化に関する推奨事項、具体的なネットワークの脅威など) を有効にします。 |AuditIfNotExists、Disabled |1.0.0-preview |[リンク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ASC_Dependency_Agent_Audit_Windows.json)
-|[アクティビティ ログがあるコンテナーを含むストレージ アカウントは、BYOK を使用して暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |このポリシーは、アクティビティ ログがあるコンテナーを含むストレージ アカウントが BYOK を使用して暗号化されているかどうかを監査します。 このポリシーは、ストレージ アカウントが仕様でアクティビティ ログと同じサブスクリプションに設定されている場合にのみ有効です。 保存時の Azure Storage 暗号化の詳細については、 https://aka.ms/azurestoragebyok をご覧ください。  |AuditIfNotExists、Disabled |1.0.0 |[リンク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json)
+|[アクティビティ ログがあるコンテナーを含むストレージ アカウントは、BYOK を使用して暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |このポリシーは、アクティビティ ログがあるコンテナーを含むストレージ アカウントが BYOK を使用して暗号化されているかどうかを監査します。 このポリシーは、ストレージ アカウントが仕様でアクティビティ ログと同じサブスクリプションに設定されている場合にのみ有効です。 保存時の Azure Storage 暗号化の詳細については、こちら ([https://aka.ms/azurestoragebyok](https://aka.ms/azurestoragebyok)) をご覧ください。  |AuditIfNotExists、Disabled |1.0.0 |[リンク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json)
 |[仮想マシン スケール セットに Log Analytics エージェントをインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fefbde977-ba53-4479-b8e9-10b957924fbf) |このポリシーは、Log Analytics エージェントがインストールされていない場合に、Windows または Linux の仮想マシン スケール セットを監査します。 |AuditIfNotExists、Disabled |1.0.0 |[リンク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VMSS_LogAnalyticsAgent_AuditIfNotExists.json)
 |[仮想マシンに Log Analytics エージェントをインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa70ca396-0a34-413a-88e1-b956c1e683be) |このポリシーは、Log Analytics エージェントがインストールされていない場合に、Windows または Linux の仮想マシンを監査します。 |AuditIfNotExists、Disabled |1.0.0 |[リンク](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VirtualMachines_LogAnalyticsAgent_AuditIfNotExists.json)

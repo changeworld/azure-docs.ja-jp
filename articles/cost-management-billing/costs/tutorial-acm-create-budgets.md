@@ -3,17 +3,17 @@ title: チュートリアル - Azure の予算を作成して管理する
 description: このチュートリアルでは、使用する Azure サービスのコストの計画とアカウントについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f7c1ac65026fd366be1003842ff70a78b9082339
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 82094fadf7b11d97b0e9e74d9ba897baed16ee01
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155938"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874281"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -25,7 +25,7 @@ Cost Management での予算は、組織のアカウンタビリティを計画�
 
 このチュートリアルの例では、Azure Enterprise Agreement (EA) サブスクリプションの予算を作成および編集する手順を説明します。
 
-[Azure portal を使用してサブスクリプションに予算を適用する](https://www.youtube.com/watch?v=UrkHiUx19Po) ビデオを見て、Azureで予算を作成して支出を監視する方法を確認してください。
+[Azure portal を使用してサブスクリプションに予算を適用する](https://www.youtube.com/watch?v=UrkHiUx19Po) ビデオを見て、Azureで予算を作成して支出を監視する方法を確認してください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
 
 >[!VIDEO https://www.youtube.com/embed/UrkHiUx19Po]
 
@@ -38,11 +38,32 @@ Cost Management での予算は、組織のアカウンタビリティを計画�
 
 ## <a name="prerequisites"></a>前提条件
 
-予算は、さまざまな種類の Azure アカウントでサポートされています。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 予算を表示するには、少なくとも Azure アカウントの読み取りアクセス権が必要です。
+予算は、次の種類の Azure アカウントの種類とスコープに対してサポートされています。
+
+- Azure のロールベースのアクセス制御のスコープ
+    - 管理グループ
+    - サブスクリプション
+- Enterprise Agreement のスコープ
+    - 請求先アカウント
+    - 部署
+    - 登録アカウント
+- 個々の契約
+    - 請求先アカウント
+- Microsoft Customer Agreement のスコープ
+    - 請求先アカウント
+    - 請求プロファイル
+    - 請求書セクション
+    - Customer
+- AWS スコープ
+    - 外部アカウント
+    - 外部サブスクリプション
+
+
+予算を表示するには、少なくとも Azure アカウントの読み取りアクセス権が必要です。
 
 新しいサブスクリプションをご利用の場合、予算の作成など、Cost Management の機能をすぐには使用できません。 すべての Cost Management 機能を使用できるようになるまでに、最大 48 時間かかる場合があります。
 
-Azure EA サブスクリプションの場合、予算を表示するには読み取りアクセス権が必要です。 予算を作成し、管理するには、共同作成者のアクセス許可が必要です。 EA サブスクリプションとリソース グループ用に個別の予算を作成できます。 ただし、EA の請求先アカウントの予算を作成することはできません。
+Azure EA サブスクリプションの場合、予算を表示するには読み取りアクセス権が必要です。 予算を作成し、管理するには、共同作成者のアクセス許可が必要です。
 
 ユーザーおよびグループごとの予算については、サブスクリプションに従い、次の Azure アクセス許可 (スコープ) がサポートされています。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
@@ -58,7 +79,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Azure portal で予算を作成する
 
-月、四半期、または年の期間の Azure サブスクリプション予算を作成できます。 Azure portal のナビゲーション コンテンツによって、サブスクリプションと管理グループのどちらの予算を作成するかが決まります。
+月、四半期、または年の期間の Azure サブスクリプション予算を作成できます。
 
 予算を作成または表示するには、Azure portal で目的のスコープを開き、メニューの **[予算]** を選択します。 たとえば、 **[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューの **[予算]** を選択します。 [予算] で別のスコープ (管理グループなど) に切り替えるには、 **[スコープ]** ピルを使用します。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
@@ -110,15 +131,11 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 サブスクリプション スコープまたはリソース グループ スコープの予算を作成または編集するときに、アクション グループを呼び出すように予算を構成できます。 予算しきい値に達すると、アクション グループはさまざまなアクションを実行できます。 アクション グループは現在、サブスクリプションとリソース グループのスコープに対してのみサポートされています。 アクション グループの詳細については、「[Azure portal でのアクション グループの作成および管理](../../azure-monitor/platform/action-groups.md)」をご覧ください。 アクション グループで予算ベースの自動化を使用する方法の詳細については、「[Azure Budgets でのコストの管理](../manage/cost-management-budget-scenario.md)」をご覧ください。
 
-
-
 アクション グループを作成または更新するには、予算の作成または編集時に **[アクション グループの管理]** を選択します。
 
 ![[アクション グループの管理] を示す予算作成の例](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
-
 次に、 **[アクション グループの追加]** を選択し、アクション グループを作成します。
-
 
 ![[アクション グループの追加] ボックスの画像](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
 

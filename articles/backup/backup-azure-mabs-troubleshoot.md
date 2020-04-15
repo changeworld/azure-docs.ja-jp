@@ -4,12 +4,12 @@ description: Azure Backup Server のインストールと登録、およびア�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: cc0cf7e91c1aacbc637d33ab1e5546cc54836b28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: deff49a7d00a335c396a6fa36d3846ef353331c5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673113"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421286"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 
@@ -26,7 +26,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 - 登録が失敗する場合は、Azure Backup Server をインストールしようとしているサーバーが別のコンテナーにまだ登録されていないことを確認します。
 - プッシュ インストールが失敗する場合は、DPM エージェントが既に存在するかどうかを確認してください。 その場合は、エージェントをアンインストールしてからインストールをやり直してください。
 - [別のプロセスまたはウイルス対策ソフトウェアによって Azure Backup が妨げられていないことを確認する](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
-- MAB サーバーで SQL エージェント サービスが実行されていて "自動" に設定されていることを確認してください<br>
+- SQL Agent サービスが実行中で、MABS サーバーで自動に設定されていることを確認する<br>
 
 ## <a name="invalid-vault-credentials-provided"></a>無効なコンテナーの資格情報が指定されました
 

@@ -3,12 +3,12 @@ title: Azure Application Insights を利用して障害と例外を診断する
 description: 要求テレメトリと共に ASP.NET アプリから例外を取り込みます。
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 24b7acfa6610c2040daf0f7d8d25f25391140303
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666158"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892344"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights を利用し、Web アプリの例外を診断する
 ライブ Web アプリの例外は、[Application Insights](../../azure-monitor/app/app-insights-overview.md) によって報告されます。 要求の失敗をクライアントとサーバーの両方の例外やその他のイベントに相互に関連付け、原因をすばやく診断できます。
@@ -19,7 +19,7 @@ ms.locfileid: "77666158"
   * Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ:[アプリケーション監視拡張機能](../../azure-monitor/app/azure-vm-vmss-apps.md)を追加する
   * [Application Insights SDK](../../azure-monitor/app/asp-net.md) をアプリ コードにインストールする
   * IIS Web サーバー:[Application Insights エージェント](../../azure-monitor/app/monitor-performance-live-website-now.md)を実行する
-  * Java Web アプリ:[Java エージェント](../../azure-monitor/app/java-agent.md)をインストールする
+  * Java Web アプリ:[Java エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)を有効にする
 * ブラウザー例外をキャッチする [JavaScript スニペット](../../azure-monitor/app/javascript.md)を Web ページにインストールします。
 * 一部のアプリケーション フレームワークまたは一部の設定では、より多くの例外をキャッチするために余分の手順を実行する必要があります。
   * [Web フォーム](#web-forms)
@@ -27,6 +27,8 @@ ms.locfileid: "77666158"
   * [Web API 1.*](#web-api-1x)
   * [Web API 2.*](#web-api-2x)
   * [WCF](#wcf)
+
+  この記事では、コード例の観点から .NET Framework アプリに特に焦点を絞って説明します。 .NET Framework に対して機能するメソッドの一部は、.NET Core SDK では廃止されています。 .NET Core アプリがある場合は、[.NET Core SDK のドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)を参照してください。
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Visual Studio を使用して例外を診断する
 デバッグに役立てるため、Visual Studio でアプリ ソリューションを開きます。
@@ -89,7 +91,7 @@ Application Insights には、監視対象のアプリケーションの障害�
 * アプリケーションにコードを挿入し、[Microsoft.ApplicationInsights.TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) を呼び出します。 メッセージ パラメーターで POST データを送信します。 許可されるサイズには制限があります。そのため、必要不可欠なデータだけを送信するように努めてください。
 * 失敗した要求を調査するときは、関連付けられているトレースを検索します。
 
-## <a name="exceptions"></a> 例外と関連する診断データをキャプチャする
+## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> 例外と関連する診断データをキャプチャする
 最初、ポータルにはアプリの障害の原因となる例外の一部しか表示されません。 ブラウザーの例外はすべて表示されます (Web ページで [JavaScript SDK](../../azure-monitor/app/javascript.md) を使用している場合)。 ただし、ほとんどのサーバー例外は IIS によりキャッチされます。それを確認するには、簡単なコードを記述する必要があります。
 
 次のようにすることができます。

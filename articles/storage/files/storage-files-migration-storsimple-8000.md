@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d937852ace8d9bf39495f1fdd92e6edfc4452a0a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 7f0c4da7caf71670746e84d5cfaa457ebae57156
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943587"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755030"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 および 8600 から Azure File Sync への移行
 
@@ -28,7 +28,7 @@ StorSimple 8000 シリーズは 2022 年 12 月に[提供終了](https://support
 Azure File Sync は、次の 2 つの主要なコンポーネントに基づく Microsoft のクラウド サービスです。
 
 * ファイルの同期とクラウドを使った階層化。
-* Azure のネイティブ ストレージとしてのファイル共有。SMB やファイル REST などの複数のプロトコルを介してアクセスできます。 Azure ファイル共有は、ネットワーク ドライブとしてネイティブにマウントできる Windows サーバー上のファイル共有に相当します。 属性、アクセス許可、タイムスタンプなどの重要なファイルの忠実性がサポートされています。 Azure ファイル共有を使用すると、クラウドに格納されているファイルやフォルダーをアプリケーションやサービスで解釈する必要がなくなります。 使い慣れたプロトコルと Windows エクスプローラーなどのクライアントを使用してネイティブにそれらにアクセスできます。 そのため、Azure ファイル共有は、汎用ファイル サーバー データと一部のアプリケーション データをクラウドに格納するための理想的で最も柔軟性の高いアプローチです。
+* Azure のネイティブ ストレージとしてのファイル共有。SMB や file REST などの複数のプロトコルを介してアクセスできます。 Azure ファイル共有は、ネットワーク ドライブとしてネイティブにマウントできる Windows サーバー上のファイル共有に相当します。 属性、アクセス許可、タイムスタンプなどの重要なファイルの忠実性がサポートされています。 Azure ファイル共有を使用すると、クラウドに格納されているファイルやフォルダーをアプリケーションやサービスで解釈する必要がなくなります。 使い慣れたプロトコルと Windows エクスプローラーなどのクライアントを使用してネイティブにそれらにアクセスできます。 そのため、Azure ファイル共有は、汎用ファイル サーバー データと一部のアプリケーション データをクラウドに格納するための理想的で最も柔軟性の高いアプローチです。
 
 この記事では、移行手順を中心に説明します。 移行前に Azure File Sync について詳しく知りたい場合は、次の記事をお勧めします。
 
@@ -137,12 +137,21 @@ Azure の Windows Server 仮想マシンは、StorSimple 8020 と似ており、
 データの全体的なサイズはあまりボトルネックにはなりません。マシンの仕様を調整するために必要な項目の数がそうなります。
 
 * [同期する必要がある項目 (ファイルとフォルダー) の数に基づいて Windows サーバーのサイズを変更する方法を参照してください。](storage-sync-files-planning.md#recommended-system-resources)
+
+    **注意:** 前記のリンク先の記事では、サーバー メモリ (RAM) の範囲に関する表が示されています。 Azure VM については、数をなるべく大きくするようにしてください。 オンプレミス コンピューターについては、数を減らすよう検討することもできます。
+
 * [Windows Server VM をデプロイする方法を参照してください。](../../virtual-machines/windows/quick-create-portal.md)
 
 > [!IMPORTANT]
 > VM が StorSimple 8020 仮想アプライアンスと同じ Azure リージョンにデプロイされていることを確認します。 この移行の一環として、クラウド データのリージョンも現在格納されているリージョンから変更する必要がある場合は、後の手順で Azure ファイル共有をプロビジョニングするときに変更できます。
 
-### <a name="expose-the-storsimple-8020-volumes-to-the-vm"></a>StorSimple 8020 ボリュームを VM に公開する
+> [!IMPORTANT]
+> 多くの場合、お使いのオンプレミスの StorSimple アプライアンスに対応してオンプレミスの Windows Server が使用されます。 そのような構成においては、その Windows サーバーで "[データ重複除去](https://docs.microsoft.com/windows-server/storage/data-deduplication/install-enable)" 機能を有効にすることができます。 **StorSimple データでデータ重複除去を使用した場合には、この Azure VM でもデータ重複除去を確実に有効にしてください。** このファイルレベルの重複除去と、StorSimples 組み込みのブロックレベルの重複除去とを混同しないでください。後者に関しては、いかなるアクションも必要ありません。
+
+> [!IMPORTANT]
+> パフォーマンスを最適化するには、クラウド VM 用に**高速 OS ディスク**をデプロイしてください。 同期データベースは、すべてのデータ ボリュームについて、OS ディスクに保存することになります。 また、**サイズの大きな OS ディスク**を作成するようにしてください。 StorSimple ボリュームの項目 (ファイルとフォルダー) の数によっては、同期データベースを格納するために、OS ディスクに**数百 GiB** の容量が必要になる場合があります。
+
+### <a name="expose-the-storsimple-8020-volumes-to-the-azure-vm"></a>StorSimple 8020 ボリュームを Azure VM に公開する
 
 このフェーズでは、8020 仮想アプライアンスから、プロビジョニングした Windows Server VM に 1 つまたは複数の StorSimple ボリュームを iSCSI 経由で接続します。
 
@@ -339,7 +348,7 @@ Windows Server のキャッシュをアプライアンスの状態にし、最�
 RoboCopy コマンド:
 
 ```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 背景:
@@ -366,6 +375,14 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /MIR /COPYALL /DCOPY:DAT <SourcePath> <
    :::column-end:::
    :::column span="1":::
       コンソール ウィンドウに出力します。 ログ ファイルへの出力と組み合わせて使用されます。
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /B
+   :::column-end:::
+   :::column span="1":::
+      バックアップ アプリケーションが使用するのと同じモードで RoboCopy を実行します。 これにより、現在のユーザーがアクセス許可を持っていないファイルを、RoboCopy で移動できます。
    :::column-end:::
 :::row-end:::
 :::row:::

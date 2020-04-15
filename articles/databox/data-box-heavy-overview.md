@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70142911"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437768"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Azure Data Box Heavy とは
 
@@ -116,7 +116,7 @@ Data Box Heavy の提供状況に関するリージョン別の最新情報に�
 
 Data Box Heavy にサインアップするには、次の手順を実行します。
 
-1. Azure portal (https://portal.azure.com ) にサインインします。
+1. [Azure portal にサインイン](https://portal.azure.com)します。
 2. **[+ リソースの作成]** をクリックして新しいリソースを作成します。 **Azure Data Box** を検索します。 **Azure Data Box** サービスを選択します。
 3. **Create** をクリックしてください。
 4. Data Box Heavy に使用するサブスクリプションを選択します。 Data Box Heavy リソースをデプロイするリージョンを選択します。 **[Data Box Heavy]** オプションで、 **[サインアップ]** をクリックします。

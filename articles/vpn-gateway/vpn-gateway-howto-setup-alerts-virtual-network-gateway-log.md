@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: b587fa31f1aa42e8dbd5a9d2430c0117891f2091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49510b26e0b2a9c69dd65faf0f343e86d1a068db
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239786"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878903"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>VPN Gateway からの診断ログ イベントにアラートを設定する
 
@@ -26,7 +26,7 @@ Azure では、次のログを使用できます。
 |TunnelDiagnosticLog | トンネルの状態変更イベントが含まれています。 トンネルの接続/切断イベントには、状態変更の理由の概要があります (該当する場合) |
 |RouteDiagnosticLog | ゲートウェイで発生する静的ルートへの変更および BGP イベントがログに記録されます |
 |IKEDiagnosticLog | ゲートウェイ上の IKE コントロールのメッセージおよびイベントがログに記録されます |
-|P2SDiagnosticLog | ゲートウェイ上のポイント対サイト コントロールのメッセージおよびイベントがログに記録されます |
+|P2SDiagnosticLog | ゲートウェイ上のポイント対サイト コントロールのメッセージおよびイベントがログに記録されます。 接続ソース情報は IKEv2 接続に対してのみ提供されます |
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a><a name="setup"></a>Azure portal でアラートを設定する
 

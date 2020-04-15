@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 03/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1497b757d77d12cb5b963953224fa8929e987853
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 4af7dc5d55e451e4f6873df42e2b740fd1e5cd56
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385304"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891664"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco AnyConnect の統合
 
@@ -96,6 +96,9 @@ Cisco AnyConnect に対する Azure AD SSO を構成してテストするには�
 1. **[Cisco AnyConnect のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
+> [!NOTE]
+> サーバーの複数の TGT をオンボードする場合は、ギャラリーから Cisco AnyConnect アプリケーションの複数のインスタンスを追加する必要があります。 また、これらすべてのアプリケーション インスタンスについて、Azure AD に独自の証明書をアップロードすることもできます。 このようにアプリケーションに同じ証明書を使用できる一方で、アプリケーションごとに異なる識別子と応答 URL を構成することができます。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

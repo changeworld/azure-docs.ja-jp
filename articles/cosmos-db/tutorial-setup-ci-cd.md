@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 0a705ad81925491fe054d846143472c6e4432b69
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 521d5d8d587b39cf573dedc37ea9f6fd53646e66
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77561904"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410950"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 
@@ -24,7 +24,7 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 
 ## <a name="install-the-emulator-build-task"></a>エミュレーター ビルド タスクのインストール
 
-ビルド タスクを使用するには、最初にそれを Azure DevOps 組織にインストールする必要があります。 **Marketplace** で拡張機能 [Azure Cosmos DB Emulator](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) を見つけて、 **[Get it free]\(無料で入手\)** をクリックします。
+ビルド タスクを使用するには、最初にそれを Azure DevOps 組織にインストールする必要があります。 [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) で拡張機能 **Azure Cosmos DB Emulator** を見つけて、 **[Get it free]\(無料で入手\)** をクリックします。
 
 ![Azure DevOps Marketplace で Azure Cosmos DB Emulator ビルド タスクを見つけてインストールする](./media/tutorial-setup-ci-cd/addExtension_1.png)
 
@@ -178,4 +178,4 @@ YAML タスクを使用して CI/CD パイプラインを設定する場合は�
 
 エミュレーターを使用して開発とテストをローカルで行う方法の詳細については、「[ローカルの開発とテストでの Azure Cosmos DB Emulator の使用](https://docs.microsoft.com/azure/cosmos-db/local-emulator)」を参照してください。
 
-エミュレーター SSL 証明書のエクスポートについては、「[Java、Python、および Node.js で使用する Azure Cosmos DB Emulator 証明書のエクスポート](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)」を参照してください。
+エミュレーター TLS/SSL 証明書のエクスポートについては、「[Java、Python、および Node.js で使用する Azure Cosmos DB Emulator 証明書のエクスポート](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)」を参照してください。

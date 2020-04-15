@@ -1,5 +1,5 @@
 ---
-title: 自動機械学習を使用して、一般的な ML モデルの落とし穴を管理します。
+title: AutoML でのオーバーフィット データと不均衡データの回避
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning の自動機械学習ソリューションを使用して、ML モデルの一般的な落とし穴を特定し、管理します。
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 03/27/2020
-ms.openlocfilehash: e0bc1aa48dfb40ea146fa79fdfd57da841ca1404
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 04/09/2020
+ms.openlocfilehash: 76f920ad6aae68defb567a7a6623d1ffd488af5f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385340"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874859"
 ---
-# <a name="manage-ml-pitfalls-with-automated-machine-learning"></a>自動機械学習で ML の落とし穴を管理する
+# <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>自動機械学習でのオーバーフィット データと不均衡データを防止する
 
 機械学習モデルを構築する際に陥りやすい落とし穴が、オーバーフィットや偏ったデータです。 既定では、Azure Machine Learning の自動機械学習は、これらのリスクを特定するのに役立つグラフとメトリックを提供し、リスクを軽減するためのベスト プラクティスを実装します。 
 

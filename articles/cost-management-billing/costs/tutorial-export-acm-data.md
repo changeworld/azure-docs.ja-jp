@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: b950235eccbd41b1dfa46c23985e804212d9e8f2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f0a1515816fe7a9e1d79f69655e6bf21725a0b5d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155904"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877951"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
 
 コスト分析のチュートリアルをお読みになっていれば、コスト管理データを手動でダウンロードできます。 その一方で、コスト管理データを Azure Storage に対して毎日、毎週、または毎月、自動的にエクスポートする定期タスクを作成することができます。 エクスポートしたデータは CSV 形式になり、コスト管理で収集したすべての情報がそれに含まれます。 エクスポート後は、Azure Storage に格納されたそのデータを外部システムで利用したり、独自のデータと組み合わせたりできます。 また、エクスポートしたデータを、ダッシュボードやその他の金融システムのような外部システムで利用できます。
 
-Azure のコスト データを Azure Storage にエクスポートするスケジュールの作成については、[Azure Cost Management でストレージへのエクスポートをスケジュールする方法](https://www.youtube.com/watch?v=rWa_xI1aRzo)に関するビデオをご覧ください。
+Azure のコスト データを Azure Storage にエクスポートするスケジュールの作成については、[Azure Cost Management でストレージへのエクスポートをスケジュールする方法](https://www.youtube.com/watch?v=rWa_xI1aRzo)に関するビデオをご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
 
 >[!VIDEO https://www.youtube.com/embed/rWa_xI1aRzo]
 

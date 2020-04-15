@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77108997"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756698"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>クイック スタート:質問のバッチと期待される回答を使用したナレッジ ベースのテスト
 
@@ -149,7 +149,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
     |Charge your Surface Pro 4|
     |Check the battery level|
 
-    2 つの QnA セットにメタデータが設定されました。
+    2 つの QnA ペアにこのメタデータ セットがあります。
 
     > [!TIP]
     > 各セットのメタデータと QnA ID を確認するには、ナレッジ ベースをエクスポートします。 **[設定]** ページを選択し、`.xls` ファイルとして**エクスポート**することを選択します。 ダウンロードしたこのファイルを見つけ、Excel で開いて、メタデータと ID を確認します。
@@ -169,7 +169,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 
 次の手順では、チャット ログを処理するシナリオを想定しています。
 
-1. 省略可能なデータを含む新しいバッチ テスト ファイル `batch-test-data-2.tsv` を作成します。 元のバッチ テストの入力ファイルの 6 行を追加した後、各行に対してメタデータ、上位、および QnA セット ID を追加します。
+1. 省略可能なデータを含む新しいバッチ テスト ファイル `batch-test-data-2.tsv` を作成します。 元のバッチ テストの入力ファイルの 6 行を追加した後、各行に対してメタデータ、上位、および QnA ペア ID を追加します。
 
     チャット ログからの新しいテキストをナレッジ ベースに照らして確認する自動プロセスをシミュレートするために、各列のメタデータを同じ値 (`topic:power`) に設定します。
 

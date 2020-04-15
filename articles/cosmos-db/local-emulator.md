@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9650bb3214c22926427717569f718ca0426ed729
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222129"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618742"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -99,7 +99,7 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 > [!NOTE]
 > /Key オプションを使用してエミュレーターを開始した場合は、`C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` の代わりに生成されたキーを使用します。 /Key オプションの詳細については、[コマンドライン ツールのリファレンス](#command-line)を参照してください。
 
-Azure Cosmos DB と同様に、Azure Cosmos Emulator では SSL 経由のセキュリティ保護された通信のみサポートされています。
+Azure Cosmos DB と同様に、Azure Cosmos Emulator では TLS 経由のセキュリティ保護された通信のみサポートされています。
 
 ## <a name="running-on-a-local-network"></a>ローカル ネットワークで実行する
 
@@ -215,17 +215,17 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
   :> g.V()
   ```
 
-## <a name="export-the-ssl-certificate"></a>SSL 証明書のエクスポート
+## <a name="export-the-tlsssl-certificate"></a>TLS/SSL 証明書をエクスポートする
 
 .NET 言語とランタイムでは、Azure Cosmos DB ローカル エミュレーターに安全に接続するために Windows 証明書ストアが使用されます。 その他の言語では、証明書の管理と使用について独自の方法があります。 Java の場合は独自の[証明書ストア](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html)が使用され、Python の場合は[ソケット ラッパー](https://docs.python.org/2/library/ssl.html)が使用されます。
 
 Windows 証明書ストアと統合されていない言語およびランタイムで使用する証明書を取得するには、Windows 証明書マネージャーを使用して証明書をエクスポートする必要があります。 これは certlm.msc を実行することで開始できます。または、[Azure Cosmos Emulator 証明書のエクスポート](./local-emulator-export-ssl-certificates.md)に関するページに記載されている手順に従ってください。 証明書マネージャーの実行中、次に示すように Personal フォルダーの Certificates を開き、"DocumentDBEmulatorCertificate" というフレンドリ名の証明書を BASE-64 encoded X.509 (.cer) ファイルとしてエクスポートします。
 
-![Azure Cosmos DB ローカル エミュレーターの SSL 証明書](./media/local-emulator/database-local-emulator-ssl_certificate.png)
+![Azure Cosmos DB ローカル エミュレーターの TLS/SSL 証明書](./media/local-emulator/database-local-emulator-ssl_certificate.png)
 
 X.509 証明書を Java 証明書ストアにインポートするには、「[証明書を Java CA 証明書ストアに追加する方法](https://docs.microsoft.com/azure/java-add-certificate-ca-store)」の手順に従います。 証明書を証明書ストアにインポートすると、SQL API および Azure Cosmos DB の MongoDB 用 API のクライアントが Azure Cosmos Emulator に接続できるようになります。
 
-Python SDK および Node.js SDK からエミュレーターに接続すると、SSL 検証が無効になります。
+Python SDK および Node.js SDK からエミュレーターに接続すると、TLS 検証が無効になります。
 
 ## <a name="command-line-tool-reference"></a><a id="command-line"></a> コマンドライン ツールのリファレンス
 インストール先では、コマンドラインを使用することで、エミュレーターの開始と停止やオプションの構成などの操作を実行できます。
@@ -260,8 +260,8 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 | StopTraces     | LOGMAN を使用して、デバッグ トレース ログの収集を停止します。 | Microsoft.Azure.Cosmos.Emulator.exe /StopTraces  | |
 | StartWprTraces  |  Windows パフォーマンス記録ツールを使用したデバッグ トレース ログの収集を開始します。 | Microsoft.Azure.Cosmos.Emulator.exe /StartWprTraces | |
 | StopWprTraces     | Windows パフォーマンス記録ツールを使用したデバッグ トレース ログの収集を停止します。 | Microsoft.Azure.Cosmos.Emulator.exe /StopWprTraces  | |
-|FailOnSslCertificateNameMismatch | 証明書の SAN にエミュレーターのホストのドメイン名、ローカル IPv4 アドレス、"localhost"、"127.0.0.1" が含まれていない場合、既定では、エミュレーターにより自己署名 SSL 証明書が再生成されます。 このオプションを設定すると、その代わりにエミュレーターが起動に失敗します。 その後は /GenCert オプションを使って新しい自己署名 SSL 証明書を作成およびインストールする必要があります。 | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert | 新しい自己署名 SSL 証明書を生成およびインストールします。 オプションで、ネットワーク経由でエミュレーターにアクセスするための追加の DNS 名を列挙したコンマ区切りリストを含めることもできます。 | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>: 追加の DNS 名のコンマ区切りリスト (省略可能)  |
+|FailOnSslCertificateNameMismatch | 証明書の SAN にエミュレーターのホストのドメイン名、ローカル IPv4 アドレス、"localhost"、"127.0.0.1" が含まれていない場合、既定では、エミュレーターにより自己署名 TLS/SSL 証明書が再生成されます。 このオプションを設定すると、その代わりにエミュレーターが起動に失敗します。 その後は /GenCert オプションを使って新しい自己署名 TLS/SSL 証明書を作成およびインストールする必要があります。 | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
+| GenCert | 新しい自己署名 TLS/SSL 証明書を生成およびインストールします。 オプションで、ネットワーク経由でエミュレーターにアクセスするための追加の DNS 名を列挙したコンマ区切りリストを含めることもできます。 | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>: 追加の DNS 名のコンマ区切りリスト (省略可能)  |
 | DirectPorts |直接接続に使用するポートを指定します。 既定値は、10251、10252、10253、10254 です。 | Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:\<directports\> | \<directports\>:4 つのポートのコンマ区切りリスト |
 | Key |エミュレーターの承認キーです。 キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります。 | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<key\> | \<key\>:キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります|
 | EnableRateLimiting | 要求レート制限の動作の有効化を指定します。 |Microsoft.Azure.Cosmos.Emulator.exe /EnableRateLimiting | |
@@ -398,7 +398,7 @@ powershell .\importcert.ps1
 Starting interactive shell
 ```
 
-クライアントで応答からのエンドポイントとマスター キーを使用し、SSL 証明書をホストにインポートします。 SSL 証明書をインポートするには、admin コマンド プロンプトから以下を実行します。
+クライアントで応答からのエンドポイントとマスター キーを使用し、TLS/SSL 証明書をホストにインポートします。 TLS/SSL 証明書をインポートするには、admin コマンド プロンプトから以下を実行します。
 
 コマンド ラインから:
 
@@ -445,7 +445,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 Linux 環境では、.NET が OpenSSL を使用して検証を行います。
 
-1. [証明書を PFX 形式でエクスポート](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate)します (PFX は、秘密キーをエクスポートするよう選択すると利用できます)。 
+1. [証明書を PFX 形式でエクスポート](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-tlsssl-certificate)します (PFX は、秘密キーをエクスポートするよう選択すると利用できます)。 
 
 1. PFX ファイルを Linux 環境にコピーします。
 
@@ -471,7 +471,7 @@ Linux 環境では、.NET が OpenSSL を使用して検証を行います。
 
 Mac 環境では、次の手順に従います。
 
-1. [証明書を PFX 形式でエクスポート](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate)します (PFX は、秘密キーをエクスポートするよう選択すると利用できます)。
+1. [証明書を PFX 形式でエクスポート](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-tlsssl-certificate)します (PFX は、秘密キーをエクスポートするよう選択すると利用できます)。
 
 1. PFX ファイルを Mac 環境にコピーします。
 
@@ -527,7 +527,7 @@ Mac 環境では、次の手順に従います。
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、無料のローカル開発のためにローカル エミュレーターを使用する方法について学習しました。 これで次のチュートリアルに進み、エミュレーター SSL 証明書をエクスポートする方法について学習できます。
+このチュートリアルでは、無料のローカル開発のためにローカル エミュレーターを使用する方法について学習しました。 これで次のチュートリアルに進み、エミュレーター TLS/SSL 証明書をエクスポートする方法について学習できます。
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos Emulator 証明書をエクスポートする](local-emulator-export-ssl-certificates.md)

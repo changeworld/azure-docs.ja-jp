@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 698fab470cdc8b8d04fa4319fd71c31b58d1c5a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066891"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478151"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -106,7 +106,7 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 > 1 つの時点で VM にインストールできる拡張機能のバージョンは 1 つだけです。同じ VM は失敗するので、同じ Resource Manager テンプレートにはカスタム スクリプトを 2 回指定します。
 
 > [!NOTE]
-> このスキーマは、VirtualMachine リソース内で、またはスタンドアロン リソースとして使用できます。 この拡張機能が ARM テンプレートでスタンドアロン リソースとして使用される場合、リソースの名前は "virtualMachineName/extensionName" という形式である必要があります。 
+> このスキーマは、VirtualMachine リソース内で、またはスタンドアロン リソースとして使用できます。 この拡張機能が ARM テンプレートでスタンドアロン リソースとして使用される場合、リソースの名前は "virtualMachineName/extensionName" という形式である必要があります。
 
 ### <a name="property-values"></a>プロパティ値
 
@@ -146,6 +146,8 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 パブリック設定は、スクリプトを実行する仮想マシンにクリア テキストで送信されます。  保護された設定は、Azure と VM のみが知っているキーを使用して暗号化されます。 設定は、送信時に VM に保存されます。つまり、設定が暗号化されていた場合は、VM 上に暗号化された状態で保存されます。 暗号化された値を復号化するために使用する証明書は、VM に格納され、実行時の設定 (必要な場合) の暗号化を解除するためにも使用されます。
 
 ####  <a name="property-managedidentity"></a>プロパティ: managedIdentity
+> [!NOTE]
+> このプロパティは、保護された設定でのみ指定する**必要があります**。
 
 CustomScript (バージョン 1.10 以降) では、"fileUris" 設定で指定された URL からファイルをダウンロードするための[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ベースの RBAC がサポートされています。 これにより、ユーザーが SAS トークンやストレージ アカウント キーなどのシークレットを渡さなくとも、CustomScript で Azure Storage プライベート BLOB またはコンテナーにアクセスできるようになります。
 

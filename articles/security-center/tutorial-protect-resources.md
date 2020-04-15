@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4b40b7c6f755eb2107a09b1b881ea33fa2187f29
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b28de7af16053093cd0108224188cdd615fce55
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73686338"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435516"
 ---
-# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>チュートリアル: Azure Security Center でリソースを保護する
+# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>チュートリアル:Azure Security Center でリソースを保護する
 Security Center は、アクセスおよびアプリケーション制御を使用して悪意のあるアクティビティをブロックすることで、脅威にさらされる状態を軽減します。 Just-In-Time (JIT) 仮想マシン (VM) アクセスは、VM への永続的なアクセスを拒否できるようにして攻撃に対する露出を減らします。 代わりに、必要な場合にのみ VM への制御および監査されたアクセスを提供します。 適応型アプリケーション制御を使用すると、VM 上で実行できるアプリケーションを制御することでマルウェアに対する VM の保護を強化できます。 Security Center は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様がホワイトリスト登録に関する規則を適用するのを支援します。
 
 このチュートリアルで学習する内容は次のとおりです。
@@ -110,7 +110,7 @@ JIT VM アクセスを使用すると、Azure VM へのインバウンド トラ
 4. **[保存]** を選択します。
 
 >[!NOTE]
-> 自動プロビジョニングを無効しても、Microsoft Monitoring Agent がプロビジョニングされている Azure VM からエージェントは削除されません。 自動プロビジョニングを無効にすると、リソースのセキュリティの監視が制限されます。
+> 自動プロビジョニングを無効にしても、Log Analytics エージェントがプロビジョニングされている Azure VM からそのエージェントは削除されません。 自動プロビジョニングを無効にすると、リソースのセキュリティの監視が制限されます。
 >
 
 ## <a name="next-steps"></a>次のステップ
@@ -123,7 +123,7 @@ JIT VM アクセスを使用すると、Azure VM へのインバウンド トラ
 次のチュートリアルに進み、セキュリティ インシデントへの対応について学習してください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: セキュリティ インシデントへの対応](tutorial-security-incident.md)
+> [チュートリアル:セキュリティ インシデントへの対応](tutorial-security-incident.md)
 
 <!--Image references-->
 [1]: ./media/tutorial-protect-resources/just-in-time-vm-access.png

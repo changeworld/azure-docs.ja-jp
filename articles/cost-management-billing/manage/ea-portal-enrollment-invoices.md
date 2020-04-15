@@ -3,16 +3,16 @@ title: Azure エンタープライズ加入契約の請求書
 description: この記事では、Azure Enterprise の請求書を管理および操作する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9fbc2ffcf1158f436c060817f8f25152f839c3e0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d8d189d2ee67e3f98fec5d7d4cd295879e8689c9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037267"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743896"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ加入契約の請求書
 
@@ -494,6 +494,12 @@ Azure 年額コミットメントは、Azure サービスに対する前払い�
 - Visual Studio Enterprise (年払い)
 - Visual Studio Professional (月払い)
 - Visual Studio Professional (年払い)
+
+## <a name="what-to-expect-after-change-of-channel-partner"></a>チャネル パートナーの変更が行われた場合の対応について
+
+月の途中でチャネル パートナーの変更 (COCP) が行われた場合、お客様は、前に関連付けられていたパートナーの下での使用に関する請求書と、新しいパートナーの下での使用に関する別の請求書を受け取ります。
+
+請求書は、請求期間が終了した翌月に発行されます。 請求の頻度が月単位の場合、両方のパートナーについて 9 月分の請求書が 10 月に発行されます。 請求期間が四半期単位または年単位の場合、前に関連付けられていたパートナーの下での使用についてはその期間分について前に関連付けられていたパートナーから請求され、残りは請求の頻度に基づいて新しいパートナーから請求されます。
 
 ## <a name="azure-marketplace-for-ea-customers"></a>EA お客様向け Azure Marketplace
 

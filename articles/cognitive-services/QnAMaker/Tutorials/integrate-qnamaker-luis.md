@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7e1ea234bde96ce84259841bbc592bf6373bc639
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c01f5f41e61cd65855789bb753a7a297fe475885
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71802808"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396343"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>QnA Maker と LUIS にボットを組み合わせてナレッジ ベースを配信する
 QnA Maker ナレッジ ベースは、大きくなるにつれて、単一のモノリシックなセットとして維持することが難しくなり、より小さな論理的なチャンクにナレッジ ベースを分割する必要があります。
@@ -37,13 +37,13 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
 1. [アプリを作成します](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app)。
 1. それぞれの QnA Maker ナレッジ ベースの[意図を追加](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents)します。 発話例は、QnA Maker ナレッジ ベースの質問に対応している必要があります。
 1. [LUIS アプリをトレーニング](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train)し、[LUIS アプリを公開](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp)します。
-1. **管理**セクションで、LUIS アプリ ID、LUIS エンドポイント キー、および[カスタム ドメイン名](../../cognitive-services-custom-subdomains.md)をメモします。 これらの値は後で必要になります。 
+1. **管理**セクションで、LUIS アプリ ID、LUIS エンドポイント キー、および[カスタム ドメイン名](../../cognitive-services-custom-subdomains.md)をメモします。 これらの値は後で必要になります。
 
 ## <a name="create-qna-maker-knowledge-bases"></a>QnA Maker ナレッジ ベースの作成
 
 1. [QnA Maker](https://qnamaker.ai) にサインインします。
 1. LUIS アプリのそれぞれの意図に対してナレッジ ベースを[作成](https://www.qnamaker.ai/Create)します。
-1. ナレッジ ベースをテストして発行します。 それぞれの KB を公開するとき、KB ID、リソース名 ( _.azurewebsites.net/qnamaker_ の前のカスタム サブドメイン)、および承認エンドポイント キーをメモします。 これらの値は後で必要になります。 
+1. ナレッジ ベースをテストして発行します。 それぞれの KB を公開するとき、KB ID、リソース名 ( _.azurewebsites.net/qnamaker_ の前のカスタム サブドメイン)、および承認エンドポイント キーをメモします。 これらの値は後で必要になります。
 
     この記事では、KB はすべて同じ Azure QnA Maker サブスクリプションで作成されることを想定しています。
 
@@ -60,7 +60,7 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
 
 ## <a name="change-code-in-basicluisdialogcs"></a>BasicLuisDialog.cs のコードの変更
 1. Azure portal の Web アプリ ボット ナビゲーションの **[Bot Management]\(ボットの管理\)** セクションの **[ビルド]** を選択します。
-2. **[Open online code editor]\(オンライン コード エディターを開く\)** を選択します。 オンライン編集環境で新しいブラウザー タブが開きます。 
+2. **[Open online code editor]\(オンライン コード エディターを開く\)** を選択します。 オンライン編集環境で新しいブラウザー タブが開きます。
 3. **[WWWROOT]** セクションで、**Dialogs** ディレクトリを選択し、**BasicLuisDialog.cs** を開きます。
 4. **BasicLuisDialog.cs** ファイルの先頭に依存関係を追加します。
 
@@ -155,7 +155,7 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
     ```
 
 
-7. BasicLuisDialog クラスを変更します。 それぞれの LUIS の意図には、**LuisIntent** で装飾されたメソッドがあるはずです。 装飾のパラメーターは、実際の LUIS の意図の名前です。 装飾されたメソッド名は、読みやすさと保守性を確保するために LUIS の意図の名前である必要 _が_ ありますが、設計時と実行時には同じである必要はありません。  
+7. BasicLuisDialog クラスを変更します。 それぞれの LUIS の意図には、**LuisIntent** で装飾されたメソッドがあるはずです。 装飾のパラメーターは、実際の LUIS の意図の名前です。 装飾されたメソッド名は、読みやすさと保守性を確保するために LUIS の意図の名前である必要 _が_ ありますが、設計時と実行時には同じである必要はありません。
 
     ```csharp
     [Serializable]
@@ -170,7 +170,7 @@ QnA Maker には複数のナレッジ ベースを簡単に作成できますが
         // assumes all KBs are created with same Azure service
         static string qnamaker_endpointKey = "<QnA Maker endpoint KEY>";
         static string qnamaker_resourceName = "my-qnamaker-s0-s";
-        
+
         // QnA Maker Human Resources Knowledge base
         static string HR_kbID = "<QnA Maker KNOWLEDGE BASE ID>";
 
@@ -240,4 +240,4 @@ Azure portal で、 **[Test in Web Chat]\(Web チャットでのテスト\)** �
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [QnA Maker のビジネス継続性計画の作成](../How-To/business-continuity-plan.md)
+> [Power Virtual Agent とナレッジ ベースを統合する](integrate-with-power-virtual-assistant-fallback-topic.md)

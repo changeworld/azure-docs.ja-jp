@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
-ms.openlocfilehash: f1846fae4cbf473df688a2b184c307d72ab2f8d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 746044aa835df52e61c234c8b5ca61164fffbbc5
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721474"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545947"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用した Azure Table Storage 操作の実行 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -117,7 +117,7 @@ $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 ## <a name="reference-cloudtable-property-of-a-specific-table"></a>特定のテーブルの参照 CloudTable プロパティ
 
 > [!IMPORTANT]
-> **AzTable** PowerShell モジュールを使用する場合は、必ず CloudTable を使用する必要があります。 **Get AzTableTable** コマンドを呼び出して、このオブジェクトへの参照を取得します。 また、テーブルがまだ存在しない場合は、このコマンドでテーブルが作成されます。
+> **AzTable** PowerShell モジュールを使用する場合は、必ず CloudTable を使用する必要があります。 **Get-AzStorageTable** コマンドを呼び出して、このオブジェクトへの参照を取得します。 また、テーブルがまだ存在しない場合は、このコマンドでテーブルが作成されます。
 
 **AzTable** を使用してテーブルに対する操作を実行するには、特定のテーブルの CloudTable プロパティへの参照が必要です。
 

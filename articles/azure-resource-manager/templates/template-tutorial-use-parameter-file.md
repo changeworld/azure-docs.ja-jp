@@ -2,19 +2,19 @@
 title: チュートリアル - パラメーター ファイルを使用してテンプレートをデプロイする
 description: Azure Resource Manager テンプレートのデプロイに使用する値を含んだパラメーター ファイルを使用します。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a12d92c0cfb9d86ebf4c335c351944997f79b4e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b91041b96a3819dbace3898d92226f0351f0f973
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773160"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411524"
 ---
-# <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>チュートリアル:パラメーター ファイルを使用して Resource Manager テンプレートをデプロイする
+# <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>チュートリアル:パラメーター ファイルを使用して ARM テンプレートをデプロイする
 
-このチュートリアルでは、デプロイ時に渡す値を[パラメーター ファイル](parameter-files.md)を使用して格納する方法について説明します。 先行する各チュートリアルでは、デプロイ コマンドでインライン パラメーターを使用しました。 このアプローチは、テンプレートをテストする用途には役立ちますが、デプロイを自動化する場合には、ご利用の環境に使用する値をまとめて渡した方が簡単です。 パラメーター ファイルには、特定の環境に使用するパラメーターの値をまとめやすくする効果があります。 このチュートリアルでは、開発環境用と運用環境用のパラメーター ファイルを作成します。 所要時間は約 **12 分**です。
+このチュートリアルでは、デプロイ時に渡す値を[パラメーター ファイル](parameter-files.md)を使用して格納する方法について説明します。 先行する各チュートリアルでは、デプロイ コマンドでインライン パラメーターを使用しました。 このアプローチは、Azure Resource Manager (ARM) テンプレートをテストする用途には役立ちますが、デプロイを自動化する場合には、ご利用の環境に使用する値をまとめて渡した方が簡単です。 パラメーター ファイルには、特定の環境に使用するパラメーターの値をまとめやすくする効果があります。 このチュートリアルでは、開発環境用と運用環境用のパラメーター ファイルを作成します。 所要時間は約 **12 分**です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,10 +54,10 @@ VS Code で、次の内容を含む新しいファイルを作成します。 �
 
 まず開発環境にデプロイします。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-$templateFile = "{provide-the-path-to-the-template-file}"
+$templateFile = "{path-to-the-template-file}"
 $parameterFile="{path-to-azuredeploy.parameters.dev.json}"
 New-AzResourceGroup `
   -Name myResourceGroupDev `
@@ -69,25 +69,28 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+このデプロイ コマンドを実行するには、[最新バージョン](/cli/azure/install-azure-cli)の Azure CLI が必要です。
 
 ```azurecli
-templateFile="{provide-the-path-to-the-template-file}"
+templateFile="{path-to-the-template-file}"
+devParameterFile="{path-to-azuredeploy.parameters.dev.json}"
 az group create \
   --name myResourceGroupDev \
   --location "East US"
-az group deployment create \
+az deployment group create \
   --name devenvironment \
   --resource-group myResourceGroupDev \
   --template-file $templateFile \
-  --parameters azuredeploy.parameters.dev.json
+  --parameters $devParameterFile
 ```
 
 ---
 
 次に、運用環境にデプロイします。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $parameterFile="{path-to-azuredeploy.parameters.prod.json}"
@@ -101,20 +104,24 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
+prodParameterFile="{path-to-azuredeploy.parameters.prod.json}"
 az group create \
   --name myResourceGroupProd \
   --location "West US"
-az group deployment create \
+az deployment group create \
   --name prodenvironment \
   --resource-group myResourceGroupProd \
   --template-file $templateFile \
-  --parameters azuredeploy.parameters.prod.json
+  --parameters $prodParameterFile
 ```
 
 ---
+
+> [!NOTE]
+> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
 
 ## <a name="verify-deployment"></a>デプロイの確認
 
@@ -136,7 +143,7 @@ Azure portal からリソース グループを探すことでデプロイを確
 
 お疲れさまでした。Azure にテンプレートをデプロイするための基本的な方法は以上です。 ご意見やご提案がありましたら、フィードバック セクションからお寄せください。 よろしくお願いいたします。
 
-テンプレートに関するより高度な概念を学ぶ準備ができました。 次のチュートリアルでは、デプロイするリソースを効率よく定義できるテンプレート リファレンス ドキュメントの利用について詳しく取り上げます。
+次のチュートリアル シリーズでは、テンプレートのデプロイについてさらに詳しく取り上げます。
 
 > [!div class="nextstepaction"]
-> [テンプレート リファレンスの利用](template-tutorial-create-encrypted-storage-accounts.md)
+> [ローカル テンプレートをデプロイする](./deployment-tutorial-local-template.md)

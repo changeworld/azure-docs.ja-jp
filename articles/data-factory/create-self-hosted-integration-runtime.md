@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 06/18/2019
-ms.openlocfilehash: 0d04ea7d7003f274b252e057b7afced7759bfaae
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/13/2020
+ms.openlocfilehash: 3fe5a58046776d00ce68189cf724a995380869eb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357269"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887304"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 
@@ -62,11 +62,14 @@ Azure Data Factory の UI を使用してセルフホステッド IR を作成�
 
    ![統合ランタイムの作成](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
 
-1. **[Integration runtime setup]\(統合ランタイムの設定\)** ウィンドウで、 **[Perform data movement and dispatch activities to external computes]\(データの移動を実行し、アクティビティを外部コンピューティングにディスパッチする\)** を選択し、 **[続行]** を選択します。
+1. **[Integration runtime setup]\(統合ランタイムのセットアップ\)** ページで、 **[Azure, Self-Hosted]\(Azure、セルフホステッド\)** を選択してから、 **[Continue]\(続行\)** を選択します。 
+
+1. 次のページで、セルフホステッド IR を作成する **[Self-Hosted]\(セルフホステッド\)** を選択してから、 **[Continue]\(続行\)** を選択します。
+   ![セルフホステッド IR を作成する](media/create-self-hosted-integration-runtime/new-selfhosted-ir.png)
 
 1. IR の名前を入力し、 **[作成]** を選択します。
 
-1. **オプション 1** の下にあるリンクを選択して、コンピューターで高速セットアップを開きます。 または、**オプション 2** の手順に従って、手動でセットアップします。 以降の手順は、手動セットアップに基づいています。
+1. **[Integration runtime setup]\(統合ランタイムのセットアップ\)** ページで、 **[Option 1]\(オプション 1\)** の下にあるリンクを選択して、コンピューターで高速セットアップを開きます。 または、**オプション 2** の手順に従って、手動でセットアップします。 以降の手順は、手動セットアップに基づいています。
 
    ![統合ランタイムのセットアップ](media/create-self-hosted-integration-runtime/integration-runtime-setting-up.png)
 
@@ -172,7 +175,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ## <a name="installation-best-practices"></a>インストールのベスト プラクティス
 
-セルフホステッド統合ランタイムのインストールは、MSI セットアップ パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)からダウンロードして実行できます。 詳細な手順については、[オンプレミスとクラウドの間でのデータ移動](tutorial-hybrid-copy-powershell.md)に関する記事を参照してください。
+セルフホステッド統合ランタイムのインストールは、マネージド ID セットアップ パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)からダウンロードして実行できます。 詳細な手順については、[オンプレミスとクラウドの間でのデータ移動](tutorial-hybrid-copy-powershell.md)に関する記事を参照してください。
 
 - コンピューターが休止状態にならないように、セルフホステッド統合ランタイム用のホスト コンピューターの電源プランを構成します。 ホスト コンピューターが休止状態になると、セルフホステッド統合ランタイムはオフラインになります。
 - 定期的に、セルフホステッド統合ランタイムに関連付けられている資格情報をバックアップします。
@@ -182,7 +185,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 1. [Microsoft Integration Runtime のダウンロード ページ](https://www.microsoft.com/download/details.aspx?id=39717)に移動します。
 1. **[ダウンロード]** を選択し、64 ビット バージョンを選んでから **[次へ]** を選択します。 32ビット バージョンはサポートされていません。
-1. MSI ファイルを直接実行するか、ハード ドライブに保存してから実行します。
+1. マネージド ID ファイルを直接実行するか、ハード ドライブに保存してから実行します。
 1. **[ようこそ]** ウィンドウで言語を選び、 **[次へ]** を選択します。
 1. マイクロソフト ソフトウェア ライセンス条項に同意して、 **[次へ]** を選択します。
 1. セルフホステッド統合ランタイムをインストールする**フォルダー**を選んで、 **[次へ]** を選択します。
@@ -236,7 +239,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - 証明書は必ず、公的に信頼されている X509 v3 証明書とします。 公的パートナー証明機関 (CA) によって発行された証明書を使用することをお勧めします。
 - 統合ランタイムの各ノードで、この証明書を信頼する必要があります。
 - 最後の SAN 項目のみが使用されるため、サブジェクトの別名 (SAN) 証明書は推奨されません。 その他のすべての SAN 項目は無視されます。 たとえば、SAN が **node1.domain.contoso.com** と **node2.domain.contoso.com** の SAN 証明書がある場合、完全修飾ドメイン名 (FQDN) が **node2.domain.contoso.com** のコンピューターでのみこの証明書を使用できます。
-- 証明書では、SSL 証明書のために Windows Server 2012 R2 でサポートされている任意のキー サイズを使用できます。
+- 証明書では、TLS/SSL 証明書のために Windows Server 2012 R2 でサポートされている任意のキー サイズを使用できます。
 - CNG キーを使用する証明書はサポートされません。  
 
 > [!NOTE]
@@ -283,7 +286,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>セルフホステッド IR の共有に関する既知の制限事項
 
-* リンクされた IR が作成されるデータ ファクトリには、[MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) が必要です。 既定で、Azure portal または PowerShell コマンドレットで作成されたデータ ファクトリには、暗黙的に MSI が作成されます。 ただし、Azure Resource Manager テンプレートまたは SDK を使用してデータ ファクトリを作成する場合は、**ID** プロパティを明示的に設定する必要があります。 この設定により、Resource Manager では MSI を含むデータ ファクトリが作成されます。
+* リンクされた IR が作成されるデータ ファクトリには、[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) が必要です。 既定で、Azure portal または PowerShell コマンドレットで作成されたデータ ファクトリには、暗黙的にマネージド ID が作成されます。 ただし、Azure Resource Manager テンプレートまたは SDK を使用してデータ ファクトリを作成する場合は、**ID** プロパティを明示的に設定する必要があります。 この設定により、Resource Manager ではマネージド ID を含むデータ ファクトリが作成されます。
 
 * この機能をサポートする Data Factory .NET SDK のバージョンは、1.1.0 以降である必要があります。
 
@@ -291,7 +294,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 * 共有機能は、同じ Azure AD テナント内のデータ ファクトリに対してのみ機能します。
 
-* Azure AD の[ゲスト ユーザー](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews) の場合、UI の検索機能 (検索キーワードを使用するすべてのデータ ファクトリの一覧表示) が[動作しません](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 ただし、ゲスト ユーザーがデータ ファクトリの所有者である限り、検索機能を使用せずに IR を共有できます。 IR を共有する必要があるデータ ファクトリの MSI について、 **[アクセス許可の割り当て]** ボックスにその MSI を入力し、Data Factory UI で **[追加]** を選択します。
+* Azure AD の[ゲスト ユーザー](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews) の場合、UI の検索機能 (検索キーワードを使用するすべてのデータ ファクトリの一覧表示) が[動作しません](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 ただし、ゲスト ユーザーがデータ ファクトリの所有者である限り、検索機能を使用せずに IR を共有できます。 IR を共有する必要があるデータ ファクトリのマネージド ID について、 **[アクセス許可の割り当て]** ボックスにそのマネージド ID を入力し、Data Factory UI で **[追加]** を選択します。
 
   > [!NOTE]
   > この機能は Data Factory V2 でのみ使用できます。
@@ -329,7 +332,7 @@ Windows ファイアウォール レベル (コンピューター レベル) で
 たとえば、オンプレミス データ ストアから SQL Database シンクまたは Azure SQL Data Warehouse シンクにコピーするには、次の手順を行います。
 
 1. 送信 TCP 通信を、Windows ファイアウォールと企業ファイアウォールの両方に対して、ポート 1433 上で許可します。
-1. SQL データベースのファイアウォール設定を、セルフホステッド統合ランタイム コンピューターの IP アドレスを許可された IP アドレスのリストに追加するように構成します。
+1. SQL Database のファイアウォール設定を、セルフホステッド統合ランタイム コンピューターの IP アドレスを許可された IP アドレスのリストに追加するように構成します。
 
 > [!NOTE]
 > ファイアウォールで送信ポート 1433 が許可されていない場合、セルフホステッド統合ランタイムで SQL データベースに直接アクセスすることはできません。 この場合、SQL Database と SQL Data Warehouse に[ステージング コピー](copy-activity-performance.md)を使用できます。 このシナリオでは、データ移動に HTTPS (ポート 443) のみが必要になります。

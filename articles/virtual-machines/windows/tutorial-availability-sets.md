@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0f94f4d312cefec80a0f294e256ee1ad908b903c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 59bf06d2b279bad792bdc42a7c3b6acc2bc304b8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74068133"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985713"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して高可用性仮想マシンを作成してデプロイする
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して高可用性仮想マシンを作成してデプロイする
 
 このチュートリアルでは、可用性セットを使用して、仮想マシン (VM) の可用性と信頼性を向上させる方法を学習します。 可用性セットを使うことで、Azure にデプロイする VM は、クラスター内で切り離された複数のハードウェア ノードに確実に分散されます。 
 
@@ -63,7 +63,7 @@ New-AzResourceGroup `
    -Location EastUS
 ```
 
-[ パラメーターを指定した ](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset)New-AzAvailabilitySet`-sku aligned` を使用して、マネージド可用性セットを作成します。
+`-sku aligned` パラメーターを指定した [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) を使用して、マネージド可用性セットを作成します。
 
 ```azurepowershell-interactive
 New-AzAvailabilitySet `
@@ -113,7 +113,7 @@ VM 2 台分の作成と構成が終わるまでには、数分かかります。
 
 ## <a name="check-for-available-vm-sizes"></a>使用可能な VM のサイズのチェック 
 
-可用性セットには後で VM をさらに追加することができますが、そのハードウェアで使用可能な VM のサイズを把握しておく必要があります。 ハードウェア クラスターで可用性セットに使用可能なすべてのサイズを一覧表示するには、[Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) を使用します。
+可用性セット内に VM を作成する場合、ハードウェアで使用可能な VM のサイズを把握しておく必要があります。 可用性セットにデプロイできる仮想マシンの使用可能なすべてのサイズを取得するには、[Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) コマンドを使用します。
 
 ```azurepowershell-interactive
 Get-AzVMSize `

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 84cd201cd758293082a61a87528332c7d8c58811
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef511c203caa11aad4dea1047c982158810c4038
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264307"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982125"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Azure Cosmos DB でのグローバルなデータの分散 - 概要
 
@@ -41,7 +41,7 @@ Azure Cosmos DB のマルチホーム API を使用すると、アプリケー�
 
 **リージョン障害時にビジネス継続性を維持する。** Azure Cosmos DB では、リージョン障害時の[自動フェールオーバー](how-to-manage-database-account.md#automatic-failover)がサポートされています。 リージョン障害時にも、Azure Cosmos DB では、その待機時間、可用性、一貫性、スループットの SLA が引き続き維持されます。 アプリケーション全体で高い可用性を確保できるように、Cosmos DB には、リージョン障害をシミュレートするための手動フェールオーバー API が用意されています。 この API を使用することで、日常的なビジネス継続性の訓練を実施することができます。
 
-**読み取りおよび書き込みのスループットのグローバルなスケーリング。** すべてのリージョンを書き込み可能にして、読み取りと書き込みを世界規模でエラスティックにスケーリングできます。 Azure Cosmos のデータベースまたはコンテナーに対してアプリケーションで構成したスループットが、Azure Cosmos アカウントに関連付けられているすべてのリージョンで実現されることが保証されます。 プロビジョニング スループットは、[金銭的な補償を伴う SLA](https://aka.ms/acdbsla) によって保証されます。
+**読み取りおよび書き込みのスループットのグローバルなスケーリング。** すべてのリージョンを書き込み可能にして、読み取りと書き込みを世界規模でエラスティックにスケーリングできます。 Azure Cosmos のデータベースまたはコンテナーに対してアプリケーションで構成したスループットが、Azure Cosmos アカウントに関連付けられているすべてのリージョンで実現されることが保証されます。 プロビジョニング スループットは、[金銭的な補償を伴う SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) によって保証されます。
 
 **明確に定義された複数の一貫性モデルの中から選択する。** Azure Cosmos DB のレプリケーション プロトコルでは、明確に定義された、実際的かつ直感的な 5 つの一貫性モデルが提供されています。 各モデルには、一貫性とパフォーマンスのトレードオフがあります。 これらの一貫性モデルを使用することで、グローバル分散アプリケーションを容易に構築することができます。
 

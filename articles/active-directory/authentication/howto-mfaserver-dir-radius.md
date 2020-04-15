@@ -4,19 +4,19 @@ description: RADIUS 認証と Azure Multi-Factor Authentication Server のデプ
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38341613c98bf85df8cb47ccafc3df5709a1fd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 552226c35d4d129f73b96b689871708950b7ffb1
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425215"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652958"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>RADIUS 認証と Azure Multi-Factor Authentication Server の統合
 
@@ -77,9 +77,9 @@ Azure Multi-Factor Authentication Server の構成は以上です。 Server が�
 
 RADIUS クライアントを構成するには、ガイドラインに従います。
 
-* RADIUS 経由で Azure Multi-Factor Authentication Server の IP アドレスに対して認証するように機器/サーバーを構成します。これにより、RADIUS サーバーとして機能します。
+* RADIUS 経由で Azure Multi-Factor Authentication Server の IP アドレスに対して認証するように機器やサーバーを構成します。これにより、RADIUS サーバーとして機能します。
 * 以前に構成した同じ共有シークレットを使用します。
-* ユーザーの資格情報を検証して、2 段階認証を実行し、応答を受信した後、RADIUS アクセス要求に応答する時間を確保するために、RADIUS のタイムアウトを 30 ～ 60 秒に構成します。
+* ユーザーの資格情報を検証して、2 段階認証を実行し、応答を受信した後、RADIUS アクセス要求に応答する時間を確保するために、RADIUS のタイムアウトを 30 から 60 秒に構成します。
 
 ## <a name="next-steps"></a>次のステップ
 

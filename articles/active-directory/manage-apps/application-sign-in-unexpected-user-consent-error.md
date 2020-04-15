@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dff3be9a9bc7fd897f340e5fe6a4775a4914810
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ea14e02920cf7ba6c5e0a7b415cb92137c915576
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824952"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519707"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>アプリケーションに同意すると、予期しないエラーが発生する
 
@@ -33,8 +33,11 @@ Azure Active Directory と統合する多くのアプリケーションが機能
 
 ## <a name="requesting-not-authorized-permissions-error"></a>許可されていないアクセス許可を要求するエラー
 * **AADSTS90093:** &lt;clientAppDisplayName&gt; が、付与するように許可されていない 1 つまたは複数のアクセス許可を要求しています。 あなたの代わりにこのアプリケーションに同意できる管理者に問い合わせてください。
+* **AADSTS90094:** &lt;clientAppDisplayName&gt; には、組織内のリソースへのアクセス許可が必要です。このアクセス許可を付与できるのは管理者のみです。 アプリケーションを使用するには、まず管理者に依頼してこのアプリにアクセス許可を付与してください。
 
 このエラーは、管理者のみが付与できるアクセス許可を要求するアプリケーションを、会社の管理者ではないユーザーが使用しようとしたときに発生します。 このエラーは、組織を代表してアプリケーションにアクセス許可を付与できる管理者が解決できます。
+
+このエラーは、要求を許可すると危険であることを Microsoft が検出したために、ユーザーがアプリケーションに同意できない場合にも、発生する可能性があります。 この場合、"ApplicationManagement" というカテゴリ、"Consent to application" (アプリケーションへの同意) というアクティビティの種類、"Risky application detected" (危険なアプリケーションの検出) という状態の理由で、監査イベントもログに記録されます。
 
 ## <a name="policy-prevents-granting-permissions-error"></a>ポリシーがアクセス許可の付与を妨げるエラー
 * **AADSTS90093:** 管理者 &lt;tenantDisplayName&gt; がアクセス許可を要求している&lt;アプリの名前&gt;を付与するのを妨げるポリシーを設定しています。 あなたの代わりにこのアプリケーションに同意できる管理者 &lt;tenantDisplayName&gt; に問い合わせてください。
@@ -73,7 +76,7 @@ Azure Active Directory と統合する多くのアプリケーションが機能
 
     -   Azure AD アプリケーション ギャラリーからのアプリケーションの追加
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 [Azure Active Directory (v1 エンドポイント) のアプリ、アクセス許可、および同意](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
 

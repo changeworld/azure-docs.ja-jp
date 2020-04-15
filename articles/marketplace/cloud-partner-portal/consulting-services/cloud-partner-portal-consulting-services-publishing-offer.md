@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1015734ac0da6b4641c0bf32049146e3820f4616
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dace05715828395aed3953b42bf7926df292bbdb
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278537"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981343"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure と Dynamics 365 のコンサルティング サービス プラン
+
+>[!Important]
+>2020 年 4 月 13 日以降、コンサルティング サービス オファーの Partner Center への移行管理が開始されます。 移行後は、Partner Center でオファーを作成・管理することになります。 「[コンサルティング サービス作成の概要](https://aka.ms/AzureCreateConsultingService)」の手順に従い、移行後のオファーを管理します。
 
 この記事では、Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> または <a href="https://appsource.microsoft.com">AppSource</a> のいずれかにコンサルティング サービス オファーを発行する方法について説明します。 Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>、<a href="https://powerbi.microsoft.com">Power BI</a>、および <a href="https://powerapps.microsoft.com">Power Apps</a> に基づくソリューションは、AppSource 上に掲載できます。 これ以外の Microsoft <a href="https://azure.microsoft.com/services">Azure サービス</a>に基づくその他のオファーは、Azure Marketplace 内に掲載できます。
 

@@ -1,14 +1,14 @@
 ---
 title: インポート ドキュメント形式のガイドライン - QnA Maker
-description: URL の種類を使用して、QnA セットをインポートおよび作成する方法について説明します。
+description: QnA ペアのインポートおよび作成で URL の種類がどのように使用されるのかについて理解します。
 ms.topic: reference
-ms.date: 01/02/2020
-ms.openlocfilehash: 6a954f2fd607b70c6db256ab6dcc1dbcd7a5a473
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 799e85e2200d3caa29c9b76bc57a62fc883d246d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651797"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804335"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>インポートされたドキュメントおよび URL の形式のガイドライン
 
@@ -20,6 +20,8 @@ ms.locfileid: "77651797"
 
 ナレッジ ベースのコンテンツを直接追加または編集する場合は、**マークダウンの書式設定**を使用してリッチ テキスト コンテンツを作成するか、既に回答に含まれているマークダウン形式コンテンツを変更します。 QnA Maker は多くのマークダウン形式をサポートしているため、コンテンツにリッチ テキスト機能を取り込むことができます。 ただし、チャット ボットなどのクライアント アプリケーションは、同じマークダウン形式のセットをサポートしていない場合があります。 クライアント アプリケーションの回答の表示をテストすることが重要です。
 
+[コンテンツの種類と例](./Concepts/content-types.md#file-and-url-data-types)の完全な一覧を参照してください。
+
 ## <a name="basic-document-formatting"></a>基本的なドキュメントの書式設定
 
 QnA Maker では、次のような視覚的な手がかりに基づいて、ファイル内のセクション、サブセクション、関係を識別します。
@@ -28,12 +30,6 @@ QnA Maker では、次のような視覚的な手がかりに基づいて、フ�
 * フォント スタイル
 * 番号付け
 * 色
-
-|ドキュメントのサンプル|
-|--|
-||
-
-
 
 ## <a name="product-manuals"></a>製品マニュアル
 
@@ -116,7 +112,8 @@ Answer2
 * 見出しの最初の文字は大文字にしなくてはなりません。
 * 見出しの末尾に疑問符 `?` を付けないでください。
 
+**サンプル ドキュメント**:<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso Benefits (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso Benefits (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
 
-|ドキュメントのサンプル|
-|--|
-||
+## <a name="next-steps"></a>次のステップ
+
+[コンテンツの種類と例](./Concepts/content-types.md#file-and-url-data-types)の完全な一覧を参照してください

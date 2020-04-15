@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: d84085115816a8fe1cba65e191ea391dd91a4aed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599656"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436006"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>FAQ - 仮想マシンに関する質問
 
@@ -51,7 +51,7 @@ Azure Security Center では、Azure 拡張機能によりインストールさ�
 Security Center は通常、1 時間ごとに新しいデータをスキャンし、それに応じて推奨事項を更新します。 
 
 > [!NOTE]
-> Security Center では、データの収集と格納に Microsoft Monitoring Agent を使用しています。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。
+> Security Center では、データの収集と格納に Log Analytics エージェントを使用します。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>"VM Agent is Missing? (VM エージェントが見つかりません)" というメッセージが表示されるのはなぜですか。

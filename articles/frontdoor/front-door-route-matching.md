@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 605974e76c3ca878784129f7c9827a78d0642da6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471593"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878597"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door が要求をルーティング規則と照合する方法
 
-接続の確立と SSL ハンドシェイクを行い、要求が Front Door 環境に届くと、Front Door はまず、すべての構成情報を元に、その要求をどのルーティング規則と比較するかを判断し、定義されたアクションを実行します。 以下のドキュメントは、HTTP 要求の処理において、Front Door がどのルート構成を使用するかを判断する方法について説明します。
+接続の確立と TLS ハンドシェイクが行われ、要求が Front Door 環境に届いたときに、Front Door で最初に行われることの 1 つとして、すべての構成情報から、その要求と一致する特定のルーティング規則が決定され、定義されているアクションが実行されます。 以下のドキュメントは、HTTP 要求の処理において、Front Door がどのルート構成を使用するかを判断する方法について説明します。
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Front Door のルート構成の構造
 Front Door のルーティング規則の構成は、大きく分けて「左側」と「右側」の 2 つの部分から成っています。 ルートの左側への着信要求は照合を実行し、右側はその要求をどう処理するかを定義します。

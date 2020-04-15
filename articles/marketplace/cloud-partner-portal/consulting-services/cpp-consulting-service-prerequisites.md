@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b7a3374e8b1bb5c7624f41c994f7f9a6135506c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 35ef732111ff0b75bba7397f7cc22b3ff08c00d5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278520"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985101"
 ---
 # <a name="consulting-service-prerequisites"></a>コンサルティング サービスの前提条件
+
+>[!Important]
+>2020年4月13日以降、コンサルティング サービス オファーのパートナー センターへの移行管理が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [コンサルティング サービス作成の概要](https://aka.ms/AzureCreateConsultingService)の手順に従い、移行後のオファーを管理します。
 
 「[Azure Marketplace および AppSource 向けコンサルティング サービス](../../consulting-services.md)」で、このオファーの種類に関する説明と要件を確認してください。  以下に示す特定のコンサルティング サービスの種類には、追加の要件があります。
 

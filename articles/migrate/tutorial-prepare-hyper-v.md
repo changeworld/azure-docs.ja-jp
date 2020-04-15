@@ -2,20 +2,19 @@
 title: Azure Migrate を使用した評価と移行に向けて Hyper-V VM を準備する
 description: Azure Migrate を使用した評価と移行に向けて Hyper-V VM を準備する方法について説明します。
 ms.topic: tutorial
-ms.date: 01/01/2020
+ms.date: 03/31/2020
 ms.custom: mvc
-ms.openlocfilehash: 1d327f558806e0205540c183c56b92ba31e33cb7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77031222"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436218"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM の評価および Azure への移行を準備する
 
-この記事では、[Azure Migrate](migrate-services-overview.md) を使用して、オンプレミスの Hyper-V VM の評価および Azure への移行を準備する方法について説明します。
+この記事では、Azure Migrate:Server Assessment(migrate-services-overview.md#azure-migrate-server-assessment-tool) を使用したオンプレミスの Hyper-V VM の評価と、[Azure Migrate:Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) を使用した Hyper-V VM の移行を準備する方法について説明します。
 
-[Azure Migrate](migrate-overview.md) では、アプリ、インフラストラクチャ、およびワークロードを検出、評価、および Microsoft Azure に移行するために役立つツールのハブが提供されます。 このハブには、Azure Migrate ツールと、サードパーティ製の独立系ソフトウェア ベンダー (ISV) オファリングが含まれています。
 
 これはシリーズの最初のチュートリアルであり、Hyper-V VM を評価して Azure に移行する方法を示しています。 このチュートリアルでは、以下の内容を学習します。
 
@@ -39,10 +38,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure Migrate のデプロイに対するアクセス許可を設定する必要があります。
 
-**タスク** | **アクセス許可**
---- | ---
-**Azure Migrate プロジェクトの作成** | Azure アカウントには、プロジェクトを作成するためのアクセス許可が必要です。
-**Azure Migrate アプライアンスを登録する** | Azure Migrate は、軽量な Azure Migrate アプライアンスを使用して、Azure Migrate Server Assessment によって Hyper-V VM を検出しおよび評価します。 このアプライアンスでは VM が検出され、VM のメタデータとパフォーマンス データが Azure Migrate に送信されます。<br/><br/>アプライアンスの登録時に、リソースプロバイダー (Microsoft.OffAzure、Microsoft.Migrate、および Microsoft.KeyVault) が、アプライアンスで選択したサブスクリプションに登録されます。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。 リソースプロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。<br/><br/> オンボードの一環として、Azure Migrate によって Azure Active Directory (Azure AD) アプリが作成されます。<br/> AAD アプリは、アプライアンスで実行されているエージェントと Azure で実行されているそれぞれのサービスとの間の通信 (認証と承認) に使用されます。 このアプリには、任意のリソースに対して ARM 呼び出しや RBAC アクセスを行うための特権はありません。
+**タスク** | **詳細** 
+--- | --- 
+**Azure Migrate プロジェクトの作成** | Azure アカウントには、プロジェクトを作成するために共同作成者または所有者のアクセス許可が必要です。 | 
+**リソースプロバイダーの登録** | Azure Migrate は、軽量な Azure Migrate アプライアンスを使用して、Azure Migrate Server Assessment によって Hyper-V VM を検出しおよび評価します。<br/><br/> アプライアンスの登録中、リソースプロバイダーはアプライアンスで選択されたサブスクリプションに登録されます。 [詳細については、こちらを参照してください](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> リソースプロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
+**Azure AD アプリの作成** | アプライアンスを登録するとき、Azure Migrate によって、アプライアンス上で実行されているエージェントと Azure 上で実行されているそれぞれのサービスとの間の通信に使用される Azure Active Directory (Azure AD) アプリが作成されます。 [詳細については、こちらを参照してください](migrate-appliance-architecture.md#appliance-registration)。<br/><br/> Azure AD アプリを作成するためのアクセス許可が必要です (アプリケーション開発者ロールで利用可能)。
 
 
 
@@ -79,25 +79,25 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
     ![Azure AD のアクセス許可](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> これは、重要ではない既定の設定です。 詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)をご覧ください。
+> これは、重要ではない既定の設定です。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
 
 
 #### <a name="assign-application-developer-role"></a>アプリケーション開発者ロールの割り当て
 
-テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)をご覧ください。
+テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
 
 ## <a name="prepare-hyper-v-for-assessment"></a>Hyper-V の評価の準備
 
-Hyper-V の VM 評価を、手動で、または構成スクリプトを使用して、準備することができます。 スクリプトでも[手動](#prepare-hyper-v-manually)でも、以下の準備が必要です。
-
+Hyper-V の VM 評価を、手動で、または構成スクリプトを使用して、準備することができます。 準備手順は次のとおりです。
 - Hyper-V のホスト設定を[検証](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements)し、Hyper-V ホスト上で[必要なポート](migrate-support-matrix-hyper-v.md#port-access)が開かれていることを確認します。
 - 各ホスト上で PowerShell リモート処理を設定して、Azure Migrate アプライアンスが WinRM 接続を介してホスト上で PowerShell コマンドを実行できるようにします。
 - VM ディスクがリモート SMB 共有に配置されている場合は、資格情報を委任します。
 - Hyper-V ホスト上で VM を検出するためにアプライアンスによって使用されるアカウントを設定します。
-- 検出と評価を行いたい各 VM で Hyper-V 統合サービスを設定します。
+- 検出と評価を行いたい各 VM で Hyper-V 統合サービスを設定します。 Azure Migrate に関して、統合サービスを有効にするときは既定の設定で問題ありません。
 
+    ![統合サービスを有効にする](./media/tutorial-prepare-hyper-v/integrated-services.png)
 
 
 ## <a name="prepare-with-a-script"></a>スクリプトの準備
@@ -130,7 +130,7 @@ Hyper-V の VM 評価を、手動で、または構成スクリプトを使用�
     SHA256
     ```
 
-4.  スクリプトの整合性を検証した後、この PowerShell コマンドを使用して、各 Hyper-V ホストでスクリプトを実行します。
+4.    スクリプトの整合性を検証した後、この PowerShell コマンドを使用して、各 Hyper-V ホストでスクリプトを実行します。
     ```
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
@@ -145,7 +145,7 @@ Hyper-V の VM 評価を、手動で、または構成スクリプトを使用�
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
 
 
-## <a name="prepare-hyper-v-manually"></a>手動での Hyper-V の準備
+## <a name="prepare-manually"></a>手動での準備
 
 スクリプトを使用するのではなく、手動で Hyper-V を準備する場合は、このセクションの手順に従います。
 

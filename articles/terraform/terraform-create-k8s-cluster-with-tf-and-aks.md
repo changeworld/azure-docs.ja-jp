@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure Kubernetes Service およ
 keywords: Azure DevOps Terraform AKS Kubernetes
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b7a84d7562e99e53ff7be75b7d40795cd3f9e203
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78945308"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618931"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>チュートリアル:Terraform を使用して Azure Kubernetes Service で Kubernetes クラスターを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "78945308"
 
 - **Terraform の構成**:[Terraform および Azure へのアクセスの構成](terraform-install-configure.md)に関する記事の指示に従ってください
 
-- **Azure サービス プリンシパル**:「[Azure CLI で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)」の「**サービス プリンシパルを作成する**」セクションの指示に従ってください。 appId、displayName、password、および tenant の値を書き留めます。
+- **Azure サービス プリンシパル**:「[Azure CLI で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)」の「**サービス プリンシパルを作成する**」の指示に従ってください。 appId、displayName、password、および tenant の値を書き留めます。
 
 ## <a name="create-the-directory-structure"></a>ディレクトリ構造を作成する
 

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 9f49b858a23d0a1f58505d9f9971a31e8c9167e9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73664497"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435975"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>クイック スタート:Linux コンピューターでの Azure Security Center の利用開始
-Azure サブスクリプションの利用を開始した後で、エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。 このエージェントは Microsoft Monitoring Agent (MMA) と呼ばれていますが、OMS エージェントとも呼ばれます。
+Azure サブスクリプションの利用を開始した後で、エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。 このエージェントは Log Analytics エージェントと呼ばれていますが、OMS エージェントとも呼ばれます。
 
 このクイックスタートでは、Linux コンピューターにエージェントをインストールする方法を示します。
 

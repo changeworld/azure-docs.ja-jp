@@ -10,22 +10,22 @@ ms.subservice: ''
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9898addfa840752e27de8716d2185e767aac809b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0ffa33811957af95fc10396ffecef0b3de7959fe
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350103"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633015"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>SQL プールのためのソース管理の統合
 
-このチュートリアルでは、SQL Server Data Tools (SSDT) データベース プロジェクトをソース管理と統合する方法について概説します。  ソース管理の統合は、Azure Synapse Analytics の SQL プール リソースを使用して継続的インテグレーションと継続的デプロイのパイプラインを構築するための最初の手順です。 
+このチュートリアルでは、SQL Server Data Tools (SSDT) データベース プロジェクトをソース管理と統合する方法について概説します。  ソース管理の統合は、Azure Synapse Analytics の SQL プール リソースを使用して継続的インテグレーションと継続的デプロイのパイプラインを構築するための最初の手順です。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 - [Azure DevOps 組織](https://azure.microsoft.com/services/devops/)にサインアップします
-- [作成と接続](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal)に関するチュートリアルを実行します
--  [Visual Studio 2019 をインストール](https://visualstudio.microsoft.com/vs/older-downloads/)します 
+- [作成と接続](create-data-warehouse-portal.md)に関するチュートリアルを実行します
+- [Visual Studio 2019 をインストール](https://visualstudio.microsoft.com/vs/older-downloads/)します
 
 ## <a name="set-up-and-connect-to-azure-devops"></a>Azure DevOps を設定して接続する
 
@@ -33,7 +33,7 @@ ms.locfileid: "80350103"
 
    ![プロジェクトの作成](./media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "Create Project")
 
-2. Visual Studio を開き、[接続の管理] を選択して、手順 1 で作成した Azure DevOps 組織とプロジェクトに接続します
+2. Visual Studio を開き、[接続の管理] を選択して、手順 1 の Azure DevOps 組織とプロジェクトに接続します
 
    ![接続の管理](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "接続の管理")
 
@@ -53,7 +53,7 @@ ms.locfileid: "80350103"
 
    ![プロジェクトのインポート](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "プロジェクトのインポート")  
 
-3. Visual Studio のチーム エクスプローラーで、ローカル Git リポジトリに対するすべての変更をコミットします 
+3. Visual Studio のチーム エクスプローラーで、ローカル Git リポジトリに対するすべての変更をコミットします
 
    ![コミット](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Commit")  
 

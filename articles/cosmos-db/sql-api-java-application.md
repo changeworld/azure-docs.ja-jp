@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: ramkris
-ms.openlocfilehash: 4a7c307e8a4d4088fe4d2f7800398fda4704219c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2e38aeba198f875961024f8c25c7fb0123479f87
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720837"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985271"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>チュートリアル:Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
 
@@ -46,7 +46,7 @@ ms.locfileid: "73720837"
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Java Development Kit (JDK) 7 以降](https://aka.ms/azure-jdks)。
+* [Java Development Kit (JDK) 7 以降](/java/azure/jdk/?view=azure-java-stable)。
 * [Eclipse IDE for Java EE Developers。](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト。](../app-service/app-service-web-get-started-java.md)
 
@@ -62,7 +62,7 @@ ms.locfileid: "73720837"
 ## <a name="step-2-create-the-java-jsp-application"></a><a id="CreateJSP"></a>手順 2:Java JSP アプリケーションを作成する
 JSP アプリケーションを作成するには:
 
-1. 最初に、Java プロジェクトを作成します。 Eclipse を起動し、 **[File]** 、 **[New]** 、 **[Dynamic Web Project]** の順にクリックします。 使用可能なプロジェクトとして **[Dynamic Web Project]** が表示されない場合は、 **[File]** 、 **[New]** 、 **[Project]** 、の順にクリックし、 **[Web]** を展開します。さらに、 **[Dynamic Web Project]** をクリックし、 **[Next]** をクリックします。
+1. 最初に、Java プロジェクトを作成します。 Eclipse を起動し、 **[File]** 、 **[New]** 、 **[Dynamic Web Project]** の順にクリックします。 使用可能なプロジェクトとして **[Dynamic Web Project]\(動的 Web プロジェクト\)** が表示されない場合は、 **[File]\(ファイル\)** 、 **[New]\(新規\)** 、 **[Project]\(プロジェクト\)** の順にクリックし、 **[Web]** を展開して、 **[Dynamic Web Project]\(動的 Web プロジェクト\)** 、 **[Next]\(次へ\)** の順にクリックします。
    
     ![JSP Java アプリケーション開発](./media/sql-api-java-application/image10.png)
 2. **[Project name]** ボックスに、プロジェクト名を入力します。必要に応じて、 **[Target Runtime]** ボックスの一覧で値 (たとえば、Apache Tomcat v7.0) を選択し、 **[Finish]** をクリックします。 ターゲット ランタイムを選択すると、Eclipse でプロジェクトをローカルに実行できます。

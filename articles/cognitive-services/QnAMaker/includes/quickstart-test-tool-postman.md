@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 46947579ea72e2199af116442472eec330b38009
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dd44d9cb01ff072d89afeb4efc4a59071c621315
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77112300"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758722"
 ---
 この Postman ベースのクイック スタートでは、ナレッジ ベースから回答を取得する手順を紹介しています。
 
@@ -37,7 +37,7 @@ ms.locfileid: "77112300"
 
 1. ナレッジ ベースの **[Settings]\(設定\)** ページで **[Postman]** タブを選択し、ナレッジ ベースからの回答を生成するために使用される構成を表示します。 Postman で使用する次の情報をコピーします。
 
-    |Name|設定|目的と値|
+    |名前|設定|目的と値|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|これは、URL の HTTP メソッドとルートです。|
     |`Host`|`https://diberry-qna-s0-s.azurewebsites.net/qnamaker`|これは URL のホストです。 Host と Post の値を連結して、完全な generateAnswer URL を取得します。|
@@ -49,9 +49,9 @@ ms.locfileid: "77112300"
 
 ## <a name="use-metadata-to-filter-answer"></a>メタデータを使用して回答をフィルター処理する
 
-前のクイックスタートでは、2 つの異なる質問を区別するために、メタデータが 2 つの QnA セットに追加されました。 このメタデータをクエリに追加して、関連する QnA セットのみにフィルターを制限します。
+前のクイックスタートでは、2 つの異なる質問を区別するために、メタデータが 2 つの QnA ペアに追加されました。 このメタデータをクエリに追加して、関連する QnA ペアのみにフィルターを制限します。
 
-1. Postman で、`strictFilters` の名前と値のペアを使用して `service:qna_maker` プロパティを追加することによって、クエリの JSON のみを変更します。 本文の JSON は次のようになります。
+1. Postman で、`service:qna_maker` の名前と値のペアを使用して `strictFilters` プロパティを追加することによって、クエリの JSON のみを変更します。 本文の JSON は次のようになります。
 
     ```json
     {

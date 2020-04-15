@@ -2,15 +2,15 @@
 title: テンプレートを使用して VM 拡張機能をデプロイする
 description: Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする方法について説明します
 author: mumian
-ms.date: 11/13/2018
+ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 469948d3d3207dd684d5a9b752e0c448ac7e83a9
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 7397e9387fe3354a926ed607a9132ab6ddc7e785
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239258"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477597"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用して仮想マシン拡張機能をデプロイする
 
@@ -76,25 +76,25 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
 ```json
 {
-    "type": "Microsoft.Compute/virtualMachines/extensions",
-    "apiVersion": "2018-06-01",
-    "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
-    "location": "[parameters('location')]",
-    "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
-    ],
-    "properties": {
-        "publisher": "Microsoft.Compute",
-        "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.7",
-        "autoUpgradeMinorVersion":true,
-        "settings": {
-            "fileUris": [
-                "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
-            ],
-            "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
-        }
-    }
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "apiVersion": "2018-06-01",
+  "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+      "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
+  ],
+  "properties": {
+      "publisher": "Microsoft.Compute",
+      "type": "CustomScriptExtension",
+      "typeHandlerVersion": "1.7",
+      "autoUpgradeMinorVersion":true,
+      "settings": {
+        "fileUris": [
+          "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
+        ],
+        "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
+      }
+  }
 }
 ```
 
@@ -104,6 +104,27 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 * **dependsOn**:仮想マシンの作成後に拡張機能リソースを作成します。
 * **fileUris**: スクリプト ファイルが格納される場所です。 提供された場所を使用しない場合は、値を更新する必要があります。
 * **commandToExecute**: このコマンドによってスクリプトが呼び出されます。
+
+Web サーバーにアクセスできるよう HTTP ポートを開放する必要があります。
+
+1. テンプレートで **securityRules** を探します。
+1. **default-allow-3389** の横に次のルールを追加します。
+
+    ```json
+    {
+      "name": "AllowHTTPInBound",
+      "properties": {
+        "priority": 1010,
+        "access": "Allow",
+        "direction": "Inbound",
+        "destinationPortRange": "80",
+        "protocol": "Tcp",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "*",
+        "destinationAddressPrefix": "*"
+      }
+    }
+    ```
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 

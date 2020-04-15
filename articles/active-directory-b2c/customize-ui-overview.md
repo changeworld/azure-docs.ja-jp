@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dad4c156b088c28ccf199cb155278ac9a189e4be
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 37ddf57057b736cd76a74276e5593a865e7df8cc
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189057"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666863"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 
@@ -84,13 +84,17 @@ Azure AD B2C では、[クロス オリジン リソース共有 (CORS)](https:/
   - Internet Explorer 8 と 9 (サポートに制限あり)
   - Google Chrome 42.0 以降
   - Mozilla Firefox 38.0 以降
+  - iOS および macOS 用 Safari、バージョン 12 以降
 - HTML には **form タグ**を含めないでください。 form タグがあると、Azure AD B2C によって挿入された HTML によって生成される POST 操作が妨げられます。
 
 ### <a name="where-do-i-store-ui-content"></a>UI コンテンツはどこに保存しますか。
 
 独自の HTML ファイルと CSS ファイルを使用して UI をカスタマイズする場合、CORS をサポートしている、パブリックに使用可能な任意の HTTPS エンドポイントで UI コンテンツをホストできます。 たとえば、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)、Web サーバー、CDN、AWS S3、またはファイル共有システムなどです。
 
-重要な点は、CORS が有効になっている公開 HTTPS エンドポイントでコンテンツがホストされていることです。 コンテンツに指定するとき、絶対 URL を使用する必要があります。
+重要な点は、[CORS が有効な](https://enable-cors.org/server.html)公開 HTTPS エンドポイントでコンテンツをホストすることです。 コンテンツに指定するとき、絶対 URL を使用する必要があります。
+
+> [!NOTE]
+> HTML コンテンツの作成、Azure BLOB ストレージへのコンテンツのアップロード、CORS の構成の詳細については、UI のカスタマイズに関する記事中の「[カスタムページ コンテンツのチュートリアル](custom-policy-ui-customization.md#custom-page-content-walkthrough)」のセクションを参照してください。
 
 ## <a name="get-started-with-custom-html-and-css"></a>カスタム HTML および CSS の概要
 

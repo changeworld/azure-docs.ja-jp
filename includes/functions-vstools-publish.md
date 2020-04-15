@@ -5,45 +5,46 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 11/02/2018
+ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 689889588aba4da888a7d66f5e1d45dfde71d520
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0e69a11ab81406f650049e3c7d4d446b6628b29b
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020979"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657547"
 ---
 1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、 **[発行]** を選択します。
 
-2. **[発行先を選択]** ダイアログで、画像の下の表に指定されているように発行オプションを使用します。 
-
-    ![発行先の選択](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
+2. **[発行先を選択]** で、次の表で指定されている発行オプションを使用します。 
 
     | オプション      | 説明                                |
     | ------------ |  -------------------------------------------------- |
-    | **Azure Functions 従量課金プラン** |   [従量課金プラン](../articles/azure-functions/functions-scale.md#consumption-plan)で実行される関数アプリにプロジェクトを発行する場合は、関数アプリの実行に対してのみ課金されます。 他のホスティング プランでは、コストが高くなります。 詳細については、「[Azure Functions のスケールとホスティング](../articles/azure-functions/functions-scale.md)」を参照してください。 | 
-    | **新規作成** | 新しい関数アプリと関連リソースが、Azure に作成されます。 **[既存のものを選択]** を選択すると、Azure の既存の関数アプリ内のすべてのファイルがローカル プロジェクトのファイルによって上書きされます。 このオプションは、既存の関数アプリへの更新を再発行する場合にのみ使用します。 |
-    | **パッケージ ファイルから実行します** | 関数アプリは、[Zip Deploy](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) を使用して、[Run-From-Package](../articles/azure-functions/run-functions-from-deployment-package.md) モードが有効な状態でデプロイされます。 これは、関数を実行するために推奨される方法であり、パフォーマンスが向上します。 このオプションを使用しない場合は、関数アプリ プロジェクトがローカルで実行されないようにしたうえで、Azure に発行する必要があります。 |
+    | **Azure Functions 従量課金プラン** | [従量課金プラン](../articles/azure-functions/functions-scale.md#consumption-plan)で実行される関数アプリを Azure クラウド環境に作成します。 従量課金プランを使用する場合、支払いの対象になるのは関数アプリの実行のみです。 他のホスティング プランでは、コストが高くなります。 従量課金プラン以外のプランで実行する場合は、[関数アプリのスケーリング](../articles/azure-functions/functions-scale.md)を管理する必要があります。| 
+    | **新規作成** | 新しい関数アプリと関連リソースが、Azure に作成されます。 <br/>**[既存のものを選択]** を選択すると、Azure の既存の関数アプリ内のすべてのファイルがローカル プロジェクトのファイルによって上書きされます。 このオプションは、既存の関数アプリへの更新を再発行する場合にのみ使用します。 |
+    | **パッケージ ファイルから実行します** | 関数アプリは、[Zip Deploy](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) を使用して、[Run-From-Package](../articles/azure-functions/run-functions-from-deployment-package.md) モードが有効な状態でデプロイされます。 パフォーマンスを向上させるこのデプロイは、関数を実行するために推奨される方法です。 <br/>このオプションを使用しない場合は、関数アプリ プロジェクトがローカルで実行されないようにしたうえで、Azure に発行する必要があります。 |
+
+    ![発行先の選択](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
 
 
-3. **[発行]** を選択します。 まだ Visual Studio から Azure アカウントにサインインしていない場合は、 **[サインイン]** を選択します。 無料の Azure アカウントを作成することもできます。
+3. **[プロファイルの作成]** を選択します。 まだ Visual Studio から Azure アカウントにサインインしていない場合は、 **[サインイン]** を選択します。 無料の Azure アカウントを作成することもできます。
 
-4. **Azure App Service の [新規作成]** ダイアログで、画像の下の表に指定されているように**ホスティング**設定を使用してください。
+4. **App Service: 新規作成** で、次の表で指定されている値を使用します。
+
+    | 設定      | 値  | 説明                                |
+    | ------------ |  ------- | -------------------------------------------------- |
+    | **名前** | グローバルに一意の名前 | 新しい関数アプリを一意に識別する名前。 この名前をそのまま使用するか、新しい名前を入力します。 有効な文字は、`a-z`、`0-9`、`-` です。 |
+    | **サブスクリプション** | 該当するサブスクリプション | 使用する Azure サブスクリプション。 このサブスクリプションを承諾するか、ドロップダウン リストから新しいものを選択します。 |
+    | **[リソース グループ](../articles/azure-resource-manager/management/overview.md)** | リソース グループの名前 |  関数アプリを作成するリソース グループ。 ドロップダウン リストから既存のリソース グループを選択するか、または **[新規]** を選択して新しいリソース グループを作成します。|
+    | **[ホスティング プラン](../articles/azure-functions/functions-scale.md)** | ホスティング プランの名前 | **[新規]** を選択して、サーバーレス プランを構成します。 必ず **[サイズ]** の下の **[従量課金プラン]** を選択してください。 [従量課金プラン](../articles/azure-functions/functions-scale.md#consumption-plan)で実行される関数アプリにプロジェクトを発行する場合は、関数アプリの実行に対してのみお支払いください。 他のホスティング プランでは、コストが高くなります。 **[従量課金プラン]** 以外のプランで実行する場合は、[関数アプリのスケーリング](../articles/azure-functions/functions-scale.md)を管理する必要があります。  |
+    | **場所** | App Service の場所 | 最寄りの[リージョン](https://azure.microsoft.com/regions/)または関数がアクセスする他のサービスの近くのリージョン内の **[場所]** を選択します。 |
+    | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | 汎用ストレージ アカウント | Functions Runtime には Azure Storage アカウントが必須です。 **[新規]** を選択して汎用ストレージ アカウントを構成します。 または、[ストレージ アカウントの要件](../articles/azure-functions/functions-scale.md#storage-account-requirements)を満たす既存のアカウントを選択することもできます。  |
 
     ![[App Service の作成] ダイアログ](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
-    | 設定      | 推奨値  | 説明                                |
-    | ------------ |  ------- | -------------------------------------------------- |
-    | **名前** | グローバルに一意の名前 | 新しい関数アプリを一意に識別する名前。 有効な文字は、`a-z`、`0-9`、および `-` です。 |
-    | **サブスクリプション** | サブスクリプションの選択 | 使用する Azure サブスクリプション。 |
-    | **[リソース グループ](../articles/azure-resource-manager/management/overview.md)** | myResourceGroup |  関数アプリを作成するリソース グループの名前。 新しいリソース グループを作成する場合は、 **[新規]** を選択します。|
-    | **[ホスティング プラン](../articles/azure-functions/functions-scale.md)** | 従量課金プラン | **[新規]** を選択してサーバーレス プランを作成した後は、必ず **[サイズ]** の下の **[従量課金プラン]** を選択します。 また、[[地域]](https://azure.microsoft.com/regions/) で、自分に近いか、または自分の関数がアクセスする他のサービスに近い **[場所]** を選択します。 **[従量課金プラン]** 以外のプランで実行する場合は、[関数アプリのスケーリング](../articles/azure-functions/functions-scale.md)を管理する必要があります。  |
-    | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | 汎用ストレージ アカウント | Functions ランタイムには Azure Storage アカウントが必要です。 **[新規]** を選択して汎用ストレージ アカウントを作成します。 または、[ストレージ アカウントの要件](../articles/azure-functions/functions-scale.md#storage-account-requirements)を満たす既存のアカウントを使用することもできます。  |
+5. **[作成]** を選択して、これらの設定で Azure に関数アプリとその関連リソースを作成し、関数プロジェクト コードをデプロイします。 
 
-5. **[作成]** を選択して、これらの設定で Azure に関数アプリと関連リソースを作成し、関数プロジェクト コードをデプロイします。 
-
-6. デプロイが完了したら、 **[サイトの URL]** の値を書き留めておきます。これが Azure における関数アプリのアドレスになります。
+6. [発行] を選択し、デプロイが完了したら、 **[サイトの URL]** の値を書き留めておきます。これが Azure における関数アプリのアドレスになります。
 
     ![発行成功のメッセージ](./media/functions-vstools-publish/functions-visual-studio-publish-complete.png)

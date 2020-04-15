@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Service (AKS) で Azure CLI を使用して仮想ノードを作成する
+title: Azure CLI を使用して仮想ノードを作成する
+titleSuffix: Azure Kubernetes Service
 description: Azure CLI を使用して、仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成してポッドを実行する方法を説明します。
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 2b726dff1e2c23b94118a11fb6b6ccf1f9622d4d
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: b6d44ceb9b447d670c4e51c951b547e90dfce38f
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592746"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984676"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLI を使って仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
@@ -19,7 +20,7 @@ Azure Kubernetes Service (AKS) クラスターでアプリケーション ワー
 
 ## <a name="before-you-begin"></a>開始する前に
 
-仮想ノードを使用すると、ACI および AKS クラスターで実行されているポッド間でのネットワーク通信が可能になります。 この通信を可能にするために、仮想ネットワーク サブネットが作成され、委任されたアクセス許可が割り当てられます。 仮想ノードは、"*高度*" ネットワークを使用して作成された AKS クラスターに対してのみ機能します。 既定では、AKS クラスターは "*基本*" ネットワークを使用して作成されます。 この記事では、仮想ネットワークとサブネットを作成した後、高度ネットワークを使用した AKS クラスターをデプロイする方法について説明します。
+仮想ノードを使用すると、Azure Container Instances (ACI) および AKS クラスターで実行されているポッド間でのネットワーク通信が可能になります。 この通信を可能にするために、仮想ネットワーク サブネットが作成され、委任されたアクセス許可が割り当てられます。 仮想ノードは、"*高度*" ネットワークを使用して作成された AKS クラスターに対してのみ機能します。 既定では、AKS クラスターは "*基本*" ネットワークを使用して作成されます。 この記事では、仮想ネットワークとサブネットを作成した後、高度ネットワークを使用した AKS クラスターをデプロイする方法について説明します。
 
 以前に ACI を使用していない場合は、ご使用のサブスクリプションでサービス プロバイダーを登録します。 ACI プロバイダー登録の状態は、次の例で示すように [az provider list][az-provider-list] コマンドを使用して確認できます。
 
@@ -29,10 +30,10 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 
 *Microsoft.ContainerInstance* プロバイダーは、次の出力の例で示すように *Registered* としてレポートします。
 
-```
-Namespace                    RegistrationState
----------------------------  -------------------
-Microsoft.ContainerInstance  Registered
+```output
+Namespace                    RegistrationState    RegistrationPolicy
+---------------------------  -------------------  --------------------
+Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
 プロバイダーが *NotRegistered* として示される場合は、次の例で示すように [az provider register][az-provider-register] を使用してプロバイダーを登録します。
@@ -66,7 +67,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * [ホストのエイリアス](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * ACI の exec の[引数](../container-instances/container-instances-exec.md#restrictions)
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) ではポッドは仮想ノードにデプロイされません
-* [Windows Server ノード (現在は AKS でプレビュー段階)](windows-container-cli.md) を仮想ノードと併用することはサポートされていません。 仮想ノードを使用して、Windows Server コンテナーをスケジュールすることができ、AKS クラスター内の Windows Server ノードは必要ありません。
+* 仮想ノードでは、Linux ポッドのスケジュール設定がサポートされています。 オープンソースの [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) プロバイダーを手動でインストールして、Windows Server のコンテナーを ACI にスケジュールすることができます。 
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
@@ -119,7 +120,7 @@ az ad sp create-for-rbac --skip-assignment
 
 出力は次の例のようになります。
 
-```
+```output
 {
   "appId": "bef76eb3-d743-4a97-9534-03e9388811fc",
   "displayName": "azure-cli-2018-11-21-18-42-00",
@@ -155,7 +156,7 @@ az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 `<subnetId>` を、前の手順で取得した ID に置き換え、次に `<appId>` と `<password>` を置き換えます 
+AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 `<subnetId>` を前の手順で取得した ID に置き換え、`<appId>` と `<password>` を前のセクションで収集した値に置き換えます。
 
 ```azurecli-interactive
 az aks create \
@@ -201,9 +202,7 @@ kubectl get nodes
 
 次の出力例は、単一の VM ノードが作成されてから、Linux 用の仮想ノード、*virtual-node-aci-linux*が作成されることを示しています。
 
-```
-$ kubectl get nodes
-
+```output
 NAME                          STATUS    ROLES     AGE       VERSION
 virtual-node-aci-linux        Ready     agent     28m       v1.11.2
 aks-agentpool-14693408-0      Ready     agent     32m       v1.11.2
@@ -252,9 +251,11 @@ kubectl apply -f virtual-node.yaml
 
 `-o wide` 引数を指定して [kubectl get pods][kubectl-get] コマンドを使用し、ポッドの一覧とスケジュールされたノードを出力します。 `aci-helloworld` ポッドは `virtual-node-aci-linux` ノードでスケジュールされています。
 
+```console
+kubectl get pods -o wide
 ```
-$ kubectl get pods -o wide
 
+```output
 NAME                            READY     STATUS    RESTARTS   AGE       IP           NODE
 aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.0.4   virtual-node-aci-linux
 ```
@@ -286,9 +287,7 @@ curl -L http://10.241.0.4
 
 次の簡約された出力例に示されているように、デモ アプリケーションが表示されます。
 
-```
-$ curl -L 10.241.0.4
-
+```output
 <html>
 <head>
   <title>Welcome to Azure Container Instances!</title>
@@ -302,9 +301,11 @@ $ curl -L 10.241.0.4
 
 仮想ノードを使用する必要がなくなった場合は、[az aks disable-addons][az aks disable-addons] コマンドを使用して、それらを無効にすることができます。 
 
-最初に、仮想ノードで実行されている helloworld ポッドを削除します。
+必要に応じて、[https://shell.azure.com](https://shell.azure.com) にアクセスし、お使いのブラウザーで Azure Cloud Shell を開きます。
 
-```azurecli-interactive
+最初に、仮想ノードで実行されている `aci-helloworld` ポッドを削除します。
+
+```console
 kubectl delete -f virtual-node.yaml
 ```
 

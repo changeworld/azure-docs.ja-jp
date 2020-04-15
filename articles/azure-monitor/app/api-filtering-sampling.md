@@ -3,12 +3,12 @@ title: Azure Application Insights SDK におけるフィルター処理および
 description: テレメトリが Application Insights ポータルに送信される前に、SDK でフィルター処理またはデータへのプロパティの追加を行うためのテレメトリ プロセッサおよびテレメトリ初期化子を記述します。
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: 9f4df83ed60ba94913702b9a32a298f0ac62f9f4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 8f2064f73821a017046cbb552a8dcf592ce13267
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666464"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983760"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK におけるテレメトリのフィルター処理および前処理
 
@@ -21,7 +21,7 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 開始する前に次の操作を実行してください。
 
-* アプリケーションに適した SDK をインストールします。[ASP.NET](asp-net.md)、[ASP.NET Core](asp-net-core.md)、[Non HTTP/Worker for .NET/.NET Core](worker-service.md)、[Java](../../azure-monitor/app/java-get-started.md)、または [JavaScript](javascript.md)
+* アプリケーションに適した SDK をインストールします。[ASP.NET](asp-net.md)、[ASP.NET Core](asp-net-core.md)、[Non HTTP/Worker for .NET/.NET Core](worker-service.md)、または [JavaScript](javascript.md)
 
 <a name="filtering"></a>
 
@@ -203,7 +203,7 @@ public void Process(ITelemetry item)
    ```JS
    var filteringFunction = (envelope) => {
      if (envelope.data.someField === 'tobefilteredout') {
-        return false;
+         return false;
      }
   
      return true;
@@ -307,26 +307,6 @@ protected void Application_Start()
     services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
 }
 ```
-
-### <a name="java-telemetry-initializers"></a>Java テレメトリの初期化子
-
-[Java SDK ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.telemetryinitializer?view=azure-java-stable)
-
-```Java
-public interface TelemetryInitializer
-{ /** Initializes properties of the specified object. * @param telemetry The {@link com.microsoft.applicationinsights.telemetry.Telemetry} to initialize. */
-
-void initialize(Telemetry telemetry); }
-```
-
-次に、applicationinsights.xml ファイルにカスタム初期化子を登録します。
-
-```xml
-<Add type="mypackage.MyConfigurableContextInitializer">
-    <Param name="some_config_property" value="some_value" />
-</Add>
-```
-
 ### <a name="javascript-telemetry-initializers"></a>JavaScript テレメトリ初期化子
 *JavaScript*
 
@@ -378,6 +358,14 @@ telemetryItem で使用できる非カスタム プロパティの概要につ�
 ### <a name="opencensus-python-telemetry-processors"></a>OpenCensus Python テレメトリ プロセッサ
 
 OpenCensus Python のテレメトリ プロセッサは、エクスポート前にテレメトリを処理するために呼び出される単なるコールバック関数です。 コールバック関数は、パラメーターとして [エンベロープ](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py#L86) データ型を受け入れる必要があります。 テレメトリをエクスポートから除外するには、コールバック関数が `False` を返すようにします。 エンベロープの Azure Monitor データ型のスキーマについては、[こちら](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py)を参照してください。
+
+> [!NOTE]
+> `cloud_RoleName` は、`tags` フィールドの `ai.cloud.role` 属性を変更することで変更できます。
+
+```python
+def callback_function(envelope):
+    envelope.tags['ai.cloud.role'] = 'new_role_name.py'
+```
 
 ```python
 # Example for log exporter
@@ -486,7 +474,7 @@ if __name__ == "__main__":
 public void Initialize(ITelemetry item)
 {
   var itemProperties = item as ISupportProperties;
-  if(itemProperties != null && !itemProperties.ContainsKey("customProp"))
+  if(itemProperties != null && !itemProperties.Properties.ContainsKey("customProp"))
     {
         itemProperties.Properties["customProp"] = "customValue";
     }
@@ -534,7 +522,7 @@ public void Initialize(ITelemetry telemetry)
 * [ASP.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
-## <a name="next"></a>次のステップ
+## <a name="next-steps"></a><a name="next"></a>次のステップ
 * [イベントおよびログを検索する](../../azure-monitor/app/diagnostic-search.md)
 * [サンプリング](../../azure-monitor/app/sampling.md)
 * [トラブルシューティング](../../azure-monitor/app/troubleshoot-faq.md)

@@ -3,12 +3,12 @@ title: Azure CLI を使用して Azure ファイル共有を復元する
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure CLI を使用して復元する方法について説明します
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 63b2be2fe24c1274ed1581b7b849de578c978842
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 980044011e3417a2aff8447a939e02299923da38
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76931051"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757096"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Azure CLI を使用して Azure ファイル共有を復元する
 
@@ -19,6 +19,9 @@ Azure CLI では、Azure リソースを管理するための、Azure のコマ�
 * バックアップされた Azure ファイル共有の復元ポイントを表示する。
 * 完全な Azure ファイル共有を復元する。
 * 個々のファイルまたはフォルダーを復元する。
+
+>[!NOTE]
+> Azure Backup では、Azure CLI を使用した、元の場所または別の場所への複数のファイルやフォルダーの復元が、サポートされるようになりました。 詳しくは、このドキュメントの「[複数のファイルまたはフォルダーを元の場所または別の場所に復元する](#restore-multiple-files-or-folders-to-original-or-alternate-location)」セクションをご覧ください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +45,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 次の例では、*afsaccount* ストレージ アカウント内の *azurefiles* ファイル共有の復旧ポイントの一覧をフェッチします。
 
 ```azurecli-interactive
-az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --backup-management-type azurestorage --item-name “AzureFileShare;azurefiles” --workload-type azurefileshare --out table
+az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --backup-management-type azurestorage --item-name "AzureFileShare;azurefiles" --workload-type azurefileshare --out table
 ```
 
 また、次の 2 つの追加パラメーターを指定することにより、コンテナーと項目のフレンドリ名を使用して、前述のコマンドレットを実行することもできます。
@@ -82,7 +85,7 @@ Name                Time                        Consistency
 次の例では、復元モードを *originallocation* に設定して [az backup restore restore-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) コマンドレットを使用し、*azurefiles* ファイル共有を元の場所に復元します。 「[Azure ファイル共有の復旧ポイントをフェッチする](#fetch-recovery-points-for-the-azure-file-share)」で取得した復旧ポイント: 932883129628959823 を使用します。
 
 ```azurecli-interactive
-az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation --resolve-conflict overwrite --out table
+az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation --resolve-conflict overwrite --out table
 ```
 
 ```output
@@ -102,10 +105,10 @@ Name                                  ResourceGroup
 * **--target-folder**: データの復元先となるファイル共有の下のフォルダー。 バックアップされたコンテンツをルート フォルダーに復元する必要がある場合は、ターゲット フォルダーの値として空の文字列を指定します。
 * **--resolve-conflict**: 復元されたデータとの競合が発生した場合の指示。 **Overwrite** または **Skip** を指定できます。
 
-次の例では、復元モードを *alternatelocation* に設定して [az backup restore restore-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) を使用し、*afsaccount* ストレージ アカウントの *azurefiles* ファイル共有を、*afaccount1* ストレージ アカウントの *azurefiles1”* ファイル共有に復元します。
+次の例では、復元モードを *alternatelocation* に設定して [az backup restore restore-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) を使用し、*afsaccount* ストレージ アカウントの *azurefiles* ファイル共有を、*afaccount1* ストレージ アカウントの *azurefiles1"* ファイル共有に復元します。
 
 ```azurecli-interactive
-az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
+az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
 ```
 
 ```output
@@ -138,7 +141,7 @@ babeb61c-d73d-4b91-9830-b8bfa83c349a  azurefiles
 次の例では、*RestoreTest.txt* ファイルを元の場所である *azurefiles* ファイル共有に復元します。
 
 ```azurecli-interactive
-az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
 ```
 
 ```output
@@ -160,7 +163,7 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 次の例では、元は *azurefiles* ファイル共有にあった *RestoreTest.txt* ファイルを、別の場所、つまり *afaccount1* ストレージ アカウントでホストされている *azurefiles1* ファイル共有内の *restoredata* フォルダーに復元します。
 
 ```azurecli-interactive
-az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
 ```
 
 ```output
@@ -170,6 +173,28 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 ```
 
 出力の **Name** 属性は、復元操作のためにバックアップ サービスによって作成されたジョブの名前に対応しています。 ジョブの状態を追跡するには、[az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) コマンドレットを使用します。
+
+## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>複数のファイルまたはフォルダーを元の場所または別の場所に復元する
+
+複数の項目の復元を実行するには、**source-file-path** パラメーターに、復元するすべてのファイルまたはフォルダーのパスを**スペースで区切った**値を渡します。
+
+次の例では、*Restore.txt* ファイルと *AFS testing Report.docx* ファイルを元の場所に復元します。
+
+```azurecli-interactive
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932889937058317910 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore Test.txt" "AFS Testing Report.docx" --resolve-conflict overwrite  --out table
+```
+
+出力は次のようになります。
+
+```output
+Name                                          ResourceGroup
+------------------------------------          ---------------
+649b0c14-4a94-4945-995a-19e2aace0305          azurefiles
+```
+
+出力の **Name** 属性は、復元操作のためにバックアップ サービスによって作成されたジョブの名前に対応しています。 ジョブの状態を追跡するには、[az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) コマンドレットを使用します。
+
+複数の項目を別の場所に復元する場合は、上記のコマンドを使用し、「[個別のファイルまたはフォルダーを別の場所に復元する](#restore-individual-files-or-folders-to-an-alternate-location)」セクションで説明されているようにターゲット関連のパラメーターを指定します。
 
 ## <a name="next-steps"></a>次のステップ
 

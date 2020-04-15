@@ -2,19 +2,19 @@
 title: チュートリアル - テンプレート関数を追加する
 description: Azure Resource Manager テンプレートにテンプレート関数を追加して値を構築します。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1db391f42aeb4fdf80baf001150f845daef3bf4f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e4984b286bf031b66272919a487d09a90f972ce0
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773220"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410977"
 ---
-# <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートにテンプレート関数を追加する
+# <a name="tutorial-add-template-functions-to-your-arm-template"></a>チュートリアル:ARM テンプレートにテンプレート関数を追加する
 
-このチュートリアルでは、テンプレートに[テンプレート関数](template-functions.md)を追加する方法について説明します。 関数を使用して動的に値を構築します。 システムに備わっているテンプレート関数に加えて、[ユーザー定義関数](./template-user-defined-functions.md)を作成することもできます。 このチュートリアルの所要時間は **7 分**です。
+このチュートリアルでは、Azure Resource Manager (ARM) テンプレートに[テンプレート関数](template-functions.md)を追加する方法について説明します。 関数を使用して動的に値を構築します。 システムに備わっているテンプレート関数に加えて、[ユーザー定義関数](./template-user-defined-functions.md)を作成することもできます。 このチュートリアルの所要時間は **7 分**です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,7 +48,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -58,10 +58,12 @@ New-AzResourceGroupDeployment `
   -storageName "{new-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+このデプロイ コマンドを実行するには、[最新バージョン](/cli/azure/install-azure-cli)の Azure CLI が必要です。
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addlocationparameter \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -69,6 +71,9 @@ az group deployment create \
 ```
 
 ---
+
+> [!NOTE]
+> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
 
 ## <a name="verify-deployment"></a>デプロイの確認
 

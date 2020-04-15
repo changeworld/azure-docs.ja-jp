@@ -1,24 +1,85 @@
 ---
-title: リリース ノート - Speech サービス
+title: リリース ノート - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Speech サービスの機能リリース、改善、バグ修正、既知の問題の時系列ログ。
 services: cognitive-services
-author: oscholz
-manager: nitinme
+author: oliversc
+manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 02/25/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 235d8788b47355925d93cb3e3835d32e25c1b51f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 7bab0a28ba2b75903b6bdf4708e6aa0a98bdc9e5
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168160"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607416"
 ---
 # <a name="release-notes"></a>リリース ノート
+## <a name="speech-sdk-1110-2020-march-release"></a>Speech SDK 1.11.0:2020年 3月 リリース
+
+**新機能**
+
+- Linux: Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 のサポートを追加しました。Speech SDK 向けのシステム構成方法の[インストラクション](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7)も付いています。
+- Linux: Linux ARM32 と ARM64 での C.NET Core C# のサポートを追加しました。 詳細については、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux)をご覧ください。 
+- C# および C++:`ConversationTranscriptionResult` で `UtteranceId` を追加しました。これは、すべての中間および最終的な音声認識の結果にわたる一貫性のある ID です。 [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet) および [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult) の詳細。
+- Python: `Language ID` のサポートを追加しました。 [GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console) の speech_sample を参照してください。
+- Windows: すべての win32 コンソール アプリケーション向けに、Windows プラットフォームでの圧縮されたオーディオ入力形式のサポートを追加しました。 詳細については、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams) を参照してください。 
+- JavaScript:NodeJS で音声合成 (テキスト読み上げ) をサポートします。 [こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)をご覧ください。 
+- JavaScript:新しい API を追加して、すべての送受信メッセージを検査できるようにします。 [こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript)をご覧ください。 
+        
+**バグの修正**
+
+- C# および C++:`SendMessageAsync` がバイナリ型としてバイナリ メッセージを送信するよう、問題を修正しました。 [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_) および [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection) の詳細。
+- C# および C++:`Connection` オブジェクトの前に `Recognizer` が破棄された場合に `Connection MessageReceived` イベントを使用するとクラッシュが発生する問題を修正しました。 [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet) および [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived) の詳細。
+- Android:マイクからのオーディオ バッファーサイズが 800ms から 100ms に減少し、待機時間が短縮されます。
+- Android:Android Studio の x86 Android emulator に関する[問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563)を修正しました。
+- JavaScript:`fromSubscription` API の中国のリージョン向けのサポートが追加されました。 詳細については、[こちら](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#fromsubscription-string--string-) を参照してください。 
+- JavaScript:NodeJS からの接続失敗のエラー情報を追加します。
+        
+**サンプル**
+
+- Unity:意図認識パブリック サンプルで LUIS json インポートに失敗する問題が修正されました。 詳細については、[こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369) を参照してください。
+- Python: `Language ID` 向けに追加されたサンプル。 詳細については、[こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py) を参照してください。
+    
+**Covid19 により、テストの短縮を余儀なくされました**
+
+過去数週間にわたってリモートにて作業を行っているため、通常ならば実施するはずの手動によるデバイス検証テストを行うことができませんでした。 この例としては、Linux、iOS、macOS でのマイク入力とスピーカー出力のテストなどがあります。 これらのプラットフォームにおいては、問題発生の可能性が想定される変更はいっさい行っていません。また、自動テストはすべて成功しました。 しかし、もし仮に何らかの問題が発生した場合には、[GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen) にてお知らせください。<br> 今後とも、どうぞよろしくお願いいたします。 これまでと同様、[GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen) や [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/731) での質問やフィードバックの投稿をお待ちしています。<br>
+皆様の健康をお祈りします！
+
+## <a name="speech-sdk-1100-2020-february-release"></a>Speech SDK 1.10.0: 2020 年 2 月リリース
+
+**新機能**
+
+ - Python の新しい 3.8 リリースをサポートするために Python パッケージが追加されしました。
+ - Red Hat Enterprise Linux (RHEL)/CentOS 8 x64 のサポート (C++、C#、Java、Python)。
+   > [!NOTE] 
+   > ユーザーは、[こちらの手順](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)に従って OpenSSL を構成する必要があり ます。
+ - Debian および Ubuntu に対する Linux ARM32 のサポート。
+ - DialogServiceConnector で、BotFrameworkConfig の省略可能な "ボット ID" パラメーターがサポートされるようになりました。 このパラメーターを使用すると、単一の Azure Speech リソースで複数の Direct Line Speech ボットを使用できます。 パラメーターの指定がない場合は、既定のボット ([Direct Line Speech チャネルの構成] ページによって決まります) が使用されます。
+ - DialogServiceConnector に SpeechActivityTemplate プロパティが含まれるようになりました。 この JSON 文字列の内容は Direct Line Speech によって使用され、Direct Line Speech ボットに達するすべてのアクティビティでサポートされているさまざまなフィールドに事前設定されます。これには、音声認識などのイベントの応答で自動的に生成されるアクティビティも含まれます。
+ - TTS で認証にサブスクリプション キーが使用されるようになり、シンセサイザーを作成した後の最初の合成結果の最初のバイト待機時間が短縮されました。
+ - 19 のロケールの音声認識モデルが更新され、平均ワード エラー率が 18.6% 下がりました (es-ES、es-MX、fr-CA、fr-FR、it-IT、ja-JP、ko-KR、pt-BR、zh-CN、zh-HK、nb-NO、fi-FL、ru-RU、pl-PL、ca-ES、zh-TW、th-TH、pt-PT、tr-TR)。 新しいモデルでは、ディクテーション、コールセンターの文字起こし、ビデオのインデックス作成を含む複数の領域にわたる大幅な機能強化が行われています。
+
+**バグの修正**
+
+ - JAVA API で会話の文字起こし機能が適切に待機しないバグが修正されました 
+ - Xamarin [GitHub 問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363)に対する Android x86 エミュレーターの修正が行われました
+ - 欠落していた (Get|Set)Property メソッドが AudioConfig に追加されました
+ - 接続に失敗したときに audioDataStream を停止できない TTS バグが修正されました
+ - リージョンなしでエンドポイントを使用すると、会話の翻訳で USP エラーが発生します
+ - ユニバーサル Windows アプリケーションでの ID の生成で、適切に一意の GUID アルゴリズムが使用されるようになりました。これまでは、大規模なインタラクションでしばしば競合を発生させるスタブ実装に意図せずに既定で設定されていました。
+ 
+ **サンプル**
+ 
+ - [Unity マイクとプッシュ モード ストリーミング](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone)で Speech SDK を使用するための Unity サンプル
+
+**その他の変更点**
+
+ - [Linux 用の OpenSSL 構成ドキュメントが更新されました](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)
 
 ## <a name="speech-sdk-190-2020-january-release"></a>Speech SDK 1.9.0:2020 年 1 月のリリース
 
@@ -33,13 +94,11 @@ ms.locfileid: "77168160"
 - JavaScript:オンプレミス コンテナーとソブリン クラウドでの使用を容易にするために、`FromHost API` のサポートが追加されました。 [こちら](speech-container-howto.md)のドキュメントを参照してください。
 - JavaScript:[orgads](https://github.com/orgads) からの投稿により、`NODE_TLS_REJECT_UNAUTHORIZED` が適用されるようになりました。 詳細については、[こちら](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)を参照してください。
 
-
 **重大な変更**
 
 - `OpenSSL` はバージョン 1.1.1b に更新され、Linux の Speech SDK コア ライブラリに静的にリンクされています。 これにより、システムの `/usr/lib/ssl` ディレクトリに受信トレイ `OpenSSL` がインストールされていない場合に、中断が発生する可能性があります。 この問題を回避するには、Speech SDK ドキュメントにある[こちらのドキュメント](how-to-configure-openssl-linux.md)を確認してください。
 - 音声データが 2 分を超えた場合に `WordLevelTimingResults` にアクセスできるように、C# `WordLevelTimingResult.Offset` に返されるデータ型を `int` から `long` に変更しました。
 - `PushAudioInputStream` および `PullAudioInputStream` は、作成時にオプションで指定された`AudioStreamFormat` に基づいて wav ヘッダー情報を音声サービスに送信するようになりました。 お客様は、[サポートされるオーディオ入力の形式](how-to-use-audio-input-streams.md)を使用する必要があります。 他の形式では、最適な認識結果が得られないか、その他の問題が発生する可能性があります。 
-
 
 **バグの修正**
 
@@ -55,13 +114,11 @@ ms.locfileid: "77168160"
 - JavaScript: 1.7 で追加されたサービス プロパティの設定のサポートが追加されました。
 - JavaScript: 接続エラーにより WebSocket の再接続試行が連続して失敗する可能性がある問題を修正しました。
 
-
 **サンプル**
 
 - Android 用のキーワード認識サンプルを[こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo)に追加しました。
 - サーバー シナリオ用の TTS サンプルを[こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs)に追加しました。
 - C# と C++ 用のマルチデバイス会話のクイックスタートを[こちら](quickstarts/multi-device-conversation.md)に追加しました。
-
 
 **その他の変更点**
 

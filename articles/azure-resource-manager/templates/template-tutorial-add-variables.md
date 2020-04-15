@@ -2,19 +2,19 @@
 title: チュートリアル - テンプレートに変数を追加する
 description: Azure Resource Manager テンプレートに変数を追加して構文を単純化します。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 881d91d5b8ca06a9591b8752af0a73da7f00b0c1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b1df86e5b593edec784de21e21a4399274d820bb
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765501"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411678"
 ---
-# <a name="tutorial-add-variables-to-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートに変数を追加する
+# <a name="tutorial-add-variables-to-your-arm-template"></a>チュートリアル:ARM テンプレートに変数を追加する
 
-このチュートリアルでは、テンプレートに変数を追加する方法について説明します。 変数は、式を一度だけ記述すればテンプレート全体で再利用できるため、テンプレートが簡素化されます。 このチュートリアルの所要時間は **7 分**です。
+このチュートリアルでは、Azure Resource Manager (ARM) テンプレートに変数を追加する方法について説明します。 変数は、式を一度だけ記述すればテンプレート全体で再利用できるため、テンプレートが簡素化されます。 このチュートリアルの所要時間は **7 分**です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,7 +56,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -67,10 +67,12 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+このデプロイ コマンドを実行するには、[最新バージョン](/cli/azure/install-azure-cli)の Azure CLI が必要です。
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addnamevariable \
   --resource-group myResourceGroup \
   --template-file $templateFile \
@@ -78,6 +80,9 @@ az group deployment create \
 ```
 
 ---
+
+> [!NOTE]
+> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
 
 ## <a name="verify-deployment"></a>デプロイの確認
 

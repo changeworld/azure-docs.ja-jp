@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b69ef8aa57393c5be8d23aaf4af1821697295235
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4fb5fba78cdea7996d006d34b2f07f3ac5e58fa
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281682"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981292"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Power BI アプリの [ネットショップの詳細] タブ
+
+>[!Important]
+>2020 年 4 月 13 日以降、Power BI アプリ オファーの管理のパートナー センターへの移行を開始します。 移行後は、パートナー センターでオファーを作成および管理します。 移行されたオファーを管理するには、[Power BI アプリの作成の概要](https://aka.ms/AzureCreatePBIServiceApp)に関するページの手順に従ってください。
 
 見込み顧客にマーケティング、販売、および法律に関する情報を提供するには、 **[新しいオファー]** ページの **[ネットショップの詳細]** タブを使用します。 このタブで、Azure Marketplace が生成するリードの管理も設定できます。 この長いフォームは、次の 6 つのセクションに分かれています: **[Offer Details]\(オファーの詳細\)** 、 **[Listing Details]\(一覧の詳細\)** 、 **[Marketing Artifacts]\(マーケティングの成果物\)** 、 **[Legal]\(法的情報\)** 、 **[Customer Support]\(カスタマー サポート\)** 、 **[Lead Management]\(リード管理\)** 。  フィールド ラベルの末尾のアスタリスク (*) は、そのフィールドが必須であることを意味しています。
 

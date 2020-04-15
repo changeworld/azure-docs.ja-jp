@@ -4,14 +4,14 @@ description: このチュートリアルでは、PowerShell を使用して、Az
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 2fb08d7aba3e35fb6147b75bbcee35b46873b5f6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a21de9d76a010b01da95b050a521178d8808bbdf
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78252734"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756078"
 ---
-# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure で Service Fabric クラスターのランタイムをアップグレードする
+# <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのランタイムをアップグレードする
 
 このチュートリアルは、4 つのシリーズの一部で、Azure Service Fabric クラスター上の Service Fabric ランタイムをアップグレードする方法について説明します。 チュートリアルのこの部分は、Azure で実行されている Service Fabric クラスター用に書かれており、スタンドアロン Service Fabric クラスターには適用されません。
 
@@ -95,7 +95,7 @@ Set-AzServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
 
 アップグレードの状態は、PowerShell または Azure Service Fabric CLI (sfctl) を使用して監視できます。
 
-まず、チュートリアルの最初の部分で作成した SSL 証明書を使用して、クラスターに接続します。 `Connect-ServiceFabricCluster` コマンドレット、または `sfctl cluster upgrade-status` を使用します。
+まず、チュートリアルの最初の部分で作成した TLS/SSL 証明書を使用して、クラスターに接続します。 `Connect-ServiceFabricCluster` コマンドレット、または `sfctl cluster upgrade-status` を使用します。
 
 ```powershell
 $endpoint = "<mycluster>.southcentralus.cloudapp.azure.com:19000"

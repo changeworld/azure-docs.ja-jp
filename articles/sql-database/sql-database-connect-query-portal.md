@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 03/12/2020
-ms.openlocfilehash: 5847ef3033d257faef4831785b8abd864d54e835
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c072161db7a477b7973571a18d4f686b1b9c6202
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79209595"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985679"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-to-query-a-sql-database"></a>クイック スタート:Azure portal のクエリ エディターを使用して SQL データベースに照会する
 
@@ -175,7 +175,7 @@ Azure Active Directory (Azure AD) 管理者を構成すると、単一の ID を
 
 * クエリ エディターでは、通信にポート 443 と 1443 が使用されます。 これらのポートで、確実にアウトバウンド HTTPS トラフィックを有効にしておいてください。 また、お使いのデータベースとデータ ウェアハウスにアクセスできるようにするには、サーバーの許可されたファイアウォール規則に、送信 IP アドレスを追加する必要があります。
 
-* クエリ エディターは、SQL Database ファイアウォールにクライアント IP アドレスを追加しなくても、Private Link と連携します
+* Private Link 接続を使用していれば、SQL Database ファイアウォールにクライアント IP アドレスを追加しなくても、クエリ エディターを操作できます。
 
 * **F5** キーを押してクエリ エディター ページを更新すると、操作中のクエリは失われます。
 

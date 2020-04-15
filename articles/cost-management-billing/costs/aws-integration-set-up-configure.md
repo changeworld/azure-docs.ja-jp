@@ -3,22 +3,26 @@ title: Azure Cost Management と AWS の統合セットアップをする
 description: この記事では、Azure Cost Management で AWS のコストと使用状況レポートの統合を設定して構成する方法を説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3b1efabbf5f05c05ef939ee8713829fbd49f483
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203085"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878988"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS のコストと使用状況レポートの統合を設定して構成する
 
 Amazon Web サービス (AWS) のコストと使用状況レポート (CUR) の統合では、Azure Cost Management で AWS 支出を監視して制御します。 統合により、Azure portal の単一の場所で、Azure と AWS の両方での支出を監視して制御します。 この記事では、統合を設定し、Azure Cost Management 機能を使用して、コストを分析し、予算を確認するために構成する方法を説明します。
 
 Cost Management では、レポート定義を取得し、レポートの GZIP CSV ファイルをダウンロードするために AWS アクセス資格情報を使用して、S3 バケットに格納されている AWS のコストと使用状況レポートを処理します。
+
+AWS レポートの統合を設定する方法の詳細については、[Cost Management での AWS のコネクターの設定方法](https://www.youtube.com/watch?v=Jg5KC1cx5cA)に関する動画をご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
+
+>[!VIDEO https://www.youtube.com/embed/Jg5KC1cx5cA]
 
 ## <a name="create-a-cost-and-usage-report-in-aws"></a>AWS でコストと使用状況レポートを作成する
 

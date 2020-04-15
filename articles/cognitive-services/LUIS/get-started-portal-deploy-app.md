@@ -1,21 +1,14 @@
 ---
 title: クイック スタート:LUIS ポータルを使用してアプリをデプロイする
-titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、予測エンドポイント リソースを作成し、リソースを割り当て、アプリをトレーニング、公開することによって、アプリをデプロイする方法について説明します。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/27/2020
-ms.author: diberry
-ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/06/2020
+ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79218500"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756290"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータル内でアプリをデプロイする
 
@@ -29,35 +22,13 @@ LUIS アプリがクライアント アプリケーション (チャット ボ�
 * [前のポータルのクイック スタート](get-started-portal-build-app.md)を完了するか、[アプリをダウンロードして、インポート](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json)します。
 * Azure リソース認証より前のアプリがある場合は、[Azure リソースに移行します](luis-migration-authoring.md)。 一部のポータル ページは、メール認証が有効になっている場合に表示が異なることがあります。
 
-## <a name="create-the-endpoint-resource"></a>エンドポイント リソースを作成する
+<a name="create-the-endpoint-resource"></a>
 
-予測エンドポイント リソースは、Azure portal 内で作成します。 このリソースは、エンドポイントの予測クエリでのみ使用します。 このアプリに変更を加えるために、このリソースを使用しないでください。
-
-1. [Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) にサインインしてリソースを作成します。
-
-1. 次の設定を使用して、サブスクリプションを構成します。
-
-   |設定|値|目的|
-   |--|--|--|
-   |名前|`my-luis-resource`|Azure リソースの名前。 LUIS ポータル内でアプリにリソースを割り当てるときに、この名前が必要です。|
-   |サブスクリプション|該当するサブスクリプション|ご自分のアカウントに関連付けられているサブスクリプションの 1 つを選択します。|
-   |Resource group|`my-resource-group`|お使いのすべての Cognitive Services リソース向けに新しいリソース グループを作成します。 リソースの作業が完了したら、リソース グループを削除して、サブスクリプションをクリーンアップできます。 |
-   |オーサリングの場所|**米国西部**|作成の対象となる Azure リージョン。|
-   |オーサリングの価格レベル|**F0**|作成の既定の価格レベル。|
-   |ランタイムの場所|**米国西部**|予測エンドポイント クエリの Azure リージョン。|
-   |ランタイム価格レベル|**S0**|これは、トラフィックの多い Web サイトのための価格レベルです。|
-   | | | |
-
-
-   ![Azure API の選択](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
-
-1. **[作成]** を選択して、Azure リソースを作成します。
-
-   次のセクションでは、LUIS ポータル内で LUIS アプリにこの新しいリソースを接続する方法を学習します。
+[!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
 
 ## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>LUIS ポータル内で LUIS アプリにリソース キーを割り当てる
 
-LUIS 向けの新しいリソースを作成するたびに、LUIS アプリにそのリソースを割り当てる必要があります。 割り当てた後は、新しいリソースを作成しない限り、この手順をもう一度実行する必要はありません。 ご自分のアプリのリージョンを拡張したり、より多くの予測クエリをサポートしたりする場合に、新しいリソースを作成します。
+LUIS 向けの新しい作成リソースまたはクエリ予測リソースを作成するたびに、LUIS アプリにそのリソースを割り当てる必要があります。 割り当てた後は、新しいリソースを作成しない限り、この手順をもう一度実行する必要はありません。 ご自分のアプリのリージョンを拡張したり、より多くの予測クエリをサポートしたりする場合に、新しいリソースを作成します。
 
 1. [プレビュー LUIS ポータル](https://preview.luis.ai)にサインインし、アプリの一覧から **myEnglishApp** アプリを選択します。
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: fe2cb04f36026740dc54f4668d3c3188592bd8ae
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314693"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754214"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上の Apache Hadoop サービスで使用されるポート
 
@@ -21,9 +21,9 @@ ms.locfileid: "76314693"
 
 ## <a name="public-ports-vs-non-public-ports"></a>パブリック ポートと非パブリック ポート
 
-Linux ベースの HDInsight クラスターでは、22、23、443 の 3 つのポートだけがインターネット上で公開されます。 これらのポートは、SSH を使用してクラスターに安全にアクセスし、セキュリティで保護された HTTPS プロトコルを介して公開されるサービスにアクセスする際に使用されます。
+Linux ベースの HDInsight クラスターでは、3 つのポートだけがインターネット上で公開されます。22、23、443 です。 これらのポートでは、SSH のほか、セキュリティで保護された HTTPS プロトコルを介して公開されるサービスを使い、クラスターへのアクセスを確保します。
 
-内部的には、HDInsight は Azure Virtual Network 上で実行される複数の Azure Virtual Network (クラスター内のノード) によって実装されます。 仮想ネットワーク内から、インターネット経由で公開されていないポートにアクセスできます。 たとえば、SSH を使用してヘッド ノードのいずれかに接続すると、そのヘッド ノードから、クラスター ノードで実行されているサービスに直接アクセスできます。
+HDInsight は Azure Virtual Network 上で実行される複数の Azure Virtual Machines (クラスター ノード) によって実装されます。 仮想ネットワーク内から、インターネット経由で公開されていないポートにアクセスできます。 SSH 経由でヘッド ノードに接続する場合は、クラスター ノードで実行されているサービスに直接アクセスできます。
 
 > [!IMPORTANT]  
 > HDInsight の構成オプションとして Azure Virtual Network を指定しないと、Azure Virtual Network が自動的に作成されます。 ただし、この仮想ネットワークに他のコンピューター (他の Azure Virtual Machines やクライアント開発用コンピューターなど) を参加させることはできません。
@@ -32,7 +32,7 @@ Linux ベースの HDInsight クラスターでは、22、23、443 の 3 つの�
 
 ## <a name="public-ports"></a>パブリック ポート
 
-HDInsight クラスター内のすべてのノードは Azure Virtual Network 内に配置されており、インターネットから直接アクセスすることはできません。 パブリック ゲートウェイにより、すべての HDInsight クラスターの種類に共通する次のポートへのインターネット アクセスが提供されます。
+HDInsight クラスターのすべてのノードは、Azure Virtual Network 内にあります。 インターネットからノードに直接アクセスすることはできません。 パブリック ゲートウェイにより、すべての HDInsight クラスターの種類に共通する次のポートへのインターネット アクセスが提供されます。
 
 | サービス | Port | Protocol | 説明 |
 | --- | --- | --- | --- |
@@ -49,7 +49,7 @@ HDInsight クラスター内のすべてのノードは Azure Virtual Network �
 
 | サービス | Port | Protocol | クラスターの種類 | 説明 |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |hbase |HBase REST API。 [Apache HBase の使用開始](hbase/apache-hbase-tutorial-get-started-linux.md)に関するページをご覧ください |
+| `Stargate` |443 |HTTPS |hbase |HBase REST API。 [Apache HBase の使用開始](hbase/apache-hbase-tutorial-get-started-linux.md)に関するページをご覧ください |
 | Livy |443 |HTTPS |Spark |Spark REST API。 [Apache Livy を使用したリモートからの Apache Spark ジョブの送信](spark/apache-spark-livy-rest-interface.md)に関するページをご覧ください |
 | Spark Thrift サーバー |443 |HTTPS |Spark |Hive クエリを送信するために使用される Spark Thrift サーバー。 [HDInsight での Beeline と Apache Hive の使用](hadoop/apache-hadoop-use-hive-beeline.md)に関する記事をご覧ください |
 | Storm |443 |HTTPS |Storm |Storm Web UI。 「[HDInsight での Apache Storm トポロジのデプロイと管理](storm/apache-storm-deploy-monitor-topology-linux.md)」をご覧ください |
@@ -59,7 +59,7 @@ HDInsight クラスター内のすべてのノードは Azure Virtual Network �
 
 インターネット上で公開されるすべてのサービスを認証する必要があります。
 
-| Port | [資格情報] |
+| Port | 資格情報 |
 | --- | --- |
 | 22 または 23 |クラスターの作成時に指定した SSH ユーザー資格情報 |
 | 443 |ログイン名 (既定値: admin) と、クラスターの作成時に設定したパスワード |

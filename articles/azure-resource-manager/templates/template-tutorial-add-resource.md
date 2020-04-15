@@ -2,17 +2,17 @@
 title: チュートリアル - テンプレートにリソースを追加する
 description: Azure Resource Manager テンプレートを初めて作成する際の手順について説明します。 テンプレート ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
-ms.date: 02/24/2020
+ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: af571b6503f04c809b62c530f6d6254082b838be
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: dcdbbb325e6589669abe6cf3d25ac5191e29118b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586684"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411741"
 ---
-# <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートにリソースを追加する
+# <a name="tutorial-add-a-resource-to-your-arm-template"></a>チュートリアル:ARM テンプレートにリソースを追加する
 
 [前のチュートリアル](template-tutorial-create-first-template.md)では、空のテンプレートを作成してデプロイする方法について説明しました。 これで、実際にリソースをデプロイすることができます。 このチュートリアルでは、ストレージ アカウントを追加します。 このチュートリアルを完了するには約 **9 分**かかります。
 
@@ -26,7 +26,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 既存のテンプレートにストレージ アカウントの定義を追加するには、次の例で強調表示されている JSON をご覧ください。 テンプレートの一部をコピーするのではなく、ファイル全体をコピーして、既存のテンプレートの内容を置き換えてください。
 
-**{provide-unique-name}** は、一意のストレージ アカウント名に置き換えます。
+**{provide-unique-name}** (中かっこを含む) は、一意のストレージ アカウント名に置き換えてください。
 
 > [!IMPORTANT]
 > ストレージ アカウント名は Azure 内で一意である必要があります。 名前に使用できるのは、小文字と数字だけです。 24 文字以内にする必要があります。 名前付けパターンとして、プレフィックスに **store1** を使用し、自分のイニシャルと今日の日付を追加する形が考えられます。 たとえば、**store1abc09092019** のような名前を使用できます。
@@ -37,7 +37,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 ## <a name="resource-properties"></a>リソースのプロパティ
 
-リソースの種類ごとに使用するプロパティをどうやって見つければよいのか、悩む方もいるかもしれません。 デプロイするリソースの種類を見つけるには、[Resource Manager テンプレート リファレンス](/azure/templates/)をご利用ください。
+リソースの種類ごとに使用するプロパティをどうやって見つければよいのか、悩む方もいるかもしれません。 デプロイするリソースの種類を見つけるには、[ARM テンプレート リファレンス](/azure/templates/)をご利用ください。
 
 デプロイするすべてのリソースには、少なくとも次の 3 つのプロパティがあります。
 
@@ -72,14 +72,19 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+このデプロイ コマンドを実行するには、[最新バージョン](/cli/azure/install-azure-cli)の Azure CLI が必要です。
+
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addstorage \
   --resource-group myResourceGroup \
   --template-file $templateFile
 ```
 
 ---
+
+> [!NOTE]
+> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
 
 発生する可能性のあるデプロイ エラーとして、次の 2 つが考えられます。
 

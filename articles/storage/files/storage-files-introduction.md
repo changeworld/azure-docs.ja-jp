@@ -7,20 +7,24 @@ ms.topic: overview
 ms.date: 03/10/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3a7bb7939921bfcc3a870193cb9025a8f3dff72c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aff6f99c119ba2854fd7923d2a15efb2e1a6b601
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78969126"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666803"
 ---
 # <a name="what-is-azure-files"></a>Azure Files とは
 Azure Files はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにある Windows、macOS、および Linux に同時にマウントできます。 さらに、高速アクセスするため、Azure File Sync を使用して、データが使用されている場所の近くの Windows サーバーに Azure ファイル共有をキャッシュできます。
 
 ## <a name="videos"></a>ビデオ
-| Azure File Sync の概要 (2 分) | Azure Files と Sync (Ignite 2017) (85 分)  |
+| Azure File Sync の概要 | Azure Files と Sync (Ignite 2019)  |
 |-|-|
-| [![Azure File Sync の概要に関する動画のスクリーンキャスト - クリックして再生](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Azure Files と Sync に関するプレゼンテーションのスクリーンキャスト - クリックして再生](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/watch?v=GMzh2M66E9o) |
+| [![Azure File Sync の概要に関する動画のスクリーンキャスト - クリックして再生](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Azure Files と Sync に関するプレゼンテーションのスクリーンキャスト - クリックして再生](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/embed/6E2p28XwovU) |
+
+Azure Files の一般的なユース ケースに関するビデオをいくつかご紹介します。
+* [ファイル サーバーをサーバーレス Azure ファイル共有に置き換える](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
+* [AD 認証を利用して Windows Virtual Desktop で Azure Files の FSLogix プロファイル コンテナーを開始する](https://www.youtube.com/embed/9S5A1IJqfOQ)
 
 ## <a name="why-azure-files-is-useful"></a>Azure Files の適用ケース
 Azure ファイル共有は、以下の作業に使用できます。

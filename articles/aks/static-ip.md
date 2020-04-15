@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスと DNS ラベルを使用する
+title: ロード バランサーで静的 IP を使用する
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスを使用する方法を説明します｡
 services: container-service
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: 32889dbbcafd9510f8d04cb9c602d4802c6d1a1a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 5051232f29ad51d9fee893a4a660fc81f6e60d77
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943580"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886740"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) ロード バランサーで静的パブリック IP アドレスと DNS ラベルを使用する
 
@@ -70,6 +71,8 @@ az role assignment create \
     --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
+
+または、サービス プリンシパルの代わりに、システム割り当てマネージド ID をアクセス許可のために使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
 
 静的パブリック IP アドレスを使用して *LoadBalancer* サービスを作成するには､YAML マニフェストに `loadBalancerIP` プロパティと静的パブリック IP の値を追加します｡ `load-balancer-service.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 以前の手順で作成した独自のパブリック IP アドレスを指定します。 次の例では、*myResourceGroup* という名前のリソース グループに注釈も設定されます。 次の独自のリソース グループ名を指定します。
 

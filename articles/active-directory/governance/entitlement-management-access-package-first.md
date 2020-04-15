@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 10/22/2019
+ms.date: 03/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c2d31ef46dfba31a8f217f68e8d5f98b67d58da5
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75422652"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410582"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>チュートリアル:Azure AD エンタイトルメント管理で最初のアクセス パッケージを作成する
 
@@ -84,79 +84,83 @@ Azure AD エンタイトルメント管理を使用するには、次のいず�
 
 1. Azure portal の左側のナビゲーションで、 **[Azure Active Directory]** をクリックします。
 
-1. 左側のメニューで、 **[Identity Governance]** をクリックします
+2. 左側のメニューで、 **[Identity Governance]** をクリックします
 
-1. 左側のメニューで **[アクセス パッケージ]** をクリックします。  **[アクセスが拒否されました]** と表示される場合は、Azure AD Premium P2 ライセンスがそのディレクトリに存在することを確認してください。
+3. 左側のメニューで **[アクセス パッケージ]** をクリックします。  **[アクセスが拒否されました]** と表示される場合は、Azure AD Premium P2 ライセンスがそのディレクトリに存在することを確認してください。
 
-1. **[New access package]\(新しいアクセス パッケージ\)** をクリックします。
+4. **[New access package]\(新しいアクセス パッケージ\)** をクリックします。
 
     ![Azure portal でのエンタイトルメント管理](./media/entitlement-management-shared/access-packages-list.png)
 
-1. **[基本]** タブで、「**Marketing Campaign**」というアクセス パッケージの名前と「**キャンペーン用のリソースへのアクセス**」という説明を入力します。
+5. **[基本]** タブで、「**Marketing Campaign**」というアクセス パッケージの名前と「**キャンペーン用のリソースへのアクセス**」という説明を入力します。
 
-1. **[カタログ]** ドロップダウン リストは **[標準]** に設定したままにします。
+6. **[カタログ]** ドロップダウン リストは **[標準]** に設定したままにします。
 
     ![[New access package]\(新しいアクセス パッケージ\) - [基本] タブ](./media/entitlement-management-access-package-first/basics.png)
 
-1. **[次へ]** をクリックして、 **[Resource roles]\(リソース ロール\)** タブを開きます。
+7. **[次へ]** をクリックして、 **[Resource roles]\(リソース ロール\)** タブを開きます。
 
     このタブでは、アクセス パッケージに含めるリソースとリソース ロールを選択します。
 
-1. **[Groups and Teams] (グループとチーム)** をクリックします。
+8. **[Groups and Teams] (グループとチーム)** をクリックします。
 
-1. [グループの選択] ウィンドウで、前に作成した **Marketing resources** グループを見つけて選択します。
+9. [グループの選択] ウィンドウで、前に作成した **Marketing resources** グループを見つけて選択します。
 
     既定では、 **[標準]** カタログ内外のグループが表示されます。 **[標準]** カタログ外のグループを選択すると、 **[標準]** カタログに追加されます。
 
     ![[New access package]\(新しいアクセス パッケージ\) - [Resource roles]\(リソース ロール\) タブ](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
-1. **[選択]** をクリックして、そのグループを一覧に追加します。
+10. **[選択]** をクリックして、そのグループを一覧に追加します。
 
-1. **[ロール]** ドロップダウン リストで **[メンバー]** を選択します。
+11. **[ロール]** ドロップダウン リストで **[メンバー]** を選択します。
 
     ![[New access package]\(新しいアクセス パッケージ\) - [Resource roles]\(リソース ロール\) タブ](./media/entitlement-management-access-package-first/resource-roles.png)
 
-1. **[次へ]** をクリックして、 **[要求]** タブを開きます。
+    >[!NOTE]
+    > [ダイナミック グループ](../users-groups-roles/groups-create-rule.md)を使用している場合、所有者以外、利用できる他のロールが表示されません。 これは仕様です。
+    > ![シナリオの概要](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+
+12. **[次へ]** をクリックして、 **[要求]** タブを開きます。
 
     このタブでは、要求ポリシーを作成します。 *ポリシー*により、アクセス パッケージにアクセスするための規則またはガードレールを定義します。 リソース ディレクトリ内の特定のユーザーがこのアクセス パッケージを要求することを許可するポリシーを作成します。
 
-1. **[アクセス権を要求できるユーザー]** セクションで、 **[ディレクトリ内のユーザーの場合]** 、 **[特定のユーザーとグループ]** の順にクリックします。
+13. **[アクセス権を要求できるユーザー]** セクションで、 **[ディレクトリ内のユーザーの場合]** 、 **[特定のユーザーとグループ]** の順にクリックします。
 
     ![[New access package] (新しいアクセス パッケージ) - [要求] タブ](./media/entitlement-management-access-package-first/requests.png)
 
-1. **[ユーザーとグループを追加する]** をクリックします。
+14. **[ユーザーとグループを追加する]** をクリックします。
 
-1. [ユーザーとグループを選択] ウィンドウで、前に作成した **Requestor1** ユーザーを選択します。
+15. [ユーザーとグループを選択] ウィンドウで、前に作成した **Requestor1** ユーザーを選択します。
 
     ![[New access package] (新しいアクセス パッケージ) - [要求] タブ - [ユーザーとグループを選択]](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-1. **[選択]** をクリックします。
+16. **[選択]** をクリックします。
 
-1. **[承認]** と **[要求の有効化]** のセクションまで下へスクロールします。
+17. **[承認]** と **[要求の有効化]** のセクションまで下へスクロールします。
 
-1. **[承認を要求する]** を **[いいえ]** に設定されたのままにします。
+18. **[承認を要求する]** を **[いいえ]** に設定されたのままにします。
 
-1. **[要求の有効化]** については、 **[はい]** をクリックして、このアクセス パッケージを作成されたらすぐに要求できるようにします。
+19. **[要求の有効化]** については、 **[はい]** をクリックして、このアクセス パッケージを作成されたらすぐに要求できるようにします。
 
     ![[New access package] (新しいアクセス パッケージ) - [要求] タブ - [承認] と [要求の有効化]](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
-1. **[次へ]** をクリックして **[ライフサイクル]** タブを開きます。
+20. **[次へ]** をクリックして **[ライフサイクル]** タブを開きます。
 
-1. **[有効期限]** セクションで、 **[Access package assignments expire] (アクセス パッケージの割り当ての有効期限)** を **[日数]** を設定します。
+21. **[有効期限]** セクションで、 **[Access package assignments expire] (アクセス パッケージの割り当ての有効期限)** を **[日数]** を設定します。
 
-1. **[Assignments expire after] (割り当ての有効期限)** を **[30]** 日に設定します。
+22. **[Assignments expire after] (割り当ての有効期限)** を **[30]** 日に設定します。
 
     ![[New access package] (新しいアクセス パッケージ) - [ライフサイクル] タブ](./media/entitlement-management-access-package-first/lifecycle.png)
 
-1. **[次へ]** をクリックして、 **[Review + Create]\(確認と作成\)** タブを開きます。
+23. **[次へ]** をクリックして、 **[Review + Create]\(確認と作成\)** タブを開きます。
 
     ![[New access package]\(新しいアクセス パッケージ\) - [Review + Create]\(確認と作成\) タブ](./media/entitlement-management-access-package-first/review-create.png)
 
     しばらくすると、アクセス パッケージが正常に作成されたという通知が表示されます。
 
-1. Marketing Campaign アクセス パッケージの左側のメニューで、 **[概要]** をクリックします。
+24. Marketing Campaign アクセス パッケージの左側のメニューで、 **[概要]** をクリックします。
 
-1. **[My Access portal link]\(マイ アクセス ポータルのリンク\)** をコピーします。
+25. **[My Access portal link]\(マイ アクセス ポータルのリンク\)** をコピーします。
 
     このリンクは次の手順で使用します。
 

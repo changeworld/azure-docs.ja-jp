@@ -9,33 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/14/2019
+ms.date: 04/02/2020
 ms.author: diberry
-ms.openlocfilehash: 2b5046bb61dcafbba0b0540935e08777fbd747a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7560fdcbfc77ea2655e8af641794478ead4c11c7
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74123125"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631456"
 ---
 # <a name="use-descriptors-to-boost-signal-of-word-list"></a>記述子を使用して単語リストのシグナルをブーストする
 
-LUIS アプリにフィーチャーを追加して、その精度を向上させることができます。 フィーチャーは、特定の単語やフレーズがアプリ領域のボキャブラリの一部であるというヒントを提供することで、LUIS を助けます。 
+LUIS アプリにフィーチャーを追加して、その精度を向上させることができます。 フィーチャーは、特定の単語やフレーズがアプリ領域のボキャブラリの一部であるというヒントを提供することで、LUIS を助けます。
 
 [記述子](luis-concept-feature.md)には、同じように処理する必要がある、同じクラスに属している値 (単語またはフレーズ) のグループが含まれています (都市名、製品名など)。 LUIS がそのうちの 1 つについて学習した内容が、他のすべてに自動的に適用されます。 このリストは、一致した単語の[リスト エンティティ](reference-entity-list.md) (テキストの完全一致) と同じものではありません。
 
 記述子は、それらの単語に関する LUIS に対する 2 番目のシグナルとして、アプリ ドメインのボキャブラリを増強します。
 
-[機能の概念](luis-concept-feature.md)を確認して、どのような場合に、どのような理由で記述子を使用するかを理解します。 
+[機能の概念](luis-concept-feature.md)を確認して、どのような場合に、どのような理由で記述子を使用するかを理解します。
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="add-descriptor"></a>記述子の追加
 
-1. **[マイ アプリ]** ページでアプリの名前をクリックしてアプリを開き、 **[ビルド]** をクリックし、アプリの左パネルで **[記述子]** をクリックします。 
+1. **[マイ アプリ]** ページでアプリの名前をクリックしてアプリを開き、 **[ビルド]** をクリックし、アプリの左パネルで **[記述子]** をクリックします。
 
-1. **[記述子]** ページで、 **[+ Add Descriptor]\(+ 記述子の追加\)** をクリックします。 
- 
+1. **[記述子]** ページで、 **[+ Add Descriptor]\(+ 記述子の追加\)** をクリックします。
+
 1. **[Create new phrase list descriptor]\(新しいフレーズ リスト記述子の作成\)** ダイアログ ボックスで、記述子の名前を入力します (`Cities` など)。 **[値]** ボックスに記述子の値を入力します (`Seattle` など)。 値は一度に 1 つずつ入力することも、コンマで区切った値のセットを入力することもできます。入力したら **Enter** キーを押します。
 
     > [!div class="mx-imgBorder"]
@@ -45,7 +45,9 @@ LUIS アプリにフィーチャーを追加して、その精度を向上させ
 
 1. 追加される記述子の値が、入れ替えて使用できる代替値である場合、 **[These values are interchangeable]\(これらの値は交換可能です\)** をオンのままにします。
 
-1. **[完了]** を選択します。 新しい記述子が **[記述子]** ページに追加されます。
+1. 語句リストは **グローバル**設定を使用してアプリ全体に適用したり、特定のモデル (意図またはエンティティ) に適用したりできます。 インテントまたはエンティティからの_記述子_として語句リストを作成した場合、トグルは [グローバルではない] に設定されます。 この場合、トグルは、記述子がそのモデルのみの機能であることを意味するため、アプリケーションに対しては_グローバルではない_ということになります。
+
+1. **[Done]** を選択します。 新しい記述子が **[記述子]** ページに追加されます。
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>

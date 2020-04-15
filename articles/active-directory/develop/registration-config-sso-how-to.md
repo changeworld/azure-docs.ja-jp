@@ -1,26 +1,22 @@
 ---
-title: アプリケーションのシングル サインオンを構成する | Microsoft Docs
+title: アプリケーションのシングル サインオンを構成する
 description: Azure AD で開発中または登録中のカスタム アプリケーションのシングル サインオンを構成する方法。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: bb77f376e22428e9259ff3efc84cf6f1cb3491fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 630be1676d73410f1b0d376b163a8599299ddbe2
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702643"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883153"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>アプリケーションのシングル サインオンを構成する方法
 

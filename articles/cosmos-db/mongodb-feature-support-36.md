@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: cde731f9d9e673446bc4d08117004b028db2a7f9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fe80b7343f67b06981707081931e35142985688e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77462464"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668795"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API: サポートされる機能と構文
 
@@ -44,7 +44,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 |getPrevError | いいえ  |
 |insert  |   はい  |
 |parallelCollectionScan  | はい   |
-|resetError |   いいえ  |
+|resetError |    いいえ  |
 |update  |   はい  |
 |[Change streams](mongodb-change-streams.md)  |  はい  |
 |GridFS |   はい  |
@@ -88,7 +88,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 
 |command  |サポートされています |
 |---------|---------|
-|buildInfo       |   はい      |
+|buildInfo         |   はい      |
 |collStats    |  はい       |
 |connPoolStats     |  いいえ       |
 |connectionStatus     |  いいえ       |
@@ -99,7 +99,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 |explain: executionStats     |     いいえ    |
 |features     |    いいえ     |
 |hostInfo     |   いいえ      |
-|listDatabases       |   はい      |
+|listDatabases         |   はい      |
 |listCommands     |  いいえ       |
 |profiler     |  いいえ       |
 |serverStatus     |  いいえ       |
@@ -123,31 +123,31 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 
 |command  |サポートされています |
 |---------|---------|
-|$collStats |いいえ|
-|$project   |はい|
-|$match |はい|
-|$redact|   はい|
-|$limit |はい|
-|$skip  |はい|
-|$unwind|   はい|
-|$group |   はい|
-|$sample|       はい|
-|$sort  |はい|
-|$geoNear|  いいえ|
-|$lookup    |   はい|
-|$out       |はい|
-|$indexStats|       いいえ|
-|$facet |いいえ|
-|$bucket|   いいえ|
-|$bucketAuto|   いいえ|
-|$sortByCount|  はい|
-|$addFields |はい|
-|$replaceRoot|  はい|
-|$count |はい|
+|$collStats    |いいえ|
+|$project    |はい|
+|$match    |はい|
+|$redact|    はい|
+|$limit    |はい|
+|$skip    |はい|
+|$unwind|    はい|
+|$group    |    はい|
+|$sample|        はい|
+|$sort    |はい|
+|$geoNear|    いいえ|
+|$lookup    |    はい|
+|$out        |はい|
+|$indexStats|        いいえ|
+|$facet    |いいえ|
+|$bucket|    いいえ|
+|$bucketAuto|    いいえ|
+|$sortByCount|    はい|
+|$addFields    |はい|
+|$replaceRoot|    はい|
+|$count    |はい|
 |$currentOp|    いいえ|
-|$listLocalSessions |いいえ|
-|$listSessions  |いいえ|
-|$graphLookup   |いいえ|
+|$listLocalSessions    |いいえ|
+|$listSessions    |いいえ|
+|$graphLookup    |いいえ|
 
 ### <a name="boolean-expressions"></a>ブール式
 
@@ -174,14 +174,14 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 |command  |サポートされています |
 |---------|---------|
 |$cmp     |  はい       |
-|$eq|   はい| 
-|$gt |  はい| 
-|$gte|  はい| 
+|$eq|    はい| 
+|$gt |    はい| 
+|$gte|    はい| 
 |$lt    |はい|
-|$lte|  はい| 
-|$ne    |   はい| 
-|$in    |   はい| 
-|$nin   |   はい| 
+|$lte|    はい| 
+|$ne    |    はい| 
+|$in    |    はい| 
+|$nin    |    はい| 
 
 ### <a name="arithmetic-expressions"></a>算術式
 
@@ -230,66 +230,66 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 
 |command  |サポートされています |
 |---------|---------|
-|$arrayElemAt   |   はい|
+|$arrayElemAt    |    はい|
 |$arrayToObject|    はい|
-|$concatArrays  |   はい|
-|$filter    |   はい|
-|$indexOfArray  |はい|
-|$isArray   |   はい|
-|$objectToArray |はい|
-|$range |はい|
-|$reverseArray  |   はい|
-|$reduce|   はい|
-|$size  |   はい|
-|$slice |   はい|
-|$zip   |   はい|
-|$in    |   はい|
+|$concatArrays    |    はい|
+|$filter    |    はい|
+|$indexOfArray    |はい|
+|$isArray    |    はい|
+|$objectToArray    |はい|
+|$range    |はい|
+|$reverseArray    |    はい|
+|$reduce|    はい|
+|$size    |    はい|
+|$slice    |    はい|
+|$zip    |    はい|
+|$in    |    はい|
 
 ### <a name="variable-operators"></a>変数演算子
 
 |command  |サポートされています |
 |---------|---------|
-|$map   |いいえ|
-|$let   |はい|
+|$map    |いいえ|
+|$let    |はい|
 
 ### <a name="system-variables"></a>システム変数
 
 |command  |サポートされています |
 |---------|---------|
-|$$CURRENT| はい|
-|$$DESCEND|     はい|
-|$$KEEP     |はい|
-|$$PRUNE    |   はい|
-|$$REMOVE   |はい|
-|$$ROOT     |はい|
+|$$CURRENT|    はい|
+|$$DESCEND|        はい|
+|$$KEEP        |はい|
+|$$PRUNE    |    はい|
+|$$REMOVE    |はい|
+|$$ROOT        |はい|
 
 ### <a name="literal-operator"></a>リテラル演算子
 
 |command  |サポートされています |
 |---------|---------|
-|$literal   |はい|
+|$literal    |はい|
 
 ### <a name="date-expressions"></a>日付式
 
 |command  |サポートされています |
 |---------|---------|
-|$dayOfYear |はい    |
-|$dayOfMonth|   はい |
-|$dayOfWeek |はい    |
-|$year  |はい    |
-|$month |はい|   
-|$week  |はい    |
-|$hour  |はい    |
-|$minute|   はい|    
+|$dayOfYear    |はい    |
+|$dayOfMonth|    はい    |
+|$dayOfWeek    |はい    |
+|$year    |はい    |
+|$month    |はい|    
+|$week    |はい    |
+|$hour    |はい    |
+|$minute|    はい|    
 |$second    |はい    |
-|$millisecond|  はい|    
-|$dateToString  |はい    |
-|$isoDayOfWeek  |はい    |
-|$isoWeek   |はい    |
-|$dateFromParts|    いいえ| 
-|$dateToParts   |いいえ |
-|$dateFromString|   いいえ|
-|$isoWeekYear   |はい    |
+|$millisecond|    はい|    
+|$dateToString    |はい    |
+|$isoDayOfWeek    |はい    |
+|$isoWeek    |はい    |
+|$dateFromParts|    いいえ|    
+|$dateToParts    |いいえ    |
+|$dateFromString|    いいえ|
+|$isoWeekYear    |はい    |
 
 ### <a name="conditional-expressions"></a>条件式
 
@@ -309,16 +309,16 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 
 |command  |サポートされています |
 |---------|---------|
-|$sum   |はい    |
-|$avg   |はい    |
+|$sum    |はい    |
+|$avg    |はい    |
 |$first|    はい|
-|$last  |はい    |
-|$max   |はい    |
-|$min   |はい    |
-|$push| はい|
-|$addToSet| はい|
-|$stdDevPop|    いいえ  |
-|$stdDevSamp|   いいえ|
+|$last    |はい    |
+|$max    |はい    |
+|$min    |はい    |
+|$push|    はい|
+|$addToSet|    はい|
+|$stdDevPop|    いいえ    |
+|$stdDevSamp|    いいえ|
 
 ### <a name="merge-operator"></a>マージ演算子
 
@@ -330,25 +330,25 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 
 |command  |サポートされています |
 |---------|---------|
-|Double |はい    |
-|String |はい    |
-|Object |はい    |
-|Array  |はい    |
-|Binary Data    |はい|   
-|ObjectId   |はい    |
+|Double    |はい    |
+|String    |はい    |
+|Object    |はい    |
+|Array    |はい    |
+|Binary Data    |はい|    
+|ObjectId    |はい    |
 |Boolean    |はい    |
-|Date   |はい    |
-|[Null]   |はい    |
-|32 ビット整数 (int)   |はい    |
-|Timestamp  |はい    |
-|64 ビット整数 (long)  |はい    |
-|MinKey |はい    |
-|MaxKey |はい    |
-|Decimal128 |はい|   
-|Regular Expression |はい|
-|JavaScript |はい|
-|JavaScript (スコープあり)|   はい |
-|未定義。  |はい    |
+|Date    |はい    |
+|[Null]    |はい    |
+|32 ビット整数 (int)    |はい    |
+|Timestamp    |はい    |
+|64 ビット整数 (long)    |はい    |
+|MinKey    |はい    |
+|MaxKey    |はい    |
+|Decimal128    |はい|    
+|Regular Expression    |はい|
+|JavaScript    |はい|
+|JavaScript (スコープあり)|    はい    |
+|未定義。    |はい    |
 
 ## <a name="indexes-and-index-properties"></a>インデックスとそのプロパティ
 
@@ -356,23 +356,23 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 
 |command  |サポートされています |
 |---------|---------|
-|単一フィールド インデックス |はい    |
-|複合インデックス |はい    |
-|複数キー インデックス |はい    |
-|テキスト インデックス |いいえ|
-|2dsphere   |はい    |
-|2d インデックス   |いいえ |
-|ハッシュ インデックス   | はい|
+|単一フィールド インデックス    |はい    |
+|複合インデックス    |はい    |
+|複数キー インデックス    |はい    |
+|テキスト インデックス    |いいえ|
+|2dsphere    |はい    |
+|2d インデックス    |いいえ    |
+|ハッシュ インデックス    | はい|
 
 ### <a name="index-properties"></a>インデックスのプロパティ
 
 |command  |サポートされています |
 |---------|---------|
-|TTL|   はい |
-|一意 |はい|
-|部分的|   いいえ|
-|大文字と小文字の区別をしない   |いいえ|
-|スパース |いいえ |
+|TTL|    はい    |
+|一意    |はい|
+|部分的|    いいえ|
+|大文字と小文字の区別をしない    |いいえ|
+|スパース    |いいえ |
 |バックグラウンド|    はい |
 
 ## <a name="operators"></a>オペレーター
@@ -381,28 +381,28 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 
 |command  |サポートされています |
 |---------|---------|
-|$or    |   はい|
-|$and   |   はい|
-|$not   |   はい|
-|$nor   |   はい| 
+|$or    |    はい|
+|$and    |    はい|
+|$not    |    はい|
+|$nor    |    はい| 
 
 ### <a name="element-operators"></a>要素演算子
 
 |command  |サポートされています |
 |---------|---------|
-|$exists|   はい|
-|$type  |   はい|
+|$exists|    はい|
+|$type    |    はい|
 
 ### <a name="evaluation-query-operators"></a>評価クエリ演算子
 
 |command  |サポートされています |
 |---------|---------|
-|$expr  |   いいえ|
-|$jsonSchema    |   いいえ|
-|$mod   |   はい|
-|$regex |   はい|
-|$text  | いいえ (サポートされていません。 代わりに $regex を使用してください)。| 
-|$where |いいえ| 
+|$expr    |    いいえ|
+|$jsonSchema    |    いいえ|
+|$mod    |    はい|
+|$regex |    はい|
+|$text    | いいえ (サポートされていません。 代わりに $regex を使用してください)。| 
+|$where    |いいえ| 
 
 $regex クエリでは、左固定の式でインデックス検索が可能です。 ただし、'i' 修飾子 (大文字と小文字の区別なし) や 'm' 修飾子 (複数行) を使用すると、すべての式でコレクション スキャンが発生します。
 
@@ -430,9 +430,9 @@ $comment |はい|
 
 |command  |サポートされています |
 |---------|---------|
-|$elemMatch |はい|
-|$meta| いいえ|
-|$slice | はい|
+|$elemMatch    |はい|
+|$meta|    いいえ|
+|$slice    | はい|
 
 ### <a name="update-operators"></a>更新演算子
 
@@ -440,28 +440,28 @@ $comment |はい|
 
 |command  |サポートされています |
 |---------|---------|
-|$inc   |   はい|
-|$mul   |   はい|
-|$rename    |   はい|
-|$setOnInsert|  はい|
-|$set   |はい|
+|$inc    |    はい|
+|$mul    |    はい|
+|$rename    |    はい|
+|$setOnInsert|    はい|
+|$set    |はい|
 |$unset| はい|
-|$min   |はい|
-|$max   |はい|
-|$currentDate   | はい|
+|$min    |はい|
+|$max    |はい|
+|$currentDate    | はい|
 
 #### <a name="array-update-operators"></a>配列更新演算子
 
 |command  |サポートされています |
 |---------|---------|
-|$  |はい|
-|$[]|   はい|
-|$[<identifier>]|   はい|
-|$addToSet  |はい|
-|$pop   |はい|
-|$pullAll|  はい|
-|$pull  |はい|
-|$push  |はい|
+|$    |はい|
+|$[]|    はい|
+|$[<identifier>]|    はい|
+|$addToSet    |はい|
+|$pop    |はい|
+|$pullAll|    はい|
+|$pull    |はい|
+|$push    |はい|
 |$pushAll| はい|
 
 
@@ -469,20 +469,20 @@ $comment |はい|
 
 |command  |サポートされています |
 |---------|---------|
-|$each  |   はい|
-|$slice |はい|
-|$sort  |はい|
-|$position  |はい|
+|$each    |    はい|
+|$slice    |はい|
+|$sort    |はい|
+|$position    |はい|
 
 #### <a name="bitwise-update-operator"></a>ビット単位更新演算子
 
 |command  |サポートされています |
 |---------|---------|
-| $bit  |   はい|    
-|$bitsAllSet    |   いいえ|
-|$bitsAnySet    |   いいえ|
-|$bitsAllClear  |いいえ|
-|$bitsAnyClear  |いいえ|
+| $bit    |    はい|    
+|$bitsAllSet    |    いいえ|
+|$bitsAnySet    |    いいえ|
+|$bitsAllClear    |いいえ|
+|$bitsAnyClear    |いいえ|
 
 ### <a name="geospatial-operators"></a>地理空間演算子
 
@@ -504,37 +504,37 @@ $polygon |  はい |
 
 |command  |サポートされています |
 |---------|---------|
-|cursor.batchSize() |   はい|
-|cursor.close() |はい|
-|cursor.isClosed()|     はい|
+|cursor.batchSize()    |    はい|
+|cursor.close()    |はい|
+|cursor.isClosed()|        はい|
 |cursor.collation()|    いいえ|
-|cursor.comment()   |はい|
-|cursor.count() |はい|
-|cursor.explain()|  いいえ|
-|cursor.forEach()   |はい|
-|cursor.hasNext()   |はい|
-|cursor.hint()  |はい|
-|cursor.isExhausted()|  はい|
-|cursor.itcount()   |はい|
-|cursor.limit() |はい|
-|cursor.map()   |はい|
-|cursor.maxScan()   |はい|
+|cursor.comment()    |はい|
+|cursor.count()    |はい|
+|cursor.explain()|    いいえ|
+|cursor.forEach()    |はい|
+|cursor.hasNext()    |はい|
+|cursor.hint()    |はい|
+|cursor.isExhausted()|    はい|
+|cursor.itcount()    |はい|
+|cursor.limit()    |はい|
+|cursor.map()    |はい|
+|cursor.maxScan()    |はい|
 |cursor.maxTimeMS()|    はい|
-|cursor.max()   |はい|
-|cursor.min()   |はい|
-|cursor.next()| はい|
-|cursor.noCursorTimeout()   |いいえ|
-|cursor.objsLeftInBatch()   |はい|
-|cursor.pretty()|   はい|
-|cursor.readConcern()|  はい|
-|cursor.readPref()      |はい|
-|cursor.returnKey() |いいえ|
-|cursor.showRecordId()| いいえ|
-|cursor.size()  |特に記載のない限り|
-|cursor.skip()  |はい|
-|cursor.sort()  |   はい|
-|cursor.tailable()| いいえ|
-|cursor.toArray()   |はい|
+|cursor.max()    |はい|
+|cursor.min()    |はい|
+|cursor.next()|    はい|
+|cursor.noCursorTimeout()    |いいえ|
+|cursor.objsLeftInBatch()    |はい|
+|cursor.pretty()|    はい|
+|cursor.readConcern()|    はい|
+|cursor.readPref()        |はい|
+|cursor.returnKey()    |いいえ|
+|cursor.showRecordId()|    いいえ|
+|cursor.size()    |はい|
+|cursor.skip()    |はい|
+|cursor.sort()    |    はい|
+|cursor.tailable()|    いいえ|
+|cursor.toArray()    |はい|
 
 ## <a name="sort-operations"></a>並べ替え操作
 

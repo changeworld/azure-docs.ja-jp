@@ -5,25 +5,25 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/06/2020
+ms.date: 03/26/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 034e966d259f1ca5f22eec5935013de32c883b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 477f3cf270377bc1341e65ab500093e05277afa8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80056698"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657508"
 ---
 Visual Studio の Azure Functions プロジェクト テンプレートでは、Azure の関数アプリに発行できるプロジェクトを作成します。 関数アプリを使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするための論理ユニットとして関数をグループ化できます。
 
-1. Visual Studio の **[ファイル]** メニューで､ **[新規作成]**  >  **[プロジェクト]** を選択します。
+1. Visual Studio メニューで、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** を選択します。
 
-1. **[新しいプロジェクトの作成]** の検索ボックスに「*functions*」と入力し、**Azure Functions** テンプレートを選択します。
+1. **[新しいプロジェクトの作成]** の検索ボックスに「*functions*」と入力し、**Azure Functions** テンプレートを選択してから、 **[次へ]** を選択します。
 
 1. **[新しいプロジェクトの構成]** で、プロジェクトの**プロジェクト名**を入力し、 **[作成]** を選択します。 関数アプリ名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
 
-1. **[新しいプロジェクト - &lt;プロジェクト名&gt;]** の設定では、次の表の値を使用します。
+1. **[Create a new Azure Function Application]\(新しい Azure 関数アプリケーションの作成\)** 設定で、次の表の値を使用します。
 
     | 設定      | 値  | 説明                      |
     | ------------ |  ------- |----------------------------------------- |
@@ -38,4 +38,4 @@ Visual Studio の Azure Functions プロジェクト テンプレートでは、
 
     **[アクセス権]** を **[匿名]** に設定していることを確認します。 **関数**の既定のレベルを選択した場合、関数エンドポイントにアクセスする要求で、[関数キー](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)を提示する必要があります。
 
-1. **[OK]** を選択して、関数プロジェクトと、HTTP でトリガーされる関数を作成します。
+1. **[作成]** を選択して、関数プロジェクトと HTTP トリガー関数を作成します。

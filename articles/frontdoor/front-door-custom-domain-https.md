@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: fae4206e555c85fe0555ce1c4366cd57dd386f1e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: efe2c96c619aaf92efc5b4abf76b6b89c96ebd37
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79471831"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878036"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
@@ -37,7 +37,7 @@ Azure Front Door では、既定で、Front Door の既定のホスト名の HTT
 > [!div class="checklist"]
 > - カスタム ドメインで HTTPS プロトコルを有効にする。
 > - AFD で管理された証明書を使用する 
-> - 独自の証明書 (つまり、カスタム SSL 証明書) を使用する
+> - 独自の証明書 (つまり、カスタム SSL TLS/証明書) を使用する
 > - ドメインを検証する
 > - カスタム ドメインで HTTPS プロトコルを無効にする
 
@@ -48,9 +48,9 @@ Azure Front Door では、既定で、Front Door の既定のホスト名の HTT
 
 このチュートリアルの手順を完了するには、最初に Front Door と、オンボードされる 1 つ以上のカスタム ドメインを作成する必要があります。 詳細については、「[チュートリアル:Front Door にカスタム ドメインを追加する](front-door-custom-domain.md)」を参照してください。
 
-## <a name="ssl-certificates"></a>SSL 証明書の数
+## <a name="tlsssl-certificates"></a>TLS/SSL 証明書
 
-Front Door カスタム ドメインでコンテンツを安全に配信するために HTTPS プロトコルを有効にするには、SSL 証明書を使用する必要があります。 Azure Front Door で管理された証明書、または独自の証明書を使用できます。
+Front Door カスタム ドメインでコンテンツを安全に配信するために HTTPS プロトコルを有効にするには、TLS/SSL 証明書を使用する必要があります。 Azure Front Door で管理された証明書、または独自の証明書を使用できます。
 
 
 ### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>オプション 1 (既定): Front Door によって管理される証明書を使用する
@@ -72,7 +72,7 @@ Azure Front Door で管理された証明書を使用する場合、HTTPS 機能
 
 ### <a name="option-2-use-your-own-certificate"></a>オプション 2:独自の証明書を使用する
 
-独自の証明書を使用して、HTTPS 機能を有効にできます。 このプロセスは、Azure Key Vault との統合を通じて行われます。これにより、お使いの証明書を安全に格納できます。 Azure Front Door では、お使いの証明書の取得に、セキュリティで保護されたこのメカニズムが使用されます。それには、追加の手順がいくつか必要です。 SSL 証明書を作成するときには、許可された証明書機関 (CA) を使用して作成する必要があります。 許可されていない CA を使用すると、要求が拒否されます。 許可された CA のリストについては、「[Azure Front Door でカスタム HTTPS を有効にするために許可された認証機関](front-door-troubleshoot-allowed-ca.md)」を参照してください。
+独自の証明書を使用して、HTTPS 機能を有効にできます。 このプロセスは、Azure Key Vault との統合を通じて行われます。これにより、お使いの証明書を安全に格納できます。 Azure Front Door では、お使いの証明書の取得に、セキュリティで保護されたこのメカニズムが使用されます。それには、追加の手順がいくつか必要です。 TLS/SSL 証明書を作成するときには、許可された証明機関 (CA) を使用して作成する必要があります。 許可されていない CA を使用すると、要求が拒否されます。 許可された CA のリストについては、「[Azure Front Door でカスタム HTTPS を有効にするために許可された認証機関](front-door-troubleshoot-allowed-ca.md)」を参照してください。
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Azure Key Vault のアカウントと証明書を準備する
  
@@ -84,7 +84,7 @@ Azure Front Door で管理された証明書を使用する場合、HTTPS 機能
 2. Azure Key Vault 証明書: 証明書が既にある場合は、Azure Key Vault アカウントに直接アップロードできます。または、Azure Key Vault と統合されているパートナー CA の 1 つから、Azure Key Vault を使用して新しい証明書を直接作成できます。 証明書は、**シークレット**ではなく**証明書**オブジェクトとしてアップロードします。
 
 > [!NOTE]
-> 独自の SSL 証明書については、Front Door は EC 暗号化アルゴリズムを使用した証明書をサポートしていません。
+> 独自の TLS/SSL 証明書については、Front Door は EC 暗号化アルゴリズムを使用した証明書をサポートしていません。
 
 #### <a name="register-azure-front-door"></a>Azure Front Door を登録する
 
@@ -147,7 +147,7 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* はカスタム ドメイン名で、*Value* は Front Door の既定の .azurefd.net ホスト名です。
 
-| 名前            | Type  | Value                 |
+| 名前            | Type  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -260,7 +260,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 4. *SAN 証明書を使用すると専用証明書の場合よりも安全性が低くなるでしょうか。*
     
-    SAN 証明書は、専用証明書と同じ暗号化およびセキュリティ標準に従っています。 発行されるすべての SSL 証明書に SHA 256 を使用して、サーバーのセキュリティが強化されています。
+    SAN 証明書は、専用証明書と同じ暗号化およびセキュリティ標準に従っています。 発行されるすべての TLS/SSL 証明書には、サーバーのセキュリティを強化するために SHA-256 が使用されます。
 
 5. *DNS プロバイダーに Certificate Authority Authorization レコードが必要ですか。*
 

@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Service (AKS) の静的 IP アドレスを使用して HTTP イングレス コントローラーを作成する
+title: 静的 IP でイングレス コントローラーを使用する
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) クラスターの静的パブリック IP アドレスを使用して NGINX イングレス コントローラーをインストールして構成する方法を説明します。
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 10422595b85c71020225df694778e6b8ae7e0185
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe7f1070ce233c204d9658d4a75c5e1c7a189f12
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78191352"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668517"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の静的パブリック IP アドレスを使用してイングレス コントローラーを作成する
 
@@ -48,7 +49,12 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeRes
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
 ```
 
-次に、Helm を使用して *nginx-ingress* グラフをデプロイします。 `--set controller.service.loadBalancerIP` パラメーターを追加し、前の手順で作成した独自のパブリック IP アドレスを指定します。 追加された冗長性については、NGINX イングレス コントローラーの 2 つのレプリカが `--set controller.replicaCount` パラメーターでデプロイされています。 イングレス コントローラーのレプリカの実行から十分にメリットを享受するには、AKS クラスターに複数のノードが存在していることを確認します。
+次に、Helm を使用して *nginx-ingress* グラフをデプロイします。 追加された冗長性については、NGINX イングレス コントローラーの 2 つのレプリカが `--set controller.replicaCount` パラメーターでデプロイされています。 イングレス コントローラーのレプリカの実行から十分にメリットを享受するには、AKS クラスターに複数のノードが存在していることを確認します。
+
+イングレス コントローラー サービスに割り当てられるロード バランサーの静的 IP アドレスと、パブリック IP アドレス リソースに適用されている DNS 名ラベルの両方をイングレス コントローラーが認識できるように、2 つの追加パラメーターを Helm リリースに渡す必要があります。 HTTPS 証明書が正常に動作するには、DNS 名ラベルを使用して、イングレス コントローラーの IP アドレス向けに FQDN を構成します。
+
+1. `--set controller.service.loadBalancerIP`パラメーターを追加します。 前の手順で作成された独自のパブリック IP アドレスを指定します。
+1. `--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"`パラメーターを追加します。 前の手順で作成されたパブリック IP アドレスに適用する DNS 名ラベルを指定します。
 
 イングレス コントローラーも Linux ノード上でスケジュールする必要があります。 Windows Server ノード (現在は AKS でプレビュー段階) では、イングレス コントローラーを実行しないでください。 ノード セレクターは、`--set nodeSelector` パラメーターを使用して指定され、Linux ベース ノード上で NGINX イングレス コントローラーを実行するように Kubernetes スケジューラに指示されます。
 
@@ -57,6 +63,8 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 
 > [!TIP]
 > クラスター内のコンテナーへの要求で[クライアント ソース IP の保持][client-source-ip]を有効にする場合は、Helm インストール コマンドに `--set controller.service.externalTrafficPolicy=Local` を追加します。 クライアント ソース IP が要求ヘッダーの *X-Forwarded-For* の下に格納されます。 クライアント ソース IP の保持が有効になっているイングレス コントローラーを使用する場合、SSL パススルーは機能しません。
+
+イングレス コントローラーの **IP アドレス**と、FQDN プレフィックスで使用する**一意の名前**で以下のスクリプトを更新します。
 
 ```console
 # Create a namespace for your ingress resources
@@ -69,6 +77,7 @@ helm install nginx-ingress stable/nginx-ingress \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set controller.service.loadBalancerIP="40.121.63.72"
+    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="demo-aks-ingress"
 ```
 
 次の出力例に示すように、NGINX イングレス コントローラー用の Kubernetes ロード バランサー サービスが作成されると、静的 IP アドレスが割り当てられます。
@@ -83,27 +92,14 @@ nginx-ingress-default-backend               ClusterIP      10.0.95.248   <none> 
 
 イングレス ルールはまだ作成されていないため、パブリック IP アドレスを参照すると、NGINX イングレス コントローラーの既定の 404 ページが表示されます。 イングレス ルールは、後続の手順で構成します。
 
-## <a name="configure-a-dns-name"></a>DNS 名を構成する
-
-HTTPS 証明書が正常に動作するには、イングレス コントローラーの IP アドレスに FQDN を構成します。 次のスクリプトを更新して、イングレス コントローラーの IP アドレスと、FQDN として使用する一意の名前に変更します。
+次のようにパブリック IP アドレスの FQDN を照会すると、DNS 名ラベルが適用されていることを確認できます。
 
 ```azurecli-interactive
 #!/bin/bash
-
-# Public IP address of your ingress controller
-IP="40.121.63.72"
-
-# Name to associate with public IP address
-DNSNAME="demo-aks-ingress"
-
-# Get the resource-id of the public ip
-PUBLICIPID=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
-
-# Update public ip address with DNS name
-az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query $("[?name=='myAKSPublicIP'].[dnsSettings.fqdn]") -o tsv
 ```
 
-FQDN 経由でイングレス コントローラーにアクセスできるようになります。
+これでイングレス コントローラーは IP アドレスまたは FQDN 経由でアクセスできるようになります。
 
 ## <a name="install-cert-manager"></a>cert-manager をインストールする
 

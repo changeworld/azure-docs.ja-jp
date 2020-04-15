@@ -2,14 +2,14 @@
 title: トラブルシューティング - QnA Maker
 description: QnA Maker サービスについてきわめて多く寄せられる質問を精選した一覧です。サービスの採用にかかる期間を短縮し、成果を上げるためにお役立てください。
 ms.topic: troubleshooting
-ms.date: 02/21/2020
+ms.date: 03/25/2020
 ms.author: diberry
-ms.openlocfilehash: 4596c16a5d7c9053bf0e27af476c66fe8fa9ed35
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78296101"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804352"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 
@@ -17,10 +17,20 @@ QnA Maker サービスについてきわめて多く寄せられる質問を精�
 
 <a name="how-to-get-the-qnamaker-service-hostname"></a>
 
+## <a name="manage-predictions"></a>予測を管理する
+
+<details>
+<summary><b>クエリ予測のスループットのパフォーマンスを向上させるにはどうすればよいですか。</b></summary>
+
+**回答**: スループットのパフォーマンスの問題は、App Service と Cognitive Search の両方をスケールアップする必要があることを示しています。 パフォーマンスを向上させるには、Cognitive Search にレプリカを追加することを検討してください。
+
+価格レベルの詳細については[こちら](Concepts/azure-resources.md)をご覧ください。
+</details>
+
 <details>
 <summary><b>QnA Maker サービス エンドポイントを取得する方法</b></summary>
 
-**回答**: QnA Maker サービス エンドポイントは、デバッグ目的で QnA Maker サポートや UserVoice に問い合わせる場合に役立ちます。 エンドポイントは、次の形式の URL です: https://your-resource-name.azurewebsites.net 。
+**回答**: QnA Maker サービス エンドポイントは、デバッグ目的で QnA Maker サポートや UserVoice に問い合わせる場合に役立ちます。 エンドポイントは、次の形式の URL です: `https://your-resource-name.azurewebsites.net`。
 
 1. [Azure portal](https://portal.azure.com) で QnA Maker サービス (リソース グループ) に移動します。
 
@@ -132,7 +142,7 @@ QnA Maker サービスについてきわめて多く寄せられる質問を精�
 * ファイル - サポートされていません
 
 #### <a name="answer-text-in-markdown"></a>マークダウンの回答テキスト
-QnA セットをナレッジ ベースに追加すると、回答のマークダウン テキストを編集して、パブリック URL から使用できるメディアへのリンクを含めることができます。
+QnA ペアをナレッジ ベースに追加すると、回答のマークダウン テキストを編集して、パブリック URL から使用できるメディアへのリンクを含めることができます。
 
 
 </details>

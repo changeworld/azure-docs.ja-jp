@@ -2,17 +2,17 @@
 title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 03/27/2020
+ms.openlocfilehash: f6203f987654b33b32da72bfec030a9d0ab69df8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153164"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981530"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
-この記事では、Azure リソースの名前付け規則と制限事項の概要について説明します。 リソースの名前付け方法に関する推奨事項については、「[Ready: 推奨される名前付けおよびタグ付け規則](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)」を参照してください。
+この記事では、Azure リソースの名前付け規則と制限事項の概要について説明します。 リソースに名前を付ける方法に関する推奨事項については、「[推奨される名前付けおよびタグ付け規則](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)」を参照してください。
 
 「有効な文字」列に特に明記されていない限り、リソース名では大文字と小文字は区別されません。
 
@@ -385,6 +385,13 @@ ms.locfileid: "77153164"
 > | --- | --- | --- | --- |
 > | jobs | resource group | 2 ～ 64 | 英数字とハイフン。<br><br>文字で開始します。 |
 
+## <a name="microsoftinsights"></a>Microsoft.Insights
+
+> [!div class="mx-tableFixed"]
+> | Entity | Scope | 長さ | 有効な文字 |
+> | --- | --- | --- | --- |
+> | components | resource group | 1-260 | 次は使用できません:<br>`%&\?/` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
+
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tableFixed"]
@@ -407,8 +414,8 @@ ms.locfileid: "77153164"
 > | --- | --- | --- | --- |
 > | clusters | グローバル | 4-22 | 小文字と数字。<br><br>文字で開始します。 |
 > | /clusters/databases | cluster | 1-260 | 英数字、ハイフン、スペース、およびピリオド。 |
-> | /clusters/databases/dataConnections | [データベース] | 1-40 | 英数字、ハイフン、スペース、およびピリオド。 |
-> | /clusters/databases/eventhubconnections | [データベース] | 1-40 | 英数字、ハイフン、スペース、およびピリオド。 |
+> | /clusters/databases/dataConnections | database | 1-40 | 英数字、ハイフン、スペース、およびピリオド。 |
+> | /clusters/databases/eventhubconnections | database | 1-40 | 英数字、ハイフン、スペース、およびピリオド。 |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -616,8 +623,9 @@ ms.locfileid: "77153164"
 > | --- | --- | --- | --- |
 > | managedInstances | グローバル | 1 ～ 63 | 小文字、数字、およびハイフン。<br><br>先頭または末尾をハイフンにすることはできません。 |
 > | servers | グローバル | 1 ～ 63 | 小文字、数字、およびハイフン。<br><br>先頭または末尾をハイフンにすることはできません。 |
+> | servers / administrators | server |  | `ActiveDirectory`である必要があります。 |
 > | servers/databases | server | 1-128 | 次は使用できません:<br>`<>*%&:\/?`<br><br>末尾をピリオドまたはスペースにすることはできません。 |
-> | servers/databases/syncGroups | [データベース] | 1-150 | 英数字、ハイフン、およびアンダースコア。 |
+> | servers/databases/syncGroups | database | 1-150 | 英数字、ハイフン、およびアンダースコア。 |
 > | servers/elasticPools | server | 1-128 | 次は使用できません:<br>`<>*%&:\/?`<br><br>末尾をピリオドまたはスペースにすることはできません。 |
 > | servers/failoverGroups | グローバル | 1 ～ 63 | 小文字、数字、およびハイフン。<br><br>先頭または末尾をハイフンにすることはできません。 |
 > | servers / firewallRules | server | 1-128 | 次は使用できません:<br>`<>*%&:;\/?`<br><br>末尾をピリオドにすることはできません。 |
@@ -635,7 +643,7 @@ ms.locfileid: "77153164"
 > | storageAccounts/managementPolicies | ストレージ アカウント |  | `default`である必要があります。 |
 > | blob (blob) | container | 1 ～ 1,024 | 任意の URL 文字。大文字と小文字が区別されます。 |
 > | queue | ストレージ アカウント | 3 ～ 63 | 小文字、数字、およびハイフン。<br><br>先頭または末尾をハイフンにすることはできません。 連続するハイフンを使用することはできません。 |
-> | テーブル | ストレージ アカウント | 3 ～ 63 | 英数字。<br><br>文字で開始します。 |
+> | table | ストレージ アカウント | 3 ～ 63 | 英数字。<br><br>文字で開始します。 |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 

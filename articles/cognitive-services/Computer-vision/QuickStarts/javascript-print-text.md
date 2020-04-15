@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3f8ddb566801e758d3cbec9412c685f376af1165
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 63680178c42854d9cb3b4b42d004da471f839c97
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74974565"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656079"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>クイック スタート:Computer Vision の REST API と JavaScript を使用して印刷されたテキスト (OCR) を抽出する
 
@@ -29,18 +29,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。 次に、キーとサービス エンドポイント文字列用に、それぞれ `COMPUTER_VISION_SUBSCRIPTION_KEY` と `COMPUTER_VISION_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。 サブスクリプション キーとエンドポイント URL を一時的な場所に保存します。
 
 ## <a name="create-and-run-the-sample"></a>サンプルの作成と実行
 
 このサンプルを作成して実行するには、次の手順を実行します。
 
-1. テキスト エディターに次のコードをコピーします。
+1. _get-printed-text.html_ という名前のファイルを作成し、テキスト エディターで開き、次のコードをコピーします。
 1. 必要に応じて、分析する別の画像の URL で、`inputImage` コントロールの `value` 属性の値を置き換えます。
-1. `.html` 拡張子のファイルとして、コードを保存します。 たとえば、「 `get-printed-text.html` 」のように入力します。
 1. ブラウザー ウィンドウを開きます。
 1. ブラウザーで、ブラウザー ウィンドウにファイルをドラッグ アンド ドロップします。
-1. ブラウザーに Web ページが表示されたら、 **[Read image]\(画像の読み取り\)** ボタンをクリックします。
+1. Web ページがブラウザーに表示されたら、サブスクリプション キーとエンドポイント URL を適切な入力ボックスに貼り付けます。
+1. **[Read image]\(画像の読み取り\)** ボタンを選択します。
 
 ```html
 <!DOCTYPE html>
@@ -57,9 +57,8 @@ Computer Vision のサブスクリプション キーが必要です。 無料�
         // *** Update or verify the following values. ***
         // **********************************************
 
-        let subscriptionKey = process.env['COMPUTER_VISION_SUBSCRIPTION_KEY'];
-        let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
-        if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
+        var subscriptionKey = document.getElementById("subscriptionKey").value;
+        var endpoint = document.getElementById("endpointUrl").value;
         
         var uriBase = endpoint + "vision/v2.1/ocr";
 
@@ -110,6 +109,13 @@ Computer Vision のサブスクリプション キーが必要です。 無料�
 <h1>Optical Character Recognition (OCR):</h1>
 Enter the URL to an image of printed text, then
 click the <strong>Read image</strong> button.
+<br><br>
+Subscription key: 
+<input type="text" name="subscriptionKey" id="subscriptionKey"
+    value="" /> 
+Endpoint URL:
+<input type="text" name="endpointUrl" id="endpointUrl"
+    value="" />
 <br><br>
 Image to read:
 <input type="text" name="inputImage" id="inputImage" 

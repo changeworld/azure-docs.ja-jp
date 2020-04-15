@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: 9c3216af283ebd9d84a5469d4d50d18c19f67534
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71121949"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668571"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを使用するアプリケーション ゲートウェイのホワイトリストにバックエンド サーバー証明書が登録されない
 
-この記事でトラブルシューティングを行う問題: Azure 内でエンド ツー エンド SSL を使用するとき、内部ロード バランサー (ILB) と App Service Environment (ASE) を一緒にバックエンドで使用してアプリケーション ゲートウェイを作成すると、証明書がホワイトリストに登録されません。
+この記事でトラブルシューティングを行う問題: Azure 内でエンド ツー エンド TLS を使用するとき、内部ロード バランサー (ILB) と App Service Environment (ASE) を一緒にバックエンドで使用してアプリケーション ゲートウェイを作成すると、証明書がホワイトリストに登録されません。Azure 内でエンド ツー エンド SSL を使用するとき、内部ロード バランサー (ILB) と App Service Environment (ASE) を一緒にバックエンドで使用してアプリケーション ゲートウェイを作成すると、証明書がホワイトリストに登録されません。
 
 ## <a name="symptoms"></a>現象
 
@@ -68,7 +68,7 @@ HTTPS Web サイトにアクセスするときにホスト名を使用しない�
 
 - ILB の IP アドレスを使用する場合は、アプリケーション ゲートウェイの **[App Service 用に使用します]** オプションをクリアします。
 
-オーバーヘッドを減らすため、HTTP 設定に ILB 証明書をアップロードしてプローブ パスが機能するようにします。 (この手順はホワイトリスト登録のためだけです。 SSL 通信では使用されません。)お使いのブラウザーから HTTPS の IP アドレスを使用して ILB にアクセスし、SSL 証明書を Base-64 エンコーディングされた CER 形式でエクスポートし、それぞれの HTTP 設定に証明書をアップロードすることで、ILB 証明書を取得できます。
+オーバーヘッドを減らすため、HTTP 設定に ILB 証明書をアップロードしてプローブ パスが機能するようにします。 (この手順はホワイトリスト登録のためだけです。 TLS 通信では使用されません。)お使いのブラウザーから HTTPS の IP アドレスを使用して ILB にアクセスし、TLS/SSL 証明書を Base-64 エンコーディングされた CER 形式でエクスポートし、それぞれの HTTP 設定に証明書をアップロードすることで、ILB 証明書を取得できます。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 

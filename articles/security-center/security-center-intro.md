@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 84ed5db54874231d8bde4d892eedbc60c42a3430
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d2e7e157156a4049a5db37b1d5c0e02773adbcc3
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77918759"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879549"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -49,7 +49,7 @@ Azure Security Center は、3 つの緊急性が高いセキュリティの課�
 
 Security Center はネイティブで Azure の一部なので、Service Fabric、SQL Database、ストレージ アカウントなどの Azure に含まれる PaaS サービスは、デプロイすることなく Security Center で監視および保護されます。
 
-さらに、Security Center によって、クラウド内またはオンプレミス上にある Azure 以外のサーバーおよび仮想マシンが保護されます。Microsoft Monitoring Agent をインストールすることで、Windows サーバーと Linux サーバーのどちらにも対応できます。 Azure 仮想マシンは、Security Center 内に自動プロビジョニングされます。
+さらに、Security Center は、Log Analytics エージェントをインストールすることにより、Windows と Linux の両方のサーバーで、クラウドまたはオンプレミスにある Azure 以外のサーバーと仮想マシンを保護します。 Azure 仮想マシンは、Security Center 内に自動プロビジョニングされます。
 
 エージェントと Azure から収集されたイベントは、セキュリティ分析エンジンで相互に関連付けられ、調整された推奨事項 (強化タスク) が提供されます。これに従うことで、ワークロードをセキュリティで保護できます。また、セキュリティ アラートも提供されます。 このようなアラートはできるだけ早く調査し、ワークロードに対して悪意のある攻撃が行われていないことを確認する必要があります。
 
@@ -146,5 +146,7 @@ Security Center で、Azure および Azure リソースとのシームレスで
 ## <a name="next-steps"></a>次のステップ
 
 - Security Center を使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/free/)にサインアップできます。
-- Security Center の Free 価格レベルは、Azure サブスクリプションがある場合に有効です。 高度なセキュリティ管理と脅威に対する保護の機能を利用するには、Standard 価格レベルにアップグレードする必要があります。 Standard レベルは 30 日間無料でお試しいただくことができます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
-- 今すぐ Security Center Standard を有効にする準備ができたら、「[クイックスタート:Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」の詳細な手順を参照してください。
+
+- Azure portal の Azure Security Center ダッシュボードに初めてアクセスしたとき、または API を介してプログラムで有効にした場合は、現在のすべての Azure サブスクリプションで Security Center の Free の価格レベルが有効になります。 高度なセキュリティ管理と脅威検出の機能を利用するには、Standard の価格レベルにアップグレードする必要があります。 Standard レベルは 30 日間無料でお試しいただくことができます。 詳しくは、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」ページをご覧ください。
+
+- 今すぐ Security Center の Standard を有効にする準備ができたら、「[クイック スタート: Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」の詳細な手順を参照してください。

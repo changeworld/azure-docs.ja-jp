@@ -3,17 +3,17 @@ title: Azure Cost Management のデータへのアクセス許可を割り当て
 description: この記事では、Azure Cost Management のデータに対するアクセス許可をさまざまなアクセス スコープで割り当てる方法を説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/19/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 56090798defd9209c3587aa701c88db6958d1b97
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b3ede4dcc4df8bf10ce24b3d74dc5af0424de5a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065819"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879107"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management のデータへのアクセス許可を割り当てる
 
@@ -21,9 +21,9 @@ Azure Enterprise Agreement を使用するユーザーの場合は、Azure porta
 
 ユーザーが選択したスコープは、データの統合とコスト情報へのアクセスの制御のために、Cost Management 全体を通して使用されます。 スコープを使用する場合、ユーザーはスコープの複数選択を行いません。 代わりに、子スコープがロール アップするよりも大きなスコープを選択してから、表示したい内容をフィルターで絞り込みます。 一部のユーザーは子スコープがロール アップする親スコープにアクセスすべきではないため、データの統合について理解しておくことが重要です。
 
-Azure のロールベースのアクセス制御を使用してコストと料金を表示するためにアクセスを割り当てる方法については、「[How to assign access with Azure Cost Management (Azure Cost Management を使用してアクセスを割り当てる方法)](https://www.youtube.com/watch?v=J997ckmwTa8)」のビデオをご覧ください。
+Azure のロールベースのアクセス制御を使用してコストと料金を表示するためにアクセスを割り当てる方法については、[Cost Management のアクセス制御](https://www.youtube.com/watch?v=_uQzQ9puPyM)に関するビデオをご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
 
->[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
+>[!VIDEO https://www.youtube.com/embed/_uQzQ9puPyM]
 
 ## <a name="cost-management-scopes"></a>Cost Management のスコープ
 

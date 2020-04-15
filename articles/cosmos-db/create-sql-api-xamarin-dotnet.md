@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 74d34705a6541b396fa2c2bf5028254f5f2e8d21
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 125cc2516fbd694bbe62545e85d4e14225fb2a6a
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77586769"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756436"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Xamarin で todo アプリを構築する
 
@@ -25,12 +25,12 @@ ms.locfileid: "77586769"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
+Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
 
 > [!NOTE]
 > CosmosDB を含め、さまざまな Azure プランを表示する基本的なサンプル Xamarin アプリのサンプル コードは、[こちら](https://github.com/xamarinhq/app-geocontacts)の GitHub でご覧いただけます。 このアプリでは、地理的に分散した連絡先を確認し、それらの連絡先がその場所を更新できるようにする方法が紹介されています。
 
-このクイックスタートでは、Azure portal を使用して、Azure Cosmos DB SQL API アカウント、ドキュメント データベース、およびコンテナーを作成する方法を説明します。 次に、[SQL .NET API](sql-api-sdk-dotnet.md) と [Xamarin](https://docs.microsoft.com/xamarin/) を基盤に [Xamarin.Forms](https://docs.microsoft.com/xamarin/) と [MVVM アーキテクチャ パターン](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)を使用して、todo リスト Web アプリを構築およびデプロイします。
+このクイックスタートでは、Azure portal を使用して、Azure Cosmos DB SQL API アカウント、ドキュメント データベース、およびコンテナーを作成する方法を説明します。 次に、[SQL .NET API](sql-api-sdk-dotnet.md) と [Xamarin](https://docs.microsoft.com/xamarin/) を基盤に [Xamarin.Forms](https://docs.microsoft.com/xamarin/) と [MVVM アーキテクチャ パターン](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)を使用して、todo リスト モバイル アプリを構築およびデプロイします。
 
 ![iOS 上で実行されている Xamarin todo アプリ](./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png)
 
@@ -91,15 +91,15 @@ Mac を使用している場合は、**無料の** [Visual Studio for Mac](https
 
     ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-sql-api-xamarin-dotnet/keys.png)
 
-2. Visual Studio 2019 または Visual Studio for Mac のどちらかで、azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Helpers フォルダー内の APIKeys.cs ファイルを開きます。
+2. Visual Studio 2019 または Visual Studio for Mac のどちらかで、azure-cosmos-db-sql-xamarin-getting-started/src/ToDoItems.Core/Helpers フォルダー内の APIKeys.cs ファイルを開きます。
 
 3. ポータルから (コピー ボタンを使用して) [URI] 値をコピーし、APIKeys.cs 内の `CosmosEndpointUrl` 変数の値に設定します。
 
-    `public static readonly string CosmosEndpointUrl = "{Azure Cosmos DB account URL}";`
+    `public static readonly string CosmosEndpointUrl = "";`
 
 4. 次に、ポータルから [主キー] 値をコピーし、APIKeys.cs 内の `Cosmos Auth Key` の値に設定します。
 
-    `public static readonly string CosmosAuthKey = "{Azure Cosmos DB secret}";`
+    `public static readonly string CosmosAuthKey = "";`
 
 [!INCLUDE [cosmos-db-auth-key-info](../../includes/cosmos-db-auth-key-info.md)]
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 6bc7f45d84d525156a3d25bdceef4d1012844afa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931984"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981853"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
 
@@ -27,7 +27,7 @@ ms.locfileid: "75931984"
 >このコンテンツは、[Azure VNet 用の IPv6 の概要](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)に関する記事に置き換えられました。 IPv6 の新しいデプロイでは、新しい Azure Virtual Network 用の IPv6 の機能を使用することをお勧めします。
 
 >[!NOTE]
->Azure Load Balancer では、Basic と Standard の 2 種類がサポートされています。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](load-balancer-standard-overview.md)に関するページをご覧ください。
+>Azure Load Balancer では、2 種類がサポートされています。Basic と Standard です。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](load-balancer-standard-overview.md)に関するページをご覧ください。
 
 Basic SKU のインターネットに接続するロード バランサーは、IPv6 アドレスでデプロイできます。 これにより、IPv4 接続に加えて次の機能を使用できます。
 
@@ -40,7 +40,7 @@ Basic SKU のインターネットに接続するロード バランサーは、
 
 一度デプロイすると、IPv4 または IPv6 対応のインターネット クライアントがインターネットに接続された Azure Load Balancer の IPv4 または IPv6 のパブリック アドレスと通信できるようになります。 ロード バランサーは、ネットワーク アドレス変換 (NAT) を使用して IPv6 のパケットを VM のプライベート IPv6 アドレスにルーティングします。 IPv6 インターネット クライアントは、VM の IPv6 アドレスと直接通信できません。
 
-## <a name="features"></a>[機能]
+## <a name="features"></a>特徴
 
 Azure Resource Manager を介してデプロイされた VM のネイティブ IPv6 サポートは、次の機能を提供します。
 
@@ -81,6 +81,7 @@ Azure Resource Manager を介してデプロイされた VM のネイティブ I
 * IPv6 の loadDistributionMethod パラメーターの変更は、**現在サポートされてません**。
 * 予約済み IPv6 IP (IPAllocationMethod = static) は、**現在サポートされていません**。
 * NAT64 (IPv6 の IPv4 への変換) はサポートされていません。
+* IPv6 のサブネットを参照しているセカンダリ NIC をバックエンド プールに接続することは、**現在はサポートされてません**。
 
 ## <a name="next-steps"></a>次のステップ
 

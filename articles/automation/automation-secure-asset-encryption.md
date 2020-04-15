@@ -1,6 +1,6 @@
 ---
-title: Automation でのセキュリティで保護された資産の暗号化
-description: Azure Automation では、セキュリティで保護された資産が複数のレベルの暗号化を使用して保護されます。 既定では、暗号化は Microsoft のマネージド キーを使用して実行されます。 顧客は、暗号化にカスタマー マネージド キーを使用するように自分の Automation アカウントを構成できます。 この記事では、暗号化の両方のモードの詳細と、これらの 2 つを切り替える方法について説明します。
+title: Azure Automation でセキュリティで保護された資産を暗号化する
+description: Azure Automation では、複数のレベルの暗号化を使用してセキュリティで保護された資産を守ります。 既定では、暗号化は Microsoft のマネージド キーを使用して実行されます。 顧客は、暗号化にカスタマー マネージド キーを使用するように自分の Automation アカウントを構成できます。 この記事では、暗号化の両方のモードの詳細と、これらの 2 つを切り替える方法について説明します。
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,18 +9,18 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 3c21e2fcdde9bffac91af56d49dfa0bf336e8c0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b1d194209122fa71272243c80a2d4c57f6834a1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246248"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547751"
 ---
-# <a name="secure-assets-in-azure-automation"></a>Azure Automation でのセキュリティで保護された資産
+# <a name="encrypt-secure-assets-in-azure-automation"></a>Azure Automation でセキュリティで保護された資産を暗号化する
 
 Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、Azure Automation で複数のレベルの暗号化を使用して保護されます。 暗号化に使用される最上位のキーに基づいて、暗号化には次の 2 つのモデルがあります。
--   Microsoft のマネージド キーの使用
--   カスタマー マネージド キーの使用
+-    Microsoft のマネージド キーの使用
+-    カスタマー マネージド キーの使用
 
 ## <a name="microsoft-managed-keys"></a>Microsoft のマネージド キー
 

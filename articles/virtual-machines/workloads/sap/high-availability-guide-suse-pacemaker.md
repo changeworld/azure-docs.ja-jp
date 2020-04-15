@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/17/2020
+ms.date: 04/07/2020
 ms.author: radeltch
-ms.openlocfilehash: 9d3d0ddbd1282827f17cd82228fcf0f3fba3a60f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06ee1b6184e69ace68adcbfa36ad2384dc9fdd99
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471984"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811576"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -365,6 +365,9 @@ o- / ...........................................................................
    </code></pre>
 
 1. **[A]** HA クラスター用に cloud-netconfig-azure を構成します
+
+   >[!NOTE]
+   > **zypper info cloud-netconfig-azure** を実行して、パッケージ **cloud-netconfig-azure** のインストールされているバージョンを確認します。 環境内のバージョンが 1.3 以降である場合、クラウド ネットワーク プラグインによるネットワーク インターフェイスの管理を抑制する必要はなくなりました。 バージョンが 1.3 より前の場合は、パッケージ **cloud-netconfig-azure** を利用可能な最新バージョンに更新することをお勧めします。  
 
    クラウド ネットワーク プラグインによって仮想 IP アドレスが削除されるのを防ぐために、次に示すようにネットワーク インターフェイスの構成ファイルを変更します (Pacemaker で VIP の割り当てを制御する必要があります)。 詳細については、[SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633) を参照してください。 
 

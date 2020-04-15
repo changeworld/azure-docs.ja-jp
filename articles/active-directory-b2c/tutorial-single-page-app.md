@@ -6,28 +6,31 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.author: mimart
-ms.date: 10/14/2019
+ms.date: 04/04/2020
 ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 435800d9c6bfd9131d50681a9808f9836104fac0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d7cd437f597fc34fe83904715fc2e459dfe4550f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78183348"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875567"
 ---
-# <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>チュートリアル:Azure Active Directory B2C (Azure AD B2C) を使用してシングルページ アプリケーションで認証を有効にする
+# <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>チュートリアル:Azure AD B2C を使用してシングルページ アプリケーションで認証を有効にする
 
-このチュートリアルでは、Azure Active Directory B2C (Azure AD B2C) を使用してシングルページ アプリケーション (SPA) でユーザーをサインインおよびサインアップする方法を説明します。 Azure AD B2C を使用すると、アプリケーションはオープンな標準プロトコルを使用してソーシャル アカウント、エンタープライズ アカウント、Azure Active Directory アカウントに対する認証を行うことができます。
+このチュートリアルでは、Azure Active Directory B2C (Azure AD B2C) を使用してシングルページ アプリケーション (SPA) でユーザーをサインアップおよびサインインする方法を説明します。
 
-このチュートリアルでは、以下の内容を学習します。
+2 部構成のシリーズの最初の部分であるこのチュートリアルでは、次の作業を行います。
 
 > [!div class="checklist"]
-> * Azure AD B2C でアプリケーションを更新する
-> * アプリケーションを使用するようにサンプルを構成する
-> * ユーザー フローを使用してサインアップする
+> * Azure AD B2C テナントに登録されているアプリケーションに応答 URL を追加する
+> * GitHub からコード サンプルをダウンロードする
+> * サンプル アプリケーションのコードをテナントで動作するように変更する
+> * サインアップ/サインイン ユーザー フローを使用してサインアップする
+
+このシリーズの[次のチュートリアル](tutorial-single-page-app-webapi.md)では、コード サンプルの Web API の部分を有効にします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,13 +44,12 @@ ms.locfileid: "78183348"
 
 さらに、ご利用のローカル開発環境には次のものが必要です。
 
-* コード エディター。例: [Visual Studio Code](https://code.visualstudio.com/) または [Visual Studio 2019](https://www.visualstudio.com/downloads/)
-* [.NET Core SDK 2.2](https://dotnet.microsoft.com/download) 以降
+* [Visual Studio Code](https://code.visualstudio.com/) または別のコード エディター
 * [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="update-the-application"></a>アプリケーションの更新
 
-前提条件の一環として完了した 2 番目のチュートリアルで、Azure AD B2C に Web アプリケーションを登録しました。 チュートリアルのサンプルとの通信を有効にするには、Azure AD B2C のアプリケーションにリダイレクト URI を 追加する必要があります。
+前提条件の一環として完了した 2 番目のチュートリアルで、Azure AD B2C に Web アプリケーションを登録しました。 このチュートリアルのコード サンプルとの通信を可能にするには、アプリケーションの登録に応答 URL (リダイレクト URI とも呼ばれます) を追加します。
 
 現在の**アプリケーション** エクスペリエンス、または新しく統合された**アプリの登録 (プレビュー)** エクスペリエンスを使用して、アプリケーションを更新できます。 [この新しいエクスペリエンスの詳細を参照してください](https://aka.ms/b2cappregintro)。
 
@@ -76,7 +78,7 @@ ms.locfileid: "78183348"
 
 ## <a name="get-the-sample-code"></a>サンプル コードの取得
 
-このチュートリアルでは、GitHub からダウンロードするコード サンプルを構成します。 そのサンプルでは、シングルページ アプリケーションでユーザーのサインアップおよびサインイン、保護された Web API の呼び出しに Azure AD B2C を使用する方法が示されています。
+このチュートリアルでは、GitHub からダウンロードしたコード サンプルを B2C テナントで動作するように構成します。 このサンプルでは、シングルページ アプリケーションでユーザーのサインアップおよびサインイン、保護された Web API の呼び出しに Azure AD B2C を使用する方法が示されています (このシリーズの次のチュートリアルで、Web API を有効にします)。
 
 [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)するか、GitHub からサンプルを複製します。
 
@@ -88,14 +90,16 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 サンプルを入手したので、ご利用の Azure AD B2C テナント名と前の手順でメモしたアプリケーション ID を使用してコードを更新します。
 
-1. サンプル ディレクトリのルートにある `index.html` ファイルを開きます。
-1. `msalConfig` 定義内で **clientId** 値を、前の手順でメモしたアプリケーション ID を使用して変更します。 次に、**機関**の URI 値を、ご利用の Azure AD B2C テナント名を使用して更新します。 また、前提条件の 1 つで作成したサインアップ/サインイン ユーザー フローの名前 (たとえば、*B2C_1_signupsignin1*) を使用して URI を更新します。
+1. *JavaScriptSPA* フォルダー内の *authConfig.js* ファイルを開きます。
+1. `msalConfig` オブジェクト内で、次のように更新します。
+    * 前の手順で記録した **アプリケーション (クライアント) ID** を持つ値で `clientId` を更新
+    * Azure AD B2C テナント名と、前提条件の一部として作成したサインアップ/サインイン ユーザー フローの名前 (*B2C_1_signupsignin1* など) で `authority` URI を更新
 
     ```javascript
-    var msalConfig = {
+    const msalConfig = {
         auth: {
-            clientId: "00000000-0000-0000-0000-000000000000", //This is your client ID
-            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi", //This is your tenant info
+            clientId: "00000000-0000-0000-0000-000000000000", // Replace this value with your Application (client) ID
+            authority: "https://your-b2c-tenant.b2clogin.com/your-b2c-tenant.onmicrosoft.com/B2C_1_signupsignin1", // Update with your tenant and user flow names
             validateAuthority: false
         },
         cache: {
@@ -104,8 +108,6 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
         }
     };
     ```
-
-    このチュートリアルで使用されているユーザー フローの名前は、**B2C_1_signupsignin1** です。 別のユーザー フロー名を使用している場合は、その名前を `authority` 値に指定します。
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
@@ -116,64 +118,59 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
     ```
 1. 次のコマンドを実行します。
 
-    ```
+    ```console
     npm install && npm update
-    node server.js
+    npm start
     ```
 
     コンソール ウィンドウには、ローカルで稼働中の Node.js サーバーのポート番号が表示されます。
 
-    ```
+    ```console
     Listening on port 6420...
     ```
+1. `http://localhost:6420` を参照して、ローカル コンピューターで実行されている Web アプリケーションを表示します。
 
-1. アプリケーションを表示するには、ブラウザーで `http://localhost:6420` に移動します。
-
-サンプルでは、サインアップ、サインイン、プロファイルの編集、パスワードのリセットがサポートされています。 このチュートリアルでは、ユーザーがメール アドレスを使用してサインアップを行う方法に焦点を当てます。
+    :::image type="content" source="media/tutorial-single-page-app/web-app-spa-01-not-logged-in.png" alt-text="ローカルで実行されているシングルページ アプリケーションを示す Web ブラウザー":::
 
 ### <a name="sign-up-using-an-email-address"></a>メール アドレスを使用してサインアップする
 
-> [!WARNING]
-> サインアップまたはサインインすると、["アクセス許可が不十分です" というエラー](#error-insufficient-permissions)が表示されることがあります。 コード サンプルの現在の実装では、このエラーが発生する可能性があります。 この問題は、今後のバージョンのコード サンプルで解決される予定であり、その際にこの警告は削除されます。
+このサンプル アプリケーションでは、サインアップ、サインイン、パスワードのリセットがサポートされています。 このチュートリアルでは、メール アドレスを使用してサインアップします。
 
-1. **[Login]\(ログイン\)** を選択して、前の手順で指定した *B2C_1_signupsignin1* ユーザー フローを開始します。
+1. **[Sign In]\(サインイン\)** を選択して、前の手順で指定した *B2C_1_signupsignin1* ユーザー フローを開始します。
 1. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、 **[Sign up now]\(今すぐサインアップ\)** リンクを選択します。
-1. サインアップ ワークフローによって、メール アドレスを使用してユーザーの ID を収集および確認するためのページが表示されます。 また、サインアップ ワークフローでは、ユーザー フローで定義されているユーザーのパスワードと要求された属性も収集されます。
+1. サインアップ ワークフローによって、メール アドレスを使用してユーザーの ID を収集および確認するためのページが表示されます。 また、サインアップ ワークフローでは、ユーザーのパスワードと、ユーザー フローで定義されている要求された属性も収集されます。
 
     有効なメール アドレスを使用し、確認コードを使用して検証します。 パスワードを設定します。 要求された属性の値を入力します。
 
-    ![サインインまたはサインアップ ユーザー フローによって表示されるサインアップ ページ](./media/tutorial-single-page-app/azure-ad-b2c-sign-up-workflow.png)
+    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="Azure AD B2C ユーザー フローによって表示されるサインアップ ページ":::
 
 1. **[作成]** を選択して、Azure AD B2C ディレクトリにローカル アカウントを作成します。
 
-**[作成]** を選択すると、サインアップ ページが閉じてサインイン ページが再び表示されます。
+**[Create]\(作成\)** を選択すると、サインインしているユーザーの名前がアプリケーションに表示されます。
 
-これで、ご利用のメール アドレスとパスワードを使用してアプリケーションにサインインできるようになりました。
+:::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="ログイン ユーザーを表示しているシングルページ アプリケーションを示す Web ブラウザー":::
 
-### <a name="error-insufficient-permissions"></a>エラー: アクセス許可が不十分です
+サインインをテストする場合は、 **[Sign Out]\(サインアウト\)** ボタンを選択してから、 **[Sign In]\(サインイン\)** を選択し、サインアップした時に入力したメール アドレスとパスワードでサインインします。
 
-サインインした後、アプリケーションから "アクセス許可が不十分です" というエラーが返されることがあります。
+### <a name="what-about-calling-the-api"></a>API の呼び出しについて
 
-```Output
-ServerError: AADB2C90205: This application does not have sufficient permissions against this web resource to perform the operation.
-Correlation ID: ce15bbcc-0000-0000-0000-494a52e95cd7
-Timestamp: 2019-07-20 22:17:27Z
-```
+サインイン後に **[Call API]\(API の呼び出し\)** ボタンを選択した場合は、API 呼び出しの結果ではなく、サインアップ/サインイン ユーザー フロー ページが表示されます。 "*お使いの*" Azure AD B2C テナントに登録されている Web API アプリケーションと通信するようにアプリケーションの API 部分をまだ構成していないため、これは予期されていることです。
 
-このエラーが発生するのは、Web アプリケーションがデモ用ディレクトリ *fabrikamb2c* によって保護されている Web API にアクセスしようとしているためです。 アクセス トークンはご利用の Azure AD ディレクトリのみに有効であるため、この API 呼び出しは承認されません。
+この時点では、アプリケーションはデモ テナント (fabrikamb2c.onmicrosoft.com) に登録されている API とまだ通信しようとしています。そのテナントで認証されないため、サインアップ/サインイン ページが表示されます。
 
-このエラーを修正するには、このシリーズの次のチュートリアルに進み (「[次の手順](#next-steps)」を参照)、ご利用のディレクトリ用に保護された Web API を作成してください。
+このシリーズの次のチュートリアルに進んで、保護された API を有効にしてください (「[次のステップ](#next-steps)」セクションを参照)。
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事で学習した内容は次のとおりです。
+このチュートリアルでは、Azure AD B2C テナントのユーザー フローと連携するようにシングルページ アプリケーションを構成し、サインアップとサインインの機能を提供しました。 次の手順を完了しました。
 
 > [!div class="checklist"]
-> * Azure AD B2C でアプリケーションを更新する
-> * アプリケーションを使用するようにサンプルを構成する
-> * ユーザー フローを使用してサインアップする
+> * Azure AD B2C テナントに登録されているアプリケーションに応答 URL を追加しました
+> * GitHub からコード サンプルをダウンロードしました
+> * サンプル アプリケーションのコードをテナントで動作するように変更しました
+> * サインアップ/サインイン ユーザー フローを使用してサインアップしました
 
 それでは、このシリーズの次のチュートリアルに進んで、SPA から保護された Web API へのアクセスを許可します。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure AD B2C を使用して SPA から ASP.NET Core Web API へのアクセスを許可する](tutorial-single-page-app-webapi.md)
+> [チュートリアル:シングルページ アプリケーションから Web API へのアクセスを保護および許可する >](tutorial-single-page-app-webapi.md)

@@ -3,17 +3,17 @@ title: Azure Cost Management のスコープを理解して使用する
 description: この記事では、Azure で使用できる課金スコープとリソース管理スコープの概要、およびこれらのスコープを Cost Management と API で使用する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: bbed4209d26fe32f95b93b2c7411e1ab74f03ede
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ebae9d1c66a721926ca07b21059ec57b05b99a0f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80131357"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877934"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -26,6 +26,10 @@ ms.locfileid: "80131357"
 - クラウド サービス (コストやポリシー ガバナンスなど)
 
 スコープは、お客様が課金データの管理、請求書の表示、およびアカウント全般の管理を行う場所であり、支払い専用のロールを持ちます。 課金とアカウントに関するロールは、[Azure RBAC](../../role-based-access-control/overview.md) を使用するリソース管理用のロールとは別々に管理されます。 アクセス制御の違いを含め、各スコープを明確に区別するために、両者をそれぞれ "_課金スコープ_" および "_RBAC スコープ_" と呼びます。
+
+スコープの詳細については、[Cost Management の階層の設定](https://www.youtube.com/watch?v=n3TLRaYJ1NY)に関する動画をご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
+
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
 
 ## <a name="how-cost-management-uses-scopes"></a>Cost Management でのスコープの使用方法
 
@@ -71,7 +75,7 @@ Cost Management 共同作成者は、最低限の特権を持つ推奨ロール�
 
 Enterprise Agreement (EA) の課金アカウント (加入契約とも呼ばれます) には、次のスコープがあります。
 
-- [**課金アカウント**](../manage/view-all-accounts.md) -EA 加入契約を表します。 請求書はこのスコープで生成されます。 使用量ベースではない購入 (Marketplace や予約など) は、このスコープでのみ表示されます。 これらは、部門や登録アカウントでは表示されません。
+- [**課金アカウント**](../manage/view-all-accounts.md) -EA 加入契約を表します。 請求書はこのスコープで生成されます。 使用量ベースではない購入 (Marketplace や予約など) は、このスコープでのみ表示されます。 これらは、部門や登録アカウントでは表示されません。 予約の使用量は、他すべての使用量と共に、個々のリソースに適用されます。 使用量は、課金アカウント内のサブスクリプションまでロールアップされます。 各リソースに分類された予約コストを確認するには、コスト分析で**償却コスト**の表示に切り替えます。
 
     リソースの種類: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
 - **部門** - 任意の登録アカウントをグループ化したものです。

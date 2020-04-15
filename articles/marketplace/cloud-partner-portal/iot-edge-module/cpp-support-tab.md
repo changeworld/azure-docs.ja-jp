@@ -5,18 +5,21 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 439de17ef9eb9c0c2c264884652236d47600b8ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45304e12bf959cb1f695384535360af283ee3f10
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286508"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981870"
 ---
 # <a name="iot-edge-module-support-tab"></a>IoT Edge モジュールの [サポート] タブ
 
-**[新しいプラン]** ページの **[サポート]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定します。  [サポート] フォームには、 **[Engineering Contact]\(エンジニアリング連絡先\)** 、 **[カスタマー サポート]** 、 **[サポート URL]** の各入力領域があります。 フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。
+>[!Important]
+>2020 年 4 月 13 日以降、IoT Edge モジュールのパートナー センターへの移行管理が開始されます。 移行後は、パートナー センターでオファーを作成および管理します。 「[IoT Edge モジュール オファーを作成する](https://aka.ms/AzureCreateIoT)」の手順に従い、移行後のオファーを管理します。
+
+**[新しいプラン]** ページの **[サポート]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定します。  サポート フォームには、次の入力領域が用意されています。**Engineering Contact (エンジニアリングの連絡先)** 、**Customer Support (カスタマー サポート)** 、および **Support Urls (サポート URL)** 。 フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。
 
 ![IoT Edge モジュールの [新しいプラン] フォームの [サポート] タブ](./media/iot-edge-module-support-tab.png)
 

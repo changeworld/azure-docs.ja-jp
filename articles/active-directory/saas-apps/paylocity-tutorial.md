@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6684df42971b91975f6a7f5aeded9326cef3f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d2324343a31c3f3930975eea47659d023b9bbb94
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72969714"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667603"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Paylocity の統合
 
@@ -45,6 +44,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Paylocity では、**SP と IDP** によって開始される SSO がサポートされます
+
+* Paylocity を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 ## <a name="adding-paylocity-from-the-gallery"></a>ギャラリーから Paylocity を追加する
 
@@ -82,8 +83,6 @@ Paylocity で Azure AD SSO を構成してテストするには、次の構成�
 
 1. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
 
-    ![[Paylocity のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
-
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://access.paylocity.com/`」と入力します。
@@ -98,13 +97,24 @@ Paylocity で Azure AD SSO を構成してテストするには、次の構成�
 
     | 名前 |  ソース属性|
     | ---------------| --------------- |
-    | PartnerID | <"PartnerID"> |
-    | PaylocityUser | <"PaylocityUser"> |
-    | PaylocityEntity | <"PaylocityEntity"> |
+    | PartnerID | `P8000010` |
+    | PaylocityUser | `user.mail`|
+    | PaylocityEntity | < `PaylocityEntity` > |
+
+    > [!NOTE]
+    > PaylocityEntity は Paylocity の会社 ID です。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
+
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**編集アイコン**をクリックします。
+
+    ![SAML 署名証明書の編集](./media/paylocity-tutorial/edit-samlassertion.png)
+
+1. **[証明書オプション]** で **[SAML 応答とアサーションへの署名]** を選択し、 **[保存]** をクリックします。
+
+    ![SAML 署名証明書の編集](./media/paylocity-tutorial/saml-assertion.png)
 
 1. **[Paylocity の設定]** セクションで、要件に基づいて適切な URL をコピーします。
 
@@ -163,3 +173,7 @@ Paylocity で Azure AD SSO を構成してテストするには、次の構成�
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD を使用した Paylocity をお試しください](https://aad.portal.azure.com/)
+
+* [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+* [高度な可視性と制御によって Paylocity を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

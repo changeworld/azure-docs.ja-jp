@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: f74e3ea3d20ad2666b434e009cf62add6f88d200
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4604bfe7c815f79733f99a1a3727e4c68527e7ec
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218685"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656129"
 ---
 # <a name="try-the-speech-service-for-free"></a>Speech Service を無料で試す
 
@@ -97,4 +97,4 @@ Speech Service リソース (無料または有料レベル) を Azure アカウ
 
 > [!div class="nextstepaction"]
 > [クイック スタート: C# で音声を認識する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [Speech SDK サンプル](speech-sdk.md#get-the-samples)
+> [Speech SDK サンプル](speech-sdk.md#sample-source-code)

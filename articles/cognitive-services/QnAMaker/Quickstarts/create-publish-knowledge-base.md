@@ -3,12 +3,12 @@ title: クイック スタート:ナレッジ ベースの作成、トレーニ�
 description: QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この記事には、単純な FAQ Web ページから QnA Maker ナレッジ ベースを作成して、QnA Maker に関する質問に答える例が含まれています。
 ms.topic: conceptual
 ms.date: 02/08/2020
-ms.openlocfilehash: b1f80006e2dc72b5b623f4c29c093c734dc1efea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219017"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756829"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>クイック スタート:QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
@@ -135,7 +135,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 ## <a name="what-did-you-accomplish"></a>ここで行ったこと
 
-新しいナレッジ ベースを作成してそこにパブリック URL を追加し、独自の QnA セットを追加しました。また、ナレッジ ベースをトレーニング、テストして、発行しました。
+新しいナレッジ ベースを作成してそこにパブリック URL を追加し、独自の QnA ペアを追加しました。また、ナレッジ ベースをトレーニング、テストして、発行しました。
 
 ナレッジ ベースの発行後、ボットを作成し、テストしました。
 

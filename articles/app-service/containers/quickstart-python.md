@@ -2,16 +2,16 @@
 title: クイック スタート:Linux Python アプリを作成する
 description: App Service で Linux コンテナーに初めての Python アプリをデプロイして、Azure App Service での Linux アプリの使用を開始します。
 ms.topic: quickstart
-ms.date: 10/22/2019
+ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 9cc314edf35d6a327522ed49fcc0c7798c7dcf63
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 63daecca710e0e4d7b3326cea59c0c025c24f619
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80045664"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811161"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
 
@@ -24,7 +24,7 @@ IDE を使用してアプリをデプロイする場合は、[Visual Studio Code
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3.7</a> (Python 3.6 もサポートされています)
 - <a href="https://git-scm.com/downloads" target="_blank">Git</a>
-- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a>
+- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 以降。 バージョンを確認するには `az --version` を実行します。
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
@@ -98,39 +98,44 @@ az login
 
 [`az webapp up`](/cli/azure/webapp#az-webapp-up) コマンドを実行すると、App Service 上に Web アプリが作成され、コードがデプロイされます。
 
-サンプル コードが含まれている *python-docs-hello-world* フォルダーで、次の `az webapp up` コマンドを実行します。 `<app-name>` を、グローバルに一意であるアプリ名に置き換えてください ("*有効な文字は、`a-z`、`0-9`、および `-` です*")。 また、`<location-name>` を、**centralus**、**eastasia**、**westeurope**、**koreasouth**、**brazilsouth**、**centralindia** などの Azure リージョンに置き換えてください。 ([`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。)
+サンプル コードが含まれている *python-docs-hello-world* フォルダーで、次の `az webapp up` コマンドを実行します。 `<app-name>` を、グローバルに一意であるアプリ名に置き換えてください ("*有効な文字は、`a-z`、`0-9`、および `-` です*")。
 
 
 ```azurecli
-az webapp up --sku F1 -n <app-name> -l <location-name>
+az webapp up --sku F1 -n <app-name>
 ```
 
-このコマンドの実行が完了するまでに、数分かかる場合があります。 実行中、次の例のような情報が表示されます。
+`--sku F1` 引数を使用すると、Free 価格レベルで Web アプリが作成されます。 この引数を省略すると、代わりに Premium レベルを使用することができます。その場合、時間単位のコストが発生します。
 
-```output
-The behavior of this command has been altered by the following extension: webapp
+オプションで引数 `-l <location-name>` を含めることができます。ここで、`<location_name>` は、**centralus**、**eastasia**、**westeurope**、**koreasouth**、**brazilsouth**、**centralindia** などの Azure リージョンです。 [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。
+
+`az webapp up` コマンドの実行が完了するまでに、数分かかる場合があります。 実行中、次の例のような情報が表示されます。ここで、`<app_name>` は、前に入力した名前です。
+
+<pre>
 Creating Resource group 'appsvc_rg_Linux_centralus' ...
 Resource group creation complete
 Creating App service plan 'appsvc_asp_Linux_centralus' ...
 App service plan creation complete
 Creating app '<app-name>' ....
-Webapp creation complete
-Creating zip with contents of dir /home/username/quickstart/python-docs-hello-world ...
-Preparing to deploy contents to app.
-All done.
+Configuring default logging for the app, if not already enabled
+Creating zip with contents of dir D:\Examples\python-docs-hello-world ...
+Getting scm site credentials for zip deployment
+Starting zip deployment. This operation can take a while to complete ...
+Deployment endpoint responded with status code 202
+You can launch the app at http://<app-name>.azurewebsites.net
 {
-  "app_url": "https:/<app-name>.azurewebsites.net",
-  "location": "Central US",
+  "URL": "http://<app-name>.net",
+  "appserviceplan": "appsvc_asp_Linux_centralus",
+  "location": "eastus",
   "name": "<app-name>",
   "os": "Linux",
-  "resourcegroup": "appsvc_rg_Linux_centralus ",
-  "serverfarm": "appsvc_asp_Linux_centralus",
-  "sku": "BASIC",
-  "src_path": "/home/username/quickstart/python-docs-hello-world ",
-  "version_detected": "-",
-  "version_to_create": "python|3.7"
+  "resourcegroup": "appsvc_rg_Linux_centralus",
+  "runtime_version": "python|3.7",
+  "runtime_version_detected": "-",
+  "sku": "FREE",
+  "src_path": "D:\\Examples\\python-docs-hello-world"
 }
-```
+</pre>
 
 [!INCLUDE [AZ Webapp Up Note](../../../includes/app-service-web-az-webapp-up-note.md)]
 
@@ -146,20 +151,23 @@ Python サンプル コードによって、App Service 内で、組み込みの
 
 ## <a name="redeploy-updates"></a>更新の再デプロイ
 
-任意のコード エディターで *application.py* を開き、最後の行の `return` ステートメントを、以下のコードと一致するように変更します。 `print` ステートメントがここに含まれているのは、次のセクションで使用するログ出力を生成するためです。 
+好みのコード エディターで *application.py* を開き、`hello` 関数を次のように更新します。 この変更では、次のセクションで使用するログ出力を生成するための `print` ステートメントを追加しています。 
 
 ```python
-print("Handling request to home page.")
-return "Hello Azure!"
+def hello():
+    print("Handling request to home page.")
+    return "Hello Azure!"
 ```
 
 変更内容を保存し、エディターを終了します。 
 
-次の `az webapp up` コマンドを使用して、アプリを再デプロイします。アプリを最初にデプロイしたときに使用したのと同じコマンドを使用し、`<app-name>` と `<location-name>` は前に使用したのと同じ名前に置き換えます。 
+`az webapp up` コマンドを使用してアプリを再デプロイします。
 
 ```azurecli
-az webapp up --sku F1 -n <app-name> -l <location-name>
+az webapp up
 ```
+
+このコマンドでは、 *.azure/config* ファイルにキャッシュされている、アプリ名、リソース グループ、App Service プランなどの値を使用します。
 
 デプロイが完了したら、`http://<app-name>.azurewebsites.net` が開かれているブラウザー ウィンドウに戻り、ページを更新します。これにより、変更されたメッセージが表示されます。
 
@@ -172,24 +180,18 @@ az webapp up --sku F1 -n <app-name> -l <location-name>
 
 アプリ、およびそれを実行するコンテナー内から生成されたコンソール ログに、アクセスすることができます。 ログには、`print` ステートメントを使って生成されたすべての出力が含まれます。
 
-まず、ターミナルで次のコマンドを実行して、コンテナーのログ記録を有効にします。`<app-name>` は使用するアプリの名前に置き換え、`<resource-group-name>` は、使用した `az webapp up` コマンドの出力に示されているリソース グループの名前 ("appsvc_rg_Linux_centralus" など) に置き換えます。
+ログをストリーム配信するには、次のコマンドを実行します。
 
 ```azurecli
-az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
-```
-
-コンテナーのログ記録が有効になったら、次のコマンドを実行して、ログのストリームを表示します。
-
-```azurecli
-az webapp log tail --name <app-name> --resource-group <resource-group-name>
+az webapp log tail
 ```
 
 ブラウザーでアプリを更新して、コンソール ログを生成します。これにより、次のテキストのような行が追加されます。 すぐに出力が表示されない場合は、30 秒後にもう一度お試しください。
 
-```output
-2019-10-23T12:40:03.815574424Z Handling request to home page.
-2019-10-23T12:40:03.815602424Z 172.16.0.1 - - [23/Oct/2019:12:40:03 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.63 Safari/537.36 Edg/78.0.276.19"
-```
+<pre>
+2020-04-03T22:54:04.236405938Z Handling request to home page.
+2020-04-03T22:54:04.236497641Z 172.16.0.1 - - [03/Apr/2020:22:54:04 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.83 Safari/537.36 Edg/81.0.416.41"
+</pre>
 
 `https://<app-name>.scm.azurewebsites.net/api/logs/docker` で、ブラウザーからログ ファイルを検査することもできます。
 
@@ -213,7 +215,7 @@ App Service のメニューには、アプリを構成するためのさまざ�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-前の手順では、リソース グループ内に Azure リソースを作成しました。 リソース グループには、お客様の場所に応じて "appsvc_rg_Linux_CentralUS" のような名前が付いています。 無料の F1 レベル以外の App Service SKU を使用する場合は、これらのリソースによって継続的なコストが発生します。
+前の手順では、リソース グループ内に Azure リソースを作成しました。 リソース グループには、お客様の場所に応じて "appsvc_rg_Linux_CentralUS" のような名前が付いています。 無料の F1 レベル以外の App Service SKU を使用する場合は、これらのリソースによって継続的なコストが発生します (「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/linux/)」を参照してください)。
 
 今後これらのリソースを必要とする予定がない場合は、次のコマンドを実行して、リソース グループを削除します。`<resource-group-name>` は、`az webapp up` コマンドの出力に示されているリソース グループ ("appsvc_rg_Linux_centralus" など) に置き換えます。 このコマンドは、完了するまでに少し時間がかかる場合があります。
 

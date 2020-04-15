@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 24aa3462aef4f719e93d17389ff342084f6c7864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668759"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520736"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -76,7 +76,7 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
 | --- | --- |
 | 2 | omsadmin スクリプトに提供されたオプションが無効です。 使用方法については `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` を実行してください。 |
 | 3 | omsadmin スクリプトに提供された構成が無効です。 使用方法については `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` を実行してください。 |
-| 4 | omsadmin スクリプトに提供されたプロキシが無効です。 プロキシを確認し、[HTTP プロキシの使用方法に関するドキュメント](log-analytics-agent.md#network-firewall-requirements)を参照してください。 |
+| 4 | omsadmin スクリプトに提供されたプロキシが無効です。 プロキシを確認し、[HTTP プロキシの使用方法に関するドキュメント](log-analytics-agent.md#firewall-requirements)を参照してください。 |
 | 5 | Azure Monitor から受信された 403 HTTP エラー。 詳細については、omsadmin スクリプトの完全な出力を参照してください。 |
 | 6 | Azure Monitor から受信された 200 以外の HTTP エラー。 詳細については、omsadmin スクリプトの完全な出力を参照してください。 |
 | 7 | Azure Monitor に接続できません。 詳細については、omsadmin スクリプトの完全な出力を参照してください。 |
@@ -157,15 +157,8 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
 2. 「[プロキシ設定を更新する](agent-manage.md#update-proxy-settings)」セクションを参照して、プロキシ サーバー経由で通信するようにエージェントを正しく構成したことを確認します。    
-* 次の Azure Monitor エンドポイントがホワイトリストに登録されていることを再確認します。
 
-    |エージェントのリソース| Port | Direction |
-    |------|---------|----------|  
-    |*.ods.opinsights.azure.com | ポート 443| 受信および送信 |  
-    |*.oms.opinsights.azure.com | ポート 443| 受信および送信 |  
-    |*.blob.core.windows.net | ポート 443| 受信および送信 |  
-
-    Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook または管理ソリューションを使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 
+3. Azure Monitor の[ネットワーク ファイアウォール要件](log-analytics-agent.md#firewall-requirements)の一覧で示されているエンドポイントが許可リストに正しく追加されていることを再確認します。 Azure Automation を使用する場合に必要なネットワーク構成手順も、上記のリンクで示されています。
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>問題点:オンボードしようとすると 403 エラーが発生する
 

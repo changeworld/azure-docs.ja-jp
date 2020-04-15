@@ -1,22 +1,22 @@
 ---
 title: Bing Web Search API とは
 titleSuffix: Azure Cognitive Services
-description: Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTful サービスです。 検索結果は、Web ページ、画像、ビデオ、ニュース、翻訳などを含むように簡単に構成できます。 結果は JSON として提供され、検索の関連性と Bing Web Search のサブスクリプションに基づいています。
+description: Bing Web Search API は、Web サービスのクエリにすぐに回答する RESTful サービスです。 Web ページ、画像、ビデオ、ニュースなどを含むように結果を構成します。 結果は JSON として提供され、検索の関連性と Bing Web Search のサブスクリプションに基づいています。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a7b2627b5837a124ebbcd76783bb49679cbe6313
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5ea98a4ef759937c5962dc86f0384051b8fa0bb3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77650284"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477473"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Bing Web Search API とは
 
@@ -26,7 +26,7 @@ Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTf
 
 しくみを確認するには、 [Bing Web Search API のデモ](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)を試してください。
 
-## <a name="features"></a>[機能]  
+## <a name="features"></a>特徴  
 
 Bing Web Search では、インスタント アンサーにアクセスできるだけではありません。 ユーザーの検索結果をカスタマイズできるさまざまな機能も利用できます。
 

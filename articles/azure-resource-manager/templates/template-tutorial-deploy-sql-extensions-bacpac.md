@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e65ebbfa0971bf2156165b55ca18eee3cc74bc9
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 83108c056035b16d26343d82c721b275ebcad0c5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239277"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754330"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用して SQL BACPAC ファイルをインポートする
 
-Azure SQL Database 拡張機能を使用して Azure Resource Manager (ARM) テンプレートで BACPAC ファイルをインポートする方法について説明します。 デプロイの成果物は、デプロイを完了するために必要なメイン テンプレート ファイルに加えたすべてのファイルです。 この BACPAC ファイルが成果物です。 
+Azure SQL Database 拡張機能を使用して Azure Resource Manager (ARM) テンプレートで BACPAC ファイルをインポートする方法について説明します。 デプロイの成果物は、デプロイを完了するために必要なメイン テンプレート ファイルに加えたすべてのファイルです。 この BACPAC ファイルが成果物です。
 
 このチュートリアルでは、テンプレートを作成して Azure SQL サーバー、SQL データベースをデプロイし、BACPAC ファイルをインポートします。 ARM テンプレートを使用して Azure 仮想マシン拡張機能をデプロイする方法については、「[チュートリアル: ARM テンプレートを使用して仮想マシン拡張機能をデプロイする](./template-tutorial-deploy-vm-extensions.md)」を参照してください。
 
@@ -255,7 +255,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、SQL サーバーと SQL データベースをデプロイして、BACPAC ファイルをインポートしました。 BACPAC ファイルは Azure ストレージ アカウントに格納されます。 URL が与えられたユーザーは誰でもファイルにアクセスできます。 BACPAC ファイル (成果物) をセキュリティで保護する方法については次を参照してください。
+このチュートリアルでは、SQL サーバーと SQL データベースをデプロイして、BACPAC ファイルをインポートしました。 テンプレート デプロイのトラブルシューティング方法については、次のトピックを参照してください。
 
 > [!div class="nextstepaction"]
-> [成果物のセキュリティ保護](./template-tutorial-secure-artifacts.md)
+> [ARM テンプレート デプロイのトラブルシューティング](./template-tutorial-troubleshoot.md)
