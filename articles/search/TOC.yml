@@ -198,6 +198,8 @@
               href: cognitive-search-custom-skill-python.md
             - name: 例 - Azure Functions
               href: cognitive-search-create-custom-skill-example.md
+            - name: 例 - Azure Form Recognizer
+              href: cognitive-search-custom-skill-form.md
             - name: 例 - コンテナー
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: 設計のヒント

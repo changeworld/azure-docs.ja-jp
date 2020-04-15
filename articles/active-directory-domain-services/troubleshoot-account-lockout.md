@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 04/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 29789f299f266c86d719d56cfbf8e262907f7264
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827090"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743451"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services マネージド ドメインでアカウントがロックアウトされる問題を解決する
 
@@ -33,11 +33,11 @@ ms.locfileid: "71827090"
 
 ### <a name="fine-grained-password-policy"></a>細かい設定が可能なパスワード ポリシー
 
-細かい設定が可能なパスワード ポリシー (FGPP) を使用すると、パスワードおよびアカウント ロックアウトのポリシーに対して、ドメイン内の異なるユーザーに特定の制限を適用できます。 FGPP は、Azure AD DS で作成されたユーザーにのみ影響します。 Azure AD から Azure AD DS マネージド ドメインに同期されたクラウド ユーザーとドメイン ユーザーは、パスワード ポリシーの影響を受けません。
+細かい設定が可能なパスワード ポリシー (FGPP) を使用すると、パスワードおよびアカウント ロックアウトのポリシーに対して、ドメイン内の異なるユーザーに特定の制限を適用できます。 FGPP は、Azure AD DS マネージド ドメイン内のユーザーにのみ影響します。 Azure AD から Azure AD DS マネージド ドメインに同期されたクラウド ユーザーとドメイン ユーザーは、Azure AD DS 内のパスワード ポリシーの影響のみを受けます。 Azure AD またはオンプレミスのディレクトリ内のアカウントは影響を受けません。
 
 ポリシーは、Azure AD DS マネージド ドメイン内のグループの関連付けを通じて配布されます。すべての変更が、次回のユーザーのサインイン時に適用されます。 ポリシーを変更しても、既にロックアウトされているユーザー アカウントのロックが解除されることはありません。
 
-細かい設定が可能なパスワード ポリシーの詳細については、[パスワードとアカウント ロックアウト ポリシーの構成][configure-fgpp]に関するページを参照してください。
+細かい設定が可能なパスワード ポリシーと、Azure AD DS で直接作成されたユーザーと Azure AD から同期されたユーザーの違いの詳細については、「[パスワードとアカウントのロックアウト ポリシーの構成][configure-fgpp]」を参照してください。
 
 ## <a name="common-account-lockout-reasons"></a>アカウント ロックアウトの一般的な理由
 
@@ -54,7 +54,7 @@ ms.locfileid: "71827090"
 
 ## <a name="troubleshoot-account-lockouts-with-security-audits"></a>セキュリティ監査によるアカウント ロックアウトのトラブルシューティング
 
-アカウント ロックアウトがいつ発生し、どこでロックアウトが発生するかトラブルシューティングするには、[Azure AD DS 向けセキュリティ監査 (現在のところ、プレビュー段階) を有効にします][security-audit-events]。 監査イベントのキャプチャは、この機能を有効にした時点からに限られます。 理想的には、トラブルシューティングするアカウント ロックアウト問題が発生する*前に*セキュリティ監査を有効にしてください。 ユーザー アカウントでロックアウト問題が繰り返される場合、それが次に発生するときのための準備としてセキュリティ監査を有効にできます。
+アカウント ロックアウトがいつ発生し、どこでロックアウトが発生するかトラブルシューティングするには、[Azure AD DS 向けセキュリティ監査を有効にします][security-audit-events]。 監査イベントのキャプチャは、この機能を有効にした時点からに限られます。 理想的には、トラブルシューティングするアカウント ロックアウト問題が発生する*前に*セキュリティ監査を有効にしてください。 ユーザー アカウントでロックアウト問題が繰り返される場合、それが次に発生するときのための準備としてセキュリティ監査を有効にできます。
 
 セキュリティ監査を有効にすると、次のサンプル クエリから、*アカウント ロックアウト イベント* コード *4740* をレビューする方法が示されます。
 
@@ -84,7 +84,7 @@ AADDomainServicesAccountManagement
 | sort by TimeGenerated asc
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 細かい設定が可能なパスワード ポリシーでアカウント ロックアウトのしきい値を調整する方法については、[パスワードとアカウント ロックアウト ポリシーの構成][configure-fgpp]に関するページを参照してください。
 
