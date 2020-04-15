@@ -6,12 +6,12 @@ metadata:
   title: Microsoft Azure コンテナー サービスのドキュメント | Microsoft Docs
   description: Azure コンテナー サービスを使用して、クラウドベースのコンテナー アプリケーションを管理および開発する方法について説明します。
   ms.topic: hub-page
-  ms.openlocfilehash: 740b95a28e8437defb1929003a74c53cacdcaa70
-  ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+  ms.openlocfilehash: f4d76c0f2ddbecd386a3e3b9d3de370f19b86fee
+  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/01/2020
-  ms.locfileid: "80478143"
+  ms.lasthandoff: 04/13/2020
+  ms.locfileid: "81259019"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -67,10 +67,10 @@ conceptualContent:
     - url: /azure/app-service/app-service-web-get-started-windows-container
       itemType: get-started
       text: カスタム Windows コンテナーを実行する
-    - url: /azure/app-service/quickstart-docker
+    - url: /azure/app-service/containers/quickstart-docker
       itemType: quickstart
       text: カスタム Linux コンテナーを実行する
-    - url: /azure/app-service/quickstart-multi-container
+    - url: /azure/app-service/containers/quickstart-multi-container
       itemType: quickstart
       text: Linux 複数コンテナー アプリを作成する
     footerLink:
@@ -87,7 +87,7 @@ conceptualContent:
     - url: /azure/container-instances/container-instances-using-azure-container-registry
       itemType: how-to-guide
       text: Azure Container Registry からのイメージのデプロイ
-    - url: /azure/container-registry/container-registry-quick-task-cli
+    - url: /azure/container-registry/container-registry-quickstart-task-cli
       itemType: get-started
       text: Azure CLI を使用したイメージのビルド、プッシュ、実行
     footerLink:
@@ -129,7 +129,7 @@ conceptualContent:
     - url: /azure/container-registry/container-registry-get-started-azure-cli
       itemType: get-started
       text: Azure CLI を使用したプライベート コンテナー レジストリの作成
-    - url: /azure/container-registry/container-registry-quick-task-cli
+    - url: /azure/container-registry/container-registry-quickstart-task-cli
       itemType: get-started
       text: Azure CLI を使用したイメージのビルド、プッシュ、実行
     footerLink:

@@ -241,7 +241,7 @@
               href: vmware-azure-set-up-replication.md
             - name: モビリティ サービスをデプロイする
               items:
-                - name: モビリティ サービスの概要とインストール
+                - name: モビリティ サービスのインストールについて
                   href: vmware-physical-mobility-service-overview.md
                 - name: プッシュ インストールの準備
                   href: vmware-azure-install-mobility-service.md
@@ -433,7 +433,7 @@
               href: hyper-v-vmm-failover-failback.md
             - name: セカンダリ サイトへのディザスター リカバリーのパフォーマンス スケール テスト
               href: hyper-v-vmm-performance-results.md
-- name: Automation
+- name: オートメーション
   items:
     - name: PowerShell を使用して Azure VM のディザスター リカバリーを設定する
       href: azure-to-azure-powershell.md

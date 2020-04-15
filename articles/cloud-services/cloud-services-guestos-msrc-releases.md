@@ -10,40 +10,68 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 02/20/2020
+ms.date: 04/3/2020
 ms.author: raiye
-ms.openlocfilehash: 5411e47494668341a952a97268affe4157e85a9a
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 758f0e3198ef83635ead3f9bd8565cd64f9d413c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506032"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656344"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
 
-## <a name="february-2020-guest-os"></a>2020 年 2 月のゲスト OS
-
->[!NOTE]
->2 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 2 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。
+## <a name="march-2020-guest-os"></a>2020 年 3 月のゲスト OS
 
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
 | --- | --- | --- | --- | --- |
-|  Rel 20-02 |  [4537767]  |  Internet Explorer | 2.85、3.82、4.75 | 2020 年 2 月 11 日 |
-|  Rel 20-02 |  [4537813]  |  Windows セキュリティ | 2.85 | 2020 年 2 月 11 日 |
-|  Rel 20-02 |  [4537794]  |  Windows セキュリティ | 3.82 | 2020 年 2 月 11 日 |
-|  Rel 20-02 |  [4537803]  |  Windows セキュリティ | 4.75 | 2020 年 2 月 11 日 |
-|  Rel 20-02 |  [4537764]  |  最新の累積的な更新プログラム (LCU) | 5.4 | 2020 年 2 月 11 日 |
-|  Rel 20-02 |  [4532691]  |  最新の累積的な更新プログラム (LCU) | 6.16 | 2020 年 2 月 11 日 |
-|  Rel 20-02 |  [4534310]  |  マンスリー ロールアップ | 2.85 | 2020 年 1 月 14 日 |
-|  Rel 20-02 |  [4536952]  |  サービス スタック更新プログラム (SSU) | 2.85 | 2020 年 1 月 14 日 |
-|  Rel 20-02 |  [4537829]  |  サービス スタック更新プログラム (SSU) | 2.85 | 2020 年 2 月 11 日 |
-|  Rel 20-02 |  [4538483]  |  拡張セキュリティ更新プログラム (ESU) | 2.85 | 2020 年 2 月 11 日 |
-|  Rel 20-02 |  [4537820]  |  マンスリー ロールアップ | 2.85 | 2020 年 2 月 11 日 |
-|  Rel 20-02 |  [4537759]  |  セキュリティ更新プログラム (Flash) | 3.82、4.75 | 2020 年 2 月 11 日 |
-|  Rel 20-02 |  [4534283]  |  マンスリー ロールアップ | 3.82 | 2020 年 1 月 14 日 |
-|  Rel 20-02 |  [4532920]  |  サービス スタック更新プログラム (SSU) | 3.82 | 2020 年 12 月 10 日 |
-|  Rel 20-02 |  [4534297]  |  セキュリティ以外 | 4.75 | 2020 年 1 月 14 日 |
+|  Rel 20-03  |  [4541500]  |  Windows セキュリティ  | [2.96] | 2020 年 3 月 10 日 |
+|  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2.96]、[3.83]、[4.76] | 2020 年 3 月 10 日 |
+|  Rel 20-03  |  [4540694]  |  Windows セキュリティ  | [3.83] | 2020 年 3 月 10 日 |
+|  Rel 20-03  |  [4541505]  |  Windows セキュリティ  | [4.76] | 2020 年 3 月 10 日 |
+|  Rel 20-03  |  [4540670]  |  最新の累積的な更新プログラム (LCU)  | [5.41] | 2020 年 3 月 10 日 |
+|  Rel 20-03  |  [4538461]  |  最新の累積的な更新プログラム (LCU)  | [6.17] | 2020 年 3 月 10 日 |
+|  Rel 20-03  |  [4537820]  |  マンスリー ロールアップ  | [2.96] | 2020 年 2 月 11 日 |
+|  Rel 20-03  |  [4537814]  |  マンスリー ロールアップ  | [3.83] | 2020 年 2 月 11 日 |
+|  Rel 20-03  |  [4537821]  |  マンスリー ロールアップ  | [4.76] | 2020 年 2 月 11 日 |
+
+[4541500]: https://support.microsoft.com/kb/4541500 
+[4540671]: https://support.microsoft.com/kb/4540671 
+[4540694]: https://support.microsoft.com/kb/4540694 
+[4541505]: https://support.microsoft.com/kb/4541505 
+[4540670]: https://support.microsoft.com/kb/4540670 
+[4538461]: https://support.microsoft.com/kb/4538461 
+[4537820]: https://support.microsoft.com/kb/4537820  
+[4537814]: https://support.microsoft.com/kb/4537814 
+[4537821]: https://support.microsoft.com/kb/4537821 
+
+[6.17]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.41]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.76]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.83]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.96]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+
+
+## <a name="february-2020-guest-os"></a>2020 年 2 月のゲスト OS
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-02  |  [4537767]  |  Internet Explorer  |  [2.95]、[3.82]、[4.75]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4537813]  |  Windows セキュリティ  |  [2.95]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4537794]  |  Windows セキュリティ  |  [3.82]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4537803]  |  Windows セキュリティ  |  [4.75]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4537764]  |  最新の累積的な更新プログラム (LCU)  |  [5.40]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4532691]  |  最新の累積的な更新プログラム (LCU)  |  [6.16]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4534310]  |  マンスリー ロールアップ  |  [2.95]  |  2020 年 1 月 14 日  |
+|  Rel 20-02  |  [4536952]  |  サービス スタック更新プログラム (SSU)  |  [2.95]  |  2020 年 1 月 14 日  |
+|  Rel 20-02  |  [4537829]  |  サービス スタック更新プログラム (SSU)  |  [2.95]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4538483]  |  拡張セキュリティ更新プログラム (ESU)  |  [2.95]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4537820]  |  マンスリー ロールアップ  |  [2.95]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4537759]  |  セキュリティ更新プログラム (Flash)  |  [3.82]、[4.75]  |  2020 年 2 月 11 日  |
+|  Rel 20-02  |  [4534283]  |  マンスリー ロールアップ  |  [3.82]  |  2020 年 1 月 14 日  |
+|  Rel 20-02  |  [4532920]  |  サービス スタック更新プログラム (SSU)  |  [3.82]  |  2020 年 12 月 10 日  |
+|  Rel 20-02  |  [4534297]  |  セキュリティ以外  |  [4.75]  |  2020 年 1 月 14 日  |
 
 [4537767]: https://support.microsoft.com/kb/4537767
 [4537813]: https://support.microsoft.com/kb/4537813
@@ -60,6 +88,12 @@ ms.locfileid: "77506032"
 [4534283]: https://support.microsoft.com/kb/4534283
 [4532920]: https://support.microsoft.com/kb/4532920
 [4534297]: https://support.microsoft.com/kb/4534297
+
+[6.16]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.40]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.75]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.82]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.95]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="january-2020-guest-os"></a>2020 年 1 月のゲスト OS
@@ -2133,36 +2167,36 @@ ms.locfileid: "77506032"
 [3002657]: https://support.microsoft.com/kb/3002657
 [3035126]: https://support.microsoft.com/kb/3035126
 
-[3049563]: https://support.microsoft.com/kb/3049563
-[3057110]: https://support.microsoft.com/kb/3057110
-[3046002]: https://support.microsoft.com/kb/3046002
-[3057134]: https://support.microsoft.com/kb/3057134
-[3055642]: https://support.microsoft.com/kb/3055642
-[3057191]: https://support.microsoft.com/kb/3057191
-[3050514]: https://support.microsoft.com/kb/3050514
-[3057263]: https://support.microsoft.com/kb/3057263
-[3051768]: https://support.microsoft.com/kb/3051768
-[3061518]: https://support.microsoft.com/kb/3061518
+[3049563]:https://support.microsoft.com/kb/3049563
+[3057110]:https://support.microsoft.com/kb/3057110
+[3046002]:https://support.microsoft.com/kb/3046002
+[3057134]:https://support.microsoft.com/kb/3057134
+[3055642]:https://support.microsoft.com/kb/3055642
+[3057191]:https://support.microsoft.com/kb/3057191
+[3050514]:https://support.microsoft.com/kb/3050514
+[3057263]:https://support.microsoft.com/kb/3057263
+[3051768]:https://support.microsoft.com/kb/3051768
+[3061518]:https://support.microsoft.com/kb/3061518
 
-[3038314]: https://support.microsoft.com/kb/3038314
-[3042553]: https://support.microsoft.com/kb/3042553
-[3046306]: https://support.microsoft.com/kb/3046306
-[3046269]: https://support.microsoft.com/kb/3046269
-[3049576]: https://support.microsoft.com/kb/3049576
-[3046482]: https://support.microsoft.com/kb/3046482
-[3045711]: https://support.microsoft.com/kb/3045711
-[3048010]: https://support.microsoft.com/kb/3048010
-[3047234]: https://support.microsoft.com/kb/3047234
-[3045755]: https://support.microsoft.com/kb/3045755
-[3030377]: https://support.microsoft.com/kb/3030377
-[3039976]: https://support.microsoft.com/kb/3039976
+[3038314]:https://support.microsoft.com/kb/3038314
+[3042553]:https://support.microsoft.com/kb/3042553
+[3046306]:https://support.microsoft.com/kb/3046306
+[3046269]:https://support.microsoft.com/kb/3046269
+[3049576]:https://support.microsoft.com/kb/3049576
+[3046482]:https://support.microsoft.com/kb/3046482
+[3045711]:https://support.microsoft.com/kb/3045711
+[3048010]:https://support.microsoft.com/kb/3048010
+[3047234]:https://support.microsoft.com/kb/3047234
+[3045755]:https://support.microsoft.com/kb/3045755
+[3030377]:https://support.microsoft.com/kb/3030377
+[3039976]:https://support.microsoft.com/kb/3039976
 
-[3058515]: https://support.microsoft.com/kb/3058515
-[3033890]: https://support.microsoft.com/kb/3033890
-[3059317]: https://support.microsoft.com/kb/3059317
-[3057839]: https://support.microsoft.com/kb/3057839
-[3062577]: https://support.microsoft.com/kb/3062577
-[3063858]: https://support.microsoft.com/kb/3063858
+[3058515]:https://support.microsoft.com/kb/3058515
+[3033890]:https://support.microsoft.com/kb/3033890
+[3059317]:https://support.microsoft.com/kb/3059317
+[3057839]:https://support.microsoft.com/kb/3057839
+[3062577]:https://support.microsoft.com/kb/3062577
+[3063858]:https://support.microsoft.com/kb/3063858
 
 
 [archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx

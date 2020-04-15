@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 906ae2a970ce1d5b82302d0277ca45bd93c23011
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b56375388f6293d27bcd2f2548d8b20205a92b15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228835"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638027"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database でマネージド インスタンスを作成する方法
 
@@ -43,6 +43,7 @@ ms.locfileid: "79228835"
 
 - [トランザクション レプリケーション](replication-with-sql-database-managed-instance.md)では、マネージド インスタンス間でご利用のデータをレプリケートしたり、オンプレミスの SQL Server からマネージド インスタンスまたはその逆にデータをレプリケートしたりすることができます。 トランザクション レプリケーションの使用方法と構成方法の詳細については、このガイドを参照してください。
 - [脅威検出の構成](sql-database-managed-instance-threat-detection.md) – [脅威検出](sql-database-threat-detection-overview.md)は、SQL インジェクションや疑わしい場所からのアクセスなど、さまざまな潜在的な攻撃を検出する組み込みの Azure SQL Database 機能です。 このガイドでは、マネージド インスタンス用に[脅威検出](sql-database-threat-detection-overview.md)を有効にして構成する方法を学習できます。
+- [アラートの作成](sql-database-managed-instance-alerts.md)では、マネージド インスタンスの監視対象メトリック (CPU 使用率、ストレージ領域の消費量、IOPS など) に関するアラートを設定できます。 このガイドでは、マネージド インスタンスのアラートを有効にして構成する方法について説明します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,25 +4,25 @@ description: ここでは、Azure Multi-Factor Authentication 機能のレポー
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/30/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52d9f7a0b2a7cebefdb5ade8e16417043c5c83d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c5d5354f5bca7a4c9ab00066167ad19890536629
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425291"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653621"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のレポート
 
 Azure Multi-Factor Authentication は、Azure Portal からアクセスでき、個人や組織が使用できるいくつかのレポートを提供します。 次の表は使用できるレポートの一覧です。
 
-| レポート | Location | 説明 |
+| レポート | 場所 | 説明 |
 |:--- |:--- |:--- |
 | ユーザーのブロックの履歴 | [Azure AD] > [セキュリティ] > [MFA] > [ユーザーのブロック/ブロック解除] | ユーザーのブロックまたはブロック解除の要求履歴を表示します。 |
 | 利用状況と不正アクセス アラート | [Azure AD] > [サインイン数] | 全体的な利用状況、ユーザーの概要、およびユーザーの詳細に関する情報を提供します。また、指定した日付範囲の間に送信された不正アクセス アラートの履歴も提供します。 |
@@ -32,7 +32,7 @@ Azure Multi-Factor Authentication は、Azure Portal からアクセスでき、
 
 ## <a name="view-mfa-reports"></a>MFA レポートを表示する
 
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側で **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]** の順に選択します。
 3. 表示するレポートを選択します。
 
@@ -126,13 +126,13 @@ MFA のサインイン アクティビティ レポートから、次の情報�
 
 最初に、[MSOnline V1 PowerShell モジュール](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0)がインストールされていることを確認します。
 
-以下の PowerShell を使用して、MFA に登録しているユーザーを識別します。
+以下の PowerShell を使用して、MFA に登録しているユーザーを識別します。 この一連のコマンドでは、無効になっているユーザーは、Azure AD に対して認証を行うことができないため、除外されます。
 
-```Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName```
+```Get-MsolUser -All | Where-Object {$.StrongAuthenticationMethods -ne $null -and $.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName```
 
-以下の PowerShell を使用して、MFA に登録されていないユーザーを識別します。
+以下の PowerShell を使用して、MFA に登録されていないユーザーを識別します。 この一連のコマンドでは、無効になっているユーザーは、Azure AD に対して認証を行うことができないため、除外されます。
 
-```Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName```
+```Get-MsolUser -All | Where-Object {$.StrongAuthenticationMethods.Count -eq 0 -and $.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName```
 
 登録されているユーザーと出力方法を識別します。 
 

@@ -2,13 +2,13 @@
 title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
-ms.date: 02/24/2020
-ms.openlocfilehash: f7fefecddaf50feda247dd711505aef1b4f206f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 04/03/2020
+ms.openlocfilehash: 4200784e3018ec80d9fbbbc0d3680b6b0e6d2cb3
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356414"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656203"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -18,7 +18,14 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 
 ## <a name="managing-limits"></a>管理の制限
 
-制限を引き上げるまたは既定の制限を超えるクォータが必要な場合は、[オンライン カスタマー サポートに申請 (無料)](../templates/error-resource-quota.md) してください。 次の表に示されている上限の値を超える制限の引き上げはできません。 上限列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
+> [!NOTE]
+> 一部のサービスには、調整可能な制限があります。
+>
+> 調整可能な制限がサービスにない場合、以下の表では "**制限**" の見出しを使用します。 その場合、既定値と上限値は同じです。
+>
+> 制限を調整できる場合、表には "**既定の制限**" および "**最大制限**" の見出しが含まれます。 既定の制限を超えて制限を引き上げることはできますが、最大制限を超えることはできません。
+>
+> 制限を引き上げるまたは既定の制限を超えるクォータが必要な場合は、[オンライン カスタマー サポートに申請 (無料)](../templates/error-resource-quota.md) してください。
 
 [無料試用版サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0044p)は、制限およびクォータ引き上げの適用対象外です。 [無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p)をお持ちの場合は、[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)サブスクリプションにアップグレードしてください。 詳しくは、[無料試用版の従量課金制へのアップグレード](../../billing/billing-upgrade-azure-subscription.md)および[無料試用版サブスクリプションの FAQ](https://azure.microsoft.com/free/free-account-faq) に関する記事をご覧ください。
 
@@ -33,6 +40,12 @@ vCPU クォータを例に説明します。 vCPU のサポートでのクォー
 リソース名の制限については、 [Azureリソースに関する名前付け規則と制限事項](resource-name-rules.md)を参照してください。
 
 Resource Manager API の読み取りと書き込みの制限については、「[Resource Manager の要求のスロットル](request-limits-and-throttling.md)」を参照してください。
+
+### <a name="management-group-limits"></a>管理グループの制限
+
+[管理グループ](../../governance/management-groups/overview.md)には、以下の制限が適用されます。
+
+[!INCLUDE [management-group-limits](../../../includes/management-group-limits.md)]
 
 ### <a name="subscription-limits"></a>サブスクリプションの制限
 
@@ -231,7 +244,11 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 
 ## <a name="media-services-limits"></a>Media Services の制限
 
-[!INCLUDE [azure-mediaservices-limits](../../../includes/azure-mediaservices-limits.md)]
+[!INCLUDE [azure-mediaservices-limits](../../../includes/media-servieces-limits-quotas-constraints.md)]
+
+### <a name="media-services-v2-legacy"></a>Media Services v2 (レガシ)
+
+Media Services v2 (レガシ) に固有の制限については、「[Media Services v2 (レガシ)](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations)」を参照してください。
 
 ## <a name="mobile-services-limits"></a>Mobile Services の制限
 
@@ -308,7 +325,7 @@ SQL Database の制限については、[単一データベースの SQL Databas
 
 ## <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse の制限
 
-SQL Data Warehouse の制限については、[SQL Data Warehouse のリソース制限](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)に関する記事をご覧ください。
+SQL Data Warehouse の制限については、[SQL Data Warehouse のリソース制限](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)に関する記事をご覧ください。
 
 ## <a name="storage-limits"></a>ストレージの制限
 

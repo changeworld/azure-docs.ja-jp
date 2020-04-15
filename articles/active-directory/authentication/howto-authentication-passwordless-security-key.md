@@ -4,19 +4,19 @@ description: FIDO2 セキュリティ キーを使用した Azure AD へのパ�
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d5ff722d4a035113af8528ed8adb396b01c81eb
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: b8574fcdff12e61f7039174ed6297d0558a66dc4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77504951"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653931"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>パスワードなしのセキュリティ キー サインインを有効にする (プレビュー)
 
@@ -65,7 +65,7 @@ Hybrid Azure AD 参加済みデバイスでは、Windows 10 Insider Build 18945 
 1. まだしていない場合はサインインします。
 1. **[セキュリティ情報]** をクリックします。
    1. ユーザーが既に 1 つ以上の Azure Multi-Factor Authentication 方法を登録している場合は、FIDO2 セキュリティ キーをすぐに登録することができます。
-   1. どの Azure Multi-Factor Authentication 方法も登録していない場合は、いずれかを追加する必要があります。
+   1. 少なくとも 1 つの Azure 多要素認証方法を登録していない場合は、いずれかを追加する必要があります。
 1. **[方法の追加]** をクリックし、 **[セキュリティ キー]** を選択して、FIDO2 セキュリティ キーを追加します。
 1. **[USB デバイス]** または **[NFC デバイス]** を選択します。
 1. キーを準備し、 **[次へ]** を選択します。
@@ -97,7 +97,7 @@ Hybrid Azure AD 参加済みデバイスでは、Windows 10 Insider Build 18945 
 
 ### <a name="upn-changes"></a>UPN の変更
 
-Microsoft では、Hybrid Azure AD 参加済みデバイスと Azure AD 参加済みデバイスに対する、UPN の変更を可能にする機能のサポートに取り組んでいます。 ユーザーの UPN が変更された場合、その変更に対応するために FIDO2 セキュリティ キーを変更できなくなります。 解決策は、デバイスをリセットすることです。その場合、ユーザーを再登録する必要があります。
+Microsoft では、Hybrid Azure AD 参加済みデバイスと Azure AD 参加済みデバイスに対する、UPN の変更を可能にする機能のサポートに取り組んでいます。 ユーザーの UPN が変更されると、その変更に対応するために FIDO2 セキュリティ キーを変更することはできなくなります。 解決策は、デバイスをリセットすることです。その場合、ユーザーを再登録する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
