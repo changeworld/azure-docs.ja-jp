@@ -4,12 +4,12 @@ description: Kubernetes の基本のクラスターおよびワークロード�
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019c886aba1c8fe34211e73e4d960b14e79303b9
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229675"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617434"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -65,9 +65,9 @@ AKS は、専用の API サーバーや Scheduler などを備えたシングル
 
 ![Kubernetes ノードの Azure 仮想マシンとサポート対象リソース](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
-ノードの Azure VM サイズには、CPU 数、メモリ量、利用可能なストレージのサイズと種類 (高パフォーマンスの SSD や正規の HDD など) を定義します。 大容量の CPU およびメモリ、または高パフォーマンスのストレージを必要とするアプリケーションの需要を想定している場合は、それに沿ったノード サイズを計画してください。 また、需要に合わせて、AKS クラスター内のノード数をスケールアップすることも可能です。
+ノードの Azure VM サイズには、CPU 数、メモリ量、利用可能なストレージのサイズと種類 (高パフォーマンスの SSD や正規の HDD など) を定義します。 大容量の CPU およびメモリ、または高パフォーマンスのストレージを必要とするアプリケーションの需要を想定している場合は、それに沿ったノード サイズを計画してください。 また、需要に合わせて、AKS クラスター内のノード数をスケールアウトすることも可能です。
 
-AKS では、クラスター内のノードに対する VM イメージは現在、Ubuntu Linux または Windows Server 2019 に基づいています。 AKS クラスターを作成するか、またはノード数をスケールアップすると、Azure プラットフォームが、要求された数の VM を作成して構成します。 手動の構成を実行する必要はありません。 エージェント ノードは、標準の仮想マシンとして課金されるので、使用している VM サイズに対して付与されている割引 ([Azure の予約][reservation-discounts]を含む) は、自動的に適用されます。
+AKS では、クラスター内のノードに対する VM イメージは現在、Ubuntu Linux または Windows Server 2019 に基づいています。 AKS クラスターを作成するか、またはノード数をスケールアウトすると、Azure プラットフォームが、要求された数の VM を作成して構成します。 手動の構成を実行する必要はありません。 エージェント ノードは、標準の仮想マシンとして課金されるので、使用している VM サイズに対して付与されている割引 ([Azure の予約][reservation-discounts]を含む) は、自動的に適用されます。
 
 別のホスト OS、コンテナー ランタイムを使用する必要がある場合や、クラスター パッケージを組み入れる必要がある場合、[aks-engine][aks-engine] を使用して独自の Kubernetes クラスターをデプロイできます。 アップストリームの `aks-engine` リリースでは構成オプションに注目し、AKS クラスターで公式にサポートされる前にそれらを提供しています。 たとえば、Moby 以外のコンテナー ランタイムの使用を検討している場合、`aks-engine` を使用して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
 
@@ -96,7 +96,7 @@ kubectl describe node [NODE_NAME]
 
 1. Kubelet デーモンは、コンテナーの作成と終了を管理するために、すべての Kubernetes エージェント ノードにインストールされます。 AKS の既定では、このデーモンには、*memory.available<750Mi*という削除規則があります。つまり、ノードでは常に、少なくとも 750Mi が割り当て可能になっている必要があります。  ホストがその使用可能メモリのしきい値を下回ると、kubelet は実行中のポッドの 1 つを終了して、ホスト コンピューターのメモリを解放して保護します。 これは、使用可能メモリがしきい値 750Mi を下回ったときの事後対応措置です。
 
-2. 2 番目の値は、kubelet デーモンが適切に機能するために予約されているメモリの漸進的比率です (kube-reserved)。
+2. 2 番目の値は、kubelet デーモンが適切に機能するために予約されているメモリの回帰率です (kube-reserved)。
     - 最初の 4 GB のメモリの 25%
     - 次の 4 GB のメモリの 20% (最大 8 GB)
     - 次の 8 GB のメモリの 10% (最大 16 GB)

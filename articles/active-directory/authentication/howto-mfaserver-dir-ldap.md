@@ -4,19 +4,19 @@ description: LDAP 認証と Azure Multi-Factor Authentication Server のデプ�
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e24442abd707706e035bc1f9dc0a46951e0711a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2df89a764bc9b92a830b13e4216412694bb95523
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848070"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653016"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP 認証と Azure Multi-Factor Authentication Server
 
@@ -25,7 +25,7 @@ ms.locfileid: "74848070"
 Azure Multi-Factor Authentication を LDAP プロキシとして使用するには、LDAP クライアント (VPN アプライアンスやアプリケーションなど) と LDAP ディレクトリ サーバーの間に Azure Multi-Factor Authentication Server を挿入します。 クライアント サーバーと LDAP ディレクトリの両方と通信するように Azure Multi-Factor Authentication Server を構成する必要があります。 この構成の中で、Azure Multi-Factor Authentication Server は、クライアント サーバーとアプリケーションから LDAP 要求を受け取り、プライマリ資格情報を検証するためにターゲット LDAP ディレクトリ サーバーに要求を転送します。 LDAP ディレクトリでプライマリ資格情報を検証する場合、Azure Multi-Factor Authentication は 2 段階目の識別子認証を実行し、応答を LDAP クライアントに送信します。 LDAP サーバーの認証と 2 段階目の認証の両方が成功した場合のみ、認証全体が成功します。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイの MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
 ## <a name="configure-ldap-authentication"></a>LDAP 認証を構成する
 
@@ -38,8 +38,8 @@ LDAP 認証を構成するには、Azure Multi-Factor Authentication Server を 
 
    ![MFA サーバーでの LDAP 認証](./media/howto-mfaserver-dir-ldap/ldap2.png)
 
-3. Azure Multi-Factor Authentication LDAP サービスを、LDAP 要求をリッスンする標準ポート以外のポートにバインドする必要がある場合は、[クライアント] タブで TCP ポートと SSL ポートを変更します。
-4. クライアントから Azure Multi-Factor Authentication Server に対して LDAPS を使用する場合は、MFA サーバーと同じサーバー上に SSL 証明書をインストールする必要があります。 [SSL 証明書] ボックスの隣にある **[参照]** をクリックし、セキュリティで保護された接続で使用する証明書を選択します。
+3. Azure Multi-Factor Authentication LDAP サービスを、LDAP 要求をリッスンする標準ポート以外のポートにバインドする必要がある場合は、[クライアント] タブで TCP ポートと SSL (TLS) ポートを変更します。
+4. クライアントから Azure Multi-Factor Authentication Server に対して LDAPS を使用する場合は、MFA サーバーと同じサーバー上に TLS/SSL 証明書をインストールする必要があります。 SSL (TLS) 証明書ボックスの隣にある **[参照]** をクリックし、セキュリティで保護された接続で使用する証明書を選択します。
 5. **[追加]** をクリックします。
 6. [LDAP クライアントの追加] ダイアログ ボックスで、Server に対して認証するアプライアンス、サーバー、またはアプリケーションの IP アドレスを入力し、アプリケーション名 (省略可能) を入力します。 アプリケーション名は Azure Multi-Factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
 7. すべてのユーザーがサーバーにインポート済みであるかインポート予定であり、2 段階認証の対象となる場合は、 **[Require Azure Multi-Factor Authentication user match (Azure Multi-Factor Authentication のユーザー照合が必要)]** ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、または 2 段階認証から除外される場合、ボックスはオフのままにします。 この機能の追加情報については、MFA サーバーのヘルプ ファイルを参照してください。
@@ -66,7 +66,7 @@ Azure Multi-Factor Authentication が LDAP 認証を受けるように構成す�
 8. **[属性]** タブをクリックします。Server は、Active Directory から属性をマッピングするように事前構成されています。
 9. 別の LDAP ディレクトリにバインドしたり、事前構成されている属性のマッピングを変更する場合は、 **[編集]** をクリックします。
 10. [属性の編集] ダイアログ ボックスで、ディレクトリの LDAP 属性マッピングを変更します。 属性名はキーボードから入力するか、各フィールドの横にある **[…]** ボタンをクリックして選択できます。 属性の詳細については、 **[ヘルプ]** リンクをクリックしてください。
-11. **[OK]** ボタンをクリックします。
+11. **[OK]** をクリックします。
 12. **[会社の設定]** アイコンをクリックし、 **[ユーザー名の解決]** タブを選択します。
 13. ドメインに参加しているサーバーから Active Directory に接続する場合は、 **[Windows セキュリティ識別子 (SID) をユーザー名の照合に使用する]** を選択したままにします。 それ以外の場合は、 **[LDAP 一意識別子の属性をユーザー名の照合に使用する]** を選択します。
 
@@ -80,4 +80,4 @@ LDAP クライアントを構成するには、次のガイドラインに従い
 
 * Azure Multi-Factor Authentication Server でのアプライアンス、サーバー、アプリケーションの LDAP 経由の認証を、あたかも LDAP ディレクトリで行われるかのように構成します。 サーバー名または IP アドレスを Azure Multi-Factor Authentication Server のサーバー名または IP アドレスにすること以外は、LDAP ディレクトリに直接接続するために通常使用するものと同じ設定を使用します。
 * LDAP ディレクトリでユーザーの資格情報を検証し、2 段階目の認証を実行し、応答を受け取って LDAP アクセス要求に応答する時間があるように、LDAP タイムアウトは 30 ～ 60 秒に構成します。
-* LDAPS を使用する場合、LDAP クエリを行うアプライアンスまたはサーバーは、Azure Multi-Factor Authentication Server にインストールされている SSL 証明書を信頼する必要があります。
+* LDAPS を使用する場合、LDAP クエリを行うアプライアンスまたはサーバーは、Azure Multi-Factor Authentication Server にインストールされている TLS/SSL 証明書を信頼する必要があります。

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9c1cff53d5d0f0385d3d61938c7fb6309efb7b1
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224611"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985390"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 内の SQL Server 仮想マシンを SQL VM リソースプロバイダーに登録する
 
@@ -180,7 +180,7 @@ Windows Server 2008 (_R2 ではない_) にインストールされている SQL
 
 **sqlLicenseType** として `AHUB`、`PAYG`、または `DR`、**sqlImageOffer** として `SQL2008-WS2008` または `SQL2008R2-WS2008` を指定します。 
 
-Windows Server 2008 インスタンス上の SQL Server 2008 または 2008 R2 インスタンスを登録するには、次の Az CLI または PowerShell のコード スニペットを使用します。 
+Windows Server 2008 インスタンス上の SQL Server 2008 または 2008 R2 を登録するには、次の Az CLI または PowerShell のコード スニペットを使用します。 
 
 
 # <a name="az-cli"></a>[AZ CLI](#tab/bash)
@@ -190,7 +190,7 @@ Az CLI を使用して NoAgent モードで SQL Server 2008 VM を登録しま�
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
    --license-type PAYG --sql-mgmt-type NoAgent 
-   --image-sku Enterprise --image-offer SQL2008-WS2008R2
+   --image-sku Enterprise --image-offer SQL2008-WS2008
  ```
  
  
@@ -199,7 +199,7 @@ Az CLI を使用して NoAgent モードで SQL Server 2008 R2 VM を登録し�
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
    --license-type PAYG --sql-mgmt-type NoAgent 
-   --image-sku Enterprise --image-offer SQL2008R2-WS2008R2
+   --image-sku Enterprise --image-offer SQL2008R2-WS2008
  ```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)

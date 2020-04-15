@@ -4,16 +4,16 @@ description: Linux VM 上のシミュレートされた TPM を使用して Azur
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/01/2019
+ms.date: 3/2/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6bb1282212ccff45f179b8750e3ed8aec27d129e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b62f551e2532e0205159358b3618695524ae85c8
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76511061"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666700"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Linux 仮想マシン上で、仮想 TPM を使用する IoT Edge デバイスを作成し、プロビジョニングする
 
@@ -156,6 +156,9 @@ Device Provisioning Service を実行した後、概要ページから **[ID ス
 仮想マシンからプロビジョニング情報を取得し、それを使用して Device Provisioning Service 内に個別登録を作成します。
 
 DPS 内に登録を作成するときに、**デバイス ツインの初期状態**を宣言する機会があります。 デバイス ツインでは、ソリューションで必要な任意のメトリック (リージョン、環境、場所、デバイスの種類など) によってデバイスをグループ化するためのタグを設定できます。 これらのタグは、[自動展開](how-to-deploy-monitor.md)を作成するために使用されます。
+
+> [!TIP]
+> Azure CLI では、[登録](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)または[登録グループ](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)を作成し、**Edge 対応**フラグを使用して、デバイスまたはデバイスのグループが IoT Edge デバイスであることを指定できます。
 
 1. [Azure portal](https://portal.azure.com) で、IoT Hub Device Provisioning Service のインスタンスに移動します。
 

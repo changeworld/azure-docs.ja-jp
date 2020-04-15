@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8118ecde698b54213547e717d25613c0c3e0d3fd
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906786"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631550"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 
-Windows 仮想マシン (VM) をオンプレミスから Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの第 1 世代および第 2 世代 VM の両方がサポートされています。 VHD のサイズの上限は、1,023 GB です。 
+Windows 仮想マシン (VM) をオンプレミスから Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの第 1 世代および第 2 世代 VM の両方がサポートされています。 VHD のサイズの上限は、2 TB です。
 
 第 1 世代 VM では、VHDX ファイル システムを VHD に変換できます。 また、容量可変ディスクを容量固定ディスクに変換することもできます。 ただし、VM の世代を変更することはできません。 詳細については、「[Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成すべきか](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」および「[Azure での第 2 世代 VM (プレビュー) のサポート](generation-2.md)」を参照してください。
 
@@ -235,7 +235,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 
 9. VM がドメインの一部になる場合は、次のポリシーをチェックして、前の設定が元に戻されていないことを確認します。 
     
-    | 目標                                     | ポリシー                                                                                                                                                       | Value                                                                                    |
+    | 目標                                     | ポリシー                                                                                                                                                       | 値                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | RDP が有効になっている                           | [コンピューターの構成]\[ポリシー]\[Windows の設定]\[管理用テンプレート]\[コンポーネント]\[リモート デスクトップ サービス]\[リモート デスクトップ セッション ホスト]\[接続]         | ユーザーがリモート デスクトップを使用してリモートで接続できるようにする                                  |
     | NLA グループ ポリシー                         | [設定]\[管理用テンプレート]\[コンポーネント]\[リモート デスクトップ サービス]\[リモート デスクトップ セッション ホスト]\[セキュリティ]                                                    | NLA を使ってリモート アクセスにユーザー認証を要求する |
@@ -267,9 +267,15 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
    ```PowerShell
    Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -Enabled True
    ``` 
-5. VM がドメインの一部になる場合は、次の Azure AD ポリシーをチェックして、前の設定が元に戻されていないことを確認します。 
+5. Azure プラットフォーム ネットワークのルールを作成します。
 
-    | 目標                                 | ポリシー                                                                                                                                                  | Value                                   |
+   ```PowerShell
+    New-NetFirewallRule -DisplayName "AzurePlatform" -Direction Inbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow -EdgeTraversalPolicy Allow
+    New-NetFirewallRule -DisplayName "AzurePlatform" -Direction Outbound -RemoteAddress 168.63.129.16 -Profile Any -Action Allow
+   ``` 
+6. VM がドメインの一部になる場合は、次の Azure AD ポリシーをチェックして、前の設定が元に戻されていないことを確認します。 
+
+    | 目標                                 | ポリシー                                                                                                                                                  | 値                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | Windows ファイアウォール プロファイルを有効にする | [コンピューターの構成]\[ポリシー]\[Windows の設定]\[管理用テンプレート]\[ネットワーク]\[ネットワーク接続]\[Windows ファイアウォール]\[ドメイン プロファイル]\[Windows ファイアウォール]   | すべてのネットワーク接続を保護する         |
     | RDP を有効にする                           | [コンピューターの構成]\[ポリシー]\[Windows の設定]\[管理用テンプレート]\[ネットワーク]\[ネットワーク接続]\[Windows ファイアウォール]\[ドメイン プロファイル]\[Windows ファイアウォール]   | 着信リモート デスクトップの例外を許可する |
@@ -418,7 +424,7 @@ VM が正常であり、セキュリティで保護されており、RDP アク�
 > [!NOTE]
 > VM のプロビジョニング中に誤って再起動されないようにするために、すべての Windows Update インストールが完了し、保留中の更新プログラムがないことを確認することをお勧めします。 これを行う 1 つの方法は、可能なすべての Windows 更新プログラムをインストールし、一度再起動してから、Sysprep コマンドを実行します。
 
-### Sysprep を使用する状況の判断 <a id="step23"></a>    
+### <a name="determine-when-to-use-sysprep"></a>Sysprep を使用する状況の判断 <a id="step23"></a>    
 
 システム準備ツール (Sysprep) は、Windows インストールをリセットするために使用できるプロセスです。 Sysprep は、個人データをすべて削除し、コンポーネントをいくつかリセットすることによって、"すぐに使用できる" エクスペリエンスを提供します。 
 

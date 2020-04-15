@@ -11,12 +11,13 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/27/2017
-ms.openlocfilehash: 508d1b71873b535725f446a3b62ce17d82258495
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8973412b2d6575d524874ba05b34af7661655e19
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163740"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981071"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory Authentication Library (ADAL) クライアントのエラー処理のベスト プラクティス
 
@@ -542,7 +543,7 @@ adb logcat > "C:\logmsg\logfile.txt";
 
 #### <a name="operating-system-errors"></a>オペレーティング システム エラー
 
-iOS エラーは、サインイン時にユーザーが Web ビューを使っているとき、および認証の性質として発生することがあります。 これは、SSL エラー、タイムアウト、ネットワーク エラーなどの条件によって発生することがあります。
+iOS エラーは、サインイン時にユーザーが Web ビューを使っているとき、および認証の性質として発生することがあります。 TLS エラー、タイムアウト、ネットワーク エラーなどの条件によって発生することがあります。
 
 - 権利の共有では、ログインは永続的ではなく、キャッシュが空のように見えます。 キー チェーンに次のコード行を追加すると解決できます。`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
 - NsUrlDomain の一連のエラーでは、アクションはアプリのロジックに応じて変わります。 処理できる具体的な例については、[NSURLErrorDomain のリファレンス ドキュメント](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations)をご覧ください。

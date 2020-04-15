@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 10/04/2019
+ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9944308d00c9cfecbd38a6443efb49913148806
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 139a2cafe137d000b991cbad8b8567e005ffc728
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535920"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668671"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>対称キーの構成証明を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -71,6 +71,9 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
    1. 必要に応じて、**IoT Hub のデバイス ID** を指定します。 デバイス ID を使用して、個々のデバイスをモジュール展開のターゲットにすることができます。 デバイス ID を指定しなかった場合は、登録 ID が使用されます。
 
    1. **[True]** を選択して、その登録が IoT Edge デバイス用のものであることを宣言します。 グループ登録の場合、すべてのデバイスを IoT Edge デバイスにする必要があります。そうしない場合、いずれも IoT Edge デバイスにすることはできません。
+
+   > [!TIP]
+   > Azure CLI では、[登録](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)または[登録グループ](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)を作成し、**Edge 対応**フラグを使用して、デバイスまたはデバイスのグループが IoT Edge デバイスであることを指定できます。
 
    1. **デバイスをハブに割り当てる方法**について、Device Provisioning Service の割り当てポリシーの既定値をそのまま使用するか、その登録に固有の別の値を選択します。
 

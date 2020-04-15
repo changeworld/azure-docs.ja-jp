@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3c22f63b7085c7ab8d6b54e383528568dc9c12e7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917035"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549069"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での証明書のローテーション
 
@@ -32,12 +32,12 @@ AKS では、次の証明書、証明機関、およびサービス アカウン
 * また、各 kubelet では、kubelet から API サーバーへの通信のために、クラスター CA によって署名される証明書署名要求 (CSR) も作成されます。
 * etcd キー値ストアには、etcd から API サーバーへの通信用に、クラスター CA によって署名された証明書が含まれています。
 * etcd キー値ストアでは、AKS クラスター内で etcd レプリカ間のデータ レプリケーションを認証および承認するために証明書に署名する CA が作成されます。
-* API アグリゲーターでは、Azure の Open Service Broker などの他の API との通信に証明書を発行するためにクラスター CA が使用されます。 API アグリゲーターでは、これらの証明書を発行するための独自の CA を持つこともできますが、現在はクラスター CA が使用されています。
+* API アグリゲーターでは、他の API との通信に証明書を発行するためにクラスター CA が使用されます。 API アグリゲーターでは、これらの証明書を発行するための独自の CA を持つこともできますが、現在はクラスター CA が使用されています。
 * 各ノードでは、クラスター CA によって署名されるサービスア カウント (SA) トークンが使用されます。
 * `kubectl` クライアントには、AKS クラスターと通信するための証明書があります。
 
 > [!NOTE]
-> 2019 年 3 月より前に作成された AKS クラスターには、2 年後に期限切れになる証明書があります。 2019 年 3 月以降に作成されたすべてのクラスター、またはその証明書がローテーションされているすべてのクラスターには、30 年後に期限切れになる証明書があります。 クラスターがいつ作成されたかを確認するには、`kubectl get nodes` を使用して、ノード プールの *Age* を確認します。
+> 2019 年 3 月より前に作成された AKS クラスターには、2 年後に期限切れになる証明書があります。 2019 年 3 月以降に作成されたすべてのクラスター、またはその証明書がローテーションされているすべてのクラスターには、30 年後に期限切れになるクラスター CA 証明書があります。 他のすべての証明書は 2 年後に有効期限が切れます。 クラスターがいつ作成されたかを確認するには、`kubectl get nodes` を使用して、ノード プールの *Age* を確認します。
 > 
 > また、クラスターの証明書の有効期限を確認することもできます。 たとえば、次のコマンドは *myAKSCluster* クラスターの証明書の詳細を表示します。
 > ```console
@@ -52,13 +52,13 @@ AKS では、次の証明書、証明機関、およびサービス アカウン
 
 [az aks get-credentials][az-aks-get-credentials] を使用して、AKS クラスターにサインインします。 また、このコマンドにより、ご使用のローカル コンピューターに `kubectl` クライアント証明書がダウンロードされて構成されます。
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 `az aks rotate-certs` を使用して、ご使用のクラスター上のすべての証明書、CA、および SA をローテーションします。
 
-```console
+```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
@@ -74,7 +74,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority (
 
 `az aks get-credentials` を実行して、`kubectl` によって使用される証明書を更新します。
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 

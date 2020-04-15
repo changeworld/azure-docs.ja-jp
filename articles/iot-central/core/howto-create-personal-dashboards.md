@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: db886006ff5b9adf3de0932951f6cce4958e8ebd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06225e284000d7f10f575be08cd683488abec339
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158131"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985492"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>複数のダッシュボードの作成と管理
 
-**ダッシュボード**は、最初にアプリケーションに移動するときに読み込まれるページです。 アプリケーションの**ビルダー**では、すべてのユーザーの既定のアプリケーション ダッシュボードを定義します。 この既定のダッシュボードを、パーソナライズした自分のアプリケーション ダッシュボードに置き換えることができます。 別のデータを表示する複数のダッシュボードを持っておいて切り替えることができます。 
+**ダッシュボード**は、最初にアプリケーションに移動するときに読み込まれるページです。 アプリケーションの**ビルダー**では、すべてのユーザーの既定のアプリケーション ダッシュボードを定義します。 また、独自にカスタマイズされたアプリケーション ダッシュボードを作成することもできます。 別のデータを表示する複数のダッシュボードを持っておいて切り替えることができます。
 
 アプリケーションの**管理者**であれば、最大 10 個のアプリケーション レベルのダッシュボードを作成して、アプリケーションの他のユーザーと共有することもできます。 **管理者**のみが、アプリケーション レベルのダッシュボードを作成、編集、および削除できます。 
 

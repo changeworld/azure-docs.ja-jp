@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: b8f95f22553a3b4639b1aba6576ce844116ae20b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 71528385563b29ce70edf396434be0174beac105
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679870"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804845"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory の ForEach アクティビティ
 ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 このアクティビティは、コレクションを反復処理するために使用され、指定されたアクティビティをループで実行します。 このアクティビティのループの実装は、プログラミング言語の Foreach ループ構造に似ています。
@@ -70,12 +70,12 @@ ForEach アクティビティは、パイプライン内の繰り返し制御フ
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-名前 | ForEach アクティビティの名前。 | string | はい
+name | ForEach アクティビティの名前。 | String | はい
 type | **ForEach** に設定する必要があります | String | はい
-isSequential | ループを順番に実行するか、または並行して実行するかを指定します。  一度に最大 20 のループ反復処理を並行して実行できます。 たとえば、**isSequential** が False に設定された状態で、10 個の異なるソースとシンク データセットがあるコピー アクティビティに対して ForEach アクティビティ反復処理を実行すると、一度にすべてのコピーが実行されます。 既定値は False です。 <br/><br/> "isSequential" が False に設定されている場合は、複数の実行可能ファイルを実行するための正しい構成が存在することを確認してください。 そうでない場合は、書き込みの競合が発生しないようにするために、このプロパティを慎重に使用する必要があります。 詳細については、「[Parallel execution (並列実行)](#parallel-execution)」セクションを参照してください。 | Boolean | No. 既定値は False です。
-batchCount | 並列実行の数を制御するために使用するバッチの数 (IsSequential が false に設定されている場合)。 | Integer (最大 50) | No. 既定値は 20 です。
+isSequential | ループを順番に実行するか、または並行して実行するかを指定します。  一度に最大 20 のループ反復処理を並行して実行できます。 たとえば、**isSequential** が False に設定された状態で、10 個の異なるソースとシンク データセットがあるコピー アクティビティに対して ForEach アクティビティ反復処理を実行すると、一度にすべてのコピーが実行されます。 既定値は False です。 <br/><br/> "isSequential" が False に設定されている場合は、複数の実行可能ファイルを実行するための正しい構成が存在することを確認してください。 そうでない場合は、書き込みの競合が発生しないようにするために、このプロパティを慎重に使用する必要があります。 詳細については、「[Parallel execution (並列実行)](#parallel-execution)」セクションを参照してください。 | Boolean | いいえ。 既定値は False です。
+batchCount | 並列実行の数を制御するために使用するバッチの数 (IsSequential が false に設定されている場合)。 これはコンカレンシーの上限ですが、For-Each アクティビティは常にこの数値で実行されるわけではありません | Integer (最大 50) | いいえ。 既定値は 20 です。
 アイテム | 反復処理される JSON 配列を返す式。 | 式 (これは JSON 配列を返します) | はい
-アクティビティ | 実行されるアクティビティ。 | アクティビティの一覧 | はい
+Activities | 実行されるアクティビティ。 | アクティビティの一覧 | はい
 
 ## <a name="parallel-execution"></a>並列実行
 **isSequential** が False に設定されている場合、このアクティビティは最大 20 の同時実行反復処理と並行して反復処理します。 この設定は、慎重に使用する必要があります。 同時実行反復処理が同じフォルダーではあっても、異なるファイルへの書き込みである場合、このアプローチは適切です。 同時実行反復処理がまったく同じファイルへの同時書き込みである場合、このアプローチはエラーの原因になる可能性があります。 
@@ -475,19 +475,19 @@ ForEach アクティビティで複数のアクティビティ (例: コピー �
 
 __foreach__ アクティビティの出力を集計するには、_Variables_ と _Append Variable_ アクティビティを使用してください。
 
-最初に、パイプライン内で `array` _変数_ を宣言します。 次に、各 __foreach__ ループ内で _Append Variable_ アクティビティを呼び出します。 その後、配列から集計を取得できます。
+最初に、パイプライン内で `array` "_変数_" を宣言します。 次に、各 __foreach__ ループ内で _Append Variable_ アクティビティを呼び出します。 その後、配列から集計を取得できます。
 
 ## <a name="limitations-and-workarounds"></a>制限事項と回避策
 
 ForEach アクティビティと提案される回避策のいくつかの制限を次に示します。
 
-| 制限事項 | 対処法 |
+| 制限事項 | 回避策 |
 |---|---|
 | 別の ForEach ループ (または Until ループ) 内に ForEach ループを入れ子にすることはできません。 | 入れ子にされたループが含まれる内側パイプライン上で外側の ForEach ループが含まれる外側パイプラインが反復される 2 段のパイプラインを設計します。 |
 | ForEach アクティビティには並列処理のために最大 50 の `batchCount` と、最大 100,000 の項目が含まれています。 | 内側パイプライン上で ForEach アクティビティが含まれる外側パイプラインが反復される 2 段のパイプラインを設計します。 |
 | | |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
 
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)

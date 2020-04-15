@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/04/2020
-ms.openlocfilehash: e2e1ddd031041f49107545cd0b3d3de4eaebcd6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: a5244086c185c111762496086f8044f12f52be14
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77472130"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632589"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Data Factory でのデータ フローのトラブルシューティング
 
@@ -55,6 +55,18 @@ ms.locfileid: "77472130"
 - **メッセージ**:クエリに列名を指定する必要があります。SQL 関数を使用している場合は別名を設定してください
 - **原因**:列名が指定されていませんでした
 - **推奨事項**:min()/max() などの SQL 関数を使用している場合は、別名を設定してください。
+
+### <a name="error-code-getcommand-outputasync-failed"></a>エラー コード:GetCommand OutputAsync に失敗しました
+
+- **メッセージ**:データ フロー デバッグおよびデータ プレビューの実行中:GetCommand OutputAsync が次の理由で失敗しました。
+- **原因**:これはバックエンド サービス エラーです。 操作を再試行し、デバッグ セッションを再起動することもできます。
+- **推奨事項**:再試行して再起動しても問題が解決しない場合は、カスタマー サポートにお問い合わせください。
+
+### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>エラー コード:予期しない例外が発生し、実行が失敗しました
+
+- **メッセージ**:データ フロー アクティビティの実行中:予期しない例外が発生し、実行が失敗しました。
+- **原因**:これはバックエンド サービス エラーです。 操作を再試行し、デバッグ セッションを再起動することもできます。
+- **推奨事項**:再試行して再起動しても問題が解決しない場合は、カスタマー サポートにお問い合わせください。
 
 ## <a name="general-troubleshooting-guidance"></a>一般的なトラブルシューティング ガイダンス
 

@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 03/31/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fac7074cf85a585c93ece60be9eea8ffb9a6345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6eaa50f57dd8037ef0ad96b69284f565bd3558f
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72895199"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607533"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Privileged Identity Management で管理できないロール
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用すると、すべての [Azure AD ロール](../users-groups-roles/directory-assign-admin-roles.md)とすべての [Azure リソース ロール](../../role-based-access-control/built-in-roles.md)を管理できます。 これらのロールには、管理グループ、サブスクリプション、リソース グループ、およびリソースに関連付けられているカスタム ロールも含まれます。 ただし、管理できないロールがいくつかあります。 この記事では、Privileged Identity Management で管理できないロールについて説明します。
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用すると、すべての [Azure AD ロール](../users-groups-roles/directory-assign-admin-roles.md)とすべての [Azure ロール](../../role-based-access-control/built-in-roles.md)を管理できます。 Azure ロールには、管理グループ、サブスクリプション、リソース グループ、およびリソースに関連付けられているカスタム ロールも含めることができます。 ただし、管理できないロールがいくつかあります。 この記事では、Privileged Identity Management で管理できないロールについて説明します。
 
 ## <a name="classic-subscription-administrator-roles"></a>従来のサブスクリプション管理者ロール
 
@@ -37,10 +37,10 @@ Privileged Identity Management では、次の従来のサブスクリプショ�
 
 ## <a name="what-about-office-365-admin-roles"></a>Office 365 の管理者ロールの場合
 
-Exchange 管理者と SharePoint 管理者を除く Exchange Online または SharePoint Online 内のロールは Azure AD で表示されないため、Privileged Identity Management で管理することはできません。 これらの Office 365 サービスの詳細については、[Office 365 の管理者ロール](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles)に関するページを参照してください。
+Exchange 管理者や SharePoint 管理者など、Azure AD ロールと管理者ポータルのエクスペリエンスでは、すべての Office365 ロールがサポートされていますが、Exchange RBAC または SharePoint RBAC 内の特定のロールはサポートされていません。 これらの Office 365 サービスの詳細については、[Office 365 の管理者ロール](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles)に関するページを参照してください。
 
 > [!NOTE]
-> SharePoint 管理者は、SharePoint Online 管理センターを通じた SharePoint Online への管理アクセスが可能で、SharePoint Online でのほぼすべてのタスクを実行できます。 対象となるユーザーは、Privileged Identity Management でアクティブにした後、SharePoint 内でこのロールを使用できるようになるまでに遅延が生じる場合があります。
+> SharePoint 管理者ロールの対象ユーザーと、Microsoft セキュリティ センターおよびコンプライアンス センターにアクセスしようとしているすべてのロールでは、ロールをアクティブ化した後、最大で数時間の遅延が発生する可能性があります。 これらのチームと協力して問題の解決に取り組んでいます。
 
 ## <a name="next-steps"></a>次のステップ
 

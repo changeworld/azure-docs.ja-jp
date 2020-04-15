@@ -4,15 +4,15 @@ description: Azure App Service のネットワーク機能について、およ�
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0fd904b15a830e2b261057a11d1a8f3a4d584fe1
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649228"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474905"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
@@ -41,9 +41,8 @@ Azure App Service は分散システムです。 受信した HTTP/HTTPS 要求�
 | アプリの IP ベース SSL のニーズをサポートする | アプリに割り当てられたアドレス |
 | アプリ専用の非共有受信アドレス | アプリに割り当てられたアドレス |
 | アプリへのアクセスを明確に定義された一連のアドレスからのみに制限する | アクセス制限 |
-| アプリを VNet 内の複数のプライベート IP で公開する | ILB ASE </br> Application Gateway とサービス エンドポイントの併用 |
-| アプリへのアクセスを VNet 内のリソースからのみに制限する | サービス エンドポイント </br> ILB ASE |
-| アプリを VNet 内の 1 つのプライベート IP で公開する | ILB ASE </br> Application Gateway 上の受信用プライベート IP とサービス エンドポイントの併用 |
+| アプリへのアクセスを VNet 内のリソースからのみに制限する | サービス エンドポイント </br> ILB ASE </br> プライベート エンドポイント (プレビュー) |
+| アプリを VNet 内の 1 つのプライベート IP で公開する | ILB ASE </br> Application Gateway 上の受信用プライベート IP とサービス エンドポイントの併用 </br> サービス エンドポイント (プレビュー) |
 | WAF によりアプリを保護する | Application Gateway + ILB ASE </br> Application Gateway とサービス エンドポイントの併用 </br> Azure Front Door とアクセス制限の併用 |
 | アプリへのトラフィックの負荷を複数のリージョンに分散させる | Azure Front Door とアクセス制限の併用 | 
 | 同一リージョン内でトラフィックの負荷を分散させる | [Application Gateway とサービス エンドポイントの併用][appgwserviceendpoints] | 
@@ -82,7 +81,7 @@ App Service には、サービスの管理に使用されるエンドポイン�
 * アプリの IP ベース SSL のニーズをサポートする
 * 他と共有されない専用アドレスをアプリに設定する
 
-アプリにアドレスを設定する方法については、[IP ベースの SSL の構成][appassignedaddress]に関するチュートリアルを参照してください。 
+アプリのアドレスを設定する方法については、「[Azure App Service で SSL 証明書を追加する][appassignedaddress]」チュートリアルを参照してください。 
 
 ### <a name="access-restrictions"></a>アクセス制限 
 
@@ -111,6 +110,11 @@ Azure Virtual Network (VNet) 内のリソースからのみアプリに到達で
 ![サービス エンドポイントと Application Gateway の併用](media/networking-features/service-endpoints-appgw.png)
 
 アプリでのサービス エンドポイントの構成方法については、[サービス エンドポイントとアクセス制限の構成方法][serviceendpoints]に関するチュートリアルを参照してください。
+
+### <a name="private-endpoint-preview"></a>プライベート エンドポイント (プレビュー)
+
+プライベート エンドポイントは、Azure Private Link を使用して Web アプリにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントでは、自分の VNet からのプライベート IP アドレスを使用して、Web アプリを実質的に VNet に取り込みます。 この機能は、Web アプリへの**受信フロー**専用です。
+[Azure Web アプリでのプライベート エンドポイントの使用 (プレビュー)][privateendpoints]
  
 ### <a name="hybrid-connections"></a>ハイブリッド接続
 
@@ -227,3 +231,4 @@ ASE があれば、専用のアプリを隔離したまま最適にホストで�
 [vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
 [networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
 [appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints
+[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

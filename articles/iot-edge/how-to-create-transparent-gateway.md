@@ -4,16 +4,16 @@ description: ダウンストリーム デバイスからの情報を処理でき
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/30/2019
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6069e0782f69d0dfb73d9be2998cbb11d59d7d22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b3aeff595671c5f924d01599b572b6b938ef09d
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529171"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666661"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 
@@ -42,7 +42,7 @@ ms.locfileid: "79529171"
 >[!NOTE]
 >この記事全体で使用されている "ルート CA" という用語は、PKI 証明書チェーンの最上位機関の公開証明書を指し、必ずしもシンジケート化された認証局の証明書ルートではありません。 多くの場合、実際は中間 CA の公開証明書です。
 
-ゲートウェイは、接続の開始時に、ダウンストリーム デバイスに IoT Edge デバイス CA 証明書を提示します。 ダウンストリーム デバイスは、IoT Edge デバイスの CA 証明書がルート CA 証明書によって署名されていることを確認します。 このプロセスにより、ダウンストリーム デバイスは、ゲートウェイが信頼できるソースからのものであることを確認できます。
+IoT Edge セキュリティ デーモンは、IoT Edge デバイス CA 証明書を使用してワークロード CA 証明書に署名します。この証明書は IoT Edge ハブのサーバー証明書に署名します。 ゲートウェイは、接続の開始時に、ダウンストリーム デバイスにサーバー証明書を提示します。 ダウンストリーム デバイスは、サーバー証明書がルート CA 証明書にロールアップされる証明書チェーンの一部であることを確認します。 このプロセスにより、ダウンストリーム デバイスは、ゲートウェイが信頼できるソースからのものであることを確認できます。 詳細については、[「Azure IoT Edge での証明書の使用方法について理解する」](iot-edge-certs.md)を参照してください。
 
 次の手順では、証明書を作成し、ゲートウェイ上の適切な場所にインストールするプロセスについて説明します。 任意のマシンを使用して証明書を生成してから、その証明書をお使いの IoT Edge デバイスにコピーできます。
 

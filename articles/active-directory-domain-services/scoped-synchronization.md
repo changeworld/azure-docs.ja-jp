@@ -8,15 +8,15 @@ ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: article
-ms.date: 11/26/2019
+ms.topic: how-to
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ef7e14cc2a290cc5583e3e599e278f98882152c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613046"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654738"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Azure AD から Azure Active Directory Domain Services への範囲指定された同期を構成する
 
@@ -47,13 +47,15 @@ Azure Active Directory Domain Services (Azure AD DS) は、認証サービスを
 | 範囲指定された同期を無効にする | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
-> 同期のスコープを変更すると、Azure AD DS マネージド ドメインですべてのデータが再同期されます。
+> 同期のスコープを変更すると、Azure AD DS マネージド ドメインですべてのデータが再同期されます。 次の考慮事項が適用されます。
 > 
 >  * Azure AD DS マネージド ドメインの同期スコープを変更すると、完全な再同期が発生します。
 >  * Azure AD DS マネージド ドメインで不要になったオブジェクトは削除されます。 新しいオブジェクトは、マネージド ドメインに作成されます。
 >  * 再同期が完了するまでには時間がかかる場合があります。 同期時間は、Azure AD DS マネージド ドメイン内や Azure AD ディレクトリ内のユーザー、グループ、グループ メンバーシップなどのオブジェクトの数によって異なります。 数十万のオブジェクトを含む大規模なディレクトリについては、再同期に数日かかる場合があります。
 
 ## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>範囲指定された同期を Azure portal を使用して有効にする
+
+Azure portal で範囲指定された同期を有効にするには、次の手順を実行します。
 
 1. [Azure AD DS インスタンスを作成して構成するためのチュートリアル](tutorial-create-instance-advanced.md)に従います。 同期スコープ以外のすべての前提条件とデプロイ手順を完了します。
 1. 同期の手順で **[範囲指定]** を選択してから、Azure AD DS インスタンスに同期する Azure AD グループを選択します。
@@ -173,7 +175,7 @@ Write-Output "******************************************************************
 
 ## <a name="enable-scoped-synchronization-using-powershell"></a>範囲指定された同期を PowerShell を使用して有効にする
 
-この一連の手順を完了するには、PowerShell を使用します。 [PowerShell を使用した Azure Active Directory Domain Services の有効化](powershell-create-instance.md)の手順を参照してください。 この記事の手順のいくつかは、スコープ付きの同期を構成するために若干変更されます。
+PowerShell を使用して、次の一連の手順を完了します。 [PowerShell を使用した Azure Active Directory Domain Services の有効化](powershell-create-instance.md)の手順を参照してください。 この記事の手順のいくつかは、スコープ付きの同期を構成するために若干変更されます。
 
 1. この記事の次のタスクを実行して、PowerShell を使用して Azure AD DS を有効にします。 マネージド ドメインを実際に作成する手順で停止します。 範囲指定された同期は、Azure AD DS マネージド ドメインの作成時に構成します。
 

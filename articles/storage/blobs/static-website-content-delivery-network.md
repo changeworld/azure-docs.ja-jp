@@ -6,17 +6,17 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
-ms.date: 01/22/2020
-ms.openlocfilehash: aaf61ccbb3577036c614aa6196d2af57124550fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: 4516e9f48174a0f1f5201c46cf114badf13d99d6
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76907462"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878819"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>静的な Web サイトを Azure CDN と統合する
 
-[Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md) を有効にして、Azure ストレージアカウントでホストされている[静的な Web サイト](storage-blob-static-website.md)のコンテンツをキャッシュすることができます。 Azure CDN を使用すると、静的な Web サイトのカスタム ドメイン エンドポイントの構成、カスタム SSL 証明書のプロビジョニング、およびカスタム書き換え規則の構成を行うことができます。 Azure CDN を構成すると追加料金が発生しますが、世界中のあらゆる場所から Web サイトへの一貫した低待機時間が提供されます。 また、Azure CDN では、独自の証明書での SSL 暗号化が提供されます。 
+[Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md) を有効にして、Azure ストレージアカウントでホストされている[静的な Web サイト](storage-blob-static-website.md)のコンテンツをキャッシュすることができます。 Azure CDN を使用すると、静的な Web サイトのカスタム ドメイン エンドポイントの構成、カスタム TLS/SSL 証明書のプロビジョニング、およびカスタム書き換え規則の構成を行うことができます。 Azure CDN を構成すると追加料金が発生しますが、世界中のあらゆる場所から Web サイトへの一貫した低待機時間が提供されます。 また、Azure CDN では、独自の証明書での TLS 暗号化が提供されます。 
 
 Azure CDN の価格については、[Azure CDN の価格](https://azure.microsoft.com/pricing/details/cdn/)に関するページを参照してください。
 
@@ -26,19 +26,17 @@ Azure CDN の価格については、[Azure CDN の価格](https://azure.microso
 
 1. Azure portal で自分のストレージ アカウントを探して、アカウントの概要を表示します。
 
-2. **[Blob service]** メニューで **[Azure CDN]** を選択して、Azure CDN を構成します。
+1. **[Blob Service]** メニューで **[Azure CDN]** を選択して、 **[Azure CDN]** ページを開きます。
 
-    **[Azure CDN]** ページが表示されます。
+    ![CDN エンドポイントを作成する](media/storage-blob-static-website-custom-domain/cdn-storage-new.png)
 
-    ![CDN エンドポイントを作成する](../../cdn/media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png)
+1. **[CDN プロファイル]** セクションで、新しい CDN プロファイルを作成するか、既存の CDN プロファイルを使用するかを指定します。 CDN プロファイルは、価格レベルとプロバイダーを共有する CDN エンドポイントをまとめたものです。 次に、サブスクリプション内で一意の CDN の名前を入力します。
 
-3. **[CDN のプロファイル]** セクションで、新規または既存の CDN プロファイルを指定します。 
+1. CDN エンドポイントの価格レベルを指定します。 価格の詳細については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」をご覧ください。 各レベルで使用可能な機能については、「[Azure CDN 製品の機能を比較する](../../cdn/cdn-features.md)」をご覧ください。
 
-4. CDN エンドポイントの価格レベルを指定します。 価格の詳細については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」をご覧ください。 各レベルで使用可能な機能については、「[Azure CDN 製品の機能を比較する](../../cdn/cdn-features.md)」をご覧ください。
+1. **[CDN エンドポイント名]** フィールドに、CDN エンドポイントの名前を指定します。 CDN エンドポイントは、Azure 全体で一意である必要があり、エンドポイント URL の最初の部分となります。 フォームは、エンドポイント名が一意であることを検証します。
 
-5. **[CDN エンドポイント名]** フィールドに、CDN エンドポイントの名前を指定します。 CDN エンドポイントは Azure 全体で一意である必要があります。
-
-6. **[配信元のホスト名]** フィールドに、静的な Web サイト エンドポイントを指定します。 
+1. **[配信元のホスト名]** フィールドに、静的な Web サイト エンドポイントを指定します。 
 
    静的な Web サイト エンドポイントを見つけるには、ストレージ アカウントの **[静的な Web サイト]** 設定に移動します。  プライマリ エンドポイントをコピーし、CDN 構成に貼り付けます。
 
@@ -49,15 +47,15 @@ Azure CDN の価格については、[Azure CDN の価格](https://azure.microso
 
    ![サンプルの CDN エンドポイント構成を示すスクリーンショット](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
 
-7. **[作成]** を選択して、反映されるまで待機します。 作成されたエンドポイントが、エンドポイントの一覧に表示されます。
+1. **[作成]** を選択し、CDN がプロビジョニングされるまで待機します。 作成されたエンドポイントが、エンドポイントの一覧に表示されます。 (フォームにエラーがある場合は、そのフィールドの横に感嘆符が表示されます)。
 
-8. CDN エンドポイントが正しく構成されていることを確認するには、エンドポイントをクリックして設定に移動します。 ストレージ アカウントの CDN の概要からエンドポイントのホスト名を探し、次の図に示すように、エンドポイントに移動します。 CDN エンドポイントの形式は、`https://staticwebsitesamples.azureedge.net` のようになります。
+1. CDN エンドポイントが正しく構成されていることを確認するには、エンドポイントをクリックして設定に移動します。 ストレージ アカウントの CDN の概要からエンドポイントのホスト名を探し、次の図に示すように、エンドポイントに移動します。 CDN エンドポイントの形式は、`https://staticwebsitesamples.azureedge.net` のようになります。
 
     ![CDN エンドポイントの概要を示すスクリーンショット](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-9. CDN エンドポイントの伝達が完了した後、CDN エンドポイントに移動すると、静的な Web サイトに以前アップロードした index.html ファイルの内容が表示されます。
+1. CDN エンドポイントのプロビジョニングが完了した後、CDN エンドポイントに移動すると、静的な Web サイトに以前アップロードした index.html ファイルの内容が表示されます。
 
-10. CDN エンドポイントの配信元の設定を確認するには、CDN エンドポイントの **[設定]** セクションにある **[配信元]** に移動します。 **[配信元の種類]** フィールドが *[カスタムの配信元]* に設定され、 **[配信元のホスト名]** フィールドに静的な Web サイト エンドポイントが表示されていることを確認できます。
+1. CDN エンドポイントの配信元の設定を確認するには、CDN エンドポイントの **[設定]** セクションにある **[配信元]** に移動します。 **[配信元の種類]** フィールドが *[カスタムの配信元]* に設定され、 **[配信元のホスト名]** フィールドに静的な Web サイト エンドポイントが表示されていることを確認できます。
 
     ![CDN エンドポイントの配信元の設定を示すスクリーンショット](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
 

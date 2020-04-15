@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19765bd28f365cc6f6d5b06646896613dd3e3e87
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77208541"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804556"
 ---
 # <a name="add-a-heat-map-layer"></a>ヒート マップ レイヤーを追加する
 
@@ -98,11 +98,11 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 `zoom` 式を使用すると、各データ ポイントによってマップの同じ物理領域がカバーされるように、各ズーム レベルの半径をスケーリングできます。 この式により、ヒート マップ レイヤーの外観は、より静的かつ一貫性の高いものになります。 マップの各ズーム レベルは、垂直方向および水平方向のピクセル数がすぐ下のズーム レベルの 2 倍になっています。 
 
-ズーム レベルごとに半径が 2 倍になるようにスケーリングすると、すべてのズーム レベルで外観に一貫性のあるヒート マップが作成されます。 このスケーリングを適用するには、次のサンプルに示すように、基数 2 `exponential interpolation` 式に `zoom` を使用します。 マップをズームして、ヒート マップがズーム レベルに応じてどのように変化するかを確認してください。
+ズーム レベルごとに半径が 2 倍になるようにスケーリングすると、すべてのズーム レベルで外観に一貫性のあるヒート マップが作成されます。 このスケーリングを適用するには、次の例に示すように、最小ズーム レベルに設定されたピクセル半径と、最大ズーム レベルでスケーリングされた半径が `2 * Math.pow(2, minZoom - maxZoom)` として計算された、基数 2 の `exponential interpolation` 式で `zoom` を使用します。 マップをズームして、ヒート マップがズーム レベルに応じてどのように変化するかを確認してください。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="一貫性のあるズーム可能なヒート マップ" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="一貫性のあるズーム可能なヒート マップ" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen</a> 上で、Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) によるペンの<a href='https://codepen.io/azuremaps/pen/OGyMZr/'>一貫性のあるズーム可能なヒート マップ</a>をご覧ください。
 </iframe>
 

@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: dceff3e320554edc972654aa49552bffbc4c9a13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019711f35d249e6684013feddb6b453d509f66d4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286491"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985356"
 ---
 # <a name="update-an-existing-iot-edge-module-offer"></a>既存の IoT Edge モジュール プランの更新
+
+>[!Important]
+>2020 年 4 月 13 日以降、IoT Edge モジュールのパートナー センターへの移行管理が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 「[IoT Edge モジュール オファーを作成する](https://aka.ms/AzureCreateIoT)」の手順に従い、移行後のオファーを管理します。
 
 この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)で IoT Edge モジュール プランを更新し、そのプランを再発行する際のさまざまな側面を説明します。
 

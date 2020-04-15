@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 3b631c068d1a444691345e054219208c4c8b0b8c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8941c097fbb2d05c3a28be87d216b7a2679ebc68
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020048"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804896"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>マッピング データ フローでのシンク変換
 
@@ -39,13 +39,15 @@ Azure Data Factory は、[90 を超えるネイティブ コネクタ](connector
 
 ## <a name="sink-settings"></a>シンクの設定
 
-シンクを追加したら、 **[シンク]** タブから構成を行います。ここでは、シンクを書き込むデータセットを選択して作成できます 
+シンクを追加したら、 **[シンク]** タブから構成を行います。ここでは、シンクを書き込むデータセットを選択して作成できます 以下の動画では、テキスト区切りのファイルの種類に対応するさまざまなシンク オプションについて説明します。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tf7T]
 
 ![シンク設定](media/data-flow/sink-settings.png "シンクの設定")
 
 **スキーマの誤差:** [スキーマの誤差](concepts-data-flow-schema-drift.md)は、データ フロー内の柔軟なスキーマをネイティブに処理するデータ ファクトリの機能であり、列の変更を明示的に定義する必要はありません。 シンク データ スキーマで定義されている内容の上に追加の列を記述するには、 **[Allow schema drift]\(スキーマの誤差を許可する\)** を有効にします。
 
-**[Validate schema]:** [スキーマの検証] が選択されると、データセットの定義済みスキーマ内に列が見つからない場合、そのデータ フローはエラーになります。
+**[Validate schema]:** [スキーマの検証] を選択すると、受信ソース スキーマの列がソース プロジェクションに見つからない場合、またはデータ型が一致しない場合にデータ フローは失敗します。 この設定を使用して、ソース データが定義済みのプロジェクションのコントラクトを満たすように強制します。 これは、列の名前または型が変更されたことを通知するために、データベース ソースのシナリオで非常に便利です。
 
 ## <a name="field-mapping"></a>フィールドのマッピング
 

@@ -3,12 +3,12 @@ title: Azure Resource Health でサポートされるリソースの種類 |Micr
 description: Azure Resource Health でサポートされるリソースの種類
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f5d1c720d3cbafafc81276a968abf2003bbd46ce
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 5cc80147730fdc97b1181690f6e70fc538d4afcc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303955"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478904"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
@@ -41,17 +41,22 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |実行されるチェック|
 |---|
-|<ul><li>ホスト サーバーが稼働しているか</li><li>ホスト OS の起動が完了しているか</li><li>仮想マシン コンテナーがプロビジョニングされ、オンになっているか</li><li>ホストとストレージ アカウント間のネットワーク接続が存在するか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li></ul>|
+|<ul><li>ホスト サーバーが稼働しているか</li><li>ホスト OS の起動が完了しているか</li><li>仮想マシン コンテナーがプロビジョニングされ、オンになっているか</li><li>ホストとストレージ アカウント間のネットワーク接続が存在するか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li><li>ホストのハードウェアの機能が低下し、すぐに障害が起きると予測されるか</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |実行されるチェック|
 |---|
 |<ul><li>データセンターからアカウントにアクセスできるか</li><li>Cognitive Services リソース プロバイダーを利用できるか</li><li>Cognitive Services が適切な地域で利用できるか</li><li>リソースのメタデータを保持しているストレージ アカウントで読み取り操作を実行できるか</li><li>API 呼び出しのクォータに達しているか</li><li>API 呼び出しの読み取り制限に達しているか</li></ul>|
 
+## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroups/hosts
+|実行されるチェック|
+|---|
+|<ul><li>ホストが稼働しているか</li><li>ホストのハードウェアの機能が低下しているかどうか?</li><li>ホストの割り当てが解除されているかどうか?</li><li>ホストのハードウェア サービスが異なるハードウェアに復旧しているかどうか?</li></ul>|
+
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |実行されるチェック|
 |---|
-|<ul><li>この仮想マシンをホストするサーバーは稼働しているか</li><li>ホスト OS の起動が完了しているか</li><li>仮想マシン コンテナーがプロビジョニングされ、オンになっているか</li><li>ホストとストレージ アカウント間のネットワーク接続が存在するか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li></ul>|
+|<ul><li>この仮想マシンをホストするサーバーは稼働しているか</li><li>ホスト OS の起動が完了しているか</li><li>仮想マシン コンテナーがプロビジョニングされ、オンになっているか</li><li>ホストとストレージ アカウント間のネットワーク接続が存在するか</li><li>ゲスト OS の起動が完了しているか</li><li>進行中の定期的なメンテナンスはあるか</li><li>ホストのハードウェアの機能が低下し、すぐに障害が起きると予測されるか</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
 |実行されるチェック|
@@ -188,6 +193,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |実行されるチェック|
 |---|
 |<ul><li>ユーザーによって生成された Service Bus エラーをお客様が経験しているか</li><li>Service Bus 名前空間のアップグレードが原因で、ユーザーが一時的なエラーの増加を経験しているか</li></ul>|
+
+## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clusters
+|実行されるチェック|
+|---|
+|<ul><li>Service Fabric クラスターは稼働しているか</li><li>Service Fabric クラスターは、Azure Resource Manager を使用して管理できるか</li></ul>|
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.SQL/managedInstances/databases
 |実行されるチェック|

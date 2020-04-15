@@ -1,21 +1,20 @@
 ---
 title: Log Analytics エージェントの概要
 description: このトピックは、Azure、オンプレミス、または他のクラウド環境でホストされているコンピューターで、Log Analytics を使用してデータの収集と監視を行う方法を理解するために役立ちます。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: bf2939c28afb682d4053a27920b9cf57795d2e86
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: d52d8e6d0f6e3325b5c5cdc9a2e21654e6a2b621
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467234"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520719"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
-Azure Log Analytics エージェントは、あらゆるクラウド、オンプレミスマシンの仮想マシン、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)で監視される仮想マシンを包括的に管理するために開発されました。 Windows および Linux エージェントは、異なるソースから収集したデータを Azure Monitor の Log Analytics ワークスペースに送信し、モニター ソリューションで定義された固有のログやメトリックを送信します。 Log Analytics エージェントはインサイトや [Azure Monitor for VMs]()、[Azure Security Center]()、[Azure Automation]() といった Azure Monitor のその他のサービスもサポートします。
+Azure Log Analytics エージェントは、あらゆるクラウド、オンプレミスマシンの仮想マシン、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)で監視される仮想マシンを包括的に管理するために開発されました。 Windows および Linux エージェントは、異なるソースから収集したデータを Azure Monitor の Log Analytics ワークスペースに送信し、モニター ソリューションで定義された固有のログやメトリックを送信します。 Log Analytics エージェントはインサイトや [Azure Monitor for VMs](../insights/vminsights-enable-overview.md)、[Azure Security Center](/azure/security-center/)、[Azure Automation](../../automation/automation-intro.md) といった Azure Monitor のその他のサービスもサポートします。
 
 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
 
@@ -102,7 +101,7 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 2018 年 8 月以降にリリースされたバージョンからは、サポート モデルに次の変更を加えています。  
 
 * クライアントではなく、サーバー バージョンのみがサポートされます。  
-* [Azure Linux の動作保証済みディストリビューション](../../virtual-machines/linux/endorsed-distros.md)の新しいバージョンは、常にサポートされます。  
+* [Azure Linux 動作保証済みディストリビューション](../../virtual-machines/linux/endorsed-distros.md)のサポートに重点が置かれています。 新しいディストリビューションやバージョンが Azure Linux 動作保証済みになってから、Log Analytics Linux エージェントでサポートされるまでの間に、遅延が発生する場合があることに注意してください。
 * 記載されている各メジャー バージョンのマイナー リリースは、すべてサポートされます。
 * 製造元のサポート終了日を超過したバージョンは、サポートされません。  
 * AMI の新しいバージョンはサポートされません。  
@@ -143,24 +142,41 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 Azure Monitor ログに転送中のデータのセキュリティを確保するには、エージェントを、少なくともトランスポート層セキュリティ (TLS) 1.2 を使用するように構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。  詳細については、「[TLS 1.2 を使用して安全にデータを送信する](data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
 
 
+## <a name="sha-2-code-signing-support-requirement-for-windows"></a>Windows の SHA-2 コード署名サポートの要件
+Windows エージェントでは、2020 年 5 月 18 日に SHA-2 署名の排他的な使用が開始されます。 この変更は、Azure サービス (Azure Monitor、Azure Automation、Azure Update Management、Azure Change Tracking、Azure Security Center、Azure Sentinel、Windows Defender ATP) の一部として、レガシ OS で Log Analytics エージェントを使用しているお客様に影響します。 レガシ OS バージョン (Windows 7、Windows Server 2008 R2、および Windows Server 2008) でエージェントを実行している場合を除き、この変更によってお客様が対処する必要はありません。 レガシ OS バージョンで実行しているお客様は、2020 年 5 月 18 日より前に次の操作をマシンで行う必要があります。そうしないと、エージェントからの Log Analytics ワークスペースへのデータの送信が停止します。
+
+1. お使いの OS の最新の Service Pack をインストールします。 必要な Service Pack バージョンは次のとおりです。
+    - Windows 7 SP1
+    - Windows Server 2008 SP2
+    - Windows Server 2008 R2 SP1
+
+2. 「[Windows および WSUS の 2019 SHA-2 コード署名サポートの要件](https://support.microsoft.com/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)」の説明に従って、お使いの OS の SHA-2 署名 Windows 更新プログラムをインストールします。
+3. Windows エージェントの最新バージョン (バージョン 10.20.18029) に更新します。
+4. [TLS 1.2 を使用する](agent-windows.md#configure-agent-to-use-tls-12)ようにエージェントを構成することをお勧めします。 
+
+
 ## <a name="network-requirements"></a>ネットワークの要件
 Linux および Windows 用エージェントは、Azure Monitor サービスに TCP ポート 443 経由で通信します。マシンがファイアウォールまたはプロキシ サーバーを経て接続し、インターネット経由で通信する場合は、必須のネットワーク構成を理解するために以下の要件を確認します。 インターネットに接続するネットワーク上のコンピューターが IT セキュリティ ポリシーで許可されていない場合、[Log Analytics ゲートウェイ](gateway.md)を設定し、エージェントをゲートウェイ経由で Azure Monitor ログに接続するように構成できます。 エージェントは構成情報を受信し、ワークスペースで有効にしたデータ収集ルールおよび監視ソリューションに従って収集されたデータを送信できます。
 
 ![Log Analytics エージェントの通信ダイアグラム](./media/log-analytics-agent/log-analytics-agent-01.png)
 
+以下の表は、Linux および Windows エージェントが Azure Monitor ログと通信するために必要なプロキシとファイアウォール構成情報の一覧です。
 
-## <a name="network-firewall-requirements"></a>ネットワーク ファイアウォールの要件
-以下の情報は、Linux および Windows エージェントが Azure Monitor ログと通信するために必要なプロキシとファイアウォール構成情報の一覧です。  
+### <a name="firewall-requirements"></a>ファイアウォールの要件
 
 |エージェントのリソース|Port |Direction |バイパス HTTPS 検査|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |ポート 443 |送信|はい |  
-|*.oms.opinsights.azure.com |ポート 443 |送信|はい |  
-|*.blob.core.windows.net |ポート 443 |送信|はい |  
+|*.ods.opinsights.azure.com |ポート 443 |受信および送信|はい |  
+|*.oms.opinsights.azure.com |ポート 443 |受信および送信|はい |  
+|*.blob.core.windows.net |ポート 443 |受信および送信|はい |
+|*.azure-automation.net |ポート 443 |受信および送信|はい |
+|*.azure.com |ポート 443|受信および送信|はい |
 
 Azure Government に必要なファイアウォールの情報については、[Azure Government の管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)に関するトピックを参照してください。 
 
 Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook または管理ソリューションを使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 
+
+### <a name="proxy-configuration"></a>[プロキシ構成]
 
 Windows および Linux エージェントは、HTTPS プロトコルを使用し、プロキシ サーバーまたは Log Analytics ゲートウェイのいずれかを経由して、Azure Monitor との通信をサポートします。  匿名認証と基本認証 (ユーザー名/パスワード) の両方がサポートされます。  サービスに直接接続される Windows エージェントの場合、プロキシの構成は、インストール時や、[デプロイ後](agent-manage.md#update-proxy-settings)にコントロール パネルまたは PowerShell を使って、指定されます。  
 
@@ -175,7 +191,7 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 |--------|-------------|
 |Protocol | https |
 |user | プロキシ認証のオプションのユーザー名 |
-|パスワード | プロキシ認証のオプションのパスワード |
+|password | プロキシ認証のオプションのパスワード |
 |proxyhost | プロキシ サーバー/Log Analytics ゲートウェイのアドレスまたは FQDN |
 |port | プロキシ サーバー/Log Analytics ゲートウェイのオプションのポート番号 |
 

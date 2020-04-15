@@ -4,19 +4,19 @@ description: Azure MFA とユーザー ポータルを使い始めます。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 886e6a33428d672a40eae821e035d0b5b7f25578
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1869fac973cd4cd68e1e91be89c25fdf1427f6a5
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848172"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653206"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のユーザー ポータル
 
@@ -43,11 +43,11 @@ ms.locfileid: "74848172"
 1. Multi-Factor Authentication Server コンソールを開きます。
 2. **[Web Service SDK]** に移動し、 **[Web サービス SDK のインストール]** を選択します。
 3. インストールは既定の設定で行ってください (何らかの理由で変更しなければならない場合を除く)。
-4. IIS 内のサイトに SSL 証明書をバインドします。
+4. IIS 内のサイトに TLS/SSL 証明書をバインドします。
 
-IIS サーバーに SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
+IIS サーバーに TLS/SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
 
-Web サービス SDK は、SSL 証明書で保護されている必要があります。 このために自己署名証明書を使用できます。 SSL 接続を開始するときにその証明書が信頼されるように、ユーザー ポータル Web サーバー上のローカル コンピューター アカウントの "信頼されたルート証明機関" ストアに証明書をインポートします。
+Web サービス SDK は、TLS/SSL 証明書で保護されている必要があります。 このために自己署名証明書を使用できます。 TLS 接続を開始するときにその証明書が信頼されるように、ユーザー ポータル Web サーバー上のローカル コンピューター アカウントの "信頼されたルート証明機関" ストアに証明書をインポートします。
 
 ![MFA Server 構成セットアップ Web サービス SDK](./media/howto-mfaserver-deploy-userportal/sdk.png)
 
@@ -57,23 +57,23 @@ Azure Multi-Factor Authentication Server と**同じサーバー**にユーザ�
 
 * ASP.NET と IIS 6 メタベース互換性を含む IIS (IIS 7 以降の場合)
 * コンピューターとドメイン (該当する場合) に対する管理者権限が付与されたアカウント。 このアカウントには Active Directory セキュリティ グループを作成するためのアクセス許可が必要です。
-* ユーザー ポータルを SSL 証明書でセキュリティ保護します。
-* Azure Multi-Factor Authentication Web サービス SDK を SSL 証明書でセキュリティ保護します。
+* ユーザー ポータルを TLS/SSL 証明書でセキュリティ保護します。
+* Azure Multi-Factor Authentication Web サービス SDK を TLS/SSL 証明書でセキュリティ保護します。
 
 ユーザー ポータルをデプロイするには、次の手順を実行します。
 
 1. Azure Multi-Factor Authentication Server コンソールを開いて、左側のメニューの **[ユーザー ポータル]** アイコンをクリックし、 **[ユーザー ポータルのインストール]** をクリックします。
 2. インストールは既定の設定で行ってください (何らかの理由で変更しなければならない場合を除く)。
-3. IIS 内のサイトに SSL 証明書をバインドします。
+3. IIS 内のサイトに TLS/SSL 証明書をバインドします
 
    > [!NOTE]
-   > 通常この SSL 証明書は、公的に署名された SSL 証明書です。
+   > 通常この TLS/SSL 証明書は、公的に署名された TLS/SSL 証明書です。
 
-4. 任意のコンピューターで Web ブラウザーを開き、ユーザー ポータルがインストールされた URL に移動します (https://mfa.contoso.com/MultiFactorAuth) など)。 証明書の警告およびエラーが表示されないことを確認してください。
+4. 任意のコンピューターで Web ブラウザーを開き、ユーザー ポータルがインストールされた URL に移動します (`https://mfa.contoso.com/MultiFactorAuth` など)。 証明書の警告およびエラーが表示されないことを確認してください。
 
 ![MFA Server ユーザー ポータルのインストール](./media/howto-mfaserver-deploy-userportal/install.png)
 
-IIS サーバーに SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
+IIS サーバーに TLS/SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
 
 ## <a name="deploy-the-user-portal-on-a-separate-server"></a>ユーザー ポータルを別のサーバーにデプロイする
 
@@ -85,19 +85,19 @@ Azure Multi-Factor Authentication Server が実行されているサーバーが
 * Microsoft インターネット インフォメーション サービス (IIS) 6.x 以上を実行している、インターネットに接続された Web サーバーにユーザー ポータルをインストールします。
 * IIS 6.x を使用している場合は、ASP.NET v2.0.50727 がインストールおよび登録され、 **[許可]** に設定されていることを確認します。
 * IIS 7.x 以上を使用している場合は、IIS 基本認証、ASP.NET、IIS 6 メタベース互換が必要となります。
-* ユーザー ポータルを SSL 証明書でセキュリティ保護します。
-* Azure Multi-Factor Authentication Web サービス SDK を SSL 証明書でセキュリティ保護します。
-* ユーザー ポータルが SSL 経由で Azure Multi-Factor Authentication Web サービス SDK に接続できるようにします。
+* ユーザー ポータルを TLS/SSL 証明書でセキュリティ保護します。
+* Azure Multi-Factor Authentication Web サービス SDK を TLS/SSL 証明書でセキュリティ保護します。
+* ユーザー ポータルが TLS/SSL 経由で Azure Multi-Factor Authentication Web サービス SDK に接続できるようにします。
 * "PhoneFactor Admins" セキュリティ グループのサービス アカウントの資格情報を使用して、Azure Multi-Factor Authentication Web サービス SDK でユーザー ポータルを認証できるようにします。 このサービス アカウントとグループは、Azure Multi-Factor Authentication Server がドメインに参加しているサーバーで実行されている場合は、Active Directory に存在している必要があります。 このサービス アカウントとグループは、Azure Multi-Factor Authentication Server がドメインに参加していない場合、Azure Multi-Factor Authentication Server のローカルに存在します。
 
 Azure Multi-Factor Authentication Server 以外のサーバーにユーザー ポータルをインストールするには、次の手順が必要です。
 
 1. **MFA Server** 上のインストール パス (例: C:\Program Files\Multi-Factor Authentication Server) を参照して **MultiFactorAuthenticationUserPortalSetup64** ファイルをコピーし、そのインストール先となる、インターネットに接続されたサーバーからアクセスできる場所に貼り付けます。
 2. **インターネットに接続している Web サーバーで**、MultiFactorAuthenticationUserPortalSetup64 インストール ファイルを管理者として実行し、必要な場合はサイトを変更し、仮想ディレクトリを適宜短い名前に変更します。
-3. IIS 内のサイトに SSL 証明書をバインドします。
+3. IIS 内のサイトに TLS/SSL 証明書をバインドします。
 
    > [!NOTE]
-   > 通常この SSL 証明書は、公的に署名された SSL 証明書です。
+   > 通常この TLS/SSL 証明書は、公的に署名された TLS/SSL 証明書です。
 
 4. **C:\inetpub\wwwroot\MultiFactorAuth** を参照します。
 5. メモ帳で Web.Config ファイルを編集します。
@@ -108,9 +108,9 @@ Azure Multi-Factor Authentication Server 以外のサーバーにユーザー �
     * **https://www.contoso.com/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx** という値を探して、このプレースホルダー URL を手順 2. でインストールした Web サービス SDK の URL に変更します。
     * Web.Config ファイルを保存してメモ帳を閉じます。
 
-6. 任意のコンピューターで Web ブラウザーを開き、ユーザー ポータルがインストールされた URL に移動します (https://mfa.contoso.com/MultiFactorAuth) など)。 証明書の警告およびエラーが表示されないことを確認してください。
+6. 任意のコンピューターで Web ブラウザーを開き、ユーザー ポータルがインストールされた URL に移動します (`https://mfa.contoso.com/MultiFactorAuth` など)。 証明書の警告およびエラーが表示されないことを確認してください。
 
-IIS サーバーに SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
+IIS サーバーに TLS/SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
 
 ## <a name="configure-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のユーザー ポータル設定を構成する
 
@@ -183,6 +183,6 @@ Azure Multi-Factor Authentication Server にはユーザー ポータル用の�
 
 これで、ユーザーの自己登録が完了し、ユーザーはユーザー ポータルにサインインします。 管理者によって変更が許可されている場合、ユーザーは、今後いつでもユーザー ポータルに戻って、電話番号、PIN、認証方法、セキュリティの質問を変更できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](howto-mfaserver-deploy-mobileapp.md)。

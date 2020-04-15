@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: bf2a2385b3129ddf24ede7f6d851701186b0e33c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445704"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985645"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
@@ -26,14 +26,14 @@ ms.locfileid: "75445704"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。  
 
-* Azure サブスクリプションを必要とせず、課金や契約もなく [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、[ エンドポイントで ](https://docs.microsoft.com/azure/cosmos-db/local-emulator)Azure Cosmos DB Emulator`https://localhost:8081` を使用できます。 主キーは、[要求の認証](local-emulator.md#authenticating-requests)で与えられます。  
+* Azure サブスクリプションを必要とせず、課金や契約もなく [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、`https://localhost:8081` エンドポイントで [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) を使用できます。 主キーは、[要求の認証](local-emulator.md#authenticating-requests)で与えられます。  
 
-* [Java Development Kit (JDK) 1.7 以降](https://aka.ms/azure-jdks)  
+* [Java Development Kit (JDK) 1.7 以降](/java/azure/jdk/?view=azure-java-stable)  
   - Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。  
 
   - 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。
 
-* [Maven](https://maven.apache.org/download.cgi) バイナリ アーカイブの[ダウンロード](https://maven.apache.org/install.html)と[インストール](https://maven.apache.org/)  
+* [Maven](https://maven.apache.org/) バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)  
   
   - Ubuntu で `apt-get install maven` を実行して Maven をインストールします。
 
@@ -130,7 +130,7 @@ ms.locfileid: "75445704"
 6. ターゲットの依存関係が生成されたら、次のコマンドを使用して一括インポーター アプリケーションを呼び出すことができます。  
 
    ```java
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB’s endpoint>*  -masterKey *<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
    一括インポーターにより、App.config ファイルで指定したデータベース名、コレクション名、およびスループット値を使用して、新しいデータベースとコレクションが作成されます。 
@@ -150,7 +150,7 @@ BulkUpdateAsync API を使用すると、既存のドキュメントを更新で
    updateOperations.add(descriptionUpdate);
 
    List<UpdateItem> updateItems = new ArrayList<>(cfg.getNumberOfDocumentsForEachCheckpoint());
-   IntStream.range(0, cfg.getNumberOfDocumentsForEachCheckpoint()).mapToObj(j -> {                      
+   IntStream.range(0, cfg.getNumberOfDocumentsForEachCheckpoint()).mapToObj(j -> {                        
     return new UpdateItem(Long.toString(prefix + j), Long.toString(prefix + j), updateOperations);
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
@@ -182,7 +182,7 @@ BulkUpdateAsync API を使用すると、既存のドキュメントを更新で
    |int getNumberOfDocumentsUpdated()  |   一括更新 API 呼び出しに渡されたドキュメントのうち正常に更新されたドキュメントの総数。      |
    |double getTotalRequestUnitsConsumed() |  一括更新 API 呼び出しによって使用された要求ユニット (RU) の合計数。       |
    |Duration getTotalTimeTaken()  |   一括更新 API 呼び出しが実行を完了するまでに要した合計時間。      |
-   |List\<Exception> getErrors()   |    一括更新 API 呼び出しに渡されたバッチの一部のドキュメントの挿入が失敗した場合、エラーの一覧を取得します。      |
+   |List\<Exception> getErrors()   |       一括更新 API 呼び出しに渡されたバッチの一部のドキュメントの挿入が失敗した場合、エラーの一覧を取得します。      |
 
 3. 一括更新アプリケーションの準備ができたら、"mvn clean package" コマンドを使用して、ソースからコマンド ライン ツールをビルドします。 このコマンドは、ターゲット フォルダーに jar ファイルを生成します。  
 
@@ -193,7 +193,7 @@ BulkUpdateAsync API を使用すると、既存のドキュメントを更新で
 4. ターゲットの依存関係が生成されたら、次のコマンドを使用して一括更新アプリケーションを呼び出すことができます。
 
    ```
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB’s endpoint>* -masterKey **<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
 ## <a name="performance-tips"></a>パフォーマンスに関するヒント 

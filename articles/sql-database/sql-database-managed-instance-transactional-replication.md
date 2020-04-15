@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 41dd336bdb74fbe745ab48ebd3c168af0492ae2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a048ddefbcd76193436da13cd3ba68b8b6ffb0a
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75691017"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607596"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Azure SQL Database での単一データベース、プールされたデータベース、インスタンス データベースを使用したトランザクション レプリケーション
 
@@ -95,7 +95,7 @@ ms.locfileid: "75691017"
 - 接続では、レプリケーション参加者間で SQL 認証を使用します。 
 - レプリケーションで使用される作業ディレクトリの Azure ストレージ アカウント共有。 
 - Azure ファイル共有にアクセスするために、マネージド インスタンス サブネットのセキュリティ規則でポート 445 (TCP アウトバウンド) を開く必要があります。 
-- ポート 1433 (TCP アウトバウンド) は、パブリッシャーおよびディストリビューターがマネージド インスタンス上にあり、サブスクライバーがオンプレミスにある場合は、開かれている必要があります。
+- ポート 1433 (TCP アウトバウンド) は、パブリッシャーおよびディストリビューターがマネージド インスタンス上にあり、サブスクライバーはそうでない場合は、開かれている必要があります。 また、ポート 1433 **宛先サービス タグ**の `allow_linkedserver_outbound` のマネージド インスタンス NSG 送信セキュリティ規則を `virtualnetwork` から `internet` に変更することが必要になる場合もあります。 
 - すべての種類のレプリケーション参加者 (パブリッシャー、ディストリビューター、プル サブスクライバー、プッシュ サブスクライバー) をマネージド インスタンスに配置できますが、パブリッシャーとディストリビューターは両者ともクラウドに配置するか、または両者ともオンプレミスに配置する必要があります。
 - パブリッシャー、ディストリビューター、および/またはサブスクライバーが異なる仮想ネットワークに存在する場合、パブリッシャーとディストリビューターの間にVPNピアリングがあり、かつ/またはディストリビューターとサブスクライバーの間にVPNピアリングがあるように、各エンティティ間にVPNピアリングを確立する必要があります。 
 
@@ -142,7 +142,7 @@ ms.locfileid: "75691017"
 
 ## <a name="with-failover-groups"></a>フェイルオーバーグループを使う
 
-Geo レプリケーションが、**フェールオーバーグループ** の**パブリッシャー** または [ディストリビューター](sql-database-auto-failover-group.md) 上で有効化されている場合、マネージドインスタンス管理者は、フェイルオーバー発生後、古いプライマリ上のすべてのアプリケーションをクリーンアップして、新しいプライマリ上でそれらを再構成する必要があります。 このシナリオでは、次のアクティビティが必要です。
+Geo レプリケーションが、[フェールオーバーグループ](sql-database-auto-failover-group.md) の**パブリッシャー** または **ディストリビューター** 上で有効化されている場合、マネージドインスタンス管理者は、フェイルオーバー発生後、古いプライマリ上のすべてのアプリケーションをクリーンアップして、新しいプライマリ上でそれらを再構成する必要があります。 このシナリオでは、次のアクティビティが必要です。
 
 1. データベース上で実行されているレプリケーション ジョブがある場合は、すべて停止します。
 2. パブリッシャーからサブスクリプションのメタデータを削除するには、パブリッシャー データベース上で次のスクリプトを実行します。
@@ -183,7 +183,7 @@ Geo レプリケーションが、フェイルオーバーの **サブスクラ�
 - [MI パブリッシャーとサブスクライバーの間でのレプリケーションを構成する](replication-with-sql-database-managed-instance.md)
 - [MI パブリッシャーと MI ディストリビューター、および SQL Server サブスクライバーの間のレプリケーションを構成する](sql-database-managed-instance-configure-replication-tutorial.md)
 - [パブリケーションを作成します](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)。
-- Azure SQL Database サーバー名をサブスクライバーとして ([ など)、Azure SQL Database 名を宛先データベースとして (](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)AdventureWorks`N'azuresqldbdns.database.windows.net` など) 使用して、**プッシュ サブスクリプションを作成します**。 )
+- Azure SQL Database サーバー名をサブスクライバーとして (`N'azuresqldbdns.database.windows.net` など)、Azure SQL Database 名を宛先データベースとして (**AdventureWorks** など) 使用して、[プッシュ サブスクリプションを作成します](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)。 )
 
 
 トランザクションレプリケーションの構成の詳細については、次のチュートリアルを参照してください：

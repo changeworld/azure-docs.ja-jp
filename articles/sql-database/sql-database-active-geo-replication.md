@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 02/17/2020
-ms.openlocfilehash: fe006cebe9aab30a6aaa0bdf2bf3362a494f64d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: cc9d129894cefaf2fab853d2099d754d68238e5f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77426277"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887352"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>アクティブ geo レプリケーションの作成と使用
 
@@ -113,14 +113,16 @@ ms.locfileid: "77426277"
 
 ## <a name="configuring-secondary-database"></a>セカンダリ データベースの構成
 
-プライマリとセカンダリ、両方のデータベースが同じサービス階層を持つ必要があります。 また、セカンダリ データベースは、プライマリと同じコンピューティング サイズ (DTU または仮想コア) で作成することを強くお勧めします。 プライマリ データベースで書き込みワークロードの負荷が高くなっている場合、コンピューティング サイズがより小さなセカンダリはそのワークロードを維持できない可能性があります。 これにより、セカンダリで再実行ラグが発生し、利用不能となる可能性があります。 プライマリ データベースより処理速度が遅いセカンダリ データベースでは、フェールオーバーを強制的に実施する必要がある場合に、大きなデータ損失が発生するリスクもあります。 このようなリスクを軽減するために、効果的なアクティブ geo レプリケーションは、プライマリのログ レートをスロットルしてセカンダリが追い付けるようにします。 バランスがとれていないセカンダリ構成の他の影響として、フェールオーバーの後、新しいプライマリのコンピューティング容量の不足のためにアプリケーションのパフォーマンスが低下することが挙げられます。 より大きなコンピューティング容量に、必要なレベルまでアップグレードすることが必要になりますが、それは停止が緩和されるまで不可能です。 
+プライマリとセカンダリ、両方のデータベースが同じサービス階層を持つ必要があります。 また、セカンダリ データベースは、プライマリと同じコンピューティング サイズ (DTU または仮想コア) で作成することを強くお勧めします。 プライマリ データベースで書き込みワークロードの負荷が高くなっている場合、コンピューティング サイズがより小さなセカンダリはそのワークロードを維持できない可能性があります。 これにより、セカンダリで再実行ラグが発生し、セカンダリが利用不能となる可能性があります。 このようなリスクを軽減するために、アクティブ geo レプリケーションは、必要に応じてプライマリのトランザクション ログ速度をスロットルしてセカンダリが追い付けるようにします。 
 
+バランスがとれていないセカンダリ構成の他の影響として、フェールオーバーの後、新しいプライマリのコンピューティング容量の不足のためにアプリケーションのパフォーマンスが低下する可能性があることが挙げられます。 その場合は、データベース サービスの目標を必要なレベルに拡張する必要があります。これには膨大な時間とコンピューティング リソースがかかる可能性があり、スケールアップ プロセスの最後には[高可用性](sql-database-high-availability.md)フェールオーバーが必要となります。
 
-> [!IMPORTANT]
-> セカンダリ データベースがプライマリと同じコンピューティング サイズで構成されていない場合、公表されている 5 秒の RPO は保証できません。 
+小さいコンピューティング サイズでセカンダリを作成する場合は、Azure portal 上のログ IO の割合グラフを使用すると、レプリケーションの負荷を維持するために必要なセカンダリの最小コンピューティング サイズを適切に見積もることができます。 たとえば、プライマリ データベースが P6 (1000 DTU) で、ログ書き込みの割合が 50% の場合、セカンダリは P4 (500 DTU) 以上である必要があります。 履歴ログ IO データを取得するには、[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) ビューを使用します。 短期的なログ速度の急増を詳細に反映した最新のログ書き込みデータを取得するには、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ビューを使用します。
 
+セカンダリのコンピューティング サイズが低いため、プライマリで行われたトランザクション ログ速度のスロットリングは、HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO の待機の種類を使用して報告され、[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) および [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) データベース ビューに表示されます。 
 
-小さいコンピューティング サイズでセカンダリを作成する場合は、Azure portal 上のログ IO の割合グラフを使用すると、レプリケーションの負荷を維持するために必要なセカンダリの最小コンピューティング サイズを適切に見積もることができます。 たとえば、プライマリ データベースが P6 (1000 DTU) で、ログ IO の割合が 50% の場合、セカンダリは P4 (500 DTU) 以上である必要があります。 ログ IO データは、[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) または [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) データベース ビューを使用しても取得できます。  スロットルは、[sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) および [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) の各データベース ビューで HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO 待機状態として報告されます。 
+> [!NOTE]
+> プライマリのトランザクション ログ速度は、セカンダリのコンピューティング サイズが小さいことに関連しない理由によりスロットルされる可能性があります。 この種類のスロットリングは、セカンダリのコンピューティング サイズがプライマリよりも同じかそれ以上である場合にも発生する可能性があります。 さまざまな種類のログ速度スロットリングの待機の種類などの詳細については、「[トランザクション ログ速度ガバナンス](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)」を参照してください。
 
 SQL Database のコンピューティング サイズの詳細については、[SQL Database サービス レベル](sql-database-purchase-models.md)に関するページをご覧ください。
 
@@ -146,7 +148,7 @@ SQL Database のコンピューティング サイズの詳細については、
 
    ```sql
    create user geodrsetup for login geodrsetup
-   alter role geodrsetup dbmanager add member geodrsetup
+   alter role dbmanager add member geodrsetup
    ```
 
 1. 次のクエリを使用して、新しいログインの SID を書き留めます。 

@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 46c2bad6aa4e5c2e72a7e46ed944e2ca8d25bddc
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 717a09d8377a7b95fe24300cc65222f307e7419f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050353"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437522"
 ---
 # <a name="references"></a>References
 
@@ -162,7 +162,7 @@ Azure FarmBeats API は、Azure Active Directory のユーザーまたはアプ�
     - **[概要]** に戻り、 **[Manage Application in local directory]\(ローカルディレクトリ内のアプリケーションの管理\)** の横にあるリンクを選択します。
     - **[プロパティ]** に移動し、 **[オブジェクト ID]** を取得します。
 
-4. [Datahub Swagger](https://<yourdatahub>.azurewebsites.net/swagger/index.html) に移動し、次の手順を実行します。
+4. Datahub Swagger (https://<yourdatahub>.azurewebsites.net/swagger/index.html) にアクセスし、次の手順を実行します。
     - **RoleAssignment API** に移動します。
     - POST を実行し、先ほど作成した **[オブジェクト ID]** の **RoleAssignment** オブジェクトを作成します。
 

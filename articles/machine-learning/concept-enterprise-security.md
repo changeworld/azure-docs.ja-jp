@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 01/09/2020
-ms.openlocfilehash: b37b386273947f8c39fe182e4f29b7b080addf7b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.date: 03/13/2020
+ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605625"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756572"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティ
 
@@ -107,12 +107,42 @@ Azure Machine Learning は、コンピューティング リソースに関し�
 
 詳しくは、[仮想ネットワークで実験と推論を実行する方法](how-to-enable-virtual-network.md)に関する記事をご覧ください。
 
+また、ワークスペースに対して Azure Private Link を有効にすることもできます。 Private Link を使用すると、Azure Virtual Network からワークスペースへの通信を制限することができます。 詳細については、[Private Link を構成する方法](how-to-configure-private-link.md)に関するページを参照してください。
+
+> [!TIP]
+> 仮想ネットワークと Private Link を組み合わせて、ワークスペースとその他の Azure リソースとの間の通信を保護することができます。 ただし、一部の組み合わせには Enterprise edition ワークスペースが必要です。 Enterprise edition が必要なシナリオを理解するには、次の表を使用します。
+>
+> | シナリオ | Enterprise</br>edition | Basic</br>edition |
+> | ----- |:-----:|:-----:| 
+> | 仮想ネットワークまたは Private Link なし | ✔ | ✔ |
+> | Private Link を使用しないワークスペース。 仮想ネットワーク内のその他のリソース (Azure Container Registry を除く) | ✔ | ✔ |
+> | Private Link を使用しないワークスペース。 Private Link を使用するその他のリソース | ✔ | |
+> | Private Link を使用するワークスペース。 仮想ネットワーク内のその他のリソース (Azure Container Registry を除く) | ✔ | ✔ |
+> | ワークスペースと Private Link を使用するその他のリソース | ✔ | |
+> | Private Link を使用するワークスペース。 Private Link または仮想ネットワークを使用しないその他のリソース | ✔ | ✔ |
+> | 仮想ネットワーク内の Azure Container Registry | ✔ | |
+> | ワークスペースのカスタマー マネージド キー | ✔ | |
+> 
+
+> [!WARNING]
+> Azure Machine Learning コンピューティング インスタンス プレビューは、Private Link が有効になっているワークスペースではサポートされていません。
+> 
+> Azure Machine Learning では、Private Link が有効になっている Azure Kubernetes Service の使用はサポートされていません。 代わりに、仮想ネットワークで Azure Kubernetes Service を使用できます。 詳細については、「[Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する](how-to-enable-virtual-network.md)」を参照してください。
+
 ## <a name="data-encryption"></a>データの暗号化
 
 ### <a name="encryption-at-rest"></a>保存時の暗号化
 
 > [!IMPORTANT]
-> ワークスペースに機密データが含まれている場合は、ワークスペースの作成時に [hbi_workspace フラグ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を設定することをお勧めします。 これにより Microsoft が診断目的で収集するデータの量が制御され、Microsoft が管理する環境での追加の暗号化が可能になります。
+> ワークスペースに機密データが含まれている場合は、ワークスペースの作成時に [hbi_workspace フラグ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)を設定することをお勧めします。 
+
+`hbi_workspace` フラグにより、Microsoft が診断目的で収集するデータの量が制御され、Microsoft が管理する環境での追加の暗号化が可能になります。 さらに、次のことが可能になります。
+
+* そのサブスクリプションで以前にクラスターを作成していない場合に、Amlcompute クラスターでローカル スクラッチ ディスクの暗号化を開始します。 それ以外の場合は、コンピューティング クラスターのスクラッチ ディスクの暗号化を有効にするためにサポート チケットを作成する必要があります。 
+* 実行間でローカル スクラッチ ディスクをクリーンアップします
+* Key Vault を使用して、ストレージ アカウント、コンテナー レジストリ、SSH アカウントの資格情報を実行層からコンピューティング クラスターに安全に渡します。
+* AzureMachineLearningService 以外の外部サービスから基になる Batch プールを呼び出すことができないように、IP フィルタリングを有効にします。
+
 
 Azure での保存時の暗号化のしくみについて詳しくは、[保存時の Azure データの暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)を参照してください。
 
@@ -124,6 +154,8 @@ Azure BLOB ストレージに格納されるデータに独自のキーを使用
 
 通常はトレーニング データも、トレーニング コンピューティング先にアクセスできるように Azure BLOB ストレージに格納されます。 このストレージは、Azure Machine Learning によって管理されませんが、リモート ファイル システムとしてコンピューティング先にマウントされます。
 
+キーを__交換または取り消す__必要がある場合は、いつでもこの操作を行うことができます。 キーを交換すると、ストレージ アカウントは、新しいキー (最新バージョン) を使用して保存データを暗号化します。 キーを取り消す (無効にする) と、ストレージ アカウントは失敗した要求を処理します。 通常、交換または失効が有効になるまでに 1 時間かかります。
+
 アクセス キーを再生成する方法の詳細については、「[ストレージ アカウント アクセス キーの再生成](how-to-change-storage-access-key.md)」を参照してください。
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
@@ -131,9 +163,6 @@ Azure BLOB ストレージに格納されるデータに独自のキーを使用
 Azure Machine Learning では、Azure Cosmos DB インスタンスにメトリックとメタデータが格納されます。 このインスタンスは、Azure Machine Learning によって管理される Microsoft サブスクリプションに関連付けられています。 Azure Cosmos DB に格納されているすべてのデータは、Microsoft によって管理されるキーを使用して保存時に暗号化されます。
 
 独自の (カスタマーマネージド) キーを使用して Azure Cosmos DB インスタンスを暗号化する場合は、ワークスペースで使用する専用の Cosmos DB インスタンスを作成できます。 実行履歴情報などのデータを、Microsoft サブスクリプションでホストされているマルチテナント Cosmos DB インスタンスの外部に格納する場合は、この方法をお勧めします。 
-
-> [!NOTE]
-> この機能は、現時点では米国東部、米国西部 2、米国中南部でのみご利用いただけます。
 
 カスタマー マネージド キーを使用してサブスクリプションに Cosmos DB インスタンスをプロビジョニングできるようにするには、次の操作を実行します。
 
@@ -160,6 +189,8 @@ Azure Machine Learning では、Azure Cosmos DB インスタンスにメトリ�
 > * この Cosmos DB インスタンスを削除する必要がある場合は、それを使用する Azure Machine Learning ワークスペースを削除する必要があります。 
 > * この Cosmos DB アカウントの既定の[__要求ユニット__](../cosmos-db/request-units.md)は __8000__ に設定されています。 この値の変更はサポートされていません。 
 
+キーを__交換または取り消す__必要がある場合は、いつでもこの操作を行うことができます。 キーを交換すると、Cosmos DB は新しいキー (最新バージョン) を使用して保存データを暗号化します。 キーを取り消す (無効にする) と、Cosmos DB は失敗した要求を処理します。 通常、交換または失効が有効になるまでに 1 時間かかります。
+
 カスタマー マネージド キーと Cosmos DB の詳細については、[Azure Cosmos DB アカウントのカスタマー マネージド キーの構成](../cosmos-db/how-to-setup-cmk.md)に関する記事を参照してください。
 
 #### <a name="azure-container-registry"></a>Azure Container Registry
@@ -175,7 +206,21 @@ Azure Machine Learning では、Azure Cosmos DB インスタンスにメトリ�
 
 #### <a name="azure-container-instance"></a>Azure Container Instances
 
-Azure Container Instance はディスク暗号化をサポートしていません。 ディスク暗号化が必要な場合は、代わりに [Azure Kubernetes Service インスタンスにデプロイする](how-to-deploy-azure-kubernetes-service.md)ことを お勧めします。 この場合は、ロールベースのアクセス制御のための Azure Machine Learning のサポートを使用して、サブスクリプション内の Azure Container Instance にデプロイされないようにすることもできます。
+カスタマー マネージド キーを使用して、デプロイされた Azure Container Instance (ACI) リソースを暗号化することができます。 ACI に使用するカスタマー マネージド キーは、ワークスペースの Azure Key Vault に格納できます。 キーの生成の詳細については、「[カスタマー マネージド キーを使用してデータを暗号化する](../container-instances/container-instances-encrypt-data.md#generate-a-new-key)」を参照してください。
+
+Azure Container Instance にモデルをデプロイするときにキーを使用するには、`AciWebservice.deploy_configuration()` を使用して新しいデプロイ構成を作成します。 次のパラメーターを使用して、キーの情報を指定します。
+
+* `cmk_vault_base_url`:キーが含まれるキー コンテナーの URL。
+* `cmk_key_name`:キーの名前です。
+* `cmk_key_version`:キーのバージョン。
+
+デプロイ構成の作成と使用の詳細については、次の記事を参照してください。
+
+* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) 参照
+* [デプロイする場所と方法](how-to-deploy-and-where.md)
+* [Azure Container Instances にモデルをデプロイする](how-to-deploy-azure-container-instance.md)
+
+カスタマー マネージド キーを ACI で使用する方法の詳細については、「[カスタマー マネージド キーを使用してデータを暗号化する](../container-instances/container-instances-encrypt-data.md#encrypt-data-with-a-customer-managed-key)」を参照してください。
 
 #### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
@@ -198,9 +243,9 @@ Azure Databricks は Azure Machine Learning パイプラインで使用できま
 
 ### <a name="encryption-in-transit"></a>転送中の暗号化
 
-SSL を使用して、Azure Machine Learning マイクロサービス間の内部通信をセキュリティで保護し、スコアリング エンドポイントへの外部呼び出しをセキュリティで保護することができます。 すべての Azure Storage アクセスも、セキュリティで保護されたチャネル経由で行われます。
+TLS を使用して、Azure Machine Learning マイクロサービス間の内部通信をセキュリティで保護し、スコアリング エンドポイントへの外部呼び出しをセキュリティで保護することができます。 すべての Azure Storage アクセスも、セキュリティで保護されたチャネル経由で行われます。
 
-詳細については、「[SSL を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)」を参照してください。
+詳細については、「[TSL を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)」を参照してください。
 
 ### <a name="using-azure-key-vault"></a>Azure Key Vault の使用
 
@@ -338,7 +383,7 @@ Machine Learning コンピューティングはマネージド コンピュー�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [SSL を使用して Azure Machine Learning Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
+* [TLS を使用して Azure Machine Learning Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Web サービスとしてデプロイされた Machine Learning モデルを使用する](how-to-consume-web-service.md)
 * [バッチ予測を実行する方法](how-to-use-parallel-run-step.md)
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)

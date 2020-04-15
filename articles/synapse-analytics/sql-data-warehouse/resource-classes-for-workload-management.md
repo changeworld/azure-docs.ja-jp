@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47fd30fbb6e6836d6edf18ac68164d515f3aeb93
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c2ac05cb2a6b3bd185d5e3a84df4f3d9a01c5bef
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350748"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743273"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure Synapse Analytics のリソース クラスを使用したワークロード管理
 
-Azure Synapse で、リソース クラスを使用して、SQL Analytics クエリのメモリとコンカレンシーを管理するためのガイダンスです。  
+Azure Synapse で、リソース クラスを使用して、Synapse SQL プール クエリのメモリとコンカレンシーを管理するためのガイダンスです。  
 
 ## <a name="what-are-resource-classes"></a>リソース クラスについて
 
-クエリのパフォーマンス能力は、ユーザーのリソース クラスによって決定されます。  リソース クラスは、クエリ実行のためにコンピューティング リソースとコンカレンシーを制御する SQL Analytics のあらかじめ決定されたリソース制限です。 リソース クラスを利用して、同時実行されるクエリの数と、各クエリに割り当てられているコンピューティング リソースの数に制限を設定することで、クエリに対するリソースを構成することができます。  メモリとコンカレンシーの間にはトレードオフがあります。
+クエリのパフォーマンス能力は、ユーザーのリソース クラスによって決定されます。  リソース クラスは、クエリ実行のためにコンピューティング リソースとコンカレンシーを制御する Synapse SQL プールのあらかじめ決定されたリソース制限です。 リソース クラスを利用して、同時実行されるクエリの数と、各クエリに割り当てられているコンピューティング リソースの数に制限を設定することで、クエリに対するリソースを構成することができます。  メモリとコンカレンシーの間にはトレードオフがあります。
 
 - リソース クラスが少数の場合、クエリごとの最大メモリは減少しますが、コンカレンシーは増えます。
 - より大規模なリソース クラスでは、クエリあたりの最大メモリは増えますが、コンカレンシーは減ります。
@@ -65,7 +65,7 @@ Azure Synapse で、リソース クラスを使用して、SQL Analytics クエ
 - largerc
 - xlargerc
 
-各リソース クラスのメモリ割り当ては、次のようになります。 
+各リソース クラスのメモリ割り当ては、次のようになります。
 
 | サービス レベル  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
@@ -76,13 +76,11 @@ Azure Synapse で、リソース クラスを使用して、SQL Analytics クエ
 | DW500c         | 5%                | 10%                    | 22%                    | 70%                    |
 | DW1000c から<br> DW30000c | 3%       | 10%                    | 22%                    | 70%                    |
 
-
-
 ### <a name="default-resource-class"></a>既定のリソース クラス
 
 既定では、各ユーザーは動的リソース クラス **smallrc** のメンバーです。
 
-サービス管理者のリソース クラスは smallrc に固定され、変更できません。  サービス管理者はプロビジョニング プロセス中に作成されるユーザーです。  このコンテキストでのサービス管理者とは、新しいサーバーで新しい SQL Analytics インスタンスを作成するときに、[サーバー管理者ログイン] に指定されるログインです。
+サービス管理者のリソース クラスは smallrc に固定され、変更できません。  サービス管理者はプロビジョニング プロセス中に作成されるユーザーです。  このコンテキストでのサービス管理者とは、新しいサーバーで新しい Synapse SQL プールを作成するときに、[サーバー管理者ログイン] に指定されるログインです。
 
 > [!NOTE]
 > Active Directory 管理者として定義されたユーザーまたはグループは、サービス管理者でもあります。
@@ -119,7 +117,7 @@ Azure Synapse で、リソース クラスを使用して、SQL Analytics クエ
 次のステートメントはリソース クラスの対象外であり、常に smallrc で実行されます。
 
 - CREATE または DROP TABLE
-- ALTER TABLE ...SWITCH、SPLIT、または MERGE PARTITION
+- このパーティション テーブルでは、ALTER TABLE ...SWITCH、SPLIT、または MERGE PARTITION
 - ALTER INDEX DISABLE
 - DROP INDEX
 - CREATE、UPDATE、または DROP STATISTICS
@@ -164,13 +162,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 リソース クラスは、ユーザーにデータベース ロールを割り当てることによって実装されます。 ユーザーがクエリを実行すると、クエリはユーザーのリソース クラスで実行されます。 たとえば、ユーザーが staticrc10 データベース ロールのメンバーの場合、クエリは少量のメモリを使用して実行されます。 データベース ユーザーが xlargerc または staticrc80 データベース ロールのメンバーの場合、クエリは大量のメモリを使用して実行されます。
 
-ユーザーのリソース クラスを大きくするには、[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) を使用して、ユーザーをより大きなリソース クラスのデータベース ロールに追加します。  次のコードでは、largerc データベース ロールにユーザーを追加します。  各要求はシステム メモリの 22% を取得します。
+ユーザーのリソース クラスを大きくするには、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、ユーザーをより大きなリソース クラスのデータベース ロールに追加します。  次のコードでは、largerc データベース ロールにユーザーを追加します。  各要求はシステム メモリの 22% を取得します。
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-リソース クラスを小さくするには、[sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) を使用します。  'loaduser' が他のどのリソース クラスのメンバーでもない場合、既定の smallrc リソース クラスに、3% のメモリを割り当てられて追加されます。  
+リソース クラスを小さくするには、[sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用します。  'loaduser' が他のどのリソース クラスのメンバーでもない場合、既定の smallrc リソース クラスに、3% のメモリを割り当てられて追加されます。  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';
@@ -285,8 +283,8 @@ IF @DWU IS NULL
 BEGIN
 -- Selecting proper DWU for the current DB if not specified.
 
-SELECT @DWU = 'DW'+ CAST(CASE WHEN Mem> 4 THEN Nodes*500 
-  ELSE Mem*100 
+SELECT @DWU = 'DW'+ CAST(CASE WHEN Mem> 4 THEN Nodes*500
+  ELSE Mem*100
   END AS VARCHAR(10)) +'c'
     FROM (
       SELECT Nodes=count(distinct n.pdw_node_id), Mem=max(i.committed_target_kb/1000/1000/60)
@@ -595,4 +593,3 @@ GO
 ## <a name="next-steps"></a>次のステップ
 
 データベース ユーザーの管理とセキュリティの詳細については、[SQL Analytics でのデータベース保護](sql-data-warehouse-overview-manage-security.md)に関する記事を参照してください。 大規模なリソース クラスを使用してクラスター化列ストア インデックスの品質を向上させる方法については、[列ストアを圧縮するためのメモリの最適化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)に関する記事を参照してください。
-

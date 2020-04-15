@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb0b5e37843413667e51112f52e6a69534e3425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f4a961e601949689db89f8819f0a1fe1c5a7b3a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063630"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875794"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory についてよくあるご質問
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -27,16 +27,17 @@ Azure Active Directory (Azure AD) は、包括的なサービスとしての ID 
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>Azure と Azure Active Directory へのアクセス
-**Q:Azure portal で Azure AD にアクセスしようとすると、"サブスクリプションが見つかりません" と表示されるのはなぜですか?**
+**Q:Azure portal で Azure AD にアクセスしようとすると、"サブスクリプションが見つかりません" と表示されるのはなぜですか。**
 
-**A:** Azure portal にアクセスするには、各ユーザーは Azure サブスクリプションを使用したアクセス許可が必要です。 有料の Office 365 または Azure AD サブスクリプションをお持ちの場合は、1 回限りのアクティブ化の手順を行うために [https://aka.ms/accessAAD](https://aka.ms/accessAAD) にアクセスしてください。 これらをお持ちでない場合は、無料の [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)または有料のサブスクリプションをアクティブ化する必要があります。
+**A:** Azure portal にアクセスするには、各ユーザーは Azure サブスクリプションを使用したアクセス許可が必要です。 有料の Office 365 または Azure AD サブスクリプションをお持ちでない場合は、無料の [Azure アカウント](https://azure.microsoft.com/free/
+)または有料サブスクリプションをアクティブ化する必要があります。
 
 詳細については、次を参照してください。
 
 * [Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
 
 ---
-**Q:Azure AD、Office 365、Azure の関係はどうなっていますか?**
+**Q:Azure AD、Office 365、Azure の関係はどうなっていますか。**
 
 **A:** Azure AD を使用すると、すべての Web サービスに共通の ID とアクセス機能が提供されます。 Office 365、Microsoft Azure、Intune などのサービスをご利用の場合は、Azure AD を既に使用しているため、これらのサービスすべてでサインオンとアクセス管理が有効になります。
 
@@ -138,7 +139,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 アカウントは、より高度な戦略によってロックされます。  これは、使用の IP と入力したパスワードに基づいています。 また、ロックアウト期間は、攻撃されている可能性に応じて長くなります。  
 
-**Q:(一般的な) あるパスワードが拒否され、"このパスワードは何回も使用されています" という内容のメッセージが表示されました。これは、パスワードが現在 Active Directory で使用されていることを意味しますか?**
+**Q:(一般的な) あるパスワードが拒否され、"このパスワードは何回も使用されています" という内容のメッセージが表示されました。これは、パスワードが現在 Active Directory で使用されていることを意味しますか。**
 
 これは、パスワードが、"Password"、"123456" など、一般的によく使用されるものであることを意味します。
 
@@ -188,7 +189,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 * [Azure AD でのアプリケーションのシングル サインオン](../manage-apps/what-is-single-sign-on.md)
 
 ---
-**Q:オンプレミスで実行しているアプリケーションを追加することはできますか?**
+**Q:オンプレミスで実行しているアプリケーションを追加することはできますか。**
 
 **A:** Azure AD アプリケーション プロキシを使用すれば、選択したオンプレミスの Web アプリケーションに簡単かつ安全にアクセスできます。 これらのアプリケーションには、Azure AD でサービスとしてのソフトウェア (SaaS) アプリにアクセスするのと同じ方法でアクセスできます。 VPN を使ったり、ネットワーク インフラストラクチャを変更したりする必要はありません。  
 
@@ -199,7 +200,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 **A:** Azure AD 条件付きアクセスを使用して、各アプリケーションに一意のアクセス ポリシーを割り当てることができます。 ポリシーでは、多要素認証を常に要求することも、ユーザーがローカル ネットワークに接続されていない場合に要求することもできます。  
 
-詳細については、[Azure Active Directory に接続されている Office 365 やその他のアプリへのアクセスのセキュリティ保護](../active-directory-conditional-access-azure-portal.md)に関する記事を参照してください。
+詳細については、[Azure Active Directory に接続されている Office 365 やその他のアプリへのアクセスのセキュリティ保護](../conditional-access/overview.md)に関する記事を参照してください。
 
 ---
 **Q:SaaS アプリの自動化されたユーザー プロビジョニングについて教えてください。**
@@ -211,4 +212,4 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 ---
 **Q:Azure AD で Secure LDAP 接続を設定できますか?**
 
-**A:** いいえ。 Azure AD では、ライトウェイト ディレクトリ アクセス プロトコル (LDAP) や Secure LDAP は直接サポートされません。 ただし、Azure のネットワークを通じてネットワーク セキュリティ グループを適切に構成すれば、Azure AD テナント上で Azure AD Domain Services (Azure AD DS) インスタンスを有効にして、LDAP 接続を実現できます。 詳細については、 https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap を参照してください。
+**A:** いいえ。 Azure AD では、ライトウェイト ディレクトリ アクセス プロトコル (LDAP) や Secure LDAP は直接サポートされません。 ただし、Azure のネットワークを通じてネットワーク セキュリティ グループを適切に構成すれば、Azure AD テナント上で Azure AD Domain Services (Azure AD DS) インスタンスを有効にして、LDAP 接続を実現できます。 詳細については、「[Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する](../../active-directory-domain-services/tutorial-configure-ldaps.md)」を参照してください。

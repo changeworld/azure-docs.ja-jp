@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d7c7d9f6d59ffd57ddb14f7c060d0a3f6f2a6eb
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967752"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877390"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>既存のオンプレミス プロキシ サーバーと連携する
 
@@ -27,6 +27,7 @@ ms.locfileid: "78967752"
 
 * オンプレミスの送信プロキシをバイパスするようにコネクタを構成する。
 * 送信プロキシを使用して Azure AD アプリケーション プロキシにアクセスにするようにコネクタを構成する。
+* コネクタとバックエンド アプリケーション間のプロキシを使用して構成する。
 
 コネクタの動作方法について詳しくは、「[Azure AD アプリケーション プロキシ コネクタを理解する](application-proxy-connectors.md)」をご覧ください。
 
@@ -104,7 +105,7 @@ ms.locfileid: "78967752"
 * プロキシ送信規則
 * プロキシの認証
 * プロキシ ポート
-* SSL インスペクション
+* TLS インスペクション
 
 #### <a name="proxy-outbound-rules"></a>プロキシ送信規則
 
@@ -129,14 +130,31 @@ FQDN による接続を許可することはできず、代わりに IP 範囲�
 
 #### <a name="proxy-ports"></a>プロキシ ポート
 
-コネクタは、CONNECT メソッドを使用して SSL ベースの送信接続を確立します。 このメソッドにより、送信プロキシを経由するトンネルが設定されます。 プロキシ サーバーが、ポート 443 と 80 へのトンネリングを許可するように構成します。
+コネクタは、CONNECT メソッドを使用して TLS ベースの送信接続を確立します。 このメソッドにより、送信プロキシを経由するトンネルが設定されます。 プロキシ サーバーが、ポート 443 と 80 へのトンネリングを許可するように構成します。
 
 > [!NOTE]
 > Service Bus を HTTPS 経由で実行する場合は、ポート 443 が使用されます。 ただし、既定では、Service Bus は直接 TCP 接続を試みて、直接接続に失敗した場合にのみ HTTPS に戻ってきます。
 
-#### <a name="ssl-inspection"></a>SSL インスペクション
+#### <a name="tls-inspection"></a>TLS インスペクション
 
-コネクタのトラフィックに問題が生じるため、コネクタのトラフィックには SSL インスペクションを使用しないでください。 コネクタは証明書を使用してアプリケーション プロキシ サービスに対する認証を行いますが、その証明書が SSLインスペクションの間に失われることがあります。
+コネクタのトラフィックに問題が生じるため、コネクタのトラフィックには TLS インスペクションを使用しないでください。 コネクタは証明書を使用してアプリケーション プロキシ サービスに対する認証を行いますが、その証明書が TLS インスペクションの間に失われることがあります。
+
+## <a name="configure-using-a-proxy-between-the-connector-and-backend-application"></a>コネクタとバックエンド アプリケーション間のプロキシを使用して構成する
+一部の環境では、バックエンド アプリケーションへの通信での転送プロキシの使用は、特別な要件になる場合があります。
+これを有効にするには、次の手順に従ってください。
+
+### <a name="step-1-add-the-required-registry-value-to-the-server"></a>手順 1:必要なレジストリ値をサーバーに追加する
+1. 既定のプロキシを使用できるようにするには、次のレジストリ値 (DWORD) `UseDefaultProxyForBackendRequests = 1` を "HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector" にあるコネクタ構成レジストリ キーに追加します。
+
+### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>手順 2:netsh コマンドを使用してプロキシ サーバーを手動で構成する
+1.  グループ ポリシーの [マシン別にプロキシを設定する] を有効にします。 これは、Computer Configuration\Policies\Administrative Templates\Windows Components\Internet Explorer にあります。 このポリシーを、ユーザーごとに設定する代わりに設定する必要があります。
+2.  サーバーで `gpupdate /force` を実行するか、サーバーを再起動して、更新されたグループ ポリシー設定を使用していることを確認します。
+3.  管理者権限で管理者特権でのコマンド プロンプトを起動し、`control inetcpl.cpl` を入力します。
+4.  必要なプロキシ設定を構成します。 
+
+これらの設定によって、コネクタは Azure との通信とバックエンド アプリケーションとの通信に同じ転送プロキシを使用するようになります。 Azure 通信へのコネクタが転送プロキシを必要としない場合、または別の転送プロキシを必要とする場合は、「送信プロキシをバイパス」または「送信プロキシ サーバーの使用」セクションで説明されているように、ApplicationProxyConnectorService.exe.config ファイルを変更してこれを設定できます。
+
+コネクタ アップデーター サービスでもコンピューター プロキシが使用されます。 この動作は、ApplicationProxyConnectorUpdaterService.exe.config ファイルを変更することで変更できます。
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>コネクタのプロキシの問題とサービスの接続の問題のトラブルシューティング
 

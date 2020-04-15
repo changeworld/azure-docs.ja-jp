@@ -3,14 +3,14 @@ title: Azure Update Management ログにクエリを実行する
 description: この記事では、Log Analytics ワークスペースで Update Management のログに対してクエリを実行する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 01/10/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5a1979b0e714f35694999c04e1f890b710d54ac9
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 81e12e775306cc8637dedd534f50e8a14bc09a26
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867068"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743870"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Azure Monitor Logs で Update Management の更新レコードに対してクエリを実行する
 
@@ -38,7 +38,7 @@ Windows および Linux VM の Update Management によって収集されるレ�
 | SourceSystem | *OperationsManager* | 
 | TenantId | Azure Active Directory の組織のインスタンスを表す一意識別子。 | 
 | TimeGenerated | レコードが作成された日付と時刻。 | 
-| 種類 | *アップデート* | 
+| Type | *アップデート* | 
 | UpdateClassification | 適用できる更新プログラムの種類を示します。 Windows の場合:<br> *緊急更新プログラム*<br> *セキュリティ更新プログラム*<br> *更新プログラムのロールアップ*<br> *Feature Pack*<br> *Service Pack*<br> *定義ファイルの更新*<br> *ツール*<br> *[Updates]* (更新)。 Linux の場合:<br> *重要な更新プログラムとセキュリティ更新プログラム*<br> *その他* |
 | UpdateSeverity | 脆弱性の重大度の評価。 値は次のとおりです。<br> *重大*<br> *重要*<br> *中*<br> *低* |
 | UpdateTitle | 更新プログラムのタイトル。|
@@ -63,7 +63,7 @@ Windows および Linux VM の Update Management によって収集されるレ�
 | 省略可能 | "*True*" または "*False*" | 
 | RebootBehavior | 更新プログラムをインストールまたはアンインストールした後の再起動動作。 |
 | _ResourceId | レコードが関連付けられているリソースの一意識別子。 |
-| 種類 | *アップデート* |
+| Type | *アップデート* |
 | VMUUID | 仮想マシンの一意識別子。 |
 | MG | 管理グループまたは Log Analytics ワークスペースの一意識別子。 | 
 | TenantId | Azure Active Directory の組織のインスタンスを表す一意識別子。 | 
@@ -97,7 +97,7 @@ Windows および Linux VM の Update Management によって収集されるレ�
 | SourceSystem | *OperationsManager* | 
 | TenantId | Azure Active Directory の組織のインスタンスを表す一意識別子。 |
 | TimeGenerated | レコードが作成された日付と時刻。 |
-| 種類 | *アップデート* | 
+| Type | *アップデート* | 
 | WindowsUpdateAgentVersion | Windows Update エージェントのバージョン。 |
 | WSUSServer | Windows Update エージェントにトラブルシューティングに役立つ問題がある場合は、エラーが表示されます。 |
 
@@ -112,7 +112,7 @@ Windows および Linux VM の Update Management によって収集されるレ�
 | CorrelationId | 更新プログラムに対して実行される Runbook ジョブの一意識別子。 |
 | EndTime | 同期プロセスが終了した時刻。 | 
 | ErrorResult | 更新プログラムのインストールに失敗した場合に生成される Windows Update のエラー コード。 | 
-| InstallationStatus | クライアント コンピューター上の更新プログラムの考えられるインストール状態 ("*実行中*"、"*成功*"、"*部分的に失敗*")。 |
+| InstallationStatus | クライアント コンピューター上の更新プログラムの考えられるインストール状態。<br> *NotStarted* - ジョブがまだトリガーされていません。<br> *FailedToStart* - コンピューターでジョブを開始できません。<br> *Failed* - ジョブは開始されましたが、例外が発生して失敗しました。<br> *InProgress* - ジョブが進行中です。<br> *MaintenanceWindowExceeded* - 実行が残っているが、メンテナンス期間に達した場合。<br> *Succeeded* - ジョブに成功しました。<br> *InstallFailed* - 更新を正常にインストールできませんでした。<br> *NotIncluded*<br> *Excluded* |
 | KBID | Windows Update のサポート技術情報の記事 ID。 | 
 | ManagementGroupName | Operations Manager 管理グループまたは Log Analytics ワークスペースの名前。 |
 | OSType | オペレーティング システムの種類 ("*Windows*" または "*Linux*") を指定します。 | 
@@ -128,7 +128,7 @@ Windows および Linux VM の Update Management によって収集されるレ�
 | SucceededOnRetry | 最初の試行で更新プログラムの実行がいつ失敗したかと、現在の操作が再試行であることを示します。 |
 | TimeGenerated | レコードが作成された日付と時刻。 |
 | タイトル | 更新プログラムのタイトル。 |
-| 種類 | *UpdateRunProgress* |
+| Type | *UpdateRunProgress* |
 | UpdateId | ソフトウェア更新プログラムの一意識別子。 |
 | VMUUID | 仮想マシンの一意識別子。 |
 | _ResourceId | レコードが関連付けられているリソースの一意識別子。 |
@@ -144,8 +144,8 @@ Windows および Linux VM の Update Management によって収集されるレ�
 | CriticalUpdatesMissing | 適用可能だが、インストールされていない重要な更新プログラムの数。 | 
 | ManagementGroupName | Operations Manager 管理グループまたは Log Analytics ワークスペースの名前。 |
 | NETRuntimeVersion | Windows コンピューターにインストールされている .NET Framework のバージョン。 |
-| OldestMissingSecurityUpdateBucket | | 
-| OldestMissingSecurityUpdateInDays | |
+| OldestMissingSecurityUpdateBucket | 値は次のとおりです。<br> *最近* (値が 30 日未満の場合)<br> *30 日前*<br> *60 日前*<br> *90 日前*<br> *120 日前*<br> *150 日前*<br> *180 日前*<br> *古い* (値が 180 日を超える場合) | 
+| OldestMissingSecurityUpdateInDays | 適用可能として検出された、インストールされていない最も古い更新プログラムの合計日数。 |
 | OsVersion | オペレーティング システムのバージョン。 |
 | OtherUpdatesMissing | インストールされていない更新プログラムの検出数。 |
 | リソース |  リソースの名前。 | 
@@ -160,7 +160,7 @@ Windows および Linux VM の Update Management によって収集されるレ�
 | SubscriptionId | Azure サブスクリプションの一意識別子。 |
 | TimeGenerated | レコードが作成された日付と時刻。 |
 | TotalUpdatesMissing | 適用可能だが、インストールされていない更新プログラムの合計数。 | 
-| 種類 | *UpdateSummary* |
+| Type | *UpdateSummary* |
 | VMUUID | 仮想マシンの一意識別子。 |
 | WindowsUpdateAgentVersion | Windows Update エージェントのバージョン。 |
 | WindowsUpdateSetting | Windows Update エージェントの状態を表示します。 次のいずれかの値になります。<br> "*Scheduled installation*" (スケジュールに従ってインストールする)<br> "*Notify before installation*" (インストールする前に通知する)<br> 異常な WUA エージェントからはエラーが返されます。 | 

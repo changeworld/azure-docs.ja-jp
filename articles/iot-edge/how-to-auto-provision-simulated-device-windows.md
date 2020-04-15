@@ -4,16 +4,16 @@ description: Windows マシン上でシミュレートされたデバイスを�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/09/2019
+ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ee4f01c3ec57b0cf9e3ecf47254b57be95ea051a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc051e2a0ebbdae7c62ff8a249747d118d3c2ce4
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76510942"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668692"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Windows 上で、仮想 TPM を使用するシミュレートされた IoT Edge デバイスを作成し、プロビジョニングする
 
@@ -59,6 +59,9 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 シミュレートされたデバイスの作成に使用する SDK の言語を選択し、個々の登録を作成するまでの手順に従います。
 
 個々の登録を作成するときに、 **[True]** を選択して、Windows 開発用マシンでシミュレートされている TPM デバイスが **IoT Edge デバイス**であることを宣言します。
+
+> [!TIP]
+> Azure CLI では、[登録](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)または[登録グループ](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)を作成し、**Edge 対応**フラグを使用して、デバイスまたはデバイスのグループが IoT Edge デバイスであることを指定できます。
 
 シミュレートされたデバイスと個々の登録ガイド:
 

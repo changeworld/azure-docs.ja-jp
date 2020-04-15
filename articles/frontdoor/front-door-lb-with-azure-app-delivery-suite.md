@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 9f8d1959549eaddfb4a2c9ea271094db0073c788
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44af14a01e7b045b7abb6a84db89a67f3dd22445
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471712"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875284"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Azure のアプリケーション配信スイートでの負荷分散
 
@@ -45,7 +45,7 @@ Microsoft Azure では、ネットワーク トラフィックの分散や負荷
 Front Door では、Microsoft のネットワークのエッジで HTTP 要求を終了し、アクティブに調べ、アプリケーションまたはインフラストラクチャの正常性や待機時間の変化を検出します。  その後、Front Door では常に、最も高速で利用可能な (正常な) バックエンドにトラフィックをルーティングします。 サービスの詳細については、Front Door の[ルーティング アーキテクチャ](front-door-routing-architecture.md)の詳細と[トラフィックのルーティング方法](front-door-routing-methods.md)に関するページを参照してください。
 
 ## <a name="regional-load-balancing"></a>リージョン負荷分散
-Application Gateway では、アプリケーション配信コントローラー (ADC) をサービスとして提供することで、さまざまなレイヤー 7 負荷分散機能をアプリケーションで利用できるようにします。 これにより、CPU を集中的に使用する SSL ターミネーションをお客様が Application Gateway にオフロードし、Web ファームの生産性を最適化できます。 着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。 Application Gateway は Azure によって完全に管理され、非常にスケーラブルで、高い可用性を備えています。 管理しやすいように診断機能とログ機能が豊富に用意されています。
+Application Gateway では、アプリケーション配信コントローラー (ADC) をサービスとして提供することで、さまざまなレイヤー 7 負荷分散機能をアプリケーションで利用できるようにします。 これにより、顧客は CPU 集中型の TLS 終端を Application Gateway にオフロードすることによって Web ファームの生産性を最適化できます。 着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。 Application Gateway は Azure によって完全に管理され、非常にスケーラブルで、高い可用性を備えています。 管理しやすいように診断機能とログ機能が豊富に用意されています。
 Load Balancer は、Azure SDN スタックの重要な構成要素であり、すべての UDP と TCP プロトコル向けの高パフォーマンス、低待機時間のレイヤー 4 負荷分散サービスを備えています。 受信接続と送信接続を管理します。 負荷分散されるパブリックおよび内部のエンドポイントを構成したり、TCP を使用して受信接続をバックエンド プールの送信先にマッピングする規則や、サービスの可用性を管理するための HTTP の正常性プローブ オプションを定義したりできます。
 
 
@@ -58,7 +58,7 @@ Load Balancer は、Azure SDN スタックの重要な構成要素であり、�
 
 | Traffic Manager | Azure Front Door |
 | --------------- | ------------------------ |
-|**あらゆるプロトコル:** Traffic Manager は DNS レイヤーで動作するため、HTTP、TCP、UDP など、あらゆる種類のネットワーク トラフィックをルーティングすることができます。 | **HTTP の高速化:** Front Door では、Microsoft のネットワークのエッジでトラフィックがプロキシ処理されます。  このため、SSL ネゴシエーションの待機時間が短縮され、AFD からアプリケーションへのホット接続が使用されることで、HTTP (S) 要求での待機時間とスループットが改善されます。|
+|**あらゆるプロトコル:** Traffic Manager は DNS レイヤーで動作するため、HTTP、TCP、UDP など、あらゆる種類のネットワーク トラフィックをルーティングすることができます。 | **HTTP の高速化:** Front Door では、Microsoft のネットワークのエッジでトラフィックがプロキシ処理されます。  このため、TLS ネゴシエーションの待機時間が短縮され、AFD からアプリケーションへのホット接続が使用されることで、HTTP (S) 要求での待機時間とスループットが改善されます。|
 |**オンプレミス ルーティング:** DNS レイヤーでのルーティングにより、トラフィックは常にポイント間で送信されるようになります。  ブランチ オフィスからオンプレミス データセンターへのルーティングでは、直接パスを使用できます。Traffic Manager を使用する独自のネットワークでも同様です。 | **独立したスケーラビリティ:** Front Door で HTTP 要求が処理されるため、ルールと各アプリケーションのマイクロサービスの正常性に基づいて、さまざまな URL パスへの要求をさまざまなバックエンドやリージョン サービス プール (マイクロサービス) にルーティングすることができます。|
 |**課金形式:** DNS ベースの課金ではユーザーに合わせてスケーリングが行われ、より多くのユーザーが使用するサービスでは、使用率上昇時の安定したコスト削減が実現します。 |**インライン セキュリティ:** Front Door ではレート制限や IP ACL 設定などのルールを有効にすることで、トラフィックがアプリケーションに到達する前にバックエンドを保護することができます。 
 
@@ -78,7 +78,7 @@ Load Balancer は、Azure SDN スタックの重要な構成要素であり、�
 ![アプリケーション配信スイートの詳細なアーキテクチャ][2] 
 
 > [!NOTE]
-> この例は、Azure が提供する多数の負荷分散サービスの 1 つの例に過ぎません。 Traffic Manager、Front Door、Application Gateway、Load Balancer は、負荷分散のニーズに合わせて組み合わせて使用できます。 たとえば、SSL オフロードやレイヤー 7 の処理が必要ない場合は、Application Gateway の代わりにロード バランサーを使用できます。
+> この例は、Azure が提供する多数の負荷分散サービスの 1 つの例に過ぎません。 Traffic Manager、Front Door、Application Gateway、Load Balancer は、負荷分散のニーズに合わせて組み合わせて使用できます。 たとえば、TLS/SSL オフロードやレイヤー 7 の処理が必要ない場合は、Application Gateway の代わりに Load Balancer を使用できます。
 
 
 ## <a name="next-steps"></a>次の手順

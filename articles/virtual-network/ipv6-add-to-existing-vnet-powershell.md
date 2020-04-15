@@ -11,25 +11,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/21/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 907a6de2ff89ddd3c2cb5bdab67e1deb984141dc
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: c733538a4e730a95008a8ec1e4d50c20d6ce24ec
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965232"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420758"
 ---
-# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>Azure 仮想ネットワーク内の IPv4 アプリケーションを IPv6 にアップグレードする - PowerShell (プレビュー)
+# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Azure 仮想ネットワーク内の IPv4 アプリケーションを IPv6 にアップグレードする - PowerShell
 
 この記事では、Standard Load Balancer とパブリック IP を使用して、Azure 仮想ネットワーク内の既存の IPv4 アプリケーションに IPv6 接続を追加する方法について説明します。 インプレース アップグレードには次のものが含まれます。
 - 仮想ネットワークとサブネットの IPv6 アドレス空間
 - IPv4 と IPV6 の両方のフロントエンド構成の Standard Load Balancer
 - IPv4 + IPv6 の両方が構成された NIC を使用する VM
-- ロード バランサーがインターネットに直接接続する IPv6 接続を持つ IPv のパブリック IP
+- IPv6 パブリック IP。これにより、ロード バランサーは、インターネットに接続する IPv6 接続を取得します
 
-> [!Important]
-> 現在、Azure Virtual Network の IPv6 サポートは、パブリック プレビュー段階です。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -37,27 +36,6 @@ PowerShell をローカルにインストールして使用することを選択
 
 ## <a name="prerequisites"></a>前提条件
 
-### <a name="register-the-service"></a>サービスを登録する
-
-Azure でデュアル スタック アプリケーションをデプロイする前に、次の Azure PowerShell を使用して、このプレビュー機能に対してサブスクリプションを構成する必要があります。
-
-次のように登録します。
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-機能の登録が完了するまで、最長で 30 分かかります。 次の Azure PowerShell コマンドを実行することで、登録状態を確認できます。次のように登録を確認します。
-```azurepowershell
-Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-登録が完了した後、次のコマンドを実行します。
-
-```azurepowershell
-Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-### <a name="create-a-standard-load-balancer"></a>Standard Load Balancer を作成する
 この記事では、[クイック スタート: Standard Load Balancer を作成する - Azure PowerShell](../load-balancer/quickstart-create-standard-load-balancer-powershell.md) に関するページに説明されているように、Standard Load Balancer をデプロイしたことを前提としています。
 
 ## <a name="retrieve-the-resource-group"></a>リソース グループの取得
@@ -176,10 +154,9 @@ $NIC_3 | Set-AzNetworkInterface
 
   ![Azure の IPv6 デュアル スタック仮想ネットワーク](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
-> [!NOTE]
-> このプレビュー リリースの場合、Azure 仮想ネットワークの IPv6 は、Azure portal で読み取り専用で使用できます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
@@ -187,6 +164,6 @@ $NIC_3 | Set-AzNetworkInterface
 Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、IPv4 フロントエンド IP 構成を持つ既存の Standard Load Balancer をデュアル スタック (IPv4 および IPv6) 構成に更新しました。 また、IPv6 構成をバックエンド プール内の VM の NIC と、それらをホストする仮想ネットワークに追加しました。 Azure 仮想ネットワークでの IPv6 サポートの詳細については、[Azure Virtual Network の IPv6 の概要](ipv6-overview.md)に関するページを参照してください

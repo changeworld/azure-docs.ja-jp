@@ -1,20 +1,20 @@
 ---
-title: HTTPS 呼び出しを受信して応答する
-description: Azure Logic Apps を使用して、HTTPS 要求とイベントをリアルタイムで処理する
+title: HTTPS を使用して呼び出しを受信して応答する
+description: Azure Logic Apps を使用して外部サービスからの受信 HTTPS 要求を処理する
 services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1885d7f8713b3801ce0c9846b7a8509b3864032a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900265"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656297"
 ---
-# <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して、HTTPS 呼び出しを受信して応答する
+# <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps で受信 HTTPS 要求を受信して応答する
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) と組み込みの Request トリガーまたは Response アクションを使用すると、受信した HTTP 要求を受け取ってそれに応答する自動化されたタスクおよびワークフローを作成することができます。 たとえば、次のようなロジック アプリを作成できます。
 
@@ -25,7 +25,7 @@ ms.locfileid: "76900265"
 > [!NOTE]
 > 要求トリガーでは、着信呼び出しに対してトランスポート層セキュリティ (TLS) 1.2 "*のみ*" がサポートされます。 発信呼び出しでは、引き続き TLS 1.0、1.1、1.2 がサポートされます。 詳細については、[TLS 1.0 の問題の解決](https://docs.microsoft.com/security/solving-tls1-problem) を参照してください。
 >
-> SSL ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 着信呼び出しの場合、サポートされている暗号スイートは次のとおりです。
+> TLS ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 着信呼び出しの場合、サポートされている暗号スイートは次のとおりです。
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -58,7 +58,7 @@ ms.locfileid: "76900265"
 
    ![Request トリガー](./media/connectors-native-reqres/request-trigger.png)
 
-   | プロパティ名 | JSON プロパティ名 | Required | 説明 |
+   | プロパティ名 | JSON プロパティ名 | 必須 | 説明 |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST の URL** | {なし} | はい | ロジック アプリを保存したら生成され、ご自分のロジック アプリの呼び出しに使用されるエンドポイント URL |
    | **要求本文の JSON スキーマ** | `schema` | いいえ | 受信要求本文内のプロパティと値を記述する JSON スキーマ |
@@ -157,7 +157,7 @@ ms.locfileid: "76900265"
 
 1. 追加のプロパティを指定するには、 **[新しいパラメーターの追加]** リストを開き、追加するパラメーターを選択します。
 
-   | プロパティ名 | JSON プロパティ名 | Required | 説明 |
+   | プロパティ名 | JSON プロパティ名 | 必須 | 説明 |
    |---------------|--------------------|----------|-------------|
    | **方法** | `method` | いいえ | ロジック アプリを呼び出すために受信要求で使用する必要があるメソッド |
    | **相対パス** | `relativePath` | いいえ | ロジック アプリのエンドポイント URL で受け入れ可能なパラメーターの相対パス |
@@ -203,6 +203,19 @@ Response アクションを使用すると、受信 HTTPS 要求に対してペ�
 
 ご利用のロジック アプリでは、受信要求が 1 分間だけ開いたままになります。 ご利用のロジック アプリのワークフローに Response アクションが含まれていると仮定すると、この時間が経過してもロジック アプリから応答がない場合、ご利用のロジック アプリは呼び出し元に `504 GATEWAY TIMEOUT` を返します。 あるいは、ご利用のロジック アプリに Response アクションが含まれていない場合、ご利用のロジック アプリは呼び出し元にすぐに `202 ACCEPTED` 応答を返します。
 
+> [!IMPORTANT]
+> Response アクションにこれらのヘッダーが含まれている場合、Logic Apps は警告もエラーも表示せずに、生成された応答メッセージからこれらのヘッダーを削除します。
+>
+> * `Allow`
+> * `Content-*`ただし、`Content-Disposition`、`Content-Encoding`、および `Content-Type` は例外です。
+> * `Cookie`
+> * `Expires`
+> * `Last-Modified`
+> * `Set-Cookie`
+> * `Transfer-Encoding`
+>
+> Logic Apps では、これらのヘッダーのある Response アクションを持つロジック アプリを保存することは妨げられませんが、Logic Apps ではこれらのヘッダーは無視されます。
+
 1. ロジック アプリ デザイナーで、Response アクションを追加するステップの下にある **[新しいステップ]** を選択します。
 
    たとえば、前述の Request トリガーを使用している場合は次のようになります。
@@ -231,7 +244,7 @@ Response アクションを使用すると、受信 HTTPS 要求に対してペ�
 
    Response アクション内に設定できるプロパティの詳細を次に示します。 
 
-   | プロパティ名 | JSON プロパティ名 | Required | 説明 |
+   | プロパティ名 | JSON プロパティ名 | 必須 | 説明 |
    |---------------|--------------------|----------|-------------|
    | **状態コード** | `statusCode` | はい | 応答で返される状態コード |
    | **ヘッダー** | `headers` | いいえ | 応答に含める 1 つまたは複数のヘッダーを記述する JSON オブジェクト |

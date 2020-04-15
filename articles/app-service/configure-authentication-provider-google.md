@@ -1,26 +1,28 @@
 ---
 title: Google 認証を構成する
-description: App Service アプリ用の ID プロバイダーとして Google 認証を構成する方法について説明します。
+description: App Services アプリまたは Azure Functions アプリ用の ID プロバイダーとして Google 認証を構成する方法について説明します。
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.topic: article
 ms.date: 09/02/2019
-ms.custom: seodec18
-ms.openlocfilehash: 81ce3e393d308323c8d5a3d688c16c9b45e7be9d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670826"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519944"
 ---
-# <a name="configure-your-app-service-app-to-use-google-login"></a>Google ログインを使用するように App Service アプリを構成する
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Google ログインを使用するように App Service アプリまたは Azure Functions アプリを構成する
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-このトピックでは、認証プロバイダーとして Google を使用するように Azure App Services を構成する方法を示します。
+このトピックでは、認証プロバイダーとして Google を使用するように Azure App Service または Azure Functions を構成する方法を示します。
 
-このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。 新しい Google アカウントを作成するには、 [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302)にアクセスしてください。
+このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。 新しい Google アカウントを作成するには、[accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302) にアクセスしてください。
 
-## <a name="register"> </a>Google にアプリケーションを登録する
+## <a name="register-your-application-with-google"></a><a name="register"> </a>Google にアプリケーションを登録する
 
 1. 「[サーバー側アプリの Google サインイン](https://developers.google.com/identity/sign-in/web/server-side-flow)」で Google のドキュメントに従い、クライアント ID とクライアント シークレットを作成します。 コードを変更する必要はありません。 次の情報を使用してください。
     - **[Authorized JavaScript Origins]\(承認済みの JavaScript 生成元\)** には、`https://<app-name>.azurewebsites.net` を使用し、 *\<app-name>* にアプリの名前を指定します。
@@ -30,7 +32,7 @@ ms.locfileid: "74670826"
     > [!IMPORTANT]
     > アプリ シークレットは重要なセキュリティ資格情報です。 このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
-## <a name="secrets"> </a>Google の情報をアプリケーションに追加する
+## <a name="add-google-information-to-your-application"></a><a name="secrets"> </a>Google の情報をアプリケーションに追加する
 
 1. [Azure portal] で App Service アプリに移動します。
 1. **[設定]** 、 **[認証/承認]** の順に選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
@@ -48,7 +50,7 @@ ms.locfileid: "74670826"
 
 これで、アプリケーションで認証に Google を使用する準備ができました。
 
-## <a name="related-content"> </a>次のステップ
+## <a name="next-steps"></a><a name="related-content"> </a>次の手順
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 

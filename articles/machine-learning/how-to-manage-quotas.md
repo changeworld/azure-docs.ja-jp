@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 03/05/2020
-ms.openlocfilehash: 17a4652604c0faa804d24530869aac0848c972b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 530647c3d32b62f0cac250795ccce580b182fa92
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399156"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756609"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Azure リソースのクォータの管理と要求
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,7 +60,7 @@ Azure Machine Learning コンピューティングでは、サブスクリプシ
 
 + リージョンあたりのクラスターの既定の制限は 200 です。 これらは、トレーニング クラスターとコンピューティング インスタンス (クォータ目的で単一ノード クラスターとみなされる) 間で共有されます。 この制限を超えた引き上げを要求する場合は、Azure サポートにお問い合わせください。
 
-+ 一度達すると超えることができない**その他の厳密な制限があります。
++ 一度達すると超えることができないその他の厳密な制限があります。
 
 | **リソース** | **上限** |
 | --- | --- |
