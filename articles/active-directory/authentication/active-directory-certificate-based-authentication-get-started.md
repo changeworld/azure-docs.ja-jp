@@ -4,19 +4,19 @@ description: 各環境で証明書ベースの認証を構成する方法につ�
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b57c4f474b0b9def08005f32f48225d36ea8cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a6c44a8253c81b44d02351b2df9c943d9f358f8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848835"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654350"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory の証明書ベースの認証の概要
 
@@ -40,14 +40,14 @@ ms.locfileid: "74848835"
 - ルート証明機関および中間証明機関は、Azure Active Directory で構成する必要があります。
 - 各証明機関には、インターネットに接続する URL から参照できる証明書失効リスト (CRL) が必要です。
 - Azure Active Directory で少なくとも 1 つの証明機関が構成されている必要があります。 この手順については、「[証明機関を構成する](#step-2-configure-the-certificate-authorities)」セクションをご覧ください。
-- Exchange ActiveSync クライアントの場合、クライアント証明書では、サブジェクト代替名フィールドのプリンシパル名または RFC822 名の値のいずれかで、Exchange Online のユーザーのルーティング可能な電子メール アドレスが必要になります。 Azure Active Directory は、ディレクトリ内のプロキシ アドレス属性に RFC822 値をマップします。
+- Exchange ActiveSync クライアントの場合、クライアント証明書では、サブジェクト代替名フィールドのプリンシパル名または RFC822 名の値のいずれかで、Exchange Online のユーザーのルーティング可能なメール アドレスが必要になります。 Azure Active Directory は、ディレクトリ内のプロキシ アドレス属性に RFC822 値をマップします。
 - クライアント デバイスから、クライアント証明書を発行する証明機関の少なくとも 1 つにアクセスできる必要があります。
 - クライアント認証用のクライアント証明書が、クライアントに対して発行されている必要があります。
 
 >[!IMPORTANT]
 >正常にダウンロードしてキャッシュする Azure Active Directory の CRL の最大サイズは 20 MB であり、CRL のダウンロードに必要な時間は 10 秒以内である必要があります。  Azure Active Directory が CRL をダウンロードできない場合、対応する CA によって発行された証明書を使用する証明書ベースの認証は失敗します。 CRL ファイルがサイズ制限内に収まるようにするためのベスト プラクティスは、証明書の有効期間を妥当な制限内に保ち、期限切れの証明書をクリーンアップすることです。 
 
-## <a name="step-1-select-your-device-platform"></a>手順 1: デバイス プラットフォームを選択する
+## <a name="step-1-select-your-device-platform"></a>手順 1:デバイス プラットフォームを選択する
 
 まず、対象のデバイス プラットフォームについて、次の項目を確認する必要があります。
 
@@ -59,7 +59,7 @@ ms.locfileid: "74848835"
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
 
-## <a name="step-2-configure-the-certificate-authorities"></a>手順 2: 証明機関を構成する
+## <a name="step-2-configure-the-certificate-authorities"></a>手順 2:証明機関を構成する
 
 Azure Active Directory で証明機関を構成するには、証明機関ごとに次のものをアップロードします。
 
@@ -137,7 +137,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
 
-## <a name="step-3-configure-revocation"></a>手順 3: 失効を構成する
+## <a name="step-3-configure-revocation"></a>手順 3:失効を構成する
 
 クライアント証明書を失効させるために、Azure Active Directory は、証明機関の情報の一部としてアップロードされた URL から証明書失効リスト (CRL) をフェッチし、キャッシュします。 CRL の最後の発行タイムスタンプ (**発効日** プロパティ) を使用し、CRL がまだ有効であることを確認します。 CRL は定期的に参照されて、リストに含まれる証明書へのアクセスは無効になります。
 
@@ -165,11 +165,11 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 設定する日付は、現在より後の日付にする必要があります。 日付を現在より後の日付にしないと、 **StsRefreshTokensValidFrom** プロパティは設定されません。 日付を現在より後の日付にすると、 **StsRefreshTokensValidFrom** は、現在の時刻に設定されます (Set-MsolUser コマンドで指定した日付ではありません)。
 
-## <a name="step-4-test-your-configuration"></a>手順 4: 構成をテストする
+## <a name="step-4-test-your-configuration"></a>手順 4:構成をテストする
 
 ### <a name="testing-your-certificate"></a>証明書のテスト
 
-構成の最初のテストとして、[デバイス上のブラウザー](https://outlook.office365.com)を使用して [Outlook Web Access](https://microsoft.sharepoint.com) または **SharePoint Online** へのサインインを試みます。
+構成の最初のテストとして、**デバイス上のブラウザー**を使用して [Outlook Web Access](https://outlook.office365.com) または [SharePoint Online](https://microsoft.sharepoint.com) へのサインインを試みます。
 
 サインインが成功した場合、次のことがわかります。
 

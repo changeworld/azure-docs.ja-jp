@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: bb1042e15d4366923174996388eeb2fb99aef429
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74184606"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878886"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>フロント ドアにルート ドメインまたは頂点ドメインをオンボードする
 Azure Front Door では、CNAME レコードを使用して、カスタム ドメインのオンボードに対するドメインの所有権が検証されます。 また、Front Door では、Front Door プロファイルに関連付けられているフロントエンド IP アドレスが公開されないため、Azure Front Door にオンボードすることが目的である場合、頂点ドメインを IP アドレスにマップできません。
@@ -26,7 +26,7 @@ DNS プロトコルでは、ゾーンの頂点での CNAME レコードの割り
 > [!NOTE]
 > CNAME のフラット化または DNS の追跡をサポートする DNS プロバイダーは他にもありますが、Azure Front Door では、お客様がドメインをホストする場合は Azure DNS を使うことが推奨されます。
 
-Azure portal を使って、頂点ドメインをお使いのフロント ドアにオンボードし、SSL 終了用の証明書とそれを関連付けることによって HTTPS を有効にできます。 頂点ドメインは、ルート ドメインまたはネイキッド ドメインとも呼ばれます。
+Azure portal を使って、頂点ドメインをお使いのフロント ドアにオンボードし、TLS 終了用の証明書とそれを関連付けることによって HTTPS を有効にできます。 頂点ドメインは、ルート ドメインまたはネイキッド ドメインとも呼ばれます。
 
 この記事では、次のことについて説明します。
 
@@ -65,7 +65,7 @@ Azure portal を使って、頂点ドメインをお使いのフロント ドア
 2. **[証明書の管理の種類]** で、 _[Use my own certificate]\(独自の証明書を使用する\)_ を選択します。
 
 > [!WARNING]
-> Front Door 管理の証明書の管理の種類は、頂点ドメインまたはルート ドメインに対しては現在はサポートされていません。 Front Door に対する頂点ドメインまたはルート ドメインで HTTPS を有効にするために使用できる唯一のオプションは、Azure Key Vault でホストされている独自のカスタム SSL 証明を使用することです。
+> Front Door 管理の証明書の管理の種類は、頂点ドメインまたはルート ドメインに対しては現在はサポートされていません。 Front Door に対する頂点ドメインまたはルート ドメインで HTTPS を有効にするために使用できる唯一のオプションは、Azure Key Vault でホストされている独自のカスタム TLS/SSL 証明書を使用することです。
 
 3. 次のステップに進む前に、UI で説明されているように、Front Door がご自分のキー コンテナーにアクセスするための適切なアクセス許可を設定したことを確認します。
 4. 現在のサブスクリプションから **Key Vault アカウント**を選択し、適切な証明書にマップするための適切な**シークレット**と**シークレットのバージョン**を選択します。

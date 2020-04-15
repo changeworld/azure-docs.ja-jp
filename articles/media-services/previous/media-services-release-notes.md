@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: a55ef4f814c0d13a6efbeeb8cd9a5565d2869432
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3893c8d19c89b639e0584f203cbcd1adf7e2dee
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183297"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474832"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -344,9 +344,9 @@ Media Services .NET SDK が 3.1.0.1 にバージョン アップしました。
 * PlayReady ライセンス テンプレートに BeginDate と ExpirationDate の相対オフセットが追加されました。
 
 ## <a name="november-2014-release"></a><a id="november_changes_14"></a>2014 年 11 月のリリース
-* Media Services を使用して、SSL 接続経由で Live Smooth Streaming (fMP4) コンテンツを取り込むことができます。 SSL 経由で取り込むには、取り込み URL を HTTPS に更新する必要があります。 現在のところ、Media Services ではカスタム ドメインを使用した SSL はサポートされていません。 ライブ ストリーミングの詳細については、[Azure Media Services ライブ ストリーミングの操作](https://msdn.microsoft.com/library/azure/dn783466.aspx)に関するページをご覧ください。
-* RTMP ライブ ストリームについては、現在、SSL 接続経由で取り込むことはできません。
-* SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。 ストリーミング URL の基になるストリーミング エンドポイントの作成日が 2014 年 9 月 10 日より後である場合は、URL に "streaming.mediaservices.windows.net" (新形式) が含まれています。 "origin.mediaservices.windows.net" (旧形式) を含むストリーミング URL では、SSL がサポートされません。 URL が旧形式である場合、SSL トリーミングに対応するには、[新しいストリーミング エンドポイントを作成](media-services-portal-manage-streaming-endpoints.md)してください。 SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいた URL を使用します。
+* Media Services を使用して、TLS 接続経由でライブ スムーズ ストリーミング (fMP4) コンテンツを取り込むことができます。 TLS 経由で取り込むには、取り込み URL を HTTPS に更新する必要があります。 現在、Media Services ではカスタム ドメインを使用した TLS はサポートされていません。 ライブ ストリーミングの詳細については、[Azure Media Services ライブ ストリーミングの操作](https://msdn.microsoft.com/library/azure/dn783466.aspx)に関するページをご覧ください。
+* RTMP ライブ ストリームについては、現在、TLS 接続経由で取り込むことはできません。
+* TLS 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。 ストリーミング URL の基になるストリーミング エンドポイントの作成日が 2014 年 9 月 10 日より後である場合は、URL に "streaming.mediaservices.windows.net" (新形式) が含まれています。 "origin.mediaservices.windows.net" (旧形式) を含むストリーミング URL では、TLS がサポートされません。 URL が旧形式である場合、TLS 経由のトリーミングに対応するには、[新しいストリーミング エンドポイントを作成](media-services-portal-manage-streaming-endpoints.md)します。 TLS でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づく URL を使用します。
 
 ### <a name="media-services-net-sdk"></a><a id="oct_sdk"></a>Media Services .NET SDK
 Media Services SDK for .NET 拡張機能は、現在、バージョン 2.0.0.3 です。
