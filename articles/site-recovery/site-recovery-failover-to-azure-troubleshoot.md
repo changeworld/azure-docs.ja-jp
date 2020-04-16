@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54e44a12f593d2074eefe5b2ff890863db3199f7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229091"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478959"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware VM または物理マシンから Azure へのフェールオーバー時のエラーをトラブルシューティングする
 
@@ -24,7 +24,7 @@ ms.locfileid: "79229091"
 
 Site Recovery は、フェールオーバーした仮想マシンを Azure に作成できませんでした。 次のような原因が考えられます。
 
-* 仮想マシンの作成に使用できる十分なクォータがありません。[サブスクリプション] > [使用量 + クォータ] の順に移動して、使用可能なクォータを確認できます。 [新しいサポート要求](https://aka.ms/getazuresupport)を開いて、クォータを増やすことができます。
+* 仮想マシンを作成するためのクォータが不足しています。[サブスクリプション] > [使用量 + クォータ] の順に移動して、使用可能なクォータを確認できます。 [新しいサポート要求](https://aka.ms/getazuresupport)を開いて、クォータを増やすことができます。
 
 * 同じ可用性セットにある異なるサイズ ファミリの仮想マシンのフェールオーバーを試行しています。 同じ可用性セットにあるすべての仮想マシンに対しては、必ず同じサイズ ファミリを選択してください。 仮想マシンの [コンピューティングとネットワーク] の設定に移動してサイズを変更し、フェールオーバーを再試行してください。
 
@@ -122,13 +122,13 @@ RDP を使用してマシンに接続できても、シリアル コンソール
 
 フェールオーバー後の Windows VM 起動時に、回復した VM で、予期しないシャット ダウンのメッセージを受信した場合、それはフェールオーバーに使用された復旧ポイントで、VM のシャット ダウン状態がキャプチャされなかったことを示しています。 これは、VM が完全にはシャット ダウンされていないときのポイントに復旧すると発生します。
 
-これは一般に懸念の原因にはならないため、計画外のフェールオーバーであれば通常は無視できます。 フェールオーバーが計画されている場合は、フェールオーバーの前に VM が正しくシャット ダウンされるようにして、オンプレミスの保留中のレプリケーション データが Azure に送信されるのに十分な時間を確保します。 次に、**フェールオーバー画面**の [[Lateset]\(最新)](site-recovery-failover.md#run-a-failover) オプションを使用して、Azure 上の保留中データがすべて処理されて復旧ポイントに入れられるようにします。それが後で、VM のフェールオーバーに使用されます。
+これは一般に懸念の原因にはならないため、計画外のフェールオーバーであれば通常は無視できます。 フェールオーバーが計画されている場合は、フェールオーバーの前に VM が正しくシャット ダウンされるようにして、オンプレミスの保留中のレプリケーション データが Azure に送信されるのに十分な時間を確保します。 次に、[フェールオーバー画面](site-recovery-failover.md#run-a-failover)の **[Lateset]\(最新)** オプションを使用して、Azure 上の保留中データがすべて処理されて復旧ポイントに入れられるようにします。それが後で、VM のフェールオーバーに使用されます。
 
 ## <a name="unable-to-select-the-datastore"></a>データストアを選択できない
 
 この問題は、フェールオーバーが発生した仮想マシンを再保護しようとしたときに、Azure portal でデータストアを表示できない場合に指摘されます。 これは、マスター ターゲットが、Azure Site Recovery に追加された vCenter の仮想マシンとして認識されていないためです。
 
-仮想マシンの再保護の詳細については、「[Reprotect and fail back machines to an on-premises site after failover to Azure (Azure へのフェールオーバー後に、マシンを再保護し、オンプレミス サイトにフェールバックする)](vmware-azure-reprotect.md)」を参照してください。
+仮想マシンの再保護の詳細については、「[Azure へのフェールオーバー後に、マシンを再保護し、オンプレミス サイトにフェールバックする](vmware-azure-reprotect.md)」を参照してください。
 
 この問題を解決するには:
 
@@ -138,7 +138,7 @@ RDP を使用してマシンに接続できても、シリアル コンソール
 > 
 > 検出および更新のファブリック操作は完了までに最大 30 分かかります。 
 
-## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Linux マスター ターゲット登録が SSL エラー 35 CS で失敗する 
+## <a name="linux-master-target-registration-with-cs-fails-with-a-tls-error-35"></a>Linux マスター ターゲット登録が TLS エラー 35 CS で失敗する 
 
 認証済みプロキシがマスター ターゲットで有効になっているため、構成サーバーでの Azure Site Recovery マスター ターゲット登録が失敗します。 
  

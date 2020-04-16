@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0569907537f91f7e84b8156dffa0f313461f6e1
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162533"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677021"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
 
@@ -167,7 +167,7 @@ Elemental Technologies、Ericsson、Ateme、Envivio などのベンダーのオ�
 
 チャネルを作成すると、取り込み URL を取得できます。 これらの URL を取得するために、チャネルが **実行中** 状態である必要はありません。 データをチャネルにプッシュする準備ができたら、チャネルを **実行中** 状態にする必要があります。 チャネルがデータの取り込みを開始すると、プレビュー URL 経由でストリームをプレビューできます。
 
-Fragmented MP4 (スムーズ ストリーミング) のライブ ストリームを、SSL 接続で取り込むこともできます。 SSL 経由で取り込むには、取り込み URL を HTTPS に更新する必要があります。 現在のところ、AMS ではカスタム ドメインを使用した SSL はサポートされていません。  
+Fragmented MP4 (スムーズ ストリーミング) のライブ ストリームを、TLS 接続で取り込むこともできます。 TLS 経由で取り込むには、取り込み URL を HTTPS に更新する必要があります。 現在のところ、AMS ではカスタム ドメインを使用した TLS はサポートされていません。  
 
 ### <a name="allowed-ip-addresses"></a>許可された IP アドレス
 このチャネルにビデオを発行できる IP アドレスを定義できます。 許可される IP アドレスは、1 つの IP アドレス (例: '10.0.0.1')、IP アドレスと CIDR サブネット マスクを使用した IP 範囲 (例: '10.0.0.1/22')、IP アドレスとピリオドで区切られた 10 進数のサブネット マスクを使用した IP 範囲 (例: '10.0.0.1(255.255.252.0)') のいずれかの形で指定できます。

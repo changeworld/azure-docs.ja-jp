@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 70545020899b69508a4cedb0fd7cf5495c847104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462447"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985254"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
 
@@ -110,7 +110,7 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 Azure portal と Visual Studio 2019 では、Azure Cosmos DB と Azure Functions 間のネイティブ統合を使用できます。
 
-* Azure Functions ポータルで、トリガーを作成できます。 クイック スタートの手順については、[Azure portal での Cosmos DB 用 Azure Functions トリガーの作成](https://aka.ms/cosmosdbtriggerportalfunc)に関するページをご覧ください。
+* Azure Functions ポータルで、トリガーを作成できます。 クイック スタートの手順については、[Azure portal での Cosmos DB 用 Azure Functions トリガーの作成](../azure-functions/functions-create-cosmos-db-triggered-function.md)に関するページをご覧ください。
 * Azure Cosmos DB ポータルで、同じリソース グループ内の既存の Azure Functions アプリに Cosmos DB 用 Azure Functions トリガーを追加できます。
 * Visual Studio 2019 で、[Azure Functions Tools](../azure-functions/functions-develop-vs.md) を使用してトリガーを作成できます。
 
@@ -146,6 +146,6 @@ Flow、Logic Apps、Azure Functions、または WebJobs が実装に適してい
 
 それでは実際に Azure Cosmos DB と Azure Functions を接続してみましょう。 
 
-* [Azure portal で Cosmos DB 用 Azure Functions トリガーを作成する](https://aka.ms/cosmosdbtriggerportalfunc)
-* [Azure Cosmos DB 入力バインディングを使用して Azure Functions HTTP トリガーを作成する](https://aka.ms/cosmosdbinputbind)
+* [Azure portal で Cosmos DB 用 Azure Functions トリガーを作成する](../azure-functions/functions-create-cosmos-db-triggered-function.md)
+* [Azure Cosmos DB 入力バインディングを使用して Azure Functions HTTP トリガーを作成する](../azure-functions/functions-bindings-cosmosdb.md?tabs=csharp)
 * [Azure Cosmos DB のバインディングとトリガー](../azure-functions/functions-bindings-cosmosdb-v2.md)

@@ -3,12 +3,12 @@ title: Azure portal で Service Fabric クラスターを作成する
 description: Azure portal と Azure Key Vault を使用して Azure でセキュリティ保護された Service Fabric クラスターを設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2de920ce9517e156934a636559a6fd6f5a71eb5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229415"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754097"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
 > [!div class="op_single_selector"]
@@ -36,13 +36,13 @@ Service Fabric では証明書を使用して、クラスターとそのアプ�
 この証明書はクラスターをセキュリティで保護し、クラスターに対する未承認のアクセスを防ぐために必要です。 証明書により、クラスター セキュリティが次のような方法で提供されます。
 
 * **クラスター認証:** クラスター フェデレーションのためのノード間通信を認証します。 この証明書で自分の ID を証明できたノードだけがクラスターに参加できます。
-* **サーバー認証:** 管理クライアントに対するクラスター管理エンドポイントを認証します。これで、管理クライアントにより、実際のクラスターと通信していることが認識されるようになります。 この証明書は、HTTPS 管理 API および HTTPS 経由の Service Fabric Explorer に対して SSL も提供します。
+* **サーバー認証:** 管理クライアントに対するクラスター管理エンドポイントを認証します。これで、管理クライアントにより、実際のクラスターと通信していることが認識されるようになります。 また、この証明書は、HTTPS 管理 API および HTTPS 経由の Service Fabric Explorer に対する TLS も提供します。
 
 この目的のため、証明書は次の要件を満たす必要があります。
 
 * 証明書は秘密キーを含む必要があります。
 * 証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
-* 証明書の**サブジェクト名は、Service Fabric クラスターへのアクセスに使用されるドメインに一致する必要があります。** これは、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。 証明機関 (CA) から `.cloudapp.azure.com` ドメインの SSL 証明書を取得することはできません。 クラスターのカスタム ドメイン名を取得します。 CA に証明書を要求するときは、証明書の件名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
+* 証明書の**サブジェクト名は、Service Fabric クラスターへのアクセスに使用されるドメインに一致する必要があります。** これは、クラスターの HTTPS 管理エンドポイントと Service Fabric Explorer 用の TLS を提供するために必要です。 証明機関 (CA) から `.cloudapp.azure.com` ドメインの TLS/SSL 証明書を取得することはできません。 クラスターのカスタム ドメイン名を取得します。 CA に証明書を要求するときは、証明書の件名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
 
 #### <a name="client-authentication-certificates"></a>クライアント認証証明書
 その他のクライアント証明書は、クラスター管理タスクに対して管理者を認証します。 Service Fabric には、**admin** および **read-only user** という 2 つのアクセス レベルがあります。 管理アクセスについて、少なくとも 1 つの証明書を使用する必要があります。 追加のユーザー レベル アクセスとして、別の証明書を指定する必要があります。 アクセス ロールの詳細については、「[ロールベースのアクセス制御 (Service Fabric クライアント用)][service-fabric-cluster-security-roles]」を参照してください。

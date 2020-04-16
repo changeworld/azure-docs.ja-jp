@@ -1,14 +1,14 @@
 ---
 title: CAF の基本ブループリント サンプルの概要
 description: Cloud Adoption Framework for Azure (CAF) 基盤ブループリント サンプルの概要とアーキテクチャ。
-ms.date: 08/20/2019
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 79b47127b81caf148054f4223e5fa7ad9fbf86fe
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: a5616667ae909b63f406e399a23bdf568089bf52
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75562563"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383573"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 基盤ブループリント サンプルの概要
 
@@ -18,7 +18,7 @@ Microsoft Cloud Adoption Framework for Azure (CAF) 基盤ブループリント�
 
 CAF 基盤ブループリント サンプルは、クラウド資産を管理するために必要な基本コントロールを作成する際に組織で使用することが推奨されているインフラストラクチャ リソースを Azure にデプロイします。 このサンプルは、組織が自信を持って Azure を使い始めるために役立つリソース、ポリシー、テンプレートをデプロイして適用します。
 
-![CAF 基盤、インストール内容の説明図 (Azure を使い始めるための基盤の作成に関する CAF ガイダンスの一部)](../../media/caf-blueprints/caf-foundation-architecture.png)
+:::image type="content" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="CAF 基盤、インストール内容の説明図 (Azure を使い始めるための基盤の作成に関する CAF ガイダンスの一部)" border="false":::
 
 この実装には、セキュリティで保護され、完全に監視されたエンタープライズ対応の基盤を提供するための、複数の Azure サービスが組み込まれています。 この環境は、以下で構成されます。
 

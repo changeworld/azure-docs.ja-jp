@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95a579cacc339360295f5f25fa6415ab29cd68ff
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246183"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673898"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 
@@ -42,7 +42,7 @@ Azure Time Series Insights プレビューでは、次のイベント ソース�
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Azure Time Series Insights プレビューでは、インスタンスごとに最大で 2 つのイベント ソースがサポートされています。
+Azure Time Series Insights プレビューでは、インスタンスごとに最大で 2 つのイベント ソースがサポートされています。 イベント ソースに接続すると、TSI 環境は、IoT Hub またはイベント ハブに現在格納されているすべてのイベントを、最も古いイベントから読み取ります。 
 
 > [!IMPORTANT] 
 > * プレビュー環境にイベント ソースをアタッチすると、初期の待機時間が長くなることがあります。 
@@ -91,7 +91,7 @@ Azure Time Series Insights プレビューのイングレスの制限事項に�
 
 *  **デバイスの数** × **イベント出力の頻度** × **各イベントのサイズ**。
 
-既定では、Time Series Insights プレビューは、**Time Series Insights 環境ごとに最大 1 MB/秒 (MBps)** の速度で受信データを取り込むことができます。
+既定では、Time Series Insights プレビューは、**Time Series Insights 環境ごとに最大 1 MB/秒 (MBps)** の速度で受信データを取り込むことができます。 [ハブのパーティションごとに](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits)追加の制限があります。
 
 > [!TIP] 
 > * 要求により、環境でサポートされる取り込み速度を最大 16 MBps に指定できます。
@@ -99,7 +99,7 @@ Azure Time Series Insights プレビューのイングレスの制限事項に�
  
 * **例 1:**
 
-    Contoso Shipping には、1 分につき 3 回イベントを発生させる 100,000 個のデバイスがあります。 1 つのイベントのサイズは 200 バイトです。 それらのデバイスは、4 つのパーティションを持つイベント ハブを Time Series Insights イベント ソースとして使用しています。
+    Contoso Shipping には、1 分につき 3 回イベントを発生させる 100,000 個のデバイスがあります。 1 つのイベントのサイズは 200 バイトです。 それらは、4 つのパーティションを持つ Iot Hub を Time Series Insights イベント ソースとして使用しています。
 
     * それらの Time Series Insights 環境のインジェスト率は次のようになります。**100,000 デバイス * 200 バイト/イベント * (3/60 イベント/秒) = 1 MBps**。
     * パーティションあたりのインジェスト率は 0.25 MBps です。
@@ -107,11 +107,11 @@ Azure Time Series Insights プレビューのイングレスの制限事項に�
 
 * **例 2:**
 
-    Contoso Fleet Analytics には、毎秒 1 つのイベントを発生させる 60,000 個のデバイスがあります。 それらのデバイスは、IoT Hub 24 パーティション数 4 を Time Series Insights イベント ソースとして使用しています。 1 つのイベントのサイズは 200 バイトです。
+    Contoso Fleet Analytics には、毎秒 1 つのイベントを発生させる 60,000 個のデバイスがあります。 それらは、4 つのパーティションを持つイベント ハブを Time Series Insights イベント ソースとして使用しています。 1 つのイベントのサイズは 200 バイトです。
 
-    * 環境のインジェスト率は次のようになります。**20,000 デバイス * 200 バイト/イベント * 1 イベント/秒 = 4 MBps**。
-    * パーティションあたりの率は 1 MBps です。
-    * Contoso Fleet Analytics では、それらの環境のインジェスト率を高めるために、Azure portal 経由で Time Series Insights に要求を送信することができます。
+    * 環境のインジェスト率は次のようになります。**60,000 デバイス * 200 バイト/イベント * 1 イベント/秒 = 12 MBps**。
+    * パーティションあたりの率は 3 MBps です。
+    * Contoso Fleet Analytics のインジェスト率は、環境とパーティションの制限を超えています。 Azure portal を介して Time Series Insights に要求を送信して、環境のインジェスト率を上げることができます。また、プレビューの制限内に収まるように、より多くのパーティションを備えたイベント ハブを作成することもできます。
 
 #### <a name="hub-partitions-and-per-partition-limits"></a>ハブのパーティションとパーティションごとの制限
 

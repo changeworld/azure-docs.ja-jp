@@ -3,12 +3,12 @@ title: ブループリント サンプルの一覧
 description: Azure Blueprints を使用して環境、ポリシー、クラウド導入フレームワークの基礎をデプロイするためのコンプライアンスおよび標準サンプルのインデックス。
 ms.date: 02/26/2020
 ms.topic: sample
-ms.openlocfilehash: 703c383f41cd833fb47ca489682258158f9fe179
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 745b16f8aff8fe003ec65449cdf3dc0d629ba6ff
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "78196826"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383526"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints サンプル
 
@@ -38,7 +38,7 @@ ms.locfileid: "78196826"
 
 ## <a name="samples-strategy"></a>サンプルの戦略
 
-![ブループリント サンプルの戦略](../media/blueprint-samples-strategy.png)
+:::image type="content" source="../media/blueprint-samples-strategy.png" alt-text="ブループリント サンプルの戦略" border="false":::
 
 CAF 基盤および CAF 移行ランディング ゾーンのブループリントは、オンプレミスの資産とワークロードを Azure に移行するために既存のクリーンな単一サブスクリプションが顧客側で準備されていることを前提としています
 (図の領域 A および B)。  

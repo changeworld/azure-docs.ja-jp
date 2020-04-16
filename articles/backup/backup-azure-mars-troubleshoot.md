@@ -4,12 +4,12 @@ description: この記事では、Azure Backup エージェントのインスト
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 24169356600c25e664221af397051bb0fec3e459
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a15f8a4531bc31dab5b99e125454b0d9c4fd4521
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673095"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421273"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
@@ -132,6 +132,13 @@ Set-ExecutionPolicy Unrestricted
 
 > [!TIP]
 > 変更を確実に適用するために、上記の手順を実行した後で、サーバーを再起動します。
+
+## <a name="resource-not-provisioned-in-service-stamp"></a>サービス スタンプにプロビジョニングされていないリソース
+
+エラー | 考えられる原因 | 推奨アクション
+--- | --- | ---
+現在の操作は、内部サービス エラー "サービス スタンプにプロビジョニングされていないリソース" が原因で失敗しました。 しばらくしてから、操作を再試行してください。 (ID: 230006) | 保護されたサーバーの名前が変更されました。 | <li> サーバーの名前を、コンテナーに登録されている元の名前に戻します。 <br> <li> 新しい名前を使用して、サーバーをコンテナーに再登録します。
+
 
 ## <a name="troubleshoot-restore-problems"></a>復元の問題のトラブルシューティング
 

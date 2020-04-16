@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 共有サービス ブループリント サンプルの概要
 description: ISO 27001 共有サービスのブルー プリント サンプルの概要とアーキテクチャ。 このブループリント サンプルは、お客様が特定の ISO 27001 コントロールを評価するのに役立ちます。
-ms.date: 01/13/2020
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 0b6a250ebac2744adca813219225388841f1776f
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9b0b49582023ee5c68fea0f21b70290a102a038a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75922534"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381564"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービス ブループリント サンプルの概要
 
@@ -21,7 +21,7 @@ ISO 27001 共有サービス ブループリント サンプルでは、ISO 2700
 ISO 27001 共有サービス ブループリント サンプルにより、仮想データセンター (VDC) アプローチに基づいて複数のワークロードをホストするために組織が使用できる Azure 内の基盤インフラストラクチャがデプロイされます。
 VDC は、Microsoft がその最大規模のエンタープライズのお客様と共に使用する参照アーキテクチャ、オートメーション ツール、およびエンゲージメント モデルの実証済みのセットです。 共有サービスのブループリント サンプルは、次に示す完全にネイティブな Azure VDC 環境に基づきます。
 
-![ISO 27001 共有サービスのブループリント サンプル設計](../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png)
+:::image type="content" source="../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png" alt-text="ISO 27001 共有サービスのブループリント サンプル設計" border="false":::
 
 この環境は、ISO 27001 標準に基づいた、完全に監視された安全なエンタープライズ対応の共有サービス インフラストラクチャを提供するために使用される複数の Azure サービスで構成されます。 この環境は、以下で構成されます。
 

@@ -1,28 +1,28 @@
 ---
-title: SSL バインディングを使用してカスタム DNS のセキュリティを確保する
+title: TLS/SSL バインドを使用してカスタム DNS をセキュリティで保護する
 description: 証明書を使用して TLS/SSL バインディングを作成することによって、カスタム ドメインに対する HTTPS アクセスのセキュリティを確保します。 HTTPS または TLS 1.2 を強制して Web サイトのセキュリティを強化しましょう。
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 263b4e76d334aab82f6bbac9aa268a50f4dd3784
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223839"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811749"
 ---
-# <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Azure App Service で SSL バインディングを使用してカスタム DNS 名をセキュリティで保護する
+# <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する
 
 この記事では、証明書バインドを作成することで [App Service アプリ](https://docs.microsoft.com/azure/app-service/)または[関数アプリ](https://docs.microsoft.com/azure/azure-functions/)の[カスタム ドメイン](app-service-web-tutorial-custom-domain.md)をセキュリティで保護する方法について説明します。 完了したら、カスタム DNS 名 (`https://www.contoso.com` など) の `https://` エンドポイントで App Service アプリにアクセスできます。 
 
-![カスタム SSL 証明書付きの Web アプリ](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+![カスタム TLS/SSL 証明書を使用した Web アプリ](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
 証明書で[カスタム ドメイン](app-service-web-tutorial-custom-domain.md)を保護する方法は次の 2 つの手順から構成されています。
 
-- [SSL バインドの要件](configure-ssl-certificate.md#private-certificate-requirements)をすべて満たす[プライベート証明書を App Service に追加する](configure-ssl-certificate.md)。
--  該当カスタム ドメインの SSL バインドを作成する。 この 2 つ目の手順についてこの記事で説明します。
+- [プライベート証明書の要件](configure-ssl-certificate.md#private-certificate-requirements)をすべて満たす[プライベート証明書を App Service に追加する](configure-ssl-certificate.md)。
+-  該当カスタム ドメインの TLS バインドを作成する。 この 2 つ目の手順についてこの記事で説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -77,17 +77,17 @@ ms.locfileid: "79223839"
 
 ### <a name="create-binding"></a>バインドを作成する
 
-次の表を使用して、 **[TLS/SSL バインディング]** ダイアログで SSL バインディングを構成してから、 **[バインディングの追加]** をクリックします。
+次の表を参考に使用して、 **[TLS/SSL バインディング]** ダイアログで TLS バインドを構成してから、 **[バインドの追加]** をクリックします。
 
 | 設定 | 説明 |
 |-|-|
-| カスタム ドメイン | SSL バインディングを追加するドメイン名。 |
+| カスタム ドメイン | TLS/SSL バインドを追加するドメイン名。 |
 | プライベート証明書のサムプリント | バインドする証明書。 |
-| TLS/SSL の種類 | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - 複数の SNI SSL バインディングを追加できます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (詳細については、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。</li><li>**IP SSL** - IP SSL バインディングを 1 つだけ追加できます。 このオプションでは、SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 バインディングを構成した後は、「[IP SSL の A レコードの再マップ](#remap-a-record-for-ip-ssl)」の手順に従います。<br/>IP SSL は、Production レベルまたは Isolated レベルでのみサポートされます。 </li></ul> |
+| TLS/SSL の種類 | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - 複数の SNI SSL バインディングを追加できます。 このオプションでは、複数の TLS/SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (詳細については、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。</li><li>**IP SSL** - IP SSL バインディングを 1 つだけ追加できます。 このオプションでは、TLS/SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 バインディングを構成した後は、「[IP SSL の A レコードの再マップ](#remap-a-record-for-ip-ssl)」の手順に従います。<br/>IP SSL は、Production レベルまたは Isolated レベルでのみサポートされます。 </li></ul> |
 
-操作が完了すると、カスタム ドメインの SSL 状態が**セキュリティで保護された**状態に変わります。
+操作が完了すると、カスタム ドメインの TLS/SSL 状態が**セキュリティで保護された**状態に変わります。
 
-![SSL バインド成功](./media/configure-ssl-bindings/secure-domain-finished.png)
+![TLS/SSL バインド成功](./media/configure-ssl-bindings/secure-domain-finished.png)
 
 > [!NOTE]
 > **[カスタム ドメイン]** での **[Secure]\(セキュリティ保護\)** 状態とは、それが証明書を使用してセキュリティで保護されているが、App Service はその証明書が自己署名されたものか有効期限が切れているかをチェックしないことを意味します。たとえば、それによって、ブラウザーにエラーや警告が表示されることもあります。
@@ -147,9 +147,9 @@ ms.locfileid: "79223839"
 
 操作が完了すると、アプリは下位の TLS バージョンでの接続をすべて拒否します。
 
-## <a name="handle-ssl-termination"></a>SSL の終了処理
+## <a name="handle-tls-termination"></a>TLS 終了の処理
 
-App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
+App Service では、[TLS 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS 要求は暗号化されていない HTTP 要求としてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
 
 [Linux Node.js 構成](containers/configure-language-nodejs.md#detect-https-session)ガイドなどの言語固有の構成ガイドでは、アプリケーション コード内の HTTPS セッションを検出する方法について説明しています。
 
@@ -157,13 +157,13 @@ App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_pro
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>その他のリソース
 
-* [アプリケーション コードに SSL 証明書を使用する](configure-ssl-certificate-in-code.md)
+* [Azure App Service のご自分のコードから TLS/SSL 証明書を使用する](configure-ssl-certificate-in-code.md)
 * [FAQ:App Service 証明書](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 75890efebc42b74c56fb95ed1803152b516588b9
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385216"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811244"
 ---
 # <a name="develop-a-secure-web-app"></a>セキュリティで保護された Web アプリを開発する
 
@@ -108,7 +108,7 @@ Azure にアプリをデプロイする方法は、次のように多数あり�
 
 ### <a name="network"></a>ネットワーク
 
-このサンプル アプリでは、ネットワークとの間でやり取りされる転送中のデータに、エンド ツー エンドの SSL 暗号化を使用します。 ゲートウェイは自己署名証明書を使用して構成されます。
+このサンプル アプリでは、ネットワークとの間でやり取りされる転送中のデータに、エンド ツー エンドの TLS/SSL 暗号化を使用します。 ゲートウェイは自己署名証明書を使用して構成されます。
 > [!IMPORTANT]
 > このデモでは、自己署名証明書を使用します。 運用環境では、検証済みの証明機関 (CA) から証明書を取得する必要があります。
 
@@ -363,7 +363,7 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
-PostgreSQL の SSL および証明機関 (CA) 検証を設定する方法の詳細については、[Azure Database for PostgreSQL での SSL 接続の構成](/azure/postgresql/concepts-ssl-connection-security)に関するページをご覧ください。
+PostgreSQL の TLS および証明機関 (CA) 検証を設定する方法の詳細については、[Azure Database for PostgreSQL での TLS 接続の構成](/azure/postgresql/concepts-ssl-connection-security)に関するページをご覧ください。
 
 ルート証明書はコンテナーに含まれています。 証明書を取得するには、次の手順を実行します。
 
@@ -375,7 +375,7 @@ PostgreSQL の SSL および証明機関 (CA) 検証を設定する方法の詳�
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-PostgreSQL に SSL のセキュリティを構成する方法の詳細については、[SSL 接続のセキュリティの構成](/azure/postgresql/concepts-ssl-connection-security)に関するページをご覧ください。
+PostgreSQL に TLS のセキュリティを構成する方法の詳細については、[TLS 接続のセキュリティの構成](/azure/postgresql/concepts-ssl-connection-security)に関するページをご覧ください。
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>Azure Web Apps on Linux をデプロイする
 

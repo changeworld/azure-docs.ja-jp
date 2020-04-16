@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79224823"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804437"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成の詳細
 
@@ -39,7 +39,7 @@ App Service Environment が正常に機能するには、次のネットワー�
 
 * Azure 管理プレーン エンドポイント (Azure クラシック デプロイ モデルと Azure Resource Manager の両方のエンドポイント) に対する発信ネットワーク接続。 これらのエンドポイントへの接続には、management.core.windows.net ドメインと management.azure.com ドメインが含まれます。 
 
-* ocsp.msocsp.com、mscrl.microsoft.com、crl.microsoft.com の各ドメインメッセージに対する発信ネットワーク接続。 これらのドメインへの接続は、SSL 機能をサポートするために必要です。
+* ocsp.msocsp.com、mscrl.microsoft.com、crl.microsoft.com の各ドメインメッセージに対する発信ネットワーク接続。 これらのドメインへの接続は、TLS 機能をサポートするために必要です。
 
 * 仮想ネットワークの DNS 構成は、この記事の前述のすべてのエンドポイントとドメインを解決できるようにする必要があります。 エンドポイントを解決できない場合は、App Service Environment の作成が失敗します。 既存の App Service Environment は異常とマークされています。
 

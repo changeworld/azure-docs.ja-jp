@@ -3,8 +3,8 @@ title: Service Management API の使用 (Python) - 機能ガイド
 description: Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。
 services: cloud-services
 documentationcenter: python
-author: lmazuel
-manager: wpickett
+author: tanmaygore
+manager: vashan
 editor: ''
 ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
 ms.service: cloud-services
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: lmazuel
-ms.openlocfilehash: 50501413a63921a9a34be1c04ed259990922b686
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.author: tagore
+ms.openlocfilehash: 135dd92f7af4397f2053ea0bdc15d98dfad93914
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141467"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253358"
 ---
 # <a name="use-service-management-from-python"></a>Python からサービス管理を使用する
 このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) の **ServiceManagementService** クラスは、[Azure Portal][management-portal] で使用できるサービス管理関連の機能の多くへのプログラムによるアクセスをサポートしています。 この機能を使用して、クラウド サービス、デプロイ、データ管理サービス、および仮想マシンの作成、更新、および削除を行うことができます。 この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
 
-## <a name="WhatIs"> </a>サービス管理とは
+## <a name="what-is-service-management"></a><a name="WhatIs"> </a>サービス管理とは
 Azure Service Management API を使うと、[Azure Portal][management-portal] を通じて使用できるサービス管理機能の多くにプログラムでアクセスできます。 Azure SDK for Python を使用すると、クラウド サービスとストレージ アカウントを管理できます。
 
 Service Management API を使用するには、 [Azure アカウントを作成する](https://azure.microsoft.com/pricing/free-trial/)必要があります。
 
-## <a name="Concepts"> </a>概念
-Azure SDK for Python は、REST API である [Service Management API][svc-mgmt-rest-api] をラップします。 すべての API 操作は SSL 経由で実行され、X.509 v3 証明書を使用して相互認証されます。 管理サービスへのアクセスは、Azure で実行されているサービス内から行うことができます。 また、HTTPS 要求の送信と HTTPS 応答の受信の機能を持つ任意のアプリケーションからインターネット経由で直接行うこともできます。
+## <a name="concepts"></a><a name="Concepts"> </a>概念
+Azure SDK for Python は、REST API である [Service Management API][svc-mgmt-rest-api] をラップします。 すべての API 操作は TLS 経由で実行され、X.509 v3 証明書を使用して相互認証されます。 管理サービスへのアクセスは、Azure で実行されているサービス内から行うことができます。 また、HTTPS 要求の送信と HTTPS 応答の受信の機能を持つ任意のアプリケーションからインターネット経由で直接行うこともできます。
 
-## <a name="Installation"> </a>インストール
-`azure-servicemanagement-legacy` パッケージには、この記事で説明されているすべての機能が用意されています。このパッケージは pip を使用してインストールできます。 インストールの詳細については (たとえば、Python を初めて使用する場合)、[Python と Azure SDK のインストール](/azure/python/python-sdk-azure-install)に関する記事を参照してください。
+## <a name="installation"></a><a name="Installation"> </a>インストール
+`azure-servicemanagement-legacy` パッケージには、この記事で説明されているすべての機能が用意されています。このパッケージは pip を使用してインストールできます。 インストールの詳細については (たとえば、Python を初めて使用する場合)、[Python と Azure SDK のインストール](/azure/developer/python/azure-sdk-install)に関する記事を参照してください。
 
-## <a name="Connect"> </a>サービス管理への接続
+## <a name="connect-to-service-management"></a><a name="Connect"> </a>サービス管理に接続する
 サービス管理エンドポイントに接続するには、Azure サブスクリプション ID、および有効な管理証明書が必要です。 サブスクリプション ID は [Azure Portal][management-portal] から入手できます。
 
 > [!NOTE]
@@ -89,7 +89,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
 
 前の例では、 `sms` は **ServiceManagementService** オブジェクトです。 **ServiceManagementService** クラスは、Azure サービスを管理するときに使用する主要なクラスです。
 
-## <a name="ListAvailableLocations"> </a>利用可能な場所の列挙
+## <a name="list-available-locations"></a><a name="ListAvailableLocations"> </a>利用可能な場所を列挙する
 ホスティング サービスに利用できる場所を列挙するには、**list\_locations** メソッドを使用します。
 
     from azure import *
@@ -111,14 +111,14 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
 * 米国中北部
 * 米国中南部
 * 米国西部
-* East US
+* 米国東部
 * 東日本
 * 西日本
 * ブラジル南部
 * オーストラリア東部
 * オーストラリア南東部
 
-## <a name="CreateCloudService"> </a>クラウド サービスの作成
+## <a name="create-a-cloud-service"></a><a name="CreateCloudService"> </a>クラウド サービスを作成する
 Azure でアプリケーションを作成して実行する場合、そのコードと構成は、総称して [Azure クラウド サービス][cloud service]と呼ばれます。 (以前の Azure リリースでは、*ホステッド サービス*と呼ばれていました)。**create\_hosted\_service** メソッドを使用して、新しいホステッド サービスを作成できます。 サービスを作成するには、ホステッド サービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
 
     from azure import *
@@ -153,14 +153,14 @@ Azure でアプリケーションを作成して実行する場合、そのコ�
 
 クラウド サービスを作成した後、**create\_deployment** メソッドを使用してコードをサービスにデプロイします。
 
-## <a name="DeleteCloudService"> </a>クラウド サービスの削除
+## <a name="delete-a-cloud-service"></a><a name="DeleteCloudService"> </a>クラウド サービスを削除する
 クラウド サービスを削除するには、そのサービス名を **delete\_hosted\_service** メソッドに渡します。
 
     sms.delete_hosted_service('myhostedservice')
 
 サービスを削除する前に、そのサービスのすべてのデプロイを最初に削除する必要があります。 詳細については、「[デプロイの削除](#DeleteDeployment)」を参照してください。
 
-## <a name="DeleteDeployment"> </a>デプロイの削除
+## <a name="delete-a-deployment"></a><a name="DeleteDeployment"> </a>デプロイを削除する
 デプロイを削除するには、**delete\_deployment** メソッドを使用します。 次の例では、`v1` という名前のデプロイを削除する方法を示しています。
 
     from azure import *
@@ -170,7 +170,7 @@ Azure でアプリケーションを作成して実行する場合、そのコ�
 
     sms.delete_deployment('myhostedservice', 'v1')
 
-## <a name="CreateStorageService"> </a>ストレージ サービスの作成
+## <a name="create-a-storage-service"></a><a name="CreateStorageService"> </a>ストレージ サービスを作成する
 [ストレージ サービス](../storage/common/storage-create-storage-account.md)を使用すると、Azure の [BLOB](../storage/blobs/storage-python-how-to-use-blob-storage.md)、[テーブル](../cosmos-db/table-storage-how-to-use-python.md)、[キュー](../storage/queues/storage-python-how-to-use-queue-storage.md)にアクセスできます。 ストレージ サービスを作成するには、サービスの名前 (Azure 内で一意の 3 から 24 文字の小文字) が必要です。 また、説明、ラベル (最大 100 文字、Base64 に自動的にエンコードされます)、場所も必要です。 次の例では、場所を指定してストレージ サービスを作成する方法を示しています。
 
     from azure import *
@@ -203,7 +203,7 @@ Azure でアプリケーションを作成して実行する場合、そのコ�
         print('Location: ' + account.storage_service_properties.location)
         print('')
 
-## <a name="DeleteStorageService"> </a>ストレージ サービスの削除
+## <a name="delete-a-storage-service"></a><a name="DeleteStorageService"> </a>ストレージ サービスを削除する
 ストレージ サービスを削除するには、そのサービス名を **delete\_storage\_account** メソッドに渡します。 ストレージ サービスを削除すると、サービスに格納されているすべてのデータ (BLOB、テーブル、キュー) が削除されます。
 
     from azure import *
@@ -213,7 +213,7 @@ Azure でアプリケーションを作成して実行する場合、そのコ�
 
     sms.delete_storage_account('mystorageaccount')
 
-## <a name="ListOperatingSystems"> </a>利用可能なオペレーティング システムの列挙
+## <a name="list-available-operating-systems"></a><a name="ListOperatingSystems"> </a>利用可能なオペレーティング システムを列挙する
 ホスティング サービスに利用できるオペレーティング システムを列挙するには、**list\_operating\_systems** メソッドを使用します。
 
     from azure import *
@@ -240,7 +240,7 @@ Azure でアプリケーションを作成して実行する場合、そのコ�
                 print('Version: ' + os.version)
         print('')
 
-## <a name="CreateVMImage"> </a>オペレーティング システム イメージの作成
+## <a name="create-an-operating-system-image"></a><a name="CreateVMImage"> </a>オペレーティング システム イメージを作成する
 オペレーティング システム イメージをイメージ リポジトリに追加するには、**add\_os\_image** メソッドを使用します。
 
     from azure import *
@@ -272,7 +272,7 @@ Azure でアプリケーションを作成して実行する場合、そのコ�
         print('Media link: ' + image.media_link)
         print('')
 
-## <a name="DeleteVMImage"> </a>オペレーティング システム イメージの削除
+## <a name="delete-an-operating-system-image"></a><a name="DeleteVMImage"> </a>オペレーティング システム イメージを削除する
 ユーザー イメージを削除するには、**delete\_os\_image** メソッドを使用します。
 
     from azure import *
@@ -285,7 +285,7 @@ Azure でアプリケーションを作成して実行する場合、そのコ�
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-## <a name="CreateVM"> </a>仮想マシンの作成
+## <a name="create-a-virtual-machine"></a><a name="CreateVM"></a>仮想マシンを作成する
 仮想マシンを作成するには、最初に [クラウド サービス](#CreateCloudService)を作成する必要があります。 その後で、**create\_virtual\_machine\_deployment** メソッドを使用して、仮想マシンのデプロイを作成します。
 
     from azure import *
@@ -323,7 +323,7 @@ Azure でアプリケーションを作成して実行する場合、そのコ�
         os_virtual_hard_disk=os_hd,
         role_size='Small')
 
-## <a name="DeleteVM"> </a>仮想マシンの削除
+## <a name="delete-a-virtual-machine"></a><a name="DeleteVM"> </a>仮想マシンを削除する
 仮想マシンを削除するには、最初に **delete\_deployment** メソッドを使用してデプロイを削除します。
 
     from azure import *
@@ -399,7 +399,7 @@ VM イメージをキャプチャするには、まず、**capture\_vm\_image** 
 
 クラシック デプロイ モデルで Windows 仮想マシンをキャプチャする方法について詳しくは、[Windows 仮想マシンのキャプチャ](../virtual-machines/windows/classic/capture-image-classic.md)に関するページをご覧ください。
 
-## <a name="What's Next"> </a>次のステップ
+## <a name="next-steps"></a><a name="What's Next"> </a>次の手順
 これで、サービス管理の基本を学習できました。[Azure Python SDK の完全な API のリファレンス ドキュメント](https://azure-sdk-for-python.readthedocs.org/)にアクセスして、複雑なタスクを簡単に実行することにより、Python アプリケーションを管理できます。
 
 詳細については、 [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)を参照してください。

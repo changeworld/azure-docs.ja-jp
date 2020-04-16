@@ -264,13 +264,13 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
-    - name: モデルを解釈する
+    - name: モデルの説明
       displayName: interpretability
       items:
-        - name: ローカル モデルとリモート モデルを解釈する
+        - name: ML モデルの説明
           displayName: 'SDK, interpret'
           href: how-to-machine-learning-interpretability-aml.md
-        - name: 自動 ML モデルを解釈する
+        - name: 自動化された ML モデルの説明
           displayName: 'SDK, interpret, automl'
           href: how-to-machine-learning-interpretability-automl.md
     - name: 機械学習の自動化
@@ -310,34 +310,36 @@
         - name: デプロイする場所と方法
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: Azure Kubernetes Service
-          displayName: 'aks, aad, authentication, azure active directory'
-          href: how-to-deploy-azure-kubernetes-service.md
-        - name: Azure Container Instances
-          displayName: aci
-          href: how-to-deploy-azure-container-instance.md
-        - name: IoT Edge
-          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: FPGA 推論
-          href: how-to-deploy-fpga-web-service.md
-        - name: GPU 推論
-          href: how-to-deploy-inferencing-gpus.md
-        - name: Azure App Service
-          displayName: web app
-          href: how-to-deploy-app-service.md
-        - name: Azure Functions
-          displayName: functions app
-          href: how-to-deploy-functions.md
-        - name: コンピューティング インスタンス
-          href: how-to-deploy-local-container-notebook-vm.md
-        - name: カスタム Docker イメージを使用する
-          href: how-to-deploy-custom-docker-image.md
-        - name: 既存のモデルを使用する
-          displayName: publish existing model
-          href: how-to-deploy-existing-model.md
+        - name: デプロイメント シナリオ
+          items:
+            - name: Azure ML のコンピューティング インスタンス
+              href: how-to-deploy-local-container-notebook-vm.md
+            - name: Azure Kubernetes Service
+              displayName: 'aks, aad, authentication, azure active directory'
+              href: how-to-deploy-azure-kubernetes-service.md
+            - name: Azure Container Instances
+              displayName: aci
+              href: how-to-deploy-azure-container-instance.md
+            - name: GPU 推論
+              href: how-to-deploy-inferencing-gpus.md
+            - name: Azure App Service
+              displayName: web app
+              href: how-to-deploy-app-service.md
+            - name: Azure Functions
+              displayName: functions app
+              href: how-to-deploy-functions.md
+            - name: Azure IoT Edge デバイス
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+            - name: FPGA 推論
+              href: how-to-deploy-fpga-web-service.md
+            - name: カスタム Docker イメージ
+              href: how-to-deploy-custom-docker-image.md
+            - name: Azure 以外の ML モデル
+              displayName: publish existing model
+              href: how-to-deploy-existing-model.md
         - name: トラブルシューティングとデバッグ
           href: how-to-troubleshoot-deployment.md
-        - name: クライアントの作成
+        - name: サービス エンドポイントを呼び出す
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
         - name: モデルを監視する

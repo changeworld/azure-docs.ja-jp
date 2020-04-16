@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/06/2020
+ms.date: 03/31/2020
 ms.author: radeltch
-ms.openlocfilehash: 69dcf91957263cea36f8ff6db6a7af14588998ee
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 215cfd033a3fe8eb0ad9896c1f45f1e0f788823f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927222"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521362"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性
 
@@ -25,17 +25,17 @@ ms.locfileid: "78927222"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2205917]: https://launchpad.support.sap.com/#/notes/2205917
-[1944799]: https://launchpad.support.sap.com/#/notes/1944799
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2205917]:https://launchpad.support.sap.com/#/notes/2205917
+[1944799]:https://launchpad.support.sap.com/#/notes/1944799
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2388694]:https://launchpad.support.sap.com/#/notes/2388694
-[401162]: https://launchpad.support.sap.com/#/notes/401162
+[401162]:https://launchpad.support.sap.com/#/notes/401162
 
 [hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
 [hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
@@ -277,16 +277,20 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   論理ボリュームを作成します。 `-i` スイッチを指定せずに `lvcreate` を使用すると、線形のボリュームが作成されます。 I/O パフォーマンスを向上するためにストライプ ボリュームを作成することをお勧めします。`-i` 引数は、基になる物理ボリュームの番号にする必要があります。 このドキュメントでは、2 つの物理ボリュームが使用されるため、`-i` スイッチ引数は **2** に設定されます。 ログ ボリューム用に物理ボリュームが 1 つ使用されるため、`-i` スイッチは明示的には使用されません。 データ、ログ、または共有ボリュームごとに複数の物理ボリュームを使用する場合は、`-i` スイッチを使用して基になる物理ボリュームの番号に設定します。
+   論理ボリュームを作成します。 `-i` スイッチを指定せずに `lvcreate` を使用すると、線形のボリュームが作成されます。 I/O パフォーマンスを向上させるためにストライプ ボリュームを作成し、[SAP HANA VM のストーレジ構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)に関する記事に記載されている値にストライプ サイズを合わせることをお勧めします。 `-i` 引数は、基になる物理ボリュームの数、`-I` 引数はストライプ サイズにする必要があります。 このドキュメントでは、2 つの物理ボリュームが使用されるため、`-i` スイッチ引数は **2** に設定されます。 データ ボリュームのストライプ サイズは **256KiB** です。 ログ ボリューム用に物理ボリュームが 1 つ使用されるため、ログ ボリューム コマンドに対して `-i` および `-I` スイッチは明示的には使用されません。  
 
-   <pre><code>sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
+   > [!IMPORTANT]
+   > データ、ログ、または共有ボリュームごとに複数の物理ボリュームを使用する場合は、`-i` スイッチを使用して基になる物理ボリュームの番号に設定します。 ストライプ ボリュームを作成するときにストライプ サイズを指定するには、`-I` スイッチを使用します。  
+   > ストライプ サイズやディスク数など、推奨されるストレージ構成については、[SAP HANA VM ストレージ構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)に関する記事を参照してください。  
+
+   <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_shared vg_hana_shared_<b>HN1</b>
    sudo mkfs.xfs /dev/vg_hana_data_<b>HN1</b>/hana_data
    sudo mkfs.xfs /dev/vg_hana_log_<b>HN1</b>/hana_log
    sudo mkfs.xfs /dev/vg_hana_shared_<b>HN1</b>/hana_shared
    </code></pre>
-
+  
    マウント ディレクトリを作成し、すべての論理ボリュームの UUID をコピーします
 
    <pre><code>sudo mkdir -p /hana/data/<b>HN1</b>

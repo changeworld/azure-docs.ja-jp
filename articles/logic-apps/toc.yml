@@ -83,10 +83,12 @@
           href: logic-apps-author-definitions.md
         - name: コンテンツ タイプを処理する
           href: logic-apps-content-type.md
-        - name: エラーと例外を処理する
+        - name: 例外を処理します。
           href: logic-apps-exception-handling.md
         - name: 大きいメッセージを処理する
           href: logic-apps-handle-large-messages.md
+        - name: 調整の問題または 429 エラーを処理する
+          href: handle-throttling-problems-429-errors.md
         - name: セキュリティで保護
           items:
             - name: ロジック アプリのセキュリティを強化する

@@ -1,59 +1,69 @@
 ---
-title: Azure MFA のしくみ - Azure Active Directory
-description: Azure Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することが可能です。
+title: Azure Multi-Factor Authentication の概要
+description: Azure Multi-Factor Authentication を使用して、シンプルなサインイン プロセスを好むユーザーの要望に応えながら、データやアプリケーションへのアクセスを保護する方法について説明します。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 04/03/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39948214f5bd080be417ed515bea6bff87d3b303
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c50232abd12c8c0390409bd7bf72833b4f153e02
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77484062"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667355"
 ---
-# <a name="how-it-works-azure-multi-factor-authentication"></a>しくみ: Azure Multi-Factor Authentication
+# <a name="how-it-works-azure-multi-factor-authentication"></a>動作のしくみ: Azure Multi-Factor Authentication
 
-2 段階認証のセキュリティは、レイヤー アプローチによってもたらされます。 攻撃者にとって、多要素認証を侵害することはかなり困難です。 攻撃者がユーザーのパスワードを手に入れても、付加的な認証方法がなければ役に立ちません。 多要素認証は次の認証方法のうち 2 つ以上を要求することで機能します。
+多要素認証は、携帯電話にコードを入力する、指紋スキャンを行うなど、サインイン プロセス中に追加で本人確認できるものをユーザーに求めるプロセスです。
 
-* ユーザーが知っているもの (通常はパスワード)
-* ユーザーが持っているもの (携帯電話など、簡単には複製できない信頼できるデバイス)
-* ユーザー自身 (生体認証)
+ユーザーの認証にパスワードのみを使用する場合、不安な攻撃ベクトルが残ります。 パスワードの強度が低いか、どこかで流出していたとしたら、そのユーザー名とパスワードでサインインしようとしているユーザーは本人なのか、攻撃者なのかわかりません。 2 つ目の認証形式を義務付ければ、その二次的な要素は攻撃者が容易に取得したり複製したりできるようなものではないため、セキュリティが向上します。
 
-<center>
+![さまざまな形式の多要素認証の概念図](./media/concept-mfa-howitworks/methods.png)
 
-![認証方法の概念画像](./media/concept-mfa-howitworks/methods.png)</center>
+Azure Multi-Factor Authentication は、次の認証方法のうち 2 つ以上を要求することで機能します。
 
-Azure Multi-Factor Authentication (MFA) を利用すれば、データやアプリケーションへのアクセスを保護し、ユーザーには簡単なサインイン プロセスを提供できます。 2 つ目の認証を要求することでセキュリティを追加し、使い勝手の良いさまざまな[認証方法](concept-authentication-methods.md)によって強力な認証を与えます。 ユーザーは、管理者が行う構成上の決定に基づいて、MFA で認証が行われる場合と行われない場合があります。
+* ユーザーが知っているもの (通常はパスワード)。
+* ユーザーが持っているもの (携帯電話やハードウェア キーのように、簡単には複製できない信頼できるデバイスなど)。
+* ユーザー自身 (指紋スキャンや顔面認識などの生体認証)。
 
-## <a name="how-to-get-multi-factor-authentication"></a>Multi-Factor Authentication の入手方法
+オンボーディング エクスペリエンスを簡略化するために、セルフサービス パスワード リセットと Azure Multi-Factor Authentication の両方にユーザー自身が 1 回のステップで登録できるようになっています。 どのような形式のセカンダリ認証を使用できるかは、管理者が定義できます。 Azure Multi-Factor Authentication は、ユーザーがセルフサービス パスワード リセットを実行してさらにそのプロセスのセキュリティを高める際に義務付けることもできます。
 
-Multi-Factor Authentication は以下のサービスに付属します。
+![サインイン画面で使用されている認証方法](media/concept-authentication-methods/overview-login.png)
 
-* **Azure Active Directory Premium** または **Microsoft 365 Business** - Azure Multi-Factor Authentication のすべての機能と条件付きアクセス ポリシーを使用して、多要素認証を要求します。
+Azure Multi-Factor Authentication を利用すれば、データやアプリケーションへのアクセスを保護すると同時に、ユーザーの利便性を維持できます。 2 つ目の認証を要求することでセキュリティを追加し、使い勝手の良いさまざまな[認証方法](concept-authentication-methods.md)によって強力な認証を与えます。 ユーザーは、管理者が行う構成上の決定に基づいて、MFA で認証が行われる場合と行われない場合があります。
 
-* **Azure AD Free**、またはスタンドアロンの **Office 365** ライセンス - [セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)を使用して、ユーザーと管理者に多要素認証を要求します。
+Azure Multi-Factor Authentication を使用するために、アプリケーションまたはサービスを変更する必要はありません。 検証プロンプトは Azure AD サインイン イベントの一部であり、必要に応じて MFA チャレンジを自動的に要求して処理します。
 
-* **Azure Active Directory 全体管理者** - Azure Multi-Factor Authentication の一部の機能を集めたものであり、全体管理者アカウントを保護するための手段として利用されます。
+## <a name="available-verification-methods"></a>使用可能な検証方法
 
-> [!NOTE]
-> 2018 年 9 月 1 日以降、新しいお客様は、スタンドアロン オファーとして Azure Multi-Factor Authentication を購入できなくなります。 多要素認証認証は、今後も Azure AD Premium ライセンスで利用できます。
+ユーザーがアプリケーションまたはサービスにサインインすると、MFA プロンプトが表示され、登録されているいずれかの追加の検証形式を選択できます。 管理者は、これらの Azure Multi-Factor Authentication の検証方法の登録を要求することができます。または、ユーザーが自分の [[マイ プロファイル]](https://myprofile.microsoft.com) にアクセスして検証方法を編集または追加できます。
 
-## <a name="supportability"></a>サポート
+Azure Multi-Factor Authentication では、次のような追加の検証形式を使用できます。
 
-ユーザーの多くはパスワードのみを使用した認証に慣れているため、組織はこのプロセスに関してすべてのユーザーに通達することが重要です。 通達により、ユーザーが MFA 関連の重要でない問題についてヘルプ デスクに問い合わせる可能性が低くなります。 ただし、一部のシナリオでは MFA を一時的に無効にすることが必要になる場合があります。 次のガイドラインに従って、これらのシナリオへの対処方法を理解してください。
+* Microsoft Authenticator アプリ
+* OATH ハードウェア トークン
+* sms
+* 音声通話
 
-* 認証方法にアクセスできないか、認証方法が正しく動作せず、ユーザーがサインインできない状況に対応できるよう、サポート スタッフをトレーニングしてください。
-   * サポート スタッフは Azure MFA Service の条件付きアクセス ポリシーを利用することで、MFA を要求するポリシーから除外されるグループにユーザーを追加できます。
-* 2 段階認証の要求を最小限に抑える方法として、条件付きアクセスのネームド ロケーションを使用することを検討します。 この機能を使用して、管理者は、新しいユーザーのオンボードで使用されるセキュリティで保護された信頼できるネットワークの場所 (ネットワーク セグメントなど) からサインインしているユーザーの 2 段階認証をバイパスすることができます。
-* [Azure AD Identity Protection](../active-directory-identityprotection.md) をデプロイし、リスク検出に基づいて 2 段階検証をトリガーします。
+## <a name="how-to-enable-and-use-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を有効にして使用する方法
+
+サインイン イベント時に追加の検証を要求するように、Azure Multi-Factor Authentication に対してユーザーとグループを有効にすることができます。 すべてのユーザーが Microsoft Authenticator アプリをすぐに使用できるように、すべての Azure AD テナントで[セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)を使用できます。
+
+より詳細な制御を行うために、[条件付きアクセス](../conditional-access/overview.md) ポリシーを使用して、MFA を必要とするイベントやアプリケーションを定義できます。 これらのポリシーにより、ユーザーが企業ネットワークまたは登録済みデバイスを使用中の場合は通常のサインイン イベントを許可しますが、リモートまたは個人用デバイスを使用中の場合は追加の検証要素を求めることができます。
+
+![条件付きアクセスによってサインイン プロセスにセキュリティを確保するしくみを示す概要図](media/tutorial-enable-azure-mfa/conditional-access-overview.png)
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Multi-Factor Authentication のデプロイ手順](howto-mfa-getstarted.md)
+ライセンの詳細については、「[Azure Multi-Factor Authentication の機能とライセンス](concept-mfa-licensing.md)」を参照してください。
+
+MFA の動作を確認するには、次のチュートリアルで一連のテスト ユーザーに対して Azure Multi-Factor Authentication を有効にします。
+
+> [!div class="nextstepaction"]
+> [Azure Multi-Factor Authentication を有効にする](tutorial-mfa-applications.md)

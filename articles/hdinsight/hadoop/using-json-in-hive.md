@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 1c519533625835677ddae0a274c9ce9f10edc6dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: db7c7ae9889d26479f51a7714e7e9fb04b444628
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73097996"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757114"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive による JSON ドキュメントの処理および分析
 
@@ -58,6 +58,9 @@ Azure HDInsight で Apache Hive を使用して JavaScript Object Notation (JSON
 ファイルは、`wasb://processjson@hditutorialdata.blob.core.windows.net/` で参照できます。 HDInsight での Azure BLOB ストレージの使用方法については、[HDInsight の Apache Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用](../hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 クラスターの既定のコンテナーにファイルをコピーできます。
 
 この記事では、Apache Hive コンソールを使用します。 Hive コンソールを開く方法については、「[HDInsight 上の Apache Hadoop で Apache Ambari Hive ビューを使用する](apache-hadoop-use-hive-ambari-view.md)」を参照してください。
+
+> [!NOTE]  
+> HDInsight 4.0 では、Hive ビューは使用できなくなります。
 
 ## <a name="flatten-json-documents"></a>JSON ドキュメントの平坦化
 
@@ -105,7 +108,7 @@ Hive は、JSON ドキュメントに対してクエリを実行するための�
 
 ### <a name="use-the-get_json_object-udf"></a>get_json_object UDF を使用する
 
-Hive には、ランタイム処理中に JSON クエリを実行できる [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) という組み込み UDF があります。 このメソッドでは 2 つの引数 (テーブル名とメソッド名) を取り、解析が必要なフラット化された JSON ドキュメントと JSON フィールドが含まれます。 この UDF の動作を確認する例を見てみましょう。
+Hive には、実行時に JSON にクエリを実行する [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) という名前の組み込みの UDF が用意されています。 このメソッドは、テーブル名とメソッド名の 2 つの引数を受け取ります。 このメソッド名には、フラット化された JSON ドキュメントと解析する必要のある JSON フィールドが含まれています。 この UDF がどのように機能するかを示す例を見てみましょう。
 
 次のクエリは各学生の姓と名を返します。
 
@@ -118,18 +121,18 @@ FROM StudentsOneLine;
 
 このクエリをコンソール ウィンドウで実行したときの出力を次に示します。
 
-![Apache Hive の JSON オブジェクト UDF の取得](./media/using-json-in-hive/hdinsight-get-json-object.png)
+![Apache Hive での JSON オブジェクト UDF の取得](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
 get_json_object UDF には次の制限があります。
 
 * クエリ内の各フィールドではクエリの再解析が必要なため、パフォーマンスに影響が出ます。
 * **GET\_JSON_OBJECT()** によって、配列の文字列表現が返されます。 これを Hive 配列に変換するには、正規表現を使用して、角括弧 "[" と "]" を置き換えてから、split を呼び出して配列を取得する必要があります。
 
-このため、Hive Wiki では **json_tuple** の使用が推奨されています。  
+この変換は、Hive Wiki で **json_tuple** の使用が推奨される理由になっています。  
 
 ### <a name="use-the-json_tuple-udf"></a>json_tuple UDF を使用する
 
-Hive に備えられたもう 1 つの UDF は [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple) と呼ばれ、[get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) よりもパフォーマンスが優れています。 このメソッドは、一連のキーと、JSON 文字列を取り、1 つの関数を使用して値のタプルを返します。 次のクエリでは、JSON ドキュメントから、学生 ID とグレードが返されます。
+Hive によって提供されるもう 1 つの UDF は [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple) と呼ばれ、[get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) より優れています。 このメソッドは、一連のキーと JSON 文字列を受け取ります。 その後、値のタプルを返します。 次のクエリでは、JSON ドキュメントから、学生 ID とグレードが返されます。
 
 ```sql
 SELECT q1.StudentId, q1.Grade
@@ -142,7 +145,7 @@ Hive コンソールにおけるこのスクリプトの出力:
 
 ![Apache Hive の JSON クエリ結果](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-json_tuple UDF では、Hive で [lateral view](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) 構文を使用します。これによって、json\_tuple は元のテーブルの各行に UDT 関数を適用して、仮想テーブルを作成することができます。 複雑な JSON では **LATERAL VIEW** が繰り返し使用されるため、処理が難しくなります。 また、**JSON_TUPLE** では入れ子になった JSON を処理できません。
+`json_tuple` UDF では、Hive で [lateral view](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) 構文を使用します。これにより、json\_tuple は、元のテーブルの各行に UDT 関数を適用することによって仮想テーブルを作成できます。 複雑な JSON では **LATERAL VIEW** が繰り返し使用されるため、処理が難しくなります。 また、**JSON_TUPLE** では入れ子になった JSON を処理できません。
 
 ### <a name="use-a-custom-serde"></a>カスタム SerDe を使用する
 
@@ -150,7 +153,7 @@ SerDe は、入れ子になった JSON ドキュメントの解析に最適な�
 
 ## <a name="summary"></a>まとめ
 
-結論として、Hive で選択する JSON 演算子の種類は、シナリオによって異なります。 JSON ドキュメントが単純で、検索するのが 1 つのフィールドのみの場合には、Hive UDF **get_json_object** を選択できます。 検索対象のキーが複数ある場合には、**json_tuple** を使用できます。 入れ子になったドキュメントの場合は、**JSON SerDe** を使用する必要があります。
+選択する Hive の JSON 演算子の種類は、シナリオによって異なります。 単純な JSON ドキュメントで 1 つのフィールドを検索する場合は、Hive UDF の **get_json_object** を選択します。 検索対象のキーが複数ある場合には、**json_tuple** を使用できます。 入れ子になったドキュメントの場合は、**JSON SerDe** を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

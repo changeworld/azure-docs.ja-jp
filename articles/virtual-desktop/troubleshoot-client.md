@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e3a240901ffca2c126e2b61eaee0cf287cc31d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 595762e6e8f22dddff30f1cff8c4bb79e89624b1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127512"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473858"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>リモート デスクトップ クライアントのトラブルシューティング
 
@@ -21,21 +21,15 @@ ms.locfileid: "79127512"
 
 ## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Windows 7 または Windows 10 用のリモート デスクトップ クライアントが応答を停止する、または開くことができない
 
-次の PowerShell コマンドレットを使って、帯域外 (OOB) のクライアントのレジストリをクリーンアップします。
+バージョン 1.2.790 以降では、[バージョン情報] ページから、またはコマンドを使用してユーザー データをリセットすることができます。
 
-```PowerShell
-Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
+ユーザー データを削除し、既定の設定を復元して、すべてのワークスペースの登録を解除するには、次のコマンドを使用します。
 
-#Remove RdClientRadc registry key
-Remove-Item 'HKCU:\Software\Microsoft\RdClientRadc' -Recurse
-
-#Remove all files under %appdata%\RdClientRadc
-Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
+```cmd
+msrdcw.exe /reset [/f]
 ```
 
-**%AppData%\RdClientRadc** に移動して、すべての内容を削除します。
-
-Windows 7 および Windows 10 用のリモート デスクトップ クライアントをアンインストールしてから再インストールします。
+以前のバージョンのリモート デスクトップ クライアントを使用している場合は、クライアントをアンインストールしてから再インストールすることをお勧めします。
 
 ## <a name="web-client-wont-open"></a>Web クライアントが開かない
 

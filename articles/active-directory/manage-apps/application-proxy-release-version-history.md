@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 04/07/2020
 ms.subservice: app-mgmt
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9ecd193282ed9b7333df44689530b4d057ad7f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f027fbce66a73306165a0ad35d1ba3faa7a5c0bc
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68693895"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983893"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD アプリケーション プロキシは:バージョンのリリース履歴
 この記事では、これまでにリリースされた Azure Active Directory (Azure AD) アプリケーション プロキシのバージョンと機能を示します。 Azure AD チームは、アプリケーション プロキシを新機能で定期的に更新しています。 アプリケーション プロキシ コネクタは、新しいバージョンがリリースされると自動的に更新されます。 
@@ -35,6 +35,22 @@ ms.locfileid: "68693895"
 アプリケーション プロキシを有効にする方法 | この[チュートリアル](application-proxy-add-on-premises-application.md)では、アプリケーション プロキシを有効にし、コネクタをインストールして登録するための前提条件について説明します。
 Azure AD アプリケーション プロキシ コネクタを理解する | [コネクタ管理](application-proxy-connectors.md)とコネクタの[自動アップグレード](application-proxy-connectors.md#automatic-updates)について詳しく説明します。
 Azure AD アプリケーション プロキシ コネクタのダウンロード |  [最新のコネクタをダウンロードします](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)。
+
+## <a name="1515260"></a>1.5.1526.0
+
+### <a name="release-status"></a>リリースの状態
+
+2020 年 4 月 7 日:ダウンロード対象としてリリース済み
+
+### <a name="new-features-and-improvements"></a>新機能と機能強化
+-   コネクタはすべての接続に TLS 1.2 のみを使用します。 詳細については、[コネクタの前提条件](application-proxy-add-on-premises-application.md#before-you-begin)に関する記事を参照してください。
+- コネクタと Azure サービスの間のシグナリングが改善されました。 これには、コネクタと Azure サービス間の WCF 通信に対する信頼性の高いセッションのサポートと、WebSocket 通信に対する DNS キャッシュの強化が含まれます。
+- コネクタとバックエンド アプリケーションの間のプロキシの構成がサポートされます。 詳しくは、「[既存のオンプレミス プロキシ サーバーと連携する](application-proxy-configure-connectors-with-proxy-servers.md)」をご覧ください。
+
+### <a name="fixed-issues"></a>修正された問題
+- コネクタから Azure サービスへの通信に対するポート 8080 へのフォールバックが削除されました。
+- WebSocket 通信のデバッグ トレースが追加されました。 
+- バックエンド アプリケーション Cookie に設定された場合の SameSite 属性の保持が解決されました。
 
 ## <a name="156120"></a>1.5.612.0
 

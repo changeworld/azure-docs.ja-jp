@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Service (AKS) クラスターを使用したイングレス用の独自の TLS 証明書の使用
+title: イングレス用の独自の TLS 証明書の使用
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) クラスターで独自の証明書を使用する NGINX イングレス コントローラーをインストールして構成する方法を説明します。
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: e567f5384cdd1e40ea67284713a29a92ee87af7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec6a398b52424c142b3d7ee82625c10c733456ab
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595503"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668470"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成し、独自の TLS 証明書を使用する
 

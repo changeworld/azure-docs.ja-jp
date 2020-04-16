@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ab84cc2f4910d1186e842758df7814ca5dd6464d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d814ebc34193f5d7c0c3828d32aa3d2af29f3679
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281648"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981360"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>Power BI アプリの [技術的情報] タブ
+
+>[!Important]
+>2020 年 4 月 13 日以降、パートナー センターへの Power BI アプリ オファーの管理の移行を開始します。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [Power BI アプリ作成の概要](https://aka.ms/AzureCreatePBIServiceApp)の手順に従い、移行後のオファーを管理します。
 
 **[新しいオファー]** ページ上の **[技術情報]** タブを使用して、Power BI インストーラー パッケージの URL と新しいオファーを検証するために必要なその他の情報を指定します。  初期リリースでは、すべての Power BI アプリは無料で、AppSource からのダウンロードが可能です。 このため、このオファーの種類に対して Stock Keeping Unit (SKU) を定義することはできません。
 

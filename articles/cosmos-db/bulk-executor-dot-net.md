@@ -6,17 +6,22 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/01/2019
+ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40ef05107f20a3396f6710f894a2dbad2d7fa6c9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225747"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478854"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
+
+> [!NOTE]
+> この記事で説明されているこのバルク エグゼキューター ライブラリは、.NET SDK 2.x バージョンを使用するアプリケーションに対して維持されます。 新しいアプリケーションの場合は、[.NET SDK バージョン 3.x](tutorial-sql-api-dotnet-bulk-import.md) で直接使用できる**バルク サポート**を使用できるため、外部ライブラリを必要としません。 
+
+> 現在、バルク エグゼキューター ライブラリを使用していて、新しい SDK でのバルク サポートへの移行を計画している場合は、[移行ガイド](how-to-migrate-from-bulk-executor-library.md)の手順を使用して、アプリケーションを移行してください。
 
 このチュートリアルでは、Bulk Executor .NET ライブラリを使用して、ドキュメントを Azure Cosmos コンテナーにインポートし、更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムに生成されたドキュメントを Azure Cosmos コンテナーに一括インポートするサンプル .NET アプリケーションを示します。 インポート後、特定のドキュメント フィールドに対して実行する操作としてパッチを指定することによって、インポートされたデータを一括更新する方法について説明します。
 
@@ -28,7 +33,7 @@ ms.locfileid: "79225747"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 
-* Azure サブスクリプションを必要とせず、課金や契約もなしに [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、[ エンドポイントで ](https://docs.microsoft.com/azure/cosmos-db/local-emulator)Azure Cosmos DB エミュレーター`https://localhost:8081`を使用できます。 主キーは、[要求の認証](local-emulator.md#authenticating-requests)で与えられます。
+* Azure サブスクリプションを必要とせず、課金や契約もなしに [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、`https://localhost:8081` エンドポイントで [Azure Cosmos DB エミュレーター](https://docs.microsoft.com/azure/cosmos-db/local-emulator)を使用できます。 主キーは、[要求の認証](local-emulator.md#authenticating-requests)で与えられます。
 
 * .NET クイック スタート記事の「[データベース アカウントの作成](create-sql-api-dotnet.md#create-account)」セクションで説明されている手順に従って、Azure Cosmos DB SQL API アカウントを作成します。
 

@@ -11,20 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2019
+ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: e13149ba802f0f8b9a565e0aabd86ae05167f18b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c8bf69b745f5dba8c08556908df4d4ae5b5769f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78208821"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521915"
 ---
 # <a name="supported-platforms"></a>サポートされているプラットフォーム 
 
-## <a name="virtual-machines--servers"></a>仮想マシン/サーバー <a name="vm-server"></a>
+このページには Azure Security Center でサポートされているプラットフォームと環境が示されています。
 
-Security Center は、さまざまな種類のハイブリッド環境で仮想マシン/サーバーをサポートします。
+## <a name="combinations-of-environments"></a>環境の組み合わせ <a name="vm-server"></a>
+
+Azure Security Center は、さまざまな種類のハイブリッド環境で仮想マシンとサーバーをサポートします。
 
 * Azure のみ
 * Azure とオンプレミス
@@ -33,64 +35,30 @@ Security Center は、さまざまな種類のハイブリッド環境で仮想�
 
 Azure サブスクリプションでアクティブ化された Azure 環境では、Azure Security Center によって、サブスクリプション内にデプロイされている IaaS リソースが自動的に検出されます。
 
-> [!NOTE]
-> すべてのセキュリティ機能を利用するには、Azure Security Center が使用する [Log Analytics エージェント](../azure-monitor/platform/agents-overview.md#log-analytics-agent)をインストールし、[Azure Security Center にデータを送信するように適切に構成する](security-center-enable-data-collection.md#manual-agent)必要があります。
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-次のセクションでは、Azure Security Center が使用する [Log Analytics エージェント](../azure-monitor/platform/agents-overview.md#log-analytics-agent)を実行できる、サポート対象のサーバー オペレーティング システムの一覧を示します。
+Security Center は [Log Analytics エージェント](../azure-monitor/platform/agents-overview.md#log-analytics-agent)に依存します。 次のページの説明に従って、このエージェントでサポートされているオペレーティング システムのいずれかがマシンで実行されていることを確認してください。
 
-### <a name="windows-server-operating-systems"></a>Windows Server オペレーティング システム <a name="os-windows"></a>
+* [Windows 用の Log Analytics エージェントでサポートされているオペレーティング システム ](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+* [Linux 用の Log Analytics エージェントでサポートされているオペレーティング システム](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
 
-|OS|Azure Security Center でサポートされます|Microsoft Defender ATP との統合のサポート|
-|:---|:-:|:-:|
-|Windows Server 2019|✔|X|
-|Windows Server 2016|✔|✔|
-|Windows Server 2012 R2|✔|✔|
-|Windows Server 2008 R2|✔|✔|
+また、Log Analytics エージェントが [Security Center にデータを送信するように適切に構成されている](security-center-enable-data-collection.md#manual-agent)ことを確認してください
 
-上記の Windows オペレーティング システムでサポートされている機能の詳細については、「[仮想マシン/サーバーでサポートされる機能](security-center-services.md#vm-server-features)」をご覧ください。
+> [!TIP]
+> Windows および Linux で使用できる特定の Security Center 機能の詳細については、「[マシンを対象とする機能](security-center-services.md)」を参照してください。
 
-### <a name="windows-operating-systems"></a>Windows オペレーティング システム<a name="os-windows (non-server)"></a>
+## <a name="managed-virtual-machine-services"></a>マネージド仮想マシン サービス <a name="virtual-machine"></a>
 
-Azure Security Center は Azure サービスと統合し、Windows ベースの仮想マシンの監視と保護が行われます。
+仮想マシンは、Azure Kubernetes (AKS)、Azure Databricks など、いくつかの Azure マネージド サービスの一部として、顧客サブスクリプションでも作成されます。 Security Center はこれらの仮想マシンも検出し、サポートされている OS が使用可能な場合は、Log Analytics エージェントをインストールして構成できます。
 
-### <a name="linux-operating-systems"></a>Linux オペレーティング システム <a name="os-linux"></a>
-
-64 ビット
-
-* CentOS 6 および 7
-* Amazon Linux 2017.09
-* Oracle Linux 6 および Oracle Linux 7
-* Red Hat Enterprise Linux Server 6 および 7
-* Debian GNU/Linux 8 および 9
-* Ubuntu Linux 14.04 LTS、16.04 LTS、および 18.04 LTS
-* SUSE Linux Enterprise Server 12
-
-32 ビット
-* CentOS 6
-* Oracle Linux 6
-* Red Hat Enterprise Linux Server 6
-* Debian GNU/Linux 8 および 9
-* Ubuntu Linux 14.04 LTS および 16.04 LTS
-
-> [!NOTE]
-> サポートされている Linux オペレーティング システムの一覧は常に変更されているため、このトピックが最後に公開されてから変更があった場合は、サポートされているバージョンの最新の一覧を表示するために、[ここ](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems)をクリックしてください。
-
-上記の Linux オペレーティングシステムでサポートされている機能の詳細については、「[仮想マシン/サーバーでサポートされる機能](security-center-services.md#vm-server-features)」をご覧ください。
-
-### <a name="managed-virtual-machine-services"></a>マネージド仮想マシン サービス <a name="virtual-machine"></a>
-
-仮想マシンは、Azure Kubernetes (AKS)、Azure Databricks など、いくつかの Azure マネージド サービスの一部として、顧客サブスクリプションでも作成されます。 これらの仮想マシンも Azure Security Center によって検出され、Log Analytics エージェントは、上記のサポートされている [Windows/Linux オペレーティング システム](#os-windows)に従ってインストールおよび構成できます。
-
-### <a name="cloud-services"></a>Cloud Services <a name="cloud-services"></a>
+## <a name="cloud-services"></a>Cloud Services <a name="cloud-services"></a>
 
 クラウド サービスで実行する仮想マシン もサポートされます。 監視されるのは、運用スロットで実行するクラウド サービスの Web ロールと worker ロールだけです。 Cloud Services の詳細については、「[Azure Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)」をご覧ください。
 
-Azure Stack に存在する Virtual Machines の保護もサポートされています。 Security Center と Azure Stack との統合の詳細については、[Azure Stack 仮想マシンの Security Center へのオンボード](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)に関するページを参照してください。
+Azure Stack に存在する VM の保護もサポートされています。 Security Center と Azure Stack との統合の詳細については、[Azure Stack 仮想マシンの Security Center へのオンボード](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Security Center によるデータの収集方法と Log Analytics エージェント](security-center-enable-data-collection.md)について確認します。
+- [Security Center による Log Analytics エージェントを使用したデータの収集](security-center-enable-data-collection.md)について確認します。
 - [Security Center でデータを管理および保護する](security-center-data-security.md)方法を確認します。
 - [Azure Security Center を導入するための設計上の考慮事項を計画し、理解する](security-center-planning-and-operations-guide.md)方法について説明しています。
-- [さまざまなクラウド環境で使用できる機能](security-center-services.md)について確認します。
-- [Azure Security Center での Windows マシンおよび Linux マシンの脅威の防止](threat-protection.md#windows-machines)について詳しく確認します。

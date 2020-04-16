@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics でのデータ ウェアハウスの開発に関するリソース
-description: SQL Data Warehouse に関する開発コンセプト、設計上の決定、推奨事項、およびコーディング技法。
+title: Azure Synapse Analytics で Synapse SQL プールを開発するためのリソース
+description: SQL Data Warehouse に関する開発コンセプト、設計上の決定、レコメンデーション、およびコーディング技法。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,20 +10,20 @@ ms.subservice: ''
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: aa0f5fd631dfa3e4deca4853c27a667fcf312fec
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 12f91633834ee98582eaad886b48eb8619378265
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350279"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411669"
 ---
-# <a name="design-decisions-and-coding-techniques-for-a-data-warehouse-in-azure-synapse-analytics"></a>Azure Synapse Analytics のデータ ウェアハウスの設計上の決定と コーディング技法 
- この記事では、Azure Synapse Analytics のデータ ウェアハウスに関する主要な設計上の決定、推奨事項、およびコーディング技法をより深く理解するために、追加のリソースについて説明します。
+# <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Synapse SQL プールの設計上の決定とコーディング技法 
+ この記事では、Azure Synapse の SQL プールに関する主要な設計上の決定、レコメンデーション、およびコーディング技法をより深く理解するために、追加のリソースについて説明します。
 
 ## <a name="key-design-decisions"></a>主要な設計上の決定
-次の記事には、Azure Synapse の SQL Analytics 機能を使用して分散データウェア ハウスを開発するための概念と設計に関する決定事項が概説されています。
+次の記事では、Azure Synapse の SQL プール機能を使用して分散データウェア ハウスを開発するための概念と設計上の意思決定について説明しています。
 
-* [connections](sql-data-warehouse-connect-overview.md)
+* [connections](../sql/connect-overview.md)
 * [concurrency](resource-classes-for-workload-management.md)
 * [トランザクション](sql-data-warehouse-develop-transactions.md)
 * [ユーザー定義スキーマ](sql-data-warehouse-develop-user-defined-schemas.md)
@@ -34,11 +34,11 @@ ms.locfileid: "80350279"
 * [統計](sql-data-warehouse-tables-statistics.md)
 
 ## <a name="development-recommendations-and-coding-techniques"></a>開発における推奨事項とコーディング技法
-次の記事では、SQL Analytics を使用してデータ ウェアハウスを開発するための具体的なコーディング技法、ヒント、および推奨事項について説明しています。
+次の記事では、SQL プールを開発するための具体的なコーディング技法、ヒント、およびレコメンデーションについて説明しています。
 
 * [ストアド プロシージャ](sql-data-warehouse-develop-stored-procedures.md)
 * [ラベル](sql-data-warehouse-develop-label.md)
-* [ビュー](sql-data-warehouse-develop-views.md)
+* [views](sql-data-warehouse-develop-views.md)
 * [一時テーブル](sql-data-warehouse-tables-temporary.md)
 * [動的 SQL](sql-data-warehouse-develop-dynamic-sql.md)
 * [ループ](sql-data-warehouse-develop-loops.md)

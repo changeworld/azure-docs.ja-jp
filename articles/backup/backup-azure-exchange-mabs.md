@@ -4,12 +4,12 @@ description: Azure Backup Server を使用して Exchange サーバーを Azure 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: b9c8cfb32adce39dab47159c7d644b92e0ced46e
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397956"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421349"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Azure Backup Server を使用して Exchange サーバーを Azure にバックアップする
 
@@ -53,7 +53,7 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
     このオプションを選択すると、Exchange サーバー上で **eseutil** コマンドを実行したときに I/O トラフィックが生成されるのを防ぐために、MABS 上でバックアップの整合性チェックが実行されます。
 
    > [!NOTE]
-   > このオプションを使用するには、MAB サーバー上の C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin ディレクトリに Ese.dll ファイルと Eseutil.exe ファイルをコピーする必要があります。 これを行わないと、次のエラーがトリガーされます。  
+   > このオプションを使用するには、MABS サーバー上の C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin ディレクトリに Ese.dll ファイルと Eseutil.exe ファイルをコピーする必要があります。 これを行わないと、次のエラーがトリガーされます。  
    > ![eseutil エラー](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
@@ -66,7 +66,7 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
    >
 10. **[短期的なバックアップ]** の目標を構成し、 **[次へ]** をクリックします。
 11. 使用可能なディスク領域を確認し、 **[次へ]** をクリックします。
-12. MAB サーバーで初期レプリケーションを作成する時刻を選択し、 **[次へ]** をクリックします。
+12. MABS サーバーで初期レプリケーションを作成する時刻を選択し、 **[次へ]** をクリックします。
 13. 整合性チェック オプションを選択し、 **[次へ]** をクリックします。
 14. Azure にバックアップするデータベースを選択し、 **[次へ]** をクリックします。 次に例を示します。
 
@@ -100,7 +100,7 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
 * **元の Exchange Server の場所に回復する:** データは元の Exchange サーバーに回復します。
 * **Exchange Server 上の別のデータベースに回復する:** データは別の Exchange サーバー上の別のデータベースに回復します。
 * **回復用データベースに回復する:** データは Exchange 回復データベース (RDB) に回復します。
-* **ネットワーク フォルダーにコピーする:** データはネットワーク フォルダーに回復します。
+* **回復用データベースに回復する:** データはネットワーク フォルダーに回復します。
 * **テープにコピーする:** テープ ライブラリまたはスタンドアロンのテープ ドライブが MABS に接続され、そこで構成されている場合、復旧ポイントは空きテープにコピーされます。
 
     ![オンライン レプリケーションの選択](./media/backup-azure-backup-exchange-server/choose-online-replication.png)

@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 7e1989ee5fcc428bc7d29c17432ded8dab24ecee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65713eaf1651a6c02084751471504b5d022dfe14
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281699"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985050"
 ---
 # <a name="storefront-details-tab"></a>[ネットショップの詳細] タブ
+
+>[!Important]
+>2020 年 4 月 13 日以降、パートナー センターへのコンサルティング サービス オファーの管理の移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [コンサルティング サービス作成の概要](https://aka.ms/AzureCreateConsultingService)の手順に従い、移行後のオファーを管理します。
 
 この記事では、ネットショップの詳細を入力する方法について説明します。 **[Storefront Details]\(ネットショップの詳細\)** タブは、次のセクションから構成されています。
 

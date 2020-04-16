@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: f0fe4ab46bfe5c0c0c2ea67aa2e2694321628be5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1d02cb42a86023e5c341daab678c39f22f75dda
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136365"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877696"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio をインストールして使用する
 
@@ -63,7 +63,7 @@ ms.locfileid: "79136365"
 
 [Grafana][grafana] と [Kiali][kiali] を Istio インストールの一部としてインストールします。 Grafana では分析と監視のダッシュボードが提供され、Kiali ではサービス メッシュ監視ダッシュボードが提供されます。 ご使用のセットアップでは、これらのコンポーネントそれぞれに資格情報が必要であり、[シークレット][kubernetes-secrets]として提供する必要があります。
 
-Istio コンポーネントをインストールするには、前もって Grafana と Kiali 両方のシークレットを作成する必要があります。 これらのシークレットは、Istio で使用される `istio-system` 名前空間にインストールする必要があるため、名前空間も作成する必要があります。 `--save-config` によって名前空間を作成する場合は、`kubectl create` オプションを使用する必要があります。これにより、Istio インストーラーは、今後このオブジェクトで `kubectl apply` を実行できるようになります。
+Istio コンポーネントをインストールするには、前もって Grafana と Kiali 両方のシークレットを作成する必要があります。 これらのシークレットは、Istio で使用される `istio-system` 名前空間にインストールする必要があるため、名前空間も作成する必要があります。 `kubectl create` によって名前空間を作成する場合は、`--save-config` オプションを使用する必要があります。これにより、Istio インストーラーは、今後このオブジェクトで `kubectl apply` を実行できるようになります。
 
 ```console
 kubectl create namespace istio-system --save-config
@@ -97,7 +97,10 @@ AKS クラスターに Grafana および Kiali シークレットを正常に作
 > 現時点で Istio は Linux ノード上で実行するようにスケジュールする必要があります。 クラスター内に Windows Server ノードがある場合、Istio ポッドが確実に Linux ノードでのみ実行されるようにスケジュールする必要があります。 [ノードのセレクター][kubernetes-node-selectors]を使用して、ポッドが適切なノードにスケジュールされていることを確認します。
 
 > [!CAUTION]
-> [SDS (シークレット検出サービス)][istio-feature-sds] と [Istio CNI][istio-feature-cni] の機能は現在[アルファ版][istio-feature-stages]であるため、これらを有効にする場合は事前に十分な考慮をする必要があります。 また、現在の AKS バージョンでは、[サービス アカウント トークン ボリューム プロジェクション][kubernetes-feature-sa-projected-volume] Kubernetes 機能 (SDS の要件) は有効になっていません。
+> [SDS (シークレット検出サービス)][istio-feature-sds] と [Istio CNI][istio-feature-cni] の機能は現在[アルファ版][istio-feature-stages]であるため、これらを有効にする場合は事前に十分な考慮をする必要があります。 
+>
+> 現在、[サービス アカウント トークン ボリューム プロジェクション][kubernetes-feature-sa-projected-volume] Kubernetes 機能 (SDS の要件) は、AKS における Kubernetes 1.13 以上の全バージョンで**有効**になっています。
+
 次のコンテンツを含む `istio.aks.yaml` という名前のファイルを作成します。 このファイルには、Istio を構成するための [Istio コントロール プレーンの仕様][istio-control-plane]に関する詳細が保持されます。
 
 ```yaml
@@ -356,7 +359,7 @@ istioctl dashboard envoy <pod-name>.<namespace>
 
 ### <a name="remove-istio-components-and-namespace"></a>Istio コンポーネントおよび名前空間を削除する
 
-AKS クラスターから Istio を削除するには、`istioctl manifest generate` Istio コントロール プレーンの仕様ファイルと共に `istio.aks.yaml` コマンドを使用します。 これにより、展開したマニフェストが生成されます。これは、インストールされているすべてのコンポーネントと `kubectl delete` 名前空間を削除するために `istio-system` にパイプします。
+AKS クラスターから Istio を削除するには、`istio.aks.yaml` Istio コントロール プレーンの仕様ファイルと共に `istioctl manifest generate` コマンドを使用します。 これにより、展開したマニフェストが生成されます。これは、インストールされているすべてのコンポーネントと `istio-system` 名前空間を削除するために `kubectl delete` にパイプします。
 
 ```console
 istioctl manifest generate -f istio.aks.yaml -o istio-components-aks --logtostderr --set installPackagePath=./install/kubernetes/operator/charts 

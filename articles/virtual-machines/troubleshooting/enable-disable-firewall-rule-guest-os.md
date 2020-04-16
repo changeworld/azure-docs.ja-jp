@@ -1,6 +1,6 @@
 ---
 title: Azure VM でゲスト OS 上のファイアウォール規則を有効または無効にする |Microsoft Docs
-description: ''
+description: オンラインまたはオフラインのリモート ツールまたはレジストリ設定を使用して、リモートの Azure VM でゲスト OS のファイアウォール規則を有効または無効にする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 782240c51833fc841af9f4260860db4c03897c03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e93dbd085ce99b8d555d6b9bb04e7eb6f60de0ee
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71086444"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422890"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Azure VM のゲスト OS 上のファイアウォール規則を有効または無効にする
 

@@ -4,29 +4,29 @@ description: Azure MFA Server と Cisco、Citrix、および Juniper を統合�
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdb24bcd79f1766a52f290fd6fe0e6e5bf17e7c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01decb99a9eb24ae60250f83f1f961b4c1690bc0
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74847951"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652842"
 ---
 # <a name="advanced-scenarios-with-azure-mfa-server-and-third-party-vpn-solutions"></a>Azure MFA Server とサード パーティの VPN ソリューションの高度なシナリオ
 
-Azure Multi-Factor Authentication Server (Azure MFA Server) を使用して、さまざまなサード パーティの VPN ソリューションにシームレスに接続できます。 この記事では、Cisco® ASA VPN アプライアンス、Citrix NetScaler SSL VPN アプライアンス、および Juniper Networks Secure Access/Pulse Secure Connect Secure SSL VPN アプライアンスに重点を置いて説明します。 これら 3 つの一般的なアプライアンスを対象とした構成ガイドを作成しました。 Azure MFA Server は、RADIUS、LDAP、IIS、または AD FS に対して要求ベースの認証を使用するその他の大半のシステムと統合できます。 詳細については、[Azure MFA Server の構成](howto-mfaserver-deploy.md#next-steps)に関する記事をご覧ください。
+Azure Multi-Factor Authentication Server (Azure MFA Server) を使用して、さまざまなサード パーティの VPN ソリューションにシームレスに接続できます。 この記事では、Cisco&reg; ASA VPN アプライアンス、Citrix NetScaler SSL VPN アプライアンス、および Juniper Networks Secure Access/Pulse Secure Connect Secure SSL VPN アプライアンスに重点を置いて説明します。 これら 3 つの一般的なアプライアンスを対象とした構成ガイドを作成しました。 Azure MFA Server は、RADIUS、LDAP、IIS、または AD FS に対して要求ベースの認証を使用するその他の大半のシステムと統合できます。 詳細については、[Azure MFA Server の構成](howto-mfaserver-deploy.md#next-steps)に関する記事をご覧ください。
 
 > [!IMPORTANT]
 > 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
 ## <a name="cisco-asa-vpn-appliance-and-azure-mfa-server"></a>Cisco ASA VPN アプライアンスと Azure MFA Server
-Azure MFA Server と Cisco® ASA VPN アプライアンスを統合すると、Cisco AnyConnect® VPN のログインとポータル アクセスのセキュリティが強化されます。  LDAP または RADIUS プロトコルのいずれかを使用できます。  次のいずれかを選択し、詳しい段階的構成ガイドをダウンロードしてください。
+Azure MFA Server と Cisco&reg; ASA VPN アプライアンスを統合すると、Cisco AnyConnect&reg; VPN のログインとポータル アクセスのセキュリティが強化されます。  LDAP または RADIUS プロトコルのいずれかを使用できます。  次のいずれかを選択し、詳しい段階的構成ガイドをダウンロードしてください。
 
 | 構成ガイド | 説明 |
 | --- | --- |

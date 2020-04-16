@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Service の制限事項
 description: Azure Blockchain Service でのサービスと機能の制限に関する概要です
-ms.date: 11/22/2019
+ms.date: 04/02/2020
 ms.topic: conceptual
-ms.reviewer: janders
-ms.openlocfilehash: f4001ee520f3f3136d1bac5ca047c80526fc92e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74455648"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676529"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure Blockchain Service での制限事項
 
@@ -24,6 +24,10 @@ Azure Blockchain Service のサービスと機能には、メンバーが持つ�
 | Basic | 10 | 1 |
 | Standard | 10 | 2 |
 
+コンソーシアム ネットワークには、少なくとも 2 つの Azure Blockchain Service の Standard レベル ノードが必要です。 Standard レベル ノードには、2 つの検証ノードがあります。 [Istanbul Byzantine Fault Tolerance コンセンサス](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)を満たすには、4 つの検証ノードが必要です。
+
+開発、テスト、概念実証には、Basic レベルを使用します。 運用グレードのデプロイには、Standard レベルを使用します。 また、Blockchain Data Manager を使用している場合や大量のプライベート トランザクションを送信する場合にも、*Standard* レベルを使用する必要があります。
+
 メンバーの作成後に価格レベルを Basic と Standard の間で変更することはできません。
 
 ## <a name="storage-capacity"></a>ストレージの容量
@@ -31,7 +35,6 @@ Azure Blockchain Service のサービスと機能には、メンバーが持つ�
 台帳データおよびログ用にノードごとに使用できるストレージの最大量は、1.8 テラバイトです。
 
 台帳およびログのストレージ サイズを減らすことはできません。
-
 ## <a name="consortium-limits"></a>コンソーシアムの制限
 
 * Azure Blockchain Service では**コンソーシアム名とメンバー名は一意でなければなりません**。
@@ -55,6 +58,12 @@ Azure Blockchain Service のサービスと機能には、メンバーが持つ�
 * **1 つのコンソーシアム内のすべてのメンバーは、同じ台帳バージョンを使用する必要があります**
 
     Azure Blockchain Service で使用できる修正プログラムの適用、更新、および台帳バージョンについて詳しくは、「[Patching, updates, and versions (修正プログラムの適用、更新、およびバージョン)](ledger-versions.md)」をご覧ください。
+
+## <a name="performance"></a>パフォーマンス
+
+各トランザクションの送信には、*eth.estimate* gas 関数を使用しないでください。 *eth.estimate* 関数は大量のメモリを使用します。 この関数を複数回呼び出すと、1 秒あたりのトランザクションが大幅に削減されます。
+
+可能であれば、トランザクションの送信には控えめな gas 値を使用し、*eth.estimate* の使用を最小限に抑えてください。
 
 ## <a name="next-steps"></a>次のステップ
 

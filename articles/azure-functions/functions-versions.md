@@ -3,12 +3,12 @@ title: Azure Functions ランタイム バージョンの概要
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 バージョン間の違いと、適切なバージョンを選択する方法について説明します。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 21a7b25087efd5d4adf2154c935636c263df9afd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e90752e89be7e381b06f8a87f76f123f0e4a8e3a
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234879"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422493"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
@@ -18,7 +18,7 @@ Azure Functions ランタイムのメジャー バージョンは、そのラン
 | --------------- | ------------- | ------------ |
 | 3.x | GA | .NET Core 3.1 | 
 | 2.x | GA | .NET Core 2.2 |
-| 1.x | GA<sup>2</sup> | .NET Framework 4.6<sup>3</sup> |
+| 1.x | GA<sup>2</sup> | .NET Framework 4.7.2<sup>3</sup> |
 
 <sup>1</sup> GA リリースは運用環境シナリオでサポートされています。   
 <sup>2</sup> バージョン 1.x はメンテナンス モードにあります。 拡張機能は、それ以降のバージョンでのみ提供されます。   

@@ -10,12 +10,12 @@ ms.date: 02/24/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b0f2ad7566d0204871a9c6441315d6201662d92b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53eca8a0b9e7cc9abb8f89cd56fca5df28f2de0f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616286"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521924"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Azure Storage 内のデータへのアクセスの承認
 
@@ -33,7 +33,7 @@ ms.locfileid: "77616286"
 
 ここでは、各認証オプションについて簡単に説明します。
 
-- BLOB とキュー用の **Azure Active Directory (Azure AD) 統合**。 Azure AD には、ストレージ アカウント内のリソースに対するクライアントのアクセスをきめ細かく制御するロールベースのアクセス制御 (RBAC) が用意されています。 BLOB とキューに対する Azure AD 統合の詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](storage-auth-aad.md)」を参照してください。
+- BLOB とキュー用の **Azure Active Directory (Azure AD) 統合**。 Azure AD には、ストレージ アカウント内のリソースに対するクライアントのアクセスを制御するロールベースのアクセス制御 (RBAC) が用意されています。 BLOB とキューに対する Azure AD 統合の詳細については、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](storage-auth-aad.md)」を参照してください。
 
 - Azure Files の **Azure Active Directory Domain Services (Azure AD DS) 認証**。 Azure Files では、Azure AD DS を介したサーバー メッセージ ブロック (SMB) の ID ベースの承認がサポートされています。 RBAC を使用して、ストレージ アカウント内の Azure Files リソースへのクライアントのアクセスを細かく制御できます。 ドメイン サービスを利用した Azure Files 認証に関する詳細については、[概要](../files/storage-files-active-directory-overview.md)を参照してください。
 

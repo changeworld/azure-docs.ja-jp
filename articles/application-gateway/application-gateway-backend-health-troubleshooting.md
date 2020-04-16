@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: 71e1f8be2af5556d86996175e8a1ddbccc9c7de1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a16120194b1b8015466005f42336828c2b4ace6c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72001674"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983842"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
 ==================================================
@@ -170,7 +170,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 **メッセージ:** Status code of the backend\'s HTTP response did not match the probe setting. (バックエンドの HTTP 応答の状態コードが probe 設定と一致しませんでした。) Expected:{HTTPStatusCode0} Received:{HTTPStatusCode1}. (必要: {HTTPStatusCode0} 受信: {HTTPStatusCode1}。)
 
-**原因:** TCP 接続が確立され、SSL ハンドシェイクが完了すると (SSL が有効な場合)、Application Gateway は probe を HTTP GET 要求としてバックエンド サーバーに送信します。 前述のように、既定の probe の対象は \<プロトコル\>://127.0.0.1:\<ポート\>/ であり、200 から 399 の範囲の応答状態コードは正常であると見なされます。 サーバーからそれ以外の状態コードが返された場合、そのサーバーはこのメッセージで "異常" とマークされます。
+**原因:** TCP 接続が確立され、TLS ハンドシェイクが完了すると (TLS が有効な場合)、Application Gateway は probe を HTTP GET 要求としてバックエンド サーバーに送信します。 前述のように、既定の probe の対象は \<プロトコル\>://127.0.0.1:\<ポート\>/ であり、200 から 399 の範囲の応答状態コードは正常であると見なされます。 サーバーからそれ以外の状態コードが返された場合、そのサーバーはこのメッセージで "異常" とマークされます。
 
 **解決方法:** バックエンド サーバーの応答コードに応じて、次の手順を実行できます。 一般的な状態コードをいくつか次に示します。
 
@@ -208,7 +208,7 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 **メッセージ:** The server certificate used by the backend is not signed by a well-known Certificate Authority (CA). (バックエンドによって使用されるサーバー証明書が既知の証明機関 (CA) によって署名されていません。) Whitelist the backend on the Application Gateway by uploading the root certificate of the server certificate used by the backend. (バックエンドによって使用されるサーバー証明書のルート証明書をアップロードして、アプリケーション ゲートウェイでバックエンドをホワイトリストに登録してください。)
 
 **原因:** Application Gateway v2 でのエンドツーエンド SSL を使用するには、サーバーが正常であると判断するためにバックエンド サーバーの証明書を検証する必要があります。
-SSL 証明書を信頼するには、そのバックエンド サーバーの証明書が、Application Gateway の信頼されたストアに含まれる CA によって発行されている必要があります。 証明書が信頼された CA によって発行されていない場合 (自己署名証明書が使用された場合など)、ユーザーは、発行者の証明書を Application Gateway にアップロードする必要があります。
+TLS または SSL 証明書を信頼するには、そのバックエンド サーバーの証明書が、Application Gateway の信頼されたストアに含まれる CA によって発行されている必要があります。 証明書が信頼された CA によって発行されていない場合 (自己署名証明書が使用された場合など)、ユーザーは、発行者の証明書を Application Gateway にアップロードする必要があります。
 
 **解決方法:** 信頼されたルート証明書をエクスポートして Application Gateway にアップロードするには、次の手順に従います。 (この手順は、Windows クライアント向けです。)
 
@@ -241,7 +241,7 @@ Application Gateway で信頼されるルート証明書を抽出してアップ
 **メッセージ:** The root certificate of the server certificate used by the backend does not match the trusted root certificate added to the application gateway. (バックエンドによって使用されるサーバー証明書のルート証明書が、アプリケーション ゲートウェイに追加されている信頼されたルート証明書と一致しません。) Ensure that you add the correct root certificate to whitelist the backend (バックエンドをホワイトリストに登録するために適切なルート証明書を追加していることを確認してください)
 
 **原因:** Application Gateway v2 でのエンドツーエンド SSL を使用するには、サーバーが正常であると判断するためにバックエンド サーバーの証明書を検証する必要があります。
-SSL 証明書を信頼するには、そのバックエンド サーバーの証明書が、Application Gateway の信頼されたストアに含まれる CA によって発行されている必要があります。 証明書が信頼された CA によって発行されていない場合 (自己署名証明書が使用された場合など)、ユーザーは、発行者の証明書を Application Gateway にアップロードする必要があります。
+TLS または SSL 証明書を信頼するには、そのバックエンド サーバーの証明書が、Application Gateway の信頼されたストアに含まれる CA によって発行されている必要があります。 証明書が信頼された CA によって発行されていない場合 (自己署名証明書が使用された場合など)、ユーザーは、発行者の証明書を Application Gateway にアップロードする必要があります。
 
 Application Gateway の HTTP 設定にアップロードされた証明書は、バックエンド サーバー証明書のルート証明書と一致している必要があります。
 
@@ -280,7 +280,7 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 
 **メッセージ:** The Common Name (CN) of the backend certificate does not match the host header of the probe. (バックエンド証明書の共通名 (CN) が probe のホスト ヘッダーと一致しません。)
 
-**原因:** Application Gateway は、バックエンドの HTTP 設定に指定されているホスト名が、バックエンド サーバーの SSL 証明書によって提示される CN のものと一致するかどうかを確認します。 これは、Standard_v2 SKU と WAF_v2 SKU における動作です。 Standard SKU と WAF SKU の Server Name Indication (SNI) は、バックエンド プール アドレスの FQDN として設定されます。
+**原因:** Application Gateway は、バックエンドの HTTP 設定に指定されているホスト名が、バックエンド サーバーの TLS または SSL 証明書によって提示される CN のものと一致するかどうかを確認します。 これは、Standard_v2 SKU と WAF_v2 SKU における動作です。 Standard SKU と WAF SKU の Server Name Indication (SNI) は、バックエンド プール アドレスの FQDN として設定されます。
 
 v2 SKU では、既定の probe がある (カスタムの probe が構成および関連付けられていない) 場合、SNI は HTTP 設定に指定されているホスト名から設定されます。 または、HTTP 設定で [バックエンド アドレスからホスト名を選択します] が指定されている場合 (バックエンド アドレス プールに有効な FQDN が含まれる)、この設定が適用されます。
 
@@ -321,9 +321,9 @@ OpenSSL を使用する Linux の場合:
 
 **メッセージ:** Backend certificate is invalid. (バックエンド証明書が無効です。) Current date is not within the \"Valid from\" and \"Valid to\" date range on the certificate. (現在の日付が証明書の [有効期間の開始] と [有効期間の終了] の日付範囲内ではありません。)
 
-**原因:** すべての証明書には有効期限の範囲があり、サーバーの SSL 証明書が有効でない限り、HTTPS 接続はセキュリティで保護されません。 現在の日付が **[有効期間の開始]** と **[有効期間の終了]** の範囲内にある必要があります。 そうでない場合、証明書は無効と見なされ、セキュリティ上の問題となります。この場合、Application Gateway によってバックエンド サーバーが "異常" とマークされます。
+**原因:** すべての証明書には有効期限の範囲があり、サーバーの TLS または SSL 証明書が有効でない限り、HTTPS 接続はセキュリティで保護されません。 現在の日付が **[有効期間の開始]** と **[有効期間の終了]** の範囲内にある必要があります。 そうでない場合、証明書は無効と見なされ、セキュリティ上の問題となります。この場合、Application Gateway によってバックエンド サーバーが "異常" とマークされます。
 
-**解決方法:** SSL 証明書の有効期限が切れた場合は、ベンダーで証明書を更新し、新しい証明書を使用してサーバーの設定を更新します。 自己署名証明書の場合は、有効な証明書を生成し、ルート証明書を Application Gateway の HTTP 設定にアップロードする必要があります。 そのためには、次の手順に従います。
+**解決方法:** TLS または SSL 証明書の有効期限が切れた場合は、ベンダーで証明書を更新し、新しい証明書を使用してサーバーの設定を更新します。 自己署名証明書の場合は、有効な証明書を生成し、ルート証明書を Application Gateway の HTTP 設定にアップロードする必要があります。 そのためには、次の手順に従います。
 
 1.  ポータルで Application Gateway の HTTP 設定を開きます。
 
@@ -333,7 +333,7 @@ OpenSSL を使用する Linux の場合:
 
 #### <a name="certificate-verification-failed"></a>証明書の検証の失敗
 
-**メッセージ:** The validity of the backend certificate could not be verified. (バックエンド証明書の有効性を検証できませんでした。) To find out the reason, check Open SSL diagnostics for the message associated with error code {errorCode} (理由を調べるには、エラー コード {errorCode} に関連付けられたメッセージの Open SSL 診断を確認してください)
+**メッセージ:** The validity of the backend certificate could not be verified. (バックエンド証明書の有効性を検証できませんでした。) To find out the reason, check OpenSSL diagnostics for the message associated with error code {errorCode} (理由を調べるには、エラー コード {errorCode} に関連付けられたメッセージの OpenSSL 診断を確認してください)
 
 **原因:** このエラーは、Application Gateway が証明書の有効性を確認できない場合に発生します。
 

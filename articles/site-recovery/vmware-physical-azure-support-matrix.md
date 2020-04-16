@@ -1,16 +1,14 @@
 ---
 title: Azure Site Recovery における VMware/物理ディザスター リカバリーのサポート マトリックス
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
-ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/21/2020
-ms.author: raynew
-ms.openlocfilehash: b7ace4f470a4e054be5d7f5945fc3e9c4f7d0810
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.date: 2/24/2020
+ms.openlocfilehash: fbd5d87b219cbb482569dc5e45adc9c81181670c
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444249"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672449"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -50,8 +48,8 @@ RAM | 16 GB
 ディスクの空き領域 | リテンション ドライブ用に 600 GB の領域。
 オペレーティング システム  | Windows Server 2012 R2 またはデスクトップ エクスペリエンス搭載 Windows Server 2016 <br/><br> このアプライアンスの組み込みのマスター ターゲットをフェールバックに使用する予定の場合は、OS のバージョンが、レプリケートされるアイテムと同じかそれよりも高いことを確認してください。|
 オペレーティング システムのロケール | 英語 (en-us)
-[PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | バージョン [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) 以降の構成サーバーの場合は不要です。 
-Windows Server の役割 | Active Directory Domain Services、インターネット インフォメーション サービス (IIS)、Hyper-V は有効にしないでください。 
+[PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | バージョン [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) 以降の構成サーバーの場合は不要です。
+Windows Server の役割 | Active Directory Domain Services、インターネット インフォメーション サービス (IIS)、Hyper-V は有効にしないでください。
 グループ ポリシー| - コマンド プロンプトへのアクセス禁止。 <br/> - レジストリ編集ツールへのアクセス禁止。 <br/> - ファイル添付の信頼ロジック。 <br/> - スクリプト実行の有効化。 <br/> - [詳細情報](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | 以下を実行します。<br/><br/> - 既定の Web サイトが事前に存在しないようにする <br/> - [匿名認証](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx)を有効にする <br/> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定を有効にする  <br/> - ポート 443 でリッスンしている既存の Web サイト/アプリがないようにする<br/>
 NIC の種類 | VMXNET3 (VMware VM としてデプロイされている場合)
@@ -69,23 +67,24 @@ Site Recovery は、サポートされているマシンで実行されている
 --- | ---
 マシンの設定 | Azure にレプリケートするマシンは、[Azure の要件](#azure-vm-requirements)を満たしている必要があります。
 マシンのワークロード | Site Recovery は、サポートされているマシンで実行されているすべてのワークロードのレプリケーションをサポートします。 [詳細については、こちらを参照してください](https://aka.ms/asr_workload)。
+コンピューター名 | コンピューターの表示名が [Azure 予約済みリソース名](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-reserved-resource-name)に含まれていないことを確認します。<br/><br/> 論理ボリューム名では、大文字と小文字は区別されません。 デバイス上の 2 つのボリュームに同じ名前が付いていないことを確認します。 例:"voLUME1" と "volume1" という名前のボリュームは、Azure Site Recovery を使用して保護できません。
 Windows Server 2019 | [更新プログラム ロールアップ 34](https://support.microsoft.com/help/4490016) (モビリティ サービスのバージョン 9.22) 以降でサポートされています。
 Windows Server 2016 64 ビット | Server Core、Server with Desktop Experience でサポートされています。
 Windows Server 2012 R2 / Windows Server 2012 | サポートされています。
 Windows Server 2008 R2 SP1 以降。 | サポートされています。<br/><br/> モビリティ サービス エージェントのバージョン [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 以降では、Windows 2008 R2 SP1 以降を実行しているコンピューターに[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4490628) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。 SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件についての詳細は、[こちら](https://aka.ms/SHA-2KB)でご確認ください。
-Windows Server 2008 SP2 以降 (64 ビット/32 ビット) |  移行についてのみサポートされています。 [詳細については、こちらを参照してください](migrate-tutorial-windows-server-2008.md)。<br/><br/> モビリティ サービス エージェントのバージョン [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 以降では、Windows 2008 SP2 コンピューター上に[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4493730) と [SHA-2 更新プログラム](h https://support.microsoft.com/help/4474419)をインストールする必要があります。 ISHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件についての詳細は、[こちら](https://aka.ms/SHA-2KB)でご確認ください。
+Windows Server 2008 SP2 以降 (64 ビット/32 ビット) |  移行についてのみサポートされています。 [詳細については、こちらを参照してください](migrate-tutorial-windows-server-2008.md)。<br/><br/> モビリティ サービス エージェントのバージョン [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 以降では、Windows 2008 SP2 コンピューター上に[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4493730) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。 ISHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件についての詳細は、[こちら](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)でご確認ください。
 Windows 10、Windows 8.1、Windows 8 | サポートされています。
-Windows 7 SP1 64 ビット | [更新プログラム ロールアップ 36](https://support.microsoft.com/help/4503156) (モビリティ サービスのバージョン 9.22) 以降でサポートされています。 </br></br> モビリティ サービス エージェントの [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 以降では、Windows 7 SP1 コンピューター上に[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4490628) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。  SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件についての詳細は、[こちら](https://aka.ms/SHA-2KB)でご確認ください。
+Windows 7 SP1 64 ビット | [更新プログラム ロールアップ 36](https://support.microsoft.com/help/4503156) (モビリティ サービスのバージョン 9.22) 以降でサポートされています。 </br></br> モビリティ サービス エージェントの [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 以降では、Windows 7 SP1 コンピューター上に[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4490628) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。  SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件についての詳細は、[こちら](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)でご確認ください。
 Linux | 64 ビット システムのみがサポートされています。 32 ビット システムはサポートされていません。<br/><br/>すべての Linux サーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)がインストールされている必要があります。 テスト フェールオーバー/フェールオーバー後に Azure でサーバーを起動するために必要です。 LIS コンポーネントがない場合、Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。 <br/><br/> Site Recovery では、Azure で Linux サーバーを実行するためにフェールオーバーが調整されます。 ただし Linux ベンダーによっては、サポート終了前のディストリビューション バージョンしかサポート対象に含まれない場合もあります。<br/><br/> Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。<br/><br/> 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。<br/><br/> Azure での Linux およびオープン ソース テクノロジのサポートについて詳しくは、[こちら](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)をご覧ください。
 Linux Red Hat Enterprise | 5.2 から 5.11</b><br/> 6.1 から 6.10</b> </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、[8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、8.1 <br/> Red Hat Enterprise Linux 5.2 から 5.11 および 6.1 から 6.10 を実行しているサーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)が事前インストールされていません。 Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。
 Linux: CentOS | 5.2 から 5.11</b><br/> 6.1 から 6.10</b><br/> 7.0 から 7.6<br/> <br/> 8.0 から 8.1<br/><br/> CentOS 5.2 から 5.11 および 6.1 から 6.10 を実行しているサーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)が事前インストールされていません。 Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。
 Ubuntu | Ubuntu 14.04 LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [(サポートされるカーネルのバージョンを確認してください)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4 [(サポートされるカーネルのバージョンを確認してください)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15、15 SP1 [(サポートされているカーネル バージョンの確認)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3 または SUSE Linux Enterprise Server 11 SP4<br/> レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。 アップグレードするには、レプリケーションを無効にし、アップグレードの後に再び有効にします。
-Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Red Hat と互換可能なカーネルまたは Unbreakable Enterprise カーネル リリース 3、4、5 (UEK3、UEK4、UEK5) を実行している 
+Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Red Hat と互換可能なカーネルまたは Unbreakable Enterprise カーネル リリース 3、4、5 (UEK3、UEK4、UEK5) を実行している
 
 > [!Note]
-> Windows の各バージョンについては、Azure Site Recovery では [長期サービス チャネル (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) のビルドのみがサポートされます。  現時点では、[半期チャネル](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel)のリリースはサポートされていません。
+> Windows の各バージョンについては、Azure Site Recovery では [長期サービス チャネル (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) のビルドのみがサポートされます。  現時点では、[半期チャネル](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel)のリリースはサポートされていません。
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu カーネルのバージョン
 
@@ -120,22 +119,22 @@ Debian 8 | [9.29][9.29 UR] | 3.16.0-4-amd64 から 3.16.0-10-amd64、4.9.0-0.bpo
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | [9.32][9.32 UR] | すべての [SUSE 12 SP1、SP2、SP3、SP4 ストック カーネル](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.34-azure  |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | [9.31][9.31 UR] | すべての [SUSE 12 SP1、SP2、SP3、SP4 ストック カーネル](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.29-azure  |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | [9.30][9.30 UR] | すべての [SUSE 12 SP1、SP2、SP3、SP4 ストック カーネル](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.26-azure  |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | [9.29][9.29 UR] | すべての [SUSE 12 SP1、SP2、SP3、SP4 ストック カーネル](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)がサポートされます。</br></br> 4.4.138-4.7-azure から 4.4.180-4.31-azure、</br>4.12.14-6.3-azure から 4.12.14-6.23-azure  |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | [9.28][9.28 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.118-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.117-default</br></br>SP3 4.4.73-5-default から 4.4.180-94.100-default</br></br>SP3 4.4.138-4.7-azure から 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-default から 4.12.14-95.29-default</br>SP4 4.12.14-6.3-azure から 4.12.14-6.23-azure |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | [9.27][9.27 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.114-default</br></br>SP3 4.4.73-5-default から 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-azure から 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-default から 4.12.14-95.19-default</br>SP4 4.12.14-6.3-azure から 4.12.14-6.15-azure |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | [9.26][9.26 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.110-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.109-default</br></br>SP3 4.4.73-5-default から 4.4.178-94.91-default</br></br>SP3 4.4.138-4.7-azure から 4.4.178-4.28-azure</br></br>SP4 4.12.14-94.41-default から 4.12.14-95.16-default</br>SP4 4.12.14-6.3-azure から 4.12.14-6.9-azure |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | [9.25][9.25 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.104-default</br></br>SP3 4.4.73-5-default から 4.4.176-94.88-default</br></br>SP3 4.4.138-4.7-azure から 4.4.176-4.25-azure</br></br>SP4 4.12.14-94.41-default から 4.12.14-95.13-default</br>SP4 4.12.14-6.3-azure から 4.12.14-6.9-azure |
 
 ### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux Enterprise Server 15 のサポートされるカーネルのバージョン
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 および 15 SP1 | 9.32 | すべての [SUSE 15 および 15 ストック カーネル](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)がサポートされます。</br></br> 4.12.14-5.5-azure から 4.12.14-8.22-azure |
+SUSE Linux Enterprise Server 15 および 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | すべての [SUSE 15 および 15 ストック カーネル](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)がサポートされます。 </br></br> 4.12.14-5.5-azure から 4.12.14-8.22-azure
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux ファイル システム/ゲストのストレージ
 
 **コンポーネント** | **サポートされています**
 --- | ---
-ファイル システム | ext3、ext4、XFS
+ファイル システム | ext3、ext4、XFS、BTRFS (このテーブルごとに条件が適用されます)
 ボリューム マネージャー | - LVM はサポートされています。<br/> - LVM での/boot は [更新プログラム ロールアップ 31](https://support.microsoft.com/help/4478871/) (モビリティ サービスのバージョン 9.20) 以降でサポートされています。 モビリティ サービスの以前のバージョンではサポートされていません。<br/> - 複数の OS ディスクはサポートされていません。
 準仮想化ストレージ デバイス | 準仮想化ドライバーによってエクスポートされたデバイスはサポートされません。
 マルチ キュー ブロック IO デバイス | サポートされていません。
@@ -212,7 +211,7 @@ Docker ディスク構成 | いいえ
 ゲスト/サーバー マルチパス (MPIO) | いいえ
 ゲスト/サーバー GPT パーティション | \- 5 個のパーティションが[更新プログラム ロールアップ 37](https://support.microsoft.com/help/4508614/) (モビリティ サービスのバージョン 9.25) 以降でサポートされています。 以前は 4 個までサポートしていました。
 ReFS | Resilient File System は、モビリティ サービスのバージョン 9.23 以降でサポートされています。
-ゲスト/サーバー EFI/UEFI ブート | - Windows Server 2012 以降、SLES 12 SP4、モビリティ エージェント バージョン 9.30 以降を使用する RHEL 8.0 でサポートされています<br/> - セキュリティで保護された UEFI ブートの種類はサポートされていません。 
+ゲスト/サーバー EFI/UEFI ブート | - Windows Server 2012 以降、SLES 12 SP4、モビリティ エージェント バージョン 9.30 以降を使用する RHEL 8.0 でサポートされています<br/> - セキュリティで保護された UEFI ブートの種類はサポートされていません。
 
 ## <a name="replication-channels"></a>レプリケーション チャネル
 
@@ -268,20 +267,20 @@ VM 名 | 1 から 63 文字。<br/><br/> 名前に使用できるのは、英文
 
 ## <a name="resource-group-limits"></a>リソース グループの制限
 
-1 つのリソース グループで保護できる仮想マシンの数については、[サブスクリプションの制限とクォータ](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)に関する記事を参照してください。
+1 つのリソース グループで保護できる仮想マシンの数については、[サブスクリプションの制限とクォータ](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)に関する記事を参照してください。
 
 ## <a name="churn-limits"></a>チャーンの制限
 
-以下の表は、Azure Site Recovery の制限を示したものです。 
+以下の表は、Azure Site Recovery の制限を示したものです。
 - これらの制限は、Microsoft のテストに基づいて公開されていますが、アプリ I/O として想定されるすべての組み合わせを網羅したものではありません。
 - 実際の結果は、ご使用のアプリケーションで発生するさまざまな I/O によって異なることが考えられます。
 - 最良の結果を得るためには、[Deployment Planner ツール](site-recovery-deployment-planner.md)を実行し、テスト フェールオーバーを使用して広範なアプリケーション テストを実行し、アプリの実際のパフォーマンスを把握することを強くお勧めします。
 
 **レプリケーション ターゲット** | **レプリケーション元の平均ディスク I/O サイズ** |**レプリケーション元ディスクの平均データ変更頻度** | **レプリケーション元ディスクの 1 日あたりのデータ変更頻度合計**
 ---|---|---|---
-Standard Storage | 8 KB | 2 MB/秒 | (ディスクあたり) 168 GB
-Premium P10 または P15 ディスク | 8 KB  | 2 MB/秒 | (ディスクあたり) 168 GB
-Premium P10 または P15 ディスク | 16 KB | 4 MB/秒 |  (ディスクあたり) 336 GB
+Standard Storage | 8 KB    | 2 MB/秒 | (ディスクあたり) 168 GB
+Premium P10 または P15 ディスク | 8 KB    | 2 MB/秒 | (ディスクあたり) 168 GB
+Premium P10 または P15 ディスク | 16 KB | 4 MB/秒 |    (ディスクあたり) 336 GB
 Premium P10 または P15 ディスク | 32 KB 以上 | 8 MB/秒 | (ディスクあたり) 672 GB
 Premium P20、P30、P40、または P50 ディスク | 8 KB    | 5 MB/s | (ディスクあたり) 421 GB
 Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |20 MB/秒 | (ディスクあたり) 1,684 GB
@@ -308,11 +307,11 @@ VM 上の全ディスクにおけるデータ変更頻度のピーク | 54 MB/�
 
 ## <a name="obtain-latest-components"></a>最新のコンポーネントを入手する
 
-**Name** | **説明** | **詳細**
+**名前** | **説明** | **詳細**
 --- | --- | ---
-構成サーバー | オンプレミスにインストール済み。<br/> オンプレミスの VMware サーバーまたは物理マシンと Azure の間の通信を調整します。 | 構成サーバーに関する- [詳細情報](vmware-physical-azure-config-process-server-overview.md)をご覧ください。<br/> 最新バージョンへのアップグレードに関する- [詳細情報](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)をご覧ください。<br/> 構成サーバーの設定に関する- [詳細情報](vmware-azure-deploy-configuration-server.md)をご覧ください。 
+構成サーバー | オンプレミスにインストール済み。<br/> オンプレミスの VMware サーバーまたは物理マシンと Azure の間の通信を調整します。 | 構成サーバーに関する- [詳細情報](vmware-physical-azure-config-process-server-overview.md)をご覧ください。<br/> 最新バージョンへのアップグレードに関する- [詳細情報](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)をご覧ください。<br/> 構成サーバーの設定に関する- [詳細情報](vmware-azure-deploy-configuration-server.md)をご覧ください。
 プロセス サーバー | 構成サーバーに既定でインストールされます。<br/> レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure に送信します。<br/> デプロイの拡大に合わせて、増大するレプリケーション トラフィックの処理を実行するプロセス サーバーを追加できます。 | プロセス サーバーに関する- [詳細情報](vmware-physical-azure-config-process-server-overview.md)をご覧ください。<br/> 最新バージョンへのアップグレードに関する- [詳細情報](vmware-azure-manage-process-server.md#upgrade-a-process-server)をご覧ください。<br/> スケールアウト プロセス サーバーの設定に関する- [詳細情報](vmware-physical-large-deployment.md#set-up-a-process-server)をご覧ください。
-モビリティ サービス | レプリケートする VMware VM または物理サーバーにインストールされます。<br/> オンプレミスの VMware サーバー/物理サーバーと Azure の間のレプリケーションを調整します。| モビリティ サービスに関する- [詳細情報](vmware-physical-mobility-service-overview.md)をご覧ください。<br/> 最新バージョンへのアップグレードに関する- [詳細情報](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal)をご覧ください。<br/> 
+モビリティ サービス | レプリケートする VMware VM または物理サーバーにインストールされます。<br/> オンプレミスの VMware サーバー/物理サーバーと Azure の間のレプリケーションを調整します。| モビリティ サービスに関する- [詳細情報](vmware-physical-mobility-service-overview.md)をご覧ください。<br/> 最新バージョンへのアップグレードに関する- [詳細情報](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal)をご覧ください。<br/>
 
 
 

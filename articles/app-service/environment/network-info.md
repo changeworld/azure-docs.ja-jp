@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229731"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477692"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
 
@@ -138,7 +138,7 @@ ASE で認識されている必要のある IP アドレスがいくつかあり
 
 ### <a name="app-assigned-ip-addresses"></a>アプリに割り当てられた IP アドレス ###
 
-外部 ASE では、個々のアプリに IP アドレスを割り当てることができます。 これは ILB ASE では実行できません。 独自の IP アドレスを持つようにアプリを構成する方法の詳細については、「[Azure App Service で SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](../configure-ssl-bindings.md)」をご覧ください。
+外部 ASE では、個々のアプリに IP アドレスを割り当てることができます。 これは ILB ASE では実行できません。 独自の IP アドレスを持つようにアプリを構成する方法の詳細については、「[Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](../configure-ssl-bindings.md)」をご覧ください。
 
 アプリに独自の IP ベースの SSL アドレスがある場合、ASE はその IP アドレスにマップするために 2 つのポートを予約します。 1 つのポートは HTTP トラフィック用であり、もう 1 つのポートは HTTPS 用です。 これらのポートは、ASE UI の [IP アドレス] セクションに表示されます。 トラフィックは、VIP からこれらのポートに到達できる必要があります。そうでないと、アプリにアクセスできません。 この要件は、ネットワーク セキュリティ グループ (NSG) を構成するときに思い出すことが重要です。
 

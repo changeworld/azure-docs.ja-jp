@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73242483"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667873"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files のネットワーク計画のガイドライン
 
@@ -39,10 +39,11 @@ Azure NetApp Files ネットワークを計画するときは、いくつかの�
 * Azure NetApp ファイル サブネットとしてのアドレス プレフィックスを持つユーザー定義ルート (UDR)
 * Azure NetApp Files インターフェイス上の (カスタム名前付けポリシーなどの) Azure ポリシー
 * Azure NetApp Files トラフィック用のロード バランサー
+* Azure NetApp Files は、Azure Virtual WAN ではサポートされていません
 
 Azure NetApp Files には、次のネットワーク制限が適用されます。
 
-* Azure NetApp Files で使用される VNet の IP の数は (ピアリング VNet も含めて) 1,000 を超えることはできません。 Microsoft では、お客様のスケール ニーズに合わせてこの制限を引き上げることに取り組んでいます。 暫定的にさらに多くの IP が必要な場合は、ユース ケースと必要な制限についてサポート チームにお問い合わせください。
+* Azure NetApp Files で使用される VNet の IP の数は (ピアリング VNet も含めて) 1,000 を超えることはできません。 Microsoft では、お客様のスケール ニーズに合わせてこの制限を引き上げることに取り組んでいます。 
 * 各 Azure Virtual Network (VNet) で、1 つのサブネットだけを Azure NetApp Files に委任できます。
 
 
@@ -103,7 +104,7 @@ Azure NetApp Files 用の委任サブネットでは、ユーザー定義ルー�
 
 さらに、同じリージョンで VNet 1 が VNet 2 とピアリングされており、VNet 2 が VNet 3 とピアリングされているシナリオを考えます。 VNet 1 のリソースは VNet 2 のリソースに接続できますが、VNet 1 と VNet 3 がピアリングされていない限り、VNet 3 のリソースには接続できません。 
 
-上の図で、VM 3 はボリューム 1 に接続できますが、VM 4 はボリューム 2 に接続できません。  この理由は、スポーク VNet がピアリングされておらず、_トランジット ルーティングが VNet ピアリング経由ではサポートされない_からです。
+上の図で、VM 3 はボリューム 1 に接続できますが、VM 4 はボリューム 2 に接続できません。  この理由は、スポーク VNet がピアリングされておらず、_トランジット ルーティングが VNet ピアリング経由ではサポートされない_ からです。
 
 ## <a name="hybrid-environments"></a>ハイブリッド環境
 
@@ -123,8 +124,8 @@ Azure NetApp Files 用の委任サブネットでは、ユーザー定義ルー�
 * オンプレミス リソースの VM 1 と VM 2 を、サイト間 VPN とリージョンの VNet ピアリング経由でハブのボリューム 2 とボリューム 3 に接続できます。
 * ハブ VNet 内の VM 3 は、スポーク VNet 1 内のボリューム 2 と、スポーク VNet 2 内のボリューム 3 に接続できます。
 * スポーク VNet 1 の VM 4 と、スポーク VNet 2 の VM 5 は、ハブ VNet 内のボリューム 1 に接続できます。
-
-スポーク VNet 1 内の VM 4 は、スポーク VNet 2 内のボリューム 3 に接続できません。 また、スポーク VNet 2 内の VM 5 は、スポーク VNet 1 内のボリューム 2 に接続できません。 これは、スポーク VNet がピアリングされておらず、_トランジット ルーティングは VNet ピアリング経由ではサポートされていない_からです。
+* スポーク VNet 1 内の VM 4 は、スポーク VNet 2 内のボリューム 3 に接続できません。 また、スポーク VNet 2 内の VM 5 は、スポーク VNet 1 内のボリューム 2 に接続できません。 これは、スポーク VNet がピアリングされておらず、_トランジット ルーティングは VNet ピアリング経由ではサポートされていない_ からです。
+* 上記のアーキテクチャでは、スポーク VNet にもゲートウェイがある場合、ハブのゲートウェイを介して接続しているオンプレミスからの ANF ボリュームへの接続が失われます。 仕様により、スポーク VNet のゲートウェイが優先されるため、そのゲートウェイ経由で接続するコンピューターのみが ANF ボリュームに接続できます。
 
 ## <a name="next-steps"></a>次のステップ
 

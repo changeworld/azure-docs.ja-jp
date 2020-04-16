@@ -4,26 +4,26 @@ description: Windows 認証と Azure Multi-Factor Authentication Server のデ�
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faab28a714b1a62e1e34de5b07119aa3018db24e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4abfb970ca322724adb0f8919b7509bc8a641378
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230911"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652795"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 認証と Azure Multi-Factor Authentication Server
 
 Azure Multi-Factor Authentication Server の [Windows 認証] セクションを使用して、アプリケーションの Windows 認証を有効にして構成します。 Windows 認証を設定する前に、次の点に留意してください。
 
 * 設定したら、Azure Multi-Factor Authentication を再起動して、ターミナル サービスを有効にします。
-* [Multi-Factor Authentication のユーザー照合が必要] ボックスがオンになっており、ユーザーがユーザー一覧にいない場合、再起動後にマシンにログインできません。
+* [Multi-Factor Authentication のユーザー照合が必要] がオンになっており、ユーザーがユーザー一覧にいない場合、再起動後にマシンにログインできません。
 * 信頼できる IP は、アプリケーションが認証付きのクライアント IP を提供できるかどうかに依存します。 現在はターミナル サービスのみがサポートされます。  
 
 > [!IMPORTANT]

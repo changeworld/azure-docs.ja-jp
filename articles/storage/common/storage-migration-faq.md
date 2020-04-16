@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1445d74e3050ffd6da7c45037df552f4bee9acf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f1137638f9cd4926b712bdd18e681d90adcdc4
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116672"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668549"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
 
@@ -269,7 +269,7 @@ Premium Storage は、Azure ファイル共有では使用できません。
 
 **ストレージ アカウントで HTTPS カスタム ドメインを使用するにはどうすればよいですか?たとえば、"https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" を "https:\//www.contoso.com/images/image.gif" と表示するにはどうすればよいですか?**
 
-カスタム ドメインを使用するストレージ アカウントでは、SSL は現在サポートされていません。
+カスタム ドメインを使用するストレージ アカウントでは、TLS/SSL は現在サポートされていません。
 ただし、HTTPS 以外のカスタム ドメインはご利用いただけます。 詳細については、「[BLOB ストレージ エンドポイントのカスタム ドメイン名の構成](../blobs/storage-custom-domain-name.md)」をご覧ください。
 
 ## <a name="access-to-storage"></a>ストレージへのアクセス

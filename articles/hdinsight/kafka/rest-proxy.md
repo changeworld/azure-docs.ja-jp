@@ -6,37 +6,37 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d99a3b803b80dc41990a63e647d3ba928deb31af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/03/2020
+ms.openlocfilehash: 6bf34f8fb15bf8fddb1ba398ed678d5c98b8c84f
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198907"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667783"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST プロキシを使用して Azure HDInsight で Apache Kafka クラスターを操作する
 
-Kafka REST プロキシを使用すると、HTTP 経由の REST API を使用して Kafka クラスターを操作することができます。 これは、Kafka クライアントが仮想ネットワークの外部にある可能性があることを意味します。 さらに、クライアントは、Kafka ライブラリを利用するのではなく、単純な HTTP 呼び出しを使用して Kafka クラスターにメッセージを送受信することができます。 このチュートリアルでは、REST プロキシ対応の Kafka クラスターを作成する方法について説明し、REST プロキシを呼び出す方法を示すサンプル コードを紹介します。
+Kafka REST プロキシを使用すると、HTTP 経由の REST API を使用して Kafka クラスターを操作することができます。 この操作は、Kafka クライアントを仮想ネットワークの外部に配置できることを意味します。 クライアントは、Kafka ライブラリを利用するのではなく、Kafka クラスターに対して単純な HTTP 呼び出しを行うことができます。 この記事では、REST プロキシが有効な Kafka クラスターを作成する方法について説明します。 また、REST プロキシを呼び出す方法を示すサンプル コードも提供します。
 
 ## <a name="rest-api-reference"></a>REST API リファレンス
 
-Kafka REST API によってサポートされる操作の詳細については、[HDInsight Kafka REST Proxy の API リファレンス](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)を参照してください。
+Kafka REST API によってサポートされる操作については、[HDInsight Kafka REST Proxy の API リファレンス](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)を参照してください。
 
 ## <a name="background"></a>バックグラウンド
 
-![Kafka REST プロキシのアーキテクチャ](./media/rest-proxy/rest-proxy-architecture.png)
+![Kafka REST プロキシ設計](./media/rest-proxy/rest-proxy-architecture.png)
 
 API でサポートされている操作の詳細については、[Apache Kafka REST プロキシ API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy) を参照してください。
 
 ### <a name="rest-proxy-endpoint"></a>REST プロキシ エンドポイント
 
-REST プロキシを使用して HDInsight Kafka クラスターを作成すると、クラスターの新しいパブリック エンドポイントが作成されます。これは、Azure portal の HDInsight クラスターの [プロパティ] にあります。
+REST プロキシを使用して HDInsight Kafka クラスターを作成すると、クラスターの新しいパブリック エンドポイントが作成されます。これは、Azure portal の HDInsight クラスターの **[プロパティ]** にあります。
 
 ### <a name="security"></a>Security
 
-Kafka REST プロキシへのアクセスは Azure Active Directory セキュリティ グループで管理されます。 REST プロキシが有効な Kafka クラスターを作成する場合は、REST エンドポイントにアクセスする必要がある Azure Active Directory セキュリティ グループを指定します。 REST プロキシにアクセスする必要がある Kafka クライアント (アプリケーション) は、グループの所有者によってこのグループに登録される必要があります。 グループの所有者は、ポータルまたは Powershell を使用してこれを行うことができます。
+Kafka REST プロキシへのアクセスは Azure Active Directory セキュリティ グループで管理されます。 Kafka クラスターを作成するときに、Azure AD セキュリティ グループに REST エンドポイント アクセスを提供します。 REST プロキシにアクセスする必要がある Kafka クライアントは、グループの所有者によってこのグループに登録される必要があります。 グループの所有者は、ポータルまたは PowerShell を使用して登録することができます。
 
-REST プロキシ エンドポイントへの要求を行う前に、クライアント アプリケーションは、適切なセキュリティ グループのメンバーシップを確認するために OAuth トークンを取得する必要があります。 OAuth トークンを取得する方法については、後述する「[クライアント アプリケーションのサンプル](#client-application-sample)」を参照してください。 クライアント アプリケーションが OAuth トークンを受け取ると、REST プロキシに対する HTTP 要求でそのトークンを渡す必要があります。
+REST プロキシ エンドポイント要求の場合、クライアント アプリケーションは OAuth トークンを取得する必要があります。 このトークンは、セキュリティ グループのメンバーシップを確認するために使用されます。 OAuth トークンを取得する方法については、後述する「[クライアント アプリケーションのサンプル](#client-application-sample)」を参照してください。 クライアント アプリケーションは、HTTP 要求の OAuth トークンを REST プロキシに渡します。
 
 > [!NOTE]  
 > AAD セキュリティ グループの詳細については、「[Azure Active Directory グループを使用したアプリとリソース アクセスの管理](../../active-directory/fundamentals/active-directory-manage-groups.md)」を参照してください。 OAuth トークンのしくみについては、「[OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する](../../active-directory/develop/v1-protocols-oauth-code.md)」を参照してください。
@@ -44,11 +44,18 @@ REST プロキシ エンドポイントへの要求を行う前に、クライ�
 ## <a name="prerequisites"></a>前提条件
 
 1. アプリケーションを Azure AD に登録する。 Kafka REST プロキシを操作するために記述するクライアント アプリケーションは、このアプリケーションの ID とシークレットを使用して Azure に対する認証を行います。
-1. Azure AD セキュリティ グループを作成し、Azure AD に登録したアプリケーションをセキュリティ グループに追加します。 このセキュリティ グループは、REST プロキシの操作を許可するアプリケーションを制御するために使用されます。 Azure AD グループの作成方法の詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
+
+1. Azure AD セキュリティ グループを作成する。 Azure AD に登録したアプリケーションをセキュリティ グループにグループの**メンバー**として追加します。 このセキュリティ グループは、REST プロキシの操作を許可するアプリケーションを制御するために使用されます。 Azure AD グループの作成方法の詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
+
+    グループの種類が **[セキュリティ]** であることを確認します。
+    ![セキュリティ グループ](./media/rest-proxy/rest-proxy-group.png)
+
+    アプリケーションがグループのメンバーであることを確認します。
+    ![メンバーシップの確認](./media/rest-proxy/rest-proxy-membergroup.png)
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>REST プロキシが有効な Kafka クラスターを作成する
 
-1. Kafka クラスター作成ワークフローの実行中に、[セキュリティとネットワーク] タブで、[Enable Kafka REST proxy]\(Kafka REST プロキシを有効にする\) オプションをオンにします。
+1. Kafka クラスター作成ワークフローの実行中に、 **[セキュリティとネットワーク]** タブで、 **[Enable Kafka REST proxy]\(Kafka REST プロキシを有効にする\)** オプションをオンにします。
 
      ![Kafka REST プロキシを有効にし、セキュリティ グループを選択する](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
@@ -68,19 +75,23 @@ REST プロキシ エンドポイントへの要求を行う前に、クライ�
 
 1. Python がインストールされているマシンにサンプルコードを保存します。
 1. `pip3 install adal` と `pip install msrestazure` を実行して、必要な python 依存関係をインストールします。
-1. 実際の環境に合わせて *Configure these properties* のコード セクションを変更し、次のプロパティを変更します。
-    1.  *テナント ID* – 該当するサブスクリプションがある Azure テナント。
-    1.  *クライアント ID* – セキュリティ グループに登録したアプリケーションの ID。
-    1.  *クライアント シークレット* – セキュリティ グループに登録したアプリケーションのシークレット
-    1.  *Kafkarest_endpoint* – この値は、[デプロイ セクション](#create-a-kafka-cluster-with-rest-proxy-enabled)の説明に従って、クラスターの概要の [プロパティ] タブから取得します。 `https://<clustername>-kafkarest.azurehdinsight.net` という形式にする必要があります。
-3. コマンド ラインから、`python <filename.py>` を実行して python ファイルを実行します
+1. 実際の環境に合わせて **Configure these properties** のコード セクションを変更し、次のプロパティを変更します。
 
-このコードは、次の処理を実行します。
+    |プロパティ |説明 |
+    |---|---|
+    |テナント ID|該当するサブスクリプションがある Azure テナント。|
+    |クライアント ID|セキュリティ グループに登録したアプリケーションの ID。|
+    |クライアント シークレット|セキュリティ グループに登録したアプリケーションのシークレット。|
+    |Kafkarest_endpoint|この値は、[デプロイ セクション](#create-a-kafka-cluster-with-rest-proxy-enabled)の説明に従って、クラスターの概要の **[プロパティ]** タブから取得します。 `https://<clustername>-kafkarest.azurehdinsight.net` という形式にする必要があります。|
 
-1. Azure AD から OAuth トークンを取得する
+1. コマンド ラインから、`python <filename.py>` を実行して python ファイルを実行します
+
+このコードは、次の操作を実行します。
+
+1. Azure AD から OAuth トークンを取得します。
 1. Kafka REST プロキシに対して要求を行う方法を示します。
 
-Python での OAuth トークンの取得の詳細については、[Python の AuthenticationContext クラス](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python)に関する記事を参照してください。 Kafka REST プロキシで作成または削除されていないトピックがそこに反映される間、遅延が発生する可能性があります。 この遅延は、キャッシュの更新によるものです。
+Python での OAuth トークンの取得の詳細については、[Python の AuthenticationContext クラス](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python)に関する記事を参照してください。 Kafka REST プロキシで作成または削除されていない `topics` がそこに反映される間、遅延が発生する可能性があります。 この遅延は、キャッシュの更新によるものです。
 
 ```python
 #Required python packages
@@ -124,6 +135,12 @@ request_url = kafkarest_endpoint + getstatus
 # sending get request and saving the response as response object
 response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
+```
+
+curl コマンドを使用して REST プロキシ用のトークンを Azure から取得する方法については、以下の別のサンプルを参照してください。 トークンの取得中に指定された `resource=https://hib.azurehdinsight.net` が必要であることに注意してください。
+
+```cmd
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&resource=https://hib.azurehdinsight.net' 'https://login.microsoftonline.com/<tenantid>/oauth2/token'
 ```
 
 ## <a name="next-steps"></a>次のステップ

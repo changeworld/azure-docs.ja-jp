@@ -18,11 +18,11 @@
     - name: ロールベースのアクセス制御を管理する
       href: automation-role-based-access-control.md
       displayName: RBAC
-    - name: Azure Automation で Azure AD を使用して Azure に対して認証する
+    - name: Azure AD を使用して Azure に対する認証を行う
       href: automation-use-azure-ad.md
-    - name: Azure Automation を使用して Office 365 サービスを管理する
+    - name: Office 365 サービスを管理する
       href: manage-office-365.md
-    - name: AWS を使って認証を構成する
+    - name: アマゾン ウェブ サービスで Azure Automation Runbook を認証する
       href: automation-config-aws-account.md
     - name: Azure Automation でセキュリティで保護された資産を暗号化する
       href: automation-secure-asset-encryption.md
@@ -42,6 +42,9 @@
           displayName: troubleshoot
 - name: プロセスの自動化
   items:
+    - name: Azure Automation での Runbook の実行
+      href: automation-runbook-execution.md
+      displayName: 'fair share, activity log'
     - name: Hybrid Runbook Worker の概要
       href: automation-hybrid-runbook-worker.md
     - name: Runbook ギャラリー
@@ -111,9 +114,6 @@
             - name: Runbook の出力
               href: automation-runbook-output-and-messages.md
               displayName: 'message streams, progress records, preference'
-            - name: Runbook ジョブの追跡
-              href: automation-runbook-execution.md
-              displayName: 'fair share, activity log'
             - name: グラフィック Runbook でのエラー処理
               href: automation-runbook-graphical-error-handling.md
         - name: Hybrid Runbook Worker

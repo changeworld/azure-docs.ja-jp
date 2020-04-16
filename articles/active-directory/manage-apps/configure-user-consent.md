@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd305d2943d1b12756171748f28d32300081d71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42337fe958a881ee263d16c866dda69f13fe09c1
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443402"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519625"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>エンド ユーザーがアプリケーションに同意する方法を構成する
 
@@ -106,7 +106,7 @@ Azure AD PowerShell プレビュー モジュール ([AzureADPreview](https://do
 
 4. 設定値を理解します。 アプリがグループのデータにアクセスすることを許可できるユーザーを定義する設定値は、次の 2 つです。
 
-    | 設定       | 種類         | 説明  |
+    | 設定       | Type         | 説明  |
     | ------------- | ------------ | ------------ |
     | _EnableGroupSpecificConsent_   | Boolean |  グループ所有者がグループ固有のアクセス許可を付与できるかどうかを示すフラグです。 |
     | _ConstrainGroupSpecificConsentToMembersOfGroupId_ | Guid | _EnableGroupSpecificConsent_ が "True" に設定され、この値がグループのオブジェクト ID に設定されている場合、指定されているグループのメンバーは、所有しているグループにグループ固有のアクセス許可を付与する権限を与えられます。 |
@@ -143,9 +143,53 @@ Azure AD PowerShell プレビュー モジュール ([AzureADPreview](https://do
     }
     ```
 
+## <a name="configure-risk-based-step-up-consent"></a>リスクに基づくステップアップ同意を構成する
+
+リスクに基づくステップアップ同意を使用すると、[違法な同意要求](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)を行う悪質なアプリへのユーザーの露出を減らすことができます。 危険なエンドユーザー同意要求が Microsoft によって検出されると、管理者の同意への "ステップアップ" が求められます。 この機能は既定で有効になりますが、動作変更が生じるのは、エンドユーザーの同意が有効な場合だけです。
+
+危険な同意要求が検出されると、管理者の承認が必要であることを示すメッセージが同意プロンプトに表示されます。 [管理者の同意要求ワークフロー](configure-admin-consent-workflow.md)が有効になっている場合、ユーザーは同意プロンプトから直接その要求を管理者に送信してさらなる確認を求めることができます。 有効になっていない場合は、次のメッセージが表示されます。
+
+* **AADSTS90094:** &lt;clientAppDisplayName&gt; には、組織内のリソースへのアクセス許可が必要です。このアクセス許可を付与できるのは管理者のみです。 アプリケーションを使用するには、まず管理者に依頼してこのアプリにアクセス許可を付与してください。
+
+この場合、"ApplicationManagement" というカテゴリ、"Consent to application" (アプリケーションへの同意) というアクティビティの種類、"Risky application detected" (危険なアプリケーションの検出) という状態の理由で、監査イベントもログに記録されます。
+
+> [!IMPORTANT]
+> 管理者は、特に Microsoft によってリスクが検出された場合に、慎重に[すべての同意要求を評価](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent)したうえで承認する必要があります。
+
+### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>PowerShell を使用して、リスクに基づくステップアップ同意を無効にしたり再度有効にしたりする
+
+Microsoft によってリスクが検出された場合に必要となる管理者の同意へのステップアップは、Azure AD PowerShell プレビュー モジュール ([AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)) を使用して無効にしたり、過去に無効にされていた場合は再度有効にしたりすることができます。
+
+その手順は、上記の「[PowerShell を使用してグループの所有者の同意を構成する](#configure-group-owner-consent-using-powershell)」と同じですが、設定する値が異なります。 手順には 3 つの違いがあります。 
+
+1. リスクに基づくステップアップ同意の設定値を理解します。
+
+    | 設定       | Type         | 説明  |
+    | ------------- | ------------ | ------------ |
+    | _BlockUserConsentForRiskyApps_   | Boolean |  危険な要求が検出されたときにユーザーの同意をブロックするかどうかを示すフラグ |
+
+2. 手順 3. で次の値を使用します。
+
+    ```powershell
+    $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
+    ```
+3. 手順 5. で次のいずれかを使用します。
+
+    ```powershell
+    # Disable risk-based step-up consent entirely
+    $riskBasedConsentEnabledValue.Value = "False"
+    ```
+
+    ```powershell
+    # Re-enable risk-based step-up consent, if disabled previously
+    $riskBasedConsentEnabledValue.Value = "True"
+    ```
+
 ## <a name="next-steps"></a>次のステップ
 
 [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
+
+[アプリケーションへの同意を管理する方法と同意要求を評価する方法](manage-consent-requests.md)
 
 [アプリケーションへのテナント全体の管理者の同意の付与](grant-admin-consent.md)
 

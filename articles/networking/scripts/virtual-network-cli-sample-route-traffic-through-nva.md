@@ -1,5 +1,5 @@
 ---
-title: Azure CLI スクリプト サンプル - ネットワーク仮想アプライアンス経由のトラフィックのルーティング | Microsoft Docs
+title: Azure CLI スクリプト サンプル - ネットワーク仮想アプライアンス経由のトラフィックのルーティング
 description: Azure CLI スクリプト サンプル - ファイアウォール ネットワーク仮想アプライアンス経由のトラフィックのルーティング
 services: virtual-network
 documentationcenter: virtual-network
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: 55b9c9cba4a34fc9e209e03565861885ea192cc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05581114ce54ed8e92c6457c95f73b20304e419e
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73890231"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521521"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance"></a>ネットワーク仮想アプライアンス経由のトラフィックのルーティング
 

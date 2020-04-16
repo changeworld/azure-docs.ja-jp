@@ -3,17 +3,16 @@ title: ブループリントのライフサイクルの概要
 description: ブループリントの更新と削除を含む、ブループリント定義のライフサイクルの順番と各ステージの詳細について説明します。
 ms.date: 07/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4dd5cb7d085744377cf12998f14c994fb1dcd2d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46da42ec97f16af91ef8e41362a085d466bbb887
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74404594"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677382"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Azure Blueprint のライフサイクルの概要
 
-Azure 内の多くのリソースと同じように、Azure Blueprint のブループリントにも一般的で自然なライフサイクルがあります。 ブループリントは、作成され、展開されて、必要性や関連性がなくなったら最終的に削除されます。
-ブループリントでは、標準的なライフサイクル操作をサポートしています。 これに基づいて、DevOps の主要な要素であるコードとしてのインフラストラクチャを管理する組織に、一般的な継続的インテグレーションと継続的デプロイ パイプラインをサポートする追加の状態レベルが提供されます。
+Azure 内の多くのリソースと同じように、Azure Blueprint のブループリントにも一般的で自然なライフサイクルがあります。 ブループリントは、作成され、展開されて、必要性や関連性がなくなったら最終的に削除されます。 Azure Blueprints は、標準的なライフサイクル操作をサポートしています。 これに基づいて、DevOps の主要な要素であるコードとしてのインフラストラクチャを管理する組織に、一般的な継続的インテグレーションと継続的デプロイ パイプラインをサポートする追加の状態レベルが提供されます。
 
 ブループリントとステージを完全に理解できるように、標準的なライフサイクルについて説明します。
 

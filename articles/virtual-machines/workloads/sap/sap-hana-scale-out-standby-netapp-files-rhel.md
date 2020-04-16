@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 04/06/2020
 ms.author: radeltch
-ms.openlocfilehash: ace30b044682cb4e62a0f81da90f21a77be1edd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78f60cbd20e7801f4af26372884275d7d6782777
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372980"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754156"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする 
 
@@ -337,7 +337,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     yum install nfs-utils
     </code></pre>
 
-3. **[A]** 「[NetApp AFF Systems で NFS を使用した SAP HANA の構成ガイド](https://www.netapp.com/us/media/tr-4435.pdf)」で説明されているように、NFS を使用して Azure NetApp 上で SAP HANA を実行するために OS を準備します。 NetApp 構成設定用の構成ファイル */etc/sysctl.d/netapp-hana.conf* を作成します。  
+3. **[A]** 「[Azure NetApp Files を使用した Microsoft Azure 上での NetApp SAP アプリケーション][anf-sap-applications-azure]」で説明されているように、NFS を使用して Azure NetApp で SAP HANA を実行できるよう OS を準備します。 NetApp 構成設定用の構成ファイル */etc/sysctl.d/netapp-hana.conf* を作成します。  
 
     <pre><code>
     vi /etc/sysctl.d/netapp-hana.conf
@@ -369,7 +369,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     vm.swappiness=10
     </code></pre>
 
-5. **[A]** 「[NetApp AFF Systems で NFS を使用した SAP HANA の構成ガイド](https://www.netapp.com/us/media/tr-4435.pdf)」で推奨されているとおりに sunrpc 設定を調整します。  
+5. **[A]** 「[Azure NetApp Files を使用した Microsoft Azure 上での NetApp SAP アプリケーション][anf-sap-applications-azure]」で推奨されているように、sunrpc 設定を調整します。  
 
     <pre><code>
     vi /etc/modprobe.d/sunrpc.conf
@@ -707,7 +707,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
    - `async_write_submit_active` **オン**
    - `async_write_submit_blocks` **すべて**
 
-   詳細については、「[NetApp AFF Systems で NFS を使用した SAP HANA の構成ガイド](https://www.netapp.com/us/media/tr-4435.pdf)」を参照してください。 
+   詳細については、「[Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]」を参照してください。 
 
    SAP HANA 2.0 以降のシステムでは、`global.ini` でパラメーターを設定できます。 詳細については、SAP ノート [1999930](https://launchpad.support.sap.com/#/notes/1999930) をご覧ください。  
    
@@ -923,5 +923,4 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
-* SAP HANA on Azure (L インスタンス) の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」を参照してください。
 * Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」を参照してください。

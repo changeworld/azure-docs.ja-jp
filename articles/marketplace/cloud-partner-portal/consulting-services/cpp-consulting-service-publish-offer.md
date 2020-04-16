@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1b00e177ed45762d10d0603b1d0a1fb2c1807416
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a06bae941c75e43a0e4ea2b66cc420e7a2467c3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278503"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985084"
 ---
 # <a name="publish-a-consulting-service-offer"></a>コンサルティング サービス プランの発行
+
+>[!Important]
+>2020 年 4 月 13 日以降、パートナー センターへのコンサルティング サービス オファーの管理の移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 [コンサルティング サービス作成の概要](https://aka.ms/AzureCreateConsultingService)の手順に従い、移行後のオファーを管理します。
 
 **[プランの設定]** 、 **[電子店舗の詳細]** 、 **[連絡先]** を入力したら、 **[Publish]\(発行\)** を選択し、メール アドレスを指定します。 Microsoft によるオファーの発行の準備後、運用開始になる前に、オファーをプレビューするための電子メールが届きます。 ポータルに戻り、いつでもオファーの状態を確認することができます。
 

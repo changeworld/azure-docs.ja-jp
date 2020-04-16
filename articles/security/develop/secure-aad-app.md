@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: 11bf7c0ae05c2e52d59efb32be47ce6bd96fac4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599c4a31840b47294b43c4c4d1f0200b17f04540
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937979"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810534"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Azure AD アプリ用のセキュリティで保護されたアプリの開発
 ## <a name="overview"></a>概要
@@ -228,7 +228,7 @@ $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile "C:
 
 $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
 
-#Upload the certificate to be used on the SSL-enabled back-end pool resources
+#Upload the certificate to be used on the TLS/SSL-enabled back-end pool resources
 
 #$authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
 
@@ -246,7 +246,7 @@ $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basi
 
 $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-#Configure the SSL policy to be used on the application gateway
+#Configure the TLS/SSL policy to be used on the application gateway
 
 $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
 
@@ -380,7 +380,7 @@ Azure Security Center を使用すると、お客様はワークロード全体�
    - Azure Security Center では、お客様の潜在的なセキュリティの問題の検出と対処が簡単になるように、優先度付けしたセキュリティの警告とインシデントを提供しています。 インシデント対応チームによる脅威の調査と修復を支援するために、検出された脅威ごとに脅威インテリジェンス レポートが生成されます。
 ### <a name="azure-application-gateway"></a>Azure Application Gateway 
    このアーキテクチャでは、Web アプリケーション ファイアウォールが構成され、OWASP ルールセットが有効な Azure Application Gateway を使用してセキュリティの脆弱性のリスクを軽減します。 その他の機能には次のものがあります。
-   - エンドツーエンド SSL。
+   - エンドツーエンド TLS。
    - TLS v1.0 および v1.1 の無効化。
    - TLS v1.2 の有効化。
    - Web アプリケーション ファイアウォール (防止モード)。

@@ -1,6 +1,6 @@
 ---
 title: Azure VM でゲスト OS ファイアウォールを無効にする |Microsoft Docs
-description: ''
+description: VM へのトラフィックの一部または全部がゲスト オペレーティング システムのファイアウォールによってフィルター処理される状況を回避し、トラブルシューティングする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 292b53fac6c970fb961e8ad4ce7774c080e52422
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e4cd1595d963330bd5decb366310bf5e97f59bc8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718873"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422364"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM でゲスト OS ファイアウォールを無効にする
 

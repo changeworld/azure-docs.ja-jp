@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 1fddbe908ccebc1384dcccde0810366f1a6d5da7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 662619e101b45d1dd8b34ea97e31f214b254124a
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73796232"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521879"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>仮想ネットワーク ピアリングの問題をトラブルシューティングする
 
@@ -234,6 +234,15 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Databricks 仮想ネットワークをピアリングできませんでした
 
 この問題を解決するには、 **[Azure Databricks]** から仮想ネットワーク ピアリングを構成し、 **[リソース ID]** を使用してターゲット仮想ネットワークを指定します。 詳細については、「[Databricks 仮想ネットワークからリモート仮想ネットワークへのピアリング](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2)」を参照してください。
+
+### <a name="the-remote-virtual-network-lacks-a-gateway"></a>リモート仮想ネットワークにゲートウェイがありません
+
+この問題は、別のテナントの仮想ネットワークをピアリングし、後で `Use Remote Gateways` を構成する場合に発生します。 Azure portal の制限により、別のテナントの仮想ネットワークに仮想ネットワーク ゲートウェイが存在するかどうかを検証できません。
+
+この問題を解決するには、次の 2 つの方法があります。
+
+ * ピアリングを削除し、新しいピアリングを作成するときに `Use Remote Gateways` オプションをアクティブにします。
+ * Azure portal ではなく、PowerShell または CLI を使用して `Use Remote Gateways` を有効にします。
 
 ## <a name="next-steps"></a>次のステップ
 

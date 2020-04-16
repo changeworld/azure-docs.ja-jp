@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 857b2b00aadced567bc8ac191cdd9908f7bea7a3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687390"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804403"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>App Service 環境への受信トラフィックを制御する方法
 ## <a name="overview"></a>概要
@@ -31,10 +31,10 @@ App Service 環境は常にサブネット内で作成する必要がありま�
 
 App Service 環境で使用されるポートの一覧を次に示します。 特に断りのない限り、すべてのポートは **TCP** です。
 
-* 454:SSL を介した App Service Environment の管理および保守のために Azure インフラストラクチャによって使用される**必須ポート**。  このポートへのトラフィックはブロックしないでください。  このポートは常に、ASE のパブリック VIP にバインドします。
-* 455:SSL を介した App Service Environment の管理および保守のために Azure インフラストラクチャによって使用される**必須ポート**。  このポートへのトラフィックはブロックしないでください。  このポートは常に、ASE のパブリック VIP にバインドします。
+* 454:TLS を介した App Service Environment の管理および保守のために Azure インフラストラクチャによって使用される**必須ポート**。  このポートへのトラフィックはブロックしないでください。  このポートは常に、ASE のパブリック VIP にバインドします。
+* 455:TLS を介した App Service Environment の管理および保守のために Azure インフラストラクチャによって使用される**必須ポート**。  このポートへのトラフィックはブロックしないでください。  このポートは常に、ASE のパブリック VIP にバインドします。
 * 80:App Service Environment において App Service プランで実行されているアプリへの受信 HTTP トラフィック用の既定のポート。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
-* 443:App Service Environment において App Service プランで実行されているアプリへの受信 SSL トラフィック用の既定のポート。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
+* 443:App Service Environment において App Service プランで実行されているアプリへの受信 TLS トラフィック用の既定のポート。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
 * 21:FTP 用のコントロール チャネル。  FTP が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
 * 990:FTPS 用のコントロール チャネル。  FTPS が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
 * 10001 ～ 10020:FTP 用のデータ チャネル。  コントロール チャネルと同様、FTP が使用されていない場合は、これらのポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
@@ -62,7 +62,7 @@ App Service 環境では、仮想ネットワーク用に構成された有効�
 
 ネットワーク セキュリティ グループが作成されると、それに 1 つ以上のネットワーク セキュリティ ルールが追加されます。  ルール セットは時間の経過と共に変更される可能性があるため、時間の経過に伴い追加のルールを容易に挿入できるように、ルールの優先度に使用される番号付けスキームを一定間隔で配置することをお勧めします。
 
-次の例では、Azure インフラストラクチャで App Service 環境の管理と保守に必要とされる管理ポートへのアクセスを明示的に付与するルールを示しています。  すべての管理トラフィックが SSL 経由で流れ、クライアント証明書によってセキュリティで保護されているため、ポートが開かれている場合でも、Azure の管理インフラストラクチャ以外のどのエンティティからもアクセスできないことにご注意ください。
+次の例では、Azure インフラストラクチャで App Service 環境の管理と保守に必要とされる管理ポートへのアクセスを明示的に付与するルールを示しています。  すべての管理トラフィックが TLS 経由で流れ、クライアント証明書によってセキュリティで保護されているため、ポートが開かれている場合でも、Azure の管理インフラストラクチャ以外のどのエンティティからもアクセスできないことにご注意ください。
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 

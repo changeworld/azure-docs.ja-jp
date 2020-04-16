@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 77a451cb9f6598bbe7013f4215cfa7cab40186bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 426294f20dd51538920182a0e7a2915f6a47ba54
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037538"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383567"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive で Apache Beeline クライアントを使用する
 
@@ -40,8 +40,7 @@ Azure 仮想ネットワーク経由でクライアントから HDInsight に接
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 ```
 
-`<headnode-FQDN>` をクラスター ヘッドノードの完全修飾ドメイン名に置き換えます。 ヘッドノードの完全修飾ドメイン名を検索するには、[Apache Ambari REST API を使用した HDInsight の管理](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)に関するドキュメントの情報を使用してください。
-
+<a name="replace-headnode-fqdn-with-the-fully-qualified-domain-name-of-a-cluster-headnode-to-find-the-fully-qualified-domain-name-of-a-headnode-use-the-information-in-the-manage-hdinsight-using-the-apache-ambari-rest-api-document"></a>`<headnode-FQDN>` をクラスター ヘッドノードの完全修飾ドメイン名に置き換えます。 ヘッドノードの完全修飾ドメイン名を検索するには、[Apache Ambari REST API を使用した HDInsight の管理](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes)に関するドキュメントの情報を使用してください。
 ---
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Kerberos を使用して HDInsight Enterprise セキュリティ パッケージ (ESP) クラスターへ
@@ -65,7 +64,7 @@ Ambari から JDBC URL を確認するには:
 
 ### <a name="over-public-or-private-endpoints"></a>パブリック エンドポイントまたはプライベート エンドポイント経由
 
-パブリック エンドポイントまたはプライベート エンドポイントを使用してクラスターに接続する場合は、クラスター ログイン アカウント名 (既定値 `admin`) とパスワードを指定する必要があります。 たとえば、Beeline を使用してクライアント システムから `clustername.azurehdinsight.net` のアドレスに接続する場合です。 この接続は、ポート `443` を経由し、SSL を使用して暗号化されます。
+パブリック エンドポイントまたはプライベート エンドポイントを使用してクラスターに接続する場合は、クラスター ログイン アカウント名 (既定値 `admin`) とパスワードを指定する必要があります。 たとえば、Beeline を使用してクライアント システムから `clustername.azurehdinsight.net` のアドレスに接続する場合です。 この接続は、ポート `443` を経由し、TLS/SSL を使用して暗号化されます。
 
 `clustername` を、使用する HDInsight クラスターの名前に置き換えます。 `admin` をクラスターのクラスター ログイン アカウントに置き換えます。 ESP クラスターには、完全な UPN (例: user@domain.com) を使用します。 `password` をクラスター ログイン アカウントのパスワードに置き換えます。
 

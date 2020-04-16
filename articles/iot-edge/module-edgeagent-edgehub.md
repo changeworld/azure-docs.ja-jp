@@ -8,12 +8,12 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4684daf2a1095a40c478170be37edcae788868ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237427"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546185"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge エージェントと IoT Edge ハブのモジュール ツインのプロパティ
 
@@ -55,6 +55,7 @@ IoT Edge エージェントのモジュール ツインは `$edgeAgent` と呼�
 | modules.{moduleId}.status | {"running" \| "stopped"} | はい |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failure" \| "on-unhealthy" \| "always"} | はい |
 | modules.{moduleId}.imagePullPolicy | {"on-create" \| "never"} | いいえ |
+| modules.{moduleId}.env | モジュールに渡す環境変数の一覧。 次の形式を取ります: `"<name>": {"value": "<value>"}` | いいえ |
 | modules.{moduleId}.settings.image | モジュール イメージへの URI。 | はい |
 | modules.{moduleId}.settings.createOptions | モジュール コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | いいえ |
 | modules.{moduleId}.configuration.id | このモジュールをデプロイしたデプロイの ID。 | このプロパティは、マニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
@@ -77,7 +78,7 @@ IoT Edge エージェントの報告されるプロパティには、次の 3 �
 | プロパティ | 説明 |
 | -------- | ----------- |
 | lastDesiredVersion | この整数は、IoT Edge エージェントによって処理された必要なプロパティの最後のバージョンを参照します。 |
-| lastDesiredStatus.code | これは、IoT Edge エージェントによって表示された最後の必要なプロパティを参照する状態コードです。 許可される値: `200` 成功、`400` 無効な構成、`412` 無効なスキーマ バージョン、`417` 必要なプロパティが空、`500` 失敗 |
+| lastDesiredStatus.code | これは、IoT Edge エージェントによって表示された最後の必要なプロパティを参照する状態コードです。 使用できる値は以下の通りです。`200` 成功、`400` 無効な構成、`412` 無効なスキーマ バージョン、`417` 必要なプロパティが空、`500` 失敗 |
 | lastDesiredStatus.description | 状態のテキストでの説明 |
 | deviceHealth | `healthy` すべてのモジュールのランタイムの状態が `running` または `stopped` のどちらかである場合、`unhealthy` それ以外の場合 |
 | configurationHealth.{deploymentId}.health | `healthy` デプロイ {deploymentId} によって設定されたすべてのモジュールのランタイムの状態が `running` または `stopped` のどちらかである場合、`unhealthy` それ以外の場合 |
@@ -115,7 +116,7 @@ IoT Edge ハブのモジュール ツインは `$edgeHub` と呼ばれ、デバ�
 | プロパティ | 説明 |
 | -------- | ----------- |
 | lastDesiredVersion | この整数は、IoT Edge ハブによって処理された必要なプロパティの最後のバージョンを参照します。 |
-| lastDesiredStatus.code | IoT Edge ハブによって表示された最後の必要なプロパティを参照する状態コード。 許可される値: `200` 成功、`400` 無効な構成、`500` 失敗 |
+| lastDesiredStatus.code | IoT Edge ハブによって表示された最後の必要なプロパティを参照する状態コード。 使用できる値は以下の通りです。`200` 成功、`400` 無効な構成、`500` 失敗 |
 | lastDesiredStatus.description | 状態を説明するテキスト。 |
 | clients.{device or moduleId}.status | このデバイスまたはモジュールの接続状態。 可能性のある値 {"connected" \| "disconnected"}。 切断された状態になることができるのはモジュール ID だけです。 IoT Edge ハブに接続されるダウンストリーム デバイスは、接続されている場合にのみ表示されます。 |
 | clients.{device or moduleId}.lastConnectTime | デバイスまたはモジュールが接続された最後の時間。 |

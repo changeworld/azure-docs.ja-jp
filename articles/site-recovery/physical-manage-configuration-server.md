@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 25be48e9caed446be3a86a11143ce3040808065a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294306"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478969"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>物理サーバー ディザスター リカバリー用の構成サーバーの管理
 
@@ -108,7 +108,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 
 ### <a name="parameters"></a>パラメーター
 
-|パラメーター名| 種類 | 説明| 値|
+|パラメーター名| Type | 説明| 値|
 |-|-|-|-|
 | /ServerMode|必須|構成サーバーとプロセス サーバーの両方をインストールするか、プロセス サーバーだけをインストールするかを指定します。|CS<br>PS|
 |/InstallLocation|必須|コンポーネントがインストールされているフォルダー。| コンピューター上の任意のフォルダー|
@@ -290,8 +290,8 @@ ProxyPassword="Password"
 > [!NOTE]
 > Remove-AzSiteRecoveryFabric の **-Force** オプションを使用すると、構成サーバーを強制的に削除できます。
 
-## <a name="renew-ssl-certificates"></a>SSL 証明書を更新する
-構成サーバーには Web サーバーが組み込まれていて、この Web サーバーにより、構成サーバーに接続されたモビリティ サービス、プロセス サーバー、マスター ターゲット サーバーのアクティビティが調整されます。 Web サーバーは、SSL 証明書を使ってクライアントを認証します。 証明書は 3 年で有効期限が切れ、いつでも更新できます。
+## <a name="renew-tlsssl-certificates"></a>TLS/SSL 証明書を更新する
+構成サーバーには Web サーバーが組み込まれていて、この Web サーバーにより、構成サーバーに接続されたモビリティ サービス、プロセス サーバー、マスター ターゲット サーバーのアクティビティが調整されます。 Web サーバーは、TLS/SSL 証明書を使ってクライアントを認証します。 証明書は 3 年で有効期限が切れ、いつでも更新できます。
 
 ### <a name="check-expiry"></a>有効期限を確認する
 

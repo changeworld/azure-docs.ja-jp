@@ -3,12 +3,12 @@ title: PowerShell を使用して Azure VM をバックアップおよび復元�
 description: PowerShell を使用して Azure Backup によって Azure VM をバックアップおよび復旧する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 733a06a84aa170f1361ea74d126ec9752586fce2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d1074eea3d530b17904e2f49fba7c0d24e84e59
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226087"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743295"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
@@ -199,7 +199,7 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 既定では、開始時刻はスケジュール ポリシー オブジェクトで定義されます。 開始時刻を希望の時刻に変更するには、次の例を使用します。 希望の開始時刻も、UTC で指定する必要があります。 次の例では、毎日のバックアップの希望の開始時刻が午前 01:00 UTC であるものとします。
 
 ```powershell
-$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" -VaultId $targetVault.ID
+$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
 $UtcTime = Get-Date -Date "2019-03-20 01:00:00Z"
 $UtcTime = $UtcTime.ToUniversalTime()
 $schpol.ScheduleRunTimes[0] = $UtcTime
@@ -211,7 +211,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 次の例では、スケジュール ポリシーとアイテム保持ポリシーを変数に格納します。 次の例では、これらの変数を使用して、保護ポリシー *NewPolicy* の作成時にパラメーターを定義します。
 
 ```powershell
-$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" -VaultId $targetVault.ID
+$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "AzureVM" -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $targetVault.ID
 ```
 
@@ -324,6 +324,20 @@ Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVau
 ````
 
 既定値は 2 で、ユーザーが最小 1 から最大 5 の範囲で設定できます。 毎週のバックアップ ポリシーの場合は、期間は 5 に設定されていて、変更することはできません。
+
+#### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>スナップショットの保持中に Azure Backup リソース グループを作成する
+
+> [!NOTE]
+> Azure PS バージョン 3.7.0 以降、インスタント スナップショットを格納するためにリソース グループを作成し、編集することができます。
+
+リソース グループの作成ルールとその他の関連する詳細情報については、「[Virtual Machines の Azure Backup リソース グループ](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)」ドキュメントを参照してください。
+
+```powershell
+$bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -name "DefaultPolicyForVMs"
+$bkpPol.AzureBackupRGName="Contosto_"
+$bkpPol.AzureBackupRGNameSuffix="ForVMs"
+Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+```
 
 ### <a name="trigger-a-backup"></a>バックアップをトリガーする
 

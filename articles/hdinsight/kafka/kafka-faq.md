@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d27c648980338b3a9e12bd618eb4620fe9988fd7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206981"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436905"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight での Apache Kafka に関してよく寄せられる質問
 
@@ -50,7 +50,7 @@ HDInsight Kafka クラスターには、次のリソースが含まれていま�
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>データは暗号化されますか? 独自のキーを使用できますか?
 
-マネージド ディスク上の Kafka メッセージはすべて、[Azure Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md) を使用して暗号化されます。 既定では、転送中のデータ (たとえば、クライアントからブローカーに送信されるデータとその反対) は、暗号化されません。 [独自の SSL を設定する](./apache-kafka-ssl-encryption-authentication.md)ことによって、このようなトラフィックを暗号化できます。 さらに、HDInsight では、保存データを暗号化するために、独自のキーを管理することができます。 詳細については、「[お客様が管理するキー ディスクの暗号化](../disk-encryption.md)」を参照してください。
+マネージド ディスク上の Kafka メッセージはすべて、[Azure Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md) を使用して暗号化されます。 既定では、転送中のデータ (たとえば、クライアントからブローカーに送信されるデータとその反対) は、暗号化されません。 [独自の TLS を設定する](./apache-kafka-ssl-encryption-authentication.md)ことによって、このようなトラフィックを暗号化できます。 さらに、HDInsight では、保存データを暗号化するために、独自のキーを管理することができます。 詳細については、「[お客様が管理するキー ディスクの暗号化](../disk-encryption.md)」を参照してください。
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>クライアントを自分のクラスターに接続する方法
 
@@ -96,5 +96,5 @@ Azure Monitor を使用して [Kafka ログ](./apache-kafka-log-analytics-operat
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure HDInsight の Apache Kafka 用に Secure Sockets Layer (SSL) 暗号化および認証を設定する](./apache-kafka-ssl-encryption-authentication.md)
+* [Azure HDInsight の Apache Kafka 用に TLS 暗号化および認証を設定する](./apache-kafka-ssl-encryption-authentication.md)
 * [MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする](./apache-kafka-mirroring.md)

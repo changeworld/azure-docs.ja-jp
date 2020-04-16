@@ -4,28 +4,28 @@ description: Azure IoT Central アプリケーションから Azure Event Hubs�
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 01/30/2019
+ms.date: 04/07/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 725c5acf961fffb1fd4cf9bc17e37a5940f871cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c83c97aab43b6978922202cc96ff92e1e046a7e2
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157910"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811633"
 ---
 # <a name="export-iot-data-to-destinations-in-azure"></a>Azure で宛先に IoT データをエクスポートする
 
 *このトピックでは、管理者に適用されます。*
 
-この記事では、Azure IoT Central で連続データ エクスポートを使用して、**Azure Event Hubs**、**Azure Service Bus**、または **Azure Blob Storage** のインスタンスにデータをエクスポートする方法について説明します。 データは JSON 形式でエクスポートされ、テレメトリ、デバイス情報、デバイス テンプレート情報を含めることができます。 エクスポートされたデータは次のことに使用します。
+この記事では、Azure IoT Central のデータ エクスポート機能を使用する方法について説明します。 この機能を使用すると、データを **Azure Event Hubs**、**Azure Service Bus**、または **Azure Blob Storage** のインスタンスに継続的にエクスポートできます。 データ エクスポートでは JSON 形式が使用され、テレメトリ、デバイス情報、デバイス テンプレート情報を含めることができます。 エクスポートされたデータは次のことに使用します。
 
 - ウォーム パスの分析情報と分析。 このオプションには、Azure Stream Analytics でのカスタム ルールのトリガー、Azure Logic Apps でのカスタム ワークフローのトリガー、または変換するための Azure Functions を介した受け渡しなどが含まれます。
 - Azure Machine Learning でのモデルのトレーニングや Microsoft Power BI での長期傾向分析などのコールド パス分析。
 
 > [!Note]
-> 連続データ エクスポートを有効にすると、その時点以降のデータのみが取得されます。 現在は、連続データ エクスポートがオフになっていたときのデータを取得することはできません。 より多くの履歴データを保持するには、連続データ エクスポートを早い段階で有効にしてください。
+> データ エクスポートを有効にすると、その時点以降のデータのみが取得されます。 現在は、データ エクスポートがオフになっていたときのデータを取得することはできません。 より多くの履歴データを保持するには、データ エクスポートを早い段階で有効にしてください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +33,7 @@ ms.locfileid: "80157910"
 
 ## <a name="set-up-export-destination"></a>エクスポート先の設定
 
-連続データ エクスポートを構成する前に、エクスポート先が存在している必要があります。
+データ エクスポートを構成する前に、エクスポート先が存在している必要があります。
 
 ### <a name="create-event-hubs-namespace"></a>Event Hubs 名前空間の作成
 
@@ -52,7 +52,7 @@ ms.locfileid: "80157910"
 1. [Azure portal で新しい Service Bus 名前空間](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5)を作成します。 詳細については、[Azure Service Bus のドキュメント](../../service-bus-messaging/service-bus-create-namespace-portal.md)を参照してください。
 2. サブスクリプションを選択します。 ご使用の IoT Central アプリケーションと同じサブスクリプションではない、他のサブスクリプションにデータをエクスポートできます。 この場合、接続文字列を使用して接続します。
 
-3. Service Bus 名前空間に移動し、上部の **[+ キュー]** または **[+ トピック]** を選択して、エクスポート先のキューまたはトピックを作成します。
+3. エクスポート先のキューまたはトピックを作成するには、Service Bus 名前空間に移動し、 **[+ キュー]** または **[+ トピック]** を選択します。
 
 エクスポート先として Service Bus を選択する場合、キューとトピックでセッションまたは重複の検出が有効になっていてはいけません。 これらのオプションのいずれかが有効になっていると、一部のメッセージがキューやトピックに到着しません。
 
@@ -60,36 +60,36 @@ ms.locfileid: "80157910"
 
 エクスポート先となる既存の Azure Storage アカウントがない場合は、次の手順に従います。
 
-1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 新しい [Azure Blob Storage アカウント](https://aka.ms/blobdocscreatestorageaccount)または [Azure Data Lake Storage v2 ストレージ アカウント](../../storage/blobs/data-lake-storage-quickstart-create-account.md)の作成の詳細を確認できます。 データのエクスポートでは、ブロック BLOB をサポートするストレージ アカウントにのみデータを書き込めます。 次に、互換性のある既知のストレージ アカウントの種類の一覧を示します。 
+1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 新しい [Azure Blob ストレージ アカウント](https://aka.ms/blobdocscreatestorageaccount)または [Azure Data Lake Storage v2 ストレージ アカウント](../../storage/blobs/data-lake-storage-quickstart-create-account.md)の作成の詳細を確認できます。 データのエクスポートでは、ブロック BLOB をサポートするストレージ アカウントにのみデータを書き込めます。 次の一覧は、互換性のある既知のストレージ アカウントの種類を示しています。
 
     |パフォーマンス レベル|アカウントの種類|
     |-|-|
     |Standard|General Purpose V2|
     |Standard|General Purpose V1|
-    |Standard|Blob Storage|
+    |Standard|BLOB ストレージ|
     |Premium|ブロック BLOB ストレージ|
 
 2. ご自分のストレージ アカウントでコンテナーを作成します。 ストレージ アカウントに移動します。 **[Blob service]** で **[BLOB の参照]** を選択します。 上部の **[+ コンテナー]** を選択して、新しいコンテナーを作成します。
 
-## <a name="set-up-continuous-data-export"></a>連続データ エクスポートを設定する
+## <a name="set-up-data-export"></a>データ エクスポートの設定
 
-これでデータのエクスポート先ができたので、次の手順に従って連続データ エクスポートを設定します。
+これでデータのエクスポート先ができたので、次の手順に従ってデータ エクスポートを設定します。
 
 1. ご使用の IoT Central アプリケーションにサインインします。
 
 2. 左側のペインで、 **[データのエクスポート]** を選択します。
 
-    > [!Note]
-    > 左側のペインに [データのエクスポート] が表示されない場合は、アプリでデータ エクスポートを構成するアクセス許可がありません。 データ エクスポートの設定について、管理者に問い合わせてください。
+    > [!Tip]
+    > 左側のペインに **[データのエクスポート]** が表示されない場合は、アプリでデータ エクスポートを構成するアクセス許可がありません。 データ エクスポートの設定について、管理者に問い合わせてください。
 
 3. 右上の **[+ 新規]** ボタンを選択します。 エクスポート先として、**Azure Event Hubs**、**Azure Service Bus**、または **Azure Blob Storage** のいずれかを選択します。 アプリケーションごとのエクスポートの最大数は 5 です。
 
-    ![新しい継続的データ エクスポートの作成](media/howto-export-data/new-export-definition.png)
+    ![新しいデータ エクスポートを作成する](media/howto-export-data/new-export-definition.png)
 
 4. ドロップダウン リスト ボックスで、**Event Hubs 名前空間**、**Service Bus 名前空間**、**Storage Account 名前空間**、または **[接続文字列を入力してください]** を選択します。
 
-    - ご使用の IoT Central アプリケーションと同じサブスクリプション内の Storage Account、Event Hubs 名前空間、Service Bus 名前空間のみが表示されます。 このサブスクリプションとは異なる場所にエクスポートする場合は、 **[Enter a connection string]\(接続文字列を入力する\)** を選択して、手順 5 に進みます。
-    - 無料プランを使用して作成されたアプリで連続データ エクスポートを構成する唯一の方法は、接続文字列を使用することです。 無料プランのアプリには、関連付けられた Azure サブスクリプションがありません。
+    - ご使用の IoT Central アプリケーションと同じサブスクリプション内のストレージ アカウント、Event Hubs 名前空間、Service Bus 名前空間のみが表示されます。 このサブスクリプションとは異なる場所にエクスポートする場合は、 **[Enter a connection string]\(接続文字列を入力する\)** を選択して、次の手順に進みます。
+    - 無料プランを使用して作成されたアプリでデータ エクスポートを構成する唯一の方法は、接続文字列を使用することです。 無料プランのアプリには、関連付けられた Azure サブスクリプションがありません。
 
     ![新しい Event Hub を作成する](media/howto-export-data/export-event-hub.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "80157910"
 
 7. **[エクスポートするデータ]** で、種類を **[オン]** に設定して、エクスポートするデータの種類を選択します。
 
-8. 連続データ エクスポートを有効にするには、 **[有効]** トグルが **[オン]** になっていることを確認します。 **[保存]** を選択します。
+8. データ エクスポートを有効にするには、 **[有効]** トグルが **[オン]** になっていることを確認します。 **[保存]** を選択します。
 
 9. 数分後に、選択したエクスポート先にデータが表示されます。
 
@@ -114,7 +114,7 @@ ms.locfileid: "80157910"
 
 エクスポートされたテレメトリ データには、テレメトリ値自体だけでなく、デバイスが IoT Central に送信したメッセージ全体が含まれています。 エクスポートされたデバイス データには、すべてのデバイスのプロパティとメタデータに対する変更が含まれており、エクスポートされたデバイス テンプレートには、すべてのデバイス テンプレートに対する変更が含まれています。
 
-Event Hubs と Service Bus では、データはほぼリアルタイムでエクスポートされます。 データは body プロパティに入り、JSON 形式になります (例については、以下を参照)。
+Event Hubs と Service Bus では、データはほぼリアルタイムでエクスポートされます。 データは `body` プロパティ内にあり、JSON 形式になっています。 次の例を参照してください。
 
 Blob Storage の場合、データは 1 分に 1 回エクスポートされ、各ファイルには、最後にエクスポートされたファイル以降の変更のバッチが含まれます。 エクスポートされたデータは、JSON 形式で 3 つのフォルダーに配置されます。 ストレージ アカウントでの既定のパスは次のとおりです。
 
@@ -122,50 +122,38 @@ Blob Storage の場合、データは 1 分に 1 回エクスポートされ、�
 - デバイス: _{container}/{app-id}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
 - デバイス テンプレート: _{container}/{app-id}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
 
-Azure portal でエクスポートされたファイルを参照するには、ファイルに移動し、 **[BLOB の編集]** タブを選択します。
-
+Azure portal でエクスポートされたファイルを参照するには、そのファイルに移動し、 **[BLOB の編集]** タブを選択します。
 
 ## <a name="telemetry"></a>テレメトリ
 
-Event Hubs と Service Bus の場合、IoT Central がデバイスからメッセージを受信すると新しいメッセージが直ちにエクスポートされ、エクスポートされた各メッセージには、デバイスが body プロパティで送信した完全なメッセージが JSON 形式で含まれています。
+Event Hubs と Service Bus の場合、IoT Central は、デバイスからメッセージを受信した後、すぐに新しいメッセージをエクスポートします。 エクスポートされた各メッセージには、デバイスが body プロパティで送信した完全なメッセージが JSON 形式で含まれています。
 
-Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 回エクスポートされます。 エクスポートされたファイルでは、[IoT Hub メッセージ ルーティング](../../iot-hub/tutorial-routing.md)によって Blob Storage にエクスポートされたメッセージ ファイルと同じ形式が使用されます。 
+Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 回エクスポートされます。 エクスポートされたファイルでは、[IoT Hub メッセージ ルーティング](../../iot-hub/tutorial-routing.md)によって Blob Storage にエクスポートされたメッセージ ファイルと同じ形式が使用されます。
 
 > [!NOTE]
-> Blob Storage の場合、デバイスが `contentType: application/JSON` と `contentEncoding:utf-8` (または `utf-16`、`utf-32`) を持つメッセージを送信していることを確認してください。 例については、[IoT Hub のドキュメント](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body)を参照してください。
+> Blob Storage の場合、デバイスが、`contentType: application/JSON` と `contentEncoding:utf-8` (または `utf-16`、`utf-32`) を持つメッセージを送信していることを確認してください。 例については、[IoT Hub のドキュメント](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body)を参照してください。
 
 テレメトリを送信したデバイスは、デバイス ID で表されます (以下のセクションを参照)。 デバイスの名前を取得するには、デバイスのデータをエクスポートし、デバイス メッセージの **deviceId** と一致する **connectionDeviceId** を使用して各メッセージを関連付けます。
 
-これは、イベント ハブまたは Service Bus のキューまたはトピックで受信したメッセージの例です。
+次の例は、イベント ハブまたは Service Bus のキューまたはトピックから受信したメッセージを示しています。
 
 ```json
 {
-  "body":{
-    "temp":67.96099945281145,
-    "humid":58.51139305465015,
-    "pm25":36.91162432340187
-  },
-  "annotations":{
-    "iothub-connection-device-id":"<deviceId>",
-    "iothub-connection-auth-method":"{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-    "iothub-connection-auth-generation-id":"<generationId>",
-    "iothub-enqueuedtime":1539381029965,
-    "iothub-message-source":"Telemetry",
-    "x-opt-sequence-number":25325,
-    "x-opt-offset":"<offset>",
-    "x-opt-enqueued-time":1539381030200
-  },
-  "sequenceNumber":25325,
-  "enqueuedTimeUtc":"2018-10-12T21:50:30.200Z",
-  "offset":"<offset>",
-  "properties":{
-    "content_type":"application/json",
-    "content_encoding":"utf-8"
-  }
+  "temp":81.129693132351775,
+  "humid":59.488071477541247,
+  "EventProcessedUtcTime":"2020-04-07T09:41:15.2877981Z",
+  "PartitionId":0,
+  "EventEnqueuedUtcTime":"2020-04-07T09:38:32.7380000Z"
 }
 ```
 
-次に、Blob Storage にエクスポートされたレコードの例を示します。
+このメッセージには、送信元デバイスのデバイス ID は含まれていません。
+
+Azure Stream Analytics クエリのメッセージ データからデバイス ID を取得するには、[GetMetadataPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) 関数を使用します。 たとえば、「[Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する](./howto-create-custom-rules.md)」のクエリを参照してください。
+
+Azure Databricks または Apache Spark のワークスペースでデバイス ID を取得するには、[systemProperties](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md) を使用します。 たとえば、「[Azure Databricks を使用したカスタム分析で Azure IoT Central を拡張する](./howto-create-custom-analytics.md)」の Databricks ワークスペースを参照してください。
+
+次の例は、Blob Storage にエクスポートされるレコードを示しています。
 
 ```json
 {
@@ -191,7 +179,7 @@ Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 �
 
 ## <a name="devices"></a>デバイス
 
-スナップショット内の各メッセージまたはレコードは、最後にエクスポートされたメッセージ以降に、そのデバイスとクラウドのプロパティに加えられた 1 つ以上の変更を表しています。 これには次のものが含まれます
+スナップショット内の各メッセージまたはレコードは、最後にエクスポートされたメッセージ以降に、そのデバイスとクラウドのプロパティに加えられた 1 つ以上の変更を表しています。 メッセージには以下が含まれています。
 
 - `id` IoT Central でデバイスの
 - デバイスの `displayName`
@@ -204,11 +192,11 @@ Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 �
 
 削除されたデバイスはエクスポートされません。 現在のところ、エクスポートされたメッセージ内に、削除されたデバイスを示すものはありません。
 
-Event Hubs と Service Bus の場合、デバイス データを含むメッセージは、IoT Central に表示されるように、ほぼリアルタイムでイベント ハブまたは Service Bus のキューまたはトピックに送信されます。 
+Event Hubs と Service Bus の場合、IoT Central はデバイス データを含むメッセージをほぼリアルタイムでイベント ハブまたは Service Bus のキューまたはトピックに送信します。
 
 Blob Storage の場合は、最後のものが書き込まれてから以降のすべての変更を含む新しいスナップショットが 1 分間に 1 回エクスポートされます。
 
-次に示すのは、イベント ハブまたは Service Bus のキューまたはトピック内のデバイスとプロパティ データに関するメッセージの例です。
+次のメッセージの例は、イベント ハブまたは Service Bus のキューまたはトピック内のデバイスとプロパティ データに関する情報を示しています。
 
 ```json
 {
@@ -262,7 +250,7 @@ Blob Storage の場合は、最後のものが書き込まれてから以降の�
 }
 ```
 
-Blob Storage のデバイスとプロパティ データを含むスナップショットの例を次に示します。 エクスポートされたファイルには、1 つのレコードにつき 1 行が含まれます。
+このスナップショットは、Blob Storage のデバイスとプロパティ データを示すメッセージの例です。 エクスポートされたファイルには、1 つのレコードにつき 1 行が含まれます。
 
 ```json
 {
@@ -307,7 +295,7 @@ Blob Storage のデバイスとプロパティ データを含むスナップシ
 
 各メッセージまたはスナップショット レコードは、最後にエクスポートされたメッセージ以降に公開されたデバイス テンプレートに加えられた 1 つ以上の変更を表しています。 各メッセージまたはレコードで送信される情報としては、次のものがあります。
 
-- 上記のデバイス ストリームの `id` に一致するデバイス テンプレートの `instanceOf`
+- 上記のデバイス ストリームの `instanceOf` に一致するデバイス テンプレートの `id`
 - デバイス テンプレートの`displayName`
 - デバイスの `capabilityModel` (その `interfaces` を含む)、テレメトリ、プロパティ、およびコマンドの定義
 - `cloudProperties` の定義
@@ -315,11 +303,11 @@ Blob Storage のデバイスとプロパティ データを含むスナップシ
 
 削除されたデバイス テンプレートはエクスポートされません。 現在のところ、エクスポートされたメッセージ内に、削除されたデバイス テンプレートを示すものはありません。
 
-Event Hubs と Service Bus の場合、デバイス テンプレート データを含むメッセージは、IoT Central に表示されるように、ほぼリアルタイムでイベント ハブまたは Service Bus のキューまたはトピックに送信されます。 
+Event Hubs と Service Bus の場合、IoT Central はデバイス テンプレート データを含むメッセージをほぼリアルタイムでイベント ハブまたは Service Bus のキューまたはトピックに送信します。
 
 Blob Storage の場合は、最後のものが書き込まれてから以降のすべての変更を含む新しいスナップショットが 1 分間に 1 回エクスポートされます。
 
-次に示すのは、イベント ハブまたは Service Bus のキューまたはトピック内のデバイス テンプレート データに関するメッセージの例です。
+この例は、イベント ハブまたは Service Bus のキューまたはトピック内にあるデバイス テンプレート データに関するメッセージを示しています。
 
 ```json
 {
@@ -444,7 +432,7 @@ Blob Storage の場合は、最後のものが書き込まれてから以降の�
 }
 ```
 
-Blob Storage のデバイスとプロパティ データを含むスナップショットの例を次に示します。 エクスポートされたファイルには、1 つのレコードにつき 1 行が含まれます。
+このスナップショットの例では、Blob Storage のデバイスとプロパティ データを含むメッセージが表示されています。 エクスポートされたファイルには、1 つのレコードにつき 1 行が含まれます。
 
 ```json
 {
@@ -554,15 +542,16 @@ Blob Storage のデバイスとプロパティ データを含むスナップシ
       }
   }
 ```
+
 ## <a name="data-format-change-notice"></a>データ形式の変更に関する通知
 
 > [!Note]
 > テレメトリ ストリームのデータ形式はこの変更の影響を受けません。 デバイスとデバイス テンプレートのデータ ストリームのみが影響を受けます。
 
-"*デバイス*" と "*デバイス テンプレート*" のストリームが有効になっているプレビュー アプリケーションに既存のデータ エクスポートがある場合は、**2020 年 6 月 30 日**までにエクスポートを更新する必要があります。 これは、Azure Blob Storage、Azure Event Hubs、および Azure Service Bus へのエクスポートに適用されます。
+"*デバイス*" と "*デバイス テンプレート*" のストリームが有効になっているプレビュー アプリケーションに既存のデータ エクスポートがある場合は、**2020 年 6 月 30 日**までにそのエクスポートを更新してください。 この要件は、Azure Blob Storage、Azure Event Hubs、および Azure Service Bus へのエクスポートに適用されます。
 
-2020 年 2 月 3 日以降、デバイスとデバイス テンプレートが有効になっているアプリケーションの新しいすべてのエクスポートに、上記のデータ形式が使用されます。 これより前に作成されたすべてのエクスポートは、2020 年 6 月 30 日までは古いデータ形式のままになります。その後、これらのエクスポートは新しいデータ形式に自動的に移行されます。 新しいデータ形式は、IoT Central パブリック API 内の[デバイス](https://docs.microsoft.com/rest/api/iotcentral/devices/get)、[デバイス プロパティ](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties)、[デバイス クラウド プロパティ](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)および[デバイス テンプレート](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get)のオブジェクトと一致します。 
- 
+2020 年 2 月 3 日以降、デバイスとデバイス テンプレートが有効になっているアプリケーションの新しいすべてのエクスポートに、上記のデータ形式が使用されます。 この日付より前に作成されたすべてのエクスポートは、2020 年 6 月 30 日までは古いデータ形式のままになります。この時点で、これらのエクスポートは新しいデータ形式に自動的に移行されます。 新しいデータ形式は、IoT Central パブリック API 内の[デバイス](https://docs.microsoft.com/rest/api/iotcentral/devices/get)、[デバイス プロパティ](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties)、[デバイス クラウド プロパティ](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)および[デバイス テンプレート](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get)のオブジェクトと一致します。
+
 **デバイス**については、古いデータ形式と新しいデータ形式の間で主に次のような違いがあります。
 - デバイスの `@id` は削除され、`deviceId` の名前は `id` に変更されます 
 - デバイスのプロビジョニングの状態を示す `provisioned` フラグが追加されます
@@ -575,6 +564,7 @@ Blob Storage のデバイスとプロパティ データを含むスナップシ
 - デバイス テンプレートの `@type` の名前が `types` に変更され、配列になりました
 
 ### <a name="devices-format-deprecated-as-of-3-february-2020"></a>デバイス (2020 年 2 月 3 日時点で非推奨とされた形式)
+
 ```json
 {
   "@id":"<id-value>",
@@ -620,6 +610,7 @@ Blob Storage のデバイスとプロパティ データを含むスナップシ
 ```
 
 ### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>デバイス テンプレート (2020 年 2 月 3 日時点で非推奨とされた形式)
+
 ```json
 {
   "@id":"<template-id>",
@@ -751,6 +742,7 @@ Blob Storage のデバイスとプロパティ データを含むスナップシ
   }
 }
 ```
+
 ## <a name="next-steps"></a>次のステップ
 
 これで、Azure Event Hubs、Azure Service Bus、および Azure Blob Storage にデータをエクスポートする方法がわかったので、次の手順に進みます。

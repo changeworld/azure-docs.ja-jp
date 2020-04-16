@@ -1,5 +1,5 @@
 ---
-title: Microsoft ID プラットフォームの ID トークン リファレンス | Microsoft Docs
+title: Microsoft ID プラットフォームの ID トークン リファレンス
 description: Azure AD v1.0 および Microsoft ID プラットフォーム (v2.0) のエンドポイントによって生成される id_token の使用方法について説明します。
 services: active-directory
 author: rwike77
@@ -9,16 +9,16 @@ ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.author: ryanwi
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 1efd027edb85cabcfdc2a170771ef19182b5c9f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23ff71bf24c3acbce3d27276981739305e1d074a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160952"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309553"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft ID プラットフォームの ID トークン
 

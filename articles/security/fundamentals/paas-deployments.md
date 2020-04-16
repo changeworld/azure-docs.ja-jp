@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0643ae792c890b65f239d9a0c16a05639dd4f8b9
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77138028"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811475"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -101,7 +101,7 @@ Microsoft [セキュリティ開発ライフ サイクル (Security Development 
 | Threat | セキュリティ プロパティ | 潜在的な Azure プラットフォームの軽減策 |
 | --- | --- | --- |
 | なりすまし | 認証 | HTTPS 接続を要求する。 |
-| 改ざん | 整合性 | SSL 証明書を検証する。 |
+| 改ざん | 整合性 | TLS または SSL 証明書を検証する。 |
 | 否認 | 否認防止 | Azure の[監視と診断](/azure/architecture/best-practices/monitoring)を有効にする。 |
 | 情報漏えい | 機密情報 | [サービス証明書](/rest/api/appservice/certificates)を使用して保存データを暗号化する。 |
 | Denial of service (サービス拒否) | 可用性 | 潜在的なサービス拒否状態のパフォーマンス メトリックを監視する。 接続のフィルターを実装する。 |

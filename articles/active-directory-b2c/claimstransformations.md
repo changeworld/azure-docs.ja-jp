@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e71d521dce40f6a8ec81286fcc95dc97bf10078c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a919996d00f8ef3fa00109944b60d53b63d95ff
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189738"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529130"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -35,7 +35,7 @@ ms.locfileid: "78189738"
 
 **ClaimsTransformation** 要素には、次の属性が含まれています。
 
-| Attribute |必須 | 説明 |
+| 属性 |Required | 説明 |
 | --------- |-------- | ----------- |
 | Id |はい | 要求変換を一意に識別するために使用される識別子。 識別子は、ポリシー内の他の XML 要素から参照されます。 |
 | TransformationMethod | はい | 要求変換で使用する変換メソッド。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#claims-transformations-reference)を確認してください。 |
@@ -69,7 +69,7 @@ ms.locfileid: "78189738"
 
 **InputClaims** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | 予想される入力要求の種類。 |
 
@@ -77,7 +77,7 @@ ms.locfileid: "78189738"
 
 **InputClaim** 要素には、次の属性が含まれています。
 
-| Attribute |必須 | 説明 |
+| 属性 |Required | Description |
 | --------- | ----------- | ----------- |
 | ClaimTypeReferenceId |はい | ポリシー内の ClaimsSchema セクションに既に定義されている ClaimType への参照。 |
 | TransformationClaimType |はい | 変換要求の種類を参照する識別子。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#claims-transformations-reference)を確認してください。 |
@@ -92,17 +92,17 @@ ms.locfileid: "78189738"
 
 #### <a name="inputparameter"></a>InputParameter
 
-| Attribute | 必須 |説明 |
+| 属性 | Required |説明 |
 | --------- | ----------- |----------- |
 | Id | はい | 要求変換メソッドのパラメーターへの参照である識別子。 各要求変換メソッドは、独自の値を持ちます。 使用可能な値の完全なリストについては、要求変換の表を参照してください。 |
 | DataType | はい | カスタム ポリシー XML スキーマの DataType エミュレーションに従った、文字列、ブール値、Int、または DateTime などの、パラメーターのデータ型。 この型は、算術演算を正しく行うために使用されます。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#claims-transformations-reference)を確認してください。 |
-| 値 | はい | 変換に逐語的に渡される値。 一部の値は任意ですが、一部の値は要求変換メソッドから選択します。 |
+| Value | はい | 変換に逐語的に渡される値。 一部の値は任意ですが、一部の値は要求変換メソッドから選択します。 |
 
 ### <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0:n | 予想される出力要求の種類。 |
 
@@ -110,7 +110,7 @@ ms.locfileid: "78189738"
 
 **OutputClaim** 要素には、次の属性が含まれています。
 
-| Attribute |必須 | 説明 |
+| 属性 |Required | Description |
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | はい | ポリシー内の ClaimsSchema セクションに既に定義されている ClaimType への参照。
 | TransformationClaimType | はい | 変換要求の種類を参照する識別子。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#claims-transformations-reference)を確認してください。 |
@@ -163,6 +163,7 @@ ms.locfileid: "78189738"
 - [Date](date-transformations.md)
 - [整数](integer-transformations.md)
 - [JSON](json-transformations.md)
+- [電話番号](phone-number-claims-transformations.md)
 - [全般](general-transformations.md)
 - [ソーシャル アカウント](social-transformations.md)
 - [String](string-transformations.md)

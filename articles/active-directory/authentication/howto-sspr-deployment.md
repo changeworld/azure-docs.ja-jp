@@ -1,6 +1,6 @@
 ---
-title: セルフサービス パスワード リセット のデプロイ - Azure Active Directory
-description: Azure AD のセルフサービス パスワード リセット を正常にデプロイするための戦略
+title: Azure Active Directory のセルフサービス パスワード リセットのデプロイに関する考慮事項
+description: Azure AD のセルフサービス パスワード リセットの実装を成功させるためのデプロイに関する考慮事項と戦略について説明します
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,27 +11,34 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 785a8a031a10232a37b235711ba919fdc1df35d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c11521ec074b63843b873c39102b68bf185d2821
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77061423"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676742"
 ---
-# <a name="plan-an-azure-active-directory-self-service-password-reset"></a>Azure Active Directory のセルフサービス パスワード リセットを計画する
+# <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory のセルフサービス パスワード リセットのデプロイを計画する
 
-> [!NOTE]
-> このデプロイ計画は、Azure AD セルフサービス パスワード リセット (SSPR) をデプロイするための計画ガイダンスとベスト プラクティスを提供します。 <br>**アカウントを回復するために SSPR ツールを探している場合は、[https://aka.ms/sspr](https://aka.ms/sspr)** にアクセスしてください。
+> [!IMPORTANT]
+> このデプロイ計画は、Azure AD セルフサービス パスワード リセット (SSPR) をデプロイするためのガイダンスとベスト プラクティスを提供します。
+>
+> **自分がエンド ユーザーであり、自分のアカウントに戻す必要がある場合は、[https://aka.ms/sspr](https://aka.ms/sspr)** にアクセスしてください。
 
-Azure Active Directory の機能である[セルフサービス パスワード リセット (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) を使用すると、ユーザーは自分のパスワードをリセットすることができ、IT スタッフにヘルプを依頼する必要はありません。 ユーザーは場所や時間に関係なく、自分ですぐにブロックを解除して作業を続けることができます。 従業員が自分自身のブロックを解除できるようにすることで、組織としては、パスワード関連のほとんどの一般的な問題に対する非生産的な時間と高いサポート コストを削減できます。 
+Azure Active Directory の機能である[セルフサービス パスワード リセット (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) を使用すると、ユーザーは自分のパスワードをリセットすることができ、IT スタッフにヘルプを依頼する必要はありません。 ユーザーは場所や時間に関係なく、自分ですぐにブロックを解除して作業を続けることができます。 従業員が自分自身のブロックを解除できるようにすることで、組織としては、パスワード関連のほとんどの一般的な問題に対する非生産的な時間と高いサポート コストを削減できます。
 
 SSPR の主な機能は次のとおりです。
 
 * セルフサービスを使用すると、エンド ユーザーは、管理者またはヘルプデスクにサポートを求めなくても、期限切れまたは期限切れではないパスワードをリセットできます。
-
 * [パスワード ライトバック](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)を使用すると、クラウドを介してオンプレミスのパスワードを管理し、アカウントのロックアウトを解決することができます。
-
 * パスワード管理アクティビティ レポートでは、組織内で発生したパスワードのリセットおよび登録アクティビティの詳細が管理者に提供されます。
+
+このデプロイ ガイドでは、SSPR のロールアウトを計画してテストする方法について説明します。
+
+まず、SSPR の動作の概要を確認してから、デプロイに関するその他の考慮事項について説明します。
+
+> [!div class="nextstepaction"]
+> [セルフサービス パスワード リセット (SSPR) を有効にする](tutorial-enable-sspr.md)
 
 ## <a name="learn-about-sspr"></a>SSPR の詳細
 
@@ -213,7 +220,7 @@ SSPR が有効になっている場合、ユーザーが自分のパスワード
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>複数の ID 管理システムがある環境
 
-環境によっては、複数の ID 管理システムが存在する場合があります。 Oracle AM や SiteMinder などのオンプレミスの ID マネージャーは、パスワードを AD の同期させる必要があります。 これは、Microsoft Identity Manager (MIM) を使用したパスワード変更通知サービス (PCNS) のようなツールを使用することで実行できます。 このより複雑なシナリオについては、「[ドメイン コントローラーに MIM パスワード変更通知サービスを展開する](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)」をご覧ください。
+環境によっては、複数の ID 管理システムが存在する場合があります。 Oracle AM や SiteMinder などのオンプレミスの ID マネージャーでは、パスワードについて AD との同期が必要です。 これは、Microsoft Identity Manager (MIM) を使用したパスワード変更通知サービス (PCNS) のようなツールを使用することで実行できます。 このより複雑なシナリオについては、「[ドメイン コントローラーに MIM パスワード変更通知サービスを展開する](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)」をご覧ください。
 
 ## <a name="plan-testing-and-support"></a>テストとサポートを計画する
 
@@ -245,7 +252,7 @@ SSPR が有効になっている場合、ユーザーが自分のパスワード
 
 通常、SSPR ではユーザーの問題は発生しませんが、発生する可能性のある問題に対応できるようサポート スタッフを準備することが重要です。 管理者は Azure AD ポータルでエンド ユーザーのパスワードをリセットできますが、セルフサービス サポート プロセスを通して問題の解決を支援することをお勧めします。
 
-サポート チームが成功できるように、ユーザーから受け取った質問に基づいて、FAQ を作成できます。 次に例をいくつか示します。
+お客様のサポート チームが成功できるように、ユーザーから受け取った質問に基づいて、FAQ を作成できます。 次に例をいくつか示します。
 
 | シナリオ| 説明 |
 | - | - |
@@ -255,7 +262,7 @@ SSPR が有効になっている場合、ユーザーが自分のパスワード
 | ユーザーは新しいパスワードを設定できない| ユーザーは、パスワード リセット フローで検証を完了しましたが、新しいパスワードを設定できません。 |
 | ユーザーの Windows 10 デバイスに [パスワードのリセット] リンクが表示されない| ユーザーは、Windows 10 のロック画面からパスワードをリセットしようとしていますが、デバイスが Azure AD に参加していないか、または Intune デバイス ポリシーが有効になっていません |
 
-### <a name="plan-roll-back"></a>ロールバックを計画する
+### <a name="plan-rollback"></a>ロールバックを計画する
 
 デプロイをロールバックするには:
 
@@ -295,7 +302,7 @@ SSPR が有効になっている場合、ユーザーが自分のパスワード
 1. [オンプレミスの統合](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback)
 
 ### <a name="enable-sspr-in-windows"></a>Windows で SSPR を有効にする
-Windows 7、8、8.1、および 10 を実行中のコンピューターでは、[Windows のログイン画面でユーザーが自分のパスワードをリセットできるように設定する](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows)ことができます
+Windows 7、8、8.1、および 10 を実行中のコンピューターでは、[Windows のサインイン画面でユーザーが自分のパスワードをリセットできるように設定する](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows)ことができます
 
 ## <a name="manage-sspr"></a>SSPR を管理する
 
@@ -336,7 +343,7 @@ Azure portal で構築済みのレポートを使用して、SSPR のパフォ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* SSPR のデプロイを開始するには、[Azure AD のセルフサービス パスワード リセットのパイロット展開の完了](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot)に関するページを参照してください
+* SSPR のデプロイを開始するには、[Azure AD のセルフサービス パスワード リセット を有効にする](tutorial-enable-sspr.md)に関するページを参照してください
 
 * [Azure AD のパスワード保護の実装を検討する](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
 

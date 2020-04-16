@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a9f12849525daeea69ece6e81077446f062e8889
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: f5588503825281f407ddbbc2c1c57cd94a9c7ee6
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384400"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804709"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
 
@@ -24,7 +24,9 @@ ms.locfileid: "80384400"
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Azure AD 管理者ユーザーを設定する
 
-Azure AD ベースの認証用にユーザーを作成/有効化できるのは、Azure AD 管理者ユーザーだけです。 Azure AD 管理者ユーザーを作成するには、次の手順に従います
+Azure AD ベースの認証用にユーザーを作成/有効化できるのは、Azure AD 管理者ユーザーだけです。 Azure AD 管理者は、管理者特権 (CREATEDB など) を持つため、通常のデータベース操作には使用しないことをお勧めします。
+
+Azure AD 管理者 (ユーザーまたはグループを使用できます) を設定するには、次の手順に従ってください。
 
 1. Azure portal で、Azure AD に対して有効にする Azure Database for PostgreSQL のインスタンスを選択します。
 2. [設定] で、[Active Directory 管理者] を選択します。
@@ -37,36 +39,6 @@ Azure AD ベースの認証用にユーザーを作成/有効化できるのは�
 > 管理者を設定すると、管理者の完全なアクセス許可を持つ新しいユーザーが Azure Database for PostgreSQL サーバーに追加されます。 Azure Database for PostgreSQL の Azure AD 管理者ユーザーは、ロール `azure_ad_admin` を持ちます。
 
 作成できる Azure AD 管理者は、PostgreSQL サーバーあたり 1 人だけです。別の管理者を選択すると、そのサーバーに構成されている既存の Azure AD 管理者が上書きされます。 個々のユーザーではなく、Azure AD グループを指定して、複数の管理者を持つことができます。 その後、管理目的には、グループ名を使用してサインインすることに注意してください。
-
-## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL で Azure AD ユーザーを作成する
-
-Azure Database for PostgreSQL データベースに Azure AD ユーザーを追加するには、接続後に次の手順を実行します (接続方法については、後述のセクションを参照してください)。
-
-1. まず、Azure AD ユーザー `<user>@yourtenant.onmicrosoft.com` が Azure AD テナントの有効なユーザーであることを確認します。
-2. Azure AD 管理者ユーザーとして Azure Database for PostgreSQL インスタンスにサインインします。
-3. Azure Database for PostgreSQL でロール `<user>@yourtenant.onmicrosoft.com` を作成します。
-4. `<user>@yourtenant.onmicrosoft.com` をロール azure_ad_user のメンバーにします。 これは、Azure AD ユーザーにのみ付与する必要があります。
-
-**例:**
-
-```sql
-CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
-```
-
-> [!NOTE]
-> Azure AD を通じてユーザーを認証しても、Azure Database for PostgreSQL データベース内のオブジェクトにアクセスするためのアクセス許可はユーザーに付与されません。 必要なアクセス許可をユーザーに手動で付与する必要があります。
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL で Azure AD グループを作成する
-
-Azure AD グループがデータベースにアクセスできるようにするには、ユーザーの場合と同じメカニズムを使用しますが、代わりにグループ名を指定します。
-
-**例:**
-
-```sql
-CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
-```
-
-ログインするときに、グループのメンバーは自分の個人用アクセス トークンを使用しますが、ユーザー名として指定されたグループ名でサインインします。
 
 ## <a name="connecting-to-azure-database-for-postgresql-using-azure-ad"></a>Azure AD を使用して Azure Database for PostgreSQL に接続する
 
@@ -167,6 +139,36 @@ psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgre
 ```
 
 これで、Azure AD 認証を使用して PostgreSQL サーバーに対して認証されました。
+
+## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL で Azure AD ユーザーを作成する
+
+Azure Database for PostgreSQL データベースに Azure AD ユーザーを追加するには、接続後に次の手順を実行します (接続方法については、後述のセクションを参照してください)。
+
+1. まず、Azure AD ユーザー `<user>@yourtenant.onmicrosoft.com` が Azure AD テナントの有効なユーザーであることを確認します。
+2. Azure AD 管理者ユーザーとして Azure Database for PostgreSQL インスタンスにサインインします。
+3. Azure Database for PostgreSQL でロール `<user>@yourtenant.onmicrosoft.com` を作成します。
+4. `<user>@yourtenant.onmicrosoft.com` をロール azure_ad_user のメンバーにします。 これは、Azure AD ユーザーにのみ付与する必要があります。
+
+**例:**
+
+```sql
+CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
+```
+
+> [!NOTE]
+> Azure AD を通じてユーザーを認証しても、Azure Database for PostgreSQL データベース内のオブジェクトにアクセスするためのアクセス許可はユーザーに付与されません。 必要なアクセス許可をユーザーに手動で付与する必要があります。
+
+## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL で Azure AD グループを作成する
+
+Azure AD グループがデータベースにアクセスできるようにするには、ユーザーの場合と同じメカニズムを使用しますが、代わりにグループ名を指定します。
+
+**例:**
+
+```sql
+CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
+```
+
+ログインするときに、グループのメンバーは自分の個人用アクセス トークンを使用しますが、ユーザー名として指定されたグループ名でサインインします。
 
 ## <a name="token-validation"></a>トークンの検証
 

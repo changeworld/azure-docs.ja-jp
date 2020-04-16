@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/21/2019
-ms.openlocfilehash: e641340ac04415ee4a20cda2bc09bbdbef9802a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 796dbc53d1adf310028e06dea319b9a60d5cf54b
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233639"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529346"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>ブートストラップを使って HDInsight クラスターをカスタマイズする
 
@@ -55,7 +55,7 @@ HDInsight クラスターの作成時に構成ファイル設定を指定する�
 次の PowerShell コードでは、[Apache Hive](https://hive.apache.org/) 構成をカスタマイズします。
 
 > [!IMPORTANT]  
-> `Spark2Defaults`Add-Add-AzHDInsightConfigValue[ と共にパラメーター ](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue) を使うことが必要な場合があります。 以下のコード例に示すように、パラメーターに空の値を渡すことができます。
+> [Add-Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue) と共にパラメーター `Spark2Defaults` を使うことが必要な場合があります。 以下のコード例に示すように、パラメーターに空の値を渡すことができます。
 
 ```powershell
 # hive-site.xml configuration
@@ -126,14 +126,26 @@ Resource Manager テンプレートでは、ブートストラップを使用で
 
 ![Hadoop でクラスター ブートストラップの Azure Resource Manager テンプレートをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
-## <a name="see-also"></a>参照
+定期的にイベント ログをストレージからクリーンアップするように spark2-defaults の構成を切り替える Resource Manager テンプレート スニペットの例を次に示します。  
+
+```json
+"configurations": {
+    "spark2-defaults": {
+        "spark.history.fs.cleaner.enabled": "true",
+        "spark.history.fs.cleaner.interval": "7d",
+        "spark.history.fs.cleaner.maxAge": "90d"
+    }
+}
+```
+
+## <a name="see-also"></a>関連項目
 
 * [HDInsight での Apache Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関する記事では、その他のカスタム オプションを使用して HDInsight クラスターを作成する方法について説明しています。
 * [HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions-linux.md)
 * [HDInsight クラスターで Apache Spark をインストールして使用する](spark/apache-spark-jupyter-spark-sql-use-portal.md)
 * [HDInsight クラスターに Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)。
 
-## <a name="appendix-powershell-sample"></a>付録 - PowerShell サンプル
+## <a name="appendix-powershell-sample"></a>付録: PowerShell のサンプル
 
 この PowerShell スクリプトでは、HDInsight クラスターを作成し、Hive の設定をカスタマイズします。 必ず `$nameToken`、`$httpPassword`、および `$sshPassword` の値を入力してください。
 

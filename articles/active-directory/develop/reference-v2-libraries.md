@@ -1,28 +1,23 @@
 ---
-title: Microsoft ID プラットフォームの認証ライブラリ | Microsoft Docs
+title: Microsoft ID プラットフォームの認証ライブラリ
 description: Microsoft ID プラットフォーム エンドポイントに使用される互換性のあるクライアント ライブラリとサーバー ミドルウェア ライブラリ、および関連するライブラリ、ソース、サンプル リンク。
 services: active-directory
-documentationcenter: ''
 author: negoe
 manager: CelesteDG
-editor: ''
-ms.assetid: 19cec615-e51f-4141-9f8c-aaf38ff9f746
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9d2df175fa9d1ed33eb17ae85e01a4fd7a24e728
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22e2ee0e3596bc996482a090af7509db4c415e61
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77611942"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883493"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft ID プラットフォームの認証ライブラリ
 
@@ -45,7 +40,7 @@ Microsoft ID プラットフォーム エンドポイントは、次の 2 種類
 ライブラリには、次の 2 種類のサポート カテゴリがあります:
 
 * **Microsoft によるサポート**:Microsoft は、これらのライブラリの修正プログラムを提供するほか、これらのライブラリに対する SDL の適正評価を行っています。
-* **互換性**:Microsoft では、基本的なシナリオでこれらのライブラリがテストされ、Microsoft ID プラットフォーム エンドポイントで動作することが確認されています。 Microsoft では、これらのライブラリの修正プログラムは提供されていません。また、Microsoft では、これらのライブラリのレビューも実施されていません。 問題や機能に関する要望については、ライブラリのオープン ソース プロジェクトにお問い合わせください。
+* **互換性**:Microsoft では、基本的なシナリオでこれらのライブラリがテストされ、Microsoft ID プラットフォーム エンドポイントで動作することが確認されています。 Microsoft では、これらのライブラリの修正プログラムは提供されていません。また、Microsoft では、これらのライブラリのレビューも実施されていません。 問題や機能に関する要望は、ライブラリのオープン ソース プロジェクトにお送りください。
 
 Microsoft ID プラットフォーム エンドポイントで動作するライブラリの一覧については、以下のセクションを参照してください。
 
@@ -55,9 +50,8 @@ Microsoft ID プラットフォーム エンドポイントで動作するライ
 
 | プラットフォーム | ライブラリ | ダウンロード | ソース コード | サンプル | リファレンス | 概念に関するドキュメント | ロードマップ |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [シングルページ アプリ](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [リファレンス](https://azuread.github.io/microsoft-authentication-library-for-js/docs/msal/) | [概念に関するドキュメント](msal-overview.md)| [ロードマップ](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
-|![Angular JS](media/sample-v2-code/logo_angular.png) | MSAL Angular JS | [NPM](https://www.npmjs.com/package/@azure/msal-angularjs) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  |  | |
-![Angular](media/sample-v2-code/logo_angular.png) | MSAL Angular (プレビュー) | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | | | |
+| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [シングルページ アプリ](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [リファレンス](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [概念に関するドキュメント](msal-overview.md)| [ロードマップ](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
+![Angular](media/sample-v2-code/logo_angular.png) | MSAL Angular | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [Angular SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [リファレンス](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [概念に関するドキュメント](msal-overview.md) | [ロードマップ](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 | ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [デスクトップ アプリ](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[概念に関するドキュメント](msal-overview.md) | [ロードマップ](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
 | ![Python](media/sample-v2-code/logo_python.png) | MSAL Python | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [サンプル](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [ロードマップ](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
 | ![Java](media/sample-v2-code/logo_java.png) | MSAL Java | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [サンプル](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | [リファレンス](https://javadoc.io/doc/com.microsoft.azure/msal4j/latest/index.html) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | [ロードマップ](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
@@ -81,7 +75,7 @@ Web アプリケーションと Web API を保護するには、ミドルウェ�
 |             | Windows    | Linux      | macOS      | iOS | Android    |
 |-------------|------------|------------|------------|------------|------------|
 | ![JavaScript](media/sample-v2-code/logo_js.png)  |  MSAL.js | MSAL.js | MSAL.js | MSAL.js |  MSAL.js |
-| <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET、ASP.NET Core、MSAL.Net (.NET FW、Core、UWP)| ASP.NET Core、MSAL.Net (.NET Core) | ASP.NET Core、MSAL.Net (MacOS)       | MSAL.Net (Xamarin.iOS) | MSAL.Net (Xamarin.Android)|
+| <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET、ASP.NET Core、MSAL.Net (.NET FW、Core、UWP)| ASP.NET Core、MSAL.Net (.NET Core) | ASP.NET Core、MSAL.Net (macOS)       | MSAL.Net (Xamarin.iOS) | MSAL.Net (Xamarin.Android)|
 | Swift <br> Objective-C |            |            | [iOS および macOS 用の MSAL](msal-overview.md) | [iOS および macOS 用の MSAL](msal-overview.md) |            |
 | ![Java](media/sample-v2-code/logo_java.png) Java | msal4j | msal4j | msal4j | | MSAL Android |
 | ![Python](media/sample-v2-code/logo_python.png) Python | MSAL Python | MSAL Python | MSAL Python |

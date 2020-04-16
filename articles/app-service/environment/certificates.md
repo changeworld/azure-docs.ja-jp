@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 65fc4ed25b0fd360de8e3b1439d1766485eb2e58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba1d06ce83d50b6f0db84d1e423e66eae98f665d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688637"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477502"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>証明書と App Service Environment 
 
@@ -22,12 +22,12 @@ ASE は、シングル テナント システムです。 シングル テナン
 
 ## <a name="ilb-ase-certificates"></a>ILB ASE 証明書 
 
-外部 ASE を使用している場合、アプリには [appname].[asename].p.azurewebsites.net で到達します。 既定では、ILB ASE を含め、すべての ASE が、その形式に従った証明書で作成されます。 ILB ASE がある場合、アプリには ILB ASE の作成時に指定したドメイン名に基づいて到達します。 アプリが SSL をサポートするためには、証明書をアップロードする必要があります。 内部証明機関を利用する、外部の発行者から証明書を購入する、自己署名証明書を使用する、のいずれかの手段で有効な SSL 証明書を取得します。 
+外部 ASE を使用している場合、アプリには [appname].[asename].p.azurewebsites.net で到達します。 既定では、ILB ASE を含め、すべての ASE が、その形式に従った証明書で作成されます。 ILB ASE がある場合、アプリには ILB ASE の作成時に指定したドメイン名に基づいて到達します。 アプリが TLS をサポートするためには、証明書をアップロードする必要があります。 内部証明機関を利用する、外部の発行者から証明書を購入する、自己署名証明書を使用する、のいずれかの手段で有効な TLS/SSL 証明書を取得します。 
 
 ILB ASE で証明書を構成するには、次の 2 つのオプションがあります。  ILB ASE に既定のワイルドカード証明書を設定するか、ASE 内の個別の Web アプリに証明書を設定します。  どちらを選択した場合でも、次の証明書属性を適切に構成する必要があります。
 
-- **Subject**: ワイルドカード ILB ASE 証明書用に、この属性を *.[your-root-domain-here] に設定する必要があります。 アプリ用に証明書を作成する場合は、これは [appname].[your-root-domain-here] にする必要があります。
-- **Subject Alternative Name**: この属性には、ワイルドカード ILB ASE 証明書用に、*.[your-root-domain-here] と *.scm.[your-root-domain-here] の両方を含める必要があります。 アプリ用に証明書を作成する場合は、これを [appname].[your-root-domain-here] と [appname].scm.[your-root-domain-here] にする必要があります。
+- **Subject:** この属性は、ワイルドカード ILB ASE 証明書用に *.[your-root-domain-here] に設定する必要があります。 アプリ用に証明書を作成する場合は、これは [appname].[your-root-domain-here] にする必要があります。
+- **Subject Alternative Name:** この属性には、ワイルドカード ILB ASE 証明書用に *.[your-root-domain-here] と *.scm.[your-root-domain-here] の両方を含める必要があります。 アプリ用に証明書を作成する場合は、これを [appname].[your-root-domain-here] と [appname].scm.[your-root-domain-here] にする必要があります。
 
 3 番目のバリアントとして、ワイルドカード参照を使用する代わりに、証明書の SAN 内の個別のアプリ名をすべて含む ILB ASE 証明書を作成することができます。 この方法の問題は、ASE に配置するアプリの名前を事前にすべて把握しておく必要があることです。そうしないと、ILB ASE 証明書を常に更新し続ける必要があります。
 
@@ -58,7 +58,7 @@ ASE でホストされているアプリは、マルチテナント App Service 
 - IP ベースの SSL。外部 ASE でのみサポートされます。  ILB ASE は、IP ベースの SSL をサポートしていません。
 - KeyVault がホストされている証明書 
 
-これらの証明書をアップロードおよび管理する手順は、「[Azure App Service で SSL 証明書を追加する](../configure-ssl-certificate.md)」を参照してください。  Web アプリに割り当てたカスタム ドメイン名と一致するように証明書を構成するだけの場合は、これらの手順で十分です。 既定のドメイン名を使用して ILB ASE Web アプリ用に証明書をアップロードする場合は、前述したように、証明書の SAN 内の scm サイトを指定します。 
+これらの証明書をアップロードおよび管理する手順については、「[Azure App Service で TLS/SSL 証明書を追加する](../configure-ssl-certificate.md)」を参照してください。  Web アプリに割り当てたカスタム ドメイン名と一致するように証明書を構成するだけの場合は、これらの手順で十分です。 既定のドメイン名を使用して ILB ASE Web アプリ用に証明書をアップロードする場合は、前述したように、証明書の SAN 内の scm サイトを指定します。 
 
 ## <a name="tls-settings"></a>TLS の設定 
 

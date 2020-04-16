@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 55bfb5030d0a168e7556240212fcd5f3be30a289
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e0f0f311b7ec8adae6ddb25e01046141adadfa4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335363"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548536"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK の概要
 
@@ -109,7 +109,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
     * Azure Maps の認証情報を設定する
     * **onCreate** メソッドでマップ コントロールのインスタンスを取得する
 
-    `AzureMaps` または `setSubscriptionKey` メソッドを使用して `setAadProperties` クラスにグローバルに認証情報を設定すると、すべてのビューで認証情報を追加する必要がなくなります。 
+    `setSubscriptionKey` または `setAadProperties` メソッドを使用して `AzureMaps` クラスにグローバルに認証情報を設定すると、すべてのビューで認証情報を追加する必要がなくなります。 
 
     マップ コントロールには、Android の OpenGL ライフサイクルを管理するための独自のライフサイクル メソッドが含まれています。 これらのライフサイクル メソッドは、それが含まれているアクティビティから直接呼び出す必要があります。 アプリでマップ コントロールのライフサイクル メソッドを正しく呼び出すためには、マップ コントロールを含むアクティビティで次のライフサイクル メソッドをオーバーライドする必要があります。 また、それぞれのマップ コントロール メソッドを呼び出す必要があります。 
 
@@ -223,7 +223,7 @@ Android Studio でアプリケーションをビルドするには、数秒か�
 
 Azure Maps Android SDK には、マップの言語と地域ビューを設定するための 3 つの異なる方法が用意されています。 次のコードは、言語をフランス語 ("fr-FR") に、地域ビューを "auto" に設定する方法を示しています。 
 
-最初のオプションでは、静的な `AzureMaps` メソッドと `setLanguage` メソッドをグローバルに使用して、言語とビューの地域情報を `setView` クラスに渡します。 これにより、アプリに読み込まれたすべての Azure Maps コントロールに対して、既定の言語と地域ビューが設定されます。
+最初のオプションでは、静的な `setLanguage` メソッドと `setView` メソッドをグローバルに使用して、言語とビューの地域情報を `AzureMaps` クラスに渡します。 これにより、アプリに読み込まれたすべての Azure Maps コントロールに対して、既定の言語と地域ビューが設定されます。
 
 ```Java
 static {
@@ -267,6 +267,29 @@ mapControl.onReady(map -> {
 </center>
 
 サポートされている言語と地域ビューの完全な一覧については、[こちら](supported-languages.md)をご覧ください。
+
+## <a name="navigating-the-map"></a>マップ内を移動する
+
+マップをズーム、パン、回転、およびピッチ調整する方法は複数存在します。 以下では、マップ内を移動するときのさまざまな方法をすべて詳しく説明します。
+
+**マップをズームする**
+
+- 2 本の指でマップをタッチし、指でつまむようにすると縮小し、指を広げると拡大します。
+- マップをダブルタップし、1 レベル分拡大します。
+- 2本の指でダブルタップし、マップを 1 レベル分縮小します。
+- 2 回タップします。2 回目のタップで指をマップに置いたままにして、上にドラッグすると拡大し、下にドラッグすると縮小します。
+
+**マップをパンする**
+
+- マップをタッチし、任意の方向にドラッグします。
+
+**マップを回転する**
+
+- 2 本の指でマップをタッチし、回転します。
+
+**マップのピッチを調整する**
+
+- 2 本の指でマップをタッチして、上または下にドラッグします。
 
 ## <a name="next-steps"></a>次のステップ
 

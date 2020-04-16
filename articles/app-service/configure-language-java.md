@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e5beb60107b3632da336a20f167e1c2f5b53140a
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 2b09a7765cff20fb49ce6ab3d1e7bce2e15f0e9e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461268"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475219"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service 向けの Windows Java アプリを構成する
 
@@ -37,6 +37,24 @@ FTP を使用して .war をデプロイしないでください。 FTP ツー�
 
 パフォーマンス レポート、トラフィックの視覚エフェクト、および正常性検査は、Azure portal を介して各アプリに対して使用できます。 詳細については、「[Azure App Service 診断の概要](overview-diagnostics.md)」を参照してください。
 
+### <a name="use-flight-recorder"></a>Flight Recorder を使用する
+
+Azul JVM を使用する App Service のすべての Java ランタイムには、Zulu Flight Recorder が付属しています。 これを使用すると、JVM、システム、および Java レベルのイベントを記録して、Java アプリケーションの動作を監視し、問題のトラブルシューティングを行うことができます。
+
+時間を指定して記録を行うには、Java アプリケーションの PID (プロセス ID) が必要です。 PID を検索するには、ブラウザーで Web アプリの SCM サイト (https://<your-site-name>.scm.azurewebsites.net/ProcessExplorer/) を開きます。 このページには、Web アプリで実行中のプロセスが表示されます。 テーブル内で "java" という名前のプロセスを探し、対応する PID (プロセス ID) をコピーします。
+
+次に、SCM サイト上部のツール バーにある **デバッグ コンソール** を開き、次のコマンドを実行します。 `<pid>` を、先ほどコピーしたプロセス ID に置き換えます。 このコマンドにより、Java アプリケーションのプロファイラーによる 30 秒の記録が開始され、`D:\home` ディレクトリに `timed_recording_example.jfr` という名前のファイルが生成されます。
+
+```
+jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename="D:\home\timed_recording_example.JFR"
+```
+
+詳しくは、[Jcmd コマンド リファレンス](https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/comline.htm#JFRRT190)をご覧ください。
+
+#### <a name="analyze-jfr-files"></a>`.jfr` ファイルの分析
+
+JFR ファイルをご自分のローカル コンピューターにダウンロードするには、[FTPS](deploy-ftp.md) を使います。 JFR ファイルを分析するには、[Zulu Mission Control](https://www.azul.com/products/zulu-mission-control/) をダウンロードしてインストールします。 Zulu Mission Control については、[Azul のドキュメント](https://docs.azul.com/zmc/)と[インストール手順](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)をご覧ください。
+
 ### <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
@@ -56,7 +74,7 @@ Azure App Service では、Azure portal および CLI を使用したチュー�
 
 - [アプリケーションの設定の構成](configure-common.md#configure-app-settings)
 - [カスタム ドメインの設定](app-service-web-tutorial-custom-domain.md)
-- [SSL バインドの構成](configure-ssl-bindings.md)
+- [TLS バインドの構成](configure-ssl-bindings.md)
 - [CDN の追加](../cdn/cdn-add-to-web-app.md)
 - [Kudu サイトを構成する](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
 
@@ -131,7 +149,7 @@ App Service で実行される Java アプリケーションは、他のアプ�
 
 #### <a name="tomcat"></a>Tomcat
 
-ご利用の Tomcat アプリケーションでは、Principal オブジェクトを Map オブジェクトにキャストすることで、サーブレットから直接ユーザーの要求にアクセスできます。 Map オブジェクトによって、各要求の種類がその種類の要求のコレクションにマップされます。 以下のコードで、`request` は `HttpServletRequest` のインスタンスです。
+Tomcat アプリケーションでは、Principal オブジェクトを Map オブジェクトにキャストすることで、サーブレットから直接ユーザーの要求にアクセスできます。 Map オブジェクトによって、各要求の種類がその種類の要求のコレクションにマップされます。 以下のコードで、`request` は `HttpServletRequest` のインスタンスです。
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -165,7 +183,7 @@ public int getServerPort()
 
 ### <a name="configure-tlsssl"></a>TLS/SSL を構成する
 
-「[Azure App Service で SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」の手順に従って、既存の SSL 証明書をアップロードし、アプリケーションのドメイン名にバインドします。 既定では、アプリケーションで引き続き HTTP 接続が許可されます。チュートリアルの特定の手順に従って、SSL と TLS を適用します。
+「[Azure App Service で TLS バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」の手順に従って、既存の TLS/SSL 証明書をアップロードし、アプリケーションのドメイン名にバインドします。 既定では、アプリケーションで引き続き HTTP 接続が許可されます。チュートリアルの特定の手順に従って、SSL と TLS を適用します。
 
 ### <a name="use-keyvault-references"></a>KeyVault 参照を使用する
 
@@ -214,7 +232,7 @@ Spring または Tomcat 構成ファイルにこれらのシークレットを�
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [ダウンロード](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [ダウンロード](https://dev.mysql.com/downloads/connector/j/) ("プラットフォームに依存しない" を選択) |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [ダウンロード](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [ダウンロード](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
 Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用するように Tomcat を構成するには、まず、起動時に Tomcat によって読み込まれる `CATALINA_OPTS` 環境変数をカスタマイズします。 [App Service Maven プラグイン](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)のアプリ設定を使用して、次の値を設定します。
 

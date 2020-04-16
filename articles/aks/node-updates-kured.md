@@ -1,15 +1,16 @@
 ---
-title: kured を使用して Azure Kubernetes Service (AKS) の Linux ノードを更新および再起動する
+title: kured を使用した Linux ノードの再起動の処理
+titleSuffix: Azure Kubernetes Service
 description: kured を使用して Azure Kubernetes Service (AKS) の Linux ノードを更新し、自動的に再起動する方法について説明します
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.openlocfilehash: 74b12c1bc6e2a88582cc357c8091b5590e6bf3cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8006baa3025ee1e794359bed854094cc9005dd14
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78191284"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668381"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の Linux ノードにセキュリティとカーネルの更新を適用します
 

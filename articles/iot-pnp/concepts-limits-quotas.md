@@ -3,16 +3,16 @@ title: IoT プラグ アンド プレイ プレビューの制限とクォータ
 description: IoT プラグ アンド プレイ プレビューを使用する場合に適用される制限、クォータ、およびスロットルについて説明します。
 author: miagdp
 ms.author: miag
-ms.date: 12/26/2019
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 48ecaaba6d956efd9da75d0582fa06d231cb3f80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75531379"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518179"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT プラグ アンド プレイ プレビューの制限、クォータ、およびスロットル
 
@@ -22,12 +22,12 @@ ms.locfileid: "75531379"
 
 パブリック プレビューでは、IoT hub に以下の制限とクォータが適用されます。
 
-| 制限、制約、およびスロットル | 値 | メモ |
+| 制限、制約、およびスロットル | 値 | Notes |
 |-----|-----|-----|
 | ハブごとの登録できるデバイス機能モデル (DCM) またはインターフェイスの数 | 1500 ||
 | デバイスごとの登録できるインターフェイスの最大数 | 40 ||
 | デバイスごとの登録できる DCM の最大数 | 1 ||
-| インターフェイスまたは DCM ファイルの最大サイズ | 512 文字 ||
+| インターフェイスまたは DCM ファイルの最大サイズ | 512 KB ||
 | インターフェイス名の最大サイズ | 256 文字 ||
 | プロパティ名の最大サイズ  | 64 バイト、深さは 7 レベル (最初のレベルは `$iotin` のために予約されています) | 使用できる文字: a-z、A-Z、0-9 (最初の文字にはできません)、およびアンダースコア。 |
 | プロパティ値の最大サイズ | 512 バイト ||
@@ -39,7 +39,7 @@ ms.locfileid: "75531379"
 
 パブリック プレビューでは、モデル リポジトリに以下の制限とクォータが適用されます。
 
-| 制限、制約、およびスロットル| 値 |
+| 制限、制約、およびスロットル | 値 |
 |-----|-----|
 | Azure Active Directory テナントあたりの会社モデル リポジトリの数 | 1 |
 | モデル リポジトリあたりの承認キーの数 | 10  |

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: 13852acb39a420e2f0da84e18bef4df823c1fa78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a502541a5a01ec3304338054239fc3b50f4d3c61
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206267"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810298"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender Advanced Threat Protection と Azure Security Center
 
@@ -36,7 +36,7 @@ Microsoft Defender ATP を使用すると、次の機能が得られます。
 
 現在、Azure Security Center では次の機能を利用できます。
 
-- **自動オンボード**:Microsoft Defender ATP センサーは、Azure Security Center にオンボードされた Windows サーバーに対して自動的に有効になります。
+- **自動オンボード**:Microsoft Defender ATP センサーは、Azure Security Center にオンボードされた Windows サーバー (Windows Server 2019 を実行しているものを除く) に対して自動的に有効になります。
 
 - **1 つのウィンドウ**:Azure Security Center コンソールには、Microsoft Defender ATP のアラートが表示されます。
 
@@ -62,7 +62,7 @@ Security Center の Microsoft Defender ATP は、Windows Server 2016、2012 R2�
 1. **[オンボード]** 領域で、データを保存するワークスペースを選択または作成します。 <br>
 2. すべてのワークスペースが表示されない場合は、アクセス許可が不足している可能性があります。ワークスペースが Azure Security Standard レベルに設定されていることを確認してください。 詳細については、「[Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化](security-center-pricing.md)」を参照してください。
     
-3. **[サーバーの追加]** を選択すると、Microsoft Monitoring Agent をインストールする手順が表示されます。 
+3. **[サーバーの追加]** を選択すると、Log Analytics エージェントをインストールする手順が表示されます。 
 
 4. オンボード後は、 **[計算とアプリ]** でマシンを監視できます。
 
@@ -107,11 +107,11 @@ Microsoft Defender ATP で無害なテスト アラートを生成するには:
 
    ![上記のコマンドが表示されているコマンド プロンプト ウィンドウ](media/security-center-wdatp/image4.jpeg)
 
-3. コマンドが成功した場合、Azure Security Center ダッシュボードと Microsoft Defender ATP ポータルに新しいアラートが表示されます。 このアラートは、表示されるまでに数分かかることがあります。
+1. コマンドが成功した場合、Azure Security Center ダッシュボードと Microsoft Defender ATP ポータルに新しいアラートが表示されます。 このアラートは、表示されるまでに数分かかることがあります。
 
-4. Security Center 内でアラートを確認するには、 **[セキュリティ通知]**  >  **[Suspicious Powershell CommandLine]\(疑わしい Powershell コマンド ライン\)** に移動します。
+1. Security Center 内でアラートを確認するには、 **[セキュリティ通知]**  >  **[Suspicious Powershell CommandLine]\(疑わしい Powershell コマンド ライン\)** に移動します。
 
-5. 調査ウィンドウで、リンクを選択して Microsoft Defender ATP ポータルに移動します。
+1. 調査ウィンドウで、リンクを選択して Microsoft Defender ATP ポータルに移動します。
 
 ## <a name="next-steps"></a>次のステップ
 

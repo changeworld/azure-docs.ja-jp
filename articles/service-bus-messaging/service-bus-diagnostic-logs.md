@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c8eba538a7015648611e6054ce85b381dcfc9105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a80fb97810fee04a4eb50c43178c168e66f29173
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76761000"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618727"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Service Bus の診断ログを有効にする
 
@@ -76,10 +76,10 @@ Azure Service Bus は現在、Azure Service Bus 名前空間上で実行され�
 
 | Scope | Operation|
 |-------| -------- |
-| 名前空間 | <ul> <li> 名前空間の作成</li> <li> 名前空間の更新 </li> <li> 名前空間の削除 </li>  </ul> | 
-| キュー | <ul> <li> キューの作成</li> <li> キューの更新</li> <li> キューの削除 </li> </ul> | 
-| トピック | <ul> <li> トピックの作成 </li> <li> トピックの更新 </li> <li> トピックの削除 </li> </ul> |
-| サブスクリプション | <ul> <li> サブスクリプションの作成 </li> <li> サブスクリプションの更新 </li> <li> サブスクリプションの削除 </li> </ul> |
+| 名前空間 | <ul> <li> 名前空間の作成</li> <li> 名前空間の更新 </li> <li> 名前空間の削除 </li> <li> 名前空間 SharedAccess ポリシーの更新 </li> </ul> | 
+| キュー | <ul> <li> キューの作成</li> <li> キューの更新</li> <li> キューの削除 </li> <li> キューの削除 (自動削除) </li> </ul> | 
+| トピック | <ul> <li> トピックの作成 </li> <li> トピックの更新 </li> <li> トピックの削除 </li> <li> トピックの削除 (自動削除) </li> </ul> |
+| サブスクリプション | <ul> <li> サブスクリプションの作成 </li> <li> サブスクリプションの更新 </li> <li> サブスクリプションの削除 </li> <li> サブスクリプションの削除 (自動削除) </li> </ul> |
 
 > [!NOTE]
 > 現在、*読み取り*操作は操作ログで追跡されません。

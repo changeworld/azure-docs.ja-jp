@@ -2,27 +2,22 @@
 title: OAuth 2.0 暗黙的な許可のフロー - Microsoft ID プラットフォーム | Azure
 description: Microsoft ID プラットフォームの暗黙的なフローを使用してシングルページ アプリをセキュリティで保護します。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 3605931f-dc24-4910-bb50-5375defec6a8
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: ryanwi
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e3f021fd888bbb408fa66964c54d22f0d68e84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a884850d57418e9daafba980d0a08dc86fc0974
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297694"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309386"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft ID プラットフォームと暗黙的な許可のフロー
 
@@ -32,7 +27,7 @@ Microsoft ID プラットフォーム エンドポイントを使ったシング
 * 多くの承認サーバーや ID プロバイダーでは、CORS 要求をサポートしていません。
 * アプリからブラウザーにフル ページがリダイレクトされると、ユーザー エクスペリエンスに大きな悪影響が及びます。
 
-このようなアプリケーション (AngularJS、Ember.js、React.js など) 向けに、Microsoft ID プラットフォームでは OAuth 2.0 の暗黙的な許可のフローをサポートしています。 この暗黙的フローは、[OAuth 2.0 仕様](https://tools.ietf.org/html/rfc6749#section-4.2)で規定されています。 主な利点は、バックエンド サーバーとの資格情報交換を実行しなくても、アプリが Microsoft ID プラットフォームからトークンを取得できることです。 これにより、アプリは、ユーザーのサインイン、セッションの維持、他の Web API へのトークンの取得をすべてクライアント JavaScript コード内で実行できます。 暗黙的フローを使用する際に考慮が必要なセキュリティに関する重要事項がいくつかあります。具体的には、[クライアント](https://tools.ietf.org/html/rfc6749#section-10.3)と[ユーザーの偽装](https://tools.ietf.org/html/rfc6749#section-10.3)に関する事項です。
+これらのアプリケーション (Angular、Ember.js、React.js など) の場合、Microsoft ID プラットフォームでは OAuth 2.0 の暗黙的な許可のフローをサポートしています。 この暗黙的フローは、[OAuth 2.0 仕様](https://tools.ietf.org/html/rfc6749#section-4.2)で規定されています。 主な利点は、バックエンド サーバーとの資格情報交換を実行しなくても、アプリが Microsoft ID プラットフォームからトークンを取得できることです。 これにより、アプリは、ユーザーのサインイン、セッションの維持、他の Web API へのトークンの取得をすべてクライアント JavaScript コード内で実行できます。 暗黙的フローを使用する際に考慮が必要なセキュリティに関する重要事項がいくつかあります。具体的には、[クライアント](https://tools.ietf.org/html/rfc6749#section-10.3)と[ユーザーの偽装](https://tools.ietf.org/html/rfc6749#section-10.3)に関する事項です。
 
 この記事では、アプリケーションでプロトコルに対して直接プログラミングする方法について説明します。  可能な場合は、[トークンを取得してセキュリティで保護された Web API を呼び出す](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)代わりに、サポートされている Microsoft 認証ライブラリ (MSAL) を使用することをお勧めします。  また、[MSAL を使用するサンプル アプリ](sample-v2-code.md)も参照してください。
 
@@ -54,7 +49,7 @@ JavaScript ベースのアプローチを最大限に活用するアプリケー
 * クロス オリジン呼び出しをしなくても、トークンを確実に取得できます。トークンが返されるリダイレクト URI の登録が必須であるため、トークンが置換されないことが保証されます。
 * JavaScript アプリケーションは、ドメインの制限なしに、対象とする Web API の数だけ、必要な数のアクセス トークンを取得できます。
 * セッションやローカル ストレージなどの HTML5 機能ではトークンのキャッシュと有効期間管理にフル コントロールを許可しますが、Cookie の管理はアプリにとって非透過的です。
-* アクセス トークンはクロスサイト リクエスト フォージェリ (CSRF) 攻撃をあまり受けません。
+* アクセス トークンはクロスサイト リクエスト フォージェリ (CSRF) 攻撃をあまり受けません
 
 暗黙的な許可フローでは、主にセキュリティ上の理由から、更新トークンを発行しません。 更新トークンはアクセス トークンほどスコープが狭義ではないため、多くの権限を付与すると、リークされた場合のダメージが大きくなります。暗黙的フローでは、トークンは URL の形式で配信されるため、傍受されるリスクが認証コード付与よりも高くなります。
 
@@ -161,7 +156,7 @@ error=access_denied
 
 これでユーザーをシングルページ アプリにサインインさせたので、[Microsoft Graph](https://developer.microsoft.com/graph) などの Microsoft ID プラットフォームによってセキュリティ保護された Web API を呼び出すためのアクセス トークンをサイレントに取得できます。 このメソッドを使用すると、`token` response_type を使用してトークンを既に取得している場合でも、再度サインインするためにユーザーをリダイレクトする必要なく、その他のリソースのトークンを取得できます。
 
-通常の OpenID Connect/OAuth フローでは、これは Microsoft ID プラットフォームの `/token` エンドポイントに要求を発行することによって行います。 ただし、Microsoft ID プラットフォーム エンドポイントは CORS 要求をサポートしていないため、AJAX 呼び出しによってトークンを取得または更新することは不可能です。 代わりに、非表示の iframe で暗黙的フローを使用して、他の Web API 用の新しいトークンを取得できます。 
+通常の OpenID Connect/OAuth フローでは、これは Microsoft ID プラットフォームの `/token` エンドポイントに要求を発行することによって行います。 ただし、Microsoft ID プラットフォーム エンドポイントは CORS 要求をサポートしていないため、AJAX 呼び出しによってトークンを取得または更新することは不可能です。 代わりに、非表示の iframe で暗黙的フローを使用して、他の Web API 用の新しいトークンを取得できます。
 
 ```
 // Line breaks for legibility only
@@ -170,7 +165,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=token
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read 
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &response_mode=fragment
 &state=12345
 &nonce=678910

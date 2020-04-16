@@ -1,41 +1,48 @@
 ---
-title: Azure Automation での Az モジュールの使用
-description: この記事では、Azure Automation での Az モジュールの使用について説明します
+title: Azure Automation での Az モジュールのサポート
+description: この記事では、Azure Automation での Az モジュールの使用について説明します。
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: dfbf54c19aef00cbda886a4531797cda7ef3a191
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8d6d25a2ba7f0040b13982f14f3d6081ac32f15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76986106"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637997"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Azure Automation での Az モジュールのサポート
 
-Azure Automation では、Runbook で [Azure Powershell の Az モジュール](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)を使用できます。 Az モジュールが新規または既存の Automation アカウントに自動的にインポートされることはありません。 この記事では、Azure Automation で Az モジュールを使用する方法について説明します。
+Azure Automation では、Runbook での [Azure PowerShell の Az モジュール](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)の使用がサポートされています。 ロールアップの Az モジュールが新規または既存の Automation アカウントに自動的にインポートされることはありません。 
 
 ## <a name="considerations"></a>考慮事項
 
-Azure Automation で Az モジュールを使用するときは、考慮することが多くあります。 Runbook とモジュールは、Automation アカウントの上位レベルのソリューションで使用できます。 Runbook を編集したり、モジュールをアップグレードしたりすると、Runbook で問題が発生する可能性があります。 新しい `Az` モジュールをインポートする前に、別の Automation アカウントですべての Runbook とソリューションを十分にテストする必要があります。 モジュールを変更すると、[起動/停止](automation-solution-vm-management.md)ソリューションに悪影響を及ぼす可能性があります。 ソリューションが含まれる Automation アカウントでは、モジュールと Runbook の変更はお勧めしません。 この動作は、Az モジュールに固有のものではありません。 Automation アカウントで何らかの変更を行うときは、この動作を考慮する必要があります。
+Azure Automation で Az モジュールを使用する際には、考慮しなければならない点がいくつかあります。
 
-Automation アカウントに `Az` モジュールをインポートしても、Runbook で使用される PowerShell セッションにモジュールが自動的にインポートされることはありません。 モジュールは、次の状況で PowerShell セッションにインポートされます。
+* Runbook とモジュールは、Automation アカウントの上位レベルのソリューションで使用できます。 そのため、Runbook を編集したり、モジュールをアップグレードしたりすると、ご利用のソリューションで問題が発生する可能性があります。 新しい Az モジュールをインポートする前に、別の Automation アカウントですべての Runbook とソリューションを十分にテストする必要があります。 
 
-* モジュールのコマンドレットが Runbook から呼び出されたとき
-* Runbook で `Import-Module` コマンドレットを使用してモジュールが明示的にインポートされたとき
-* モジュールに依存する別のモジュールが、PowerShell セッションにインポートされたとき
+* モジュールを変更すると、[起動/停止](automation-solution-vm-management.md)ソリューションに悪影響を及ぼす可能性があります。 
+
+* Automation アカウントに Az モジュールをインポートしても、Runbook で使用される PowerShell セッションにモジュールが自動的にインポートされることはありません。 モジュールは、次の状況で PowerShell セッションにインポートされます。
+
+    * Runbook がモジュールからコマンドレットを呼び出したとき
+    * Runbook で `Import-Module` コマンドレットを使用してモジュールが明示的にインポートされたとき
+    * モジュールに応じて、Runbook で別のモジュールがインポートされたとき
+
+> [!NOTE]
+> ソリューションが含まれる Automation アカウントでは、モジュールと Runbook の変更はお勧めしません。 このプロビジョニングは、Az モジュールに固有のものではありません。 Automation アカウントで何らかの変更を行うときは、その点を考慮する必要があります。
 
 > [!IMPORTANT]
-> Automation アカウントの Runbook によって使用される PowerShell セッションに、`Az` または `AzureRM` どちらか一方のモジュールだけがインポートされ、両方がインポートされないようにすることが重要です。 Runbook で `AzureRM` の前に `Az` がインポートされた場合、Runbook は完了しますが、[get_SerializationSettings メソッドの参照エラー](troubleshoot/runbooks.md#get-serializationsettings)がジョブ ストリームで表示され、コマンドレットが適切に実行されない可能性があります。 `AzureRM` をインポートしてから `Az` をインポートした場合でも、Runbook は完了しますが、`Az` と `AzureRM` の両方を同じセッションにインポートできない、または同じ Runbook で使用できないことを示すエラーが、ジョブ ストリームで発生します。
+> Automation アカウントの Runbook では、Az モジュールと [AzureRM](https://www.powershellgallery.com/packages/AzureRM/6.13.1) モジュールのいずれかを PowerShell セッションにインポートし、両方はインポートしないようにします。 Runbook で AzureRM モジュールの前に Az モジュールをインポートしても、その Runbook は完了します。 ただし、[Get_SerializationSettings](troubleshoot/runbooks.md#get-serializationsettings) コマンドレットを参照するエラーがジョブ ストリームに表示され、コマンドレットが正常に実行されない可能性があります。 また、Runbook で Az モジュールの前に AzureRM モジュールをインポートしても、その Runbook は完了します。 ただし、この場合は、Az と AzureRM の両方を同じセッションにインポートしたり、同じ Runbook で使用したりできないというエラーがジョブ ストリームで発生します。
 
 ## <a name="migrating-to-az-modules"></a>Az モジュールへの移行
 
-テスト用の Automation アカウントで、AzureRM モジュールの使用から Az モジュールの使用への移行をテストすることをお勧めします。 その Automation アカウントを作成した後は、以下の手順を使用して、移行が円滑に進むことを確認できます。
+テスト Automation アカウントで Az モジュールへの移行をテストすることをお勧めします。 アカウントを作成したら、このセクションの手順を使用して、モジュールを操作できます。
 
-### <a name="stop-and-unschedule-all-runbook-that-uses-azurerm-modules"></a>AzureRM モジュールを使用するすべての Runbook を停止してスケジュールを解除する
+### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>AzureRM モジュールが使用されるすべての Runbook を停止してスケジュールを解除する
 
-`AzureRM` コマンドレットを使用する既存の Runbook が確実に実行されないようにするため、`AzureRM` モジュールを使用しているすべての Runbook を停止し、スケジュールの設定を解除する必要があります。 次の例を実行して、存在するスケジュールおよび削除する必要があるスケジュールを確認できます。
+AzureRM モジュールが使用される既存の Runbook を実行しないようにするために、影響を受けるすべての Runbook を停止し、スケジュールを解除します。 この例のようなコードを実行して、存在するスケジュールと削除されるスケジュールを確認できます。
 
   ```powershell-interactive
   Get-AzureRmAutomationSchedule -AutomationAccountName "<AutomationAccountName>" -ResourceGroupName "<ResourceGroupName>" | Remove-AzureRmAutomationSchedule -WhatIf
@@ -45,27 +52,35 @@ Automation アカウントに `Az` モジュールをインポートしても、
 
 ### <a name="import-the-az-modules"></a>Az モジュールをインポートする
 
-Runbook に必要な Az モジュールのみをインポートします。 ロールアップの `Az` モジュールをインポートしないでください。それには、インポートされるすべての `Az.*` モジュールが含まれます。 このガイダンスは、すべてのモジュールについて同じです。
+>[!NOTE]
+>Runbook では必要な Az モジュールのみをインポートするようにします。 ロールアップの Az モジュールにはすべての Az モジュールが含まれているので、これはインポートしないようにしてください。 このガイダンスは、すべてのモジュールについて同じです。
 
-[Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) モジュールは、他の `Az.*` モジュールに対する依存関係です。 そのため、他のすべてのモジュールをインポートする前に、このモジュールを Automation アカウントにインポートする必要があります。
+[Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) モジュールは、他の Az モジュールに対する依存関係です。 そのため、他のすべてのモジュールをインポートする前に、自分の Runbook でこのモジュールを Automation アカウントにインポートする必要があります。
 
-Automation アカウントから、 **[共有リソース]** の **[モジュール]** を選択します。 **[ギャラリーの閲覧]** をクリックして、 **[ギャラリーの閲覧]** ページを開きます。  検索バーにモジュール名を入力します (`Az.Accounts` など)。 [PowerShell モジュール] ページで、 **[インポート]** をクリックしてモジュールを Automation アカウントにインポートします。
+Azure portal でモジュールをインポートするには:
+
+1. Automation アカウントから、 **[共有リソース]** の **[モジュール]** を選択します。 
+2. **[Browse Gallery]\(ギャラリーの参照\)** をクリックして、[Browse Gallery]\(ギャラリーの参照\) ページを開きます。  
+3. 検索バーにモジュール名を入力します (`Az.Accounts` など)。 
+4. [PowerShell Module]\(PowerShell モジュール\) ページで、 **[インポート]** をクリックしてモジュールを Automation アカウントにインポートします。
 
 ![Automation アカウントからモジュールをインポートする](media/az-modules/import-module.png)
 
-このインポート プロセスは、[PowerShell ギャラリー](https://www.powershellgallery.com)でモジュールを検索して行うこともできます。 モジュールを見つけたら、それを選択し、 **[Azure Automation]** タブで **[Deploy to Azure Automation]\(Azure Automation にデプロイ\)** をクリックします。
+このインポート プロセスは、インポートするモジュールを [PowerShell ギャラリー](https://www.powershellgallery.com)で検索して行うこともできます。 モジュールを見つけたら、それを選択し、 **[Azure Automation]** タブを選択して **[Deploy to Azure Automation]\(Azure Automation にデプロイ\)** をクリックします。
 
 ![ギャラリーからモジュールを直接インポートする](media/az-modules/import-gallery.png)
 
-## <a name="test-your-runbooks"></a>Runbook をテストする
+## <a name="testing-your-runbooks"></a>Runbook のテスト
 
-`Az` モジュールを Automation アカウントにインポートした後は、代わりに Az モジュールを使用するように Runbook を編集できます。 大部分のコマンドレットは同じ名前ですが、`AzureRM` だけは `Az` に変更されています。 このプロセスに従わないモジュールの一覧については、[例外の一覧](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)をご覧ください。
+Az モジュールを Automation アカウントにインポートしたら、それらのモジュールを使用するように Runbook を編集できます。 大半のコマンドレットの名前は、AzureRM モジュールの場合と同じです。ただし、AzureRM (または AzureRm) プレフィックスは Az に変更されています。 この名前付け規則に従わないモジュールの一覧については、[例外の一覧](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)を参照してください。
 
-新しいコマンドレットを使用するように Runbook を変更する前に、Runbook をテストする方法の 1 つは、Runbook の先頭で `Enable-AzureRMAlias -Scope Process` を使用することです。 Runbook にこれを追加することにより、変更しないで Runbook を実行できます。
+新しいコマンドレットを使用するという Runbook の変更をテストする 1 つの方法として、Runbook の先頭で `Enable-AzureRmAlias -Scope Process` を使用できます。 このコマンドを Runbook に追加することで、変更なしでスクリプトを実行できます。
 
 ## <a name="after-migration-details"></a>移行後の詳細
 
-移行が完了した後は、`AzureRM` モジュールを使用する Runbook をアカウントで開始しないでください。 また、このアカウントでは `AzureRM` モジュールのインポートまたは更新を行わないこともお勧めします。 この時点から、このアカウントは `Az` に移行されたものと見なし、`Az` モジュールのみで運用してください。 新しい Automation アカウントを作成すると、既存の `AzureRM` モジュールもまだインストールされ、チュートリアル Runbook はまだ `AzureRM` コマンドレットで作成されています。 これらの Runbook は実行しないでください。
+移行の完了後は、Automation アカウントで AzureRM モジュールを使用して Runbook を開始しないようにします。 また、このアカウントでは AzureRM モジュールのインポートと更新を行わないこともお勧めします。 アカウントが Az に移行されたと考えて、Az モジュールのみを操作しましょう。 
+
+新しい Automation アカウントを作成すると、依然として既存の AzureRM モジュールがインストールされます。 引き続き、AzureRM コマンドレットを使用してチュートリアルの Runbook を更新できます。 ただし、これらの Runbook は実行しないでください。
 
 ## <a name="next-steps"></a>次のステップ
 

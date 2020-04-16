@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77656927"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668579"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題: よく寄せられる質問 (FAQ)
 
@@ -30,11 +30,11 @@ ms.locfileid: "77656927"
 
 **証明書**
 
-- [私のクラウド サービスの SSL 証明書の証明書チェーンが不完全なのはなぜですか。](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
+- [私のクラウド サービスの TLS または SSL 証明書の証明書チェーンが不完全なのはなぜですか。](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
 - ["Windows Azure Tools Encryption Certificate for Extensions" の目的は何ですか。](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
 - [インスタンスに "RDP 接続" せずに証明書署名要求 (CSR) を生成する方法を教えてください。](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [クラウド サービス管理証明書の期限が切れました。更新する方法を教えてください。](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
-- [メイン SSL 証明書 (.pfx) と中間証明書 (.p7b) のインストールを自動化する方法を教えてください。](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [メイン TLS または SSL 証明書 (.pfx) と中間証明書 (.p7b) のインストールを自動化する方法を教えてください。](#how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b)
 - ["Microsoft Azure Service Management for MachineKey" 証明書の目的は何ですか。](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **監視およびログ記録**
@@ -75,7 +75,7 @@ ms.locfileid: "77656927"
 
 ## <a name="certificates"></a>証明書
 
-### <a name="why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete"></a>私のクラウド サービスの SSL 証明書の証明書チェーンが不完全なのはなぜですか。
+### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>私のクラウド サービスの TLS または SSL 証明書の証明書チェーンが不完全なのはなぜですか。
     
 Microsoft では、リーフ証明書だけではなく、完全な証明書チェーン (リーフ証明書、中間証明書、およびルート証明書) をインストールすることをお客様にお勧めしています。 お客様がリーフ証明書だけをインストールした場合、CTL を探索して証明書チェーンを構築することについては Windows の処理に頼ることになります。 Windows が証明書を検証しようとしたときに、Azure または Windows Update で断続的なネットワークの問題や DNS の問題が発生すると、証明書が無効と見なされる可能性があります。 完全な証明書チェーンをインストールすると、この問題を回避できます。 これを行う方法については、ブログ記事「[How to install a chained SSL certificate](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) (チェーンされた SSL 証明書をインストールする方法)」をご覧ください。
 
@@ -103,7 +103,7 @@ CSR は単なるテキスト ファイルです。 必ずしも、最終的に�
 
 **Get-AzurePublishSettingsFile** は、Azure Portal の **[サブスクリプション]**  >  **[管理証明書]** に新しい管理証明書を作成します。 新しい証明書の名前は、"<サブスクリプション名>-<今日の日付>-credentials" のようになります。
 
-### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>メイン SSL 証明書 (.pfx) と中間証明書 (.p7b) のインストールを自動化する方法を教えてください。
+### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>メイン TLS または SSL 証明書 (.pfx) と中間証明書 (.p7b) のインストールを自動化する方法を教えてください。
 
 このタスクはスタートアップ スクリプト (batch/cmd/PowerShell) を使って自動化することができ、サービス定義ファイルでそのスタートアップ スクリプトを登録します。 スタートアップ スクリプトと証明書 (.p7b ファイル) の両方を、スタートアップ スクリプトの同じディレクトリのプロジェクト フォルダーに追加します。
 

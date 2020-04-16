@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: db2e80ebb6cbe5f31f2d99a1403a15daf38fd877
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aec1b7f7bf60be34d21d52ca652a776cf3275fe8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722409"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811770"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -131,7 +131,7 @@ AKS クラスターをワークスペースに接続するときに、`cluster_p
 > [!WARNING]
 > ワークスペースから同じ AKS クラスターに対して複数のアタッチメントを同時に作成することは避けてください。 たとえば、2 つの異なる名前を使用して 1 つの AKS クラスターをワークスペースにアタッチすることが該当します。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 >
-> SSL やその他のクラスター構成設定を変更するためなど、AKS クラスターを再度アタッチしたい場合は、[AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--) を使用して既存のアタッチメントを先に削除しておいてください。
+> TLS やその他のクラスター構成設定を変更するためなど、AKS クラスターを再度アタッチしたい場合は、[AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--) を使用して既存のアタッチメントを先に削除しておいてください。
 
 Azure CLI または portal を使用した AKS クラスターの作成の詳細については、次の記事をご覧ください。
 
@@ -233,10 +233,28 @@ VS Code の使用については、「[モデルを展開して管理する](tut
 > VS Code を使ってデプロイするには、事前にワークスペースに AKS クラスターを作成するかアタッチしておく必要があります。
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>制御されたロールアウト (プレビュー) を使用して AKS にモデルをデプロイする
-エンドポイントを使用して、制御された方法でモデル バージョンの分析とレベル上げを行います。 1 つのエンドポイントの後方に最大 6 つのバージョンをデプロイし、デプロイされた各バージョンに対するスコアリング トラフィックの割合を構成します。 App Insights を有効にすると、エンドポイントおよびデプロイされたバージョンの運用メトリックを表示できます。
+
+エンドポイントを使用して、制御された方法でモデル バージョンの分析とレベル上げを行います。 1 つのエンドポイントの背後に最大 6 つのバージョンをデプロイできます。 エンドポイントには次の機能があります。
+
+* __各エンドポイントに送信されるスコアリング トラフィックの割合__を構成します。 たとえば、トラフィックの 20% をエンドポイント 'test' にルーティングし、80% を 'production' にルーティングします。
+
+    > [!NOTE]
+    > トラフィックの 100% を指定しない場合、残りの割合は__既定の__エンドポイント バージョンにルーティングされます。 たとえば、エンドポイント バージョン 'test' がトラフィックの 10% を取得し、"prod" が 30% を取得するよう構成した場合、残りの 60% は既定のエンドポイント バージョンに送信されます。
+    >
+    > 作成された最初のエンドポイント バージョンが、既定値として自動的に構成されます。 これは、エンドポイント バージョンを作成または更新するときに `is_default=True` を設定することによって変更できます。
+     
+* エンドポイント バージョンに、__コントロール__または__処理__のいずれかのタグを付けます。 たとえば、現在の運用エンドポイントのバージョンがコントロールであっても、潜在的な新しいモデルは処理バージョンとしてデプロイされます。 処理バージョンのパフォーマンスを評価した後、現在のコントロールのパフォーマンスを上回る場合は、新しい運用/コントロールに昇格される可能性があります。
+
+    > [!NOTE]
+    > コントロールは __1 つ__しか持つことができません。 処理は複数持つことができます。
+
+App Insights を有効にすると、エンドポイントおよびデプロイされたバージョンの運用メトリックを表示できます。
 
 ### <a name="create-an-endpoint"></a>エンドポイントの作成
-モデルをデプロイする準備ができたら、スコアリング エンドポイントを作成し、最初のバージョンをデプロイします。 次の手順は、SDK を使用してエンドポイントをデプロイおよび作成する方法を示しています。 最初のデプロイは既定のバージョンとして定義されます。これは、すべてのバージョンの未指定のトラフィック パーセンタイルが既定のバージョンに設定されることを意味します。  
+モデルをデプロイする準備ができたら、スコアリング エンドポイントを作成し、最初のバージョンをデプロイします。 次の例は、SDK を使用してエンドポイントをデプロイおよび作成する方法を示しています。 最初のデプロイは既定のバージョンとして定義されます。これは、すべてのバージョンの未指定のトラフィック パーセンタイルが既定のバージョンに設定されることを意味します。  
+
+> [!TIP]
+> 次の例では、構成によって最初のエンドポイント バージョンがトラフィックの 20% を処理するように設定されます。 これは最初のエンドポイントであるため、既定のバージョンでもあります。 また、他の 80% のトラフィックについては他のバージョンがないため、同様に既定にルーティングされます。 トラフィックの一定の割合を受け取る他のバージョンがデプロイされるまでは、これが実質的にトラフィックの 100% を受け取ります。
 
 ```python
 import azureml.core,
@@ -247,8 +265,8 @@ from azureml.core.compute import ComputeTarget
 compute = ComputeTarget(ws, 'myaks')
 namespace_name= endpointnamespace
 # define the endpoint and version name
-endpoint_name = "mynewendpoint",
-version_name= "versiona",
+endpoint_name = "mynewendpoint"
+version_name= "versiona"
 # create the deployment config and define the scoring traffic percentile for the first deployment
 endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
                                                               enable_app_insights = True,
@@ -258,11 +276,16 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
                                                               traffic_percentile = 20)
  # deploy the model and endpoint
  endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
+ # Wait for he process to complete
+ endpoint.wait_for_deployment(True)
  ```
 
 ### <a name="update-and-add-versions-to-an-endpoint"></a>バージョンの更新とエンドポイントへの追加
 
 エンドポイントに別のバージョンを追加し、スコアリング トラフィック パーセンタイルをバージョンに合わせて構成します。 バージョンには、コントロールと処理バージョンの 2 種類があります。 1 つのコントロール バージョンと比較するために、複数の処理バージョンを使用できます。
+
+> [!TIP]
+> 次のコード スニペットで作成される 2 番目のバージョンは、トラフィックの 10% を受け入れます。 最初のバージョンは 20% に構成されているため、トラフィックの 30% だけが特定のバージョンに対して構成されます。 残りの 70% は最初のエンドポイント バージョンに送信されます。これは既定のバージョンでもあるためです。
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -275,9 +298,13 @@ endpoint.create_version(version_name = version_name_add,
                         tags = {'modelVersion':'b'},
                         description = "my second version",
                         traffic_percentile = 10)
+endpoint.wait_for_deployment(True)
 ```
 
-既存のバージョンを更新するか、エンドポイント内で削除します。 バージョンの既定の種類、コントロールの種類、およびトラフィック パーセンタイルを変更できます。
+既存のバージョンを更新するか、エンドポイント内で削除します。 バージョンの既定の種類、コントロールの種類、およびトラフィック パーセンタイルを変更できます。 次の例では、2 番目のバージョンがトラフィックを 40% に増やし、これが既定になります。
+
+> [!TIP]
+> 次のコード スニペットの後は、2 番目のバージョンが既定になります。 現在は 40% に構成されていますが、元のバージョンは引き続き 20% に構成されています。 これは、トラフィックの 40% がバージョン構成によって考慮されないことを意味します。 残りのトラフィックは 2 番目のバージョンにルーティングされます。これが既定になったためです。 実質的にトラフィックの 80% を受け取ります。
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -288,7 +315,8 @@ endpoint.update_version(version_name=endpoint.versions["versionb"].name,
                         traffic_percentile=40,
                         is_default=True,
                         is_control_version_type=True)
-
+# Wait for the process to complete before deleting
+endpoint.wait_for_deployment(true)
 # delete a version in an endpoint
 endpoint.delete_version(version_name="versionb")
 
@@ -348,7 +376,7 @@ print(token)
 * [仮想ネットワーク内で実験と推論を安全に実行する](how-to-enable-virtual-network.md)
 * [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
 * [デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)
-* [SSL を使用して Azure Machine Learning Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
+* [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Web サービスとしてデプロイされた ML モデルを使用する](how-to-consume-web-service.md)
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)
 * [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)

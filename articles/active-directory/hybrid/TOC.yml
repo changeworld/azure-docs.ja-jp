@@ -336,6 +336,8 @@
       href: reference-connect-faq.md
     - name: Azure AD Connect Health の FAQ
       href: reference-connect-health-faq.md
+    - name: Azure Government のハイブリッド ID に関する考慮事項
+      href: reference-connect-government-cloud.md
     - name: Azure AD Connect のユーザー プライバシー
       href: reference-connect-user-privacy.md
     - name: Azure AD Connect Health のユーザー プライバシー

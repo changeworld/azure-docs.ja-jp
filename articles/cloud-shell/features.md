@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 0aa71e4b78df8087093f183b146c525d2a8a0f99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78275211b77cb34cf9aa92e44778e5d4d81fffed
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366242"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521008"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
 
@@ -44,7 +44,7 @@ Cloud Shell は、Azure CLI と Azure PowerShell のアカウント アクセス
 
 ### <a name="azure-drive-azure"></a>Azure ドライブ (Azure:)
 
-Cloud Shell の PowerShell は、Azure ドライブ (`Azure:`) で開始します。
+Cloud Shell の PowerShell には、Azure ドライブ (`Azure:`) が備わっています。 「`cd Azure:`」で Azure ドライブに切り替えたり、「`cd  ~`」でホーム ディレクトリに戻ったりすることができます。
 Azure ドライブを使用すると、ファイル システムのナビゲーションと同じように、Compute、Network、Storage などの Azure リソースを簡単に検出およびナビゲーションできるようになります。
 使用しているドライブに関係なく、引き続き使い慣れた [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure)を使用してこれらのリソースを管理できます。
 Azure リソースに対するすべての変更は、Azure Portal で直接行われたものも、Azure PowerShell コマンドレット経由で行われたものも、Azure ドライブに反映されます。  `dir -Force` を実行してリソースを最新の情報に更新できます。

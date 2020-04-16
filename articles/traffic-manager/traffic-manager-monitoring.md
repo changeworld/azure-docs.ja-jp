@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: rohink
-ms.openlocfilehash: fcc9c5333b37c041342c2d20a53cf5d3908d1a26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938555"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757264"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
 
@@ -25,7 +25,7 @@ Azure Traffic Manager には、エンドポイントの監視と自動フェー�
 
 エンドポイント監視を構成するには、Traffic Manager プロファイルで次の設定を指定する必要があります。
 
-* **プロトコル**。 Traffic Manager がエンドポイントをプローブして正常性をチェックするときに使用するプロトコルとして、HTTP、HTTPS、または TCP を選択します。 HTTPS 監視では、SSL 証明書の存在だけがチェックされ、その証明書が有効かどうかは検証されません。
+* **プロトコル**。 Traffic Manager がエンドポイントをプローブして正常性をチェックするときに使用するプロトコルとして、HTTP、HTTPS、または TCP を選択します。 HTTPS 監視では、TLS/SSL 証明書が有効であるかどうかは検証されず、その証明書が存在することだけが確認されます。
 * **Port**。 要求に使用するポートを選択します。
 * **Path**。 この構成設定は、パス設定を指定する必要がある HTTP プロトコルと HTTPS プロコルでのみ有効です。 TCP 監視プロトコルにこの設定を指定するとエラーになります。 HTTP および HTTPS プロトコルの場合は、監視でアクセスされる Web ページまたはファイルの相対パスと名前を指定します。 スラッシュ (/) は、相対パスの有効なエントリであり、 ファイルがルート ディレクトリ (既定値) にあることを示します。
 * **カスタム ヘッダーの設定** この構成設定は、Traffic Manager がプロファイルのエンドポイントに送信する正常性チェックに特定の HTTP ヘッダーを追加するうえで役に立ちます。 カスタム ヘッダーは、プロファイル レベルおよびエンドポイント レベルで指定できます。プロファイル レベルで指定すると、そのプロファイルのすべてのエンドポイントに適用され、エンドポイント レベルで指定すると、エンドポイントにのみ適用されます。 カスタム ヘッダーを使用すると、ホスト ヘッダーを指定することで、マルチテナント環境のエンドポイントに対する正常性チェックを目的の場所に正しくルーティングできます。 Traffic Manager からの HTTP (S) 要求を特定し、それを別の方法で処理するために使用できる一意のヘッダーを追加することで、この設定を使用することもできます。 コンマで区切られたヘッダーと値のペアを最大 8 つ指定できます。 たとえば、"header1:value1、header2:value2" です。 

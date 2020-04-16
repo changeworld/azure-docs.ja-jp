@@ -5,19 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: eaebcf50084223e1c1f4df30294bece96cffda6d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/27/2020
+ms.openlocfilehash: 18c1d8b42dc73951901ec4ae9b79715ddbd47617
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74774298"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474046"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL のデータイン レプリケーションを構成する方法
 
-この記事では、マスター サーバーとレプリカ サーバーを構成することによって、Azure Database for MySQL サービスのデータイン レプリケーションをセットアップする方法について説明します。 データイン レプリケーションでは、オンプレミス、仮想マシン、または他のクラウド プロバイダーによってホストされるデータベース サービスで実行中のマスター MySQL サーバーから Azure Database for MySQL サービスのレプリカにデータを同期することができます。 
+この記事では、マスター とレプリカのサーバーを構成することによって、Azure Database for MySQL でデータイン レプリケーションをセットアップする方法について説明します。 この記事は、MySQL サーバーとデータベースに関して、ある程度の使用経験があることを前提としています。
 
-この記事は、少なくとも MySQL サーバーと MySQL データベースに関して、ある程度の使用経験があることを前提としています。
+データイン レプリケーションでは、Azure Database for MySQL サービスでレプリカを作成するために、オンプレミス、仮想マシン (VM)、またはクラウド データベース サービスのマスター MySQL サーバーからデータが同期されます。
+
+この記事の手順を実行する前に、データイン レプリケーションの[制限事項と要件](concepts-data-in-replication.md#limitations-and-considerations)を確認してください。
 
 ## <a name="create-a-mysql-server-to-be-used-as-replica"></a>レプリカとして使用する MySQL サーバーの作成
 
@@ -33,10 +35,21 @@ ms.locfileid: "74774298"
 
    レプリカ サーバーにマスター サーバーのユーザー アカウントはレプリケートされません。 レプリカ サーバーへのアクセス権をユーザーに与えることを検討している場合、新しく作成した Azure Database for MySQL サーバーに、すべてのアカウントとそれらに対応する権限を手動で作成する必要があります。
 
-## <a name="configure-the-master-server"></a>マスター サーバーを構成する
-次の手順では、仮想マシンでオンプレミスでホストされる MySQL サーバーを準備して構成するか、データイン レプリケーションのために他のクラウド プロバイダーによってホストされるデータベース サービスを準備して構成します。 このサーバーは、データイン レプリケーションにおける "マスター" サーバーになります。 
+3. マスター サーバーの IP アドレスをレプリカのファイアウォール規則に追加します。 
 
-1. バイナリ ログを有効にする
+   [Azure portal](howto-manage-firewall-using-portal.md) または [Azure CLI](howto-manage-firewall-using-cli.md) を使用してファイアウォール規則を更新します。
+
+## <a name="configure-the-master-server"></a>マスター サーバーを構成する
+次の手順では、仮想マシンでオンプレミスでホストされる MySQL サーバーを準備して構成するか、データイン レプリケーションのために他のクラウド プロバイダーによってホストされるデータベース サービスを準備して構成します。 このサーバーは、データイン レプリケーションにおける "マスター" サーバーになります。
+
+
+1. 続行する前に、[マスター サーバーの要件](concepts-data-in-replication.md#requirements)を確認してください。 
+
+   たとえば、マスター サーバーでポート 3306 での受信トラフィックと送信トラフィックの両方が許可されていて、マスター サーバーに**パブリック IP アドレス**があるか、DNS にパブリックにアクセス可能であるか、または完全修飾ドメイン名 (FQDN) があるかのいずれかであることを確認してください。 
+   
+   別のマシンでホストされている MySQL のコマンド ラインや、Azure portal で使用可能な [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) などのツールから接続を試行することで、マスター サーバーへの接続性をテストします。
+
+2. バイナリ ログを有効にする
 
    マスターでバイナリ ログが有効になっているかどうかを、次のコマンドを実行してチェックします。 
 
@@ -48,7 +61,7 @@ ms.locfileid: "74774298"
 
    `log_bin` の戻り値が "OFF" の場合は、my.cnf ファイルを編集してバイナリ ログを有効 (`log_bin=ON`) にし、サーバーを再起動して変更を反映します。
 
-2. マスター サーバーの設定
+3. マスター サーバーの設定
 
    データイン レプリケーションでは、マスター サーバーとレプリカ サーバーとの間でパラメーター `lower_case_table_names` を一致させる必要があります。 Azure Database for MySQL では、このパラメーターが既定で 1 になっています。 
 
@@ -56,9 +69,9 @@ ms.locfileid: "74774298"
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-3. 新しいレプリケーション ロールを作成し、権限をセットアップする
+4. 新しいレプリケーション ロールを作成し、権限をセットアップする
 
-   レプリケーションの権限を持つように構成されたユーザー アカウントをマスター サーバーに作成します。 この作業には SQL コマンドのほか、MySQL Workbench などのツールを使用することができます。 レプリケートに SSL を使用するかどうかをよく考えておいてください。ユーザーを作成する際に指定する必要があります。 マスター サーバーに[ユーザー アカウントを追加](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html)する方法については、MySQL のドキュメントを参照してください。 
+   レプリケーションの権限を持つように構成されたユーザー アカウントをマスター サーバーに作成します。 この作業には SQL コマンドのほか、MySQL Workbench などのツールを使用することができます。 レプリケートに SSL を使用するかどうかをよく考えておいてください。ユーザーを作成する際に指定する必要があります。 マスター サーバーに[ユーザー アカウントを追加](https://dev.mysql.com/doc/refman/5.7/en/user-names.html)する方法については、MySQL のドキュメントを参照してください。 
 
    以降のコマンドでは、新たに作成したレプリケーション ロールが、マスターのホスト マシンに限らず、任意のマシンからマスターにアクセスできます。 そのため、create user コマンドには "syncuser@'%'" を指定しています。 [アカウント名の指定](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)について詳しくは、MySQL のドキュメントをご覧ください。
 
@@ -97,7 +110,7 @@ ms.locfileid: "74774298"
    ![[Replication Slave]\(レプリケーション スレーブ\)](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. マスター サーバーを読み取り専用モードに設定する
+5. マスター サーバーを読み取り専用モードに設定する
 
    データベースのダンプを開始する前に、サーバーを読み取り専用モードにする必要があります。 読み取り専用モードの間、マスターは書き込みトランザクションを一切処理できなくなります。 業務への影響を見積もり、必要であればピーク時を外して読み取り専用の時間帯をスケジュールしてください。
 
@@ -106,7 +119,7 @@ ms.locfileid: "74774298"
    SET GLOBAL read_only = ON;
    ```
 
-5. バイナリ ログ ファイルの名前とオフセットを取得する
+6. バイナリ ログ ファイルの名前とオフセットを取得する
 
    [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) コマンドを実行して、現在のバイナリ ログ ファイルの名前とオフセットを調べます。
     
@@ -159,7 +172,7 @@ ms.locfileid: "74774298"
 > [!NOTE]
 > マスター サーバーが Azure VM にホストされる場合は、[Azure サービスへのアクセスを許可] を [有効] に設定して、マスター サーバーとレプリカ サーバーが相互に通信できるようにします。 この設定は、 **[接続のセキュリティ]** オプションから変更できます。 詳細については、[ポータルを使用したファイアウォール規則の管理](howto-manage-firewall-using-portal.md)に関するページを参照してください。
 
-   **例**
+   **使用例**
 
    *SSL を使用したレプリケーション*
 
@@ -167,7 +180,7 @@ ms.locfileid: "74774298"
 
    ```sql
    SET @cert = '-----BEGIN CERTIFICATE-----
-   PLACE YOUR PUBLIC KEY CERTIFICATE’S CONTEXT HERE
+   PLACE YOUR PUBLIC KEY CERTIFICATE'`S CONTEXT HERE
    -----END CERTIFICATE-----'
    ```
 
@@ -228,5 +241,5 @@ CALL mysql.az_replication_remove_master;
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure Database for MySQL の[データイン レプリケーション](concepts-data-in-replication.md)について確認します。 

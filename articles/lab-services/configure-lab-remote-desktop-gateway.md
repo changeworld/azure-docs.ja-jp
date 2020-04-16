@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76170279"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529422"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>リモート デスクトップ ゲートウェイを使用するように Azure DevTest Labs でラボを構成します
 Azure DevTest Labs では、RDP ポートを公開することなくラボ仮想マシン (VM) に安全にアクセスできるようにするために、ラボ用のリモート デスクトップ ゲートウェイを構成できます。 ラボは、ラボ ユーザーがアクセスできるすべての仮想マシンを表示および接続するための中央の場所を提供します。 **[仮想マシン]** ページの **[接続]** ボタンにより、そのマシンに接続するために開くことができるマシン固有の RDP ファイルが作成されます。 ラボをリモート デスクトップ ゲートウェイに接続することで、RDP 接続をさらにカスタマイズして保護できます。 
@@ -43,7 +43,7 @@ Azure DevTest Labs では、RDP ポートを公開することなくラボ仮想
 DevTest Labs のトークン認証機能を使用するには、ゲートウェイ マシン、ドメイン ネーム サービス (DNS)、関数に関するいくつかの構成要件があります。
 
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>リモート デスクトップ ゲートウェイ マシンの要件
-- HTTPS トラフィックを処理するには、SSL 証明書がゲートウェイ マシンにインストールされている必要があります。 証明書は、ゲートウェイ ファームのロード バランサーの完全修飾ドメイン名 (FQDN)、またはマシンが 1 台しかない場合はマシン自体の FQDN と一致する必要があります。 ワイルドカード SSL 証明書は機能しません。  
+- HTTPS トラフィックを処理するには、TLS/SSL 証明書がゲートウェイ マシンにインストールされている必要があります。 証明書は、ゲートウェイ ファームのロード バランサーの完全修飾ドメイン名 (FQDN)、またはマシンが 1 台しかない場合はマシン自体の FQDN と一致する必要があります。 ワイルドカード TLS/SSL 証明書は機能しません。  
 - 署名証明書がゲートウェイ マシンにインストールされている必要があります。 署名証明書は [Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) スクリプトを使用して作成します。
 - リモート デスクトップ ゲートウェイのトークン認証をサポートする[プラグ可能認証](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273)モジュールをインストールします。 このようなモジュールの 1 つの例に、[System Center Virtual Machine Manager (VMM) のイメージ](/system-center/vmm/install-console?view=sc-vmm-1807)に付属している `RDGatewayFedAuth.msi` があります。 System Center の詳細については、[System Center のドキュメント](https://docs.microsoft.com/system-center/)と[価格の詳細](https://www.microsoft.com/cloud-platform/system-center-pricing)を参照してください。  
 - ゲートウェイ サーバーで `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` に対する要求を処理できます。
@@ -58,7 +58,7 @@ Azure 関数は、`https://{function-app-uri}/app/host/{lab-machine-name}/port/{
 
 ## <a name="requirements-for-network"></a>ネットワークの要件
 
-- ゲートウェイ マシンにインストールされている SSL 証明書に関連付けられている FQDN の DNS は、ゲートウェイ マシンまたはゲートウェイ マシン ファームのロード バランサーにトラフィックを送信する必要があります。
+- ゲートウェイ マシンにインストールされている TLS/SSL 証明書に関連付けられている FQDN の DNS は、ゲートウェイ マシンまたはゲートウェイ マシン ファームのロード バランサーにトラフィックを送信する必要があります。
 - ラボ マシンでプライベート IP を使用する場合は、同じ仮想ネットワークを共有するか、ピアリングされた仮想ネットワークを使用することによって、ゲートウェイ マシンからラボ マシンへのネットワーク パスを設定する必要があります。
 
 ## <a name="configure-the-lab-to-use-token-authentication"></a>トークン認証を使用するようにラボを構成する 
@@ -79,7 +79,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 1. ラボの一覧で、目的の**ラボ**を選択します。
 1. ラボのページで、 **[構成とポリシー]** を選択します。
 1. 左側のメニューの **[設定]** セクションで、 **[ラボの設定]** を選択します。
-1. **[リモート デスクトップ]** セクションで、 **[ゲートウェイ ホスト名]** フィールドに、リモート デスクトップ サービスのゲートウェイ マシンまたはファームの完全修飾ドメイン名 (FQDN) または IP アドレスを入力します。 この値は、ゲートウェイ マシンで使用されている SSL 証明書の FQDN と一致する必要があります。
+1. **[リモート デスクトップ]** セクションで、 **[ゲートウェイ ホスト名]** フィールドに、リモート デスクトップ サービスのゲートウェイ マシンまたはファームの完全修飾ドメイン名 (FQDN) または IP アドレスを入力します。 この値は、ゲートウェイ マシンで使用されている TLS/SSL 証明書の FQDN と一致する必要があります。
 
     ![ラボ設定のリモート デスクトップ オプション](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
 1. **[リモート デスクトップ]** セクションの **[Gateway token secret]\(ゲートウェイ トークン シークレット\)**  に、先ほど作成したシークレットの名前を入力します。 この値は関数キー自体ではなく、関数キーを保持するラボのキー コンテナー内のシークレットの名前です。
@@ -110,7 +110,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 リモート デスクトップ ゲートウェイ ファーム用のサンプル ソリューションを設定するには、次の手順に従います。
 
 1. 署名証明書を作成します。  [Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) を実行します。 作成した証明書の拇印、パスワード、Base64 エンコードを保存します。
-2. SSL 証明書を取得します。 SSL 証明書に関連付けられている FQDN は、管理するドメインのものでなくてなはりません。 この証明書の拇印、パスワード、Base64 エンコードを保存します。 PowerShell を使用して拇印を取得するには、次のコマンドを使用します。
+2. TLS/SSL 証明書を取得します。 TLS/SSL 証明書に関連付けられている FQDN は、管理するドメインのものでなくてなはりません。 この証明書の拇印、パスワード、Base64 エンコードを保存します。 PowerShell を使用して拇印を取得するには、次のコマンドを使用します。
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
@@ -132,9 +132,9 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
     - instanceCount – 作成するゲートウェイ マシンの数。  
     - alwaysOn – 作成した Azure Functions アプリをウォーム状態に保つかどうかを示します。 Azure Functions アプリを保つことにより、ユーザーが最初にラボ VM に接続しようとしたときの遅延を回避できますが、コストの問題が生じます。  
     - tokenLifetime – 作成されたトークンが有効な期間。 形式は HH:MM:SS です。
-    - sslCertificate – ゲートウェイ マシン用の SSL 証明書の Base64 エンコード。
-    - sslCertificatePassword – ゲートウェイ マシン用の SSL 証明書のパスワード。
-    - sslCertificateThumbprint - SSL 証明書のローカル証明書ストアにある識別用の証明書の拇印。
+    - sslCertificate – ゲートウェイ マシン用の TLS/SSL 証明書の Base64 エンコード。
+    - sslCertificatePassword – ゲートウェイ マシン用の TLS/SSL 証明書のパスワード。
+    - sslCertificateThumbprint - TLS/SSL 証明書のローカル証明書ストアにある識別用の証明書の拇印。
     - sslCertificate – ゲートウェイ マシン用の署名証明書の Base64 エンコード。
     - signCertificatePassword – ゲートウェイ マシン用の署名証明書のパスワード。
     - signCertificateThumbprint - 署名証明書のローカル証明書ストアにある識別用の証明書の拇印。
@@ -157,7 +157,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
         - {utc-expiration-date} は、SAS トークンが期限切れになり、SAS トークンを使用してストレージアカウントにアクセスできなくなる日付を UTC で表したものです。
 
     テンプレートのデプロイ出力から gatewayFQDN と gatewayIP の値を記録します。 新しく作成された関数 ([[Function App の設定]](../azure-functions/functions-how-to-use-azure-function-app-settings.md) タブにあります) の関数キーの値を保存する必要もあります。
-5. SSL 証明書の FQDN が前のステップの gatewayIP の IP アドレスを指すように DNS を構成します。
+5. TLS/SSL 証明書の FQDN が前のステップの gatewayIP の IP アドレスを指すように DNS を構成します。
 
     リモート デスクトップ ゲートウェイ ファームが作成され、DNS が適切に更新されたら、DevTest Labs のラボで使用できるようになります。 デプロイしたゲートウェイ マシンを使用するように、**ゲートウェイ ホスト名**と**ゲートウェイ トークン シークレット**の設定を構成する必要があります。 
 

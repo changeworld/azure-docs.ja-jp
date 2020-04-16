@@ -11,14 +11,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 7e8a1793a329a863c9df97ae5ddcbee6cef10e8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf13dbe17738ca1ae658c73bb0092a219b4823d1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76964342"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415899"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Factory で SQL Server Integration Services (SSIS) を使用する場合、次のシナリオでは、Azure-SSIS 統合ランタイム (IR) を Azure 仮想ネットワークに参加させる必要があります。
 
@@ -129,7 +131,7 @@ Azure-SSIS IR を作成するユーザーは、次のアクセス許可を持っ
 
 Azure-SSIS IR を仮想ネットワークに参加させながら、独自の静的パブリック IP アドレスを使用する場合は、以下の要件を満たしていることを確認してください。
 
-- まだ他の Azure リソースに関連付けられていない 2 つの未使用のもののみを指定する必要があります。 余分なものは、定期的に Azure-SSIS IR をアップグレードするときに使用されます。
+- まだ他の Azure リソースに関連付けられていない 2 つの未使用のもののみを指定する必要があります。 余分なものは、定期的に Azure-SSIS IR をアップグレードするときに使用されます。 アクティブな Azure-SSIS IR 間で 1 つのパブリック IP アドレスを共有することはできません。
 
 - これらの両方が、標準の種類の静的なものである必要があります。 詳細については、[パブリック IP アドレスの SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) に関するページを参照してください。
 
@@ -191,10 +193,56 @@ Azure Batch 管理サービスと Azure-SSIS IR 間の受信トラフィック�
 > [!NOTE]
 > この方法では、追加のメンテナンス コストが発生します。 Azure-SSIS IR が中断されないように、IP 範囲を定期的に確認し、UDR に新しい IP 範囲を追加します。 IP 範囲は月単位で確認することをお勧めします。これは、新しい IP がサービス タグに示された場合、IP が有効になるまでさらに 1 か月かかるためです。 
 
+UDR 規則のセットアップを簡単にするために、次の Powershell スクリプトを実行して Azure Batch 管理サービスの UDR 規則を追加できます。
+```powershell
+$Location = "[location of your Azure-SSIS IR]"
+$RouteTableResourceGroupName = "[name of Azure resource group that contains your Route Table]"
+$RouteTableResourceName = "[resource name of your Azure Route Table ]"
+$RouteTable = Get-AzRouteTable -ResourceGroupName $RouteTableResourceGroupName -Name $RouteTableResourceName
+$ServiceTags = Get-AzNetworkServiceTag -Location $Location
+$BatchServiceTagName = "BatchNodeManagement." + $Location
+$UdrRulePrefixForBatch = $BatchServiceTagName
+if ($ServiceTags -ne $null)
+{
+    $BatchIPRanges = $ServiceTags.Values | Where-Object { $_.Name -ieq $BatchServiceTagName }
+    if ($BatchIPRanges -ne $null)
+    {
+        Write-Host "Start to add rule for your route table..."
+        for ($i = 0; $i -lt $BatchIPRanges.Properties.AddressPrefixes.Count; $i++)
+        {
+            $UdrRuleName = "$($UdrRulePrefixForBatch)_$($i)"
+            Add-AzRouteConfig -Name $UdrRuleName `
+                -AddressPrefix $BatchIPRanges.Properties.AddressPrefixes[$i] `
+                -NextHopType "Internet" `
+                -RouteTable $RouteTable `
+                | Out-Null
+            Write-Host "Add rule $UdrRuleName to your route table..."
+        }
+        Set-AzRouteTable -RouteTable $RouteTable
+    }
+}
+else
+{
+    Write-Host "Failed to fetch service tags, please confirm that your Location is valid."
+}
+```
+
 ファイアウォール アプライアンスで送信トラフィックを許可するには、NSG アウトバウンド規則の要件と同じように、以下のポートへの送信を許可する必要があります。
 -   送信先が Azure クラウド サービスであるポート 443。
 
-    Azure Firewall を使用する場合は、Azure クラウド サービス タグでネットワーク規則を指定できます。それ以外の場合は、包括的なファイアウォール アプライアンスとして送信先を許可することができます。
+    Azure Firewall を使用する場合は、AzureCloud サービス タグでネットワーク規則を指定できます。 他の種類のファイアウォールについては、単にポート 443 の宛先をすべて許可するか、Azure 環境の種類に基づいて以下の FQDN を許可することができます。
+
+    | Azure 環境 | エンドポイント                                                                                                                                                                                                                                                                                                                                                              |
+    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Azure Public      | <ul><li><b>Azure Data Factory (管理)</b><ul><li>\*.frontend.clouddatahub.net</li></ul></li><li><b>Azure Storage (管理)</b><ul><li>\*.blob.core.windows.net</li><li>\*.table.core.windows.net</li></ul></li><li><b>Azure Container Registry (カスタム セットアップ)</b><ul><li>\*.azurecr.io</li></ul></li><li><b>イベント ハブ (ログ)</b><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>Microsoft ログ サービス (内部使用)</b><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
+    | Azure Government  | <ul><li><b>Azure Data Factory (管理)</b><ul><li>\*.frontend.datamovement.azure.us</li></ul></li><li><b>Azure Storage (管理)</b><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*.table.core.usgovcloudapi.net</li></ul></li><li><b>Azure Container Registry (カスタム セットアップ)</b><ul><li>\*.azurecr.us</li></ul></li><li><b>イベント ハブ (ログ)</b><ul><li>\*.servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft ログ サービス (内部使用)</b><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
+    | Azure China 21Vianet     | <ul><li><b>Azure Data Factory (管理)</b><ul><li>\*.frontend.datamovement.azure.cn</li></ul></li><li><b>Azure Storage (管理)</b><ul><li>\*.blob.core.chinacloudapi.cn</li><li>\*.table.core.chinacloudapi.cn</li></ul></li><li><b>Azure Container Registry (カスタム セットアップ)</b><ul><li>\*.azurecr.cn</li></ul></li><li><b>イベント ハブ (ログ)</b><ul><li>\*.servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft ログ サービス (内部使用)</b><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul> |
+
+    Azure Storage、Azure Container Registry、およびイベント ハブの FQDN については、仮想ネットワークの次のサービス エンドポイントを有効にして、これらのエンドポイントへのネットワーク トラフィックが、ファイアウォール アプライアンスにルーティングされるのではなく、Azure バックボーン ネットワークを経由するようにすることもできます。
+    -  Microsoft.Storage
+    -  Microsoft.ContainerRegistry
+    -  Microsoft.EventHub
+
 
 -   送信先が CRL のダウンロード サイトであるポート 80。
 
@@ -241,7 +289,7 @@ Azure SSIS IR では、仮想ネットワークと同じリソース グルー�
 > [!NOTE]
 > これで、Azure-SSIS IR に独自の静的パブリック IP アドレスを使用できるようになりました。 このシナリオでは、仮想ネットワークではなく、静的パブリック IP アドレスと同じリソース グループに、Azure ロード バランサーとネットワーク セキュリティ グループのみを作成します。
 
-これらのリソースは、Azure-SSIS IR の開始時に作成されます。 これらは、Azure-SSIS IR の停止時に削除されます。 Azure-SSIS IR 用に独自の静的パブリック IP アドレスを使用する場合は、Azure-SSIS IR の停止時に削除されません。 Azure-SSIS IR の停止がブロックされないように、他のリソースでこれらのネットワーク リソースを再利用しないでください。 
+これらのリソースは、Azure-SSIS IR の開始時に作成されます。 これらは、Azure-SSIS IR の停止時に削除されます。 Azure-SSIS IR 用に独自の静的パブリック IP アドレスを使用する場合は、Azure-SSIS IR の停止時に独自の静的パブリック IP アドレスは削除されません。 Azure-SSIS IR の停止がブロックされないように、他のリソースでこれらのネットワーク リソースを再利用しないでください。
 
 仮想ネットワークまたは静的パブリック IP アドレスが属しているリソース グループまたはサブスクリプションに、リソース ロックがないことを確認します。 読み取り専用または削除ロックを構成した場合、Azure-SSIS IR の開始と停止が失敗するか、応答しなくなります。
 
@@ -249,6 +297,8 @@ Azure SSIS IR では、仮想ネットワークと同じリソース グルー�
 - Microsoft.Network/LoadBalancers 
 - Microsoft.Network/NetworkSecurityGroups 
 - Microsoft.Network/PublicIPAddresses 
+
+サブスクリプションのリソース クォータが、上記の 3 つのネットワーク リソースに対して十分であることを確認します。 具体的には、仮想ネットワークで作成された Azure-SSIS IR ごとに、上記の 3 つのネットワーク リソースそれぞれに対して 2 つの空きクォータを予約する必要があります。 追加の 1 つのクォータは、定期的に Azure-SSIS IR をアップグレードするときに使用されます。
 
 ### <a name="faq"></a><a name="faq"></a> FAQ
 

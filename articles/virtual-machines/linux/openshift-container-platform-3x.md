@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/14/2019
+ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 615d9a3c5c359174ef15028e82044a85da0dd733
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd1c381ecd2b7dba4c77a025cb0332ace4147bf
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75561288"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673659"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>OpenShift Container Platform 3.11 を Azure へデプロイする
 
@@ -303,7 +303,7 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 | `masterClusterType` | クラスターがプライベートまたはパブリックのどちらのマスター ノードを使用するかを指定します。 プライベートを選択した場合、マスター ノードがパブリック IP 経由でインターネットに公開されることはありません。 代わりに、`masterPrivateClusterIp` に指定されたプライベート IP を使用します | public <br> プライベート | public |
 | `masterPrivateClusterIp` | プライベート マスター ノードが選択された場合、内部ロード バランサーによってマスター ノードに対して使用されるプライベート IP アドレスを指定する必要があります。 この静的 IP はマスター サブネット用の CIDR ブロック内にあり、既に使用されていないことが要件となります。 パブリック マスター ノードが選択された場合、この値は使用されないが、やはり指定しておく必要があります |  | 10.1.0.200 |
 | `routerClusterType` | クラスターがプライベートまたはパブリックのどちらのインフラ ノードを使用するかを指定します。 プライベートが選択された場合、インフラ ノードがパブリック IP 経由でインターネットに公開されることはありません。 代わりに、`routerPrivateClusterIp` に指定されたプライベート IP を使用します | public <br> プライベート | public |
-| `routerPrivateClusterIp` | プライベート インフラ ノードが選択された場合、内部ロード バランサーによってインフラ ノードに対して使用されるプライベート IP アドレスを指定する必要があります。 この静的 IP はマスター サブネット用の CIDR ブロック内にあり、既に使用されていないことが要件となります。 パブリック インフラ ノードが選択された場合、この値は使用されないが、やはり指定しておく必要があります |  | 10.2.0.200 |
+| `routerPrivateClusterIp` | プライベート インフラ ノードが選択された場合、内部ロード バランサーによってインフラ ノードに対して使用されるプライベート IP アドレスを指定する必要があります。 この静的 IP はインフラ サブネット用の CIDR ブロック内にあり、既に使用されていないことが要件となります。 パブリック インフラ ノードが選択された場合、この値は使用されないが、やはり指定しておく必要があります |  | 10.2.0.200 |
 | `routingCertType` | ルーティング ドメイン用のカスタム証明書または既定の自己署名証明書を使用 - 「**カスタム証明書**」セクションの手順に従います | selfsigned <br> custom | selfsigned |
 | `masterCertType` | マスター ドメイン用のカスタム証明書または既定の自己署名証明書を使用 - 「**カスタム証明書**」セクションの手順に従います | selfsigned <br> custom | selfsigned |
 

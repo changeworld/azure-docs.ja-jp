@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: b0dc974185ad616d57327e9cc3743db9ecb20e54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 803783eddfbffd5c3dbab7353ee00dd7f11a09e5
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302731"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618893"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: クラスター作成時のエラー
 
@@ -157,7 +157,7 @@ HDInsight サービスから、クラスター作成要求の一部として指�
 
 ---
 
-## <a name="error-code-storagepermissionsblockedformsi"></a>エラー コード:StoragePermissionsBlockedForMsi  
+## <a name="error-code-storagepermissionsblockedformsi"></a>エラー コード:StoragePermissionsBlockedForMsi
 
 ### <a name="error"></a>エラー
 
@@ -178,7 +178,7 @@ ID の管理に必要なアクセス許可を指定しませんでした。 ユ�
 
 ---
 
-## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>エラー コード:InvalidNetworkSecurityGroupSecurityRules  
+## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>エラー コード:InvalidNetworkSecurityGroupSecurityRules
 
 ### <a name="error"></a>エラー
 
@@ -195,12 +195,12 @@ ID の管理に必要なアクセス許可を指定しませんでした。 ユ�
 - HDInsight で使用する予定の Azure リージョンを特定し、リージョンの安全な IP アドレスの一覧を作成します。 詳細については、「[正常性サービスと管理サービス: 特定のリージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)」を参照してください。
 - HDInsight で必要な IP アドレスを特定します。 詳細については、「 [HDInsight の管理 IP アドレス](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)」を参照してください。
 - HDInsight をインストールする予定のサブネットのネットワーク セキュリティ グループを作成または変更します。 ネットワーク セキュリティ グループの場合、IP アドレスからの受信トラフィックをポート 443 で許可します。 この構成により、HDInsight 管理サービスが仮想ネットワークの外部からクラスターに確実に到達できるようになります。
-  
+
 ---
 
 ## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>エラー コード:クラスターのセットアップで、1 つまたは複数のホストにコンポーネントをインストールできませんでした
 
-###  <a name="error"></a>エラー
+### <a name="error"></a>エラー
 
 "クラスターのセットアップで、1 つまたは複数のホストにコンポーネントをインストールできませんでした。 要求を再試行してください。"
 
@@ -211,6 +211,42 @@ ID の管理に必要なアクセス許可を指定しませんでした。 ユ�
 ### <a name="resolution"></a>解像度
 
 [Azure の状態](https://status.azure.com)ページで、クラスターのデプロイに影響する可能性がある Azure の停止を確認してください。 停止が発生していない場合は、クラスターのデプロイを再試行してください。
+
+---
+
+## <a name="error-code-failedtoconnectwithclustererrorcode"></a>Error Code:FailedToConnectWithClusterErrorCode
+
+### <a name="error"></a>エラー
+
+クラスター管理エンドポイントに接続することができません。 後で再試行してください。
+
+### <a name="cause"></a>原因
+
+HDInsight サービスが、クラスターを作成しようとしているときにクラスターに接続できません
+
+### <a name="resolution"></a>解像度
+
+カスタム VNet ネットワーク セキュリティ グループ (NSG) とユーザー定義ルート (UDR) を使用している場合は、クラスターが HDInsight 管理サービスと通信できることを確認してください。 詳細については、[HDInsight 管理 IP アドレス](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)に関する記事を参照してください。
+
+---
+
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Error Code:Deployments failed due to policy violation:'Resource '<Resource URI>' was disallowed by policy. Policy identifiers: '[{"policyAssignment":{"name":"<Policy Name> ","id":"/providers/Microsoft.Management/managementGroups/<Management Group Name> providers/Microsoft.Authorization/policyAssignments/<Policy Name>"},"policyDefinition": <Policy Definition>
+
+### <a name="cause"></a>原因
+
+サブスクリプションベースの Azure ポリシーによって、パブリック IP アドレスの作成が拒否されている可能性があります。 HDInsight クラスターの作成には、2 つのパブリック IP が必要です。
+
+次のポリシーは、一般にクラスターの作成に影響を与えます。
+
+* サブスクリプション内の IP アドレスまたはロード バランサーの作成を妨げるポリシー。
+* ストレージ アカウントの作成を妨げるポリシー。
+* IP アドレスやロード バランサーなどのネットワーク リソースの削除を妨げるポリシー。
+
+### <a name="resolution"></a>解像度
+
+HDInsight クラスターを作成しているときに、サブスクリプションベースの Azure ポリシーを削除または無効にします。
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

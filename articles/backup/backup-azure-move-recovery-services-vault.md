@@ -4,12 +4,12 @@ description: Recovery Services コンテナーを Azure サブスクリプショ
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: fed42c578da2e4f27f42e11d5ac67d698bbcd939
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3cfd442d49de2661d68de3c4e4b3575119504eb4
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77120714"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804420"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 
@@ -41,14 +41,14 @@ Recovery Services コンテナーのリソースの移動がサポートされ�
 - VM のバックアップ データがあるコンテナーをサブスクリプションをまたいで移動する場合、バックアップを継続するためには、お客様の VM を同じサブスクリプションに移動し、同じターゲット VM リソース グループ名 (以前のサブスクリプションと同じもの) を使用する必要があります。
 
 > [!NOTE]
->
-> **Azure Site Recovery** で使用するように構成された Recovery Services コンテナーは、まだ移動できません。 **Azure Site Recovery** を使用して、いずれかの VM (Azure IaaS、HYPER-V、VMware) または物理マシンをディザスター リカバリー用に構成している場合、移動操作はブロックされます。 Site Recovery サービスに対するリソースの移動機能は、まだ使用できません。
+> Azure リージョン間で Azure Backup 用の Recovery Services コンテナーを移動することはできません。<br><br>
+> **Azure Site Recovery** を使用して、いずれかの VM (Azure IaaS、HYPER-V、VMware) または物理マシンをディザスター リカバリー用に構成している場合、移動操作はブロックされます。 Azure Site Recovery 用のコンテナーを移動する場合は、[この記事](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions)を参照して、コンテナーを手動で移動する方法を確認してください。
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Azure portal を使用して Recovery Services コンテナーを別のリソース グループに移動する
 
 Recovery Services コンテナーとその関連リソースを別のリソース グループに移動するには
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **Recovery Services コンテナー**の一覧を開き、移動するコンテナーの名前を選択します。 コンテナーのダッシュボードが開き、次の図のように表示されます。
 
    ![Recover Service コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -77,7 +77,7 @@ Recovery Services コンテナーとその関連リソースを別のリソー�
 
 Recovery Services コンテナーとその関連リソースを別のサブスクリプションに移動できます
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. Recovery Services コンテナーの一覧を開き、移動するコンテナーを選択します。 コンテナーのダッシュボードが開き、次の図のように表示されます。
 
     ![Recover Service コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)

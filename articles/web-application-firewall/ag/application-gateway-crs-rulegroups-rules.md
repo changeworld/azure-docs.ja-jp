@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563aa701c1403a1ef26c6073496e7e59c7c5096c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235707"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521842"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web アプリケーション ファイアウォールの CRS 規則グループと規則
 
@@ -281,6 +281,7 @@ WAF は、次の Web の脆弱性から保護します。
 |---|---|
 |942100|libinjection を通じて SQL インジェクション攻撃が検出されました|
 |942110|SQL インジェクション攻撃:一般的なインジェクション テストが検出されました|
+|942120|SQL インジェクション攻撃:SQL 演算子が検出されました|
 |942130|SQL インジェクション攻撃:SQL トートロジーが検出されました。|
 |942140|SQL インジェクション攻撃 = 共通 DB 名が検出されました|
 |942150|SQL インジェクション攻撃|

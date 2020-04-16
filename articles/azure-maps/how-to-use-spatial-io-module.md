@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5bcfeebc1fcb96cfdf6ea802293eb4027f339815
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335206"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804641"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure Maps の空間 IO モジュールの使用方法
 
@@ -26,6 +26,13 @@ Azure Maps Web SDK には、JavaScript または TypeScript を使用して、�
 - [高速 XML および区切りファイル リーダーとライター クラスを利用する。](spatial-io-core-operations.md)
 
 このガイドでは、Web アプリケーションに空間 IO モジュールを統合して使用する方法について説明します。
+
+この動画では、Azure Maps Web SDK での空間 IO モジュールの概要を示します。
+
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="空間データを Azure Maps に簡単に統合する - Microsoft Channel 9 の動画"></iframe>
+
 
 > [!WARNING]
 > 特に別のドメインから参照する場合は、信頼できるソースからのデータとサービスのみを使用します。 空間 IO モジュールではリスクを最小限に抑えるための手順を行いますが、最初にアプリケーションに危険なデータを許可しないことが最も安全な方法です。 

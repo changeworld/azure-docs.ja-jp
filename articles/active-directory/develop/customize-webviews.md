@@ -13,42 +13,51 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 759f61860c62bcb668db6844df28c52fa28eac80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8552fc8555207c5b6ca59bbd0da0fdebaae2e87b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085911"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546104"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>方法:iOS/macOS のブラウザーと WebView のカスタマイズ
 
-対話型の認証には Web ブラウザーが必要です。 iOS の場合、Microsoft Authentication Library (MSAL) ではシステムの Web ブラウザー (アプリの上部に表示される場合があります) を既定で使用することで、ユーザーのサインインのための対話型認証が行われます。 システム ブラウザーを使用すると、シングル サインオン (SSO) の状態を他のアプリケーションや Web アプリケーションと共有できるという利点があります。
+対話型の認証には Web ブラウザーが必要です。 iOS および macOS 10.15 以降の場合、Microsoft Authentication Library (MSAL) ではシステムの Web ブラウザー (アプリの上部に表示される場合があります) を既定で使用することで、ユーザーのサインインのための対話型認証が行われます。 システム ブラウザーを使用すると、シングル サインオン (SSO) の状態を他のアプリケーションや Web アプリケーションと共有できるという利点があります。
 
 次のような Web コンテンツを表示するためのその他のオプションに対する構成をカスタマイズすることで、エクスペリエンスを変更できます。
 
 iOS の場合のみ:
 
-- [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)
 - [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession?language=objc) 
 - [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller?language=objc)
 
 iOS と macOS の場合:
 
+- [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)
 - [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc).
 
-macOS 用の MSAL では、`WKWebView` のみがサポートされます。
+macOS 用の MSAL の場合、以前のバージョンの OS では `WKWebView` のみサポートされています。 `ASWebAuthenticationSession` は、macOS 10.15 以降でのみサポートされます。 
 
 ## <a name="system-browsers"></a>システム ブラウザー
 
-iOS の場合、`ASWebAuthenticationSession`、`SFAuthenticationSession`、`SFSafariViewController` がシステムブラウザーと見なされます。 一般に、システム ブラウザーは、Cookie およびその他の Web サイト データを Safari ブラウザー アプリケーションと共有します。
+iOS の場合、`ASWebAuthenticationSession`、`SFAuthenticationSession`、`SFSafariViewController` がシステムブラウザーと見なされます。 MacOS の場合は、`ASWebAuthenticationSession` のみ使用できます。 一般に、システム ブラウザーは、Cookie およびその他の Web サイト データを Safari ブラウザー アプリケーションと共有します。
 
 既定では、MSAL では iOS のバージョンが動的に検出され、そのバージョンで使用可能な推奨システムブラウザーが選択されます。 iOS 12 以降では、`ASWebAuthenticationSession` になります。 
+
+### <a name="default-configuration-for-ios"></a>iOS の既定の構成
 
 | Version | Web ブラウザー |
 |:-------------:|:-------------:|
 | iOS 12 以降 | ASWebAuthenticationSession |
 | iOS 11 | SFAuthenticationSession |
 | iOS 10 | SFSafariViewController |
+
+### <a name="default-configuration-for-macos"></a>macOS の既定の構成
+
+| Version | Web ブラウザー |
+|:-------------:|:-------------:|
+| macOS 10.15 以降 | ASWebAuthenticationSession |
+| その他のバージョン | WKWebView |
 
 開発者は、MSAL アプリ用に別のシステム ブラウザーを選択することもできます。
 
@@ -65,7 +74,7 @@ iOS の場合、`ASWebAuthenticationSession`、`SFAuthenticationSession`、`SFSa
 
 | テクノロジ    | ブラウザーの種類  | iOS での使用可能性 | macOS での使用可能性 | Cookie およびその他のデータの共有  | MSAL の使用可能性 | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | システム | iOS12 以降 | macOS 10.15 以降 | はい | iOS のみ | w/ Safari インスタンス
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | システム | iOS12 以降 | macOS 10.15 以降 | はい | iOS および macOS 10.15 以降 | w/ Safari インスタンス
 | [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | システム | iOS11 以降 | 該当なし | はい | iOS のみ |  w/ Safari インスタンス
 | [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | システム | iOS11 以降 | 該当なし | いいえ | iOS のみ | いいえ**
 | **SFSafariViewController** | システム | iOS10 | 該当なし | はい | iOS のみ |  w/ Safari インスタンス
@@ -138,21 +147,26 @@ extern NSString *MSALWebAuthWillSwitchToBrokerApp;
 ```objc
 typedef NS_ENUM(NSInteger, MSALWebviewType)
 {
-#if TARGET_OS_IPHONE
-    // For iOS 11 and up, uses AuthenticationSession (ASWebAuthenticationSession
-    // or SFAuthenticationSession).
-    // For older versions, with AuthenticationSession not being available, uses
-    // SafariViewController.
+    /**
+     For iOS 11 and up, uses AuthenticationSession (ASWebAuthenticationSession or SFAuthenticationSession).
+     For older versions, with AuthenticationSession not being available, uses SafariViewController.
+     For macOS 10.15 and above uses ASWebAuthenticationSession
+     For older macOS versions uses WKWebView
+     */
     MSALWebviewTypeDefault,
     
-    // Use SFAuthenticationSession/ASWebAuthenticationSession
+    /** Use ASWebAuthenticationSession where available.
+     On older iOS versions uses SFAuthenticationSession
+     Doesn't allow any other webview type, so if either of these are not present, fails the request*/
     MSALWebviewTypeAuthenticationSession,
     
-    // Use SFSafariViewController for all versions.
+#if TARGET_OS_IPHONE
+    
+    /** Use SFSafariViewController for all versions. */
     MSALWebviewTypeSafariViewController,
     
 #endif
-    // Use WKWebView
+    /** Use WKWebView */
     MSALWebviewTypeWKWebView,
 };
 ```

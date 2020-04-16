@@ -2,24 +2,21 @@
 title: Web API を呼び出す Web アプリを構築する - Microsoft ID プラットフォーム | Azure
 description: Web API を呼び出す Web アプリ を構築する方法 (概要) について説明します
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d121d6c198cb0d92cd098a40096e2f2300f65537
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5af9e34baf6115e801fbfe35e6e3895e48b360e7
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76758991"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881725"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>シナリオ:Web API を呼び出す Web アプリ
 
@@ -48,7 +45,7 @@ Web API を呼び出す Web アプリは、機密クライアント アプリケ
 > [!NOTE]
 > Web アプリにサインインを追加するということは、Web アプリ自体を保護することです。 この保護は、Microsoft Authentication Library (MSAL) ではなく*ミドルウェア*ライブラリを使用して実現されます。 前述のシナリオでは、[ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md)でこれを説明していました。
 >
-> このシナリオでは、Web アプリから Web API を呼び出す方法について説明します。 これらの Web API のアクセス トークンを取得する必要があります。 これらのトークンを取得するには、MSAL ライブラリを使用します。
+> このシナリオでは、Web アプリから Web API を呼び出す方法について説明します。 これらの Web API のアクセス トークンを取得する必要があります。 MSAL ライブラリを使用してこれらのトークンを取得します。
 
 このシナリオの開発には、次の特定のタスクが含まれます。
 

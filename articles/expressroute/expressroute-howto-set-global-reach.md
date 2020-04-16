@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
-ms.openlocfilehash: 76de7a8854a58deb924cbbe3177ad5a7b5fd57a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 587a17659a412d6f894faf5a744a7d9c444935c8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083458"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656741"
 ---
 # <a name="configure-expressroute-global-reach"></a>ExpressRoute Global Reach を構成する
 
@@ -38,7 +38,7 @@ ms.locfileid: "74083458"
 1. 構成を開始するには、Azure アカウントにサインインし、使用するサブスクリプションを選択します。
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. 使用する ExpressRoute 回線を特定します。 任意の 2 つの ExpressRoute 回線間で ExpressRoute Global Reach を有効にすることができるのは、それらがサポートされている国や地域に配置され、かつ異なるピアリングの場所で作成されている場合だけです。 
+2. 使用する ExpressRoute 回線を特定します。 任意の 2 つの ExpressRoute 回線のプライベート ピアリング間で ExpressRoute Global Reach を有効にすることができるのは、それらがサポートされている国や地域に配置され、かつ異なるピアリングの場所で作成されている場合だけです。 
 
    * サブスクリプションが両方の回線を所有している場合は、以降のセクションで構成を実行するために、どちらかの回線を選択できます。
    * 2 つの回線が異なる Azure サブスクリプションに含まれている場合は、1 つの Azure サブスクリプションからの承認が必要です。 その後、もう一方の Azure サブスクリプションで構成コマンドを実行するときに承認キーを渡します。

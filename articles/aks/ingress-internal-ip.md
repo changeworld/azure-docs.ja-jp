@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Service (AKS) での内部ネットワーク用のイングレス コントローラーの作成
+title: 内部ネットワーク上のイングレス コントローラー
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) クラスターで内部のプライベート ネットワーク用の NGINX イングレス コントローラーをインストールして構成する方法を説明します。
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 8c3eeaf2f9a92f1be9c691091d8e33d09a60b22d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a123a02ed26a5257d3b8e3ee69fb14d96cde550
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595656"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668479"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部の仮想ネットワークにイングレス コントローラーを作成する
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 5236fd89ed99ca14bb7fc24e40ef79e12e5177d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61d0a57c541837ab3aebf65e47d757f7ecbe7e40
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225323"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435989"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。 また、Log Analytics エージェントはクラッシュ ダンプ ファイルもワークスペースにコピーします。
@@ -306,7 +306,7 @@ Security Center がお使いの VM からセキュリティ データを収集�
 
 - 監視対象外の VM およびコンピューターに関する問題を特定するには:
 
-    VM またはコンピューターは、マシンで Microsoft Monitoring Agent 拡張機能が実行されていない場合、Security Center によって監視されません。 マシンには、既にローカル エージェントがインストールされている場合があります (OMS ダイレクト エージェント、System Center Operations Manager エージェントなど)。 これらのエージェントがインストールされているマシンは、監視対象外と見なされます。Security Center ではこれらのエージェントが完全にはサポートされないためです。 Security Center に備わっているあらゆる機能の利点を最大限に活かすためには、Microsoft Monitoring Agent 拡張機能が必要です。
+    VM またはコンピューターは、マシンで Log Analytics エージェント拡張機能が実行されていない場合、Security Center によって監視されません。 マシンには、既にローカル エージェントがインストールされている場合があります (OMS ダイレクト エージェント、System Center Operations Manager エージェントなど)。 これらのエージェントがインストールされているマシンは、監視対象外と見なされます。Security Center ではこれらのエージェントが完全にはサポートされないためです。 Security Center に備わっているあらゆる機能の利点を最大限に活かすためには、Log Analytics エージェント拡張機能が必要です。
 
     自動プロビジョニングの対象として初期化された VM およびコンピューターを Security Center で正常に監視できない理由について詳しくは、「[エージェントの正常性の監視に関する問題](security-center-troubleshooting-guide.md#mon-agent)」を参照してください。
 

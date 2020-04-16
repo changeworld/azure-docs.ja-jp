@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: c2700339a7ac8342da0250227cff898c20e60118
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed744cfbb49393980c2622b00233fca373b32019
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278554"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985135"
 ---
 # <a name="create-a-consulting-offer"></a>コンサルティング オファーを作成する
+
+>[!Important]
+>2020 年 4 月 13 日以降、パートナー センターへのコンサルティング サービス オファーの管理の移行が開始されます。 移行後は、パートナー センターでオファーを作成および管理します。 [コンサルティング サービス作成の概要](https://aka.ms/AzureCreateConsultingService)の手順に従い、移行後のオファーを管理します。
 
 この記事では、コンサルティング サービス オファーを作成して発行する方法について説明します。
 
@@ -34,5 +37,5 @@ ms.locfileid: "80278554"
 
 コンサルティング サービス オファーの種類に対応する **[New Offer]\(新しいオファー\)** ページには、新しいオファーを作成するために使用する一連のタブとフォーム フィールドが用意されています。 以下の記事では、タブを使用して新しいオファーのオファー設定とネットショップの詳細を定義する方法が説明されています。
 
--   [プランの設定を定義する](./cpp-consulting-service-define-offer-settings.md)
--   [ネットショップの詳細を入力し、Azure Marketplace と AppSource のどちらで発行するかを入力する](./cpp-consulting-service-storefront-details.md)
+-    [プランの設定を定義する](./cpp-consulting-service-define-offer-settings.md)
+-    [ネットショップの詳細を入力し、Azure Marketplace と AppSource のどちらで発行するかを入力する](./cpp-consulting-service-storefront-details.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 75cef47c1ed2b6da054442a4a1215141e67ad1b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c76bcbf945c63588f8471c10deca0b5982d3562
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498581"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414247"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 
@@ -219,7 +219,7 @@ Azure Cosmos DB の MongoDB 用 API は、コミュニティでサポートさ�
 
 Azure Cosmos DB の MongoDB 用 API で Cosmo データベースに接続する最も簡単な方法は、[Azure Portal](https://portal.azure.com) を使用することです。 アカウントに移動し、左側のナビゲーション メニューで **[クイック スタート]** をクリックします。 クイック スタートは、コード スニペットを取得してデータベースに接続するための最善の方法です。
 
-Azure Cosmos DB では、厳密なセキュリティ要件と基準が適用されます。 Azure Cosmos DB アカウントでは、SSL による認証とセキュリティで保護された通信が要求されるので、必ず TLSv1.2 を使用してください。
+Azure Cosmos DB では、厳密なセキュリティ要件と基準が適用されます。 Azure Cosmos DB アカウントには TLS 経由の認証およびセキュリティで保護された通信が必要なため、必ず TLSv1.2 を使用してください。
 
 詳細については、[Azure Cosmos DB の MongoDB 用 API で Cosmo データベースに接続する](connect-mongodb-account.md)方法に関するページを参照してください。
 
@@ -404,7 +404,7 @@ Table API は、Azure Cosmos DB のグローバルに分散されたプラット
 
 ### <a name="is-the-table-api-enabled-for-backups"></a>Table API ではバックアップは有効になっていますか?
 
-はい。Table API は、バックアップに Azure Cosmos DB のプラットフォームを利用します。 バックアップは自動的に作成されます。 詳細については、[Azure Cosmos DB でのオンライン バックアップと復元](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)に関する記事をご覧ください。
+はい。Table API は、バックアップに Azure Cosmos DB のプラットフォームを利用します。 バックアップは自動的に作成されます。 詳細については、[Azure Cosmos DB でのオンライン バックアップと復元](online-backup-and-restore.md)に関する記事をご覧ください。
 
 ### <a name="does-the-table-api-index-all-attributes-of-an-entity-by-default"></a>Table API では、既定でエンティティのすべての属性のインデックスが作成されますか?
 
@@ -640,7 +640,7 @@ g.V('mary').out('knows').executionProfile()
 
 ## <a name="cassandra-api"></a><a id="cassandra"></a> Cassandra API
 
-### <a name="what-is-the-protocol-version-supported-by-azure-cosmso-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Azure Cosmso DB の Cassandra API でサポートされているプロトコル バージョンは何ですか? 他のプロトコルをサポートする予定はありますか?
+### <a name="what-is-the-protocol-version-supported-by-azure-cosmos-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Azure Cosmos DB Cassandra API でサポートされているプロトコル バージョンは何ですか? 他のプロトコルをサポートする予定はありますか?
 
 現在、Azure Cosmos DB 用の Apache Cassandra API は CQL バージョン 4 をサポートしています。 他のプロトコルのサポートについてフィードバックがある場合は、[UserVoice のフィードバック](https://feedback.azure.com/forums/263030-azure-cosmos-db)を投稿するか、メールを [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) に送信してください。
 
@@ -761,7 +761,7 @@ CQLv3 を使用する Apache Cassandra SDK のクライアント ドライバー
 ### <a name="does-cassandra-api-provide-full-backups"></a>Cassandra API に完全バックアップ機能はありますか?
 
 現在、Azure Cosmos DB では、すべての API について 4 時間間隔で 2 つの無料の完全バックアップが提供されています。 そのため、バックアップ スケジュールなどを設定する必要はありません。
-リテンション期間と頻度を変更したい場合は、[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) まで電子メールでお問い合わせいただくか、サポート ケースを作成してください。 バックアップ機能については、「[Azure Cosmos DB での自動オンライン バックアップと復元](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)」の記事を参照してください。
+リテンション期間と頻度を変更したい場合は、[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) まで電子メールでお問い合わせいただくか、サポート ケースを作成してください。 バックアップ機能については、「[Azure Cosmos DB での自動オンライン バックアップと復元](online-backup-and-restore.md)」の記事を参照してください。
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>リージョンがダウンした場合、Cassandra API アカウントはフェールオーバーをどのように処理しますか?
 

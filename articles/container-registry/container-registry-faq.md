@@ -3,14 +3,14 @@ title: よく寄せられる質問
 description: Azure Container Registry サービスに関連したよく寄せられる質問への回答
 author: sajayantony
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7452b5dd3c952a13a28566914d2fe513689d4751
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78403214"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618790"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -105,6 +105,7 @@ az role assignment create --role "Reader" --assignee user@contoso.com --scope /s
 - [Azure Container Registry はコンテンツの信頼をサポートしていますか?](#does-azure-container-registry-support-content-trust)
 - [レジストリ リソースを管理するためのアクセス許可なしで、イメージをプルまたはプッシュするためのアクセス権を付与するにはどうすればよいですか?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [レジストリに対するイメージの自動検疫を有効にするにはどうすればよいですか?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [匿名プル アクセスを有効にするにはどうすればよいですか?](#how-do-i-enable-anonymous-pull-access)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Docker Registry HTTP API V2 にアクセスするにはどうすればよいですか?
 
@@ -251,13 +252,18 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 
 イメージの検疫は現在、ACR のプレビュー機能です。 セキュリティ スキャンに正常に合格したイメージのみが通常のユーザーに表示されるように、レジストリの検疫モードを有効にすることができます。 詳細については、[ACR の GitHub リポジトリ](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)に関するページを参照してください。
 
+### <a name="how-do-i-enable-anonymous-pull-access"></a>匿名プル アクセスを有効にするにはどうすればよいですか?
+
+匿名 (パブリック) プル アクセス用の Azure コンテナー レジストリの設定は、現時点ではプレビュー機能です。 パブリック アクセスを有効にするには、 https://aka.ms/acr/support/create-ticket でサポート チケットを開いてください。 詳細については、[Azure フィードバック フォーラム](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)のページを参照してください。
+
+
 ## <a name="diagnostics-and-health-checks"></a>診断と正常性チェック
 
 - [を使用した正常性チェック `az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker pull が "net/http: 接続の待機中に要求が取り消されました (ヘッダーの待機中に Client.Timeout を超えました)" というエラーで失敗する](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [docker push は成功するが、docker pull が "権限がありません: 認証が必要です" というエラーで失敗する](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [`az acr login` は成功するが、Docker コマンドが "権限がありません: 認証が必要です" というエラーで失敗する](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
-- [docker デーモンのデバッグ ログを有効にして取得する](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
+- [docker デーモンのデバッグ ログを有効にして取得する](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
 - [更新の直後に新しいユーザー アクセス許可が有効にならない場合がある](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [REST API の直接呼び出しで認証情報が正しい形式で提供されない](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Azure Portal にすべてのリポジトリまたはタグが一覧表示されないのはなぜですか?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
@@ -323,13 +329,13 @@ unauthorized: authentication required
 
 レジストリ リソース名が大文字であるか、`myRegistry` のように大文字と小文字が混在している場合でも、`docker push myregistry.azurecr.io/myimage:latest` のように、サーバー URL にはすべて小文字を使用してください。
 
-### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Docker デーモンのデバッグ ログを有効にして取得する  
+### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Docker デーモンのデバッグ ログを有効にして取得する    
 
 `debug` オプションを使用して `dockerd` を起動します。 最初に、Docker デーモンの構成ファイル (`/etc/docker/daemon.json`) が存在しない場合は作成し、`debug` オプションを追加します。
 
 ```json
-{   
-    "debug": true   
+{    
+    "debug": true    
 }
 ```
 
@@ -339,12 +345,12 @@ unauthorized: authentication required
 sudo service docker restart
 ```
 
-詳細は、[Docker のドキュメント](https://docs.docker.com/engine/admin/#enable-debugging)で見つけることができます。 
+詳細は、[Docker のドキュメント](https://docs.docker.com/engine/admin/#enable-debugging)で見つけることができます。    
 
- * ログは、システムに応じて異なる場所に生成される可能性があります。 たとえば、Ubuntu 14.04 では `/var/log/upstart/docker.log` です。   
+ * ログは、システムに応じて異なる場所に生成される可能性があります。 たとえば、Ubuntu 14.04 では `/var/log/upstart/docker.log` です。    
 詳細については、[Docker のドキュメント](https://docs.docker.com/engine/admin/#read-the-logs)を参照してください。    
 
- * Docker for Windows の場合、ログは %LOCALAPPDATA%/docker/ の下に生成されます。 ただし、すべてのデバッグ情報はまだ含まれていない可能性があります。   
+ * Docker for Windows の場合、ログは %LOCALAPPDATA%/docker/ の下に生成されます。 ただし、すべてのデバッグ情報はまだ含まれていない可能性があります。    
 
    完全なデーモン ログにアクセスするために、追加の手順がいくつか必要になる場合があります。
 

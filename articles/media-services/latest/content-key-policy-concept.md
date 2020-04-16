@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 7ddef1e78b4f8f62145e10b4cabc4537e28aba2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85a9cad80156dc6ac40e78610c91805d485ff3df
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74969906"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585992"
 ---
 # <a name="content-key-policies"></a>コンテンツ キー ポリシー
 
@@ -32,7 +32,7 @@ Media Services では、Advanced Encryption Standard (AES-128) または主要�
 > [!IMPORTANT]
 > 次の推奨事項を確認してください。
 
-* お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 詳細については、「[クォータと制限](limits-quotas-constraints.md)」をご覧ください。
+* お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 詳しくは、[クォータと制限](limits-quotas-constraints.md)に関するトピックを参照してください。
 * コンテンツ キー ポリシーは更新可能です。 キー配信キャッシュでポリシーが更新されて、その更新されたポリシーが取得されるまでには、最大 15 分かかる場合があります。 
 
    ポリシーを更新することで、既存の CDN キャッシュが上書きされ、キャッシュされたコンテンツを使用している顧客に対して、再生の問題が発生する可能性があります。  

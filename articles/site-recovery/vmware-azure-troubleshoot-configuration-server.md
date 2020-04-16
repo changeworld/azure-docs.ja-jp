@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73748555"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478307"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>構成サーバーの問題のトラブルシューティング
 
@@ -42,7 +42,7 @@ ms.locfileid: "73748555"
     3. 「[ウイルス対策プログラムからの Azure Site Recovery フォルダーの除外](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)」の一覧に記載されているフォルダーがウイルス対策プログラムから除外されていることを確認します。
     4. ネットワークの問題を解決したら、「[ソース マシンを構成サーバーに登録する](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)」に記載されたガイドラインに従って、登録を再試行してください。
 
-6. 文字列「**post request:(7) - Couldn't connect to server (POST 要求: (7) - サーバーに接続できませんでした)** 」が見つからない場合は、同じログ ファイル内で文字列「**request:(60) - Peer certificate cannot be authenticated with given CA certificates (要求: (60) - ピア証明書は与えられた CA 証明書で認証できません)** 」を検索します。 このエラーは、構成サーバーの証明書の有効期限が切れているか、またはソース マシンで TLS 1.0 以降の SSL プロトコルがサポートされていないことが原因で発生する可能性があります。 また、ファイアウォールによってソース マシンと構成サーバー間の SSL 通信がブロックされている場合にも発生する可能性があります。 この文字列が見つかった場合: 
+6. 文字列「**post request:(7) - Couldn't connect to server (POST 要求: (7) - サーバーに接続できませんでした)** 」が見つからない場合は、同じログ ファイル内で文字列「**request:(60) - Peer certificate cannot be authenticated with given CA certificates (要求: (60) - ピア証明書は与えられた CA 証明書で認証できません)** 」を検索します。 このエラーは、構成サーバーの証明書の有効期限が切れているか、またはソース マシンで TLS 1.0 以降のプロトコルがサポートされていないことが原因で発生する可能性があります。 また、ファイアウォールによってソース マシンと構成サーバー間の TLS 通信がブロックされている場合にも発生する可能性があります。 この文字列が見つかった場合: 
     1. 解決するには、ソース マシン上の Web ブラウザーを使用して構成サーバーの IP アドレスに接続します。 URI https:\/\/<configuration server IP address\>:443/ を使用します。 ソース マシンがポート 443 経由で構成サーバーにアクセスできることを確認します。
     2. ソース マシンから構成サーバーにアクセスするためにソース マシン上のファイアウォール規則を追加または削除する必要がないかどうかを調べます。 使用されている可能性のあるファイアウォール ソフトウェアにはさまざまな種類があるため、必要なすべてのファイアウォール構成の一覧をここで示すことはできません。 接続の問題がある場合は、お客様のネットワーク管理者と協力して解決してください。
     3. 「[ウイルス対策プログラムからの Azure Site Recovery フォルダーの除外](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)」の一覧に記載されているフォルダーがウイルス対策プログラムから除外されていることを確認します。  

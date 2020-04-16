@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) でユーザー定義ルート (UDR) を�
 description: Azure Kubernetes Service (AKS) でカスタム エグレス ルートを定義する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 01/31/2020
-ms.openlocfilehash: d108c6f49a8f483dc489fd644db6b480fc0e74fc
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/16/2020
+ms.openlocfilehash: 3780680c485aebf1ffc654d31c577821a9b96fff
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595809"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676505"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>ユーザー定義ルートを使用してクラスターのエグレスをカスタマイズする (プレビュー)
 
@@ -318,7 +318,11 @@ az role assignment list --assignee $APPID --all -o table
 
 ### <a name="deploy-aks"></a>AKS をデプロイする
 
-最後に、クラスター専用にした既存のサブネットに AKS クラスターをデプロイすることができます。 デプロイ先のターゲット サブネットは、環境変数 `$SUBNETID` で定義します。
+最後に、クラスター専用にした既存のサブネットに AKS クラスターをデプロイすることができます。 デプロイ先のターゲット サブネットは、環境変数 `$SUBNETID` で定義します。 前の手順では `$SUBNETID` 変数を定義しませんでした。 サブネット ID の値を設定するには、次のコマンドを使用します。
+
+```azurecli
+SUBNETID="/subscriptions/$SUBID/resourceGroups/$RG/providers/Microsoft.Network/virtualNetworks/$VNET_NAME/subnets/$AKSSUBNET_NAME"
+```
 
 サブネット上に存在する UDR に従うように送信の種類を定義し、内部に制限できるようになったロード バランサーの設定と IP プロビジョニングが AKS でスキップされるようにします。
 
@@ -356,6 +360,12 @@ CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/32
 
 ```
+
+ 新しく作成された Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials][az-aks-get-credentials] コマンドを使用します。 
+
+ ```azure-cli
+ az aks get-credentials -g $RG -n $AKS_NAME
+ ```
 
 ### <a name="setup-the-internal-load-balancer"></a>内部ロード バランサーを設定する
 
@@ -532,3 +542,6 @@ Azure 投票アプリの画像が表示されます。
 [Azure ネットワークの UDR の概要](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)に関する記事を参照してください。
 
 [ルート テーブルの作成、変更、削除の方法](https://docs.microsoft.com/azure/virtual-network/manage-route-table)に関する記事を参照してください。
+
+<!-- LINKS - internal -->
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

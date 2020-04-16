@@ -6,27 +6,27 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/06/2019
-ms.openlocfilehash: 3b0b38b767495b1a06405f0d41222b73baee8d53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277075"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517938"
 ---
 # <a name="co-sell-option-in-partner-center"></a>パートナー センターの [共同販売] オプション
 
-[共同販売] タブの情報提供は、すべて省略可能です。 共同販売の準備完了と IP 共同販売の準備完了の状態になっている必要があります。 指定した情報は、お客様のニーズに合わせてソリューションを評価するときに、Microsoft のセールス チームによって使用されます。 お客様が直接使用することはできません。 詳細については、「[Microsoft を通じた販売](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft)」を参照してください。
+[共同販売] タブの情報提供は、すべて省略可能です。 共同販売の準備完了と IP 共同販売の準備完了の状態になっている必要があります。 指定した情報は、お客様のニーズに合わせてソリューションを評価するときに、Microsoft のセールス チームによって使用されます。 お客様が直接使用することはできません。 詳細については、「[Microsoft を通じた販売](https://partner.microsoft.com/membership/sell-with-microsoft)」を参照してください。
 
 パートナー センターの共同販売オプションは、現在、一部のオファリング タイプで使用できます。 その他のオファリング タイプのサポートは、順次利用できるようになります。
 
 | **オファリング タイプ** | **パートナー センターで利用可能な共同販売ページ** |
 |    -----------------------    |    -----------------------------  |
-| サービスとしてのソフトウェア (SaaS) |     2020 年 2 月頃一般提供      |
+| サービスとしてのソフトウェア (SaaS) |     一般提供 2020 年 4 月      |
 | Dynamics 365 for Customer Engagement および PowerApps      |     現在利用可能      |
 | Dynamics 365 for Operations     |     現在利用可能       |
-| Dynamics 365 Business Central      |  2020 年 2 月頃一般提供     |
-| Azure Application     |     2020 年 2 月頃一般提供     |
+| Dynamics 365 Business Central      |  一般提供 2020 年 4 月     |
+| Azure Application     |     一般提供 2020 年 4 月     |
 | Azure Virtual Machine      |     後日発表       |
 | Azure Container     |     後日発表       |
 | コンサルティング サービス      |     後日発表       |
@@ -66,8 +66,7 @@ Microsoft がお客様のニーズを評価するために使用する資料を�
 
 | **ドキュメント**    | **説明**  |
 | :------------------- | :-------------------|
-| *Customer one-pager (顧客 1 ページャー)* | オファリングのお客様対応の説明。 Microsoft のセールス チームはこの情報をお客様と共有し、オファリングが最適かどうかを判断したり、お客様の準備ができているかどうかを判断することができます。 <br> <br> パートナー センターで利用可能な関連テンプレートのいずれかを使用します。 <br> <ul> <li> Microsoft Azure one-pager template (Microsoft Azure 1 ページャー テンプレート) </li> <li> Microsoft Dynamics 365 one-pager template (Microsoft Dynamics 365 1 ページャー テンプレート) </li> <li> Office 365 one-pager template (Office 365 1 ページャー テンプレート) </li> <li> Windows 10 one-pager template (Windows 10 1 ページャー テンプレート) </li> </ul>
- |
+| *Customer one-pager (顧客 1 ページャー)* | オファリングのお客様対応の説明。 Microsoft のセールス チームはこの情報をお客様と共有し、オファリングが最適かどうかを判断したり、お客様の準備ができているかどうかを判断することができます。 <br> <br> パートナー センターで利用可能な関連テンプレートのいずれかを使用します。 <br> <ul> <li> Microsoft Azure one-pager template (Microsoft Azure 1 ページャー テンプレート) </li> <li> Microsoft Dynamics 365 one-pager template (Microsoft Dynamics 365 1 ページャー テンプレート) </li> <li> Office 365 one-pager template (Office 365 1 ページャー テンプレート) </li> <li> Windows 10 one-pager template (Windows 10 1 ページャー テンプレート) </li> </ul> |
 | *Customer presentation (顧客向けプレゼンテーション)* | ソリューションとその価値提案を表示するスライド デッキ。 オファーがお客様に適していることを確認した後、Microsoft のセールス チームはプレゼンテーションをお客様と共有し、双方の会社が共同ソリューションを展開する場合にもたらされる価値を明確にすることができます。 プレゼンテーションでは、ソリューションの実行内容、お客様にどのように役立つか、どのような業界向けのソリューションか、競合しているソリューションと比較する方法を取り上げるようにします。 <br> <br> パートナー センターで利用可能なテンプレートを使用します。|
 | *Customer case study (お客様のケース スタディ)* | この情報は、お客様と Microsoft が以前のケースでこのソリューションを適切に展開した方法を潜在顧客に示します。 <br> <br> パートナー センターで利用可能なテンプレートを使用します。 |
 | *Verifiable customer wins (検証可能なお客様の成功事例) (省略可能)* | ソリューションが展開された後のお客様の具体的な例。 |

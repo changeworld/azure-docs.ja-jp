@@ -6,18 +6,20 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 03/13/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 87633abaaae1f6034709c6e552be6647533115ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e32530ece3626807b199850a2b4af5461ff51cde
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230019"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414078"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure 統合ランタイムを作成して構成する方法
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR の詳細については、「[Integration runtime (統合ランタイム)](concepts-integration-runtime.md)」を参照してください。
 
 Azure IR は、ネイティブにデータ移動を実行したり、HDInsight などのコンピューティング サービスにデータ変換操作をディスパッチしたりするための、フル マネージドのコンピューティングを提供します。 Azure IR は Azure 環境でホストされます。また、パブリック ネットワーク環境内にあってパブリック アクセス可能なエンドポイントを持つリソースへの接続をサポートします。
@@ -30,7 +32,11 @@ Azure IR は、ネイティブにデータ移動を実行したり、HDInsight �
 既定では、個々のデータ ファクトリは、パブリック ネットワーク内のクラウド データ ストアおよびコンピューティング サービスに対する操作をサポートする Azure IR をバックエンドに備えます。 その Azure IR の場所は自動解決です。 リンクされたサービス定義で **connectVia** プロパティが指定されていない場合、既定の Azure IR が使用されます。 IR の場所を明示的に定義したい場合、または、管理上の目的から、異なる IR でのアクティビティ実行を仮想的にグループ化したい場合に限り、Azure IR を明示的に作成する必要があります。 
 
 ## <a name="create-azure-ir"></a>Azure IR を作成する
-統合ランタイムは、**Set-AzDataFactoryV2IntegrationRuntime** PowerShell コマンドレットを使用して作成できます。 Azure IR を作成するには、名前、場所、およびタイプをコマンドに指定します。 次に示すのは、場所を "West Europe" (西ヨーロッパ) に設定して Azure IR を作成するコマンドの例です。
+
+Azure IR を作成して設定するには、次の手順を使用できます。
+
+### <a name="create-an-azure-ir-via-azure-powershell"></a>Azure PowerShell を使用して Azure IR を作成する
+統合ランタイムは、**Set-AzDataFactoryV2IntegrationRuntime** PowerShell コマンドレットを使用して作成できます。 Azure IR を作成するには、このコマンドに対して名前、場所、種類を指定します。 次に示すのは、場所を "West Europe" (西ヨーロッパ) に設定して Azure IR を作成するコマンドの例です。
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
@@ -39,9 +45,30 @@ Azure IR の場合、タイプを **Managed** に設定する必要がありま�
 
 Set-AzDataFactoryV2IntegrationRuntime PowerShell コマンドレットを使用して、既存の Azure IR を構成し、その場所を変更することができます。 Azure IR の場所の詳細については、「[Introduction to integration runtime (統合ランタイムの概要)](concepts-integration-runtime.md)」を参照してください。
 
+### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Azure Data Factory UI を使用して Azure IR を作成する
+Azure Data Factory UI を使用して Azure IR を作成するには、次の手順を使用します。
+
+1. Azure Data Factory UI の **[始めましょう]** ページで、左側のウィンドウの **[作成]** タブを選択します。
+
+   ![ホームページの [作成] ボタン](media/doc-common-process/get-started-page-author-button.png)
+
+1. 左側のウィンドウの下部にある **[接続]** を選択し、 **[接続]** ウィンドウで **[統合ランタイム]** を選択します。 **[+新規]** を選択します。
+
+   ![統合ランタイムの作成](media/create-azure-integration-runtime/new-integration-runtime.png)
+
+1. **[統合ランタイムのセットアップ]** ページで、 **[Azure, Self-Hosted] (Azure、セルフホステッド)** を選択してから、 **[続行]** を選択します。 
+
+1. 次のページで、Azure IR を作成する **[Azure]** を選択してから、 **[続行]** を選択します。
+   ![統合ランタイムを作成する](media/create-azure-integration-runtime/new-azure-ir.png)
+
+1. Azure IR の名前を入力し、 **[作成]** を選択します。
+   ![Azure IR を作成する](media/create-azure-integration-runtime/create-azure-ir.png)
+
+1. 作成が完了すると、ポップアップ通知が表示されます。 **[統合ランタイム]** ページで、新しく作成された IR が一覧に表示されていることを確認します。
+
 ## <a name="use-azure-ir"></a>Azure IR を使用する
 
-Azure IR が作成されたら、リンクされたサービスの定義でその Azure IR を参照することができます。 次に示すのは、上記の手順で作成した Azure 統合ランタイムを、リンクされたサービスの Azure Storage から参照する方法の例です。  
+Azure IR が作成されたら、リンクされたサービスの定義でその Azure IR を参照することができます。 次に示すのは、上記の手順で作成した Azure 統合ランタイムを、リンクされたサービスの Azure Storage から参照する方法の例です。
 
 ```json
 {

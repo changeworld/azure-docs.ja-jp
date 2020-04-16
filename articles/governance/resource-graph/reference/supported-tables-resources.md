@@ -1,14 +1,14 @@
 ---
 title: サポートされている Resource Manager のリソースの種類
 description: Azure Resource Graph でサポートされている Resource Manager のリソースの種類と変更履歴の一覧を示します。
-ms.date: 03/23/2020
+ms.date: 04/15/2020
 ms.topic: reference
-ms.openlocfilehash: 64fd860090cc15cc6914ee926772146b98477edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99cb2176e4b0642be1fc31d49528ebf915ea440a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130612"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415135"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph のテーブルとリソースの種類のリファレンス
 
@@ -188,6 +188,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.eventhub/clusters
 - microsoft.eventhub/namespaces
 - microsoft.experimentation/experimentworkspaces
+- microsoft.falcon/namespaces
 - microsoft.gaming/titles
 - microsoft.genomics/accounts
 - microsoft.guestconfiguration/automanagedaccounts
@@ -290,6 +291,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.network/networkexperimentprofiles
 - microsoft.network/networkintentpolicies
 - microsoft.network/networkinterfaces
+- microsoft.network/networkmanagers
 - microsoft.network/networkprofiles
 - microsoft.network/networksecuritygroups
 - microsoft.network/networkvirtualappliances
@@ -390,7 +392,6 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.storagesyncint/storagesyncservices
 - microsoft.storsimple/managers
 - microsoft.streamanalytics/streamingjobs
-- microsoft.support/supporttickets
 - microsoft.synapse/workspaces
 - microsoft.synapse/workspaces/bigdatapools
 - microsoft.synapse/workspaces/sqlpools
@@ -446,6 +447,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - wandisco.fusion/fusiongroups
 - wandisco.fusion/fusiongroups/azurezones
 - wandisco.fusion/fusiongroups/azurezones/plugins
+- wandisco.fusion/fusiongroups/hivereplicationrules
 - wandisco.fusion/fusiongroups/managedonpremzones
 - wandisco.fusion/fusiongroups/onpremzones
 - wandisco.fusion/fusiongroups/replicationrules

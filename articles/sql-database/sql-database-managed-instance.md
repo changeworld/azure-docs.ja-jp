@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 01/21/2020
-ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 04b07ff60c882501c49ad58607db867e7e99897c
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232487"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879073"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance とは
 
@@ -67,7 +67,7 @@ Azure SQL Database デプロイ オプションの単一データベース、プ
 | ポータルのサポート | はい|
 | 組み込み統合サービス (SSIS) | いいえ - SSIS は [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) に含まれます。 |
 | 組み込み Analysis Service (SSAS) | いいえ - SSAS は別の [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) です。 |
-| 組み込みレポート サービス (SSRS) | いいえ - Power BI または SSRS IaaS を使用してください。 |
+| 組み込みレポート サービス (SSRS) | いいえ - 代わりに [Power BI のページ分割されたレポート](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi)を使用するか、Azure VM で SSRS をホストしてください。 マネージド インスタンスは SSRS をサービスとして実行できませんが、SQL Server 認証を使用する外部レポート サーバーの SSRS 2019 カタログ データベースをホストできます。 |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>仮想コアベースの購入モデル
@@ -121,7 +121,7 @@ Business Critical サービス レベルは、IO 要件の高いアプリケー�
 
 Azure SQL Database には、新しいマネージド インスタンスを自動的にデプロイしたり、インスタンスのプロパティを更新したり、不要になったインスタンスを削除したりする際に使用できる管理操作が用意されています。 このセクションでは、管理操作とその標準的な所要時間について説明します。
 
-[Azure Virtual Network (VNet) 内へのデプロイ](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks)をサポートし、顧客に分離性とセキュリティを提供するために、マネージド インスタンスは[仮想クラスター](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)を基盤としています。仮想クラスターは、分離された仮想マシンがある特定の目的のために集められて、顧客の仮想ネットワーク サブネット内にデプロイされたものです。 基本的に、空のサブネットにマネージド インスタンスをデプロイするとその都度、新しい仮想クラスターが構築されます。
+[Azure Virtual Network (VNet) 内へのデプロイ](../virtual-network/virtual-network-for-azure-services.md)をサポートし、顧客に分離性とセキュリティを提供するために、マネージド インスタンスは[仮想クラスター](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)を基盤としています。仮想クラスターは、分離された仮想マシンがある特定の目的のために集められて、顧客の仮想ネットワーク サブネット内にデプロイされたものです。 基本的に、空のサブネットにマネージド インスタンスをデプロイするとその都度、新しい仮想クラスターが構築されます。
 
 それ以降、デプロイ済みのマネージド インスタンスに対して実行された操作は、その基盤となる仮想クラスターにも影響する可能性があります。 このことは管理操作の所要時間に影響を及ぼします。新たな仮想マシンのデプロイにはオーバーヘッドが伴うためです。新たなデプロイや既存のマネージド インスタンスに対する更新を計画する際には、このオーバーヘッドを考慮する必要があります。
 

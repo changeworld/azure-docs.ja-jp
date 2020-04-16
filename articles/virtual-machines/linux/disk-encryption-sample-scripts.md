@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c98da4b41da183f56d80fad1e8c01706d1cfcf23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970507"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585960"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption のサンプル スクリプト 
 
@@ -80,7 +80,7 @@ Azure Disk Encryption の前提条件に既に精通している場合は、[Azu
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>OS ディスクを暗号化するための前提条件
 
-* VM では、[Azure Disk Encryption でサポートされているオペレーティング システム](disk-encryption-overview.md#supported-vm-sizes)に関する記事で示されている OS ディスクの暗号化と互換性のあるディストリビューションが使用されている必要があります 
+* VM では、[Azure Disk Encryption でサポートされているオペレーティング システム](disk-encryption-overview.md#supported-vms)に関する記事で示されている OS ディスクの暗号化と互換性のあるディストリビューションが使用されている必要があります 
 * VM は、Azure Resource Manager で Marketplace イメージから作成する必要があります。
 * 少なくとも 4 GB の RAM を持つAzure VM (推奨するサイズは 7 GB)。
 * (RHEL と CentOS については) SELinux を無効にします。 SELinux を無効にする方法については、 VM で「[SELinux User's and Administrator's Guide (SELinux ユーザーおよび管理者用ガイド)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)」の「4.4.2. Disabling SELinux (SELinux の無効化)」をご覧ください。
@@ -371,7 +371,7 @@ Azure で使用する暗号化を構成するには、次の手順を行いま�
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
-   から
+   to
    ```bash
     if [ 1 ]; then
    ```
@@ -436,7 +436,7 @@ Azure AD アプリ (以前のリリース) を使用して暗号化する場合�
 ```
 
 
-`$secretUrl`KEK を使用せずに OS ディスクをアタッチする[場合は、次の手順で ](#without-using-a-kek) を使用します。
+[KEK を使用せずに OS ディスクをアタッチする](#without-using-a-kek)場合は、次の手順で `$secretUrl` を使用します。
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>KEK で暗号化されるディスク暗号化シークレット
 必要であれば、シークレットを Key Vault にアップロードする前に、キー暗号化キーを使用してシークレットを暗号化できます。 最初にキー暗号化キーを使用してシークレットを暗号化するには、ラップ [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) を使用します。 このラップ操作の出力は、base64 URL エンコードされた文字列です。これは、[`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) コマンドレットを使用してシークレットとしてアップロードできます。
@@ -529,7 +529,7 @@ Azure AD アプリ (以前のリリース) を使用して暗号化する場合�
     $secretUrl = $response.id
 ```
 
-`$KeyEncryptionKey`KEK を使用して OS ディスクをアタッチする`$secretUrl`場合は、次の手順で [ と ](#using-a-kek) を使用します。
+[KEK を使用して OS ディスクをアタッチする](#using-a-kek)場合は、次の手順で `$KeyEncryptionKey` と `$secretUrl` を使用します。
 
 ##  <a name="specify-a-secret-url-when-you-attach-an-os-disk"></a>OS ディスクをアタッチするときにシークレット URL を指定する
 

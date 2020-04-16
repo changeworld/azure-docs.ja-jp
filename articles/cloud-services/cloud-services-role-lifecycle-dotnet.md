@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 0a9c32affc50a6d357d4160e00486c896d762e3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75385815"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652089"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>.NET で Web または Worker ロールのライフサイクルをカスタマイズする
 worker ロールを作成する際に、[RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) クラスを拡張します。このクラスは、ライフサイクル イベントに応答できるようオーバーライドするメソッドを提供します。 Web ロールの場合、このクラスは任意であり、必要に応じてライフサイクル イベントへの応答に使用する必要があります。
@@ -23,7 +23,7 @@ worker ロールを作成する際に、[RoleEntryPoint](/previous-versions/azur
 
 **RoleEntryPoint**を拡張した場合、メソッドの次のような動作に注意する必要があります。
 
-* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) メソッドと [OnStop](/previous-versions/azure/reference/ee772844(v=azure.100)) メソッドは、ブール値を返します。したがって、これらのメソッドから **false** を返すこともできます。
+* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) メソッドは、ブール値を返します。したがって、このメソッドから **false** を返すこともできます。
   
    コードが **false**を返した場合、ロール プロセスは指定したシャットダウン シーケンスを実行せずに突然終了します。 一般的には、**OnStart** メソッドから **false** は返さないようにしてください。
 * **RoleEntryPoint** メソッドのオーバーロード内でキャッチされなかった例外は、未処理の例外として扱われます。
@@ -33,7 +33,7 @@ worker ロールを作成する際に、[RoleEntryPoint](/previous-versions/azur
 ロールが開始しない場合や、ロールが初期化、ビジー状態、停止中の状態で再利用されている場合、コードが再開されるたびに、ライフサイクル イベントの内部で未処理の例外がスローされる場合があります。 この場合は、[UnhandledException](/dotnet/api/system.appdomain.unhandledexception) イベントを使用して、例外の原因を特定し適切に処理します。 ロールは、[Run](/previous-versions/azure/reference/ee772746(v=azure.100)) メソッドから戻ることもあります。その場合、ロールは再開されます。 デプロイ状態の詳細については、「[ロールのリサイクルを引き起こす一般的な問題](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)」をご覧ください。
 
 > [!NOTE]
-> **Azure Tools for Microsoft Visual Studio** を使用してアプリケーションを開発している場合は、ロール プロジェクトのテンプレートによって **WebRole.cs** ファイルと *WorkerRole.cs* ファイルで *RoleEntryPoint* クラスが自動的に拡張されます。
+> **Azure Tools for Microsoft Visual Studio** を使用してアプリケーションを開発している場合は、ロール プロジェクトのテンプレートによって *WebRole.cs* ファイルと *WorkerRole.cs* ファイルで **RoleEntryPoint** クラスが自動的に拡張されます。
 > 
 > 
 

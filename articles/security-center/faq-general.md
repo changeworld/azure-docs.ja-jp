@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54263a8be900ed381d8450b460e5cf9e6117ac54
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661841"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436131"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>FAQ - Azure Security Center に関する一般的な質問
 
 ## <a name="what-is-azure-security-center"></a>Azure Security Center とは
 Azure Security Center を使用すると、リソースのセキュリティを高度に視覚化して制御することで、脅威の回避、検出、および対応を行うことができます。 これにより、サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
-Security Center では、データの収集と格納に Microsoft Monitoring Agent を使用しています。 詳細については、「[Azure Security Center でのデータ収集](security-center-enable-data-collection.md)」を参照してください。
+Security Center では、データの収集と格納に Log Analytics エージェントを使用します。 詳細については、「[Azure Security Center でのデータ収集](security-center-enable-data-collection.md)」を参照してください。
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>Azure Security Center はどうしたら取得できますか。

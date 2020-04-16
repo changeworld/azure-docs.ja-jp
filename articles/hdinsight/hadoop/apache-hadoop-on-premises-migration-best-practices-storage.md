@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 71afbf09d563a43469689132dfce071b40d694b6
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: f19d4adad675cdf95f59aca0f752f46211b75e8f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162669"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436906"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行
 
@@ -52,7 +52,7 @@ Azure Storage では、[BLOB オブジェクトの論理的な削除](../../stor
 
 以下の方法を使用して、証明書を Java トラストストアにインポートできます。
 
-Azure Blob の ssl 証明書をファイルにダウンロードします
+Azure Blob の TLS/SSL 証明書をファイルにダウンロードします
 
 ```bash
 echo -n | openssl s_client -connect <storage-account>.blob.core.windows.net:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > Azure_Storage.cer
@@ -92,7 +92,7 @@ Azure Data Lake Storage は、HDFS と POSIX スタイルのアクセス制御�
 
 Azure Data Lake Storage Gen2 は、最新のストレージ製品です。 Azure Blob Storage に直接統合された Hadoop 互換ファイル システム エンドポイントに、Azure Data Lake Storage の第 1 世代からのコア機能を統合します。 この機能強化は、通常はオンプレミスのファイル システムにのみ関連付けされている信頼性とパフォーマンスに、オブジェクト ストレージのスケールとコスト上のメリットを結合したものです。
 
-ADLS Gen 2 は  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) の上部に構築され、ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。 ファイル システム セマンティクス、ファイル レベルのセキュリティおよびスケールなど、 [Azure Data Lake Storage Gen1](../../data-lake-store/index.md) に由来する機能は、 [Azure Blob ストレージ](../../storage/blobs/storage-blobs-introduction.md)の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能、および SDK/ツール エコシステムと組み合わされています。 Data Lake Storage Gen2 では、すべてのオブジェクト ストレージの品質を備えたまま、分析ワークロード用に最適化されたファイル システム インターフェイスの利点が追加されています。
+ADLS Gen 2 は  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) の上部に構築され、ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。 ファイル システム セマンティクス、ファイル レベルのセキュリティおよびスケールなど、 [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) に由来する機能は、 [Azure Blob ストレージ](../../storage/blobs/storage-blobs-introduction.md)の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能、および SDK/ツール エコシステムと組み合わされています。 Data Lake Storage Gen2 では、すべてのオブジェクト ストレージの品質を備えたまま、分析ワークロード用に最適化されたファイル システム インターフェイスの利点が追加されています。
 
 Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高いデータ アクセスのために、オブジェクト/ファイルをディレクトリの階層に編成した Blob ストレージ サービスに、 [階層構造の名前空間](../../storage/data-lake-storage/namespace.md) を追加することです。 階層構造により、ディレクトリの名前変更や削除などの操作は、ディレクトリ名のプレフィックスを共有するすべてのオブジェクトを列挙して処理するのではなく、ディレクトリ上の単一のアトミック メタデータの操作になります。
 

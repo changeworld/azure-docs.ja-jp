@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: c4e2681121a15e0b84a11c7cf35119c3f1b69f11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8701fe6857e95334a5e1d24bfe70feb130d5512c
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443717"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756029"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -21,7 +21,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 > [!NOTE]
 > AzCopy **V10** が現在サポートされているバージョンの AzCopy です。
 >
-> AzCopy **v8.1** を使用する必要がある場合、この記事の「[以前のバージョンの AzCopy の使用](#previous-version)」を参照してください。
+> 以前のバージョンの AzCopy を使用する必要がある場合は、この記事の「[以前のバージョンの AzCopy の使用](#previous-version)」セクションを参照してください。
 
 <a id="download-and-install-azcopy" />
 
@@ -288,7 +288,7 @@ ID を認証し、SAS トークンを取得したら、ファイルの転送を�
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>SAS トークンの特殊文字をエスケープする
 
-拡張子が `.cmd` のバッチ ファイルでは、SAS トークンに出現する `%` 文字をエスケープする必要があります。 これを行うには、SAS トークン文字列の既存の `%` 文字の横に `%` の文字を追加します。
+拡張子が `.cmd` のバッチ ファイルでは、SAS トークンに出現する `%` 文字をエスケープする必要があります。 これを行うには、SAS トークン文字列の既存の `%` 文字の横に、`%` の文字を追加します。
 
 ### <a name="run-scripts-by-using-jenkins"></a>Jenkins を使用してスクリプトを実行する
 
@@ -308,11 +308,11 @@ Storage Explorer では、ご自分のアカウント キーを使用して、�
 
 ## <a name="use-the-previous-version-of-azcopy"></a>以前のバージョンの AzCopy の使用
 
-前のバージョンの AzCopy (AzCopy v8.1) を使用する必要がある場合は、次のいずれかのリンクを参照してください。
+以前のバージョンの AzCopy を使用する必要がある場合は、次のいずれかのリンクを参照してください。
 
 - [Windows での AzCopy (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
 
-- [Linux での AzCopy (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
+- [Linux での AzCopy (v7)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
 
 ## <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 

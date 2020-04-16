@@ -1,6 +1,6 @@
 ---
 title: Azure VM のゲスト OS のファイアウォールが正しく構成されていない | Microsoft Docs
-description: ''
+description: シリアル コンソールまたはオフライン手法を使用して、リモート Azure VM のゲスト オペレーティング システムにおけるファイアウォールの構成ミスを診断、修正する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 8f04d943e1db49beed13c183fbd06e401546fc03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6f42bdf462ac5261f77bc05c62e50500345fe37
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71153892"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422529"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure VM のゲスト OS のファイアウォールが正しく構成されていない
 
@@ -49,13 +49,13 @@ ms.locfileid: "71153892"
 
 次の規則は編集することができ (RDP を介した) VM へのアクセスを有効にしたり、簡単なトラブルシューティング エクスペリエンスを提供したりすることができます。
 
-*   リモート デスクトップ (TCP 受信): Azure 内で RDP を許可することで VM へのプライマリ アクセスを提供する標準規則です。
+*   リモート デスクトップ (TCP 受信):Azure 内で RDP を許可することで VM へのプライマリ アクセスを提供する標準規則です。
 
-*   Windows リモート管理 (HTTP 受信): この規則を使用すると、PowerShell を使用して VM に接続することができます。Azure では、このような種類のアクセスを介してリモート スクリプティングとトラブルシューティングのスクリプトの側面を使用できます。
+*   Windows リモート管理 (HTTP 受信):この規則を使用すると、PowerShell を使用して VM に接続することができます。Azure では、このような種類のアクセスを介してリモート スクリプティングとトラブルシューティングのスクリプトの側面を使用できます。
 
-*   ファイルとプリンターの共有 (SMB 受信): この規則で、トラブルシューティング オプションとしてネットワーク共有アクセスが有効になります。
+*   ファイルとプリンターの共有 (SMB 受信):この規則で、トラブルシューティング オプションとしてネットワーク共有アクセスが有効になります。
 
-*   ファイルとプリンターの共有 (エコー要求 - ICMPv4 受信): この規則を使用すると、VM に対して ping を実行できます。
+*   ファイルとプリンターの共有 (エコー要求 - ICMPv4 受信):この規則を使用すると、VM に対して ping を実行できます。
 
 シリアル コンソール アクセス インスタンスでは、ファイアウォール規則の現在の状態を照会できます。
 

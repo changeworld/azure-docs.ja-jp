@@ -1,27 +1,24 @@
 ---
-title: Azure AD アプリケーション ギャラリーにマルチテナント アプリを追加する | Microsoft Docs
+title: Azure AD アプリケーション ギャラリーにマルチテナント アプリを追加する
 description: 独自に開発したマルチテナント アプリケーションを Azure AD アプリケーション ギャラリーで表示する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: rwike77
 manager: CelesteDG
-ms.assetid: 92c1651a-675d-42c8-b337-f78e7dbcc40d
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.openlocfilehash: be660ad42c1336d479f1793b20d2994682db1225
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 90f4d22ba782fd71460595f69a52e70be87a3047
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702761"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883255"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Azure AD アプリケーション ギャラリーにマルチテナント アプリケーションを追加する
 
@@ -32,7 +29,7 @@ Azure Active Directory (Azure AD) は、クラウド ベースの ID サービ�
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>SAML または OpenIDConnect がアプリケーションでサポートされている場合
 Azure AD アプリケーション ギャラリーにマルチテナント アプリケーションの一覧を表示したい場合は、次のいずれかのシングル サインオン テクノロジがそのアプリケーションでサポートされていることを最初に確認する必要があります。
 
-- **OpenID Connect**: アプリの一覧を表示するには、Azure AD でマルチテナント アプリケーションを作成し、アプリケーションに [Azure AD 同意フレームワーク](https://docs.microsoft.com/azure/active-directory/develop/consent-framework)を実装します。 すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにログイン要求を送信します。 トークンで受け取ったテナント ID とユーザーの UPN に基づいてユーザー アクセスを制御できます。 「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」で説明するプロセスを使用して、アプリケーションを送信します。
+- **OpenID Connect**:アプリの一覧を表示するには、Azure AD でマルチテナント アプリケーションを作成し、アプリケーションに [Azure AD 同意フレームワーク](https://docs.microsoft.com/azure/active-directory/develop/consent-framework)を実装します。 すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにログイン要求を送信します。 トークンで受け取ったテナント ID とユーザーの UPN に基づいてユーザー アクセスを制御できます。 「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」で説明するプロセスを使用して、アプリケーションを送信します。
 
 - **SAML**: アプリケーションが SAML 2.0 をサポートしている場合は、ギャラリーにアプリの一覧を表示できます。 「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)」の手順に従ってください。
 

@@ -1,26 +1,28 @@
 ---
 title: Facebook 認証を構成する
-description: App Services アプリ用の ID プロバイダーとして Facebook 認証を構成する方法について学びます。
+description: App Service または Azure Functions アプリの ID プロバイダーとして Facebook 認証を構成する方法について説明します。
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.topic: article
 ms.date: 06/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: cd9c8a1bab3616b9b4eb1fe97ee3a9b2307ba77b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671937"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519957"
 ---
-# <a name="configure-your-app-service-app-to-use-facebook-login"></a>Facebook ログインを使用するように App Service アプリを構成する
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Facebook ログインを使用するように App Service または Azure Functions アプリを構成する
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-この記事では、認証プロバイダーとして Facebook を使用するように Azure App Service を構成する方法を示します。
+この記事では、認証プロバイダーとして Facebook を使用するように Azure App Service または Azure Functions を構成する方法について説明します。
 
 この記事の手順を完了するには、検証済みの電子メール アドレスを持つ Facebook アカウントと携帯電話番号が必要になります。 新しい Facebook アカウントを作成するには、 [facebook.com]にアクセスしてください。
 
-## <a name="register"> </a>Facebook にアプリケーションを登録する
+## <a name="register-your-application-with-facebook"></a><a name="register"> </a>Facebook にアプリケーションを登録する
 
 1. [Facebook Developers] の Web サイトに移動し、Facebook アカウントの資格情報でサインインします。
 
@@ -48,7 +50,7 @@ ms.locfileid: "74671937"
 
    他の Facebook アカウントを認証するには、 **[アプリのレビュー]** を選択し、 **[\<アプリ名> をパブリックにする]** を有効にして、Facebook 認証を使用することで一般公衆がアクセスできるようにします。
 
-## <a name="secrets"> </a>Facebook の情報をアプリケーションに追加する
+## <a name="add-facebook-information-to-your-application"></a><a name="secrets"> </a>Facebook の情報をアプリケーションに追加する
 
 1. [Azure portal] にサインインし、ご自身の App Service アプリに移動します。
 1. **[設定]** 、 **[認証/承認]** の順に選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
@@ -67,7 +69,7 @@ ms.locfileid: "74671937"
 
 これで、アプリで認証に Facebook を使用する準備ができました。
 
-## <a name="related-content"> </a>次のステップ
+## <a name="next-steps"></a><a name="related-content"> </a>次の手順
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 

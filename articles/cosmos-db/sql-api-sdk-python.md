@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b81a3921ec11d589dadbdebd698ab9ad67d7649c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70137340"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982907"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Python SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ ms.locfileid: "70137340"
 * Azure DocumentDB ではなく Azure Cosmos DB を参照するように更新されたドキュメントです。
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
-* この SDK バージョンでは、 https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
+* この SDK バージョンには [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) の最新バージョンが必要です。
 
 ### <a name="221"></a><a name="2.2.1"/>2.2.1
 * 集計辞書のバグを修正しました。
@@ -84,7 +84,7 @@ ms.locfileid: "70137340"
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。
-* Azure Cosmos DB Emulator に対しての実行時に、SSL 検証を無効にするためのオプションを追加しました。
+* Azure Cosmos DB Emulator に対しての実行時に、TLS 検証を無効にするためのオプションを追加しました。
 * 依存する要求モジュールが必ず 2.10.0 でなければならないという制限をなくしました。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
 * ストアド プロシージャの実行時にスクリプトのログ記録を有効することができるようになりました。

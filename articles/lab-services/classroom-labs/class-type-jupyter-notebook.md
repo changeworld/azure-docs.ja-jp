@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: dfb133f9aa3dd9b76f8b4ea4c6188cfaf9a67b75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 222f5647248d27c3bdfabd0feaeb66dd9f543652
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444113"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257727"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Python と Jupyter Notebook を使用してデータ サイエンスを教えるためのラボを設定する
 
@@ -34,10 +34,10 @@ ms.locfileid: "77444113"
 
 | ラボ アカウントの設定 | Instructions |
 | ------------------- | ------------ |
-| Marketplace イメージ | ラボ アカウント内で [Data Science Virtual Machine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) イメージを使用できるようにします。 |
+| Marketplace イメージ | ラボ アカウント内で [Data Science Virtual Machine - Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) イメージを使用できるようにします。 |
 
 >[!TIP]
->この記事では、Windows Server オペレーティング システムを使用するテンプレート マシンの構成に焦点を当てて説明します。  Azure Marketplace にある [Data Science Virtual Machine for Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) イメージまたは [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) イメージを使用して、Python および Jupyter Notebooks でデータ サイエンス クラスを設定することもできます。
+>この記事では、Windows Server オペレーティング システムを使用するテンプレート マシンの構成に焦点を当てて説明します。  Azure Marketplace にある [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) イメージを使用して、Python および Jupyter Notebook でデータ サイエンス クラスを設定することもできます。
 
 ### <a name="lab-settings"></a>ラボの設定
 
@@ -50,7 +50,7 @@ ms.locfileid: "77444113"
 
 ## <a name="template-machine"></a>テンプレート マシン
 
-[Data Science Virtual Machine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) イメージには、この種類のクラスに必要なディープ ラーニング フレームワークとツールが用意されています。  このイメージには、Jupyter Notebooks と Visual Studio Code が含まれています。  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) は、データ サイエンティストが生データの取得、計算の実行、および結果の表示をすべて同じ環境で行えるようにする Web アプリです。  テンプレート マシンの場合、Web アプリケーションはローカルで実行されます。  [Visual Studio Code](https://code.visualstudio.com/) は、ノートブックを作成およびテストする際に、豊富な対話型エクスペリエンスを提供する統合開発環境です。  詳細については、「[Visual Studio Code での Jupyter Notebooks の使用](https://code.visualstudio.com/docs/python/jupyter-support)」を参照してください。
+[Data Science Virtual Machine - Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) イメージには、この種類のクラスに必要なディープ ラーニング フレームワークとツールが用意されています。  このイメージには、Jupyter Notebooks と Visual Studio Code が含まれています。  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) は、データ サイエンティストが生データの取得、計算の実行、および結果の表示をすべて同じ環境で行えるようにする Web アプリです。  テンプレート マシンの場合、Web アプリケーションはローカルで実行されます。  [Visual Studio Code](https://code.visualstudio.com/) は、ノートブックを作成およびテストする際に、豊富な対話型エクスペリエンスを提供する統合開発環境です。  詳細については、「[Visual Studio Code での Jupyter Notebooks の使用](https://code.visualstudio.com/docs/python/jupyter-support)」を参照してください。
 
 クラスを設定する際の残りのタスクは、ローカル ノートブックを提供することです。  Azure Machine Learning サンプルの使用方法については、[Jupyter Notebooks を使用して環境を構成する方法](../../machine-learning/how-to-configure-environment.md#jupyter)に関するセクションをご覧ください。  テンプレート マシンで独自のノートブックを提供することもできます。  テンプレートが発行されると、ノートブックはすべての学生用マシンにコピーされます。
 

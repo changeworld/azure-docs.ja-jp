@@ -8,23 +8,31 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 967fd1fa182b7c8e581fd74cc287c5a6ba0e4038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127830"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422412"
 ---
 # <a name="linux-support"></a>Linux Support
 
-Windows Virtual Desktop 用の Linux SDK を使用して、スタンドアロンの Windows Virtual Desktop クライアントを構築できます。 また、これを使用して、クライアント アプリケーションで Windows Virtual Desktop のサポートを有効にすることもできます。 このクイック ガイドでは、Linux SDK の内容と使用を開始する方法について説明します。
+パートナーは、Windows Virtual Desktop 用の Linux SDK を使用して、スタンドアロンの Windows Virtual Desktop クライアントを構築できます。 また、これを使用して、クライアント アプリケーションで Windows Virtual Desktop のサポートを有効にすることもできます。 このクイック ガイドでは、Linux SDK の内容と使用を開始する方法について説明します。
+
+## <a name="connect-with-your-linux-device"></a>Linux デバイスで接続する
+
+Linux デバイス用 Windows Virtual Desktop クライアントは、次のパートナーによって承認されています。
+
+|Partner|パートナー向けドキュメント|パートナー サポート|
+|:------|:--------------------|:--------------|
+|![IGEL ロゴ](./media/partners/igel.png)|[IGEL クライアントのドキュメント](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL サポート](https://www.igel.com/support/)|
 
 ## <a name="what-is-the-linux-sdk"></a>Linux SDK とは
 
 SDK API を使用すると、リソース フィードの取得、デスクトップまたはリモート アプリケーション セッションへの接続、ファースト パーティのクライアントがサポートする多くのリダイレクトの使用を行うことができます。
 
 > [!NOTE]
-> SDK は現在開発中です。 利用できるようになったら、SDK にアクセスする手順をこのドキュメントに含め更新します。
+> SDK は現在開発中です。 一般提供されたら、SDK にアクセスする手順をこのドキュメントに含め更新します。
 
 ### <a name="supported-linux-distributions"></a>サポートされている Linux ディストリビューション
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 8b95bb45436f45dc0e62fb12d6ab1b24c37372e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9ed11cd00909a104b5ea54463f8a98020837e10
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235959"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477879"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -122,7 +122,7 @@ Azure でカスタムまたはユーザー定義（静的）のルートを作�
 
 BGP を使用して Azure とルートを交換すると、仮想ネットワークのすべてのサブネットのルート テーブルに、アドバタイズされた各プレフィックスの個別のルートが追加されます。 追加されるルートは、ソースとネクストホップの種類が "*仮想ネットワーク ゲートウェイ*" になります。 
 
-ER と VPN Gateway ルートの伝達は、ルート テーブルのプロパティを使用してサブネット上で無効にすることができます。 BGP を使用して Azure とルートを交換するときに、仮想ネットワーク ゲートウェイ ルートの伝達が無効になっているすべてのサブネットのルート テーブルにはルートが追加されません。 VPN 接続の接続は、ネクストホップの種類が*仮想ネットワーク ゲートウェイ*である[カスタム ルート](#custom-routes) を使用して実現されます。 詳細については、[仮想ネットワーク ゲートウェイ ルートの伝達を無効にする方法](manage-route-table.md#create-a-route-table) に関するページを参照してください。
+ER と VPN Gateway ルートの伝達は、ルート テーブルのプロパティを使用してサブネット上で無効にすることができます。 BGP を使用して Azure とルートを交換するときに、仮想ネットワーク ゲートウェイ ルートの伝達が無効になっているすべてのサブネットのルート テーブルにはルートが追加されません。 VPN 接続の接続は、ネクストホップの種類が*仮想ネットワーク ゲートウェイ*である[カスタム ルート](#custom-routes) を使用して実現されます。 **GatewaySubnet でルートの伝達を無効にしないでください。この設定を無効にすると、ゲートウェイは機能しません。** 詳細については、[仮想ネットワーク ゲートウェイ ルートの伝達を無効にする方法](manage-route-table.md#create-a-route-table) に関するページを参照してください。
 
 ## <a name="how-azure-selects-a-route"></a>Azure がルートを選択するしくみ
 

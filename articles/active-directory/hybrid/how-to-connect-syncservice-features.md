@@ -16,12 +16,12 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300538"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983077"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同期サービスの機能
 
@@ -89,12 +89,14 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 ## <a name="synchronize-userprincipalname-updates"></a>userPrincipalName の更新の同期
 
-これまで、オンプレミスから同期サービスを使用して UserPrincipalName 属性を更新することは、次の 2 つの条件が両方とも当てはまらない限り、できませんでした。
+これまで、次の 2 つの条件が両方とも当てはまらない限り、オンプレミスから同期サービスを使用して UserPrincipalName 属性を更新することはできませんでした。
 
 * ユーザーが管理対象ユーザー (非フェデレーション ユーザー) である。
 * ユーザーにライセンスが割り当てられていない。
 
-詳細については、「 [Office 365、Azure、Intune などの組織アカウントのユーザー名が、オンプレミスの UPN または代替ログイン ID と一致しない](https://support.microsoft.com/kb/2523192)」を参照してください。
+> [!NOTE]
+> 2019 年 3 月から、フェデレーション ユーザー アカウントでの UPN 変更の同期が許可されています。
+> 
 
 この機能を有効にすると、userPrincipalName がオンプレミスで変更されたときに、パスワード ハッシュ同期またはパススルー認証を使用している場合は、同期エンジンによって userPrincipalName が更新されます。
 

@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Service (AKS) クラスターを使用した HTTPS イングレスの作成
+title: 自動 TLS を使用したイングレスの作成
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) クラスターで、自動的に TLS 証明書を生成する Let's Encrypt を使用する NGINX イングレス コントローラーをインストールおよび構成する方法について説明します。
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: 6f497ee3edd5ee831c091a5a50629df81673acea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c98310bc5dc6b8f17403505cbcdd7e51355ca2b7
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78191318"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668423"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成する
 
@@ -84,7 +85,7 @@ nginx-ingress-default-backend                    ClusterIP      10.0.255.77    <
 az network dns record-set a add-record \
     --resource-group myResourceGroup \
     --zone-name MY_CUSTOM_DOMAIN \
-    --record-set-name * \
+    --record-set-name '*' \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
@@ -163,7 +164,7 @@ spec:
 発行者を作成するには、`kubectl apply` コマンドを使用します。
 
 ```console
-kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+kubectl apply -f cluster-issuer.yaml
 ```
 
 ## <a name="run-demo-applications"></a>デモ アプリケーションを実行する
