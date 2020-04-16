@@ -3,7 +3,7 @@ title: チュートリアル - Azure CDN カスタム ドメインで HTTPS を�
 description: このチュートリアルでは、Azure CDN エンドポイント カスタム ドメインで HTTPS を有効および無効にする方法について説明します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 10337468-7015-4598-9586-0b66591d939b
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/1/2019
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5cf1181c41af1edc752205f4477f18b78680f484
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222429"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254004"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -58,8 +58,8 @@ ms.locfileid: "79222429"
 
 ---
 
-## <a name="ssl-certificates"></a>SSL 証明書の数
-Azure CDN カスタム ドメインでコンテンツを安全に配信するために HTTPS プロトコルを有効にするには、SSL 証明書を使用する必要があります。 Azure CDN で管理された証明書または独自の証明書を使用できます。
+## <a name="tlsssl-certificates"></a>TLS/SSL 証明書
+Azure CDN カスタム ドメインでコンテンツを安全に配信するために HTTPS プロトコルを有効にするには、TLS/SSL 証明書を使用する必要があります。 Azure CDN で管理された証明書または独自の証明書を使用できます。
 
 
 # <a name="option-1-default-enable-https-with-a-cdn-managed-certificate"></a>[オプション 1 (既定): CDN で管理された証明書を使用して HTTPS を有効にする](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
@@ -99,7 +99,7 @@ CDN で管理された証明書を使用する場合、HTTPS 機能は、数回�
 > このオプションは、**Azure CDN from Microsoft** および **Azure CDN from Verizon** プロファイルでのみ利用できます。 
 >
  
-独自の証明書を使用して、HTTPS 機能を有効にできます。 このプロセスは、Azure Key Vault との統合を通じて行われます。これにより、お使いの証明書を安全に格納できます。 Azure CDN では、お使いの証明書の取得に、セキュリティで保護されたこのメカニズムが使用されます。それには、追加の手順がいくつか必要です。 SSL 証明書を作成するときには、許可された証明書機関 (CA) を使用して作成する必要があります。 許可されていない CA を使用すると、要求が拒否されます。 許可された CA の一覧については、「[Azure CDN でカスタム HTTPS を有効にするために許可された認証機関](cdn-troubleshoot-allowed-ca.md)」を参照してください。**Azure CDN from Verizon** では、任意の有効な CA が受け入れられます。 
+独自の証明書を使用して、HTTPS 機能を有効にできます。 このプロセスは、Azure Key Vault との統合を通じて行われます。これにより、お使いの証明書を安全に格納できます。 Azure CDN では、お使いの証明書の取得に、セキュリティで保護されたこのメカニズムが使用されます。それには、追加の手順がいくつか必要です。 TLS/SSL 証明書を作成するときには、許可された証明機関 (CA) を使用して作成する必要があります。 許可されていない CA を使用すると、要求が拒否されます。 許可された CA の一覧については、「[Azure CDN でカスタム HTTPS を有効にするために許可された認証機関](cdn-troubleshoot-allowed-ca.md)」を参照してください。**Azure CDN from Verizon** では、任意の有効な CA が受け入れられます。 
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Azure Key Vault のアカウントと証明書を準備する
  
@@ -178,7 +178,7 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* がカスタム ドメイン名で、*Value* が CDN エンドポイントのホスト名です。
 
-| 名前            | Type  | Value                 |
+| 名前            | Type  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
@@ -308,7 +308,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 4. *SAN 証明書を使用すると専用証明書の場合よりも安全性が低くなるでしょうか。*
     
-    SAN 証明書は、専用証明書と同じ暗号化およびセキュリティ標準に従っています。 発行されるすべての SSL 証明書に SHA 256 を使用して、サーバーのセキュリティが強化されています。
+    SAN 証明書は、専用証明書と同じ暗号化およびセキュリティ標準に従っています。 発行されるすべての TLS/SSL 証明書には、サーバーのセキュリティを強化するために SHA-256 が使用されます。
 
 5. *DNS プロバイダーに Certificate Authority Authorization レコードが必要ですか。*
 
@@ -320,7 +320,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 7. *証明書の更新では、独自の証明書の持ち込みをどのように処理しますか。*
 
-    より新しい証明書が PoP インフラストラクチャにデプロイされるようにするには、単に新しい証明書を Azure KeyVault にアップロードします。その後、Azure CDN の SSL 設定で最新の証明書バージョンを選択し、保存します。 Azure CDN によって、新しい更新された証明書が反映されます。 
+    より新しい証明書が PoP インフラストラクチャにデプロイされるようにするには、単に新しい証明書を Azure KeyVault にアップロードします。その後、Azure CDN の TLS 設定で最新の証明書バージョンを選択し、保存します。 Azure CDN によって、新しい更新された証明書が反映されます。 
 
 ## <a name="next-steps"></a>次のステップ
 

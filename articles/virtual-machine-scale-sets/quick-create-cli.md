@@ -1,22 +1,22 @@
 ---
 title: クイックスタート - Azure CLI を使用して仮想マシン スケール セットを作成する
 description: Azure CLI を使用して仮想マシン スケール セットをすばやく作成する方法を説明します。実際に自分でデプロイしてみましょう。
-author: cynthn
+author: ju-shim
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.openlocfilehash: 172a498b6b92a059c50cac4ad45fee322e12fdd0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.author: jushiman
+ms.openlocfilehash: 392af4d96efc9b60cedc8488dc1cebbfd68a92c5
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76278034"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011329"
 ---
-# <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>クイック スタート: Azure CLI を使用して仮想マシン スケール セットを作成する
+# <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>クイック スタート:Azure CLI を使用して仮想マシン スケール セットを作成する
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイック スタートでは、Azure CLI を使用して仮想マシン スケール セットを作成し、サンプル アプリケーションをデプロイします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。

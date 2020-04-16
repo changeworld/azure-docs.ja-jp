@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure Security Center for IoT ソリューションを構成する
+title: クイック スタート:ソリューションを構成する
 description: このクイックスタートでは、Azure Security Center for IoT を使用してエンド ツー エンドの IoT ソリューションを構成する方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e670df359cc33c9eaca089d0ed8f9614ef8c0468
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 04505527428a6bb312c6fb7a12c116947fbd7cf6
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73904146"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310852"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>クイック スタート:IoT ソリューションを構成する
 
-この記事では、Azure Security Center for IoT を使用して IoT セキュリティ ソリューションの初期構成を実行する方法について説明します。 
+この記事では、Azure Security Center for IoT を使用して IoT セキュリティ ソリューションの初期構成を実行する方法について説明します。
 
 ## <a name="azure-security-center-for-iot"></a>Azure Security Center for IoT
 
@@ -34,20 +34,20 @@ Azure Security Center for IoT を使用すると、1 つのダッシュボード
 
 Azure Security Center for IoT を IoT ハブ上で有効にすると、IoT ハブに接続されていて IoT ソリューションに関連している他の Azure サービスが自動的に識別されます。
 
-自動でリレーションシップを検出できるだけでなく、他のどの Azure リソース グループを IoT ソリューションの一部としてタグ付けするかを選択することもできます。 
+自動でリレーションシップを検出できるだけでなく、他のどの Azure リソース グループを IoT ソリューションの一部としてタグ付けするかを選択することもできます。
 
-選択に応じて、サブスクリプション全体、リソース グループ、または単一のリソースを追加できます。 
+選択に応じて、サブスクリプション全体、リソース グループ、または単一のリソースを追加できます。
 
 すべてのリソースのリレーションシップを定義すると、Azure Security Center for IoT によって、これらのリソースに対するセキュリティのレコメンデーションとアラートが Azure Security Center を通じて提供されるようになります。
 
 ## <a name="add-azure-resources-to-your-iot-solution"></a>IoT ソリューションへの Azure リソースの追加
 
-IoT ソリューションに新しいリソースを追加するには、次の操作を行います。 
+IoT ソリューションに新しいリソースを追加するには、次の操作を行います。
 
-1. Azure portal で **[IoT Hub]** を開きます。 
-1. 左側のメニューの **[セキュリティ]** の下の **[リソース]** を選択して開きます。 
+1. Azure portal で **[IoT Hub]** を開きます。
+1. 左側のメニューの **[セキュリティ]** の下の **[リソース]** を選択して開きます。
 1. **[編集]** を選択し、自分の IoT ソリューションに属しているリソース グループを選択します。
-1. **[追加]** をクリックします。 
+1. **[追加]** をクリックします。
 
 お疲れさまでした。 IoT ソリューションに新しいリソース グループが追加されました。
 

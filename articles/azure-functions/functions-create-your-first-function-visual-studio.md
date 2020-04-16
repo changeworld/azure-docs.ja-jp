@@ -5,12 +5,12 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 13a03ca6820229fc90467236e0c23f236664d73f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e58414fa94a4ef54eb2f288b2cd636c10611460d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80056706"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308927"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure で初めての関数を作成する
 
@@ -28,7 +28,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 ![Azure 開発ワークロードと共に Visual Studio をインストールする](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[Azure サブスクリプション](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/dotnet/)を作成してください。
 
 ## <a name="create-a-function-app-project"></a>関数アプリ プロジェクトを作成する
 

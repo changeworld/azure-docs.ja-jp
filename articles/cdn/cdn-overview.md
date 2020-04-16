@@ -3,7 +3,7 @@ title: コンテンツ配信ネットワーク (CDN) とは - Azure | Microsoft 
 description: Azure Content Delivery Network (CDN) の概要と、CDN を使用して高帯域幅コンテンツを配信する方法について説明します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 866e0c30-1f33-43a5-91f0-d22f033b16c6
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 05/09/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4158df06b4eea175a4225e478325f8f151795850
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 262e5b7bbcbf6c463ef97d5acc72248d37195124
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75660632"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260448"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Azure 上のコンテンツ配信ネットワークとは
 コンテンツ配信ネットワーク (CDN) は、ユーザーに Web コンテンツを効率的に配信できるサーバーの分散ネットワークです。 CDN では、待ち時間を最小限に抑えるために、エンド ユーザーに近いポイントオブプレゼンス (POP) の場所のエッジ サーバーに、キャッシュされたコンテンツを格納します。 

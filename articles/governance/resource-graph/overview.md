@@ -3,12 +3,12 @@ title: Azure Resource Graph の概要
 description: Azure Resource Graph サービスによってサブスクリプションとテナントにまたがるリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
 ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f5c091f60faedb76e3ca6cd68505c06f51be21b6
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214770"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381528"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Resource Graph とは
 
@@ -50,7 +50,7 @@ Azure リソースが更新されると、Resource Manager から Resource Graph
 
 これで Azure Resource Graph についてはよく理解したので、クエリを作成する方法に進みましょう。
 
-Azure Resource Graph のクエリ言語が Azure Data Explorer で使用される [Kusto クエリ言語](../../data-explorer/data-explorer-overview.md)に基づくことを理解することが重要です。
+Azure Resource Graph のクエリ言語が Azure Data Explorer で使用される [Kusto クエリ言語](/azure/data-explorer/data-explorer-overview)に基づくことを理解することが重要です。
 
 最初に、Azure Resource Graph と共に使用することができる操作および機能の詳細については、[Resource Graph のクエリ言語](./concepts/query-language.md)を参照してください。
 リソースをブラウズするためには、[リソースを探索する](./concepts/explore-resources.md)を参照してください。

@@ -1,21 +1,21 @@
 ---
 title: チュートリアル - Azure CLI を使用してスケール セットのディスクを作成および使用する
 description: Azure CLI を使用して仮想マシン スケール セットの Managed Disks を作成および使用する方法 (ディスクの追加、準備、一覧表示、切断方法など) を説明します。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 12bde51222e1e648f97476d5dab039b4ad2adfe8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3759fa426a712308e1956376d559c1ac84eadbd7
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067053"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008830"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用した仮想マシン スケール セットのディスクの作成および使用
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのディスクの作成および使用
 仮想マシン スケール セットでは、VM インスタンスのオペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 スケール セットを作成および管理するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクの作成方法と管理方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -40,7 +40,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 **一時ディスク** - 一時ディスクは、VM インスタンスと同じ Azure ホストに配置されているソリッド ステート ドライブを使用します。 これらは高パフォーマンスのディスクであり、一時的なデータ処理などの操作に使用される場合があります。 ただし、VM インスタンスを新しいホストに移動すると、一時ディスクに格納されているデータはすべて削除されます。 一時ディスクのサイズは VM インスタンスのサイズによって決まります。 一時ディスクには */dev/sdb* のラベルが付けられており、 */mnt* というマウント ポイントがあります。
 
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
-| 種類 | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
+| Type | 一般的なサイズ | 一時ディスクの最大サイズ (GiB) |
 |----|----|----|
 | [汎用](../virtual-machines/linux/sizes-general.md) | A、B、D シリーズ | 1600 |
 | [コンピューティングの最適化](../virtual-machines/linux/sizes-compute.md) | F シリーズ | 576 |
@@ -51,18 +51,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 
 ## <a name="azure-data-disks"></a>Azure データ ディスク
-アプリケーションをインストールしたりデータを保存したりする必要がある場合は、データ ディスクをさらに追加できます。 耐久性と応答性の高いデータ ストレージが望ましい状況では、必ず、データ ディスクを使用する必要があります。 各データ ディスクの最大容量は 4 TB です。 VM インスタンス サイズによって、接続できるデータ ディスクの数が決まります。 各 VM vCPU に、2 つのデータ ディスクを接続できます。
-
-### <a name="max-data-disks-per-vm"></a>VM あたりの最大データ ディスク数
-| 種類 | 一般的なサイズ | VM あたりの最大データ ディスク数 |
-|----|----|----|
-| [汎用](../virtual-machines/linux/sizes-general.md) | A、B、D シリーズ | 64 |
-| [コンピューティングの最適化](../virtual-machines/linux/sizes-compute.md) | F シリーズ | 64 |
-| [メモリの最適化](../virtual-machines/linux/sizes-memory.md) | D、E、G、M シリーズ | 64 |
-| [ストレージの最適化](../virtual-machines/linux/sizes-storage.md) | L シリーズ | 64 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N シリーズ | 64 |
-| [高性能](../virtual-machines/linux/sizes-hpc.md) | A および H シリーズ | 64 |
-
+アプリケーションをインストールしたりデータを保存したりする必要がある場合は、データ ディスクをさらに追加できます。 耐久性と応答性の高いデータ ストレージが望ましい状況では、必ず、データ ディスクを使用する必要があります。 各データ ディスクの最大容量は 4 TB です。 VM インスタンス サイズによって、接続できるデータ ディスクの数が決まります。 VM vCPU ごとに、2 つのデータ ディスクを仮想マシンあたり絶対最大数の 64 個のディスクまで接続できます。
 
 ## <a name="vm-disk-types"></a>VM ディスクの種類
 Azure では、2 種類のディスクを提供しています。

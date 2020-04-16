@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f6e7ee1b03dda30bea15a837b6daf6469e00e46d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 205f4a27a7903bc5a1da3fc12e3d4a02b23f58cf
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886400"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990924"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す
 
@@ -435,8 +435,3 @@ Microsoft Graph API は、ユーザーのプロファイルを読み込むため
 対処法: **[Sign in with other options]\(他のオプションでサインイン\)** を選択します。 次に、 **[Sign in with a username and password]\(ユーザー名とパスワードでサインイン\)** を選択します。 **[Provide your password]\(パスワードを指定\)** を選択します。 電話認証プロセスに進みます。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
-
-Microsoft ID プラットフォームの改善にご協力ください。 簡単な 2 つの質問からなるアンケートに記入し、ご意見をお聞かせください。
-
-> [!div class="nextstepaction"]
-> [Microsoft ID プラットフォームのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

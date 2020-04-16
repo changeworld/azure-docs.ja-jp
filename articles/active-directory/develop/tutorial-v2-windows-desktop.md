@@ -1,26 +1,22 @@
 ---
-title: Microsoft ID プラットフォーム Windows デスクトップの概要 | Microsoft Docs
+title: Microsoft ID プラットフォーム Windows デスクトップの概要
 description: Windows デスクトップ .NET (XAML) アプリケーションでアクセス トークンを取得し、Microsoft ID プラットフォームによって保護されている API を呼び出す方法について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 422251da25ae0ef911eb723bb0342a84fe99559c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aa09d06af4706af3ae120f62a897c0bc632fb657
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129924"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990941"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Windows デスクトップ アプリから Microsoft Graph API を呼び出す
 
@@ -96,7 +92,7 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 
-### <a name="option-2-advanced-mode"></a>オプション 2: 詳細モード
+### <a name="option-2-advanced-mode"></a>オプション 2:詳細設定モード
 
 アプリケーションを登録し、ソリューションにアプリケーション登録情報を追加するには、次の手順を実行します。
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
@@ -379,8 +375,3 @@ Microsoft Graph API の呼び出しに使用するアクセス トークンに�
 <!--end-collapse-->
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
-
-Microsoft ID プラットフォームの改善にご協力ください。 簡単な 2 つの質問からなるアンケートに記入し、ご意見をお聞かせください。
-
-> [!div class="nextstepaction"]
-> [Microsoft ID プラットフォームのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

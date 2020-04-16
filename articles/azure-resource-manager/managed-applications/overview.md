@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: b4aa5dfd288819930da2f7af36b7d70df709e638
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0615830e525ab60bbb2167dd39d9c4bf14cc91b3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79473032"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391575"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure マネージド アプリケーションの概要
 
@@ -84,4 +84,4 @@ IT チームは、マネージド アプリケーションを使用して、組�
 この記事では、マネージド アプリケーションを使用する利点について説明しました。 次の記事にアクセスして、マネージド アプリケーションの定義を作成しましょう。
 
 > [!div class="nextstepaction"]
-> [クイック スタート: Azure マネージド アプリケーションの定義を発行する](publish-managed-app-definition-quickstart.md)
+> [クイック スタート: Azure マネージド アプリケーションの定義を発行する](publish-service-catalog-app.md)

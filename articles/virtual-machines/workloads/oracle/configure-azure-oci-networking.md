@@ -2,7 +2,7 @@
 title: Azure ExpressRoute を Oracle Cloud Infrastructure と接続する | Microsoft Docs
 description: Azure ExpressRoute を Oracle Cloud Infrastructure (OCI) FastConnect と接続して、クロスクラウド Oracle アプリケーション ソリューションを使用できるようにします
 documentationcenter: virtual-machines
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -11,21 +11,26 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/02/2019
-ms.author: rogirdh
-ms.openlocfilehash: 0e2e16ccc04ff6df80597d646a00c40551e4cfd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/16/2020
+ms.author: mimckitt
+ms.openlocfilehash: d85c0fc8986adfa00559eab1c49a79daacdeb33f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302051"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263184"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure と Oracle Cloud Infrastructure 間の直接相互接続をセットアップする  
 
-[統合されたマルチクラウド エクスペリエンス](oracle-oci-overview.md) (プレビュー) を作成するために、Microsoft と Oracle では、[ExpressRoute](../../../expressroute/expressroute-introduction.md) と [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) を介して　Azure と Oracle Cloud Infrastructure (OCI) 間の直接相互接続を提供しています。 ExpressRoute と FastConnect の相互接続により、お客様は、短い待機時間、高いスループット、2 つのクラウド間の専用直接接続を体験することができます。
+[統合されたマルチクラウド エクスペリエンス](oracle-oci-overview.md)を作成するために、Microsoft と Oracle では、[ExpressRoute](../../../expressroute/expressroute-introduction.md) と [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) を介して、Azure と Oracle Cloud Infrastructure (OCI) 間の直接相互接続を提供しています。 ExpressRoute と FastConnect の相互接続により、お客様は、短い待機時間、高いスループット、2 つのクラウド間の専用直接接続を体験することができます。
 
 > [!IMPORTANT]
-> Microsoft Azure と OCI 間の接続はプレビュー段階です。 Azure と OCI の間で低待機時間の接続を確立するには、最初にお使いの Azure サブスクリプションでこの機能を有効にする必要があります。 この簡単な[アンケート フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)を完了することで、プレビューに登録する必要があります。 サブスクリプションが登録されると、メールが届きます。 確認メールを受信するまで、この機能を使用することはできません。 Microsoft の担当者に問い合わせて、このプレビューを有効にすることもできます。 プレビュー機能へのアクセスは可用性の対象であり、Microsoft の独自の判断によって制限されます。 アンケートを完了しても、アクセスが保証されるわけではありません。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
+> Azure または Oracle Cloud 相互接続ソリューションを 2020 年 5 月までに使用する場合、Oracle はこれらのアプリケーションを Azure で実行することを認定します。
+> * E-Business Suite
+> * JD Edwards EnterpriseOne
+> * PeopleSoft
+> * Oracle Retail アプリケーション
+> * Oracle Hyperion Financial Management
 
 次の図は、相互接続の概要を示しています。
 
@@ -36,8 +41,6 @@ ms.locfileid: "78302051"
 * Azure と OCI 間の接続を確立するには、アクティブな Azure サブスクリプションとアクティブな OCI テナントが必要です。
 
 * 接続は、Azure ExpressRoute のピアリング場所が OCI FastConnect のピアリング場所に近接しているか、同じ場所にある場合にのみ可能です。 [利用可能なリージョン](oracle-oci-overview.md#region-availability)に関するページを参照してください。
-
-* お使いの Azure サブスクリプションでこのプレビュー機能を有効にする必要があります。
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>ExpressRoute と FastConnect 間の直接接続を構成する
 
@@ -79,7 +82,7 @@ ms.locfileid: "78302051"
 
 ネットワークの構成が完了したら、Azure portal の ExpressRoute プライベート ピアリング ブレードで **[ARP レコードを取得する]** および **[ルート テーブルを取得する]** をクリックして、構成の有効性を検証できます。
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>オートメーション
 
 Microsoft では、ネットワーク相互接続の自動デプロイを有効にするために Terraform スクリプトを作成しました。 Terraform スクリプトには Azure サブスクリプションでの適切なアクセス許可が必要なため、実行する前に Azure で認証する必要があります。 認証は、[Azure Active Directory サービス プリンシパル](../../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を使用するか、Azure CLI を使用して実行できます。 詳細については、[Terraform のドキュメント](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html)を参照してください。
 

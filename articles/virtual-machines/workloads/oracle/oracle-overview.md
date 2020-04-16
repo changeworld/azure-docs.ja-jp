@@ -3,7 +3,7 @@ title: Microsoft Azure での Oracle ソリューション | Microsoft Docs
 description: Oracle のアプリケーションおよびソリューションを Microsoft Azure にデプロイするためのオプション (全面的に Azure インフラストラクチャ上で実行する、クラウド間接続と Oracle Cloud Infrastructure (OCI) を使用するなど) について学びます。
 services: virtual-machines-linux
 documentationcenter: ''
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: azure-resource-management
 ms.assetid: ''
@@ -11,18 +11,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
-ms.author: rogirdh
-ms.openlocfilehash: 6ab41182d59f8c96edfca4854aad5f9a13f53436
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/16/2020
+ms.author: mimckitt
+ms.openlocfilehash: 8c266986ac795be48f3a8439afc5ae4752ff3ed7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74806611"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263252"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure での Oracle アプリケーションおよびソリューションの概要
 
-この記事では、Azure インフラストラクチャを使用して Oracle ソリューションを実行するための機能を紹介します。 Azure Marketplace で入手可能な [Oracle VM イメージ](oracle-vm-solutions.md)や、[Azure と Oracle Cloud Infrastructure (OCI) を相互接続する](oracle-oci-overview.md)プレビュー機能の詳しい紹介も参照してください。
+この記事では、Azure インフラストラクチャを使用して Oracle ソリューションを実行するための機能を紹介します。 Azure Marketplace で入手可能な [Oracle VM イメージ](oracle-vm-solutions.md)や、[Azure と Oracle Cloud Infrastructure (OCI) を相互接続する](oracle-oci-overview.md)機能の詳しい紹介も参照してください。
 
 ## <a name="oracle-databases-on-azure-infrastructure"></a>Azure インフラストラクチャ上の Oracle データベース
 
@@ -58,7 +58,7 @@ Azure Marketplace で入手可能な Oracle Linux イメージの Oracle Databas
 
 * Oracle RMAN を使用して Oracle Database をバックアップし、必要に応じて、[Azure Blob Fuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) を使用して、[冗長性の高い Azure Blob Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-redundancy)をマウントし、回復性を高めるために RMAN バックアップをそれに書き込みます。
 
-## <a name="integration-of-azure-with-oci-preview"></a>Azure と OCI の統合 (プレビュー)
+## <a name="integration-of-azure-with-oci"></a>Azure と OCI の統合
 
 Oracle Cloud Infrastructure (OCI) のバックエンド データベースに接続された Azure インフラストラクチャで Oracle アプリケーションを実行します。 このソリューションでは、次の機能を使用します。 
 
@@ -67,7 +67,10 @@ Oracle Cloud Infrastructure (OCI) のバックエンド データベースに接
 
 ### <a name="deploy-oracle-applications-on-azure"></a>Oracle アプリケーションを Azure 上にデプロイする
 
-Terraform テンプレートを使用して Azure インフラストラクチャを設定し、クラウド間構成での実行が検証されサポートされている Oracle アプリケーションをインストールします。
+Terraform テンプレートを使用して Azure インフラストラクチャを設定し、Oracle アプリケーションをインストールします。 
+
+> [!IMPORTANT]
+> Azure または Oracle Cloud 相互接続ソリューションを 2020 年 5 月までに使用する場合、Oracle はこれらのアプリケーションを Azure で実行することを認定します。
 
 * E-Business Suite
 * JD Edwards EnterpriseOne

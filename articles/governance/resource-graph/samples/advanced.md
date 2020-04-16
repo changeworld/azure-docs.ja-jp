@@ -3,16 +3,16 @@ title: 高度なクエリのサンプル
 description: Azure Resource Graph を使用して、列の操作、使用されているタグの一覧表示、正規表現を使用したリソースの照合など、高度なクエリを実行します。
 ms.date: 03/20/2020
 ms.topic: sample
-ms.openlocfilehash: 98e80d0977ec23cba8b8c497373b6e89b52d430e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3d0e7a9be37f9baf471584ee3fe26c52d13b3084
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80130504"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381504"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Resource Graph の高度なクエリのサンプル
 
-Azure Resource Graph でクエリを理解する最初の手順は、[クエリ言語](../concepts/query-language.md)の基本を理解することです。 [Azure Data Explorer](../../../data-explorer/data-explorer-overview.md) にまだ精通していない場合、探しているリソースに対する要求を作成する方法を理解するための基礎を確認することをお勧めします。
+Azure Resource Graph でクエリを理解する最初の手順は、[クエリ言語](../concepts/query-language.md)の基本を理解することです。 [Azure Data Explorer](/azure/data-explorer/data-explorer-overview) にまだ精通していない場合、探しているリソースに対する要求を作成する方法を理解するための基礎を確認することをお勧めします。
 
 次の高度なクエリを説明します。
 

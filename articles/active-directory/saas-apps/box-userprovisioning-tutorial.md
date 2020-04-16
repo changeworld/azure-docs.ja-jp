@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Box を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:Box を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory と Box の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -22,7 +22,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "77058571"
 ---
-# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>チュートリアル: Box を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>チュートリアル:Box を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から Box にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Box と Azure AD で実行する必要がある手順について説明します。
 
@@ -113,7 +113,7 @@ Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box �
 
 10. **[保存]** をクリックします。
 
-11. [マッピング] セクションの **[Synchronize Azure Active Directory Users to Slack (Azure Active Directory ユーザーを Box に同期する)]** を選択します。
+11. [マッピング] セクションの **[Synchronize Azure Active Directory Users to Box]\(Azure Active Directory ユーザーを Box に同期する\)** を選択します。
 
 12. **[属性マッピング]** セクションで、Azure AD から Box に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Box のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 

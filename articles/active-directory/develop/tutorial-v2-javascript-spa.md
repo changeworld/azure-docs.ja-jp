@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 307490837b2963b3a1272eaafde63431de6645aa
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: ec47850ce4cccb6a891c7e5aef2644550bc3e39a
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984352"
+ms.locfileid: "80990958"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
 
@@ -519,8 +519,3 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 <!--end-collapse-->
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
-
-Microsoft ID プラットフォームの改善にご協力ください。 簡単な 2 つの質問からなるアンケートに記入し、ご意見をお聞かせください。
-
-> [!div class="nextstepaction"]
-> [Microsoft ID プラットフォームのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

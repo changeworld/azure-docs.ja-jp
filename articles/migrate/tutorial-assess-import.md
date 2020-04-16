@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 23fa1a2a0b035d04334c51c02411de6de70f2cad
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79453648"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115057"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>インポートされたデータを使用してサーバーを評価する
 
@@ -126,22 +126,8 @@ CSV テンプレートをダウンロードし、サーバー情報を追加し�
 **Network In throughput (ネットワークの受信スループット)** | いいえ | サーバーによって受信されたデータ (MB/秒)。
 **Network out throughput (ネットワークの送信スループット)** | いいえ | サーバーによって送信されたデータ (MB/秒)。
 **Firmware type (ファームウェアの種類)** | いいえ | サーバーのファームウェア。 値には "BIOS" または "UEFI" を指定できます。
-**サーバーの種類** | いいえ | 値には「物理」または「仮想」を指定できます。
-**ハイパーバイザー** | いいえ | マシンが実行されているハイパーバイザー。 <br/> 値には、「VMware」、「Hyper-V」、「Xen」、「AWS」、「GCP」、または「その他」を指定できます。
-**Hypervisor version number (ハイパーバイザーのバージョン番号)** | いいえ | ハイパーバイザーのバージョン。
-**仮想マシン ID** | いいえ | VM 識別子。 これは、VMware vCenter VM の場合は **InstanceUUid** 値、Hyper-V の場合は **Hyper-V VM ID** です。
-**Virtual Machine Manager ID** | いいえ | これは VMware vCenter の **InstanceUUid** 値です。 Hyper-V の場合は必要ありません。
 **MAC アドレス**| いいえ | サーバーの MAC アドレス。
-**BIOS ID** | いいえ | サーバーの BIOS ID。
-**Custom server ID (カスタム サーバー ID)** | いいえ | オンプレミスの一意のローカル サーバー ID。 <br/> インポートされたサーバーをローカル ID で追跡する場合に便利です。
-**Application 1 name (アプリケーション 1 の名前)** | いいえ | サーバーで実行されているワークロードの名前。<br/>テンプレートに[列を追加](#add-multiple-applications)することで、さらにアプリの詳細を追加できます。 最大 5 つのアプリケーションを追加できます。
-**Application 1 type (アプリケーション 1 の種類)** | いいえ | サーバーで実行されているワークロードの種類
-**Application 1 version (アプリケーション 1 のバージョン)** | いいえ | サーバーで実行されているワークロードのバージョン。
-**Application 1 license expiry (アプリケーション 1 のライセンスの有効期限)** | いいえ | ワークロードのライセンスの有効期限 (該当する場合)。
-**部署** | いいえ | サーバーが属している部署。
-**Business owner (ビジネス オーナー)** | いいえ | 部署の所有者。
-**Business application name (ビジネス アプリケーション名)** | いいえ | アプリが属しているアプリケーションの名前。
-**場所** | いいえ | サーバーが配置されているデータセンター。
+
 
 ### <a name="add-operating-systems"></a>オペレーティング システムを追加する
 
@@ -159,19 +145,6 @@ CSV テンプレートをダウンロードし、サーバー情報を追加し�
 - Disk 2 read throughput (ディスク 2 の読み取りスループット)
 - Disk 2 write throughput (ディスク 2 の書き込みスループット)
 
-### <a name="add-multiple-applications"></a>複数のアプリケーションを追加する
-
-テンプレートには、単一のアプリケーション用のフィールドが用意されています。 同様の列を最大 5 つのアプリに追加できます。  
-
-たとえば、2 番目のアプリに対してすべてのフィールドを指定するには、次の列を追加します。
-
-- Application 2 name (アプリケーション 2 の名前)
-- Application 2 type (アプリケーション 2 の種類)
-- Application 2 version (アプリケーション 2 のバージョン)
-- Application 2 license expiry (アプリケーション 2 のライセンスの有効期限)
-
-> [!NOTE]
-> アプリ情報は、移行についてオンプレミス環境を評価するのに役立ちます。 ただし、現在、Azure Migrate Server Assessment では、アプリレベルの評価は実行されません。また、評価の作成時にアプリは考慮されません。
 
 ## <a name="import-the-server-information"></a>サーバー情報をインポートする
 

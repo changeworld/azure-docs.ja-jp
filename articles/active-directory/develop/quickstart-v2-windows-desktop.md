@@ -1,5 +1,5 @@
 ---
-title: Microsoft ID プラットフォーム Windows デスクトップのクイック スタート | Microsoft Docs
+title: Microsoft ID プラットフォーム Windows デスクトップのクイックスタート
 description: Windows デスクトップ .NET (XAML) アプリケーションでアクセス トークンを取得し、Microsoft ID プラットフォーム エンドポイントによって保護されている API を呼び出す方法について説明します
 services: active-directory
 author: jmprieur
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 34d9af03b42df4a2806e82bb1e1fa376f099ae4c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1c66779dc726c3c6366bc03282d5d3c2bdc8134a
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78271061"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991043"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>クイック スタート:Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す
 
@@ -75,7 +75,7 @@ ms.locfileid: "78271061"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Enter_the_Supported_Account_Info_Here
+> > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>手順 3:Visual Studio プロジェクトの構成
@@ -178,8 +178,3 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 > [!div class="nextstepaction"]
 > [Graph API 呼び出しチュートリアル](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-windesktop)
-
-Microsoft ID プラットフォームの改善にご協力ください。 簡単な 2 つの質問からなるアンケートに記入し、ご意見をお聞かせください。
-
-> [!div class="nextstepaction"]
-> [Microsoft ID プラットフォームのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

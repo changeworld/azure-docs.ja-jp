@@ -1,7 +1,7 @@
 ---
 title: クイックスタート - Azure portal で仮想マシン スケール セットを作成する
 description: Azure portal を使用して仮想マシン スケール セットをすばやく作成する方法を説明します。実際に自分でデプロイしてみましょう。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
@@ -9,15 +9,15 @@ ms.tgt_pltfrm: vm
 ms.topic: quickstart
 ms.custom: mvc, H1Hack27Feb2017
 ms.date: 10/23/2019
-ms.author: cynthn
-ms.openlocfilehash: 41bfe86f4635a54c56a8313fabefa1f381f4a4ee
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.author: jushiman
+ms.openlocfilehash: 410ae93ea109e5757ccb5b65d353a600574dd595
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80062756"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010479"
 ---
-# <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>クイック スタート: Azure Portal で仮想マシン スケール セットを作成する
+# <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>クイック スタート:Azure Portal での仮想マシン スケール セットの作成
 
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイック スタートでは、Azure Portal で仮想マシン スケール セットを作成します。
 
@@ -40,9 +40,9 @@ Azure [Load Balancer](../load-balancer/load-balancer-overview.md) は、受信�
     | ---| ---|
     | サブスクリプション  | サブスクリプションを選択します。    |    
     | Resource group | **[新規作成]** を選択し、テキスト ボックスに「*myVMSSResourceGroup*」と入力します。|
-    | Name           | *myLoadBalancer*         |
+    | 名前           | *myLoadBalancer*         |
     | リージョン         | **[米国東部]** を選択します。       |
-    | 種類          | **[パブリック]** を選択します。       |
+    | Type          | **[パブリック]** を選択します。       |
     | SKU           | **[Standard]** を選択します。       |
     | パブリック IP アドレス | **[新規作成]** を選択します。 |
     | パブリック IP アドレス名  | *MyPip*   |

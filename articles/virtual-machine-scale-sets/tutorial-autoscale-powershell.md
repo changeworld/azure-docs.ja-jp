@@ -1,21 +1,21 @@
 ---
 title: チュートリアル - Azure PowerShell を使用してスケール セットを自動スケーリングする
 description: Azure PowerShell を使用して CPU 需要の増減に合わせて仮想マシンのスケール セットを自動的にスケーリングする方法について説明します
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b2451779119ab8fb6c1446631797ce32fd376146
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278406"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81009000"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して仮想マシン スケール セットを自動的にスケーリングする
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して仮想マシン スケール セットを自動的にスケールする
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
@@ -191,7 +191,7 @@ mstsc /v 52.168.121.216:50001
 - **[OK]** を選択して、 *[お勧めのセキュリティ、プライバシー、互換性の設定を使う]* のプロンプトを受け入れます
 - アドレス バーに「 *http://download.sysinternals.com/files/CPUSTRES.zip* 」と入力します。
 - Internet Explorer の強化されたセキュリティ構成が有効になっているので、 **[追加]** を選択し、 *http://download.sysinternals.com* ドメインを信頼できるサイトの一覧に追加します。
-- ファイルのダウンロードのプロンプトが表示されたら、 **[開く]** を選択し、**CPUSTRES.EXE** ツールを選択して*実行*します。
+- ファイルのダウンロードのプロンプトが表示されたら、 **[開く]** を選択し、*CPUSTRES.EXE* ツールを選択して**実行**します。
 
 ある程度の CPU 負荷を生成するために、2 つのスレッドの **[Active]\(アクティブ\)** チェック ボックスをオンにします。 両方のスレッドの **[Activity]\(アクティビティ\)** ドロップダウン メニューから *[Maximum]\(最大\)* を選択します。 タスク マネージャーを開き、VM の CPU 負荷が 100% になっていることを確認できます。
 
@@ -209,7 +209,7 @@ mstsc /v 52.168.121.216:50002
 
 
 ## <a name="monitor-the-active-autoscale-rules"></a>アクティブな自動スケール ルールの監視
-スケール セット内の VM インスタンスの数を監視するには、**while** を使用します。 各 VM インスタンスで **CPUStress* によって生成された CPU 負荷に対するスケールアウト プロセスが自動スケールによって開始されるまでに 5 分かかります。
+スケール セット内の VM インスタンスの数を監視するには、**while** を使用します。 各 VM インスタンスで **CPUStress** によって生成された CPU 負荷に対するスケールアウト プロセスが自動スケーリングによって開始されるまでに 5 分かかります。
 
 ```azurepowershell-interactive
 while (1) {Get-AzureRmVmssVM `
@@ -235,7 +235,7 @@ MYRESOURCEGROUP   myScaleSet_6   eastus Standard_DS2                   6        
 MYRESOURCEGROUP   myScaleSet_6   eastus Standard_DS2                   6          Deleting
 ```
 
-*キーを押して*while`Ctrl-c` を終了します。 スケール セットは、引き続き 5 分ごとにスケールインされ、その都度 VM インスタンスが 1 つ削除されます。この操作は、VM インスタンスの数が最小数の 2 になるまで繰り返されます。
+`Ctrl-c` キーを押して *while* を終了します。 スケール セットは、引き続き 5 分ごとにスケールインされ、その都度 VM インスタンスが 1 つ削除されます。この操作は、VM インスタンスの数が最小数の 2 になるまで繰り返されます。
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

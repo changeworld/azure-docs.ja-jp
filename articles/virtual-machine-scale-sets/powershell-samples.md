@@ -1,19 +1,19 @@
 ---
 title: Azure PowerShell のサンプル
 description: スケール セットの作成や管理などで Azure PowerShell を使用してビルドされた bash スクリプト サンプルへのリンクが含まれるテーブル。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 2ad4008b0cdd4d655902a1423bdd8f01d1a2af8f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b0c5f7fb3841df1cc5649d48348d985311a97062
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76273715"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011346"
 ---
 # <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure PowerShell サンプル。
 

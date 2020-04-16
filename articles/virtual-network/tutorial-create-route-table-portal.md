@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: a565aba12f1b10f215d8f6cc7fc0b7247a0441d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 854bf2d1ed2155290c2ecebd17695049fdd0c8bb
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80066314"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314288"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
@@ -99,7 +99,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
     1. **[ストレージ アカウントの作成]** ダイアログ ボックスで、次の情報を入力または選択します。
 
-        | 設定 | Value |
+        | 設定 | 値 |
         | ------- | ----- |
         | 名前 | *mynvastorageaccount* |
         | アカウントの種類 | **ストレージ (汎用 v1)** |
@@ -126,7 +126,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. **[ルート テーブルの作成]** に次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | *myRouteTablePublic* |
     | サブスクリプション | 該当するサブスクリプション |
@@ -150,7 +150,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[ルートの追加]** に次の情報を入力または選択します。
 
-    | 設定 | Value |
+    | 設定 | 値 |
     | ------- | ----- |
     | ルート名 | *ToPrivateSubnet* |
     | アドレス プレフィックス | *10.0.1.0/24* (先ほど作成した "*プライベート*" サブネットのアドレス範囲) |
@@ -203,12 +203,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="public-vm"></a>パブリック VM
 
-| タブ | 設定 | Value |
+| タブ | 設定 | 値 |
 | --- | ------- | ----- |
 | 基本 | Resource group | **myResourceGroup** |
 | | 仮想マシン名 | *myVmPublic* |
 | | パブリック受信ポート | **[選択したポートを許可する]** |
-| | 受信ポートの選択 | **[HTTP]** と **[RDP]** |
+| | 受信ポートの選択 | **RDP** |
 | ネットワーク | 仮想ネットワーク | **myVirtualNetwork** |
 | | Subnet | **[パブリック (10.0.0.0/24)]** |
 | | パブリック IP アドレス | 既定値 |
@@ -216,12 +216,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="private-vm"></a>プライベート VM
 
-| タブ | 設定 | Value |
+| タブ | 設定 | 値 |
 | --- | ------- | ----- |
 | 基本 | Resource group | **myResourceGroup** |
 | | 仮想マシン名 | *myVmPrivate* |
 | | パブリック受信ポート | **[選択したポートを許可する]** |
-| | 受信ポートの選択 | **[HTTP]** と **[RDP]** |
+| | 受信ポートの選択 | **RDP** |
 | ネットワーク | 仮想ネットワーク | **myVirtualNetwork** |
 | | Subnet | **[プライベート (10.0.1.0/24)]** |
 | | パブリック IP アドレス | 既定値 |

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: fe80b7343f67b06981707081931e35142985688e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 5df21b2c1926803a65eca911c66b059f36ee18aa
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668795"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393616"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API: サポートされる機能と構文
 
@@ -68,7 +68,7 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 |collMod: expireAfterSeconds   |   いいえ      |
 |convertToCapped   |  いいえ       |
 |copydb     |  いいえ       |
-|作成   |    はい     |
+|create   |    はい     |
 |createIndexes     |  はい       |
 |currentOp     |  はい       |
 |drop     |   はい      |
@@ -95,8 +95,8 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 |dataSize     |   いいえ      |
 |dbHash    |    いいえ     |
 |dbStats     |   はい      |
-|explain     | いいえ        |
-|explain: executionStats     |     いいえ    |
+|explain     |   はい      |
+|explain: executionStats     |   はい      |
 |features     |    いいえ     |
 |hostInfo     |   いいえ      |
 |listDatabases         |   はい      |

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 820332b0692c0c863ed23912fe9913c419769155
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79224099"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273003"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>チュートリアル:Python SDK で初めての ML 実験を作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -86,7 +86,7 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
     
 1. **tutorials/create-first-ml-experiment** フォルダー内の **tutorial-1st-experiment-sdk-train.ipynb** ファイルを選択します。
 
-1. 上部のバーで、ノートブックの実行に使用するコンピューティング インスタンスを選択します。 これらの VM には、[Azure Machine Learning を実行するために必要なすべてのもの](concept-compute-instance.md#contents)があらかじめ構成されています。 対象のワークスペースの任意のユーザーが作成した VM を選択できます。 
+1. 上部のバーで、ノートブックの実行に使用するコンピューティング インスタンスを選択します。 これらの VM には、[Azure Machine Learning を実行するために必要なすべてのもの](concept-compute-instance.md#contents)があらかじめ構成されています。 
 
 1. VM が見つからない場合は、 **[追加]** を選択してコンピューティング インスタンス VM を作成します。 
 

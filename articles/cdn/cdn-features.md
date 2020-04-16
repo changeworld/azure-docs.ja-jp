@@ -3,7 +3,7 @@ title: Azure Content Delivery Network (CDN) 製品の機能の比較 | Microsoft
 description: 各 Azure Content Delivery Network (CDN) 製品がサポートする機能について説明します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: mdgattuso
 ms.assetid: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2019
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 64b906c8a6b52d9c9655f3fe2b13d504d8eed4cb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0e57ae691bf4b07b8161bc343929510d6be041a8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74278090"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260515"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Azure CDN 製品の機能を比較する
 
-Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、および **Azure CDN Premium from Verizon** という 4 つの製品が含まれています。 **Azure CDN Standard from Verizon** プロファイルの **Azure CDN Premium from Verizon** への移行については、「[Standard Verizon から Premium Verizon に Azure CDN プロファイルを移行する](cdn-migrate.md)」を参照してください。 Standard Verizon から Premium Verizon へのアップグレード パスはありますが、現時点では他の製品間の変換メカニズムがないことに注意してください。
+Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、**Azure CDN Premium from Verizon** の 4 つの製品が含まれています。 **Azure CDN Standard from Verizon** プロファイルの **Azure CDN Premium from Verizon** への移行については、「[Standard Verizon から Premium Verizon に Azure CDN プロファイルを移行する](cdn-migrate.md)」を参照してください。 Standard Verizon から Premium Verizon へのアップグレード パスはありますが、現時点では他の製品間の変換メカニズムがないことに注意してください。
 
 次の表では、各製品で使用できる機能を比較しています。
 
@@ -50,14 +50,15 @@ Azure Content Delivery Network (CDN) には、**Azure CDN Standard from Microsof
 | IPv4/IPv6 デュアルスタック | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [HTTP/2 のサポート](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 ||||
- **セキュリティ** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 
+ **Security** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 
 | CDN エンドポイントでの HTTPS のサポート | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [カスタム ドメイン HTTPS](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;** 、有効にするには直接 CNAME が必要です |**&#x2713;** |**&#x2713;** |
 | [カスタム ドメイン名のサポート](cdn-map-content-to-custom-domain.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Geo-filtering](cdn-restrict-access-by-country.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [認証トークン](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
 | [DDOS 保護](https://www.us-cert.gov/ncas/tips/ST04-015)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [独自の証明書の持ち込み](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
+| [独自の証明書の持ち込み](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
+| サポートされている TLS バージョン | TLS 1.2、TLS 1.0 または 1.1 - [構成可能](https://docs.microsoft.com/rest/api/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
 ||||
 | **分析とレポート** | **Standard Microsoft** | **Standard Akamai** | **Standard Verizon** | **Premium Verizon** | 
 | [Azure 診断ログ](cdn-azure-diagnostic-logs.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |

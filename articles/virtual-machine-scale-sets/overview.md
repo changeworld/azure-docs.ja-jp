@@ -1,19 +1,19 @@
 ---
 title: Azure 仮想マシン スケール セットの概要
 description: Azure Virtual Machine Scale Sets についての説明に加えて、アプリケーションの自動スケーリングを行う方法についても説明します
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/26/2019
-ms.author: manayar
-ms.openlocfilehash: e6201f9ac2e9b813de5a4622fc7996eb1202a164
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.author: mimckitt
+ms.openlocfilehash: 03e3c7b5c0696069729d3067faad8ceb91fc611f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76273706"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272544"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>仮想マシン スケール セットとは
 Azure Virtual Machine Scale Sets では、負荷分散が行われる同一の VM のグループを作成して管理できます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 スケール セットは、アプリケーションの高可用性を実現します。また、多数の VM の一元的な管理、構成、更新を可能にします。 仮想マシン スケール セットを使用すると、コンピューティング、ビッグ データ、コンテナー ワークロードなどの分野で大規模なサービスを構築できます。
@@ -27,7 +27,7 @@ Azure Virtual Machine Scale Sets は、多数の VM で実行されるアプリ�
 - **複数の VM の作成と管理が容易である**
     - アプリケーションを実行する VM が多数ある場合、環境全体で一貫した構成を維持することが重要です。 アプリケーションのパフォーマンスについて高い信頼性を実現するには、VM サイズ、ディスク構成、アプリケーション インストールがすべての VM で一致している必要があります。
     - スケール セットでは、すべての VM インスタンスが同一のベース OS イメージと構成から作成されます。 この方法を使用すると、追加の構成タスクまたはネットワーク管理を行うことなく、数百台の VM を容易に管理できます。
-    - スケール セットでは、基本のレイヤー 4 トラフィック分散を実現する [Azure Load Balancer](../load-balancer/load-balancer-overview.md) と、より高度なレイヤー 7 トラフィック分散と SSL 終了を実現する [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) がサポートされています。
+    - スケール セットでは、基本のレイヤー 4 トラフィック分散を実現する [Azure Load Balancer](../load-balancer/load-balancer-overview.md) と、より高度なレイヤー 7 トラフィック分散と TLS 終了を実現する [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) がサポートされています。
 
 - **高可用性とアプリケーションの回復性を実現する**
     - スケール セットは、複数のインスタンスのアプリケーションを実行するために使用されます。 これらの VM インスタンスの 1 つに問題があっても、他のいずれかの VM インスタンスを通じて、顧客は最小限の中断で引き続きアプリケーションにアクセスできます。
