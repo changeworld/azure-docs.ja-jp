@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: efa498ba600a664beab4b9a49eae2b2c3f1c8397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2355cb7ab995cab3060c7a94c9e7ea344bd9e92b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298306"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984642"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>クイック スタート:Java Web プロジェクトで Application Insights を使う
 
@@ -87,7 +87,7 @@ Application Insights は、ライブ アプリケーションのパフォーマ�
     * 最新の [Application Insights SDK for Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) をダウンロードして、古いものと置き換えます。 変更は [SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に記載されます。
 
 ## <a name="add-an-applicationinsightsxml-file"></a>*ApplicationInsights.xml* ファイルを追加する
-*ApplicationInsights.xml* をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されていることを確認します。 次の XML をファイルにコピーします。
+*ApplicationInsights.xml* をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイ クラス パスに追加されていることを確認します。 次の XML をファイルにコピーします。
 
 インストルメンテーション キーを Azure portal から受け取ったものに置き換えます。
 
@@ -223,7 +223,7 @@ Windows で動作する Spring Boot アプリでは、 Azure App Services での
 
 Application Insights Java SDK では、[W3C 分散トレース](https://w3c.github.io/trace-context/)がサポートされるようになりました。
 
-受信 SDK の構成の詳細については、[相関関係](correlation.md#telemetry-correlation-in-the-java-sdk)に関する記事をご覧ください。
+受信 SDK の構成の詳細については、[相関関係](correlation.md)に関する記事をご覧ください。
 
 送信 SDK の構成は、[AI-Agent.xml](java-agent.md) ファイル内で定義されます。
 
@@ -258,7 +258,7 @@ Application Insights Java SDK では、[W3C 分散トレース](https://w3c.gith
 * `displayName` - Application Insights ポータルに表示される名前。
 * `objectName` - JMX オブジェクトの名前。
 * `attribute` - 取得する JMX オブジェクト名の属性
-* `type` (オプション) - JMX オブジェクトの属性の型。
+* `type` (省略可能) - JMX オブジェクトの属性の型。
   * 既定値: int、long などの単純型。
   * `composite`: パフォーマンス カウンター データは、"Attribute.Data" 形式です。
   * `tabular`: パフォーマンス カウンター データは、テーブル行形式です。

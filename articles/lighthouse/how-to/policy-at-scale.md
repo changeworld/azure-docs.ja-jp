@@ -3,12 +3,12 @@ title: 委任されたサブスクリプションに Azure Policy を大規模�
 description: Azure の委任されたリソース管理によって、ポリシー定義とポリシー割り当てを複数のテナントにわたってデプロイする方法について説明します。
 ms.date: 11/8/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9e061995b728e2864d1bd33a32d530634ab794d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9015351c3fc8f374c5ce85712907fa05249cde11
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456848"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984574"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>委任されたサブスクリプションに Azure Policy を大規模にデプロイする
 
@@ -32,7 +32,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 
 ## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>複数の顧客テナントにわたってポリシーをデプロイする
 
-下の例は、[Azure Resource Manager テンプレート](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-https-storage/enforceHttpsStorage.json)を使用して、複数の顧客テナントの委任されたサブスクリプションにわたってポリシー定義とポリシー割り当てをデプロイする方法を示しています。 このポリシー定義では、すべてのストレージ アカウントが HTTPS トラフィックを使用するよう要求し、準拠していない新しいストレージ アカウントの作成を防止して、その設定が適用されていない既存のストレージ アカウントを非準拠としてマーク付けします。
+下の例は、[Azure Resource Manager テンプレート](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json)を使用して、複数の顧客テナントの委任されたサブスクリプションにわたってポリシー定義とポリシー割り当てをデプロイする方法を示しています。 このポリシー定義では、すべてのストレージ アカウントが HTTPS トラフィックを使用するよう要求し、準拠していない新しいストレージ アカウントの作成を防止して、その設定が適用されていない既存のストレージ アカウントを非準拠としてマークします。
 
 ```powershell
 Write-Output "In total, there are $($ManagedSubscriptions.Count) delegated customer subscriptions to be managed"
@@ -43,7 +43,7 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
     New-AzDeployment -Name mgmt `
                      -Location eastus `
-                     -TemplateUri "https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/policy-enforce-https-storage/enforceHttpsStorage.json" `
+                     -TemplateUri "https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/templates/policy-enforce-https-storage/enforceHttpsStorage.json" `
                      -AsJob
 }
 ```

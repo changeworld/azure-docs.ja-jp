@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: 74d696c19ac2a2d0d367f5a018fde8cd3a0eedb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 454138f8e0d92935126f446455810a444b0a053a
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535206"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984148"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights および Log Analytics によって使用される IP アドレス
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) サービスは、多くの IP アドレスを使用します。 監視しているアプリがファイアウォールの背後でホストされている場合は、これらのアドレスを確認する必要があります。
@@ -55,6 +55,8 @@ Status Monitor の構成 - 変更を加える場合にのみ必要です。
 ## <a name="availability-tests"></a>可用性テスト
 これは [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md) の実行元のアドレスの一覧です。 アプリで Web テストを実行しようとするが、Web サーバーが特定のクライアントの処理に制限されている場合は、可用性テスト サーバーからの着信トラフィックを許可する必要があります。
 
+### <a name="service-tag"></a>サービス タグ
+
 Azure ネットワーク セキュリティ グループを使用している場合は、単に **受信ポートの規則** を追加して Application Insights 可用性テストからのトラフィックを許可します。そのためには、**サービスタグ** を **ソース**として選択し、**ApplicationInsightsAvailability** を **ソースサービスタグ** として選択します。
 
 >[!div class="mx-imgBorder"]
@@ -64,6 +66,11 @@ Azure ネットワーク セキュリティ グループを使用している場
 >![受信セキュリティ規則タブを追加します](./media/ip-addresses/add-inbound-security-rule2.png)
 
 これらのアドレスからの着信トラフィック用にポート 80 (http) と 443 (https) を開きます （IP アドレスは場所別にグループ化されます）。
+
+### <a name="addresses-grouped-by-location"></a>場所別にグループ化されたアドレス
+
+> [!NOTE]
+> これらのアドレスは、クラスレス ドメイン間ルーティング (CIDR) 表記を使用して一覧表示されます。 つまり、`51.144.56.112/28` のようなエントリは、`51.144.56.112` で始まり、`51.144.56.127`で終わる 16 IP に相当します。
 
 ```
 Australia East

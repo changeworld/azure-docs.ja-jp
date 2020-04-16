@@ -1,6 +1,6 @@
 ---
 title: 容量制限 - Azure Synapse Analytics (旧称 SQL DW)
-description: Azure Synapse の SQL Analytics のさまざまなコンポーネントに許可される最大値。
+description: Azure Synapse の Synapse SQL プールのさまざまなコンポーネントに許可される最大値。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a0343dd55149fa3c2c17af1f246595a56e4c6ec2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: fbdf0fda51ae35fac4f3f8ae45bfcd788fc406ae
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350079"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413998"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure Synapse Analytics (旧称 SQL DW) の容量制限
 
@@ -42,7 +42,7 @@ Azure Synapse のさまざまなコンポーネントに許可される最大値
 | テーブル |最大サイズ |無制限のサイズ (列ストア テーブル) <br>ディスク上に圧縮された行ストア テーブルの場合は 60 TB。 |
 | テーブル |データベースごとのテーブル数 | 100,000 |
 | テーブル |テーブルごとの列数 |1,024 列 |
-| テーブル |列あたりのバイト数 |列の[データ型](sql-data-warehouse-tables-data-types.md)によって決まります。 文字データ型の場合、最大値は最大 2 GB のオフページ (行オーバーフロー) ストレージに格納できます。  char または varchar 制限などの非 Unicode 文字はデータ ページで 8000 です。 nchar または nvarchar 制限などの Unicode 文字はデータページで 4000 です。  データ ページのストレージ サイズを使用して、パフォーマンスを向上させます。 |
+| テーブル |列あたりのバイト数 |列の[データ型](sql-data-warehouse-tables-data-types.md)によって決まります。 上限は、char データ型では 8000 GB、nvarchar データ型では 4000 GB、MAX データ型では 2 GB です。 |
 | テーブル |行あたりのバイト数 (定義されたサイズ) |8060 バイト<br/><br/>行あたりのバイト数は、ページ圧縮を有効にした SQL Server の場合と同様に計算されます。 SQL Server と同様に、行オーバーフロー ストレージがサポートされるため、**可変長列**を行外にプッシュできます。 可変長行を行外にプッシュする場合、メイン レコードには 24 バイト ルートのみが格納されます。 詳細については、「[8 KB を超える場合の行オーバーフロー データ](https://msdn.microsoft.com/library/ms186981.aspx)」を参照してください。 |
 | テーブル |テーブルあたりのパーティション数 |15,000<br/><br/>高パフォーマンスを実現するには、ビジネス要件を満たしながら、必要なパーティション数を最小限に抑えることをお勧めします。 パーティションの数が増えるに従い、データ定義言語 (DDL) およびデータ操作言語 (DML) の操作のオーバーヘッドが拡大し、パフォーマンスの低下を引き起こします。 |
 | テーブル |パーティション境界値あたりの文字数 |4000 |

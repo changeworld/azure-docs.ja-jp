@@ -11,23 +11,22 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f73fbbc42085b3a0cb6ab7dd1c0e32838a166ccf
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: ddd24eb510405d49465ca4e0e0f326f7260e2ed1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350632"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416235"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>データ ウェアハウジングのための継続的インテグレーションと継続的デプロイ
 
-この簡単なチュートリアルでは、SQL Server Data tools (SSDT) データベース プロジェクトを Azure DevOps と統合し、Azure Pipelines を利用して継続的インテグレーションとデプロイを設定する方法の概要を説明します。 このチュートリアルは、データ ウェアハウジングのための継続的インテグレーションと継続的デプロイのパイプラインを構築するための 2 番目の手順です。 
+この簡単なチュートリアルでは、SQL Server Data tools (SSDT) データベース プロジェクトを Azure DevOps と統合し、Azure Pipelines を利用して継続的インテグレーションとデプロイを設定する方法の概要を説明します。 このチュートリアルは、データ ウェアハウジングのための継続的インテグレーションと継続的デプロイのパイプラインを構築するための 2 番目の手順です。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-- [ソース管理の統合のチュートリアル](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration)を実行します
+- [ソース管理の統合のチュートリアル](sql-data-warehouse-source-control-integration.md)を実行します
 
 - Azure DevOps を設定して接続する
-
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Visual Studio ビルドを使用した継続的インテグレーション
 
@@ -37,7 +36,7 @@ ms.locfileid: "80350632"
 
 2. ソース コード リポジトリ (Azure Repos Git) を選択し、.NET デスクトップ アプリ テンプレートを選択します。
 
-      ![パイプラインの設定](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "パイプラインの設定") 
+      ![パイプラインの設定](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "パイプラインの設定")
 
 3. エージェントの適切なプールを使用するように YAML ファイルを編集します。 YAML ファイルは、次のようになります。
 
@@ -45,10 +44,9 @@ ms.locfileid: "80350632"
 
 この時点で、ソース管理リポジトリの master ブランチにチェックインすると、データベース プロジェクトの Visual Studio ビルドが成功したことが自動的にトリガーされる単純な環境ができています。 ローカル データベース プロジェクトに変更を加え、その変更を master ブランチにチェックインして、オートメーション全体が正常に機能していることを検証します。
 
-
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Azure SQL Data Warehouse (または Database) デプロイ タスクを使用した継続的なデプロイ
 
-1. [Azure SQL Database デプロイ タスク](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops)を使用して新しいタスクを追加し、ターゲット データ ウェアハウスへの接続に必要なフィールドに入力します。 このタスクを実行すると、前のビルド プロセスから生成された DACPAC がターゲット データ ウェアハウスにデプロイされます。 [Azure SQL Data Warehouse デプロイ タスク](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)を使用することもできます。 
+1. [Azure SQL Database デプロイ タスク](/devops/pipelines/targets/azure-sqldb?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)を使用して新しいタスクを追加し、ターゲット データ ウェアハウスへの接続に必要なフィールドに入力します。 このタスクを実行すると、前のビルド プロセスから生成された DACPAC がターゲット データ ウェアハウスにデプロイされます。 [Azure SQL Data Warehouse デプロイ タスク](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)を使用することもできます。
 
       ![デプロイ タスク](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "デプロイ タスク")
 
@@ -62,7 +60,7 @@ ms.locfileid: "80350632"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [SQL Analytics MPP アーキテクチャ](massively-parallel-processing-mpp-architecture.md)について理解を深める
+- [Synapse SQL プール MPP アーキテクチャ](massively-parallel-processing-mpp-architecture.md)について理解を深める
 - [SQL プールの簡易作成](create-data-warehouse-portal.md)
 - [サンプル データを読み込む](load-data-from-azure-blob-storage-using-polybase.md)
-- [ビデオ](/azure/sql-data-warehouse/sql-data-warehouse-videos)を確認する
+- [ビデオ](sql-data-warehouse-videos.md)を確認する

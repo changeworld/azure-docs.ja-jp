@@ -1,26 +1,26 @@
 ---
-title: サイドカー コンテナーで SSL を有効にする
+title: サイドカー コンテナーで TLS を有効にする
 description: サイドカー コンテナーで Nginx を実行することで、Azure Container Instances 内で実行されるコンテナー グループに対して SSL または TLS エンドポイントを作成します
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 43b39c7c13d6d5e52aae2ce1706e4880ab27d225
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9ea9367219db694b89d6bf4a1e52efb373c71c4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294939"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984608"
 ---
-# <a name="enable-an-ssl-endpoint-in-a-sidecar-container"></a>サイドカー コンテナーで SSL エンドポイントを有効にする
+# <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>サイドカー コンテナーで TLS を有効にする
 
-この記事では、SSL プロバイダーを実行しているアプリケーション コンテナーとサイドカー コンテナーを使用して[コンテナー グループ](container-instances-container-groups.md)を作成する方法について説明します。 コンテナー グループを別の SSL エンドポイントで設定することにより、アプリケーション コードを変更せずにアプリケーションの SSL 接続を有効にすることができます。
+この記事では、TLS/SSL プロバイダーを実行しているアプリケーション コンテナーとサイドカー コンテナーを使用して[コンテナー グループ](container-instances-container-groups.md)を作成する方法について説明します。 コンテナー グループを別の TLS エンドポイントで設定することにより、アプリケーション コードを変更せずにアプリケーションの TLS 接続を有効にすることができます。
 
 次の 2 つのコンテナーで構成されるコンテナー グループ例を設定します。
 * パブリック Microsoft [aci-helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) イメージを使用してシンプルな Web アプリを実行する、アプリケーション コンテナー。 
-* SSL を使用するよう構成されたパブリック [Nginx](https://hub.docker.com/_/nginx) イメージを実行するサイドカー コンテナー。 
+* TLS を使用するように構成されたパブリック [Nginx](https://hub.docker.com/_/nginx) イメージを実行するサイドカー コンテナー。 
 
 この例ではコンテナー グループにより、Nginx 用のポート 443 のみがそのパブリック IP アドレスで公開されます。 Nginx により HTTPS 要求がコンパニオン Web アプリにルーティングされます。コンパニオン Web アプリはポート 80 で内部的にリッスンします。 他のポートをリッスンするコンテナー アプリの例を適応させることもできます。 
 
-コンテナー グループで SSL を有効にするその他の方法については、「[次のステップ](#next-steps)」を参照してください。
+コンテナー グループで TLS を有効にするその他の方法については、「[次のステップ](#next-steps)」を参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -28,9 +28,9 @@ Azure Cloud Shell または Azure CLI のローカル インストールを使�
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
-SSL プロバイダーとして Nginx を設定するには、SSL 証明書が必要です。 この記事では、自己署名 SSL 証明書の作成および設定方法について説明します。 運用環境のシナリオでは、証明機関から証明書を取得する必要があります。
+TLS プロバイダーとして Nginx を設定するには、TLS/SSL 証明書が必要です。 この記事では、自己署名 TLS/SSL 証明書の作成および設定方法について説明します。 運用環境のシナリオでは、証明機関から証明書を取得する必要があります。
 
-自己署名 SSL 証明書を作成するには、Azure Cloud Shell と多くの Linux ディストリビューションで入手可能な [OpenSSL](https://www.openssl.org/) ツールを使用するか、ご使用のオペレーティング システムにある同等のクライアント ツールを使用します。
+自己署名 TLS/SSL 証明書を作成するには、Azure Cloud Shell と多くの Linux ディストリビューションで入手可能な [OpenSSL](https://www.openssl.org/) ツールを使用するか、ご使用のオペレーティング システムにある同等のクライアント ツールを使用します。
 
 まず、ローカルの作業ディレクトリに証明書の要求 (.csr ファイル) を作成します。
 
@@ -48,11 +48,11 @@ openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 
 これでディレクトリ内には、証明書の要求 (`ssl.csr`)、秘密キー (`ssl.key`)、自己署名証明書 (`ssl.crt`) の 3 つのファイルが表示されます。 `ssl.key` と `ssl.crt` は後の手順で使用します。
 
-## <a name="configure-nginx-to-use-ssl"></a>SSL を使用するよう Nginx を構成する
+## <a name="configure-nginx-to-use-tls"></a>TLS を使用するように Nginx を構成する
 
 ### <a name="create-nginx-configuration-file"></a>Nginx 構成ファイルを作成する
 
-このセクションでは、Nginx で SSL を使用するための構成ファイルを作成します。 まず、次のテキストを `nginx.conf` という名前の新しいファイルにコピーします。 Azure Cloud Shell では、Visual Studio Code を使用して作業ディレクトリにファイルを作成できます。
+このセクションでは、Nginx で TLS を使用するための構成ファイルを作成します。 まず、次のテキストを `nginx.conf` という名前の新しいファイルにコピーします。 Azure Cloud Shell では、Visual Studio Code を使用して作業ディレクトリにファイルを作成できます。
 
 ```console
 code nginx.conf
@@ -93,7 +93,7 @@ http {
         ssl_ciphers                ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:AES128:AES256:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK;
         ssl_prefer_server_ciphers  on;
 
-        # Optimize SSL by caching session parameters for 10 minutes. This cuts down on the number of expensive SSL handshakes.
+        # Optimize TLS/SSL by caching session parameters for 10 minutes. This cuts down on the number of expensive TLS/SSL handshakes.
         # The handshake is the most CPU-intensive operation, and by default it is re-negotiated on every new/parallel connection.
         # By enabling a cache (of type "shared between all Nginx workers"), we tell the client to re-use the already negotiated state.
         # Further optimization can be achieved by raising keepalive_timeout, but that shouldn't be done unless you serve primarily HTTPS.
@@ -124,7 +124,7 @@ http {
 
 ### <a name="base64-encode-secrets-and-configuration-file"></a>シークレットと構成ファイルを Base64 でエンコードする
 
-Nginx 構成ファイル、SSL 証明書、SSL キーを Base64 でエンコードします。 次のセクションで、エンコードされたコンテンツを、コンテナー グループのデプロイに使用される YAML ファイルに入力します。
+Nginx 構成ファイル、TLS/SSL 証明書、TLS キーを Base64 でエンコードします。 次のセクションで、エンコードされたコンテンツを、コンテナー グループのデプロイに使用される YAML ファイルに入力します。
 
 ```console
 cat nginx.conf | base64 > base64-nginx.conf
@@ -221,7 +221,7 @@ Name          ResourceGroup    Status    Image                                  
 app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
 ```
 
-## <a name="verify-ssl-connection"></a>SSL 接続を確認する
+## <a name="verify-tls-connection"></a>TLS 接続を検証する
 
 ブラウザーを使用し、コンテナー グループのパブリック IP アドレスに移動します。 この例の IP アドレスは `52.157.22.76` です。そのため、URL は **https://52.157.22.76** です。 Nginx サーバーの構成により、実行中のアプリケーションを表示するには HTTPS を使用する必要があります。 HTTP 経由で接続すると失敗します。
 
@@ -234,11 +234,11 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、コンテナー グループ内で実行している Web アプリに SSL 接続できるよう Nginx コンテナーを設定する方法について説明しました。 ポート 80 以外のポートをリッスンするアプリの例を適応させることもできます。 ポート 80 (HTTP) 上のサーバー接続を自動的にリダイレクトして HTTPS を使用するよう、Nginx 構成ファイルを更新することもできます。
+この記事では、コンテナー グループ内で実行している Web アプリに TLS 接続できるように Nginx コンテナーを設定する方法について説明しました。 ポート 80 以外のポートをリッスンするアプリの例を適応させることもできます。 ポート 80 (HTTP) 上のサーバー接続を自動的にリダイレクトして HTTPS を使用するよう、Nginx 構成ファイルを更新することもできます。
 
-この記事ではサイドカー内の Nginx を使用しましたが、[Caddy](https://caddyserver.com/) などの別の SSL プロバイダーを使用することもできます。
+この記事ではサイドカー内の Nginx を使用しましたが、[Caddy](https://caddyserver.com/) などの別の TLS プロバイダーを使用することもできます。
 
-[Azure 仮想ネットワーク](container-instances-vnet.md)にコンテナー グループをデプロイする場合は、次のような他のオプションを使用して、バックエンド コンテナー インスタンスの SSL エンドポイントを有効にすることを検討できます。
+[Azure 仮想ネットワーク](container-instances-vnet.md)にコンテナー グループをデプロイする場合は、次のような他のオプションを使用して、バックエンド コンテナー インスタンスの TLS エンドポイントを有効にすることを検討できます。
 
 * [Azure Functions プロキシ](../azure-functions/functions-proxies.md)
 * [Azure API Management](../api-management/api-management-key-concepts.md)

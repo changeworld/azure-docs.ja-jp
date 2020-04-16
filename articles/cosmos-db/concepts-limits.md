@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.openlocfilehash: 5681efc202df511745532e4a314e88b319e9880a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.date: 04/03/2020
+ms.openlocfilehash: b24d7db679bb9cb9dacd5e1db8e6410b883548cc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623402"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415710"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -148,15 +148,15 @@ Cosmos DB は、[SQL](how-to-sql-query.md) を使用した項目のクエリを�
 
 | リソース | 既定の制限 |
 | --- | --- |
-| SQL クエリの最大長| 256 KB <sup>*</sup>|
+| SQL クエリの最大長| 256 KB |
 | クエリあたりの最大 JOIN| 5 <sup>*</sup>|
-| クエリあたりの最大 AND| 2000 <sup>*</sup>|
-| クエリあたりの最大 OR| 2000 <sup>*</sup>|
 | クエリあたりの最大 UDF| 10 <sup>*</sup>|
-| IN 式あたりの最大引数| 6000 <sup>*</sup>|
-| 多角形あたりの最大ポイント| 4096 <sup>*</sup>|
+| 多角形あたりの最大ポイント| 4096 |
+| コンテナーあたりの含まれる最大パス| 500 |
+| コンテナーあたりの除外される最大パス| 500 |
+| 複合インデックスの最大プロパティ| 8 |
 
-<sup>*</sup> これらの SQL クエリの制限はいずれも、Azure サポートに連絡することによって増やすことができます。
+<sup>*</sup> これらの SQL クエリの制限を引き上げるには、Azure サポートに連絡してください。
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB API に固有の制限
 
@@ -166,8 +166,11 @@ Cosmos DB は、MongoDB に対して記述されたアプリケーションの�
 
 | リソース | 既定の制限 |
 | --- | --- |
-| MongoDB クエリの最大メモリ サイズ | 40 MB |
+| MongoDB クエリの最大メモリ サイズ (この制限は 3.2 サーバー バージョンにのみ適用されます) | 40 MB |
 | MongoDB 操作の最大実行時間| 30 秒 |
+| サーバー側の接続を終了するためのアイドル状態の接続のタイムアウト* | 30 分 |
+
+\* クライアント アプリケーションではドライバー設定内のアイドル状態の接続のタイムアウトを 2 から 3 分に設定することをお勧めします。これは、[Azure LoadBalancer の既定のタイムアウトが 4 分である](../load-balancer/load-balancer-tcp-idle-timeout.md#tcp-idle-timeout)ためです。  このタイムアウトにより、クライアント マシンと Azure Cosmos DB 間の中間ロード バランサーによってアイドル状態の接続が閉じられないようになります。
 
 ## <a name="try-cosmos-db-free-limits"></a>Cosmos DB 無料試用版の制限
 
@@ -183,6 +186,20 @@ Cosmos DB は、MongoDB に対して記述されたアプリケーションの�
 | アカウントあたりの最大合計ストレージ | 10 GB |
 
 Cosmos DB 試用版は、米国中部、北ヨーロッパ、および東南アジア リージョンでのみグローバル分散をサポートしています。 Azure Cosmos DB 試用版アカウントに対して Azure サポート チケットを作成することはできません。 ただし、既存のサポート プランを所有するサブスクライバーにはサポートが提供されます。
+
+## <a name="free-tier-account-limits"></a>Free レベルのアカウントの制限
+次の表は、[Azure Cosmos DB の Free レベルのアカウント](optimize-dev-test.md#azure-cosmos-db-free-tier)に対する制限を一覧表示しています。
+
+| リソース | 既定の制限 |
+| --- | --- |
+| Azure サブスクリプションあたりの Free レベルのアカウント数 | 1 |
+| Free レベル割引の期間 | アカウントの有効期間。 アカウントの作成時にオプトインする必要があります。 |
+| Free の最大 RU/秒 | 400 RU/秒 |
+| Free の最大ストレージ | 5 GB |
+| 共有スループット データベースの最大数 | 5 |
+| 共有スループット データベース内のコンテナーの最大数 | 25 <br>Free レベルのアカウントでは、最大 25 個のコンテナーを使用する共有スループット データベースの最小 RU/秒は 400 RU/秒です。 |
+
+  上記に加えて、[アカウントあたりの制限](#per-account-limits)も、Free レベルのアカウントに適用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

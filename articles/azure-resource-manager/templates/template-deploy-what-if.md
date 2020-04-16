@@ -3,23 +3,62 @@ title: テンプレート デプロイの what-if (プレビュー)
 description: Azure Resource Manager テンプレートをデプロイする前に、リソースがどのような変更されるかを確認します。
 author: mumian
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 04/09/2020
 ms.author: jgao
-ms.openlocfilehash: bc42585204e5cc2c3ece5293a3934fd22fe8507b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8e94d0b4f364e2873dfc21792a67f11c33483bf
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156448"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010190"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM テンプレートのデプロイの what-if 操作 (プレビュー)
 
 Azure Resource Manager (ARM) テンプレートをデプロイする前に、発生する変更をプレビューすることをお勧めします。 Azure Resource Manager の what-if 操作を使うと、テンプレートをデプロイした場合にリソースがどのように変更されるかを確認できます。 what-if 操作では、既存のリソースに対していかなる変更も行われません。 代わりに、指定したテンプレートがデプロイされた場合の変更が予測されます。
 
 > [!NOTE]
-> what-if 操作は、現在プレビューの段階です。 使用するには、[プレビューにサインアップする](https://aka.ms/armtemplatepreviews)必要があります。 プレビュー リリースなので、実際には何も変更されないときに、結果ではリソースが変更されることが示される場合があります。 このような問題を減らす作業が行われていますが、お客様の支援が必要です。 これらの問題を、[https://aka.ms/whatifissues](https://aka.ms/whatifissues)で報告してください。
+> what-if 操作は、現在プレビューの段階です。 プレビュー リリースなので、実際には何も変更されないときに、結果ではリソースが変更されることが示される場合があります。 このような問題を減らす作業が行われていますが、お客様の支援が必要です。 これらの問題を、[https://aka.ms/whatifissues](https://aka.ms/whatifissues)で報告してください。
 
 what-if 操作は PowerShell コマンドまたは REST API 操作で使用できます。
+
+## <a name="install-powershell-module"></a>PowerShell モジュールをインストールする
+
+PowerShell で what-if を使用するには、PowerShell ギャラリーから Az.Resources モジュールのプレビュー バージョンをインストールします。
+
+### <a name="install-preview-version"></a>プレビュー バージョンのインストール
+
+プレビュー モジュールをインストールするには、次を使用します。
+
+```powershell
+Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+```
+
+### <a name="uninstall-alpha-version"></a>アルファ版のアンインストール
+
+what-if モジュールのアルファ版を以前インストールしていた場合は、そのモジュールをアンインストールします。 アルファ版は、初期プレビューにサインアップしたユーザーのみが使用できました。 そのプレビューをインストールしていなかった場合は、このセクションを省略できます。
+
+1. PowerShell を管理者として実行する
+1. Az.Resources モジュールのインストール済みバージョンを確認します。
+
+   ```powershell
+   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
+   ```
+
+1. インストール済みバージョンのバージョン番号が **2.x.x-alpha** の形式である場合は、そのバージョンをアンインストールします。
+
+   ```powershell
+   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
+   ```
+
+1. プレビューのインストールに使用した what-if リポジトリの登録を解除します。
+
+   ```powershell
+   Unregister-PSRepository -Name WhatIfRepository
+   ```
+
+これで、what-if を使用する準備が整いました。
+
+## <a name="see-results"></a>結果を表示する
 
 PowerShell の出力には、さまざまな種類の変更を確認するのに役立つ、色分けされた結果が表示されます。
 
@@ -72,11 +111,8 @@ what-if 操作には、Azure PowerShell または Azure REST API を使用でき
 
 上記のコマンドは、手動で検査できるテキストの概要を返します。 プログラムによって変更を検査できるオブジェクトを取得するには、以下を使用します。
 
-* リソース グループ デプロイの場合は `$results = Get-AzResourceGroupDeploymentWhatIf`
-* サブスクリプション レベルのデプロイの場合は `$results = Get-AzSubscriptionDeploymentWhatIf` または `$results = Get-AzDeploymentWhatIf`
-
-> [!NOTE]
-> バージョン 2.0.1-alpha5 より前のリリースでは、`New-AzDeploymentWhatIf` コマンドが使用されていました。 このコマンドは、`Get-AzDeploymentWhatIf`、`Get-AzResourceGroupDeploymentWhatIf`、および `Get-AzSubscriptionDeploymentWhatIf` コマンドに置き換えられました。 以前のバージョンを使用している場合は、その構文を更新する必要があります。 `-ScopeType` パラメーターは削除されました。
+* リソース グループ デプロイの場合は `$results = Get-AzResourceGroupDeploymentWhatIfResult`
+* サブスクリプション レベルのデプロイの場合は `$results = Get-AzSubscriptionDeploymentWhatIfResult` または `$results = Get-AzDeploymentWhatIfResult`
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
@@ -214,7 +250,7 @@ Resource changes: 1 to modify.
 
 出力の上部で、変更の種類を示す色が定義されていることに注意してください。
 
-出力の下部には、タグ Owner が削除されたことが表示されています。 アドレス プレフィックスが 10.0.0.0/16 から 10.0.0.0/15 に変更されました。 subnet001 という名前のサブネットが削除されました。 この変更は実際にはデプロイされていないことに注意してください。 テンプレートをデプロイした場合に行われる変更のプレビューが表示されています。
+出力の下部には、タグ Owner が削除されたことが表示されています。 アドレス プレフィックスが 10.0.0.0/16 から 10.0.0.0/15 に変更されました。 subnet001 という名前のサブネットが削除されました。 これらの変更は、実際にはデプロイされていないことに注意してください。 テンプレートをデプロイした場合に行われる変更のプレビューが表示されています。
 
 削除済みとして一覧されたプロパティの一部は、実際には変更されません。 プロパティは、テンプレートに含まれていない場合、削除済みとして誤って報告されることがありますが、デプロイ時に既定値として自動的に設定されます。 この結果は、what-if 応答では "ノイズ" と見なされます。 最後にデプロイされたリソースには、プロパティ用の値セットがあります。 what-if 操作が成熟すると、これらのプロパティは結果から除外されます。
 
@@ -223,7 +259,7 @@ Resource changes: 1 to modify.
 次に、コマンドを変数に設定して、what-if 結果をプログラムで評価してみましょう。
 
 ```azurepowershell
-$results = Get-AzResourceGroupDeploymentWhatIf `
+$results = Get-AzResourceGroupDeploymentWhatIfResult `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```

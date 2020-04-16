@@ -2,18 +2,18 @@
 title: 既存の Service Fabric クラスターでマネージド ID のサポートを構成する
 description: 既存の Azure Service Fabric クラスターでマネージド ID のサポートを有効にする方法を次に示します
 ms.topic: article
-ms.date: 12/09/2019
+ms.date: 03/11/2019
 ms.custom: sfrev
-ms.openlocfilehash: cb6e4ab00afd80cba41881e46296f7046a905919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934945"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415688"
 ---
-# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>既存の Service Fabric クラスターでマネージド ID のサポートを構成する (プレビュー)
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>既存の Service Fabric クラスターでマネージド ID のサポートを構成する
 
-Service Fabric アプリケーションで [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用するには、まずクラスターで "*マネージド ID トークン サービス*" を有効にします。 このサービスは、マネージド ID を使用して Service Fabric アプリケーションの認証を実行し、アクセス トークンを代理で取得します。 サービスが有効になると、Service Fabric Explorer の左側のウィンドウの **[システム]** セクションに表示され、**fabric:/System/ManagedIdentityTokenService** という名前で実行されます。
+Service Fabric アプリケーションで [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用するには、まずクラスターで*マネージド ID トークン サービス*を有効にします。 このサービスは、マネージド ID を使用して Service Fabric アプリケーションの認証を実行し、アクセス トークンを代理で取得します。 サービスが有効になると、Service Fabric Explorer の左側のウィンドウの **[システム]** セクションに表示され、**fabric:/System/ManagedIdentityTokenService** という名前で実行されます。
 
 > [!NOTE]
 > **マネージド ID トークン サービス**を有効にするには、Service Fabric ランタイム バージョン 6.5.658.9590 以降が必要です。  
@@ -40,7 +40,7 @@ Service Fabric アプリケーションで [Azure リソースのマネージド
 ]
 ```
 
-また、変更を有効にするには、アップグレード ポリシーを変更し、クラスターでアップグレードが進行するのに合わせて各ノードで Service Fabric ランタイムを強制的に再起動するよう指定する必要があります。 この再起動により、新たに有効になったシステム サービスが各ノードで確実に開始および実行されます。 次のスニペットでは、`forceRestart` が必須の設定です。残りの設定には既存の値を使用します。  
+また、変更を有効にするには、アップグレード ポリシーを変更し、クラスターでアップグレードが進行するのに合わせて各ノードで Service Fabric ランタイムを強制的に再起動するよう指定する必要があります。 この再起動により、新たに有効になったシステム サービスが各ノードで確実に開始および実行されます。 次のスニペットで、`forceRestart` は、再起動を有効にするための必須の設定です。 残りのパラメーターについては、以下で説明する値を使用するか、またはクラスター リソースに既に使用されている既存のカスタム値を使用します。 ファブリックのアップグレード ポリシー ('upgradeDescription') は、Azure portal で Service Fabric リソースの [ファブリックのアップグレード] を選択して表示するか、または resources.azure.com で表示することができます。 アップグレード ポリシー ('upgradeDescription') の既定のオプションは、PowerShell または resources.azure.com で表示することはできません。 詳細については、「[ClusterUpgradePolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet)」 を参照してください。  
 
 ```json
 "upgradeDescription": {

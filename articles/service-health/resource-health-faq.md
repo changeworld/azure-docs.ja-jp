@@ -3,12 +3,12 @@ title: Azure Resource Health の FAQ
 description: Azure Resource Health の概要
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7459a29dca01dc186d75b4545f89068569975607
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75912785"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985033"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health の FAQ
 Azure Resource Health についてよく寄せられる質問の回答を説明します。
@@ -37,7 +37,7 @@ Resource Health では、[リソースの種類](resource-health-checks-resource
 ## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>使用不可のリソースについてサポートを受けるにはどうすればよいですか。
 [リソース正常性] ブレードからサポート リクエストを送信できます。 プラットフォームのイベントが原因でリソースが使用不可になっている場合は、リクエストの作成にマイクロソフトとのサポート契約は必要ありません。
 
-## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>Resource Health では、使用不可の状態は、プラットフォームの問題とユーザーの操作で区別されますか。
+## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>Resource Health では、プラットフォームの問題に起因する使用不可とユーザーの操作に起因する使用不可は区別されますか?
 はい、リソースが使用不可になっている場合は、Resource Health で、以下のいずれかのカテゴリ内で根本原因が識別されます。 
 -   ユーザーが開始したアクション
 -   計画的なイベント 

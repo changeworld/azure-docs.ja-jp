@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Network (プレビュー) の IPv6 の概要
+title: Azure Virtual Network の IPv6 の概要
 titlesuffix: Azure Virtual Network
 description: Azure 仮想ネットワーク内の IPv6 エンドポイントおよびデータ パスを IPv6 の観点から説明します。
 services: virtual-network
@@ -10,24 +10,22 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 12/19/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 312e9db594983f85372285bdff415a2d5dc76ed3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75780081"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984012"
 ---
-# <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Azure Virtual Network の IPv6 の概要 (プレビュー)
+# <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure Virtual Network の IPv6 の概要
 
 Azure Virtual Network (VNet) の IPv6 により、仮想ネットワークやインターネットで IPv6 接続や IPv4 接続を使用するアプリケーションを Azure 内でホストできます。 パブリック IPv4 アドレスが枯渇したことから、モビリティおよびモノのインターネット (IoT) 向けの新しいネットワークは、IPv6 をベースに構築されることが多くなっています。 老舗の ISP やモバイル ネットワークでも IPv6 への転換が進められています。 IPv4 専用のサービスは、既存の市場でも新興市場でも実際に不利になる場合があります。 デュアル スタック IPv4/IPv6 接続により、Azure でホストされるサービスは、このテクノロジのギャップを乗り越えることができます。これにより、既存の IPv4 用およびこの新しい IPv6 用のどちらのデバイスおよびネットワークにも簡単に接続できる、グローバルに使用可能なデュアル スタック サービスが実現されます。
 
 Azure の最初の IPv6 接続により、Azure 内でホストされるアプリケーションでは、デュアル スタック (IPv4/IPv6) インターネット接続を簡単に利用できるようになりました。 接続がインバウンドで開始される場合でも、アウトバウンドで開始される場合でも、IPv6 接続が負荷分散されるため、VM のデプロイが簡単になります。 この機能は依然として使用できます。詳細については、[こちら](../load-balancer/load-balancer-ipv6-overview.md)を参照してください。
 Azure 仮想ネットワークの IPv6 は、はるかに充実した機能を備えているため、Azure 内に IPv6 ソリューション アーキテクチャ全体をデプロイできます。
 
-> [!Important]
-> 現在、Azure Virtual Network の IPv6 は、パブリック プレビュー段階です。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
 
 次の図は、Azure 内のシンプルなデュアル スタック (IPv4/IPv6) デプロイメントを示しています。
 
@@ -59,7 +57,8 @@ Azure VNet の IPv6 には、以下の機能が含まれています。
     - アウトバウンド規則 (オプション)。アウトバウンド接続の完全な宣言的制御を提供し、特定のニーズに合わせてこの機能をスケーリングおよび調整できます。
     - 複数のフロントエンド構成 (オプション)。これにより、単一のロード バランサーで複数の IPv6 パブリック IP アドレスを使用できます。フロントエンド アドレスをまたいで同じフロントエンド プロトコルとポートを再利用できます。
     - 負荷分散規則の *Floating IP* 機能を使用して、オプションの IPv6 ポートをバックエンド インスタンスで再利用できます 
-- Azure VNET 内に弾力性のある多層アプリケーションを作成するための、[Standard IPv6 内部 Load Balancer](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) のサポート。  
+    - 注:負荷分散では、プロトコル変換は実行されません (NAT64 はサポートされていません)。 
+- Azure VNET 内に弾力性のある多層アプリケーションを作成するための、[Standard IPv6 内部 Load Balancer](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) のサポート。   
 - レガシ デプロイとの互換性のための Basic IPv6 パブリック Load Balancer のサポート
 - [予約された IPv6 パブリック IP アドレスおよびアドレス範囲](ipv6-public-ip-address-prefix.md)により、安定した予測可能な IPv6 アドレスが提供されます。これにより、会社や顧客向けに Azure でホストされるアプリケーションを簡単にホワイトリストに登録できます。
 - インスタンスレベル パブリック IP アドレスにより、個々の VM に対する IPv6 インターネットの直接接続が提供されます。
@@ -74,8 +73,9 @@ Azure VNET の IPv6 は、お客様が Azure でデュアル スタック (IPv4 
 
 ## <a name="limitations"></a>制限事項
 Azure 仮想ネットワークの IPv6 の現在のリリースには、次の制限があります。
-- Azure 仮想ネットワーク (プレビュー) の IPv6 は、すべてのグローバル Azure リージョン内で利用できます。ただし、利用できるのは、グローバル Azure 内のみで、政府のクラウド内ではまだ利用できません。
-- ExpressRoute および VPN ゲートウェイは、IPv6 が有効になっている VNET では、直接でも、"UseRemoteGateway" とのピアリングでも、使用できません。 
+- Azure 仮想ネットワークの IPv6 は、すべてのデプロイ方法を使用して、すべてのグローバル Azure Commercial リージョンで使用できます。  U.S. Government クラウドでのデプロイは、一時的に、ARM (JSON) テンプレート、コマンド ライン インターフェイス (CLI)、PowerShell に制限されます。  U.S. Government クラウドの IPv6 サポートは、まもなく提供される予定です。  
+- ExpressRoute ゲートウェイは、IPv6 を有効になっている VNET で IPv4 専用のトラフィックに対して使用できます。  IPv6 トラフィックについては、今後サポートされる予定です。   
+- VPN ゲートウェイは、IPv6 が有効になっている VNET で、直接的にも、"UseRemoteGateway" とのピアリングでも使用できません。
 - Azure プラットフォーム (AKS など) では、コンテナーに対する IPv6 通信はサポートされていません。  
 
 ## <a name="pricing"></a>価格

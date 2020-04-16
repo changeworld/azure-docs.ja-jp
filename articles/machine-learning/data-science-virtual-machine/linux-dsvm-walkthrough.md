@@ -8,13 +8,13 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
-ms.date: 07/16/2018
-ms.openlocfilehash: 9857de0470baa35dcc8005e1622e5e593da95751
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 38088503fee016651a8c1c9a1f57ad4bbe102456
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128345"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257149"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure での Linux Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -29,7 +29,7 @@ ms.locfileid: "80128345"
 Linux DSVM を使用する前に、以下の前提条件を満たしている必要があります。
 
 * **Azure サブスクリプション**。 Azure サブスクリプションを取得するには、「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
-* [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 仮想マシンのプロビジョニングについては、[Linux Data Science Virtual Machine のプロビジョニング](linux-dsvm-intro.md)に関するページをご覧ください。
+* [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 仮想マシンのプロビジョニングについては、[Linux Data Science Virtual Machine のプロビジョニング](linux-dsvm-intro.md)に関するページをご覧ください。
 * お使いのコンピューターに [**X2Go**](https://wiki.x2go.org/doku.php) がインストールされており、XFCE セッションが開かれている。 詳細については、「[X2Go クライアントをインストールして構成する](linux-dsvm-intro.md#x2go)」をご覧ください。
 * スクロールをスムーズにするために、DSVM の FireFox Web ブラウザーで `about:config` の `gfx.xrender.enabled` フラグを切り替えます。 [詳細については、こちらを参照してください](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 また、`mousewheel.enable_pixel_scrolling` を `False` に設定することを検討してください。 [詳細については、こちらを参照してください](https://support.mozilla.org/questions/981140)。
 * **Azure Machine Learning アカウント**。 まだお持ちでない場合は、 [Azure Machine Learning のホームページ](https://azure.microsoft.com/free/services/machine-learning//)で新しいアカウントにサインアップしてください。
@@ -39,22 +39,28 @@ Linux DSVM を使用する前に、以下の前提条件を満たしている必
 [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) データセットは、4601 件の例を含む比較的小さなデータセットです。 このデータセットは、リソース要件が中程度に抑えられるため、DSVM の主要な機能をいくつか示すのに便利なサイズです。
 
 > [!NOTE]
-> このチュートリアルは、D2 v2 サイズの Linux DSVM (CentOS Edition) を使用して作成されました。 このサイズの DSVM を使用して、このチュートリアルで説明する手順を実行できます。
+> このチュートリアルは、D2 v2 サイズの Linux DSVM (Ubuntu 18.04 Edition) を使用して作成されました。 このサイズの DSVM を使用して、このチュートリアルで説明する手順を実行できます。
 
 ストレージ領域がもっと必要な場合は、追加のディスクを作成し、DSVM に接続できます。 これらのディスクでは永続的な Azure ストレージを使用します。そのため、サーバーがサイズ変更のために再プロビジョニングされた場合や、シャットダウンされた場合でも、データが保持されます。 ディスクを追加し、DSVM に接続するには、「[Linux VM へのディスクの追加](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」の手順を実行してください。 ディスクを追加する手順では、Azure CLI を使用します。これは、DSVM に既にインストールされています。 この手順は、DSVM 自体から全て実行できます。 ストレージを増やす方法として、[Azure Files](../../storage/files/storage-how-to-use-files-linux.md) を使用することもできます。
 
 データをダウンロードするには、ターミナル ウィンドウを開き、次のコマンドを実行します。
 
-    wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+```bash
+wget --no-check-certificate https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+```
 
 ダウンロードしたファイルにはヘッダー行がありません。 そのため、ヘッダーを含む別のファイルを作成します。 次のコマンドを実行して、適切なヘッダーを含むファイルを作成します。
 
-    echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
+```bash
+echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
+```
 
 次に、2 つのファイルを連結します。
 
-    cat spambase.data >> headers
-    mv headers spambaseHeaders.data
+```bash
+cat spambase.data >> headers
+mv headers spambaseHeaders.data
+```
 
 このデータセットには、各メールに関する何種類かの統計情報が含まれています。
 
@@ -71,51 +77,69 @@ R を使用して、データを確認し、基本的な機械学習を実行し
 
 このチュートリアルで使用するコード サンプルのコピーを入手するには、git を使用して、 Azure-Machine-Learning-Data-Science リポジトリを複製します。 git は DSVM にプレインストールされています。 git コマンド ラインで次を実行します。
 
-    git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
+```bash
+git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
+```
 
 ターミナル ウィンドウを開き、R の対話型コンソールで新しい R セッションを開始します。 DSVM にプレインストールされている RStudio を使用することもできます。
 
 データをインポートし、環境を設定するには、次を実行します。
 
-    data <- read.csv("spambaseHeaders.data")
-    set.seed(123)
+```R
+data <- read.csv("spambaseHeaders.data")
+set.seed(123)
+```
 
 各列に関する概要統計情報を表示するには、次を実行します。
 
-    summary(data)
+```R
+summary(data)
+```
 
 データの別のビューを表示するには、次を実行します。
 
-    str(data)
+```R
+str(data)
+```
 
 このビューには、各変数の型とデータセット内の最初のいくつかの値が表示されます。
 
 **spam** 列は整数として読み取られますが、実際にはカテゴリ変数 (factor) です。 型を設定するには、次を実行します。
 
-    data$spam <- as.factor(data$spam)
+```R
+data$spam <- as.factor(data$spam)
+```
 
 探索式の分析を行うには、 [ggplot2](https://ggplot2.tidyverse.org/) パッケージ (DSVM にプレインストールされている R の一般的なグラフ作成ライブラリ) を使用します。 先ほど表示した概要データに基づいて、感嘆符文字の出現頻度に関する概要統計情報があります。 次のコマンドを実行して、それらの頻度をプロットしてみましょう。
 
-    library(ggplot2)
-    ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+library(ggplot2)
+ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
 ゼロの棒があると、プロットにゆがみが生じるため、取り除きます。
 
-    email_with_exclamation = data[data$char_freq_exclamation > 0, ]
-    ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+email_with_exclamation = data[data$char_freq_exclamation > 0, ]
+ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
 興味深い、1 を超える非自明な密度があります。 そのデータだけを見てみましょう。
 
-    ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
 次に、スパムとハムに分けます。
 
-    ggplot(data[data$char_freq_exclamation > 1, ], aes(x=char_freq_exclamation)) +
-    geom_density(lty=3) +
-    geom_density(aes(fill=spam, colour=spam), alpha=0.55) +
-    xlab("spam") +
-    ggtitle("Distribution of spam \nby frequency of !") +
-    labs(fill="spam", y="Density")
+```R
+ggplot(data[data$char_freq_exclamation > 1, ], aes(x=char_freq_exclamation)) +
+geom_density(lty=3) +
+geom_density(aes(fill=spam, colour=spam), alpha=0.55) +
+xlab("spam") +
+ggtitle("Distribution of spam \nby frequency of !") +
+labs(fill="spam", y="Density")
+```
 
 これらの例は、同様のプロットを作成し、他の列のデータを探索するのに役立ちます。
 
@@ -128,16 +152,20 @@ R を使用して、データを確認し、基本的な機械学習を実行し
 
 まず、データセットをトレーニング セットとテスト セットに分割します。
 
-    rnd <- runif(dim(data)[1])
-    trainSet = subset(data, rnd <= 0.7)
-    testSet = subset(data, rnd > 0.7)
+```R
+rnd <- runif(dim(data)[1])
+trainSet = subset(data, rnd <= 0.7)
+testSet = subset(data, rnd > 0.7)
+```
 
 次に、メールを分類するデシジョン ツリーを作成します。
 
-    require(rpart)
-    model.rpart <- rpart(spam ~ ., method = "class", data = trainSet)
-    plot(model.rpart)
-    text(model.rpart)
+```R
+require(rpart)
+model.rpart <- rpart(spam ~ ., method = "class", data = trainSet)
+plot(model.rpart)
+text(model.rpart)
+```
 
 結果は次のとおりです。
 
@@ -145,99 +173,37 @@ R を使用して、データを確認し、基本的な機械学習を実行し
 
 トレーニング セットに対するパフォーマンスを確認するには、次のコードを使用します。
 
-    trainSetPred <- predict(model.rpart, newdata = trainSet, type = "class")
-    t <- table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
+```R
+trainSetPred <- predict(model.rpart, newdata = trainSet, type = "class")
+t <- table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
 テスト セットに対するパフォーマンスを確認するには、次のコードを使用します。
 
-    testSetPred <- predict(model.rpart, newdata = testSet, type = "class")
-    t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
+```R
+testSetPred <- predict(model.rpart, newdata = testSet, type = "class")
+t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
 ランダム フォレスト モデルも試してみましょう。 ランダム フォレストは、さまざまなデシジョン ツリーをトレーニングし、個々のデシジョン ツリーすべてからの分類のモードであるクラスを出力します。 これらは、トレーニング データセットが過剰適合されるデシジョン ツリー モデルの傾向を修正するため、より強力な機械学習アプローチを提供します。
 
-    require(randomForest)
-    trainVars <- setdiff(colnames(data), 'spam')
-    model.rf <- randomForest(x=trainSet[, trainVars], y=trainSet$spam)
+```R
+require(randomForest)
+trainVars <- setdiff(colnames(data), 'spam')
+model.rf <- randomForest(x=trainSet[, trainVars], y=trainSet$spam)
 
-    trainSetPred <- predict(model.rf, newdata = trainSet[, trainVars], type = "class")
-    table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
+trainSetPred <- predict(model.rf, newdata = trainSet[, trainVars], type = "class")
+table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
 
-    testSetPred <- predict(model.rf, newdata = testSet[, trainVars], type = "class")
-    t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
-
-
-## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) にモデルをデプロイする
-
-[Azure Machine Learning Studio (クラシック)](https://studio.azureml.net/) は、予測分析モデルを簡単に構築してデプロイできるクラウド サービスです。 Azure Machine Learning Studio (クラシック) の便利な機能に、任意の R 関数を Web サービスとして発行する機能があります。 Azure Machine Learning Studio (クラシック) の R パッケージを使うと、DSVM 上の R セッションから直接簡単にデプロイできます。
-
-前のセクションのデシジョン ツリー コードをデプロイするには、Azure Machine Learning Studio (クラシック) にサインインします。 サインインするには、ワークスペース ID と認証トークンが必要です。 これらの値を見つけ、これらで Azure Machine Learning の変数を初期化するには、次の手順を実行します。
-
-1. 左側のメニューで **[設定]** を選択します。 **[ワークスペース ID]** の値をメモします。
-
-   ![Azure Machine Learning Studio (クラシック) ワークスペース ID](./media/linux-dsvm-walkthrough/workspace-id.png)
-
-1. **[Authorization Tokens]\(認証トークン\)** タブを選択します。 **[Primary Authorization Token]\(プライマリ認証トークン\)** の値をメモします。
-
-   ![Azure Machine Learning Studio (クラシック) のプライマリ認証トークン](./media/linux-dsvm-walkthrough/workspace-token.png)
-1. **AzureML** パッケージを読み込み、DSVM 上の R セッションで、 使用するトークンとワークスペース ID を用いて変数の値を設定します。
-
-        if(!require("devtools")) install.packages("devtools")
-        devtools::install_github("RevolutionAnalytics/AzureML")
-        if(!require("AzureML")) install.packages("AzureML")
-        require(AzureML)
-        wsAuth = "<authorization-token>"
-        wsID = "<workspace-id>"
-
-1. このデモを実装しやすくするためにモデルを簡略化します。 ルートに最も近い 3 つの変数をデシジョン ツリーから選択し、これら 3 つの変数だけを使用して新しいツリーを構築します。
-
-        colNames <- c("char_freq_dollar", "word_freq_remove", "word_freq_hp", "spam")
-        smallTrainSet <- trainSet[, colNames]
-        smallTestSet <- testSet[, colNames]
-        model.rpart <- rpart(spam ~ ., method = "class", data = smallTrainSet)
-
-1. 特徴を入力として受け取り、予測値を返す予測関数が必要です。
-
-        predictSpam <- function(newdata) {
-        predictDF <- predict(model.rpart, newdata = newdata)
-        return(colnames(predictDF)[apply(predictDF, 1, which.max)])
-        }
-
-1. このワークスペースの settings.json ファイルを作成します。
-
-        vim ~/.azureml/settings.json
-
-1. 次の内容が確実に settings.json に含まれているようにします。
-
-         {"workspace":{
-           "id": "<workspace-id>",
-           "authorization_token": "<authorization-token>",
-           "api_endpoint": "https://studioapi.azureml.net",
-           "management_endpoint": "https://management.azureml.net"
-         }
-
-
-1. **publishWebService** 関数を使用して、**predictSpam** 関数を AzureML に発行します。
-
-        ws <- workspace()
-        spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
-
-1. この関数は、**predictSpam** 関数を受け取り、入力と出力が定義された **spamWebService** という名前の Web サービスを作成してから、新しいエンドポイントに関する情報を返します。
-
-    このコマンドを使用して、API エンドポイントやアクセス キーなど、発行されている最新の Web サービスの詳細を表示します。
-
-        s<-tail(services(ws, name = "spamWebService"), 1)
-        ep <- endpoints(ws,s)
-        ep
-
-1. テスト セットの最初の 10 行に対して試すには、次を実行します。
-
-        consume(ep, smallTestSet[1:10, ])
+testSetPred <- predict(model.rf, newdata = testSet[, trainVars], type = "class")
+t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
 <a name="deep-learning"></a>
 
@@ -268,19 +234,21 @@ R を使用して、データを確認し、基本的な機械学習を実行し
 
 [XGBoost](https://xgboost.readthedocs.org/en/latest/) は、迅速かつ正確なブースト ツリー実装を提供します。
 
-    require(xgboost)
-    data <- read.csv("spambaseHeaders.data")
-    set.seed(123)
+```R
+require(xgboost)
+data <- read.csv("spambaseHeaders.data")
+set.seed(123)
 
-    rnd <- runif(dim(data)[1])
-    trainSet = subset(data, rnd <= 0.7)
-    testSet = subset(data, rnd > 0.7)
+rnd <- runif(dim(data)[1])
+trainSet = subset(data, rnd <= 0.7)
+testSet = subset(data, rnd > 0.7)
 
-    bst <- xgboost(data = data.matrix(trainSet[,0:57]), label = trainSet$spam, nthread = 2, nrounds = 2, objective = "binary:logistic")
+bst <- xgboost(data = data.matrix(trainSet[,0:57]), label = trainSet$spam, nthread = 2, nrounds = 2, objective = "binary:logistic")
 
-    pred <- predict(bst, data.matrix(testSet[, 0:57]))
-    accuracy <- 1.0 - mean(as.numeric(pred > 0.5) != testSet$spam)
-    print(paste("test accuracy = ", accuracy))
+pred <- predict(bst, data.matrix(testSet[, 0:57]))
+accuracy <- 1.0 - mean(as.numeric(pred > 0.5) != testSet$spam)
+print(paste("test accuracy = ", accuracy))
+```
 
 また、XGBoost は Python またはコマンド ラインから呼び出すことができます。
 
@@ -293,45 +261,52 @@ Python 開発用に、Anaconda Python ディストリビューション 3.5 お�
 
 Scikit-learn のサポート ベクター マシンを使用して、spambase データセットの一部を読み取り、メールを分類してみましょう。
 
-    import pandas
-    from sklearn import svm
-    data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
-    X = data.ix[:, 0:57]
-    y = data.ix[:, 57]
-    clf = svm.SVC()
-    clf.fit(X, y)
+```Python
+import pandas
+from sklearn import svm
+data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
+X = data.ix[:, 0:57]
+y = data.ix[:, 57]
+clf = svm.SVC()
+clf.fit(X, y)
+```
 
 予測を行うには、次を実行します。
 
-    clf.predict(X.ix[0:20, :])
+```Python
+clf.predict(X.ix[0:20, :])
+```
 
 Azure Machine Learning エンドポイントを発行する方法を示すために、より基本的なモデルを作成します。 前に R モデルを発行したときに使用した 3 つの変数を使用します。
 
-    X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
-    y = data.ix[:, 57]
-    clf = svm.SVC()
-    clf.fit(X, y)
+```Python
+X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
+y = data.ix[:, 57]
+clf = svm.SVC()
+clf.fit(X, y)
+```
 
 Azure Machine Learning にそのモデルを発行するには、次を実行します。
 
-    # Publish the model.
-    workspace_id = "<workspace-id>"
-    workspace_token = "<workspace-token>"
-    from azureml import services
-    @services.publish(workspace_id, workspace_token)
-    @services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
-    @services.returns(int) # 0 or 1
-    def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
-        inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
-        return clf.predict(inputArray)
+```Python
+# Publish the model.
+workspace_id = "<workspace-id>"
+workspace_token = "<workspace-token>"
+from azureml import services
+@services.publish(workspace_id, workspace_token)
+@services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
+@services.returns(int) # 0 or 1
+def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
+    inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
+    return clf.predict(inputArray)
 
-    # Get some info about the resulting model.
-    predictSpam.service.url
-    predictSpam.service.api_key
+# Get some info about the resulting model.
+predictSpam.service.url
+predictSpam.service.api_key
 
-    # Call the model
-    predictSpam.service(1, 1, 1)
-
+# Call the model
+predictSpam.service(1, 1, 1)
+```
 
 > [!NOTE]
 > このオプションは、Python 2.7 に対してのみ使用できます。 Python 3.5 ではまだサポートされていません。 実行するには、 **/anaconda/bin/python2.7** を使用してください。
@@ -343,14 +318,14 @@ DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Py
 > [!NOTE]
 > 現在のカーネルの Jupyter Notebook から (`pip` コマンドを通して) Python Package Manager を使用するには、コード セルでこのコマンドを使用します。
 >
->   ```python
+>   ```Python
 >    import sys
 >    ! {sys.executable} -m pip install numpy -y
 >   ```
 > 
 > 現在のカーネルの Jupyter Notebook から (`conda` コマンドを通して) Conda インストーラーを使用するには、コード セルでこのコマンドを使用します。
 >
->   ```python
+>   ```Python
 >    import sys
 >    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
 >   ```
@@ -372,9 +347,11 @@ DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Py
 
 Rattle をインストールして起動するには、これらのコマンドを実行します。
 
-    if(!require("rattle")) install.packages("rattle")
-    require(rattle)
-    rattle()
+```R
+if(!require("rattle")) install.packages("rattle")
+require(rattle)
+rattle()
+```
 
 > [!NOTE]
 > DSVM に Rattle をインストールする必要はありません。 ただし、Rattle を開いたときに、追加のパッケージをインストールするように求められる場合があります。
@@ -452,48 +429,64 @@ DSVM には、PostgreSQL がインストールされています。 PostgreSQL �
 
 データを読み込む前に、localhost からのパスワード認証を許可する必要があります。 コマンド プロンプトで、次のコマンドを実行します。
 
-    sudo gedit /var/lib/pgsql/data/pg_hba.conf
+```Bash
+sudo gedit /var/lib/pgsql/data/pg_hba.conf
+```
 
 構成ファイルの下部付近に、許可される接続の詳細を記述している複数の行があります。
 
-    # "local" is only for Unix domain socket connections:
-    local   all             all                                     trust
-    # IPv4 local connections:
-    host    all             all             127.0.0.1/32            ident
-    # IPv6 local connections:
-    host    all             all             ::1/128                 ident
+```
+# "local" is only for Unix domain socket connections:
+local   all             all                                     trust
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            ident
+# IPv6 local connections:
+host    all             all             ::1/128                 ident
+```
 
 ユーザー名とパスワードを使用してログインできるように、「**IPv4 local connections**」という行を、**ident** の代わりに **md5** を使用するように変更します。
 
-    # IPv4 local connections:
-    host    all             all             127.0.0.1/32            md5
+```
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+```
 
 次に、PostgreSQL サービスを再起動します。
 
-    sudo systemctl restart postgresql
+```Bash
+sudo systemctl restart postgresql
+```
 
 *psql* (PostgreSQL の対話型ターミナル) を組み込みの postgres ユーザーとして起動するには、このコマンドを実行します。
 
-    sudo -u postgres psql
+```Bash
+sudo -u postgres psql
+```
 
 ログインに使用した Linux アカウントのユーザー名を使用して、新しいユーザー アカウントを作成します。 パスワードを作成します。
 
-    CREATE USER <username> WITH CREATEDB;
-    CREATE DATABASE <username>;
-    ALTER USER <username> password '<password>';
-    \quit
+```Bash
+CREATE USER <username> WITH CREATEDB;
+CREATE DATABASE <username>;
+ALTER USER <username> password '<password>';
+\quit
+```
 
 psql にログインします。
 
-    psql
+```Bash
+psql
+```
 
 新しいデータベースにデータをインポートします。
 
-    CREATE DATABASE spam;
-    \c spam
-    CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer);
-    \copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
-    \quit
+```SQL
+CREATE DATABASE spam;
+\c spam
+CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer);
+\copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
+\quit
+```
 
 ここで、SQuirreL SQL (JDBC ドライバー経由でデータベースの操作に使用できるグラフィカル ツール) を使用して、データを探索し、いくつかのクエリを実行してみましょう。
 
@@ -525,11 +518,15 @@ psql にログインします。
 
 このデータを探索するために実行できるクエリは他にもたくさんあります。 たとえば、 *make* という単語の出現頻度がスパムとハムでどのように異なるかを調べるには、次のクエリを実行します。
 
-    SELECT avg(word_freq_make), spam from data group by spam;
+```SQL
+SELECT avg(word_freq_make), spam from data group by spam;
+```
 
 また、*3d* が高い頻度で含まれるメールの特徴を調べます。
 
-    SELECT * from data order by word_freq_3d desc;
+```SQL
+SELECT * from data order by word_freq_3d desc;
+```
 
 *3d* が高い頻度で含まれるメールのほとんどは、明らかにスパムです。 この情報は、メールを分類する予測モデルの構築に役立つ可能性があります。
 
@@ -541,24 +538,32 @@ Azure SQL Data Warehouse は、クラウドベースのスケールアウト デ
 
 データ ウェアハウスに接続し、テーブルを作成するには、コマンド プロンプトから次のコマンドを実行します。
 
-    sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
+```Bash
+sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
+```
 
 sqlcmd プロンプトで、このコマンドを実行します。
 
-    CREATE TABLE spam (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer) WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
-    GO
+```SQL
+CREATE TABLE spam (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer) WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
+GO
+```
 
 bcp を使用してデータをコピーします。
 
-    bcp spam in spambaseHeaders.data -q -c -t  ',' -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -F 1 -r "\r\n"
+```bash
+bcp spam in spambaseHeaders.data -q -c -t  ',' -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -F 1 -r "\r\n"
+```
 
 > [!NOTE]
 > ダウンロードしたファイルには、Windows 形式の行の終わりが含まれています。 bcp ツールは、Unix 形式の行の終わりを想定します。 -r フラグを使用して bcp に指示します。
 
 次に、sqlcmd を使用してクエリを実行します。
 
-    select top 10 spam, char_freq_dollar from spam;
-    GO
+```sql
+select top 10 spam, char_freq_dollar from spam;
+GO
+```
 
 SQuirreL SQL を使用してクエリを実行することもできます。 SQL Server JDBC ドライバーを使用して PostgreSQL の場合と同様の手順を実行します。 JDBC ドライバーは /usr/share/java/jdbcdrivers/sqljdbc42.jar フォルダーにあります。
 
