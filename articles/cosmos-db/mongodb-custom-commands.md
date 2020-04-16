@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f99c4d096bcbe1fbdc42cac80a491d6017266cb2
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445223"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583581"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API に格納されているデータを管理するために MongoDB 拡張コマンドを使用する 
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の MongoDB 用 API との通信は、オープン ソースで公開されている任意の MongoDB クライアント [ドライバー](https://docs.mongodb.org/ecosystem/drivers)を使って行うことができます。 Azure Cosmos DB の MongoDB 用 API では、MongoDB [ワイヤ プロトコル](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)に従うことにより、既存のクライアント ドライバーを利用できます。
+Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の MongoDB 用 API との通信は、オープン ソースで公開されている任意の [MongoDB クライアント ドライバー](https://docs.mongodb.org/ecosystem/drivers)を使って行うことができます。 Azure Cosmos DB の MongoDB 用 API では、MongoDB [ワイヤ プロトコル](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)に従うことにより、既存のクライアント ドライバーを利用できます。
 
 Azure Cosmos DB の MongoDB 用 API を使用することで、MongoDB アプリへの投資を保持しながら、グローバル配布、自動シャーディング、高可用性、低待機時間の保証、自動化、保存時の暗号化、バックアップなど多くの Cosmos DB の利点を活用できます。
 
 ## <a name="mongodb-protocol-support"></a>MongoDB のプロトコル サポート
 
-既定では、Azure Cosmos DB の MongoDB 用 API はMongoDB サーバー バージョン 3.2 と互換性があります。詳細については、「[サポートされる機能と構文](mongodb-feature-support.md)」を参照してください。 現在、MongoDB バージョン 3.4 で追加された機能やクエリ演算子は、Azure Cosmos DB の MongoDB 用 API のプレビューとして使用できます。 次の拡張コマンドは、Azure Cosmos DB の MongoDB 用 API に格納されているデータに対して CRUD 操作を実行するときに、Azure Cosmos DB の固有の機能をサポートします。
+既定では、Azure Cosmos DB の MongoDB 用 API はMongoDB サーバー バージョン 3.2 と互換性があります。詳細については、「[サポートされる機能と構文](mongodb-feature-support.md)」を参照してください。 現在、MongoDB バージョン 3.4 で追加された機能やクエリ演算子は、Azure Cosmos DB の MongoDB 用 API のプレビューとして使用できます。 次の拡張コマンドは、Azure Cosmos DB の MongoDB 用 API の格納データに対して CRUD 操作を実行するときに、Azure Cosmos DB の固有の機能をサポートします。
 
 * [データベースの作成](#create-database)
 * [データベースの更新](#update-database)
@@ -48,7 +48,7 @@ Azure Cosmos DB の MongoDB 用 API を使用することで、MongoDB アプリ
 | customAction   |  string  |   カスタム コマンドの名前。"CreateDatabase" にする必要があります。      |
 | offerThroughput | INT  | データベースに設定したプロビジョニング済みスループット。 このパラメーターは省略可能です。 |
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、「[既定の出力](#default-output)」を参照してください。
 
@@ -90,7 +90,7 @@ db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 | customAction    |    string     |   カスタム コマンドの名前。 "UpdateDatabase" にする必要があります。      |
 |  offerThroughput   |  INT       |     データベースに設定する新しいプロビジョニング済みスループット。    |
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、「[既定の出力](#default-output)」を参照してください。
 
@@ -122,7 +122,7 @@ db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 |---------|---------|---------|
 |  customAction   |   string      |   カスタム コマンドの名前。 "GetDatabase" にする必要があります|
         
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 コマンドが成功すると、応答には次のフィールドを持つドキュメントが含まれます。
 
@@ -160,14 +160,14 @@ db.runCommand({customAction: "GetDatabase"});
 
 次の表では、コマンド内のパラメーターについて説明します。
 
-|**フィールド**|**Type** |**説明** |
-|---------|---------|---------|
-| customAction    | string | カスタム コマンドの名前。 必ず "CreateCollection" にします     |
-| collection      | string | コレクションの名前                                   |
-| offerThroughput | INT    | データベースに設定するプロビジョニング済みスループット。 これは、省略可能なパラメーターです |
-| shardKey        | string | シャード コレクションを作成するシャード キー パス。 これは、省略可能なパラメーターです |
+| **フィールド** | **Type** | **必須** | **説明** |
+|---------|---------|---------|---------|
+| customAction | string | 必須 | カスタム コマンドの名前。 必ず "CreateCollection" にします。|
+| collection | string | 必須 | コレクションの名前。 特殊文字は使用できません。|
+| offerThroughput | INT | 省略可能* | データベースに設定するプロビジョニング済みスループット。 このパラメーターが指定されていない場合、既定値は 400 RU/秒に設定されます。 * 10,000 RU/秒を超えるスループットを指定するには、`shardKey` パラメーターが必要です。|
+| shardKey | string | 省略可能* | シャード コレクション用シャード キーへのパス。 `offerThroughput` で 10,000 RU/秒を超える値を設定する場合、このパラメーターは必須です。  この値が指定されている場合は、挿入されたすべてのドキュメントでこの値が必要になります。 |
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、「[既定の出力](#default-output)」を参照してください。
 
@@ -184,7 +184,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 **シャード コレクションを作成する**
 
-"testCollection" という名前で、プロビジョニング済みスループットが 1000 RU のシャード コレクションを作成するには、次のコマンドを使用します。
+"testCollection" という名前で、プロビジョニング済みスループットが 1,000 RU で、シャードキー プロパティが "a.b" のシャード コレクションを作成するには、次のコマンドを使用します。
 
 ```shell
 use test
@@ -211,7 +211,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 |  collection   |   string      |   コレクションの名前。       |
 | offerThroughput   |INT|   コレクションに設定するプロビジョニング済みスループット。|
 
-## <a name="output"></a>Output
+## <a name="output"></a>出力
 
 既定のカスタム コマンド応答を返します。 出力内のパラメーターについては、「[既定の出力](#default-output)」を参照してください。
 
@@ -245,7 +245,7 @@ db.runCommand({customAction: "UpdateCollection", collection: "testCollection", o
 | customAction    |   string      |   カスタム コマンドの名前。 "GetCollection" にする必要があります。      |
 | collection    |    string     |    コレクションの名前。     |
 
-### <a name="output"></a>Output
+### <a name="output"></a>出力
 
 コマンドが成功すると、応答には次のフィールドを持つドキュメントが含まれます
 

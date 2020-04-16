@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: edeafb5730f06dac22fd9919ca42ea388d5fd0f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1aa3537679ee37cbc6085344d2f31ae4043d32bb
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235071"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520671"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 
@@ -564,7 +564,7 @@ public Person[] get(
 |**rowKey** |**RowKey** | 省略可能。 読み取るテーブル エンティティの行キー。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#input---usage)」セクションを参照してください。| 
 |**take** |**Take** | 省略可能。 JavaScript で読み取るエンティティの最大数。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#input---usage)」セクションを参照してください。| 
 |**filter** |**Assert** | 省略可能。 JavaScript のテーブル入力の OData フィルター式。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#input---usage)」セクションを参照してください。| 
-|**connection** |**接続** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "MyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。|
+|**connection** |**接続** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 この設定には、"AzureWebJobs" というプレフィックスが付加されたアプリ設定または接続文字列名を指定できます。 たとえば、設定名が "AzureWebJobsMyStorage" の場合、ここでは "MyStorage" を指定できます。 Functions ランタイムでは、"AzureWebJobsMyStorage" という名前のアプリ設定が自動的に検索されます。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

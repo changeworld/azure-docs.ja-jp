@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a37e1b9bc4a0b953dc727dbab2813dd938ed576
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720352"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652215"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: よく寄せられる質問
 
@@ -135,7 +135,7 @@ SQL Server から Azure SQL Server に移行する方法については、「[�
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>Hive メタストア データベースのサイズを見積もるにはどうすればよいですか。
 
-Hive メタストアは、Hive サーバーによって使用されるデータ ソースのメタデータを格納するために使用されます。サイズの要件は、Hive データ ソースの数と複雑さによって変わり、事前に見積もることはできません。 [Hive メタストアのベスト プラクティス](hdinsight-use-external-metadata-stores.md#hive-metastore-best-practices)で概要が説明されているように、S2 レベルから始めることができます。この場合、50 DTU と 250 GB のストレージが提供されます。また、ボトルネックがわかった場合は、データベースをスケールアップすることができます。
+Hive メタストアは、Hive サーバーによって使用されるデータ ソースのメタデータを格納するために使用されます。サイズの要件は、Hive データ ソースの数と複雑さによって変わり、事前に見積もることはできません。 [Hive メタストアのガイドライン](hdinsight-use-external-metadata-stores.md#hive-metastore-guidelines)で概要が説明されているように、S2 レベルから始めることができます。この場合、50 DTU と 250 GB のストレージが提供されます。また、ボトルネックがわかった場合は、データベースをスケールアップすることができます。
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>外部メタストアとして Azure SQL Database 以外のデータベースはサポートされていますか。
 

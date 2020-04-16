@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18469c94b66acab27b58243e8d15eb924843319b
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235991"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811119"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal で App Service アプリを構成する
 
@@ -96,10 +96,11 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
 
 実行時に、接続文字列は、前に次の接続の種類が付加された環境変数として使用できます。
 
-* SQL Server: `SQLCONNSTR_`
-* MySQL: `MYSQLCONNSTR_`
-* SQL Database: `SQLAZURECONNSTR_`
+* SQLServer: `SQLCONNSTR_`  
+* MySQL: `MYSQLCONNSTR_` 
+* SQLAzure: `SQLAZURECONNSTR_` 
 * カスタム: `CUSTOMCONNSTR_`
+* PostgreSQL: `POSTGRESQLCONNSTR_`  
 
 たとえば、*connectionstring1* という名前の MySql 接続文字列には環境変数 `MYSQLCONNSTR_connectionString1` としてアクセスできます。 言語スタック固有の手順については、次を参照してください。
 
@@ -173,7 +174,7 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
     - **[Managed pipeline version] (マネージド パイプライン バージョン)** : IIS の[パイプライン モード]。 以前のバージョンの IIS を必要とするレガシ アプリがある場合は、これを **[Classic] (クラシック)** に設定します。
     - **[HTTP version] (HTTP バージョン)** :[HTTPS/2](https://wikipedia.org/wiki/HTTP/2) プロトコルのサポートを有効にするには、 **[2.0]** に設定します。
     > [!NOTE]
-    > 最新のブラウザーのほとんどは、TLS 上でのみ HTTP/2 プロトコルをサポートし、暗号化されていないトラフィックには引き続き HTTP/1.1 を使用しています。 クライアント ブラウザーが HTTP/2 を使用してアプリに接続するようにするには、[Azure App Service で SSL バインディングを使用してカスタム DNS 名のセキュリティを保護します](configure-ssl-bindings.md)。
+    > 最新のブラウザーのほとんどは、TLS 上でのみ HTTP/2 プロトコルをサポートし、暗号化されていないトラフィックには引き続き HTTP/1.1 を使用しています。 クライアント ブラウザーが HTTP/2 でご利用のアプリに確実に接続されるようにするには、カスタム DNS 名をセキュリティで保護します。 詳細については、「[Azure App Service で TLS/SSL バインディングを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」を参照してください。
     - **[ARR affinity] (ARR アフィニティ)** :マルチインスタンス デプロイでは、クライアントがセッションの有効期間を通して同じインスタンスにルーティングされることを確認してください。 ステートレス アプリケーションの場合は、このオプションを **[オフ]** に設定できます。
 - **[デバッグ]** : [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、[ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)、または [Node.js](containers/configure-language-nodejs.md#debug-remotely) アプリに対するリモート デバッグを有効にします。 このオプションは、48 時間後に自動的に無効になります。
 - **[Incoming client certificates] (受信クライアント証明書)** : [相互認証](app-service-web-configure-tls-mutual-auth.md)でクライアント証明書を必要とします。
@@ -248,7 +249,7 @@ Linux アプリについては、次を参照してください。
 
 - [Azure App Service のカスタム ドメイン名の構成]
 - [Azure App Service でステージング環境を設定する]
-- [Azure App Service で SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)
+- [Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)
 - [診断ログを有効にする](troubleshoot-diagnostic-logs.md)
 - [Azure App Service でのアプリのスケーリング]
 - [Azure App Service での監視の基本]

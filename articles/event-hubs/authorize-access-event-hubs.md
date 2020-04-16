@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: d4304abf0ca089fbbea86f12cd03dea836db612e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f44be4e1d3d1186f0122bd4669ae800ab42e31d6
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368356"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521310"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Azure Event Hubs へのアクセスを承認する
 イベント ハブからイベント/データを発行または使用するたびに、クライアントでは Event Hubs リソースへのアクセスが試行されます。 データの発行または使用に必要なアクセス許可をクライアントが持っていることがサービスにより確保されるように、セキュリティで保護されたリソースに対するすべての要求が承認される必要があります。 
@@ -39,7 +39,7 @@ Event Hubs リソースの Shared Access Signature (SAS) では、Event Hubs リ
 
 Azure AD によって返された OAuth 2.0 トークンを使用するユーザーまたはアプリケーションの承認では、Shared Access Signatures (SAS) よりも優れたセキュリティが提供され、使いやすくなります。 Azure AD を使用すれば、アクセス トークンをコードに保存する必要がないため、潜在的なセキュリティ脆弱性のリスクを排除できます。 引き続き Shared Access Signature (SAS) を使用して Event Hubs リソースへのきめ細かいアクセス許可を付与することはできますが、Azure AD によって、SAS トークンを管理したり侵害された SAS の取り消しを心配したりする必要なく、同様の機能が提供されています。 
 
-既定では、すべての Event Hubs リソースはセキュリティで保護されており、アカウント所有者のみが使用できます。 ただし、上記の承認戦略のいずれかを使用して、クライアントに Event Hubs リソースへのアクセスを許可することができます。 Azure Resource Manager デプロイ モデルで作成された Event Hubs リソースのみが Azure AD の承認をサポートします。 セキュリティと使いやすさを最大限にするために、可能な場合は Azure AD を使用することをお勧めします。
+既定では、すべての Event Hubs リソースはセキュリティで保護されており、アカウント所有者のみが使用できます。 ただし、上記の承認戦略のいずれかを使用して、クライアントに Event Hubs リソースへのアクセスを許可することができます。 セキュリティと使いやすさを最大限にするために、可能な場合は Azure AD を使用することをお勧めします。
 
 SAS を使用した承認の詳細については、「[Shared Access Signature を使用した Event Hubs リソースへのアクセスの承認](authorize-access-shared-access-signature.md)」を参照してください。
 

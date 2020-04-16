@@ -4,19 +4,19 @@ description: オンプレミスの Active Directory Domain Services 環境で Az
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d67d867249286ad1591b441bbe5ea2637971e104
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671652"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652611"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>オンプレミスの Azure AD パスワード保護環境を監視してログを確認する
 
@@ -94,7 +94,7 @@ PasswordChangeErrors            : 0
 PasswordSetErrors               : 1
 ```
 
-コマンドレット レポートのスコープは、–Forest、-Domain、–DomainController のいずれかのパラメーターの使用の影響を受けることがあります。 パラメーターを指定しないと暗黙的に –Forest が指定されます。
+コマンドレット レポートのスコープは、-Forest、-Domain、-DomainController のいずれかのパラメーターの使用の影響を受けることがあります。 パラメーターを指定しないと暗黙的に –Forest が指定されます。
 
 `Get-AzureADPasswordProtectionSummaryReport` コマンドレットでは、DC エージェント管理イベント ログのクエリが実行され、表示されている各結果カテゴリに対応するイベントの合計数がカウントされます。 次の表では、各結果とそれに対応するイベント ID のマッピングを示します。
 

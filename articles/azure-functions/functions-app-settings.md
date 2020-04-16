@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2d168d8828d17e13f875e3b2555c7db0d4ba32d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235271"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656802"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -20,11 +20,19 @@ ms.locfileid: "79235271"
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Application Insights を使用している場合の Application Insights インストルメンテーション キーです。 「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
+Application Insights のインストルメンテーション キー。 `APPINSIGHTS_INSTRUMENTATIONKEY` または `APPLICATIONINSIGHTS_CONNECTIONSTRING` のいずれかのみを使用してください。 詳しくは、「[Azure Functions を監視する](functions-monitoring.md)」をご覧ください。 
 
 |Key|値の例|
 |---|------------|
-|APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
+|APPINSIGHTS_INSTRUMENTATIONKEY|55555555-af77-484b-9032-64f83bb83bb|
+
+## <a name="applicationinsights_connectionstring"></a>APPLICATIONINSIGHTS_CONNECTIONSTRING
+
+Application Insights の接続文字列。 お使いの関数アプリで接続文字列を使用した追加のカスタマイズ サポートが必要な場合は、`APPINSIGHTS_INSTRUMENTATIONKEY` ではなく `APPLICATIONINSIGHTS_CONNECTIONSTRING` を使用します。 詳細については、[接続文字列](../azure-monitor/app/sdk-connection-string.md)に関するページを参照してください。 
+
+|Key|値の例|
+|---|------------|
+|APPLICATIONINSIGHTS_CONNECTIONSTRING|InstrumentationKey=[key];IngestionEndpoint=[url];LiveEndpoint=[url];ProfilerEndpoint=[url];SnapshotEndpoint=[url];|
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 

@@ -2,13 +2,13 @@
 title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループまたはサブスクリプションに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
-ms.date: 01/22/2020
-ms.openlocfilehash: 3fe404b8b501056f75ac45ccebc5bdbed1acbe43
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.date: 04/06/2020
+ms.openlocfilehash: 90fbec4dc076feb1fee8c38cf9757d3c5ddbafaf
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705481"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804794"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 この記事では、Azure リソースの種類は、移動操作をサポートしているかどうかを示します。 また、リソースを移動するときに考慮すべき特別な条件に関する情報も提供します。
@@ -35,6 +35,7 @@ ms.locfileid: "76705481"
 > - [Microsoft.BingMaps](#microsoftbingmaps)
 > - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft.Blockchain](#microsoftblockchain)
+> - [Microsoft.BlockchainTokens](#microsoftblockchaintokens)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
 > - [Microsoft.Cache](#microsoftcache)
@@ -43,6 +44,7 @@ ms.locfileid: "76705481"
 > - [Microsoft.ClassicCompute](#microsoftclassiccompute)
 > - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft.Cognition](#microsoftcognition)
 > - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Compute](#microsoftcompute)
 > - [Microsoft.Consumption](#microsoftconsumption)
@@ -72,15 +74,19 @@ ms.locfileid: "76705481"
 > - [Microsoft.DBforMySQL](#microsoftdbformysql)
 > - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
 > - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
+> - [Microsoft.DesktopVirtualization](#microsoftdesktopvirtualization)
 > - [Microsoft.Devices](#microsoftdevices)
 > - [Microsoft.DevOps](#microsoftdevops)
 > - [Microsoft.DevSpaces](#microsoftdevspaces)
 > - [Microsoft.DevTestLab](#microsoftdevtestlab)
+> - [Microsoft.DigitalTwins](#microsoftdigitaltwins)
 > - [Microsoft.DocumentDB](#microsoftdocumentdb)
 > - [Microsoft.DomainRegistration](#microsoftdomainregistration)
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
+> - [Microsoft.Experimentation](#microsoftexperimentation)
+> - [Microsoft.Falcon](#microsoftfalcon)
 > - [Microsoft.Genomics](#microsoftgenomics)
 > - [Microsoft.GuestConfiguration](#microsoftguestconfiguration)
 > - [Microsoft.HanaOnAzure](#microsofthanaonazure)
@@ -88,6 +94,7 @@ ms.locfileid: "76705481"
 > - [Microsoft.HealthcareApis](#microsofthealthcareapis)
 > - [Microsoft.HybridCompute](#microsofthybridcompute)
 > - [Microsoft.HybridData](#microsofthybriddata)
+> - [Microsoft.Hydra](#microsofthydra)
 > - [Microsoft.ImportExport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
@@ -105,7 +112,9 @@ ms.locfileid: "76705481"
 > - [Microsoft.MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
 > - [Microsoft.MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft.Maintenance](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
+> - [Microsoft.ManagedNetwork](#microsoftmanagednetwork)
 > - [Microsoft.ManagedServices](#microsoftmanagedservices)
 > - [Microsoft.Maps](#microsoftmaps)
 > - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
@@ -127,13 +136,14 @@ ms.locfileid: "76705481"
 > - [Microsoft.ProjectBabylon](#microsoftprojectbabylon)
 > - [Microsoft.ProjectOxford](#microsoftprojectoxford)
 > - [Microsoft.ProviderHub](#microsoftproviderhub)
+> - [Microsoft.Quantum](#microsoftquantum)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
+> - [Microsoft.RedHatOpenShift](#microsoftredhatopenshift)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.ResourceGraph](#microsoftresourcegraph)
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.SecurityInsights](#microsoftsecurityinsights)
@@ -149,6 +159,7 @@ ms.locfileid: "76705481"
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.SqlVM](#microsoftsqlvm)
 > - [Microsoft.Storage](#microsoftstorage)
+> - [Microsoft.StorageCache](#microsoftstoragecache)
 > - [Microsoft.StorageSync](#microsoftstoragesync)
 > - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
 > - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
@@ -157,13 +168,17 @@ ms.locfileid: "76705481"
 > - [Microsoft.StreamAnalyticsExplorer](#microsoftstreamanalyticsexplorer)
 > - [Microsoft.Subscription](#microsoftsubscription)
 > - [microsoft.support](#microsoftsupport)
+> - [Microsoft.Synapse](#microsoftsynapse)
 > - [Microsoft.TerraformOSS](#microsoftterraformoss)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Microsoft.Token](#microsofttoken)
+> - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
 > - [microsoft.visualstudio](#microsoftvisualstudio)
 > - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [Microsoft.VnfManager](#microsoftvnfmanager)
 > - [Microsoft.VSOnline](#microsoftvsonline)
 > - [Microsoft.Web](#microsoftweb)
+> - [Microsoft.WindowsESU](#microsoftwindowsesu)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
 > - [Microsoft.WorkloadMonitor](#microsoftworkloadmonitor)
 
@@ -213,6 +228,9 @@ ms.locfileid: "76705481"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | サービス (service) | はい | はい |
+
+> [!IMPORTANT]
+> 従量課金 SKU に設定されている API Management サービスは移動できません。
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -283,7 +301,6 @@ ms.locfileid: "76705481"
 > | ------------- | ----------- | ---------- |
 > | hybriddatamanagers | いいえ | いいえ |
 > | postgresinstances | いいえ | いいえ |
-> | sqlbigdataclusters | いいえ | いいえ |
 > | sqlinstances | いいえ | いいえ |
 > | sqlserverregistrations | はい | はい |
 
@@ -342,7 +359,15 @@ ms.locfileid: "76705481"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | blockchainmembers | いいえ | いいえ |
+> | cordamembers | いいえ | いいえ |
 > | watchers | いいえ | いいえ |
+
+## <a name="microsoftblockchaintokens"></a>Microsoft.BlockchainTokens
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | tokenservices | いいえ | いいえ |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
@@ -421,6 +446,13 @@ ms.locfileid: "76705481"
 > [!IMPORTANT]
 > [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
 
+## <a name="microsoftcognition"></a>Microsoft.Cognition
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | syntheticsaccounts | いいえ | いいえ |
+
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
@@ -442,11 +474,13 @@ ms.locfileid: "76705481"
 > | hostgroups | いいえ | いいえ |
 > | hostgroups/hosts | いいえ | いいえ |
 > | images | はい | はい |
-> | proximityplacementgroups | いいえ | いいえ |
+> | proximityplacementgroups | はい | はい |
 > | restorepointcollections | いいえ | いいえ |
+> | sharedvmextensions | いいえ | いいえ |
 > | sharedvmimages | いいえ | いいえ |
 > | sharedvmimages/versions | いいえ | いいえ |
 > | スナップショット | はい | はい |
+> | sshpublickeys | いいえ | いいえ |
 > | virtualmachines | はい | はい |
 > | virtualmachines/extensions | はい | はい |
 > | virtualmachinescalesets | はい | はい |
@@ -503,6 +537,7 @@ ms.locfileid: "76705481"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | registries | はい | はい |
+> | registries / agentpools | いいえ | いいえ |
 > | registries/buildtasks | はい | はい |
 > | registries/replications | はい | はい |
 > | registries/taskruns | はい | はい |
@@ -683,6 +718,7 @@ ms.locfileid: "76705481"
 > | servergroups | いいえ | いいえ |
 > | servers | はい | はい |
 > | serversv2 | はい | はい |
+> | singleservers | はい | はい |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
@@ -695,6 +731,15 @@ ms.locfileid: "76705481"
 > | servicetopologies/services | はい | はい |
 > | servicetopologies/services/serviceunits | はい | はい |
 > | steps | はい | はい |
+
+## <a name="microsoftdesktopvirtualization"></a>Microsoft.DesktopVirtualization
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | applicationgroups | いいえ | いいえ |
+> | hostpools | いいえ | いいえ |
+> | workspaces | いいえ | いいえ |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -732,6 +777,13 @@ ms.locfileid: "76705481"
 > | labs/virtualmachines | はい | いいえ |
 > | schedules | はい | はい |
 
+## <a name="microsoftdigitaltwins"></a>Microsoft.DigitalTwins
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | digitaltwinsinstances | いいえ | いいえ |
+
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
@@ -762,6 +814,10 @@ ms.locfileid: "76705481"
 > | eventSubscriptions | いいえ - 個別に移動できませんが、サブスクライブしたリソースで自動的に移動されます。 | いいえ - 個別に移動できませんが、サブスクライブしたリソースで自動的に移動されます。 |
 > | eventsubscriptions | いいえ - 個別に移動できませんが、サブスクライブしたリソースで自動的に移動されます。 | いいえ - 個別に移動できませんが、サブスクライブしたリソースで自動的に移動されます。 |
 > | extensiontopics | いいえ | いいえ |
+> | partnernamespaces | はい | はい |
+> | partnerregistrations | いいえ | いいえ |
+> | partnertopics | はい | はい |
+> | systemtopics | はい | はい |
 > | topics | はい | はい |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
@@ -770,6 +826,20 @@ ms.locfileid: "76705481"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | clusters | はい | はい |
+> | namespaces | はい | はい |
+
+## <a name="microsoftexperimentation"></a>Microsoft.Experimentation
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | experimentworkspaces | いいえ | いいえ |
+
+## <a name="microsoftfalcon"></a>Microsoft.Falcon
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
 > | namespaces | はい | はい |
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
@@ -784,6 +854,8 @@ ms.locfileid: "76705481"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
+> | automanagedaccounts | いいえ | いいえ |
+> | automanagedvmconfigurationprofiles | いいえ | いいえ |
 > | guestconfigurationassignments | いいえ | いいえ |
 > | software | いいえ | いいえ |
 > | softwareupdateprofile | いいえ | いいえ |
@@ -831,6 +903,14 @@ ms.locfileid: "76705481"
 > | ------------- | ----------- | ---------- |
 > | datamanagers | はい | はい |
 
+## <a name="microsofthydra"></a>Microsoft.Hydra
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | components | いいえ | いいえ |
+> | networkscopes | いいえ | いいえ |
+
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tableFixed"]
@@ -846,15 +926,16 @@ ms.locfileid: "76705481"
 > | actiongroups | はい | はい |
 > | activitylogalerts | いいえ | いいえ |
 > | alertrules | はい | はい |
-> | automatedexportsettings | いいえ | いいえ |
 > | autoscalesettings | はい | はい |
 > | baseline | いいえ | いいえ |
 > | calculatebaseline | いいえ | いいえ |
 > | components | はい | はい |
+> | datacollectionrules | いいえ | いいえ |
 > | diagnosticsettings | いいえ | いいえ |
 > | diagnosticsettingscategories | いいえ | いいえ |
 > | eventtypes | いいえ | いいえ |
 > | extendeddiagnosticsettings | いいえ | いいえ |
+> | guestdiagnosticsettings | いいえ | いいえ |
 > | logdefinitions | いいえ | いいえ |
 > | logs | いいえ | いいえ |
 > | metricalerts | いいえ | いいえ |
@@ -863,6 +944,8 @@ ms.locfileid: "76705481"
 > | metricnamespaces | いいえ | いいえ |
 > | metrics | いいえ | いいえ |
 > | myworkbooks | いいえ | いいえ |
+> | notificationgroups | いいえ | いいえ |
+> | privatelinkscopes | はい | はい |
 > | scheduledqueryrules | はい | はい |
 > | トポロジ | いいえ | いいえ |
 > | トランザクション | いいえ | いいえ |
@@ -894,6 +977,7 @@ ms.locfileid: "76705481"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
+> | hsmpools | いいえ | いいえ |
 > | vaults | はい | はい |
 
 > [!IMPORTANT]
@@ -951,7 +1035,7 @@ ms.locfileid: "76705481"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | commitmentplans | はい | はい |
+> | commitmentplans | いいえ | いいえ |
 > | webservices | はい | いいえ |
 > | workspaces | はい | はい |
 
@@ -994,6 +1078,17 @@ ms.locfileid: "76705481"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | workspaces | いいえ | いいえ |
+> | workspaces / computes | いいえ | いいえ |
+
+## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | applyupdates | いいえ | いいえ |
+> | configurationassignments | いいえ | いいえ |
+> | maintenanceconfigurations | はい | はい |
+> | updates | いいえ | いいえ |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -1002,6 +1097,16 @@ ms.locfileid: "76705481"
 > | ------------- | ----------- | ---------- |
 > | ID | いいえ | いいえ |
 > | userassignedidentities | いいえ | いいえ |
+
+## <a name="microsoftmanagednetwork"></a>Microsoft.ManagedNetwork
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | managednetworks | いいえ | いいえ |
+> | managednetworks / managednetworkgroups | いいえ | いいえ |
+> | managednetworks / managednetworkpeeringpolicies | いいえ | いいえ |
+> | 通知 (notification) | いいえ | いいえ |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
 
@@ -1017,6 +1122,7 @@ ms.locfileid: "76705481"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | accounts | はい | はい |
+> | accounts / privateatlases | はい | はい |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -1048,6 +1154,7 @@ ms.locfileid: "76705481"
 > | ------------- | ----------- | ---------- |
 > | assessmentprojects | はい | はい |
 > | migrateprojects | はい | はい |
+> | movecollections | いいえ | いいえ |
 > | projects | いいえ | いいえ |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
@@ -1078,25 +1185,27 @@ ms.locfileid: "76705481"
 > | dnszones | はい | はい |
 > | expressroutecircuits | いいえ | いいえ |
 > | expressroutegateways | いいえ | いいえ |
+> | firewallpolicies | はい | はい |
 > | frontdoors | いいえ | いいえ |
 > | frontdoorwebapplicationfirewallpolicies | いいえ | いいえ |
+> | ipgroups | はい | はい |
 > | loadbalancers | はい - Basic SKU<br>いいえ - Standard SKU | はい - Basic SKU<br>いいえ - Standard SKU |
 > | localnetworkgateways | はい | はい |
+> | natgateways | はい | はい |
 > | networkexperimentprofiles | はい | はい |
 > | networkintentpolicies | はい | はい |
 > | networkinterfaces | はい | はい |
 > | networkprofiles | いいえ | いいえ |
 > | networksecuritygroups | はい | はい |
-> | networkwatchers | はい | はい |
-> | networkwatchers/connectionmonitors | はい | はい |
-> | networkwatchers/flowlogs | はい | はい |
-> | networkwatchers/lenses | はい | はい |
-> | networkwatchers/pingmeshes | はい | はい |
+> | networkwatchers | はい | いいえ |
+> | networkwatchers/connectionmonitors | はい | いいえ |
+> | networkwatchers/flowlogs | はい | いいえ |
+> | networkwatchers/pingmeshes | はい | いいえ |
 > | p2svpngateways | いいえ | いいえ |
 > | privatednszones | はい | はい |
 > | privatednszones/virtualnetworklinks | はい | はい |
 > | privateendpointredirectmaps | いいえ | いいえ |
-> | privateendpoints | いいえ | いいえ |
+> | privateendpoints | はい | はい |
 > | privatelinkservices | いいえ | いいえ |
 > | publicipaddresses | はい - Basic SKU<br>いいえ - Standard SKU | はい - Basic SKU<br>いいえ - Standard SKU |
 > | publicipprefixes | はい | はい |
@@ -1138,6 +1247,7 @@ ms.locfileid: "76705481"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
+> | clusters | いいえ | いいえ |
 > | storageinsightconfigs | いいえ | いいえ |
 > | workspaces | はい | はい |
 
@@ -1221,6 +1331,13 @@ ms.locfileid: "76705481"
 > | ------------- | ----------- | ---------- |
 > | rollouts | いいえ | いいえ |
 
+## <a name="microsoftquantum"></a>Microsoft.Quantum
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | workspaces | いいえ | いいえ |
+
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
 > [!div class="mx-tableFixed"]
@@ -1232,6 +1349,13 @@ ms.locfileid: "76705481"
 
 > [!IMPORTANT]
 > [Recovery Services の移動のガイダンス](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)に関する記事をご覧ください。
+
+## <a name="microsoftredhatopenshift"></a>Microsoft.RedHatOpenShift
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | openshiftclusters | いいえ | いいえ |
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
@@ -1274,13 +1398,6 @@ ms.locfileid: "76705481"
 > | ------------- | ----------- | ---------- |
 > | applications | はい | いいえ |
 
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | Resource group | サブスクリプション |
-> | ------------- | ----------- | ---------- |
-> | jobcollections | はい | はい |
-
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!div class="mx-tableFixed"]
@@ -1304,7 +1421,6 @@ ms.locfileid: "76705481"
 > | complianceresults | いいえ | いいえ |
 > | compliances | いいえ | いいえ |
 > | datacollectionagents | いいえ | いいえ |
-> | datacollectionresults | いいえ | いいえ |
 > | devicesecuritygroups | いいえ | いいえ |
 > | informationprotectionpolicies | いいえ | いいえ |
 > | iotsecuritysolutions | はい | はい |
@@ -1321,8 +1437,10 @@ ms.locfileid: "76705481"
 > | bookmarks | いいえ | いいえ |
 > | cases | いいえ | いいえ |
 > | dataconnectors | いいえ | いいえ |
+> | dataconnectorscheckrequirements | いいえ | いいえ |
 > | entities | いいえ | いいえ |
 > | entityqueries | いいえ | いいえ |
+> | incidents | いいえ | いいえ |
 > | officeconsents | いいえ | いいえ |
 > | settings | いいえ | いいえ |
 
@@ -1352,6 +1470,7 @@ ms.locfileid: "76705481"
 > | containergroups | いいえ | いいえ |
 > | containergroupsets | いいえ | いいえ |
 > | edgeclusters | いいえ | いいえ |
+> | managedclusters | いいえ | いいえ |
 > | networks | いいえ | いいえ |
 > | secretstores | いいえ | いいえ |
 > | volumes | いいえ | いいえ |
@@ -1362,6 +1481,7 @@ ms.locfileid: "76705481"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | applications | はい | はい |
+> | containergroups | いいえ | いいえ |
 > | gateways | はい | はい |
 > | networks | はい | はい |
 > | secrets | はい | はい |
@@ -1408,6 +1528,8 @@ ms.locfileid: "76705481"
 > | servers | はい | はい |
 > | servers/databases | はい | はい |
 > | servers/elasticpools | はい | はい |
+> | servers/jobaccounts | はい | はい |
+> | servers/jobagents | はい | はい |
 > | virtualclusters | はい | はい |
 
 > [!IMPORTANT]
@@ -1434,6 +1556,13 @@ ms.locfileid: "76705481"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | storageaccounts | はい | はい |
+
+## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | caches | いいえ | いいえ |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
@@ -1496,8 +1625,16 @@ ms.locfileid: "76705481"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | createsupportticket | いいえ | いいえ |
 > | supporttickets | いいえ | いいえ |
+
+## <a name="microsoftsynapse"></a>Microsoft.Synapse
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | workspaces | いいえ | いいえ |
+> | workspaces / bigdatapools | いいえ | いいえ |
+> | workspaces / sqlpools | いいえ | いいえ |
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
 
@@ -1523,14 +1660,21 @@ ms.locfileid: "76705481"
 > | ------------- | ----------- | ---------- |
 > | stores | はい | はい |
 
+## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | imagetemplates | いいえ | いいえ |
+
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | account | いいえ | いいえ |
-> | account / extension | いいえ | いいえ |
-> | account/project | いいえ | いいえ |
+> | account / extension | はい | はい |
+> | account/project | はい | はい |
 
 > [!IMPORTANT]
 > Azure DevOps のサブスクリプションを変更するには、[change the Azure subscription used for billing (課金に使用される Azure サブスクリプションの変更)](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json) に関する記事をご覧ください。
@@ -1543,6 +1687,14 @@ ms.locfileid: "76705481"
 > | dedicatedcloudnodes | いいえ | いいえ |
 > | dedicatedcloudservices | いいえ | いいえ |
 > | virtualmachines | いいえ | いいえ |
+
+## <a name="microsoftvnfmanager"></a>Microsoft.VnfManager
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | devices | いいえ | いいえ |
+> | vnfs | いいえ | いいえ |
 
 ## <a name="microsoftvsonline"></a>Microsoft.VSOnline
 
@@ -1562,6 +1714,7 @@ ms.locfileid: "76705481"
 > | connections | はい | はい |
 > | customapis | はい | はい |
 > | hostingenvironments | いいえ | いいえ |
+> | kubeenvironments | はい | はい |
 > | serverfarms | はい | はい |
 > | sites | はい | はい |
 > | sites/premieraddons | はい | はい |
@@ -1570,6 +1723,13 @@ ms.locfileid: "76705481"
 
 > [!IMPORTANT]
 > [App Service move guidance (App Service の移動のガイダンス)](./move-limitations/app-service-move-limitations.md) に関する記事をご覧ください。
+
+## <a name="microsoftwindowsesu"></a>Microsoft.WindowsESU
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | サブスクリプション |
+> | ------------- | ----------- | ---------- |
+> | multipleactivationkeys | いいえ | いいえ |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 

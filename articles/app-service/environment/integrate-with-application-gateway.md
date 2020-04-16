@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dfb6d72b3f8f61e1350101173ecec6134a614edf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4838597c50898748eb4b33e81ff22eaeea37b30
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687152"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476896"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Environment を Azure Application Gateway と統合する #
 
@@ -20,7 +20,7 @@ ms.locfileid: "74687152"
 
 Web アプリケーション ファイアウォール は、着信する Web トラフィックを検査して、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、アプリケーション DDoS、およびその他の攻撃をブロックすることにより、Web アプリケーションのセキュリティを確保するのに役立ちます。 さらに、データ損失防止 (DLP) のためにバックエンド Web サーバーからの応答を検査します。 Azure Marketplace から WAF デバイスを取得することも、[Azure Application Gateway][appgw] を使用することもできます。
 
-Azure Application Gateway は、レイヤー 7 負荷分散、SSL オフロード、および Web アプリケーション ファイアウォール (WAF) 保護を提供する仮想アプライアンスです。 これは、パブリック IP アドレスでリッスンし、トラフィックをアプリケーション エンドポイントにルーティングします。 以下では、WAF で構成されたアプリケーション ゲートウェイを ILB App Service Environment のアプリと統合する方法について説明します。  
+Azure Application Gateway は、レイヤー 7 負荷分散、TLS/SSL オフロード、および Web アプリケーション ファイアウォール (WAF) 保護を提供する仮想アプライアンスです。 これは、パブリック IP アドレスでリッスンし、トラフィックをアプリケーション エンドポイントにルーティングします。 以下では、WAF で構成されたアプリケーション ゲートウェイを ILB App Service Environment のアプリと統合する方法について説明します。  
 
 アプリケーション ゲートウェイと ILB App Service Environment の統合は、アプリ レベルで行われます。 アプリケーション ゲートウェイを ILB App Service Environment で構成する場合、ILB App Service Environment の特定のアプリに対して行うことになります。 この手法を使うと、単一の ILB App Service Environment で、セキュリティ保護されたマルチテナント アプリケーションをホストできます。  
 

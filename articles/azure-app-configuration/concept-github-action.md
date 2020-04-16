@@ -1,26 +1,26 @@
 ---
-title: Azure App Configuration Sync で GitHub Actions を使用する
-description: 定義されたアクションが GitHub リポジトリで実行されたときに、GitHub Actions を使用して App Configuration インスタンスに対する更新をトリガーします
+title: GitHub リポジトリを App Configuration と同期する
+description: GitHub リポジトリを更新するときに、GitHub Actions を使用して App Configuration インスタンスを自動的に更新します。
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 9d60f1885a85fd7d45090f1cb4905a3d95d9d1d6
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 602ccddf97938022df3c5903b573608558fe5d35
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523715"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585480"
 ---
-# <a name="sync-your-app-configuration-instance-using-github-actions"></a>GitHub Actions を使用して App Configuration インスタンスを同期する
-Azure App Configuration は GitHub Actions を使用して、GitHub リポジトリで実行されたアクションに基づいて App Configuration インスタンスの更新をトリガーします。 GitHub ワークフローを利用して構成の更新をトリガーし、アプリ コードの更新に使用されているのと同じワークフローにこれらの更新を統合することができます。
+# <a name="sync-your-github-repository-to-app-configuration"></a>GitHub リポジトリを App Configuration と同期する
 
-GitHub Actions の[ワークフロー](https://help.github.com/articles/about-github-actions#workflow)は、GitHub リポジトリの自動化されたプロセスを定義します。 このプロセスは、GitHub プロジェクトを構築してデプロイする方法を GitHub に指示します。 Azure App Configuration には、ソース リポジトリに変更が加えられたときに App Configuration インスタンスの更新を有効にするための *Azure App Configuration Sync* アクションが用意されています。 
+既存のソース管理手法を引き続き使用するチームは、GitHub Actions を使用して、GitHub リポジトリを App Configuration ストアと自動的に同期させることができます。 これにより、通常どおり構成ファイルに変更を加えることが可能になる一方で、次のような App Configuration の利点を得ることができます。 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;•   コード外での一元化された構成 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;•   アプリ全体を再デプロイせずに構成を更新する <br>
+&nbsp;&nbsp;&nbsp;&nbsp;•   Azure App Service や Functions などのサービスとの統合。 
 
-リポジトリの `/.github/workflows/` パスにある YAML (.yml) ファイルによってワークフローが定義されます。 この定義には、ワークフローの手順とパラメーターが含まれています。
-
-GitHub イベント (リポジトリへのプッシュなど) によって、GitHub アクション ワークフローをトリガーできます。  *Azure App Configuration Sync* アクションを使用すると、指定した GitHub アクションが発生したときに App Configuration インスタンスの更新をトリガーできます。 アプリ コードと同様に、アプリ構成ファイルをプッシュ、レビュー、または分岐するときに構成の更新をトリガーできます。
+GitHub Actions の[ワークフロー](https://help.github.com/articles/about-github-actions#workflow)は、GitHub リポジトリの自動化されたプロセスを定義します。 *Azure App Configuration Sync* アクションは、ソース リポジトリに変更が加えられたときに App Configuration インスタンスの更新をトリガーします。 リポジトリの `/.github/workflows/` パスにある YAML (.yml) ファイルを使用して、ステップとパラメーターを定義します。 アプリ コードと同様に、アプリ構成ファイルをプッシュ、レビュー、または分岐するときに構成の更新をトリガーできます。
 
 GitHub の[ドキュメント](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow)では、GitHub ワークフローとアクションについて詳細に説明されています。 
 
@@ -130,7 +130,7 @@ jobs:
 ## <a name="use-max-depth-to-limit-github-action"></a>最大深度を使用して GitHub アクションを制限する
 入れ子になった JSON 属性の既定の動作では、オブジェクト全体がフラット化されます。  次の JSON は、このキーと値のペアを定義しています。
 
-| Key | Value |
+| Key | 値 |
 | --- | --- |
 | Object:Inner:InnerKey | InnerValue |
 
@@ -173,7 +173,7 @@ jobs:
 
 depth を 2 に指定した場合、上記の例では次のキーと値のペアが返されます。
 
-| Key | Value |
+| Key | 値 |
 | --- | --- |
 | Object:Inner | {"InnerKey":"InnerValue"} |
 
@@ -184,7 +184,7 @@ depth を 2 に指定した場合、上記の例では次のキーと値のペ�
 > 入力 ID では大文字と小文字は区別されません。
 
 
-| 入力名 | 必須 | Value |
+| 入力名 | 必須 | 値 |
 |----|----|----|
 | configurationFile | はい | リポジトリ内の構成ファイルへの相対パス。  glob パターンがサポートされており、複数のファイルを含めることができます。 |
 | format | はい | 構成ファイルのファイル形式。  有効な形式:JSON、YAML、properties。 |

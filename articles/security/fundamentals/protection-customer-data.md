@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 741cbc82f2ed3ffffb553b146d981b4e35a273f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726678"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811433"
 ---
 # <a name="azure-customer-data-protection"></a>Azure での顧客データの保護   
 Microsoft の運用担当者が顧客データに定期的にアクセスする操作は、既定で拒否される設定になっています。 顧客データへのアクセス権を付与する場合、リーダーの承認が必要になり、アクセスは慎重に管理されて、ログに記録されます。 アクセス制御の要件は、次のような Azure セキュリティ ポリシーによって確立されています。
@@ -45,7 +45,7 @@ Azure では、既定およびお客様のオプションの両方で、堅牢�
 - お客様とクラウド間での通信
 - Azure システムとデータセンター間の内部的な通信
 
-**暗号化**:ストレージ内のデータおよび転送時のデータの暗号化は、データの機密性および整合性を保証するためのベスト プラクティスとして、お客様がデプロイできます。 お客様は、SSL を使用してインターネットからの通信と Azure がホストする VM 間の通信でさえも保護するように、Azure クラウド サービスを簡単に構成できます。
+**暗号化**:ストレージ内のデータおよび転送時のデータの暗号化は、データの機密性および整合性を保証するためのベスト プラクティスとして、お客様がデプロイできます。 お客様は、TLS を使用してインターネットからの通信と Azure がホストする VM 間の通信でさえも保護するように、Azure クラウド サービスを簡単に構成できます。
 
 **[Data redundancy]\(データの冗長性\)** :データセンターへのサイバー攻撃や物理的破損がある場合に、Microsoft はデータが確実に保護されることを支援します。 お客様には、次の選択肢があります。
 

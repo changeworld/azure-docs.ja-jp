@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 9252e3e41d0c639231a2abe20202499c6b3ee32a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5820778d46f5701b82bb289192350a9e13739d37
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444853"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619444"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK:ダウンロードおよびリリース ノート
 
@@ -45,6 +45,10 @@ ms.locfileid: "75444853"
 ## <a name="release-notes"></a>リリース ノート
 
 ### <a name="v2-builds"></a>v2 のビルド
+
+### <a name="230"></a><a name="2.3.0"/>2.3.0
+* 新しいメソッド `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` と対応するパブリック インターフェイス `ICheckpointPartitionProcessorFactory` が追加されました。 これにより、`IPartitionProcessor` インターフェイスの実装に組み込みのチェックポイント メカニズムを使用できるようになります。 新しいファクトリは既存の `IPartitionProcessorFactory` に似ていますが、`Create` メソッドは `ILeaseCheckpointer` パラメーターも受け取る点が異なります。
+* 同じ `ChangeFeedProcessorBuilder` インスタンスに使用できるのは、`ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` または `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` という 2 つのメソッドのいずれかのみです。
 
 ### <a name="228"></a><a name="2.2.8"/>2.2.8
 * 安定性と診断能力の向上:
@@ -182,6 +186,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.3.0](#2.3.0) |2020 年 4 月 2 日 |--- |
 | [2.2.8](#2.2.8) |2019 年 10 月 28 日 |--- |
 | [2.2.7](#2.2.7) |2019 年 5 月 14 日 |--- |
 | [2.2.6](#2.2.6) |2019 年 1 月 29 日 |--- |

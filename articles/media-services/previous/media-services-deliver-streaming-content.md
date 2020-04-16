@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b1d0c070a9196eaa9a2706a607baa9a2926e2db4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 615a6afb0f7a3e133603db10e7c79add3322070c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67051750"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476691"
 ---
 # <a name="publish-media-services-content-using-net"></a>.NET を使用して Media Services コンテンツを発行する  
 > [!div class="op_single_selector"]
@@ -108,7 +108,7 @@ ms.locfileid: "67051750"
 
 
 > [!NOTE]
-> SSL 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 現在のところ、AMS ではカスタム ドメインを使用した SSL はサポートされていません。
+> TLS 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 現在のところ、AMS ではカスタム ドメインを使用した TLS はサポートされていません。
 > 
 > 
 

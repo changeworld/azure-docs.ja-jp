@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d40f5db65ce9ca90ae978bac4491bdebccc2a328
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236171"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811719"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure で App Service プランを管理する
 
@@ -61,7 +61,7 @@ ms.locfileid: "79236171"
 4. プランを作成する場合は、新しいプランの価格レベルを選択できます。 **[価格レベル]** で、既存のレベルを選択して変更します。 
    
    > [!IMPORTANT]
-   > 上位レベルのプランから下位レベルのプランにアプリを移動する (たとえば **D1** から **F1** に移動する) 場合、アプリで、ターゲット プランの特定の機能が失われる可能性があります。 たとえば、アプリで SSL 証明書を使っている場合は、次のようなエラー メッセージが表示されることがあります。
+   > 上位レベルのプランから下位レベルのプランにアプリを移動する (たとえば **D1** から **F1** に移動する) 場合、アプリで、ターゲット プランの特定の機能が失われる可能性があります。 たとえば、アプリで TLS/SSL 証明書を使っている場合は、次のようなエラー メッセージが表示されることがあります。
    >
    > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
 

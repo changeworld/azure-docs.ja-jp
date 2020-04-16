@@ -4,12 +4,12 @@ description: Azure Blockchain Service のデータ アクセスとセキュリ�
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 989d9f2afad30517a85185878d694c0b6640e987
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982222"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879600"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure Blockchain Service のセキュリティ
 
@@ -27,7 +27,7 @@ Azure Blockchain Service のリソースは、プライベート仮想ネット�
 
 ## <a name="authentication"></a>認証
 
-トランザクションは、RPC エンドポイント経由でブロックチェーン ノードに送信できます。 クライアントは、ユーザーの認証を処理し SSL 経由でデータを暗号化するリバース プロキシ サーバーを使用して、トランザクション ノードを通信します。
+トランザクションは、RPC エンドポイント経由でブロックチェーン ノードに送信できます。 クライアントは、ユーザーの認証を処理し、TLS 経由でデータを暗号化するリバース プロキシ サーバーを使用して、トランザクション ノードを通信します。
 
 ![認証のダイアグラム](./media/data-security/authentication.png)
 

@@ -4,12 +4,12 @@ description: Azure Service Fabric アプリケーションのリバース プロ
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 131440036896d323cbf821d7a220328456e1db36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645448"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476672"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric でリバース プロキシを設定して構成する
 オプションの Azure Service Fabric サービスであるリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントのある他のサービスを検出してそのサービスと通信するのに役立ちます。 詳しくは、「[Azure Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)」をご覧ください。 この記事では、クラスターでリバース プロキシを設定して構成する方法を示します。 
@@ -23,7 +23,7 @@ Azure portal には、新しい Service Fabric クラスターを作成すると
 1. **[ステップ 2:クラスター構成]** で、 **[ノード タイプの構成]** の **[リバース プロキシを有効にする]** をオンにします。
 
    ![ポータルでリバース プロキシを有効にする](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. (省略可能) セキュリティ保護されたリバース プロキシを構成するには、SSL 証明書を構成する必要があります。 **[ステップ 3:セキュリティ]** で、 **[クラスターのセキュリティ設定の構成]** の **[構成の種類]** で **[カスタム]** を選択します。 その後、 **[リバース プロキシの SSL 証明書]** で **[リバース プロキシの SSL 証明書を含める]** を選択し、証明書の詳細を入力します。
+2. (省略可能) セキュリティ保護されたリバース プロキシを構成するには、TLS/SSL 証明書を構成する必要があります。 **[ステップ 3:セキュリティ]** で、 **[クラスターのセキュリティ設定の構成]** の **[構成の種類]** で **[カスタム]** を選択します。 その後、 **[リバース プロキシの SSL 証明書]** で **[リバース プロキシの SSL 証明書を含める]** を選択し、証明書の詳細を入力します。
 
    ![ポータルでセキュリティ保護されたリバース プロキシを構成する](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -74,7 +74,7 @@ Resource Manager テンプレートを用意した後、次の手順でリバー
         ...
     }
     ```
-3. リバース プロキシのポートで SSL 証明書を構成するには、**Microsoft.ServiceFabric/clusters** の[リソースの種類セクション](../resource-group-authoring-templates.md)で ***reverseProxyCertificate*** プロパティに証明書を追加します。
+3. リバース プロキシのポートで TLS/SSL 証明書を構成するには、**Microsoft.ServiceFabric/clusters** の[リソースの種類セクション](../resource-group-authoring-templates.md)で ***reverseProxyCertificate*** プロパティに証明書を追加します。
 
     ```json
     {

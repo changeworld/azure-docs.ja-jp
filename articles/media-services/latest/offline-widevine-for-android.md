@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 04/07/2020
 ms.author: willzhan
-ms.openlocfilehash: 64cd93acc78f4cb5b7ebc4266e7359aec662890c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295415"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887199"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Media Services v3 を使用した Android 用のオフラインの Widevine ストリーミング
 
@@ -153,65 +153,13 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
     - 証明書には信頼された CA が必要であり、開発用の自己署名証明書は機能しません
     - 証明書には、Web サーバーまたはゲートウェイの DNS 名と一致する CN が必要です。
 
-## <a name="frequently-asked-questions"></a>よく寄せられる質問
+## <a name="faqs"></a>FAQ
 
-### <a name="question"></a>Question
-
-一部のクライアント/ユーザーには永続ライセンス (オフライン有効) を提供し、他のクライアント/ユーザーには非永続ライセンス (オフライン無効) を提供するにはどうすればよいですか。 コンテンツを複製し、別のコンテンツ キーを使う必要がありますか。
-
-### <a name="answer"></a>Answer
-Media Services v3 では 1 つの資産が複数の StreamingLocator を持つことができます。 次のように指定できます。
-
-1.    license_type = "persistent" である 1 つの ContentKeyPolicy、"persistent" を要求する ContentKeyPolicyRestriction、およびその StreamingLocator。
-2.    license_type="nonpersistent" である 1 つの ContentKeyPolicy、"nonpersistent" を要求する ContentKeyPolicyRestriction、およびその StreamingLocator。
-3.    2 つの StreamingLocator では ContentKey が異なります。
-
-カスタム STS のビジネス ロジックに応じて、さまざまな要求が JWT トークンで発行されます。 トークンを使用して、対応するライセンスのみ取得でき、対応する URL のみを再生できます。
-
-### <a name="question"></a>Question
-
-Widevine のセキュリティ レベルについて、Google の「Widevine DRM Architecture Overview」(Widevine DRM アーキテクチャの概要) というドキュメントでは、3 つの異なるセキュリティ レベルが定義されています。 一方、[Widevine ライセンス テンプレートに関する Azure Media Services のドキュメント](widevine-license-template-overview.md)では、5 つの異なるセキュリティ レベルが示されています。 2 つの異なるセキュリティ レベル セットの間にはどのような関係または対応がありますか。
-
-### <a name="answer"></a>Answer
-
-Google の「Widevine DRM Architecture Overview」(Widevine DRM アーキテクチャの概要) というドキュメントでは、次の 3 つのセキュリティ レベルが定義されています。
-
-1.  セキュリティ レベル 1:すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。
-2.  セキュリティ レベル 2:暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。
-3.  セキュリティ レベル 3: デバイス上に TEE はありません。 ホスト オペレーティング システム上の暗号化に関する情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 の実装は、ハードウェア暗号化エンジンを含む場合がありますが、セキュリティのためではなく、パフォーマンス向上のためだけです。
-
-同時に、[Widevine ライセンス テンプレートに関する Azure Media Services のドキュメント](widevine-license-template-overview.md)では、content_key_specs の security_level プロパティは、次の 5 つの異なる値を持つことができるようになっています (再生のクライアント堅牢性の要件)。
-
-1.  ソフトウェアベースのホワイトボックス暗号化が必須です。
-2.  ソフトウェア暗号化と難読化デコーダーが必須です。
-3.  キー マテリアルと暗号化の操作を、ハードウェアを基盤にした TEE で実行する必要があります。
-4.  コンテンツの暗号化とデコードを、ハードウェアを基盤にした TEE で実行する必要があります。
-5.  暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした TEE で実行する必要があります。
-
-両方のセキュリティ レベルは、Google Widevine によって定義されています。 違いは、その使用レベル (アーキテクチャ レベルか API レベルか) にあります。 Widevine API では、5 つのセキュリティ レベルが使われています。 security_level を含む content_key_specs オブジェクトは、Azure Media Services Widevine ライセンス サービスにより、逆シリアル化されて Widevine グローバル配信サービスに渡されます。 次の表では、2 つのセキュリティ レベル セットの間の対応を示します。
-
-| **Widevine アーキテクチャで定義されているセキュリティ レベル** |**Widevine API で使われるセキュリティ レベル**|
-|---|---| 
-| **セキュリティ レベル 1**:すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。|**security_level=5**:暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした TEE で実行する必要があります。<br/><br/>**security_level=4**:コンテンツの暗号化とデコードを、ハードウェアを基盤にした TEE で実行する必要があります。|
-**セキュリティ レベル 2**:暗号化は TEE 内で実行します (ビデオ処理は実行されません)。解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。| **security_level=3**:キー マテリアルと暗号化の操作を、ハードウェアを基盤にした TEE で実行する必要があります。 |
-| **セキュリティ レベル 3**:デバイス上に TEE はありません。 ホスト オペレーティング システム上の暗号化に関する情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 の実装は、ハードウェア暗号化エンジンを含む場合がありますが、セキュリティのためではなく、パフォーマンス向上のためだけです。 | **security_level=2**:ソフトウェア暗号化と難読化デコーダーが必須です。<br/><br/>**security_level=1**:ソフトウェアベースのホワイトボックス暗号化が必須です。|
-
-### <a name="question"></a>Question
-
-コンテンツのダウンロードに時間がかかるのはなぜですか。
-
-### <a name="answer"></a>Answer
-
-ダウンロードの速度を上げるには 2 つの方法があります。
-
-1.  エンド ユーザーがコンテンツ ダウンロードの起点/ストリーミング エンドポイントではなく CDN にヒットする可能性が高くなるように、CDN を有効にします。 ユーザーがストリーミング エンドポイントにヒットした場合、各 HLS セグメントまたは DASH フラグメントは、動的にパッケージ化および暗号化されます。 この待機時間は各セグメント/フラグメントについてミリ秒の単位ですが、ビデオの長さが 1 時間にもなると、待機時間が蓄積して長いダウンロードの原因になる可能性があります。
-2.  エンド ユーザーが、すべてのコンテンツではなく、ビデオ品質レイヤーとオーディオ トラックを選んでダウンロードできるようにします。 オフライン モードでは、すべての品質レイヤーをダウンロードしても意味がありません。 これを実現する方法は 2 つあります。
-    1.  クライアントによる制御: ダウンロードするビデオ品質レイヤーとオーディオ トラックを、プレーヤー アプリが自動的に選ぶか、またはユーザーが選びます。
-    2.  サービスによる制御: Azure Media Services の動的マニフェスト機能を使って (グローバル) フィルターを作成し、HLS 再生リストまたは DASH MPD を、単一のビデオ品質レイヤーと選ばれたオーディオ トラックに制限することができます。 その後エンド ユーザーに提示されるダウンロード URL には、このフィルターが含まれます。
+詳細については、[Widevine についてよく寄せられる質問](frequently-asked-questions.md#widevine-streaming-for-android)を参照してください。
 
 ## <a name="additional-notes"></a>その他のメモ
 
-* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
+Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="summary"></a>まとめ
 

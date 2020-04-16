@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 49959ff12744f28e930959c43a449800c76818f5
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 76ef9f92b6b6633982242ccafab1950e0ef5f410
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969792"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582798"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -89,7 +89,7 @@ RTMP ライブ ストリーミングで次の新しいおすすめパートナ�
 ### <a name="file-encoding-enhancements"></a>ファイル エンコードの機能強化
 
 - 新しいコンテンツに対応したエンコードのプリセットが使用できるようになりました。 これは、コンテンツに対応したエンコードを使用して、GOP がアラインメントされた MP4 セットを生成します。 入力コンテンツが指定されると、サービスは入力コンテンツの最初の軽量分析を実行します。 その結果を使用して、アダプティブ ストリーミングによる配信に最適なレイヤー数、適切なビット レート、解像度の設定を決定します。 このプリセットは、複雑さが低から中程度のビデオに特に有効です。つまり、ビット レートは低くなりますが、視聴者には快適なエクスペリエンスを提供できる品質を備えた出力ファイルということになります。 出力には、ビデオとオーディオがインターリーブされた MP4 ファイルが含まれるようになります。 詳細については、[オープン API 仕様](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)を参照してください。
-- Media Encoder Standard のサイズ変更機能の性能とマルチスレッドが改善されました。 特定の条件下では、お客様は 5% から 40% の VOD エンコードで性能向上をご体験いただけます。 複雑性が低いコンテンツが複数のビットレートにエンコードされるとき、最も高い性能アップを確認できます。 
+- Standard Encoder のサイズ変更機能の性能とマルチスレッドが改善されました。 特定の条件下では、お客様は 5% から 40% の VOD エンコードで性能向上をご体験いただけます。 複雑性が低いコンテンツが複数のビットレートにエンコードされるとき、最も高い性能アップを確認できます。 
 - 標準のエンコードでは、時間基準の GOP 設定の使用時、VOD エンコード中、可変フレーム レート (VFR) コンテンツで通常の GOP ペースが維持されるようになりました。  つまり、たとえば、15 fps から 30 fps の範囲で変化する混在フレーム レート コンテンツを送信すると、アダプティブ ビットレート ストリーミング MP4 ファイルへの出力に対して通常の GOP 距離が計算されます。 これにより HLS または DASH 経由で配信するときにトラック間で途切れなく切り替える機能が向上します。 
 -  可変フレーム レート (VFR) ソース コンテンツの AV 同期の向上
 

@@ -11,14 +11,15 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f62be94c901b383e34608508baa87ea37c893af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d175a2cea685585da3767acdb0ab77a99c541d09
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79237047"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873873"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK で機械学習パイプラインを作成して管理する
+
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用して、[機械学習パイプライン](concept-ml-pipelines.md)を作成、公開、実行、追跡する方法について説明します。  **ML パイプライン**を使用して、さまざまな ML フェーズをつなぎ合わせるワークフローを作成した後、後でアクセスするか、または他のユーザーと共有するためにそのパイプラインを Azure Machine Learning ワークスペースに発行します。  ML パイプラインは、さまざまなコンピューティングを使用し、ステップを再実行する代わりに再利用し、ML ワークフローを他のユーザーと共有する、バッチ スコアリングのシナリオに最適です。
@@ -48,14 +49,13 @@ from azureml.core import Workspace, Datastore
 ws = Workspace.from_config()
 ```
 
-
 ## <a name="set-up-machine-learning-resources"></a>機械学習リソースをセットアップする
 
 ML パイプラインの実行に必要なリソースを作成します。
 
 * パイプラインの手順で必要なデータへのアクセスに使用されるデータストアを設定します。
 
-* データストアに存在するデータまたはデータストアでアクセス可能なデータを指し示すように、`DataReference` オブジェクトを構成します。
+* データストアに存在する永続データまたはデータストアでアクセス可能な永続データを指し示すように、`Dataset` オブジェクトを構成します。 パイプライン ステップ間で渡される一時データの `PipelineData` オブジェクトを構成します。 
 
 * パイプラインの手順が実行される[コンピューティング先](concept-azure-machine-learning-architecture.md#compute-targets)を設定します。
 
@@ -90,17 +90,18 @@ def_blob_store.upload_files(
 
 パイプラインをデータに接続する方法の詳細については、[データへのアクセス方法](how-to-access-data.md)および[データセットの登録方法](how-to-create-register-datasets.md)に関する記事を参照してください。 
 
-### <a name="configure-data-reference"></a>データ参照を構成する
+### <a name="configure-data-using-dataset-and-pipelinedata-objects"></a>`Dataset` オブジェクトと `PipelineData` オブジェクトを使用してデータを構成する
 
-パイプラインでステップへの入力として参照できるデータ ソースを作成しました。 パイプライン内のデータ ソースは [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) オブジェクトによって表されます。 `DataReference` オブジェクトでは、データストアに存在するデータまたはデータストアからアクセス可能なデータが指し示されています。
+パイプラインでステップへの入力として参照できるデータ ソースを作成しました。 パイプラインにデータを提供する方法には、[データセット](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.Dataset) オブジェクトを使用することをお勧めします。 `Dataset` オブジェクトでは、データストアに存在するデータ、データストアからアクセス可能なデータ、または Web URL でアクセス可能なデータが指し示されています。 `Dataset` クラスは抽象クラスであるため、`FileDataset` (1 つ以上のファイルを参照)、または区切られたデータ列を含む 1 つ以上のファイルによって作成された `TabularDataset` のいずれかのインスタンスを作成します。
+
+`Dataset` オブジェクトでは、バージョン管理、差分、概要の統計情報がサポートされます。 `Dataset` は (Python ジェネレーターと同様に) 遅延評価され、分割またはフィルター処理によってそれらを効率的にサブセット化できます。 
+
+`Dataset` は、[from_file](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) や [from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) などのメソッドを使用して作成します。
 
 ```python
-from azureml.data.data_reference import DataReference
+from azureml.core import Dataset
 
-blob_input_data = DataReference(
-    datastore=def_blob_store,
-    data_reference_name="test_data",
-    path_on_datastore="20newsgroups/20news.pkl")
+iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 'train-dataset/tabular/iris.csv')])
 ```
 
 中間データ (またはステップの出力) は、[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) オブジェクトによって表されます。 `output_data1` は、ステップの出力として生成され、後続の 1 つまたは複数のステップの入力として使われます。 `PipelineData` では、ステップの間にデータの依存関係が導入され、パイプライン内に暗黙的な実行順序が作成されます。 このオブジェクトは、後でパイプラインのステップを作成するときに使用されます。
@@ -114,25 +115,11 @@ output_data1 = PipelineData(
     output_name="output_data1")
 ```
 
-### <a name="configure-data-using-datasets"></a>データセットを使用してデータを構成する
+データセットとパイプライン データを操作するための詳細とサンプル コードについては、「[ML パイプラインのステップ間でのデータの移動 (Python)](how-to-move-data-in-out-of-pipelines.md)」を参照してください。
 
-ファイルまたはファイルのセットに格納されている表形式データがある場合、[TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) は `DataReference` に代わる効率的な方法です。 `TabularDataset` オブジェクトでは、バージョン管理、差分、概要の統計情報がサポートされます。 `TabularDataset` は (Python ジェネレーターと同様に) 遅延評価され、分割またはフィルター処理によってそれらを効率的にサブセット化できます。 `FileDataset` クラスでは、1 つ以上のファイルを表し、同じように遅延評価されるデータが提供されます。 
+## <a name="set-up-a-compute-target"></a>コンピューティング ターゲットを設定する
 
-`TabularDataset` は、[from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) などのメソッドを使用して作成します。
-
-```python
-from azureml.data import TabularDataset
-
-iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 'train-dataset/tabular/iris.csv')])
-```
-
- `FileDataset` は、[from_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) を使用して作成します。
-
- データセットの使用について詳しくは、[データセットの追加と登録](how-to-create-register-datasets.md)に関するページまたは[このサンプル ノートブック](https://aka.ms/train-datasets)をご覧ください。
-
-## <a name="set-up-compute-target"></a>コンピューティング ターゲットを設定する
-
-Azure Machine Learning での __コンピューティング__ (または __コンピューティング先__) という用語は、機械学習パイプラインで計算ステップを実行するマシンまたはクラスターのことです。   コンピューティング先の完全な一覧、およびコンピューティング先を作成してワークスペースにアタッチする方法については、[モデルのトレーニング用のコンピューティング先](how-to-set-up-training-targets.md)に関する記事をご覧ください。  コンピューティング先を作成またはアタッチするプロセスは、モデルをトレーニングするときも、パイプラインのステップを実行するときも同じです。 コンピューティング先を作成してアタッチした後、[パイプラインのステップ](#steps)では `ComputeTarget` オブジェクトを使用します。
+Azure Machine Learning での "__コンピューティング__" (または "__コンピューティング先__") という用語は、機械学習パイプラインで計算ステップを実行するマシンまたはクラスターのことです。   コンピューティング先の完全な一覧、およびコンピューティング先を作成してワークスペースにアタッチする方法については、[モデルのトレーニング用のコンピューティング先](how-to-set-up-training-targets.md)に関する記事をご覧ください。  コンピューティング先を作成またはアタッチするプロセスは、モデルをトレーニングするときも、パイプラインのステップを実行するときも同じです。 コンピューティング先を作成してアタッチした後、[パイプラインのステップ](#steps)では `ComputeTarget` オブジェクトを使用します。
 
 > [!IMPORTANT]
 > コンピューティング先での管理操作の実行は、リモート ジョブの内部からはサポートされていません。 機械学習パイプラインはリモート ジョブとして送信されるため、パイプラインの内部からはコンピューティング先での管理操作を使用しないでください。
@@ -287,13 +274,16 @@ except ComputeTargetException:
 ```python
 from azureml.pipeline.steps import PythonScriptStep
 
+ds_input = my_dataset.as_named_input('input1')
+
 trainStep = PythonScriptStep(
     script_name="train.py",
-    arguments=["--input", blob_input_data, "--output", output_data1],
-    inputs=[blob_input_data],
+    arguments=["--input", ds_input.as_download(), "--output", output_data1],
+    inputs=[ds_input],
     outputs=[output_data1],
     compute_target=compute_target,
-    source_directory=project_folder
+    source_directory=project_folder,
+    allow_reuse=True
 )
 ```
 
@@ -339,8 +329,6 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 
 ### <a name="use-a-dataset"></a>データセットを使用する 
 
-`TabularDataset` または `FileDataset` をパイプラインで使用するには、[as_named_input(name)](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#as-named-input-name-) を呼び出すことにより、[DatasetConsumptionConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_consumption_config.datasetconsumptionconfig?view=azure-ml-py) オブジェクトに変換する必要があります。 この `DatasetConsumptionConfig` オブジェクトを、`inputs` の 1 つとしてパイプラインのステップに渡します。 
-
 Azure Blob storage、Azure Files、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database、および Azure Database for PostgreSQL から作成されたデータセットは、任意のパイプライン ステップへの入力として使用できます。 [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) または [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) への出力の書き込みを除き、出力データ ([PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)) は Azure Blob と Azure ファイル共有にのみ書き込むことができます。
 
 ```python
@@ -363,7 +351,15 @@ iris_dataset = run_context.input_datasets['iris_data']
 dataframe = iris_dataset.to_pandas_dataframe()
 ```
 
-詳細については、「[azure-pipeline-steps package](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)」および「[Pipeline class](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py)」のリファレンスを参照してください。
+`Run.get_context()` の行を強調表示します。 この関数では、進行中の実験用の実行を表す `Run` を取得します。 上記のサンプルでは、登録されたデータセットを取得するために使用しています。 `Run` オブジェクトのもう 1 つの一般的な用途は、実験自体と実験が存在するワークスペースの両方を取得することです。 
+
+```python
+# Within a PythonScriptStep
+
+ws = Run.get_context().experiment.workspace
+```
+
+データを渡したり、データにアクセスしたりするための別の方法などの詳細については、「[ML パイプラインのステップ間でのデータの移動 (Python)](how-to-move-data-in-out-of-pipelines.md)」を参照してください。
 
 ## <a name="submit-the-pipeline"></a>パイプラインを送信する
 
@@ -387,7 +383,7 @@ pipeline_run1.wait_for_completion()
 * ワークスペースに関連付けられた BLOB ストレージからコンピューティング先に、プロジェクトのスナップショットをダウンロードします。
 * パイプラインの各ステップに対応した Docker イメージをビルドします。
 * 各ステップの Docker イメージをコンテナー レジストリからコンピューティング先にダウンロードします。
-* `DataReference` オブジェクトがステップで指定されている場合は、データ ストアをマウントします。 マウントがサポートされていない場合は、代わりにデータがコンピューティング先にコピーされます。
+* `Dataset` オブジェクトと `PipelineData` オブジェクトへのアクセスを構成します。 `as_mount()` アクセス モードとしては、FUSE は仮想アクセスを提供するために使用されます。 マウントがサポートされていない場合、またはユーザーがアクセスを `as_download()` として指定した場合は、代わりにデータがコンピューティング先にコピーされます。
 * ステップの定義で指定されているコンピューティング先で、ステップを実行します。 
 * ログ、stdout と stderr、メトリック、ステップによって指定されている出力などの成果物を作成します。 その後、これらの成果物がアップロードされて、ユーザーの既定のデータストアに保持されます。
 
@@ -464,6 +460,7 @@ response = requests.post(published_pipeline1.endpoint,
 ```
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>バージョン管理されたパイプライン エンドポイントを作成する
+
 パイプライン エンドポイントは、背後にある発行された複数のパイプラインを使用して作成できます。 これは、発行されたパイプラインのように使用できますが、反復処理を行ったり、ML パイプラインを更新したりすると、固定の REST エンドポイントが発生します。
 
 ```python
@@ -475,19 +472,24 @@ pipeline_endpoint = PipelineEndpoint.publish(workspace=ws, name="PipelineEndpoin
 ```
 
 ### <a name="submit-a-job-to-a-pipeline-endpoint"></a>パイプライン エンドポイントにジョブを送信する
+
 パイプライン エンドポイントの既定のバージョンにジョブを送信できます。
+
 ```python
 pipeline_endpoint_by_name = PipelineEndpoint.get(workspace=ws, name="PipelineEndpointTest")
 run_id = pipeline_endpoint_by_name.submit("PipelineEndpointExperiment")
 print(run_id)
 ```
+
 また、特定のバージョンにジョブを送信することもできます。
+
 ```python
 run_id = pipeline_endpoint_by_name.submit("PipelineEndpointExperiment", pipeline_version="0")
 print(run_id)
 ```
 
 同じ操作は、REST API を使用して実行できます。
+
 ```python
 rest_endpoint = pipeline_endpoint_by_name.endpoint
 response = requests.post(rest_endpoint, 
@@ -512,19 +514,17 @@ Studio から発行されたパイプラインを実行することもできま�
 
 1. 実行または使用する、またはパイプライン エンドポイントの以前の実行の結果を確認する、特定のパイプラインを選択します。
 
-
 ### <a name="disable-a-published-pipeline"></a>発行されたパイプラインを無効にする
 
 発行済みパイプラインの一覧にパイプラインが表示されないようにするには、Studio または SDK でそれを無効にします。
 
-```
+```python
 # Get the pipeline by using its ID from Azure Machine Learning studio
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
 `p.enable()` で再び有効にすることができます。 詳しくは、[PublishedPipeline クラス](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py)のリファレンスを参照してください。
-
 
 ## <a name="caching--reuse"></a>キャッシュと再利用  
 

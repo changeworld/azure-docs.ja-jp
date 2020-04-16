@@ -2,13 +2,13 @@
 title: テンプレート関数 - 文字列
 description: Azure Resource Manager テンプレートで、文字列を操作するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: 070133c3db538e5df76644b62c25ced916adc4af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: c0517375b273384f263e8ba421995d4afb6c193b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156278"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982416"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM テンプレート用の文字列関数
 
@@ -46,7 +46,6 @@ Resource Manager では、Azure Resource Manager (ARM) テンプレートで文�
 * [uri](#uri)
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
-* [utcNow](#utcnow)
 
 ## <a name="base64"></a>base64
 
@@ -1097,6 +1096,8 @@ base64 形式を文字列に変換します。
 
 newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 関数と異なります。 guid では、同じパラメーターを使用して呼び出すと、毎回同じ識別子が返されます。 特定の環境に対して同じ GUID を確実に生成する必要がある場合は、guid を使用してください。 テスト環境へのリソースのデプロイなど、毎回異なる識別子が必要なときは、newGuid を使用してください。
 
+newGuid 関数では、.NET Framework 内の [Guid 構造](/dotnet/api/system.guid)を使用して、グローバル一意識別子が生成されます。
+
 [以前の正常なデプロイを再デプロイするオプション](rollback-on-error.md)を使用し、以前のデプロイに newGuid を使用するパラメーターが含まれている場合、パラメーターは再評価されません。 代わりに、以前のデプロイのパラメーター値が、ロールバック デプロイで自動的に再利用されます。
 
 テスト環境では、短時間だけ存在するリソースを繰り返しデプロイすることが必要な場合があります。 一意の名前を構築するのではなく、[uniqueString](#uniquestring) で newGuid を使用して一意の名前を作成できます。
@@ -1876,7 +1877,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
     ...
 ```
 
-テンプレートをデプロイするたびに一意の新しい名前を作成する必要があり、リソースを更新しない場合は、[utcNow](#utcnow) 関数と共に uniqueString を使用できます。 この方法は、テスト環境で使用できます。 例については、「[utcNow](#utcnow)」をご覧ください。
+テンプレートをデプロイするたびに一意の新しい名前を作成する必要があり、リソースを更新しない場合は、[utcNow](template-functions-date.md#utcnow) 関数と共に uniqueString を使用できます。 この方法は、テスト環境で使用できます。 例については、「[utcNow](template-functions-date.md#utcnow)」をご覧ください。
 
 ### <a name="return-value"></a>戻り値
 
@@ -2093,115 +2094,6 @@ URI エンコードされた値のデコード済み文字列。
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
 | toStringOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
-
-## <a name="utcnow"></a>utcNow
-
-`utcNow(format)`
-
-指定された形式で現在 (UTC) の datetime 値を返します。 形式が指定されていない場合は、ISO 8601 (yyyyMMddTHHmmssZ) 形式を使用します。 **この関数は、パラメーターの既定値でのみ使用できます。**
-
-### <a name="parameters"></a>パラメーター
-
-| パラメーター | 必須 | Type | 説明 |
-|:--- |:--- |:--- |:--- |
-| format |いいえ |string |文字列に変換する URI エンコードされた値。 [標準書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)を使用します。 |
-
-### <a name="remarks"></a>解説
-
-この関数は、パラメーターの既定値に対する式の中でのみ使用できます。 この関数をテンプレートのその他の場所で使用すると、エラーが返されます。 テンプレートの他の場所でこの関数を使用することは、呼び出しのたびに異なる値が返されるため、許可されていません。 同じパラメーターで同じテンプレートをデプロイしても、同じ結果が生成される保証はありません。
-
-[以前の正常なデプロイを再デプロイするオプション](rollback-on-error.md)を使用し、以前のデプロイに utcNow を使用するパラメーターが含まれている場合、パラメーターは再評価されません。 代わりに、以前のデプロイのパラメーター値が、ロールバック デプロイで自動的に再利用されます。
-
-既定値に対する utcNow 関数に依存するテンプレートを再デプロイするときは注意が必要です。 再デプロイを行うときに、パラメーターの値を指定しないと、関数が再評価されます。 新しいリソースを作成するのではなく、既存のリソースを更新する場合は、以前のデプロイのパラメーター値を渡します。
-
-### <a name="return-value"></a>戻り値
-
-現在の UTC の datetime 値。
-
-### <a name="examples"></a>例
-
-次の例のテンプレートでは、datetime 値のさまざまな形式を示します。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcValue": {
-            "type": "string",
-            "defaultValue": "[utcNow()]"
-        },
-        "utcShortValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "utcCustomValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('M d')]"
-        }
-    },
-    "resources": [
-    ],
-    "outputs": {
-        "utcOutput": {
-            "type": "string",
-            "value": "[parameters('utcValue')]"
-        },
-        "utcShortOutput": {
-            "type": "string",
-            "value": "[parameters('utcShortValue')]"
-        },
-        "utcCustomOutput": {
-            "type": "string",
-            "value": "[parameters('utcCustomValue')]"
-        }
-    }
-}
-```
-
-前の例からの出力はデプロイごとに変わりますが、次のようになります。
-
-| 名前 | Type | 値 |
-| ---- | ---- | ----- |
-| utcOutput | string | 20190305T175318Z |
-| utcShortOutput | string | 03/05/2019 |
-| utcCustomOutput | string | 3 5 |
-
-次の例では、タグ値を設定するときに関数からの値を使用する方法を示します。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcShort": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "rgName": {
-            "type": "string"
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "name": "[parameters('rgName')]",
-            "location": "westeurope",
-            "tags":{
-                "createdDate": "[parameters('utcShort')]"
-            },
-            "properties":{}
-        }
-    ],
-    "outputs": {
-        "utcShort": {
-            "type": "string",
-            "value": "[parameters('utcShort')]"
-        }
-    }
-}
-```
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](template-syntax.md)に関するページを参照してください。

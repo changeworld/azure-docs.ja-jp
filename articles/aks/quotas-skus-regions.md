@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Service (AKS) のクォータ、SKU、およびリージョンの可用性
+title: リソース、SKU、リージョンの制限
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) の既定のクォータ、制限されたノード VM SKU サイズ、およびリージョンの可用性について説明します。
 services: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.openlocfilehash: 03e7396932f0813ef4bd00d644dcdaddfe229e6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 054d6ff4fc105d84192ac81feda97515f6cfae49
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227579"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886774"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクォータ、仮想マシンのサイズの制限、およびリージョンの可用性
 

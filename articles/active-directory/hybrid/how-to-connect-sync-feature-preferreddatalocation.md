@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a71c5328c6fa85f85db4bd7e6103f6470b86d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 723411191d0990583d039a0fc9651437480807b4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258330"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983264"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect (同期): Office 365 リソースの優先されるデータの場所の構成
 このトピックの目的は、Azure Active Directory (Azure AD) Connect 同期で、優先されるデータの場所の属性を構成する方法について説明することです。Office 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Office 365 データの地理的な場所を指定します。 ("*リージョン*" と *geo* という用語は、同じ意味で使用されています。)
@@ -51,6 +51,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 | 日本 | JPN |
 | 韓国 | KOR |
 | 南アフリカ | ZAF |
+| スイス | CHE |
 | アラブ首長国連邦 | ARE |
 | イギリス | GBR |
 | United States | NAM |

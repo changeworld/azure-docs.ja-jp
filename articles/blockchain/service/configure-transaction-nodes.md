@@ -4,12 +4,12 @@ description: Azure Blockchain Service のトランザクション ノードを�
 ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
-ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fa18496d0c1aa59beb55569e731967d5ebea427
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227403"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876931"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure Blockchain Service のトランザクション ノードを構成する
 
@@ -54,7 +54,7 @@ ms.locfileid: "79227403"
 
     ![エンドポイント](./media/configure-transaction-nodes/endpoints.png)
 
-トランザクション ノード エンドポイントはセキュリティで保護されており、認証が必要です。 トランザクション エンドポイントに接続するには、Azure AD 認証、HTTPS 基本認証、および HTTPS または SSL 経由の WebSocket を介したアクセス キーを使用できます。
+トランザクション ノード エンドポイントはセキュリティで保護されており、認証が必要です。 トランザクション エンドポイントに接続するには、Azure AD Authentication、HTTPS 基本認証、および HTTPS または TLS 経由の WebSocket を介したアクセス キーを使用できます。
 
 ### <a name="azure-active-directory-access-control"></a>Azure Active Directory のアクセス制御
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: f1fdb9dffbe06430ea7e3eb9339e23f5239e4e36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb78d84aa0f9a2832b6599edeac9d50e0e226437
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310834"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546353"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 
@@ -131,8 +131,8 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 [バージョン 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) の HDInsight SDK for Java に更新してください。 以下の変更に影響されるメソッドを使用している場合、最小限のコード変更が必要になる可能性があります。
 
-- [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの**機密性の高いパラメーターが返されなくなります**。
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) は非推奨となりました。
+- `ConfigurationsInner.get` では、ストレージ キー (コア サイト) または HTTP 資格情報 (ゲートウェイ) などの**機密性の高いパラメーターが返されなくなります**。
+- `ConfigurationsInner.update` は非推奨となりました。
 
 ### <a name="sdk-for-go"></a>Go 用 SDK
 
@@ -193,9 +193,9 @@ Azure portal を使用して、HDInsight クラスター オペレーター ロ�
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Azure CLI コマンドを実行して HDInsight クラスター オペレーター ロールを別のユーザーまたはサービス プリンシパルに割り当てると、"操作を完了するための十分な特権がありません" と表示されるのはなぜですか?
 
-所有者ロールだけでなく、コマンドを実行しているユーザーまたはサービス プリンシパルは、担当者のオブジェクト ID を検索するために、十分な AAD アクセス許可を持っている必要があります。 このメッセージは、AAD のアクセス許可が不十分であることを示します。 `-–assignee` 引数を `–assignee-object-id` に置き換えて、名前の代わりにパラメーターとして担当者のオブジェクト ID (またはマネージド ID の場合は、プリンシパル ID) を指定します。 詳細については、[az role assignment create ドキュメント](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)の「省略可能なパラメーター」セクションを参照してください。
+所有者ロールだけでなく、コマンドを実行しているユーザーまたはサービス プリンシパルは、担当者のオブジェクト ID を検索するために、十分な Azure AD アクセス許可を持っている必要があります。 このメッセージは、Azure AD のアクセス許可が不十分であることを示します。 `-–assignee` 引数を `–assignee-object-id` に置き換えて、名前の代わりにパラメーターとして担当者のオブジェクト ID (またはマネージド ID の場合は、プリンシパル ID) を指定します。 詳細については、[az role assignment create ドキュメント](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)の「省略可能なパラメーター」セクションを参照してください。
 
-それでもうまくいかない場合は、AAD 管理者に連絡して、適切なアクセス許可を取得してください。
+それでもうまくいかない場合は、Azure AD 管理者に連絡して、適切なアクセス許可を取得してください。
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>操作を行わない場合、どうなりますか?
 

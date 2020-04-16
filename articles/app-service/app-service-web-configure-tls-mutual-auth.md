@@ -5,12 +5,12 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 357ea2cc598bca3e008a74f021895e1e45a3874f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f6dd455024aba184cbb16b5b9c7cfffd032dc70
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78301007"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811733"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service に対する TLS 相互認証の構成
 
@@ -41,7 +41,7 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 ## <a name="access-client-certificate"></a>クライアント証明書にアクセスする
 
-App Service では、要求の SSL 終了がフロントエンドのロード バランサー側で行われます。 [クライアント証明書を有効にした](#enable-client-certificates)状態で要求をアプリ コードに転送すると、App Service によって `X-ARR-ClientCert` 要求ヘッダーにクライアント証明書が挿入されます。 App Service がこのクライアント証明書に対して行うのは、この証明書をアプリに転送する処理だけです。 クライアント証明書の検証はアプリ コードが行います。
+App Service では、要求の TLS 終了がフロントエンドのロード バランサー側で行われます。 [クライアント証明書を有効にした](#enable-client-certificates)状態で要求をアプリ コードに転送すると、App Service によって `X-ARR-ClientCert` 要求ヘッダーにクライアント証明書が挿入されます。 App Service がこのクライアント証明書に対して行うのは、この証明書をアプリに転送する処理だけです。 クライアント証明書の検証はアプリ コードが行います。
 
 ASP.NET の場合は、**HttpRequest.ClientCertificate** プロパティを通じてクライアント証明書を使用できます。
 

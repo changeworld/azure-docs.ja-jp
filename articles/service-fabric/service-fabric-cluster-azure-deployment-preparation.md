@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターのデプロイを計画する
 description: Azure への運用環境 Service Fabric クラスターのデプロイの計画と準備について説明します。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1762a6975448301957579b3437a8af5c89b3accd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78193478"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422278"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>クラスターのデプロイを計画および準備する
 
@@ -86,6 +86,16 @@ Service Fabric を使用すると、Windows Server または Linux を実行す�
             }
         }
     ```
+
+> [!NOTE]
+> OS ディスクは、OS のアップグレード時に失われるため、ユーザーアプリケーションは OS ディスクに依存関係、ファイル、成果物を持つことはできません。
+> そのため、エフェメラル ディスクで [PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA) を使用することは推奨されません。
+>
+
+> [!NOTE]
+> エフェメラル ディスクを使用するために、エフェメラルではない既存のディスク VMSS をインプレース アップグレードすることはできません。
+> 移行するには、ユーザーは、エフェメラル ディスクを含む新しい nodeType を[追加](./virtual-machine-scale-set-scale-node-type-scale-out.md)して、ワークロードをその新しい nodeType に移動させ、既存の nodeType を[削除](./service-fabric-how-to-remove-node-type.md)する必要があります。
+>
 
 詳細およびその他の構成オプションについては、「[Azure VM のエフェメラル OS ディスク](../virtual-machines/windows/ephemeral-os-disks.md)」を参照してください。 
 

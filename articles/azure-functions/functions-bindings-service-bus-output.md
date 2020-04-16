@@ -6,18 +6,18 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 7e00d03a8b3ec7ef56935ff7714fd932bc343cd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02d9ce87d45c5f1c9a123aae18f7d710b268f03e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235151"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582251"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Functions における Azure Service Bus の出力バインド
 
 キューまたはトピック メッセージを送信するには、Azure Service Bus 出力バインドを使用します。
 
-セットアップと構成の詳細については、[概要](functions-bindings-service-bus-output.md)を参照してください。
+セットアップと構成の詳細については、[概要](functions-bindings-service-bus-output.md)に関する記事を参照してください。
 
 ## <a name="example"></a>例
 
@@ -286,7 +286,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 |**name** | 該当なし | 関数コード内のキューまたはトピック メッセージを表す変数の名前。 "$return" に設定して、関数の戻り値を参照します。 |
 |**queueName**|**QueueName**|キューの名前。  トピックではなくキューのメッセージを送信する場合にのみ設定します。
 |**topicName**|**TopicName**|トピックの名前。 キューではなくトピックのメッセージを送信する場合にのみ設定します。|
-|**connection**|**Connection**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。|
+|**connection**|**接続**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。|
 |**accessRights**|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Service Bus SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x 以降ではこのプロパティを利用できません。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -308,7 +308,7 @@ Azure Functions 1.x では、キューが存在しない場合に `accessRights`
 
 C# 関数を使用する場合:
 
-* 非同期関数には、`IAsyncCollector` パラメーターの代わりに戻り値または `out` が必要です。
+* 非同期関数には、`out` パラメーターの代わりに戻り値または `IAsyncCollector` が必要です。
 
 * セッション ID にアクセスするには、 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 型にバインドし、`sessionId` プロパティを使用します。
 
@@ -325,7 +325,7 @@ C# 関数を使用する場合:
 
 C# 関数を使用する場合:
 
-* 非同期関数には、`IAsyncCollector` パラメーターの代わりに戻り値または `out` が必要です。
+* 非同期関数には、`out` パラメーターの代わりに戻り値または `IAsyncCollector` が必要です。
 
 * セッション ID にアクセスするには、 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 型にバインドし、`sessionId` プロパティを使用します。
 
@@ -383,6 +383,7 @@ C# 関数を使用する場合:
 
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
+|prefetchCount|0|メッセージの受信者が同時に要求できるメッセージ数を取得または設定します。|
 |maxAutoRenewDuration|00:05:00|メッセージ ロックが自動的に更新される最大間隔。|
 |autoComplete|true|トリガーがメッセージをすぐに完了としてマークする (オートコンプリート) か、complete を呼び出すために関数が正常に終了するまで待機するか。|
 |maxConcurrentCalls|16|メッセージ ポンプが開始する必要があるコールバックの同時呼び出しの最大数 既定では、Functions ランタイムは、複数のメッセージを同時に処理します。 一度に 1 つのキューまたはトピックのメッセージのみを処理するようにランタイムに指示するには、`maxConcurrentCalls` を 1 に設定します。 |

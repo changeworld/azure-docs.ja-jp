@@ -2,13 +2,13 @@
 title: 数が 800 に制限されないリソース
 description: リソース グループ内に 800 より多くのインスタンスを作成できる Azure リソースの種類の一覧を示します。
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 8644bec1a68acebff18cf83d17acb014784dc964
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937948"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804777"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>リソース グループあたり 800 インスタンスに制限されないリソース
 
@@ -26,7 +26,6 @@ ms.locfileid: "76937948"
 * registrations
 * registrations/customerSubscriptions
 * registrations/products
-* verificationKeys
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -35,6 +34,9 @@ ms.locfileid: "76937948"
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 * disks
+* galleries
+* galleries/images
+* galleries/images/versions
 * images
 * スナップショット
 * virtualMachines
@@ -67,6 +69,11 @@ ms.locfileid: "76937948"
 * serverGroups
 * servers
 * serversv2
+* singleServers
+
+## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
+
+* schedules - 既定では、800 インスタンスに制限されています。 この制限を増やすには、サポートにご連絡ください。
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
@@ -90,7 +97,7 @@ ms.locfileid: "76937948"
 * softwareUpdateProfile
 * softwareUpdates
 
-## <a name="microsoftinsights"></a>Microsoft.Insights
+## <a name="microsoftinsights"></a>microsoft.insights
 
 * metricalerts
 

@@ -2,13 +2,13 @@
 title: テンプレート関数
 description: 値の取得、文字列の処理、デプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: fbd82f89ed9a97a3f376a9ed6eaa8ae3760759ff
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156261"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982380"
 ---
 # <a name="arm-template-functions"></a>ARM テンプレート関数
 
@@ -77,6 +77,13 @@ Resource Manager には、テンプレートで比較を行うための関数が
 <a id="deployment" aria-hidden="true" />
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
+
+## <a name="date-functions"></a>データ関数
+
+リソース マネージャーには、日付を操作する次の関数が用意されています。
+
+* [dateTimeAdd](template-functions-date.md#datetimeadd)
+* [utcNow](template-functions-date.md#utcnow)
 
 ## <a name="deployment-value-functions"></a>デプロイの値関数
 
@@ -224,7 +231,6 @@ Resource Manager には、テンプレートで比較を行うための関数が
 * [uri](template-functions-string.md#uri)
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
-* [utcNow](template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>次のステップ
 

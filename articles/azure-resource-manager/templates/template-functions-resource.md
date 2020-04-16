@@ -2,17 +2,17 @@
 title: テンプレート関数 - リソース
 description: Azure Resource Manager テンプレートで、リソースに関する値を取得するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 10476f5a29c12d7437beb9a9f707feda815d7ba1
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 04/06/2020
+ms.openlocfilehash: 90cee78c29c26c88d808cdef798e74a2184a5fcf
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207010"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804760"
 ---
-# <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
+# <a name="resource-functions-for-arm-templates"></a>ARM テンプレート用のリソース関数
 
-リソース マネージャーには、リソース値を取得する次の関数が用意されています。
+Resource Manager では、Azure Resource Manager (ARM) テンプレートでリソースの値を取得するために、次の関数が提供されています。
 
 * [extensionResourceId](#extensionresourceid)
 * [list*](#list)
@@ -36,7 +36,7 @@ extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ..
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceId |はい |string |拡張リソースが適用されるリソースのリソース ID。 |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
@@ -116,7 +116,7 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |はい |string |リソースの一意識別子です。 |
 | apiVersion |はい |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
@@ -170,8 +170,8 @@ list* の使用例を次の表にまとめています。
 | Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/domains/listsharedaccesskeys) |
-| Microsoft.EventGrid/topics | [listKeys](/rest/api/eventgrid/topics/listsharedaccesskeys) |
+| Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
+| Microsoft.EventGrid/topics | [listKeys](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
 | Microsoft.EventHub/namespaces/authorizationRules | [listkeys](/rest/api/eventhub/namespaces/listkeys) |
 | Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
 | Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](/rest/api/eventhub/eventhubs/listkeys) |
@@ -364,7 +364,7 @@ providers(providerNamespace, [resourceType])
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |はい |string |プロバイダーの名前空間 |
 | resourceType |いいえ |string |指定した名前空間内にあるリソースの種類。 |
@@ -441,15 +441,15 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |はい |string |名前またはリソースの一意の識別子。 現在のテンプレート内のリソースを参照する場合は、パラメーターとしてリソース名のみを指定します。 以前にデプロイされたリソースを参照する場合、またはリソースの名前があいまいな場合は、リソース ID を指定します。 |
-| apiVersion |いいえ |string |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 リソースに有効な API のバージョンについては、[テンプレート リファレンス](/azure/templates/)を参照してください。 |
+| apiVersion |いいえ |string |指定したリソースの API バージョンです。 **このパラメーターは、同じテンプレート内でリソースがプロビジョニングされない場合に必要です。** 通常、**yyyy-mm-dd** の形式。 リソースに有効な API のバージョンについては、[テンプレート リファレンス](/azure/templates/)を参照してください。 |
 | 'Full' |いいえ |string |完全なリソース オブジェクトを返すかどうかを指定する値。 `'Full'` を指定しない場合、リソースのプロパティ オブジェクトのみが返されます。 完全なオブジェクトには、リソース ID や場所などの値が含まれます。 |
 
 ### <a name="return-value"></a>戻り値
 
-あらゆるリソースの種類で、reference 関数のさまざまなプロパティが返されます。 この関数は、定義済みの単一の形式を返しません。 また、返される値は、完全なオブジェクトを指定したかどうかによって異なります。 あるリソースの種類のプロパティを確認するには、この例に示すように、outputs セクションでオブジェクトを返します。
+あらゆるリソースの種類で、reference 関数のさまざまなプロパティが返されます。 この関数は、定義済みの単一の形式を返しません。 また、戻り値は、`'Full'` 引数の値によって異なります。 あるリソースの種類のプロパティを確認するには、この例に示すように、outputs セクションでオブジェクトを返します。
 
 ### <a name="remarks"></a>解説
 
@@ -496,7 +496,9 @@ reference 関数は、以前にデプロイされたリソースまたは現在�
 
 ### <a name="valid-uses"></a>有効な使用方法
 
-reference 関数は、リソース定義のプロパティと、テンプレートまたはデプロイの出力セクションでのみ使用できます。 [プロパティの反復処理](copy-properties.md)で使用する場合には、式がリソース プロパティに割り当てられるため、`input` に対して reference 関数を使用できます。 これを `count` と一緒に使用することはできません。カウントは、reference 関数が解決される前に決定される必要があるためです。
+reference 関数は、リソース定義のプロパティと、テンプレートまたはデプロイの出力セクションでのみ使用できます。 [プロパティの反復処理](copy-properties.md)で使用する場合には、式がリソース プロパティに割り当てられるため、`input` に対して reference 関数を使用できます。
+
+reference 関数を使用してコピー ループの `count` プロパティの値を設定することはできません。 ループ内のその他のプロパティの設定には使用できます。 count プロパティの参照はブロックされます。このプロパティは reference 関数が解決される前に決定される必要があるためです。
 
 [入れ子になったテンプレート](linked-templates.md#nested-template)の出力に reference 関数を使用して、入れ子になったテンプレートにデプロイされたリソースを返すことはできません。 その場合は、[リンク済みテンプレート](linked-templates.md#linked-template)を使用してください。
 
@@ -514,7 +516,7 @@ reference 関数は、リソース定義のプロパティと、テンプレー�
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-同じテンプレートでデプロイされないリソースを参照するときは、リソース ID を指定します。
+同じテンプレートでデプロイされないリソースを参照するときは、リソース ID と `apiVersion` を指定します。
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
@@ -756,7 +758,7 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 リソース グループまたはサブスクリプションのスコープでデプロイする場合にのみ、この値を指定します。 |
 | resourceGroupName |いいえ |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 リソース グループのスコープでデプロイする場合にのみ、この値を指定します。 |
@@ -896,7 +898,7 @@ ID を他の形式で取得するには、以下を参照してください。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | Value |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -956,7 +958,7 @@ subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceN
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
@@ -1040,7 +1042,7 @@ tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | Required | Type | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
 | resourceName1 |はい |string |リソースの名前。 |

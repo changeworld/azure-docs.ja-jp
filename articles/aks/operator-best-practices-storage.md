@@ -1,15 +1,16 @@
 ---
-title: オペレーターのベスト プラクティス - Azure Kubernetes Services (AKS) のストレージ
+title: ストレージとバックアップに関するベスト プラクティス
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) のストレージ、データの暗号化、およびバックアップに関するクラスター オペレーターのベスト プラクティスについて説明します
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: b1336d10b091be4f3eb2a711401cafd3f58221fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399485"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877900"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) のストレージとバックアップに関するベスト プラクティス
 
@@ -39,7 +40,7 @@ Azure Kubernetes Service (AKS) でクラスターを作成して管理する際�
 
 AKS のボリュームに対して提供される、2 つの主な種類のストレージが、Azure ディスクまたは Azure ファイルでサポートされます。 セキュリティを向上させるため、両方の種類のストレージでは既定で Azure Storage Service Encryption (SSE) が使用され、保存データが暗号化されます。 ディスクは現在、AKS ノード レベルで Azure Disk Encryption を使用して暗号化することはできません。
 
-Azure ファイルは現在、Standard パフォーマンス レベルで使用可能です。 Azure ディスクは、以下の Standard と Premium のパフォーマンス レベルで使用できます。
+Azure Files と Azure ディスクは両方とも、以下の Standard と Premium のパフォーマンス レベルで使用できます。
 
 - *Premium*。このディスクは、高パフォーマンスのソリッドステート ディスク (SSD) でサポートされます。 すべての運用環境のワークロードに Premium ディスクをお勧めします。
 - *Standard*。このディスクは標準のスピニング ディスク (HDD) でサポートされ、アーカイブまたはアクセス頻度の少ないデータに適しています。

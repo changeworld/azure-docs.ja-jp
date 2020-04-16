@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66392923"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582769"
 ---
 # <a name="streaming-policies"></a>ストリーミング ポリシー
 
@@ -34,7 +34,7 @@ Azure Media Services v3 では、[ストリーミング ポリシー](https://do
 
 > [!IMPORTANT]
 > * Datetime 型の**ストリーミング ポリシー**のプロパティは、常に UTC 形式です。
-> * お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 詳細については、「[クォータと制限](limits-quotas-constraints.md)」をご覧ください。
+> * お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 詳しくは、[クォータと制限](limits-quotas-constraints.md)に関するトピックを参照してください。
 
 ## <a name="decision-tree"></a>デシジョン ツリー
 

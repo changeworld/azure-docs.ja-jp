@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225295"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583214"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Security Center の機能の廃止 (2019 年 7 月)
 
@@ -43,7 +43,7 @@ ms.locfileid: "79225295"
 
 ## <a name="events-dashboard"></a>イベント ダッシュボード<a name="menu_events"></a>
 
-Security Center は、Microsoft Monitoring Agent を使用して、さまざまなセキュリティ関連の構成とイベントをマシンから収集します。 ワークスペースにこれらのイベントを格納します。 [イベント ダッシュボード](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard)はこのデータを表示し、Log Analytics へのエントリ ポイントを提供します。
+Security Center は、Log Analytics エージェントを使用して、さまざまなセキュリティ関連の構成とイベントをマシンから収集します。 ワークスペースにこれらのイベントを格納します。 [イベント ダッシュボード](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard)はこのデータを表示し、Log Analytics へのエントリ ポイントを提供します。
 
 ワークスペースを選択したときに表示されるイベント ダッシュボードは廃止されました。
 
@@ -97,7 +97,7 @@ Log Analytics の **[ID およびアクセス]** ダッシュボードのすべ�
 
 ## <a name="security-events-map"></a>セキュリティ イベント マップ<a name="menu_securityeventsmap"></a>
 
-Security Center は、セキュリティの脅威を識別するために役立つ[セキュリティ アラート マップ](https://docs.microsoft.com/azure/security-center/security-center-threat-intel)を提供します。 該当のマップの **[セキュリティ イベント マップに移動]** ボタンから、選択したワークスペース上に未加工のセキュリティ イベントを表示できるダッシュボードが開きます。
+Security Center では、セキュリティの脅威を識別するために役立つセキュリティ アラート マップを提供しています。 該当のマップの **[セキュリティ イベント マップに移動]** ボタンから、選択したワークスペース上に未加工のセキュリティ イベントを表示できるダッシュボードが開きます。
 
 **[セキュリティ イベント マップに移動]** ボタンと、ワークスペースごとのダッシュボードは廃止されました。
 
@@ -136,7 +136,7 @@ Azure Sentinel の使用に関心がない場合は、Azure Monitor のログ �
 
 ## <a name="security-alerts-investigation"></a>セキュリティ アラートの調査<a name="menu_investigate"></a>
 
-Security Center の[調査機能](https://docs.microsoft.com/azure/security-center/security-center-investigation)は、潜在的なセキュリティ インシデントのトリアージに役立ちます。 この機能を使用すると、インシデントのスコープを理解し、その根本原因を突き止めることができます。 この機能は、[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) において強化されたエクスペリエンスに置き換えられているため、Security Center からは削除されました。
+Security Center の調査機能は、潜在的なセキュリティ インシデントのトリアージに役立ちます。 この機能を使用すると、インシデントのスコープを理解し、その根本原因を突き止めることができます。 この機能は、[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) において強化されたエクスペリエンスに置き換えられているため、Security Center からは削除されました。
 
 ![セキュリティ インシデント][14]
 
@@ -169,7 +169,7 @@ Security Center を使用すると、[Azure で統合されたセキュリティ
 
 Azure Security Center は、OS を強化するための [150 を超える推奨の規則](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)のセットを適用して、セキュリティ構成を監視します。 これらの規則は、ファイアウォール、監査、パスワード ポリシーなどに関するものです。 脆弱な構成を持つマシンが見つかった場合、Security Center はセキュリティ推奨事項を生成します。 お客様は、[[セキュリティ構成の編集] 画面](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config)を利用して、Security Center にある既定の OS セキュリティ構成をカスタマイズできます。
 
-このプレビュー機能は廃止されました。 提供終了日以降に、セキュリティ構成を既定値にリセットするには、API または Powershell を使用してます。[次の手順](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)に従ってください。
+このプレビュー機能は廃止されました。 提供終了日以降に、セキュリティ構成を既定値にリセットするには、API または Powershell を使用してます。[次の手順](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/Reset%20security%20configurations%20customization)に従ってください。
 
 ![セキュリティ構成の編集][17]
 

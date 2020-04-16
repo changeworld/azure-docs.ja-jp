@@ -4,19 +4,19 @@ description: Microsoft Azure のネットワーク ポリシー サーバー拡�
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d9b2332d6d78e7bde63d0fa3f5b64b588e576b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c61bea7f3ca1105edfec54501c5f0725a5a10225
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425442"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654107"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>ネットワーク ポリシー サーバー (NPS) 拡張機能と Azure AD を使用したリモート デスクトップ ゲートウェイ インフラストラクチャの統合
 
@@ -157,7 +157,7 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 スクリプトを使用するには、Azure AD の管理者資格情報と、先ほどコピーした Azure AD のテナント ID を拡張機能に提供します。 NPS 拡張機能がインストールされている各 NPS サーバーでスクリプトを実行します。 次に、次を実行します。
 
 1. 管理用の Windows PowerShell プロンプトを開きます。
-1. PowerShell プロンプトで「`cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`」と入力し、**Enter** キーを押します。
+1. PowerShell プロンプトで「`cd 'c:\Program Files\Microsoft\AzureMfa\Config'`」と入力し、**Enter** キーを押します。
 1. 「`.\AzureMfaNpsExtnConfigSetup.ps1`」と入力して **Enter** キーを押します。 Azure Active Directory PowerShell モジュールがインストールされているかどうかがチェックされます。 インストールされていない場合は、スクリプトによってモジュールがインストールされます。
 
    ![Azure AD PowerShell での AzureMfaNpsExtnConfigSetup.ps1 の実行](./media/howto-mfa-nps-extension-rdg/image4.png)
@@ -206,7 +206,7 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>リモート デスクトップ ゲートウェイの NPS で RADIUS のタイムアウト値を構成する
 
-ユーザーの資格情報の検証から、2 段階認証の実行、応答の受信、RADIUS メッセージへの応答までの時間を確保するために、RADIUS のタイムアウト値を調整する必要があります。
+RADIUS のタイムアウト値を調整して、ユーザーの資格情報の検証、2 段階認証の実行、応答の受信、RADIUS メッセージへの応答の実行に必要な時間を確保する必要があります。
 
 1. RD ゲートウェイ サーバーで、サーバー マネージャーを開きます。 メニューで **[ツール]** をクリックし、 **[ネットワーク ポリシー サーバー]** をクリックします。
 1. **[NPS (ローカル)]** コンソールで、 **[RADIUS クライアントとサーバー]** を展開し、 **[Remote RADIUS Server]\(リモート RADIUS サーバー\)** を選択します。

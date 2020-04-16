@@ -1,24 +1,24 @@
 ---
-title: コードで SSL 証明書を使用する
+title: コードで TLS/SSL 証明書を使用する
 description: コードでクライアント証明書を使用する方法について説明します。 クライアント証明書を使用してリモートリ ソースで認証するか、またはそれらを使用して暗号化タスクを実行します。
 ms.topic: article
 ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d783b61c372c7d0f8cca13106bf297ab9b55c424
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671887"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811705"
 ---
-# <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>Azure App Service のコード内から SSL 証明書を使用する
+# <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Azure App Service の自分のコードから TLS/SSL 証明書を使用する
 
 [App Service に追加したパブリック証明書またはプライベート証明書](configure-ssl-certificate.md)には、アプリケーション コード内からアクセスすることができます。 アプリ コードはクライアントとして、証明書認証を必要とする外部サービスにアクセスすることがあるほか、暗号タスクを実行しなければならない場合もあります。 この攻略ガイドでは、アプリケーション コードで公開またはプライベートの証明書を使用する方法について説明します。
 
-コードで証明書を使用するこの方法では、App Service の SSL 機能を利用します。そのため、お客様のアプリは **Basic** レベル以上でなければなりません。 アプリが **Free** レベルまたは **Shared** レベルの場合は、[アプリのリポジトリに証明書ファイルを格納](#load-certificate-from-file)することができます。
+コードで証明書を使用するこの方法では、App Service の TLS 機能を利用します。そのため、お客様のアプリは **Basic** レベル以上でなければなりません。 アプリが **Free** レベルまたは **Shared** レベルの場合は、[アプリのリポジトリに証明書ファイルを格納](#load-certificate-from-file)することができます。
 
-App Service の SSL 証明書の管理機能を使用すれば、証明書とアプリケーション コードを分離して管理し、機密データを保護できます。
+App Service の TLS/SSL 証明書の管理機能を使用すれば、証明書とアプリケーション コードを分離して管理し、機密データを保護できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +39,7 @@ App Service の SSL 証明書の管理機能を使用すれば、証明書とア
 
 ## <a name="make-the-certificate-accessible"></a>証明書をアクセス可能にする
 
-アプリ コードで証明書にアクセスするには、`WEBSITE_LOAD_CERTIFICATES`Cloud Shell<a target="_blank" href="https://shell.azure.com" > で次のコマンドを実行して、</a> アプリ設定に拇印を追加します。
+アプリ コードで証明書にアクセスするには、<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> で次のコマンドを実行して、`WEBSITE_LOAD_CERTIFICATES` アプリ設定に拇印を追加します。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
@@ -58,25 +58,32 @@ C# コードで証明書にアクセスするには、証明書の拇印を使�
 
 ```csharp
 using System;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
-...
-X509Store certStore = new X509Store(StoreName.My, StoreLocation.CurrentUser);
-certStore.Open(OpenFlags.ReadOnly);
-X509Certificate2Collection certCollection = certStore.Certificates.Find(
-                            X509FindType.FindByThumbprint,
-                            // Replace below with your certificate's thumbprint
-                            "E661583E8FABEF4C0BEF694CBC41C28FB81CD870",
-                            false);
-// Get the first cert with the thumbprint
-if (certCollection.Count > 0)
+string certThumbprint = "E661583E8FABEF4C0BEF694CBC41C28FB81CD870";
+bool validOnly = false;
+
+using (X509Store certStore = new X509Store(StoreName.My, StoreLocation.CurrentUser))
 {
-    X509Certificate2 cert = certCollection[0];
-    // Use certificate
-    Console.WriteLine(cert.FriendlyName);
+  certStore.Open(OpenFlags.ReadOnly);
+
+  X509Certificate2Collection certCollection = certStore.Certificates.Find(
+                              X509FindType.FindByThumbprint,
+                              // Replace below with your certificate's thumbprint
+                              certThumbprint,
+                              validOnly);
+  // Get the first cert with the thumbprint
+  X509Certificate2 cert = certCollection.OfType<X509Certificate>().FirstOrDefault();
+
+  if (cert is null)
+      throw new Exception($"Certificate with thumbprint {certThumbprint} was not found");
+
+  // Use certificate
+  Console.WriteLine(cert.FriendlyName);
+  
+  // Consider to call Dispose() on the certificate after it's being used, avaliable in .NET 4.6 and later
 }
-certStore.Close();
-...
 ```
 
 Java コードで "Windows-MY" ストアの証明書にアクセスするには、[サブジェクトの共通名] フィールドを使用します (「[公開鍵証明書](https://en.wikipedia.org/wiki/Public_key_certificate)」を参照)。 次のコードは、秘密キー証明書を読み込む方法を示しています。
@@ -111,20 +118,21 @@ Linux ホステッド アプリ (カスタム コンテナー アプリを含む
 
 ```csharp
 using System;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
 ...
-var bytes = System.IO.File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
+var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
 var cert = new X509Certificate2(bytes);
 
 // Use the loaded certificate
 ```
 
-Node.js、PHP、Python、Java、Ruby で SSL 証明書をファイルから読み込む方法については、それぞれの言語または Web プラットフォームのドキュメントを参照してください。
+Node.js、PHP、Python、Java、Ruby で TLS/SSL 証明書をファイルから読み込む方法については、それぞれの言語または Web プラットフォームのドキュメントを参照してください。
 
 ## <a name="load-certificate-from-file"></a>ファイルから証明書を読み込む
 
-読み込む必要のある証明書ファイルを手動でアップロードする場合は、[Git](deploy-ftp.md) などではなく [FTPS](deploy-local-git.md) を使用して証明書をアップロードすることをお勧めします。 プライベート証明書などの機密データは、ソース管理から分離しておく必要があります。
+読み込む必要のある証明書ファイルを手動でアップロードする場合は、[Git](deploy-local-git.md) などではなく [FTPS](deploy-ftp.md) を使用して証明書をアップロードすることをお勧めします。 プライベート証明書などの機密データは、ソース管理から分離しておく必要があります。
 
 > [!NOTE]
 > Windows 上の ASP.NET および ASP.NET Core は、証明書をファイルから読み込む場合であっても、証明書ストアにアクセスする必要があります。 Windows .NET アプリで証明書ファイルを読み込むには、<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> から次のコマンドを使用して、現在のユーザー プロファイルを読み込みます。
@@ -133,26 +141,27 @@ Node.js、PHP、Python、Java、Ruby で SSL 証明書をファイルから読�
 > az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
 > ```
 >
-> コードで証明書を使用するこの方法では、App Service の SSL 機能を利用します。そのため、お客様のアプリは **Basic** レベル以上でなければなりません。
+> コードで証明書を使用するこの方法では、App Service の TLS 機能を利用します。そのため、お客様のアプリは **Basic** レベル以上でなければなりません。
 
 次の C# サンプルでは、アプリ内で相対パスからパブリック証明書を読み込みます。
 
 ```csharp
 using System;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
 ...
-var bytes = System.IO.File.ReadAllBytes("~/<relative-path-to-cert-file>");
+var bytes = File.ReadAllBytes("~/<relative-path-to-cert-file>");
 var cert = new X509Certificate2(bytes);
 
 // Use the loaded certificate
 ```
 
-Node.js、PHP、Python、Java、Ruby で SSL 証明書をファイルから読み込む方法については、それぞれの言語または Web プラットフォームのドキュメントを参照してください。
+Node.js、PHP、Python、Java、Ruby で TLS/SSL 証明書をファイルから読み込む方法については、それぞれの言語または Web プラットフォームのドキュメントを参照してください。
 
 ## <a name="more-resources"></a>その他のリソース
 
-* [SSL バインディングを使用してカスタム DNS 名のセキュリティを確保する](configure-ssl-bindings.md)
+* [Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)
 * [HTTPS の適用](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 の適用](configure-ssl-bindings.md#enforce-tls-versions)
-* [FAQ: App Service 証明書](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)
+* [FAQ:App Service 証明書](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

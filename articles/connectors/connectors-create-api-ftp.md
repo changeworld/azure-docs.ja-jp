@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 94ca609d9dc070e6e2b4dc878ecd8dfaf9331ede
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77648174"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656327"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して FTP ファイルを作成、監視、および管理する
 
@@ -27,7 +27,7 @@ FTP サーバーからの応答を取得するトリガーを使用し、その�
 
 ## <a name="limitations"></a>制限事項
 
-* FTP コネクタは明示的 FTP over SSL (FTPS) のみをサポートし、暗黙的 FTPS とは互換性がありません。
+* FTP コネクタは明示的 FTP over TLS/SSL のみをサポートし、暗黙的 FTPS とは互換性がありません。
 
 * 既定では、FTP アクションは *50 MB 以下*のファイルの読み取りまたは書き込みが可能です。 50 MB を超えるファイルを処理するために、FTP アクションでは、[メッセージのチャンク](../logic-apps/logic-apps-handle-large-messages.md)がサポートされています。 **ファイルのコンテンツの取得**アクションでは、暗黙的にチャンクが使用されます。
 

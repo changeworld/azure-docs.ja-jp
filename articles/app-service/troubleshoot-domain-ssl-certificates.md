@@ -1,6 +1,6 @@
 ---
-title: ドメインと SSL 証明書のトラブルシューティング
-description: Azure App Service でドメインまたは SSL 証明書を構成するときに発生する可能性がある一般的な問題の解決策を見つけます。
+title: ドメインと TLS/SSL 証明書のトラブルシューティング
+description: Azure App Service でドメインまたは TLS/SSL 証明書を構成するときに発生する可能性がある一般的な問題の解決策を見つけます。
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75966972"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668015"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと SSL 証明書に関する問題のトラブルシューティング
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと TLS/SSL 証明書に関する問題のトラブルシューティング
 
-この記事では、Azure App Service の Web アプリのためにドメインまたは SSL 証明書を構成するときに発生する可能性がある、一般的な問題の一覧を示します。 これらの問題の考えられる原因と解決策についても説明します。
+この記事では、Azure App Service でお使いの Web アプリ用のドメインまたは TLS/SSL 証明書を構成するときに発生する可能性がある、一般的な問題の一覧を示します。 これらの問題の考えられる原因と解決策についても説明します。
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN のフォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 [Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、 **[サポートの要求]** をクリックしてください。
 
@@ -26,17 +26,17 @@ ms.locfileid: "75966972"
 
 ## <a name="certificate-problems"></a>証明書に関する問題
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-an-app"></a>アプリに対する SSL 証明書のバインディングを作成できない 
+### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>アプリに対する TLS/SSL 証明書のバインディングを作成できない 
 
 #### <a name="symptom"></a>症状
 
-SSL バインディングを追加するときに、次のエラー メッセージが表示されます。
+TLS バインディングを追加するときに、次のエラー メッセージが表示されます。
 
 "SSL バインディングを追加できませんでした。 既存の VIP の証明書は設定できません。別の VIP が既にその証明書を使用しています。"
 
 #### <a name="cause"></a>原因
 
-この問題は、複数のアプリにわたって、同じ IP アドレスへの IP ベースの SSL バインディングが複数ある場合に発生することがあります。 たとえば、アプリ A に、古い証明書を持つ IP ベースの SSL があり、 アプリ B に、同じ IP アドレスの新しい証明書を持つ IP ベースの SSL がある場合です。 新しい証明書を持つアプリの SSL バインディングを更新すると、別のアプリに対して同じ IP アドレスが使われているため、このエラーで更新が失敗します。 
+この問題は、複数のアプリにわたって、同じ IP アドレスへの IP ベースの SSL バインディングが複数ある場合に発生することがあります。 たとえば、アプリ A に、古い証明書を持つ IP ベースの SSL があり、 アプリ B に、同じ IP アドレスの新しい証明書を持つ IP ベースの SSL がある場合です。 新しい証明書でアプリの TLS バインディングを更新すると、別のアプリで同じ IP アドレスが使われているため、このエラーで更新が失敗します。 
 
 #### <a name="solution"></a>解決策 
 
@@ -51,7 +51,7 @@ SSL バインディングを追加するときに、次のエラー メッセー
 
 証明書を削除しようとすると、次のエラー メッセージが表示されます。
 
-"証明書は、SSL バインディングで使用されているため、削除できません。 証明書を削除できるようにするには、先に SSL バインディングを削除する必要があります。"
+"証明書は、TLS/SSL バインディングで使用されているため、削除できません。 証明書を削除できるようにするには、先に TLS バインディングを削除する必要があります。"
 
 #### <a name="cause"></a>原因
 
@@ -59,7 +59,7 @@ SSL バインディングを追加するときに、次のエラー メッセー
 
 #### <a name="solution"></a>解決策
 
-アプリからその証明書の SSL バインディングを削除します。 その後で証明書の削除を試みます。 それでも証明書を削除できない場合は、インターネット ブラウザーのキャッシュをクリアし、新しいブラウザー ウィンドウで再度 Azure Portal を開きます。 その後で証明書の削除を試みます。
+アプリからその証明書の TLS バインディングを削除します。 その後で証明書の削除を試みます。 それでも証明書を削除できない場合は、インターネット ブラウザーのキャッシュをクリアし、新しいブラウザー ウィンドウで再度 Azure Portal を開きます。 その後で証明書の削除を試みます。
 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>App Service 証明書を購入できない 
 
@@ -69,7 +69,7 @@ Azure Portal から [Azure App Service 証明書](./configure-ssl-certificate.md
 #### <a name="cause-and-solution"></a>原因と解決策
 この問題は、次のいずれかの理由で発生することがあります。
 
-- App Service プランが Free または Shared である。 これらの価格レベルでは SSL がサポートされていません。 
+- App Service プランが Free または Shared である。 これらの価格レベルでは TLS はサポートされていません。 
 
     **解決策**:アプリの App Service プランを Standard にアップグレードします。
 
@@ -165,7 +165,7 @@ Azure Portal から [Azure App Service 証明書](./configure-ssl-certificate.md
 
 ## <a name="domain-problems"></a>ドメインに関する問題
 
-### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>正しくないドメインの SSL 証明書を購入した
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>正しくないドメインの TLS/SSL 証明書を購入した
 
 #### <a name="symptom"></a>症状
 
@@ -306,7 +306,7 @@ Azure Portal 経由でドメインを購入した場合は、追加コストな�
 
 **サブスクリプションの別の Azure App Service アプリでドメインを使用できますか**
 
-はい。 Azure Portal でカスタム ドメインや SSL ブレードにアクセスすると、購入したドメインが表示されます。 これらのドメインのいずれかを使用するようにアプリを構成できます。
+はい。 Azure Portal でカスタム ドメインや TLS ブレードにアクセスすると、購入したドメインが表示されます。 これらのドメインのいずれかを使用するようにアプリを構成できます。
 
 **ドメインをあるサブスクリプションから別のサブスクリプションに転送できますか**
 

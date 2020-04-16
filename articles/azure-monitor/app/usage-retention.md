@@ -1,17 +1,17 @@
 ---
-title: Azure Application Insights による Web アプリケーションのユーザー リテンション期間分析 | Microsoft Docs
+title: Azure Application Insights による Web アプリのユーザー リテンション期間分析
 description: アプリに戻るユーザーの数を分析します。
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 37ae97d5fbc62e507f726c452999a7f6e7c989c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6d9be6bc6d7f90153e2fb58aa404e281568dbdd
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670969"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892412"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Azure Application Insights による Web アプリケーションのユーザー リテンション期間分析
 

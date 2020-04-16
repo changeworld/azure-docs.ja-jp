@@ -5,25 +5,27 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: f5944accb185f1311c811cf65a8ea8348fd569db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 065bbc62d65d7e91728b10cd9f95b2e73ea03abc
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77605613"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878733"
 ---
-# <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>ロジック アプリのリソースを別の Azure サブスクリプション、リソース グループ、またはリージョンに移動する
+# <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>ロジック アプリのリソースを別の Azure リソース グループ、リージョン、またはサブスクリプションに移動する
 
-ロジック アプリや関連リソースを別の Azure サブスクリプション、リソース グループ、またはリージョンに移行するタスクを完了する方法として、Azure portal、Azure PowerShell、Azure CLI、REST API など、さまざまな方法が用意されています。 リソースを移動する前に、次の考慮事項を確認してください。 
+ロジック アプリや関連リソースを別の Azure リソース グループ、リージョン、またはサブスクリプションに移行するタスクを完了する方法として、Azure portal、Azure PowerShell、Azure CLI、REST API など、さまざまな方法が用意されています。 リソースを移動する前に、次の考慮事項を確認してください。 
 
 * Azure のリソース グループまたはサブスクリプション間では、[特定の種類のロジック アプリのリソース](../azure-resource-manager/management/move-support-resources.md#microsoftlogic)のみを移動できます。
 
 * Azure サブスクリプションと各 Azure リージョンで使用できるロジック アプリのリソース数の[制限](../logic-apps/logic-apps-limits-and-config.md)を確認します。 これらの制限は、サブスクリプションまたはリソース グループ間でリージョンが同じままである場合に、特定のリソースの種類を移動できるかどうかに影響します。 たとえば、Free レベル統合アカウントは、各 Azure サブスクリプションの各 Azure リージョンに対して、1 つだけ設定できます。
 
+* リソースを移動すると、Azure によって新しいリソース ID が作成されます。 このため、代わりに新しい ID を使用して、移動したリソースに関連付けられているスクリプトまたはツールを更新してください。
+
 * サブスクリプション、リソース グループ、またはリージョン間でロジック アプリを移行した後は、Open Authorization (OAuth) を必要とするすべての接続を再作成または再認可する必要があります。
 
-* リソースを移動するたびに、Azure によって新しいリソース ID が作成されます。 このため、代わりに新しい ID を使用して、移動したリソースに関連付けられているスクリプトまたはツールを更新してください。
+* [統合サービス環境 (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) は、同じ Azure リージョンまたは Azure サブスクリプションに存在する別のリソース グループにのみ移動できます。 別の Azure リージョンまたは Azure サブスクリプションに存在するリソース グループに ISE を移動することはできません。 また、移動した後に、ロジック アプリのワークフロー、統合アカウント、接続などで、ISE へのすべての参照を更新する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,7 +55,7 @@ ms.locfileid: "77605613"
 
 ## <a name="move-resources-between-resource-groups"></a>リソース グループ間でリソースを移動する
 
-ロジック アプリや統合アカウントなどのリソースを別の Azure リソース グループに移動するには、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用します。 これらの手順では、リソースのリージョンが同じままの場合に使用できる Azure portal について説明します。 その他の手順や一般的な準備については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
+ロジック アプリや統合アカウント、または[統合サービス環境 (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) などのリソースを別の Azure リソース グループに移動するには、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用します。 これらの手順では、リソースのリージョンが同じままの場合に使用できる Azure portal について説明します。 その他の手順や一般的な準備については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
 
 グループ間でリソースを実際に移動する前に、リソースを別のグループに正常に移動できるかどうかをテストできます。 詳細については、「[移動の検証](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)」を参照してください。
 

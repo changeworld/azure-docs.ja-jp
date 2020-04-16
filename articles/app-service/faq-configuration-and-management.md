@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e7070e925d12df82adbc3683da5b10e48c5d4b0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942949"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668132"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -35,14 +35,14 @@ Azure web アプリでのカスタム ドメイン名の使用に関するよく
 App Service Web アプリのカスタム ドメインを購入して設定する方法については、「[Buy and configure a custom domain name in App Service](manage-custom-dns-buy-domain.md)」(App Service でカスタム ドメイン名を購入して構成する) を参照してください。
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Web アプリに既存の SSL 証明書をアップロードして構成するにはどうすればよいですか?
+## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>Web アプリに既存の TLS/SSL 証明書をアップロードして構成するにはどうすればよいですか?
 
-既存のカスタム SSL 証明書をアップロードして設定する方法については、[App Service アプリへの SSL 証明書の追加](configure-ssl-certificate.md)に関する記事を参照してください。
+既存のカスタム TLS/SSL 証明書をアップロードして設定する方法については、[使用している App Service アプリへの TLS/SSL 証明書の追加](configure-ssl-certificate.md)に関する記事を参照してください。
 
 
-## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Web アプリ用に Azure の新しい SSL 証明書を購入して構成するにはどうすれば良いですか?
+## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>自分の Web アプリ用に Azure の新しい TLS/SSL 証明書を購入して構成するにはどうすれば良いですか?
 
-App Service Web アプリの SSL 証明書を購入して設定する方法については、「[Add an SSL certificate to your App Service app」](configure-ssl-certificate.md)(App Service アプリに SSL 証明書を追加する) を参照してください。
+お使いの App Service Web アプリの TLS/SSL 証明書を購入して設定する方法については、[お使いの App Service アプリへの TLS/SSL 証明書の追加](configure-ssl-certificate.md)に関するページを参照してください。
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>Application Insights のリソースを移動するにはどうすればよいですか?
@@ -84,7 +84,7 @@ Web サイトが App Service Environment でホストされている場合、送
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Web アプリ用に着信 IP アドレスを予約または専用にするにはどうすればよいですか?
 
-Azure アプリ Web サイトへの着信呼び出し用 IP アドレスを専用にするまたは予約するには、IP ベースの SSL 証明書をインストールして構成します。
+お使いの Azure アプリ Web サイト用の専用の着信呼び出し IP アドレスを設定または予約するには、IP ベースの TLS/SSL 証明書をインストールして構成します。
 
 着信呼び出し用の専用または予約済みの IP アドレスを使用するには、App Service プランは、Basic 以上のサービス プランである必要があります。
 

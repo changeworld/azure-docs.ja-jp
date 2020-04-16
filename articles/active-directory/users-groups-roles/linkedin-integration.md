@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bf65f69d9dcaf6de2236c98b56b58ec7e021099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74025413"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755108"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Azure Active Directory で LinkedIn アカウント接続を統合します。
 
@@ -26,8 +26,9 @@ ms.locfileid: "74025413"
 
 > [!IMPORTANT]
 > LinkedIn アカウント接続の設定は、現在 Azure AD 組織にロールアウト中です。 組織にロールアウトされると、既定で有効になります。
-> 
+>
 > 例外:
+>
 > * 設定は、米国政府機関用 Microsoft Cloud、Microsoft Cloud Germany、または中国の 21 vianet によって運用される Azure および Office 365 を使用しているお客様はご利用いただけません。
 > * 設定は、ドイツでプロビジョニングされたテナントの既定によりオフになります。 Microsoft Cloud Germany を使用しているお客様は設定を使用できませんのでご注意ください。
 > * 設定は、フランスでプロビジョニングされたテナントの既定によりオフになります。
@@ -40,7 +41,7 @@ ms.locfileid: "74025413"
 
 1. Azure AD 組織のグローバル管理者のアカウントで [Azure AD 管理センター](https://aad.portal.azure.com/)にサインインします。
 1. **[ユーザー]** を選択します。
-1. **[ユーザー]** ウィンドウで、 **[ユーザー設定]** を選択します。
+1. **[ユーザー]** ページで、 **[ユーザー設定]** を選択します。
 1. **[LinkedIn アカウント接続]** で、ユーザーが自分のアカウントに接続して一部の Microsoft アプリ内で自分の LinkedIn 接続にアクセスすることを許可します。 ユーザーが自分のアカウントへの接続に同意するまで、データは共有されません。
 
     * **[はい]** を選択して組織内のすべてのユーザーに対してサービスを有効にする
@@ -55,7 +56,8 @@ ms.locfileid: "74025413"
 > LinkedIn の統合は、ユーザーがそのアカウントの接続に同意するまでは完全には有効になりません。 ユーザーのアカウント接続を有効にすると、データは共有されなくなります。
 
 ### <a name="assign-selected-users-with-a-group"></a>選択したユーザーにグループを割り当てる
-ユーザーの一覧を指定する「選択」オプションは、ユーザーのグループを選択するオプションに置き換えられました。これにより多くの個別のユーザーではなく 1 つのグループに LinkedIn アカウントと Microsoft アカウントを接続できるようになります。 選択した個々のユーザーに対して有効になっている LinkedIn アカウント接続を持っていない場合は、何もする必要はありません。 選択した個々のユーザーに対する LinkedIn アカウント接続を以前に有効にした場合には、次のようにする必要があります。
+
+ユーザーの一覧を指定する "選択" オプションは、ユーザーのグループを選択するオプションに置き換えられました。これにより多くの個別のユーザーではなく 1 つのグループに LinkedIn アカウントと Microsoft アカウントを接続できるようになります。 選択した個々のユーザーに対して有効になっている LinkedIn アカウント接続を持っていない場合は、何もする必要はありません。 選択した個々のユーザーに対する LinkedIn アカウント接続を以前に有効にした場合には、次のようにする必要があります。
 
 1. 個々のユーザーの現在の一覧を取得する
 1. 現在有効になっている個々のユーザーをグループに移行する
@@ -64,16 +66,12 @@ ms.locfileid: "74025413"
 > [!NOTE]
 > 現在選択されている個々のユーザーをグループに移行しない場合でも、Microsoft アプリで LinkedIn 情報を確認できます。
 
-### <a name="get-the-current-list-of-selected-users"></a>選択したユーザーの現在の一覧を取得する
+### <a name="move-currently-selected-users-to-a-group"></a>現在選択されているユーザーのグループへの移行
 
+1. LinkedIn アカウント接続に選択されているユーザーの CSV ファイルを作成します。
 1. 管理者アカウントで Microsoft 365 にサインインします。
-1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](https://linkedinselectedusermigration.azurewebsites.net/ ) にアクセスします。 LinkedIn アカウント接続に選択されているユーザーの一覧が表示されます。
-1. リストを CSV ファイルにエクスポートします。
-
-### <a name="move-the-currently-selected-individual-users-to-a-group"></a>現在選択されている個々のユーザーのグループへの移行
-
-1. PowerShell を起動する
-1. `Install-Module AzureAD` を実行した Azure AD モジュールのインストール
+1. PowerShell を起動します。
+1. `Install-Module AzureAD` の実行による Azure AD モジュールのインストール
 1. 次のスクリプトを実行します。
 
   ``` PowerShell
@@ -93,7 +91,7 @@ ms.locfileid: "74025413"
 1. [Office 2016 管理用テンプレート ファイル (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030) をダウンロードします。
 1. **ADMX** ファイルを抽出して中央のストアにコピーします。
 1. [グループ ポリシーの管理] を開きます。
-1. **[ユーザーの構成]**  >  **[管理用テンプレート]**  >  **[Microsoft Office 2016]**  >  **[その他]**  >  **[Show LinkedIn features in Office applications]\(Office アプリケーションに LinkedIn の機能を表示する\)** の設定でグループ ポリシー オブジェクトを作成します。
+1. 次の設定を使用してグループ ポリシー オブジェクトを作成します。 **[ユーザーの構成]**  >  **[管理用テンプレート]**  >  **[Microsoft Office 2016]**  >  **[その他]**  >  **[LinkedIn の機能を Office アプリケーションで表示]** 。
 1. **[有効]** または **[無効]** を選択します。
   
    State | 結果

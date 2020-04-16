@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 70256046089a59df1de79b78124c5d60fde77080
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41893c2460ecb2d17e3893f867bc460105d57bbd
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705940"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887216"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Media Services v3 を使用した iOS 用のオフラインの FairPlay ストリーミング
 
@@ -203,45 +203,7 @@ FPS Server SDK のバージョン 3 またはバージョン 4 サンプルで�
 
 ## <a name="faq"></a>よく寄せられる質問
 
-次のよく寄せられる質問は、トラブルシューティングに役立ちます。
-
-- **オフライン モードの間は、オーディオのみが再生されて、ビデオは再生されないのはなぜですか。** この動作は、サンプル アプリの本来の設計のようです。 代替オーディオ トラックがある場合 (HLS の場合)、オフライン モードでは、iOS 10 と iOS 11 の両方が、既定で代替オーディオ トラックになります。FPS オフライン モードでこの動作を補正するには、ストリームから代替オーディオ トラックを削除します。 Media Services 側でこれを行うには、動的マニフェスト フィルター "audio-only=false" を追加します。 つまり、HLS URL の最後が .ism/manifest(format=m3u8-aapl,audio-only=false) になります。 
-- **audio-only=false を追加した後もまだ、オフライン モードの間は、オーディオのみが再生されて、ビデオが再生されないのはなぜですか。** コンテンツ配信ネットワーク (CDN) キャッシュ キーの設計によっては、コンテンツがキャッシュされることがあります。 キャッシュを消去します。
-- **FPS オフライン モードは、iOS 10 だけでなく iOS 11 でもサポートされますか。** はい。 FPS オフライン モードは iOS 10 と iOS 11 でサポートされています。
-- **ドキュメント『Offline Playback with FairPlay Streaming and HTTP Live Streaming』(FairPlay Streaming と HTTP ライブ ストリーミングでのオフライン再生) が FPS Server SDK で見つからないのはなぜですか。** FPS Server SDK バージョン 4 以降、このドキュメントは『FairPlay Streaming Programming Guide』(FairPlay Streaming プログラミング ガイド) にまとめられています。
-- **iOS デバイスでのダウンロード済み/オフライン ファイルの構造はどのようなものですか。** iOS デバイスにダウンロードされたファイルは、次のスクリーンショットのような構造になっています。 `_keys` フォルダーには、ダウンロードされた FPS ライセンスが格納されます (ライセンス サービス ホストごとに 1 つのストア ファイル)。 `.movpkg` フォルダーには、オーディオとビデオのコンテンツが格納されます。 名前の末尾にダッシュと数字が付いている最初のフォルダーには、ビデオ コンテンツが格納されます。 数字はビデオ再生の PeakBandwidth です。 名前の末尾にダッシュと 0 が付いている 2 つ目のフォルダーには、オーディオ コンテンツが格納されます。 "Data" という名前の 3 番目のフォルダーには、FPS コンテンツのマスター再生リストが含まれます。 最後に、boot.xml には、`.movpkg` フォルダーの内容が完全に説明されています。 
-
-![オフライン FairPlay の iOS サンプル アプリ ファイルの構造](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
-
-boot.xml ファイルのサンプル:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
-  <Version>1.0</Version>
-  <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
-  <Streams>
-    <Stream ID="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" Path="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(127000)/Manifest(aac_eng_2_127,format=m3u8-aapl)">
-      <Complete>YES</Complete>
-    </Stream>
-    <Stream ID="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" Path="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(161000)/Manifest(video,format=m3u8-aapl)">
-      <Complete>YES</Complete>
-    </Stream>
-  </Streams>
-  <MasterPlaylist>
-    <NetworkURL>https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/manifest(format=m3u8-aapl,audio-only=false)</NetworkURL>
-  </MasterPlaylist>
-  <DataItems Directory="Data">
-    <DataItem>
-      <ID>CB50F631-8227-477A-BCEC-365BBF12BCC0</ID>
-      <Category>Playlist</Category>
-      <Name>master.m3u8</Name>
-      <DataPath>Playlist-master.m3u8-CB50F631-8227-477A-BCEC-365BBF12BCC0.data</DataPath>
-      <Role>Master</Role>
-    </DataItem>
-  </DataItems>
-</HLSMoviePackage>
-```
+[トラブルシューティングに役立つよく寄せられる質問](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

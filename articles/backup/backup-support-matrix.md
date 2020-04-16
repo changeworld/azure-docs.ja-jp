@@ -3,12 +3,12 @@ title: Azure Backup のサポート マトリックス
 description: Azure Backup サービスのサポート設定と制限事項の概要を説明します。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: d036e527880a98d323e8de2f3a8721d7e12dbb07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 120882b15dcf9f27c280984ff6d0df31e38ebb73
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233867"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878954"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -151,7 +151,7 @@ Azure Backup に、データの可用性と回復性の機能を強化するた�
 
 | バックアップの管理の種類 | サポートされています                                                    | サポートされているリージョン |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | はい。 暗号化された VM と 4 TB 未満のディスクがある VM ではパブリック限定プレビューがサポートされます | 米国中西部   |
+| Azure VM               | はい。   暗号化された VM と 4 TB 未満のディスクがある VM でのサポート | すべての Azure パブリック リージョン。  |
 | MARS エージェント/オンプレミス | いいえ                                                           | 該当なし               |
 | SQL/SAP HANA          | いいえ                                                           | 該当なし               |
 | AFS                    | いいえ                                                           | 該当なし               |

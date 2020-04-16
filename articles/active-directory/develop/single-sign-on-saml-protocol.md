@@ -1,28 +1,24 @@
 ---
-title: Azure でのシングル サインオンの SAML プロトコル | Microsoft Docs
+title: Azure シングル サインオンの SAML プロトコル
 description: この記事では、Azure Active Directory でのシングル サインオン SAML プロトコルについて説明します。
 services: active-directory
 documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: cecb78a82eb2925813bdc7f6df2503fae94b6437
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1437ec5d9c3fd0ff69be0c884c340cb857ee181
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230531"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881284"
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
 
@@ -57,11 +53,11 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 Consent、Destination、AssertionConsumerServiceIndex、AttributeConsumerServiceIndex、ProviderName など、他の `AuthnRequest` 属性はすべて**無視**されます。
 
-Azure AD は、`Conditions` の `AuthnRequest` 要素も無視します。
+Azure AD は、`AuthnRequest` の `Conditions` 要素も無視します。
 
 ### <a name="issuer"></a>発行者
 
-`Issuer` の `AuthnRequest` 要素は、Azure AD でのクラウド サービスの **ServicePrincipalNames** のいずれかと厳密に一致する必要があります。 通常、これはアプリケーション登録時に指定される **App ID URI** に設定されます。
+`AuthnRequest` の `Issuer` 要素は、Azure AD でのクラウド サービスの **ServicePrincipalNames** のいずれかと厳密に一致する必要があります。 通常、これはアプリケーション登録時に指定される **App ID URI** に設定されます。
 
 次のサンプルは、`Issuer` 要素を含む SAML の抜粋です。
 
@@ -81,15 +77,15 @@ Azure AD は、`Conditions` の `AuthnRequest` 要素も無視します。
 
 `NameIDPolicy` を指定する場合は、省略可能な `Format` 属性を含めることができます。 `Format` 属性で指定できる値は次のいずれかのみであり、それ以外の値はエラーになります。
 
-* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`: Azure Active Directory は、一対の識別子として NameID 要求を発行します。
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`: Azure Active Directory は、電子メール アドレス形式で NameID 要求を発行します。
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Azure Active Directory が要求の形式を選択できるようにします。 Azure Active Directory は、一対の識別子として NameID 要求を発行します。
-* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Azure Active Directory は、現在の SSO 操作に固有となる無作為に生成された値として NameID 要求を発行します。 つまり、値は一時的であり、認証ユーザーの識別に使うことはできません。
+* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`:Azure Active Directory は、一対の識別子として NameID 要求を発行します。
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`:Azure Active Directory は、電子メール アドレス形式で NameID 要求を発行します。
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`:この値は、Azure Active Directory が要求の形式を選択することを許可します。 Azure Active Directory は、一対の識別子として NameID 要求を発行します。
+* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`:Azure Active Directory は、現在の SSO 操作に固有となる無作為に生成された値として NameID 要求を発行します。 つまり、値は一時的であり、認証ユーザーの識別に使うことはできません。
 
 Azure AD は `AllowCreate` 属性を無視します。
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
-`RequestedAuthnContext` 要素は、必要な認証方法を指定します。 Azure AD に送信される `AuthnRequest` 要素では省略可能です。 Azure AD では、`AuthnContextClassRef` などの `urn:oasis:names:tc:SAML:2.0:ac:classes:Password` 値をサポートしています。
+`RequestedAuthnContext` 要素は、必要な認証方法を指定します。 Azure AD に送信される `AuthnRequest` 要素では省略可能です。 Azure AD では、`urn:oasis:names:tc:SAML:2.0:ac:classes:Password` などの `AuthnContextClassRef` 値をサポートしています。
 
 ### <a name="scoping"></a>Scoping
 ID プロバイダーのリストが含まれる `Scoping` 要素は、Azure AD に送信される `AuthnRequest` 要素では省略可能です。
@@ -97,10 +93,10 @@ ID プロバイダーのリストが含まれる `Scoping` 要素は、Azure AD 
 指定する場合は、`ProxyCount` 属性、`IDPListOption` 要素、または `RequesterID` 要素を使用しないでください。これらはサポートされていません。
 
 ### <a name="signature"></a>署名
-`Signature` 要素には `AuthnRequest` 要素を含めないでください。Azure AD は署名付き認証要求をサポートしていません。
+`AuthnRequest` 要素には `Signature` 要素を含めないでください。Azure AD は署名付き認証要求をサポートしていません。
 
 ### <a name="subject"></a>サブジェクト
-Azure AD は、`Subject` 要素の `AuthnRequest` 要素を無視します。
+Azure AD は、`AuthnRequest` 要素の `Subject` 要素を無視します。
 
 ## <a name="response"></a>Response
 要求されたサインオンが正常に完了すると、Azure AD はクラウド サービスに応答を送信します。 サインオンに成功した場合、次のサンプルのような応答が返されます。
@@ -150,10 +146,10 @@ Azure AD は、`Subject` 要素の `AuthnRequest` 要素を無視します。
 
 ### <a name="response"></a>Response
 
-`Response` 要素には、承認要求の結果が含まれます。 Azure AD は、`ID` 要素の `Version`、`IssueInstant`、`Response` の値を設定します。 また、次の属性も設定します。
+`Response` 要素には、承認要求の結果が含まれます。 Azure AD は、`Response` 要素の `ID`、`Version`、`IssueInstant` の値を設定します。 また、次の属性も設定します。
 
-* `Destination`: サインオンが正常に完了すると、この属性にはサービス プロバイダー (クラウド サービス) の `RedirectUri` が設定されます。
-* `InResponseTo`: この属性には、応答を開始した `ID` 要素の `AuthnRequest` 属性が設定されます。
+* `Destination`:サインオンが正常に完了すると、サービス プロバイダー (クラウド サービス) の `RedirectUri` が設定されます。
+* `InResponseTo`:応答を開始した `AuthnRequest` 要素の `ID` 属性が設定されます。
 
 ### <a name="issuer"></a>発行者
 
@@ -214,7 +210,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 
 この要素は、アサーションのステートメントのサブジェクトであるプリンシパルを指定します。 認証されたユーザーを表す `NameID` 要素が含まれます。 `NameID` の値は、トークンの対象であるサービス プロバイダーに対してのみ送信される限定的な識別子です。 永続的であり、取り消すことはできますが、再割り当てはされません。 また、非透過的であるため、ユーザーについての情報はわからず、属性クエリに対する識別子としては使用できません。
 
-`Method` 要素の `SubjectConfirmation` 属性は、常に `urn:oasis:names:tc:SAML:2.0:cm:bearer` に設定されます。
+`SubjectConfirmation` 要素の `Method` 属性は、常に `urn:oasis:names:tc:SAML:2.0:cm:bearer` に設定されます。
 
 ```
 <Subject>
@@ -239,12 +235,12 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 
 `NotBefore` および `NotOnOrAfter` 属性は、アサーションが有効である期間を指定します。
 
-* `NotBefore` 属性の値は、`IssueInstant` 要素の `Assertion` 属性と同じか、またはそれよりもわずかに (1 秒未満) 後です。 Azure AD では、それ自体とクラウド サービス (サービス プロバイダー) 間の時間の違いは考慮されず、この時間に対するバッファーは追加されません。
+* `NotBefore` 属性の値は、`Assertion` 要素の `IssueInstant` 属性と同じか、またはそれよりもわずかに (1 秒未満) 後です。 Azure AD では、それ自体とクラウド サービス (サービス プロバイダー) 間の時間の違いは考慮されず、この時間に対するバッファーは追加されません。
 * `NotOnOrAfter` 属性の値は、`NotBefore` 属性の値より 70 分後です。
 
 #### <a name="audience"></a>対象ユーザー
 
-この要素には、対象を識別する URI が含まれます。 Azure AD は、この要素の値に、サインオンを開始した `Issuer` の `AuthnRequest` 要素の値を設定します。 `Audience` の値を評価するには、アプリケーション登録時に指定された `App ID URI` の値を使用します。
+この要素には、対象を識別する URI が含まれます。 Azure AD は、この要素の値に、サインオンを開始した `AuthnRequest` の `Issuer` 要素の値を設定します。 `Audience` の値を評価するには、アプリケーション登録時に指定された `App ID URI` の値を使用します。
 
 ```
 <AudienceRestriction>
@@ -252,7 +248,7 @@ Azure AD は、サインオンが成功すると応答のアサーションに�
 </AudienceRestriction>
 ```
 
-`Issuer` の値と同様に、`Audience` の値は Azure AD でクラウド サービスを表すサービス プリンシパル名のいずれかと厳密に一致する必要があります。 ただし、`Issuer` 要素の値が URI 値ではない場合は、応答の `Audience` の値は、プレフィックス `Issuer` が付加された `spn:` 値になります。
+`Issuer` の値と同様に、`Audience` の値は Azure AD でクラウド サービスを表すサービス プリンシパル名のいずれかと厳密に一致する必要があります。 ただし、`Issuer` 要素の値が URI 値ではない場合は、応答の `Audience` の値は、プレフィックス `spn:` が付加された `Issuer` 値になります。
 
 #### <a name="attributestatement"></a>AttributeStatement
 

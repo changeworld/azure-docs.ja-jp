@@ -10,16 +10,16 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c52a1212d160adce3a0a0638164833bc2907a856
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76515005"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521183"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Azure Lab Services での Windows テンプレート マシンの設定に関するガイド
 
-Azure Lab Services 用に Windows 10 テンプレート マシンを設定する場合に、考慮すべきベスト プラクティスとヒントをいくつか以下に示します。 以下の構成手順はすべて省略可能です。  しかし、これらの準備手順は、学生が生産性を高め、授業時間の中断を最小限に抑え、学生が確実に最新のテクノロジを使用するようにするのに役立つ場合があります。
+Azure Lab Services 用に Windows 10 テンプレート マシンを設定する場合の考慮すべきベスト プラクティスとヒントをいくつか以下に示します。 以下の構成手順はすべて省略可能です。  しかし、これらの準備手順は、学生が生産性を高め、授業時間の中断を最小限に抑え、学生が確実に最新のテクノロジを使用するようにするのに役立つ場合があります。
 
 >[!IMPORTANT]
 >この記事には、マシン テンプレートの変更プロセスを効率化するための PowerShell スニペットが含まれています。  表示されているすべての PowerShell スクリプトについては、Windows PowerShell で管理者特権を使用して実行する必要があります。 Windows 10 でこれを行う簡単な方法は、[スタート] メニューを右クリックし、[Windows PowerShell (管理者)] を選択することです。
@@ -133,7 +133,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 
 ### <a name="install-microsoft-office-365"></a>Microsoft Office 365 をインストールする
 
-お使いのテンプレート マシンで Office が必要な場合は、[Office 展開ツール (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 ) を使用して、Office をインストールすることをお勧めします。 [Office 365 クライアント構成サービス](https://config.office.com/)を使用して再利用可能な構成ファイルを作成し、アーキテクチャ、必要となる Office の機能、その更新頻度を選択する必要があります。
+お使いのテンプレート マシンで Office が必要な場合は、[Office 展開ツール (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 ) を使用して、Office をインストールすることをお勧めします。 [Office 365 クライアント構成サービス](https://config.office.com/)を使用して、再利用可能な構成ファイルを作成し、アーキテクチャ、必要となる Office の機能、その更新頻度を選択する必要があります。
 
 1. [Office 365 クライアント構成サービス](https://config.office.com/)に移動し、独自の構成ファイルをダウンロードします。
 2. [Office 展開ツール](https://www.microsoft.com/download/details.aspx?id=49117)をダウンロードします。  ダウンロードされるファイルは `setup.exe` です。
@@ -234,3 +234,6 @@ Windows ストア アプリでの教育によく使用される、その他の�
 ## <a name="conclusion"></a>まとめ
 
 この記事では、効果的なクラスのために Windows テンプレート VM を準備する、省略可能な手順を示しました。  手順には、OneDrive のインストールと Office 365 のインストール、Windows 用の更新プログラムのインストールおよび Microsoft Store アプリ用の更新プログラムのインストールが含まれます。  また、クラスに最適なスケジュールに更新プログラムを設定する方法について説明しました。  
+
+## <a name="next-steps"></a>次のステップ
+コスト管理に役立つ、Windows のシャットダウン動作を制御する方法に関する記事を参照してください。「[Windows シャットダウン動作の制御ガイド](how-to-windows-shutdown.md)」

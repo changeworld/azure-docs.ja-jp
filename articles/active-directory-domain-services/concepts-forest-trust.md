@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 8b79e0fb24c15d2e9f16640e90d62f7df5c21f32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74234424"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476444"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services のリソース フォレストに対する信頼関係のしくみ
 

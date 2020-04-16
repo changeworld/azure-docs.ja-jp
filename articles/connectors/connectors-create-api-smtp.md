@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77647571"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657000"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Azure Logic Apps を使用して SMTP アカウントから電子メールを送信する
 
@@ -56,7 +56,7 @@ Azure Logic Apps と簡易メール転送プロトコル (SMTP) コネクタを�
    | **ユーザー名** | はい | SMTP アカウントのユーザー名 | 
    | **パスワード** | はい | SMTP アカウントのパスワード | 
    | **SMTP サーバー ポート** | いいえ | 使用する SMTP サーバー上の特定のポート | 
-   | **SSL を有効にしますか?** | いいえ | SSL 暗号化を有効または無効にします。 | 
+   | **SSL を有効にしますか?** | いいえ | TLS または SSL での暗号化を有効または無効にする | 
    |||| 
 
 1. 選択したアクションで必要な詳細を指定します。 

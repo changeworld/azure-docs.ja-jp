@@ -4,116 +4,147 @@ description: Azure VM ディザスター リカバリーでの接続に関する
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
-ms.date: 08/05/2019
-ms.openlocfilehash: b082e1aca094dcb335a7268e4c116376d756fd3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80292027"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884870"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure 間の VM ネットワーク接続の問題のトラブルシューティング
 
-この記事では、あるリージョンから別のリージョンに Azure 仮想マシンをレプリケートして復旧するときのネットワーク接続に関連する一般的な問題について説明します。 ネットワーク要件の詳細については、[Azure VM をレプリケートするための接続要件](azure-to-azure-about-networking.md)に関するページを参照してください。
+この記事では、あるリージョンから別のリージョンに Azure 仮想マシン (VM) をレプリケートして復旧するときのネットワーク接続に関連する一般的な問題について説明します。 ネットワーク要件の詳細については、[Azure VM をレプリケートするための接続要件](azure-to-azure-about-networking.md)に関するページを参照してください。
 
 Site Recovery レプリケーションを動作させるには、VM から特定の URL または IP 範囲への送信接続が必要です。 VM がファイアウォールの内側にあるか、ネットワーク セキュリティ グループ (NSG) ルールを使用して送信接続を制御している場合は、次のいずれかの問題に直面することがあります。
 
-**URL** | **詳細**  
---- | ---
-*.blob.core.windows.net | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。 お使いの VM のすべてのキャッシュ ストレージ アカウントを把握している場合、*.blob.core.windows.net の代わりに、特定のストレージ アカウントの URL (たとえば、cache1.blob.core.windows.net および cache2.blob.core.windows.net) を許可リストに登録できます。
-login.microsoftonline.com | Site Recovery サービス URL に対する承認と認証に必要です。
-*.hypervrecoverymanager.windowsazure.com | VM から Site Recovery サービス通信を実行できるようにするために必要です。 ファイアウォール プロキシによって IP がサポートされている場合は、該当する 'Site Recovery IP' を使用できます。
-*.servicebus.windows.net | VM から Site Recovery の監視および診断データを書き込むことができるようにするために必要です。 ファイアウォール プロキシによって IP がサポートされている場合は、該当する 'Site Recovery Monitoring IP' を使用できます。
+| URL | 詳細 |
+|---|---|
+| `*.blob.core.windows.net` | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。 VM のすべてのキャッシュ ストレージ アカウントを把握している場合は、特定のストレージ アカウント URL に対して許可リストを使用できます。 たとえば、`*.blob.core.windows.net` ではなく、`cache1.blob.core.windows.net` や `cache2.blob.core.windows.net` などです。 |
+| `login.microsoftonline.com` | Site Recovery サービス URL に対する承認と認証に必要です。 |
+| `*.hypervrecoverymanager.windowsazure.com` | VM から Site Recovery サービス通信を実行できるようにするために必要です。 ファイアウォール プロキシによって IP がサポートされている場合は、該当する _Site Recovery IP_ を使用できます。 |
+| `*.servicebus.windows.net` | VM から Site Recovery の監視および診断データを書き込むことができるようにするために必要です。 ファイアウォール プロキシによって IP がサポートされている場合は、該当する _Site Recovery Monitoring IP_ を使用できます。 |
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Recovery URL または IP 範囲の送信接続 (エラー コード 151037 または 151072)
 
-## <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a><a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>問題 1: Azure 仮想マシンを Site Recovery に登録できませんでした (151195) </br>
-- **考えられる原因** </br>
-  - DNS を解決できないため、Site Recovery エンドポイントへの接続を確立できません。
-  - これが頻繁に発生するのは、仮想マシンをフェールオーバーして再保護を行っているときに、DR リージョンから DNS サーバーに到達できない場合です。
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195"></a>問題 1:Azure 仮想マシンを Site Recovery に登録できませんでした (151195)
 
-- **解決策**
-   - カスタム DNS を使っている場合は、ディザスター リカバリー リージョンから DNS サーバーにアクセスできることを確認します。 カスタム DNS かどうかを確認するには、VM > ディザスター リカバリー ネットワーク > DNS サーバーに移動します。 仮想マシンから DNS サーバーにアクセスしてみます。 アクセスできない場合は、DNS サーバーをフェールオーバーするか、または DR ネットワークと DNS の間にサイトのラインを作成して、アクセスできるようにします。
+#### <a name="possible-cause"></a>考えられる原因
 
-    ![com-error](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
+ドメイン ネーム システム (DNS) を解決できないため、Site Recovery エンドポイントとの接続を確立できません。 この問題が頻繁に発生するのは、VM をフェールオーバーして再保護を行っているときに、ディザスター リカバリー (DR) リージョンから DNS サーバーに到達できない場合です。
 
+#### <a name="resolution"></a>解像度
 
-## <a name="issue-2-site-recovery-configuration-failed-151196"></a>問題 2:Site Recovery の構成に失敗しました (151196)
+カスタム DNS を使っている場合は、ディザスター リカバリー リージョンから DNS サーバーにアクセスできることを確認します。
+
+VM がカスタム DNS 設定を使用するかどうかを確認するには、次を実行します。
+
+1. **[仮想マシン]** を開いて、VM を選択します。
+1. VM の **[設定]** に移動し、 **[ネットワーク]** を選択します。
+1. **[仮想ネットワークとサブネット]** では、仮想ネットワークのリソース ページを開くためのリンクを選択します。
+1. **[設定]** に移動して、 **[DNS サーバー]** を選択します。
+
+仮想マシンから DNS サーバーにアクセスを試みます。 DNS サーバーにアクセスできない場合は、DNS サーバーをフェールオーバーするか、または DR ネットワークと DNS の間にサイトのラインを作成して、アクセスできるようにします。
+
+  :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/custom_dns.png" alt-text="com-error":::
+
+### <a name="issue-2-site-recovery-configuration-failed-151196"></a>問題 2:Site Recovery の構成に失敗しました (151196)
 
 > [!NOTE]
-> 仮想マシンが **Standard** 内部ロード バランサーの背後にある場合、既定では O365 IP (つまり login.microsoftonline.com) にアクセスできません。 これを **Basic** 内部ロード バランサーの種類に変更するか、この[記事](https://aka.ms/lboutboundrulescli)の説明に従ってアウトバインド アクセスを作成します。
+> VM が **Standard** 内部ロード バランサーの背後にある場合、既定では、`login.microsoftonline.com` などの Office 365 IP にアクセスすることはできません。 記事「[Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する](/azure/load-balancer/configure-load-balancer-outbound-cli)」の説明に従って、内部ロード バランサーの種類を **Basic** に変更するか、発信アクセスを作成します。
 
-- **考えられる原因** </br>
-  - Office 365 認証と ID IP4 エンドポイントへの接続を確立できません。
+#### <a name="possible-cause"></a>考えられる原因
 
-- **解決策**
-  - Azure Site Recovery では、認証のために Office 365 の IP 範囲にアクセスする必要がありました。
-    VM での発信ネットワーク接続の制御に Azure ネットワーク セキュリティ グループ (NSG) のルール/ファイアウォール プロキシを使っている場合は、確実に O365 の IP 範囲への通信を許可します。 Azure Active Directory (Azure AD) に対応するすべての IP アドレスへのアクセスを許可するには、[Azure AD サービス タグ](../virtual-network/security-overview.md#service-tags) ベースの NSG 規則を作成します。
-      - 今後、新しいアドレスが Azure AD に追加された場合は、新しい NSG 規則を作成する必要があります。
+Office 365 認証と ID IP4 エンドポイントへの接続を確立できません。
+
+#### <a name="resolution"></a>解像度
+
+- Azure Site Recovery では、認証のために Office 365 の IP 範囲にアクセスする必要があります。
+- VM での発信ネットワーク接続の制御に Azure ネットワーク セキュリティ グループ (NSG) のルールやファイアウォール プロキシを使用している場合は、Office 365 の IP 範囲への通信を確実に許可します。 Azure Active Directory (Azure AD) に対応するすべての IP アドレスへのアクセスを許可するには、[Azure Active Directory (Azure AD) サービス タグ](/azure/virtual-network/security-overview#service-tags) ベースの NSG 規則を作成します。
+- 今後、新しいアドレスが Azure AD に追加された場合は、新しい NSG 規則を作成する必要があります。
 
 ### <a name="example-nsg-configuration"></a>NSG 構成の例
 
 この例は、レプリケートする VM に対して NSG ルールを構成する方法を示しています。
 
-- NSG ルールを使用して送信接続を制御している場合は、必要なすべての IP アドレス範囲のポート 443 に対して "HTTPS 送信を許可" ルールを使用します。
-- この例では、VM ソースの場所は "米国東部" で、ターゲットの場所は "米国中部" であると仮定します。
+- NSG ルールを使用して送信接続を制御している場合は、必要なすべての IP アドレス範囲のポート 443 に対して、"**HTTPS 送信を許可**" ルールを使用します。
+- この例では、VM ソースの場所は**米国東部**で、ターゲットの場所は**米国中部**であると仮定します。
 
-### <a name="nsg-rules---east-us"></a>NSG ルール - 米国東部
+#### <a name="nsg-rules---east-us"></a>NSG ルール - 米国東部
 
-1. 次のスクリーンショットで示すように、NSG 上の "Storage.EastUS" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。
+1. 次のスクリーンショットで示すように、NSG の HTTPS 送信セキュリティ ルールを作成します。 この例では、次の **[宛先サービス タグ]** を使用します。_Storage.EastUS_ および **[宛先ポート範囲]** : _443_。
 
-      ![storage-tag](./media/azure-to-azure-about-networking/storage-tag.png)
+     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="storage-tag":::
 
-2. 次のスクリーンショットで示すように、NSG 上の "AzureActiveDirectory" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。
+1. 次のスクリーンショットで示すように、NSG の HTTPS 送信セキュリティ ルールを作成します。 この例では、次の **[宛先サービス タグ]** を使用します。_AzureActiveDirectory_ および **[宛先ポート範囲]** : _443_。
 
-      ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
+     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="aad-tag":::
 
-3. ターゲットの場所に対応する Site Recovery IP に対して、送信方向の HTTPS (443) ルールを作成します。
+1. ターゲットの場所に対応する Site Recovery IP に対して、HTTPS ポート 443 アウトバウンド規則を作成します。
 
-   **場所** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
-    --- | --- | ---
-   米国中部 | 40.69.144.231 | 52.165.34.144
+   | 場所 | Site Recovery IP アドレス | Site Recovery 監視 IP アドレス |
+   | --- | --- | --- |
+   | 米国中部 | 40.69.144.231 | 52.165.34.144 |
 
-### <a name="nsg-rules---central-us"></a>NSG ルール - 米国中部
+#### <a name="nsg-rules---central-us"></a>NSG ルール - 米国中部
 
-フェールオーバー後にターゲット リージョンからソース リージョンへのレプリケーションが有効になるようにするには、次のルールが必要です。
+この例では、フェールオーバー後にターゲット リージョンからソース リージョンへのレプリケーションが有効になるようにするには、以下の NSG ルールが必要です。
 
-1. NSG 上の "Storage.CentralUS" に対して、送信方向の HTTPS (443) セキュリティ ルールを作成します。
+1. _Storage.CentralUS_ に対して、HTTPS 送信セキュリティ ルールを作成します。
 
-2. NSG 上の "AzureActiveDirectory" に対して送信方向の HTTPS (443) セキュリティ規則を作成します。
+   - **[宛先サービス タグ]** : _Storage.CentralUS_
+   - **[宛先ポート範囲]** : _443_
 
-3. ソースの場所に対応する Site Recovery IP に対して、送信方向の HTTPS (443) ルールを作成します。
+1. _AzureActiveDirectory_ に対して、HTTPS 送信セキュリティ ルールを作成します。
 
-   **場所** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
-    --- | --- | ---
-   米国中部 | 13.82.88.226 | 104.45.147.24
-## <a name="issue-3-site-recovery-configuration-failed-151197"></a>問題 3:Site Recovery の構成に失敗しました (151197)
-- **考えられる原因** </br>
-  - Azure Site Recovery サービスのエンドポイントに対する接続を確立できません。
+   - **[宛先サービス タグ]** : _AzureActiveDirectory_
+   - **[宛先ポート範囲]** : _443_
 
-- **解決策**
-  - Azure Site Recovery では、リージョンに基づいて [Site Recovery の IP 範囲](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-using-service-tags)にアクセスする必要がありました。 必要な IP 範囲に仮想マシンからアクセスできることを確認します。
+1. ソースの場所に対応する Site Recovery IP に対して、HTTPS ポート 443 アウトバウンド規則を作成します。
 
+   | 場所 | Site Recovery IP アドレス | Site Recovery 監視 IP アドレス |
+   | --- | --- | --- |
+   | 米国東部 | 13.82.88.226 | 104.45.147.24 |
 
-## <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>問題 4:ネットワーク トラフィックがオンプレミス プロキシ サーバーを経由するときに A2A レプリケーションが失敗しました (151072)
-- **考えられる原因** </br>
-  - カスタム プロキシ設定が無効であり、Azure Site Recovery Mobility Service エージェントが IE からプロキシ設定を自動検出しませんでした
+### <a name="issue-3-site-recovery-configuration-failed-151197"></a>問題 3:Site Recovery の構成に失敗しました (151197)
 
+#### <a name="possible-cause"></a>考えられる原因
 
-- **解決策**
-  1. モビリティ サービス エージェントは、Windows では IE から、Linux では /etc/environment からプロキシ設定を検出します。
-  2. プロキシを Azure Site Recovery Mobility Service にのみ設定する場合は、次の場所にある ProxyInfo.conf 内にプロキシの詳細を指定できます。</br>
-     - ***Linux*** の場合は ``/usr/local/InMage/config/``
-     - ***Windows*** の場合は ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
-  3. ProxyInfo.conf 内のプロキシ設定は、次の INI 形式になっている必要があります。</br>
-                *[proxy]*</br>
-                *Address=http://1.2.3.4*</br>
-                *Port=567*</br>
-  4. Azure Site Recovery Mobility Service エージェントは、"***認証されていないプロキシ***" のみをサポートします。
+Azure Site Recovery サービスのエンドポイントに対する接続を確立できません。
+
+#### <a name="resolution"></a>解像度
+
+Azure Site Recovery では、リージョンに基づいて [Site Recovery の IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)にアクセスする必要がありました。 必要な IP 範囲に VM からアクセスできることを確認します。
+
+### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>問題 4:ネットワーク トラフィックがオンプレミス プロキシ サーバーを経由するときに Azure 間レプリケーションが失敗しました (151072)
+
+#### <a name="possible-cause"></a>考えられる原因
+
+カスタム プロキシ設定が無効であり、Azure Site Recovery Mobility Service エージェントが Internet Explorer (IE) からプロキシ設定を自動検出しませんでした。
+
+#### <a name="resolution"></a>解像度
+
+1. モビリティ サービス エージェントは、Windows では IE から、Linux では `/etc/environment` からプロキシ設定を検出します。
+1. プロキシを Azure Site Recovery Mobility Service にのみ設定する場合は、次の場所にある _ProxyInfo.conf_ 内にプロキシの詳細を指定できます。
+
+   - **Linux**: `/usr/local/InMage/config/`
+   - **Windows**: `C:\ProgramData\Microsoft Azure Site Recovery\Config`
+
+1. _ProxyInfo.conf_ 内のプロキシ設定は、次の _INI_ 形式になっている必要があります。
+
+   ```plaintext
+   [proxy]
+   Address=http://1.2.3.4
+   Port=567
+   ```
+
+> [!NOTE]
+> Azure Site Recovery Mobility Service エージェントでは、**認証されていないプロキシ**のみがサポートされます
 
 ### <a name="fix-the-problem"></a>問題の解決
+
 [必要な URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) または[必要な IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)を許可するには、[ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)の次の手順に従ってください。
 
-
 ## <a name="next-steps"></a>次のステップ
-[Azure 仮想マシンのレプリケート](site-recovery-replicate-azure-to-azure.md)
+
+[Azure VM を別の Azure リージョンにレプリケートする](azure-to-azure-how-to-enable-replication.md)

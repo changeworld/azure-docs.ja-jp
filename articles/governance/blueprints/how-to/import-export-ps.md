@@ -3,16 +3,16 @@ title: PowerShell を使用してブループリント定義のインポート�
 description: ブループリント定義をコードとして使用する方法について説明します。 export コマンドと import コマンドを使用して、それらの共有、ソース管理、および管理を行います。
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: fc7b9818072665d79deaf8a456868943e8428730
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873201"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677137"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>PowerShell を使用したブループリント定義のインポートとエクスポート
 
-Azure Blueprints は、Azure portal で完全に管理できます。 組織が Blueprints の使用を進める場合、ブループリント定義をマネージド コードとして考える必要があります。 この概念は、多くの場合、Infrastructure as Code (IaC) と呼ばれます。 ブループリント定義をコードとして扱うことは、Azure portal の機能にはない利点があります。 次のような利点があります。
+Azure Blueprints は、Azure portal で完全に管理できます。 組織では、Azure Blueprints の使用を進める場合、ブループリント定義をマネージド コードとして考える必要があります。 この概念は、多くの場合、Infrastructure as Code (IaC) と呼ばれます。 ブループリント定義をコードとして扱うことは、Azure portal の機能にはない利点があります。 次のような利点があります。
 
 - ブループリント定義の共有
 - ブループリント定義のバックアップ
@@ -21,7 +21,7 @@ Azure Blueprints は、Azure portal で完全に管理できます。 組織が 
   - テスト環境でのブループリント定義の自動テスト
   - 継続的インテグレーションと継続的デプロイ (CI/CD) パイプラインのサポート
 
-理由にかかわらず、ブループリント定義をコードとして管理することには利点があります。 この記事では、`Import-AzBlueprintWithArtifact`Az.Blueprint`Export-AzBlueprintWithArtifact` モジュールで [ および ](https://powershellgallery.com/packages/Az.Blueprint/) コマンドを使用する方法について説明します。
+理由にかかわらず、ブループリント定義をコードとして管理することには利点があります。 この記事では、[Az.Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) モジュールで `Import-AzBlueprintWithArtifact` および `Export-AzBlueprintWithArtifact` コマンドを使用する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +38,7 @@ Azure Blueprints は、Azure portal で完全に管理できます。 組織が 
 ブループリントのエクスポートとインポートについて確認する前に、ブループリント定義を構成するファイルがどのような構造であるかを見てみましょう。 ブループリント定義は、専用のフォルダーに格納するようにします。
 
 > [!IMPORTANT]
-> **コマンドレットの**Name`Import-AzBlueprintWithArtifact` パラメーターに値が渡されない場合は、ブループリント定義が格納されているフォルダーの名前が使用されます。
+> `Import-AzBlueprintWithArtifact` コマンドレットの **Name** パラメーターに値が渡されない場合は、ブループリント定義が格納されているフォルダーの名前が使用されます。
 
 ブループリント定義 (`blueprint.json` という名前を付ける必要があります) と共に、ブループリント定義を構成する成果物があります。 各成果物は、必ず `artifacts` という名前のサブフォルダー内に存在します。
 まとめると、ブループリント定義の構造は、フォルダー内の JSON ファイルとして、次のようになります。

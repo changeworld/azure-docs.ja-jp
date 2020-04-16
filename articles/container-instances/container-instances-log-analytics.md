@@ -2,20 +2,22 @@
 title: リソース ログの収集と分析
 description: Azure Container Instances のコンテナー グループからリソース ログとイベント データを Azure Monitor ログに送信する方法について説明します
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 04/07/2020
 ms.author: danlep
-ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770545"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892395"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録
 
 Log Analytics ワークスペースは、Azure リソースからだけでなく、オンプレミスのリソースや他のクラウドのリソースからのログ データも格納して照会できる一元的な場所を提供します。 Azure Container Instances には、ログとイベント データを Azure Monitor ログに送信するための組み込みサポートが含まれています。
 
-コンテナー グループのログとイベント データを Azure Monitor ログに送信するには、コンテナー グループを作成するときに既存の Log Analytics ワークスペース ID とワークスペース キーを指定します。 以下のセクションでは、ログ記録が有効なコンテナー グループの作成方法と、ログに対するクエリの実行方法について説明します。
+コンテナー グループのログとイベント データを Azure Monitor ログに送信するには、コンテナー グループを構成するときに既存の Log Analytics ワークスペース ID とワークスペース キーを指定します。 
+
+以下のセクションでは、ログ記録が有効なコンテナー グループの作成方法と、ログに対するクエリの実行方法について説明します。 また、ワークスペース ID とワークスペースキーで[コンテナー グループを更新](container-instances-update.md)して、ログ記録を有効にすることもできます。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

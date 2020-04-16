@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 7f4d955583b82b224e3c963431c234ef4690198a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff4455571aa5cfa5c9214bdf18af1853b0cef352
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063730"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585402"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose アプリケーションを Azure Cosmos DB に接続する
 
@@ -36,6 +36,16 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
+### <a name="create-a-database"></a>データベースを作成する 
+このアプリケーションでは、Azure Cosmos DB でコレクションを作成する 2 つの方法について説明します。 
+- **各オブジェクト モデルを個別のコレクションに格納する**:[専用のスループットを使用してデータベースを作成する](set-throughput.md#set-throughput-on-a-database)ことをお勧めします。 この容量モデルを使用すると、コスト効率が向上します。
+
+    :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js のチュートリアル - Mongoose Node モジュールで使用するために、データ エクスプローラーで Azure Cosmos DB アカウントのデータベースを作成する方法を示す Azure portal のスクリーンショット":::
+
+- **すべてのオブジェクト モデルを 1 つの Cosmos DB コレクションに格納する**:すべてのモデルを 1 つのコレクションに格納する場合は、[スループットのプロビジョニング] オプションを選択せずに、新しいデータベースを作成できます。 この容量モデルを使用すると、すべてのオブジェクト モデルに対して独自のスループット容量を持つ各コレクションが作成されます。
+
+データベースを作成したら、以下の `COSMOSDB_DBNAME` 環境変数で名前を使用します。
+
 ## <a name="set-up-your-nodejs-application"></a>Node.js アプリケーションをセットアップする
 
 >[!Note]
@@ -47,8 +57,8 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
 
     質問に回答すると、プロジェクトが準備完了になります。
 
-1. 新しいファイルをフォルダーに追加し、名前を ```index.js``` にします。
-1. 次の ```npm install``` オプションのいずれかを使用して、必要なパッケージをインストールします。
+2. 新しいファイルをフォルダーに追加し、名前を ```index.js``` にします。
+3. 次の ```npm install``` オプションのいずれかを使用して、必要なパッケージをインストールします。
    * Mongoose: ```npm install mongoose@5 --save```
 
      > [!Note]
@@ -59,26 +69,26 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
      >[!Note]
      > ```--save``` フラグによって、package.json ファイルに依存関係が追加されます。
 
-1. index.js ファイルに依存関係をインポートします。
+4. index.js ファイルに依存関係をインポートします。
 
     ```JavaScript
    var mongoose = require('mongoose');
    var env = require('dotenv').config();   //Use the .env file to load the variables
     ```
 
-1. Cosmos DB の接続文字列と Cosmos DB の名前を ```.env``` ファイルに追加します。 プレースホルダー {cosmos-account-name} および {dbname} を独自の Cosmos アカウント名およびデータベース名に置き換えます。このとき、中かっこ記号は入力しません。
+5. Cosmos DB の接続文字列と Cosmos DB の名前を ```.env``` ファイルに追加します。 プレースホルダー {cosmos-account-name} および {dbname} を独自の Cosmos アカウント名およびデータベース名に置き換えます。このとき、中かっこ記号は入力しません。
 
     ```JavaScript
    # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
 
-   COSMODDB_USER = "<Azure Cosmos account's user name>"
-   COSMOSDB_PASSWORD = "<Azure Cosmos account passowrd>"
+   COSMODDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
+   COSMOSDB_PASSWORD = "<Azure Cosmos account password, this is one of the keys specified in your account>"
    COSMOSDB_DBNAME = "<Azure Cosmos database name>"
    COSMOSDB_HOST= "<Azure Cosmos Host name>"
    COSMOSDB_PORT=10255
     ```
 
-1. index.js の最後に次のコードを追加することによって、Mongoose フレームワークを使用して Cosmos DB に接続します。
+6. index.js の最後に次のコードを追加することによって、Mongoose フレームワークを使用して Cosmos DB に接続します。
     ```JavaScript
    mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
@@ -94,19 +104,15 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
 
     Azure Cosmos DB に接続したら、Mongoose でのオブジェクト モデルのセットアップを開始できます。
 
-## <a name="caveats-to-using-mongoose-with-cosmos-db"></a>Cosmos DB での Mongoose の使用に関する注意事項
+## <a name="best-practices-for-using-mongoose-with-cosmos-db"></a>Cosmos DB で Mongoose を使用するためのベスト プラクティス
 
-ユーザーが作成するすべてのモデルに対して、Mongoose は新しいコレクションを作成します。 ただし、Cosmos DB のコレクションごとの課金モデルの場合は、データがほとんど入力されていない複数のオブジェクト モデルが存在すると、それが最も費用対効果の高い方法ではない可能性があります。
+ユーザーが作成するすべてのモデルに対して、Mongoose は新しいコレクションを作成します。 これは、以前に説明した[データベース レベルのスループット オプション](set-throughput.md#set-throughput-on-a-database)を使用して解決することをお勧めします。 1 つのコレクションを使用するには、Mongoose [Discriminators](https://mongoosejs.com/docs/discriminators.html) を使用する必要があります。 ディスクリミネーターはスキーマ継承メカニズムです。 これにより、基礎となる同一の MongoDB コレクション上で、スキーマが重複する複数のモデルを持つことが可能になります。
 
-このチュートリアルでは 2 つのモデルを扱います。 最初は、コレクションごとに 1 種類のデータを格納するモデルについて説明します。 これは、Mongoose の標準の動作です。
-
-Mongoose には、[ディスクリミネーター](https://mongoosejs.com/docs/discriminators.html)という概念もあります。 ディスクリミネーターはスキーマ継承メカニズムです。 これにより、基礎となる同一の MongoDB コレクション上で、スキーマが重複する複数のモデルを持つことが可能になります。
-
-同一コレクション内にさまざまなデータ モデルを格納でき、クエリの際にはフィルター句を使用して必要なデータのみをプルダウンできます。
+同一コレクション内にさまざまなデータ モデルを格納でき、クエリの際にはフィルター句を使用して必要なデータのみをプルダウンできます。 各モデルについて説明します。
 
 ### <a name="one-collection-per-object-model"></a>オブジェクト モデルごとに 1 つのコレクション
 
-既定の Mongoose の動作では、オブジェクト モデルを作成するたびに MongoDB コレクションが作成されます。 このセクションでは、Azure Cosmos DB の MongoDB 用 API でこれを実現する方法について説明します。 この方法は、大量のデータを含むオブジェクト モデルがある場合に推奨されます。 これは、Mongoose の既定の処理モデルであり、Mongoose に関する知識があれば知っている可能性があります。
+このセクションでは、Azure Cosmos DB の MongoDB 用 API でこれを実現する方法について説明します。 コストと容量を制御できるため、この方法をお勧めします。 その結果、データベースの要求ユニットの数は、オブジェクト モデルの数に左右されなくなります。 これは Mongoose の既定の動作モデルなので、慣れているかもしれません。
 
 1. 再び、```index.js``` を開きます。
 
@@ -219,7 +225,7 @@ Mongoose には、[ディスクリミネーター](https://mongoosejs.com/docs/d
     const commonModel = mongoose.model('Common', new mongoose.Schema({}, baseConfig));
     ```
 
-1. ここで 'Family' モデルを定義します。 ```commonModel.discriminator```の代わりに ```mongoose.model``` を使用していることに注意してください。 さらに、Mongoose スキーマに基本構成を追加します。 次のように、discriminatorKey は ```FamilyType``` になります。
+1. ここで 'Family' モデルを定義します。 ```mongoose.model```の代わりに ```commonModel.discriminator``` を使用していることに注意してください。 さらに、Mongoose スキーマに基本構成を追加します。 次のように、discriminatorKey は ```FamilyType``` になります。
 
     ```JavaScript
     const Family_common = commonModel.discriminator('FamilyType', new     mongoose.Schema({
@@ -319,3 +325,4 @@ Mongoose には、[ディスクリミネーター](https://mongoosejs.com/docs/d
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
 [multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
+[dbleveltp]: ./media/mongodb-mongoose/db-level-throughput.png

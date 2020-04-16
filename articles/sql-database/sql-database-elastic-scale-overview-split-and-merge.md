@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7eb1670ee911895bdba23921845b8795f4998af
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421563"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811312"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベース間のデータ移動
 
@@ -62,7 +62,7 @@ Split-Merge ツールは、Azure Web サービスとして実行されます。 
 
 - **お客様側でホストされるサービス**
 
-  Split-Merge は、お客様側でホストされるサービスとして提供されます。 このサービスは、Microsoft Azure サブスクリプション内でデプロイし、ホストする必要があります。 NuGet からダウンロードするパッケージには構成テンプレートが含まれていて、これに特定のデプロイの情報を入力します。 詳細については、「 [Elastic Scale の分割とマージ サービス チュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md) 」を参照してください。 このサービスは Azure サブスクリプション内で実行されるため、サービスのセキュリティに関するほとんどの側面を制御および構成できます。 既定のテンプレートには、SSL、証明書ベースのクライアント認証、保存された資格情報の暗号化、DoS 対策、IP 制限を構成するためのオプションが含まれています。 セキュリティの側面については、「 [Elastic Scale のセキュリティの構成](sql-database-elastic-scale-split-merge-security-configuration.md)」を参照してください。
+  Split-Merge は、お客様側でホストされるサービスとして提供されます。 このサービスは、Microsoft Azure サブスクリプション内でデプロイし、ホストする必要があります。 NuGet からダウンロードするパッケージには構成テンプレートが含まれていて、これに特定のデプロイの情報を入力します。 詳細については、「 [Elastic Scale の分割とマージ サービス チュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md) 」を参照してください。 このサービスは Azure サブスクリプション内で実行されるため、サービスのセキュリティに関するほとんどの側面を制御および構成できます。 既定のテンプレートには、TLS、証明書ベースのクライアント認証、保存された資格情報の暗号化、DoS 対策、IP 制限を構成するためのオプションが含まれています。 セキュリティの側面については、「 [Elastic Scale のセキュリティの構成](sql-database-elastic-scale-split-merge-security-configuration.md)」を参照してください。
 
   既定では、デプロイされたサービスは、1 つの worker ロールと 1 つの Web ロールを使用して実行されます。 それぞれは、Azure Cloud Services の A1 VM サイズを使用します。 これらの設定は、パッケージをデプロイするときに変更することはできませんが、実行中のクラウド サービスへのデプロイが成功した後に (Azure ポータルを通じて) 変更することができます。 技術的な理由により、複数のインスタンスに worker ロールを構成しないでください。
 
@@ -212,7 +212,7 @@ Split-Merge サービスでは、完了した要求と実行中の要求を監�
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure Diagnostics を使用します。 「 [Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」で説明したように、診断構成を制御します。 ダウンロード パッケージには、Web ロール用と worker ロール用の 2 つの診断構成が含まれています。 これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split-Merge アプリケーション イベント ログを記録するための定義が含まれます。
+Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure Diagnostics を使用します。 診断構成を制御する方法については、次の記事で説明されています。[Azure Cloud Services と Virtual Machines の診断機能の有効化に関する記事](../cloud-services/cloud-services-dotnet-diagnostics.md) ダウンロード パッケージには、Web ロール用と worker ロール用の 2 つの診断構成が含まれています。 これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split-Merge アプリケーション イベント ログを記録するための定義が含まれます。
 
 ## <a name="deploy-diagnostics"></a>診断のデプロイ
 
@@ -239,7 +239,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
     -Slot Production -Role "SplitMergeWorker"
 ```
 
-診断設定を構成してデプロイする方法の詳細については、「 [Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」を参照してください。
+診断設定を構成してデプロイする方法の詳細については、次の記事で説明されています:[Azure Cloud Services と Virtual Machines の診断機能の有効化に関する記事](../cloud-services/cloud-services-dotnet-diagnostics.md)
 
 ## <a name="retrieve-diagnostics"></a>診断の取得
 

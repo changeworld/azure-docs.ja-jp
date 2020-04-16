@@ -7,16 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73df5b7f10e038b6894996eb83dec7b6914a4536
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232939"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803192"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
 ロジック アプリは [Azure Portal](https://portal.azure.com) で作成、編集、管理、およびデプロイできますが、ロジック アプリをソース管理に追加したり、各種のバージョンを発行したり、さまざまなデプロイメント環境用の [Azure Resource Manager](../azure-resource-manager/management/overview.md) テンプレートを作成したりする場合は Visual Studio も使用できます。 Visual Studio Cloud Explorer では、他の Azure リソースと共にロジック アプリを検索して管理できます。 たとえば、Azure Portal に既に展開されているロジック アプリのオープン、ダウンロード、編集、実行、実行履歴の表示、無効化、有効化を行うことができます。 初めて Visual Studio で Azure Logic Apps を使う場合は、[Visual Studio でロジック アプリを作成する方法](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)を学習してください。
+
+[Azure portal でロジック アプリを管理する](manage-logic-apps-with-azure-portal.md)こともできます。
 
 > [!IMPORTANT]
 > Visual Studio からロジック アプリを展開または発行すると、Azure Portal にあるそのアプリのバージョンが上書きされます。 したがって、Azure Portal で行った変更を残しておきたい場合は、次に Visual Studio から展開または発行する前に、Azure Portal から [Visual Studio のロジック アプリを更新する](#refresh)必要があります。

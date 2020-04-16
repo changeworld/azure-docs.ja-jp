@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/06/2020
 tags: connectors
-ms.openlocfilehash: 1578ca030bc8bab971a44e1afcce1d1ab9e1d5e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a3fb9a8a72b384d2af4af38bdc382e541ddf535
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78674064"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656279"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Azure Logic Apps で HTTP Webhook を使用して、自動化されたイベントベースのワークフローを作成して実行する
 
@@ -36,7 +36,7 @@ HTTP Webhook アクションもイベントに基づいており、特定のサ�
 たとえば、Office 365 Outlook コネクタの[**承認メールの送信**](connectors-create-api-office365-outlook.md)アクションは、このパターンに従う Webhook アクションの一例です。 Webhook アクションを使用することで、このパターンをあらゆるサービスに適用できます。
 
 > [!NOTE]
-> Logic Apps では、HTTP Webhook のトリガーまたはアクションに対するコールバックを受け取るときは、トランスポート層セキュリティ (TLS) 1.2 が適用されます。 SSL ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 着信呼び出しの場合、サポートされている暗号スイートは次のとおりです。
+> Logic Apps では、HTTP Webhook のトリガーまたはアクションに対するコールバックを受け取るときは、トランスポート層セキュリティ (TLS) 1.2 が適用されます。 TLS ハンドシェイク エラーが発生する場合は、TLS 1.2 を使用していることを確認してください。 着信呼び出しの場合、サポートされている暗号スイートは次のとおりです。
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256

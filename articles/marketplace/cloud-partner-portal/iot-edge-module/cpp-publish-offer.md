@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b30fde19c4474ba7e2d3bbaed44802884a5b27f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d78ff53fb520dcfc80a812d53ae188e340722af
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286525"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983196"
 ---
 # <a name="publish-iot-edge-module-offer"></a>IoT Edge モジュール プランの発行
+
+>[!Important]
+>2020 年 4 月 13 日より、IoT Edge モジュール オファーの管理はパートナー センターに移行されます。 移行後、オファーはパートナー センターで作成および管理されます。 移行後のオファーは、「[IoT Edge モジュール オファーの作成](https://aka.ms/AzureCreateIoT)」の手順に従って管理します。
 
  **[新しいプラン]** ページに情報を指定して新しいプランを作成した後、プランを発行できます。 **[発行]** を選択して、プロセスの発行を開始します。
 

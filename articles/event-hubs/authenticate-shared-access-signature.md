@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: d17026dba26b3c1cb846d60967180c29563c425d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74545584"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521318"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Shared Access Signature (SAS) を使用して Event Hubs リソースへのアクセスを認証する
 Shared Access Signature (SAS) を使用すると、共有アクセス署名を持つクライアントに付与するアクセス許可の種類をきめ細かく制御することができます。 SAS で設定できる制御をいくつかを以下に示します。 
@@ -33,7 +33,7 @@ Shared Access Signature (SAS) を使用すると、共有アクセス署名を�
 
 
 ## <a name="configuring-for-sas-authentication"></a>SAS 認証用の構成
-Event Hubs 名前空間、またはエンティティ (Kafka 対応名前空間の Event Hubs のイベント ハブ インスタンスまたは Kafka トピック) に、EventHubs 共有アクセス承認規則を構成することができます。 コンシューマー グループでの共有アクセス承認規則の構成は現在、サポートされていませんが、名前空間またはエンティティに構成された規則を使用して、コンシューマー グループへのアクセスをセキュリティで保護することができます。 
+Event Hubs 名前空間、またはエンティティ (イベント ハブのイベント ハブ インスタンスまたは Kafka トピック) に、EventHubs 共有アクセス承認規則を構成することができます。 コンシューマー グループでの共有アクセス承認規則の構成は現在、サポートされていませんが、名前空間またはエンティティに構成された規則を使用して、コンシューマー グループへのアクセスをセキュリティで保護することができます。 
 
 次の図は、サンプル エンティティで承認規則がどのように適用されるかを示しています。 
 

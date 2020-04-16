@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b6e021fc452b45edd7b1be9fd5afd77b792b4853
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a54b31725d14a3ff54bd2d945cd69f4b8769b87
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286542"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983179"
 ---
 # <a name="iot-edge-module-publishing-prerequisites"></a>IoT Edge モジュールの発行の前提条件
+
+>[!Important]
+>2020 年 4 月 13 日より、IoT Edge モジュール オファーの管理はパートナー センターに移行されます。 移行後、オファーはパートナー センターで作成および管理されます。 移行後のオファーは、「[IoT Edge モジュール オファーの作成](https://aka.ms/AzureCreateIoT)」の手順に従って管理します。
 
 この記事では、IoT Edge モジュール オファーを発行するための前提条件について説明します。  まだお読みになっていない場合は、[IoT Edge モジュールの発行ガイド](../..//iot-edge-module.md)をご確認ください。
 

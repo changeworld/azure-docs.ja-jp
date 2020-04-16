@@ -4,19 +4,19 @@ description: Azure Active Directory のスマート ロックアウトを使用�
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfd49a4429dc0d7f5db07a577016c21de8fc58d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61ae942ed189dc4245a9a0b282daf4cad5323536
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75762877"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652579"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -33,7 +33,7 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 
 スマート ロックアウトは、すべての Azure AD 顧客に既定として設定され、常に有効で、セキュリティとユーザビリティを適切な割合で提供します。 組織固有の値でスマート ロックアウト設定をカスタマイズするには、ユーザーに有料の Azure AD ライセンスが必要です。
 
-スマート ロックアウトを使用しても、正規のユーザーが決してロックアウトされないことは保証されません。スマート ロックアウトによってユーザー アカウントがロックされた場合、マイクロソフトでは可能な限り正規ユーザーをロックアウトしないよう試みます。 ロックアウト サービスでは、悪意のあるアクターが正規のユーザー アカウントへのアクセス権を取得できないよう試みます。  
+スマート ロックアウトを使用しても、正規のユーザーが決してロックアウトされないことは保証されません。スマート ロックアウトによってユーザー アカウントがロックされた場合、マイクロソフトでは可能な限り正規ユーザーをロックアウトしないよう試みます。 ロックアウト サービスでは、悪意のあるアクターが正規のユーザー アカウントへのアクセスを確実に阻止するよう試みます。  
 
 * 各 Azure Active Directory データ センターでは、ロックアウトが個別に追跡されます。 ユーザーが各データ センターにアクセスする場合、そのユーザーの試行回数は (threshold_limit * datacenter_count) になります。
 * スマート ロックアウトでは、悪意のあるアクターと正規ユーザーを区別するために、既知の場所と未知の場所を使用します。 未知の場所と既知の場所の両方に、個別のロックアウト カウンターが設定されます。

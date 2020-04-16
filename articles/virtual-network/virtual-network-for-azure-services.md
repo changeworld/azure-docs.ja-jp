@@ -13,23 +13,14 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 24bcc7e698527cd39958c53b48a0b36404c36bb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70266a1280b90b4573073d633a918f701f9ee8c2
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235835"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878274"
 ---
-# <a name="virtual-network-integration-for-azure-services"></a>Azure サービスの仮想ネットワーク統合
-
-Azure 仮想ネットワークに Azure サービスを統合すると、仮想ネットワーク内の仮想マシンまたはコンピューティング リソースからサービスにプライベート アクセスできるようになります。
-次のオプションを使用して、仮想ネットワークで Azure サービスを統合することができます。
-- サービスの専用インスタンスを仮想ネットワークにデプロイする。 サービスは、仮想ネットワーク内で、また、オンプレミス ネットワークからプライベート アクセスできます。
-- [プライベート リンク](../private-link/private-link-overview.md)を使用して、仮想ネットワークとオンプレミス ネットワークからサービスの特定のインスタンスにプライベートでアクセスします。
-
-[サービス エンドポイント](virtual-network-service-endpoints-overview.md)を介して仮想ネットワークをサービスに拡張することによって、パブリック エンドポイントを使用してサービスにアクセスすることもできます。 サービス エンドポイントを使用することで、仮想ネットワークに対してサービス リソースをセキュリティで保護することができます。
- 
-## <a name="deploy-azure-services-into-virtual-networks"></a>仮想ネットワークに Azure サービスをデプロイする
+# <a name="deploy-dedicated-azure-services-into-virtual-networks"></a>仮想ネットワークに専用の Azure サービスをデプロイする
 
 [仮想ネットワーク](virtual-networks-overview.md)に専用の Azure サービスをデプロイすると、プライベート IP アドレスを利用してサービス リソースに非公開で通信できます。
 
@@ -48,16 +39,17 @@ Azure 仮想ネットワークに Azure サービスを統合すると、仮想�
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>仮想ネットワークにデプロイできるサービス
 
-|カテゴリ|サービス| 専用¹ サブネット
+|カテゴリ|サービス| 専用<sup>1</sup>sup > 1</sup> サブネット
 |-|-|-|
-| Compute | 仮想マシン:[Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[クラウド サービス](https://msdn.microsoft.com/library/azure/jj156091):仮想ネットワーク (クラシック) のみ<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| いいえ <br/> いいえ <br/> いいえ <br/> いいえ²
+| Compute | 仮想マシン:[Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[クラウド サービス](https://msdn.microsoft.com/library/azure/jj156091):仮想ネットワーク (クラシック) のみ<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| いいえ <br/> いいえ <br/> いいえ <br/> いいえ<sup>2</sup>sup>2</sup>
 | ネットワーク | [Application Gateway - WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[ネットワーク仮想アプライアンス](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn) | はい <br/> はい <br/> はい <br/> いいえ
 |Data|[RedisCache](../azure-cache-for-redis/cache-how-to-premium-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure SQL Database マネージド インスタンス](../sql-database/sql-database-managed-instance-connectivity-architecture.md?toc=%2fazure%2fvirtual-network%2ftoc.json)| はい <br/> はい <br/> 
-|Analytics | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |いいえ² <br/> いいえ² <br/> 
+|Analytics | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |いいえ<sup>2</sup>sup>2</su<sup>2</sup>> <br/> いいえ<sup>2</sup> <br/> 
 | ID | [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |いいえ <br/>
-| Containers | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instances (ACI)](https://www.aka.ms/acivnet)<br/>[Azure Container Service エンジン](https://github.com/Azure/acs-engine)と Azure Virtual Network CNI [プラグイン](https://github.com/Azure/acs-engine/tree/master/examples/vnet)|いいえ²<br/> はい <br/><br/> いいえ
-| Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service 環境](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|はい <br/> はい <br/> はい
+| Containers | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instances (ACI)](https://www.aka.ms/acivnet)<br/>[Azure Container Service エンジン](https://github.com/Azure/acs-engine)と Azure Virtual Network CNI [プラグイン](https://github.com/Azure/acs-engine/tree/master/examples/vnet)<br/>[Azure Functions](../azure-functions/functions-networking-options.md#virtual-network-integration) |いいえ<sup>2</sup>sup>2</sup><br/> はい <br/><br/> いいえ <br/> はい
+| Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Web Apps](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service 環境](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|はい <br/> はい <br/> はい <br/> はい
 | ホストされている | [Azure の専用 HSM](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|はい <br/> はい <br/>
 | | |
 
-¹ "専用" とは、そのサブネットにデプロイできるのがサービス固有のリソースのみであり、ユーザーの VM/VMSS と一緒にデプロイすることはできないことを意味します。 <br/> ² これらのサービスは専用サブネット内に作成することをお勧めしますが、サービスによって定められた必須の要件ではありません。
+<sup>1</sup> "専用" とは、そのサブネットにデプロイできるのがサービス固有のリソースのみであり、ユーザーの VM/VMSS と一緒にデプロイすることはできないことを意味します。 <br/> 
+<sup>2</sup> これらのサービスは専用サブネット内に作成することをお勧めしますが、サービスによって定められた必須の要件ではありません。

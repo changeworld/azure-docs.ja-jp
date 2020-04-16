@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Service (AKS) の複数のポッド用の静的ボリュームを作成する
+title: Azure Files 共有を手動で作成する
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) 上で複数の同時実行ポッドで使用するための Azure Files を含むボリュームを手動で作成する方法について説明します
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 084ab5cd6736c9148bcab1faf048d3d9081855d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 412b7158ea366eefb1c3e9c1d2586d54c316aa6c
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596404"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803451"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ファイル共有を含むボリュームを手動で作成して使用する
 
@@ -132,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>マウント オプション
 
-Kubernetes バージョン 1.9.1 以降の場合、*fileMode* と *dirMode* の既定値は *0755* です。 Kuberetes バージョン 1.8.5 以降のクラスターを使い、永続ボリューム オブジェクトを静的に作成する場合は、*PersistentVolume* オブジェクトに対してマウント オプションを指定する必要があります。 次の例では、*0777* が設定されます。
+Kubernetes バージョン 1.9.1 以降の場合、*fileMode* と *dirMode* の既定値は *0755* です。 Kubernetes バージョン 1.8.5 以降のクラスターを使い、永続ボリューム オブジェクトを静的に作成する場合は、*PersistentVolume* オブジェクトに対してマウント オプションを指定する必要があります。 次の例では、*0777* が設定されます。
 
 ```yaml
 apiVersion: v1

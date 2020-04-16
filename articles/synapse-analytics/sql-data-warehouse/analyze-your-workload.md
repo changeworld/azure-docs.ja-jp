@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a382ef2d93f10e69569ecbbed1399f256a7afbb3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351219"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631228"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Azure Synapse Analytics でワークロードを分析する
 
-Azure Synapse Analytics で SQL Analytics ワークロードを分析するための手法。
+Azure Synapse Analytics で Synapse SQL ワークロードを分析するための手法。
 
 ## <a name="resource-classes"></a>リソース クラス
 
-SQL Analytics には、システム リソースをクエリに割り当てるリソース クラスが用意されています。  リソース クラスの詳細については、[「ワークロード管理とリソース クラス](resource-classes-for-workload-management.md)」を参照してください。  クエリに割り当てられたリソース クラスが現在利用可能なリソースより多くを必要とする場合、クエリは待機します。
+Synapse SQL には、システム リソースをクエリに割り当てるリソース クラスが用意されています。  リソース クラスの詳細については、[「ワークロード管理とリソース クラス](resource-classes-for-workload-management.md)」を参照してください。  クエリに割り当てられたリソース クラスが現在利用可能なリソースより多くを必要とする場合、クエリは待機します。
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>キューに配置されたクエリの検出とその他の DMV
 
@@ -63,12 +63,12 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL Analytics には、次の待機の種類があります。
+Synapse SQL の待機の種類は次のとおりです。
 
 * **LocalQueriesConcurrencyResourceType**: コンカレンシー スロットのフレームワークの外に配置されたクエリ。 DMV クエリと、 `SELECT @@VERSION` のようなシステム関数は、ローカル クエリの例です。
 * **UserConcurrencyResourceType**: コンカレンシー スロットのフレームワーク内に配置されたクエリ。 エンドユーザー テーブルに対するクエリは、このリソースの種類を使用した例です。
 * **DmsConcurrencyResourceType**: データ移動操作に起因する待機。
-* **BackupConcurrencyResourceType**: この待機は、データベースがバックアップ中であることを示します。 この種類のリソースの最大値は 1 です。 同時に複数のバックアップが要求された場合は、他の要求はキューに配置されます。 一般に、連続したスナップショットでは、最小で 10 分の間を空けることをお勧めします。 
+* **BackupConcurrencyResourceType**: この待機は、データベースがバックアップ中であることを示します。 この種類のリソースの最大値は 1 です。 同時に複数のバックアップが要求された場合は、他の要求はキューに配置されます。 一般に、連続したスナップショットでは、最小で 10 分の間を空けることをお勧めします。
 
 `sys.dm_pdw_waits` DMV を使用すると、要求がどのリソースを待っているのかを調べることができます。
 
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>次のステップ
 
-データベース ユーザーの管理とセキュリティの詳細については、[SQL Analytics でのデータベース保護](sql-data-warehouse-overview-manage-security.md)に関する記事を参照してください。 大規模なリソース クラスを使用して、クラスター化された列ストア インデックスの品質を向上させる方法については、「 [セグメントの品質を向上させるためのインデックスの再構築](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)」を参照してください。
+データベース ユーザーの管理とセキュリティの詳細については、[Synapse SQL でのデータベース保護](sql-data-warehouse-overview-manage-security.md)に関する記事を参照してください。 大規模なリソース クラスを使用して、クラスター化された列ストア インデックスの品質を向上させる方法については、「 [セグメントの品質を向上させるためのインデックスの再構築](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)」を参照してください。

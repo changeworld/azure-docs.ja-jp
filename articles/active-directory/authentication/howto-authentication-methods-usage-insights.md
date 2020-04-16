@@ -4,19 +4,19 @@ description: Azure AD のセルフサービス パスワード リセット と 
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b448e6ce7c8b4522d5e7bdbafb39eccca982fdee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1730939de399cacd13c62988259904ba84ee78ff
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848512"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654142"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>認証方法の使用状況と分析情報 (プレビュー)
 
@@ -90,7 +90,7 @@ ms.locfileid: "74848512"
 
 ## <a name="limitations"></a>制限事項
 
-これらのレポートに表示されるデータには、最大 60 分のタイム ラグが存在します。 データがどの程度新しいものであるかを確認できるように、Azure portal には [最終更新日時] フィールドが用意されています。
+これらのレポートに表示されるデータには、最大 60 分のタイム ラグが存在します。 Azure portal には、ご自分のデータがどの程度新しいかを確認できる [最終更新日時] フィールドがあります。
 
 使用状況と分析情報のデータは、Azure Multi-Factor Authentication のアクティビティ レポートや、Azure AD のサインイン レポートに含まれる情報の代わりとなるものではありません。
 

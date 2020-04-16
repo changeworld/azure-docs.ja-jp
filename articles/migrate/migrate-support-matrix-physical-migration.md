@@ -2,13 +2,14 @@
 title: Azure Migrate での物理サーバーの移行のサポート
 description: Azure Migrate での物理サーバーの移行のサポートについて説明します。
 ms.topic: conceptual
+ms.custom: fasttrack-edit
 ms.date: 01/07/2020
-ms.openlocfilehash: e55cf6dddbc8dafd33b444e4a0dbe378d807aea1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f8b94ab77a1eef8e771384f5d69da98a1d7ae6c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232723"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520280"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>物理サーバーの移行のサポート マトリックス
 
@@ -43,7 +44,7 @@ ms.locfileid: "79232723"
 **ネットワークとストレージ** | 最新情報については、Site Recovery の[ネットワーク](../site-recovery/vmware-physical-azure-support-matrix.md#network)と[ストレージ](../site-recovery/vmware-physical-azure-support-matrix.md#storage)の前提条件を確認してください。 Azure Migrate の場合も、ネットワークとストレージの要件は同じです。
 **Azure の要件** | 最新情報については、Site Recovery に使用する [Azure ネットワーク](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[ストレージ](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)、[コンピューティング](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute)の要件を確認してください。 Azure Migrate には、物理サーバーの移行のための同じ要件があります。
 **モビリティ サービス** | 移行する各コンピューターにモビリティ サービス エージェントがインストールされている必要があります。
-**UEFI ブート** | Azure の移行されたコンピューターは、BIOS ブート Azure VM に自動的に変換されます。<br/><br/> OS ディスクには最大 4 つのパーティションが必要で、ボリュームは NTFS でフォーマットされている必要があります。
+**UEFI ブート** | Azure の移行されたコンピューターは、BIOS ブート Azure VM に自動的に変換されます。 Windows Server 2012 以降を実行しているサーバーのみがサポートされます。<br/><br/> OS ディスクには最大 4 つのパーティションが必要で、ボリュームは NTFS でフォーマットされている必要があります。
 **ターゲット ディスク** | コンピューターは、Azure のマネージド ディスク (Standard HDD、Premium SSD) にのみ移行できます。
 **ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 8 TB。
 **ディスクの制限** |  コンピューターあたり最大 63 台のディスク。

@@ -9,12 +9,12 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 8cd49f9714746578ec701e22f9e6b0ccce772c6b
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 1ad7677607d625f673546a6ea29ea58b80a8d1b5
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942292"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546749"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) へデータをインポートする
 
@@ -46,7 +46,6 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
 ![デザイナー パレットに保存されているデータセットの場所を示すスクリーンショット](media/how-to-designer-import-data/use-datasets-designer.png)
 
 
-
 > [!NOTE]
 > 現時点では、デザイナーでは[表形式データ](how-to-create-register-datasets.md#dataset-types)の処理のみがサポートされています。 [ファイル データセット](how-to-create-register-datasets.md#dataset-types)を使用する場合は、Python および R で使用可能な Azure Machine Learning SDK を使用します。
 
@@ -56,8 +55,8 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
 
 [データのインポート] モジュールの詳しい使用方法については、[データのインポートの参照ページ](algorithm-module-reference/import-data.md)を参照してください。
 
-[!NOTE]
-> データの列数が多い場合、データのインポート モジュールで "Validation failed due to size limitation" (サイズの制限により検証に失敗しました) が発生する場合があります。 これは、エンコード後にその列で maxmium モジュール パラメーターの長さが除外されるためです。 この場合、[Datasets UI でデータセットを登録する](how-to-create-register-datasets.md#use-the-ui)ことをお勧めします。これでエラーを回避できます。  
+> [!NOTE]
+> データセットに含まれる列が多すぎる場合、次のエラーが発生することがあります。"サイズ制限のため、検証に失敗しました。" これを回避するには、[データセットを Datasets インターフェイスに登録します](how-to-create-register-datasets.md#use-the-ui)。
 
 ## <a name="supported-sources"></a>サポートされているソース
 
@@ -79,7 +78,7 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
 デザイナーは、内部的に次のデータ型を認識します。
 
 * String
-* 整数
+* Integer
 * Decimal
 * Boolean
 * Date

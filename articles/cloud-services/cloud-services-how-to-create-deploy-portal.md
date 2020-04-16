@@ -8,15 +8,15 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386172"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811343"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>クラウド サービスを作成してデプロイする方法
-Azure Portal には、クラウド サービスを作成してデプロイする方法として、"*簡易作成*" と "*カスタム作成*" の 2 つの方法が用意されています。
+Azure portal には、クラウド サービスを作成してデプロイする方法が 2 つ用意されています。"*簡易作成*" と "*カスタム作成*" です。
 
 このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、 **[アップロード]** を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。 この方法を使うと、Azure ポータルに、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。 クラウド サービスの作成時にデプロイする準備が整っている場合は、[カスタム作成] を使用して作成とデプロイを同時に実行できます。
 
@@ -42,7 +42,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 
 サービス パッケージをエクスポートする前に、以下の 3 つのクラウド サービス機能について特別な構成が必要です。
 
-* データ暗号化のために Secure Sockets Layer (SSL) を使用するクラウド サービスをデプロイする場合は、 [アプリケーションを SSL 用に構成](cloud-services-configure-ssl-certificate-portal.md#modify) します。
+* 前に Secure Sockets Layer (SSL) と呼ばれていたトランスポート層セキュリティ (TLS) をデータ暗号化のために使用するクラウド サービスをデプロイする場合は、[アプリケーションを TLS 用に構成](cloud-services-configure-ssl-certificate-portal.md#modify) します。
 * ロール インスタンスに対するリモート デスクトップ接続を構成する場合は、リモート デスクトップ用に [ロールを構成](cloud-services-role-enable-remote-desktop-new-portal.md) します。
 * クラウド サービスの詳細監視を構成する場合は、クラウド サービスの Azure Diagnostics を有効にします。 *最小監視* (既定の監視レベル) では、ロール インスタンス (仮想マシン) のホスト オペレーティング システムから収集したパフォーマンス カウンターが使用されます。 *詳細監視* は、アプリケーション処理時に発生する問題を詳しく分析できるように、ロール インスタンス内のパフォーマンス データに基づいて追加のメトリックを収集します。 Azure Diagnostics を有効にする方法については、 [Enabling Diagnostics in Azure (Azure における診断の有効化)](cloud-services-dotnet-diagnostics.md)を参照してください。
 
@@ -70,7 +70,7 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 ## <a name="upload-a-certificate"></a>証明書のアップロード
 デプロイメント パッケージが [証明書を使用するように構成](cloud-services-configure-ssl-certificate-portal.md#modify)されている場合は、ここで証明書をアップロードできます。
 
-1. **[証明書]** を選択し、 **[証明書の追加]** ウィンドウで SSL 証明書 .pfx ファイルを選択して、証明書の **[パスワード]** を指定します。
+1. **[証明書]** を選択し、 **[証明書の追加]** ウィンドウで TLS/SSL 証明書 .pfx ファイルを選択して、証明書の **[パスワード]** を指定します。
 2. **[証明書のアタッチ]** をクリックし、 **[証明書の追加]** ウィンドウで **[OK]** をクリックします。
 3. **[クラウド サービス]** ウィンドウで **[作成]** をクリックします。 デプロイの状態が **[準備完了]** になったら、次の手順に進むことができます。
 
@@ -90,7 +90,7 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 * [クラウド サービスの一般的な構成](cloud-services-how-to-configure-portal.md)
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
 * [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
-* [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
+* [TLS/SSL 証明書](cloud-services-configure-ssl-certificate-portal.md)を構成する
 
 
 

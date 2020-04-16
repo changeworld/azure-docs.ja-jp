@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 787640ef08ee91220f42065af155c372247f0136
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234159"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804607"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure リソース ログをストレージ アカウントにアーカイブする
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。  この記事では、アーカイブ対象のデータを保持するための、Azure ストレージ アカウントへのプラットフォーム ログの収集について説明します。
@@ -20,6 +20,8 @@ Azure のアクティビティ ログとリソース ログを含む Azure の[�
 ## <a name="prerequisites"></a>前提条件
 [Azure ストレージ アカウント](../../storage/common/storage-account-create.md)をまだお持ちでない場合は、作成する必要があります。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセス権を持っている限り、ストレージ アカウントはログを送信するリソースと同じサブスクリプションに属している必要はありません。
 
+> [!IMPORTANT]
+> データを不変ストレージに送信するには、「[BLOB ストレージの不変ポリシーを設定および管理する](../../storage/blobs/storage-blob-immutability-policies-manage.md)」の説明に従って、ストレージ アカウントの不変ポリシーを設定します。 この記事のすべての手順に従う必要があります。これには、保護された追加 BLOB の書き込みの有効化が含まれます。
 
 > [!IMPORTANT]
 > Azure Data Lake Storage Gen2 アカウントは、Azure portal では有効なオプションとして表示されていますが、診断設定の送信先としては現在サポートされていません。

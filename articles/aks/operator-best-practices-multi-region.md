@@ -1,5 +1,5 @@
 ---
-title: Azure Kubernetes Services (AKS) での高可用性とディザスター リカバリー
+title: AKS での事業継続とディザスター リカバリーに関するベスト プラクティス
 description: Azure Kubernetes Services (AKS) でアプリケーションの最大アップタイムを達成して、高可用性を提供し、ディザスター リカバリーに備えるための、クラスター オペレーターのベスト プラクティスについて説明します。
 services: container-service
 author: lastcoolnameleft
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 894ec4e543f0c68cc652141d2c1578cda61d7f42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7aa93d8ba21cafddc5511e16fa430b76942b1a6d
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594749"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668288"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 
-Azure Kubernetes Service (AKS) でクラスターを管理するにあたっては、アプリケーションのアップタイムが重要になります。 AKS では、可用性セット内で複数のノードを使用することにより、高可用性が提供されます。 しかし、これらの複数のノードでは、お使いのシステムはリージョン障害から保護されません。 アップタイムを最大化するには、ビジネス継続性の維持とディザスター リカバリーの準備について事前に計画を立てておきます。
+Azure Kubernetes Service (AKS) でクラスターを管理するにあたっては、アプリケーションのアップタイムが重要になります。 既定で、AKS により [仮想マシン スケール セット (VMSS)](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) 内の複数のノードを使用して高可用性が提供されます。 しかし、これらの複数のノードでは、お使いのシステムはリージョン障害から保護されません。 アップタイムを最大化するには、ビジネス継続性の維持とディザスター リカバリーの準備について事前に計画を立てておきます。
 
 この記事では、AKS でのビジネス継続性とディザスター リカバリーに関する計画を立てる方法に重点を置いて説明します。 学習内容は次のとおりです。
 
@@ -59,7 +59,7 @@ Traffic Manager は DNS 参照を実行して、ユーザーの最も適切な�
 
 ### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Azure Front Door Service を使用したレイヤー 7 のアプリケーション ルーティング
 
-Traffic Manager は、DNS (レイヤー 3) を使ってトラフィックのシェーピングを行います。 [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) には、HTTP/HTTPS (レイヤー 7) のルーティング オプションが用意されています。 Azure Front Door Service の追加機能としては、SSL 終了、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティがあります。 アプリケーション トラフィックのニーズを確認して、どのソリューションが最も適切かを検討してください。
+Traffic Manager は、DNS (レイヤー 3) を使ってトラフィックのシェーピングを行います。 [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) には、HTTP/HTTPS (レイヤー 7) のルーティング オプションが用意されています。 Azure Front Door Service の追加機能としては、TLS 終了、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティがあります。 アプリケーション トラフィックのニーズを確認して、どのソリューションが最も適切かを検討してください。
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>グローバル仮想ネットワーク ピアリングを使用してリージョンを相互接続する
 

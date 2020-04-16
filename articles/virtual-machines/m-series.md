@@ -5,20 +5,20 @@ services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 02/05/2019
-ms.author: lahugh
-ms.openlocfilehash: e8952218675493710cbdd1f92661e9a9c077f34c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.author: jushiman
+ms.openlocfilehash: 3e0552570d5bdb7f812852cd058710b833b7fdd4
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164051"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521334"
 ---
 # <a name="m-series"></a>M シリーズ
 
-M シリーズは、多数の vCPU (最大 128 個の vCPU) と大量のメモリ (最大 3.8 TiB) を提供します。 このシリーズも非常に大規模なデータベースや他のアプリケーションに最適であり、多数の vCPU と大量のメモリによるメリットを活用できます。 M シリーズのサイズは Intel® Xeon® CPU E7-8890 v3 @ 2.50 GHz に基づいています
+M シリーズは、多数の vCPU (最大 128 個の vCPU) と大量のメモリ (最大 3.8 TiB) を提供します。 このシリーズも非常に大規模なデータベースや他のアプリケーションに最適であり、多数の vCPU と大量のメモリによるメリットを活用できます。 M シリーズのサイズは、Intel&reg; Xeon&reg; CPU E7-8890 v3 @ 2.50 GHz と Intel&reg; Xeon&reg; Platinum 8280M 2.7 GHz (Cascade Lake) の両方に対応しています。
 
-M シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています
+M シリーズの VM は、Intel&reg; ハイパー スレッディング テクノロジを利用しています。
 
 ACU: 160-180
 

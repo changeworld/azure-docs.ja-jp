@@ -3,12 +3,12 @@ title: Azure Functions の IP アドレス
 description: 関数アプリの着信 IP アドレスと送信 IP アドレスを確認する方法、およびこれらのアドレスが変更される理由について説明します。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234859"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656784"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -86,7 +86,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 - 関数アプリを削除した後、別のリソース グループ内で再作成する。
 - リソース グループとリージョンの組み合わせに含まれる最後の関数アプリを削除した後、再作成する。
-- [証明書の更新](../app-service/configure-ssl-certificate.md#renew-certificate)時などに SSL バインドを削除する。
+- [証明書の更新](../app-service/configure-ssl-certificate.md#renew-certificate)時などに TLS バインドを削除する。
 
 関数アプリが[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合、着信 IP アドレスは、[上記](#inbound-ip-address-changes)のようなアクションを実行しなくても、変更される場合があります。
 
