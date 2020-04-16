@@ -1,86 +1,102 @@
 ---
-title: クイック スタート:マイクから音声を認識する、C# (.NET) - Speech サービス
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: trevorbye
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
-ms.author: erhopf
-ms.openlocfilehash: c969b5e5daa4c4cfd84695fef70f0a2a5c50ce02
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/03/2020
+ms.author: trbye
+ms.openlocfilehash: 871f992f6457a846d29a7145d53a7e382cbe10dd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925391"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400635"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、以下の操作を行います。
 
 > [!div class="checklist"]
-> * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech リソースを作成する <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 > * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 
 ## <a name="open-your-project-in-visual-studio"></a>Visual Studio でプロジェクトを開きます。
 
 最初の手順として、ご利用のプロジェクトを Visual Studio で開いていることを確認します。
 
-1. Visual Studio 2019 を起動します。
-2. プロジェクトを読み込んで `Program.cs` を開きます。
+1. **Visual Studio 2019** を起動します。
+2. プロジェクトを読み込んで *Program.cs* を開きます。
 
-## <a name="start-with-some-boilerplate-code"></a>定型コードを使用して開始する
+## <a name="source-code"></a>ソース コード
 
-このプロジェクトのスケルトンとして機能するコードを追加しましょう。 `RecognizeSpeechAsync()` という非同期メソッドを作成済みであることを確認します。
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=5-15,43-52)]
+*Program.cs* ファイルの内容を次の C# コードに置き換えます。
 
-## <a name="create-a-speech-configuration"></a>Speech 構成を作成する
+```csharp
+using System;
+using System.Threading.Tasks;
+using Microsoft.CognitiveServices.Speech;
 
-`SpeechRecognizer` オブジェクトを初期化するには、サブスクリプション キーとサブスクリプション リージョンを使用する構成を作成する必要があります ([リージョン](https://aka.ms/speech/sdkregion)の**リージョン識別子**を選択します)。 このコードを `RecognizeSpeechAsync()` メソッドに挿入します。
+namespace Speech.Recognition
+{
+    class Program
+    {
+        static async Task Main()
+        {
+            await RecognizeSpeechAsync();
 
-> [!NOTE]
-> このサンプルでは、`FromSubscription()` メソッドを使用して `SpeechConfig` をビルドします。 使用可能なメソッドの完全な一覧については、[SpeechConfig クラス](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)に関する記事を参照してください。
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=16)]
-> Speech SDK では、既定で認識される言語が en-us です。ソース言語の選択については、「[音声テキスト変換のソース言語を指定する](../../../../how-to-specify-source-language.md)」を参照してください。
+            Console.WriteLine("Please press any key to continue...");
+            Console.ReadLine();
+        }
 
-## <a name="initialize-a-speechrecognizer"></a>SpeechRecognizer を初期化する
+        static async Task RecognizeSpeechAsync()
+        {
+            var config =
+                SpeechConfig.FromSubscription(
+                    "YourSubscriptionKey",
+                    "YourServiceRegion");
 
-次に、`SpeechRecognizer` を作成してみましょう。 アンマネージド リソースが確実に正しく解放されるように、このオブジェクトは using ステートメント内に作成されます。 このコードを Speech 構成のすぐ下にある `RecognizeSpeechAsync()` メソッドに挿入します。
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=17-19,42)]
+            using var recognizer = new SpeechRecognizer(config);
+            
+            var result = await recognizer.RecognizeOnceAsync();
+            switch (result.Reason)
+            {
+                case ResultReason.RecognizedSpeech:
+                    Console.WriteLine($"We recognized: {result.Text}");
+                    break;
+                case ResultReason.NoMatch:
+                    Console.WriteLine($"NOMATCH: Speech could not be recognized.");
+                    break;
+                case ResultReason.Canceled:
+                    var cancellation = CancellationDetails.FromResult(result);
+                    Console.WriteLine($"CANCELED: Reason={cancellation.Reason}");
+    
+                    if (cancellation.Reason == CancellationReason.Error)
+                    {
+                        Console.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
+                        Console.WriteLine($"CANCELED: ErrorDetails={cancellation.ErrorDetails}");
+                        Console.WriteLine($"CANCELED: Did you update the subscription info?");
+                    }
+                    break;
+            }
+        }
+    }
+}
+```
 
-## <a name="recognize-a-phrase"></a>語句を認識する
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-`SpeechRecognizer` オブジェクトから、`RecognizeOnceAsync()` メソッドを呼び出します。 認識の対象として 1 つの語句を送信しようとしていること、また、その語句が識別された後で、音声認識を停止しようとしていることが、このメソッドを通じて Speech サービスに伝えられます。
+## <a name="code-explanation"></a>コードの説明
 
-using ステートメント内に、このコードを追加します。
+[!INCLUDE [code explanation](../code-explanation.md)]
 
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=20)]
+## <a name="build-and-run-app"></a>アプリをビルドして実行する
 
-## <a name="display-the-recognition-results-or-errors"></a>認識結果 (またはエラー) を表示する
-
-音声サービスによって認識結果が返されたら、それを使用して何らかの操作を行います。 シンプルに保ち、結果をコンソールに出力します。
-
-using ステートメント内の `RecognizeOnceAsync()` の下に、このコードを追加します。
-
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs?range=22-41)]
-
-## <a name="check-your-code"></a>コードを確認する
-
-この時点で、コードは次のようになります。
-
-[!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-microphone/helloworld/Program.cs)]
-
-## <a name="build-and-run-your-app"></a>アプリをビルドして実行する
-
-これで、アプリをビルドし、Speech サービスを使用して音声認識をテストする準備ができました。
+これで、アプリをリビルドし、音声サービスを使用して音声認識機能をテストする準備ができました。
 
 1. **コードをコンパイルする** - Visual Studio のメニュー バーで、 **[ビルド]**  >  **[ソリューションのビルド]** の順に選択します。
-2. **アプリを起動する** - メニュー バーから **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、**F5** キーを押します。
-3. **認識を開始する** - 英語で語句を読み上げるように求められます。 音声が Speech Service に送信され、テキストとして文字起こしされて、コンソールに表示されます。
+2. **アプリを起動する** - メニュー バーから **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、<kbd>F5</kbd> キーを押します。
+3. **認識を開始する** - 英語で語句を読み上げるよう求めるメッセージが表示されます。 音声が Speech Service に送信され、テキストとして文字起こしされて、コンソールに表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

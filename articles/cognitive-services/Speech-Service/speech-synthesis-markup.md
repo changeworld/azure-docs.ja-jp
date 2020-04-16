@@ -3,19 +3,19 @@ title: 音声合成マークアップ言語 (SSML) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: 音声合成マークアップ言語を使用して、テキスト読み上げの発音と韻律を制御します。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 7d5dd79399b15ade90173a55aeb71dacbc61fa78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: dc11d26c73c52b5e6c4d8e05cc27dd6ebce0c5d8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80365807"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399832"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -196,7 +196,6 @@ speechConfig!.setPropertyTo(
 現在、これらのニューラル音声では話し方の調整がサポートされています。
 * `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
-* `pt-BR-FranciscaNeural`
 
 変更は文章レベルで適用され、スタイルは音声によって異なります。 スタイルがサポートされていない場合、サービスは既定のニュートラルな話し方の音声を返します。
 
@@ -214,18 +213,17 @@ speechConfig!.setPropertyTo(
 
 各ニューラル音声でサポートされている話し方を確認するには、次の表を使用してください。
 
-| 音声 | Style | 説明 |
-|-------|------|-------------|
-| `en-US-AriaNeural` | `style="newscast"` | ニュースを読み上げる改まった職業的な語調を表します |
-| | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します |
-| | `style="chat"` | カジュアルでリラックスした語調を表します |
-| | `style="cheerful"` | 肯定的で幸せな語調を表します |
-| | `style="empathetic"` | 思いやりと理解を示します |
-| `zh-CN-XiaoxiaoNeural` | `style="newscast"` | ニュースを読み上げる改まった職業的な語調を表します |
-| | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します |
-| | `style="assistant"` | デジタル アシスタント向けの暖かくてリラックスした語調を表します  |
-| | `style="lyrical"` | 音楽的でセンチメンタルな方法で感情を表現します |
-| `pt-BR-FranciscaNeural` | `style="cheerful"` | 肯定的で幸せな語調を表します |
+| 音声                   | Style                     | 説明                                                 |
+|-------------------------|---------------------------|-------------------------------------------------------------|
+| `en-US-AriaNeural`      | `style="newscast"`        | ニュースを読み上げる改まった職業的な語調を表します |
+|                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
+|                         | `style="chat"`            | カジュアルでリラックスした語調を表します                         |
+|                         | `style="cheerful"`        | 肯定的で幸せな語調を表します                         |
+|                         | `style="empathetic"`      | 思いやりと理解を示します               |
+| `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | ニュースを読み上げる改まった職業的な語調を表します |
+|                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
+|                         | `style="assistant"`       | デジタル アシスタント向けの暖かくてリラックスした語調を表します    |
+|                         | `style="lyrical"`         | 音楽的でセンチメンタルな方法で感情を表現します         |
 
 **例**
 
@@ -263,15 +261,14 @@ speechConfig!.setPropertyTo(
 | `strength` | 次のいずれかの値を使用して、一時停止の相対的な時間を指定します。<ul><li>なし</li><li>x-weak</li><li>weak</li><li>medium (既定値)</li><li>strong</li><li>x-strong</li></ul> | 省略可能 |
 | `time` | 一時停止の絶対時間を秒またはミリ秒で指定します。 `2s` や `500` は有効な値の例です | 省略可能 |
 
-| Strength | 説明 |
-|----------|-------------|
-| なし、または値が指定されていない場合 | 0 ミリ秒 |
-| x-weak | 250 ミリ秒 |
-| weak | 500 ミリ秒 |
-| 中 | 750 ミリ秒 |
-| strong | 1000 ミリ秒 |
-| x-strong | 1250 ミリ秒 |
-
+| Strength                      | 説明 |
+|-------------------------------|-------------|
+| なし、または値が指定されていない場合 | 0 ミリ秒        |
+| x-weak                        | 250 ミリ秒      |
+| weak                          | 500 ミリ秒      |
+| 中                        | 750 ミリ秒      |
+| strong                        | 1000 ミリ秒     |
+| x-strong                      | 1250 ミリ秒     |
 
 **例**
 
@@ -372,9 +369,9 @@ TTS では、会社や外国の名前などの単語を正確に発音できな�
 
 **属性**
 
-| 属性 | 説明 | 必須/省略可能 |
-|-----------|-------------|---------------------|
-| `uri` | 外部 PLS ドキュメントのアドレス。 | 必須。 |
+| 属性 | 説明                               | 必須/省略可能 |
+|-----------|-------------------------------------------|---------------------|
+| `uri`     | 外部 PLS ドキュメントのアドレス。 | 必須。           |
 
 **使用方法**
 
@@ -614,9 +611,9 @@ SSML ドキュメントに含まれるオーディオは、次の要件を満た
 
 **属性**
 
-| 属性 | 説明 | 必須/省略可能 |
-|-----------|-------------|---------------------|
-| `src` | オーディオ ファイルの場所/URL を指定します。 | SSML ドキュメントで audio 要素を使用している場合は必須です。 |
+| 属性 | 説明                                   | 必須/省略可能                                        |
+|-----------|-----------------------------------------------|------------------------------------------------------------|
+| `src`     | オーディオ ファイルの場所/URL を指定します。 | SSML ドキュメントで audio 要素を使用している場合は必須です。 |
 
 **例**
 

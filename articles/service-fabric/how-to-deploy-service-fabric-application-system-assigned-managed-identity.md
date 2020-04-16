@@ -3,14 +3,14 @@ title: システムに割り当ての MI を使用して Service Fabric アプ�
 description: この記事では、システム割り当てのマネージド ID を Azure Service Fabric アプリケーションに割り当てる方法について説明します
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: d5a14722363d642957904f9c7c699d3cf1d66c0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5c7a17c51eee18d9b7276f2c57289a5de5c8181
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614827"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415647"
 ---
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>システム割り当てのマネージド ID を持つ Service Fabric アプリケーションをデプロイする (プレビュー)
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>システム割り当てのマネージド ID を持つ Service Fabric アプリケーションをデプロイする
 
 Azure Service Fabric アプリケーションのマネージド ID 機能にアクセスするには、まずクラスターでマネージド ID トークン サービスを有効にする必要があります。 このサービスは、マネージド ID を使用して Service Fabric アプリケーションの認証を実行し、アクセス トークンを代理で取得します。 サービスが有効になると、Service Fabric Explorer の左側のウィンドウの **[システム]** セクションに表示され、他のシステム サービスの横で **fabric:/System/ManagedIdentityTokenService** という名前で実行されます。
 

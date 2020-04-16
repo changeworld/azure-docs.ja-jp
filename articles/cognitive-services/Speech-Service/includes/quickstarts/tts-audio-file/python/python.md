@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/20/2020
-ms.author: dapine
-ms.openlocfilehash: 983a3c38c19d60a2ad890255ab2120ea58776436
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/04/2020
+ms.author: trbye
+ms.openlocfilehash: 10a11168b8046dbcc877f45141571fccdca879f0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80116985"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400303"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -18,7 +18,7 @@ ms.locfileid: "80116985"
 * 以下のオペレーティング システム用の Python Speech SDK パッケージを入手できます。
     * Windows: x64 および x86。
     * Mac: macOS X バージョン 10.12 以降。
-    * Linux: x64 上の Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8。
+    * Linux: x64 上の Ubuntu 16.04 または 18.04、Debian 9、RHEL 7 または 8、CentOS 7 または 8。
 * Linux では、以下のコマンドを実行して、必要なパッケージをインストールします。
 
 # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
@@ -43,7 +43,7 @@ sudo yum install alsa-lib openssl python3
 ```
 
 > [!NOTE]
-> RHEL または CentOS 8 の場合、「[Linux 用 OpenSSL の構成](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)」の手順に従います。
+> RHEL または CentOS 7 または 8 の場合、[Linux 用 OpenSSL を構成する方法](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)に関するページの手順に従います。
 
 ---
 
@@ -148,7 +148,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ## <a name="next-steps"></a>次のステップ
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 ## <a name="see-also"></a>関連項目
 

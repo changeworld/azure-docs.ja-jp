@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6cb9dadc107c6907f1ccb28a876270e577f10395
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d60f1101fc858e9dcaa22162be97417544e13693
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74977303"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405038"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>クイック スタート:Computer Vision の REST API と cURL を使用したサムネイルを生成する
 
@@ -28,23 +28,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - [cURL](https://curl.haxx.se/windows) が必要です。
 - Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。
-
-## <a name="get-thumbnail-request"></a>サムネイル取得要求
-
-[サムネイル取得メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)を使うと、画像のサムネイルを生成することができます。
-
-このサンプルを実行するには、次の手順を実行します。
-
-1. エディターに次のコードをコピーします。
-1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-1. `<File>` を、サムネイルの保存先のパスとファイル名に置き換えます。
-1. 必要に応じて、サブスクリプション キーの取得場所を使用するように要求 URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.1`) を変更します。
-1. 必要に応じて、分析対象の画像 (`{\"url\":\"...`) を変更します。
-1. cURL がインストールされているコンピューターのコマンド ウィンドウを開きます。
-1. ウィンドウにコードを貼り付けて、コマンドを実行します。
-
->[!NOTE]
->REST 呼び出しには、サブスクリプション キーの取得に使用したのと同じ場所を使用する必要があります。 たとえば、サブスクリプション キーを westus から取得した場合、下記の URL の "westcentralus" を "westus" に置き換えます。
 
 ## <a name="create-and-run-the-sample-command"></a>サンプル コマンドの作成と実行
 

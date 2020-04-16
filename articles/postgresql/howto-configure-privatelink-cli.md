@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: d4288b901a0e6e132e32f8391d108e79861fc331
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6baf8b4609382be4a5a31d12cac581da2c17de6
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371037"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011669"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>CLI を使用して Azure Database for PostgreSQL 単一サーバー用の Private Link を作成および管理する
 
@@ -118,7 +118,7 @@ az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json
  
 #Create DNS records 
 az network private-dns record-set a create --name myserver --zone-name privatelink.postgres.database.azure.com --resource-group myResourceGroup  
-az network private-dns record-set a add-record --record-set-name myserver --zone-name privatelink.postgres.database.windows.net --resource-group myResourceGroup -a <Private IP Address>
+az network private-dns record-set a add-record --record-set-name myserver --zone-name privatelink.postgres.database.azure.com --resource-group myResourceGroup -a <Private IP Address>
 ```
 
 > [!NOTE] 

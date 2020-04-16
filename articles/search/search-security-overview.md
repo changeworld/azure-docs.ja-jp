@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 6de6f23fe9564b28a5d436ac00999dbb3e9183e1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.openlocfilehash: fe7d076fab6a70736843fc644cd56bef44a55df2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548961"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415121"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure Cognitive Search のセキュリティとデータ プライバシー
 
@@ -31,7 +31,6 @@ Azure Cognitive Search は次の標準について認定され、[2018 年 6 月
 + [GxP (21 CFR Part 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
 + [PCI DSS レベル 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
-+ [オーストラリアの IRAP Unclassified DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 標準へのコンプライアンスは、一般的に使用可能な機能に適用されます。 プレビュー機能は一般公開へ切り替える際に認定されます。厳格な標準の要件があるソリューションには使用しないでください。 コンプライアンスの認定については、「[Overview of Microsoft Azure compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)」(Microsoft Azure コンプライアンスの概要) と[セキュリティ センター](https://www.microsoft.com/en-us/trustcenter)を参照してください。 
 

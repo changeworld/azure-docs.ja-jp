@@ -1,53 +1,42 @@
 ---
-title: クイック スタート:マイクから音声を認識する、C++ (Windows) - Speech サービス
-titleSuffix: Azure Cognitive Services
-description: Windows デスクトップで C++ と Speech SDK を使用して音声を認識する方法について説明します
-services: cognitive-services
-author: wolfma61
-manager: nitinme
+author: trevorbye
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
-ms.author: wolfma
-ms.openlocfilehash: 416c2893ebf07cd638f3f1c06c709db2586245d1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/03/2020
+ms.author: trbye
+ms.openlocfilehash: db87f31f4702d3487a11a6d833755105455d74c8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925342"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400771"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、以下の操作を行います。
 
 > [!div class="checklist"]
-> * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=windows)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech リソースを作成する <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
 > * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 
-## <a name="add-sample-code"></a>サンプル コードを追加する
+## <a name="source-code"></a>ソース コード
 
-1. ソース ファイル **helloworld.cpp** を開きます。
+*helloworld.cpp* という名前で C++ ソース ファイルを作成し、その中に次のコードを貼り付けます。
 
-1. すべてのコードを次のスニペットに置き換えます。
+[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-microphone/helloworld/helloworld.cpp#code)]
 
-   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-microphone/helloworld/helloworld.cpp#code)]
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-1. 同じファイル内で、文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
+## <a name="code-explanation"></a>コードの説明
 
-1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](https://aka.ms/speech/sdkregion)の**リージョン識別子** (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
+[!INCLUDE [code explanation](../code-explanation.md)]
 
-1. メニュー バーから **[ファイル]**  >  **[すべて保存]** を選択します。
-
-> [!NOTE]
-> Speech SDK では、既定で認識される言語が en-us です。ソース言語の選択については、「[音声テキスト変換のソース言語を指定する](../../../../how-to-specify-source-language.md)」を参照してください。
-
-## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
+## <a name="build-and-run-app"></a>アプリをビルドして実行する
 
 1. メニュー バーから **[ビルド]**  >  **[ソリューションのビルド]** を選択してアプリケーションをビルドします。 これで、コードは、エラーなしでコンパイルされます。
 
-1. **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、**F5** キーを押して、**helloworld** アプリケーションを起動します。
+1. **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、<kbd>F5</kbd> キーを押して、**helloworld** アプリケーションを起動します。
 
 1. 英語の語句または文を読み上げます。 その音声が Speech サービスに転送されてテキストに文字起こしされ、再びアプリケーションに戻されて表示されます。
 
@@ -55,4 +44,4 @@ ms.locfileid: "78925342"
 
 ## <a name="next-steps"></a>次のステップ
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

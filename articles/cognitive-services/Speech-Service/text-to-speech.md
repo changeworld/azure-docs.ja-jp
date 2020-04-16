@@ -3,19 +3,19 @@ title: テキスト読み上げ - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 音声サービスのテキスト読み上げ機能を使用すると、アプリケーション、ツール、またはデバイスでテキストを人間のような自然な合成音声に変換できます。 事前設定の音声を選択するか、独自のカスタム音声を作成します。
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 7c7574ee4e9f75b9b650ff63a10666c5e379fca8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131559"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399495"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 

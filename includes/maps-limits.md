@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
-ms.openlocfilehash: 1ce91aede9328237aef8e5d5b7d74a3b72f10d50
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: cbf43f60a438c740c087ddd2344c982da09da634
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887428"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007842"
 ---
 Azure Maps S0 価格レベルの使用制限を次の表に示します。 使用制限は、価格レベルによって異なります。 
 
@@ -26,6 +26,7 @@ Azure Maps のデータ サイズの制限を次の表に示します。 Azure M
 
 | リソース                              | 制限 |
 |---------------------------------------|:---------------------:|
-| データの最大サイズ |   1 GB  |
+| データの最大サイズ |   50 MB  |
+
 
 Azure Maps 価格レベルの詳細については、「[Azure Maps の価格](https://azure.microsoft.com/pricing/details/azure-maps/)」を参照してください。

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 04/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 272188b50fe59435031a4a2fb9c252f3f358bb6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 149fb5818ee360c7333997655ea9eb8d7ded346c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535733"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270895"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する
 
@@ -117,9 +117,6 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
     - **[SMB Server (Computer Account) Prefix]\(SMB サーバー (コンピューター アカウント) プレフィックス\)** には、コンピューター アカウント名の先頭に付ける文字列を入力します。
     - **[ユーザー名]** には、ドメイン参加の実行が可能なアクセス許可を持っているアカウントの名前を入力します。
     - **[パスワード]** には、そのアカウントのパスワードを入力します。
-
-  >[!NOTE]
-  >**[コンピューター]** または**社内の関連する組織単位**にあるドメイン コントローラーに、「[Active Directory 接続への参加](create-fslogix-profile-container.md#join-an-active-directory-connection)」で作成したコンピューター アカウントが表示されることを確認することをお勧めします。
 
 ## <a name="create-a-new-volume"></a>新しいボリュームの作成
 

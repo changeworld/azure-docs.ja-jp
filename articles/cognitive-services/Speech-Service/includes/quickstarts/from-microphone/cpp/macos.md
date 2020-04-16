@@ -1,42 +1,36 @@
 ---
-title: クイック スタート:マイクから音声を認識する、C++ (macOS) - Speech サービス
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: wolfma61
-manager: nitinme
+author: trevorbye
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
-ms.author: wolfma
-ms.openlocfilehash: 96836c494cdf8f3df1621ee0e2eea6c6f64a039c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/03/2020
+ms.author: trbye
+ms.openlocfilehash: c35f30e1f403baf5fa01d450f77b77120a5b28cf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925475"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400817"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、以下の操作を行います。
 
 > [!div class="checklist"]
-> * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=macos)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech リソースを作成する <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [開発環境を設定し、空のプロジェクトを作成する](../../../../quickstarts/setup-platform.md?tabs=macos&pivots=programming-language-cpp)
 > * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 
-## <a name="add-sample-code"></a>サンプル コードを追加する
+## <a name="source-code"></a>ソース コード
 
-1. `helloworld.cpp` という名前で C++ ソース ファイルを作成し、その中に次のコードを貼り付けます。
+*helloworld.cpp* という名前で C++ ソース ファイルを作成し、その中に次のコードを貼り付けます。
 
-   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/macos/from-microphone/helloworld.cpp#code)]
+[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/macos/from-microphone/helloworld.cpp#code)]
 
-1. この新しいファイルで、文字列 `YourSubscriptionKey` を、音声サービスのサブスクリプション キーで置き換えます。
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](https://aka.ms/speech/sdkregion)の**リージョン識別子** (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
+## <a name="code-explanation"></a>コードの説明
 
-> [!NOTE]
-> Speech SDK では、既定で認識される言語が en-us です。ソース言語の選択については、「[音声テキスト変換のソース言語を指定する](../../../../how-to-specify-source-language.md)」を参照してください。
+[!INCLUDE [code explanation](../code-explanation.md)]
 
 ## <a name="build-the-app"></a>アプリのビルド
 
@@ -72,4 +66,4 @@ ms.locfileid: "78925475"
 
 ## <a name="next-steps"></a>次のステップ
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]

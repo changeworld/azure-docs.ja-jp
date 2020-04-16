@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 8752585e731f905636f57d31741e2be67f7140b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee4d629d80ff8265d58a1d05b8dca1652ddac6fb
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335035"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81112866"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager
 次の制限は、サブスクリプションごとにリージョン単位で **Azure Resource Manager** デプロイ モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
@@ -72,10 +72,12 @@ ms.locfileid: "80335035"
 | NIC あたりのルール数 (1 つの NIC のすべての IP にわたる) | 該当なし                           |
 | フロントエンド IP 構成              | 600                           |
 | バックエンド プールのサイズ                       | 1,000 IP 構成、単一仮想ネットワーク |
+| ロード バランサーあたりのバックエンド リソース数 <sup>1<sup> | 150                   |
 | 高可用性ポート                 | 内部フロント エンドごとに 1 個       |
-| Load Balancer あたりのアウトバウンド規則数        | 20                            |
+| Load Balancer あたりのアウトバウンド規則数        | 600                           |
 | [TCP アイドル タイムアウト](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 分 / 30 分          |
 
+<sup>1</sup>制限は、最大 150 のリソース (スタンドアロン仮想マシン リソース、可用性セット リソース、および仮想マシン スケール セット リソースの任意の組み合わせ) です。
 
 **Basic Load Balancer**
 

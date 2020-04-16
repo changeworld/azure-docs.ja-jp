@@ -4,16 +4,16 @@ description: AzCopy の構成、最適化、トラブルシューティングを
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87a335f44a31436de735395adbee9035493cbbd2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77526497"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263422"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -53,9 +53,6 @@ AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変�
 ### <a name="run-benchmark-tests"></a>ベンチマーク テストを実行する
 
 特定の BLOB コンテナーに対してパフォーマンス ベンチマーク テストを実行して、全般的なパフォーマンスの統計情報を表示し、パフォーマンスのボトルネックを識別できます。 
-
-> [!NOTE]
-> 現在のリリースでは、この機能は Blob Storage コンテナーに対してのみ使用できます。
 
 パフォーマンス ベンチマーク テストを実行するには、次のコマンドを使用します。
 
@@ -129,7 +126,7 @@ AzCopy は、ジョブごとにログ ファイルとプラン ファイルを�
 
 ### <a name="review-the-logs-for-errors"></a>ログでエラーを確認する
 
-次のコマンドでは、`UPLOADFAILED` ログから状態が `04dc9ca9-158f-7945-5933-564021086c79` であるすべてのエラーが取得されます。
+次のコマンドでは、`04dc9ca9-158f-7945-5933-564021086c79` ログから状態が `UPLOADFAILED` であるすべてのエラーが取得されます。
 
 **Windows (PowerShell)**
 

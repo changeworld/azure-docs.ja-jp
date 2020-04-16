@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: yinhew
-ms.openlocfilehash: 3a40dd445384ac35749ff2b016c672fb3c40dfb0
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 0934738c557ac6d26867546783797cf5d2b75056
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671415"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275135"
 ---
 > [!NOTE]
 > Unity では、Windows デスクトップ (x86 および x64) またはユニバーサル Windows プラットフォーム (x86、x64、ARM、ARM64)、Android (x86、ARM32、ARM64)、および iOS (x64 シミュレーター、ARM32 および ARM64) がサポートされています。
@@ -95,7 +95,7 @@ ms.locfileid: "80671415"
 
 ## <a name="next-steps"></a>次のステップ
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 ## <a name="see-also"></a>関連項目
 

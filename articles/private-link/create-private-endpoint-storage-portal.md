@@ -7,20 +7,17 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8c76333d5a2be8a2c589dbe54389b023fef34854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 111e6e2f80c3460f363c496b7b32befdca16250d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252528"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115110"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する
 Azure プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 仮想マシン (VM) などの Azure リソースとプライベート リンク リソースとの非公開での通信が可能になります。
 
 このクイックスタートでは、Azure portal を使って、Azure 仮想ネットワーク上の VM、プライベート エンドポイントを備えたストレージ アカウントを作成する方法について説明します。 その後は、VM からそのストレージ アカウントへ安全にアクセスできます。
-
-> [!NOTE]
-> プライベート エンドポイントとサービス エンドポイントを同じサブネット内で併用することはできません。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 362b35af191c1caebeb30149ce060a5366182ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cffefb294aaeeb4d66358ceae72c98becd04cc58
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289340"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261960"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure Database for MySQL 用の Azure セキュリティ ベースライン
 
@@ -134,7 +134,7 @@ Azure Database for MySQL のサービス タグの使用方法について: http
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-ネットワークに関する Azure Policy のサンプル: https://docs.microsoft.com/azure/governance/policy/samples/#network
+ネットワークに関する Azure Policy のサンプル: https://docs.microsoft.com/azure/governance/policy/samples/
 
 Azure Blueprint を作成する方法: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -388,7 +388,7 @@ Azure Database for MySQL 用に Advanced Threat Protection を構成する方法
 
 Privileged Identity Management (PIM) をデプロイする方法: https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Azure AD のリスク検出について: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Azure AD のリスク検出の概要: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 **Azure Security Center の監視**: はい
 
@@ -993,7 +993,7 @@ Key Vault のキーをバックアップする方法: https://docs.microsoft.com
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3:カスタマー マネージド キーを含むすべてのバックアップを検証する
 
-**ガイダンス**: Azure Database for MySQL で復元を実行すると、元のサーバーのバックアップから新しいサーバーが作成されます。 使用できる復元には 2 つの種類があります。ポイントインタイム リストアと geo リストア。 ポイントインタイム リストアは、いずれのバックアップ冗長オプションでも使用でき、元のサーバーと同じリージョンに新しいサーバーが作成されます。 geo リストアは、サーバーを geo 冗長ストレージ用に構成した場合にのみ使用でき、ご利用のサーバーを別のリージョンに復元できます。
+**ガイダンス**: Azure Database for MySQL で復元を実行すると、元のサーバーのバックアップから新しいサーバーが作成されます。 使用できる復元には 2 つの種類があります。ポイントインタイム リストアと geo リストアです。 ポイントインタイム リストアは、いずれのバックアップ冗長オプションでも使用でき、元のサーバーと同じリージョンに新しいサーバーが作成されます。 geo リストアは、サーバーを geo 冗長ストレージ用に構成した場合にのみ使用でき、ご利用のサーバーを別のリージョンに復元できます。
 
 復旧の推定所要時間は、データベースのサイズ、トランザクション ログのサイズ、ネットワーク帯域幅、同じリージョン内で同時に復旧するデータベースの合計数など、複数の要因によって異なります。 通常は 12 時間もかかりません。
 

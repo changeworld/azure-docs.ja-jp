@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: dce3549bde4c62245e1d2b1f8ac0c88c0b70260c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4e9077d06341ce5ecf6b2238374ce1ac8e13dca3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70241402"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415160"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>チュートリアル:Azure Data Box Heavy を注文する
 
@@ -41,17 +41,9 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
 - 1 階以外のフロアに設置する場合、エレベーターまたはスロープからデバイスを搬入できること。 デバイスの重量は約 500 ポンドです。
 - データセンター内に、これだけの設置面積を占めるデバイスを収容可能な平らな場所があり、その近くに使用可能なネットワーク接続用設備があること。
 
-
 ### <a name="for-service"></a>サービスでは
 
-開始する前に次の点を確認します。
-- アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
-- Data Box サービスで使用するサブスクリプションが、次のいずれかの種類であることを確認します。
-    - Microsoft Enterprise Agreement (EA)。 [EA サブスクリプション](https://azure.microsoft.com/pricing/enterprise-agreement/)に関する詳細をご覧ください。
-    - Cloud Solution Provider (CSP)。 Azure CSP プログラムの詳細は[こちら](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)です。
-    - Microsoft Azure スポンサー プラン。 Azure スポンサー プラン プログラムの詳細は[こちら](https://azure.microsoft.com/offers/ms-azr-0036p/)です。
-
-- Data Box Heavy の注文を作成するサブスクリプションに対して、所有者または共同作成者アクセス権があること。
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>デバイスでは
 
@@ -79,7 +71,7 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
 
 4. ご利用のリージョンで Data Box サービスが利用可能かどうかを確認します。 次の情報を入力または選択し、 **[適用]** を選択します。
 
-    |設定  |Value  |
+    |設定  |値  |
     |---------|---------|
     |サブスクリプション     | Data Box サービス用の EA、CSP、または Azure スポンサー サブスクリプションを選択します。 <br> サブスクリプションは、課金アカウントにリンクされます。       |
     |転送の種類     | **[Azure へインポート]** を選択します。        |
@@ -94,7 +86,7 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
 
 6. **[注文]** で**注文の詳細**を指定します。 次の情報を入力または選択し、 **[次へ]** を選択します。
     
-    |設定  |Value  |
+    |設定  |値  |
     |---------|---------|
     |名前     | 注文を追跡するためのフレンドリ名を指定します。 <br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。      |
     |Resource group     | 既存のグループを使用するか、新しいグループを作成します。 <br> リソース グループとは、まとめて管理したり、デプロイしたりできるリソースの論理コンテナーです。         |
@@ -107,7 +99,7 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
 
     保存先としてのストレージ アカウントに加えて、オンプレミス VHD からマネージド ディスクを作成するために Data Box Heavy を使用している場合は、次の情報を提供する必要があります。
 
-    |設定  |Value  |
+    |設定  |値  |
     |---------|---------|
     |リソース グループ     | オンプレミスの VHD からマネージド ディスクを作成する場合は、新しい リソース グループを作成します。 既存のリソース グループを使用できるのは、Data Box サービスでマネージド ディスクの Data Box Heavy 注文を作成するときに、そのリソース グループがすでに作成されていた場合に限られます。 <br> 複数のリソース グループを指定するときは、各リソース グループをセミコロンで区切ります。 サポートされるリソース グループは、最大 10 個です。|
 

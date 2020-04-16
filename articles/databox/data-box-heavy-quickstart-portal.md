@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 70d5481c37777150927914042133286a77f53b89
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 15140ef392d8108b59bf50c396e529dc15951232
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76514410"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410907"
 ---
 ::: zone target = "docs"
 
@@ -39,11 +39,7 @@ ms.locfileid: "76514410"
 
 ### <a name="for-service"></a>サービスでは
 
-開始する前に次の点を確認します。
-
-- アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
-- Data Box サービスで使用するサブスクリプションは、[マイクロソフト エンタープライズ契約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)、[クラウド ソリューション プロバイダー (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)、[Microsoft Azure スポンサー プラン](https://azure.microsoft.com/offers/ms-azr-0036p/)のいずれかです。
-- Data Box Heavy の注文を作成するサブスクリプションに対して、所有者または共同作成者のアクセス権があること。
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>デバイスでは
 
@@ -57,7 +53,6 @@ ms.locfileid: "76514410"
     - 40 Gbps ケーブルの場合、ケーブルのデバイス側の端は QSFP+ である必要があります。
     - 10 Gbps ケーブルの場合、SFP+ ケーブルが必要です。ケーブルの一端を 10 G スイッチに差し込み、QSFP+ から SFP+ へのアダプター (QSA アダプター) を使用して他端をデバイスに差し込みます。
 - 電源ケーブルがデバイス背面のトレイに収納されていること。
-
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f83cee2fb1435252f34d1a64f531b5befef66ffb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4034759dc4f20649c15236b057e348966d72409e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289926"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261162"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 単一サーバーの Azure セキュリティ ベースライン
 
@@ -134,7 +134,7 @@ Azure Database for PostgreSQL のサービス タグの使用方法について:
 
 Azure Policy を構成して管理する方法: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-ネットワークに関する Azure Policy のサンプル: https://docs.microsoft.com/azure/governance/policy/samples/#network
+ネットワークに関する Azure Policy のサンプル: https://docs.microsoft.com/azure/governance/policy/samples/
 
 Azure Blueprint を作成する方法: https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -389,7 +389,7 @@ Azure Database for PostgreSQL 用の Advanced Threat Protection を設定する�
 
 Privileged Identity Management (PIM) をデプロイする方法: https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Azure AD のリスク検出について: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Azure AD のリスク検出の概要: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
 **Azure Security Center の監視**: はい
 
@@ -541,7 +541,7 @@ Azure Database for PostgreSQL 用に転送中の暗号化を構成する方法: 
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-Azure での顧客データの保護について: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+Azure での顧客データの保護の概要: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure Security Center の監視**: 現在は使用できません
 

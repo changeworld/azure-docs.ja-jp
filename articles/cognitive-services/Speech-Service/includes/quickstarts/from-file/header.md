@@ -2,19 +2,19 @@
 title: クイック スタート:オーディオ ファイルから音声を認識する - Speech サービス
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/14/2020
-ms.author: dapine
-ms.openlocfilehash: 2b6270535c0cf69549a7412bd38d9207454e5500
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.author: trbye
+ms.openlocfilehash: a7c91775411f100a92dfcb0a7199dd4b25f6eca4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76037941"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400485"
 ---
 このクイックスタートでは、[Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) を使用して、オーディオ ファイルから音声を認識します。 いくつかの前提条件を満たすと、わずかなステップを実行するだけでファイルの音声が認識されます。
 > [!div class="checklist"]
