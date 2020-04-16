@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
-  ms.date: 09/25/2019
-  ms.openlocfilehash: bdda8aca71f09cfe570ffea7e03c63d7c87abbb5
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/14/2020
+  ms.openlocfilehash: 6d209715a86e580d402361189f4484e762c43706
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77212581"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81414287"
 landingContent:
 - title: Azure Lighthouse について
   linkLists:
@@ -43,6 +43,8 @@ landingContent:
       url: ./concepts/cloud-solution-provider.md
     - text: エンタープライズ シナリオ
       url: ./concepts/enterprise.md
+    - text: テナント、ロール、ユーザー
+      url: ./concepts/tenants-users-roles.md
 - title: Marketplace のオファー
   linkLists:
   - linkListType: how-to-guide
@@ -61,14 +63,6 @@ landingContent:
       url: https://github.com/Azure/Azure-Lighthouse-samples/
     - text: Azure Lighthouse サンプルのインデックス
       url: ./samples/index.md
-- title: Azure サービスの操作
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Azure Monitor ログの大規模な使用
-      url: ./how-to/monitor-at-scale.md
-    - text: Azure Policy を大規模にデプロイする
-      url: ./how-to/policy-at-scale.md
 - title: Azure portal エクスペリエンス
   linkLists:
   - linkListType: how-to-guide
@@ -77,16 +71,18 @@ landingContent:
       url: ./how-to/view-manage-customers.md
     - text: サービス プロバイダーを表示し、管理する
       url: ./how-to/view-manage-service-providers.md
-- title: リファレンス - ダウンロード
+- title: Azure サービスの操作
   linkLists:
-  - linkListType: download
+  - linkListType: how-to-guide
     links:
-    - text: OpenAPI - 2019-06-01
-      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01
-    - text: SDK for .NET - NuGet
-      url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
-    - text: Python 用 SDK - PyPi
-      url: https://pypi.org/project/azure-mgmt-managedservices/
+    - text: Azure Monitor ログの大規模な使用
+      url: ./how-to/monitor-at-scale.md
+    - text: 委任変更の監視
+      url: ./how-to/monitor-at-scale.md
+    - text: Azure Policy を大規模にデプロイする
+      url: ./how-to/policy-at-scale.md
+    - text: 修復できるポリシーをデプロイする
+      url: ./how-to/deploy-policy-remediation.md
 - title: リファレンス - SDK
   linkLists:
   - linkListType: reference
@@ -101,6 +97,16 @@ landingContent:
       url: /dotnet/api/Microsoft.Azure.Management.ManagedServices
     - text: Python
       url: /python/api/azure-mgmt-managedservices
+- title: リファレンス - ダウンロード
+  linkLists:
+  - linkListType: download
+    links:
+    - text: OpenAPI - 2019-06-01
+      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01
+    - text: SDK for .NET - NuGet
+      url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
+    - text: Python 用 SDK - PyPi
+      url: https://pypi.org/project/azure-mgmt-managedservices/
 - title: 参加する
   linkLists:
   - linkListType: get-started
