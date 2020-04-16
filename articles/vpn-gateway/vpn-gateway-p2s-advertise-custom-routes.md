@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7a904857b8aa0ed2aa18fc2a1b81fe31541e6f9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3588755e2aab1c84d443e917eca8c7fca280b49a
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74151895"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756887"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>P2S VPN クライアント用のカスタム ルートをアドバタイズする
 
@@ -38,7 +38,7 @@ ms.locfileid: "74151895"
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute 13.88.144.250/32
     ```
 
-3. 複数のカスタム ルートを追加するには、コンマ区切りとスペースを使用してアドレスを区切ります。 次に例を示します。
+3. 複数のカスタム ルートを追加するには、コンマとスペースを使用してアドレスを区切ります。 次に例を示します。
 
     ```azurepowershell-interactive
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute x.x.x.x/xx , y.y.y.y/yy

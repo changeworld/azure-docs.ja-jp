@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: 8c261a010a1e8f4d1be9b3883510eb38c37a15ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1b70aaef49cc2b993c873509dc935d71069efa2
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296868"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985917"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,7 +52,7 @@ ms.locfileid: "80296868"
 
 ### <a name="using-the-sdk"></a>SDK を使用する
 
-お使いの実験を設定するには、[azureml.core](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) パッケージから [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)、[Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)、[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) および [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) クラスをインストールします。
+お使いの実験を設定するには、[azureml.core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) パッケージから [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)、[Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)、[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) および [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) クラスをインストールします。
 
 ```python
 import azureml.core
@@ -264,16 +264,41 @@ with exp.start_logging() as parent_run:
 
 ### <a name="submit-child-runs"></a>子実行を送信する
 
-親実行から子実行を送信することもできます。 そうすることで、親実行と子実行の階層を作成することができます。子実行はそれぞれ異なるコンピューティング先で実行され、共通の親実行 ID で関連付けられます。
+親実行から子実行を送信することもできます。 そうすることで、親実行と子実行の階層を作成できます。 
 
-親実行内から子実行を送信するには、["submit_child()"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) メソッドを使用します。 これを親実行スクリプト内で行うには、実行コンテキストを取得し、そのコンテキスト インスタンスの ``submit_child`` メソッドを使用して子実行を送信します。
+子実行で、親実行と異なる実行構成を使用することを望む場合があります。 たとえば、子に GPU ベースの構成を使用しながら、親に対して非力な CPU ベースの構成を使用できます。 他の一般的な目的は、各子に異なる引数とデータを渡すことです。 子実行をカスタマイズするには、子の `ScriptRunConfig` コンストラクターに `RunConfiguration` オブジェクトを渡します。 親 `ScriptRunConfig` オブジェクトのスクリプトの一部になるこのコード例では:
+
+- 名前付きコンピューティング リソース `"gpu-compute"` を取得する `RunConfiguration` を作成します
+- 子 `ScriptRunConfig` オブジェクトに渡される異なる引数値を繰り返します
+- カスタム コンピューティング リソースと引数を使用して、新しい子実行を作成して送信します
+- すべての子実行が完了するまでブロックします
 
 ```python
-## In parent run script
-parent_run = Run.get_context()
-child_run_config = ScriptRunConfig(source_directory='.', script='child_script.py')
-parent_run.submit_child(child_run_config)
+# parent.py
+# This script controls the launching of child scripts
+from azureml.core import Run, ScriptRunConfig, RunConfiguration
+
+run_config_for_aml_compute = RunConfiguration()
+run_config_for_aml_compute.target = "gpu-compute"
+run_config_for_aml_compute.environment.docker.enabled = True 
+
+run = Run.get_context()
+
+child_args = ['Apple', 'Banana', 'Orange']
+for arg in child_args: 
+    run.log('Status', f'Launching {arg}')
+    child_config = ScriptRunConfig(source_directory=".", script='child.py', arguments=['--fruit', arg], run_config = run_config_for_aml_compute)
+    # Starts the run asynchronously
+    run.submit_child(child_config)
+
+# Experiment will "complete" successfully at this point. 
+# Instead of returning immediately, block until child runs complete
+
+for child in run.get_children():
+    child.wait_for_completion()
 ```
+
+同じ構成、引数、および入力を使用して多数の子実行を効率的に作成するには、[`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) メソッドを使用します。 実行を作成するたびにネットワーク呼び出しが行われるため、実行のバッチを作成した方が、1 つずつ作成するよりも効率的です。
 
 次のようにすれば、子実行内から親実行 ID を確認できます。
 
@@ -306,7 +331,7 @@ local_script_run.add_properties({"author":"azureml-user"})
 print(local_script_run.get_properties())
 ```
 
-プロパティは変更不可であるため、プロパティによって監査目的の恒久的な記録が作成されます。 次のコード例は、前のコードで `"azureml-user"` プロパティ値として `"author"` が既に追加されているためエラーとなります。
+プロパティは変更不可であるため、プロパティによって監査目的の恒久的な記録が作成されます。 次のコード例は、前のコードで `"author"` プロパティ値として `"azureml-user"` が既に追加されているためエラーとなります。
 
 ```Python
 try:

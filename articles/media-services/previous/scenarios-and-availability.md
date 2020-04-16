@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0cf5d698bc2186928e0db19be173ec725485e8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227011"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985934"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Media Services のシナリオとデータ センターにおける機能の可用性
 
@@ -151,7 +151,7 @@ AMS のお客様は、AMS アカウントのストリーミング エンドポ�
 
     **Premium** ストリーミング エンドポイントは専用のスケーラブルな帯域幅の容量を提供するため、高度なワークロードに適しています。 **Premium** ストリーミング エンドポイントを持つユーザーは、既定で 1 つのストリーミング ユニット (SU) を取得します。 ストリーミング エンドポイントは、SU を追加することで拡張できます。 各 SU は、アプリケーションに追加の帯域幅の容量を提供します。 **Premium** ストリーミング エンドポイントのスケーリングの詳細については、[ストリーミング エンドポイントのスケーリング](media-services-portal-scale-streaming-endpoints.md)に関するトピックを参照してください。
 
-* Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。 予約ユニットの種類は、**S1**、**S2**、**S3** から選択できます。 たとえば、同じエンコード ジョブの場合に、予約ユニットの種類として **S1** よりも **S2** を使用する方が、ジョブの実行が高速になります。
+* Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。 予約ユニットの種類は、以下から選択できます:**S1**、**S2**、**S3**。 たとえば、同じエンコード ジョブの場合に、予約ユニットの種類として **S1** よりも **S2** を使用する方が、ジョブの実行が高速になります。
 
     予約ユニットの種類を指定するだけでなく、**予約ユニット** (RU) を使用したアカウントのプロビジョニングを指定することもできます。 プロビジョニングされた RU の数によって、所定のアカウントで並列処理できるメディア タスクの数が決まります。
 
@@ -169,7 +169,7 @@ AMS のお客様は、AMS アカウントのストリーミング エンドポ�
 
 #### <a name="availability"></a>可用性
 
-データ センターで Media Services が使用可能かどうかを確認するには、 https://azure.microsoft.com/status/ にアクセスして、「メディア」テーブルまでスクロールします。
+特定のデータセンターで Media Services が使用可能かどうかを判定するには、「[リージョン別の Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=media-services&regions=all)」を使用してください。
 
 ### <a name="streaming-endpoints"></a>ストリーミング エンドポイント 
 
@@ -177,7 +177,7 @@ Media Services のお客様は、**Standard** と **Premium** のいずれかの
 
 #### <a name="availability"></a>可用性
 
-|Name|Status|データ センター
+|名前|Status|データ センター
 |---|---|---|
 |Standard|GA|All|
 |Premium|GA|All|
@@ -186,7 +186,7 @@ Media Services のお客様は、**Standard** と **Premium** のいずれかの
 
 #### <a name="availability"></a>可用性
 
-ドイツ、ブラジル南部、インド西部、インド南部、インド中部を除く、すべてのデータ センターで利用できます。 
+以下を除く、すべてのデータ センターで利用できます:ドイツ、ブラジル南部、インド西部、インド南部、インド中部。 
 
 ### <a name="encoding-media-processors"></a>Encoding メディア プロセッサ
 
@@ -243,7 +243,7 @@ Microsoft Azure Media Services を使用すると、メディアがコンピュ�
 
 ### <a name="reserved-unit-ru-type"></a>予約ユニット (RU) の種類
 
-Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。 予約ユニットの種類は、S1、S2、S3 から選択できます。
+Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。 予約ユニットの種類は、以下から選択できます:S1、S2、S3。
 
 詳細については、[スケーリング](#scaling)に関するセクションを参照してください。
 

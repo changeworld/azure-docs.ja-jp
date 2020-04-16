@@ -1,5 +1,5 @@
 ---
-title: 'Azure バックエンド接続機能の相互運用性: コントロール プレーン分析 | Microsoft Docs'
+title: 'Azure での相互運用性: コントロール プレーンの分析'
 description: この記事では、Azure における ExpressRoute、サイト間 VPN、仮想ネットワーク ピアリングの間の相互運用性を分析する際に使用できるテスト セットアップのコントロール プレーン分析について説明します。
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 4921e4c4fc0da95250a0171c66d6a69093b10687
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e41bc86533815c394077bf5276d930fe958cd19
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873847"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518282"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Azure バックエンド接続機能の相互運用性: コントロール プレーン分析
+# <a name="interoperability-in-azure--control-plane-analysis"></a>Azure での相互運用性: コントロール プレーンの分析
 
 この記事では、[テストセットアップ][Setup] のコントロールプレーン分析について説明します。 [テスト セットアップの構成][Configuration] とテスト セットアップの[データ プレーン分析][Data-Analysis] についてもご覧ください。
 
@@ -29,7 +29,7 @@ ms.locfileid: "74873847"
 
 ![1][1]
 
-VNet の Azure ExpressRoute ゲートウェイの ASN が Microsoft エンタープライズ エッジ ルーター (MSEE) の ASN と異なっています。 ExpressRoute ゲートウェイではプライベート ASN (値は **65515**) が使用されているのに対し､MSEE ではパブリック ASN (値は **12076**) がグローバルに使用されています。 ExpressRoute ピアリングを構成するときは､MSEE がピアとなるため、ピア ASN として **12076** を使用します。 Azure 側では､MSEE は ExpressRoute ゲートウェイとの間で eBGP ピアリングを確立します。 各 ExpressRoute ピアリング用に MSEE が確立するデュアル eBGP ピアリングは､コントロール プレーン レベルではトランスペアレントです。 このため､ExpressRoute のルート テーブルを見ると､VNet の プレフィックスにその VNet の ExpressRoute ゲートウェイの ASN が確認できます。 
+VNet の Azure ExpressRoute ゲートウェイの ASN が Microsoft エンタープライズ エッジ ルーター (MSEE) の ASN と異なっています。 ExpressRoute ゲートウェイではプライベート ASN (値は **65515**) が使用されているのに対し､MSEE ではパブリック ASN (値は **12076**) がグローバルに使用されています。 ExpressRoute ピアリングを構成するときは､MSEE がピアとなるため、ピア ASN として **12076** を使用します。 Azure 側では､MSEE は ExpressRoute ゲートウェイとの間で eBGP ピアリングを確立します。 各 ExpressRoute ピアリング用に MSEE が確立するデュアル eBGP ピアリングは､コントロール プレーン レベルではトランスペアレントです。 そのため、ExpressRoute のルート テーブルを確認すると、VNet の ExpressRoute ゲートウェイの ASN がその VNet のプレフィックスとして表示されます。 
 
 次の図は ExpressRoute のルート テーブルの例を示しています。 
 
@@ -45,7 +45,7 @@ Azure 内では、ASN はピアリングの視点からのみ重要です。 既
 
 ## <a name="on-premises-location-1-and-the-branch-vnet-perspective-via-a-site-to-site-vpn"></a>サイト間 VPN を経由するオンプレミスの場所 1 とブランチ VNet の視点
 
-オンプレミスの場所 1 とブランチ VNet はどちらも、サイト間 VPN 接続を介して、ハブ VNet の VPN ゲートウェイに接続されています。 次の図に示すように、両者は、このトポロジに対して同じ視点を共有しています。
+オンプレミスの場所 1 とブランチ VNet はどちらも、サイト間 VPN 接続経由でハブ VNet の VPN ゲートウェイに接続されています。 次の図に示すように、両者は、このトポロジに対して同じ視点を共有しています。
 
 ![3][3]
 

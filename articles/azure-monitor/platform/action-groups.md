@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 2/18/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 6ba48f3c40e45afa02e03a7589e968cca723118e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bc191bb27ebb0bac631ef5cfa8ddc34bbd8214e
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226559"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520889"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 1 つのサブスクリプションで最大 2,000 のアクション グループを構成できます。
@@ -52,7 +52,7 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
     1. **Name**:このアクションの一意識別子を入力します。
 
-    1. **アクションの種類**:電子メール/SMS/プッシュ/音声、ロジック アプリ、Webhook、ITSM、または Automation Runbook を選択します。
+    1. **アクションの種類**:Automation Runbook、Azure Function、電子メールの Azure Resource Manager のロール、メール/SMS/プッシュ/音声、ITSM、ロジック アプリ、Secure Webhook、Webhook を選択します。
 
     1. **[詳細]** :アクションの種類に基づいて、電話番号、メール アドレス、Webhook の URI、Azure アプリ、ITSM 接続、または Automation Runbook を入力します。 ITSM アクションの場合は、さらに ITSM ツールで必要な **[作業項目]** および他のフィールドを指定します。
     

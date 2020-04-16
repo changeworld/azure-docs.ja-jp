@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Service (AKS) での Windows Server ノード プールの制限事項
+title: Windows Server ノード プールの制限
+titleSuffix: Azure Kubernetes Service
 description: Windows Server ノード プールとアプリケーション ワークロードを Azure Kubernetes Service (AKS) 内で実行するときの既知の制限事項について説明します
 services: container-service
 ms.topic: article
-ms.date: 05/31/2019
-ms.openlocfilehash: 65c62324a27e8377a1cc9833595b15cf08c6c820
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 12/18/2019
+ms.openlocfilehash: 934acf06a779c1c3b0b13e74b196b174dd944e66
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298174"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886672"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Windows Server ノード プールとアプリケーション ワークロードについての現在の制限事項
 
@@ -53,7 +54,7 @@ Windows ノード プールの AKS クラスターでは、Azure CNI (高度) �
 
 ## <a name="can-i-change-the-max--of-pods-per-node"></a>ノードあたりのポッドの最大数を変更できますか?
 
-現時点では、クラスターの信頼性を確保するため、最大値を 30 ポッドに設定する必要があります。
+はい。 影響と使用可能なオプションについては、[ポッドの最大数][maximum-number-of-pods]に関するページを参照してください。
 
 ## <a name="how-do-patch-my-windows-nodes"></a>Windows ノードに修正プログラムを適用するにはどうすればいいですか?
 
@@ -121,3 +122,4 @@ AKS で Windows Server コンテナーの使用を開始するには、[AKS で 
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [preview-support]: support-policies.md#preview-features-or-feature-flags
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
+[maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node

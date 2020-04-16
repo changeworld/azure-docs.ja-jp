@@ -1,6 +1,6 @@
 ---
 title: テーブルの設計
-description: Azure SQL Data Warehouse でのテーブル設計の概要。
+description: Synapse SQL プールでのテーブル設計の概要。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,83 +11,97 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f116897bdaffa765404aa47fda4ae32a49fa99ac
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2802c62acef0d78f8cfa7dd7f06bc34d8eecca4c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351270"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742631"
 ---
-# <a name="designing-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブルの設計
+# <a name="design-tables-in-synapse-sql-pool"></a>Synapse SQL プールでのテーブルの設計
 
-Azure SQL Data Warehouse でのテーブル設計について重要な概念を説明します。 
+この記事では、SQL プールでテーブルを設計するための重要な入門的概念を説明します。
 
-## <a name="determine-table-category"></a>テーブル カテゴリを決定する 
+## <a name="determine-table-category"></a>テーブル カテゴリを決定する
 
-[スター スキーマ](https://en.wikipedia.org/wiki/Star_schema)は、データをファクト テーブルとディメンション テーブルに編成します。 一部のテーブルは、ファクト テーブルまたはディメンション テーブルに移動する前に統合またはステージング データに使用されます。 テーブルを設計する際には、テーブルのデータがファクト、ディメンション、統合のいずれのテーブルに属するかを決定します。 この決定は、適切なテーブル構造体および配布を通知します。 
+[スター スキーマ](https://en.wikipedia.org/wiki/Star_schema)は、データをファクト テーブルとディメンション テーブルに編成します。 一部のテーブルは、ファクト テーブルまたはディメンション テーブルに移動する前に統合またはステージング データに使用されます。 テーブルを設計する際には、テーブルのデータがファクト、ディメンション、統合のいずれのテーブルに属するかを決定します。 この決定は、適切なテーブル構造体および配布を通知します。
 
-- **ファクト テーブル**には、一般にトランザクション システムで生成された後、データ ウェアハウスに読み込まれる定量的データが含まれています。 たとえば、小売業では販売トランザクションを毎日生成した後、そのデータを分析のためにデータ ウェアハウス ファクト テーブルに読み込みます。
+- **ファクト テーブル**には、一般にトランザクション システムで生成された後、SQL プールに読み込まれる定量的データが含まれています。 たとえば、小売業では販売トランザクションを毎日生成した後、そのデータを分析のために SQL プール ファクト テーブルに読み込みます。
 
-- **ディメンション テーブル**には、変化する可能性はあるが通常は変更頻度が低い属性データが含まれます。 たとえば、顧客の名前と住所はディメンション テーブルに格納され、その顧客のプロファイルが変更された場合にのみ更新されます。 大規模なファクト テーブルのサイズを最小限に抑えるために、顧客の名前と住所をファクト テーブルのすべての行に格納する必要はありません。 代わりに、ファクト テーブルとディメンション テーブルで顧客 ID を共有できます。 クエリで 2 つのテーブルを結合して、顧客のプロファイルとトランザクションに関連付けることができます。 
+- **ディメンション テーブル**には、変化する可能性はあるが通常は変更頻度が低い属性データが含まれます。 たとえば、顧客の名前と住所はディメンション テーブルに格納され、その顧客のプロファイルが変更された場合にのみ更新されます。 大規模なファクト テーブルのサイズを最小限に抑えるために、ファクト テーブルのすべての行に顧客の名前と住所を格納する必要はありません。 代わりに、ファクト テーブルとディメンション テーブルで顧客 ID を共有できます。 クエリで 2 つのテーブルを結合して、顧客のプロファイルとトランザクションに関連付けることができます。
 
 - **統合テーブル**は、統合またはステージング データの場所を提供します。 統合テーブルは、通常のテーブル、外部テーブル、または一時テーブルとして作成できます。 たとえば、ステージング テーブルにデータを読み込み、ステージングでデータの変換を実行してから、データを運用環境テーブルに挿入できます。
 
 ## <a name="schema-and-table-names"></a>スキーマとテーブルの名前
-スキーマは、同じ方法で使用されるテーブルをグループ化するのに良い方法です。  複数のデータベースをオンプレミス ソリューションから SQL Data Warehouse に移行する場合は、ファクト テーブル、ディメンション テーブル、および統合テーブルのすべてを SQL Data Warehouse 内の 1 つのスキーマに移行すると一番うまくいきます。 たとえば、すべてのテーブルを、wwi と呼ばれる 1 つのスキーマ内の [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) サンプル データ ウェアハウスに格納できます。 次のコードは、wwi と呼ばれる[ユーザー定義スキーマ](/sql/t-sql/statements/create-schema-transact-sql)を作成します。
+
+スキーマは、同じ方法で使用されるテーブルをグループ化するのに良い方法です。  複数のデータベースをオンプレミス ソリューションから SQL プールに移行する場合は、ファクト テーブル、ディメンション テーブル、および統合テーブルのすべてを SQL プール内の 1 つのスキーマに移行すると一番うまくいきます。
+
+たとえば、すべてのテーブルを、wwi と呼ばれる 1 つのスキーマ内の [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) サンプル SQL プールに格納できます。 次のコードは、wwi と呼ばれる[ユーザー定義スキーマ](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)を作成します。
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-SQL Data Warehouse 内のテーブルの構成を表示するには、テーブル名のプレフィックスとして fact、dim、および int を使用できます。 次の表に、WideWorldImportersDW のスキーマ名とテーブル名の一部を示します。  
+SQL プール内のテーブルの構成を表示するには、テーブル名のプレフィックスとして fact、dim、および int を使用できます。 次の表に、WideWorldImportersDW のスキーマ名とテーブル名の一部を示します。  
 
-| WideWorldImportersDW テーブル  | テーブルの種類です。 | SQL Data Warehouse |
+| WideWorldImportersDW テーブル  | テーブルの種類です。 | SQL プール |
 |:-----|:-----|:------|:-----|
 | City | Dimension | wwi.DimCity |
 | Order | ファクト | wwi.FactOrder |
 
+## <a name="table-persistence"></a>テーブルの永続性
 
-## <a name="table-persistence"></a>テーブルの永続性 
-
-テーブルは、データを Azure Storage に永続的に格納するか、Azure Storage に一時的に格納するか、またはデータ ウェアハウスの外部にあるデータ ストアに格納するかのいずれかです。
+テーブルでは、データを Azure Storage に永続的に格納するか、Azure Storage に一時的に格納するか、または SQL プールの外部にあるデータ ストアに格納するかのいずれかです。
 
 ### <a name="regular-table"></a>通常のテーブル
 
-通常のテーブルは、データ ウェアハウスの一部として Azure Storage にデータを格納します。 セッションが開いているかどうかに関係なく、テーブルとデータが保持されます。  この例では、2 つの列を含む通常のテーブルを作成します。 
+通常のテーブルでは、SQL プールの一部として Azure Storage にデータを格納します。 セッションが開いているかどうかに関係なく、テーブルとデータが保持されます。  次の例では、2 つの列を含む通常のテーブルを作成します。
 
 ```sql
 CREATE TABLE MyTable (col1 int, col2 int );  
 ```
 
 ### <a name="temporary-table"></a>一時テーブル
-一時テーブルは、セッション中のみ存在します。 一時テーブルを使用して、一時的な結果を他のユーザーが確認できないようにしたり、クリーンアップの必要性を減らしたりすることもできます。  一時テーブルはローカル ストレージを使用して高速のパフォーマンスを提供します。  詳しくは、[一時テーブル](sql-data-warehouse-tables-temporary.md)に関する記事をご覧ください。
+
+一時テーブルは、セッション中のみ存在します。 一時テーブルを使用して、一時的な結果を他のユーザーが確認できないようにしたり、クリーンアップの必要性を減らしたりすることもできます。  
+
+一時テーブルはローカル ストレージを使用して高速のパフォーマンスを提供します。  詳しくは、[一時テーブル](sql-data-warehouse-tables-temporary.md)に関する記事をご覧ください。
 
 ### <a name="external-table"></a>外部テーブル
-外部テーブルは、Azure Storage BLOB または Azure Data Lake Store にあるデータを指します。 CREATE TABLE AS SELECT ステートメントと組み合わせて使用する場合は、外部テーブルから選択するとデータが SQL Data Warehouse にインポートされます。 このため、外部テーブルはデータを読み込むのに役立ちます。 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)」をご覧ください。
+
+外部テーブルは、Azure Storage BLOB または Azure Data Lake Store にあるデータを指します。 CREATE TABLE AS SELECT ステートメントと組み合わせて使用する場合は、外部テーブルから選択するとデータが SQL プールにインポートされます。
+
+このため、外部テーブルはデータを読み込むのに役立ちます。 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)」をご覧ください。
 
 ## <a name="data-types"></a>データ型
-SQL Data Warehouse では、最もよく使用されるデータ型がサポートされています。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの「[data types in CREATE TABLE reference (CREATE TABLE 内のデータ型のリファレンス)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)」を参照してください。 データ型の使用に関するガイダンスについては、「[データ型](sql-data-warehouse-tables-data-types.md)」を参照してください。
+
+SQL プールでは、最も一般的に使用されるデータ型をサポートしています。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの「[data types in CREATE TABLE reference (CREATE TABLE 内のデータ型のリファレンス)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes)」を参照してください。 データ型の使用に関するガイダンスについては、「[データ型](sql-data-warehouse-tables-data-types.md)」を参照してください。
 
 ## <a name="distributed-tables"></a>分散テーブル
-SQL Data Warehouse の基本的特徴は、[複数のディストリビューション](massively-parallel-processing-mpp-architecture.md#distributions)にわたるテーブルを格納して操作できる方法にあります。  SQL Data Warehouse では、データを分散するための 3 つの方法 (ラウンド ロビン (既定値)、ハッシュ、レプリケート) がサポートされています。
+
+SQL プールの基本的特徴は、[複数のディストリビューション](massively-parallel-processing-mpp-architecture.md#distributions)にわたるテーブルを格納して操作できる方法にあります。  SQL プールでは、データを分散するための 3 つの方法 (ラウンド ロビン (既定値)、ハッシュ、レプリケート) がサポートされています。
 
 ### <a name="hash-distributed-tables"></a>ハッシュ分散テーブル
-ハッシュ分散テーブルは、ディストリビューション列内の値に基づいて行を分散します。 ハッシュ分散テーブルは、大規模なテーブルのクエリでハイパフォーマンスを達成するように設計されています。 ディストリビューション列を選択する際に検討すべきいくつかの要素があります。 
+
+ハッシュ分散テーブルは、ディストリビューション列内の値に基づいて行を分散します。 ハッシュ分散テーブルは、大規模なテーブルのクエリでハイパフォーマンスを達成するように設計されています。 ディストリビューション列を選択する際に検討すべきいくつかの要素があります。
 
 詳細については、「[Design guidance for distributed tables (分散テーブルの設計ガイダンス)](sql-data-warehouse-tables-distribute.md)」を参照してください。
 
 ### <a name="replicated-tables"></a>レプリケート テーブル
-レプリケート テーブルには、すべてのコンピューティング ノードで使用可能なテーブルの完全なコピーが含まれています。 レプリケート テーブルの結合ではデータ移動が不要であるため、レプリケート テーブルではクエリが高速に実行されます。 ただし、レプリケーションには余分なストレージが必要であり、大きなテーブルには適していません。 
+
+レプリケート テーブルには、すべてのコンピューティング ノードで使用可能なテーブルの完全なコピーが含まれています。 レプリケート テーブルの結合ではデータ移動が不要であるため、レプリケート テーブルではクエリが高速に実行されます。 ただし、レプリケーションには余分なストレージが必要であり、大きなテーブルには適していません。
 
 詳しくは、[レプリケート テーブルを使用するための設計ガイダンス](design-guidance-for-replicated-tables.md)に関する記事をご覧ください。
 
 ### <a name="round-robin-tables"></a>ラウンドロビン テーブル
-ラウンドロビン テーブルは、すべてのディストリビューションにわたって均等にテーブル行を分散させます。 これらの行は、ランダムに分散されます。 ラウンドロビン テーブルへのデータの読み込みは高速です。  ただし、クエリは他の分散方法より多くのデータ移動を要求できます。 
+
+ラウンドロビン テーブルは、すべてのディストリビューションにわたって均等にテーブル行を分散させます。 これらの行は、ランダムに分散されます。 ラウンドロビン テーブルへのデータの読み込みは高速です。  クエリは他の分散方法より多くのデータ移動を必要とする可能性があることに注意してください。
 
 詳細については、「[Design guidance for distributed tables (分散テーブルの設計ガイダンス)](sql-data-warehouse-tables-distribute.md)」を参照してください。
 
 ### <a name="common-distribution-methods-for-tables"></a>テーブルの一般的な分散方法
-テーブル カテゴリは、多くの場合、テーブルの分散について選択するオプションを決定します。 
+
+テーブル カテゴリは、多くの場合、テーブルの分散について選択するオプションを決定します。
 
 | テーブル カテゴリ | 推奨される分散オプション |
 |:---------------|:--------------------|
@@ -96,55 +110,71 @@ SQL Data Warehouse の基本的特徴は、[複数のディストリビューシ
 | ステージング        | ステージング テーブルにはラウンド ロビンを使用します。 CTAS での読み込みが高速です。 データがステージング テーブルに格納されたら、INSERT...SELECT を使用してデータを運用環境テーブルに移動します。 |
 
 ## <a name="table-partitions"></a>テーブルのパーティション
-パーティション テーブルでは、データ範囲に基づいてテーブル行が格納され、操作が実行されます。 たとえば、day、month、または year でテーブルをパーティション分割できます。 クエリ スキャンをあるパーティション内のデータに制限するパーティション除外によってクエリ パフォーマンスを向上させることができます。 パーティションを切り替えてデータを維持することもできます。 SQL Data Warehouse のデータは既に分散されているため、パーティションが多すぎるとクエリ パフォーマンスが低下することがあります。 詳しくは、[パーティション分割のガイダンス](sql-data-warehouse-tables-partition.md)に関する記事をご覧ください。  空でないテーブル パーティションにパーティションを切り替えるとき、既存のデータが切り詰められる場合は、[ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) ステートメントに TRUNCATE_TARGET オプションを使用することを検討してください。 以下のコードは、既存のデータを上書きして、変換された 1 日のデータを SalesFact にスイッチインします。 
+
+パーティション テーブルでは、データ範囲に基づいてテーブル行が格納され、操作が実行されます。 たとえば、day、month、または year でテーブルをパーティション分割できます。 クエリ スキャンをあるパーティション内のデータに制限するパーティション除外によってクエリ パフォーマンスを向上させることができます。 パーティションを切り替えてデータを維持することもできます。 SQL Data Warehouse のデータは既に分散されているため、パーティションが多すぎるとクエリ パフォーマンスが低下することがあります。 詳しくは、[パーティション分割のガイダンス](sql-data-warehouse-tables-partition.md)に関する記事をご覧ください。  空でないテーブル パーティションにパーティションを切り替えるとき、既存のデータが切り詰められる場合は、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントに TRUNCATE_TARGET オプションを使用することを検討してください。 以下のコードは、既存のデータを上書きして、変換された 1 日のデータを SalesFact にスイッチインします。
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
 ```
 
 ## <a name="columnstore-indexes"></a>列ストア インデックス
-既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 この形式のデータ ストレージでは、大きなテーブルに対する高いデータ圧縮およびクエリ パフォーマンスが実現されます。  クラスター化列ストア インデックスは、通常は最適な選択肢ですが、場合によっては、クラスター化インデックスまたはヒープが適切なストレージ構造体の場合もあります。  ヒープ テーブルは、最終的なテーブルに変換されるステージング テーブルなどの一時的なデータを読み込むのに特に役立ちます。
 
-列ストア機能の一覧については[列ストア インデックスの新機能](/sql/relational-databases/indexes/columnstore-indexes-what-s-new)に関する記事をご覧ください。 列ストア インデックスのパフォーマンスを向上させるには、[列ストア インデックスの行グループの品質の最大化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)に関する記事をご覧ください。
+既定では、SQL プールには、テーブルがクラスター化列ストア インデックスとして格納されます。 この形式のデータ ストレージでは、大きなテーブルに対する高いデータ圧縮およびクエリ パフォーマンスが実現されます。  
+
+クラスター化列ストア インデックスは、通常は最適な選択肢ですが、場合によっては、クラスター化インデックスまたはヒープが適切なストレージ構造体の場合もあります。  
+
+> [!TIP]
+> ヒープ テーブルは、最終的なテーブルに変換されるステージング テーブルなどの一時的なデータを読み込むのに特に役立ちます。
+
+列ストア機能の一覧については[列ストア インデックスの新機能](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)に関する記事をご覧ください。 列ストア インデックスのパフォーマンスを向上させるには、[列ストア インデックスの行グループの品質の最大化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)に関する記事をご覧ください。
 
 ## <a name="statistics"></a>統計
-クエリ オプティマイザーでは、クエリ実行のプランの作成時に列レベルの統計が使用されます。 クエリのパフォーマンスを向上させるには、個々の列、特にクエリの結合で使用される列の統計を作成することが重要です。 [統計の作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)は、自動的に行われます。  ただし、統計の更新は自動的には行われません。 大量の行が追加または変更された後に統計を更新します。 たとえば、読み込みの後に統計を更新します。 詳しくは、[統計のガイダンス](sql-data-warehouse-tables-statistics.md)に関する記事をご覧ください。
+
+クエリ オプティマイザーでは、クエリ実行のプランの作成時に列レベルの統計が使用されます。
+
+クエリのパフォーマンスを向上させるには、個々の列、特にクエリの結合で使用される列の統計を作成することが重要です。 [統計の作成](sql-data-warehouse-tables-statistics.md#automatic-creation-of-statistic)は、自動的に行われます。  
+
+統計の更新は自動的には行われません。 大量の行が追加または変更された後に統計を更新します。 たとえば、読み込みの後に統計を更新します。 詳しくは、[統計のガイダンス](sql-data-warehouse-tables-statistics.md)に関する記事をご覧ください。
 
 ## <a name="primary-key-and-unique-key"></a>主キーと一意キー
-PRIMARY KEY は、NONCLUSTERED と NOT ENFORCED が両方とも使用されている場合にのみサポートされます。  UNIQUE 制約は、NOT ENFORCED が使用されている場合にのみサポートされます。  [SQL Data Warehouse のテーブル制約](sql-data-warehouse-table-constraints.md)に関する記事を確認してください。
+
+PRIMARY KEY は、NONCLUSTERED と NOT ENFORCED が両方とも使用されている場合にのみサポートされます。  UNIQUE 制約は、NOT ENFORCED が使用されている場合にのみサポートされます。  [SQL プールのテーブル制約](sql-data-warehouse-table-constraints.md)に関する記事を確認してください。
 
 ## <a name="commands-for-creating-tables"></a>テーブルを作成するためのコマンド
+
 テーブルは、新しい空のテーブルとして作成することができます。 テーブルを作成し、SELECT ステートメントの結果を使用して値を設定することもできます。 テーブルを作成するための T-SQL コマンドを次に示します。
 
 | T-SQL ステートメント | 説明 |
 |:----------------|:------------|
-| [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | すべてのテーブル列およびオプションを定義して空のテーブルを作成します。 |
-| [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql) | 外部テーブルを作成します。 テーブルの定義は、SQL Data Warehouse に格納されます。 テーブル データは Azure Blob Storage または Azure Data Lake Store に格納されます。 |
-| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) | SELECT ステートメントの結果を使用して新しいテーブルに値が設定されます。 テーブルの列とデータ型は、SELECT ステートメントの結果に基づきます。 データをインポートするには、このステートメントで外部テーブルから選択できます。 |
-| [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | 外部の場所に SELECT ステートメントの結果をエクスポートして、新しい外部テーブルを作成します。  その場所は Azure Blob Storage または Azure Data Lake Store です。 |
+| [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | すべてのテーブル列およびオプションを定義して空のテーブルを作成します。 |
+| [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | 外部テーブルを作成します。 テーブルの定義は、SQL プールに格納されます。 テーブル データは Azure Blob Storage または Azure Data Lake Store に格納されます。 |
+| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | SELECT ステートメントの結果を使用して新しいテーブルに値が設定されます。 テーブルの列とデータ型は、SELECT ステートメントの結果に基づきます。 データをインポートするには、このステートメントで外部テーブルから選択できます。 |
+| [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | 外部の場所に SELECT ステートメントの結果をエクスポートして、新しい外部テーブルを作成します。  その場所は Azure Blob Storage または Azure Data Lake Store です。 |
 
-## <a name="aligning-source-data-with-the-data-warehouse"></a>ソース データをデータ ウェアハウスに配置する
+## <a name="aligning-source-data-with-the-sql-pool"></a>ソース データと SQL プールの整列
 
-データ ウェアハウス テーブルは、別のデータ ソースからデータを読み込むことで設定されます。 読み込みの実行を成功させるには、ソース データ内の列の数とデータ型が、データ ウェアハウス内のテーブル定義と合致している必要があります。 配置するデータの取得は、テーブルの設計の最大の難関となる可能性があります。 
+SQL プール テーブルは、別のデータ ソースからデータを読み込むことで設定されます。 読み込みの実行を成功させるには、ソース データ内の列の数とデータ型が、SQL プール内のテーブル定義と合致している必要があります。 配置するデータの取得は、テーブルの設計の最大の難関となる可能性があります。
 
-データが複数のデータ ストアから読み込まれる場合は、データ ウェアハウスにデータを読み込み、統合テーブルに格納できます。 データが統合テーブルに格納されたら、SQL Data Warehouse の機能を使用して変換操作を実行できます。 データの準備ができたら、それを運用テーブルに挿入できます。
+データが複数のデータ ストアから読み込まれる場合は、SQL プールにデータを読み込み、それを統合テーブルに格納します。 データが統合テーブルに格納されたら、SQL プールの機能を使用して変換操作を実行できます。 データの準備ができたら、それを運用テーブルに挿入できます。
 
 ## <a name="unsupported-table-features"></a>サポートされていないテーブルの機能
-SQL Data Warehouse では他のデータベースで提供されるテーブル機能の多くがサポートされますが、すべてサポートされるわけではありません。  次の一覧は、SQL Data Warehouse でサポートされていないテーブル機能の一部を示しています。
 
-- 外部キー、CHECK [テーブル制約](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
-- [計算列](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
-- [インデックス付きビュー](/sql/relational-databases/views/create-indexed-views)
-- [Sequence](/sql/t-sql/statements/create-sequence-transact-sql)
-- [スパース列](/sql/relational-databases/tables/use-sparse-columns)
+SQL プールでは他のデータベースで提供されるテーブル機能の多くがサポートされますが、すべてサポートされるわけではありません。  次の一覧は、SQL プールでサポートされていないテーブル機能の一部を示しています。
+
+- 外部キー、CHECK [テーブル制約](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [計算列](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [インデックス付きビュー](/sql/relational-databases/views/create-indexed-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Sequence](/sql/t-sql/statements/create-sequence-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [スパース列](/sql/relational-databases/tables/use-sparse-columns?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - 代理キー。 [Identity](sql-data-warehouse-tables-identity.md)で実装されます。
-- [シノニム](/sql/t-sql/statements/create-synonym-transact-sql)
-- [トリガー](/sql/t-sql/statements/create-trigger-transact-sql)
-- [一意のインデックス](/sql/t-sql/statements/create-index-transact-sql)
-- [ユーザー定義型](/sql/relational-databases/native-client/features/using-user-defined-types)
+- [シノニム](/sql/t-sql/statements/create-synonym-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [トリガー](/sql/t-sql/statements/create-trigger-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [一意のインデックス](/sql/t-sql/statements/create-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [ユーザー定義型](/sql/relational-databases/native-client/features/using-user-defined-types?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="table-size-queries"></a>テーブル サイズのクエリ
-60 個の各ディストリビューションでテーブルによって消費される領域と行を簡単に識別する方法の 1 つが、[DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) です。
+
+60 個の各ディストリビューションでテーブルによって消費される領域と行を簡単に識別する方法の 1 つが、[DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) です。
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
@@ -158,7 +188,7 @@ AS
 WITH base
 AS
 (
-SELECT 
+SELECT
  GETDATE()                                                             AS  [execution_time]
 , DB_NAME()                                                            AS  [database_name]
 , s.name                                                               AS  [schema_name]
@@ -179,15 +209,15 @@ SELECT
 , nps.[partition_number]                                               AS  [partition_nmbr]
 , nps.[reserved_page_count]                                            AS  [reserved_space_page_count]
 , nps.[reserved_page_count] - nps.[used_page_count]                    AS  [unused_space_page_count]
-, nps.[in_row_data_page_count] 
-    + nps.[row_overflow_used_page_count] 
+, nps.[in_row_data_page_count]
+    + nps.[row_overflow_used_page_count]
     + nps.[lob_used_page_count]                                        AS  [data_space_page_count]
-, nps.[reserved_page_count] 
- - (nps.[reserved_page_count] - nps.[used_page_count]) 
- - ([in_row_data_page_count] 
+, nps.[reserved_page_count]
+ - (nps.[reserved_page_count] - nps.[used_page_count])
+ - ([in_row_data_page_count]
          + [row_overflow_used_page_count]+[lob_used_page_count])       AS  [index_space_page_count]
 , nps.[row_count]                                                      AS  [row_count]
-from 
+from
     sys.schemas s
 INNER JOIN sys.tables t
     ON s.[schema_id] = t.[schema_id]
@@ -260,17 +290,17 @@ SELECT
 ,  ([index_space_page_count]  * 8.0)/1000000000                        AS [index_space_TB]
 FROM base
 )
-SELECT * 
+SELECT *
 FROM size
 ;
 ```
 
 ### <a name="table-space-summary"></a>テーブル領域の概要
 
-次のクエリはテーブルごとに行と領域を返します。  これにより、最大規模のテーブルや、各テーブルがラウンド ロビン、レプリケート、ハッシュ分散のいずれかであるかを確認できます。  ハッシュ分散テーブルの場合、クエリによってディストリビューション列が表示されます。  
+次のクエリはテーブルごとに行と領域を返します。  これにより、最大規模のテーブルや、各テーブルがラウンド ロビン、レプリケート、ハッシュ分散のいずれであるかを確認できます。  ハッシュ分散テーブルの場合、クエリによってディストリビューション列が表示されます。  
 
 ```sql
-SELECT 
+SELECT
      database_name
 ,    schema_name
 ,    table_name
@@ -283,9 +313,9 @@ SELECT
 ,    SUM(data_space_GB)             as table_data_space_GB
 ,    SUM(index_space_GB)            as table_index_space_GB
 ,    SUM(unused_space_GB)           as table_unused_space_GB
-FROM 
+FROM
     dbo.vTableSizes
-GROUP BY 
+GROUP BY
      database_name
 ,    schema_name
 ,    table_name
@@ -300,7 +330,7 @@ ORDER BY
 ### <a name="table-space-by-distribution-type"></a>ディストリビューションの種類別のテーブル領域
 
 ```sql
-SELECT 
+SELECT
      distribution_policy_name
 ,    SUM(row_count)                as table_type_row_count
 ,    SUM(reserved_space_GB)        as table_type_reserved_space_GB
@@ -315,7 +345,7 @@ GROUP BY distribution_policy_name
 ### <a name="table-space-by-index-type"></a>インデックスの種類別のテーブル領域
 
 ```sql
-SELECT 
+SELECT
      index_type_desc
 ,    SUM(row_count)                as table_type_row_count
 ,    SUM(reserved_space_GB)        as table_type_reserved_space_GB
@@ -330,7 +360,7 @@ GROUP BY index_type_desc
 ### <a name="distribution-space-summary"></a>ディストリビューション領域の概要
 
 ```sql
-SELECT 
+SELECT
     distribution_id
 ,    SUM(row_count)                as total_node_distribution_row_count
 ,    SUM(reserved_space_MB)        as total_node_distribution_reserved_space_MB
@@ -344,4 +374,5 @@ ORDER BY    distribution_id
 ```
 
 ## <a name="next-steps"></a>次のステップ
-データ ウェアハウスにテーブルを作成した後、次の手順はテーブルへのデータの読み込みです。  読み込みのチュートリアルについては、「[Azure SQL Data Warehouse へのデータの読み込み](load-data-wideworldimportersdw.md)」を参照してください。
+
+SQL プールにテーブルを作成した後の次の手順はテーブルへのデータの読み込みです。  読み込みのチュートリアルについては、[SQL プールへのデータの読み込み](load-data-wideworldimportersdw.md)に関するページを参照してください。

@@ -3,12 +3,12 @@ title: デプロイ シーケンス順序について
 description: ブループリントの割り当て中にブループリント アーティファクトがデプロイされる既定の順序と、デプロイ順序をカスタマイズする方法について説明します。
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.openlocfilehash: 51026862c989f15acf6d3e21702cfcfc8b2b27b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74128823"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677558"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure ブループリントでのデプロイ シーケンスについて
 
@@ -42,7 +42,7 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 
 ## <a name="customizing-the-sequencing-order"></a>シーケンス順序のカスタマイズ
 
-大規模なブループリント定義を作成するときは、リソースを特定の順序で作成することが必要になる場合があります。 このシナリオの最も一般的な使用パターンは、ブループリント定義にいくつかの Azure Resource Manager テンプレートが含まれている場合です。 ブループリントでは、シーケンス順序を定義することで、このパターンを処理します。
+大規模なブループリント定義を作成するときは、リソースを特定の順序で作成することが必要になる場合があります。 このシナリオの最も一般的な使用パターンは、ブループリント定義にいくつかの Azure Resource Manager テンプレートが含まれている場合です。 Azure Blueprints では、シーケンス順序を定義できるようにすることによって、このパターンを処理します。
 
 この順序は、JSON 内で `dependsOn` プロパティを定義することで実現します。 このプロパティは、リソース グループ用のブループリント定義、および成果物オブジェクトによってサポートされています。 `dependsOn` は、特定の成果物が作成される前に作成する必要がある成果物の名前で構成される文字列配列です。
 

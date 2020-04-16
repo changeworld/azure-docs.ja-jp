@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/28/2019
-ms.openlocfilehash: 69acfd4f2edab9be1b1dcfbb52eafbd00aec712f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: dea7e8d5679c8c5a14d6a4253b8a4b36343e6ed8
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934573"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887097"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Hue をインストールして使用する
 
@@ -33,7 +33,7 @@ Hue は Apache Hadoop クラスターとの情報のやりとりに使用され�
 > [!WARNING]  
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に [Hadoop](https://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
 ## <a name="install-hue-using-script-actions"></a>スクリプト アクションを使用した Hue のインストール
 
@@ -45,13 +45,13 @@ Hue は Apache Hadoop クラスターとの情報のやりとりに使用され�
 |プロパティ |値 |
 |---|---|
 |スクリプトの種類:|- Custom|
-|Name|Hue のインストール|
+|名前|Hue のインストール|
 |Bash スクリプト URI|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
 |ノードの種類:|Head|
 
 ## <a name="use-hue-with-hdinsight-clusters"></a>HDInsight クラスターで Hue を使用する
 
-SSH トンネリングは、実行後、クラスターの Hue にアクセスする唯一の方法です。 SSH によるトンネリングでは、Hue が実行されているクラスターのヘッドノードにトラフィックが直接進むことができます。 クラスターがプロビジョニングを完了したら、次の手順で HDInsight クラスターで Hue を使用します。
+通常のクラスターでは、Hue を使用するユーザー アカウントは 1 つしか許可されません。 マルチユーザー アクセスの場合は、クラスターで [Enterprise セキュリティ パッケージ](./domain-joined/hdinsight-security-overview.md)を有効にします。 SSH トンネリングは、実行された後のクラスターで Hue にアクセスするための唯一の方法です。 SSH によるトンネリングでは、Hue が実行されているクラスターのヘッドノードにトラフィックが直接進むことができます。 クラスターがプロビジョニングを完了したら、次の手順で HDInsight クラスターで Hue を使用します。
 
 > [!NOTE]  
 > Firefox Web ブラウザーを使用して、次の手順に従うことをお勧めします。
@@ -113,9 +113,9 @@ SSH トンネリングは、実行後、クラスターの Hue にアクセス�
 
 1. インストール中、複数の Hadoop サービス (HDFS、YARN、MR2、Oozie) が再起動し、構成を更新します。 スクリプトが Hue のインストールを完了した後、他の Hadoop サービスが起動するまで少し時間がかかる場合があります。 最初はこれが Hue のパフォーマンスに影響を与えることがあります。 すべてのサービスが起動すると、Hue が完全に機能します。
 
-1. Hue は Hive の現在の既定である Apache Tez ジョブを認識しません。 Hive 実行エンジンとして MapReduce を使用する場合、スクリプトで次のコマンドを使用するようにスクリプトを更新します。
+1. Hue は、Hive の現在の既定値である Apache Tez ジョブを認識しません。 Hive 実行エンジンとして MapReduce を使用する場合、スクリプトで次のコマンドを使用するようにスクリプトを更新します。
 
-        set hive.execution.engine=mr;
+         set hive.execution.engine=mr;
 
 1. Linux クラスターの場合、サービスをプライマリ ヘッドノードで実行し、Resource Manager をセカンダリ ヘッドノードで実行するシナリオがありえます。 そのようなシナリオの場合、Hue を利用してクラスターで「実行中」のジョブの詳細を表示するとき、エラーが発生する可能性があります (下の画像を参照)。 ただし、ジョブが完了したときにジョブの詳細を表示できます。
 

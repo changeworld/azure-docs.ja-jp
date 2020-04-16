@@ -16,12 +16,12 @@ ms.date: 02/26/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efb85b4a54b8f61e44f1f8bc75f893f93a0feb8a
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 5fa241a261b8dcb21dd39b5dacacac9aa4889304
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78165405"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519651"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management の Azure AD ロールのための PowerShell
 
@@ -29,7 +29,7 @@ ms.locfileid: "78165405"
 
 > [!Note]
 > Microsoft の公式 PowerShell は、Azure AD Privileged Identity Management の新しいバージョンを使用している場合にのみサポートされます。 Privileged Identity Management にアクセスして、[クイック スタート] ブレードに次のバナーが表示されていることを確認してください。
-> [![お使いの Privileged Identity Management のバージョンを確認する](media/pim-how-to-add-role-to-user/pim-new-version.png "[Azure AD] > [Privileged Identity Management] を選択する")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox) このバナーが表示されていない場合は、更新されたエクスペリエンスを現在数週間かけて提供するプロセスが進行中のため、しばらくお待ち下さい。
+> [![お使いの Privileged Identity Management のバージョンを確認する](media/pim-how-to-add-role-to-user/pim-new-version.png "[Azure AD] > [Privileged Identity Management] を選択する")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox) このバナーが表示されていない場合は、更新されたエクスペリエンスを現在数週間かけて提供するプロセスが進行中のため、しばらくお待ちください。
 > Privileged Identity Management PowerShell コマンドレットは、Azure AD Preview モジュールでサポートされています。 別のモジュールを使用していて、そのモジュールがエラー メッセージを返すようになった場合は、この新しいモジュールの使用を開始してください。 異なるモジュール上に構築された実稼働システムがある場合は、pim_preview@microsoft.com にご連絡ください。
 
 ## <a name="installation-and-setup"></a>インストールとセットアップ
@@ -96,6 +96,8 @@ Azure AD 組織内のすべてのロールの割り当てを取得するには�
     $schedule.Type = "Once"
     $schedule.StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
     $schedule.endDateTime = "2020-07-25T20:49:11.770Z"
+> [!Note]
+> endDateTime の値が null に設定されている場合、永続的な割り当てを示します。
 
 ## <a name="activate-a-role-assignment"></a>ロールの割り当てのアクティブ化
 
@@ -128,7 +130,7 @@ Azure AD 組織内のすべてのロール設定を取得するには、次の�
 
 その後、次に示すように、特定のロールのオブジェクトのいずれかに設定を適用できます。 ここでの ID は、リスト ロール設定コマンドレットの結果から取得できるロール設定 ID です。
 
-    Set-AzureADMSPrivilegedRoleSetting -ProviderId ‘aadRoles’ -Id ‘ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId ‘3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId ‘2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
+    Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a9-bb32-71916d9aeadf' -ResourceId '3f5887ed-dd6e-4821-8bde-c813ec508cf9' -RoleDefinitionId '2387ced3-4e95-4c36-a915-73d803f93702' -UserMemberSettings $setting 
 
 ## <a name="next-steps"></a>次のステップ
 

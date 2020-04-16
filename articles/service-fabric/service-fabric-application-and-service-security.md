@@ -3,12 +3,12 @@ title: Azure Service Fabric のアプリケーション セキュリティにつ
 description: Service Fabric でマイクロサービス アプリケーションを安全に実行する方法の概要。 別のセキュリティ アカウントでサービスとスタートアップ スクリプトを実行する方法、ユーザーを認証および承認する方法、アプリケーション シークレットを管理する方法、サービス通信を保護する方法、API ゲートウェイを使用する方法、アプリケーション データを安全に保護する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9b4a1209838bdd5eee401b0defb01839b5cf684
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452254"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756239"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric のアプリケーションとサービスのセキュリティ
 マイクロサービス アーキテクチャには、[多くの利点](service-fabric-overview-microservices.md)があります。 しかし、マイクロサービスのセキュリティの管理は困難であり、従来のモノリシックなアプリケーション セキュリティの管理とは異なります。 
@@ -33,7 +33,7 @@ ASP.NET Core の場合、[ユーザーを認証する](/dotnet/standard/microser
 [ASP.NET Core の承認](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications)は、ユーザーのロールに基づいて、またはカスタム ポリシーに基づいて行うことができます。カスタム ポリシーには、要求やその他のヒューリスティックの調査を含めることができます。
 
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>API ゲートウェイを使用してアクセスを制限し、セキュリティで保護する
-通常、クラウド アプリケーションには、ユーザー、デバイス、またはその他のアプリケーションに単一の受信ポイントを提供するフロントエンド ゲートウェイが必要です。 [API ゲートウェイ](/azure/architecture/microservices/gateway)は、クライアントとサービスの間に存在し、アプリケーションによって提供されるすべてのサービスへのエントリ ポイントになっています。 それは、要求をクライアントからサービスにルーティングするリバース プロキシとして機能します。 また、認証と承認、SSL 終了、レート制限などのさまざまな横断的タスクを実行することもできます。 ゲートウェイをデプロイしない場合、クライアントは、フロント エンド サービスに直接要求を送信する必要があります。
+通常、クラウド アプリケーションには、ユーザー、デバイス、またはその他のアプリケーションに単一の受信ポイントを提供するフロントエンド ゲートウェイが必要です。 [API ゲートウェイ](/azure/architecture/microservices/gateway)は、クライアントとサービスの間に存在し、アプリケーションによって提供されるすべてのサービスへのエントリ ポイントになっています。 それは、要求をクライアントからサービスにルーティングするリバース プロキシとして機能します。 また、認証と承認、TLS 終端、レート制限などの、さまざまな横断的タスクを実行することもできます。 ゲートウェイをデプロイしない場合、クライアントは、フロント エンド サービスに直接要求を送信する必要があります。
 
 Service Fabric では、[ASP.NET Core アプリケーション](service-fabric-reliable-services-communication-aspnetcore.md)などの任意のステートレス サービスをゲートウェイとして使用できますが、[Traefik](https://docs.traefik.io/)、[Event Hubs](https://docs.microsoft.com/azure/event-hubs/)、[IoT Hub](https://docs.microsoft.com/azure/iot-hub/)、[Azure API Management](https://docs.microsoft.com/azure/api-management) など、トラフィックをイングレスするために設計された別のサービスを使用することもできます。
 

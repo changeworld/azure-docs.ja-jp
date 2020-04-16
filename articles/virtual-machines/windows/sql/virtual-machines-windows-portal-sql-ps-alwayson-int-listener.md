@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cabfc84d2bc0c9d08a457e67c0182d7550f04ceb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75647885"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668882"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>1 つ以上の AlwaysOn 可用性グループ リスナーの構成 - Resource Manager
 このトピックでは、以下のことを行う方法を示します。
@@ -58,9 +58,13 @@ Azure ネットワーク セキュリティ グループを使用してアクセ
 
 ## <a name="determine-the-load-balancer-sku-required"></a>必要なロード バランサーの SKU を決定する
 
-[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) は、2 つの SKU (Basic と Standard) で利用できます。 Standard Load Balancer をお勧めします。 仮想マシンが可用性セット内にある場合は、Basic Load Balancer が許可されます。 Standard Load Balancer では、すべての VM IP アドレスで標準 IP アドレスが使用されている必要があります。
+[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) は、2 つの SKU (Basic と Standard) で利用できます。 Standard Load Balancer をお勧めします。 仮想マシンが可用性セット内にある場合は、Basic Load Balancer が許可されます。 仮想マシンが可用性ゾーンに存在する場合は、Standard Load Balancer が必要です。 Standard Load Balancer では、すべての VM IP アドレスで標準 IP アドレスが使用されている必要があります。
 
 可用性グループ用の現在の [Microsoft テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)では、Basic Load Balancer と基本の IP アドレスが使用されています。
+
+   > [!NOTE]
+   > クラウド監視に Standard Load Balancer と Azure Storage を使用する場合は、[サービス エンドポイント](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)を構成する必要があります。 
+
 
 この記事の例では、Standard Load Balancer が指定されています。 例のスクリプトには、`-sku Standard` が含まれています。
 
@@ -226,6 +230,8 @@ SQLCMD 接続では、プライマリ レプリカをホストしている SQL S
 * 内部ロード バランサーでは、同じ仮想ネットワーク内からしかリスナーにアクセスできません。
 
 * Azure ネットワーク セキュリティ グループを使用してアクセスを制限する場合は、バックエンド SQL Server VM の IP アドレス、AG リスナーのロード バランサー フローティング IP アドレス、および該当する場合はクラスター コア IP アドレスが許可ルールに含まれていることを確認します。
+
+* クラウド監視に Standard Load Balancer と Azure Storage を使用する場合は、サービス エンドポイントを作成します。 詳細については、[仮想ネットワークからのアクセスの許可](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)に関するページを参照してください。
 
 ## <a name="for-more-information"></a>詳細情報
 詳細については、「[Azure VM での AlwaysOn 可用性グループの手動構成](virtual-machines-windows-portal-sql-availability-group-tutorial.md)」をご覧ください。

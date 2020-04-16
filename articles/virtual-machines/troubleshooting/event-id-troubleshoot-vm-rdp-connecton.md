@@ -1,6 +1,6 @@
 ---
 title: イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング | Microsoft Docs
-description: ''
+description: Azure 仮想マシン (VM) へのリモート デスクトップ プロトコル (RDP) 接続を妨げるさまざまな問題をトラブルシューティングするには、イベント ID を使用します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 166648402eec7f8033c090a3f7862a902bae4be6
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154208"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437054"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング 
 
@@ -29,7 +29,7 @@ ms.locfileid: "71154208"
 
 リモート デスクトップ プロトコル (RDP) セッションを使用して Azure VM に接続しようとします。 資格情報を入力した後、接続が失敗し、次のようなエラー メッセージを受け取ります。
 
-**このコンピューターはリモート コンピューターに接続できません。接続を再試行してください。問題が解決しない場合は、リモート コンピューターの所有者またはネットワーク管理者に問い合わせてください。**
+**このコンピューターはリモート コンピューターに接続できません。接続を再試行してください。問題が解決しない場合は、リモート コンピューターの所有者またはネットワーク管理者にお問い合わせください。**
 
 この問題をトラブルシューティングするには、VM でイベント ログを確認した後、以下のシナリオを参照してください。
 
@@ -59,33 +59,33 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **日付:**          *時刻* <br />
 **イベント ID:**    1058 <br />
 **タスク カテゴリ:** なし <br />
-**レベル:**       Error <br />
+**レベル:**       エラー <br />
 **キーワード:**    クラシック <br />
 **ユーザー:**        該当なし <br />
 **コンピューター:**      *コンピューター* <br />
-**説明:** RD セッション ホスト サーバーで、SSL 接続時に RD セッション ホスト サーバー認証に使用する、期限切れの自己署名証明書を置き換えられませんでした。 関連する状態コードは "アクセスが拒否されました" でした。
+**説明:** RD セッション ホスト サーバーは、TLS 接続での RD セッション ホスト サーバー認証に使用される期限切れの自己署名証明書を置き換えることができませんでした。 関連する状態コードは "アクセスが拒否されました" でした。
 
 **ログ名:**    システム <br />
 **ソース:**      Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日付:**          *時刻* <br />
 **イベント ID:**    1058 <br />
 **タスク カテゴリ:** なし <br />
-**レベル:**       Error <br />
+**レベル:**       エラー <br />
 **キーワード:**    クラシック <br />
 **ユーザー:**        該当なし <br />
 **コンピューター:**      *コンピューター* <br />
-**説明:** RD セッション ホスト サーバーで、SSL 接続時に RD セッション ホスト サーバー認証に使用する、新規の自己署名証明書を生成できませんでした。関連する状態コードは "オブジェクトは既に存在します" でした。
+**説明:** RD セッション ホスト サーバーは、TLS 接続での RD セッション ホスト サーバー認証に使用される新しい自己署名証明書を作成できませんでした。関連する状態コードは "オブジェクトは既に存在します" でした。
 
 **ログ名:**    システム <br />
 **ソース:**      Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日付:**          *時刻* <br />
 **イベント ID:**    1057 <br />
 **タスク カテゴリ:** なし <br />
-**レベル:**       Error <br />
+**レベル:**       エラー <br />
 **キーワード:**    クラシック <br />
 **ユーザー:**        該当なし <br />
 **コンピューター:**      *コンピューター* <br />
-**説明:** RD セッション ホスト サーバーで、SSL 接続時に RD セッション ホスト サーバー認証に使用する、新規の自己署名証明書を生成できませんでした。 関連する状態コードは "キー セットがありません" でした。
+**説明:** RD セッション ホスト サーバーは、TLS 接続での RD セッション ホスト サーバー認証に使用される新しい自己署名証明書を作成できませんでした。 関連する状態コードは "キー セットがありません" でした。
 
 次のコマンドを実行して、SCHANNEL エラー イベント 36872 および 36870 を確認することもできます。
 
@@ -99,11 +99,11 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **日付:**          — <br />
 **イベント ID:**    36870 <br />
 **タスク カテゴリ:** なし <br />
-**レベル:**       Error <br />
+**レベル:**       エラー <br />
 **キーワード:**       <br />
 **ユーザー:**        SYSTEM <br />
 **コンピューター:**      *コンピューター* <br />
-**説明:** SSL サーバー資格証明の秘密キーにアクセスしようとしているときに致命的なエラーが発生しました。 暗号化モジュールから返されたエラー コードは 0x8009030D です。  <br />
+**説明:** TLS サーバー資格情報の秘密キーにアクセスにしようとしているときに致命的なエラーが発生しました。 暗号化モジュールから返されたエラー コードは 0x8009030D です。  <br />
 内部エラーの状態は 10001 です。
 
 ### <a name="cause"></a>原因
@@ -113,7 +113,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 2. RSA キーが壊れているか、ない。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 この問題をトラブルシューティングするには、以下の手順を使用して、RDP 証明書への適切なアクセス許可を設定する必要があります。
 
@@ -186,9 +186,9 @@ Start-Service -Name "SessionEnv"
 
 RDP を使用して、VM へのアクセスを再び試みます。
 
-#### <a name="update-secure-sockets-layer-ssl-certificate"></a>Secure Sockets Layer (SSL) 証明書を更新する
+#### <a name="update-tlsssl-certificate"></a>TLS/SSL 証明書を更新する
 
-SSL 証明書を使用するように VM を設定した場合は、次のコマンドを実行して拇印を取得します。 そして、証明書の拇印と同じかどうかを確認します。
+TLS/SSL 証明書を使用するように VM を設定した場合は、次のコマンドを実行して拇印を取得します。 そして、証明書の拇印と同じかどうかを確認します。
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash
@@ -221,7 +221,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **日付:**          — <br />
 **イベント ID:**    36871 <br />
 **タスク カテゴリ:** なし <br />
-**レベル:**       Error <br />
+**レベル:**       エラー <br />
 **キーワード:**       <br />
 **ユーザー:**        SYSTEM <br />
 **コンピューター:**      *コンピューター* <br />
@@ -231,7 +231,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 この問題は、セキュリティ ポリシーによって発生します。 古いバージョンの TLS (1.0 など) が無効になっていると、RDP アクセスが失敗します。
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 RDP では、既定のプロトコルとして TLS 1.0 が使用されます。 ただし、プロトコルが新しい TLS 1.1 に変更されている場合があります。
 
@@ -251,7 +251,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 **日付:**          *時刻* <br />
 **イベント ID:**    2056 <br />
 **タスク カテゴリ:** (109) <br />
-**レベル:**       Error <br />
+**レベル:**       エラー <br />
 **キーワード:**       <br />
 **ユーザー:**        NETWORK SERVICE <br />
 **コンピューター:**      *コンピューターの FQDN* <br />
@@ -267,7 +267,7 @@ NULL <br />
 **日付:**          *時刻* <br />
 **イベント ID:**    1,296 <br />
 **タスク カテゴリ:** (104) <br />
-**レベル:**       Error <br />
+**レベル:**       エラー <br />
 **キーワード:**       <br />
 **ユーザー:**        NETWORK SERVICE <br />
 **コンピューター:**      *コンピューターの FQDN* <br />
@@ -284,7 +284,7 @@ NULL <br />
 
 ホスト名には Windows Internal Database に対するエントリと依存関係があり、リモート デスクトップ サービス ファームが動作するために必要です。 ファームが既に構築された後でホスト名を変更すると、多くのエラーが発生し、ブローカー サーバーの動作が停止する可能性があります。
 
-### <a name="resolution"></a>解決策 
+### <a name="resolution"></a>解像度 
 
 この問題を解決するには、リモート デスクトップ接続ブローカー ロールと Windows Internal Database を再インストールする必要があります。
 

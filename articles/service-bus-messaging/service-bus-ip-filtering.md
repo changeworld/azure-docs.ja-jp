@@ -1,5 +1,5 @@
 ---
-title: Azure Service Bus のファイアウォール ルール | Microsoft Docs
+title: Azure Service Bus の IP ファイアウォール規則を構成する
 description: ファイアウォール ルールを使用して、特定の IP アドレスから Azure Service Bus への接続を許可する方法です。
 services: service-bus
 documentationcenter: ''
@@ -11,54 +11,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 9887d5448eabd272ab2528e4fc758265f2ada977
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 24591c20ed707d9541eece0698ecd6e6b5ddee35
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980351"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878189"
 ---
-# <a name="azure-service-bus---use-firewall-rules"></a>Azure Service Bus - ファイアウォール ルールを使用する
+# <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>Azure Service Bus の IP ファイアウォール規則を構成する
+既定では、要求が有効な認証と承認を受けている限り、Service Bus 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
 
-Azure Service Bus が特定の既知のサイトからのみアクセスできるシナリオでは、ファイアウォール ルールにより、特定の IPv4 アドレスからのトラフィックの受け入れのルールを構成することができます。 たとえば、これらのアドレスは、企業の NAT ゲートウェイのアドレスである可能性があります。
-
-## <a name="when-to-use"></a>使用する場合
-
-指定した IP アドレス範囲からのトラフィックのみを受信し、それ以外のすべてを拒否するように、Service Bus を設定する必要がある場合は、"*ファイアウォール*" を利用して Service Bus エンドポイントを他の IP アドレスからブロックすることができます。 たとえば、Service Bus を [Azure Express Route][express-route] と共に使用して、オンプレミス インフラストラクチャへのプライベート接続を作成する場合が該当します。 
-
-## <a name="how-filter-rules-are-applied"></a>フィルター規則の適用方法
-
-IP フィルター規則は、Service Bus 名前空間レベルで適用されます。 したがって、規則は、サポートされているプロトコルを使用するクライアントからのすべての接続に適用されます。
-
-Service Bus 名前空間上の許可 IP 規則に一致しない IP アドレスからの接続試行は、未承認として拒否されます。 IP 規則に関する記述は応答に含まれません。
-
-## <a name="default-setting"></a>既定の設定
-
-既定では、Service Bus のポータルの **[IP フィルター]** グリッドは空白になっています。 この既定の設定は、名前空間が任意の IP アドレスからの接続を受け入れることを意味します。 この既定の設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。
-
-## <a name="ip-filter-rule-evaluation"></a>IP フィルター規則の評価
-
-IP フィルター規則は順に適用され、IP アドレスと一致する最初の規則に基づいて許可アクションまたは拒否アクションが決定されます。
-
->[!WARNING]
-> ファイアウォール ルールを実装すると、他の Azure サービスが Service Bus と対話するのを禁止できます。
->
-> IP フィルター処理 (ファイアウォール ルール) が実装されているときは信頼できる Microsoft サービスはサポートされませんが、近日中に使用できるようになります。
->
-> IP フィルター処理では動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
-> - Azure Stream Analytics
-> - Azure Event Grid との統合
-> - Azure IoT Hub ルート
-> - Azure IoT Device Explorer
->
-> 次の Microsoft サービスが仮想ネットワーク上に存在する必要があります
-> - Azure App Service
-> - Azure Functions
-
-### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して仮想ネットワークとファイアウォール ルールを作成する
+この機能は、Azure Service Bus へのアクセスを特定の既知のサイトからのみに制限したいシナリオで役立ちます。 ファイアウォール規則を使用すると、特定の IPv4 アドレスから送信されたトラフィックを受け入れる規則を構成できます。 たとえば、[Azure Express Route][express-route] で Service Bus を使用する場合、お使いのオンプレミスのインフラストラクチャ IP アドレスまたは会社の NAT ゲートウェイのアドレスからのトラフィックのみ許可する**ファイアウォール規則**を作成できます。 
 
 > [!IMPORTANT]
-> ファイアウォールと仮想ネットワークは、Service Bus の **Premium** レベルでのみサポートされます。
+> ファイアウォールと仮想ネットワークは、Service Bus の **Premium** レベルでのみサポートされます。 **Premier** レベルへのアップグレードを選択できない場合は、Shared Access Signature (SAS) トークンのセキュリティを維持し、承認されたユーザーとのみ共有することをお勧めします。 SAS 認証については、[認証と承認](service-bus-authentication-and-authorization.md#shared-access-signature)に関するページを参照してください。
+
+## <a name="ip-firewall-rules"></a>IP ファイアウォール規則
+この IP ファイアウォール規則は、Service Bus 名前空間レベルで適用されます。 したがって、規則は、サポートされているプロトコルを使用するクライアントからのすべての接続に適用されます。 Service Bus 名前空間上の許可 IP 規則に一致しない IP アドレスからの接続試行は、未承認として拒否されます。 IP 規則に関する記述は応答に含まれません。 IP フィルター規則は順に適用され、IP アドレスと一致する最初の規則に基づいて許可アクションまたは拒否アクションが決定されます。
+
+## <a name="use-azure-portal"></a>Azure Portal の使用
+このセクションでは、Azure portal を使用して、Service Bus 名前空間の IP ファイアウォール規則を作成する方法について説明します。 
+
+1. [Azure portal](https://portal.azure.com) で、ご利用の **Service Bus 名前空間**に移動します。
+2. 左側のメニューで、 **[ネットワーク]** オプションを選択します。 既定では、 **[すべてのネットワーク]** オプションが選択されています。 Service Bus 名前空間では、すべての IP アドレスからの接続を受け入れます。 この既定の設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。 
+
+    ![[ファイアウォール] - [すべてのネットワーク] オプションが選択されている](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+1. ページの上部で、 **[選択されたネットワーク]** オプションを選択します。 **[ファイアウォール]** セクションで、次の手順に従います。
+    1. 現在のクライアント IP にその名前空間へのアクセスを許可するには、 **[クライアント IP アドレスを追加する]** オプションを選択します。 
+    2. **[アドレス範囲]** に、特定の IPv4 アドレスまたは IPv4 アドレスの範囲を CIDR 表記で入力します。 
+    3. **信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する**かどうかを指定します。 
+
+        ![[ファイアウォール] - [すべてのネットワーク] オプションが選択されている](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
+3. ツール バーの **[保存]** を選択して設定を保存します。 ポータルの通知に確認が表示されるまで、数分間お待ちください。
+
+## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
+このセクションには、仮想ネットワークとファイアウォール規則を作成するサンプル Azure Resource Manager テンプレートが含まれています。
+
 
 次の Resource Manager テンプレートでは、既存の Service Bus 名前空間に仮想ネットワーク規則を追加できます。
 
@@ -74,7 +62,7 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 > ```json
 > "defaultAction": "Allow"
 > ```
-> から
+> to
 > ```json
 > "defaultAction": "Deny"
 > ```
@@ -133,6 +121,7 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
                 "action":"Allow"
             }
           ],
+          "trustedServiceAccessEnabled": false,          
           "defaultAction": "Deny"
         }
       }

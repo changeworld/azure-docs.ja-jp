@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: sukishen
-ms.openlocfilehash: e05aa6e8f656001eb9eb2a3717dde6c16f030e33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d086484ece6faf95dccffb1e29da8a0e906b1da4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337147"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985628"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Azure Virtual WAN とセキュリティ保護付きハブを使用した中国との相互接続
 
@@ -54,7 +54,7 @@ Virtual WAN を使用すれば、お客様は、中国のサイバーセキュ�
 | --- | --- |
 | MPLS/IPVPN ネットワーク |PCCW、China Telecom Global |
 |SDWAN| PCCW、China Telecom Global|
-| DIA (Dedicated Internet Access) | PCCW、Hong Kong Telecom、China Mobil、PCCW |
+| DIA (Dedicated Internet Access) | PCCW、Hong Kong Telecom、China Mobil|
 
 Microsoft グローバル バックボーンに接続するために次の 2 つのソリューションのどちらを使用するかについてプロバイダーと合意することができます。
 

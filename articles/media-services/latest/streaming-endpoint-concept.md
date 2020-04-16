@@ -12,23 +12,25 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562362"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582728"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services のストリーミング エンドポイント (配信元)
 
-Microsoft Azure Media Services では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints)は、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できるダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。 さらに、**ストリーミング エンドポイント**は、業界有数の DRM に動的 (Just-In-Time) 暗号化を提供します。
+Microsoft Azure Media Services では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints)は、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できるダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。 さらに、**ストリーミング エンドポイント**は、業界有数の DRM に動的 (Just-In-Time) 暗号化を提供します。 
 
-Media Services アカウントを作成すると、**既定**のストリーミング エンドポイントが停止状態で作成されます。 **既定の**ストリーミング エンドポイントを削除することはできません。 このアカウントでさらに多くのストリーミング エンドポイントを作成できます ([クォータと制限](limits-quotas-constraints.md)に関するページを参照)。
+Media Services アカウントを作成すると、**既定**のストリーミング エンドポイントが停止状態で作成されます。 **既定の**ストリーミング エンドポイントを削除することはできません。 このアカウントでは、さらに多くのストリーミング エンドポイントを作成できます ([クォータと制限](limits-quotas-constraints.md)に関するページを参照)。
 
 > [!NOTE]
 > ビデオのストリーミングを開始するには、ビデオをストリーミングする**ストリーミング エンドポイント**を開始する必要があります。
 >
 > ストリーミング エンドポイントが実行状態にある場合にのみ課金されます。
+
+[ダイナミック パッケージ](dynamic-packaging-overview.md)に関するトピックも必ず参照してください。 
 
 ## <a name="naming-convention"></a>命名規則
 
@@ -116,7 +118,7 @@ IP フィルタリング/G20/カスタム ホスト <sup>1</sup>|はい|はい
     > [!NOTE]
     > 同じデータ センターにあるストリーミング エンドポイントが同じカスタム ホスト名を共有することはできません。
 
-    現在、Media Services ではカスタム ドメインを使用した SSL はサポートされていません。
+    現在、Media Services ではカスタム ドメインを指定した TLS はサポートされていません。
 
 - `maxCacheAge` - メディア フラグメントとオンデマンドのマニフェスト上のストリーミング エンドポイントで設定されている、既定の max-age HTTP キャッシュ コントロール ヘッダーをオーバーライドします。 値は秒単位で設定されます。
 - `resourceState` -
@@ -157,10 +159,14 @@ IP フィルタリング/G20/カスタム ホスト <sup>1</sup>|はい|はい
 - [CDN の概要](../../cdn/cdn-overview.md)
 - [CDN を使用したストリーミングのスケーリング](scale-streaming-cdn.md)
 
-## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
+## <a name="ask-questions-and--get-updates"></a>質問する、および更新を取得する
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 
+## <a name="see-also"></a>関連項目
+
+[ダイナミック パッケージ](dynamic-packaging-overview.md)
+
 ## <a name="next-steps"></a>次のステップ
 
-[このリポジトリ](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)のサンプルは、既定のストリーミング エンドポイントを .NET を使用して開始する方法について示します。
+[ストリーミング エンドポイントの管理](manage-streaming-endpoints-howto.md)

@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898572"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878393"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure Scheduler の概念、用語集、エンティティ
 
@@ -66,7 +66,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 Azure Scheduler では、複数のジョブの種類がサポートされています。 
 
-* 既存のサービスまたはワークロードに対するエンドポイントがある場合の HTTP ジョブ (SSL をサポートする HTTPS ジョブを含みます)
+* 既存のサービスまたはワークロードに対するエンドポイントがある場合の HTTP ジョブ (TLS をサポートする HTTPS ジョブを含みます)
 * Storage キューへのメッセージの投稿など、Storage キューを使用するワークロードに対する Storage キュー ジョブ
 * Service Bus キューを使用するワークロードに対する Service Bus キュー ジョブ
 * Service Bus トピックを使用するワークロードに対する Service Bus トピック ジョブ
@@ -76,9 +76,9 @@ Azure Scheduler では、複数のジョブの種類がサポートされてい�
 高レベルでは、Scheduler ジョブには次の基本的な部分があります。
 
 * ジョブ タイマーが起動するときに実行するアクション
-* 省略可能: ジョブを実行する時間
-* 省略可能: ジョブを繰り返し実行するタイミングと頻度
-* 省略可能: プライマリ アクションが失敗した場合に実行するエラー アクション
+* 省略可能:ジョブを実行する時間
+* 省略可能:ジョブを繰り返し実行するタイミングと頻度
+* 省略可能:プライマリ アクションが失敗した場合に実行するエラー アクション
 
 ジョブには、ジョブのスケジュールされた次回の実行時刻など、システム指定のデータも含まれています。 ジョブのコードの定義は、JavaScript Object Notation (JSON) 形式のオブジェクトであり、次の要素が含まれます。
 

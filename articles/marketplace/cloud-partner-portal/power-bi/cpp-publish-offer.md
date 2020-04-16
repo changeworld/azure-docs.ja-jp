@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 89d437fe74d209e0dc04ffc590a1e32426b28732
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5eb5b652f7a419c6c2d1b3e6880c3c3003fb679
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275868"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985526"
 ---
 # <a name="publish-a-power-bi-app-offer"></a>Power BI アプリ オファーを発行する
+
+>[!Important]
+>2020 年 4 月 13 日以降、Power BI アプリ オファーの管理のパートナー センターへの移行を開始します。 移行後は、パートナー センターでオファーを作成および管理します。 移行されたオファーを管理するには、[Power BI アプリの作成の概要](https://aka.ms/AzureCreatePBIServiceApp)に関するページの手順に従ってください。
 
 Cloud パートナー ポータルでオファーを定義し、関連する技術資産を作成した後の最後のステップでは、オファーを発行するために送信します。 このプロセスを開始するには、 **[新しいオファー]** ウィンドウの左側のウィンドウで、 **[発行]** を選択します。 詳しくは、「[Azure Marketplace および AppSource のオファーを発行する](../manage-offers/cpp-publish-offer.md)」をご覧ください。
 

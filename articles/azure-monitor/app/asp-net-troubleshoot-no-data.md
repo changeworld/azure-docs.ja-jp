@@ -3,12 +3,12 @@ title: データが存在しない場合のトラブルシューティング - A
 description: Auzre Application Insights にデータが表示されない場合は、 ここで解決してください。
 ms.topic: conceptual
 ms.date: 07/23/2018
-ms.openlocfilehash: 2627fde55f4177798d04aab02db169f3117d32dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34fc51f8f656ec0f630bd984ac1b28fbaa5e4dae
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665903"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802588"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
 
@@ -247,6 +247,10 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 詳細については、以下を参照してください。
 - [PerfView でのパフォーマンス トレースの記録](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)
 - [Application Insights のイベント ソース](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+
+## <a name="how-to-remove-application-insights"></a>Application Insights を削除する方法
+
+削除の[記事](../../azure-monitor/app/remove-application-insights.md)に示されている手順に従って Visual Studio で Application Insights を削除する方法を学習してください。
 
 ## <a name="still-not-working"></a>問題が解決しない場合
 * [Application Insights フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

@@ -1,5 +1,5 @@
 ---
-title: Azure Service Bus のトラブルシューティング ガイド | Microsoft Docs
+title: Azure Service Bus - メッセージングの例外 | Microsoft Docs
 description: この記事では、Azure Service Bus メッセージングの例外と、例外が発生したときに実行する推奨アクションの一覧を示します。
 services: service-bus-messaging
 documentationcenter: na
@@ -12,22 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2020
+ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: 37f316af68bc0b20f21eb606e2abc8232f29ce32
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: d04902a8d53397b7e7d9712a1c75ce44cc7aa7ad
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759365"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880790"
 ---
-# <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure Service Bus のトラブルシューティング ガイド
-この記事では、Service Bus .NET Framework API によって生成される一部の .NET 例外を示し、さらに問題のトラブルシューティングのためのその他のヒントも示します。 
+# <a name="service-bus-messaging-exceptions"></a>Service Bus メッセージングの例外
+この記事では、.NET Framework API によって生成される .NET 例外を一覧表示します。 
 
-## <a name="service-bus-messaging-exceptions"></a>Service Bus メッセージングの例外
-このセクションでは、.NET Framework API によって生成される .NET 例外を示します。 
-
-### <a name="exception-categories"></a>例外のカテゴリ
+## <a name="exception-categories"></a>例外のカテゴリ
 メッセージング API で生成される例外をカテゴリ別に分類し、修復のために実行できる関連するアクションと共に以下に示します。 例外の意味と原因は、メッセージング エンティティの種類によって異なる場合があります。
 
 1. ユーザー コードのエラー ([System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)、[System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)、[System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)、[System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx))。 一般アクション: 処理を実行する前にコードの修正を試みます。
@@ -35,7 +32,7 @@ ms.locfileid: "76759365"
 3. 一時的な例外 ([Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception)、[Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception)、[Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception))。 一般アクション: 操作をやり直すか、ユーザーに通知します。 クライアント SDK の `RetryPolicy` クラスは、再試行を自動的に処理するように構成できます。 詳細については、[再試行のガイダンス](/azure/architecture/best-practices/retry-service-specific#service-bus)を参照してください。
 4. その他の例外 ([System.Transactions.TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx)、[System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx)、[Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)、[Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception))。 全般的なアクション: 例外の種類に固有。次のセクションの表を参照してください。 
 
-### <a name="exception-types"></a>例外の種類
+## <a name="exception-types"></a>例外の種類
 次の表は、メッセージングの例外の種類および原因と実行できる推奨アクションを示したものです。
 
 | **例外の種類** | **説明/原因/例** | **推奨アクション** | **自動/即時再試行に関する注意** |
@@ -51,7 +48,7 @@ ms.locfileid: "76759365"
 | [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |この時点では、このサービスで要求を処理できません。 |クライアントは、しばらく待機してから操作をやり直すことができます。 |クライアントは、一定の間隔をおいてから再試行することができます。 再試行の結果として別の例外が発生した場合は、その例外の再試行動作を確認します。 |
 | [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception) |メッセージに関連付けられているロック トークンが期限切れになったか、ロック トークンが見つかりません。 |メッセージを破棄してください。 |再試行は役に立ちません。 |
 | [SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception) |このセッションに関連付けられているロックが失われました。 |[MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) オブジェクトを中止してください。 |再試行は役に立ちません。 |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |次の場合にスローされる可能性がある一般なメッセージング例外です。<br /> 異なるエンティティの種類 (たとえば、トピック) に属する名前またはパスを使用して、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) を作成しようとした場合。<br />  256 KB を超えるメッセージを送信しようとした場合。 サーバーまたはサービスで要求の処理中にエラーが発生しました。 詳細については、例外メッセージを参照してください。 これは通常、一時的な例外です。 |コードを確認し、メッセージ本文にシリアル化可能なオブジェクトのみを使用していることを確かめます (または、カスタム シリアライザーを使用します)。 サポートされているプロパティ値の型をドキュメントで確認し、サポートされている型だけを使用します。 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) プロパティを確認します。 それが **true** である場合は、操作を再試行できます。 |再試行動作は未定義であり、解決にならない場合もあります。 |
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |次の場合にスローされる可能性がある一般なメッセージング例外です。<p>異なるエンティティの種類 (たとえば、トピック) に属する名前またはパスを使用して、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) を作成しようとした場合。</p><p>256 KB を超えるメッセージを送信しようとした場合。 </p>サーバーまたはサービスで要求の処理中にエラーが発生しました。 詳細については、例外メッセージを参照してください。 これは通常、一時的な例外です。</p><p>エンティティが調整されているため、要求は終了されました。 エラー コード:50001、50002、50008。 </p> | コードを確認し、メッセージ本文にシリアル化可能なオブジェクトのみを使用していることを確かめます (または、カスタム シリアライザーを使用します)。 <p>サポートされているプロパティ値の型をドキュメントで確認し、サポートされている型だけを使用します。</p><p> [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) プロパティを確認します。 それが **true** である場合は、操作を再試行できます。 </p>| 制限のために例外が発生した場合は、数秒待ってから、操作を再試行してください。 再試行動作は未定義であり、他のシナリオには役に立たない可能性があります。|
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |そのサービスの名前空間で別のエンティティによって既に使用されている名前を持つエンティティを作成しようとしました。 |既存のエンティティを削除するか、作成するエンティティに別の名前を選択します。 |再試行は役に立ちません。 |
 | [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) |メッセージング エンティティが最大許容サイズに達したか、名前空間への最大接続数を超えました。 |エンティティまたはそのサブキューからメッセージを受信して、エンティティ内に領域を作成します。 「 [QuotaExceededException](#quotaexceededexception)」を参照してください。 |メッセージがそれまでに削除されている場合は、再試行によって解決することがあります。 |
 | [RuleActionException](/dotnet/api/microsoft.servicebus.messaging.ruleactionexception) |無効なルール アクションを作成しようとした場合、Service Bus からこの例外が返されます。 メッセージのルール アクションの処理中にエラーが発生した場合、Service Bus はその配信不能なメッセージにこの例外をアタッチします。 |ルール アクションが正しいことを確認してください。 |再試行は役に立ちません。 |
@@ -64,22 +61,22 @@ ms.locfileid: "76759365"
 | [TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) |アンビエント トランザクション (*Transaction.Current*) が無効です。 トランザクションは完了または中止された可能性がありますがなります。 内部例外で追加情報が提供される場合があります。 | |再試行は役に立ちません。 |
 | [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) |未確定トランザクションに対して操作が試行されたか、トランザクションのコミットが試行され、トランザクションが未確定になりました。 |トランザクションは既にコミットされた可能性があるため、アプリケーションはこの例外を (特殊なケースとして) 処理する必要があります。 |- |
 
-### <a name="quotaexceededexception"></a>QuotaExceededException
+## <a name="quotaexceededexception"></a>QuotaExceededException
 [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) は、特定のエンティティのクォータが超過していることを示します。
 
-#### <a name="queues-and-topics"></a>キューとトピック
+### <a name="queues-and-topics"></a>キューとトピック
 キューとトピックは、通常、キューのサイズに関連します。 エラー メッセージのプロパティには、次の例のようにさらに詳しい情報が含まれます。
 
 ```Output
 Microsoft.ServiceBus.Messaging.QuotaExceededException
-Message: The maximum entity size has been reached or exceeded for Topic: ‘xxx-xxx-xxx’. 
+Message: The maximum entity size has been reached or exceeded for Topic: 'xxx-xxx-xxx'. 
     Size of entity in bytes:1073742326, Max entity size in bytes:
 1073741824..TrackingId:xxxxxxxxxxxxxxxxxxxxxxxxxx, TimeStamp:3/15/2013 7:50:18 AM
 ```
 
 メッセージは、トピックがそのサイズの上限を超えたことを示します (この場合 1 GB (既定のサイズ上限))。 
 
-#### <a name="namespaces"></a>名前空間
+### <a name="namespaces"></a>名前空間
 
 名前空間の場合、[QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) はアプリケーションが名前空間への最大接続数を超えたことを示す場合があります。 次に例を示します。
 
@@ -90,7 +87,7 @@ System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]:
 ConnectionsQuotaExceeded for namespace xxx.
 ```
 
-#### <a name="common-causes"></a>一般的な原因
+### <a name="common-causes"></a>一般的な原因
 このエラーには 2 つの一般的な原因があります。配信不能キューと機能しないメッセージ受信者です。
 
 1. **[配信不能キュー](service-bus-dead-letter-queues.md)** リーダーがメッセージを完了できない状態でロックの有効期限が切れたときにメッセージがキュー/トピックに返されます。 これは、リーダーが [BrokeredMessage.Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.complete) を呼び出せない例外がリーダーに発生した場合に発生することがあります。 メッセージは 10 回読み取られた後、既定で配信不能キューに移動します。 この動作は [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) プロパティによって制御され、既定値は 10 です。 メッセージが配信不能キューに溜まるほど、領域が占有されます。
@@ -98,61 +95,14 @@ ConnectionsQuotaExceeded for namespace xxx.
     この問題を解決するには、他のキューの場合と同様に、配信不能キューからメッセージを読み取り、完了します。 配信不能キューのパスのフォーマットに役立つ [FormatDeadLetterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formatdeadletterpath) メソッドを使用できます。
 2. **受信者が停止しました**。 受信者によるキューまたはサブスクリプションからのメッセージの受信が停止されています。 これを特定するには、メッセージの完全な詳細情報を表示する [QueueDescription.MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) プロパティを確認します。 [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) プロパティ値が大きいか増えている場合は、メッセージが読み取られる速度が書き込まれる速度に追いついていません。
 
-### <a name="timeoutexception"></a>TimeoutException
+## <a name="timeoutexception"></a>TimeoutException
 [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) は、ユーザーが開始した操作が操作タイムアウトより時間がかかっていることを示します。 
 
 [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) プロパティの値を確認する必要があります。この制限に達した場合も、[TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) が発生する可能性があります。
 
-#### <a name="queues-and-topics"></a>キューとトピック
+### <a name="queues-and-topics"></a>キューとトピック
 キューとトピックでは、タイムアウトは [MessagingFactorySettings.OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) プロパティで接続文字列の一部として、または [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder) を通じて指定されます。 エラー メッセージ自体はさまざまですが、これには常に現在の操作に指定されたタイムアウト値が含まれます。 
 
-## <a name="connectivity-certificate-or-timeout-issues"></a>接続、証明書、またはタイムアウトの問題
-次の手順は、*.servicebus.windows.net のすべてのサービスの接続/証明書/タイムアウトの問題のトラブルシューティングに役立ちます。 
-
-- `https://<yournamespace>.servicebus.windows.net/` の参照または [wget](https://www.gnu.org/software/wget/) を行います。 これは、IP フィルタリング、仮想ネットワーク、または証明書チェーンの問題 (java SDK の使用時に最も一般的) があるかどうかを確認するのに役立ちます。
-
-    成功したメッセージの例を次に示します。
-    
-    ```xml
-    <feed xmlns="http://www.w3.org/2005/Atom"><title type="text">Publicly Listed Services</title><subtitle type="text">This is the list of publicly-listed services currently available.</subtitle><id>uuid:27fcd1e2-3a99-44b1-8f1e-3e92b52f0171;id=30</id><updated>2019-12-27T13:11:47Z</updated><generator>Service Bus 1.1</generator></feed>
-    ```
-    
-    失敗したエラー メッセージの例を次に示します。
-
-    ```json
-    <Error>
-        <Code>400</Code>
-        <Detail>
-            Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
-        </Detail>
-    </Error>
-    ```
-- 次のコマンドを実行して、ファイアウォールでポートがブロックされているかどうかを確認します。 使用されるポートは、443 (HTTPS)、5671 (AMQP)、9354 (Net Messaging/SBMP) です。 使用するライブラリによっては、他のポートも使用されます。 5671 ポートがブロックされているかどうかを確認するサンプル コマンドを次に示します。 
-
-    ```powershell
-    tnc <yournamespacename>.servicebus.windows.net -port 5671
-    ```
-
-    Linux の場合:
-
-    ```shell
-    telnet <yournamespacename>.servicebus.windows.net 5671
-    ```
-- 接続の問題が断続的に発生する場合は、次のコマンドを実行して、破棄されたパケットがあるかどうかを確認します。 このコマンドは、1 秒ごとに 25 件の異なる TCP 接続をサービスと確立しようとします。 次に、成功または失敗した数を確認し、TCP 接続の待機時間も確認します。 `psping` ツールは、[こちら](/sysinternals/downloads/psping)からダウンロードできます。
-
-    ```shell
-    .\psping.exe -n 25 -i 1 -q <yournamespace>.servicebus.windows.net:5671 -nobanner     
-    ```
-    `tnc` や`ping` などの他のツールを使用している場合は、同等のコマンドを使用できます。 
-- 前の手順で解決できない場合は、ネットワーク トレースを取得して [Wireshark](https://www.wireshark.org/) などのツールを使用して分析します。 必要に応じて [Microsoft サポート](https://support.microsoft.com/) にお問い合わせください。 
-
-
 ## <a name="next-steps"></a>次のステップ
-
 Service Bus の詳細な .NET API リファレンスについては、「[Azure .NET API reference](/dotnet/api/overview/azure/service-bus)」(Azure .NET API リファレンス) を参照してください。
-
-[Service Bus](https://azure.microsoft.com/services/service-bus/) の詳細については、次の記事をご覧ください。
-
-* [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-* [Service Bus のアーキテクチャ](service-bus-architecture.md)
-
+トラブルシューティングのヒントについては、[トラブルシューティング ガイド](service-bus-troubleshooting-guide.md)に関するページを参照してください。

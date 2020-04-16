@@ -3,12 +3,12 @@ title: Azure VM の作成時にバックアップを有効にする
 description: Azure Backup を使用した Azure VM の作成時にバックアップを有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226047"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672822"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM の作成時にバックアップを有効にする
 
@@ -55,15 +55,17 @@ Backup サービスでは、復元ポイント コレクション (RPC) を格�
 注意する点:
 
 1. RG の既定の名前を使用することも、会社の要件に従って編集することもできます。
-2. VM バックアップ ポリシーの作成時には、入力として RG 名パターンを指定します。 RG 名の形式は `<alpha-numeric string>* n <alpha-numeric string>` にします。 'n' は (1 から始まる) 整数に置き換えられ、最初の RG がいっぱいになった場合のスケールアウトに使用されます。 現在、1 つの RG に最大 600 の RPC を含めることができます。
+2. VM バックアップ ポリシーの作成時には、入力として RG 名パターンを指定します。 RG 名の形式は `<alpha-numeric string>* n <alpha-numeric string>` にします。 'n' は (1 から始まる) 整数に置き換えられ、最初の RG がいっぱいになった場合はスケールアウトに使用されます。 現在、1 つの RG に最大 600 の RPC を含めることができます。
               ![ポリシー作成時の名前の選択](./media/backup-during-vm-creation/create-policy.png)
 3. このパターンは、以下の RG の名前付け規則に従っている必要があり、合計長は、RG 名の許容最大長を超えてはなりません。
     1. リソース グループ名に使用できるのは、英数字、ピリオド、アンダースコア、ハイフン、かっこのみです。 末尾をピリオドにすることはできません。
     2. リソース グループ名には、RG の名前とサフィックスを含めて、最大 74 文字を使用できます。
 4. 最初の `<alpha-numeric-string>` は必須ですが、'n' の後の 2 番目のものは省略可能です。 これが適用されるのは、カスタマイズした名前を指定する場合だけです。 どちらのテキストボックスにも入力しないと、既定の名前が使用されます。
-5. 必要が生じた場合、ポリシーを変更することで RG の名前を編集できます。 名前のパターンが変更されると、新しい RG の中に新しい RP が作成されます。 ただし、古い RP は引き続き古い RG に残り、移動されません。RP コレクションではリソースの移動がサポートされていないためです。 最終的に、ポイントの有効期限が切れたときに RP のガベージ コレクションが実行されます。
+5. 必要が生じた場合、ポリシーを変更することで RG の名前を編集できます。 名前のパターンが変更されると、新しい RG の中に新しい RP が作成されます。 ただし、RP コレクションではリソースの移動がサポートされないため、古い RP は引き続き古い RG 内に存在し、移動されません。 最終的に、ポイントの有効期限が切れたときに RP のガベージ コレクションが実行されます。
 ![ポリシー変更時の名前の変更](./media/backup-during-vm-creation/modify-policy.png)
 6. Backup サービスに使用するために作成されたリソース グループはロックしないことをお勧めします。
+
+PowerShell を使用して Virtual Machines の Azure Backup リソース グループを構成するには、[スナップショットのリテンション期間中の Azure Backup リソース グループの作成](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention)に関するページを参照してください。
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>VM の作成後にバックアップを開始する
 

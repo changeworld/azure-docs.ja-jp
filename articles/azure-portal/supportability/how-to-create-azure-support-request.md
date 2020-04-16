@@ -7,20 +7,20 @@ manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 03/31/2020
 ms.author: kfollis
-ms.openlocfilehash: 6218a1089352ce9ee3e2d1d10f3282e64eae8c51
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2b68b6ddf19d6b07475e7009b47e162bfb2d0d2f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547661"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478990"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Azure サポート要求を作成する方法
 
 ## <a name="overview"></a>概要
 
-Azure のお客様は、[Azure portal](https://portal.azure.com) でサポート要求を作成し、管理できます。
+Azure では、サポート要求 (サポート チケットとも呼ばれる) を作成して管理できます。 この記事で説明するように、[Azure portal ](https://portal.azure.com)上で要求を作成して管理することができます。 [Azure サポート チケット REST API ](/rest/api/support)を使用して、プログラムによって要求を作成して管理することもできます。
 
 > [!NOTE]
 > Azure portal の URL は、組織がデプロイされている Azure クラウドに固有のものです。
@@ -43,7 +43,7 @@ Azure portal で **[ヘルプとサポート]** にアクセスできます。 �
 
 ### <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-サポート リクエストを作成するには、管理者であるか、[サポート リクエスト共同作成者](../../role-based-access-control/built-in-roles.md#support-request-contributor)ロールに割り当てられている必要があります。
+サポート リクエストを作成するには、[所有者](../../role-based-access-control/built-in-roles.md#owner)か、[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)か、またはサブスクリプション レベルで[サポート リクエスト共同作成者](../../role-based-access-control/built-in-roles.md#support-request-contributor)ロールが割り当てられている必要があります。 Azure Active Directory (AAD) シナリオなどのサブスクリプションを使用せずにサポート リクエストを作成するには、[管理者](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)である必要があります。
 
 ### <a name="go-to-help--support-from-the-global-header"></a>グローバル ヘッダーから [ヘルプとサポート] にアクセスする
 

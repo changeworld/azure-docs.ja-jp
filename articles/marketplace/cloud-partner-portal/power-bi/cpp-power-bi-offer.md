@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: e0f8440686fc36d2cfcb493d97abaf44f81dd287
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc433fb2ee7888a20af16e01d76d4678cf12b01b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275919"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985577"
 ---
 # <a name="power-bi-app-offer"></a>Power BI アプリ オファー
+
+>[!Important]
+>2020 年 4 月 13 日以降、Power BI アプリ オファーの管理のパートナー センターへの移行を開始します。 移行後は、パートナー センターでオファーを作成および管理します。 移行されたオファーを管理するには、[Power BI アプリの作成の概要](https://aka.ms/AzurePBIAppCreationOverview)に関するページの手順に従ってください。
 
 |              |                                |
 |--------------|--------------------------------|

@@ -1,6 +1,6 @@
 ---
 title: 複数のテナント間の対話の特性 - Azure AD | Microsoft Docs
-description: テナントを完全に独立したリソースとして理解することによって Azure Active テナントを管理する
+description: 完全に独立した組織としての Azure Active Directory テナントの理解
 services: active-tenant
 documentationcenter: ''
 author: curtand
@@ -9,45 +9,50 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 04/07/2020
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4eb09ab7fa31af5edf14b113a6a88e08df2d115
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 175d9ce7db1657e0e654f46adaf8a8d8ef28c25e
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562260"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878121"
 ---
-# <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>複数の Azure Active Directory テナントが対話する方法を理解する
+# <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>複数の Azure Active Directory 組織が対話する方法を理解する
 
-Azure Active Directory (Azure AD) では、各テナントは完全に独立したリソース、つまり、管理されている他のテナントから論理的に独立したピアです。 テナント間に親子の関係はありません。 このテナント間の独立には、リソースの独立、管理の独立、および同期の独立が含まれます。
+Azure Active Directory (Azure AD) では、各テナントは完全に独立した組織、つまり、管理されている他の Azure AD 組織から論理的に独立したピアです。 この組織間の独立性には、リソースの独立性、管理の独立性、同期の独立性が含まれます。 組織間に親子の関係はありません。
 
 ## <a name="resource-independence"></a>リソースの独立
-* あるテナントでリソースを作成または削除しても、外部ユーザーの部分的な例外を除き、別のテナント内のどのリソースにも影響を与えません。 
-* あるテナントでいずれかのドメイン名を使用した場合は、それを他のどのテナントでも使用できません。
+
+* ある組織で Azure AD リソースを作成または削除しても、外部ユーザーの一部の例外を除き、別の組織内のどのリソースにも影響を与えません。
+* ある組織にドメイン名のいずれかを登録しても、それは他のどの組織でも使用できません。
 
 ## <a name="administrative-independence"></a>管理上の独立
-テナント 'Contoso' の管理者以外のユーザーがテスト テナント 'Test' を作成した場合は、次のようになります。
 
-* 既定では、テナントを作成したユーザーはその新しいテナントに外部ユーザーとして追加され、そのテナント内のグローバル管理者ロールが割り当てられます。
-* 'Test' の管理者が管理者特権を明示的に付与しない限り、テナント 'Contoso' の管理者にはテナント 'Test' に対する直接の管理者特権はありません。 ただし、'Contoso' の管理者は、'Test' を作成したユーザー アカウントを制御している場合はテナント 'Test' へのアクセスを制御できます。
-* あるテナントでユーザーの管理者ロールを追加/削除した場合、その変更は、そのユーザーが別のテナントに持っている管理者ロールに影響を与えません。
+組織 'Contoso' の管理者以外のユーザーがテスト組織 'Test' を作成した場合は、次のようになります。
+
+* 既定では、組織を作成したユーザーはその新しい組織に外部ユーザーとして追加され、その組織内のグローバル管理者ロールが割り当てられます。
+* 'Test' の管理者が管理者特権を明示的に付与しない限り、組織 'Contoso' の管理者には組織 'Test' に対する直接の管理者特権が与えられません。 ただし、'Contoso' の管理者は、'Test' を作成したユーザー アカウントを制御しているは組織 'Test' へのアクセスを制御できます。
+* ある組織でユーザーの Azure AD ロールを追加または削除した場合、その変更は、他の Azure AD 組織でそのユーザーに割り当てられているロールには影響を与えません。
 
 ## <a name="synchronization-independence"></a>同期の独立
-次のいずれか 1 つのインスタンスからデータが同期されるように、各 Azure AD テナントを個別に構成できます。
+
+各 Azure AD 組織を、次のいずれか 1 つの単一インスタンスからデータが同期されるように独立に構成できます。
 
 * Azure AD Connect ツール。データを 1 つの AD フォレストと同期する場合。
-* Forefront Identity Manager 用の Azure Active テナント コネクタ。データを 1 つ以上のオンプレミスのフォレストまたは Azure AD 以外のデータ ソース、あるいはその両方と同期する場合。
+* もう 1 つは、1 つ以上のオンプレミスのフォレストと Azure AD 以外のデータ ソースのいずれか、または両方とデータを同期する Forefront Identity Manager 用 Azure Active Directory コネクタです。
 
-## <a name="add-an-azure-ad-tenant"></a>Azure AD テナントを追加する
-Azure Portal で Azure AD テナントを追加するには、Azure AD グローバル管理者のアカウントで [Azure Portal](https://portal.azure.com) にサインインし、左側の **[新規]** を選びます。
+## <a name="add-an-azure-ad-organization"></a>Azure AD 組織を追加する
+
+Azure portal で Azure AD 組織を追加するには、Azure AD グローバル管理者であるアカウントを使用して [ Azure portal](https://portal.azure.com) にサインインし、 **[新規]** を選択します。
 
 > [!NOTE]
-> 他の Azure リソースとは異なり、テナントは Azure サブスクリプションの子リソースではありません。 Azure サブスクリプションが取り消されたり、期限切れになったりした場合でも、Azure PowerShell、Microsoft Graph API、または Microsoft 365 管理センターを使用してテナント データに引き続きアクセスできます。 また、[テナントに別のサブスクリプションを関連付ける](../fundamentals/active-directory-how-subscriptions-associated-directory.md)こともできます。
+> 他の Azure リソースとは異なり、Azure AD 組織は Azure サブスクリプションの子リソースではありません。 Azure サブスクリプションが取り消されたり、期限切れになったりした場合でも、Azure PowerShell、Microsoft Graph API、または Microsoft 365 管理センターを使用して Azure AD 組織のデータに引き続きアクセスできます。 また、[組織に別のサブスクリプションを関連付ける](../fundamentals/active-directory-how-subscriptions-associated-directory.md)こともできます。
 >
 
 ## <a name="next-steps"></a>次のステップ
-Azure AD のライセンスに関する問題およびベスト プラクティスの広範囲にわたる概要については、[Azure Active Directory のテナントのライセンス](../fundamentals/active-directory-licensing-whatis-azure-portal.md)に関するページをご覧ください。
+
+Azure AD のライセンスに関する考慮事項とベスト プラクティスについては、[Azure Active Directory のライセンスの概要](../fundamentals/active-directory-licensing-whatis-azure-portal.md)に関するページを参照してください。

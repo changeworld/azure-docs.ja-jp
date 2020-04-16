@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 35d185a625a81a259c366a45999769ecf76c6a7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 104311904b99cadbbc8c0267a98f2709443608ea
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77538160"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891460"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートから NSG フロー ログを構成する
 
@@ -169,6 +169,8 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 
 デプロイが成功したかどうかを確認するには、いくつかの方法があります。 PowerShell コンソールの "ProvisioningState" が "Succeeded" と表示されます。 また、変更内容を確認するには、[NSG フロー ログのポータル ページ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)を参照してください。 デプロイに問題がある場合は、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors)」を参照してください。
 
+## <a name="deleting-your-resource"></a>リソースの削除
+Azure では、"完全" デプロイ モードによってリソースを削除できます。 フロー ログ リソースを削除するには、削除するリソースを含めずに、完全モードでデプロイを指定します。 [完全デプロイ モード](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes#complete-mode)の詳細をお読みください
 
 ## <a name="next-steps"></a>次のステップ
 

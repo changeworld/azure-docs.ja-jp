@@ -3,12 +3,12 @@ title: Azure Backup のレポートを構成する
 description: Log Analytics と Azure Workbooks を使用して Azure Backup のレポートを構成および表示する
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 497d70c1bcc577faa467720b959eb828e785a26a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78161203"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672657"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "78161203"
 * バックアップ レポートは、Azure VM、Azure VM の SQL、Azure VM の SAP HANA/ASE、Azure Backup Agent（MARS）、Azure Backup Server（MABS）、System Center DPM でサポートされています。
 * DPM ワークロードの場合、バックアップ レポートは DPM バージョン 5.1.363.0 以降、およびエージェント バージョン 2.0.9127.0 以降でサポートされています。
 * MABS ワークロードの場合、バックアップ レポートは MABS バージョン 13.0.415.0 以降、およびエージェント バージョン 2.0.9170.0 以降でサポートされています。
-* バックアップ レポートは、ユーザーがアクセスできる Log Analytics (LA) ワークスペースにデータが送信されている限り、すべてのバックアップ項目、コンテナー、サブスクリプション、およびリージョンで表示できます。 
+* バックアップ レポートは、ユーザーがアクセスできる Log Analytics (LA) ワークスペースにデータが送信されている限り、すべてのバックアップ項目、コンテナー、サブスクリプション、およびリージョンで表示できます。 一連のコンテナーのレポートを表示するには、コンテナーがデータを送信している **LA ワークスペースへの閲覧者アクセス権**のみが必要です。 個々のコンテナーへのアクセス権を持っている**必要はありません**。
 * お客様が、ご自分の顧客のサブスクリプションまたは LA ワークスペースへの委任アクセス権を持つ [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) ユーザーである場合、Azure Lighthouse のレポートを使用して、ご利用のすべてのテナントにわたってレポートを表示することができます。
 * ログ バックアップ ジョブのデータは、現在レポートに表示されていません。
 
@@ -52,7 +52,7 @@ Azure Backup には、特定のスコープ内のすべてのコンテナーの�
 
 3. **Azure portal に関するレポートを表示する:**
 
-データを LA に送信するようにコンテナーを構成したら、任意のコンテナーのブレードに移動し、 **[バックアップレポート]** メニュー項目をクリックして、バックアップ レポートを表示します。 
+データを LA に送信するようにコンテナーを構成したら、任意のコンテナーのブレードに移動し、 **[バックアップ レポート]** メニュー項目をクリックして、バックアップ レポートを表示します。 
 
 ![コンテナー ダッシュボード](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
 

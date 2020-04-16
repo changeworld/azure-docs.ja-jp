@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: fdac8ebc56291292559f6718de5f0092c7d8e063
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 3efd8a776542616a9ceefba331b06406540905a8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350465"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633320"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Azure Synapse Analytics でワークロードの重要度の管理と監視を行う
 
-DMV とカタログ ビューを使用して、Azure Synapse で SQL Analytics の要求レベルの重要度を管理および監視します。
+DMV とカタログ ビューを使用して、Azure Synapse で Synapse SQL の要求レベルの重要度を管理および監視します。
 
 ## <a name="monitor-importance"></a>重要度を監視する
 
-重要度の監視は [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) 動的管理ビューの新しい重要度の列を使用して行います。
+重要度の監視は [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 動的管理ビューの新しい重要度の列を使用して行います。
 以下の監視クエリはクエリの送信時刻と開始時刻を表示します。 送信時刻と開始時刻を重要度と一緒に確認すれば、重要度がスケジュールに及ぼす影響を理解できます。
 
 ```sql
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-カタログ ビュー [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest) には、分類子の作成で使用されるパラメーターに関する情報が含まれています。  次のクエリでは、ExecutiveReports という値を持つ ```membername``` パラメーターに対して ExecReportsClassifier が作成されたことを示しています。
+カタログ ビュー [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) には、分類子の作成で使用されるパラメーターに関する情報が含まれています。  次のクエリでは、ExecutiveReports という値を持つ ```membername``` パラメーターに対して ExecReportsClassifier が作成されたことを示しています。
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value
@@ -69,6 +69,7 @@ GO
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
 - 分類の詳細については、[ワークロード分類](sql-data-warehouse-workload-classification.md)に関するページを参照してください。
 - 重要度の詳細については、[ワークロードの重要度](sql-data-warehouse-workload-importance.md)に関するページを参照してください
 

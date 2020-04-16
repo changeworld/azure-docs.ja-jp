@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: labrenne
-ms.openlocfilehash: 2cff6a0e48fc7bf58a642f509fcda6b114e002ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95f27d913cd288c186bae1a6375212b072f50bb4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022938"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422430"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Shared Image Gallery を使用してカスタム プールを作成する
 
@@ -38,6 +38,9 @@ ms.locfileid: "77022938"
 * **管理を容易にするイメージのバージョン管理とグループ化。** イメージのグループ化の定義には、イメージが作成された理由、対象の OS、イメージの使用に関する情報などの情報が含まれます。 イメージをグループ化すると、イメージを簡単に管理できるようになります。 詳細については、「[イメージ定義](../virtual-machines/windows/shared-image-galleries.md#image-definitions)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
+
+> [!NOTE]
+> Azure AD を使用して認証する必要があります。 共有キー認証を使用すると、認証エラーが発生します。  
 
 * **Azure Batch アカウント。** Batch アカウントを作成するには、[Azure portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
@@ -86,6 +89,9 @@ Azure では、次のものからマネージド イメージを準備できま�
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Azure CLI を使用して共有イメージからプールを作成する
 
 Azure CLI を使用して共有イメージからプールを作成するには、`az batch pool create` コマンドを使用します。 `--image` フィールドに共有イメージ ID を指定します。 OS の種類と SKU が、`--node-agent-sku-id` によって指定されたバージョンと一致していることを確認してください。
+
+> [!NOTE]
+> Azure AD を使用して認証する必要があります。 共有キー認証を使用すると、認証エラーが発生します。  
 
 ```azurecli
 az batch pool create \

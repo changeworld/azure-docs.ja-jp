@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Service で RBAC と Azure AD を使用してクラスター リソースを制御する
+title: Azure AD と RBAC をクラスターに使用する
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) でロールベースのアクセス制御 (RBAC) を使用してクラスター リソースへのアクセスを制限するために、Azure Active Directory グループのメンバーシップを使用する方法を学習します
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: 456b6dcdd590b48e06c830db85b726d4bebb69e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad195085c049776bf0db418c57f2c72830f1adff
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596523"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803571"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service でロールベースのアクセス制御と Azure Active Directory ID を使用してクラスター リソースへのアクセスを制限する
 

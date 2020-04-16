@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9d8aeba65a566cc93d3344a532a4636d709c1084
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: d46f513fccf9921d4cf47835bc9d5be4c6ffe241
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303666"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607494"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -220,7 +220,7 @@ Set-AzStorageSyncServerEndpoint `
 <a id="serverendpoint-pending"></a>**サーバー エンドポイントの正常性が数時間にわたって保留状態になる**  
 この問題は、クラウド エンドポイントを作成してデータが格納されている Azure ファイル共有を使用した場合に発生することが予期されます。 クラウドとサーバー エンドポイント間でファイルを同期する前に、Azure ファイル共有の変更をスキャンする変更列挙ジョブが完了している必要があります。 このジョブの完了にかかる時間は、Azure ファイル共有内の名前空間のサイズに依存します。 変更列挙ジョブが完了したら、サーバー エンドポイントの正常性を更新する必要があります。
 
-### <a id="broken-sync"></a>同期の正常性を監視するにはどうすればよいですか。
+### <a name="how-do-i-monitor-sync-health"></a><a id="broken-sync"></a>同期の正常性を監視するにはどうすればよいですか。
 # <a name="portal"></a>[ポータル](#tab/portal1)
 各同期グループ内で、個別のサーバー エンドポイントをドリルダウンして、最後に完了した同期セッションの状態を確認できます。 [正常性] 列が緑色で、[Files Not Syncing]\(同期していないファイル数\) の値が 0 の場合は、同期が予期したとおりに動作していることを示します。 そうでない場合は、下に示す一般的な同期エラーの一覧と、同期していないファイルの処理方法を参照してください。 
 
@@ -588,7 +588,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **エラー文字列** | CERT_E_UNTRUSTEDROOT |
 | **修復が必要か** | はい |
 
-このエラーは、組織が SSL 終了のプロキシを使用している場合、または悪意のあるエンティティがサーバーと Azure File Sync サービス間のトラフィックを傍受している場合に発生する可能性があります。 (組織が SSL 終了のプロキシを使用していることから) これに相当すると確信できる場合は、レジストリのオーバーライドによって証明書検証をスキップします。
+このエラーは、組織で TLS 終端プロキシを使用している場合、または悪意のあるエンティティがサーバーと Azure File Sync サービスの間のトラフィックをインターセプトしている場合に発生する可能性があります。 これが (組織で TLS 終端プロキシを使用しているため) 予測されることが確信できる場合は、レジストリのオーバーライドによって証明書の検証をスキップします。
 
 1. SkipVerifyingPinnedRootCertificate レジストリ値を作成します。
 
@@ -602,7 +602,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-このレジストリ値を設定すると、Azure File Sync エージェントは、サーバーとクラウド サービス間でデータを転送するときに、ローカルに信頼される SSL 証明書をすべて受け入れるようになります。
+このレジストリ値を設定すると、Azure File Sync エージェントは、サーバーとクラウド サービスの間でデータを転送するときに、ローカルに信頼される TLS/SSL 証明書をすべて受け入れます。
 
 <a id="-2147012894"></a>**サービスとの接続を確立できませんでした。**  
 
@@ -992,19 +992,19 @@ if ($fileShare -eq $null) {
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 1. 左側の目次で **[アクセス制御 (IAM)]** をクリックします。
 1. **[ロールの割り当て]** タブをクリックして、ストレージ アカウントにアクセスできるユーザーとアプリケーション (*サービス プリンシパル*) を一覧表示します。
-1. 一覧に、 **[Hybrid File Sync Service]\(ハイブリッド ファイル同期サービス\)** が **[Reader and Data Access]\(閲覧者とデータ アクセス\)** ロールで表示されていることを確認します。 
+1. **Microsoft.StorageSync** または**ハイブリッド ファイル同期サービス** (古いアプリケーション名) が一覧に**閲覧者とデータ アクセス** ロールで表示されるか確認します。 
 
     ![ストレージ アカウントのアクセス制御タブに表示された [Hybrid File Sync Service]\(ハイブリッド ファイル同期サービス\) サービス プリンシパルのスクリーンショット](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 
-    **[Hybrid File Sync Service]\(ハイブリッド ファイル同期サービス\)** が一覧に表示されない場合は、次の手順を実行します。
+    **Microsoft.StorageSync** または **ハイブリッド ファイル同期サービス**が一覧の表示されない場合は、次の手順を行います。
 
     - **[追加]** をクリックします。
     - **[ロール]** フィールドで、 **[閲覧者とデータ アクセス]** を選択します。
-    - **[選択]** フィールドに「**Hybrid File Sync Service**」と入力してロールを選択し、 **[保存]** をクリックします。
+    - **[選択]** フィールドに「**Microsoft.StorageSync**」と入力してロールを選択し、 **[保存]** をクリックします。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
-$role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Hybrid File Sync Service" }
+$role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Microsoft.StorageSync" }
 
 if ($role -eq $null) {
     throw [System.Exception]::new("The storage account does not have the Azure File Sync " + `

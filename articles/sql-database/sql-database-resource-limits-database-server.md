@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: afb30a17d7a1450f169402c18f41ce249415e89d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587245"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804828"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Database のリソース制限およびリソース管理
 
@@ -78,6 +78,24 @@ ms.locfileid: "77587245"
 
 - データベースまたはエラスティック プールのサービス レベルまたはコンピューティング サイズを高くします。 [シングルトンのリソースの拡大縮小に関する記事](sql-database-single-database-scale.md)と、[エラスティック プールのリソースの拡大縮小に関する記事](sql-database-elastic-pool-scale.md)を参照してください。
 - ワーカー使用率上昇の原因がコンピューティング リソースの競合である場合は、クエリを最適化して各クエリのリソース使用率を下げます。 詳しくは、「[クエリの調整とヒント](sql-database-performance-guidance.md#query-tuning-and-hinting)」をご覧ください。
+- [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (並列処理の最大限度) の設定を減らします。
+- クエリのワークロードを最適化して、発生回数とクエリ ブロックの時間を削減します。
+
+### <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>ユーザー ワークロードと内部プロセスによるリソース使用量
+
+各データベースのユーザー ワークロードによる CPU とメモリの使用量は、[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) および [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) ビューの `avg_cpu_percent` 列と `avg_memory_usage_percent` 列で報告されます。 エラスティック プールの場合、プール レベルのリソース消費は、[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) ビューで報告されます。 ユーザー ワークロードの CPU 消費量は、[単一データベース](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)およびプール レベルの[エラスティック プール](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)について、`cpu_percent` Azure Monitor メトリックによって報告されます。
+
+Azure SQL Database には、高可用性とディザスター リカバリー、データベースのバックアップと復元、監視、クエリ ストア、自動チューニングなどの中核的なサービス機能を実装するための、コンピューティング リソースが必要です。システムでは、[リソース ガバナンス](#resource-governance) メカニズムを使用して、これらの内部プロセス用にリソース全体の特定の限られた部分が確保されます。これにより、ユーザーのワークロードで残りのリソースを使用できるようになります。 内部プロセスでコンピューティング リソースが使用されていない場合は、システムによってユーザーのワークロードで使用できるようになります。
+
+単一データベースまたはエラスティック プールをホストしている SQL Server インスタンスのユーザー ワークロードと内部プロセスによる CPU およびメモリの合計使用量は、[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) および [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) ビューの `avg_instance_cpu_percent` 列と `avg_instance_memory_percent` 列で報告されます。 このデータは、[単一データベース](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases)およびプール レベルの[エラスティック プール](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools)について、`sqlserver_process_core_percent` および `sqlserver_process_memory_percent` Azure Monitor メトリックによって報告されます。
+
+ユーザー ワークロードと内部プロセスによる最近のリソース消費の詳細な内訳は、[sys.dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) および [sys.dm_resource_governor_workload_groups_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database) ビューで報告されます。 これらのビューで参照されているリソース プールとワークロード グループの詳細については、「[リソース管理](#resource-governance)」を参照してください。 これらのビューでは、関連付けられているリソース プールおよびワークロード グループにおける、ユーザー ワークロードと特定の内部プロセスによるリソース使用量が報告されます。
+
+パフォーマンスの監視とトラブルシューティングのコンテキストでは、**ユーザーの CPU 消費量** (`avg_cpu_percent`、`cpu_percent`) と、ユーザー ワークロードと内部プロセスによる**合計 CPU 消費量** (`avg_instance_cpu_percent`、`sqlserver_process_core_percent`) の両方を考慮することが重要です。
+
+**ユーザー CPU 消費量**は、各サービス目標におけるユーザー ワークロードの上限に対する割合として計算されます。 **ユーザー CPU 使用率**が 100% の場合は、ユーザー ワークロードがサービス目標の上限に達したことを示します。 一方、**合計 CPU 消費量**が 70 - 100% の範囲に達した場合は、報告された**ユーザー CPU 消費量**が 100% を大幅に下回っている場合でも、ユーザー ワークロードのスループットがフラット化され、クエリの待機時間が増加している可能性があります。 これは、コンピューティング リソースが適度に割り当てられている、より小さいサービス目標を使用していても、[高密度エラスティック プール](sql-database-elastic-pool-resource-management.md)のような比較的集中的なユーザー ワークロードの場合に、発生する可能性が高くなります。 また、データベースの新しいレプリカを作成する場合など、内部プロセスで一時的に追加のリソースが必要な場合は、小さいサービス目標でも発生する可能性があります。
+
+**合計 CPU 消費量**が高い場合の軽減オプションは、前に説明したものと同じであり、サービス目標を高くしたり、ユーザー ワークロードを最適化することが含まれます。
 
 ## <a name="resource-governance"></a>リソース管理
 
@@ -116,7 +134,7 @@ Azure Storage 内のデータ ファイルを使用する Basic、Standard、Gen
 
 実行時に適用される実際のログ生成速度は、フィードバック メカニズムによっても影響される可能性があります。この場合、システムを安定化するために許容ログ速度が一時的に低下します。 ログ領域の不足状態を回避しようとするログ ファイル領域管理と、可用性グループのレプリケーション メカニズムにより、全体的なシステムの制限が一時的に低くなる可能性があります。
 
-ログ速度ガバナー トラフィックの構成は、次の種類の待機を使用して表示されます ([sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV で公開されます)。
+ログ速度ガバナーのトラフィック シェイプは、次の待機の種類を使用して表示されます ([sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) および [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) ビューで公開されます)。
 
 | 待機の種類 | Notes |
 | :--- | :--- |
@@ -125,10 +143,11 @@ Azure Storage 内のデータ ファイルを使用する Basic、Standard、Gen
 | INSTANCE_LOG_RATE_GOVERNOR | インスタンス制限 |  
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | フィードバック制御、Premium/Business Critical での可用性グループの物理的なレプリケーションが維持されていない |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | フィードバック制御、ログ領域の不足を回避するために速度を制限 |
+| HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO | geo レプリケーションのフィードバック制御、geo セカンダリの長いデータ待機時間や使用不可状態を回避するためにログ速度を制限|
 |||
 
 望ましいスケーラビリティを損なうログ速度制限が発生した場合は、次のオプションを検討してください。
-- 最大 96 MB/秒のログ速度を実現するために、より高いサービス レベルにスケールアップします。 
+- 最大 96 MB/秒のログ速度を実現したり、異なるサービス レベルに切り替えるには、より高いサービス レベルにスケールアップします。 [Hyperscale](sql-database-service-tier-hyperscale.md) サービス レベルでは、選択したサービス レベルに関係なく、100 MB/秒のログ速度が提供されます。
 - ETL プロセスでのステージング データなど、読み込まれるデータが一時的なデータである場合、tempdb に読み込むことができます (ログ記録が最小限に抑えられます)。 
 - 分析シナリオでは、クラスター化列ストアの対象テーブルに読み込みます。 この場合は圧縮されるため、必要なログ速度が小さくなります。 この手法では CPU 使用率が増加し、クラスター化列ストア インデックスからメリットを得られるデータ セットにのみ適用できます。 
 

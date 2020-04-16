@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3738da806ff36cdb7e8d561b88a457a5264eb76
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086981"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886927"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Application Gateway 用の Web アプリケーション ファイアウォール ポリシーの作成
 
@@ -24,6 +24,8 @@ WAF ポリシーをリスナーに関連付けると、1 つの WAF の背後に
 
    > [!NOTE]
    > サイトごとおよび URI ごとの WAF ポリシーはパブリック プレビュー段階です。 つまり、この機能には、Microsoft の追加使用条件が適用されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+   > [!NOTE]
+   > ファイアウォール ポリシーが WAF に関連付けられている場合は、その WAF に関連付けられているポリシーが常に存在している必要があります。 このポリシーは上書きできますが、WAF からのポリシーの関連付け解除は完全にはサポートされていません。 
 
 新しい Web アプリケーション ファイアウォールの WAF 設定 (カスタム ルール、マネージド ルール セットの構成、除外など) はすべて WAF ポリシーの内部にあります。 既存の WAF がある場合、これらの設定がまだ WAF 構成にある可能性があります。新しい WAF ポリシーに移行する手順については、この記事の後半の「[WAF 構成の WAF ポリシーへの移行](#migrate)」を参照してください。 
 

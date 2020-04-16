@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 695773da624bc8d4ccff09119d64fc43319ff488
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d11be1d971922095d4a1ace1c81c763134b4e58c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246434"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743321"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory でのユーザー プリンシパル名の変更の計画とトラブルシューティング
 
@@ -58,11 +58,11 @@ ms.locfileid: "80246434"
 
    * Britta.Simon@contosolabs.com に対して Britta.Simon@contoso.com を行います <br>
      または<br>
-    *   Britta.Simon@labs.contoso.com に対して Britta.Simon@corp.contoso.com を行います 
+    * Britta.Simon@labs.contoso.com に対して Britta.Simon@corp.contoso.com を行います 
 
 ユーザーのプライマリ メール アドレスが更新されるたびに、ユーザーの UPN を変更します。 メール アドレスの変更の理由に関係なく、UPN は常に一致するように更新する必要があります。
 
-Active Directory から Azure AD への初期同期中に、ユーザーのメール アドレスが UPN と同じであることを確認します
+Active Directory から Azure AD への初期同期中に、ユーザーのメール アドレスが UPN と同じであることを確認します。
 
 ### <a name="upns-in-active-directory"></a>Active Directory での UPN
 
@@ -108,7 +108,7 @@ UPN の一括変更については、[パイロットのベスト プラクテ�
 
 以下のセクションでは、UPN を変更するときに発生する可能性のある既知の問題と回避策について詳しく説明します。
 
-## <a name="user-provisioning-known-issues-and-workarounds"></a>ユーザーのプロビジョニングに関する既知の問題と回避策
+## <a name="apps-known-issues-and-workarounds"></a>アプリの既知の問題と回避策
 
 [サービスとしてのソフトウェア (SaaS)](https://azure.microsoft.com/overview/what-is-saas/) アプリケーションおよび基幹業務 (LoB) アプリケーションでは、多くの場合、UPN を利用して、ユーザーの検索や、ロールなどのユーザー プロファイル情報の格納が行われます。 ユーザーが初めてアプリにサインインするときにユーザー プロファイルを作成するために [Just-In-Time プロビジョニング](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)を使用するアプリケーションは、UPN の変更によって影響を受ける可能性があります。
 
@@ -117,6 +117,7 @@ UPN の一括変更については、[パイロットのベスト プラクテ�
 
 **回避策**<br>
 [Azure AD の自動化されたユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を使用すると、サポートされているクラウド アプリケーションでのユーザー ID を自動的に作成、管理、削除できます。 アプリケーションで自動化されたユーザー プロビジョニングを構成すると、アプリケーションの UPN が自動的に更新されます。 プログレッシブ ロールアウトの一部としてアプリケーションをテストし、UPN の変更によって影響を受けないことを検証します。
+開発者は、[アプリケーションに SCIM サポートを追加](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)して、Azure Active Directory からの自動ユーザー プロビジョニングを有効にすることを検討してください。 
 
 ## <a name="managed-devices-known-issues-and-workarounds"></a>マネージド デバイスに関する既知の問題と回避策
 
@@ -174,11 +175,9 @@ Windows Hello for Business が使用されている場合、ユーザーは[再�
 
 Microsoft Authenticator アプリには、帯域外検証オプションが用意されています。 [Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) では、サインイン時にユーザーに自動音声通話または SMS 送信を行うのではなく、ユーザーのスマートフォンまたはタブレットの Microsoft Authenticator アプリにプッシュ通知が行われます。 ユーザーはアプリで [許可] をタップ (または、PIN または生体認証情報を入力して [認証] をタップ) するだけで、サインインを完了することができます。
 
-ユーザーの UPN を変更すると、モバイル デバイスで次の問題が発生する可能性があります。
-
 **既知の問題** 
 
-ユーザー アカウントに古い UPN が引き続き表示され、通知が受信されない可能性があります。 [検証コード](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq)は引き続き機能します。
+ユーザーの UPN を変更すると、ユーザー アカウントに古い UPN が引き続き表示され、通知が受信されない可能性があります。 [検証コード](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq)は引き続き機能します。
 
 **回避策**
 

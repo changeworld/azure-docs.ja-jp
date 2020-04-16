@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: b224de96f6b6baedc3b57e0245a4c4e8748576b4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767728"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632927"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
@@ -233,7 +233,7 @@ query オブジェクトは、クエリに必要な逆シリアル化オプシ�
 ### <a name="limitations"></a>制限事項
 
 > [!IMPORTANT]
-> クエリの結果には、デバイス ツインの最新の値に関連し、数分の遅れが生じることがあります。 ID を使用して個々のデバイス ツインのクエリを実行する場合は、[get twin REST API](https://docs.microsoft.com/rest/api/iothub/service/gettwin) を使用します。 この API からは常に最新の値が返されます。また、調整の上限は高くなっています。 REST API を直接発行するか、[Azure IoT Hub Service SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) のいずれかで同等の機能を使用できます。
+> クエリの結果には、デバイス ツインの最新の値に関連し、数分の遅れが生じることがあります。 ID を使用して個々のデバイス ツインのクエリを実行する場合は、[get twin REST API](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) を使用します。 この API からは常に最新の値が返されます。また、調整の上限は高くなっています。 REST API を直接発行するか、[Azure IoT Hub Service SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) のいずれかで同等の機能を使用できます。
 
 現時点では、比較はプリミティブ型間 (オブジェクトなし) でのみサポートされます。たとえば、`... WHERE properties.desired.config = properties.reported.config` は、これらのプロパティがプリミティブ値を持つ場合にのみサポートされます。
 
@@ -440,7 +440,7 @@ GROUP BY <group_by_element>
 | binary_operator | 「[演算子](#operators)」セクションに記載されている 2 項演算子。 |
 | function_name| 「[関数](#functions)」セクションに記載されている関数。 |
 | decimal_literal |10 進表記で表される浮動小数点数。 |
-| hexadecimal_literal |文字列 ‘0x’ の後に 16 進数の文字列を続けて表された数値。 |
+| hexadecimal_literal |文字列 '0x' の後に 16 進数の文字列を続けて表された数値。 |
 | string_literal |文字列リテラルは、0 個以上の Unicode 文字のシーケンスまたはエスケープ シーケンスによって表される Unicode 文字列です。 文字列リテラルは、単一引用符または二重引用符で囲みます。 使用できるエスケープ: 4 つの 16 進数字によって定義された Unicode 文字の `\'`、`\"`、`\\`、`\uXXXX`。 |
 
 ### <a name="operators"></a>オペレーター
@@ -457,18 +457,18 @@ GROUP BY <group_by_element>
 
 ツインとジョブのクエリにおいて、サポートされている唯一の関数は次のとおりです。
 
-| Function | 説明 |
+| 機能 | 説明 |
 | -------- | ----------- |
 | IS_DEFINED(property) | プロパティに値が代入されているかどうかを示すブール値を返します (`null` を含む)。 |
 
 ルートの条件では、次の計算関数がサポートされています。
 
-| Function | 説明 |
+| 機能 | 説明 |
 | -------- | ----------- |
 | ABS(x) | 指定された数値式の絶対値 (正の値) を返します。 |
 | EXP(x) | 指定された数値式の指数値を返します (e^x)。 |
 | POWER(x,y) | 指定されたべき乗の指定された式の値を返します (x^y)。|
-| SQUARE(x) | 指定された数値の 2 乗を返します。 |
+| SQUARE(x)    | 指定された数値の 2 乗を返します。 |
 | CEILING(x) | 指定された数値式以上の最小の整数値を返します。 |
 | FLOOR(x) | 指定された数値式以下の最大の整数を返します。 |
 | SIGN(x) | 指定された数値式の正 (+1)、ゼロ (0)、または負 (-1) の符号を返します。|
@@ -476,12 +476,12 @@ GROUP BY <group_by_element>
 
 ルートの条件では、次の型の確認とキャスト関数がサポートされています。
 
-| Function | 説明 |
+| 機能 | 説明 |
 | -------- | ----------- |
 | AS_NUMBER | 入力文字列を数値に変換します。 入力が数値の場合は `noop`、文字列が数値を表していない場合は `Undefined` です。|
 | IS_ARRAY | 指定した式の型が配列であるかどうかを示すブール値を返します。 |
 | IS_BOOL | 指定した式の型がブール値であるかどうかを示すブール値を返します。 |
-| IS_DEFINED | プロパティに値が代入されているかどうかを示すブール値を返します。 |
+| IS_DEFINED | プロパティに値が代入されているかどうかを示すブール値を返します。 これは、値がプリミティブ型である場合にのみサポートされます。 プリミティブ型には、文字列、ブール値、数値、または `null` が含まれます。 DateTime、オブジェクト型、配列はサポートされていません。 |
 | IS_NULL | 指定した式の型が null であるかどうかを示すブール値を返します。 |
 | IS_NUMBER | 指定した式の型が数値であるかどうかを示すブール値を返します。 |
 | IS_OBJECT | 指定した式の型が JSON オブジェクトであるかどうかを示すブール値を返します。 |
@@ -490,7 +490,7 @@ GROUP BY <group_by_element>
 
 ルートの条件では、次の文字列関数がサポートされています。
 
-| Function | 説明 |
+| 機能 | 説明 |
 | -------- | ----------- |
 | CONCAT(x, y, …) | 2 つ以上の文字列値を連結した結果である文字列を返します。 |
 | LENGTH(x) | 指定された文字列式の文字数を返します。|

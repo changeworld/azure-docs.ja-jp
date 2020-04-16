@@ -4,12 +4,12 @@ description: Azure Kubernetes サービス (AKS) で Azure CNI (高度な) ネ�
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: f7f8fe85b0a0e149859715b86abb08753a6ea65e
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 6f194cb97850fcb24e4789ac0ba39b6f03d99e6e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595979"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617381"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -26,6 +26,8 @@ ms.locfileid: "77595979"
 * AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)アクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
+* サービス プリンシパルの代わりに、システム割り当てのマネージド ID をアクセス許可のために使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
+* AKS ノード プールに割り当てられたサブネットを[委任されたサブネット](../virtual-network/subnet-delegation-overview.md)にすることはできません。
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>クラスターの IP アドレス指定を計画する
 

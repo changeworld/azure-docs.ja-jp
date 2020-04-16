@@ -7,22 +7,22 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: b7385ef27cd17705f2c86b6f57d4780511b6935c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1b8c033a3ec230d60c30f6168de8ce013a80ac6
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246859"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878002"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal を使用して HTTP から HTTPS にリダイレクトする Front Door を作成する
 
-Azure portal を使用して、SSL 終了の証明書で [Front Door](front-door-overview.md) を作成できます。 ルーティング規則を使用して、HTTP トラフィックを HTTPS にリダイレクトします。
+Azure portal を使用して、TLS 終端の証明書で [Front Door](front-door-overview.md) を作成できます。 ルーティング規則を使用して、HTTP トラフィックを HTTPS にリダイレクトします。
 
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * 既存の Web アプリ リソースを使用して Front Door を作成する
-> * SSL 証明書を使用してカスタム ドメインを追加する 
+> * TLS/SSL 証明書を使用してカスタム ドメインを追加する 
 > * カスタム ドメインで HTTPS リダイレクトをセットアップする
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
@@ -87,7 +87,7 @@ CNAME を追加した後の DNS レコード ページは次の例のように�
 ### <a name="enable-https-on-your-custom-domain"></a>カスタム ドメインで HTTPS を有効にする
 
 1. 追加されたカスタム ドメインをクリックし、 **[カスタム ドメイン HTTPS]** セクションで、状態を **[有効]** に変更します。
-2. Front Door によって維持、管理、およびオートローテーションされる無料の証明書については、 **[証明書の管理の種類]** を _[Front Door managed]/(Front Door による管理/)_ のままにすることができます。 また、Azure Key Vault に格納されている独自のカスタム SSL 証明を使用することもできます。 このチュートリアルでは、Front Door によって管理される証明書を使用することを前提としています。
+2. Front Door によって維持、管理、およびオートローテーションされる無料の証明書については、 **[証明書の管理の種類]** を _[Front Door managed]/(Front Door による管理/)_ のままにすることができます。 また、Azure Key Vault に格納されている独自のカスタム TLS/SSL 証明書を使用することも選択できます。 このチュートリアルでは、Front Door によって管理される証明書を使用することを前提としています。
 ![カスタム ドメインに対して HTTPS を有効にする](./media/front-door-url-redirect/front-door-custom-domain-https.png)
 
 3. **[更新]** をクリックして選択内容を保存し、 **[保存]** をクリックします。

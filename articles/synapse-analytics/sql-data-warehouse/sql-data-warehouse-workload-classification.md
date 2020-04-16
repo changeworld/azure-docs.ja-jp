@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7661981f07799592f9fdfcab3fb402336d48b4d4
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e7aa0c402878c994aabe4e12d811a99e300d7e67
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349973"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743659"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics ワークロードの分類
 
-このアーティクルでは、Azure Synapse の SQL Analytics を使用して、ワークロード グループと重要度を受信要求に割り当てるワークロードの分類プロセスについて説明します。
+この記事では、Azure Synapse の Synapse SQL プールを使用して、ワークロード グループと重要度を受信要求に割り当てるワークロードの分類プロセスについて説明します。
 
 ## <a name="classification"></a>分類
 
@@ -36,7 +36,7 @@ ms.locfileid: "80349973"
 
 ## <a name="classification-process"></a>分類プロセス
 
-現在、Azure Synapse　の SQL Analytics での分類は、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) を使用して、対応するリソース クラスが割り当てられたロールにユーザーを割り当てることで実現されます。 1 つのリソース クラスへのログインを超えて要求を特徴付けることは、この機能によって制限されます。 より高度な分類方法として、[CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql) 構文を利用できるようになりました。  SQL Analytics ユーザーは、この構文で `workload_group` パラメーターを使用して、要求に重要度を割り当て、割り当てるシステム リソース量を指定できます。 
+現在、Azure Synapse の Synapse SQL プールでの分類は、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、対応するリソース クラスが割り当てられたロールにユーザーを割り当てることで実現されます。 1 つのリソース クラスへのログインを超えて要求を特徴付けることは、この機能によって制限されます。 より高度な分類方法として、[CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 構文を利用できるようになりました。  Synapse SQL プール ユーザーは、この構文で `workload_group` パラメーターを使用して、要求に重要度を割り当て、割り当てるシステム リソース量を指定できます。
 
 > [!NOTE]
 > 分類は要求単位で評価されます。 1 つのセッション内の複数の要求を別々に分類できます。
@@ -76,7 +76,7 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 - 新しい分類構文をテストするため、(DBAUser がそのメンバーである) データベース ロール DBARole を mediumrc と高い重要度にマッピングする分類子が作成されました。
 - DBAUser がログインしてクエリを実行すると、クエリは largerc に割り当てられます。 これは、ロールのメンバーシップよりもユーザーが優先されるためです。
 
-誤分類のトラブルシューティングを簡単にするため、ワークロード分類子を作成するときは、リソース クラス ロールのマッピングを削除することをお勧めします。  次のコードは、既存のリソース クラス ロールのメンバーシップを返します。  対応するリソース クラスから返されたメンバー名ごとに、[sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) を実行します。
+誤分類のトラブルシューティングを簡単にするため、ワークロード分類子を作成するときは、リソース クラス ロールのマッピングを削除することをお勧めします。  次のコードは、既存のリソース クラス ロールのメンバーシップを返します。  対応するリソース クラスから返されたメンバー名ごとに、[sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を実行します。
 
 ```sql
 SELECT  r.name AS [Resource Class]
@@ -87,12 +87,12 @@ JOIN    sys.database_principals AS m ON rm.member_principal_id = m.principal_id
 WHERE   r.name IN ('mediumrc','largerc','xlargerc','staticrc10','staticrc20','staticrc30','staticrc40','staticrc50','staticrc60','staticrc70','staticrc80');
 
 --for each row returned run
-sp_droprolemember ‘[Resource Class]’, membername
+sp_droprolemember '[Resource Class]', membername
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
-- 分類子の作成の詳細については、「[CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)」を参照してください。  
+- 分類子の作成の詳細については、「[CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。  
 - ワークロード分類子の作成方法については、[ワークロード分類子の作成](quickstart-create-a-workload-classifier-tsql.md)に関するクイック スタートを参照してください。
 - [ワークロードの重要度の構成](sql-data-warehouse-how-to-configure-workload-importance.md)と [Workload Management の管理と監視](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)に関するハウツー記事を参照してください。
-- クエリと割り当てられている重要度を確認するには、「[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)」を参照してください。
+- クエリと割り当てられている重要度を確認するには、「[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。

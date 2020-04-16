@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 5c79642d287224cd15531701d7cc87ebfd72eb69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eec07a01edc6b126bb7cd3a814912ea5c5b14195
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588044"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529096"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>脅威インテリジェンス プロバイダーからデータを接続する
 
@@ -42,6 +42,10 @@ Azure Sentinel を使用すると、組織で使用されている脅威イン�
 - [MISP Open Source Threat Intelligence Platform](https://www.misp-project.org/)
     
     脅威インジケーターを Microsoft Graph Security API に移行するための MISP インスタンスをクライアントに提供するサンプルスクリプトについては、「[MISP から Microsoft Graph Security へのスクリプト](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/MISP)」を参照してください。
+
+- [Anomali ThreatStream](https://www.anomali.com/products/threatstream)
+
+    ThreatStream Integrator and Extensions、および ThreatStream インテリジェンスを Microsoft Graph Security API に接続するための手順をダウンロードするには、[ThreatStream のダウンロード](https://ui.threatstream.com/downloads)のページを参照してください。
 
 - [Palo Alto Networks MineMeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld)
     

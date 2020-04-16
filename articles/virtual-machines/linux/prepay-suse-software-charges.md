@@ -7,14 +7,14 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 3bb7a62433993f1af26b1ce8bcb4ed258c34623c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e05920e495dd4aa14be6c849590a37a2bafa33f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75973132"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757236"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Azure ソフトウェア プランへの前払い
 
@@ -38,6 +38,7 @@ SUSE および RedHat のソフトウェア プランは、Azure portal で購�
 4. スコープを選択します。 1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) をスコープにすることができます。
     - [単一サブスクリプション] - プランの割引は、サブスクリプションでのマシンの使用に適用されます。
     - [共有] - プランの割引は、課金コンテキスト内のすべてのサブスクリプションでの一致するインスタンスに適用されます。 エンタープライズのお客様の場合、課金コンテキストが対象の登録であり、登録内のすべてのサブスクリプションが含まれます。 従量課金制料金の個別プランを利用されるお客様の場合、従量課金制料金サブスクリプションをアカウント管理者が作成したあらゆる個別プランで課金されます。
+    - 1 つのリソース グループ - 選択されたリソース グループ内の一致するリソースにのみ予約割引を適用します。
 5. 製品を選択し、VM のサイズとイメージの種類を選択します。 割引は、選択した VM サイズにのみ適用されます。
 6. 期間として 1 年または 3 年を選択します。
 7. 数量を選択します。これは、課金の割引を受けられる前払いの VM インスタンス数です。

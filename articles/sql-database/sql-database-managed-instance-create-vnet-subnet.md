@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ce88f9a61b8aa7c2588a6e077d694afa6fb8631
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823378"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878852"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の仮想ネットワークを作成する
 
@@ -29,13 +29,13 @@ Azure SQL Database Managed Instance は、Azure [仮想ネットワーク](../vi
 - リンク サーバーまたは別のオンプレミス データ ストアへのマネージド インスタンスの接続
 - Azure リソースへのマネージド インスタンスの接続  
 
-> [!Note]
+> [!NOTE]
 > 最初のインスタンスをデプロイする前に、[Managed Instance に使用するサブネットのサイズを決める](sql-database-managed-instance-determine-size-vnet-subnet.md)必要があります。 サブネットは、いったんリソースを配置するとサイズを変更できなくなります。
 >
 > 既存の仮想ネットワークを使用する予定の場合は、お使いのマネージド インスタンスに合わせて、そのネットワーク構成を変更する必要があります。 詳細については、「[マネージド インスタンスの既存の仮想ネットワークを変更する](sql-database-managed-instance-configure-vnet-subnet.md)」を参照してください。
 >
-> マネージド インスタンスを作成した後は、マネージド インスタンスまたは VNet を別のリソース グループまたはサブスクリプションに移動することはできません。
-
+> マネージド インスタンスを作成した後は、マネージド インスタンスまたは VNet を別のリソース グループまたはサブスクリプションに移動することはできません。  また、マネージド インスタンスの別のサブネットへの移動もサポートされていません。
+>
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3b738d95b5b777f1cf0329fb3c1bc3e2860421e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045872"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545966"
 ---
 # <a name="introduction-to-azure-security"></a>Azure のセキュリティの概要
 ## <a name="overview"></a>概要
@@ -233,11 +233,11 @@ Microsoft [Azure Application Gateway](../../application-gateway/overview.md) に
 
 ![Application Gateway](./media/overview/azure-security-fig2.png)
 
-これにより、CPU を集中的に使用する SSL の終了を Application Gateway にオフロードし (“SSL オフロード” または “SSL ブリッジ” とも呼ばれる)、Web ファームの生産性を最適化できます。 また、着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 Azure Application Gateway はレイヤー 7 のロード バランサーです。
+これにより、CPU 集中型の TLS 終端を Application Gateway にオフロードすることによって Web ファームの生産性を最適化できます ("TLS オフロード" または "TLS ブリッジ" とも呼ばれます)。 また、着信トラフィックのラウンド ロビン分散、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、単一の Application Gateway の背後で複数の Web サイトをホストする機能など、その他のレイヤー 7 ルーティング機能も用意されています。 Azure Application Gateway はレイヤー 7 のロード バランサーです。
 
 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。
 
-Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、[Secure Sockets Layer (SSL)](../../application-gateway/tutorial-restrict-web-traffic-powershell.md) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。
+Application Gateway には、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、[TLS オフロード](../../application-gateway/tutorial-restrict-web-traffic-powershell.md)、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能が用意されています。
 
 ### <a name="web-application-firewall"></a>Web アプリケーション ファイアウォール
 Web アプリケーション ファイアウォール (WAF) は [Azure Application Gateway](../../application-gateway/overview.md) の機能で、標準のアプリケーション配信コントロール (ADC) 機能に対してアプリケーション ゲートウェイを使用して、Web アプリケーションを保護します。 Web アプリケーション ファイアウォールは、OWASP の上位 10 件の一般的 Web 脆弱性の大部分に対する保護を提供することで、これを実現します。

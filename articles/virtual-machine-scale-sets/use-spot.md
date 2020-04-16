@@ -1,30 +1,25 @@
 ---
-title: Azure スポット VM (プレビュー) を使用するスケール セットを作成する
+title: Azure スポット VM を使用するスケール セットを作成する
 description: コスト削減のためにスポット VM を使う Azure 仮想マシン スケール セットを作成する方法を説明します。
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.topic: conceptual
-ms.date: 02/11/2020
+ms.topic: article
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162686"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545929"
 ---
-# <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>プレビュー:仮想マシン スケール セット用の Azure スポット VM 
+# <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>仮想マシン スケール セット用の Azure スポット VM 
 
 スケール セットで Azure Spot を使うと、非常に低コストで未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャはスポット インスタンス を排除します。 したがってスポット インスタンスは、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
 
 利用可能な容量は、サイズ、リージョン、時刻などによって異なります。 スケール セットにスポット インスタンスを展開すると、Azure は利用可能な容量がある場合のみインスタンスを割り当てますが、これらのインスタンスには SLA はありません。 スポット スケール セットは 1 つの障害ドメインに展開され、高可用性の保証はありません。
 
-> [!IMPORTANT]
-> スポット インスタンスは現在、パブリック プレビューの段階にあります。
-> このプレビュー バージョンは運用環境のワークロードにはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
->
 
 ## <a name="pricing"></a>価格
 
@@ -172,6 +167,5 @@ $vmssConfig = New-AzVmssConfig `
 **A:** [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html) で質問を投稿し、`azure-spot` のタグを付けることができます。 
 
 ## <a name="next-steps"></a>次のステップ
-スポット VM を使用してスケール セットを作成したので、[スポットを使用する自動スケール テンプレート](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri)をデプロイしてみてください。
 
 価格について詳しくは、[仮想マシン スケール セットの価格のページ](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)をご覧ください。

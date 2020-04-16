@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 225ee7028b9610a4974f9bee05da667d78d3355e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/02/2020
+ms.openlocfilehash: 1d044ddaea0a2c7a1d489523cc9aa4515df0728a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73903733"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632657"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark に接続する
 
-この記事では、カスタム PySpark カーネル (Python の場合)、Apache Spark カーネル (Scala の場合)、および Spark マジックと共に Jupyter Notebook をインストールし、そのノートブックを HDInsight クラスターに接続する方法について説明します。 さまざまな理由から、Jupyter をローカル コンピューターにインストールすることが必要になるケースがあります。またローカル コンピューターへのインストールには、いくつかの課題もあります。 この点について詳しくは、この記事の最後のセクション「[Jupyter をローカル コンピューターにインストールする理由](#why-should-i-install-jupyter-on-my-computer)」を参照してください。
+この記事では、カスタム PySpark カーネル (Python の場合)、Apache Spark カーネル (Scala の場合) および Spark マジックと共に Jupyter Notebook をインストールする方法について説明します。 その後、そのノートブックを HDInsight クラスターに接続します。
 
 Jupyter をインストールして HDInsight の Apache Spark に接続するには、4 つの主要手順があります。
 
@@ -26,17 +26,17 @@ Jupyter をインストールして HDInsight の Apache Spark に接続する�
 * PySpark カーネルと Spark カーネルおよび Spark マジックをインストールする。
 * HDInsight 上の Spark クラスターにアクセスするように Spark マジックを構成する。
 
-HDInsight クラスターの Jupyter Notebook で使用できるカスタム カーネルと Spark マジックの詳細については、 [HDInsight の Apache Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)に関するページを参照してください。
+カスタム カーネルと Spark マジックの詳細については、[HDInsight 上の Jupyter Notebook と Apache Spark Linux クラスターで使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。 これは Jupyter Notebook のインストール後にノートブックを HDInsight クラスターに接続するための前提条件です。
+* HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。 ローカル ノートブックは HDInsight クラスターに接続します。
 
 * HDInsight の Spark での Jupyter Notebook の使用方法を熟知していること。
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>Jupyter Notebook をコンピューターにインストールする
 
-Jupyter Notebook をインストールする前に Python をインストールする必要があります。 [Anaconda ディストリビューション](https://www.anaconda.com/download/)では、Python と Jupyter Notebook の両方がインストールされます。
+Jupyter Notebook をインストールする前に Python をインストールします。 [Anaconda ディストリビューション](https://www.anaconda.com/download/)では、Python と Jupyter Notebook の両方がインストールされます。
 
 ご使用のプラットフォーム用の [Anaconda インストーラー](https://www.anaconda.com/download/) をダウンロードし、セットアップ プログラムを実行します。 セットアップ ウィザードを実行する過程で、Anaconda を PATH 変数に追加するためのオプションを忘れずに選択してください。  [Anaconda を使用した Jupyter のインストール](https://jupyter.readthedocs.io/en/latest/install.html)についての記事も参照してください。
 
@@ -63,9 +63,9 @@ Jupyter Notebook をインストールする前に Python をインストール�
     pip show sparkmagic
     ```
 
-    作業ディレクトリを、上記のコマンドで識別された場所に変更します。
+    次に、上のコマンドで識別された**場所**に作業ディレクトリを変更します。
 
-1. 新しい作業ディレクトリから、次のコマンドを入力して、目的のカーネルをインストールします。
+1. 新しい作業ディレクトリから、次のコマンドを 1 つ以上入力して目的のカーネルをインストールします。
 
     |カーネル | command |
     |---|---|
@@ -90,7 +90,7 @@ Jupyter Notebook をインストールする前に Python をインストール�
     python
     ```
 
-2. Jupyter の構成情報は通常、ユーザーの home ディレクトリに格納されます。 次のコマンドを入力してホーム ディレクトリを識別し、 **.sparkmagic** という名前のフォルダーを作成します。  完全なパスが出力されます。
+2. Jupyter の構成情報は通常、ユーザーの home ディレクトリに格納されます。 次のコマンドを入力してホーム ディレクトリを識別し、 **\.sparkmagic** という名前のフォルダーを作成します。  完全なパスが出力されます。
 
     ```python
     import os
@@ -146,7 +146,7 @@ Jupyter Notebook をインストールする前に Python をインストール�
     jupyter notebook
     ```
 
-6. カーネルで使用可能な Spark マジックを使用できることを確認します。 次の手順に従います。
+6. カーネルで使用可能な Spark マジックを使用できることを確認します。 次の手順のようにします。
 
     a. 新しい Notebook を作成します。 右隅から **[新規]** を選択します。 既定のカーネル **Python 2** または **Python 3** と、インストールしたカーネルが表示されるはずです。 実際の値は、インストールの選択に応じて異なる場合があります。  **PySpark** を選択します。
 
@@ -168,9 +168,9 @@ Jupyter Notebook をインストールする前に Python をインストール�
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Jupyter をローカル コンピューターにインストールする理由
 
-Jupyter をコンピューターにインストールしてから HDInsight 上の Apache Spark クラスターに接続することが必要になる理由はいくつか存在します。
+Jupyter をコンピューターにインストールしてから HDInsight 上の Apache Spark クラスターに接続する理由は次のとおりです。
 
-* Azure HDInsight の Spark クラスターで Jupyter Notebook が既に使用できる状態になっていても、ご使用のコンピューターに Jupyter をインストールすることで、ノートブックをローカルで作成し、稼働中のクラスターに対してアプリケーションをテストしたうえで、クラスターにノートブックをアップロードするという選択肢が得られます。 ノートブックをクラスターにアップロードする手段としては、クラスターで実行されている Jupyter Notebook を使用してアップロードする方法と、クラスターに関連付けられているストレージ アカウントの /HdiNotebooks フォルダーにそれらを保存する方法とがあります。 クラスターにノートブックを保存する方法の詳細については、 [Jupyter Notebook の格納場所](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)に関するセクションを参照してください。
+* ノートブックをローカルに作成し、アプリケーションを実行中のクラスターに対してテストしてから、そのノートブックをクラスターにアップロードするオプションが提供されます。 ノートブックをクラスターにアップロードするには、クラスターで実行されている Jupyter Notebook を使用してアップロードするか、またはクラスターに関連付けられているストレージ アカウント内の `/HdiNotebooks` フォルダーに保存するかのどちらかの方法を使用できます。 クラスターにノートブックを保存する方法の詳細については、 [Jupyter Notebook の格納場所](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)に関するセクションを参照してください。
 * ノートブックがローカルで利用できると、アプリケーションの要件に応じて異なる Spark クラスターに接続することができます。
 * GitHub を使用してソース管理システムを導入し、ノートブックのバージョン管理を行うことができます。 複数のユーザーが同じノートブックで作業するコラボレーション環境を実現することもできます。
 * クラスターをセットアップしなくてもローカルでノートブックを使用できます。 クラスターは、クラスターとの間でノートブックをテストする目的でのみ必要となります。ノートブックや開発環境を手動で管理するうえでクラスターは必要ありません。
@@ -181,6 +181,6 @@ Jupyter をコンピューターにインストールしてから HDInsight 上�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
-* [Apache Spark と BI: HDInsight の Spark と BI ツールを使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
-* [Apache Spark と Machine Learning: HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
+* [Apache Spark と BI:HDInsight での Power BI を使用した Apache Spark データの分析](apache-spark-use-bi-tools.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)

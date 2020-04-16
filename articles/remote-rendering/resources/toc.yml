@@ -1,6 +1,10 @@
+- name: リリース ノート
+  href: 'https://github.com/Azure/azure-remote-rendering/releases'
 - name: ツール
   href: tools/toc.yml
 - name: トラブルシューティング
   href: troubleshoot.md
 - name: 製品フィードバックの提供
   href: 'https://feedback.azure.com/forums/928696-azure-remote-rendering'
+- name: スタック オーバーフロー
+  href: 'https://stackoverflow.com/questions/tagged/azure-remote-rendering'

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 11/06/2019
-ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.date: 04/01/2020
+ms.openlocfilehash: 0cefa78b6f52cc67df8817f68a9b793ab86b2a7f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366220"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878580"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインとは
 
@@ -64,7 +64,7 @@ Azure Machine Learning では、パイプライン内の各ステップに対し
 
 Azure portal または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) で直接、[パイプライン実験のメトリックを追跡](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)できます。 パイプラインを発行した後は、任意のプラットフォームまたはスタックからパイプラインを再実行できる REST エンドポイントを構成できます。
 
-つまり、パイプラインを使用することで、機械学習のライフサイクルの複雑なタスクをすべて支援できます。 その他の Azure パイプライン テクノロジには、データを操作するための [Azure Data Factory パイプライン](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities)や、継続的な統合とデプロイのための [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) などの独自の強味があります。 ただし、機械学習に重点を置いている場合は、Azure Machine Learning パイプラインがワークフローのニーズに最適な選択肢となる可能性があります。 
+つまり、パイプラインを使用することで、機械学習のライフサイクルの複雑なタスクをすべて支援できます。 その他の Azure パイプライン テクノロジには、それぞれ固有の長所があります。 [Azure Data Factory パイプライン](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities)はデータの操作に優れ、[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) は、継続的な統合とデプロイに適切なツールです。 ただし、機械学習に重点を置いている場合は、Azure Machine Learning パイプラインがワークフローのニーズに最適な選択肢となる可能性があります。 
 
 ## <a name="what-are-azure-ml-pipelines"></a>Azure ML パイプラインとは
 
@@ -126,7 +126,7 @@ Azure Machine Learning では、コンピューティング ターゲットは M
 
 パイプライン内のステップには、他のステップへの依存関係がある場合があります。 Azure ML パイプライン サービスでは、これらの依存関係を分析および調整する作業が行われます。 結果の "実行グラフ" のノードは、処理ステップです。 各ステップでは、ハードウェアとソフトウェアの特定の組み合わせの作成や再利用、キャッシュされた結果の再利用などが行われる場合があります。 サービスのオーケストレーションとこの実行グラフの最適化により、ML フェーズが大幅に高速化され、コストが削減されます。 
 
-ステップは個別に実行されるため、ステップ間をフローする入力データと出力データを保持するためのオブジェクトは、外部で定義する必要があります。 これは、[DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)、[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、および関連付けられているクラスの役割です。 これらのデータ オブジェクトは、そのストレージ構成をカプセル化する [Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) オブジェクトに関連付けられています。 `PipelineStep` 基本クラスは、常に `name` 文字列、`inputs` の一覧、および `outputs` の一覧を使用して作成されます。 通常は、`arguments` の一覧もあり、多くの場合、`resource_inputs` の一覧もあります。 通常、サブクラスには追加の引数も含まれます (たとえば、`PythonScriptStep` には、実行するスクリプトのファイル名とパスが必要です)。 
+ステップは個別に実行されるため、ステップ間をフローする入力データと出力データを保持するためのオブジェクトは、外部で定義する必要があります。 これは、[DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) と [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) オブジェクトのロールです。 これらのデータ オブジェクトは、そのストレージ構成をカプセル化する [Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) オブジェクトに関連付けられています。 `PipelineStep` 基本クラスは、常に `name` 文字列、`inputs` の一覧、および `outputs` の一覧を使用して作成されます。 通常は、`arguments` の一覧もあり、多くの場合、`resource_inputs` の一覧もあります。 通常、サブクラスには追加の引数も含まれます (たとえば、`PythonScriptStep` には、実行するスクリプトのファイル名とパスが必要です)。 
 
 実行グラフは非循環ですが、パイプラインは定期的なスケジュールで実行できます。また、ファイル システムに状態情報を書き込むことができる Python スクリプトを実行して、複雑なプロファイルを作成することもできます。 特定のステップが並列または非同期で実行されるようにパイプラインを設計すると、Azure Machine Learning により、ファンアウトとファンインの依存関係の分析と調整が透過的に処理されます。 一般に、実行グラフの詳細については考慮する必要はありませんが、これは [Pipeline. graph](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes) 属性で使用できます。 
 
@@ -141,19 +141,16 @@ blob_store = Datastore(ws, "workspaceblobstore")
 compute_target = ws.compute_targets["STANDARD_NC6"]
 experiment = Experiment(ws, 'MyExperiment') 
 
-input_data = DataReference(
-    datastore=Datastore(ws, blob_store),
-    data_reference_name="test_data",
-    path_on_datastore="20newsgroups/20news.pkl")
+input_data = Dataset.File.from_files(
+    DataPath(datastore, '20newsgroups/20news.pkl'))
 
-output_data = PipelineData(
-    "output_data",
-    datastore=blob_store,
-    output_name="output_data1")
+output_data = PipelineData("output_data", datastore=blob_store)
+
+input_named = input_data.as_named_input('input')
 
 steps = [ PythonScriptStep(
     script_name="train.py",
-    arguments=["--input", input_data, "--output", output_data],
+    arguments=["--input", input_named.as_download(), "--output", output_data],
     inputs=[input_data],
     outputs=[output_data],
     compute_target=compute_target,
@@ -168,7 +165,7 @@ pipeline_run.wait_for_completion()
 
 スニペットは、共通の Azure Machine Learning オブジェクト、`Workspace`、`Datastore`、[ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)、および `Experiment` で開始されます。 次に、コードによって `input_data` と `output_data` を保持するオブジェクトが作成されます。 配列 `steps` には、1 つの要素 (データ オブジェクトを使用して `compute_target` 上で実行する `PythonScriptStep`) が保持されます。 次に、このコードによって `Pipeline` オブジェクト自体がインスタンス化され、ワークスペースとステップの配列が渡されます。 `experiment.submit(pipeline)` を呼び出すと、Azure ML パイプラインの実行が開始されます。 `wait_for_completion()` を呼び出すと、パイプラインが終了するまでブロックされます。 
 
-パイプラインをデータに接続する方法の詳細については、[データへのアクセス方法](how-to-access-data.md)および[データセットの登録方法](how-to-create-register-datasets.md)に関する記事を参照してください。 
+パイプラインをデータに接続する方法の詳細については、[Azure Machine Learning でのデータ アクセス](concept-data.md)と [ML パイプライン ステップでのデータの移動 (Python)](how-to-move-data-in-out-of-pipelines.md)に関するページを参照してください。 
 
 ## <a name="best-practices-when-using-pipelines"></a>パイプラインを使用する際のベスト プラクティス
 
@@ -188,7 +185,7 @@ pipeline_run.wait_for_completion()
 
 * パイプライン ステップ間の強力な結合。 依存するステップを頻繁にリファクタリングするのに前のステップの出力を変更する必要がある場合、その別のステップでは、現在、利点よりもコストの方が高くなる可能性があります。 ステップが過度に結合されているもう 1 つの手掛かりは、ステップへの引数がデータではなく、処理を制御するフラグであることです。 
 
-* コンピューティング リソースを早期に最適化する。 たとえば、多くの場合、データ準備にはいくつかのステージがあり、「並列プログラミングに `MpiStep` を使用できたが、それほど強力ではないコンピューティング ターゲットでは `PythonScriptStep` を使用できた」と思うことがしばしばあります。 また、長期的に見れば、そのようなきめ細かいステップを作成することは、特に、常に再計算するのではなく、キャッシュされた結果を使用する可能性がある場合には、価値があると実証される可能性があります。 ただし、パイプラインは `multiprocessing` モジュールの代わりに使用されることを意図していません。 
+* コンピューティング リソースを早期に最適化する。 たとえば、多くの場合、データ準備にはいくつかのステージがあり、「並列プログラミングに `MpiStep` を使用できたが、それほど強力ではないコンピューティング ターゲットでは `PythonScriptStep` を使用できた」と思うことがしばしばあります。 また、長期的に見れば、そのようなきめ細かいステップを作成することは、特に、常に再計算するのではなく、キャッシュされた結果を使用する可能性がある場合には、価値があると実証される可能性があります。 ただし、パイプラインは Python のネイティブ `multiprocessing` モジュールの代わりに使用されることを意図していません。 
 
 プロジェクトが大規模またはデプロイの直前になるまで、パイプラインの粒度はきめ細かくするよりも粗くする必要があります。 ML プロジェクトを "_ステージ_" が含まれているもの、また、パイプラインを特定のステージを移動するための完全なワークフローを提供するものとして考えている場合は、それで合っています。 
 
@@ -204,6 +201,12 @@ pipeline_run.wait_for_completion()
 |**追跡とバージョン管理**|反復処理しながらデータや結果パスを手動で追跡するのではなく、パイプライン SDK を使用して、データ ソース、入力、および出力に明示的に名前を付けてバージョン管理します。 また、生産性を向上させるために、スクリプトとデータを個別に管理することもできます。|
 | **モジュール性** | 懸念事項の範囲を分離し、変更を分離することで、ソフトウェアをより高い品質でより迅速に進化させることができます。 | 
 |**コラボレーション**|パイプラインを使用すると、データ科学者は、機械学習の設計プロセスのすべてのリージョンで共同作業を行うことができます。さらに、パイプラインの複数のステップに同時に取り組むこともできます。|
+
+### <a name="choosing-the-proper-pipelinestep-subclass"></a>適切な PipelineStep サブクラスの選択
+
+`PythonScriptStep` は、抽象 `PipelineStep` の最も柔軟なサブクラスです。 `EstimatorStep` サブクラスや `DataTransferStep` などの他のサブクラスは、特定のタスクを少ないコードで実行できます。 たとえば、ステップの名前、`Estimator`、およびコンピューティング先を渡すだけで、`EstimatorStep` を作成できます。 また、入力と出力、パイプライン パラメーター、および引数をオーバーライドできます。 詳細については、「[Azure Machine Learning で Estimator を使用してモデルをトレーニングする](how-to-train-ml-models.md)」を参照してください。 
+
+`DataTransferStep` を使用すると、データソースとシンクの間でデータを簡単に移動できます。 この転送を手動で実行するコードは簡単ですが、反復的です。 代わりに、名前、データ ソースとデータ シンクへの参照、およびコンピューティング先を使用して `DataTransferStep` を作成することができます。 この柔軟性については、ノートブック「[DataTransferStepでのAzure Machine Learning パイプライン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb)」で説明されています。
 
 ## <a name="modules"></a>モジュール
 

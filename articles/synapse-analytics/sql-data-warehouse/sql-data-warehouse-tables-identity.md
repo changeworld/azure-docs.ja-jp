@@ -1,6 +1,6 @@
 ---
 title: IDENTITY を使用して代理キーを作成する
-description: IDENTITY プロパティを使用して SQL Analytics のテーブルに代理キーを作成する場合の推奨事項と例。
+description: IDENTITY プロパティを使用して Synapse SQL プール内のテーブルに代理キーを作成する場合のレコメンデーションと例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ab8f4a64f7273f0fa15c20f324e132003d5afe32
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e681e8ad655c31d5078b56b8f1a49cfd7c664533
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351309"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742643"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>SQL Analytics で IDENTITY を使用して代理キーを作成する
+# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Synapse SQL プールで IDENTITY を使用して代理キーを作成する
 
-IDENTITY プロパティを使用して SQL Analytics のテーブルに代理キーを作成する場合の推奨事項と例。
+IDENTITY プロパティを使用して Synapse SQL プール内のテーブルに代理キーを作成する場合のレコメンデーションと例。
 
 ## <a name="what-is-a-surrogate-key"></a>代理キーとは
 
-テーブルの代理キーは、各行の一意の識別子を持つ列です。 代理キーはテーブル データからは生成されません。 データ モデラーは、SQL Analytics モデルを設計するときに、テーブルに代理キーを作成するのを好みます。 IDENTITY プロパティを使うと、この目的を簡単かつ効果的に達成でき、読み込みのパフォーマンスが影響を受けることもありません。  
+テーブルの代理キーは、各行の一意の識別子を持つ列です。 代理キーはテーブル データからは生成されません。 データ モデラーは、データ ウェアハウス モデルを設計するときに、テーブルに代理キーを作成するのを好みます。 IDENTITY プロパティを使うと、この目的を簡単かつ効果的に達成でき、読み込みのパフォーマンスが影響を受けることもありません。  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>IDENTITY 列があるテーブルを作成する
 
-IDENTITY プロパティは、読み込みパフォーマンスに影響を与えずに、SQL Analytics データベース内のすべてのディストリビューションにスケールアウトするように設計されています。 そのため、IDENTITY の実装はこれらの目標を達成するようになっています。
+IDENTITY プロパティは、読み込みパフォーマンスに影響を与えずに、Synapse SQL プール内のすべてのディストリビューションにスケールアウトするように設計されています。 そのため、IDENTITY の実装はこれらの目標を達成するようになっています。
 
 次のステートメントのような構文を使って、テーブルを最初に作成するときに、IDENTITY プロパティを持つようにテーブルを定義できます。
 
@@ -50,7 +50,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>値の割り当て
 
-IDENTITY プロパティは、代理値が割り当てられる順序を保証しません。順序は、SQL Server と Azure SQL Database の動作を反映します。 ただし、SQL Analytics では、保証が存在しないことがより顕著になります。
+IDENTITY プロパティは、代理値が割り当てられる順序を保証しません。順序は、SQL Server と Azure SQL Database の動作を反映します。 ただし、Synapse SQL プールでは、保証が存在しないことがより顕著になります。
 
 次にその例を示します。
 
@@ -100,7 +100,7 @@ CREATE TABLE AS SELECT (CTAS) は、SELECT..INTO と同じ SQL Server 動作に�
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>IDENTITY 列に値を明示的に挿入する
 
-SQL Analytics では `SET IDENTITY_INSERT <your table> ON|OFF` 構文がサポートされています。 この構文を使って、IDENTITY 列に値を明示的に挿入できます。
+Synapse SQL プールでは `SET IDENTITY_INSERT <your table> ON|OFF` 構文がサポートされています。 この構文を使って、IDENTITY 列に値を明示的に挿入できます。
 
 多くのデータ モデラーは、ディメンションの特定の行に定義済みの負の値を使うことを好みます。 たとえば、-1 や "unknown member" 行です。
 
@@ -161,11 +161,11 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > 現在は、IDENTITY 列のあるテーブルへのデータの読み込みに、`CREATE TABLE AS SELECT` を使うことはできません。
 >
 
-データの読み込みの詳細については、[SQL Analytics 向けの抽出、読み込み、変換 (ELT) の設計](design-elt-data-loading.md)と[読み込みのベスト プラクティス](guidance-for-loading-data.md)に関するページを参照してください。
+データの読み込みの詳細については、[Synapse SQL プール向けの抽出、読み込み、変換 (ELT) の設計](design-elt-data-loading.md)と[読み込みのベスト プラクティス](guidance-for-loading-data.md)に関するページを参照してください。
 
 ## <a name="system-views"></a>システム ビュー
 
-[sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) カタログ ビューを使用して、IDENTITY プロパティを持つ列を識別できます。
+[sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) カタログ ビューを使用して、IDENTITY プロパティを持つ列を識別できます。
 
 データベース スキーマを理解しやすいように、次の例では sys.identity_column を他のシステム カタログ ビューと統合する方法を示します。
 
@@ -195,14 +195,14 @@ AND     tb.name = 'T1'
 - 列が分散キーでもある場合
 - テーブルが外部テーブルである場合
 
-次の関連する関数は、SQL Analytics ではサポートされません。
+次の関連する関数は、Synapse SQL プールではサポートされません。
 
-- [IDENTITY()](/sql/t-sql/functions/identity-function-transact-sql)
-- [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)
-- [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql)
-- [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql)
-- [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql)
-- [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql)
+- [IDENTITY()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="common-tasks"></a>一般的なタスク
 
@@ -241,6 +241,6 @@ AND     tb.name = 'T1'
 
 ## <a name="next-steps"></a>次のステップ
 
-- [テーブルの概要](/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)
-- [CREATE TABLE (Transact-SQL) IDENTITY (プロパティ)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)
-- [DBCC CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql)
+- [テーブルの概要](sql-data-warehouse-tables-overview.md)
+- [CREATE TABLE (Transact-SQL) IDENTITY (プロパティ)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [DBCC CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

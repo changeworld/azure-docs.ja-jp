@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: takamath
-ms.openlocfilehash: 2ddc56c60c547bd4ce48d620a83fb79246762bfb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 86304fc7776f49c999924b8609f2d26120cee372
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641983"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549077"
 ---
 # <a name="enable-browser-connection-on-lab-virtual-machines"></a>ラボ仮想マシンでブラウザー接続を有効にする 
 
-DevTest Labs が [Azure Bastion](https://docs.microsoft.com/azure/bastion/) と統合されたことにより、ブラウザーを使用して仮想マシンに接続できます。 最初に、ラボ仮想マシンでブラウザー接続を有効にする必要があります。
+DevTest Labs は [Azure Bastion](https://docs.microsoft.com/azure/bastion/) と統合されたことにより、ブラウザーを使用して仮想マシンに接続できます。 最初に、ラボ仮想マシンでブラウザー接続を有効にする必要があります。
 
-ラボの所有者は、ブラウザーを使用したすべてのラボ仮想マシンへのアクセスを有効にできます。 追加のクライアント、エージェント、ソフトウェアは必要ありません。 Azure Bastion は、Azure portal で直接 SSL を経由して、仮想マシンへの安全かつシームレスな RDP 接続または SSH 接続を提供します。 Azure Bastion 経由で接続する場合、仮想マシンにパブリック IP アドレスは必要ありません。 詳細については、「[Azure Bastion とは](../bastion/bastion-overview.md)」を参照してください。
+ラボの所有者は、ブラウザーを使用したすべてのラボ仮想マシンへのアクセスを有効にできます。 追加のクライアント、エージェント、ソフトウェアは必要ありません。 Azure Bastion では、Azure portal で TLS を経由して、仮想マシンへのセキュリティで保護されたシームレスな RDP または SSH の直接接続が提供されます。 Azure Bastion 経由で接続する場合、仮想マシンにパブリック IP アドレスは必要ありません。 詳細については、「[Azure Bastion とは](../bastion/bastion-overview.md)」を参照してください。
 
 > [!NOTE]
 > ラボ仮想マシンでのブラウザー接続の有効化はプレビュー段階です。
@@ -38,13 +38,13 @@ VNet で Bastion ホストをデプロイする方法については、「[Azure
 
 Bastion が構成されている VNet にラボを接続する方法については、「[Azure DevTest Labs で仮想ネットワークを構成する](devtest-lab-configure-vnet.md)」を参照してください。 Bastion ホストがデプロイされている VNet と、その中にある **AzureBastionSubnet** を選択します。 詳細な手順を以下に示します。 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のナビゲーション メニューで、 **[すべてのサービス]** を選択します。 
 1. 一覧で **[DevTest Labs]** を選択します。 
 1. ラボの一覧で、"*目的のラボ*" を選択します。 
 
     > [!NOTE]
-    > Azure Bastion は現在プレビュー段階です。 リージョンは、米国西部、米国東部、西ヨーロッパ、米国中南部、オーストラリア東部、および東日本に限定されます。 そのため、ラボがこれらのいずれかのリージョンに存在しない場合は、いずれかのリージョンにラボを作成してください。 
+    > Azure Bastion は現在プレビュー段階です。 それは、以下のリージョンに限り提供されます。米国西部、米国東部、西ヨーロッパ、米国中南部、オーストラリア東部、および東日本。 そのため、ラボがこれらのいずれかのリージョンに存在しない場合は、いずれかのリージョンにラボを作成してください。 
 1. 左側のメニューの **[設定]** セクションで、 **[構成とポリシー]** を選択します。 
 1. **[仮想ネットワーク]** を選択します。
 1. ツールバーの **[追加]** を選択します。 

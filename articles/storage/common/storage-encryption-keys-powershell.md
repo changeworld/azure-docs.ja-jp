@@ -1,21 +1,21 @@
 ---
 title: PowerShell を使用してカスタマー マネージド キーを構成する
 titleSuffix: Azure Storage
-description: PowerShell を使用して Azure Storage 暗号化用にカスタマー マネージド キーを構成する方法について説明します。 カスタマー マネージド キーを使用すると、アクセス制御の作成、ローテーション、無効化、および取り消しを行うことができます。
+description: PowerShell を使用して Azure Storage 暗号化用にカスタマー マネージド キーを構成する方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/03/2019
+ms.date: 04/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 77324dff7e3f34574f36aa3bb775aed6a945a3bd
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: f24c89a53af5e618d64b78d6001040190c1f339c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665278"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618346"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>PowerShell を使用して Azure Key Vault でカスタマー マネージド キーを構成する
 
@@ -63,7 +63,7 @@ PowerShell を使用して既存のキー コンテナーで **[論理的な削�
 Set-AzKeyVaultAccessPolicy `
     -VaultName $keyVault.VaultName `
     -ObjectId $storageAccount.Identity.PrincipalId `
-    -PermissionsToKeys wrapkey,unwrapkey,get,recover
+    -PermissionsToKeys wrapkey,unwrapkey,get
 ```
 
 ## <a name="create-a-new-key"></a>新しいキーを作成する
@@ -73,6 +73,8 @@ Set-AzKeyVaultAccessPolicy `
 ```powershell
 $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination 'Software'
 ```
+
+Azure Storage の暗号化では 2048 ビットの RSA と RSA-HSM キーのみがサポートされています。 キーの詳細については、「[Azure Key Vault のキー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)」の「**Key Vault のキー**」を参照してください。
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>カスタマー マネージド キーによる暗号化を構成する
 
@@ -97,9 +99,18 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 Azure Storage の暗号化に使用するキーを変更するには、「[カスタマー マネージド キーによる暗号化を構成する](#configure-encryption-with-customer-managed-keys)」で示されているように [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) を呼び出して、新しいキーの名前とバージョンを指定します。 新しいキーが別のキー コンテナーにある場合は、キー コンテナー URI も更新します。
 
+## <a name="revoke-customer-managed-keys"></a>カスタマー マネージド キーを取り消す
+
+キーが侵害された可能性があると思われる場合は、キー コンテナーのアクセス ポリシーを削除することにより、カスタマー マネージド キーを取り消すことができます。 カスタマー マネージド キーを取り消すには、次の例に示すように、[Remove-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy) コマンドを呼び出します。 角かっこ内のプレースホルダー値を独自の値に置き換え、前の例で定義した変数を使用してください。
+
+```powershell
+Remove-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName `
+    -ObjectId $storageAccount.Identity.PrincipalId `
+```
+
 ## <a name="disable-customer-managed-keys"></a>カスタマー マネージド キーを無効にする
 
-カスタマー マネージド キーを無効にすると、ストレージ アカウントはそれ以降、Microsoft が管理するキーを使用して暗号化されます。 カスタマー マネージド キーを無効にするには、次の例に示すように、[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) を呼び出して `-StorageEncryption` オプションを指定します。 角かっこ内のプレースホルダー値を独自の値に置き換え、前の例で定義した変数を使用してください。
+カスタマー マネージド キーを無効にすると、ストレージ アカウントは、Microsoft が管理するキーを使用して再び暗号化されます。 カスタマー マネージド キーを無効にするには、次の例に示すように、[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) を呼び出して `-StorageEncryption` オプションを指定します。 角かっこ内のプレースホルダー値を独自の値に置き換え、前の例で定義した変数を使用してください。
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `

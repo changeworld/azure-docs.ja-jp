@@ -1,5 +1,5 @@
 ---
-title: Azure Red Hat OpenShift クラスターにスタンドアロンの Prometheus インスタンスをデプロイする | Microsoft Docs
+title: Azure Red Hat OpenShift クラスターに Prometheus インスタンスをデプロイする
 description: アプリケーションのメトリックを監視するために Azure Red Hat OpenShift クラスターに Prometheus インスタンスを作成します。
 author: makdaam
 ms.author: b-lejaku
@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: prometheus, aro, openshift, メトリック, red hat
-ms.openlocfilehash: f81a993caa31578e689fb3a90108f3cf0ca81fc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f22df587f51af735e0ea663e53f6eef14d60692
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69875135"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886890"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift クラスターにスタンドアロンの Prometheus インスタンスをデプロイする
 

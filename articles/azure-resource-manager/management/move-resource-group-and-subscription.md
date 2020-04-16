@@ -3,12 +3,12 @@ title: リソースを新しいサブスクリプションまたはリソース 
 description: Azure Resource Manager を使用して、リソースを新しいリソース グループまたはサブスクリプションに移動します。
 ms.topic: conceptual
 ms.date: 03/02/2020
-ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226355"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631495"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>リソースを新しいリソース グループまたはサブスクリプションに移動する
 
@@ -107,7 +107,7 @@ ms.locfileid: "79226355"
 
 * 手順 1:依存リソースが別々のリソース グループに分散されている場合は、まずそれらを 1 つのリソース グループに移動します。
 * 手順 2:リソースと依存リソースを、ソース サブスクリプションからターゲット サブスクリプションにまとめて移動します。
-* 手順 3:必要に応じて、依存リソースをターゲット サブスクリプション内の別々のリソース グループに再配布します。 
+* 手順 3:必要に応じて、依存リソースをターゲット サブスクリプション内の別々のリソース グループに再配布します。
 
 ## <a name="validate-move"></a>移動の検証
 
@@ -260,8 +260,9 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 たとえば、仮想マシンを移動には、3 つの異なるリソース プロバイダーと、7 つのリソースの種類を移動することが必要な場合があります。 それらのリソース プロバイダーとリソースの種類を次に示します。
 
 * Microsoft.Compute
-   * virtualMachines
-   * disks
+
+  * virtualMachines
+  * disks
 * Microsoft.Network
   * networkInterfaces
   * publicIPAddresses

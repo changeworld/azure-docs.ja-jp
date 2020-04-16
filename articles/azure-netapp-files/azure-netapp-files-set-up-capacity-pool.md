@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 04/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 8f50b2ad34c705c8d3831d8243f136c41d750dc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b21db3e842898e8ce11b560714888b946373300e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60691100"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616429"
 ---
 # <a name="set-up-a-capacity-pool"></a>容量プールを設定する
 
@@ -47,7 +47,7 @@ ms.locfileid: "60691100"
 
    * **サービス レベル**   
      このフィールドには、容量プールのターゲット パフォーマンスが表示されます。  
-     容量プールのサービス レベルを指定します ([**Premium**](azure-netapp-files-service-levels.md#Premium) または [**Standard**](azure-netapp-files-service-levels.md#Standard))。
+     容量プールのサービス レベルを指定します [**Ultra**](azure-netapp-files-service-levels.md#Ultra)、[**Premium**](azure-netapp-files-service-levels.md#Premium)、または [**Standard**](azure-netapp-files-service-levels.md#Standard)。
 
    * **サイズ**     
      購入する容量プールのサイズを指定します。        

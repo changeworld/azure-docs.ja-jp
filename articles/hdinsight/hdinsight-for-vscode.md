@@ -1,24 +1,24 @@
 ---
 title: Azure HDInsight for Visual Studio Code
-description: Spark & Hive Tools (Azure HDInsight) for Visual Studio Code を使用し、クエリとスクリプトを作成して送信する方法について説明します。
+description: Spark & Hive Tools (Azure HDInsight) for Visual Studio Code を使用する方法について説明します。 これらのツールを使用して、クエリとスクリプトを作成して送信します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: de433d85c2f04a7140fbcb918730218ac3a05e54
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75435684"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878631"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Spark & Hive Tools for Visual Studio Code を使用する
 
-Spark & Hive Tools for Visual Studio Code を使用して Apache Hive バッチ ジョブ、インタラクティブ Hive クエリ、および Apache Spark 用 PySpark スクリプトを作成および送信する方法について説明します。 最初に Visual Studio Code に Spark & Hive Tools をインストールする方法を説明した後、Spark & Hive Tools にジョブを送信する方法を説明します。  
+Apache Spark & Hive Tools for Visual Studio Code を使用する方法について説明します。 これらのツールを使用して、Apache Hive バッチ ジョブ、対話型 Hive クエリ、Apache Spark 用の PySpark スクリプトを作成して送信します。 最初に、Visual Studio Code で Spark & Hive Tools をインストールする方法について説明します。 次に、Spark & Hive Tools にジョブを送信する方法について説明します。  
 
-Spark & Hive Tools は、Windows、Linux、macOS など、Visual Studio Code でサポートされているプラットフォームにインストールできます。 プラットフォームごとに以下の前提条件に注意してください。
+Spark & Hive Tools は、Visual Studio Code でサポートされているプラットフォームにインストールできます。 プラットフォームごとに以下の前提条件に注意してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -50,7 +50,7 @@ Spark & Hive Tools は、Windows、Linux、macOS など、Visual Studio Code で
 
 作業フォルダーを開いて Visual Studio Code でファイルを作成するには、これらの手順を実行します。
 
-1. メニュー バーから、 **[ファイル]**  >  **[フォルダーを開く...]**  >  **[C:\HD\HDexample]** に移動し、 **[フォルダーの選択]** ボタンをクリックします。 左側の **[Explorer]\(エクスプローラー\)** ビューにフォルダーが表示されます。
+1. メニュー バーから、 **[ファイル]**  >  **[フォルダーを開く...]**  > **C:\HD\HDexample** に移動し、 **[フォルダーの選択]** ボタンを選択します。 左側の **[Explorer]\(エクスプローラー\)** ビューにフォルダーが表示されます。
 
 2. **[エクスプローラー]** ビューで **HDexample** フォルダーを選択し、作業フォルダーの横にある **[新しいファイル]** アイコンを選択します。
 
@@ -70,13 +70,13 @@ Spark & Hive Tools は、Windows、Linux、macOS など、Visual Studio Code で
 
 ## <a name="connect-to-an-azure-account"></a>Azure アカウントに接続する
 
-Visual Studio Code からクラスターにスクリプトを送信する前に、自分の Azure アカウントに接続するか、クラスターをリンクする必要があります (Apache Ambari のユーザー名とパスワード資格情報、またはドメイン参加アカウントを使用)。 Azure に接続するには、これらの手順に従います。
+Visual Studio Code からクラスターにスクリプトを送信するには、その前に Azure アカウントに接続するか、またはクラスターをリンクしておく必要があります。 Apache Ambari のユーザー名とパスワードの資格情報またはドメイン参加済みアカウントを使用します。 Azure に接続するには、これらの手順に従います。
 
 1. メニュー バーから、 **[表示]**  >  **[コマンド パレット...]** に移動し、「**Azure:Sign In**」と入力します。
 
     ![Spark & Hive Tools for Visual Studio Code のログイン](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
-2. サインインの手順に従って Azure にサインインします。 接続すると、Visual Studio Code ウィンドウの下部にあるステータス バーに Azure アカウント名が表示されます。  
+2. サインインの手順に従って Azure にサインインします。 接続されると、Visual Studio Code ウィンドウの下部にあるステータス バーに Azure アカウント名が表示されます。  
 
 ## <a name="link-a-cluster"></a>クラスターのリンク
 
@@ -260,7 +260,7 @@ Python ジョブを送信すると、Visual Studio Code の **[OUTPUT]\(出力\)
 
 ## <a name="apache-livy-configuration"></a>Apache Livy の構成
 
-[Apache Livy](https://livy.incubator.apache.org/) の構成がサポートされています。 これは、ワークスペース フォルダーにある **.VSCode\settings.json** ファイルで構成できます。 現在、Livy の構成では Python スクリプトのみがサポートされています。 詳しくは、[Livy の README](https://github.com/cloudera/livy/blob/master/README.rst ) を参照してください。
+[Apache Livy](https://livy.incubator.apache.org/) の構成がサポートされています。 これは、ワークスペース フォルダーにある **.VSCode\settings.json** ファイルで構成できます。 現在、Livy の構成では Python スクリプトのみがサポートされています。 詳細については、[Livy の README](https://github.com/cloudera/livy/blob/master/README.rst ) を参照してください。
 
 <a id="triggerlivyconf"></a>**Livy の構成をトリガーする方法**
 
@@ -269,7 +269,7 @@ Python ジョブを送信すると、Visual Studio Code の **[OUTPUT]\(出力\)
 2. **[検索設定]** ボックスに「**HDInsight Job Submission: Livy Conf**」と入力します。  
 3. 関連する検索結果に対して **[Edit in settings.json]\(settings.json で編集\)** を選択します。
 
-方法 2: ファイルを送信すると、.vscode フォルダーが自動的に作業フォルダーに追加されます。 Livy の構成は **.vscode\settings.json** を選択することで確認できます。
+方法 2: ファイルを送信し、`.vscode` フォルダーが作業フォルダーに自動的に追加されることに注意してください。 Livy の構成は **.vscode\settings.json** を選択することで確認できます。
 
 + プロジェクトの設定:
 
@@ -283,7 +283,7 @@ Python ジョブを送信すると、Visual Studio Code の **[OUTPUT]\(出力\)
     **POST/バッチ**要求本文
 
     | name | description | type |
-    | :- | :- | :- |
+    | --- | --- | --- |
     | file | 実行するアプリケーションを含むファイル | パス (必須) |
     | proxyUser | ジョブの実行時に権限を借用するユーザー | String |
     | className | アプリケーション Java/Spark のメイン クラス | String |
@@ -304,7 +304,7 @@ Python ジョブを送信すると、Visual Studio Code の **[OUTPUT]\(出力\)
     応答本文   作成された Batch オブジェクト。
 
     | name | description | type |
-    | :- | :- | :- |
+    | --- | ---| --- |
     | id | セッション ID | int |
     | appId | このセッションのアプリケーション ID | String |
     | appInfo | アプリケーションの詳細情報 | キーのマップ = val |
@@ -340,8 +340,8 @@ Python ジョブを送信すると、Visual Studio Code の **[OUTPUT]\(出力\)
 
 - [メッセージ] パネル
    1. テーブルの行数が 100 行を超えると、次のメッセージが表示されます: "The first 100 rows are displayed for Hive table (Hive テーブルの先頭から 100 行を表示しています)"。
-   2. テーブルの行数が 100 行以下の場合、次のようなメッセージが表示されます: "60 rows are displayed for Hive table (Hive テーブルの 60 行を表示しています)"。
-   3. テーブルの内容がない場合は、次のメッセージが表示されます: "0 rows are displayed for Hive table (Hive テーブルの 0 行を表示しています)"。
+   2. テーブル内の行数が 100 以下の場合は、次のメッセージが表示されます: "60 rows are displayed for Hive table (Hive テーブルの 60 行を表示しています)"。
+   3. テーブルの内容がない場合は、次のメッセージが表示されます: "`0 rows are displayed for Hive table.`"
 
         >[!NOTE]
         >
@@ -364,7 +364,7 @@ Spark & Hive for Visual Studio Code では、次の機能もサポートされ�
 
 ## <a name="reader-only-role"></a>読み取り専用ロール
 
-クラスターに対する読み取り専用ロールを割り当てられたユーザーは、HDInsight クラスターにジョブを送信することも、Hive データベースを表示することもできなくなります。 クラスター管理者に連絡し、[Azure portal](https://ms.portal.azure.com/) で [**HDInsight クラスター オペレーター**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)へとロールをアップグレードしてもらいます。 有効な Ambari 資格情報を持っている場合は、次のガイダンスに従って、クラスターを手動でリンクすることができます。
+クラスターに対する読み取り専用ロールが割り当てられているユーザーは、HDInsight クラスターにジョブを送信することも、Hive データベースを表示することもできません。 クラスター管理者に連絡し、[Azure portal](https://ms.portal.azure.com/) で [**HDInsight クラスター オペレーター**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)へとロールをアップグレードしてもらいます。 有効な Ambari 資格情報を持っている場合は、次のガイダンスに従って、クラスターを手動でリンクすることができます。
 
 ### <a name="browse-the-hdinsight-cluster"></a>HDInsight クラスターを参照する  
 
@@ -393,11 +393,11 @@ HDInsight クラスターにジョブを送信するときに、そのクラス�
 
 ### <a name="browse-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2 アカウントを参照する
 
-Azure HDInsight のエクスプローラー上で選択して Data Lake Storage Gen2 アカウントを展開したときに、お使いの Azure アカウントに Gen2 ストレージへのアクセス権がない場合は、ストレージ アクセス キーの入力を求められます。 アクセス キーが検証されると、Data Lake Storage Gen2 アカウントは自動的に展開されます。
+Azure HDInsight エクスプローラーを選択して Data Lake Storage Gen2 アカウントを展開します。 Azure アカウントに Gen2 ストレージへのアクセス権がない場合は、ストレージ アクセス キーを入力するよう求められます。 アクセス キーが検証されると、Data Lake Storage Gen2 アカウントは自動的に展開されます。
 
 ### <a name="submit-jobs-to-an-hdinsight-cluster-with-data-lake-storage-gen2"></a>Data Lake Storage Gen2 を使用して HDInsight クラスターにジョブを送信する
 
-Data Lake Storage Gen2 を使用して HDInsight クラスターにジョブを送信するときに、お使いの Azure アカウントに Gen2 ストレージへの書き込みアクセス権がない場合は、ストレージ アクセス キーの入力を求められます。 アクセス キーが検証されると、ジョブは正常に送信されます。
+Data Lake Storage Gen2 を使用して HDInsight クラスターにジョブを送信します。 Azure アカウントに Gen2 ストレージへの書き込みアクセス権がない場合は、ストレージ アクセス キーを入力するよう求められます。 アクセス キーが検証されると、ジョブは正常に送信されます。
 
 ![Spark & Hive Tools for Visual Studio Code のアクセス キー](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png)
 

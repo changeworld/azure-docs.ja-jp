@@ -4,14 +4,14 @@ description: Azure HPC Cache を使用するための前提条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233431"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655653"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
@@ -113,7 +113,7 @@ NFS ストレージ システム (たとえば、オンプレミスのハード�
 
   ``rpcinfo`` クエリによって返されるすべてのポートで、Azure HPC Cache のサブネットからの無制限のトラフィックが許可されていることを確認します。
 
-  * `rpcinfo` コマンドから返されるポートに加えて、これらの一般的に使用されるポートで受信トラフィックと送信トラフィックが許可されていることを確認します:
+  * `rpcinfo` コマンドを使用できない場合は、次の一般的に使用されるポートで受信および送信トラフィックが許可されていることを確認します。
 
     | Protocol | Port  | サービス  |
     |----------|-------|----------|
@@ -122,6 +122,8 @@ NFS ストレージ システム (たとえば、オンプレミスのハード�
     | TCP/UDP  | 4045  | nlockmgr |
     | TCP/UDP  | 4046  | mountd   |
     | TCP/UDP  | 4047  | status   |
+
+    一部のシステムでは、これらのサービスに別のポート番号を使用しています。確認するには、ストレージ システムのドキュメントを参照してください。
 
   * ファイアウォール設定で、これらのすべての必要なポートでトラフィックが許可されていることを確認します。 Azure で使用されているファイアウォールとデータ センターのオンプレミス ファイアウォールを必ず確認してください。
 
@@ -132,7 +134,7 @@ NFS ストレージ システム (たとえば、オンプレミスのハード�
 
   NFS ストレージ ターゲットの [トラブルシューティングのアーティクル](troubleshoot-nas.md#enable-export-listing) でディレクトリ リスト アクセスの詳細をご覧ください。
 
-* **ルート アクセス:** キャッシュからは、ユーザー ID 0 としてバックエンド システムに接続されます。 ストレージ システムで次の設定を確認します。
+* **ルート アクセス** (読み取り/書き込み): キャッシュからは、ユーザー ID 0 としてバックエンド システムに接続されます。 ストレージ システムで次の設定を確認します。
   
   * `no_root_squash`を有効にする: このオプションを選択すると、リモート ルート ユーザーは、ルートによって所有されているファイルにアクセスできるようになります。
 

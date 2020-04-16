@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368045"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876294"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -44,7 +44,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 > [!NOTE]
 > Azure AD Identity Protection には、Azure AD Premium P2 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、 [Azure AD Free および Azure AD Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)に関するページをご覧ください。
 
-リストを確認する際には、所有者が空のタスクに所有者を割り当てるか、上記の推奨事項に一致しない所有者を持つタスクの所有権を調整する必要がある場合があります。
+リストを確認しているときに、所有者が空のタスクに所有者を割り当てたり、上記のレコメンデーションに一致しない所有者を持つタスクの所有権を調整したりする必要があることに気付く場合があります。
 
 #### <a name="owner-recommended-reading"></a>所有者に関する推奨資料
 
@@ -64,8 +64,8 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 | 脆弱なパスワードから保護するためのメカニズムがない | Azure AD の[セルフサービス パスワード リセット (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) と[パスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises)を有効にします |
 | 漏洩したパスワードを検出するためのメカニズムがない | [パスワード ハッシュ同期](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS) を有効にして分析情報を取得します |
 | AD FS を使用し、管理された認証に移行できない | [AD FS エクストラネットのスマート ロックアウト](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)や [Azure AD スマート ](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)を有効にします |
-| パスワード ポリシーで、長さ、複数の文字セット、有効期限などの複雑なものに基づくルールを使用している | [Microsoft の推奨プラクティス](https://aka.ms/passwordguidance)を優先して再度検討し、アプローチをパスワード管理に切り替えて、[Azure AD のパスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)をデプロイしてください。 |
-| ユーザーが多要素認証 (MFA) を使用するように登録されていない | [すべてのユーザーのセキュリティ情報を登録](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-mfa-policy)して、ユーザーのパスワードとともにユーザーの ID を検証するためのメカニズムとして使用できるようにします |
+| パスワード ポリシーで、長さ、複数の文字セット、有効期限などの複雑なものに基づくルールを使用している | [Microsoft の推奨プラクティス](https://www.microsoft.com/research/publication/password-guidance/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F265143%2Fmicrosoft_password_guidance.pdf)を優先して再度検討し、アプローチをパスワード管理に切り替えて、[Azure AD のパスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)をデプロイしてください。 |
+| ユーザーが多要素認証 (MFA) を使用するように登録されていない | [すべてのユーザーのセキュリティ情報を登録](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-mfa-policy)して、ユーザーのパスワードと共にユーザーの ID を検証するためのメカニズムとして使用できるようにします |
 | パスワードの失効がユーザーのリスクに基づいていない | Azure AD [Identity Protection ユーザー リスク ポリシー](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)をデプロイして、SSPR を使用して漏洩した資格情報のパスワード変更を強制します |
 | 識別された IP アドレスから行われる悪意のあるユーザーからの悪意のある認証から保護するための、スマート ロックアウト メカニズムがない | パスワード ハッシュ同期または[パススルー認証](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) のいずれかを含む、クラウドで管理される認証をデプロイします |
 
@@ -89,7 +89,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 ### <a name="strong-credential-management"></a>強力な資格情報の管理
 
-パスワード自体は、悪意のあるユーザーによる環境へのアクセスを阻止するほど安全ではありません。 少なくとも、特権アカウントを持つすべてのユーザーが、多要素認証 (MFA) を有効にする必要があります。 理想的には、[統合された登録](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)を有効にし、すべてのユーザーに対して、[統合された登録エクスペリエンス](https://docs.microsoft.com/azure/active-directory/user-help/user-help-security-info-overview)を使用して MFA と SSPR に登録するように要求する必要があります。 最終的には、予期しない状況によるロックアウトのリスクを軽減するために、[回復性を提供する](https://docs.microsoft.com/azure/active-directory/authentication/concept-resilient-controls)戦略を採用することをお勧めします。
+パスワード自体は、悪意のあるユーザーによる環境へのアクセスを阻止できるほど安全ではありません。 少なくとも、特権アカウントを持つすべてのユーザーが、多要素認証 (MFA) を有効にする必要があります。 理想的には、[統合された登録](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)を有効にし、すべてのユーザーに対して、[統合された登録エクスペリエンス](https://docs.microsoft.com/azure/active-directory/user-help/user-help-security-info-overview)を使用して MFA と SSPR に登録するように要求する必要があります。 最終的には、予期しない状況によるロックアウトのリスクを軽減するために、[回復性を提供する](https://docs.microsoft.com/azure/active-directory/authentication/concept-resilient-controls)戦略を採用することをお勧めします。
 
 ![統合されたユーザー エクスペリエンスのフロー](./media/active-directory-ops-guide/active-directory-ops-img4.png)
 
@@ -101,11 +101,11 @@ Azure AD のパスワード ハッシュ同期 (PHS) と Azure MFA を使用す�
 
 ![パスワード ハッシュの同期フロー](./media/active-directory-ops-guide/active-directory-ops-img5.png)
 
-認証オプションに対する理解を深めるには、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)」を参照してください。
+認証オプションに対する理解を深めるには、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](../hybrid/choose-ad-authn.md)」を参照してください。
 
 ### <a name="programmatic-usage-of-credentials"></a>プログラムによる資格情報の使用
 
-PowerShell を使用する Azure AD スクリプトや Microsoft Graph API を使用するアプリケーションには、セキュリティで保護された認証が必要です。 このようなスクリプトやツールを実行する資格情報の管理が不十分な場合は、資格情報の盗難のリスクが高まります。 ハードコーディングされたパスワードまたはパスワード プロンプトに依存するスクリプトまたはアプリケーションを使用している場合は、まず、構成ファイルまたはソース コード内のパスワードを確認してから、それらの依存関係を置き換えて、可能な限り Azure マネージド ID、統合 Windows 認証、または[証明書](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates)を使用する必要があります。 以前のソリューションに可能性がないアプリケーションの場合は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) の使用を検討してください。
+PowerShell を使用する Azure AD スクリプトや Microsoft Graph API を使用するアプリケーションには、セキュリティで保護された認証が必要です。 このようなスクリプトやツールを実行する資格情報の管理が不十分な場合は、資格情報の盗難のリスクが高まります。 ハードコーディングされたパスワードまたはパスワード プロンプトに依存するスクリプトまたはアプリケーションを使用している場合は、まず、構成ファイルまたはソース コード内のパスワードを確認してから、それらの依存関係を置き換えて、可能な限り Azure マネージド ID、統合 Windows 認証、または[証明書](../reports-monitoring/tutorial-access-api-with-certificates.md)を使用する必要があります。 以前のソリューションに可能性がないアプリケーションの場合は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) の使用を検討してください。
 
 パスワード資格情報を持つサービス プリンシパルがあることを確認し、それらのパスワード資格情報がスクリプトやアプリケーションによってどのように保護されているかわからない場合は、アプリケーションの所有者に問い合わせて使用パターンの理解を深めてください。
 
@@ -115,7 +115,7 @@ PowerShell を使用する Azure AD スクリプトや Microsoft Graph API を�
 
 ### <a name="on-premises-authentication"></a>オンプレミスの認証
 
-統合 Windows 認証 (IWA) を使用したフェデレーション認証や、パスワード ハッシュ同期またはパススルー認証を使用したシームレス シングル サインオン (SSO) のマネージド認証は、オンプレミスのドメイン コントローラーへの通信経路のある企業ネットワーク内の場合は最適なユーザー エクスペリエンスです。 これにより、資格情報プロンプトによる疲労が最小限に抑えられ、ユーザーがフィッシング攻撃の犠牲になるリスクが軽減されます。 PHS または PTA によるクラウドで管理された認証を既に使用していても、オンプレミスで認証するときにユーザーがパスワードを入力する必要がある場合は、すぐに[シームレス SSO をデプロイする](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)必要があります。 一方、クラウドで管理された認証に最終的に移行する予定がある場合は、移行プロジェクトの一環としてシームレス SSO を実装する必要があります。
+統合 Windows 認証 (IWA) を使用したフェデレーション認証や、パスワード ハッシュ同期またはパススルー認証を使用したシームレス シングル サインオン (SSO) のマネージド認証は、オンプレミスのドメイン コントローラーへの通信経路のある企業ネットワーク内の場合は最適なユーザー エクスペリエンスです。 これにより、資格情報プロンプトによる疲労が最小限に抑えられ、ユーザーがフィッシング攻撃の犠牲になるリスクが軽減されます。 PHS または PTA によるクラウドで管理された認証を既に使用していても、オンプレミスで認証するときにユーザーがパスワードを入力する必要がある場合は、すぐに[シームレス SSO をデプロイする](../hybrid/how-to-connect-sso.md)必要があります。 一方、クラウドで管理された認証に最終的に移行する予定がある場合は、移行プロジェクトの一環としてシームレス SSO を実装する必要があります。
 
 ### <a name="device-trust-access-policies"></a>デバイスの信頼のアクセス ポリシー
 
@@ -123,66 +123,66 @@ PowerShell を使用する Azure AD スクリプトや Microsoft Graph API を�
 
 - デバイスが信頼されている場合に、MFA などを使用して障害を回避する
 - 信頼されていないデバイスからのアクセスをブロックする
-- Windows 10 デバイスの場合は、[オンプレミスのリソースへのシングル サインオンをシームレスに](https://docs.microsoft.com/azure/active-directory/devices/azuread-join-sso)提供します。
+- Windows 10 デバイスの場合は、[オンプレミスのリソースへのシングル サインオンをシームレスに](../devices/azuread-join-sso.md)提供します。
 
 この目標は、次のいずれかの方法を使用してデバイス ID を取り込んで Azure AD で管理することで実行できます。
 
 - 組織は、[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) を使用してデバイスを管理し、コンプライアンス ポリシーを適用し、デバイスの正常性を証明し、デバイスが準拠しているかどうかに基づいて条件付きアクセス ポリシーを設定することができます。 Microsoft Intune では、iOS デバイス、Mac デスクトップ (JAMF 統合経由)、Windows デスクトップ (Windows 10 のモバイル デバイス管理のネイティブな使用、および Microsoft Endpoint Configuration Manager との共同管理)、および Android モバイル デバイスを管理できます。
-- [Hybrid Azure AD Join](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) では、Active Directory ドメイン参加済みコンピューター デバイスがある環境で、グループ ポリシーまたは Microsoft Endpoint Configuration Manager を使用した管理を提供します。 組織は、シームレス SSO を使用した PHS または PTA のいずれかを使用して、マネージド環境をデプロイできます。 Azure AD に自分のデバイスを取り込むと、クラウドとオンプレミスのリソースでの SSO を使用したユーザーの生産性を最大化でき、同時に [条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) を使用したクラウドとオンプレミスのリソースへのアクセスをセキュリティで保護することができます。
+- [Hybrid Azure AD Join](../devices/hybrid-azuread-join-managed-domains.md) では、Active Directory ドメイン参加済みコンピューター デバイスがある環境で、グループ ポリシーまたは Microsoft Endpoint Configuration Manager を使用した管理を提供します。 組織は、シームレス SSO を使用した PHS または PTA のいずれかを使用して、マネージド環境をデプロイできます。 Azure AD に自分のデバイスを取り込むと、クラウドとオンプレミスのリソースでの SSO を使用したユーザーの生産性を最大化でき、同時に [条件付きアクセス](../conditional-access/overview.md) を使用したクラウドとオンプレミスのリソースへのアクセスをセキュリティで保護することができます。
 
-クラウドに登録されていないドメイン参加済み Windows デバイス、またはクラウドに登録されていても条件付きアクセス ポリシーがないドメイン参加済み Windows デバイスがある場合は、登録されていないデバイスを登録する必要があり、いずれにしても条件付きアクセス ポリシーで[制御として Hybrid Azure AD Join を使用](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)する必要があります。
+クラウドに登録されていないドメイン参加済み Windows デバイス、またはクラウドに登録されていても条件付きアクセス ポリシーがないドメイン参加済み Windows デバイスがある場合は、登録されていないデバイスを登録する必要があり、いずれにしても条件付きアクセス ポリシーで[制御として Hybrid Azure AD Join を使用](../conditional-access/require-managed-devices.md)する必要があります。
 
 ![ハイブリッド デバイスを必要とする条件付きアクセス ポリシーでの許可のスクリーンショット](./media/active-directory-ops-guide/active-directory-ops-img6.png)
 
-MDM または Microsoft Intune を使用してデバイスを管理していても、条件付きアクセス ポリシーでデバイス制御を使用していない場合は、それらのポリシーで制御として [[デバイスは準拠としてマーク済みである必要がある]](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices#require-device-to-be-marked-as-compliant) を使用することをお勧めします。
+MDM または Microsoft Intune を使用してデバイスを管理していても、条件付きアクセス ポリシーでデバイス制御を使用していない場合は、それらのポリシーで制御として [[デバイスは準拠としてマーク済みである必要がある]](../conditional-access/require-managed-devices.md#require-device-to-be-marked-as-compliant) を使用することをお勧めします。
 
 ![デバイス準拠を必要とする条件付きアクセス ポリシーでの許可のスクリーンショット](./media/active-directory-ops-guide/active-directory-ops-img7.png)
 
 #### <a name="device-trust-access-policies-recommended-reading"></a>デバイスの信頼のアクセス ポリシーに関する推奨資料
 
-- [方法: ハイブリッド Azure Active Directory 参加の実装の計画](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
+- [方法: ハイブリッド Azure Active Directory 参加の実装の計画](../devices/hybrid-azuread-join-plan.md)
 - [ID とデバイスのアクセスの構成](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello for Business
 
 Windows 10 では、[Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) によって PC 上のパスワードが強力な 2 要素認証に置き換えられます。 Windows Hello for Business を使用すると、ユーザーにとってより効率的な MFA エクスペリエンスを実現し、パスワードへの依存を減らすことができます。 Windows 10 デバイスのロールアウトを開始していない場合、または部分的にデプロイしただけの場合は、Windows 10 にアップグレードして、すべてのデバイスで [Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) を有効することをお勧めします。
 
-パスワードレス認証の詳細については、「[Azure Active Directory でのパスワードレスの環境](https://aka.ms/passwordlessdoc)」を参照してください。
+パスワードレス認証の詳細については、「[Azure Active Directory でのパスワードレスの環境](../authentication/concept-authentication-passwordless.md)」を参照してください。
 
 ## <a name="application-authentication-and-assignment"></a>アプリケーションの認証と割り当て
 
 ### <a name="single-sign-on-for-apps"></a>アプリのシングル サインオン
 
-標準化されたシングル サインオンのメカニズムを社内全体に提供することは、最良のユーザー エクスペリエンス、リスクの削減、報告する能力、およびガバナンスにとって不可欠です。 Azure AD で SSO をサポートしていても、現時点ではローカル アカウントを使用するように構成されているアプリケーションを使用している場合は、そのようなアプリケーションを Azure AD で SSO を使用するように再構成する必要があります。 同様に、Azure AD で SSO をサポートしていても、別の ID プロバイダーを使用している場合は、そのようなアプリケーションも Azure AD で SSO を使用するように再構成する必要があります。 フェデレーション プロトコルはサポートしていなくても、フォーム ベースの認証をサポートしているアプリケーションの場合は、Azure AD アプリケーション プロキシを使用して[パスワード保管](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting)を使用するようにアプリケーションを構成することをお勧めします。
+標準化されたシングル サインオンのメカニズムを社内全体に提供することは、最良のユーザー エクスペリエンス、リスクの削減、報告する能力、およびガバナンスにとって不可欠です。 Azure AD で SSO をサポートしていても、現時点ではローカル アカウントを使用するように構成されているアプリケーションを使用している場合は、そのようなアプリケーションを Azure AD で SSO を使用するように再構成する必要があります。 同様に、Azure AD で SSO をサポートしていても、別の ID プロバイダーを使用している場合は、そのようなアプリケーションも Azure AD で SSO を使用するように再構成する必要があります。 フェデレーション プロトコルはサポートしていなくても、フォーム ベースの認証をサポートしているアプリケーションの場合は、Azure AD アプリケーション プロキシを使用して[パスワード保管](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md)を使用するようにアプリケーションを構成することをお勧めします。
 
 ![AppProxy パスワードベースのサインオン](./media/active-directory-ops-guide/active-directory-ops-img8.png)
 
 > [!NOTE]
 > 組織内の管理されていないアプリケーションを検出するメカニズムがない場合は、[Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security) などのクラウド アクセス セキュリティ ブローカー ソリューション (CASB) を使用して検出プロセスを実装することをお勧めします。
 
-最後に、Azure AD アプリ ギャラリーがあり、Azure AD で SSO をサポートするアプリケーションを使用している場合は、[アプリ ギャラリーでアプリケーションを一覧表示する](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)ことをお勧めします。
+最後に、Azure AD アプリ ギャラリーがあり、Azure AD で SSO をサポートするアプリケーションを使用している場合は、[アプリ ギャラリーでアプリケーションを一覧表示する](../azuread-dev/howto-app-gallery-listing.md)ことをお勧めします。
 
 #### <a name="single-sign-on-recommended-reading"></a>シングル サインオンに関する推奨資料
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
 ### <a name="migration-of-ad-fs-applications-to-azure-ad"></a>Azure AD への AD FS アプリケーションの移行
 
-[AD FS から Azure AD にアプリを移行](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-apps-to-azure)すると、セキュリティの機能の追加、より一貫性のある管理容易性、および共同作業エクスペリエンスの向上が可能になります。 Azure AD で SSO をサポートしている AD FS に構成されているアプリケーションがある場合は、そのようなアプリケーションを Azure AD で SSO を使用するように再構成する必要があります。 Azure AD でサポートされていない一般的でない構成の AD FS で構成されたアプリケーションがある場合は、アプリの所有者に問い合わせて、特別な構成がアプリケーションの絶対的な要件であるかどうかを把握する必要があります。 必要でない場合は、Azure AD で SSO を使用するようにアプリケーションを再構成する必要があります。
+[AD FS から Azure AD にアプリを移行](../manage-apps/migrate-adfs-apps-to-azure.md)すると、セキュリティの機能の追加、より一貫性のある管理容易性、および共同作業エクスペリエンスの向上が可能になります。 Azure AD で SSO をサポートしている AD FS に構成されているアプリケーションがある場合は、そのようなアプリケーションを Azure AD で SSO を使用するように再構成する必要があります。 Azure AD でサポートされていない一般的でない構成の AD FS で構成されたアプリケーションがある場合は、アプリの所有者に問い合わせて、特別な構成がアプリケーションの絶対的な要件であるかどうかを把握する必要があります。 必要でない場合は、Azure AD で SSO を使用するようにアプリケーションを再構成する必要があります。
 
 ![プライマリ ID プロバイダーとしての Azure AD](./media/active-directory-ops-guide/active-directory-ops-img9.png)
 
 > [!NOTE]
-> [Azure AD Connect Health for ADFS](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs) は、Azure AD に移行できる可能性がある各アプリケーションの構成の詳細を収集するために使用できます。
+> [Azure AD Connect Health for ADFS](../hybrid/how-to-connect-health-adfs.md) は、Azure AD に移行できる可能性がある各アプリケーションの構成の詳細を収集するために使用できます。
 
 ### <a name="assign-users-to-applications"></a>アプリケーションへのユーザーの割り当て
 
-優れた柔軟性と大規模な管理が可能になるため、[アプリケーションへのユーザーの割り当て](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)は、グループを使用することで最適なマッピングになります。 グループを使用する利点には、[属性ベースの動的グループ メンバーシップ](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)と[アプリ所有者への委任](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners)などがあります。 そのため、既にグループを使用して管理している場合は、管理を大規模に向上させるために次の操作を行うことをお勧めします。
+優れた柔軟性と大規模な管理が可能になるため、[アプリケーションへのユーザーの割り当て](../manage-apps/assign-user-or-group-access-portal.md)は、グループを使用することで最適なマッピングになります。 グループを使用する利点には、[属性ベースの動的グループ メンバーシップ](../users-groups-roles/groups-dynamic-membership.md)と[アプリ所有者への委任](../fundamentals/active-directory-accessmanagement-managing-group-owners.md)などがあります。 そのため、既にグループを使用して管理している場合は、管理を大規模に向上させるために次の操作を行うことをお勧めします。
 
 - グループ管理とガバナンスをアプリケーション所有者に委任します。
 - アプリケーションへのセルフサービス アクセスを許可します。
 - ユーザー属性が一貫してアプリケーションへのアクセスを決定できる場合は、動的グループを定義します。
-- [Azure AD アクセス レビュー](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)を使用して、アプリケーションへのアクセスに使用されるグループに構成証明を実装します。
+- [Azure AD アクセス レビュー](../governance/access-reviews-overview.md)を使用して、アプリケーションへのアクセスに使用されるグループに構成証明を実装します。
 
 一方、個々のユーザーに割り当てられているアプリケーションが見つかった場合は、それらのアプリケーションに[ガバナンス](https://docs.microsoft.com/azure/active-directory/governance/index)を実装してください。
 
@@ -223,12 +223,12 @@ Azure AD は、すべてのサインインとすべてのユーザーのリス�
 
 #### <a name="risk-based-access-policies-recommended-reading"></a>リスクベースのアクセス ポリシーの推奨資料
 
-- [方法: サインイン リスク ポリシーを構成する](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)
-- [方法: ユーザー リスク ポリシーを構成する](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)
+- [方法: サインイン リスク ポリシーを構成する](../identity-protection/howto-identity-protection-configure-risk-policies.md)
+- [方法: ユーザー リスク ポリシーを構成する](../identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 ### <a name="client-application-access-policies"></a>クライアント アプリケーションのアクセス ポリシー
 
-Microsoft Intune アプリケーション管理 (MAM) を使用すると、ストレージの暗号化、PIN、リモート ストレージのクリーンアップなどのデータ保護制御を、Outlook Mobile などの互換性のあるクライアント モバイル アプリケーションにプッシュすることができます。 さらに、条件付きアクセス ポリシーを作成して、承認済みまたは互換性のあるアプリから Exchange Online などのクラウド サービスへの[アクセスを制限](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)できます。
+Microsoft Intune アプリケーション管理 (MAM) を使用すると、ストレージの暗号化、PIN、リモート ストレージのクリーンアップなどのデータ保護制御を、Outlook Mobile などの互換性のあるクライアント モバイル アプリケーションにプッシュすることができます。 さらに、条件付きアクセス ポリシーを作成して、承認済みまたは互換性のあるアプリから Exchange Online などのクラウド サービスへの[アクセスを制限](../conditional-access/app-based-conditional-access.md)できます。
 
 従業員が Office モバイル アプリなどの MAM 対応アプリケーションをインストールして、Exchange Online や SharePoint Online などの会社のリソースにアクセスし、BYOD (Bring Your Own Device) もサポートしている場合は、アプリケーションの MAM ポリシーをデプロイして、MDM に登録されていない個人所有のデバイスのアプリケーション構成を管理してから、MAM 対応クライアントからのアクセスのみを許可するように条件付きアクセス ポリシーを更新することをお勧めします。
 
@@ -245,10 +245,10 @@ Microsoft Intune アプリケーション管理 (MAM) を使用すると、ス�
 - **[すべてのユーザー]** をフィルターとして使用せず、誤って **[ゲスト]** を追加しないようにします
 - **すべての "レガシ" ポリシーを Azure portal に移行します**
 - ユーザー、デバイス、およびアプリケーションのすべての条件をキャッチします
-- **ユーザーごとの MFA** を使用するのではなく、条件付きアクセス ポリシーを使用して [MFA を実装](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)します
+- **ユーザーごとの MFA** を使用するのではなく、条件付きアクセス ポリシーを使用して [MFA を実装](../conditional-access/plan-conditional-access.md)します
 - 複数のアプリケーションに適用できる重要なポリシーの小さいセットを用意します
 - 空の例外グループを定義し、それらをポリシーに追加して例外戦略を設定します
-- MFA 制御を使用しない[緊急用](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#break-glass-what-to-do-in-an-emergency)アカウントを計画します
+- MFA 制御を使用しない[緊急用](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency)アカウントを計画します
 - Exchange Online や Sharepoint Online などのサービスに対して同じ一連の制御を実装することで、Office 365 クライアント アプリケーション (たとえば、Teams、OneDrive for Business、Outlook など) で一貫したエクスペリエンスを確保します
 - ポリシーへの割り当ては、個人ではなくグループを使用して実装する必要があります
 - ポリシーで使用されている例外グループを定期的にレビューして、ユーザーがセキュリティ体制外にある時間を制限します。 Azure AD P2 を所有している場合は、アクセス レビューを使用してプロセスを自動化できます

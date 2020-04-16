@@ -1,6 +1,6 @@
 ---
 title: トランザクションの最適化
-description: ロールバックに長時間かかるリスクを最小限に抑えながら、SQL Analytics でトランザクション コードのパフォーマンスを最適化する方法について説明します。
+description: ロールバックに長時間かかるリスクを最小限に抑えながら、Synapse SQL でトランザクション コードのパフォーマンスを最適化する方法について説明します。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,36 +11,38 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 700f4717db652d678255aaa9fce6ff8b8ff3b52f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0139c581e6660622f1ab6db9f407725816377a6d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350588"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633557"
 ---
-# <a name="optimizing-transactions-in-sql-analytics"></a>SQL Analytics でのトランザクションの最適化
-ロールバックに長時間かかるリスクを最小限に抑えながら、SQL Analytics でトランザクション コードのパフォーマンスを最適化する方法について説明します。
+# <a name="optimizing-transactions-in-synapse-sql"></a>Synapse SQL でのトランザクションの最適化
+
+ロールバックに長時間かかるリスクを最小限に抑えながら、Synapse SQL でトランザクション コードのパフォーマンスを最適化する方法について説明します。
 
 ## <a name="transactions-and-logging"></a>トランザクションとログ記録
-トランザクションは、リレーショナル データベース エンジンの重要な要素です。 SQL Analytics では、データに変更を加える際にトランザクションが使用されます。 これらのトランザクションは、明示的に指定することも、暗黙的に指定することもできます。 INSERT ステートメント、UPDATE ステートメント、および DELETE ステートメントはすべて、暗黙的なトランザクションの例です。 明示的なトランザクションでは、BEGIN TRAN、COMMIT TRAN、または ROLLBACK TRAN を使用します。 明示的なトランザクションは、一般的には、複数の変更ステートメントを関連付けて 1 つのアトミック単位にする必要がある場合に使用します。 
 
-SQL Analytics では、トランザクション ログを使用してデータベースに変更がコミットされます。 ディストリビューションには、それぞれ独自のトランザクション ログがあります。 トランザクション ログの書き込みは自動で行われるため、 手動で構成する必要はありません。 ただし、このプロセスでは書き込みが保証されず、システムにオーバーヘッドが加わります。 この影響を最小限に抑えるには、トランザクションの効率を考慮してコードを記述してください。 トランザクションの効率が良いコードは、大きく分けて 2 つのカテゴリに分類されます。
+トランザクションは、リレーショナル データベース エンジンの重要な要素です。 トランザクションは、データに変更を加える際に使用されます。 これらのトランザクションは、明示的に指定することも、暗黙的に指定することもできます。 INSERT ステートメント、UPDATE ステートメント、および DELETE ステートメントはすべて、暗黙的なトランザクションの例です。 明示的なトランザクションでは、BEGIN TRAN、COMMIT TRAN、または ROLLBACK TRAN を使用します。 明示的なトランザクションは、一般的には、複数の変更ステートメントを関連付けて 1 つのアトミック単位にする必要がある場合に使用します。
+
+データベースに対する変更は、トランザクション ログを使用して追跡されます。 ディストリビューションには、それぞれ独自のトランザクション ログがあります。 トランザクション ログの書き込みは自動で行われるため、 手動で構成する必要はありません。 ただし、このプロセスでは書き込みが保証されず、システムにオーバーヘッドが加わります。 この影響を最小限に抑えるには、トランザクションの効率を考慮してコードを記述してください。 トランザクションの効率が良いコードは、大きく分けて 2 つのカテゴリに分類されます。
 
 * できるだけ、最小ログ記録コンストラクトを使用する
 * 単独で実行時間の長いトランザクションを避けるために、範囲を制限したバッチを使用してデータを処理する
 * 特定のパーティションに対する大規模な変更に対しては、パーティション切り替えパターンを使用する
 
 ## <a name="minimal-vs-full-logging"></a>最小ログ記録と完全ログ記録の比較
+
 完全にログに記録される操作では、トランザクション ログにすべての行の変更が記録されるのに対して、最小限のログが記録される操作ではエクステントの割り当てとメタデータの変更のみが記録されます。 そのため、最小ログ記録では、障害の発生後、または明示的な要求 (ROLLBACK TRAN) によってトランザクションをロールバックするために必要な情報のみが記録されます。 最小ログ記録操作では、トランザクション ログに記録される情報がはるかに少なくなるため、同じサイズの完全ログ記録操作よりも処理速度が速くなります。 また、トランザクション ログへの書き込みが少なくなるため、生成されるログ データの量も少なくなり、I/O 効率が高くなります。
 
 トランザクションの安全上の制限は、完全ログ記録操作にのみ適用されます。
 
 > [!NOTE]
-> 最小ログ記録操作は、明示的なトランザクションに含めることができます。 割り当て構造に対する変更はすべて記録されるため、最小ログ記録操作のロールバックが可能です。 
-> 
-> 
+> 最小ログ記録操作は、明示的なトランザクションに含めることができます。 割り当て構造に対する変更はすべて記録されるため、最小ログ記録操作のロールバックが可能です。
 
 ## <a name="minimally-logged-operations"></a>最小ログ記録操作
+
 次の操作は、最小ログ記録が可能です。
 
 * CREATE TABLE AS SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
@@ -60,10 +62,9 @@ SQL Analytics では、トランザクション ログを使用してデータ�
 
 > [!NOTE]
 > 内部データの移動操作 (BROADCAST や SHUFFLE など) は、トランザクションの安全上の制限の影響を受けません。
-> 
-> 
 
 ## <a name="minimal-logging-with-bulk-load"></a>一括読み込みを使用した最小ログ記録
+
 CTAS と INSERT...SELECT は、どちらも一括読み込み操作です。 ただし、どちらもターゲットのテーブル定義や読み込みシナリオによる影響を受けます。 次の表で、一括操作が完全に記録される場合と最小で記録される場合について説明します。  
 
 | プライマリ インデックス | 読み込みシナリオ | ログ モード |
@@ -78,14 +79,13 @@ CTAS と INSERT...SELECT は、どちらも一括読み込み操作です。 た
 セカンダリ インデックスや非クラスター化インデックスを更新するための書き込みは常に完全ログ記録操作である点に注意してください。
 
 > [!IMPORTANT]
-> SQL Analytics データベースには、60 のディストリビューションがあります。 そのため、すべての行が均等に分散されると仮定すると、1 つのパーティションに格納される場合、クラスター化列ストア インデックスに書き込む際に最小ログ記録が適用されるには、バッチに 6,144,000 行以上を含める必要があります。 テーブルがパーティション分割されていて、行がパーティション境界をまたいで挿入される場合は、すべての行が均等に分散されると仮定すると、パーティション境界あたり 6,144,000 行を含める必要があります。 各ディストリビューション内の各パーティションに含める行は、ディストリビューションへの挿入に対する最小ログ記録のしきい値である 102,400 行を超える必要があります。
-> 
-> 
+> Synapse SQL プールのデータベースには、60 のディストリビューションがあります。 そのため、すべての行が均等に分散されると仮定すると、1 つのパーティションに格納される場合、クラスター化列ストア インデックスに書き込む際に最小ログ記録が適用されるには、バッチに 6,144,000 行以上を含める必要があります。 テーブルがパーティション分割されていて、行がパーティション境界をまたいで挿入される場合は、すべての行が均等に分散されると仮定すると、パーティション境界あたり 6,144,000 行を含める必要があります。 各ディストリビューション内の各パーティションに含める行は、ディストリビューションへの挿入に対する最小ログ記録のしきい値である 102,400 行を超える必要があります。
 
 クラスター化インデックスを持つ空でないテーブルにデータを読み込むと、完全ログ記録の行と最小ログ記録の行が混在する場合がよくあります。 クラスター化インデックスは、ページのバランス木 (B ツリー) です。 既に書き込みが行われているページに別のトランザクションの行が含まれている場合、この書き込みは完全ログ記録になります。 一方、ページが空の場合は、そのページへの書き込みは最小ログ記録になります。
 
 ## <a name="optimizing-deletes"></a>削除の最適化
-DELETE は完全ログ記録操作です。  テーブルまたはパーティションから大量のデータを削除する必要がある場合は、残しておきたいデータを `SELECT` する方が合理的です。これは、最小ログ記録操作として実行できます。  データを選択するには、[CTAS](sql-data-warehouse-develop-ctas.md) を使用して新しいテーブルを作成します。  テーブルを作成したら、[RENAME](/sql/t-sql/statements/rename-transact-sql) を使用して、古いテーブルを新しく作成したテーブルに置き換えます。
+
+DELETE は完全ログ記録操作です。  テーブルまたはパーティションから大量のデータを削除する必要がある場合は、残しておきたいデータを `SELECT` する方が合理的です。これは、最小ログ記録操作として実行できます。  データを選択するには、[CTAS](sql-data-warehouse-develop-ctas.md) を使用して新しいテーブルを作成します。  テーブルを作成したら、[RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して、古いテーブルを新しく作成したテーブルに置き換えます。
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -95,7 +95,7 @@ CREATE TABLE [dbo].[FactInternetSales_d]
 WITH
 (    CLUSTERED COLUMNSTORE INDEX
 ,    DISTRIBUTION = HASH([ProductKey])
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20000101, 20010101, 20020101, 20030101, 20040101, 20050101
                                                 ,    20060101, 20070101, 20080101, 20090101, 20100101, 20110101
                                                 ,    20120101, 20130101, 20140101, 20150101, 20160101, 20170101
@@ -110,25 +110,26 @@ WHERE    [PromotionKey] = 2
 OPTION (LABEL = 'CTAS : Delete')
 ;
 
---Step 02. Rename the Tables to replace the 
+--Step 02. Rename the Tables to replace the
 RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>更新の最適化
-UPDATE は完全ログ記録操作です。  テーブルまたはパーティション内の多数の行を更新する必要がある場合は、[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) などの最小ログ記録操作を使用すると、効率が大幅に向上することがよくあります。
+
+UPDATE は完全ログ記録操作です。  テーブルまたはパーティション内の多数の行を更新する必要がある場合は、[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) などの最小ログ記録操作を使用すると、効率が大幅に向上することがよくあります。
 
 次の例では、最小ログ記録ができるように、テーブルの完全更新を CTAS に変換しています。
 
 この例では、テーブル内の売上に割引金額をさかのぼって追加しています。
 
 ```sql
---Step 01. Create a new table containing the "Update". 
+--Step 01. Create a new table containing the "Update".
 CREATE TABLE [dbo].[FactInternetSales_u]
 WITH
 (    CLUSTERED INDEX
 ,    DISTRIBUTION = HASH([ProductKey])
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20000101, 20010101, 20020101, 20030101, 20040101, 20050101
                                                 ,    20060101, 20070101, 20080101, 20090101, 20100101, 20110101
                                                 ,    20120101, 20130101, 20140101, 20150101, 20160101, 20170101
@@ -137,15 +138,15 @@ WITH
                                                 )
                 )
 )
-AS 
+AS
 SELECT
     [ProductKey]  
-,    [OrderDateKey] 
+,    [OrderDateKey]
 ,    [DueDateKey]  
-,    [ShipDateKey] 
-,    [CustomerKey] 
-,    [PromotionKey] 
-,    [CurrencyKey] 
+,    [ShipDateKey]
+,    [CustomerKey]
+,    [PromotionKey]
+,    [CurrencyKey]
 ,    [SalesTerritoryKey]
 ,    [SalesOrderNumber]
 ,    [SalesOrderLineNumber]
@@ -162,7 +163,7 @@ SELECT
          END AS MONEY),0) AS [SalesAmount]
 ,    [TaxAmt]
 ,    [Freight]
-,    [CarrierTrackingNumber] 
+,    [CarrierTrackingNumber]
 ,    [CustomerPONumber]
 FROM    [dbo].[FactInternetSales]
 OPTION (LABEL = 'CTAS : Update')
@@ -177,11 +178,10 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> 大きなテーブルを作成し直す場合は、SQL Analytics のワークロード管理機能が役立ちます。 詳細については、[「ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。
-> 
-> 
+> 大きなテーブルを作成し直す場合は、Synapse SQL プールのワークロード管理機能を使用することが役立ちます。 詳細については、[「ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。
 
 ## <a name="optimizing-with-partition-switching"></a>パーティションの切り替えを使用した最適化
+
 [テーブル パーティション](sql-data-warehouse-tables-partition.md)内で大規模な変更を加える場合は、パーティション切り替えパターンを使用すると効率的です。 データが大幅に変更されていて、複数のパーティションにまたがっている場合は、それらのパーティションを反復処理すると同じ結果を得られます。
 
 パーティション切り替えを実行する手順は次のとおりです。
@@ -220,11 +220,11 @@ SELECT     s.name                            AS [schema_name]
 FROM        sys.schemas                    AS s
 JOIN        sys.tables                    AS t    ON  s.[schema_id]        = t.[schema_id]
 JOIN        sys.indexes                    AS i    ON     t.[object_id]        = i.[object_id]
-JOIN        sys.partitions                AS p    ON     i.[object_id]        = p.[object_id] 
-                                                AND i.[index_id]        = p.[index_id] 
+JOIN        sys.partitions                AS p    ON     i.[object_id]        = p.[object_id]
+                                                AND i.[index_id]        = p.[index_id]
 JOIN        sys.partition_schemes        AS h    ON     i.[data_space_id]    = h.[data_space_id]
 JOIN        sys.partition_functions        AS f    ON     h.[function_id]        = f.[function_id]
-LEFT JOIN    sys.partition_range_values    AS r     ON     f.[function_id]        = r.[function_id] 
+LEFT JOIN    sys.partition_range_values    AS r     ON     f.[function_id]        = r.[function_id]
                                                 AND r.[boundary_id]        = p.[partition_number]
 WHERE i.[index_id] <= 1
 )
@@ -243,7 +243,7 @@ GO
 次のコードは、上記で説明した、完全なパーティション切り替えルーチンを実現する手順を示しています。
 
 ```sql
---Create a partitioned aligned empty table to switch out the data 
+--Create a partitioned aligned empty table to switch out the data
 IF OBJECT_ID('[dbo].[FactInternetSales_out]') IS NOT NULL
 BEGIN
     DROP TABLE [dbo].[FactInternetSales_out]
@@ -253,7 +253,7 @@ CREATE TABLE [dbo].[FactInternetSales_out]
 WITH
 (    DISTRIBUTION = HASH([ProductKey])
 ,    CLUSTERED COLUMNSTORE INDEX
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20020101, 20030101
                                                 )
                 )
@@ -275,20 +275,20 @@ CREATE TABLE [dbo].[FactInternetSales_in]
 WITH
 (    DISTRIBUTION = HASH([ProductKey])
 ,    CLUSTERED COLUMNSTORE INDEX
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20020101, 20030101
                                                 )
                 )
 )
-AS 
+AS
 SELECT
     [ProductKey]  
-,    [OrderDateKey] 
+,    [OrderDateKey]
 ,    [DueDateKey]  
-,    [ShipDateKey] 
-,    [CustomerKey] 
-,    [PromotionKey] 
-,    [CurrencyKey] 
+,    [ShipDateKey]
+,    [CustomerKey]
+,    [PromotionKey]
+,    [CurrencyKey]
 ,    [SalesTerritoryKey]
 ,    [SalesOrderNumber]
 ,    [SalesOrderLineNumber]
@@ -305,7 +305,7 @@ SELECT
          END AS MONEY),0) AS [SalesAmount]
 ,    [TaxAmt]
 ,    [Freight]
-,    [CarrierTrackingNumber] 
+,    [CarrierTrackingNumber]
 ,    [CustomerPONumber]
 FROM    [dbo].[FactInternetSales]
 WHERE    OrderDateKey BETWEEN 20020101 AND 20021231
@@ -344,9 +344,10 @@ DROP TABLE #ptn_data
 ```
 
 ## <a name="minimize-logging-with-small-batches"></a>小さなバッチを使用した最小ログ記録
+
 大規模なデータ変更操作の場合、操作をチャンクやバッチに分割して、作業単位のスコープを設定すると効率的になることがあります。
 
-次のコードは、実践的な例を示しています。 この手法を強調するために、バッチ サイズは小さい数値に設定されていますが、 実際には、バッチ サイズはもっと大きい値になります。 
+次のコードは、実践的な例を示しています。 この手法を強調するために、バッチ サイズは小さい数値に設定されていますが、 実際には、バッチ サイズはもっと大きい値になります。
 
 ```sql
 SET NO_COUNT ON;
@@ -405,18 +406,17 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>一時停止とスケールのガイダンス
-SQL Analytics を使用して、必要に応じて SQL プールの[一時停止、再開、およびスケーリング](sql-data-warehouse-manage-compute-overview.md)を実行できます。 SQL プールの一時停止またはスケーリングを実行すると、実行中のトランザクションは直ちに終了し、開いているトランザクションはすべてロールバックされることを理解しておくことが重要です。 一時停止操作やスケール操作の前にワークロードによって時間のかかるデータ変更が発行されており、完了していない場合は、この作業を元に戻す必要があります。 この元に戻す操作によって、SQL プールの一時停止またはスケーリングの実行時間に影響が出る場合があります。 
+
+Synapse SQL を使用して、必要に応じて SQL プールの[一時停止、再開、およびスケーリング](sql-data-warehouse-manage-compute-overview.md)を実行できます。 SQL プールの一時停止またはスケーリングを実行すると、実行中のトランザクションは直ちに終了し、開いているトランザクションはすべてロールバックされることを理解しておくことが重要です。 一時停止操作やスケール操作の前にワークロードによって時間のかかるデータ変更が発行されており、完了していない場合は、この作業を元に戻す必要があります。 この元に戻す操作によって、SQL プールの一時停止またはスケーリングの実行時間に影響が出る場合があります。
 
 > [!IMPORTANT]
-> `UPDATE` と `DELETE` はどちらも完全ログ記録操作であるため、これらの元に戻す/再実行操作には、同等の最小ログ記録操作よりもはるかに長い時間のかかることがあります。 
-> 
-> 
+> `UPDATE` と `DELETE` はどちらも完全ログ記録操作であるため、これらの元に戻す/再実行操作には、同等の最小ログ記録操作よりもはるかに長い時間のかかることがあります。
 
 最善の策としては、実行中のデータ変更トランザクションが完了してから、SQL プールの一時停止またはスケーリングを実行します。 ただし、このシナリオは、常に実用的であるわけではありません。 ロールバックに長時間かかる可能性を軽減するのに役立つ次のオプションを検討してください。
 
-* 長時間かかる操作を [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) を使用して書き換える
+* 長時間かかる操作を [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して書き換える
 * 操作をチャンクに分割し、行のサブセットに対して実行する
 
 ## <a name="next-steps"></a>次のステップ
-分離レベルとトランザクションの制限の詳細については、「[SQL Analytics のトランザクション](sql-data-warehouse-develop-transactions.md)」を参照してください。  その他のベスト プラクティスの概要については、「[Azure SQL Data Warehouse のベスト プラクティス](sql-data-warehouse-best-practices.md)」を参照してください。
 
+分離レベルとトランザクションの制限の詳細については、[Synapse SQL のトランザクション](sql-data-warehouse-develop-transactions.md)に関するページを参照してください。  その他のベスト プラクティスの概要については、「[Azure SQL Data Warehouse のベスト プラクティス](sql-data-warehouse-best-practices.md)」を参照してください。

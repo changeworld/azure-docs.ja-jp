@@ -6,19 +6,18 @@ documentationcenter: .net
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
-ms.topic: tutorial
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 04/02/2020
 ms.author: shvija
-ms.openlocfilehash: 5bd25604844ce0521b6bac2d637a2d48a6ef089b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1b292f9b894dac7df6b9634ce1bad627c8d24fe6
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72555738"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632762"
 ---
-# <a name="connect-your-apache-spark-application-with-kafka-enabled-azure-event-hubs"></a>Kafka 対応 Azure Event Hubs に Apache Spark アプリケーションを接続する
-このチュートリアルでは、Kafka 対応 Event Hubs に Spark アプリケーションを接続してリアルタイム ストリーミングを実現する方法について説明します。 この統合により、お使いのプロトコル クライアントを変更せずにストリーミングを行ったり、独自の Kafka または Zookeeper クラスターを実行したりすることができます。 このチュートリアルには、Apache Spark v2.4 以上および Apache Kafka v2.0 以上が必要となります。
+# <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Apache Spark アプリケーションを Azure Event Hubs と接続する
+このチュートリアルでは、リアルタイム ストリーミングのために Spark アプリケーションを Event Hubs に接続する方法について説明します。 この統合により、お使いのプロトコル クライアントを変更せずにストリーミングを行ったり、独自の Kafka または Zookeeper クラスターを実行したりすることができます。 このチュートリアルには、Apache Spark v2.4 以上および Apache Kafka v2.0 以上が必要となります。
 
 > [!NOTE]
 > このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark/) で入手できます。
@@ -44,7 +43,7 @@ ms.locfileid: "72555738"
 
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
-Event Hubs サービスとの間で送受信を行うには、イベント ハブの名前空間が必要です。 Event Hubs Kafka エンドポイントを取得する方法については、[Kafka が有効なイベント ハブを作成する方法](event-hubs-create.md)に関するページをご覧ください。 Event Hubs の接続文字列と完全修飾ドメイン名 (FQDN) を、後で使用するために取得します。 手順については、「[Get an Event Hubs connection string (Event Hubs の接続文字列を取得する)](event-hubs-get-connection-string.md)」を参照してください。 
+Event Hubs サービスとの間で送受信を行うには、イベント ハブの名前空間が必要です。 名前空間とイベント ハブを作成する手順については、[イベント ハブの作成](event-hubs-create.md)に関するページを参照してください。 Event Hubs の接続文字列と完全修飾ドメイン名 (FQDN) を、後で使用するために取得します。 手順については、「[Get an Event Hubs connection string (Event Hubs の接続文字列を取得する)](event-hubs-get-connection-string.md)」を参照してください。 
 
 ## <a name="clone-the-example-project"></a>サンプル プロジェクトを複製する
 Azure Event Hubs リポジトリを複製し、`tutorials/spark` サブフォルダーに移動します。
@@ -100,24 +99,12 @@ df.writeStream
 
 
 ## <a name="next-steps"></a>次のステップ
+Event Hubs と Kafka 用 Event Hubs の詳細については、次の記事を参照してください。  
 
-このチュートリアルでは、Spark-Kafka コネクタと Kafka 用 Event Hubs を使ったストリーム配信の方法について説明しました。 次の手順を実行しました。 
-
-> [!div class="checklist"]
-> * Event Hubs 名前空間を作成します
-> * サンプル プロジェクトを複製する
-> * Spark を実行する
-> * Kafka 用 Event Hubs から読み取る
-> * Kafka 用 Event Hubs に書き込む
-
-Event Hubs と Kafka 用 Event Hubs の詳細については、次のトピックを参照してください。  
-
-- [Event Hubs について確認する](event-hubs-what-is-event-hubs.md)
-- [Apache Kafka 用の Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
-- [Kafka 対応 Event Hubs の作成方法](event-hubs-create-kafka-enabled.md)
-- [Kafka アプリケーションから Event Hubs へのストリーム](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Kafka 対応イベント ハブでの Kafka ブローカーのミラーリング](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Kafka 対応イベント ハブへの Apache Flink の接続](event-hubs-kafka-flink-tutorial.md)
-- [Kafka 対応イベント ハブとの Kafka Connect の統合](event-hubs-kafka-connect-tutorial.md)
-- [Kafka 対応イベント ハブへの Akka Streams の接続](event-hubs-kafka-akka-streams-tutorial.md)
+- [イベント ハブ内の Kafka ブローカーをミラーリングする](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Apache Flink をイベント ハブに接続する](event-hubs-kafka-flink-tutorial.md)
+- [Kafka Connect をイベント ハブと統合する](event-hubs-kafka-connect-tutorial.md)
 - [GitHub 上でサンプルを調べる](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [Akka Streams をイベント ハブに接続する](event-hubs-kafka-akka-streams-tutorial.md)
+- [Azure Event Hubs のための Apache Kafka 開発者ガイド](apache-kafka-developer-guide.md)
+

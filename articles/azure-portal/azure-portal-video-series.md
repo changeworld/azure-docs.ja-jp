@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/20/2019
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 93c9ce45fd660f444146827e2f5bafaeb12fc471
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5aa1a677836be3f05269539d52abf7bd8704833d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310519"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757078"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Azure portal の使い方に関するビデオ シリーズ
 
@@ -22,18 +22,18 @@ Azure portal のハウツー ビデオ シリーズでは、Azure portal で Azu
 
 ## <a name="featured-video"></a>注目のビデオ
 
-この注目のビデオでは、仮想マシンに関する一般的な問題のトラブルシューティング方法を説明します。
+この注目のビデオでは、Azure Advisor のコストに関する推奨事項を使用して Azure でコストを削減する方法を示しています。
 
-> [!VIDEO https://www.youtube.com/embed/MAJrN-2IPY8]
+> [!VIDEO https://www.youtube.com/embed/ky2WS3KWuYs]
 
-[仮想マシンに関する一般的な問題のトラブルシューティング](https://www.youtube.com/watch?v=MAJrN-2IPY8)
+[Azure Advisor でコストに関する推奨事項を使用する方法](https://www.youtube.com/watch?v=ky2WS3KWuYs)
 
 見逃したかもしれない以下の最近のビデオを確認してください。
 
 |   |   |   |
 | ------| ------ | ------ |
-| [![関数アプリを作成する方法に関する YouTube ビデオのイメージ](https://i.ytimg.com/vi/BEIZKCDElMs/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=BEIZKCDElMs) | [![Azure ホーム画面を使用する方法に関する YouTube ビデオのイメージ](https://i.ytimg.com/vi/Ddo__jkzgVo/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=Ddo__jkzgVo) | [![Azure Advisor を最大限に活用するための YouTube ビデオの画像](https://i.ytimg.com/vi/ANz3cCiFsJw/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=ANz3cCiFsJw) |
-| [関数アプリを作成する方法](https://www.youtube.com/watch?v=BEIZKCDElMs) | [新しい Azure ホームを使用する方法](https://www.youtube.com/watch?v=Ddo__jkzgVo) | [Azure Advisor を最大限に活用する方法](https://www.youtube.com/watch?v=ANz3cCiFsJw) |
+| [![Azure Monitor ブックの使用に関する YouTube ビデオの画像](https://i.ytimg.com/vi/Z5xRyy3HB8U/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=Z5xRyy3HB8U) | [![Azure portal でのリソース リスト ビューのフィルター処理に関する YouTube ビデオの画像](https://i.ytimg.com/vi/L3I-xOZKWcg/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=L3I-xOZKWcg) | [![ダッシュボードの自動更新の使用に関する YouTube ビデオの画像](https://i.ytimg.com/vi/tVoDXygZzWM/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=tVoDXygZzWM) |
+| [Azure Monitor ブックの使用](https://www.youtube.com/watch?v=Z5xRyy3HB8U) | [Azure portal でのリソース リスト ビューのフィルター処理](https://www.youtube.com/watch?v=L3I-xOZKWcg) | [ダッシュボードの自動更新の使用](https://www.youtube.com/watch?v=tVoDXygZzWM) |
 
 ## <a name="video-playlist"></a>ビデオのプレイリスト
 

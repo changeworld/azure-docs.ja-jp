@@ -6,20 +6,19 @@ documentationcenter: .net
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
-ms.topic: conceptual
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 04/02/2020
 ms.author: shvija
-ms.openlocfilehash: 6d1596cf0a50ed5dcb896896282178b6fc12c1a1
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fb041ec0d3cd474cca12d5ad55b733337566b9cc
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555109"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632781"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Apache Kafka 用の Event Hubs で Kafka MirrorMaker を使用する
 
-このチュートリアルでは、Kafka MirrorMaker を使用して Kafka が有効になっているイベント ハブ内の Kafka ブローカーをミラーリングする方法について説明します。
+このチュートリアルでは、Kafka MirrorMaker を使用してイベント ハブ内の Kafka ブローカーをミラーリングする方法について説明します。
 
    ![Kafka MirrorMaker とイベント ハブ](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
@@ -36,9 +35,9 @@ ms.locfileid: "72555109"
 > * Kafka MirrorMaker を実行する
 
 ## <a name="introduction"></a>はじめに
-最新のクラウド スケール アプリに関する 1 つの主要な考慮事項は、サービスを中断することなくインフラストラクチャを更新、強化、変更できることです。 このチュートリアルでは、Kafka が有効になっているイベント ハブと Kafka MirrorMaker を使用し、Kafka 入力ストリームを Event Hubs サービスに "ミラーリング" することで Azure に Kafka の既存のパイプラインを統合する方法について説明します。 
+最新のクラウド スケール アプリに関する 1 つの主要な考慮事項は、サービスを中断することなくインフラストラクチャを更新、強化、変更できることです。 このチュートリアルでは、イベント ハブと Kafka MirrorMaker を使用し、Kafka 入力ストリームを Event Hubs サービスに "ミラーリング" することで Azure に Kafka の既存のパイプラインを統合する方法について説明します。 
 
-Azure Event Hubs Kafka エンドポイントでは、Kafka プロトコル (つまり Kafka クライアント) を使って Azure Event Hubs に接続できます。 Kafka アプリケーションに最小限の変更を行うことで、Azure Event Hubs に接続し、Azure エコシステムの利点を活用することができます。 Kafka 対応のイベント ハブは、現在、Kafka バージョン 1.0 以降をサポートしています。
+Azure Event Hubs Kafka エンドポイントでは、Kafka プロトコル (つまり Kafka クライアント) を使って Azure Event Hubs に接続できます。 Kafka アプリケーションに最小限の変更を行うことで、Azure Event Hubs に接続し、Azure エコシステムの利点を活用することができます。 Event Hubs は現在、Kafka バージョン 1.0 以降をサポートしています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,11 +55,11 @@ Azure Event Hubs Kafka エンドポイントでは、Kafka プロトコル (つ�
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
 
-Event Hubs サービスとの間で送受信を行うには、イベント ハブの名前空間が必要です。 Event Hubs Kafka エンドポイントを取得する方法については、[Kafka が有効なイベント ハブを作成する方法](event-hubs-create.md)に関するページをご覧ください。 後で使うので、イベント ハブの接続文字列をコピーしておきます。
+Event Hubs サービスとの間で送受信を行うには、イベント ハブの名前空間が必要です。 名前空間とイベント ハブを作成する手順については、[イベント ハブの作成](event-hubs-create.md)に関するページを参照してください。 後で使うので、イベント ハブの接続文字列をコピーしておきます。
 
 ## <a name="clone-the-example-project"></a>サンプル プロジェクトを複製する
 
-Kafka が有効な Event Hubs の接続文字列を入手したので、Kafka 用 Azure Event Hubs リポジトリを複製し、`mirror-maker` サブフォルダーに移動します。
+Event Hubs の接続文字列が用意できたので、Kafka 用 Azure Event Hubs リポジトリを複製し、`mirror-maker` サブフォルダーに移動します。
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -73,11 +72,11 @@ cd azure-event-hubs-for-kafka/tutorials/mirror-maker
 
 ## <a name="configure-kafka-mirrormaker"></a>Kafka MirrorMaker を構成する
 
-Kafka MirrorMaker を使うと、ストリームを "ミラーリング" できます。 ミラー元とミラー先の Kafka クラスターを指定すると、MirrorMaker は、ミラー元クラスターに送信されたメッセージを、ミラー元とミラー先の両方のクラスターが受信するようにします。 この例では、ミラー元の Kafka クラスターをミラー先の Kafka が有効なイベント ハブにミラーリングする方法を示します。 このシナリオを使って、データのフローを中断することなく、既存の Kafka パイプラインからイベント ハブにデータを送信できます。 
+Kafka MirrorMaker を使うと、ストリームを "ミラーリング" できます。 ミラー元とミラー先の Kafka クラスターを指定すると、MirrorMaker は、ミラー元クラスターに送信されたメッセージを、ミラー元とミラー先の両方のクラスターが受信するようにします。 この例では、ミラー元の Kafka クラスターをミラー先のイベント ハブにミラーリングする方法を示します。 このシナリオを使って、データのフローを中断することなく、既存の Kafka パイプラインからイベント ハブにデータを送信できます。 
 
 Kafka MirrorMaker について詳しくは、[Kafka ミラーリング/MirrorMaker ガイド](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)に関するページをご覧ください。
 
-Kafka MirrorMaker を構成するには、Kafka クラスターをコンシューマー/ミラー元として指定し、Kafka が有効なイベント ハブをプロデューサー/ミラー先として指定します。
+Kafka MirrorMaker を構成するには、Kafka クラスターをコンシューマーつまりミラー元として指定し、イベント ハブをプロデューサーつまりミラー先として指定します。
 
 #### <a name="consumer-configuration"></a>コンシューマーの構成
 
@@ -116,9 +115,9 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 --producer.config mirror-eventhub.config --whitelist=".*"
 ```
 
-Kafka が有効なイベント ハブにイベントが届いていることを確認するには、[Azure portal](https://azure.microsoft.com/features/azure-portal/) でイングレス統計を確認するか、またはイベント ハブに対してコンシューマーを実行します。
+イベント ハブにイベントが届いていることを確認するには、[Azure portal](https://azure.microsoft.com/features/azure-portal/) でイングレス統計を確認するか、またはイベント ハブに対してコンシューマーを実行します。
 
-MirrorMaker が実行していると、ミラー元の Kafka クラスターに送信されたすべてのイベントは、Kafka クラスターと、ミラーリングされた Kafka が有効なイベント ハブ サービスの両方で受信されます。 MirrorMaker と Event Hubs Kafka エンドポイントを使うと、既存のクラスターを変更したり、実行中のデータ フローを中断したりすることなく、既存の Kafka パイプラインを、マネージド Azure Event Hubs サービスに移行できます。
+MirrorMaker が実行されている場合、ミラー元の Kafka クラスターに送信されたイベントはすべて、Kafka クラスターとミラーリングされたイベント ハブの両方によって受信されます。 MirrorMaker と Event Hubs Kafka エンドポイントを使うと、既存のクラスターを変更したり、実行中のデータ フローを中断したりすることなく、既存の Kafka パイプラインを、マネージド Azure Event Hubs サービスに移行できます。
 
 ## <a name="samples"></a>サンプル
 GitHub の次のサンプルを参照してください。
@@ -126,24 +125,12 @@ GitHub の次のサンプルを参照してください。
 - [GitHub 上のこのチュートリアルに対するサンプル コード](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
 - [Azure コンテナー インスタンスで実行されている Azure Event Hubs Kafka MirrorMaker](https://github.com/djrosanova/EventHubsMirrorMaker)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+Kafka 用 Event Hubs の詳細については、次の記事を参照してください。  
 
-このチュートリアルでは、以下の内容を学習します。
-> [!div class="checklist"]
-> * Event Hubs 名前空間を作成します
-> * サンプル プロジェクトを複製する
-> * Kafka クラスターを設定する
-> * Kafka MirrorMaker を構成する
-> * Kafka MirrorMaker を実行する
-
-Event Hubs と Kafka 用 Event Hubs の詳細については、次のトピックを参照してください。  
-
-- [Event Hubs について確認する](event-hubs-what-is-event-hubs.md)
-- [Apache Kafka 用の Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
-- [Kafka 対応 Event Hubs の作成方法](event-hubs-create-kafka-enabled.md)
-- [Kafka アプリケーションから Event Hubs へのストリーム](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Kafka 対応イベント ハブへの Apache Spark の接続](event-hubs-kafka-spark-tutorial.md)
-- [Kafka 対応イベント ハブへの Apache Flink の接続](event-hubs-kafka-flink-tutorial.md)
-- [Kafka 対応イベント ハブとの Kafka Connect の統合](event-hubs-kafka-connect-tutorial.md)
-- [Kafka 対応イベント ハブへの Akka Streams の接続](event-hubs-kafka-akka-streams-tutorial.md)
+- [Apache Spark をイベント ハブに接続する](event-hubs-kafka-spark-tutorial.md)
+- [Apache Flink をイベント ハブに接続する](event-hubs-kafka-flink-tutorial.md)
+- [Kafka Connect をイベント ハブと統合する](event-hubs-kafka-connect-tutorial.md)
 - [GitHub 上でサンプルを調べる](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [Akka Streams をイベント ハブに接続する](event-hubs-kafka-akka-streams-tutorial.md)
+- [Azure Event Hubs のための Apache Kafka 開発者ガイド](apache-kafka-developer-guide.md)

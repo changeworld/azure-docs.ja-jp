@@ -8,13 +8,11 @@
   expanded: true
   items:
     - name: アプリケーション定義の発行
-      href: publish-managed-app-definition-quickstart.md
+      href: publish-service-catalog-app.md
     - name: サービス カタログ アプリのデプロイ
       href: deploy-service-catalog-quickstart.md
 - name: チュートリアル
   items:
-    - name: 定義ファイルの作成
-      href: publish-service-catalog-app.md
     - name: マーケットプレース アプリケーションの発行
       href: publish-marketplace-app.md
     - name: カスタム プロバイダーを使用してマネージド アプリケーションを作成する
@@ -37,7 +35,7 @@
       href: concepts-custom-role-definition.md
 - name: 操作方法ガイド
   items:
-    - name: '[ディストリビューターのプロパティ]'
+    - name: ディストリビューターのプロパティ
       items:
         - name: ポータルのインターフェイスを作成する
           href: create-uidefinition-overview.md

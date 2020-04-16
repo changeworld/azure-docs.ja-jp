@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 79cdd12359a0d781b51db2632bc9d534e0d88c6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7365babd9a6cdba28da59a9113edf32d2974fb0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285233"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984829"
 ---
 # <a name="power-bi-app-contacts-tab"></a>Power BI アプリの [Contacts]\(連絡先\) タブ
+
+>[!Important]
+>2020 年 4 月 13 日以降、Power BI アプリ オファーの管理のパートナー センターへの移行を開始します。 移行後は、パートナー センターでオファーを作成および管理します。 移行されたオファーを管理するには、[Power BI アプリの作成の概要](https://aka.ms/AzureCreatePBIServiceApp)に関するページの手順に従ってください。
 
 **[新しいプラン]** ページの **[連絡先]** タブでは、オファーに対するテクニカル サポートとユーザー サポートのリソースを指定します。 これは、 **[エンジニアリング]** と **[カスタマー サポート]** の 2 つのセクションに分かれています。
 

@@ -1,18 +1,18 @@
 ---
 title: P2S を使用したリモート作業:Azure VPN Gateway
-description: このページでは、COVID-19 の世界的流行により、Azure Bastion を利用してリモートで作業できるようにする方法について説明します。
+description: このページでは、COVID-19 の世界的流行により、VPN Gateway を利用してリモートで作業できるようにする方法について説明します。
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 04/07/2020
 ms.author: alzam
-ms.openlocfilehash: b751817467bd263e8b7c64ccc95ec82ef1579836
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d07a13c654f30e48c37d2e8d3e801166e26f4f4
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337118"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886587"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Azure VPN Gateway ポイント対サイトを使用したリモート作業
 
@@ -24,7 +24,7 @@ ms.locfileid: "80337118"
 
 Azure ポイント対サイトのソリューションはクラウド ベースであり、自宅で作業したいというユーザーの高まる要望に応えるために迅速にプロビジョニングできます。 簡単にスケールアップでき、増やした容量が不要になったら簡単かつ迅速に無効にできます。
 
-## <a name="about-point-to-site-vpn"></a>ポイント対サイト VPN について
+## <a name="about-point-to-site-vpn"></a><a name="p2s"></a>ポイント対サイト VPN について
 
 ポイント対サイト (P2S) VPN ゲートウェイ接続では、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 P2S 接続は、クライアント コンピューターから接続を開始することによって確立されます。 このソリューションは、在宅勤務者が自宅や会議室など、遠隔地から Azure VNet またはオンプレミスのデータ センターに接続する場合に便利です。 この記事では、さまざまなシナリオに基づいてユーザーがリモートで作業できるようにする方法について説明します。
 
@@ -32,25 +32,26 @@ Azure ポイント対サイトのソリューションはクラウド ベース�
 
 ![ポイント対サイト](./media/working-remotely-support/ostable.png "OS")
 
-## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a>シナリオ 1 - ユーザーが Azure のリソースにのみアクセスする必要がある
+## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>シナリオ 1 - ユーザーが Azure のリソースにのみアクセスする必要がある
 
 このシナリオでは、リモート ユーザーは、Azure 内のリソースにのみアクセスする必要があります。
 
 ![ポイント対サイト](./media/working-remotely-support/scenario1.png "シナリオ 1")
 
-ユーザーが Azure リソースに安全に接続できるようにするために必要な手順の概要は、次のとおりです。
+ユーザーが Azure リソースに安全に接続できるようにするために必要な手順は、大まかに次のとおりです。
 
-1. Virtual Network ゲートウェイを作成します (存在しない場合)
-2. ゲートウェイでポイント対サイト VPN を構成します
-    3. [証明書の認証の場合は、このリンクに従います](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw)。
-    2.  [OpenVPN の場合は、このリンクに従います](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn)。
-    3.  [Azure AD 認証の場合は、このリンクに従います](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant)。
-    4.  [ポイント対サイト接続のトラブルシューティングの場合は、このリンクに従います](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems)。
-3. VPN クライアント構成をダウンロードして配布します
-4. (証明書の認証を選択した場合) 証明書をクライアントに配布します
-5. Azure VPN に接続します
+1. Virtual Network ゲートウェイを作成します (存在しない場合)。
+2. ゲートウェイでポイント対サイト VPN を構成します。
 
-## <a name="scenario-2---users-need-access-to-resources-in-azure-andor-on-prem-resources"></a>シナリオ 2 - ユーザーが Azure またはオンプレミス (あるいは両方) のリソースにアクセスする必要がある
+   * 証明書の認証の場合は、[このリンク](vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw)に従います。
+   * OpenVPN の場合は、[このリンク](vpn-gateway-howto-openvpn.md)に従います。
+   * Azure AD 認証の場合は、[このリンク](openvpn-azure-ad-tenant.md)に従います。
+   * ポイント対サイト接続のトラブルシューティングの場合は、[このリンク](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)に従います。
+3. VPN クライアント構成をダウンロードして配布します。
+4. (証明書の認証を選択した場合) 証明書をクライアントに配布します。
+5. Azure VPN に接続します。
+
+## <a name="scenario-2---users-need-access-to-resources-in-azure-andor-on-prem-resources"></a><a name="scenario2"></a>シナリオ 2 - ユーザーが Azure またはオンプレミス (あるいは両方) のリソースにアクセスする必要がある
 
 このシナリオでは、リモート ユーザーは、Azure とオンプレミスのデータ センター内のリソースにアクセスする必要があります。
 
@@ -58,13 +59,13 @@ Azure ポイント対サイトのソリューションはクラウド ベース�
 
 ユーザーが Azure リソースに安全に接続できるようにするために必要な手順は、大まかに次のとおりです。
 
-1. Virtual Network ゲートウェイを作成します (存在しない場合)
-2. ゲートウェイでポイント対サイト VPN を構成します (上記のシナリオ 1 を参照)
-3. BGP が有効になっている Azure Virtual Network ゲートウェイでサイト間トンネルを構成します
-4. Azure Virtual Network ゲートウェイに接続するようにオンプレミスのデバイスを構成します
+1. Virtual Network ゲートウェイを作成します (存在しない場合)。
+2. ゲートウェイでポイント対サイト VPN を構成します (上記の[シナリオ 1](#scenario1) を参照)。
+3. BGP が有効になっている Azure Virtual Network ゲートウェイでサイト間トンネルを構成します。
+4. Azure Virtual Network ゲートウェイに接続するようにオンプレミスのデバイスを構成します。
 5. Azure portal からポイント対サイト プロファイルをダウンロードし、クライアントに配布します
 
-[サイト間 VPN トンネルを設定する方法を参照するには、このリンクに従います](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
+サイト間 VPN トンネルを設定する方法については、[このリンク](vpn-gateway-howto-site-to-site-resource-manager-portal.md)を参照してください。
 
 ## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>ネイティブ Azure 証明書認証に関する FAQ
 

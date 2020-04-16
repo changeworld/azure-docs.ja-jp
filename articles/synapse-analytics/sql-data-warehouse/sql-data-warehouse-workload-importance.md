@@ -1,6 +1,6 @@
 ---
 title: ワークロードの重要度
-description: Azure Synapse Analytics の SQL Analytics クエリの重要度を設定するためのガイダンスです。
+description: Azure Synapse Analytics の Synapse SQL プール クエリの重要度を設定するためのガイダンスです。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 3dde2ad4af17313bcfce28964f8be1e831317a5a
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 43ee14784b6049e9b5c1a78e733e72bbc45f915d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349960"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744044"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse Analytics ワークロードの重要度
 
-このアーティクルでは、ワークロードの重要度が Azure Synapse の SQL Analytics の要求の実行順序に与える影響について説明します。
+この記事では、ワークロードの重要度が Azure Synapse の Synapse SQL プールの要求の実行順序に与える影響について説明します。
 
 ## <a name="importance"></a>重要度
 
@@ -38,7 +38,7 @@ ms.locfileid: "80349960"
 
 ### <a name="locking"></a>ロック
 
-読み取りおよび書き込みアクティビティ用のロックへのアクセスは、自然な競合の 1 つの領域です。 [パーティションの切り替え](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition)や[オブジェクトの名前変更](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest)などのアクティビティには、管理者特権でのロックが必要です。  ワークロードの重要度が設定されていなくても、Azure Synapse の SQL Analytics はスループットを最適化します。 スループットの最適化とは、実行中の要求とキューに置かれた要求が同じロック ニーズを持ち、リソースが利用可能な場合、キューに置かれた要求は、要求キューに先に到達した、より高いロック ニーズを持つ要求をバイパスする可能性があることを意味しています。 より高いロック ニーズを持つ要求にワークロードの重要度が適用されると、 重要度の高い方の要求が、重要度の低い方の要求よりも先に実行されます。
+読み取りおよび書き込みアクティビティ用のロックへのアクセスは、自然な競合の 1 つの領域です。 [パーティションの切り替え](sql-data-warehouse-tables-partition.md)や[オブジェクトの名前変更](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)などのアクティビティには、管理者特権でのロックが必要です。  ワークロードの重要度が設定されていなくても、Azure Synapse の SQL プールによってスループットが最適化されます。 スループットの最適化とは、実行中の要求とキューに置かれた要求が同じロック ニーズを持ち、リソースが利用可能な場合、キューに置かれた要求は、要求キューに先に到達した、より高いロック ニーズを持つ要求をバイパスする可能性があることを意味しています。 より高いロック ニーズを持つ要求にワークロードの重要度が適用されると、 重要度の高い方の要求が、重要度の低い方の要求よりも先に実行されます。
 
 次の例を確認してください。
 
@@ -50,7 +50,7 @@ Q2 と Q3 が同じ重要度を持ち、Q1 がまだ実行中である場合、Q
 
 ### <a name="non-uniform-requests"></a>均一でない要求
 
-クエリ要求を満たすのに重要度を役立てることができるというもう 1 つのシナリオは、リソース クラスが異なる要求を送信する場合に適用されます。  既に述べたように、同じ重要度の下では、Azure Synapse の SQL Analytics のスループットが最適化されます。 混在したサイズ要求 (Smallrc または mediumrc など) がキューに置かれると、使用可能なリソース内で収まる最も早く到着した要求が SQL Analytics によって選択されます。 ワークロードの重要度が適用されると、重要度の最も高い要求が次にスケジュールされます。
+クエリ要求を満たすのに重要度を役立てることができるというもう 1 つのシナリオは、リソース クラスが異なる要求を送信する場合に適用されます。  既に述べたように、同じ重要度の下では、Azure Synapse の Synapse SQL プールによってスループットが最適化されます。 混在したサイズ要求 (Smallrc または mediumrc など) がキューに置かれると、使用可能なリソース内で収まる最も早く到着した要求が Synapse SQL プールによって選択されます。 ワークロードの重要度が適用されると、重要度の最も高い要求が次にスケジュールされます。
   
 DW500c に対する次の例について考えてみてください。
 
@@ -62,8 +62,8 @@ Q5 は mediumrc であるために、2 つの同時実行スロットが必要�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 分類子の作成の詳細については、「[CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql)」を参照してください。  
+- 分類子の作成の詳細については、「[CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。  
 - ワークロードの分類の詳細については、[ワークロードの分類](sql-data-warehouse-workload-classification.md)に関するページを参照してください。  
-- ワークロード分類子の作成方法については、[ワークロード分類子の作成](quickstart-create-a-workload-classifier-tsql.md)に関するクイック スタートを参照してください。 
+- ワークロード分類子の作成方法については、[ワークロード分類子の作成](quickstart-create-a-workload-classifier-tsql.md)に関するクイック スタートを参照してください。
 - [ワークロードの重要度の構成](sql-data-warehouse-how-to-configure-workload-importance.md)と [Workload Management の管理と監視](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)に関するハウツー記事を参照してください。
-- クエリと割り当てられている重要度を確認するには、「[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest)」を参照してください。
+- クエリと割り当てられている重要度を確認するには、「[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。
