@@ -3,12 +3,12 @@ title: Azure サービス別のリソース プロバイダー
 description: Azure Resource Manager のすべてのリソース プロバイダー名前空間を一覧表示し、その名前空間の Azure サービスを示します。
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: 9cf18a1e4c0dd40ae9106d32547ba4795ea9fbb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55fbe4ae383e5275d185e2a03224e77660a01ef5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472964"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382506"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure サービスのリソース プロバイダー
 
@@ -98,7 +98,7 @@ ms.locfileid: "79472964"
 | Microsoft.IoTSpaces | [Azure Digital Twins](../../digital-twins/index.yml) |
 | Microsoft.KeyVault | [Key Vault](../../key-vault/index.yml) |
 | Microsoft.Kubernetes | [Azure Kubernetes Service (AKS)](/azure/aks/) |
-| Microsoft.Kusto | [Azure Data Explorer](../../data-explorer/index.yml) |
+| Microsoft.Kusto | [Azure Data Explorer](/azure/data-explorer/) |
 | Microsoft.LabServices | [Azure Lab Services](../../lab-services/index.yml) |
 | Microsoft.Logic | [Logic Apps](../../logic-apps/index.yml) |
 | Microsoft.MachineLearning | [Machine Learning Studio](../../machine-learning/studio/index.yml) |

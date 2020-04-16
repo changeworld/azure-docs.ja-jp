@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 455036652836c6cfd2055e9a747f30b6dfe41295
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 314445275f99898913bd91eb8abc2a5acdab098a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77059132"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381015"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>チュートリアル:Blink を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルの目的は、Azure Active Directory (Azure AD) が、ユーザー、グループ、またはその両方を Blink に対して自動的にプロビジョニングおよびプロビジョニング解除するよう構成するために、Blink と Azure AD で実行する手順を示すことです。
+このチュートリアルの目的は、Azure Active Directory (Azure AD) が、ユーザーを Blink に対して自動的にプロビジョニングおよびプロビジョニング解除するよう構成するために、Blink と Azure AD で実行する手順を示すことです。
 
 > [!NOTE]
 > このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。
@@ -41,9 +41,9 @@ ms.locfileid: "77059132"
 
 ## <a name="assigning-users-to-blink"></a>Blink へのユーザーの割り当て
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザー、グループ メンバー、またはその両方のみが同期されます。
 
-自動ユーザー プロビジョニングを構成し、有効にする前に、Blink へのアクセスが必要な Azure AD のユーザー、グループ、またはその両方を特定する必要があります。 特定した後、次の手順に従い、これらのユーザー、グループ、またはその両方を Blink に割り当てることができます。
+自動ユーザー プロビジョニングを構成し、有効にする前に、Blink へのアクセスが必要な Azure AD のユーザー、グループ メンバー、またはその両方を特定する必要があります。 特定した後、次の手順に従い、これらのユーザー、グループ、またはその両方を Blink に割り当てることができます。
 * [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
 
 ## <a name="important-tips-for-assigning-users-to-blink"></a>ユーザーを Blink に割り当てる際の重要なヒント
@@ -54,7 +54,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ## <a name="setup-blink-for-provisioning"></a>プロビジョニングのために Blink を設定する
 
-1. SCIM トークンを要求するには、[サポート ケース](https://help.joinblink.com/hc/requests/new)のログに記録するか、**Blink サポート** (support@joinblink.com) 宛にメールで送信します。 。
+1. SCIM トークンを要求するには、[サポート ケース](https://support.joinblink.com)のログに記録するか、**Blink サポート** (support@joinblink.com) 宛にメールで送信します。 。
 
 2.  **SCIM 認証トークン**をコピーします。 この値を、Azure portal で Blink アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
 
@@ -82,7 +82,7 @@ Azure AD での自動ユーザー プロビジョニング用に Blink を構成
 
 ## <a name="configuring-automatic-user-provisioning-to-blink"></a>Blink への自動ユーザー プロビジョニングの構成 
 
-このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、Blink でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成するステップについて説明します。
+このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、Blink でユーザーが作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成するステップについて説明します。
 
 > [!TIP]
 > Blink では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Blink シングル サインオンのチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
@@ -121,7 +121,7 @@ Azure AD での自動ユーザー プロビジョニング用に Blink を構成
 
 9. **[属性マッピング]** セクションで、Azure AD から Blink に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Blink のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![Blink のユーザー属性](media/blink-provisioning-tutorial/User_attributes.png)
+    ![Blink のユーザー属性](media/blink-provisioning-tutorial/user-attributes.png)
 
 10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
@@ -137,7 +137,7 @@ Azure AD での自動ユーザー プロビジョニング用に Blink を構成
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
-これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Blink に対して実行されたすべてのアクションが記載されています。
+この操作によって、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Blink に対して実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../app-provisioning/check-status-user-account-provisioning.md)」をご覧ください。
 

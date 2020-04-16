@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
-ms.openlocfilehash: 88e42fd9626276f6c77b46b33c138407f91d06ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b7fff913c177703f959bfa103c8e310d01059e2
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649291"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391821"
 ---
 # <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Azure Managed Applications のカスタム ロールの定義アーティファクト
 
@@ -20,7 +20,7 @@ ms.locfileid: "75649291"
 
 ## <a name="custom-role-definition-artifact"></a>カスタム ロールの定義アーティファクト
 
-カスタム ロールの定義アーティファクトに customRoleDefinition.json という名前を付ける必要があります。 マネージド アプリケーション定義を作成する .zip パッケージ内で createUiDefinition.json および mainTemplate.json と同じレベルに配置する必要があります。 .zip パッケージを作成してマネージド アプリケーション定義を発行する方法については、「[Azure マネージド アプリケーションの定義を発行する](publish-managed-app-definition-quickstart.md)」を参照してください。
+カスタム ロールの定義アーティファクトに customRoleDefinition.json という名前を付ける必要があります。 マネージド アプリケーション定義を作成する .zip パッケージ内で createUiDefinition.json および mainTemplate.json と同じレベルに配置する必要があります。 .zip パッケージを作成してマネージド アプリケーション定義を発行する方法については、「[Azure マネージド アプリケーションの定義を発行する](publish-service-catalog-app.md)」を参照してください。
 
 ## <a name="custom-role-definition-schema"></a>カスタム ロールの定義のスキーマ
 

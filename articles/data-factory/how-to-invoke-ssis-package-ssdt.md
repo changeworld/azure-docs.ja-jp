@@ -12,14 +12,17 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/31/2019
-ms.openlocfilehash: 5f21623af9b89bbb020063dfb72f7b60e65a6ebe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11e76fea87c60ae2b56cc15d5827be6e1b2b5a01
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927720"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399441"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSDT から Azure 内で SSIS パッケージを実行する
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 この記事で説明する SQL Server Data Tools (SSDT) での Azure 対応の SQL Server Integration Services (SSIS) プロジェクトの機能を使用すると、Azure Data Factory (ADF) 内の Azure-SSIS Integration Runtime (IR) でパッケージを実行できます。  この機能を使用して、既存の SSIS パッケージを Azure にリフト アンド シフト/以降する前にテストしたり、Azure 内で実行する新しい SSIS パッケージを開発したりすることができます。
 
 この機能では、新しい Azure-SSIS IR を作成したり、既存のものを SSIS プロジェクトにアタッチしてから、その上でパッケージを実行することができます。  実行するパッケージを、プロジェクト デプロイ モデルで SSIS カタログ (SSISDB) にデプロイすること、およびパッケージ デプロイ モデルでファイル システム/ファイル共有/Azure Files にデプロイすることがサポートされています。 

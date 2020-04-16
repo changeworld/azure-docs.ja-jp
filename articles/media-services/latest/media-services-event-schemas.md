@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 02/25/2020
 ms.author: juliako
-ms.openlocfilehash: d4a206bbddedfe9f23a943df27c6ac4b5fe17e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3733a641bc116b57556c5ad4f5750bec69e10e9b
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227123"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393733"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services 用の Azure Event Grid スキーマ
 
 この記事では、Media Services イベント用のスキーマとプロパティについて説明します。
 
-サンプル スクリプトとチュートリアルの一覧については、[Media Services のイベント ソース](../../event-grid/event-sources.md#azure-subscriptions)に関する記事を参照してください。
+サンプル スクリプトとチュートリアルの一覧については、[Media Services のイベント ソース](../../event-grid/event-schema-subscriptions.md)に関する記事を参照してください。
 
 ## <a name="job-related-event-types"></a>ジョブに関連するイベントの種類
 

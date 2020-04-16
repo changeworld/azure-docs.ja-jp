@@ -13,14 +13,17 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 5263af2708ee30566e90cdf59ef69f52f76a9d32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f758b779e7c4935feab2424be16b829db8e46b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440316"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399526"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime をスケジュールに従って開始および停止する方法
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 この記事では、Azure Data Factory (ADF) を使用して、Azure-SSIS Integration Runtime (IR) の開始と停止のスケジュールを設定する方法を説明します。 Azure-SSIS IR は、SQL Server Integration Services (SSIS) パッケージの実行専用の ADF コンピューティング リソースです。 Azure-SSIS IR を実行するには、それに関連するコストがあります。 このため一般には、SSIS パッケージを Azure で実行する必要がある場合にのみ IR を実行し、必要ないときには IR を停止する必要があります。 ADF のユーザー インターフェイス (UI)/アプリまたは Azure PowerShell を使用して、[IR を手動で開始または停止する](manage-azure-ssis-integration-runtime.md)ことができます。
 
 または、ADF パイプラインで Web アクティビティを作成し、スケジュールに従って IR を開始/停止することができます。たとえば、朝、毎日の ETL ワークロードを実行する前に開始し、午後、ワークロードが完了した後で停止することができます。  また、IR を開始および停止する 2 つの Web アクティビティの間を SSIS パッケージの実行アクティビティで連結し、パッケージ実行の直前/直後に必要に応じて IR を開始/停止することもできます。 SSIS パッケージの実行アクティビティについて詳しくは、「[Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する](how-to-invoke-ssis-package-ssis-activity.md)」をご覧ください。

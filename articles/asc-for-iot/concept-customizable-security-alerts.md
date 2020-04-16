@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT 用のカスタマイズ可能なセキュリティ アラート ガイド | Microsoft Docs
+title: カスタマイズ可能なセキュリティ アラート
 description: Azure Security Center for IoT とサービスを使用したカスタマイズ可能なセキュリティ アラートと推奨される修復方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 32d79267559480de8ec91e5e66196bfd57e01cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b39d70c60a4c9701d0a8bafde17b241fe01cc46
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299575"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311636"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center for IoT のセキュリティ アラート
 
 Azure Security Center for IoT では、高度な分析および脅威インテリジェンスを使用して IoT ソリューションを継続的に分析し、悪意のあるアクティビティに関するアラートを受け取ることができます。
 
-組織の独自のデプロイやランドスケープにおける侵害の可能性に対する最も効果的なインジケーターとしてアラートが機能するよう、予想されるデバイスの動作についての知識に基づいてカスタム アラートを作成することをお勧めします。 
+組織の独自のデプロイやランドスケープにおける侵害の可能性に対する最も効果的なインジケーターとしてアラートが機能するよう、予想されるデバイスの動作についての知識に基づいてカスタム アラートを作成することをお勧めします。
 
 次に示す Azure Security Center for IoT アラートの一覧は、予想される IoT Hub やデバイスの動作に基づいて、ユーザーが定義します。 各アラートをカスタマイズする方法の詳細については、「[カスタム アラートの作成](quickstart-create-custom-alerts.md)」を参照してください。
 
-## <a name="iot-hub-alerts-available-for-customization"></a>カスタマイズに使用できる IoT Hub アラート 
-
-
+## <a name="iot-hub-alerts-available-for-customization"></a>カスタマイズに使用できる IoT Hub アラート
 
 | 重大度 | アラート名 | データ ソース | 説明 | 推奨される修復方法|
 |---|---|---|---|---|
@@ -51,7 +49,7 @@ Azure Security Center for IoT では、高度な分析および脅威インテ�
 | 低      | カスタム アラート - 未承認の操作の回数が許容範囲外である  | IoT Hub     | 特定の時間枠内における未承認の操作の量が、現在の構成の許容範囲外です。|
 |
 
-## <a name="agent-alerts-available-for-customization"></a>カスタマイズに使用できるエージェント アラート 
+## <a name="agent-alerts-available-for-customization"></a>カスタマイズに使用できるエージェント アラート
 
 | 重大度 | アラート名 | データ ソース | 説明 | 推奨される修復方法|
 |---|---|---|---|---|

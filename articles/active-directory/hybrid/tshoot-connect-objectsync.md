@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: オブジェクト同期のトラブルシューティング | Microsoft Docs'
+title: Azure AD Connect:オブジェクト同期のトラブルシューティング | Microsoft Docs
 description: このトピックでは、トラブルシューティング タスクを使用してオブジェクト同期の問題のトラブルシューティングを行う手順を示します。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e56d4d94e38e5095ef2223d0cc2875cbf1dcd46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64919115"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407013"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したオブジェクト同期のトラブルシューティング
 この条項では、トラブルシューティングタスクを使用し、オブジェクト同期の問題のトラブルシューティングを行う手順を示します。 Azure Active Directory (Azure AD) Connect でどのようにトラブルシューティングが行われるか確認するには、[ このショートビデオ ](https://aka.ms/AADCTSVideo) をご覧ください。
@@ -61,11 +61,6 @@ Azure AD Connect のバージョン 1.1.749.0 以上のデプロイについて�
 UserPrincipalName (UPN)/代替ログイン ID サフィックスが Azure AD テナントで検証されない場合、Azure Active Directory では、UPN サフィックスが既定のドメイン名 "onmicrosoft.com" に置き換えられます。
 
 ![UPN が Azure AD に置き換えられる](media/tshoot-connect-objectsync/objsynch2.png)
-
-### <a name="changing-upn-suffix-from-one-federated-domain-to-another-federated-domain"></a>ユーザー プリンシパル名サフィックスを、あるフェデレーション ドメインから別のフェデレーション ドメインに変更する
-Azure Active Directory では、UserPrincipalName (UPN)/代替ログイン ID サフィックスの同期を、あるフェデレーション ドメインから別のフェデレーション ドメインへと変更することはできません。 これは、Azure AD テナントで検証され、かつ認証の種類がフェデレーションであるドメインに適用されます。
-
-![フェデレーション ドメインから別のフェデレーション ドメインへの UPN 同期がない](media/tshoot-connect-objectsync/objsynch3.png) 
 
 ### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Azure AD テナントの DirSync 機能 'SynchronizeUpnForManagedUsers' が無効になっている
 Azure AD テナントの DirSync 機能 'SynchronizeUpnForManagedUsers' が無効になっている場合、Azure Active Directory では、管理された認証を使用しているライセンス ユーザー アカウントについて、UserPrincipalName/代替ログイン ID への同期更新を行うことができません。

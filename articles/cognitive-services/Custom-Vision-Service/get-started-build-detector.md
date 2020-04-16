@@ -3,19 +3,19 @@ title: 'クイックスタート: オブジェクト検出器を構築する - C
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Custom Vision Web サイトを使用して画像分類モデルを作成する方法について説明します。
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.author: anroth
-ms.openlocfilehash: 8aef46f0b9c3dc526f1fbed3d9bc59f97771b509
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.openlocfilehash: ba121400368f37c4a562a9c34e209c59d15b173c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76170006"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404110"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>クイック スタート:Custom Vision を使用してオブジェクト検出器を構築する方法
 

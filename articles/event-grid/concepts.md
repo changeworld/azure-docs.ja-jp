@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 348d82f704b89b97e11a09b8f88e92831901b3bf
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231343"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393460"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid の概念
 
@@ -35,7 +35,7 @@ ms.locfileid: "79231343"
 
 イベント ソースは、イベントの発生場所です。 各イベント ソースは、1 つまたは複数のイベントの種類に関連付けられます。 たとえば、Azure Storage は、BLOB 作成イベントのイベント ソースです。 IoT Hub は、デバイスによって作成されたイベントのためのイベント ソースです。 お客様のアプリケーションは、お客様が定義するカスタム イベントのイベント ソースです。 イベント ソースは、Event Grid にイベントを送信します。
 
-サポートされている任意の Event Grid ソースの実装方法については、「[Event sources in Azure Event Grid (Azure Event Grid 内のイベント ソース)](event-sources.md)」を参照してください。
+サポートされている任意の Event Grid ソースの実装方法については、「[Event sources in Azure Event Grid (Azure Event Grid 内のイベント ソース)](overview.md#event-sources)」を参照してください。
 
 ## <a name="topics"></a>トピック
 

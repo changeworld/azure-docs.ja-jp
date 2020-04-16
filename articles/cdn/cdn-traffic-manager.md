@@ -3,7 +3,7 @@ title: Traffic Manager を使用した複数の Azure CDN エンドポイント�
 description: Azure Traffic Manager を Azure CDN エンドポイントと共に設定する方法について説明します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: magattus
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: de91f61385942db077bc98721eabe9f3f0b8624c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3d4f77a0fb9b8005729a6e9d35f254eb522b690e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082996"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259852"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した複数の Azure CDN エンドポイント間でのフェールオーバーの設定
 
@@ -33,7 +33,7 @@ Azure Content Delivery Network (CDN) を構成するときに、お客様のニ�
 ## <a name="set-up-azure-cdn"></a>Azure CDN を設定する 
 異なるプロバイダーを使用した 2 つ以上の Azure CDN プロファイルとエンドポイントを作成します。
 
-1. 「**新しい CDN プロファイルを作成する**」の手順に従って、**Azure CDN Standard from Verizon** および [Azure CDN Standard from Akamai](cdn-create-new-endpoint.md#create-a-new-cdn-profile) プロファイルを作成します。
+1. 「[新しい CDN プロファイルを作成する](cdn-create-new-endpoint.md#create-a-new-cdn-profile)」の手順に従って、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルを作成します。
  
    ![複数の CDN プロファイル](./media/cdn-traffic-manager/cdn-multiple-profiles.png)
 
@@ -82,7 +82,7 @@ CDN および Traffic Manager プロファイルを設定したら、次の手�
     Azure CDN は、*cdnverify* サブドメインを使用して DNS マッピングを検証し、この登録プロセスを完了します。 詳細については、「[CNAME DNS レコードを作成する](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)」を参照してください。 この手順により、Azure CDN がカスタム ドメインを認識し、要求に応答できるようになります。
     
     > [!NOTE]
-    > **Akamai プロファイルの Azure CDN** 上で SSL を有効にするには、cname でカスタム ドメインをエンドポイントに直接指定する必要があります。 SSL を有効にするための cdnverify はまだサポートされていません。 
+    > **Akamai プロファイルの Azure CDN** で TLS を有効にするには、cname でカスタム ドメインをエンドポイントに直接指定する必要があります。 TLS を有効にするための cdnverify はまだサポートされていません。 
     >
 
 3.  カスタム ドメインのドメイン プロバイダーの Web サイトに戻り、作成した最初の DNS マッピングを更新して、カスタム ドメインが 2 番目の CDN エンドポイントにマップされるようにします。

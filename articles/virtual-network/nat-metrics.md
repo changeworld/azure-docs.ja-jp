@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 4f1760c32117b34d4d453964473cba3c7d07f725
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1c3a73cba6a2ece0c9c7459b3515f053a648d683
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79202180"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408610"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure Virtual Network NAT のメトリック
 
-Azure Virtual Network NAT ゲートウェイ リソースは、多次元メトリックを提供します。 これらのメトリックを使用して処理状況を監視したり、[トラブルシューティング](nat-metrics.md)を行ったりすることができます。  アラートは、SNAT の枯渇などの重大な問題に対して構成できます。
+Azure Virtual Network NAT ゲートウェイ リソースは、多次元メトリックを提供します。 これらのメトリックを使用して処理状況を監視したり、[トラブルシューティング](troubleshoot-nat.md)を行ったりすることができます。  アラートは、SNAT の枯渇などの重大な問題に対して構成できます。
 
 <p align="center">
   <img src="media/nat-overview/flow-direction1.svg" width="256" title="インターネットへのアウトバウンド接続のための Virtual Network NAT">

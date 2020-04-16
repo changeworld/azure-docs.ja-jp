@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 041b2133ed63a906d3fea3ab67890a0057151b9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59f9fecb3d949d9cdf48719e6329b066d9eb3fc5
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285267"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393536"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Azure アプリケーションの技術アセットを準備する
 
@@ -32,7 +32,7 @@ ms.locfileid: "80285267"
 
   - [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)
   - [GitHub Azure クイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates)
-  - [アプリケーション定義の発行](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
+  - [アプリケーション定義の発行](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
   - [サービス カタログ アプリのデプロイ](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
   
@@ -71,7 +71,7 @@ Azure アプリケーションを管理するためのスクリプト環境と�
 - [Azure 記憶域エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 - [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能:
 
-  - 拡張機能: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+  - 拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - 拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
   - 拡張機能: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 

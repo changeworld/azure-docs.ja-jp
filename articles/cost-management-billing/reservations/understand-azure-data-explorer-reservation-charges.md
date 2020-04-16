@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a418841d91ab6b8fe5457f3fd64d91306fe08dfe
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199332"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383126"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Azure Data Explorer に予約割引が適用されるしくみについて
 
@@ -65,7 +65,7 @@ Azure の予約の適用状況を把握し、課金の使用状況レポート�
 
 Azure の予約の詳細については、次の記事を参照してください。
 
-* [Azure Data Explorer 予約容量を使用して Azure Data Explorer コンピューティング リソースの料金を前払いする](../../data-explorer/pricing-reserved-capacity.md)  
+* [Azure Data Explorer 予約容量を使用して Azure Data Explorer コンピューティング リソースの料金を前払いする](/azure/data-explorer/pricing-reserved-capacity)  
 * [Azure の予約とは](save-compute-costs-reservations.md)  
 * [Azure の予約の管理](manage-reserved-vm-instance.md)  
 * [従量課金制サブスクリプションの予約使用量について](understand-reserved-instance-usage.md)

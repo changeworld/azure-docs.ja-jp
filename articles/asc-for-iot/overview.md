@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT とは | Microsoft Docs
+title: サービスの概要
 description: Azure Security Center for IoT の機能とサービスについて詳しく学習し、Azure Security Center for IoT が包括的な IoT セキュリティをどのように実現しているかを理解します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 1c85f0205f568f065a7959a9b33890b2117e45a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4601de6ee495def43d1267131193762ea482d2a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462226"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310916"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Azure Security Center for IoT の概要
 
-ハイブリッド クラウド ワークロードおよび Azure IoT ソリューション全体で、セキュリティ管理を統合し、エンド ツー エンドの脅威の検出と分析を可能にします。 
+ハイブリッド クラウド ワークロードおよび Azure IoT ソリューション全体で、セキュリティ管理を統合し、エンド ツー エンドの脅威の検出と分析を可能にします。
 
 ## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>IoT デバイスから Azure クラウドまでの IoT ソリューション全体をセキュリティで保護する
 
 Microsoft のシームレスなエージェントレス ソリューションから選択するか、エージェント ベースの包括的なセキュリティを利用してください。Azure Security Center for IoT は、ご利用の IoT アセット全体で、すべてのデバイス、IoT Edge およびIoT Hub に対して脅威の防止と分析を提供します。
 
-何十億もの新しいデバイスがインターネットに接続され、私たちの日常生活やビジネスに統合されているため、セキュリティ運用チームは、それぞれの新しい攻撃面をカバーできるよう、セキュリティ戦略を迅速に進化させる必要があります。 他のシステムと同様に、IoT ソリューションを包括的に保護するためには、実装のすべての段階において保護が必要になります。 
+何十億もの新しいデバイスがインターネットに接続され、私たちの日常生活やビジネスに統合されているため、セキュリティ運用チームは、それぞれの新しい攻撃面をカバーできるよう、セキュリティ戦略を迅速に進化させる必要があります。 他のシステムと同様に、IoT ソリューションを包括的に保護するためには、実装のすべての段階において保護が必要になります。
 
-Azure Security Center for IoT は、エッジ、オンプレミス、Azure、その他のクラウド上で実行されているワークロードにまたがる統一された可視性と制御、アダプティブな脅威の防止、およびインテリジェントな脅威の検出と対応を提供することによってハイブリッド ワークロード保護を簡素化します。 
+Azure Security Center for IoT は、エッジ、オンプレミス、Azure、その他のクラウド上で実行されているワークロードにまたがる統一された可視性と制御、アダプティブな脅威の防止、およびインテリジェントな脅威の検出と対応を提供することによってハイブリッド ワークロード保護を簡素化します。
 
 ![Azure Security Center for IoT のアーキテクチャ](./media/architecture/azure-iot-security-architecture.png)
 
 ### <a name="unified-visibility-and-control"></a>統一された可視性と制御
 
-Azure IoT ソリューションなど、オンプレミスとクラウドのすべてのワークロードのセキュリティを、統合された 1 つのビューで確認できます。 新しいデバイスをオンボードし、ワークロード (リーフ デバイス、Microsoft Edge デバイス、IoT Hub) にセキュリティ ポリシーを適用して、セキュリティ標準へのコンプライアンスとセキュリティ体制の改善を保証します。 
+Azure IoT ソリューションなど、オンプレミスとクラウドのすべてのワークロードのセキュリティを、統合された 1 つのビューで確認できます。 新しいデバイスをオンボードし、ワークロード (リーフ デバイス、Microsoft Edge デバイス、IoT Hub) にセキュリティ ポリシーを適用して、セキュリティ標準へのコンプライアンスとセキュリティ体制の改善を保証します。
 
 ### <a name="adaptive-threat-prevention"></a>アダプティブ脅威に対する防護
 
@@ -57,4 +57,3 @@ Azure Security Center for IoT を使用して、マシン、ネットワーク�
 - [ソリューションを定義する](quickstart-configure-your-solution.md)
 - [Azure Security Center for IoT の FAQ](resources-frequently-asked-questions.md)
 - [Azure Security Center for IoT のアラート](concept-security-alerts.md)
-

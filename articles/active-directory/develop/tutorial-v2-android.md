@@ -12,12 +12,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5c8bd5accefceee042601c3cf7d71f5e9131e04e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b899e1d651f41c9c1e1e54af1b5ec19162dfc28d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80880824"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380058"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>チュートリアル:Android アプリケーションからユーザーをサインインさせて、Microsoft Graph を呼び出す 
 
@@ -91,7 +91,7 @@ Android アプリケーションがまだない場合は、次の手順に従っ
 
 1. Android Studio のプロジェクト ウィンドウで、**app\src\main\res** に移動します。
 2. **res** を右クリックして、 **[New]\(新規\)**  >  **[Directory]\(ディレクトリ\)** を選択します。 新しいディレクトリの名前に「`raw`」と入力し、 **[OK]** をクリックします。
-3. **app** > **src** > **main** > **res** > **raw** で、`auth_configbn_single_account.json` という名前の新しい JSON ファイルを作成し、先ほど保存した MSAL 構成を貼り付けます。 
+3. **app** > **src** > **main** > **res** > **raw** で、`auth_config_single_account.json` という名前の新しい JSON ファイルを作成し、先ほど保存した MSAL 構成を貼り付けます。 
 
     リダイレクト URI の下に、以下を貼り付けます。 
     ```json
@@ -190,7 +190,7 @@ import com.microsoft.identity.client.exception.*;
 ## <a name="instantiate-publicclientapplication"></a>PublicClientApplication をインスタンス化する
 #### <a name="initialize-variables"></a>変数を初期化する 
 ```java
-private final static String[] SCOPES = {"File.Read"};
+private final static String[] SCOPES = {"Files.Read"};
 /* Azure AD v2 Configs */
 final static String AUTHORITY = "https://login.microsoftonline.com/common";
 private ISingleAccountPublicClientApplication mSingleAccountApp;
@@ -583,8 +583,3 @@ private void performOperationOnSignOut() {
 ## <a name="get-help"></a>ヘルプの参照
 
 このチュートリアルまたは Microsoft ID プラットフォームで問題が発生した場合は、[ヘルプとサポート](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)に関する記事をご覧ください。
-
-Microsoft ID プラットフォームの改善にご協力ください。 簡単な 2 つの質問からなるアンケートに記入し、ご意見をお聞かせください。
-
-> [!div class="nextstepaction"]
-> [Microsoft ID プラットフォームのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

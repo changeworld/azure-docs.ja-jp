@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: d0c60f5738bf634f9d43d6d4f0d78c1239b7ff3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a3d2234a140d1fb2eede50e3fe2eef5575da648
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649271"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391688"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Azure Managed Applications のビュー定義アーティファクト
 
@@ -20,7 +20,7 @@ ms.locfileid: "75649271"
 
 ## <a name="view-definition-artifact"></a>ビュー定義アーティファクト
 
-ビュー定義アーティファクトの名前は **viewDefinition.json** とし、マネージド アプリケーション定義を作成する .zip パッケージ内で **createUiDefinition.json** および **mainTemplate.json** と同じレベルに配置する必要があります。 .zip パッケージを作成してマネージド アプリケーション定義を発行する方法については、「[Azure マネージド アプリケーションの定義を発行する](publish-managed-app-definition-quickstart.md)」を参照してください。
+ビュー定義アーティファクトの名前は **viewDefinition.json** とし、マネージド アプリケーション定義を作成する .zip パッケージ内で **createUiDefinition.json** および **mainTemplate.json** と同じレベルに配置する必要があります。 .zip パッケージを作成してマネージド アプリケーション定義を発行する方法については、「[Azure マネージド アプリケーションの定義を発行する](publish-service-catalog-app.md)」を参照してください。
 
 ## <a name="view-definition-schema"></a>ビュー定義スキーマ
 

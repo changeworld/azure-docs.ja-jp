@@ -9,14 +9,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 34972e70039fef17161bdef66f64278cbabf908f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d0b49b73ef6b67653fbf32db1174880a51d432d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130796"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81412953"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 この記事では、Azure Data Factory に関してよく寄せられる質問に対する回答を示します。  
 
 ## <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。 

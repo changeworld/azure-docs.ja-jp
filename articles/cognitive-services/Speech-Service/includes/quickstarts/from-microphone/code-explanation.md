@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/02/2020
-ms.author: dapine
-ms.openlocfilehash: 3125b6203f04b4cabd8cd0822a97317185cbf194
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.author: trbye
+ms.openlocfilehash: fdcb5bb57afe145b57cb1223242d4d5625a2dfb7
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80638132"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400735"
 ---
 音声構成オブジェクトを作成するには、音声リソースのサブスクリプション キーとリージョンが必要です。 音声認識エンジン オブジェクトをインスタンス化するには、この構成オブジェクトが必要です。
 

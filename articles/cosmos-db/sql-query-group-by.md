@@ -4,14 +4,14 @@ description: Azure Cosmos DB の GROUP BY 句について説明します。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 04/10/2020
 ms.author: tisande
-ms.openlocfilehash: e41e81457421bfe27e3c0313fc06e39e6df4cdce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a3cbbafc066747b62f79934f2cd12301aa1ba17
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73819101"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261603"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での GROUP BY 句
 
@@ -52,6 +52,12 @@ GROUP BY 句では、指定した 1 つ以上のプロパティの値に従っ�
 - プロパティのエイリアス化またはシステム関数のエイリアス化 (なお、SELECT 句ではエイリアス化を使用できます)
 - サブクエリ
 - 集計システム関数 (SELECT 句でのみ使用できます)
+
+集計システム関数を使用したクエリと `GROUP BY` を使用したサブクエリはサポートされていません。 たとえば、次のクエリはサポートされません。
+
+```sql
+SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName) AS UniqueLastNames
+```
 
 ## <a name="examples"></a>例
 

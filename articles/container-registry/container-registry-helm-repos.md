@@ -3,12 +3,12 @@ title: Helm グラフの保存
 description: Azure Container Registry のリポジトリを使用して Kubernetes アプリケーションの Helm グラフを保存する方法について説明します
 ms.topic: article
 ms.date: 03/20/2020
-ms.openlocfilehash: 6304486ac493e235ed74f26ab4be4f843ef52513
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f1a68258b758380a66b63e3c3137f1d460d288c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131482"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399390"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Azure コンテナー レジストリに対する Helm グラフのプッシュおよびプル
 
@@ -77,18 +77,21 @@ helm create hello-world
 基本的な例として、ディレクトリを `templates` フォルダーに変更し、まずその内容を削除します。
 
 ```console
+cd hello-world/templates
 rm -rf *
 ```
 
 `configmap.yaml` フォルダー内に `templates` というファイルを作成し、内容を次のようにします。
 
-```yml
+```console
+cat <<EOF > configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: hello-world-configmap
 data:
   myvalue: "Hello World"
+EOF
 ```
 
 この例の作成と実行の詳細については、Helm ドキュメントの「[Getting Started](https://helm.sh/docs/chart_template_guide/getting_started/)」を参照してください。

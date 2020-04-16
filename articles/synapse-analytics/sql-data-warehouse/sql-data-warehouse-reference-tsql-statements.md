@@ -11,12 +11,12 @@ ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: edae17c2686e3b9cae3f75ad3b6a8a2354e9d3ef
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 90da0931b950fe18c079534c48693cae651e978e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745491"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411586"
 ---
 # <a name="t-sql-statements-supported-in-synapse-sql-pool"></a>Synapse SQL プールでサポートされる T-SQL ステートメント
 
@@ -131,4 +131,4 @@ Synapse SQL プールでサポートされる T-SQL ステートメントのド�
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、「[Synapse SQL プールの T-SQL 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)」および「[Synapse SQL プールのシステム ビュー](sql-data-warehouse-reference-tsql-system-views.md)」を参照してください。
+詳細については、「[Synapse SQL プールの T-SQL 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)」および「[Synapse SQL プールのシステム ビュー](../sql/reference-tsql-system-views.md)」を参照してください。

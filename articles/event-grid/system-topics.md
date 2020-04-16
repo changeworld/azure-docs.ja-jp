@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 35025bf1592f1293b9326d643f76322b4af590c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46bceeb31fa38068c6c4f9f3a86ed556ad39effb
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501195"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393163"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Event Grid でのシステム トピック
 Azure イベント ソース用のイベント サブスクリプションを初めて作成すると、Azure Event Grid サービスによってシステム トピックが作成されます。 現在、Event Grid では、2020 年 3 月 15 日より前に作成されたトピック ソースに対するシステム トピックは作成されません。 この日付以降に作成したすべてのトピック ソースについては、Event Grid によりシステム トピックが自動的に作成されます。 この記事では、Azure Event Grid での**システム トピック**について説明します。
@@ -38,5 +38,5 @@ Azure ストレージ アカウントなどの Azure イベント ソースに�
 ## <a name="next-steps"></a>次のステップ
 次の記事をご覧ください。 
 
-- [カスタム トピック](event-sources.md#custom-topics)
+- [カスタム トピック](custom-topics.md)
 - [ドメイン](event-domains.md)

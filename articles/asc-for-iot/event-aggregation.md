@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT イベント集計について | Microsoft Docs
+title: イベントの集計
 description: Azure Security Center for IoT イベント集計を確認します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: ca1d1a5761e62b2838a474dcb83f450987972998
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f72ef8cc5161bd6f885249e7d39344a57fa2368e
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73928969"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311411"
 ---
 # <a name="azure-security-center-for-iot-event-aggregation"></a>Azure Security Center for IoT イベント集計
 
@@ -31,18 +31,20 @@ Azure Security Center for IoT セキュリティ エージェントにより、�
 イベント集計は、既定で**オン**になっており、推奨はされませんが、手動でいつでも**オフ**にすることができます。
 
 集計は、現在、次の種類のイベントで使用できます。
+
 * ProcessCreate
 * ConnectionCreate
 * ProcessTerminate (Windows のみ)
 
 ## <a name="how-does-event-aggregation-work"></a>イベント集計のしくみ
+
 イベント集計が**オン**のままの場合、Azure Security Center for IoT エージェントは、間隔の期間または時間枠のイベントを集計します。
 間隔の期間が経過すると、エージェントは、詳細な分析のために、集計されたイベントを Azure クラウドに送信します。
 集計されたイベントは、Azure クラウドに送信されるまでメモリに格納されます。
 
 エージェントのメモリ占有領域を減らすために、エージェントは、既にメモリに保持されているのと同じイベントを収集するたびに、この特定のイベントのヒット カウントを増やします。 集計の時間枠が経過すると、エージェントは、発生したそれぞれ特定の種類のイベントのヒット カウントを送信します。 イベント集計は、単に、収集された各種類のイベントのヒット カウントの集計です。
 
-イベントは、次の条件が満たされている場合にのみ同一と見なされます。 
+イベントは、次の条件が満たされている場合にのみ同一と見なされます。
 
 * ProcessCreate イベント - **コマンドライン**、**実行可能ファイル**、**ユーザー名**、および**ユーザー ID** が同一である
 * ConnectionCreate イベント - **コマンドライン**、**ユーザー ID**、**方向**、**ローカル アドレス**、**リモート アドレス**、**プロトコル**、および**宛先ポート**が同一である
@@ -50,19 +52,22 @@ Azure Security Center for IoT セキュリティ エージェントにより、�
 
 ### <a name="working-with-aggregated-events"></a>集計されたイベントの操作
 
-集計中、集計されていないイベント プロパティは破棄され、値 0 でログ分析に表示されます。 
+集計中、集計されていないイベント プロパティは破棄され、値 0 でログ分析に表示されます。
+
 * ProcessCreate イベント - **processId** と **parentProcessId** は 0 に設定される
 * ConnectionCreate イベント - **processId** と**発信元ポート**は 0 に設定される
 
-## <a name="event-aggregation-based-alerts"></a>イベント集計ベースのアラート 
+## <a name="event-aggregation-based-alerts"></a>イベント集計ベースのアラート
+
 分析後、Azure Security Center for IoT は、疑わしい集計イベントに対するセキュリティ アラートを作成します。 集計イベントから作成されたアラートは、集計されたイベントごとに 1 回だけ表示されます。
 
-各イベントの集計の開始時刻、終了時刻、およびヒット カウントは、Log Analytics 内のイベント **ExtraDetails** フィールドに記録されて調査時に使用されます。 
+各イベントの集計の開始時刻、終了時刻、およびヒット カウントは、Log Analytics 内のイベント **ExtraDetails** フィールドに記録されて調査時に使用されます。
 
-各集計イベントは、収集されたアラートの 24 時間分を表します。 各イベントの左上にある [イベント オプション] メニューを使用すると、集計された個々のイベントを**無視**できます。    
+各集計イベントは、収集されたアラートの 24 時間分を表します。 各イベントの左上にある [イベント オプション] メニューを使用すると、集計された個々のイベントを**無視**できます。
 
 ## <a name="event-aggregation-twin-configuration"></a>イベント集計のツイン構成
-[azureiotsecurity](how-to-agent-configuration.md) モジュールのモジュール ツイン ID の **エージェント構成オブジェクト**内で Azure Security Center for IoT イベント集計の構成を変更します。
+
+**azureiotsecurity** モジュールのモジュール ツイン ID の [エージェント構成オブジェクト](how-to-agent-configuration.md)内で Azure Security Center for IoT イベント集計の構成を変更します。
 
 | 構成名 | 指定できる値 | 詳細 | 解説 |
 |:-----------|:---------------|:--------|:--------|

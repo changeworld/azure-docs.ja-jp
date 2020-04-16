@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: c1626542aba71f971ad96fe9f187ce9f1c1a99f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7b27f10567816884b14a0a2c69e3bd8e85cb7a76
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70012942"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398697"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>チュートリアル:Azure Data Box Disk を注文する
 
@@ -33,12 +33,7 @@ Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオン
 
 ### <a name="for-service"></a>サービスでは
 
-開始する前に次の点を確認します。
-- アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
-- Data Box サービスで使用するサブスクリプションが、次のいずれかの種類であることを確認します。
-    - Microsoft Enterprise Agreement (EA)。 [EA サブスクリプション](https://azure.microsoft.com/pricing/enterprise-agreement/)に関する詳細をご覧ください。
-    - Cloud Solution Provider (CSP)。 Azure CSP プログラムの詳細は[こちら](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)です。
-- Data Box の注文を作成するサブスクリプションに対して、所有者または共同作成者アクセス権があることを確認します。
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>デバイスでは
 
@@ -66,7 +61,7 @@ Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオン
 
     ![Data Box Disk オプションを選択する](media/data-box-disk-deploy-ordered/select-data-box-sku-1.png)
 
-    |設定|Value|
+    |設定|値|
     |---|---|
     |サブスクリプション|Data Box サービスが有効になっているサブスクリプションを選択します。<br> サブスクリプションは、課金アカウントにリンクされます。 |
     |転送の種類| Azure へのインポート|
@@ -80,7 +75,7 @@ Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオン
 
 6.  **[注文]** で**注文の詳細**を指定します。 次の情報を入力または選択します。
 
-    |設定|Value|
+    |設定|値|
     |---|---|
     |名前|注文を追跡するためのフレンドリ名を指定します。<br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。 |
     |Resource group| 既存のグループを使用するか、新しいグループを作成します。 <br> リソース グループとは、まとめて管理したり、デプロイしたりできるリソースの論理コンテナーです。 |
@@ -95,7 +90,7 @@ Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオン
 
     Data Box Disk を使用してオンプレミスの VHD からマネージド ディスクを作成する場合は、次の情報も指定する必要があります。
 
-    |設定  |Value  |
+    |設定  |値  |
     |---------|---------|
     |Resource group     | オンプレミスの VHD からマネージド ディスクを作成する場合は、新しいリソース グループを作成します。 既存のリソース グループを使用するのは、Data Box サービスによってマネージド ディスク用にそのグループが Data Box Disk 注文に対して作成された場合だけにしてください。 <br> サポートされているリソース グループは 1 つのみです。|
 

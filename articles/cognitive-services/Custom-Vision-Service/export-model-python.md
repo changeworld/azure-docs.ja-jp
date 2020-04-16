@@ -3,19 +3,19 @@ title: 'チュートリアル: Python での TensorFlow モデルの実行 - Cus
 titleSuffix: Azure Cognitive Services
 description: Python での TensorFlow モデルの実行 この記事は、Custom Vision Service 内のイメージ分類プロジェクトからエクスポートされたモデルにのみ適用されます。
 services: cognitive-services
-author: areddish
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/05/2019
-ms.author: areddish
-ms.openlocfilehash: d7e3eeeea6bb25b4cddaea1d04e86f23ab7e4f5f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.openlocfilehash: 6fcbd84b3cda4adace9c1229f5ed03c3dce68fc0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74969841"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404134"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>チュートリアル: Python での TensorFlow モデルの実行
 

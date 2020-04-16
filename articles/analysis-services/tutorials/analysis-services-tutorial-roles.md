@@ -4,17 +4,17 @@ description: Azure portal または SQL Server Management Studio を使用して
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fa3a6fefce808e51c2ad1d9d18bf4766cdf689c3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78273675"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406238"
 ---
-# <a name="tutorial-configure-server-administrator-and-user-roles"></a>チュートリアル: サーバー管理者とユーザーのロールを構成する
+# <a name="tutorial-configure-server-administrator-and-user-roles"></a>チュートリアル:サーバー管理者とユーザー ロールを構成する
 
  このチュートリアルでは、SQL Server Management Studio (SSMS) を使用して Azure 内のサーバーに接続し、サーバー管理者とモデル データベースのロールを構成します。 また、[Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200) についても紹介します。 TMSL は、1200 以上の互換性レベルの表形式モデル用 JSON ベース スクリプト言語です。 多くの表形式モデリング タスクの自動化に使用できます。 TMSL は PowerShell でよく使用されますが、このチュートリアルでは SSMS で XMLA クエリ エディターを使用します。 このチュートリアルでは、以下のタスクを実行します。 
   
@@ -67,7 +67,7 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>サーバー管理者ロールにユーザー アカウントを追加する
 
-このタスクでは、Azure AD のユーザーまたはグループ アカウントをサーバー管理者ロールに追加します。 セキュリティ グループを追加する場合、その `MailEnabled` プロパティが `True` に設定されている必要があります。
+このタスクでは、Azure AD のユーザーまたはグループ アカウントをサーバー管理者ロールに追加します。 セキュリティ グループを追加する場合、その `MailEnabled` プロパティが `True` に設定されている必要があります。 メール アドレスでグループを指定する場合は、`obj:groupid@tenantid` を使用します。
 
 1. **オブジェクト エクスプローラー**でサーバー名を右クリックし、 **[プロパティ]** をクリックします。 
 2. **[分析サーバーのプロパティ]** ウィンドウで、 **[セキュリティ]**  >  **[追加]** の順にクリックします。
@@ -143,5 +143,5 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
 このチュートリアルでは、Azure AS サーバーに接続し、SSMS の adventureworks サンプル モデル データベースとプロパティを調べる方法について説明しました。 また、SSMS および TMSL スクリプトを使用して既存のロールと新しいロールにユーザーまたはグループを追加する方法について説明しました。 サーバーとサンプル モデル データベース用にユーザー アクセス許可を構成したので、PowerBI などのクライアント アプリを使用して自分と他のユーザーが接続できます。 さらに学習するには、次のチュートリアルに進んでください。 
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Power BI Desktop を使用して接続する](analysis-services-tutorial-pbid.md)
+> [チュートリアル:Power BI Desktop を使用して接続する](analysis-services-tutorial-pbid.md)
 
