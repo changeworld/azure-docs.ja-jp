@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2019
-ms.openlocfilehash: 9daf7973a2e48f866a8d0b93a682851d31dc3af7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6b3b1d11242434088c138460d968f39d5273e4f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74928554"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418424"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>マッピング データ フローのスキーマの誤差
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 スキーマの誤差は、ソースのメタデータが頻繁に変更されるケースです。 フィールド、列、および型は、その場で追加、削除、または変更できます。 スキーマの誤差に対処しないと、アップストリームのデータ ソースの変更に対して、データ フローが脆弱になります。 通常、受信列およびフィールドが変更された場合、ETL パターンは、それらのソース名に関連している傾向があるため、失敗します。
 

@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b36eb2615e98ee8ea7751c836fd43e81a5a0f4e2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74941930"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414756"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Azure Data Factory でファイルを移動する
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、あるフォルダーから異なるファイル ベースのストアにファイルを移動するために使用できる、ソリューション テンプレートについて説明します。 このテンプレートを使用する一般的なシナリオの 1 つ: ファイルは、ソース ストアのランディング フォルダーに継続的にドロップされます。 スケジュール トリガーを作成することにより、ADF パイプラインでこれらのファイルをソースから移動先ストアに定期的に移動できます。  ADF パイプラインで "ファイルの移動" を実現する方法では、ランディング フォルダーからファイルを取得し、各ファイルを移動先ストアの別のフォルダーにコピーした後、ソース ストアのランディング フォルダーから同じファイルを削除します。
 

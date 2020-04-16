@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: jingwang
-ms.openlocfilehash: b73cd73a18d286f221c7be2c624719e1d23d7c06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5ce1b85394a7bb604841f7fb941bdebf12c0bca2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153830"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414152"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティを使用してメタデータと ACL を保持する
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 次のシナリオでは、Azure Data Factory のコピー アクティビティを使用してソースからシンクにデータをコピーするときに、メタデータと ACL を一緒に保持することもできます。
 

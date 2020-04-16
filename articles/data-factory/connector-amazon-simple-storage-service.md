@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/13/2019
-ms.openlocfilehash: 56cc7425eea184cd26010cde48e42e38b27e68a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6975c876bb31e36b7b6268d284f747fd51803d63
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75893292"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415466"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Simple Storage Service からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 >
 > * [Version 1](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [現在のバージョン](connector-amazon-simple-storage-service.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Amazon Simple Storage Service (Amazon S3) からデータをコピーする方法を概説します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
 

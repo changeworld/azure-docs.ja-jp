@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 94bbfb16a967a97b1ee6f6d51a5f55bc8ba13227
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6113759cc68d07af4c22edf03b3274d92dcbe780
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281767"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416290"
 ---
 # <a name="azure-application-marketplace-tab"></a>Azure アプリケーションの [Marketplace] タブ
 
@@ -32,7 +32,7 @@ ms.locfileid: "80281767"
 | **要約\***      | プランの短い要約。 最大長は 100 文字です。           |
 | **[Long Summary]\(長い要約\)\*** | オファーの長めの要約 (まとめと同じでもかまいません)。 最大長は 256 文字です。           |
 | **説明\***  | プランの説明。 最大長は 3000 文字です。 単純な HTML 書式設定を使用可能 (&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt;、ヘッダー タグなど)。  |
-| **[Marketing Identifier]\(マーケティング識別子\)\*** | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。 サービスに短くてわかりやすいマーケティング識別子を選択します。 これはこのオファーの URL で使用されます。 たとえば、発行元 ID が "contoso" で、マーケティング識別子が "sampleApp" の場合、Azure Marketplace では、オファーの URL は https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp になります。  
+| **[Marketing Identifier]\(マーケティング識別子\)\*** | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。 サービスに短くてわかりやすいマーケティング識別子を選択します。 これはこのオファーの URL で使用されます。 たとえば、発行元 ID が "contoso" で、マーケティング識別子が "sampleApp" の場合、Azure Marketplace では、オファーの URL は `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp` になります。  
 | **[Preview Subscription IDs]\(プレビュー サブスクリプション ID\)\*** | プレビューアーのサブスクリプション識別子を追加します (1 - 100 個)。 ホワイトリストに登録されたこれらのサブスクリプションには、オファーの発行後、運用が開始される前にオファーにアクセスする許可が与えられます。          |
 | **役に立つリンク**    | 必要に応じて、サポート、ドキュメント、フォーラムなど、オファーの利用者向けにさまざまリソースのリンクを提供できます。少なくとも 1 つのリンクをドキュメントに追加することをお勧めします。            |
 | **[推奨されるカテゴリ (最大 5 個)]\*** | 1 個から 5 個のカテゴリを選択してください。 選択したカテゴリは、Azure Marketplace と Azure portal で利用可能な製品カテゴリにオファーをマッピングするために使用されます。 閲覧ページと製品の詳細ページに表示されます。 |

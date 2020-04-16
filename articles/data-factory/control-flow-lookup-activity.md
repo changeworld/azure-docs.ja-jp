@@ -11,14 +11,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 08cc7ce8f306095a66bc0f8cf74dff8c8b551ecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02abdaf46ca2af6c96d3b5e8d4ce5876831bd415
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440477"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418002"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ルックアップ アクティビティは、Azure Data Factory がサポートするすべてのデータ ソースからデータセットを取得できます。 これは、次のシナリオで使用します。
 - オブジェクト名をハード コーディングする代わりに、後続のアクティビティで操作するオブジェクトを動的に決定する。 オブジェクトの例として、ファイルとテーブルがあります。

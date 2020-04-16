@@ -12,14 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 3c077e2c04cae94d2e1a2a84ccd7d09c7a0829b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01a6d796a9a8306da5bb707111b07786136a66cc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75439689"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414781"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>データベースから制御テーブルを使用して差分コピーを行う
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、高基準値を格納する外部制御テーブルを使用してデータベース テーブルから Azure に新規行や更新行を増分読み込みする際に使用できるテンプレートについて説明します。
 

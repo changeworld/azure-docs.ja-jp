@@ -7,16 +7,20 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7d453b2724c308e48366d653a51d9e6aa8e82c96
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76156728"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415923"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory と Azure Data Share を使用したデータ統合
 
-お客様が先進的なデータ ウェアハウスおよび分析のプロジェクトに着手すると、より多くのデータが必要になるだけでなく、自社のデータ資産全体に対するデータの可視性を高めることも必要になります。 このワークショップでは、Azure Data Factory と Azure Data Share の強化によって、Azure におけるデータの統合と管理がいかに簡素化されるについて詳しく説明します。 コーディングが不要な ETL (または ELT) の実現からデータに対する包括的なビューの作成まで、Azure Data Factory の強化によって、データ エンジニアはより多くのデータを安心して取り込むことができるようになり、ひいては、会社により大きな価値をもたらすことができます。 Azure Data Share を使用すれば、統制された形で企業間の共有を行えます。
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+お客様が先進的なデータ ウェアハウスおよび分析のプロジェクトに着手すると、より多くのデータが必要になるだけでなく、自社のデータ資産全体に対するデータの可視性を高めることも必要になります。 このワークショップでは、Azure Data Factory と Azure Data Share の強化によって、Azure におけるデータの統合と管理がいかに簡素化されるについて詳しく説明します。 
+
+コーディングが不要な ETL (または ELT) の実現からデータに対する包括的なビューの作成まで、Azure Data Factory の強化によって、データ エンジニアはより多くのデータを安心して取り込むことができるようになり、ひいては、会社により大きな価値をもたらすことができます。 Azure Data Share を使用すれば、統制された形で企業間の共有を行えます。
 
 このワークショップでは、Azure Data Factory (ADF) を使用して Azure SQL データベース (SQL DB) から Azure Data Lake Storage Gen2 (ADLS gen2) にデータを取り込みます。 レイクにデータを配置したら、データ ファクトリのネイティブ変換サービスであるマッピング データ フローを介してそれを変換し、Azure Synapse Analytics (旧称 SQL DW) に書き込みます。 その後、Azure Data Share を使用して、変換済みのデータが含まれたテーブルを別のいくつかのデータと共に共有します。 
 

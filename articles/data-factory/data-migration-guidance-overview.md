@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
-ms.openlocfilehash: aaf1593cc049e8b23f8ebe36fea022b3029ccd04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4408546c892299e5bbbc22b00a4b334c36eda616
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930800"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416439"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Azure Data Factory を使用してデータ レイクまたはデータ ウェアハウスから Azure にデータを移行する
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 データ レイクまたはエンタープライズ データ ウェアハウス (EDW) を Microsoft Azure に移行する場合は、Azure Data Factory の使用を検討してください。 Azure Data Factory は、次のシナリオに適しています。
 

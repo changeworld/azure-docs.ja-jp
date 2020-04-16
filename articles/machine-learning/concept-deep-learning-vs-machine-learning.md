@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: bcacf4ff66e114f65ac75f0aadd1564875f15f62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b024010583ba1c6e0ffdf663f7335011ce212bf1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501368"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414583"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>ディープ ラーニングと機械学習
 
@@ -118,6 +118,6 @@ AI、機械学習、ディープ ラーニングの間の関係を理解する�
 
 - [Pytorch モデルを使用して画像を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
-- [Chainer モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [Chainer モデルを使用して手書きの数字を分類する](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
 
-また、[機械学習アルゴリズムのクイック ガイド](../synapse-analytics/sql-data-warehouse/cheat-sheet.md)を使用して、モデルのアルゴリズムを選択します。
+また、[機械学習アルゴリズムのクイック ガイド](algorithm-cheat-sheet.md)を使用して、モデルのアルゴリズムを選択します。

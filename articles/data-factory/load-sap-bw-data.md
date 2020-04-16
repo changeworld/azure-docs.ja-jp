@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 971871c28bd1b38b134c04b0334fbe99d1d655c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96b23696164514ad2f16de72f0f76aa237ffce2e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440200"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415834"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory を使用して SAP Business Warehouse (BW) からオープン ハブ経由で Azure Data Lake Storage Gen2 にデータをコピーする方法を示します。 同様のプロセスを使用して、他の[サポートされるシンク データ ストア](copy-activity-overview.md#supported-data-stores-and-formats)にデータをコピーできます。
 

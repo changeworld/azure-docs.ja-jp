@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 93d92286fa9eecbc64229059274cc8f9ed99e21e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b06000d6b3cd7a429b7ad0fc9c453595f21bd893
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74928274"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418475"
 ---
 # <a name="monitor-data-flows"></a>データ フローの監視
 
-
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 データ フローの作成とデバッグが完了したら、データ フローをスケジュールし、そのスケジュールに基づいて、パイプラインのコンテキスト内でデータ フローを実行する必要があります。 Azure Data Factory からパイプラインをスケジュールするときは、トリガーを使用します。 Azure Data Factory のパイプライン ビルダーから [Trigger Now]\(今すぐトリガー\) オプションを使用して単体実行を行い、パイプラインのコンテキスト内でデータ フローをテストすることもできます。
 

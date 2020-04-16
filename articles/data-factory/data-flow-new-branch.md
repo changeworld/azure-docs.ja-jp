@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 71fb9f1ba9952be0e6b3910dd1079aa6d3c0482d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af356641b4588529aea25826ff180707ff1ef4e2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75834496"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413616"
 ---
 # <a name="creating-a-new-branch-in-mapping-data-flow"></a>マッピング データ フローでの新しい分岐の作成
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 新しい分岐を追加して、同じデータ ストリームに対して複数の操作と変換を行います。 新しい分岐を追加すると、複数のシンクや自己結合データに対して同じソースをまとめて使用する場合に便利です。
 

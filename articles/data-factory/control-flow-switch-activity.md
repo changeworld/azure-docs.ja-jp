@@ -9,14 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440394"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418016"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Azure Data Factory の Switch アクティビティ
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Switch アクティビティは、プログラミング言語における switch ステートメントと同じ働きを持ちます。 条件評価に一致するケースに対応する一連のアクティビティが評価されます。
 

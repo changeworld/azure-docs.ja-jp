@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 38010e3aaa2d0544dfbfe19135d25250d2b021a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2e35e4eb750aa2244df920111b201d886599eaf6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929780"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419053"
 ---
 # <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>データベース ワークロードの宛先として Azure SQL Database マネージド インスタンスを使用した SSIS の移行
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 オンプレミスの SQL Server から Azure SQL Database マネージド インスタンスにデータベース ワークロードを移行する場合は、[Azure Data Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) (DMS) と、[DMS を使用した Azure SQL Database マネージド インスタンスの移行のネットワーク トポロジ](https://docs.microsoft.com/azure/dms/resource-network-topologies)を理解している必要があります。
 

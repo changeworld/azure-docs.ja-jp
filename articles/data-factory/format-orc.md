@@ -9,14 +9,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: e104c4c8e976207859b75212d5406558f04c6377
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b68d3724c6390fc5d30745924451e27ef9855b3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77597492"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417727"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure Data Factory での ORC 形式
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 **ORC ファイルを解析する場合や、ORC 形式にデータを書き込む場合**は、この記事に従ってください。 
 

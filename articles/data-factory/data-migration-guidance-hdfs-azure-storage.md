@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
-ms.openlocfilehash: afccbdbbfd5b8ddeefa621448d6170d937b518f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63b657e77172282225a9bc890b2f185b0f4d42a1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931448"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417129"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Azure Data Factory を使用してオンプレミスの Hadoop クラスターから Azure Storage にデータを移行する 
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Factory には、オンプレミスの HDFS から Azure Blob Storage または Azure Data Lake Storage Gen2 に大量のデータを移行するための、パフォーマンスと信頼性が高くコスト効率に優れたメカニズムが用意されています。 
 

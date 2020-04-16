@@ -11,19 +11,19 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e986515a911cf1bbd88dfc73c56efcc6e81826d6
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 174ee07e389e598fed6ed8487e60303fbce81f77
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351405"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416051"
 ---
 # <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Visual Studio と SSDT を使用して Azure Synapse Analytics に接続する
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
@@ -35,7 +35,7 @@ Visual Studio を使用して、わずか数分で Azure Synapse 内の SQL プ�
 
 * 既存の SQL プール。 作成するには、[SQL プールの作成](create-data-warehouse-portal.md)に関する記事を参照してください。
 * Visual Studio 用の SSDT。 Visual Studio を使用している場合は、既に Visual Studio 用の SSDT を持っている可能性があります。 インストールの手順とオプションの詳細については、 [Visual Studio と SSDT のインストール](sql-data-warehouse-install-visual-studio.md)に関するページを参照してください。
-* 完全修飾 SQL サーバー名。 この情報については、[SQL プールへの接続](sql-data-warehouse-connect-overview.md)に関する記事を参照してください。
+* 完全修飾 SQL サーバー名。 この情報については、[SQL プールへの接続](../sql/connect-overview.md)に関する記事を参照してください。
 
 ## <a name="1-connect-to-your-sql-pool"></a>1.SQL プールに接続する
 1. Visual Studio 2019 を開きます。

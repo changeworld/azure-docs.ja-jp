@@ -12,18 +12,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 231b0d77dc441e70dc0ec8de313291bb6b4f9292
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aedb3df69821d1436b03b2eb1f12873b624d426e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79230215"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414168"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド
 
 > [!div class="op_single_selector" title1="使用している Azure Data Factory のバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-copy-activity-performance.md)
 > * [現在のバージョン](copy-activity-performance.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 データ レイクまたはエンタープライズ データ ウェアハウス (EDW) から Azure への大規模なデータ移行を実行する場合でも、ビッグ データ分析のためにさまざまなソースから Azure にデータを大規模に取り込む場合でも、最適なパフォーマンスとスケーラビリティを実現することが重要です。  Azure Data Factory には、データを大規模に取り込むためのパフォーマンス、回復性、およびコスト効率に優れたメカニズムが備わっており、パフォーマンスとスケーラビリティの高いデータ インジェスト パイプラインを構築しようとしているデータ エンジニアに最適です。
 

@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: cf6f25e8839ead5738eb7259cc4fccb674a4adea
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 5360d91a17a7eee2dd0373ac311c79d22e085939
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633192"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416095"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>DMV を使用して Azure Synapse Analytics SQL プールのワークロードを監視する
 
@@ -309,4 +309,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>次のステップ
 
-DMV の詳細については、[システム ビュー](sql-data-warehouse-reference-tsql-system-views.md)に関するページを参照してください。
+DMV の詳細については、[システム ビュー](../sql/reference-tsql-system-views.md)に関するページを参照してください。

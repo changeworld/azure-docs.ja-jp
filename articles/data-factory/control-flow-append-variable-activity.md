@@ -11,15 +11,15 @@ ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
 ms.date: 10/09/2018
-ms.openlocfilehash: bcecd3411b6e6e751032f33862a671d8adbca046
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d74cd0fcd524f00d79eb3fbab386c602a413766
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73679977"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414205"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Azure Data Factory の変数追加アクティビティ
-
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 変数追加アクティビティを使用して、Data Factory パイプラインで定義されている既存の配列変数に値を追加する方法について説明します。
 
 ## <a name="type-properties"></a>型のプロパティ

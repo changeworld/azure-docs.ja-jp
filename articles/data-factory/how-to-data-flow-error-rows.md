@@ -8,14 +8,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: makromer
-ms.openlocfilehash: 3fe3403ad06d82ba5ccd33d2718bf0e5eff64490
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f65421a6457d4bf4d438ce9d035d46476829da2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73164629"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414355"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Data Factory のマッピング データ フローで SQL の切り捨てエラー行を処理する
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Data Factory のマッピング データ フローを使用する際の一般的なシナリオとして、変換済みのデータを Azure SQL データベースに書き込むことが挙げられます。 このシナリオでは一般に、列の切り捨てが起こりやすく、そのようなエラー状態は回避する必要があります。 以降の手順に従って、書き込み先の文字列型列に収まらない列をログに記録するしくみを作れば、そのようなシナリオでもデータ フローを続行することができます。
 
