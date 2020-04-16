@@ -33,7 +33,7 @@ Azure Portal から Cloud Shell アイコンを使用して試してみる。
 
 ![ポータルの起動](media/overview/portal-launch-icon.png)
 
-## <a name="features"></a>[機能]
+## <a name="features"></a>機能
 
 ### <a name="browser-based-shell-experience"></a>ブラウザーベースのシェル環境
 Cloud Shell は、Azure の管理タスクを視野に入れて開発されたブラウザーベースのコマンド ライン環境です。
