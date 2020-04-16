@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f1f83fdd73816e6e30c5cac7d193719591bb8dc1
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77022122"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999016"
 ---
 # <a name="in-store-analytics-architecture"></a>ストア内の分析のアーキテクチャ
 
@@ -51,7 +51,7 @@ Azure IoT Central アプリケーションにより、小売店環境内のさ�
 ソリューション内の Azure IoT Central アプリケーションは、一連の Azure PaaS (サービスとしてのプラットフォーム) サービスに対して、未加工または集計済みの分析情報をエクスポートするように構成できます。これらのサービスでは、データの操作を実行し、分析情報を補強してから、ビジネス アプリケーションに渡すことができます。 
 
 ## <a name="business-application"></a>ビジネス アプリケーション
-IoT データを使用して、小売り環境内に展開されたさまざまな種類のビジネス アプリケーションを強化することができます。 小売店のマネージャーまたはスタッフ メンバーは、これらのアプリケーションを使用して、ビジネス分析情報を視覚化し、意味のあるアクションをリアルタイムで実行できます。 小売りチーム向けのリアルタイム Power BI ダッシュボードを作成する方法については、[こちらのチュートリアル](./tutorial-in-store-analytics-create-app-pnp.md)を参照してください。
+IoT データを使用して、小売り環境内に展開されたさまざまな種類のビジネス アプリケーションを強化することができます。 小売店のマネージャーまたはスタッフ メンバーは、これらのアプリケーションを使用して、ビジネス分析情報を視覚化し、意味のあるアクションをリアルタイムで実行できます。 小売りチーム向けのリアルタイム Power BI ダッシュボードを作成する方法については、[こちらのチュートリアル](./tutorial-in-store-analytics-create-app.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [ストア内の分析 - チェックアウト](https://aka.ms/checkouttemplate)および[ストア内の分析 - 条件の監視](https://aka.ms/conditiontemplate)アプリケーション テンプレートの使用を始めます。 

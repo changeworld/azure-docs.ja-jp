@@ -1,19 +1,19 @@
 ---
 title: チュートリアル - Azure CLI を使用してスケール セットにアプリケーションをインストールする
 description: Azure CLI とカスタム スクリプト拡張機能を使用して仮想マシン スケール セットにアプリケーションをインストールする方法について説明します
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: b1f26444a2ab5407d3e98996f6826443b107e76a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6faaa3bc5149d4245d026e6f91e358993e15421d
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76271386"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011220"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用した仮想マシン スケール セットへのアプリケーションのインストール
 スケール セット内の仮想マシン (VM) インスタンスでアプリケーションを実行する　には、まず、アプリケーション コンポーネントと必要なファイルをインストールする必要があります。 前のチュートリアルでは、カスタム VM イメージを作成および使用して VM インスタンスをデプロイする方法について学習しました。 このカスタム イメージには、手動によるアプリケーションのインストールと構成が含まれていました。 このほか、各 VM インスタンスがデプロイされた後のスケール セットへのアプリケーションのインストールを自動化したり、既にスケール セットで実行されているアプリケーションを更新したりできます。 このチュートリアルで学習する内容は次のとおりです。

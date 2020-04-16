@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5f12b77f5baa1a3b06a093aac7267c65a038881e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 95386af4522adca1d65e04b01c2a349a80e9ab8a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061015"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273479"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Windows 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する
 ポイント対サイト (P2S) VPN 接続を使用すると、ポート 445 を開くことなく、Azure の外部から SMB 経由で Azure ファイル共有をマウントできます。 ポイント対サイト VPN 接続は、Azure と個々のクライアントの間の VPN 接続です。 Azure Files で P2S VPN 接続を使用するには、接続したいクライアントごとに P2S VPN 接続を構成する必要があります。 オンプレミス ネットワークから Azure ファイル共有に接続する必要のある多数のクライアントが存在する場合は、クライアントごとのポイント対サイト接続の代わりにサイト間 (S2S) VPN 接続を使用できます。 詳細については、「[Azure Files で使用するサイト間 VPN を構成する](storage-files-configure-s2s-vpn.md)」を参照してください。
@@ -138,7 +138,7 @@ $vpnName = "<desired-vpn-name-here>"
 $publicIpAddressName = "$vpnName-PublicIP"
 
 $publicIPAddress = New-AzPublicIpAddress `
-    -ResourceGroupName $resourceGroupName ` 
+    -ResourceGroupName $resourceGroupName `
     -Name $publicIpAddressName `
     -Location $region `
     -Sku Basic `
@@ -242,7 +242,7 @@ foreach ($session in $sessions) {
         -ArgumentList `
             $mypwd, `
             $vpnTemp, `
-            $virtualNetworkName
+            $virtualNetworkName `
         -ScriptBlock { 
             $mypwd = $args[0] 
             $vpnTemp = $args[1]
@@ -267,7 +267,7 @@ foreach ($session in $sessions) {
 
             Add-VpnConnection `
                 -Name $virtualNetworkName `
-                -ServerAddress $vpnProfile.VpnServer ` 
+                -ServerAddress $vpnProfile.VpnServer `
                 -TunnelType Ikev2 `
                 -EncryptionLevel Required `
                 -AuthenticationMethod MachineCertificate `

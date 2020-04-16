@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 66c3bd8650d1194d5d753c1dc967ec8e870c8748
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77169521"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998963"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>クイック スタート:Azure IoT Central でデバイスのルールとアクションを構成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "77169521"
 
 ## <a name="prerequisites"></a>前提条件
 
-作業を開始する前に、「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」と[IoT Central アプリケーションへのシミュレーションされたデバイスの追加](./quick-create-pnp-device.md)に関する 2 つのクイックスタートを完了して、作業に使用する **MXChip IoT DevKit** デバイス テンプレートを作成する必要があります。
+作業を開始する前に、「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」と[IoT Central アプリケーションへのシミュレーションされたデバイスの追加](./quick-create-simulated-device.md)に関する 2 つのクイックスタートを完了して、作業に使用する **MXChip IoT DevKit** デバイス テンプレートを作成する必要があります。
 
 ## <a name="create-a-telemetry-based-rule"></a>テレメトリベースのルールを作成する
 

@@ -3,7 +3,7 @@ title: Azure CDN の現在の POP IP リストの取得 | Microsoft Docs
 description: 現在の POP リストを取得する方法について学習します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
-ms.author: magattus
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 95b85aa11d99ddd48c90c8d9fa28789e79ee979f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a58fd7c6f50cd46ac3c34cd7e5bd329c0007e5f6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72299237"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260192"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の POP IP リストの取得
 

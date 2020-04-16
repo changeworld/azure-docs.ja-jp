@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2019
-ms.openlocfilehash: c9c69bb475c943003f78a69df1142653c3d5249e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6a3ac701442fb30e471bcc2c8f317e3988980f7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288378"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261977"
 ---
 # <a name="microsoft-commercial-marketplace-roadmap"></a>Microsoft の商業マーケットプレースのロードマップ
 
@@ -29,7 +29,7 @@ ms.locfileid: "80288378"
 
 * [Marketplace + CSP 更新のブログ](https://aka.ms/marketplacemarchupdateblog)
 * [CSP チャネル (ISV) にオファリングを発行](https://aka.ms/publishtocsp)
-* [Marketplace のオファリングを再販](hhttps://aka.ms/marketplaceincsp)
+* [Marketplace のオファリングを再販](https://aka.ms/marketplaceincsp)
 * [標準的な契約](https://aka.ms/standardcontract)
 * [SaaS Fulfillment API](https://aka.ms/saasapiv2)
 * [Marketplace の地域および通貨](https://aka.ms/marketplacegeos)

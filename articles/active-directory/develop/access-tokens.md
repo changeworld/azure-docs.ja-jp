@@ -9,15 +9,15 @@ ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.author: ryanwi
+ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 417829389a4b3a6bb55dcff9bfe59c2bc8693ca0
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: ed583abc8f60f3d367bf75254807e3f28cd0f1c9
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383210"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309709"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft ID プラットフォーム アクセス トークン
 

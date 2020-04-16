@@ -4,22 +4,20 @@ description: 分離、接続、場所の要件に基づいて仮想ネットワ�
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 3a4a9aea-7608-4d2e-bb3c-40de2e537200
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/16/2018
+ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 6e066d28afc4b0959b15284378cde682fbc05615
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95dd7be118e869aed02bb55918ab0cefa0d05d03
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190477"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998865"
 ---
 # <a name="plan-virtual-networks"></a>仮想ネットワークを計画する
 

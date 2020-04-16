@@ -3,12 +3,12 @@ title: Linux 上に開発環境をセットアップする
 description: Linux にランタイムと SDK をインストールし、ローカル開発クラスターを作成します。 このセットアップが終わると、アプリケーションを構築する準備は完了です。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 572b1509f45a7f5bf2c63619809f01d17c3493d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1048e1ccf6b9bc921daa3014ab8003fd53473461
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229303"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309113"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -20,7 +20,7 @@ ms.locfileid: "79229303"
 
 Linux の開発コンピューターに [Azure Service Fabric アプリケーション](service-fabric-application-model.md) をデプロイして実行するには、ランタイムと共通 SDK をインストールする必要があります。 また、必要に応じて Java および .NET Core デプロイ用 SDK をインストールすることもできます。 
 
-この記事の手順では、Linux にネイティブにインストールするか、Service Fabric OneBox コンテナー イメージ (`microsoft/service-fabric-onebox`) を使うことを想定しています。
+この記事の手順では、Linux にネイティブにインストールするか、Service Fabric OneBox コンテナー イメージ (`mcr.microsoft.com/service-fabric/onebox:latest`) を使うことを想定しています。
 
 Service Fabric のランタイムと SDK を Windows Subsystem for Linux にインストールすることはサポートされません。 Azure Service Fabric コマンド ライン インターフェイス (CLI) を使用して、クラウドやオンプレミスでホストされた Service Fabric のエンティティを管理することができ、これはサポートされています。 CLI をインストールする方法については、[Service Fabric CLI のセットアップ](./service-fabric-cli.md)に関するページを参照してください。
 

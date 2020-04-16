@@ -3,7 +3,7 @@ title: Azure CDN でのファイル圧縮によるパフォーマンスの向上
 description: Azure CDN でファイルを圧縮して、ファイル転送速度とページ読み込みパフォーマンスを向上させる方法を説明します。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
-ms.author: magattus
-ms.openlocfilehash: 9f185f58e1d33a3985777cb22bc7578f9f2c4541
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 7124dd40d4510674014afe012a8f40dcb5bb6153
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593801"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253766"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN でのファイル圧縮によるパフォーマンスの向上
 ファイル圧縮は、サーバーからファイルを送信する前にファイル サイズを減らすことができるため、ファイルの転送速度とページ読み込みのパフォーマンスを向上させることができる簡単で効率的な方法です。 ファイル圧縮により、帯域幅のコストを軽減し、ユーザーへの応答を改善することができます。

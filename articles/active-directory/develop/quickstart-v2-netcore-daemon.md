@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c4580708c827ebf700808974d01ed30ab9d2162d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 1faaa7a925d807152fed1b08627e76341a101958
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883629"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113523"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -196,7 +196,6 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientSecret(config.ClientSecret)
                                           .WithAuthority(new Uri(config.Authority))
                                           .Build();
-);
 ```
 
 > | 各値の説明: ||
@@ -245,8 +244,3 @@ result = await app.AcquireTokenForClient(scopes)
 
 > [!div class="nextstepaction"]
 > [クライアント資格情報 OAuth フロー](v2-oauth2-client-creds-grant-flow.md)
-
-Microsoft ID プラットフォームの改善にご協力ください。 簡単な 2 つの質問からなるアンケートに記入し、ご意見をお聞かせください。
-
-> [!div class="nextstepaction"]
-> [Microsoft ID プラットフォームのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

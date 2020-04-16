@@ -3,7 +3,7 @@ title: SAS を利用した Azure CDN の使用 | Microsoft Docs
 description: Azure CDN では、Shared Access Signature (SAS) を使用した、プライベート ストレージ コンテナーへの制限付きアクセス権限の付与がサポートされています。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
-ms.author: magattus
-ms.openlocfilehash: e7a170eaf74531cf4bd8c28aafaa5873f2459d0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: c2580aa4ee22996c1bf0fe5c86064a6543450071
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69982412"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260175"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS を利用した Azure CDN の使用
 

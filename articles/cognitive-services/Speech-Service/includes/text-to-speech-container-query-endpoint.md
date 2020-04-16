@@ -8,14 +8,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 6fe07da1e658efa8150c8cafb95bc5719c780aff
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: b2a621a23a81e4fb4f47e7c99d780211973e30a0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879025"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81275080"
 ---
-コンテナーには、[REST ベースのエンドポイント API](../rest-text-to-speech.md) が用意されています。 各種のプラットフォーム、フレームワーク、言語向けに、多数の[サンプル ソース コード プロジェクト](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/)が提供されています。
+コンテナーには、[REST ベースのエンドポイント API](../rest-text-to-speech.md) が用意されています。 各種のプラットフォーム、フレームワーク、言語向けに、多数の[サンプル ソース コード プロジェクト](https://github.com/Azure-Samples/Cognitive-Speech-TTS)が提供されています。
 
 "*標準のテキスト読み上げ*" コンテナーでは、ダウンロードしたイメージ タグのロケールと音声を使用することになります。 たとえば、`latest` タグをダウンロードした場合、既定のロケールは `en-US` で、音声は `JessaRUS` になります。 そのうえで、`{VOICE_NAME}` 引数は [`en-US-JessaRUS`](../language-support.md#standard-voices) となります。 次のサンプル SSML をご覧ください。
 

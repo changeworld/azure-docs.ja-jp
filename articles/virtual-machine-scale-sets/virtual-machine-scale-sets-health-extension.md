@@ -1,18 +1,18 @@
 ---
 title: アプリケーションの正常性拡張機能と Azure 仮想マシン スケール セットを使用する
 description: アプリケーションの正常性拡張機能を使用して、仮想マシン スケール セットにデプロイされたご自身のアプリケーションの正常性を監視する方法について説明します。
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: 37d93b04e6755512eac6c2a168bd2a04f8ac298f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275875"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273734"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>アプリケーションの正常性拡張機能と仮想マシン スケール セットの使用
 お使いのアプリケーションの正常性の監視は、ご自身のデプロイを管理およびアップグレードするための重要なシグナルです。 Azure 仮想マシン スケール セットでは、[OS イメージの自動アップグレード](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)などの[ローリング アップグレード](virtual-machine-scale-sets-automatic-upgrade.md)がサポートされ、個々のインスタンスの正常性を監視することで、ご自身のデプロイをアップグレードします。

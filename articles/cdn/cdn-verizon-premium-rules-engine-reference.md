@@ -2,17 +2,17 @@
 title: Azure CDN ルール エンジンのリファレンス | Microsoft Docs
 description: Azure CDN ルール エンジンの一致条件と機能に関するリファレンス ドキュメント。
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: aab93204c850223756f28a56ea550f912e28e0d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: bda817712faf1f54287e880dc62ef2b08273ff42
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69996768"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253392"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Azure CDN from Verizon Premium ルール エンジンのリファレンス
 

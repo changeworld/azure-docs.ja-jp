@@ -1,18 +1,18 @@
 ---
 title: 拡張機能のシーケンス処理と Azure 仮想マシン スケール セットを使用する
 description: 仮想マシン スケール セット上で複数の拡張機能をデプロイする際に拡張機能のプロビジョニングをシーケンス処理する方法について説明します。
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 737040699dd62d722b9a9ad4d8915ccb270c2d06
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278048"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273751"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>仮想マシン スケール セット内の拡張機能のプロビジョニングをシーケンス処理する
 Azure 仮想マシンの拡張機能は、デプロイ後の構成と管理、監視、セキュリティなどの機能を提供します。 通常、運用環境のデプロイでは、目的の結果を実現するために、VM インスタンス用に構成された複数の拡張機能の組み合わせを使用します。

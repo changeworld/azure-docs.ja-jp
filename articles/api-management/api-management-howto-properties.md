@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4362d0875ac2c20fc6963d404f86898a12387dad
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75834292"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260923"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーでの名前付きの値の使用方法
 
@@ -59,7 +59,7 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 名前付きの値が作成されたら、それをクリックして編集できます。 名前付きの値の名前を変更すると、その名前付きの値を参照するすべてのポリシーが、その新しい名前を使用するように自動的に更新されます。
 
-REST API を利用し、名前付きの値を編集する方法については、[REST API を利用して名前付きの値を編集する](/rest/api/apimanagement/2019-01-01/property?patch)に関するページを参照してください。
+REST API を利用し、名前付きの値を編集する方法については、[REST API を利用して名前付きの値を編集する](/rest/api/apimanagement/2019-12-01/property?patch)に関するページを参照してください。
 
 ## <a name="to-delete-a-named-value"></a>名前付きの値を削除するには
 
@@ -68,7 +68,7 @@ REST API を利用し、名前付きの値を編集する方法については�
 > [!IMPORTANT]
 > 名前付きの値がいずれかのポリシーで参照されている場合、その名前付きの値を使用しているすべてのポリシーからその値を削除するまで削除は完了しません。
 
-REST API を利用して名前付きの値を削除する方法については、[REST API を使用して名前付きの値を削除する](/rest/api/apimanagement/2019-01-01/property/delete)に関するページを参照してください。
+REST API を利用して名前付きの値を削除する方法については、[REST API を使用して名前付きの値を削除する](/rest/api/apimanagement/2019-12-01/property/delete)に関するページを参照してください。
 
 ## <a name="to-search-and-filter-named-values"></a>名前付きの値を検索し、フィルター処理するには
 

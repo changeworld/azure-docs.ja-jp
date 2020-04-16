@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の SQL キーワード
 description: Azure Cosmos DB の SQL キーワードについて説明します。
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.author: mjbrown
-ms.openlocfilehash: f2da2695ec20eac9dd2636104d3314427e60d541
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.author: tisande
+ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498545"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261569"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB でのキーワード
 

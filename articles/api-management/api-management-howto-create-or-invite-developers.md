@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 9de75b5537b3e267116882e7f151d893de575071
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 672f145b638fa6b85f7139f2edb4fc41bb2855d9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70072458"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260974"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Azure API Management でユーザー アカウントを管理する方法
 
-API Management では、開発者は、API Management を使用して公開された API のユーザーになります。 このガイドでは、開発者を作成する方法と、API Management インスタンスで公開した API および成果物を案内する招待メッセージを開発者に送信する方法について説明します。 プログラムによるユーザー アカウントの管理については、「[API Management REST (API Management REST)](/rest/api/apimanagement/)」リファレンスの[ユーザー エンティティ](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)に関するドキュメントを参照してください。
+API Management では、開発者は、API Management を使用して公開された API のユーザーになります。 このガイドでは、開発者を作成する方法と、API Management インスタンスで公開した API および成果物を案内する招待メッセージを開発者に送信する方法について説明します。 プログラムによるユーザー アカウントの管理については、「[API Management REST (API Management REST)](/rest/api/apimanagement/)」リファレンスの[ユーザー エンティティ](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)に関するドキュメントを参照してください。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 

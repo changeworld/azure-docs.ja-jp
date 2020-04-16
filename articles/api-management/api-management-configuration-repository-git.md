@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b9184808b71cce03882022fd37967fe421e64062
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f948d813ddb4d493b455a4922818e38ac3fd6eaa
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548980"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259172"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -56,7 +56,7 @@ Git 構成設定を表示して構成するには、 **[セキュリティ]** �
 >
 >
 
-REST API を使用して Git アクセスを有効または無効にする方法については、「 [Enable or disable Git access using the REST API (REST API を使用して Git アクセスを有効または無効にする)](/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit)」を参照してください。
+REST API を使用して Git アクセスを有効または無効にする方法については、「 [Enable or disable Git access using the REST API (REST API を使用して Git アクセスを有効または無効にする)](/rest/api/apimanagement/2019-12-01/tenantaccess?EnableGit)」を参照してください。
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>サービス構成を Git リポジトリに保存するには
 
@@ -68,7 +68,7 @@ REST API を使用して Git アクセスを有効または無効にする方法
 
 構成がリポジトリに保存されたら、そのリポジトリを複製できます。
 
-REST API を使用してこの操作を実行する方法については、「 [Commit configuration snapshot using the REST API (REST API を使用して構成スナップショットをコミットする)](/rest/api/apimanagement/2019-01-01/tenantaccess?CommitSnapshot)」を参照してください。
+REST API を使用してこの操作を実行する方法については、「 [Commit configuration snapshot using the REST API (REST API を使用して構成スナップショットをコミットする)](/rest/api/apimanagement/2019-12-01/tenantaccess?CommitSnapshot)」を参照してください。
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>ローカル コンピューターにリポジトリを複製するには
 
@@ -142,7 +142,7 @@ git push
 
 ローカルの変更をコミットし、サーバー リポジトリにプッシュしたら、これらの変更を API Management サービス インスタンスにデプロイできます。
 
-REST API を使用してこの操作を実行する方法については、「 [Deploy Git changes to configuration database using the REST API (REST API を使用して構成データベースに Git の変更をデプロイする)](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantconfiguration)」を参照してください。
+REST API を使用してこの操作を実行する方法については、「 [Deploy Git changes to configuration database using the REST API (REST API を使用して構成データベースに Git の変更をデプロイする)](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/tenantconfiguration)」を参照してください。
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>ローカル Git リポジトリのファイルとフォルダーの構造のリファレンス
 
@@ -172,9 +172,9 @@ REST API を使用してこの操作を実行する方法については、「 [
 > [!NOTE]
 > 次のエンティティは、Git リポジトリに含まれないため、Git を使用して構成することはできません。
 >
-> * [ユーザー](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)
-> * [サブスクリプション](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription)
-> * [名前付きの値](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/property)
+> * [ユーザー](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
+> * [サブスクリプション](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
+> * [名前付きの値](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/property)
 > * スタイル以外の開発者ポータルのエンティティ
 >
 
@@ -222,14 +222,14 @@ REST API を使用してこの操作を実行する方法については、「 [
 ### <a name="apis-folder"></a>apis フォルダー
 `apis` フォルダーには、サービス インスタンス内の各 API のフォルダーがあります。API のフォルダーには次の項目が含まれます。
 
-* `apis\<api name>\configuration.json` - これは API の構成で、バックエンド サービス URL と操作に関する情報が含まれています。 この情報は、[特定の API の取得](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get)を `export=true` 形式で `application/json` を指定して呼び出した場合に返される情報と同じです。
+* `apis\<api name>\configuration.json` - これは API の構成で、バックエンド サービス URL と操作に関する情報が含まれています。 この情報は、[特定の API の取得](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get)を `export=true` 形式で `application/json` を指定して呼び出した場合に返される情報と同じです。
 * `apis\<api name>\api.description.html` - これは API の説明で、`description`API エンティティ[の ](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty) プロパティに対応します。
 * `apis\<api name>\operations\` - このフォルダーには、API での操作に対応する `<operation name>.description.html` ファイルが含まれています。 各ファイルには、API での 1 つの操作の説明が含まれています。この操作は、REST API の`description`操作エンティティ[の ](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) プロパティに対応します。
 
 ### <a name="groups-folder"></a>groups フォルダー
 `groups` フォルダーには、サービス インスタンスで定義された各グループのフォルダーが含まれています。
 
-* `groups\<group name>\configuration.json` - これはグループの構成です。 [特定のグループの取得](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get) 操作を呼び出した場合に返される情報と同じです。
+* `groups\<group name>\configuration.json` - これはグループの構成です。 [特定のグループの取得](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/group/get) 操作を呼び出した場合に返される情報と同じです。
 * `groups\<group name>\description.html` - これはグループの説明で、`description`グループ エンティティ[の ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) プロパティに対応します。
 
 ### <a name="policies-folder"></a>policies フォルダー
@@ -249,7 +249,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 ### <a name="products-folder"></a>products フォルダー
 `products` フォルダーには、サービス インスタンスで定義された各製品のフォルダーが含まれています。
 
-* `products\<product name>\configuration.json` - これは製品の構成です。 [特定の製品の取得](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get) 操作を呼び出した場合に返される情報と同じです。
+* `products\<product name>\configuration.json` - これは製品の構成です。 [特定の製品の取得](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/product/get) 操作を呼び出した場合に返される情報と同じです。
 * `products\<product name>\product.description.html` - これは製品の説明で、REST API の`description`製品エンティティ[の ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) プロパティに対応します。
 
 ### <a name="templates"></a>テンプレート

@@ -1,19 +1,19 @@
 ---
 title: 仮想マシン スケール セットへのアプリケーションのデプロイ
 description: スケール セット内の Linux と Windows の仮想マシン インスタンスにアプリケーションを展開する方法について説明します。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: f8892199-f2e2-4b82-988a-28ca8a7fd1eb
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: 6bc319ea50da4ff6a654b2c9ab09bbe218695533
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: e157db79f1835a8ca891dd360a99e3319565d1d4
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278102"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011465"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットへのアプリケーションのデプロイ
 

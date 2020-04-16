@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f779781eee81bf85f6420e5bae6b0feb62680b8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f1d23f11cf73680a8861c9f1ac6cbd40ad497a4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064184"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257336"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -187,7 +187,7 @@ PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning に�
 * [Estimator を使用して ML モデルをトレーニングする](how-to-train-ml-models.md)。
 * [Azure Machine Learning を使用して PyTorch ディープ ラーニング モデルを大規模にトレーニングする](how-to-train-pytorch.md)。
 * [Azure Machine Learning を使用して TensorFlow モデルを大規模にトレーニングおよび登録する](how-to-train-tensorflow.md)。
-* [Azure Machine Learning を使用して大規模な Chainer モデルをトレーニングし、登録する](how-to-train-chainer.md)。
+* [Azure Machine Learning を使用して大規模な Chainer モデルをトレーニングし、登録する](how-to-train-ml-models.md)。
 
 ### <a name="endpoints"></a>エンドポイント
 

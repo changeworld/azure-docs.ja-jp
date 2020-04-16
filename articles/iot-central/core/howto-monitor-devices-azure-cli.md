@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 09209c21fe1b2b115c1ba6d6e00fcd0ee59a9393
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 0fa1b58547e0260ec5486003cf4cb85d855de33a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365427"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310232"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Azure CLI を使用してデバイスの接続性を監視する
 
@@ -21,7 +21,7 @@ ms.locfileid: "80365427"
 
 Azure CLI IoT 拡張機能を使用して、デバイスから IoT Central に送信されるメッセージを確認し、デバイス ツインでの変更を観察します。 このツールを使用し、デバイスの接続状態をデバッグし、観察し、クラウドに達しないデバイス メッセージの問題や、ツイン変更に応答しないデバイスの問題を診断できます。
 
-[詳細については、Azure CLI 拡張機能のリファレンスを参照してください。](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/central)
+[詳細については、Azure CLI 拡張機能のリファレンスを参照してください。](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
 
 ## <a name="prerequisites"></a>前提条件
 

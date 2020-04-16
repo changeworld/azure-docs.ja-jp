@@ -3,7 +3,7 @@ title: Verizon からのカスタム レポート | Microsoft Docs
 description: 次のレポートを使用して、CDN の使用パターンを表示できます:帯域幅、転送されたデータ、ヒット数、キャッシュの状態、キャッシュ ヒット率、転送された IPV4/IPV6 データ。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
-ms.author: magattus
-ms.openlocfilehash: 15f17ac6556c4ff731372dc7f738d0f58bdc3e31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 737803f5b7fcddb07787afbb48354b4ca922e9ed
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593282"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259750"
 ---
 # <a name="custom-reports-from-verizon"></a>Verizon からのカスタム レポート
 

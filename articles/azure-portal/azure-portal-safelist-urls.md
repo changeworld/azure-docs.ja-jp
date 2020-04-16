@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 01/29/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 399c64c88e78079432fcf7c09dafd199da83358b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76900667"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255051"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>ファイアウォールまたはプロキシ サーバーのセーフリストに Azure portal の URL を追加する
 
@@ -80,13 +80,3 @@ Azure portal 用にセーフリストに追加する URL エンドポイント�
 > これらのエンドポイントへのトラフィックには、標準的な TCP ポートが使用されます (HTTP では 80、HTTPS では 443)。
 >
 >
-## <a name="next-steps"></a>次のステップ
-
-IP アドレスをセーフリストに追加するには、 ご利用のクラウドの Microsoft Azure データセンターの IP 範囲のリストをダウンロードします。
-
-* [世界全域](https://www.microsoft.com/download/details.aspx?id=56519)
-* [米国政府](https://www.microsoft.com/download/details.aspx?id=57063)
-* [ドイツ](https://www.microsoft.com/download/details.aspx?id=57064)
-* [中国](https://www.microsoft.com/download/details.aspx?id=57062)
-
-その他の Microsoft サービスでは、さらに別の URL と IP アドレスが接続に使用されます。 Microsoft 365 サービスのネットワーク接続を最適化するには、「[Office 365 のネットワークをセットアップする](/office365/enterprise/set-up-network-for-office-365)」を参照してください。

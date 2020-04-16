@@ -3,7 +3,7 @@ title: Azure Linux 仮想マシンで Oracle Data Guard を実装する | Micros
 description: Oracle Data Guard をすばやく作成し、Azure 環境で実行します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: 7a165935e2c232167a0752272d244ce98bf6aff2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 6edb75f00a1ff38dbb1bd3822a704fa808e21caa
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534407"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262946"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle Data Guard を実装する 
 

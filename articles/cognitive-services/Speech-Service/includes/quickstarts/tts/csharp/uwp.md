@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: yinhew
-ms.openlocfilehash: 1633586a77465d9d5f605b17727f2531430d1cbd
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 89fc5fddffb291942b8f3a4db3dfdf4ccd6cf46a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671154"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275009"
 ---
 > [!NOTE]
 > ユニバーサル Windows プラットフォームを使用すると、PC、Xbox、Surface Hub、その他のデバイスなど、Windows 10 をサポートする任意のデバイスで動作するアプリを開発できます。
@@ -66,7 +66,7 @@ ms.locfileid: "80671154"
 
 ## <a name="next-steps"></a>次のステップ
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [Speech synthesis basics](../../text-to-speech-next-steps.md)]
 
 ## <a name="see-also"></a>関連項目
 

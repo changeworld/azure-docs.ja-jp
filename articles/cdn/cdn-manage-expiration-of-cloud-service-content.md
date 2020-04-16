@@ -3,7 +3,7 @@ title: Azure CDN での Web コンテンツ有効期限の管理 | Microsoft Doc
 description: Azure CDN で Azure Web Apps/Cloud Services、ASP.NET、または IIS コンテンツの有効期限を管理する方法について説明します。
 services: cdn
 documentationcenter: .NET
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
-ms.author: magattus
-ms.openlocfilehash: a701c332659181081184906a73826b7137d8c49c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 4598e6cee6ffbaaeb2a99727842fcd17fe0046c7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593711"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260566"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Azure CDN で Web コンテンツ有効期限を管理する
 > [!div class="op_single_selector"]

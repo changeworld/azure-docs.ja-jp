@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 49ef78ac5a7d58d86583d91bf072f0f3131796fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 889d0d1e98f5c9947588011774d02e54f05edca1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80089123"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257761"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Azure Lab Services を使用した自然言語処理でのディープ ラーニングに重点を置いたラボを設定する
 この記事では、Azure Lab Services を使用した自然言語処理 (NLP) でのディープ ラーニングに重点を置いたラボを設定する方法について説明します。 自然言語処理 (NLP) は、コンピューターで翻訳、音声認識、その他の言語認識機能を実行できるようにする、人工知能 (AI) の一種です。  
@@ -39,7 +39,7 @@ NLP の授業を受けている学生は、Linux 仮想マシン (VM) を使用�
 | ラボの設定 | 値/説明 | 
 | ------------ | ------------------ |
 | 仮想マシン (VM) サイズ | Small GPU (Compute)。 このサイズは、人工知能やディープ ラーニングのような、コンピューティング集中型およびネットワーク集中型のアプリケーションに最適です。 |
-| VM イメージ | [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu)。 このイメージでは、機械学習とデータ サイエンス向けのディープ ラーニング フレームワークとツールが提供されます。 このイメージでインストールされるツールの完全な一覧を見るには、次の記事を参照してください: 「[DSVM に含まれているもの](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm)」。 |
+| VM イメージ | [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 このイメージでは、機械学習とデータ サイエンス向けのディープ ラーニング フレームワークとツールが提供されます。 このイメージでインストールされるツールの完全な一覧を見るには、次の記事を参照してください: 「[DSVM に含まれているもの](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm)」。 |
 | リモート デスクトップ接続を有効にする | [Enable]\(有効にする\)。 <p>この設定を有効にすると、教師と学生はリモート デスクトップ (RDP) を使用して仮想マシン (VM) に接続できます。</p><p>**重要**:Data Science Virtual Machine for Linux イメージには、RDP が既にインストールおよび構成されています。 そのため、教師と学生は、何もしなくても RDP 経由で VM に接続できます。 また、グラフィカル デスクトップに接続する必要がある場合、このイメージでは [X2Go Server](https://wiki.x2go.org/doku.php/doc:newtox2go) が仮想マシンに既にインストールされています。 学生は、ローカル コンピューターに X2Go クライアントをインストールし、そのクライアントを使用して接続する必要があります。 詳細については、次のガイドを参照してください。 <ul><li>[Data Science Virtual Machine for Linux にアクセスする方法](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[テンプレート VM に接続して RDP および GUI パッケージをインストールする](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
 
 Data Science Virtual Machine for Linux イメージには、この種類のクラスに必要なディープ ラーニング フレームワークとツールが用意されています。 そのため、テンプレート マシンを作成した後で、さらにカスタマイズする必要はありません。 学生が使用できるように発行できます。 テンプレート ページの **[発行]** ボタンを選択して、テンプレートをラボに発行します。  

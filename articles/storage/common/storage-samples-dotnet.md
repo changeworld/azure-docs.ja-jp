@@ -7,12 +7,12 @@ ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: a4c9188c8f1315a3af452cd0c1fb5cf45ab82081
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77486119"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010496"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>v12 .NET クライアント ライブラリを使用した Azure Storage サンプル
 
@@ -51,18 +51,18 @@ ms.locfileid: "77486119"
 
 :::row:::
    :::column span="":::
-      [1 回の要求で複数の BLOB を削除する](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L22)
+      [1 回の要求で複数の BLOB を削除する](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L22)
    :::column-end:::
    :::column span="":::
-      [1 回の要求で複数の BLOB アクセス層を設定する](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L56)
+      [1 回の要求で複数の BLOB アクセス層を設定する](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [バッチ要求での粒度の細かい制御](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L90)
+      [バッチ要求での粒度の細かい制御](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L90)
    :::column-end:::
    :::column span="":::
-      [失敗したサブ操作からのエラーをキャッチする](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L136)
+      [失敗したサブ操作からのエラーをキャッチする](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L136)
    :::column-end:::
 :::row-end:::
 

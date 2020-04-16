@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 9eab035d494892671a2451866311ca06599ec030
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 598e361949b000724645c841910b1682a7bbb1a3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73953733"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258458"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>MXChip IoT DevKit を Azure IoT リモート監視ソリューション アクセラレータに接続する
 
@@ -120,7 +120,7 @@ DevKit が再起動され、コードの実行が開始されます。
 
 ## <a name="change-device-id"></a>デバイス ID の変更
 
-ハードコードされた **AZ3166** をコード内のカスタマイズされたデバイス ID に変更したい場合は、[リモート監視の例](https://github.com/Microsoft/devkit-sdk/blob/master/AZ3166/src/libraries/AzureIoT/examples/RemoteMonitoring/RemoteMonitoring.ino#L23)に示されているコード行を変更します。
+ハードコードされた **AZ3166** をコード内のカスタマイズされたデバイス ID に変更したい場合は、[リモート監視の例](../iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)に示されているコード行を変更します。
 
 ## <a name="problems-and-feedback"></a>問題とフィードバック
 

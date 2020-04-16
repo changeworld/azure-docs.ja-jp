@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e56b733a567c706c2a15f2c30ed93a47c244db11
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1dec52bbf1435cd7e363edf111f769d3e2cffb6a
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77168730"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998913"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>クイック スタート:Azure IoT Central を使用してデバイスを監視する
 
@@ -24,7 +24,7 @@ ms.locfileid: "77168730"
 
 ## <a name="prerequisites"></a>前提条件
 
-作業を開始する前に、「[Azure IoT Central アプリケーションを作成する](./quick-deploy-iot-central.md)」、「[シミュレーションされたデバイスを IoT Central アプリケーションに追加する](./quick-create-pnp-device.md)」、「[デバイスのルールとアクションを構成する](quick-configure-rules.md)」の 3 つのクイックスタートを完了する必要があります。
+作業を開始する前に、「[Azure IoT Central アプリケーションを作成する](./quick-deploy-iot-central.md)」、「[シミュレーションされたデバイスを IoT Central アプリケーションに追加する](./quick-create-simulated-device.md)」、「[デバイスのルールとアクションを構成する](quick-configure-rules.md)」の 3 つのクイックスタートを完了する必要があります。
 
 ## <a name="receive-a-notification"></a>通知の受信
 

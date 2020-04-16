@@ -5,12 +5,12 @@ author: suhuruli
 ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: f2ca1566358fad45f6ec2860fcca96b887c54adb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e278bcedc48226a59f258ad7d7064fa224737496
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722579"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308981"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
 2. 新しいディレクトリに、Service Fabric イメージを構築する `Dockerfile` というファイルを作成します。
 
     ```Dockerfile
-    FROM microsoft/service-fabric-onebox
+    FROM mcr.microsoft.com/service-fabric/onebox:latest
     WORKDIR /home/ClusterDeployer
     RUN ./setup.sh
     #Generate the local
@@ -98,7 +98,7 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
     >
     >アプリケーションが特定のポートでリッスンしている場合は、追加の `-p` タグを使用してポートを指定する必要があります。 たとえば、アプリケーションがポート 8080 でリッスンしている場合は、次の `-p` タグを追加します。
     >
-    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
+    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
 5. クラスターが起動するには少し時間がかかります。 実行状態になると、次のコマンドを使用してログを表示したり、ダッシュボードに移動してクラスターの正常性を確認したりすることができます ([http://localhost:19080](http://localhost:19080))。
@@ -197,7 +197,7 @@ Azure Service Fabric には、Java IDE 用として Eclipse Neon (以降) 用の
 最後の手順では、ホストと共有されているパスでコンテナーをインスタンス化します。 このプラグインでは、Mac 上の Docker コンテナーを操作するために、この種のインスタンス化が必要です。 次に例を示します。
 
 ```bash
-docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox microsoft/service-fabric-onebox
+docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:/tmp/mySFWorkspace --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest
 ```
 
 属性は次のように定義されます。

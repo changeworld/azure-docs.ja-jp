@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2f07f6a27e78ee4df8c64a09918758d02c28c6d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f67079938ddcf4a65e01ef50ab7e5cdf7078b73
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76898791"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260940"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Azure API Management で Azure Event Hubs にイベントを記録する方法
 Azure Event Hubs は、1 秒間に数百万件のイベントを取り込むことができる高度にスケーラブルなデータ受信サービスであり、接続されたデバイスとアプリケーションで生成される大量のデータを処理および分析できます。 Event Hubs はイベント パイプラインの「玄関」として機能し、Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーまたはバッチ処理/ストレージ アダプターを使用して変換および格納できます。 Event Hubs はイベント ストリームの生成とイベントの使用を分離し、イベント コンシューマーが独自のスケジュールでイベントにアクセスできるようにします。
@@ -30,9 +30,9 @@ Azure Event Hubs は、1 秒間に数百万件のイベントを取り込むこ�
 イベント ハブを作成し、イベント ハブでイベントの送受信を行うために必要な接続文字列を取得する方法の詳しい手順については、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)」をご覧ください。
 
 ## <a name="create-an-api-management-logger"></a>API Management ロガーの作成
-イベント ハブが完成したら、そこにイベントを記録できるようにするための構成を API Management サービスの [ロガー](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger) に対して行います。
+イベント ハブが完成したら、そこにイベントを記録できるようにするための構成を API Management サービスの [ロガー](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger) に対して行います。
 
-API Management のロガーは、 [API Management REST API](https://aka.ms/apimapi)を使用して構成します。 要求の詳細な例については、[ロガーの作成方法](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate)を参照してください。
+API Management のロガーは、 [API Management REST API](https://aka.ms/apimapi)を使用して構成します。 要求の詳細な例については、[ロガーの作成方法](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate)を参照してください。
 
 ## <a name="configure-log-to-eventhubs-policies"></a>log-to-eventhub ポリシーの構成
 
@@ -65,7 +65,7 @@ API Management でロガーを構成したら、必要なイベントを記録�
   * [EventProcessorHost を使用したメッセージの受信](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)
 * API Management と Event Hubs の統合の詳細
-  * [ロガーのエンティティ リファレンス](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger)
+  * [ロガーのエンティティ リファレンス](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger)
   * [log-to-eventhub ポリシー リファレンス](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
   * [Azure API Management、Event Hubs、Moesif を使用した API の監視](api-management-log-to-eventhub-sample.md)  
 * [Azure Application Insights との統合](api-management-howto-app-insights.md)について学習する

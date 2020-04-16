@@ -3,7 +3,7 @@ title: Azure CDN ルール エンジンの HTTP 変数 | Microsoft Docs
 description: HTTP 変数を使用すると、HTTP 要求と応答のメタデータを取得できます。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: magattus
-ms.openlocfilehash: 53ad0c516547e17801bd57c2fd6b0d1704383797
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: b9ced5d4a81effcd73e0243d09bb83ed0fe7667c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593816"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253698"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN ルール エンジンの HTTP 変数
 HTTP 変数は、HTTP 要求と応答のメタデータを取得するための手段を提供します。 このメタデータを使用して、要求または応答を動的に変更できます。 HTTP 変数の使用は、次のルール エンジンの機能に限定されています。

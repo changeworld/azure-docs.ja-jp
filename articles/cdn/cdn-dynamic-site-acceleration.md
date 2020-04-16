@@ -3,7 +3,7 @@ title: Azure CDN による動的サイトの高速化
 description: Azure CDN は、動的コンテンツを含むファイルに対する動的サイトの高速化 (DSA) の最適化をサポートします。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: magattus
-ms.openlocfilehash: 08e705d3c3623d4d02ccaea609eb0555aa1c8e33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 26559adf183a5e008d77b87654a1bd4dabebbca0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593920"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253834"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN による動的サイトの高速化
 

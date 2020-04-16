@@ -1,20 +1,20 @@
 ---
 title: 仮想マシン スケール セットの自動スケールに関するトラブルシューティング
 description: 仮想マシン スケール セットの自動スケールに関するトラブルシューティングを行います。 よくある問題とその解決方法について説明します。
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
 ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: windows
 ms.topic: conceptual
 ms.date: 11/16/2017
-ms.author: manayar
-ms.openlocfilehash: 923967a902f611ce845fbdc096fd2c02e681bb6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 4bc5e66f5b0759bdb5fe34276369161200bd5442
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76272427"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273377"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットの自動スケールに関するトラブルシューティング
 **問題** – Azure Resource Manager で仮想マシン スケール セットを使って自動スケール インフラストラクチャを作成しました。このとき、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale のようなテンプレートをデプロイしました。定義したスケール規則は正常に機能しましたが、仮想マシンの負荷をいくら増やしても、自動スケールが実行されません。

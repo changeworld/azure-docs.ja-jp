@@ -1,21 +1,21 @@
 ---
 title: Azure 仮想マシン スケール セットでの自動スケールの概要
 description: Azure 仮想マシン スケール セットをパフォーマンスや固定スケジュールに基づいて自動的にスケールするさまざまな方法について説明します
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb96be187502afcccfd3fb2c88f709facfbc3b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b3af40de107fd9273ec50425c58afc9772ea426
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278138"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010343"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットでの自動スケールの概要
 Azure 仮想マシン スケール セットは、アプリケーションを実行する VM インスタンスの数を自動的に増減させることができます。 この自動化された柔軟性のある動作により、アプリケーションを監視してパフォーマンスを最適化する管理上の負担を減らすことができます。 肯定的なカスタマー エクスペリエンスを得られる、許容されたパフォーマンスを定義するルールを作成します。 定義したしきい値に達すると、自動スケール ルールが実行されてスケール セットの容量が調整されます。 また、決まった時間にスケール セットの容量を自動的に増減させるイベントのスケジュールを設定することもできます。 この記事では、使用できるパフォーマンス メトリックの概要と、自動スケールで実行できるアクションについて説明します。

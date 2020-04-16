@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレートを継続的にビルド�
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 303edac9221b2a58986129388e33c84c3817d96e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ce6f176a52a742a3216a5b761b34254027a1c5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369373"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255075"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prepare-a-github-repository"></a>GitHub レポジトリを準備する
 
-GitHub を使用して、Resource Manager テンプレートを含むプロジェクトのソース コードを保存します。 その他のサポートされているリポジトリを使用する場合は、[Azure DevOps でサポートされているリポジトリ](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types)に関するページを参照してください。
+GitHub を使用して、Resource Manager テンプレートを含むプロジェクトのソース コードを保存します。 その他のサポートされているリポジトリを使用する場合は、[Azure DevOps でサポートされているリポジトリ](/azure/devops/pipelines/repos/?view=azure-devops)に関するページを参照してください。
 
 ### <a name="create-a-github-repository"></a>GitHub リポジトリを作成する
 

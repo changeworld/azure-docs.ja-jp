@@ -1,19 +1,19 @@
 ---
 title: Azure PowerShell のサンプル - ホスト ベースの自動スケールを有効にする
 description: このスクリプトでは、Windows Server 2016 を実行する仮想マシン スケール セットを作成し、ホスト ベースのメトリックを使用して、CPU 負荷の変化に合わせて自動的にスケールします。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 3cc811c7ebf952818bad68ab57659ec99afd2104
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7e44bfd60be6c579bf25618989e0c42ea396e217
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76276535"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011499"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用して仮想マシン スケール セットを自動的にスケールする
 このスクリプトでは、Windows Server 2016 を実行する仮想マシン スケール セットを作成し、ホスト ベースのメトリックを使用して、CPU 負荷の変化に合わせて自動的にスケールします。

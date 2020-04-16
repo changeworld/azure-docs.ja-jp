@@ -1,19 +1,19 @@
 ---
 title: Azure portal での仮想マシン スケール セットの自動スケール
 description: Azure Portal で仮想マシン スケール セットの自動スケール ルールを作成する方法
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: ecd80f49f0161c8bbc6ab7309f2af89e2ded1fe9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: 1915b144aec5a5447504c70d18dbf420d255a08e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278199"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010292"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure Portal で仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。

@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: a71dbd1b38ff58ccf1eb7a4d50daad5b24922e2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e42917237f3b114881655d88a017c2c4366612b3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022751"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254565"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio プロジェクト テンプレートを使用して Batch ソリューションをすぐに開始する
 
@@ -444,7 +444,7 @@ Batch ソリューション開発に有効活用できるもう 1 つのツー�
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
-[vs_gallery_templates]: https://go.microsoft.com/fwlink/?linkid=820714
+[vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
 [vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png

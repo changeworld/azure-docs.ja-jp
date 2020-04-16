@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31a5195038ef25acadc08e2acbedf8471b25833c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086332"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261416"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する
 
@@ -160,7 +160,7 @@ Stream Analytics ジョブが作成されたので、Power BI ワークスペー
 ### <a name="use-the-power-bi-ui"></a>Power BI UI を使用する
 
    > [!Note]
-   > UI を使用して Stream Analytics ジョブを Power BI ワークスペースに追加するには、Power BI 管理ポータルの **[開発者向け設定]** でサービス プリンシパル アクセスを有効にする必要もあります。 詳細については、「[サービス プリンシパルの使用を始める](https://docs.microsoft.com/power-bi/developer/embed-service-principal#get-started-with-a-service-principal)」を参照してください。
+   > UI を使用して Stream Analytics ジョブを Power BI ワークスペースに追加するには、Power BI 管理ポータルの **[開発者向け設定]** でサービス プリンシパル アクセスを有効にする必要もあります。 詳細については、「[サービス プリンシパルの使用を始める](https://docs.microsoft.com/power-bi/developer/embed-service-principal)」を参照してください。
 
 1. ワークスペースのアクセス設定に移動します。 詳細については、次の記事を参照してください。「[ワークスペースへのアクセスを許可する](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace)」
 

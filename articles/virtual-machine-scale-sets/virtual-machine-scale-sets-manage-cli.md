@@ -1,18 +1,18 @@
 ---
 title: Azure CLI を使用した仮想マシン スケール セットの管理
 description: 仮想マシン スケール セットを管理するための一般的な Azure CLI コマンド (インスタンスの起動と停止、スケール セット容量の変更の方法など)。
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: d8f40708cf5a9989146a72e2093de7bad47ffde9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: ad07a237dd40d836705b332c6c10356720901481
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275748"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011584"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI を使用した仮想マシン スケール セットの管理
 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 この記事では、これらのタスクを実行するための一般的な Azure CLI コマンドの一部について説明します。

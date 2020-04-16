@@ -1,19 +1,19 @@
 ---
 title: チュートリアル - Azure テンプレートを使用してスケール セットにアプリをインストールする
 description: Azure Resource Manager テンプレートとカスタム スクリプト拡張機能を使用して、仮想マシン スケール セットにアプリケーションをインストールする方法について説明します
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 4f2d30cc10ff2387a31101bae663ef920a22384a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aa5ce8876675b4332b92ee09295409540a5e6e66
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76279087"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011223"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>チュートリアル: Azure テンプレートを使用した仮想マシン スケール セットへのアプリケーションのインストール
 スケール セット内の仮想マシン (VM) インスタンスでアプリケーションを実行する　には、まず、アプリケーション コンポーネントと必要なファイルをインストールする必要があります。 前のチュートリアルでは、カスタム VM イメージを作成および使用して VM インスタンスをデプロイする方法について学習しました。 このカスタム イメージには、手動によるアプリケーションのインストールと構成が含まれていました。 このほか、各 VM インスタンスがデプロイされた後のスケール セットへのアプリケーションのインストールを自動化したり、既にスケール セットで実行されているアプリケーションを更新したりできます。 このチュートリアルで学習する内容は次のとおりです。

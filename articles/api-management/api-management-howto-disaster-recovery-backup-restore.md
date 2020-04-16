@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: f9758678708338a284a35b45f7f9dd43b9a9017c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e74d7dcf8764d167e0080c9d7cca5573bd69ef1d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335957"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261008"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -131,7 +131,7 @@ namespace GetTokenResourceManagerRequests
 
 ## <a name="calling-the-backup-and-restore-operations"></a>バックアップおよび復元操作の呼び出し
 
-REST API は [API Management Service - Backup](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup) と [API Management Service - Restore](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore) です。
+REST API は [API Management Service - Backup](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup) と [API Management Service - Restore](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore) です。
 
 以降のセクションで説明されている "バックアップおよび復元" の操作を呼び出す前に、REST 呼び出しに承認要求ヘッダーを設定します。
 

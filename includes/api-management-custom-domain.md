@@ -4,12 +4,12 @@ ms.service: api-management
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
-ms.openlocfilehash: b9e601c72395b4910850714460321a83a3113e69
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3b42d5fbcfb19f08b46241dbe92e6a300bec1df6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77649545"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81275189"
 ---
 ## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>APIM プロキシ サーバーが SSL 証明書を使用して TLS ハンドシェイクで応答する方法
 
@@ -20,9 +20,9 @@ ms.locfileid: "77649545"
 [SNI](https://tools.ietf.org/html/rfc6066#section-3) ヘッダーを送信しないクライアントを使用している場合、APIM は次のロジックに基づいて応答を作成します。
 
 * このサービスにプロキシ用のカスタム ドメインが 1 つだけ設定されている場合、そのプロキシ カスタム ドメインに発行された証明書が既定の証明書になります。
-* このサービスにプロキシ用のカスタム ドメインが複数設定されている場合 (**Developer** および **Premium** レベルでサポート)、お客様は既定の証明書を指定できます。 既定の証明書を設定するには、[defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) プロパティを true に設定する ("defaultSslBinding":"true") 必要があります。 お客様がこのプロパティを設定していない場合、既定の証明書は、*.azure-api.net でホストされる既定のプロキシ ドメインに発行された証明書になります。
+* このサービスにプロキシ用のカスタム ドメインが複数設定されている場合 (**Developer** および **Premium** レベルでサポート)、お客様は既定の証明書を指定できます。 既定の証明書を設定するには、[defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apimanagementservice/createorupdate#hostnameconfiguration) プロパティを true に設定する ("defaultSslBinding":"true") 必要があります。 お客様がこのプロパティを設定していない場合、既定の証明書は、*.azure-api.net でホストされる既定のプロキシ ドメインに発行された証明書になります。
 
 ## <a name="support-for-putpost-request-with-large-payload"></a>ペイロードの大きい PUT/POST 要求のサポート
 
-HTTPS でクライアント側の証明書を使用する場合、APIM プロキシ サーバーでペイロードの大きな要求 (40 KB を超えるペイロードなど) がサポートされます。 サーバーの要求がフリーズしないように、プロキシ ホスト名に ["negotiateClientCertificate": "true"](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/CreateOrUpdate#hostnameconfiguration) プロパティを設定できます。 このプロパティが true に設定されている場合、HTTP 要求の交換前の SSL/TLS 接続時に、クライアント証明書が要求されます。 この設定は**プロキシ ホスト名**レベルで適用されるため、すべての接続要求でクライアント証明書が求められます。 プロキシ用のカスタム ドメインを最大 20 個設定して (**Premium** レベルでのみサポート)、この制限を回避できます。
+HTTPS でクライアント側の証明書を使用する場合、APIM プロキシ サーバーでペイロードの大きな要求 (40 KB を超えるペイロードなど) がサポートされます。 サーバーの要求がフリーズしないように、プロキシ ホスト名に ["negotiateClientCertificate": "true"](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/ApiManagementService/CreateOrUpdate#hostnameconfiguration) プロパティを設定できます。 このプロパティが true に設定されている場合、HTTP 要求の交換前の SSL/TLS 接続時に、クライアント証明書が要求されます。 この設定は**プロキシ ホスト名**レベルで適用されるため、すべての接続要求でクライアント証明書が求められます。 プロキシ用のカスタム ドメインを最大 20 個設定して (**Premium** レベルでのみサポート)、この制限を回避できます。
 
