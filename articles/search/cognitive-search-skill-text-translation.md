@@ -1,7 +1,7 @@
 ---
 title: テキスト翻訳コグニティブ スキル
 titleSuffix: Azure Cognitive Search
-description: テキストが評価され、レコードごとに、Azure コグニティブ検索の AI エンリッチメント パイプラインで、指定した対象言語に翻訳されたテキストが返されます。
+description: テキストが評価され、レコードごとに、Azure Cognitive Search の AI エンリッチメント パイプラインで、指定した対象言語に翻訳されたテキストが返されます。
 manager: nitinme
 author: careyjmac
 ms.author: chalton
