@@ -54,7 +54,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 | スイス | CHE |
 | アラブ首長国連邦 | ARE |
 | イギリス | GBR |
-| United States | NAM |
+| アメリカ | NAM |
 
 * この表に掲載されていない geo (南アメリカなど) は、Multi-Geo には使用できません。
 
