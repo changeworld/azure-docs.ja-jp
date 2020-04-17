@@ -759,14 +759,6 @@
           items:
             - name: 1 - データのクエリ
               href: tutorial-query-graph.md
-        - name: リファレンス
-          items:
-            - name: レスポンス ヘッダー
-              href: gremlin-headers.md
-            - name: 制限
-              href: gremlin-limits.md
-            - name: 互換性
-              href: gremlin-compatibility.md
         - name: 操作方法ガイド
           items:
             - name: グラフ データのモデリング
@@ -794,6 +786,14 @@
               href: powershell-samples-gremlin.md
             - name: Azure CLI を使用して管理する
               href: cli-samples-gremlin.md
+        - name: リファレンス
+          items:
+            - name: レスポンス ヘッダー
+              href: gremlin-headers.md
+            - name: 制限
+              href: gremlin-limits.md
+            - name: 互換性
+              href: gremlin-compatibility.md
     - name: テーブル API
       items:
         - name: 概要
