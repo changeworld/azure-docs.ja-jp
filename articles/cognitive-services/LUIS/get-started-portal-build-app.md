@@ -50,7 +50,7 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 意図を作成するには、次の手順を実行します。
 
-1. アプリの作成が完了すると、 **[Build]** セクションに **[Intents]** ページが表示されます。 **[Create]** を選択します
+1. アプリの作成が完了すると、 **[Build]** セクションに **[Intents]** ページが表示されます。 **[Create]** を選択します。
 
    [![[作成] を選択して新しい意図を作成する](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
