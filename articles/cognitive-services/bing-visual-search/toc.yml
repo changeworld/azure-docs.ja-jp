@@ -80,7 +80,7 @@
       maintainContext: true
 - name: リソース
   items:
-    - name: 言語とリージョンのサポート
+    - name: 言語のサポート
       href: language-support.md
     - name: 無料のアクセス キーの取得
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api'
