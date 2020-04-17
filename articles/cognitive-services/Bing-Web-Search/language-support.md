@@ -108,7 +108,7 @@ Bing Web Search API では 30 を超える国または地域がサポートさ�
 |台湾|Traditional Chinese|zh-TW|
 |トルコ|トルコ語|tr-TR|
 |イギリス|英語|en-GB|
-|アメリカ|英語||
+|アメリカ|英語|ja-JP|
 |アメリカ|スペイン語|es-US|
 
 ## <a name="next-steps"></a>次のステップ
