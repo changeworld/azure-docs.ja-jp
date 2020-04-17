@@ -1,96 +1,102 @@
-### YamlMime:Landing
-title: Azure Key Vault のドキュメント
+### YamlMime:Hub
+title: Azure Key Vault
 summary: Key Vault を使用して、クラウドのリソース、アプリ、ソリューションにアクセスして暗号化するキーを作成および管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。
+brand: azure
 metadata:
   title: Azure Key Vault のドキュメント
   description: Key Vault を使用して、クラウドのリソース、アプリ、ソリューションにアクセスして暗号化するキーを作成および管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。
   services: key-vault
   ms.service: key-vault
-  ms.topic: landing-page
+  ms.subservice: na
+  ms.topic: hub-page
+  ms.collection: na
   author: msmbaldwin
   ms.author: mbaldwin
-  manager: rkarlin
-  ms.date: 09/19/2019
-  ms.openlocfilehash: cbd1ca9ead64bfda8401876ec54487f767363d3c
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.date: 04/07/2020
+  ms.openlocfilehash: e969d71be3c8f77607e69205c24d6c980c9943a2
+  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "71299785"
-landingContent:
-- title: Azure Key Vault について
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81536269"
+highlightedContent:
+  items:
+  - title: Azure Key Vault の概要
+    itemType: overview
+    url: ./general/overview.md
+  - title: 基本的な概念
+    itemType: overview
+    url: ./general/basic-concepts.md
+  - title: 論理的な削除
+    itemType: overview
+    url: ./general/overview-soft-delete.md
+  - title: ログ記録
+    itemType: overview
+    url: ./general/logging.md
+  - title: Throttling
+    itemType: overview
+    url: ./general/overview-throttling.md
+  - title: セキュリティに関する推奨事項
+    itemType: overview
+    url: ./general/security-recommendations.md
+conceptualContent:
+  items:
+  - title: 証明書
     links:
-    - text: Azure Key Vault とは?
-      url: key-vault-overview.md
-  - linkListType: concept
+    - url: ./certificates/about-certificates.md
+      itemType: overview
+      text: 証明書について
+    - url: ./certificates/quick-create-portal.md
+      itemType: quickstart
+      text: Azure portal を使用して Azure Key Vault から証明書の設定と取得を行う
+    - url: ./certificates/certificate-scenarios.md
+      itemType: overview
+      text: Key Vault 証明書の概要
+    - url: ./certificates/create-certificate-scenarios.md
+      itemType: overview
+      text: 証明書作成の監視と管理
+    footerLink:
+      url: ./certificates/index.yml
+      text: 詳細情報
+  - title: '[キー]'
     links:
-    - text: 基本的な概念
-      url: basic-concepts.md
-    - text: 論理的な削除
-      url: key-vault-ovw-soft-delete.md
-    - text: Throttling
-      url: key-vault-ovw-throttling.md
-- title: はじめに
-  linkLists:
-  - linkListType: quickstart
+    - url: ./keys/about-keys.md
+      itemType: overview
+      text: キーについて
+    - url: ./keys/quick-create-portal.md
+      itemType: quickstart
+      text: Azure portal を使用して Azure Key Vault からキーの設定と取得を行う
+    - url: ./keys/hsm-protected-keys.md
+      itemType: tutorial
+      text: HSM で保護されたキーを Key Vault にインポートする
+    - url: ./keys/hsm-protected-keys-vendor-agnostic-byok.md
+      itemType: overview
+      text: ベンダーに依存しない HSM で保護されたキーをインポートする
+    footerLink:
+      url: ./keys/index.yml
+      text: 詳細情報
+  - title: シークレット
     links:
-    - text: Azure CLI
-      url: quick-create-cli.md
-    - text: Azure PowerShell
-      url: quick-create-powershell.md
-    - text: ポータル
-      url: quick-create-portal.md
-    - text: .NET
-      url: quick-create-net.md
-    - text: Node.js
-      url: quick-create-node.md
-- title: チュートリアル
-  linkLists:
-  - linkListType: tutorial
+    - url: ./secrets/about-secrets.md
+      itemType: overview
+      text: シークレットについて
+    - url: ./secrets/quick-create-portal.md
+      itemType: quickstart
+      text: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う
+    - url: ./secrets/tutorial-rotation.md
+      itemType: tutorial
+      text: シングルユーザー リソースのシークレットのローテーション
+    footerLink:
+      url: ./secrets/index.yml
+      text: 詳細情報
+  - title: ストレージ キーの管理
     links:
-    - text: Web アプリケーションからの Key Vault
-      url: tutorial-net-create-vault-azure-web-app.md
-    - text: Key Vault と Azure Linux 仮想マシン
-      url: tutorial-net-linux-virtual-machine.md
-    - text: Key Vault と Azure Windows 仮想マシン
-      url: tutorial-net-windows-virtual-machine.md
-    - text: Key Vault と Python - Linux
-      url: tutorial-python-linux-virtual-machine.md
-    - text: Key Vault と Python - Windows
-      url: tutorial-python-windows-virtual-machine.md
-- title: Key Vault とストレージ キー
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Azure CLI を使用してストレージ キーを管理する
-      url: key-vault-ovw-storage-keys.md
-    - text: Azure PowerShell を使用してストレージ キーを管理する
-      url: key-vault-overview-storage-keys-powershell.md
-    - text: SAS トークンをコードにフェッチする
-      url: storage-keys-sas-tokens-code.md
-- title: Key Vault アプリの統合
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 開発者ガイド
-      url: key-vault-developers-guide.md
-    - text: マネージド ID を使用して Key Vault にアクセスする
-      url: managed-identity.md
-  - linkListType: tutorial
-    links:
-    - text: .NET Azure Web アプリで Key Vault を使用する
-      url: tutorial-net-create-vault-azure-web-app.md
-  - linkListType: reference
-    links:
-    - text: 認証、要求、応答
-      url: authentication-requests-and-responses.md
-    - text: Key Vault REST API リファレンス
-      url: /rest/api/keyvault/
-- title: Microsoft Learn
-  linkLists:
-  - linkListType: learn
-    links:
-    - text: Azure Key Vault を使用してサーバー アプリでシークレットを管理する
-      url: /learn/modules/manage-secrets-with-azure-key-vault/
+    - url: ./secrets/overview-storage-keys.md
+      itemType: overview
+      text: ストレージ キー - CLI
+    - url: ./secrets/overview-storage-keys-powershell.md
+      itemType: overview
+      text: ストレージ キー - PowerShell
+    - url: ./secrets/storage-keys-sas-tokens-code.md
+      itemType: overview
+      text: SAS トークンをコードにフェッチする

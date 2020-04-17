@@ -318,8 +318,6 @@
               href: app/pre-aggregated-metrics-log-metrics.md
             - name: ログベースのメトリックの定義
               href: platform/app-insights-metrics.md
-            - name: クラシック メトリック エクスプローラー
-              href: app/metrics-explorer.md
         - name: 検索
           href: app/diagnostic-search.md
         - name: プロファイラー

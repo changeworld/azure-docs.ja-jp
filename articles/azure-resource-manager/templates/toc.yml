@@ -40,6 +40,8 @@
           href: ../../key-vault/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Load Balancer
           href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: マネージド アプリケーション
+          href: ../managed-applications/publish-service-catalog-app.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: ポリシー
           href: ../../governance/policy/assign-policy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Service Bus メッセージング
@@ -50,6 +52,8 @@
           href: ../../virtual-machine-scale-sets/quick-create-template-linux.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 仮想マシン スケール セット - Windows
           href: ../../virtual-machine-scale-sets/quick-create-template-windows.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Web アプリケーション ファイアウォール
+          href: ../../web-application-firewall/ag/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: チュートリアル
   items:
     - name: 初心者向けテンプレート

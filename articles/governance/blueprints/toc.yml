@@ -30,6 +30,11 @@
     - name: インデックス
       displayName: 'list, examples'
       href: ./samples/index.md
+    - name: Azure セキュリティ ベンチマーク
+      items:
+        - name: コントロール マッピング
+          displayName: 'standards, azure, benchmark'
+          href: ./samples/azure-security-benchmark/control-mapping.md
     - name: カナダ連邦の PBMM
       items:
         - name: 概要
