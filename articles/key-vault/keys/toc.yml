@@ -1,0 +1,64 @@
+- name: '[キー]'
+  href: index.yml
+- name: 概要
+  items:
+    - name: Key Vault キーについて
+      href: about-keys.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: CLI
+      href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
+    - name: ポータル
+      href: quick-create-portal.md
+    - name: Python
+      href: quick-create-python.md
+- name: チュートリアル
+  items:
+    - name: HSM で保護されたキーをインポートする
+      href: hsm-protected-keys.md
+    - name: HSM で保護されたキーをインポートする (プレビュー)
+      href: hsm-protected-keys-vendor-agnostic-byok.md
+    - name: HSM で保護されたキーをインポートする (レガシ)
+      href: hsm-protected-keys-legacy.md
+- name: リファレンス
+  items:
+    - name: Azure PowerShell
+      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: REST
+      href: /rest/api/keyvault
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
+- name: リソース
+  items:
+    - name: Microsoft Learn でスキルを身に付ける
+      href: /learn/browse/?products=azure-key-vault
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+    - name: サービス レベル アグリーメント (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+    - name: サービスの制限
+      href: ../general/service-limits.md
+    - name: サービスの状態
+      href: 'https://azure.microsoft.com/status/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=key-vault'
+    - name: ブログ
+      href: 'https://blogs.technet.com/b/kv/'
+    - name: 製品フィードバック
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure Synapse Analytics (旧称 Azure SQL Data Warehouse)
+title: Azure Synapse Analytics
 summary: Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。
 metadata:
   title: Azure Synapse Analytics
@@ -11,28 +11,40 @@ metadata:
   ms.collection: collection
   author: julieMSFT
   ms.author: jrasnick
-  ms.date: 10/03/2019
-  ms.openlocfilehash: 16855697c61bb4b919d4f7dcaa752d3a17f6dbef
-  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+  ms.date: 04/15/2020
+  ms.openlocfilehash: ea895ce94ed3b1fde574a1753981ac58adcb72b3
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80998830"
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81414259"
 landingContent:
-- title: Azure Synapse Analytics について
+- title: Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure Synapse とは
+    - text: Azure Synapse とは (旧称 Azure SQL Data Warehouse)
       url: sql-data-warehouse-overview-what-is.md
+    - text: ヒントとベスト プラクティス
+      url: cheat-sheet.md
   - linkListType: architecture
     links:
     - text: Azure Synapse アーキテクチャ
       url: massively-parallel-processing-mpp-architecture.md
-    - text: ヒントとベスト プラクティス
-      url: cheat-sheet.md
     - text: 参照アーキテクチャ
       url: https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/data/enterprise-bi-synapse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
+- title: Azure Synapse Analytics (ワークスペース プレビュー) について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Synapse (ワークスペース プレビュー) とは
+      url: ../overview-what-is.md
+    - text: ヒントとベスト プラクティス
+      url: ../overview-cheat-sheet.md
+    - text: よく寄せられる質問
+      url: ../overview-faq.md
+    - text: リリース ノート
+      url: ../release-notes.md
 - title: 作業の開始
   linkLists:
   - linkListType: deploy
@@ -63,12 +75,8 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: ベスト プラクティス
-      url: sql-data-warehouse-best-practices.md
     - text: 順序指定クラスター化列ストア インデックスのチューニング
       url: performance-tuning-ordered-cci.md
-    - text: ワークロードのチューニングに具体化されたビューを使用する
-      url: performance-tuning-materialized-views.md
   - linkListType: how-to-guide
     links:
     - text: ワークロードの分析
@@ -99,5 +107,5 @@ landingContent:
   linkLists:
   - linkListType: video
     links:
-    - text: データ ウェアハウスに関する最新のビデオを見る
+    - text: 最新の Synapse SQL ビデオを見る
       url: sql-data-warehouse-videos.md

@@ -1,5 +1,7 @@
 - name: 切断面
   href: cut-planes.md
+- name: デバッグ レンダリング
+  href: debug-rendering.md
 - name: 階層状態のオーバーライド
   href: override-hierarchical-state.md
 - name: Late Stage Reprojection

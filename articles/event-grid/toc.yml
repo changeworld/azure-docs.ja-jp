@@ -15,23 +15,23 @@
   items:
     - name: ストレージ イベント
       items:
+        - name: ポータル
+          href: blob-event-quickstart-portal.md
         - name: Azure CLI
           href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
         - name: Azure PowerShell
           href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
-        - name: ポータル
-          href: blob-event-quickstart-portal.md
         - name: ARM テンプレート
           displayName: Resource Manager
           href: blob-event-quickstart-template.md
     - name: カスタム イベント
       items:
+        - name: ポータル
+          href: custom-event-quickstart-portal.md
         - name: Azure CLI
           href: custom-event-quickstart.md
         - name: PowerShell
           href: custom-event-quickstart-powershell.md
-        - name: ポータル
-          href: custom-event-quickstart-portal.md
     - name: イベント ハンドラーとしての Azure Functions
       href: custom-event-to-function.md
     - name: イベント ハンドラーとしてのキュー ストレージ
@@ -96,10 +96,63 @@
       href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
 - name: 概念
   items:
-    - name: Event Grid の概念
+    - name: Event Grid の用語
       href: concepts.md
+    - name: カスタム トピック
+      href: custom-topics.md
     - name: システム トピック
-      href: system-topics.md
+      items:
+        - name: システム トピックの概要
+          href: system-topics.md
+        - name: イベント ソース
+          items:
+            - name: Azure App Configuration
+              href: event-schema-app-configuration.md
+            - name: Azure Blob Storage
+              href: event-schema-blob-storage.md
+            - name: Azure Container Registry
+              href: event-schema-container-registry.md
+            - name: Azure Event Hubs
+              href: event-schema-event-hubs.md
+            - name: Azure IoT Hub
+              href: event-schema-iot-hub.md
+            - name: Azure Key Vault
+              href: event-schema-key-vault.md
+            - name: Azure Machine Learning
+              href: event-schema-machine-learning.md
+            - name: Azure Maps
+              href: event-schema-azure-maps.md
+            - name: Azure Media Services
+              href: event-schema-media-services.md
+            - name: Azure リソース グループ
+              href: event-schema-resource-groups.md
+            - name: Azure Service Bus
+              href: event-schema-service-bus.md
+            - name: Azure SignalR
+              href: event-schema-azure-signalr.md
+            - name: Azure サブスクリプション
+              href: event-schema-subscriptions.md
+    - name: イベント ドメイン
+      href: event-domains.md
+    - name: イベント スキーマの形式
+      items:
+        - name: Event Grid イベント スキーマ
+          href: event-schema.md
+        - name: クラウド イベント スキーマ
+          href: cloud-event-schema.md
+    - name: イベント ハンドラー
+      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
+      href: event-handlers.md
+    - name: イベント配信
+      items:
+        - name: イベント フィルター
+          href: event-filtering.md
+        - name: 配信と再試行
+          href: delivery-and-retry.md
+    - name: 障害復旧
+      items:
+        - name: geo ディザスター リカバリー
+          href: geo-disaster-recovery.md
     - name: Security
       items:
         - name: 認証
@@ -108,20 +161,6 @@
           href: security-authorization.md
         - name: ネットワークのセキュリティ
           href: network-security.md
-    - name: 配信と再試行
-      href: delivery-and-retry.md
-    - name: イベント フィルター
-      href: event-filtering.md
-    - name: イベント ドメイン
-      href: event-domains.md
-    - name: イベント ソース
-      displayName: 'Azure subscriptions, Container registry, Custom topics, Event Hubs, IoT Hub, Key Vault, Media Services, Resource groups, Service Bus, Storage, Maps, App Configuration, Signal R, Machine Learning'
-      href: event-sources.md
-    - name: イベント ハンドラー
-      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
-      href: event-handlers.md
-    - name: geo ディザスター リカバリー
-      href: geo-disaster-recovery.md
 - name: 操作方法ガイド
   items:
     - name: プライベート エンドポイントの構成 (プレビュー)
@@ -140,8 +179,6 @@
       href: manage-event-delivery.md
     - name: イベントのフィルター処理
       href: how-to-filter-events.md
-    - name: イベント配信の監視
-      href: monitor-event-delivery.md
     - name: イベント サブスクリプションの照会
       href: query-event-subscriptions.md
     - name: ポータルを使用したサブスクライブ
@@ -154,10 +191,14 @@
       href: how-to-event-domains.md
     - name: クライアント側のフェールオーバーの実装
       href: custom-disaster-recovery.md
-    - name: エラーをトラブルシューティングする
-      href: troubleshoot-errors.md
-    - name: トピックの診断ログを有効にする
-      href: enable-diagnostic-logs-topic.md
+    - name: トラブルシューティング
+      items:
+        - name: トピックの診断ログを有効にする
+          href: enable-diagnostic-logs-topic.md
+        - name: エラーをトラブルシューティングする
+          href: troubleshoot-errors.md
+        - name: イベント配信の監視
+          href: monitor-event-delivery.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -176,35 +217,6 @@
       href: /javascript/api/overview/azure/eventgrid
     - name: サブスクリプション スキーマ
       href: subscription-creation-schema.md
-    - name: イベント スキーマ
-      href: event-schema.md
-      items:
-        - name: Azure サブスクリプション
-          href: event-schema-subscriptions.md
-        - name: BLOB ストレージ
-          href: event-schema-blob-storage.md
-        - name: Container Registry
-          href: event-schema-container-registry.md
-        - name: Event Hubs
-          href: event-schema-event-hubs.md
-        - name: IoT Hub
-          href: event-schema-iot-hub.md
-        - name: Key Vault
-          href: event-schema-key-vault.md
-        - name: Media Services
-          href: ../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json
-        - name: リソース グループ
-          href: event-schema-resource-groups.md
-        - name: Service Bus
-          href: event-schema-service-bus.md
-        - name: Azure Maps
-          href: event-schema-azure-maps.md
-        - name: App Configuration
-          href: event-schema-app-configuration.md
-        - name: Azure SignalR
-          href: event-schema-azure-signalr.md
-        - name: Azure Machine Learning
-          href: event-schema-machine-learning.md
     - name: Template resources
       items:
         - name: イベントのサブスクリプション

@@ -199,6 +199,8 @@
           href: stream-analytics-tools-for-visual-studio-cicd.md
     - name: Visual Studio Code
       items:
+        - name: IntelliSense を使用した完全なコード
+          href: vs-code-intellisense.md
         - name: サンプル データを使用してローカルでテストする
           href: visual-studio-code-local-run.md
         - name: ライブ データを使用してローカルでテストする

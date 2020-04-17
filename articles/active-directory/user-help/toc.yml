@@ -24,6 +24,10 @@
       href: active-directory-passwords-reset-register.md
     - name: パスワードをリセットする
       href: active-directory-passwords-update-your-own-password.md
+- name: マイ スタッフ ポータルのヘルプ
+  items:
+    - name: マイ スタッフ ユーザー管理
+      href: my-staff-team-manager.md
 - name: Microsoft Authenticator アプリのヘルプ
   items:
     - name: Microsoft Authenticator アプリとは
@@ -74,6 +78,8 @@
           href: security-info-setup-text-msg.md
         - name: 音声通話の設定
           href: security-info-setup-phone-number.md
+        - name: SMS サインインの設定
+          href: sms-sign-in-explainer.md
         - name: セキュリティ キーの設定
           href: security-info-setup-security-key.md
         - name: メールの設定

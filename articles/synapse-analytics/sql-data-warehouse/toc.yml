@@ -1,13 +1,13 @@
-- name: Azure Synapse Analytics のドキュメント
+- name: Azure Synapse (SQL DW)
   href: index.yml
+- name: Azure Synapse に切り替える (ワークスペース プレビュー)
+  href: ../overview-what-is.md
 - name: 概要
   items:
     - name: Azure Synapse Analytics とは
       href: sql-data-warehouse-overview-what-is.md
     - name: Azure Synapse Analytics のアーキテクチャ
       href: massively-parallel-processing-mpp-architecture.md
-    - name: データ ウェアハウス ユニット
-      href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: チート シート
       href: cheat-sheet.md
     - name: ベスト プラクティス

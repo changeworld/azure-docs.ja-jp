@@ -10,6 +10,9 @@
       href: analysis-services-create-server.md
     - name: サーバーの作成 - PowerShell
       href: analysis-services-create-powershell.md
+    - name: サーバーの作成 - ARM テンプレート
+      displayName: Resource Manager
+      href: analysis-services-create-template.md
     - name: サーバーのファイアウォールの構成 - ポータル
       href: analysis-services-qs-firewall.md
 - name: チュートリアル
@@ -36,6 +39,8 @@
       href: analysis-services-connect.md
     - name: 高可用性
       href: analysis-services-bcdr.md
+    - name: 長時間の操作
+      href: analysis-services-long-operations.md
     - name: サポートされるデータ ソース
       href: analysis-services-datasource.md
 - name: 操作方法

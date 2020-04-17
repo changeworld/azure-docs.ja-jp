@@ -3,12 +3,12 @@ title: CAF の基本ブループリント サンプルの概要
 description: Cloud Adoption Framework for Azure (CAF) 基盤ブループリント サンプルの概要とアーキテクチャ。
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: a5616667ae909b63f406e399a23bdf568089bf52
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 1f14b4d4811b9bdcb64f3860b2cf25b82825d5c4
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383573"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458473"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 基盤ブループリント サンプルの概要
 
@@ -22,7 +22,7 @@ CAF 基盤ブループリント サンプルは、クラウド資産を管理す
 
 この実装には、セキュリティで保護され、完全に監視されたエンタープライズ対応の基盤を提供するための、複数の Azure サービスが組み込まれています。 この環境は、以下で構成されます。
 
-- [Azure Key Vault](../../../../key-vault/key-vault-overview.md) インスタンス。共有サービス環境にデプロイされた VM 用に使用されるシークレットをホストします。
+- [Azure Key Vault](../../../../key-vault/general/overview.md) インスタンス。共有サービス環境にデプロイされた VM 用に使用されるシークレットをホストします。
 - [Log Analytics](../../../../azure-monitor/overview.md)。診断ログに使用する [Storage アカウント](../../../../storage/common/storage-introduction.md)への安全なデプロイを開始した時点から、すべてのアクションとサービス ログが中心的な場所に確保されるようにデプロイされます。
 - [Azure Security Center](../../../../security-center/security-center-intro.md) (標準バージョン)。移行されたワークロードを脅威から保護します。
 - また、このブループリントでは、以下に関する [Azure ポリシー](../../../policy/overview.md)の定義とデプロイも行われます。 
