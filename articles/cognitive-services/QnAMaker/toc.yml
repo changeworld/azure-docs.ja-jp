@@ -147,7 +147,7 @@
               href: Quickstarts/get-answer-from-knowledge-base-python.md
 - name: リファレンス
   items:
-    - name: Languages
+    - name: 言語のサポート
       href: Overview/language-support.md
     - name: 制限
       href: limits.md

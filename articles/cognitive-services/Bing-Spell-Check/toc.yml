@@ -72,7 +72,7 @@
     - name: Bing Spell Check API 用の分析
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-    - name: 言語とリージョンのサポート
+    - name: 言語のサポート
       href: language-support.md
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'

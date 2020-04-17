@@ -42,6 +42,6 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: 言語のサポート
-      href: 'https://aka.ms/ltlangsupport'
+      href: language-support.md
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

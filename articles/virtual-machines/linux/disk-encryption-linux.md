@@ -8,18 +8,19 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 19dcfb96f29939fd92f49ba288ddb6d9264e0f9a
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 6b60ccc7a635e4b6071b43d7ff75e182aa96cd08
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970594"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313625"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM での Azure Disk Encryption シナリオ
 
-Azure Disk Encryption では、Linux の DM-Crypt 機能を使用して、Azure 仮想マシン (VM) の OS とデータ ディスクにボリューム暗号化を提供します。これは、ディスク暗号化キーとシークレットを制御および管理できるように、Azure Key Vault に統合されています。 サービスの概要については、「[Linux VM に対する Azure Disk Encryption](disk-encryption-overview.md)」を参照してください。
 
-ディスク暗号化シナリオは多数あり、手順はシナリオによって異なる場合があります。 以降のセクションでは、Linux VM 用のシナリオについて詳しく説明します。
+Linux 仮想マシン (VM) に対する Azure Disk Encryption では、Linux の DM-Crypt 機能を使用して、OS ディスクとデータ ディスクの完全なディスク暗号化を提供します。 また、EncryptFormatAll 機能を使用すると、一時的なリソース ディスクの暗号化を行うことができます。
+
+Azure Disk Encryption は、ディスクの暗号化キーとシークレットを制御および管理できるように、[Azure Key Vault](disk-encryption-key-vault.md) と統合されています。 サービスの概要については、「[Linux VM に対する Azure Disk Encryption](disk-encryption-overview.md)」を参照してください。
 
 ディスク暗号化は、[サポートされている VM サイズとオペレーティング システム](disk-encryption-overview.md#supported-vms-and-operating-systems)の仮想マシンにのみ適用できます。 また、次の前提条件を満たしている必要があります。
 
@@ -202,9 +203,9 @@ Azure 内にある既存または実行中の Linux VM でのディスク暗号�
 |  keyEncryptionKeyURL | 暗号化キーの暗号化に使用されるキー暗号化キーの URL。 このパラメーターは、UseExistingKek ドロップダウン リストで **nokek** を選択した場合には省略可能です。 UseExistingKek ドロップダウン リストで **kek** を選択した場合は、_keyEncryptionKeyURL_ 値を入力する必要があります。 |
 | volumeType | 暗号化操作が実行されるボリュームの種類。 有効な値は _OS_、_Data_、および _All_ です。 
 | forceUpdateTag | 操作が強制実行である必要があるたびに、GUID のような一意の値を渡します。 |
-| resizeOSDisk | OS パーティションは、システム ボリュームを分割する前に、完全な OS VHD が占有できるようにサイズ変更する必要があります。 |
 | location | すべてのリソースの場所。 |
 
+Linux VM ディスク暗号化テンプレートの構成の詳細については、「[Linux 用 Azure Disk Encryption](https://docs.microsoft.com/azure/virtual-machines/extensions/azure-disk-enc-linux)」を参照してください。
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>Linux VM 上のデータ ディスクに対して EncryptFormatAll 機能を使用する
 
@@ -260,17 +261,22 @@ LVM-on-crypt のセットアップをお勧めします。 以下に示すすべ
 - VM を構成するデータ ディスクを追加します。
 - それらのディスクをフォーマットおよびマウントして fstab ファイルに追加します。
 
-    1. 新しく追加されたディスクをフォーマットします。 ここでは、Azure によって生成されたシンボリック リンクを使用します。 シンボリック リンクを使用すると、デバイス名の変更に関連する問題を回避できます。 詳細については、[デバイス名の問題のトラブルシューティング](troubleshoot-device-names-problems.md)に関する記事を参照してください。
+    1. パーティションの標準を選択し、ドライブ全体にわたるパーティションを作成してから、パーティションをフォーマットします。 ここでは、Azure によって生成されたシンボリック リンクを使用します。 シンボリック リンクを使用すると、デバイス名の変更に関連する問題を回避できます。 詳細については、[デバイス名の問題のトラブルシューティング](troubleshoot-device-names-problems.md)に関する記事を参照してください。
     
-         `mkfs -t ext4 /dev/disk/azure/scsi1/lun0`
+         ```azurepowershell-interactive
+         parted /dev/disk/azure/scsi1/lun0 mklabel gpt
+         parted -a opt /dev/disk/azure/scsi1/lun0 mkpart primary ext4 0% 100%
+         
+         mkfs -t ext4 /dev/disk/azure/scsi1/lun0-part1
+         ```
     
     1. ディスクをマウントします。
          
-         `mount /dev/disk/azure/scsi1/lun0 /mnt/mountpoint`
+         `mount /dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint`
     
     1. fstab に追加します。
          
-        `echo "/dev/disk/azure/scsi1/lun0 /mnt/mountpoint ext4 defaults,nofail 1 2" >> /etc/fstab`
+        `echo "/dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint ext4 defaults,nofail 0 2" >> /etc/fstab`
     
     1. -EncryptFormatAll を指定して Set-AzVMDiskEncryptionExtension PowerShell コマンドレットを実行し、これらのディスクを暗号化します。
 
@@ -400,7 +406,11 @@ Azure Disk Encryption は、次の Linux のシナリオ、機能、およびテ
 - 動的ボリューム。
 - エフェメラル OS ディスク。
 - 次のもの (ただし、限定されない) の共有/分散ファイル システムの暗号化:DFS、GFS、DRDB、CephFS。
+- 暗号化された VM を別のサブスクリプションに移動する。
 - カーネル クラッシュ ダンプ (kdump)。
+- Oracle ACFS (ASM クラスター ファイル システム)
+- Gen2 VM (「[Azure での第 2 世代 VM のサポート](generation-2.md#generation-1-vs-generation-2-capabilities)」を参照)
+- Lsv2 シリーズ VM (「[Lsv2 シリーズ](../lsv2-series.md)」を参照)
 
 ## <a name="next-steps"></a>次のステップ
 

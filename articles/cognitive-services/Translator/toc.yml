@@ -98,7 +98,7 @@
           href: 'https://aka.ms/TranslatorGitHub'
         - name: よく寄せられる質問
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: 言語とリージョンのサポート
+        - name: 言語のサポート
           href: language-support.md
         - name: 価格
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'

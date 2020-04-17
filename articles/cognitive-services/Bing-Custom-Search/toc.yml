@@ -108,7 +108,7 @@
       href: 'https://aka.ms/bingcustomsearchtryit'
     - name: Bing Custom Search エンドポイント
       href: endpoint-custom.md
-    - name: 言語とリージョンのサポート
+    - name: 言語のサポート
       href: language-support.md
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

@@ -80,5 +80,7 @@
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: リージョン別の提供状況
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+    - name: 言語のサポート
+      href: language-support.md
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

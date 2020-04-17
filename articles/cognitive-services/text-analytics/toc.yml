@@ -48,7 +48,7 @@
   items:
     - name: 名前付きエンティティの種類
       href: named-entity-types.md
-    - name: 言語とリージョンのサポート
+    - name: 言語のサポート
       href: language-support.md
     - name: テキスト オフセット
       href: concepts/text-offsets.md

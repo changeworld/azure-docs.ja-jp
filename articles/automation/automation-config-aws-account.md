@@ -1,32 +1,32 @@
 ---
-title: アマゾン ウェブ サービスで認証を構成する
+title: アマゾン ウェブ サービスで Azure Automation Runbook を認証する
 description: この記事では、AWS リソースを管理する Azure Automation の Runbook 用に AWS 資格情報を作成し検証する方法について説明します。
 keywords: AWS の認証, AWS の構成
 services: automation
 ms.subservice: process-automation
 ms.date: 04/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 891db5d17ddde681f75845fdca6c9252c5b32b86
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 02ff9cedfbeaa36b2fafc84637ea3141b223a064
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520830"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310475"
 ---
-# <a name="authenticate-runbooks-with-amazon-web-services"></a>アマゾン ウェブ サービスによる Runbook の認証
+# <a name="authenticate-azure-automation-runbooks-with-amazon-web-services"></a>アマゾン ウェブ サービスで Azure Automation Runbook を認証する
 
 アマゾン ウェブ サービス (AWS) のリソースに関する一般的なタスクを自動化する処理は、Azure の Automation Runbook で実現することができます。 Automation Runbook を使用すれば、Azure のリソースの場合と同様に、AWS でも多くのタスクを自動化することができます。 必要となるのは次の 2 点だけです。
 
 * AWS サブスクリプションと一連の資格情報。 具体的には、AWS アクセス キーと秘密キーです。 詳細については、記事「[Using AWS Credentials (AWS 資格情報の使用)](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html)」を参照してください。
 * Azure サブスクリプションと Automation アカウント。
 
-AWS で認証するには、一連の AWS 資格情報を指定して、Azure Automation から実行される Runbook を認証する必要があります。 Automation アカウントを既に作成しており、それを使用して AWS で認証する場合は、次のセクションの手順に従うことができます。アカウントを AWS リソースを対象とする Runbook 専用にする場合は、まず、新しい [Automation アカウント](automation-offering-get-started.md)を作成 (サービス プリンシパルの作成オプションを省略) し、次の手順を使用する必要があります。
+AWS で認証するには、一連の AWS 資格情報を指定して、Azure Automation から実行される Runbook を認証する必要があります。 Automation アカウントが作成済みで、それを AWS による認証に使用する場合は、次のセクションの手順に従うことができます。AWS リソースをターゲットとする Runbook 専用のアカウントにする場合は、最初に新しい [Automation アカウント](automation-offering-get-started.md)を作成し (サービス プリンシパルを作成するオプションはスキップします)、以下の手順を使用します。
 
 ## <a name="configure-automation-account"></a>Automation アカウントの構成
 
 Azure Automation が AWS と通信する場合は、まず、AWS 資格情報を取得し、それを資産として Azure Automation に格納する必要があります。 AWS ドキュメント「[Managing Access Keys for your AWS Account (AWS アカウントのアクセス キーを管理する)](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html)」に記載されている以下の手順を実行して、アクセス キーを作成し、**アクセス キー ID** と**シークレット アクセス キー**をコピーします (必要に応じて、キー ファイルをダウンロードし、どこか安全な場所に保存します)。
 
-AWS セキュリティ キーを作成し、コピーしたら、Azure Automation アカウントで資格情報資産を作成し、それらを安全に格納し、Runbook で参照する必要があります。 「**Azure Automation での資格情報資産**」記事の[新しい資格情報資産の作成](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal)に関するセクションの手順に従って、次の情報を入力します。
+AWS セキュリティ キーを作成し、コピーしたら、Azure Automation アカウントで資格情報資産を作成し、それらを安全に格納し、Runbook で参照する必要があります。 「[Azure Automation での資格情報資産](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal)」記事の**新しい資格情報資産の作成**に関するセクションの手順に従って、次の情報を入力します。
 
 1. **[名前]** ボックスに「**AWScred**」と入力するか、または、命名規則に従って適切な値を入力します。
 2. **[ユーザー名]** ボックスに**アクセス ID** を入力し、 **[パスワード]** および **[パスワードの確認]** ボックスに**シークレット アクセス キー**を入力します。
