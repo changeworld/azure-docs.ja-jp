@@ -9,41 +9,33 @@
       href: whats-new.md
 - name: クイックスタート
   items:
-    - name: Web ポータルの使用
+    - name: 分類器の構築
       items:
-        - name: 分類器の構築
+        - name: Web ポータルの使用
           href: getting-started-build-a-classifier.md
-        - name: オブジェクト検出器の構築
-          href: get-started-build-detector.md
-    - name: .NET SDK の使用
-      items:
-        - name: 画像の分類
+        - name: .NET SDK の使用
           href: csharp-tutorial.md
-        - name: オブジェクトの検出
-          href: csharp-tutorial-od.md
-    - name: Python SDK の使用
-      items:
-        - name: 画像の分類
+        - name: Python SDK の使用
           href: python-tutorial.md
-        - name: オブジェクトの検出
-          href: python-tutorial-od.md
-    - name: Java SDK の使用
-      items:
-        - name: 画像の分類
+        - name: Java SDK の使用
           href: java-tutorial.md
-        - name: オブジェクトの検出
-          href: java-tutorial-od.md
-    - name: Node.js SDK の使用
-      items:
-        - name: 画像の分類
+        - name: Node.js SDK の使用
           href: node-tutorial.md
-        - name: オブジェクトの検出
-          href: node-tutorial-object-detection.md
-    - name: Go SDK の使用
-      items:
-        - name: 画像の分類
+        - name: Go SDK の使用
           href: go-tutorial.md
-        - name: オブジェクトの検出
+    - name: オブジェクト検出器の構築
+      items:
+        - name: Web ポータルの使用
+          href: get-started-build-detector.md
+        - name: .NET SDK の使用
+          href: csharp-tutorial-od.md
+        - name: Python SDK の使用
+          href: python-tutorial-od.md
+        - name: Java SDK の使用
+          href: java-tutorial-od.md
+        - name: Node.js SDK の使用
+          href: node-tutorial-object-detection.md
+        - name: Go SDK の使用
           href: go-tutorial-object-detection.md
 - name: チュートリアル
   items:
