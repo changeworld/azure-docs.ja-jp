@@ -553,8 +553,6 @@
           href: data-factory-service-identity.md
     - name: 監視と管理
       items:
-        - name: 視覚的な監視
-          href: monitor-visually.md
         - name: Azure Monitor による監視
           href: monitor-using-azure-monitor.md
         - name: SDK を使用した監視
