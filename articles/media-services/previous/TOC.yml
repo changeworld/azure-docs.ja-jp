@@ -66,7 +66,7 @@
         - name: アカウント
           displayName: subscription
           href: media-services-account-concept.md
-        - name: '[エンティティ]'
+        - name: エンティティ
           items:
             - name: .NET
               href: media-services-dotnet-manage-entities.md
@@ -257,8 +257,6 @@
           items:
             - name: Haivision KB エンコーダー
               href: media-services-configure-kb-live-encoder.md
-            - name: NewTek TriCaster エンコーダー
-              href: media-services-configure-tricaster-live-encoder.md
             - name: Wirecast エンコーダー
               href: media-services-configure-wirecast-live-encoder.md
         - name: 長時間実行される操作を処理する
@@ -430,7 +428,7 @@
           href: media-services-dotnet-check-job-progress-with-queues.md
         - name: Webhook を使用したジョブ通知の監視
           href: media-services-dotnet-check-job-progress-with-webhooks.md
-    - name: '[トラブルシューティング]'
+    - name: トラブルシューティング
       items:
         - name: よく寄せられる質問
           href: media-services-frequently-asked-questions.md
