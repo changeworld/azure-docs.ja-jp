@@ -44,7 +44,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 | --- | --- |
 | アジア太平洋 | APC |
 | オーストラリア | AUS |
-| Canada | CAN |
+| カナダ | CAN |
 | 欧州連合 | EUR |
 | フランス | FRA |
 | インド | IND |
