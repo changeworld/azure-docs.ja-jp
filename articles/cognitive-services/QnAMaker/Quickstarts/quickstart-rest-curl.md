@@ -69,7 +69,7 @@ QnA Maker から返される cURL の応答には `operationId` が含まれて�
 |Information|cURL の構成|目的|
 |--|--|--|
 |QnA Maker リソースの名前|URL|URL の構築用|
-|操作 ID|URL ルート|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
+|Operation Id|URL ルート|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
 |QnA Maker リソースのキー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|QnA Maker サービスに対する認証|
 
 cURL コマンドは、BASH シェルから実行します。 コマンドは、実際のリソース名、リソース キー、操作 ID に合わせて編集してください。
