@@ -44,7 +44,7 @@ Azure Marketplace と AppSource のオファリングは、顧客の請求先住
 | ブルネイ                              | BN        | USD          |
 | ブルガリア                            | BG        | EUR          |
 | カメルーン                            | CM        | USD          |
-| Canada                              | CA        | CAD          |
+| カナダ                              | CA        | CAD          |
 | カーボベルデ                          | CV        | USD          |
 | ケイマン諸島                      | KY        | USD          |
 | チリ                               | CL        | USD          |
@@ -154,7 +154,7 @@ Azure Marketplace と AppSource のオファリングは、顧客の請求先住
 | ウクライナ                             | UA        | USD          |
 | アラブ首長国連邦                | AE        | USD          |
 | イギリス                      | GB        | GBP          |
-| United States                       | US        | USD          |
+| アメリカ                       | US        | USD          |
 | ウルグアイ                             | UY        | USD          |
 | ウズベキスタン                          | UZ        | USD          |
 | ベネズエラ                           | VE        | USD          |
