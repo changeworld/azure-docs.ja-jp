@@ -186,7 +186,7 @@ ms.locfileid: "77086910"
 * CPF 番号
 * 国が発行する身分証明書 (RG)
 
-Canada
+カナダ
 * パスポート ID
 * 運転免許証 ID
 * 健康保険番号
@@ -322,7 +322,7 @@ Canada
 * 国民保険番号 (NINO)
 * 国民健康保険 (NHS) 番号
 
-United States
+アメリカ
 * 社会保障番号 (SSN)
 * 運転免許証 ID
 * パスポート ID
