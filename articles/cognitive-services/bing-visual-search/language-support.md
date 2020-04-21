@@ -93,7 +93,7 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 |フィンランド|フィンランド語|fi-FI|
 |フランス|フランス語|fr-FR|
 |ドイツ|ドイツ語|de-DE|
-|香港特別行政区|Traditional Chinese|zh-HK|
+|香港特別行政区|中国語 (繁体字)|zh-HK|
 |インド|英語|en-IN|
 |インドネシア|英語|en-ID|
 |イタリア|イタリア語|it-IT|
@@ -114,7 +114,7 @@ Bing Visual Search API では 30 を超える国/地域がサポートされ、�
 |スウェーデン|スウェーデン語|sv-SE|
 |スイス|フランス語|fr-CH|
 |スイス|ドイツ語|de-CH|
-|台湾|Traditional Chinese|zh-TW|
+|台湾|中国語 (繁体字)|zh-TW|
 |トルコ|トルコ語|tr-TR|
 |イギリス|英語|en-GB|
 |アメリカ|英語|en-US|
