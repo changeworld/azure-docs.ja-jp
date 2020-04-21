@@ -433,7 +433,7 @@
       href: resource-known-issues.md
     - name: ユーザー フォーラム
       href: 'https://aka.ms/aml-forum-service'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Microsoft の ML 製品の比較
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/service/context/ml-context
