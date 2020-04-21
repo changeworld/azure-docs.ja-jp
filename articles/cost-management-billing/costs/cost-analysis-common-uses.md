@@ -3,16 +3,16 @@ title: Azure Cost Management での一般的なコスト分析の使用
 description: この記事では、Azure Cost Management で一般的なコスト分析タスクの結果を取得する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/31/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: a333cad51e6fc089e7e6994c7b89210b12686cd5
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 2e0e222e636f694328835e20fda97deca1d9986a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520879"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261502"
 ---
 # <a name="common-cost-analysis-uses"></a>一般的なコスト分析の使用
 
@@ -27,6 +27,17 @@ Azure サービス別にコストを表示すると、インフラストラク�
 1. ビューを **[テーブル]** に変更します。
 
 [![Azure サービス別のコストの内訳](./media/cost-analysis-common-uses/breakdown-by-service.png)](./media/cost-analysis-common-uses/breakdown-by-service.png#lightbox)
+
+## <a name="review-invoiced-charges-in-cost-analysis"></a>[コスト分析] で請求された料金を確認する
+
+Azure portal で請求書の詳細を表示するには、分析する請求書に関連付けられているスコープの [コスト分析] に移動します。 **[請求書の詳細]** ビューを選択します。 請求書の詳細には、請求書に記載される料金が表示されます。
+
+[![請求書の詳細を示す例](./media/cost-analysis-common-uses/invoice-details.png)](./media/cost-analysis-common-uses/invoice-details.png#lightbox)
+
+請求書の詳細を表示すると、予期しないコストがかかるサービスを特定することや、[コスト分析] のリソースに直接関連付けられているリソースを確認することができます。 たとえば、Virtual Machines サービスの料金を分析する場合は、 **[累積コスト]** ビューに移動します。 次に、細分性を **[Daily]\(日単位\)** に設定し、 **[Service name: Virtual machines]\(サービス名: 仮想マシン\)** で料金をフィルター処理し、 **[リソース]** で料金をグループ化します。
+
+[![仮想マシンの累積コストを示す例](./media/cost-analysis-common-uses/virtual-machines.png)](./media/cost-analysis-common-uses/virtual-machines.png#lightbox)
+
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Azure リソース別のコストの内訳を表示する
 

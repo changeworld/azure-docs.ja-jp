@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b976002ee185a87daedf37a93f3d02a166eb6f8a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 4a9d2453d1f2dbb1f7efe942eb7a4b813a28783c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74974599"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404791"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>クイック スタート:Computer Vision の REST API と Java を使用して印刷されたテキスト (OCR) を抽出する
 
 > [!NOTE]
 > 英語のテキストを抽出する場合は、新しい[読み取り操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)の使用を検討してください。 [Java のクイックスタート](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/java-hand-text)を使用できます。 
 
-このクイックスタートでは、Computer Vision の REST API を使って、光学式文字認識 (OCR) で印刷されたテキストを抽出しています。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドを使って画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
+このクイックスタートでは、Computer Vision の REST API を使用して、光学式文字認識 (OCR) で印刷されたテキストを抽出します。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドを使って画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
 
@@ -215,7 +215,9 @@ REST Response:
 
 ## <a name="next-steps"></a>次のステップ
 
-Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマートにクロップされたサムネイルを作成するほか、イメージ内の視覚的な特徴 (顔など) を検出、カテゴライズ、タグ付け、および記述する Java Swing アプリケーションについて説明します。 Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
+Computer Vision を使用して光学文字認識 (OCR) を実行する Java Swing アプリケーションについて説明します。これは、スマートにクロップされたサムネイルを作成し、イメージ内の視覚的な特徴を検出、カテゴライズ、タグ付け、および記述します。
 
 > [!div class="nextstepaction"]
 > [Computer Vision API Java チュートリアル](../Tutorials/java-tutorial.md)
+
+* Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。

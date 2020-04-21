@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 397eb6fbfea88b0eab0648275fc59764505f7d42
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: a9506d45350a567e3643b6edd6afc7668662f6e5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633102"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416022"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (旧称 SQL DW) とは
 
-Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた無制限の分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。 Azure Synapse では、これら 2 つの環境を 1 つにした統合エクスペリエンスを使用して、データの取り込み、準備、管理、提供を行い、BI と機械学習の差し迫ったニーズに対応できます。
+Azure Synapse は、エンタープライズ データ ウェアハウスとビッグ データ分析がまとめられた分析サービスです。 サーバーレスのオンデマンド リソースまたはプロビジョニング済みのリソースを使用しながら大規模に、各自の条件で自由にデータを照会することができます。 Azure Synapse では、これら 2 つの環境を 1 つにした統合エクスペリエンスを使用して、データの取り込み、準備、管理、提供を行い、BI と機械学習の差し迫ったニーズに対応できます。
 
 Azure Synapse には、次の 4 つのコンポーネントがあります。
 
@@ -27,11 +27,13 @@ Azure Synapse には、次の 4 つのコンポーネントがあります。
   - SQL プール (DWU プロビジョニング単位の課金)
   - SQL オンデマンド (処理された TB 単位の課金) – (プレビュー)
 - Spark:緊密に統合された Apache Spark (プレビュー)
-- データ統合:ハイブリッド データ統合 (プレビュー)
+- Synapse パイプライン:ハイブリッド データ統合 (プレビュー)
 - Studio:統一ユーザー エクスペリエンス  (プレビュー)
 
 > [!NOTE]
 > Azure Synapse のプレビュー機能にアクセスするには、[こちら](https://aka.ms/synapsepreview)からアクセス権を要求してください。 Microsoft は、すべての要求をトリアージし、できるだけ早く対応します。
+>
+> [Azure Synapse プレビューのドキュメント](../overview-what-is.md)をご覧ください。
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Azure Synapse の Synapse SQL プール
 

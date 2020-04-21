@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b47c0a87f2b7e4f3fea2d5ed088372cabce2a994
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: b5bb1e80ac7a2a7fca053365b1062df61b2acc03
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77566099"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405144"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-c"></a>クイック スタート:Computer Vision 2.0 および 2.1 の REST API と C# を使用して、印刷されたテキストと手書きテキストを抽出する
 

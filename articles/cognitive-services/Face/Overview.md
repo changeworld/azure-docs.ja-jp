@@ -7,22 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c433d99fd96e99d418fd5500c1075e68dfb1742c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 6714a0c4b967d80ad683ef023b5811423bdcb022
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053592"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403463"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure Face サービスとは
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Cognitive Services Face サービスは、画像に含まれている人の顔の検出、認識、分析に使用されるアルゴリズムを備えています。 人の顔の情報を処理する機能は、多種多様なソフトウェア シナリオで重要です。 シナリオの例として、セキュリティ、自然なユーザー インターフェイス、画像コンテンツの分析と管理、モバイル アプリ、ロボティクスなどがあります。
+Azure Cognitive Services Face サービスは、画像に含まれている人の顔の検出、認識、分析するアルゴリズムを備えています。 人の顔の情報を処理する機能は、多種多様なソフトウェア シナリオで重要です。 シナリオの例として、セキュリティ、自然なユーザー インターフェイス、画像コンテンツの分析と管理、モバイル アプリ、ロボティクスなどがあります。
 
-Face サービスにはいくつかの異なる機能があります。 それぞれの機能について以降のセクションで説明します。 これらの詳細については、後の説明を参照してください。
+Face サービスにはいくつかの異なる機能があり、そのそれぞれについて以降のセクションで説明します。
 
 ## <a name="face-detection"></a>顔検出
 
@@ -69,7 +69,7 @@ Identify API を使用して、人のデータベースと照らして、検出�
 
 人物の特定の詳細については、[顔認識](concepts/face-recognition.md)の概念のガイドまたは [Identify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) リファレンス ドキュメントを参照してください。
 
-## <a name="use-containers"></a>コンテナーの使用
+## <a name="containers"></a>Containers
 
 標準化された Docker コンテナーをデータの近くにインストールすることによって、[Face コンテナーを使用](face-how-to-install-containers.md)して顔を検出、認識、識別します。
 

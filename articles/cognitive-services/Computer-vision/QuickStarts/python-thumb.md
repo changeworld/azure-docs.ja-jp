@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 21d8659e13506777f6045272f68c69dd63f09cf5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 68a6504668b9f180a421fe20c2c89d73b87bcc35
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244683"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404346"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>クイック スタート:Computer Vision の REST API と Python を使用したサムネイルを生成する
 
-このクイックスタートでは、Computer Vision の REST API を使って、画像からサムネイルを生成します。 [サムネイル取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)メソッドでは、必要な高さと幅を指定できます。また、Computer Vision では、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
+このクイックスタートでは、Computer Vision の REST API を使用して、画像からサムネイルを生成します。 [サムネイル取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)メソッドでは、必要な高さと幅を指定できます。また、Computer Vision では、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/try/cognitive-services/) を作成してください。
 
@@ -93,7 +93,9 @@ print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
 
 ## <a name="next-steps"></a>次のステップ
 
-この後は、サムネイル生成機能について詳しく学びましょう。
+次は、Computer Vision を使用して光学文字認識 (OCR) を実行する Python アプリケーションについて説明します。これは、スマートにクロップされたサムネイルを作成し、イメージ内の視覚的な特徴を検出、カテゴライズ、タグ付け、および記述します。
 
 > [!div class="nextstepaction"]
-> [サムネイルの生成](../concept-generating-thumbnails.md)
+> [Computer Vision API Python チュートリアル](../Tutorials/PythonTutorial.md)
+
+* Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。

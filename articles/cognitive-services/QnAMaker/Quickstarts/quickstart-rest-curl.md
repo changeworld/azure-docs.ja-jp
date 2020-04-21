@@ -1,16 +1,16 @@
 ---
 title: クイック スタート:cURL と REST を使用してナレッジ ベースを管理する - QnA Maker
 description: このクイックスタートでは、REST API を使用してナレッジ ベースを作成、公開し、クエリを実行する方法について説明します。
-ms.date: 02/27/2020
+ms.date: 04/13/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: 00ec52fe20fb0e6a976f3e7142386e835713c98c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: facc45ab8f916181f7eeceb65c5102a60ae7d7e9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78851206"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261705"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>クイック スタート:cURL と REST を使用してナレッジ ベースを管理する
 
@@ -21,9 +21,9 @@ ms.locfileid: "78851206"
 ## <a name="prerequisites"></a>前提条件
 
 * 最新バージョンの [cURL](https://curl.haxx.se/)。 クイックスタートでは、いくつかのコマンド ライン スイッチが使用されています。これらのスイッチについては、[cURL のドキュメント](https://curl.haxx.se/docs/manpage.html)を参照してください。
-* [QnA Maker リソース](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーとリソース名を取得するには、Azure portal で目的のリソースの **[クイックスタート]** を選択します。 リソース名は、エンドポイントの URL の最初の構成要素です。
+* キーとリソース名を使用するには、[QnA Maker リソース](../How-To/set-up-qnamaker-service-azure.md)が必要です。 リソースの作成時にリソースの**名前**を入力した後に、キーが作成されています。 リソース名は、エンドポイントのサブドメインとして使用されます。 キーとリソース名を取得するには、Azure portal で目的のリソースの **[クイックスタート]** を選択します。 リソース名は、エンドポイントの URL の最初のサブドメインです。
 
-    `https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
+    `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
 > [!CAUTION]
 > 以降に掲載した BASH の例では、行連結文字として `\` を使用しています。 ご利用のコンソールまたはターミナルで異なる行連結文字が使用されている場合は、この文字を使用してください。
@@ -69,7 +69,7 @@ QnA Maker から返される cURL の応答には `operationId` が含まれて�
 |Information|cURL の構成|目的|
 |--|--|--|
 |QnA Maker リソースの名前|URL|URL の構築用|
-|Operation Id|URL ルート|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
+|操作 ID|URL ルート|`/operations/REPLACE-WITH-YOUR-OPERATION-ID`|
 |QnA Maker リソースのキー|`Ocp-Apim-Subscription-Key` ヘッダーの `-h` パラメーター|QnA Maker サービスに対する認証|
 
 cURL コマンドは、BASH シェルから実行します。 コマンドは、実際のリソース名、リソース キー、操作 ID に合わせて編集してください。

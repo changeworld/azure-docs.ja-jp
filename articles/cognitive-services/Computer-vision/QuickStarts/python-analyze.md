@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: bf503231248e6573743434335304018f7e1b995d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: cc764170f9dcdd74288e57dbef403c6092dcca2e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74973800"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404462"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-python"></a>クイック スタート:Computer Vision の REST API と Python を使用してリモート画像を分析する
 
@@ -171,7 +171,9 @@ plt.show()
 
 ## <a name="next-steps"></a>次のステップ
 
-Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマートにクロップされたサムネイルを作成するほか、イメージ内の視覚的な特徴 (顔など) を検出、カテゴライズ、タグ付け、および記述する Python アプリケーションについて説明します。 Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
+次は、Computer Vision を使用して光学文字認識 (OCR) を実行する Python アプリケーションについて説明します。これは、スマートにクロップされたサムネイルを作成し、さらにイメージ内の視覚的な特徴を検出、カテゴライズ、タグ付け、および記述します。
 
 > [!div class="nextstepaction"]
 > [Computer Vision API Python チュートリアル](../Tutorials/PythonTutorial.md)
+
+* Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。

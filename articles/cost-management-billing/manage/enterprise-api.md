@@ -5,14 +5,14 @@ author: mumami
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 02/14/2020
+ms.date: 04/14/2020
 ms.author: banders
-ms.openlocfilehash: 10275bac8cd9363939f9b6f298c49d7ef08ab7bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aeca9aede4c1b2d8c27de749c7e07c0153000825
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202915"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383167"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>企業ユーザー向けの Reporting API の概要
 Reporting API を使用すると、Enterprise Azure の顧客はプログラムで消費量および課金データを希望のデータ分析ツールに取り出すことができます。 Enterprise 顧客は、Azure の [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) を締結し、交渉によって年額コミットメントを決定しています。Azure リソースのカスタム価格が提示されます。
@@ -23,7 +23,7 @@ API に必要なすべての日付と時刻のパラメーターは、結合さ�
 * **API キーを取得または生成** - エンタープライズ ポータルにログインし、[レポート] > [使用状況のダウンロード] > [API アクセス キー] に移動して API キーを生成または取得します。
 * **API でのキーのパス**-呼び出しごとに API キーを渡して認証と承認を受ける必要があります。 次のプロパティは、HTTP ヘッダーに置かれている必要があります。
 
-|Request Header Key | Value|
+|Request Header Key | 値|
 |-|-|
 |承認| 次の形式で値を指定します:**bearer {API_KEY}** <br/> 例: bearer eyr....09|
 
@@ -41,7 +41,7 @@ API に必要なすべての日付と時刻のパラメーターは、結合さ�
 * **Reserved Instance Details** - [Reserved Instance 使用量 API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) を使用すると、予約インスタンス購入の使用状況が返されます。 [Reserved Instance 料金 API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) を使用すると、行われた課金トランザクションが表示されます。
 
 ## <a name="data-freshness"></a>データの鮮度
-上記のすべての API の応答では、Etag が返されます。 Etag の変更は、データが更新されたことを示します。  同じパラメーターを使用した同じ API の後続の呼び出しでは、キャプチャされた Etag と、http 要求のヘッダー内のキー “If-None-Match” を渡します。 データがそれ以上更新されていない場合は、応答の状態コードが "NotModified" になり、データは返されません。 Etag の変更がある場合、API は、要求された期間の完全なデータセットを返します。
+上記のすべての API の応答では、Etag が返されます。 Etag の変更は、データが更新されたことを示します。  同じパラメーターを使用した同じ API の後続の呼び出しでは、キャプチャされた Etag と、http 要求のヘッダー内のキー "If-None-Match" を渡します。 データがそれ以上更新されていない場合は、応答の状態コードが "NotModified" になり、データは返されません。 Etag の変更がある場合、API は、要求された期間の完全なデータセットを返します。
 
 ## <a name="helper-apis"></a>Helper API
  **請求期間の一覧表示** - [Billing Periods API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) を使用すると、指定された加入契約の消費量データが含まれる請求期間の一覧が逆時系列順に返されます。 各期間には、BalanceSummary、UsageDetails、Marketplace Charges および Price Sheet の 4 セットのデータの API ルートを示すプロパティが含まれています。
@@ -51,7 +51,9 @@ API に必要なすべての日付と時刻のパラメーターは、結合さ�
 |応答の状態コード|Message|説明|
 |-|-|-|
 |200| [OK]|エラーなし|
+|400| 正しくない要求| 無効なパラメーター – 日付範囲、EA 番号など|
 |401| 権限がありません| API キーが検出されない、正しくない、有効期限が切れている、など|
 |404| 使用不可| レポートのエンドポイントが見つからない|
-|400| 正しくない要求| 無効なパラメーター – 日付範囲、EA 番号など|
+|429 | TooManyRequests | 要求が調整されました。 <code>x-ms-ratelimit-microsoft.consumption-retry-after</code> ヘッダーで指定された時刻まで待ってから、再試行してください。|
 |500| サーバー エラー| 要求の処理中に予期しないエラーが発生した|
+| 503 | ServiceUnavailable | サービスは、一時的に利用できません。 <code>Retry-After</code> ヘッダーで指定された時刻まで待ってから、再試行してください。|

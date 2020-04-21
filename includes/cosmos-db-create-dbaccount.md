@@ -6,23 +6,30 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 04/08/2019
+ms.date: 04/10/2020
 ms.custom: include file
-ms.openlocfilehash: bfce10b0c9c55012c3ba2fb25121b28157f203b8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4c6e45eaa816499c7e5969e302a036368bea0937
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78672071"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81421890"
 ---
-1. [Azure portal](https://portal.azure.com/) に移動して、Azure Cosmos DB アカウントを作成します。 **[Azure Cosmos DB]** を検索して、選択します。
+1. [Azure portal](https://portal.azure.com/) に移動して、Azure Cosmos DB アカウントを作成します。 ホームページで、 **[Azure サービス]** パネルから **[リソースの作成]** を選択します。
 
-   ![Azure Portal の [データベース] ウィンドウ](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)
+   ![リソースの作成](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-resource-1.png)
 
-1. **[追加]** を選択します。
+1. **[Azure Cosmos DB]** を検索して、選択します。
+
+   ![Azure portal のリソース ドロップダウン](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-updated-1.png)
+
+1. **［作成］** を選択します
+
+   ![Azure Cosmos DB リソースを作成する](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-account-1.png)
+
 1. **[Azure Cosmos DB アカウントの作成]** ページで、新しい Azure Cosmos アカウントの基本的な設定を入力します。 
 
-    |設定|Value|説明 |
+    |設定|値|説明 |
     |---|---|---|
     |サブスクリプション|サブスクリプション名|この Azure Cosmos アカウントに使用する Azure サブスクリプションを選択します。 |
     |リソース グループ|リソース グループ名|リソース グループを選択するか、 **[新規作成]** を選択し、新しいリソース グループの一意の名前を入力します。 |
@@ -33,8 +40,8 @@ ms.locfileid: "78672071"
     |アカウントの種類|[運用] または [Non-Production]\(非運用\)|アカウントが運用ワークロードに使用される場合は、 **[運用]** を選択します。 アカウントが非運用環境 (開発、テスト、QA、ステージングなど) に使用される場合は、 **[Non-Production]\(非運用\)** を選択します。 これは、ポータルでの操作を調整する Azure リソース タグの設定ですが、基になる Azure Cosmos DB アカウントには影響しません。 この値は、いつでも変更できます。|
 
 
-> [!NOTE]
-> Azure サブスクリプションにつき所有できる Free レベルの Azure Cosmos DB アカウントは 1 つまでです。また、アカウントの作成時にオプトインする必要があります。 Free レベルの割引を適用するオプションが表示されない場合は、サブスクリプション内の別のアカウントが Free レベルで既に有効になっていることを意味します。
+    > [!NOTE]
+    > Azure サブスクリプションにつき所有できる Free レベルの Azure Cosmos DB アカウントは 1 つまでです。また、アカウントの作成時にオプトインする必要があります。 Free レベルの割引を適用するオプションが表示されない場合は、サブスクリプション内の別のアカウントが Free レベルで既に有効になっていることを意味します。
    
    ![Azure Cosmos DB の新しいアカウント ページ](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account-detail.png)
 

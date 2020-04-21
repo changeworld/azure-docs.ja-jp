@@ -9,13 +9,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.openlocfilehash: c6303b494c7ea3a15a38cd5fb8bf6a77b0320363
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.openlocfilehash: 4ab1515c2f724d80b7c1f3b5f7869e85da431c26
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76170127"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404004"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>クイック スタート:Custom Vision Go SDK を使用して物体検出プロジェクトを作成する
 
@@ -285,7 +285,7 @@ go run sample.go
 
 ## <a name="next-steps"></a>次のステップ
 
-以上、物体検出処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。 次のガイドでは、画像の分類について取り上げていますが、その原理は物体の検出と似ています。
+物体検出処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。 次のトレーニングでは、画像の分類について取り上げていますが、その原理は物体の検出と似ています。
 
 > [!div class="nextstepaction"]
 > [モデルのテストと再トレーニング](test-your-model.md)

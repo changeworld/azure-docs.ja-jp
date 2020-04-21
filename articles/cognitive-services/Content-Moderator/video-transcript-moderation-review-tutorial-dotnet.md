@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2171bbaea065ce1ab3a8d90f32e6ea6dc1f1e821
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74976980"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404234"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>チュートリアル:ビデオとトランスクリプトのモデレーション
 
@@ -82,7 +82,7 @@ ms.locfileid: "74976980"
 コマンド ライン引数が指定されていない場合、`Main()` は `GetUserInputs()` を呼び出します。 このメソッドは、1 つのビデオ ファイルへのパスの入力と、テキスト トランスクリプトを生成するかどうかを指定するようにユーザーに要求します。
 
 > [!NOTE]
-> コンソール アプリケーションは、[Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)に関するページをご覧ください。
+> コンソール アプリケーションは、[Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/docs/Web/API/WebVTT_API)に関するページをご覧ください。
 
 ### <a name="initialize-and-processvideo-methods"></a>Initialize メソッドと ProcessVideo メソッド
 
@@ -223,7 +223,7 @@ ms.locfileid: "74976980"
 `GenerateVTT` フラグが設定されると、ビデオの音声のトランスクリプトも生成されます。
 
 > [!NOTE]
-> コンソール アプリケーションは、[Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)に関するページをご覧ください。
+> コンソール アプリケーションは、[Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/docs/Web/API/WebVTT_API)に関するページをご覧ください。
 
 ## <a name="create-a-human-review"></a>人間のレビューを作成する
 

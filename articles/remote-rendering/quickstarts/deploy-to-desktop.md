@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 93ec25123f60083d4b31cf54592b1a1c0dacab69
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 95993a54d321c9581d35f12b56d60e4ea052e505
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677647"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415720"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>クイック スタート:Unity のサンプルをデスクトップにデプロイする
 
@@ -26,7 +26,7 @@ ms.locfileid: "80677647"
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイックスタートでは、サンプル プロジェクトのデプロイを「[クイック スタート: Unity によるモデルのレンダリング](render-model.md)」から行います。
+このクイックスタートでは、「[クイックスタート: Unity によるモデルのレンダリング](render-model.md)」のサンプル プロジェクトをデプロイします。
 
 シーンと共に自分の資格情報が適切に保存されており、Unity エディター内からセッションに接続できることを確認してください。
 
@@ -59,7 +59,10 @@ ms.locfileid: "80677647"
   ![ソリューションの構成](./media/unity-deploy-config-pc.png)
 1. ソリューションをビルドします (F7)。
 
-## <a name="launch-the-sample-project"></a>サンプルプロジェクトを起動する
+> [!WARNING]
+> 必ず **[x86]** を選択してください。 現在、**x64** はサポートされていません。「[プラットフォームの制限事項](../reference/limits.md#platform-limitations)」を参照してください。
+
+## <a name="launch-the-sample-project"></a>サンプル プロジェクトを起動する
 
 Visual Studio のデバッガーを開始します (F5)。 アプリが PC に自動的にデプロイされます。
 

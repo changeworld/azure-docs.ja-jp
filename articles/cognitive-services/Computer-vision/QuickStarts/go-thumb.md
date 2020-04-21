@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: deb7ef0d087bc33c9e59ecd95973bc55a5ab6521
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 122a505773eb36263f83294c6792922b47ca33b2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74961524"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405025"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-with-go"></a>クイック スタート:Computer Vision の REST API と Go を使用してサムネイルを生成する
 
-このクイックスタートでは、Computer Vision の REST API を使って、画像からサムネイルを生成します。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision では、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
+このクイックスタートでは、Computer Vision の REST API を使用して、画像からサムネイルを生成します。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision では、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
 

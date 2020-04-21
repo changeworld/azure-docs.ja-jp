@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9a9b49f75ad377a9377a2311ed16c17ca3d749e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2bb5dd845b03bd94f0a94db50c01b804cf6f55c2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67092570"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407097"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>チュートリアル:Azure Active Directory と RStudio Connect の統合
 
@@ -158,9 +158,9 @@ IdPAttributeProfile = azure
 SSOInitiated = IdPAndSP
 ```
 
-**サーバー アドレス**を `Server.Address` 値に格納し、**アプリのフェデレーション メタデータ URL** を `SAML.IdPMetaData` 値に格納します。
+**サーバー アドレス**を `Server.Address` 値に格納し、**アプリのフェデレーション メタデータ URL** を `SAML.IdPMetaData` 値に格納します。 このサンプル構成では、暗号化されていない HTTP 接続を使用しますが、Azure AD では暗号化された HTTPS 接続を使用する必要があることに注意してください。 RStudio Connect の前面に[リバース プロキシ](https://docs.rstudio.com/connect/admin/proxy/)を使用するか、RStudio Connect を構成して [HTTPS を直接使用](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS)することができます。 
 
-構成に問題がある場合は、「[RStudio Connect Admin Guide](https://docs.rstudio.com/connect/admin/authentication.html#authentication-saml)」をお読みいただくか、ヘルプについてのメールを [RStudio のサポート チーム](mailto:support@rstudio.com)まで送信してください。
+構成に問題がある場合は、「[RStudio Connect Admin Guide](https://docs.rstudio.com/connect/admin/authentication/saml/)」をお読みいただくか、ヘルプについてのメールを [RStudio のサポート チーム](mailto:support@rstudio.com)まで送信してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 

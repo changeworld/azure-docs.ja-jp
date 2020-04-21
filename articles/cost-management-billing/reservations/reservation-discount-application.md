@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: banders
-ms.openlocfilehash: fb6e7e3fe3b7b45b503dca66dc5b039a9eceb689
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5781ade7b2f3cfc7514208861de025cc84944fcd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135489"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380634"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>予約割引の適用方法
 
@@ -39,7 +39,7 @@ ms.locfileid: "80135489"
 サービス プラン:
 
 - 予約 VM インスタンス:予約を購入し、 **[インスタンス サイズの柔軟性に対する最適化]** を選択すると、割引範囲は選択する仮想マシンのサイズによって決まります。 予約は同じサイズの系列グループの仮想マシン (VM) のサイズに適用できます。 詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)」を参照してください。
-- Azure Storage の予約容量: Azure Storage の標準アカウントの予約容量を、1 か月あたり 100 TiB または 1 PiB 単位で購入できます。 Azure Storage の予約容量は、任意のアクセス層 (ホット、クール、アーカイブ) および任意のレプリケーション オプション (LRS、GRS、ZRS) のすべてのリージョンで利用できます。
+- Azure Storage の予約容量: Azure Storage の標準アカウントの予約容量を、1 か月あたり 100 TiB または 1 PiB 単位で購入できます。 Azure Storage の予約容量をサポートするリージョンについては、「[ブロック BLOB の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。 Azure Storage の予約容量はすべてのアクセス層 (ホット、クール、アーカイブ) および任意のレプリケーション構成 (LRS、GRS、ZRS) で使用できます。
 - SQL Database 予約容量:割引範囲は、選択したパフォーマンス層によって異なります。 詳細については、「[Azure の予約割引の適用方法](understand-reservation-charges.md)」を参照してください。
 - Azure Cosmos DB 予約容量:割引範囲は、プロビジョニングされたスループットによって異なります。 詳細については、「[Azure Cosmos DB の予約割引の適用方法](understand-cosmosdb-reservation-charges.md)」を参照してください。
 

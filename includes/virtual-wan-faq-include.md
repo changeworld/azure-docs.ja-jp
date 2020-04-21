@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ad821036047dcf46821b2b2722e3dd17f8e318c2
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: a2d79391832bbb5424c6d4096eb5c1a597623367
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80386121"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81421896"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>ユーザーは、Azure Virtual WAN を使用するために、SD-WAN/VPN デバイスを利用したハブとスポークを用意する必要がありますか。
 
@@ -131,6 +131,8 @@ Virtual WAN パートナーによって、Azure VPN エンドポイントへの 
 
 * 仮想ハブに接続する ExpressRoute 回線のための ExpressRoute ゲートウェイがあった場合、支払う金額は、スケール ユニットの価格となります。 ER 内の各スケール ユニットは 2 Gbps で、接続ユニットはそれぞれ VPN 接続ユニットと同じレートで課金されます。
 
+* スポーク VNET がハブに接続されている場合、スポーク VNET でのピアリング料金は引き続き適用されます。 
+
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>ローンチ パートナーの一覧に記載されていない新しいパートナーが一覧に記載されるには、どうすればよいですか。
 
 すべての仮想 WAN API はオープン API です。 ドキュメントを参照して、技術的実現可能性を評価することができます。 ご質問がある場合は、azurevirtualwan@microsoft.com 宛てにメールでお寄せください。 理想的なパートナーは、IKEv1 または IKEv2 IPsec 接続用にプロビジョニングできるデバイスを持つパートナーです。
@@ -206,6 +208,13 @@ Azure Virtual WAN ハブでは、最大で 1,000 個のサイト間接続、10,0
 ### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>接続 (VPN、ExpressRoute、Virtual Network) の既定のルート (0.0.0.0/0) を有効にするにはどうすればよいですか。
 
 仮想ハブは、仮想ネットワーク、サイト間 VPN、または ExpressRoute 接続に対し、学習した既定のルートを伝達することができます (対応するフラグが、その接続で "有効" になっている場合)。 このフラグは、ユーザーが仮想ネットワーク接続、VPN 接続、または ExpressRoute 接続を編集するときに表示されます。 サイトまたは ExpressRoute 回線がハブに接続されると、このフラグは既定で無効になります。 VNet を仮想ハブに接続するための仮想ネットワーク接続が追加されたときは、既定で有効になります。 既定のルートの起点は Virtual WAN ハブではありません。Virtual WAN ハブにファイアウォールをデプロイした結果としてそのハブが既定のルートを既に学習している場合、または接続されている別のサイトで強制トンネリングが有効な場合に、既定のルートが伝達されます。
+
+### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Virtual WAN 内の仮想ハブは、どのようにして複数のハブからのルートに最適なパスを選択するのですか
+
+仮想ハブが複数のリモート ハブから同じルートを学習する場合は、次の順序で決定されます。
+1) ルートの発信元 a) ネットワーク ルート – 仮想ハブ ゲートウェイによって直接習得された VNET プレフィックス b) BGP c) ハブの RouteTable (静的に構成されたルート) d) InterHub ルート
+2)  ルート メトリック:Virtual WAN では、VPN よりも ExpressRoute が優先されます。 ExpressRoute ピアは VPN ピアと比べて重み付けが高くなります
+3)  AS パスの長さ
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Basic タイプの Virtual WAN と Standard タイプの Virtual WAN の違いは何ですか。
 

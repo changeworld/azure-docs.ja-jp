@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Custom Vision SDK for Python を使用して物体検出プロジェクトを作成する'
+title: クイック スタート:Custom Vision SDK for Python を使用して物体検出プロジェクトを作成する
 titleSuffix: Azure Cognitive Services
 description: Python SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、物体の検出を行います。
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: 68d63fbc71ea2dcd07522c6ba42808f88966cd7b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: e527f81ad01cc9c06773fbfd4f76c1630ffa21aa
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76166620"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403601"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>クイック スタート: Custom Vision Python SDK を使用して物体検出プロジェクトを作成する
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>クイック スタート:Custom Vision Python SDK を使用して物体検出プロジェクトを作成する
 
 この記事では、Custom Vision SDK と Python を使用して物体検出モデルを構築する基本的な方法について説明します。 作成後は、タグ付きのリージョンの追加、画像のアップロード、プロジェクトのトレーニング、プロジェクトの公開された予測エンドポイント URL の取得、エンドポイントを使用したプログラミングによる画像のテストを行うことができます。 この例は、独自の Python アプリケーションを構築するためのテンプレートとしてご利用ください。
 
@@ -230,7 +230,7 @@ python sample.py
 
 ## <a name="next-steps"></a>次のステップ
 
-以上、物体検出処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。 次のガイドでは、画像の分類について取り上げていますが、その原理は物体の検出と似ています。
+物体検出処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。 次のトレーニングでは、画像の分類について取り上げていますが、その原理は物体の検出と似ています。
 
 > [!div class="nextstepaction"]
 > [モデルのテストと再トレーニング](test-your-model.md)

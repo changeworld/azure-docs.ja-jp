@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 15c84b0c4cd4311300b951c3bf86b2bd62d48bfd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: aaaa382d41990b801d1c451b2bf416493a7ba7c6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77566133"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404925"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-java"></a>クイック スタート:Computer Vision 2.0 および 2.1 の REST API と Java を使用して、印刷されたテキストと手書きテキストを抽出する
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>クイック スタート:Computer Vision の REST API と Java を使用して印刷されたテキストと手書きテキストを抽出する
 
-このクイックスタートでは、Computer Vision の REST API を使って、印刷されたテキストや手書きテキストを画像から抽出します。 [バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)メソッドと[読み取り操作結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)メソッドを使うと、画像内のテキストを検出し、認識した文字をマシンで読み取り可能な文字ストリームに抽出することができます。 API では、各テキスト行に対してどの認識モデルを使用するかが決定されるため、印刷されたテキストと手書きのテキストの両方を含む画像がサポートされます。
+このクイックスタートでは、Computer Vision の REST API を使って、印刷されたテキストや手書きテキストを画像から抽出します。 [バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)メソッドと[読み取り操作結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)メソッドを使うと、画像内のテキストを検出し、認識した文字をマシンで読み取り可能な文字ストリームに抽出することができます。 サービスでは、各テキスト行に対してどの認識モデルを使用するかが決定されるため、印刷されたテキストと手書きのテキストの両方を含む画像がサポートされます。
 
-Computer Vision 2.0 および 2.1 に比べ、Computer Vision 3.0 パブリック プレビューでは次の機能が提供されます。
+この機能は、v2.1 API と v3.0 パブリック プレビュー API の両方で使用できます。 v2.1 と比較すると、3.0 の API には次の特徴があります。
 
-* 正確性の向上
-* 出力形式の変更
+* 精度の向上
 * 単語の信頼スコア
-* 言語パラメーターの追加によるスペイン語および英語のサポート
+* 追加の `language` パラメーターによるスペイン語および英語のサポート
+* 別の出力形式
+
+使用するバージョンのタブを下で選択してください。
 
 #### <a name="version-2"></a>[Version 2](#tab/version-2)
 
@@ -765,13 +767,11 @@ Text recognition result response:
 
 ---
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-不要になった場合は、コンパイル済みのクラスやインポートされたライブラリを含む Java プロジェクトを削除します。
-
 ## <a name="next-steps"></a>次のステップ
 
-Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマートにクロップされたサムネイルを作成するほか、イメージ内の視覚的な特徴 (顔など) を検出、カテゴライズ、タグ付け、および記述する Java Swing アプリケーションについて説明します。 Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
+次は、Computer Vision を使用して光学文字認識 (OCR) を実行する Java Swing アプリケーションについて説明します。これは、スマートにクロップされたサムネイルを作成し、イメージ内の視覚的な特徴を検出、カテゴライズ、タグ付け、および記述します。
 
 > [!div class="nextstepaction"]
 > [Computer Vision API Java チュートリアル](../Tutorials/java-tutorial.md)
+
+* Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。

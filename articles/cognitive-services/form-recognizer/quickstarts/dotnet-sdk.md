@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b9db9daf06b59e1a26a9b03a93aff63984841862
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 8d05f5ad07f9b3affba9442d6caa6e63162b813c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118352"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399418"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>クイック スタート:.NET 用 Form Recognizer クライアント ライブラリ
 
@@ -42,7 +42,7 @@ ms.locfileid: "77118352"
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-試用版のサブスクリプションまたはリソースからキーを取得した後、キーとエンドポイントの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `FORM_RECOGNIZER_KEY` および `FORM_RECOGNIZER_ENDPOINT` という名前を付けます。
+キーとエンドポイントを取得したら、キーとエンドポイントの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `FORM_RECOGNIZER_KEY` および `FORM_RECOGNIZER_ENDPOINT` という名前を付けます。
 
 ### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
@@ -99,12 +99,6 @@ Form Recognizer SDK の主な機能は、次のクラスによって処理され
 |[ExtractedPage](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.extractedpage?view=azure-dotnet-preview)| このクラスは、単一のフォーム ドキュメントから抽出されたすべてのデータを表します。|
 
 ## <a name="code-examples"></a>コード例
-
-<!--
-    Include code snippets and short descriptions for each task you list in the the bulleted list. Briefly explain each operation, but include enough clarity to explain complex or otherwise tricky operations.
-
-    Include links to the service's reference content when introducing a class for the first time
--->
 
 これらのコード スニペットでは、.NET 用 Form Recognizer クライアント ライブラリを使用して次のタスクを実行する方法を示します。
 
@@ -193,7 +187,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 このクイックスタートでは、Form Recognizer .NET クライアント ライブラリを使用してカスタム モデルをトレーニングし、フォームを分析しました。 次に、より適切なトレーニング データ セットを作成し、より正確なモデルを生成するためのヒントについて学習します。
 
 > [!div class="nextstepaction"]
->[トレーニング データ セットの作成](../build-training-data-set.md)
+> [トレーニング データ セットの作成](../build-training-data-set.md)
 
 * [Form Recognizer とは](../overview.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer) にあります。

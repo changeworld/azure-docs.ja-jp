@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/30/2020
+ms.date: 04/10/2020
 ms.author: banders
-ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b1986a4cb59e0f276ba59eb99acfb459b48615d8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475264"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262097"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
@@ -193,6 +193,17 @@ Azure の請求書では、月の料金が "_メーター_" ごとに集計さ�
 分析対象の請求書に記載されている _MeterName_ に基づいて、使用状況の CSV ファイルをフィルター処理すると、そのメーターに該当するすべての明細項目が表示されます。 その明細項目の _InstanceID_ は、料金の発生元となった実際の Azure リソースに対応します。
 
 該当するリソースが見つかったら、Azure Cost Management のコスト分析を使用して、リソースに関連するコストを詳しく分析できます。 コスト分析の使用について詳しくは、[コスト分析の開始](../costs/quick-acm-cost-analysis.md)に関するページを参照してください。
+
+### <a name="review-invoiced-charges-in-cost-analysis"></a>[コスト分析] で請求された料金を確認する
+
+Azure portal で請求書の詳細を表示するには、分析する請求書に関連付けられているスコープの [コスト分析] に移動します。 **[請求書の詳細]** ビューを選択します。 請求書の詳細には、請求書に記載される料金が表示されます。
+
+[![請求書の詳細を示す例](./media/getting-started/invoice-details.png)](./media/getting-started/invoice-details.png#lightbox)
+
+請求書の詳細を表示すると、予期しないコストがかかるサービスを特定することや、[コスト分析] のリソースに直接関連付けられているリソースを確認することができます。 たとえば、Virtual Machines サービスの料金を分析する場合は、 **[累積コスト]** ビューに移動します。 次に、細分性を **[Daily]\(日単位\)** に設定し、 **[Service name: Virtual machines]\(サービス名: 仮想マシン\)** で料金をフィルター処理し、 **[リソース]** で料金をグループ化します。
+
+[![仮想マシンの累積コストを示す例](./media/getting-started/virtual-machines.png)](./media/getting-started/virtual-machines.png#lightbox)
+
 
 ### <a name="identify-spikes-in-cost-over-time"></a>一定期間におけるコストの急増を特定する
 

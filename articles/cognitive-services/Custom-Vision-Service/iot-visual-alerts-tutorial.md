@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f66347727ad3c1b8eaf1f0e023abe1f2eeefcacb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74978034"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403717"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>チュートリアル:IoT デバイスで Custom Vision を使用して視覚的な状態を報告する
 
-このサンプル アプリでは、Custom Vision を使用して、カメラでデバイスをトレーニングして視覚的な状態を検出する方法を示します。 この検出シナリオは、Custom Vision サービスからエクスポートされた ONNX モデルを使用して、IoT デバイスで実行できます。
+このサンプル アプリでは、Custom Vision を使用して、カメラでデバイスをトレーニングして視覚的な状態を検出する方法を示します。 この検出シナリオは、エクスポートされた ONNX モデルを使用して、IoT デバイスで実行できます。
 
-視覚的な状態は、誰もいない部屋あるいは人がいる部屋、または空の私道やトラックが通っている私道などの画像の内容を表します。 次の図では、カメラの前にバナナまたはりんごが配置されているかどうかをアプリが検出しています。
+視覚的な状態は、誰もいない部屋あるいは人がいる部屋、またはトラックが 1 台ある空の私道などの画像の内容を表します。 次の図では、カメラの前にバナナまたはりんごが配置されているかどうかをアプリが検出しています。
 
 ![カメラの前にあるフルーツにラベル付けされる UI のアニメーション](./media/iot-visual-alerts-tutorial/scoring.gif)
 
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * また、Azure で [IoT Hub リソースを作成](https://ms.portal.azure.com/#create/Microsoft.IotHub)する必要があります。
 * [Visual Studio 2015 またはそれ以降](https://www.visualstudio.com/downloads/)
 * 必要に応じて、Windows 10 IoT Core バージョン 17763 以上を実行している IoT デバイス。 PC からアプリを直接実行することもできます。
-   * Raspberry Pi 2 および 3 では、IoT ダッシュボード アプリから Windows 10 を直接設定できます。 DrangonBoard などの他のデバイスの場合、[eMMC の方法](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices)を使用してフラッシュする必要があります。 新しいデバイスのセットアップでヘルプが必要な場合は、Windows IoT ドキュメントの[「デバイスのセットアップ」](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)を参照してください。
+   * Raspberry Pi 2 および 3 では、IoT ダッシュボード アプリから Windows 10 を直接設定できます。 DrangonBoard などの他のデバイスの場合、[eMMC の方法](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices)を使用してフラッシュする必要があります。 新しいデバイスのセットアップでヘルプが必要な場合は、Windows IoT ドキュメントの「[デバイスのセットアップ](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)」を参照してください。
 
 ## <a name="about-the-visual-alerts-app"></a>Visual Alerts アプリについて
 
@@ -92,7 +92,7 @@ ARM プロセッサを搭載した IoT デバイスにデプロイする場合�
 * PC でアプリを実行している場合は、UI の右上隅にあるボタンを使用します。
 * アプリを IoT デバイスで実行している場合は、IoT Hub を通してデバイスで `EnterLearningMode` メソッドを呼び出します。 これは、Azure portal の [IoT Hub] メニューのデバイス エントリ、または [IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) などのツールを使用して呼び出すことができます。
  
-アプリの状態が**トレーニング イメージのキャプチャ中**になると、目標のイメージ数に達するまで、1 秒ごとに 2 枚のイメージがキャプチャされます。 既定のイメージ数は 30 ですが、設定したい数を引数として `EnterLearningMode` IoT Hub メソッドに渡すことによって、このパラメーターを設定できます。 
+アプリの状態が**トレーニング イメージのキャプチャ中**になると、目標のイメージ数に達するまで、1 秒ごとに 2 枚のイメージがキャプチャされます。 既定では、目標のイメージ数は 30 ですが、設定したい数を引数として `EnterLearningMode` IoT Hub メソッドに渡すことによって、このパラメーターを設定できます。 
 
 アプリがイメージをキャプチャしている間、検出する視覚的な状態の種類 (たとえば、空の部屋、人がいる部屋、空の机、おもちゃのトラックが乗っている机など) にカメラを向ける必要があります。
 

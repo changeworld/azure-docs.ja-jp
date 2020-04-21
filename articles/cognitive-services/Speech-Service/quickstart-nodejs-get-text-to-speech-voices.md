@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 7a929794ffaea4f863ffaef7227e58c7ccf901f0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9fe8bc06aafd17518d37c35034fac9b566e079ce
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74976572"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261552"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>クイック スタート:Node.js を使用してテキスト読み上げ音声の一覧を取得する
 
@@ -27,8 +27,8 @@ ms.locfileid: "74976572"
 
 このクイック スタートでは以下が必要です。
 
-* [Node 8.12.x 以降](https://nodejs.org/en/)
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
+* <a href="https://nodejs.org/en/" target="_blank">Node 8.12.x 以降<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code<span class="docon docon-navigate-external x-hidden-focus"></span></a>、または任意のテキスト エディター
 * Speech サービス用の Azure サブスクリプション キー。 [1 つ無料で取得できます](get-started.md)。
 
 ## <a name="create-a-project-and-require-dependencies"></a>プロジェクトと必要な依存関係を作成する

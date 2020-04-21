@@ -2,13 +2,13 @@
 title: クイック スタート:LUIS ポータルで新しいアプリを作成する
 description: このクイックスタートでは、アプリの基本パーツ、意図、エンティティを作成すると共に、LUIS ポータルからサンプル発話を使ってテストを行います。
 ms.topic: quickstart
-ms.date: 03/24/2020
-ms.openlocfilehash: f0c8f0c77f832e049dfc494f82e90edb61a8cb2a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.openlocfilehash: 2d601646c43c0f0d99dc6934cf1f1c960e0b0f79
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244616"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382583"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータルで新しいアプリを作成する
 
@@ -27,10 +27,10 @@ ms.locfileid: "80244616"
 
    |設定名| 値 | 目的|
    |--|--|--|
-   |Name|`myEnglishApp`|LUIS アプリの一意の名前<br>required|
-   |Culture|**英語**|ユーザーの発話の言語、**en-us**<br>required|
-   |Description (省略可能)|`App made with LUIS Portal`|アプリの説明<br>省略可能|
-   |Prediction resource (省略可能) |-  |選択しないでください。 作成と 1,000 件の予測エンドポイント要求に無料で使用できるスターター キーが LUIS から提供されます。 |
+   |名前|`myEnglishApp`|LUIS アプリの一意の名前<br>required|
+   |カルチャ|**英語**|ユーザーの発話の言語、**en-us**<br>required|
+   |説明 (省略可能)|`App made with LUIS Portal`|アプリの説明<br>省略可能|
+   |予測リソース (省略可能) |-  |選択しないでください。 作成と 1,000 件の予測エンドポイント要求に無料で使用できるスターター キーが LUIS から提供されます。 |
 
    ![新しいアプリ設定を入力する](./media/get-started-portal-build-app/create-new-app-settings.png)
 
@@ -50,11 +50,11 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 意図を作成するには、次の手順を実行します。
 
-1. アプリの作成が完了すると、 **[Build]** セクションに **[Intents]** ページが表示されます。 **[Create]** を選択します。
+1. アプリの作成が完了すると、 **[ビルド]** セクションに **[意図]** ページが表示されます。 **［作成］** を選択します
 
    [![[作成] を選択して新しい意図を作成する](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. 意図の名前として `FindForm` を入力し、 **[Done]** を選択します。
+1. 意図の名前として `FindForm` を入力し、 **[完了]** を選択します。
 
 ## <a name="add-an-example-utterance"></a>発話の例を追加する
 
@@ -88,11 +88,10 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 これらの発話の例は、次の点を意図的に変化させています。
 
 * 発話の長さ
-* 句読点
+* [句読点](luis-reference-application-settings.md#punctuation-normalization)
 * 単語の選択
 * 動詞の時制 (現在、過去、未来)
 * 単語の順序
-
 
 
 ## <a name="create-a-regular-expression-entity"></a>正規表現エンティティを作成する

@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: f1c0d8f72fe59ff9a8c0fdba86d97ea588a9a808
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 2a7da34238af6d1936c680cd5a063e9ad49ee889
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366635"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403613"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>クイック スタート:Custom Vision Node.js SDK を使用して画像分類プロジェクトを作成する
 
@@ -176,7 +176,7 @@ Results:
 
 ## <a name="next-steps"></a>次のステップ
 
-以上、画像の分類処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。
+物体検出処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。
 
 > [!div class="nextstepaction"]
 > [モデルのテストと再トレーニング](test-your-model.md)

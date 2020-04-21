@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Azure REST API と Java を使って画像から顔を検出する'
+title: クイック スタート:Azure REST API と Java を使って画像から顔を検出する
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Azure Face REST API と Java を使用して、画像から顔を検出します。
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: d6d0a5cdf4b33ba290042627f0ceaf4cf73a375c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 59c121f09858114cecfaeb45e257315d1ab92935
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76169325"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403425"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>クイック スタート: REST API と Java を使用して画像内の顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>クイック スタート:REST API と Java を使用して画像内の顔を検出する
 
 このクイック スタートでは、Azure Face REST API と Java を使用して、画像から人の顔を検出します。
 
@@ -251,4 +251,4 @@ public class Main {
 このクイックスタートでは、Azure Face API への REST 呼び出しを使って画像内の顔を検出し、その属性を返す単純な Java コンソール アプリケーションを作成しました。 この後は、この機能を Android アプリケーションで応用する方法について見てみましょう。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: 顔を検出してフレームに収める Android アプリの作成](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+> [チュートリアル:顔を検出してフレームに収める Android アプリの作成](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)

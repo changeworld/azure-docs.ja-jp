@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 64eb19e43223c1953a7244f8fd29c48d085f1e96
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2fa2e40ba2a7fe84b6df57bfb711d01332b8f523
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80117136"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274803"
 ---
 <a name="HOLTop"></a>
 
@@ -32,9 +32,9 @@ ms.locfileid: "80117136"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/)
-* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。  展開されたら、 **[リソースに移動]** をクリックします。
-    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 ご自分のキーとエンドポイントは、後でクイックスタートでコードに貼り付けます。
-    * 運用環境では、Free 価格レベル (`F0`) を使ってサービスを試用してから、後で有料レベルにアップグレードすることができます。
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics リソースを作成"  target="_blank">Text Analytics リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。  デプロイされたら、 **[リソースに移動]** をクリックします。
+    * アプリケーションを Text Analytics API に接続するには、作成するリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 ## <a name="setting-up"></a>設定
 
@@ -44,7 +44,7 @@ Visual Studio IDE を使用して新しい .NET Core コンソール アプリ�
 
 #### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
-**ソリューション エクスプローラー**でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Azure.AI.TextAnalytics` を検索します。 バージョン `1.0.0-preview.3` を選択し、 **[インストール]** を選択します。 [パッケージ マネージャー コンソール](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)を使用してもかまいません。
+**ソリューション エクスプローラー**でソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Azure.AI.TextAnalytics` を検索します。 バージョン `1.0.0-preview.4` を選択し、 **[インストール]** を選択します。 [パッケージ マネージャー コンソール](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)を使用してもかまいません。
 
 > [!TIP]
 > クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs) にあり、このクイックスタートのコード例が含まれています。 
@@ -63,6 +63,7 @@ Visual Studio IDE を使用して新しい .NET Core コンソール アプリ�
 *program.cs* ファイルを開き、次の `using` ディレクティブを追加します。
 
 ```csharp
+using Azure;
 using System;
 using System.Globalization;
 using Azure.AI.TextAnalytics;
@@ -73,7 +74,7 @@ using Azure.AI.TextAnalytics;
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
 ```csharp
-private static readonly TextAnalyticsApiKeyCredential credentials = new TextAnalyticsApiKeyCredential("<replace-with-your-text-analytics-key-here>");
+private static readonly AzureKeyCredential credentials = new AzureKeyCredential("<replace-with-your-text-analytics-key-here>");
 private static readonly Uri endpoint = new Uri("<replace-with-your-text-analytics-endpoint-here>");
 ```
 
@@ -87,7 +88,6 @@ static void Main(string[] args)
     SentimentAnalysisExample(client);
     LanguageDetectionExample(client);
     EntityRecognitionExample(client);
-    EntityPIIExample(client);
     EntityLinkingExample(client);
     KeyPhraseExtractionExample(client);
 
@@ -121,14 +121,13 @@ private static readonly string endpoint = "<replace-with-your-text-analytics-end
 
 Text Analytics クライアントは、キーを使用して Azure に対して認証を行う `TextAnalyticsClient` オブジェクトであり、テキストを単一の文字列またはバッチとして受け取る機能を提供します。 テキストは、同期的または非同期的に API に送信できます。 応答オブジェクトには、送信する各ドキュメントの分析情報が格納されます。 
 
-バージョン `3.0-preview` を使用している場合、オプションの `TextAnalyticsClientOptions` インスタンスを使用すると、クライアントをさまざまな既定の設定 (既定の言語や国ヒントなど) で初期化できます。 Azure Active Directory トークンを使用して認証することもできます。 
+サービスのバージョン `3.0-preview` を使用している場合、オプションの `TextAnalyticsClientOptions` インスタンスを使用すると、クライアントをさまざまな既定の設定 (既定の言語や国ヒントなど) で初期化できます。 Azure Active Directory トークンを使用して認証することもできます。 
 
 ## <a name="code-examples"></a>コード例
 
 * [感情分析](#sentiment-analysis)
 * [言語検出](#language-detection)
 * [名前付きエンティティの認識](#named-entity-recognition-ner)
-* [個人情報の検出](#detect-personal-information)
 * [エンティティ リンク設定](#entity-linking)
 * [キー フレーズ抽出](#key-phrase-extraction)
 
@@ -264,7 +263,6 @@ Language: English
 
 > [!NOTE]
 > バージョン `3.0-preview` の新機能:
-> * エンティティの認識に、テキスト内の個人情報を検出する機能が追加されました。
 > * エンティティ リンク設定がエンティティの認識から切り離されました。
 
 
@@ -293,33 +291,6 @@ Named Entities:
         Text: last week,        Category: DateTime,     Sub-Category: DateRange
                 Length: 9,      Score: 0.80
 ```
-
-## <a name="detect-personal-information"></a>個人情報の検出
-
-前に作成したクライアントを受け取る `EntityPIIExample()` という新しい関数を作成し、その `RecognizePiiEntities()` 関数を呼び出して、結果を反復処理します。 前の関数と同様に、返される `Response<IReadOnlyCollection<CategorizedEntity>>` オブジェクトには、成功した場合は検出されたエンティティの一覧が含まれます。 エラーが発生した場合は、`RequestFailedException` がスローされます。
-
-```csharp
-static void EntityPIIExample(TextAnalyticsClient client)
-{
-    string inputText = "Insurance policy for SSN on file 123-12-1234 is here by approved.";
-    var response = client.RecognizePiiEntities(inputText);
-    Console.WriteLine("Personally Identifiable Information Entities:");
-    foreach (var entity in response.Value)
-    {
-        Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tLength: {entity.GraphemeLength},\tScore: {entity.ConfidenceScore:F2}\n");
-    }
-}
-```
-
-### <a name="output"></a>出力
-
-```console
-Personally Identifiable Information Entities:
-        Text: 123-12-1234,      Category: U.S. Social Security Number (SSN),    Sub-Category:
-                Length: 11,     Score: 0.85
-```
-
 
 ## <a name="entity-linking"></a>エンティティ リンク設定
 

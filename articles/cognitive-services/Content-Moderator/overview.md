@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 570d55c8523e1c1deca3242a8841b0cc34322786
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f28f2bcf5d04c9a6354b8135bd39546b9d8b9bf3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053869"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404290"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator とは
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Content Moderator は、テキスト、画像、ビデオのコンテンツに不快感を与える可能性がある内容、リスクのある内容、その他望ましくない可能性のある内容が含まれているかどうかを確認できるコグニティブ サービスです。 このサービスでは、そのような素材が検出されると、それに応じたラベル (フラグ) がコンテンツに適用されます。 その後は、法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、フラグの設定されたコンテンツをアプリで処理することができます。 コンテンツに適用されるフラグがそれぞれどのような意味であるかについての詳細は、「[モデレート API](#moderation-apis)」のセクションを参照してください。
+Azure Content Moderator は、テキスト、画像、ビデオのコンテンツに不快感を与える可能性がある内容、リスクのある内容、その他望ましくない可能性のある内容が含まれているかどうかを確認できる Cognitive Services です。 このサービスでは、そのような素材が検出されると、それに応じたラベル (フラグ) がコンテンツに適用されます。 その後は、法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、フラグの設定されたコンテンツをアプリで処理することができます。 コンテンツに適用されるフラグがそれぞれどのような意味であるかについての詳細は、「[モデレート API](#moderation-apis)」のセクションを参照してください。
 
 ## <a name="where-its-used"></a>使用場所
 
@@ -38,7 +38,7 @@ Azure Content Moderator は、テキスト、画像、ビデオのコンテン�
 
 ## <a name="what-it-includes"></a>備えている機能
 
-Content Moderator サービスは、REST 呼び出しと .NET SDK のどちらを介しても利用できるいくつかの Web サービス API で構成されています。 ほかには目視レビュー ツールが用意されており、レビュー担当者がサービスを補助したり、モデレーション機能を調整したりできるようになっています。
+Content Moderator サービスは、REST 呼び出しと .NET SDK のどちらを介しても利用できるいくつかの Web サービス API で構成されています。 ほかにはレビュー ツールが用意されており、レビュー担当者がサービスを補助したり、モデレーション機能を調整したりできるようになっています。
 
 ## <a name="moderation-apis"></a>モデレート API
 
@@ -58,18 +58,18 @@ Content Moderator サービスには、モデレート API が含まれていま
 
 ## <a name="review-apis"></a>API の確認
 
-Review API を使用すると、モデレーション パイプラインを人間のレビューアーと統合することができます。 [ジョブ](review-api.md#jobs)、[レビュー](review-api.md#reviews)、[ワークフロー](review-api.md#workflows)の操作を使用して、[レビュー ツール](#the-review-tool) (下記参照) を使った人間参加型のワークフローを作成したり、自動化したりできます。
+Review API を使用すると、モデレーション パイプラインを人間のレビューアーと統合することができます。 [ジョブ](review-api.md#jobs)、[レビュー](review-api.md#reviews)、[ワークフロー](review-api.md#workflows)の操作を使用して、[レビュー ツール](#review-tool) (下記参照) を使った人間参加型のワークフローを作成したり、自動化したりできます。
 
 > [!NOTE]
 > Workflow API は、.NET SDK ではまだ利用できませんが、REST エンドポイントで使用できます。
 
 ![Content Moderator レビュー API のブロック図](images/content-moderator-rev-api.png)
 
-## <a name="the-review-tool"></a>レビュー ツール
+## <a name="review-tool"></a>レビュー ツール
 
 Content Moderator サービスには、ほかにも Web ベースの[レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)が備わっています。このツールは、ヒューマン モデレーターによって処理されるコンテンツ レビューのホストとなります。 人間による入力がサービスに対するトレーニングになることはありませんが、このサービスの成果と目視レビュー チームの作業を組み合わせれば、開発者が効率性と正確性をうまく両立させることが可能になります。 また、レビュー ツールは、いくつかの Content Moderator リソース向けに、ユーザー フレンドリなフロントエンドも備えています。
 
-![Content Moderator 目視レビュー ツールのホームページ](images/homepage.PNG)
+![Content Moderator レビュー ツール ホームページ](images/homepage.PNG)
 
 ## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
 
