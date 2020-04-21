@@ -44,7 +44,7 @@ Microsoft Translator Text API への要求は、ほとんどの場合、その�
 |説明|Azure 地域|ベース URL|
 |:--|:--|:--|
 |Azure|グローバル (リージョンなし)|   api.cognitive.microsofttranslator.com|
-|Azure|United States|   api-nam.cognitive.microsofttranslator.com|
+|Azure|アメリカ|   api-nam.cognitive.microsofttranslator.com|
 |Azure|ヨーロッパ|  api-eur.cognitive.microsofttranslator.com|
 |Azure|アジア太平洋|    api-apc.cognitive.microsofttranslator.com|
 
