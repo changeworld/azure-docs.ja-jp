@@ -198,7 +198,7 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](fr
 | TZ | タンザニア|
 | UA | ウクライナ|
 | UG | ウガンダ|
-| US | United States|
+| US | アメリカ|
 | UY | ウルグアイ|
 | UZ | ウズベキスタン|
 | VC | セントビンセント及びグレナディーン諸島|
