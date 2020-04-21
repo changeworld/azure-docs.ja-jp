@@ -96,7 +96,7 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 
 | Country | リージョン | サービス タグ |
 | ---- | ---- | ---- |
-| United States | 米国東部 2 | HDInsight.EastUS2 |
+| アメリカ | 米国東部 2 | HDInsight.EastUS2 |
 | &nbsp; | 米国中部 | HDInsight.CentralUS |
 | &nbsp; | 米国中北部 | HDInsight. NorthCentralUS |
 | &nbsp; | 米国中南部 | HDInsight.SouthCentralUS |
