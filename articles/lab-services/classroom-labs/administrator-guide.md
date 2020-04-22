@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8608aaab7bb8b6d10e67f27678c17f20a6c243da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55e319ba8aecb9205c00dda4a400e37f7c010649
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370843"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257778"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services - 管理者ガイド
 大学のクラウド リソースを管理する情報技術 (IT) 管理者は、通常、学校のラボ アカウントの設定を担当します。 ラボ アカウントが設定されると、管理者または教師は、ラボ アカウント内に含まれるクラスルーム ラボを作成します。 この記事では、関連する Azure リソースの概要と、それらを作成するためのガイダンスを示します。
@@ -59,7 +59,7 @@ ms.locfileid: "80370843"
     
     ラボ アカウントを設定するときは、ラボ アカウントの "*すべての*" クラスルーム ラボに適用される次のようなポリシーを設定します。
     - クラスルーム ラボがアクセスできる共有リソースがある Azure 仮想ネットワーク。 たとえば、仮想ネットワーク内の共有データ セットへのアクセスを必要とする一連のクラスルーム ラボがある場合があります。
-    - クラスルーム ラボが VM の作成に使用できる仮想マシン (VM) イメージ。 たとえば、[Data Science VM for Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) Marketplace イメージへのアクセスを必要とする一連のクラスルーム ラボがある場合があります。 
+    - クラスルーム ラボが VM の作成に使用できる仮想マシン (VM) イメージ。 たとえば、[Data Science VM for Linux](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) Marketplace イメージへのアクセスを必要とする一連のクラスルーム ラボがある場合があります。 
     
     それぞれ独自のポリシー要件を持つクラスルーム ラボがある場合は、これらのクラスルーム ラボを個別に管理するために、個別のラボ アカウントを作成すると便利です。
 
@@ -150,11 +150,14 @@ Azure Lab Services のリソースを設定するときに、リソースをホ�
     
   - **どの VNet ともピアリングされておらず ***、*** ラボ作成者はラボの場所の選択を許可されていない**
   
-    ラボ アカウントがどの VNet ともピアリングされて**おらず**、[ラボ作成者がラボの場所の選択を許可されて**いない**](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)場合は、使用可能な VM 容量があるリージョンにクラスルーム ラボが自動的に作成されます。 **  具体的には、Azure Lab Services は、[ラボ アカウントと同じ地域内にあるリージョン](https://azure.microsoft.com/global-infrastructure/regions)の可用性を調べます。
+    ラボ アカウントがどの VNet ともピアリングされて**おらず** *、* [ラボ作成者がラボの場所の選択を許可されて**いない**](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)場合は、使用可能な VM 容量があるリージョンにクラスルーム ラボが自動的に作成されます。  具体的には、Azure Lab Services は、[ラボ アカウントと同じ地域内にあるリージョン](https://azure.microsoft.com/global-infrastructure/regions)の可用性を調べます。
 
   - **どの VNet ともピアリングされておらず ***、*** ラボ作成者はラボの場所の選択を許可されている**
        
     ラボ アカウントがどの VNet ともピアリングされて**おらず**、[ラボ作成者がラボの場所の選択を許可されている](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)場合は、ラボ作成者が選択できる場所は使用可能な容量に基づきます。
+
+> [!NOTE]
+> リージョンのための十分な VM 容量が確実に存在するようにするには、まずラボ アカウントを使用して、またはラボの作成時に容量を要求することが重要です。
 
 原則として、リソースのリージョンはユーザーに最も近いものに設定します。 クラスルーム ラボの場合、これは学生の最も近くにクラスルーム ラボを作成することを意味します。 学生が世界中にいるオンライン コースの場合は、慎重に検討して、中心に位置するクラスルーム ラボを作成する必要があります。 または、学生のリージョンに基づいてクラスを複数のクラスルーム ラボに分割します。
 
@@ -169,7 +172,7 @@ Azure Lab Services のリソースを設定するときに、リソースをホ�
 | ---- | ----- | ------ | ------------- |
 | Small| <ul><li>2 コア</li><li>3.5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、コマンド ライン、Web ブラウザーの起動、トラフィックが少ない Web サーバー、中小規模のデータベースに最適です。 |
 | Medium | <ul><li>4 コア</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。 |
-| 中 (入れ子になった仮想化) | <ul><li>4 コア</li><li>16 GB RAM</li></ul> | [Standard_DC4s_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。  また、このサイズは入れ子になった仮想化もサポートしています。 |
+| 中 (入れ子になった仮想化) | <ul><li>4 コア</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。  また、このサイズは入れ子になった仮想化もサポートしています。 |
 | Large | <ul><li>8 コア</li><li>32 GB RAM</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | このサイズは、高速の CPU、ローカル ディスクのよりすぐれたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。  また、このサイズは入れ子になった仮想化もサポートしています。 |
 | Small GPU (視覚化) | <ul><li>6 コア</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | このサイズは、リモートの視覚化、ストリーミング、ゲーム、OpenGL や DirectX などのフレームワークを使用したエンコードに最適です。 |
 | Small GPU (Compute) | <ul><li>6 コア</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |このサイズは、人工知能やディープ ラーニングなどのコンピューティング集中型のアプリケーションに最適です。 |

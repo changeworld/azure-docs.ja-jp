@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: b8c2ba54fcc69ba126bf5f68aed99b25f8156155
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b564373780da5bba71bc46ddbac3dc69a0c94a4a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76046177"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382775"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights エクスプローラー
 
@@ -82,7 +82,7 @@ Time Series Insights エクスプローラーを使用するための前提条�
 
          [![GA クエリの例](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
 
-1. **間隔サイズ** スライダー ツールを使用すると、同じ期間にわたる間隔を拡大および縮小できます。 このスライダーにより、滑らかな傾向を示す大きな時間スライスから、ミリ秒単位の小さなスライスまでの動きのより正確な制御が可能になるため、きめ細かな高解像度のデータ片を表示して分析できるようになります。 このスライダーの既定の開始点は、解像度、クエリ速度、および細分性のバランスがとれた、選択されたデータの最適なビューとして設定されます。
+1. **間隔サイズ** スライダー ツールを使用すると、同じ期間にわたる間隔を拡大および縮小できます。 このスライダーにより、滑らかな傾向を示す大きな時間スライスから、ミリ秒単位の小さなスライスまでの動きのより正確な制御が可能になるため、きめ細かな高解像度のデータ片を表示して分析できるようになります。 スライダーの既定の開始点は、解像度、クエリ速度、および細分性のバランスを取るように選択された、データの最適なビューとして設定されます。
 
 1. **タイム ブラシ** ツールにより、ある期間から別の期間への移動が簡単になります。
 

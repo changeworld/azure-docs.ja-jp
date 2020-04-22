@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236103"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382912"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift の Azure Active Directory 統合
 
@@ -25,13 +25,13 @@ Microsoft Azure Red Hat OpenShift には、クラスターに代わってタス�
 
 ![右上にテナントが表示されているポータルのスクリーンショット](./media/howto-create-tenant/tenant-callout.png) 不適切なテナントが表示される場合は、右上の自分のユーザー名をクリックし、 **[ディレクトリの切り替え]** をクリックして **[すべてのディレクトリ]** リストから正しいテナントを選択します。
 
-Azure Red Hat OpenShift クラスターにサインインするために使用する新しい Azure Active Directory グローバル管理者ユーザーを作成します。
+Azure Red Hat OpenShift クラスターにサインインするための新しい Azure Active Directory の "所有者" ユーザーを作成します。
 
 1. [[ユーザー - すべてのユーザー]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) ブレードに移動します。
 2. **[+ 新しいユーザー]** をクリックし、 **[ユーザー]** ウィンドウを開きます。
 3. このユーザーの **[名前]** を入力します。
 4. 末尾に `.onmicrosoft.com` を追加して作成したテナントの名前に基づいて **[ユーザー名]** を作成します。 たとえば、「 `yourUserName@yourTenantName.onmicrosoft.com` 」のように入力します。 このユーザー名をメモします。 これは、クラスターにサインインするときに必要になります。
-5. **[ディレクトリ ロール]** をクリックして [ディレクトリ ロール] ウィンドウを開き、 **[グローバル管理者]** を選択してから、ウィンドウの下部にある **[OK]** をクリックします。
+5. **[ディレクトリ ロール]** をクリックしてディレクトリ ロール ペインを開き、 **[所有者]** を選択してから、ペインの下部にある **[OK]** をクリックします。
 6. **[ユーザー]** ウィンドウで **[パスワードを表示]** をクリックして一時パスワードをメモします。 初めてサインインした後は、リセットするように求められます。
 7. ウィンドウの下部にある **[作成]** をクリックしてユーザーを作成します。
 

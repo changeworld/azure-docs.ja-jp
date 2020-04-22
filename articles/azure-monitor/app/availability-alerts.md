@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: e0c1a93ef663762bec199abc5aa7eabbc821168d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654955"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382880"
 ---
 # <a name="availability-alerts"></a>可用性のアラート
 
@@ -33,6 +33,9 @@ ms.locfileid: "77654955"
 2. 目的の重大度レベルとルールの説明を設定し、次に、最も重要なものとして、このアラート ルールに使用する、通知の基本設定が含まれているアクション グループを設定します。
 
    ![保存後の編集](./media/availability-alerts/set-action-group.png)
+
+> [!NOTE]
+> このエクスペリエンスによって作成される可用性アラートは、状態に基づきます。 つまり、アラートの条件が満たされると、サイトが使用不可として検出された場合に 1 つのアラートが生成されます。 次にアラートの条件が評価されたときに、サイトがまだ停止している場合、新しいアラートは生成されません。 そのため、サイトが 1 時間前から停止しており、電子メール アラートを設定済みの場合は、サイトが停止した時点で 1 つの電子メールを、また、サイトがバックアップされた時点でそれに続くもう 1 つの電子メールを受信するだけになります。 サイトがまだ使用不可であることを知らせる継続的なアラートは受信しません。
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Y 箇所中 X 箇所に関するアラートでエラーが報告されている
 

@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 8e223d0c6243bfddc1e5a56867c4c69de5e2a62e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6ea604446cb9d56bb699685d24c81992bcac3a2
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73822454"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382906"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>SQL データ同期に関する問題のトラブルシューティング
 
@@ -110,7 +110,7 @@ SQL データ同期の同期グループが、長時間にわたり処理状態�
 -  CREATE INDEX ステートメントに WHERE 句があります。 データ同期では、この状態は処理されません。 この問題を解決するには、WHERE 句を削除するか、手動ですべてのデータベースに変更を加えます。 
  
 ### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a><a name="sync-circ"></a> データ同期では循環参照はどのように処理されますか? つまり、同じデータが複数の同期グループで同期されるとき、その変更を結果として保持しますか?
-データ同期は循環参照を処理しません。 必ず回避してください。 
+データ同期では、循環参照は処理されません。 必ず回避してください。 
 
 ## <a name="client-agent-issues"></a>クライアント エージェントに関する問題
 

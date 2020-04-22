@@ -85,8 +85,6 @@
           href: batch-aad-auth-management.md
         - name: Batch で Key Vault に安全にアクセスする
           href: credential-access-key-vault.md
-    - name: アプリケーション パッケージの使用
-      href: batch-application-packages.md
     - name: ファイルとアプリケーションをプール ノードにコピーする
       items:
         - name: プール ノードへのアプリケーションとデータのコピー
@@ -259,7 +257,7 @@
       href: /azure/templates/microsoft.batch/batchaccounts
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=batch&updatetype=&platform='
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-batch'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=batch'

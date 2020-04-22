@@ -131,20 +131,20 @@
     - name: Java
       href: 'https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines'
     - name: Python
-      href: /python/api/azure.mgmt.msi
+      href: 'https://docs.microsoft.com/windows/python/'
     - name: Ruby
       href: 'https://rubygems.org/gems/azure_mgmt_msi'
     - name: Node.js
-      href: /javascript/api/ms-rest-azure
+      href: 'https://nodejs.org/en/docs/'
     - name: Go
-      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi'
+      href: 'https://golang.org/doc/'
 - name: リソース
   items:
     - name: FAQ と既知の問題
       href: known-issues.md
     - name: Azure リソースのマネージド ID をサポートする Azure サービス
       href: services-support-managed-identities.md
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-msi'
     - name: AAD 開発者フォーラム
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences'

@@ -1293,6 +1293,9 @@
               maintainContext: true
         - name: データ ソース
           items:
+            - name: 無効なクライアント ID または間違ったパスが使用されていると、ABFS クライアントがハングする
+              href: /azure/databricks/kb/data-sources/abfs-client-hang
+              maintainContext: true
             - name: Sparklyr を使用した ADLS Gen1 からのデータ読み取りエラー
               href: /azure/databricks/kb/data-sources/access-adls1-from-sparklyr
               maintainContext: true
@@ -1509,6 +1512,9 @@
             - name: AttributeError でコマンドが失敗する
               href: /azure/databricks/kb/python/python-exec-display-cancelled
               maintainContext: true
+            - name: Docker で Python REPL を起動できない
+              href: /azure/databricks/kb/python/python-repl-fails-dcs
+              maintainContext: true
             - name: C++ コードを実行する
               href: /azure/databricks/kb/python/running-c-plus-plus-code
               maintainContext: true
@@ -1562,6 +1568,12 @@
               maintainContext: true
         - name: ストリーミング
           items:
+            - name: display() の使用時にチェックポイント ファイルが削除されない
+              href: /azure/databricks/kb/streaming/checkpoint-no-cleanup-display
+              maintainContext: true
+            - name: foreachBatch() の使用時にチェックポイント ファイルが削除されない
+              href: /azure/databricks/kb/streaming/checkpoint-no-cleanup-foreachbatch
+              maintainContext: true
             - name: チェックポイントまたは出力ディレクトリの変更後の復旧
               href: /azure/databricks/kb/streaming/file-sink-streaming
               maintainContext: true
@@ -1578,9 +1590,14 @@
         - name: Databricks Connect
           href: /azure/databricks/dev-tools/databricks-connect
           maintainContext: true
-        - name: Jenkins での CI/CD
-          href: /azure/databricks/dev-tools/ci-cd
-          maintainContext: true
+        - name: CI/CD
+          items:
+            - name: Azure DevOps を使用した CI/CD
+              href: /azure/databricks/dev-tools/ci-cd/ci-cd-azure-devops
+              maintainContext: true
+            - name: Jenkins での CI/CD
+              href: /azure/databricks/dev-tools/ci-cd/ci-cd-jenkins
+              maintainContext: true
         - name: データ パイプラインの依存関係を管理する
           href: /azure/databricks/dev-tools/data-pipelines
           maintainContext: true
@@ -1618,7 +1635,15 @@
               href: /azure/databricks/dev-tools/api/latest/mlflow
               maintainContext: true
             - name: SCIM
-              href: /azure/databricks/dev-tools/api/latest/scim
+              items:
+                - name: SCIM API の概要
+                  href: /azure/databricks/dev-tools/api/latest/scim/index
+                - name: SCIM API (自分)
+                  href: /azure/databricks/dev-tools/api/latest/scim/scim-me
+                - name: SCIM API (ユーザー)
+                  href: /azure/databricks/dev-tools/api/latest/scim/scim-users
+                - name: SCIM API (グループ)
+                  href: /azure/databricks/dev-tools/api/latest/scim/scim-group
               maintainContext: true
             - name: シークレット
               href: /azure/databricks/dev-tools/api/latest/secrets
@@ -1803,16 +1828,19 @@
                 - name: ランタイム リリース
                   href: /azure/databricks/release-notes/runtime/releases
                   maintainContext: true
+                - name: Databricks Runtime 7.0 ML (ベータ版)
+                  href: /azure/databricks/release-notes/runtime/7.0ml
+                  maintainContext: true
                 - name: Databricks Runtime 7.0 (ベータ版)
                   href: /azure/databricks/release-notes/runtime/7.0
                   maintainContext: true
-                - name: Databricks Runtime 6.5 (ベータ版)
+                - name: Databricks Runtime 6.5
                   href: /azure/databricks/release-notes/runtime/6.5
                   maintainContext: true
-                - name: Databricks Runtime 6.5 ML (ベータ版)
+                - name: Databricks Runtime 6.5 ML
                   href: /azure/databricks/release-notes/runtime/6.5ml
                   maintainContext: true
-                - name: Databricks Runtime 6.5 Genomics (ベータ版)
+                - name: Databricks Runtime 6.5 Genomics
                   href: /azure/databricks/release-notes/runtime/6.5genomics
                   maintainContext: true
                 - name: Databricks Runtime 6.4

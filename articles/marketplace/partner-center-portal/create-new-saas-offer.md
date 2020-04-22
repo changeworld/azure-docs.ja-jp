@@ -1,22 +1,22 @@
 ---
-title: 商業マーケットプレースで新しい SaaS オファーを作成する
-description: Microsoft パートナー センターの商業マーケットプレース ポータルを使用して、Azure Marketplace、AppSource、クラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために新しいサービスとしてのソフトウェア (SaaS) オファーを作成する方法。
+title: Microsoft 商業マーケットプレース用に新しい SaaS プランを作成する
+description: Microsoft パートナー センターの Microsoft 商業マーケットプレース プログラムを使用して、Microsoft AppSource、Azure Marketplace、またはクラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために新しいサービスとしてのソフトウェア (SaaS) プランを作成する方法。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/28/2020
-ms.openlocfilehash: 3f2201db4b78ba61ba15608a676a8b9f8f5e612a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: 45559978f710549088d75d0f0706b798ebad3821
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286202"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314084"
 ---
 # <a name="create-a-new-saas-offer"></a>新しい SaaS オファーを作成する
 
-サービスとしてのソフトウェア (SaaS) オファーの作成を開始するには、必ず、最初に[パートナー センター アカウントを作成](./create-account.md)し、 **[概要]** タブを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)を開いてください。
+サービスとしてのソフトウェア (SaaS) プランの作成を開始するには、必ず、最初に[パートナー センター アカウントを作成](./create-account.md)し、 **[概要]** タブを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)を開いてください。
 
 ![パートナー センターの商業マーケットプレース ダッシュボード](./media/new-offer-overview.png)
 
@@ -82,6 +82,7 @@ Microsoft を通じた販売では、顧客による発見率と購入率が高�
 - 広範な要件については、「[SaaS アプリケーションのオファー発行ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)」をご覧ください。
 
 #### <a name="saas-pricing-and-billing-options"></a>SaaS の価格と課金のオプション
+
 SaaS ソリューションが公開元の Azure サブスクリプションで実行されている場合、お客様が支払うライセンス料金には、ソフトウェアがデプロイされるインフラストラクチャのコストが含まれます。 Azure インフラストラクチャの使用量は、お客様 (パートナー) が直接管理し、お客様に直接課金されます。 実際のインフラストラクチャの使用料金は、顧客には提示されません。 公開元は、Azure インフラストラクチャの使用料をソフトウェア ライセンス料金にバンドルする必要があります。 
 
 SaaS オファーでは、定額料金、ユーザー単位、または従量制課金サービスを使用する従量課金に基づいた月次または年次請求がサポートされます。 Microsoft の商用マーケットプレースは代理店モデルで運営されます。そのため、公開元で価格が設定され、Microsoft からお客様に請求され、公開元に収益が支払われると同時に、代理店手数料が減額されます。
@@ -109,16 +110,19 @@ SaaS オファーでは、定額料金、ユーザー単位、または従量制
 
 - **潜在顧客がこの登録オファーとやり取りする方法について選択してください。**
 
-##### <a name="get-it-now-free"></a>Get it now (今すぐ入手する) (無料)
+#### <a name="get-it-now-free"></a>Get it now (今すぐ入手する) (無料)
+
 有効な (*http* または *https* で始まる) URL を示すことにより、顧客に無料のオファーを一覧表示します。顧客は、その URL から、[Azure Active Directory (Azure AD) を使用したワンクリック認証](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)で試用版を入手することができます。  例: `https://contoso.com/saas-app`
 
-##### <a name="free-trial-listing"></a>Free trial (無料試用版) (一覧)
+#### <a name="free-trial-listing"></a>Free trial (無料試用版) (一覧)
+
 有効な (*http* または *https* で始まる) URL を示すことにより、無料試用版へのリンクを使用して顧客にプランを一覧表示します。顧客は、その URL から、[Azure Active Directory (Azure AD) を使用したワンクリック認証](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)で試用版を入手することができます。  (例: `https://contoso.com/trial/saas-app`)。 オファー登録情報の無料試用版がご利用のサービスによって作成、管理、および構成され、Microsoft によって管理されるサブスクリプションはありません。
 
 > [!NOTE]
 > 試用版リンクからアプリケーションが受信するトークンは、そのアプリのアカウント作成を自動化するためのユーザー情報を Azure AD を介して取得するためだけに使用できます。 このトークンを使用した認証には、Microsoft アカウント (MSA) はサポートされません。
 
-##### <a name="contact-me"></a>[Contact me (お問い合わせ)]
+#### <a name="contact-me"></a>[Contact me (お問い合わせ)]
+
 顧客関係管理 (CRM) システムに接続して、顧客の連絡先情報を収集します。 顧客は、自分の情報を共有する許可を求められます。 これらの顧客の詳細は、オファーの名前と ID のほか、顧客がオファーを見つけたマーケットプレース ソースと一緒に、お客様が構成した CRM システムに送信されます。 CRM の構成の詳細については、「[リード管理の接続](#connect-lead-management)」を参照してください。
 
 ## <a name="example-marketplace-offer-listing"></a>マーケットプレース オファーの一覧表示の例
@@ -127,16 +131,16 @@ SaaS オファーでは、定額料金、ユーザー単位、または従量制
 
 ## <a name="enable-a-test-drive"></a>体験版を有効にする
 
-体験版は、購入前に試用するオプションを与えることで潜在顧客へのオファーを披露し、その結果、会話が増加し、見込みの高いリードが生成される優れた方法です。 [体験版について詳しくご確認ください。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+体験版は、購入前に試用するオプションを与えることで潜在顧客へのオファーを披露し、その結果、会話が増加し、見込みの高いリードが生成される優れた方法です。 詳細については、「[お客様がプランを体験できるようにする](./test-drive.md)」を参照してください。
 
 - **体験版を有効にする** (チェック ボックス)
 
 体験版を有効にすると、一定の期間顧客がオファーを試すことができるデモ環境を構成するよう求められます。 
 
-#### <a name="test-drive-resources"></a>体験版リソース
-- [体験版の技術的なベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [体験版のマーケティングのベスト プラクティス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [1 ページにまとめた体験版の概要](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+### <a name="test-drive-resources"></a>体験版リソース
+
+- [体験版のマーケティングのベスト プラクティス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)- [体験版の技術的なベスト プラクティス](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [体験版の概要 (PDF ダウンロード)](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
 
 ## <a name="connect-lead-management"></a>リード管理の接続
 
@@ -299,7 +303,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 
 - **Define a Preview Audience: Add a single AAD/MSA account email per line, along with an optional description. (プレビュー対象ユーザーを定義します: 1 行あたり 1 つの AAD または MSA アカウント メールと説明 (任意) を追加してください。)**
 
-既存の Microsoft アカウント (MSA) または Azure Active Directory アカウントが一般公開前にプランの検証を手伝えるように、最大で 10 個のメール アドレスを手動で追加します (CSV ファイルをアップロードする場合は 20 個)。 これらのアカウントを追加することで、マーケットプレースに公開される前のオファーへのプレビュー アクセスを許可される対象ユーザーを定義します。 オファーが既に公開されている場合も、オファーの変更や更新をテストするためにプレビュー対象ユーザーを定義することができます。
+既存の Microsoft アカウント (MSA) または Azure Active Directory アカウント上で一般公開前にプランを検証できるように、最大で 10 個のメール アドレスを手動で追加します (CSV ファイルをアップロードする場合は 20 個まで)。 これらのアカウントを追加することで、マーケットプレースに公開される前のオファーへのプレビュー アクセスを許可される対象ユーザーを定義します。 オファーが既に公開されている場合も、オファーの変更や更新をテストするためにプレビュー対象ユーザーを定義することができます。
 
 > [!NOTE]
 > プレビュー対象ユーザーはプライベート対象ユーザーとは異なります。 プレビュー対象ユーザーは、マーケットプレースで一般公開される "_前に_" オファーにアクセスすることを許可されます。 また、プランを作成してそれをプライベート対象ユーザーだけに公開することもできます。 **[プランのリスト]** タブでは、 **[This is a private plan]\(これはプライベート プランです\)** チェック ボックスを使用してプライベート対象ユーザーを定義できます。 その後、Azure テナント ID を使用し、最大で 20,000 人の顧客をプライベート対象ユーザーとして定義できます。
@@ -359,12 +363,12 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 >[!Note]
 >お客様が無料試用版を使用しないプランに変換する場合、変換は行われますが、無料試用は直ちに無効になります。  また、お客様がプランの支払いを開始した後は、無料試用版をサポートする SKU に変換した場合でも、同じサブスクリプションで無料試用版を再取得することはできなくなります。
 
-無料試用版の構成は、オファーのプランごとに行うことができます。 オファーごとの [Pricing and Availability]\(価格と使用可能状況\) に移動し、1 か月の試用版の使用を許可するボックスをオンにします。
+無料試用版の構成は、オファーのプランごとに行うことができます。 プランごとの [価格と使用可能状況] に移動し、1 か月の試用版の使用を許可するチェック ボックスをオンにします。
 
 ![1 か月間の無料試用版チェックボックス](./media/free-trial-enable.png)
 
 >[!Note]
->取引可能オファーが無料試用版で公開されると、そのプランに対して無効にできなくなります。 プランを再作成する必要がないように、最初の公開でこの設定が正しいことを確認してください。
+>取引可能なプランが無料試用版で公開されると、そのプランに対しては無効にできなくなります。 プランを再作成する必要がないように、最初の公開でこの設定が正しいことを確認してください。
 
 無料試用版に現在参加しているお客様のサブスクリプションに関する情報を取得するには、新しい API プロパティの `isFreeTrial` を使用します。このプロパティは、true または false としてマークされます。 詳細については、[SaaS サブスクリプションの取得 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) に関する記事を参照してください。
 
@@ -377,7 +381,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 
 すべてのプランは、少なくとも 1 つの市場で利用できる必要があります。 このプランを利用可能にしたい市場の場所について、このチェック ボックスを選択します。 (Microsoft が公開元に代わって消費税と使用税を送金する) "税送金" 国を選択するための検索ボックスおよびボタンが、補助として含まれています。
 
-米国ドル (USD) でプランの価格を既に設定していて、別の市場の場所を追加する場合、新しい市場の価格は現時点の為替レートに従って計算されます。 常に、各市場の価格を公開前に確認する必要があります。 価格は、変更の保存後に "価格のエクスポート (xlsx)" リンクを使用して確認できます。
+米国ドル (USD) でプランの価格を既に設定していて、別の市場の場所を追加する場合、新しい市場の価格は現時点の為替レートに従って計算されます。 各市場の価格を発行前に確認します。 価格は、変更の保存後に "価格のエクスポート (xlsx)" リンクを使用して確認できます。
 
 #### <a name="pricing"></a>価格
 
@@ -418,7 +422,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
 
 このプライベート プランへのアクセス権を得る対象ユーザーを割り当てます。 アクセス権はテナント ID を使用して割り当てられます。必要に応じて、割り当て先の各テナント ID の説明を含めることができます。 最大 10 個のテナント ID を追加できます (.csv スプレッドシート ファイルをインポートする場合は、20,000 個の顧客テナント ID)。
 
-テナントは組織を表したもので、ID は GUID (グローバル一意識別子。リソースの識別に使用される 128 ビットの整数) として表されます。 これは、組織やアプリの開発者が、Azure、Microsoft Intune、または Microsoft 365 へのサインアップのような Microsoft とのリレーションシップを作成するときに受信する Azure AD の専用インスタンスです。 各 Azure AD テナントは、他の Azure AD テナントと区別され分離されています。 テナントを確認するには、アプリケーションの管理に使用したいアカウントで Azure portal にサインインします。 テナントがある場合、自動的にそのテナントにログインされ、アカウント名のすぐ下でテナント名を確認できます。 Azure portal の右上のアカウント名をポイントすると、名前、電子メール、ディレクトリ/テナント ID (GUID)、ドメインが表示されます。 アカウントが複数のテナントに関連付けられている場合は、アカウント名を選択してメニューを開き、そこでテナントを切り替えることができます。 各テナントには独自の ID があります。 また、[https://www.whatismytenantid.com](https://www.whatismytenantid.com) で URL のドメイン名を使用して、組織のテナント ID を検索することもできます。
+テナントは組織を表したもので、ID は GUID (グローバル一意識別子。リソースの識別に使用される 128 ビットの整数) として表されます。 これは、組織やアプリの開発者が Azure、Microsoft Intune、または Microsoft 365 へのサインアップ時など、Microsoft とのリレーションシップを作成するときに受信する Azure AD の専用インスタンスです。 各 Azure AD テナントは、他の Azure AD テナントと区別され分離されています。 テナントを確認するには、アプリケーションの管理に使用したいアカウントで Azure portal にサインインします。 テナントがある場合、自動的にそのテナントにログインされ、アカウント名のすぐ下でテナント名を確認できます。 Azure portal の右上のアカウント名をポイントすると、名前、電子メール、ディレクトリ/テナント ID (GUID)、ドメインが表示されます。 アカウントが複数のテナントに関連付けられている場合は、アカウント名を選択してメニューを開き、そこでテナントを切り替えることができます。 各テナントには独自の ID があります。 また、[https://www.whatismytenantid.com](https://www.whatismytenantid.com) で URL のドメイン名を使用して、組織のテナント ID を検索することもできます。
 
 SaaS オファーではテナント ID を使用してプライベート対象ユーザーを定義しますが、他の種類のオファーでは、Azure サブスクリプション ID (これも GUID として表されます) を使用できます。
 
@@ -429,10 +433,6 @@ SaaS オファーではテナント ID を使用してプライベート対象�
 
 ![マーケットプレース プランの一覧表示の例 (説明付き)](./media/marketplace-plan.svg)
 
-## <a name="test-drive"></a>体験版
-
-[!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
-
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>クラウド ソリューション プロバイダー (CSP) リセラーの対象
 
 オファーを CSP プログラムで利用可能にすることを選択したら、クラウド ソリューション プロバイダーがその顧客に対して、お客様の製品をバンドルされたソリューションの一部として販売できます。 詳細については、「[クラウド ソリューション プロバイダー](https://go.microsoft.com/fwlink/?linkid=2111109)」を参照してください。
@@ -441,7 +441,7 @@ SaaS オファーではテナント ID を使用してプライベート対象�
 
 オファーの必須セクションをすべて入力したら、ポータルの右上隅にある **[公開]** を選択します。 **[Review and publish]\(確認と公開\)** ページにリダイレクトされます。
 
-#### <a name="submit-offer-to-preview"></a>プレビューへのオファーの送信
+### <a name="submit-offer-to-preview"></a>プレビューへのオファーの送信
 
 このオファーを公開するのが初めての場合、以下のことが可能です。
 
