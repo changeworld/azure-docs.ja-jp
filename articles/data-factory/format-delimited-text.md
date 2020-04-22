@@ -7,16 +7,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: f2e70a7b900ad918cda05ce34204e2de1e6e67ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 696c175f55ecdb09b1b88f9766c4c678afe2c4ec
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75830192"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417102"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory での区切りテキスト形式
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 **区切りテキスト ファイルの解析または区切りテキスト形式へのデータの書き込み**を行う場合は、この記事に従ってください。 
 
@@ -30,14 +31,14 @@ ms.locfileid: "75830192"
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | データセットの type プロパティは、**DelimitedText** に設定する必要があります。 | はい      |
 | location         | ファイルの場所の設定。 ファイル ベースの各コネクタには、固有の場所の種類と `location` でサポートされるプロパティがあります。  | はい      |
-| columnDelimiter  | ファイル内の列を区切るために使用する文字。 現時点では、複数文字の区切り記号はマッピング データ フローについてのみサポートされており、コピー アクティビティではサポートされていません。 <br>既定値は**コンマ `,`** です。列区切り記号が区切り記号なしを意味する空の文字列として定義されている場合は、行全体が 1 つの列と見なされます。 | いいえ       |
-| rowDelimiter     | ファイル内の行を区切るために使われる 1 文字または "\r\n"。<br>既定値は、**読み取りでは "\r\n"、"\r"、"\n" のいずれか**、**書き込みでは "\n" または "\r\n"** (それぞれ、マッピング データ フローおよびコピー アクティビティ)。 <br>`rowDelimiter` を区切り記号なし (空の文字列) に設定するときは、`columnDelimiter` も区切り記号なし (空の文字列) に設定する必要があります。これは、コンテンツ全体を 1 つの値として扱うことを意味します。 | いいえ       |
+| columnDelimiter  | ファイル内の列を区切るために使用する文字。 <br>既定値は**コンマ `,`** です。 列区切り記号が区切り記号なしを意味する空の文字列として定義されている場合は、行全体が 1 つの列と見なされます。<br>現時点では、空の文字列または複数文字の列区切り記号はマッピング データ フローについてのみサポートされており、コピー アクティビティではサポートされていません。  | いいえ       |
+| rowDelimiter     | ファイル内の行を区切るために使われる 1 文字または "\r\n"。 <br>既定値は、**読み取りでは "\r\n"、"\r"、"\n" のいずれか**、**書き込みでは "\n" または "\r\n"** (それぞれ、マッピング データ フローおよびコピー アクティビティ)。 <br>行区切り記号を区切り記号なし (空の文字列) に設定するときは、列区切り記号も区切り記号なし (空の文字列) に設定する必要があります。これは、コンテンツ全体を 1 つの値として扱うことを意味します。<br>現時点では、空の文字列の行区切り記号はマッピング データ フローについてのみサポートされており、コピー アクティビティではサポートされていません。 | いいえ       |
 | quoteChar        | 列区切り記号が含まれる場合に列の値を引用符で囲むための 1 文字です。 <br>既定値は**二重引用符** `"` です。 <br>マッピング データ フローの場合は、`quoteChar` を空の文字列にすることはできません。 <br>コピー アクティビティの場合は、`quoteChar` が空の文字列として定義されているときは、引用符がなく、列の値が引用符で囲まれないことを意味し、列区切り記号とそれ自体をエスケープするには `escapeChar` が使われます。 | いいえ       |
 | escapeChar       | 引用符で囲まれた値の内部の引用符をエスケープするための 1 文字です。<br>既定値は**バックスラッシュ (円記号) `\`** です。 <br>マッピング データ フローの場合は、`escapeChar` を空の文字列にすることはできません。 <br/>コピー アクティビティの場合は、`escapeChar` が空の文字列として定義されているときは、`quoteChar` も空の文字列として設定する必要があり、その場合は、すべての列の値に区切り記号が含まれないことを確認します。 | いいえ       |
 | firstRowAsHeader | 1 行目を列の名前が含まれるヘッダー行として扱うかどうか、またはヘッダー行にするかどうかを指定します。<br>使用できる値は **true** と **false** (既定値) です。 | いいえ       |
 | nullValue        | null 値の文字列表現を指定します。 <br>既定値は**空の文字列**です。 | いいえ       |
 | encodingName     | テスト ファイルの読み取り/書き込みに使用するエンコードの種類です。 <br>使用できる値は次のとおりです。"UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"US-ASCII"、"UTF-7"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"、"GB18030"、"JOHAB"、"SHIFT-JIS"、"CP875"、"CP866"、"IBM00858"、"IBM037"、"IBM273"、"IBM437"、"IBM500"、"IBM737"、"IBM775"、"IBM850"、"IBM852"、"IBM855"、"IBM857"、"IBM860"、"IBM861"、"IBM863"、"IBM864"、"IBM865"、"IBM869"、"IBM870"、"IBM01140"、"IBM01141"、"IBM01142"、"IBM01143"、"IBM01144"、"IBM01145"、"IBM01146"、"IBM01147"、"IBM01148"、"IBM01149"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-3"、"ISO-8859-4"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"ISO-8859-13"、"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。<br>マッピング データ フローでは UTF-7 エンコードはサポートされないことに注意してください。 | いいえ       |
-| compressionCodec | テキスト ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy**、**lz4** です。 ファイルを保存するときに使用します。 <br>現在、コピー アクティビティでは "snappy" と "lz4" はサポートされておらず、マッピング データ フローでは "ZipDeflate" はサポートされていないことに注意してください。 <br>コピー アクティビティを使用して ZipDeflate ファイルを展開し、ファイル ベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されます。 | いいえ       |
+| compressionCodec | テキスト ファイルの読み取り/書き込みに使用される圧縮コーデックです。 <br>使用できる値は、**bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy**、**lz4** です。 既定では圧縮されません。 <br>現在、コピー アクティビティでは "snappy" と "lz4" はサポートされておらず、マッピング データ フローでは "ZipDeflate" はサポートされていないことに**注意**してください。 <br>コピー アクティビティを使用して ZipDeflate ファイルを展開し、ファイル ベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されることに**注意**してください。 | いいえ       |
 | compressionLevel | 圧縮率です。 <br>使用できる値は、**Optimal** または **Fastest** です。<br>- **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。<br>- **Optimal**: 圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。 詳細については、 [圧縮レベル](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) に関するトピックをご覧ください。 | いいえ       |
 
 Azure Blob Storage の区切りテキスト データセットの例を次に示します。
@@ -60,6 +61,7 @@ Azure Blob Storage の区切りテキスト データセットの例を次に示
             },
             "columnDelimiter": ",",
             "quoteChar": "\"",
+            "escapeChar": "\"",
             "firstRowAsHeader": true,
             "compressionCodec": "gzip"
         }

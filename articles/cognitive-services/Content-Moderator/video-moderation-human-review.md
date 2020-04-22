@@ -1,25 +1,25 @@
 ---
 title: 目視レビューによるビデオのモデレート - Content Moderator
 titleSuffix: Azure Cognitive Services
-description: マシンによるビデオのモデレートと目視レビュー ツールを使用して、不適切なコンテンツをモデレートします
+description: コンピューター支援型ビデオ モデレーションとレビュー ツールを使用して、不適切なコンテンツをモデレートします
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: a4e7b079367a4b4dec1d2b3d6c0afde1d8276766
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c031a890efc7fad7e5d9caefce3b0e66c515d90
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72754173"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404252"
 ---
 # <a name="video-moderation-with-human-review"></a>目視レビューによるビデオのモデレート
 
-Content Moderator のマシンによる[ビデオのモデレート](video-moderation-api.md)と[目視レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)を使用して、成人向けコンテンツ (明示的) やわいせつなコンテンツ (推奨) のビデオとトランスクリプトをモデレートし、ビジネスに最適な結果を取得します。
+Content Moderator のコンピューター支援型[ビデオ モデレーション](video-moderation-api.md)と[レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)を使用して、成人向けコンテンツ (明示的) やわいせつなコンテンツ (推奨) のビデオとトランスクリプトをモデレートし、ビジネスに最適な結果を取得します。
 
 ## <a name="video-trained-classifier-preview"></a>ビデオ トレーニング分類子 (プレビュー)
 

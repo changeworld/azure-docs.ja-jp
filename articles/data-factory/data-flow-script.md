@@ -6,15 +6,17 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 92421125ecb5f4336922c6e6b4508fcdaf92be6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246400"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413443"
 ---
 # <a name="data-flow-script-dfs"></a>データ フロー スクリプト (DFS)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 データ フロー スクリプト (DFS) とは、マッピング データ フローに含まれている変換を実行するために使用される、コーディング言語に似た基礎になっているメタデータです。 すべての変換は、ジョブを正しく実行するために必要な情報を提供する一連のプロパティによって表されます。 スクリプトは、ブラウザー UI の上部のリボンにある [スクリプト] ボタンをクリックして、ADF から表示および編集できます。
 
@@ -139,6 +141,11 @@ derive1 sink(allowSchemaDrift: true,
 ```
 
 ## <a name="script-snippets"></a>スクリプト スニペット
+
+スクリプト スニペットは、データ フロー間で共有するために使用できるデータ フロー スクリプトの共有可能なコードです。 次のビデオでは、スクリプト スニペットを使用し、データ フロー スクリプトを利用して、データ フロー グラフの背後にあるスクリプトの部分をコピーして貼り付ける方法について説明します。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tA9b]
+
 
 ### <a name="aggregated-summary-stats"></a>集計要約統計量
 「SummaryStats」という名前のデータフローに集計変換を追加し、スクリプト内の集計関数に次のコードを貼り付けて、既存の SummaryStats を置き換えます。 これにより、データ プロファイルの概要の統計情報の汎用パターンが提供されます。

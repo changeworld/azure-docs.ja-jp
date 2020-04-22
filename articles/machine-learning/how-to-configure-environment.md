@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: a5f46f5af723e1245afbc6bca90d25ae9036d646
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10ea0002b2e99c4675f56e48a638f3c1cb87e6c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472428"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399005"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -288,7 +288,7 @@ Azure Databricks が Azure Machine Learning と連携する仕組み:
 | 設定 |適用対象| 値 |
 |----|---|---|
 | クラスター名 |常時| yourclustername |
-| Databricks ランタイム |常時|ML 以外のランタイム 6.0 (scala 2.11、spark 2.4.3) |
+| Databricks ランタイム |常時|ML 以外のランタイム 6.5 (scala 2.11、spark 2.4.3) |
 | Python バージョン |常時| 3 |
 | ワーカー |常時| 2 以上 |
 | ワーカー ノードの VM の種類 <br>(同時実行反復処理の最大数を決定) |自動化された ML<br>のみ| メモリ最適化 VM 優先 |

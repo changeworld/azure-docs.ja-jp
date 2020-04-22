@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b097ce3781a77a8c5e8a94b9c2bf0977f3efcfd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f1b8b9af8f90629d087246edf0cb3426bd9b66c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481332"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406824"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -153,12 +153,17 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 
 使用する証明書は、アプリケーション プロキシ サービス固有のものです。 これらの証明書は新規登録時に作成され、コネクタによって数か月ごとに自動で更新されます。
 
+証明書の更新に初めて成功した後、Azure AD アプリケーション プロキシ コネクタ サービス (ネットワーク サービス) には、ローカル コンピューター ストアから古い証明書を削除するアクセス許可がありません。 証明書の有効期限が切れている場合、またはサービスによって使用されなくなった場合は、証明書を安全に削除することができます。
+
+証明書の更新に関する問題を回避するには、コネクタから[ドキュメントに記載されている送信先](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)までのネットワーク通信が有効になっていることを確認します。
+
 コネクタが数か月間サービスに接続していないと、証明書の有効期限が切れることがあります。 このような場合は、コネクタをアンインストールしてから再インストールして、登録をトリガーします。 次の PowerShell コマンドを実行できます。
 
 ```
 Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
+証明書の検証と問題のトラブルシューティングの方法について詳しくは、「[コンピューターとバックエンド コンポーネントでアプリケーション プロキシ信頼証明書がサポートされていることを確認する](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)」を参照してください。
 
 ## <a name="under-the-hood"></a>しくみ
 

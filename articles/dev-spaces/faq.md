@@ -5,16 +5,20 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Azure Dev Spaces についての一般的ないくつかの質問にお答えします
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: e7b4620faa01aa9f6d46c34bafb1c623c338beb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5a380f20640b9bc328aa30289ff7f915cc0b73c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240494"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414307"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces についてよく寄せられる質問
 
 Azure Dev Spaces についてよく寄せられる質問に回答します。
+
+## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Azure Dev Spaces では、どのバージョンの Kubernetes がサポートされていますか。
+
+Azure Dev Spaces では、[AKS で現在サポートされている Kubernetes の一般提供 (GA) バージョン][aks-supported-k8s]がすべてサポーされます。
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>現在はどの Azure リージョンで Azure Dev Spaces が提供されていますか。
 
@@ -26,7 +30,7 @@ Azure Dev Spaces についてよく寄せられる質問に回答します。
 
 ## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>既存の Dockerfiles または Helm Ｃhart で Azure Dev Spaces を使用できますか。
 
-はい。プロジェクトに既に Dockerfile または Helm Ｃhart が存在する場合は、これらのファイルを Azure Dev Spaces で使用できます。 `azds prep` を実行する場合は、`--chart` パラメーターを使用してチャートの場所を指定します。 Azure Dev Spaces でも *azds.yaml* ファイルと *Dockerfile.develop* ファイルが生成されますが、既存の Dockerfile や Helm Ｃｈａｒｔ が置換または変更されることはありません。 *の実行時に既存のアプリケーションですべてを正常に機能させるために、* azds.yaml*ファイルと*Dockerfile.develop`azds up` ファイルの変更が必要になる場合があります。
+はい。プロジェクトに既に Dockerfile または Helm Ｃhart が存在する場合は、これらのファイルを Azure Dev Spaces で使用できます。 `azds prep` を実行する場合は、`--chart` パラメーターを使用してチャートの場所を指定します。 Azure Dev Spaces でも *azds.yaml* ファイルと *Dockerfile.develop* ファイルが生成されますが、既存の Dockerfile や Helm Ｃｈａｒｔ が置換または変更されることはありません。 `azds up` の実行時に既存のアプリケーションですべてを正常に機能させるために、*azds.yaml* ファイルと *Dockerfile.develop* ファイルの変更が必要になる場合があります。
 
 独自の Dockerfile または Helm Ｃhart を使用する場合、次の制限があります。
 * Dockerfile を 1 つだけ使用する場合は、ランタイムだけでなく言語 SDK など、開発シナリオを有効にするために必要なすべてを含める必要があります。 Azure Dev Spaces 用の独立した Dockerfile (Dockerfile.develop など) を使用する場合は、開発シナリオを有効にするために必要なすべてのものを Dockerfile に含める必要があります。
@@ -39,7 +43,7 @@ Azure Dev Spaces についてよく寄せられる質問に回答します。
 
 ## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Azure Dev Spaces によって生成されたファイルを変更できますか。
 
-はい。*プロジェクトを準備するときに Azure Dev Spaces によって生成される* [azds.yaml][dev-spaces-prep] ファイル、Dockerfile、および Helm Ｃhart を変更できます。 これらのファイルを変更すると、プロジェクトのビルド方法と実行方法が変更されます。
+はい。[プロジェクトを準備するときに Azure Dev Spaces によって生成される][dev-spaces-prep] *azds.yaml* ファイル、Dockerfile、および Helm Ｃhart を変更できます。 これらのファイルを変更すると、プロジェクトのビルド方法と実行方法が変更されます。
 
 ## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>パブリック IP アドレスなしで Azure Dev Spaces を使用できますか。
 
@@ -79,7 +83,19 @@ Visual Studio を使用してプロジェクトを準備する場合は、サー
 
 ## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>Azure Dev Spaces でポッドのマネージド ID を使用できますか。
 
-現在、Azure Dev Spaces では、Azure Dev Spaces が有効になっている AKS クラスターで[ポッドのマネージド ID][aks-pod-managed-id] を使用することはサポートされていません。 ポッドのマネージド ID がインストールされていて、それをアンインストールしたい場合は、[アンインストールに関する注意事項][aks-pod-managed-id-uninstall]のページで詳細を確認できます。
+はい。Azure Dev Spaces が有効になっている AKS クラスター上で[ポッド マネージド ID][aks-pod-managed-id] を使用できますが、ポッド マネージド ID を使用して自分のクラスター上で Azure Dev Spaces を有効にした後に、[追加の構成手順][dev-spaces-pod-managed-id-steps]があります。 ポッドのマネージド ID がインストールされていて、それをアンインストールしたい場合は、[アンインストールに関する注意事項][aks-pod-managed-id-uninstall]のページで詳細を確認できます。
+
+## <a name="can-i-use-azure-dev-spaces-with-multiple-microservices-in-an-application"></a>アプリケーション内の複数のマイクロサービスと共に Azure Dev Spaces を使用できますか。
+
+はい。複数のマイクロサービスを含むアプリケーション内で Azure Dev Spaces を使用できますが、個々のマイクロサービスをそのルートで準備して実行する必要があります。 Azure Dev Spaces CLI、Azure Dev Spaces VS Code 拡張機能、および Visual Studio Azure 開発ワークロードでは、実行とデバッグを行うために、*azds.yaml* ファイルがマイクロサービスのルートにあることが想定されています。 1 つのアプリケーション内の複数のマイクロサービスの例については、[自転車シェアリングのサンプル アプリケーション][bike-sharing]を参照してください。
+
+Visual Studio Code では、[1 つのワーク スペース内で個別のプロジェクトを開いて][vs-code-multi-root-workspaces]、Azure Dev Spaces を通じて個別にデバッグすることができます。 各プロジェクトは、自己完結型かつ Azure Dev Spaces 用に準備されている必要があります。
+
+Visual Studio では、Azure Dev Spaces を使用してデバッグするために .NET Core ソリューションを構成することができます。
+
+## <a name="can-i-use-azure-dev-spaces-with-a-service-mesh"></a>Azure Dev Spaces はサービス メッシュと共に使用できますか。
+
+現時点では、[Istio][istio] や [Linkerd][linkerd] などのサービス メッシュと共に Azure Dev Spaces を使用することはできません。 Azure Dev Spaces とサービス メッシュを同じ AKS クラスター上で実行することはできますが、同じ名前空間内で Azure Dev Spaces とサービス メッシュの両方を有効にすることはできません。
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
@@ -89,12 +105,18 @@ Visual Studio を使用してプロジェクトを準備する場合は、サー
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
+[aks-supported-k8s]: ../aks/supported-kubernetes-versions.md#list-currently-supported-versions
+[bike-sharing]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
+[dev-spaces-pod-managed-id-steps]: troubleshooting.md#error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state
 [dev-spaces-prep]: how-dev-spaces-works-prep.md
 [dev-spaces-routing]: how-dev-spaces-works-routing.md#how-routing-works
 [ingress-nginx]: how-to/ingress-https-nginx.md#configure-a-custom-nginx-ingress-controller
 [ingress-traefik]: how-to/ingress-https-traefik.md#configure-a-custom-traefik-ingress-controller
 [ingress-https-nginx]: how-to/ingress-https-nginx.md#configure-the-nginx-ingress-controller-to-use-https
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https
+[istio]: https://istio.io/
+[linkerd]: https://linkerd.io/
 [quickstart-cli]: quickstart-cli.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
+[vs-code-multi-root-workspaces]: https://code.visualstudio.com/docs/editor/multi-root-workspaces
 [windows-containers]: how-to/run-dev-spaces-windows-containers.md

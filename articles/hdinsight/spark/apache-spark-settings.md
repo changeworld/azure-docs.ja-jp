@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/17/2019
-ms.openlocfilehash: 48f19e5da8c7703cc597518246c2f62ebce3ae17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/15/2020
+ms.openlocfilehash: e13390067f8767e8c07b9c189264444e6d999a7a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233483"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411295"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark の設定を構成する
 
-HDInsight Spark クラスターには、[Apache Spark](https://spark.apache.org/) ライブラリのインストールが含まれています。  各 HDInsight クラスターには、Spark も含め、インストールされるすべてのサービスの既定の構成パラメーターが含まれています。  HDInsight Apache Hadoop クラスターの管理の重要な側面は、Spark ジョブを含むワークロードを監視して、それらのジョブが予測可能な方法で実行されていることを確認することです。 Spark ジョブを最高の状態で実行するには、クラスターの論理構成を最適化する方法を決定するときに、物理クラスターの構成を検討します。
+HDInsight Spark クラスターには、[Apache Spark](https://spark.apache.org/) ライブラリのインストールが含まれています。  各 HDInsight クラスターには、Spark も含め、インストールされるすべてのサービスの既定の構成パラメーターが含まれています。  HDInsight Apache Hadoop クラスターの管理の重要な側面は、Spark ジョブを含むワークロードを監視することです。 Spark ジョブを最高の状態で実行するには、クラスターの論理構成を決定するときに、物理クラスターの構成を検討します。
 
 既定の HDInsight Apache Spark クラスターには、3 つの [Apache ZooKeeper](https://zookeeper.apache.org/) ノード、2 つのヘッド ノード、および 1 つ以上のワーカー ノードが含まれています。
 
@@ -30,7 +30,6 @@ HDInsight クラスター内のノードの VM の数と VM のサイズも、Sp
 クラスターに最適な Spark バージョンを使用します。  HDInsight サービスには、複数のバージョンの Spark および HDInsight 自体の両方が含まれます。  Spark の各バージョンには、既定のクラスター設定のセットが含まれます。  
 
 新しいクラスターを作成するときに、Spark のバージョンを複数のバージョンの中から選ぶことができます。 完全な一覧については、[HDInsight のコンポーネントとバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)に関するページを参照してください。
-
 
 > [!NOTE]  
 > HDInsight サービスに含まれる Apache Spark の既定のバージョンは、予告なく変更される場合があります。 バージョンの依存関係がある場合は、.NET SDK、Azure PowerShell、Azure クラシック CLI を使ってクラスターを作成するときに、特定のバージョンを指定することをお勧めします。
@@ -51,7 +50,7 @@ spark.sql.files.maxPartitionBytes 1099511627776
 spark.sql.files.openCostInBytes 1099511627776
 ```
 
-上記の例では、5 つの Spark 構成パラメーターのいくつかの既定値がオーバーライドされます。  これらは、圧縮コーデック、Apache Hadoop MapReduce の分割最小サイズと parquet のブロック サイズ、さらには Spar SQL のパーティション サイズと開くファイルのサイズの既定値です。  これらの構成の変更を選んだのは、関連するデータとジョブ (この例では、ゲノム データ) に、これらのカスタム構成設定を使うとパフォーマンスが向上する特定の特性があるためです。
+上記の例では、5 つの Spark 構成パラメーターのいくつかの既定値がオーバーライドされます。  これらの値は、Apache Hadoop MapReduce 分割の最小サイズと parquet ブロック サイズの圧縮コーデックです。 また、Spar SQL パーティションと開いているファイルのサイズの既定値です。  これらの構成の変更を選んだのは、関連するデータとジョブ (この例では、ゲノム データ) に、特定の特性があるためです。 これらの特性は、これらのカスタム構成設定を使うと向上します。
 
 ---
 
@@ -59,13 +58,13 @@ spark.sql.files.openCostInBytes 1099511627776
 
 クラスターでパフォーマンスの最適化を実行する前に、現在の HDInsight クラスターの構成設定を確認します。 Azure Portal で Spark クラスター ウィンドウの **[ダッシュボード]** リンクをクリックして、HDInsight ダッシュボードを起動します。 クラスター管理者のユーザー名とパスワードでサインインします。
 
-Apache Ambari Web UI に、主要なクラスター リソースの使用率メトリックのダッシュボード ビューが表示されます。  Ambari ダッシュボードには、Apache Spark の構成と、インストールされているその他のサービスが表示されます。 ダッシュボードには **[Config History]\(構成履歴\)** タブがあり、Spark を含むインストールされているすべてのサービスの構成情報を見ることができます。
+Apache Ambari Web UI に、主要なクラスター リソースの使用状況メトリックのダッシュボードが表示されます。  Ambari ダッシュボードには、Apache Spark の構成と、インストールされているその他のサービスが表示されます。 ダッシュボードには **[Config History]\(構成履歴\)** タブがあり、Spark を含むインストールされているサービスの情報を見ることができます。
 
 Apache Spark の構成値を見るには、 **[Config History]\(構成履歴\)** を選び、 **[Spark2]** を選びます。  **[Configs]\(構成\)** タブを選び、サービス一覧の `Spark` (または、バージョンによっては `Spark2`) を選びます。  クラスターの構成値の一覧が表示されます。
 
 ![Spark の構成](./media/apache-spark-settings/spark-configurations.png)
 
-個別の Spark 構成値を表示および変更するには、リンク タイトルに "spark" が含まれるリンクを選びます。  Spark の構成は、以下のカテゴリのカスタム構成値と詳細構成値の両方が含まれます。
+個別の Spark 構成値を表示および変更するには、タイトルに "spark" が含まれるリンクを選びます。  Spark の構成は、以下のカテゴリのカスタム構成値と詳細構成値の両方が含まれます。
 
 * Custom Spark2-defaults (カスタム Spark2 既定値)
 * Custom Spark2-metrics-properties (カスタム Spark2 メトリック プロパティ)
@@ -73,7 +72,7 @@ Apache Spark の構成値を見るには、 **[Config History]\(構成履歴\)**
 * Advanced Spark2-env (詳細 Spark2 環境)
 * Advanced spark2-hive-site-override (詳細 Spark2 Hive サイト上書き)
 
-既定ではない構成値のセットを作成する場合は、構成の更新の履歴も参照できます。  この構成履歴は、パフォーマンスが最善になる既定以外の構成を確認するのに役立ちます。
+既定以外の構成値のセットを作成すると、更新履歴が表示されます。  この構成履歴は、パフォーマンスが最善になる既定以外の構成を確認するのに役立ちます。
 
 > [!NOTE]  
 > 共通の Spark クラスター構成設定を表示するだけで変更しない場合は、最上位の **[Spark Job UI]\(Spark ジョブ UI\)** インターフェイスの **[Environment]\(環境\)** タブを選びます。
@@ -86,22 +85,24 @@ Apache Spark の構成値を見るには、 **[Config History]\(構成履歴\)**
 
 Spark ジョブはワーカーのリソース (具体的にはメモリ) を使うため、ワーカー ノードの Executor 用に Spark 構成値を調整するのが一般的です。
 
-アプリケーションの要件が向上するよう Spark の構成をチューニングするために調整されることが多い 3 つの主要なパラメーターは、`spark.executor.instances`、`spark.executor.cores`、および `spark.executor.memory` です。 Executor は、Spark アプリケーション用に起動されるプロセスです。 Executor はワーカー ノードで動作し、アプリケーションのタスクを実行します。 クラスターごとに、ワーカー ノードの数とサイズに基づいて Executor の既定の数とサイズが計算され、 クラスターのヘッド ノード上の `spark-defaults.conf` に保存されます。  Ambari Web UI で **[Custom spark-defaults]\(カスタム Spark 既定値\)** リンクを選ぶことで、実行中のクラスターでのこれらの値を編集できます。  変更を行った後は、影響を受けるすべてのサービスの**再起動**を求める UI が表示されます。
+アプリケーションの要件が向上するよう Spark の構成をチューニングするために調整されることが多い 3 つの主要なパラメーターは、`spark.executor.instances`、`spark.executor.cores`、および `spark.executor.memory` です。 Executor は、Spark アプリケーション用に起動されるプロセスです。 Executor はワーカー ノードで動作し、アプリケーションのタスクを実行します。 ワーカー ノードの数とワーカー ノードのサイズによって、Executor の数と Executor のサイズが決まります。 これらの値はクラスターのヘッド ノード上の `spark-defaults.conf` に保存されます。  Ambari Web UI で **[Custom spark-defaults]\(カスタム Spark 既定値\)** を選ぶことで、実行中のクラスターでのこれらの値を編集できます。  変更を行った後は、影響を受けるすべてのサービスの**再起動**を求める UI が表示されます。
 
 > [!NOTE]  
 > 3 つの構成パラメーターは、クラスター レベルで (クラスター上で動作するすべてのアプリケーションに対して) 構成できるほか、個々のアプリケーションに対して指定することもできます。
 
-Spark Executor で使われるリソースに関するもう 1 つの情報ソースは、Spark アプリケーション UI です。  Spark UI で **[Executors]\(Executor\)** タブを選ぶと、構成の概要ビューと詳細ビューおよび Executor 別の消費リソースが表示されます。  これらのビューは、Spark Executor の既定値の変更を、クラスター全体に対して行うか、または特定のジョブ実行セットについて行うかを判断するときに役立ちます。
+Spark Executor で使われるリソースに関するもう 1 つの情報ソースは、Spark アプリケーション UI です。  UI では、 **[Executor]** に、構成と消費されたリソースの概要ビューと詳細ビューが表示されます。  クラスター全体または特定のジョブ実行のセットのどちらの Executor 値を変更するかを決定します。
 
 ![Spark Executor](./media/apache-spark-settings/apache-spark-executors.png)
 
 または、Ambari REST API を使って、プログラムで HDInsight と Spark クラスターの構成設定を確認することもできます。  詳細については、[GitHub の Apache Ambari API リファレンス](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を参照してください。
 
-Spark のワークロードによっては、既定以外の Spark 構成のほうが Spark ジョブの実行をより最適化することがわかる場合があります。  既定以外のクラスター構成を検証するには、サンプルのワークロードを使ってベンチマーク テストを実行する必要があります。  調整を検討する可能性がある一般的なパラメーターを次に示します。
+Spark のワークロードによっては、既定以外の Spark 構成のほうが Spark ジョブの実行をより最適化することがわかる場合があります。  既定以外のクラスター構成を検証するには、サンプルのワークロードを使用してベンチマーク テストを実行します。  調整を検討する可能性がある一般的なパラメーターを次に示します。
 
-* `--num-executors` は、Executor の数を設定します。
-* `--executor-cores` は、各実行プログラムのコア数を設定します。 他のプロセスが使用可能なメモリの一部を消費するため、中規模の Executor を使うことをお勧めします。
-* `--executor-memory` は、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 上の各 Executor のメモリ サイズ (ヒープ サイズ) を制御するため、実行オーバーヘッド用にある程度のメモリを残しておく必要があります。
+|パラメーター |説明|
+|---|---|
+|--num-executors|Executor の数を設定します。|
+|--executor-cores|各 Executor のコア数を設定します。 他のプロセスが使用可能なメモリの一部を消費するため、中規模の Executor を使うことをお勧めします。|
+|--executor-memory|[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) 上の各 Executor のメモリ サイズ (ヒープ サイズ) を制御するため、実行オーバーヘッド用にある程度のメモリを残しておく必要があります。|
 
 構成値が異なる 2 つのワーカー ノードの例を次に示します。
 
@@ -109,10 +110,12 @@ Spark のワークロードによっては、既定以外の Spark 構成のほ�
 
 次の一覧では、Spark Executor の主要なメモリ パラメーターを示します。
 
-* `spark.executor.memory` は、Executor で使用可能なメモリの総量を定義します。
-* `spark.storage.memoryFraction` (既定値は最大 60%) は、永続化された RDD の格納に使用可能なメモリの量を定義します。
-* `spark.shuffle.memoryFraction` (既定値は最大 20%) は、シャッフル用に確保されるメモリの量を定義します。
-* `spark.storage.unrollFraction` および `spark.storage.safetyFraction` (合計で総メモリ量の最大 30%) は、Spark が内部的に使うので、変更しないでください。
+|パラメーター |説明|
+|---|---|
+|spark.executor.memory|Executor で使用可能なメモリの総量を定義します。|
+|spark.storage.memoryFraction|(既定値は最大 60%) 永続化された RDD の格納に使用可能なメモリの量を定義します。|
+|spark.shuffle.memoryFraction|(既定値は最大 20%) シャッフル用に確保されるメモリの量を定義します。|
+|spark.storage.unrollFraction と spark.storage.safetyFraction|(合計で総メモリ量の最大 30%) Spark によって内部的に使用されるので、変更しないでください。|
 
 YARN は、各 Spark ノード上のコンテナーで使われる最大合計メモリを制御します。 次の図では、YARN 構成オブジェクトと Spark オブジェクトの間のノードごとの関係を示します。
 
@@ -122,13 +125,15 @@ YARN は、各 Spark ノード上のコンテナーで使われる最大合計�
 
 HDInsight の Spark クラスターには、既定で複数のコンポーネントが含まれます。 これらの各コンポーネントには、必要に応じてオーバーライドできる既定の構成値が含まれます。
 
-* Spark Core - Spark Core、Spark SQL、Spark ストリーミング API、GraphX、Apache Spark MLlib。
-* Anaconda - Python パッケージ マネージャー。
-* [Apache Livy](https://livy.incubator.apache.org/) - Apache Spark REST API (HDInsight Spark クラスターにリモート ジョブを送信するために使用されます)。
-* [Jupyter](https://jupyter.org/) および [Apache Zeppelin](https://zeppelin.apache.org/) Notebook - Spark クラスターを操作するためのブラウザー ベースの対話型 UI。
-* ODBC ドライバー - HDInsight の Spark クラスターを、Microsoft Power BI や Tableau などのビジネス インテリジェンス (BI) ツールに接続します。
+|コンポーネント |説明|
+|---|---|
+|Spark Core|Spark Core、Spark SQL、Spark ストリーミング API、GraphX、Apache Spark MLlib。|
+|Anaconda|Python パッケージ マネージャー。|
+|[Apache Livy](https://livy.incubator.apache.org/)|Apache Spark REST API (HDInsight Spark クラスターへのリモート ジョブの送信に使われます)。|
+|[Jupyter](https://jupyter.org/) および [Apache Zeppelin](https://zeppelin.apache.org/) Notebook|Spark クラスターを操作するためのブラウザー ベースの対話型 UI。|
+|ODBC ドライバー|HDInsight の Spark クラスターを、Microsoft Power BI や Tableau などのビジネス インテリジェンス (BI) ツールに接続します。|
 
-Jupyter Notebook で実行するアプリケーションについては、`%%configure` コマンドを使って、Notebook 自体の内部から構成を変更できます。 これらの構成変更は、お使いの Notebook インスタンスから実行された Spark ジョブに適用されます。 そのような変更は、最初のコード セルを実行する前、アプリケーションの冒頭で行う必要があります。 変更された構成は、Livy セッションの作成時に適用されます。
+Jupyter Notebook で実行するアプリケーションについては、`%%configure` コマンドを使って、Notebook 自体の内部から構成を変更できます。 これらの構成変更は、お使いの Notebook インスタンスから実行された Spark ジョブに適用されます。 そのような変更は、最初のコード セルを実行する前、アプリケーションの冒頭で行います。 変更された構成は、Livy セッションの作成時に適用されます。
 
 > [!NOTE]  
 > アプリケーションの後のステージで構成を変更するには、`-f` (force) パラメーターを使う必要があります。 ただし、アプリケーションのすべての進捗が失われます。
@@ -142,7 +147,7 @@ Jupyter Notebook で実行するアプリケーションについては、`%%con
 
 ## <a name="conclusion"></a>まとめ
 
-Spark ジョブの実行が予測可能で高パフォーマンスになるように、複数のコア構成設定を監視して調整する必要があります。 これらの設定は、特定のワークロードに対する Spark クラスターの最善の構成を決定するのに役立ちます。  また、実行時間の長い、またはリソース消費の多い Spark ジョブの実行を監視する必要があります。  最もよくある課題は、不適切な構成 (特に不適切なサイズの実行プログラム)、実行時間の長い操作、およびデカルト演算を生じるタスクが原因の、メモリ不足に関するものです。
+Spark ジョブの実行が予測可能で高いパフォーマンスを発揮するように、コア構成設定を監視します。 これらの設定は、特定のワークロードに対する Spark クラスターの最善の構成を決定するのに役立ちます。  また、実行時間の長い、またはリソース消費の多い Spark ジョブの実行を監視する必要があります。  最も一般的な課題は、不適切な構成 (Executor の不適切なサイズ変更など) によるメモリ不足が中心になります。 実行時間の長い操作や、デカルト演算につながるタスクもあります。
 
 ## <a name="next-steps"></a>次のステップ
 

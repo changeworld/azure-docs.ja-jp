@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 96d0a5b2fb59e4612107d8ccbf7285fff7576585
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c4c1cfdb927cfd2ee607bfe2a951e06c80f9bfb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128381"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418543"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science Process の活用: Azure Synapse Analytics の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) データセット) で Azure Synapse Analytics を使用して、機械学習モデルを構築し、デプロイする方法を説明します。 構築される二項分類モデルでは、乗車でチップが支払われるかどうかを予測します。  モデルには、多クラス分類 (チップがあるかどうかを問わない) と回帰 (支払われたチップ金額の分布) が含まれます。
@@ -84,7 +84,7 @@ Azure データ サイエンス環境をセット アップするには、以下
 
 **Visual Studio と SQL Server Data Tools をインストールします。** 手順については、「[SQL Data Warehouse 用の Visual Studio 2019 を始める](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)」を参照してください。
 
-**Visual Studio で Azure Synapse Analytics に接続します。** 手順については、「[Azure SQL Data Warehouse への接続](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-connect-overview.md)」の手順 1 と 2 を参照してください。
+**Visual Studio で Azure Synapse Analytics に接続します。** 手順については、[Azure Synapse Analytics 内で SQL Analytics に接続する方法](../../synapse-analytics/sql/connect-overview.md)に関する記事の手順 1 と 2 を参照してください。
 
 > [!NOTE]
 > Azure Synapse Analytics で作成したデータベースに対して (接続に関するトピックの手順 3 で示されているクエリではなく) 次の SQL クエリを実行して、**マスター キーを作成します**。

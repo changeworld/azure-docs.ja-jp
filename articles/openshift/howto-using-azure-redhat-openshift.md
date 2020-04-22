@@ -7,17 +7,17 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: aro、openshift、az aro、red hat、cli
-ms.openlocfilehash: 423f09c135da51b8401c1933a4a271d0becd2c8f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f909c5870be6e394e457ad8f44ea5a253054ffe6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349428"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398892"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Azure Red Hat OpenShift 4.3 クラスターの作成、アクセス、管理
 
 > [!IMPORTANT]
-> 現時点では、Azure Red Hat OpenShift 4.3 は、米国東部のプライベート プレビューでのみご利用いただけることにご注意ください。 プライベート プレビューの受け入れは招待によってのみ可能です。 この機能を有効にする前に、必ずサブスクリプションを登録してください。[Azure Red Hat OpenShift プライベート プレビューの登録](https://aka.ms/aro-preview-register)
+> 現時点では、Azure Red Hat OpenShift 4.3 は、米国東部と米国東部 2 のプライベート プレビューでのみご利用いただけることに注意してください。 プライベート プレビューの受け入れは招待によってのみ可能です。 この機能を有効にする前に、必ずサブスクリプションを登録してください。[Azure Red Hat OpenShift プライベート プレビューの登録](https://aka.ms/aro-preview-register)
 
 > [!NOTE]
 > プレビュー機能は、セルフサービスかつ現状のまま、現状利用可能な状態で提供され、サービス レベル アグリーメント (SLA) および限定保証からは除外されるものとします。 したがって、これらのフィーチャーはプロダクション環境での使用を目的としたものではありません。
@@ -65,10 +65,22 @@ Azure Red Hat OpenShift 4.3 クラスターを作成するには、次のもの�
    az -v
    ...
    Extensions:
-   aro                                0.1.0
+   aro                                0.3.0
    ...
    ```
-  
+
+### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat プル シークレットを取得する (省略可能)
+
+Red Hat プル シークレットを使用すると、クラスターは Red Hat コンテナー レジストリと追加のコンテンツにアクセスできます。 プル シークレットの使用は任意ですが、お勧めします。
+
+プル シークレットを取得するには:
+
+1. https://cloud.redhat.com/openshift/install/azure/aro-provisioned にアクセスします。
+1. Red Hat アカウントにログインするか、お使いのビジネス メール アドレスを使用して新しい Red Hat アカウントを作成し、使用条件に同意します。
+1. **[Download pull secret]\(プル シークレットのダウンロード\)** を選択します。
+
+*pull-secret.txt* ファイルを安全な場所に保存します。このファイルは、クラスターを作成するたびに使用します。
+
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>2 つの空のサブネットを含む仮想ネットワークを作成する
 
 2 つの空のサブネットを含む仮想ネットワークを作成するには、次の手順に従います。
@@ -79,15 +91,7 @@ Azure Red Hat OpenShift 4.3 クラスターを作成するには、次のもの�
    LOCATION=eastus        #the location of your cluster
    RESOURCEGROUP="v4-$LOCATION"    #the name of the resource group where you want to create your cluster
    CLUSTER=cluster        #the name of your cluster
-   PULL_SECRET="<optional-pull-secret>"
    ```
-   >[!NOTE]
-   > オプションのプル シークレットを使用すると、クラスターは追加のコンテンツと共に Red Hat コンテナー レジストリにアクセスできます。
-   >
-   > https://cloud.redhat.com/openshift/install/azure/installer-provisioned に移動し、 *[プル シークレットのコピー]* をクリックして、プルシークレットにアクセスします。
-   >
-   > Red Hat アカウントにログインするか、お使いのビジネス メールアドレスを使用して新しい Red Hat アカウントを作成し、使用条件に同意する必要があります。
- 
 
 2. 自分のクラスターのリソース グループを作成します。
 
@@ -108,7 +112,7 @@ Azure Red Hat OpenShift 4.3 クラスターを作成するには、次のもの�
 4. 2 つの空のサブネットを自分の仮想ネットワークに追加します。
 
    ```console
-    for subnet in "$CLUSTER-master" "$CLUSTER-worker"; do
+   for subnet in "$CLUSTER-master" "$CLUSTER-worker"; do
      az network vnet subnet create \
        -g "$RESOURCEGROUP" \
        --vnet-name vnet \
@@ -141,7 +145,9 @@ az aro create \
   --vnet vnet \
   --master-subnet "$CLUSTER-master" \
   --worker-subnet "$CLUSTER-worker" \
-  --pull-secret "$PULL_SECRET"
+  --cluster-resource-group "aro-$CLUSTER" \
+  --domain "$CLUSTER" \
+  --pull-secret @pull-secret.txt
 ```
 
 >[!NOTE]

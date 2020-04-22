@@ -9,18 +9,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 6e466675a9bd86693ce0ee048480712a55829ce6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad4ffa71480a5af06c31872cbafcaab7719c55e0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225527"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418339"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
 > * [Version 1](v1/data-factory-create-pipelines.md)
 > * [現在のバージョン](concepts-pipelines-activities.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して、データ移動シナリオやデータ処理シナリオ用のエンド ツー エンドのデータ主導ワークフローを作成する方法について説明します。
 
@@ -33,7 +34,7 @@ Data Factory では、[データ移動アクティビティ](copy-activity-overv
 
 ![データセット、アクティビティ、パイプラインの関係](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
-入力データセットはパイプラインのアクティビティの入力を表し、出力データセットはアクティビティの出力を表します。 データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。 作成したデータセットは、パイプライン内のアクティビティで使用できます。 たとえば、データセットはコピー アクティビティまたは HDInsightHive アクティビティの入力/出力データセットとして使用できます。 データセットの詳細については、「[Azure Data Factory のデータセット](concepts-datasets-linked-services.md)」の記事を参照してください。
+入力データセットはパイプライン内のアクティビティに対する入力を表し、出力データセットはアクティビティの出力を表します。 データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。 作成したデータセットは、パイプライン内のアクティビティで使用できます。 たとえば、データセットはコピー アクティビティまたは HDInsightHive アクティビティの入力/出力データセットとして使用できます。 データセットの詳細については、「[Azure Data Factory のデータセット](concepts-datasets-linked-services.md)」の記事を参照してください。
 
 ## <a name="data-movement-activities"></a>データ移動アクティビティ
 
@@ -55,7 +56,7 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Hadoop ストリーミング](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
-[Machine Learning アクティビティ: バッチ実行とリソース更新](transform-data-using-machine-learning.md) | Azure VM
+[Machine Learning アクティビティ:バッチ実行とリソースの更新](transform-data-using-machine-learning.md) | Azure VM
 [ストアド プロシージャ](transform-data-using-stored-procedure.md) | Azure SQL、Azure SQL Data Warehouse、または SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md) | Azure Batch
@@ -75,14 +76,14 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 [Assert](control-flow-filter-activity.md) | 入力配列にフィルター式を適用します
 [For Each](control-flow-for-each-activity.md) | ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 このアクティビティは、コレクションを反復処理するために使用され、指定されたアクティビティをループで実行します。 このアクティビティのループの実装は、プログラミング言語の Foreach ループ構造に似ています。
 [メタデータの取得](control-flow-get-metadata-activity.md) | GetMetadata アクティビティを使用すると、Azure Data Factory で任意のデータのメタデータを取得できます。
-[If Condition アクティビティ](control-flow-if-condition-activity.md) | If Condition は、true または false として評価される条件に基づき分岐を行うために使用できます。 If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが評価されます。
+[If Condition アクティビティ](control-flow-if-condition-activity.md) | If Condition は、true または false として評価される条件に基づき分岐を行うために使用できます。 If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false.` に評価されたときの一連のアクティビティが評価されます
 [ルックアップ アクティビティ](control-flow-lookup-activity.md) | ルックアップ アクティビティを使用して、任意の外部ソースからレコード/テーブル名/値を読み取ったり検索したりできます。 この出力は、後続のアクティビティによってさらに参照できます。
 [変数の設定](control-flow-set-variable-activity.md) | 既存の変数の値を設定します。
 [Until アクティビティ](control-flow-until-activity.md) | プログラミング言語の Do-Until ループ構造に似た Do-Until ループを実装します。 Until アクティビティでは、そこに関連付けられている条件が true に評価されるまで、一連のアクティビティがループ実行されます。 Data Factory では、until アクティビティのタイムアウト値を指定することができます。
 [検証アクティビティ](control-flow-validation-activity.md) | 参照データセットが存在する、指定された条件を満たす、またはタイムアウトに達した場合にのみ、パイプラインが実行を継続するようにします。
 [Wait アクティビティ](control-flow-wait-activity.md) | パイプラインで Wait アクティビティを使用すると、パイプラインは、指定した期間待った後、後続のアクティビティの実行を続行します。
 [Web アクティビティ](control-flow-web-activity.md) | Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。
-[Webhook アクティビティ](control-flow-webhook-activity.md) | Webhook アクティビティを使用すると、エンドポイントを呼び出し、コールバック URL を渡ことができます。 パイプラインの実行は、コールバックが呼び出されるのを待ってから、次のアクティビティに進みます。
+[Webhook アクティビティ](control-flow-webhook-activity.md) | Webhook アクティビティを使用すると、エンドポイントを呼び出し、コールバック URL を渡すことができます。 パイプラインの実行は、コールバックが呼び出されるのを待ってから、次のアクティビティに進みます。
 
 ## <a name="pipeline-json"></a>パイプライン JSON
 パイプラインを JSON 形式で定義する方法を示します。
@@ -105,9 +106,9 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 }
 ```
 
-タグ | 説明 | 種類 | 必須
+タグ | 説明 | Type | 必須
 --- | ----------- | ---- | --------
-name | パイプラインの名前。 パイプラインが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数: 140 文字</li><li>文字、数字、アンダー スコア (\_) のいずれかで始める必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\"</li></ul> | String | はい
+name | パイプラインの名前。 パイプラインが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数: 140</li><li>文字、数字、アンダー スコア (\_) のいずれかで始める必要があります</li><li>次の文字は使用できません: "."、"+"、"?"、"/"、"<"、">"、"*"、"%"、" &"、":"、" \" </li></ul> | String | はい
 description | パイプラインの用途を説明するテキストを指定します。 | String | いいえ
 activities | **activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 activities JSON 要素の詳細については、「[アクティビティ JSON](#activity-json)」のセクションを参照してください。 | Array | はい
 parameters | **parameters** セクションでは、パイプライン内に 1 つ以上のパラメーターを定義できるので、パイプラインの再利用に柔軟性を持たせることができます。 | List | いいえ
@@ -115,7 +116,7 @@ concurrency | パイプラインで可能な同時実行の最大数。 既定�
 annotations | パイプラインに関連付けられているタグの一覧 | Array | いいえ
 
 ## <a name="activity-json"></a>アクティビティ JSON
-**activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 アクティビティには、主に実行アクティビティと制御アクティビティの 2 種類があります。
+**activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 アクティビティには、主に次の 2 種類があります:実行アクティビティと制御アクティビティ。
 
 ### <a name="execution-activities"></a>実行アクティビティ
 実行アクティビティには、[データ移動アクティビティ](#data-movement-activities)と[データ変換アクティビティ](#data-transformation-activities)が含まれます。 これらのアクティビティには、次のような最上位構造があります。
@@ -142,7 +143,7 @@ annotations | パイプラインに関連付けられているタグの一覧 | 
 
 タグ | 説明 | 必須
 --- | ----------- | ---------
-name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数: 55 文字</li><li>文字、数字、またはアンダースコア (\_) で始まる必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\" | はい</li></ul>
+name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数: 55</li><li>文字、数字、またはアンダースコア (\_) で始まる必要があります</li><li>次の文字は使用できません: "."、"+"、"?"、"/"、"<"、">"、"*"、"%"、" &"、":"、" \" | はい</li></ul>
 description | アクティビティの用途を説明するテキスト。 | はい
 type | アクティビティの種類。 各種のアクティビティについては、[データ移動アクティビティ](#data-movement-activities)、[データ変換アクティビティ](#data-transformation-activities)、[制御アクティビティ](#control-flow-activities)に関するセクションを参照してください。 | はい
 linkedServiceName | アクティビティで使用される、リンクされたサービスの名前。<br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 | HDInsight アクティビティ、Azure Machine Learning バッチ スコアリング アクティビティ、ストアド プロシージャ アクティビティの場合は "はい"。 <br/><br/>それ以外の場合は "いいえ"
@@ -184,9 +185,9 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 JSON での名前 | 説明 | 使用できる値 | 必須
 --------- | ----------- | -------------- | --------
 timeout | アクティビティの実行に関するタイムアウトを指定します。 | Timespan | いいえ。 既定のタイムアウトは 7 日間です。
-retry | 最大再試行回数 | 整数 | いいえ。 既定値は 0 です
-retryIntervalInSeconds | 再試行の間の遅延 (秒単位) | 整数 | いいえ。 既定値は 30 秒です
-secureOutput | true に設定すると、アクティビティからの出力が安全と見なされ、ログが監視に記録されません。 | Boolean | いいえ。 既定値は false です。
+retry | 最大再試行回数 | Integer | いいえ。 既定値は 0 です
+retryIntervalInSeconds | 再試行の間の遅延 (秒単位) | Integer | いいえ。 既定値は 30 秒です
+secureOutput | true に設定すると、アクティビティからの出力が安全と見なされ、監視用にログが記録されません。 | Boolean | いいえ。 既定値は false です。
 
 ### <a name="control-activity"></a>制御アクティビティ
 制御アクティビティには、次のような最上位構造があります。
@@ -207,7 +208,7 @@ secureOutput | true に設定すると、アクティビティからの出力が
 
 タグ | 説明 | 必須
 --- | ----------- | --------
-name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。<br/><ul><li>最大文字数: 55 文字</li><li>文字、数字、またはアンダースコア (\_) で始まる必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\" | はい</li><ul>
+name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。<br/><ul><li>最大文字数: 55</li><li>文字、数字、またはアンダースコア (\_) で始まる必要があります</li><li>次の文字は使用できません: "."、"+"、"?"、"/"、"<"、">"、"*"、"%"、" &"、":"、" \" | はい</li><ul>
 description | アクティビティの用途を説明するテキスト。 | はい
 type | アクティビティの種類。 各種のアクティビティについては、[データ移動アクティビティ](#data-movement-activities)、[データ変換アクティビティ](#data-transformation-activities)、[制御アクティビティ](#control-flow-activities)に関するセクションを参照してください。 | はい
 typeProperties | typeProperties セクションのプロパティは、アクティビティの種類に応じて異なります。 アクティビティの typeProperties を確認するには、前のセクションでアクティビティのリンクをクリックしてください。 | いいえ
@@ -216,16 +217,16 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 ### <a name="activity-dependency"></a>アクティビティの依存関係
 アクティビティの依存関係では、後続のアクティビティが前のアクティビティにどのように依存するかを定義するので、次のタスクの実行を続行するかどうかの条件を決めることができます。 さまざまな依存関係の条件を使用して、1 つのアクティビティを 1 つ以上の前のアクティビティに依存させることができます。
 
-さまざまな依存関係の条件には、Succeeded、Failed、Skipped、Completed があります。
+依存関係の条件には次のものがあります:Succeeded、Failed、Skipped、Completed。
 
 たとえば、パイプラインに Activity A -> Activity B がある場合、次のようなさまざまなシナリオが考えられます。
 
-- Activity B が Activity A に対する **succeeded** の依存関係の条件を持つ場合: Activity A の最終的な状態が succeeded の場合にのみ Activity B が実行されます
-- Activity B が Activity A に対する **failed** の依存関係の条件を持つ場合: Activity A の最終的な状態が failed の場合にのみ Activity B が実行されます
-- Activity B が Activity A に対する **completed** の依存関係の条件を持つ場合: Activity A の最終的な状態が succeeded か failed の場合に Activity B が実行されます
-- Activity B が Activity A に対する **skipped** の依存関係の条件を持つ場合: Activity A の最終的な状態が skipped の場合に Activity B が実行されます。 Activity X -> Activity Y -> Activity Z のシナリオで、各アクティビティが前のアクティビティが成功した場合のみ実行される場合、skipped が発生します。 Activity X が失敗した場合、Activity Y が実行されることはないので、Activity Y の状態は “Skipped” になります。 同様に、Activity Z の状態も “Skipped” になります。
+- Activity B が Activity A に対する **succeeded** の依存関係の条件を持つ場合:Activity A の最終的な状態が succeeded の場合にのみ Activity B が実行されます
+- Activity B が Activity A に対する **failed** の依存関係の条件を持つ場合:Activity A の最終的な状態が failed の場合にのみ Activity B が実行されます
+- Activity B が Activity A に対する **completed** の依存関係の条件を持つ場合:Activity A の最終的な状態が succeeded か failed の場合に Activity B が実行されます
+- Activity B が Activity A に対する **skipped** の依存関係の条件を持つ場合:Activity A の最終的な状態が skipped の場合に Activity B が実行されます。 Activity X -> Activity Y -> Activity Z のシナリオで、各アクティビティが前のアクティビティが成功した場合のみ実行される場合、skipped が発生します。 Activity X が失敗した場合、Activity Y が実行されることはないので、Activity Y の状態は "Skipped" になります。 同様に、Activity Z の状態も "Skipped" になります。
 
-#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>例: Activity 2 は Activity 1 の成功に依存している
+#### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>例:Activity 2 は Activity 1 の成功に依存している
 
 ```json
 {
@@ -264,10 +265,10 @@ dependsOn | このプロパティを使用して、アクティビティの依�
     }
 }
 
-```
+`"
 
-## <a name="sample-copy-pipeline"></a>コピー パイプラインのサンプル
-次のサンプル パイプラインでは、 **Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](copy-activity-overview.md)が、Azure BLOB Storage から Azure SQL データベースにデータをコピーします。
+## Sample copy pipeline
+In the following sample pipeline, there is one activity of type **Copy** in the **activities** section. In this sample, the [copy activity](copy-activity-overview.md) copies data from an Azure Blob storage to an Azure SQL database.
 
 ```json
 {
@@ -357,7 +358,7 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 以下の点に注意してください。
 
 - activities セクションに、**type** が **HDInsightHive** に設定されたアクティビティが 1 つだけあります。
-- Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (scriptLinkedService によって指定され、AzureStorageLinkedService という名前) と `adfgetstarted` コンテナーの script フォルダーに格納されます。
+- Hive スクリプト ファイル **partitionweblogs.hql** は、Azure Storage アカウント (scriptLinkedService によって指定され、AzureStorageLinkedService という名前) と `adfgetstarted` コンテナーの script フォルダーに格納されます。
 - `defines` セクションは、Hive 構成値 (例: $`{hiveconf:inputtable}`, `${hiveconf:partitionedtable}`) として Hive スクリプトに渡される実行時設定を指定するために使用されます。
 
 **typeProperties** セクションは、変換アクティビティごとに異なります。 変換アクティビティでサポートされる typeProperties については、「[データ変換アクティビティ](#data-transformation-activities)」で変換アクティビティをクリックしてください。
@@ -370,11 +371,11 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 [アクティビティの依存関係](#activity-dependency)を使用して、2 つのアクティビティを連鎖させることができます。アクティビティの依存関係は、後続のアクティビティが前のアクティビティにどのように依存するかを定義するので、次のタスクの実行を続行するかどうかの条件を決めることができます。 さまざまな依存関係の条件を使用して、1 つのアクティビティを 1 つ以上の前のアクティビティに依存させることができます。
 
 ## <a name="scheduling-pipelines"></a>パイプラインのスケジュール設定
-パイプラインは、トリガーによってスケジュール設定されます。 さまざまな種類のトリガーがあります。スケジューラ トリガーを使用すると、パイプラインを実時間のスケジュールでトリガーできます。手動トリガーを使用すると、パイプラインはオンデマンドでトリガーされます。 トリガーの詳細については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関する記事を参照してください。
+パイプラインは、トリガーによってスケジュール設定されます。 さまざまな種類のトリガーがあります (実時間のスケジュールでパイプラインをトリガーできるスケジューラ トリガーや、オンデマンドでパイプラインをトリガーする手動トリガー)。 トリガーの詳細については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関する記事を参照してください。
 
 トリガーにパイプライン実行を開始させるには、特定のパイプラインのパイプライン参照をトリガー定義に組み込む必要があります。 パイプラインとトリガーには n-m の関係があります。 複数のトリガーで 1 つのパイプラインを開始したり、1 つのトリガーで複数のパイプラインを開始したりできます。 トリガーを定義し終えたらそのトリガーを開始して、パイプラインのトリガーを開始させる必要があります。 トリガーの詳細については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関する記事を参照してください。
 
-たとえば、スケジューラ トリガー “Trigger A” があり、それによってパイプライン “MyCopyPipeline” を開始させるとします。 次の例のようにこのトリガーを定義します。
+たとえば、スケジューラ トリガー "Trigger A" があり、それによってパイプライン "MyCopyPipeline" を開始させるとします。 次の例のようにこのトリガーを定義します。
 
 ### <a name="trigger-a-definition"></a>Trigger A の定義
 
@@ -399,8 +400,6 @@ dependsOn | このプロパティを使用して、アクティビティの依�
   }
 }
 ```
-
-
 
 ## <a name="next-steps"></a>次のステップ
 アクティビティを使用してパイプラインを作成する詳しい手順については、次のチュートリアルを参照してください。

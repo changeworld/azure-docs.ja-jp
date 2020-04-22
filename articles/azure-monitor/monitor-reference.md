@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 27503defa23b2a35e767156139228aa2e177652f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408485"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405178"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -31,7 +31,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 | [Azure Monitor for Networks (プレビュー)](insights/network-insights-overview.md) | すべてのネットワーク リソースの正常性とメトリックの包括的ビューを提供します。 高度な検索機能を使用すると、Web サイト名を検索するだけで、Web サイトをホストしているリソースを特定するなどのシナリオが可能になり、リソースの依存関係を特定できます。 |
 [Azure Monitor for Resource Groups (プレビュー)](insights/resource-group-insights.md) |  個別のリソースで発生した問題をトリアージおよび診断する一方で、リソース グループ全体の正常性とパフォーマンスに関するコンテキストを提供します。 |
 | [Azure Monitor for Storage (プレビュー)](insights/storage-insights-overview.md) | Azure Storage サービスのパフォーマンス、容量、可用性の統一されたビューを提供することにより、Azure Storage アカウントの包括的な監視を提供します。 |
-| [Azure Monitor for VMs (プレビュー)](insights/container-insights-overview.md) | Azure 仮想マシン (VM) と仮想マシン スケール セットを大規模に監視します。 これにより、ご利用の Windows VM および Linux VM のプロセスや、その他のリソースおよび外部プロセスとの依存関係を監視することにより、それらの VM のパフォーマンスおよび正常性が分析されます。 |
+| [Azure Monitor for VMs ](insights/container-insights-overview.md) | Azure 仮想マシン (VM) と仮想マシン スケール セットを大規模に監視します。 これにより、ご利用の Windows VM および Linux VM のプロセスや、その他のリソースおよび外部プロセスとの依存関係を監視することにより、それらの VM のパフォーマンスおよび正常性が分析されます。 |
 
 ### <a name="core-solutions"></a>コア ソリューション
 
@@ -68,7 +68,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |AppConfig | いいえ | いいえ | いいえ |  |
 |Application Gateway | はい | はい | いいえ |  |
 |構成証明サービス | いいえ | いいえ | いいえ |  |
-|Automation | はい | はい | いいえ |  |
+|オートメーション | はい | はい | いいえ |  |
 |Azure Service Manager (RDFE) | いいえ | いいえ | いいえ |  |
 |バックアップ | いいえ | はい | いいえ |  |
 |Bastion | いいえ | いいえ | いいえ |  |
@@ -205,7 +205,6 @@ Insights は、特定のアプリケーションやサービスを監視する�
 | [オンデマンド評価](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | オンプレミス、ハイブリッド、クラウドの Microsoft テクノロジ環境の可用性、セキュリティ、およびパフォーマンスを評価し、最適化します。 |
 | [SQL 正常性チェック](insights/sql-assessment.md) | SQL Server 環境のリスクと正常性を評価します。  |
 | [ワイヤ データ](insights/wire-data.md) | Log Analytics エージェントを使用して、Windows に接続されたコンピューターおよび Linux に接続されたコンピューターから収集したネットワークとパフォーマンスのデータを統合したものです。 |
-
 
 ## <a name="third-party-integration"></a>サード パーティの統合
 

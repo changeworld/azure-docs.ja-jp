@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73044097"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404262"
 ---
 # <a name="learn-image-moderation-concepts"></a>画像モデレーションの概念を確認する
 
-Content Moderator のコンピューター支援型画像モデレーションと [human-in-the-loop (人間参加) レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)を使用して、成人向けコンテンツとわいせつなコンテンツの画像をモデレートします。 テキスト コンテンツの画像をスキャンしてそのテキストを抽出し、顔を検出します。 カスタム リストと画像を照合し、さらにアクションを実行できます。
+Content Moderator のコンピューター支援型画像モデレーションと [ human-in-the-loop (人間参加) レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)を使用して、成人向けコンテンツとわいせつなコンテンツの画像をモデレートします。 テキスト コンテンツの画像をスキャンしてそのテキストを抽出し、顔を検出します。 カスタム リストと画像を照合し、さらにアクションを実行できます。
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>成人向けコンテンツとわいせつなコンテンツの評価
 
@@ -139,7 +139,7 @@ Content Moderator は、カスタム画像のリストを管理するための�
     ....
     }
 
-## <a name="human-review-tool"></a>目視レビュー ツール
+## <a name="review-tool"></a>レビュー ツール
 
 さらに微妙な場合は、Content Moderator の[レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)とその API を使用し、レビューでのモデレーション結果とコンテンツをヒューマン モデレーターに示します。 モデレーターはコンピューターが割り当てたタグを調べて、その最終的な決定を確認します。
 

@@ -2,13 +2,13 @@
 title: Reliable Collections の概要
 description: Service Fabric ステートフル サービスは、可用性と拡張性が高く、待機時間が短いクラウド アプリケーションの作成を可能にする Reliable Collection を提供します。
 ms.topic: conceptual
-ms.date: 1/3/2019
-ms.openlocfilehash: 48fa682f4c017f66911729e1f581f3aa91cdc28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 3/10/2020
+ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609725"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398430"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric ステートフル サービスの Reliable Collection の概要
 
@@ -24,10 +24,9 @@ Reliable Collection とその他の高可用性テクノロジ (Redis、Azure Ta
 Reliable Collection は **System.Collections** クラスが自然に進化したものと考えることができます。つまり、開発者の作業を複雑にせずに、クラウド アプリケーションや複数コンピューター アプリケーション向けに設計された一連の新しいコレクションです。 そのため Reliable Collection は
 
 * レプリケートされる:状態の変更がレプリケートされるため、高可用性を実現できる。
-* 永続化される:データがディスクに永続化されるため、大規模な障害 (例: データセンターの電源障害) が発生しても影響を受けない。
-* 書き込みが永続化されてレプリケートされるため、揮発性の ReliableDictionary、ReliableQueueや、メモリ内のデータのみを永続化する信頼性の高いその他のコレクションは作成できません。
 * 非同期:API は非同期であるため、IO の実行時にスレッドがブロックされない。
 * トランザクション:API ではトランザクションの抽象化が使用できるため、サービス内で複数の Reliable Collection を簡単に管理できる。
+* 永続化または揮発性:データはディスクに永続化できるため、大規模な障害 (例: データセンターの電源障害) が発生しても影響を受けない。 一部の Reliable Collection では、揮発性モードもサポートされています ([注意事項](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)あり)。このモードでは、レプリケートされたメモリ内キャッシュなど、すべてのデータがメモリ内に保持されます。
 
 Reliable Collection では追加設定なしで強力な整合性が保証されるため、アプリケーションの状態を判断するのが簡単です。
 強力な整合性は、プライマリ レプリカを含むレプリカのマジョリティ クォーラムにトランザクション全体が適用された後にのみ、トランザクション コミットが完了するようにすることで実現されています。
@@ -57,5 +56,5 @@ Reliable Collection API は同時実行コレクション API ( **System.Collect
   * [シリアル化とアップグレード](service-fabric-application-upgrade-data-serialization.md)
   * [Reliable State Manager の構成](service-fabric-reliable-services-configuration.md)
 * その他
-  * [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
+  * [Reliable Services の概要](service-fabric-reliable-services-quick-start.md)
   * [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

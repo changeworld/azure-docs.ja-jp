@@ -11,12 +11,12 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b4742f48ee9ad0db60e21dd53c5c0f447c1ded67
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8f164232a3b1782511758f93a9e9b8d17d3714d5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348914"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414282"
 ---
 # <a name="quickstart-fivetran-with-data-warehouse"></a>クイック スタート:Fivetran とデータ ウェアハウス 
 
@@ -26,7 +26,7 @@ ms.locfileid: "80348914"
 
 1. お使いのデータ ウェアハウスに接続するために使用する完全修飾サーバー名とデータベース名を検索します。
     
-    この情報を見つける方法については、[データ ウェアハウスへの接続](sql-data-warehouse-connect-overview.md)に関する記事を参照してください。
+    この情報を見つける方法については、[データ ウェアハウスへの接続](../sql/connect-overview.md)に関する記事を参照してください。
 
 2. セットアップ ウィザードで、データベースの接続方法として直接接続か SSH トンネルの使用を選択します。
 
@@ -75,9 +75,9 @@ ms.locfileid: "80348914"
     詳細については、[メモリとコンカレンシーの制限](memory-concurrency-limits.md)と[リソース クラス](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory)のドキュメントをご覧ください。
 
 
-## <a name="sign-in-to-fivetran"></a>Fivetran にサインインする
+## <a name="connect-from-fivetran"></a>Fivetran からの接続
 
-Fivetran にサインインするには、お使いのデータ ウェアハウスにアクセスするために使用する資格情報を入力します。 
+Fivetran アカウントからデータ ウェアハウスに接続するには、データ ウェアハウスへのアクセスに使用する資格情報を入力します。 
 
 * ホスト (自分のサーバーの名前)。
 * ポート。

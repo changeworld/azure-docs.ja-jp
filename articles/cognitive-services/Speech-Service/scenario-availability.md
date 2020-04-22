@@ -10,19 +10,25 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 6f8f892e7ca81881b0cc00e1708e3f05052c573c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a72e5055a3b0f858a732ec28eeab511b09dd450c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76264205"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400142"
 ---
 # <a name="scenario-availability"></a>シナリオの利用可否
 
 Speech SDK には、さまざまなプログラミング言語と環境にわたる多数のシナリオがあります。 まだ、すべてのシナリオがすべてのプログラミング言語またはすべての環境で利用できるわけではありません。 各シナリオの利用可否は以下のとおりです。
 
 - **音声認識 (SR)、フレーズ リスト、意図、翻訳、オンプレミス コンテナー**
-  - 矢印のリンク <img src="media/index/link.jpg" height="15" width="15"></img> が[こちら](https://aka.ms/csspeech)のクイック スタートの表に表示されているすべてのプログラミング言語/環境。
+  - C++/Windows、Linux、および macOS
+  - C# (Framework および .NET Core)/Windows、UWP、Unity、Xamarin、Linux、および macOS
+  - Java (Jre および Android)
+  - JavaScript (ブラウザーと NodeJS)
+  - Python
+  - Swift
+  - Objective-C  
 - **テキスト読み上げ (TTS)**
   - C++/Windows および Linux
   - C#/Windows および UWP および Unity

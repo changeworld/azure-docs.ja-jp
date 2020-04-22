@@ -1,5 +1,5 @@
 ---
-title: 機械学習アルゴリズム チート シート
+title: 機械学習アルゴリズム チート シート - デザイナー
 titleSuffix: Azure Machine Learning
 description: 印刷可能な機械学習アルゴリズム チート シートは、Azure Machine Learning デザイナーで予測モデルに適したアルゴリズムを選択するのに役立ちます。
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: 85fbb1c1d26f71903adab2eb96b0c1dd3bf74c33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: accc4766f25f5d58ba2f31c153fe1c5d23413170
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78328620"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399077"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーの機械学習アルゴリズム チート シート
 
-**Azure Machine Learning アルゴリズム チート シート**を使用すると、予測分析モデルに最適なアルゴリズムを選択できます。
+**Azure Machine Learning アルゴリズム チート シート**を使用すると、デザイナーから予測分析モデルに最適なアルゴリズムを選択できます。
 
 Azure Machine Learning には、***分類***、***レコメンダー システム***、***クラスタリング***、***異常検出***、***回帰***、***テキスト分析***の各ファミリのアルゴリズムの大きなライブラリが用意されています。 各アルゴリズムは、異なる種類の機械学習の問題に対処するために設計されています。
 
@@ -38,7 +38,7 @@ Machine Learning アルゴリズム チート シートをダウンロードし�
 
 すべての機械学習アルゴリズムには、独自のスタイルや帰納的バイアスがあります。 特定の問題に対しては、複数のアルゴリズムが適切な場合や、1 つのアルゴリズムが他のアルゴリズムよりも適している場合があります。 しかし、事前にどれが最適かを知ることができるとは限りません。 このような場合は、複数のアルゴリズムがチート シートに一緒に記載されています。 1 つのアルゴリズムを試してみて、結果に満足できない場合は、他のアルゴリズムを試してみるのが適切な方策でしょう。 
 
-Azure Machine Learning のアルゴリズムの詳細については、[アルゴリズムとモジュールのリファレンス](algorithm-module-reference/module-reference.md)に関する記事を参照してください。
+Azure Machine Learning デザイナーのアルゴリズムの詳細については、[アルゴリズムとモジュールのリファレンス](algorithm-module-reference/module-reference.md)に関する記事を参照してください。
 
 ## <a name="kinds-of-machine-learning"></a>機械学習の種類
 

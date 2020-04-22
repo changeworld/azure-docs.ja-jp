@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/20/2019
-ms.openlocfilehash: daae9c16797ad9c1b85635f5aec7d0cf884e003f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 1081865a2e138af38ba171197719f08dedf6ffdb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206012"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408934"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight のマネージド ID
 
-マネージド ID とは、資格情報が Azure によって管理されている Azure Active Directory (Azure AD) に登録されている ID です。 マネージド ID を使用すると、Azure AD でサービス プリンシパルを登録したり、証明書などの資格情報を保持したりする必要はありません。
+マネージド ID とは、資格情報が Azure によって管理されている Azure Active Directory (Azure AD) に登録されている ID です。 マネージド ID を使用すると、Azure AD 内でサービス プリンシパルを登録する必要はありません。 または、証明書などの資格情報を保持します。
 
 Azure HDInsight では、必要に応じて、マネージド ID を使用して Azure AD ドメイン サービスにアクセスしたり、 Azure Data Lake Storage Gen2 のファイルにアクセスしたりします。
 
@@ -25,7 +25,7 @@ Azure HDInsight では、必要に応じて、マネージド ID を使用して
 
 ## <a name="hdinsight-managed-identity-implementation"></a>HDInsight のマネージド ID 実装
 
-Azure HDInsight では、マネージド ID はクラスターのノードごとにプロビジョニングされます。 ただし、これらの ID コンポーネントは HDInsight サービスのみが使用できます。 現在、HDInsight クラスター ノードにインストールされているマネージド ID を使用してアクセス トークンを生成するためのサポートされている方法はありません。 一部の Azure サービスでは、マネージド ID は、ユーザーが他の Azure サービスと独自にやり取りするためのアクセス トークンの取得に使用できるエンドポイントで実装されます。
+Azure HDInsight では、マネージド ID はクラスターのノードごとにプロビジョニングされます。 ただし、これらの ID コンポーネントは HDInsight サービスのみが使用できます。 現在、HDInsight クラスター ノードにインストールされているマネージド ID を使用してアクセス トークンを生成するためのサポートされている方法はありません。 一部の Azure サービスでは、マネージド ID は、アクセス トークンの取得に使用できるエンドポイントで実装されます。 他の Azure サービスと独自にやり取りするためのトークンを使用します。
 
 ## <a name="create-a-managed-identity"></a>マネージド ID の作成
 
@@ -47,8 +47,10 @@ Azure HDInsight では、マネージド ID はクラスターのノードごと
 * [お客様が管理するキー ディスクの暗号化](disk-encryption.md)
 
 ## <a name="faq"></a>よく寄せられる質問
+
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>クラスターの作成後にマネージド ID を削除するとどうなりますか?
-マネージド ID が必要になった時に、クラスターに問題が発生します。 現時点では、クラスターの作成後にマネージド ID を更新または変更する方法はありません。 そのため、クラスターの実行時にはマネージド ID が削除されないようにすることをお勧めします。 別の方法として、クラスターを再作成して新しいマネージド ID を割り当てることもできます。
+
+マネージド ID が必要になった時に、クラスターに問題が発生します。 現時点では、クラスターの作成後にマネージド ID を更新または変更する方法はありません。 そのため、クラスターの実行時にはマネージド ID が削除されないようにすることをお勧めします。 または、クラスターを再作成して新しいマネージド ID を割り当てることもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

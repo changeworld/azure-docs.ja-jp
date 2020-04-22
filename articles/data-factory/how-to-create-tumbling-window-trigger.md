@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f9e31b8f0fce1af8408b80afb1049dae8c8ecf1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 97c8f8a5bb2111264e9459a7d2128c1ab7c2503d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73673710"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414430"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>タンブリング ウィンドウでパイプラインを実行するトリガーの作成
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 この記事では、タンブリング ウィンドウ トリガーを作成、起動、および監視する手順について説明します。 トリガーとサポートされる種類の全般的な情報については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関する記事をご覧ください。
 
 タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。 タンブリング ウィンドウ トリガーはパイプラインと 1 対 1 の関係を持ち、単一のパイプラインのみを参照できます。
@@ -97,7 +99,7 @@ ms.locfileid: "73673710"
 | **type** | トリガーの種類。 種類は固定値の "TumblingWindowTrigger" です。 | String | "TumblingWindowTrigger" | はい |
 | **runtimeState** | トリガー実行時の現在の状態。<br/>**注**:この要素は \<readOnly> です。 | String | "Started"、"Stopped"、"Disabled" | はい |
 | **frequency** | トリガーが繰り返される頻度の単位 (分または時間) を表す文字列。 **startTime** の日付値が **frequency** 値よりも細かい場合、ウィンドウの境界を計算するときに **startTime** の日付が考慮されます。 たとえば、**frequency** 値が時間単位で、**startTime** 値が 2017-09-01T10:10:10Z の場合、最初のウィンドウは (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z) になります。 | String | "minute"、"hour"  | はい |
-| **interval** | トリガーの実行頻度を決定する、**frequency** 値の間隔を示す正の整数。 たとえば、**interval** が 3 で **frequency** が "hour" の場合、トリガーは 3 時間ごとに繰り返されます。 <br/>**注**:最小ウィンドウ間隔は 15 分です。 | Integer | 正の整数。 | はい |
+| **interval** | トリガーの実行頻度を決定する、**frequency** 値の間隔を示す正の整数。 たとえば、**interval** が 3 で **frequency** が "hour" の場合、トリガーは 3 時間ごとに繰り返されます。 <br/>**注**:最小ウィンドウ間隔は 5 分です。 | Integer | 正の整数。 | はい |
 | **startTime**| 最初の発生。これは過去の場合があります。 最初のトリガー間隔は、(**startTime**、**startTime** + **interval**) になります。 | DateTime | DateTime 値。 | はい |
 | **endTime**| 最後の発生。これは過去の場合があります。 | DateTime | DateTime 値。 | はい |
 | **delay** | ウィンドウのデータ処理の開始の遅延時間。 パイプライン実行は、予想される実行時間 + **delay** の時間が経過してから開始されます。 **delay** は、トリガーが期限を過ぎてから新しい実行をトリガーするまでの待機時間を定義します。 **delay** によってウィンドウの **startTime** が変更されるわけではありません。 たとえば、**delay** 値が 00:10:00 の場合、10 分の遅延を意味します。 | Timespan<br/>(hh:mm:ss)  | 期間の値。既定値は 00:00:00 です。 | いいえ |
@@ -229,5 +231,5 @@ Azure Portal でトリガー実行とパイプライン実行を監視するに�
 
 ## <a name="next-steps"></a>次のステップ
 
-* トリガーについて詳しくは、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md#triggers)」をご覧ください。
+* トリガーについて詳しくは、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md#trigger-execution)」をご覧ください。
 * [タンブリング ウィンドウ トリガーの依存関係の作成](tumbling-window-trigger-dependency.md)

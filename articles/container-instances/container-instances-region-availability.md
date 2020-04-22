@@ -4,12 +4,12 @@ description: さまざまな Azure リージョンにある Azure Container Inst
 ms.topic: article
 ms.date: 02/19/2020
 ms.author: danlep
-ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c84ab7833f7c90d5d4b3c340c268fd9f75e20da9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225827"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399396"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure リージョンの Azure Container Instances のリソースの可用性
 
@@ -18,7 +18,7 @@ ms.locfileid: "79225827"
 表示されている値は、[コンテナー グループ](container-instances-container-groups.md)のデプロイごとに使用できる最大リソースです。 値は公開時現在のものです。 
 
 > [!NOTE]
-> これらのリソース制限内で作成されたコンテナー グループは、デプロイ リージョン内での利用の対象になります。 リージョンでの負荷が高い場合、インスタンスのデプロイ時に失敗することがあります。 このようなデプロイの失敗を減らすために、より低いリソースの設定でインスタンスをデプロイしてみるか、デプロイを後で試してみてください。
+> これらのリソース制限内で作成されたコンテナー グループは、デプロイ リージョン内での利用の対象になります。 リージョンでの負荷が高い場合、インスタンスのデプロイ時に失敗することがあります。 このようなデプロイの失敗を減らすために、より低いリソースの設定でインスタンスをデプロイしてみるか、デプロイを後で試すか、使用可能なリソースのある別のリージョンでデプロイしてみてください。
 
 デプロイのクォータとその他の制限については、「[Azure Container Instances のクォータとリージョンの可用性](container-instances-quotas.md)」を参照してください。
 

@@ -4,12 +4,12 @@ description: Azure CLI を使用して Linux Service Fabric クラスターを�
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: f5788f07dd4a4f03a95efaea4b741cd64c930ac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251784"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411004"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Linux Service Fabric クラスターをデプロイする
 
@@ -31,8 +31,17 @@ ms.locfileid: "78251784"
 
 次の Resource Manager テンプレート ファイルをダウンロードします。
 
+Ubuntu 16.04 LTS の場合:
+
 * [AzureDeploy.json][template]
 * [AzureDeploy.Parameters.json][parameters]
+
+Ubuntu 18.04 LTS の場合:
+
+* [AzureDeploy.json][template2]
+* [AzureDeploy.Parameters.json][parameters2]
+
+2 つのテンプレートの違いは、**vmImageSku** 属性が "18.04-LTS" に設定され、各ノードの **typeHandlerVersion** が 1.1 に設定されていることです。
 
 このテンプレートでは、7 つの仮想マシンと 3 つのノード タイプから成るセキュリティ保護されたクラスターが、仮想ネットワーク内にデプロイされます。  [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) には他のサンプル テンプレートがあります。 [AzureDeploy.json][template] では、次のものを含むいくつかのリソースがデプロイされます。
 
@@ -42,7 +51,7 @@ ms.locfileid: "78251784"
 
 * 3 つのノード タイプ
 * プライマリ ノード タイプに 5 つのノード (テンプレート パラメーターで構成可能)、他のノード タイプにそれぞれ 1 つのノード
-* OS: Ubuntu 16.04 LTS (テンプレート パラメーターで構成可能)
+* OS: (Ubuntu 16.04 LTS/Ubuntu 18.04 LTS) (テンプレート パラメーターで構成可能)
 * 証明書の保護 (テンプレート パラメーターで構成可能)
 * [DNS サービス](service-fabric-dnsservice.md)が有効
 * ブロンズ[持続性レベル](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (テンプレート パラメーターで構成可能)
@@ -70,7 +79,7 @@ ms.locfileid: "78251784"
 
 ## <a name="set-template-parameters"></a>テンプレート パラメーターの設定
 
-[AzureDeploy.Parameters][parameters] パラメーター ファイルでは、クラスターおよび関連リソースをデプロイするための多くの値が宣言されています。 実際のデプロイに合わせて変更する必要があるパラメーターの一部を次に示します。
+**AzureDeploy.Parameters** ファイルでは、クラスターおよび関連リソースのデプロイに使用される多くの値が宣言されています。 実際のデプロイに合わせて変更する必要があるパラメーターの一部を次に示します。
 
 |パラメーター|値の例|Notes|
 |---|---||
@@ -86,7 +95,7 @@ ms.locfileid: "78251784"
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>仮想ネットワークとクラスターのデプロイ
 
-次に、ネットワーク トポロジを設定し、Service Fabric クラスターをデプロイします。 [AzureDeploy.json][template] Resource Manager テンプレートでは、Service Fabric 用の仮想ネットワーク (VNET) とサブネットが作成されます。 このテンプレートを使用すると、証明書セキュリティが有効なクラスターもデプロイできます。  運用環境クラスターの場合は、証明機関 (CA) から取得した証明書をクラスター証明書として使用します。 自己署名証明書を使用して、テスト クラスターを保護することができます。
+次に、ネットワーク トポロジを設定し、Service Fabric クラスターをデプロイします。 **AzureDeploy.json** Resource Manager テンプレートでは、Service Fabric 用の仮想ネットワーク (VNET) とサブネットが作成されます。 このテンプレートを使用すると、証明書セキュリティが有効なクラスターもデプロイできます。  運用環境クラスターの場合は、証明機関 (CA) から取得した証明書をクラスター証明書として使用します。 自己署名証明書を使用して、テスト クラスターを保護することができます。
 
 この記事のテンプレートでは、クラスター証明書を識別するために証明書の拇印を使用するクラスターがデプロイされます。  2 つの証明書が同じ拇印を持つことはできず、そのことが証明書の管理をより困難にしています。 デプロイされたクラスターで使用するのを、証明書の拇印から証明書共通名に切り替えることで、証明書の管理が大幅に単純化します。  証明書の管理に証明書共通名を使用するようにクラスターを更新する方法については、[証明書共通名管理へのクラスターの変更](service-fabric-cluster-change-cert-thumbprint-to-cn.md)に関するページを参照してください。
 
@@ -163,3 +172,5 @@ sfctl cluster health
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json
+[template2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.json
+[parameters2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.Parameters.json

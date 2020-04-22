@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b782477fd29b34eda70813fc2aff29157f02acb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0225484de06ae4e595f1dcbcdd520f4e0e4d53f5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234691"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405390"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -27,6 +27,8 @@ Application Insights の課金のしくみについてご質問がある場合�
 [Azure Application Insights][start] の価格は**従量課金制**モデルであり、取り込まれたデータの量に基づき、データを長期保有してもかかる場合があります。 Application Insights の各リソースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 データ ボリュームは、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。 [Live Metrics Stream](../../azure-monitor/app/live-stream.md) を使用するためのデータ ボリューム料金はありません。
 
 [複数ステップ Web テスト](../../azure-monitor/app/availability-multistep.md)に対しては、追加料金が発生します。 複数ステップ Web テストは、一連のアクションを実行する Web テストです。 単一ページの "*ping テスト*" については、個別の料金はかかりません。 Ping テストと複数ステップ テストからのテレメトリについては、アプリの他のテレメトリと同じ料金が請求されます。
+
+[[カスタム メトリック ディメンションに関するアラートを有効にします]](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) の Application Insights オプションを使用すると、追加の事前集計メトリックが作成される可能性があるため、追加のコストも発生する可能性があります。 Application Insights のログベースのメトリックと事前に集計されたメトリックの[詳細](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics)と Azure Monitor カスタム メトリックの[価格](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>アプリケーションを管理するためのコストの見積もり
 
@@ -216,7 +218,9 @@ Application Insights リソースの既定の保持期間は 90 日です。 App
 
 ![テレメトリの日次ボリューム上限の調整](./media/pricing/pricing-005.png)
 
-この保持期間は `retentionInDays` パラメーターを使用して [PowerShell でプログラムによって設定](powershell.md#set-the-data-retention)することもできます。 さらに、データ保持を 30 日間に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用してより古いデータの即時の消去をトリガーできます。これは、コンプライアンス関連のシナリオに役立つ可能性があります。 この消去機能は、Azure Resource Manager 経由でのみ公開されます。また、使用するときは細心の注意を払う必要があります。 データ ボリュームの上限の 1 日あたりのリセット時間は、Azure Resource Manager を使用して、`dailyQuotaResetTime` パラメーターを設定することで構成できます。
+保持期間が短縮された場合、最も古いデータが削除されるまでに数日の猶予期間があります。
+
+この保持期間は `retentionInDays` パラメーターを使用して [PowerShell でプログラムによって設定](powershell.md#set-the-data-retention)することもできます。 データ保持を 30 日間に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用してより古いデータの即時の消去をトリガーできます。これは、コンプライアンス関連のシナリオに役立つ可能性があります。 この消去機能は、Azure Resource Manager 経由でのみ公開されます。また、使用するときは細心の注意を払う必要があります。 データ ボリュームの上限の 1 日あたりのリセット時間は、Azure Resource Manager を使用して、`dailyQuotaResetTime` パラメーターを設定することで構成できます。
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Application Insights の使用でのデータ転送料金
 
@@ -282,7 +286,7 @@ Per Node (旧 Enterprise) レベルは、料金がノード単位となってお
   * アプリケーションで SDK を使用して**ロール インスタンス**をカスタム値に設定すると、既定ではノード カウントの決定に同じ値が使用されます。
   * クライアント コンピューターやモバイル デバイスから実行されているアプリで新しいバージョンの SDK を使用している場合は、(クライアント コンピューターやモバイル デバイスの数が多いため) ノード カウントで大きい値が返される可能性があります。
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>オートメーション
 
 Azure Resource Management を使用して、価格レベルを設定するスクリプトを記述することができます。 方法については、[こちら](powershell.md#price)をご覧ください。
 

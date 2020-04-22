@@ -6,19 +6,22 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/21/2019
+ms.date: 04/12/2020
 author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: a5540eea91937319a6ac947b50698ccaa8b25847
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931697"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414321"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Azure 対応の dtexec ユーティリティを使用して SQL Server Integration Services パッケージを実行する
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 この記事では、Azure 対応の dtexec (AzureDTExec) コマンド プロンプト ユーティリティについて説明します。 これは Azure Data Factory の Azure-SSIS Integration Runtime (IR) で SQL Server Integration Services (SSIS) パッケージを実行するために使用されます。
 
 従来の dtexec ユーティリティには、SQL Server が付属しています。 詳細については、「[dtexec ユーティリティ](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017)」を参照してください。 多くの場合、オンプレミスで SSIS パッケージを実行するために、ActiveBatch や Control-M などのサードパーティ製のオーケストレーターやスケジューラによって呼び出されます。 
@@ -46,19 +49,19 @@ AzureDTExec を使用するには、最新バージョンの SSMS (バージョ�
 - **ApplicationId**: データ ファクトリにパイプラインを生成するための適切なアクセス許可を使用して作成した Azure AD アプリの一意の識別子を入力します。 詳細については、[Azure portal での Azure AD アプリとサービス プリンシパルの作成](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)に関する記事を参照してください。
 - **AuthenticationKey**: Azure AD アプリの認証キーを入力します。
 - **TenantId**: Azure AD アプリがその下に作成される Azure AD テナントの一意の識別子を入力します。
-- **SubscriptionId**: データ ファクトリがその下に作成された Azure サブスクリプションの一意の識別子を入力します。
-- **ResourceGroup**:データ ファクトリが作成された Azure リソース グループの名前を入力します。
 - **DataFactory**: データ ファクトリの名前を入力します。その中に、AzureDTExec を呼び出すときに指定するオプションの値に基づいて、SSIS パッケージの実行アクティビティを含む固有のパイプラインが生成されます。
 - **IRName**: データ ファクトリ内の Azure-SSIS IR の名前を入力します。AzureDTExec を呼び出すときに、汎用名前付け規則 (UNC) パスで指定するパッケージがここで実行されます。
-- **PackageAccessDomain**: AzureDTExec を呼び出すときに指定する UNC パス内のパッケージにアクセスするためのドメイン資格情報を入力します。
-- **PackageAccessUserName**: AzureDTExec を呼び出すときに指定する UNC パス内のパッケージにアクセスするためのユーザー名資格情報を入力します。
-- **PackageAccessPassword**: AzureDTExec を呼び出すときに指定する UNC パス内のパッケージにアクセスするためのパスワード資格情報を入力します。
-- **LogPath**: ログ フォルダーの UNC パスを入力します。その中に、Azure-SSIS IR でのパッケージ実行からのログ ファイルが書き込まれます。
-- **LogLevel**: Azure-SSIS IR でのパッケージ実行に対するログ記録のスコープを入力します。事前定義されたオプション **null**、**Basic**、**Verbose**、または **Performance** から選択します。
-- **LogAccessDomain**: ログ ファイルを書き込むときに、UNC パス内のログ フォルダーにアクセスするためのドメイン資格情報を入力します。これは、**LogPath** が指定されていて、**LogLevel** が **null** ではないときは必須です。
-- **LogAccessUserName**: ログ ファイルを書き込むときに、UNC パス内のログ フォルダーにアクセスするためのユーザー名資格情報を入力します。これは、**LogPath** が指定されていて、**LogLevel** が **null** ではないときは必須です。
-- **LogAccessPassword**: ログ ファイルを書き込むときに、UNC パス内のログ フォルダーにアクセスするためのパスワード資格情報を入力します。これは、**LogPath** が指定されていて、**LogLevel** が **null** ではないときは必須です。
 - **PipelineNameHashStrLen**: AzureDTExec を呼び出すときに指定するオプションの値から生成されるハッシュ文字列の長さを入力します。 この文字列は、Azure-SSIS IR でパッケージを実行する Data Factory パイプラインの一意な名前を形成するために使用されます。 通常、長さは 32 文字で十分です。
+- **ResourceGroup**:データ ファクトリが作成された Azure リソース グループの名前を入力します。
+- **SubscriptionId**: データ ファクトリがその下に作成された Azure サブスクリプションの一意の識別子を入力します。
+- **LogAccessDomain**: ログ ファイルを書き込むときに、UNC パス内のログ フォルダーにアクセスするためのドメイン資格情報を入力します。これは、**LogPath** が指定されていて、**LogLevel** が **null** ではないときは必須です。
+- **LogAccessPassword**: ログ ファイルを書き込むときに、UNC パス内のログ フォルダーにアクセスするためのパスワード資格情報を入力します。これは、**LogPath** が指定されていて、**LogLevel** が **null** ではないときは必須です。
+- **LogAccessUserName**: ログ ファイルを書き込むときに、UNC パス内のログ フォルダーにアクセスするためのユーザー名資格情報を入力します。これは、**LogPath** が指定されていて、**LogLevel** が **null** ではないときは必須です。
+- **LogLevel**: Azure-SSIS IR でのパッケージ実行に対するログ記録のスコープを入力します。事前定義されたオプション **null**、**Basic**、**Verbose**、または **Performance** から選択します。
+- **LogPath**: ログ フォルダーの UNC パスを入力します。その中に、Azure-SSIS IR でのパッケージ実行からのログ ファイルが書き込まれます。
+- **PackageAccessDomain**: AzureDTExec を呼び出すときに指定する UNC パス内のパッケージにアクセスするためのドメイン資格情報を入力します。
+- **PackageAccessPassword**: AzureDTExec を呼び出すときに指定する UNC パス内のパッケージにアクセスするためのパスワード資格情報を入力します。
+- **PackageAccessUserName**: AzureDTExec を呼び出すときに指定する UNC パス内のパッケージにアクセスするためのユーザー名資格情報を入力します。
 
 パッケージとログ ファイルをオンプレミスのファイル システムまたはファイル共有に保存するために、オンプレミスのネットワークに接続されている仮想ネットワークに Azure-SSIS IR を結合し、パッケージをフェッチしてログ ファイルを書き込むことができるようにします。 詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください。
 
@@ -92,7 +95,7 @@ AzureDTExec の呼び出しでは、dtexec の呼び出しと同様のオプシ�
 
 ## <a name="next-steps"></a>次のステップ
 
-AzureDTExec を呼び出した後に、SSIS パッケージの実行アクティビティを含む一意のパイプラインが生成され、実行されたら、Data Factory ポータルで監視できます。 詳細については、[Data Factory アクティビティとしての SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関する記事を参照してください。
+AzureDTExec を呼び出したときに、SSIS パッケージの実行アクティビティを含む一意のパイプラインが生成され、実行されたら、Data Factory ポータルで監視できます。 また、Data Factory を使用してオーケストレーション/スケジュールする場合は、Data Factory トリガーを割り当てることもできます。 詳細については、[Data Factory アクティビティとしての SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関する記事を参照してください。
 
 > [!WARNING]
 > 生成されたパイプラインは、AzureDTExec によってのみ使用されることが想定されています。 そのプロパティまたはパラメーターは将来変更される可能性があるため、変更したり他の目的で再利用したりしないでください。 変更によって AzureDTExec が壊れる可能性があります。 そのような場合は、パイプラインを削除してください。 AzureDTExec により、次回の呼び出し時に新しいパイプラインが生成されます。

@@ -7,14 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: e2517ec4a02a5d61fb3ce1d9ca9ffa2b5f4e8bf8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7235e95e5b33fb931411a51796a8dbec96c46355
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74287037"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417659"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>ラングリング データ フローの変換関数
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory のラングリング データ フローを使用すると、コードなしのアジャイルなデータ準備とラングリングをクラウド規模で実行できます。 ラングリング データ フローは [Power Query Online](https://docs.microsoft.com/powerquery-m/power-query-m-reference) と統合されており、Spark 実行を通して Power Query M 関数をデータ ラングリングに対して使用可能にします。 
 
@@ -85,8 +87,8 @@ Azure Data Factory のラングリング データ フローを使用すると�
 
 | 機能 | Status |
 | -- | -- |
-| Table.PromoteHeaders | サポートされていません。 データセットで "1 行目をヘッダーとして" 設定することにより、同じ結果を得ることができます。 |
-| Table.CombineColumns | これは、直接サポートされてはいなくても、特定の 2 つの列を連結する新しい列を追加することによって実現できる一般的なシナリオです。  例: Table.AddColumn(RemoveEmailColumn, “Name”, each [FirstName] & ” ” & [LastName]) |
+| Table.PromoteHeaders | サポートされていません。 データセット内で "1 行目をヘッダーとして" 設定することにより、同じ結果を得ることができます。 |
+| Table.CombineColumns | これは、直接サポートされてはいなくても、特定の 2 つの列を連結する新しい列を追加することによって実現できる一般的なシナリオです。  例: Table.AddColumn(RemoveEmailColumn, "Name", each [FirstName] & " " & [LastName]) |
 | Table.TransformColumnTypes | ほとんどの場合、これはサポートされています。 次のシナリオはサポートされていません: 文字列から通貨型への変換、文字列から時刻型への変換、文字列からパーセント型への変換。 |
 | Table.NestedJoin | 結合を行うだけでは、検証エラーが発生します。 機能させるには、列を展開する必要があります。 |
 | Table.Distinct | 重複する行の削除はサポートされていません。 |

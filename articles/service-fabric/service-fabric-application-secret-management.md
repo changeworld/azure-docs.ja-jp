@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 4a489993f982993d5703a9b46d42fffaa6134038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d2138935122b9e08b21963519fce3f72466ab1f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229495"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414513"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Service Fabric アプリケーションで暗号化されたシークレットを管理する
 このガイドでは、Service Fabric アプリケーションでシークレットを管理する手順について説明します。 シークレットは、ストレージ接続文字列、パスワード、プレーン テキストで処理できないその他の値など、機密情報である可能性があります。
@@ -57,6 +57,11 @@ Service Fabric アプリケーションで暗号化されたシークレット�
   </Certificates>
 </ApplicationManifest>
 ```
+> [!NOTE]
+> SecretsCertificate を指定するアプリケーションをアクティブ化すると、Service Fabric によって一致する証明書が検索され、アプリケーションを完全なアクセス許可で実行している ID が証明書の秘密キーに付与されます。 また Service Fabric によって証明書の変更が監視され、必要に応じてアクセス許可が再適用されます。 共通名で宣言された証明書の変更を検出するために、Service Fabric では、一致するすべての証明書を検索し、それをキャッシュされたサムプリント一覧と比較する定期的なタスクが実行されます。 新しいサムプリントが検出された場合は、そのサブジェクトによって証明書が更新されたことを意味します。 タスクは、クラスターの各ノード上で 1 分ごとに 1 回実行されます。
+>
+> SecretsCertificate ではサブジェクトベースの宣言が許可されますが、暗号化された設定は、クライアント上で設定の暗号化に使用されたキー ペアに関連付けられていることに注意してください。 元の暗号化証明書 (または同等のもの) がサブジェクトベースの宣言と一致することと、アプリケーションをホストする可能性のあるクラスターのすべてのノードに、対応する秘密キーも含めて、その証明書がインストールされていることを確認する必要があります。 サブジェクトベースの宣言に一致し、元の暗号化証明書と同じキー ペアから作成されたすべての有効期限内の証明書は、同等のものと見なされます。
+>
 
 ### <a name="inject-application-secrets-into-application-instances"></a>アプリケーション インスタンスへのアプリケーション シークレットの挿入
 さまざまな環境へのデプロイは、できるだけ自動化するのが理想的です。 これは、ビルド環境でシークレットの暗号化を実行し、アプリケーション インスタンスの作成時に、暗号化されたシークレットをパラメーターとして指定することで実現できます。

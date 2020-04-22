@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b4ee679b21d904f997f727f5f26275c86acc9c5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78945395"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414410"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database および Data Warehouse のネットワーク アクセスの制御
 
@@ -29,7 +29,7 @@ ms.locfileid: "78945395"
 
 [Azure portal](sql-database-single-database-get-started.md) から新しい Azure SQL Server を作成すると、結果は *yourservername.database.windows.net* という形式のパブリック エンドポイントになります。
 
-次のネットワーク アクセスの制御を使用して、パブリック エンドポイントを介した SQl Database へのアクセスを選択的に許可できます。
+次のネットワーク アクセスの制御を使用して、パブリック エンドポイントを介した SQL Database へのアクセスを選択的に許可できます。
 - Azure サービスを許可する:オンに設定すると、Azure 境界内の他のリソース (たとえば、Azure Virtual Machine) が SQL Database にアクセスできるようになります
 
 - IP ファイアウォール規則:この機能を使用すると、特定の IP アドレスからの (たとえば、オンプレミスのマシンからの) 接続を明示的に許可できます
@@ -56,13 +56,13 @@ ms.locfileid: "78945395"
 
 **[オン]** に設定すると、Azure SQL Server により、Azure 境界内のすべてのリソース (自分のサブスクリプションの一部であることも、そうでないこともあります) からの通信が許可されます。
 
-多くの場合、 **[オン]** 設定は、ほとんどのお客様が望むよりも許容範囲が広くなっています。この設定を **[オフ]** に設定し、より制限の厳しい IP ファイアウォール規則または仮想ネットワーク ファイアウォール規則に置き換えてもかまいません。 その場合、VNet の一部ではない Azure の VM で実行され、そのため Azure IP アドレスを介して SQL Database に接続される次の機能に影響があります。
+多くの場合、 **[オン]** 設定は、ほとんどのお客様が望むよりも許容範囲が広くなっています。 この設定を **[オフ]** に設定し、より制限の厳しい IP ファイアウォール規則または仮想ネットワーク ファイアウォール規則に置き換えてもかまいません。 その場合、VNet の一部ではない Azure の VM で実行され、そのため Azure IP アドレスを介して SQL Database に接続される次の機能に影響があります。
 
 ### <a name="import-export-service"></a>Import Export Service
-**[Azure サービスにサーバーへのアクセスを許可する]** を [オフ] に設定すると、インポート/エクスポート サービスは機能しません。 ただし、[Azure VM から sqlpackage.exe を手動で実行するか、DACFx API を使用してコード内で直接エクスポートを実行することにより](https://docs.microsoft.com/azure/sql-database/import-export-from-vm)、この問題を回避することができます。
+**[Azure サービスにサーバーへのアクセスを許可する]** を **[オフ]** に設定すると、インポート/エクスポート サービスは機能しません。 ただし、[Azure VM から sqlpackage.exe を手動で実行するか、DACFx API を使用してコード内で直接エクスポートを実行することにより](https://docs.microsoft.com/azure/sql-database/import-export-from-vm)、この問題を回避することができます。
 
 ### <a name="data-sync"></a>データ同期
-**[Azure サービスにサーバーへのアクセスを許可する]** を [オフ] に設定してデータ同期機能を使用するには、**ハブ** データベースをホストしているリージョンの **SQL サービス タグ**から [IP アドレスを追加](sql-database-server-level-firewall-rule.md)する、個々のファイアウォール規則エントリを作成する必要があります。
+**[Azure サービスにサーバーへのアクセスを許可する]** を **[オフ]** に設定してデータ同期機能を使用するには、**ハブ** データベースをホストしているリージョンの **SQL サービス タグ**から [IP アドレスを追加する](sql-database-server-level-firewall-rule.md)、個々のファイアウォール規則エントリを作成する必要があります。
 これらのサーバー レベルのファイアウォール規則を、**ハブ**と**メンバー**の両方のデータベース (異なるリージョンに存在する可能性がある) をホストする論理サーバーに追加します。
 
 次の PowerShell スクリプトを使用して、米国西部リージョンの SQL サービス タグに対応する IP アドレスを生成します。
