@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/22/2019
-ms.openlocfilehash: 025b5c5c1e3b8543111e112202906ef6f1fdb482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 7a299ce16f6e9c7292cebf198c9c3077f8e05fcb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74561799"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417602"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で C# と MapReduce ストリーミングを使用する
 
 HDInsight で C# を使用して MapReduce ソリューションを作成する方法について説明します。
 
-Apache Hadoop ストリーミングは、スクリプトまたは実行可能ファイルを使用して MapReduce ジョブを実行するためのユーティリティです。 この例では、.NET を使用してマッパーとレジューサのワード カウント ソリューションを実装します。
+Apache Hadoop ストリーミングでは、スクリプトまたは実行可能ファイルを使用して MapReduce ジョブを実行できます。 ここでは、.NET を使用してマッパーとレジューサのワード カウント ソリューションを実装します。
 
 ## <a name="net-on-hdinsight"></a>HDInsight の .NET
 
@@ -49,12 +49,9 @@ HDInsight クラスターでは、[Mono (https://mono-project.com)](https://mono
 
 * PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要になります。
 
-* SSH クライアント (オプション)。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-
 * HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](../hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-* クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Azure Storage または Data Lake Storage Gen2 で安全な転送が有効になっている場合、URI はそれぞれ `wasbs://` または `abfss://` になります。[安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
-
+* クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 このスキームは、Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Azure Storage または Data Lake Storage Gen2 で安全な転送が有効になっている場合、URI はそれぞれ `wasbs://` または `abfss://` になります。[安全な転送](../../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 
 ## <a name="create-the-mapper"></a>マッパーの作成
 
@@ -152,7 +149,7 @@ namespace reducer
 
 1. Visual Studio で、 **[表示]**  >  **[サーバー エクスプローラー]** を選択します。
 
-1. **[Azure]** を右クリックし、 **[Microsoft Azure サブスクリプションへの接続...]** を選択してサインイン処理を完了します。
+1. **[Azure]** を右クリックし、 **[Microsoft Azure サブスクリプションへの接続]** を選択して、サインイン処理を完了します。
 
 1. このアプリケーションをデプロイする HDInsight クラスターを展開します。 エントリとテキスト **(既定のストレージ アカウント)** が一覧表示されます。
 
@@ -221,14 +218,16 @@ namespace reducer
 
    次の一覧では、各パラメーターおよびオプションによって表されているものについて説明します。
 
-   * *hadoop-streaming.jar*:ストリーミング MapReduce 機能が含まれる jar ファイルを指定します。
-   * `-files`:このジョブに対する *mapper.exe* ファイルと *reducer.exe* ファイルを指定します。 各ファイルの前の `wasbs:///`、`adl:///`、または `abfs:///` のプロトコル宣言は、クラスターの既定の記憶域のルートへのパスです。
-   * `-mapper`:マッパーが実装されているファイルを指定します。
-   * `-reducer`:レジューサが実装されているファイルを指定します。
-   * `-input`:入力データを指定します。
-   * `-output`:出力ディレクトリを指定します。
+   |パラメーター | 説明 |
+   |---|---|
+   |hadoop-streaming.jar|ストリーミング MapReduce 機能が含まれる jar ファイルを指定します。|
+   |-files|このジョブに対する *mapper.exe* ファイルと *reducer.exe* ファイルを指定します。 各ファイルの前の `wasbs:///`、`adl:///`、または `abfs:///` のプロトコル宣言は、クラスターの既定の記憶域のルートへのパスです。|
+   |-mapper|マッパーが実装されているファイルを指定します。|
+   |-reducer|レジューサが実装されているファイルを指定します。|
+   |-input|入力データを指定します。|
+   |-output|出力ディレクトリを指定します。|
 
-3. MapReduce ジョブが完了したら、次のコマンドを使用して結果を表示します。
+1. MapReduce ジョブが完了したら、次のコマンドを使用して結果を表示します。
 
    ```bash
    hdfs dfs -text /example/wordcountout/part-00000
