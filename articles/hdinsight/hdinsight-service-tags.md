@@ -100,7 +100,7 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 | &nbsp; | 米国中部 | HDInsight.CentralUS |
 | &nbsp; | 米国中北部 | HDInsight. NorthCentralUS |
 | &nbsp; | 米国中南部 | HDInsight.SouthCentralUS |
-| &nbsp; | East US | HDInsight.EastUS |
+| &nbsp; | 米国東部 | HDInsight.EastUS |
 | &nbsp; | 米国西部 | HDInsight.WestUS |
 | 日本 | 東日本 | HDInsight.JapanEast |
 | ヨーロッパ | 北ヨーロッパ | HDInsight.NorthEurope |
