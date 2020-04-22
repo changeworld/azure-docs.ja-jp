@@ -1,17 +1,17 @@
 ---
-title: SMS、電子メール、Azure アプリ プッシュ通知、webhook のレート制限
+title: SMS、電子メール、プッシュ通知のレート制限
 description: アクション グループから送信される可能性がある SMS、電子メール、Azure アプリ プッシュ通知、または webhook 通知の数を Azure で制限する方法を説明します。
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
 ms.subservice: alerts
-ms.openlocfilehash: 066fcac24571c8e982784a3845a010525ff9088a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61e6cc22171815b15b865dd6ed5670bd9c446ead
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665529"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114325"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>音声、SMS、電子メール、Azure アプリ プッシュ通知、webhook 投稿のレート制限
 レート制限とは、特定の電話番号、電子メール アドレス、またはデバイスに送信される通知が多すぎる場合に、通知が一時的に停止されることです。 レート制限によって、アラートを管理しやすくなりアクション可能な状態が保証されます。
@@ -20,7 +20,7 @@ ms.locfileid: "77665529"
 
 - **SMS**: 5 分ごとに 1 件以下の SMS。
 - **音声**: 5 分ごとに 1 件以下の音声通話。
-- **電子メール**: 1 時間で 100 件未満の電子メール。
+- **電子メール**: 1 時間で 100 件以下の電子メール。
  
   その他のアクションは、レート制限を受けません。
 

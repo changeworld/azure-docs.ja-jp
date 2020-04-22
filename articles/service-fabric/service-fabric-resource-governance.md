@@ -3,12 +3,12 @@ title: コンテナーとサービスのリソース ガバナンス
 description: Azure Service Fabric では、内部または外部のコンテナーを実行するサービスのリソース制限を指定できます。
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772382"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115141"
 ---
 # <a name="resource-governance"></a>リソース管理
 
@@ -31,7 +31,8 @@ Service Fabric では、[サービス パッケージ](service-fabric-applicatio
 * クラスターはこの 2 つのメトリックに従って[最適化](service-fabric-cluster-resource-manager-defragmentation-metrics.md)できます。
 * [クラスターを記述する](service-fabric-cluster-resource-manager-cluster-description.md)ときに、この 2 つのメトリックに対してバッファーの容量を設定できます。
 
-[動的な負荷レポート](service-fabric-cluster-resource-manager-metrics.md)は、この 2 つのメトリックについてはサポートされておらず、2 つのメトリックの負荷は作成時に定義されます。
+> [!NOTE]
+> [動的読み込みレポート](service-fabric-cluster-resource-manager-metrics.md)は、これらのメトリックについてはサポートされておらず、これらのメトリックの読み込みは作成時に定義されます。
 
 ## <a name="resource-governance-mechanism"></a>リソース ガバナンスのメカニズム
 

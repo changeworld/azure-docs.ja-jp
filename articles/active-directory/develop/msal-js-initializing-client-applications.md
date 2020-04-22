@@ -13,12 +13,12 @@ ms.date: 04/12/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbd700c787a844fa7538ed198f76ed5c06af2c28
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084033"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010156"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL.js を使用してクライアント アプリケーションを初期化する
 この記事では、ユーザー エージェント アプリケーションのインスタンスを使用して JavaScript 用 Microsoft Authentication Library (MSAL.js) を初期化する方法について説明します。 ユーザー エージェント アプリケーションは、Web ブラウザーなどのユーザー エージェントでクライアント コードが実行されるパブリック クライアント アプリケーションの一種です。 これらのクライアントでは、シークレットは格納されません。ブラウザーのコンテキストが公開されアクセス可能であるからです。 クライアント アプリケーションの種類とアプリケーションの構成オプションの詳細については、[概要](msal-client-applications.md)に関するページを参照してください。
@@ -35,7 +35,7 @@ ms.locfileid: "77084033"
 
 プレーンな JavaScript または Typescript アプリケーションでは、MSAL.js を次のように使用できます。 構成オブジェクトを使用して `UserAgentApplication` をインスタンス化することで、MSAL 認証コンテキストを初期化します。 MSAL.js を初期化するために最低限必要な構成は、ご利用のアプリケーションの clientID です。これは、アプリケーション登録ポータルから取得する必要があります。
 
-リダイレクト フローを使用した認証メソッドの場合 (`loginRedirect` と `acquireTokenRedirect`)、`handleRedirectCallback()` メソッドを介して成功またはエラーに対するコールバックを明示的に登録する必要があります。 これが必要な理由は、ポップアップ エクスペリエンスを備えたメソッドとは違い、リダイレクト フローからは Promise が返されないことにあります。
+リダイレクト フローを使用した認証メソッドの場合 (`loginRedirect` と `acquireTokenRedirect`)、MSAL.js 1.2.x 以前では、`handleRedirectCallback()` メソッドを介して成功またはエラーに対するコールバックを明示的に登録する必要があります。 これが必要な理由は、ポップアップ エクスペリエンスを備えたメソッドとは違い、リダイレクト フローからは Promise が返されないことにあります。 これは、MSAL.js バージョン 1.3.0 では省略可能になりました。
 
 ```javascript
 // Configuration object constructed

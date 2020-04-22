@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 03/25/2020
-ms.openlocfilehash: 4985c492c8ca71da87cf1a519ebc658c203d3952
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/11/2020
+ms.openlocfilehash: e01cc1c07d720c4743a03b5001e640f8b851dd5c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246978"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113997"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>チュートリアル:Azure portal を介して DMS を使用してオンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
 
@@ -45,7 +45,7 @@ Azure Database Migration Service を使用して、アプリケーションへ�
 
 * [PostgreSQL コミュニティ エディション](https://www.postgresql.org/download/) 9.4、9.5、9.6、または 10 をダウンロードしてインストールします。 ソースの PostgreSQL サーバーのバージョンは 9.4、9.5、9.6、10、または 11 である必要があります。 詳しくは、「[サポートされている PostgreSQL Database バージョン](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)」の記事をご覧ください。
 
-    また、オンプレミスの PostgreSQL のバージョンが、Azure Database for PostgreSQL のバージョンと一致する必要があります。 たとえば、PostgreSQL 9.6 は Azure Database for PostgreSQL 9.6、10、または 11 にのみ移行できますが、Azure Database for PostgreSQL 9.5 には移行できません。
+    また、ターゲットの Azure Database for PostgreSQL のバージョンは、オンプレミスの PostgreSQL バージョンと同じかそれ以降である必要があることに注意してください。 たとえば、PostgreSQL 9.6 は Azure Database for PostgreSQL 9.6、10、または 11 に移行でき、Azure Database for PostgreSQL 9.5 には移行できません。
 
 * [Azure Database for PostgreSQL サーバーを作成](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)するか、[Azure Database for PostgreSQL - Hyperscale (Citus) サーバーを作成](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)します。
 * Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。

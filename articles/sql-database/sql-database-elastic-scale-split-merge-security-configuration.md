@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a916645f153f73a98e7fc5d4046bdf557e8acf2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5ea0fd252d1792d4c40cc6d7869f4ba57edc1ad
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823525"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011363"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
 
@@ -26,7 +26,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 証明書は次の 2 つの方法で構成されます。 
 
-1. [SSL 証明書を構成するには](#to-configure-the-ssl-certificate)
+1. [TLS/SSL 証明書を構成するには](#to-configure-the-tlsssl-certificate)
 2. [クライアント証明書を構成するには](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>証明書を取得するには
@@ -47,28 +47,28 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
     インストールされている場合は、次のように参照します。
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* 「 [Windows 8.1: キットとツールのダウンロード](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* 「[Windows 8.1:キットとツールのダウンロード](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)」から WDK を取得します
 
-## <a name="to-configure-the-ssl-certificate"></a>SSL 証明書を構成するには
+## <a name="to-configure-the-tlsssl-certificate"></a>TLS/SSL 証明書を構成するには
 
-通信の暗号化やサーバーの認証には SSL 証明書が必要です。 以下の 3 つのシナリオから最適なものを選択し、すべての手順を実行します。
+通信の暗号化やサーバーの認証には TLS/SSL 証明書が必要です。 以下の 3 つのシナリオから最適なものを選択し、すべての手順を実行します。
 
 ### <a name="create-a-new-self-signed-certificate"></a>新しい自己署名証明書を作成する
 
 1. [自己署名証明書を作成する](#create-a-self-signed-certificate)
-2. [自己署名 SSL 証明書用の PFX ファイルを作成する](#create-pfx-file-for-self-signed-ssl-certificate)
-3. [クラウド サービスに SSL 証明書をアップロードする](#upload-ssl-certificate-to-cloud-service)
-4. [サービス構成ファイルの SSL 証明書を更新する](#update-ssl-certificate-in-service-configuration-file)
-5. [SSL 証明機関をインポートする](#import-ssl-certification-authority)
+2. [自己署名 TLS/SSL 証明書用の PFX ファイルを作成する](#create-pfx-file-for-self-signed-tlsssl-certificate)
+3. [クラウド サービスに TLS/SSL 証明書をアップロードする](#upload-tlsssl-certificate-to-cloud-service)
+4. [サービス構成ファイルの TLS/SSL 証明書を更新する](#update-tlsssl-certificate-in-service-configuration-file)
+5. [TLS/SSL 証明機関をインポートする](#import-tlsssl-certification-authority)
 
 ### <a name="to-use-an-existing-certificate-from-the-certificate-store"></a>証明書ストアから既存の証明書を使用するには
-1. [証明書ストアから SSL 証明書をエクスポートする](#export-ssl-certificate-from-certificate-store)
-2. [クラウド サービスに SSL 証明書をアップロードする](#upload-ssl-certificate-to-cloud-service)
-3. [サービス構成ファイルの SSL 証明書を更新する](#update-ssl-certificate-in-service-configuration-file)
+1. [証明書ストアから TLS/SSL 証明書をエクスポートする](#export-tlsssl-certificate-from-certificate-store)
+2. [クラウド サービスに TLS/SSL 証明書をアップロードする](#upload-tlsssl-certificate-to-cloud-service)
+3. [サービス構成ファイルの TLS/SSL 証明書を更新する](#update-tlsssl-certificate-in-service-configuration-file)
 
 ### <a name="to-use-an-existing-certificate-in-a-pfx-file"></a>PFX ファイルの既存の証明書を使用するには
-1. [クラウド サービスに SSL 証明書をアップロードする](#upload-ssl-certificate-to-cloud-service)
-2. [サービス構成ファイルの SSL 証明書を更新する](#update-ssl-certificate-in-service-configuration-file)
+1. [クラウド サービスに TLS/SSL 証明書をアップロードする](#upload-tlsssl-certificate-to-cloud-service)
+2. [サービス構成ファイルの TLS/SSL 証明書を更新する](#update-tlsssl-certificate-in-service-configuration-file)
 
 ## <a name="to-configure-client-certificates"></a>クライアント証明書を構成するには
 サービスへの要求を認証するには、クライアント証明書が必要です。 以下の 3 つのシナリオから最適なものを選択し、すべての手順を実行します。
@@ -102,7 +102,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 ### <a name="use-a-new-self-signed-certificate"></a>新しい自己署名証明書を使用する
 1. [自己署名証明書を作成する](#create-a-self-signed-certificate)
-2. [自己署名の暗号化証明書の PFX ファイルを作成する](#create-pfx-file-for-self-signed-ssl-certificate)
+2. [自己署名の暗号化証明書の PFX ファイルを作成する](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [クラウド サービスに暗号化証明書をアップロードする](#upload-encryption-certificate-to-cloud-service)
 4. [サービス構成ファイルの暗号化証明書を更新する](#update-encryption-certificate-in-service-configuration-file)
 
@@ -120,7 +120,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 既定の構成では、HTTPS エンドポイントへのすべてのアクセスを許可します。 この設定は、さらに制限できます。
 
 ### <a name="changing-the-configuration"></a>構成の変更
-エンドポイントに適用されるアクセス制御ルールのグループは、**サービス構成ファイル\<の** **EndpointAcls>** セクションに構成されます。
+エンドポイントに適用されるアクセス制御ルールのグループは、**サービス構成ファイル**の **\<EndpointAcls>** セクションに構成されます。
 
 ```xml
 <EndpointAcls>
@@ -186,7 +186,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="operations-for-configuring-service-certificates"></a>サービス証明書を構成する操作
 このトピックは参照専用です。 次に概要を説明している手順に従って構成してください。
 
-* SSL 証明書の構成
+* TLS/SSL 証明書を構成する
 * クライアント証明書の構成
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
@@ -204,7 +204,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 * サービスの URL に -n を指定します。 ワイルドカード ("CN=*.cloudapp.net") と代替名 ("CN=myservice1.cloudapp.net、CN=myservice2.cloudapp.net") がサポートされています。
 * 証明書の有効期限の日付に -e を指定します。強力なパスワードを作成し、要求されたときにこれを指定してください。
 
-## <a name="create-pfx-file-for-self-signed-ssl-certificate"></a>自己署名 SSL 証明書のための PFX ファイルを作成する
+## <a name="create-pfx-file-for-self-signed-tlsssl-certificate"></a>自己署名 TLS/SSL 証明書用の PFX ファイルを作成する
 次のように実行します。
 
         pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
@@ -214,24 +214,24 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 * はい、秘密キーをエクスポートします
 * すべての拡張プロパティをエクスポートする
 
-## <a name="export-ssl-certificate-from-certificate-store"></a>証明書ストアから SSL 証明書をエクスポートする
+## <a name="export-tlsssl-certificate-from-certificate-store"></a>証明書ストアから TLS/SSL 証明書をエクスポートする
 * 証明書を検索する
 * [アクション]、[すべてのタスク]、[エクスポート] の順にクリックする
 * 次のオプションを使用して証明書を .PFX ファイルにエクスポートします。
   * はい、秘密キーをエクスポートします
   * 可能であれば、証明書パスのすべての証明書を含めます *すべての拡張プロパティをエクスポートします
 
-## <a name="upload-ssl-certificate-to-cloud-service"></a>クラウド サービスに SSL 証明書をアップロードする
-既存または生成された .PFX ファイルと SSL キーのペアを使用して、証明書を次のようにアップロードします。
+## <a name="upload-tlsssl-certificate-to-cloud-service"></a>クラウド サービスに TLS/SSL 証明書をアップロードする
+既存または生成された .PFX ファイルと TLS キーのペアを使用して、証明書を次のようにアップロードします。
 
 * 秘密キーの情報を保護するパスワードを入力する
 
-## <a name="update-ssl-certificate-in-service-configuration-file"></a>サービス構成ファイルの SSL 証明書を更新する
+## <a name="update-tlsssl-certificate-in-service-configuration-file"></a>サービス構成ファイルの TLS/SSL 証明書を更新する
 サービス構成ファイルの次の設定のサムプリント値を、クラウド サービスにアップロードされた証明書のサムプリントを使用して、次のように更新します。
 
     <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
 
-## <a name="import-ssl-certification-authority"></a>SSL 証明機関をインポートする
+## <a name="import-tlsssl-certification-authority"></a>TLS/SSL 証明機関をインポートする
 サービスと通信するすべてのアカウントおよびマシンで、次の手順に従います。
 
 * Windows エクスプローラーで .CER ファイルをダブルクリックする
@@ -248,7 +248,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 <Setting name="SetupWebserverForClientCertificates" value="false" />
 ```
 
-次に、CA 証明書の設定で、SSL 証明書と同じサムプリントを次のようにコピーします。
+次に、CA 証明書の設定で、TLS/SSL 証明書と同じサムプリントを次のようにコピーします。
 
 ```xml
 <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
@@ -411,7 +411,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ```
 
 ## <a name="common-certificate-operations"></a>一般的な証明操作
-* SSL 証明書の構成
+* TLS/SSL 証明書を構成する
 * クライアント証明書の構成
 
 ## <a name="find-certificate"></a>証明書を検索する
@@ -477,7 +477,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 7. 完了したら、一覧内の新しいエントリから証明書の拇印をコピーします。
 
 ## <a name="other-security-considerations"></a>その他のセキュリティの考慮事項
-このドキュメントで説明した SSL の設定では、HTTPS エンドポイント使用時のサービスとクライアント間の通信を暗号化します。 この暗号化が重要なのは、通信には、データベース アクセスの資格証明と他の潜在的な機密情報が含まれているためです。 ただし、このサービスでは、Microsoft Azure サブスクリプションでメタデータ ストレージ用に指定した Microsoft Azure SQL データベース内の内部テーブルに、資格情報を含む内部の状態が維持されることに注意してください。 このデータベースは、サービス構成ファイルの設定の一部として次のように定義されたものです (.CSCFG ファイル)。 
+このドキュメントで説明した TLS の設定では、HTTPS エンドポイント使用時のサービスとクライアント間の通信が暗号化されます。 この暗号化が重要なのは、通信には、データベース アクセスの資格証明と他の潜在的な機密情報が含まれているためです。 ただし、このサービスでは、Microsoft Azure サブスクリプションでメタデータ ストレージ用に指定した Microsoft Azure SQL データベース内の内部テーブルに、資格情報を含む内部の状態が維持されることに注意してください。 このデータベースは、サービス構成ファイルの設定の一部として次のように定義されたものです (.CSCFG ファイル)。 
 
 ```xml
 <Setting name="ElasticScaleMetadata" value="Server=…" />

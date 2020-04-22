@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 8af6b3a451d20bcc9cab3fa4adb9643f82b85e49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3e35b6d19905e3c5262dfea3e52511510c9ffe
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288820"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252784"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Dynamics 365 for Customer Engagement のリード管理の構成
 
@@ -180,6 +180,7 @@ Azure Active Directory を使用したくない場合は、*Microsoft 365 管理
     ![[接続の詳細] - [リードのターゲット]](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
 4. `https://contoso.crm4.dynamics.com` などの **[Dynamics 365 インスタンス URL]** を指定します。
+
 5. **[認証]** の方法として、[Azure Active Directory] または [Office 365] を選択します。 
 6. [Azure Active Directory] を選択した場合は、 **[アプリケーション (クライアント) ID]** (例: `23456052-aaaa-bbbb-8662-1234df56788f`)、 **[ディレクトリ ID]** (例: `12345678-8af1-4asf-1234-12234d01db47`)、 **[クライアント シークレット]** (例: `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`) を指定します。
 
@@ -188,6 +189,13 @@ Azure Active Directory を使用したくない場合は、*Microsoft 365 管理
 7. Office 365 を選択した場合は、 **[ユーザー名]** (例: `contoso@contoso.onmicrosoft.com`) と [パスワード] (例:`P@ssw0rd`) を指定します。
 
     ![[接続の詳細] - [ユーザー名]](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
+
+8. **連絡先の電子メール** - 新しいリードを受信したときに、メール通知を受け取る必要がある社内のユーザーにメールを送信します。 セミコロンで区切ることで、複数の電子メールを指定できます。
+9. **[OK]** を選択します。
+
+リードの宛先に正常に接続したことを確認するには、[検証] ボタンをクリックします。 成功した場合は、リードの宛先にテスト リードが表示されます。
+
+![[リード管理] - [接続の詳細] のストレージ アカウント](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
 
 >[!Note]
 >オファーのリードを受け取るには、まずオファーの残りの部分の構成を完了して発行する必要があります。

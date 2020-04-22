@@ -1,5 +1,5 @@
 ---
-title: 動的グループ メンバーシップのルール - Azure AD | Microsoft Docs
+title: 動的に設定されるグループ メンバーシップのルール - Azure AD | Microsoft Docs
 description: グループを自動的に設定するメンバーシップ ルールと、ルール参照を作成する方法。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6f8237ac13744e56baa8551f8cced12b2785a48
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79227655"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114735"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -116,7 +116,7 @@ user.department -eq "Sales"
 | sipProxyAddress |任意の文字列値または *null* |(user.sipProxyAddress -eq "value") |
 | state |任意の文字列値または *null* |(user.state -eq "value") |
 | streetAddress |任意の文字列値または *null* |(user.streetAddress -eq "value") |
-| 姓 |任意の文字列値または *null* |(user.surname -eq "value") |
+| surname |任意の文字列値または *null* |(user.surname -eq "value") |
 | telephoneNumber |任意の文字列値または *null* |(user.telephoneNumber -eq "value") |
 | usageLocation |2 文字の国コード |(user.usageLocation -eq "US") |
 | userPrincipalName |任意の文字列値 |(user.userPrincipalName -eq "alias@domain") |
@@ -326,7 +326,7 @@ user.objectId -ne null
 グループでゲスト ユーザーを除外し、ご自身のテナントのメンバーのみを含めるようにする場合は、次の構文を使用できます。
 
 ```
-(user.objectId -ne null) -and (user.userType -eq “Member”)
+(user.objectId -ne null) -and (user.userType -eq "Member")
 ```
 
 ### <a name="create-an-all-devices-rule"></a>"すべてのデバイス" ルールを作成する

@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: f511a60b533d6d1e0b1ae8847d0ee0fb6be3500c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a36c411b9ababc42adb51d82a316df4252c01e24
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288837"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252014"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Azure テーブルを使用してリード管理を構成する
 
@@ -66,12 +66,12 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 
    ![[マイ フロー] **[+ スケジュール済み - 空白から作成]**](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-5.  *[スケジュールされたフローをビルド]* ウィンドウの *[繰り返し間隔]* で、間隔に "1" を、頻度に "時間" を選択します。 また、必要に応じて、フローに名前を付けます。 **［作成］** を選択します
+5.    *[スケジュールされたフローをビルド]* ウィンドウの *[繰り返し間隔]* で、間隔に "1" を、頻度に "時間" を選択します。 また、必要に応じて、フローに名前を付けます。 **［作成］** を選択します
 
-    >[!Note]
-    >この例では 1 時間の間隔を使用していますが、ビジネス ニーズに最適な間隔と頻度を選択できます。
+>[!Note]
+>この例では 1 時間の間隔を使用していますが、ビジネス ニーズに最適な間隔と頻度を選択できます。
 
-    ![スケジュールされたフローをビルドします。](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
+![スケジュールされたフローをビルドします。](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
 
 6. **[+ New step (+ 新しいステップ)]** を選択します。
 7. *[アクションを選択してください]* ウィンドウで "過去の時間を取得" を検索し、[アクション] で **[過去の時間を取得]** を選択します。
@@ -92,23 +92,17 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 
 9. [過去の時間の取得] ステップの後で、 **[+ 新しいステップ]** を選択し、 *[アクションの選択]* ウィンドウで "エンティティの取得" を検索します。
 10. **[アクション]** で、 **[エンティティの取得 (Azure Table Storage)]** を選択します。
-11. **[Azure Table Storage]** ウィンドウで、次のフィールドに情報を指定し、 **[作成]** を選択します。
+11.    **[Azure Table Storage]** ウィンドウで、次のフィールドに情報を指定し、 **[作成]** を選択します。
+* *[接続名]* – このフローと Azure テーブルの間に確立しようとしている接続に、わかりやすい名前を指定します。
+* *[ストレージ アカウント名]* – お使いの Azure テーブルのストレージ アカウントの名前を指定します。 これは、ストレージ アカウントの **[アクセス キー]** ページで確認できます。
+* *[共有ストレージ キー]* – お使いの Azure テーブルのストア アカウントのキー値を指定します。 これは、ストレージ アカウントの **[アクセス キー]** ページで確認できます。
+    ![Azure Table Storage。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
-    * *[接続名]* – このフローと Azure テーブルの間に確立しようとしている接続に、わかりやすい名前を指定します。
-    * *[ストレージ アカウント名]* – お使いの Azure テーブルのストレージ アカウントの名前を指定します。 これは、ストレージ アカウントの **[アクセス キー]** ページで確認できます。
-    * *[共有ストレージ キー]* – お使いの Azure テーブルのストア アカウントのキー値を指定します。 これは、ストレージ アカウントの **[アクセス キー]** ページで確認できます。
+[作成] をクリックすると、" *[エンティティの取得]* " ウィンドウが表示されます。 ここで、 **[詳細オプションの表示]** を選択し、次のフィールドに情報を指定します。
+* *[テーブル]* – お使いの Azure Table Storage の名前を選択します (手順 6. の Azure テーブルの構成方法に関する説明を参照)。 次の画面キャプチャは、この例で "marketplaceleads" テーブルが選択されたときのプロンプトを示しています。
+    ![Azure テーブルのエンティティの取得。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-        ![Azure Table Storage。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
-
-    [作成] をクリックすると、" *[エンティティの取得]* " ウィンドウが表示されます。 ここで、 **[詳細オプションの表示]** を選択し、次のフィールドに情報を指定します。
-
-       * *[テーブル]* – お使いの Azure Table Storage の名前を選択します (手順 6. の Azure テーブルの構成方法に関する説明を参照)。 次の画面キャプチャは、この例で "marketplaceleads" テーブルが選択されたときのプロンプトを示しています。
-
-            ![Azure テーブルのエンティティの取得。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
-
-        * *[フィルター クエリ]* – このフィールドを選択し、次の関数をフィールドに貼り付けます: `Timestamp gt datetime'@{body('Get_past_time')}'`
-
-            ![Azure テーブルのエンティティの取得 - [フィルター クエリ]。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
+* *[フィルター クエリ]* – このフィールドを選択し、次の関数をフィールドに貼り付けます。`Timestamp gt datetime'@{body('Get_past_time')}'` ![Azure テーブルのエンティティの取得 - [フィルター クエリ]。](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
 12. これで、Azure テーブルへの接続の設定が完了したので、 **[新しいステップ]** を選択して、Azure テーブルで新しいリードをスキャンする条件を追加します。 
 
@@ -178,7 +172,10 @@ Azure Marketplace と AppSource のリードを受け取るためにパートナ
 1. オファーの **[オファーのセットアップ]** ページに移動します。
 2. [リード管理] セクションで **[接続]** を選択します。
 3. [接続の詳細] ポップアップ ウィンドウで、 **[リードのターゲット]** として **[Azure Table]** を選択し、前の手順で作成した Azure ストレージ アカウントからの接続文字列を **[ストレージ アカウント接続文字列]** フィールドに貼り付けます。
-4. **[保存]** を選択します。 
+4. **連絡先の電子メール** - 新しいリードを受信したときに、メール通知を受け取る必要がある社内のユーザーにメールを送信します。 セミコロンで区切ることで、複数の電子メールを指定できます。
+5. **[OK]** を選択します。
+
+リードの宛先に正常に接続したことを確認するには、[検証] ボタンをクリックします。 成功した場合は、リードの宛先にテスト リードが表示されます。
 
 >[!Note]
 >オファーのリードを受け取るには、まずオファーの残りの部分の構成を完了して発行する必要があります。

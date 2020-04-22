@@ -5,58 +5,61 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: bf7bebf6e72e373811879a311d70255c29988ed6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef22f7720a4af2239c55d1a01f9d3f11c878d66e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288582"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256316"
 ---
-<a name="go-live"></a>Go Live
-=======
+# <a name="go-live"></a>Go Live
+
+> [!NOTE]
+> Cloud パートナー ポータル API はパートナー センターと統合されており、オファーがパートナー センターに移行された後も引き続き機能します。 この統合では、小さな変更が導入されています。 「[Cloud パートナー ポータルの API リファレンス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
 
 この API は、運用環境にアプリをプッシュするためのプロセスを開始します。 この操作には、通常、長い時間がかかります。 この呼び出しでは、[Publish](./cloud-partner-portal-api-publish-offer.md) API 操作の通知メール リストが使用されます。
 
  `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/golive?api-version=2017-10-31` 
 
-<a name="uri-parameters"></a>URI パラメーター
+## <a name="uri-parameters"></a>URI パラメーター
 --------------
 
-|  **Name**      |   **説明**                                                           | **データの種類** |
+|  **名前**      |   **説明**                                                           | **データの種類** |
 |  --------      |   ---------------                                                           | ------------- |
 | publisherId    | 取得するオファーの発行元 ID (例: `contoso`)       |  String       |
 | offerId        | 取得するオファーのオファー ID                                   |  String       |
 | api-version    | API の最新バージョン                                                   |  Date         |
 |  |  |  |
 
-
-<a name="header"></a>ヘッダー
+## <a name="header"></a>ヘッダー
 ------
 
-|  **Name**       |     **Value**       |
+|  **名前**       |     **Value**       |
 |  ---------      |     ----------      |
 | Content-Type    | `application/json`  |
 | 承認   | `Bearer YOUR_TOKEN` |
 |  |  |
 
-
-<a name="body-example"></a>本文の例
-------------
+## <a name="body-example"></a>本文の例
 
 ### <a name="response"></a>Response
 
-`Operation-Location: https://cloudpartner.azure.com/api/publishers/contoso/offers/contoso-virtualmachineoffer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8`
+#### <a name="migrated-offers"></a>移行されたオファー
 
+`Location: /api/publishers/contoso/offers/contoso-offer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8?api-version=2017-10-31`
+
+#### <a name="non-migrated-offers"></a>移行されていないオファー
+
+`Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
 ### <a name="response-header"></a>応答ヘッダー
 
-|  **Name**             |      **Value**                                                            |
+|  **名前**             |      **Value**                                                            |
 |  --------             |      ----------                                                           |
-| Operation-Location    |  操作の現在の状態を確認するためのクエリに使用する URL            |
+| 場所    |  この操作の状態を取得する相対パス            |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>応答状態コード
 

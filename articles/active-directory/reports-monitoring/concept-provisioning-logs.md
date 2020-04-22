@@ -17,12 +17,12 @@ ms.date: 11/04/2019
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6e0c697f9ab9796feade9b4d5c2a64794f3980b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73612795"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113367"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory ポータルのプロビジョニング レポート (プレビュー)
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
     - **監査ログ** - [監査ログ](concept-audit-logs.md)は、ユーザーとグループの管理や、マネージド アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報を提供します。
     - **プロビジョニング ログ** - Azure AD プロビジョニング サービスによってプロビジョニングされたユーザー、グループ、およびロールに関するシステム アクティビティを提供します。 
 
-- **セキュリティ** 
+- **Security** 
     - **リスクの高いサインイン** - [リスクの高いサインイン](concept-risky-sign-ins.md)は、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。
     - **リスクのフラグ付きユーザー** - [リスクの高いユーザー](concept-user-at-risk.md)は、侵害された可能性があるユーザー アカウントの指標です。
 
@@ -58,7 +58,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 * アマゾン ウェブ サービスからロールがインポートされた方法
 * DropBox で作成に失敗したユーザー
 
-**Azure portal** の **[Azure Active Directory]** ブレードの **[監視]** セクションで [[プロビジョニング ログ]](https://portal.azure.com) を選択して、プロビジョニング レポートにアクセスできます。 プロビジョニング レコードによっては、ポータルに表示されるまでに最大 2 時間かかるものもあります。
+[Azure portal](https://portal.azure.com) の **[Azure Active Directory]** ブレードの **[監視]** セクションで **[プロビジョニング ログ]** を選択して、プロビジョニング レポートにアクセスできます。 プロビジョニング レコードによっては、ポータルに表示されるまでに最大 2 時間かかるものもあります。
 
 ![プロビジョニング ログ](./media/concept-provisioning-logs/access-provisioning-logs.png "プロビジョニング ログ")
 
@@ -90,38 +90,19 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ## <a name="filter-provisioning-activities"></a>プロビジョニング アクティビティのフィルター処理
 
-報告されるデータを有用なものだけに絞り込むために、次の既定のフィールドを使用してプロビジョニング データをフィルター処理できます。 フィルターの値は、テナントに基づいて動的に設定されることに注意してください。 たとえば、テナントに作成イベントがない場合は、作成のフィルター オプションはありません。
+プロビジョニング データをフィルター処理できます。 いくつかのフィルター値は、テナントに基づいて動的に設定されます。 たとえば、テナントに作成イベントがない場合は、作成のフィルター オプションはありません。
+既定のビューでは、次のフィルターを選択できます。
 
 - ID
-- アクション
-- ソース システム
-- ターゲット システム
-- Status
 - Date
+- Status
+- アクション
 
 
-![Assert](./media/concept-provisioning-logs/filter.png "Assert")
+![Assert](./media/concept-provisioning-logs/default-filter.png "Assert")
 
 **ID** フィルターを使用すると、関心のある名前または ID を指定できます。 この ID には、ユーザー、グループ、ロール、またはその他のオブジェクトを指定できます。 オブジェクトの名前または ID で検索できます。 ID はシナリオによって異なります。 たとえば、Azure AD から SalesForce にオブジェクトをプロビジョニングする場合、ソース ID は Azure AD 内のユーザーのオブジェクト ID であり、ターゲット ID は Salesforce のユーザーの ID です。 Workday から Active Directory にプロビジョニングする場合、ソース ID は Workday ワーカーの従業員 ID です。 ユーザーの名前が必ずしも ID 列に存在するとは限らないことに注意してください。 常に 1 つの ID が存在します。 
 
-**[ソース システム]** フィルターでは、ID のプロビジョニング元となる場所を指定できます。 たとえば、Azure AD から ServiceNow にオブジェクトをプロビジョニングする場合、ソース システムは Azure AD です。 
-
-**[ターゲット システム]** フィルターでは、ID のプロビジョニング先となる場所を指定できます。 たとえば、Azure AD から ServiceNow にオブジェクトをプロビジョニングする場合、ターゲット システムは ServiceNow です。 
-
-**[状態]** フィルターでは、次のいずれかを選択できます。
-
-- All
-- Success
-- 障害
-- スキップ
-
-**[アクション]** フィルターでは、次のものをフィルター処理できます。
-
-- 作成 
-- 更新
-- 削除
-- Disable
-- その他
 
 **[日付]** フィルターでは、返されるデータの期間を定義できます。  
 次のいずれかの値になります。
@@ -135,7 +116,35 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 カスタムの期間を選択すると、開始日と終了日を構成できます。
 
 
-既定のフィールドに加えて、フィルターに次のフィールドを含めることもできます (選択した場合)。
+**[状態]** フィルターでは、次のいずれかを選択できます。
+
+- All
+- Success
+- 障害
+- スキップ
+
+
+
+**[アクション]** フィルターでは、次のものをフィルター処理できます。
+
+- 作成 
+- 更新
+- 削除
+- Disable
+- その他
+
+既定のビューのフィルターに加えて、次のフィルターを設定することもできます。
+
+- [ジョブ ID]
+- サイクル ID
+- 変更 ID
+- ソース ID
+- ターゲット ID
+- Application
+
+
+![フィールドを選択する](./media/concept-provisioning-logs/add-filter.png "フィールドを選択する")
+
 
 - **[ジョブ ID]** - プロビジョニングを有効にした各アプリケーションに、一意のジョブ ID が関連付けられます。   
 
@@ -144,8 +153,13 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 - **[変更 ID]** - プロビジョニング イベントの一意の識別子。 この ID をサポートと共有して、プロビジョニング イベントを検索できます。   
 
 
+- **[ソース システム]** - ID のプロビジョニング元となる場所を指定できます。 たとえば、Azure AD から ServiceNow にオブジェクトをプロビジョニングする場合、ソース システムは Azure AD です。 
 
-  
+- **[ターゲット システム]** - ID のプロビジョニング先となる場所を指定できます。 たとえば、Azure AD から ServiceNow にオブジェクトをプロビジョニングする場合、ターゲット システムは ServiceNow です。 
+
+- **アプリケーション** - 特定の文字列が含まれている表示名を持つアプリケーションのレコードのみを表示できます。
+
+ 
 
 ## <a name="provisioning-details"></a>プロビジョニングの詳細 
 

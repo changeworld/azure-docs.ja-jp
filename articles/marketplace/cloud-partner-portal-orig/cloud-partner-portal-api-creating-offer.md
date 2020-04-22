@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 681e71fae161100c8804f95980b9e9567dcf1863
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66e640ab199a884ebfab69cbe7db7f562d848720
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288616"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256350"
 ---
 <a name="create-or-modify-an-offer"></a>オファーを作成または変更する
 =========================
+
+> [!NOTE]
+> Cloud パートナー ポータル API はパートナー センターと統合されており、オファーがパートナー センターに移行された後も引き続き機能します。 この統合では、小さな変更が導入されています。 「[Cloud パートナー ポータルの API リファレンス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
 
 この呼び出しでは、パブリッシャーの名前空間内にある特定のオファーが更新されるか、または新しいオファーが作成されます。
 
@@ -25,7 +28,7 @@ ms.locfileid: "80288616"
 <a name="uri-parameters"></a>URI パラメーター
 --------------
 
-|  **Name**         |  **説明**                      |  **データの種類**  |
+|  **名前**         |  **説明**                      |  **データの種類**  |
 |  --------         |  ----------------                     |  -------------  |
 | publisherId       |  パブリッシャー ID。たとえば、`contoso` |   String |
 | offerId           |  オファー ID                     |   String        |
@@ -35,7 +38,7 @@ ms.locfileid: "80288616"
 <a name="header"></a>ヘッダー
 ------
 
-|  **Name**        |  **Value**               |
+|  **名前**        |  **Value**               |
 |  ---------       |  ----------              | 
 | Content-Type     | `application/json`       |
 | 承認    | `Bearer YOUR_TOKEN`      |
@@ -246,11 +249,11 @@ ms.locfileid: "80288616"
 
 | **コード**  |  **説明**                                                                            |
 | --------  |  ---------------                                                                            |
-|  200      | [https://login.microsoftonline.com/consumers/](`OK`) 要求が正常に処理されて、オファーが正常に変更されました。           |
-|  201      | [https://login.microsoftonline.com/consumers/](`Created`) 要求が正常に処理されて、オファーが正常に作成されました。   |
-|  400      | [https://login.microsoftonline.com/consumers/](`Bad/Malformed request`) エラーの応答本文にさらに情報が含まれている場合があります。            |
-|  403      | [https://login.microsoftonline.com/consumers/](`Forbidden`) クライアントは、要求された名前空間にアクセスできません。                     |
-|  404      | [https://login.microsoftonline.com/consumers/](`Not found`) クライアントによって参照されているエンティティは存在しません。                           |
+|  200      | `OK` 要求が正常に処理されて、オファーが正常に変更されました。           |
+|  201      | `Created` 要求が正常に処理されて、オファーが正常に作成されました。   |
+|  400      | `Bad/Malformed request` エラーの応答本文にさらに情報が含まれている場合があります。            |
+|  403      | `Forbidden` クライアントは、要求された名前空間にアクセスできません。                     |
+|  404      | `Not found` クライアントによって参照されているエンティティは存在しません。                           |
 |  412      | サーバーが、要求者が要求で指定した前提条件の 1 つを満たしていません。 クライアントは、要求で送信された ETAG をチェックする必要があります。 |
 |  |  |
 

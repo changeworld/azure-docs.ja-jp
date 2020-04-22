@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 04/09/2020
 ms.author: kgremban
-ms.openlocfilehash: 80ce962ac6977fcce2455c8e2ef29af448a44075
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61b382f1c286209a12d0be39a81e6817806d3251
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133153"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113456"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Windows に Azure IoT Edge ランタイムをインストールする
 
@@ -139,33 +139,45 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
 
 ## <a name="offline-or-specific-version-installation"></a>オフラインまたは特定のバージョンのインストール
 
-インストール中に、次の 2 つのファイルがダウンロードされます。
+インストール中に、次の 3 つのファイルがダウンロードされます。
 
-* Microsoft Azure IoT Edge cab には、IoT Edge セキュリティ デーモン (iotedged)、Moby コンテナー エンジン、Moby CLI が含まれています。
-* Visual C++ 再頒布可能パッケージ (VC ランタイム) の MSI
+* PowerShell スクリプト。これには、インストール手順が含まれています。
+* Microsoft Azure IoT Edge cab。これには、IoT Edge セキュリティ デーモン (iotedged)、Moby コンテナー エンジン、および Moby CLI が含まれています。
+* Visual C++ 再頒布可能パッケージ (VC ランタイム) インストーラー
 
-インストール中にデバイスがオフラインになる予定の場合、または、特定のバージョンの IoT Edge をインストールする場合は、これらのファイルのどちらかまたは両方を事前にデバイスにダウンロードすることができます。 インストール時には、インストール スクリプトによって、ダウンロード済みのファイルを含むディレクトリを指定します。 インストーラーでは、最初にそのディレクトリをチェックし、見つからないコンポーネントのみをダウンロードします。 すべてのファイルがオフラインで利用可能な場合、インターネット接続なしでインストールできます。
+インストール中にデバイスがオフラインになる予定の場合、または特定のバージョンの IoT Edge をインストールする場合は、これらのファイルを事前にデバイスにダウンロードできます。 インストール時には、インストール スクリプトによって、ダウンロード済みのファイルを含むディレクトリを指定します。 インストーラーでは、最初にそのディレクトリをチェックし、見つからないコンポーネントのみをダウンロードします。 すべてのファイルがオフラインで利用可能な場合、インターネット接続なしでインストールできます。
 
-IoT Edge の最新のインストール ファイルとその以前のバージョンについては、[Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)を参照してください。
+オフライン インストール パス パラメーターを使用して IoT Edge を更新することもできます。 詳細については、[IoT Edge セキュリティ デーモンおよびランタイムの更新](how-to-update-iot-edge.md)を参照してください。
 
-オフライン コンポーネントを使用してインストールするには、Deploy-IoTEdge コマンドの一部として `-OfflineInstallationPath` パラメーターを使用し、ファイル ディレクトリへの絶対パスを指定します。 たとえば、次のように入力します。
+1. IoT Edge の最新のインストール ファイルとその以前のバージョンについては、[Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)を参照してください。
 
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
-```
+2. インストールするバージョンを見つけ、リリース ノートの **[アセット]** セクションから次のファイルを IoT デバイスにダウンロードします。
 
->[!NOTE]
->`-OfflineInstallationPath` パラメーターでは、指定されたディレクトリで **Microsoft-Azure-IoTEdge.cab** という名前のファイルを検索します。 IoT Edge バージョン 1.0.9-rc4 以降では、2 つの .cab ファイル (AMD64 デバイス用と ARM32 デバイス用に 1 つずつ) を使用できます。 お使いのデバイスに適切なファイルをダウンロードし、ファイルの名前を変更して、アーキテクチャのサフィックスを削除します。
+   * IoTEdgeSecurityDaemon.ps1
+   * リリース 1.0.9 以降は Microsoft-Azure-IoTEdge-amd64.cab、リリース 1.0.8 以前は Microsoft-Azure-IoTEdge.cab。
 
-`Deploy-IoTEdge` コマンドによって IoT Edge コンポーネントがインストールされ、その後は `Initialize-IoTEdge` コマンドを使用して、IoT Hub デバイス ID および接続によってデバイスをプロビジョニングする必要があります。 コマンドを直接実行して IoT Hub からの接続文字列を指定するか、または前のセクションにあるリンクの 1 つを使用して Device Provisioning Service によってデバイスを自動的にプロビジョニングする方法を確認してください。
+   1\.0.9 以降は、テスト目的でのみ Microsoft-Azure-IotEdge-arm32.cab を使用することもできます。 IoT Edge では、現在、Windows ARM32 デバイスはサポートされていません。
 
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Initialize-IoTEdge
-```
+   各リリースの機能をサポートするために機能が変更されるため、使用する .cab ファイルと同じリリースの PowerShell スクリプトを使用することが重要です。
 
-Update-IoTEdge コマンドと共に、オフライン インストール パス パラメーターを使用することもできます。
+3. ダウンロードした .cab ファイルにアーキテクチャのサフィックスが付いている場合は、そのファイルの名前を **Microsoft-Azure-IoTEdge.cab** のみに変更します。
+
+4. 必要に応じて、Visual C++ 再頒布可能パッケージ インストーラーをダウンロードします。 たとえば、PowerShell スクリプトでは、バージョン [vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe) を使用します。 IoT デバイスの IoT Edge ファイルと同じフォルダーにインストーラーを保存します。
+
+5. オフライン コンポーネントを使用してインストールするには、PowerShell スクリプトのローカル コピーを[ドット ソース](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing)で実行します。 次に、`Deploy-IoTEdge` コマンドの一部として `-OfflineInstallationPath` パラメーターを使用して、ファイル ディレクトリへの絶対パスを指定します。 たとえば、次のように入力します。
+
+   ```powershell
+   . <path>\IoTEdgeSecurityDaemon.ps1
+   Deploy-IoTEdge -OfflineInstallationPath <path>
+   ```
+
+   デプロイ コマンドでは、指定されたローカル ファイル ディレクトリにあるコンポーネントが使用されます。 .cab ファイルまたは Visual C++ インストーラーが見つからない場合は、ダウンロードが試行されます。
+
+6. IoT Hub で ID を使用してデバイスをプロビジョニングするには、`Initialize-IoTEdge` コマンドを実行します。 手動プロビジョニング用のデバイス接続文字列を指定するか、前述の[自動的なプロビジョニング](#option-2-install-and-automatically-provision)のセクションで説明されている方法のいずれかを選択します。
+
+   `Deploy-IoTEdge` の実行後にデバイスが再起動された場合は、`Initialize-IoTEdge` を実行する前に、PowerShell スクリプトを再度ドット ソースで実行します。
+
+オフライン インストール オプションの詳細については、「[すべてのインストール パラメーター](#all-installation-parameters)」に進んでください。
 
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
 

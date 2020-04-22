@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: a547ced9df98298361360ecab88036599cd86027
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05389f0aea7e2637dd28281236e7fd7ec2b412fd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275851"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251709"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [Marketplace の分析情報] ダッシュボード
 
@@ -54,7 +54,7 @@ ms.locfileid: "80275851"
 
 - オファー名は、選択した日付範囲内にページ アクセスがあったオファーに対してのみ一覧表示されます。  
 - 既定では、各フィルター オプションに対して [すべて] が選択されています。
-- 適用されたフィルターにより、選択された項目の数が示されます。 適用されたフィルターは、既定の [すべて] の選択に対しては表示されません。
+- 適用されたフィルターにより、選択された項目の数が示されます。 既定の [すべて] の選択では、適用されたフィルターは表示されません。
 
 ![パートナー センターの適用された分析情報フィルター](./media/insights-page-filter-two.png)
 
@@ -134,7 +134,7 @@ Marketplace の分析情報の概要セクションには、選択した日付�
 
 ## <a name="next-steps"></a>次のステップ
 
-- パートナー センターのコマーシャル マーケットプレースで利用可能な分析レポートの概要については、「[パートナー センターでの商用マーケットプレース向け分析](./analytics.md)」を参照してください。
+- パートナー センターのコマーシャル マーケットプレースで利用可能な分析レポートの概要については、「[パートナー センターでのコマーシャル マーケットプレース向け分析](./analytics.md)」を参照してください。
 - オファーのマーケットプレース アクティビティを要約した集計データのグラフ、傾向、値については、「[コマーシャル マーケットプレース分析の概要ダッシュボード](./summary-dashboard.md)」を参照してください。
 - グラフィカルでダウンロード可能な形式での注文の詳細については、「[コマーシャル マーケットプレース分析の注文ダッシュボード](./orders-dashboard.md)」を参照してください。
 - 仮想マシン (VM) プランの使用量と従量制課金メトリックについては、「[コマーシャル マーケットプレース分析の使用量ダッシュボード](./usage-dashboard.md)」を参照してください。

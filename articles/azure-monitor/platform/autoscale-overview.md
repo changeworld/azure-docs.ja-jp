@@ -1,15 +1,15 @@
 ---
-title: Virtual Machines、Cloud Services、および Web Apps での自動スケールの概要
+title: VM、Cloud Services、および Web Apps での自動スケーリング
 description: Microsoft Azure での自動スケール。 Virtual Machines、Virtual Machine Scale Sets、Cloud Services、および Web Apps に適用されます。
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a60c03f1928b38c78a59edca4b5493307d7d19d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeb8b301bf087efa164a7864cdce3a04952f45ed
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75364375"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114140"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Microsoft Azure Virtual Machines、Cloud Services、および Web Apps での自動スケールの概要
 この記事では、Microsoft Azure 自動スケールの概要、利点、および使用方法について説明します。  

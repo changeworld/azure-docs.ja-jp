@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab17137f162b893b54942d870b07a36f87d1b71d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651408"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115071"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Azure Logic Apps でオンプレミスのファイル システムに接続する
 
@@ -69,7 +69,7 @@ Azure Logic Apps とファイル システム コネクタを使用すると、�
    | -------- | -------- | ----- | ----------- |
    | **Connection Name** | はい | <*connection-name*> | 接続に付ける名前 |
    | **ルート フォルダー** | はい | <*root-folder-name*> | ファイル システムのルート フォルダー。たとえば、オンプレミスのデータ ゲートウェイをインストールしている場合は、オンプレミスのデータ ゲートウェイがインストールされているコンピューターのローカル フォルダーや、コンピューターがアクセス可能なネットワーク共有のフォルダー。 <p>例: `\\PublicShare\\DropboxFiles` <p>ルート フォルダーはメインの親フォルダーで、すべてのファイル関連のアクションの相対パスに使用されます。 |
-   | **認証の種類** | いいえ | <*auth-type*> | ファイル システムで使用される認証の種類 (**Windows** など) |
+   | **認証の種類** | いいえ | <*auth-type*> | ファイル システムで使用される認証の種類:**Windows** |
    | **ユーザー名** | はい | <*domain*>\\<*username*> | ファイル システムが存在するコンピューターでのユーザー名 |
    | **パスワード** | はい | <*your-password*> | ファイル システムが存在するコンピューターでのパスワード |
    | **gateway** | はい | <*installed-gateway-name*> | あらかじめインストールしておいたゲートウェイの名前 |

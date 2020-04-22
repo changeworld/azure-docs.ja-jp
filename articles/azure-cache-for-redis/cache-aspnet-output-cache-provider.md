@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: af003f1f0422c2351bcdf9b0c0010e38785c0344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1d8189068278b46e3ec3ea66875d79bb91e5e16
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530327"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010207"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET 出力キャッシュ プロバイダー
 
@@ -54,9 +54,9 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 | 属性 | Type | Default | 説明 |
 | --------- | ---- | ------- | ----------- |
 | *host* | string | "localhost" | Redis サーバーの IP アドレスまたはホスト名 |
-| *port* | 正の整数 | 6379 (非 SSL)<br/>6380 (SSL) | Redis サーバー ポート |
+| *port* | 正の整数 | 6379 (TLS/SSL 以外)<br/>6380 (TLS/SSL) | Redis サーバー ポート |
 | *accessKey* | string | "" | Redis 認証が有効になっている場合は、Redis サーバーのパスワード。 既定では、値は空の文字列です。これは、セッション状態プロバイダーが Redis サーバーに接続するときにパスワードを使用しないことを意味します。 **Redis サーバーが Azure Redis Cache のようなパブリックにアクセス可能なネットワークにある場合は、セキュリティを強化するために必ず Redis 認証を有効にして、安全なパスワードを提供してください。** |
-| *ssl* | boolean | **false** | Redis サーバーに SSL 経由で接続するかどうか。 Redis は初期状態では SSL をサポートしていないため、この値は既定では **false** です。 **初期状態で SSL をサポートする Azure Redis Cache を使用している場合は、セキュリティを強化するためにこれを必ず true に設定してください。**<br/><br/>既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。 SSL ポートを使用するには、この設定に **true** を指定します。 非 SSL ポートの有効化の詳細については、[キャッシュの構成](cache-configure.md)に関するトピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。 |
+| *ssl* | boolean | **false** | Redis サーバーに TLS 経由で接続するかどうか。 Redis は初期状態では TLS をサポートしていないため、この値は既定では **false** です。 **初期状態で SSL をサポートする Azure Redis Cache を使用している場合は、セキュリティを強化するためにこれを必ず true に設定してください。**<br/><br/>既定では、新しいキャッシュに対して非 TLS ポートは無効になっています。 TLS ポートを使用するには、この設定に **true** を指定します。 非 TLS ポートの有効化の詳細については、[キャッシュの構成](cache-configure.md)に関するトピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。 |
 | *databaseIdNumber* | 正の整数 | 0 | *この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>使用する Redis データベースを指定します。 |
 | *connectionTimeoutInMilliseconds* | 正の整数 | StackExchange.Redis によって提供されます | StackExchange.Redis.ConnectionMultiplexer の作成時に *ConnectTimeout* を設定するために使用されます。 |
 | *operationTimeoutInMilliseconds* | 正の整数 | StackExchange.Redis によって提供されます | StackExchange.Redis.ConnectionMultiplexer の作成時に *SyncTimeout* を設定するために使用されます。 |
