@@ -76,7 +76,7 @@ Azure Cognitive Services では、[Azure portal](https://portal.azure.com)、[Az
 | | カナダ中部 | `https://canadacentral.api.cognitive.microsoft.com` |
 | | 米国中部 | `https://centralus.api.cognitive.microsoft.com` |
 | | 東アジア | `https://eastasia.api.cognitive.microsoft.com` |
-| | East US | `https://eastus.api.cognitive.microsoft.com` |
+| | 米国東部 | `https://eastus.api.cognitive.microsoft.com` |
 | | 米国東部 2 | `https://eastus2.api.cognitive.microsoft.com` |
 | | フランス中部 | `https://francecentral.api.cognitive.microsoft.com` |
 | | インド中部 | `https://centralindia.api.cognitive.microsoft.com` |
