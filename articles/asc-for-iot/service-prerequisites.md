@@ -42,7 +42,7 @@ Azure Security Center for IoT の分析情報とレポートは、Azure IoT Hub 
 
 Azure Security Center for IoT は現在、次の Azure リージョン内の IoT Hub でサポートされています。
   - 米国中部  
-  - East US 
+  - 米国東部 
   - 米国東部 2
   - 米国中西部
   - 米国西部
