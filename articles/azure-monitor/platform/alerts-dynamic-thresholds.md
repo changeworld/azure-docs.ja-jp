@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 9345138e948d84e0ea3c804dbd7a4b3c21daca2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668147"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261076"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Monitor の動的しきい値を使用したメトリック アラート
 
@@ -93,7 +93,8 @@ ms.locfileid: "77668147"
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>アラートをトリガーするためにどれくらいのデータが必要ですか。
 
-新しいリソースがあるか、またはメトリック データが不足している場合、しきい値の精度を保つため、メトリック データの利用が可能になる 3 日前またはサンプル数が 30 になるまで、動的しきい値ではアラートがトリガーされません。
+新しいリソースがあるか、またはメトリック データが不足している場合、しきい値の精度を保つため、メトリック データの利用が可能になる 3 日前、かつサンプル数が 30 以上になるまで、動的しきい値ではアラートがトリガーされません。
+十分なメトリック データがある既存のリソースの場合、動的しきい値を使用してすぐにアラートをトリガーできます。
 
 ## <a name="dynamic-thresholds-best-practices"></a>動的しきい値のベスト プラクティス
 

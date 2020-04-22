@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e14cc00d1bd716b3e4880e585b05447d2e55e2b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232975"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257438"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps でのトリガーとアクションの種類のスキーマ リファレンス ガイド
 
@@ -2407,11 +2407,17 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 既定では、ロジック アプリ ワークフロー インスタンスはすべて (同時にまたは並行して) 実行されます。 この動作は、直前のアクティブなワークフロー インスタンスが実行を終了する前に各トリガー インスタンスが起動することを意味します。 ただし、同時に実行されるインスタンスの数には[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)があります。 同時に実行されるワークフロー インスタンスの数がこの制限に達すると、その他の新しいインスタンスは実行を待機する必要があります。 この制限を使用して、バックエンド システムが受信する要求の数を制限できます。
 
-既定の制限を変更するには、コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 このプロパティは、並行して実行できるワークフロー インスタンスの最大数を制御します。 コンカレンシー制御を有効にする場合の考慮事項のいくつかを次に示します。
+トリガーのコンカレンシー制御を有効にすると、トリガー インスタンスは[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)まで並列実行されます。 既定のコンカレンシー制限を変更するには、コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 このプロパティを使用すると、並行して実行できる新しいワークフロー インスタンスの最大数が制御されます。
+
+トリガーに対するコンカレンシーを有効にする場合の考慮事項のいくつかを次に示します。
 
 * コンカレンシーが有効になっていると、[配列のバッチ解除](#split-on-debatch)のために [SplitOn 上限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)が大幅に下がります。 項目数がこの上限を超えると、SplitOn 機能は無効になります。
 
-* コンカレンシーが有効になっている間は、実行時間の長いロジック アプリ インスタンスによって、新しいロジック アプリ インスタンスが待機状態になることがあります。 この状態により、Azure Logic Apps で新しいインスタンスが作成されなくなります。この状態は、同時実行の数が、指定された同時実行の最大数よりも少ない場合でも発生します。
+* コンカレンシー制御を有効にした後にコンカレンシーを無効にすることはできません。
+
+* コンカレンシーが有効になっていると、[配列のバッチ解除](#split-on-debatch)のために [SplitOn 上限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)が大幅に下がります。 項目数がこの上限を超えると、SplitOn 機能は無効になります。
+
+* コンカレンシーを有効にすると、実行時間の長いロジック アプリ インスタンスによって、新しいロジック アプリ インスタンスが待機状態になることがあります。 この状態により、Azure Logic Apps で新しいインスタンスが作成されなくなります。この状態は、同時実行の数が、指定された同時実行の最大数よりも少ない場合でも発生します。
 
   * この状態を中断するには、"*まだ実行されている*" インスタンスのうち最も古いものを取り消します。
 

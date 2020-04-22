@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8cb6cf49e302122849dc2402bcff008e72e15608
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 870f7b0ab0f1d7b247435cdbb74e21801b3b052a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472360"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257183"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>フィールド プログラマブル ゲート アレイ (FPGA) の説明とデプロイ方法
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ Microsoft Azure は、世界最大規模の、FPGA 分野でのクラウド関�
 Azure の FPGA のサポート:
 
 + 画像の分類と認識のシナリオ
-+ TensorFlow のデプロイ
++ TensorFlow のデプロイ (TensorFlow 1.x が必要)
 + Intel FPGA ハードウェア
 
 現在使用できるのは、以下の DNN モデルです。
@@ -115,9 +115,8 @@ Azure Machine Learning Hardware Accelerated Models を使用して、モデル�
 - Hardware Accelerated Models 用の Python SDK:
 
     ```bash
-    pip install --upgrade azureml-accel-models
+    pip install --upgrade azureml-accel-models[cpu]
     ```
-
 
 ## <a name="1-create-and-containerize-models"></a>1.モデルを作成してコンテナー化する
 

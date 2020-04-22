@@ -1,5 +1,5 @@
 ---
-title: 自動機械学習におけるモデルの解釈可能性
+title: 自動機械学習の説明
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning SDK を使用している場合に、自動 ML モデルがどのように特徴量の重要度を判定して予測を行うかに関する説明を取得する方法について説明します。
 services: machine-learning
@@ -8,22 +8,21 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
-ms.reviewer: trbye
 ms.date: 03/11/2020
-ms.openlocfilehash: e2465a2df3fab736c8f118911da14ef23c8aec86
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: ecf7cde1a7f804ef1c43b21ac5c1d2a488660590
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437278"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257166"
 ---
-# <a name="model-interpretability-in-automated-machine-learning"></a>自動機械学習におけるモデルの解釈可能性
+# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>解釈可能性: 自動機械学習のモデルの説明
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、Azure Machine Learning を使用して、自動機械学習 (ML) で解釈可能性機能を有効にする方法について説明します。 自動 ML は、エンジニアリングされた特徴量の重要度を理解するのに役立ちます。 
+この記事では、Azure Machine Learning で自動機械学習 (ML) の説明を取得する方法について説明します。 自動 ML は、エンジニアリングされた特徴量の重要度を理解するのに役立ちます。 
 
-1\.0.85 より後のすべての SDK バージョンは、既定で `model_explainability=True` となります。 SDK バージョン 1.0.85 以前のバージョンでは、モデルの解釈可能性を使用するために、ユーザーは `model_explainability=True` オブジェクトに `AutoMLConfig` を設定する必要があります。 
+1\.0.85 より後のすべての SDK バージョンは、既定で `model_explainability=True` となります。 SDK バージョン 1.0.85 以前のバージョンでは、モデルの解釈可能性を使用するために、ユーザーは `AutoMLConfig` オブジェクトに `model_explainability=True` を設定する必要があります。 
 
 この記事では、次のことについて説明します。
 

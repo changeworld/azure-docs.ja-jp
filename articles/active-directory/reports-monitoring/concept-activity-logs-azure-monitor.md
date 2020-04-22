@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/22/2019
+ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46e29fff3308f35b16dbff2f9cead82abc222a5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231799"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261025"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor の Azure AD アクティビティ ログ
 
@@ -98,12 +98,13 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 
 たとえば、ユーザーが 100,000 人を超える大規模なテナントでは、通常は 1 秒で約 18 のイベントが発生します。これは、5 分間で 5,400 のイベントに相当します。 監査ログはイベントごとに約 2 KB なので、これは 10.8 MB のデータに相当します。 そのため、その 5 分の間隔で 43 のメッセージがイベント ハブに送信されます。 
 
-次の表は、イベント データの量に基づく、米国西部の基本的なイベント ハブの 1 か月のコストの見積もりを示します。 アプリケーションで予測されるデータ量の正確な見積りを作成するには、[Event Hubs の料金計算ツール](https://azure.microsoft.com/pricing/details/event-hubs/)を使用します。
+次の表は、米国西部の基本的なイベント ハブの 1 か月あたりの推定コストを示しています。これは、ユーザーのサインイン動作などのさまざまな要因によってテナントごとに異なる可能性があるイベント データの量によって変わります。アプリケーションで予測されるデータ量の正確な見積りを作成するには、[Event Hubs の料金計算ツール](https://azure.microsoft.com/pricing/details/event-hubs/)を使用します。
 
 | ログのカテゴリ | ユーザーの数 | 1 秒あたりのイベント数 | 5 分間隔あたりのイベント数 | 間隔あたりの量 | 間隔あたりのメッセージ数 | 1 か月あたりのメッセージ数 | 1 か月あたりのコスト (概算) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | Audit | 100,000 | 18 | 5,400 | 10.8 MB | 43 | 371,520 | 10.83 ドル |
 | Audit | 1,000 | 0.1 | 52 | 104 KB | 1 | 8,640 | 10.80 ドル |
+| サインイン | 100,000 | 18000 | 5,400,000 | 10.8 GB | 42188 | 364,504,320 | 23.9 ドル |  
 | サインイン | 1,000 | 178 | 53,400 | 106.8&nbsp;MB | 418 | 3,611,520 | 11.06 ドル |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Azure Monitor ログのコストに関する考慮事項
@@ -179,7 +180,7 @@ Azure Monitor ログの管理に関連するコストをレビューするには
 
 **Q:現時点ではどの SIEM ツールがサポートされてますか。** 
 
-**A**: 現在、Azure Monitor は [Splunk](tutorial-integrate-activity-logs-with-splunk.md)、QRadar、[Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory) でサポートされています。 コネクタのしくみの詳細については、「[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)」を参照してください。
+**A**: **A**: 現在、Azure Monitor は [Splunk](tutorial-integrate-activity-logs-with-splunk.md)、IBM QRadar、[Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)、[ArcSight](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight)、LogRhythm、および Logz.io でサポートされています。 コネクタのしくみの詳細については、「[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)」を参照してください。
 
 ---
 

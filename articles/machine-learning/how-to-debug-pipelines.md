@@ -1,7 +1,7 @@
 ---
-title: 機械学習パイプラインのデバッグとトラブルシューティング
+title: ML パイプラインのデバッグとトラブルシューティング
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning SDK for Python で機械学習パイプラインのデバッグとトラブルシューティングを行います。 パイプラインの開発における陥りやすい落とし穴と、リモートからの実行前および実行中にスクリプトをデバッグするためのヒントについて説明します。 Visual Studio Code を使用して、機械学習パイプラインを対話的にデバッグする方法について説明します。
+description: Python で Azure Machine Learning パイプラインをデバッグする パイプラインの開発における陥りやすい落とし穴と、リモートからの実行前および実行中にスクリプトをデバッグするためのヒントについて説明します。 Visual Studio Code を使用して、機械学習パイプラインを対話的にデバッグする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80388986"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257217"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機械学習パイプラインのデバッグとトラブルシューティング
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

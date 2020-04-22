@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: ad56041f853d030e3a286610fe4872bffecaee12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a64dee6da521764a38fc60bee06545f6a561c297
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444896"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257702"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>ラボ作成者が利用できる Marketplace イメージを指定する
 ラボ アカウント所有者は、ラボ作成者がラボ アカウントにラボを作成するために使用できる Marketplace イメージを指定できます。 
@@ -50,6 +50,19 @@ ms.locfileid: "77444896"
 無効になっているイメージを有効にするには、最後の列の **[...]** (省略記号) を選択し、 **[イメージを有効にする]** を選択します。 または、イメージ名の前にあるチェック ボックスをオンにして、ツール バーの **[選択したイメージを有効にする]** を選択します。 
 
 複数のイメージを同時に無効にするには、イメージ名の前にあるチェック ボックスをオンにして、ツール バーの **[選択したイメージを有効にする]** を選択します。 
+
+## <a name="enable-images-at-the-time-of-lab-creation"></a>ラボの作成時にイメージを有効にする
+ラボの作成時に、さらに多くのイメージを有効にすることができます。 
+
+1. **ラボ アカウント所有者**の資格情報を使用して、[Azure Lab Services Web サイト](https://labs.azure.com)にサインインします。
+2. 既定の仮想マシン イメージまたは下矢印を選択します。 
+3. **[Enable more image options]\(その他のイメージ オプションを有効にする\)** を選択します。 
+
+    ![[Enable more image options]\(その他のイメージ オプションを有効にする\)](../media/specify-marketplace-images/enable-more-images-menu.png)
+4. 前のセクションの手順に従って、選択したイメージを有効にします。 
+5. 前の手順で選択したイメージを表示するには、 **[新しいラボ]** ウィンドウを閉じてから再度開く必要があります。 
+
+
 
 ## <a name="next-steps"></a>次のステップ
 次の記事をご覧ください。

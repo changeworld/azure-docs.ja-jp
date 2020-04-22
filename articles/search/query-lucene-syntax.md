@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: d35c96657f48905f37c9ebe246d81ebb9545cf27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4c3330b23b8b724cdbf5d7e09eec8a8dd5b8cfa
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236903"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258985"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での Lucence クエリ構文
 
@@ -33,7 +33,7 @@ ms.locfileid: "79236903"
 > [!NOTE]
 > 完全な Lucene 構文は、[Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents) API の **search** パラメーターで渡されるクエリ式に使用されます。その API の [$filter](search-filters.md) パラメーターで使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 これらのさまざまな構文には、クエリの作成や文字列のエスケープなどを行うための独自の規則があります。
 
-## <a name="how-to-invoke-full-parsing"></a>完全な解析を呼び出す方法
+## <a name="invoke-full-parsing"></a>完全な解析の呼び出し
 
 `queryType` 検索パラメーターを設定して、使用するパーサーを指定します。 有効な値には `simple|full` が含まれます。`simple` が既定値で、`full` が Lucene の値です。 
 
@@ -66,7 +66,8 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 >  Azure Cognitive Search では、簡潔なキーワード検索に使用できる単純で堅牢なクエリ言語である、[単純なクエリ構文](query-simple-syntax.md)もサポートされます。  
 
 ##  <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> 構文の基礎  
- 次の構文の基礎は、Lucene 構文を使用するすべてのクエリに適用されます。  
+
+次の構文の基礎は、Lucene 構文を使用するすべてのクエリに適用されます。  
 
 ### <a name="operator-evaluation-in-context"></a>コンテキストでの演算子評価
 
@@ -80,52 +81,56 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 
 ### <a name="escaping-special-characters"></a>特殊文字のエスケープ
 
- 特殊文字を検索テキストの一部として使用するには、エスケープする必要があります。 特殊文字の前に円記号 (\\) 付けることでエスケープできます。 エスケープが必要な特殊文字としては、以下の文字があります。  
-`+ - && || ! ( ) { } [ ] ^ " ~ * ? : \ /`  
+検索文字列の一部として検索演算子を使用するには、円記号 (`\`) 1 つを前に付けて文字をエスケープします。 たとえば、`https://` のワイルドカード検索で、`://` がクエリ文字列の一部である場合、`search=https\:\/\/*` を指定します。 同様に、エスケープされた電話番号パターンは、`\+1 \(800\) 642\-7676` のようになります。
 
- たとえば、ワイルドカード文字をエスケープするには、\\\* を使用します。
+エスケープが必要な特殊文字には次の例があります。  
+`+ - & | ! ( ) { } [ ] ^ " ~ * ? : \ /`  
+
+> [!NOTE]  
+> エスケープすることでトークンが一緒に保持されますが、インデックスを作成するときの[字句解析](search-lucene-query-architecture.md#stage-2-lexical-analysis)で削除される場合があります。たとえば、標準の Lucene アナライザーでは、ハイフン、スペースなどの文字で単語が分割されます。 クエリ文字列で特殊文字が必要な場合は、それらをインデックスに保持するアナライザーが必要になることがあります。 選択肢には、ハイフンでつながれた単語を保持する Microsoft 自然[言語アナライザー](index-add-language-analyzers.md)や、より複雑なパターン用のカスタム アナライザーなどが含まれます。 詳細については、[部分的な語句、パターン、特殊文字](search-query-partial-matching.md)に関する記事を参照してください。
 
 ### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>URL での安全でない文字および予約文字のエンコード
 
- 安全でない文字および予約文字はすべて、URL でエンコードするようにしてください。 たとえば、'#' は、URL 内のフラグメント ID またはアンカー ID のため、安全でない文字です。 この文字を URL で使用する場合は、`%23` にエンコードする必要があります。 '&' と '=' は、予約文字の例です。これらの文字は、Azure Cognitive Search でパラメーターを区切り、値を指定します。 詳細については、「[RFC1738: Uniform Resource Locators (URL)](https://www.ietf.org/rfc/rfc1738.txt)」を参照してください。
+安全でない文字および予約文字はすべて、URL でエンコードするようにしてください。 たとえば、'#' は、URL 内のフラグメント ID またはアンカー ID のため、安全でない文字です。 この文字を URL で使用する場合は、`%23` にエンコードする必要があります。 '&' と '=' は、予約文字の例です。これらの文字は、Azure Cognitive Search でパラメーターを区切り、値を指定します。 詳細については、「[RFC1738: Uniform Resource Locators (URL)](https://www.ietf.org/rfc/rfc1738.txt)」を参照してください。
 
- 安全でない文字は ``" ` < > # % { } | \ ^ ~ [ ]`` です。 予約文字は `; / ? : @ = + &` です。
+安全でない文字は ``" ` < > # % { } | \ ^ ~ [ ]`` です。 予約文字は `; / ? : @ = + &` です。
 
-### <a name="precedence-operators-grouping-and-field-grouping"></a>優先順位の演算子: グループ化とフィールドのグループ化  
+###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a> クエリ サイズの上限
+
+ Azure Cognitive Search に送信できるクエリのサイズには制限があります。 具体的には、最大で 1024 句 (AND、OR、その他で区切られた式) を持つことができます。 クエリ内の個々の用語のサイズにも約 32 KB の制限があります。 アプリケーションがプログラムで検索クエリを生成する場合は、無制限のサイズのクエリが生成されないように設計することをお勧めします。  
+
+### <a name="precedence-operators-grouping"></a>優先順位の演算子 (グループ化)
+
  かっこを使用して、かっこで囲まれたステートメント内に演算子を含むサブクエリを作成できます。 たとえば、`motel+(wifi||luxury)` を指定すると、"motel" という用語と "wifi" または "luxury" (あるいはその両方) を含むドキュメントが検索されます。
 
 フィールドのグループ化は似ていますが、グループ化のスコープを 1 つのフィールドに設定します。 たとえば、`hotelAmenities:(gym+(wifi||pool))` を指定すると、"hotelAmenities" のフィールドで "gym" と "wifi"、または "gym" と "pool" が検索されます。  
 
-### <a name="searchmode-parameter-considerations"></a>SearchMode パラメーターに関する考慮事項  
- 「[Azure Cognitive Search での単純なクエリ構文](query-simple-syntax.md)」で説明されているように、クエリに対する `searchMode` の影響は、Lucene クエリ構文にも同様に適用されます。 つまり、`searchMode` を NOT 演算子と組み合わせて使用した場合、パラメーターの設定による影響が明確でなければ異常と思えるクエリ結果になることがあります。 既定値の `searchMode=any` を保持して、NOT 演算子を使用すると、演算は OR アクションとして計算されます。たとえば、"New York" NOT "Seattle" を指定すると、Seattle 以外のすべての都市が返されます。  
+##  <a name="boolean-search"></a><a name="bkmk_boolean"></a> ブール検索
 
-##  <a name="boolean-operators-and-or-not"></a><a name="bkmk_boolean"></a> ブール演算子 (AND、OR、NOT) 
  テキスト ブール演算子 (AND、OR、NOT) は、常に大文字で指定します。  
 
 ### <a name="or-operator-or-or-"></a>OR 演算子 `OR` または `||`
 
-OR 演算子は、縦棒、つまりパイプ文字です。 たとえば、`wifi || luxury` を指定すると、"wifi" または "luxury" (あるいはその両方) を含むドキュメントが検索されます。 OR は、既定の結合演算子のため、除外することもできます。たとえば、`wifi luxury` は `wifi || luxuery` と同等です。
+OR 演算子は、縦棒、つまりパイプ文字です。 たとえば、`wifi || luxury` を指定すると、"wifi" または "luxury" (あるいはその両方) を含むドキュメントが検索されます。 OR は、既定の結合演算子のため、除外することもできます。たとえば、`wifi luxury` は `wifi || luxury` と同等です。
 
 ### <a name="and-operator-and--or-"></a>AND 演算子 `AND`、`&&`、または `+`
 
 AND 演算子は、アンパサンドまたはプラス記号です。 たとえば、`wifi && luxury` と指定すると、"wifi" と "luxury" の両方を含むドキュメントが検索されます。 プラス記号 (+) は、必要な用語に使用されます。 たとえば、`+wifi +luxury` は、両方の用語が 1 つのドキュメントのフィールド内のどこかに表示されている必要があることを規定します。
 
-
 ### <a name="not-operator-not--or--"></a>NOT 演算子 `NOT`、`!`、または `-`
 
-NOT 演算子は、感嘆符またはマイナス記号です。 たとえば、`wifi !luxury` を指定すると、"wifi" という用語を含む、および/または"luxury" を含まないドキュメントが検索されます。 `searchMode` オプションは、+ 演算子または || 演算子が指定されていない場合、NOT 演算子を持つ用語で、クエリ内の他の用語との論理積または論理和をとるかどうかを制御します。 `searchMode` は、`any`(既定値) または `all` のどちらにも設定できることを思い出してください。
+NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を指定すると、`wifi` という用語を含む、および/または `luxury` を含まないドキュメントが検索されます。
 
-`searchMode=any` を使用すると、より多くの結果を含めることによりクエリの再現率が増加し、既定で - は "OR NOT" と解釈されます。 たとえば、`wifi -luxury` は、*wifi* という用語を含むドキュメント、または *luxury* という用語を含まないドキュメントのどちらにも一致します。
+クエリ要求の **searchMode** パラメーターは、NOT 演算子がついた用語を、クエリ内の他の用語と AND 演算するか OR 演算するかどうかを制御します (他の用語に `+` または `|` 演算子がないと仮定します)。 有効な値は、`any` または `all` です。
 
-`searchMode=all` を使用すると、より少ない結果を含めることによりクエリの精度が上がり、既定で - は "AND NOT" と解釈されます。 たとえば、`wifi -luxury` は、`wifi` という用語を含み、かつ `luxury` という用語を含まないドキュメントに一致します。 これはほぼ間違いなく、- 演算子にとってより直感的な動作です。 したがって、再現率ではなく精度で検索を最適化する場合、*そして*ユーザーが検索で `-` 演算子を頻繁に使用する場合は、`searchMode=any` よりも `searchMode=all` を選択することを検討してください。
+`searchMode=any` にすると、より多くの結果を含めることによりクエリの再現率が増加し、既定で `-` は "OR NOT" と解釈されます。 たとえば、`wifi -luxury` は、`wifi` という用語を含むドキュメント、または `luxury` という用語を含まないドキュメントのどちらにも一致します。
 
-##  <a name="query-size-limitations"></a><a name="bkmk_querysizelimits"></a> クエリ サイズの制限  
- Azure Cognitive Search に送信できるクエリのサイズには制限があります。 具体的には、最大で 1024 句 (AND、OR、その他で区切られた式) を持つことができます。 クエリ内の個々の用語のサイズにも約 32 KB の制限があります。 アプリケーションがプログラムで検索クエリを生成する場合は、無制限のサイズのクエリが生成されないように設計することをお勧めします。  
+`searchMode=all` にすると、より少ない結果を含めることによりクエリの精度が上がり、既定で - は "AND NOT" と解釈されます。 たとえば、`wifi -luxury` は、`wifi` という用語を含み、かつ "luxury" という用語を含まないドキュメントに一致します。 これはほぼ間違いなく、`-` 演算子にとってより直感的な動作です。 したがって、再現率ではなく精度で検索を最適化し、"*かつ*" ユーザーが検索で `-` 演算子を頻繁に使用する場合は、`searchMode=any` よりも `searchMode=all` を選択することを検討してください。
 
-##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> ワイルドカード クエリと正規表現クエリのスコアリング
- Azure Cognitive Search は、テキスト クエリで、頻度に基づいたスコアリング ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) を使用します。 ただし、用語のスコープが広くなる可能性があるワイルドカード クエリと正規表現クエリでは、出現頻度が低い用語の一致に対する優先度付けに偏りが発生するのを避けるために、頻度の係数は無視されます。 すべての一致は、ワイルドカード検索と正規表現検索で同等に扱われます。
+**searchMode** 設定を決定するときは、さまざまなアプリケーションでのクエリのユーザー操作パターンを検討してください。 情報を検索するユーザーは、より多くの組み込みのナビゲーション構造を持つ eコマース サイトとは対照的に、クエリに演算子を含める可能性が高くなります。
 
-##  <a name="fielded-search"></a><a name="bkmk_fields"></a> フィールド検索  
+##  <a name="fielded-search"></a><a name="bkmk_fields"></a> フィールド検索
+
 `fieldName:searchExpression` 構文を使用して、フィールド検索操作を定義できます。検索式は、単一の単語、単一の語句、またはかっこで囲まれた複雑な式が可能であり、必要に応じてブール演算子も使用できます 例として、次のようなものがあります。  
 
 - genre:jazz NOT history  
@@ -139,20 +144,22 @@ NOT 演算子は、感嘆符またはマイナス記号です。 たとえば、
 > [!NOTE]
 > 各フィールド検索式にはフィールド名が明示的に指定されるため、フィールド検索式を使用する際は `searchFields` パラメーターを使用する必要はありません。 ただし、いくつかの部分で特定のフィールドをスコープにし、他の部分は複数のフィールドに適用できるクエリを実行する場合は、`searchFields` パラメーターを引き続き使用できます。 たとえば、クエリ `search=genre:jazz NOT history&searchFields=description` は、`genre` フィールドの `jazz` のみと一致し、`description` フィールドの `NOT history` と一致します。 `fieldName:searchExpression` に指定されたフィールド名は常に `searchFields` パラメーターに優先するため、この例では `searchFields` パラメーターに `genre` を含める必要はありません。
 
-##  <a name="fuzzy-search"></a><a name="bkmk_fuzzy"></a> あいまい検索  
- あいまい検索では、似たような構造の言い回しの一致が検索されます。 [Lucene ドキュメント](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)によると、あいまい検索は [Damerau-Levenshtein Distance](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance) を基盤としています。 あいまい検索では、距離の条件を満たす最大 50 個の用語まで用語を展開できます。 
+##  <a name="fuzzy-search"></a><a name="bkmk_fuzzy"></a> あいまい検索
+
+あいまい検索を使用すると、2 つ以下の距離条件を満たす用語を最大 50 の用語まで拡張して、似た構造を持つ用語の一致を見つけることができます。 詳細については、[あいまい検索](search-query-fuzzy.md)に関するページを参照してください。
 
  あいまい検索を実行するには、1 つの単語の終わりにチルダ記号 "~" を使用し、編集距離を指定する任意のパラメーターである 0 から 2 (既定値) の値を指定します。 たとえば、"blue~" または "blue~1" を指定すると、"blue"、"blues"、および "glue" が返されます。
 
  あいまい検索を適用できるのは用語だけであり、語句には適用できませんが、複数の部分から成る名前または語句の各用語に個別にチルダを追加できます。 たとえば、"Unviersty~ of~ "Wshington~" は "University of Washington" と一致します。
  
+##  <a name="proximity-search"></a><a name="bkmk_proximity"></a> 近接検索
 
-##  <a name="proximity-search"></a><a name="bkmk_proximity"></a> 近接検索  
- 近接検索は、ある文書で互いに近くにある言葉を検索します。 言葉の終わりにチルダ記号 "~" を挿入し、近接境界となる語数を続けます。 たとえば、`"hotel airport"~5` を指定すると、ドキュメント内で互いに 5 語以内にある "hotel" と "airport" という用語が検索されます。  
+近接検索は、ある文書で互いに近くにある言葉を検索します。 言葉の終わりにチルダ記号 "~" を挿入し、近接境界となる語数を続けます。 たとえば、`"hotel airport"~5` を指定すると、ドキュメント内で互いに 5 語以内にある "hotel" と "airport" という用語が検索されます。  
 
 
-##  <a name="term-boosting"></a><a name="bkmk_termboost"></a> 用語ブースト  
- 用語ブーストでは、指定用語を含む文書に含まない文書より高い順位が設定されます (ブーストされます)。 これはスコアリング プロファイルとは違います。スコアリング プロファイルは、特定の用語ではなく、特定のフィールドをブーストします。  
+##  <a name="term-boosting"></a><a name="bkmk_termboost"></a> 用語ブースト
+
+用語ブーストでは、指定用語を含む文書に含まない文書より高い順位が設定されます (ブーストされます)。 これはスコアリング プロファイルとは違います。スコアリング プロファイルは、特定の用語ではなく、特定のフィールドをブーストします。  
 
 次の例はその違いを示しています。 特定のフィールドの一致をブーストするスコアリング プロファイルがあるとします。たとえば、[musicstoreindex の例](index-add-scoring-profiles.md#bkmk_ex)の *genre* です。 用語ブーストでは、特定の用語に他の用語より高い順位を与えます。 たとえば、`rock^2 electronic` を指定すると、genre フィールドに検索用語を含むドキュメントに、インデックスの他の検索可能フィールドより高い順位が与えられます。 さらに、用語のブースト値 (2) の結果、*rock* という検索用語を含むドキュメントには、*electronic* というもう 1 つの用語よりも高い順位が与えられます。  
 
@@ -161,19 +168,29 @@ NOT 演算子は、感嘆符またはマイナス記号です。 たとえば、
 ##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a> 正規表現検索  
  正規表現検索では、スラッシュ "/" の間のコンテンツに基づいて一致が検索されます。[RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html) クラスに詳細があります。  
 
- たとえば、"motel" または "hotel" を含むドキュメントを検索するには、`/[mh]otel/` を指定します。  正規表現検索では、単一の単語に対して照合が行われます。   
+ たとえば、"motel" または "hotel" を含むドキュメントを検索するには、`/[mh]otel/` を指定します。 正規表現検索では、単一の単語に対して照合が行われます。
+
+一部のツールと言語では、追加のエスケープ文字要件が適用されます。 JSON の場合、スラッシュを含む文字列は、バック スラッシュでエスケープされます。たとえば "microsoft.com/azure/" は、`search=/.*microsoft.com\/azure\/.*/` になります。この場合、正規の式を設定するのは `search=/.* <string-placeholder>.*/` で、`microsoft.com\/azure\/` はエスケープされたスラッシュを含む文字列です。
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a> ワイルドカード検索  
- 複数 (*) または単数 (?) の文字のワイルドカード検索で、一般に認識されている構文を使用できます。 Lucene Query Parser では、これらの文字を語句ではなく 1 つの用語に利用することにご注意ください。  
 
- たとえば、"note" のプレフィックスを持つ単語 ("notebook" や "notepad") を含むドキュメントを検索するには、"note*" と指定します。  
+複数 (*) または単数 (?) の文字のワイルドカード検索で、一般に認識されている構文を使用できます。 Lucene Query Parser では、これらの文字を語句ではなく 1 つの用語に利用することにご注意ください。
+
+プレフィックス検索では、アスタリスク (`*`) 文字も使用されます。 たとえば、`search=note*` のクエリ式では、"notebook" または "notepad" が返されます。 プレフィックス検索には、完全な Lucene 構文は必要ありません。 単純な構文によって、このシナリオはサポートされています。
+
+文字列の前に `*` または `?` が付くサフィックス検索では、完全な Lucene 構文と正規の式が必要です (* や ? の記号は、 検索の最初の文字には使用できません)。 たとえば "alphanumeric" という用語の場合、(`search=/.*numeric.*/`) のクエリ式で一致が検出されます。
 
 > [!NOTE]  
->  検索の最初の文字として * または ? を使用することはできません。  
->  ワイルドカード検索のクエリでは、テキスト分析は実行されません。 クエリ時、ワイルドカード クエリの用語は、検索インデックス内の分析済みの用語と比較されて、展開されます。
+> クエリの解析中には、プレフィックス、サフィックス、ワイルドカードとして定式化されたクエリ、または正規の式は、[語彙分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)をバイパスして、クエリ ツリーにそのまま渡されます。 クエリで指定した形式の文字列がインデックスに含まれている場合に限って、一致が検出されます。 部分一致やパターンをうまく検出するためには、ほとんどの場合、文字列の整合性を維持するインデックスの作成時に代替アナライザーが必要になります。 詳細については、「[Azure Cognitive Search クエリでの部分一致検索](search-query-partial-matching.md)」を参照してください。
 
-## <a name="see-also"></a>関連項目  
+##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> ワイルドカード クエリと正規表現クエリのスコアリング
 
+Azure Cognitive Search は、テキスト クエリで、頻度に基づいたスコアリング ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) を使用します。 ただし、用語のスコープが広くなる可能性があるワイルドカード クエリと正規表現クエリでは、出現頻度が低い用語の一致に対する優先度付けに偏りが発生するのを避けるために、頻度の係数は無視されます。 すべての一致は、ワイルドカード検索と正規表現検索で同等に扱われます。
+
+## <a name="see-also"></a>関連項目
+
++ [単純な検索のクエリ例](search-query-simple-examples.md)
++ [完全な Lucene 検索のクエリ例](search-query-lucene-examples.md)
 + [ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 + [フィルターと並べ替えの OData 式の構文](query-odata-filter-orderby-syntax.md)   
 + [Azure Cognitive Search でのシンプルなクエリ構文](query-simple-syntax.md)   

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/20/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: cc937589b2fc4f394b44cf6890a352d770751d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46c53c99c12ade986ab913bf013b652a931a4d22
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502023"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257744"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
 この記事では、クラスルーム ラボの作成および削除方法について説明します。 また、ラボ アカウントのすべてのクラスルーム ラボを表示する方法についても説明します。 
@@ -37,6 +37,8 @@ ms.locfileid: "79502023"
     1. ラボの**名前**を指定します。 
     2. クラスに必要な**仮想マシンのサイズ**を選択します。 使用可能なサイズの一覧については、「[VM サイズ](#vm-sizes)」のセクションを参照してください。 
     3. クラスルーム ラボで使用する**仮想マシン イメージ**を選択します。 Linux イメージを選択した場合は、リモート デスクトップ接続を有効にするためのオプションが表示されます。 詳細については、[Linux のリモート デスクトップ接続の有効化](how-to-enable-remote-desktop-linux.md)に関するページを参照してください。
+
+        ラボ アカウント所有者の資格情報を使用してサインインした場合は、ラボ用により多くのイメージを有効にするためのオプションが表示されます。 詳細については、「[ラボの作成時にイメージを有効にする](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation)」を参照してください。
     4. ページに表示される **1 時間あたりの合計料金**を確認します。 
     6. **[保存]** を選択します。
 
