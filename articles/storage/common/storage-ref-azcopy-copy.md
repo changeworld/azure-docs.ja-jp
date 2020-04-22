@@ -4,16 +4,16 @@ description: この記事では、azcopy copy コマンドに関する参照情�
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 431372b930269c3dfa6bdc6e8b2fe4d291a8162e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0325a71fb069f3d96f05d106afac1639fc38fe42
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933788"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253341"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -169,6 +169,8 @@ SAS トークンを使用して、すべての BLOB コンテナー、ディレ�
 
 ## <a name="options"></a>Options
 
+**--backup**                               アップロード向けに Windows の SeBackupPrivilege、またはダウンロード向けに SeRestorePrivilege を有効にし、AzCopy ですべてのファイルの読み取りを表示し、ファイル システムのアクセス許可に関係なく、あらゆるアクセス許可を復元できるようにします。 AzCopy を実行しているアカウントには、既にこれらのアクセス許可がなくてはなりません (たとえば、管理者権限を持っている、または「Backup Operators」グループのメンバーであるなど)。 このフラグは、アカウントに既に含まれている権限のアクティブ化のみを行います。
+
 **--blob-type** string                     コピー先の BLOB の種類を定義します。 これは、BLOB をアップロードする場合と、アカウント間でコピーする場合に使用されます (既定値は "Detect")。 有効な値としては、"Detect"、"BlockBlob"、"PageBlob"、および "AppendBlob" があります。 アカウント間でコピーする場合、値 "Detect" を使用すると、AzCopy はソース BLOB の種類を使用して、コピー先 BLOB の種類を判断します。 ファイルをアップロードするとき、"Detect" は、ファイル拡張子に基づいて、ファイルが VHD ファイルまたは VHDX ファイルであるかを判断します。 ファイルが VHD ファイルまたは VHDX ファイルの場合、AzCopy はそのファイルをページ BLOB として扱います。 (既定値は "Detect")
 
 **--block-blob-tier** 文字列               選択した[アクセス レベル](../blobs/storage-blob-storage-tiers.md)に直接、ブロック BLOB をアップロードします。 (既定値は "None")。 有効な値は "None"、"Hot"、"Cool"、"Archive" です。 "None" が渡されたか、レベルが渡されなかった場合、BLOB でストレージ アカウントのレベルが継承されます。
@@ -222,6 +224,12 @@ SAS トークンを使用して、すべての BLOB コンテナー、ディレ�
 **--page-blob-tier** string                この BLOB 層を使用して Azure Storage にページ BLOB をアップロードします。 (既定値は "None")
 
 **--preserve-last-modified-time**          コピー先がファイル システムの場合にのみ使用できます。
+
+**--preserve-smb-permissions** string      既定で false になっています。 認識されるリソース (Windows と Azure Files) 間で SMB ACL を保持します。 ダウンロードする場合は、`--backup`フラグを使用して、新しい所有者が AzCopy を実行しているユーザーにならないアクセス許可を復元する必要もあります。 ファイルのみのフィルターが指定されているのでない限り、このフラグは両方のファイルとフォルダーに適用されます (例: `include-pattern`)。
+
+**--preserve-smb-info** string            既定で false になっています。 SMB 対応リソース (Windows と Azure Files) 間の SMB プロパティ情報 (最終書き込み時刻、作成時刻、属性ビット) を保持します。 Azure Files によってサポートされる属性ビットのみが転送され、それ以外は無視されます。 ファイルのみのフィルターが指定されているのでない限り、このフラグは両方のファイルとフォルダーに適用されます (例: include-pattern)。 フォルダーに対して転送される情報はファイルの場合と同じですが、フォルダーに対して保持されない最終書き込み時刻を除きます。
+
+**--preserve-owner**                       データをダウンロードする際、および `--preserve-smb-permissions` を使用している場合にのみ影響があります。 true の場合 (既定)、「Owner and Group」ファイルはダウンロードで保持されます。 このフラグが false に設定されていると、`--preserve-smb-permissions` は引き続き ACL を保持しますが、「Owner and Group」は AzCopy を実行しているユーザーに基づいて作成されます。
 
 **--put-md5**                             各ファイルの MD5 ハッシュを作成し、ハッシュを宛先 BLOB またはファイルの Content-MD5 プロパティとして保存します。 (既定では、ハッシュは作成されません)。アップロード時にのみ使用できます。
 

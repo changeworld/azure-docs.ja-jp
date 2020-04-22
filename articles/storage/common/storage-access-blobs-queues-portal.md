@@ -6,26 +6,28 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 602be49ef0c60274f1cd016c4f8e870cf033ec7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e556e21238db5de7dddce13ea912dae30723fe8c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75866906"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383673"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Azure portal を使用した BLOB またはキュー データへのアクセス
 
 [Azure portal](https://portal.azure.com) を使用して BLOB またはキュー データにアクセスするときに、ポータルは Azure Storage に要求を公開せずに行います。 Azure Storage への要求は、Azure AD アカウントまたはストレージ アカウント アクセス キーのいずれかを使用して承認できます。 ポータルでは、どの方法を使用しているかを示し、適切なアクセス許可がある場合は、それら 2 つを切り替えることができます。  
 
+また、Azure portal で個々の BLOB アップロード操作を承認する方法を指定することもできます。 既定では、ユーザーが BLOB アップロード操作を承認するために既に使用している任意の方法がポータルによって使用されますが、BLOB をアップロードするときにこの設定を変更できます。
+
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>BLOB またはキューのデータにアクセスするために必要なアクセス許可
 
 Azure portal で BLOB またはキュー データへのアクセスを承認する方法に応じて、特定のアクセス許可が必要になります。 ほとんどの場合、これらのアクセス許可はロールベースのアクセス制御 (RBAC) を使用して提供されます。 RBAC の詳細については、「[ロールベースのアクセス制御 (RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
 
-### <a name="account-access-key"></a>アカウント アクセス キー
+### <a name="use-the-account-access-key"></a>アカウント アクセス キーを使用する
 
 BLOB およびキューのデータをアカウント アクセス キーでアクセスするには、RBAC アクション **Microsoft.Storage/storageAccounts/listkeys/action** を含む割り当てられた RBAC ロールが必要です。 この RBAC ロールは、組み込みロールまたはカスタム ロールのどちらでも構いません。 **Microsoft.Storage/storageAccounts/listkeys/action** をサポートする組み込みロールには、次が含まれます。
 
@@ -36,9 +38,9 @@ BLOB およびキューのデータをアカウント アクセス キーでア�
 Azure portal で BLOB またはキューのデータにアクセスしようとすると、ポータルはまずユーザーが **Microsoft.Storage/storageAccounts/listkeys/action** で割り当てられているロールがあるかどうかを確認します。 このアクションを持つロールが割り当てられている場合、ポータルは BLOB およびキューのデータにアクセスするためにアカウント キーを使用します。 このアクションを持つロールが割り当てられていない場合、ポータルは、Azure AD アカウントを使用してデータへのアクセスを試みます。
 
 > [!NOTE]
-> 従来のサブスクリプション管理者ロールであるサービス管理者と共同管理者には、Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールと同等のものが含まれています。 **所有者**ロールには、**Microsoft.Storage/storageAccounts/listkeys/action** を含むすべてのアクションが含まれているので、これらの管理者ロールのいずれかを持つユーザーは、アカウント キーを持つ BLOB およびキューのデータにもアクセスできます。 詳細については、「[従来のサブスクリプション管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)」を参照してください。
+> 従来のサブスクリプション管理者ロールであるサービス管理者と共同管理者には、Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールと同等のものが含まれています。 **所有者**ロールには、**Microsoft.Storage/storageAccounts/listkeys/action** を含むすべてのアクションが含まれているので、これらの管理者ロールのいずれかを持つユーザーは、アカウント キーを持つ BLOB およびキューのデータにもアクセスできます。 詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)」を参照してください。
 
-### <a name="azure-ad-account"></a>Azure AD アカウント
+### <a name="use-your-azure-ad-account"></a>自分の Azure AD アカウントを使用する
 
 Azure AD アカウントを使用して、Azure portal から BLOB またはキューのデータにアクセスするには、次のステートメントの両方が真である必要があります。
 
@@ -54,7 +56,7 @@ BLOB またはキュー データへのアクセスをサポートする組み�
 - [ストレージ BLOB データ閲覧者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader):blob の読み取り専用アクセス許可。
 - [ストレージ キュー データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor):キューに対する読み取り/書き込み/削除アクセス許可。
 - [ストレージ キュー データ閲覧者](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader):キューに対する読み取り専用アクセス許可。
-    
+
 カスタム ロールは、組み込みロールによって提供される同じアクセス許可のさまざまな組み合わせをサポートできます。 カスタム RBAC ロールを作成する方法の詳細については、「[Azure リソースのカスタム ロール](../../role-based-access-control/custom-roles.md)」と「[Understand role definitions for Azure resources](../../role-based-access-control/role-definitions.md)」(Azure リソースのロール定義を理解する) を参照してください。
 
 従来のサブスクリプション管理者ロールでキューを一覧表示することはサポートされていません。 キューを一覧表示するには、ユーザーには Azure Resource Manager **リーダー** ロール、**ストレージ キュー データ閲覧者**ロール、または**ストレージ キュー データ共同作成者**ロールが割り当てられている必要があります。
@@ -74,7 +76,7 @@ BLOB またはキュー データへのアクセスをサポートする組み�
 
 このセクションの例では、コンテナーとその BLOB へのアクセスを示していますが、キューおよびそのメッセージにアクセスしたりキューを一覧表示したりするときに、ポータルには同じメッセージが表示されます。
 
-### <a name="account-access-key"></a>アカウント アクセス キー
+### <a name="authenticate-with-the-account-access-key"></a>アカウント アクセス キーを使用して認証を行う
 
 アカウント アクセス キーを使用して認証を行う場合、ポータルには認証方法として**アクセス キー**が指定されていることが次のように示されます。
 
@@ -86,7 +88,7 @@ Azure AD アカウントの使用に切り替えるには、図内で強調表�
 
 BLOB は Azure AD アカウントにそれらを表示するアクセス許可がない場合には表示されないことに注意してください。 認証に再度アクセス キーを使用するには、 **[Switch to access key]\(アクセス キーへの切り替え\)** リンクをクリックします。
 
-### <a name="azure-ad-account"></a>Azure AD アカウント
+### <a name="authenticate-with-your-azure-ad-account"></a>Azure AD アカウントを使用して認証を行う
 
 Azure AD アカウントを使用して認証を行う場合は、ポータルに認証方法として **Azure AD ユーザー アカウント**が指定されていることが次のように示されます。
 
@@ -97,6 +99,19 @@ Azure AD アカウントを使用して認証を行う場合は、ポータル�
 ![アカウント キーへのアクセスがない場合に表示されるエラー](media/storage-access-blobs-queues-portal/auth-error-access-key.png)
 
 アカウント キーへのアクセスがない場合は、BLOB は一覧表示されないことに注意してください。 認証に再度 Azure AD アカウントを使用するには、 **[Switch to Azure AD User Account]\(Azure AD ユーザー アカウントへの切り替え\)** リンクをクリックします。
+
+## <a name="specify-how-to-authorize-a-blob-upload-operation"></a>BLOB アップロード操作を承認する方法を指定する
+
+ユーザーは、Azure portal から BLOB をアップロードするときに、その操作の認証と承認を、アカウント アクセス キーまたは Azure AD の資格情報のどちらで行うかを指定できます。 既定では、「[現在の認証方法の判別](#determine-the-current-authentication-method)」で示されているように、現在の認証方法がポータルによって使用されます。
+
+BLOB アップロード操作を承認する方法を指定するには、次の手順のようにします。
+
+1. Azure portal で、BLOB をアップロードするコンテナーに移動します。
+1. **[アップロード]** ボタンを選択します。
+1. **[詳細]** セクションを展開して、BLOB の詳細プロパティを表示します。
+1. 次の図に示すように、 **[認証の種類]** フィールドで、Azure AD アカウントとアカウント アクセス キーのどちらを使用してアップロード操作を承認するかを指定します。
+
+    :::image type="content" source="media/storage-access-blobs-queues-portal/auth-blob-upload.png" alt-text="BLOB アップロードでの承認方法を変更する方法を示すスクリーンショット":::
 
 ## <a name="next-steps"></a>次のステップ
 

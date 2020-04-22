@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79233523"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390218"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 仮想ネットワーク アーキテクチャ
 
@@ -22,7 +22,7 @@ ms.locfileid: "79233523"
 
 Azure HDInsight クラスターには、さまざまな種類の仮想マシン、つまりノードがあります。 それぞれのノードの種類が、システムの運用において役割を果たしています。 次の表は、これらのノードの種類とクラスターでのそれぞれの役割をまとめたものです。
 
-| 種類 | 説明 |
+| Type | 説明 |
 | --- | --- |
 | ヘッド ノード |  Apache Storm を除くすべてのクラスターの種類で、ヘッド ノードは、分散アプリケーションの実行を管理するプロセスをホストします。 ヘッド ノードはまた、SSH 接続して、複数のクラスター リソースで実行するように調整されるアプリケーションを実行できるノードでもあります。 ヘッド ノードの数は、すべてのクラスターの種類で 2 台に固定されています。 |
 | ZooKeeper ノード | Zookeeper は、データ処理を実行しているノード間でタスクを調整します。 また、ヘッド ノードのリーダー選定を行って、どのノードが特定のマスター サービスを実行しているかを追跡します。 ZooKeeper ノードの数は、3 台に固定されています。 |
@@ -30,11 +30,11 @@ Azure HDInsight クラスターには、さまざまな種類の仮想マシン�
 | R Server エッジ ノード | R Server エッジ ノードは、SSH 接続して、クラスター リソース全体で実行するように調整されるアプリケーションを実行できるノードを表します。 エッジ ノードは、クラスター内のデータ分析には参加しません。 このノードは R Studio Server もホストしているため、ブラウザーを使用して R アプリケーションを実行することができます。 |
 | リージョン ノード | HBase のクラスターの種類では、リージョン ノード (データ ノードとも呼ばれる) はリージョン サーバーを実行します。 リージョン サーバーは、HBase によって管理されるデータの一部を提供および管理します。 リージョン ノードをクラスターに追加したりクラスターから削除したりすることで、コンピューティング機能をスケーリングしてコストを管理できます。|
 | Nimbus ノード | Storm のクラスターの種類では、Nimbus ノードは、ヘッド ノードと同様の機能を提供します。 Nimbus ノードは、Storm トポロジの実行を調整する Zookeeper を介してクラスター内の他のノードにタスクを割り当てます。 |
-| スーパーバイザー ノード | Storm のクラスターの種類では、スーパーバイザー ノードは、Nimbus ノードによって提供された命令を実行して、必要な処理を行います。 |
+| スーパーバイザー ノード | Storm のクラスターの種類のスーパーバイザー ノードでは、Nimbus ノードによって提供された命令を実行して処理が行われます。 |
 
 ## <a name="resource-naming-conventions"></a>リソースの名前付け規則
 
-クラスター内のノードをアドレスを指定するときは、完全修飾ドメイン名 (FQDN) を使用してください。 [Ambari API](hdinsight-hadoop-manage-ambari-rest-api.md) を使用すると、クラスター内のさまざまなノードの種類の FQDN を取得できます。 
+クラスター内のノードをアドレスを指定するときは、完全修飾ドメイン名 (FQDN) を使用します。 [Ambari API](hdinsight-hadoop-manage-ambari-rest-api.md) を使用すると、クラスター内のさまざまなノードの種類の FQDN を取得できます。
 
 これらの FQDN の形式は、`<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net` のようになります。
 
@@ -48,7 +48,7 @@ Azure HDInsight クラスターには、さまざまな種類の仮想マシン�
 
 ![Azure のカスタム VNET に作成された HDInsight のエンティティの図](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
 
-HDInsight が Azure Virtual Network にデプロイされるときに存在する既定のリソースには、前の表で述べたクラスター ノードの種類、および仮想ネットワークと外部のネットワークとの間の通信をサポートするネットワーク デバイスが含まれます。
+Azure Virtual Network の既定のリソースには、前の表で説明したクラスター ノードの種類が含まれています。 また、仮想ネットワークと外部のネットワークの間の通信をサポートするネットワーク デバイスが含まれます。
 
 次の表は、HDInsight をカスタムの Azure Virtual Network にデプロイするときに作成される 9 台のクラスター ノードをまとめたものです。
 
@@ -73,7 +73,7 @@ HDInsight クラスターには次の 3 つの方法でアクセスできます�
 
 - 仮想ネットワークの外の HTTP エンドポイント `CLUSTERNAME.azurehdinsight.net`。
 - ヘッド ノードに直接接続するための SSH エンドポイント `CLUSTERNAME-ssh.azurehdinsight.net`。
-- 仮想ネットワーク内の HTTP エンドポイント `CLUSTERNAME-int.azurehdinsight.net`。 この URL に含まれている "-int" に注目してください。 このエンドポイントは、その仮想ネットワーク内のプライベート IP に解決され、パブリック インターネットからはアクセスできません。
+- 仮想ネットワーク内の HTTP エンドポイント `CLUSTERNAME-int.azurehdinsight.net`。 この URL に含まれている "`-int`" に注目してください。 このエンドポイントは、その仮想ネットワーク内のプライベート IP に解決され、パブリック インターネットからはアクセスできません。
 
 これら 3 つのエンドポイントにはそれぞれロード バランサーが割り当てられています。
 

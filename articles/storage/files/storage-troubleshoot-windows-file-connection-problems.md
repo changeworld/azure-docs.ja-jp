@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 17ecc80fee3b024c334b8d36533663f1f3cebe4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4e1ef4fbc3ade38b55fc06f8e4e9a119938581b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136907"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383901"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
@@ -50,7 +50,7 @@ Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号
 
 ### <a name="solution-for-cause-3"></a>原因 3 の解決策
 
-共有レベルのアクセス許可を更新する方法については、「[ID にアクセス許可を割り当てる](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#assign-access-permissions-to-an-identity)」を参照してください。
+共有レベルのアクセス許可を更新する方法については、「[ID にアクセス許可を割り当てる](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#2-assign-access-permissions-to-an-identity)」を参照してください。
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>Azure ファイル共有をマウントまたはマウント解除するときに、エラー 53、エラー 67、またはエラー 87 が発生する
@@ -324,6 +324,30 @@ net use コマンドは、スラッシュ (/) をコマンド ライン オプ�
 現時点では、次の規則に該当する新しいドメイン DNS 名を使用して、AAD DS を再デプロイすることを検討してください。
 - 名前の先頭を数字にすることはできない。
 - 名前の長さを 3 から 63 文字にする必要がある。
+
+## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>AD 資格情報を使用して Azure Files をマウントできない 
+
+### <a name="self-diagnostics-steps"></a>自己診断の手順
+最初に、[Azure Files AD 認証を有効にする](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)ための 4 つのステップをすべて実行していることを確認します。
+
+次に、[ストレージ アカウント キーを使用して Azure ファイル共有をマウント](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)してみます。 マウントできない場合は、[AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) をダウンロードして、クライアントの実行環境を検証し、自己修正に関する規範的なガイダンスが提供される、Azure Files のアクセス エラーの原因となる互換性のないクライアント構成を検出し、診断トレースを収集します。
+
+その後、Debug-AzStorageAccountAuth コマンドレットを実行し、ログオンした AD ユーザーで AD の構成に対する一連の基本的なチェックを実行します。 このコマンドレットは、[AzFilesHybrid バージョン 0.1.2 以降](https://github.com/Azure-Samples/azure-files-samples/releases)でサポートされています。 このコマンドレットは、対象のストレージ アカウントに対する所有者アクセス許可を持っている AD ユーザーで実行する必要があります。  
+```PowerShell
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
+```
+コマンドレットでは、以下のチェックが順番に実行されて、障害に関するガイダンスが提供されます。
+1. CheckPort445Connectivity: SMB 接続に対してポート 445 が開かれていることがチェックされます
+2. CheckDomainJoined: クライアント コンピューターが AD にドメイン参加していることが検証されます
+3. CheckADObject: ログオンしているユーザーに対し、ストレージ アカウントが関連付けられた有効な表現が AD ドメイン内にあることが確認されます
+4. CheckGetKerberosTicket: ストレージ アカウントに接続するための Kerberos チケットの取得が試みられます 
+5. CheckADObjectPasswordIsCorrect: ストレージ アカウントを表す AD ID に対して構成されているパスワードが、ストレージ アカウントの kerb キーのパスワードと一致していることが確認されます
+6. CheckSidHasAadUser: ログオンしている AD ユーザーが Azure AD と同期されていることが確認されます
+
+よりよいトラブルシューティングのガイダンスが提供されるよう、この診断コマンドレットの拡張作業が行われています。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ支援が必要な場合は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

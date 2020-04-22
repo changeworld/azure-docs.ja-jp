@@ -4,16 +4,16 @@ description: テスト証明書を作成し、それらを Azure IoT Edge デバ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/26/2020
+ms.date: 04/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5afb9b7a6ba1ffb99df064c9f92780dc820b2e8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 364846f6cef196f6cefa7872af48f262b387db4f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535988"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393814"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する
 
@@ -247,8 +247,9 @@ New-CACertsEdgeDeviceIdentity "<name>"
 
 このコマンドに渡す名前が、IoT Hub の IoT Edge デバイス用のデバイス ID になります。
 
-新しいデバイス ID コマンドが、複数の証明書とキーファイルを作成します。ここには、DPS で個別登録を作成して IoT Edge ランタイムをインストールする際に使用する2つが含まれます。
+新しいデバイス ID コマンドでは、複数の証明書とキー ファイルが作成されます。それには、DPS で個別登録を作成して IoT Edge ランタイムをインストールするときに使用する 3 つが含まれます。
 
+* `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
 
@@ -262,8 +263,9 @@ New-CACertsEdgeDeviceIdentity "<name>"
 
 このコマンドに渡す名前が、IoT Hub の IoT Edge デバイス用のデバイス ID になります。
 
-スクリプトが、複数の証明書とキーファイルを作成します。ここには、DPS で個別登録を作成して IoT Edge ランタイムをインストールする際に使用する2つが含まれます。
+スクリプトでは、複数の証明書とキー ファイルが作成されます。それには、DPS で個別登録を作成して IoT Edge ランタイムをインストールするときに使用する 2 つが含まれます。
 
+* `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>/private/iot-edge-device-identity-<name>.key.pem`
 

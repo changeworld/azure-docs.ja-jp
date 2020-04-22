@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の Azure Resource Manager テンプレート
 description: Azure Resource Manager テンプレートを使用して、Azure Cosmos DB を作成および構成します。
-author: TheovanKraay
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.author: thvankra
-ms.openlocfilehash: 7b08ca98f25b079d831033b9393effd4ee4b65e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.author: mjbrown
+ms.openlocfilehash: 1c4f1a1920d98052231eaa3a7d5c0454441c88ee
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73961855"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390876"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB の Azure Resource Manager テンプレート
 
@@ -23,6 +23,7 @@ ms.locfileid: "73961855"
 |---|---|
 |[Azure Cosmos アカウント、データベース、コンテナーを作成する](manage-sql-with-resource-manager.md#create-resource) | このテンプレートでは、共有データベースのスループットを使用する 2 つのコンテナーと専用スループットを使用する 1 つのコンテナーのある 2 つのリージョンに、SQL (Core) API アカウントを作成します。 スループットは、スループットのプロパティ値が更新されたテンプレートを再送信することで更新できます。 |
 |[ストアド プロシージャ、トリガー、および UDF を使用して Azure Cosmos アカウント、データベース、およびコンテナーを作成する](manage-sql-with-resource-manager.md#create-sproc) | このテンプレートは、コンテナーのストアド プロシージャ、トリガー、および UDF を使用して、2 つのリージョンに SQL (Core) API アカウントを作成します。 |
+|[既存の Azure Cosmos アカウントに対するプライベート エンドポイントを作成する](how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-a-resource-manager-template) |  このテンプレートは、既存の仮想ネットワークにある既存の Azure Cosmos SQL API アカウントのプライベート エンドポイントを作成します。 |
 
 ## <a name="mongodb-api"></a>MongoDB API
 

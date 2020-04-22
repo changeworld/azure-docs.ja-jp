@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 08/06/2019
-ms.openlocfilehash: 8139ed8f4f4799a963a051eed96dd87c4ac38aec
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/09/2020
+ms.openlocfilehash: 3252ecb030234e4c5543c07dfb4fc702f850a73e
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981428"
+ms.locfileid: "80998985"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL データベースの管理およびスケーリング
 
@@ -110,9 +110,9 @@ Single Database のコンピューティング サイズを使用した場合と
 - プール内のすべてのデータベースに使用される最大リソース数 (選択したリソース モデルに応じて、最大 DTU または最大仮想コアのいずれか)。
 - プール内のすべてのデータベースに使用される記憶域の最大バイト数。
 
-各リソース モデルで使用可能なサービス レベルについては、「[DTU-based purchasing model](sql-database-service-tiers-dtu.md)」(DTU ベースの購入モデル) または「[vCore-based purchasing model (preview)](sql-database-service-tiers-vcore.md)」(仮想コアベースの購入モデル) をご覧ください。
+各リソース モデルで使用可能なサービス レベルと制限については、「[DTU-based purchasing model](sql-database-service-tiers-dtu.md)」(DTU ベースの購入モデル) または「[vCore-based purchasing model (preview)](sql-database-service-tiers-vcore.md)」(仮想コアベースの購入モデル) をご覧ください。
 
-ツールを使用できない場合、プールのコスト効果が Single Database よりも高いかどうかを確認するには、次の手順が役立ちます。
+プールのコスト効果が単一データベースよりも高いかどうかを確認するには、次の手順が役立ちます。
 
 1. プールに必要な eDTU または vCore は、次のように見積もります。
 
@@ -126,6 +126,10 @@ Single Database のコンピューティング サイズを使用した場合と
 3. DTU ベースの購入モデルの場合、手順 1 と手順 2 の eDTU の見積もりのうち、大きい方を使用します。 仮想コアベースの購入モデルの場合、手順 1 の vCore の見積もりを使用します。
 4. 「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」ページを参照し、手順 3 の見積もりを超える最小のプール サイズを探します。
 5. 手順 5. のプールの価格と、Single Database の適切なコンピューティング サイズを使用した場合の価格を比較します。
+
+> [!IMPORTANT]
+> プール内のデータベースの数がサポートされている最大数に近づく場合は、[高密度エラスティック プールでのリソース管理](sql-database-elastic-pool-resource-management.md)を検討してください。
+> 
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>エラスティック プールでのその他の SQL Database 機能の使用
 
@@ -218,7 +222,7 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 
 - [Daxko/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
-   Daxko/CSI は、Azure SQL Database とエラスティック プールを使用して、開発サイクルを迅速化し、顧客サービスとパフォーマンスを強化しています。   
+   Daxko/CSI は、Azure SQL Database とエラスティック プールを使用して、開発サイクルを迅速化し、顧客サービスとパフォーマンスを強化しています。    
 
 ## <a name="next-steps"></a>次のステップ
 

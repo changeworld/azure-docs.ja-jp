@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/24/2020
-ms.openlocfilehash: 4265f6050b237cb40afeddfc228ade9be06be039
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.date: 04/14/2020
+ms.openlocfilehash: 098aeaa06a26c57744402722aa3eacc51ea85fb7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396765"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382872"
 ---
 # <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>Azure Monitor での Azure アクティビティ ログの収集と分析
 [Azure アクティビティ ログ](platform-logs-overview.md)は、Azure で発生したサブスクリプションレベルのイベントの分析情報を提供する[プラットフォーム ログ](platform-logs-overview.md)です。 Azure portal でアクティビティ ログを表示できますが、Log Analytics ワークスペースに送信して Azure Monitor の追加機能を有効にするように構成する必要があります。 この記事では、この構成を実行する方法と、アクティビティ ログを Azure Storage およびイベント ハブに送信する方法について説明します。
@@ -25,7 +25,8 @@ Log Analytics ワークスペースでアクティビティ ログを接続す�
 - アクティビティ ログのエントリを 90 日を超えて保存します。
 - 複数の Azure サブスクリプションおよびテナントのログ エントリを 1 つの場所に統合して、まとめて分析できるようにします。
 
-
+> [!IMPORTANT]
+> テナント間でログを収集するには [Azure Lighthouse](/azure/lighthouse) が必要です。
 
 ## <a name="collecting-activity-log"></a>アクティビティ ログの収集
 アクティビティログは、[Azure portal で表示する](activity-log-view.md)ために自動的に収集されます。 これを Log Analytics ワークスペースで収集したり、Azure Storage またはイベント ハブに送信したりするには、[診断設定](diagnostic-settings.md)を作成します。 これは、リソース ログによって使用される同じ方法で、すべての[プラットフォーム ログ](platform-logs-overview.md)で一貫させます。  

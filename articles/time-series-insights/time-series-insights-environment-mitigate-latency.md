@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 245a0b18187ff1c1b226e94b03374f2c071e51c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314829"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263388"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights で待機時間を削減するために調整を監視して緩和する
 
@@ -30,7 +30,7 @@ ms.locfileid: "76314829"
 - 割り当てられた受信レートを超えるかもしれない古いデータを含むイベント ソースを追加した (Time Series Insights はキャッチアップする必要があります)。
 - 環境にイベント ソースを追加した結果、追加イベントによるスパイクが発生した (環境の容量を超えた可能性があります)。
 - 大量の履歴イベントをイベント ソースにプッシュした結果、ラグが発生した (Time Series Insights はキャッチアップする必要があります)。
-- 参照データをテレメトリと結合した結果、イベントのサイズが大きくなった。 調整の観点から、パケット サイズが 32 KB のイングレス データ パケットは、それぞれ 1 KB のサイズの 32 個のイベントとして扱われます。 イベントの最大許容サイズは 32 KB です。32 KB を超えるデータ パケットは切り捨てられます。
+- 参照データをテレメトリと結合した結果、イベントのサイズが大きくなった。 パケットの最大許容サイズは 32 KB です。32 KB を超えるデータ パケットは切り詰められます。
 
 ## <a name="video"></a>ビデオ
 
@@ -66,7 +66,7 @@ ms.locfileid: "76314829"
    |**Ingress Received Message Time Lag (受信メッセージの受信のタイム ラグ)**    |  メッセージがイベント ソースでエンキューされた時刻とそれがイングレスで処理された時刻の間の差 (秒単位)。      |
    |**Ingress Received Message Count Lag (受信メッセージの受信のカウント ラグ)**    |  イベント ソース パーティションで待ち行列の最後に入っているメッセージのシーケンス番号とイングレスで処理されているメッセージのシーケンス番号の間の差。      |
 
-   **[完了]** を選択します。
+   **[Done]** を選択します。
 
 1. 目的のシグナル ロジックを構成したら、選択したアラート規則を目視で確認します。
 

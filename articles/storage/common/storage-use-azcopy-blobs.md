@@ -4,20 +4,23 @@ description: この記事には、コンテナーの作成、ファイルのコ�
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73685f124f93bb541f33b3b70727d90ce22b3cdd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933584"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263439"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy と Blob Storage でデータを転送する
 
 AzCopy は、ストレージ アカウント間のデータ コピーに利用できるコマンドライン ユーティリティです。 この記事には、Blob Storage で使用するサンプル コマンドが含まれています。
+
+> [!TIP]
+> この記事の例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
 ## <a name="get-started"></a>はじめに
 
@@ -31,9 +34,6 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 > (例: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`)。
 
 ## <a name="create-a-container"></a>コンテナーを作成する
-
-> [!TIP]
-> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
 [azcopy make](storage-ref-azcopy-make.md) コマンドを使用し、コンテナーを作成できます。 このセクションの例では、`mycontainer` という名前のコンテナーが作成されます。
 
@@ -57,10 +57,16 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 > * ディレクトリの内容をアップロードする 
 > * 特定のファイルをアップロードする
 
-詳細なリファレンス ドキュメントについては、「[azcopy copy](storage-ref-azcopy-copy.md)」を参照してください。
-
 > [!TIP]
-> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
+> オプションのフラグを使用して、アップロード操作を調整できます。 以下にいくつか例を示します。
+>
+> |シナリオ|フラグ|
+> |---|---|
+> |追加 BLOB またはページ BLOB としてファイルをアップロードします。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |特定のアクセス層 (アーカイブ層など) にアップロードします。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
+> |自動的にファイルを圧縮解除します。|**--decompress**=\[gzip\|deflate\]|
+> 
+> 完全な一覧については、[オプション](storage-ref-azcopy-copy.md#options)を参照してください。
 
 ### <a name="upload-a-file"></a>ファイルをアップロードする
 
@@ -71,10 +77,6 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 | **例** (階層型名前空間) | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
 ファイル パスまたはファイル名の任意の場所で、ワイルドカード記号 (*) を使用してファイルをアップロードすることもできます。 例: `'C:\myDirectory\*.txt'`、または `C:\my*\*.txt`。
-
-> [!NOTE]
-> 既定では、AzCopy はデータをブロック BLOB としてアップロードします。 追加 BLOB またはページ BLOB としてファイルをアップロードするには、`--blob-type=[BlockBlob|PageBlob|AppendBlob]` フラグを使用します。
-> 既定では、AzCopy はデータをアップロードし、アカウント アクセス レベルを継承します。 ファイルを特定の[アクセス レベル](../blobs/storage-blob-storage-tiers.md)にアップロードするには、フラグ `--block-blob-tier=[Hot|Cool|Archive]` を使用します。
 
 ### <a name="upload-a-directory"></a>ディレクトリをアップロードする
 
@@ -152,13 +154,19 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 > * ディレクトリの内容をダウンロードする
 > * 特定のファイルをダウンロードする
 
+> [!TIP]
+> オプションのフラグを使用して、ダウンロード操作を調整できます。 以下にいくつか例を示します。
+>
+> |シナリオ|フラグ|
+> |---|---|
+> |自動的にファイルを圧縮解除します。|**--decompress**=\[gzip\|deflate\]|
+> |コピーに関連するログ エントリの詳細レベルを指定します。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
+> |コピー先で競合するファイルと BLOB を上書きするかどうか、どのように上書きするのかを指定します。|**--overwrite**=\[true\|false\|ifSourceNewer\|prompt\]|
+> 
+> 完全な一覧については、[オプション](storage-ref-azcopy-copy.md#options)を参照してください。
+
 > [!NOTE]
 > BLOB の `Content-md5` プロパティ値にハッシュが含まれる場合、AzCopy では、ダウンロードするデータの MD5 ハッシュが計算され、BLOB の `Content-md5` プロパティに格納されている MD5 ハッシュが計算されたハッシュに一致するかどうかが検証されます。 これらの値が一致しない場合、`--check-md5=NoCheck` または `--check-md5=LogOnly` をコピー コマンドに追加してこの動作をオーバーライドしない限り、ダウンロードは失敗します。
-
-詳細なリファレンス ドキュメントについては、「[azcopy copy](storage-ref-azcopy-copy.md)」を参照してください。
-
-> [!TIP]
-> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
 ### <a name="download-a-file"></a>ファイルをダウンロードする
 
@@ -245,12 +253,18 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 > * 別のストレージ アカウントにコンテナーをコピーする
 > * すべてのコンテナー、ディレクトリ、ファイルを別のストレージ アカウントにコピーする
 
-詳細なリファレンス ドキュメントについては、「[azcopy copy](storage-ref-azcopy-copy.md)」を参照してください。
+これらの例は、階層型名前空間があるアカウントでも機能します。 [Data Lake Storage のマルチプロトコル アクセス](../blobs/data-lake-storage-multi-protocol-access.md)では、これらのアカウントで同じ URL 構文 (`blob.core.windows.net`) を使用できます。
 
 > [!TIP]
-> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
-
- これらの例は、階層型名前空間があるアカウントでも機能します。 [Data Lake Storage のマルチプロトコル アクセス](../blobs/data-lake-storage-multi-protocol-access.md)では、これらのアカウントで同じ URL 構文 (`blob.core.windows.net`) を使用できます。 
+> オプションのフラグを使用して、コピー操作を調整できます。 以下にいくつか例を示します。
+>
+> |シナリオ|フラグ|
+> |---|---|
+> |追加 BLOB またはページ BLOB としてファイルをコピーします。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |特定のアクセス層 (アーカイブ層など) にコピーします。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
+> |自動的にファイルを圧縮解除します。|**--decompress**=\[gzip\|deflate\]|
+> 
+> 完全な一覧については、[オプション](storage-ref-azcopy-copy.md#options)を参照してください。
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>別のストレージ アカウントに BLOB をコピーする
 
@@ -306,10 +320,16 @@ AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageser
 > [!NOTE]
 > 誤削除を防ぐために、`--delete-destination=prompt|true` フラグを使用する前に[論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)機能を有効にしてください。
 
-詳細なリファレンス ドキュメントについては、「[azcopy sync](storage-ref-azcopy-sync.md)」を参照してください。
-
 > [!TIP]
-> このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
+> オプションのフラグを使用して、同期操作を調整できます。 以下にいくつか例を示します。
+>
+> |シナリオ|フラグ|
+> |---|---|
+> |ダウンロードの際に MD5 ハッシュを検証する厳密さを指定します。|**--check-md5**=\[NoCheck\|LogOnly\|FailIfDifferent\|FailIfDifferentOrMissing\]|
+> |パターンに基づいてファイルを除外します。|**--exclude-path**|
+> |同期に関連するログ エントリの詳細レベルを指定します。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
+> 
+> 完全な一覧については、[オプション](storage-ref-azcopy-sync.md#options)を参照してください。
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>ローカル ファイル システムへの変更を使用してコンテナーを更新する
 

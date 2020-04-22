@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/22/2019
-ms.openlocfilehash: 1e559309b8e8d9768ca2f79dabfb01ec6086a961
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/10/2019
+ms.openlocfilehash: b8d7f995997b828c2323b3e6934b97354c2f8c8b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348713"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255245"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
@@ -273,7 +273,7 @@ _SecurityBaseline_ テーブルのみのアクセス権を持つロールを作�
 
  カスタム ログは、カスタム ログや HTTP Data Collector API などのデータ ソースから作成されます。 ログの種類を特定する最も簡単な方法は、[ログ スキーマの [カスタム ログ]](../log-query/get-started-portal.md#understand-the-schema)に一覧表示されるテーブルを確認することです。
 
- 現時点では、個々のカスタム ログに対するアクセスを付与することはできませんが、すべてのカスタム ログに対するアクセスを付与することはできます。 すべてのカスタム ログへのアクセス権を持つロールを作成するには、次の操作を使用してカスタム ロールを作成します。
+ 個々のカスタム ログに対するアクセスは付与できませんが、すべてのカスタム ログに対するアクセスを付与することはできます。 すべてのカスタム ログへのアクセス権を持つロールを作成するには、次の操作を使用してカスタム ロールを作成します。
 
 ```
 "Actions":  [
@@ -282,6 +282,9 @@ _SecurityBaseline_ テーブルのみのアクセス権を持つロールを作�
     "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
 ],
 ```
+カスタム ログへのアクセスを管理するもうひとつのアプローチは、それを Azure リソースに割り当て、リソース コンテキスト パラダイムを使用してアクセスを管理することです。 この方法を使用するには、[HTTP データ コレクター API](data-collector-api.md) を介してデータを Log Analytics に取り込む際、[x-ms-AzureResourceId](data-collector-api.md#request-headers) で指定してリソース ID を含める必要があります。 リソース ID は有効で、アクセス規則が適用されていなくてはなりません。 ログが取り込まれた後、ここで説明されているようにリソースの読み取りアクセスのあるユーザーはログにアクセスできます。
+
+カスタム ログは、特定のリソースに直接関連付けられていないソースから取得されることがあります。 この場合は、このようなログへのアクセスを管理するためだけにリソース グループを作成します。 リソース グループにはコストはかかりませんが、カスタム ログへのアクセスを制御するための有効なリソース ID が付与されます。 たとえば、特定のファイアウォールがカスタム ログを送信する場合は、「MyFireWallLogs」と呼ばれるリソース グループを作成し、API 要求に「MyFireWallLogs」のリソース ID が含まれていることを確認します。 その後、ファイアウォールのログ レコードは、MyFireWallLogs へのアクセスが許可されたユーザー、またはワークスペースへのフル アクセスを持つユーザーのみがアクセスできます。          
 
 ### <a name="considerations"></a>考慮事項
 

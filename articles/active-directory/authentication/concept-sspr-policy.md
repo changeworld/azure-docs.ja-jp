@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fba4dae66b5adcea6cc33e61d8cf88946e29546e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f5987bee82dc22d3742cb5d87040930e5d2c52d
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051166"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393032"
 ---
 # <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセット ポリシーと制限
 
@@ -160,16 +160,6 @@ Microsoft クラウド サービスの*グローバル管理者*または*ユー
 
 ## <a name="next-steps"></a>次のステップ
 
-次の記事では、Azure AD によるパスワードのリセットに関する追加情報が得られます。
+SSPR の使用を始めるには、「[チュートリアル: Azure Active Directory のセルフサービス パスワード リセットを使用して、ユーザーが自分のアカウントのロック解除またはパスワードのリセットを実行できるようにする](tutorial-enable-sspr.md)」を参照してください。
 
-* [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
-* [パスワードのリセットと変更。](../user-help/active-directory-passwords-update-your-own-password.md)
-* [セルフサービス パスワード リセットの登録。](../user-help/active-directory-passwords-reset-register.md)
-* [ライセンスに関する質問](concept-sspr-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
-* [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
-* [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
-* [SSPR でアクティビティをレポートする方法](howto-sspr-reporting.md)
-* [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
-* [不具合が発生していると思われるSSPR のトラブルシューティング方法](active-directory-passwords-troubleshoot.md)
-* [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
+SSPR で問題が発生した場合は、「[セルフサービス パスワード リセットのトラブルシューティング](active-directory-passwords-troubleshoot.md)」を参照してください

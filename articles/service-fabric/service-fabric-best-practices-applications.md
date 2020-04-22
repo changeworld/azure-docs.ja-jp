@@ -5,12 +5,12 @@ author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
-ms.openlocfilehash: 876980bd6a59bace9ab4e490358964d19fa52c7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56df6e28940eb15597a3d6bccca3f85e5f690f89
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586089"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991656"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric アプリケーションの設計に関するベスト プラクティス
 
@@ -58,8 +58,8 @@ Service Fabric アプリケーションの[全般的なアーキテクチャ](ht
 ## <a name="how-to-work-with-reliable-services"></a>Reliable Services を操作する方法
 Service Fabric Reliable Services では、ステートレス サービスとステートフル サービスを簡単に作成できます。 詳細については、「[Reliable Services の概要](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction)」を参照してください。
 - ステートレス サービスとステートフル サービスの `RunAsync()` メソッドと、ステートフル サービスの `ChangeRole()`メソッドでは、常に[キャンセル トークン](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps)を優先します。 そうしないと、Service Fabric では、サービスを閉じることができるかどうかが認識されません。 たとえば、キャンセル トークンを優先しない場合、アプリケーションのアップグレード時間がかなり長くなる可能性があります。
--   適時に[通信リスナー](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication)を開いたり閉じたりして、キャンセル トークンを優先します。
--   同期コードと非同期コードを混在させないでください。 たとえば、非同期呼び出しで `.GetAwaiter().GetResult()` を使用しないでください。 コール スタックでは "*最初から最後まで*" 非同期を使用します。
+-    適時に[通信リスナー](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication)を開いたり閉じたりして、キャンセル トークンを優先します。
+-    同期コードと非同期コードを混在させないでください。 たとえば、非同期呼び出しで `.GetAwaiter().GetResult()` を使用しないでください。 コール スタックでは "*最初から最後まで*" 非同期を使用します。
 
 ## <a name="how-to-work-with-reliable-actors"></a>Reliable Actors を操作する方法
 Service Fabric Reliable Actors では、ステートフルな仮想アクターを簡単に作成できます。 詳細については、[Reliable Actors の概要](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction)に関する記事を参照してください。
@@ -77,7 +77,7 @@ Service Fabric Reliable Actors では、ステートフルな仮想アクター�
 サービス呼び出しでの[アプリケーションのログ記録](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app)の追加を徹底してください。 これは、サービスが相互に呼び出されるシナリオの診断に役立ちます。 たとえば、A から B、B から C、C から D という呼び出しの場合、呼び出しはどの場所でも失敗する可能性があります。 ログ記録が十分でない場合、エラーの診断は困難です。 呼び出しのボリュームにより、サービスのログ記録が多すぎる場合は、少なくともエラーと警告のログを記録するようにしてください。
 
 ## <a name="iot-and-messaging-applications"></a>IoT とメッセージング アプリケーション
-[Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) または [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) からメッセージを読み取る場合は、[ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor) を使用します。 ServiceFabricProcessor は、イベント ハブ パーティションからの読み取り状態を維持するために Service Fabric Reliable Services と統合され、`IEventProcessor::ProcessEventsAsync()` メソッドを使用してサービスに新しいメッセージがプッシュされます。
+[Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) または [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) からメッセージを読み取る場合は、[ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor) を使用します。 ServiceFabricProcessor は、イベント ハブ パーティションからの読み取り状態を維持するために Service Fabric Reliable Services と統合され、`IEventProcessor::ProcessEventsAsync()` メソッドを使用してサービスに新しいメッセージがプッシュされます。
 
 
 ## <a name="design-guidance-on-azure"></a>Azure での設計ガイダンス

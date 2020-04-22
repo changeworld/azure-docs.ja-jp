@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228843"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409763"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM/物理サーバーの大規模なディザスター リカバリーを設定する
 
@@ -210,7 +210,7 @@ VM の最初のバッチのレプリケーションを開始したら、次の�
 大規模なフェールオーバーを実行する場合は、次のようにすることをお勧めします。
 
 1. ワークロードのフェールオーバーの復旧計画を作成します。
-    - それぞれの復旧計画で、最大で 50 台のマシンのフェールオーバーをトリガーできます。
+    - それぞれの復旧計画で、最大 100 台のマシンのフェールオーバーをトリガーできます。
     - [こちら](recovery-plan-overview.md) をご覧ください。
 2. Azure での手動タスクを自動化するため、復旧計画に Azure Automation Runbook スクリプトを追加します。 一般的なタスクには、ロード バランサーの構成や DNS の更新などがあります。 [詳細情報](site-recovery-runbook-automation.md)
 2. フェールオーバーの前に、Windows マシンが Azure 環境に準拠するように準備します。 準拠するマシンでは[フェールオーバーの上限](#plan-azure-subscriptions-and-quotas)が大きくなります。 Runbook については[こちら](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010)をご覧ください。

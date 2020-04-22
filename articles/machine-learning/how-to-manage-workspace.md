@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: f38b0895b0d6eddcf63c082d3df205f4d9de9d50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b4b64bcca57e1dc98cdba10626597532ae1461c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297059"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269732"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal 内で Azure Machine Learning ワークスペースを作成および管理する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ ms.locfileid: "80297059"
     ![ワークスペースを構成する](./media/how-to-manage-workspace/select-edition.png)
 
 1. ワークスペースの構成が完了したら、 **[確認および作成]** を選択します。
-2. 設定を確認し、追加の変更または訂正があれば実行します。 設定に問題がなければ **[作成]** を選択します。
+2. 設定を確認し、追加の変更または訂正があれば実行します。 設定に問題がなければ、 **[作成]** を選択します。
 
    > [!Warning] 
    > クラウドへのワークスペースの作成には数分かかる場合があります。
@@ -90,6 +90,8 @@ Basic Edition から Enterprise Edition にワークスペースをアップグ�
 
 ## <a name="find-a-workspace"></a><a name="view"></a>ワークスペースの検索
 
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+
 1. 上部の検索フィールドに「**Machine Learning**」と入力します。  
 
 1. **[Machine Learning]** を選択します。
@@ -102,9 +104,9 @@ Basic Edition から Enterprise Edition にワークスペースをアップグ�
 
 ## <a name="delete-a-workspace"></a>ワークスペースを削除する
 
-削除するワークスペースの上にある [削除] ボタンを使用します。
+[Azure portal](https://portal.azure.com/) で、削除するワークスペースの上部にある **[削除]** を選択します。
 
-  ![[削除] ボタン](./media/how-to-manage-workspace/delete-workspace.png)
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="ワークスペースの削除":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

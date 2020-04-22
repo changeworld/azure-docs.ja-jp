@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: anavin
-ms.openlocfilehash: 26d8ee34c735cab8f1033a9aad897ec0b1bed524
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f0c2d9757f3652b0f83b8c36d89c855f7a92fdd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65952687"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383863"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>パブリック IP アドレス プレフィックスの作成、変更、削除
 
@@ -34,14 +34,14 @@ ms.locfileid: "65952687"
 - PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 1.0.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 - Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.41 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
-Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」の一覧に記載されている適切なアクションが割り当てられている[カスタム ロール](#permissions)に割り当てられている必要があります。
+Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧に記載されている適切なアクションが割り当てられている[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てられている必要があります。
 
 パブリック IP アドレス プレフィックスは有料です。 詳細については、[価格](https://azure.microsoft.com/pricing/details/ip-addresses)のページを参照してください。
 
 ## <a name="create-a-public-ip-address-prefix"></a>パブリック IP アドレス プレフィックスの作成
 
 1. ポータルの左上隅にある **[+ リソースの作成]** を選択します。
-2. *[マーケットプレースを検索]* ボックスに「*パブリック IP アドレス プレフィックス*」と入力します。 検索結果に **[パブリック IP アドレス プレフィックス]** が表示されたら、それをクリックします。
+2. *[マーケットプレースを検索]* ボックスに「*パブリック IP プレフィックス*」と入力します。 検索結果に **[パブリック IP アドレス プレフィックス]** が表示されたら、それをクリックします。
 3. **[パブリック IP アドレス プレフィックス]** の **[作成]** を選択します。
 4. **[Create public IP address prefix]\(パブリック IP アドレス プレフィックス\)** にある以下の設定に対して値を入力または選択して、 **[作成]** を選択します。
 
@@ -49,7 +49,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
    |---|---|---|
    |サブスクリプション|はい|パブリック IP アドレスを関連付けるリソースと同じ[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)内に存在する必要があります。|
    |Resource group|はい|所属する[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)は、パブリック IP アドレスを関連付けるリソースと同じであっても異なっていてもかまいません。|
-   |Name|はい|選択したリソース グループ内で一意となる名前を使用してください。|
+   |名前|はい|選択したリソース グループ内で一意となる名前を使用してください。|
    |リージョン|はい|範囲からアドレスを割り当てるパブリック IP アドレスと同じ[リージョン](https://azure.microsoft.com/regions)に存在する必要があります。|
    |プレフィックス サイズ|はい| 必要なプレフィックスのサイズ。 /28 または 16 の IP アドレスが既定値です。
 
@@ -70,7 +70,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
    |設定|必須|詳細|
    |---|---|---|
-   |Name|はい|パブリック IP アドレスには、選択したリソース グループ内で一意の名前を付ける必要があります。|
+   |名前|はい|パブリック IP アドレスには、選択したリソース グループ内で一意の名前を付ける必要があります。|
    |アイドル タイムアウト (分)|いいえ|クライアントからキープアライブ メッセージを送信しなくても TCP 接続または HTTP 接続が開いたまま維持される時間 (分)。 |
    |DNS 名ラベル|いいえ|作成する Azure リージョン (すべてのサブスクリプション、すべての顧客) で一意の名前を付けます。 指定した名前を使用してリソースに接続できるよう、DNS 内の名前と IP アドレスが Azure によって自動的に登録されます。 指定した名前に既定のサブネット (*location.cloudapp.azure.com* など、"location" は選択した場所) が付加されて、完全修飾 DNS 名が作成されます。詳細については、[Azure パブリック IP アドレスで Azure DNS を使用する方法](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)に関するページを参照してください。|
 
@@ -87,7 +87,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 2. 表示か設定の変更、または一覧から削除するパブリック IP アドレス プレフィックスの名前を選択します。
 3. パブリック IP アドレス プレフィックスの表示か設定の変更、または一覧からの削除のどの操作を行うかに従って以下のいずれかの設定を行います。
    - **表示**: **[概要]** セクションには、プレフィックスなど、パブリック IP アドレス プレフィックスの主要な設定が表示されます。
-   - **削除**: パブリック IP アドレス プレフィックスを削除するには、 **[概要]** セクションの **[削除]** を選択します。 プレフィックス内のアドレスがパブリック IP アドレス リソースに関連付けられている場合は、まずパブリック IP アドレス リソースを削除する必要があります。 [パブリック IP アドレスの削除](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address)に関するページを参照してください。
+   - **[削除]** :パブリック IP アドレス プレフィックスを削除するには、 **[概要]** セクションの **[削除]** を選択します。 プレフィックス内のアドレスがパブリック IP アドレス リソースに関連付けられている場合は、まずパブリック IP アドレス リソースを削除する必要があります。 [パブリック IP アドレスの削除](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address)に関するページを参照してください。
 
 **コマンド**
 
@@ -100,7 +100,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 パブリック IP アドレス プレフィックスでタスクを実行するには、[ネットワークの共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に記載されている適切なアクションが割り当てられている[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールにアカウントが割り当てられている必要があります。
 
-| アクション                                                            | Name                                                           |
+| アクション                                                            | 名前                                                           |
 | ---------                                                         | -------------                                                  |
 | Microsoft.Network/publicIPPrefixes/read                           | パブリック IP アドレス プレフィックスの読み取り                                |
 | Microsoft.Network/publicIPPrefixes/write                          | パブリック IP アドレス プレフィックスの作成または更新                    |

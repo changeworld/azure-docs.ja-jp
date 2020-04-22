@@ -9,19 +9,21 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 68e234b9db269c30dc9f24106ae1942c01304da7
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: d37a9bd4cc29ee60f9833ffbcb5a2701a19bbaa7
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422498"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416826"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Data Factory を使用した Oracle をコピー元またはコピー先とするデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-oracle-connector.md)
 > * [現在のバージョン](connector-oracle.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Oracle データベースをコピー先またはコピー元としてデータをコピーする方法について説明します。 これは、[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
@@ -37,6 +39,7 @@ Oracle データベースから、サポートされている任意のシンク 
 具体的には、この Oracle コネクタでは以下がサポートされています。
 
 - Oracle データベースの次のバージョン:
+    - Oracle 19c R1 (19.1) 以降
     - Oracle 18c R1 (18.1) 以降
     - Oracle 12c R1 (12.1) 以降
     - Oracle 11g R1 (11.1) 以降
@@ -84,9 +87,9 @@ Oracle の接続で暗号化を有効にするには、2 つのオプション�
 
 -   **Triple-DES Encryption (3DES) と Advanced Encryption Standard (AES)** を使用するには、Oracle サーバー側で Oracle Advanced Security (OAS) に移動し、暗号化の設定を構成します。 詳細については、こちらの [Oracle のドキュメント](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)を参照してください。 Oracle Application Development Framework (ADF) コネクタは暗号化方法を自動的にネゴシエートし、Oracle への接続を確立するときにユーザーが OAS で構成した方法を使用します。
 
--   **SSL** を使用するには:
+-   **TLS** を使用するには以下の手順に従ってください。
 
-    1.  SSL 証明書の情報を取得します。 SSL 証明書の Distinguished Encoding Rules (DER) でエンコードされた証明書情報を取得し、出力 (----- Begin Certificate … End Certificate -----) をテキスト ファイルとして保存します。
+    1.  TLS/SSL 証明書情報を取得します。 TLS/SSL 証明書の Distinguished Encoding Rules (DER) でエンコードされた証明書情報を取得し、出力 (----- Begin Certificate … End Certificate -----) をテキスト ファイルとして保存します。
 
         ```
         openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text

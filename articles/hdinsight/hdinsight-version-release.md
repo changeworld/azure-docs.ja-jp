@@ -6,39 +6,39 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.openlocfilehash: 0463e3297bbb2fda50adfeefaa89f0a7a3ef8b0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: d0fd9999abc4a67ded0f66977e1a3ba5310c87be
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72901524"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383030"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 の概要
 
-Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop および Apache Spark の分析を行う、エンタープライズのお客様の間で最も人気のあるサービスの 1 つです。 HDInsight 4.0 は、Apache Hadoop コンポーネントのクラウド ディストリビューションです。 この記事では、Azure HDInsight の最新のリリースとアップグレード方法に関する情報を提供します。
+Azure HDInsight は、Apache Hadoop および Apache Spark に関してエンタープライズのお客様の間で最も人気のあるサービスの 1 つです。 HDInsight 4.0 は、Apache Hadoop コンポーネントのクラウド ディストリビューションです。 この記事では、Azure HDInsight の最新のリリースとアップグレード方法に関する情報を提供します。
 
 ## <a name="whats-new-in-hdinsight-40"></a>HDInsight 4.0 の新機能
 
-### <a name="apache-hive-30-and-llap"></a>Apache Hive 3.0 と LLAP
+### <a name="apache-hive-30-and-low-latency-analytical-processing"></a>Apache Hive 3.0 と低待機時間の分析処理
 
-Apache Hive LLAP (低遅延分析処理) では、永続的クエリ サーバーとメモリ内キャッシュを使用して、リモート クラウド ストレージ内のデータの SQL クエリ結果がすばやく提供されます。 Hive LLAP では、Hive クエリのフラグメントを実行する永続的なデーモンのセットが利用されます。 LLAP でのクエリの実行は、コンテナーではなく LLAP デーモン内でワーカー タスクが実行している、LLAP を使用しない Hive と似ています。
+Apache Hive LLAP (低遅延分析処理) では、永続的クエリ サーバーとメモリ内キャッシュが使用されます。 このプロセスでは、リモート クラウド ストレージ内のデータに対する SQL クエリの結果がすばやく提供されます。 Hive LLAP では、Hive クエリのフラグメントを実行する永続的なデーモンのセットが使用されます。 LLAP でのクエリの実行は、コンテナーではなく LLAP デーモン内でワーカー タスクが実行している、LLAP を使用しない Hive と似ています。
 
 Hive LLAP の利点は次のとおりです。
 
-* 複雑な結合、サブクエリ、ウィンドウ関数、並べ替え、ユーザー定義関数、複雑な集計などのディープ SQL 分析を、パフォーマンスとスケーラビリティを損なうことなく実行できます。
+* パフォーマンスと適応性を損なうことなく、詳細な SQL 分析を実行できます。 複雑な結合、サブクエリ、ウィンドウ関数、並べ替え、ユーザー定義関数、複雑な集計などです。
 
 * データが準備された場所と同じストレージ内のデータに対する対話型クエリにより、分析処理のためにストレージから別のエンジンにデータを移動する必要がありません。
 
-* クエリの結果をキャッシュすることで、前に計算されたクエリの結果を再利用でき、クエリに必要なクラスター タスクの実行に費やされる時間とリソースを節約できます。
+* クエリ結果をキャッシュすることで、以前に計算されたクエリ結果を再利用できます。 このキャッシュにより、クエリに必要なクラスター タスクの実行に費やされる時間とリソースが節約されます。
 
 ### <a name="hive-dynamic-materialized-views"></a>Hive の動的な具体化されたビュー
 
-Hive は、データ ウェアハウスでのクエリ処理を高速化するために使用される、動的な具体化されたビュー、つまり関連するサマリーの事前計算をサポートします。 具体化されたビューは Hive にネイティブに格納でき、LLAP アクセラレーションをシームレスに使用できます。
+Hive では、動的な具体化されたビュー、つまり関連するサマリーの事前計算がサポートされるようになっています。 ビューによって、データ ウェアハウスでのクエリ処理が高速化されます。 具体化されたビューは Hive にネイティブに格納でき、LLAP アクセラレーションをシームレスに使用できます。
 
 ### <a name="hive-transactional-tables"></a>Hive トランザクション テーブル
 
-HDI 4.0 に含まれる Apache Hive 3 では、Hive ウェアハウス内に存在するトランザクション テーブルに対して、原子性、一貫性、分離性、持続性 (ACID) への対応が要求されます。 ACID に準拠しているテーブルおよびテーブルのデータは、Hive によってアクセスされて管理されます。 作成、取得、更新、削除 (CRUD) テーブル内のデータは Optimized Row Column (ORC) ファイル形式である必要がありますが、挿入のみのテーブルはすべてのファイル形式をサポートします。
+HDI 4.0 には Apache Hive 3 が含まれています。 Hive 3 では、Hive ウェアハウス内に存在するトランザクション テーブルに対して、原子性、一貫性、分離性、持続性への対応が要求されます。 ACID に準拠しているテーブルおよびテーブルのデータは、Hive によってアクセスされて管理されます。 作成、取得、更新、削除 (CRUD) テーブル内のデータは Optimized Row Column (ORC) ファイル形式である必要があります。 挿入のみのテーブルでは、すべてのファイル形式がサポートされます。
 
 * ACID v2 では、ストレージ形式と実行エンジンの両方でパフォーマンスが向上しています
 
@@ -56,7 +56,7 @@ HDI 4.0 に含まれる Apache Hive 3 では、Hive ウェアハウス内に存�
 
 ### <a name="apache-spark"></a>Apache Spark
 
-Apache Spark は、Hive Warehouse Connector を使用して更新可能なテーブルと ACID トランザクションを取得します。 Hive Warehouse Connector を使用すると、Spark で外部テーブルとして Hive トランザクション テーブルを登録でき、完全なトランザクション機能にアクセスできます。 以前のバージョンでは、テーブル パーティションの操作のみがサポートされていました。 また、Hive Warehouse Connector は、Spark からトランザクションおよびストリーミング Hive テーブルの読み書きをストリーミングするための Streaming DataFrames もサポートしています。
+Apache Spark は、Hive Warehouse Connector を使用して更新可能なテーブルと ACID トランザクションを取得します。 Hive Warehouse Connector を使用すると、Spark で外部テーブルとして Hive トランザクション テーブルを登録でき、完全なトランザクション機能にアクセスできます。 以前のバージョンでは、テーブル パーティションの操作のみがサポートされていました。 Hive Warehouse Connector では、Streaming DataFrames もサポートされています。  このプロセスでは、Spark からトランザクション Hive テーブルおよびストリーミング Hive テーブルへの読み取りと書き込みがストリーミングされます。
 
 Spark Executor は、Hive LLAP デーモンに直接接続してトランザクション方式でデータを取得および更新することができ、Hive でデータの制御を維持できます。
 
@@ -67,7 +67,7 @@ HDInsight 4.0 上の Apache Spark では、次のシナリオがサポートさ�
 * Hive ストリーミング テーブルからの変更フィードで Spark ストリーミング ジョブを実行します。
 * Spark Structured Streaming ジョブから直接、ORC ファイルを作成します。
 
-誤って Spark から直接 Hive トランザクション テーブルにアクセスを試み、矛盾した結果、重複したデータ、データの破損が発生するのを心配する必要はもうありません。 HDInsight 4.0 では、Spark のテーブルと Hive のテーブルは、個別の metastore に保持されます。 Hive トランザクション テーブルを Spark 外部テーブルとして明示的に登録するには、Hive Data Warehouse Connector を使用します。
+誤って Spark から直接 Hive トランザクション テーブルにアクセスを試みても心配する必要はもうありません、 矛盾した結果、重複したデータ、データの破損の発生。 HDInsight 4.0 では、Spark のテーブルと Hive のテーブルは、個別の metastore に保持されます。 Hive トランザクション テーブルを Spark 外部テーブルとして明示的に登録するには、Hive Data Warehouse Connector を使用します。
 
 詳しくは、[Apache Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html) に関するページをご覧ください。
 
@@ -83,9 +83,9 @@ HDI 4.0 に含まれる Apache Oozie 4.3.1 では以下の点が変更されて�
 
 ## <a name="how-to-upgrade-to-hdinsight-40"></a>HDInsight 4.0 にアップグレードする方法
 
-他のメジャー リリースと同様に、運用環境に最新バージョンを実装する前に、コンポーネントを徹底的にテストすることが重要です。 HDInsight 4.0 を指定してアップグレード プロセスを開始できますが、不慮の事故を防ぐため、HDInsight 3.6 が既定のオプションです。
+運用環境に最新バージョンを実装する前に、コンポーネントを徹底的にテストします。 HDInsight 4.0 を使用して、アップグレード プロセスを開始できます。 不慮の事故を防ぐため、HDInsight 3.6 が既定のオプションです。
 
-以前のバージョンの HDInsight から HDInsight 4.0 へのアップグレード パスはサポートされていません。 metastore と BLOB のデータ形式が変更されたため、HDInsight 4.0 は以前のバージョンと互換性がありません。 新しい HDInsight 4.0 環境を現在の運用環境から分離しておくことが重要です。 HDInsight 4.0 を現在の環境にデプロイする場合、metastore がアップグレードされて、元に戻すことはできません。  
+以前のバージョンの HDInsight から HDInsight 4.0 へのアップグレード パスはサポートされていません。 メタストアと BLOB のデータ形式が変更されたため、4.0 は以前のバージョンと互換性がありません。 新しい HDInsight 4.0 環境を現在の運用環境から分離しておくことが重要です。 HDInsight 4.0 を現在の環境にデプロイした場合、メタストアは恒久的にアップグレードされます。  
 
 ## <a name="limitations"></a>制限事項
 

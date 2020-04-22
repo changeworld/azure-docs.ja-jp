@@ -1,18 +1,18 @@
 ---
-title: Azure Automation State Configuration での構成のコンパイル
+title: Azure Automation State Configuration で DSC 構成をコンパイルする
 description: この記事では、Azure Automation の Desired State Configuration (DSC) 構成をコンパイルする方法について説明します。
 services: automation
 ms.subservice: dsc
-ms.date: 09/10/2018
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 48593920bdfcf743fceaeaeec891c0d5c4f2e108
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7558745442ac26fc33a063ff66fe170d08487ac
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80057634"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392086"
 ---
-# <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Automation State Configuration での DSC 構成のコンパイル
+# <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Automation State Configuration で DSC 構成をコンパイルする
 
 Azure Automation State Configuration では、以下の方法で Desired State Configuration (DSC) 構成をコンパイルできます。
 
@@ -27,13 +27,16 @@ Azure Automation State Configuration では、以下の方法で Desired State C
   - 大規模なノード データと非ノード データの操作
   - パフォーマンスの大幅な向上
 
-コンパイルの詳細については、「[Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)」を参照してください。
+Azure Resource Manager テンプレートと Azure Desired State Configuration (DSC) 拡張機能を使用して、構成を Azure VM にプッシュすることもできます。 Azure DSC 拡張機能は、Azure VM エージェント フレームワークを使用して、Azure VM で実行される DSC 構成の配布、適用、およびレポート作成を行います。 Azure Resource Manager テンプレートを使用するコンパイルについて詳しくは、「[Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)」をご覧ください。 
+
+>[!NOTE]
+>この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
 ## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>Azure State Configuration での DSC 構成のコンパイル
 
 ### <a name="portal"></a>ポータル
 
-1. Automation アカウントから、 **[状態の構成 (DSC)]** をクリックします。
+1. Automation アカウントで、 **[状態の構成 (DSC)]** をクリックします。
 1. **[構成]** タブをクリックして、コンパイルする構成の名前をクリックします。
 1. **[コンパイル]** をクリックします。
 1. 構成にパラメーターが含まれていない場合は、構成をコンパイルするかどうかを確認するメッセージが表示されます。 構成にパラメーターが含まれている場合は、 **[構成のコンパイル]** ブレードが開くので、パラメーター値を入力できます。
@@ -41,13 +44,13 @@ Azure Automation State Configuration では、以下の方法で Desired State C
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-[Start-AzAutomationDscCompilationJob](/powershell/module/az.automation/start-azautomationdsccompilationjob) を使用して、Windows PowerShell を使用したコンパイルを開始できます。 次のサンプル コードでは、SampleConfig という名前の DSC 構成のコンパイルを開始します。
+[Start-AzAutomationDscCompilationJob](/powershell/module/az.automation/start-azautomationdsccompilationjob) を使用して、Windows PowerShell を使用したコンパイルを開始できます。 次のサンプル コードでは、**SampleConfig** という名前の DSC 構成のコンパイルを開始します。
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-**Start-AzAutomationDscCompilationJob** から、ジョブの状態を追跡するのに使用できるコンパイル ジョブ オブジェクトが返されます。 このコンパイル ジョブ オブジェクトは、[Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) と共に使用してコンパイル ジョブの状態を確認すること、および [Get-AzAutomationDscCompilationJobOutput](/powershell/module/az.automation/get-azautomationdscconfiguration) と共に使用してそのストリーム (出力) を表示することが可能です。 次のサンプルでは、SampleConfig 構成のコンパイルを開始し、コンパイルが完了するまで待機した後、ストリームを表示します。
+`Start-AzAutomationDscCompilationJob` からは、ジョブの状態を追跡するのに使用できるコンパイル ジョブ オブジェクトが返されます。 このコンパイル ジョブ オブジェクトは、[Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) と共に使用してコンパイル ジョブの状態を確認すること、および [Get-AzAutomationDscCompilationJobOutput](/powershell/module/az.automation/get-azautomationdscconfiguration) と共に使用してそのストリーム (出力) を表示することが可能です。 次のサンプルでは、SampleConfig 構成のコンパイルを開始し、コンパイルが完了するまで待機した後、ストリームを表示します。
 
 ```powershell
 $CompilationJob = Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
@@ -65,7 +68,7 @@ $CompilationJob | Get-AzAutomationDscCompilationJobOutput –Stream Any
 
 DSC 構成のパラメーターの宣言 (パラメーターの種類、プロパティなど) は、Azure Automation Runbook と同じように動作します。 Runbook のパラメーターの詳細については、「 [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md) 」を参照してください。
 
-次の例では、*FeatureName* と *IsPresent* という 2 つのパラメーターを使用して、コンパイル時に生成された ParametersExample.sample ノード構成のプロパティの値を特定しています。
+次の例では、`FeatureName` および `IsPresent` パラメーターを使用して、コンパイル時に生成された **ParametersExample.sample** ノード構成のプロパティの値を特定します。
 
 ```powershell
 Configuration ParametersExample
@@ -116,7 +119,7 @@ $Parameters = @{
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'ParametersExample' -Parameters $Parameters
 ```
 
-PSCredentials をパラメーターとして渡す方法の詳細については、以下の「[資格情報資産](#credential-assets)」を参照してください。
+`PSCredential` オブジェクトをパラメーターとして渡す方法の詳細については、「[資格情報資産](#credential-assets)」を参照してください。
 
 ### <a name="compile-configurations-containing-composite-resources-in-azure-automation"></a>Azure Automation で複合リソースを含む構成をコンパイルする
 
@@ -127,12 +130,12 @@ PSCredentials をパラメーターとして渡す方法の詳細については
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>Azure Automation で構成をコンパイルするときに ConfigurationData を管理する
 
-**ConfigurationData** によって、PowerShell DSC の使用中に環境固有の構成と構造上の構成を分離することができます。 詳細については、「[PowerShell DSC で "環境" から "構造" を分離する](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)」を参照してください。
+組み込みの DSC パラメーターである `ConfigurationData` を使用すると、PowerShell DSC を使用しているときに、環境固有の構成から構造上の構成を分離することができます。 詳細については、「[PowerShell DSC で "環境" から "構造" を分離する](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)」を参照してください。
 
 > [!NOTE]
-> Azure Automation State Configuration でのコンパイル時には、**ConfigurationData** は、Azure PowerShell では使用できますが、Azure portal では使用できません。
+> Azure Automation State Configuration でコンパイルするとき、`ConfigurationData` を Azure PowerShell で使用することはできますが、Azure portal では使用できません。
 
-次の DSC 構成の例では、$ConfigurationData キーワードと $AllNodes キーワードを介して **ConfigurationData** を使用しています。 この例には [xWebAdministration モジュール](https://www.powershellgallery.com/packages/xWebAdministration/)も必要です。
+次の DSC 構成の例では、`$ConfigurationData` キーワードと `$AllNodes` キーワードによって `ConfigurationData` を使用しています。 この例には [xWebAdministration モジュール](https://www.powershellgallery.com/packages/xWebAdministration/)も必要です。
 
 ```powershell
 Configuration ConfigurationDataSample
@@ -153,7 +156,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-上記の DSC 構成は、Windows PowerShell を使用してコンパイルできます。 以下のスクリプトでは、2 つのノード構成が Azure Automation State Configuration プル サービスに追加されます。ConfigurationDataSample.MyVM1 と ConfigurationDataSample.MyVM3 です。
+上記の DSC 構成は、Windows PowerShell を使用してコンパイルできます。 以下のスクリプトでは、2 つのノード構成が Azure Automation State Configuration プル サービスに追加されます。**ConfigurationDataSample.MyVM1** と **ConfigurationDataSample.MyVM3**。
 
 ```powershell
 $ConfigData = @{
@@ -191,11 +194,11 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 #### <a name="credential-assets"></a>資格情報資産
 
-Azure Automation の DSC 構成は、**Get-AutomationPSCredential** コマンドレットを使用して Automation の資格情報資産を参照できます。 構成に **PSCredential** オブジェクトを指定するパラメーターがある場合は、Azure Automation の資格情報資産の文字列名をコマンドレットに渡して資格情報を取得することで、**Get-AutomationPSCredential** を使用できます。 その後、そのオブジェクトを、**PSCredential** オブジェクトを必要とするパラメーターのために使用します。 バックグラウンドで、この名前の Azure Automation 資格情報資産が取得され、構成に渡されます。 下の例に、このシナリオの動作を示します。
+Azure Automation の DSC 構成は、`Get-AutomationPSCredential` コマンドレットを使用して Automation の資格情報資産を参照できます。 構成に `PSCredential` オブジェクトを指定するパラメーターがある場合は、Azure Automation の資格情報資産の文字列名をコマンドレットに渡して資格情報を取得することで、`Get-AutomationPSCredential` を使用します。 その後、`PSCredential` オブジェクトを必要とするパラメーターに対して、そのオブジェクトを使用します。 バックグラウンドで、この名前の Azure Automation 資格情報資産が取得され、構成に渡されます。 下の例に、このシナリオの動作を示します。
 
 ノード構成 (MOF 構成ドキュメント) で資格情報を安全に保持するには、ノード構成 MOF ファイルで資格情報を暗号化する必要があります。 現在のところ、PowerShell DSC アクセス許可を指定し、ノード構成 MOF の生成時にプレーン テキストで資格情報を出力する必要があります。 PowerShell DSC では、コンパイル ジョブによる生成後に、Azure Automation によって MOF ファイル全体が暗号化されることが認識されません。
 
-構成データを使用すると、生成されたノード構成 MOF に資格情報をプレーン テキストで出力することの許可を PowerShell DSC に通知できます。 DSC 構成に含められ、資格情報を使用するノード ブロック名ごとに、**ConfigurationData** を介して `PSDscAllowPlainTextPassword = $true` を渡す必要があります。
+構成データを使用すると、生成されたノード構成 MOF に資格情報をプレーン テキストで出力することの許可を PowerShell DSC に通知できます。 DSC 構成に含まれていて、資格情報を使用するノード ブロック名ごとに、`ConfigurationData` を介して `PSDscAllowPlainTextPassword = $true` を渡す必要があります。
 
 次の例は、Automation 資格情報資産を使用する DSC 構成の例です。
 
@@ -217,7 +220,7 @@ Configuration CredentialSample
 }
 ```
 
-PowerShell を使用して上記の DSC 構成をコンパイルできます。 以下の PowerShell コードでは、2 つのノード構成が Azure Automation State Configuration プル サーバーに追加されます。CredentialSample.MyVM1 と CredentialSample.MyVM2 です。
+PowerShell を使用して上記の DSC 構成をコンパイルできます。 以下の PowerShell コードでは、2 つのノード構成が Azure Automation State Configuration プル サーバーに追加されます。(**CredentialSample.MyVM1** と **CredentialSample.MyVM2**)。
 
 ```powershell
 $ConfigData = @{
@@ -239,16 +242,16 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 ```
 
 > [!NOTE]
-> コンパイルが完了すると、""Microsoft.PowerShell.Management" スナップインが既にインポートされているため、"Microsoft.PowerShell.Management" モジュールがインポートされませんでした。" というエラー メッセージが表示される場合があります。 このメッセージは無視してかまいません。
+> コンパイルが完了すると、`The 'Microsoft.PowerShell.Management' module was not imported because the 'Microsoft.PowerShell.Management' snap-in was already imported.` というエラー メッセージが表示される場合があります。このメッセージは無視してかまいません。
 
 ## <a name="compiling-your-dsc-configuration-in-windows-powershell"></a>Windows PowerShell で DSC 構成をコンパイルする
 
-Azure の外部でコンパイルしたノード構成 (MOF) をインポートすることもできます。 このインポートには、開発者のワークステーションからのコンパイルや [Azure DevOps](https://dev.azure.com) などのサービスでのコンパイルも含まれます。 このアプローチには、パフォーマンスや信頼性を含め、多数の利点があります。
+Azure の外部でコンパイルしたノード構成 (MOF ファイル) をインポートすることもできます。 このインポートには、開発者のワークステーションからのコンパイルや [Azure DevOps](https://dev.azure.com) などのサービスでのコンパイルも含まれます。 このアプローチには、パフォーマンスや信頼性を含め、多数の利点があります。
 
 Windows PowerShell でコンパイルする場合には、構成コンテンツに署名するオプションもあります。 署名されたノード構成は、DSC エージェントにより、管理対象ノードでローカルに検証されます。 検証によって、ノードに適用される構成が、承認済みソースからのものであることが保証されます。
 
 > [!NOTE]
-> ノード構成ファイルを Azure Automation にインポートするには、ファイル サイズを 1 MB 以下にする必要があります。
+> Azure Automation でノード構成ファイルをインポートできるためには、ファイルのサイズが 1 MB 以下である必要があります。
 
 ノード構成の署名の詳細については、[WMF 5.1 での機能強化の、構成とモジュールに署名する方法](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations)に関するページを参照してください。
 
@@ -259,9 +262,9 @@ Windows PowerShell に DSC 構成をコンパイルする手順は、PowerShell 
 
 ### <a name="import-a-node-configuration-in-the-azure-portal"></a>Azure portal でノード構成をインポートする
 
-1. [Automation アカウント] から、 **[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
-1. [状態の構成 (DSC)] ページで **[構成]** タブをクリックして、 **[+ 追加]** をクリックします。
-1. [インポート] ページで、 **[ノード構成ファイル]** テキストボックスの横にあるフォルダー アイコンをクリックして、ローカル コンピューター上のノード構成ファイル (MOF) を参照します。
+1. お使いの Automation アカウントで、 **[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
+1. [状態の構成 (DSC)] ページで **[構成]** タブをクリックして、 **[追加]** をクリックします。
+1. [インポート] ページで、 **[ノード構成ファイル]** フィールドの横にあるフォルダー アイコンをクリックして、ローカル コンピューター上のノード構成の MOF ファイルを参照します。
 
    ![ローカル ファイルの参照](./media/automation-dsc-compile/import-browse.png)
 
@@ -280,6 +283,7 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 
 - 使用を開始するには、「[Azure Automation State Configuration の使用開始](automation-dsc-getting-started.md)」をご覧ください。
 - DSC 構成をコンパイルしてターゲット ノードに割り当てることができるようにする方法の詳細については、「[Azure Automation State Configuration での構成のコンパイル](automation-dsc-compile.md)」をご覧ください。
-- PowerShell コマンドレットのリファレンスについては、[Azure Automation State Configuration のコマンドレット](/powershell/module/az.automation)に関するページをご覧ください。
+- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)」をご覧ください。
 - 料金情報については、[Azure Automation State Configuration の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページをご覧ください。
 - 継続的デプロイ パイプラインでの Azure Automation State Configuration の使用例については、「[Automation State Configuration と Chocolatey を使用した仮想マシンへの継続的なデプロイ](automation-dsc-cd-chocolatey.md)」を参照してください。

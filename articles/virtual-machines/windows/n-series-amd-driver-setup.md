@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 883dbc95ee77d03aee4c3231c6ab8c03f9f7f6e4
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 02213feb507e9a032a50241fddf31714b9dfd7ee
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387837"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011075"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows を実行している N シリーズ VM に AMD GPU ドライバーをインストールする
 
@@ -52,6 +52,12 @@ Windows を実行している新しい Azure NVv4 シリーズ VM の GPU 機能
 <br />
 ![GPU ドライバーのプロパティ](./media/n-series-amd-driver-setup/device-manager.png)
 
-dxdiag を使用して、ビデオ RAM などの GPU 表示プロパティを確認できます。 次の例は、Azure NVv4 VM での Radeon Instinct MI25 カードの 1/8 パーティションを示しています。
+dxdiag を使用して、ビデオ RAM などの GPU 表示プロパティを確認できます。 次の例は、Azure NVv4 VM での Radeon Instinct MI25 カードの 1/2 パーティションを示しています。
 <br />
-![GPU ドライバーのプロパティ](./media/n-series-amd-driver-setup/dxdiag.png)
+![GPU ドライバーのプロパティ](./media/n-series-amd-driver-setup/dxdiag-output.png)
+
+Windows 10 ビルド1903 以降を実行している場合、dxdiag では [表示] タブに情報が表示されません。下部にある [すべての情報を保存する] オプションを使用してください。出力ファイルには、AMD MI25 GPU に関連する情報が表示されます。
+
+![GPU ドライバーのプロパティ](./media/n-series-amd-driver-setup/dxdiag-details.png)
+
+

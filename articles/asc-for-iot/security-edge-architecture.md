@@ -1,5 +1,5 @@
 ---
-title: IoT Edge 用の Azure Security Center for IoT セキュリティ モジュールを理解する | Microsoft Docs
+title: IoT Edge 用のセキュリティ モジュール
 description: IoT Edge 用の Azure Security Center for IoT セキュリティ モジュールのアーキテクチャと機能を理解します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 148c68234a937efde554ef00a6014cdc1a350f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0eb68f517c4c5b04dd4f92dd1a804dcf5ad24362
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71315886"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310638"
 ---
 # <a name="azure-iot-edge-security-module"></a>Azure IoT Edge セキュリティ モジュール
 
@@ -36,7 +36,7 @@ IoT デバイスに対する Azure Security Center for IoT セキュリティ �
 IoT Edge 用の Azure Security Center for IoT セキュリティ モジュールでは、次の機能が提供されます。
 
 - 基になるオペレーティング システム (Linux) および IoT Edge コンテナー システムから、生のセキュリティ イベントを収集します。
-  
+
   使用可能なセキュリティ データ コレクターの詳細については、[Azure Security Center for IoT エージェントの構成](how-to-agent-configuration.md)に関するページを参照してください。
 
 - IoT Edge のデプロイ マニフェストを分析します。
@@ -52,7 +52,7 @@ IoT Edge 用の Azure Security Center for IoT セキュリティ モジュール
 
 ## <a name="module-supported-platforms"></a>モジュールのサポート対象プラットフォーム
 
-現在、IoT Edge 用の Azure Security Center for IoT セキュリティ モジュールは、Linux でのみ利用できます。 
+現在、IoT Edge 用の Azure Security Center for IoT セキュリティ モジュールは、Linux でのみ利用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

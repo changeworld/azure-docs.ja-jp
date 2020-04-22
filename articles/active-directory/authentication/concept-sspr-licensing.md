@@ -1,74 +1,61 @@
 ---
 title: セルフサービス パスワード リセットのライセンス - Azure Active Directory
-description: Azure AD のセルフサービス パスワード リセットのライセンス要件
+description: Azure Active Directory のさまざまなセルフサービス パスワード リセット ライセンス要件について説明します
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 04/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 598f3bd8500a59cd41cc4126915e6cccbd4fb2f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45ca11af061e37cf4f804ce2d7ceed72a9448294
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848563"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393078"
 ---
-# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD のセルフサービス パスワード リセットのライセンス要件
+# <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory のセルフサービス パスワード リセットのライセンス要件
 
-Azure Active Directory (Azure AD) には、いくつかのエディションがあります。それは、Free、Premium P1、および Premium P2 です。 セルフサービス パスワード リセットには、その構成要素として、変更、リセット、ロック解除、書き戻しなど、Azure AD の各種エディションに用意されているいくつかの異なる機能が存在します。 この記事では、その相違点について説明します。 各 Azure AD エディションに備わっている機能の詳細は、[Azure Active Directory の価格のページ](https://azure.microsoft.com/pricing/details/active-directory/)でご覧いただけます。
+ユーザーがデバイスまたはアプリケーションにサインインできないときにヘルプ デスクへの問い合わせと生産性の低下を減らすには、Azure Active Directory (Azure AD) のユーザーアカウントでセルフサービス パスワード リセット (SSPR) を有効にすることができます。 SSPR を構成する機能には、パスワードの変更、リセット、ロック解除、オンプレミスのディレクトリへの書き戻しが含まれます。 SSPR の基本的な機能は、Office 365 およびすべての Azure AD のユーザーが無料で利用できます。
+
+この記事では、セルフサービス パスワード リセットのライセンスを取得して使用するさまざまな方法について詳しく説明します。 価格と課金の詳細については、[Azure AD の価格に関するページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
 ## <a name="compare-editions-and-features"></a>エディションと機能の比較
 
-組織は、そのユーザーに適切なライセンスを割り当てる必要があります。その遵守状況を維持するために、Azure AD のセルフサービス パスワード リセットは、ユーザー単位でライセンスされます。
+SSPR はユーザーごとにライセンス供与されます。 その遵守状況を維持するために、組織ではユーザーに適切なライセンスを割り当てる必要があります。
 
-* クラウド ユーザーに対するセルフサービスのパスワード変更
-   * 私は**クラウド限定ユーザー**で、自分のパスワードを知っています。
-      * 自分のパスワードを新しいパスワードに**変更**したいと考えています。
-   * この機能は、Azure AD の全エディションに備わっています。
+次の表では、パスワードの変更、リセット、またはオンプレミスの書き戻しのさまざまな SSPR シナリオと、機能が提供される SKU の概要を示します。
 
-* クラウド ユーザーのセルフサービス パスワード リセット
-   * 私は**クラウド限定ユーザー**で、自分のパスワードを忘れてしまいました。
-      * 自分が把握しているパスワードに**リセット**したいと考えています。
-   * この機能は、Azure AD の Premium P1 または Premium P2、Microsoft 365 Business、Office 365 に備わっています。
-
-* セルフサービス パスワード リセット /変更/ロック解除 (**オンプレミスの書き戻しが可能**)
-   * 私は**ハイブリッド ユーザー**です。オンプレミスの Active Directory ユーザー アカウントは、Azure AD Connect を使用して Azure AD アカウントと同期されています。 パスワードを変更したいと思っています/パスワードを忘れてしまいました/ロック アウトされてしまいました。
-      * パスワードを変更するか、自分が把握しているパスワードにリセットするか、アカウントのロックを解除して、**なおかつ**、その変更をオンプレミスの Active Directory に同期させたいと考えています。
-   * この機能は、Azure AD の Premium P1 または Premium P2、あるいは Microsoft 365 Business に備わっています。
+| 機能 | Azure AD Free | Office 365 Business Premium | Microsoft 365 Business | Azure AD Premium P1 または P2 |
+| --- |:---:|:---:|:---:|:---:|
+| **クラウドのみのユーザー パスワードの変更**<br />Azure AD のユーザーが自分のパスワードを知っていて、新しいパスワードへの変更を希望する場合。 | ● | ● | ● | ● |
+| **クラウドのみのユーザー パスワードのリセット**<br />Azure AD のユーザーがパスワードを忘れて、リセットする必要がある場合。 | | ● | ● | ● |
+| **オンプレミスの書き戻しを含む、ハイブリッド ユーザーのパスワードの変更またはリセット**<br />Azure AD Connect を使用してオンプレミスのディレクトリから同期されている Azure AD のユーザーが、パスワードを変更またはリセットし、オンプレミスに新しいパスワードを書き戻す場合。 | | | ● | ● |
 
 > [!WARNING]
-> スタンドアロンの Office 365 ライセンス プランでは、"*セルフサービス パスワード リセット /変更/ロック解除 (オンプレミスの書き戻しが可能) をサポートしていません*"。この機能を動作させるには、Azure AD の Premium P1 または Premium P2、あるいは Microsoft 365 Business を含むプランが必要になります。
->
+> スタンドアロンの Office 365 ライセンス プランでは、オンプレミスの書き戻しのある SSPR はサポートされていません。 それらの Office 365 ライセンス プランでこの機能を使用するには、Azure AD Premium P1、Premium P2、または Microsoft 365 Business が必要です。
 
 追加のライセンス情報 (コストを含む) については、以下のページをご覧ください。
 
-* [Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Azure Active Directory の料金](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Azure Active Directory の機能と働き](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/microsoft-365/enterprise)
-* [Microsoft 365 Business サービスの説明](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
+* [Microsoft 365 Business](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
 
 ## <a name="enable-group-or-user-based-licensing"></a>グループまたはユーザー ベースのライセンスの有効化
 
-現在、AzureAD はグループベースのライセンスをサポートしています。 管理者はライセンスを一度に 1 つずつユーザーに割り当てるのではなく、ユーザーのグループに一括して割り当てることができます。 詳細については、[ライセンスの割り当て、検証、および問題の解決](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)に関するページを参照してください。
+Azure AD では、グループ ベースのライセンスがサポートされています。 管理者はライセンスを一度に 1 つずつユーザーに割り当てるのではなく、ユーザーのグループに一括して割り当てることができます。 詳細については、[ライセンスの割り当て、検証、および問題の解決](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)に関するページを参照してください。
 
 Microsoft サービスの中には、すべての場所では利用できないものもあります。 ライセンスをユーザーに割り当てる前に、管理者はユーザーの **[利用場所]** プロパティを指定しておく必要があります。 ライセンスの割り当ては、Azure Portal の **[ユーザー]**  >  **[プロファイル]**  >  **[設定]** セクションで行います。 *グループでのライセンス割り当てを使用する場合、利用場所が指定されていないユーザーは、ディレクトリの場所を継承します。*
 
 ## <a name="next-steps"></a>次のステップ
 
-* [SSPR のロールアウトを正常に完了する方法](howto-sspr-deployment.md)
-* [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
-* [セルフサービス パスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
-* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
-* [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
-* [SSPR のポリシー オプション](concept-sspr-policy.md)
-* [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)
-* [SSPR でアクティビティをレポートする方法](howto-sspr-reporting.md)
-* [SSPR のすべてのオプションとその意味](concept-sspr-howitworks.md)
-* [不具合が発生していると思われるSSPR のトラブルシューティング方法](active-directory-passwords-troubleshoot.md)
-* [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
+SSPR の使用を開始するには、次のチュートリアルをご覧ください。
+
+> [!div class="nextstepaction"]
+> [チュートリアル:セルフサービス パスワード リセット (SSPR) を有効にする](tutorial-enable-sspr.md)

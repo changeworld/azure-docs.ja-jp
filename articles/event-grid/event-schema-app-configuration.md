@@ -1,26 +1,25 @@
 ---
-title: Azure Event Grid Azure App Configuration イベント スキーマ
-description: Azure Event Grid の Azure App Configuration イベントに対して用意されているプロパティについて説明します
+title: Event Grid ソースとしての Azure App Configuration
+description: この記事では、Event Grid イベント ソースとして Azure App Configuration を使用する方法について説明します。 スキーマと、チュートリアルおよび操作方法に関する記事へのリンクを提供します。
 services: event-grid
-author: jimmyca
+author: banisadr
 ms.service: event-grid
-ms.topic: reference
-ms.date: 05/30/2019
-ms.author: jimmyca
-ms.openlocfilehash: fe0274f723692eea3cfd25cc0e9e146b35dce2ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: babanisa
+ms.openlocfilehash: adb548ef8531698a2cb075fbc742bb20a02a434b
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66735898"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393426"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Azure App Configuration 用の Azure Event Grid イベント スキーマ
+# <a name="azure-app-configuration-as-an-event-grid-source"></a>Event Grid ソースとしての Azure App Configuration
+この記事では、Azure App Configuration イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。 また、Azure App Configuration をイベント ソースとして使用するためのクイック スタートとチュートリアルの一覧も示されています。
 
-この記事では、Azure App Configuration イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
+## <a name="event-grid-event-schema"></a>Event Grid イベント スキーマ
 
-サンプル スクリプトとチュートリアルの一覧については、[Azure App Configuration のイベント ソース](event-sources.md#app-configuration)に関する記事を参照してください。
-
-## <a name="available-event-types"></a>使用可能なイベントの種類
+### <a name="available-event-types"></a>使用可能なイベントの種類
 
 Azure App Configuration は次のイベントの種類を発行します。
 
@@ -29,7 +28,7 @@ Azure App Configuration は次のイベントの種類を発行します。
 | Microsoft.AppConfiguration.KeyValueModified | キー/値が作成または置換されたときに発生します。 |
 | Microsoft.AppConfiguration.KeyValueDeleted | キー/値が削除されたときに発生します。 |
 
-## <a name="example-event"></a>イベントの例
+### <a name="example-event"></a>イベントの例
 
 次の例は、キー/値の変更イベントのスキーマを示します。 
 
@@ -69,11 +68,11 @@ Azure App Configuration は次のイベントの種類を発行します。
 }]
 ```
  
-## <a name="event-properties"></a>イベントのプロパティ
+### <a name="event-properties"></a>イベントのプロパティ
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |
@@ -86,12 +85,19 @@ Azure App Configuration は次のイベントの種類を発行します。
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | key | string | 変更または削除されたキー/値のキー。 |
-| ラベル●らべる○ | string | 変更または削除されたキー/値のラベル (存在する場合)。 |
+| label | string | 変更または削除されたキー/値のラベル (存在する場合)。 |
 | etag | string | `KeyValueModified` の場合、新しいキー/値の etag。 `KeyValueDeleted` の場合、削除されたキー/値の etag。 |
- 
+
+## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
+
+|タイトル | 説明 |
+|---------|---------|
+| [Event Grid を使用して Azure App Configuration イベントに応答する](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure App Configuration と Event Grid の統合の概要。 |
+| [クイック スタート: Azure CLI を使用して Azure App Configuration イベントをカスタム Web エンドポイントにルーティングする](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Azure App Configuration イベントを Webhook に送信する方法を示します。 |
+
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。

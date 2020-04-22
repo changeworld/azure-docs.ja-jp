@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a0e5b0c18264e1f7a98e81bcdfd56a7159235da
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235335"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010921"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Premium Azure Redis Cache の Redis クラスタリングの構成方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Premium Azure Cache for Redis インスタンスでクラスタリングを構成する方法について説明します。
@@ -125,7 +125,7 @@ Redis クラスタリング プロトコルでは、各クライアントがク�
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>キャッシュの個々のシャードに直接接続できますか
 クラスタリング プロトコルでは、クライアントが正しいシャード接続を実行する必要があります。 したがって、クライアントが自動的に、これを正しく実行する必要があります。 つまり、各シャードは、キャッシュ インスタンスと総称される、プライマリ/レプリカ キャッシュ ペアで構成されています。 GitHub で Redis リポジトリの [不安定な](https://redis.io/download) ブランチにある redis-cli ユーティリティを使用して、これらのキャッシュ インスタンスに接続できます。 このバージョンは、 `-c` スイッチ付きで起動した場合、基本的なサポートを実装しています。 詳細については、[https://redis.io](https://redis.io) の「[Redis cluster tutorial](https://redis.io/topics/cluster-tutorial)」 (Redis クラスター チュートリアル) にある「[Playing with the cluster](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」 (クラスターの使用) をご覧ください。
 
-SSL 以外の場合は、次のコマンドを使用します。
+TLS 以外の場合は、次のコマンドを使用します。
 
     Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
     Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
@@ -133,7 +133,7 @@ SSL 以外の場合は、次のコマンドを使用します。
     ...
     Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-SSL の場合は、`1300N` を `1500N` に置き換えます。
+TLS の場合は、`1300N` を `1500N` に置き換えます。
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>以前に作成したキャッシュのクラスタリングを構成できますか。
 はい。 まず、キャッシュが Premium でない場合は、スケーリングしてキャッシュを確実に Premium にしてください。 次に、クラスター構成オプション (クラスターを有効にするオプションを含む) が表示されるようになります。 キャッシュが作成されるか、または初めてクラスタリングを有効にした後、クラスター サイズを変更できます。

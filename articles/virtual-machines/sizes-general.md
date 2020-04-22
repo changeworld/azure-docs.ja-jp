@@ -1,9 +1,9 @@
 ---
 title: Azure の VM のサイズ - 汎用 | Microsoft Docs
-description: Azure の仮想マシンで使用できるさまざまな汎用サイズを一覧表示します。 このシリーズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。
+description: Azure の仮想マシンで使用できるさまざまな汎用サイズを一覧表示します。 このシリーズの各サイズにおけるストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。
 services: virtual-machines
 documentationcenter: ''
-author: jonbeck7
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
-ms.author: jonbeck
-ms.openlocfilehash: 4b36f456f70eb79cff1f615c7c136b8fe4b1b3d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: fc263eb6fbe6c6402aaf529229bb7025f070b8d9
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78226716"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269671"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>汎用仮想マシンのサイズ
 
@@ -32,7 +32,7 @@ ms.locfileid: "78226716"
 
 - Web サーバー、小規模なデータベース、開発とテスト環境など、CPU が常時最大限のパフォーマンスを発揮している必要のないワークロードでは、[B シリーズのバースト可能な](sizes-b-series-burstable.md) VM が最適です。 このようなワークロードでは通常、負荷の急増に対応できることがパフォーマンスの要件となります。 B シリーズでは、価格を重視するベースライン パフォーマンスが設定されている VM サイズを購入でき、VM インスタンスの使用量がベース パフォーマンスを下回る場合にはクレジットが蓄積されていきます。 VM にクレジットが蓄積されていると、アプリケーションでより高い CPU パフォーマンスが必要な場合に、VM のベースラインを上回り、CPU を 100% まで使用できます。
 
-- [Dav4 シリーズと Dasv4 シリーズ](dav4-dasv4-series.md)は、マルチスレッド構成で AMD の 2.35 Ghz EPYC<sup>TM</sup> 7452 プロセッサを使用する新しいサイズです。最大で 256 MB の L3 キャッシュを備え、8 コアのそれぞれにその L3 キャッシュの 8 GB が専用に割り当てられ、汎用ワークロードを実行するためのカスタマー オプションが増えます。 Dav4 シリーズと Dasv4 シリーズは、D および Dsv3 シリーズと同じメモリおよびディスク構成を備えています。
+- [Dav4 シリーズと Dasv4 シリーズ](dav4-dasv4-series.md)は、マルチスレッド構成で AMD の 2.35 Ghz EPYC<sup>TM</sup> 7452 プロセッサを使用する新しいサイズです。最大で 256 MB の L3 キャッシュを備え、8 コアのそれぞれにその L3 キャッシュの 8 MB が専用に割り当てられ、汎用ワークロードを実行するためのカスタマー オプションが増えます。 Dav4 シリーズと Dasv4 シリーズは、D および Dsv3 シリーズと同じメモリおよびディスク構成を備えています。
 
 - [DCv2 シリーズ](dcv2-series.md)は、パブリック クラウドで処理中のデータおよびコードの機密性と整合性を保護するために役立ちます。 これらのマシンは、最新世代の Intel XEON E-2288G プロセッサと SGX テクノロジによって支援されています。 Intel Turbo Boost Technology により、これらのマシンは最大 5.0 GHz まで高速化できます。 DCv2 シリーズのインスタンスを使用すると、安全なエンクレーブ ベースのアプリケーションを構築して、コードやデータを使用中に保護することができます。
 

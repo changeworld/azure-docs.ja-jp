@@ -6,20 +6,23 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 keywords: powershell, runbook, json, azure automation
-ms.openlocfilehash: d4adbea42cda54380ad32dce40cfa0d8391ee490
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a6652c988eb77a1c5c7dbf800586b1c5fb756c4
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366636"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392202"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする
 
-[Azure Resource Management テンプレート](automation-first-runbook-textual-powershell.md)を使用して、Azure リソースをデプロイする [Azure Automation PowerShell Runbook](../azure-resource-manager/resource-manager-create-first-template.md) を記述できます。
+[Azure Resource Management テンプレート](../azure-resource-manager/resource-manager-create-first-template.md)を使用して、Azure リソースをデプロイする [Azure Automation PowerShell Runbook](automation-first-runbook-textual-powershell.md) を記述できます。
 
 これにより、Azure リソースのデプロイを自動化できます。 Azure Storage など、セキュリティで保護された一元的な場所に Resource Manager テンプレートを維持することができます。
 
 この記事では、[Azure Storage](../storage/common/storage-introduction.md) に格納されている Resource Manager テンプレートを使用して新しい Azure ストレージ アカウントをデプロイする PowerShell Runbook を作成します。
+
+>[!NOTE]
+>この記事は、新しい Azure PowerShell Az モジュールを使用するために更新されました。 AzureRM モジュールはまだ使用でき、少なくとも 2020 年 12 月までは引き続きバグ修正が行われます。 Az モジュールと AzureRM の互換性の詳細については、「[Introducing the new Azure PowerShell Az module (新しい Azure PowerShell Az モジュールの概要)](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)」を参照してください。 Hybrid Runbook Worker での Az モジュールのインストール手順については、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)」を参照してください。 Automation アカウントについては、「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」に従って、モジュールを最新バージョンに更新できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +31,7 @@ ms.locfileid: "75366636"
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。
 * [Automation アカウント](automation-sec-configure-azure-runas-account.md)。Runbook の保存と Azure リソースの認証に使用します。  このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
 * Resource Manager テンプレートを格納する [Azure Storage アカウント](../storage/common/storage-create-storage-account.md)
-* ローカル コンピューターにインストールされている Azure Powershell。 Azure PowerShell の取得方法の詳細については、[Azure PowerShell のインストールと構成の方法](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。
+* ローカル コンピューターにインストールされている Azure PowerShell。 Azure PowerShell の取得方法の詳細については、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)に関するページを参照してください。
 
 ## <a name="create-the-resource-manager-template"></a>Resource Manager テンプレートの作成
 
@@ -88,37 +91,37 @@ ms.locfileid: "75366636"
 }
 ```
 
-ファイルを `TemplateTest.json` としてローカルに保存します。
+ファイルを **TemplateTest.json** という名前でローカル環境に保存します。
 
 ## <a name="save-the-resource-manager-template-in-azure-storage"></a>Resource Manager テンプレートを Azure Storage に保存する
 
-PowerShell を使用して Azure Storage ファイル共有を作成し、`TemplateTest.json` ファイルをアップロードします。
+PowerShell を使用して Azure Storage ファイル共有を作成し、**TemplateTest.json** ファイルをアップロードします。
 Azure Portal でファイル共有を作成し、ファイルをアップロードする方法については、[Windows での Azure File Storage の概要](../storage/files/storage-dotnet-how-to-use-files.md)に関する記事をご覧ください。
 
 ローカル コンピューターで PowerShell を起動し、次のコマンドを実行して、ファイル共有を作成し、そのファイル共有に Resource Manager テンプレートをアップロードします。
 
 ```powershell
-# Login to Azure
-Connect-AzureRmAccount
+# Log into Azure
+Connect-AzAccount
 
 # Get the access key for your storage account
-$key = Get-AzureRmStorageAccountKey -ResourceGroupName 'MyAzureAccount' -Name 'MyStorageAccount'
+$key = Get-AzStorageAccountKey -ResourceGroupName 'MyAzureAccount' -Name 'MyStorageAccount'
 
 # Create an Azure Storage context using the first access key
-$context = New-AzureStorageContext -StorageAccountName 'MyStorageAccount' -StorageAccountKey $key[0].value
+$context = New-AzStorageContext -StorageAccountName 'MyStorageAccount' -StorageAccountKey $key[0].value
 
 # Create a file share named 'resource-templates' in your Azure Storage account
-$fileShare = New-AzureStorageShare -Name 'resource-templates' -Context $context
+$fileShare = New-AzStorageShare -Name 'resource-templates' -Context $context
 
 # Add the TemplateTest.json file to the new file share
 # "TemplatePath" is the path where you saved the TemplateTest.json file
 $templateFile = 'C:\TemplatePath'
-Set-AzureStorageFileContent -ShareName $fileShare.Name -Context $context -Source $templateFile
+Set-AzStorageFileContent -ShareName $fileShare.Name -Context $context -Source $templateFile
 ```
 
 ## <a name="create-the-powershell-runbook-script"></a>PowerShell Runbook スクリプトの作成
 
-`TemplateTest.json` ファイルを Azure Storage から取得し、新しい Azure Storage アカウントを作成するテンプレートをデプロイする PowerShell スクリプトを作成します。
+**TemplateTest.json** ファイルを Azure Storage から取得し、新しい Azure Storage アカウントを作成するテンプレートをデプロイする PowerShell スクリプトを作成します。
 
 テキスト エディターで、次のテキストを貼り付けます。
 
@@ -141,13 +144,11 @@ param (
     $StorageFileName
 )
 
-
-
 # Authenticate to Azure if running from Azure Automation
 $ServicePrincipalConnection = Get-AutomationConnection -Name "AzureRunAsConnection"
-Connect-AzureRmAccount `
+Connect-AzAccount `
     -ServicePrincipal `
-    -TenantId $ServicePrincipalConnection.TenantId `
+    -Tenant $ServicePrincipalConnection.TenantId `
     -ApplicationId $ServicePrincipalConnection.ApplicationId `
     -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint | Write-Verbose
 
@@ -157,24 +158,23 @@ $Parameters = @{
     }
 
 # Create a new context
-$Context = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+$Context = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
-Get-AzureStorageFileContent -ShareName 'resource-templates' -Context $Context -path 'TemplateTest.json' -Destination 'C:\Temp'
+Get-AzStorageFileContent -ShareName 'resource-templates' -Context $Context -path 'TemplateTest.json' -Destination 'C:\Temp'
 
 $TemplateFile = Join-Path -Path 'C:\Temp' -ChildPath $StorageFileName
 
 # Deploy the storage account
-New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters 
+New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterObject $Parameters 
 ``` 
 
-ファイルを `DeployTemplate.ps1` としてローカルに保存します。
+ファイルを **DeployTemplate.ps1** という名前でローカル環境に保存します。
 
 ## <a name="import-and-publish-the-runbook-into-your-azure-automation-account"></a>Runbook を Azure Automation アカウントにインポートし、公開する
 
-PowerShell を使用して Runbook を Azure Automation アカウントにインポートし、その Runbook を公開します。
-Azure portal で Runbook をインポートおよび公開する方法については、「[Azure Automation で Runbook を管理する](manage-runbooks.md)」をご覧ください。
+PowerShell を使用して Runbook を Azure Automation アカウントにインポートし、その Runbook を公開します。 Azure portal で Runbook をインポートおよび公開する方法については、「[Azure Automation で Runbook を管理する](manage-runbooks.md)」をご覧ください。
 
-`DeployTemplate.ps1` を Automation アカウントに PowerShell Runbook としてインポートするには、次の PowerShell コマンドを実行します。
+**DeployTemplate.ps1** を Automation アカウントに PowerShell Runbook としてインポートするには、次の PowerShell コマンドを実行します。
 
 ```powershell
 # MyPath is the path where you saved DeployTemplate.ps1
@@ -186,7 +186,7 @@ $importParams = @{
     AutomationAccountName = 'MyAutomationAccount'
     Type = 'PowerShell'
 }
-Import-AzureRmAutomationRunbook @importParams
+Import-AzAutomationRunbook @importParams
 
 # Publish the runbook
 $publishParams = @{
@@ -194,14 +194,13 @@ $publishParams = @{
     AutomationAccountName = 'MyAutomationAccount'
     Name = 'DeployTemplate'
 }
-Publish-AzureRmAutomationRunbook @publishParams
+Publish-AzAutomationRunbook @publishParams
 ```
 
 ## <a name="start-the-runbook"></a>Runbook の起動
 
-[Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) コマンドレットを呼び出して Runbook を起動します。
-
-Azure Portal で Runbook を起動する方法については、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」をご覧ください。
+[Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0
+) コマンドレットを呼び出して Runbook を起動します。 Azure Portal で Runbook を起動する方法については、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」をご覧ください。
 
 PowerShell コンソールで次のコマンドを実行します。
 
@@ -214,7 +213,7 @@ $runbookParams = @{
     StorageFileName = 'TemplateTest.json' 
 }
 
-# Set up parameters for the Start-AzureRmAutomationRunbook cmdlet
+# Set up parameters for the Start-AzAutomationRunbook cmdlet
 $startParams = @{
     ResourceGroupName = 'MyResourceGroup'
     AutomationAccountName = 'MyAutomationAccount'
@@ -223,20 +222,21 @@ $startParams = @{
 }
 
 # Start the runbook
-$job = Start-AzureRmAutomationRunbook @startParams
+$job = Start-AzAutomationRunbook @startParams
 ```
 
 Runbook が実行されます。`$job.Status` を実行してその状態を確認できます。
 
 Runbook は、Resource Manager テンプレートを取得し、それを使用して新しい Azure Storage アカウントをデプロイします。
 次のコマンドを実行して、新しいストレージ アカウントが作成されたことを確認できます。
+
 ```powershell
-Get-AzureRmStorageAccount
+Get-AzStorageAccount
 ```
 
 ## <a name="summary"></a>まとめ
 
-これで完了です。 Azure Automation と Azure Storage、およびすべての Azure リソースをデプロイする Resource Manager テンプレートを使用できます。
+これで完了です。 Azure Automation および Azure Storage と Resource Manager テンプレートを使用して、すべての Azure リソースをデプロイできます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -244,5 +244,5 @@ Get-AzureRmStorageAccount
 * Azure Storage の概要については、「[Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)」をご覧ください。
 * 役に立つその他の Azure Automation Runbook を探すには、「[Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](automation-runbook-gallery.md)」をご覧ください。
 * 役に立つその他の Resource Manager テンプレートを探すには、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)」をご覧ください。
-
-
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)」をご覧ください。

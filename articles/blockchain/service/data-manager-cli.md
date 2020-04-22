@@ -1,15 +1,15 @@
 ---
 title: Azure CLI を使用してブロックチェーン データ マネージャーを構成する - Azure Blockchain Service
 description: Azure CLI を使用して、Azure Blockchain Service 用のブロックチェーン データ マネージャーを作成および管理します。
-ms.date: 11/04/2019
+ms.date: 03/30/2020
 ms.topic: article
-ms.reviewer: chroyal
-ms.openlocfilehash: a8061aad6d6a1513de70e7c2bc57aa109c666611
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: e490803fabeed7d6234bd6984acbfb9f5270e0c0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74455930"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254412"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Azure CLI を使用してブロックチェーン データ マネージャーを構成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "74455930"
 ## <a name="prerequisites"></a>前提条件
 
 * 最新の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) をインストールし、`az login` を使用してサインインします。
-* 「[Quickstart: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」が完了していること
+* 「[Quickstart: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を完了してください。 Blockchain Data Manager を使用する場合は、Azure Blockchain Service *Standard* レベルが推奨されます。
 * [Event Grid トピック](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)を作成する
 * [Azure Event Grid のイベント ハンドラー](../../event-grid/event-handlers.md)について学習する
 
@@ -48,7 +48,7 @@ az group create --name myRG --location eastus
 
 ## <a name="create-instance"></a>インスタンスを作成する
 
-ブロックチェーン データ マネージャー インスタンスは、Azure Blockchain Service トランザクション ノードを監視します。 インスタンスは、トランザクション ノードから生のブロックと生のトランザクション データをすべてキャプチャします。
+ブロックチェーン データ マネージャー インスタンスは、Azure Blockchain Service トランザクション ノードを監視します。 インスタンスは、トランザクション ノードから生のブロックと生のトランザクション データをすべてキャプチャします。 Blockchain Data Manager により **RawBlockAndTransactionMsg** メッセージが発行されます。これは、web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) および [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction) クエリから返される情報のスーパーセットです。
 
 ``` azurecli
 az resource create \

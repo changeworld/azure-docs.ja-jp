@@ -7,20 +7,23 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: dc106ecf40367172f28c0f339bbcce8bddb50a34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09e82b9905104df9b1902b0f64f6cfdf812aabb8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278077"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274023"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Azure Key Vault の証明書を作成する
 
+> [!IMPORTANT]
+> 2020 年 4 月 13 日以降、Azure 仮想マシン オファーの管理のパートナー センターへの移行が開始されます。 移行後は、パートナー センターにてオファーを作成・管理することになります。 移行されたオファーを管理するには、「[Azure VM イメージ証明](https://aks.ms/CertifyVMimage)」の手順に従ってください。
+
 この記事では、Azure でホストされる仮想マシン (VM) に Windows Remote Management (WinRM) を接続するために必要な自己署名証明書をプロビジョニングする方法について説明します。 このプロセスは 3 つのステップで構成されます。
 
-1.  セキュリティ証明書を作成します。 
-2.  この証明書を格納する Azure Key Vault を作成します。 
-3.  このキー コンテナーに証明書を格納します。 
+1.    セキュリティ証明書を作成します。 
+2.    この証明書を格納する Azure Key Vault を作成します。 
+3.    このキー コンテナーに証明書を格納します。 
 
 この作業には使用する Azure リソース グループは新しいものでも既存のものでも構いません。  以下の説明では新しい Azure リソース グループを使用しています。
 

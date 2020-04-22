@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: c4e7427d87c5f88d8c686b867ef88ceb05f28286
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c0ee2f8d5291f7904435dea32d913adeaaf25c5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281427"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262368"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>会社の職場アカウントとパートナー センター
 
@@ -54,4 +54,4 @@ Azure Active Directory にカスタム ドメインを追加する方法の詳�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [パートナー センターで Commercial Marketplace アカウントを管理する](./manage-account.md) 
+- [パートナー センターでコマーシャル マーケットプレース アカウントを管理する](./manage-account.md) 

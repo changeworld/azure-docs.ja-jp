@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 1da9bbd1ed4bc4abea0699e56d8adc397086d6e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8fd1eb4bef987b4a8605e4be780512a914ec8b5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280424"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255993"
 ---
 # <a name="troubleshooting-common-authentication-errors"></a>一般的な認証エラーのトラブルシューティング
+
+> [!NOTE]
+> Cloud パートナー ポータル API はパートナー センターに統合されており、オファーがパートナー センターに移行された後も引き続き機能します。 統合によりわずかな変更が行われました。 「[Cloud パートナー ポータル API リファレンス](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)」に記載されている変更内容を調べて、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
 
 この記事では、Cloud パートナー ポータル API を使用するときの一般的な認証エラーについて説明します。
 

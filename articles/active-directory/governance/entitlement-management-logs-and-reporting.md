@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 04/14/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 070b7c5e0fef7d50f84271190432a65d29699bdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d59a508d03730a51e793a5e30e2c99a91af77ce8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128618"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380190"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Monitor での Azure AD のエンタイトルメント管理に関するアーカイブ ログとレポート
 
@@ -49,6 +49,38 @@ Azure AD 監査ログをアーカイブするには、Azure サブスクリプ�
 1. **[使用量と推定コスト]** を選択し、 **[データ保有期間]** をクリックします。 監査要件に合わせて、データを保持する日数にスライダーを変更します。
 
     ![[Log Analytics ワークスペース] ペイン](./media/entitlement-management-logs-and-reporting/log-analytics-workspaces.png)
+
+1. その後、ワークスペースに保持されている日付の範囲を確認するには、「*アーカイブされたログの日付範囲*」ブックを使用できます。  
+    
+    1. **[Azure Active Directory]** を選択し、 **[ブック]** をクリックします。 
+    
+    1. **[Azure Active Directory トラブルシューティング]** セクションを展開し、 **[アーカイブされたログの日付範囲]** をクリックします。 
+
+
+## <a name="view-events-for-an-access-package"></a>アクセス パッケージのイベントを表示する  
+
+アクセス パッケージのイベントを表示するには、次のいずれかのロールで、基になる Azure Monitor ワークスペースにアクセスできる必要があります (詳細については、「[Azure Monitor のログ データとワークスペースへのアクセスを管理する](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions)」を参照してください)。 
+
+- 全体管理者  
+- セキュリティ管理者  
+- セキュリティ閲覧者  
+- レポート閲覧者  
+- アプリケーション管理者  
+
+以下の手順でイベントを表示します。 
+
+1. Azure portal で、 **[Azure Active Directory]** を選択し、 **[ブック]** をクリックします。 所有するサブスクリプションが 1 つのみの場合は、ステップ 3 に進んでください。 
+
+1. 複数のサブスクリプションがある場合は、ワークスペースが含まれているサブスクリプションを選択します。  
+
+1. 「*Access Package Activity*」という名前のブックを選択します。 
+
+1. そのブックで、時間範囲を選択し (不明な場合は **[すべて]** に変更)、その時間範囲にアクティビティがあったアクセス パッケージすべてのドロップダウン リストからアクセス パッケージ ID を選択します。 選択した時間範囲内に発生したアクセスパッケージに関連のあるイベントが表示されます。  
+
+    ![アクセス パッケージ イベントを表示する](./media/entitlement-management-logs-and-reporting/view-events-access-package.png) 
+
+    各行には、時刻、アクセス パッケージ ID、操作の名前、オブジェクト ID、UPN、操作を開始したユーザーの表示名が含まれます。  さらなる詳細は JSON に含まれています。   
+
 
 ## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>Azure portal を使用してカスタム Azure Monitor クエリを作成する
 エンタイトルメント管理イベントを含め、Azure AD 監査イベントに対する独自のクエリを作成できます。  
@@ -86,6 +118,7 @@ Azure Monitor の監査イベント用に格納される列の詳細について
 Azure AD に対して認証するユーザーまたはサービス プリンシパルが、Log Analytics ワークスペースの適切な Azure ロールに属していることを確認します。 ロール オプションは、Log Analytics 閲覧者または Log Analytics 共同作成者のいずれかです。 既にこれらのロールのいずれかに属している場合は、「[1 つの Azure サブスクリプションで Log Analytics ID を取得する](#retrieve-log-analytics-id-with-one-azure-subscription)」に進みます。
 
 ロールの割り当てを設定し、クエリを作成するには、次の手順を実行します。
+
 1. Azure portal で、[Log Analytics ワークスペース](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces
 )を検索します。
 
@@ -128,7 +161,7 @@ $subs | ft
 `Connect-AzAccount –Subscription $subs[0].id` などのコマンドを使用して、そのサブスクリプションに PowerShell セッションを再認証し、関連付けることができます。 非対話式など、PowerShell から Azure への認証方法の詳細については、「[Azure PowerShell を使用してサインインする](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
 )」を参照してください。
 
-そのサブスクリプションに複数の Log Analytics ワークスペースがある場合、コマンドレット [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) を実行すると、ワークスペースの一覧が返されます。 これで、Azure AD ログがあるものを見つけることができます。 このコマンドレットから返される `CustomerId` フィールドは、Azure portal の Log Analytics ワークスペースの概要に表示される [ワークスペース ID] の値と同じです。
+そのサブスクリプションに複数の Log Analytics ワークスペースがある場合、コマンドレット [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) を実行すると、ワークスペースの一覧が返されます。 これで、Azure AD ログがあるものを見つけることができます。 このコマンドレットから返される `CustomerId` フィールドは、Azure portal の Log Analytics ワークスペースの概要に表示される「ワークスペース ID」の値と同じです。
  
 ```powershell
 $wks = Get-AzOperationalInsightsWorkspace
@@ -150,7 +183,7 @@ $aResponse.Results |ft
 次のようなクエリを使用して、エンタイトルメント管理イベントを取得することもできます。
 
 ```azurepowershell
-$bQuery = = 'AuditLogs | where Category == "EntitlementManagement"'
+$bQuery = 'AuditLogs | where Category == "EntitlementManagement"'
 $bResponse = Invoke-AzOperationalInsightsQuery -WorkspaceId $wks[0].CustomerId -Query $Query
 $bResponse.Results |ft 
 ```
